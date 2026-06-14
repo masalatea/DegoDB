@@ -1,0 +1,27 @@
+{
+    "resource_key": "ACTION_ADD_DA_FUNC_UPDATE_TARGET_FIELDS",
+    "legacy_resource_pid": 292,
+    "base_group_key": "grp-001-developers-matsuesoft-co-jp",
+    "additional_group_keys": [],
+    "key_for_update": "0",
+    "sort_group": "ACTION DA_FUNC_UPDATE_TARGET_FIELDS",
+    "key_name": "ACTION_ADD_DA_FUNC_UPDATE_TARGET_FIELDS",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": true,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 3690,
+            "legacy_language_pid": 1,
+            "text": "データアクセス関数 Update対象フィールド追加",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 3691,
+            "legacy_language_pid": 2,
+            "text": "Add Update Target Field(s) of Data Access Function",
+            "auto_translated": ""
+        }
+    }
+}

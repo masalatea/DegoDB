@@ -1,0 +1,321 @@
+{
+    "resource_key": "COMMON_LIB_ENROLL_ERROR_PLEASE_CHECK_EMAIL_INPUT",
+    "legacy_resource_pid": 1577,
+    "base_group_key": "grp-010-matsuesoft-lib",
+    "additional_group_keys": [],
+    "key_for_update": "gQ1nwdckgbD3Xh1i2KWQxeivGoYLdXEt1UWCXoy15ICaIqDsEiwo3AhJMQKrEzB5afCWVdMozN176YGhMfNtsR7vu3VhykxFi8aITSZ4mtSIw758NHSOueh51008v6if",
+    "sort_group": "ENROLL",
+    "key_name": "COMMON_LIB_ENROLL_ERROR_PLEASE_CHECK_EMAIL_INPUT",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": false,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 7090,
+            "legacy_language_pid": 1,
+            "text": "メールアドレス入力を確認して下さい",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 7091,
+            "legacy_language_pid": 2,
+            "text": "Please check your email address input",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 7092,
+            "legacy_language_pid": 3,
+            "text": "检查电子邮件地址输入",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 7093,
+            "legacy_language_pid": 4,
+            "text": "이메일 주소 입력을 확인해주세요",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 10777,
+            "legacy_language_pid": 5,
+            "text": "Por favor, compruebe su dirección de correo electrónico de entrada",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 10778,
+            "legacy_language_pid": 6,
+            "text": "Verifique a entrada do seu endereço de e-mail",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 10779,
+            "legacy_language_pid": 7,
+            "text": "檢查電子郵件地址輸入",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 16469,
+            "legacy_language_pid": 8,
+            "text": "Vérifiez l'entrée de votre adresse e-mail",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 16470,
+            "legacy_language_pid": 9,
+            "text": "कृपया अपना ईमेल पता इनपुट जांचें",
+            "auto_translated": ""
+        },
+        "ar": {
+            "legacy_caption_pid": 31214,
+            "legacy_language_pid": 10,
+            "text": "التحقق من المدخلات عنوان البريد الإلكتروني",
+            "auto_translated": "التحقق من المدخلات عنوان البريد الإلكتروني"
+        },
+        "fa": {
+            "legacy_caption_pid": 31215,
+            "legacy_language_pid": 11,
+            "text": "بررسی ورودی آدرس ایمیل",
+            "auto_translated": "بررسی ورودی آدرس ایمیل"
+        },
+        "de": {
+            "legacy_caption_pid": 31216,
+            "legacy_language_pid": 12,
+            "text": "Überprüfen Sie die E-Mail-Adresse des Eingangs",
+            "auto_translated": "Überprüfen Sie die E-Mail-Adresse des Eingangs"
+        },
+        "ru": {
+            "legacy_caption_pid": 31217,
+            "legacy_language_pid": 13,
+            "text": "Проверьте адрес электронной почты, адрес ввода",
+            "auto_translated": "Проверьте адрес электронной почты, адрес ввода"
+        },
+        "ms": {
+            "legacy_caption_pid": 31218,
+            "legacy_language_pid": 14,
+            "text": "Menyemak input alamat e-mel",
+            "auto_translated": "Menyemak input alamat e-mel"
+        },
+        "ta": {
+            "legacy_caption_pid": 31219,
+            "legacy_language_pid": 15,
+            "text": "மின்னஞ்சல் முகவரியை உள்ளீட்டைச் சரிபார்க்கவும்",
+            "auto_translated": "மின்னஞ்சல் முகவரியை உள்ளீட்டைச் சரிபார்க்கவும்"
+        },
+        "it": {
+            "legacy_caption_pid": 31220,
+            "legacy_language_pid": 16,
+            "text": "Controllare l'ingresso indirizzo e-mail",
+            "auto_translated": "Controllare l'ingresso indirizzo e-mail"
+        },
+        "bn": {
+            "legacy_caption_pid": 31221,
+            "legacy_language_pid": 17,
+            "text": "ই-মেইল ঠিকানা ইনপুট চেক করুন",
+            "auto_translated": "ই-মেইল ঠিকানা ইনপুট চেক করুন"
+        },
+        "tr": {
+            "legacy_caption_pid": 31222,
+            "legacy_language_pid": 18,
+            "text": "E-posta adresi girişi kontrol",
+            "auto_translated": "E-posta adresi girişi kontrol"
+        },
+        "vi": {
+            "legacy_caption_pid": 31223,
+            "legacy_language_pid": 19,
+            "text": "Kiểm tra đầu vào địa chỉ e-mail",
+            "auto_translated": "Kiểm tra đầu vào địa chỉ e-mail"
+        },
+        "pl": {
+            "legacy_caption_pid": 31224,
+            "legacy_language_pid": 20,
+            "text": "Sprawdzić wejście adres e-mail",
+            "auto_translated": "Sprawdzić wejście adres e-mail"
+        },
+        "jv": {
+            "legacy_caption_pid": 31225,
+            "legacy_language_pid": 21,
+            "text": "Mriksa input alamat e-mail",
+            "auto_translated": "Mriksa input alamat e-mail"
+        },
+        "pa": {
+            "legacy_caption_pid": 31226,
+            "legacy_language_pid": 22,
+            "text": "ਈ-ਮੇਲ ਪਤਾ ਇੰਪੁੱਟ ਚੈੱਕ ਕਰੋ",
+            "auto_translated": "ਈ-ਮੇਲ ਪਤਾ ਇੰਪੁੱਟ ਚੈੱਕ ਕਰੋ"
+        },
+        "th": {
+            "legacy_caption_pid": 31227,
+            "legacy_language_pid": 23,
+            "text": "ตรวจสอบการป้อนข้อมูล e-mail address",
+            "auto_translated": "ตรวจสอบการป้อนข้อมูล e-mail address"
+        },
+        "te": {
+            "legacy_caption_pid": 41996,
+            "legacy_language_pid": 24,
+            "text": "ఇ-మెయిల్ చిరునామా ఇన్పుట్ తనిఖీ",
+            "auto_translated": "ఇ-మెయిల్ చిరునామా ఇన్పుట్ తనిఖీ"
+        },
+        "mr": {
+            "legacy_caption_pid": 41997,
+            "legacy_language_pid": 25,
+            "text": "ई-मेल पत्ता इनपुट तपासा",
+            "auto_translated": "ई-मेल पत्ता इनपुट तपासा"
+        },
+        "ur": {
+            "legacy_caption_pid": 41998,
+            "legacy_language_pid": 26,
+            "text": "ای میل ایڈریس کی ان پٹ کو چیک کریں",
+            "auto_translated": "ای میل ایڈریس کی ان پٹ کو چیک کریں"
+        },
+        "gu": {
+            "legacy_caption_pid": 41999,
+            "legacy_language_pid": 27,
+            "text": "ઇ-મેઇલ સરનામું ઇનપુટ તપાસો",
+            "auto_translated": "ઇ-મેઇલ સરનામું ઇનપુટ તપાસો"
+        },
+        "uk": {
+            "legacy_caption_pid": 42000,
+            "legacy_language_pid": 28,
+            "text": "Перевірте адресу електронної пошти, адреса введення",
+            "auto_translated": "Перевірте адресу електронної пошти, адреса введення"
+        },
+        "ml": {
+            "legacy_caption_pid": 42001,
+            "legacy_language_pid": 29,
+            "text": "ഇ-മെയിൽ വിലാസം ഇൻപുട്ട് പരിശോധിക്കുക",
+            "auto_translated": "ഇ-മെയിൽ വിലാസം ഇൻപുട്ട് പരിശോധിക്കുക"
+        },
+        "kn": {
+            "legacy_caption_pid": 42002,
+            "legacy_language_pid": 30,
+            "text": "ಇಮೇಲ್ ವಿಳಾಸಕ್ಕೆ ಇನ್ಪುಟ್ ಪರಿಶೀಲಿಸಿ",
+            "auto_translated": "ಇಮೇಲ್ ವಿಳಾಸಕ್ಕೆ ಇನ್ಪುಟ್ ಪರಿಶೀಲಿಸಿ"
+        },
+        "su": {
+            "legacy_caption_pid": 42003,
+            "legacy_language_pid": 31,
+            "text": "Pariksa asupan alamat e-mail",
+            "auto_translated": "Pariksa asupan alamat e-mail"
+        },
+        "ku": {
+            "legacy_caption_pid": 42004,
+            "legacy_language_pid": 32,
+            "text": "Kontrol bike input navnîşana e-mail",
+            "auto_translated": "Kontrol bike input navnîşana e-mail"
+        },
+        "ps": {
+            "legacy_caption_pid": 42005,
+            "legacy_language_pid": 33,
+            "text": "د برېښليک پته آخذه وګورئ",
+            "auto_translated": "د برېښليک پته آخذه وګورئ"
+        },
+        "ro": {
+            "legacy_caption_pid": 42006,
+            "legacy_language_pid": 34,
+            "text": "Verificați e-mail adresa de intrare",
+            "auto_translated": "Verificați e-mail adresa de intrare"
+        },
+        "id": {
+            "legacy_caption_pid": 42007,
+            "legacy_language_pid": 35,
+            "text": "Periksa masukan alamat e-mail",
+            "auto_translated": "Periksa masukan alamat e-mail"
+        },
+        "sd": {
+            "legacy_caption_pid": 42008,
+            "legacy_language_pid": 36,
+            "text": "هن اي-ميل ايڊريس پٽ چيڪ ڪريو",
+            "auto_translated": "هن اي-ميل ايڊريس پٽ چيڪ ڪريو"
+        },
+        "af": {
+            "legacy_caption_pid": 42009,
+            "legacy_language_pid": 37,
+            "text": "Kyk op die e-pos adres insette",
+            "auto_translated": "Kyk op die e-pos adres insette"
+        },
+        "sw": {
+            "legacy_caption_pid": 42010,
+            "legacy_language_pid": 38,
+            "text": "Angalia barua pepe pembejeo",
+            "auto_translated": "Angalia barua pepe pembejeo"
+        },
+        "lo": {
+            "legacy_caption_pid": 42011,
+            "legacy_language_pid": 39,
+            "text": "ກວດສອບການປ້ອນຂໍ້ມູນອີເມລ",
+            "auto_translated": "ກວດສອບການປ້ອນຂໍ້ມູນອີເມລ"
+        },
+        "nl": {
+            "legacy_caption_pid": 42012,
+            "legacy_language_pid": 40,
+            "text": "Controleer het e-mailadres invoeren",
+            "auto_translated": "Controleer het e-mailadres invoeren"
+        },
+        "tl": {
+            "legacy_caption_pid": 42013,
+            "legacy_language_pid": 41,
+            "text": "Lagyan ng check ang e-mail address input",
+            "auto_translated": "Lagyan ng check ang e-mail address input"
+        },
+        "ne": {
+            "legacy_caption_pid": 42014,
+            "legacy_language_pid": 42,
+            "text": "ई-मेल ठेगाना इनपुट जाँच",
+            "auto_translated": "ई-मेल ठेगाना इनपुट जाँच"
+        },
+        "hu": {
+            "legacy_caption_pid": 42015,
+            "legacy_language_pid": 43,
+            "text": "Ellenőrizze az e-mail cím bevitel",
+            "auto_translated": "Ellenőrizze az e-mail cím bevitel"
+        },
+        "cs": {
+            "legacy_caption_pid": 42016,
+            "legacy_language_pid": 44,
+            "text": "Zkontrolujte e-mailové adresy vstup",
+            "auto_translated": "Zkontrolujte e-mailové adresy vstup"
+        },
+        "el": {
+            "legacy_caption_pid": 42017,
+            "legacy_language_pid": 45,
+            "text": "Ελέγξτε το e-mail εισόδου διεύθυνση",
+            "auto_translated": "Ελέγξτε το e-mail εισόδου διεύθυνση"
+        },
+        "sv": {
+            "legacy_caption_pid": 42018,
+            "legacy_language_pid": 46,
+            "text": "Kontrollera e-postadressen ingång",
+            "auto_translated": "Kontrollera e-postadressen ingång"
+        },
+        "kk": {
+            "legacy_caption_pid": 42019,
+            "legacy_language_pid": 47,
+            "text": "электрондық пошта мекенжайы кірісін тексеріңіз",
+            "auto_translated": "электрондық пошта мекенжайы кірісін тексеріңіз"
+        },
+        "fi": {
+            "legacy_caption_pid": 42020,
+            "legacy_language_pid": 48,
+            "text": "Tarkista sähköpostiosoite input",
+            "auto_translated": "Tarkista sähköpostiosoite input"
+        },
+        "da": {
+            "legacy_caption_pid": 42021,
+            "legacy_language_pid": 49,
+            "text": "Kontroller e-mail-adresse input",
+            "auto_translated": "Kontroller e-mail-adresse input"
+        },
+        "he": {
+            "legacy_caption_pid": 42022,
+            "legacy_language_pid": 50,
+            "text": "בדוק את קלט את כתובת הדואר האלקטרוני",
+            "auto_translated": "בדוק את קלט את כתובת הדואר האלקטרוני"
+        },
+        "no": {
+            "legacy_caption_pid": 42023,
+            "legacy_language_pid": 51,
+            "text": "Sjekk e-postadressen inngang",
+            "auto_translated": "Sjekk e-postadressen inngang"
+        }
+    }
+}

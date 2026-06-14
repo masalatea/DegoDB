@@ -1,0 +1,69 @@
+{
+    "resource_key": "EMAIL_FOOTER_COMMENT-569",
+    "legacy_resource_pid": 569,
+    "base_group_key": "grp-005-common-lib",
+    "additional_group_keys": [],
+    "key_for_update": "rznKFMjvfwXM20uoKaj1qJm3tAlWCFldVXyovmirZZxFSDQwUvSgdb2zNa28dlAq0yM9bIYqh7mCFRT9MpPA0ksKTFbBqXDBBcdwareESvFbXIKWJcKHYoAypQzQeJf4",
+    "sort_group": "",
+    "key_name": "EMAIL_FOOTER_COMMENT",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": true,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 11648,
+            "legacy_language_pid": 1,
+            "text": "",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 11649,
+            "legacy_language_pid": 2,
+            "text": "",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 11650,
+            "legacy_language_pid": 3,
+            "text": "",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 11651,
+            "legacy_language_pid": 4,
+            "text": "",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 11652,
+            "legacy_language_pid": 5,
+            "text": "",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 11653,
+            "legacy_language_pid": 6,
+            "text": "",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 11654,
+            "legacy_language_pid": 7,
+            "text": "",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 16001,
+            "legacy_language_pid": 8,
+            "text": "",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 16002,
+            "legacy_language_pid": 9,
+            "text": "",
+            "auto_translated": ""
+        }
+    }
+}

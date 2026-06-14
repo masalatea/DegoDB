@@ -1,0 +1,321 @@
+{
+    "resource_key": "TITLE_COMPANY",
+    "legacy_resource_pid": 560,
+    "base_group_key": "grp-005-common-lib",
+    "additional_group_keys": [],
+    "key_for_update": "HJvQute6yHuGAWry616Mx7MxJTvk0ZMe1LbetNlqDEV6ZKovG3W7hht5NewLqAxMvPSAVqJx6oreDpUDXElwmC15F8l62gBq3DV2EYxrlqOeVFJliygSbjGtyLU4vzYI",
+    "sort_group": "TITLE",
+    "key_name": "TITLE_COMPANY",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": false,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 1363,
+            "legacy_language_pid": 1,
+            "text": "マツエソフト 概要",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 1364,
+            "legacy_language_pid": 2,
+            "text": "About Matsuesoft",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 6530,
+            "legacy_language_pid": 3,
+            "text": "About Matsuesoft",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 6531,
+            "legacy_language_pid": 4,
+            "text": "About Matsuesoft",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 10534,
+            "legacy_language_pid": 5,
+            "text": "Acerca de Matsuesoft",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 10535,
+            "legacy_language_pid": 6,
+            "text": "Sobre a Matsuesoft",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 10536,
+            "legacy_language_pid": 7,
+            "text": "About Matsuesoft",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 16311,
+            "legacy_language_pid": 8,
+            "text": "À propos de Matsuesoft",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 16312,
+            "legacy_language_pid": 9,
+            "text": "",
+            "auto_translated": ""
+        },
+        "ar": {
+            "legacy_caption_pid": 30024,
+            "legacy_language_pid": 10,
+            "text": "",
+            "auto_translated": "Matsuesoft شركة، الملف المحدودة شركة"
+        },
+        "fa": {
+            "legacy_caption_pid": 30025,
+            "legacy_language_pid": 11,
+            "text": "",
+            "auto_translated": "Matsuesoft شرکت، مشخصات و آموزشی ویبولیتین شرکت"
+        },
+        "de": {
+            "legacy_caption_pid": 30026,
+            "legacy_language_pid": 12,
+            "text": "",
+            "auto_translated": "Matsuesoft Co., Ltd. Firmenprofil"
+        },
+        "ru": {
+            "legacy_caption_pid": 30027,
+            "legacy_language_pid": 13,
+            "text": "",
+            "auto_translated": "Matsuesoft Co., Ltd. Профиль компании"
+        },
+        "ms": {
+            "legacy_caption_pid": 30028,
+            "legacy_language_pid": 14,
+            "text": "",
+            "auto_translated": "Matsuesoft Co., Ltd. Profil Syarikat"
+        },
+        "ta": {
+            "legacy_caption_pid": 30029,
+            "legacy_language_pid": 15,
+            "text": "",
+            "auto_translated": "Matsuesoft கார்ப்பரேஷன் லிமிட்டெட் நிறுவனத்தின் நிறுவனம் பதிவு செய்தது"
+        },
+        "it": {
+            "legacy_caption_pid": 30030,
+            "legacy_language_pid": 16,
+            "text": "",
+            "auto_translated": "Matsuesoft Co., Ltd. Company Profile"
+        },
+        "bn": {
+            "legacy_caption_pid": 30031,
+            "legacy_language_pid": 17,
+            "text": "",
+            "auto_translated": "Matsuesoft কোং লিমিটেড কোম্পানি প্রোফাইল"
+        },
+        "tr": {
+            "legacy_caption_pid": 30032,
+            "legacy_language_pid": 18,
+            "text": "",
+            "auto_translated": "Matsuesoft Co, Ltd Şirket Profili"
+        },
+        "vi": {
+            "legacy_caption_pid": 30033,
+            "legacy_language_pid": 19,
+            "text": "",
+            "auto_translated": "Matsuesoft Công ty Hồ sơ công ty TNHH"
+        },
+        "pl": {
+            "legacy_caption_pid": 30034,
+            "legacy_language_pid": 20,
+            "text": "",
+            "auto_translated": "Matsuesoft Co., Ltd. Profil firmy"
+        },
+        "jv": {
+            "legacy_caption_pid": 30035,
+            "legacy_language_pid": 21,
+            "text": "",
+            "auto_translated": "Matsuesoft Co., riwayat Ltd."
+        },
+        "pa": {
+            "legacy_caption_pid": 30036,
+            "legacy_language_pid": 22,
+            "text": "",
+            "auto_translated": "Matsuesoft ਕੰਪਨੀ, ਲਿਮਟਿਡ ਕੰਪਨੀ ਪ੍ਰੋਫ਼ਾਈਲ English"
+        },
+        "th": {
+            "legacy_caption_pid": 30037,
+            "legacy_language_pid": 23,
+            "text": "",
+            "auto_translated": "Matsuesoft Co. , โปรไฟล์ จำกัด บริษัท"
+        },
+        "te": {
+            "legacy_caption_pid": 36396,
+            "legacy_language_pid": 24,
+            "text": "",
+            "auto_translated": "Matsuesoft కో, లిమిటెడ్ కంపెనీ ప్రొఫైల్"
+        },
+        "mr": {
+            "legacy_caption_pid": 36397,
+            "legacy_language_pid": 25,
+            "text": "",
+            "auto_translated": "Matsuesoft कंपनी, लिमिटेड कंपनी प्रोफाइल"
+        },
+        "ur": {
+            "legacy_caption_pid": 36398,
+            "legacy_language_pid": 26,
+            "text": "",
+            "auto_translated": "Matsuesoft کمپنی، لمیٹڈ کمپنی کی پروفائل"
+        },
+        "gu": {
+            "legacy_caption_pid": 36399,
+            "legacy_language_pid": 27,
+            "text": "",
+            "auto_translated": "Matsuesoft કું, લિમિટેડ કંપની પ્રોફાઇલ"
+        },
+        "uk": {
+            "legacy_caption_pid": 36400,
+            "legacy_language_pid": 28,
+            "text": "",
+            "auto_translated": "Matsuesoft Co., Ltd. Профіль компанії"
+        },
+        "ml": {
+            "legacy_caption_pid": 36401,
+            "legacy_language_pid": 29,
+            "text": "",
+            "auto_translated": "മത്സുഎസൊഫ്ത് കമ്പനി, ലിമിറ്റഡ് കമ്പനി പ്രൊഫൈൽ"
+        },
+        "kn": {
+            "legacy_caption_pid": 36402,
+            "legacy_language_pid": 30,
+            "text": "",
+            "auto_translated": "Matsuesoft ಕಂ, ಲಿಮಿಟೆಡ್ ಕಂಪನಿಯ ವಿವರ"
+        },
+        "su": {
+            "legacy_caption_pid": 36403,
+            "legacy_language_pid": 31,
+            "text": "",
+            "auto_translated": "Matsuesoft Co., Propil Ltd. Company"
+        },
+        "ku": {
+            "legacy_caption_pid": 36404,
+            "legacy_language_pid": 32,
+            "text": "",
+            "auto_translated": "Matsuesoft Co., Ltd. Profile Company"
+        },
+        "ps": {
+            "legacy_caption_pid": 36405,
+            "legacy_language_pid": 33,
+            "text": "",
+            "auto_translated": "Matsuesoft Co.، Ltd. کمپني پيژند"
+        },
+        "ro": {
+            "legacy_caption_pid": 36406,
+            "legacy_language_pid": 34,
+            "text": "",
+            "auto_translated": "Matsuesoft Co, Ltd. Profil de companie"
+        },
+        "id": {
+            "legacy_caption_pid": 36407,
+            "legacy_language_pid": 35,
+            "text": "",
+            "auto_translated": "Matsuesoft Co, Ltd Profil Perusahaan"
+        },
+        "sd": {
+            "legacy_caption_pid": 36408,
+            "legacy_language_pid": 36,
+            "text": "",
+            "auto_translated": "Matsuesoft ڪمپنيء، لميٽيڊ ڪمپني پروفائيل"
+        },
+        "af": {
+            "legacy_caption_pid": 36409,
+            "legacy_language_pid": 37,
+            "text": "",
+            "auto_translated": "Matsuesoft Co, Ltd Maatskappy Profiel"
+        },
+        "sw": {
+            "legacy_caption_pid": 36410,
+            "legacy_language_pid": 38,
+            "text": "",
+            "auto_translated": "Matsuesoft Co., Ltd. Kampuni Profile"
+        },
+        "lo": {
+            "legacy_caption_pid": 36411,
+            "legacy_language_pid": 39,
+            "text": "",
+            "auto_translated": "Matsuesoft Co, Profile ກັດບໍລິສັດ"
+        },
+        "nl": {
+            "legacy_caption_pid": 36412,
+            "legacy_language_pid": 40,
+            "text": "",
+            "auto_translated": "Matsuesoft Co, Ltd Bedrijfsprofiel"
+        },
+        "tl": {
+            "legacy_caption_pid": 36413,
+            "legacy_language_pid": 41,
+            "text": "",
+            "auto_translated": "Matsuesoft Co., Ltd Company Profile"
+        },
+        "ne": {
+            "legacy_caption_pid": 36414,
+            "legacy_language_pid": 42,
+            "text": "",
+            "auto_translated": "Matsuesoft कं, लिमिटेड कम्पनी प्रोफाइल"
+        },
+        "hu": {
+            "legacy_caption_pid": 36415,
+            "legacy_language_pid": 43,
+            "text": "",
+            "auto_translated": "Matsuesoft Co., Ltd. cég profilja"
+        },
+        "cs": {
+            "legacy_caption_pid": 36416,
+            "legacy_language_pid": 44,
+            "text": "",
+            "auto_translated": "Matsuesoft Co., Ltd. Company Profile"
+        },
+        "el": {
+            "legacy_caption_pid": 36417,
+            "legacy_language_pid": 45,
+            "text": "",
+            "auto_translated": "Matsuesoft Co., Ltd. Εταιρικό Προφίλ"
+        },
+        "sv": {
+            "legacy_caption_pid": 36418,
+            "legacy_language_pid": 46,
+            "text": "",
+            "auto_translated": "Matsuesoft Co, Ltd Företagsprofil"
+        },
+        "kk": {
+            "legacy_caption_pid": 36419,
+            "legacy_language_pid": 47,
+            "text": "",
+            "auto_translated": "Matsuesoft Co., Ltd. компаниясы Профиль"
+        },
+        "fi": {
+            "legacy_caption_pid": 36420,
+            "legacy_language_pid": 48,
+            "text": "",
+            "auto_translated": "Matsuesoft Ltd Company Profile"
+        },
+        "da": {
+            "legacy_caption_pid": 36421,
+            "legacy_language_pid": 49,
+            "text": "",
+            "auto_translated": "Matsuesoft Co Ltd Firmaprofil"
+        },
+        "he": {
+            "legacy_caption_pid": 36422,
+            "legacy_language_pid": 50,
+            "text": "",
+            "auto_translated": "Matsuesoft ושות, פרופיל חברה בע\"מ"
+        },
+        "no": {
+            "legacy_caption_pid": 36423,
+            "legacy_language_pid": 51,
+            "text": "",
+            "auto_translated": "Matsuesoft Co., Ltd Company Profile"
+        }
+    }
+}

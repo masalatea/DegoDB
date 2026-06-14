@@ -1,0 +1,321 @@
+{
+    "resource_key": "COMMON_LIB_ENROLL_HEADER_SKYPE_CAN_NOT_CONFIRM_BECAUSE_EMPTY",
+    "legacy_resource_pid": 1430,
+    "base_group_key": "grp-010-matsuesoft-lib",
+    "additional_group_keys": [],
+    "key_for_update": "78gDeEuD7rCtLtCZpk3lstNwYZ69A8vfhsndxCau7dQonkI1kV84WOKzTy8G6nCpvidWd42jot8BwHS71Rx4lFoXQaht2E4Gctj2hkYDepbkT4dpi6RV5bqlDM7OYjAJ",
+    "sort_group": "ENROLL",
+    "key_name": "COMMON_LIB_ENROLL_HEADER_SKYPE_CAN_NOT_CONFIRM_BECAUSE_EMPTY",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": false,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 5994,
+            "legacy_language_pid": 1,
+            "text": "Skype名が入力されていないため、確認できません。",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 5995,
+            "legacy_language_pid": 2,
+            "text": "Can't be confirmed because Skype Name(ID) is empty.",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 5996,
+            "legacy_language_pid": 3,
+            "text": "Skype用户名没有输入，不能确认。",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 5997,
+            "legacy_language_pid": 4,
+            "text": "Skype 아이디가 입력되어 있지 않기 때문에 확인할 수 없습니다.",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 10865,
+            "legacy_language_pid": 5,
+            "text": "No se confirma porque Skype Name (ID) está vacío.",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 10866,
+            "legacy_language_pid": 6,
+            "text": "Não pode ser confirmada porque o nome Skype (ID) está vazio.",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 10867,
+            "legacy_language_pid": 7,
+            "text": "Skype用戶名沒有輸入，不能確認。",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 17011,
+            "legacy_language_pid": 8,
+            "text": "Ne peut pas être confirmé car le nom de Skype (ID) est vide.",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 17012,
+            "legacy_language_pid": 9,
+            "text": "पुष्टि नहीं की जा सकती क्योंकि स्काइप का नाम (आईडी) रिक्त है।",
+            "auto_translated": ""
+        },
+        "ar": {
+            "legacy_caption_pid": 31592,
+            "legacy_language_pid": 10,
+            "text": "للم يتم إدخال اسم سكايب، فإنه لا يمكن أن يتم التحقق.",
+            "auto_translated": "للم يتم إدخال اسم سكايب، فإنه لا يمكن أن يتم التحقق."
+        },
+        "fa": {
+            "legacy_caption_pid": 31593,
+            "legacy_language_pid": 11,
+            "text": "برای نام اسکایپ وارد نشده باشد، نمی توان آن را بررسی می شود.",
+            "auto_translated": "برای نام اسکایپ وارد نشده باشد، نمی توان آن را بررسی می شود."
+        },
+        "de": {
+            "legacy_caption_pid": 31594,
+            "legacy_language_pid": 12,
+            "text": "Für Skype-Name nicht eingegeben hat, kann sie nicht überprüft werden.",
+            "auto_translated": "Für Skype-Name nicht eingegeben hat, kann sie nicht überprüft werden."
+        },
+        "ru": {
+            "legacy_caption_pid": 31595,
+            "legacy_language_pid": 13,
+            "text": "Для имени Skype не было введено, он не может быть проверен.",
+            "auto_translated": "Для имени Skype не было введено, он не может быть проверен."
+        },
+        "ms": {
+            "legacy_caption_pid": 31596,
+            "legacy_language_pid": 14,
+            "text": "Untuk nama Skype tidak dimasukkan, ia tidak boleh disemak.",
+            "auto_translated": "Untuk nama Skype tidak dimasukkan, ia tidak boleh disemak."
+        },
+        "ta": {
+            "legacy_caption_pid": 31597,
+            "legacy_language_pid": 15,
+            "text": "ஸ்கைப் பெயர் உள்ளிட்ட செய்யப்படவில்லை, அது சோதிக்க முடியவில்லை.",
+            "auto_translated": "ஸ்கைப் பெயர் உள்ளிட்ட செய்யப்படவில்லை, அது சோதிக்க முடியவில்லை."
+        },
+        "it": {
+            "legacy_caption_pid": 31598,
+            "legacy_language_pid": 16,
+            "text": "Per non è stato inserito il nome Skype, che non può essere verificata.",
+            "auto_translated": "Per non è stato inserito il nome Skype, che non può essere verificata."
+        },
+        "bn": {
+            "legacy_caption_pid": 31599,
+            "legacy_language_pid": 17,
+            "text": "এর জন্য স্কাইপ নাম লেখা হয় নি, এটা চেক করা যাবে না।",
+            "auto_translated": "এর জন্য স্কাইপ নাম লেখা হয় নি, এটা চেক করা যাবে না।"
+        },
+        "tr": {
+            "legacy_caption_pid": 31600,
+            "legacy_language_pid": 18,
+            "text": "Skype adı girilmediğinden için, kontrol edilemez.",
+            "auto_translated": "Skype adı girilmediğinden için, kontrol edilemez."
+        },
+        "vi": {
+            "legacy_caption_pid": 31601,
+            "legacy_language_pid": 19,
+            "text": "Đối với tên Skype vẫn chưa được nhập vào, nó không thể được kiểm tra.",
+            "auto_translated": "Đối với tên Skype vẫn chưa được nhập vào, nó không thể được kiểm tra."
+        },
+        "pl": {
+            "legacy_caption_pid": 31602,
+            "legacy_language_pid": 20,
+            "text": "Dla Nazwa Skype nie został wprowadzony, to nie może być zaznaczone.",
+            "auto_translated": "Dla Nazwa Skype nie został wprowadzony, to nie może być zaznaczone."
+        },
+        "jv": {
+            "legacy_caption_pid": 31603,
+            "legacy_language_pid": 21,
+            "text": "Kanggo jeneng Skype durung mlebu, iku ora bisa dicenthang.",
+            "auto_translated": "Kanggo jeneng Skype durung mlebu, iku ora bisa dicenthang."
+        },
+        "pa": {
+            "legacy_caption_pid": 31604,
+            "legacy_language_pid": 22,
+            "text": "ਲਈ ਸਕਾਈਪ ਨਾਮ ਦਿੱਤਾ ਹੈ ਗਿਆ, ਨਾ ਹੈ, ਇਸ ਨੂੰ ਚੈੱਕ ਕੀਤਾ ਜਾ ਸਕਦਾ ਹੈ.",
+            "auto_translated": "ਲਈ ਸਕਾਈਪ ਨਾਮ ਦਿੱਤਾ ਹੈ ਗਿਆ, ਨਾ ਹੈ, ਇਸ ਨੂੰ ਚੈੱਕ ਕੀਤਾ ਜਾ ਸਕਦਾ ਹੈ."
+        },
+        "th": {
+            "legacy_caption_pid": 31605,
+            "legacy_language_pid": 23,
+            "text": "สำหรับชื่อ Skype ยังไม่ได้รับการป้อนก็ไม่สามารถตรวจสอบ",
+            "auto_translated": "สำหรับชื่อ Skype ยังไม่ได้รับการป้อนก็ไม่สามารถตรวจสอบ"
+        },
+        "te": {
+            "legacy_caption_pid": 38888,
+            "legacy_language_pid": 24,
+            "text": "స్కైప్ పేరు నమోదు చేయలేదు, అది తనిఖీ చెయ్యబడదు.",
+            "auto_translated": "స్కైప్ పేరు నమోదు చేయలేదు, అది తనిఖీ చెయ్యబడదు."
+        },
+        "mr": {
+            "legacy_caption_pid": 38889,
+            "legacy_language_pid": 25,
+            "text": "साठी स्काईप नाव दिलेले नाही, तो तपासणे शक्य नाही.",
+            "auto_translated": "साठी स्काईप नाव दिलेले नाही, तो तपासणे शक्य नाही."
+        },
+        "ur": {
+            "legacy_caption_pid": 38890,
+            "legacy_language_pid": 26,
+            "text": "کے لئے اسکائپ نام درج نہیں کیا گیا ہے، اس کی جانچ پڑتال نہیں کی جا سکتی.",
+            "auto_translated": "کے لئے اسکائپ نام درج نہیں کیا گیا ہے، اس کی جانچ پڑتال نہیں کی جا سکتی."
+        },
+        "gu": {
+            "legacy_caption_pid": 38891,
+            "legacy_language_pid": 27,
+            "text": "માટે સ્કાયપે નામ દાખલ કરવામાં આવ્યું નથી, તે તપાસી શકાતું નથી.",
+            "auto_translated": "માટે સ્કાયપે નામ દાખલ કરવામાં આવ્યું નથી, તે તપાસી શકાતું નથી."
+        },
+        "uk": {
+            "legacy_caption_pid": 38892,
+            "legacy_language_pid": 28,
+            "text": "Для імені Skype не було введено, він не може бути перевірений.",
+            "auto_translated": "Для імені Skype не було введено, він не може бути перевірений."
+        },
+        "ml": {
+            "legacy_caption_pid": 38893,
+            "legacy_language_pid": 29,
+            "text": "സ്കൈപ്പ് പേര് നൽകിയിട്ടില്ലെന്നും, അതു പരിശോധിക്കാൻ കഴിയുന്നില്ല.",
+            "auto_translated": "സ്കൈപ്പ് പേര് നൽകിയിട്ടില്ലെന്നും, അതു പരിശോധിക്കാൻ കഴിയുന്നില്ല."
+        },
+        "kn": {
+            "legacy_caption_pid": 38894,
+            "legacy_language_pid": 30,
+            "text": "ಸ್ಕೈಪ್ ಹೆಸರು ನಮೂದಿಸಿಲ್ಲ ಫಾರ್, ಇದು ಪರಿಶೀಲಿಸಲಾಗಲಿಲ್ಲ.",
+            "auto_translated": "ಸ್ಕೈಪ್ ಹೆಸರು ನಮೂದಿಸಿಲ್ಲ ಫಾರ್, ಇದು ಪರಿಶೀಲಿಸಲಾಗಲಿಲ್ಲ."
+        },
+        "su": {
+            "legacy_caption_pid": 38895,
+            "legacy_language_pid": 31,
+            "text": "Pikeun ngaran Skype teu acan diasupkeun, éta teu bisa dipariksa.",
+            "auto_translated": "Pikeun ngaran Skype teu acan diasupkeun, éta teu bisa dipariksa."
+        },
+        "ku": {
+            "legacy_caption_pid": 38896,
+            "legacy_language_pid": 32,
+            "text": "Ji bo navê Skype hatiye ketin ne hatiye, ew nikarin werin kontrolkirin.",
+            "auto_translated": "Ji bo navê Skype hatiye ketin ne hatiye, ew nikarin werin kontrolkirin."
+        },
+        "ps": {
+            "legacy_caption_pid": 38897,
+            "legacy_language_pid": 33,
+            "text": "د سکايپ نوم شوی نه دی ته ننوتل، چې دا وکتل نه شي.",
+            "auto_translated": "د سکايپ نوم شوی نه دی ته ننوتل، چې دا وکتل نه شي."
+        },
+        "ro": {
+            "legacy_caption_pid": 38898,
+            "legacy_language_pid": 34,
+            "text": "Pentru numele Skype nu a fost introdus, acesta nu poate fi verificată.",
+            "auto_translated": "Pentru numele Skype nu a fost introdus, acesta nu poate fi verificată."
+        },
+        "id": {
+            "legacy_caption_pid": 38899,
+            "legacy_language_pid": 35,
+            "text": "Untuk nama Skype belum masuk, tidak dapat diperiksa.",
+            "auto_translated": "Untuk nama Skype belum masuk, tidak dapat diperiksa."
+        },
+        "sd": {
+            "legacy_caption_pid": 38900,
+            "legacy_language_pid": 36,
+            "text": "لاء Skype جي نالي ۾ داخل نه ڪيو ويو آهي، ان تبحر نه ٿو ڪري سگهجي.",
+            "auto_translated": "لاء Skype جي نالي ۾ داخل نه ڪيو ويو آهي، ان تبحر نه ٿو ڪري سگهجي."
+        },
+        "af": {
+            "legacy_caption_pid": 38901,
+            "legacy_language_pid": 37,
+            "text": "Vir Skype naam is nog nie ingeskryf het, kan dit nie nagegaan.",
+            "auto_translated": "Vir Skype naam is nog nie ingeskryf het, kan dit nie nagegaan."
+        },
+        "sw": {
+            "legacy_caption_pid": 38902,
+            "legacy_language_pid": 38,
+            "text": "Kwa jina Skype isibadilishwe, haiwezi kuchunguzwa.",
+            "auto_translated": "Kwa jina Skype isibadilishwe, haiwezi kuchunguzwa."
+        },
+        "lo": {
+            "legacy_caption_pid": 38903,
+            "legacy_language_pid": 39,
+            "text": "ສໍາລັບຊື່ Skype ຍັງບໍ່ທັນໄດ້ເຂົ້າໄປ, ມັນບໍ່ສາມາດໄດ້ຮັບການກວດກາ.",
+            "auto_translated": "ສໍາລັບຊື່ Skype ຍັງບໍ່ທັນໄດ້ເຂົ້າໄປ, ມັນບໍ່ສາມາດໄດ້ຮັບການກວດກາ."
+        },
+        "nl": {
+            "legacy_caption_pid": 38904,
+            "legacy_language_pid": 40,
+            "text": "Voor Skype naam niet is ingevoerd, kan niet worden gecontroleerd.",
+            "auto_translated": "Voor Skype naam niet is ingevoerd, kan niet worden gecontroleerd."
+        },
+        "tl": {
+            "legacy_caption_pid": 38905,
+            "legacy_language_pid": 41,
+            "text": "Para sa pangalan Skype ay hindi ipinasok, hindi ito maaaring mai-check.",
+            "auto_translated": "Para sa pangalan Skype ay hindi ipinasok, hindi ito maaaring mai-check."
+        },
+        "ne": {
+            "legacy_caption_pid": 38906,
+            "legacy_language_pid": 42,
+            "text": "स्काइप नाम प्रविष्ट छैन लागि गरिएको यो जाँच गर्न सकिँदैन।",
+            "auto_translated": "स्काइप नाम प्रविष्ट छैन लागि गरिएको यो जाँच गर्न सकिँदैन।"
+        },
+        "hu": {
+            "legacy_caption_pid": 38907,
+            "legacy_language_pid": 43,
+            "text": "Skype név nincs megadva, akkor nem lehet ellenőrizni.",
+            "auto_translated": "Skype név nincs megadva, akkor nem lehet ellenőrizni."
+        },
+        "cs": {
+            "legacy_caption_pid": 38908,
+            "legacy_language_pid": 44,
+            "text": "Pro nebyl zadán název Skype, nelze jej kontrolovat.",
+            "auto_translated": "Pro nebyl zadán název Skype, nelze jej kontrolovat."
+        },
+        "el": {
+            "legacy_caption_pid": 38909,
+            "legacy_language_pid": 45,
+            "text": "Για να μην έχει εισαχθεί όνομα Skype, δεν μπορεί να ελεγχθεί.",
+            "auto_translated": "Για να μην έχει εισαχθεί όνομα Skype, δεν μπορεί να ελεγχθεί."
+        },
+        "sv": {
+            "legacy_caption_pid": 38910,
+            "legacy_language_pid": 46,
+            "text": "För Skype-namn inte har angetts, kan det inte kontrolleras.",
+            "auto_translated": "För Skype-namn inte har angetts, kan det inte kontrolleras."
+        },
+        "kk": {
+            "legacy_caption_pid": 38911,
+            "legacy_language_pid": 47,
+            "text": "Skype аты енгізілген жоқ, үшін, ол тексерілуі мүмкін емес.",
+            "auto_translated": "Skype аты енгізілген жоқ, үшін, ол тексерілуі мүмкін емес."
+        },
+        "fi": {
+            "legacy_caption_pid": 38912,
+            "legacy_language_pid": 48,
+            "text": "Skype nimeä ei ole annettu, sitä ei voida tarkistaa.",
+            "auto_translated": "Skype nimeä ei ole annettu, sitä ei voida tarkistaa."
+        },
+        "da": {
+            "legacy_caption_pid": 38913,
+            "legacy_language_pid": 49,
+            "text": "For Skype-navn ikke er indtastet, kan det ikke kontrolleres.",
+            "auto_translated": "For Skype-navn ikke er indtastet, kan det ikke kontrolleres."
+        },
+        "he": {
+            "legacy_caption_pid": 38914,
+            "legacy_language_pid": 50,
+            "text": "לקבלה שם סקייפ לא הוזן, זה לא יכול להיבדק.",
+            "auto_translated": "לקבלה שם סקייפ לא הוזן, זה לא יכול להיבדק."
+        },
+        "no": {
+            "legacy_caption_pid": 38915,
+            "legacy_language_pid": 51,
+            "text": "For Skype navn ikke er inngått, kan det ikke bli kontrollert.",
+            "auto_translated": "For Skype navn ikke er inngått, kan det ikke bli kontrollert."
+        }
+    }
+}

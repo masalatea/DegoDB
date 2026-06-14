@@ -1,0 +1,69 @@
+{
+    "resource_key": "HP_FOOTER_HEADER_OUR_SERVICE",
+    "legacy_resource_pid": 668,
+    "base_group_key": "grp-010-matsuesoft-lib",
+    "additional_group_keys": [],
+    "key_for_update": "yVInsCHMiqJxUARLHFejj9sTITTE70krqKxVxvT4TPBFVVSNXd9eqvPD35ar2V8XiVgVRtw1vjgexgzra8OomJ5wteb6xtt7LEHn9nbH5F3CMXirctMNZR20vSLANT5G",
+    "sort_group": "HP FOOTER",
+    "key_name": "HP_FOOTER_HEADER_OUR_SERVICE",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": true,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 4598,
+            "legacy_language_pid": 1,
+            "text": "自社サービス",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 4599,
+            "legacy_language_pid": 2,
+            "text": "Our Services",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 14211,
+            "legacy_language_pid": 3,
+            "text": "",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 14212,
+            "legacy_language_pid": 4,
+            "text": "",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 14213,
+            "legacy_language_pid": 5,
+            "text": "Nuestros servicios",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 14214,
+            "legacy_language_pid": 6,
+            "text": "Nossos serviços",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 14215,
+            "legacy_language_pid": 7,
+            "text": "",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 17125,
+            "legacy_language_pid": 8,
+            "text": "Nos services",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 17126,
+            "legacy_language_pid": 9,
+            "text": "हमारी सेवाएं",
+            "auto_translated": ""
+        }
+    }
+}

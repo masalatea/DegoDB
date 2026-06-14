@@ -1,0 +1,321 @@
+{
+    "resource_key": "MENU_GROUP_OPEN_WEB",
+    "legacy_resource_pid": 1065,
+    "base_group_key": "grp-028-app-common-lib",
+    "additional_group_keys": [],
+    "key_for_update": "hAJKw8J70lVH1IqSnDdbD2ApbWT2nIK6SuClg4bJdbfneOSAvQS3ABe0UJLS6v4FaqlNdxpAAf4KwBmkB5bqm9yIgHwAW0aqWjMm7ehUXHFWU3dfzjTZwUutULgwUOQT",
+    "sort_group": "Menu",
+    "key_name": "MENU_GROUP_OPEN_WEB",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "Label",
+    "is_resource_fixed": false,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 887,
+            "legacy_language_pid": 1,
+            "text": "Webで開く",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 888,
+            "legacy_language_pid": 2,
+            "text": "Open on Web",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 6452,
+            "legacy_language_pid": 3,
+            "text": "打开网站",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 6453,
+            "legacy_language_pid": 4,
+            "text": "Web에서 열기",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 10201,
+            "legacy_language_pid": 5,
+            "text": "Abrir en la Web",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 10202,
+            "legacy_language_pid": 6,
+            "text": "Abra a Web",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 10203,
+            "legacy_language_pid": 7,
+            "text": "打開網站",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 16191,
+            "legacy_language_pid": 8,
+            "text": "Ouvrir sur le Web",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 16192,
+            "legacy_language_pid": 9,
+            "text": "वेब पर खोलें",
+            "auto_translated": ""
+        },
+        "ar": {
+            "legacy_caption_pid": 28792,
+            "legacy_language_pid": 10,
+            "text": "افتح موقع ويب",
+            "auto_translated": "افتح موقع ويب"
+        },
+        "fa": {
+            "legacy_caption_pid": 28793,
+            "legacy_language_pid": 11,
+            "text": "باز کردن وب",
+            "auto_translated": "باز کردن وب"
+        },
+        "de": {
+            "legacy_caption_pid": 28794,
+            "legacy_language_pid": 12,
+            "text": "Öffnen Sie das Web",
+            "auto_translated": "Öffnen Sie das Web"
+        },
+        "ru": {
+            "legacy_caption_pid": 28795,
+            "legacy_language_pid": 13,
+            "text": "Откройте Web",
+            "auto_translated": "Откройте Web"
+        },
+        "ms": {
+            "legacy_caption_pid": 28796,
+            "legacy_language_pid": 14,
+            "text": "Buka Web",
+            "auto_translated": "Buka Web"
+        },
+        "ta": {
+            "legacy_caption_pid": 28797,
+            "legacy_language_pid": 15,
+            "text": "வலை திறந்து",
+            "auto_translated": "வலை திறந்து"
+        },
+        "it": {
+            "legacy_caption_pid": 28798,
+            "legacy_language_pid": 16,
+            "text": "Aprire il Web",
+            "auto_translated": "Aprire il Web"
+        },
+        "bn": {
+            "legacy_caption_pid": 28799,
+            "legacy_language_pid": 17,
+            "text": "ওয়েব খুলুন",
+            "auto_translated": "ওয়েব খুলুন"
+        },
+        "tr": {
+            "legacy_caption_pid": 28800,
+            "legacy_language_pid": 18,
+            "text": "Web açın",
+            "auto_translated": "Web açın"
+        },
+        "vi": {
+            "legacy_caption_pid": 28801,
+            "legacy_language_pid": 19,
+            "text": "Mở Web",
+            "auto_translated": "Mở Web"
+        },
+        "pl": {
+            "legacy_caption_pid": 28802,
+            "legacy_language_pid": 20,
+            "text": "Otwórz Web",
+            "auto_translated": "Otwórz Web"
+        },
+        "jv": {
+            "legacy_caption_pid": 28803,
+            "legacy_language_pid": 21,
+            "text": "Bukak Web",
+            "auto_translated": "Bukak Web"
+        },
+        "pa": {
+            "legacy_caption_pid": 28804,
+            "legacy_language_pid": 22,
+            "text": "ਵੈੱਬ ਖੋਲ੍ਹੋ",
+            "auto_translated": "ਵੈੱਬ ਖੋਲ੍ਹੋ"
+        },
+        "th": {
+            "legacy_caption_pid": 28805,
+            "legacy_language_pid": 23,
+            "text": "เปิดเว็บ",
+            "auto_translated": "เปิดเว็บ"
+        },
+        "te": {
+            "legacy_caption_pid": 34520,
+            "legacy_language_pid": 24,
+            "text": "వెబ్ తెరువు",
+            "auto_translated": "వెబ్ తెరువు"
+        },
+        "mr": {
+            "legacy_caption_pid": 34521,
+            "legacy_language_pid": 25,
+            "text": "वेब उघडा",
+            "auto_translated": "वेब उघडा"
+        },
+        "ur": {
+            "legacy_caption_pid": 34522,
+            "legacy_language_pid": 26,
+            "text": "ویب کھولو",
+            "auto_translated": "ویب کھولو"
+        },
+        "gu": {
+            "legacy_caption_pid": 34523,
+            "legacy_language_pid": 27,
+            "text": "વેબ ખોલો",
+            "auto_translated": "વેબ ખોલો"
+        },
+        "uk": {
+            "legacy_caption_pid": 34524,
+            "legacy_language_pid": 28,
+            "text": "Відкрийте Web",
+            "auto_translated": "Відкрийте Web"
+        },
+        "ml": {
+            "legacy_caption_pid": 34525,
+            "legacy_language_pid": 29,
+            "text": "വെബ് തുറക്കുക",
+            "auto_translated": "വെബ് തുറക്കുക"
+        },
+        "kn": {
+            "legacy_caption_pid": 34526,
+            "legacy_language_pid": 30,
+            "text": "ವೆಬ್ ತೆರೆಯಿರಿ",
+            "auto_translated": "ವೆಬ್ ತೆರೆಯಿರಿ"
+        },
+        "su": {
+            "legacy_caption_pid": 34527,
+            "legacy_language_pid": 31,
+            "text": "Buka Ramat",
+            "auto_translated": "Buka Ramat"
+        },
+        "ku": {
+            "legacy_caption_pid": 34528,
+            "legacy_language_pid": 32,
+            "text": "Open the Web",
+            "auto_translated": "Open the Web"
+        },
+        "ps": {
+            "legacy_caption_pid": 34529,
+            "legacy_language_pid": 33,
+            "text": "د ويب دابرخه",
+            "auto_translated": "د ويب دابرخه"
+        },
+        "ro": {
+            "legacy_caption_pid": 34530,
+            "legacy_language_pid": 34,
+            "text": "Deschideți Web",
+            "auto_translated": "Deschideți Web"
+        },
+        "id": {
+            "legacy_caption_pid": 34531,
+            "legacy_language_pid": 35,
+            "text": "Buka Web",
+            "auto_translated": "Buka Web"
+        },
+        "sd": {
+            "legacy_caption_pid": 34532,
+            "legacy_language_pid": 36,
+            "text": "هن ويب کلي",
+            "auto_translated": "هن ويب کلي"
+        },
+        "af": {
+            "legacy_caption_pid": 34533,
+            "legacy_language_pid": 37,
+            "text": "Maak die Web",
+            "auto_translated": "Maak die Web"
+        },
+        "sw": {
+            "legacy_caption_pid": 34534,
+            "legacy_language_pid": 38,
+            "text": "Fungua Web",
+            "auto_translated": "Fungua Web"
+        },
+        "lo": {
+            "legacy_caption_pid": 34535,
+            "legacy_language_pid": 39,
+            "text": "ເປີດເວັບ",
+            "auto_translated": "ເປີດເວັບ"
+        },
+        "nl": {
+            "legacy_caption_pid": 34536,
+            "legacy_language_pid": 40,
+            "text": "Open de Web",
+            "auto_translated": "Open de Web"
+        },
+        "tl": {
+            "legacy_caption_pid": 34537,
+            "legacy_language_pid": 41,
+            "text": "Buksan ang Web",
+            "auto_translated": "Buksan ang Web"
+        },
+        "ne": {
+            "legacy_caption_pid": 34538,
+            "legacy_language_pid": 42,
+            "text": "वेब खोल्न",
+            "auto_translated": "वेब खोल्न"
+        },
+        "hu": {
+            "legacy_caption_pid": 34539,
+            "legacy_language_pid": 43,
+            "text": "A web megnyitása",
+            "auto_translated": "A web megnyitása"
+        },
+        "cs": {
+            "legacy_caption_pid": 34540,
+            "legacy_language_pid": 44,
+            "text": "Otevřete web",
+            "auto_translated": "Otevřete web"
+        },
+        "el": {
+            "legacy_caption_pid": 34541,
+            "legacy_language_pid": 45,
+            "text": "Ανοίξτε το Web",
+            "auto_translated": "Ανοίξτε το Web"
+        },
+        "sv": {
+            "legacy_caption_pid": 34542,
+            "legacy_language_pid": 46,
+            "text": "Öppna webben",
+            "auto_translated": "Öppna webben"
+        },
+        "kk": {
+            "legacy_caption_pid": 34543,
+            "legacy_language_pid": 47,
+            "text": "Web ашыңыз",
+            "auto_translated": "Web ашыңыз"
+        },
+        "fi": {
+            "legacy_caption_pid": 34544,
+            "legacy_language_pid": 48,
+            "text": "Avaa WWW",
+            "auto_translated": "Avaa WWW"
+        },
+        "da": {
+            "legacy_caption_pid": 34545,
+            "legacy_language_pid": 49,
+            "text": "Åbn Web",
+            "auto_translated": "Åbn Web"
+        },
+        "he": {
+            "legacy_caption_pid": 34546,
+            "legacy_language_pid": 50,
+            "text": "פתח את האינטרנט",
+            "auto_translated": "פתח את האינטרנט"
+        },
+        "no": {
+            "legacy_caption_pid": 34547,
+            "legacy_language_pid": 51,
+            "text": "Åpne Web",
+            "auto_translated": "Åpne Web"
+        }
+    }
+}

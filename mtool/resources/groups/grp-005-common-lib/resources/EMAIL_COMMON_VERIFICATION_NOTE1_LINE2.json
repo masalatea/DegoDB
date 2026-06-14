@@ -1,0 +1,321 @@
+{
+    "resource_key": "EMAIL_COMMON_VERIFICATION_NOTE1_LINE2",
+    "legacy_resource_pid": 2584,
+    "base_group_key": "grp-005-common-lib",
+    "additional_group_keys": [],
+    "key_for_update": "PlIBLk9JEzgGcYYCdgHb3M7ieWHMhUeGaAInPYNyz6mwHhzvhsV2UTGe889eX72YuzL3tnjtypmvxWfbGWFsYpV6LNp7ipwoU8IRjAVFsgyZUDtgAMPLnBvgIqkSPcia",
+    "sort_group": "EMAIL VERIFICATION",
+    "key_name": "EMAIL_COMMON_VERIFICATION_NOTE1_LINE2",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": false,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 19493,
+            "legacy_language_pid": 1,
+            "text": "何通も送信された場合は、最後に送信されたメールに記載されたURLのみが有効になります。",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 19494,
+            "legacy_language_pid": 2,
+            "text": "If you send it many times, only the URL described in the last sent mail will be valid.",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 19495,
+            "legacy_language_pid": 3,
+            "text": "如果您发送多次，只有最后发送的邮件中描述的URL才有效",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 19496,
+            "legacy_language_pid": 4,
+            "text": "몇 통을 보낸 경우, 마지막으로 보낸 메일에 포함 된 URL 만 사용할 수 있습니다.",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 19497,
+            "legacy_language_pid": 5,
+            "text": "Si la envía muchas veces, sólo será válida la URL descrita en el último correo enviado.",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 19498,
+            "legacy_language_pid": 6,
+            "text": "Se você enviá-lo muitas vezes, somente o URL descrito no último e-mail enviado será válido.",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 19499,
+            "legacy_language_pid": 7,
+            "text": "如果您發送多次，只有最後發送的郵件中描述的URL才有效",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 19500,
+            "legacy_language_pid": 8,
+            "text": "Si vous l'envoyez plusieurs fois, seule l'URL décrite dans le dernier courrier envoyé sera valide.",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 19501,
+            "legacy_language_pid": 9,
+            "text": "यदि आप इसे कई बार भेजते हैं, तो अंतिम भेजे गए मेल में वर्णित यूआरएल मान्य होगा।",
+            "auto_translated": ""
+        },
+        "ar": {
+            "legacy_caption_pid": 29660,
+            "legacy_language_pid": 10,
+            "text": "إذا أرسلت شيئا رسائل البريد الإلكتروني، يتم تمكين URL فقط المدرجة في البريد الإلكتروني تنتقل الماضي.",
+            "auto_translated": "إذا أرسلت شيئا رسائل البريد الإلكتروني، يتم تمكين URL فقط المدرجة في البريد الإلكتروني تنتقل الماضي."
+        },
+        "fa": {
+            "legacy_caption_pid": 29661,
+            "legacy_language_pid": 11,
+            "text": "اگر ایمیل چیزی فرستاده می شود، فقط URL ذکر شده در آخرین ارسالی ایمیل را فعال کنید.",
+            "auto_translated": "اگر ایمیل چیزی فرستاده می شود، فقط URL ذکر شده در آخرین ارسالی ایمیل را فعال کنید."
+        },
+        "de": {
+            "legacy_caption_pid": 29662,
+            "legacy_language_pid": 12,
+            "text": "Wenn nichts E-Mails gesendet wird, nur die in der letzten gesendeten E-Mail angegebene URL aktiviert ist.",
+            "auto_translated": "Wenn nichts E-Mails gesendet wird, nur die in der letzten gesendeten E-Mail angegebene URL aktiviert ist."
+        },
+        "ru": {
+            "legacy_caption_pid": 29663,
+            "legacy_language_pid": 13,
+            "text": "Если ничего письма послали, только URL, перечисленные в последней переданной электронной почте включены.",
+            "auto_translated": "Если ничего письма послали, только URL, перечисленные в последней переданной электронной почте включены."
+        },
+        "ms": {
+            "legacy_caption_pid": 29664,
+            "legacy_language_pid": 14,
+            "text": "Jika e-mel apa-apa dihantar, hanya URL yang disenaraikan dalam e-mel Kelamin terakhir didayakan.",
+            "auto_translated": "Jika e-mel apa-apa dihantar, hanya URL yang disenaraikan dalam e-mel Kelamin terakhir didayakan."
+        },
+        "ta": {
+            "legacy_caption_pid": 29665,
+            "legacy_language_pid": 15,
+            "text": "எதுவும் மின்னஞ்சல்கள் அனுப்பப்பட்டன எனில் கடைசி பரிமாற்றக் மின்னஞ்சலில் பட்டியலிடப்பட்ட மட்டுமே URL ஐ இயக்கப்பட்டுள்ளது.",
+            "auto_translated": "எதுவும் மின்னஞ்சல்கள் அனுப்பப்பட்டன எனில் கடைசி பரிமாற்றக் மின்னஞ்சலில் பட்டியலிடப்பட்ட மட்டுமே URL ஐ இயக்கப்பட்டுள்ளது."
+        },
+        "it": {
+            "legacy_caption_pid": 29666,
+            "legacy_language_pid": 16,
+            "text": "Se le email inviate niente, solo l'URL elencato nell'ultima e-mail trasmessa è abilitata.",
+            "auto_translated": "Se le email inviate niente, solo l'URL elencato nell'ultima e-mail trasmessa è abilitata."
+        },
+        "bn": {
+            "legacy_caption_pid": 29667,
+            "legacy_language_pid": 17,
+            "text": "কিছুই ইমেল পাঠানো হয়েছে, তাহলে শুধুমাত্র গত প্রেরিত ই-মেইল তালিকাভুক্ত URL টি সক্রিয় করা হয়।",
+            "auto_translated": "কিছুই ইমেল পাঠানো হয়েছে, তাহলে শুধুমাত্র গত প্রেরিত ই-মেইল তালিকাভুক্ত URL টি সক্রিয় করা হয়।"
+        },
+        "tr": {
+            "legacy_caption_pid": 29668,
+            "legacy_language_pid": 18,
+            "text": "hiçbir şey e-posta gönderildi, son iletilen e-posta listelenen sadece URL etkindir.",
+            "auto_translated": "hiçbir şey e-posta gönderildi, son iletilen e-posta listelenen sadece URL etkindir."
+        },
+        "vi": {
+            "legacy_caption_pid": 29669,
+            "legacy_language_pid": 19,
+            "text": "Nếu email không có gì sai, chỉ URL được liệt kê ở cuối cùng truyền qua e-mail được kích hoạt.",
+            "auto_translated": "Nếu email không có gì sai, chỉ URL được liệt kê ở cuối cùng truyền qua e-mail được kích hoạt."
+        },
+        "pl": {
+            "legacy_caption_pid": 29670,
+            "legacy_language_pid": 20,
+            "text": "Jeśli nic maile wysyłane tylko URL wymienione w ostatnim wysłanych wiadomości e-mail jest włączona.",
+            "auto_translated": "Jeśli nic maile wysyłane tylko URL wymienione w ostatnim wysłanych wiadomości e-mail jest włączona."
+        },
+        "jv": {
+            "legacy_caption_pid": 29671,
+            "legacy_language_pid": 21,
+            "text": "Yen email boten dikirim, mung ing URL kadhaptar ing pungkasan e-mail ditularaké diaktifake.",
+            "auto_translated": "Yen email boten dikirim, mung ing URL kadhaptar ing pungkasan e-mail ditularaké diaktifake."
+        },
+        "pa": {
+            "legacy_caption_pid": 29672,
+            "legacy_language_pid": 22,
+            "text": "ਕੁਝ ਈ ਭੇਜਿਆ ਹੈ, ਸਿਰਫ ਪਿਛਲੇ ਪ੍ਰਸਾਰਿਤ ਈ-ਮੇਲ ਵਿੱਚ ਸੂਚੀਬੱਧ URL ਦੇ ਯੋਗ ਹੁੰਦਾ ਹੈ.",
+            "auto_translated": "ਕੁਝ ਈ ਭੇਜਿਆ ਹੈ, ਸਿਰਫ ਪਿਛਲੇ ਪ੍ਰਸਾਰਿਤ ਈ-ਮੇਲ ਵਿੱਚ ਸੂਚੀਬੱਧ URL ਦੇ ਯੋਗ ਹੁੰਦਾ ਹੈ."
+        },
+        "th": {
+            "legacy_caption_pid": 29673,
+            "legacy_language_pid": 23,
+            "text": "ถ้าไม่มีอะไรอีเมลส่งเพียง URL ที่ระบุไว้ในช่วงส่งอีเมลนี้จะเปิดใช้งาน",
+            "auto_translated": "ถ้าไม่มีอะไรอีเมลส่งเพียง URL ที่ระบุไว้ในช่วงส่งอีเมลนี้จะเปิดใช้งาน"
+        },
+        "te": {
+            "legacy_caption_pid": 37124,
+            "legacy_language_pid": 24,
+            "text": "ఏమీ ఇమెయిల్స్ పంపారు ఉంటే, మాత్రమే గత ప్రసారమయ్యే ఇ-మెయిల్ జాబితా URL ప్రారంభించబడింది.",
+            "auto_translated": "ఏమీ ఇమెయిల్స్ పంపారు ఉంటే, మాత్రమే గత ప్రసారమయ్యే ఇ-మెయిల్ జాబితా URL ప్రారంభించబడింది."
+        },
+        "mr": {
+            "legacy_caption_pid": 37125,
+            "legacy_language_pid": 25,
+            "text": "काहीही ईमेल पाठविले असेल, तर केवळ गेल्या प्रसारित ई-मेल सूचीबद्ध URL सक्षम आहे.",
+            "auto_translated": "काहीही ईमेल पाठविले असेल, तर केवळ गेल्या प्रसारित ई-मेल सूचीबद्ध URL सक्षम आहे."
+        },
+        "ur": {
+            "legacy_caption_pid": 37126,
+            "legacy_language_pid": 26,
+            "text": "کچھ بھی ای میلز بھیجی ہیں، گزشتہ منتقل کیا ای میل میں مذکور ہیں URL فعال ہے.",
+            "auto_translated": "کچھ بھی ای میلز بھیجی ہیں، گزشتہ منتقل کیا ای میل میں مذکور ہیں URL فعال ہے."
+        },
+        "gu": {
+            "legacy_caption_pid": 37127,
+            "legacy_language_pid": 27,
+            "text": "કંઇ ઇમેઇલ્સ મોકલી હોય, તો ફક્ત છેલ્લા ફેલાય ઈ-મેલ યાદી URL ને સક્ષમ છે.",
+            "auto_translated": "કંઇ ઇમેઇલ્સ મોકલી હોય, તો ફક્ત છેલ્લા ફેલાય ઈ-મેલ યાદી URL ને સક્ષમ છે."
+        },
+        "uk": {
+            "legacy_caption_pid": 37128,
+            "legacy_language_pid": 28,
+            "text": "Якщо нічого листи послали, тільки URL, перераховані в останній переданої електронною поштою включені.",
+            "auto_translated": "Якщо нічого листи послали, тільки URL, перераховані в останній переданої електронною поштою включені."
+        },
+        "ml": {
+            "legacy_caption_pid": 37129,
+            "legacy_language_pid": 29,
+            "text": "ഒന്നും ഇമെയിലുകൾ അയച്ചു, കഴിഞ്ഞ പകരുന്ന ഇ-മെയിലിൽ ലിസ്റ്റ് URL മാത്രം പ്രാപ്തമാക്കി.",
+            "auto_translated": "ഒന്നും ഇമെയിലുകൾ അയച്ചു, കഴിഞ്ഞ പകരുന്ന ഇ-മെയിലിൽ ലിസ്റ്റ് URL മാത്രം പ്രാപ്തമാക്കി."
+        },
+        "kn": {
+            "legacy_caption_pid": 37130,
+            "legacy_language_pid": 30,
+            "text": "ಏನೂ ಇಮೇಲ್ಗಳನ್ನು ಕಳುಹಿಸಿದ್ದರೆ, ಕಳೆದ ಹರಡುವ ಇಮೇಲ್ ಪಟ್ಟಿಮಾಡಲಾಗಿರುವ URL ಅನ್ನು ಸಕ್ರಿಯಗೊಳಿಸಲಾಗಿದೆ.",
+            "auto_translated": "ಏನೂ ಇಮೇಲ್ಗಳನ್ನು ಕಳುಹಿಸಿದ್ದರೆ, ಕಳೆದ ಹರಡುವ ಇಮೇಲ್ ಪಟ್ಟಿಮಾಡಲಾಗಿರುವ URL ಅನ್ನು ಸಕ್ರಿಯಗೊಳಿಸಲಾಗಿದೆ."
+        },
+        "su": {
+            "legacy_caption_pid": 37131,
+            "legacy_language_pid": 31,
+            "text": "Mun surelek nanaon dikirim, mung URL didaptarkeun dina panungtungan e-mail dikirimkeun diaktipkeun.",
+            "auto_translated": "Mun surelek nanaon dikirim, mung URL didaptarkeun dina panungtungan e-mail dikirimkeun diaktipkeun."
+        },
+        "ku": {
+            "legacy_caption_pid": 37132,
+            "legacy_language_pid": 32,
+            "text": "Ger emails tiştekî şandin, bi tenê li URL di lîsteyê de di dawiyê de di rêka e-mail-şandin çêbû.",
+            "auto_translated": "Ger emails tiştekî şandin, bi tenê li URL di lîsteyê de di dawiyê de di rêka e-mail-şandin çêbû."
+        },
+        "ps": {
+            "legacy_caption_pid": 37133,
+            "legacy_language_pid": 33,
+            "text": "که څه بریښنالیکونو ته استول، يوازې د URL په تېرو خپرېږي E-mail لست چارن.",
+            "auto_translated": "که څه بریښنالیکونو ته استول، يوازې د URL په تېرو خپرېږي E-mail لست چارن."
+        },
+        "ro": {
+            "legacy_caption_pid": 37134,
+            "legacy_language_pid": 34,
+            "text": "Dacă nimic nu e-mailuri trimise, doar URL-ul listat în ultimul transmis un e-mail este activat.",
+            "auto_translated": "Dacă nimic nu e-mailuri trimise, doar URL-ul listat în ultimul transmis un e-mail este activat."
+        },
+        "id": {
+            "legacy_caption_pid": 37135,
+            "legacy_language_pid": 35,
+            "text": "Jika email tidak dikirim, hanya URL yang tercantum dalam terakhir e-mail ditransmisikan diaktifkan.",
+            "auto_translated": "Jika email tidak dikirim, hanya URL yang tercantum dalam terakhir e-mail ditransmisikan diaktifkan."
+        },
+        "sd": {
+            "legacy_caption_pid": 37136,
+            "legacy_language_pid": 36,
+            "text": "ڪجھ اي ميلون موڪليو ته، رڳو آخري منتقل اي-ميل ۾ ڏنل URL جو فعال آهي.",
+            "auto_translated": "ڪجھ اي ميلون موڪليو ته، رڳو آخري منتقل اي-ميل ۾ ڏنل URL جو فعال آهي."
+        },
+        "af": {
+            "legacy_caption_pid": 37137,
+            "legacy_language_pid": 37,
+            "text": "As niks e-pos gestuur word, word slegs die URL in die laaste overdraagbare e-pos gelys aangeskakel.",
+            "auto_translated": "As niks e-pos gestuur word, word slegs die URL in die laaste overdraagbare e-pos gelys aangeskakel."
+        },
+        "sw": {
+            "legacy_caption_pid": 37138,
+            "legacy_language_pid": 38,
+            "text": "Kama kitu kwa barua pepe zilizotumwa, tu URL waliotajwa katika mwisho zinaa barua pepe imewezeshwa.",
+            "auto_translated": "Kama kitu kwa barua pepe zilizotumwa, tu URL waliotajwa katika mwisho zinaa barua pepe imewezeshwa."
+        },
+        "lo": {
+            "legacy_caption_pid": 37139,
+            "legacy_language_pid": 39,
+            "text": "ຖ້າຫາກວ່າອີຫຍັງສົ່ງໄປແລ້ວ, ພຽງແຕ່ URL ທີ່ລະບຸໄວ້ໃນທີ່ຜ່ານມາສົ່ງ e-mail ທາງເທີງ.",
+            "auto_translated": "ຖ້າຫາກວ່າອີຫຍັງສົ່ງໄປແລ້ວ, ພຽງແຕ່ URL ທີ່ລະບຸໄວ້ໃນທີ່ຜ່ານມາສົ່ງ e-mail ທາງເທີງ."
+        },
+        "nl": {
+            "legacy_caption_pid": 37140,
+            "legacy_language_pid": 40,
+            "text": "Als er niets e-mails verzonden, wordt alleen de URL in de laatste uitgezonden e-mail vermeld ingeschakeld.",
+            "auto_translated": "Als er niets e-mails verzonden, wordt alleen de URL in de laatste uitgezonden e-mail vermeld ingeschakeld."
+        },
+        "tl": {
+            "legacy_caption_pid": 37141,
+            "legacy_language_pid": 41,
+            "text": "Kung walang mga email na ipinadala, tanging ang mga URL na nakalista sa huling transmitted e-mail ay pinagana.",
+            "auto_translated": "Kung walang mga email na ipinadala, tanging ang mga URL na nakalista sa huling transmitted e-mail ay pinagana."
+        },
+        "ne": {
+            "legacy_caption_pid": 37142,
+            "legacy_language_pid": 42,
+            "text": "केही इमेल पठाइएको छ भने, अन्तिम प्रसारित ई-मेल मा सूचीबद्ध मात्र URL सक्षम छ।",
+            "auto_translated": "केही इमेल पठाइएको छ भने, अन्तिम प्रसारित ई-मेल मा सूचीबद्ध मात्र URL सक्षम छ।"
+        },
+        "hu": {
+            "legacy_caption_pid": 37143,
+            "legacy_language_pid": 43,
+            "text": "Ha semmi nem küldött e-maileket, csak az URL szerepel az utolsó elküldött e-mail funkció engedélyezve van.",
+            "auto_translated": "Ha semmi nem küldött e-maileket, csak az URL szerepel az utolsó elküldött e-mail funkció engedélyezve van."
+        },
+        "cs": {
+            "legacy_caption_pid": 37144,
+            "legacy_language_pid": 44,
+            "text": "V případě zaslání nic e-maily, je povoleno pouze URL uvedeny v posledním odeslaných e-mailů.",
+            "auto_translated": "V případě zaslání nic e-maily, je povoleno pouze URL uvedeny v posledním odeslaných e-mailů."
+        },
+        "el": {
+            "legacy_caption_pid": 37145,
+            "legacy_language_pid": 45,
+            "text": "Αν τα μηνύματα δεν αποστέλλονται, μόνο η διεύθυνση URL που αναφέρονται στο τελευταίο μεταδιδόμενο e-mail έχει ενεργοποιηθεί.",
+            "auto_translated": "Αν τα μηνύματα δεν αποστέλλονται, μόνο η διεύθυνση URL που αναφέρονται στο τελευταίο μεταδιδόμενο e-mail έχει ενεργοποιηθεί."
+        },
+        "sv": {
+            "legacy_caption_pid": 37146,
+            "legacy_language_pid": 46,
+            "text": "Om inget e-post skickas endast webbadressen som anges i sista sända e-post aktiverat.",
+            "auto_translated": "Om inget e-post skickas endast webbadressen som anges i sista sända e-post aktiverat."
+        },
+        "kk": {
+            "legacy_caption_pid": 37147,
+            "legacy_language_pid": 47,
+            "text": "ештеңе электрондық хаттарды жіберген болса, соңғы берілетін электрондық пошта тізімделген жалғыз URL қосылады.",
+            "auto_translated": "ештеңе электрондық хаттарды жіберген болса, соңғы берілетін электрондық пошта тізімделген жалғыз URL қосылады."
+        },
+        "fi": {
+            "legacy_caption_pid": 37148,
+            "legacy_language_pid": 48,
+            "text": "Jos mitään sähköpostit lähetetään vain URL lueteltuja viimeksi lähetetyn sähköpostin käytössä.",
+            "auto_translated": "Jos mitään sähköpostit lähetetään vain URL lueteltuja viimeksi lähetetyn sähköpostin käytössä."
+        },
+        "da": {
+            "legacy_caption_pid": 37149,
+            "legacy_language_pid": 49,
+            "text": "Hvis intet emails sendt, er kun URL'en anført i den sidste sendte e-mail er aktiveret.",
+            "auto_translated": "Hvis intet emails sendt, er kun URL'en anført i den sidste sendte e-mail er aktiveret."
+        },
+        "he": {
+            "legacy_caption_pid": 37150,
+            "legacy_language_pid": 50,
+            "text": "אם מיילים כלום נשלחו, רק את כתובת האתר הרשום דואר אלקטרוני המועבר האחרון מופעלת.",
+            "auto_translated": "אם מיילים כלום נשלחו, רק את כתובת האתר הרשום דואר אלקטרוני המועבר האחרון מופעלת."
+        },
+        "no": {
+            "legacy_caption_pid": 37151,
+            "legacy_language_pid": 51,
+            "text": "Hvis ingenting eposter sendt, blir bare webadresse i den siste sendte e-post aktivert.",
+            "auto_translated": "Hvis ingenting eposter sendt, blir bare webadresse i den siste sendte e-post aktivert."
+        }
+    }
+}

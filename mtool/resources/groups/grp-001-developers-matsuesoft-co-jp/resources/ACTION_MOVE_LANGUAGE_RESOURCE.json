@@ -1,0 +1,27 @@
+{
+    "resource_key": "ACTION_MOVE_LANGUAGE_RESOURCE",
+    "legacy_resource_pid": 727,
+    "base_group_key": "grp-001-developers-matsuesoft-co-jp",
+    "additional_group_keys": [],
+    "key_for_update": "0",
+    "sort_group": "ACTION LANGUAGE_RESOURCE MOVE",
+    "key_name": "ACTION_MOVE_LANGUAGE_RESOURCE",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": true,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 3900,
+            "legacy_language_pid": 1,
+            "text": "言語リソース移動",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 3901,
+            "legacy_language_pid": 2,
+            "text": "Move Language Resource",
+            "auto_translated": ""
+        }
+    }
+}

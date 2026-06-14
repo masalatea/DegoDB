@@ -1,0 +1,69 @@
+{
+    "resource_key": "TITLE_DBAAS_HOW_TO_USE_EXAMPLE_HTML_JQUERY_INSERT",
+    "legacy_resource_pid": 600,
+    "base_group_key": "grp-010-matsuesoft-lib",
+    "additional_group_keys": [],
+    "key_for_update": "TV2z4qriBKY2OghMazTCgEzFdg1PqUjXZgLbTfi3nP2LnhtXAmF0PwymLDqwFNl0NnIPZB15ZFvwn9UUc4tgNBPMNX7S5fE3OFoDwQV3hIXqSzRAHymX59wwtBYwEnx6",
+    "sort_group": "TITLE",
+    "key_name": "TITLE_DBAAS_HOW_TO_USE_EXAMPLE_HTML_JQUERY_INSERT",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": true,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 4672,
+            "legacy_language_pid": 1,
+            "text": "HTML(jQuery)でデータ追加",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 4673,
+            "legacy_language_pid": 2,
+            "text": "Insert Data by HTML(jQuery)",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 14396,
+            "legacy_language_pid": 3,
+            "text": "",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 14397,
+            "legacy_language_pid": 4,
+            "text": "",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 14398,
+            "legacy_language_pid": 5,
+            "text": "Insertar datos por HTML (jQuery)",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 14399,
+            "legacy_language_pid": 6,
+            "text": "Inserir dados por HTML (jQuery)",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 14400,
+            "legacy_language_pid": 7,
+            "text": "",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 17327,
+            "legacy_language_pid": 8,
+            "text": "Insérer des données par HTML (jQuery)",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 17328,
+            "legacy_language_pid": 9,
+            "text": "HTML (jQuery) द्वारा डेटा डालें",
+            "auto_translated": ""
+        }
+    }
+}

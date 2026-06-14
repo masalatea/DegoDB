@@ -1,0 +1,321 @@
+{
+    "resource_key": "COMMON_LIB_LOGIN_ACTION_BY_FACEBOOK_TOOLTIP_FOR_ICON_LINK",
+    "legacy_resource_pid": 1476,
+    "base_group_key": "grp-010-matsuesoft-lib",
+    "additional_group_keys": [],
+    "key_for_update": "eAkoEVj7yZLgvczciG3W3wyNJyc9kJQTbX3zdGRzj0nauurqrMqYsdK20bPLvvjYkMGxXjERe9YcBUrdlRa5vx153jz9YLwWou6VLcnL9sf77t4eXKVB14FpQXxTNHCc",
+    "sort_group": "LOGIN",
+    "key_name": "COMMON_LIB_LOGIN_ACTION_BY_FACEBOOK_TOOLTIP_FOR_ICON_LINK",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": false,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 6178,
+            "legacy_language_pid": 1,
+            "text": "Facebookのアカウントで即時ログイン(ログイン情報保持オプション:ON)",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 6179,
+            "legacy_language_pid": 2,
+            "text": "Quick Login by Facebook ID (Keep Login Option:ON)",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 6180,
+            "legacy_language_pid": 3,
+            "text": "通过Facebook用户名 ID快速登录（保持登录选项：开）",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 6181,
+            "legacy_language_pid": 4,
+            "text": "Facebook 아이디로 퀵로그인 (로그인 유지 옵션 : 예)",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 11012,
+            "legacy_language_pid": 5,
+            "text": "Inicio de sesión inmediato con la cuenta de Facebook (opción de retención de información de inicio de sesión: ACTIVADA)",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 11013,
+            "legacy_language_pid": 6,
+            "text": "Login instantâneo com conta do Facebook (opção de retenção de informações de login: ON)",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 11014,
+            "legacy_language_pid": 7,
+            "text": "通過Facebook 用户名ID快速登錄（保持登錄選項：開）",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 17209,
+            "legacy_language_pid": 8,
+            "text": "Connexion rapide par identifiant Facebook (option de maintien de la connexion: ON)",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 17210,
+            "legacy_language_pid": 9,
+            "text": "फेसबुक आईडी द्वारा त्वरित लॉगइन (लॉगिन विकल्प रखें: चालू)",
+            "auto_translated": ""
+        },
+        "ar": {
+            "legacy_caption_pid": 32306,
+            "legacy_language_pid": 10,
+            "text": "سجل فورا في حساب الفيسبوك مع (خيار الاحتفاظ معلومات تسجيل الدخول: ON)",
+            "auto_translated": "سجل فورا في حساب الفيسبوك مع (خيار الاحتفاظ معلومات تسجيل الدخول: ON)"
+        },
+        "fa": {
+            "legacy_caption_pid": 32307,
+            "legacy_language_pid": 11,
+            "text": "بلافاصله در ورود با حساب فیس بوک (ورود گزینه حفظ اطلاعات: ON)",
+            "auto_translated": "بلافاصله در ورود با حساب فیس بوک (ورود گزینه حفظ اطلاعات: ON)"
+        },
+        "de": {
+            "legacy_caption_pid": 32308,
+            "legacy_language_pid": 12,
+            "text": "log sofort mit Facebook-Account (Login-Daten Retention Option: ON) in",
+            "auto_translated": "log sofort mit Facebook-Account (Login-Daten Retention Option: ON) in"
+        },
+        "ru": {
+            "legacy_caption_pid": 32309,
+            "legacy_language_pid": 13,
+            "text": "Сразу же войти с использованием Facebook учетной записи (логин вариант хранения информации: ON)",
+            "auto_translated": "Сразу же войти с использованием Facebook учетной записи (логин вариант хранения информации: ON)"
+        },
+        "ms": {
+            "legacy_caption_pid": 32310,
+            "legacy_language_pid": 14,
+            "text": "Segera log masuk dengan akaun Facebook (login pilihan pengekalan maklumat: ON)",
+            "auto_translated": "Segera log masuk dengan akaun Facebook (login pilihan pengekalan maklumat: ON)"
+        },
+        "ta": {
+            "legacy_caption_pid": 32311,
+            "legacy_language_pid": 15,
+            "text": "உடனடியாக பேஸ்புக் கணக்கு (: இயக்கத்தில் லாகின் தகவல் வைத்திருத்தல் விருப்பத்தை) உள்நுழைய",
+            "auto_translated": "உடனடியாக பேஸ்புக் கணக்கு (: இயக்கத்தில் லாகின் தகவல் வைத்திருத்தல் விருப்பத்தை) உள்நுழைய"
+        },
+        "it": {
+            "legacy_caption_pid": 32312,
+            "legacy_language_pid": 16,
+            "text": "Immediatamente il login con l'account Facebook (login opzione conservazione delle informazioni: ON)",
+            "auto_translated": "Immediatamente il login con l'account Facebook (login opzione conservazione delle informazioni: ON)"
+        },
+        "bn": {
+            "legacy_caption_pid": 32313,
+            "legacy_language_pid": 17,
+            "text": "অবিলম্বে ফেসবুক অ্যাকাউন্ট (: চালু লগ-ইন তথ্য ধারণ বিকল্প) দিয়ে লগ ইন",
+            "auto_translated": "অবিলম্বে ফেসবুক অ্যাকাউন্ট (: চালু লগ-ইন তথ্য ধারণ বিকল্প) দিয়ে লগ ইন"
+        },
+        "tr": {
+            "legacy_caption_pid": 32314,
+            "legacy_language_pid": 18,
+            "text": "Hemen Facebook hesabı (: ON bilgi saklama seçeneği giriş) ile giriş",
+            "auto_translated": "Hemen Facebook hesabı (: ON bilgi saklama seçeneği giriş) ile giriş"
+        },
+        "vi": {
+            "legacy_caption_pid": 32315,
+            "legacy_language_pid": 19,
+            "text": "Ngay lập tức đăng nhập bằng tài khoản Facebook (đăng nhập tùy chọn duy trì thông tin: ON)",
+            "auto_translated": "Ngay lập tức đăng nhập bằng tài khoản Facebook (đăng nhập tùy chọn duy trì thông tin: ON)"
+        },
+        "pl": {
+            "legacy_caption_pid": 32316,
+            "legacy_language_pid": 20,
+            "text": "Natychmiast zalogować się na koncie Facebook (opcja przechowywania informacji login: ON)",
+            "auto_translated": "Natychmiast zalogować się na koncie Facebook (opcja przechowywania informacji login: ON)"
+        },
+        "jv": {
+            "legacy_caption_pid": 32317,
+            "legacy_language_pid": 21,
+            "text": "Langsung mlebu karo akun Facebook (login pilihan penylametan informasi: ON)",
+            "auto_translated": "Langsung mlebu karo akun Facebook (login pilihan penylametan informasi: ON)"
+        },
+        "pa": {
+            "legacy_caption_pid": 32318,
+            "legacy_language_pid": 22,
+            "text": "ਤੁਰੰਤ ਫੇਸਬੁੱਕ ਖਾਤਾ (: ਤੇ ਲਾਗਇਨ ਜਾਣਕਾਰੀ ਧਾਰਨ ਚੋਣ) ਦੇ ਨਾਲ ਲਾਗਇਨ",
+            "auto_translated": "ਤੁਰੰਤ ਫੇਸਬੁੱਕ ਖਾਤਾ (: ਤੇ ਲਾਗਇਨ ਜਾਣਕਾਰੀ ਧਾਰਨ ਚੋਣ) ਦੇ ਨਾਲ ਲਾਗਇਨ"
+        },
+        "th": {
+            "legacy_caption_pid": 32319,
+            "legacy_language_pid": 23,
+            "text": "ทันทีที่เข้าสู่ระบบด้วยบัญชี Facebook (เข้าสู่ระบบตัวเลือกการเก็บรักษาข้อมูล: ON)",
+            "auto_translated": "ทันทีที่เข้าสู่ระบบด้วยบัญชี Facebook (เข้าสู่ระบบตัวเลือกการเก็บรักษาข้อมูล: ON)"
+        },
+        "te": {
+            "legacy_caption_pid": 41016,
+            "legacy_language_pid": 24,
+            "text": "వెంటనే ఫేస్బుక్ ఖాతా (: ON లాగిన్ సమాచారాన్ని నిలుపుదల ఎంపికను) తో లాగిన్",
+            "auto_translated": "వెంటనే ఫేస్బుక్ ఖాతా (: ON లాగిన్ సమాచారాన్ని నిలుపుదల ఎంపికను) తో లాగిన్"
+        },
+        "mr": {
+            "legacy_caption_pid": 41017,
+            "legacy_language_pid": 25,
+            "text": "त्वरित Facebook खाते (: चालू लॉगइन माहिती धारणा पर्याय) लॉग इन",
+            "auto_translated": "त्वरित Facebook खाते (: चालू लॉगइन माहिती धारणा पर्याय) लॉग इन"
+        },
+        "ur": {
+            "legacy_caption_pid": 41018,
+            "legacy_language_pid": 26,
+            "text": "فوری طور پر فیس بک اکاؤنٹ (: پر لاگ ان معلومات کو برقرار رکھنے کا اختیار) کے ساتھ لاگ ان",
+            "auto_translated": "فوری طور پر فیس بک اکاؤنٹ (: پر لاگ ان معلومات کو برقرار رکھنے کا اختیار) کے ساتھ لاگ ان"
+        },
+        "gu": {
+            "legacy_caption_pid": 41019,
+            "legacy_language_pid": 27,
+            "text": "તરત Facebook એકાઉન્ટ (પર લૉગિન માહિતી રીટેન્શન વિકલ્પ) સાથે સાઇન પ્રવેશ",
+            "auto_translated": "તરત Facebook એકાઉન્ટ (પર લૉગિન માહિતી રીટેન્શન વિકલ્પ) સાથે સાઇન પ્રવેશ"
+        },
+        "uk": {
+            "legacy_caption_pid": 41020,
+            "legacy_language_pid": 28,
+            "text": "Відразу ж увійти з використанням Facebook облікового запису (логін варіант зберігання інформації: ON)",
+            "auto_translated": "Відразу ж увійти з використанням Facebook облікового запису (логін варіант зберігання інформації: ON)"
+        },
+        "ml": {
+            "legacy_caption_pid": 41021,
+            "legacy_language_pid": 29,
+            "text": "ഉടനെ (: ലോഗിൻ വിവരം സൂക്ഷിക്കൽ ഓപ്ഷൻ) ഫേസ്ബുക്ക് അക്കൗണ്ട് ഉപയോഗിച്ച് ലോഗിൻ",
+            "auto_translated": "ഉടനെ (: ലോഗിൻ വിവരം സൂക്ഷിക്കൽ ഓപ്ഷൻ) ഫേസ്ബുക്ക് അക്കൗണ്ട് ഉപയോഗിച്ച് ലോഗിൻ"
+        },
+        "kn": {
+            "legacy_caption_pid": 41022,
+            "legacy_language_pid": 30,
+            "text": "ತಕ್ಷಣ ಫೇಸ್ಬುಕ್ ಖಾತೆ (: ಆನ್ ಲಾಗಿನ್ ಮಾಹಿತಿ ಧಾರಣ ಆಯ್ಕೆಯನ್ನು) ನೊಂದಿಗೆ ಲಾಗ್",
+            "auto_translated": "ತಕ್ಷಣ ಫೇಸ್ಬುಕ್ ಖಾತೆ (: ಆನ್ ಲಾಗಿನ್ ಮಾಹಿತಿ ಧಾರಣ ಆಯ್ಕೆಯನ್ನು) ನೊಂದಿಗೆ ಲಾಗ್"
+        },
+        "su": {
+            "legacy_caption_pid": 41023,
+            "legacy_language_pid": 31,
+            "text": "Langsung asup kalawan akun Facebook (login pilihan ingetan informasi: ON)",
+            "auto_translated": "Langsung asup kalawan akun Facebook (login pilihan ingetan informasi: ON)"
+        },
+        "ku": {
+            "legacy_caption_pid": 41024,
+            "legacy_language_pid": 32,
+            "text": "Di cih de li log bi account Facebook (login option kampên agahî: ON)",
+            "auto_translated": "Di cih de li log bi account Facebook (login option kampên agahî: ON)"
+        },
+        "ps": {
+            "legacy_caption_pid": 41025,
+            "legacy_language_pid": 33,
+            "text": "سملاسي سره د فیسبوک حساب (: له سئ معلوماتو د ساتلو په خوښه) په يادښت د",
+            "auto_translated": "سملاسي سره د فیسبوک حساب (: له سئ معلوماتو د ساتلو په خوښه) په يادښت د"
+        },
+        "ro": {
+            "legacy_caption_pid": 41026,
+            "legacy_language_pid": 34,
+            "text": "Imediat conectați cu contul de Facebook (conectare opțiune de retenție informații: ON)",
+            "auto_translated": "Imediat conectați cu contul de Facebook (conectare opțiune de retenție informații: ON)"
+        },
+        "id": {
+            "legacy_caption_pid": 41027,
+            "legacy_language_pid": 35,
+            "text": "Segera login dengan akun Facebook (login pilihan retensi informasi: ON)",
+            "auto_translated": "Segera login dengan akun Facebook (login pilihan retensi informasi: ON)"
+        },
+        "sd": {
+            "legacy_caption_pid": 41028,
+            "legacy_language_pid": 36,
+            "text": "فوري طور ڪريو اڪائونٽ سان لاگ ان (لاگ معلومات برقرار رکڻ اختيار: تي)",
+            "auto_translated": "فوري طور ڪريو اڪائونٽ سان لاگ ان (لاگ معلومات برقرار رکڻ اختيار: تي)"
+        },
+        "af": {
+            "legacy_caption_pid": 41029,
+            "legacy_language_pid": 37,
+            "text": "Onmiddellik teken in met Facebook rekening (login inligting behoud opsie: OP)",
+            "auto_translated": "Onmiddellik teken in met Facebook rekening (login inligting behoud opsie: OP)"
+        },
+        "sw": {
+            "legacy_caption_pid": 41030,
+            "legacy_language_pid": 38,
+            "text": "Mara kuingia na Facebook akaunti (kuingia habari retention chaguo: ON)",
+            "auto_translated": "Mara kuingia na Facebook akaunti (kuingia habari retention chaguo: ON)"
+        },
+        "lo": {
+            "legacy_caption_pid": 41031,
+            "legacy_language_pid": 39,
+            "text": "ທັນທີເຂົ້າໃນທີ່ມີບັນຊີເຟສບຸກ (ເຂົ້າສູ່ລະບົບທາງເລືອກການຮັກສາໄວ້ຂໍ້ມູນຂ່າວສານ: ON)",
+            "auto_translated": "ທັນທີເຂົ້າໃນທີ່ມີບັນຊີເຟສບຸກ (ເຂົ້າສູ່ລະບົບທາງເລືອກການຮັກສາໄວ້ຂໍ້ມູນຂ່າວສານ: ON)"
+        },
+        "nl": {
+            "legacy_caption_pid": 41032,
+            "legacy_language_pid": 40,
+            "text": "Onmiddellijk inloggen met Facebook-account (login informatie retentie optie: ON)",
+            "auto_translated": "Onmiddellijk inloggen met Facebook-account (login informatie retentie optie: ON)"
+        },
+        "tl": {
+            "legacy_caption_pid": 41033,
+            "legacy_language_pid": 41,
+            "text": "Agad-agad na mag-log in gamit ang Facebook account (pag-login impormasyon retention pagpipilian: ON)",
+            "auto_translated": "Agad-agad na mag-log in gamit ang Facebook account (pag-login impormasyon retention pagpipilian: ON)"
+        },
+        "ne": {
+            "legacy_caption_pid": 41034,
+            "legacy_language_pid": 42,
+            "text": "तुरुन्तै फेसबुक खाता (: मा लगइन जानकारी अवधारणा विकल्प) संग लग इन गर्नुहोस्",
+            "auto_translated": "तुरुन्तै फेसबुक खाता (: मा लगइन जानकारी अवधारणा विकल्प) संग लग इन गर्नुहोस्"
+        },
+        "hu": {
+            "legacy_caption_pid": 41035,
+            "legacy_language_pid": 43,
+            "text": "Azonnal jelentkezzen be a Facebook számla (a bejelentkezési információkat megtartása opciót: ON)",
+            "auto_translated": "Azonnal jelentkezzen be a Facebook számla (a bejelentkezési információkat megtartása opciót: ON)"
+        },
+        "cs": {
+            "legacy_caption_pid": 41036,
+            "legacy_language_pid": 44,
+            "text": "Okamžitě se přihlásit pomocí Facebook účtu (přihlašovací možnost zadržovat informace: ON)",
+            "auto_translated": "Okamžitě se přihlásit pomocí Facebook účtu (přihlašovací možnost zadržovat informace: ON)"
+        },
+        "el": {
+            "legacy_caption_pid": 41037,
+            "legacy_language_pid": 45,
+            "text": "Αμέσως συνδεθείτε με το λογαριασμό στο Facebook (login επιλογή διατήρησης πληροφορίες: ON)",
+            "auto_translated": "Αμέσως συνδεθείτε με το λογαριασμό στο Facebook (login επιλογή διατήρησης πληροφορίες: ON)"
+        },
+        "sv": {
+            "legacy_caption_pid": 41038,
+            "legacy_language_pid": 46,
+            "text": "Omedelbart logga in med Facebook-konto (inloggningsinformation behålla alternativ: ON)",
+            "auto_translated": "Omedelbart logga in med Facebook-konto (inloggningsinformation behålla alternativ: ON)"
+        },
+        "kk": {
+            "legacy_caption_pid": 41039,
+            "legacy_language_pid": 47,
+            "text": "Бірден (: туралы ақпарат сақтау опциясын Кіру) Facebook тіркелгімен кіріңіз",
+            "auto_translated": "Бірден (: туралы ақпарат сақтау опциясын Кіру) Facebook тіркелгімен кіріңіз"
+        },
+        "fi": {
+            "legacy_caption_pid": 41040,
+            "legacy_language_pid": 48,
+            "text": "Heti kirjautua sisään Facebook-tilin (kirjautumistiedot säilyttäminen vaihtoehto: ON)",
+            "auto_translated": "Heti kirjautua sisään Facebook-tilin (kirjautumistiedot säilyttäminen vaihtoehto: ON)"
+        },
+        "da": {
+            "legacy_caption_pid": 41041,
+            "legacy_language_pid": 49,
+            "text": "Umiddelbart logge ind med Facebook-konto (log valgmulighed oplysninger tilbageholdelse: ON)",
+            "auto_translated": "Umiddelbart logge ind med Facebook-konto (log valgmulighed oplysninger tilbageholdelse: ON)"
+        },
+        "he": {
+            "legacy_caption_pid": 41042,
+            "legacy_language_pid": 50,
+            "text": "מיד להתחבר עם חשבון הפייסבוק (אפשרות לשמירת נתונים להתחבר: ON)",
+            "auto_translated": "מיד להתחבר עם חשבון הפייסבוק (אפשרות לשמירת נתונים להתחבר: ON)"
+        },
+        "no": {
+            "legacy_caption_pid": 41043,
+            "legacy_language_pid": 51,
+            "text": "Umiddelbart logg inn med Facebook-kontoen (påloggingsinformasjon oppbevaring alternativ: ON)",
+            "auto_translated": "Umiddelbart logg inn med Facebook-kontoen (påloggingsinformasjon oppbevaring alternativ: ON)"
+        }
+    }
+}

@@ -1,0 +1,986 @@
+{
+    "schema_version": 1,
+    "project_key": "MTOOL",
+    "project_pid": 1,
+    "catalog_source": "file-canonical",
+    "origin": {
+        "type": "bootstrap-reference",
+        "source_dump_path": "original-codes/mtool.sql",
+        "legacy_reference_generated_at": "2026-05-14T07:43:56+00:00"
+    },
+    "generated_at": "2026-05-18T06:39:52+00:00",
+    "default_locale": "en",
+    "locale_order": [
+        "ja",
+        "en",
+        "zh-CN",
+        "ko",
+        "es",
+        "pt",
+        "zh-TW",
+        "fr",
+        "hi",
+        "ar",
+        "fa",
+        "de",
+        "ru",
+        "ms",
+        "ta",
+        "it",
+        "bn",
+        "tr",
+        "vi",
+        "pl",
+        "jv",
+        "pa",
+        "th",
+        "te",
+        "mr",
+        "ur",
+        "gu",
+        "uk",
+        "ml",
+        "kn",
+        "su",
+        "ku",
+        "ps",
+        "ro",
+        "id",
+        "sd",
+        "af",
+        "sw",
+        "lo",
+        "nl",
+        "tl",
+        "ne",
+        "hu",
+        "cs",
+        "el",
+        "sv",
+        "kk",
+        "fi",
+        "da",
+        "he",
+        "no"
+    ],
+    "locales": {
+        "ja": {
+            "legacy_language_pid": 1,
+            "label": "Japanese",
+            "filename_suffix": "ja",
+            "template_key": "__JA_TEXT__",
+            "is_default": false,
+            "lang_for_cs": "ja-JP",
+            "lang_for_android": "values-ja",
+            "lang_for_ios": "ja",
+            "lang_for_google": "ja"
+        },
+        "en": {
+            "legacy_language_pid": 2,
+            "label": "English",
+            "filename_suffix": "en",
+            "template_key": "__EN_TEXT__",
+            "is_default": true,
+            "lang_for_cs": "en-US",
+            "lang_for_android": "values",
+            "lang_for_ios": "Base",
+            "lang_for_google": "en"
+        },
+        "zh-CN": {
+            "legacy_language_pid": 3,
+            "label": "Simplified Chinese",
+            "filename_suffix": "zh",
+            "template_key": "__ZH_TEXT__",
+            "is_default": false,
+            "lang_for_cs": "zh",
+            "lang_for_android": "values-zh-rCN",
+            "lang_for_ios": "zh-Hans",
+            "lang_for_google": "zh-CN"
+        },
+        "ko": {
+            "legacy_language_pid": 4,
+            "label": "Korean",
+            "filename_suffix": "ko",
+            "template_key": "__KO_TEXT__",
+            "is_default": false,
+            "lang_for_cs": "ko",
+            "lang_for_android": "values-ko",
+            "lang_for_ios": "ko",
+            "lang_for_google": "ko"
+        },
+        "es": {
+            "legacy_language_pid": 5,
+            "label": "Spanish",
+            "filename_suffix": "es",
+            "template_key": "__ES_TEXT__",
+            "is_default": false,
+            "lang_for_cs": "es",
+            "lang_for_android": "values-es",
+            "lang_for_ios": "es",
+            "lang_for_google": "es"
+        },
+        "pt": {
+            "legacy_language_pid": 6,
+            "label": "Portuguese",
+            "filename_suffix": "pt",
+            "template_key": "__PT_TEXT__",
+            "is_default": false,
+            "lang_for_cs": "pt",
+            "lang_for_android": "values-pt",
+            "lang_for_ios": "pt-PT",
+            "lang_for_google": "pt"
+        },
+        "zh-TW": {
+            "legacy_language_pid": 7,
+            "label": "Traditional Chinese",
+            "filename_suffix": "tzh",
+            "template_key": "__TZH_TEXT__",
+            "is_default": false,
+            "lang_for_cs": "zh-TW",
+            "lang_for_android": "values-zh-rTW",
+            "lang_for_ios": "zh-Hant",
+            "lang_for_google": "zh-TW"
+        },
+        "fr": {
+            "legacy_language_pid": 8,
+            "label": "French",
+            "filename_suffix": "fr",
+            "template_key": "__FR_TEXT__",
+            "is_default": false,
+            "lang_for_cs": "fr",
+            "lang_for_android": "values-fr",
+            "lang_for_ios": "fr",
+            "lang_for_google": "fr"
+        },
+        "hi": {
+            "legacy_language_pid": 9,
+            "label": "Hindi",
+            "filename_suffix": "hi",
+            "template_key": "__HI_TEXT__",
+            "is_default": false,
+            "lang_for_cs": "hi",
+            "lang_for_android": "values-hi",
+            "lang_for_ios": "hi",
+            "lang_for_google": "hi"
+        },
+        "ar": {
+            "legacy_language_pid": 10,
+            "label": "Arabic",
+            "filename_suffix": "ar",
+            "template_key": "__AR_TEXT__",
+            "is_default": false,
+            "lang_for_cs": "ar",
+            "lang_for_android": "values-ar",
+            "lang_for_ios": "ar",
+            "lang_for_google": "ar"
+        },
+        "fa": {
+            "legacy_language_pid": 11,
+            "label": "Persian",
+            "filename_suffix": "fa",
+            "template_key": "__FA_TEXT__",
+            "is_default": false,
+            "lang_for_cs": "fa",
+            "lang_for_android": "values-fa",
+            "lang_for_ios": "fa",
+            "lang_for_google": "fa"
+        },
+        "de": {
+            "legacy_language_pid": 12,
+            "label": "German",
+            "filename_suffix": "de",
+            "template_key": "__DE_TEXT__",
+            "is_default": false,
+            "lang_for_cs": "de",
+            "lang_for_android": "values-de",
+            "lang_for_ios": "de",
+            "lang_for_google": "de"
+        },
+        "ru": {
+            "legacy_language_pid": 13,
+            "label": "Russian",
+            "filename_suffix": "ru",
+            "template_key": "__RU_TEXT__",
+            "is_default": false,
+            "lang_for_cs": "ru",
+            "lang_for_android": "values-ru",
+            "lang_for_ios": "ru",
+            "lang_for_google": "ru"
+        },
+        "ms": {
+            "legacy_language_pid": 14,
+            "label": "Malay",
+            "filename_suffix": "ms",
+            "template_key": "__MS_TEXT__",
+            "is_default": false,
+            "lang_for_cs": "ms",
+            "lang_for_android": "values-ms",
+            "lang_for_ios": "ms",
+            "lang_for_google": "ms"
+        },
+        "ta": {
+            "legacy_language_pid": 15,
+            "label": "Tamil",
+            "filename_suffix": "ta",
+            "template_key": "__TA_TEXT__",
+            "is_default": false,
+            "lang_for_cs": "ta",
+            "lang_for_android": "values-ta",
+            "lang_for_ios": "ta",
+            "lang_for_google": "ta"
+        },
+        "it": {
+            "legacy_language_pid": 16,
+            "label": "Italian",
+            "filename_suffix": "it",
+            "template_key": "__IT_TEXT__",
+            "is_default": false,
+            "lang_for_cs": "it",
+            "lang_for_android": "values-it",
+            "lang_for_ios": "it",
+            "lang_for_google": "it"
+        },
+        "bn": {
+            "legacy_language_pid": 17,
+            "label": "Bengali",
+            "filename_suffix": "bn",
+            "template_key": "__BN_TEXT__",
+            "is_default": false,
+            "lang_for_cs": "bn",
+            "lang_for_android": "values-bn",
+            "lang_for_ios": "bn",
+            "lang_for_google": "bn"
+        },
+        "tr": {
+            "legacy_language_pid": 18,
+            "label": "Turkish",
+            "filename_suffix": "tr",
+            "template_key": "__TR_TEXT__",
+            "is_default": false,
+            "lang_for_cs": "tr",
+            "lang_for_android": "values-tr",
+            "lang_for_ios": "tr",
+            "lang_for_google": "tr"
+        },
+        "vi": {
+            "legacy_language_pid": 19,
+            "label": "Vietnamese",
+            "filename_suffix": "vi",
+            "template_key": "__VI_TEXT__",
+            "is_default": false,
+            "lang_for_cs": "vi",
+            "lang_for_android": "values-vi",
+            "lang_for_ios": "vi",
+            "lang_for_google": "vi"
+        },
+        "pl": {
+            "legacy_language_pid": 20,
+            "label": "Polish",
+            "filename_suffix": "pl",
+            "template_key": "__PL_TEXT__",
+            "is_default": false,
+            "lang_for_cs": "pl",
+            "lang_for_android": "values-pl",
+            "lang_for_ios": "pl",
+            "lang_for_google": "pl"
+        },
+        "jv": {
+            "legacy_language_pid": 21,
+            "label": "Javanese",
+            "filename_suffix": "jv",
+            "template_key": "__JV_TEXT__",
+            "is_default": false,
+            "lang_for_cs": "jv",
+            "lang_for_android": "values-jv",
+            "lang_for_ios": "jv",
+            "lang_for_google": "jv"
+        },
+        "pa": {
+            "legacy_language_pid": 22,
+            "label": "Punjabi",
+            "filename_suffix": "pa",
+            "template_key": "__PA_TEXT__",
+            "is_default": false,
+            "lang_for_cs": "pa",
+            "lang_for_android": "values-pa",
+            "lang_for_ios": "pa",
+            "lang_for_google": "pa"
+        },
+        "th": {
+            "legacy_language_pid": 23,
+            "label": "Thai",
+            "filename_suffix": "th",
+            "template_key": "__TH_TEXT__",
+            "is_default": false,
+            "lang_for_cs": "th",
+            "lang_for_android": "values-th",
+            "lang_for_ios": "th",
+            "lang_for_google": "th"
+        },
+        "te": {
+            "legacy_language_pid": 24,
+            "label": "Telugu",
+            "filename_suffix": "te",
+            "template_key": "__TE_TEXT__",
+            "is_default": false,
+            "lang_for_cs": "te",
+            "lang_for_android": "values-te",
+            "lang_for_ios": "te",
+            "lang_for_google": "te"
+        },
+        "mr": {
+            "legacy_language_pid": 25,
+            "label": "Marathi",
+            "filename_suffix": "mr",
+            "template_key": "__MR_TEXT__",
+            "is_default": false,
+            "lang_for_cs": "mr",
+            "lang_for_android": "values-mr",
+            "lang_for_ios": "mr",
+            "lang_for_google": "mr"
+        },
+        "ur": {
+            "legacy_language_pid": 26,
+            "label": "Urdu",
+            "filename_suffix": "ur",
+            "template_key": "__UR_TEXT__",
+            "is_default": false,
+            "lang_for_cs": "ur",
+            "lang_for_android": "values-ur",
+            "lang_for_ios": "ur",
+            "lang_for_google": "ur"
+        },
+        "gu": {
+            "legacy_language_pid": 27,
+            "label": "Gujarati",
+            "filename_suffix": "gu",
+            "template_key": "__GU_TEXT__",
+            "is_default": false,
+            "lang_for_cs": "gu",
+            "lang_for_android": "values-gu",
+            "lang_for_ios": "gu",
+            "lang_for_google": "gu"
+        },
+        "uk": {
+            "legacy_language_pid": 28,
+            "label": "Ukrainian",
+            "filename_suffix": "uk",
+            "template_key": "__UK_TEXT__",
+            "is_default": false,
+            "lang_for_cs": "uk",
+            "lang_for_android": "values-uk",
+            "lang_for_ios": "uk",
+            "lang_for_google": "uk"
+        },
+        "ml": {
+            "legacy_language_pid": 29,
+            "label": "Malayalam",
+            "filename_suffix": "ml",
+            "template_key": "__ML_TEXT__",
+            "is_default": false,
+            "lang_for_cs": "ml",
+            "lang_for_android": "values-ml",
+            "lang_for_ios": "ml",
+            "lang_for_google": "ml"
+        },
+        "kn": {
+            "legacy_language_pid": 30,
+            "label": "Kannada",
+            "filename_suffix": "kn",
+            "template_key": "__KN_TEXT__",
+            "is_default": false,
+            "lang_for_cs": "kn",
+            "lang_for_android": "values-kn",
+            "lang_for_ios": "kn",
+            "lang_for_google": "kn"
+        },
+        "su": {
+            "legacy_language_pid": 31,
+            "label": "Sundanese",
+            "filename_suffix": "su",
+            "template_key": "__SU_TEXT__",
+            "is_default": false,
+            "lang_for_cs": "su",
+            "lang_for_android": "values-su",
+            "lang_for_ios": "su",
+            "lang_for_google": "su"
+        },
+        "ku": {
+            "legacy_language_pid": 32,
+            "label": "Kurdish",
+            "filename_suffix": "ku",
+            "template_key": "__KU_TEXT__",
+            "is_default": false,
+            "lang_for_cs": "ku",
+            "lang_for_android": "values-ku",
+            "lang_for_ios": "ku",
+            "lang_for_google": "ku"
+        },
+        "ps": {
+            "legacy_language_pid": 33,
+            "label": "Pashto",
+            "filename_suffix": "ps",
+            "template_key": "__PS_TEXT__",
+            "is_default": false,
+            "lang_for_cs": "ps",
+            "lang_for_android": "values-ps",
+            "lang_for_ios": "ps",
+            "lang_for_google": "ps"
+        },
+        "ro": {
+            "legacy_language_pid": 34,
+            "label": "Romanian",
+            "filename_suffix": "ro",
+            "template_key": "__RO_TEXT__",
+            "is_default": false,
+            "lang_for_cs": "ro",
+            "lang_for_android": "values-ro",
+            "lang_for_ios": "ro",
+            "lang_for_google": "ro"
+        },
+        "id": {
+            "legacy_language_pid": 35,
+            "label": "Indonesian",
+            "filename_suffix": "id",
+            "template_key": "__ID_TEXT__",
+            "is_default": false,
+            "lang_for_cs": "id",
+            "lang_for_android": "values-id",
+            "lang_for_ios": "id",
+            "lang_for_google": "id"
+        },
+        "sd": {
+            "legacy_language_pid": 36,
+            "label": "Sindhi",
+            "filename_suffix": "sd",
+            "template_key": "__SD_TEXT__",
+            "is_default": false,
+            "lang_for_cs": "sd",
+            "lang_for_android": "values-sd",
+            "lang_for_ios": "sd",
+            "lang_for_google": "sd"
+        },
+        "af": {
+            "legacy_language_pid": 37,
+            "label": "Afrikaans",
+            "filename_suffix": "af",
+            "template_key": "__AF_TEXT__",
+            "is_default": false,
+            "lang_for_cs": "af",
+            "lang_for_android": "values-af",
+            "lang_for_ios": "af",
+            "lang_for_google": "af"
+        },
+        "sw": {
+            "legacy_language_pid": 38,
+            "label": "Swahili",
+            "filename_suffix": "sw",
+            "template_key": "__SW_TEXT__",
+            "is_default": false,
+            "lang_for_cs": "sw",
+            "lang_for_android": "values-sw",
+            "lang_for_ios": "sw",
+            "lang_for_google": "sw"
+        },
+        "lo": {
+            "legacy_language_pid": 39,
+            "label": "Lao",
+            "filename_suffix": "lo",
+            "template_key": "__LO_TEXT__",
+            "is_default": false,
+            "lang_for_cs": "lo",
+            "lang_for_android": "values-lo",
+            "lang_for_ios": "lo",
+            "lang_for_google": "lo"
+        },
+        "nl": {
+            "legacy_language_pid": 40,
+            "label": "Dutch",
+            "filename_suffix": "nl",
+            "template_key": "__NL_TEXT__",
+            "is_default": false,
+            "lang_for_cs": "nl",
+            "lang_for_android": "values-nl",
+            "lang_for_ios": "nl",
+            "lang_for_google": "nl"
+        },
+        "tl": {
+            "legacy_language_pid": 41,
+            "label": "Tagalog",
+            "filename_suffix": "tl",
+            "template_key": "__TL_TEXT__",
+            "is_default": false,
+            "lang_for_cs": "tl",
+            "lang_for_android": "values-tl",
+            "lang_for_ios": "tl",
+            "lang_for_google": "tl"
+        },
+        "ne": {
+            "legacy_language_pid": 42,
+            "label": "Nepali",
+            "filename_suffix": "ne",
+            "template_key": "__NE_TEXT__",
+            "is_default": false,
+            "lang_for_cs": "ne",
+            "lang_for_android": "values-ne",
+            "lang_for_ios": "ne",
+            "lang_for_google": "ne"
+        },
+        "hu": {
+            "legacy_language_pid": 43,
+            "label": "Hungarian",
+            "filename_suffix": "hu",
+            "template_key": "__HU_TEXT__",
+            "is_default": false,
+            "lang_for_cs": "hu",
+            "lang_for_android": "values-hu",
+            "lang_for_ios": "hu",
+            "lang_for_google": "hu"
+        },
+        "cs": {
+            "legacy_language_pid": 44,
+            "label": "Czech",
+            "filename_suffix": "cs",
+            "template_key": "__CS_TEXT__",
+            "is_default": false,
+            "lang_for_cs": "cs",
+            "lang_for_android": "values-cs",
+            "lang_for_ios": "cs",
+            "lang_for_google": "cs"
+        },
+        "el": {
+            "legacy_language_pid": 45,
+            "label": "Greek",
+            "filename_suffix": "el",
+            "template_key": "__EL_TEXT__",
+            "is_default": false,
+            "lang_for_cs": "el",
+            "lang_for_android": "values-el",
+            "lang_for_ios": "el",
+            "lang_for_google": "el"
+        },
+        "sv": {
+            "legacy_language_pid": 46,
+            "label": "Swedish",
+            "filename_suffix": "sv",
+            "template_key": "__SV_TEXT__",
+            "is_default": false,
+            "lang_for_cs": "sv",
+            "lang_for_android": "values-sv",
+            "lang_for_ios": "sv",
+            "lang_for_google": "sv"
+        },
+        "kk": {
+            "legacy_language_pid": 47,
+            "label": "Kazakh",
+            "filename_suffix": "kk",
+            "template_key": "__KK_TEXT__",
+            "is_default": false,
+            "lang_for_cs": "kk",
+            "lang_for_android": "values-kk",
+            "lang_for_ios": "kk",
+            "lang_for_google": "kk"
+        },
+        "fi": {
+            "legacy_language_pid": 48,
+            "label": "Finnish",
+            "filename_suffix": "fi",
+            "template_key": "__FI_TEXT__",
+            "is_default": false,
+            "lang_for_cs": "fi",
+            "lang_for_android": "values-fi",
+            "lang_for_ios": "fi",
+            "lang_for_google": "fi"
+        },
+        "da": {
+            "legacy_language_pid": 49,
+            "label": "Danish",
+            "filename_suffix": "da",
+            "template_key": "__DA_TEXT__",
+            "is_default": false,
+            "lang_for_cs": "da",
+            "lang_for_android": "values-da",
+            "lang_for_ios": "da",
+            "lang_for_google": "da"
+        },
+        "he": {
+            "legacy_language_pid": 50,
+            "label": "Hebrew",
+            "filename_suffix": "he",
+            "template_key": "__HE_TEXT__",
+            "is_default": false,
+            "lang_for_cs": "he",
+            "lang_for_android": "values-he",
+            "lang_for_ios": "he",
+            "lang_for_google": "he"
+        },
+        "no": {
+            "legacy_language_pid": 51,
+            "label": "Norwegian",
+            "filename_suffix": "no",
+            "template_key": "__NO_TEXT__",
+            "is_default": false,
+            "lang_for_cs": "no",
+            "lang_for_android": "values-no",
+            "lang_for_ios": "no",
+            "lang_for_google": "no"
+        }
+    },
+    "enabled_source_output_keys": [
+        "LANGRES-PHP-DEV-LIB",
+        "LANGRES-PHP-MTOOL-LIB",
+        "LANGRES-PHP-MATSUESOFT-LIB",
+        "LANGRES-PHP-JA-WEB-LIB",
+        "LANGRES-PHP-PUBLIC-WEB-LIB",
+        "LANGRES-JAVA-MATSUESOFT-COMMON",
+        "LANGRES-SWIFT-IOS",
+        "LANGRES-CS-UWP-COMMONSTRINGS",
+        "LANGRES-CS-DEGODB-RESOURCES",
+        "LANGRES-PHP-JA-WEB-LIB-ALT"
+    ],
+    "counts": {
+        "resources": 1007,
+        "groups": 7,
+        "languages": 51,
+        "group_languages": 308,
+        "group_source_outputs": 10,
+        "additional_group_assignments": 0,
+        "captions": 20233
+    },
+    "normalization": {
+        "raw_reference_counts": {
+            "resources": 1007,
+            "groups": 7,
+            "languages": 51,
+            "group_languages": 308,
+            "group_source_outputs": 13,
+            "additional_group_assignments": 0,
+            "captions": 20250
+        },
+        "dropped_counts": {
+            "group_source_outputs": 3,
+            "captions": 17
+        },
+        "dropped_rows": {
+            "group_source_outputs": [
+                {
+                    "reason": [
+                        "missing_group"
+                    ],
+                    "row": {
+                        "legacy_group_source_output_pid": 7,
+                        "project_pid": 1,
+                        "legacy_group_pid": 6,
+                        "legacy_project_source_output_pid": 270
+                    }
+                },
+                {
+                    "reason": [
+                        "missing_group"
+                    ],
+                    "row": {
+                        "legacy_group_source_output_pid": 8,
+                        "project_pid": 1,
+                        "legacy_group_pid": 7,
+                        "legacy_project_source_output_pid": 271
+                    }
+                },
+                {
+                    "reason": [
+                        "missing_group"
+                    ],
+                    "row": {
+                        "legacy_group_source_output_pid": 9,
+                        "project_pid": 1,
+                        "legacy_group_pid": 8,
+                        "legacy_project_source_output_pid": 272
+                    }
+                }
+            ],
+            "captions": [
+                {
+                    "reason": [
+                        "missing_resource"
+                    ],
+                    "row": {
+                        "legacy_caption_pid": 1373,
+                        "project_pid": 1,
+                        "legacy_resource_pid": 545,
+                        "legacy_group_pid": 5,
+                        "legacy_language_pid": 1,
+                        "caption": "会員IDについて",
+                        "caption_auto_translated": ""
+                    }
+                },
+                {
+                    "reason": [
+                        "missing_resource"
+                    ],
+                    "row": {
+                        "legacy_caption_pid": 1374,
+                        "project_pid": 1,
+                        "legacy_resource_pid": 545,
+                        "legacy_group_pid": 5,
+                        "legacy_language_pid": 2,
+                        "caption": "About the member ID",
+                        "caption_auto_translated": ""
+                    }
+                },
+                {
+                    "reason": [
+                        "missing_resource"
+                    ],
+                    "row": {
+                        "legacy_caption_pid": 6540,
+                        "project_pid": 1,
+                        "legacy_resource_pid": 545,
+                        "legacy_group_pid": 5,
+                        "legacy_language_pid": 3,
+                        "caption": "关于会员ID",
+                        "caption_auto_translated": ""
+                    }
+                },
+                {
+                    "reason": [
+                        "missing_resource"
+                    ],
+                    "row": {
+                        "legacy_caption_pid": 6541,
+                        "project_pid": 1,
+                        "legacy_resource_pid": 545,
+                        "legacy_group_pid": 5,
+                        "legacy_language_pid": 4,
+                        "caption": "회원 ID에 대해",
+                        "caption_auto_translated": ""
+                    }
+                },
+                {
+                    "reason": [
+                        "missing_resource"
+                    ],
+                    "row": {
+                        "legacy_caption_pid": 7026,
+                        "project_pid": 1,
+                        "legacy_resource_pid": 1561,
+                        "legacy_group_pid": 5,
+                        "legacy_language_pid": 1,
+                        "caption": "パスワード確認",
+                        "caption_auto_translated": ""
+                    }
+                },
+                {
+                    "reason": [
+                        "missing_resource"
+                    ],
+                    "row": {
+                        "legacy_caption_pid": 7027,
+                        "project_pid": 1,
+                        "legacy_resource_pid": 1561,
+                        "legacy_group_pid": 5,
+                        "legacy_language_pid": 2,
+                        "caption": "Password confirmation",
+                        "caption_auto_translated": ""
+                    }
+                },
+                {
+                    "reason": [
+                        "missing_resource"
+                    ],
+                    "row": {
+                        "legacy_caption_pid": 7028,
+                        "project_pid": 1,
+                        "legacy_resource_pid": 1561,
+                        "legacy_group_pid": 5,
+                        "legacy_language_pid": 3,
+                        "caption": "密码确认",
+                        "caption_auto_translated": ""
+                    }
+                },
+                {
+                    "reason": [
+                        "missing_resource"
+                    ],
+                    "row": {
+                        "legacy_caption_pid": 7029,
+                        "project_pid": 1,
+                        "legacy_resource_pid": 1561,
+                        "legacy_group_pid": 5,
+                        "legacy_language_pid": 4,
+                        "caption": "비밀번호 확인",
+                        "caption_auto_translated": ""
+                    }
+                },
+                {
+                    "reason": [
+                        "missing_resource"
+                    ],
+                    "row": {
+                        "legacy_caption_pid": 10582,
+                        "project_pid": 1,
+                        "legacy_resource_pid": 1561,
+                        "legacy_group_pid": 5,
+                        "legacy_language_pid": 5,
+                        "caption": "Confirmación de contraseña",
+                        "caption_auto_translated": ""
+                    }
+                },
+                {
+                    "reason": [
+                        "missing_resource"
+                    ],
+                    "row": {
+                        "legacy_caption_pid": 10583,
+                        "project_pid": 1,
+                        "legacy_resource_pid": 1561,
+                        "legacy_group_pid": 5,
+                        "legacy_language_pid": 6,
+                        "caption": "ConfirmaÇão da senha",
+                        "caption_auto_translated": ""
+                    }
+                },
+                {
+                    "reason": [
+                        "missing_resource"
+                    ],
+                    "row": {
+                        "legacy_caption_pid": 10584,
+                        "project_pid": 1,
+                        "legacy_resource_pid": 1561,
+                        "legacy_group_pid": 5,
+                        "legacy_language_pid": 7,
+                        "caption": "密碼確認",
+                        "caption_auto_translated": ""
+                    }
+                },
+                {
+                    "reason": [
+                        "missing_resource"
+                    ],
+                    "row": {
+                        "legacy_caption_pid": 16341,
+                        "project_pid": 1,
+                        "legacy_resource_pid": 1561,
+                        "legacy_group_pid": 5,
+                        "legacy_language_pid": 8,
+                        "caption": "Confirmation mot de passe",
+                        "caption_auto_translated": ""
+                    }
+                },
+                {
+                    "reason": [
+                        "missing_resource"
+                    ],
+                    "row": {
+                        "legacy_caption_pid": 16342,
+                        "project_pid": 1,
+                        "legacy_resource_pid": 1561,
+                        "legacy_group_pid": 5,
+                        "legacy_language_pid": 9,
+                        "caption": "पासवर्ड पुष्टि",
+                        "caption_auto_translated": ""
+                    }
+                },
+                {
+                    "reason": [
+                        "missing_resource"
+                    ],
+                    "row": {
+                        "legacy_caption_pid": 9978,
+                        "project_pid": 1,
+                        "legacy_resource_pid": 2297,
+                        "legacy_group_pid": 5,
+                        "legacy_language_pid": 1,
+                        "caption": "メールアドレス確認",
+                        "caption_auto_translated": ""
+                    }
+                },
+                {
+                    "reason": [
+                        "missing_resource"
+                    ],
+                    "row": {
+                        "legacy_caption_pid": 9979,
+                        "project_pid": 1,
+                        "legacy_resource_pid": 2297,
+                        "legacy_group_pid": 5,
+                        "legacy_language_pid": 2,
+                        "caption": "Confirm email address",
+                        "caption_auto_translated": ""
+                    }
+                },
+                {
+                    "reason": [
+                        "missing_resource"
+                    ],
+                    "row": {
+                        "legacy_caption_pid": 9980,
+                        "project_pid": 1,
+                        "legacy_resource_pid": 2297,
+                        "legacy_group_pid": 5,
+                        "legacy_language_pid": 3,
+                        "caption": "E-mail地址确认",
+                        "caption_auto_translated": ""
+                    }
+                },
+                {
+                    "reason": [
+                        "missing_resource"
+                    ],
+                    "row": {
+                        "legacy_caption_pid": 9981,
+                        "project_pid": 1,
+                        "legacy_resource_pid": 2297,
+                        "legacy_group_pid": 5,
+                        "legacy_language_pid": 4,
+                        "caption": "이메일 주소 확인",
+                        "caption_auto_translated": ""
+                    }
+                }
+            ]
+        }
+    },
+    "groups": [
+        {
+            "group_key": "grp-001-developers-matsuesoft-co-jp",
+            "legacy_group_pid": 1,
+            "name": "developers.matsuesoft.co.jp",
+            "resource_count": 533
+        },
+        {
+            "group_key": "grp-005-common-lib",
+            "legacy_group_pid": 5,
+            "name": "Common Lib",
+            "resource_count": 110
+        },
+        {
+            "group_key": "grp-010-matsuesoft-lib",
+            "legacy_group_pid": 10,
+            "name": "Matsuesoft Lib",
+            "resource_count": 298
+        },
+        {
+            "group_key": "grp-015-www-matsuesoft-co-jp-only",
+            "legacy_group_pid": 15,
+            "name": "www.matsuesoft.co.jp only",
+            "resource_count": 0
+        },
+        {
+            "group_key": "grp-016-www-matsuesoft-com-only",
+            "legacy_group_pid": 16,
+            "name": "www.matsuesoft.com only",
+            "resource_count": 0
+        },
+        {
+            "group_key": "grp-028-app-common-lib",
+            "legacy_group_pid": 28,
+            "name": "App Common Lib",
+            "resource_count": 66
+        },
+        {
+            "group_key": "grp-041-www-matsuesoft-jp-only",
+            "legacy_group_pid": 41,
+            "name": "www.matsuesoft.jp only",
+            "resource_count": 0
+        }
+    ]
+}

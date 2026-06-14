@@ -1,0 +1,321 @@
+{
+    "resource_key": "COMMON_LIB_LOGIN_HEADER_FOR_FACEBOOK_ACCOUNT",
+    "legacy_resource_pid": 1500,
+    "base_group_key": "grp-010-matsuesoft-lib",
+    "additional_group_keys": [],
+    "key_for_update": "C0gY0ywCRH7SkT6I9roQ1ul5OPzr9tMamsVvTiTlEl4L3CIX045oiM7arScyZyBOrTH8ocpX3vIaOqFtjxe80LcQXoc75UNqsPp9mBLTYmE6Aq0QJX1SP0InCgsK1lrP",
+    "sort_group": "LOGIN",
+    "key_name": "COMMON_LIB_LOGIN_HEADER_FOR_FACEBOOK_ACCOUNT",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": false,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 6274,
+            "legacy_language_pid": 1,
+            "text": "Facebookアカウントでログイン",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 6275,
+            "legacy_language_pid": 2,
+            "text": "Log in with Facebook account",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 6276,
+            "legacy_language_pid": 3,
+            "text": "登录Facebook帐户",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 6277,
+            "legacy_language_pid": 4,
+            "text": "Facebook 계정으로 로그인",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 11072,
+            "legacy_language_pid": 5,
+            "text": "Iniciar sesión con cuenta de Facebook",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 11073,
+            "legacy_language_pid": 6,
+            "text": "Faça login com a conta do Facebook",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 11074,
+            "legacy_language_pid": 7,
+            "text": "登錄Facebook帳戶",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 17241,
+            "legacy_language_pid": 8,
+            "text": "Connectez-vous avec le compte Facebook",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 17242,
+            "legacy_language_pid": 9,
+            "text": "फेसबुक अकाउंट से लॉग इन करें",
+            "auto_translated": ""
+        },
+        "ar": {
+            "legacy_caption_pid": 32586,
+            "legacy_language_pid": 10,
+            "text": "تسجيل الدخول باستخدام حساب الفيسبوك",
+            "auto_translated": "تسجيل الدخول باستخدام حساب الفيسبوك"
+        },
+        "fa": {
+            "legacy_caption_pid": 32587,
+            "legacy_language_pid": 11,
+            "text": "ورود به سیستم با حساب فیس بوک",
+            "auto_translated": "ورود به سیستم با حساب فیس بوک"
+        },
+        "de": {
+            "legacy_caption_pid": 32588,
+            "legacy_language_pid": 12,
+            "text": "Anmeldung mit Facebook-Account",
+            "auto_translated": "Anmeldung mit Facebook-Account"
+        },
+        "ru": {
+            "legacy_caption_pid": 32589,
+            "legacy_language_pid": 13,
+            "text": "Войти с использованием Facebook счета",
+            "auto_translated": "Войти с использованием Facebook счета"
+        },
+        "ms": {
+            "legacy_caption_pid": 32590,
+            "legacy_language_pid": 14,
+            "text": "Daftar masuk dengan akaun Facebook",
+            "auto_translated": "Daftar masuk dengan akaun Facebook"
+        },
+        "ta": {
+            "legacy_caption_pid": 32591,
+            "legacy_language_pid": 15,
+            "text": "பேஸ்புக் கணக்கை கொண்டு உள்நுழையவும்",
+            "auto_translated": "பேஸ்புக் கணக்கை கொண்டு உள்நுழையவும்"
+        },
+        "it": {
+            "legacy_caption_pid": 32592,
+            "legacy_language_pid": 16,
+            "text": "Accedi con account Facebook",
+            "auto_translated": "Accedi con account Facebook"
+        },
+        "bn": {
+            "legacy_caption_pid": 32593,
+            "legacy_language_pid": 17,
+            "text": "ফেসবুক অ্যাকাউন্ট দিয়ে সাইন ইন করুন",
+            "auto_translated": "ফেসবুক অ্যাকাউন্ট দিয়ে সাইন ইন করুন"
+        },
+        "tr": {
+            "legacy_caption_pid": 32594,
+            "legacy_language_pid": 18,
+            "text": "Facebook hesabı ile giriş yapın",
+            "auto_translated": "Facebook hesabı ile giriş yapın"
+        },
+        "vi": {
+            "legacy_caption_pid": 32595,
+            "legacy_language_pid": 19,
+            "text": "Đăng nhập bằng tài khoản Facebook",
+            "auto_translated": "Đăng nhập bằng tài khoản Facebook"
+        },
+        "pl": {
+            "legacy_caption_pid": 32596,
+            "legacy_language_pid": 20,
+            "text": "Zaloguj się z kontem na Facebooku",
+            "auto_translated": "Zaloguj się z kontem na Facebooku"
+        },
+        "jv": {
+            "legacy_caption_pid": 32597,
+            "legacy_language_pid": 21,
+            "text": "Mlebu karo akun Facebook",
+            "auto_translated": "Mlebu karo akun Facebook"
+        },
+        "pa": {
+            "legacy_caption_pid": 32598,
+            "legacy_language_pid": 22,
+            "text": "ਫੇਸਬੁੱਕ ਖਾਤੇ ਦੇ ਨਾਲ ਸਾਈਨ",
+            "auto_translated": "ਫੇਸਬੁੱਕ ਖਾਤੇ ਦੇ ਨਾਲ ਸਾਈਨ"
+        },
+        "th": {
+            "legacy_caption_pid": 32599,
+            "legacy_language_pid": 23,
+            "text": "เข้าสู่ระบบด้วยบัญชี Facebook",
+            "auto_translated": "เข้าสู่ระบบด้วยบัญชี Facebook"
+        },
+        "te": {
+            "legacy_caption_pid": 40456,
+            "legacy_language_pid": 24,
+            "text": "Facebook ఖాతాతో సైన్ ఇన్",
+            "auto_translated": "Facebook ఖాతాతో సైన్ ఇన్"
+        },
+        "mr": {
+            "legacy_caption_pid": 40457,
+            "legacy_language_pid": 25,
+            "text": "फेसबुक खाते साइन इन करा",
+            "auto_translated": "फेसबुक खाते साइन इन करा"
+        },
+        "ur": {
+            "legacy_caption_pid": 40458,
+            "legacy_language_pid": 26,
+            "text": "فیس بک اکاؤنٹ کے ساتھ میں سائن ان کریں",
+            "auto_translated": "فیس بک اکاؤنٹ کے ساتھ میں سائن ان کریں"
+        },
+        "gu": {
+            "legacy_caption_pid": 40459,
+            "legacy_language_pid": 27,
+            "text": "ફેસબુક એકાઉન્ટ સાથે સાઇન ઇન",
+            "auto_translated": "ફેસબુક એકાઉન્ટ સાથે સાઇન ઇન"
+        },
+        "uk": {
+            "legacy_caption_pid": 40460,
+            "legacy_language_pid": 28,
+            "text": "Увійти за допомогою Facebook рахунку",
+            "auto_translated": "Увійти за допомогою Facebook рахунку"
+        },
+        "ml": {
+            "legacy_caption_pid": 40461,
+            "legacy_language_pid": 29,
+            "text": "Facebook അക്കൗണ്ട് ഉപയോഗിച്ച് സൈൻ ഇൻ",
+            "auto_translated": "Facebook അക്കൗണ്ട് ഉപയോഗിച്ച് സൈൻ ഇൻ"
+        },
+        "kn": {
+            "legacy_caption_pid": 40462,
+            "legacy_language_pid": 30,
+            "text": "ಫೇಸ್ಬುಕ್ ಖಾತೆಯೊಂದಿಗೆ ಸೈನ್ ಇನ್",
+            "auto_translated": "ಫೇಸ್ಬುಕ್ ಖಾತೆಯೊಂದಿಗೆ ಸೈನ್ ಇನ್"
+        },
+        "su": {
+            "legacy_caption_pid": 40463,
+            "legacy_language_pid": 31,
+            "text": "Asup jeung akun Facebook",
+            "auto_translated": "Asup jeung akun Facebook"
+        },
+        "ku": {
+            "legacy_caption_pid": 40464,
+            "legacy_language_pid": 32,
+            "text": "Sign in bi account Facebook",
+            "auto_translated": "Sign in bi account Facebook"
+        },
+        "ps": {
+            "legacy_caption_pid": 40465,
+            "legacy_language_pid": 33,
+            "text": "سره د فیسبوک حساب ننوتنه یا ساین اېن",
+            "auto_translated": "سره د فیسبوک حساب ننوتنه یا ساین اېن"
+        },
+        "ro": {
+            "legacy_caption_pid": 40466,
+            "legacy_language_pid": 34,
+            "text": "Conectați-vă cu contul Facebook",
+            "auto_translated": "Conectați-vă cu contul Facebook"
+        },
+        "id": {
+            "legacy_caption_pid": 40467,
+            "legacy_language_pid": 35,
+            "text": "Masuk dengan akun Facebook",
+            "auto_translated": "Masuk dengan akun Facebook"
+        },
+        "sd": {
+            "legacy_caption_pid": 40468,
+            "legacy_language_pid": 36,
+            "text": "ڪريو اڪائونٽ سان سائن ان",
+            "auto_translated": "ڪريو اڪائونٽ سان سائن ان"
+        },
+        "af": {
+            "legacy_caption_pid": 40469,
+            "legacy_language_pid": 37,
+            "text": "Teken in met Facebook rekening",
+            "auto_translated": "Teken in met Facebook rekening"
+        },
+        "sw": {
+            "legacy_caption_pid": 40470,
+            "legacy_language_pid": 38,
+            "text": "Kuingia na akaunti Facebook",
+            "auto_translated": "Kuingia na akaunti Facebook"
+        },
+        "lo": {
+            "legacy_caption_pid": 40471,
+            "legacy_language_pid": 39,
+            "text": "ເຂົ້າສູ່ລະບົບກັບບັນຊີຂອງເຟສບຸກ",
+            "auto_translated": "ເຂົ້າສູ່ລະບົບກັບບັນຊີຂອງເຟສບຸກ"
+        },
+        "nl": {
+            "legacy_caption_pid": 40472,
+            "legacy_language_pid": 40,
+            "text": "Log in met Facebook-account",
+            "auto_translated": "Log in met Facebook-account"
+        },
+        "tl": {
+            "legacy_caption_pid": 40473,
+            "legacy_language_pid": 41,
+            "text": "Mag-sign in gamit ang Facebook account",
+            "auto_translated": "Mag-sign in gamit ang Facebook account"
+        },
+        "ne": {
+            "legacy_caption_pid": 40474,
+            "legacy_language_pid": 42,
+            "text": "फेसबुक खातामा साइन इन गर्नुहोस्",
+            "auto_translated": "फेसबुक खातामा साइन इन गर्नुहोस्"
+        },
+        "hu": {
+            "legacy_caption_pid": 40475,
+            "legacy_language_pid": 43,
+            "text": "Jelentkezzen be Facebook számla",
+            "auto_translated": "Jelentkezzen be Facebook számla"
+        },
+        "cs": {
+            "legacy_caption_pid": 40476,
+            "legacy_language_pid": 44,
+            "text": "Přihlaste se pomocí Facebook účtu",
+            "auto_translated": "Přihlaste se pomocí Facebook účtu"
+        },
+        "el": {
+            "legacy_caption_pid": 40477,
+            "legacy_language_pid": 45,
+            "text": "Σύνδεση με λογαριασμό Facebook",
+            "auto_translated": "Σύνδεση με λογαριασμό Facebook"
+        },
+        "sv": {
+            "legacy_caption_pid": 40478,
+            "legacy_language_pid": 46,
+            "text": "Logga in med Facebook-konto",
+            "auto_translated": "Logga in med Facebook-konto"
+        },
+        "kk": {
+            "legacy_caption_pid": 40479,
+            "legacy_language_pid": 47,
+            "text": "Facebook есептік жазбасы арқылы кіріңіз",
+            "auto_translated": "Facebook есептік жазбасы арқылы кіріңіз"
+        },
+        "fi": {
+            "legacy_caption_pid": 40480,
+            "legacy_language_pid": 48,
+            "text": "Kirjaudu sisään Facebook-tilin",
+            "auto_translated": "Kirjaudu sisään Facebook-tilin"
+        },
+        "da": {
+            "legacy_caption_pid": 40481,
+            "legacy_language_pid": 49,
+            "text": "Log på med Facebook-konto",
+            "auto_translated": "Log på med Facebook-konto"
+        },
+        "he": {
+            "legacy_caption_pid": 40482,
+            "legacy_language_pid": 50,
+            "text": "היכנס באמצעות חשבון הפייסבוק",
+            "auto_translated": "היכנס באמצעות חשבון הפייסבוק"
+        },
+        "no": {
+            "legacy_caption_pid": 40483,
+            "legacy_language_pid": 51,
+            "text": "Logg inn med Facebook-kontoen din",
+            "auto_translated": "Logg inn med Facebook-kontoen din"
+        }
+    }
+}

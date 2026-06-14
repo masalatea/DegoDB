@@ -1,0 +1,321 @@
+{
+    "resource_key": "HEADER_FOR_NAVIGATION_USER",
+    "legacy_resource_pid": 1592,
+    "base_group_key": "grp-005-common-lib",
+    "additional_group_keys": [],
+    "key_for_update": "FQJTnP1K9W3Mgft0caXVWAFeRi4vZ79attSed6MsBvfUr1Jll6VgAfv8t482ujarKZfF2WE9Cy7bUQm7MzNADRh02WSrlsQj1xY5HAKFSauIsVdEcqpOyFLM9xSr0QUs",
+    "sort_group": "",
+    "key_name": "HEADER_FOR_NAVIGATION_USER",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": false,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 7150,
+            "legacy_language_pid": 1,
+            "text": "ユーザ",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 7151,
+            "legacy_language_pid": 2,
+            "text": "User",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 7152,
+            "legacy_language_pid": 3,
+            "text": "用户",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 7153,
+            "legacy_language_pid": 4,
+            "text": "사용자",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 10322,
+            "legacy_language_pid": 5,
+            "text": "Usuario",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 10323,
+            "legacy_language_pid": 6,
+            "text": "usuário",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 10324,
+            "legacy_language_pid": 7,
+            "text": "用戶",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 16237,
+            "legacy_language_pid": 8,
+            "text": "Utilisateur",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 16238,
+            "legacy_language_pid": 9,
+            "text": "उपयोगकर्ता",
+            "auto_translated": ""
+        },
+        "ar": {
+            "legacy_caption_pid": 29142,
+            "legacy_language_pid": 10,
+            "text": "المستخدم",
+            "auto_translated": "المستخدم"
+        },
+        "fa": {
+            "legacy_caption_pid": 29143,
+            "legacy_language_pid": 11,
+            "text": "کاربر",
+            "auto_translated": "کاربر"
+        },
+        "de": {
+            "legacy_caption_pid": 29144,
+            "legacy_language_pid": 12,
+            "text": "Benutzer",
+            "auto_translated": "Benutzer"
+        },
+        "ru": {
+            "legacy_caption_pid": 29145,
+            "legacy_language_pid": 13,
+            "text": "пользователь",
+            "auto_translated": "пользователь"
+        },
+        "ms": {
+            "legacy_caption_pid": 29146,
+            "legacy_language_pid": 14,
+            "text": "pengguna",
+            "auto_translated": "pengguna"
+        },
+        "ta": {
+            "legacy_caption_pid": 29147,
+            "legacy_language_pid": 15,
+            "text": "பயனர்",
+            "auto_translated": "பயனர்"
+        },
+        "it": {
+            "legacy_caption_pid": 29148,
+            "legacy_language_pid": 16,
+            "text": "utente",
+            "auto_translated": "utente"
+        },
+        "bn": {
+            "legacy_caption_pid": 29149,
+            "legacy_language_pid": 17,
+            "text": "ব্যবহারকারী",
+            "auto_translated": "ব্যবহারকারী"
+        },
+        "tr": {
+            "legacy_caption_pid": 29150,
+            "legacy_language_pid": 18,
+            "text": "kullanıcı",
+            "auto_translated": "kullanıcı"
+        },
+        "vi": {
+            "legacy_caption_pid": 29151,
+            "legacy_language_pid": 19,
+            "text": "người sử dụng",
+            "auto_translated": "người sử dụng"
+        },
+        "pl": {
+            "legacy_caption_pid": 29152,
+            "legacy_language_pid": 20,
+            "text": "użytkownik",
+            "auto_translated": "użytkownik"
+        },
+        "jv": {
+            "legacy_caption_pid": 29153,
+            "legacy_language_pid": 21,
+            "text": "Panganggo",
+            "auto_translated": "Panganggo"
+        },
+        "pa": {
+            "legacy_caption_pid": 29154,
+            "legacy_language_pid": 22,
+            "text": "ਯੂਜ਼ਰ",
+            "auto_translated": "ਯੂਜ਼ਰ"
+        },
+        "th": {
+            "legacy_caption_pid": 29155,
+            "legacy_language_pid": 23,
+            "text": "ผู้ใช้งาน",
+            "auto_translated": "ผู้ใช้งาน"
+        },
+        "te": {
+            "legacy_caption_pid": 35192,
+            "legacy_language_pid": 24,
+            "text": "వాడుకరి",
+            "auto_translated": "వాడుకరి"
+        },
+        "mr": {
+            "legacy_caption_pid": 35193,
+            "legacy_language_pid": 25,
+            "text": "वापरकर्ता",
+            "auto_translated": "वापरकर्ता"
+        },
+        "ur": {
+            "legacy_caption_pid": 35194,
+            "legacy_language_pid": 26,
+            "text": "صارف",
+            "auto_translated": "صارف"
+        },
+        "gu": {
+            "legacy_caption_pid": 35195,
+            "legacy_language_pid": 27,
+            "text": "વપરાશકર્તા",
+            "auto_translated": "વપરાશકર્તા"
+        },
+        "uk": {
+            "legacy_caption_pid": 35196,
+            "legacy_language_pid": 28,
+            "text": "користувач",
+            "auto_translated": "користувач"
+        },
+        "ml": {
+            "legacy_caption_pid": 35197,
+            "legacy_language_pid": 29,
+            "text": "ഉപയോക്താവ്",
+            "auto_translated": "ഉപയോക്താവ്"
+        },
+        "kn": {
+            "legacy_caption_pid": 35198,
+            "legacy_language_pid": 30,
+            "text": "ಬಳಕೆದಾರ",
+            "auto_translated": "ಬಳಕೆದಾರ"
+        },
+        "su": {
+            "legacy_caption_pid": 35199,
+            "legacy_language_pid": 31,
+            "text": "nu make",
+            "auto_translated": "nu make"
+        },
+        "ku": {
+            "legacy_caption_pid": 35200,
+            "legacy_language_pid": 32,
+            "text": "Bikarhêner",
+            "auto_translated": "Bikarhêner"
+        },
+        "ps": {
+            "legacy_caption_pid": 35201,
+            "legacy_language_pid": 33,
+            "text": "کارن",
+            "auto_translated": "کارن"
+        },
+        "ro": {
+            "legacy_caption_pid": 35202,
+            "legacy_language_pid": 34,
+            "text": "utilizator",
+            "auto_translated": "utilizator"
+        },
+        "id": {
+            "legacy_caption_pid": 35203,
+            "legacy_language_pid": 35,
+            "text": "pemakai",
+            "auto_translated": "pemakai"
+        },
+        "sd": {
+            "legacy_caption_pid": 35204,
+            "legacy_language_pid": 36,
+            "text": "يوزر",
+            "auto_translated": "يوزر"
+        },
+        "af": {
+            "legacy_caption_pid": 35205,
+            "legacy_language_pid": 37,
+            "text": "gebruiker",
+            "auto_translated": "gebruiker"
+        },
+        "sw": {
+            "legacy_caption_pid": 35206,
+            "legacy_language_pid": 38,
+            "text": "user",
+            "auto_translated": "user"
+        },
+        "lo": {
+            "legacy_caption_pid": 35207,
+            "legacy_language_pid": 39,
+            "text": "User",
+            "auto_translated": "User"
+        },
+        "nl": {
+            "legacy_caption_pid": 35208,
+            "legacy_language_pid": 40,
+            "text": "gebruiker",
+            "auto_translated": "gebruiker"
+        },
+        "tl": {
+            "legacy_caption_pid": 35209,
+            "legacy_language_pid": 41,
+            "text": "gumagamit",
+            "auto_translated": "gumagamit"
+        },
+        "ne": {
+            "legacy_caption_pid": 35210,
+            "legacy_language_pid": 42,
+            "text": "प्रयोगकर्ता",
+            "auto_translated": "प्रयोगकर्ता"
+        },
+        "hu": {
+            "legacy_caption_pid": 35211,
+            "legacy_language_pid": 43,
+            "text": "használó",
+            "auto_translated": "használó"
+        },
+        "cs": {
+            "legacy_caption_pid": 35212,
+            "legacy_language_pid": 44,
+            "text": "uživatel",
+            "auto_translated": "uživatel"
+        },
+        "el": {
+            "legacy_caption_pid": 35213,
+            "legacy_language_pid": 45,
+            "text": "Ο χρήστης",
+            "auto_translated": "Ο χρήστης"
+        },
+        "sv": {
+            "legacy_caption_pid": 35214,
+            "legacy_language_pid": 46,
+            "text": "användare",
+            "auto_translated": "användare"
+        },
+        "kk": {
+            "legacy_caption_pid": 35215,
+            "legacy_language_pid": 47,
+            "text": "пайдаланушы",
+            "auto_translated": "пайдаланушы"
+        },
+        "fi": {
+            "legacy_caption_pid": 35216,
+            "legacy_language_pid": 48,
+            "text": "käyttäjä",
+            "auto_translated": "käyttäjä"
+        },
+        "da": {
+            "legacy_caption_pid": 35217,
+            "legacy_language_pid": 49,
+            "text": "Bruger",
+            "auto_translated": "Bruger"
+        },
+        "he": {
+            "legacy_caption_pid": 35218,
+            "legacy_language_pid": 50,
+            "text": "משתמש",
+            "auto_translated": "משתמש"
+        },
+        "no": {
+            "legacy_caption_pid": 35219,
+            "legacy_language_pid": 51,
+            "text": "Bruker",
+            "auto_translated": "Bruker"
+        }
+    }
+}

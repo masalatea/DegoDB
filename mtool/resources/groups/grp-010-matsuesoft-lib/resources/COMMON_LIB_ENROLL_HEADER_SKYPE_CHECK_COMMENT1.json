@@ -1,0 +1,321 @@
+{
+    "resource_key": "COMMON_LIB_ENROLL_HEADER_SKYPE_CHECK_COMMENT1",
+    "legacy_resource_pid": 1432,
+    "base_group_key": "grp-010-matsuesoft-lib",
+    "additional_group_keys": [],
+    "key_for_update": "odFEDopmpW4yr8bwr02K3xwFTwwWKcfnHcRvof8vikmZ6G7Sardgxmn9HcEwACcFNWy9ZiWNk8wP3ZGgYj9Bk5wGnMHFHotmKKcnIfGRZVJuVKrvFMS3OpT754po1Gmz",
+    "sort_group": "ENROLL",
+    "key_name": "COMMON_LIB_ENROLL_HEADER_SKYPE_CHECK_COMMENT1",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": false,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 6002,
+            "legacy_language_pid": 1,
+            "text": "Windowsの場合、Skypeを起動＆ログインし、オンラインの状態で上記ボタンを押して下さい。",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 6003,
+            "legacy_language_pid": 2,
+            "text": "For Windows, start & log in Skype, please press the button above while online.",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 6004,
+            "legacy_language_pid": 3,
+            "text": "在Windows的情况下，Skype的启动和登录，在联机状态下请按按钮。",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 6005,
+            "legacy_language_pid": 4,
+            "text": "Windows에서 Skype를 시작 및 로그인한 후, 온라인 상태에서 위의 버튼을 눌러주세요.",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 10862,
+            "legacy_language_pid": 5,
+            "text": "Para Windows, inicie y acceda a Skype, por favor presione el botón arriba mientras está en línea.",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 10863,
+            "legacy_language_pid": 6,
+            "text": "Para o Windows, comece e faça o login no Skype, por favor, pressione o botão acima, enquanto estiver online.",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 10864,
+            "legacy_language_pid": 7,
+            "text": "在Windows的情況下，Skype的啟動和登錄，在聯機狀態下請按按鈕。",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 17013,
+            "legacy_language_pid": 8,
+            "text": "Pour Windows, démarrez et connectez-vous sur Skype, appuyez sur le bouton ci-dessus en ligne.",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 17014,
+            "legacy_language_pid": 9,
+            "text": "विंडोज़ के लिए, स्काइप शुरू करें और लॉगिन करें, कृपया ऊपर का बटन दबाएं जब ऑनलाइन ",
+            "auto_translated": ""
+        },
+        "ar": {
+            "legacy_caption_pid": 31606,
+            "legacy_language_pid": 10,
+            "text": "في حالة ويندوز، وإطلاق سكايب وتسجيل الدخول، اضغط على زر في الدولة على الانترنت.",
+            "auto_translated": "في حالة ويندوز، وإطلاق سكايب وتسجيل الدخول، اضغط على زر في الدولة على الانترنت."
+        },
+        "fa": {
+            "legacy_caption_pid": 31607,
+            "legacy_language_pid": 11,
+            "text": "در مورد ویندوز، راه اندازی اسکایپ و از ورود، دکمه را فشار دهید در حالت آنلاین.",
+            "auto_translated": "در مورد ویندوز، راه اندازی اسکایپ و از ورود، دکمه را فشار دهید در حالت آنلاین."
+        },
+        "de": {
+            "legacy_caption_pid": 31608,
+            "legacy_language_pid": 12,
+            "text": "Im Fall von Windows, starten Sie das Skype & angemeldet, die Taste im Online-Zustand drücken.",
+            "auto_translated": "Im Fall von Windows, starten Sie das Skype & angemeldet, die Taste im Online-Zustand drücken."
+        },
+        "ru": {
+            "legacy_caption_pid": 31609,
+            "legacy_language_pid": 13,
+            "text": "В случае Windows, запустите Skype и входа в систему, нажмите на кнопку в оперативном режиме.",
+            "auto_translated": "В случае Windows, запустите Skype и входа в систему, нажмите на кнопку в оперативном режиме."
+        },
+        "ms": {
+            "legacy_caption_pid": 31610,
+            "legacy_language_pid": 14,
+            "text": "Dalam kes Windows, melancarkan Skype & log masuk, tekan butang di negeri ini dalam talian.",
+            "auto_translated": "Dalam kes Windows, melancarkan Skype & log masuk, tekan butang di negeri ini dalam talian."
+        },
+        "ta": {
+            "legacy_caption_pid": 31611,
+            "legacy_language_pid": 15,
+            "text": "விண்டோஸ் வழக்கில், ஸ்கைப் நடத்த & உள்நுழைந்திருக்க, ஆன்லைன் மாநிலத்தில் பொத்தானை அழுத்தவும்.",
+            "auto_translated": "விண்டோஸ் வழக்கில், ஸ்கைப் நடத்த & உள்நுழைந்திருக்க, ஆன்லைன் மாநிலத்தில் பொத்தானை அழுத்தவும்."
+        },
+        "it": {
+            "legacy_caption_pid": 31612,
+            "legacy_language_pid": 16,
+            "text": "Nel caso di Windows, lanciare l'Skype e loggato, premere il pulsante in stato on-line.",
+            "auto_translated": "Nel caso di Windows, lanciare l'Skype e loggato, premere il pulsante in stato on-line."
+        },
+        "bn": {
+            "legacy_caption_pid": 31613,
+            "legacy_language_pid": 17,
+            "text": "উইন্ডোজের ক্ষেত্রে, স্কাইপ চালু & লগ ইন, অনলাইন রাজ্যের বোতামটি টিপুন।",
+            "auto_translated": "উইন্ডোজের ক্ষেত্রে, স্কাইপ চালু & লগ ইন, অনলাইন রাজ্যের বোতামটি টিপুন।"
+        },
+        "tr": {
+            "legacy_caption_pid": 31614,
+            "legacy_language_pid": 18,
+            "text": "Windows'un durumda, Skype'ı başlatın ve oturum, çevrimiçi durumda düğmesine basın.",
+            "auto_translated": "Windows'un durumda, Skype'ı başlatın ve oturum, çevrimiçi durumda düğmesine basın."
+        },
+        "vi": {
+            "legacy_caption_pid": 31615,
+            "legacy_language_pid": 19,
+            "text": "Trong trường hợp của Windows, khởi động Skype & đăng nhập, nhấn vào nút ở trạng thái trực tuyến.",
+            "auto_translated": "Trong trường hợp của Windows, khởi động Skype & đăng nhập, nhấn vào nút ở trạng thái trực tuyến."
+        },
+        "pl": {
+            "legacy_caption_pid": 31616,
+            "legacy_language_pid": 20,
+            "text": "W przypadku systemu Windows, należy uruchomić Skype i zalogowaniu się, należy nacisnąć przycisk w stanie online.",
+            "auto_translated": "W przypadku systemu Windows, należy uruchomić Skype i zalogowaniu się, należy nacisnąć przycisk w stanie online."
+        },
+        "jv": {
+            "legacy_caption_pid": 31617,
+            "legacy_language_pid": 21,
+            "text": "Ing cilik saka Windows, miwiti Skype & mlebu ing, pencet tombol ing negara online.",
+            "auto_translated": "Ing cilik saka Windows, miwiti Skype & mlebu ing, pencet tombol ing negara online."
+        },
+        "pa": {
+            "legacy_caption_pid": 31618,
+            "legacy_language_pid": 22,
+            "text": "Windows ਦੇ ਮਾਮਲੇ ਵਿੱਚ, ਸਕਾਈਪ ਨੂੰ ਸ਼ੁਰੂ ਅਤੇ ਲਾਗਇਨ ਕੀਤਾ ਹੈ, ਆਨਲਾਈਨ ਸੂਬੇ ਵਿਚ ਬਟਨ ਨੂੰ ਦਬਾਓ.",
+            "auto_translated": "Windows ਦੇ ਮਾਮਲੇ ਵਿੱਚ, ਸਕਾਈਪ ਨੂੰ ਸ਼ੁਰੂ ਅਤੇ ਲਾਗਇਨ ਕੀਤਾ ਹੈ, ਆਨਲਾਈਨ ਸੂਬੇ ਵਿਚ ਬਟਨ ਨੂੰ ਦਬਾਓ."
+        },
+        "th": {
+            "legacy_caption_pid": 31619,
+            "legacy_language_pid": 23,
+            "text": "ในกรณีของ Windows, เปิดตัว Skype และเข้าสู่ระบบกดปุ่มในสถานะออนไลน์",
+            "auto_translated": "ในกรณีของ Windows, เปิดตัว Skype และเข้าสู่ระบบกดปุ่มในสถานะออนไลน์"
+        },
+        "te": {
+            "legacy_caption_pid": 38860,
+            "legacy_language_pid": 24,
+            "text": "Windows విషయంలో, స్కైప్ ప్రారంభించటానికి & లాగిన్, ఆన్లైన్ రాష్ట్రంలో బటన్ నొక్కండి.",
+            "auto_translated": "Windows విషయంలో, స్కైప్ ప్రారంభించటానికి & లాగిన్, ఆన్లైన్ రాష్ట్రంలో బటన్ నొక్కండి."
+        },
+        "mr": {
+            "legacy_caption_pid": 38861,
+            "legacy_language_pid": 25,
+            "text": "विंडोज बाबतीत, स्काईप लाँच करा लॉग-इन झाला, ऑनलाइन राज्यात बटण दाबा.",
+            "auto_translated": "विंडोज बाबतीत, स्काईप लाँच करा लॉग-इन झाला, ऑनलाइन राज्यात बटण दाबा."
+        },
+        "ur": {
+            "legacy_caption_pid": 38862,
+            "legacy_language_pid": 26,
+            "text": "ونڈوز کی صورت میں، اسکائپ شروع & لاگڈ، آن لائن ریاست میں بٹن دبائیں.",
+            "auto_translated": "ونڈوز کی صورت میں، اسکائپ شروع & لاگڈ، آن لائن ریاست میں بٹن دبائیں."
+        },
+        "gu": {
+            "legacy_caption_pid": 38863,
+            "legacy_language_pid": 27,
+            "text": "વિન્ડોઝ કિસ્સામાં, સ્કાયપે લોન્ચ & લૉગ ઇન, ઓનલાઇન રાજ્યમાં બટન દબાવો.",
+            "auto_translated": "વિન્ડોઝ કિસ્સામાં, સ્કાયપે લોન્ચ & લૉગ ઇન, ઓનલાઇન રાજ્યમાં બટન દબાવો."
+        },
+        "uk": {
+            "legacy_caption_pid": 38864,
+            "legacy_language_pid": 28,
+            "text": "У разі Windows, запустіть Skype і входу в систему, натисніть на кнопку в оперативному режимі.",
+            "auto_translated": "У разі Windows, запустіть Skype і входу в систему, натисніть на кнопку в оперативному режимі."
+        },
+        "ml": {
+            "legacy_caption_pid": 38865,
+            "legacy_language_pid": 29,
+            "text": "വിൻഡോസ് കാര്യത്തിൽ, സ്കൈപ്പ് ആരംഭിക്കുക ലോഗിൻ, ഓൺലൈൻ സംസ്ഥാനത്ത് ബട്ടൺ അമർത്തുക.",
+            "auto_translated": "വിൻഡോസ് കാര്യത്തിൽ, സ്കൈപ്പ് ആരംഭിക്കുക ലോഗിൻ, ഓൺലൈൻ സംസ്ഥാനത്ത് ബട്ടൺ അമർത്തുക."
+        },
+        "kn": {
+            "legacy_caption_pid": 38866,
+            "legacy_language_pid": 30,
+            "text": "ವಿಂಡೋಸ್ ಸಂದರ್ಭದಲ್ಲಿ, ಸ್ಕೈಪ್ ಆರಂಭಿಸಲು & ಲಾಗ್ ಇನ್, ಆನ್ಲೈನ್ ರಾಜ್ಯದಲ್ಲಿ ಬಟನ್ ಒತ್ತಿ.",
+            "auto_translated": "ವಿಂಡೋಸ್ ಸಂದರ್ಭದಲ್ಲಿ, ಸ್ಕೈಪ್ ಆರಂಭಿಸಲು & ಲಾಗ್ ಇನ್, ಆನ್ಲೈನ್ ರಾಜ್ಯದಲ್ಲಿ ಬಟನ್ ಒತ್ತಿ."
+        },
+        "su": {
+            "legacy_caption_pid": 38867,
+            "legacy_language_pid": 31,
+            "text": "Dina kasus Windows, ngajalankeun Skype & asup, mencet tombol dina kaayaan online.",
+            "auto_translated": "Dina kasus Windows, ngajalankeun Skype & asup, mencet tombol dina kaayaan online."
+        },
+        "ku": {
+            "legacy_caption_pid": 38868,
+            "legacy_language_pid": 32,
+            "text": "Di doza Windows, dest bi Skype & têketî, pêl bişkoka li dewletê bike.",
+            "auto_translated": "Di doza Windows, dest bi Skype & têketî, pêl bişkoka li dewletê bike."
+        },
+        "ps": {
+            "legacy_caption_pid": 38869,
+            "legacy_language_pid": 33,
+            "text": "د وينډوز په صورت کې، د سکايپ پیل & غونډال کې، په آنلاین دولت بټن.",
+            "auto_translated": "د وينډوز په صورت کې، د سکايپ پیل & غونډال کې، په آنلاین دولت بټن."
+        },
+        "ro": {
+            "legacy_caption_pid": 38870,
+            "legacy_language_pid": 34,
+            "text": "În cazul Windows, lansarea Skype & conectat, apăsați butonul în starea on-line.",
+            "auto_translated": "În cazul Windows, lansarea Skype & conectat, apăsați butonul în starea on-line."
+        },
+        "id": {
+            "legacy_caption_pid": 38871,
+            "legacy_language_pid": 35,
+            "text": "Dalam kasus Windows, meluncurkan Skype & login, tekan tombol di negara online.",
+            "auto_translated": "Dalam kasus Windows, meluncurkan Skype & login, tekan tombol di negara online."
+        },
+        "sd": {
+            "legacy_caption_pid": 38872,
+            "legacy_language_pid": 36,
+            "text": "ونڊوز جي صورت ۾، ته ڪي Skype ۽ لانچ ۾ لاگ ان، جي آن لائن رياست ۾ بٽڻ اوطاق.",
+            "auto_translated": "ونڊوز جي صورت ۾، ته ڪي Skype ۽ لانچ ۾ لاگ ان، جي آن لائن رياست ۾ بٽڻ اوطاق."
+        },
+        "af": {
+            "legacy_caption_pid": 38873,
+            "legacy_language_pid": 37,
+            "text": "In die geval van Windows, die bekendstelling van die Skype & aangemeld, druk die knoppie in die aanlyn toestand.",
+            "auto_translated": "In die geval van Windows, die bekendstelling van die Skype & aangemeld, druk die knoppie in die aanlyn toestand."
+        },
+        "sw": {
+            "legacy_caption_pid": 38874,
+            "legacy_language_pid": 38,
+            "text": "Katika kesi ya Windows, uzinduzi Skype & umeingia, bonyeza kitufe katika hali online.",
+            "auto_translated": "Katika kesi ya Windows, uzinduzi Skype & umeingia, bonyeza kitufe katika hali online."
+        },
+        "lo": {
+            "legacy_caption_pid": 38875,
+            "legacy_language_pid": 39,
+            "text": "ໃນກໍລະນີຂອງ Windows ໄດ້, ເປີດການ Skype ແລະເຂົ້າສູ່ລະບົບ, ໃຫ້ກົດປຸ່ມໃນລັດອອນໄລນ໌.",
+            "auto_translated": "ໃນກໍລະນີຂອງ Windows ໄດ້, ເປີດການ Skype ແລະເຂົ້າສູ່ລະບົບ, ໃຫ້ກົດປຸ່ມໃນລັດອອນໄລນ໌."
+        },
+        "nl": {
+            "legacy_caption_pid": 38876,
+            "legacy_language_pid": 40,
+            "text": "In het geval van Windows, start u de Skype & aangemeld, drukt u op de knop in de online staat.",
+            "auto_translated": "In het geval van Windows, start u de Skype & aangemeld, drukt u op de knop in de online staat."
+        },
+        "tl": {
+            "legacy_caption_pid": 38877,
+            "legacy_language_pid": 41,
+            "text": "Sa kaso ng Windows, ilunsad ang Skype at mag log in, pindutin ang pindutan sa online na estado.",
+            "auto_translated": "Sa kaso ng Windows, ilunsad ang Skype at mag log in, pindutin ang pindutan sa online na estado."
+        },
+        "ne": {
+            "legacy_caption_pid": 38878,
+            "legacy_language_pid": 42,
+            "text": "विन्डोज को मामला मा, स्काइप सुरु र लग इन, अनलाइन अवस्थामा बटन थिच्नुहोस्।",
+            "auto_translated": "विन्डोज को मामला मा, स्काइप सुरु र लग इन, अनलाइन अवस्थामा बटन थिच्नुहोस्।"
+        },
+        "hu": {
+            "legacy_caption_pid": 38879,
+            "legacy_language_pid": 43,
+            "text": "Abban az esetben, a Windows, indítsa el a Skype és bejelentkezett, nyomja meg a gombot az online állapotban.",
+            "auto_translated": "Abban az esetben, a Windows, indítsa el a Skype és bejelentkezett, nyomja meg a gombot az online állapotban."
+        },
+        "cs": {
+            "legacy_caption_pid": 38880,
+            "legacy_language_pid": 44,
+            "text": "V případě systému Windows, spusťte Skype a přihlásit, stiskněte tlačítko v režimu online.",
+            "auto_translated": "V případě systému Windows, spusťte Skype a přihlásit, stiskněte tlačítko v režimu online."
+        },
+        "el": {
+            "legacy_caption_pid": 38881,
+            "legacy_language_pid": 45,
+            "text": "Στην περίπτωση των Windows, ξεκινήσει το Skype & συνδεδεμένοι, πατήστε το κουμπί στην ηλεκτρονική κατάσταση.",
+            "auto_translated": "Στην περίπτωση των Windows, ξεκινήσει το Skype & συνδεδεμένοι, πατήστε το κουμπί στην ηλεκτρονική κατάσταση."
+        },
+        "sv": {
+            "legacy_caption_pid": 38882,
+            "legacy_language_pid": 46,
+            "text": "När det gäller Windows, starta Skype & loggat in, tryck på knappen i online tillstånd.",
+            "auto_translated": "När det gäller Windows, starta Skype & loggat in, tryck på knappen i online tillstånd."
+        },
+        "kk": {
+            "legacy_caption_pid": 38883,
+            "legacy_language_pid": 47,
+            "text": "Windows жағдайда, онлайн күйінде түймесін басыңыз, теңдестіруден & Skype іске.",
+            "auto_translated": "Windows жағдайда, онлайн күйінде түймесін басыңыз, теңдестіруден & Skype іске."
+        },
+        "fi": {
+            "legacy_caption_pid": 38884,
+            "legacy_language_pid": 48,
+            "text": "Kun kyseessä on Windows, käynnistä Skype ja kirjautunut sisään, paina nappia online-tilassa.",
+            "auto_translated": "Kun kyseessä on Windows, käynnistä Skype ja kirjautunut sisään, paina nappia online-tilassa."
+        },
+        "da": {
+            "legacy_caption_pid": 38885,
+            "legacy_language_pid": 49,
+            "text": "I tilfældet med Windows, lancere Skype & logget ind, tryk på knappen i online tilstand.",
+            "auto_translated": "I tilfældet med Windows, lancere Skype & logget ind, tryk på knappen i online tilstand."
+        },
+        "he": {
+            "legacy_caption_pid": 38886,
+            "legacy_language_pid": 50,
+            "text": "במקרה של Windows, להפעיל את סקייפ & מחובר, לחץ על לחצן במצב מקוון.",
+            "auto_translated": "במקרה של Windows, להפעיל את סקייפ & מחובר, לחץ על לחצן במצב מקוון."
+        },
+        "no": {
+            "legacy_caption_pid": 38887,
+            "legacy_language_pid": 51,
+            "text": "I tilfelle av Windows, starte Skype og logget inn, trykker du på knappen i nett tilstand.",
+            "auto_translated": "I tilfelle av Windows, starte Skype og logget inn, trykker du på knappen i nett tilstand."
+        }
+    }
+}

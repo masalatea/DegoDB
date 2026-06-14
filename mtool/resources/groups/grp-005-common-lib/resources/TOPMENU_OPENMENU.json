@@ -1,0 +1,321 @@
+{
+    "resource_key": "TOPMENU_OPENMENU",
+    "legacy_resource_pid": 529,
+    "base_group_key": "grp-005-common-lib",
+    "additional_group_keys": [],
+    "key_for_update": "wkTuiPTZjA980PmIFwSR6O53dWHzsyzCxJBtCeISOthnSUDSGIorITKMY2rZ45XeNhIDXNYkbIj3Vv1GRi6ptZVOgBISBJ8FkQJ8o9wzvcaibHkAK18dgv1U9wytGs0q",
+    "sort_group": "TOPMENU",
+    "key_name": "TOPMENU_OPENMENU",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": false,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 1417,
+            "legacy_language_pid": 1,
+            "text": "← メニューを開く",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 1418,
+            "legacy_language_pid": 2,
+            "text": "&lt;= Open Menu",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 6584,
+            "legacy_language_pid": 3,
+            "text": "←打开菜单",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 6585,
+            "legacy_language_pid": 4,
+            "text": "← 메뉴 열기",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 10627,
+            "legacy_language_pid": 5,
+            "text": "&lt; = Abrir menú",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 10628,
+            "legacy_language_pid": 6,
+            "text": "&lt; = Abrir Menu",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 10629,
+            "legacy_language_pid": 7,
+            "text": "←打開菜單",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 16371,
+            "legacy_language_pid": 8,
+            "text": "& Lt; = Ouvrir le menu",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 16372,
+            "legacy_language_pid": 9,
+            "text": "← मेनू खोलें",
+            "auto_translated": ""
+        },
+        "ar": {
+            "legacy_caption_pid": 30444,
+            "legacy_language_pid": 10,
+            "text": "← فتح القائمة",
+            "auto_translated": "← فتح القائمة"
+        },
+        "fa": {
+            "legacy_caption_pid": 30445,
+            "legacy_language_pid": 11,
+            "text": "← باز کردن منو",
+            "auto_translated": "← باز کردن منو"
+        },
+        "de": {
+            "legacy_caption_pid": 30446,
+            "legacy_language_pid": 12,
+            "text": "← öffnen Sie das Menü",
+            "auto_translated": "← öffnen Sie das Menü"
+        },
+        "ru": {
+            "legacy_caption_pid": 30447,
+            "legacy_language_pid": 13,
+            "text": "← открыть меню",
+            "auto_translated": "← открыть меню"
+        },
+        "ms": {
+            "legacy_caption_pid": 30448,
+            "legacy_language_pid": 14,
+            "text": "← membuka menu",
+            "auto_translated": "← membuka menu"
+        },
+        "ta": {
+            "legacy_caption_pid": 30449,
+            "legacy_language_pid": 15,
+            "text": "← மெனுவை திறக்க",
+            "auto_translated": "← மெனுவை திறக்க"
+        },
+        "it": {
+            "legacy_caption_pid": 30450,
+            "legacy_language_pid": 16,
+            "text": "← aprire il menu",
+            "auto_translated": "← aprire il menu"
+        },
+        "bn": {
+            "legacy_caption_pid": 30451,
+            "legacy_language_pid": 17,
+            "text": "← মেনু খুলুন",
+            "auto_translated": "← মেনু খুলুন"
+        },
+        "tr": {
+            "legacy_caption_pid": 30452,
+            "legacy_language_pid": 18,
+            "text": "← menüsünü açın",
+            "auto_translated": "← menüsünü açın"
+        },
+        "vi": {
+            "legacy_caption_pid": 30453,
+            "legacy_language_pid": 19,
+            "text": "← mở menu",
+            "auto_translated": "← mở menu"
+        },
+        "pl": {
+            "legacy_caption_pid": 30454,
+            "legacy_language_pid": 20,
+            "text": "← otworzyć menu",
+            "auto_translated": "← otworzyć menu"
+        },
+        "jv": {
+            "legacy_caption_pid": 30455,
+            "legacy_language_pid": 21,
+            "text": "← mbukak menu",
+            "auto_translated": "← mbukak menu"
+        },
+        "pa": {
+            "legacy_caption_pid": 30456,
+            "legacy_language_pid": 22,
+            "text": "← ਮੇਨੂ ਖੋਲ੍ਹਣ",
+            "auto_translated": "← ਮੇਨੂ ਖੋਲ੍ਹਣ"
+        },
+        "th": {
+            "legacy_caption_pid": 30457,
+            "legacy_language_pid": 23,
+            "text": "←เปิดเมนู",
+            "auto_translated": "←เปิดเมนู"
+        },
+        "te": {
+            "legacy_caption_pid": 35528,
+            "legacy_language_pid": 24,
+            "text": "← మెను తెరిచి",
+            "auto_translated": "← మెను తెరిచి"
+        },
+        "mr": {
+            "legacy_caption_pid": 35529,
+            "legacy_language_pid": 25,
+            "text": "← मेनू उघडा",
+            "auto_translated": "← मेनू उघडा"
+        },
+        "ur": {
+            "legacy_caption_pid": 35530,
+            "legacy_language_pid": 26,
+            "text": "← مینو کو کھولنے",
+            "auto_translated": "← مینو کو کھولنے"
+        },
+        "gu": {
+            "legacy_caption_pid": 35531,
+            "legacy_language_pid": 27,
+            "text": "← મેનુ ખોલવા",
+            "auto_translated": "← મેનુ ખોલવા"
+        },
+        "uk": {
+            "legacy_caption_pid": 35532,
+            "legacy_language_pid": 28,
+            "text": "← відкрити меню",
+            "auto_translated": "← відкрити меню"
+        },
+        "ml": {
+            "legacy_caption_pid": 35533,
+            "legacy_language_pid": 29,
+            "text": "← മെനു തുറന്ന്",
+            "auto_translated": "← മെനു തുറന്ന്"
+        },
+        "kn": {
+            "legacy_caption_pid": 35534,
+            "legacy_language_pid": 30,
+            "text": "← ಮೆನು ತೆರೆಯಲು",
+            "auto_translated": "← ಮೆನು ತೆರೆಯಲು"
+        },
+        "su": {
+            "legacy_caption_pid": 35535,
+            "legacy_language_pid": 31,
+            "text": "← muka menu nu",
+            "auto_translated": "← muka menu nu"
+        },
+        "ku": {
+            "legacy_caption_pid": 35536,
+            "legacy_language_pid": 32,
+            "text": "← vekirina menu",
+            "auto_translated": "← vekirina menu"
+        },
+        "ps": {
+            "legacy_caption_pid": 35537,
+            "legacy_language_pid": 33,
+            "text": "← د غورنۍ دابرخه",
+            "auto_translated": "← د غورنۍ دابرخه"
+        },
+        "ro": {
+            "legacy_caption_pid": 35538,
+            "legacy_language_pid": 34,
+            "text": "← deschide meniul",
+            "auto_translated": "← deschide meniul"
+        },
+        "id": {
+            "legacy_caption_pid": 35539,
+            "legacy_language_pid": 35,
+            "text": "← membuka menu",
+            "auto_translated": "← membuka menu"
+        },
+        "sd": {
+            "legacy_caption_pid": 35540,
+            "legacy_language_pid": 36,
+            "text": "← جي نامو کوليو",
+            "auto_translated": "← جي نامو کوليو"
+        },
+        "af": {
+            "legacy_caption_pid": 35541,
+            "legacy_language_pid": 37,
+            "text": "← oop die spyskaart",
+            "auto_translated": "← oop die spyskaart"
+        },
+        "sw": {
+            "legacy_caption_pid": 35542,
+            "legacy_language_pid": 38,
+            "text": "← kufungua menyu",
+            "auto_translated": "← kufungua menyu"
+        },
+        "lo": {
+            "legacy_caption_pid": 35543,
+            "legacy_language_pid": 39,
+            "text": "←ເປີດເມນູ",
+            "auto_translated": "←ເປີດເມນູ"
+        },
+        "nl": {
+            "legacy_caption_pid": 35544,
+            "legacy_language_pid": 40,
+            "text": "← open het menu",
+            "auto_translated": "← open het menu"
+        },
+        "tl": {
+            "legacy_caption_pid": 35545,
+            "legacy_language_pid": 41,
+            "text": "← buksan ang menu",
+            "auto_translated": "← buksan ang menu"
+        },
+        "ne": {
+            "legacy_caption_pid": 35546,
+            "legacy_language_pid": 42,
+            "text": "← मेनु खोल्न",
+            "auto_translated": "← मेनु खोल्न"
+        },
+        "hu": {
+            "legacy_caption_pid": 35547,
+            "legacy_language_pid": 43,
+            "text": "← megnyithatja a menüt",
+            "auto_translated": "← megnyithatja a menüt"
+        },
+        "cs": {
+            "legacy_caption_pid": 35548,
+            "legacy_language_pid": 44,
+            "text": "← otevření nabídky",
+            "auto_translated": "← otevření nabídky"
+        },
+        "el": {
+            "legacy_caption_pid": 35549,
+            "legacy_language_pid": 45,
+            "text": "← ανοίξετε το μενού",
+            "auto_translated": "← ανοίξετε το μενού"
+        },
+        "sv": {
+            "legacy_caption_pid": 35550,
+            "legacy_language_pid": 46,
+            "text": "← öppna menyn",
+            "auto_translated": "← öppna menyn"
+        },
+        "kk": {
+            "legacy_caption_pid": 35551,
+            "legacy_language_pid": 47,
+            "text": "← мәзірін ашу",
+            "auto_translated": "← мәзірін ашу"
+        },
+        "fi": {
+            "legacy_caption_pid": 35552,
+            "legacy_language_pid": 48,
+            "text": "← avaa valikko",
+            "auto_translated": "← avaa valikko"
+        },
+        "da": {
+            "legacy_caption_pid": 35553,
+            "legacy_language_pid": 49,
+            "text": "← åbne menuen",
+            "auto_translated": "← åbne menuen"
+        },
+        "he": {
+            "legacy_caption_pid": 35554,
+            "legacy_language_pid": 50,
+            "text": "← לפתוח את התפריט",
+            "auto_translated": "← לפתוח את התפריט"
+        },
+        "no": {
+            "legacy_caption_pid": 35555,
+            "legacy_language_pid": 51,
+            "text": "← åpne menyen",
+            "auto_translated": "← åpne menyen"
+        }
+    }
+}

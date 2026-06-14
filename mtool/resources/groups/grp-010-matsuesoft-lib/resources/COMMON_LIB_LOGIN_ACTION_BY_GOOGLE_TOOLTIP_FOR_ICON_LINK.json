@@ -1,0 +1,321 @@
+{
+    "resource_key": "COMMON_LIB_LOGIN_ACTION_BY_GOOGLE_TOOLTIP_FOR_ICON_LINK",
+    "legacy_resource_pid": 1475,
+    "base_group_key": "grp-010-matsuesoft-lib",
+    "additional_group_keys": [],
+    "key_for_update": "Fd07JAhSejrFAnpUDcujlzS8ADpHyXH7fSibYTecMUHdEOOoXEFGvyznKYaHND8hnoIhM6ALOv1ZVecPIkibExi1Zek22Fk1cMp1zvssbcwxjE46fIENs0THo7djb0ic",
+    "sort_group": "LOGIN",
+    "key_name": "COMMON_LIB_LOGIN_ACTION_BY_GOOGLE_TOOLTIP_FOR_ICON_LINK",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": false,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 6174,
+            "legacy_language_pid": 1,
+            "text": "Googleのアカウントで即時ログイン(ログイン情報保持オプション:ON)",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 6175,
+            "legacy_language_pid": 2,
+            "text": "Quick Login by Google ID (Keep Login Option:ON)",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 6176,
+            "legacy_language_pid": 3,
+            "text": "谷歌用户名ID的快速登录（登录信息保留选项：是）",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 6177,
+            "legacy_language_pid": 4,
+            "text": "Google ID로 퀵로그인 (로그인 유지 옵션 : 예)",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 11018,
+            "legacy_language_pid": 5,
+            "text": "Inicio de sesión inmediato con la cuenta de Google (opción de retención de información de inicio de sesión: ACTIVADA)",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 11019,
+            "legacy_language_pid": 6,
+            "text": "Login instantâneo com a conta do Google (opção de retenção de informações de login: ON)",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 11020,
+            "legacy_language_pid": 7,
+            "text": "谷歌用户名ID的快速登錄（登錄信息保留選項：是）",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 17211,
+            "legacy_language_pid": 8,
+            "text": "Connexion rapide par ID de Google (option de connexion au maintien: ON)",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 17212,
+            "legacy_language_pid": 9,
+            "text": "गूगल आईडी द्वारा त्वरित लॉगइन (लॉगिन विकल्प रखें: चालू)",
+            "auto_translated": ""
+        },
+        "ar": {
+            "legacy_caption_pid": 32320,
+            "legacy_language_pid": 10,
+            "text": "حساب Google لتسجيل الدخول الفوري (تسجيل الدخول خيار الاحتفاظ المعلومات: ON)",
+            "auto_translated": "حساب Google لتسجيل الدخول الفوري (تسجيل الدخول خيار الاحتفاظ المعلومات: ON)"
+        },
+        "fa": {
+            "legacy_caption_pid": 32321,
+            "legacy_language_pid": 11,
+            "text": "ورود به سیستم Google فوری (ورود گزینه حفظ اطلاعات: ON)",
+            "auto_translated": "ورود به سیستم Google فوری (ورود گزینه حفظ اطلاعات: ON)"
+        },
+        "de": {
+            "legacy_caption_pid": 32322,
+            "legacy_language_pid": 12,
+            "text": "Google-Konto sofort Login (Information Retention Option anmelden: ON)",
+            "auto_translated": "Google-Konto sofort Login (Information Retention Option anmelden: ON)"
+        },
+        "ru": {
+            "legacy_caption_pid": 32323,
+            "legacy_language_pid": 13,
+            "text": "счет Google немедленный Логин (логин варианта хранения информации: ON)",
+            "auto_translated": "счет Google немедленный Логин (логин варианта хранения информации: ON)"
+        },
+        "ms": {
+            "legacy_caption_pid": 32324,
+            "legacy_language_pid": 14,
+            "text": "akaun Google login segera (login pilihan pengekalan maklumat: ON)",
+            "auto_translated": "akaun Google login segera (login pilihan pengekalan maklumat: ON)"
+        },
+        "ta": {
+            "legacy_caption_pid": 32325,
+            "legacy_language_pid": 15,
+            "text": "Google கணக்கில் உடனடியாக உள்நுழைவு (லாகின் தகவல் வைத்திருத்தல் விருப்பத்தை: இயக்கத்தில்)",
+            "auto_translated": "Google கணக்கில் உடனடியாக உள்நுழைவு (லாகின் தகவல் வைத்திருத்தல் விருப்பத்தை: இயக்கத்தில்)"
+        },
+        "it": {
+            "legacy_caption_pid": 32326,
+            "legacy_language_pid": 16,
+            "text": "account Google login immediato (login opzione conservazione delle informazioni: ON)",
+            "auto_translated": "account Google login immediato (login opzione conservazione delle informazioni: ON)"
+        },
+        "bn": {
+            "legacy_caption_pid": 32327,
+            "legacy_language_pid": 17,
+            "text": "Google অ্যাকাউন্ট অবিলম্বে লগইন (লগ-ইন তথ্য ধারণ বিকল্প: চালু)",
+            "auto_translated": "Google অ্যাকাউন্ট অবিলম্বে লগইন (লগ-ইন তথ্য ধারণ বিকল্প: চালু)"
+        },
+        "tr": {
+            "legacy_caption_pid": 32328,
+            "legacy_language_pid": 18,
+            "text": "Google hesabı derhal giriş (bilgi saklama seçeneği giriş: AÇIK)",
+            "auto_translated": "Google hesabı derhal giriş (bilgi saklama seçeneği giriş: AÇIK)"
+        },
+        "vi": {
+            "legacy_caption_pid": 32329,
+            "legacy_language_pid": 19,
+            "text": "tài khoản Google đăng nhập ngay lập tức (đăng nhập tùy chọn duy trì thông tin: ON)",
+            "auto_translated": "tài khoản Google đăng nhập ngay lập tức (đăng nhập tùy chọn duy trì thông tin: ON)"
+        },
+        "pl": {
+            "legacy_caption_pid": 32330,
+            "legacy_language_pid": 20,
+            "text": "Konto Google natychmiastowy login (zalogować opcję zapamiętywania informacji: ON)",
+            "auto_translated": "Konto Google natychmiastowy login (zalogować opcję zapamiętywania informacji: ON)"
+        },
+        "jv": {
+            "legacy_caption_pid": 32331,
+            "legacy_language_pid": 21,
+            "text": "akun Google mlebu langsung (mlebet pilihan penylametan informasi: ON)",
+            "auto_translated": "akun Google mlebu langsung (mlebet pilihan penylametan informasi: ON)"
+        },
+        "pa": {
+            "legacy_caption_pid": 32332,
+            "legacy_language_pid": 22,
+            "text": "ਗੂਗਲ ਖਾਤੇ ਤੁਰੰਤ ਲਾਗਇਨ (ਲਾਗਇਨ ਜਾਣਕਾਰੀ ਧਾਰਨ ਚੋਣ: ਤੇ)",
+            "auto_translated": "ਗੂਗਲ ਖਾਤੇ ਤੁਰੰਤ ਲਾਗਇਨ (ਲਾਗਇਨ ਜਾਣਕਾਰੀ ਧਾਰਨ ਚੋਣ: ਤੇ)"
+        },
+        "th": {
+            "legacy_caption_pid": 32333,
+            "legacy_language_pid": 23,
+            "text": "บัญชี Google เข้าสู่ระบบได้ทันที (เข้าสู่ระบบตัวเลือกการเก็บรักษาข้อมูล: ON)",
+            "auto_translated": "บัญชี Google เข้าสู่ระบบได้ทันที (เข้าสู่ระบบตัวเลือกการเก็บรักษาข้อมูล: ON)"
+        },
+        "te": {
+            "legacy_caption_pid": 40988,
+            "legacy_language_pid": 24,
+            "text": "Google ఖాతా తక్షణ లాగిన్ (లాగిన్ సమాచారాన్ని నిలుపుదల ఎంపిక: ON)",
+            "auto_translated": "Google ఖాతా తక్షణ లాగిన్ (లాగిన్ సమాచారాన్ని నిలుపుదల ఎంపిక: ON)"
+        },
+        "mr": {
+            "legacy_caption_pid": 40989,
+            "legacy_language_pid": 25,
+            "text": "Google खाते तत्काळ लॉग इन (लॉगइन माहिती धारणा पर्याय: चालू)",
+            "auto_translated": "Google खाते तत्काळ लॉग इन (लॉगइन माहिती धारणा पर्याय: चालू)"
+        },
+        "ur": {
+            "legacy_caption_pid": 40990,
+            "legacy_language_pid": 26,
+            "text": "گوگل اکاؤنٹ فوری طور پر لاگ ان (لاگ ان معلومات کے برقرار رکھنے کا اختیار: ON)",
+            "auto_translated": "گوگل اکاؤنٹ فوری طور پر لاگ ان (لاگ ان معلومات کے برقرار رکھنے کا اختیار: ON)"
+        },
+        "gu": {
+            "legacy_caption_pid": 40991,
+            "legacy_language_pid": 27,
+            "text": "Google એકાઉન્ટ તાત્કાલિક પ્રવેશ (લોગઇન માહિતી રીટેન્શન વિકલ્પ: ચાલુ)",
+            "auto_translated": "Google એકાઉન્ટ તાત્કાલિક પ્રવેશ (લોગઇન માહિતી રીટેન્શન વિકલ્પ: ચાલુ)"
+        },
+        "uk": {
+            "legacy_caption_pid": 40992,
+            "legacy_language_pid": 28,
+            "text": "рахунок Google негайний Логін (логін варіанти зберігання інформації: ON)",
+            "auto_translated": "рахунок Google негайний Логін (логін варіанти зберігання інформації: ON)"
+        },
+        "ml": {
+            "legacy_caption_pid": 40993,
+            "legacy_language_pid": 29,
+            "text": "ഗൂഗിൾ അക്കൗണ്ട് ഉടൻ ലോഗിൻ (ലോഗിൻ വിവരം സൂക്ഷിക്കൽ ഓപ്ഷൻ: ഓൺ)",
+            "auto_translated": "ഗൂഗിൾ അക്കൗണ്ട് ഉടൻ ലോഗിൻ (ലോഗിൻ വിവരം സൂക്ഷിക്കൽ ഓപ്ഷൻ: ഓൺ)"
+        },
+        "kn": {
+            "legacy_caption_pid": 40994,
+            "legacy_language_pid": 30,
+            "text": "Google ಖಾತೆಯನ್ನು ತಕ್ಷಣ ಲಾಗಿನ್ (ಲಾಗಿನ್ ಮಾಹಿತಿ ಧಾರಣ ಆಯ್ಕೆಯನ್ನು: ಆನ್)",
+            "auto_translated": "Google ಖಾತೆಯನ್ನು ತಕ್ಷಣ ಲಾಗಿನ್ (ಲಾಗಿನ್ ಮಾಹಿತಿ ಧಾರಣ ಆಯ್ಕೆಯನ್ನು: ಆನ್)"
+        },
+        "su": {
+            "legacy_caption_pid": 40995,
+            "legacy_language_pid": 31,
+            "text": "Akun Google login saharita (login pilihan ingetan informasi: ON)",
+            "auto_translated": "Akun Google login saharita (login pilihan ingetan informasi: ON)"
+        },
+        "ku": {
+            "legacy_caption_pid": 40996,
+            "legacy_language_pid": 32,
+            "text": "account Google login yekser (login option kampên agahî: ON)",
+            "auto_translated": "account Google login yekser (login option kampên agahî: ON)"
+        },
+        "ps": {
+            "legacy_caption_pid": 40997,
+            "legacy_language_pid": 33,
+            "text": "سمدستي د ننوتو د ګوګل حساب (سئ معلوماتو د ساتلو انتخاب: د)",
+            "auto_translated": "سمدستي د ننوتو د ګوګل حساب (سئ معلوماتو د ساتلو انتخاب: د)"
+        },
+        "ro": {
+            "legacy_caption_pid": 40998,
+            "legacy_language_pid": 34,
+            "text": "Contul de conectare la Google imediată (opțiune de retenție informații de conectare: ON)",
+            "auto_translated": "Contul de conectare la Google imediată (opțiune de retenție informații de conectare: ON)"
+        },
+        "id": {
+            "legacy_caption_pid": 40999,
+            "legacy_language_pid": 35,
+            "text": "akun Google masuk langsung (masuk pilihan retensi informasi: ON)",
+            "auto_translated": "akun Google masuk langsung (masuk pilihan retensi informasi: ON)"
+        },
+        "sd": {
+            "legacy_caption_pid": 41000,
+            "legacy_language_pid": 36,
+            "text": "گوگل اڪائونٽ فوري طور تي لاگ ان (لاگ معلومات برقرار رکڻ اختيار: تي)",
+            "auto_translated": "گوگل اڪائونٽ فوري طور تي لاگ ان (لاگ معلومات برقرار رکڻ اختيار: تي)"
+        },
+        "af": {
+            "legacy_caption_pid": 41001,
+            "legacy_language_pid": 37,
+            "text": "Google-rekening onmiddellike login (Teken inligting behoud opsie: OP)",
+            "auto_translated": "Google-rekening onmiddellike login (Teken inligting behoud opsie: OP)"
+        },
+        "sw": {
+            "legacy_caption_pid": 41002,
+            "legacy_language_pid": 38,
+            "text": "akaunti ya Google ya haraka kuingia (kuingia habari retention chaguo: ON)",
+            "auto_translated": "akaunti ya Google ya haraka kuingia (kuingia habari retention chaguo: ON)"
+        },
+        "lo": {
+            "legacy_caption_pid": 41003,
+            "legacy_language_pid": 39,
+            "text": "ບັນຊີກູໂກເຂົ້າສູ່ລະບົບໄດ້ທັນທີ (ເຂົ້າສູ່ລະບົບທາງເລືອກການຮັກສາໄວ້ຂໍ້ມູນຂ່າວສານ: ON)",
+            "auto_translated": "ບັນຊີກູໂກເຂົ້າສູ່ລະບົບໄດ້ທັນທີ (ເຂົ້າສູ່ລະບົບທາງເລືອກການຮັກສາໄວ້ຂໍ້ມູນຂ່າວສານ: ON)"
+        },
+        "nl": {
+            "legacy_caption_pid": 41004,
+            "legacy_language_pid": 40,
+            "text": "Google-account onmiddellijke login (login informatie retentie optie: ON)",
+            "auto_translated": "Google-account onmiddellijke login (login informatie retentie optie: ON)"
+        },
+        "tl": {
+            "legacy_caption_pid": 41005,
+            "legacy_language_pid": 41,
+            "text": "Google account agarang pag-login (login impormasyon retention pagpipilian: ON)",
+            "auto_translated": "Google account agarang pag-login (login impormasyon retention pagpipilian: ON)"
+        },
+        "ne": {
+            "legacy_caption_pid": 41006,
+            "legacy_language_pid": 42,
+            "text": "गुगल खाता तत्काल लग इन (लगिन जानकारी अवधारणा विकल्प: मा)",
+            "auto_translated": "गुगल खाता तत्काल लग इन (लगिन जानकारी अवधारणा विकल्प: मा)"
+        },
+        "hu": {
+            "legacy_caption_pid": 41007,
+            "legacy_language_pid": 43,
+            "text": "Google-fiók azonnali belépés (a bejelentkezési információkat megtartása opciót: ON)",
+            "auto_translated": "Google-fiók azonnali belépés (a bejelentkezési információkat megtartása opciót: ON)"
+        },
+        "cs": {
+            "legacy_caption_pid": 41008,
+            "legacy_language_pid": 44,
+            "text": "Účet Google bezprostřední login (přihlašovací možnost uchování informace: ON)",
+            "auto_translated": "Účet Google bezprostřední login (přihlašovací možnost uchování informace: ON)"
+        },
+        "el": {
+            "legacy_caption_pid": 41009,
+            "legacy_language_pid": 45,
+            "text": "λογαριασμό Google άμεση σύνδεση (login επιλογή διατήρησης πληροφορίες: ON)",
+            "auto_translated": "λογαριασμό Google άμεση σύνδεση (login επιλογή διατήρησης πληροφορίες: ON)"
+        },
+        "sv": {
+            "legacy_caption_pid": 41010,
+            "legacy_language_pid": 46,
+            "text": "Google-konto omedelbart inloggning (inloggningsinformation behålla alternativ: ON)",
+            "auto_translated": "Google-konto omedelbart inloggning (inloggningsinformation behålla alternativ: ON)"
+        },
+        "kk": {
+            "legacy_caption_pid": 41011,
+            "legacy_language_pid": 47,
+            "text": "Google тіркелгі дереу кіру (ақпараттық сақтау параметрін логин: ON)",
+            "auto_translated": "Google тіркелгі дереу кіру (ақпараттық сақтау параметрін логин: ON)"
+        },
+        "fi": {
+            "legacy_caption_pid": 41012,
+            "legacy_language_pid": 48,
+            "text": "Google-tilin välitön kirjautuminen (kirjautumistiedot säilyttäminen vaihtoehto: ON)",
+            "auto_translated": "Google-tilin välitön kirjautuminen (kirjautumistiedot säilyttäminen vaihtoehto: ON)"
+        },
+        "da": {
+            "legacy_caption_pid": 41013,
+            "legacy_language_pid": 49,
+            "text": "Google-konto øjeblikkelig login (log valgmulighed oplysninger tilbageholdelse: ON)",
+            "auto_translated": "Google-konto øjeblikkelig login (log valgmulighed oplysninger tilbageholdelse: ON)"
+        },
+        "he": {
+            "legacy_caption_pid": 41014,
+            "legacy_language_pid": 50,
+            "text": "חשבון Google כניסה מיידית (אפשרות לשמירת נתונים להתחבר: ON)",
+            "auto_translated": "חשבון Google כניסה מיידית (אפשרות לשמירת נתונים להתחבר: ON)"
+        },
+        "no": {
+            "legacy_caption_pid": 41015,
+            "legacy_language_pid": 51,
+            "text": "Google-konto umiddelbar innlogging (påloggingsinformasjon oppbevaring alternativ: ON)",
+            "auto_translated": "Google-konto umiddelbar innlogging (påloggingsinformasjon oppbevaring alternativ: ON)"
+        }
+    }
+}

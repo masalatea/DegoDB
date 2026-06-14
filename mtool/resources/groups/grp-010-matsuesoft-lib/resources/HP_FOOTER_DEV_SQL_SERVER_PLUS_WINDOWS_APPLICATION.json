@@ -1,0 +1,69 @@
+{
+    "resource_key": "HP_FOOTER_DEV_SQL_SERVER_PLUS_WINDOWS_APPLICATION",
+    "legacy_resource_pid": 733,
+    "base_group_key": "grp-010-matsuesoft-lib",
+    "additional_group_keys": [],
+    "key_for_update": "6k0yWGREqaMuF5arEvHt2BOORgcBQXfRbBa0typ6l7iHnzM1bz9KjynhM1E6UekvAXQyBLCqqh6uEv4FMNarWYr5TO89oTWzX6Dsc65X9oAQwvz67oXZ4rMT8XZLQhPQ",
+    "sort_group": "HP FOOTER",
+    "key_name": "HP_FOOTER_DEV_SQL_SERVER_PLUS_WINDOWS_APPLICATION",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": true,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 4574,
+            "legacy_language_pid": 1,
+            "text": "SQL Serverを使ったウィンドウズ・アプリケーション",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 4575,
+            "legacy_language_pid": 2,
+            "text": "Windows Application with SQL Server",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 14151,
+            "legacy_language_pid": 3,
+            "text": "",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 14152,
+            "legacy_language_pid": 4,
+            "text": "",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 14153,
+            "legacy_language_pid": 5,
+            "text": "Aplicación de Windows con SQL Server",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 14154,
+            "legacy_language_pid": 6,
+            "text": "Aplicação do Windows com o SQL Server",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 14155,
+            "legacy_language_pid": 7,
+            "text": "",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 17101,
+            "legacy_language_pid": 8,
+            "text": "Application Windows avec SQL Server",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 17102,
+            "legacy_language_pid": 9,
+            "text": "SQL सर्वर के साथ Windows अनुप्रयोग",
+            "auto_translated": ""
+        }
+    }
+}

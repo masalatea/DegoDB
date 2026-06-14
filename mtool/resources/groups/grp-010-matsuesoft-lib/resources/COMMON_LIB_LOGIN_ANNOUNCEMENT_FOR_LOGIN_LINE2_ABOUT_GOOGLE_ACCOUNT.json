@@ -1,0 +1,321 @@
+{
+    "resource_key": "COMMON_LIB_LOGIN_ANNOUNCEMENT_FOR_LOGIN_LINE2_ABOUT_GOOGLE_ACCOUNT",
+    "legacy_resource_pid": 1491,
+    "base_group_key": "grp-010-matsuesoft-lib",
+    "additional_group_keys": [],
+    "key_for_update": "TSkP3u4zD0rePOfo8xDHmYtDY9ekm3YgW9o8ksIn1vd3kBoW5224M1BJ9YDJhDCldq2bun9sdPNdsjXj4CnxGdYJSQfZTH3CehPsJS6aPNBfFLqMZQm1LwXN9H1VjRts",
+    "sort_group": "LOGIN",
+    "key_name": "COMMON_LIB_LOGIN_ANNOUNCEMENT_FOR_LOGIN_LINE2_ABOUT_GOOGLE_ACCOUNT",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": false,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 6238,
+            "legacy_language_pid": 1,
+            "text": "Googleアカウント",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 6239,
+            "legacy_language_pid": 2,
+            "text": "Google Account",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 6240,
+            "legacy_language_pid": 3,
+            "text": "谷歌帐户",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 6241,
+            "legacy_language_pid": 4,
+            "text": "Google 계정",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 11036,
+            "legacy_language_pid": 5,
+            "text": "Cuenta Google",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 11037,
+            "legacy_language_pid": 6,
+            "text": "Conta do Google ",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 11038,
+            "legacy_language_pid": 7,
+            "text": "谷歌帳戶",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 17219,
+            "legacy_language_pid": 8,
+            "text": "Compte google",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 17220,
+            "legacy_language_pid": 9,
+            "text": "गूगल खाता",
+            "auto_translated": ""
+        },
+        "ar": {
+            "legacy_caption_pid": 32390,
+            "legacy_language_pid": 10,
+            "text": "حساب Google",
+            "auto_translated": "حساب Google"
+        },
+        "fa": {
+            "legacy_caption_pid": 32391,
+            "legacy_language_pid": 11,
+            "text": "حساب Google",
+            "auto_translated": "حساب Google"
+        },
+        "de": {
+            "legacy_caption_pid": 32392,
+            "legacy_language_pid": 12,
+            "text": "Google-Konto",
+            "auto_translated": "Google-Konto"
+        },
+        "ru": {
+            "legacy_caption_pid": 32393,
+            "legacy_language_pid": 13,
+            "text": "счет Google",
+            "auto_translated": "счет Google"
+        },
+        "ms": {
+            "legacy_caption_pid": 32394,
+            "legacy_language_pid": 14,
+            "text": "akaun Google",
+            "auto_translated": "akaun Google"
+        },
+        "ta": {
+            "legacy_caption_pid": 32395,
+            "legacy_language_pid": 15,
+            "text": "Google கணக்கு",
+            "auto_translated": "Google கணக்கு"
+        },
+        "it": {
+            "legacy_caption_pid": 32396,
+            "legacy_language_pid": 16,
+            "text": "account Google",
+            "auto_translated": "account Google"
+        },
+        "bn": {
+            "legacy_caption_pid": 32397,
+            "legacy_language_pid": 17,
+            "text": "Google অ্যাকাউন্ট",
+            "auto_translated": "Google অ্যাকাউন্ট"
+        },
+        "tr": {
+            "legacy_caption_pid": 32398,
+            "legacy_language_pid": 18,
+            "text": "Google hesabı",
+            "auto_translated": "Google hesabı"
+        },
+        "vi": {
+            "legacy_caption_pid": 32399,
+            "legacy_language_pid": 19,
+            "text": "tài khoản Google",
+            "auto_translated": "tài khoản Google"
+        },
+        "pl": {
+            "legacy_caption_pid": 32400,
+            "legacy_language_pid": 20,
+            "text": "konto Google",
+            "auto_translated": "konto Google"
+        },
+        "jv": {
+            "legacy_caption_pid": 32401,
+            "legacy_language_pid": 21,
+            "text": "akun Google",
+            "auto_translated": "akun Google"
+        },
+        "pa": {
+            "legacy_caption_pid": 32402,
+            "legacy_language_pid": 22,
+            "text": "ਗੂਗਲ ਖਾਤੇ",
+            "auto_translated": "ਗੂਗਲ ਖਾਤੇ"
+        },
+        "th": {
+            "legacy_caption_pid": 32403,
+            "legacy_language_pid": 23,
+            "text": "บัญชี Google",
+            "auto_translated": "บัญชี Google"
+        },
+        "te": {
+            "legacy_caption_pid": 40848,
+            "legacy_language_pid": 24,
+            "text": "Google ఖాతా",
+            "auto_translated": "Google ఖాతా"
+        },
+        "mr": {
+            "legacy_caption_pid": 40849,
+            "legacy_language_pid": 25,
+            "text": "Google खाते",
+            "auto_translated": "Google खाते"
+        },
+        "ur": {
+            "legacy_caption_pid": 40850,
+            "legacy_language_pid": 26,
+            "text": "Google اکاؤنٹ",
+            "auto_translated": "Google اکاؤنٹ"
+        },
+        "gu": {
+            "legacy_caption_pid": 40851,
+            "legacy_language_pid": 27,
+            "text": "Google એકાઉન્ટ",
+            "auto_translated": "Google એકાઉન્ટ"
+        },
+        "uk": {
+            "legacy_caption_pid": 40852,
+            "legacy_language_pid": 28,
+            "text": "рахунок Google",
+            "auto_translated": "рахунок Google"
+        },
+        "ml": {
+            "legacy_caption_pid": 40853,
+            "legacy_language_pid": 29,
+            "text": "google അക്കൗണ്ട്",
+            "auto_translated": "google അക്കൗണ്ട്"
+        },
+        "kn": {
+            "legacy_caption_pid": 40854,
+            "legacy_language_pid": 30,
+            "text": "Google ಖಾತೆಯನ್ನು",
+            "auto_translated": "Google ಖಾತೆಯನ್ನು"
+        },
+        "su": {
+            "legacy_caption_pid": 40855,
+            "legacy_language_pid": 31,
+            "text": "akun Google",
+            "auto_translated": "akun Google"
+        },
+        "ku": {
+            "legacy_caption_pid": 40856,
+            "legacy_language_pid": 32,
+            "text": "account Google",
+            "auto_translated": "account Google"
+        },
+        "ps": {
+            "legacy_caption_pid": 40857,
+            "legacy_language_pid": 33,
+            "text": "د ګوګل حساب",
+            "auto_translated": "د ګوګل حساب"
+        },
+        "ro": {
+            "legacy_caption_pid": 40858,
+            "legacy_language_pid": 34,
+            "text": "cont Google",
+            "auto_translated": "cont Google"
+        },
+        "id": {
+            "legacy_caption_pid": 40859,
+            "legacy_language_pid": 35,
+            "text": "akun Google",
+            "auto_translated": "akun Google"
+        },
+        "sd": {
+            "legacy_caption_pid": 40860,
+            "legacy_language_pid": 36,
+            "text": "گوگل اڪائونٽ",
+            "auto_translated": "گوگل اڪائونٽ"
+        },
+        "af": {
+            "legacy_caption_pid": 40861,
+            "legacy_language_pid": 37,
+            "text": "Google-rekening",
+            "auto_translated": "Google-rekening"
+        },
+        "sw": {
+            "legacy_caption_pid": 40862,
+            "legacy_language_pid": 38,
+            "text": "akaunti ya Google",
+            "auto_translated": "akaunti ya Google"
+        },
+        "lo": {
+            "legacy_caption_pid": 40863,
+            "legacy_language_pid": 39,
+            "text": "ບັນຊີກູໂກ",
+            "auto_translated": "ບັນຊີກູໂກ"
+        },
+        "nl": {
+            "legacy_caption_pid": 40864,
+            "legacy_language_pid": 40,
+            "text": "Google-account",
+            "auto_translated": "Google-account"
+        },
+        "tl": {
+            "legacy_caption_pid": 40865,
+            "legacy_language_pid": 41,
+            "text": "Google account",
+            "auto_translated": "Google account"
+        },
+        "ne": {
+            "legacy_caption_pid": 40866,
+            "legacy_language_pid": 42,
+            "text": "गुगल खाता",
+            "auto_translated": "गुगल खाता"
+        },
+        "hu": {
+            "legacy_caption_pid": 40867,
+            "legacy_language_pid": 43,
+            "text": "Google-fiók",
+            "auto_translated": "Google-fiók"
+        },
+        "cs": {
+            "legacy_caption_pid": 40868,
+            "legacy_language_pid": 44,
+            "text": "účet Google",
+            "auto_translated": "účet Google"
+        },
+        "el": {
+            "legacy_caption_pid": 40869,
+            "legacy_language_pid": 45,
+            "text": "λογαριασμού Google",
+            "auto_translated": "λογαριασμού Google"
+        },
+        "sv": {
+            "legacy_caption_pid": 40870,
+            "legacy_language_pid": 46,
+            "text": "Google-konto",
+            "auto_translated": "Google-konto"
+        },
+        "kk": {
+            "legacy_caption_pid": 40871,
+            "legacy_language_pid": 47,
+            "text": "Google тіркелгі",
+            "auto_translated": "Google тіркелгі"
+        },
+        "fi": {
+            "legacy_caption_pid": 40872,
+            "legacy_language_pid": 48,
+            "text": "Google-tilin",
+            "auto_translated": "Google-tilin"
+        },
+        "da": {
+            "legacy_caption_pid": 40873,
+            "legacy_language_pid": 49,
+            "text": "Google-konto",
+            "auto_translated": "Google-konto"
+        },
+        "he": {
+            "legacy_caption_pid": 40874,
+            "legacy_language_pid": 50,
+            "text": "חשבון Google",
+            "auto_translated": "חשבון Google"
+        },
+        "no": {
+            "legacy_caption_pid": 40875,
+            "legacy_language_pid": 51,
+            "text": "Google-konto",
+            "auto_translated": "Google-konto"
+        }
+    }
+}

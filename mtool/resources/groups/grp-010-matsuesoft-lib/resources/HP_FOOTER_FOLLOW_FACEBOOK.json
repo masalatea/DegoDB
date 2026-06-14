@@ -1,0 +1,69 @@
+{
+    "resource_key": "HP_FOOTER_FOLLOW_FACEBOOK",
+    "legacy_resource_pid": 667,
+    "base_group_key": "grp-010-matsuesoft-lib",
+    "additional_group_keys": [],
+    "key_for_update": "6uWX0zZFCNYKlbBZ3x9AEqAajpKjBSYSSNIk0PbZT238OMG1zL0XoGjYmIKdsLiK5rMuyVRC5EYjYxxCLaHU9csjyQQI3RLCUXdCwGIvGpUdFplSJSyWTu23ZtCeFMJw",
+    "sort_group": "HP FOOTER",
+    "key_name": "HP_FOOTER_FOLLOW_FACEBOOK",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": true,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 4586,
+            "legacy_language_pid": 1,
+            "text": "マツエソフトをフォローする　",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 4587,
+            "legacy_language_pid": 2,
+            "text": "Follow Matsuesoft ",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 14181,
+            "legacy_language_pid": 3,
+            "text": "",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 14182,
+            "legacy_language_pid": 4,
+            "text": "",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 14183,
+            "legacy_language_pid": 5,
+            "text": "Sigue a Matsuesoft",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 14184,
+            "legacy_language_pid": 6,
+            "text": "Siga Matsuesoft",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 14185,
+            "legacy_language_pid": 7,
+            "text": "",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 17113,
+            "legacy_language_pid": 8,
+            "text": "Suivez Matsuesoft",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 17114,
+            "legacy_language_pid": 9,
+            "text": "Matsuesoft अनुसरण करे ",
+            "auto_translated": ""
+        }
+    }
+}

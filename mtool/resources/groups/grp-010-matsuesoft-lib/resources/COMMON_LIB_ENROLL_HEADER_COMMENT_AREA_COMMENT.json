@@ -1,0 +1,321 @@
+{
+    "resource_key": "COMMON_LIB_ENROLL_HEADER_COMMENT_AREA_COMMENT",
+    "legacy_resource_pid": 1438,
+    "base_group_key": "grp-010-matsuesoft-lib",
+    "additional_group_keys": [],
+    "key_for_update": "5sG5aYUihyOZoQpdJlKPN28i8XoL7BNSbcYg6a9AsXXgpQYeQibazaRQ98idr6hlmDIJOW8wDQ91gG4haAuwOME7u237bmoK0HzytpdRVKhxPMAtGmNHJzg5ltJhfnXc",
+    "sort_group": "ENROLL",
+    "key_name": "COMMON_LIB_ENROLL_HEADER_COMMENT_AREA_COMMENT",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": false,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 6026,
+            "legacy_language_pid": 1,
+            "text": "(自由記入)",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 6027,
+            "legacy_language_pid": 2,
+            "text": "(Optional)",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 6028,
+            "legacy_language_pid": 3,
+            "text": "（自由记入）",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 6029,
+            "legacy_language_pid": 4,
+            "text": "(자유 기입)",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 10814,
+            "legacy_language_pid": 5,
+            "text": "(Opcional)",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 10815,
+            "legacy_language_pid": 6,
+            "text": "(Opcional)",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 10816,
+            "legacy_language_pid": 7,
+            "text": "（自由記入）",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 16487,
+            "legacy_language_pid": 8,
+            "text": "(Optionnel)",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 16488,
+            "legacy_language_pid": 9,
+            "text": "(ऐच्छिक)",
+            "auto_translated": ""
+        },
+        "ar": {
+            "legacy_caption_pid": 31354,
+            "legacy_language_pid": 10,
+            "text": "(الدخول مجانا)",
+            "auto_translated": "(الدخول مجانا)"
+        },
+        "fa": {
+            "legacy_caption_pid": 31355,
+            "legacy_language_pid": 11,
+            "text": "(ورود آزاد)",
+            "auto_translated": "(ورود آزاد)"
+        },
+        "de": {
+            "legacy_caption_pid": 31356,
+            "legacy_language_pid": 12,
+            "text": "(Eintritt frei)",
+            "auto_translated": "(Eintritt frei)"
+        },
+        "ru": {
+            "legacy_caption_pid": 31357,
+            "legacy_language_pid": 13,
+            "text": "(Вход свободный)",
+            "auto_translated": "(Вход свободный)"
+        },
+        "ms": {
+            "legacy_caption_pid": 31358,
+            "legacy_language_pid": 14,
+            "text": "(Masuk percuma)",
+            "auto_translated": "(Masuk percuma)"
+        },
+        "ta": {
+            "legacy_caption_pid": 31359,
+            "legacy_language_pid": 15,
+            "text": "(இலவச நுழைவு)",
+            "auto_translated": "(இலவச நுழைவு)"
+        },
+        "it": {
+            "legacy_caption_pid": 31360,
+            "legacy_language_pid": 16,
+            "text": "(Ingresso libero)",
+            "auto_translated": "(Ingresso libero)"
+        },
+        "bn": {
+            "legacy_caption_pid": 31361,
+            "legacy_language_pid": 17,
+            "text": "(ফ্রি এন্ট্রি)",
+            "auto_translated": "(ফ্রি এন্ট্রি)"
+        },
+        "tr": {
+            "legacy_caption_pid": 31362,
+            "legacy_language_pid": 18,
+            "text": "(Ücretsiz giriş)",
+            "auto_translated": "(Ücretsiz giriş)"
+        },
+        "vi": {
+            "legacy_caption_pid": 31363,
+            "legacy_language_pid": 19,
+            "text": "(Vào cửa miễn phí)",
+            "auto_translated": "(Vào cửa miễn phí)"
+        },
+        "pl": {
+            "legacy_caption_pid": 31364,
+            "legacy_language_pid": 20,
+            "text": "(Wstęp wolny)",
+            "auto_translated": "(Wstęp wolny)"
+        },
+        "jv": {
+            "legacy_caption_pid": 31365,
+            "legacy_language_pid": 21,
+            "text": "(Free entri)",
+            "auto_translated": "(Free entri)"
+        },
+        "pa": {
+            "legacy_caption_pid": 31366,
+            "legacy_language_pid": 22,
+            "text": "(ਮੁਫ਼ਤ ਇੰਦਰਾਜ਼)",
+            "auto_translated": "(ਮੁਫ਼ਤ ਇੰਦਰਾਜ਼)"
+        },
+        "th": {
+            "legacy_caption_pid": 31367,
+            "legacy_language_pid": 23,
+            "text": "(รายการฟรี)",
+            "auto_translated": "(รายการฟรี)"
+        },
+        "te": {
+            "legacy_caption_pid": 39336,
+            "legacy_language_pid": 24,
+            "text": "(ఉచిత ప్రవేశం)",
+            "auto_translated": "(ఉచిత ప్రవేశం)"
+        },
+        "mr": {
+            "legacy_caption_pid": 39337,
+            "legacy_language_pid": 25,
+            "text": "(मोफत नोंद)",
+            "auto_translated": "(मोफत नोंद)"
+        },
+        "ur": {
+            "legacy_caption_pid": 39338,
+            "legacy_language_pid": 26,
+            "text": "(مفت انٹری)",
+            "auto_translated": "(مفت انٹری)"
+        },
+        "gu": {
+            "legacy_caption_pid": 39339,
+            "legacy_language_pid": 27,
+            "text": "(ફ્રી એન્ટ્રી)",
+            "auto_translated": "(ફ્રી એન્ટ્રી)"
+        },
+        "uk": {
+            "legacy_caption_pid": 39340,
+            "legacy_language_pid": 28,
+            "text": "(Вхід вільний)",
+            "auto_translated": "(Вхід вільний)"
+        },
+        "ml": {
+            "legacy_caption_pid": 39341,
+            "legacy_language_pid": 29,
+            "text": "(സ്വതന്ത്ര എൻട്രി)",
+            "auto_translated": "(സ്വതന്ത്ര എൻട്രി)"
+        },
+        "kn": {
+            "legacy_caption_pid": 39342,
+            "legacy_language_pid": 30,
+            "text": "(ಫ್ರೀ ಪ್ರವೇಶ)",
+            "auto_translated": "(ಫ್ರೀ ಪ್ರವೇಶ)"
+        },
+        "su": {
+            "legacy_caption_pid": 39343,
+            "legacy_language_pid": 31,
+            "text": "(Free Éntri)",
+            "auto_translated": "(Free Éntri)"
+        },
+        "ku": {
+            "legacy_caption_pid": 39344,
+            "legacy_language_pid": 32,
+            "text": "(Entry Free)",
+            "auto_translated": "(Entry Free)"
+        },
+        "ps": {
+            "legacy_caption_pid": 39345,
+            "legacy_language_pid": 33,
+            "text": "(د ازادو د ننوتلو)",
+            "auto_translated": "(د ازادو د ننوتلو)"
+        },
+        "ro": {
+            "legacy_caption_pid": 39346,
+            "legacy_language_pid": 34,
+            "text": "(Intrare gratuită)",
+            "auto_translated": "(Intrare gratuită)"
+        },
+        "id": {
+            "legacy_caption_pid": 39347,
+            "legacy_language_pid": 35,
+            "text": "(Gratis entry)",
+            "auto_translated": "(Gratis entry)"
+        },
+        "sd": {
+            "legacy_caption_pid": 39348,
+            "legacy_language_pid": 36,
+            "text": "(ڪانهي ۾ داخل ٿيڻ)",
+            "auto_translated": "(ڪانهي ۾ داخل ٿيڻ)"
+        },
+        "af": {
+            "legacy_caption_pid": 39349,
+            "legacy_language_pid": 37,
+            "text": "(Gratis toegang)",
+            "auto_translated": "(Gratis toegang)"
+        },
+        "sw": {
+            "legacy_caption_pid": 39350,
+            "legacy_language_pid": 38,
+            "text": "(Free kuingia)",
+            "auto_translated": "(Free kuingia)"
+        },
+        "lo": {
+            "legacy_caption_pid": 39351,
+            "legacy_language_pid": 39,
+            "text": "(ເຂົ້າຟຣີ)",
+            "auto_translated": "(ເຂົ້າຟຣີ)"
+        },
+        "nl": {
+            "legacy_caption_pid": 39352,
+            "legacy_language_pid": 40,
+            "text": "(Gratis toegang)",
+            "auto_translated": "(Gratis toegang)"
+        },
+        "tl": {
+            "legacy_caption_pid": 39353,
+            "legacy_language_pid": 41,
+            "text": "(Libreng entry)",
+            "auto_translated": "(Libreng entry)"
+        },
+        "ne": {
+            "legacy_caption_pid": 39354,
+            "legacy_language_pid": 42,
+            "text": "(फ्री प्रविष्टि)",
+            "auto_translated": "(फ्री प्रविष्टि)"
+        },
+        "hu": {
+            "legacy_caption_pid": 39355,
+            "legacy_language_pid": 43,
+            "text": "(A belépés ingyenes)",
+            "auto_translated": "(A belépés ingyenes)"
+        },
+        "cs": {
+            "legacy_caption_pid": 39356,
+            "legacy_language_pid": 44,
+            "text": "(Vstup zdarma)",
+            "auto_translated": "(Vstup zdarma)"
+        },
+        "el": {
+            "legacy_caption_pid": 39357,
+            "legacy_language_pid": 45,
+            "text": "(Δωρεάν είσοδος)",
+            "auto_translated": "(Δωρεάν είσοδος)"
+        },
+        "sv": {
+            "legacy_caption_pid": 39358,
+            "legacy_language_pid": 46,
+            "text": "(Fri entré)",
+            "auto_translated": "(Fri entré)"
+        },
+        "kk": {
+            "legacy_caption_pid": 39359,
+            "legacy_language_pid": 47,
+            "text": "(Кіру тегін)",
+            "auto_translated": "(Кіру тегін)"
+        },
+        "fi": {
+            "legacy_caption_pid": 39360,
+            "legacy_language_pid": 48,
+            "text": "(Vapaa pääsy)",
+            "auto_translated": "(Vapaa pääsy)"
+        },
+        "da": {
+            "legacy_caption_pid": 39361,
+            "legacy_language_pid": 49,
+            "text": "(Gratis adgang)",
+            "auto_translated": "(Gratis adgang)"
+        },
+        "he": {
+            "legacy_caption_pid": 39362,
+            "legacy_language_pid": 50,
+            "text": "(כניסה חינם)",
+            "auto_translated": "(כניסה חינם)"
+        },
+        "no": {
+            "legacy_caption_pid": 39363,
+            "legacy_language_pid": 51,
+            "text": "(Gratis inngang)",
+            "auto_translated": "(Gratis inngang)"
+        }
+    }
+}

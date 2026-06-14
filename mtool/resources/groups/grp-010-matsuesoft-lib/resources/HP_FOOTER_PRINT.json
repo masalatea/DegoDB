@@ -1,0 +1,69 @@
+{
+    "resource_key": "HP_FOOTER_PRINT",
+    "legacy_resource_pid": 1174,
+    "base_group_key": "grp-010-matsuesoft-lib",
+    "additional_group_keys": [],
+    "key_for_update": "b97qwIBOdqAiocl61eOVfKi5SAEOZH3hbrxpxeD18qYPK3UXAPK9rHOwNYW9E1dQuv9XcvdPgqJkFd3ydvdkg4stt315BfiRNAxFG2cfW8LLUbve8tHAP1h0dom2svTC",
+    "sort_group": "HP FOOTER",
+    "key_name": "HP_FOOTER_PRINT",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": true,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 4614,
+            "legacy_language_pid": 1,
+            "text": "クラウド印刷 DegoPrint",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 4615,
+            "legacy_language_pid": 2,
+            "text": "Cloud Form Print - DegoPrint",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 14251,
+            "legacy_language_pid": 3,
+            "text": "",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 14252,
+            "legacy_language_pid": 4,
+            "text": "",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 14253,
+            "legacy_language_pid": 5,
+            "text": "Impresión en forma de nube - DegoPrint",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 14254,
+            "legacy_language_pid": 6,
+            "text": "Impressão em forma de nuvem - DegoPrint",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 14255,
+            "legacy_language_pid": 7,
+            "text": "",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 17141,
+            "legacy_language_pid": 8,
+            "text": "Cloud Print Print - DegoPrint",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 17142,
+            "legacy_language_pid": 9,
+            "text": "क्लाउड फॉर्म प्रिंट - DegoPrint",
+            "auto_translated": ""
+        }
+    }
+}

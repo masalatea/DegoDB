@@ -1,0 +1,321 @@
+{
+    "resource_key": "TOAST_ALREADY_LOGIN_BY_TWITTER_ACCOUNT",
+    "legacy_resource_pid": 926,
+    "base_group_key": "grp-028-app-common-lib",
+    "additional_group_keys": [],
+    "key_for_update": "qDzOr8wvIaunR8GXQpYdEDXvH5uk8ryoAk34hRWjAc0bT62Ui7dOCAYhJwsY9vY525VPlsYqlmQS83kz6sfMDBP2ry9epWQ8leNScAh0zfwxS8uG7vwZw7VsnXmXGkvu",
+    "sort_group": "Toast",
+    "key_name": "TOAST_ALREADY_LOGIN_BY_TWITTER_ACCOUNT",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": false,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 913,
+            "legacy_language_pid": 1,
+            "text": "既にTwitterアカウントでログイン中です。一端ログアウトしてからログイン下さい。",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 914,
+            "legacy_language_pid": 2,
+            "text": "You are already Logged in by Twitter Account. Please logout before login.",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 6478,
+            "legacy_language_pid": 3,
+            "text": "你在Twitter账号已经登录。请注销并退出。",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 6479,
+            "legacy_language_pid": 4,
+            "text": "이미 Twitter 계정으로 로그인 중입니다. 로그아웃하고 다시 로그인하세요.",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 10268,
+            "legacy_language_pid": 5,
+            "text": "Ya has iniciado sesión con la cuenta de Twitter. Salga antes de iniciar sesión.",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 10269,
+            "legacy_language_pid": 6,
+            "text": "Ya iniciou sessão com a conta de Twitter. Salga antes de iniciar sessão.",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 10270,
+            "legacy_language_pid": 7,
+            "text": "你在Twitter賬號已經登錄。請註銷並退出。",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 16217,
+            "legacy_language_pid": 8,
+            "text": "Vous êtes déjà connecté par le compte Twitter. Veuillez vous déconnecter avant de vous connecter.",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 16218,
+            "legacy_language_pid": 9,
+            "text": "आप पहले से ही ट्विटर खाता से लॉग इन हैं। लॉगिन से पहले लॉगआउट करें",
+            "auto_translated": ""
+        },
+        "ar": {
+            "legacy_caption_pid": 28974,
+            "legacy_language_pid": 10,
+            "text": "قمت بتسجيل بالفعل في حساب في تويتر. يرجى تسجيل الخروج وتسجيل الخروج.",
+            "auto_translated": "قمت بتسجيل بالفعل في حساب في تويتر. يرجى تسجيل الخروج وتسجيل الخروج."
+        },
+        "fa": {
+            "legacy_caption_pid": 28975,
+            "legacy_language_pid": 11,
+            "text": "شما در حال حاضر در حساب توییتر وارد سایت شوید. لطفا از سیستم خارج و از سیستم خارج شوید.",
+            "auto_translated": "شما در حال حاضر در حساب توییتر وارد سایت شوید. لطفا از سیستم خارج و از سیستم خارج شوید."
+        },
+        "de": {
+            "legacy_caption_pid": 28976,
+            "legacy_language_pid": 12,
+            "text": "Sie sind bereits bei Twitter-Account angemeldet. Bitte melden Sie sich ab und melden Sie sich an.",
+            "auto_translated": "Sie sind bereits bei Twitter-Account angemeldet. Bitte melden Sie sich ab und melden Sie sich an."
+        },
+        "ru": {
+            "legacy_caption_pid": 28977,
+            "legacy_language_pid": 13,
+            "text": "Вы уже зарегистрированы на Твиттере. Пожалуйста, выйдите из системы и выйти из системы.",
+            "auto_translated": "Вы уже зарегистрированы на Твиттере. Пожалуйста, выйдите из системы и выйти из системы."
+        },
+        "ms": {
+            "legacy_caption_pid": 28978,
+            "legacy_language_pid": 14,
+            "text": "Anda telah berjaya masuk di akaun Twitter. Sila log keluar dan log keluar.",
+            "auto_translated": "Anda telah berjaya masuk di akaun Twitter. Sila log keluar dan log keluar."
+        },
+        "ta": {
+            "legacy_caption_pid": 28979,
+            "legacy_language_pid": 15,
+            "text": "நீங்கள் ஏற்கனவே ட்விட்டர் கணக்கு உள்நுழைந்துள்ளீர்கள். வெளியே உள்நுழைந்து வெளியே உள்நுழையவும்.",
+            "auto_translated": "நீங்கள் ஏற்கனவே ட்விட்டர் கணக்கு உள்நுழைந்துள்ளீர்கள். வெளியே உள்நுழைந்து வெளியே உள்நுழையவும்."
+        },
+        "it": {
+            "legacy_caption_pid": 28980,
+            "legacy_language_pid": 16,
+            "text": "Sei già effettuato l'accesso a account Twitter. Si prega di disconnettersi e uscire.",
+            "auto_translated": "Sei già effettuato l'accesso a account Twitter. Si prega di disconnettersi e uscire."
+        },
+        "bn": {
+            "legacy_caption_pid": 28981,
+            "legacy_language_pid": 17,
+            "text": "আপনি ইতিমধ্যে টুইটার একাউন্টে এ লগ ইন করেছেন। লগ আউট করে লগ আউট করুন।",
+            "auto_translated": "আপনি ইতিমধ্যে টুইটার একাউন্টে এ লগ ইন করেছেন। লগ আউট করে লগ আউট করুন।"
+        },
+        "tr": {
+            "legacy_caption_pid": 28982,
+            "legacy_language_pid": 18,
+            "text": "Zaten Twitter hesabı en kaydedilir. çıkış yapıp çıkış yapın.",
+            "auto_translated": "Zaten Twitter hesabı en kaydedilir. çıkış yapıp çıkış yapın."
+        },
+        "vi": {
+            "legacy_caption_pid": 28983,
+            "legacy_language_pid": 19,
+            "text": "Bạn đã đăng nhập vào tài khoản Twitter. Vui lòng đăng xuất và đăng xuất.",
+            "auto_translated": "Bạn đã đăng nhập vào tài khoản Twitter. Vui lòng đăng xuất và đăng xuất."
+        },
+        "pl": {
+            "legacy_caption_pid": 28984,
+            "legacy_language_pid": 20,
+            "text": "Jesteś już zalogowany na koncie Twitter. Proszę się wylogować i zalogować się.",
+            "auto_translated": "Jesteś już zalogowany na koncie Twitter. Proszę się wylogować i zalogować się."
+        },
+        "jv": {
+            "legacy_caption_pid": 28985,
+            "legacy_language_pid": 21,
+            "text": "Sampeyan wis mlebu ing akun Twitter. Mangga log metu lan mlebu metu.",
+            "auto_translated": "Sampeyan wis mlebu ing akun Twitter. Mangga log metu lan mlebu metu."
+        },
+        "pa": {
+            "legacy_caption_pid": 28986,
+            "legacy_language_pid": 22,
+            "text": "ਤੁਹਾਨੂੰ ਹੀ ਟਵਿੱਟਰ ਖਾਤੇ ਵਿੱਚ ਲਾਗਇਨ ਕਰ ਰਹੇ ਹਨ. ਬਾਹਰ ਤੇ ਲਾਗਇਨ ਕਰੋ ਅਤੇ ਲਾਗ ਆਉਟ ਕਰੋ.",
+            "auto_translated": "ਤੁਹਾਨੂੰ ਹੀ ਟਵਿੱਟਰ ਖਾਤੇ ਵਿੱਚ ਲਾਗਇਨ ਕਰ ਰਹੇ ਹਨ. ਬਾਹਰ ਤੇ ਲਾਗਇਨ ਕਰੋ ਅਤੇ ਲਾਗ ਆਉਟ ਕਰੋ."
+        },
+        "th": {
+            "legacy_caption_pid": 28987,
+            "legacy_language_pid": 23,
+            "text": "คุณจะถูกบันทึกไว้แล้วในบัญชี Twitter โปรดออกจากระบบและออกจากระบบ",
+            "auto_translated": "คุณจะถูกบันทึกไว้แล้วในบัญชี Twitter โปรดออกจากระบบและออกจากระบบ"
+        },
+        "te": {
+            "legacy_caption_pid": 34884,
+            "legacy_language_pid": 24,
+            "text": "మీరు ఇప్పటికే ట్విట్టర్ ఎకౌంటు లాగిన్ అయ్యారు. లాగ్ అవుట్ మరియు లాగ్ అవుట్ దయచేసి.",
+            "auto_translated": "మీరు ఇప్పటికే ట్విట్టర్ ఎకౌంటు లాగిన్ అయ్యారు. లాగ్ అవుట్ మరియు లాగ్ అవుట్ దయచేసి."
+        },
+        "mr": {
+            "legacy_caption_pid": 34885,
+            "legacy_language_pid": 25,
+            "text": "आपण आधीच Twitter खात्यासह लॉग इन केले आहे. लॉग आउट करा आणि लॉग इन करा.",
+            "auto_translated": "आपण आधीच Twitter खात्यासह लॉग इन केले आहे. लॉग आउट करा आणि लॉग इन करा."
+        },
+        "ur": {
+            "legacy_caption_pid": 34886,
+            "legacy_language_pid": 26,
+            "text": "آپ نے پہلے ہی ٹوئٹر اکاؤنٹ پر لاگ ان ہیں. لاگ آؤٹ کریں اور باہر لاگ ان کریں.",
+            "auto_translated": "آپ نے پہلے ہی ٹوئٹر اکاؤنٹ پر لاگ ان ہیں. لاگ آؤٹ کریں اور باہر لاگ ان کریں."
+        },
+        "gu": {
+            "legacy_caption_pid": 34887,
+            "legacy_language_pid": 27,
+            "text": "જો તમે પહેલાથી જ ટ્વિટર એકાઉન્ટ પર લૉગ ઇન છો. લૉગ આઉટ અને બહાર લૉગ ઇન કરો.",
+            "auto_translated": "જો તમે પહેલાથી જ ટ્વિટર એકાઉન્ટ પર લૉગ ઇન છો. લૉગ આઉટ અને બહાર લૉગ ઇન કરો."
+        },
+        "uk": {
+            "legacy_caption_pid": 34888,
+            "legacy_language_pid": 28,
+            "text": "Ви вже зареєстровані на Твіттері. Будь ласка, вийдіть із системи і вийти з системи.",
+            "auto_translated": "Ви вже зареєстровані на Твіттері. Будь ласка, вийдіть із системи і вийти з системи."
+        },
+        "ml": {
+            "legacy_caption_pid": 34889,
+            "legacy_language_pid": 29,
+            "text": "നിങ്ങൾ ഇതിനകം ട്വിറ്റർ അക്കൗണ്ട് ലോഗിൻ ചെയ്തു. ലോഗ് ഔട്ട് പുറത്ത് ദയവായി.",
+            "auto_translated": "നിങ്ങൾ ഇതിനകം ട്വിറ്റർ അക്കൗണ്ട് ലോഗിൻ ചെയ്തു. ലോഗ് ഔട്ട് പുറത്ത് ദയവായി."
+        },
+        "kn": {
+            "legacy_caption_pid": 34890,
+            "legacy_language_pid": 30,
+            "text": "ನೀವು ಈಗಾಗಲೇ ಟ್ವಿಟರ್ ಖಾತೆಯನ್ನು ಪ್ರವೇಶಿಸಿದ್ದೀರಿ. ಲಾಗ್ ಔಟ್ ಲಾಗ್ ಔಟ್ ಮಾಡಿ.",
+            "auto_translated": "ನೀವು ಈಗಾಗಲೇ ಟ್ವಿಟರ್ ಖಾತೆಯನ್ನು ಪ್ರವೇಶಿಸಿದ್ದೀರಿ. ಲಾಗ್ ಔಟ್ ಲಾಗ್ ಔಟ್ ಮಾಡಿ."
+        },
+        "su": {
+            "legacy_caption_pid": 34891,
+            "legacy_language_pid": 31,
+            "text": "Anjeun geus asup dina akun Twitter. Mangga kaluar na kaluar.",
+            "auto_translated": "Anjeun geus asup dina akun Twitter. Mangga kaluar na kaluar."
+        },
+        "ku": {
+            "legacy_caption_pid": 34892,
+            "legacy_language_pid": 32,
+            "text": "Tu bi xwe di at account Twitter têketî. Ji kerema xwe log out û log out.",
+            "auto_translated": "Tu bi xwe di at account Twitter têketî. Ji kerema xwe log out û log out."
+        },
+        "ps": {
+            "legacy_caption_pid": 34893,
+            "legacy_language_pid": 33,
+            "text": "تاسو مخکې په ټویټر حساب غونډال کې. لطفا وتنه او وتنه.",
+            "auto_translated": "تاسو مخکې په ټویټر حساب غونډال کې. لطفا وتنه او وتنه."
+        },
+        "ro": {
+            "legacy_caption_pid": 34894,
+            "legacy_language_pid": 34,
+            "text": "Sunteți deja conectat la contul Twitter. Deconectați-vă și conectați afară.",
+            "auto_translated": "Sunteți deja conectat la contul Twitter. Deconectați-vă și conectați afară."
+        },
+        "id": {
+            "legacy_caption_pid": 34895,
+            "legacy_language_pid": 35,
+            "text": "Anda sudah login di akun Twitter. Silakan log out dan log out.",
+            "auto_translated": "Anda sudah login di akun Twitter. Silakan log out dan log out."
+        },
+        "sd": {
+            "legacy_caption_pid": 34896,
+            "legacy_language_pid": 36,
+            "text": "تون اڳ ۾ ئي Twitter اڪائونٽ تي لاگ ان رهيا آهن. ٻاهر جو لاگ ان ۽ ٻاهر جو لاگ ان ڪريو.",
+            "auto_translated": "تون اڳ ۾ ئي Twitter اڪائونٽ تي لاگ ان رهيا آهن. ٻاهر جو لاگ ان ۽ ٻاهر جو لاگ ان ڪريو."
+        },
+        "af": {
+            "legacy_caption_pid": 34897,
+            "legacy_language_pid": 37,
+            "text": "Jy is reeds aangemeld by Twitter rekening. Asseblief uit te teken en teken uit.",
+            "auto_translated": "Jy is reeds aangemeld by Twitter rekening. Asseblief uit te teken en teken uit."
+        },
+        "sw": {
+            "legacy_caption_pid": 34898,
+            "legacy_language_pid": 38,
+            "text": "Tayari umeingia katika akaunti ya Twitter. Tafadhali toka na kuingia nje.",
+            "auto_translated": "Tayari umeingia katika akaunti ya Twitter. Tafadhali toka na kuingia nje."
+        },
+        "lo": {
+            "legacy_caption_pid": 34899,
+            "legacy_language_pid": 39,
+            "text": "ເຈົ້າຍັງບໍ່ໄດ້ເຂົ້າສູ່ລະບົບແລ້ວໃນບັນຊີ Twitter. ກະລຸນາເຂົ້າສູ່ລະບົບແລະອອກຈາກລະບົບ.",
+            "auto_translated": "ເຈົ້າຍັງບໍ່ໄດ້ເຂົ້າສູ່ລະບົບແລ້ວໃນບັນຊີ Twitter. ກະລຸນາເຂົ້າສູ່ລະບົບແລະອອກຈາກລະບົບ."
+        },
+        "nl": {
+            "legacy_caption_pid": 34900,
+            "legacy_language_pid": 40,
+            "text": "Je bent al aangemeld bij Twitter-account. Gelieve uit te loggen en uit te loggen.",
+            "auto_translated": "Je bent al aangemeld bij Twitter-account. Gelieve uit te loggen en uit te loggen."
+        },
+        "tl": {
+            "legacy_caption_pid": 34901,
+            "legacy_language_pid": 41,
+            "text": "Gumagamit ka na naka-log in sa Twitter account. Mangyaring mag-log out at mag-log out.",
+            "auto_translated": "Gumagamit ka na naka-log in sa Twitter account. Mangyaring mag-log out at mag-log out."
+        },
+        "ne": {
+            "legacy_caption_pid": 34902,
+            "legacy_language_pid": 42,
+            "text": "तपाईंले पहिले नै ट्विटर खाता मा लग इन हुनुहुन्छ। कृपया लग आउट गर्नुहोस् र लग आउट।",
+            "auto_translated": "तपाईंले पहिले नै ट्विटर खाता मा लग इन हुनुहुन्छ। कृपया लग आउट गर्नुहोस् र लग आउट।"
+        },
+        "hu": {
+            "legacy_caption_pid": 34903,
+            "legacy_language_pid": 43,
+            "text": "Ön már bejelentkezett a Twitter fiókot. Kérjük, jelentkezzen ki és jelentkezzen ki.",
+            "auto_translated": "Ön már bejelentkezett a Twitter fiókot. Kérjük, jelentkezzen ki és jelentkezzen ki."
+        },
+        "cs": {
+            "legacy_caption_pid": 34904,
+            "legacy_language_pid": 44,
+            "text": "Již jste přihlášeni na Twitter účtu. Prosím, přihlaste se a odhlásit.",
+            "auto_translated": "Již jste přihlášeni na Twitter účtu. Prosím, přihlaste se a odhlásit."
+        },
+        "el": {
+            "legacy_caption_pid": 34905,
+            "legacy_language_pid": 45,
+            "text": "Είστε ήδη συνδεδεμένοι στο λογαριασμό Twitter. Παρακαλούμε συνδεθείτε και να αποσυνδεθείτε.",
+            "auto_translated": "Είστε ήδη συνδεδεμένοι στο λογαριασμό Twitter. Παρακαλούμε συνδεθείτε και να αποσυνδεθείτε."
+        },
+        "sv": {
+            "legacy_caption_pid": 34906,
+            "legacy_language_pid": 46,
+            "text": "Du är redan inloggad på Twitter-konto. Logga ut och logga ut.",
+            "auto_translated": "Du är redan inloggad på Twitter-konto. Logga ut och logga ut."
+        },
+        "kk": {
+            "legacy_caption_pid": 34907,
+            "legacy_language_pid": 47,
+            "text": "Сіз қазірдің өзінде Twitter есебінен тіркеледі. шығу және шығу сұраймыз.",
+            "auto_translated": "Сіз қазірдің өзінде Twitter есебінен тіркеледі. шығу және шығу сұраймыз."
+        },
+        "fi": {
+            "legacy_caption_pid": 34908,
+            "legacy_language_pid": 48,
+            "text": "Olet jo kirjautunut sisään osoitteessa Twitter-tilille. Kirjaudu ulos ja kirjaudu ulos.",
+            "auto_translated": "Olet jo kirjautunut sisään osoitteessa Twitter-tilille. Kirjaudu ulos ja kirjaudu ulos."
+        },
+        "da": {
+            "legacy_caption_pid": 34909,
+            "legacy_language_pid": 49,
+            "text": "Du er allerede logget ind på Twitter-konto. Du skal logge ud og logge ud.",
+            "auto_translated": "Du er allerede logget ind på Twitter-konto. Du skal logge ud og logge ud."
+        },
+        "he": {
+            "legacy_caption_pid": 34910,
+            "legacy_language_pid": 50,
+            "text": "אתה כבר מחובר אל חשבון טוויטר. אנא להתנתק ולהתחבר החוצה.",
+            "auto_translated": "אתה כבר מחובר אל חשבון טוויטר. אנא להתנתק ולהתחבר החוצה."
+        },
+        "no": {
+            "legacy_caption_pid": 34911,
+            "legacy_language_pid": 51,
+            "text": "Du er allerede logget inn på Twitter konto. Vennligst logge ut og logge ut.",
+            "auto_translated": "Du er allerede logget inn på Twitter konto. Vennligst logge ut og logge ut."
+        }
+    }
+}

@@ -1,0 +1,69 @@
+{
+    "resource_key": "HP_FOOTER_ENGLISH_SCHOOL",
+    "legacy_resource_pid": 690,
+    "base_group_key": "grp-010-matsuesoft-lib",
+    "additional_group_keys": [],
+    "key_for_update": "pPErTqAZNJwAEIxLj9LsHs0Ke6bDURXGWbn4KIJRbwRvg2pDDQKGJOuC6Eo79YGu3UuJqWX7rb0mj3dQcCZkqgujuOMwKtdymQlrkYTue6BoCVH57iQwHF6nhk9SEmEO",
+    "sort_group": "HP FOOTER",
+    "key_name": "HP_FOOTER_ENGLISH_SCHOOL",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": true,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 4576,
+            "legacy_language_pid": 1,
+            "text": "オンライン英会話スクール",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 4577,
+            "legacy_language_pid": 2,
+            "text": "Online English School",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 14156,
+            "legacy_language_pid": 3,
+            "text": "",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 14157,
+            "legacy_language_pid": 4,
+            "text": "",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 14158,
+            "legacy_language_pid": 5,
+            "text": "Escuela de inglés en línea",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 14159,
+            "legacy_language_pid": 6,
+            "text": "Escola de inglês on-line",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 14160,
+            "legacy_language_pid": 7,
+            "text": "",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 17103,
+            "legacy_language_pid": 8,
+            "text": "École d'anglais en ligne",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 17104,
+            "legacy_language_pid": 9,
+            "text": "ऑनलाइन अंग्रेजी स्कूल",
+            "auto_translated": ""
+        }
+    }
+}

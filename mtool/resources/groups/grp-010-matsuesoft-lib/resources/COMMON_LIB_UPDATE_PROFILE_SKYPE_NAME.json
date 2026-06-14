@@ -1,0 +1,321 @@
+{
+    "resource_key": "COMMON_LIB_UPDATE_PROFILE_SKYPE_NAME",
+    "legacy_resource_pid": 1619,
+    "base_group_key": "grp-010-matsuesoft-lib",
+    "additional_group_keys": [],
+    "key_for_update": "nWbB8mfel0Ho5osMjtpq3vVyDPIcepuUBCefcwQd0kII56ApQZZMZduubyh7CAp7YU3Zg34x8TNtVIeJuF6TRGB37ZI6OrK3IkdIrSuCQoZE9ddK0PMDymyU2zFzMOQY",
+    "sort_group": "PROFILE",
+    "key_name": "COMMON_LIB_UPDATE_PROFILE_SKYPE_NAME",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": false,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 7258,
+            "legacy_language_pid": 1,
+            "text": "Skype名(スカイプのユーザ名):",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 7259,
+            "legacy_language_pid": 2,
+            "text": "Skype Name (ID):",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 7260,
+            "legacy_language_pid": 3,
+            "text": "Skype用户名（ID）：",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 7261,
+            "legacy_language_pid": 4,
+            "text": "Skype 이름 (아이디) :",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 11183,
+            "legacy_language_pid": 5,
+            "text": " Nombre de Skype (ID):",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 11184,
+            "legacy_language_pid": 6,
+            "text": " Nome do Skype (ID): ",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 11185,
+            "legacy_language_pid": 7,
+            "text": "Skype用戶名（ID）：",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 17295,
+            "legacy_language_pid": 8,
+            "text": "Nom Skype (ID):",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 17296,
+            "legacy_language_pid": 9,
+            "text": "स्काइप का नाम (आईडी):",
+            "auto_translated": ""
+        },
+        "ar": {
+            "legacy_caption_pid": 33050,
+            "legacy_language_pid": 10,
+            "text": "اسم سكايب (سكايب اسم المستخدم):",
+            "auto_translated": "اسم سكايب (سكايب اسم المستخدم):"
+        },
+        "fa": {
+            "legacy_caption_pid": 33051,
+            "legacy_language_pid": 11,
+            "text": "نام اسکایپ (نام کاربری اسکایپ):",
+            "auto_translated": "نام اسکایپ (نام کاربری اسکایپ):"
+        },
+        "de": {
+            "legacy_caption_pid": 33052,
+            "legacy_language_pid": 12,
+            "text": "Skype-Name (Skype-Benutzername):",
+            "auto_translated": "Skype-Name (Skype-Benutzername):"
+        },
+        "ru": {
+            "legacy_caption_pid": 33053,
+            "legacy_language_pid": 13,
+            "text": "Имя Skype (Skype имя пользователя):",
+            "auto_translated": "Имя Skype (Skype имя пользователя):"
+        },
+        "ms": {
+            "legacy_caption_pid": 33054,
+            "legacy_language_pid": 14,
+            "text": "Nama Skype (skype nama pengguna):",
+            "auto_translated": "Nama Skype (skype nama pengguna):"
+        },
+        "ta": {
+            "legacy_caption_pid": 33055,
+            "legacy_language_pid": 15,
+            "text": "ஸ்கைப் பெயர் (ஸ்கைப் பயனர் பெயர் இல்லை):",
+            "auto_translated": "ஸ்கைப் பெயர் (ஸ்கைப் பயனர் பெயர் இல்லை):"
+        },
+        "it": {
+            "legacy_caption_pid": 33056,
+            "legacy_language_pid": 16,
+            "text": "Contatto Skype (Skype nome utente):",
+            "auto_translated": "Contatto Skype (Skype nome utente):"
+        },
+        "bn": {
+            "legacy_caption_pid": 33057,
+            "legacy_language_pid": 17,
+            "text": "স্কাইপ নাম (স্কাইপ ব্যবহারকারীর নাম):",
+            "auto_translated": "স্কাইপ নাম (স্কাইপ ব্যবহারকারীর নাম):"
+        },
+        "tr": {
+            "legacy_caption_pid": 33058,
+            "legacy_language_pid": 18,
+            "text": "Skype Adı (Skype kullanıcı adı):",
+            "auto_translated": "Skype Adı (Skype kullanıcı adı):"
+        },
+        "vi": {
+            "legacy_caption_pid": 33059,
+            "legacy_language_pid": 19,
+            "text": "Tên Skype (tên người dùng Skype):",
+            "auto_translated": "Tên Skype (tên người dùng Skype):"
+        },
+        "pl": {
+            "legacy_caption_pid": 33060,
+            "legacy_language_pid": 20,
+            "text": "Nazwa Skype (Skype nazwa użytkownika):",
+            "auto_translated": "Nazwa Skype (Skype nazwa użytkownika):"
+        },
+        "jv": {
+            "legacy_caption_pid": 33061,
+            "legacy_language_pid": 21,
+            "text": "Jeneng Skype (Skype jeneng panganggo):",
+            "auto_translated": "Jeneng Skype (Skype jeneng panganggo):"
+        },
+        "pa": {
+            "legacy_caption_pid": 33062,
+            "legacy_language_pid": 22,
+            "text": "ਸਕਾਈਪ ਨਾਮ (ਸਕਾਈਪ ਉਪਭੋਗੀ ਨੂੰ ਨਾਮ):",
+            "auto_translated": "ਸਕਾਈਪ ਨਾਮ (ਸਕਾਈਪ ਉਪਭੋਗੀ ਨੂੰ ਨਾਮ):"
+        },
+        "th": {
+            "legacy_caption_pid": 33063,
+            "legacy_language_pid": 23,
+            "text": "ชื่อ Skype (ชื่อผู้ใช้ Skype):",
+            "auto_translated": "ชื่อ Skype (ชื่อผู้ใช้ Skype):"
+        },
+        "te": {
+            "legacy_caption_pid": 39504,
+            "legacy_language_pid": 24,
+            "text": "స్కైప్ పేరు (స్కైప్ యూజర్ పేరు):",
+            "auto_translated": "స్కైప్ పేరు (స్కైప్ యూజర్ పేరు):"
+        },
+        "mr": {
+            "legacy_caption_pid": 39505,
+            "legacy_language_pid": 25,
+            "text": "स्काईप नाव (स्काईप वापरकर्ता नाव):",
+            "auto_translated": "स्काईप नाव (स्काईप वापरकर्ता नाव):"
+        },
+        "ur": {
+            "legacy_caption_pid": 39506,
+            "legacy_language_pid": 26,
+            "text": "اسکائپ نام (اسکائپ صارف نام):",
+            "auto_translated": "اسکائپ نام (اسکائپ صارف نام):"
+        },
+        "gu": {
+            "legacy_caption_pid": 39507,
+            "legacy_language_pid": 27,
+            "text": "સ્કાયપે નામ (સ્કાયપે વપરાશકર્તા નામ):",
+            "auto_translated": "સ્કાયપે નામ (સ્કાયપે વપરાશકર્તા નામ):"
+        },
+        "uk": {
+            "legacy_caption_pid": 39508,
+            "legacy_language_pid": 28,
+            "text": "Ім'я Skype (Skype ім'я користувача):",
+            "auto_translated": "Ім'я Skype (Skype ім'я користувача):"
+        },
+        "ml": {
+            "legacy_caption_pid": 39509,
+            "legacy_language_pid": 29,
+            "text": "സ്കൈപ്പ് പേര് (സ്കൈപ്പ് ഉപയോക്തൃ നാമം):",
+            "auto_translated": "സ്കൈപ്പ് പേര് (സ്കൈപ്പ് ഉപയോക്തൃ നാമം):"
+        },
+        "kn": {
+            "legacy_caption_pid": 39510,
+            "legacy_language_pid": 30,
+            "text": "ಸ್ಕೈಪ್ ಹೆಸರು (ಸ್ಕೈಪ್ ಬಳಕೆದಾರರ ಹೆಸರು):",
+            "auto_translated": "ಸ್ಕೈಪ್ ಹೆಸರು (ಸ್ಕೈಪ್ ಬಳಕೆದಾರರ ಹೆಸರು):"
+        },
+        "su": {
+            "legacy_caption_pid": 39511,
+            "legacy_language_pid": 31,
+            "text": "Ngaran Skype (Skype ngaran pamaké):",
+            "auto_translated": "Ngaran Skype (Skype ngaran pamaké):"
+        },
+        "ku": {
+            "legacy_caption_pid": 39512,
+            "legacy_language_pid": 32,
+            "text": "Navê Skype (user name Skypeê):",
+            "auto_translated": "Navê Skype (user name Skypeê):"
+        },
+        "ps": {
+            "legacy_caption_pid": 39513,
+            "legacy_language_pid": 33,
+            "text": "سکايپ نوم (سکایپ کارن نوم):",
+            "auto_translated": "سکايپ نوم (سکایپ کارن نوم):"
+        },
+        "ro": {
+            "legacy_caption_pid": 39514,
+            "legacy_language_pid": 34,
+            "text": "Nume Skype (Skype numele de utilizator):",
+            "auto_translated": "Nume Skype (Skype numele de utilizator):"
+        },
+        "id": {
+            "legacy_caption_pid": 39515,
+            "legacy_language_pid": 35,
+            "text": "Nama skype (skype nama pengguna):",
+            "auto_translated": "Nama skype (skype nama pengguna):"
+        },
+        "sd": {
+            "legacy_caption_pid": 39516,
+            "legacy_language_pid": 36,
+            "text": "Skype جي نالي سان (Skype جي استعمال ڪندڙ جو نالو):",
+            "auto_translated": "Skype جي نالي سان (Skype جي استعمال ڪندڙ جو نالو):"
+        },
+        "af": {
+            "legacy_caption_pid": 39517,
+            "legacy_language_pid": 37,
+            "text": "Skype Naam (Skype gebruiker naam):",
+            "auto_translated": "Skype Naam (Skype gebruiker naam):"
+        },
+        "sw": {
+            "legacy_caption_pid": 39518,
+            "legacy_language_pid": 38,
+            "text": "Jina Skype (Skype jina la mtumiaji):",
+            "auto_translated": "Jina Skype (Skype jina la mtumiaji):"
+        },
+        "lo": {
+            "legacy_caption_pid": 39519,
+            "legacy_language_pid": 39,
+            "text": "ຊື່ Skype (ຊື່ຜູ້ໃຊ້ Skype):",
+            "auto_translated": "ຊື່ Skype (ຊື່ຜູ້ໃຊ້ Skype):"
+        },
+        "nl": {
+            "legacy_caption_pid": 39520,
+            "legacy_language_pid": 40,
+            "text": "Skype-naam (Skype gebruikersnaam):",
+            "auto_translated": "Skype-naam (Skype gebruikersnaam):"
+        },
+        "tl": {
+            "legacy_caption_pid": 39521,
+            "legacy_language_pid": 41,
+            "text": "Pangalan Skype (Skype user name):",
+            "auto_translated": "Pangalan Skype (Skype user name):"
+        },
+        "ne": {
+            "legacy_caption_pid": 39522,
+            "legacy_language_pid": 42,
+            "text": "स्काइप नाम (skype प्रयोगकर्ता नाम):",
+            "auto_translated": "स्काइप नाम (skype प्रयोगकर्ता नाम):"
+        },
+        "hu": {
+            "legacy_caption_pid": 39523,
+            "legacy_language_pid": 43,
+            "text": "Skype-név (Skype felhasználó név):",
+            "auto_translated": "Skype-név (Skype felhasználó név):"
+        },
+        "cs": {
+            "legacy_caption_pid": 39524,
+            "legacy_language_pid": 44,
+            "text": "Jméno Skype (Skype uživatelské jméno):",
+            "auto_translated": "Jméno Skype (Skype uživatelské jméno):"
+        },
+        "el": {
+            "legacy_caption_pid": 39525,
+            "legacy_language_pid": 45,
+            "text": "Όνομα Skype (όνομα χρήστη Skype):",
+            "auto_translated": "Όνομα Skype (όνομα χρήστη Skype):"
+        },
+        "sv": {
+            "legacy_caption_pid": 39526,
+            "legacy_language_pid": 46,
+            "text": "Skype-namn (Skype användarnamn):",
+            "auto_translated": "Skype-namn (Skype användarnamn):"
+        },
+        "kk": {
+            "legacy_caption_pid": 39527,
+            "legacy_language_pid": 47,
+            "text": "Skype Name (Skype пайдаланушы аты):",
+            "auto_translated": "Skype Name (Skype пайдаланушы аты):"
+        },
+        "fi": {
+            "legacy_caption_pid": 39528,
+            "legacy_language_pid": 48,
+            "text": "Skype-nimi (Skype käyttäjätunnus):",
+            "auto_translated": "Skype-nimi (Skype käyttäjätunnus):"
+        },
+        "da": {
+            "legacy_caption_pid": 39529,
+            "legacy_language_pid": 49,
+            "text": "Skype-navn (Skype-brugernavn):",
+            "auto_translated": "Skype-navn (Skype-brugernavn):"
+        },
+        "he": {
+            "legacy_caption_pid": 39530,
+            "legacy_language_pid": 50,
+            "text": "שם סקייפ (שם משתמש בסקייפ):",
+            "auto_translated": "שם סקייפ (שם משתמש בסקייפ):"
+        },
+        "no": {
+            "legacy_caption_pid": 39531,
+            "legacy_language_pid": 51,
+            "text": "Skype navn (Skype brukernavn):",
+            "auto_translated": "Skype navn (Skype brukernavn):"
+        }
+    }
+}

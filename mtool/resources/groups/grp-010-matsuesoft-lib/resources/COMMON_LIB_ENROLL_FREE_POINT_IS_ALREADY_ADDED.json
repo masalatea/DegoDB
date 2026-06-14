@@ -1,0 +1,321 @@
+{
+    "resource_key": "COMMON_LIB_ENROLL_FREE_POINT_IS_ALREADY_ADDED",
+    "legacy_resource_pid": 1452,
+    "base_group_key": "grp-010-matsuesoft-lib",
+    "additional_group_keys": [],
+    "key_for_update": "yPp9mMKGhktjP6GsUeNlPdwO8FohdJy4hNZa1udhCpEc2caQC7EenjfuwFH8yALcloQfPmV5rSk4HXCY129QGFJfT6efmqo7kovOhHC8upone3KyXav8ZycNpF1MRylA",
+    "sort_group": "ENROLL",
+    "key_name": "COMMON_LIB_ENROLL_FREE_POINT_IS_ALREADY_ADDED",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": false,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 6082,
+            "legacy_language_pid": 1,
+            "text": "ポイントは既に付与されておりますので、会員ページからレッスンをご予約下さい。",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 6083,
+            "legacy_language_pid": 2,
+            "text": "As points have already been added, please reserve lessons from the membership page.",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 6084,
+            "legacy_language_pid": 3,
+            "text": "已经给与积分，请到会员页面进行课程预约",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 6085,
+            "legacy_language_pid": 4,
+            "text": "포인트는 이미 부여되어 있으므로, 회원 페이지에서 레슨을 예약하세요.",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 10792,
+            "legacy_language_pid": 5,
+            "text": "Como se han añadido puntos, por favor, reserve las lecciones de la página de membresía.",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 10793,
+            "legacy_language_pid": 6,
+            "text": "Como pontos já foram adicionados, reserve lições da página de membros",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 10794,
+            "legacy_language_pid": 7,
+            "text": "已經給與積分，請到會員頁面進行課程預約",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 16477,
+            "legacy_language_pid": 8,
+            "text": "Comme des points ont déjà été ajoutés, veuillez réserver les leçons de la page d'adhésion.",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 16478,
+            "legacy_language_pid": 9,
+            "text": "चूंकि अंक पहले ही जोड़ दिए गए हैं, कृपया सदस्यता पृष्ठ से सबक रिज़र्व करें।",
+            "auto_translated": ""
+        },
+        "ar": {
+            "legacy_caption_pid": 31284,
+            "legacy_language_pid": 10,
+            "text": "لأن هذه النقطة هي التي منحت بالفعل، يرجى حجز درسا من الصفحة الأعضاء.",
+            "auto_translated": "لأن هذه النقطة هي التي منحت بالفعل، يرجى حجز درسا من الصفحة الأعضاء."
+        },
+        "fa": {
+            "legacy_caption_pid": 31285,
+            "legacy_language_pid": 11,
+            "text": "از آنجا که نقطه است شما در حال حاضر صادر شده است، لطفا رزرو درس از صفحه عضو است.",
+            "auto_translated": "از آنجا که نقطه است شما در حال حاضر صادر شده است، لطفا رزرو درس از صفحه عضو است."
+        },
+        "de": {
+            "legacy_caption_pid": 31286,
+            "legacy_language_pid": 12,
+            "text": "Da der Punkt ist, haben Sie bereits gewährt worden ist, wählen Sie bitte eine Lehre aus der Mitgliederseite reservieren.",
+            "auto_translated": "Da der Punkt ist, haben Sie bereits gewährt worden ist, wählen Sie bitte eine Lehre aus der Mitgliederseite reservieren."
+        },
+        "ru": {
+            "legacy_caption_pid": 31287,
+            "legacy_language_pid": 13,
+            "text": "Поскольку точка вы уже получили, пожалуйста, зарезервируйте урок из страницы членов.",
+            "auto_translated": "Поскольку точка вы уже получили, пожалуйста, зарезервируйте урок из страницы членов."
+        },
+        "ms": {
+            "legacy_caption_pid": 31288,
+            "legacy_language_pid": 14,
+            "text": "Kerana persoalannya adalah anda telah diberikan, sila tempahan pengajaran dari laman ahli.",
+            "auto_translated": "Kerana persoalannya adalah anda telah diberikan, sila tempahan pengajaran dari laman ahli."
+        },
+        "ta": {
+            "legacy_caption_pid": 31289,
+            "legacy_language_pid": 15,
+            "text": "புள்ளி நீங்கள் ஏற்கனவே வழங்கப்பட்ட வருகின்றன என்பதால், உறுப்பினர் பக்கத்திலிருந்து பாடம் உண்டு தயவு செய்து.",
+            "auto_translated": "புள்ளி நீங்கள் ஏற்கனவே வழங்கப்பட்ட வருகின்றன என்பதால், உறுப்பினர் பக்கத்திலிருந்து பாடம் உண்டு தயவு செய்து."
+        },
+        "it": {
+            "legacy_caption_pid": 31290,
+            "legacy_language_pid": 16,
+            "text": "Perché il punto è che avete già stato concesso, si prega di prenotare una lezione dalla pagina membro.",
+            "auto_translated": "Perché il punto è che avete già stato concesso, si prega di prenotare una lezione dalla pagina membro."
+        },
+        "bn": {
+            "legacy_caption_pid": 31291,
+            "legacy_language_pid": 17,
+            "text": "কারণ বিন্দু আপনি ইতিমধ্যে মঞ্জুর করা হয়েছে, সদস্য পাতা থেকে একটি পাঠ রিজার্ভ দয়া করে।",
+            "auto_translated": "কারণ বিন্দু আপনি ইতিমধ্যে মঞ্জুর করা হয়েছে, সদস্য পাতা থেকে একটি পাঠ রিজার্ভ দয়া করে।"
+        },
+        "tr": {
+            "legacy_caption_pid": 31292,
+            "legacy_language_pid": 18,
+            "text": "nokta zaten verilmiş olduğundan, üye sayfasından bir ders rezerv edin.",
+            "auto_translated": "nokta zaten verilmiş olduğundan, üye sayfasından bir ders rezerv edin."
+        },
+        "vi": {
+            "legacy_caption_pid": 31293,
+            "legacy_language_pid": 19,
+            "text": "Bởi vì điểm mấu chốt là bạn đã được cấp, xin vui lòng dành một bài học từ trang thành viên.",
+            "auto_translated": "Bởi vì điểm mấu chốt là bạn đã được cấp, xin vui lòng dành một bài học từ trang thành viên."
+        },
+        "pl": {
+            "legacy_caption_pid": 31294,
+            "legacy_language_pid": 20,
+            "text": "Bo chodzi o to zostały już przyznane, należy zarezerwować lekcję ze strony członków.",
+            "auto_translated": "Bo chodzi o to zostały już przyznane, należy zarezerwować lekcję ze strony członków."
+        },
+        "jv": {
+            "legacy_caption_pid": 31295,
+            "legacy_language_pid": 21,
+            "text": "Amarga titik punika sampeyan wis diwenehake, please cadangan wulangan saka kaca anggota.",
+            "auto_translated": "Amarga titik punika sampeyan wis diwenehake, please cadangan wulangan saka kaca anggota."
+        },
+        "pa": {
+            "legacy_caption_pid": 31296,
+            "legacy_language_pid": 22,
+            "text": "ਇਸ ਕਰਕੇ ਬਿੰਦੂ ਤੁਹਾਨੂੰ ਹੀ ਦਿੱਤਾ ਗਿਆ ਹੈ, ਦੇ ਸਫ਼ੇ ਤੱਕ ਨੂੰ ਸਬਕ ਰਿਜ਼ਰਵ ਕਰੋ ਜੀ.",
+            "auto_translated": "ਇਸ ਕਰਕੇ ਬਿੰਦੂ ਤੁਹਾਨੂੰ ਹੀ ਦਿੱਤਾ ਗਿਆ ਹੈ, ਦੇ ਸਫ਼ੇ ਤੱਕ ਨੂੰ ਸਬਕ ਰਿਜ਼ਰਵ ਕਰੋ ਜੀ."
+        },
+        "th": {
+            "legacy_caption_pid": 31297,
+            "legacy_language_pid": 23,
+            "text": "เพราะจุดที่คุณได้รับแล้วโปรดสำรองบทเรียนจากหน้าสมาชิก",
+            "auto_translated": "เพราะจุดที่คุณได้รับแล้วโปรดสำรองบทเรียนจากหน้าสมาชิก"
+        },
+        "te": {
+            "legacy_caption_pid": 41856,
+            "legacy_language_pid": 24,
+            "text": "పాయింట్ మీరు ఇప్పటికే మంజూరు చేశారు ఎందుకంటే, సభ్యుడు పేజీ నుండి ఒక పాఠం రిజర్వ్ దయచేసి.",
+            "auto_translated": "పాయింట్ మీరు ఇప్పటికే మంజూరు చేశారు ఎందుకంటే, సభ్యుడు పేజీ నుండి ఒక పాఠం రిజర్వ్ దయచేసి."
+        },
+        "mr": {
+            "legacy_caption_pid": 41857,
+            "legacy_language_pid": 25,
+            "text": "बिंदू आपण आधीच मंजूर केला आहे कारण, सदस्य पृष्ठावरील एक धडा राखून ठेवतो करा.",
+            "auto_translated": "बिंदू आपण आधीच मंजूर केला आहे कारण, सदस्य पृष्ठावरील एक धडा राखून ठेवतो करा."
+        },
+        "ur": {
+            "legacy_caption_pid": 41858,
+            "legacy_language_pid": 26,
+            "text": "نقطہ آپ پہلے سے عطا کیا گیا ہے ہے، رکن کے صفحے سے ایک سبق محفوظ رکھتے ہیں براہ مہربانی.",
+            "auto_translated": "نقطہ آپ پہلے سے عطا کیا گیا ہے ہے، رکن کے صفحے سے ایک سبق محفوظ رکھتے ہیں براہ مہربانی."
+        },
+        "gu": {
+            "legacy_caption_pid": 41859,
+            "legacy_language_pid": 27,
+            "text": "કારણ કે બિંદુ જો તમે પહેલાથી જ આપવામાં આવી છે, સભ્ય પૃષ્ઠ પરથી પાઠ અનામત વિનંતી.",
+            "auto_translated": "કારણ કે બિંદુ જો તમે પહેલાથી જ આપવામાં આવી છે, સભ્ય પૃષ્ઠ પરથી પાઠ અનામત વિનંતી."
+        },
+        "uk": {
+            "legacy_caption_pid": 41860,
+            "legacy_language_pid": 28,
+            "text": "Оскільки точка ви вже отримали, будь ласка, зарезервуйте урок з сторінки членів.",
+            "auto_translated": "Оскільки точка ви вже отримали, будь ласка, зарезервуйте урок з сторінки членів."
+        },
+        "ml": {
+            "legacy_caption_pid": 41861,
+            "legacy_language_pid": 29,
+            "text": "പോയിന്റ് നിങ്ങൾ ഇതിനകം ലഭിച്ചു കാരണം, അംഗം പേജിൽ നിന്ന് ഒരു പാഠം റിസർവ് ചെയ്യൂ.",
+            "auto_translated": "പോയിന്റ് നിങ്ങൾ ഇതിനകം ലഭിച്ചു കാരണം, അംഗം പേജിൽ നിന്ന് ഒരു പാഠം റിസർവ് ചെയ്യൂ."
+        },
+        "kn": {
+            "legacy_caption_pid": 41862,
+            "legacy_language_pid": 30,
+            "text": "ಪಾಯಿಂಟ್ ನೀವು ಈಗಾಗಲೇ ನೀಡಲಾಗಿದೆ ಏಕೆಂದರೆ, ಸದಸ್ಯ ಪುಟದಿಂದ ಪಾಠ ಕಾಯ್ದಿರಿಸಬೇಕು ಮಾಡಿ.",
+            "auto_translated": "ಪಾಯಿಂಟ್ ನೀವು ಈಗಾಗಲೇ ನೀಡಲಾಗಿದೆ ಏಕೆಂದರೆ, ಸದಸ್ಯ ಪುಟದಿಂದ ಪಾಠ ಕಾಯ್ದಿರಿಸಬೇಕು ಮಾಡಿ."
+        },
+        "su": {
+            "legacy_caption_pid": 41863,
+            "legacy_language_pid": 31,
+            "text": "Kusabab titik kasebut geus geus teu dibales, mangga cagar palajaran ti kaca anggota.",
+            "auto_translated": "Kusabab titik kasebut geus geus teu dibales, mangga cagar palajaran ti kaca anggota."
+        },
+        "ku": {
+            "legacy_caption_pid": 41864,
+            "legacy_language_pid": 32,
+            "text": "Ji ber ku xala ye ku hûn berê hatiye dayîn, ji kerema xwe veqetînim dersê ji rûpel endam.",
+            "auto_translated": "Ji ber ku xala ye ku hûn berê hatiye dayîn, ji kerema xwe veqetînim dersê ji rûpel endam."
+        },
+        "ps": {
+            "legacy_caption_pid": 41865,
+            "legacy_language_pid": 33,
+            "text": "ځکه ټکی دا دی چې تاسو له مخکې ورکړل شوي دي، نو مهرباني وکړئ د غړو د مخ څخه د عبرت خوندي دي.",
+            "auto_translated": "ځکه ټکی دا دی چې تاسو له مخکې ورکړل شوي دي، نو مهرباني وکړئ د غړو د مخ څخه د عبرت خوندي دي."
+        },
+        "ro": {
+            "legacy_caption_pid": 41866,
+            "legacy_language_pid": 34,
+            "text": "Deoarece punctul este ați fost deja acordat, vă rugăm să rezervați o lecție din pagina de membru.",
+            "auto_translated": "Deoarece punctul este ați fost deja acordat, vă rugăm să rezervați o lecție din pagina de membru."
+        },
+        "id": {
+            "legacy_caption_pid": 41867,
+            "legacy_language_pid": 35,
+            "text": "Karena intinya adalah Anda telah diberikan, silakan cadangan pelajaran dari halaman anggota.",
+            "auto_translated": "Karena intinya adalah Anda telah diberikan, silakan cadangan pelajaran dari halaman anggota."
+        },
+        "sd": {
+            "legacy_caption_pid": 41868,
+            "legacy_language_pid": 36,
+            "text": "ڇو جو نڪتو اوھان کي اڳ ۾ ئي عطا ڪيو ويو آهي آهي، سنڌ جي ميمبر صفحو مان هڪ سبق جي مخصوص ڪريو.",
+            "auto_translated": "ڇو جو نڪتو اوھان کي اڳ ۾ ئي عطا ڪيو ويو آهي آهي، سنڌ جي ميمبر صفحو مان هڪ سبق جي مخصوص ڪريو."
+        },
+        "af": {
+            "legacy_caption_pid": 41869,
+            "legacy_language_pid": 37,
+            "text": "Want die punt is jy reeds toegestaan, asseblief behou 'n les uit die lid bladsy.",
+            "auto_translated": "Want die punt is jy reeds toegestaan, asseblief behou 'n les uit die lid bladsy."
+        },
+        "sw": {
+            "legacy_caption_pid": 41870,
+            "legacy_language_pid": 38,
+            "text": "Kwa sababu hatua ni tayari wamepewa, tafadhali hifadhi somo kutoka mwanachama ukurasa.",
+            "auto_translated": "Kwa sababu hatua ni tayari wamepewa, tafadhali hifadhi somo kutoka mwanachama ukurasa."
+        },
+        "lo": {
+            "legacy_caption_pid": 41871,
+            "legacy_language_pid": 39,
+            "text": "ເນື່ອງຈາກວ່າປະເດັນກໍຄືວ່າທ່ານໄດ້ຮັບການອະນຸຍາດແລ້ວ, ກະລຸນາສະຫງວນບົດຮຽນຈາກຫນ້າສະມາຊິກໄດ້.",
+            "auto_translated": "ເນື່ອງຈາກວ່າປະເດັນກໍຄືວ່າທ່ານໄດ້ຮັບການອະນຸຍາດແລ້ວ, ກະລຸນາສະຫງວນບົດຮຽນຈາກຫນ້າສະມາຊິກໄດ້."
+        },
+        "nl": {
+            "legacy_caption_pid": 41872,
+            "legacy_language_pid": 40,
+            "text": "Omdat het punt is dat je al is verleend, gelieve op te geven een les van de ledenpagina.",
+            "auto_translated": "Omdat het punt is dat je al is verleend, gelieve op te geven een les van de ledenpagina."
+        },
+        "tl": {
+            "legacy_caption_pid": 41873,
+            "legacy_language_pid": 41,
+            "text": "Dahil ang punto ay ikaw ay nai-iginawad, mangyaring magreserba ng isang aralin mula sa pahina ng miyembro.",
+            "auto_translated": "Dahil ang punto ay ikaw ay nai-iginawad, mangyaring magreserba ng isang aralin mula sa pahina ng miyembro."
+        },
+        "ne": {
+            "legacy_caption_pid": 41874,
+            "legacy_language_pid": 42,
+            "text": "बिन्दु तपाईं पहिले नै प्रदान गरिएको छ किनभने, कृपया सदस्य पृष्ठ पाठ आरक्षित।",
+            "auto_translated": "बिन्दु तपाईं पहिले नै प्रदान गरिएको छ किनभने, कृपया सदस्य पृष्ठ पाठ आरक्षित।"
+        },
+        "hu": {
+            "legacy_caption_pid": 41875,
+            "legacy_language_pid": 43,
+            "text": "Mivel a lényeg az, hogy a már nyújtott, ezért kérem foglaljon a leckét a tagok számára.",
+            "auto_translated": "Mivel a lényeg az, hogy a már nyújtott, ezért kérem foglaljon a leckét a tagok számára."
+        },
+        "cs": {
+            "legacy_caption_pid": 41876,
+            "legacy_language_pid": 44,
+            "text": "Protože jde o to, které jste již byla udělena, prosím rezervovat lekci z uživatelské stránce.",
+            "auto_translated": "Protože jde o to, které jste již byla udělena, prosím rezervovat lekci z uživatelské stránce."
+        },
+        "el": {
+            "legacy_caption_pid": 41877,
+            "legacy_language_pid": 45,
+            "text": "Επειδή το σημείο είναι που έχουν ήδη χορηγηθεί, παρακαλείστε να κάνετε κράτηση ένα μάθημα από τη σελίδα μέλος.",
+            "auto_translated": "Επειδή το σημείο είναι που έχουν ήδη χορηγηθεί, παρακαλείστε να κάνετε κράτηση ένα μάθημα από τη σελίδα μέλος."
+        },
+        "sv": {
+            "legacy_caption_pid": 41878,
+            "legacy_language_pid": 46,
+            "text": "Eftersom punkten är att du redan har beviljats, reservera en lektion från medlemssida.",
+            "auto_translated": "Eftersom punkten är att du redan har beviljats, reservera en lektion från medlemssida."
+        },
+        "kk": {
+            "legacy_caption_pid": 41879,
+            "legacy_language_pid": 47,
+            "text": "нүктесі сіз әлдеқашан берілген болғандықтан, мүше беттен сабақ қалдырамыз сұраймыз.",
+            "auto_translated": "нүктесі сіз әлдеқашан берілген болғандықтан, мүше беттен сабақ қалдырамыз сұраймыз."
+        },
+        "fi": {
+            "legacy_caption_pid": 41880,
+            "legacy_language_pid": 48,
+            "text": "Koska asia on sinulla on jo myönnetty, ota varata oppitunti jäsenen sivulta.",
+            "auto_translated": "Koska asia on sinulla on jo myönnetty, ota varata oppitunti jäsenen sivulta."
+        },
+        "da": {
+            "legacy_caption_pid": 41881,
+            "legacy_language_pid": 49,
+            "text": "Fordi det punkt er du allerede blevet givet, derfor reservere en lektion fra medlemmet side.",
+            "auto_translated": "Fordi det punkt er du allerede blevet givet, derfor reservere en lektion fra medlemmet side."
+        },
+        "he": {
+            "legacy_caption_pid": 41882,
+            "legacy_language_pid": 50,
+            "text": "בגלל הנקודה היא שאתה כבר הוענקת, נא להזמין שיעור בעמוד החבר.",
+            "auto_translated": "בגלל הנקודה היא שאתה כבר הוענקת, נא להזמין שיעור בעמוד החבר."
+        },
+        "no": {
+            "legacy_caption_pid": 41883,
+            "legacy_language_pid": 51,
+            "text": "Fordi poenget er at du allerede har fått, kan du bestille en leksjon fra medlemsside.",
+            "auto_translated": "Fordi poenget er at du allerede har fått, kan du bestille en leksjon fra medlemsside."
+        }
+    }
+}

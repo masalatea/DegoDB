@@ -1,0 +1,321 @@
+{
+    "resource_key": "COMMON_LIB_ENROLL_ERROR_PLEASE_CHECK_ID",
+    "legacy_resource_pid": 1572,
+    "base_group_key": "grp-010-matsuesoft-lib",
+    "additional_group_keys": [],
+    "key_for_update": "6oknpWV7owFFVF0SGv79sDEwDz8AKvMR96pmvTH4YLfoNTVY7uQ6tgps8J9Sj7To8qltmCjsJaNEo7IZVxwpJFSivYL7YkSyXG3OjvkN3kr4CZ5DitQYLd1QIVfIcoM3",
+    "sort_group": "ENROLL",
+    "key_name": "COMMON_LIB_ENROLL_ERROR_PLEASE_CHECK_ID",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": false,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 7070,
+            "legacy_language_pid": 1,
+            "text": "ユーザ名(ID)入力を確認して下さい",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 7071,
+            "legacy_language_pid": 2,
+            "text": "Confirm User Name (ID) input",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 7072,
+            "legacy_language_pid": 3,
+            "text": "检查ID输入",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 7073,
+            "legacy_language_pid": 4,
+            "text": "아이디 입력을 확인해주세요",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 10780,
+            "legacy_language_pid": 5,
+            "text": "Confirmar entrada de ID",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 10781,
+            "legacy_language_pid": 6,
+            "text": "Confirmar entrada ID",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 10782,
+            "legacy_language_pid": 7,
+            "text": "檢查ID輸入",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 16023,
+            "legacy_language_pid": 8,
+            "text": "Confirmer l'entrée du nom d'utilisateur (ID)",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 16024,
+            "legacy_language_pid": 9,
+            "text": "उपयोगकर्ता नाम की पुष्टि करें (आईडी) इनपुट ",
+            "auto_translated": ""
+        },
+        "ar": {
+            "legacy_caption_pid": 31228,
+            "legacy_language_pid": 10,
+            "text": "تأكد من اسم المستخدم (ID) المدخلات",
+            "auto_translated": "تأكد من اسم المستخدم (ID) المدخلات"
+        },
+        "fa": {
+            "legacy_caption_pid": 31229,
+            "legacy_language_pid": 11,
+            "text": "اطمینان حاصل کنید که نام کاربری (ID) ورودی",
+            "auto_translated": "اطمینان حاصل کنید که نام کاربری (ID) ورودی"
+        },
+        "de": {
+            "legacy_caption_pid": 31230,
+            "legacy_language_pid": 12,
+            "text": "Stellen Sie sicher, dass der Benutzername (ID) Eingang",
+            "auto_translated": "Stellen Sie sicher, dass der Benutzername (ID) Eingang"
+        },
+        "ru": {
+            "legacy_caption_pid": 31231,
+            "legacy_language_pid": 13,
+            "text": "Убедитесь, что имя пользователя (ID) вход",
+            "auto_translated": "Убедитесь, что имя пользователя (ID) вход"
+        },
+        "ms": {
+            "legacy_caption_pid": 31232,
+            "legacy_language_pid": 14,
+            "text": "Pastikan nama pengguna (ID) input",
+            "auto_translated": "Pastikan nama pengguna (ID) input"
+        },
+        "ta": {
+            "legacy_caption_pid": 31233,
+            "legacy_language_pid": 15,
+            "text": "உறுதி பயனர் பெயர் (ஐடி) உள்ளீடு செய்ய",
+            "auto_translated": "உறுதி பயனர் பெயர் (ஐடி) உள்ளீடு செய்ய"
+        },
+        "it": {
+            "legacy_caption_pid": 31234,
+            "legacy_language_pid": 16,
+            "text": "Assicurarsi che il nome utente ingresso (ID)",
+            "auto_translated": "Assicurarsi che il nome utente ingresso (ID)"
+        },
+        "bn": {
+            "legacy_caption_pid": 31235,
+            "legacy_language_pid": 17,
+            "text": "নিশ্চিত ব্যবহারকারী নাম (আইডি) ইনপুট করুন",
+            "auto_translated": "নিশ্চিত ব্যবহারকারী নাম (আইডি) ইনপুট করুন"
+        },
+        "tr": {
+            "legacy_caption_pid": 31236,
+            "legacy_language_pid": 18,
+            "text": "Emin kullanıcı adı (ID) girişi yapın",
+            "auto_translated": "Emin kullanıcı adı (ID) girişi yapın"
+        },
+        "vi": {
+            "legacy_caption_pid": 31237,
+            "legacy_language_pid": 19,
+            "text": "Hãy chắc chắn rằng tên người dùng (ID) đầu vào",
+            "auto_translated": "Hãy chắc chắn rằng tên người dùng (ID) đầu vào"
+        },
+        "pl": {
+            "legacy_caption_pid": 31238,
+            "legacy_language_pid": 20,
+            "text": "Upewnij się, że nazwa użytkownika (identyfikator) wejście",
+            "auto_translated": "Upewnij się, że nazwa użytkownika (identyfikator) wejście"
+        },
+        "jv": {
+            "legacy_caption_pid": 31239,
+            "legacy_language_pid": 21,
+            "text": "Priksa manawa jeneng panganggo (ID) input",
+            "auto_translated": "Priksa manawa jeneng panganggo (ID) input"
+        },
+        "pa": {
+            "legacy_caption_pid": 31240,
+            "legacy_language_pid": 22,
+            "text": "ਇਹ ਯਕੀਨੀ ਯੂਜ਼ਰ ਨੂੰ ਨਾਮ ਹੈ (ID) ਇੰਪੁੱਟ ਬਣਾਓ",
+            "auto_translated": "ਇਹ ਯਕੀਨੀ ਯੂਜ਼ਰ ਨੂੰ ਨਾਮ ਹੈ (ID) ਇੰਪੁੱਟ ਬਣਾਓ"
+        },
+        "th": {
+            "legacy_caption_pid": 31241,
+            "legacy_language_pid": 23,
+            "text": "ตรวจสอบให้แน่ใจชื่อผู้ใช้ (ID) การป้อนข้อมูล",
+            "auto_translated": "ตรวจสอบให้แน่ใจชื่อผู้ใช้ (ID) การป้อนข้อมูล"
+        },
+        "te": {
+            "legacy_caption_pid": 41968,
+            "legacy_language_pid": 24,
+            "text": "ఖచ్చితంగా యూజర్ పేరు (ID) ఇన్పుట్ చేయండి",
+            "auto_translated": "ఖచ్చితంగా యూజర్ పేరు (ID) ఇన్పుట్ చేయండి"
+        },
+        "mr": {
+            "legacy_caption_pid": 41969,
+            "legacy_language_pid": 25,
+            "text": "आपली खात्री आहे की वापरकर्ता नाव (ID) इनपुट करा",
+            "auto_translated": "आपली खात्री आहे की वापरकर्ता नाव (ID) इनपुट करा"
+        },
+        "ur": {
+            "legacy_caption_pid": 41970,
+            "legacy_language_pid": 26,
+            "text": "اس بات کا یقین صارف کا نام (ID) ان پٹ بنائیں",
+            "auto_translated": "اس بات کا یقین صارف کا نام (ID) ان پٹ بنائیں"
+        },
+        "gu": {
+            "legacy_caption_pid": 41971,
+            "legacy_language_pid": 27,
+            "text": "ખાતરી કરો કે વપરાશકર્તા નામ (આઇડી) ઇનપુટ બનાવો",
+            "auto_translated": "ખાતરી કરો કે વપરાશકર્તા નામ (આઇડી) ઇનપુટ બનાવો"
+        },
+        "uk": {
+            "legacy_caption_pid": 41972,
+            "legacy_language_pid": 28,
+            "text": "Переконайтеся, що ім'я користувача (ID) вхід",
+            "auto_translated": "Переконайтеся, що ім'я користувача (ID) вхід"
+        },
+        "ml": {
+            "legacy_caption_pid": 41973,
+            "legacy_language_pid": 29,
+            "text": "ഉറപ്പു ഉപയോക്തൃ നാമം (ഐഡി) ഇൻപുട്ട് മാറ്റുക",
+            "auto_translated": "ഉറപ്പു ഉപയോക്തൃ നാമം (ഐഡി) ഇൻപുട്ട് മാറ്റുക"
+        },
+        "kn": {
+            "legacy_caption_pid": 41974,
+            "legacy_language_pid": 30,
+            "text": "ಖಚಿತವಾಗಿ ಬಳಕೆದಾರ ಹೆಸರು (ಐಡಿ) ಇನ್ಪುಟ್ ಮಾಡಿ",
+            "auto_translated": "ಖಚಿತವಾಗಿ ಬಳಕೆದಾರ ಹೆಸರು (ಐಡಿ) ಇನ್ಪುಟ್ ಮಾಡಿ"
+        },
+        "su": {
+            "legacy_caption_pid": 41975,
+            "legacy_language_pid": 31,
+            "text": "Pastikeun nami pamaké (ID) input",
+            "auto_translated": "Pastikeun nami pamaké (ID) input"
+        },
+        "ku": {
+            "legacy_caption_pid": 41976,
+            "legacy_language_pid": 32,
+            "text": "Piştrast bike ku navê bikarhêner (ID) input",
+            "auto_translated": "Piştrast bike ku navê bikarhêner (ID) input"
+        },
+        "ps": {
+            "legacy_caption_pid": 41977,
+            "legacy_language_pid": 33,
+            "text": "ډاډه کارن نوم (تذکرو) آخذه د کمکیانو لپاره د",
+            "auto_translated": "ډاډه کارن نوم (تذکرو) آخذه د کمکیانو لپاره د"
+        },
+        "ro": {
+            "legacy_caption_pid": 41978,
+            "legacy_language_pid": 34,
+            "text": "Asigurați-vă că numele de utilizator de intrare (ID)",
+            "auto_translated": "Asigurați-vă că numele de utilizator de intrare (ID)"
+        },
+        "id": {
+            "legacy_caption_pid": 41979,
+            "legacy_language_pid": 35,
+            "text": "Pastikan nama pengguna (ID) masukan",
+            "auto_translated": "Pastikan nama pengguna (ID) masukan"
+        },
+        "sd": {
+            "legacy_caption_pid": 41980,
+            "legacy_language_pid": 36,
+            "text": "پڪ صارف نالو (سڃاڻپ) پٽ ڪر",
+            "auto_translated": "پڪ صارف نالو (سڃاڻپ) پٽ ڪر"
+        },
+        "af": {
+            "legacy_caption_pid": 41981,
+            "legacy_language_pid": 37,
+            "text": "Maak seker dat die gebruiker naam (ID) insette",
+            "auto_translated": "Maak seker dat die gebruiker naam (ID) insette"
+        },
+        "sw": {
+            "legacy_caption_pid": 41982,
+            "legacy_language_pid": 38,
+            "text": "Hakikisha jina la mtumiaji (ID) pembejeo",
+            "auto_translated": "Hakikisha jina la mtumiaji (ID) pembejeo"
+        },
+        "lo": {
+            "legacy_caption_pid": 41983,
+            "legacy_language_pid": 39,
+            "text": "ເຮັດໃຫ້ແນ່ໃຈວ່າຊື່ຜູ້ໃຊ້ (ID) ວັດສະດຸປ້ອນ",
+            "auto_translated": "ເຮັດໃຫ້ແນ່ໃຈວ່າຊື່ຜູ້ໃຊ້ (ID) ວັດສະດຸປ້ອນ"
+        },
+        "nl": {
+            "legacy_caption_pid": 41984,
+            "legacy_language_pid": 40,
+            "text": "Zorg ervoor dat de gebruikersnaam (ID) ingang",
+            "auto_translated": "Zorg ervoor dat de gebruikersnaam (ID) ingang"
+        },
+        "tl": {
+            "legacy_caption_pid": 41985,
+            "legacy_language_pid": 41,
+            "text": "Siguraduhin na ang user name (ID) input",
+            "auto_translated": "Siguraduhin na ang user name (ID) input"
+        },
+        "ne": {
+            "legacy_caption_pid": 41986,
+            "legacy_language_pid": 42,
+            "text": "निश्चित प्रयोगकर्ता नाम (आईडी) आगत बनाउन",
+            "auto_translated": "निश्चित प्रयोगकर्ता नाम (आईडी) आगत बनाउन"
+        },
+        "hu": {
+            "legacy_caption_pid": 41987,
+            "legacy_language_pid": 43,
+            "text": "Ellenőrizze, hogy a felhasználó nevét (ID) bemenet",
+            "auto_translated": "Ellenőrizze, hogy a felhasználó nevét (ID) bemenet"
+        },
+        "cs": {
+            "legacy_caption_pid": 41988,
+            "legacy_language_pid": 44,
+            "text": "Ujistěte se, že uživatelské jméno (ID) vstup",
+            "auto_translated": "Ujistěte se, že uživatelské jméno (ID) vstup"
+        },
+        "el": {
+            "legacy_caption_pid": 41989,
+            "legacy_language_pid": 45,
+            "text": "Βεβαιωθείτε ότι το όνομα χρήστη (ID) εισόδου",
+            "auto_translated": "Βεβαιωθείτε ότι το όνομα χρήστη (ID) εισόδου"
+        },
+        "sv": {
+            "legacy_caption_pid": 41990,
+            "legacy_language_pid": 46,
+            "text": "Se till att användarnamnet (ID) ingång",
+            "auto_translated": "Se till att användarnamnet (ID) ingång"
+        },
+        "kk": {
+            "legacy_caption_pid": 41991,
+            "legacy_language_pid": 47,
+            "text": "пайдаланушы аты (ID) кіру көз жеткізіңіз",
+            "auto_translated": "пайдаланушы аты (ID) кіру көз жеткізіңіз"
+        },
+        "fi": {
+            "legacy_caption_pid": 41992,
+            "legacy_language_pid": 48,
+            "text": "Varmista, että käyttäjätunnus (ID) tulo",
+            "auto_translated": "Varmista, että käyttäjätunnus (ID) tulo"
+        },
+        "da": {
+            "legacy_caption_pid": 41993,
+            "legacy_language_pid": 49,
+            "text": "Sørg for, at brugernavnet (ID) input",
+            "auto_translated": "Sørg for, at brugernavnet (ID) input"
+        },
+        "he": {
+            "legacy_caption_pid": 41994,
+            "legacy_language_pid": 50,
+            "text": "ודא את שם המשתמש (ID) קלט",
+            "auto_translated": "ודא את שם המשתמש (ID) קלט"
+        },
+        "no": {
+            "legacy_caption_pid": 41995,
+            "legacy_language_pid": 51,
+            "text": "Sørg for at brukernavnet (ID) inngangs",
+            "auto_translated": "Sørg for at brukernavnet (ID) inngangs"
+        }
+    }
+}

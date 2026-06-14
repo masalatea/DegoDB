@@ -1,0 +1,69 @@
+{
+    "resource_key": "TITLE_DEV_TOP",
+    "legacy_resource_pid": 713,
+    "base_group_key": "grp-010-matsuesoft-lib",
+    "additional_group_keys": [],
+    "key_for_update": "izFZiTQbxYHD3A9Dy1mvl9KcK0N2R9HkjIzITyHhvTexFKzDuqXUj6ltBSEzXB3GkHpyGz9QuZj0PtXuozajrtpEqrWtcpcbkAsm4dii7abnS0heWNIf2NVQ7iwHAycv",
+    "sort_group": "TITLE",
+    "key_name": "TITLE_DEV_TOP",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": true,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 4734,
+            "legacy_language_pid": 1,
+            "text": "受注開発 - $DOMAINNAMECAPTION_JP",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 4735,
+            "legacy_language_pid": 2,
+            "text": "Entrusted Order Development - $DOMAINNAMECAPTION_EN",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 15388,
+            "legacy_language_pid": 3,
+            "text": "",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 15389,
+            "legacy_language_pid": 4,
+            "text": "",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 15390,
+            "legacy_language_pid": 5,
+            "text": "Desarrollo de Pedidos Confiados - $DOMAINNAMECAPTION_ES",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 15391,
+            "legacy_language_pid": 6,
+            "text": "Desenvolvimento de pedidos confiados - $DOMAINNAMECAPTION_EN",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 15392,
+            "legacy_language_pid": 7,
+            "text": "",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 17389,
+            "legacy_language_pid": 8,
+            "text": "Développement de commandes confiées - $DOMAINNAMECAPTION_EN",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 17390,
+            "legacy_language_pid": 9,
+            "text": "विश्वसनीय आदेश विकास - $ DOMAINNAMECAPTION_HI",
+            "auto_translated": ""
+        }
+    }
+}

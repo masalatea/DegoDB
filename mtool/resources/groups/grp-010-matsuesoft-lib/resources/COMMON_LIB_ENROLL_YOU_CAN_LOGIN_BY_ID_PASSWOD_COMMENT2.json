@@ -1,0 +1,321 @@
+{
+    "resource_key": "COMMON_LIB_ENROLL_YOU_CAN_LOGIN_BY_ID_PASSWOD_COMMENT2",
+    "legacy_resource_pid": 1450,
+    "base_group_key": "grp-010-matsuesoft-lib",
+    "additional_group_keys": [],
+    "key_for_update": "K9YN51oXw7jqmYg91PQ21L1gxyUpHu5iEQQ7sBuEaDQ8wywMtVeXiZEDvfiqOMWpvV6MIyEfrEO9GUTvJT48aXu2cMQR448rKYKWkke9OyOLa17NhsWuyHrRiYdAk2rP",
+    "sort_group": "ENROLL",
+    "key_name": "COMMON_LIB_ENROLL_YOU_CAN_LOGIN_BY_ID_PASSWOD_COMMENT2",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": false,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 6074,
+            "legacy_language_pid": 1,
+            "text": "登録完了メールにも記載されていますが、メールアドレス記入ミスあるいは迷惑メールフォルダに入ってしまう等の理由によりメールが読めないことも考えられますので必ずここで記録をお願いいたします。",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 6075,
+            "legacy_language_pid": 2,
+            "text": "Although it is also listed in the registration completion mail, please be sure to record here because it may be impossible to read the mail due to a mistake in entering a mail address or entering a spam mail folder.",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 6076,
+            "legacy_language_pid": 3,
+            "text": "登录完了会发邮件给您，如果邮件地址记录错误或者进入垃圾邮件里面请您一定要确认，并且把内容记录下来。",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 6077,
+            "legacy_language_pid": 4,
+            "text": "등록 완료 메일에 기재되어 있습니다만, 이메일 주소 오류 또는 스팸메일로 분류되는 등의 이유로 메일을 읽을 수 없는 경우도 있으므로 반드시 여기에 기록을 부탁드립니다.",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 10937,
+            "legacy_language_pid": 5,
+            "text": "Aunque también aparece en el correo de finalización del registro, asegúrese de grabar aquí porque puede ser imposible leer el correo debido a un error al escribir una dirección de correo o al ingresar una carpeta de correo no deseado.",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 10938,
+            "legacy_language_pid": 6,
+            "text": "Embora também esteja listado no e-mail de conclusão do registro, certifique-se de gravar aqui, porque pode ser impossível ler o correio devido a um erro na entrada de um endereço de correio eletrônico ou na inserção de uma pasta de spam.",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 10939,
+            "legacy_language_pid": 7,
+            "text": "登錄完了會發郵件給您，如果郵件地址記錄錯誤或者進入垃圾郵件裡面請您一定要確認，並且把內容記錄下來。",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 17055,
+            "legacy_language_pid": 8,
+            "text": "Bien qu'il soit également répertorié dans le courrier d'achèvement de l'inscription, n'oubliez pas d'enregistrer ici car il est impossible de lire le courrier en raison d'une erreur lors de la saisie d'une adresse mail ou d'un dossier de courrier indésirable.",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 17056,
+            "legacy_language_pid": 9,
+            "text": " यद्यपि, यह पंजीकरण पूर्णता मेल में भी सूचीबद्ध है, कृपया यहां रिकॉर्ड करना सुनिश्चित करें,क्योंकि मेल को पढ़ना असंभव हो सकता है, मेल पते को दर्ज में हुई गलती या स्पैम मेल फ़ोल्डर में प्रवेश करने के कारण   ",
+            "auto_translated": ""
+        },
+        "ar": {
+            "legacy_caption_pid": 31942,
+            "legacy_language_pid": 10,
+            "text": "كما تم وصفها الإلكتروني استكمال التسجيل، ولكن يرجى التأكد من تسجيل هنا أيضا لأنها تعتبر أن أي بريد قراءة لأسباب مثل أن إدخال البريد الإلكتروني الأخطاء إدخال عنوان أو مجلد البريد غير المرغوب فيه.",
+            "auto_translated": "كما تم وصفها الإلكتروني استكمال التسجيل، ولكن يرجى التأكد من تسجيل هنا أيضا لأنها تعتبر أن أي بريد قراءة لأسباب مثل أن إدخال البريد الإلكتروني الأخطاء إدخال عنوان أو مجلد البريد غير المرغوب فيه."
+        },
+        "fa": {
+            "legacy_caption_pid": 31943,
+            "legacy_language_pid": 11,
+            "text": "ایمیل تکمیل ثبت نام نیز توضیح داده شده است، اما لطفا مطمئن شوید که برای ضبط در اینجا نیز دلیل آن است که در نظر گرفته که هیچ ایمیل از دلایل جمله به عنوان خوانده خواهد اشتباهات آدرس ورودی ایمیل و یا پوشه ایمیل های ناخواسته را وارد کنید.",
+            "auto_translated": "ایمیل تکمیل ثبت نام نیز توضیح داده شده است، اما لطفا مطمئن شوید که برای ضبط در اینجا نیز دلیل آن است که در نظر گرفته که هیچ ایمیل از دلایل جمله به عنوان خوانده خواهد اشتباهات آدرس ورودی ایمیل و یا پوشه ایمیل های ناخواسته را وارد کنید."
+        },
+        "de": {
+            "legacy_caption_pid": 31944,
+            "legacy_language_pid": 12,
+            "text": "Registrierung Abschluss Mail ist ebenfalls beschrieben worden, aber stellen Sie sicher, auch hier zu erfassen, weil angenommen wird, dass keine Post von Gründen gelesen wird, wie würde die E-Mail-Adresse Eingabefehler oder Junk-Mail-Ordner eingeben.",
+            "auto_translated": "Registrierung Abschluss Mail ist ebenfalls beschrieben worden, aber stellen Sie sicher, auch hier zu erfassen, weil angenommen wird, dass keine Post von Gründen gelesen wird, wie würde die E-Mail-Adresse Eingabefehler oder Junk-Mail-Ordner eingeben."
+        },
+        "ru": {
+            "legacy_caption_pid": 31945,
+            "legacy_language_pid": 13,
+            "text": "Завершение регистрации почты также была описана, но, пожалуйста, не забудьте записать здесь также, потому что считается, что никакой почты не читается таким причинам, как бы ввести адрес электронной почты, адрес входа ошибки или папку нежелательной почты.",
+            "auto_translated": "Завершение регистрации почты также была описана, но, пожалуйста, не забудьте записать здесь также, потому что считается, что никакой почты не читается таким причинам, как бы ввести адрес электронной почты, адрес входа ошибки или папку нежелательной почты."
+        },
+        "ms": {
+            "legacy_caption_pid": 31946,
+            "legacy_language_pid": 14,
+            "text": "mail siap pendaftaran juga telah diterangkan, tetapi sila pastikan untuk dicatatkan di sini juga kerana ia dianggap bahawa tiada mel dibaca oleh sebab-sebab tertentu seperti yang akan masuk ke dalam e-mel kesilapan masukan alamat atau folder mel sampah.",
+            "auto_translated": "mail siap pendaftaran juga telah diterangkan, tetapi sila pastikan untuk dicatatkan di sini juga kerana ia dianggap bahawa tiada mel dibaca oleh sebab-sebab tertentu seperti yang akan masuk ke dalam e-mel kesilapan masukan alamat atau folder mel sampah."
+        },
+        "ta": {
+            "legacy_caption_pid": 31947,
+            "legacy_language_pid": 15,
+            "text": "பதிவு நிறைவு மெயில் மேலும் விவரிக்கப்படுகிறது, ஆனால் அதை அதே எந்த அஞ்சல் மின்னஞ்சல் முகவரியை நுழைவு தவறுகள் அல்லது குப்பை மெயில் அடைவை உள்ளிட வேண்டும் காரணங்களால் படித்துக்காட்டப்படும் போன்ற கருதப்படுகிறது இங்கு பதிவு செய்ய மறக்க வேண்டாம்.",
+            "auto_translated": "பதிவு நிறைவு மெயில் மேலும் விவரிக்கப்படுகிறது, ஆனால் அதை அதே எந்த அஞ்சல் மின்னஞ்சல் முகவரியை நுழைவு தவறுகள் அல்லது குப்பை மெயில் அடைவை உள்ளிட வேண்டும் காரணங்களால் படித்துக்காட்டப்படும் போன்ற கருதப்படுகிறது இங்கு பதிவு செய்ய மறக்க வேண்டாம்."
+        },
+        "it": {
+            "legacy_caption_pid": 31948,
+            "legacy_language_pid": 16,
+            "text": "completamento Registrazione mail è stata anche descritta, ma vi prego di essere sicuri di registrare qui anche perché si ritiene che la posta non viene letto da motivi tali da entrare l'e-mail errori di digitazione indirizzo o cartella di posta indesiderata.",
+            "auto_translated": "completamento Registrazione mail è stata anche descritta, ma vi prego di essere sicuri di registrare qui anche perché si ritiene che la posta non viene letto da motivi tali da entrare l'e-mail errori di digitazione indirizzo o cartella di posta indesiderata."
+        },
+        "bn": {
+            "legacy_caption_pid": 31949,
+            "legacy_language_pid": 17,
+            "text": "রেজিস্ট্রেশন সমাপ্তির মেইল ​​বর্ণনা করা হয়েছে, কিন্তু দয়া করে এখানে রেকর্ড নিশ্চিত করা হয়েছে কারণ এটি বিবেচনা করা হয় যে কোনো মেল যেমন কারণে দ্বারা পড়া হয় ই-মেইল ঠিকানা প্রবেশ ভুল বা জাঙ্ক মেইল ​​ফোল্ডার লিখুন হও।",
+            "auto_translated": "রেজিস্ট্রেশন সমাপ্তির মেইল ​​বর্ণনা করা হয়েছে, কিন্তু দয়া করে এখানে রেকর্ড নিশ্চিত করা হয়েছে কারণ এটি বিবেচনা করা হয় যে কোনো মেল যেমন কারণে দ্বারা পড়া হয় ই-মেইল ঠিকানা প্রবেশ ভুল বা জাঙ্ক মেইল ​​ফোল্ডার লিখুন হও।"
+        },
+        "tr": {
+            "legacy_caption_pid": 31950,
+            "legacy_language_pid": 18,
+            "text": "Kayıt tamamlama posta da açıklanan, ancak hiçbir posta, e-posta adresi girişi hataları veya önemsiz posta klasörüne girersiniz gibi nedenlerle tarafından okunur düşünüldüğünde çünkü burada da kayıt emin olun edilmiştir.",
+            "auto_translated": "Kayıt tamamlama posta da açıklanan, ancak hiçbir posta, e-posta adresi girişi hataları veya önemsiz posta klasörüne girersiniz gibi nedenlerle tarafından okunur düşünüldüğünde çünkü burada da kayıt emin olun edilmiştir."
+        },
+        "vi": {
+            "legacy_caption_pid": 31951,
+            "legacy_language_pid": 19,
+            "text": "hoàn thành đăng ký email cũng đã được mô tả, nhưng hãy chắc chắn để ghi lại ở đây cũng vì nó được coi là không có thư được đọc bởi các lý do như sẽ nhập e-mail sai lầm nhập địa chỉ hoặc thư mục thư rác.",
+            "auto_translated": "hoàn thành đăng ký email cũng đã được mô tả, nhưng hãy chắc chắn để ghi lại ở đây cũng vì nó được coi là không có thư được đọc bởi các lý do như sẽ nhập e-mail sai lầm nhập địa chỉ hoặc thư mục thư rác."
+        },
+        "pl": {
+            "legacy_caption_pid": 31952,
+            "legacy_language_pid": 20,
+            "text": "Zakończenie rejestracji elektronicznej zostało również opisane, ale upewnij się, aby nagrać tutaj także dlatego uważa się, że poczta nie jest odczytywany przez powodów, takich jak byłoby wprowadzić e-mail błędów wprowadzania adresu lub folderu wiadomości-śmieci.",
+            "auto_translated": "Zakończenie rejestracji elektronicznej zostało również opisane, ale upewnij się, aby nagrać tutaj także dlatego uważa się, że poczta nie jest odczytywany przez powodów, takich jak byłoby wprowadzić e-mail błędów wprowadzania adresu lub folderu wiadomości-śmieci."
+        },
+        "jv": {
+            "legacy_caption_pid": 31953,
+            "legacy_language_pid": 21,
+            "text": "completion Registration mail uga wis diterangake, nanging manawa kanggo ngrekam kene uga amarga iku dianggep sing ora mail diwaca déning alasan kayata bakal mlebu ing e-mail kesalahane entri alamat utawa folder junk mail.",
+            "auto_translated": "completion Registration mail uga wis diterangake, nanging manawa kanggo ngrekam kene uga amarga iku dianggep sing ora mail diwaca déning alasan kayata bakal mlebu ing e-mail kesalahane entri alamat utawa folder junk mail."
+        },
+        "pa": {
+            "legacy_caption_pid": 31954,
+            "legacy_language_pid": 22,
+            "text": "ਰਜਿਸਟਰੇਸ਼ਨ ਨੂੰ ਮੁਕੰਮਲ ਮੇਲ ਨੂੰ ਵੀ ਕਿਹਾ ਗਿਆ ਹੈ, ਪਰ ਕਿਰਪਾ ਕਰਕੇ ਇੱਥੇ ਇਹ ਵੀ ਰਿਕਾਰਡ ਕਰਨ ਲਈ ਇਹ ਯਕੀਨੀ ਹੈ, ਕਿਉਕਿ ਇਸ ਨੂੰ ਮੰਨਿਆ ਗਿਆ ਹੈ ਕਿ ਕੋਈ ਵੀ ਮੇਲ ਅਜਿਹੇ ਤੌਰ ਕਾਰਨ ਕੇ ਪੜ੍ਹਨ ਦੀ ਹੈ, ਈ-ਮੇਲ ਪਤਾ ਇੰਦਰਾਜ਼ ਗਲਤੀ ਜ ਜੰਕ ਮੇਲ ਫੋਲਡਰ ਨੂੰ ਦਿਓ, ਹੋਵੇਗਾ ਹੋ.",
+            "auto_translated": "ਰਜਿਸਟਰੇਸ਼ਨ ਨੂੰ ਮੁਕੰਮਲ ਮੇਲ ਨੂੰ ਵੀ ਕਿਹਾ ਗਿਆ ਹੈ, ਪਰ ਕਿਰਪਾ ਕਰਕੇ ਇੱਥੇ ਇਹ ਵੀ ਰਿਕਾਰਡ ਕਰਨ ਲਈ ਇਹ ਯਕੀਨੀ ਹੈ, ਕਿਉਕਿ ਇਸ ਨੂੰ ਮੰਨਿਆ ਗਿਆ ਹੈ ਕਿ ਕੋਈ ਵੀ ਮੇਲ ਅਜਿਹੇ ਤੌਰ ਕਾਰਨ ਕੇ ਪੜ੍ਹਨ ਦੀ ਹੈ, ਈ-ਮੇਲ ਪਤਾ ਇੰਦਰਾਜ਼ ਗਲਤੀ ਜ ਜੰਕ ਮੇਲ ਫੋਲਡਰ ਨੂੰ ਦਿਓ, ਹੋਵੇਗਾ ਹੋ."
+        },
+        "th": {
+            "legacy_caption_pid": 31955,
+            "legacy_language_pid": 23,
+            "text": "จดหมายเสร็จสิ้นการลงทะเบียนยังได้รับการอธิบาย แต่โปรดให้แน่ใจว่าจะบันทึกที่นี่ยังเพราะมันคือการพิจารณาว่าไม่มีจดหมายจะถูกอ่านโดยเหตุผลเช่นจะป้อนอีเมลผิดพลาดรายการที่อยู่หรือโฟลเดอร์อีเมลขยะ",
+            "auto_translated": "จดหมายเสร็จสิ้นการลงทะเบียนยังได้รับการอธิบาย แต่โปรดให้แน่ใจว่าจะบันทึกที่นี่ยังเพราะมันคือการพิจารณาว่าไม่มีจดหมายจะถูกอ่านโดยเหตุผลเช่นจะป้อนอีเมลผิดพลาดรายการที่อยู่หรือโฟลเดอร์อีเมลขยะ"
+        },
+        "te": {
+            "legacy_caption_pid": 41744,
+            "legacy_language_pid": 24,
+            "text": "నమోదు పూర్తి మెయిల్ కూడా వివరించబడింది, కానీ అది ఏ మెయిల్ వంటి కారణాల చేత చదవబడుతుంది ఇ-మెయిల్ చిరునామా ఎంట్రీ తప్పులు లేదా జంక్ మెయిల్ ఫోల్డర్ నమోదు పరిగణిస్తారు ఎందుకంటే ఇక్కడ రికార్డ్ చేయడానికి నిర్ధారించుకోండి.",
+            "auto_translated": "నమోదు పూర్తి మెయిల్ కూడా వివరించబడింది, కానీ అది ఏ మెయిల్ వంటి కారణాల చేత చదవబడుతుంది ఇ-మెయిల్ చిరునామా ఎంట్రీ తప్పులు లేదా జంక్ మెయిల్ ఫోల్డర్ నమోదు పరిగణిస్తారు ఎందుకంటే ఇక్కడ రికార్డ్ చేయడానికి నిర్ధారించుకోండి."
+        },
+        "mr": {
+            "legacy_caption_pid": 41745,
+            "legacy_language_pid": 25,
+            "text": "नोंदणी पूर्ण मेल देखील वर्णन केले आहे, पण तो कोणताही मेल जसे कारणे वाचली की प्रविष्ट करा ई-मेल पत्ता नोंद चुका किंवा जंक मेल फोल्डर मानले जाते कारण कृपया येथे रेकॉर्ड खात्री करा.",
+            "auto_translated": "नोंदणी पूर्ण मेल देखील वर्णन केले आहे, पण तो कोणताही मेल जसे कारणे वाचली की प्रविष्ट करा ई-मेल पत्ता नोंद चुका किंवा जंक मेल फोल्डर मानले जाते कारण कृपया येथे रेकॉर्ड खात्री करा."
+        },
+        "ur": {
+            "legacy_caption_pid": 41746,
+            "legacy_language_pid": 26,
+            "text": "رجسٹریشن تکمیل میل بھی بیان کیا گیا ہے، لیکن کیونکہ اس سے کہ کوئی میل جیسے وجوہات کی طرف سے پڑھا جاتا ہے ای میل ایڈریس اندراج غلطیوں یا جنک میل فولڈر میں داخل کرے گا سمجھا جاتا ہے یہاں بھی ریکارڈ کرنے کی بات کا یقین کریں.",
+            "auto_translated": "رجسٹریشن تکمیل میل بھی بیان کیا گیا ہے، لیکن کیونکہ اس سے کہ کوئی میل جیسے وجوہات کی طرف سے پڑھا جاتا ہے ای میل ایڈریس اندراج غلطیوں یا جنک میل فولڈر میں داخل کرے گا سمجھا جاتا ہے یہاں بھی ریکارڈ کرنے کی بات کا یقین کریں."
+        },
+        "gu": {
+            "legacy_caption_pid": 41747,
+            "legacy_language_pid": 27,
+            "text": "નોંધણી પૂર્ણ મેલ પણ વર્ણવવામાં આવે છે, પરંતુ કૃપા કરીને અહીં એ પણ રેકોર્ડ કરવા માટે ખાતરી કરો, કારણ કે તે માનવામાં આવે છે કે કોઈ મેઇલ જેમ કે કારણો દ્વારા વાંચવામાં આવે છે ઇ-મેઇલ સરનામું પ્રવેશ ભૂલો અથવા જંક મેઇલ ફોલ્ડર દાખલ કરી શકો છો હોઈ શકે છે.",
+            "auto_translated": "નોંધણી પૂર્ણ મેલ પણ વર્ણવવામાં આવે છે, પરંતુ કૃપા કરીને અહીં એ પણ રેકોર્ડ કરવા માટે ખાતરી કરો, કારણ કે તે માનવામાં આવે છે કે કોઈ મેઇલ જેમ કે કારણો દ્વારા વાંચવામાં આવે છે ઇ-મેઇલ સરનામું પ્રવેશ ભૂલો અથવા જંક મેઇલ ફોલ્ડર દાખલ કરી શકો છો હોઈ શકે છે."
+        },
+        "uk": {
+            "legacy_caption_pid": 41748,
+            "legacy_language_pid": 28,
+            "text": "Завершення реєстрації пошти також була описана, але, будь ласка, не забудьте записати тут також, тому що вважається, що ніякої пошти не читається таких причин, як би ввести адресу електронної пошти, адреса входу помилки або папку небажаної пошти.",
+            "auto_translated": "Завершення реєстрації пошти також була описана, але, будь ласка, не забудьте записати тут також, тому що вважається, що ніякої пошти не читається таких причин, як би ввести адресу електронної пошти, адреса входу помилки або папку небажаної пошти."
+        },
+        "ml": {
+            "legacy_caption_pid": 41749,
+            "legacy_language_pid": 29,
+            "text": "രജിസ്ട്രേഷൻ പൂർത്തീകരണം മെയിൽ വിവരിക്കുന്നു, എന്നാൽ കാരണം ഇത് മെയിൽ അത്തരം ഇ-മെയിൽ വിലാസം എൻട്രി തെറ്റുകൾ അല്ലെങ്കിൽ ജങ്ക് മെയിൽ ഫോൾഡർ നൽകുക പോലെ കാരണങ്ങൾ വായിക്കുന്നു എന്ന് കണക്കാക്കുന്നു ഇവിടെ റെക്കോർഡ് ഉറപ്പാക്കുക.",
+            "auto_translated": "രജിസ്ട്രേഷൻ പൂർത്തീകരണം മെയിൽ വിവരിക്കുന്നു, എന്നാൽ കാരണം ഇത് മെയിൽ അത്തരം ഇ-മെയിൽ വിലാസം എൻട്രി തെറ്റുകൾ അല്ലെങ്കിൽ ജങ്ക് മെയിൽ ഫോൾഡർ നൽകുക പോലെ കാരണങ്ങൾ വായിക്കുന്നു എന്ന് കണക്കാക്കുന്നു ഇവിടെ റെക്കോർഡ് ഉറപ്പാക്കുക."
+        },
+        "kn": {
+            "legacy_caption_pid": 41750,
+            "legacy_language_pid": 30,
+            "text": "ನೋಂದಣಿ ಪೂರ್ಣಗೊಂಡ ಮೇಲ್ ಸಹ ವಿವರಿಸಲ್ಪಟ್ಟಿದೆ, ಆದರೆ ಯಾವುದೇ ಮೇಲ್ ಉದಾಹರಣೆಗೆ ಕಾರಣಗಳಿಗಾಗಿ ಓದುತ್ತಾನೆ ಎಂದು ಇಮೇಲ್ ವಿಳಾಸ ನಮೂದು ತಪ್ಪುಗಳು ಅಥವಾ ಜಂಕ್ ಮೇಲ್ ಫೋಲ್ಡರ್ ನಮೂದಿಸಿ ಪರಿಗಣಿಸಲಾಗುತ್ತದೆ ಏಕೆಂದರೆ ದಯವಿಟ್ಟು ಇಲ್ಲಿ ದಾಖಲಿಸಲು ಮರೆಯಬೇಡಿ.",
+            "auto_translated": "ನೋಂದಣಿ ಪೂರ್ಣಗೊಂಡ ಮೇಲ್ ಸಹ ವಿವರಿಸಲ್ಪಟ್ಟಿದೆ, ಆದರೆ ಯಾವುದೇ ಮೇಲ್ ಉದಾಹರಣೆಗೆ ಕಾರಣಗಳಿಗಾಗಿ ಓದುತ್ತಾನೆ ಎಂದು ಇಮೇಲ್ ವಿಳಾಸ ನಮೂದು ತಪ್ಪುಗಳು ಅಥವಾ ಜಂಕ್ ಮೇಲ್ ಫೋಲ್ಡರ್ ನಮೂದಿಸಿ ಪರಿಗಣಿಸಲಾಗುತ್ತದೆ ಏಕೆಂದರೆ ದಯವಿಟ್ಟು ಇಲ್ಲಿ ದಾಖಲಿಸಲು ಮರೆಯಬೇಡಿ."
+        },
+        "su": {
+            "legacy_caption_pid": 41751,
+            "legacy_language_pid": 31,
+            "text": "parantosan pendaptaran mail ogé geus ditétélakeun, tapi punten pastikeun pikeun ngarekam dieu ogé alatan dianggap yén euweuh mail ieu baca ku alesan kayaning bakal ngasupkeun e-mail kasalahan Éntri alamatna atanapi folder junk mail.",
+            "auto_translated": "parantosan pendaptaran mail ogé geus ditétélakeun, tapi punten pastikeun pikeun ngarekam dieu ogé alatan dianggap yén euweuh mail ieu baca ku alesan kayaning bakal ngasupkeun e-mail kasalahan Éntri alamatna atanapi folder junk mail."
+        },
+        "ku": {
+            "legacy_caption_pid": 41752,
+            "legacy_language_pid": 32,
+            "text": "mail temamkirina Registration hatiye weha rave kirin, lê ji kerema xwe bawer bin ji bo nîvîsandina vir jî ji ber ku ev tê hesibandin, ku tu mail bi sedemên wek xwendin, wê bibe sedema address entry e-mail an jî peldanka pisra bikevin.",
+            "auto_translated": "mail temamkirina Registration hatiye weha rave kirin, lê ji kerema xwe bawer bin ji bo nîvîsandina vir jî ji ber ku ev tê hesibandin, ku tu mail bi sedemên wek xwendin, wê bibe sedema address entry e-mail an jî peldanka pisra bikevin."
+        },
+        "ps": {
+            "legacy_caption_pid": 41753,
+            "legacy_language_pid": 33,
+            "text": "د نوم ليکنې د بشپړیدو او مالدارۍ وزارت هم ویل شوي دي، خو لطفا ډاډه دلته هم ثبت شي، ځکه چې دا په پام کې چې نه د کرنې وزارت له خوا د لاملونو د لوستلو دی لکه به د برېښليک پته د ننوتلو غلطي او یا بی ګټی او مالدارۍ فولډر ته ننوځي.",
+            "auto_translated": "د نوم ليکنې د بشپړیدو او مالدارۍ وزارت هم ویل شوي دي، خو لطفا ډاډه دلته هم ثبت شي، ځکه چې دا په پام کې چې نه د کرنې وزارت له خوا د لاملونو د لوستلو دی لکه به د برېښليک پته د ننوتلو غلطي او یا بی ګټی او مالدارۍ فولډر ته ننوځي."
+        },
+        "ro": {
+            "legacy_caption_pid": 41754,
+            "legacy_language_pid": 34,
+            "text": "Finalizarea înregistrării corespondenței a fost de asemenea descrisă, dar vă rugăm să asigurați-vă că pentru a înregistra aici, de asemenea, deoarece se consideră că nu mail este citit de motive, cum ar fi ar intra în e-mail greșeli de introducere a adresei sau dosarul de poștă electronică nedorită.",
+            "auto_translated": "Finalizarea înregistrării corespondenței a fost de asemenea descrisă, dar vă rugăm să asigurați-vă că pentru a înregistra aici, de asemenea, deoarece se consideră că nu mail este citit de motive, cum ar fi ar intra în e-mail greșeli de introducere a adresei sau dosarul de poștă electronică nedorită."
+        },
+        "id": {
+            "legacy_caption_pid": 41755,
+            "legacy_language_pid": 35,
+            "text": "selesainya pendaftaran email juga telah dijelaskan, tetapi pastikan untuk merekam di sini juga karena dianggap bahwa tidak ada surat dibaca oleh alasan seperti akan memasuki e-mail kesalahan entri alamat atau folder junk mail.",
+            "auto_translated": "selesainya pendaftaran email juga telah dijelaskan, tetapi pastikan untuk merekam di sini juga karena dianggap bahwa tidak ada surat dibaca oleh alasan seperti akan memasuki e-mail kesalahan entri alamat atau folder junk mail."
+        },
+        "sd": {
+            "legacy_caption_pid": 41756,
+            "legacy_language_pid": 36,
+            "text": "رجسٽريشن جو عمل مڪمل ميل به بيان ڪيو ويو آهي، پر مهرباني ڪري هتي به لکندڙ کي پڪ ڇاڪاڻ ته ان کي سمجهيو ويندو آهي ته ڪا به ميل اهڙي ته اي-ميل ايڊريس داخل غلطين يا فضول ميل فولڊر ۾ داخل ٿين ته جيئن سببن جي پڙهڻ آهي ٿي.",
+            "auto_translated": "رجسٽريشن جو عمل مڪمل ميل به بيان ڪيو ويو آهي، پر مهرباني ڪري هتي به لکندڙ کي پڪ ڇاڪاڻ ته ان کي سمجهيو ويندو آهي ته ڪا به ميل اهڙي ته اي-ميل ايڊريس داخل غلطين يا فضول ميل فولڊر ۾ داخل ٿين ته جيئن سببن جي پڙهڻ آهي ٿي."
+        },
+        "af": {
+            "legacy_caption_pid": 41757,
+            "legacy_language_pid": 37,
+            "text": "Registrasie voltooiing pos is ook beskryf, maar kan jy seker wees om hier ook te teken, want dit is van mening dat geen e-pos gelees deur redes soos sou die e-posadres inskrywing foute of junk mail gids betree.",
+            "auto_translated": "Registrasie voltooiing pos is ook beskryf, maar kan jy seker wees om hier ook te teken, want dit is van mening dat geen e-pos gelees deur redes soos sou die e-posadres inskrywing foute of junk mail gids betree."
+        },
+        "sw": {
+            "legacy_caption_pid": 41758,
+            "legacy_language_pid": 38,
+            "text": "Usajili kukamilika mail pia imekuwa ilivyoelezwa, lakini tafadhali kuwa na uhakika kurekodi hapa pia kwa sababu ni kuchukuliwa kuwa hakuna barua kusomwa na sababu kama vile ingekuwa kuingia barua pepe kuingia makosa au Junk mail folda.",
+            "auto_translated": "Usajili kukamilika mail pia imekuwa ilivyoelezwa, lakini tafadhali kuwa na uhakika kurekodi hapa pia kwa sababu ni kuchukuliwa kuwa hakuna barua kusomwa na sababu kama vile ingekuwa kuingia barua pepe kuingia makosa au Junk mail folda."
+        },
+        "lo": {
+            "legacy_caption_pid": 41759,
+            "legacy_language_pid": 39,
+            "text": "mail ສໍາເລັດການລົງທະບຽນຍັງໄດ້ຮັບການອະທິບາຍ, ແຕ່ກະລຸນາໃຫ້ແນ່ໃຈວ່າການທີ່ຈະບັນທຶກນີ້ຍັງເນື່ອງຈາກວ່າມັນໄດ້ຖືກພິຈາລະນາວ່າເມວແມ່ນອ່ານຕາມເຫດຜົນດັ່ງກ່າວເປັນຈະໃສ່ອີເມລຜິດພາດເຂົ້າຢູ່ຫຼືໂຟນເດີ mail junk.",
+            "auto_translated": "mail ສໍາເລັດການລົງທະບຽນຍັງໄດ້ຮັບການອະທິບາຍ, ແຕ່ກະລຸນາໃຫ້ແນ່ໃຈວ່າການທີ່ຈະບັນທຶກນີ້ຍັງເນື່ອງຈາກວ່າມັນໄດ້ຖືກພິຈາລະນາວ່າເມວແມ່ນອ່ານຕາມເຫດຜົນດັ່ງກ່າວເປັນຈະໃສ່ອີເມລຜິດພາດເຂົ້າຢູ່ຫຼືໂຟນເດີ mail junk."
+        },
+        "nl": {
+            "legacy_caption_pid": 41760,
+            "legacy_language_pid": 40,
+            "text": "Registratie voltooiing mail is ook beschreven, maar zorg ervoor dat u ook hier op te nemen, omdat het wordt beschouwd dat er geen e-mail wordt gelezen door redenen zoals zou de e-mail adresinvoer fouten of ongewenste e-mail map te openen.",
+            "auto_translated": "Registratie voltooiing mail is ook beschreven, maar zorg ervoor dat u ook hier op te nemen, omdat het wordt beschouwd dat er geen e-mail wordt gelezen door redenen zoals zou de e-mail adresinvoer fouten of ongewenste e-mail map te openen."
+        },
+        "tl": {
+            "legacy_caption_pid": 41761,
+            "legacy_language_pid": 41,
+            "text": "pagkumpleto ng pagpaparehistro mail ay din ay inilarawan, ngunit mangyaring maging sigurado upang i-record dito din dahil ito ay itinuturing na walang mail ay basahin sa pamamagitan kadahilanan tulad ng kung paano ipasok ang e-mail address entry pagkakamali o junk mail folder.",
+            "auto_translated": "pagkumpleto ng pagpaparehistro mail ay din ay inilarawan, ngunit mangyaring maging sigurado upang i-record dito din dahil ito ay itinuturing na walang mail ay basahin sa pamamagitan kadahilanan tulad ng kung paano ipasok ang e-mail address entry pagkakamali o junk mail folder."
+        },
+        "ne": {
+            "legacy_caption_pid": 41762,
+            "legacy_language_pid": 42,
+            "text": "दर्ता पूरा मेल पनि वर्णन गरिएको छ, तर यो कुनै मेल जस्तै कारण पढ्न ई-मेल ठेगाना प्रविष्टि गल्ती वा जंक मेल फोल्डर प्रविष्ट हुनेछ छ मानिन्छ किनभने कृपया पनि यहाँ रेकर्ड गर्न निश्चित हुन।",
+            "auto_translated": "दर्ता पूरा मेल पनि वर्णन गरिएको छ, तर यो कुनै मेल जस्तै कारण पढ्न ई-मेल ठेगाना प्रविष्टि गल्ती वा जंक मेल फोल्डर प्रविष्ट हुनेछ छ मानिन्छ किनभने कृपया पनि यहाँ रेकर्ड गर्न निश्चित हुन।"
+        },
+        "hu": {
+            "legacy_caption_pid": 41763,
+            "legacy_language_pid": 43,
+            "text": "Regisztráció befejezése mail is leírták, de kérjük, hogy a felvételt itt azért is, mert úgy tartják, hogy nincs levél olvasható okok, például azt írja be az e-mail cím bejegyzés hibákat vagy levélszemét mappába.",
+            "auto_translated": "Regisztráció befejezése mail is leírták, de kérjük, hogy a felvételt itt azért is, mert úgy tartják, hogy nincs levél olvasható okok, például azt írja be az e-mail cím bejegyzés hibákat vagy levélszemét mappába."
+        },
+        "cs": {
+            "legacy_caption_pid": 41764,
+            "legacy_language_pid": 44,
+            "text": "dokončení registrace pošty bylo také popsáno, ale prosím, ujistěte se, že záznam zde také proto, že se má za to, že žádná pošta je čten z důvodů, jako by zadání e-mailové adresy vstupní chyby nebo nevyžádané pošty složku.",
+            "auto_translated": "dokončení registrace pošty bylo také popsáno, ale prosím, ujistěte se, že záznam zde také proto, že se má za to, že žádná pošta je čten z důvodů, jako by zadání e-mailové adresy vstupní chyby nebo nevyžádané pošty složku."
+        },
+        "el": {
+            "legacy_caption_pid": 41765,
+            "legacy_language_pid": 45,
+            "text": "ολοκλήρωση Εγγραφή ταχυδρομείου έχει επίσης περιγραφεί, αλλά σας παρακαλώ να είστε βέβαιος να καταγράψει εδώ και επειδή θεωρείται ότι δεν ταχυδρομείου διαβάζεται από λόγους, όπως θα εισάγετε το e-mail λάθη εισόδου διεύθυνση ή το φάκελο ανεπιθύμητης αλληλογραφίας.",
+            "auto_translated": "ολοκλήρωση Εγγραφή ταχυδρομείου έχει επίσης περιγραφεί, αλλά σας παρακαλώ να είστε βέβαιος να καταγράψει εδώ και επειδή θεωρείται ότι δεν ταχυδρομείου διαβάζεται από λόγους, όπως θα εισάγετε το e-mail λάθη εισόδου διεύθυνση ή το φάκελο ανεπιθύμητης αλληλογραφίας."
+        },
+        "sv": {
+            "legacy_caption_pid": 41766,
+            "legacy_language_pid": 46,
+            "text": "Registrerings avslutad post har också beskrivits, men var noga med att spela här också eftersom det anses att ingen post läses av skäl som skulle komma in i e-postadress posten misstag eller skräppost mapp.",
+            "auto_translated": "Registrerings avslutad post har också beskrivits, men var noga med att spela här också eftersom det anses att ingen post läses av skäl som skulle komma in i e-postadress posten misstag eller skräppost mapp."
+        },
+        "kk": {
+            "legacy_caption_pid": 41767,
+            "legacy_language_pid": 47,
+            "text": "Тіркеу аяқтау пошта, сондай-ақ сипатталған, бірақ ол ешқандай пошта мұндай электрондық пошта мекен-жайы жазба қателіктерін немесе қалаусыз пошта қалтасын енгізіңіз еді себептер оқи деп саналады, себебі, сондай-ақ мұнда жазып ұмытпаңыз болды.",
+            "auto_translated": "Тіркеу аяқтау пошта, сондай-ақ сипатталған, бірақ ол ешқандай пошта мұндай электрондық пошта мекен-жайы жазба қателіктерін немесе қалаусыз пошта қалтасын енгізіңіз еді себептер оқи деп саналады, себебі, сондай-ақ мұнда жазып ұмытпаңыз болды."
+        },
+        "fi": {
+            "legacy_caption_pid": 41768,
+            "legacy_language_pid": 48,
+            "text": "Rekisteröinnin valmis posti on myös kuvattu, mutta muistakaa tallentaa tänne myös siksi katsotaan, että mitään postia lukee vuoksi olisi kirjoitat sähköpostiosoitteen entry virheitä tai roskapostikansiostasi.",
+            "auto_translated": "Rekisteröinnin valmis posti on myös kuvattu, mutta muistakaa tallentaa tänne myös siksi katsotaan, että mitään postia lukee vuoksi olisi kirjoitat sähköpostiosoitteen entry virheitä tai roskapostikansiostasi."
+        },
+        "da": {
+            "legacy_caption_pid": 41769,
+            "legacy_language_pid": 49,
+            "text": "Registrering færdiggørelse mail er også blevet beskrevet, men vær sikker på at optage her også, fordi det anses for at ingen post læses af årsager såsom ville træde e-mail-adresse entry fejl eller uønsket post-mappe.",
+            "auto_translated": "Registrering færdiggørelse mail er også blevet beskrevet, men vær sikker på at optage her også, fordi det anses for at ingen post læses af årsager såsom ville træde e-mail-adresse entry fejl eller uønsket post-mappe."
+        },
+        "he": {
+            "legacy_caption_pid": 41770,
+            "legacy_language_pid": 50,
+            "text": "רישום אלקטרוני השלים גם תואר, אבל אנא הקפד לרשום כאן גם משום שהוא נחשב שאף אלקטרוני נקרא על ידי סיבות כגון תיכנס טעויות כניסת כתובת דואר אלקטרונית או דואר זבל לתיקייה.",
+            "auto_translated": "רישום אלקטרוני השלים גם תואר, אבל אנא הקפד לרשום כאן גם משום שהוא נחשב שאף אלקטרוני נקרא על ידי סיבות כגון תיכנס טעויות כניסת כתובת דואר אלקטרונית או דואר זבל לתיקייה."
+        },
+        "no": {
+            "legacy_caption_pid": 41771,
+            "legacy_language_pid": 51,
+            "text": "Registrering ferdigstillelse post har også blitt beskrevet, men vær sikker på å spille inn her også fordi det anses at ingen e-post blir lest av grunner som ville inn e-postadresse oppføring feil eller søppelpost mappen.",
+            "auto_translated": "Registrering ferdigstillelse post har også blitt beskrevet, men vær sikker på å spille inn her også fordi det anses at ingen e-post blir lest av grunner som ville inn e-postadresse oppføring feil eller søppelpost mappen."
+        }
+    }
+}

@@ -1,0 +1,321 @@
+{
+    "resource_key": "NOTICE_PLEAE_AUTHENTICATE_EMAIL_BEFORE_USE",
+    "legacy_resource_pid": 565,
+    "base_group_key": "grp-005-common-lib",
+    "additional_group_keys": [],
+    "key_for_update": "L9M5WTYomVC3hzbjoUmgPiTzBh4wHZlk4Ka0hKL3jNrBSqEzTr1dHJwcWG5iRgzbHuMAkmBVLhvH0rF3ChFBOYCdTq9GRsZsgFBwSuoTBzF3PFZYGm0sFaGWJxnJfU5h",
+    "sort_group": "",
+    "key_name": "NOTICE_PLEAE_AUTHENTICATE_EMAIL_BEFORE_USE",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": false,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 1329,
+            "legacy_language_pid": 1,
+            "text": "ご利用にはメールアドレスの認証が必要です。",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 1330,
+            "legacy_language_pid": 2,
+            "text": "Please Authenticate Email address to display this page",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 6496,
+            "legacy_language_pid": 3,
+            "text": "使用需要电子邮件进行认证。",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 6497,
+            "legacy_language_pid": 4,
+            "text": "이용하려면 이메일 인증이 필요합니다.",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 10342,
+            "legacy_language_pid": 5,
+            "text": "Por favor, autentique la dirección de correo electrónico para mostrar esta página",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 10343,
+            "legacy_language_pid": 6,
+            "text": "Por favor, autentica o endereço de email para exibir esta página",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 10344,
+            "legacy_language_pid": 7,
+            "text": "使用需要電子郵件進行認證。",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 16241,
+            "legacy_language_pid": 8,
+            "text": "Authentifiez l'adresse e-mail pour afficher cette page",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 16242,
+            "legacy_language_pid": 9,
+            "text": "कृपया इस पृष्ठ को प्रदर्शित करने के लिए ईमेल पते को प्रमाणित करें",
+            "auto_translated": ""
+        },
+        "ar": {
+            "legacy_caption_pid": 29170,
+            "legacy_language_pid": 10,
+            "text": "استخدام يتطلب مصادقة من عنوان البريد الإلكتروني.",
+            "auto_translated": "استخدام يتطلب مصادقة من عنوان البريد الإلكتروني."
+        },
+        "fa": {
+            "legacy_caption_pid": 29171,
+            "legacy_language_pid": 11,
+            "text": "استفاده نیاز به احراز هویت آدرس ایمیل.",
+            "auto_translated": "استفاده نیاز به احراز هویت آدرس ایمیل."
+        },
+        "de": {
+            "legacy_caption_pid": 29172,
+            "legacy_language_pid": 12,
+            "text": "Die Verwendung erfordert die Authentifizierung der E-Mail-Adresse.",
+            "auto_translated": "Die Verwendung erfordert die Authentifizierung der E-Mail-Adresse."
+        },
+        "ru": {
+            "legacy_caption_pid": 29173,
+            "legacy_language_pid": 13,
+            "text": "Использование требует аутентификации электронной почты.",
+            "auto_translated": "Использование требует аутентификации электронной почты."
+        },
+        "ms": {
+            "legacy_caption_pid": 29174,
+            "legacy_language_pid": 14,
+            "text": "penggunaan yang memerlukan pengesahan alamat e-mel.",
+            "auto_translated": "penggunaan yang memerlukan pengesahan alamat e-mel."
+        },
+        "ta": {
+            "legacy_caption_pid": 29175,
+            "legacy_language_pid": 15,
+            "text": "பயன்படுத்த மின்னஞ்சல் முகவரியை அங்கீகார தேவைப்படுகிறது.",
+            "auto_translated": "பயன்படுத்த மின்னஞ்சல் முகவரியை அங்கீகார தேவைப்படுகிறது."
+        },
+        "it": {
+            "legacy_caption_pid": 29176,
+            "legacy_language_pid": 16,
+            "text": "L'uso richiede l'autenticazione dell'indirizzo di posta elettronica.",
+            "auto_translated": "L'uso richiede l'autenticazione dell'indirizzo di posta elettronica."
+        },
+        "bn": {
+            "legacy_caption_pid": 29177,
+            "legacy_language_pid": 17,
+            "text": "ব্যবহারের ই-মেইল ঠিকানার অনুমোদন আবশ্যক।",
+            "auto_translated": "ব্যবহারের ই-মেইল ঠিকানার অনুমোদন আবশ্যক।"
+        },
+        "tr": {
+            "legacy_caption_pid": 29178,
+            "legacy_language_pid": 18,
+            "text": "Kullanım e-posta adresinin kimlik doğrulaması gerekiyor.",
+            "auto_translated": "Kullanım e-posta adresinin kimlik doğrulaması gerekiyor."
+        },
+        "vi": {
+            "legacy_caption_pid": 29179,
+            "legacy_language_pid": 19,
+            "text": "Việc sử dụng đòi hỏi sự xác thực của địa chỉ e-mail.",
+            "auto_translated": "Việc sử dụng đòi hỏi sự xác thực của địa chỉ e-mail."
+        },
+        "pl": {
+            "legacy_caption_pid": 29180,
+            "legacy_language_pid": 20,
+            "text": "Zastosowanie wymaga uwierzytelnienia adresu e-mail.",
+            "auto_translated": "Zastosowanie wymaga uwierzytelnienia adresu e-mail."
+        },
+        "jv": {
+            "legacy_caption_pid": 29181,
+            "legacy_language_pid": 21,
+            "text": "Gunakake mbutuhake bukti asli saka alamat e-mail.",
+            "auto_translated": "Gunakake mbutuhake bukti asli saka alamat e-mail."
+        },
+        "pa": {
+            "legacy_caption_pid": 29182,
+            "legacy_language_pid": 22,
+            "text": "ਵਰਤਣ ਈ-ਮੇਲ ਪਤੇ ਦੀ ਪ੍ਰਮਾਣਿਕਤਾ ਦੀ ਲੋੜ ਹੈ.",
+            "auto_translated": "ਵਰਤਣ ਈ-ਮੇਲ ਪਤੇ ਦੀ ਪ੍ਰਮਾਣਿਕਤਾ ਦੀ ਲੋੜ ਹੈ."
+        },
+        "th": {
+            "legacy_caption_pid": 29183,
+            "legacy_language_pid": 23,
+            "text": "การใช้งานต้องตรวจสอบที่อยู่อีเมลที่",
+            "auto_translated": "การใช้งานต้องตรวจสอบที่อยู่อีเมลที่"
+        },
+        "te": {
+            "legacy_caption_pid": 35248,
+            "legacy_language_pid": 24,
+            "text": "ఉపయోగం ఇ-మెయిల్ చిరునామా ప్రామాణీకరణ అవసరం.",
+            "auto_translated": "ఉపయోగం ఇ-మెయిల్ చిరునామా ప్రామాణీకరణ అవసరం."
+        },
+        "mr": {
+            "legacy_caption_pid": 35249,
+            "legacy_language_pid": 25,
+            "text": "वापर ई-मेल पत्ता प्रमाणीकरण आवश्यक आहे.",
+            "auto_translated": "वापर ई-मेल पत्ता प्रमाणीकरण आवश्यक आहे."
+        },
+        "ur": {
+            "legacy_caption_pid": 35250,
+            "legacy_language_pid": 26,
+            "text": "استعمال کا ای میل ایڈریس کی تصدیق کی ضرورت ہے.",
+            "auto_translated": "استعمال کا ای میل ایڈریس کی تصدیق کی ضرورت ہے."
+        },
+        "gu": {
+            "legacy_caption_pid": 35251,
+            "legacy_language_pid": 27,
+            "text": "ઉપયોગ ઈ-મેલ સરનામું પ્રમાણીકરણ જરૂરી છે.",
+            "auto_translated": "ઉપયોગ ઈ-મેલ સરનામું પ્રમાણીકરણ જરૂરી છે."
+        },
+        "uk": {
+            "legacy_caption_pid": 35252,
+            "legacy_language_pid": 28,
+            "text": "Використання вимагає аутентифікації електронної пошти.",
+            "auto_translated": "Використання вимагає аутентифікації електронної пошти."
+        },
+        "ml": {
+            "legacy_caption_pid": 35253,
+            "legacy_language_pid": 29,
+            "text": "ഉപയോഗം ഇ-മെയിൽ വിലാസം അംഗീകാരം ആവശ്യമാണ്.",
+            "auto_translated": "ഉപയോഗം ഇ-മെയിൽ വിലാസം അംഗീകാരം ആവശ്യമാണ്."
+        },
+        "kn": {
+            "legacy_caption_pid": 35254,
+            "legacy_language_pid": 30,
+            "text": "ಬಳಕೆಯ ಇಮೇಲ್ ವಿಳಾಸ ದೃಢೀಕರಣದ ಅಗತ್ಯವಿದೆ.",
+            "auto_translated": "ಬಳಕೆಯ ಇಮೇಲ್ ವಿಳಾಸ ದೃಢೀಕರಣದ ಅಗತ್ಯವಿದೆ."
+        },
+        "su": {
+            "legacy_caption_pid": 35255,
+            "legacy_language_pid": 31,
+            "text": "pamakéan butuh nu auténtikasi sahiji alamat e-mail.",
+            "auto_translated": "pamakéan butuh nu auténtikasi sahiji alamat e-mail."
+        },
+        "ku": {
+            "legacy_caption_pid": 35256,
+            "legacy_language_pid": 32,
+            "text": "Bikaranîna pêwîstiya authentication ji navnîşana e-mail.",
+            "auto_translated": "Bikaranîna pêwîstiya authentication ji navnîşana e-mail."
+        },
+        "ps": {
+            "legacy_caption_pid": 35257,
+            "legacy_language_pid": 33,
+            "text": "د کارولو د برېښليک پته د اعتبار ته اړتیا لري.",
+            "auto_translated": "د کارولو د برېښليک پته د اعتبار ته اړتیا لري."
+        },
+        "ro": {
+            "legacy_caption_pid": 35258,
+            "legacy_language_pid": 34,
+            "text": "Utilizarea impune autentificarea adresei de e-mail.",
+            "auto_translated": "Utilizarea impune autentificarea adresei de e-mail."
+        },
+        "id": {
+            "legacy_caption_pid": 35259,
+            "legacy_language_pid": 35,
+            "text": "Penggunaan memerlukan otentikasi alamat e-mail.",
+            "auto_translated": "Penggunaan memerlukan otentikasi alamat e-mail."
+        },
+        "sd": {
+            "legacy_caption_pid": 35260,
+            "legacy_language_pid": 36,
+            "text": "جي استعمال جي اي-ميل پتي جي اصليت جي ضرورت آهي.",
+            "auto_translated": "جي استعمال جي اي-ميل پتي جي اصليت جي ضرورت آهي."
+        },
+        "af": {
+            "legacy_caption_pid": 35261,
+            "legacy_language_pid": 37,
+            "text": "Die gebruik vereis dat die verifikasie van die epos adres.",
+            "auto_translated": "Die gebruik vereis dat die verifikasie van die epos adres."
+        },
+        "sw": {
+            "legacy_caption_pid": 35262,
+            "legacy_language_pid": 38,
+            "text": "matumizi inahitaji uthibitishaji ya barua pepe.",
+            "auto_translated": "matumizi inahitaji uthibitishaji ya barua pepe."
+        },
+        "lo": {
+            "legacy_caption_pid": 35263,
+            "legacy_language_pid": 39,
+            "text": "ການນໍາໃຊ້ຮຽກຮ້ອງໃຫ້ມີການກວດສອບຂອງທີ່ຢູ່ອີເມລໄດ້.",
+            "auto_translated": "ການນໍາໃຊ້ຮຽກຮ້ອງໃຫ້ມີການກວດສອບຂອງທີ່ຢູ່ອີເມລໄດ້."
+        },
+        "nl": {
+            "legacy_caption_pid": 35264,
+            "legacy_language_pid": 40,
+            "text": "Het gebruik vereist de authenticatie van de e-mail adres.",
+            "auto_translated": "Het gebruik vereist de authenticatie van de e-mail adres."
+        },
+        "tl": {
+            "legacy_caption_pid": 35265,
+            "legacy_language_pid": 41,
+            "text": "paggamit ay nangangailangan ng authentication ng e-mail address.",
+            "auto_translated": "paggamit ay nangangailangan ng authentication ng e-mail address."
+        },
+        "ne": {
+            "legacy_caption_pid": 35266,
+            "legacy_language_pid": 42,
+            "text": "प्रयोग ई-मेल ठेगाना को प्रमाणीकरण आवश्यक छ।",
+            "auto_translated": "प्रयोग ई-मेल ठेगाना को प्रमाणीकरण आवश्यक छ।"
+        },
+        "hu": {
+            "legacy_caption_pid": 35267,
+            "legacy_language_pid": 43,
+            "text": "A használat megköveteli a hitelesítést az e-mail címét.",
+            "auto_translated": "A használat megköveteli a hitelesítést az e-mail címét."
+        },
+        "cs": {
+            "legacy_caption_pid": 35268,
+            "legacy_language_pid": 44,
+            "text": "Použití vyžaduje autentizaci e-mailovou adresu.",
+            "auto_translated": "Použití vyžaduje autentizaci e-mailovou adresu."
+        },
+        "el": {
+            "legacy_caption_pid": 35269,
+            "legacy_language_pid": 45,
+            "text": "Η χρήση απαιτεί την πιστοποίηση της διεύθυνσης ηλεκτρονικού ταχυδρομείου.",
+            "auto_translated": "Η χρήση απαιτεί την πιστοποίηση της διεύθυνσης ηλεκτρονικού ταχυδρομείου."
+        },
+        "sv": {
+            "legacy_caption_pid": 35270,
+            "legacy_language_pid": 46,
+            "text": "Användningen kräver autentisering av e-postadressen.",
+            "auto_translated": "Användningen kräver autentisering av e-postadressen."
+        },
+        "kk": {
+            "legacy_caption_pid": 35271,
+            "legacy_language_pid": 47,
+            "text": "пайдалану Электрондық пошта мекен-жайы аутентификацияны қажет етеді.",
+            "auto_translated": "пайдалану Электрондық пошта мекен-жайы аутентификацияны қажет етеді."
+        },
+        "fi": {
+            "legacy_caption_pid": 35272,
+            "legacy_language_pid": 48,
+            "text": "Käyttö vaatii autentikoinnin sähköpostiosoitteen.",
+            "auto_translated": "Käyttö vaatii autentikoinnin sähköpostiosoitteen."
+        },
+        "da": {
+            "legacy_caption_pid": 35273,
+            "legacy_language_pid": 49,
+            "text": "Brugen kræver godkendelse af e-mail-adresse.",
+            "auto_translated": "Brugen kræver godkendelse af e-mail-adresse."
+        },
+        "he": {
+            "legacy_caption_pid": 35274,
+            "legacy_language_pid": 50,
+            "text": "השימוש דורש אימות של כתובת הדואר האלקטרוני.",
+            "auto_translated": "השימוש דורש אימות של כתובת הדואר האלקטרוני."
+        },
+        "no": {
+            "legacy_caption_pid": 35275,
+            "legacy_language_pid": 51,
+            "text": "Bruken krever autentisering av e-postadressen.",
+            "auto_translated": "Bruken krever autentisering av e-postadressen."
+        }
+    }
+}

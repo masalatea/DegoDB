@@ -1,0 +1,321 @@
+{
+    "resource_key": "COMMON_LIB_LOGIN_HEADER_FOR_GOOGLE_ACCOUNT_COMMENT1",
+    "legacy_resource_pid": 1499,
+    "base_group_key": "grp-010-matsuesoft-lib",
+    "additional_group_keys": [],
+    "key_for_update": "NmMRXLr26stdlPZkQjfmyRP4Y2ztOTvDrwFUiwDdeJRKYsinz5iyDF4Qu2KKgoztIQD324j3E4UhMn7RSWPx6zbCWLTA0gJaJ7OtJPiow7gcqjGY3KI1atpqBAxHhMUr",
+    "sort_group": "LOGIN",
+    "key_name": "COMMON_LIB_LOGIN_HEADER_FOR_GOOGLE_ACCOUNT_COMMENT1",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": false,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 6270,
+            "legacy_language_pid": 1,
+            "text": "既にお持ちのGoogle アカウントでご利用頂けます。或いは取得後にご利用下さい。",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 6271,
+            "legacy_language_pid": 2,
+            "text": "You can use it with your existing Google Account. Or please use after obtaining.",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 6272,
+            "legacy_language_pid": 3,
+            "text": "在谷歌用户名ID已经存在，请在取得新的账号后再次使用。",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 6273,
+            "legacy_language_pid": 4,
+            "text": "이미 Google 아이디 로 이용하실 수 있습니다. 혹은 취득 후 이용해 주시기 바랍니다.",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 11084,
+            "legacy_language_pid": 5,
+            "text": "Puedes usarlo con tu ID de Google existente. O utilice después de obtener.",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 11085,
+            "legacy_language_pid": 6,
+            "text": "Você pode usá-lo com seu ID do Google existente. Ou use depois da obtenção.",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 11086,
+            "legacy_language_pid": 7,
+            "text": "在谷歌用户名ID已經存在，請在取得新的賬號後再次使用。",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 16049,
+            "legacy_language_pid": 8,
+            "text": "Vous pouvez l'utiliser avec votre compte Google existant. Ou utilisez-les après avoir obtenu.",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 16050,
+            "legacy_language_pid": 9,
+            "text": "आप इसे अपने मौजूदा गूगल खाते से उपयोग कर सकते हैं। या प्राप्त करने के बाद कृपया उपयोग करें",
+            "auto_translated": ""
+        },
+        "ar": {
+            "legacy_caption_pid": 32628,
+            "legacy_language_pid": 10,
+            "text": "متوفر في لديك بالفعل حساب Google. أو الرجاء استخدام بعد الاستحواذ.",
+            "auto_translated": "متوفر في لديك بالفعل حساب Google. أو الرجاء استخدام بعد الاستحواذ."
+        },
+        "fa": {
+            "legacy_caption_pid": 32629,
+            "legacy_language_pid": 11,
+            "text": "در حال حاضر در دسترس در شما حساب گوگل. یا لطفا پس از کسب استفاده کنید.",
+            "auto_translated": "در حال حاضر در دسترس در شما حساب گوگل. یا لطفا پس از کسب استفاده کنید."
+        },
+        "de": {
+            "legacy_caption_pid": 32630,
+            "legacy_language_pid": 12,
+            "text": "Bereits in Sie haben Google-Konto. Oder Bitte benutzen Sie nach dem Erwerb.",
+            "auto_translated": "Bereits in Sie haben Google-Konto. Oder Bitte benutzen Sie nach dem Erwerb."
+        },
+        "ru": {
+            "legacy_caption_pid": 32631,
+            "legacy_language_pid": 13,
+            "text": "Уже доступны в вас есть аккаунт Google. Или Пожалуйста, используйте после приобретения.",
+            "auto_translated": "Уже доступны в вас есть аккаунт Google. Или Пожалуйста, используйте после приобретения."
+        },
+        "ms": {
+            "legacy_caption_pid": 32632,
+            "legacy_language_pid": 14,
+            "text": "Sedia ada di anda mempunyai akaun Google. Atau Sila gunakan selepas pengambilalihan.",
+            "auto_translated": "Sedia ada di anda mempunyai akaun Google. Atau Sila gunakan selepas pengambilalihan."
+        },
+        "ta": {
+            "legacy_caption_pid": 32633,
+            "legacy_language_pid": 15,
+            "text": "முன்பே நீங்கள் கிடைக்கும் Google கணக்கு இருக்கிறது. அல்லது கையகப்படுத்திய பிறகு பயன்படுத்தவும்.",
+            "auto_translated": "முன்பே நீங்கள் கிடைக்கும் Google கணக்கு இருக்கிறது. அல்லது கையகப்படுத்திய பிறகு பயன்படுத்தவும்."
+        },
+        "it": {
+            "legacy_caption_pid": 32634,
+            "legacy_language_pid": 16,
+            "text": "Già disponibile in si possiede un account Google. O Si prega di utilizzare dopo l'acquisizione.",
+            "auto_translated": "Già disponibile in si possiede un account Google. O Si prega di utilizzare dopo l'acquisizione."
+        },
+        "bn": {
+            "legacy_caption_pid": 32635,
+            "legacy_language_pid": 17,
+            "text": "ইতিমধ্যে আপনি উপলব্ধ Google অ্যাকাউন্ট আছে। অথবা অধিগ্রহণ পর ব্যবহার করুন।",
+            "auto_translated": "ইতিমধ্যে আপনি উপলব্ধ Google অ্যাকাউন্ট আছে। অথবা অধিগ্রহণ পর ব্যবহার করুন।"
+        },
+        "tr": {
+            "legacy_caption_pid": 32636,
+            "legacy_language_pid": 18,
+            "text": "Zaten size sunulan Google hesabım var. Ya kazanılmasından sonra kullanın.",
+            "auto_translated": "Zaten size sunulan Google hesabım var. Ya kazanılmasından sonra kullanın."
+        },
+        "vi": {
+            "legacy_caption_pid": 32637,
+            "legacy_language_pid": 19,
+            "text": "Đã có sẵn trong bạn có tài khoản Google. Hoặc Vui lòng sử dụng sau khi mua lại.",
+            "auto_translated": "Đã có sẵn trong bạn có tài khoản Google. Hoặc Vui lòng sử dụng sau khi mua lại."
+        },
+        "pl": {
+            "legacy_caption_pid": 32638,
+            "legacy_language_pid": 20,
+            "text": "Już dostępne w was mieć konto Google. Albo proszę skorzystać po przejęciu.",
+            "auto_translated": "Już dostępne w was mieć konto Google. Albo proszę skorzystać po przejęciu."
+        },
+        "jv": {
+            "legacy_caption_pid": 32639,
+            "legacy_language_pid": 21,
+            "text": "Wis kasedhiya ing sampeyan duwe akun Google. Utawa Mangga nggunakake sawise disualekno.",
+            "auto_translated": "Wis kasedhiya ing sampeyan duwe akun Google. Utawa Mangga nggunakake sawise disualekno."
+        },
+        "pa": {
+            "legacy_caption_pid": 32640,
+            "legacy_language_pid": 22,
+            "text": "ਹੀ ਤੁਹਾਡੇ ਵਿੱਚ ਉਪਲੱਬਧ ਗੂਗਲ ਖਾਤਾ ਹੈ. ਕੀ ਪ੍ਰਾਪਤੀ ਦੇ ਬਾਅਦ ਦਾ ਉਪਯੋਗ ਕਰੋ.",
+            "auto_translated": "ਹੀ ਤੁਹਾਡੇ ਵਿੱਚ ਉਪਲੱਬਧ ਗੂਗਲ ਖਾਤਾ ਹੈ. ਕੀ ਪ੍ਰਾਪਤੀ ਦੇ ਬਾਅਦ ਦਾ ਉਪਯੋਗ ਕਰੋ."
+        },
+        "th": {
+            "legacy_caption_pid": 32641,
+            "legacy_language_pid": 23,
+            "text": "ที่มีอยู่ในคุณมีบัญชี Google หรือกรุณาใช้หลังจากที่ได้มา",
+            "auto_translated": "ที่มีอยู่ในคุณมีบัญชี Google หรือกรุณาใช้หลังจากที่ได้มา"
+        },
+        "te": {
+            "legacy_caption_pid": 40372,
+            "legacy_language_pid": 24,
+            "text": "ఇప్పటికే మీరు అందుబాటులో Google ఖాతాను కలిగి. లేదా స్వాధీనపర్చుకున్న తర్వాత ఉపయోగించండి.",
+            "auto_translated": "ఇప్పటికే మీరు అందుబాటులో Google ఖాతాను కలిగి. లేదా స్వాధీనపర్చుకున్న తర్వాత ఉపయోగించండి."
+        },
+        "mr": {
+            "legacy_caption_pid": 40373,
+            "legacy_language_pid": 25,
+            "text": "आधीच आपण उपलब्ध Google खाते आहे. किंवा संपादन नंतर वापरा.",
+            "auto_translated": "आधीच आपण उपलब्ध Google खाते आहे. किंवा संपादन नंतर वापरा."
+        },
+        "ur": {
+            "legacy_caption_pid": 40374,
+            "legacy_language_pid": 26,
+            "text": "پہلے سے ہی آپ میں دستیاب گوگل اکاؤنٹ ہے. یا حصول کے بعد استعمال کریں.",
+            "auto_translated": "پہلے سے ہی آپ میں دستیاب گوگل اکاؤنٹ ہے. یا حصول کے بعد استعمال کریں."
+        },
+        "gu": {
+            "legacy_caption_pid": 40375,
+            "legacy_language_pid": 27,
+            "text": "પહેલાથી જ તમને ઉપલબ્ધ Google એકાઉન્ટ છે. અથવા સંપાદન પછી ઉપયોગ કરો.",
+            "auto_translated": "પહેલાથી જ તમને ઉપલબ્ધ Google એકાઉન્ટ છે. અથવા સંપાદન પછી ઉપયોગ કરો."
+        },
+        "uk": {
+            "legacy_caption_pid": 40376,
+            "legacy_language_pid": 28,
+            "text": "Уже доступні в вас є акаунт Google. Або ласка, використовуйте після придбання.",
+            "auto_translated": "Уже доступні в вас є акаунт Google. Або ласка, використовуйте після придбання."
+        },
+        "ml": {
+            "legacy_caption_pid": 40377,
+            "legacy_language_pid": 29,
+            "text": "നിങ്ങൾ ഇതിനകം ലഭ്യമായ Google അക്കൗണ്ട് ഉണ്ട്. അല്ലെങ്കിൽ ഏറ്റെടുക്കൽ ശേഷം ഉപയോഗിക്കുക.",
+            "auto_translated": "നിങ്ങൾ ഇതിനകം ലഭ്യമായ Google അക്കൗണ്ട് ഉണ്ട്. അല്ലെങ്കിൽ ഏറ്റെടുക്കൽ ശേഷം ഉപയോഗിക്കുക."
+        },
+        "kn": {
+            "legacy_caption_pid": 40378,
+            "legacy_language_pid": 30,
+            "text": "ನೀವು ಲಭ್ಯವಿರುವ ಈಗಾಗಲೇ Google ಖಾತೆಯನ್ನು ಹೊಂದಿದ್ದೀರಿ. ಅಥವಾ ಸ್ವಾಧೀನಪಡಿಸಿಕೊಂಡ ಬಳಸಿ.",
+            "auto_translated": "ನೀವು ಲಭ್ಯವಿರುವ ಈಗಾಗಲೇ Google ಖಾತೆಯನ್ನು ಹೊಂದಿದ್ದೀರಿ. ಅಥವಾ ಸ್ವಾಧೀನಪಡಿಸಿಕೊಂಡ ಬಳಸಿ."
+        },
+        "su": {
+            "legacy_caption_pid": 40379,
+            "legacy_language_pid": 31,
+            "text": "Geus sadia di anjeun gaduh akun Google. Atawa Mangga pigunakeun sanggeus akuisisi nu.",
+            "auto_translated": "Geus sadia di anjeun gaduh akun Google. Atawa Mangga pigunakeun sanggeus akuisisi nu."
+        },
+        "ku": {
+            "legacy_caption_pid": 40380,
+            "legacy_language_pid": 32,
+            "text": "Jixwe License de li we account Google. An kerema xwe piştî stendina bi kar tînin.",
+            "auto_translated": "Jixwe License de li we account Google. An kerema xwe piştî stendina bi kar tînin."
+        },
+        "ps": {
+            "legacy_caption_pid": 40381,
+            "legacy_language_pid": 33,
+            "text": "د مخه په تاسو شتون لري د ګوګل حساب. يا لطفا د استملاک وروسته وکاروي.",
+            "auto_translated": "د مخه په تاسو شتون لري د ګوګل حساب. يا لطفا د استملاک وروسته وکاروي."
+        },
+        "ro": {
+            "legacy_caption_pid": 40382,
+            "legacy_language_pid": 34,
+            "text": "Deja disponibil în care aveți un cont Google. Sau Vă rugăm să folosiți după achiziție.",
+            "auto_translated": "Deja disponibil în care aveți un cont Google. Sau Vă rugăm să folosiți după achiziție."
+        },
+        "id": {
+            "legacy_caption_pid": 40383,
+            "legacy_language_pid": 35,
+            "text": "Sudah tersedia di Anda memiliki akun Google. Atau Silakan gunakan setelah akuisisi.",
+            "auto_translated": "Sudah tersedia di Anda memiliki akun Google. Atau Silakan gunakan setelah akuisisi."
+        },
+        "sd": {
+            "legacy_caption_pid": 40384,
+            "legacy_language_pid": 36,
+            "text": "اوهان ۾ اڳ ۾ ئي موجود گوگل اڪائونٽ آهي. يا حاصل ڪرڻ کان پوء استعمال ڪريو.",
+            "auto_translated": "اوهان ۾ اڳ ۾ ئي موجود گوگل اڪائونٽ آهي. يا حاصل ڪرڻ کان پوء استعمال ڪريو."
+        },
+        "af": {
+            "legacy_caption_pid": 40385,
+            "legacy_language_pid": 37,
+            "text": "Reeds beskikbaar in jou Google-rekening. Of Gebruik asseblief na die verkryging.",
+            "auto_translated": "Reeds beskikbaar in jou Google-rekening. Of Gebruik asseblief na die verkryging."
+        },
+        "sw": {
+            "legacy_caption_pid": 40386,
+            "legacy_language_pid": 38,
+            "text": "Tayari inapatikana katika una akaunti ya Google. Au Tafadhali tumia baada ya kununua.",
+            "auto_translated": "Tayari inapatikana katika una akaunti ya Google. Au Tafadhali tumia baada ya kununua."
+        },
+        "lo": {
+            "legacy_caption_pid": 40387,
+            "legacy_language_pid": 39,
+            "text": "ແລ້ວສາມາດໃຊ້ໄດ້ໃນທີ່ທ່ານມີບັນຊີກູໂກ. ຫຼືກະລຸນາໃຊ້ຫຼັງຈາກທີ່ໄດ້ມາ.",
+            "auto_translated": "ແລ້ວສາມາດໃຊ້ໄດ້ໃນທີ່ທ່ານມີບັນຊີກູໂກ. ຫຼືກະລຸນາໃຊ້ຫຼັງຈາກທີ່ໄດ້ມາ."
+        },
+        "nl": {
+            "legacy_caption_pid": 40388,
+            "legacy_language_pid": 40,
+            "text": "Al beschikbaar in je Google-account. Of Gebruik na de overname.",
+            "auto_translated": "Al beschikbaar in je Google-account. Of Gebruik na de overname."
+        },
+        "tl": {
+            "legacy_caption_pid": 40389,
+            "legacy_language_pid": 41,
+            "text": "Mayroon na magagamit sa ikaw ay may account sa Google. O Mangyaring gamitin pagkatapos ng acquisition.",
+            "auto_translated": "Mayroon na magagamit sa ikaw ay may account sa Google. O Mangyaring gamitin pagkatapos ng acquisition."
+        },
+        "ne": {
+            "legacy_caption_pid": 40390,
+            "legacy_language_pid": 42,
+            "text": "तपाईंले पहिले नै उपलब्ध गुगल खाता छ। वा अधिग्रहण पछि प्रयोग गर्नुहोस्।",
+            "auto_translated": "तपाईंले पहिले नै उपलब्ध गुगल खाता छ। वा अधिग्रहण पछि प्रयोग गर्नुहोस्।"
+        },
+        "hu": {
+            "legacy_caption_pid": 40391,
+            "legacy_language_pid": 43,
+            "text": "Már kapható meg a Google fiókjába. Vagy Használja megszerzését követően.",
+            "auto_translated": "Már kapható meg a Google fiókjába. Vagy Használja megszerzését követően."
+        },
+        "cs": {
+            "legacy_caption_pid": 40392,
+            "legacy_language_pid": 44,
+            "text": "Již k dispozici ve vás mít účet Google. Nebo použijte po akvizici.",
+            "auto_translated": "Již k dispozici ve vás mít účet Google. Nebo použijte po akvizici."
+        },
+        "el": {
+            "legacy_caption_pid": 40393,
+            "legacy_language_pid": 45,
+            "text": "Ήδη διατίθενται στην έχετε λογαριασμό Google. Ή Χρησιμοποιήστε μετά την εξαγορά.",
+            "auto_translated": "Ήδη διατίθενται στην έχετε λογαριασμό Google. Ή Χρησιμοποιήστε μετά την εξαγορά."
+        },
+        "sv": {
+            "legacy_caption_pid": 40394,
+            "legacy_language_pid": 46,
+            "text": "Redan finns i du har Google-konto. Eller Använd efter förvärvet.",
+            "auto_translated": "Redan finns i du har Google-konto. Eller Använd efter förvärvet."
+        },
+        "kk": {
+            "legacy_caption_pid": 40395,
+            "legacy_language_pid": 47,
+            "text": "Сізге қазірдің өзінде қолда бар Google есептік жазбасы. Немесе сатып алғаннан кейін пайдаланыңыз.",
+            "auto_translated": "Сізге қазірдің өзінде қолда бар Google есептік жазбасы. Немесе сатып алғаннан кейін пайдаланыңыз."
+        },
+        "fi": {
+            "legacy_caption_pid": 40396,
+            "legacy_language_pid": 48,
+            "text": "Jo saatavilla sinulla Google-tili. Tai Käytä hankinnan jälkeen.",
+            "auto_translated": "Jo saatavilla sinulla Google-tili. Tai Käytä hankinnan jälkeen."
+        },
+        "da": {
+            "legacy_caption_pid": 40397,
+            "legacy_language_pid": 49,
+            "text": "Allerede tilgængelig på du har Google-konto. Eller Brug venligst efter overtagelsen.",
+            "auto_translated": "Allerede tilgængelig på du har Google-konto. Eller Brug venligst efter overtagelsen."
+        },
+        "he": {
+            "legacy_caption_pid": 40398,
+            "legacy_language_pid": 50,
+            "text": "כבר זמין לך יש חשבון גוגל. או השתמש לאחר הרכישה.",
+            "auto_translated": "כבר זמין לך יש חשבון גוגל. או השתמש לאחר הרכישה."
+        },
+        "no": {
+            "legacy_caption_pid": 40399,
+            "legacy_language_pid": 51,
+            "text": "Allerede tilgjengelig i du har Google-konto. Eller Vennligst bruk etter oppkjøpet.",
+            "auto_translated": "Allerede tilgjengelig i du har Google-konto. Eller Vennligst bruk etter oppkjøpet."
+        }
+    }
+}

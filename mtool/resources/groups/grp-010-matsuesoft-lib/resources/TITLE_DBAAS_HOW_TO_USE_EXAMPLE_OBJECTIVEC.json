@@ -1,0 +1,69 @@
+{
+    "resource_key": "TITLE_DBAAS_HOW_TO_USE_EXAMPLE_OBJECTIVEC",
+    "legacy_resource_pid": 1095,
+    "base_group_key": "grp-010-matsuesoft-lib",
+    "additional_group_keys": [],
+    "key_for_update": "wMtfxhiNcvRD68kLqLVYMmBnknnyboj5u0EW9KAolX51mHX7cPxqzt6XnPIVblXbnXAS99yNYD0n9OvNZlyA0XfnqOLgix0zUW44XA6hz8YWBSAqqqfAZuxDGKZdfsS9",
+    "sort_group": "TITLE",
+    "key_name": "TITLE_DBAAS_HOW_TO_USE_EXAMPLE_OBJECTIVEC",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": true,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 4682,
+            "legacy_language_pid": 1,
+            "text": "Objective-C(iOS)でエンドポイントにアクセス",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 4683,
+            "legacy_language_pid": 2,
+            "text": "Access Endpoint by Objective-C(iOS)",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 14421,
+            "legacy_language_pid": 3,
+            "text": "",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 14422,
+            "legacy_language_pid": 4,
+            "text": "",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 14423,
+            "legacy_language_pid": 5,
+            "text": "Access Endpoint por Objective-C (iOS)",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 14424,
+            "legacy_language_pid": 6,
+            "text": "Acesse Endpoint por Objective-C (iOS)",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 14425,
+            "legacy_language_pid": 7,
+            "text": "",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 17337,
+            "legacy_language_pid": 8,
+            "text": "Access Endpoint par Objective-C (iOS)",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 17338,
+            "legacy_language_pid": 9,
+            "text": "Objective-C (iOS) के द्वारा समापन बिंदु तक पहुंचें ",
+            "auto_translated": ""
+        }
+    }
+}

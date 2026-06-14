@@ -1,0 +1,321 @@
+{
+    "resource_key": "COMMON_LIB_EMAIL_VERIFY_ALREADY_SENT_EMAIL",
+    "legacy_resource_pid": 1390,
+    "base_group_key": "grp-010-matsuesoft-lib",
+    "additional_group_keys": [],
+    "key_for_update": "EqgaNBz1qCrDwRTrQvw5bPKalgsS3qBZnGwd5gAWyPYF0eycPxijhJiXjDozGNau1QSMWyKrwKdt5uj3y3SmdwBHg181F0t98OgM25Yl0HBAQ8zZyHuji97WZgjfhd5L",
+    "sort_group": "EMAIL VERIFY",
+    "key_name": "COMMON_LIB_EMAIL_VERIFY_ALREADY_SENT_EMAIL",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": false,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 5834,
+            "legacy_language_pid": 1,
+            "text": "既に認証メール送信済です。",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 5835,
+            "legacy_language_pid": 2,
+            "text": "We've already sent a verification email.",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 5836,
+            "legacy_language_pid": 3,
+            "text": "已发送的验证电子邮件。",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 5837,
+            "legacy_language_pid": 4,
+            "text": "이미 인증메일을 보냈습니다.",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 10696,
+            "legacy_language_pid": 5,
+            "text": "Ya hemos enviado un correo electrónico de verificación.",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 10697,
+            "legacy_language_pid": 6,
+            "text": "Já enviamos um e-mail de verificação.",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 10698,
+            "legacy_language_pid": 7,
+            "text": "已發送的驗證電子郵件。",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 16423,
+            "legacy_language_pid": 8,
+            "text": "Nous avons déjà envoyé un e-mail de vérification.",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 16424,
+            "legacy_language_pid": 9,
+            "text": "हमने एक सत्यापन ईमेल भेजा है",
+            "auto_translated": ""
+        },
+        "ar": {
+            "legacy_caption_pid": 30836,
+            "legacy_language_pid": 10,
+            "text": "إذا هو البريد الإلكتروني المصادقة المرسلة.",
+            "auto_translated": "إذا هو البريد الإلكتروني المصادقة المرسلة."
+        },
+        "fa": {
+            "legacy_caption_pid": 30837,
+            "legacy_language_pid": 11,
+            "text": "در حال حاضر یک احراز هویت الکترونیکی ارسال شده است.",
+            "auto_translated": "در حال حاضر یک احراز هویت الکترونیکی ارسال شده است."
+        },
+        "de": {
+            "legacy_caption_pid": 30838,
+            "legacy_language_pid": 12,
+            "text": "Bereits eine Authentifizierung E-Mail gesendet.",
+            "auto_translated": "Bereits eine Authentifizierung E-Mail gesendet."
+        },
+        "ru": {
+            "legacy_caption_pid": 30839,
+            "legacy_language_pid": 13,
+            "text": "Уже является аутентификация электронной почты посланный.",
+            "auto_translated": "Уже является аутентификация электронной почты посланный."
+        },
+        "ms": {
+            "legacy_caption_pid": 30840,
+            "legacy_language_pid": 14,
+            "text": "Sudah adalah e-mel pengesahan dihantar.",
+            "auto_translated": "Sudah adalah e-mel pengesahan dihantar."
+        },
+        "ta": {
+            "legacy_caption_pid": 30841,
+            "legacy_language_pid": 15,
+            "text": "முன்பே அங்கீகரிப்பு அனுப்பப்பட்டது இ-மெயில் என்பதாகும்.",
+            "auto_translated": "முன்பே அங்கீகரிப்பு அனுப்பப்பட்டது இ-மெயில் என்பதாகும்."
+        },
+        "it": {
+            "legacy_caption_pid": 30842,
+            "legacy_language_pid": 16,
+            "text": "Già è una e-mail di autenticazione inviata.",
+            "auto_translated": "Già è una e-mail di autenticazione inviata."
+        },
+        "bn": {
+            "legacy_caption_pid": 30843,
+            "legacy_language_pid": 17,
+            "text": "ইতিমধ্যে একটি প্রমাণীকরণ ই-মেইল পাঠানো হয়।",
+            "auto_translated": "ইতিমধ্যে একটি প্রমাণীকরণ ই-মেইল পাঠানো হয়।"
+        },
+        "tr": {
+            "legacy_caption_pid": 30844,
+            "legacy_language_pid": 18,
+            "text": "Zaten Gönderilen bir kimlik doğrulama e-posta olduğunu.",
+            "auto_translated": "Zaten Gönderilen bir kimlik doğrulama e-posta olduğunu."
+        },
+        "vi": {
+            "legacy_caption_pid": 30845,
+            "legacy_language_pid": 19,
+            "text": "Đã là một chứng thực e-mail đã gửi.",
+            "auto_translated": "Đã là một chứng thực e-mail đã gửi."
+        },
+        "pl": {
+            "legacy_caption_pid": 30846,
+            "legacy_language_pid": 20,
+            "text": "Już jest uwierzytelnianie poczty e-mail wysłany.",
+            "auto_translated": "Już jest uwierzytelnianie poczty e-mail wysłany."
+        },
+        "jv": {
+            "legacy_caption_pid": 30847,
+            "legacy_language_pid": 21,
+            "text": "Wis iku sawijining e-mail bukti asli dikongkon.",
+            "auto_translated": "Wis iku sawijining e-mail bukti asli dikongkon."
+        },
+        "pa": {
+            "legacy_caption_pid": 30848,
+            "legacy_language_pid": 22,
+            "text": "ਹੀ ਇੱਕ ਪ੍ਰਮਾਣਿਕਤਾ ਈ-ਮੇਲ ਭੇਜਿਆ ਗਿਆ ਹੈ.",
+            "auto_translated": "ਹੀ ਇੱਕ ਪ੍ਰਮਾਣਿਕਤਾ ਈ-ਮੇਲ ਭੇਜਿਆ ਗਿਆ ਹੈ."
+        },
+        "th": {
+            "legacy_caption_pid": 30849,
+            "legacy_language_pid": 23,
+            "text": "แล้วรับรองความถูกต้องเป็นอีเมล์ที่ถูกส่ง",
+            "auto_translated": "แล้วรับรองความถูกต้องเป็นอีเมล์ที่ถูกส่ง"
+        },
+        "te": {
+            "legacy_caption_pid": 42710,
+            "legacy_language_pid": 24,
+            "text": "ఇప్పటికే పంపబడి ఒక ప్రమాణీకరణ ఇ-మెయిల్ ఉంది.",
+            "auto_translated": "ఇప్పటికే పంపబడి ఒక ప్రమాణీకరణ ఇ-మెయిల్ ఉంది."
+        },
+        "mr": {
+            "legacy_caption_pid": 42711,
+            "legacy_language_pid": 25,
+            "text": "आधीच पाठविला एक प्रमाणीकरण ई-मेल आहे.",
+            "auto_translated": "आधीच पाठविला एक प्रमाणीकरण ई-मेल आहे."
+        },
+        "ur": {
+            "legacy_caption_pid": 42712,
+            "legacy_language_pid": 26,
+            "text": "پہلے سے ایک تصدیق ای میل بھیجی جاتی ہے.",
+            "auto_translated": "پہلے سے ایک تصدیق ای میل بھیجی جاتی ہے."
+        },
+        "gu": {
+            "legacy_caption_pid": 42713,
+            "legacy_language_pid": 27,
+            "text": "પહેલેથી જ એક પ્રમાણીકરણ ઈ-મેલ મોકલવામાં આવે છે.",
+            "auto_translated": "પહેલેથી જ એક પ્રમાણીકરણ ઈ-મેલ મોકલવામાં આવે છે."
+        },
+        "uk": {
+            "legacy_caption_pid": 42714,
+            "legacy_language_pid": 28,
+            "text": "Вже є аутентифікація електронної пошти посланий.",
+            "auto_translated": "Вже є аутентифікація електронної пошти посланий."
+        },
+        "ml": {
+            "legacy_caption_pid": 42715,
+            "legacy_language_pid": 29,
+            "text": "ഇതിനകം ഒരു ആധികാരികത അയച്ചു ഇ-മെയിൽ ആണ്.",
+            "auto_translated": "ഇതിനകം ഒരു ആധികാരികത അയച്ചു ഇ-മെയിൽ ആണ്."
+        },
+        "kn": {
+            "legacy_caption_pid": 42716,
+            "legacy_language_pid": 30,
+            "text": "ಈಗಾಗಲೇ ದೃಢೀಕರಣ ಇಮೇಲ್ ಕಳುಹಿಸಲಾಗುತ್ತದೆ.",
+            "auto_translated": "ಈಗಾಗಲೇ ದೃಢೀಕರಣ ಇಮೇಲ್ ಕಳುಹಿಸಲಾಗುತ್ತದೆ."
+        },
+        "su": {
+            "legacy_caption_pid": 42717,
+            "legacy_language_pid": 31,
+            "text": "Geus mangrupa e-mail auténtikasi Dikirim.",
+            "auto_translated": "Geus mangrupa e-mail auténtikasi Dikirim."
+        },
+        "ku": {
+            "legacy_caption_pid": 42718,
+            "legacy_language_pid": 32,
+            "text": "Jixwe an authentication e-mail şandin e.",
+            "auto_translated": "Jixwe an authentication e-mail şandin e."
+        },
+        "ps": {
+            "legacy_caption_pid": 42719,
+            "legacy_language_pid": 33,
+            "text": "لا د يو اعتبار E-mail ولېږل شو.",
+            "auto_translated": "لا د يو اعتبار E-mail ولېږل شو."
+        },
+        "ro": {
+            "legacy_caption_pid": 42720,
+            "legacy_language_pid": 34,
+            "text": "Deja este un e-mail de autentificare trimise.",
+            "auto_translated": "Deja este un e-mail de autentificare trimise."
+        },
+        "id": {
+            "legacy_caption_pid": 42721,
+            "legacy_language_pid": 35,
+            "text": "Sudah merupakan e-mail otentikasi Dikirim.",
+            "auto_translated": "Sudah merupakan e-mail otentikasi Dikirim."
+        },
+        "sd": {
+            "legacy_caption_pid": 42722,
+            "legacy_language_pid": 36,
+            "text": "اڳ ۾ ڪنهن جي اصليت اي-ميل آھي.",
+            "auto_translated": "اڳ ۾ ڪنهن جي اصليت اي-ميل آھي."
+        },
+        "af": {
+            "legacy_caption_pid": 42723,
+            "legacy_language_pid": 37,
+            "text": "Reeds 'n verifikasie e-pos gestuur.",
+            "auto_translated": "Reeds 'n verifikasie e-pos gestuur."
+        },
+        "sw": {
+            "legacy_caption_pid": 42724,
+            "legacy_language_pid": 38,
+            "text": "Tayari kuna uthibitisho wa barua pepe uliotumwa.",
+            "auto_translated": "Tayari kuna uthibitisho wa barua pepe uliotumwa."
+        },
+        "lo": {
+            "legacy_caption_pid": 42725,
+            "legacy_language_pid": 39,
+            "text": "ແລ້ວເປັນການກວດສອບ e-mail ສົ່ງ.",
+            "auto_translated": "ແລ້ວເປັນການກວດສອບ e-mail ສົ່ງ."
+        },
+        "nl": {
+            "legacy_caption_pid": 42726,
+            "legacy_language_pid": 40,
+            "text": "Reeds is een verificatie e-mail verzonden.",
+            "auto_translated": "Reeds is een verificatie e-mail verzonden."
+        },
+        "tl": {
+            "legacy_caption_pid": 42727,
+            "legacy_language_pid": 41,
+            "text": "Mayroon na ay isang pagpapatotoo ng e-mail Sent.",
+            "auto_translated": "Mayroon na ay isang pagpapatotoo ng e-mail Sent."
+        },
+        "ne": {
+            "legacy_caption_pid": 42728,
+            "legacy_language_pid": 42,
+            "text": "पहिले देखि नै एक प्रमाणीकरण पठाइयो ई-मेल छ।",
+            "auto_translated": "पहिले देखि नै एक प्रमाणीकरण पठाइयो ई-मेल छ।"
+        },
+        "hu": {
+            "legacy_caption_pid": 42729,
+            "legacy_language_pid": 43,
+            "text": "Már egy hitelesítési e-mailt küldött.",
+            "auto_translated": "Már egy hitelesítési e-mailt küldött."
+        },
+        "cs": {
+            "legacy_caption_pid": 42730,
+            "legacy_language_pid": 44,
+            "text": "Už je e-mailové ověřování Odeslané.",
+            "auto_translated": "Už je e-mailové ověřování Odeslané."
+        },
+        "el": {
+            "legacy_caption_pid": 42731,
+            "legacy_language_pid": 45,
+            "text": "Ήδη είναι ένας ταυτότητας e-mail εστάλη.",
+            "auto_translated": "Ήδη είναι ένας ταυτότητας e-mail εστάλη."
+        },
+        "sv": {
+            "legacy_caption_pid": 42732,
+            "legacy_language_pid": 46,
+            "text": "Redan är en autentiserings e-post som skickas.",
+            "auto_translated": "Redan är en autentiserings e-post som skickas."
+        },
+        "kk": {
+            "legacy_caption_pid": 42733,
+            "legacy_language_pid": 47,
+            "text": "Қазірдің өзінде Жіберілген аутентификация электрондық пошта болып табылады.",
+            "auto_translated": "Қазірдің өзінде Жіберілген аутентификация электрондық пошта болып табылады."
+        },
+        "fi": {
+            "legacy_caption_pid": 42734,
+            "legacy_language_pid": 48,
+            "text": "Jo on autentikointi lähetetyssä sähköpostissa.",
+            "auto_translated": "Jo on autentikointi lähetetyssä sähköpostissa."
+        },
+        "da": {
+            "legacy_caption_pid": 42735,
+            "legacy_language_pid": 49,
+            "text": "Allerede er en authentication email Sendt.",
+            "auto_translated": "Allerede er en authentication email Sendt."
+        },
+        "he": {
+            "legacy_caption_pid": 42736,
+            "legacy_language_pid": 50,
+            "text": "כבר הודעת דואר אלקטרוני אימות שנשלח.",
+            "auto_translated": "כבר הודעת דואר אלקטרוני אימות שנשלח."
+        },
+        "no": {
+            "legacy_caption_pid": 42737,
+            "legacy_language_pid": 51,
+            "text": "Allerede er en autentiserings e-post sendt.",
+            "auto_translated": "Allerede er en autentiserings e-post sendt."
+        }
+    }
+}

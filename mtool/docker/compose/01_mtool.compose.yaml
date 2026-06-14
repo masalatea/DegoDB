@@ -1,0 +1,29 @@
+name: mtool-scenario-01-mtool
+
+services:
+  db-config:
+    entrypoint:
+      - /bin/sh
+      - -lc
+      - |
+        set -eu
+        rm -rf /docker-entrypoint-initdb.d/*
+        cp -R /docker-entrypoint-initdb-core/. /docker-entrypoint-initdb.d/
+        cp -R /docker-entrypoint-initdb-mtool/. /docker-entrypoint-initdb.d/
+        exec docker-entrypoint.sh mariadbd
+    volumes:
+      - db-config-data:/var/lib/mysql
+      - db-config-initdb:/docker-entrypoint-initdb.d
+      - ./docker/mariadb/config-initdb:/docker-entrypoint-initdb-core:ro
+      - ./mtool/docker/mariadb/config-seed:/docker-entrypoint-initdb-mtool:ro
+
+  web-admin:
+    environment:
+      APP_WORK_ROOT: /var/www/work/scenarios/01-mtool
+
+  web-lab:
+    environment:
+      APP_WORK_ROOT: /var/www/work/scenarios/01-mtool
+
+volumes:
+  db-config-initdb:

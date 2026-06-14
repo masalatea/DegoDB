@@ -1,0 +1,159 @@
+{
+    "project_key": "MTOOL",
+    "source_output_key": "RUNTIME-DBCLASSES",
+    "generation_summary": {
+        "mode": "canonical-dbaccess-partial-sql-regenerated",
+        "generated_dbaccess_count": 99,
+        "fallback_dbaccess_count": 0,
+        "canonical_function_count": 611,
+        "sql_regenerated_dbaccess_count": 98,
+        "sql_regenerated_function_count": 505,
+        "canonical_helper_function_count": 7,
+        "canonical_data_class_count": 99,
+        "data_entity_count": 99,
+        "plain_data_candidate_count": 63,
+        "non_plain_data_candidate_count": 36,
+        "bootstrap_data_class_count": 0,
+        "legacy_delegate_function_count": 0,
+        "warnings": []
+    },
+    "db_access_sync_summary": {
+        "total_candidate_entities": 117,
+        "dbaccess_candidate_count": 117,
+        "method_candidate_count": 701
+    },
+    "runtime_files": [
+        {
+            "relative_path": "_runtime_loader.php",
+            "sha256": "13a166ac33ea5c68bef7a97ee44d6dbd15b10e57d467d1ec8c7db28ab876ed6e"
+        },
+        {
+            "relative_path": "dbaccess-Project.php",
+            "sha256": "808e19ec34946ad47f908700de90b91fa95dcfd12d119c463d10caca40443391"
+        },
+        {
+            "relative_path": "base/dbaccess-ProjectBase.php",
+            "sha256": "3e5572e474a04891381243addf6a18377e80a251b2549d41cb51fda9186baf08"
+        },
+        {
+            "relative_path": "dbaccess-dbtable.php",
+            "sha256": "504ced85c9b278802b94e34962e12716790956de5b1911fde85f6a376c50369d"
+        },
+        {
+            "relative_path": "base/dbaccess-dbtableBase.php",
+            "sha256": "78136e08d6f9209c8caaf9281d19170db3167b7d3b19c414d453db8f51d668e7"
+        },
+        {
+            "relative_path": "data-dbtablecolumns.php",
+            "sha256": "02b0618b06620b53f55530a19692c5546d5ba18852acb4cbfe444cd5cf9b5446"
+        },
+        {
+            "relative_path": "base/data-dbtablecolumnsBase.php",
+            "sha256": "57d714523472ba4a1cf62a83a42a3a84c6c2085fc0123839961feb6f34282627"
+        },
+        {
+            "relative_path": "data-CompareOutputSearchCache.php",
+            "sha256": "5fe794ce39ff63fdad84f5ef7aa467b0615a91c008705344fc065872ca929f34"
+        },
+        {
+            "relative_path": "base/data-CompareOutputSearchCacheBase.php",
+            "sha256": "80fe52c3e9dcc3940151678f4e32be3a9d0a94d940dc532293ff395dbcf4752f"
+        },
+        {
+            "relative_path": "data-CompareOutput.php",
+            "sha256": "a649aef739683a14c2554ff8571958ac6e60e314e80da047f591057d261dea33"
+        },
+        {
+            "relative_path": "base/data-CompareOutputBase.php",
+            "sha256": "eae5d32623f901d9b4e812c51048cb5b1dd585f4eaaf47b92c6a825684540daa"
+        },
+        {
+            "relative_path": "data-ProjectSourceOutputSavedFiles.php",
+            "sha256": "b27b78d4132d5a07aba600ebc09be7cec460191e032bd45a32dc9162984ae3b3"
+        },
+        {
+            "relative_path": "base/data-ProjectSourceOutputSavedFilesBase.php",
+            "sha256": "688782383ccab34eed874be3f7c5985c763dd28817a3cb7b99b49c53dce2a29f"
+        },
+        {
+            "relative_path": "data-TestCondition.php",
+            "sha256": "ae2826fd1106387f81d3da641a5d098d92d0d073258e9b72a2d44725886aa9d6"
+        },
+        {
+            "relative_path": "base/data-TestConditionBase.php",
+            "sha256": "165fd0884bd35037c71b497bc512229c3cbd921a51f2095982f288d53c0a323e"
+        },
+        {
+            "relative_path": "data-TestConditionSelection.php",
+            "sha256": "7d8730ce9fc0ad7051a0bd4d4cd1a8815396769f34d75e861af89421d44aa3ce"
+        },
+        {
+            "relative_path": "base/data-TestConditionSelectionBase.php",
+            "sha256": "1e711d7bcee53412e520259dae897432123bb9d94eec5e8ab081eeef9a92f123"
+        },
+        {
+            "relative_path": "data-TestPattern.php",
+            "sha256": "09bf00adc0ef039dfdecab1d63cb5dcb45d0b7d336c168c70a3f26b2a3cc44b9"
+        },
+        {
+            "relative_path": "base/data-TestPatternBase.php",
+            "sha256": "b527a63d68ce36f56c78d5d6d470a96a604c12152b42e49e0aac6a050913bd1b"
+        },
+        {
+            "relative_path": "data-TestPatternSelection.php",
+            "sha256": "9e7522b5a37595415bb6ba353a7d21b09d2ff7ee4efb7f0c3f64be0f99dcf576"
+        },
+        {
+            "relative_path": "base/data-TestPatternSelectionBase.php",
+            "sha256": "bf4d0b82a786a9bd7bf6592a51a76c3f975a38d7120da24a2d633eccd04326dd"
+        },
+        {
+            "relative_path": "data-UploadDropboxPathCache.php",
+            "sha256": "031bd413bcbaab01e3b7fb97cd2be0c257dc68541d1e3b5c5c29049f5292e1d0"
+        },
+        {
+            "relative_path": "base/data-UploadDropboxPathCacheBase.php",
+            "sha256": "b367c08782dc369ea9c6327db65696c2cd25df18422fe423329023eb6ccf81a0"
+        },
+        {
+            "relative_path": "data-daCustomProxyFunc_leftouterjoin_dafunc_and_da.php",
+            "sha256": "75b2cdf68dff39d760f31912e72f6fc7b0d096be769b0bdd652296d244af1fbd"
+        },
+        {
+            "relative_path": "base/data-daCustomProxyFunc_leftouterjoin_dafunc_and_daBase.php",
+            "sha256": "7fab7dbfca6850054b2254cfb84558d387dae049adb6c9fba375bceed4c4a6fe"
+        },
+        {
+            "relative_path": "data-Project.php",
+            "sha256": "e98b8282ddeaf72f28e7509843f51bb49231f3b29e53c2eab20154f8c179048e"
+        },
+        {
+            "relative_path": "base/data-ProjectBase.php",
+            "sha256": "6ee8a142a99e12b127c59c698bb5df15b677fff173154352cd4b0a2f68f11f39"
+        },
+        {
+            "relative_path": "data-ProjectUser.php",
+            "sha256": "974aec812351c0f0eff5285a406ca288665ffc77acf4447501c755f17f413186"
+        },
+        {
+            "relative_path": "base/data-ProjectUserBase.php",
+            "sha256": "f865106a04ee903ca929c942287645ce53e080dd3a19d0e17b2d1493a7a4548c"
+        },
+        {
+            "relative_path": "data-SpecContent.php",
+            "sha256": "a8570492cc22e95444b754f33dc97b5e4bac937ee3bdfd2b086c16a8ece83d4e"
+        },
+        {
+            "relative_path": "base/data-SpecContentBase.php",
+            "sha256": "ae8b3f690124dc619bd9b7e19add4903944dd14eadead4c3ac9daa07387b05db"
+        },
+        {
+            "relative_path": "data-htmlTemplate.php",
+            "sha256": "0c710239567c012ff8204996fc5280625f6e8867bffe4fe756134856c93a0bba"
+        },
+        {
+            "relative_path": "base/data-htmlTemplateBase.php",
+            "sha256": "18b02039f8800f42be2f9439e118543d21beb89077862cd118cb93214abdc9eb"
+        }
+    ]
+}

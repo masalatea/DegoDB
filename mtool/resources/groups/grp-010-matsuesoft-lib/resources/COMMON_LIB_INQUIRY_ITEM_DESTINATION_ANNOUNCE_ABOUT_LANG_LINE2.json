@@ -1,0 +1,321 @@
+{
+    "resource_key": "COMMON_LIB_INQUIRY_ITEM_DESTINATION_ANNOUNCE_ABOUT_LANG_LINE2",
+    "legacy_resource_pid": 1465,
+    "base_group_key": "grp-010-matsuesoft-lib",
+    "additional_group_keys": [],
+    "key_for_update": "DuDPKEFJqGiTCUdTiAUeuSUvhIGZJDFp6QvSfFsf5ytNCoZrle4RSsTpfQhi4mEvpEagHGgAP8xpXDMPfepAXVo3E9fDPcByKg45PkIfc2W5rtxk000f8x2JERHSdzUk",
+    "sort_group": "INQUIRY",
+    "key_name": "COMMON_LIB_INQUIRY_ITEM_DESTINATION_ANNOUNCE_ABOUT_LANG_LINE2",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": false,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 6134,
+            "legacy_language_pid": 1,
+            "text": "英語ではない場合、スタッフが確認後に対応しますのでしばらくお待ち下さい。",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 6135,
+            "legacy_language_pid": 2,
+            "text": "If it is not English, please wait for a while as staff will respond after confirmation.",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 6136,
+            "legacy_language_pid": 3,
+            "text": "如果不是英文的，请等待一段时间，我们的工作人员要花时间确认。",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 6137,
+            "legacy_language_pid": 4,
+            "text": "영어가 아닌 경우, 직원이 확인 후 대응하기 때문에 기다려주세요.",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 10982,
+            "legacy_language_pid": 5,
+            "text": "Si no es inglés, espere un rato mientras el personal responderá después de la confirmación. ",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 10983,
+            "legacy_language_pid": 6,
+            "text": "Se não for inglês, aguarde um pouco enquanto a equipe responderá após a confirmação.",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 10984,
+            "legacy_language_pid": 7,
+            "text": "如果不是英文的，請等待一段時間，我們的工作人員要花時間確認。",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 17187,
+            "legacy_language_pid": 8,
+            "text": "Si ce n'est pas l'anglais, attendez un moment que le personnel répondra après confirmation.",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 17188,
+            "legacy_language_pid": 9,
+            "text": "अगर यह अंग्रेजी नहीं है, तो कुछ समय तक प्रतीक्षा करें क्योंकि पुष्टि के बाद कर्मचारी उत्तर देंगे।",
+            "auto_translated": ""
+        },
+        "ar": {
+            "legacy_caption_pid": 32152,
+            "legacy_language_pid": 10,
+            "text": "إذا لم يكن في اللغة الإنجليزية، يرجى الانتظار لبعض الوقت لأنه يتوافق مع تأكيد بعد بالموظفين.",
+            "auto_translated": "إذا لم يكن في اللغة الإنجليزية، يرجى الانتظار لبعض الوقت لأنه يتوافق مع تأكيد بعد بالموظفين."
+        },
+        "fa": {
+            "legacy_caption_pid": 32153,
+            "legacy_language_pid": 11,
+            "text": "اگر به زبان انگلیسی نیست، لطفا صبر کنید برای مدتی به دلیل آن را به تایید پس از کارکنان مربوط.",
+            "auto_translated": "اگر به زبان انگلیسی نیست، لطفا صبر کنید برای مدتی به دلیل آن را به تایید پس از کارکنان مربوط."
+        },
+        "de": {
+            "legacy_caption_pid": 32154,
+            "legacy_language_pid": 12,
+            "text": "Wenn es nicht auf Englisch ist, bitte warten Sie einen Moment, weil es auf die Post-Mitarbeiter Bestätigung entspricht.",
+            "auto_translated": "Wenn es nicht auf Englisch ist, bitte warten Sie einen Moment, weil es auf die Post-Mitarbeiter Bestätigung entspricht."
+        },
+        "ru": {
+            "legacy_caption_pid": 32155,
+            "legacy_language_pid": 13,
+            "text": "Если это не на английском языке, пожалуйста, подождите некоторое время, потому что это соответствует подтверждению после персонала.",
+            "auto_translated": "Если это не на английском языке, пожалуйста, подождите некоторое время, потому что это соответствует подтверждению после персонала."
+        },
+        "ms": {
+            "legacy_caption_pid": 32156,
+            "legacy_language_pid": 14,
+            "text": "Jika ia bukan dalam bahasa Inggeris, sila tunggu sebentar kerana ia sepadan dengan pengesahan selepas kakitangan.",
+            "auto_translated": "Jika ia bukan dalam bahasa Inggeris, sila tunggu sebentar kerana ia sepadan dengan pengesahan selepas kakitangan."
+        },
+        "ta": {
+            "legacy_caption_pid": 32157,
+            "legacy_language_pid": 15,
+            "text": "அது பிந்தைய ஊழியர்கள் உறுதிப்படுத்தல் ஒத்துள்ளது ஏனெனில் அது ஆங்கிலம் இல்லை என்று கருதினால், சிறிது நேரம் காத்திருக்க.",
+            "auto_translated": "அது பிந்தைய ஊழியர்கள் உறுதிப்படுத்தல் ஒத்துள்ளது ஏனெனில் அது ஆங்கிலம் இல்லை என்று கருதினால், சிறிது நேரம் காத்திருக்க."
+        },
+        "it": {
+            "legacy_caption_pid": 32158,
+            "legacy_language_pid": 16,
+            "text": "Se non è in lingua inglese, si prega di attendere per un po 'perché corrisponde alla conferma post-personale.",
+            "auto_translated": "Se non è in lingua inglese, si prega di attendere per un po 'perché corrisponde alla conferma post-personale."
+        },
+        "bn": {
+            "legacy_caption_pid": 32159,
+            "legacy_language_pid": 17,
+            "text": "যদি ইংরেজিতে নয়, কিছুদিনের জন্য দয়া করে অপেক্ষা করুন, কারণ এটি পোস্ট কর্মীদের নিশ্চিতকরণ অনুরূপ।",
+            "auto_translated": "যদি ইংরেজিতে নয়, কিছুদিনের জন্য দয়া করে অপেক্ষা করুন, কারণ এটি পোস্ট কর্মীদের নিশ্চিতকরণ অনুরূপ।"
+        },
+        "tr": {
+            "legacy_caption_pid": 32160,
+            "legacy_language_pid": 18,
+            "text": "İngilizce olarak değilse o sonrası personel onay tekabül çünkü bir süre bekleyin.",
+            "auto_translated": "İngilizce olarak değilse o sonrası personel onay tekabül çünkü bir süre bekleyin."
+        },
+        "vi": {
+            "legacy_caption_pid": 32161,
+            "legacy_language_pid": 19,
+            "text": "Nếu nó không phải là bằng tiếng Anh, vui lòng đợi một thời gian vì nó tương ứng với thư xác nhận sau khi nhân viên.",
+            "auto_translated": "Nếu nó không phải là bằng tiếng Anh, vui lòng đợi một thời gian vì nó tương ứng với thư xác nhận sau khi nhân viên."
+        },
+        "pl": {
+            "legacy_caption_pid": 32162,
+            "legacy_language_pid": 20,
+            "text": "Jeśli nie jest w języku angielskim, należy odczekać pewien czas, ponieważ odpowiada potwierdzeniu po personelu.",
+            "auto_translated": "Jeśli nie jest w języku angielskim, należy odczekać pewien czas, ponieważ odpowiada potwierdzeniu po personelu."
+        },
+        "jv": {
+            "legacy_caption_pid": 32163,
+            "legacy_language_pid": 21,
+            "text": "Yen ora ing Inggris, enteni nalika amarga cocok kanggo konfirmasi kirim-Staff.",
+            "auto_translated": "Yen ora ing Inggris, enteni nalika amarga cocok kanggo konfirmasi kirim-Staff."
+        },
+        "pa": {
+            "legacy_caption_pid": 32164,
+            "legacy_language_pid": 22,
+            "text": "ਜੇ ਇਸ ਨੂੰ ਅੰਗਰੇਜ਼ੀ ਵਿੱਚ ਨਹੀ ਹੈ, ਇੱਕ ਚਿਰ ਲਈ ਉਡੀਕ ਕਰੋ, ਕਿਉਕਿ ਇਸ ਨੂੰ ਪੋਸਟ-ਸਟਾਫ ਦੀ ਪੁਸ਼ਟੀ ਕਰਨ ਲਈ ਸੰਬੰਧਿਤ ਹੈ.",
+            "auto_translated": "ਜੇ ਇਸ ਨੂੰ ਅੰਗਰੇਜ਼ੀ ਵਿੱਚ ਨਹੀ ਹੈ, ਇੱਕ ਚਿਰ ਲਈ ਉਡੀਕ ਕਰੋ, ਕਿਉਕਿ ਇਸ ਨੂੰ ਪੋਸਟ-ਸਟਾਫ ਦੀ ਪੁਸ਼ਟੀ ਕਰਨ ਲਈ ਸੰਬੰਧਿਤ ਹੈ."
+        },
+        "th": {
+            "legacy_caption_pid": 32165,
+            "legacy_language_pid": 23,
+            "text": "ถ้ามันไม่ได้อยู่ในอังกฤษ, กรุณารอสักครู่เพราะมันสอดคล้องกับการยืนยันการโพสต์พนักงาน",
+            "auto_translated": "ถ้ามันไม่ได้อยู่ในอังกฤษ, กรุณารอสักครู่เพราะมันสอดคล้องกับการยืนยันการโพสต์พนักงาน"
+        },
+        "te": {
+            "legacy_caption_pid": 41324,
+            "legacy_language_pid": 24,
+            "text": "ఆంగ్లంలో లేకపోతే, అది పోస్ట్ స్టాఫ్ నిర్ధారణ అనుగుణంగా కాసేపు ఎందుకంటే దయచేసి వేచి ఉండండి.",
+            "auto_translated": "ఆంగ్లంలో లేకపోతే, అది పోస్ట్ స్టాఫ్ నిర్ధారణ అనుగుణంగా కాసేపు ఎందుకంటే దయచేసి వేచి ఉండండి."
+        },
+        "mr": {
+            "legacy_caption_pid": 41325,
+            "legacy_language_pid": 25,
+            "text": "इंग्रजी नाही, तर तो पोस्ट-कर्मचारी पुष्टी परस्पर कारण एक तर कृपया प्रतीक्षा करा.",
+            "auto_translated": "इंग्रजी नाही, तर तो पोस्ट-कर्मचारी पुष्टी परस्पर कारण एक तर कृपया प्रतीक्षा करा."
+        },
+        "ur": {
+            "legacy_caption_pid": 41326,
+            "legacy_language_pid": 26,
+            "text": "یہ انگریزی میں نہیں ہے تو، اس کے بعد کے عملے کی تصدیق کے مساوی ہے کیونکہ تھوڑی دیر کے لئے انتظار کریں.",
+            "auto_translated": "یہ انگریزی میں نہیں ہے تو، اس کے بعد کے عملے کی تصدیق کے مساوی ہے کیونکہ تھوڑی دیر کے لئے انتظار کریں."
+        },
+        "gu": {
+            "legacy_caption_pid": 41327,
+            "legacy_language_pid": 27,
+            "text": "જો તે ઇંગલિશ નથી, હંમેશ માટે કૃપા કરીને રાહ જુઓ, કારણ કે તે પોસ્ટ સ્ટાફ પુષ્ટિ અનુલક્ષે છે.",
+            "auto_translated": "જો તે ઇંગલિશ નથી, હંમેશ માટે કૃપા કરીને રાહ જુઓ, કારણ કે તે પોસ્ટ સ્ટાફ પુષ્ટિ અનુલક્ષે છે."
+        },
+        "uk": {
+            "legacy_caption_pid": 41328,
+            "legacy_language_pid": 28,
+            "text": "Якщо це не англійською мовою, будь ласка, зачекайте деякий час, тому що це відповідає підтвердженню після персоналу.",
+            "auto_translated": "Якщо це не англійською мовою, будь ласка, зачекайте деякий час, тому що це відповідає підтвердженню після персоналу."
+        },
+        "ml": {
+            "legacy_caption_pid": 41329,
+            "legacy_language_pid": 29,
+            "text": "അത് പോസ്റ്റ്-സ്റ്റാഫ് സ്ഥിരീകരണം യോജിക്കുന്നുവോ കാരണം അത് ഇംഗ്ലീഷിലല്ലെങ്കിൽ, ഒരു സമയത്ത് കാത്തിരിക്കുക.",
+            "auto_translated": "അത് പോസ്റ്റ്-സ്റ്റാഫ് സ്ഥിരീകരണം യോജിക്കുന്നുവോ കാരണം അത് ഇംഗ്ലീഷിലല്ലെങ്കിൽ, ഒരു സമയത്ത് കാത്തിരിക്കുക."
+        },
+        "kn": {
+            "legacy_caption_pid": 41330,
+            "legacy_language_pid": 30,
+            "text": "ನಂತರದ ಸಿಬ್ಬಂದಿ ದೃಢೀಕರಣ ಅನುರೂಪವಾಗಿದೆ ಏಕೆಂದರೆ ಇದು ಇಂಗ್ಲೀಷ್ ನಲ್ಲಿ ಇದ್ದರೆ, ದಯವಿಟ್ಟು ಸ್ವಲ್ಪ ನಿರೀಕ್ಷಿಸಿ.",
+            "auto_translated": "ನಂತರದ ಸಿಬ್ಬಂದಿ ದೃಢೀಕರಣ ಅನುರೂಪವಾಗಿದೆ ಏಕೆಂದರೆ ಇದು ಇಂಗ್ಲೀಷ್ ನಲ್ಲಿ ಇದ್ದರೆ, ದಯವಿಟ್ಟು ಸ್ವಲ್ಪ ನಿರೀಕ್ಷಿಸಿ."
+        },
+        "su": {
+            "legacy_caption_pid": 41331,
+            "legacy_language_pid": 31,
+            "text": "Lamun henteu dina basa Inggris, mangga antosan bari sabab pakait jeung konfirmasi pos-staf.",
+            "auto_translated": "Lamun henteu dina basa Inggris, mangga antosan bari sabab pakait jeung konfirmasi pos-staf."
+        },
+        "ku": {
+            "legacy_caption_pid": 41332,
+            "legacy_language_pid": 32,
+            "text": "Eger ev yek li English ne, ji kerema xwe ve li bendê ji bo demekê ji ber ku ev ji bo piştrastkirina post-personel re lihevkirî ye.",
+            "auto_translated": "Eger ev yek li English ne, ji kerema xwe ve li bendê ji bo demekê ji ber ku ev ji bo piştrastkirina post-personel re lihevkirî ye."
+        },
+        "ps": {
+            "legacy_caption_pid": 41333,
+            "legacy_language_pid": 33,
+            "text": "که دا په انګلیسي ژبه نه ده، نو مهرباني وکړئ د يوې مودې لپاره انتظار ځکه چې دا د کارکوونکو وروسته د تاييد سره متناسب وي.",
+            "auto_translated": "که دا په انګلیسي ژبه نه ده، نو مهرباني وکړئ د يوې مودې لپاره انتظار ځکه چې دا د کارکوونکو وروسته د تاييد سره متناسب وي."
+        },
+        "ro": {
+            "legacy_caption_pid": 41334,
+            "legacy_language_pid": 34,
+            "text": "În cazul în care nu este în limba engleză, vă rugăm să așteptați un timp, deoarece corespunde confirmării post-personal.",
+            "auto_translated": "În cazul în care nu este în limba engleză, vă rugăm să așteptați un timp, deoarece corespunde confirmării post-personal."
+        },
+        "id": {
+            "legacy_caption_pid": 41335,
+            "legacy_language_pid": 35,
+            "text": "Jika tidak dalam bahasa Inggris, silakan tunggu sebentar karena sesuai dengan konfirmasi pasca-staf.",
+            "auto_translated": "Jika tidak dalam bahasa Inggris, silakan tunggu sebentar karena sesuai dengan konfirmasi pasca-staf."
+        },
+        "sd": {
+            "legacy_caption_pid": 41336,
+            "legacy_language_pid": 36,
+            "text": "ته ان کي انگريزي ۾ نه آھي، ھڪ وقت تائين انتظار ڪريو ڇو ته ان عهدي-عملي تصديق ڪري سگهي.",
+            "auto_translated": "ته ان کي انگريزي ۾ نه آھي، ھڪ وقت تائين انتظار ڪريو ڇو ته ان عهدي-عملي تصديق ڪري سگهي."
+        },
+        "af": {
+            "legacy_caption_pid": 41337,
+            "legacy_language_pid": 37,
+            "text": "As dit is nie in Engels, wag asseblief vir 'n rukkie, want dit stem ooreen met die bevestiging post-personeel.",
+            "auto_translated": "As dit is nie in Engels, wag asseblief vir 'n rukkie, want dit stem ooreen met die bevestiging post-personeel."
+        },
+        "sw": {
+            "legacy_caption_pid": 41338,
+            "legacy_language_pid": 38,
+            "text": "Kama siyo kwa Kiingereza, tafadhali subiri kwa muda kwa sababu inalingana na uthibitisho wa baada ya wafanyakazi.",
+            "auto_translated": "Kama siyo kwa Kiingereza, tafadhali subiri kwa muda kwa sababu inalingana na uthibitisho wa baada ya wafanyakazi."
+        },
+        "lo": {
+            "legacy_caption_pid": 41339,
+            "legacy_language_pid": 39,
+            "text": "ຖ້າຫາກວ່າມັນບໍ່ແມ່ນພາສາອັງກິດ, ກະລຸນາລໍຖ້າສໍາລັບໃນຂະນະທີ່ເປັນເນື່ອງຈາກວ່າມັນສອດຄ້ອງກັບການຢືນຢັນໄປສະນີ, ພະນັກງານ.",
+            "auto_translated": "ຖ້າຫາກວ່າມັນບໍ່ແມ່ນພາສາອັງກິດ, ກະລຸນາລໍຖ້າສໍາລັບໃນຂະນະທີ່ເປັນເນື່ອງຈາກວ່າມັນສອດຄ້ອງກັບການຢືນຢັນໄປສະນີ, ພະນັກງານ."
+        },
+        "nl": {
+            "legacy_caption_pid": 41340,
+            "legacy_language_pid": 40,
+            "text": "Als het niet in het Engels, wacht een tijdje omdat deze overeenkomt met de bevestiging post-personeel.",
+            "auto_translated": "Als het niet in het Engels, wacht een tijdje omdat deze overeenkomt met de bevestiging post-personeel."
+        },
+        "tl": {
+            "legacy_caption_pid": 41341,
+            "legacy_language_pid": 41,
+            "text": "Kung ito ay hindi nakasulat sa Ingles, mangyaring maghintay para sa isang habang dahil ito ay tumutugon sa pagkumpirma post-staff.",
+            "auto_translated": "Kung ito ay hindi nakasulat sa Ingles, mangyaring maghintay para sa isang habang dahil ito ay tumutugon sa pagkumpirma post-staff."
+        },
+        "ne": {
+            "legacy_caption_pid": 41342,
+            "legacy_language_pid": 42,
+            "text": "यो पोस्ट-कर्मचारी पुष्टि गर्न पत्राचार किनभने यो अंग्रेजी मा छैन भने, एक बेला प्रतीक्षा गर्नुहोस्।",
+            "auto_translated": "यो पोस्ट-कर्मचारी पुष्टि गर्न पत्राचार किनभने यो अंग्रेजी मा छैन भने, एक बेला प्रतीक्षा गर्नुहोस्।"
+        },
+        "hu": {
+            "legacy_caption_pid": 41343,
+            "legacy_language_pid": 43,
+            "text": "Ha ez nem az angol, várjon egy ideig, mert ez felel meg a poszt-személyzet visszaigazolást.",
+            "auto_translated": "Ha ez nem az angol, várjon egy ideig, mert ez felel meg a poszt-személyzet visszaigazolást."
+        },
+        "cs": {
+            "legacy_caption_pid": 41344,
+            "legacy_language_pid": 44,
+            "text": "Pokud tomu tak není v angličtině, počkejte chvíli, protože odpovídá potvrzení post-zaměstnanců.",
+            "auto_translated": "Pokud tomu tak není v angličtině, počkejte chvíli, protože odpovídá potvrzení post-zaměstnanců."
+        },
+        "el": {
+            "legacy_caption_pid": 41345,
+            "legacy_language_pid": 45,
+            "text": "Αν δεν είναι στα αγγλικά, παρακαλώ περιμένετε για λίγο, διότι αντιστοιχεί στην επιβεβαίωση της μετα-προσωπικό.",
+            "auto_translated": "Αν δεν είναι στα αγγλικά, παρακαλώ περιμένετε για λίγο, διότι αντιστοιχεί στην επιβεβαίωση της μετα-προσωπικό."
+        },
+        "sv": {
+            "legacy_caption_pid": 41346,
+            "legacy_language_pid": 46,
+            "text": "Om det inte är på engelska, var god vänta ett tag eftersom det motsvarar bekräftelsen efter personal.",
+            "auto_translated": "Om det inte är på engelska, var god vänta ett tag eftersom det motsvarar bekräftelsen efter personal."
+        },
+        "kk": {
+            "legacy_caption_pid": 41347,
+            "legacy_language_pid": 47,
+            "text": "ол ағылшын тілінде болмаса, онда ол кейінгі қызметкерлері растау сәйкес келеді, себебі, біраз уақыт күте тұрыңыз.",
+            "auto_translated": "ол ағылшын тілінде болмаса, онда ол кейінгі қызметкерлері растау сәйкес келеді, себебі, біраз уақыт күте тұрыңыз."
+        },
+        "fi": {
+            "legacy_caption_pid": 41348,
+            "legacy_language_pid": 48,
+            "text": "Jos se ei ole Englanti, odota hetki, sillä se vastaa jälkeisen henkilökunta vahvistuksen.",
+            "auto_translated": "Jos se ei ole Englanti, odota hetki, sillä se vastaa jälkeisen henkilökunta vahvistuksen."
+        },
+        "da": {
+            "legacy_caption_pid": 41349,
+            "legacy_language_pid": 49,
+            "text": "Hvis det ikke er på engelsk, skal du vente et stykke tid, fordi det svarer til den bekræftelse post-personale.",
+            "auto_translated": "Hvis det ikke er på engelsk, skal du vente et stykke tid, fordi det svarer til den bekræftelse post-personale."
+        },
+        "he": {
+            "legacy_caption_pid": 41350,
+            "legacy_language_pid": 50,
+            "text": "אם זה לא באנגלית, בבקשה להמתין קצת כי זה תואם את האישור פוסט-צוות.",
+            "auto_translated": "אם זה לא באנגלית, בבקשה להמתין קצת כי זה תואם את האישור פוסט-צוות."
+        },
+        "no": {
+            "legacy_caption_pid": 41351,
+            "legacy_language_pid": 51,
+            "text": "Hvis det ikke er på engelsk, kan du vente en stund fordi det tilsvarer den post-ansatte bekreftelse.",
+            "auto_translated": "Hvis det ikke er på engelsk, kan du vente en stund fordi det tilsvarer den post-ansatte bekreftelse."
+        }
+    }
+}

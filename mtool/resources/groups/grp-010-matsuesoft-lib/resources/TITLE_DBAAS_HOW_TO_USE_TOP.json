@@ -1,0 +1,69 @@
+{
+    "resource_key": "TITLE_DBAAS_HOW_TO_USE_TOP",
+    "legacy_resource_pid": 585,
+    "base_group_key": "grp-010-matsuesoft-lib",
+    "additional_group_keys": [],
+    "key_for_update": "aaL3MlxAt0istrsMD1c6lnDOrW3a09MFNA4YJFDHaQmVF7gkPJJyRp1h00kpYliledhV7yROFw9EXK50QrwMWvnwD1BnV9HgLRGufPEqwoONOAOKzxTmEw91qj9brpdD",
+    "sort_group": "TITLE",
+    "key_name": "TITLE_DBAAS_HOW_TO_USE_TOP",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": true,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 4718,
+            "legacy_language_pid": 1,
+            "text": "DegoDB の使い方 - 開発フレームワークおよびクラウド・データベース - $DOMAINNAMECAPTION_JP",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 4719,
+            "legacy_language_pid": 2,
+            "text": "How to use DegoDB the Development Framework & Cloud Database - $DOMAINNAMECAPTION_EN",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 15348,
+            "legacy_language_pid": 3,
+            "text": "",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 15349,
+            "legacy_language_pid": 4,
+            "text": "",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 15350,
+            "legacy_language_pid": 5,
+            "text": "Cómo utilizar DegoDB la base de datos de desarrollo y Cloud - $DOMAINNAMECAPTION_ES",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 15351,
+            "legacy_language_pid": 6,
+            "text": "Como usar o DegoDB Development Framework & Cloud Database - $DOMAINNAMECAPTION_PT",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 15352,
+            "legacy_language_pid": 7,
+            "text": "",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 17373,
+            "legacy_language_pid": 8,
+            "text": "Comment utiliser DegoDB Development Framework & Cloud Database - $DOMAINNAMECAPTION_FR",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 17374,
+            "legacy_language_pid": 9,
+            "text": "DegoDB विकास ढांचा और क्लाउड डेटाबेस का उपयोग कैसे करें - $ DOMAINNAMECAPTION_HI",
+            "auto_translated": ""
+        }
+    }
+}

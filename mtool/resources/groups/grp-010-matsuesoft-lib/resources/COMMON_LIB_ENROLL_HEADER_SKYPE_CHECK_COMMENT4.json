@@ -1,0 +1,321 @@
+{
+    "resource_key": "COMMON_LIB_ENROLL_HEADER_SKYPE_CHECK_COMMENT4",
+    "legacy_resource_pid": 1435,
+    "base_group_key": "grp-010-matsuesoft-lib",
+    "additional_group_keys": [],
+    "key_for_update": "ta4BdSqXnDQKFuOPgeWKBrbigOz1gToU3UKgU4p9ras1vcKtMPqMRIWr5Tv18n3l0L2Nzc0IiVN6PrcvwZsY62o7DbhkoBfFd6lG1nyNDM5QCFFgs0IiNwiPZTksFsCf",
+    "sort_group": "ENROLL",
+    "key_name": "COMMON_LIB_ENROLL_HEADER_SKYPE_CHECK_COMMENT4",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": false,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 6014,
+            "legacy_language_pid": 1,
+            "text": "ブラウザのJavascriptが無効になっている場合は動作しません。",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 6015,
+            "legacy_language_pid": 2,
+            "text": "It will not work if browser's Javascript is disabled.",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 6016,
+            "legacy_language_pid": 3,
+            "text": "如果是JavaScript的浏览器是不会工作的。",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 6017,
+            "legacy_language_pid": 4,
+            "text": "브라우저의 Javascript가 무효화되어있으면 작동하지 않습니다.",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 10877,
+            "legacy_language_pid": 5,
+            "text": "No funcionará si Javascript del navegador está deshabilitado.",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 10878,
+            "legacy_language_pid": 6,
+            "text": "Não funcionará se o Javascript do navegador estiver desativado.",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 10879,
+            "legacy_language_pid": 7,
+            "text": "如果是JavaScript的瀏覽器是不會工作的。",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 17019,
+            "legacy_language_pid": 8,
+            "text": "Cela ne fonctionnera pas si le Javascript du navigateur est désactivé.",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 17020,
+            "legacy_language_pid": 9,
+            "text": "यह काम नहीं करेगा अगर ब्राउज़र का जावास्क्रिप्ट निष्क्रिय।",
+            "auto_translated": ""
+        },
+        "ar": {
+            "legacy_caption_pid": 31648,
+            "legacy_language_pid": 10,
+            "text": "أنها لا تعمل إذا كان متصفح جافا سكريبت معطل.",
+            "auto_translated": "أنها لا تعمل إذا كان متصفح جافا سكريبت معطل."
+        },
+        "fa": {
+            "legacy_caption_pid": 31649,
+            "legacy_language_pid": 11,
+            "text": "این کار نمی کند در صورتی که مرورگر از جاوا اسکریپت غیر فعال شده است.",
+            "auto_translated": "این کار نمی کند در صورتی که مرورگر از جاوا اسکریپت غیر فعال شده است."
+        },
+        "de": {
+            "legacy_caption_pid": 31650,
+            "legacy_language_pid": 12,
+            "text": "Es funktioniert nicht, wenn der Browser Javascript deaktiviert ist.",
+            "auto_translated": "Es funktioniert nicht, wenn der Browser Javascript deaktiviert ist."
+        },
+        "ru": {
+            "legacy_caption_pid": 31651,
+            "legacy_language_pid": 13,
+            "text": "Она не работает, если браузер Javascript отключен.",
+            "auto_translated": "Она не работает, если браузер Javascript отключен."
+        },
+        "ms": {
+            "legacy_caption_pid": 31652,
+            "legacy_language_pid": 14,
+            "text": "Ia tidak akan berfungsi jika pelayar Javascript dilumpuhkan.",
+            "auto_translated": "Ia tidak akan berfungsi jika pelayar Javascript dilumpuhkan."
+        },
+        "ta": {
+            "legacy_caption_pid": 31653,
+            "legacy_language_pid": 15,
+            "text": "ஜாவா -ன் பிரவுசர் செயலிழந்து விட்டால் அது வேலை செய்யாது.",
+            "auto_translated": "ஜாவா -ன் பிரவுசர் செயலிழந்து விட்டால் அது வேலை செய்யாது."
+        },
+        "it": {
+            "legacy_caption_pid": 31654,
+            "legacy_language_pid": 16,
+            "text": "Non funziona se il browser di Javascript è disattivato.",
+            "auto_translated": "Non funziona se il browser di Javascript è disattivato."
+        },
+        "bn": {
+            "legacy_caption_pid": 31655,
+            "legacy_language_pid": 17,
+            "text": "এটা কাজ করে না যদি জাভাস্ক্রিপ্ট এর ব্রাউজার নিষ্ক্রিয় করা হয়েছে।",
+            "auto_translated": "এটা কাজ করে না যদি জাভাস্ক্রিপ্ট এর ব্রাউজার নিষ্ক্রিয় করা হয়েছে।"
+        },
+        "tr": {
+            "legacy_caption_pid": 31656,
+            "legacy_language_pid": 18,
+            "text": "Javascript tarayıcı devre dışı olup olmadığı çalışmaz.",
+            "auto_translated": "Javascript tarayıcı devre dışı olup olmadığı çalışmaz."
+        },
+        "vi": {
+            "legacy_caption_pid": 31657,
+            "legacy_language_pid": 19,
+            "text": "Nó không có tác dụng nếu trình duyệt của Javascript bị vô hiệu hóa.",
+            "auto_translated": "Nó không có tác dụng nếu trình duyệt của Javascript bị vô hiệu hóa."
+        },
+        "pl": {
+            "legacy_caption_pid": 31658,
+            "legacy_language_pid": 20,
+            "text": "To nie działa, jeśli przeglądarka JavaScript jest wyłączona.",
+            "auto_translated": "To nie działa, jeśli przeglądarka JavaScript jest wyłączona."
+        },
+        "jv": {
+            "legacy_caption_pid": 31659,
+            "legacy_language_pid": 21,
+            "text": "Iku ora bisa yen browser saka Javascript dipatèni.",
+            "auto_translated": "Iku ora bisa yen browser saka Javascript dipatèni."
+        },
+        "pa": {
+            "legacy_caption_pid": 31660,
+            "legacy_language_pid": 22,
+            "text": "ਇਹ ਕੰਮ ਨਾ ਕਰਦਾ, ਜੇ ਜਾਵਾਸਕਰਿਪਟ ਦੇ ਬਰਾਊਜ਼ਰ ਅਯੋਗ ਹੈ.",
+            "auto_translated": "ਇਹ ਕੰਮ ਨਾ ਕਰਦਾ, ਜੇ ਜਾਵਾਸਕਰਿਪਟ ਦੇ ਬਰਾਊਜ਼ਰ ਅਯੋਗ ਹੈ."
+        },
+        "th": {
+            "legacy_caption_pid": 31661,
+            "legacy_language_pid": 23,
+            "text": "มันไม่ทำงานหากเบราว์เซอร์ของ JavaScript ถูกปิดใช้งาน",
+            "auto_translated": "มันไม่ทำงานหากเบราว์เซอร์ของ JavaScript ถูกปิดใช้งาน"
+        },
+        "te": {
+            "legacy_caption_pid": 38776,
+            "legacy_language_pid": 24,
+            "text": "జావాస్క్రిప్ట్ బ్రౌజర్ ఆపివేస్తే ఇది పనిచేయదు.",
+            "auto_translated": "జావాస్క్రిప్ట్ బ్రౌజర్ ఆపివేస్తే ఇది పనిచేయదు."
+        },
+        "mr": {
+            "legacy_caption_pid": 38777,
+            "legacy_language_pid": 25,
+            "text": "Javascript ब्राउझर अक्षम असेल तर तो कार्य करत नाही.",
+            "auto_translated": "Javascript ब्राउझर अक्षम असेल तर तो कार्य करत नाही."
+        },
+        "ur": {
+            "legacy_caption_pid": 38778,
+            "legacy_language_pid": 26,
+            "text": "جاوا سکرپٹ اس کا براؤزر غیر فعال ہو تو یہ کام نہیں کرتا.",
+            "auto_translated": "جاوا سکرپٹ اس کا براؤزر غیر فعال ہو تو یہ کام نہیں کرتا."
+        },
+        "gu": {
+            "legacy_caption_pid": 38779,
+            "legacy_language_pid": 27,
+            "text": "તે કામ કરતું નથી જો જાવા બ્રાઉઝર અક્ષમ છે.",
+            "auto_translated": "તે કામ કરતું નથી જો જાવા બ્રાઉઝર અક્ષમ છે."
+        },
+        "uk": {
+            "legacy_caption_pid": 38780,
+            "legacy_language_pid": 28,
+            "text": "Вона не працює, якщо браузер Javascript відключений.",
+            "auto_translated": "Вона не працює, якщо браузер Javascript відключений."
+        },
+        "ml": {
+            "legacy_caption_pid": 38781,
+            "legacy_language_pid": 29,
+            "text": "ജാവാസ്ക്രിപ്റ്റിന്റെയും ബ്രൗസർ പ്രവർത്തനരഹിതമാണ് എങ്കിൽ അത് പ്രവർത്തിക്കുന്നില്ല.",
+            "auto_translated": "ജാവാസ്ക്രിപ്റ്റിന്റെയും ബ്രൗസർ പ്രവർത്തനരഹിതമാണ് എങ്കിൽ അത് പ്രവർത്തിക്കുന്നില്ല."
+        },
+        "kn": {
+            "legacy_caption_pid": 38782,
+            "legacy_language_pid": 30,
+            "text": "ಇದು ಕೆಲಸ ಮಾಡುವುದಿಲ್ಲ ಜಾವಾಸ್ಕ್ರಿಪ್ಟ್ ನ ಬ್ರೌಸರ್ ನಿಷ್ಕ್ರಿಯತೆಯ.",
+            "auto_translated": "ಇದು ಕೆಲಸ ಮಾಡುವುದಿಲ್ಲ ಜಾವಾಸ್ಕ್ರಿಪ್ಟ್ ನ ಬ್ರೌಸರ್ ನಿಷ್ಕ್ರಿಯತೆಯ."
+        },
+        "su": {
+            "legacy_caption_pid": 38783,
+            "legacy_language_pid": 31,
+            "text": "Teu dianggo upami browser of Javascript anu ditumpurkeun.",
+            "auto_translated": "Teu dianggo upami browser of Javascript anu ditumpurkeun."
+        },
+        "ku": {
+            "legacy_caption_pid": 38784,
+            "legacy_language_pid": 32,
+            "text": "Ev bi kêr nayê, eger browser yên Javascript seqet e.",
+            "auto_translated": "Ev bi kêr nayê, eger browser yên Javascript seqet e."
+        },
+        "ps": {
+            "legacy_caption_pid": 38785,
+            "legacy_language_pid": 33,
+            "text": "دا کار نه کوی که د Javascript د کتنمل نافعال دی.",
+            "auto_translated": "دا کار نه کوی که د Javascript د کتنمل نافعال دی."
+        },
+        "ro": {
+            "legacy_caption_pid": 38786,
+            "legacy_language_pid": 34,
+            "text": "Ea nu funcționează în cazul în care browser-ul de Javascript este dezactivat.",
+            "auto_translated": "Ea nu funcționează în cazul în care browser-ul de Javascript este dezactivat."
+        },
+        "id": {
+            "legacy_caption_pid": 38787,
+            "legacy_language_pid": 35,
+            "text": "Ini tidak bekerja jika browser Javascript dinonaktifkan.",
+            "auto_translated": "Ini tidak bekerja jika browser Javascript dinonaktifkan."
+        },
+        "sd": {
+            "legacy_caption_pid": 38788,
+            "legacy_language_pid": 36,
+            "text": "جيڪڏهن Javascript جي برائوزر بند آهي اهو ڪم نه ايندي.",
+            "auto_translated": "جيڪڏهن Javascript جي برائوزر بند آهي اهو ڪم نه ايندي."
+        },
+        "af": {
+            "legacy_caption_pid": 38789,
+            "legacy_language_pid": 37,
+            "text": "Dit werk nie as die leser van Javascript afgeskakel.",
+            "auto_translated": "Dit werk nie as die leser van Javascript afgeskakel."
+        },
+        "sw": {
+            "legacy_caption_pid": 38790,
+            "legacy_language_pid": 38,
+            "text": "Haifanyi kazi kama browser ya Javascript imelemazwa.",
+            "auto_translated": "Haifanyi kazi kama browser ya Javascript imelemazwa."
+        },
+        "lo": {
+            "legacy_caption_pid": 38791,
+            "legacy_language_pid": 39,
+            "text": "ມັນບໍ່ໄດ້ເຮັດວຽກຖ້າຫາກວ່າຕົວທ່ອງເວັບຂອງ Javascript ແມ່ນຄົນພິການ.",
+            "auto_translated": "ມັນບໍ່ໄດ້ເຮັດວຽກຖ້າຫາກວ່າຕົວທ່ອງເວັບຂອງ Javascript ແມ່ນຄົນພິການ."
+        },
+        "nl": {
+            "legacy_caption_pid": 38792,
+            "legacy_language_pid": 40,
+            "text": "Het werkt niet als de browser van Javascript is uitgeschakeld.",
+            "auto_translated": "Het werkt niet als de browser van Javascript is uitgeschakeld."
+        },
+        "tl": {
+            "legacy_caption_pid": 38793,
+            "legacy_language_pid": 41,
+            "text": "Hindi ito gagana kung ang browser ng Javascript ay hindi pinagana.",
+            "auto_translated": "Hindi ito gagana kung ang browser ng Javascript ay hindi pinagana."
+        },
+        "ne": {
+            "legacy_caption_pid": 38794,
+            "legacy_language_pid": 42,
+            "text": "जाभास्क्रिप्ट को ब्राउजर असक्षम छ भने यो काम गर्दैन।",
+            "auto_translated": "जाभास्क्रिप्ट को ब्राउजर असक्षम छ भने यो काम गर्दैन।"
+        },
+        "hu": {
+            "legacy_caption_pid": 38795,
+            "legacy_language_pid": 43,
+            "text": "Ez nem működik, ha a böngésző a Javascript le van tiltva.",
+            "auto_translated": "Ez nem működik, ha a böngésző a Javascript le van tiltva."
+        },
+        "cs": {
+            "legacy_caption_pid": 38796,
+            "legacy_language_pid": 44,
+            "text": "To nefunguje v případě, že prohlížeč Javascript je zakázán.",
+            "auto_translated": "To nefunguje v případě, že prohlížeč Javascript je zakázán."
+        },
+        "el": {
+            "legacy_caption_pid": 38797,
+            "legacy_language_pid": 45,
+            "text": "Δεν λειτουργεί αν το πρόγραμμα περιήγησης του Javascript είναι απενεργοποιημένη.",
+            "auto_translated": "Δεν λειτουργεί αν το πρόγραμμα περιήγησης του Javascript είναι απενεργοποιημένη."
+        },
+        "sv": {
+            "legacy_caption_pid": 38798,
+            "legacy_language_pid": 46,
+            "text": "Det fungerar inte om webbläsaren i JavaScript är avaktiverat.",
+            "auto_translated": "Det fungerar inte om webbläsaren i JavaScript är avaktiverat."
+        },
+        "kk": {
+            "legacy_caption_pid": 38799,
+            "legacy_language_pid": 47,
+            "text": "Javascript браузер өшірілген болса, жұмыс істемейді.",
+            "auto_translated": "Javascript браузер өшірілген болса, жұмыс істемейді."
+        },
+        "fi": {
+            "legacy_caption_pid": 38800,
+            "legacy_language_pid": 48,
+            "text": "Se ei toimi, jos selaimen JavaScript ei ole käytössä.",
+            "auto_translated": "Se ei toimi, jos selaimen JavaScript ei ole käytössä."
+        },
+        "da": {
+            "legacy_caption_pid": 38801,
+            "legacy_language_pid": 49,
+            "text": "Det virker ikke hvis browseren Javascript er deaktiveret.",
+            "auto_translated": "Det virker ikke hvis browseren Javascript er deaktiveret."
+        },
+        "he": {
+            "legacy_caption_pid": 38802,
+            "legacy_language_pid": 50,
+            "text": "זה לא עובד אם הדפדפן של Javascript מושבת.",
+            "auto_translated": "זה לא עובד אם הדפדפן של Javascript מושבת."
+        },
+        "no": {
+            "legacy_caption_pid": 38803,
+            "legacy_language_pid": 51,
+            "text": "Det fungerer ikke dersom nettleseren på Javascript er deaktivert.",
+            "auto_translated": "Det fungerer ikke dersom nettleseren på Javascript er deaktivert."
+        }
+    }
+}

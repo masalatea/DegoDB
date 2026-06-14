@@ -1,0 +1,69 @@
+{
+    "resource_key": "TITLE_ARCHITECTURE_UI_TOP",
+    "legacy_resource_pid": 721,
+    "base_group_key": "grp-010-matsuesoft-lib",
+    "additional_group_keys": [],
+    "key_for_update": "kKBXbtk4PROJeSN793FdH8nQo66i7NHSXXAxQAvetFtKxtPML1xk0VYXljdfCeGJGkDbr29VZcTKd6lkSnHCfuddZjzspNWOEigBjvPilmzdgbysJXdXJgXNbhi63ydZ",
+    "sort_group": "TITLE",
+    "key_name": "TITLE_ARCHITECTURE_UI_TOP",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": true,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 4646,
+            "legacy_language_pid": 1,
+            "text": "ユーザインタフェース・アーキテクチャ - $DOMAINNAMECAPTION_JP",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 4647,
+            "legacy_language_pid": 2,
+            "text": "User Interface Architecture - $DOMAINNAMECAPTION_EN",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 14331,
+            "legacy_language_pid": 3,
+            "text": "",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 14332,
+            "legacy_language_pid": 4,
+            "text": "",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 14333,
+            "legacy_language_pid": 5,
+            "text": "Arquitectura de interfaz de usuario - $DOMAINNAMECAPTION_ES",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 14334,
+            "legacy_language_pid": 6,
+            "text": "Arquitetura de interface do usuário - $DOMAINNAMECAPTION_PT",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 14335,
+            "legacy_language_pid": 7,
+            "text": "",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 17301,
+            "legacy_language_pid": 8,
+            "text": "Architecture de l'interface utilisateur - $DOMAINNAMECAPTION_FR",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 17302,
+            "legacy_language_pid": 9,
+            "text": "उपयोगकर्ता इंटरफ़ेस वास्तुकला - $ DOMAINNAMECAPTION_HI",
+            "auto_translated": ""
+        }
+    }
+}

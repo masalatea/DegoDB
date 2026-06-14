@@ -1,0 +1,20 @@
+services:
+  db-config:
+    image: mariadb:11.4
+    environment:
+      MARIADB_ROOT_PASSWORD: ${CONFIG_DB_ROOT_PASSWORD:-}
+      MARIADB_DATABASE: ${CONFIG_DB_NAME:-config_app}
+      MARIADB_USER: ${CONFIG_DB_USER:-config_app}
+      MARIADB_PASSWORD: ${CONFIG_DB_PASSWORD:-}
+    healthcheck:
+      test: ["CMD-SHELL", "mariadb-admin ping -h 127.0.0.1 -uroot -p$${MARIADB_ROOT_PASSWORD} --silent"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+      start_period: 10s
+    ports:
+      - "${CONFIG_DB_HOST_PORT:-33061}:3306"
+    restart: unless-stopped
+    volumes:
+      - db-config-data:/var/lib/mysql
+      - ./docker/mariadb/config-initdb:/docker-entrypoint-initdb.d:ro

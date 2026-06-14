@@ -1,0 +1,321 @@
+{
+    "resource_key": "ACTION_MOVED",
+    "legacy_resource_pid": 728,
+    "base_group_key": "grp-005-common-lib",
+    "additional_group_keys": [],
+    "key_for_update": "YdH9HDSxKV7mr7QwkpdZ01UZH4OZ6v2BpjFQtDgX39pmCSgIQToM5IBq6hzh7VRmqHOdCRktIcG1YJvKGqjzjxNCYJI0B8bx8z9lHDQ5GJEUUH6bwgJZ1YIfaAn12eqL",
+    "sort_group": "ACTION",
+    "key_name": "ACTION_MOVED",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": false,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 1355,
+            "legacy_language_pid": 1,
+            "text": "移動しました",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 1356,
+            "legacy_language_pid": 2,
+            "text": "Moved",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 6522,
+            "legacy_language_pid": 3,
+            "text": "移动了",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 6523,
+            "legacy_language_pid": 4,
+            "text": "이동했습니다",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 10471,
+            "legacy_language_pid": 5,
+            "text": "Movido",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 10472,
+            "legacy_language_pid": 6,
+            "text": "movido",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 10473,
+            "legacy_language_pid": 7,
+            "text": "移動了",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 16269,
+            "legacy_language_pid": 8,
+            "text": "Déplacé",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 16270,
+            "legacy_language_pid": 9,
+            "text": "ले जाया गया",
+            "auto_translated": ""
+        },
+        "ar": {
+            "legacy_caption_pid": 29380,
+            "legacy_language_pid": 10,
+            "text": "انتقل",
+            "auto_translated": "انتقل"
+        },
+        "fa": {
+            "legacy_caption_pid": 29381,
+            "legacy_language_pid": 11,
+            "text": "نقل مکان کرد",
+            "auto_translated": "نقل مکان کرد"
+        },
+        "de": {
+            "legacy_caption_pid": 29382,
+            "legacy_language_pid": 12,
+            "text": "gerührt",
+            "auto_translated": "gerührt"
+        },
+        "ru": {
+            "legacy_caption_pid": 29383,
+            "legacy_language_pid": 13,
+            "text": "Перевезу",
+            "auto_translated": "Перевезу"
+        },
+        "ms": {
+            "legacy_caption_pid": 29384,
+            "legacy_language_pid": 14,
+            "text": "berpindah",
+            "auto_translated": "berpindah"
+        },
+        "ta": {
+            "legacy_caption_pid": 29385,
+            "legacy_language_pid": 15,
+            "text": "நகர்த்தப்பட்டது",
+            "auto_translated": "நகர்த்தப்பட்டது"
+        },
+        "it": {
+            "legacy_caption_pid": 29386,
+            "legacy_language_pid": 16,
+            "text": "commosso",
+            "auto_translated": "commosso"
+        },
+        "bn": {
+            "legacy_caption_pid": 29387,
+            "legacy_language_pid": 17,
+            "text": "সরানো হয়েছে",
+            "auto_translated": "সরানো হয়েছে"
+        },
+        "tr": {
+            "legacy_caption_pid": 29388,
+            "legacy_language_pid": 18,
+            "text": "taşındı",
+            "auto_translated": "taşındı"
+        },
+        "vi": {
+            "legacy_caption_pid": 29389,
+            "legacy_language_pid": 19,
+            "text": "chuyển",
+            "auto_translated": "chuyển"
+        },
+        "pl": {
+            "legacy_caption_pid": 29390,
+            "legacy_language_pid": 20,
+            "text": "wzruszony",
+            "auto_translated": "wzruszony"
+        },
+        "jv": {
+            "legacy_caption_pid": 29391,
+            "legacy_language_pid": 21,
+            "text": "dipindhah",
+            "auto_translated": "dipindhah"
+        },
+        "pa": {
+            "legacy_caption_pid": 29392,
+            "legacy_language_pid": 22,
+            "text": "ਪ੍ਰੇਰਿਤ",
+            "auto_translated": "ਪ੍ਰੇਰਿਤ"
+        },
+        "th": {
+            "legacy_caption_pid": 29393,
+            "legacy_language_pid": 23,
+            "text": "ย้าย",
+            "auto_translated": "ย้าย"
+        },
+        "te": {
+            "legacy_caption_pid": 37656,
+            "legacy_language_pid": 24,
+            "text": "తరలించబడింది",
+            "auto_translated": "తరలించబడింది"
+        },
+        "mr": {
+            "legacy_caption_pid": 37657,
+            "legacy_language_pid": 25,
+            "text": "हलविले",
+            "auto_translated": "हलविले"
+        },
+        "ur": {
+            "legacy_caption_pid": 37658,
+            "legacy_language_pid": 26,
+            "text": "منتقل کر دیا گیا",
+            "auto_translated": "منتقل کر دیا گیا"
+        },
+        "gu": {
+            "legacy_caption_pid": 37659,
+            "legacy_language_pid": 27,
+            "text": "ખસેડ્યું",
+            "auto_translated": "ખસેડ્યું"
+        },
+        "uk": {
+            "legacy_caption_pid": 37660,
+            "legacy_language_pid": 28,
+            "text": "Перевезу",
+            "auto_translated": "Перевезу"
+        },
+        "ml": {
+            "legacy_caption_pid": 37661,
+            "legacy_language_pid": 29,
+            "text": "നീക്കി",
+            "auto_translated": "നീക്കി"
+        },
+        "kn": {
+            "legacy_caption_pid": 37662,
+            "legacy_language_pid": 30,
+            "text": "ಸರಿಸಲಾಗಿದೆ",
+            "auto_translated": "ಸರಿಸಲಾಗಿದೆ"
+        },
+        "su": {
+            "legacy_caption_pid": 37663,
+            "legacy_language_pid": 31,
+            "text": "dipindahkeun",
+            "auto_translated": "dipindahkeun"
+        },
+        "ku": {
+            "legacy_caption_pid": 37664,
+            "legacy_language_pid": 32,
+            "text": "bi r'êberîya",
+            "auto_translated": "bi r'êberîya"
+        },
+        "ps": {
+            "legacy_caption_pid": 37665,
+            "legacy_language_pid": 33,
+            "text": "ووته",
+            "auto_translated": "ووته"
+        },
+        "ro": {
+            "legacy_caption_pid": 37666,
+            "legacy_language_pid": 34,
+            "text": "mutat",
+            "auto_translated": "mutat"
+        },
+        "id": {
+            "legacy_caption_pid": 37667,
+            "legacy_language_pid": 35,
+            "text": "terharu",
+            "auto_translated": "terharu"
+        },
+        "sd": {
+            "legacy_caption_pid": 37668,
+            "legacy_language_pid": 36,
+            "text": "رکيو ويو",
+            "auto_translated": "رکيو ويو"
+        },
+        "af": {
+            "legacy_caption_pid": 37669,
+            "legacy_language_pid": 37,
+            "text": "verskuif",
+            "auto_translated": "verskuif"
+        },
+        "sw": {
+            "legacy_caption_pid": 37670,
+            "legacy_language_pid": 38,
+            "text": "Moved",
+            "auto_translated": "Moved"
+        },
+        "lo": {
+            "legacy_caption_pid": 37671,
+            "legacy_language_pid": 39,
+            "text": "ຍ້າຍ",
+            "auto_translated": "ຍ້າຍ"
+        },
+        "nl": {
+            "legacy_caption_pid": 37672,
+            "legacy_language_pid": 40,
+            "text": "verplaatst",
+            "auto_translated": "verplaatst"
+        },
+        "tl": {
+            "legacy_caption_pid": 37673,
+            "legacy_language_pid": 41,
+            "text": "inilipat",
+            "auto_translated": "inilipat"
+        },
+        "ne": {
+            "legacy_caption_pid": 37674,
+            "legacy_language_pid": 42,
+            "text": "सारियो",
+            "auto_translated": "सारियो"
+        },
+        "hu": {
+            "legacy_caption_pid": 37675,
+            "legacy_language_pid": 43,
+            "text": "áthelyezve",
+            "auto_translated": "áthelyezve"
+        },
+        "cs": {
+            "legacy_caption_pid": 37676,
+            "legacy_language_pid": 44,
+            "text": "přesunuta",
+            "auto_translated": "přesunuta"
+        },
+        "el": {
+            "legacy_caption_pid": 37677,
+            "legacy_language_pid": 45,
+            "text": "μετακινήθηκε",
+            "auto_translated": "μετακινήθηκε"
+        },
+        "sv": {
+            "legacy_caption_pid": 37678,
+            "legacy_language_pid": 46,
+            "text": "flyttade",
+            "auto_translated": "flyttade"
+        },
+        "kk": {
+            "legacy_caption_pid": 37679,
+            "legacy_language_pid": 47,
+            "text": "жылжытылды",
+            "auto_translated": "жылжытылды"
+        },
+        "fi": {
+            "legacy_caption_pid": 37680,
+            "legacy_language_pid": 48,
+            "text": "siirretty",
+            "auto_translated": "siirretty"
+        },
+        "da": {
+            "legacy_caption_pid": 37681,
+            "legacy_language_pid": 49,
+            "text": "flyttet",
+            "auto_translated": "flyttet"
+        },
+        "he": {
+            "legacy_caption_pid": 37682,
+            "legacy_language_pid": 50,
+            "text": "הועבר",
+            "auto_translated": "הועבר"
+        },
+        "no": {
+            "legacy_caption_pid": 37683,
+            "legacy_language_pid": 51,
+            "text": "flyttet",
+            "auto_translated": "flyttet"
+        }
+    }
+}

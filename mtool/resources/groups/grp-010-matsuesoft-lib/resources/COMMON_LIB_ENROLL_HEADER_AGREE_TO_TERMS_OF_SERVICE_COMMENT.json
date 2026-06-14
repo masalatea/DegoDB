@@ -1,0 +1,321 @@
+{
+    "resource_key": "COMMON_LIB_ENROLL_HEADER_AGREE_TO_TERMS_OF_SERVICE_COMMENT",
+    "legacy_resource_pid": 1440,
+    "base_group_key": "grp-010-matsuesoft-lib",
+    "additional_group_keys": [],
+    "key_for_update": "FH7se0Gp2Ik88dw8LNxF4x8xUM86MIYYAuU9VZerm21YlD2VKb03TmEyp1co5CR3shXCAhgRY5jHaVVjix2VJjPIElkRgbjS1P8S489CQYFU7eaKnlFZ8axZgW5sQ4nX",
+    "sort_group": "ENROLL",
+    "key_name": "COMMON_LIB_ENROLL_HEADER_AGREE_TO_TERMS_OF_SERVICE_COMMENT",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": false,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 6034,
+            "legacy_language_pid": 1,
+            "text": "利用規約をご確認頂けたらチェックを入れて下さい",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 6035,
+            "legacy_language_pid": 2,
+            "text": "Please check if you can check the terms of service",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 6036,
+            "legacy_language_pid": 3,
+            "text": "利用条款确认后请输入确认。",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 6037,
+            "legacy_language_pid": 4,
+            "text": "이용 약관을 확인하신 후 체크해주세요",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 10798,
+            "legacy_language_pid": 5,
+            "text": "Por favor, compruebe si puede consultar los términos del servicio",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 10799,
+            "legacy_language_pid": 6,
+            "text": "Verifique se você pode verificar os termos de serviço",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 10800,
+            "legacy_language_pid": 7,
+            "text": "利用條款確認後請輸入確認。",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 16481,
+            "legacy_language_pid": 8,
+            "text": "Vérifiez si vous pouvez vérifier les conditions d'utilisation",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 16482,
+            "legacy_language_pid": 9,
+            "text": "कृपया जांच करें कि क्या आप सेवा की शर्तों की जांच कर सकते हैं",
+            "auto_translated": ""
+        },
+        "ar": {
+            "legacy_caption_pid": 31312,
+            "legacy_language_pid": 10,
+            "text": "يرجى التحقق إذا كان يمكنك التحقق من الشروط والأحكام",
+            "auto_translated": "يرجى التحقق إذا كان يمكنك التحقق من الشروط والأحكام"
+        },
+        "fa": {
+            "legacy_caption_pid": 31313,
+            "legacy_language_pid": 11,
+            "text": "لطفا بررسی کنید اگر شما می توانید شرایط و ضوابط را بررسی کنید",
+            "auto_translated": "لطفا بررسی کنید اگر شما می توانید شرایط و ضوابط را بررسی کنید"
+        },
+        "de": {
+            "legacy_caption_pid": 31314,
+            "legacy_language_pid": 12,
+            "text": "Überprüfen Sie, ob Sie die Allgemeinen Geschäftsbedingungen überprüfen",
+            "auto_translated": "Überprüfen Sie, ob Sie die Allgemeinen Geschäftsbedingungen überprüfen"
+        },
+        "ru": {
+            "legacy_caption_pid": 31315,
+            "legacy_language_pid": 13,
+            "text": "Пожалуйста, проверьте Если вы можете проверить Правила и условия",
+            "auto_translated": "Пожалуйста, проверьте Если вы можете проверить Правила и условия"
+        },
+        "ms": {
+            "legacy_caption_pid": 31316,
+            "legacy_language_pid": 14,
+            "text": "Sila menyemak Jika anda boleh menyemak Terma dan Syarat",
+            "auto_translated": "Sila menyemak Jika anda boleh menyemak Terma dan Syarat"
+        },
+        "ta": {
+            "legacy_caption_pid": 31317,
+            "legacy_language_pid": 15,
+            "text": "நீங்கள் பார்க்கலாம் என்றால் விதிமுறைகள் மற்றும் நிபந்தனைகள் சரிபார்க்கவும்",
+            "auto_translated": "நீங்கள் பார்க்கலாம் என்றால் விதிமுறைகள் மற்றும் நிபந்தனைகள் சரிபார்க்கவும்"
+        },
+        "it": {
+            "legacy_caption_pid": 31318,
+            "legacy_language_pid": 16,
+            "text": "Si prega di verificare se è possibile controllare i Termini e Condizioni",
+            "auto_translated": "Si prega di verificare se è possibile controllare i Termini e Condizioni"
+        },
+        "bn": {
+            "legacy_caption_pid": 31319,
+            "legacy_language_pid": 17,
+            "text": "দয়া করে চেক করুন আপনি এবং শর্তাবলী পরীক্ষা করতে পারেন",
+            "auto_translated": "দয়া করে চেক করুন আপনি এবং শর্তাবলী পরীক্ষা করতে পারেন"
+        },
+        "tr": {
+            "legacy_caption_pid": 31320,
+            "legacy_language_pid": 18,
+            "text": "Şartlar ve Koşulları kontrol edebilirsiniz Eğer kontrol edin",
+            "auto_translated": "Şartlar ve Koşulları kontrol edebilirsiniz Eğer kontrol edin"
+        },
+        "vi": {
+            "legacy_caption_pid": 31321,
+            "legacy_language_pid": 19,
+            "text": "Vui lòng kiểm tra Nếu bạn có thể kiểm tra các Điều khoản và Điều kiện",
+            "auto_translated": "Vui lòng kiểm tra Nếu bạn có thể kiểm tra các Điều khoản và Điều kiện"
+        },
+        "pl": {
+            "legacy_caption_pid": 31322,
+            "legacy_language_pid": 20,
+            "text": "Proszę sprawdzić, czy można sprawdzić Warunki Umowy",
+            "auto_translated": "Proszę sprawdzić, czy można sprawdzić Warunki Umowy"
+        },
+        "jv": {
+            "legacy_caption_pid": 31323,
+            "legacy_language_pid": 21,
+            "text": "Mangga dipriksa Yen sampeyan bisa mriksa Sarat lan Ketentuan",
+            "auto_translated": "Mangga dipriksa Yen sampeyan bisa mriksa Sarat lan Ketentuan"
+        },
+        "pa": {
+            "legacy_caption_pid": 31324,
+            "legacy_language_pid": 22,
+            "text": "ਚੈੱਕ ਕਰੋ ਕਿ ਤੁਹਾਡੇ ਨਿਯਮ ਅਤੇ ਹਾਲਾਤ ਨੂੰ ਚੈੱਕ ਕਰ ਸਕਦਾ ਹੈ, ਜੇ",
+            "auto_translated": "ਚੈੱਕ ਕਰੋ ਕਿ ਤੁਹਾਡੇ ਨਿਯਮ ਅਤੇ ਹਾਲਾਤ ਨੂੰ ਚੈੱਕ ਕਰ ਸਕਦਾ ਹੈ, ਜੇ"
+        },
+        "th": {
+            "legacy_caption_pid": 31325,
+            "legacy_language_pid": 23,
+            "text": "โปรดตรวจสอบหากคุณสามารถตรวจสอบข้อตกลงและเงื่อนไข",
+            "auto_translated": "โปรดตรวจสอบหากคุณสามารถตรวจสอบข้อตกลงและเงื่อนไข"
+        },
+        "te": {
+            "legacy_caption_pid": 41800,
+            "legacy_language_pid": 24,
+            "text": "దయచేసి మీరు లేదు తనిఖీ చేయవచ్చు ఉంటే నియమాలు మరియు నిబంధనలు",
+            "auto_translated": "దయచేసి మీరు లేదు తనిఖీ చేయవచ్చు ఉంటే నియమాలు మరియు నిబంధనలు"
+        },
+        "mr": {
+            "legacy_caption_pid": 41801,
+            "legacy_language_pid": 25,
+            "text": "कृपया आपण अटी आणि नियम तपासा शकत नाही, तर तपासा",
+            "auto_translated": "कृपया आपण अटी आणि नियम तपासा शकत नाही, तर तपासा"
+        },
+        "ur": {
+            "legacy_caption_pid": 41802,
+            "legacy_language_pid": 26,
+            "text": "آپ کی شرائط اور ضوابط کو چیک کر سکتے ہیں تو براہ مہربانی چیک کریں",
+            "auto_translated": "آپ کی شرائط اور ضوابط کو چیک کر سکتے ہیں تو براہ مہربانی چیک کریں"
+        },
+        "gu": {
+            "legacy_caption_pid": 41803,
+            "legacy_language_pid": 27,
+            "text": "કૃપા કરીને તપાસો કે તમે નિયમો અને શરતો ચકાસી શકો તો",
+            "auto_translated": "કૃપા કરીને તપાસો કે તમે નિયમો અને શરતો ચકાસી શકો તો"
+        },
+        "uk": {
+            "legacy_caption_pid": 41804,
+            "legacy_language_pid": 28,
+            "text": "Будь ласка, перевірте Якщо ви можете перевірити Правила і умови",
+            "auto_translated": "Будь ласка, перевірте Якщо ви можете перевірити Правила і умови"
+        },
+        "ml": {
+            "legacy_caption_pid": 41805,
+            "legacy_language_pid": 29,
+            "text": "പരിശോധിക്കാൻ കഴിയും എങ്കിൽ നിബന്ധനകളും വ്യവസ്ഥകളും പരിശോധിക്കുക",
+            "auto_translated": "പരിശോധിക്കാൻ കഴിയും എങ്കിൽ നിബന്ധനകളും വ്യവസ്ഥകളും പരിശോധിക്കുക"
+        },
+        "kn": {
+            "legacy_caption_pid": 41806,
+            "legacy_language_pid": 30,
+            "text": "ದಯವಿಟ್ಟು ಪರಿಶೀಲಿಸಿ ನಿಯಮಗಳು ಮತ್ತು ನಿಯಮಗಳು ಪರಿಶೀಲಿಸಿ ವೇಳೆ",
+            "auto_translated": "ದಯವಿಟ್ಟು ಪರಿಶೀಲಿಸಿ ನಿಯಮಗಳು ಮತ್ತು ನಿಯಮಗಳು ಪರಿಶೀಲಿಸಿ ವೇಳೆ"
+        },
+        "su": {
+            "legacy_caption_pid": 41807,
+            "legacy_language_pid": 31,
+            "text": "Mangga parios Lamun bisa pariksa Sarat jeung Kaayaan",
+            "auto_translated": "Mangga parios Lamun bisa pariksa Sarat jeung Kaayaan"
+        },
+        "ku": {
+            "legacy_caption_pid": 41808,
+            "legacy_language_pid": 32,
+            "text": "Ji kerema xwe, eger hûn nikarin van şert û mercan de venêrî",
+            "auto_translated": "Ji kerema xwe, eger hûn nikarin van şert û mercan de venêrî"
+        },
+        "ps": {
+            "legacy_caption_pid": 41809,
+            "legacy_language_pid": 33,
+            "text": "مهرباني وکړئ وګورئ که تاسو کولای شي د شرایطو او مقرراتو وګورئ",
+            "auto_translated": "مهرباني وکړئ وګورئ که تاسو کولای شي د شرایطو او مقرراتو وګورئ"
+        },
+        "ro": {
+            "legacy_caption_pid": 41810,
+            "legacy_language_pid": 34,
+            "text": "Vă rugăm să verificați dacă puteți verifica Termenii și condițiile",
+            "auto_translated": "Vă rugăm să verificați dacă puteți verifica Termenii și condițiile"
+        },
+        "id": {
+            "legacy_caption_pid": 41811,
+            "legacy_language_pid": 35,
+            "text": "Silakan periksa Jika Anda dapat memeriksa Syarat dan Ketentuan",
+            "auto_translated": "Silakan periksa Jika Anda dapat memeriksa Syarat dan Ketentuan"
+        },
+        "sd": {
+            "legacy_caption_pid": 41812,
+            "legacy_language_pid": 36,
+            "text": "مهرباني ڪري چيڪ اوھان جي شرطن ۽ حالتون چيڪ ڪري سگهو ٿا ته",
+            "auto_translated": "مهرباني ڪري چيڪ اوھان جي شرطن ۽ حالتون چيڪ ڪري سگهو ٿا ته"
+        },
+        "af": {
+            "legacy_caption_pid": 41813,
+            "legacy_language_pid": 37,
+            "text": "Gaan asseblief As jy die terme en voorwaardes kan kyk",
+            "auto_translated": "Gaan asseblief As jy die terme en voorwaardes kan kyk"
+        },
+        "sw": {
+            "legacy_caption_pid": 41814,
+            "legacy_language_pid": 38,
+            "text": "Tafadhali angalia Kama unaweza kuangalia Kanuni na Masharti",
+            "auto_translated": "Tafadhali angalia Kama unaweza kuangalia Kanuni na Masharti"
+        },
+        "lo": {
+            "legacy_caption_pid": 41815,
+            "legacy_language_pid": 39,
+            "text": "ກະລຸນາກວດສອບການຖ້າຫາກວ່າທ່ານສາມາດກວດເບິ່ງຂໍ້ກໍານົດແລະເງື່ອນໄຂ",
+            "auto_translated": "ກະລຸນາກວດສອບການຖ້າຫາກວ່າທ່ານສາມາດກວດເບິ່ງຂໍ້ກໍານົດແລະເງື່ອນໄຂ"
+        },
+        "nl": {
+            "legacy_caption_pid": 41816,
+            "legacy_language_pid": 40,
+            "text": "Controleer of u de Algemene Voorwaarden kan controleren",
+            "auto_translated": "Controleer of u de Algemene Voorwaarden kan controleren"
+        },
+        "tl": {
+            "legacy_caption_pid": 41817,
+            "legacy_language_pid": 41,
+            "text": "Mangyaring suriin Kung maaari mong suriin ang Mga Tuntunin at Kundisyon",
+            "auto_translated": "Mangyaring suriin Kung maaari mong suriin ang Mga Tuntunin at Kundisyon"
+        },
+        "ne": {
+            "legacy_caption_pid": 41818,
+            "legacy_language_pid": 42,
+            "text": "कृपया जाँच तपाईं नियम र सर्तहरू जाँच गर्न सक्नुहुन्छ भने",
+            "auto_translated": "कृपया जाँच तपाईं नियम र सर्तहरू जाँच गर्न सक्नुहुन्छ भने"
+        },
+        "hu": {
+            "legacy_caption_pid": 41819,
+            "legacy_language_pid": 43,
+            "text": "Kérjük, ellenőrizze, hogy ellenőrizni tudja a Feltételek",
+            "auto_translated": "Kérjük, ellenőrizze, hogy ellenőrizni tudja a Feltételek"
+        },
+        "cs": {
+            "legacy_caption_pid": 41820,
+            "legacy_language_pid": 44,
+            "text": "Zkontrolujte, zda můžete zkontrolovat podmínky",
+            "auto_translated": "Zkontrolujte, zda můžete zkontrolovat podmínky"
+        },
+        "el": {
+            "legacy_caption_pid": 41821,
+            "legacy_language_pid": 45,
+            "text": "Παρακαλώ ελέγξτε αν μπορείτε να ελέγξετε τους Όρους και τις Προϋποθέσεις",
+            "auto_translated": "Παρακαλώ ελέγξτε αν μπορείτε να ελέγξετε τους Όρους και τις Προϋποθέσεις"
+        },
+        "sv": {
+            "legacy_caption_pid": 41822,
+            "legacy_language_pid": 46,
+            "text": "Kontrollera om du kan kontrollera villkoren",
+            "auto_translated": "Kontrollera om du kan kontrollera villkoren"
+        },
+        "kk": {
+            "legacy_caption_pid": 41823,
+            "legacy_language_pid": 47,
+            "text": "Сіз ережелері мен шарттары тексеруге болады тексеріңіз",
+            "auto_translated": "Сіз ережелері мен шарттары тексеруге болады тексеріңіз"
+        },
+        "fi": {
+            "legacy_caption_pid": 41824,
+            "legacy_language_pid": 48,
+            "text": "Tarkista Jos voit tarkistaa ehdot",
+            "auto_translated": "Tarkista Jos voit tarkistaa ehdot"
+        },
+        "da": {
+            "legacy_caption_pid": 41825,
+            "legacy_language_pid": 49,
+            "text": "Kontroller Hvis du kan kontrollere vilkår og betingelser",
+            "auto_translated": "Kontroller Hvis du kan kontrollere vilkår og betingelser"
+        },
+        "he": {
+            "legacy_caption_pid": 41826,
+            "legacy_language_pid": 50,
+            "text": "בדוק אם אתה יכול לבדוק את תנאי השימוש",
+            "auto_translated": "בדוק אם אתה יכול לבדוק את תנאי השימוש"
+        },
+        "no": {
+            "legacy_caption_pid": 41827,
+            "legacy_language_pid": 51,
+            "text": "Vennligst sjekk om du kan sjekke vilkår og betingelser",
+            "auto_translated": "Vennligst sjekk om du kan sjekke vilkår og betingelser"
+        }
+    }
+}

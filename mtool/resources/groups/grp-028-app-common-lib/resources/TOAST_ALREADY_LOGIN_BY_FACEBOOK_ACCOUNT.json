@@ -1,0 +1,321 @@
+{
+    "resource_key": "TOAST_ALREADY_LOGIN_BY_FACEBOOK_ACCOUNT",
+    "legacy_resource_pid": 925,
+    "base_group_key": "grp-028-app-common-lib",
+    "additional_group_keys": [],
+    "key_for_update": "wr3ioSrTy2Cn3vp49BTL4Hf4CKea5mCFBJrwPLDtPeqVKuOhKwjcJiMWNTTnWAImEHpg76rBuMNquxiMixsDr3uFLFUJ4VP3Ne2DG8qw7CCohNcmRuTZ5wiiVveftfcf",
+    "sort_group": "Toast",
+    "key_name": "TOAST_ALREADY_LOGIN_BY_FACEBOOK_ACCOUNT",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": false,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 907,
+            "legacy_language_pid": 1,
+            "text": "既にFacebookアカウントでログイン中です。一端ログアウトしてからログイン下さい。",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 908,
+            "legacy_language_pid": 2,
+            "text": "You are already Logged in by Facebook Account. Please logout before login.",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 6472,
+            "legacy_language_pid": 3,
+            "text": "它在Facebook帐户已经登录。请注销并退出。",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 6473,
+            "legacy_language_pid": 4,
+            "text": "이미 Facebook 계정으로 로그인 중입니다. 로그아웃하고 다시 로그인하세요.",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 10252,
+            "legacy_language_pid": 5,
+            "text": "Ya está conectado con su cuenta de Facebook. Salga antes de iniciar sesión.",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 10253,
+            "legacy_language_pid": 6,
+            "text": "E você está conectado à sua conta do Facebook. Antes de encerrar a sessão.",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 10254,
+            "legacy_language_pid": 7,
+            "text": "它在Facebook帳戶已經登錄。請註銷並退出。",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 16211,
+            "legacy_language_pid": 8,
+            "text": "Vous êtes déjà connecté par le compte Facebook. Veuillez vous déconnecter avant de vous connecter.",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 16212,
+            "legacy_language_pid": 9,
+            "text": "आप पहले से ही फेसबुक खाता से लॉग इन हैं। लॉगिन से पहले लॉगआउट करें",
+            "auto_translated": ""
+        },
+        "ar": {
+            "legacy_caption_pid": 28932,
+            "legacy_language_pid": 10,
+            "text": "يتم تسجيل بالفعل في حساب في الفيسبوك. يرجى تسجيل الخروج وتسجيل الخروج.",
+            "auto_translated": "يتم تسجيل بالفعل في حساب في الفيسبوك. يرجى تسجيل الخروج وتسجيل الخروج."
+        },
+        "fa": {
+            "legacy_caption_pid": 28933,
+            "legacy_language_pid": 11,
+            "text": "این در حال حاضر در حساب فیس بوک وارد سایت شوید. لطفا از سیستم خارج و از سیستم خارج شوید.",
+            "auto_translated": "این در حال حاضر در حساب فیس بوک وارد سایت شوید. لطفا از سیستم خارج و از سیستم خارج شوید."
+        },
+        "de": {
+            "legacy_caption_pid": 28934,
+            "legacy_language_pid": 12,
+            "text": "Es ist bereits bei Facebook-Account eingeloggt. Bitte melden Sie sich ab und melden Sie sich an.",
+            "auto_translated": "Es ist bereits bei Facebook-Account eingeloggt. Bitte melden Sie sich ab und melden Sie sich an."
+        },
+        "ru": {
+            "legacy_caption_pid": 28935,
+            "legacy_language_pid": 13,
+            "text": "Он уже зарегистрирован в Facebook аккаунте. Пожалуйста, выйдите из системы и выйти из системы.",
+            "auto_translated": "Он уже зарегистрирован в Facebook аккаунте. Пожалуйста, выйдите из системы и выйти из системы."
+        },
+        "ms": {
+            "legacy_caption_pid": 28936,
+            "legacy_language_pid": 14,
+            "text": "Ia sudah log masuk pada akaun Facebook. Sila log keluar dan log keluar.",
+            "auto_translated": "Ia sudah log masuk pada akaun Facebook. Sila log keluar dan log keluar."
+        },
+        "ta": {
+            "legacy_caption_pid": 28937,
+            "legacy_language_pid": 15,
+            "text": "அது ஏற்கனவே பேஸ்புக் கணக்கு உள்நுழைந்துள்ளீர்கள். வெளியே உள்நுழைந்து வெளியே உள்நுழையவும்.",
+            "auto_translated": "அது ஏற்கனவே பேஸ்புக் கணக்கு உள்நுழைந்துள்ளீர்கள். வெளியே உள்நுழைந்து வெளியே உள்நுழையவும்."
+        },
+        "it": {
+            "legacy_caption_pid": 28938,
+            "legacy_language_pid": 16,
+            "text": "Si è già connesso ad account di Facebook. Si prega di disconnettersi e uscire.",
+            "auto_translated": "Si è già connesso ad account di Facebook. Si prega di disconnettersi e uscire."
+        },
+        "bn": {
+            "legacy_caption_pid": 28939,
+            "legacy_language_pid": 17,
+            "text": "এটা ইতিমধ্যেই ফেসবুক অ্যাকাউন্ট এ লগ করা হয়। লগ আউট করে লগ আউট করুন।",
+            "auto_translated": "এটা ইতিমধ্যেই ফেসবুক অ্যাকাউন্ট এ লগ করা হয়। লগ আউট করে লগ আউট করুন।"
+        },
+        "tr": {
+            "legacy_caption_pid": 28940,
+            "legacy_language_pid": 18,
+            "text": "Zaten Facebook hesabında kaydedilir. çıkış yapıp çıkış yapın.",
+            "auto_translated": "Zaten Facebook hesabında kaydedilir. çıkış yapıp çıkış yapın."
+        },
+        "vi": {
+            "legacy_caption_pid": 28941,
+            "legacy_language_pid": 19,
+            "text": "Người ta đã đăng nhập vào tài khoản Facebook. Vui lòng đăng xuất và đăng xuất.",
+            "auto_translated": "Người ta đã đăng nhập vào tài khoản Facebook. Vui lòng đăng xuất và đăng xuất."
+        },
+        "pl": {
+            "legacy_caption_pid": 28942,
+            "legacy_language_pid": 20,
+            "text": "To jest już zalogowany na koncie Facebook. Proszę się wylogować i zalogować się.",
+            "auto_translated": "To jest już zalogowany na koncie Facebook. Proszę się wylogować i zalogować się."
+        },
+        "jv": {
+            "legacy_caption_pid": 28943,
+            "legacy_language_pid": 21,
+            "text": "Wis mlebu ing akun Facebook. Mangga log metu lan mlebu metu.",
+            "auto_translated": "Wis mlebu ing akun Facebook. Mangga log metu lan mlebu metu."
+        },
+        "pa": {
+            "legacy_caption_pid": 28944,
+            "legacy_language_pid": 22,
+            "text": "ਇਹ ਹੀ ਫੇਸਬੁੱਕ ਖਾਤੇ 'ਤੇ ਲਾਗਇਨ ਕੀਤਾ ਹੈ. ਬਾਹਰ ਤੇ ਲਾਗਇਨ ਕਰੋ ਅਤੇ ਲਾਗ ਆਉਟ ਕਰੋ.",
+            "auto_translated": "ਇਹ ਹੀ ਫੇਸਬੁੱਕ ਖਾਤੇ 'ਤੇ ਲਾਗਇਨ ਕੀਤਾ ਹੈ. ਬਾਹਰ ਤੇ ਲਾਗਇਨ ਕਰੋ ਅਤੇ ਲਾਗ ਆਉਟ ਕਰੋ."
+        },
+        "th": {
+            "legacy_caption_pid": 28945,
+            "legacy_language_pid": 23,
+            "text": "มันเป็นเรื่องที่อยู่ในระบบที่บัญชี Facebook โปรดออกจากระบบและออกจากระบบ",
+            "auto_translated": "มันเป็นเรื่องที่อยู่ในระบบที่บัญชี Facebook โปรดออกจากระบบและออกจากระบบ"
+        },
+        "te": {
+            "legacy_caption_pid": 34800,
+            "legacy_language_pid": 24,
+            "text": "ఇది ఇప్పటికే Facebook ఖాతా లాగిన్ అయి ఉంది. లాగ్ అవుట్ మరియు లాగ్ అవుట్ దయచేసి.",
+            "auto_translated": "ఇది ఇప్పటికే Facebook ఖాతా లాగిన్ అయి ఉంది. లాగ్ అవుట్ మరియు లాగ్ అవుట్ దయచేసి."
+        },
+        "mr": {
+            "legacy_caption_pid": 34801,
+            "legacy_language_pid": 25,
+            "text": "आधीच फेसबुक खाते लॉग इन केले आहे. लॉग आउट करा आणि लॉग इन करा.",
+            "auto_translated": "आधीच फेसबुक खाते लॉग इन केले आहे. लॉग आउट करा आणि लॉग इन करा."
+        },
+        "ur": {
+            "legacy_caption_pid": 34802,
+            "legacy_language_pid": 26,
+            "text": "یہ پہلے ہی فیس بک اکاؤنٹ میں لاگ جاتا ہے. لاگ آؤٹ کریں اور باہر لاگ ان کریں.",
+            "auto_translated": "یہ پہلے ہی فیس بک اکاؤنٹ میں لاگ جاتا ہے. لاگ آؤٹ کریں اور باہر لاگ ان کریں."
+        },
+        "gu": {
+            "legacy_caption_pid": 34803,
+            "legacy_language_pid": 27,
+            "text": "તે પહેલાથી જ ફેસબુક એકાઉન્ટ પર લૉગ ઇન છે. લૉગ આઉટ અને બહાર લૉગ ઇન કરો.",
+            "auto_translated": "તે પહેલાથી જ ફેસબુક એકાઉન્ટ પર લૉગ ઇન છે. લૉગ આઉટ અને બહાર લૉગ ઇન કરો."
+        },
+        "uk": {
+            "legacy_caption_pid": 34804,
+            "legacy_language_pid": 28,
+            "text": "Він уже зареєстрований в Facebook обліковому записі. Будь ласка, вийдіть із системи і вийти з системи.",
+            "auto_translated": "Він уже зареєстрований в Facebook обліковому записі. Будь ласка, вийдіть із системи і вийти з системи."
+        },
+        "ml": {
+            "legacy_caption_pid": 34805,
+            "legacy_language_pid": 29,
+            "text": "ഇത് ഇതിനകം ഫേസ്ബുക്ക് അക്കൗണ്ട് ലോഗിൻ. ലോഗ് ഔട്ട് പുറത്ത് ദയവായി.",
+            "auto_translated": "ഇത് ഇതിനകം ഫേസ്ബുക്ക് അക്കൗണ്ട് ലോഗിൻ. ലോഗ് ഔട്ട് പുറത്ത് ദയവായി."
+        },
+        "kn": {
+            "legacy_caption_pid": 34806,
+            "legacy_language_pid": 30,
+            "text": "ಇದು ಈಗಾಗಲೇ ಫೇಸ್ಬುಕ್ ಖಾತೆಯನ್ನು ಲಾಗ್ ಇನ್ ಮಾಡಲಾಗಿದೆ. ಲಾಗ್ ಔಟ್ ಲಾಗ್ ಔಟ್ ಮಾಡಿ.",
+            "auto_translated": "ಇದು ಈಗಾಗಲೇ ಫೇಸ್ಬುಕ್ ಖಾತೆಯನ್ನು ಲಾಗ್ ಇನ್ ಮಾಡಲಾಗಿದೆ. ಲಾಗ್ ಔಟ್ ಲಾಗ್ ಔಟ್ ಮಾಡಿ."
+        },
+        "su": {
+            "legacy_caption_pid": 34807,
+            "legacy_language_pid": 31,
+            "text": "Hal ieu geus asup di akun Facebook. Mangga kaluar na kaluar.",
+            "auto_translated": "Hal ieu geus asup di akun Facebook. Mangga kaluar na kaluar."
+        },
+        "ku": {
+            "legacy_caption_pid": 34808,
+            "legacy_language_pid": 32,
+            "text": "Ev jixwe di at account Facebook têketî. Ji kerema xwe log out û log out.",
+            "auto_translated": "Ev jixwe di at account Facebook têketî. Ji kerema xwe log out û log out."
+        },
+        "ps": {
+            "legacy_caption_pid": 34809,
+            "legacy_language_pid": 33,
+            "text": "دا لا په فیسبوک حساب غونډال کې. لطفا وتنه او وتنه.",
+            "auto_translated": "دا لا په فیسبوک حساب غونډال کې. لطفا وتنه او وتنه."
+        },
+        "ro": {
+            "legacy_caption_pid": 34810,
+            "legacy_language_pid": 34,
+            "text": "Acesta este deja conectat la contul de Facebook. Deconectați-vă și conectați afară.",
+            "auto_translated": "Acesta este deja conectat la contul de Facebook. Deconectați-vă și conectați afară."
+        },
+        "id": {
+            "legacy_caption_pid": 34811,
+            "legacy_language_pid": 35,
+            "text": "Hal ini sudah masuk di akun Facebook. Silakan log out dan log out.",
+            "auto_translated": "Hal ini sudah masuk di akun Facebook. Silakan log out dan log out."
+        },
+        "sd": {
+            "legacy_caption_pid": 34812,
+            "legacy_language_pid": 36,
+            "text": "اهو اڳ ۾ ئي ڪريو اڪائونٽ تي وڏي ۾ وڏي آهي. ٻاهر جو لاگ ان ۽ ٻاهر جو لاگ ان ڪريو.",
+            "auto_translated": "اهو اڳ ۾ ئي ڪريو اڪائونٽ تي وڏي ۾ وڏي آهي. ٻاهر جو لاگ ان ۽ ٻاهر جو لاگ ان ڪريو."
+        },
+        "af": {
+            "legacy_caption_pid": 34813,
+            "legacy_language_pid": 37,
+            "text": "Dit is reeds aangemeld by Facebook rekening. Asseblief uit te teken en teken uit.",
+            "auto_translated": "Dit is reeds aangemeld by Facebook rekening. Asseblief uit te teken en teken uit."
+        },
+        "sw": {
+            "legacy_caption_pid": 34814,
+            "legacy_language_pid": 38,
+            "text": "Ni tayari umeingia katika akaunti Facebook. Tafadhali toka na kuingia nje.",
+            "auto_translated": "Ni tayari umeingia katika akaunti Facebook. Tafadhali toka na kuingia nje."
+        },
+        "lo": {
+            "legacy_caption_pid": 34815,
+            "legacy_language_pid": 39,
+            "text": "ມັນຖືກບັນທຶກໄວ້ແລ້ວໃນບັນຊີຂອງເຟສບຸກ. ກະລຸນາເຂົ້າສູ່ລະບົບແລະອອກຈາກລະບົບ.",
+            "auto_translated": "ມັນຖືກບັນທຶກໄວ້ແລ້ວໃນບັນຊີຂອງເຟສບຸກ. ກະລຸນາເຂົ້າສູ່ລະບົບແລະອອກຈາກລະບົບ."
+        },
+        "nl": {
+            "legacy_caption_pid": 34816,
+            "legacy_language_pid": 40,
+            "text": "Het is al ingelogd bij Facebook-account. Gelieve uit te loggen en uit te loggen.",
+            "auto_translated": "Het is al ingelogd bij Facebook-account. Gelieve uit te loggen en uit te loggen."
+        },
+        "tl": {
+            "legacy_caption_pid": 34817,
+            "legacy_language_pid": 41,
+            "text": "na ito ay naka-log in sa Facebook account. Mangyaring mag-log out at mag-log out.",
+            "auto_translated": "na ito ay naka-log in sa Facebook account. Mangyaring mag-log out at mag-log out."
+        },
+        "ne": {
+            "legacy_caption_pid": 34818,
+            "legacy_language_pid": 42,
+            "text": "यसलाई पहिले नै फेसबुक खाता मा लग छ। कृपया लग आउट गर्नुहोस् र लग आउट।",
+            "auto_translated": "यसलाई पहिले नै फेसबुक खाता मा लग छ। कृपया लग आउट गर्नुहोस् र लग आउट।"
+        },
+        "hu": {
+            "legacy_caption_pid": 34819,
+            "legacy_language_pid": 43,
+            "text": "Ez már be van jelentkezve a Facebook számla. Kérjük, jelentkezzen ki és jelentkezzen ki.",
+            "auto_translated": "Ez már be van jelentkezve a Facebook számla. Kérjük, jelentkezzen ki és jelentkezzen ki."
+        },
+        "cs": {
+            "legacy_caption_pid": 34820,
+            "legacy_language_pid": 44,
+            "text": "To je již přihlášen na Facebook účtu. Prosím, přihlaste se a odhlásit.",
+            "auto_translated": "To je již přihlášen na Facebook účtu. Prosím, přihlaste se a odhlásit."
+        },
+        "el": {
+            "legacy_caption_pid": 34821,
+            "legacy_language_pid": 45,
+            "text": "Είναι ήδη συνδεδεμένος στο λογαριασμό στο Facebook. Παρακαλούμε συνδεθείτε και να αποσυνδεθείτε.",
+            "auto_translated": "Είναι ήδη συνδεδεμένος στο λογαριασμό στο Facebook. Παρακαλούμε συνδεθείτε και να αποσυνδεθείτε."
+        },
+        "sv": {
+            "legacy_caption_pid": 34822,
+            "legacy_language_pid": 46,
+            "text": "Det är redan inloggad på Facebook-konto. Logga ut och logga ut.",
+            "auto_translated": "Det är redan inloggad på Facebook-konto. Logga ut och logga ut."
+        },
+        "kk": {
+            "legacy_caption_pid": 34823,
+            "legacy_language_pid": 47,
+            "text": "Ол қазірдің өзінде Facebook есебінен тіркеледі. шығу және шығу сұраймыз.",
+            "auto_translated": "Ол қазірдің өзінде Facebook есебінен тіркеледі. шығу және шығу сұраймыз."
+        },
+        "fi": {
+            "legacy_caption_pid": 34824,
+            "legacy_language_pid": 48,
+            "text": "Se on jo kirjautunut Facebook-tili. Kirjaudu ulos ja kirjaudu ulos.",
+            "auto_translated": "Se on jo kirjautunut Facebook-tili. Kirjaudu ulos ja kirjaudu ulos."
+        },
+        "da": {
+            "legacy_caption_pid": 34825,
+            "legacy_language_pid": 49,
+            "text": "Det er allerede logget ind på Facebook-konto. Du skal logge ud og logge ud.",
+            "auto_translated": "Det er allerede logget ind på Facebook-konto. Du skal logge ud og logge ud."
+        },
+        "he": {
+            "legacy_caption_pid": 34826,
+            "legacy_language_pid": 50,
+            "text": "הוא כבר מחובר אל חשבון פייסבוק. אנא להתנתק ולהתחבר החוצה.",
+            "auto_translated": "הוא כבר מחובר אל חשבון פייסבוק. אנא להתנתק ולהתחבר החוצה."
+        },
+        "no": {
+            "legacy_caption_pid": 34827,
+            "legacy_language_pid": 51,
+            "text": "Det er allerede logget inn på Facebook-kontoen. Vennligst logge ut og logge ut.",
+            "auto_translated": "Det er allerede logget inn på Facebook-kontoen. Vennligst logge ut og logge ut."
+        }
+    }
+}

@@ -1,0 +1,321 @@
+{
+    "resource_key": "COMMON_LIB_LOGIN_ANNOUNCEMENT_FOR_LOGIN_LINE3_ABOUT_CREATING_MATSUESOFT_ID",
+    "legacy_resource_pid": 1493,
+    "base_group_key": "grp-010-matsuesoft-lib",
+    "additional_group_keys": [],
+    "key_for_update": "6pxEiFWcpN9ZpbtLjn6mhJnJdulLnv0BjZ27h94ekpSPDVJDB1xKreD8yHn31QumMGjqcEuekBoFuRxyJRThjvFJUMpHQESq7TdMqXh0e1jnupRHAsDJz9UNRrjNRQqo",
+    "sort_group": "LOGIN",
+    "key_name": "COMMON_LIB_LOGIN_ANNOUNCEMENT_FOR_LOGIN_LINE3_ABOUT_CREATING_MATSUESOFT_ID",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": false,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 6246,
+            "legacy_language_pid": 1,
+            "text": "いずれもお持ちではないか、あってもお使いになりたくない場合は、当サイト専用のユーザ名(ID)を以下リンクから作成の上、ご利用下さい。",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 6247,
+            "legacy_language_pid": 2,
+            "text": "If you do not have any, or if you do not want to use it, please create the User Name (ID) for this site from the link below, please use.",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 6248,
+            "legacy_language_pid": 3,
+            "text": "如果没有这些用户名ID，又或者不想使用，您可以在本网站重新进行注册新的ID",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 6249,
+            "legacy_language_pid": 4,
+            "text": "아이디가 없거나 있어도 사용하시고 싶지 않으시면, 사이트 전용 아이디를 다음 링크에서 작성하신 후 이용해주시기 바랍니다.",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 11021,
+            "legacy_language_pid": 5,
+            "text": " Si no tiene ninguna, o si no desea usarla, por favor, cree la ID de este sitio desde el siguiente enlace, por favor.",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 11022,
+            "legacy_language_pid": 6,
+            "text": "Se você não possui nenhum, ou se não quiser usá-lo, crie a ID para este site a partir do link abaixo, use.",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 11023,
+            "legacy_language_pid": 7,
+            "text": "如果沒有這些用户名ID，又或者不想使用，您可以在本網站重新進行註冊新的ID",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 16041,
+            "legacy_language_pid": 8,
+            "text": "Si vous n'en avez pas, ou si vous ne souhaitez pas l'utiliser, créez le nom d'utilisateur (ID) de ce site à partir du lien ci-dessous, veuillez utiliser.",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 16042,
+            "legacy_language_pid": 9,
+            "text": "अगर आपके पास कोई नहीं है, या यदि आप इसका इस्तेमाल नहीं करना चाहते हैं, तो कृपया नीचे दिए गए लिंक से इस साइट के लिए यूज़र नेम (आईडी) बनाएं, कृपया उपयोग करें।",
+            "auto_translated": ""
+        },
+        "ar": {
+            "legacy_caption_pid": 32404,
+            "legacy_language_pid": 10,
+            "text": "كلا لم يكن لديك، إذا كنت لا تريد أن يكون لديك حتى، على رأس إنشاء موقع مخصص اسم المستخدم (ID) من الرابط أدناه، يرجى استخدام.",
+            "auto_translated": "كلا لم يكن لديك، إذا كنت لا تريد أن يكون لديك حتى، على رأس إنشاء موقع مخصص اسم المستخدم (ID) من الرابط أدناه، يرجى استخدام."
+        },
+        "fa": {
+            "legacy_caption_pid": 32405,
+            "legacy_language_pid": 11,
+            "text": "هر دو لازم نیست، اگر شما نمی خواهید به خود را حتی، در بالای ایجاد سایت اختصاص داده شده نام کاربری (ID) را از لینک زیر، استفاده کنید.",
+            "auto_translated": "هر دو لازم نیست، اگر شما نمی خواهید به خود را حتی، در بالای ایجاد سایت اختصاص داده شده نام کاربری (ID) را از لینک زیر، استفاده کنید."
+        },
+        "de": {
+            "legacy_caption_pid": 32406,
+            "legacy_language_pid": 12,
+            "text": "Beide haben nicht, wenn Sie wollen Sie auch nicht sein, oben auf die Seite gewidmet Benutzername (ID) von dem unten stehenden Link erstellen, verwenden Sie bitte.",
+            "auto_translated": "Beide haben nicht, wenn Sie wollen Sie auch nicht sein, oben auf die Seite gewidmet Benutzername (ID) von dem unten stehenden Link erstellen, verwenden Sie bitte."
+        },
+        "ru": {
+            "legacy_caption_pid": 32407,
+            "legacy_language_pid": 13,
+            "text": "Оба не имеют, если вы не хотите, чтобы быть ваш даже на вершине создания сайта, посвященное имя пользователя (ID) из приведенной ниже ссылки, пожалуйста, используйте.",
+            "auto_translated": "Оба не имеют, если вы не хотите, чтобы быть ваш даже на вершине создания сайта, посвященное имя пользователя (ID) из приведенной ниже ссылки, пожалуйста, используйте."
+        },
+        "ms": {
+            "legacy_caption_pid": 32408,
+            "legacy_language_pid": 14,
+            "text": "Kedua-dua tidak mempunyai, jika anda tidak mahu anda walaupun, di atas mewujudkan nama pengguna tapak yang dikhususkan (ID) dari pautan di bawah, sila gunakan.",
+            "auto_translated": "Kedua-dua tidak mempunyai, jika anda tidak mahu anda walaupun, di atas mewujudkan nama pengguna tapak yang dikhususkan (ID) dari pautan di bawah, sila gunakan."
+        },
+        "ta": {
+            "legacy_caption_pid": 32409,
+            "legacy_language_pid": 15,
+            "text": "நீங்கள் உங்கள் கூட, கீழே உள்ள இணைப்பில் இருந்து தளத்தில் அர்ப்பணிக்கப்பட்ட பயனர் பெயர் (ஐடி) உருவாக்கும் மேல், பயன்படுத்தவும் விரும்பவில்லை என்றால் இருவரும் இல்லை.",
+            "auto_translated": "நீங்கள் உங்கள் கூட, கீழே உள்ள இணைப்பில் இருந்து தளத்தில் அர்ப்பணிக்கப்பட்ட பயனர் பெயர் (ஐடி) உருவாக்கும் மேல், பயன்படுத்தவும் விரும்பவில்லை என்றால் இருவரும் இல்லை."
+        },
+        "it": {
+            "legacy_caption_pid": 32410,
+            "legacy_language_pid": 16,
+            "text": "Entrambi non hanno, se non si vuole essere il vostro anche, in cima la creazione del nome utente del sito dedicato (ID) dal link sottostante, si prega di utilizzare.",
+            "auto_translated": "Entrambi non hanno, se non si vuole essere il vostro anche, in cima la creazione del nome utente del sito dedicato (ID) dal link sottostante, si prega di utilizzare."
+        },
+        "bn": {
+            "legacy_caption_pid": 32411,
+            "legacy_language_pid": 17,
+            "text": "উভয় আছে, যদি না আপনি হতে আপনার এমনকি, নীচের লিঙ্কটি থেকে সাইট নিবেদিত ব্যবহারকারী নাম (আইডি) তৈরি করার উপরে, ব্যবহার করুন না চান না।",
+            "auto_translated": "উভয় আছে, যদি না আপনি হতে আপনার এমনকি, নীচের লিঙ্কটি থেকে সাইট নিবেদিত ব্যবহারকারী নাম (আইডি) তৈরি করার উপরে, ব্যবহার করুন না চান না।"
+        },
+        "tr": {
+            "legacy_caption_pid": 32412,
+            "legacy_language_pid": 18,
+            "text": "Eğer senin bile, aşağıdaki bağlantıdan sitesi adanmış kullanıcı adı (ID) oluşturarak üstüne, kullanın lütfen olmak istemiyorsanız Hem yok.",
+            "auto_translated": "Eğer senin bile, aşağıdaki bağlantıdan sitesi adanmış kullanıcı adı (ID) oluşturarak üstüne, kullanın lütfen olmak istemiyorsanız Hem yok."
+        },
+        "vi": {
+            "legacy_caption_pid": 32413,
+            "legacy_language_pid": 19,
+            "text": "Cả hai đều không có, nếu bạn không muốn trở thành thậm chí của bạn, trên đầu trang của tạo tên người dùng trang web dành riêng (ID) từ liên kết dưới đây, xin vui lòng sử dụng.",
+            "auto_translated": "Cả hai đều không có, nếu bạn không muốn trở thành thậm chí của bạn, trên đầu trang của tạo tên người dùng trang web dành riêng (ID) từ liên kết dưới đây, xin vui lòng sử dụng."
+        },
+        "pl": {
+            "legacy_caption_pid": 32414,
+            "legacy_language_pid": 20,
+            "text": "Oba nie mają, jeśli nie chcę być twoją nawet na górze tworząc stronę poświęconą nazwę użytkownika (ID) z linku poniżej, należy użyć.",
+            "auto_translated": "Oba nie mają, jeśli nie chcę być twoją nawet na górze tworząc stronę poświęconą nazwę użytkownika (ID) z linku poniżej, należy użyć."
+        },
+        "jv": {
+            "legacy_caption_pid": 32415,
+            "legacy_language_pid": 21,
+            "text": "Loro-lorone ora duwe, yen ora pengin dadi malah, ing ndhuwur nggawe situs darmabakti jeneng panganggo (ID) saka link ngisor iki, please nggunakake.",
+            "auto_translated": "Loro-lorone ora duwe, yen ora pengin dadi malah, ing ndhuwur nggawe situs darmabakti jeneng panganggo (ID) saka link ngisor iki, please nggunakake."
+        },
+        "pa": {
+            "legacy_caption_pid": 32416,
+            "legacy_language_pid": 22,
+            "text": "ਦੋਨੋ, ਹੈ ਨਾ, ਜੇ ਤੁਹਾਨੂੰ ਕਰਨ ਲਈ ਆਪਣੇ ਵੀ, ਹੇਠ ਦਿੱਤੇ ਲਿੰਕ ਤੱਕ ਸਾਈਟ ਸਮਰਪਿਤ ਯੂਜ਼ਰ ਨੂੰ ਨਾਮ ਹੈ (ID) ਬਣਾਉਣ ਦੇ ਸਿਖਰ 'ਤੇ, ਕਿਰਪਾ ਕਰਕੇ ਨਾ ਕਰਨਾ ਚਾਹੁੰਦੇ ਹਨ.",
+            "auto_translated": "ਦੋਨੋ, ਹੈ ਨਾ, ਜੇ ਤੁਹਾਨੂੰ ਕਰਨ ਲਈ ਆਪਣੇ ਵੀ, ਹੇਠ ਦਿੱਤੇ ਲਿੰਕ ਤੱਕ ਸਾਈਟ ਸਮਰਪਿਤ ਯੂਜ਼ਰ ਨੂੰ ਨਾਮ ਹੈ (ID) ਬਣਾਉਣ ਦੇ ਸਿਖਰ 'ਤੇ, ਕਿਰਪਾ ਕਰਕੇ ਨਾ ਕਰਨਾ ਚਾਹੁੰਦੇ ਹਨ."
+        },
+        "th": {
+            "legacy_caption_pid": 32417,
+            "legacy_language_pid": 23,
+            "text": "ทั้งสองไม่ได้ถ้าคุณไม่ต้องการที่จะเป็นแม้กระทั่งของคุณอยู่ด้านบนของการสร้างเว็บไซต์ทุ่มเทชื่อผู้ใช้ (ID) จากลิงค์ด้านล่างกรุณาใช้",
+            "auto_translated": "ทั้งสองไม่ได้ถ้าคุณไม่ต้องการที่จะเป็นแม้กระทั่งของคุณอยู่ด้านบนของการสร้างเว็บไซต์ทุ่มเทชื่อผู้ใช้ (ID) จากลิงค์ด้านล่างกรุณาใช้"
+        },
+        "te": {
+            "legacy_caption_pid": 40820,
+            "legacy_language_pid": 24,
+            "text": "రెండు, లేదు, మీరు మీ కూడా, క్రింద లింక్ నుండి సైట్ను అంకితం యూజర్ పేరు (ID) సృష్టించే పైన, దయచేసి ఉపయోగించడానికి అనుకుంటే లేదు.",
+            "auto_translated": "రెండు, లేదు, మీరు మీ కూడా, క్రింద లింక్ నుండి సైట్ను అంకితం యూజర్ పేరు (ID) సృష్టించే పైన, దయచేసి ఉపయోగించడానికి అనుకుంటే లేదు."
+        },
+        "mr": {
+            "legacy_caption_pid": 40821,
+            "legacy_language_pid": 25,
+            "text": "आपण आपले अगदी, खालील दुव्यावर साइट समर्पित वापरकर्ता नाव (ID) तयार वर, कृपया वापरू इच्छित नाही तर दोन्ही, नाही.",
+            "auto_translated": "आपण आपले अगदी, खालील दुव्यावर साइट समर्पित वापरकर्ता नाव (ID) तयार वर, कृपया वापरू इच्छित नाही तर दोन्ही, नाही."
+        },
+        "ur": {
+            "legacy_caption_pid": 40822,
+            "legacy_language_pid": 26,
+            "text": "آپ کو آپ کی بھی، نیچے دیے گئے لنک سے اس ویب سائٹ وقف صارف کا نام (ID) پیدا کرنے کے سب سے اوپر پر استعمال کریں بننے کے لئے نہیں کرنا چاہتے تو، دونوں کی ضرورت نہیں.",
+            "auto_translated": "آپ کو آپ کی بھی، نیچے دیے گئے لنک سے اس ویب سائٹ وقف صارف کا نام (ID) پیدا کرنے کے سب سے اوپر پر استعمال کریں بننے کے لئے نہیں کرنا چاہتے تو، دونوں کی ضرورت نہیں."
+        },
+        "gu": {
+            "legacy_caption_pid": 40823,
+            "legacy_language_pid": 27,
+            "text": "બંને ન હોય તો તમે કરવા માટે તમારા પણ નીચેની લિંક સાઇટ સમર્પિત વપરાશકર્તા નામ (આઇડી) બનાવવાની ટોચ પર, ઉપયોગ કરો નહિં માંગો નથી.",
+            "auto_translated": "બંને ન હોય તો તમે કરવા માટે તમારા પણ નીચેની લિંક સાઇટ સમર્પિત વપરાશકર્તા નામ (આઇડી) બનાવવાની ટોચ પર, ઉપયોગ કરો નહિં માંગો નથી."
+        },
+        "uk": {
+            "legacy_caption_pid": 40824,
+            "legacy_language_pid": 28,
+            "text": "Обидва не мають, якщо ви не хочете, щоб бути ваш навіть на вершині створення сайту, присвячене ім'я користувача (ID) з наведеної нижче посилання, будь ласка, використовуйте.",
+            "auto_translated": "Обидва не мають, якщо ви не хочете, щоб бути ваш навіть на вершині створення сайту, присвячене ім'я користувача (ID) з наведеної нижче посилання, будь ласка, використовуйте."
+        },
+        "ml": {
+            "legacy_caption_pid": 40825,
+            "legacy_language_pid": 29,
+            "text": "നിങ്ങളുടെ പോലും, താഴെ കാണുന്ന ലിങ്കിൽ നിന്നും സൈറ്റ് സമർപ്പിത ഉപയോക്തൃ നാമം (ഐഡി) സൃഷ്ടിക്കുന്നു മുകളിൽ, ഉപയോഗിക്കുക ആഗ്രഹിക്കുന്നു എങ്കിൽ രണ്ട്, ഇല്ല.",
+            "auto_translated": "നിങ്ങളുടെ പോലും, താഴെ കാണുന്ന ലിങ്കിൽ നിന്നും സൈറ്റ് സമർപ്പിത ഉപയോക്തൃ നാമം (ഐഡി) സൃഷ്ടിക്കുന്നു മുകളിൽ, ഉപയോഗിക്കുക ആഗ്രഹിക്കുന്നു എങ്കിൽ രണ്ട്, ഇല്ല."
+        },
+        "kn": {
+            "legacy_caption_pid": 40826,
+            "legacy_language_pid": 30,
+            "text": "ನೀವು ನಿಮ್ಮ ಸಹ, ಕೆಳಗಿನ ಲಿಂಕ್ ನಿಂದ ಸೈಟ್ ಮೀಸಲಾಗಿರುವ ಬಳಕೆದಾರ ಹೆಸರು (ಐಡಿ) ರಚಿಸುವ ಮೇಲೆ, ದಯವಿಟ್ಟು ಬಯಸದಿದ್ದರೆ, ಎರಡೂ ಹೊಂದಿಲ್ಲ.",
+            "auto_translated": "ನೀವು ನಿಮ್ಮ ಸಹ, ಕೆಳಗಿನ ಲಿಂಕ್ ನಿಂದ ಸೈಟ್ ಮೀಸಲಾಗಿರುವ ಬಳಕೆದಾರ ಹೆಸರು (ಐಡಿ) ರಚಿಸುವ ಮೇಲೆ, ದಯವಿಟ್ಟು ಬಯಸದಿದ್ದರೆ, ಎರಡೂ ಹೊಂದಿಲ್ಲ."
+        },
+        "su": {
+            "legacy_caption_pid": 40827,
+            "legacy_language_pid": 31,
+            "text": "Duanana teu boga, lamun teu hoyong jadi anjeun malah, di luhureun nyieun situs dedicated ngaran pamaké (ID) ti link di handap, mangga nganggo.",
+            "auto_translated": "Duanana teu boga, lamun teu hoyong jadi anjeun malah, di luhureun nyieun situs dedicated ngaran pamaké (ID) ti link di handap, mangga nganggo."
+        },
+        "ku": {
+            "legacy_caption_pid": 40828,
+            "legacy_language_pid": 32,
+            "text": "Herdu re tune ne, eger hûn naxwazin bi be te jî, li ser afirandina site diyarî user name (ID) ji Girêdana li jêr, ji kerema xwe bi kar tînin.",
+            "auto_translated": "Herdu re tune ne, eger hûn naxwazin bi be te jî, li ser afirandina site diyarî user name (ID) ji Girêdana li jêr, ji kerema xwe bi kar tînin."
+        },
+        "ps": {
+            "legacy_caption_pid": 40829,
+            "legacy_language_pid": 33,
+            "text": "دواړه نه لري، که تاسو نه غواړم چې وي خپل هم، د لاندې لینک څخه په ځای وقف کارن نوم (تذکرو) د رامنځته کولو په سر، لطفا وکاروي.",
+            "auto_translated": "دواړه نه لري، که تاسو نه غواړم چې وي خپل هم، د لاندې لینک څخه په ځای وقف کارن نوم (تذکرو) د رامنځته کولو په سر، لطفا وکاروي."
+        },
+        "ro": {
+            "legacy_caption_pid": 40830,
+            "legacy_language_pid": 34,
+            "text": "Ambele nu au, dacă nu doriți să fie chiar, pe partea de sus de a crea numele de utilizator site dedicat (ID) din link-ul de mai jos, vă rugăm să folosiți.",
+            "auto_translated": "Ambele nu au, dacă nu doriți să fie chiar, pe partea de sus de a crea numele de utilizator site dedicat (ID) din link-ul de mai jos, vă rugăm să folosiți."
+        },
+        "id": {
+            "legacy_caption_pid": 40831,
+            "legacy_language_pid": 35,
+            "text": "Keduanya tidak memiliki, jika Anda tidak ingin menjadi bahkan, di atas menciptakan situs yang didedikasikan nama pengguna (ID) dari link di bawah, silakan gunakan.",
+            "auto_translated": "Keduanya tidak memiliki, jika Anda tidak ingin menjadi bahkan, di atas menciptakan situs yang didedikasikan nama pengguna (ID) dari link di bawah, silakan gunakan."
+        },
+        "sd": {
+            "legacy_caption_pid": 40832,
+            "legacy_language_pid": 36,
+            "text": "اهي ٻئي، نه ته جيڪڏھن اوھين ٿي توهان به، هيٺ ڏنل لنڪ تان اهو ماڳ وقف صارف نالو (سڃاڻپ) ٺاهڻ جي مٿي تي، استعمال ڪريو نٿا چاهيون ٿا.",
+            "auto_translated": "اهي ٻئي، نه ته جيڪڏھن اوھين ٿي توهان به، هيٺ ڏنل لنڪ تان اهو ماڳ وقف صارف نالو (سڃاڻپ) ٺاهڻ جي مٿي تي، استعمال ڪريو نٿا چاهيون ٿا."
+        },
+        "af": {
+            "legacy_caption_pid": 40833,
+            "legacy_language_pid": 37,
+            "text": "Beide het nie, as jy nie wil wees jou selfs, op die top van die skep van die blad toegewyd gebruikersnaam (ID) uit die onderstaande skakel, gebruik asseblief.",
+            "auto_translated": "Beide het nie, as jy nie wil wees jou selfs, op die top van die skep van die blad toegewyd gebruikersnaam (ID) uit die onderstaande skakel, gebruik asseblief."
+        },
+        "sw": {
+            "legacy_caption_pid": 40834,
+            "legacy_language_pid": 38,
+            "text": "Wote hawana, kama huna unataka kuwa wako hata, juu ya kujenga tovuti wakfu jina la mtumiaji (ID) kutoka kwa kiungo hapa chini, tafadhali kutumia.",
+            "auto_translated": "Wote hawana, kama huna unataka kuwa wako hata, juu ya kujenga tovuti wakfu jina la mtumiaji (ID) kutoka kwa kiungo hapa chini, tafadhali kutumia."
+        },
+        "lo": {
+            "legacy_caption_pid": 40835,
+            "legacy_language_pid": 39,
+            "text": "ທັງສອງບໍ່ໄດ້ມີ, ຖ້າຫາກວ່າທ່ານບໍ່ຕ້ອງການທີ່ຈະເປັນຂອງທ່ານເຖິງແມ່ນວ່າ, ກ່ຽວກັບການເທິງຂອງການສ້າງເວັບໄຊອຸທິດຕົນຊື່ຜູ້ໃຊ້ (ID) ຈາກການເຊື່ອມຕໍ່ຂ້າງລຸ່ມນີ້, ກະລຸນາໃຊ້.",
+            "auto_translated": "ທັງສອງບໍ່ໄດ້ມີ, ຖ້າຫາກວ່າທ່ານບໍ່ຕ້ອງການທີ່ຈະເປັນຂອງທ່ານເຖິງແມ່ນວ່າ, ກ່ຽວກັບການເທິງຂອງການສ້າງເວັບໄຊອຸທິດຕົນຊື່ຜູ້ໃຊ້ (ID) ຈາກການເຊື່ອມຕໍ່ຂ້າງລຸ່ມນີ້, ກະລຸນາໃຊ້."
+        },
+        "nl": {
+            "legacy_caption_pid": 40836,
+            "legacy_language_pid": 40,
+            "text": "Beide hebben geen, als je niet wilt zijn je zelfs, op de top van het creëren van de site gewijd gebruikersnaam (ID) van de onderstaande link, kunt u gebruik maken.",
+            "auto_translated": "Beide hebben geen, als je niet wilt zijn je zelfs, op de top van het creëren van de site gewijd gebruikersnaam (ID) van de onderstaande link, kunt u gebruik maken."
+        },
+        "tl": {
+            "legacy_caption_pid": 40837,
+            "legacy_language_pid": 41,
+            "text": "Ang parehong ay hindi na, kung hindi mo nais na maging ang iyong kahit, sa tuktok ng paglikha ng site na nakatuon user name (ID) mula sa link sa ibaba, mangyaring gamitin ang.",
+            "auto_translated": "Ang parehong ay hindi na, kung hindi mo nais na maging ang iyong kahit, sa tuktok ng paglikha ng site na nakatuon user name (ID) mula sa link sa ibaba, mangyaring gamitin ang."
+        },
+        "ne": {
+            "legacy_caption_pid": 40838,
+            "legacy_language_pid": 42,
+            "text": "तपाईं आफ्नो पनि, साइट समर्पित प्रयोगकर्ता नाम (आईडी) सिर्जना तलको लिंक देखि माथि, कृपया प्रयोग हुन चाहँदैनन् भने दुवै, छैनन्।",
+            "auto_translated": "तपाईं आफ्नो पनि, साइट समर्पित प्रयोगकर्ता नाम (आईडी) सिर्जना तलको लिंक देखि माथि, कृपया प्रयोग हुन चाहँदैनन् भने दुवै, छैनन्।"
+        },
+        "hu": {
+            "legacy_caption_pid": 40839,
+            "legacy_language_pid": 43,
+            "text": "Mindkét nem, ha nem akarjuk, hogy a páros, a tetején ami a honlapjára felhasználó nevét (ID), az alábbi linkre, használja.",
+            "auto_translated": "Mindkét nem, ha nem akarjuk, hogy a páros, a tetején ami a honlapjára felhasználó nevét (ID), az alábbi linkre, használja."
+        },
+        "cs": {
+            "legacy_caption_pid": 40840,
+            "legacy_language_pid": 44,
+            "text": "Oba nemají, pokud nechcete, aby vaše i na vrcholu vytváření stránek věnovaná uživatelské jméno (ID) z níže uvedeného odkazu, použijte.",
+            "auto_translated": "Oba nemají, pokud nechcete, aby vaše i na vrcholu vytváření stránek věnovaná uživatelské jméno (ID) z níže uvedeného odkazu, použijte."
+        },
+        "el": {
+            "legacy_caption_pid": 40841,
+            "legacy_language_pid": 45,
+            "text": "Και οι δύο δεν έχουν, αν δεν θέλετε να σας ακόμα, στην κορυφή της δημιουργίας το όνομα χρήστη site αφιερωμένο (ID) από τον παρακάτω σύνδεσμο, μπορείτε να χρησιμοποιήσετε.",
+            "auto_translated": "Και οι δύο δεν έχουν, αν δεν θέλετε να σας ακόμα, στην κορυφή της δημιουργίας το όνομα χρήστη site αφιερωμένο (ID) από τον παρακάτω σύνδεσμο, μπορείτε να χρησιμοποιήσετε."
+        },
+        "sv": {
+            "legacy_caption_pid": 40842,
+            "legacy_language_pid": 46,
+            "text": "Båda har inte, om du inte vill vara din även, på toppen av att skapa webbplats tillägnad användarnamn (ID) från länken nedan, använd.",
+            "auto_translated": "Båda har inte, om du inte vill vara din även, på toppen av att skapa webbplats tillägnad användarnamn (ID) från länken nedan, använd."
+        },
+        "kk": {
+            "legacy_caption_pid": 40843,
+            "legacy_language_pid": 47,
+            "text": "Егер сіз тіпті, төмендегі сілтемені бастап сайт арнайы пайдаланушы атын (ID) құру үстіне, пайдалану сұраймыз болуы қажет емес, егер екеуі де, жоқ.",
+            "auto_translated": "Егер сіз тіпті, төмендегі сілтемені бастап сайт арнайы пайдаланушы атын (ID) құру үстіне, пайдалану сұраймыз болуы қажет емес, егер екеуі де, жоқ."
+        },
+        "fi": {
+            "legacy_caption_pid": 40844,
+            "legacy_language_pid": 48,
+            "text": "Molemmat ei ole, jos et halua olla jopa päälle luomisesta sivuston omistettu käyttäjätunnus (ID) alla olevan linkin kautta, käytä.",
+            "auto_translated": "Molemmat ei ole, jos et halua olla jopa päälle luomisesta sivuston omistettu käyttäjätunnus (ID) alla olevan linkin kautta, käytä."
+        },
+        "da": {
+            "legacy_caption_pid": 40845,
+            "legacy_language_pid": 49,
+            "text": "Begge ikke har, hvis du ikke ønsker at være din selv, oven på at skabe den hjemmeside dedikeret brugernavn (ID) fra nedenstående link, kan du bruge.",
+            "auto_translated": "Begge ikke har, hvis du ikke ønsker at være din selv, oven på at skabe den hjemmeside dedikeret brugernavn (ID) fra nedenstående link, kan du bruge."
+        },
+        "he": {
+            "legacy_caption_pid": 40846,
+            "legacy_language_pid": 50,
+            "text": "שניהם לא צריכים, אם אתה לא רוצה להיות שלך גם, על גבי יוצר את שם המשתמש מוקדש אתר (ID) מהקישור הבא, בבקשה להשתמש.",
+            "auto_translated": "שניהם לא צריכים, אם אתה לא רוצה להיות שלך גם, על גבי יוצר את שם המשתמש מוקדש אתר (ID) מהקישור הבא, בבקשה להשתמש."
+        },
+        "no": {
+            "legacy_caption_pid": 40847,
+            "legacy_language_pid": 51,
+            "text": "Begge ikke har, hvis du ikke ønsker å være din selv, på toppen av å skape den nettsted dedikert brukernavnet (ID) fra linken nedenfor, kan du bruke.",
+            "auto_translated": "Begge ikke har, hvis du ikke ønsker å være din selv, på toppen av å skape den nettsted dedikert brukernavnet (ID) fra linken nedenfor, kan du bruke."
+        }
+    }
+}

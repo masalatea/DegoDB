@@ -1,0 +1,27 @@
+{
+    "resource_key": "HP_FOOTER_DEV_SPEC_TOP",
+    "legacy_resource_pid": 124,
+    "base_group_key": "grp-001-developers-matsuesoft-co-jp",
+    "additional_group_keys": [],
+    "key_for_update": "0",
+    "sort_group": "HP FOOTER",
+    "key_name": "HP_FOOTER_DEV_SPEC_TOP",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": true,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 4264,
+            "legacy_language_pid": 1,
+            "text": "仕様ツール [内部ユーザ用]",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 4265,
+            "legacy_language_pid": 2,
+            "text": "Specification Tool [Internal User Only]",
+            "auto_translated": ""
+        }
+    }
+}

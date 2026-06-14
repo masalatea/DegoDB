@@ -1,0 +1,27 @@
+{
+    "resource_key": "ACTION_UPDATE_SPECIAL_HOLIDAY",
+    "legacy_resource_pid": 443,
+    "base_group_key": "grp-001-developers-matsuesoft-co-jp",
+    "additional_group_keys": [],
+    "key_for_update": "0",
+    "sort_group": "ACTION SPECIAL_HOLIDAY",
+    "key_name": "ACTION_UPDATE_SPECIAL_HOLIDAY",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": true,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 4104,
+            "legacy_language_pid": 1,
+            "text": "祝日更新",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 4105,
+            "legacy_language_pid": 2,
+            "text": "Update Special Holiday",
+            "auto_translated": ""
+        }
+    }
+}

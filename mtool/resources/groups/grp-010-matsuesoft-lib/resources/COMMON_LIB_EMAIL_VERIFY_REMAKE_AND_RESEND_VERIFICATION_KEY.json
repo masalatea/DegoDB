@@ -1,0 +1,321 @@
+{
+    "resource_key": "COMMON_LIB_EMAIL_VERIFY_REMAKE_AND_RESEND_VERIFICATION_KEY",
+    "legacy_resource_pid": 1392,
+    "base_group_key": "grp-010-matsuesoft-lib",
+    "additional_group_keys": [],
+    "key_for_update": "63YJSrPRlSjWqRqXMnmT8oBziHvpRGzqJB5ihMVW41odKfpcEAl7GdUmEGNBj0H6CG0OsEffCe5BosHajyysY7hKzfVfu5fTF04shBRW44dRBTMCFyuiVKGo0HIGAhmQ",
+    "sort_group": "EMAIL VERIFY",
+    "key_name": "COMMON_LIB_EMAIL_VERIFY_REMAKE_AND_RESEND_VERIFICATION_KEY",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": false,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 5842,
+            "legacy_language_pid": 1,
+            "text": "認証キーを再作成＆送信する場合はこちらをクリック",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 5843,
+            "legacy_language_pid": 2,
+            "text": "Click here if you want recreate verification key and resend verification email.",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 5844,
+            "legacy_language_pid": 3,
+            "text": "如果你想重新创建和发送认证码，点击这里",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 5845,
+            "legacy_language_pid": 4,
+            "text": "인증 키를 다시 생성 및 전송하는 경우 여기를 클릭",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 10735,
+            "legacy_language_pid": 5,
+            "text": "Haga clic aquí si desea volver a crear la clave de verificación y volver a enviar el correo electrónico de verificación.",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 10736,
+            "legacy_language_pid": 6,
+            "text": "Clique aqui se quiser recriar a chave de verificação e reenviar o e-mail de verificação.",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 10737,
+            "legacy_language_pid": 7,
+            "text": "如果你想重新創建和發送認證碼，點擊這裡",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 16443,
+            "legacy_language_pid": 8,
+            "text": "Cliquez ici si vous voulez recréer la clé de vérification et renvoyer l'e-mail de vérification.",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 16444,
+            "legacy_language_pid": 9,
+            "text": "यहां क्लिक करें यदि आप सत्यापन कुंजी को फिर से बनाना चाहते हैं और सत्यापन ईमेल पुनः भेजें।",
+            "auto_translated": ""
+        },
+        "ar": {
+            "legacy_caption_pid": 31018,
+            "legacy_language_pid": 10,
+            "text": "انقر هنا إذا كنت ترغب في إعادة إنشاء وإرسال مفتاح المصادقة",
+            "auto_translated": "انقر هنا إذا كنت ترغب في إعادة إنشاء وإرسال مفتاح المصادقة"
+        },
+        "fa": {
+            "legacy_caption_pid": 31019,
+            "legacy_language_pid": 11,
+            "text": "اینجا را کلیک کنید اگر شما می خواهید به دوباره ایجاد و ارسال کلید احراز هویت",
+            "auto_translated": "اینجا را کلیک کنید اگر شما می خواهید به دوباره ایجاد و ارسال کلید احراز هویت"
+        },
+        "de": {
+            "legacy_caption_pid": 31020,
+            "legacy_language_pid": 12,
+            "text": "Klicken Sie hier, wenn Sie möchten, neu erstellen und einen Authentifizierungsschlüssel senden",
+            "auto_translated": "Klicken Sie hier, wenn Sie möchten, neu erstellen und einen Authentifizierungsschlüssel senden"
+        },
+        "ru": {
+            "legacy_caption_pid": 31021,
+            "legacy_language_pid": 13,
+            "text": "Нажмите здесь, если вы хотите, чтобы заново создать и отправить ключ аутентификации",
+            "auto_translated": "Нажмите здесь, если вы хотите, чтобы заново создать и отправить ключ аутентификации"
+        },
+        "ms": {
+            "legacy_caption_pid": 31022,
+            "legacy_language_pid": 14,
+            "text": "Klik di sini jika anda ingin membuat semula dan menghantar kunci pengesahan",
+            "auto_translated": "Klik di sini jika anda ingin membuat semula dan menghantar kunci pengesahan"
+        },
+        "ta": {
+            "legacy_caption_pid": 31023,
+            "legacy_language_pid": 15,
+            "text": "நீங்கள் மீண்டும் உருவாக்க ஒரு அங்கீகார விசை அனுப்ப விரும்பினால் இங்கே கிளிக் செய்யவும்",
+            "auto_translated": "நீங்கள் மீண்டும் உருவாக்க ஒரு அங்கீகார விசை அனுப்ப விரும்பினால் இங்கே கிளிக் செய்யவும்"
+        },
+        "it": {
+            "legacy_caption_pid": 31024,
+            "legacy_language_pid": 16,
+            "text": "Clicca qui se vuoi ri-creare e inviare una chiave di autenticazione",
+            "auto_translated": "Clicca qui se vuoi ri-creare e inviare una chiave di autenticazione"
+        },
+        "bn": {
+            "legacy_caption_pid": 31025,
+            "legacy_language_pid": 17,
+            "text": "এখানে ক্লিক করুন আপনি পুনরায়-তৈরি এবং একটি প্রমাণীকরণ কী পাঠাতে চান যদি",
+            "auto_translated": "এখানে ক্লিক করুন আপনি পুনরায়-তৈরি এবং একটি প্রমাণীকরণ কী পাঠাতে চান যদি"
+        },
+        "tr": {
+            "legacy_caption_pid": 31026,
+            "legacy_language_pid": 18,
+            "text": "Eğer yeniden oluşturmak ve bir kimlik doğrulama anahtarı göndermek istiyorsanız buraya tıklayın",
+            "auto_translated": "Eğer yeniden oluşturmak ve bir kimlik doğrulama anahtarı göndermek istiyorsanız buraya tıklayın"
+        },
+        "vi": {
+            "legacy_caption_pid": 31027,
+            "legacy_language_pid": 19,
+            "text": "Nhấn vào đây nếu bạn muốn tái tạo và gửi một phím xác thực",
+            "auto_translated": "Nhấn vào đây nếu bạn muốn tái tạo và gửi một phím xác thực"
+        },
+        "pl": {
+            "legacy_caption_pid": 31028,
+            "legacy_language_pid": 20,
+            "text": "Kliknij tutaj, jeśli chcesz, aby ponownie utworzyć i wysłać klucz uwierzytelniający",
+            "auto_translated": "Kliknij tutaj, jeśli chcesz, aby ponownie utworzyć i wysłać klucz uwierzytelniający"
+        },
+        "jv": {
+            "legacy_caption_pid": 31029,
+            "legacy_language_pid": 21,
+            "text": "Klik kene yen pengin maneh nggawe lan ngirim tombol bukti asli",
+            "auto_translated": "Klik kene yen pengin maneh nggawe lan ngirim tombol bukti asli"
+        },
+        "pa": {
+            "legacy_caption_pid": 31030,
+            "legacy_language_pid": 22,
+            "text": "ਲਈ ਇੱਥੇ ਕਲਿਕ ਕਰੋ ਤੁਹਾਨੂੰ ਮੁੜ-ਬਣਾਉਣ ਅਤੇ ਇੱਕ ਪ੍ਰਮਾਣਿਕਤਾ ਕੁੰਜੀ ਭੇਜਣ ਲਈ ਚਾਹੁੰਦੇ ਹੋ, ਜੇਕਰ",
+            "auto_translated": "ਲਈ ਇੱਥੇ ਕਲਿਕ ਕਰੋ ਤੁਹਾਨੂੰ ਮੁੜ-ਬਣਾਉਣ ਅਤੇ ਇੱਕ ਪ੍ਰਮਾਣਿਕਤਾ ਕੁੰਜੀ ਭੇਜਣ ਲਈ ਚਾਹੁੰਦੇ ਹੋ, ਜੇਕਰ"
+        },
+        "th": {
+            "legacy_caption_pid": 31031,
+            "legacy_language_pid": 23,
+            "text": "คลิกที่นี่หากคุณต้องการที่จะสร้างใหม่อีกครั้งและส่งคีย์รับรองความถูกต้อง",
+            "auto_translated": "คลิกที่นี่หากคุณต้องการที่จะสร้างใหม่อีกครั้งและส่งคีย์รับรองความถูกต้อง"
+        },
+        "te": {
+            "legacy_caption_pid": 42430,
+            "legacy_language_pid": 24,
+            "text": "మీరు తిరిగి సృష్టించడానికి మరియు ఒక ప్రమాణీకరణ కీ పంపాలని ఉంటే ఇక్కడ క్లిక్ చేయండి",
+            "auto_translated": "మీరు తిరిగి సృష్టించడానికి మరియు ఒక ప్రమాణీకరణ కీ పంపాలని ఉంటే ఇక్కడ క్లిక్ చేయండి"
+        },
+        "mr": {
+            "legacy_caption_pid": 42431,
+            "legacy_language_pid": 25,
+            "text": "आपण पुन्हा तयार करा आणि एक प्रमाणीकरण की पाठवू इच्छित असल्यास येथे क्लिक करा",
+            "auto_translated": "आपण पुन्हा तयार करा आणि एक प्रमाणीकरण की पाठवू इच्छित असल्यास येथे क्लिक करा"
+        },
+        "ur": {
+            "legacy_caption_pid": 42432,
+            "legacy_language_pid": 26,
+            "text": "آپ کو دوبارہ تخلیق اور ایک تصدیق کی چابی بھیج چاہتے ہیں تو یہاں کلک کریں",
+            "auto_translated": "آپ کو دوبارہ تخلیق اور ایک تصدیق کی چابی بھیج چاہتے ہیں تو یہاں کلک کریں"
+        },
+        "gu": {
+            "legacy_caption_pid": 42433,
+            "legacy_language_pid": 27,
+            "text": "અહીં ક્લિક કરો તમે ફરીથી બનાવવા અને સત્તાધિકરણ કી મોકલવા માંગો છો તો",
+            "auto_translated": "અહીં ક્લિક કરો તમે ફરીથી બનાવવા અને સત્તાધિકરણ કી મોકલવા માંગો છો તો"
+        },
+        "uk": {
+            "legacy_caption_pid": 42434,
+            "legacy_language_pid": 28,
+            "text": "Натисніть тут, якщо ви хочете, щоб заново створити і відправити ключ аутентифікації",
+            "auto_translated": "Натисніть тут, якщо ви хочете, щоб заново створити і відправити ключ аутентифікації"
+        },
+        "ml": {
+            "legacy_caption_pid": 42435,
+            "legacy_language_pid": 29,
+            "text": "നിങ്ങൾ വീണ്ടും സൃഷ്ടിക്കാനും അയയ്ക്കാൻ ഒരു ആധികാരികത കീ ചെയ്യണമെങ്കിൽ ഇവിടെ ക്ലിക്ക്",
+            "auto_translated": "നിങ്ങൾ വീണ്ടും സൃഷ്ടിക്കാനും അയയ്ക്കാൻ ഒരു ആധികാരികത കീ ചെയ്യണമെങ്കിൽ ഇവിടെ ക്ലിക്ക്"
+        },
+        "kn": {
+            "legacy_caption_pid": 42436,
+            "legacy_language_pid": 30,
+            "text": "ನೀವು ಮರು ರಚಿಸಲು ಮತ್ತು ಒಂದು ದೃಢೀಕರಣ ಕೀಲಿ ಕಳುಹಿಸಲು ಬಯಸಿದರೆ ಇಲ್ಲಿ ಕ್ಲಿಕ್",
+            "auto_translated": "ನೀವು ಮರು ರಚಿಸಲು ಮತ್ತು ಒಂದು ದೃಢೀಕರಣ ಕೀಲಿ ಕಳುಹಿಸಲು ಬಯಸಿದರೆ ಇಲ್ಲಿ ಕ್ಲಿಕ್"
+        },
+        "su": {
+            "legacy_caption_pid": 42437,
+            "legacy_language_pid": 31,
+            "text": "Klik di dieu upami Anjeun hoyong ulang Nyieun terus ngirim konci auténtikasi",
+            "auto_translated": "Klik di dieu upami Anjeun hoyong ulang Nyieun terus ngirim konci auténtikasi"
+        },
+        "ku": {
+            "legacy_caption_pid": 42438,
+            "legacy_language_pid": 32,
+            "text": "li vir bitikîne eger tu dixwazî ​​ji nû ve ava bike û bişîne an key authentication",
+            "auto_translated": "li vir bitikîne eger tu dixwazî ​​ji nû ve ava bike û bişîne an key authentication"
+        },
+        "ps": {
+            "legacy_caption_pid": 42439,
+            "legacy_language_pid": 33,
+            "text": "دلته کلیک که تاسو غواړئ چې د بيا جوړولو او د اعتبار د مهمو واستوي",
+            "auto_translated": "دلته کلیک که تاسو غواړئ چې د بيا جوړولو او د اعتبار د مهمو واستوي"
+        },
+        "ro": {
+            "legacy_caption_pid": 42440,
+            "legacy_language_pid": 34,
+            "text": "Faceți clic aici dacă doriți să re-crea și a trimite o cheie de autentificare",
+            "auto_translated": "Faceți clic aici dacă doriți să re-crea și a trimite o cheie de autentificare"
+        },
+        "id": {
+            "legacy_caption_pid": 42441,
+            "legacy_language_pid": 35,
+            "text": "Klik di sini jika Anda ingin kembali membuat dan mengirim kunci otentikasi",
+            "auto_translated": "Klik di sini jika Anda ingin kembali membuat dan mengirim kunci otentikasi"
+        },
+        "sd": {
+            "legacy_caption_pid": 42442,
+            "legacy_language_pid": 36,
+            "text": "هتي ڪلڪ ڪري جيڪڏھن اوھان کي ٻيهر ٺاهي ۽ موڪل هڪ اصليت اهم ڪرڻ چاهيو ٿا",
+            "auto_translated": "هتي ڪلڪ ڪري جيڪڏھن اوھان کي ٻيهر ٺاهي ۽ موڪل هڪ اصليت اهم ڪرڻ چاهيو ٿا"
+        },
+        "af": {
+            "legacy_caption_pid": 42443,
+            "legacy_language_pid": 37,
+            "text": "Klik hier as jy wil herskep en stuur 'n verifikasie sleutel",
+            "auto_translated": "Klik hier as jy wil herskep en stuur 'n verifikasie sleutel"
+        },
+        "sw": {
+            "legacy_caption_pid": 42444,
+            "legacy_language_pid": 38,
+            "text": "Bonyeza hapa kama unataka kuunda upya na kutuma muhimu uthibitisho",
+            "auto_translated": "Bonyeza hapa kama unataka kuunda upya na kutuma muhimu uthibitisho"
+        },
+        "lo": {
+            "legacy_caption_pid": 42445,
+            "legacy_language_pid": 39,
+            "text": "ຄລິກທີ່ນີ້ຖ້າຫາກວ່າທ່ານຕ້ອງການທີ່ຈະ Re: ການສ້າງແລະສົ່ງທີ່ສໍາຄັນການກວດສອບ",
+            "auto_translated": "ຄລິກທີ່ນີ້ຖ້າຫາກວ່າທ່ານຕ້ອງການທີ່ຈະ Re: ການສ້າງແລະສົ່ງທີ່ສໍາຄັນການກວດສອບ"
+        },
+        "nl": {
+            "legacy_caption_pid": 42446,
+            "legacy_language_pid": 40,
+            "text": "Klik hier als u opnieuw wilt maken en verzenden van een authenticatie sleutel",
+            "auto_translated": "Klik hier als u opnieuw wilt maken en verzenden van een authenticatie sleutel"
+        },
+        "tl": {
+            "legacy_caption_pid": 42447,
+            "legacy_language_pid": 41,
+            "text": "Mag-click dito kung nais mong muling likhain at magpadala ng authentication key",
+            "auto_translated": "Mag-click dito kung nais mong muling likhain at magpadala ng authentication key"
+        },
+        "ne": {
+            "legacy_caption_pid": 42448,
+            "legacy_language_pid": 42,
+            "text": "तपाईं पुन: सिर्जना गर्न र एक प्रमाणीकरण प्रमुख पठाउन चाहनुहुन्छ भने यहाँ क्लिक",
+            "auto_translated": "तपाईं पुन: सिर्जना गर्न र एक प्रमाणीकरण प्रमुख पठाउन चाहनुहुन्छ भने यहाँ क्लिक"
+        },
+        "hu": {
+            "legacy_caption_pid": 42449,
+            "legacy_language_pid": 43,
+            "text": "Kattintson ide, ha szeretné újra létrehozhat és elküldhet egy hitelesítő kulcsot",
+            "auto_translated": "Kattintson ide, ha szeretné újra létrehozhat és elküldhet egy hitelesítő kulcsot"
+        },
+        "cs": {
+            "legacy_caption_pid": 42450,
+            "legacy_language_pid": 44,
+            "text": "Klikněte zde, chcete-li znovu vytvořit a odeslat ověřovací klíč",
+            "auto_translated": "Klikněte zde, chcete-li znovu vytvořit a odeslat ověřovací klíč"
+        },
+        "el": {
+            "legacy_caption_pid": 42451,
+            "legacy_language_pid": 45,
+            "text": "Κάντε κλικ εδώ αν θέλετε να δημιουργήσετε εκ νέου και να στείλετε ένα κλειδί ταυτότητας",
+            "auto_translated": "Κάντε κλικ εδώ αν θέλετε να δημιουργήσετε εκ νέου και να στείλετε ένα κλειδί ταυτότητας"
+        },
+        "sv": {
+            "legacy_caption_pid": 42452,
+            "legacy_language_pid": 46,
+            "text": "Klicka här om du vill återskapa och skicka ett autentiseringsnyckel",
+            "auto_translated": "Klicka här om du vill återskapa och skicka ett autentiseringsnyckel"
+        },
+        "kk": {
+            "legacy_caption_pid": 42453,
+            "legacy_language_pid": 47,
+            "text": "Егер сіз қайта жасау және жіберу аутентификация кілті келсе осында басыңыз",
+            "auto_translated": "Егер сіз қайта жасау және жіберу аутентификация кілті келсе осында басыңыз"
+        },
+        "fi": {
+            "legacy_caption_pid": 42454,
+            "legacy_language_pid": 48,
+            "text": "Klikkaa tästä, jos haluat luoda uudelleen ja lähettää autentikointiavaimesta",
+            "auto_translated": "Klikkaa tästä, jos haluat luoda uudelleen ja lähettää autentikointiavaimesta"
+        },
+        "da": {
+            "legacy_caption_pid": 42455,
+            "legacy_language_pid": 49,
+            "text": "Klik her, hvis du ønsker at genskabe og sende en godkendelsesnøglen",
+            "auto_translated": "Klik her, hvis du ønsker at genskabe og sende en godkendelsesnøglen"
+        },
+        "he": {
+            "legacy_caption_pid": 42456,
+            "legacy_language_pid": 50,
+            "text": "לחץ כאן אם אתה רוצה ליצור מחדש ולשלוח מפתח אימות",
+            "auto_translated": "לחץ כאן אם אתה רוצה ליצור מחדש ולשלוח מפתח אימות"
+        },
+        "no": {
+            "legacy_caption_pid": 42457,
+            "legacy_language_pid": 51,
+            "text": "Klikk her hvis du ønsker å re-opprette og sende en autentiseringsnøkkel",
+            "auto_translated": "Klikk her hvis du ønsker å re-opprette og sende en autentiseringsnøkkel"
+        }
+    }
+}

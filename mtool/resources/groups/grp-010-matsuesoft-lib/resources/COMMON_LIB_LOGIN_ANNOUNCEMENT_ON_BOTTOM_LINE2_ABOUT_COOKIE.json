@@ -1,0 +1,321 @@
+{
+    "resource_key": "COMMON_LIB_LOGIN_ANNOUNCEMENT_ON_BOTTOM_LINE2_ABOUT_COOKIE",
+    "legacy_resource_pid": 1508,
+    "base_group_key": "grp-010-matsuesoft-lib",
+    "additional_group_keys": [],
+    "key_for_update": "Z6ZlGpuuGuYIHgcI7m1XKTb4OQUReGCJWDdMU6g52aIz1eQ6rDgOfzkDtMT2OLizV35Rw9lpbX7gYoPLKWb1kpoAzgW0FVvtMKMjEuYAavDCSAnnzhmnqZq0Wpb5pD70",
+    "sort_group": "LOGIN",
+    "key_name": "COMMON_LIB_LOGIN_ANNOUNCEMENT_ON_BOTTOM_LINE2_ABOUT_COOKIE",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": false,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 6306,
+            "legacy_language_pid": 1,
+            "text": "ログイン成功後に何度もこのログイン画面に戻ってきてしまう場合はクッキー(Cookie)が有効でない場合がありますのでブラウザの設定をご確認頂ければと思います。",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 6307,
+            "legacy_language_pid": 2,
+            "text": "If you return to this login screen many times after successful login, cookie may not be valid, so I think that you can check your browser settings.",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 6308,
+            "legacy_language_pid": 3,
+            "text": "成功登录后一次又一次回到这个登录屏幕可能是因为Cookie是无效的，请检查你的浏览器设置。",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 6309,
+            "legacy_language_pid": 4,
+            "text": "로그인 후 계속해서 로그인 화면으로 돌아오는 경우, Cookie가 유효하지 않은 가능성이 있기 때문에 브라우저의 설정을 확인해주시기 바랍니다.",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 11042,
+            "legacy_language_pid": 5,
+            "text": "Si vuelve a esta pantalla de inicio de sesión muchas veces después de iniciar sesión con éxito, la cookie puede no ser válida, por lo que creo que puede comprobar la configuración de su navegador.",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 11043,
+            "legacy_language_pid": 6,
+            "text": " Se você voltar a esta tela de login muitas vezes após o login bem-sucedido, o cookie pode não ser válido, então eu acho que você pode verificar as configurações do seu navegador.",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 11044,
+            "legacy_language_pid": 7,
+            "text": "成功登錄後一次又一次回到這個登錄屏幕可能是因為Cookie是無效的，請檢查你的瀏覽器設置。",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 17223,
+            "legacy_language_pid": 8,
+            "text": "Si vous revenez à cet écran de connexion plusieurs fois après la connexion réussie, un cookie peut ne pas être valide, alors je pense que vous pouvez vérifier les paramètres de votre navigateur.",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 17224,
+            "legacy_language_pid": 9,
+            "text": "यदि आप इस लॉगिन स्क्रीन पर कई बार सफल लॉगिन के बाद वापस आ जाते हैं, तो कुकी मान्य नहीं हो सकती है, इसलिए मुझे लगता है कि आप अपने ब्राउज़र सेटिंग्स की जांच कर सकते हैं।",
+            "auto_translated": ""
+        },
+        "ar": {
+            "legacy_caption_pid": 32432,
+            "legacy_language_pid": 10,
+            "text": "لأنه إذا كان بعد دخول ناجح لإرادة ليعود مرة أخرى ومرة ​​أخرى لهذا الدخول الشاشة القوة الكعكة غير صالح أعتقد أن عليك التحقق من إعدادات المتصفح الخاص بك.",
+            "auto_translated": "لأنه إذا كان بعد دخول ناجح لإرادة ليعود مرة أخرى ومرة ​​أخرى لهذا الدخول الشاشة القوة الكعكة غير صالح أعتقد أن عليك التحقق من إعدادات المتصفح الخاص بك."
+        },
+        "fa": {
+            "legacy_caption_pid": 32433,
+            "legacy_language_pid": 11,
+            "text": "چرا که اگر بعد از ورود موفقیت آمیز به اراده به بازگشت دوباره و دوباره به این ورود ممکن روی صفحه نمایش کوکی معتبر نیست من فکر می کنم که شما تنظیمات مرورگر خود را چک کنید.",
+            "auto_translated": "چرا که اگر بعد از ورود موفقیت آمیز به اراده به بازگشت دوباره و دوباره به این ورود ممکن روی صفحه نمایش کوکی معتبر نیست من فکر می کنم که شما تنظیمات مرورگر خود را چک کنید."
+        },
+        "de": {
+            "legacy_caption_pid": 32434,
+            "legacy_language_pid": 12,
+            "text": "Denn wenn nach einer erfolgreiche Anmeldung an den Willen, wieder zu kommen und wieder auf diesen Login-Bildschirm könnte Cookie nicht gültig ist, denke ich, dass Sie Ihre Browser-Einstellungen überprüfen.",
+            "auto_translated": "Denn wenn nach einer erfolgreiche Anmeldung an den Willen, wieder zu kommen und wieder auf diesen Login-Bildschirm könnte Cookie nicht gültig ist, denke ich, dass Sie Ihre Browser-Einstellungen überprüfen."
+        },
+        "ru": {
+            "legacy_caption_pid": 32435,
+            "legacy_language_pid": 13,
+            "text": "Потому что, если после успешного Войти на волю, чтобы вернуться снова и снова к этому входа в экран может куки не является действительным, я думаю, что вы проверьте настройки Вашего браузера.",
+            "auto_translated": "Потому что, если после успешного Войти на волю, чтобы вернуться снова и снова к этому входа в экран может куки не является действительным, я думаю, что вы проверьте настройки Вашего браузера."
+        },
+        "ms": {
+            "legacy_caption_pid": 32436,
+            "legacy_language_pid": 14,
+            "text": "Kerana jika selepas log masuk yang berjaya untuk keinginan untuk kembali lagi dan sekali lagi untuk ini login skrin kekuatan cookie tidak sah saya berfikir bahawa anda semak tetapan pelayar anda.",
+            "auto_translated": "Kerana jika selepas log masuk yang berjaya untuk keinginan untuk kembali lagi dan sekali lagi untuk ini login skrin kekuatan cookie tidak sah saya berfikir bahawa anda semak tetapan pelayar anda."
+        },
+        "ta": {
+            "legacy_caption_pid": 32437,
+            "legacy_language_pid": 15,
+            "text": "விருப்புக்கு ஏற்ப ஒரு வெற்றிகரமான உள்நுழைவு இந்த உள்நுழைவு திரையில் வலிமை குக்கீ மீண்டும் மீண்டும் திரும்பி வர பிறகு என்றால் தவறாக இருப்பதால் நான் உங்கள் உலாவி அமைப்புகளில் பார்க்கலாம் என்று நினைக்கிறேன்.",
+            "auto_translated": "விருப்புக்கு ஏற்ப ஒரு வெற்றிகரமான உள்நுழைவு இந்த உள்நுழைவு திரையில் வலிமை குக்கீ மீண்டும் மீண்டும் திரும்பி வர பிறகு என்றால் தவறாக இருப்பதால் நான் உங்கள் உலாவி அமைப்புகளில் பார்க்கலாம் என்று நினைக்கிறேன்."
+        },
+        "it": {
+            "legacy_caption_pid": 32438,
+            "legacy_language_pid": 16,
+            "text": "Perché se dopo un login riuscito alla volontà di tornare ancora e ancora a questo login schermo potrebbe cookie non è valido Penso di controllare le impostazioni del browser.",
+            "auto_translated": "Perché se dopo un login riuscito alla volontà di tornare ancora e ancora a questo login schermo potrebbe cookie non è valido Penso di controllare le impostazioni del browser."
+        },
+        "bn": {
+            "legacy_caption_pid": 32439,
+            "legacy_language_pid": 17,
+            "text": "কারণ যদি পর ইচ্ছার একটি সফল লগইন এই লগ-ইন পর্দা শক্তি কুকি বারবার ফিরে আসা বৈধ নয় আমি যে আপনি আপনার ব্রাউজার সেটিংস চেক করি।",
+            "auto_translated": "কারণ যদি পর ইচ্ছার একটি সফল লগইন এই লগ-ইন পর্দা শক্তি কুকি বারবার ফিরে আসা বৈধ নয় আমি যে আপনি আপনার ব্রাউজার সেটিংস চেক করি।"
+        },
+        "tr": {
+            "legacy_caption_pid": 32440,
+            "legacy_language_pid": 18,
+            "text": "irade başarılı bir giriş bu giriş ekranı kudreti çerezine tekrar tekrar geri gelmek sonra eğer geçerli olmadığından sana tarayıcı ayarlarınızı kontrol düşünüyorum.",
+            "auto_translated": "irade başarılı bir giriş bu giriş ekranı kudreti çerezine tekrar tekrar geri gelmek sonra eğer geçerli olmadığından sana tarayıcı ayarlarınızı kontrol düşünüyorum."
+        },
+        "vi": {
+            "legacy_caption_pid": 32441,
+            "legacy_language_pid": 19,
+            "text": "Bởi vì nếu sau khi đăng nhập thành công với ý muốn trở lại một lần nữa và một lần nữa để đăng nhập Cookie màn hình sức này không hợp lệ Tôi nghĩ bạn nên kiểm tra cài đặt trình duyệt của bạn.",
+            "auto_translated": "Bởi vì nếu sau khi đăng nhập thành công với ý muốn trở lại một lần nữa và một lần nữa để đăng nhập Cookie màn hình sức này không hợp lệ Tôi nghĩ bạn nên kiểm tra cài đặt trình duyệt của bạn."
+        },
+        "pl": {
+            "legacy_caption_pid": 32442,
+            "legacy_language_pid": 20,
+            "text": "Bo jeśli po pomyślnym zalogowaniu się do woli wrócić ponownie i ponownie do tego ekran logowania może ciasteczko nie jest ważna sądzę, aby sprawdzić ustawienia przeglądarki.",
+            "auto_translated": "Bo jeśli po pomyślnym zalogowaniu się do woli wrócić ponownie i ponownie do tego ekran logowania może ciasteczko nie jest ważna sądzę, aby sprawdzić ustawienia przeglądarki."
+        },
+        "jv": {
+            "legacy_caption_pid": 32443,
+            "legacy_language_pid": 21,
+            "text": "Amarga yen sawise mlebu sukses kanggo bakal teka bali maneh lan maneh kanggo mlebu iki layar kasantosan cookie ora bener aku sing mriksa setelan browser Panjenengan.",
+            "auto_translated": "Amarga yen sawise mlebu sukses kanggo bakal teka bali maneh lan maneh kanggo mlebu iki layar kasantosan cookie ora bener aku sing mriksa setelan browser Panjenengan."
+        },
+        "pa": {
+            "legacy_caption_pid": 32444,
+            "legacy_language_pid": 22,
+            "text": "ਇਸ ਕਰਕੇ, ਜੇ ਦੇ ਬਾਅਦ ਦੀ ਇੱਛਾ ਕਰਨ ਲਈ ਇੱਕ ਸਫਲਤਾਪੂਰਕ ਲਾਗਇਨ ਇਸ ਲਾਗਇਨ ਸਕਰੀਨ ਤਾਕਤ ਕੂਕੀਜ਼ ਨੂੰ ਦੁਬਾਰਾ ਅਤੇ ਦੁਬਾਰਾ ਵਾਪਸ ਆਉਣ ਲਈ ਠੀਕ ਨਹੀ ਹੈ ਮੈਨੂੰ, ਜੋ ਕਿ ਤੁਹਾਨੂੰ ਆਪਣੇ ਬਰਾਊਜ਼ਰ ਸੈਟਿੰਗ ਨੂੰ ਚੈੱਕ ਸੋਚਦੇ.",
+            "auto_translated": "ਇਸ ਕਰਕੇ, ਜੇ ਦੇ ਬਾਅਦ ਦੀ ਇੱਛਾ ਕਰਨ ਲਈ ਇੱਕ ਸਫਲਤਾਪੂਰਕ ਲਾਗਇਨ ਇਸ ਲਾਗਇਨ ਸਕਰੀਨ ਤਾਕਤ ਕੂਕੀਜ਼ ਨੂੰ ਦੁਬਾਰਾ ਅਤੇ ਦੁਬਾਰਾ ਵਾਪਸ ਆਉਣ ਲਈ ਠੀਕ ਨਹੀ ਹੈ ਮੈਨੂੰ, ਜੋ ਕਿ ਤੁਹਾਨੂੰ ਆਪਣੇ ਬਰਾਊਜ਼ਰ ਸੈਟਿੰਗ ਨੂੰ ਚੈੱਕ ਸੋਚਦੇ."
+        },
+        "th": {
+            "legacy_caption_pid": 32445,
+            "legacy_language_pid": 23,
+            "text": "เพราะถ้าหลังจากการเข้าสู่ระบบที่ประสบความสำเร็จจะกลับมาอีกครั้งและอีกครั้งกับคุกกี้อาจหน้าจอเข้าสู่ระบบนี้ไม่ถูกต้องผมคิดว่าคุณตรวจสอบการตั้งค่าเบราว์เซอร์ของคุณ",
+            "auto_translated": "เพราะถ้าหลังจากการเข้าสู่ระบบที่ประสบความสำเร็จจะกลับมาอีกครั้งและอีกครั้งกับคุกกี้อาจหน้าจอเข้าสู่ระบบนี้ไม่ถูกต้องผมคิดว่าคุณตรวจสอบการตั้งค่าเบราว์เซอร์ของคุณ"
+        },
+        "te": {
+            "legacy_caption_pid": 40764,
+            "legacy_language_pid": 24,
+            "text": "తరువాత అభీష్టానికి ఒక విజయవంతమైన లాగిన్ ఈ లాగిన్ తెరకు మళ్లీ మళ్లీ తిరిగి రావాలని ఉంటే ఉండవచ్చు కుకీలను (కుకీ) నేను మీరు మీ బ్రౌజర్ సెట్టింగులను తనిఖీ అని అనుకుంటున్నాను ఎందుకంటే చెల్లదు.",
+            "auto_translated": "తరువాత అభీష్టానికి ఒక విజయవంతమైన లాగిన్ ఈ లాగిన్ తెరకు మళ్లీ మళ్లీ తిరిగి రావాలని ఉంటే ఉండవచ్చు కుకీలను (కుకీ) నేను మీరు మీ బ్రౌజర్ సెట్టింగులను తనిఖీ అని అనుకుంటున్నాను ఎందుకంటే చెల్లదు."
+        },
+        "mr": {
+            "legacy_caption_pid": 40765,
+            "legacy_language_pid": 25,
+            "text": "इच्छा एक यशस्वी लॉगिन या लॉगिन स्क्रीनवर पुन्हा आणि पुन्हा परत येणे केल्यानंतर कदाचित कुकीज (कुकी) मी जर आपण आपल्या ब्राउझरमध्ये सेटिंग्ज तपासा की वाटते कारण वैध नाही.",
+            "auto_translated": "इच्छा एक यशस्वी लॉगिन या लॉगिन स्क्रीनवर पुन्हा आणि पुन्हा परत येणे केल्यानंतर कदाचित कुकीज (कुकी) मी जर आपण आपल्या ब्राउझरमध्ये सेटिंग्ज तपासा की वाटते कारण वैध नाही."
+        },
+        "ur": {
+            "legacy_caption_pid": 40766,
+            "legacy_language_pid": 26,
+            "text": "بعد وصیت کو ایک کامیاب لاگ ان اس لاگ ان اسکرین پر بار بار واپس آنے کے لئے تو شاید کوکیز (کوکی) کیونکہ مجھے یقین ہے کہ آپ کو آپ کے براؤزر کی ترتیبات چیک سوچنے درست نہیں ہے.",
+            "auto_translated": "بعد وصیت کو ایک کامیاب لاگ ان اس لاگ ان اسکرین پر بار بار واپس آنے کے لئے تو شاید کوکیز (کوکی) کیونکہ مجھے یقین ہے کہ آپ کو آپ کے براؤزر کی ترتیبات چیک سوچنے درست نہیں ہے."
+        },
+        "gu": {
+            "legacy_caption_pid": 40767,
+            "legacy_language_pid": 27,
+            "text": "ઇચ્છા એક સફળ લૉગિન આ લોગિન સ્ક્રીન પર ફરીથી અને ફરીથી પાછા આવો પછી તો કદાચ કૂકીઝ (કૂકી) કારણ કે મને લાગે છે કે તમે તમારા બ્રાઉઝરમાં સેટિંગ્સ તપાસો માન્ય નથી.",
+            "auto_translated": "ઇચ્છા એક સફળ લૉગિન આ લોગિન સ્ક્રીન પર ફરીથી અને ફરીથી પાછા આવો પછી તો કદાચ કૂકીઝ (કૂકી) કારણ કે મને લાગે છે કે તમે તમારા બ્રાઉઝરમાં સેટિંગ્સ તપાસો માન્ય નથી."
+        },
+        "uk": {
+            "legacy_caption_pid": 40768,
+            "legacy_language_pid": 28,
+            "text": "Якщо після успішного Увійти на волю, щоб повернутися знову і знову до екрану входу в систему може куки (Cookie) не діє, тому що я думаю, що ви перевірте налаштування Вашого браузера.",
+            "auto_translated": "Якщо після успішного Увійти на волю, щоб повернутися знову і знову до екрану входу в систему може куки (Cookie) не діє, тому що я думаю, що ви перевірте налаштування Вашого браузера."
+        },
+        "ml": {
+            "legacy_caption_pid": 40769,
+            "legacy_language_pid": 29,
+            "text": "ഞാൻ നിങ്ങളുടെ ബ്രൌസർ ക്രമീകരണങ്ങൾ പരിശോധിക്കുക ഗുണകരമാവുമെന്ന് ഈ ലോഗിൻ സ്ക്രീനിൽ വീണ്ടും വീണ്ടും തിരികെ വരികയും ഇഷ്ടം ഒരു വിജയകരമായ ലോഗിൻ ബലത്തോടെ കുക്കികൾ (കുക്കി) ശേഷവും സത്യമല്ല.",
+            "auto_translated": "ഞാൻ നിങ്ങളുടെ ബ്രൌസർ ക്രമീകരണങ്ങൾ പരിശോധിക്കുക ഗുണകരമാവുമെന്ന് ഈ ലോഗിൻ സ്ക്രീനിൽ വീണ്ടും വീണ്ടും തിരികെ വരികയും ഇഷ്ടം ഒരു വിജയകരമായ ലോഗിൻ ബലത്തോടെ കുക്കികൾ (കുക്കി) ശേഷവും സത്യമല്ല."
+        },
+        "kn": {
+            "legacy_caption_pid": 40770,
+            "legacy_language_pid": 30,
+            "text": "ನಂತರ ಇಚ್ಛೆಗೆ ಯಶಸ್ವಿ ಲಾಗಿನ್ ಈ ಲಾಗಿನ್ ತೆರೆಗೆ ಮತ್ತೆ ಮತ್ತೆ ಬರಲು ವೇಳೆ ಬಹುಶಃ ಕುಕೀಗಳನ್ನು (ಕುಕಿ) ನಾನು ನಿಮ್ಮ ಬ್ರೌಸರ್ ಸೆಟ್ಟಿಂಗ್ಗಳನ್ನು ಪರಿಶೀಲಿಸಿ ಎಂದು ಭಾವಿಸುತ್ತೇನೆ ಏಕೆಂದರೆ ಅಮಾನ್ಯವಾಗಿದೆ.",
+            "auto_translated": "ನಂತರ ಇಚ್ಛೆಗೆ ಯಶಸ್ವಿ ಲಾಗಿನ್ ಈ ಲಾಗಿನ್ ತೆರೆಗೆ ಮತ್ತೆ ಮತ್ತೆ ಬರಲು ವೇಳೆ ಬಹುಶಃ ಕುಕೀಗಳನ್ನು (ಕುಕಿ) ನಾನು ನಿಮ್ಮ ಬ್ರೌಸರ್ ಸೆಟ್ಟಿಂಗ್ಗಳನ್ನು ಪರಿಶೀಲಿಸಿ ಎಂದು ಭಾವಿಸುತ್ತೇನೆ ಏಕೆಂದರೆ ಅಮಾನ್ಯವಾಗಿದೆ."
+        },
+        "su": {
+            "legacy_caption_pid": 40771,
+            "legacy_language_pid": 31,
+            "text": "Lamun sanggeus hiji login suksés mun bakal datang deui deui jeung deui mun layar login kieu meureun cookies (cookie) teu valid sabab Jigana nu parios setélan panyungsi anjeun.",
+            "auto_translated": "Lamun sanggeus hiji login suksés mun bakal datang deui deui jeung deui mun layar login kieu meureun cookies (cookie) teu valid sabab Jigana nu parios setélan panyungsi anjeun."
+        },
+        "ku": {
+            "legacy_caption_pid": 40772,
+            "legacy_language_pid": 32,
+            "text": "Eger piştî têketinê serkeftî bi daxwaza ji bo careke din were û careke din ji vê ekrana têketinê dibe ku cookies (cookie) ne derbasdar e ji ber ku ez difikirim ku hûn settings browser'î xwe kontrol bike.",
+            "auto_translated": "Eger piştî têketinê serkeftî bi daxwaza ji bo careke din were û careke din ji vê ekrana têketinê dibe ku cookies (cookie) ne derbasdar e ji ber ku ez difikirim ku hûn settings browser'î xwe kontrol bike."
+        },
+        "ps": {
+            "legacy_caption_pid": 40773,
+            "legacy_language_pid": 33,
+            "text": "که وروسته د ارادې د يوه بريالي login بېرته دې ننوت پرده بیا بیا راشي او ښایي کوکيز (کوکی) د اعتبار وړ نه ده، ځکه زه فکر کوم چې تاسو د خپل د کتنمل امستنې وګوره.",
+            "auto_translated": "که وروسته د ارادې د يوه بريالي login بېرته دې ننوت پرده بیا بیا راشي او ښایي کوکيز (کوکی) د اعتبار وړ نه ده، ځکه زه فکر کوم چې تاسو د خپل د کتنمل امستنې وګوره."
+        },
+        "ro": {
+            "legacy_caption_pid": 40774,
+            "legacy_language_pid": 34,
+            "text": "În cazul în care, după o conectare de succes la voința de a reveni din nou și din nou la acest ecran de conectare ar putea cookie-uri (Cookie) nu este validă pentru că eu cred că vă verificați setările browser-ului.",
+            "auto_translated": "În cazul în care, după o conectare de succes la voința de a reveni din nou și din nou la acest ecran de conectare ar putea cookie-uri (Cookie) nu este validă pentru că eu cred că vă verificați setările browser-ului."
+        },
+        "id": {
+            "legacy_caption_pid": 40775,
+            "legacy_language_pid": 35,
+            "text": "Jika setelah berhasil login ke keinginan untuk kembali lagi dan lagi ke layar login ini mungkin cookies (Cookie) tidak berlaku karena saya berpikir bahwa Anda memeriksa pengaturan browser Anda.",
+            "auto_translated": "Jika setelah berhasil login ke keinginan untuk kembali lagi dan lagi ke layar login ini mungkin cookies (Cookie) tidak berlaku karena saya berpikir bahwa Anda memeriksa pengaturan browser Anda."
+        },
+        "sd": {
+            "legacy_caption_pid": 40776,
+            "legacy_language_pid": 36,
+            "text": "جيڪڏهن سنڌ جي مرضي کي هڪ ڪامياب هتي ڪلڪ ڪري هي هتي ڪلڪ ڪري اسڪرين کي وري ۽ وري موٽي اچي ٻڌائين ڪوڪيز (ڪوڪي) کانپوء بلڪل صحيح ڇو جو مان سمجهان ٿو ته توهان پنهنجي برائوزر جي سيٽنگ چيڪ نه آهي.",
+            "auto_translated": "جيڪڏهن سنڌ جي مرضي کي هڪ ڪامياب هتي ڪلڪ ڪري هي هتي ڪلڪ ڪري اسڪرين کي وري ۽ وري موٽي اچي ٻڌائين ڪوڪيز (ڪوڪي) کانپوء بلڪل صحيح ڇو جو مان سمجهان ٿو ته توهان پنهنجي برائوزر جي سيٽنگ چيڪ نه آهي."
+        },
+        "af": {
+            "legacy_caption_pid": 40777,
+            "legacy_language_pid": 37,
+            "text": "As jy na 'n suksesvolle Teken in op die wil om terug te kom weer en weer om hierdie aanmelding skerm dalk koekies (Cookie) is nie geldig omdat ek dink dat jy jou browser settings te gaan.",
+            "auto_translated": "As jy na 'n suksesvolle Teken in op die wil om terug te kom weer en weer om hierdie aanmelding skerm dalk koekies (Cookie) is nie geldig omdat ek dink dat jy jou browser settings te gaan."
+        },
+        "sw": {
+            "legacy_caption_pid": 40778,
+            "legacy_language_pid": 38,
+            "text": "Kama baada ya kuingia mafanikio ya mapenzi kurudi tena na tena na skrini hii ya kuingia nguvu cookies (Cookie) sio halali kwa sababu nadhani kwamba angalia mipangilio ya kivinjari chako.",
+            "auto_translated": "Kama baada ya kuingia mafanikio ya mapenzi kurudi tena na tena na skrini hii ya kuingia nguvu cookies (Cookie) sio halali kwa sababu nadhani kwamba angalia mipangilio ya kivinjari chako."
+        },
+        "lo": {
+            "legacy_caption_pid": 40779,
+            "legacy_language_pid": 39,
+            "text": "ຖ້າຫາກວ່າຫຼັງຈາກເຂົ້າສູ່ລະບົບສົບຜົນສໍາເລັດຄວາມປະສົງທີ່ຈະກັບຄືນມາອີກເທື່ອຫນຶ່ງແລະອີກເທື່ອຫນຶ່ງເພື່ອຫນ້າຈໍເຂົ້າສູ່ລະບົບນີ້ອາດຈະ cookies (ຄຸກກີ) ບໍ່ຖືກຕ້ອງເນື່ອງຈາກວ່າຂ້າພະເຈົ້າຄິດວ່າທ່ານເຂົ້າມາຊົມການຕັ້ງຄ່າຂອງຕົວທ່ອງເວັບຂອງທ່ານ.",
+            "auto_translated": "ຖ້າຫາກວ່າຫຼັງຈາກເຂົ້າສູ່ລະບົບສົບຜົນສໍາເລັດຄວາມປະສົງທີ່ຈະກັບຄືນມາອີກເທື່ອຫນຶ່ງແລະອີກເທື່ອຫນຶ່ງເພື່ອຫນ້າຈໍເຂົ້າສູ່ລະບົບນີ້ອາດຈະ cookies (ຄຸກກີ) ບໍ່ຖືກຕ້ອງເນື່ອງຈາກວ່າຂ້າພະເຈົ້າຄິດວ່າທ່ານເຂົ້າມາຊົມການຕັ້ງຄ່າຂອງຕົວທ່ອງເວັບຂອງທ່ານ."
+        },
+        "nl": {
+            "legacy_caption_pid": 40780,
+            "legacy_language_pid": 40,
+            "text": "Als na een succesvolle login aan de wil om terug te komen opnieuw en opnieuw naar deze inlogscherm zou cookies (Cookie) is niet geldig omdat ik denk dat je de instellingen van je browser te controleren.",
+            "auto_translated": "Als na een succesvolle login aan de wil om terug te komen opnieuw en opnieuw naar deze inlogscherm zou cookies (Cookie) is niet geldig omdat ik denk dat je de instellingen van je browser te controleren."
+        },
+        "tl": {
+            "legacy_caption_pid": 40781,
+            "legacy_language_pid": 41,
+            "text": "Kung matapos ang isang matagumpay na pag-login upang ang kalooban upang bumalik muli at muli sa login na ito screen baka cookies (Cookie) ay hindi wasto dahil sa tingin ko na tingnan mo ang iyong mga setting ng browser.",
+            "auto_translated": "Kung matapos ang isang matagumpay na pag-login upang ang kalooban upang bumalik muli at muli sa login na ito screen baka cookies (Cookie) ay hindi wasto dahil sa tingin ko na tingnan mo ang iyong mga setting ng browser."
+        },
+        "ne": {
+            "legacy_caption_pid": 40782,
+            "legacy_language_pid": 42,
+            "text": "पछि इच्छा गर्न सफल लग इन यो लगइन पर्दा फेरि र फेरि आउन भने शायद कुकीहरू (कुकी) म आफ्नो ब्राउजर सेटिङ जाँच ठान्छन् किनभने मान्य छैन।",
+            "auto_translated": "पछि इच्छा गर्न सफल लग इन यो लगइन पर्दा फेरि र फेरि आउन भने शायद कुकीहरू (कुकी) म आफ्नो ब्राउजर सेटिङ जाँच ठान्छन् किनभने मान्य छैन।"
+        },
+        "hu": {
+            "legacy_caption_pid": 40783,
+            "legacy_language_pid": 43,
+            "text": "Ha a sikeres bejelentkezés után az lesz, hogy jöjjön vissza újra és újra, hogy ez a bejelentkezési képernyő talán a sütiket (cookie) nem érvényes, mert úgy gondolom, hogy ellenőrizze a böngésző beállításait.",
+            "auto_translated": "Ha a sikeres bejelentkezés után az lesz, hogy jöjjön vissza újra és újra, hogy ez a bejelentkezési képernyő talán a sütiket (cookie) nem érvényes, mert úgy gondolom, hogy ellenőrizze a böngésző beállításait."
+        },
+        "cs": {
+            "legacy_caption_pid": 40784,
+            "legacy_language_pid": 44,
+            "text": "Pokud se po úspěšném přihlášení na vůli vrátit se znovu a znovu na tuto přihlašovací obrazovku mohlo sušenky (Cookie) není platný, protože si myslím, že byste zkontrolovat nastavení prohlížeče.",
+            "auto_translated": "Pokud se po úspěšném přihlášení na vůli vrátit se znovu a znovu na tuto přihlašovací obrazovku mohlo sušenky (Cookie) není platný, protože si myslím, že byste zkontrolovat nastavení prohlížeče."
+        },
+        "el": {
+            "legacy_caption_pid": 40785,
+            "legacy_language_pid": 45,
+            "text": "Αν μετά από μια επιτυχή σύνδεση με τη θέληση να έρθει ξανά και ξανά σε αυτή την οθόνη σύνδεσης θα μπορούσε cookies (Cookie) δεν είναι έγκυρη, γιατί πιστεύω ότι ελέγξτε τις ρυθμίσεις του προγράμματος περιήγησης σας.",
+            "auto_translated": "Αν μετά από μια επιτυχή σύνδεση με τη θέληση να έρθει ξανά και ξανά σε αυτή την οθόνη σύνδεσης θα μπορούσε cookies (Cookie) δεν είναι έγκυρη, γιατί πιστεύω ότι ελέγξτε τις ρυθμίσεις του προγράμματος περιήγησης σας."
+        },
+        "sv": {
+            "legacy_caption_pid": 40786,
+            "legacy_language_pid": 46,
+            "text": "Om det efter en lyckad inloggning till viljan att komma tillbaka igen och igen till denna inloggningsskärmen kanske kakor (cookies) är inte giltigt eftersom jag tror att du kontrollerar webbläsarens inställningar.",
+            "auto_translated": "Om det efter en lyckad inloggning till viljan att komma tillbaka igen och igen till denna inloggningsskärmen kanske kakor (cookies) är inte giltigt eftersom jag tror att du kontrollerar webbläsarens inställningar."
+        },
+        "kk": {
+            "legacy_caption_pid": 40787,
+            "legacy_language_pid": 47,
+            "text": "Мен сізге браузердің параметрлерін тексеру деп ойлаймын, өйткені бұл кіру экранға қайта-қайта оралу үшін табысты логин мүмкін печенье (Cookie) кейін болса жарамды емес.",
+            "auto_translated": "Мен сізге браузердің параметрлерін тексеру деп ойлаймын, өйткені бұл кіру экранға қайта-қайта оралу үшін табысты логин мүмкін печенье (Cookie) кейін болса жарамды емес."
+        },
+        "fi": {
+            "legacy_caption_pid": 40788,
+            "legacy_language_pid": 48,
+            "text": "Jos sen jälkeen onnistuneen kirjautumisen tahdon palata uudestaan ​​ja uudestaan ​​tähän kirjautuminen näyttö voi evästeet (Cookie) ei kelpaa, koska olen sitä mieltä, että voit tarkistaa selaimen asetukset.",
+            "auto_translated": "Jos sen jälkeen onnistuneen kirjautumisen tahdon palata uudestaan ​​ja uudestaan ​​tähän kirjautuminen näyttö voi evästeet (Cookie) ei kelpaa, koska olen sitä mieltä, että voit tarkistaa selaimen asetukset."
+        },
+        "da": {
+            "legacy_caption_pid": 40789,
+            "legacy_language_pid": 49,
+            "text": "Hvis der efter en vellykket login til viljen til at komme tilbage igen og igen til denne login-skærm måske cookies (cookie) er ugyldig, fordi jeg tror, ​​at du tjekker dine browserindstillinger.",
+            "auto_translated": "Hvis der efter en vellykket login til viljen til at komme tilbage igen og igen til denne login-skærm måske cookies (cookie) er ugyldig, fordi jeg tror, ​​at du tjekker dine browserindstillinger."
+        },
+        "he": {
+            "legacy_caption_pid": 40790,
+            "legacy_language_pid": 50,
+            "text": "אם לאחר כניסה מוצלחת לרצון לחזור שוב ושוב אל מסך הכניסה הזה עשוי עוגיות (קוקי) אינה תקפה משום שאני חושב שאתה בדוק את הגדרות הדפדפן.",
+            "auto_translated": "אם לאחר כניסה מוצלחת לרצון לחזור שוב ושוב אל מסך הכניסה הזה עשוי עוגיות (קוקי) אינה תקפה משום שאני חושב שאתה בדוק את הגדרות הדפדפן."
+        },
+        "no": {
+            "legacy_caption_pid": 40791,
+            "legacy_language_pid": 51,
+            "text": "Hvis du etter en vellykket pålogging til viljen til å komme tilbake igjen og igjen til denne innloggingsbildet kanskje cookies (informasjonskapsler) er ikke gyldig fordi jeg tror at du sjekker nettleserinnstillingene dine.",
+            "auto_translated": "Hvis du etter en vellykket pålogging til viljen til å komme tilbake igjen og igjen til denne innloggingsbildet kanskje cookies (informasjonskapsler) er ikke gyldig fordi jeg tror at du sjekker nettleserinnstillingene dine."
+        }
+    }
+}

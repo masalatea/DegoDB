@@ -1,0 +1,69 @@
+{
+    "resource_key": "TITLE_CLOUD_APP_TOP",
+    "legacy_resource_pid": 649,
+    "base_group_key": "grp-010-matsuesoft-lib",
+    "additional_group_keys": [],
+    "key_for_update": "hO2vGXDds7D8Cm1FDeb8cwgcDf8D4IkE5owV6W98VjzUF24GSsQ7z3yIi6EP6WsjBB6MdCMIQIYqonxojltriudcHfgXPgWWuz6QdLirWuSklOsXDlJRsmQoGVoRGAjD",
+    "sort_group": "TITLE",
+    "key_name": "TITLE_CLOUD_APP_TOP",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": true,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 4648,
+            "legacy_language_pid": 1,
+            "text": "クラウド・アプリケーション開発/保守サービス(準委任) - $DOMAINNAMECAPTION_JP",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 4649,
+            "legacy_language_pid": 2,
+            "text": "Deputize Cloud Application Development and Management - $DOMAINNAMECAPTION_EN",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 14336,
+            "legacy_language_pid": 3,
+            "text": "",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 14337,
+            "legacy_language_pid": 4,
+            "text": "",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 14338,
+            "legacy_language_pid": 5,
+            "text": "Deputize Desarrollo y administración de aplicaciones en la nube - $DOMAINNAMECAPTION_ES",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 14339,
+            "legacy_language_pid": 6,
+            "text": "Deputize Desenvolvimento de Aplicações Nuvem e Gestão - $DOMAINNAMECAPTION_PT",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 14340,
+            "legacy_language_pid": 7,
+            "text": "",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 17303,
+            "legacy_language_pid": 8,
+            "text": "Développement et gestion d'applications Cloud Cloud - $DOMAINNAMECAPTION_FR",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 17304,
+            "legacy_language_pid": 9,
+            "text": "क्लाउड एप्लिकेशन डेवलपमेंट और प्रबंधन को वंचित करें - $ DOMAINNAMECAPTION_HI",
+            "auto_translated": ""
+        }
+    }
+}

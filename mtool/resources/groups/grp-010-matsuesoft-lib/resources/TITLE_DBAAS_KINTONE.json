@@ -1,0 +1,69 @@
+{
+    "resource_key": "TITLE_DBAAS_KINTONE",
+    "legacy_resource_pid": 1241,
+    "base_group_key": "grp-010-matsuesoft-lib",
+    "additional_group_keys": [],
+    "key_for_update": "SkuM7wh8CoCEnbtaoQKxL0PR0yOFcoclfsZdcA9t52XEbldaIIhzhGt9XWDyvL3RoQyMaY15dlzWr0fyzzCtjW6ySMXbbaG9iPjgEibNybSfnPQDzDfLS0GXkIyF1Rc3",
+    "sort_group": "TITLE",
+    "key_name": "TITLE_DBAAS_KINTONE",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": true,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 4720,
+            "legacy_language_pid": 1,
+            "text": "キントーン連携 - DegoDB - 開発フレームワークとクラウド・データベース - $DOMAINNAMECAPTION_JP",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 4721,
+            "legacy_language_pid": 2,
+            "text": "Use DegoDB with Kintone - Development Framework & Cloud Database - $DOMAINNAMECAPTION_EN",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 15353,
+            "legacy_language_pid": 3,
+            "text": "",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 15354,
+            "legacy_language_pid": 4,
+            "text": "",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 15355,
+            "legacy_language_pid": 5,
+            "text": "Utilizar DegoDB con Kintone - Framework de desarrollo y base de datos de nubes - $DOMAINNAMECAPTION_ES",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 15356,
+            "legacy_language_pid": 6,
+            "text": "Use DegoDB com Kintone - Development Framework & Cloud Database - $DOMAINNAMECAPTION_PT",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 15357,
+            "legacy_language_pid": 7,
+            "text": "",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 17375,
+            "legacy_language_pid": 8,
+            "text": "Utilisez DegoDB avec Kintone - Development Framework & Cloud Database - $DOMAINNAMECAPTION_FR",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 17376,
+            "legacy_language_pid": 9,
+            "text": "DegoDB के साथ Kintone-विकास फ्रेमवर्क और क्लाउड डाटाबेस  का उपयोग करें  - $ DOMAINNAMECAPTION_HI",
+            "auto_translated": ""
+        }
+    }
+}

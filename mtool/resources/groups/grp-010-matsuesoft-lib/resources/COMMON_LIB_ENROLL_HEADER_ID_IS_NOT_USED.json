@@ -1,0 +1,321 @@
+{
+    "resource_key": "COMMON_LIB_ENROLL_HEADER_ID_IS_NOT_USED",
+    "legacy_resource_pid": 1569,
+    "base_group_key": "grp-010-matsuesoft-lib",
+    "additional_group_keys": [],
+    "key_for_update": "oWXSUeZUTHEl9RSuQzxYhPt9cvNtKAVi1g1OD6LwSW5nyCIQAFWpGZFsjdSquUCgI3iBXjSuCk0VGkvNDgoR7n4Knb1b0KCl1QNM6AU8ilEbmPZ4FrYCjGlF1kN8J0A7",
+    "sort_group": "ENROLL",
+    "key_name": "COMMON_LIB_ENROLL_HEADER_ID_IS_NOT_USED",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": false,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 7058,
+            "legacy_language_pid": 1,
+            "text": "ユーザ名(ID)を使用できます。",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 7059,
+            "legacy_language_pid": 2,
+            "text": "User Name (ID) can be used.",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 7060,
+            "legacy_language_pid": 3,
+            "text": "您可以使用该用户名ID。",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 7061,
+            "legacy_language_pid": 4,
+            "text": "아이디 를 사용할 수 있습니다.",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 10838,
+            "legacy_language_pid": 5,
+            "text": "ID puede ser utilizado.",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 10839,
+            "legacy_language_pid": 6,
+            "text": "ID pode ser usado.",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 10840,
+            "legacy_language_pid": 7,
+            "text": "您可以使用該用户名ID。",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 16029,
+            "legacy_language_pid": 8,
+            "text": "Le nom d'utilisateur (ID) peut être utilisé.",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 16030,
+            "legacy_language_pid": 9,
+            "text": "उपयोगकर्ता नाम (आईडी) का उपयोग किया जा सकता है",
+            "auto_translated": ""
+        },
+        "ar": {
+            "legacy_caption_pid": 31466,
+            "legacy_language_pid": 10,
+            "text": "يمكنك استخدام اسم مستخدم (ID).",
+            "auto_translated": "يمكنك استخدام اسم مستخدم (ID)."
+        },
+        "fa": {
+            "legacy_caption_pid": 31467,
+            "legacy_language_pid": 11,
+            "text": "شما می توانید یک نام کاربری (ID) استفاده کنید.",
+            "auto_translated": "شما می توانید یک نام کاربری (ID) استفاده کنید."
+        },
+        "de": {
+            "legacy_caption_pid": 31468,
+            "legacy_language_pid": 12,
+            "text": "Sie können einen Benutzernamen (ID) verwenden.",
+            "auto_translated": "Sie können einen Benutzernamen (ID) verwenden."
+        },
+        "ru": {
+            "legacy_caption_pid": 31469,
+            "legacy_language_pid": 13,
+            "text": "Вы можете использовать имя пользователя (ID).",
+            "auto_translated": "Вы можете использовать имя пользователя (ID)."
+        },
+        "ms": {
+            "legacy_caption_pid": 31470,
+            "legacy_language_pid": 14,
+            "text": "Anda boleh menggunakan nama pengguna (ID).",
+            "auto_translated": "Anda boleh menggunakan nama pengguna (ID)."
+        },
+        "ta": {
+            "legacy_caption_pid": 31471,
+            "legacy_language_pid": 15,
+            "text": "நீங்கள் ஒரு பயனர் பெயர் (ஐடி) பயன்படுத்த முடியும்.",
+            "auto_translated": "நீங்கள் ஒரு பயனர் பெயர் (ஐடி) பயன்படுத்த முடியும்."
+        },
+        "it": {
+            "legacy_caption_pid": 31472,
+            "legacy_language_pid": 16,
+            "text": "È possibile utilizzare un nome utente (ID).",
+            "auto_translated": "È possibile utilizzare un nome utente (ID)."
+        },
+        "bn": {
+            "legacy_caption_pid": 31473,
+            "legacy_language_pid": 17,
+            "text": "আপনি এমন কোন ব্যবহারকারীকে নাম (আইডি) ব্যবহার করতে পারেন।",
+            "auto_translated": "আপনি এমন কোন ব্যবহারকারীকে নাম (আইডি) ব্যবহার করতে পারেন।"
+        },
+        "tr": {
+            "legacy_caption_pid": 31474,
+            "legacy_language_pid": 18,
+            "text": "Bir kullanıcı adı (ID) kullanabilirsiniz.",
+            "auto_translated": "Bir kullanıcı adı (ID) kullanabilirsiniz."
+        },
+        "vi": {
+            "legacy_caption_pid": 31475,
+            "legacy_language_pid": 19,
+            "text": "Bạn có thể sử dụng một tên người dùng (ID).",
+            "auto_translated": "Bạn có thể sử dụng một tên người dùng (ID)."
+        },
+        "pl": {
+            "legacy_caption_pid": 31476,
+            "legacy_language_pid": 20,
+            "text": "Można użyć nazwy użytkownika (ID).",
+            "auto_translated": "Można użyć nazwy użytkownika (ID)."
+        },
+        "jv": {
+            "legacy_caption_pid": 31477,
+            "legacy_language_pid": 21,
+            "text": "Sampeyan bisa nggunakake jeneng panganggo (ID).",
+            "auto_translated": "Sampeyan bisa nggunakake jeneng panganggo (ID)."
+        },
+        "pa": {
+            "legacy_caption_pid": 31478,
+            "legacy_language_pid": 22,
+            "text": "ਤੁਹਾਨੂੰ ਇੱਕ ਉਪਭੋਗਤਾ ਨਾਮ (ID) ਵਰਤ ਸਕਦੇ ਹੋ.",
+            "auto_translated": "ਤੁਹਾਨੂੰ ਇੱਕ ਉਪਭੋਗਤਾ ਨਾਮ (ID) ਵਰਤ ਸਕਦੇ ਹੋ."
+        },
+        "th": {
+            "legacy_caption_pid": 31479,
+            "legacy_language_pid": 23,
+            "text": "คุณสามารถใช้ชื่อผู้ใช้ (ID)",
+            "auto_translated": "คุณสามารถใช้ชื่อผู้ใช้ (ID)"
+        },
+        "te": {
+            "legacy_caption_pid": 39112,
+            "legacy_language_pid": 24,
+            "text": "మీరు ఒక వాడుకరి పేరు గానీ (ID) ఉపయోగించవచ్చు.",
+            "auto_translated": "మీరు ఒక వాడుకరి పేరు గానీ (ID) ఉపయోగించవచ్చు."
+        },
+        "mr": {
+            "legacy_caption_pid": 39113,
+            "legacy_language_pid": 25,
+            "text": "आपण वापरकर्ता नाव (ID) वापरू शकता.",
+            "auto_translated": "आपण वापरकर्ता नाव (ID) वापरू शकता."
+        },
+        "ur": {
+            "legacy_caption_pid": 39114,
+            "legacy_language_pid": 26,
+            "text": "آپ کو ایک صارف کا نام (ID) کا استعمال کر سکتے ہیں.",
+            "auto_translated": "آپ کو ایک صارف کا نام (ID) کا استعمال کر سکتے ہیں."
+        },
+        "gu": {
+            "legacy_caption_pid": 39115,
+            "legacy_language_pid": 27,
+            "text": "તમે વપરાશકર્તા નામ (આઈડી) નો ઉપયોગ કરી શકો છો.",
+            "auto_translated": "તમે વપરાશકર્તા નામ (આઈડી) નો ઉપયોગ કરી શકો છો."
+        },
+        "uk": {
+            "legacy_caption_pid": 39116,
+            "legacy_language_pid": 28,
+            "text": "Ви можете використовувати ім'я користувача (ID).",
+            "auto_translated": "Ви можете використовувати ім'я користувача (ID)."
+        },
+        "ml": {
+            "legacy_caption_pid": 39117,
+            "legacy_language_pid": 29,
+            "text": "നിങ്ങൾ ഒരു ഉപയോക്തൃ നാമം (ഐഡി) ഉപയോഗിക്കാം.",
+            "auto_translated": "നിങ്ങൾ ഒരു ഉപയോക്തൃ നാമം (ഐഡി) ഉപയോഗിക്കാം."
+        },
+        "kn": {
+            "legacy_caption_pid": 39118,
+            "legacy_language_pid": 30,
+            "text": "ನೀವು ಬಳಕೆದಾರ ಹೆಸರನ್ನು (ಐಡಿ) ಬಳಸಬಹುದು.",
+            "auto_translated": "ನೀವು ಬಳಕೆದಾರ ಹೆಸರನ್ನು (ಐಡಿ) ಬಳಸಬಹುದು."
+        },
+        "su": {
+            "legacy_caption_pid": 39119,
+            "legacy_language_pid": 31,
+            "text": "Anjeun tiasa make ngaran pamaké (ID).",
+            "auto_translated": "Anjeun tiasa make ngaran pamaké (ID)."
+        },
+        "ku": {
+            "legacy_caption_pid": 39120,
+            "legacy_language_pid": 32,
+            "text": "Tu dikarî bi navekî bikarhêner (ID) bi kar tînin.",
+            "auto_translated": "Tu dikarî bi navekî bikarhêner (ID) bi kar tînin."
+        },
+        "ps": {
+            "legacy_caption_pid": 39121,
+            "legacy_language_pid": 33,
+            "text": "تاسو کولای شی د یو کارن نوم (تذکرو) وکاروي.",
+            "auto_translated": "تاسو کولای شی د یو کارن نوم (تذکرو) وکاروي."
+        },
+        "ro": {
+            "legacy_caption_pid": 39122,
+            "legacy_language_pid": 34,
+            "text": "Puteți utiliza un nume de utilizator (ID).",
+            "auto_translated": "Puteți utiliza un nume de utilizator (ID)."
+        },
+        "id": {
+            "legacy_caption_pid": 39123,
+            "legacy_language_pid": 35,
+            "text": "Anda dapat menggunakan nama pengguna (ID).",
+            "auto_translated": "Anda dapat menggunakan nama pengguna (ID)."
+        },
+        "sd": {
+            "legacy_caption_pid": 39124,
+            "legacy_language_pid": 36,
+            "text": "توهان هڪ صارف نالو (سڃاڻپ) لاء استعمال ڪري سگھو ٿا.",
+            "auto_translated": "توهان هڪ صارف نالو (سڃاڻپ) لاء استعمال ڪري سگھو ٿا."
+        },
+        "af": {
+            "legacy_caption_pid": 39125,
+            "legacy_language_pid": 37,
+            "text": "Jy kan 'n gebruiker naam (ID) te gebruik.",
+            "auto_translated": "Jy kan 'n gebruiker naam (ID) te gebruik."
+        },
+        "sw": {
+            "legacy_caption_pid": 39126,
+            "legacy_language_pid": 38,
+            "text": "Unaweza kutumia jina la mtumiaji (ID).",
+            "auto_translated": "Unaweza kutumia jina la mtumiaji (ID)."
+        },
+        "lo": {
+            "legacy_caption_pid": 39127,
+            "legacy_language_pid": 39,
+            "text": "ທ່ານສາມາດໃຊ້ຊື່ຜູ້ໃຊ້ (ລະຫັດ).",
+            "auto_translated": "ທ່ານສາມາດໃຊ້ຊື່ຜູ້ໃຊ້ (ລະຫັດ)."
+        },
+        "nl": {
+            "legacy_caption_pid": 39128,
+            "legacy_language_pid": 40,
+            "text": "U kunt een gebruikersnaam (ID) te gebruiken.",
+            "auto_translated": "U kunt een gebruikersnaam (ID) te gebruiken."
+        },
+        "tl": {
+            "legacy_caption_pid": 39129,
+            "legacy_language_pid": 41,
+            "text": "Maaari kang gumamit ng user name (ID).",
+            "auto_translated": "Maaari kang gumamit ng user name (ID)."
+        },
+        "ne": {
+            "legacy_caption_pid": 39130,
+            "legacy_language_pid": 42,
+            "text": "तपाईं प्रयोगकर्ता नाम (आईडी) प्रयोग गर्न सक्नुहुन्छ।",
+            "auto_translated": "तपाईं प्रयोगकर्ता नाम (आईडी) प्रयोग गर्न सक्नुहुन्छ।"
+        },
+        "hu": {
+            "legacy_caption_pid": 39131,
+            "legacy_language_pid": 43,
+            "text": "Használhatja a felhasználó nevét (ID).",
+            "auto_translated": "Használhatja a felhasználó nevét (ID)."
+        },
+        "cs": {
+            "legacy_caption_pid": 39132,
+            "legacy_language_pid": 44,
+            "text": "Můžete použít uživatelské jméno (ID).",
+            "auto_translated": "Můžete použít uživatelské jméno (ID)."
+        },
+        "el": {
+            "legacy_caption_pid": 39133,
+            "legacy_language_pid": 45,
+            "text": "Μπορείτε να χρησιμοποιήσετε ένα όνομα χρήστη (ID).",
+            "auto_translated": "Μπορείτε να χρησιμοποιήσετε ένα όνομα χρήστη (ID)."
+        },
+        "sv": {
+            "legacy_caption_pid": 39134,
+            "legacy_language_pid": 46,
+            "text": "Du kan använda ett användarnamn (ID).",
+            "auto_translated": "Du kan använda ett användarnamn (ID)."
+        },
+        "kk": {
+            "legacy_caption_pid": 39135,
+            "legacy_language_pid": 47,
+            "text": "Сіз пайдаланушы атын (ID) пайдалануға болады.",
+            "auto_translated": "Сіз пайдаланушы атын (ID) пайдалануға болады."
+        },
+        "fi": {
+            "legacy_caption_pid": 39136,
+            "legacy_language_pid": 48,
+            "text": "Voit käyttää käyttäjätunnuksen (ID).",
+            "auto_translated": "Voit käyttää käyttäjätunnuksen (ID)."
+        },
+        "da": {
+            "legacy_caption_pid": 39137,
+            "legacy_language_pid": 49,
+            "text": "Du kan bruge et brugernavn (ID).",
+            "auto_translated": "Du kan bruge et brugernavn (ID)."
+        },
+        "he": {
+            "legacy_caption_pid": 39138,
+            "legacy_language_pid": 50,
+            "text": "אתה יכול להשתמש בשם משתמש (ID).",
+            "auto_translated": "אתה יכול להשתמש בשם משתמש (ID)."
+        },
+        "no": {
+            "legacy_caption_pid": 39139,
+            "legacy_language_pid": 51,
+            "text": "Du kan bruke et brukernavn (ID).",
+            "auto_translated": "Du kan bruke et brukernavn (ID)."
+        }
+    }
+}

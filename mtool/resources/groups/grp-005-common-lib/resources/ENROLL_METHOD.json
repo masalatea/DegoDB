@@ -1,0 +1,321 @@
+{
+    "resource_key": "ENROLL_METHOD",
+    "legacy_resource_pid": 567,
+    "base_group_key": "grp-005-common-lib",
+    "additional_group_keys": [],
+    "key_for_update": "VKyvyc2B1IHJsp9VDQdqhi4Oy3kjwAJxmjrr4Wyihc8Yb1lSTwOKacpJw3awussNBngo4GX56sWnR88Q2wNkZVUVV8LzD4z52yufR9cXKsC1TKmwXFRSbBcuZuO4a0Qk",
+    "sort_group": "",
+    "key_name": "ENROLL_METHOD",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": false,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 1325,
+            "legacy_language_pid": 1,
+            "text": "登録",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 1326,
+            "legacy_language_pid": 2,
+            "text": "Register",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 6492,
+            "legacy_language_pid": 3,
+            "text": "注册",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 6493,
+            "legacy_language_pid": 4,
+            "text": "등록",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 10316,
+            "legacy_language_pid": 5,
+            "text": "Registro",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 10317,
+            "legacy_language_pid": 6,
+            "text": "registo",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 10318,
+            "legacy_language_pid": 7,
+            "text": "註冊",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 16233,
+            "legacy_language_pid": 8,
+            "text": "registre",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 16234,
+            "legacy_language_pid": 9,
+            "text": "पंजीकृत करना",
+            "auto_translated": ""
+        },
+        "ar": {
+            "legacy_caption_pid": 29114,
+            "legacy_language_pid": 10,
+            "text": "تسجيل",
+            "auto_translated": "تسجيل"
+        },
+        "fa": {
+            "legacy_caption_pid": 29115,
+            "legacy_language_pid": 11,
+            "text": "ثبت",
+            "auto_translated": "ثبت"
+        },
+        "de": {
+            "legacy_caption_pid": 29116,
+            "legacy_language_pid": 12,
+            "text": "Anmeldung",
+            "auto_translated": "Anmeldung"
+        },
+        "ru": {
+            "legacy_caption_pid": 29117,
+            "legacy_language_pid": 13,
+            "text": "регистрация",
+            "auto_translated": "регистрация"
+        },
+        "ms": {
+            "legacy_caption_pid": 29118,
+            "legacy_language_pid": 14,
+            "text": "pendaftaran",
+            "auto_translated": "pendaftaran"
+        },
+        "ta": {
+            "legacy_caption_pid": 29119,
+            "legacy_language_pid": 15,
+            "text": "பதிவு",
+            "auto_translated": "பதிவு"
+        },
+        "it": {
+            "legacy_caption_pid": 29120,
+            "legacy_language_pid": 16,
+            "text": "registrazione",
+            "auto_translated": "registrazione"
+        },
+        "bn": {
+            "legacy_caption_pid": 29121,
+            "legacy_language_pid": 17,
+            "text": "নিবন্ধন",
+            "auto_translated": "নিবন্ধন"
+        },
+        "tr": {
+            "legacy_caption_pid": 29122,
+            "legacy_language_pid": 18,
+            "text": "kayıt",
+            "auto_translated": "kayıt"
+        },
+        "vi": {
+            "legacy_caption_pid": 29123,
+            "legacy_language_pid": 19,
+            "text": "đăng ký doanh nghiệp",
+            "auto_translated": "đăng ký doanh nghiệp"
+        },
+        "pl": {
+            "legacy_caption_pid": 29124,
+            "legacy_language_pid": 20,
+            "text": "rejestracja",
+            "auto_translated": "rejestracja"
+        },
+        "jv": {
+            "legacy_caption_pid": 29125,
+            "legacy_language_pid": 21,
+            "text": "Registration",
+            "auto_translated": "Registration"
+        },
+        "pa": {
+            "legacy_caption_pid": 29126,
+            "legacy_language_pid": 22,
+            "text": "ਰਜਿਸਟਰੇਸ਼ਨ",
+            "auto_translated": "ਰਜਿਸਟਰੇਸ਼ਨ"
+        },
+        "th": {
+            "legacy_caption_pid": 29127,
+            "legacy_language_pid": 23,
+            "text": "การลงทะเบียน",
+            "auto_translated": "การลงทะเบียน"
+        },
+        "te": {
+            "legacy_caption_pid": 35136,
+            "legacy_language_pid": 24,
+            "text": "నమోదు",
+            "auto_translated": "నమోదు"
+        },
+        "mr": {
+            "legacy_caption_pid": 35137,
+            "legacy_language_pid": 25,
+            "text": "नोंदणी",
+            "auto_translated": "नोंदणी"
+        },
+        "ur": {
+            "legacy_caption_pid": 35138,
+            "legacy_language_pid": 26,
+            "text": "رجسٹریشن",
+            "auto_translated": "رجسٹریشن"
+        },
+        "gu": {
+            "legacy_caption_pid": 35139,
+            "legacy_language_pid": 27,
+            "text": "નોંધણી",
+            "auto_translated": "નોંધણી"
+        },
+        "uk": {
+            "legacy_caption_pid": 35140,
+            "legacy_language_pid": 28,
+            "text": "реєстрація",
+            "auto_translated": "реєстрація"
+        },
+        "ml": {
+            "legacy_caption_pid": 35141,
+            "legacy_language_pid": 29,
+            "text": "രജിസ്ട്രേഷൻ",
+            "auto_translated": "രജിസ്ട്രേഷൻ"
+        },
+        "kn": {
+            "legacy_caption_pid": 35142,
+            "legacy_language_pid": 30,
+            "text": "ನೋಂದಣಿ",
+            "auto_translated": "ನೋಂದಣಿ"
+        },
+        "su": {
+            "legacy_caption_pid": 35143,
+            "legacy_language_pid": 31,
+            "text": "daptaran",
+            "auto_translated": "daptaran"
+        },
+        "ku": {
+            "legacy_caption_pid": 35144,
+            "legacy_language_pid": 32,
+            "text": "Registration",
+            "auto_translated": "Registration"
+        },
+        "ps": {
+            "legacy_caption_pid": 35145,
+            "legacy_language_pid": 33,
+            "text": "ليکنې",
+            "auto_translated": "ليکنې"
+        },
+        "ro": {
+            "legacy_caption_pid": 35146,
+            "legacy_language_pid": 34,
+            "text": "înregistrare",
+            "auto_translated": "înregistrare"
+        },
+        "id": {
+            "legacy_caption_pid": 35147,
+            "legacy_language_pid": 35,
+            "text": "pendaftaran",
+            "auto_translated": "pendaftaran"
+        },
+        "sd": {
+            "legacy_caption_pid": 35148,
+            "legacy_language_pid": 36,
+            "text": "رجسٽريشن جو عمل",
+            "auto_translated": "رجسٽريشن جو عمل"
+        },
+        "af": {
+            "legacy_caption_pid": 35149,
+            "legacy_language_pid": 37,
+            "text": "registrasie",
+            "auto_translated": "registrasie"
+        },
+        "sw": {
+            "legacy_caption_pid": 35150,
+            "legacy_language_pid": 38,
+            "text": "Usajili",
+            "auto_translated": "Usajili"
+        },
+        "lo": {
+            "legacy_caption_pid": 35151,
+            "legacy_language_pid": 39,
+            "text": "ການຈົດທະບຽນ",
+            "auto_translated": "ການຈົດທະບຽນ"
+        },
+        "nl": {
+            "legacy_caption_pid": 35152,
+            "legacy_language_pid": 40,
+            "text": "registratie",
+            "auto_translated": "registratie"
+        },
+        "tl": {
+            "legacy_caption_pid": 35153,
+            "legacy_language_pid": 41,
+            "text": "rehistrasyon",
+            "auto_translated": "rehistrasyon"
+        },
+        "ne": {
+            "legacy_caption_pid": 35154,
+            "legacy_language_pid": 42,
+            "text": "दर्ता",
+            "auto_translated": "दर्ता"
+        },
+        "hu": {
+            "legacy_caption_pid": 35155,
+            "legacy_language_pid": 43,
+            "text": "bejegyzés",
+            "auto_translated": "bejegyzés"
+        },
+        "cs": {
+            "legacy_caption_pid": 35156,
+            "legacy_language_pid": 44,
+            "text": "registrace",
+            "auto_translated": "registrace"
+        },
+        "el": {
+            "legacy_caption_pid": 35157,
+            "legacy_language_pid": 45,
+            "text": "εγγραφή",
+            "auto_translated": "εγγραφή"
+        },
+        "sv": {
+            "legacy_caption_pid": 35158,
+            "legacy_language_pid": 46,
+            "text": "Registration",
+            "auto_translated": "Registration"
+        },
+        "kk": {
+            "legacy_caption_pid": 35159,
+            "legacy_language_pid": 47,
+            "text": "тіркеу",
+            "auto_translated": "тіркеу"
+        },
+        "fi": {
+            "legacy_caption_pid": 35160,
+            "legacy_language_pid": 48,
+            "text": "rekisteröinti",
+            "auto_translated": "rekisteröinti"
+        },
+        "da": {
+            "legacy_caption_pid": 35161,
+            "legacy_language_pid": 49,
+            "text": "Registrering",
+            "auto_translated": "Registrering"
+        },
+        "he": {
+            "legacy_caption_pid": 35162,
+            "legacy_language_pid": 50,
+            "text": "רישום",
+            "auto_translated": "רישום"
+        },
+        "no": {
+            "legacy_caption_pid": 35163,
+            "legacy_language_pid": 51,
+            "text": "Registrering",
+            "auto_translated": "Registrering"
+        }
+    }
+}

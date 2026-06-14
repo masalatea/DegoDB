@@ -1,0 +1,321 @@
+{
+    "resource_key": "COMMON_LIB_ENROLL_ANNOUNCEMENT_TO_BUY_POINT_LINE2",
+    "legacy_resource_pid": 1454,
+    "base_group_key": "grp-010-matsuesoft-lib",
+    "additional_group_keys": [],
+    "key_for_update": "hAiR4qCA7RFt9NZlCCYlmbZa0fZDQKErKRJDRibGxq4B0xfDplS3hcLAgqFYx3KjJ33jKBQuBHBmr6egtV59nhfA6Ram58Z9of9c22DS0QeG0epOWQxl3T23XOUVlyzn",
+    "sort_group": "ENROLL",
+    "key_name": "COMMON_LIB_ENROLL_ANNOUNCEMENT_TO_BUY_POINT_LINE2",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": false,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 6090,
+            "legacy_language_pid": 1,
+            "text": "プラン購入後、お試しレッスンをご予約下さい。",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 6091,
+            "legacy_language_pid": 2,
+            "text": "Please make a trial lesson after purchasing the plan.",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 6092,
+            "legacy_language_pid": 3,
+            "text": "计划购买后，请预约试听课程。",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 6093,
+            "legacy_language_pid": 4,
+            "text": "플랜 구입 후 트라이얼 레슨을 예약하세요.",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 10756,
+            "legacy_language_pid": 5,
+            "text": "Por favor, haga una lección de prueba después de haber comprado el plan.",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 10757,
+            "legacy_language_pid": 6,
+            "text": "Por favor, fazer uma aula experimental após a compra do plano.",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 10758,
+            "legacy_language_pid": 7,
+            "text": "計劃購買後，請預約試聽課程。",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 16457,
+            "legacy_language_pid": 8,
+            "text": "Faites une leçon d'essai après avoir acheté le plan",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 16458,
+            "legacy_language_pid": 9,
+            "text": "योजना को खरीदने के बाद कृपया एक परीक्षण सबक करें",
+            "auto_translated": ""
+        },
+        "ar": {
+            "legacy_caption_pid": 31116,
+            "legacy_language_pid": 10,
+            "text": "بعد شراء الخطة، يرجى حجز درسا المحاكمة.",
+            "auto_translated": "بعد شراء الخطة، يرجى حجز درسا المحاكمة."
+        },
+        "fa": {
+            "legacy_caption_pid": 31117,
+            "legacy_language_pid": 11,
+            "text": "پس از خرید طرح، لطفا کتاب درس محاکمه.",
+            "auto_translated": "پس از خرید طرح، لطفا کتاب درس محاکمه."
+        },
+        "de": {
+            "legacy_caption_pid": 31118,
+            "legacy_language_pid": 12,
+            "text": "Nach dem Kauf des Plans, buchen Sie bitte eine Probestunde.",
+            "auto_translated": "Nach dem Kauf des Plans, buchen Sie bitte eine Probestunde."
+        },
+        "ru": {
+            "legacy_caption_pid": 31119,
+            "legacy_language_pid": 13,
+            "text": "После покупки плана, пожалуйста, заказать пробный урок.",
+            "auto_translated": "После покупки плана, пожалуйста, заказать пробный урок."
+        },
+        "ms": {
+            "legacy_caption_pid": 31120,
+            "legacy_language_pid": 14,
+            "text": "Selepas pembelian rancangan itu, sila tempah pengajaran perbicaraan.",
+            "auto_translated": "Selepas pembelian rancangan itu, sila tempah pengajaran perbicaraan."
+        },
+        "ta": {
+            "legacy_caption_pid": 31121,
+            "legacy_language_pid": 15,
+            "text": "திட்டம் வாங்கிய பிறகு, ஒரு சோதனை பாடம் பதிவு செய்யவும்.",
+            "auto_translated": "திட்டம் வாங்கிய பிறகு, ஒரு சோதனை பாடம் பதிவு செய்யவும்."
+        },
+        "it": {
+            "legacy_caption_pid": 31122,
+            "legacy_language_pid": 16,
+            "text": "Dopo l'acquisto piano, si prega di prenotare una lezione di prova.",
+            "auto_translated": "Dopo l'acquisto piano, si prega di prenotare una lezione di prova."
+        },
+        "bn": {
+            "legacy_caption_pid": 31123,
+            "legacy_language_pid": 17,
+            "text": "প্ল্যান কেনার পরে, একটি ট্রায়াল পাঠ বুক দয়া করে।",
+            "auto_translated": "প্ল্যান কেনার পরে, একটি ট্রায়াল পাঠ বুক দয়া করে।"
+        },
+        "tr": {
+            "legacy_caption_pid": 31124,
+            "legacy_language_pid": 18,
+            "text": "Plan Satın alma işleminden sonra, bir deneme ders kitap ediniz.",
+            "auto_translated": "Plan Satın alma işleminden sonra, bir deneme ders kitap ediniz."
+        },
+        "vi": {
+            "legacy_caption_pid": 31125,
+            "legacy_language_pid": 19,
+            "text": "Sau khi mua kế hoạch, xin vui lòng đặt một bài học xét xử.",
+            "auto_translated": "Sau khi mua kế hoạch, xin vui lòng đặt một bài học xét xử."
+        },
+        "pl": {
+            "legacy_caption_pid": 31126,
+            "legacy_language_pid": 20,
+            "text": "Po zakupie planu, proszę zarezerwować lekcję próbną.",
+            "auto_translated": "Po zakupie planu, proszę zarezerwować lekcję próbną."
+        },
+        "jv": {
+            "legacy_caption_pid": 31127,
+            "legacy_language_pid": 21,
+            "text": "Sawise tuku rencana, please Book pawulangan nyoba.",
+            "auto_translated": "Sawise tuku rencana, please Book pawulangan nyoba."
+        },
+        "pa": {
+            "legacy_caption_pid": 31128,
+            "legacy_language_pid": 22,
+            "text": "ਯੋਜਨਾ ਨੂੰ ਖਰੀਦ ਦੇ ਬਾਅਦ, ਇੱਕ ਦੀ ਸੁਣਵਾਈ ਸਬਕ ਨੂੰ ਬੁੱਕ ਕਰੋ.",
+            "auto_translated": "ਯੋਜਨਾ ਨੂੰ ਖਰੀਦ ਦੇ ਬਾਅਦ, ਇੱਕ ਦੀ ਸੁਣਵਾਈ ਸਬਕ ਨੂੰ ਬੁੱਕ ਕਰੋ."
+        },
+        "th": {
+            "legacy_caption_pid": 31129,
+            "legacy_language_pid": 23,
+            "text": "หลังจากที่ซื้อแผนกรุณาจองทดลองเรียน",
+            "auto_translated": "หลังจากที่ซื้อแผนกรุณาจองทดลองเรียน"
+        },
+        "te": {
+            "legacy_caption_pid": 42192,
+            "legacy_language_pid": 24,
+            "text": "ప్రణాళిక కొనుగోలు తరువాత, ఒక విచారణ పాఠం బుక్ దయచేసి.",
+            "auto_translated": "ప్రణాళిక కొనుగోలు తరువాత, ఒక విచారణ పాఠం బుక్ దయచేసి."
+        },
+        "mr": {
+            "legacy_caption_pid": 42193,
+            "legacy_language_pid": 25,
+            "text": "योजना खरेदी केल्यानंतर, एक चाचणी धडा बुक करा.",
+            "auto_translated": "योजना खरेदी केल्यानंतर, एक चाचणी धडा बुक करा."
+        },
+        "ur": {
+            "legacy_caption_pid": 42194,
+            "legacy_language_pid": 26,
+            "text": "منصوبہ بندی کی خریداری کے بعد، ایک مقدمے کی سماعت سبق کتاب براہ مہربانی.",
+            "auto_translated": "منصوبہ بندی کی خریداری کے بعد، ایک مقدمے کی سماعت سبق کتاب براہ مہربانی."
+        },
+        "gu": {
+            "legacy_caption_pid": 42195,
+            "legacy_language_pid": 27,
+            "text": "યોજના ખરીદી કર્યા પછી, અજમાયશ પાઠ બુક વિનંતી.",
+            "auto_translated": "યોજના ખરીદી કર્યા પછી, અજમાયશ પાઠ બુક વિનંતી."
+        },
+        "uk": {
+            "legacy_caption_pid": 42196,
+            "legacy_language_pid": 28,
+            "text": "Після покупки плану, будь ласка, замовити пробний урок.",
+            "auto_translated": "Після покупки плану, будь ласка, замовити пробний урок."
+        },
+        "ml": {
+            "legacy_caption_pid": 42197,
+            "legacy_language_pid": 29,
+            "text": "പ്ലാൻ വാങ്ങിയതിന് ശേഷം ഒരു വിചാരണ പാഠം ബുക്ക് ദയവായി.",
+            "auto_translated": "പ്ലാൻ വാങ്ങിയതിന് ശേഷം ഒരു വിചാരണ പാഠം ബുക്ക് ദയവായി."
+        },
+        "kn": {
+            "legacy_caption_pid": 42198,
+            "legacy_language_pid": 30,
+            "text": "ಯೋಜನೆಯನ್ನು ಖರೀದಿ ನಂತರ, ಒಂದು ಪ್ರಯೋಗ ಪಾಠ ಬುಕ್ ಮಾಡಿ.",
+            "auto_translated": "ಯೋಜನೆಯನ್ನು ಖರೀದಿ ನಂತರ, ಒಂದು ಪ್ರಯೋಗ ಪಾಠ ಬುಕ್ ಮಾಡಿ."
+        },
+        "su": {
+            "legacy_caption_pid": 42199,
+            "legacy_language_pid": 31,
+            "text": "Sanggeus pameseran rencana, mangga buku palajaran sidang.",
+            "auto_translated": "Sanggeus pameseran rencana, mangga buku palajaran sidang."
+        },
+        "ku": {
+            "legacy_caption_pid": 42200,
+            "legacy_language_pid": 32,
+            "text": "Piştî kirîn plana, ji kerema xwe ve di pirtûka dersê darizandin.",
+            "auto_translated": "Piştî kirîn plana, ji kerema xwe ve di pirtûka dersê darizandin."
+        },
+        "ps": {
+            "legacy_caption_pid": 42201,
+            "legacy_language_pid": 33,
+            "text": "د پلان د اخیستلو څخه وروسته، لطفا یو محاکمې د لوست کتاب.",
+            "auto_translated": "د پلان د اخیستلو څخه وروسته، لطفا یو محاکمې د لوست کتاب."
+        },
+        "ro": {
+            "legacy_caption_pid": 42202,
+            "legacy_language_pid": 34,
+            "text": "După achiziționarea planului, vă rugăm să rezervați o lecție de probă.",
+            "auto_translated": "După achiziționarea planului, vă rugăm să rezervați o lecție de probă."
+        },
+        "id": {
+            "legacy_caption_pid": 42203,
+            "legacy_language_pid": 35,
+            "text": "Setelah pembelian rencana, silahkan buku pelajaran percobaan.",
+            "auto_translated": "Setelah pembelian rencana, silahkan buku pelajaran percobaan."
+        },
+        "sd": {
+            "legacy_caption_pid": 42204,
+            "legacy_language_pid": 36,
+            "text": "جي رٿ خريداري کان پوء، هڪ پرک سبق ڪتاب مهرباني.",
+            "auto_translated": "جي رٿ خريداري کان پوء، هڪ پرک سبق ڪتاب مهرباني."
+        },
+        "af": {
+            "legacy_caption_pid": 42205,
+            "legacy_language_pid": 37,
+            "text": "Na afloop van die plan aankoop, kan jy bespreek 'n verhoor les.",
+            "auto_translated": "Na afloop van die plan aankoop, kan jy bespreek 'n verhoor les."
+        },
+        "sw": {
+            "legacy_caption_pid": 42206,
+            "legacy_language_pid": 38,
+            "text": "Baada ya ununuzi mpango, tafadhali kitabu kesi somo.",
+            "auto_translated": "Baada ya ununuzi mpango, tafadhali kitabu kesi somo."
+        },
+        "lo": {
+            "legacy_caption_pid": 42207,
+            "legacy_language_pid": 39,
+            "text": "ຫຼັງຈາກການຊື້ແຜນການ, ກະລຸນາຈອງບົດຮຽນການທົດລອງໄດ້.",
+            "auto_translated": "ຫຼັງຈາກການຊື້ແຜນການ, ກະລຸນາຈອງບົດຮຽນການທົດລອງໄດ້."
+        },
+        "nl": {
+            "legacy_caption_pid": 42208,
+            "legacy_language_pid": 40,
+            "text": "Nadat het plan aankoop, neem boek een proefles.",
+            "auto_translated": "Nadat het plan aankoop, neem boek een proefles."
+        },
+        "tl": {
+            "legacy_caption_pid": 42209,
+            "legacy_language_pid": 41,
+            "text": "Matapos ang pagbili plan, mangyaring mag-book ng isang pagsubok aralin.",
+            "auto_translated": "Matapos ang pagbili plan, mangyaring mag-book ng isang pagsubok aralin."
+        },
+        "ne": {
+            "legacy_caption_pid": 42210,
+            "legacy_language_pid": 42,
+            "text": "योजना खरिद पछि, कृपया परीक्षण पाठ बुक।",
+            "auto_translated": "योजना खरिद पछि, कृपया परीक्षण पाठ बुक।"
+        },
+        "hu": {
+            "legacy_caption_pid": 42211,
+            "legacy_language_pid": 43,
+            "text": "Miután a terv vásárlás, kérjük, foglaljon egy próba leckét.",
+            "auto_translated": "Miután a terv vásárlás, kérjük, foglaljon egy próba leckét."
+        },
+        "cs": {
+            "legacy_caption_pid": 42212,
+            "legacy_language_pid": 44,
+            "text": "Po zakoupení plánu, prosím si ukázkovou lekci.",
+            "auto_translated": "Po zakoupení plánu, prosím si ukázkovou lekci."
+        },
+        "el": {
+            "legacy_caption_pid": 42213,
+            "legacy_language_pid": 45,
+            "text": "Μετά την αγορά σχεδίου, παρακαλείστε να κάνετε κράτηση ένα δοκιμαστικό μάθημα.",
+            "auto_translated": "Μετά την αγορά σχεδίου, παρακαλείστε να κάνετε κράτηση ένα δοκιμαστικό μάθημα."
+        },
+        "sv": {
+            "legacy_caption_pid": 42214,
+            "legacy_language_pid": 46,
+            "text": "Efter planen köpet du boka en provlektion.",
+            "auto_translated": "Efter planen köpet du boka en provlektion."
+        },
+        "kk": {
+            "legacy_caption_pid": 42215,
+            "legacy_language_pid": 47,
+            "text": "жоспар Сатып алғаннан кейін, бір сынақ сабақ тапсырыс сұраймыз.",
+            "auto_translated": "жоспар Сатып алғаннан кейін, бір сынақ сабақ тапсырыс сұраймыз."
+        },
+        "fi": {
+            "legacy_caption_pid": 42216,
+            "legacy_language_pid": 48,
+            "text": "Kuluttua suunnitelman ostaa, ota varata koeoppitunti.",
+            "auto_translated": "Kuluttua suunnitelman ostaa, ota varata koeoppitunti."
+        },
+        "da": {
+            "legacy_caption_pid": 42217,
+            "legacy_language_pid": 49,
+            "text": "Efter planen køb, kan du bestille en prøvetime.",
+            "auto_translated": "Efter planen køb, kan du bestille en prøvetime."
+        },
+        "he": {
+            "legacy_caption_pid": 42218,
+            "legacy_language_pid": 50,
+            "text": "לאחר רכישת התכנית, אנא הזמן שיעור ניסיון.",
+            "auto_translated": "לאחר רכישת התכנית, אנא הזמן שיעור ניסיון."
+        },
+        "no": {
+            "legacy_caption_pid": 42219,
+            "legacy_language_pid": 51,
+            "text": "Etter planen kjøpet, kan du bestille en prøvetime.",
+            "auto_translated": "Etter planen kjøpet, kan du bestille en prøvetime."
+        }
+    }
+}

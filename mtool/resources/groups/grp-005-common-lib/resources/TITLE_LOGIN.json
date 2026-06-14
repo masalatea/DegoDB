@@ -1,0 +1,321 @@
+{
+    "resource_key": "TITLE_LOGIN",
+    "legacy_resource_pid": 551,
+    "base_group_key": "grp-005-common-lib",
+    "additional_group_keys": [],
+    "key_for_update": "huEv83Gu8rvfgMzFSULhT8GVDllOJUrugSaaFBDYq14xDD0CwfgsdcOQZ4SMg8XyGZcHP1zr2qj6xLdoHpAeNfvyvpeMzpm7a6yClDHsX2AUOAkRVTKtmYnYpge08aW6",
+    "sort_group": "TITLE",
+    "key_name": "TITLE_LOGIN",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": false,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 1379,
+            "legacy_language_pid": 1,
+            "text": "ログイン",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 1380,
+            "legacy_language_pid": 2,
+            "text": "Login",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 6546,
+            "legacy_language_pid": 3,
+            "text": "注册",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 6547,
+            "legacy_language_pid": 4,
+            "text": "로그인",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 10561,
+            "legacy_language_pid": 5,
+            "text": "Iniciar sesión",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 10562,
+            "legacy_language_pid": 6,
+            "text": "Entrar",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 10563,
+            "legacy_language_pid": 7,
+            "text": "註冊",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 16327,
+            "legacy_language_pid": 8,
+            "text": "S'identifier",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 16328,
+            "legacy_language_pid": 9,
+            "text": "लॉग इन करें",
+            "auto_translated": ""
+        },
+        "ar": {
+            "legacy_caption_pid": 30136,
+            "legacy_language_pid": 10,
+            "text": "دخول",
+            "auto_translated": "دخول"
+        },
+        "fa": {
+            "legacy_caption_pid": 30137,
+            "legacy_language_pid": 11,
+            "text": "ورود به سیستم",
+            "auto_translated": "ورود به سیستم"
+        },
+        "de": {
+            "legacy_caption_pid": 30138,
+            "legacy_language_pid": 12,
+            "text": "Login",
+            "auto_translated": "Login"
+        },
+        "ru": {
+            "legacy_caption_pid": 30139,
+            "legacy_language_pid": 13,
+            "text": "Войти",
+            "auto_translated": "Войти"
+        },
+        "ms": {
+            "legacy_caption_pid": 30140,
+            "legacy_language_pid": 14,
+            "text": "log masuk",
+            "auto_translated": "log masuk"
+        },
+        "ta": {
+            "legacy_caption_pid": 30141,
+            "legacy_language_pid": 15,
+            "text": "உள்நுழைய",
+            "auto_translated": "உள்நுழைய"
+        },
+        "it": {
+            "legacy_caption_pid": 30142,
+            "legacy_language_pid": 16,
+            "text": "accesso",
+            "auto_translated": "accesso"
+        },
+        "bn": {
+            "legacy_caption_pid": 30143,
+            "legacy_language_pid": 17,
+            "text": "লগইন",
+            "auto_translated": "লগইন"
+        },
+        "tr": {
+            "legacy_caption_pid": 30144,
+            "legacy_language_pid": 18,
+            "text": "giriş",
+            "auto_translated": "giriş"
+        },
+        "vi": {
+            "legacy_caption_pid": 30145,
+            "legacy_language_pid": 19,
+            "text": "đăng nhập",
+            "auto_translated": "đăng nhập"
+        },
+        "pl": {
+            "legacy_caption_pid": 30146,
+            "legacy_language_pid": 20,
+            "text": "login",
+            "auto_translated": "login"
+        },
+        "jv": {
+            "legacy_caption_pid": 30147,
+            "legacy_language_pid": 21,
+            "text": "Login",
+            "auto_translated": "Login"
+        },
+        "pa": {
+            "legacy_caption_pid": 30148,
+            "legacy_language_pid": 22,
+            "text": "ਲਾਗਇਨ",
+            "auto_translated": "ਲਾਗਇਨ"
+        },
+        "th": {
+            "legacy_caption_pid": 30149,
+            "legacy_language_pid": 23,
+            "text": "เข้าสู่ระบบ",
+            "auto_translated": "เข้าสู่ระบบ"
+        },
+        "te": {
+            "legacy_caption_pid": 36172,
+            "legacy_language_pid": 24,
+            "text": "లాగిన్",
+            "auto_translated": "లాగిన్"
+        },
+        "mr": {
+            "legacy_caption_pid": 36173,
+            "legacy_language_pid": 25,
+            "text": "लॉग-इन",
+            "auto_translated": "लॉग-इन"
+        },
+        "ur": {
+            "legacy_caption_pid": 36174,
+            "legacy_language_pid": 26,
+            "text": "لاگ ان",
+            "auto_translated": "لاگ ان"
+        },
+        "gu": {
+            "legacy_caption_pid": 36175,
+            "legacy_language_pid": 27,
+            "text": "લૉગિન",
+            "auto_translated": "લૉગિન"
+        },
+        "uk": {
+            "legacy_caption_pid": 36176,
+            "legacy_language_pid": 28,
+            "text": "Ввійти",
+            "auto_translated": "Ввійти"
+        },
+        "ml": {
+            "legacy_caption_pid": 36177,
+            "legacy_language_pid": 29,
+            "text": "ലോഗിൻ",
+            "auto_translated": "ലോഗിൻ"
+        },
+        "kn": {
+            "legacy_caption_pid": 36178,
+            "legacy_language_pid": 30,
+            "text": "ಲಾಗಿನ್",
+            "auto_translated": "ಲಾಗಿನ್"
+        },
+        "su": {
+            "legacy_caption_pid": 36179,
+            "legacy_language_pid": 31,
+            "text": "login",
+            "auto_translated": "login"
+        },
+        "ku": {
+            "legacy_caption_pid": 36180,
+            "legacy_language_pid": 32,
+            "text": "Login",
+            "auto_translated": "Login"
+        },
+        "ps": {
+            "legacy_caption_pid": 36181,
+            "legacy_language_pid": 33,
+            "text": "ننوتل",
+            "auto_translated": "ننوتل"
+        },
+        "ro": {
+            "legacy_caption_pid": 36182,
+            "legacy_language_pid": 34,
+            "text": "autentificare",
+            "auto_translated": "autentificare"
+        },
+        "id": {
+            "legacy_caption_pid": 36183,
+            "legacy_language_pid": 35,
+            "text": "login",
+            "auto_translated": "login"
+        },
+        "sd": {
+            "legacy_caption_pid": 36184,
+            "legacy_language_pid": 36,
+            "text": "لاگ ان",
+            "auto_translated": "لاگ ان"
+        },
+        "af": {
+            "legacy_caption_pid": 36185,
+            "legacy_language_pid": 37,
+            "text": "Teken in",
+            "auto_translated": "Teken in"
+        },
+        "sw": {
+            "legacy_caption_pid": 36186,
+            "legacy_language_pid": 38,
+            "text": "Login",
+            "auto_translated": "Login"
+        },
+        "lo": {
+            "legacy_caption_pid": 36187,
+            "legacy_language_pid": 39,
+            "text": "ເຂົ້າສູ່ລະບົບ",
+            "auto_translated": "ເຂົ້າສູ່ລະບົບ"
+        },
+        "nl": {
+            "legacy_caption_pid": 36188,
+            "legacy_language_pid": 40,
+            "text": "login",
+            "auto_translated": "login"
+        },
+        "tl": {
+            "legacy_caption_pid": 36189,
+            "legacy_language_pid": 41,
+            "text": "login",
+            "auto_translated": "login"
+        },
+        "ne": {
+            "legacy_caption_pid": 36190,
+            "legacy_language_pid": 42,
+            "text": "लग इन",
+            "auto_translated": "लग इन"
+        },
+        "hu": {
+            "legacy_caption_pid": 36191,
+            "legacy_language_pid": 43,
+            "text": "bejelentkezés",
+            "auto_translated": "bejelentkezés"
+        },
+        "cs": {
+            "legacy_caption_pid": 36192,
+            "legacy_language_pid": 44,
+            "text": "přihlášení",
+            "auto_translated": "přihlášení"
+        },
+        "el": {
+            "legacy_caption_pid": 36193,
+            "legacy_language_pid": 45,
+            "text": "σύνδεση",
+            "auto_translated": "σύνδεση"
+        },
+        "sv": {
+            "legacy_caption_pid": 36194,
+            "legacy_language_pid": 46,
+            "text": "inloggning",
+            "auto_translated": "inloggning"
+        },
+        "kk": {
+            "legacy_caption_pid": 36195,
+            "legacy_language_pid": 47,
+            "text": "Логин",
+            "auto_translated": "Логин"
+        },
+        "fi": {
+            "legacy_caption_pid": 36196,
+            "legacy_language_pid": 48,
+            "text": "kirjautuminen",
+            "auto_translated": "kirjautuminen"
+        },
+        "da": {
+            "legacy_caption_pid": 36197,
+            "legacy_language_pid": 49,
+            "text": "logon",
+            "auto_translated": "logon"
+        },
+        "he": {
+            "legacy_caption_pid": 36198,
+            "legacy_language_pid": 50,
+            "text": "כניסה",
+            "auto_translated": "כניסה"
+        },
+        "no": {
+            "legacy_caption_pid": 36199,
+            "legacy_language_pid": 51,
+            "text": "innlogging",
+            "auto_translated": "innlogging"
+        }
+    }
+}

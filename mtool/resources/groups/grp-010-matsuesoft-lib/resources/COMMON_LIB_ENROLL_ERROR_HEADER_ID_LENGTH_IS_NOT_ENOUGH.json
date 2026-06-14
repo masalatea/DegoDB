@@ -1,0 +1,321 @@
+{
+    "resource_key": "COMMON_LIB_ENROLL_ERROR_HEADER_ID_LENGTH_IS_NOT_ENOUGH",
+    "legacy_resource_pid": 1568,
+    "base_group_key": "grp-010-matsuesoft-lib",
+    "additional_group_keys": [],
+    "key_for_update": "NrQuUUy3MIxMlrXxV4U3tDMrnY4E3tXPMvzX4s0t41wkjuVzCbccoAkF2PkIRA6btsQ4MOoTJH80TVm7JzJqf4podx6WMR1D3tsEUzmy3IvB7o0bVM87NqWI4PEJpDoV",
+    "sort_group": "ENROLL",
+    "key_name": "COMMON_LIB_ENROLL_ERROR_HEADER_ID_LENGTH_IS_NOT_ENOUGH",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": false,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 7054,
+            "legacy_language_pid": 1,
+            "text": "文字数が少ないため確認できません。",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 7055,
+            "legacy_language_pid": 2,
+            "text": "It can not be confirmed because the number of characters is small.",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 7056,
+            "legacy_language_pid": 3,
+            "text": "它不能被验证，因为字符的数量较少。",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 7057,
+            "legacy_language_pid": 4,
+            "text": "문자 수가 적기 때문에 확인할 수 없습니다.",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 10768,
+            "legacy_language_pid": 5,
+            "text": "No se puede confirmar porque el número de caracteres es pequeño.",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 10769,
+            "legacy_language_pid": 6,
+            "text": "ão pode ser confirmado porque o número de caracteres é pequeno.",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 10770,
+            "legacy_language_pid": 7,
+            "text": "它不能被驗證，因為字符的數量較少。",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 16463,
+            "legacy_language_pid": 8,
+            "text": "Il ne peut pas être confirmé car le nombre de caractères est petit.",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 16464,
+            "legacy_language_pid": 9,
+            "text": "यह पुष्टि नहीं की जा सकती क्योंकि अक्षरों की संख्या छोटा है",
+            "auto_translated": ""
+        },
+        "ar": {
+            "legacy_caption_pid": 31172,
+            "legacy_language_pid": 10,
+            "text": "ولا يمكن التحقق لعدد الأحرف صغير.",
+            "auto_translated": "ولا يمكن التحقق لعدد الأحرف صغير."
+        },
+        "fa": {
+            "legacy_caption_pid": 31173,
+            "legacy_language_pid": 11,
+            "text": "این نمی تواند تأیید کنید، زیرا تعدادی از شخصیت های کوچک است.",
+            "auto_translated": "این نمی تواند تأیید کنید، زیرا تعدادی از شخصیت های کوچک است."
+        },
+        "de": {
+            "legacy_caption_pid": 31174,
+            "legacy_language_pid": 12,
+            "text": "Es kann nicht überprüft werden, da die Anzahl der Zeichen klein ist.",
+            "auto_translated": "Es kann nicht überprüft werden, da die Anzahl der Zeichen klein ist."
+        },
+        "ru": {
+            "legacy_caption_pid": 31175,
+            "legacy_language_pid": 13,
+            "text": "Это не может быть проверено, так как количество символов невелико.",
+            "auto_translated": "Это не может быть проверено, так как количество символов невелико."
+        },
+        "ms": {
+            "legacy_caption_pid": 31176,
+            "legacy_language_pid": 14,
+            "text": "Ia tidak boleh disahkan kerana bilangan aksara adalah kecil.",
+            "auto_translated": "Ia tidak boleh disahkan kerana bilangan aksara adalah kecil."
+        },
+        "ta": {
+            "legacy_caption_pid": 31177,
+            "legacy_language_pid": 15,
+            "text": "எழுத்துக்களின் எண்ணிக்கை சிறியது என்பதால் அது சரிபார்க்க முடியவில்லை.",
+            "auto_translated": "எழுத்துக்களின் எண்ணிக்கை சிறியது என்பதால் அது சரிபார்க்க முடியவில்லை."
+        },
+        "it": {
+            "legacy_caption_pid": 31178,
+            "legacy_language_pid": 16,
+            "text": "Esso non può essere verificata in quanto il numero di caratteri è piccolo.",
+            "auto_translated": "Esso non può essere verificata in quanto il numero di caratteri è piccolo."
+        },
+        "bn": {
+            "legacy_caption_pid": 31179,
+            "legacy_language_pid": 17,
+            "text": "এটা তোলে যাচাই করা যাবে না অক্ষরের সংখ্যা ছোট কারণ।",
+            "auto_translated": "এটা তোলে যাচাই করা যাবে না অক্ষরের সংখ্যা ছোট কারণ।"
+        },
+        "tr": {
+            "legacy_caption_pid": 31180,
+            "legacy_language_pid": 18,
+            "text": "karakter sayısı azdır çünkü doğrulanmadı edilemez.",
+            "auto_translated": "karakter sayısı azdır çünkü doğrulanmadı edilemez."
+        },
+        "vi": {
+            "legacy_caption_pid": 31181,
+            "legacy_language_pid": 19,
+            "text": "Nó không thể được xác nhận vì số lượng ký tự là nhỏ.",
+            "auto_translated": "Nó không thể được xác nhận vì số lượng ký tự là nhỏ."
+        },
+        "pl": {
+            "legacy_caption_pid": 31182,
+            "legacy_language_pid": 20,
+            "text": "To nie mogą być zweryfikowane, ponieważ liczba znaków jest niewielka.",
+            "auto_translated": "To nie mogą być zweryfikowane, ponieważ liczba znaków jest niewielka."
+        },
+        "jv": {
+            "legacy_caption_pid": 31183,
+            "legacy_language_pid": 21,
+            "text": "Iku ora bisa diverifikasi amarga nomer karakter cilik.",
+            "auto_translated": "Iku ora bisa diverifikasi amarga nomer karakter cilik."
+        },
+        "pa": {
+            "legacy_caption_pid": 31184,
+            "legacy_language_pid": 22,
+            "text": "ਇਹ ਤਸਦੀਕ ਕੀਤਾ ਜਾ ਸਕਦਾ ਹੈ, ਅੱਖਰ ਦੀ ਗਿਣਤੀ ਛੋਟਾ ਹੈ, ਕਿਉਕਿ.",
+            "auto_translated": "ਇਹ ਤਸਦੀਕ ਕੀਤਾ ਜਾ ਸਕਦਾ ਹੈ, ਅੱਖਰ ਦੀ ਗਿਣਤੀ ਛੋਟਾ ਹੈ, ਕਿਉਕਿ."
+        },
+        "th": {
+            "legacy_caption_pid": 31185,
+            "legacy_language_pid": 23,
+            "text": "มันไม่สามารถตรวจสอบได้เนื่องจากจำนวนตัวอักษรที่มีขนาดเล็ก",
+            "auto_translated": "มันไม่สามารถตรวจสอบได้เนื่องจากจำนวนตัวอักษรที่มีขนาดเล็ก"
+        },
+        "te": {
+            "legacy_caption_pid": 42080,
+            "legacy_language_pid": 24,
+            "text": "అక్షరాల సంఖ్య తక్కువగా ఉంది ఇది తనిఖీచేయబడదు.",
+            "auto_translated": "అక్షరాల సంఖ్య తక్కువగా ఉంది ఇది తనిఖీచేయబడదు."
+        },
+        "mr": {
+            "legacy_caption_pid": 42081,
+            "legacy_language_pid": 25,
+            "text": "हे सत्यापित करणे शक्य नाही वर्ण संख्या लहान आहे.",
+            "auto_translated": "हे सत्यापित करणे शक्य नाही वर्ण संख्या लहान आहे."
+        },
+        "ur": {
+            "legacy_caption_pid": 42082,
+            "legacy_language_pid": 26,
+            "text": "اس کی تصدیق نہیں کی جا سکتی حروف کی تعداد چھوٹا ہے کیونکہ.",
+            "auto_translated": "اس کی تصدیق نہیں کی جا سکتی حروف کی تعداد چھوٹا ہے کیونکہ."
+        },
+        "gu": {
+            "legacy_caption_pid": 42083,
+            "legacy_language_pid": 27,
+            "text": "તે ચકાસણી કરી શકતા નથી અક્ષરોની સંખ્યા નાની છે કારણ કે.",
+            "auto_translated": "તે ચકાસણી કરી શકતા નથી અક્ષરોની સંખ્યા નાની છે કારણ કે."
+        },
+        "uk": {
+            "legacy_caption_pid": 42084,
+            "legacy_language_pid": 28,
+            "text": "Це не може бути перевірено, так як кількість символів невелика.",
+            "auto_translated": "Це не може бути перевірено, так як кількість символів невелика."
+        },
+        "ml": {
+            "legacy_caption_pid": 42085,
+            "legacy_language_pid": 29,
+            "text": "അക്ഷരങ്ങളുടെ എണ്ണം ചെറിയ കാരണം ഇത് പരിശോധിക്കാൻ കഴിയില്ല.",
+            "auto_translated": "അക്ഷരങ്ങളുടെ എണ്ണം ചെറിയ കാരണം ഇത് പരിശോധിക്കാൻ കഴിയില്ല."
+        },
+        "kn": {
+            "legacy_caption_pid": 42086,
+            "legacy_language_pid": 30,
+            "text": "ಇದು ಪರಿಶೀಲಿಸಿಲ್ಲ ಅಕ್ಷರಗಳ ಸಂಖ್ಯೆಯಲ್ಲಿ ಸಣ್ಣ ಏಕೆಂದರೆ ಮಾಡಬಹುದು.",
+            "auto_translated": "ಇದು ಪರಿಶೀಲಿಸಿಲ್ಲ ಅಕ್ಷರಗಳ ಸಂಖ್ಯೆಯಲ್ಲಿ ಸಣ್ಣ ಏಕೆಂದರೆ ಮಾಡಬಹುದು."
+        },
+        "su": {
+            "legacy_caption_pid": 42087,
+            "legacy_language_pid": 31,
+            "text": "Eta teu bisa diverifikasi sabab jumlah aksara téh leutik.",
+            "auto_translated": "Eta teu bisa diverifikasi sabab jumlah aksara téh leutik."
+        },
+        "ku": {
+            "legacy_caption_pid": 42088,
+            "legacy_language_pid": 32,
+            "text": "Ev ne bên piştrastkirin, ji ber ku hejmara characters biçûk e.",
+            "auto_translated": "Ev ne bên piştrastkirin, ji ber ku hejmara characters biçûk e."
+        },
+        "ps": {
+            "legacy_caption_pid": 42089,
+            "legacy_language_pid": 33,
+            "text": "دا تاييد نه شي ځکه چې د تورو په شمېر دی وړه.",
+            "auto_translated": "دا تاييد نه شي ځکه چې د تورو په شمېر دی وړه."
+        },
+        "ro": {
+            "legacy_caption_pid": 42090,
+            "legacy_language_pid": 34,
+            "text": "Nu poate fi verificată deoarece numărul de caractere este mic.",
+            "auto_translated": "Nu poate fi verificată deoarece numărul de caractere este mic."
+        },
+        "id": {
+            "legacy_caption_pid": 42091,
+            "legacy_language_pid": 35,
+            "text": "Hal ini tidak dapat diverifikasi karena jumlah karakter kecil.",
+            "auto_translated": "Hal ini tidak dapat diverifikasi karena jumlah karakter kecil."
+        },
+        "sd": {
+            "legacy_caption_pid": 42092,
+            "legacy_language_pid": 36,
+            "text": "اهو وجود ۾ نه ٿو ڪري سگهجي انگ اکرن کي ننڍو آهي، ڇاڪاڻ ته.",
+            "auto_translated": "اهو وجود ۾ نه ٿو ڪري سگهجي انگ اکرن کي ننڍو آهي، ڇاڪاڻ ته."
+        },
+        "af": {
+            "legacy_caption_pid": 42093,
+            "legacy_language_pid": 37,
+            "text": "Dit kan nie bevestig word nie omdat die aantal karakters is klein.",
+            "auto_translated": "Dit kan nie bevestig word nie omdat die aantal karakters is klein."
+        },
+        "sw": {
+            "legacy_caption_pid": 42094,
+            "legacy_language_pid": 38,
+            "text": "Haiwezi kuthibitishwa kwa sababu idadi ya herufi ni ndogo.",
+            "auto_translated": "Haiwezi kuthibitishwa kwa sababu idadi ya herufi ni ndogo."
+        },
+        "lo": {
+            "legacy_caption_pid": 42095,
+            "legacy_language_pid": 39,
+            "text": "ມັນບໍ່ສາມາດໄດ້ຮັບການຢືນຢັນແລ້ວເນື່ອງຈາກວ່າຈໍານວນຂອງຕົວອັກສອນທີ່ມີຂະຫນາດນ້ອຍ.",
+            "auto_translated": "ມັນບໍ່ສາມາດໄດ້ຮັບການຢືນຢັນແລ້ວເນື່ອງຈາກວ່າຈໍານວນຂອງຕົວອັກສອນທີ່ມີຂະຫນາດນ້ອຍ."
+        },
+        "nl": {
+            "legacy_caption_pid": 42096,
+            "legacy_language_pid": 40,
+            "text": "Het kan niet worden geverifieerd, omdat het aantal tekens is klein.",
+            "auto_translated": "Het kan niet worden geverifieerd, omdat het aantal tekens is klein."
+        },
+        "tl": {
+            "legacy_caption_pid": 42097,
+            "legacy_language_pid": 41,
+            "text": "Hindi na ito maaaring ma-verify dahil ang bilang ng mga character ay maliit.",
+            "auto_translated": "Hindi na ito maaaring ma-verify dahil ang bilang ng mga character ay maliit."
+        },
+        "ne": {
+            "legacy_caption_pid": 42098,
+            "legacy_language_pid": 42,
+            "text": "यसलाई प्रमाणित गर्न सकिँदैन वर्ण संख्या सानो छ किनभने।",
+            "auto_translated": "यसलाई प्रमाणित गर्न सकिँदैन वर्ण संख्या सानो छ किनभने।"
+        },
+        "hu": {
+            "legacy_caption_pid": 42099,
+            "legacy_language_pid": 43,
+            "text": "Nem lehet ellenőrizni, mert a karakterek száma kicsi.",
+            "auto_translated": "Nem lehet ellenőrizni, mert a karakterek száma kicsi."
+        },
+        "cs": {
+            "legacy_caption_pid": 42100,
+            "legacy_language_pid": 44,
+            "text": "To nelze ověřit, protože počet znaků je malý.",
+            "auto_translated": "To nelze ověřit, protože počet znaků je malý."
+        },
+        "el": {
+            "legacy_caption_pid": 42101,
+            "legacy_language_pid": 45,
+            "text": "Δεν μπορεί να επαληθευτεί γιατί ο αριθμός των χαρακτήρων είναι μικρή.",
+            "auto_translated": "Δεν μπορεί να επαληθευτεί γιατί ο αριθμός των χαρακτήρων είναι μικρή."
+        },
+        "sv": {
+            "legacy_caption_pid": 42102,
+            "legacy_language_pid": 46,
+            "text": "Det kan inte verifieras eftersom antalet tecken är liten.",
+            "auto_translated": "Det kan inte verifieras eftersom antalet tecken är liten."
+        },
+        "kk": {
+            "legacy_caption_pid": 42103,
+            "legacy_language_pid": 47,
+            "text": "таңбалар саны аз, өйткені тексеру мүмкін емес.",
+            "auto_translated": "таңбалар саны аз, өйткені тексеру мүмкін емес."
+        },
+        "fi": {
+            "legacy_caption_pid": 42104,
+            "legacy_language_pid": 48,
+            "text": "Sitä ei voida tarkistaa, koska merkkien määrä on pieni.",
+            "auto_translated": "Sitä ei voida tarkistaa, koska merkkien määrä on pieni."
+        },
+        "da": {
+            "legacy_caption_pid": 42105,
+            "legacy_language_pid": 49,
+            "text": "Det kan ikke verificeres da antallet af tegn er lille.",
+            "auto_translated": "Det kan ikke verificeres da antallet af tegn er lille."
+        },
+        "he": {
+            "legacy_caption_pid": 42106,
+            "legacy_language_pid": 50,
+            "text": "זה לא ניתן לאמת כי מספר התווים הוא קטן.",
+            "auto_translated": "זה לא ניתן לאמת כי מספר התווים הוא קטן."
+        },
+        "no": {
+            "legacy_caption_pid": 42107,
+            "legacy_language_pid": 51,
+            "text": "Det kan ikke verifiseres fordi antall tegn er liten.",
+            "auto_translated": "Det kan ikke verifiseres fordi antall tegn er liten."
+        }
+    }
+}

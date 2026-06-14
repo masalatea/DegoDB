@@ -1,0 +1,321 @@
+{
+    "resource_key": "COMMON_LIB_LOGIN_NEED_TO_LOGIN_TITLE",
+    "legacy_resource_pid": 1485,
+    "base_group_key": "grp-010-matsuesoft-lib",
+    "additional_group_keys": [],
+    "key_for_update": "0WBOIBzXTGA2vBjHEXAp88xu6qGSiTmAHGL6Z3kYtb9acIHZgNA11mmSrWhUKkYzaqrRiRY8a0kGhLTE5MSMLrFEJLZoorR9FZTDFDfFlMvMsDYp5oPJa9cTSI8uYNPS",
+    "sort_group": "LOGIN",
+    "key_name": "COMMON_LIB_LOGIN_NEED_TO_LOGIN_TITLE",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": false,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 6214,
+            "legacy_language_pid": 1,
+            "text": "ご利用にはログインが必要です。",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 6215,
+            "legacy_language_pid": 2,
+            "text": "Login is required for use.",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 6216,
+            "legacy_language_pid": 3,
+            "text": "要使用，您需要登录。",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 6217,
+            "legacy_language_pid": 4,
+            "text": "이용하려면 로그인이 필요합니다.",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 11102,
+            "legacy_language_pid": 5,
+            "text": "El inicio de sesión necesario.",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 11103,
+            "legacy_language_pid": 6,
+            "text": "É necessário iniciar sessão.",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 11104,
+            "legacy_language_pid": 7,
+            "text": "要使用，您需要登錄。",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 17245,
+            "legacy_language_pid": 8,
+            "text": "La connexion est requise pour l'utilisation.",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 17246,
+            "legacy_language_pid": 9,
+            "text": "उपयोग के लिए लॉग इन करने की आवश्यकता है ",
+            "auto_translated": ""
+        },
+        "ar": {
+            "legacy_caption_pid": 32728,
+            "legacy_language_pid": 10,
+            "text": "الاستخدام، وتحتاج إلى تسجيل الدخول.",
+            "auto_translated": "الاستخدام، وتحتاج إلى تسجيل الدخول."
+        },
+        "fa": {
+            "legacy_caption_pid": 32729,
+            "legacy_language_pid": 11,
+            "text": "برای استفاده از، شما نیاز به ورود.",
+            "auto_translated": "برای استفاده از، شما نیاز به ورود."
+        },
+        "de": {
+            "legacy_caption_pid": 32730,
+            "legacy_language_pid": 12,
+            "text": "Verwenden zu können, müssen Sie sich einloggen.",
+            "auto_translated": "Verwenden zu können, müssen Sie sich einloggen."
+        },
+        "ru": {
+            "legacy_caption_pid": 32731,
+            "legacy_language_pid": 13,
+            "text": "Для использования, вам необходимо войти в систему.",
+            "auto_translated": "Для использования, вам необходимо войти в систему."
+        },
+        "ms": {
+            "legacy_caption_pid": 32732,
+            "legacy_language_pid": 14,
+            "text": "Untuk digunakan, anda perlu log masuk.",
+            "auto_translated": "Untuk digunakan, anda perlu log masuk."
+        },
+        "ta": {
+            "legacy_caption_pid": 32733,
+            "legacy_language_pid": 15,
+            "text": "பயன்படுத்த, நீங்கள் உள்நுழைய வேண்டும்.",
+            "auto_translated": "பயன்படுத்த, நீங்கள் உள்நுழைய வேண்டும்."
+        },
+        "it": {
+            "legacy_caption_pid": 32734,
+            "legacy_language_pid": 16,
+            "text": "Per utilizzare, effettua il login.",
+            "auto_translated": "Per utilizzare, effettua il login."
+        },
+        "bn": {
+            "legacy_caption_pid": 32735,
+            "legacy_language_pid": 17,
+            "text": "ব্যবহার করতে, আপনাকে লগইন করতে হবে।",
+            "auto_translated": "ব্যবহার করতে, আপনাকে লগইন করতে হবে।"
+        },
+        "tr": {
+            "legacy_caption_pid": 32736,
+            "legacy_language_pid": 18,
+            "text": "kullanmak için, giriş yapmalısınız.",
+            "auto_translated": "kullanmak için, giriş yapmalısınız."
+        },
+        "vi": {
+            "legacy_caption_pid": 32737,
+            "legacy_language_pid": 19,
+            "text": "Để sử dụng, bạn cần phải đăng nhập.",
+            "auto_translated": "Để sử dụng, bạn cần phải đăng nhập."
+        },
+        "pl": {
+            "legacy_caption_pid": 32738,
+            "legacy_language_pid": 20,
+            "text": "Aby go wykorzystać, musisz się zalogować.",
+            "auto_translated": "Aby go wykorzystać, musisz się zalogować."
+        },
+        "jv": {
+            "legacy_caption_pid": 32739,
+            "legacy_language_pid": 21,
+            "text": "Kanggo nggunakake, sampeyan kudu mlebet.",
+            "auto_translated": "Kanggo nggunakake, sampeyan kudu mlebet."
+        },
+        "pa": {
+            "legacy_caption_pid": 32740,
+            "legacy_language_pid": 22,
+            "text": "ਵਰਤਣ ਲਈ, ਤੁਹਾਨੂੰ ਲਾਗਇਨ ਕਰਨ ਦੀ ਲੋੜ ਹੈ.",
+            "auto_translated": "ਵਰਤਣ ਲਈ, ਤੁਹਾਨੂੰ ਲਾਗਇਨ ਕਰਨ ਦੀ ਲੋੜ ਹੈ."
+        },
+        "th": {
+            "legacy_caption_pid": 32741,
+            "legacy_language_pid": 23,
+            "text": "ที่จะใช้คุณต้องเข้าสู่ระบบ",
+            "auto_translated": "ที่จะใช้คุณต้องเข้าสู่ระบบ"
+        },
+        "te": {
+            "legacy_caption_pid": 40204,
+            "legacy_language_pid": 24,
+            "text": "ఉపయోగించడానికి, మీరు లాగిన్ చేయాలి.",
+            "auto_translated": "ఉపయోగించడానికి, మీరు లాగిన్ చేయాలి."
+        },
+        "mr": {
+            "legacy_caption_pid": 40205,
+            "legacy_language_pid": 25,
+            "text": "वापर करण्यासाठी, आपण लॉग इन करणे आवश्यक.",
+            "auto_translated": "वापर करण्यासाठी, आपण लॉग इन करणे आवश्यक."
+        },
+        "ur": {
+            "legacy_caption_pid": 40206,
+            "legacy_language_pid": 26,
+            "text": "استعمال کرنے کے لئے، آپ کو لاگ ان کرنے کی ضرورت ہے.",
+            "auto_translated": "استعمال کرنے کے لئے، آپ کو لاگ ان کرنے کی ضرورت ہے."
+        },
+        "gu": {
+            "legacy_caption_pid": 40207,
+            "legacy_language_pid": 27,
+            "text": "ઉપયોગ કરવા માટે, તમે લૉગિન કરવાની જરૂર છે.",
+            "auto_translated": "ઉપયોગ કરવા માટે, તમે લૉગિન કરવાની જરૂર છે."
+        },
+        "uk": {
+            "legacy_caption_pid": 40208,
+            "legacy_language_pid": 28,
+            "text": "Для використання, вам необхідно увійти в систему.",
+            "auto_translated": "Для використання, вам необхідно увійти в систему."
+        },
+        "ml": {
+            "legacy_caption_pid": 40209,
+            "legacy_language_pid": 29,
+            "text": "ഉപയോഗിക്കുന്നതിന്, നിങ്ങൾ ലോഗിൻ ചെയ്യണം.",
+            "auto_translated": "ഉപയോഗിക്കുന്നതിന്, നിങ്ങൾ ലോഗിൻ ചെയ്യണം."
+        },
+        "kn": {
+            "legacy_caption_pid": 40210,
+            "legacy_language_pid": 30,
+            "text": "ಬಳಸಲು, ನೀವು ಲಾಗಿನ್ ಮಾಡಬೇಕಾಗಿದೆ.",
+            "auto_translated": "ಬಳಸಲು, ನೀವು ಲಾಗಿನ್ ಮಾಡಬೇಕಾಗಿದೆ."
+        },
+        "su": {
+            "legacy_caption_pid": 40211,
+            "legacy_language_pid": 31,
+            "text": "Ngagunakeun, Anjeun kedah login.",
+            "auto_translated": "Ngagunakeun, Anjeun kedah login."
+        },
+        "ku": {
+            "legacy_caption_pid": 40212,
+            "legacy_language_pid": 32,
+            "text": "Ji bo bikaranîna, pêwîst e tu têketinê pêk bînî.",
+            "auto_translated": "Ji bo bikaranîna, pêwîst e tu têketinê pêk bînî."
+        },
+        "ps": {
+            "legacy_caption_pid": 40213,
+            "legacy_language_pid": 33,
+            "text": "څخه ګټه اخیستنه، تاسو باید سئ.",
+            "auto_translated": "څخه ګټه اخیستنه، تاسو باید سئ."
+        },
+        "ro": {
+            "legacy_caption_pid": 40214,
+            "legacy_language_pid": 34,
+            "text": "Pentru a utiliza, trebuie să vă conectați.",
+            "auto_translated": "Pentru a utiliza, trebuie să vă conectați."
+        },
+        "id": {
+            "legacy_caption_pid": 40215,
+            "legacy_language_pid": 35,
+            "text": "Untuk menggunakan, Anda perlu untuk login.",
+            "auto_translated": "Untuk menggunakan, Anda perlu untuk login."
+        },
+        "sd": {
+            "legacy_caption_pid": 40216,
+            "legacy_language_pid": 36,
+            "text": "استعمال ڪرڻ لاء، اوھان ۾ داخل ڪرڻ جي ضرورت آهي.",
+            "auto_translated": "استعمال ڪرڻ لاء، اوھان ۾ داخل ڪرڻ جي ضرورت آهي."
+        },
+        "af": {
+            "legacy_caption_pid": 40217,
+            "legacy_language_pid": 37,
+            "text": "Om te gebruik, moet jy aan te meld.",
+            "auto_translated": "Om te gebruik, moet jy aan te meld."
+        },
+        "sw": {
+            "legacy_caption_pid": 40218,
+            "legacy_language_pid": 38,
+            "text": "Kutumia, unahitaji kuingia.",
+            "auto_translated": "Kutumia, unahitaji kuingia."
+        },
+        "lo": {
+            "legacy_caption_pid": 40219,
+            "legacy_language_pid": 39,
+            "text": "ການນໍາໃຊ້, ທ່ານຈໍາເປັນຕ້ອງເຂົ້າສູ່ລະບົບ.",
+            "auto_translated": "ການນໍາໃຊ້, ທ່ານຈໍາເປັນຕ້ອງເຂົ້າສູ່ລະບົບ."
+        },
+        "nl": {
+            "legacy_caption_pid": 40220,
+            "legacy_language_pid": 40,
+            "text": "Om te gebruiken, moet u eerst inloggen.",
+            "auto_translated": "Om te gebruiken, moet u eerst inloggen."
+        },
+        "tl": {
+            "legacy_caption_pid": 40221,
+            "legacy_language_pid": 41,
+            "text": "Upang gamitin, kailangan mong mag-login.",
+            "auto_translated": "Upang gamitin, kailangan mong mag-login."
+        },
+        "ne": {
+            "legacy_caption_pid": 40222,
+            "legacy_language_pid": 42,
+            "text": "प्रयोग गर्न, तपाईंले लग इन गर्न आवश्यक छ।",
+            "auto_translated": "प्रयोग गर्न, तपाईंले लग इन गर्न आवश्यक छ।"
+        },
+        "hu": {
+            "legacy_caption_pid": 40223,
+            "legacy_language_pid": 43,
+            "text": "Ahhoz, hogy használni, be kell jelentkezned.",
+            "auto_translated": "Ahhoz, hogy használni, be kell jelentkezned."
+        },
+        "cs": {
+            "legacy_caption_pid": 40224,
+            "legacy_language_pid": 44,
+            "text": "Chcete-li používat, musíte se přihlásit.",
+            "auto_translated": "Chcete-li používat, musíte se přihlásit."
+        },
+        "el": {
+            "legacy_caption_pid": 40225,
+            "legacy_language_pid": 45,
+            "text": "Για να χρησιμοποιήσετε, θα πρέπει να συνδεθείτε.",
+            "auto_translated": "Για να χρησιμοποιήσετε, θα πρέπει να συνδεθείτε."
+        },
+        "sv": {
+            "legacy_caption_pid": 40226,
+            "legacy_language_pid": 46,
+            "text": "Om du vill använda, måste du logga in.",
+            "auto_translated": "Om du vill använda, måste du logga in."
+        },
+        "kk": {
+            "legacy_caption_pid": 40227,
+            "legacy_language_pid": 47,
+            "text": "пайдалану үшін, сіз кіру қажет.",
+            "auto_translated": "пайдалану үшін, сіз кіру қажет."
+        },
+        "fi": {
+            "legacy_caption_pid": 40228,
+            "legacy_language_pid": 48,
+            "text": "Käyttää, sinun tulee kirjautua sisään.",
+            "auto_translated": "Käyttää, sinun tulee kirjautua sisään."
+        },
+        "da": {
+            "legacy_caption_pid": 40229,
+            "legacy_language_pid": 49,
+            "text": "Hvis du vil bruge, skal du logge ind.",
+            "auto_translated": "Hvis du vil bruge, skal du logge ind."
+        },
+        "he": {
+            "legacy_caption_pid": 40230,
+            "legacy_language_pid": 50,
+            "text": "כדי להשתמש, אתה צריך להתחבר.",
+            "auto_translated": "כדי להשתמש, אתה צריך להתחבר."
+        },
+        "no": {
+            "legacy_caption_pid": 40231,
+            "legacy_language_pid": 51,
+            "text": "Å bruke, må du logge inn.",
+            "auto_translated": "Å bruke, må du logge inn."
+        }
+    }
+}

@@ -1,0 +1,27 @@
+{
+    "resource_key": "TITLE_DA_FUNC_EDIT_PROXY_SINGLE_TARGET",
+    "legacy_resource_pid": 44,
+    "base_group_key": "grp-001-developers-matsuesoft-co-jp",
+    "additional_group_keys": [],
+    "key_for_update": "0",
+    "sort_group": "TITLE",
+    "key_name": "TITLE_DA_FUNC_EDIT_PROXY_SINGLE_TARGET",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": true,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 4342,
+            "legacy_language_pid": 1,
+            "text": "データアクセス関数 Proxy対象設定[単一対象]",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 4343,
+            "legacy_language_pid": 2,
+            "text": "Set Proxy Target of Data Access Function [Single Target]",
+            "auto_translated": ""
+        }
+    }
+}

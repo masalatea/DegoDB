@@ -1,0 +1,321 @@
+{
+    "resource_key": "TOAST_LOGIN_FAILED",
+    "legacy_resource_pid": 913,
+    "base_group_key": "grp-028-app-common-lib",
+    "additional_group_keys": [],
+    "key_for_update": "NVYHW1PPMNPyhmlNW6mzl6eJkw3OfS0oEdHldiZAsh0UXUrS9K0YsUmeQdrgRWlD25D5PTJwou8WNH4PRbV3b8Tz4frbEOph2dJ79vugGi7SrF2A6rG08aYdvnKiX8tF",
+    "sort_group": "Toast",
+    "key_name": "TOAST_LOGIN_FAILED",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": false,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 915,
+            "legacy_language_pid": 1,
+            "text": "ログイン失敗しました",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 916,
+            "legacy_language_pid": 2,
+            "text": "Login Failed",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 6480,
+            "legacy_language_pid": 3,
+            "text": "登录失败",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 6481,
+            "legacy_language_pid": 4,
+            "text": "로그인 실패",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 10278,
+            "legacy_language_pid": 5,
+            "text": "Error de inicio de sesión",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 10279,
+            "legacy_language_pid": 6,
+            "text": "Logon de erro",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 10280,
+            "legacy_language_pid": 7,
+            "text": "登錄失敗",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 16219,
+            "legacy_language_pid": 8,
+            "text": "Échec de la connexion",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 16220,
+            "legacy_language_pid": 9,
+            "text": "लॉगिन विफल",
+            "auto_translated": ""
+        },
+        "ar": {
+            "legacy_caption_pid": 28988,
+            "legacy_language_pid": 10,
+            "text": "كنا الدخول الفشل",
+            "auto_translated": "كنا الدخول الفشل"
+        },
+        "fa": {
+            "legacy_caption_pid": 28989,
+            "legacy_language_pid": 11,
+            "text": "ما شکست ورود شد",
+            "auto_translated": "ما شکست ورود شد"
+        },
+        "de": {
+            "legacy_caption_pid": 28990,
+            "legacy_language_pid": 12,
+            "text": "Wir waren Ausfälle anmelden",
+            "auto_translated": "Wir waren Ausfälle anmelden"
+        },
+        "ru": {
+            "legacy_caption_pid": 28991,
+            "legacy_language_pid": 13,
+            "text": "Мы Ошибка входа",
+            "auto_translated": "Мы Ошибка входа"
+        },
+        "ms": {
+            "legacy_caption_pid": 28992,
+            "legacy_language_pid": 14,
+            "text": "Kami telah melog masuk kegagalan",
+            "auto_translated": "Kami telah melog masuk kegagalan"
+        },
+        "ta": {
+            "legacy_caption_pid": 28993,
+            "legacy_language_pid": 15,
+            "text": "நாம் உள்நுழைய தோல்வியே கண்டன",
+            "auto_translated": "நாம் உள்நுழைய தோல்வியே கண்டன"
+        },
+        "it": {
+            "legacy_caption_pid": 28994,
+            "legacy_language_pid": 16,
+            "text": "Siamo stati Errori di login Intervallo",
+            "auto_translated": "Siamo stati Errori di login Intervallo"
+        },
+        "bn": {
+            "legacy_caption_pid": 28995,
+            "legacy_language_pid": 17,
+            "text": "আমরা লগইন হয়েছে ব্যর্থতা",
+            "auto_translated": "আমরা লগইন হয়েছে ব্যর্থতা"
+        },
+        "tr": {
+            "legacy_caption_pid": 28996,
+            "legacy_language_pid": 18,
+            "text": "Biz arızaları giriş alındı",
+            "auto_translated": "Biz arızaları giriş alındı"
+        },
+        "vi": {
+            "legacy_caption_pid": 28997,
+            "legacy_language_pid": 19,
+            "text": "Chúng tôi đã đăng nhập thất bại",
+            "auto_translated": "Chúng tôi đã đăng nhập thất bại"
+        },
+        "pl": {
+            "legacy_caption_pid": 28998,
+            "legacy_language_pid": 20,
+            "text": "Byliśmy zalogować awarie",
+            "auto_translated": "Byliśmy zalogować awarie"
+        },
+        "jv": {
+            "legacy_caption_pid": 28999,
+            "legacy_language_pid": 21,
+            "text": "Kita padha mlebet gagal",
+            "auto_translated": "Kita padha mlebet gagal"
+        },
+        "pa": {
+            "legacy_caption_pid": 29000,
+            "legacy_language_pid": 22,
+            "text": "ਸਾਨੂੰ ਲਾਗਇਨ ਗਏ ਸਨ ਅਸਫਲਤਾ",
+            "auto_translated": "ਸਾਨੂੰ ਲਾਗਇਨ ਗਏ ਸਨ ਅਸਫਲਤਾ"
+        },
+        "th": {
+            "legacy_caption_pid": 29001,
+            "legacy_language_pid": 23,
+            "text": "เรากำลังเข้าสู่ระบบล้มเหลว",
+            "auto_translated": "เรากำลังเข้าสู่ระบบล้มเหลว"
+        },
+        "te": {
+            "legacy_caption_pid": 34912,
+            "legacy_language_pid": 24,
+            "text": "మనం లాగిన్ పరాజయమైనాయి",
+            "auto_translated": "మనం లాగిన్ పరాజయమైనాయి"
+        },
+        "mr": {
+            "legacy_caption_pid": 34913,
+            "legacy_language_pid": 25,
+            "text": "आम्ही लॉगिन अपयश आले",
+            "auto_translated": "आम्ही लॉगिन अपयश आले"
+        },
+        "ur": {
+            "legacy_caption_pid": 34914,
+            "legacy_language_pid": 26,
+            "text": "ہم ناکامیوں میں لاگ ان کر رہے تھے",
+            "auto_translated": "ہم ناکامیوں میں لاگ ان کر رہے تھے"
+        },
+        "gu": {
+            "legacy_caption_pid": 34915,
+            "legacy_language_pid": 27,
+            "text": "અમે લૉગિન હતા નિષ્ફળતાઓ",
+            "auto_translated": "અમે લૉગિન હતા નિષ્ફળતાઓ"
+        },
+        "uk": {
+            "legacy_caption_pid": 34916,
+            "legacy_language_pid": 28,
+            "text": "Ми Помилка входу",
+            "auto_translated": "Ми Помилка входу"
+        },
+        "ml": {
+            "legacy_caption_pid": 34917,
+            "legacy_language_pid": 29,
+            "text": "നാം ലോഗിൻ പരാജയങ്ങൾ ആയിരുന്നു",
+            "auto_translated": "നാം ലോഗിൻ പരാജയങ്ങൾ ആയിരുന്നു"
+        },
+        "kn": {
+            "legacy_caption_pid": 34918,
+            "legacy_language_pid": 30,
+            "text": "ನಾವು ವೈಫಲ್ಯಗಳು ಲಾಗಿನ್ ಮಾಡಲಾಯಿತು",
+            "auto_translated": "ನಾವು ವೈಫಲ್ಯಗಳು ಲಾಗಿನ್ ಮಾಡಲಾಯಿತು"
+        },
+        "su": {
+            "legacy_caption_pid": 34919,
+            "legacy_language_pid": 31,
+            "text": "Kami login gagal",
+            "auto_translated": "Kami login gagal"
+        },
+        "ku": {
+            "legacy_caption_pid": 34920,
+            "legacy_language_pid": 32,
+            "text": "Em şkestin login bûn",
+            "auto_translated": "Em şkestin login bûn"
+        },
+        "ps": {
+            "legacy_caption_pid": 34921,
+            "legacy_language_pid": 33,
+            "text": "موږ سئ ناکامي",
+            "auto_translated": "موږ سئ ناکامي"
+        },
+        "ro": {
+            "legacy_caption_pid": 34922,
+            "legacy_language_pid": 34,
+            "text": "Am fost eșecuri de conectare",
+            "auto_translated": "Am fost eșecuri de conectare"
+        },
+        "id": {
+            "legacy_caption_pid": 34923,
+            "legacy_language_pid": 35,
+            "text": "Kami masuk kegagalan",
+            "auto_translated": "Kami masuk kegagalan"
+        },
+        "sd": {
+            "legacy_caption_pid": 34924,
+            "legacy_language_pid": 36,
+            "text": "اسان هتي ڪلڪ ڪري ناڪام ٿيا",
+            "auto_translated": "اسان هتي ڪلڪ ڪري ناڪام ٿيا"
+        },
+        "af": {
+            "legacy_caption_pid": 34925,
+            "legacy_language_pid": 37,
+            "text": "Ons is aanmeld mislukkings",
+            "auto_translated": "Ons is aanmeld mislukkings"
+        },
+        "sw": {
+            "legacy_caption_pid": 34926,
+            "legacy_language_pid": 38,
+            "text": "Sisi tulikuwa kuingia kushindwa",
+            "auto_translated": "Sisi tulikuwa kuingia kushindwa"
+        },
+        "lo": {
+            "legacy_caption_pid": 34927,
+            "legacy_language_pid": 39,
+            "text": "ພວກເຮົາໄດ້ລົ້ມເຫລວເຂົ້າສູ່ລະບົບ",
+            "auto_translated": "ພວກເຮົາໄດ້ລົ້ມເຫລວເຂົ້າສູ່ລະບົບ"
+        },
+        "nl": {
+            "legacy_caption_pid": 34928,
+            "legacy_language_pid": 40,
+            "text": "We waren in te loggen mislukkingen",
+            "auto_translated": "We waren in te loggen mislukkingen"
+        },
+        "tl": {
+            "legacy_caption_pid": 34929,
+            "legacy_language_pid": 41,
+            "text": "Kami ay mag-login pagkabigo",
+            "auto_translated": "Kami ay mag-login pagkabigo"
+        },
+        "ne": {
+            "legacy_caption_pid": 34930,
+            "legacy_language_pid": 42,
+            "text": "हामी असफल लग थिए",
+            "auto_translated": "हामी असफल लग थिए"
+        },
+        "hu": {
+            "legacy_caption_pid": 34931,
+            "legacy_language_pid": 43,
+            "text": "Mi sikertelen bejelentkezéseket",
+            "auto_translated": "Mi sikertelen bejelentkezéseket"
+        },
+        "cs": {
+            "legacy_caption_pid": 34932,
+            "legacy_language_pid": 44,
+            "text": "Byli jsme přihlásit selhání",
+            "auto_translated": "Byli jsme přihlásit selhání"
+        },
+        "el": {
+            "legacy_caption_pid": 34933,
+            "legacy_language_pid": 45,
+            "text": "Ήμασταν συνδεθείτε αποτυχίες",
+            "auto_translated": "Ήμασταν συνδεθείτε αποτυχίες"
+        },
+        "sv": {
+            "legacy_caption_pid": 34934,
+            "legacy_language_pid": 46,
+            "text": "Vi var inloggning misslyckanden",
+            "auto_translated": "Vi var inloggning misslyckanden"
+        },
+        "kk": {
+            "legacy_caption_pid": 34935,
+            "legacy_language_pid": 47,
+            "text": "Біз кіру сәтсіздікке болды",
+            "auto_translated": "Біз кіру сәтсіздікке болды"
+        },
+        "fi": {
+            "legacy_caption_pid": 34936,
+            "legacy_language_pid": 48,
+            "text": "Olimme kirjautumisvirhettä",
+            "auto_translated": "Olimme kirjautumisvirhettä"
+        },
+        "da": {
+            "legacy_caption_pid": 34937,
+            "legacy_language_pid": 49,
+            "text": "Vi blev logge fiaskoer",
+            "auto_translated": "Vi blev logge fiaskoer"
+        },
+        "he": {
+            "legacy_caption_pid": 34938,
+            "legacy_language_pid": 50,
+            "text": "היינו להתחבר כשלים",
+            "auto_translated": "היינו להתחבר כשלים"
+        },
+        "no": {
+            "legacy_caption_pid": 34939,
+            "legacy_language_pid": 51,
+            "text": "Vi ble login feil",
+            "auto_translated": "Vi ble login feil"
+        }
+    }
+}

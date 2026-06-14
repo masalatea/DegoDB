@@ -1,0 +1,321 @@
+{
+    "resource_key": "EMAIL_COMMON_VERIFICATION_NOTE3_LINE2",
+    "legacy_resource_pid": 2589,
+    "base_group_key": "grp-005-common-lib",
+    "additional_group_keys": [],
+    "key_for_update": "qGURMZqcL6vkqH6Jjqc9qhvwdiiWDmHPmYnhD2ExSoBmRxjG6cZQyNtuxVwWI0PYEdUdAq5nf3c9xza97CQ1twUqXlzQTJjA4VHnYMzLctTjgxA5joz5c6iJ1koyI2ft",
+    "sort_group": "EMAIL VERIFICATION",
+    "key_name": "EMAIL_COMMON_VERIFICATION_NOTE3_LINE2",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": false,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 19538,
+            "legacy_language_pid": 1,
+            "text": "その場合、一旦ログイン後に再度上記URLをオープン下さい。",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 19539,
+            "legacy_language_pid": 2,
+            "text": "In that case, please once open the above URL after logging in.",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 19540,
+            "legacy_language_pid": 3,
+            "text": "在这种情况下，请在登录后打开上述URL",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 19541,
+            "legacy_language_pid": 4,
+            "text": "이 경우 일단 로그인 한 후 다시 위의 URL을 오픈하세요.",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 19542,
+            "legacy_language_pid": 5,
+            "text": "En ese caso, por favor, abra la URL anterior después de iniciar sesión.",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 19543,
+            "legacy_language_pid": 6,
+            "text": "Nesse caso, por favor, abra o URL acima depois de iniciar sessão.",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 19544,
+            "legacy_language_pid": 7,
+            "text": "在這種情況下，請在登錄後打開上述URL",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 19545,
+            "legacy_language_pid": 8,
+            "text": "Dans ce cas, veuillez ouvrir l'URL ci-dessus après l'ouverture de session.",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 19546,
+            "legacy_language_pid": 9,
+            "text": "उस स्थिति में, कृपया प्रवेश करने के बाद उपरोक्त URL खोलें।",
+            "auto_translated": ""
+        },
+        "ar": {
+            "legacy_caption_pid": 29730,
+            "legacy_language_pid": 10,
+            "text": "في هذه الحالة، مرة واحدة الرجاء فتح مرة أخرى URL بعد تسجيل الدخول.",
+            "auto_translated": "في هذه الحالة، مرة واحدة الرجاء فتح مرة أخرى URL بعد تسجيل الدخول."
+        },
+        "fa": {
+            "legacy_caption_pid": 29731,
+            "legacy_language_pid": 11,
+            "text": "در این صورت، یک بار لطفا دوباره باز کردن URL بعد از اینکه شما وارد شوید.",
+            "auto_translated": "در این صورت، یک بار لطفا دوباره باز کردن URL بعد از اینکه شما وارد شوید."
+        },
+        "de": {
+            "legacy_caption_pid": 29732,
+            "legacy_language_pid": 12,
+            "text": "In diesem Fall öffnen Sie bitte noch einmal die URL nach dem Anmelden.",
+            "auto_translated": "In diesem Fall öffnen Sie bitte noch einmal die URL nach dem Anmelden."
+        },
+        "ru": {
+            "legacy_caption_pid": 29733,
+            "legacy_language_pid": 13,
+            "text": "В этом случае, когда необходимо открыть снова URL после войти.",
+            "auto_translated": "В этом случае, когда необходимо открыть снова URL после войти."
+        },
+        "ms": {
+            "legacy_caption_pid": 29734,
+            "legacy_language_pid": 14,
+            "text": "Dalam kes itu, sekali lagi sila buka URL selepas anda log masuk.",
+            "auto_translated": "Dalam kes itu, sekali lagi sila buka URL selepas anda log masuk."
+        },
+        "ta": {
+            "legacy_caption_pid": 29735,
+            "legacy_language_pid": 15,
+            "text": "நீங்கள் உள்நுழைந்த பின் என்று வழக்கில், மீண்டும் URL ஐ திறக்க.",
+            "auto_translated": "நீங்கள் உள்நுழைந்த பின் என்று வழக்கில், மீண்டும் URL ஐ திறக்க."
+        },
+        "it": {
+            "legacy_caption_pid": 29736,
+            "legacy_language_pid": 16,
+            "text": "In tal caso, una volta aprire nuovamente l'URL dopo l'accesso.",
+            "auto_translated": "In tal caso, una volta aprire nuovamente l'URL dopo l'accesso."
+        },
+        "bn": {
+            "legacy_caption_pid": 29737,
+            "legacy_language_pid": 17,
+            "text": "সেক্ষেত্রে, আবার URL খোলার দয়া পরে আপনি লগ ইন করুন।",
+            "auto_translated": "সেক্ষেত্রে, আবার URL খোলার দয়া পরে আপনি লগ ইন করুন।"
+        },
+        "tr": {
+            "legacy_caption_pid": 29738,
+            "legacy_language_pid": 18,
+            "text": "giriş sonra o durumda, bir kez daha URL'yi açın.",
+            "auto_translated": "giriş sonra o durumda, bir kez daha URL'yi açın."
+        },
+        "vi": {
+            "legacy_caption_pid": 29739,
+            "legacy_language_pid": 19,
+            "text": "Trong trường hợp đó, một lần hãy mở lại các URL sau khi bạn đăng nhập.",
+            "auto_translated": "Trong trường hợp đó, một lần hãy mở lại các URL sau khi bạn đăng nhập."
+        },
+        "pl": {
+            "legacy_caption_pid": 29740,
+            "legacy_language_pid": 20,
+            "text": "W takim przypadku, po raz kolejny proszę otworzyć URL po zalogowaniu.",
+            "auto_translated": "W takim przypadku, po raz kolejny proszę otworzyć URL po zalogowaniu."
+        },
+        "jv": {
+            "legacy_caption_pid": 29741,
+            "legacy_language_pid": 21,
+            "text": "Ing kasus-kasus iku, sapisan mangga mbukak maneh URL sawise sampeyan mlebu.",
+            "auto_translated": "Ing kasus-kasus iku, sapisan mangga mbukak maneh URL sawise sampeyan mlebu."
+        },
+        "pa": {
+            "legacy_caption_pid": 29742,
+            "legacy_language_pid": 22,
+            "text": "ਜੋ ਕਿ ਇਸ ਕੇਸ ਵਿੱਚ, ਇਕ ਵਾਰ ਫਿਰ URL ਨੂੰ ਖੋਲ੍ਹਣ, ਕਿਰਪਾ ਕਰਕੇ ਬਾਅਦ ਤੁਹਾਨੂੰ ਲਾਗਇਨ.",
+            "auto_translated": "ਜੋ ਕਿ ਇਸ ਕੇਸ ਵਿੱਚ, ਇਕ ਵਾਰ ਫਿਰ URL ਨੂੰ ਖੋਲ੍ਹਣ, ਕਿਰਪਾ ਕਰਕੇ ਬਾਅਦ ਤੁਹਾਨੂੰ ਲਾਗਇਨ."
+        },
+        "th": {
+            "legacy_caption_pid": 29743,
+            "legacy_language_pid": 23,
+            "text": "ในกรณีที่ว่าเมื่อโปรดเปิดอีกครั้ง URL หลังจากที่คุณเข้าสู่ระบบ",
+            "auto_translated": "ในกรณีที่ว่าเมื่อโปรดเปิดอีกครั้ง URL หลังจากที่คุณเข้าสู่ระบบ"
+        },
+        "te": {
+            "legacy_caption_pid": 36984,
+            "legacy_language_pid": 24,
+            "text": "మీరు లాగిన్ తర్వాత సందర్భంలో, మరోసారి తెరవడానికి URL దయచేసి.",
+            "auto_translated": "మీరు లాగిన్ తర్వాత సందర్భంలో, మరోసారి తెరవడానికి URL దయచేసి."
+        },
+        "mr": {
+            "legacy_caption_pid": 36985,
+            "legacy_language_pid": 25,
+            "text": "त्या प्रकरणात, तुम्ही लॉग इन केल्यानंतर पुन्हा एकदा URL उघडा करा.",
+            "auto_translated": "त्या प्रकरणात, तुम्ही लॉग इन केल्यानंतर पुन्हा एकदा URL उघडा करा."
+        },
+        "ur": {
+            "legacy_caption_pid": 36986,
+            "legacy_language_pid": 26,
+            "text": "اس صورت میں، ایک بار آپ کو لاگ بعد دوبارہ URL کھولنے کریں.",
+            "auto_translated": "اس صورت میں، ایک بار آپ کو لاگ بعد دوبارہ URL کھولنے کریں."
+        },
+        "gu": {
+            "legacy_caption_pid": 36987,
+            "legacy_language_pid": 27,
+            "text": "તે કિસ્સામાં, ફરી એક વાર URL ખોલવા કૃપા કરીને પછી, તમે લૉગ ઇન કરો.",
+            "auto_translated": "તે કિસ્સામાં, ફરી એક વાર URL ખોલવા કૃપા કરીને પછી, તમે લૉગ ઇન કરો."
+        },
+        "uk": {
+            "legacy_caption_pid": 36988,
+            "legacy_language_pid": 28,
+            "text": "У цьому випадку, коли необхідно відкрити знову URL після увійти.",
+            "auto_translated": "У цьому випадку, коли необхідно відкрити знову URL після увійти."
+        },
+        "ml": {
+            "legacy_caption_pid": 36989,
+            "legacy_language_pid": 29,
+            "text": "നിങ്ങൾ ലോഗിൻ ചെയ്ത ശേഷം ആ സാഹചര്യത്തിൽ, വീണ്ടും URL തുറക്കുക ദയവായി.",
+            "auto_translated": "നിങ്ങൾ ലോഗിൻ ചെയ്ത ശേഷം ആ സാഹചര്യത്തിൽ, വീണ്ടും URL തുറക്കുക ദയവായി."
+        },
+        "kn": {
+            "legacy_caption_pid": 36990,
+            "legacy_language_pid": 30,
+            "text": "ಆ ಸಂದರ್ಭದಲ್ಲಿ, ಒಮ್ಮೆ ಲಾಗ್ ಇನ್ ಆದ URL ಅನ್ನು ಮತ್ತೆ ತೆರೆಯಲು ದಯವಿಟ್ಟು.",
+            "auto_translated": "ಆ ಸಂದರ್ಭದಲ್ಲಿ, ಒಮ್ಮೆ ಲಾಗ್ ಇನ್ ಆದ URL ಅನ್ನು ಮತ್ತೆ ತೆರೆಯಲು ದಯವಿಟ್ಟು."
+        },
+        "su": {
+            "legacy_caption_pid": 36991,
+            "legacy_language_pid": 31,
+            "text": "Dina kasus eta, sakali punten buka deui URL sanggeus anjeun asup.",
+            "auto_translated": "Dina kasus eta, sakali punten buka deui URL sanggeus anjeun asup."
+        },
+        "ku": {
+            "legacy_caption_pid": 36992,
+            "legacy_language_pid": 32,
+            "text": "Di vê rewşê de, carekê ji kerema xwe ve dîsa vekirina URL piştî ku tu têkevî.",
+            "auto_translated": "Di vê rewşê de, carekê ji kerema xwe ve dîsa vekirina URL piştî ku tu têkevî."
+        },
+        "ps": {
+            "legacy_caption_pid": 36993,
+            "legacy_language_pid": 33,
+            "text": "په دې صورت کې، یو ځل لطفا د حافظی بيا دابرخه وروسته تاسو ته د ننوتلو.",
+            "auto_translated": "په دې صورت کې، یو ځل لطفا د حافظی بيا دابرخه وروسته تاسو ته د ننوتلو."
+        },
+        "ro": {
+            "legacy_caption_pid": 36994,
+            "legacy_language_pid": 34,
+            "text": "În acest caz, o dată vă rugăm să deschideți adresa URL din nou după ce vă conectați.",
+            "auto_translated": "În acest caz, o dată vă rugăm să deschideți adresa URL din nou după ce vă conectați."
+        },
+        "id": {
+            "legacy_caption_pid": 36995,
+            "legacy_language_pid": 35,
+            "text": "Dalam hal ini, sekali silahkan buka lagi URL setelah Anda log in.",
+            "auto_translated": "Dalam hal ini, sekali silahkan buka lagi URL setelah Anda log in."
+        },
+        "sd": {
+            "legacy_caption_pid": 36996,
+            "legacy_language_pid": 36,
+            "text": "ته صورت ۾، هڪ ڀيرو وري سنڌ جي URL جو کلي مهرباني ڪري پوء توهان جو لاگ ان.",
+            "auto_translated": "ته صورت ۾، هڪ ڀيرو وري سنڌ جي URL جو کلي مهرباني ڪري پوء توهان جو لاگ ان."
+        },
+        "af": {
+            "legacy_caption_pid": 36997,
+            "legacy_language_pid": 37,
+            "text": "In daardie geval, sodra u oopmaak weer die URL na jou aan te meld.",
+            "auto_translated": "In daardie geval, sodra u oopmaak weer die URL na jou aan te meld."
+        },
+        "sw": {
+            "legacy_caption_pid": 36998,
+            "legacy_language_pid": 38,
+            "text": "Kwa hali hiyo, mara moja tafadhali kufungua tena URL baada kuingia.",
+            "auto_translated": "Kwa hali hiyo, mara moja tafadhali kufungua tena URL baada kuingia."
+        },
+        "lo": {
+            "legacy_caption_pid": 36999,
+            "legacy_language_pid": 39,
+            "text": "ໃນກໍລະນີນັ້ນ, ເມື່ອກະລຸນາເປີດອີກເທື່ອຫນຶ່ງ URL ຫຼັງຈາກທີ່ທ່ານເຂົ້າສູ່ລະບົບ.",
+            "auto_translated": "ໃນກໍລະນີນັ້ນ, ເມື່ອກະລຸນາເປີດອີກເທື່ອຫນຶ່ງ URL ຫຼັງຈາກທີ່ທ່ານເຂົ້າສູ່ລະບົບ."
+        },
+        "nl": {
+            "legacy_caption_pid": 37000,
+            "legacy_language_pid": 40,
+            "text": "In dat geval een keer opent opnieuw de URL nadat u in te loggen.",
+            "auto_translated": "In dat geval een keer opent opnieuw de URL nadat u in te loggen."
+        },
+        "tl": {
+            "legacy_caption_pid": 37001,
+            "legacy_language_pid": 41,
+            "text": "Sa kasong iyon, isang beses pakibuksan muli ang URL pagkatapos mong mag-log in.",
+            "auto_translated": "Sa kasong iyon, isang beses pakibuksan muli ang URL pagkatapos mong mag-log in."
+        },
+        "ne": {
+            "legacy_caption_pid": 37002,
+            "legacy_language_pid": 42,
+            "text": "त्यस अवस्थामा, एक पटक कृपया फेरि URL तपाईं लग इन गर्नुहोस् पछि खोल्न।",
+            "auto_translated": "त्यस अवस्थामा, एक पटक कृपया फेरि URL तपाईं लग इन गर्नुहोस् पछि खोल्न।"
+        },
+        "hu": {
+            "legacy_caption_pid": 37003,
+            "legacy_language_pid": 43,
+            "text": "Ebben az esetben, ha kérjük, nyissa meg újra az URL a bejelentkezést követően.",
+            "auto_translated": "Ebben az esetben, ha kérjük, nyissa meg újra az URL a bejelentkezést követően."
+        },
+        "cs": {
+            "legacy_caption_pid": 37004,
+            "legacy_language_pid": 44,
+            "text": "V tomto případě, jakmile otevřete prosím znovu adresu URL po přihlášení.",
+            "auto_translated": "V tomto případě, jakmile otevřete prosím znovu adresu URL po přihlášení."
+        },
+        "el": {
+            "legacy_caption_pid": 37005,
+            "legacy_language_pid": 45,
+            "text": "Σε αυτή την περίπτωση, για άλλη μια ανοίξτε ξανά το URL αφού συνδεθείτε.",
+            "auto_translated": "Σε αυτή την περίπτωση, για άλλη μια ανοίξτε ξανά το URL αφού συνδεθείτε."
+        },
+        "sv": {
+            "legacy_caption_pid": 37006,
+            "legacy_language_pid": 46,
+            "text": "I så fall åter vänligen öppna igen URL när du loggar in.",
+            "auto_translated": "I så fall åter vänligen öppna igen URL när du loggar in."
+        },
+        "kk": {
+            "legacy_caption_pid": 37007,
+            "legacy_language_pid": 47,
+            "text": "Кіргеннен кейін, бұл жағдайда, тағы да бір рет URL ашу сұраймыз.",
+            "auto_translated": "Кіргеннен кейін, бұл жағдайда, тағы да бір рет URL ашу сұраймыз."
+        },
+        "fi": {
+            "legacy_caption_pid": 37008,
+            "legacy_language_pid": 48,
+            "text": "Siinä tapauksessa, kun avaa jälleen URL kun olet kirjautunut sisään.",
+            "auto_translated": "Siinä tapauksessa, kun avaa jälleen URL kun olet kirjautunut sisään."
+        },
+        "da": {
+            "legacy_caption_pid": 37009,
+            "legacy_language_pid": 49,
+            "text": "I så fald, når du åbne igen URL'en, efter at du logger ind.",
+            "auto_translated": "I så fald, når du åbne igen URL'en, efter at du logger ind."
+        },
+        "he": {
+            "legacy_caption_pid": 37010,
+            "legacy_language_pid": 50,
+            "text": "במקרה כזה, פעם בבקשה לפתוח שוב את כתובת האתר לאחר שתתחבר.",
+            "auto_translated": "במקרה כזה, פעם בבקשה לפתוח שוב את כתובת האתר לאחר שתתחבר."
+        },
+        "no": {
+            "legacy_caption_pid": 37011,
+            "legacy_language_pid": 51,
+            "text": "I så fall, når du åpner igjen nettadressen når du logger inn.",
+            "auto_translated": "I så fall, når du åpner igjen nettadressen når du logger inn."
+        }
+    }
+}

@@ -1,0 +1,321 @@
+{
+    "resource_key": "COMMON_LIB_UPDATE_PROFILE_SEND_BOOKING_COMFIRMATION_MAIL",
+    "legacy_resource_pid": 1617,
+    "base_group_key": "grp-010-matsuesoft-lib",
+    "additional_group_keys": [],
+    "key_for_update": "XDcdNLcufnLfyPDP8uNUCCjMZZNDX7S2fpMVoGP8Po5Ac4tfuAIryy8LdhpkYLywAQmv7xai2PfIDlWvAIJg8GpMqy94NuD1iCPooEL0EjkqhP8nlU7bmEY8GSv5JoeP",
+    "sort_group": "PROFILE",
+    "key_name": "COMMON_LIB_UPDATE_PROFILE_SEND_BOOKING_COMFIRMATION_MAIL",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": false,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 7250,
+            "legacy_language_pid": 1,
+            "text": "予約確認メールを送信する:",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 7251,
+            "legacy_language_pid": 2,
+            "text": "Send reservation confirmation email:",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 7252,
+            "legacy_language_pid": 3,
+            "text": "预约确认电子邮件发送：",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 7253,
+            "legacy_language_pid": 4,
+            "text": "예약 확인 메일 :",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 11165,
+            "legacy_language_pid": 5,
+            "text": "Envíe el correo electrónico de confirmación de la reserva:",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 11166,
+            "legacy_language_pid": 6,
+            "text": "Enviar e-mail de confirmação da reserva:",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 11167,
+            "legacy_language_pid": 7,
+            "text": "預約確認電子郵件發送：",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 17291,
+            "legacy_language_pid": 8,
+            "text": "Envoyer un courrier électronique de confirmation de réservation:",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 17292,
+            "legacy_language_pid": 9,
+            "text": "आरक्षण पुष्टि ईमेल भेजें:",
+            "auto_translated": ""
+        },
+        "ar": {
+            "legacy_caption_pid": 33022,
+            "legacy_language_pid": 10,
+            "text": "لإرسال البريد الإلكتروني تأكيد:",
+            "auto_translated": "لإرسال البريد الإلكتروني تأكيد:"
+        },
+        "fa": {
+            "legacy_caption_pid": 33023,
+            "legacy_language_pid": 11,
+            "text": "برای ارسال یک تایید ایمیل:",
+            "auto_translated": "برای ارسال یک تایید ایمیل:"
+        },
+        "de": {
+            "legacy_caption_pid": 33024,
+            "legacy_language_pid": 12,
+            "text": "Um eine Bestätigungs-E-Mail an:",
+            "auto_translated": "Um eine Bestätigungs-E-Mail an:"
+        },
+        "ru": {
+            "legacy_caption_pid": 33025,
+            "legacy_language_pid": 13,
+            "text": "Для того, чтобы отправить подтверждение по электронной почте:",
+            "auto_translated": "Для того, чтобы отправить подтверждение по электронной почте:"
+        },
+        "ms": {
+            "legacy_caption_pid": 33026,
+            "legacy_language_pid": 14,
+            "text": "Untuk menghantar e-mel pengesahan:",
+            "auto_translated": "Untuk menghantar e-mel pengesahan:"
+        },
+        "ta": {
+            "legacy_caption_pid": 33027,
+            "legacy_language_pid": 15,
+            "text": "ஒரு உறுதிப்படுத்தல் மின்னஞ்சல் அனுப்ப:",
+            "auto_translated": "ஒரு உறுதிப்படுத்தல் மின்னஞ்சல் அனுப்ப:"
+        },
+        "it": {
+            "legacy_caption_pid": 33028,
+            "legacy_language_pid": 16,
+            "text": "Per inviare un e-mail di conferma:",
+            "auto_translated": "Per inviare un e-mail di conferma:"
+        },
+        "bn": {
+            "legacy_caption_pid": 33029,
+            "legacy_language_pid": 17,
+            "text": "একটি নিশ্চিতকরণ ই-মেইল পাঠানোর জন্য:",
+            "auto_translated": "একটি নিশ্চিতকরণ ই-মেইল পাঠানোর জন্য:"
+        },
+        "tr": {
+            "legacy_caption_pid": 33030,
+            "legacy_language_pid": 18,
+            "text": "bir onay e-posta göndermek için:",
+            "auto_translated": "bir onay e-posta göndermek için:"
+        },
+        "vi": {
+            "legacy_caption_pid": 33031,
+            "legacy_language_pid": 19,
+            "text": "Để gửi một xác nhận e-mail:",
+            "auto_translated": "Để gửi một xác nhận e-mail:"
+        },
+        "pl": {
+            "legacy_caption_pid": 33032,
+            "legacy_language_pid": 20,
+            "text": "Aby wysłać potwierdzenie e-mail:",
+            "auto_translated": "Aby wysłać potwierdzenie e-mail:"
+        },
+        "jv": {
+            "legacy_caption_pid": 33033,
+            "legacy_language_pid": 21,
+            "text": "Kanggo ngirim e-mail konfirmasi:",
+            "auto_translated": "Kanggo ngirim e-mail konfirmasi:"
+        },
+        "pa": {
+            "legacy_caption_pid": 33034,
+            "legacy_language_pid": 22,
+            "text": "ਇੱਕ ਪੁਸ਼ਟੀ ਈ-ਮੇਲ ਭੇਜਣ ਲਈ:",
+            "auto_translated": "ਇੱਕ ਪੁਸ਼ਟੀ ਈ-ਮੇਲ ਭੇਜਣ ਲਈ:"
+        },
+        "th": {
+            "legacy_caption_pid": 33035,
+            "legacy_language_pid": 23,
+            "text": "เพื่อส่งอีเมล์ยืนยัน:",
+            "auto_translated": "เพื่อส่งอีเมล์ยืนยัน:"
+        },
+        "te": {
+            "legacy_caption_pid": 39560,
+            "legacy_language_pid": 24,
+            "text": "నిర్ధారణ ఇ-మెయిల్ పంపడానికి:",
+            "auto_translated": "నిర్ధారణ ఇ-మెయిల్ పంపడానికి:"
+        },
+        "mr": {
+            "legacy_caption_pid": 39561,
+            "legacy_language_pid": 25,
+            "text": "एक पुष्टी ई-मेल पाठविण्यासाठी:",
+            "auto_translated": "एक पुष्टी ई-मेल पाठविण्यासाठी:"
+        },
+        "ur": {
+            "legacy_caption_pid": 39562,
+            "legacy_language_pid": 26,
+            "text": "ایک توثیقی ای میل بھیجنے کے لئے:",
+            "auto_translated": "ایک توثیقی ای میل بھیجنے کے لئے:"
+        },
+        "gu": {
+            "legacy_caption_pid": 39563,
+            "legacy_language_pid": 27,
+            "text": "પુષ્ટિકરણ ઈ-મેલ મોકલવા માટે:",
+            "auto_translated": "પુષ્ટિકરણ ઈ-મેલ મોકલવા માટે:"
+        },
+        "uk": {
+            "legacy_caption_pid": 39564,
+            "legacy_language_pid": 28,
+            "text": "Для того, щоб відправити підтвердження по електронній пошті:",
+            "auto_translated": "Для того, щоб відправити підтвердження по електронній пошті:"
+        },
+        "ml": {
+            "legacy_caption_pid": 39565,
+            "legacy_language_pid": 29,
+            "text": "ഒരു സ്ഥിരീകരണ ഇ-മെയിൽ അയക്കാൻ:",
+            "auto_translated": "ഒരു സ്ഥിരീകരണ ഇ-മെയിൽ അയക്കാൻ:"
+        },
+        "kn": {
+            "legacy_caption_pid": 39566,
+            "legacy_language_pid": 30,
+            "text": "ಒಂದು ದೃಢೀಕರಣ ಇಮೇಲ್ ಕಳುಹಿಸಿ:",
+            "auto_translated": "ಒಂದು ದೃಢೀಕರಣ ಇಮೇಲ್ ಕಳುಹಿಸಿ:"
+        },
+        "su": {
+            "legacy_caption_pid": 39567,
+            "legacy_language_pid": 31,
+            "text": "Pikeun ngirim hiji e-mail konfirmasi:",
+            "auto_translated": "Pikeun ngirim hiji e-mail konfirmasi:"
+        },
+        "ku": {
+            "legacy_caption_pid": 39568,
+            "legacy_language_pid": 32,
+            "text": "Ji bo şandina erêkirina e-mail:",
+            "auto_translated": "Ji bo şandina erêkirina e-mail:"
+        },
+        "ps": {
+            "legacy_caption_pid": 39569,
+            "legacy_language_pid": 33,
+            "text": "د تصدیق E-mail ته واستوي:",
+            "auto_translated": "د تصدیق E-mail ته واستوي:"
+        },
+        "ro": {
+            "legacy_caption_pid": 39570,
+            "legacy_language_pid": 34,
+            "text": "Pentru a trimite un e-mail de confirmare:",
+            "auto_translated": "Pentru a trimite un e-mail de confirmare:"
+        },
+        "id": {
+            "legacy_caption_pid": 39571,
+            "legacy_language_pid": 35,
+            "text": "Untuk mengirim e-mail konfirmasi:",
+            "auto_translated": "Untuk mengirim e-mail konfirmasi:"
+        },
+        "sd": {
+            "legacy_caption_pid": 39572,
+            "legacy_language_pid": 36,
+            "text": "هڪ تصديق اي-ميل موڪلڻ لاء:",
+            "auto_translated": "هڪ تصديق اي-ميل موڪلڻ لاء:"
+        },
+        "af": {
+            "legacy_caption_pid": 39573,
+            "legacy_language_pid": 37,
+            "text": "'N bevestiging e-pos te stuur:",
+            "auto_translated": "'N bevestiging e-pos te stuur:"
+        },
+        "sw": {
+            "legacy_caption_pid": 39574,
+            "legacy_language_pid": 38,
+            "text": "Kutuma uthibitisho barua pepe:",
+            "auto_translated": "Kutuma uthibitisho barua pepe:"
+        },
+        "lo": {
+            "legacy_caption_pid": 39575,
+            "legacy_language_pid": 39,
+            "text": "ເພື່ອສົ່ງການຢືນຢັນອີເມລ:",
+            "auto_translated": "ເພື່ອສົ່ງການຢືນຢັນອີເມລ:"
+        },
+        "nl": {
+            "legacy_caption_pid": 39576,
+            "legacy_language_pid": 40,
+            "text": "Om een ​​bevestiging per e-mail sturen naar:",
+            "auto_translated": "Om een ​​bevestiging per e-mail sturen naar:"
+        },
+        "tl": {
+            "legacy_caption_pid": 39577,
+            "legacy_language_pid": 41,
+            "text": "Upang magpadala ng isang kumpirmasyon sa e-mail:",
+            "auto_translated": "Upang magpadala ng isang kumpirmasyon sa e-mail:"
+        },
+        "ne": {
+            "legacy_caption_pid": 39578,
+            "legacy_language_pid": 42,
+            "text": "एक पुष्टि ई-मेल पठाउन:",
+            "auto_translated": "एक पुष्टि ई-मेल पठाउन:"
+        },
+        "hu": {
+            "legacy_caption_pid": 39579,
+            "legacy_language_pid": 43,
+            "text": "Ahhoz, hogy küld egy megerősítő e-mail:",
+            "auto_translated": "Ahhoz, hogy küld egy megerősítő e-mail:"
+        },
+        "cs": {
+            "legacy_caption_pid": 39580,
+            "legacy_language_pid": 44,
+            "text": "Chcete-li poslat e-mail s potvrzením:",
+            "auto_translated": "Chcete-li poslat e-mail s potvrzením:"
+        },
+        "el": {
+            "legacy_caption_pid": 39581,
+            "legacy_language_pid": 45,
+            "text": "Για να στείλετε ένα e-mail επιβεβαίωσης:",
+            "auto_translated": "Για να στείλετε ένα e-mail επιβεβαίωσης:"
+        },
+        "sv": {
+            "legacy_caption_pid": 39582,
+            "legacy_language_pid": 46,
+            "text": "För att skicka en bekräftelse via e-post:",
+            "auto_translated": "För att skicka en bekräftelse via e-post:"
+        },
+        "kk": {
+            "legacy_caption_pid": 39583,
+            "legacy_language_pid": 47,
+            "text": "растау электрондық пошта жіберу үшін:",
+            "auto_translated": "растау электрондық пошта жіберу үшін:"
+        },
+        "fi": {
+            "legacy_caption_pid": 39584,
+            "legacy_language_pid": 48,
+            "text": "Lähettää vahvistuksen sähköpostitse:",
+            "auto_translated": "Lähettää vahvistuksen sähköpostitse:"
+        },
+        "da": {
+            "legacy_caption_pid": 39585,
+            "legacy_language_pid": 49,
+            "text": "For at sende en bekræftelse via e-mail:",
+            "auto_translated": "For at sende en bekræftelse via e-mail:"
+        },
+        "he": {
+            "legacy_caption_pid": 39586,
+            "legacy_language_pid": 50,
+            "text": "לשליחת דואר אלקטרוני אישור:",
+            "auto_translated": "לשליחת דואר אלקטרוני אישור:"
+        },
+        "no": {
+            "legacy_caption_pid": 39587,
+            "legacy_language_pid": 51,
+            "text": "For å sende en bekreftelse på e-post:",
+            "auto_translated": "For å sende en bekreftelse på e-post:"
+        }
+    }
+}

@@ -1,0 +1,321 @@
+{
+    "resource_key": "COMMON_LIB_ENROLL_YOU_CAN_LOGIN_BY_ID_PASSWOD",
+    "legacy_resource_pid": 1448,
+    "base_group_key": "grp-010-matsuesoft-lib",
+    "additional_group_keys": [],
+    "key_for_update": "b6u2LvCwW0f1vzJBIF8J84bJorqxECujaHmgiZngjwDWfdWfsIL7phAZtmLFmAag3fAxLZUxv9J0JvmRKL5Qsz8HKiKQY6bJkd1MqOEoIvqgTmbZ7fbBGDVVugOvwHRp",
+    "sort_group": "ENROLL",
+    "key_name": "COMMON_LIB_ENROLL_YOU_CAN_LOGIN_BY_ID_PASSWOD",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": false,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 6066,
+            "legacy_language_pid": 1,
+            "text": "以下のユーザ名(ID)およびパスワードを使ってログインできます。",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 6067,
+            "legacy_language_pid": 2,
+            "text": "You can login by using following User Name (ID) and Password",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 6068,
+            "legacy_language_pid": 3,
+            "text": "您可以登录使用下列用户名ID和密码。",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 6069,
+            "legacy_language_pid": 4,
+            "text": "다음의 아이디와 비밀번호를 사용하여 로그인할 수 있습니다.",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 10934,
+            "legacy_language_pid": 5,
+            "text": "Puede iniciar sesión mediante el siguiente ID y contraseña",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 10935,
+            "legacy_language_pid": 6,
+            "text": "Você pode fazer o login usando a seguinte ID e Senha",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 10936,
+            "legacy_language_pid": 7,
+            "text": "您可以登錄使用下列用户名ID和密碼。",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 16033,
+            "legacy_language_pid": 8,
+            "text": "Vous pouvez vous connecter en utilisant le Nom d'utilisateur (ID) et le Mot de passe suivants",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 16034,
+            "legacy_language_pid": 9,
+            "text": "आप निम्न यूज़र नेम (आईडी) और पासवर्ड का उपयोग करके लॉगिन कर सकते हैं",
+            "auto_translated": ""
+        },
+        "ar": {
+            "legacy_caption_pid": 31914,
+            "legacy_language_pid": 10,
+            "text": "يمكنك تسجيل الدخول باستخدام اسم المستخدم التالية (ID) وكلمة المرور.",
+            "auto_translated": "يمكنك تسجيل الدخول باستخدام اسم المستخدم التالية (ID) وكلمة المرور."
+        },
+        "fa": {
+            "legacy_caption_pid": 31915,
+            "legacy_language_pid": 11,
+            "text": "شما می توانید در استفاده از نام های زیر را برای کاربران (ID) و رمز عبور وارد شوید.",
+            "auto_translated": "شما می توانید در استفاده از نام های زیر را برای کاربران (ID) و رمز عبور وارد شوید."
+        },
+        "de": {
+            "legacy_caption_pid": 31916,
+            "legacy_language_pid": 12,
+            "text": "Sie können sich mit den folgenden Benutzernamen (ID) und Passwort anmelden.",
+            "auto_translated": "Sie können sich mit den folgenden Benutzernamen (ID) und Passwort anmelden."
+        },
+        "ru": {
+            "legacy_caption_pid": 31917,
+            "legacy_language_pid": 13,
+            "text": "Вы можете войти, используя следующее имя пользователя (ID) и пароль.",
+            "auto_translated": "Вы можете войти, используя следующее имя пользователя (ID) и пароль."
+        },
+        "ms": {
+            "legacy_caption_pid": 31918,
+            "legacy_language_pid": 14,
+            "text": "Anda boleh log masuk menggunakan nama berikut pengguna (ID) dan kata laluan.",
+            "auto_translated": "Anda boleh log masuk menggunakan nama berikut pengguna (ID) dan kata laluan."
+        },
+        "ta": {
+            "legacy_caption_pid": 31919,
+            "legacy_language_pid": 15,
+            "text": "நீங்கள் பின்வரும் பயனர் பெயர் (ஐடி) கடவுச்சொல்லும் பயன்படுத்தி உள்நுழையலாம்.",
+            "auto_translated": "நீங்கள் பின்வரும் பயனர் பெயர் (ஐடி) கடவுச்சொல்லும் பயன்படுத்தி உள்நுழையலாம்."
+        },
+        "it": {
+            "legacy_caption_pid": 31920,
+            "legacy_language_pid": 16,
+            "text": "È possibile accedere utilizzando il seguente nome utente (ID) e la password.",
+            "auto_translated": "È possibile accedere utilizzando il seguente nome utente (ID) e la password."
+        },
+        "bn": {
+            "legacy_caption_pid": 31921,
+            "legacy_language_pid": 17,
+            "text": "আপনি নিম্নলিখিত ব্যবহারকারী নাম (আইডি) ও পাসওয়ার্ড ব্যবহার করে লগ ইন করতে পারেন।",
+            "auto_translated": "আপনি নিম্নলিখিত ব্যবহারকারী নাম (আইডি) ও পাসওয়ার্ড ব্যবহার করে লগ ইন করতে পারেন।"
+        },
+        "tr": {
+            "legacy_caption_pid": 31922,
+            "legacy_language_pid": 18,
+            "text": "Aşağıdaki kullanıcı adını (ID) ve şifresini kullanarak giriş yapabilirsiniz.",
+            "auto_translated": "Aşağıdaki kullanıcı adını (ID) ve şifresini kullanarak giriş yapabilirsiniz."
+        },
+        "vi": {
+            "legacy_caption_pid": 31923,
+            "legacy_language_pid": 19,
+            "text": "Bạn có thể đăng nhập bằng tên theo dõi người dùng (ID) và mật khẩu.",
+            "auto_translated": "Bạn có thể đăng nhập bằng tên theo dõi người dùng (ID) và mật khẩu."
+        },
+        "pl": {
+            "legacy_caption_pid": 31924,
+            "legacy_language_pid": 20,
+            "text": "Możesz zalogować się przy użyciu następującej nazwy użytkownika (ID) oraz hasło.",
+            "auto_translated": "Możesz zalogować się przy użyciu następującej nazwy użytkownika (ID) oraz hasło."
+        },
+        "jv": {
+            "legacy_caption_pid": 31925,
+            "legacy_language_pid": 21,
+            "text": "Sampeyan bisa mlebu ing nggunakake jeneng ing ngisor iki pangguna (ID) lan sandi.",
+            "auto_translated": "Sampeyan bisa mlebu ing nggunakake jeneng ing ngisor iki pangguna (ID) lan sandi."
+        },
+        "pa": {
+            "legacy_caption_pid": 31926,
+            "legacy_language_pid": 22,
+            "text": "ਤੁਹਾਨੂੰ ਹੇਠ ਯੂਜ਼ਰ ਨੂੰ ਨਾਮ ਹੈ (ID) ਅਤੇ ਪਾਸਵਰਡ ਵਰਤ ਕੇ ਲਾਗਇਨ ਕਰ ਸਕਦੇ.",
+            "auto_translated": "ਤੁਹਾਨੂੰ ਹੇਠ ਯੂਜ਼ਰ ਨੂੰ ਨਾਮ ਹੈ (ID) ਅਤੇ ਪਾਸਵਰਡ ਵਰਤ ਕੇ ਲਾਗਇਨ ਕਰ ਸਕਦੇ."
+        },
+        "th": {
+            "legacy_caption_pid": 31927,
+            "legacy_language_pid": 23,
+            "text": "คุณสามารถเข้าสู่ระบบโดยใช้ชื่อผู้ใช้ดังต่อไปนี้ (ID) และรหัสผ่าน",
+            "auto_translated": "คุณสามารถเข้าสู่ระบบโดยใช้ชื่อผู้ใช้ดังต่อไปนี้ (ID) และรหัสผ่าน"
+        },
+        "te": {
+            "legacy_caption_pid": 38300,
+            "legacy_language_pid": 24,
+            "text": "మీరు క్రింది వినియోగదారు పేరు (ID) మరియు పాస్వర్డ్ ఉపయోగించి లాగిన్.",
+            "auto_translated": "మీరు క్రింది వినియోగదారు పేరు (ID) మరియు పాస్వర్డ్ ఉపయోగించి లాగిన్."
+        },
+        "mr": {
+            "legacy_caption_pid": 38301,
+            "legacy_language_pid": 25,
+            "text": "आपण खालील वापरकर्ता नाव (ID) आणि पासवर्ड वापरून लॉग इन करू शकता.",
+            "auto_translated": "आपण खालील वापरकर्ता नाव (ID) आणि पासवर्ड वापरून लॉग इन करू शकता."
+        },
+        "ur": {
+            "legacy_caption_pid": 38302,
+            "legacy_language_pid": 26,
+            "text": "آپ مندرجہ ذیل صارف کا نام (ID) اور پاس ورڈ کو استعمال کرتے ہوئے میں لاگ ان کر سکتے ہیں.",
+            "auto_translated": "آپ مندرجہ ذیل صارف کا نام (ID) اور پاس ورڈ کو استعمال کرتے ہوئے میں لاگ ان کر سکتے ہیں."
+        },
+        "gu": {
+            "legacy_caption_pid": 38303,
+            "legacy_language_pid": 27,
+            "text": "તમે નીચેની વપરાશકર્તા નામ (આઈડી) અને પાસવર્ડ ઉપયોગ કરીને લૉગ ઇન કરી શકો છો.",
+            "auto_translated": "તમે નીચેની વપરાશકર્તા નામ (આઈડી) અને પાસવર્ડ ઉપયોગ કરીને લૉગ ઇન કરી શકો છો."
+        },
+        "uk": {
+            "legacy_caption_pid": 38304,
+            "legacy_language_pid": 28,
+            "text": "Ви можете увійти, використовуючи наступне ім'я користувача (ID) і пароль.",
+            "auto_translated": "Ви можете увійти, використовуючи наступне ім'я користувача (ID) і пароль."
+        },
+        "ml": {
+            "legacy_caption_pid": 38305,
+            "legacy_language_pid": 29,
+            "text": "നിങ്ങൾ താഴെ ഉപയോക്തൃ നാമം (ഐഡി) പാസ്വേഡും ഉപയോഗിച്ച് ലോഗിൻ ചെയ്യാൻ കഴിയും.",
+            "auto_translated": "നിങ്ങൾ താഴെ ഉപയോക്തൃ നാമം (ഐഡി) പാസ്വേഡും ഉപയോഗിച്ച് ലോഗിൻ ചെയ്യാൻ കഴിയും."
+        },
+        "kn": {
+            "legacy_caption_pid": 38306,
+            "legacy_language_pid": 30,
+            "text": "ನೀವು ಲಾಗ್ ಕೆಳಗಿನ ಬಳಕೆದಾರ ಹೆಸರು (ಐಡಿ) ಮತ್ತು ಪಾಸ್ವರ್ಡ್ ಬಳಸಿಕೊಂಡು ಮಾಡಬಹುದು.",
+            "auto_translated": "ನೀವು ಲಾಗ್ ಕೆಳಗಿನ ಬಳಕೆದಾರ ಹೆಸರು (ಐಡಿ) ಮತ್ತು ಪಾಸ್ವರ್ಡ್ ಬಳಸಿಕೊಂಡು ಮಾಡಬಹುದು."
+        },
+        "su": {
+            "legacy_caption_pid": 38307,
+            "legacy_language_pid": 31,
+            "text": "Anjeun tiasa lebet ngagunakeun nami di handap pamaké (ID) jeung sandi.",
+            "auto_translated": "Anjeun tiasa lebet ngagunakeun nami di handap pamaké (ID) jeung sandi."
+        },
+        "ku": {
+            "legacy_caption_pid": 38308,
+            "legacy_language_pid": 32,
+            "text": "Tu dikarî li bikaranîna navê jêr user (ID) û şîfreya xwe têkeve.",
+            "auto_translated": "Tu dikarî li bikaranîna navê jêr user (ID) û şîfreya xwe têkeve."
+        },
+        "ps": {
+            "legacy_caption_pid": 38309,
+            "legacy_language_pid": 33,
+            "text": "تاسو کولای شي په لاندې کارن نوم (ID) او پټنوم په کارولو سره log.",
+            "auto_translated": "تاسو کولای شي په لاندې کارن نوم (ID) او پټنوم په کارولو سره log."
+        },
+        "ro": {
+            "legacy_caption_pid": 38310,
+            "legacy_language_pid": 34,
+            "text": "Vă puteți conecta folosind următorul nume de utilizator (ID) și parola.",
+            "auto_translated": "Vă puteți conecta folosind următorul nume de utilizator (ID) și parola."
+        },
+        "id": {
+            "legacy_caption_pid": 38311,
+            "legacy_language_pid": 35,
+            "text": "Anda dapat login menggunakan nama berikut pengguna (ID) dan password.",
+            "auto_translated": "Anda dapat login menggunakan nama berikut pengguna (ID) dan password."
+        },
+        "sd": {
+            "legacy_caption_pid": 38312,
+            "legacy_language_pid": 36,
+            "text": "توهان جي ڏنل صارف نالو (سڃاڻپ) ۽ ڳجھو لفظ استعمال ڪرڻ جو لاگ ان سگهو ٿا.",
+            "auto_translated": "توهان جي ڏنل صارف نالو (سڃاڻپ) ۽ ڳجھو لفظ استعمال ڪرڻ جو لاگ ان سگهو ٿا."
+        },
+        "af": {
+            "legacy_caption_pid": 38313,
+            "legacy_language_pid": 37,
+            "text": "Jy kan inteken met behulp van die volgende gebruikersnaam (ID) en wagwoord.",
+            "auto_translated": "Jy kan inteken met behulp van die volgende gebruikersnaam (ID) en wagwoord."
+        },
+        "sw": {
+            "legacy_caption_pid": 38314,
+            "legacy_language_pid": 38,
+            "text": "Unaweza kuingia katika kutumia zifuatazo jina la mtumiaji (ID) na password.",
+            "auto_translated": "Unaweza kuingia katika kutumia zifuatazo jina la mtumiaji (ID) na password."
+        },
+        "lo": {
+            "legacy_caption_pid": 38315,
+            "legacy_language_pid": 39,
+            "text": "ທ່ານສາມາດເຂົ້າສູ່ລະບົບໂດຍໃຊ້ຊື່ຜູ້ໃຊ້ດັ່ງຕໍ່ໄປນີ້ (ລະຫັດ) ແລະລະຫັດຜ່ານ.",
+            "auto_translated": "ທ່ານສາມາດເຂົ້າສູ່ລະບົບໂດຍໃຊ້ຊື່ຜູ້ໃຊ້ດັ່ງຕໍ່ໄປນີ້ (ລະຫັດ) ແລະລະຫັດຜ່ານ."
+        },
+        "nl": {
+            "legacy_caption_pid": 38316,
+            "legacy_language_pid": 40,
+            "text": "U kunt inloggen met de volgende gebruikersnaam (ID) en wachtwoord.",
+            "auto_translated": "U kunt inloggen met de volgende gebruikersnaam (ID) en wachtwoord."
+        },
+        "tl": {
+            "legacy_caption_pid": 38317,
+            "legacy_language_pid": 41,
+            "text": "Maaari kang mag-log in gamit ang mga sumusunod na user name (ID) at password.",
+            "auto_translated": "Maaari kang mag-log in gamit ang mga sumusunod na user name (ID) at password."
+        },
+        "ne": {
+            "legacy_caption_pid": 38318,
+            "legacy_language_pid": 42,
+            "text": "तपाईं निम्न प्रयोगकर्ता नाम (आईडी) र पासवर्ड प्रयोग गरेर लग गर्न सक्नुहुन्छ।",
+            "auto_translated": "तपाईं निम्न प्रयोगकर्ता नाम (आईडी) र पासवर्ड प्रयोग गरेर लग गर्न सक्नुहुन्छ।"
+        },
+        "hu": {
+            "legacy_caption_pid": 38319,
+            "legacy_language_pid": 43,
+            "text": "Akkor jelentkezzen be a következő felhasználónevet (ID) és jelszavát.",
+            "auto_translated": "Akkor jelentkezzen be a következő felhasználónevet (ID) és jelszavát."
+        },
+        "cs": {
+            "legacy_caption_pid": 38320,
+            "legacy_language_pid": 44,
+            "text": "Můžete se přihlásit pomocí následující uživatelské jméno (ID) a heslo.",
+            "auto_translated": "Můžete se přihlásit pomocí následující uživatelské jméno (ID) a heslo."
+        },
+        "el": {
+            "legacy_caption_pid": 38321,
+            "legacy_language_pid": 45,
+            "text": "Μπορείτε να συνδεθείτε χρησιμοποιώντας το ακόλουθο όνομα χρήστη (ID) και τον κωδικό πρόσβασης.",
+            "auto_translated": "Μπορείτε να συνδεθείτε χρησιμοποιώντας το ακόλουθο όνομα χρήστη (ID) και τον κωδικό πρόσβασης."
+        },
+        "sv": {
+            "legacy_caption_pid": 38322,
+            "legacy_language_pid": 46,
+            "text": "Du kan logga in med hjälp av följande användarnamn (ID) och lösenord.",
+            "auto_translated": "Du kan logga in med hjälp av följande användarnamn (ID) och lösenord."
+        },
+        "kk": {
+            "legacy_caption_pid": 38323,
+            "legacy_language_pid": 47,
+            "text": "Сіз мына пайдаланушы атын (ID) және құпия сөзі арқылы кіруге болады.",
+            "auto_translated": "Сіз мына пайдаланушы атын (ID) және құпия сөзі арқылы кіруге болады."
+        },
+        "fi": {
+            "legacy_caption_pid": 38324,
+            "legacy_language_pid": 48,
+            "text": "Voit kirjautua käyttäen seuraavia käyttäjätunnus (ID) ja salasana.",
+            "auto_translated": "Voit kirjautua käyttäen seuraavia käyttäjätunnus (ID) ja salasana."
+        },
+        "da": {
+            "legacy_caption_pid": 38325,
+            "legacy_language_pid": 49,
+            "text": "Du kan logge ind med følgende brugernavn (ID) og adgangskode.",
+            "auto_translated": "Du kan logge ind med følgende brugernavn (ID) og adgangskode."
+        },
+        "he": {
+            "legacy_caption_pid": 38326,
+            "legacy_language_pid": 50,
+            "text": "אתה יכול להתחבר באמצעות שם המשתמש הבא (ID) והסיסמה.",
+            "auto_translated": "אתה יכול להתחבר באמצעות שם המשתמש הבא (ID) והסיסמה."
+        },
+        "no": {
+            "legacy_caption_pid": 38327,
+            "legacy_language_pid": 51,
+            "text": "Du kan logge inn med følgende brukernavn (ID) og passord.",
+            "auto_translated": "Du kan logge inn med følgende brukernavn (ID) og passord."
+        }
+    }
+}

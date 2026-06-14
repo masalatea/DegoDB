@@ -1,0 +1,27 @@
+{
+    "resource_key": "ACTION_UPDATE_UPLOAD_GROUP",
+    "legacy_resource_pid": 147,
+    "base_group_key": "grp-001-developers-matsuesoft-co-jp",
+    "additional_group_keys": [],
+    "key_for_update": "0",
+    "sort_group": "ACTION UPLOAD_GROUP",
+    "key_name": "ACTION_UPDATE_UPLOAD_GROUP",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": true,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 4164,
+            "legacy_language_pid": 1,
+            "text": "アップロード・グループ更新",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 4165,
+            "legacy_language_pid": 2,
+            "text": "Update Uploag Group",
+            "auto_translated": ""
+        }
+    }
+}

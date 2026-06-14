@@ -1,0 +1,321 @@
+{
+    "resource_key": "COMMON_LIB_UPDATE_PROFILE_ERROR_FOR_SKYPE_NAME_FORMAT_LINE2",
+    "legacy_resource_pid": 1608,
+    "base_group_key": "grp-010-matsuesoft-lib",
+    "additional_group_keys": [],
+    "key_for_update": "X9MDjY1QflqScR0fLUaqsWBzIlMvpC07XnBtaxWAw11bOmAndYrx6fuhAor1XaMF4L4ZwYWSkjUegVhYdAHDk3bvqJjG1wOPbzSQQ6EPqpi2u11PXzct8V4EKP0HLDpW",
+    "sort_group": "PROFILE",
+    "key_name": "COMMON_LIB_UPDATE_PROFILE_ERROR_FOR_SKYPE_NAME_FORMAT_LINE2",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": false,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 7214,
+            "legacy_language_pid": 1,
+            "text": "半角英数字、半角ハイフォン「-」、下線「_」、カンマ「,」、ドット「.」, 「:」",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 7215,
+            "legacy_language_pid": 2,
+            "text": "Half size alphanumeric characters, half-width hyphen \"-\", underline \"_\", comma \",\", dot \".\" \":\"",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 7216,
+            "legacy_language_pid": 3,
+            "text": "半角英数字、半角的中线「-」、下划线「_」、逗号「,」，点「.」, 「:」",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 7217,
+            "legacy_language_pid": 4,
+            "text": "영숫자, 반각 하이픈 \"-\" , 밑줄 '_' , 쉼표 \",\" , 점 \".\", \":\"",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 11126,
+            "legacy_language_pid": 5,
+            "text": "Caracteres alfanuméricos de medio tamaño, guión de medio ancho \"-\", subrayado \"_\", coma \",\", punto \".\" \":\"",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 11127,
+            "legacy_language_pid": 6,
+            "text": "Caracteres alfanuméricos de meio tamanho, hífen de meia largura \"-\", sublinhado \"_\", vírgula \",\", ponto \".\" \":\"",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 11128,
+            "legacy_language_pid": 7,
+            "text": "半角英數字、半角的中線「-」、下劃線「_」、逗號「,」，點「.」, 「:」",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 17271,
+            "legacy_language_pid": 8,
+            "text": "Caractères alphanumériques de demi-taille, tiret demi-largeur \"-\", souligné \"_\", virgule \",\", point \".\" \":\"",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 17272,
+            "legacy_language_pid": 9,
+            "text": "आधा आकार अल्फ़ान्यूमेरिक वर्ण, आधे-चौड़े हाइफ़न \"-\", \"_\", अल्पविराम \",\", डॉट \"\" को रेखांकित करें। \" \":\"",
+            "auto_translated": ""
+        },
+        "ar": {
+            "legacy_caption_pid": 30948,
+            "legacy_language_pid": 10,
+            "text": "\".\" - أحرف أبجدية رقمية، هاي فونج \"\"، يؤكد \"_\"، فاصلة \"،\" نقطة \":\"",
+            "auto_translated": "\".\" - أحرف أبجدية رقمية، هاي فونج \"\"، يؤكد \"_\"، فاصلة \"،\" نقطة \":\""
+        },
+        "fa": {
+            "legacy_caption_pid": 30949,
+            "legacy_language_pid": 11,
+            "text": "\".\" - کاراکتر الفبایی، فونگ چینگ های \"\"، تاکید \"_\"، کاما \"،\"، نقطه، \":\"",
+            "auto_translated": "\".\" - کاراکتر الفبایی، فونگ چینگ های \"\"، تاکید \"_\"، کاما \"،\"، نقطه، \":\""
+        },
+        "de": {
+            "legacy_caption_pid": 30950,
+            "legacy_language_pid": 12,
+            "text": "\"\" - alphanumerische Zeichen, Hai Phong \"\", unterstreicht \"_\", Komma \"\", Punkt \":\"",
+            "auto_translated": "\"\" - alphanumerische Zeichen, Hai Phong \"\", unterstreicht \"_\", Komma \"\", Punkt \":\""
+        },
+        "ru": {
+            "legacy_caption_pid": 30951,
+            "legacy_language_pid": 13,
+            "text": "\"\" - буквенно-цифровые символы, Хайфон \"\", подчеркивание \"_\", запятая \"\" точка \":\"",
+            "auto_translated": "\"\" - буквенно-цифровые символы, Хайфон \"\", подчеркивание \"_\", запятая \"\" точка \":\""
+        },
+        "ms": {
+            "legacy_caption_pid": 30952,
+            "legacy_language_pid": 14,
+            "text": "\".\" - aksara abjad angka, Hai Phong \"\", garis bawah \"_\", koma \",\", dot, \":\"",
+            "auto_translated": "\".\" - aksara abjad angka, Hai Phong \"\", garis bawah \"_\", koma \",\", dot, \":\""
+        },
+        "ta": {
+            "legacy_caption_pid": 30953,
+            "legacy_language_pid": 15,
+            "text": "\".\" - எண்ணெழுத்து எழுத்துக்கள், ஹாய் போங்க் \"\", அடிக்கோடு \"_\", கமா \",\", டாட், \":\"",
+            "auto_translated": "\".\" - எண்ணெழுத்து எழுத்துக்கள், ஹாய் போங்க் \"\", அடிக்கோடு \"_\", கமா \",\", டாட், \":\""
+        },
+        "it": {
+            "legacy_caption_pid": 30954,
+            "legacy_language_pid": 16,
+            "text": "\"\" - caratteri alfanumerici, Hai Phong \"\", underscore \"_\", virgola \"\" dot \":\"",
+            "auto_translated": "\"\" - caratteri alfanumerici, Hai Phong \"\", underscore \"_\", virgola \"\" dot \":\""
+        },
+        "bn": {
+            "legacy_caption_pid": 30955,
+            "legacy_language_pid": 17,
+            "text": "\"।\" - আলফানিউমেরিক অক্ষর, Hai Phong, \"\", আন্ডারস্কোর \"_\" কমা \",\", বিন্দু, \":\"",
+            "auto_translated": "\"।\" - আলফানিউমেরিক অক্ষর, Hai Phong, \"\", আন্ডারস্কোর \"_\" কমা \",\", বিন্দু, \":\""
+        },
+        "tr": {
+            "legacy_caption_pid": 30956,
+            "legacy_language_pid": 18,
+            "text": "\"\" - alfanümerik karakterler, Hai Phong \" \" nokta \" \"virgül,\" _\", alt çizgi\":\"",
+            "auto_translated": "\"\" - alfanümerik karakterler, Hai Phong \" \" nokta \" \"virgül,\" _\", alt çizgi\":\""
+        },
+        "vi": {
+            "legacy_caption_pid": 30957,
+            "legacy_language_pid": 19,
+            "text": "\"\" - ký tự chữ, Hải Phòng \"\", dấu gạch dưới \"_\", dấu phẩy \"\", chấm \":\"",
+            "auto_translated": "\"\" - ký tự chữ, Hải Phòng \"\", dấu gạch dưới \"_\", dấu phẩy \"\", chấm \":\""
+        },
+        "pl": {
+            "legacy_caption_pid": 30958,
+            "legacy_language_pid": 20,
+            "text": "\"\" - znaki alfanumeryczne, Hai Phong \"\" podkreślenia \"_\" przecinek \"\" kropka \"\"",
+            "auto_translated": "\"\" - znaki alfanumeryczne, Hai Phong \"\" podkreślenia \"_\" przecinek \"\" kropka \"\""
+        },
+        "jv": {
+            "legacy_caption_pid": 30959,
+            "legacy_language_pid": 21,
+            "text": "\".\" - karakter alphanumeric, Hai Phong \"\", underscore \"_\", koma \",\", dot, \":\"",
+            "auto_translated": "\".\" - karakter alphanumeric, Hai Phong \"\", underscore \"_\", koma \",\", dot, \":\""
+        },
+        "pa": {
+            "legacy_caption_pid": 30960,
+            "legacy_language_pid": 22,
+            "text": "\".\" - ਅੱਖਰ ਅੱਖਰ, Hai Phong \"\", ਜ਼ੋਰ \"_\", ਕਾਮੇ \",\", ਡਾਟ, \":\"",
+            "auto_translated": "\".\" - ਅੱਖਰ ਅੱਖਰ, Hai Phong \"\", ਜ਼ੋਰ \"_\", ਕਾਮੇ \",\", ਡਾਟ, \":\""
+        },
+        "th": {
+            "legacy_caption_pid": 30961,
+            "legacy_language_pid": 23,
+            "text": "\"\" - ตัวอักษรและตัวเลข, Hai Phong \"\" ขีด \"_\" จุลภาค \"\" จุด \":\"",
+            "auto_translated": "\"\" - ตัวอักษรและตัวเลข, Hai Phong \"\" ขีด \"_\" จุลภาค \"\" จุด \":\""
+        },
+        "te": {
+            "legacy_caption_pid": 39840,
+            "legacy_language_pid": 24,
+            "text": "\".\" - ఆల్ఫాన్యూమరిక్ అక్షరాలను, Hai Phong \"\" డాట్, \"\", తక్కువగా \"_\", కామా \":\"",
+            "auto_translated": "\".\" - ఆల్ఫాన్యూమరిక్ అక్షరాలను, Hai Phong \"\" డాట్, \"\", తక్కువగా \"_\", కామా \":\""
+        },
+        "mr": {
+            "legacy_caption_pid": 39841,
+            "legacy_language_pid": 25,
+            "text": "\".\" - वर्णांक वर्ण, है Phong \"\", बिंदू \"\" अधोरेखित \"_\", स्वल्पविराम \":\"",
+            "auto_translated": "\".\" - वर्णांक वर्ण, है Phong \"\", बिंदू \"\" अधोरेखित \"_\", स्वल्पविराम \":\""
+        },
+        "ur": {
+            "legacy_caption_pid": 39842,
+            "legacy_language_pid": 26,
+            "text": "\".\" - اکشرانکیی حروف، ہائی فونگ \"\"، کشید \"_\"، کوما \"،\"، ڈاٹ، \":\"",
+            "auto_translated": "\".\" - اکشرانکیی حروف، ہائی فونگ \"\"، کشید \"_\"، کوما \"،\"، ڈاٹ، \":\""
+        },
+        "gu": {
+            "legacy_caption_pid": 39843,
+            "legacy_language_pid": 27,
+            "text": "\".\" - આલ્ફાન્યૂમેરિક અક્ષરો, હૈ Phong \"\", અન્ડરસ્કૉર \"_\", અલ્પવિરામ \",\" ડોટ \":\"",
+            "auto_translated": "\".\" - આલ્ફાન્યૂમેરિક અક્ષરો, હૈ Phong \"\", અન્ડરસ્કૉર \"_\", અલ્પવિરામ \",\" ડોટ \":\""
+        },
+        "uk": {
+            "legacy_caption_pid": 39844,
+            "legacy_language_pid": 28,
+            "text": "\"\" - буквено-цифрові символи, Хайфон \"\", підкреслення \"_\", кома \"\" точка \":\"",
+            "auto_translated": "\"\" - буквено-цифрові символи, Хайфон \"\", підкреслення \"_\", кома \"\" точка \":\""
+        },
+        "ml": {
+            "legacy_caption_pid": 39845,
+            "legacy_language_pid": 29,
+            "text": "അക്കങ്ങളും അക്ഷരങ്ങളും, ഹെ Phong \"\", അടിവര \"_\", കോമ \",\", ഡോട്ട്, \"-\". \":\"",
+            "auto_translated": "അക്കങ്ങളും അക്ഷരങ്ങളും, ഹെ Phong \"\", അടിവര \"_\", കോമ \",\", ഡോട്ട്, \"-\". \":\""
+        },
+        "kn": {
+            "legacy_caption_pid": 39846,
+            "legacy_language_pid": 30,
+            "text": "\".\" - ವರ್ಣಮಾಲೆ ಅಕ್ಷರಗಳು ಹೈ Phong, \"\", ಅಂಡರ್ಸ್ಕೋರ್ \"_\", ಅಲ್ಪವಿರಾಮ \",\", ಡಾಟ್, \":\"",
+            "auto_translated": "\".\" - ವರ್ಣಮಾಲೆ ಅಕ್ಷರಗಳು ಹೈ Phong, \"\", ಅಂಡರ್ಸ್ಕೋರ್ \"_\", ಅಲ್ಪವಿರಾಮ \",\", ಡಾಟ್, \":\""
+        },
+        "su": {
+            "legacy_caption_pid": 39847,
+            "legacy_language_pid": 31,
+            "text": "\".\" - karakter alfanumerik, hai Phong \"\", underscore \"_\", koma \",\", titik, \":\"",
+            "auto_translated": "\".\" - karakter alfanumerik, hai Phong \"\", underscore \"_\", koma \",\", titik, \":\""
+        },
+        "ku": {
+            "legacy_caption_pid": 39848,
+            "legacy_language_pid": 32,
+            "text": "\".\" - characters alphanumeric, Hai Phong \"\", bi şiklekî \"_\", bêhnok \",\", dot, \":\"",
+            "auto_translated": "\".\" - characters alphanumeric, Hai Phong \"\", bi şiklekî \"_\", bêhnok \",\", dot, \":\""
+        },
+        "ps": {
+            "legacy_caption_pid": 39849,
+            "legacy_language_pid": 33,
+            "text": "\".\" - په الفبې تورو، عبدالحی Phong \"\"، تاکید \"_\"، گوخې \"،\"، DoT، \":\"",
+            "auto_translated": "\".\" - په الفبې تورو، عبدالحی Phong \"\"، تاکید \"_\"، گوخې \"،\"، DoT، \":\""
+        },
+        "ro": {
+            "legacy_caption_pid": 39850,
+            "legacy_language_pid": 34,
+            "text": "\"\" - caractere alfanumerice, Hai Phong \"\", sublinia \"_\", virgulă \"\" punct \":\"",
+            "auto_translated": "\"\" - caractere alfanumerice, Hai Phong \"\", sublinia \"_\", virgulă \"\" punct \":\""
+        },
+        "id": {
+            "legacy_caption_pid": 39851,
+            "legacy_language_pid": 35,
+            "text": "\"\" - karakter alfanumerik, Hai Phong \"\", menggarisbawahi \"_\", koma \"\", dot, \":\"",
+            "auto_translated": "\"\" - karakter alfanumerik, Hai Phong \"\", menggarisbawahi \"_\", koma \"\", dot, \":\""
+        },
+        "sd": {
+            "legacy_caption_pid": 39852,
+            "legacy_language_pid": 36,
+            "text": "alphanumeric ڪردارن، Hai ڳولا ڪريو \"\"، underscore \"_\"، ۾ ڪاما جو \"،\"، Dot، \"-\". \":\"",
+            "auto_translated": "alphanumeric ڪردارن، Hai ڳولا ڪريو \"\"، underscore \"_\"، ۾ ڪاما جو \"،\"، Dot، \"-\". \":\""
+        },
+        "af": {
+            "legacy_caption_pid": 39853,
+            "legacy_language_pid": 37,
+            "text": "\".\" - alfanumeriese karakters, Hai Phong \"\", beklemtoon \"_\", komma \",\", dot, \":\"",
+            "auto_translated": "\".\" - alfanumeriese karakters, Hai Phong \"\", beklemtoon \"_\", komma \",\", dot, \":\""
+        },
+        "sw": {
+            "legacy_caption_pid": 39854,
+            "legacy_language_pid": 38,
+            "text": "\".\" - wahusika alphanumeric, Hai Phong \"\", mstari chini \"_\", comma \",\", dot, \":\"",
+            "auto_translated": "\".\" - wahusika alphanumeric, Hai Phong \"\", mstari chini \"_\", comma \",\", dot, \":\""
+        },
+        "lo": {
+            "legacy_caption_pid": 39855,
+            "legacy_language_pid": 39,
+            "text": "\".\" - ຕົວອັກສອນ, ຫາຍຟ່ອງ \"\", ເນັ້ນ \"_\", ຈຸດ \",\", dot \":\"",
+            "auto_translated": "\".\" - ຕົວອັກສອນ, ຫາຍຟ່ອງ \"\", ເນັ້ນ \"_\", ຈຸດ \",\", dot \":\""
+        },
+        "nl": {
+            "legacy_caption_pid": 39856,
+            "legacy_language_pid": 40,
+            "text": "\"\" - alfanumerieke tekens, Hai Phong \"\", underscore \"_\", komma \"\", punt, \":\"",
+            "auto_translated": "\"\" - alfanumerieke tekens, Hai Phong \"\", underscore \"_\", komma \"\", punt, \":\""
+        },
+        "tl": {
+            "legacy_caption_pid": 39857,
+            "legacy_language_pid": 41,
+            "text": "\".\" - alphanumeric character, Hai Phong \"\", salungguhit \"_\", kuwit \",\", tuldok, \":\"",
+            "auto_translated": "\".\" - alphanumeric character, Hai Phong \"\", salungguhit \"_\", kuwit \",\", tuldok, \":\""
+        },
+        "ne": {
+            "legacy_caption_pid": 39858,
+            "legacy_language_pid": 42,
+            "text": "\"।\" - अल्फान्युमेरिक वर्णहरू, Hai फन्ङ \"\" अल्पविराम, \"\", डट \"\", अन्डरस्कोर \"_,:\"",
+            "auto_translated": "\"।\" - अल्फान्युमेरिक वर्णहरू, Hai फन्ङ \"\" अल्पविराम, \"\", डट \"\", अन्डरस्कोर \"_,:\""
+        },
+        "hu": {
+            "legacy_caption_pid": 39859,
+            "legacy_language_pid": 43,
+            "text": "\"\" - alfanumerikus karakter, Hai Phong \"\", \"_\" alsó, vessző \"\" pont \"\"",
+            "auto_translated": "\"\" - alfanumerikus karakter, Hai Phong \"\", \"_\" alsó, vessző \"\" pont \"\""
+        },
+        "cs": {
+            "legacy_caption_pid": 39860,
+            "legacy_language_pid": 44,
+            "text": "\"\" - alfanumerické znaky, Hai Phong \"\" podtržítko \"_\", čárka \"\" tečka \"\"",
+            "auto_translated": "\"\" - alfanumerické znaky, Hai Phong \"\" podtržítko \"_\", čárka \"\" tečka \"\""
+        },
+        "el": {
+            "legacy_caption_pid": 39861,
+            "legacy_language_pid": 45,
+            "text": "\"\" - αλφαριθμητικών χαρακτήρων, Hai Phong \"\", υπογραμμίζουν \"_\", κόμμα \"\" τελεία \":\"",
+            "auto_translated": "\"\" - αλφαριθμητικών χαρακτήρων, Hai Phong \"\", υπογραμμίζουν \"_\", κόμμα \"\" τελεία \":\""
+        },
+        "sv": {
+            "legacy_caption_pid": 39862,
+            "legacy_language_pid": 46,
+            "text": "\"\" - alfanumeriska tecken, Hai Phong \"\" understreck \"_\", komma \"\" dot \":\"",
+            "auto_translated": "\"\" - alfanumeriska tecken, Hai Phong \"\" understreck \"_\", komma \"\" dot \":\""
+        },
+        "kk": {
+            "legacy_caption_pid": 39863,
+            "legacy_language_pid": 47,
+            "text": "әріптік-сандық таңба, Hai Phong «», атап «_», үтір «,», нүктелік, «-». «:»",
+            "auto_translated": "әріптік-сандық таңба, Hai Phong «», атап «_», үтір «,», нүктелік, «-». «:»"
+        },
+        "fi": {
+            "legacy_caption_pid": 39864,
+            "legacy_language_pid": 48,
+            "text": "\"\" - kirjaimia, Hai Phong \"\", alaviiva \"_\", pilkku \"\" piste \":\"",
+            "auto_translated": "\"\" - kirjaimia, Hai Phong \"\", alaviiva \"_\", pilkku \"\" piste \":\""
+        },
+        "da": {
+            "legacy_caption_pid": 39865,
+            "legacy_language_pid": 49,
+            "text": "\"\" - alfanumeriske tegn, Hai Phong \"\", underscore \"_\", komma \"\", prik, \":\"",
+            "auto_translated": "\"\" - alfanumeriske tegn, Hai Phong \"\", underscore \"_\", komma \"\", prik, \":\""
+        },
+        "he": {
+            "legacy_caption_pid": 39866,
+            "legacy_language_pid": 50,
+            "text": "\"\" - אותיות וספרות, Hai Phong \"\", מדגישים \"_\", פסיק \"\", נקודה, \":\"",
+            "auto_translated": "\"\" - אותיות וספרות, Hai Phong \"\", מדגישים \"_\", פסיק \"\", נקודה, \":\""
+        },
+        "no": {
+            "legacy_caption_pid": 39867,
+            "legacy_language_pid": 51,
+            "text": "\"\" - alfanumeriske tegn, Hai Phong \"\", understrek \"_\", komma \"\" dot \":\"",
+            "auto_translated": "\"\" - alfanumeriske tegn, Hai Phong \"\", understrek \"_\", komma \"\" dot \":\""
+        }
+    }
+}

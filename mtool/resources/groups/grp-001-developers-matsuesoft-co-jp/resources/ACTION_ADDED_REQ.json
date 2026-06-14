@@ -1,0 +1,27 @@
+{
+    "resource_key": "ACTION_ADDED_REQ",
+    "legacy_resource_pid": 359,
+    "base_group_key": "grp-001-developers-matsuesoft-co-jp",
+    "additional_group_keys": [],
+    "key_for_update": "0",
+    "sort_group": "ACTION REQ",
+    "key_name": "ACTION_ADDED_REQ",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": true,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 4022,
+            "legacy_language_pid": 1,
+            "text": "要求追加完了",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 4023,
+            "legacy_language_pid": 2,
+            "text": "Added Requirement",
+            "auto_translated": ""
+        }
+    }
+}

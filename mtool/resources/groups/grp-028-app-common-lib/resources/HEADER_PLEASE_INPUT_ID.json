@@ -1,0 +1,321 @@
+{
+    "resource_key": "HEADER_PLEASE_INPUT_ID",
+    "legacy_resource_pid": 1317,
+    "base_group_key": "grp-028-app-common-lib",
+    "additional_group_keys": [],
+    "key_for_update": "xW7bdgUYKzhJ7AYa3h6IVJA85m2bFsZKNp9YvmBD3DzZGha4xgkq0UlJcxhmQWtnYzNN3SmK0GMbhv9hOEv469uu97pkYvf0PKcbh2VZydE6ZE0HygIpj4rdADZRFFBx",
+    "sort_group": "ENROLL",
+    "key_name": "HEADER_PLEASE_INPUT_ID",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": false,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 849,
+            "legacy_language_pid": 1,
+            "text": "ユーザ名(ID)を４文字以上入力して下さい",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 850,
+            "legacy_language_pid": 2,
+            "text": "Please input User Name (ID) equal or more than 4 characters",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 6414,
+            "legacy_language_pid": 3,
+            "text": "请输入用户名  4个字符或更多字符",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 6415,
+            "legacy_language_pid": 4,
+            "text": "아이디 는 4자 이상 입력해주세요",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 10130,
+            "legacy_language_pid": 5,
+            "text": "Ingrese ID igual o superior a 4 caracteres",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 10131,
+            "legacy_language_pid": 6,
+            "text": "Digite ID menos de 4 caracteres",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 10132,
+            "legacy_language_pid": 7,
+            "text": "請輸入用户名 4個字符或更多字符",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 15993,
+            "legacy_language_pid": 8,
+            "text": "Veuillez entrer le nom d'utilisateur (ID) égal ou supérieur à 4 caractères",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 15994,
+            "legacy_language_pid": 9,
+            "text": "कृपया उपयोगकर्ता का नाम (आईडी) 4 या अधिक अक्षर के बराबर निविष्ट करें",
+            "auto_translated": ""
+        },
+        "ar": {
+            "legacy_caption_pid": 28526,
+            "legacy_language_pid": 10,
+            "text": "الرجاء إدخال اسم المستخدم (ID) 4 أو أكثر من الأحرف",
+            "auto_translated": "الرجاء إدخال اسم المستخدم (ID) 4 أو أكثر من الأحرف"
+        },
+        "fa": {
+            "legacy_caption_pid": 28527,
+            "legacy_language_pid": 11,
+            "text": "لطفا یک نام کاربری (ID) 4 و یا شخصیت های تر را وارد کنید",
+            "auto_translated": "لطفا یک نام کاربری (ID) 4 و یا شخصیت های تر را وارد کنید"
+        },
+        "de": {
+            "legacy_caption_pid": 28528,
+            "legacy_language_pid": 12,
+            "text": "Bitte geben Sie einen Benutzernamen (ID) 4 oder mehr Zeichen",
+            "auto_translated": "Bitte geben Sie einen Benutzernamen (ID) 4 oder mehr Zeichen"
+        },
+        "ru": {
+            "legacy_caption_pid": 28529,
+            "legacy_language_pid": 13,
+            "text": "Пожалуйста, введите имя пользователя (ID) 4 или более символов",
+            "auto_translated": "Пожалуйста, введите имя пользователя (ID) 4 или более символов"
+        },
+        "ms": {
+            "legacy_caption_pid": 28530,
+            "legacy_language_pid": 14,
+            "text": "Sila masukkan nama pengguna (ID) 4 atau lebih aksara",
+            "auto_translated": "Sila masukkan nama pengguna (ID) 4 atau lebih aksara"
+        },
+        "ta": {
+            "legacy_caption_pid": 28531,
+            "legacy_language_pid": 15,
+            "text": "பயனர் பெயரை (ஐடி) 4 அல்லது அதிக எழுத்துகளை உள்ளிடவும்",
+            "auto_translated": "பயனர் பெயரை (ஐடி) 4 அல்லது அதிக எழுத்துகளை உள்ளிடவும்"
+        },
+        "it": {
+            "legacy_caption_pid": 28532,
+            "legacy_language_pid": 16,
+            "text": "Si prega di inserire un nome utente (ID) 4 o più caratteri",
+            "auto_translated": "Si prega di inserire un nome utente (ID) 4 o più caratteri"
+        },
+        "bn": {
+            "legacy_caption_pid": 28533,
+            "legacy_language_pid": 17,
+            "text": "একটি ব্যবহারকারী নাম (আইডি) 4 বা তার বেশি অক্ষরের লিখুন দয়া করে",
+            "auto_translated": "একটি ব্যবহারকারী নাম (আইডি) 4 বা তার বেশি অক্ষরের লিখুন দয়া করে"
+        },
+        "tr": {
+            "legacy_caption_pid": 28534,
+            "legacy_language_pid": 18,
+            "text": "Bir kullanıcı adı (ID) 4 veya daha fazla karakter girin",
+            "auto_translated": "Bir kullanıcı adı (ID) 4 veya daha fazla karakter girin"
+        },
+        "vi": {
+            "legacy_caption_pid": 28535,
+            "legacy_language_pid": 19,
+            "text": "Vui lòng nhập một tên người dùng (ID) 4 hoặc các ký tự hơn",
+            "auto_translated": "Vui lòng nhập một tên người dùng (ID) 4 hoặc các ký tự hơn"
+        },
+        "pl": {
+            "legacy_caption_pid": 28536,
+            "legacy_language_pid": 20,
+            "text": "Proszę podać nazwę użytkownika (ID) 4 lub więcej znaków",
+            "auto_translated": "Proszę podać nazwę użytkownika (ID) 4 lub więcej znaków"
+        },
+        "jv": {
+            "legacy_caption_pid": 28537,
+            "legacy_language_pid": 21,
+            "text": "Mangga ketik jeneng panganggo (ID) 4 utawa luwih aksara",
+            "auto_translated": "Mangga ketik jeneng panganggo (ID) 4 utawa luwih aksara"
+        },
+        "pa": {
+            "legacy_caption_pid": 28538,
+            "legacy_language_pid": 22,
+            "text": "ਇੱਕ ਉਪਭੋਗੀ ਨਾਮ (ID) 4 ਜ ਹੋਰ ਅੱਖਰ ਦਿਓ ਜੀ",
+            "auto_translated": "ਇੱਕ ਉਪਭੋਗੀ ਨਾਮ (ID) 4 ਜ ਹੋਰ ਅੱਖਰ ਦਿਓ ਜੀ"
+        },
+        "th": {
+            "legacy_caption_pid": 28539,
+            "legacy_language_pid": 23,
+            "text": "กรุณาใส่ชื่อผู้ใช้ (ID) 4 หรือตัวละครมากขึ้น",
+            "auto_translated": "กรุณาใส่ชื่อผู้ใช้ (ID) 4 หรือตัวละครมากขึ้น"
+        },
+        "te": {
+            "legacy_caption_pid": 33988,
+            "legacy_language_pid": 24,
+            "text": "ఒక వాడుకరి పేరు గానీ (ID) 4 లేదా ఎక్కువ అక్షరాలు నమోదు చేయండి",
+            "auto_translated": "ఒక వాడుకరి పేరు గానీ (ID) 4 లేదా ఎక్కువ అక్షరాలు నమోదు చేయండి"
+        },
+        "mr": {
+            "legacy_caption_pid": 33989,
+            "legacy_language_pid": 25,
+            "text": "वापरकर्ता नाव (ID) 4 किंवा अधिक वर्ण प्रविष्ट करा",
+            "auto_translated": "वापरकर्ता नाव (ID) 4 किंवा अधिक वर्ण प्रविष्ट करा"
+        },
+        "ur": {
+            "legacy_caption_pid": 33990,
+            "legacy_language_pid": 26,
+            "text": "ایک صارف کا نام (ID) 4 یا اس سے زیادہ حروف درج کریں",
+            "auto_translated": "ایک صارف کا نام (ID) 4 یا اس سے زیادہ حروف درج کریں"
+        },
+        "gu": {
+            "legacy_caption_pid": 33991,
+            "legacy_language_pid": 27,
+            "text": "વપરાશકર્તા નામ (આઈડી) 4 અથવા વધુ અક્ષરો દાખલ કરો",
+            "auto_translated": "વપરાશકર્તા નામ (આઈડી) 4 અથવા વધુ અક્ષરો દાખલ કરો"
+        },
+        "uk": {
+            "legacy_caption_pid": 33992,
+            "legacy_language_pid": 28,
+            "text": "Будь ласка, введіть ім'я користувача (ID) 4 або більше символів",
+            "auto_translated": "Будь ласка, введіть ім'я користувача (ID) 4 або більше символів"
+        },
+        "ml": {
+            "legacy_caption_pid": 33993,
+            "legacy_language_pid": 29,
+            "text": "ദയവായി ഒരു ഉപയോക്തൃ നാമം (ഐഡി) 4 അല്ലെങ്കിൽ കൂടുതൽ പ്രതീകങ്ങൾ നൽകുക",
+            "auto_translated": "ദയവായി ഒരു ഉപയോക്തൃ നാമം (ഐഡി) 4 അല്ലെങ്കിൽ കൂടുതൽ പ്രതീകങ്ങൾ നൽകുക"
+        },
+        "kn": {
+            "legacy_caption_pid": 33994,
+            "legacy_language_pid": 30,
+            "text": "ದಯವಿಟ್ಟು ಬಳಕೆದಾರ ಹೆಸರು (ಐಡಿ) 4 ಅಥವಾ ಹೆಚ್ಚು ಅಕ್ಷರಗಳನ್ನು ನಮೂದಿಸಿ",
+            "auto_translated": "ದಯವಿಟ್ಟು ಬಳಕೆದಾರ ಹೆಸರು (ಐಡಿ) 4 ಅಥವಾ ಹೆಚ್ಚು ಅಕ್ಷರಗಳನ್ನು ನಮೂದಿಸಿ"
+        },
+        "su": {
+            "legacy_caption_pid": 33995,
+            "legacy_language_pid": 31,
+            "text": "Mangga lebetkeun ngaran pamaké (ID) 4 atawa leuwih karakter",
+            "auto_translated": "Mangga lebetkeun ngaran pamaké (ID) 4 atawa leuwih karakter"
+        },
+        "ku": {
+            "legacy_caption_pid": 33996,
+            "legacy_language_pid": 32,
+            "text": "Ji kerema xwe navê bikarhêner (ID) 4 an tîpan zêdetir bikevin",
+            "auto_translated": "Ji kerema xwe navê bikarhêner (ID) 4 an tîpan zêdetir bikevin"
+        },
+        "ps": {
+            "legacy_caption_pid": 33997,
+            "legacy_language_pid": 33,
+            "text": "لطفا يو کارن نوم (تذکرو) 4 یا زیات انګلیسي تورو ولېکئ *",
+            "auto_translated": "لطفا يو کارن نوم (تذکرو) 4 یا زیات انګلیسي تورو ولېکئ *"
+        },
+        "ro": {
+            "legacy_caption_pid": 33998,
+            "legacy_language_pid": 34,
+            "text": "Vă rugăm să introduceți un nume de utilizator (ID) 4 sau mai multe caractere",
+            "auto_translated": "Vă rugăm să introduceți un nume de utilizator (ID) 4 sau mai multe caractere"
+        },
+        "id": {
+            "legacy_caption_pid": 33999,
+            "legacy_language_pid": 35,
+            "text": "Masukkan nama pengguna (ID) 4 atau lebih karakter",
+            "auto_translated": "Masukkan nama pengguna (ID) 4 atau lebih karakter"
+        },
+        "sd": {
+            "legacy_caption_pid": 34000,
+            "legacy_language_pid": 36,
+            "text": "هڪ صارف نالو (سڃاڻپ) 4 يا وڌيڪ لفظ داخل ڪريو",
+            "auto_translated": "هڪ صارف نالو (سڃاڻپ) 4 يا وڌيڪ لفظ داخل ڪريو"
+        },
+        "af": {
+            "legacy_caption_pid": 34001,
+            "legacy_language_pid": 37,
+            "text": "Voer asseblief 'n gebruikersnaam (ID) 4 of meer karakters",
+            "auto_translated": "Voer asseblief 'n gebruikersnaam (ID) 4 of meer karakters"
+        },
+        "sw": {
+            "legacy_caption_pid": 34002,
+            "legacy_language_pid": 38,
+            "text": "Tafadhali weka jina la mtumiaji (ID) 4 au wahusika zaidi",
+            "auto_translated": "Tafadhali weka jina la mtumiaji (ID) 4 au wahusika zaidi"
+        },
+        "lo": {
+            "legacy_caption_pid": 34003,
+            "legacy_language_pid": 39,
+            "text": "ກະລຸນາໃສ່ຊື່ຜູ້ໃຊ້ (ID) 4 ຫລືຕົວອັກສອນຫຼາຍ",
+            "auto_translated": "ກະລຸນາໃສ່ຊື່ຜູ້ໃຊ້ (ID) 4 ຫລືຕົວອັກສອນຫຼາຍ"
+        },
+        "nl": {
+            "legacy_caption_pid": 34004,
+            "legacy_language_pid": 40,
+            "text": "Vul een gebruikersnaam (ID) 4 of meer karakters",
+            "auto_translated": "Vul een gebruikersnaam (ID) 4 of meer karakters"
+        },
+        "tl": {
+            "legacy_caption_pid": 34005,
+            "legacy_language_pid": 41,
+            "text": "Mangyaring magpasok ng isang user name (ID) 4 o higit pang mga character",
+            "auto_translated": "Mangyaring magpasok ng isang user name (ID) 4 o higit pang mga character"
+        },
+        "ne": {
+            "legacy_caption_pid": 34006,
+            "legacy_language_pid": 42,
+            "text": "कृपया प्रयोगकर्ता नाम (आईडी) 4 वा थप वर्णहरू प्रविष्ट",
+            "auto_translated": "कृपया प्रयोगकर्ता नाम (आईडी) 4 वा थप वर्णहरू प्रविष्ट"
+        },
+        "hu": {
+            "legacy_caption_pid": 34007,
+            "legacy_language_pid": 43,
+            "text": "Kérjük, adjon meg egy felhasználói nevet (ID) 4 vagy több karakter",
+            "auto_translated": "Kérjük, adjon meg egy felhasználói nevet (ID) 4 vagy több karakter"
+        },
+        "cs": {
+            "legacy_caption_pid": 34008,
+            "legacy_language_pid": 44,
+            "text": "Zadejte uživatelské jméno (ID) 4 nebo více znaků",
+            "auto_translated": "Zadejte uživatelské jméno (ID) 4 nebo více znaků"
+        },
+        "el": {
+            "legacy_caption_pid": 34009,
+            "legacy_language_pid": 45,
+            "text": "Παρακαλώ εισάγετε ένα όνομα χρήστη (ID) 4 ή περισσότερους χαρακτήρες",
+            "auto_translated": "Παρακαλώ εισάγετε ένα όνομα χρήστη (ID) 4 ή περισσότερους χαρακτήρες"
+        },
+        "sv": {
+            "legacy_caption_pid": 34010,
+            "legacy_language_pid": 46,
+            "text": "Ange ett användarnamn (ID) 4 eller fler tecken",
+            "auto_translated": "Ange ett användarnamn (ID) 4 eller fler tecken"
+        },
+        "kk": {
+            "legacy_caption_pid": 34011,
+            "legacy_language_pid": 47,
+            "text": "пайдаланушы аты (ID) 4 немесе одан да көп таңбадан енгізіңіз",
+            "auto_translated": "пайдаланушы аты (ID) 4 немесе одан да көп таңбадан енгізіңіз"
+        },
+        "fi": {
+            "legacy_caption_pid": 34012,
+            "legacy_language_pid": 48,
+            "text": "Anna käyttäjätunnus (ID) 4 tai useampia merkkejä",
+            "auto_translated": "Anna käyttäjätunnus (ID) 4 tai useampia merkkejä"
+        },
+        "da": {
+            "legacy_caption_pid": 34013,
+            "legacy_language_pid": 49,
+            "text": "Indtast venligst et brugernavn (ID) 4 eller flere tegn",
+            "auto_translated": "Indtast venligst et brugernavn (ID) 4 eller flere tegn"
+        },
+        "he": {
+            "legacy_caption_pid": 34014,
+            "legacy_language_pid": 50,
+            "text": "נא להזין שם משתמש (ID) 4 או יותר תווים",
+            "auto_translated": "נא להזין שם משתמש (ID) 4 או יותר תווים"
+        },
+        "no": {
+            "legacy_caption_pid": 34015,
+            "legacy_language_pid": 51,
+            "text": "Vennligst skriv inn et brukernavn (ID) 4 eller flere tegn",
+            "auto_translated": "Vennligst skriv inn et brukernavn (ID) 4 eller flere tegn"
+        }
+    }
+}

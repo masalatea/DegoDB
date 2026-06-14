@@ -1,0 +1,321 @@
+{
+    "resource_key": "NOTICE_PLEAE_LOGIN_BEFORE_USE",
+    "legacy_resource_pid": 564,
+    "base_group_key": "grp-005-common-lib",
+    "additional_group_keys": [],
+    "key_for_update": "2jSJGQ0u0o3ZkKlZI0J7lphRrJ5m8YvYN4b115wGvrSUsOpChgDDqPBjrVO8lNDacPQgevyVdznpC2C6ustCQSHF5frdKWDkYSSvcB74nxgrtAlgBmoZNFgoIrs8KczY",
+    "sort_group": "",
+    "key_name": "NOTICE_PLEAE_LOGIN_BEFORE_USE",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": false,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 1331,
+            "legacy_language_pid": 1,
+            "text": "ご利用にはログインが必要です",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 1332,
+            "legacy_language_pid": 2,
+            "text": "Please Login to display this page",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 6498,
+            "legacy_language_pid": 3,
+            "text": "您必须先登录",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 6499,
+            "legacy_language_pid": 4,
+            "text": "이용하려면 로그인이 필요합니다",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 10345,
+            "legacy_language_pid": 5,
+            "text": "Por favor Inicie sesión para mostrar esta página",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 10346,
+            "legacy_language_pid": 6,
+            "text": "Conecte-se para exibir esta página",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 10347,
+            "legacy_language_pid": 7,
+            "text": "您必須先登錄",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 16243,
+            "legacy_language_pid": 8,
+            "text": "Connectez-vous pour afficher cette page",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 16244,
+            "legacy_language_pid": 9,
+            "text": "कृपया इस पृष्ठ को प्रदर्शित करने के लिए लॉग इन करें",
+            "auto_translated": ""
+        },
+        "ar": {
+            "legacy_caption_pid": 29184,
+            "legacy_language_pid": 10,
+            "text": "المتاحة يجب أن تكون مسجلا",
+            "auto_translated": "المتاحة يجب أن تكون مسجلا"
+        },
+        "fa": {
+            "legacy_caption_pid": 29185,
+            "legacy_language_pid": 11,
+            "text": "در دسترس شما باید وارد سیستم شوید",
+            "auto_translated": "در دسترس شما باید وارد سیستم شوید"
+        },
+        "de": {
+            "legacy_caption_pid": 29186,
+            "legacy_language_pid": 12,
+            "text": "Die zur Verfügung stehende Sie müssen angemeldet sein,",
+            "auto_translated": "Die zur Verfügung stehende Sie müssen angemeldet sein,"
+        },
+        "ru": {
+            "legacy_caption_pid": 29187,
+            "legacy_language_pid": 13,
+            "text": "Имеющиеся Вы должны быть авторизованы",
+            "auto_translated": "Имеющиеся Вы должны быть авторизованы"
+        },
+        "ms": {
+            "legacy_caption_pid": 29188,
+            "legacy_language_pid": 14,
+            "text": "Yang ada Anda mesti log",
+            "auto_translated": "Yang ada Anda mesti log"
+        },
+        "ta": {
+            "legacy_caption_pid": 29189,
+            "legacy_language_pid": 15,
+            "text": "கிடைக்க நீங்கள் உள்நுழைந்திருக்க வேண்டும்",
+            "auto_translated": "கிடைக்க நீங்கள் உள்நுழைந்திருக்க வேண்டும்"
+        },
+        "it": {
+            "legacy_caption_pid": 29190,
+            "legacy_language_pid": 16,
+            "text": "La disposizione è necessario accedere",
+            "auto_translated": "La disposizione è necessario accedere"
+        },
+        "bn": {
+            "legacy_caption_pid": 29191,
+            "legacy_language_pid": 17,
+            "text": "প্রাপ্তিসাধ্য আপনি লগ ইন করতে হবে",
+            "auto_translated": "প্রাপ্তিসাধ্য আপনি লগ ইন করতে হবে"
+        },
+        "tr": {
+            "legacy_caption_pid": 29192,
+            "legacy_language_pid": 18,
+            "text": "Sen açmış olmalısınız mevcut",
+            "auto_translated": "Sen açmış olmalısınız mevcut"
+        },
+        "vi": {
+            "legacy_caption_pid": 29193,
+            "legacy_language_pid": 19,
+            "text": "Có sẵn Bạn phải đăng nhập",
+            "auto_translated": "Có sẵn Bạn phải đăng nhập"
+        },
+        "pl": {
+            "legacy_caption_pid": 29194,
+            "legacy_language_pid": 20,
+            "text": "Dostępna Musisz być zalogowany",
+            "auto_translated": "Dostępna Musisz być zalogowany"
+        },
+        "jv": {
+            "legacy_caption_pid": 29195,
+            "legacy_language_pid": 21,
+            "text": "Ing dhuwur Sampeyan kudu mlebu",
+            "auto_translated": "Ing dhuwur Sampeyan kudu mlebu"
+        },
+        "pa": {
+            "legacy_caption_pid": 29196,
+            "legacy_language_pid": 22,
+            "text": "ਉਪਲੱਬਧ ਤੁਹਾਨੂੰ ਲਾਗਇਨ ਕੀਤਾ ਜਾਣਾ ਚਾਹੀਦਾ",
+            "auto_translated": "ਉਪਲੱਬਧ ਤੁਹਾਨੂੰ ਲਾਗਇਨ ਕੀਤਾ ਜਾਣਾ ਚਾਹੀਦਾ"
+        },
+        "th": {
+            "legacy_caption_pid": 29197,
+            "legacy_language_pid": 23,
+            "text": "ที่มีอยู่คุณต้องลงทะเบียน",
+            "auto_translated": "ที่มีอยู่คุณต้องลงทะเบียน"
+        },
+        "te": {
+            "legacy_caption_pid": 35276,
+            "legacy_language_pid": 24,
+            "text": "అందుబాటులో మీరు ఉండాలి లాగిన్",
+            "auto_translated": "అందుబాటులో మీరు ఉండాలి లాగిన్"
+        },
+        "mr": {
+            "legacy_caption_pid": 35277,
+            "legacy_language_pid": 25,
+            "text": "उपलब्ध आपण लॉग इन करणे आवश्यक",
+            "auto_translated": "उपलब्ध आपण लॉग इन करणे आवश्यक"
+        },
+        "ur": {
+            "legacy_caption_pid": 35278,
+            "legacy_language_pid": 26,
+            "text": "آپ آپ کرنا ہوگا",
+            "auto_translated": "آپ آپ کرنا ہوگا"
+        },
+        "gu": {
+            "legacy_caption_pid": 35279,
+            "legacy_language_pid": 27,
+            "text": "ઉપલબ્ધ લૉગ ઇન થવું આવશ્યક",
+            "auto_translated": "ઉપલબ્ધ લૉગ ઇન થવું આવશ્યક"
+        },
+        "uk": {
+            "legacy_caption_pid": 35280,
+            "legacy_language_pid": 28,
+            "text": "Наявні Ви повинні бути авторизовані",
+            "auto_translated": "Наявні Ви повинні бути авторизовані"
+        },
+        "ml": {
+            "legacy_caption_pid": 35281,
+            "legacy_language_pid": 29,
+            "text": "ലഭ്യമായ നിങ്ങൾ ലോഗിൻ ചെയ്യേണ്ടതുണ്ട്",
+            "auto_translated": "ലഭ്യമായ നിങ്ങൾ ലോഗിൻ ചെയ്യേണ്ടതുണ്ട്"
+        },
+        "kn": {
+            "legacy_caption_pid": 35282,
+            "legacy_language_pid": 30,
+            "text": "ಲಭ್ಯವಿರುವ ನೀವು ಇರಬೇಕು ಲಾಗ್",
+            "auto_translated": "ಲಭ್ಯವಿರುವ ನೀವು ಇರಬೇಕು ಲಾಗ್"
+        },
+        "su": {
+            "legacy_caption_pid": 35283,
+            "legacy_language_pid": 31,
+            "text": "The sadia Anjeun kudu asup log",
+            "auto_translated": "The sadia Anjeun kudu asup log"
+        },
+        "ku": {
+            "legacy_caption_pid": 35284,
+            "legacy_language_pid": 32,
+            "text": "The License de divê ku tu têkevî",
+            "auto_translated": "The License de divê ku tu têkevî"
+        },
+        "ps": {
+            "legacy_caption_pid": 35285,
+            "legacy_language_pid": 33,
+            "text": "د شته تاسو بايد غونډال",
+            "auto_translated": "د شته تاسو بايد غونډال"
+        },
+        "ro": {
+            "legacy_caption_pid": 35286,
+            "legacy_language_pid": 34,
+            "text": "Disponibil Trebuie să fii autentificat",
+            "auto_translated": "Disponibil Trebuie să fii autentificat"
+        },
+        "id": {
+            "legacy_caption_pid": 35287,
+            "legacy_language_pid": 35,
+            "text": "Tersedia Anda harus login",
+            "auto_translated": "Tersedia Anda harus login"
+        },
+        "sd": {
+            "legacy_caption_pid": 35288,
+            "legacy_language_pid": 36,
+            "text": "هن موجود توهان جو لاگ ان هجڻ ضروري آهي ٿي",
+            "auto_translated": "هن موجود توهان جو لاگ ان هجڻ ضروري آهي ٿي"
+        },
+        "af": {
+            "legacy_caption_pid": 35289,
+            "legacy_language_pid": 37,
+            "text": "Die beskikbare Jy moet aangemeld word",
+            "auto_translated": "Die beskikbare Jy moet aangemeld word"
+        },
+        "sw": {
+            "legacy_caption_pid": 35290,
+            "legacy_language_pid": 38,
+            "text": "inapatikana Lazima uingie",
+            "auto_translated": "inapatikana Lazima uingie"
+        },
+        "lo": {
+            "legacy_caption_pid": 35291,
+            "legacy_language_pid": 39,
+            "text": "ທີ່ມີຢູ່ທ່ານຕ້ອງເຂົ້າສູ່ລະບົບ",
+            "auto_translated": "ທີ່ມີຢູ່ທ່ານຕ້ອງເຂົ້າສູ່ລະບົບ"
+        },
+        "nl": {
+            "legacy_caption_pid": 35292,
+            "legacy_language_pid": 40,
+            "text": "De beschikbare Je moet ingelogd zijn",
+            "auto_translated": "De beschikbare Je moet ingelogd zijn"
+        },
+        "tl": {
+            "legacy_caption_pid": 35293,
+            "legacy_language_pid": 41,
+            "text": "Ang mga magagamit na Ikaw dapat ay naka-log in",
+            "auto_translated": "Ang mga magagamit na Ikaw dapat ay naka-log in"
+        },
+        "ne": {
+            "legacy_caption_pid": 35294,
+            "legacy_language_pid": 42,
+            "text": "तपाईं लग इन हुनुपर्छ उपलब्ध",
+            "auto_translated": "तपाईं लग इन हुनुपर्छ उपलब्ध"
+        },
+        "hu": {
+            "legacy_caption_pid": 35295,
+            "legacy_language_pid": 43,
+            "text": "A rendelkezésre álló be kell jelentkezned",
+            "auto_translated": "A rendelkezésre álló be kell jelentkezned"
+        },
+        "cs": {
+            "legacy_caption_pid": 35296,
+            "legacy_language_pid": 44,
+            "text": "Dostupná je třeba se přihlásit",
+            "auto_translated": "Dostupná je třeba se přihlásit"
+        },
+        "el": {
+            "legacy_caption_pid": 35297,
+            "legacy_language_pid": 45,
+            "text": "Οι διαθέσιμες Θα πρέπει να συνδεθείτε",
+            "auto_translated": "Οι διαθέσιμες Θα πρέπει να συνδεθείτε"
+        },
+        "sv": {
+            "legacy_caption_pid": 35298,
+            "legacy_language_pid": 46,
+            "text": "Den tillgängliga Du måste vara inloggad",
+            "auto_translated": "Den tillgängliga Du måste vara inloggad"
+        },
+        "kk": {
+            "legacy_caption_pid": 35299,
+            "legacy_language_pid": 47,
+            "text": "Сіз теңдестіруден өткен болуы тиіс қолжетімді",
+            "auto_translated": "Сіз теңдестіруден өткен болуы тиіс қолжетімді"
+        },
+        "fi": {
+            "legacy_caption_pid": 35300,
+            "legacy_language_pid": 48,
+            "text": "Käytettävissä oleva Sinun täytyy kirjautua sisään",
+            "auto_translated": "Käytettävissä oleva Sinun täytyy kirjautua sisään"
+        },
+        "da": {
+            "legacy_caption_pid": 35301,
+            "legacy_language_pid": 49,
+            "text": "Den tilgængelige Du skal være logget",
+            "auto_translated": "Den tilgængelige Du skal være logget"
+        },
+        "he": {
+            "legacy_caption_pid": 35302,
+            "legacy_language_pid": 50,
+            "text": "הזמין עליך להיות מחובר",
+            "auto_translated": "הזמין עליך להיות מחובר"
+        },
+        "no": {
+            "legacy_caption_pid": 35303,
+            "legacy_language_pid": 51,
+            "text": "Den tilgjengelige Du må være logget inn",
+            "auto_translated": "Den tilgjengelige Du må være logget inn"
+        }
+    }
+}

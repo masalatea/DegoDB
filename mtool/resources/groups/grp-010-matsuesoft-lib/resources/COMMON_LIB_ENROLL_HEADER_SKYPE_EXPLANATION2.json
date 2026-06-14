@@ -1,0 +1,321 @@
+{
+    "resource_key": "COMMON_LIB_ENROLL_HEADER_SKYPE_EXPLANATION2",
+    "legacy_resource_pid": 1424,
+    "base_group_key": "grp-010-matsuesoft-lib",
+    "additional_group_keys": [],
+    "key_for_update": "oH28bUYcMe4YyhlHq88jTjF3IaV1o7NRPjMEo3g9ukVi8uWC6Bv2TIoD2MI3ja0x9xA6Fmx786v9flwnoIWYmIwhSKXYswZyJuqmZhSjLdYOQ8LV88JEetjXWjqlyrC8",
+    "sort_group": "ENROLL",
+    "key_name": "COMMON_LIB_ENROLL_HEADER_SKYPE_EXPLANATION2",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": false,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 5970,
+            "legacy_language_pid": 1,
+            "text": "スカイプ名(スカイプのユーザ名)をお持ちでない方はこちらからSkypeをダウンロード＆インストールし、スカイプ名(スカイプのユーザ名)を取得してから登録して下さい。すぐに取得できます。",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 5971,
+            "legacy_language_pid": 2,
+            "text": "If you do not have Skype Name (ID) please download & install Skype from here and obtain ID and register. You can get it immediately.",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 5972,
+            "legacy_language_pid": 3,
+            "text": "如果你没有Skype用户名（ID）请先下载安装的Skype，取得ID后可以直接登录。",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 5973,
+            "legacy_language_pid": 4,
+            "text": "스카이프 아이디를 가지고 있지 않은 분은 이 쪽에서 Skype를 다운로드 및 설치하고 아이디를 취득 후 등록하십시오. 금방 취득할 수 있습니다.",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 10892,
+            "legacy_language_pid": 5,
+            "text": "Si no tiene Skype (ID) por favor descargue e instale Skype desde aquí y obtenga ID y regístrese. Usted puede conseguirlo inmediatamente.",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 10893,
+            "legacy_language_pid": 6,
+            "text": "Se você não tem o Skype Name (ID), baixe e instale o Skype daqui e obtenha ID e registre-se. Você pode obtê-lo imediatamente.",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 10894,
+            "legacy_language_pid": 7,
+            "text": "如果你沒有Skype用戶名（ID）請先下載安裝的Skype，取得ID後可以直接登錄。",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 17027,
+            "legacy_language_pid": 8,
+            "text": "Si vous n'avez pas le nom de Skype (ID), téléchargez et installez Skype à partir d'ici et obtenez l'ID et vous inscrivez. Vous pouvez l'obtenir immédiatement.",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 17028,
+            "legacy_language_pid": 9,
+            "text": "अगर आपके पास स्काइप का नाम (आईडी) नहीं है तो कृपया यहां से स्काइप डाउनलोड और इंस्टॉल करें और आईडी और रजिस्टर प्राप्त करें। आप इसे तुरंत प्राप्त कर सकते हैं",
+            "auto_translated": ""
+        },
+        "ar": {
+            "legacy_caption_pid": 31704,
+            "legacy_language_pid": 10,
+            "text": "تحميل وتثبيت سكايب من هنا إذا لم يكن لديك اسم سكايب (سكايب اسم المستخدم)، يرجى التسجيل من الاستحواذ على سكايب اسم (اسم المستخدم سكايب). يمكنك الحصول على الفور.",
+            "auto_translated": "تحميل وتثبيت سكايب من هنا إذا لم يكن لديك اسم سكايب (سكايب اسم المستخدم)، يرجى التسجيل من الاستحواذ على سكايب اسم (اسم المستخدم سكايب). يمكنك الحصول على الفور."
+        },
+        "fa": {
+            "legacy_caption_pid": 31705,
+            "legacy_language_pid": 11,
+            "text": "دانلود و نصب اسکایپ از اینجا اگر شما از نام اسکایپ (نام کاربری اسکایپ) ندارد، لطفا از دستیابی به نام اسکایپ (نام کاربری اسکایپ) ثبت نام کنید. شما می توانید بلافاصله دریافت کنید.",
+            "auto_translated": "دانلود و نصب اسکایپ از اینجا اگر شما از نام اسکایپ (نام کاربری اسکایپ) ندارد، لطفا از دستیابی به نام اسکایپ (نام کاربری اسکایپ) ثبت نام کنید. شما می توانید بلافاصله دریافت کنید."
+        },
+        "de": {
+            "legacy_caption_pid": 31706,
+            "legacy_language_pid": 12,
+            "text": "Herunterladen und Installieren von Skype von hier, wenn Sie nicht haben Skype-Namen (Skype-Benutzername), registrieren Sie sich bitte aus dem Erwerb des Skype-Namen (Benutzername von Skype). Sie können sofort erhalten.",
+            "auto_translated": "Herunterladen und Installieren von Skype von hier, wenn Sie nicht haben Skype-Namen (Skype-Benutzername), registrieren Sie sich bitte aus dem Erwerb des Skype-Namen (Benutzername von Skype). Sie können sofort erhalten."
+        },
+        "ru": {
+            "legacy_caption_pid": 31707,
+            "legacy_language_pid": 13,
+            "text": "Скачать и установить Skype отсюда, если вы не имеете имя Skype (Skype имя пользователя), пожалуйста, зарегистрируйтесь от приобретения имени Skype (имя пользователя Skype). Вы можете сразу же получить.",
+            "auto_translated": "Скачать и установить Skype отсюда, если вы не имеете имя Skype (Skype имя пользователя), пожалуйста, зарегистрируйтесь от приобретения имени Skype (имя пользователя Skype). Вы можете сразу же получить."
+        },
+        "ms": {
+            "legacy_caption_pid": 31708,
+            "legacy_language_pid": 14,
+            "text": "Muat turun dan pasang Skype daripada sini jika anda tidak mempunyai nama Skype (Skype nama pengguna), sila mendaftar daripada pengambilalihan nama Skype (nama pengguna Skype). Anda boleh terus mendapatkan.",
+            "auto_translated": "Muat turun dan pasang Skype daripada sini jika anda tidak mempunyai nama Skype (Skype nama pengguna), sila mendaftar daripada pengambilalihan nama Skype (nama pengguna Skype). Anda boleh terus mendapatkan."
+        },
+        "ta": {
+            "legacy_caption_pid": 31709,
+            "legacy_language_pid": 15,
+            "text": "இறக்கலாம் மற்றும் நீங்கள் ஸ்கைப் பெயர் (ஸ்கைப் பயனர் பெயர்) இல்லை என்றால் இருந்து ஸ்கைப் நிறுவ, ஸ்கைப் பெயர் (ஸ்கைப் பயனர் பெயர்) பெறுதல்களினால் பதிவுசெய்யவும். நீங்கள் உடனடியாக பெற முடியும்.",
+            "auto_translated": "இறக்கலாம் மற்றும் நீங்கள் ஸ்கைப் பெயர் (ஸ்கைப் பயனர் பெயர்) இல்லை என்றால் இருந்து ஸ்கைப் நிறுவ, ஸ்கைப் பெயர் (ஸ்கைப் பயனர் பெயர்) பெறுதல்களினால் பதிவுசெய்யவும். நீங்கள் உடனடியாக பெற முடியும்."
+        },
+        "it": {
+            "legacy_caption_pid": 31710,
+            "legacy_language_pid": 16,
+            "text": "Scaricare e installare Skype da qui se non si dispone di nome Skype (Skype nome utente), registrati per favore dall'acquisizione del nome Skype (nome utente di Skype). È possibile ottenere immediatamente.",
+            "auto_translated": "Scaricare e installare Skype da qui se non si dispone di nome Skype (Skype nome utente), registrati per favore dall'acquisizione del nome Skype (nome utente di Skype). È possibile ottenere immediatamente."
+        },
+        "bn": {
+            "legacy_caption_pid": 31711,
+            "legacy_language_pid": 17,
+            "text": "এবং ডাউনলোড করুন এখানে আপনি স্কাইপ নাম (স্কাইপ ব্যবহারকারীর নাম) না থাকে স্কাইপ থেকে ইনস্টল করুন, স্কাইপ নাম (স্কাইপ ব্যবহারকারী নাম) অধিগ্রহণের থেকে রেজিস্টার করুন। আপনি অবিলম্বে পেতে পারেন।",
+            "auto_translated": "এবং ডাউনলোড করুন এখানে আপনি স্কাইপ নাম (স্কাইপ ব্যবহারকারীর নাম) না থাকে স্কাইপ থেকে ইনস্টল করুন, স্কাইপ নাম (স্কাইপ ব্যবহারকারী নাম) অধিগ্রহণের থেকে রেজিস্টার করুন। আপনি অবিলম্বে পেতে পারেন।"
+        },
+        "tr": {
+            "legacy_caption_pid": 31712,
+            "legacy_language_pid": 18,
+            "text": "Indirin ve burada Skype adı (Skype kullanıcı adı) yoksa gelen Skype'ı yüklemek Skype adı (Skype'ın kullanıcı adı) alımından kaynaklanan kayıt ediniz. Hemen alabilirsiniz.",
+            "auto_translated": "Indirin ve burada Skype adı (Skype kullanıcı adı) yoksa gelen Skype'ı yüklemek Skype adı (Skype'ın kullanıcı adı) alımından kaynaklanan kayıt ediniz. Hemen alabilirsiniz."
+        },
+        "vi": {
+            "legacy_caption_pid": 31713,
+            "legacy_language_pid": 19,
+            "text": "Tải về và cài đặt Skype từ đây nếu bạn không có tên Skype (tên người dùng Skype), xin vui lòng đăng ký từ việc mua lại tên Skype (user name của Skype). Bạn ngay lập tức có thể nhận được.",
+            "auto_translated": "Tải về và cài đặt Skype từ đây nếu bạn không có tên Skype (tên người dùng Skype), xin vui lòng đăng ký từ việc mua lại tên Skype (user name của Skype). Bạn ngay lập tức có thể nhận được."
+        },
+        "pl": {
+            "legacy_caption_pid": 31714,
+            "legacy_language_pid": 20,
+            "text": "Pobierz i zainstaluj Skype stąd jeśli nie masz nazwy użytkownika Skype (Skype nazwa użytkownika), należy zarejestrować się z przejęcia nazwy Skype (nazwa użytkownika Skype). można od razu dostać.",
+            "auto_translated": "Pobierz i zainstaluj Skype stąd jeśli nie masz nazwy użytkownika Skype (Skype nazwa użytkownika), należy zarejestrować się z przejęcia nazwy Skype (nazwa użytkownika Skype). można od razu dostać."
+        },
+        "jv": {
+            "legacy_caption_pid": 31715,
+            "legacy_language_pid": 21,
+            "text": "Ngundhuh lan nginstal Skype saka kene yen ora duwe jeneng Skype (Skype jeneng panganggo), silahkan daftar saka disualekno saka jeneng Skype (jeneng panganggo saka Skype). Sampeyan bisa langsung njaluk.",
+            "auto_translated": "Ngundhuh lan nginstal Skype saka kene yen ora duwe jeneng Skype (Skype jeneng panganggo), silahkan daftar saka disualekno saka jeneng Skype (jeneng panganggo saka Skype). Sampeyan bisa langsung njaluk."
+        },
+        "pa": {
+            "legacy_caption_pid": 31716,
+            "legacy_language_pid": 22,
+            "text": "ਡਾਊਨਲੋਡ ਅਤੇ ਇੱਥੇ ਜੇਕਰ ਤੁਹਾਨੂੰ Skype ਨਾਮ (ਸਕਾਈਪ ਉਪਭੋਗੀ ਨੂੰ ਨਾਮ) ਹੈ, ਨਾ ਹੈ ਤੱਕ ਸਕਾਈਪ, ਇੰਸਟਾਲ, ਸਕਾਈਪ ਨਾਮ (ਸਕਾਈਪ ਦੇ ਯੂਜ਼ਰ ਨੂੰ ਨਾਮ) ਦੀ ਪ੍ਰਾਪਤੀ ਤੱਕ ਰਜਿਸਟਰ ਕਰੋ. ਤੁਹਾਨੂੰ ਤੁਰੰਤ ਪ੍ਰਾਪਤ ਕਰ ਸਕਦੇ ਹੋ.",
+            "auto_translated": "ਡਾਊਨਲੋਡ ਅਤੇ ਇੱਥੇ ਜੇਕਰ ਤੁਹਾਨੂੰ Skype ਨਾਮ (ਸਕਾਈਪ ਉਪਭੋਗੀ ਨੂੰ ਨਾਮ) ਹੈ, ਨਾ ਹੈ ਤੱਕ ਸਕਾਈਪ, ਇੰਸਟਾਲ, ਸਕਾਈਪ ਨਾਮ (ਸਕਾਈਪ ਦੇ ਯੂਜ਼ਰ ਨੂੰ ਨਾਮ) ਦੀ ਪ੍ਰਾਪਤੀ ਤੱਕ ਰਜਿਸਟਰ ਕਰੋ. ਤੁਹਾਨੂੰ ਤੁਰੰਤ ਪ੍ਰਾਪਤ ਕਰ ਸਕਦੇ ਹੋ."
+        },
+        "th": {
+            "legacy_caption_pid": 31717,
+            "legacy_language_pid": 23,
+            "text": "ดาวน์โหลดและติดตั้งโปรแกรม Skype จากที่นี่ถ้าคุณไม่ได้มีชื่อ Skype (ชื่อผู้ใช้ Skype) กรุณาลงทะเบียนจากการซื้อชื่อ Skype (ชื่อผู้ใช้ของ Skype) ทันทีที่คุณจะได้รับ",
+            "auto_translated": "ดาวน์โหลดและติดตั้งโปรแกรม Skype จากที่นี่ถ้าคุณไม่ได้มีชื่อ Skype (ชื่อผู้ใช้ Skype) กรุณาลงทะเบียนจากการซื้อชื่อ Skype (ชื่อผู้ใช้ของ Skype) ทันทีที่คุณจะได้รับ"
+        },
+        "te": {
+            "legacy_caption_pid": 38664,
+            "legacy_language_pid": 24,
+            "text": "డౌన్లోడ్ మరియు ఇక్కడ మీరు స్కైప్ పేరు (స్కైప్ యూజర్ పేరు) లేకపోతే నుండి స్కైప్ ఇన్స్టాల్, స్కైప్ పేరు (స్కైప్ యూజర్ పేరు) పొందటం నుండి నమోదు చేయండి. మీరు వెంటనే పొందవచ్చు.",
+            "auto_translated": "డౌన్లోడ్ మరియు ఇక్కడ మీరు స్కైప్ పేరు (స్కైప్ యూజర్ పేరు) లేకపోతే నుండి స్కైప్ ఇన్స్టాల్, స్కైప్ పేరు (స్కైప్ యూజర్ పేరు) పొందటం నుండి నమోదు చేయండి. మీరు వెంటనే పొందవచ్చు."
+        },
+        "mr": {
+            "legacy_caption_pid": 38665,
+            "legacy_language_pid": 25,
+            "text": "डाउनलोड करा आणि येथे आपण स्काईप नाव (स्काईप वापरकर्ता नाव) नसेल तर ते स्काईप इन्स्टॉल, स्काईप नाव (स्काईप वापरकर्ता नाव) संपादन पासून नोंदणी करा. आपण त्वरित मिळवू शकता.",
+            "auto_translated": "डाउनलोड करा आणि येथे आपण स्काईप नाव (स्काईप वापरकर्ता नाव) नसेल तर ते स्काईप इन्स्टॉल, स्काईप नाव (स्काईप वापरकर्ता नाव) संपादन पासून नोंदणी करा. आपण त्वरित मिळवू शकता."
+        },
+        "ur": {
+            "legacy_caption_pid": 38666,
+            "legacy_language_pid": 26,
+            "text": "لوڈ اور یہاں آپ کو اسکائپ نام (اسکائپ صارف نام) نہیں ہے تو سے اسکائپ انسٹال، اسکائپ نام (اسکائپ کے صارف نام) کے حصول سے رجسٹر کریں. آپ فوری طور پر حاصل کر سکتے ہیں.",
+            "auto_translated": "لوڈ اور یہاں آپ کو اسکائپ نام (اسکائپ صارف نام) نہیں ہے تو سے اسکائپ انسٹال، اسکائپ نام (اسکائپ کے صارف نام) کے حصول سے رجسٹر کریں. آپ فوری طور پر حاصل کر سکتے ہیں."
+        },
+        "gu": {
+            "legacy_caption_pid": 38667,
+            "legacy_language_pid": 27,
+            "text": "ડાઉનલોડ કરો અને અહીં જો તમે સ્કાયપે નામ (સ્કાયપે વપરાશકર્તા નામ) ન હોય માંથી સ્કાયપે સ્થાપિત સ્કાયપે નામ (સ્કાયપે વપરાશકર્તા નામ) સંપાદન થી રજિસ્ટર વિનંતી. તમે તરત જ મેળવી શકો છો.",
+            "auto_translated": "ડાઉનલોડ કરો અને અહીં જો તમે સ્કાયપે નામ (સ્કાયપે વપરાશકર્તા નામ) ન હોય માંથી સ્કાયપે સ્થાપિત સ્કાયપે નામ (સ્કાયપે વપરાશકર્તા નામ) સંપાદન થી રજિસ્ટર વિનંતી. તમે તરત જ મેળવી શકો છો."
+        },
+        "uk": {
+            "legacy_caption_pid": 38668,
+            "legacy_language_pid": 28,
+            "text": "Завантажити та встановити Skype звідси, якщо ви не маєте ім'я Skype (Skype ім'я користувача), будь ласка, зареєструйтесь від придбання імені Skype (ім'я користувача Skype). Ви можете відразу ж отримати.",
+            "auto_translated": "Завантажити та встановити Skype звідси, якщо ви не маєте ім'я Skype (Skype ім'я користувача), будь ласка, зареєструйтесь від придбання імені Skype (ім'я користувача Skype). Ви можете відразу ж отримати."
+        },
+        "ml": {
+            "legacy_caption_pid": 38669,
+            "legacy_language_pid": 29,
+            "text": "ഇവിടെ നിന്ന് ഡൗൺലോഡ് ചെയ്ത് ഇൻസ്റ്റാൾ സ്കൈപ്പ് നിങ്ങൾ സ്കൈപ്പ് പേര് (സ്കൈപ്പ് ഉപയോക്തൃ നാമം) ഇല്ലെങ്കിൽ, സ്കൈപ്പ് പേര് (സ്കൈപ്പ് എന്ന ഉപയോക്തൃ നാമം) ഏറ്റെടുക്കൽ നിന്നും രജിസ്റ്റർ ചെയ്യുക. നിങ്ങൾ ഉടനെ ലഭിക്കും.",
+            "auto_translated": "ഇവിടെ നിന്ന് ഡൗൺലോഡ് ചെയ്ത് ഇൻസ്റ്റാൾ സ്കൈപ്പ് നിങ്ങൾ സ്കൈപ്പ് പേര് (സ്കൈപ്പ് ഉപയോക്തൃ നാമം) ഇല്ലെങ്കിൽ, സ്കൈപ്പ് പേര് (സ്കൈപ്പ് എന്ന ഉപയോക്തൃ നാമം) ഏറ്റെടുക്കൽ നിന്നും രജിസ്റ്റർ ചെയ്യുക. നിങ്ങൾ ഉടനെ ലഭിക്കും."
+        },
+        "kn": {
+            "legacy_caption_pid": 38670,
+            "legacy_language_pid": 30,
+            "text": "ಡೌನ್ಲೋಡ್ ಮತ್ತು ಇಲ್ಲಿ ನೀವು ಸ್ಕೈಪ್ ಹೆಸರು (ಸ್ಕೈಪ್ ಬಳಕೆದಾರರ ಹೆಸರು) ಹೊಂದಿಲ್ಲದಿದ್ದರೆ ರಿಂದ ಸ್ಕೈಪ್ ಅನುಸ್ಥಾಪಿಸಲು, ಸ್ಕೈಪ್ ಹೆಸರು (ಸ್ಕೈಪ್ ಬಳಕೆದಾರ ಹೆಸರು) ಸ್ವಾಧೀನ ನಿಂದ ನೊಂದಣಿ ದಯವಿಟ್ಟು. ತಕ್ಷಣ ಪಡೆಯಬಹುದು.",
+            "auto_translated": "ಡೌನ್ಲೋಡ್ ಮತ್ತು ಇಲ್ಲಿ ನೀವು ಸ್ಕೈಪ್ ಹೆಸರು (ಸ್ಕೈಪ್ ಬಳಕೆದಾರರ ಹೆಸರು) ಹೊಂದಿಲ್ಲದಿದ್ದರೆ ರಿಂದ ಸ್ಕೈಪ್ ಅನುಸ್ಥಾಪಿಸಲು, ಸ್ಕೈಪ್ ಹೆಸರು (ಸ್ಕೈಪ್ ಬಳಕೆದಾರ ಹೆಸರು) ಸ್ವಾಧೀನ ನಿಂದ ನೊಂದಣಿ ದಯವಿಟ್ಟು. ತಕ್ಷಣ ಪಡೆಯಬಹುದು."
+        },
+        "su": {
+            "legacy_caption_pid": 38671,
+            "legacy_language_pid": 31,
+            "text": "Ngundeur tur masang Skype ti dieu lamun teu boga ngaran Skype (Skype ngaran pamaké), mangga ngadaptar ti mangrupakeun akusisi ti nami Skype (ngaran pamaké tina Skype). Anjeun tiasa geura meunang.",
+            "auto_translated": "Ngundeur tur masang Skype ti dieu lamun teu boga ngaran Skype (Skype ngaran pamaké), mangga ngadaptar ti mangrupakeun akusisi ti nami Skype (ngaran pamaké tina Skype). Anjeun tiasa geura meunang."
+        },
+        "ku": {
+            "legacy_caption_pid": 38672,
+            "legacy_language_pid": 32,
+            "text": "Daxe û saz bike Skype ji vir eger hûn bi navê Skype (user name Skype) tune ne, ji kerema xwe ve ji axan bi navê Skype (user name ya Skype) xwe qeyd. Tu dikarî di cih de dest.",
+            "auto_translated": "Daxe û saz bike Skype ji vir eger hûn bi navê Skype (user name Skype) tune ne, ji kerema xwe ve ji axan bi navê Skype (user name ya Skype) xwe qeyd. Tu dikarî di cih de dest."
+        },
+        "ps": {
+            "legacy_caption_pid": 38673,
+            "legacy_language_pid": 33,
+            "text": "دانلود او د سکایپ څخه دلته که تاسو د سکايپ نوم (سکایپ کارن نوم) نه لري نصب، مهرباني وکړی د سکايپ نوم (د سکايپ کارن نوم) د استملاک څخه د ثبت کړي. تاسو ژر تر ژره تر لاسه کولای شي.",
+            "auto_translated": "دانلود او د سکایپ څخه دلته که تاسو د سکايپ نوم (سکایپ کارن نوم) نه لري نصب، مهرباني وکړی د سکايپ نوم (د سکايپ کارن نوم) د استملاک څخه د ثبت کړي. تاسو ژر تر ژره تر لاسه کولای شي."
+        },
+        "ro": {
+            "legacy_caption_pid": 38674,
+            "legacy_language_pid": 34,
+            "text": "Descărcați și instalați Skype de aici, dacă nu aveți numele Skype (Skype numele de utilizator), vă rugăm să înregistrați din achiziționarea numelui Skype (numele de utilizator Skype). Puteți obține imediat.",
+            "auto_translated": "Descărcați și instalați Skype de aici, dacă nu aveți numele Skype (Skype numele de utilizator), vă rugăm să înregistrați din achiziționarea numelui Skype (numele de utilizator Skype). Puteți obține imediat."
+        },
+        "id": {
+            "legacy_caption_pid": 38675,
+            "legacy_language_pid": 35,
+            "text": "Mendownload dan menginstal Skype dari sini jika Anda tidak memiliki nama Skype (Skype nama pengguna), silakan mendaftar dari akuisisi nama Skype (nama pengguna Skype). Kamu bisa segera mendapatkan.",
+            "auto_translated": "Mendownload dan menginstal Skype dari sini jika Anda tidak memiliki nama Skype (Skype nama pengguna), silakan mendaftar dari akuisisi nama Skype (nama pengguna Skype). Kamu bisa segera mendapatkan."
+        },
+        "sd": {
+            "legacy_caption_pid": 38676,
+            "legacy_language_pid": 36,
+            "text": "ڊائون لوڊ ۽ هتي مان Skype جي نصب جيڪڏهن توهان Skype جي نالي سان (Skype جي استعمال ڪندڙ جو نالو) نه آهي، جي Skype جي نالي سان (جي Skype جي استعمال ڪندڙ جو نالو) جي حصول کان رجسٽر ڪريو. توهان کي فوري طور تي حاصل ڪري سگهو ٿا.",
+            "auto_translated": "ڊائون لوڊ ۽ هتي مان Skype جي نصب جيڪڏهن توهان Skype جي نالي سان (Skype جي استعمال ڪندڙ جو نالو) نه آهي، جي Skype جي نالي سان (جي Skype جي استعمال ڪندڙ جو نالو) جي حصول کان رجسٽر ڪريو. توهان کي فوري طور تي حاصل ڪري سگهو ٿا."
+        },
+        "af": {
+            "legacy_caption_pid": 38677,
+            "legacy_language_pid": 37,
+            "text": "Aflaai en Skype installeer vanaf hier as jy nie Skype naam (Skype gebruiker naam), registreer asseblief by die verkryging van die Skype naam (gebruiker naam van Skype). Jy kan dadelik.",
+            "auto_translated": "Aflaai en Skype installeer vanaf hier as jy nie Skype naam (Skype gebruiker naam), registreer asseblief by die verkryging van die Skype naam (gebruiker naam van Skype). Jy kan dadelik."
+        },
+        "sw": {
+            "legacy_caption_pid": 38678,
+            "legacy_language_pid": 38,
+            "text": "Pakua na usakinishe Skype kutoka hapa kama huna kuwa na jina Skype (Skype jina la mtumiaji), tafadhali kujiandikisha kutoka upatikanaji wa jina Skype (user jina la Skype). Unaweza mara moja kupata.",
+            "auto_translated": "Pakua na usakinishe Skype kutoka hapa kama huna kuwa na jina Skype (Skype jina la mtumiaji), tafadhali kujiandikisha kutoka upatikanaji wa jina Skype (user jina la Skype). Unaweza mara moja kupata."
+        },
+        "lo": {
+            "legacy_caption_pid": 38679,
+            "legacy_language_pid": 39,
+            "text": "ດາວນ໌ໂຫລດແລະຕິດຕັ້ງ Skype ຈາກທີ່ນີ້ຖ້າຫາກວ່າທ່ານບໍ່ມີຊື່ Skype (ຊື່ຜູ້ໃຊ້ Skype), ກະລຸນາລົງທະບຽນຈາກການຊື້ຊື່ Skype (ຊື່ຜູ້ໃຊ້ຂອງ Skype) ໄດ້. ທັນທີທີ່ທ່ານສາມາດໄດ້ຮັບ.",
+            "auto_translated": "ດາວນ໌ໂຫລດແລະຕິດຕັ້ງ Skype ຈາກທີ່ນີ້ຖ້າຫາກວ່າທ່ານບໍ່ມີຊື່ Skype (ຊື່ຜູ້ໃຊ້ Skype), ກະລຸນາລົງທະບຽນຈາກການຊື້ຊື່ Skype (ຊື່ຜູ້ໃຊ້ຂອງ Skype) ໄດ້. ທັນທີທີ່ທ່ານສາມາດໄດ້ຮັບ."
+        },
+        "nl": {
+            "legacy_caption_pid": 38680,
+            "legacy_language_pid": 40,
+            "text": "Download en Skype installeren vanaf hier als u geen Skype-naam (Skype-gebruikersnaam), kunt u zich registreren door de acquisitie van de Skype-naam (gebruikersnaam van Skype). U kunt meteen.",
+            "auto_translated": "Download en Skype installeren vanaf hier als u geen Skype-naam (Skype-gebruikersnaam), kunt u zich registreren door de acquisitie van de Skype-naam (gebruikersnaam van Skype). U kunt meteen."
+        },
+        "tl": {
+            "legacy_caption_pid": 38681,
+            "legacy_language_pid": 41,
+            "text": "I-download at i-install skype mula dito kung hindi ka magkaroon ng pangalan Skype (Skype user name), mangyaring magparehistro mula sa pagkuha ng pangalan Skype (user name ng Skype). Maaari mong agad na makukuha.",
+            "auto_translated": "I-download at i-install skype mula dito kung hindi ka magkaroon ng pangalan Skype (Skype user name), mangyaring magparehistro mula sa pagkuha ng pangalan Skype (user name ng Skype). Maaari mong agad na makukuha."
+        },
+        "ne": {
+            "legacy_caption_pid": 38682,
+            "legacy_language_pid": 42,
+            "text": "डाउनलोड र यहाँ तपाईं स्काइप नाम (स्काइप प्रयोगकर्ता नाम) छैन भने देखि स्काइप स्थापना, कृपया स्काइप नाम (Skype को प्रयोगकर्ता नाम) को अधिग्रहण देखि दर्ता गर्नुहोस्। तपाईं तुरुन्त प्राप्त गर्न सक्छन्।",
+            "auto_translated": "डाउनलोड र यहाँ तपाईं स्काइप नाम (स्काइप प्रयोगकर्ता नाम) छैन भने देखि स्काइप स्थापना, कृपया स्काइप नाम (Skype को प्रयोगकर्ता नाम) को अधिग्रहण देखि दर्ता गर्नुहोस्। तपाईं तुरुन्त प्राप्त गर्न सक्छन्।"
+        },
+        "hu": {
+            "legacy_caption_pid": 38683,
+            "legacy_language_pid": 43,
+            "text": "Töltse le és telepítse a Skype innen, ha nem rendelkezik a Skype nevet (Skype felhasználó név), kérjük, regisztráljon a megszerzése a Skype név (felhasználói név a Skype). Akkor azonnal kap.",
+            "auto_translated": "Töltse le és telepítse a Skype innen, ha nem rendelkezik a Skype nevet (Skype felhasználó név), kérjük, regisztráljon a megszerzése a Skype név (felhasználói név a Skype). Akkor azonnal kap."
+        },
+        "cs": {
+            "legacy_caption_pid": 38684,
+            "legacy_language_pid": 44,
+            "text": "Stáhnout a nainstalovat Skype odtud pokud nemáte jméno Skype (Skype uživatelské jméno), zaregistrujte se od nabytí Skype jméno (jméno uživatele Skype). Můžete okamžitě dostat.",
+            "auto_translated": "Stáhnout a nainstalovat Skype odtud pokud nemáte jméno Skype (Skype uživatelské jméno), zaregistrujte se od nabytí Skype jméno (jméno uživatele Skype). Můžete okamžitě dostat."
+        },
+        "el": {
+            "legacy_caption_pid": 38685,
+            "legacy_language_pid": 45,
+            "text": "Λήψη και εγκατάσταση του Skype από εδώ αν δεν έχετε όνομα Skype (όνομα χρήστη Skype), παρακαλούμε να εγγραφείτε από την απόκτηση του ονόματος Skype (όνομα χρήστη του Skype). Μπορείτε να πάρετε αμέσως.",
+            "auto_translated": "Λήψη και εγκατάσταση του Skype από εδώ αν δεν έχετε όνομα Skype (όνομα χρήστη Skype), παρακαλούμε να εγγραφείτε από την απόκτηση του ονόματος Skype (όνομα χρήστη του Skype). Μπορείτε να πάρετε αμέσως."
+        },
+        "sv": {
+            "legacy_caption_pid": 38686,
+            "legacy_language_pid": 46,
+            "text": "Ladda ner och installera Skype härifrån om du inte har Skype-namn (Skype användarnamn), vänligen registrera från förvärvet av Skype-namn (användarnamn på Skype). Du kan omedelbart få.",
+            "auto_translated": "Ladda ner och installera Skype härifrån om du inte har Skype-namn (Skype användarnamn), vänligen registrera från förvärvet av Skype-namn (användarnamn på Skype). Du kan omedelbart få."
+        },
+        "kk": {
+            "legacy_caption_pid": 38687,
+            "legacy_language_pid": 47,
+            "text": "Сіз Skype атын (Skype пайдаланушы аты) болмаса, мұнда Skype жүктеу және орнату, Skype аты (Skype пайдаланушы аты) сатып алудан тіркеліңіз. Сіз бірден ала аласыз.",
+            "auto_translated": "Сіз Skype атын (Skype пайдаланушы аты) болмаса, мұнда Skype жүктеу және орнату, Skype аты (Skype пайдаланушы аты) сатып алудан тіркеліңіз. Сіз бірден ала аласыз."
+        },
+        "fi": {
+            "legacy_caption_pid": 38688,
+            "legacy_language_pid": 48,
+            "text": "Lataa ja asenna Skype täältä jos sinulla ei ole Skype-nimeä (Skype käyttäjätunnus), rekisteröidy hankinnasta Skype (käyttäjänimi Skype). Voit saada välittömästi.",
+            "auto_translated": "Lataa ja asenna Skype täältä jos sinulla ei ole Skype-nimeä (Skype käyttäjätunnus), rekisteröidy hankinnasta Skype (käyttäjänimi Skype). Voit saada välittömästi."
+        },
+        "da": {
+            "legacy_caption_pid": 38689,
+            "legacy_language_pid": 49,
+            "text": "Hent og installer Skype fra her, hvis du ikke har Skype-navn (Skype-brugernavn), skal du registrere dig fra købet af Skype-navn (brugernavn på Skype). Du kan straks få.",
+            "auto_translated": "Hent og installer Skype fra her, hvis du ikke har Skype-navn (Skype-brugernavn), skal du registrere dig fra købet af Skype-navn (brugernavn på Skype). Du kan straks få."
+        },
+        "he": {
+            "legacy_caption_pid": 38690,
+            "legacy_language_pid": 50,
+            "text": "הורד והתקן סקייפ מכאן אם אין לך שם סקייפ (שם משתמש סקייפ), בבקשה לרשום מרכישת שם סקייפ (שם משתמש של סקייפ). אתה יכול לקבל באופן מיידי.",
+            "auto_translated": "הורד והתקן סקייפ מכאן אם אין לך שם סקייפ (שם משתמש סקייפ), בבקשה לרשום מרכישת שם סקייפ (שם משתמש של סקייפ). אתה יכול לקבל באופן מיידי."
+        },
+        "no": {
+            "legacy_caption_pid": 38691,
+            "legacy_language_pid": 51,
+            "text": "Last ned og installer Skype fra her hvis du ikke har Skype navn (Skype brukernavn), kan du registrere fra oppkjøpet av Skype-navn (brukernavn på Skype). Du kan umiddelbart få.",
+            "auto_translated": "Last ned og installer Skype fra her hvis du ikke har Skype navn (Skype brukernavn), kan du registrere fra oppkjøpet av Skype-navn (brukernavn på Skype). Du kan umiddelbart få."
+        }
+    }
+}

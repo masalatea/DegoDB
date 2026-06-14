@@ -1,0 +1,321 @@
+{
+    "resource_key": "COMMON_LIB_LOGIN_ANNOUNCEMENT_FOR_LOGIN_LINE2_ABOUT_FACEBOOK_ACCOUNT",
+    "legacy_resource_pid": 1492,
+    "base_group_key": "grp-010-matsuesoft-lib",
+    "additional_group_keys": [],
+    "key_for_update": "PJDgCwtHSOeySyV2bLXe5LCTIHsBS07XWItUmPkWpEbClFQhRm6nfDLVdrOTJ7lXgBqvgKpO2ly4ciYHYUO6pvJCHw7INLxY66Furo2F9pKqpzhfXYTjZypfUCOfgELh",
+    "sort_group": "LOGIN",
+    "key_name": "COMMON_LIB_LOGIN_ANNOUNCEMENT_FOR_LOGIN_LINE2_ABOUT_FACEBOOK_ACCOUNT",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": false,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 6242,
+            "legacy_language_pid": 1,
+            "text": "Facebookアカウント",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 6243,
+            "legacy_language_pid": 2,
+            "text": "Facebook Account",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 6244,
+            "legacy_language_pid": 3,
+            "text": "Facebook帐户",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 6245,
+            "legacy_language_pid": 4,
+            "text": "Facebook 계정",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 11027,
+            "legacy_language_pid": 5,
+            "text": "Cuenta de Facebook ",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 11028,
+            "legacy_language_pid": 6,
+            "text": "Conta do Facebook ",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 11029,
+            "legacy_language_pid": 7,
+            "text": "Facebook帳戶",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 17217,
+            "legacy_language_pid": 8,
+            "text": "Compte Facebook",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 17218,
+            "legacy_language_pid": 9,
+            "text": "फेसबुक अकाउंट",
+            "auto_translated": ""
+        },
+        "ar": {
+            "legacy_caption_pid": 32376,
+            "legacy_language_pid": 10,
+            "text": "حساب الفيسبوك",
+            "auto_translated": "حساب الفيسبوك"
+        },
+        "fa": {
+            "legacy_caption_pid": 32377,
+            "legacy_language_pid": 11,
+            "text": "حساب فیس بوک",
+            "auto_translated": "حساب فیس بوک"
+        },
+        "de": {
+            "legacy_caption_pid": 32378,
+            "legacy_language_pid": 12,
+            "text": "Facebook-Account",
+            "auto_translated": "Facebook-Account"
+        },
+        "ru": {
+            "legacy_caption_pid": 32379,
+            "legacy_language_pid": 13,
+            "text": "facebook счет",
+            "auto_translated": "facebook счет"
+        },
+        "ms": {
+            "legacy_caption_pid": 32380,
+            "legacy_language_pid": 14,
+            "text": "akaun Facebook",
+            "auto_translated": "akaun Facebook"
+        },
+        "ta": {
+            "legacy_caption_pid": 32381,
+            "legacy_language_pid": 15,
+            "text": "facebook கணக்கு",
+            "auto_translated": "facebook கணக்கு"
+        },
+        "it": {
+            "legacy_caption_pid": 32382,
+            "legacy_language_pid": 16,
+            "text": "account Facebook",
+            "auto_translated": "account Facebook"
+        },
+        "bn": {
+            "legacy_caption_pid": 32383,
+            "legacy_language_pid": 17,
+            "text": "ফেসবুক একাউন্ট",
+            "auto_translated": "ফেসবুক একাউন্ট"
+        },
+        "tr": {
+            "legacy_caption_pid": 32384,
+            "legacy_language_pid": 18,
+            "text": "Facebook hesabı",
+            "auto_translated": "Facebook hesabı"
+        },
+        "vi": {
+            "legacy_caption_pid": 32385,
+            "legacy_language_pid": 19,
+            "text": "tài khoản Facebook",
+            "auto_translated": "tài khoản Facebook"
+        },
+        "pl": {
+            "legacy_caption_pid": 32386,
+            "legacy_language_pid": 20,
+            "text": "konta Facebook",
+            "auto_translated": "konta Facebook"
+        },
+        "jv": {
+            "legacy_caption_pid": 32387,
+            "legacy_language_pid": 21,
+            "text": "akun Facebook",
+            "auto_translated": "akun Facebook"
+        },
+        "pa": {
+            "legacy_caption_pid": 32388,
+            "legacy_language_pid": 22,
+            "text": "ਫੇਸਬੁੱਕ ਖਾਤੇ",
+            "auto_translated": "ਫੇਸਬੁੱਕ ਖਾਤੇ"
+        },
+        "th": {
+            "legacy_caption_pid": 32389,
+            "legacy_language_pid": 23,
+            "text": "บัญชี Facebook",
+            "auto_translated": "บัญชี Facebook"
+        },
+        "te": {
+            "legacy_caption_pid": 40876,
+            "legacy_language_pid": 24,
+            "text": "Facebook ఖాతా",
+            "auto_translated": "Facebook ఖాతా"
+        },
+        "mr": {
+            "legacy_caption_pid": 40877,
+            "legacy_language_pid": 25,
+            "text": "फेसबुक खाते",
+            "auto_translated": "फेसबुक खाते"
+        },
+        "ur": {
+            "legacy_caption_pid": 40878,
+            "legacy_language_pid": 26,
+            "text": "فیس بک اکاؤنٹ",
+            "auto_translated": "فیس بک اکاؤنٹ"
+        },
+        "gu": {
+            "legacy_caption_pid": 40879,
+            "legacy_language_pid": 27,
+            "text": "Facebook એકાઉન્ટ",
+            "auto_translated": "Facebook એકાઉન્ટ"
+        },
+        "uk": {
+            "legacy_caption_pid": 40880,
+            "legacy_language_pid": 28,
+            "text": "facebook рахунок",
+            "auto_translated": "facebook рахунок"
+        },
+        "ml": {
+            "legacy_caption_pid": 40881,
+            "legacy_language_pid": 29,
+            "text": "ഫേസ്ബുക്ക് അക്കൗണ്ട്",
+            "auto_translated": "ഫേസ്ബുക്ക് അക്കൗണ്ട്"
+        },
+        "kn": {
+            "legacy_caption_pid": 40882,
+            "legacy_language_pid": 30,
+            "text": "ಫೇಸ್ಬುಕ್ ಖಾತೆಯನ್ನು",
+            "auto_translated": "ಫೇಸ್ಬುಕ್ ಖಾತೆಯನ್ನು"
+        },
+        "su": {
+            "legacy_caption_pid": 40883,
+            "legacy_language_pid": 31,
+            "text": "akun Facebook",
+            "auto_translated": "akun Facebook"
+        },
+        "ku": {
+            "legacy_caption_pid": 40884,
+            "legacy_language_pid": 32,
+            "text": "account facebook",
+            "auto_translated": "account facebook"
+        },
+        "ps": {
+            "legacy_caption_pid": 40885,
+            "legacy_language_pid": 33,
+            "text": "فیسبوک حساب",
+            "auto_translated": "فیسبوک حساب"
+        },
+        "ro": {
+            "legacy_caption_pid": 40886,
+            "legacy_language_pid": 34,
+            "text": "cont de Facebook",
+            "auto_translated": "cont de Facebook"
+        },
+        "id": {
+            "legacy_caption_pid": 40887,
+            "legacy_language_pid": 35,
+            "text": "akun facebook",
+            "auto_translated": "akun facebook"
+        },
+        "sd": {
+            "legacy_caption_pid": 40888,
+            "legacy_language_pid": 36,
+            "text": "فيسبوڪ اڪائونٽ",
+            "auto_translated": "فيسبوڪ اڪائونٽ"
+        },
+        "af": {
+            "legacy_caption_pid": 40889,
+            "legacy_language_pid": 37,
+            "text": "Facebook rekening",
+            "auto_translated": "Facebook rekening"
+        },
+        "sw": {
+            "legacy_caption_pid": 40890,
+            "legacy_language_pid": 38,
+            "text": "akaunti Facebook",
+            "auto_translated": "akaunti Facebook"
+        },
+        "lo": {
+            "legacy_caption_pid": 40891,
+            "legacy_language_pid": 39,
+            "text": "ບັນຊີເຟສບຸກ",
+            "auto_translated": "ບັນຊີເຟສບຸກ"
+        },
+        "nl": {
+            "legacy_caption_pid": 40892,
+            "legacy_language_pid": 40,
+            "text": "Facebook-account",
+            "auto_translated": "Facebook-account"
+        },
+        "tl": {
+            "legacy_caption_pid": 40893,
+            "legacy_language_pid": 41,
+            "text": "Facebook account",
+            "auto_translated": "Facebook account"
+        },
+        "ne": {
+            "legacy_caption_pid": 40894,
+            "legacy_language_pid": 42,
+            "text": "फेसबुक खाता",
+            "auto_translated": "फेसबुक खाता"
+        },
+        "hu": {
+            "legacy_caption_pid": 40895,
+            "legacy_language_pid": 43,
+            "text": "Facebook számla",
+            "auto_translated": "Facebook számla"
+        },
+        "cs": {
+            "legacy_caption_pid": 40896,
+            "legacy_language_pid": 44,
+            "text": "Facebook účet",
+            "auto_translated": "Facebook účet"
+        },
+        "el": {
+            "legacy_caption_pid": 40897,
+            "legacy_language_pid": 45,
+            "text": "λογαριασμό στο Facebook",
+            "auto_translated": "λογαριασμό στο Facebook"
+        },
+        "sv": {
+            "legacy_caption_pid": 40898,
+            "legacy_language_pid": 46,
+            "text": "Facebook-konto",
+            "auto_translated": "Facebook-konto"
+        },
+        "kk": {
+            "legacy_caption_pid": 40899,
+            "legacy_language_pid": 47,
+            "text": "Facebook есептік жазбасы",
+            "auto_translated": "Facebook есептік жазбасы"
+        },
+        "fi": {
+            "legacy_caption_pid": 40900,
+            "legacy_language_pid": 48,
+            "text": "Facebook-tilin",
+            "auto_translated": "Facebook-tilin"
+        },
+        "da": {
+            "legacy_caption_pid": 40901,
+            "legacy_language_pid": 49,
+            "text": "Facebook-konto",
+            "auto_translated": "Facebook-konto"
+        },
+        "he": {
+            "legacy_caption_pid": 40902,
+            "legacy_language_pid": 50,
+            "text": "חשבון פייסבוק",
+            "auto_translated": "חשבון פייסבוק"
+        },
+        "no": {
+            "legacy_caption_pid": 40903,
+            "legacy_language_pid": 51,
+            "text": "Facebook-konto",
+            "auto_translated": "Facebook-konto"
+        }
+    }
+}

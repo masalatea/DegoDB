@@ -1,0 +1,321 @@
+{
+    "resource_key": "COMMON_LIB_ENROLL_SUBMIT",
+    "legacy_resource_pid": 1403,
+    "base_group_key": "grp-010-matsuesoft-lib",
+    "additional_group_keys": [],
+    "key_for_update": "Eh5Fsjh5yTVAUNLBcX3Z5eu7aYqNUXePApBrN3UHIrWBZoUm7wEm5eQZVH7hwdkyqbks7p3rZOqLocpFJSFMKsWVXijibAayNdvXZX1zXVRTrb5C7B1gyoB1q07PZvHK",
+    "sort_group": "ENROLL",
+    "key_name": "COMMON_LIB_ENROLL_SUBMIT",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": false,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 5886,
+            "legacy_language_pid": 1,
+            "text": "登録ご申し込み",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 5887,
+            "legacy_language_pid": 2,
+            "text": "Submit the Enrollment",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 5888,
+            "legacy_language_pid": 3,
+            "text": "注册应用程序",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 5889,
+            "legacy_language_pid": 4,
+            "text": "등록 신청",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 10928,
+            "legacy_language_pid": 5,
+            "text": "Presentar la Inscripción",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 10929,
+            "legacy_language_pid": 6,
+            "text": "Enviar a inscrição",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 10930,
+            "legacy_language_pid": 7,
+            "text": "註冊應用程序",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 17051,
+            "legacy_language_pid": 8,
+            "text": "Soumettre l'inscription",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 17052,
+            "legacy_language_pid": 9,
+            "text": "नामांकन जमा करें",
+            "auto_translated": ""
+        },
+        "ar": {
+            "legacy_caption_pid": 31886,
+            "legacy_language_pid": 10,
+            "text": "تسجيل طلبك",
+            "auto_translated": "تسجيل طلبك"
+        },
+        "fa": {
+            "legacy_caption_pid": 31887,
+            "legacy_language_pid": 11,
+            "text": "ثبت نام در برنامه های شما",
+            "auto_translated": "ثبت نام در برنامه های شما"
+        },
+        "de": {
+            "legacy_caption_pid": 31888,
+            "legacy_language_pid": 12,
+            "text": "Registrieren Sie Ihre Anwendung",
+            "auto_translated": "Registrieren Sie Ihre Anwendung"
+        },
+        "ru": {
+            "legacy_caption_pid": 31889,
+            "legacy_language_pid": 13,
+            "text": "Зарегистрируйте приложение",
+            "auto_translated": "Зарегистрируйте приложение"
+        },
+        "ms": {
+            "legacy_caption_pid": 31890,
+            "legacy_language_pid": 14,
+            "text": "Mendaftarkan permohonan anda",
+            "auto_translated": "Mendaftarkan permohonan anda"
+        },
+        "ta": {
+            "legacy_caption_pid": 31891,
+            "legacy_language_pid": 15,
+            "text": "உங்கள் விண்ணப்பத்தை பதிவு",
+            "auto_translated": "உங்கள் விண்ணப்பத்தை பதிவு"
+        },
+        "it": {
+            "legacy_caption_pid": 31892,
+            "legacy_language_pid": 16,
+            "text": "Registrare l'applicazione",
+            "auto_translated": "Registrare l'applicazione"
+        },
+        "bn": {
+            "legacy_caption_pid": 31893,
+            "legacy_language_pid": 17,
+            "text": "আপনার আবেদন নিবন্ধন",
+            "auto_translated": "আপনার আবেদন নিবন্ধন"
+        },
+        "tr": {
+            "legacy_caption_pid": 31894,
+            "legacy_language_pid": 18,
+            "text": "Başvurunuzu Kayıt",
+            "auto_translated": "Başvurunuzu Kayıt"
+        },
+        "vi": {
+            "legacy_caption_pid": 31895,
+            "legacy_language_pid": 19,
+            "text": "Đăng ký ứng dụng của bạn",
+            "auto_translated": "Đăng ký ứng dụng của bạn"
+        },
+        "pl": {
+            "legacy_caption_pid": 31896,
+            "legacy_language_pid": 20,
+            "text": "Zarejestruj swoją aplikację",
+            "auto_translated": "Zarejestruj swoją aplikację"
+        },
+        "jv": {
+            "legacy_caption_pid": 31897,
+            "legacy_language_pid": 21,
+            "text": "Register aplikasi",
+            "auto_translated": "Register aplikasi"
+        },
+        "pa": {
+            "legacy_caption_pid": 31898,
+            "legacy_language_pid": 22,
+            "text": "ਆਪਣੇ ਕਾਰਜ ਨੂੰ ਰਜਿਸਟਰ",
+            "auto_translated": "ਆਪਣੇ ਕਾਰਜ ਨੂੰ ਰਜਿਸਟਰ"
+        },
+        "th": {
+            "legacy_caption_pid": 31899,
+            "legacy_language_pid": 23,
+            "text": "ลงทะเบียนใบสมัครของคุณ",
+            "auto_translated": "ลงทะเบียนใบสมัครของคุณ"
+        },
+        "te": {
+            "legacy_caption_pid": 38356,
+            "legacy_language_pid": 24,
+            "text": "మీ అప్లికేషన్ నమోదు",
+            "auto_translated": "మీ అప్లికేషన్ నమోదు"
+        },
+        "mr": {
+            "legacy_caption_pid": 38357,
+            "legacy_language_pid": 25,
+            "text": "अर्ज",
+            "auto_translated": "अर्ज"
+        },
+        "ur": {
+            "legacy_caption_pid": 38358,
+            "legacy_language_pid": 26,
+            "text": "آپ کی درخواست پر رجسٹر",
+            "auto_translated": "آپ کی درخواست پر رجسٹر"
+        },
+        "gu": {
+            "legacy_caption_pid": 38359,
+            "legacy_language_pid": 27,
+            "text": "તમારી અરજી નોંધણી",
+            "auto_translated": "તમારી અરજી નોંધણી"
+        },
+        "uk": {
+            "legacy_caption_pid": 38360,
+            "legacy_language_pid": 28,
+            "text": "Зареєструйте додаток",
+            "auto_translated": "Зареєструйте додаток"
+        },
+        "ml": {
+            "legacy_caption_pid": 38361,
+            "legacy_language_pid": 29,
+            "text": "നിങ്ങളുടെ അപേക്ഷ രജിസ്റ്റർ",
+            "auto_translated": "നിങ്ങളുടെ അപേക്ഷ രജിസ്റ്റർ"
+        },
+        "kn": {
+            "legacy_caption_pid": 38362,
+            "legacy_language_pid": 30,
+            "text": "ನಿಮ್ಮ ಅಪ್ಲಿಕೇಶನ್ ನೋಂದಣಿ",
+            "auto_translated": "ನಿಮ್ಮ ಅಪ್ಲಿಕೇಶನ್ ನೋಂದಣಿ"
+        },
+        "su": {
+            "legacy_caption_pid": 38363,
+            "legacy_language_pid": 31,
+            "text": "Ngadaptar aplikasi Anjeun",
+            "auto_translated": "Ngadaptar aplikasi Anjeun"
+        },
+        "ku": {
+            "legacy_caption_pid": 38364,
+            "legacy_language_pid": 32,
+            "text": "Register daxwaznameya te",
+            "auto_translated": "Register daxwaznameya te"
+        },
+        "ps": {
+            "legacy_caption_pid": 38365,
+            "legacy_language_pid": 33,
+            "text": "ستاسو د غوښتنلیک راجستر",
+            "auto_translated": "ستاسو د غوښتنلیک راجستر"
+        },
+        "ro": {
+            "legacy_caption_pid": 38366,
+            "legacy_language_pid": 34,
+            "text": "Înregistrează-aplicația",
+            "auto_translated": "Înregistrează-aplicația"
+        },
+        "id": {
+            "legacy_caption_pid": 38367,
+            "legacy_language_pid": 35,
+            "text": "Mendaftarkan aplikasi Anda",
+            "auto_translated": "Mendaftarkan aplikasi Anda"
+        },
+        "sd": {
+            "legacy_caption_pid": 38368,
+            "legacy_language_pid": 36,
+            "text": "توهان جي درخواست تي گهڻن عملن",
+            "auto_translated": "توهان جي درخواست تي گهڻن عملن"
+        },
+        "af": {
+            "legacy_caption_pid": 38369,
+            "legacy_language_pid": 37,
+            "text": "Registreer jou aansoek",
+            "auto_translated": "Registreer jou aansoek"
+        },
+        "sw": {
+            "legacy_caption_pid": 38370,
+            "legacy_language_pid": 38,
+            "text": "Register maombi yako",
+            "auto_translated": "Register maombi yako"
+        },
+        "lo": {
+            "legacy_caption_pid": 38371,
+            "legacy_language_pid": 39,
+            "text": "ລົງທະບຽນຄໍາຮ້ອງສະຫມັກຂອງທ່ານ",
+            "auto_translated": "ລົງທະບຽນຄໍາຮ້ອງສະຫມັກຂອງທ່ານ"
+        },
+        "nl": {
+            "legacy_caption_pid": 38372,
+            "legacy_language_pid": 40,
+            "text": "Registreer uw aanvraag",
+            "auto_translated": "Registreer uw aanvraag"
+        },
+        "tl": {
+            "legacy_caption_pid": 38373,
+            "legacy_language_pid": 41,
+            "text": "Irehistro ang iyong application",
+            "auto_translated": "Irehistro ang iyong application"
+        },
+        "ne": {
+            "legacy_caption_pid": 38374,
+            "legacy_language_pid": 42,
+            "text": "तपाईंको आवेदन दर्ता",
+            "auto_translated": "तपाईंको आवेदन दर्ता"
+        },
+        "hu": {
+            "legacy_caption_pid": 38375,
+            "legacy_language_pid": 43,
+            "text": "Regisztrálj az alkalmazás",
+            "auto_translated": "Regisztrálj az alkalmazás"
+        },
+        "cs": {
+            "legacy_caption_pid": 38376,
+            "legacy_language_pid": 44,
+            "text": "Zaregistrovat svou aplikaci",
+            "auto_translated": "Zaregistrovat svou aplikaci"
+        },
+        "el": {
+            "legacy_caption_pid": 38377,
+            "legacy_language_pid": 45,
+            "text": "Καταχωρήστε την αίτησή σας",
+            "auto_translated": "Καταχωρήστε την αίτησή σας"
+        },
+        "sv": {
+            "legacy_caption_pid": 38378,
+            "legacy_language_pid": 46,
+            "text": "Registrera din ansökan",
+            "auto_translated": "Registrera din ansökan"
+        },
+        "kk": {
+            "legacy_caption_pid": 38379,
+            "legacy_language_pid": 47,
+            "text": "Егер өтініш тіркеу",
+            "auto_translated": "Егер өтініш тіркеу"
+        },
+        "fi": {
+            "legacy_caption_pid": 38380,
+            "legacy_language_pid": 48,
+            "text": "Rekisteröi sovelluksen",
+            "auto_translated": "Rekisteröi sovelluksen"
+        },
+        "da": {
+            "legacy_caption_pid": 38381,
+            "legacy_language_pid": 49,
+            "text": "Tilmeld din ansøgning",
+            "auto_translated": "Tilmeld din ansøgning"
+        },
+        "he": {
+            "legacy_caption_pid": 38382,
+            "legacy_language_pid": 50,
+            "text": "הירשם היישום שלך",
+            "auto_translated": "הירשם היישום שלך"
+        },
+        "no": {
+            "legacy_caption_pid": 38383,
+            "legacy_language_pid": 51,
+            "text": "Registrer søknaden din",
+            "auto_translated": "Registrer søknaden din"
+        }
+    }
+}

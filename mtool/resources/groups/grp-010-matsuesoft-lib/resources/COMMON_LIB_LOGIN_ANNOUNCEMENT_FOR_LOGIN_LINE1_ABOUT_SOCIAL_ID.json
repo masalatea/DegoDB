@@ -1,0 +1,321 @@
+{
+    "resource_key": "COMMON_LIB_LOGIN_ANNOUNCEMENT_FOR_LOGIN_LINE1_ABOUT_SOCIAL_ID",
+    "legacy_resource_pid": 1490,
+    "base_group_key": "grp-010-matsuesoft-lib",
+    "additional_group_keys": [],
+    "key_for_update": "XOfn6V0zzeXm3C4sLfrYTwJ2n6rFI5FkDeBUu4fCbnPlA3XfvCi6KXde5cZiZQEfxAGVKXkmEbV5QMTuy8C7g70IDRRbn5LROM68myJkIOGTAaqPskkbLbcPSjYtZhye",
+    "sort_group": "LOGIN",
+    "key_name": "COMMON_LIB_LOGIN_ANNOUNCEMENT_FOR_LOGIN_LINE1_ABOUT_SOCIAL_ID",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": false,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 6234,
+            "legacy_language_pid": 1,
+            "text": "既に以下のユーザ名(ID)いずれかをお持ちであればそのままご利用頂けます。",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 6235,
+            "legacy_language_pid": 2,
+            "text": "If you already have one of the following IDs, you can use it as it is.",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 6236,
+            "legacy_language_pid": 3,
+            "text": "如果您已经持有以下用户名ID可以直接使用",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 6237,
+            "legacy_language_pid": 4,
+            "text": "다음 아이디 중 하나를 가지고 있으면 그대로 사용하실 수 있습니다.",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 11033,
+            "legacy_language_pid": 5,
+            "text": "Si ya tiene uno de los siguientes ID, puede usarlo tal como está.",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 11034,
+            "legacy_language_pid": 6,
+            "text": "Se você já possui uma das seguintes IDs, você pode usá-la como está.",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 11035,
+            "legacy_language_pid": 7,
+            "text": "如果您已經持有以下用户名ID可以直接使用",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 17215,
+            "legacy_language_pid": 8,
+            "text": "Si vous avez déjà l'une des ID suivantes, vous pouvez l'utiliser tel quel.",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 17216,
+            "legacy_language_pid": 9,
+            "text": "यदि आपके पास पहले से कोई एक आईडी है, तो आप इसका इस्तेमाल कर सकते हैं",
+            "auto_translated": ""
+        },
+        "ar": {
+            "legacy_caption_pid": 32362,
+            "legacy_language_pid": 10,
+            "text": "إذا كان لديك بالفعل واحدة من التالية: اسم المستخدم (ID) المتوفرة كما هو.",
+            "auto_translated": "إذا كان لديك بالفعل واحدة من التالية: اسم المستخدم (ID) المتوفرة كما هو."
+        },
+        "fa": {
+            "legacy_caption_pid": 32363,
+            "legacy_language_pid": 11,
+            "text": "اگر شما در حال حاضر یکی از موارد زیر: یک نام کاربری (ID) در دسترس هستند به عنوان آن است.",
+            "auto_translated": "اگر شما در حال حاضر یکی از موارد زیر: یک نام کاربری (ID) در دسترس هستند به عنوان آن است."
+        },
+        "de": {
+            "legacy_caption_pid": 32364,
+            "legacy_language_pid": 12,
+            "text": "Wenn Sie bereits eine der folgenden Möglichkeiten haben: einen Benutzernamen (ID) zur Verfügung, wie es ist.",
+            "auto_translated": "Wenn Sie bereits eine der folgenden Möglichkeiten haben: einen Benutzernamen (ID) zur Verfügung, wie es ist."
+        },
+        "ru": {
+            "legacy_caption_pid": 32365,
+            "legacy_language_pid": 13,
+            "text": "Если у вас уже есть одно из следующих действий: имя пользователя (ID) доступны, как это.",
+            "auto_translated": "Если у вас уже есть одно из следующих действий: имя пользователя (ID) доступны, как это."
+        },
+        "ms": {
+            "legacy_caption_pid": 32366,
+            "legacy_language_pid": 14,
+            "text": "Jika anda sudah mempunyai satu daripada yang berikut: nama pengguna (ID) yang ada kerana ia adalah.",
+            "auto_translated": "Jika anda sudah mempunyai satu daripada yang berikut: nama pengguna (ID) yang ada kerana ia adalah."
+        },
+        "ta": {
+            "legacy_caption_pid": 32367,
+            "legacy_language_pid": 15,
+            "text": "நீங்கள் ஏற்கனவே பின்வருவனவற்றில் ஒன்று இருந்தால்: இது போன்ற ஒரு பயனர் பெயர் (ஐடி) கிடைக்கின்றன.",
+            "auto_translated": "நீங்கள் ஏற்கனவே பின்வருவனவற்றில் ஒன்று இருந்தால்: இது போன்ற ஒரு பயனர் பெயர் (ஐடி) கிடைக்கின்றன."
+        },
+        "it": {
+            "legacy_caption_pid": 32368,
+            "legacy_language_pid": 16,
+            "text": "Se si dispone già di uno dei seguenti modi: un nome utente (ID) sono disponibili come è.",
+            "auto_translated": "Se si dispone già di uno dei seguenti modi: un nome utente (ID) sono disponibili come è."
+        },
+        "bn": {
+            "legacy_caption_pid": 32369,
+            "legacy_language_pid": 17,
+            "text": "যদি আপনি ইতিমধ্যে নিম্নের যেকোনো থাকে: একটি ব্যবহারকারী নাম (আইডি) হিসাবে এটা পাওয়া যায়।",
+            "auto_translated": "যদি আপনি ইতিমধ্যে নিম্নের যেকোনো থাকে: একটি ব্যবহারকারী নাম (আইডি) হিসাবে এটা পাওয়া যায়।"
+        },
+        "tr": {
+            "legacy_caption_pid": 32370,
+            "legacy_language_pid": 18,
+            "text": "Zaten aşağıdakilerden birini varsa: Bir kullanıcı adı (ID) olduğu gibi kullanılabilir.",
+            "auto_translated": "Zaten aşağıdakilerden birini varsa: Bir kullanıcı adı (ID) olduğu gibi kullanılabilir."
+        },
+        "vi": {
+            "legacy_caption_pid": 32371,
+            "legacy_language_pid": 19,
+            "text": "Nếu bạn đã có một trong các cách sau: tên người dùng (ID) có sẵn như nó được.",
+            "auto_translated": "Nếu bạn đã có một trong các cách sau: tên người dùng (ID) có sẵn như nó được."
+        },
+        "pl": {
+            "legacy_caption_pid": 32372,
+            "legacy_language_pid": 20,
+            "text": "Jeśli masz już jedną z następujących czynności: nazwę użytkownika (ID) są dostępne, jak to jest.",
+            "auto_translated": "Jeśli masz już jedną z następujących czynności: nazwę użytkownika (ID) są dostępne, jak to jest."
+        },
+        "jv": {
+            "legacy_caption_pid": 32373,
+            "legacy_language_pid": 21,
+            "text": "Yen sampeyan wis duwe siji saka ing ngisor iki: jeneng panganggo (ID) kasedhiya minangka.",
+            "auto_translated": "Yen sampeyan wis duwe siji saka ing ngisor iki: jeneng panganggo (ID) kasedhiya minangka."
+        },
+        "pa": {
+            "legacy_caption_pid": 32374,
+            "legacy_language_pid": 22,
+            "text": "ਤੁਹਾਨੂੰ ਹੀ ਹੇਠ ਇੱਕ ਹੈ, ਜੇ: ਇੱਕ ਉਪਭੋਗੀ ਨਾਮ (ID) ਦੇ ਤੌਰ ਤੇ ਇਸ ਨੂੰ ਹੈ ਉਪਲੱਬਧ ਹਨ.",
+            "auto_translated": "ਤੁਹਾਨੂੰ ਹੀ ਹੇਠ ਇੱਕ ਹੈ, ਜੇ: ਇੱਕ ਉਪਭੋਗੀ ਨਾਮ (ID) ਦੇ ਤੌਰ ਤੇ ਇਸ ਨੂੰ ਹੈ ਉਪਲੱਬਧ ਹਨ."
+        },
+        "th": {
+            "legacy_caption_pid": 32375,
+            "legacy_language_pid": 23,
+            "text": "หากคุณมีอย่างใดอย่างหนึ่งต่อไปนี้: ชื่อผู้ใช้ (ID) ที่มีอยู่ตามที่มันเป็น",
+            "auto_translated": "หากคุณมีอย่างใดอย่างหนึ่งต่อไปนี้: ชื่อผู้ใช้ (ID) ที่มีอยู่ตามที่มันเป็น"
+        },
+        "te": {
+            "legacy_caption_pid": 40904,
+            "legacy_language_pid": 24,
+            "text": "మీరు ఇప్పటికే ఈ క్రింది ఒకటి ఉంటే: ఇది వంటి ఒక వాడుకరి పేరు గానీ (ID) అందుబాటులో ఉన్నాయి.",
+            "auto_translated": "మీరు ఇప్పటికే ఈ క్రింది ఒకటి ఉంటే: ఇది వంటి ఒక వాడుకరి పేరు గానీ (ID) అందుబాటులో ఉన్నాయి."
+        },
+        "mr": {
+            "legacy_caption_pid": 40905,
+            "legacy_language_pid": 25,
+            "text": "आपण आधीच असल्यास खालीलपैकी एक: वापरकर्ता नाव (ID) आहे म्हणून उपलब्ध आहेत.",
+            "auto_translated": "आपण आधीच असल्यास खालीलपैकी एक: वापरकर्ता नाव (ID) आहे म्हणून उपलब्ध आहेत."
+        },
+        "ur": {
+            "legacy_caption_pid": 40906,
+            "legacy_language_pid": 26,
+            "text": "آپ نے پہلے ہی مندرجہ ذیل میں سے ایک ہے تو: ایک صارف کا نام (ID) دستیاب ویسے بھی ہیں.",
+            "auto_translated": "آپ نے پہلے ہی مندرجہ ذیل میں سے ایک ہے تو: ایک صارف کا نام (ID) دستیاب ویسے بھی ہیں."
+        },
+        "gu": {
+            "legacy_caption_pid": 40907,
+            "legacy_language_pid": 27,
+            "text": "જો તમે પહેલાથી જ નીચેનામાંથી એક હોય તો: વપરાશકર્તા નામ (આઇડી) કારણ કે તે ઉપલબ્ધ છે.",
+            "auto_translated": "જો તમે પહેલાથી જ નીચેનામાંથી એક હોય તો: વપરાશકર્તા નામ (આઇડી) કારણ કે તે ઉપલબ્ધ છે."
+        },
+        "uk": {
+            "legacy_caption_pid": 40908,
+            "legacy_language_pid": 28,
+            "text": "Якщо у вас вже є одне з наступних дій: ім'я користувача (ID) доступні, як це.",
+            "auto_translated": "Якщо у вас вже є одне з наступних дій: ім'я користувача (ID) доступні, як це."
+        },
+        "ml": {
+            "legacy_caption_pid": 40909,
+            "legacy_language_pid": 29,
+            "text": "നിങ്ങൾ ഇതിനകം താഴെ ഒരു ഉണ്ടെങ്കിൽ അതു പോലെ ഒരു ഉപയോക്തൃ നാമം (ഐഡി) ലഭ്യമാണ്.",
+            "auto_translated": "നിങ്ങൾ ഇതിനകം താഴെ ഒരു ഉണ്ടെങ്കിൽ അതു പോലെ ഒരു ഉപയോക്തൃ നാമം (ഐഡി) ലഭ്യമാണ്."
+        },
+        "kn": {
+            "legacy_caption_pid": 40910,
+            "legacy_language_pid": 30,
+            "text": "ನೀವು ಈಗಾಗಲೇ ಕೆಳಗಿನ ಅನುಸ್ಥಾಪಿತವಾಗಿದ್ದರೆ: ಇದು ಎಂದು ಒಂದು ಬಳಕೆದಾರ ಹೆಸರು (ಐಡಿ) ಲಭ್ಯವಿದೆ.",
+            "auto_translated": "ನೀವು ಈಗಾಗಲೇ ಕೆಳಗಿನ ಅನುಸ್ಥಾಪಿತವಾಗಿದ್ದರೆ: ಇದು ಎಂದು ಒಂದು ಬಳಕೆದಾರ ಹೆಸರು (ಐಡಿ) ಲಭ್ಯವಿದೆ."
+        },
+        "su": {
+            "legacy_caption_pid": 40911,
+            "legacy_language_pid": 31,
+            "text": "Upami Anjeun tos boga salah sahiji handap: ngaran pamaké (ID) anu disadiakeun sakumaha anu kasebut.",
+            "auto_translated": "Upami Anjeun tos boga salah sahiji handap: ngaran pamaké (ID) anu disadiakeun sakumaha anu kasebut."
+        },
+        "ku": {
+            "legacy_caption_pid": 40912,
+            "legacy_language_pid": 32,
+            "text": "Eger tu niha ve xwedî yek ji yên jêrîn: a user name (ID) de berdest in ku ev e.",
+            "auto_translated": "Eger tu niha ve xwedî yek ji yên jêrîn: a user name (ID) de berdest in ku ev e."
+        },
+        "ps": {
+            "legacy_caption_pid": 40913,
+            "legacy_language_pid": 33,
+            "text": "که تاسو لا د لاندې یو لري: يو کارن نوم (تذکرو) شتون لري لکه څنګه چې دی.",
+            "auto_translated": "که تاسو لا د لاندې یو لري: يو کارن نوم (تذکرو) شتون لري لکه څنګه چې دی."
+        },
+        "ro": {
+            "legacy_caption_pid": 40914,
+            "legacy_language_pid": 34,
+            "text": "Dacă aveți deja una dintre următoarele: un nume de utilizator (ID) sunt disponibile așa cum este.",
+            "auto_translated": "Dacă aveți deja una dintre următoarele: un nume de utilizator (ID) sunt disponibile așa cum este."
+        },
+        "id": {
+            "legacy_caption_pid": 40915,
+            "legacy_language_pid": 35,
+            "text": "Jika Anda sudah memiliki salah satu dari berikut: nama pengguna (ID) yang tersedia seperti itu.",
+            "auto_translated": "Jika Anda sudah memiliki salah satu dari berikut: nama pengguna (ID) yang tersedia seperti itu."
+        },
+        "sd": {
+            "legacy_caption_pid": 40916,
+            "legacy_language_pid": 36,
+            "text": "توهان اڳ ۾ ئي هيٺين مان هڪ آهي ته: هڪ صارف نالو (سڃاڻپ) موجود آهن ته جيئن ان کي آهي.",
+            "auto_translated": "توهان اڳ ۾ ئي هيٺين مان هڪ آهي ته: هڪ صارف نالو (سڃاڻپ) موجود آهن ته جيئن ان کي آهي."
+        },
+        "af": {
+            "legacy_caption_pid": 40917,
+            "legacy_language_pid": 37,
+            "text": "As jy reeds 'een van die volgende: 'n gebruiker naam (ID) is beskikbaar as dit is.",
+            "auto_translated": "As jy reeds 'een van die volgende: 'n gebruiker naam (ID) is beskikbaar as dit is."
+        },
+        "sw": {
+            "legacy_caption_pid": 40918,
+            "legacy_language_pid": 38,
+            "text": "Kama tayari una moja ya yafuatayo: jina la mtumiaji (ID) zinapatikana kama yalivyo.",
+            "auto_translated": "Kama tayari una moja ya yafuatayo: jina la mtumiaji (ID) zinapatikana kama yalivyo."
+        },
+        "lo": {
+            "legacy_caption_pid": 40919,
+            "legacy_language_pid": 39,
+            "text": "ຖ້າຫາກທ່ານມີແລ້ວຫນຶ່ງໃນດັ່ງຕໍ່ໄປນີ້: ຊື່ຜູ້ໃຊ້ (ID) ແມ່ນສາມາດໃຊ້ໄດ້ເປັນ.",
+            "auto_translated": "ຖ້າຫາກທ່ານມີແລ້ວຫນຶ່ງໃນດັ່ງຕໍ່ໄປນີ້: ຊື່ຜູ້ໃຊ້ (ID) ແມ່ນສາມາດໃຊ້ໄດ້ເປັນ."
+        },
+        "nl": {
+            "legacy_caption_pid": 40920,
+            "legacy_language_pid": 40,
+            "text": "Als u al een van de volgende: een gebruikersnaam (ID) zijn beschikbaar als het is.",
+            "auto_translated": "Als u al een van de volgende: een gebruikersnaam (ID) zijn beschikbaar als het is."
+        },
+        "tl": {
+            "legacy_caption_pid": 40921,
+            "legacy_language_pid": 41,
+            "text": "Kung mayroon ka ng isa sa mga sumusunod: a user name (ID) ay magagamit bilang ito ay.",
+            "auto_translated": "Kung mayroon ka ng isa sa mga sumusunod: a user name (ID) ay magagamit bilang ito ay."
+        },
+        "ne": {
+            "legacy_caption_pid": 40922,
+            "legacy_language_pid": 42,
+            "text": "तपाईं पहिले नै निम्न मध्ये एक छ भने: यो छ रूपमा प्रयोगकर्ता नाम (आईडी) उपलब्ध छन्।",
+            "auto_translated": "तपाईं पहिले नै निम्न मध्ये एक छ भने: यो छ रूपमा प्रयोगकर्ता नाम (आईडी) उपलब्ध छन्।"
+        },
+        "hu": {
+            "legacy_caption_pid": 40923,
+            "legacy_language_pid": 43,
+            "text": "Ha már van az alábbi: a felhasználói név (ID) áll rendelkezésre, ahogy van.",
+            "auto_translated": "Ha már van az alábbi: a felhasználói név (ID) áll rendelkezésre, ahogy van."
+        },
+        "cs": {
+            "legacy_caption_pid": 40924,
+            "legacy_language_pid": 44,
+            "text": "Pokud již máte jeden z následujících kroků: zadání uživatelského jména (ID) jsou k dispozici, jak to je.",
+            "auto_translated": "Pokud již máte jeden z následujících kroků: zadání uživatelského jména (ID) jsou k dispozici, jak to je."
+        },
+        "el": {
+            "legacy_caption_pid": 40925,
+            "legacy_language_pid": 45,
+            "text": "Αν έχετε ήδη ένα από τα παρακάτω: ένα όνομα χρήστη (ID) είναι διαθέσιμα ως έχει.",
+            "auto_translated": "Αν έχετε ήδη ένα από τα παρακάτω: ένα όνομα χρήστη (ID) είναι διαθέσιμα ως έχει."
+        },
+        "sv": {
+            "legacy_caption_pid": 40926,
+            "legacy_language_pid": 46,
+            "text": "Om du redan har något av följande: ett användarnamn (ID) finns som det är.",
+            "auto_translated": "Om du redan har något av följande: ett användarnamn (ID) finns som det är."
+        },
+        "kk": {
+            "legacy_caption_pid": 40927,
+            "legacy_language_pid": 47,
+            "text": "Егер сіз әлдеқашан келесі әрекеттердің бірін болса: пайдаланушы аты (ID), ол сондай-ақ қол жетімді.",
+            "auto_translated": "Егер сіз әлдеқашан келесі әрекеттердің бірін болса: пайдаланушы аты (ID), ол сондай-ақ қол жетімді."
+        },
+        "fi": {
+            "legacy_caption_pid": 40928,
+            "legacy_language_pid": 48,
+            "text": "Jos sinulla on jo jokin seuraavista: käyttäjätunnus (ID) ovat käytettävissä sellaisenaan.",
+            "auto_translated": "Jos sinulla on jo jokin seuraavista: käyttäjätunnus (ID) ovat käytettävissä sellaisenaan."
+        },
+        "da": {
+            "legacy_caption_pid": 40929,
+            "legacy_language_pid": 49,
+            "text": "Hvis du allerede har et af følgende: et brugernavn (ID) er tilgængelige, som det er.",
+            "auto_translated": "Hvis du allerede har et af følgende: et brugernavn (ID) er tilgængelige, som det er."
+        },
+        "he": {
+            "legacy_caption_pid": 40930,
+            "legacy_language_pid": 50,
+            "text": "אם כבר יש לך אחת מהפעולות הבאות: שם משתמש (ID) זמינים כפי שהוא.",
+            "auto_translated": "אם כבר יש לך אחת מהפעולות הבאות: שם משתמש (ID) זמינים כפי שהוא."
+        },
+        "no": {
+            "legacy_caption_pid": 40931,
+            "legacy_language_pid": 51,
+            "text": "Hvis du allerede har en av følgende: et brukernavn (ID) er tilgjengelig som det er.",
+            "auto_translated": "Hvis du allerede har en av følgende: et brukernavn (ID) er tilgjengelig som det er."
+        }
+    }
+}

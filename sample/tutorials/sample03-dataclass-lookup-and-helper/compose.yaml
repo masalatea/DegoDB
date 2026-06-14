@@ -1,0 +1,29 @@
+name: mtool-sample-sample03-dataclass-lookup-and-helper
+
+services:
+  web-admin:
+    environment:
+      APP_WORK_ROOT: /var/www/work/sample-packs/sample03-dataclass-lookup-and-helper
+
+  web-lab:
+    environment:
+      APP_WORK_ROOT: /var/www/work/sample-packs/sample03-dataclass-lookup-and-helper
+
+  db-config:
+    entrypoint:
+      - /bin/sh
+      - -lc
+      - |
+        set -eu
+        rm -rf /docker-entrypoint-initdb.d/*
+        cp -R /docker-entrypoint-initdb-core/. /docker-entrypoint-initdb.d/
+        cp -R /docker-entrypoint-initdb-sample/. /docker-entrypoint-initdb.d/
+        exec docker-entrypoint.sh mariadbd
+    volumes:
+      - db-config-data:/var/lib/mysql
+      - db-config-initdb:/docker-entrypoint-initdb.d
+      - ./docker/mariadb/config-initdb:/docker-entrypoint-initdb-core:ro
+      - ./sample/tutorials/sample03-dataclass-lookup-and-helper/seed:/docker-entrypoint-initdb-sample:ro
+
+volumes:
+  db-config-initdb:

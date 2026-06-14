@@ -1,0 +1,69 @@
+{
+    "resource_key": "HP_FOOTER_TECHNOLOGY_WINDOWS_APPLICATION",
+    "legacy_resource_pid": 696,
+    "base_group_key": "grp-010-matsuesoft-lib",
+    "additional_group_keys": [],
+    "key_for_update": "QKHiQdmJotDYuzQ3LQyAZuqogb7tqC2sRkO9W9jlYAsaLjSWDHAQBJxbbzPJQSiu7D2DpB6zvrzFRo86Jtw08W1AhsKFtppzSXAoFc6i8qhwUBv6kcDn67z1hQL3OQ0M",
+    "sort_group": "HP FOOTER",
+    "key_name": "HP_FOOTER_TECHNOLOGY_WINDOWS_APPLICATION",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": true,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 4634,
+            "legacy_language_pid": 1,
+            "text": "ウィンドウズ・アプリケーション・テクノロジー",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 4635,
+            "legacy_language_pid": 2,
+            "text": "Windows Application Technology",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 14301,
+            "legacy_language_pid": 3,
+            "text": "",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 14302,
+            "legacy_language_pid": 4,
+            "text": "",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 14303,
+            "legacy_language_pid": 5,
+            "text": "Tecnología de Aplicaciones de Windows",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 14304,
+            "legacy_language_pid": 6,
+            "text": "Tecnologia de Aplicação do Windows",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 14305,
+            "legacy_language_pid": 7,
+            "text": "",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 17161,
+            "legacy_language_pid": 8,
+            "text": "Technologie d'application Windows",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 17162,
+            "legacy_language_pid": 9,
+            "text": "विंडोज़ एप्लीकेशन टेक्नोलॉजी",
+            "auto_translated": ""
+        }
+    }
+}

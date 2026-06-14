@@ -1,0 +1,321 @@
+{
+    "resource_key": "COMMON_LIB_LOGIN_HEADER_FOR_FACEBOOK_ACCOUNT_COMMENT1",
+    "legacy_resource_pid": 1501,
+    "base_group_key": "grp-010-matsuesoft-lib",
+    "additional_group_keys": [],
+    "key_for_update": "RpFdB8AgCMvYfM1X7hzzg8GE5dHHqe3vVm83CLNoomv057lwdem1HaDopAEJ5miwrUHgJR7DniiIC7Z6zMzjPKU2ea8xnkw72gIuUpFdczlppUO3T1O1sSAOjd8GapKd",
+    "sort_group": "LOGIN",
+    "key_name": "COMMON_LIB_LOGIN_HEADER_FOR_FACEBOOK_ACCOUNT_COMMENT1",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": false,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 6278,
+            "legacy_language_pid": 1,
+            "text": "既にお持ちのFacebook アカウントでご利用頂けます。或いは取得後にご利用下さい。",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 6279,
+            "legacy_language_pid": 2,
+            "text": "You can use it with your existing Facebook Account. Or please login after obtaining.",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 6280,
+            "legacy_language_pid": 3,
+            "text": "在Facebook的用户名ID已经存在，或者取得后再次利用",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 6281,
+            "legacy_language_pid": 4,
+            "text": "이미 Facebook 아이디 로 이용하실 수 있습니다. 혹은 취득 후 이용해주시기 바랍니다.",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 11075,
+            "legacy_language_pid": 5,
+            "text": "Puede utilizarlo con su ID de Facebook existente. O utilice después de obtener.",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 11076,
+            "legacy_language_pid": 6,
+            "text": "Você pode usá-lo com seu ID de Facebook existente. Ou use depois da obtenção.",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 11077,
+            "legacy_language_pid": 7,
+            "text": "在Facebook的用户名ID已經存在，或者取得後再次利用",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 16047,
+            "legacy_language_pid": 8,
+            "text": "Vous pouvez l'utiliser avec votre compte Facebook existant. Ou connectez-vous après avoir obtenu.",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 16048,
+            "legacy_language_pid": 9,
+            "text": "आप इसे अपने मौजूदा फेसबुक खाते से उपयोग कर सकते हैं। या प्राप्त करने के बाद कृपया लॉगिन करें",
+            "auto_translated": ""
+        },
+        "ar": {
+            "legacy_caption_pid": 32600,
+            "legacy_language_pid": 10,
+            "text": "تتوفر فيك بالفعل لديك حساب الفيسبوك. أو الرجاء استخدام بعد الاستحواذ.",
+            "auto_translated": "تتوفر فيك بالفعل لديك حساب الفيسبوك. أو الرجاء استخدام بعد الاستحواذ."
+        },
+        "fa": {
+            "legacy_caption_pid": 32601,
+            "legacy_language_pid": 11,
+            "text": "در حال حاضر در دسترس در شما حساب فیس بوک. یا لطفا پس از کسب استفاده کنید.",
+            "auto_translated": "در حال حاضر در دسترس در شما حساب فیس بوک. یا لطفا پس از کسب استفاده کنید."
+        },
+        "de": {
+            "legacy_caption_pid": 32602,
+            "legacy_language_pid": 12,
+            "text": "in Sie haben Facebook-Account bereits verfügbar. Oder Bitte benutzen Sie nach dem Erwerb.",
+            "auto_translated": "in Sie haben Facebook-Account bereits verfügbar. Oder Bitte benutzen Sie nach dem Erwerb."
+        },
+        "ru": {
+            "legacy_caption_pid": 32603,
+            "legacy_language_pid": 13,
+            "text": "Уже доступны в вас есть Facebook аккаунт. Или Пожалуйста, используйте после приобретения.",
+            "auto_translated": "Уже доступны в вас есть Facebook аккаунт. Или Пожалуйста, используйте после приобретения."
+        },
+        "ms": {
+            "legacy_caption_pid": 32604,
+            "legacy_language_pid": 14,
+            "text": "Sedia ada di anda mempunyai akaun Facebook. Atau Sila gunakan selepas pengambilalihan.",
+            "auto_translated": "Sedia ada di anda mempunyai akaun Facebook. Atau Sila gunakan selepas pengambilalihan."
+        },
+        "ta": {
+            "legacy_caption_pid": 32605,
+            "legacy_language_pid": 15,
+            "text": "முன்பே நீங்கள் கிடைக்கும் பேஸ்புக் கணக்கை உருவாக்கி விட்டீர்கள். அல்லது கையகப்படுத்திய பிறகு பயன்படுத்தவும்.",
+            "auto_translated": "முன்பே நீங்கள் கிடைக்கும் பேஸ்புக் கணக்கை உருவாக்கி விட்டீர்கள். அல்லது கையகப்படுத்திய பிறகு பயன்படுத்தவும்."
+        },
+        "it": {
+            "legacy_caption_pid": 32606,
+            "legacy_language_pid": 16,
+            "text": "Già disponibile in si possiede un account Facebook. O Si prega di utilizzare dopo l'acquisizione.",
+            "auto_translated": "Già disponibile in si possiede un account Facebook. O Si prega di utilizzare dopo l'acquisizione."
+        },
+        "bn": {
+            "legacy_caption_pid": 32607,
+            "legacy_language_pid": 17,
+            "text": "ইতিমধ্যে আপনি উপলব্ধ ফেসবুক একাউন্ট আছে। অথবা অধিগ্রহণ পর ব্যবহার করুন।",
+            "auto_translated": "ইতিমধ্যে আপনি উপলব্ধ ফেসবুক একাউন্ট আছে। অথবা অধিগ্রহণ পর ব্যবহার করুন।"
+        },
+        "tr": {
+            "legacy_caption_pid": 32608,
+            "legacy_language_pid": 18,
+            "text": "Zaten sizin mevcut Facebook hesabım var. Ya kazanılmasından sonra kullanın.",
+            "auto_translated": "Zaten sizin mevcut Facebook hesabım var. Ya kazanılmasından sonra kullanın."
+        },
+        "vi": {
+            "legacy_caption_pid": 32609,
+            "legacy_language_pid": 19,
+            "text": "Đã có sẵn trong bạn có tài khoản Facebook. Hoặc Vui lòng sử dụng sau khi mua lại.",
+            "auto_translated": "Đã có sẵn trong bạn có tài khoản Facebook. Hoặc Vui lòng sử dụng sau khi mua lại."
+        },
+        "pl": {
+            "legacy_caption_pid": 32610,
+            "legacy_language_pid": 20,
+            "text": "Już dostępne w was ma konto na Facebooku. Albo proszę skorzystać po przejęciu.",
+            "auto_translated": "Już dostępne w was ma konto na Facebooku. Albo proszę skorzystać po przejęciu."
+        },
+        "jv": {
+            "legacy_caption_pid": 32611,
+            "legacy_language_pid": 21,
+            "text": "Wis kasedhiya ing sampeyan duwe akun Facebook. Utawa Mangga nggunakake sawise disualekno.",
+            "auto_translated": "Wis kasedhiya ing sampeyan duwe akun Facebook. Utawa Mangga nggunakake sawise disualekno."
+        },
+        "pa": {
+            "legacy_caption_pid": 32612,
+            "legacy_language_pid": 22,
+            "text": "ਹੀ ਤੁਹਾਡੇ ਵਿੱਚ ਉਪਲੱਬਧ ਫੇਸਬੁੱਕ ਖਾਤਾ ਹੈ. ਕੀ ਪ੍ਰਾਪਤੀ ਦੇ ਬਾਅਦ ਦਾ ਉਪਯੋਗ ਕਰੋ.",
+            "auto_translated": "ਹੀ ਤੁਹਾਡੇ ਵਿੱਚ ਉਪਲੱਬਧ ਫੇਸਬੁੱਕ ਖਾਤਾ ਹੈ. ਕੀ ਪ੍ਰਾਪਤੀ ਦੇ ਬਾਅਦ ਦਾ ਉਪਯੋਗ ਕਰੋ."
+        },
+        "th": {
+            "legacy_caption_pid": 32613,
+            "legacy_language_pid": 23,
+            "text": "ที่มีอยู่ในคุณมีบัญชี Facebook หรือกรุณาใช้หลังจากที่ได้มา",
+            "auto_translated": "ที่มีอยู่ในคุณมีบัญชี Facebook หรือกรุณาใช้หลังจากที่ได้มา"
+        },
+        "te": {
+            "legacy_caption_pid": 40428,
+            "legacy_language_pid": 24,
+            "text": "ఇప్పటికే మీరు అందుబాటులో ఫేస్బుక్ అకౌంట్ ఉంది. లేదా స్వాధీనపర్చుకున్న తర్వాత ఉపయోగించండి.",
+            "auto_translated": "ఇప్పటికే మీరు అందుబాటులో ఫేస్బుక్ అకౌంట్ ఉంది. లేదా స్వాధీనపర్చుకున్న తర్వాత ఉపయోగించండి."
+        },
+        "mr": {
+            "legacy_caption_pid": 40429,
+            "legacy_language_pid": 25,
+            "text": "आधीच आपण उपलब्ध फेसबुक खाते आहे. किंवा संपादन नंतर वापरा.",
+            "auto_translated": "आधीच आपण उपलब्ध फेसबुक खाते आहे. किंवा संपादन नंतर वापरा."
+        },
+        "ur": {
+            "legacy_caption_pid": 40430,
+            "legacy_language_pid": 26,
+            "text": "پہلے سے ہی آپ میں دستیاب فیس بک اکاؤنٹ ہے. یا حصول کے بعد استعمال کریں.",
+            "auto_translated": "پہلے سے ہی آپ میں دستیاب فیس بک اکاؤنٹ ہے. یا حصول کے بعد استعمال کریں."
+        },
+        "gu": {
+            "legacy_caption_pid": 40431,
+            "legacy_language_pid": 27,
+            "text": "પહેલાથી જ તમને ઉપલબ્ધ ફેસબુક એકાઉન્ટ છે. અથવા સંપાદન પછી ઉપયોગ કરો.",
+            "auto_translated": "પહેલાથી જ તમને ઉપલબ્ધ ફેસબુક એકાઉન્ટ છે. અથવા સંપાદન પછી ઉપયોગ કરો."
+        },
+        "uk": {
+            "legacy_caption_pid": 40432,
+            "legacy_language_pid": 28,
+            "text": "Уже доступні в вас є Facebook аккаунт. Або ласка, використовуйте після придбання.",
+            "auto_translated": "Уже доступні в вас є Facebook аккаунт. Або ласка, використовуйте після придбання."
+        },
+        "ml": {
+            "legacy_caption_pid": 40433,
+            "legacy_language_pid": 29,
+            "text": "നിങ്ങൾ ഇതിനകം ലഭ്യമായ ഫേസ്ബുക്ക് അക്കൌണ്ട്. അല്ലെങ്കിൽ ഏറ്റെടുക്കൽ ശേഷം ഉപയോഗിക്കുക.",
+            "auto_translated": "നിങ്ങൾ ഇതിനകം ലഭ്യമായ ഫേസ്ബുക്ക് അക്കൌണ്ട്. അല്ലെങ്കിൽ ഏറ്റെടുക്കൽ ശേഷം ഉപയോഗിക്കുക."
+        },
+        "kn": {
+            "legacy_caption_pid": 40434,
+            "legacy_language_pid": 30,
+            "text": "ನೀವು ಲಭ್ಯವಿರುವ ಈಗಾಗಲೇ ಫೇಸ್ಬುಕ್ ಖಾತೆಯನ್ನು ಹೊಂದಿಲ್ಲ. ಅಥವಾ ಸ್ವಾಧೀನಪಡಿಸಿಕೊಂಡ ಬಳಸಿ.",
+            "auto_translated": "ನೀವು ಲಭ್ಯವಿರುವ ಈಗಾಗಲೇ ಫೇಸ್ಬುಕ್ ಖಾತೆಯನ್ನು ಹೊಂದಿಲ್ಲ. ಅಥವಾ ಸ್ವಾಧೀನಪಡಿಸಿಕೊಂಡ ಬಳಸಿ."
+        },
+        "su": {
+            "legacy_caption_pid": 40435,
+            "legacy_language_pid": 31,
+            "text": "Geus sadia di anjeun boga akun Facebook. Atawa Mangga pigunakeun sanggeus akuisisi nu.",
+            "auto_translated": "Geus sadia di anjeun boga akun Facebook. Atawa Mangga pigunakeun sanggeus akuisisi nu."
+        },
+        "ku": {
+            "legacy_caption_pid": 40436,
+            "legacy_language_pid": 32,
+            "text": "Jixwe License de li we Facebook account. An kerema xwe piştî stendina bi kar tînin.",
+            "auto_translated": "Jixwe License de li we Facebook account. An kerema xwe piştî stendina bi kar tînin."
+        },
+        "ps": {
+            "legacy_caption_pid": 40437,
+            "legacy_language_pid": 33,
+            "text": "د مخه په تاسو شتون لري فیسبوک حساب. يا لطفا د استملاک وروسته وکاروي.",
+            "auto_translated": "د مخه په تاسو شتون لري فیسبوک حساب. يا لطفا د استملاک وروسته وکاروي."
+        },
+        "ro": {
+            "legacy_caption_pid": 40438,
+            "legacy_language_pid": 34,
+            "text": "Deja disponibil în care aveți un cont de Facebook. Sau Vă rugăm să folosiți după achiziție.",
+            "auto_translated": "Deja disponibil în care aveți un cont de Facebook. Sau Vă rugăm să folosiți după achiziție."
+        },
+        "id": {
+            "legacy_caption_pid": 40439,
+            "legacy_language_pid": 35,
+            "text": "Sudah tersedia di Anda memiliki akun Facebook. Atau Silakan gunakan setelah akuisisi.",
+            "auto_translated": "Sudah tersedia di Anda memiliki akun Facebook. Atau Silakan gunakan setelah akuisisi."
+        },
+        "sd": {
+            "legacy_caption_pid": 40440,
+            "legacy_language_pid": 36,
+            "text": "اوهان ۾ اڳ ۾ ئي موجود ڪريو اڪائونٽ آهي. يا حاصل ڪرڻ کان پوء استعمال ڪريو.",
+            "auto_translated": "اوهان ۾ اڳ ۾ ئي موجود ڪريو اڪائونٽ آهي. يا حاصل ڪرڻ کان پوء استعمال ڪريو."
+        },
+        "af": {
+            "legacy_caption_pid": 40441,
+            "legacy_language_pid": 37,
+            "text": "Reeds beskikbaar in u Facebook rekening. Of Gebruik asseblief na die verkryging.",
+            "auto_translated": "Reeds beskikbaar in u Facebook rekening. Of Gebruik asseblief na die verkryging."
+        },
+        "sw": {
+            "legacy_caption_pid": 40442,
+            "legacy_language_pid": 38,
+            "text": "Tayari inapatikana katika una akaunti Facebook. Au Tafadhali tumia baada ya kununua.",
+            "auto_translated": "Tayari inapatikana katika una akaunti Facebook. Au Tafadhali tumia baada ya kununua."
+        },
+        "lo": {
+            "legacy_caption_pid": 40443,
+            "legacy_language_pid": 39,
+            "text": "ແລ້ວສາມາດໃຊ້ໄດ້ໃນທີ່ທ່ານມີບັນຊີເຟສບຸກ. ຫຼືກະລຸນາໃຊ້ຫຼັງຈາກທີ່ໄດ້ມາ.",
+            "auto_translated": "ແລ້ວສາມາດໃຊ້ໄດ້ໃນທີ່ທ່ານມີບັນຊີເຟສບຸກ. ຫຼືກະລຸນາໃຊ້ຫຼັງຈາກທີ່ໄດ້ມາ."
+        },
+        "nl": {
+            "legacy_caption_pid": 40444,
+            "legacy_language_pid": 40,
+            "text": "Al beschikbaar in je Facebook-account. Of Gebruik na de overname.",
+            "auto_translated": "Al beschikbaar in je Facebook-account. Of Gebruik na de overname."
+        },
+        "tl": {
+            "legacy_caption_pid": 40445,
+            "legacy_language_pid": 41,
+            "text": "Magagamit na sa iyo ay may Facebook account. O Mangyaring gamitin pagkatapos ng acquisition.",
+            "auto_translated": "Magagamit na sa iyo ay may Facebook account. O Mangyaring gamitin pagkatapos ng acquisition."
+        },
+        "ne": {
+            "legacy_caption_pid": 40446,
+            "legacy_language_pid": 42,
+            "text": "तपाईंले पहिले नै उपलब्ध फेसबुक खाता छ। वा अधिग्रहण पछि प्रयोग गर्नुहोस्।",
+            "auto_translated": "तपाईंले पहिले नै उपलब्ध फेसबुक खाता छ। वा अधिग्रहण पछि प्रयोग गर्नुहोस्।"
+        },
+        "hu": {
+            "legacy_caption_pid": 40447,
+            "legacy_language_pid": 43,
+            "text": "Már kapható meg Facebook számla. Vagy Használja megszerzését követően.",
+            "auto_translated": "Már kapható meg Facebook számla. Vagy Használja megszerzését követően."
+        },
+        "cs": {
+            "legacy_caption_pid": 40448,
+            "legacy_language_pid": 44,
+            "text": "Již k dispozici ve vás mít Facebook účet. Nebo použijte po akvizici.",
+            "auto_translated": "Již k dispozici ve vás mít Facebook účet. Nebo použijte po akvizici."
+        },
+        "el": {
+            "legacy_caption_pid": 40449,
+            "legacy_language_pid": 45,
+            "text": "Ήδη διατίθενται στην έχετε λογαριασμό στο Facebook. Ή Χρησιμοποιήστε μετά την εξαγορά.",
+            "auto_translated": "Ήδη διατίθενται στην έχετε λογαριασμό στο Facebook. Ή Χρησιμοποιήστε μετά την εξαγορά."
+        },
+        "sv": {
+            "legacy_caption_pid": 40450,
+            "legacy_language_pid": 46,
+            "text": "Redan finns i du har Facebook-konto. Eller Använd efter förvärvet.",
+            "auto_translated": "Redan finns i du har Facebook-konto. Eller Använd efter förvärvet."
+        },
+        "kk": {
+            "legacy_caption_pid": 40451,
+            "legacy_language_pid": 47,
+            "text": "Сізге қазірдің өзінде қолда бар Facebook есептік жазбасы. Немесе сатып алғаннан кейін пайдаланыңыз.",
+            "auto_translated": "Сізге қазірдің өзінде қолда бар Facebook есептік жазбасы. Немесе сатып алғаннан кейін пайдаланыңыз."
+        },
+        "fi": {
+            "legacy_caption_pid": 40452,
+            "legacy_language_pid": 48,
+            "text": "Jo saatavilla teillä Facebook-tili. Tai Käytä hankinnan jälkeen.",
+            "auto_translated": "Jo saatavilla teillä Facebook-tili. Tai Käytä hankinnan jälkeen."
+        },
+        "da": {
+            "legacy_caption_pid": 40453,
+            "legacy_language_pid": 49,
+            "text": "Allerede tilgængelige i du har Facebook-konto. Eller Brug venligst efter overtagelsen.",
+            "auto_translated": "Allerede tilgængelige i du har Facebook-konto. Eller Brug venligst efter overtagelsen."
+        },
+        "he": {
+            "legacy_caption_pid": 40454,
+            "legacy_language_pid": 50,
+            "text": "כבר זמין לך יש חשבון פייסבוק. או השתמש לאחר הרכישה.",
+            "auto_translated": "כבר זמין לך יש חשבון פייסבוק. או השתמש לאחר הרכישה."
+        },
+        "no": {
+            "legacy_caption_pid": 40455,
+            "legacy_language_pid": 51,
+            "text": "Allerede tilgjengelig i du har Facebook-konto. Eller Vennligst bruk etter oppkjøpet.",
+            "auto_translated": "Allerede tilgjengelig i du har Facebook-konto. Eller Vennligst bruk etter oppkjøpet."
+        }
+    }
+}

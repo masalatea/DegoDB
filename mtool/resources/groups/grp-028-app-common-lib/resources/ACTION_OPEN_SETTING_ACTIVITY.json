@@ -1,0 +1,321 @@
+{
+    "resource_key": "ACTION_OPEN_SETTING_ACTIVITY",
+    "legacy_resource_pid": 965,
+    "base_group_key": "grp-028-app-common-lib",
+    "additional_group_keys": [],
+    "key_for_update": "QJoM6rHAftVHaooqd9wTj84HByHG8tPvtrek9rZbtz7EZLvU5OCPYWWGfJPk4tNVrZKMBD8blQoSwLXCVk5z1O8Mp3wlVSVzXRIpNMluE9nqM1ik8RxsW8Ghb89umIEp",
+    "sort_group": "Action",
+    "key_name": "ACTION_OPEN_SETTING_ACTIVITY",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": false,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 809,
+            "legacy_language_pid": 1,
+            "text": "設定",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 810,
+            "legacy_language_pid": 2,
+            "text": "Setting",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 6380,
+            "legacy_language_pid": 3,
+            "text": "设置",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 6381,
+            "legacy_language_pid": 4,
+            "text": "설정",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 10059,
+            "legacy_language_pid": 5,
+            "text": "configuración",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 10060,
+            "legacy_language_pid": 6,
+            "text": "configuração",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 10061,
+            "legacy_language_pid": 7,
+            "text": "設置",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 16129,
+            "legacy_language_pid": 8,
+            "text": "Réglage",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 16130,
+            "legacy_language_pid": 9,
+            "text": " व्यवस्था",
+            "auto_translated": ""
+        },
+        "ar": {
+            "legacy_caption_pid": 28190,
+            "legacy_language_pid": 10,
+            "text": "إعدادات",
+            "auto_translated": "إعدادات"
+        },
+        "fa": {
+            "legacy_caption_pid": 28191,
+            "legacy_language_pid": 11,
+            "text": "تنظیمات",
+            "auto_translated": "تنظیمات"
+        },
+        "de": {
+            "legacy_caption_pid": 28192,
+            "legacy_language_pid": 12,
+            "text": "Einstellungen",
+            "auto_translated": "Einstellungen"
+        },
+        "ru": {
+            "legacy_caption_pid": 28193,
+            "legacy_language_pid": 13,
+            "text": "настройки",
+            "auto_translated": "настройки"
+        },
+        "ms": {
+            "legacy_caption_pid": 28194,
+            "legacy_language_pid": 14,
+            "text": "tetapan",
+            "auto_translated": "tetapan"
+        },
+        "ta": {
+            "legacy_caption_pid": 28195,
+            "legacy_language_pid": 15,
+            "text": "அமைப்புகள்",
+            "auto_translated": "அமைப்புகள்"
+        },
+        "it": {
+            "legacy_caption_pid": 28196,
+            "legacy_language_pid": 16,
+            "text": "impostazioni",
+            "auto_translated": "impostazioni"
+        },
+        "bn": {
+            "legacy_caption_pid": 28197,
+            "legacy_language_pid": 17,
+            "text": "সেটিংস",
+            "auto_translated": "সেটিংস"
+        },
+        "tr": {
+            "legacy_caption_pid": 28198,
+            "legacy_language_pid": 18,
+            "text": "Ayarlar",
+            "auto_translated": "Ayarlar"
+        },
+        "vi": {
+            "legacy_caption_pid": 28199,
+            "legacy_language_pid": 19,
+            "text": "Cài đặt",
+            "auto_translated": "Cài đặt"
+        },
+        "pl": {
+            "legacy_caption_pid": 28200,
+            "legacy_language_pid": 20,
+            "text": "Ustawienia",
+            "auto_translated": "Ustawienia"
+        },
+        "jv": {
+            "legacy_caption_pid": 28201,
+            "legacy_language_pid": 21,
+            "text": "Setelan",
+            "auto_translated": "Setelan"
+        },
+        "pa": {
+            "legacy_caption_pid": 28202,
+            "legacy_language_pid": 22,
+            "text": "ਸੈਟਿੰਗ",
+            "auto_translated": "ਸੈਟਿੰਗ"
+        },
+        "th": {
+            "legacy_caption_pid": 28203,
+            "legacy_language_pid": 23,
+            "text": "การตั้งค่า",
+            "auto_translated": "การตั้งค่า"
+        },
+        "te": {
+            "legacy_caption_pid": 33428,
+            "legacy_language_pid": 24,
+            "text": "సెట్టింగులు",
+            "auto_translated": "సెట్టింగులు"
+        },
+        "mr": {
+            "legacy_caption_pid": 33429,
+            "legacy_language_pid": 25,
+            "text": "सेटिंग्ज",
+            "auto_translated": "सेटिंग्ज"
+        },
+        "ur": {
+            "legacy_caption_pid": 33430,
+            "legacy_language_pid": 26,
+            "text": "ترتیبات",
+            "auto_translated": "ترتیبات"
+        },
+        "gu": {
+            "legacy_caption_pid": 33431,
+            "legacy_language_pid": 27,
+            "text": "સેટિંગ્સ",
+            "auto_translated": "સેટિંગ્સ"
+        },
+        "uk": {
+            "legacy_caption_pid": 33432,
+            "legacy_language_pid": 28,
+            "text": "настройки",
+            "auto_translated": "настройки"
+        },
+        "ml": {
+            "legacy_caption_pid": 33433,
+            "legacy_language_pid": 29,
+            "text": "ക്രമീകരണങ്ങൾ",
+            "auto_translated": "ക്രമീകരണങ്ങൾ"
+        },
+        "kn": {
+            "legacy_caption_pid": 33434,
+            "legacy_language_pid": 30,
+            "text": "ಸೆಟ್ಟಿಂಗ್ಗಳು",
+            "auto_translated": "ಸೆಟ್ಟಿಂಗ್ಗಳು"
+        },
+        "su": {
+            "legacy_caption_pid": 33435,
+            "legacy_language_pid": 31,
+            "text": "setélan",
+            "auto_translated": "setélan"
+        },
+        "ku": {
+            "legacy_caption_pid": 33436,
+            "legacy_language_pid": 32,
+            "text": "Mîhengên",
+            "auto_translated": "Mîhengên"
+        },
+        "ps": {
+            "legacy_caption_pid": 33437,
+            "legacy_language_pid": 33,
+            "text": "امستنې",
+            "auto_translated": "امستنې"
+        },
+        "ro": {
+            "legacy_caption_pid": 33438,
+            "legacy_language_pid": 34,
+            "text": "Setări",
+            "auto_translated": "Setări"
+        },
+        "id": {
+            "legacy_caption_pid": 33439,
+            "legacy_language_pid": 35,
+            "text": "pengaturan",
+            "auto_translated": "pengaturan"
+        },
+        "sd": {
+            "legacy_caption_pid": 33440,
+            "legacy_language_pid": 36,
+            "text": "جوڙ",
+            "auto_translated": "جوڙ"
+        },
+        "af": {
+            "legacy_caption_pid": 33441,
+            "legacy_language_pid": 37,
+            "text": "instellings",
+            "auto_translated": "instellings"
+        },
+        "sw": {
+            "legacy_caption_pid": 33442,
+            "legacy_language_pid": 38,
+            "text": "mipangilio",
+            "auto_translated": "mipangilio"
+        },
+        "lo": {
+            "legacy_caption_pid": 33443,
+            "legacy_language_pid": 39,
+            "text": "ການຕັ້ງຄ່າ",
+            "auto_translated": "ການຕັ້ງຄ່າ"
+        },
+        "nl": {
+            "legacy_caption_pid": 33444,
+            "legacy_language_pid": 40,
+            "text": "instellingen",
+            "auto_translated": "instellingen"
+        },
+        "tl": {
+            "legacy_caption_pid": 33445,
+            "legacy_language_pid": 41,
+            "text": "Mga Setting",
+            "auto_translated": "Mga Setting"
+        },
+        "ne": {
+            "legacy_caption_pid": 33446,
+            "legacy_language_pid": 42,
+            "text": "सेटिङहरू",
+            "auto_translated": "सेटिङहरू"
+        },
+        "hu": {
+            "legacy_caption_pid": 33447,
+            "legacy_language_pid": 43,
+            "text": "Beállítások",
+            "auto_translated": "Beállítások"
+        },
+        "cs": {
+            "legacy_caption_pid": 33448,
+            "legacy_language_pid": 44,
+            "text": "Nastavení",
+            "auto_translated": "Nastavení"
+        },
+        "el": {
+            "legacy_caption_pid": 33449,
+            "legacy_language_pid": 45,
+            "text": "ρυθμίσεις",
+            "auto_translated": "ρυθμίσεις"
+        },
+        "sv": {
+            "legacy_caption_pid": 33450,
+            "legacy_language_pid": 46,
+            "text": "inställningar",
+            "auto_translated": "inställningar"
+        },
+        "kk": {
+            "legacy_caption_pid": 33451,
+            "legacy_language_pid": 47,
+            "text": "Параметрлер",
+            "auto_translated": "Параметрлер"
+        },
+        "fi": {
+            "legacy_caption_pid": 33452,
+            "legacy_language_pid": 48,
+            "text": "asetukset",
+            "auto_translated": "asetukset"
+        },
+        "da": {
+            "legacy_caption_pid": 33453,
+            "legacy_language_pid": 49,
+            "text": "Indstillinger",
+            "auto_translated": "Indstillinger"
+        },
+        "he": {
+            "legacy_caption_pid": 33454,
+            "legacy_language_pid": 50,
+            "text": "הגדרות",
+            "auto_translated": "הגדרות"
+        },
+        "no": {
+            "legacy_caption_pid": 33455,
+            "legacy_language_pid": 51,
+            "text": "innstillinger",
+            "auto_translated": "innstillinger"
+        }
+    }
+}

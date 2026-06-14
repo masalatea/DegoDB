@@ -1,0 +1,69 @@
+{
+    "resource_key": "HP_FOOTER_CLOUD_PACKAGE_FOR_ENGLISH_SCHOOL",
+    "legacy_resource_pid": 689,
+    "base_group_key": "grp-010-matsuesoft-lib",
+    "additional_group_keys": [],
+    "key_for_update": "b9ZbV4uHiaRc1j25TgYfEJzJwS2tsyZ7iH645yQQqr5AbzmS5QTAmbmvnp91yavFTuHVfHo1XrJxU6Jb0lv6w0QN0AoMlYtVrjopEBTpxpfsYPEB5bC8NLPO1H0l1LXN",
+    "sort_group": "HP FOOTER",
+    "key_name": "HP_FOOTER_CLOUD_PACKAGE_FOR_ENGLISH_SCHOOL",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": true,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 4562,
+            "legacy_language_pid": 1,
+            "text": "オンライン英会話スクール向けサーバ管理パッケージ",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 4563,
+            "legacy_language_pid": 2,
+            "text": "Server Management Service Package for Online English School",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 14121,
+            "legacy_language_pid": 3,
+            "text": "",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 14122,
+            "legacy_language_pid": 4,
+            "text": "",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 14123,
+            "legacy_language_pid": 5,
+            "text": "Paquete de servicios de administración de servidores para la escuela de inglés en línea",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 14124,
+            "legacy_language_pid": 6,
+            "text": "Pacote de serviço de gerenciamento de servidores para escola de inglês on-line",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 14125,
+            "legacy_language_pid": 7,
+            "text": "",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 17089,
+            "legacy_language_pid": 8,
+            "text": "Package de service de gestion de serveur pour l'école d'anglais en ligne",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 17090,
+            "legacy_language_pid": 9,
+            "text": "ऑनलाइन अंग्रेजी स्कूल के लिए सर्वर प्रबंधन सेवा पैकेज",
+            "auto_translated": ""
+        }
+    }
+}

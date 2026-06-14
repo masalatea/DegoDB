@@ -1,0 +1,69 @@
+{
+    "resource_key": "TITLE_TECHNOLOGY_WEB_APPLICATION_TOP",
+    "legacy_resource_pid": 660,
+    "base_group_key": "grp-010-matsuesoft-lib",
+    "additional_group_keys": [],
+    "key_for_update": "KKDWTU2tbSY3oWMRB1GRELUl4facHTd9B6R2dYdmedTLSWnczqbkBVLxUcaVtDnTUMgVXiYQZUClQiEg8L2cJdOAisSSkXrnyp4IYkUd2Ox8uCBqauoBlWlk7P59pi3q",
+    "sort_group": "TITLE",
+    "key_name": "TITLE_TECHNOLOGY_WEB_APPLICATION_TOP",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": true,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 4754,
+            "legacy_language_pid": 1,
+            "text": "ウェブ・アプリケーション・テクノロジー - $DOMAINNAMECAPTION_JP",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 4755,
+            "legacy_language_pid": 2,
+            "text": "Web Application Technology - $DOMAINNAMECAPTION_EN",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 15438,
+            "legacy_language_pid": 3,
+            "text": "",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 15439,
+            "legacy_language_pid": 4,
+            "text": "",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 15440,
+            "legacy_language_pid": 5,
+            "text": "Tecnología de aplicaciones Web - $DOMAINNAMECAPTION_ES",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 15441,
+            "legacy_language_pid": 6,
+            "text": "Tecnologia de Aplicação Web - $DOMAINNAMECAPTION_EN  ",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 15442,
+            "legacy_language_pid": 7,
+            "text": "",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 17409,
+            "legacy_language_pid": 8,
+            "text": "Technologie d'application Web - $DOMAINNAMECAPTION_EN",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 17410,
+            "legacy_language_pid": 9,
+            "text": "वेब अनुप्रयोग प्रौद्योगिकी - $ DOMAINNAMECAPTION_HI",
+            "auto_translated": ""
+        }
+    }
+}

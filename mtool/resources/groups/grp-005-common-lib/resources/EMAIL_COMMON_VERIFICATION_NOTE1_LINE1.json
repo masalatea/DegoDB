@@ -1,0 +1,321 @@
+{
+    "resource_key": "EMAIL_COMMON_VERIFICATION_NOTE1_LINE1",
+    "legacy_resource_pid": 2583,
+    "base_group_key": "grp-005-common-lib",
+    "additional_group_keys": [],
+    "key_for_update": "Aiukh5Fgu5U9D9740nb7bhKmNVWIz6l3XIBboutACmShhsPxZAjdOasWzt1RUiXfjZsyrxDbgwvuC0yLM0F5QXmu8NVAfgo2VDqh5sTCLhIU5lni66TCRFEp6yars1Un",
+    "sort_group": "EMAIL VERIFICATION",
+    "key_name": "EMAIL_COMMON_VERIFICATION_NOTE1_LINE1",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": false,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 19484,
+            "legacy_language_pid": 1,
+            "text": "上記URLが2行に改行されている場合は1行にしてアクセス下さい。",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 19485,
+            "legacy_language_pid": 2,
+            "text": "If the above URL is broken in two lines, please make one line and access.",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 19486,
+            "legacy_language_pid": 3,
+            "text": "如果上述URL分为两行，请进行一行访问",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 19487,
+            "legacy_language_pid": 4,
+            "text": "위 URL이 두 줄로 줄 바꿈되는 경우 1 행에 액세스하십시오.",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 19488,
+            "legacy_language_pid": 5,
+            "text": "Si la URL anterior está dividida en dos líneas, haga una línea y acceda.",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 19489,
+            "legacy_language_pid": 6,
+            "text": "Se o URL acima for dividido em duas linhas, faça uma linha e acesse.",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 19490,
+            "legacy_language_pid": 7,
+            "text": "如果上述URL分為兩行，請進行一行訪問",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 19491,
+            "legacy_language_pid": 8,
+            "text": "Si l'URL ci-dessus est brisée en deux lignes, créez une ligne et accédez.",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 19492,
+            "legacy_language_pid": 9,
+            "text": "यदि ऊपर दिए गए URL को दो पंक्तियों में तोड़ा गया है, तो कृपया एक पंक्ति और पहुंच बनाएं",
+            "auto_translated": ""
+        },
+        "ar": {
+            "legacy_caption_pid": 29646,
+            "legacy_language_pid": 10,
+            "text": "إذا كان URL أعلاه هو خط جديد على السطر الثاني يرجى الوصول إلى خط واحد.",
+            "auto_translated": "إذا كان URL أعلاه هو خط جديد على السطر الثاني يرجى الوصول إلى خط واحد."
+        },
+        "fa": {
+            "legacy_caption_pid": 29647,
+            "legacy_language_pid": 11,
+            "text": "اگر آدرس بالا یک خط جدید در خط دوم است لطفا به یک خط دسترسی داشته باشید.",
+            "auto_translated": "اگر آدرس بالا یک خط جدید در خط دوم است لطفا به یک خط دسترسی داشته باشید."
+        },
+        "de": {
+            "legacy_caption_pid": 29648,
+            "legacy_language_pid": 12,
+            "text": "Wenn die oben genannte URL eine neue Zeile in der zweiten Zeile ist zugreifen bitte auf eine einzige Zeile.",
+            "auto_translated": "Wenn die oben genannte URL eine neue Zeile in der zweiten Zeile ist zugreifen bitte auf eine einzige Zeile."
+        },
+        "ru": {
+            "legacy_caption_pid": 29649,
+            "legacy_language_pid": 13,
+            "text": "Если выше URL является новой линии на второй линии, пожалуйста, доступ к одной линии.",
+            "auto_translated": "Если выше URL является новой линии на второй линии, пожалуйста, доступ к одной линии."
+        },
+        "ms": {
+            "legacy_caption_pid": 29650,
+            "legacy_language_pid": 14,
+            "text": "Jika URL di atas adalah barisan baru pada baris kedua sila akses kepada satu baris.",
+            "auto_translated": "Jika URL di atas adalah barisan baru pada baris kedua sila akses kepada satu baris."
+        },
+        "ta": {
+            "legacy_caption_pid": 29651,
+            "legacy_language_pid": 15,
+            "text": "மேலே உள்ள URL ஐ இரண்டாவது வரியில் ஒரு புதிய வரி இருந்தால் ஒரு ஒற்றை வரி அணுக தயவு செய்து.",
+            "auto_translated": "மேலே உள்ள URL ஐ இரண்டாவது வரியில் ஒரு புதிய வரி இருந்தால் ஒரு ஒற்றை வரி அணுக தயவு செய்து."
+        },
+        "it": {
+            "legacy_caption_pid": 29652,
+            "legacy_language_pid": 16,
+            "text": "Se quanto sopra URL è una nuova linea sulla seconda riga si prega di accedere a una singola linea.",
+            "auto_translated": "Se quanto sopra URL è una nuova linea sulla seconda riga si prega di accedere a una singola linea."
+        },
+        "bn": {
+            "legacy_caption_pid": 29653,
+            "legacy_language_pid": 17,
+            "text": "তাহলে উপরের URL দ্বিতীয় লাইন-এ একটি নতুন লাইন একটি একক লাইন অ্যাক্সেস দয়া করে।",
+            "auto_translated": "তাহলে উপরের URL দ্বিতীয় লাইন-এ একটি নতুন লাইন একটি একক লাইন অ্যাক্সেস দয়া করে।"
+        },
+        "tr": {
+            "legacy_caption_pid": 29654,
+            "legacy_language_pid": 18,
+            "text": "Yukarıdaki URL ikinci satırda yeni bir satır ise tek satıra erişin.",
+            "auto_translated": "Yukarıdaki URL ikinci satırda yeni bir satır ise tek satıra erişin."
+        },
+        "vi": {
+            "legacy_caption_pid": 29655,
+            "legacy_language_pid": 19,
+            "text": "Nếu URL trên là một dòng mới trên dòng thứ hai xin vui lòng truy cập vào một dòng đơn.",
+            "auto_translated": "Nếu URL trên là một dòng mới trên dòng thứ hai xin vui lòng truy cập vào một dòng đơn."
+        },
+        "pl": {
+            "legacy_caption_pid": 29656,
+            "legacy_language_pid": 20,
+            "text": "Jeśli powyższy URL to nowa linia w drugim wierszu należy przejść do jednej linii.",
+            "auto_translated": "Jeśli powyższy URL to nowa linia w drugim wierszu należy przejść do jednej linii."
+        },
+        "jv": {
+            "legacy_caption_pid": 29657,
+            "legacy_language_pid": 21,
+            "text": "Yen URL ing ndhuwur iku baris anyar ing baris kapindho please ngakses kanggo baris siji.",
+            "auto_translated": "Yen URL ing ndhuwur iku baris anyar ing baris kapindho please ngakses kanggo baris siji."
+        },
+        "pa": {
+            "legacy_caption_pid": 29658,
+            "legacy_language_pid": 22,
+            "text": "ਜੇ ਉਪਰੋਕਤ URL ਨੂੰ ਦੂਜੀ ਲਾਈਨ 'ਤੇ ਇੱਕ ਨਵ ਲਾਈਨ ਹੈ ਇੱਕ ਸਿੰਗਲ ਲਾਇਨ ਤੱਕ ਪਹੁੰਚ ਕਰੋ.",
+            "auto_translated": "ਜੇ ਉਪਰੋਕਤ URL ਨੂੰ ਦੂਜੀ ਲਾਈਨ 'ਤੇ ਇੱਕ ਨਵ ਲਾਈਨ ਹੈ ਇੱਕ ਸਿੰਗਲ ਲਾਇਨ ਤੱਕ ਪਹੁੰਚ ਕਰੋ."
+        },
+        "th": {
+            "legacy_caption_pid": 29659,
+            "legacy_language_pid": 23,
+            "text": "หาก URL ดังกล่าวเป็นบรรทัดใหม่ในบรรทัดที่สองโปรดเข้าถึงเส้นเดียว",
+            "auto_translated": "หาก URL ดังกล่าวเป็นบรรทัดใหม่ในบรรทัดที่สองโปรดเข้าถึงเส้นเดียว"
+        },
+        "te": {
+            "legacy_caption_pid": 37152,
+            "legacy_language_pid": 24,
+            "text": "పైన URL రెండో లైన్లో ఒక కొత్త లైన్ ఉంటే ఒక వాక్యం యాక్సెస్ దయచేసి.",
+            "auto_translated": "పైన URL రెండో లైన్లో ఒక కొత్త లైన్ ఉంటే ఒక వాక్యం యాక్సెస్ దయచేసి."
+        },
+        "mr": {
+            "legacy_caption_pid": 37153,
+            "legacy_language_pid": 25,
+            "text": "वरील URL दुसरी ओळ एक नवीन ओळ आहे, तर एका ओळीत प्रवेश करा.",
+            "auto_translated": "वरील URL दुसरी ओळ एक नवीन ओळ आहे, तर एका ओळीत प्रवेश करा."
+        },
+        "ur": {
+            "legacy_caption_pid": 37154,
+            "legacy_language_pid": 26,
+            "text": "مندرجہ بالا URL دوسری لائن پر ایک نئی سطر ہے تو ایک ایک لائن تک رسائی کے لئے براہ مہربانی.",
+            "auto_translated": "مندرجہ بالا URL دوسری لائن پر ایک نئی سطر ہے تو ایک ایک لائن تک رسائی کے لئے براہ مہربانی."
+        },
+        "gu": {
+            "legacy_caption_pid": 37155,
+            "legacy_language_pid": 27,
+            "text": "જો ઉપરના URL બીજી લાઇન પર એક નવી રેખા છે એક રેખા ઍક્સેસ કરો.",
+            "auto_translated": "જો ઉપરના URL બીજી લાઇન પર એક નવી રેખા છે એક રેખા ઍક્સેસ કરો."
+        },
+        "uk": {
+            "legacy_caption_pid": 37156,
+            "legacy_language_pid": 28,
+            "text": "Якщо вище URL є новою лінії на другій лінії, будь ласка, доступ до однієї лінії.",
+            "auto_translated": "Якщо вище URL є новою лінії на другій лінії, будь ласка, доступ до однієї лінії."
+        },
+        "ml": {
+            "legacy_caption_pid": 37157,
+            "legacy_language_pid": 29,
+            "text": "മുകളിലെ URL രണ്ടാം ലൈനിൽ പുതിയ ലൈൻ എങ്കിൽ ഒരു വരിയിൽ ആക്സസ് ദയവായി.",
+            "auto_translated": "മുകളിലെ URL രണ്ടാം ലൈനിൽ പുതിയ ലൈൻ എങ്കിൽ ഒരു വരിയിൽ ആക്സസ് ദയവായി."
+        },
+        "kn": {
+            "legacy_caption_pid": 37158,
+            "legacy_language_pid": 30,
+            "text": "ಮೇಲಿನ URL ಎರಡನೇ ಸಾಲಿನಲ್ಲಿ ಒಂದು ಹೊಸ ಸಾಲು ವೇಳೆ ಒಂದು ಸಾಲಿನ ಪ್ರವೇಶವನ್ನು ಮಾಡಿ.",
+            "auto_translated": "ಮೇಲಿನ URL ಎರಡನೇ ಸಾಲಿನಲ್ಲಿ ಒಂದು ಹೊಸ ಸಾಲು ವೇಳೆ ಒಂದು ಸಾಲಿನ ಪ್ರವೇಶವನ್ನು ಮಾಡಿ."
+        },
+        "su": {
+            "legacy_caption_pid": 37159,
+            "legacy_language_pid": 31,
+            "text": "Mun URL di luhur mangrupakeun garis anyar dina garis kadua punten ngakses ka garis tunggal.",
+            "auto_translated": "Mun URL di luhur mangrupakeun garis anyar dina garis kadua punten ngakses ka garis tunggal."
+        },
+        "ku": {
+            "legacy_caption_pid": 37160,
+            "legacy_language_pid": 32,
+            "text": "Eger URL jor a xeta nû ya li ser xeta duyem e, ji kerema xwe ve ji bo xeta yek kompûtera xwe.",
+            "auto_translated": "Eger URL jor a xeta nû ya li ser xeta duyem e, ji kerema xwe ve ji bo xeta yek kompûtera xwe."
+        },
+        "ps": {
+            "legacy_caption_pid": 37161,
+            "legacy_language_pid": 33,
+            "text": "که پورته URL دوهم کرښې پر يوه نوي کرښه ده لطفا یو واحد کرښې لاسرسی.",
+            "auto_translated": "که پورته URL دوهم کرښې پر يوه نوي کرښه ده لطفا یو واحد کرښې لاسرسی."
+        },
+        "ro": {
+            "legacy_caption_pid": 37162,
+            "legacy_language_pid": 34,
+            "text": "Dacă URL-ul de mai sus este o nouă linie pe a doua linie vă rugăm să accesați la o singură linie.",
+            "auto_translated": "Dacă URL-ul de mai sus este o nouă linie pe a doua linie vă rugăm să accesați la o singură linie."
+        },
+        "id": {
+            "legacy_caption_pid": 37163,
+            "legacy_language_pid": 35,
+            "text": "Jika URL di atas adalah baris baru pada baris kedua silahkan akses ke satu baris.",
+            "auto_translated": "Jika URL di atas adalah baris baru pada baris kedua silahkan akses ke satu baris."
+        },
+        "sd": {
+            "legacy_caption_pid": 37164,
+            "legacy_language_pid": 36,
+            "text": "مٿين URL جو ٻيو ليڪ تي هڪ نئين لائن آهي ته هڪ قطار کي رسائي حاصل ڪريو.",
+            "auto_translated": "مٿين URL جو ٻيو ليڪ تي هڪ نئين لائن آهي ته هڪ قطار کي رسائي حاصل ڪريو."
+        },
+        "af": {
+            "legacy_caption_pid": 37165,
+            "legacy_language_pid": 37,
+            "text": "Indien die bogenoemde URL is 'n nuwe lyn op die tweede lyn kan jy toegang tot 'n enkele lyn.",
+            "auto_translated": "Indien die bogenoemde URL is 'n nuwe lyn op die tweede lyn kan jy toegang tot 'n enkele lyn."
+        },
+        "sw": {
+            "legacy_caption_pid": 37166,
+            "legacy_language_pid": 38,
+            "text": "Kama URL hapo juu ni mstari mpya kwenye mstari wa pili tafadhali kupata line moja.",
+            "auto_translated": "Kama URL hapo juu ni mstari mpya kwenye mstari wa pili tafadhali kupata line moja."
+        },
+        "lo": {
+            "legacy_caption_pid": 37167,
+            "legacy_language_pid": 39,
+            "text": "ຖ້າຫາກວ່າ URL ຂ້າງເທິງນີ້ແມ່ນບັນທັດໃຫມ່ກ່ຽວກັບບັນທັດທີ່ສອງກະລຸນາສາມາດເຂົ້າເຖິງບັນທັດດຽວ.",
+            "auto_translated": "ຖ້າຫາກວ່າ URL ຂ້າງເທິງນີ້ແມ່ນບັນທັດໃຫມ່ກ່ຽວກັບບັນທັດທີ່ສອງກະລຸນາສາມາດເຂົ້າເຖິງບັນທັດດຽວ."
+        },
+        "nl": {
+            "legacy_caption_pid": 37168,
+            "legacy_language_pid": 40,
+            "text": "Als de bovenstaande URL is een nieuwe lijn op de tweede regel kunt u de toegang tot een enkele lijn.",
+            "auto_translated": "Als de bovenstaande URL is een nieuwe lijn op de tweede regel kunt u de toegang tot een enkele lijn."
+        },
+        "tl": {
+            "legacy_caption_pid": 37169,
+            "legacy_language_pid": 41,
+            "text": "Kung ang URL sa itaas ay isang bagong linya sa ikalawang linya mangyaring i-access sa isang solong linya.",
+            "auto_translated": "Kung ang URL sa itaas ay isang bagong linya sa ikalawang linya mangyaring i-access sa isang solong linya."
+        },
+        "ne": {
+            "legacy_caption_pid": 37170,
+            "legacy_language_pid": 42,
+            "text": "माथिको URL दोस्रो लाइन मा एक नयाँ लाइन हो भने एक लाइन पहुँच गर्नुहोस्।",
+            "auto_translated": "माथिको URL दोस्रो लाइन मा एक नयाँ लाइन हो भने एक लाइन पहुँच गर्नुहोस्।"
+        },
+        "hu": {
+            "legacy_caption_pid": 37171,
+            "legacy_language_pid": 43,
+            "text": "Ha a fenti URL egy új sor, a második sorban, kérjük a hozzáférést egyetlen vonalon.",
+            "auto_translated": "Ha a fenti URL egy új sor, a második sorban, kérjük a hozzáférést egyetlen vonalon."
+        },
+        "cs": {
+            "legacy_caption_pid": 37172,
+            "legacy_language_pid": 44,
+            "text": "Pokud výše uvedené URL je nový řádek na druhém řádku, prosím přístup k jedné lince.",
+            "auto_translated": "Pokud výše uvedené URL je nový řádek na druhém řádku, prosím přístup k jedné lince."
+        },
+        "el": {
+            "legacy_caption_pid": 37173,
+            "legacy_language_pid": 45,
+            "text": "Αν η παραπάνω διεύθυνση URL είναι μια νέα γραμμή στη δεύτερη γραμμή μπορείτε να αποκτήσετε πρόσβαση σε μια ενιαία γραμμή.",
+            "auto_translated": "Αν η παραπάνω διεύθυνση URL είναι μια νέα γραμμή στη δεύτερη γραμμή μπορείτε να αποκτήσετε πρόσβαση σε μια ενιαία γραμμή."
+        },
+        "sv": {
+            "legacy_caption_pid": 37174,
+            "legacy_language_pid": 46,
+            "text": "Om ovanstående webbadress är en ny linje på den andra raden var vänlig gå till en enda rad.",
+            "auto_translated": "Om ovanstående webbadress är en ny linje på den andra raden var vänlig gå till en enda rad."
+        },
+        "kk": {
+            "legacy_caption_pid": 37175,
+            "legacy_language_pid": 47,
+            "text": "Жоғарыда URL екінші желісі бойынша жаңа желісі болса бір сызық қол сұраймыз.",
+            "auto_translated": "Жоғарыда URL екінші желісі бойынша жаңа желісі болса бір сызық қол сұраймыз."
+        },
+        "fi": {
+            "legacy_caption_pid": 37176,
+            "legacy_language_pid": 48,
+            "text": "Jos yllä URL-osoite on uuden linjan toisella rivillä ota pääsyn yhdellä rivillä.",
+            "auto_translated": "Jos yllä URL-osoite on uuden linjan toisella rivillä ota pääsyn yhdellä rivillä."
+        },
+        "da": {
+            "legacy_caption_pid": 37177,
+            "legacy_language_pid": 49,
+            "text": "Hvis ovenstående webadresse er en ny linje på den anden linje skal du få adgang til en enkelt linje.",
+            "auto_translated": "Hvis ovenstående webadresse er en ny linje på den anden linje skal du få adgang til en enkelt linje."
+        },
+        "he": {
+            "legacy_caption_pid": 37178,
+            "legacy_language_pid": 50,
+            "text": "אם כתובת האתר לעיל הוא קו חדש על הקו השני בבקשה לגשת לקו יחיד.",
+            "auto_translated": "אם כתובת האתר לעיל הוא קו חדש על הקו השני בבקשה לגשת לקו יחיד."
+        },
+        "no": {
+            "legacy_caption_pid": 37179,
+            "legacy_language_pid": 51,
+            "text": "Hvis nettadressen ovenfor er en ny linje på den andre linjen kan du få tilgang til en enkelt linje.",
+            "auto_translated": "Hvis nettadressen ovenfor er en ny linje på den andre linjen kan du få tilgang til en enkelt linje."
+        }
+    }
+}

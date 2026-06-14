@@ -1,0 +1,69 @@
+{
+    "resource_key": "TITLE_DBAAS_HOW_TO_USE_EXAMPLE_CS_PROXY",
+    "legacy_resource_pid": 604,
+    "base_group_key": "grp-010-matsuesoft-lib",
+    "additional_group_keys": [],
+    "key_for_update": "JNKKaCWmnNxHkm2HeFcUZJNQjz1mlRz1JYvdzcthcQwkoKNqKnJqm7xBg2K05nwL8IZphDyKNOax7iyrzwWaUay4vloguLiE2muqWdyjYbyYECjURykRGWJsQD95BuT9",
+    "sort_group": "TITLE",
+    "key_name": "TITLE_DBAAS_HOW_TO_USE_EXAMPLE_CS_PROXY",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": true,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 4666,
+            "legacy_language_pid": 1,
+            "text": "カスタム開発でC#のクライアントを作成する例",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 4667,
+            "legacy_language_pid": 2,
+            "text": "Example for C# Client by Custom Development Option",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 14381,
+            "legacy_language_pid": 3,
+            "text": "",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 14382,
+            "legacy_language_pid": 4,
+            "text": "",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 14383,
+            "legacy_language_pid": 5,
+            "text": "Ejemplo para cliente C# por opción de desarrollo personalizado",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 14384,
+            "legacy_language_pid": 6,
+            "text": "Exemplo para cliente C# por opção de desenvolvimento personalizado",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 14385,
+            "legacy_language_pid": 7,
+            "text": "",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 17321,
+            "legacy_language_pid": 8,
+            "text": "Exemple pour client C# par option de développement personnalisé",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 17322,
+            "legacy_language_pid": 9,
+            "text": "कस्टम विकास विकल्प के द्वारा C # क्लाइंट के लिए उदाहरण",
+            "auto_translated": ""
+        }
+    }
+}

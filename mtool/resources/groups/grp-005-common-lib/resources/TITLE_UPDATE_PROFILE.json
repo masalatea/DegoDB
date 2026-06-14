@@ -1,0 +1,321 @@
+{
+    "resource_key": "TITLE_UPDATE_PROFILE",
+    "legacy_resource_pid": 559,
+    "base_group_key": "grp-005-common-lib",
+    "additional_group_keys": [],
+    "key_for_update": "L8ap4a1S4o9RmNmcpNadMD1XurjBijI5mCqgDKcaL1wPuA7euEBp8Vs0o245TRnao7uvayke2dfSdU1BeAJ3OZ4I2kt0xQg5SJQupJJcpTQGQ5GDDiH3iyddifvkR8YF",
+    "sort_group": "TITLE",
+    "key_name": "TITLE_UPDATE_PROFILE",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": false,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 1399,
+            "legacy_language_pid": 1,
+            "text": "プロフィール更新",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 1400,
+            "legacy_language_pid": 2,
+            "text": "Update Profile",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 6566,
+            "legacy_language_pid": 3,
+            "text": "配置文件更新",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 6567,
+            "legacy_language_pid": 4,
+            "text": "프로필 업데이트",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 10603,
+            "legacy_language_pid": 5,
+            "text": "Actualizar perfil",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 10604,
+            "legacy_language_pid": 6,
+            "text": "Atualizar perfil",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 10605,
+            "legacy_language_pid": 7,
+            "text": "配置文件更新",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 16355,
+            "legacy_language_pid": 8,
+            "text": "Mettre à jour le profil",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 16356,
+            "legacy_language_pid": 9,
+            "text": " प्रोफ़ाइल अपडेट करें",
+            "auto_translated": ""
+        },
+        "ar": {
+            "legacy_caption_pid": 30318,
+            "legacy_language_pid": 10,
+            "text": "الملف الشخصي تحديث",
+            "auto_translated": "الملف الشخصي تحديث"
+        },
+        "fa": {
+            "legacy_caption_pid": 30319,
+            "legacy_language_pid": 11,
+            "text": "مشخصات به روز رسانی",
+            "auto_translated": "مشخصات به روز رسانی"
+        },
+        "de": {
+            "legacy_caption_pid": 30320,
+            "legacy_language_pid": 12,
+            "text": "Profil aktualisieren",
+            "auto_translated": "Profil aktualisieren"
+        },
+        "ru": {
+            "legacy_caption_pid": 30321,
+            "legacy_language_pid": 13,
+            "text": "Профиль обновления",
+            "auto_translated": "Профиль обновления"
+        },
+        "ms": {
+            "legacy_caption_pid": 30322,
+            "legacy_language_pid": 14,
+            "text": "Kemas kini profil",
+            "auto_translated": "Kemas kini profil"
+        },
+        "ta": {
+            "legacy_caption_pid": 30323,
+            "legacy_language_pid": 15,
+            "text": "பதிவு செய்தது புதுப்பிக்கப்பட்டது",
+            "auto_translated": "பதிவு செய்தது புதுப்பிக்கப்பட்டது"
+        },
+        "it": {
+            "legacy_caption_pid": 30324,
+            "legacy_language_pid": 16,
+            "text": "Aggiorna profilo",
+            "auto_translated": "Aggiorna profilo"
+        },
+        "bn": {
+            "legacy_caption_pid": 30325,
+            "legacy_language_pid": 17,
+            "text": "প্রোফাইল আপডেট",
+            "auto_translated": "প্রোফাইল আপডেট"
+        },
+        "tr": {
+            "legacy_caption_pid": 30326,
+            "legacy_language_pid": 18,
+            "text": "Profil Güncelleme",
+            "auto_translated": "Profil Güncelleme"
+        },
+        "vi": {
+            "legacy_caption_pid": 30327,
+            "legacy_language_pid": 19,
+            "text": "Hồ sơ cập nhật",
+            "auto_translated": "Hồ sơ cập nhật"
+        },
+        "pl": {
+            "legacy_caption_pid": 30328,
+            "legacy_language_pid": 20,
+            "text": "Aktualizacja profilu",
+            "auto_translated": "Aktualizacja profilu"
+        },
+        "jv": {
+            "legacy_caption_pid": 30329,
+            "legacy_language_pid": 21,
+            "text": "Gambar Update",
+            "auto_translated": "Gambar Update"
+        },
+        "pa": {
+            "legacy_caption_pid": 30330,
+            "legacy_language_pid": 22,
+            "text": "ਦਾ ਪ੍ਰੋਫ਼ਾਈਲ ਅੱਪਡੇਟ",
+            "auto_translated": "ਦਾ ਪ੍ਰੋਫ਼ਾਈਲ ਅੱਪਡੇਟ"
+        },
+        "th": {
+            "legacy_caption_pid": 30331,
+            "legacy_language_pid": 23,
+            "text": "ปรับปรุงรายละเอียด",
+            "auto_translated": "ปรับปรุงรายละเอียด"
+        },
+        "te": {
+            "legacy_caption_pid": 35808,
+            "legacy_language_pid": 24,
+            "text": "ప్రొఫైల్ నవీకరణ",
+            "auto_translated": "ప్రొఫైల్ నవీకరణ"
+        },
+        "mr": {
+            "legacy_caption_pid": 35809,
+            "legacy_language_pid": 25,
+            "text": "प्रोफाइल अद्यतनित करा",
+            "auto_translated": "प्रोफाइल अद्यतनित करा"
+        },
+        "ur": {
+            "legacy_caption_pid": 35810,
+            "legacy_language_pid": 26,
+            "text": "پروفائل اپ ڈیٹ",
+            "auto_translated": "پروفائل اپ ڈیٹ"
+        },
+        "gu": {
+            "legacy_caption_pid": 35811,
+            "legacy_language_pid": 27,
+            "text": "પ્રોફાઇલ અપડેટ",
+            "auto_translated": "પ્રોફાઇલ અપડેટ"
+        },
+        "uk": {
+            "legacy_caption_pid": 35812,
+            "legacy_language_pid": 28,
+            "text": "профіль поновлення",
+            "auto_translated": "профіль поновлення"
+        },
+        "ml": {
+            "legacy_caption_pid": 35813,
+            "legacy_language_pid": 29,
+            "text": "പ്രൊഫൈൽ അപ്ഡേറ്റ്",
+            "auto_translated": "പ്രൊഫൈൽ അപ്ഡേറ്റ്"
+        },
+        "kn": {
+            "legacy_caption_pid": 35814,
+            "legacy_language_pid": 30,
+            "text": "ಪ್ರೊಫೈಲ್ ನವೀಕರಣ",
+            "auto_translated": "ಪ್ರೊಫೈಲ್ ನವೀಕರಣ"
+        },
+        "su": {
+            "legacy_caption_pid": 35815,
+            "legacy_language_pid": 31,
+            "text": "profil Update",
+            "auto_translated": "profil Update"
+        },
+        "ku": {
+            "legacy_caption_pid": 35816,
+            "legacy_language_pid": 32,
+            "text": "Profile Update",
+            "auto_translated": "Profile Update"
+        },
+        "ps": {
+            "legacy_caption_pid": 35817,
+            "legacy_language_pid": 33,
+            "text": "پيژند تازه",
+            "auto_translated": "پيژند تازه"
+        },
+        "ro": {
+            "legacy_caption_pid": 35818,
+            "legacy_language_pid": 34,
+            "text": "Actualizare profil",
+            "auto_translated": "Actualizare profil"
+        },
+        "id": {
+            "legacy_caption_pid": 35819,
+            "legacy_language_pid": 35,
+            "text": "profil Perbarui",
+            "auto_translated": "profil Perbarui"
+        },
+        "sd": {
+            "legacy_caption_pid": 35820,
+            "legacy_language_pid": 36,
+            "text": "پروفائيل اپ ڊيٽ",
+            "auto_translated": "پروفائيل اپ ڊيٽ"
+        },
+        "af": {
+            "legacy_caption_pid": 35821,
+            "legacy_language_pid": 37,
+            "text": "profiel Update",
+            "auto_translated": "profiel Update"
+        },
+        "sw": {
+            "legacy_caption_pid": 35822,
+            "legacy_language_pid": 38,
+            "text": "Profile Mwisho",
+            "auto_translated": "Profile Mwisho"
+        },
+        "lo": {
+            "legacy_caption_pid": 35823,
+            "legacy_language_pid": 39,
+            "text": "Update Profile",
+            "auto_translated": "Update Profile"
+        },
+        "nl": {
+            "legacy_caption_pid": 35824,
+            "legacy_language_pid": 40,
+            "text": "profiel bijwerken",
+            "auto_translated": "profiel bijwerken"
+        },
+        "tl": {
+            "legacy_caption_pid": 35825,
+            "legacy_language_pid": 41,
+            "text": "I-update ang profile",
+            "auto_translated": "I-update ang profile"
+        },
+        "ne": {
+            "legacy_caption_pid": 35826,
+            "legacy_language_pid": 42,
+            "text": "प्रोफाइल अपडेट",
+            "auto_translated": "प्रोफाइल अपडेट"
+        },
+        "hu": {
+            "legacy_caption_pid": 35827,
+            "legacy_language_pid": 43,
+            "text": "profil frissítése",
+            "auto_translated": "profil frissítése"
+        },
+        "cs": {
+            "legacy_caption_pid": 35828,
+            "legacy_language_pid": 44,
+            "text": "Aktualizovat profil",
+            "auto_translated": "Aktualizovat profil"
+        },
+        "el": {
+            "legacy_caption_pid": 35829,
+            "legacy_language_pid": 45,
+            "text": "Προφίλ Ενημέρωση",
+            "auto_translated": "Προφίλ Ενημέρωση"
+        },
+        "sv": {
+            "legacy_caption_pid": 35830,
+            "legacy_language_pid": 46,
+            "text": "profiluppdatering",
+            "auto_translated": "profiluppdatering"
+        },
+        "kk": {
+            "legacy_caption_pid": 35831,
+            "legacy_language_pid": 47,
+            "text": "Профиль жаңарту",
+            "auto_translated": "Профиль жаңарту"
+        },
+        "fi": {
+            "legacy_caption_pid": 35832,
+            "legacy_language_pid": 48,
+            "text": "profiilin päivittäminen",
+            "auto_translated": "profiilin päivittäminen"
+        },
+        "da": {
+            "legacy_caption_pid": 35833,
+            "legacy_language_pid": 49,
+            "text": "Profil opdatering",
+            "auto_translated": "Profil opdatering"
+        },
+        "he": {
+            "legacy_caption_pid": 35834,
+            "legacy_language_pid": 50,
+            "text": "עדכון בפרופיל",
+            "auto_translated": "עדכון בפרופיל"
+        },
+        "no": {
+            "legacy_caption_pid": 35835,
+            "legacy_language_pid": 51,
+            "text": "Profile Update",
+            "auto_translated": "Profile Update"
+        }
+    }
+}

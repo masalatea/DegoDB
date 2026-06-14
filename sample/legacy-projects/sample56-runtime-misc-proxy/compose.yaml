@@ -1,0 +1,29 @@
+name: mtool-sample-sample56-runtime-misc-proxy
+
+services:
+  web-admin:
+    environment:
+      APP_WORK_ROOT: /var/www/work/sample-packs/sample56-runtime-misc-proxy
+
+  web-lab:
+    environment:
+      APP_WORK_ROOT: /var/www/work/sample-packs/sample56-runtime-misc-proxy
+
+  db-config:
+    entrypoint:
+      - /bin/sh
+      - -lc
+      - |
+        set -eu
+        rm -rf /docker-entrypoint-initdb.d/*
+        cp -R /docker-entrypoint-initdb-core/. /docker-entrypoint-initdb.d/
+        cp -R /docker-entrypoint-initdb-sample/. /docker-entrypoint-initdb.d/
+        exec docker-entrypoint.sh mariadbd
+    volumes:
+      - db-config-data:/var/lib/mysql
+      - db-config-initdb:/docker-entrypoint-initdb.d
+      - ./docker/mariadb/config-initdb:/docker-entrypoint-initdb-core:ro
+      - ./sample/legacy-projects/sample56-runtime-misc-proxy/seed:/docker-entrypoint-initdb-sample:ro
+
+volumes:
+  db-config-initdb:

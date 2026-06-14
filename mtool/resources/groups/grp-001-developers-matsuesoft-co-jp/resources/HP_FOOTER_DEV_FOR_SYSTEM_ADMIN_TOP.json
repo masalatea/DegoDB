@@ -1,0 +1,27 @@
+{
+    "resource_key": "HP_FOOTER_DEV_FOR_SYSTEM_ADMIN_TOP",
+    "legacy_resource_pid": 119,
+    "base_group_key": "grp-001-developers-matsuesoft-co-jp",
+    "additional_group_keys": [],
+    "key_for_update": "0",
+    "sort_group": "HP FOOTER",
+    "key_name": "HP_FOOTER_DEV_FOR_SYSTEM_ADMIN_TOP",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": true,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 4240,
+            "legacy_language_pid": 1,
+            "text": "システム管理者用",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 4241,
+            "legacy_language_pid": 2,
+            "text": "For System Administrator",
+            "auto_translated": ""
+        }
+    }
+}

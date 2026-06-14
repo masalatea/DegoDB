@@ -1,0 +1,69 @@
+{
+    "resource_key": "TITLE_DEV_LAMP",
+    "legacy_resource_pid": 734,
+    "base_group_key": "grp-010-matsuesoft-lib",
+    "additional_group_keys": [],
+    "key_for_update": "8Kfq20n9ijP21zromqGRQnqsWKwYOrXGyEgYezkWWc5UG1H2BuoiQwMhiGCOYR63Q4yWIKwD91Img3jlXHp5LDyCsGtB2w0Lp8V03jf6ZWZKpjGxIF5VPbytNkbZElEc",
+    "sort_group": "TITLE",
+    "key_name": "TITLE_DEV_LAMP",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": true,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 4726,
+            "legacy_language_pid": 1,
+            "text": "LAMP (Linux+Apache+MySQL+PHP)のアプリケーション(動的Webページ)作成",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 4727,
+            "legacy_language_pid": 2,
+            "text": "Web Application by LAMP (Linux+Apache+MySQL+PHP)",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 15368,
+            "legacy_language_pid": 3,
+            "text": "",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 15369,
+            "legacy_language_pid": 4,
+            "text": "",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 15370,
+            "legacy_language_pid": 5,
+            "text": "Aplicación Web por LAMP (Linux + Apache + MySQL + PHP)",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 15371,
+            "legacy_language_pid": 6,
+            "text": "Aplicação da Web por LAMP (Linux + Apache + MySQL + PHP)",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 15372,
+            "legacy_language_pid": 7,
+            "text": "",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 17381,
+            "legacy_language_pid": 8,
+            "text": "Application Web par LAMP (Linux + Apache + MySQL + PHP)",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 17382,
+            "legacy_language_pid": 9,
+            "text": "LAMP के द्वारा वेब अनुप्रयोग (Linux + Apache + MySQL + PHP)",
+            "auto_translated": ""
+        }
+    }
+}

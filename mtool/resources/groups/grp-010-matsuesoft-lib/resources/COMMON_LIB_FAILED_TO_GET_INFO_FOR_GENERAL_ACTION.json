@@ -1,0 +1,321 @@
+{
+    "resource_key": "COMMON_LIB_FAILED_TO_GET_INFO_FOR_GENERAL_ACTION",
+    "legacy_resource_pid": 1594,
+    "base_group_key": "grp-010-matsuesoft-lib",
+    "additional_group_keys": [],
+    "key_for_update": "th9FTMl6VGnG5DnAXDUbx4Gl2qFVmyUH0htPuWyEFfFIRejJeIQhoVzkpYauMYTurHMyrw8vISBvzVpMtZo12bNdOtXlwOYe1QWZXCQtro47g8gQ4xKNHy4dyZie0qAk",
+    "sort_group": "",
+    "key_name": "COMMON_LIB_FAILED_TO_GET_INFO_FOR_GENERAL_ACTION",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": false,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 7158,
+            "legacy_language_pid": 1,
+            "text": "情報取得に失敗しました。申し訳ありませんがしばらく後にお試し下さい。しばらくしても直らない場合はお手数ですが事務局までご連絡下さい。",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 7159,
+            "legacy_language_pid": 2,
+            "text": "Information acquisition failed. I'm sorry but please try later. If you do not hesitate after a while please take a moment to contact the secretariat.",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 7160,
+            "legacy_language_pid": 3,
+            "text": "无法获得的信息。对不起，请稍后再试。如果故障不能排除，之后，请联系事务所",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 7161,
+            "legacy_language_pid": 4,
+            "text": "정보 취득에 실패했습니다. 죄송하지만 잠시 후 시도하세요. 계속해서 실패할 경우 번거로우시겠지만 사무국으로 연락주십시오.",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 10645,
+            "legacy_language_pid": 5,
+            "text": "Error en la adquisición de información. Lo siento pero inténtelo más tarde. Si no lo dude después de un rato, por favor tome un momento para ponerse en contacto con la secretaría.",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 10646,
+            "legacy_language_pid": 6,
+            "text": "A aquisição da informação falhou. Desculpe, mas tente mais tarde. Se você não hesitar depois de um tempo, por favor, tome um momento para entrar em contato com o secretariado.",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 10647,
+            "legacy_language_pid": 7,
+            "text": "無法獲得的信息。對不起，請稍後再試。如果故障不能排除，之後，請聯繫事務所",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 16383,
+            "legacy_language_pid": 8,
+            "text": "L'acquisition de l'information a échoué. Je suis désolé mais essayez plus tard. Si vous n'hésitez pas après un certain temps, prenez un moment pour contacter le secrétariat.",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 16384,
+            "legacy_language_pid": 9,
+            "text": "सूचना अधिग्रहण असफल रहा मुझे खेद है लेकिन कृपया बाद में प्रयास करें। यदि आप थोड़ी देर के बाद संकोच न करें तो कृपया सचिवालय से संपर्क करने के लिए कुछ समय निकालें।",
+            "auto_translated": ""
+        },
+        "ar": {
+            "legacy_caption_pid": 30528,
+            "legacy_language_pid": 10,
+            "text": "ولم يتسن الحصول على معلومات. عذرا، يرجى المحاولة بعد مرور بعض الوقت. يرجى الاتصال لفترة من الوقت آسف لمتاعب لك، إذا لا يمكن تصحيحه عناء حتى بعد، ولكن الأمانة.",
+            "auto_translated": "ولم يتسن الحصول على معلومات. عذرا، يرجى المحاولة بعد مرور بعض الوقت. يرجى الاتصال لفترة من الوقت آسف لمتاعب لك، إذا لا يمكن تصحيحه عناء حتى بعد، ولكن الأمانة."
+        },
+        "fa": {
+            "legacy_caption_pid": 30529,
+            "legacy_language_pid": 11,
+            "text": "اطلاعات تواند به دست آورد. با عرض پوزش، لطفا بعد از مدتی امتحان کنید. لطفا برای مدتی با عرض پوزش برای شما مشکل است، اگر مشکل می اصلاح شود حتی پس از، اما دبیرخانه تماس بگیرید.",
+            "auto_translated": "اطلاعات تواند به دست آورد. با عرض پوزش، لطفا بعد از مدتی امتحان کنید. لطفا برای مدتی با عرض پوزش برای شما مشکل است، اگر مشکل می اصلاح شود حتی پس از، اما دبیرخانه تماس بگیرید."
+        },
+        "de": {
+            "legacy_caption_pid": 30530,
+            "legacy_language_pid": 12,
+            "text": "Informationen können nicht erhalten werden. Sorry, bitte versuchen Sie es nach einiger Zeit. Bitte kontaktieren Sie für eine Weile Entschuldigen Sie die Störung, wenn die Probleme nicht selbst nach behoben werden kann, aber das Sekretariat.",
+            "auto_translated": "Informationen können nicht erhalten werden. Sorry, bitte versuchen Sie es nach einiger Zeit. Bitte kontaktieren Sie für eine Weile Entschuldigen Sie die Störung, wenn die Probleme nicht selbst nach behoben werden kann, aber das Sekretariat."
+        },
+        "ru": {
+            "legacy_caption_pid": 30531,
+            "legacy_language_pid": 13,
+            "text": "Информация не может быть получено. Извините, пожалуйста, попробуйте через какое-то время. Свяжитесь с нами некоторое время, жаль беспокоить вас, если неисправность не может быть устранена даже после того, как, но секретариат.",
+            "auto_translated": "Информация не может быть получено. Извините, пожалуйста, попробуйте через какое-то время. Свяжитесь с нами некоторое время, жаль беспокоить вас, если неисправность не может быть устранена даже после того, как, но секретариат."
+        },
+        "ms": {
+            "legacy_caption_pid": 30532,
+            "legacy_language_pid": 14,
+            "text": "Maklumat tidak boleh diperolehi. Maaf, sila cuba selepas beberapa ketika. Sila hubungi untuk seketika maaf untuk masalah anda, jika masalah itu tidak boleh diperbetulkan walaupun selepas, tetapi urus setia.",
+            "auto_translated": "Maklumat tidak boleh diperolehi. Maaf, sila cuba selepas beberapa ketika. Sila hubungi untuk seketika maaf untuk masalah anda, jika masalah itu tidak boleh diperbetulkan walaupun selepas, tetapi urus setia."
+        },
+        "ta": {
+            "legacy_caption_pid": 30533,
+            "legacy_language_pid": 15,
+            "text": "தகவல் கிடைப்பதால் முடியவில்லை. மன்னிக்கவும், சிறிது நேரம் கழித்து முயற்சிக்கவும். பிரச்சனையில் நீங்கள் பிறகும் கூட பிரச்சனையில் சீர்செய்ய இயலாத முடியவில்லை என்றால், ஆனால் செயலகம் வருந்துகிறது சிறிது நேரம் தொடர்பு கொள்ளவும்.",
+            "auto_translated": "தகவல் கிடைப்பதால் முடியவில்லை. மன்னிக்கவும், சிறிது நேரம் கழித்து முயற்சிக்கவும். பிரச்சனையில் நீங்கள் பிறகும் கூட பிரச்சனையில் சீர்செய்ய இயலாத முடியவில்லை என்றால், ஆனால் செயலகம் வருந்துகிறது சிறிது நேரம் தொடர்பு கொள்ளவும்."
+        },
+        "it": {
+            "legacy_caption_pid": 30534,
+            "legacy_language_pid": 16,
+            "text": "L'informazione non è stato possibile ottenere. Siamo spiacenti, si prega di provare dopo qualche tempo. Si prega di contattare per un po 'dispiace disturbarla, se il problema non può essere risolto anche dopo, ma la segreteria.",
+            "auto_translated": "L'informazione non è stato possibile ottenere. Siamo spiacenti, si prega di provare dopo qualche tempo. Si prega di contattare per un po 'dispiace disturbarla, se il problema non può essere risolto anche dopo, ma la segreteria."
+        },
+        "bn": {
+            "legacy_caption_pid": 30535,
+            "legacy_language_pid": 17,
+            "text": "তথ্য প্রাপ্ত করা যাবে না। দুঃখিত, কিছু সময় পরে চেষ্টা করুন। কিছুদিনের কষ্ট আপনি, পরেও কষ্ট শায়েস্তা করা যাবে না যদি, কিন্তু সচিবালয় করার জন্য দুঃখিত জন্য যোগাযোগ করুন।",
+            "auto_translated": "তথ্য প্রাপ্ত করা যাবে না। দুঃখিত, কিছু সময় পরে চেষ্টা করুন। কিছুদিনের কষ্ট আপনি, পরেও কষ্ট শায়েস্তা করা যাবে না যদি, কিন্তু সচিবালয় করার জন্য দুঃখিত জন্য যোগাযোগ করুন।"
+        },
+        "tr": {
+            "legacy_caption_pid": 30536,
+            "legacy_language_pid": 18,
+            "text": "Bilgi elde edilememiştir. Maalesef bir süre sonra deneyin. sorun sen, bela düzeltilmesi edilemezse sonra bile ancak sekreterya üzüntü bir süre temasa geçiniz.",
+            "auto_translated": "Bilgi elde edilememiştir. Maalesef bir süre sonra deneyin. sorun sen, bela düzeltilmesi edilemezse sonra bile ancak sekreterya üzüntü bir süre temasa geçiniz."
+        },
+        "vi": {
+            "legacy_caption_pid": 30537,
+            "legacy_language_pid": 19,
+            "text": "Thông tin không thể có được. Xin lỗi, xin vui lòng thử sau một thời gian. Vui lòng liên hệ trong một thời gian rất tiếc phải rắc rối cho bạn, nếu những rắc rối không thể được sửa chữa ngay cả sau khi, nhưng Ban thư ký.",
+            "auto_translated": "Thông tin không thể có được. Xin lỗi, xin vui lòng thử sau một thời gian. Vui lòng liên hệ trong một thời gian rất tiếc phải rắc rối cho bạn, nếu những rắc rối không thể được sửa chữa ngay cả sau khi, nhưng Ban thư ký."
+        },
+        "pl": {
+            "legacy_caption_pid": 30538,
+            "legacy_language_pid": 20,
+            "text": "Informacje te nie mogą być uzyskane. Niestety, spróbuj po pewnym czasie. Proszę o kontakt na jakiś czas przepraszam za kłopot, jeśli problem nie może być rozwiązany nawet po, ale Sekretariatu.",
+            "auto_translated": "Informacje te nie mogą być uzyskane. Niestety, spróbuj po pewnym czasie. Proszę o kontakt na jakiś czas przepraszam za kłopot, jeśli problem nie może być rozwiązany nawet po, ale Sekretariatu."
+        },
+        "jv": {
+            "legacy_caption_pid": 30539,
+            "legacy_language_pid": 21,
+            "text": "Informasi ora bisa dipikolehi. Sorry, mangga nyoba sawise sawetara wektu. Hubungi kanggo nalika nuwun kanggo alangan sampeyan, yen alangan ora bisa rectified malah sawise, nanging Sekretariat ing.",
+            "auto_translated": "Informasi ora bisa dipikolehi. Sorry, mangga nyoba sawise sawetara wektu. Hubungi kanggo nalika nuwun kanggo alangan sampeyan, yen alangan ora bisa rectified malah sawise, nanging Sekretariat ing."
+        },
+        "pa": {
+            "legacy_caption_pid": 30540,
+            "legacy_language_pid": 22,
+            "text": "ਜਾਣਕਾਰੀ ਪ੍ਰਾਪਤ ਕੀਤਾ ਜਾ ਸਕਦਾ ਹੈ. ਮੁਆਫ ਕਰਨਾ, ਕੁਝ ਵਾਰ ਦੇ ਬਾਅਦ ਦੀ ਕੋਸ਼ਿਸ਼ ਕਰੋ. ਇੱਕ ਜਦਕਿ ਸਮੱਸਿਆ ਹੈ ਕਿ ਤੁਹਾਨੂੰ, ਬਾਅਦ ਵੀ ਸਮੱਸਿਆ ਦੂਰ ਨਹੀ ਕੀਤਾ ਜਾ ਸਕਦਾ ਹੈ, ਜੇਕਰ ਹੈ, ਪਰ ਸਕੱਤਰੇਤ ਨੂੰ ਅਫ਼ਸੋਸ ਲਈ ਸੰਪਰਕ ਕਰੋ.",
+            "auto_translated": "ਜਾਣਕਾਰੀ ਪ੍ਰਾਪਤ ਕੀਤਾ ਜਾ ਸਕਦਾ ਹੈ. ਮੁਆਫ ਕਰਨਾ, ਕੁਝ ਵਾਰ ਦੇ ਬਾਅਦ ਦੀ ਕੋਸ਼ਿਸ਼ ਕਰੋ. ਇੱਕ ਜਦਕਿ ਸਮੱਸਿਆ ਹੈ ਕਿ ਤੁਹਾਨੂੰ, ਬਾਅਦ ਵੀ ਸਮੱਸਿਆ ਦੂਰ ਨਹੀ ਕੀਤਾ ਜਾ ਸਕਦਾ ਹੈ, ਜੇਕਰ ਹੈ, ਪਰ ਸਕੱਤਰੇਤ ਨੂੰ ਅਫ਼ਸੋਸ ਲਈ ਸੰਪਰਕ ਕਰੋ."
+        },
+        "th": {
+            "legacy_caption_pid": 30541,
+            "legacy_language_pid": 23,
+            "text": "ข้อมูลไม่สามารถได้ ขออภัยโปรดลองหลังจากที่บางเวลา กรุณาติดต่อในขณะที่เสียใจเป็นปัญหากับคุณถ้าปัญหาที่ไม่สามารถแก้ไขได้แม้หลังจากที่ แต่สำนักเลขาธิการ",
+            "auto_translated": "ข้อมูลไม่สามารถได้ ขออภัยโปรดลองหลังจากที่บางเวลา กรุณาติดต่อในขณะที่เสียใจเป็นปัญหากับคุณถ้าปัญหาที่ไม่สามารถแก้ไขได้แม้หลังจากที่ แต่สำนักเลขาธิการ"
+        },
+        "te": {
+            "legacy_caption_pid": 43046,
+            "legacy_language_pid": 24,
+            "text": "సమాచారం పొందలేరు. క్షమించండి, దయచేసి కొంత సమయం తర్వాత ప్రయత్నించండి. దయచేసి కాసేపు ఇబ్బంది, తర్వాత కూడా ఇబ్బంది సరిదిద్దాలి పోతే, కానీ సెక్రటేరియట్ క్షమించండి కోసం సంప్రదించండి.",
+            "auto_translated": "సమాచారం పొందలేరు. క్షమించండి, దయచేసి కొంత సమయం తర్వాత ప్రయత్నించండి. దయచేసి కాసేపు ఇబ్బంది, తర్వాత కూడా ఇబ్బంది సరిదిద్దాలి పోతే, కానీ సెక్రటేరియట్ క్షమించండి కోసం సంప్రదించండి."
+        },
+        "mr": {
+            "legacy_caption_pid": 43047,
+            "legacy_language_pid": 25,
+            "text": "माहिती प्राप्त करणे शक्य नाही. क्षमस्व, काही वेळानंतर प्रयत्न करा. समस्या आपण, अगदी नंतर समस्या दूर केली पाहिजे, नाही तर, पण सचिवालय दिलगीर एक तर संपर्क साधा.",
+            "auto_translated": "माहिती प्राप्त करणे शक्य नाही. क्षमस्व, काही वेळानंतर प्रयत्न करा. समस्या आपण, अगदी नंतर समस्या दूर केली पाहिजे, नाही तर, पण सचिवालय दिलगीर एक तर संपर्क साधा."
+        },
+        "ur": {
+            "legacy_caption_pid": 43048,
+            "legacy_language_pid": 26,
+            "text": "انفارمیشن حاصل نہیں کیا جا سکا. معذرت، کچھ وقت کے بعد کوشش کریں. مصیبت آپ کے بعد بھی مصیبت سداری نہیں کیا جا سکتا ہے تو، لیکن سیکرٹریٹ کر افسوس تھوڑی دیر کے لئے رابطہ کریں.",
+            "auto_translated": "انفارمیشن حاصل نہیں کیا جا سکا. معذرت، کچھ وقت کے بعد کوشش کریں. مصیبت آپ کے بعد بھی مصیبت سداری نہیں کیا جا سکتا ہے تو، لیکن سیکرٹریٹ کر افسوس تھوڑی دیر کے لئے رابطہ کریں."
+        },
+        "gu": {
+            "legacy_caption_pid": 43049,
+            "legacy_language_pid": 27,
+            "text": "માહિતી મેળવી શકાઈ નથી. માફ કરશો, થોડીવાર પછી ફરી પ્રયાસ કરો. જ્યારે મુશ્કેલી તમે પછી પણ મુશ્કેલી રેક્ટિફાઇડ કરી શકાતી નથી, પરંતુ સચિવાલય દિલગીર માટે સંપર્ક કરો.",
+            "auto_translated": "માહિતી મેળવી શકાઈ નથી. માફ કરશો, થોડીવાર પછી ફરી પ્રયાસ કરો. જ્યારે મુશ્કેલી તમે પછી પણ મુશ્કેલી રેક્ટિફાઇડ કરી શકાતી નથી, પરંતુ સચિવાલય દિલગીર માટે સંપર્ક કરો."
+        },
+        "uk": {
+            "legacy_caption_pid": 43050,
+            "legacy_language_pid": 28,
+            "text": "Інформація не може бути отримано. Вибачте, будь ласка, спробуйте через якийсь час. Зв'яжіться з нами деякий час, шкода турбувати вас, якщо несправність не може бути усунена навіть після того, як, але секретаріат.",
+            "auto_translated": "Інформація не може бути отримано. Вибачте, будь ласка, спробуйте через якийсь час. Зв'яжіться з нами деякий час, шкода турбувати вас, якщо несправність не може бути усунена навіть після того, як, але секретаріат."
+        },
+        "ml": {
+            "legacy_caption_pid": 43051,
+            "legacy_language_pid": 29,
+            "text": "വിവരങ്ങൾ നേടാനായില്ല. ക്ഷമിക്കണം, കുറച്ച് സമയം കഴിഞ്ഞ് ശ്രമിക്കുക. പ്രശ്നം പോലും ശേഷം തെറ്റുകള് കഴിയില്ല എങ്കിൽ, നിങ്ങൾ പ്രശ്നം ഖേദമുണ്ട് ഒരു സമയം ബന്ധപ്പെടുക എന്നാൽ സെക്രട്ടേറിയറ്റ് ദയവായി.",
+            "auto_translated": "വിവരങ്ങൾ നേടാനായില്ല. ക്ഷമിക്കണം, കുറച്ച് സമയം കഴിഞ്ഞ് ശ്രമിക്കുക. പ്രശ്നം പോലും ശേഷം തെറ്റുകള് കഴിയില്ല എങ്കിൽ, നിങ്ങൾ പ്രശ്നം ഖേദമുണ്ട് ഒരു സമയം ബന്ധപ്പെടുക എന്നാൽ സെക്രട്ടേറിയറ്റ് ദയവായി."
+        },
+        "kn": {
+            "legacy_caption_pid": 43052,
+            "legacy_language_pid": 30,
+            "text": "ಮಾಹಿತಿ ಪಡೆದುಕೊಳ್ಳಲಾಗಲಿಲ್ಲ. ಕ್ಷಮಿಸಿ, ದಯವಿಟ್ಟು ಸ್ವಲ್ಪ ಸಮಯದ ನಂತರ ಪ್ರಯತ್ನಿಸಿ. ದಯವಿಟ್ಟು ತೊಂದರೆ ನೀವು ನಂತರವೂ ತೊಂದರೆ ಪರೀಕ್ಷಿಸಬಹುದು ನಿವಾರಿಸಿದ ವೇಳೆ, ಆದರೆ ಸಚಿವಾಲಯದ ಕ್ಷಮಿಸಿ ಸದ್ಯಕ್ಕೆ ಸಂಪರ್ಕಿಸಿ.",
+            "auto_translated": "ಮಾಹಿತಿ ಪಡೆದುಕೊಳ್ಳಲಾಗಲಿಲ್ಲ. ಕ್ಷಮಿಸಿ, ದಯವಿಟ್ಟು ಸ್ವಲ್ಪ ಸಮಯದ ನಂತರ ಪ್ರಯತ್ನಿಸಿ. ದಯವಿಟ್ಟು ತೊಂದರೆ ನೀವು ನಂತರವೂ ತೊಂದರೆ ಪರೀಕ್ಷಿಸಬಹುದು ನಿವಾರಿಸಿದ ವೇಳೆ, ಆದರೆ ಸಚಿವಾಲಯದ ಕ್ಷಮಿಸಿ ಸದ್ಯಕ್ಕೆ ಸಂಪರ್ಕಿಸಿ."
+        },
+        "su": {
+            "legacy_caption_pid": 43053,
+            "legacy_language_pid": 31,
+            "text": "Émbaran teu bisa diala. Hampura, mangga cobian sanggeus sababaraha waktu. Mangga wartosan pikeun bari punten mun kasulitan Anjeun, upami gangguan teu bisa rectified malah sanggeus tapi sekretariat di.",
+            "auto_translated": "Émbaran teu bisa diala. Hampura, mangga cobian sanggeus sababaraha waktu. Mangga wartosan pikeun bari punten mun kasulitan Anjeun, upami gangguan teu bisa rectified malah sanggeus tapi sekretariat di."
+        },
+        "ku": {
+            "legacy_caption_pid": 43054,
+            "legacy_language_pid": 32,
+            "text": "Information nehat bi dest bê. Mixabin, ji kerema xwe piştî demekê dîsa biceribîne. Ji kerema xwe ji bo demekê ji ber ku we aciz bike, eger di tengahiyê de ne, dikarin ney kirin. Piştî ku, di heman demê de sekreteriya têkiliyê.",
+            "auto_translated": "Information nehat bi dest bê. Mixabin, ji kerema xwe piştî demekê dîsa biceribîne. Ji kerema xwe ji bo demekê ji ber ku we aciz bike, eger di tengahiyê de ne, dikarin ney kirin. Piştî ku, di heman demê de sekreteriya têkiliyê."
+        },
+        "ps": {
+            "legacy_caption_pid": 43055,
+            "legacy_language_pid": 33,
+            "text": "معلومات کیدای شي تر لاسه نه شي. بښنه غواړو، لطفا یو څه وخت وروسته هڅه وکړي. مهرباني وکړئ په داسې حال کې چې د ستونزو تاسو، حتی وروسته که د ستونزو اوارېدای نه شي کولای، خو د دارالانشا بخښنه لپاره سره تماس ونيسئ.",
+            "auto_translated": "معلومات کیدای شي تر لاسه نه شي. بښنه غواړو، لطفا یو څه وخت وروسته هڅه وکړي. مهرباني وکړئ په داسې حال کې چې د ستونزو تاسو، حتی وروسته که د ستونزو اوارېدای نه شي کولای، خو د دارالانشا بخښنه لپاره سره تماس ونيسئ."
+        },
+        "ro": {
+            "legacy_caption_pid": 43056,
+            "legacy_language_pid": 34,
+            "text": "Informațiile nu au putut fi obținute. Ne pare rău, vă rugăm să încercați după ceva timp. Vă rugăm să contactați pentru un timp rău să vă deranjez, în cazul în care problema nu poate fi remediată chiar și după, dar secretariatul.",
+            "auto_translated": "Informațiile nu au putut fi obținute. Ne pare rău, vă rugăm să încercați după ceva timp. Vă rugăm să contactați pentru un timp rău să vă deranjez, în cazul în care problema nu poate fi remediată chiar și după, dar secretariatul."
+        },
+        "id": {
+            "legacy_caption_pid": 43057,
+            "legacy_language_pid": 35,
+            "text": "Informasi tidak dapat diperoleh. Maaf, coba setelah beberapa waktu. Silahkan hubungi untuk sementara maaf untuk masalah Anda, jika masalah tidak dapat diperbaiki bahkan setelah, tetapi sekretariat.",
+            "auto_translated": "Informasi tidak dapat diperoleh. Maaf, coba setelah beberapa waktu. Silahkan hubungi untuk sementara maaf untuk masalah Anda, jika masalah tidak dapat diperbaiki bahkan setelah, tetapi sekretariat."
+        },
+        "sd": {
+            "legacy_caption_pid": 43058,
+            "legacy_language_pid": 36,
+            "text": "معلومات حاصل نه ٿي سگهي. معاف ڪجو، ڪجهه وقت کان پوء ڪوشش ڪريو. ، هڪ، جڏهن ته اوھان کي ڏکي کي معاف لاء رابطو ڪريو جيڪڏهن مصيبت کان پوء به جي حمايت نه ٿو ڪري سگهجي، پر secretariat.",
+            "auto_translated": "معلومات حاصل نه ٿي سگهي. معاف ڪجو، ڪجهه وقت کان پوء ڪوشش ڪريو. ، هڪ، جڏهن ته اوھان کي ڏکي کي معاف لاء رابطو ڪريو جيڪڏهن مصيبت کان پوء به جي حمايت نه ٿو ڪري سگهجي، پر secretariat."
+        },
+        "af": {
+            "legacy_caption_pid": 43059,
+            "legacy_language_pid": 37,
+            "text": "Inligting kon nie verkry word. Jammer, probeer asseblief na 'n tyd. Kontak asseblief vir 'n rukkie jammer om moeilikheid jy, as die moeilikheid nie reggestel kan word, selfs nadat, maar die sekretariaat.",
+            "auto_translated": "Inligting kon nie verkry word. Jammer, probeer asseblief na 'n tyd. Kontak asseblief vir 'n rukkie jammer om moeilikheid jy, as die moeilikheid nie reggestel kan word, selfs nadat, maar die sekretariaat."
+        },
+        "sw": {
+            "legacy_caption_pid": 43060,
+            "legacy_language_pid": 38,
+            "text": "Taarifa haikuweza kupatikana. Samahani, tafadhali jaribu baada ya muda. Tafadhali wasiliana kwa muda pole kwa shida, kama shida haiwezi hiyo kurekebisha hata baada, lakini sekretarieti.",
+            "auto_translated": "Taarifa haikuweza kupatikana. Samahani, tafadhali jaribu baada ya muda. Tafadhali wasiliana kwa muda pole kwa shida, kama shida haiwezi hiyo kurekebisha hata baada, lakini sekretarieti."
+        },
+        "lo": {
+            "legacy_caption_pid": 43061,
+            "legacy_language_pid": 39,
+            "text": "ຂໍ້ມູນບໍ່ສາມາດໄດ້ຮັບການ. ຂໍອະໄພ, ກະລຸນາພະຍາຍາມຫຼັງຈາກທີ່ໃຊ້ເວລາ. ກະລຸນາຕິດຕໍ່ສໍາລັບການໃນຂະນະທີ່ເສຍໃຈທີ່ບັນຫາທີ່ທ່ານ, ຖ້າຫາກວ່າບັນຫາທີ່ບໍ່ສາມາດໄດ້ຮັບການແກ້ໄຂເຖິງແມ່ນວ່າຫຼັງຈາກທີ່, ແຕ່ກອງເລຂາ.",
+            "auto_translated": "ຂໍ້ມູນບໍ່ສາມາດໄດ້ຮັບການ. ຂໍອະໄພ, ກະລຸນາພະຍາຍາມຫຼັງຈາກທີ່ໃຊ້ເວລາ. ກະລຸນາຕິດຕໍ່ສໍາລັບການໃນຂະນະທີ່ເສຍໃຈທີ່ບັນຫາທີ່ທ່ານ, ຖ້າຫາກວ່າບັນຫາທີ່ບໍ່ສາມາດໄດ້ຮັບການແກ້ໄຂເຖິງແມ່ນວ່າຫຼັງຈາກທີ່, ແຕ່ກອງເລຂາ."
+        },
+        "nl": {
+            "legacy_caption_pid": 43062,
+            "legacy_language_pid": 40,
+            "text": "Informatie kan niet worden verkregen. Sorry, probeer dan na enige tijd. Neem contact op voor een tijdje Sorry dat problemen u, als het probleem niet kan worden opgelost, zelfs na, maar het secretariaat.",
+            "auto_translated": "Informatie kan niet worden verkregen. Sorry, probeer dan na enige tijd. Neem contact op voor een tijdje Sorry dat problemen u, als het probleem niet kan worden opgelost, zelfs na, maar het secretariaat."
+        },
+        "tl": {
+            "legacy_caption_pid": 43063,
+            "legacy_language_pid": 41,
+            "text": "Impormasyon ay hindi maaaring makuha. Paumanhin, pakisubukang makalipas ang ilang panahon. Mangyaring makipag-ugnay para sa isang habang paumanhin sa pag-mo, kung ang problema ay hindi maaaring rectified kahit na pagkatapos, ngunit ang secretariat.",
+            "auto_translated": "Impormasyon ay hindi maaaring makuha. Paumanhin, pakisubukang makalipas ang ilang panahon. Mangyaring makipag-ugnay para sa isang habang paumanhin sa pag-mo, kung ang problema ay hindi maaaring rectified kahit na pagkatapos, ngunit ang secretariat."
+        },
+        "ne": {
+            "legacy_caption_pid": 43064,
+            "legacy_language_pid": 42,
+            "text": "जानकारी छैन प्राप्त हुन सकेन। माफ गर्नुहोस्, कृपया केही समय पछि प्रयास गर्नुहोस्। समस्या तपाईं यदि समस्या सुधार गर्न सकिँदैन पनि पछि, तर सचिवालय दु: खी एक समय को लागि कृपया सम्पर्क गर्नुहोस्।",
+            "auto_translated": "जानकारी छैन प्राप्त हुन सकेन। माफ गर्नुहोस्, कृपया केही समय पछि प्रयास गर्नुहोस्। समस्या तपाईं यदि समस्या सुधार गर्न सकिँदैन पनि पछि, तर सचिवालय दु: खी एक समय को लागि कृपया सम्पर्क गर्नुहोस्।"
+        },
+        "hu": {
+            "legacy_caption_pid": 43065,
+            "legacy_language_pid": 43,
+            "text": "Információ nem lehetett szerezni. Kérjük, próbálkozz később. Kérjük, lépjen kapcsolatba egy ideig sajnálom, hogy baj van, ha a baj nem hárítható el, még azután is,, de a titkárság.",
+            "auto_translated": "Információ nem lehetett szerezni. Kérjük, próbálkozz később. Kérjük, lépjen kapcsolatba egy ideig sajnálom, hogy baj van, ha a baj nem hárítható el, még azután is,, de a titkárság."
+        },
+        "cs": {
+            "legacy_caption_pid": 43066,
+            "legacy_language_pid": 44,
+            "text": "Nebylo možné získat informace. Je nám líto, zkuste po určité době. Obraťte se na chvíli líto, že vás obtěžuji, v případě, že potíže nelze odstranit ani po něm, ale sekretariátu.",
+            "auto_translated": "Nebylo možné získat informace. Je nám líto, zkuste po určité době. Obraťte se na chvíli líto, že vás obtěžuji, v případě, že potíže nelze odstranit ani po něm, ale sekretariátu."
+        },
+        "el": {
+            "legacy_caption_pid": 43067,
+            "legacy_language_pid": 45,
+            "text": "Δεν θα μπορούσαν να ληφθούν πληροφορίες. Δυστυχώς, δοκιμάστε μετά από κάποιο χρονικό διάστημα. Επικοινωνήστε μαζί μας για μια στιγμή συγγνώμη για την ταλαιπωρία σας, εάν το πρόβλημα δεν μπορεί να αποκατασταθεί ακόμη και μετά, αλλά η γραμματεία.",
+            "auto_translated": "Δεν θα μπορούσαν να ληφθούν πληροφορίες. Δυστυχώς, δοκιμάστε μετά από κάποιο χρονικό διάστημα. Επικοινωνήστε μαζί μας για μια στιγμή συγγνώμη για την ταλαιπωρία σας, εάν το πρόβλημα δεν μπορεί να αποκατασταθεί ακόμη και μετά, αλλά η γραμματεία."
+        },
+        "sv": {
+            "legacy_caption_pid": 43068,
+            "legacy_language_pid": 46,
+            "text": "Information kunde inte erhållas. Tyvärr, försök efter en viss tid. Vänligen kontakta en stund ledsen att besvära er, om problemet inte kan åtgärdas även efter, men sekretariatet.",
+            "auto_translated": "Information kunde inte erhållas. Tyvärr, försök efter en viss tid. Vänligen kontakta en stund ledsen att besvära er, om problemet inte kan åtgärdas även efter, men sekretariatet."
+        },
+        "kk": {
+            "legacy_caption_pid": 43069,
+            "legacy_language_pid": 47,
+            "text": "Ақпарат алу мүмкін емес еді. Кешіріңіз, біраз уақыттан кейін көріңіз. Беда кейін де болуы мүмкін емес исправлен, егер сізді алаңдатпай өкінішті біраз уақыт хабарласыңыз, бірақ хатшылық сұраймыз.",
+            "auto_translated": "Ақпарат алу мүмкін емес еді. Кешіріңіз, біраз уақыттан кейін көріңіз. Беда кейін де болуы мүмкін емес исправлен, егер сізді алаңдатпай өкінішті біраз уақыт хабарласыңыз, бірақ хатшылық сұраймыз."
+        },
+        "fi": {
+            "legacy_caption_pid": 43070,
+            "legacy_language_pid": 48,
+            "text": "Tietoja ei saatu. Sorry, yritä jonkin ajan kuluttua. Ota yhteyttä jonkin aikaa pahoillani vaivaa sinua, jos vika ei korjaannu, kun, mutta sihteeristön.",
+            "auto_translated": "Tietoja ei saatu. Sorry, yritä jonkin ajan kuluttua. Ota yhteyttä jonkin aikaa pahoillani vaivaa sinua, jos vika ei korjaannu, kun, mutta sihteeristön."
+        },
+        "da": {
+            "legacy_caption_pid": 43071,
+            "legacy_language_pid": 49,
+            "text": "ikke kunne opnås oplysninger. Beklager, prøv efter et stykke tid. Kontakt venligst for et stykke tid ked af at besvære dig, hvis fejlen ikke kan afhjælpes efter, men sekretariatet.",
+            "auto_translated": "ikke kunne opnås oplysninger. Beklager, prøv efter et stykke tid. Kontakt venligst for et stykke tid ked af at besvære dig, hvis fejlen ikke kan afhjælpes efter, men sekretariatet."
+        },
+        "he": {
+            "legacy_caption_pid": 43072,
+            "legacy_language_pid": 50,
+            "text": "מידע לא יכול לקבל. מצטערים, אנא נסה שוב מאוחר יותר. אנא צור לזמן מטריח אותך, אם הבעיה לא ניתן לתקן גם אחרי, אבל המזכירות.",
+            "auto_translated": "מידע לא יכול לקבל. מצטערים, אנא נסה שוב מאוחר יותר. אנא צור לזמן מטריח אותך, אם הבעיה לא ניתן לתקן גם אחרי, אבל המזכירות."
+        },
+        "no": {
+            "legacy_caption_pid": 43073,
+            "legacy_language_pid": 51,
+            "text": "Informasjonen kan ikke oppnås. Sorry, kan du prøve etter en tid. Ta kontakt for en stund beklager å plage deg, hvis problemet ikke kan rettes opp, selv etter, men sekretariatet.",
+            "auto_translated": "Informasjonen kan ikke oppnås. Sorry, kan du prøve etter en tid. Ta kontakt for en stund beklager å plage deg, hvis problemet ikke kan rettes opp, selv etter, men sekretariatet."
+        }
+    }
+}

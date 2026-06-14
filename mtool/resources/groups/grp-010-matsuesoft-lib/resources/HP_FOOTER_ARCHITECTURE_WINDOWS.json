@@ -1,0 +1,69 @@
+{
+    "resource_key": "HP_FOOTER_ARCHITECTURE_WINDOWS",
+    "legacy_resource_pid": 693,
+    "base_group_key": "grp-010-matsuesoft-lib",
+    "additional_group_keys": [],
+    "key_for_update": "EMjtmMUDNcWRzbrY3rbFwTXNQc8AIXExEDgSiFrW1s33lR04aMUWbOYmBdDU3ZSGFhBLmPmw8KJ55zvFyyUav2csycpZKFDWIjIQWGSTAT6LzKYFdR7jhblKNWwnnmA0",
+    "sort_group": "HP FOOTER",
+    "key_name": "HP_FOOTER_ARCHITECTURE_WINDOWS",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": true,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 4548,
+            "legacy_language_pid": 1,
+            "text": "ウィンドウズ・アーキテクチャ",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 4549,
+            "legacy_language_pid": 2,
+            "text": "Windows Architecutre",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 13382,
+            "legacy_language_pid": 3,
+            "text": "",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 13383,
+            "legacy_language_pid": 4,
+            "text": "",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 13384,
+            "legacy_language_pid": 5,
+            "text": "Arquitectura de Windows",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 13385,
+            "legacy_language_pid": 6,
+            "text": "Arquitetura do Windows",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 13386,
+            "legacy_language_pid": 7,
+            "text": "",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 17075,
+            "legacy_language_pid": 8,
+            "text": "Architecture Windows",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 17076,
+            "legacy_language_pid": 9,
+            "text": "विंडोज वास्तुकला",
+            "auto_translated": ""
+        }
+    }
+}

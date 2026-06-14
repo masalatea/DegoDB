@@ -1,0 +1,321 @@
+{
+    "resource_key": "COMMON_LIB_EMAIL_TEST_SUBMIT_BUTTON",
+    "legacy_resource_pid": 1598,
+    "base_group_key": "grp-010-matsuesoft-lib",
+    "additional_group_keys": [],
+    "key_for_update": "pIEJtfZdWrJTuwlnwqyn6oWOr5MKBg10sWe9MIZLMpBBAqLjJOeaHPjpkZvcuGBopioAnRgiETu7XRuoy1GjiTEyvhMXAJjrn9v55iJdM6roZPPi0XSbL4HPMmAgb5Ei",
+    "sort_group": "EMAIL TEST",
+    "key_name": "COMMON_LIB_EMAIL_TEST_SUBMIT_BUTTON",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": false,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 7174,
+            "legacy_language_pid": 1,
+            "text": "メール送信テスト",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 7175,
+            "legacy_language_pid": 2,
+            "text": "Send test mail",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 7176,
+            "legacy_language_pid": 3,
+            "text": "为了测试E-mail发送",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 7177,
+            "legacy_language_pid": 4,
+            "text": "테스트 이메일 보내기",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 10702,
+            "legacy_language_pid": 5,
+            "text": "Enviar correo de prueba",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 10703,
+            "legacy_language_pid": 6,
+            "text": "Enviar correio de teste",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 10704,
+            "legacy_language_pid": 7,
+            "text": "為了測試E-mail發送",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 16421,
+            "legacy_language_pid": 8,
+            "text": "Envoyer un courrier de test",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 16422,
+            "legacy_language_pid": 9,
+            "text": " परीक्षण मेल भेजें",
+            "auto_translated": ""
+        },
+        "ar": {
+            "legacy_caption_pid": 30822,
+            "legacy_language_pid": 10,
+            "text": "البريد الإلكتروني E-اختبار نقل",
+            "auto_translated": "البريد الإلكتروني E-اختبار نقل"
+        },
+        "fa": {
+            "legacy_caption_pid": 30823,
+            "legacy_language_pid": 11,
+            "text": "آزمون انتقال پست الکترونیک",
+            "auto_translated": "آزمون انتقال پست الکترونیک"
+        },
+        "de": {
+            "legacy_caption_pid": 30824,
+            "legacy_language_pid": 12,
+            "text": "E-Mail-Übertragungstest",
+            "auto_translated": "E-Mail-Übertragungstest"
+        },
+        "ru": {
+            "legacy_caption_pid": 30825,
+            "legacy_language_pid": 13,
+            "text": "Тест передачи электронной почты",
+            "auto_translated": "Тест передачи электронной почты"
+        },
+        "ms": {
+            "legacy_caption_pid": 30826,
+            "legacy_language_pid": 14,
+            "text": "E-mel ujian penghantaran",
+            "auto_translated": "E-mel ujian penghantaran"
+        },
+        "ta": {
+            "legacy_caption_pid": 30827,
+            "legacy_language_pid": 15,
+            "text": "மின்னஞ்சல் ஒலிபரப்பு சோதனை",
+            "auto_translated": "மின்னஞ்சல் ஒலிபரப்பு சோதனை"
+        },
+        "it": {
+            "legacy_caption_pid": 30828,
+            "legacy_language_pid": 16,
+            "text": "test di trasmissione e-mail",
+            "auto_translated": "test di trasmissione e-mail"
+        },
+        "bn": {
+            "legacy_caption_pid": 30829,
+            "legacy_language_pid": 17,
+            "text": "ই-মেইল সংক্রমণ পরীক্ষা",
+            "auto_translated": "ই-মেইল সংক্রমণ পরীক্ষা"
+        },
+        "tr": {
+            "legacy_caption_pid": 30830,
+            "legacy_language_pid": 18,
+            "text": "E-posta gönderimi testi",
+            "auto_translated": "E-posta gönderimi testi"
+        },
+        "vi": {
+            "legacy_caption_pid": 30831,
+            "legacy_language_pid": 19,
+            "text": "kiểm tra truyền E-mail",
+            "auto_translated": "kiểm tra truyền E-mail"
+        },
+        "pl": {
+            "legacy_caption_pid": 30832,
+            "legacy_language_pid": 20,
+            "text": "test transmisji e-mail",
+            "auto_translated": "test transmisji e-mail"
+        },
+        "jv": {
+            "legacy_caption_pid": 30833,
+            "legacy_language_pid": 21,
+            "text": "test transmisi E-mail",
+            "auto_translated": "test transmisi E-mail"
+        },
+        "pa": {
+            "legacy_caption_pid": 30834,
+            "legacy_language_pid": 22,
+            "text": "ਈ-ਮੇਲ ਸੰਚਾਰ ਟੈਸਟ",
+            "auto_translated": "ਈ-ਮੇਲ ਸੰਚਾਰ ਟੈਸਟ"
+        },
+        "th": {
+            "legacy_caption_pid": 30835,
+            "legacy_language_pid": 23,
+            "text": "E-mail การทดสอบการส่ง",
+            "auto_translated": "E-mail การทดสอบการส่ง"
+        },
+        "te": {
+            "legacy_caption_pid": 42738,
+            "legacy_language_pid": 24,
+            "text": "ఇ-మెయిల్ ప్రసార పరీక్ష",
+            "auto_translated": "ఇ-మెయిల్ ప్రసార పరీక్ష"
+        },
+        "mr": {
+            "legacy_caption_pid": 42739,
+            "legacy_language_pid": 25,
+            "text": "ई-मेल ट्रान्समिशन चाचणी",
+            "auto_translated": "ई-मेल ट्रान्समिशन चाचणी"
+        },
+        "ur": {
+            "legacy_caption_pid": 42740,
+            "legacy_language_pid": 26,
+            "text": "ای میل ٹرانسمیشن ٹیسٹ",
+            "auto_translated": "ای میل ٹرانسمیشن ٹیسٹ"
+        },
+        "gu": {
+            "legacy_caption_pid": 42741,
+            "legacy_language_pid": 27,
+            "text": "ઇ-મેઇલ ટ્રાન્સમિશન કસોટી",
+            "auto_translated": "ઇ-મેઇલ ટ્રાન્સમિશન કસોટી"
+        },
+        "uk": {
+            "legacy_caption_pid": 42742,
+            "legacy_language_pid": 28,
+            "text": "Тест передачі електронної пошти",
+            "auto_translated": "Тест передачі електронної пошти"
+        },
+        "ml": {
+            "legacy_caption_pid": 42743,
+            "legacy_language_pid": 29,
+            "text": "ഇ-മെയിൽ ട്രാൻസ്മിഷൻ ടെസ്റ്റ്",
+            "auto_translated": "ഇ-മെയിൽ ട്രാൻസ്മിഷൻ ടെസ്റ്റ്"
+        },
+        "kn": {
+            "legacy_caption_pid": 42744,
+            "legacy_language_pid": 30,
+            "text": "ಮೇಲ್ ಪ್ರಸರಣ ಪರೀಕ್ಷೆ",
+            "auto_translated": "ಮೇಲ್ ಪ್ರಸರಣ ಪರೀಕ್ಷೆ"
+        },
+        "su": {
+            "legacy_caption_pid": 42745,
+            "legacy_language_pid": 31,
+            "text": "test transmisi surélék",
+            "auto_translated": "test transmisi surélék"
+        },
+        "ku": {
+            "legacy_caption_pid": 42746,
+            "legacy_language_pid": 32,
+            "text": "test ji nifşekî E-mail",
+            "auto_translated": "test ji nifşekî E-mail"
+        },
+        "ps": {
+            "legacy_caption_pid": 42747,
+            "legacy_language_pid": 33,
+            "text": "پست انتقال ازموینه",
+            "auto_translated": "پست انتقال ازموینه"
+        },
+        "ro": {
+            "legacy_caption_pid": 42748,
+            "legacy_language_pid": 34,
+            "text": "Testarea transmisiei E-mail",
+            "auto_translated": "Testarea transmisiei E-mail"
+        },
+        "id": {
+            "legacy_caption_pid": 42749,
+            "legacy_language_pid": 35,
+            "text": "uji transmisi E-mail",
+            "auto_translated": "uji transmisi E-mail"
+        },
+        "sd": {
+            "legacy_caption_pid": 42750,
+            "legacy_language_pid": 36,
+            "text": "اي-ميل جي سند امتحان",
+            "auto_translated": "اي-ميل جي سند امتحان"
+        },
+        "af": {
+            "legacy_caption_pid": 42751,
+            "legacy_language_pid": 37,
+            "text": "E-pos gestuur toets",
+            "auto_translated": "E-pos gestuur toets"
+        },
+        "sw": {
+            "legacy_caption_pid": 42752,
+            "legacy_language_pid": 38,
+            "text": "E-mail maambukizi mtihani",
+            "auto_translated": "E-mail maambukizi mtihani"
+        },
+        "lo": {
+            "legacy_caption_pid": 42753,
+            "legacy_language_pid": 39,
+            "text": "ອີເມລ໌ການທົດສອບລະບົບສາຍສົ່ງ",
+            "auto_translated": "ອີເມລ໌ການທົດສອບລະບົບສາຍສົ່ງ"
+        },
+        "nl": {
+            "legacy_caption_pid": 42754,
+            "legacy_language_pid": 40,
+            "text": "E-mail transmissietest",
+            "auto_translated": "E-mail transmissietest"
+        },
+        "tl": {
+            "legacy_caption_pid": 42755,
+            "legacy_language_pid": 41,
+            "text": "E-mail transmission test",
+            "auto_translated": "E-mail transmission test"
+        },
+        "ne": {
+            "legacy_caption_pid": 42756,
+            "legacy_language_pid": 42,
+            "text": "ई-मेल प्रसारण परीक्षण",
+            "auto_translated": "ई-मेल प्रसारण परीक्षण"
+        },
+        "hu": {
+            "legacy_caption_pid": 42757,
+            "legacy_language_pid": 43,
+            "text": "E-mail átviteli teszt",
+            "auto_translated": "E-mail átviteli teszt"
+        },
+        "cs": {
+            "legacy_caption_pid": 42758,
+            "legacy_language_pid": 44,
+            "text": "E-mail zkušební vysílání",
+            "auto_translated": "E-mail zkušební vysílání"
+        },
+        "el": {
+            "legacy_caption_pid": 42759,
+            "legacy_language_pid": 45,
+            "text": "Δοκιμή μετάδοσης E-mail",
+            "auto_translated": "Δοκιμή μετάδοσης E-mail"
+        },
+        "sv": {
+            "legacy_caption_pid": 42760,
+            "legacy_language_pid": 46,
+            "text": "E-postöverföringstest",
+            "auto_translated": "E-postöverföringstest"
+        },
+        "kk": {
+            "legacy_caption_pid": 42761,
+            "legacy_language_pid": 47,
+            "text": "Электрондық пошта трансмиссия сынақ",
+            "auto_translated": "Электрондық пошта трансмиссия сынақ"
+        },
+        "fi": {
+            "legacy_caption_pid": 42762,
+            "legacy_language_pid": 48,
+            "text": "Sähköposti lähetystesti",
+            "auto_translated": "Sähköposti lähetystesti"
+        },
+        "da": {
+            "legacy_caption_pid": 42763,
+            "legacy_language_pid": 49,
+            "text": "E-mail transmission test",
+            "auto_translated": "E-mail transmission test"
+        },
+        "he": {
+            "legacy_caption_pid": 42764,
+            "legacy_language_pid": 50,
+            "text": "דואר אלקטרוני בדיקת הולכה",
+            "auto_translated": "דואר אלקטרוני בדיקת הולכה"
+        },
+        "no": {
+            "legacy_caption_pid": 42765,
+            "legacy_language_pid": 51,
+            "text": "E-postoverføring test",
+            "auto_translated": "E-postoverføring test"
+        }
+    }
+}

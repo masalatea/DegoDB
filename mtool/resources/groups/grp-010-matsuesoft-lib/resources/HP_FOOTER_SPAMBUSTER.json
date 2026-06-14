@@ -1,0 +1,69 @@
+{
+    "resource_key": "HP_FOOTER_SPAMBUSTER",
+    "legacy_resource_pid": 676,
+    "base_group_key": "grp-010-matsuesoft-lib",
+    "additional_group_keys": [],
+    "key_for_update": "fk3qna7WaIeR0TOj4mz413gL0S9OWA7XsOmTEz5k0XkSUL1GrM8qxLbeJdc4mYbox0IDadU7YIVWwvCV05ESoYvmKqhluWxwAb5oZWKrojT97d4qOpc6MupN0v2eEnK9",
+    "sort_group": "HP FOOTER",
+    "key_name": "HP_FOOTER_SPAMBUSTER",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": true,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 4618,
+            "legacy_language_pid": 1,
+            "text": "スパムバスター",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 4619,
+            "legacy_language_pid": 2,
+            "text": "Spam Buster",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 14261,
+            "legacy_language_pid": 3,
+            "text": "",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 14262,
+            "legacy_language_pid": 4,
+            "text": "",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 14263,
+            "legacy_language_pid": 5,
+            "text": "Buscador de correo no deseado",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 14264,
+            "legacy_language_pid": 6,
+            "text": "Spam Buster",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 14265,
+            "legacy_language_pid": 7,
+            "text": "",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 17145,
+            "legacy_language_pid": 8,
+            "text": "Spam Buster",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 17146,
+            "legacy_language_pid": 9,
+            "text": "स्पैम बस्टर",
+            "auto_translated": ""
+        }
+    }
+}

@@ -1,0 +1,321 @@
+{
+    "resource_key": "COMMON_LIB_ENROLL_ANNOUMCEMENT2",
+    "legacy_resource_pid": 1405,
+    "base_group_key": "grp-010-matsuesoft-lib",
+    "additional_group_keys": [],
+    "key_for_update": "aNO3Nlwv0pDyMK0jmqBlwQAuyeU4L1qJBlUqDLjtRM4eask2wMRyCZnSqRIegYP11R7X1hmxijOqnLBF56rNFyFyVjCgj4rJURkbPINIoX0UoLavL3ytpyqniofvIjug",
+    "sort_group": "ENROLL",
+    "key_name": "COMMON_LIB_ENROLL_ANNOUMCEMENT2",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": false,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 5894,
+            "legacy_language_pid": 1,
+            "text": "Facebook/Googleアカウントでご利用する場合はこの手続きは必要ございませんのでそのままログイン下さい。",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 5895,
+            "legacy_language_pid": 2,
+            "text": "Please login directly if you use this site by using Facebook or Google account.",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 5896,
+            "legacy_language_pid": 3,
+            "text": "如果利用在Facebook上/谷歌帐户的话不用进行以下手续，请直接登录。",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 5897,
+            "legacy_language_pid": 4,
+            "text": "Facebook / Google 계정에서 사용할 경우 이 절차는 필요가 없으므로 그대로 로그인하세요.",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 10744,
+            "legacy_language_pid": 5,
+            "text": "Inicie sesión directamente si utiliza este sitio mediante Facebook o la cuenta de Google.",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 10745,
+            "legacy_language_pid": 6,
+            "text": "Faça login diretamente se você usar este site usando a conta do Facebook ou do Google.",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 10746,
+            "legacy_language_pid": 7,
+            "text": "如果利用在Facebook上/谷歌帳戶的話不用進行以下手續，請直接登錄。",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 16451,
+            "legacy_language_pid": 8,
+            "text": "Veuillez vous connecter directement si vous utilisez ce site en utilisant Facebook ou un compte Google.",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 16452,
+            "legacy_language_pid": 9,
+            "text": " यदि आप इस साइट का उपयोग करके फेसबुक या गूगल खाते का उपयोग करते हैं, तो कृपया सीधे प्रवेश करें।",
+            "auto_translated": ""
+        },
+        "ar": {
+            "legacy_caption_pid": 31074,
+            "legacy_language_pid": 10,
+            "text": "الرجاء الدخول مباشرة بسبب عدم توفر هذا الإجراء ضروري إذا كنت ترغب في استخدامها في حساب الفيسبوك / جوجل.",
+            "auto_translated": "الرجاء الدخول مباشرة بسبب عدم توفر هذا الإجراء ضروري إذا كنت ترغب في استخدامها في حساب الفيسبوك / جوجل."
+        },
+        "fa": {
+            "legacy_caption_pid": 31075,
+            "legacy_language_pid": 11,
+            "text": "لطفا به طور مستقیم ورود زیرا این روش یک لازم را ندارد اگر شما می خواهید به استفاده از در حساب فیس بوک / گوگل.",
+            "auto_translated": "لطفا به طور مستقیم ورود زیرا این روش یک لازم را ندارد اگر شما می خواهید به استفاده از در حساب فیس بوک / گوگل."
+        },
+        "de": {
+            "legacy_caption_pid": 31076,
+            "legacy_language_pid": 12,
+            "text": "Bitte direkt anmelden, da dieses Verfahren nicht über eine notwendig, wenn Sie in der Facebook / Google-Konto verwenden möchten.",
+            "auto_translated": "Bitte direkt anmelden, da dieses Verfahren nicht über eine notwendig, wenn Sie in der Facebook / Google-Konto verwenden möchten."
+        },
+        "ru": {
+            "legacy_caption_pid": 31077,
+            "legacy_language_pid": 13,
+            "text": "Пожалуйста, непосредственно войти в систему, так как эта процедура не является необходимым, если вы хотите использовать в учетной записи Facebook / Google.",
+            "auto_translated": "Пожалуйста, непосредственно войти в систему, так как эта процедура не является необходимым, если вы хотите использовать в учетной записи Facebook / Google."
+        },
+        "ms": {
+            "legacy_caption_pid": 31078,
+            "legacy_language_pid": 14,
+            "text": "Sila terus melog masuk kerana prosedur ini tidak mempunyai perlu jika anda mahu menggunakan dengan akaun Facebook / Google.",
+            "auto_translated": "Sila terus melog masuk kerana prosedur ini tidak mempunyai perlu jika anda mahu menggunakan dengan akaun Facebook / Google."
+        },
+        "ta": {
+            "legacy_caption_pid": 31079,
+            "legacy_language_pid": 15,
+            "text": "நீங்கள் பேஸ்புக் / கூகிள் கணக்கில் பயன்படுத்த விரும்பினால் இந்த நடைமுறை ஒரு தேவையான இல்லை என்பதால் கொள்ளவும் நேரடியாக உள்நுழைய.",
+            "auto_translated": "நீங்கள் பேஸ்புக் / கூகிள் கணக்கில் பயன்படுத்த விரும்பினால் இந்த நடைமுறை ஒரு தேவையான இல்லை என்பதால் கொள்ளவும் நேரடியாக உள்நுழைய."
+        },
+        "it": {
+            "legacy_caption_pid": 31080,
+            "legacy_language_pid": 16,
+            "text": "Effettua l'accesso direttamente perché questa procedura non dispone di un necessario se si desidera utilizzare nella account Facebook / Google.",
+            "auto_translated": "Effettua l'accesso direttamente perché questa procedura non dispone di un necessario se si desidera utilizzare nella account Facebook / Google."
+        },
+        "bn": {
+            "legacy_caption_pid": 31081,
+            "legacy_language_pid": 17,
+            "text": "দয়া করে সরাসরি লগইন কারণ এই পদ্ধতি একটি প্রয়োজনীয় নেই আপনি ফেসবুক / Google অ্যাকাউন্টে ব্যবহার করতে চান।",
+            "auto_translated": "দয়া করে সরাসরি লগইন কারণ এই পদ্ধতি একটি প্রয়োজনীয় নেই আপনি ফেসবুক / Google অ্যাকাউন্টে ব্যবহার করতে চান।"
+        },
+        "tr": {
+            "legacy_caption_pid": 31082,
+            "legacy_language_pid": 18,
+            "text": "Eğer Facebook / Google hesabına kullanmak istiyorsanız bu prosedürün gerekli olmadığı için doğrudan giriş yapın.",
+            "auto_translated": "Eğer Facebook / Google hesabına kullanmak istiyorsanız bu prosedürün gerekli olmadığı için doğrudan giriş yapın."
+        },
+        "vi": {
+            "legacy_caption_pid": 31083,
+            "legacy_language_pid": 19,
+            "text": "Vui lòng trực tiếp đăng nhập vì thủ tục này không có cần thiết nếu bạn muốn sử dụng trong các tài khoản Facebook / Google.",
+            "auto_translated": "Vui lòng trực tiếp đăng nhập vì thủ tục này không có cần thiết nếu bạn muốn sử dụng trong các tài khoản Facebook / Google."
+        },
+        "pl": {
+            "legacy_caption_pid": 31084,
+            "legacy_language_pid": 20,
+            "text": "Proszę bezpośrednio zalogować ponieważ procedura ta nie posiada konieczne, jeśli chcesz używać na koncie Facebook / Google.",
+            "auto_translated": "Proszę bezpośrednio zalogować ponieważ procedura ta nie posiada konieczne, jeśli chcesz używać na koncie Facebook / Google."
+        },
+        "jv": {
+            "legacy_caption_pid": 31085,
+            "legacy_language_pid": 21,
+            "text": "Mangga langsung mlebet amarga prosedur iki ora duwe perlu yen sampeyan pengin nggunakake ing akun Facebook / Google.",
+            "auto_translated": "Mangga langsung mlebet amarga prosedur iki ora duwe perlu yen sampeyan pengin nggunakake ing akun Facebook / Google."
+        },
+        "pa": {
+            "legacy_caption_pid": 31086,
+            "legacy_language_pid": 22,
+            "text": "ਕਿਰਪਾ ਕਰਕੇ ਸਿੱਧਾ ਹੀ ਲਾਗਇਨ ਹੈ, ਕਿਉਕਿ ਇਸ ਵਿਧੀ ਨੂੰ ਇੱਕ ਦੀ ਲੋੜ ਹੈ, ਨਾ ਹੈ ਤੁਹਾਨੂੰ ਫੇਸਬੁੱਕ / Google ਖਾਤੇ ਵਿੱਚ ਵਰਤਣ ਲਈ ਚਾਹੁੰਦੇ ਹੋ.",
+            "auto_translated": "ਕਿਰਪਾ ਕਰਕੇ ਸਿੱਧਾ ਹੀ ਲਾਗਇਨ ਹੈ, ਕਿਉਕਿ ਇਸ ਵਿਧੀ ਨੂੰ ਇੱਕ ਦੀ ਲੋੜ ਹੈ, ਨਾ ਹੈ ਤੁਹਾਨੂੰ ਫੇਸਬੁੱਕ / Google ਖਾਤੇ ਵਿੱਚ ਵਰਤਣ ਲਈ ਚਾਹੁੰਦੇ ਹੋ."
+        },
+        "th": {
+            "legacy_caption_pid": 31087,
+            "legacy_language_pid": 23,
+            "text": "กรุณาเข้าสู่ระบบโดยตรงเพราะขั้นตอนนี้ไม่ได้จำเป็นถ้าคุณต้องการที่จะใช้ในบัญชี Facebook / Google",
+            "auto_translated": "กรุณาเข้าสู่ระบบโดยตรงเพราะขั้นตอนนี้ไม่ได้จำเป็นถ้าคุณต้องการที่จะใช้ในบัญชี Facebook / Google"
+        },
+        "te": {
+            "legacy_caption_pid": 42276,
+            "legacy_language_pid": 24,
+            "text": "మీరు Facebook / Google ఖాతాలో ఉపయోగించడానికి అనుకుంటే ఈ ప్రక్రియ ఒక అవసరమైన లేవు దయచేసి నేరుగా లాగిన్.",
+            "auto_translated": "మీరు Facebook / Google ఖాతాలో ఉపయోగించడానికి అనుకుంటే ఈ ప్రక్రియ ఒక అవసరమైన లేవు దయచేసి నేరుగా లాగిన్."
+        },
+        "mr": {
+            "legacy_caption_pid": 42277,
+            "legacy_language_pid": 25,
+            "text": "कारण आपण फेसबुक / Google खात्यामध्ये वापरू इच्छित असल्यास ही प्रक्रिया एक आवश्यक नाही थेट लॉग इन करा.",
+            "auto_translated": "कारण आपण फेसबुक / Google खात्यामध्ये वापरू इच्छित असल्यास ही प्रक्रिया एक आवश्यक नाही थेट लॉग इन करा."
+        },
+        "ur": {
+            "legacy_caption_pid": 42278,
+            "legacy_language_pid": 26,
+            "text": "اگر آپ فیس بک / گوگل اکاؤنٹ میں استعمال کرنا چاہتے ہیں تو اس عمل کو ایک ضروری نہیں ہے کیونکہ براہ راست لاگ ان کریں.",
+            "auto_translated": "اگر آپ فیس بک / گوگل اکاؤنٹ میں استعمال کرنا چاہتے ہیں تو اس عمل کو ایک ضروری نہیں ہے کیونکہ براہ راست لاگ ان کریں."
+        },
+        "gu": {
+            "legacy_caption_pid": 42279,
+            "legacy_language_pid": 27,
+            "text": "કૃપા કરીને સીધા જ લોગીન કારણ કે આ પ્રક્રિયા જરૂરી નથી તમને Facebook / Google એકાઉન્ટમાં ઉપયોગ કરવા માંગો છો તો.",
+            "auto_translated": "કૃપા કરીને સીધા જ લોગીન કારણ કે આ પ્રક્રિયા જરૂરી નથી તમને Facebook / Google એકાઉન્ટમાં ઉપયોગ કરવા માંગો છો તો."
+        },
+        "uk": {
+            "legacy_caption_pid": 42280,
+            "legacy_language_pid": 28,
+            "text": "Будь ласка, безпосередньо увійти в систему, так як ця процедура не є необхідним, якщо ви хочете використовувати в обліковому записі Facebook / Google.",
+            "auto_translated": "Будь ласка, безпосередньо увійти в систему, так як ця процедура не є необхідним, якщо ви хочете використовувати в обліковому записі Facebook / Google."
+        },
+        "ml": {
+            "legacy_caption_pid": 42281,
+            "legacy_language_pid": 29,
+            "text": "നിങ്ങൾ പോസ്റ്റ് / Google അക്കൗണ്ട് ഉപയോഗിക്കാൻ ആഗ്രഹിക്കുന്ന പക്ഷം ഈ പ്രക്രിയ ഒരു മതിയായ കാരണം ദയവായി നേരിട്ട് ലോഗിൻ.",
+            "auto_translated": "നിങ്ങൾ പോസ്റ്റ് / Google അക്കൗണ്ട് ഉപയോഗിക്കാൻ ആഗ്രഹിക്കുന്ന പക്ഷം ഈ പ്രക്രിയ ഒരു മതിയായ കാരണം ദയവായി നേരിട്ട് ലോഗിൻ."
+        },
+        "kn": {
+            "legacy_caption_pid": 42282,
+            "legacy_language_pid": 30,
+            "text": "ನೀವು ಫೇಸ್ಬುಕ್ / ಗೂಗಲ್ ಖಾತೆಯಲ್ಲಿ ಬಳಸಲು ಬಯಸಿದರೆ ಈ ವಿಧಾನ ಅಗತ್ಯ ಹೊಂದಿಲ್ಲ ಏಕೆಂದರೆ ನೇರವಾಗಿ ಲಾಗಿನ್ ಮಾಡಿ.",
+            "auto_translated": "ನೀವು ಫೇಸ್ಬುಕ್ / ಗೂಗಲ್ ಖಾತೆಯಲ್ಲಿ ಬಳಸಲು ಬಯಸಿದರೆ ಈ ವಿಧಾನ ಅಗತ್ಯ ಹೊಂದಿಲ್ಲ ಏಕೆಂದರೆ ನೇರವಾಗಿ ಲಾಗಿನ್ ಮಾಡಿ."
+        },
+        "su": {
+            "legacy_caption_pid": 42283,
+            "legacy_language_pid": 31,
+            "text": "Mangga langsung login kusabab prosedur ieu teu boga diperlukeun lamun hoyong ngagunakeun dina akun Facebook / Google.",
+            "auto_translated": "Mangga langsung login kusabab prosedur ieu teu boga diperlukeun lamun hoyong ngagunakeun dina akun Facebook / Google."
+        },
+        "ku": {
+            "legacy_caption_pid": 42284,
+            "legacy_language_pid": 32,
+            "text": "Ji kerema xwe rasterast login ji ber vê tedbîrê nade a pêwîst nîne, eger hûn dixwazin bi kar di account Facebook / Google.",
+            "auto_translated": "Ji kerema xwe rasterast login ji ber vê tedbîrê nade a pêwîst nîne, eger hûn dixwazin bi kar di account Facebook / Google."
+        },
+        "ps": {
+            "legacy_caption_pid": 42285,
+            "legacy_language_pid": 33,
+            "text": "لطفا په مستقيمه سئ ځکه دا طرزالعمل که تاسو غواړئ چې د فیس بوک / د ګوګل ګڼون په ګټه يوه اړينه نه لري.",
+            "auto_translated": "لطفا په مستقيمه سئ ځکه دا طرزالعمل که تاسو غواړئ چې د فیس بوک / د ګوګل ګڼون په ګټه يوه اړينه نه لري."
+        },
+        "ro": {
+            "legacy_caption_pid": 42286,
+            "legacy_language_pid": 34,
+            "text": "Conectați-vă direct, deoarece această procedură nu are un necesar dacă doriți să utilizați în contul de Facebook / Google.",
+            "auto_translated": "Conectați-vă direct, deoarece această procedură nu are un necesar dacă doriți să utilizați în contul de Facebook / Google."
+        },
+        "id": {
+            "legacy_caption_pid": 42287,
+            "legacy_language_pid": 35,
+            "text": "Silahkan langsung login karena prosedur ini tidak memiliki diperlukan jika Anda ingin menggunakan dalam akun Facebook / Google.",
+            "auto_translated": "Silahkan langsung login karena prosedur ini tidak memiliki diperlukan jika Anda ingin menggunakan dalam akun Facebook / Google."
+        },
+        "sd": {
+            "legacy_caption_pid": 42288,
+            "legacy_language_pid": 36,
+            "text": "مهرباني ڪري سڌو لاگ ڇاڪاڻ ته هن طريقيڪار هڪ ضروري آهي نه رکندو آھي اوھان کي مشهور ڪريو / گوگل اڪائونٽ ۾ استعمال ڪرڻ چاهيو ٿا ته.",
+            "auto_translated": "مهرباني ڪري سڌو لاگ ڇاڪاڻ ته هن طريقيڪار هڪ ضروري آهي نه رکندو آھي اوھان کي مشهور ڪريو / گوگل اڪائونٽ ۾ استعمال ڪرڻ چاهيو ٿا ته."
+        },
+        "af": {
+            "legacy_caption_pid": 42289,
+            "legacy_language_pid": 37,
+            "text": "Asseblief direk aanmeld omdat hierdie proses nie 'n noodsaaklike hê as wat jy wil gebruik in die Facebook / Google-rekening.",
+            "auto_translated": "Asseblief direk aanmeld omdat hierdie proses nie 'n noodsaaklike hê as wat jy wil gebruik in die Facebook / Google-rekening."
+        },
+        "sw": {
+            "legacy_caption_pid": 42290,
+            "legacy_language_pid": 38,
+            "text": "Tafadhali moja kwa moja kuingia kwa sababu utaratibu huu haina muhimu kama unataka kutumia katika akaunti Facebook / Google.",
+            "auto_translated": "Tafadhali moja kwa moja kuingia kwa sababu utaratibu huu haina muhimu kama unataka kutumia katika akaunti Facebook / Google."
+        },
+        "lo": {
+            "legacy_caption_pid": 42291,
+            "legacy_language_pid": 39,
+            "text": "ກະລຸນາເຂົ້າສູ່ລະບົບໄດ້ໂດຍກົງເນື່ອງຈາກວ່າລະບຽບການນີ້ບໍ່ມີຄວາມຈໍາເປັນຖ້າຫາກວ່າທ່ານຕ້ອງການທີ່ຈະນໍາໃຊ້ໃນບັນຊີຂອງເຟສບຸກ / ກູໂກ.",
+            "auto_translated": "ກະລຸນາເຂົ້າສູ່ລະບົບໄດ້ໂດຍກົງເນື່ອງຈາກວ່າລະບຽບການນີ້ບໍ່ມີຄວາມຈໍາເປັນຖ້າຫາກວ່າທ່ານຕ້ອງການທີ່ຈະນໍາໃຊ້ໃນບັນຊີຂອງເຟສບຸກ / ກູໂກ."
+        },
+        "nl": {
+            "legacy_caption_pid": 42292,
+            "legacy_language_pid": 40,
+            "text": "Neem rechtstreeks in te loggen, omdat deze procedure niet noodzakelijk als je wilt gebruiken in de Facebook / Google-account.",
+            "auto_translated": "Neem rechtstreeks in te loggen, omdat deze procedure niet noodzakelijk als je wilt gebruiken in de Facebook / Google-account."
+        },
+        "tl": {
+            "legacy_caption_pid": 42293,
+            "legacy_language_pid": 41,
+            "text": "Mangyaring direktang pag-login dahil ang pamamaraan na ito ay hindi magkaroon ng isang kailangan kung nais mong gamitin sa Facebook / Google account.",
+            "auto_translated": "Mangyaring direktang pag-login dahil ang pamamaraan na ito ay hindi magkaroon ng isang kailangan kung nais mong gamitin sa Facebook / Google account."
+        },
+        "ne": {
+            "legacy_caption_pid": 42294,
+            "legacy_language_pid": 42,
+            "text": "तपाईं फेसबुक / गुगल खाता प्रयोग गर्न चाहनुहुन्छ भने यो प्रक्रिया एक आवश्यक छैन किनभने कृपया सीधा लगइन गर्नुहोस्।",
+            "auto_translated": "तपाईं फेसबुक / गुगल खाता प्रयोग गर्न चाहनुहुन्छ भने यो प्रक्रिया एक आवश्यक छैन किनभने कृपया सीधा लगइन गर्नुहोस्।"
+        },
+        "hu": {
+            "legacy_caption_pid": 42295,
+            "legacy_language_pid": 43,
+            "text": "Kérjük, jelentkezzen be közvetlenül, mert ez az eljárás nem szükséges, ha azt szeretné, hogy használja a Facebook / Google fiókjába.",
+            "auto_translated": "Kérjük, jelentkezzen be közvetlenül, mert ez az eljárás nem szükséges, ha azt szeretné, hogy használja a Facebook / Google fiókjába."
+        },
+        "cs": {
+            "legacy_caption_pid": 42296,
+            "legacy_language_pid": 44,
+            "text": "Prosím přímo se přihlásit, protože tento postup není nutný, pokud chcete používat na účtu Facebook / Google.",
+            "auto_translated": "Prosím přímo se přihlásit, protože tento postup není nutný, pokud chcete používat na účtu Facebook / Google."
+        },
+        "el": {
+            "legacy_caption_pid": 42297,
+            "legacy_language_pid": 45,
+            "text": "Παρακαλούμε συνδεθείτε άμεσα, διότι η διαδικασία αυτή δεν έχει απαραίτητα εάν θέλετε να χρησιμοποιήσετε το λογαριασμό στο Facebook / Google.",
+            "auto_translated": "Παρακαλούμε συνδεθείτε άμεσα, διότι η διαδικασία αυτή δεν έχει απαραίτητα εάν θέλετε να χρησιμοποιήσετε το λογαριασμό στο Facebook / Google."
+        },
+        "sv": {
+            "legacy_caption_pid": 42298,
+            "legacy_language_pid": 46,
+            "text": "Vänligen logga direkt eftersom detta förfarande inte har en nödvändig om du vill använda i Facebook / Google-konto.",
+            "auto_translated": "Vänligen logga direkt eftersom detta förfarande inte har en nödvändig om du vill använda i Facebook / Google-konto."
+        },
+        "kk": {
+            "legacy_caption_pid": 42299,
+            "legacy_language_pid": 47,
+            "text": "Сіз Facebook / Google шотында пайдаланғыңыз келсе, осы рәсім қажетті ие емес, өйткені тікелей логин сұраймыз.",
+            "auto_translated": "Сіз Facebook / Google шотында пайдаланғыңыз келсе, осы рәсім қажетті ие емес, өйткені тікелей логин сұраймыз."
+        },
+        "fi": {
+            "legacy_caption_pid": 42300,
+            "legacy_language_pid": 48,
+            "text": "Ota suoraan sisään, koska tämä ei ole tarpeen, jos haluat käyttää Facebook / Google-tili.",
+            "auto_translated": "Ota suoraan sisään, koska tämä ei ole tarpeen, jos haluat käyttää Facebook / Google-tili."
+        },
+        "da": {
+            "legacy_caption_pid": 42301,
+            "legacy_language_pid": 49,
+            "text": "Venligst direkte ind, fordi denne procedure ikke har en nødvendig, hvis du ønsker at bruge i Facebook / Google-konto.",
+            "auto_translated": "Venligst direkte ind, fordi denne procedure ikke har en nødvendig, hvis du ønsker at bruge i Facebook / Google-konto."
+        },
+        "he": {
+            "legacy_caption_pid": 42302,
+            "legacy_language_pid": 50,
+            "text": "בבקשה התחבר ישירות בגלל הליך זה אין צורך אם אתה רוצה להשתמש בחשבון פייסבוק / גוגל.",
+            "auto_translated": "בבקשה התחבר ישירות בגלל הליך זה אין צורך אם אתה רוצה להשתמש בחשבון פייסבוק / גוגל."
+        },
+        "no": {
+            "legacy_caption_pid": 42303,
+            "legacy_language_pid": 51,
+            "text": "Vennligst direkte login fordi denne prosedyren ikke har en nødvendig hvis du ønsker å bruke i Facebook / Google-konto.",
+            "auto_translated": "Vennligst direkte login fordi denne prosedyren ikke har en nødvendig hvis du ønsker å bruke i Facebook / Google-konto."
+        }
+    }
+}

@@ -1,0 +1,27 @@
+{
+    "resource_key": "ACTION_DELETED_UPLOAD_GROUP",
+    "legacy_resource_pid": 150,
+    "base_group_key": "grp-001-developers-matsuesoft-co-jp",
+    "additional_group_keys": [],
+    "key_for_update": "0",
+    "sort_group": "ACTION UPLOAD_GROUP",
+    "key_name": "ACTION_DELETED_UPLOAD_GROUP",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": true,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 4158,
+            "legacy_language_pid": 1,
+            "text": "アップロード・グループ削除完了",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 4159,
+            "legacy_language_pid": 2,
+            "text": "Deleted Uploag Group",
+            "auto_translated": ""
+        }
+    }
+}

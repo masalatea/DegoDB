@@ -1,0 +1,321 @@
+{
+    "resource_key": "COMMON_LIB_EMAIL_VERIFY_IS_REQUIRED_TO_BUY_PLAN",
+    "legacy_resource_pid": 1389,
+    "base_group_key": "grp-010-matsuesoft-lib",
+    "additional_group_keys": [],
+    "key_for_update": "c7zDfsLs2S8HyVDByhpgQganBT8oV83kZdtW180SrkQjGbJ9oVWYjPNU7CPcZiLoGEWlUkZLclZZs16rstt9pDcg0bpe9dkhDVNMHcqjw871y926AWmvEnF6h8CE0k9K",
+    "sort_group": "EMAIL VERIFY",
+    "key_name": "COMMON_LIB_EMAIL_VERIFY_IS_REQUIRED_TO_BUY_PLAN",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": false,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 5830,
+            "legacy_language_pid": 1,
+            "text": "プラン購入にはメール認証が必要です。",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 5831,
+            "legacy_language_pid": 2,
+            "text": "Verification is required to buy plan",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 5832,
+            "legacy_language_pid": 3,
+            "text": "该计划购买需要电子邮件认证。",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 5833,
+            "legacy_language_pid": 4,
+            "text": "플랜 구매 시 메일 인증이 필요합니다.",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 10723,
+            "legacy_language_pid": 5,
+            "text": "Se requiere verificación para comprar un plan",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 10724,
+            "legacy_language_pid": 6,
+            "text": "É necessária uma verificação para comprar um plano",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 10725,
+            "legacy_language_pid": 7,
+            "text": "該計劃購買需要電子郵件認證。",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 16437,
+            "legacy_language_pid": 8,
+            "text": "Une vérification est nécessaire pour acheter un plan",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 16438,
+            "legacy_language_pid": 9,
+            "text": "योजना खरीदने के लिए सत्यापन की आवश्यकता है",
+            "auto_translated": ""
+        },
+        "ar": {
+            "legacy_caption_pid": 30906,
+            "legacy_language_pid": 10,
+            "text": "مطلوب شراء خطة التوثيق البريد الإلكتروني.",
+            "auto_translated": "مطلوب شراء خطة التوثيق البريد الإلكتروني."
+        },
+        "fa": {
+            "legacy_caption_pid": 30907,
+            "legacy_language_pid": 11,
+            "text": "خرید طرح مورد نیاز است احراز هویت ایمیل.",
+            "auto_translated": "خرید طرح مورد نیاز است احراز هویت ایمیل."
+        },
+        "de": {
+            "legacy_caption_pid": 30908,
+            "legacy_language_pid": 12,
+            "text": "Der Plan Kauf ist E-Mail-Authentifizierung erforderlich.",
+            "auto_translated": "Der Plan Kauf ist E-Mail-Authentifizierung erforderlich."
+        },
+        "ru": {
+            "legacy_caption_pid": 30909,
+            "legacy_language_pid": 13,
+            "text": "Покупка плана требуется проверка подлинности электронной почты.",
+            "auto_translated": "Покупка плана требуется проверка подлинности электронной почты."
+        },
+        "ms": {
+            "legacy_caption_pid": 30910,
+            "legacy_language_pid": 14,
+            "text": "Pembelian pelan diperlukan pengesahan e-mel.",
+            "auto_translated": "Pembelian pelan diperlukan pengesahan e-mel."
+        },
+        "ta": {
+            "legacy_caption_pid": 30911,
+            "legacy_language_pid": 15,
+            "text": "திட்டம் கொள்முதல் மின்னஞ்சல் அங்கீகார தேவைப்படுகிறது.",
+            "auto_translated": "திட்டம் கொள்முதல் மின்னஞ்சல் அங்கீகார தேவைப்படுகிறது."
+        },
+        "it": {
+            "legacy_caption_pid": 30912,
+            "legacy_language_pid": 16,
+            "text": "L'acquisto piano è richiesta l'autenticazione e-mail.",
+            "auto_translated": "L'acquisto piano è richiesta l'autenticazione e-mail."
+        },
+        "bn": {
+            "legacy_caption_pid": 30913,
+            "legacy_language_pid": 17,
+            "text": "প্ল্যান কেনার প্রয়োজন বোধ করা হয় ই-মেইল প্রমাণীকরণ।",
+            "auto_translated": "প্ল্যান কেনার প্রয়োজন বোধ করা হয় ই-মেইল প্রমাণীকরণ।"
+        },
+        "tr": {
+            "legacy_caption_pid": 30914,
+            "legacy_language_pid": 18,
+            "text": "planı satın alma, e-posta kimlik doğrulaması gerekmektedir.",
+            "auto_translated": "planı satın alma, e-posta kimlik doğrulaması gerekmektedir."
+        },
+        "vi": {
+            "legacy_caption_pid": 30915,
+            "legacy_language_pid": 19,
+            "text": "Việc mua kế hoạch là cần thiết xác thực e-mail.",
+            "auto_translated": "Việc mua kế hoạch là cần thiết xác thực e-mail."
+        },
+        "pl": {
+            "legacy_caption_pid": 30916,
+            "legacy_language_pid": 20,
+            "text": "Zakup Plan jest wymagane uwierzytelnianie poczty elektronicznej.",
+            "auto_translated": "Zakup Plan jest wymagane uwierzytelnianie poczty elektronicznej."
+        },
+        "jv": {
+            "legacy_caption_pid": 30917,
+            "legacy_language_pid": 21,
+            "text": "Rencana tuku dibutuhake bukti asli e-mail.",
+            "auto_translated": "Rencana tuku dibutuhake bukti asli e-mail."
+        },
+        "pa": {
+            "legacy_caption_pid": 30918,
+            "legacy_language_pid": 22,
+            "text": "ਯੋਜਨਾ ਨੂੰ ਖਰੀਦਣ ਦੀ ਲੋੜ ਹੈ ਈ-ਮੇਲ ਪ੍ਰਮਾਣਿਕਤਾ.",
+            "auto_translated": "ਯੋਜਨਾ ਨੂੰ ਖਰੀਦਣ ਦੀ ਲੋੜ ਹੈ ਈ-ਮੇਲ ਪ੍ਰਮਾਣਿਕਤਾ."
+        },
+        "th": {
+            "legacy_caption_pid": 30919,
+            "legacy_language_pid": 23,
+            "text": "การซื้อแผนจะต้องรับรองความถูกต้องอีเมล",
+            "auto_translated": "การซื้อแผนจะต้องรับรองความถูกต้องอีเมล"
+        },
+        "te": {
+            "legacy_caption_pid": 42514,
+            "legacy_language_pid": 24,
+            "text": "ప్రణాళిక కొనుగోలు ఇ-మెయిల్ authentication అవసరం.",
+            "auto_translated": "ప్రణాళిక కొనుగోలు ఇ-మెయిల్ authentication అవసరం."
+        },
+        "mr": {
+            "legacy_caption_pid": 42515,
+            "legacy_language_pid": 25,
+            "text": "योजना खरेदी ई-मेल प्रमाणीकरण आवश्यक आहे.",
+            "auto_translated": "योजना खरेदी ई-मेल प्रमाणीकरण आवश्यक आहे."
+        },
+        "ur": {
+            "legacy_caption_pid": 42516,
+            "legacy_language_pid": 26,
+            "text": "منصوبہ بندی کی خریداری ضروری ہے ای میل کی تصدیق کے.",
+            "auto_translated": "منصوبہ بندی کی خریداری ضروری ہے ای میل کی تصدیق کے."
+        },
+        "gu": {
+            "legacy_caption_pid": 42517,
+            "legacy_language_pid": 27,
+            "text": "યોજના ખરીદી જરૂરી છે ઈ-મેલ પ્રમાણીકરણ.",
+            "auto_translated": "યોજના ખરીદી જરૂરી છે ઈ-મેલ પ્રમાણીકરણ."
+        },
+        "uk": {
+            "legacy_caption_pid": 42518,
+            "legacy_language_pid": 28,
+            "text": "Купівля плану повинен розпізнаватися вашими електронної пошти.",
+            "auto_translated": "Купівля плану повинен розпізнаватися вашими електронної пошти."
+        },
+        "ml": {
+            "legacy_caption_pid": 42519,
+            "legacy_language_pid": 29,
+            "text": "പദ്ധതി വാങ്ങൽ ആവശ്യമായ ഇ-മെയിൽ ആധികാരികത ആണ്.",
+            "auto_translated": "പദ്ധതി വാങ്ങൽ ആവശ്യമായ ഇ-മെയിൽ ആധികാരികത ആണ്."
+        },
+        "kn": {
+            "legacy_caption_pid": 42520,
+            "legacy_language_pid": 30,
+            "text": "ಯೋಜನೆಯನ್ನು ಖರೀದಿ ಅಗತ್ಯವಿದೆ ಇಮೇಲ್ ದೃಢೀಕರಣ.",
+            "auto_translated": "ಯೋಜನೆಯನ್ನು ಖರೀದಿ ಅಗತ್ಯವಿದೆ ಇಮೇಲ್ ದೃಢೀಕರಣ."
+        },
+        "su": {
+            "legacy_caption_pid": 42521,
+            "legacy_language_pid": 31,
+            "text": "Rencana meuli anu diperlukeun auténtikasi e-mail.",
+            "auto_translated": "Rencana meuli anu diperlukeun auténtikasi e-mail."
+        },
+        "ku": {
+            "legacy_caption_pid": 42522,
+            "legacy_language_pid": 32,
+            "text": "Kirîna plana pêwîst e authentication e-mail.",
+            "auto_translated": "Kirîna plana pêwîst e authentication e-mail."
+        },
+        "ps": {
+            "legacy_caption_pid": 42523,
+            "legacy_language_pid": 33,
+            "text": "د دغه پلان د اخیستلو ده E-mail اعتبار ته اړتيا لري.",
+            "auto_translated": "د دغه پلان د اخیستلو ده E-mail اعتبار ته اړتيا لري."
+        },
+        "ro": {
+            "legacy_caption_pid": 42524,
+            "legacy_language_pid": 34,
+            "text": "Achiziția plan este necesară autentificarea de e-mail.",
+            "auto_translated": "Achiziția plan este necesară autentificarea de e-mail."
+        },
+        "id": {
+            "legacy_caption_pid": 42525,
+            "legacy_language_pid": 35,
+            "text": "Rencana pembelian diperlukan otentikasi e-mail.",
+            "auto_translated": "Rencana pembelian diperlukan otentikasi e-mail."
+        },
+        "sd": {
+            "legacy_caption_pid": 42526,
+            "legacy_language_pid": 36,
+            "text": "هن رٿ خريد ڪري گھربل اي-ميل جي اصليت آهي.",
+            "auto_translated": "هن رٿ خريد ڪري گھربل اي-ميل جي اصليت آهي."
+        },
+        "af": {
+            "legacy_caption_pid": 42527,
+            "legacy_language_pid": 37,
+            "text": "Die plan aankoop vereis e-pos verifikasie.",
+            "auto_translated": "Die plan aankoop vereis e-pos verifikasie."
+        },
+        "sw": {
+            "legacy_caption_pid": 42528,
+            "legacy_language_pid": 38,
+            "text": "mpango ununuzi inahitajika barua pepe ya uthibitisho.",
+            "auto_translated": "mpango ununuzi inahitajika barua pepe ya uthibitisho."
+        },
+        "lo": {
+            "legacy_caption_pid": 42529,
+            "legacy_language_pid": 39,
+            "text": "ການຊື້ແຜນການຈໍາເປັນຕ້ອງມີການກວດສອບ e-mail.",
+            "auto_translated": "ການຊື້ແຜນການຈໍາເປັນຕ້ອງມີການກວດສອບ e-mail."
+        },
+        "nl": {
+            "legacy_caption_pid": 42530,
+            "legacy_language_pid": 40,
+            "text": "Het plan aankoop is vereist e-mail authenticatie.",
+            "auto_translated": "Het plan aankoop is vereist e-mail authenticatie."
+        },
+        "tl": {
+            "legacy_caption_pid": 42531,
+            "legacy_language_pid": 41,
+            "text": "Ang planong pagbili ay kinakailangan ng e-mail na pagpapatotoo.",
+            "auto_translated": "Ang planong pagbili ay kinakailangan ng e-mail na pagpapatotoo."
+        },
+        "ne": {
+            "legacy_caption_pid": 42532,
+            "legacy_language_pid": 42,
+            "text": "योजना खरिद आवश्यक छ ई-मेल प्रमाणीकरण।",
+            "auto_translated": "योजना खरिद आवश्यक छ ई-मेल प्रमाणीकरण।"
+        },
+        "hu": {
+            "legacy_caption_pid": 42533,
+            "legacy_language_pid": 43,
+            "text": "A terv megvásárlása szükséges e-mail hitelesítést.",
+            "auto_translated": "A terv megvásárlása szükséges e-mail hitelesítést."
+        },
+        "cs": {
+            "legacy_caption_pid": 42534,
+            "legacy_language_pid": 44,
+            "text": "Nákup plán je zapotřebí ověření e-mailu.",
+            "auto_translated": "Nákup plán je zapotřebí ověření e-mailu."
+        },
+        "el": {
+            "legacy_caption_pid": 42535,
+            "legacy_language_pid": 45,
+            "text": "Η αγορά σχέδιο απαιτείται έλεγχος ταυτότητας e-mail.",
+            "auto_translated": "Η αγορά σχέδιο απαιτείται έλεγχος ταυτότητας e-mail."
+        },
+        "sv": {
+            "legacy_caption_pid": 42536,
+            "legacy_language_pid": 46,
+            "text": "Planen köpet krävs e-post autentisering.",
+            "auto_translated": "Planen köpet krävs e-post autentisering."
+        },
+        "kk": {
+            "legacy_caption_pid": 42537,
+            "legacy_language_pid": 47,
+            "text": "жоспар сатып алу талап етілетін электрондық пошта аутентификация болып табылады.",
+            "auto_translated": "жоспар сатып алу талап етілетін электрондық пошта аутентификация болып табылады."
+        },
+        "fi": {
+            "legacy_caption_pid": 42538,
+            "legacy_language_pid": 48,
+            "text": "Suunnitelma ostokuittia sähköpostin todennus.",
+            "auto_translated": "Suunnitelma ostokuittia sähköpostin todennus."
+        },
+        "da": {
+            "legacy_caption_pid": 42539,
+            "legacy_language_pid": 49,
+            "text": "køb Planen er påkrævet e-mail-godkendelse.",
+            "auto_translated": "køb Planen er påkrævet e-mail-godkendelse."
+        },
+        "he": {
+            "legacy_caption_pid": 42540,
+            "legacy_language_pid": 50,
+            "text": "רכישת התוכנית נדרשת אימות דואר אלקטרוני.",
+            "auto_translated": "רכישת התוכנית נדרשת אימות דואר אלקטרוני."
+        },
+        "no": {
+            "legacy_caption_pid": 42541,
+            "legacy_language_pid": 51,
+            "text": "Planen kjøpet kreves e-post godkjenning.",
+            "auto_translated": "Planen kjøpet kreves e-post godkjenning."
+        }
+    }
+}

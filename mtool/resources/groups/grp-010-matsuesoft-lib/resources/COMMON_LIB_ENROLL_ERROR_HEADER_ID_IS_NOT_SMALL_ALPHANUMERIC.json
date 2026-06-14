@@ -1,0 +1,321 @@
+{
+    "resource_key": "COMMON_LIB_ENROLL_ERROR_HEADER_ID_IS_NOT_SMALL_ALPHANUMERIC",
+    "legacy_resource_pid": 1571,
+    "base_group_key": "grp-010-matsuesoft-lib",
+    "additional_group_keys": [],
+    "key_for_update": "iIpcpk1bGB6fG1ceWO25yGN08IVFSyOBlc0j9rvzy1tpM9sjXMzCB7SbwBCIxdOjZRF7Acf7bZj3ubtWC3iFbQIGBOuzrKZyaDbXPM4fdqp244qkXC2MKrRWDCmE7C7G",
+    "sort_group": "ENROLL",
+    "key_name": "COMMON_LIB_ENROLL_ERROR_HEADER_ID_IS_NOT_SMALL_ALPHANUMERIC",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": false,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 7066,
+            "legacy_language_pid": 1,
+            "text": "ユーザ名(ID)が小文字の英数字ではないため確認できません",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 7067,
+            "legacy_language_pid": 2,
+            "text": "It can not be confirmed because the User Name (ID) is not lowercase alphanumeric characters",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 7068,
+            "legacy_language_pid": 3,
+            "text": "用户名ID无法确认，因为它不是一个字母数字小写",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 7069,
+            "legacy_language_pid": 4,
+            "text": "아이디 가 영숫자(소문자)가 아니기 때문에 확인할 수 없습니다",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 10765,
+            "legacy_language_pid": 5,
+            "text": "No se puede confirmar porque el ID no es caracteres alfanuméricos en minúsculas",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 10766,
+            "legacy_language_pid": 6,
+            "text": "Não pode ser confirmado porque a ID não é caracteres alfanuméricos em letras minúsculas",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 10767,
+            "legacy_language_pid": 7,
+            "text": "用户名ID無法確認，因為它不是一個字母數字小寫",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 16021,
+            "legacy_language_pid": 8,
+            "text": "Il ne peut pas être confirmé car le nom d'utilisateur (ID) n'est pas un caractère alphanumérique en minuscule",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 16022,
+            "legacy_language_pid": 9,
+            "text": "यह पुष्टि नहीं की जा सकती है क्योंकि यूज़र नेम (आईडी) लोअरकेस अल्फ़ान्यूमेरिक वर्ण नहीं है",
+            "auto_translated": ""
+        },
+        "ar": {
+            "legacy_caption_pid": 31158,
+            "legacy_language_pid": 10,
+            "text": "لا يمكن تأكيد اسم المستخدم (ID) لأنها ليست صغيرة أبجدية",
+            "auto_translated": "لا يمكن تأكيد اسم المستخدم (ID) لأنها ليست صغيرة أبجدية"
+        },
+        "fa": {
+            "legacy_caption_pid": 31159,
+            "legacy_language_pid": 11,
+            "text": "نام کاربری (ID) نمی توان تایید کرد به دلیل آن است که یک حروف کوچک الفبایی نیست",
+            "auto_translated": "نام کاربری (ID) نمی توان تایید کرد به دلیل آن است که یک حروف کوچک الفبایی نیست"
+        },
+        "de": {
+            "legacy_caption_pid": 31160,
+            "legacy_language_pid": 12,
+            "text": "Benutzername (ID) nicht bestätigt werden kann, weil es nicht eine alphanumerische Klein ist",
+            "auto_translated": "Benutzername (ID) nicht bestätigt werden kann, weil es nicht eine alphanumerische Klein ist"
+        },
+        "ru": {
+            "legacy_caption_pid": 31161,
+            "legacy_language_pid": 13,
+            "text": "Имя пользователя (ID) не может быть подтверждена, потому что это не алфавитно-цифровой нижний регистр",
+            "auto_translated": "Имя пользователя (ID) не может быть подтверждена, потому что это не алфавитно-цифровой нижний регистр"
+        },
+        "ms": {
+            "legacy_caption_pid": 31162,
+            "legacy_language_pid": 14,
+            "text": "nama pengguna (ID) tidak boleh disahkan kerana ia bukanlah huruf kecil abjad angka",
+            "auto_translated": "nama pengguna (ID) tidak boleh disahkan kerana ia bukanlah huruf kecil abjad angka"
+        },
+        "ta": {
+            "legacy_caption_pid": 31163,
+            "legacy_language_pid": 15,
+            "text": "அது ஒரு எண்ணெழுத்து ஸ்மால் இல்லை என்பதால் பயனர் பெயர் (ஐடி) உறுதிசெய்ய முடியாது",
+            "auto_translated": "அது ஒரு எண்ணெழுத்து ஸ்மால் இல்லை என்பதால் பயனர் பெயர் (ஐடி) உறுதிசெய்ய முடியாது"
+        },
+        "it": {
+            "legacy_caption_pid": 31164,
+            "legacy_language_pid": 16,
+            "text": "Nome utente (ID) non può essere confermata perché non è una minuscola alfanumerico",
+            "auto_translated": "Nome utente (ID) non può essere confermata perché non è una minuscola alfanumerico"
+        },
+        "bn": {
+            "legacy_caption_pid": 31165,
+            "legacy_language_pid": 17,
+            "text": "ইউজার নেম (আইডি) নিশ্চিত করা যাবে না কারণ এটি একটি আলফানিউমেরিক ছোট হাতের নয়",
+            "auto_translated": "ইউজার নেম (আইডি) নিশ্চিত করা যাবে না কারণ এটি একটি আলফানিউমেরিক ছোট হাতের নয়"
+        },
+        "tr": {
+            "legacy_caption_pid": 31166,
+            "legacy_language_pid": 18,
+            "text": "bir alfanümerik küçük olmadığı için Kullanıcı adı (ID) teyit edilemez",
+            "auto_translated": "bir alfanümerik küçük olmadığı için Kullanıcı adı (ID) teyit edilemez"
+        },
+        "vi": {
+            "legacy_caption_pid": 31167,
+            "legacy_language_pid": 19,
+            "text": "tên người dùng (ID) không thể được xác nhận bởi vì nó không phải là một chữ thường chữ và số",
+            "auto_translated": "tên người dùng (ID) không thể được xác nhận bởi vì nó không phải là một chữ thường chữ và số"
+        },
+        "pl": {
+            "legacy_caption_pid": 31168,
+            "legacy_language_pid": 20,
+            "text": "Nazwa użytkownika (ID) nie można potwierdzić, ponieważ nie jest to małe alfanumeryczny",
+            "auto_translated": "Nazwa użytkownika (ID) nie można potwierdzić, ponieważ nie jest to małe alfanumeryczny"
+        },
+        "jv": {
+            "legacy_caption_pid": 31169,
+            "legacy_language_pid": 21,
+            "text": "jeneng panganggo (ID) ora bisa dikonfirmasi amarga ora cilik alphanumeric",
+            "auto_translated": "jeneng panganggo (ID) ora bisa dikonfirmasi amarga ora cilik alphanumeric"
+        },
+        "pa": {
+            "legacy_caption_pid": 31170,
+            "legacy_language_pid": 22,
+            "text": "ਯੂਜ਼ਰ ਦਾ ਨਾਮ ਹੈ (ID) ਦੀ ਪੁਸ਼ਟੀ ਨਹੀ ਕੀਤਾ ਜਾ ਸਕਦਾ ਹੈ, ਕਿਉਕਿ ਇਸ ਨੂੰ ਇੱਕ ਅੱਖਰ ਅੱਖਰ ਨਹੀ ਹੈ,",
+            "auto_translated": "ਯੂਜ਼ਰ ਦਾ ਨਾਮ ਹੈ (ID) ਦੀ ਪੁਸ਼ਟੀ ਨਹੀ ਕੀਤਾ ਜਾ ਸਕਦਾ ਹੈ, ਕਿਉਕਿ ਇਸ ਨੂੰ ਇੱਕ ਅੱਖਰ ਅੱਖਰ ਨਹੀ ਹੈ,"
+        },
+        "th": {
+            "legacy_caption_pid": 31171,
+            "legacy_language_pid": 23,
+            "text": "ชื่อผู้ใช้ (ID) ไม่สามารถยืนยันได้เพราะมันไม่ได้เป็นตัวพิมพ์เล็กและตัวเลข",
+            "auto_translated": "ชื่อผู้ใช้ (ID) ไม่สามารถยืนยันได้เพราะมันไม่ได้เป็นตัวพิมพ์เล็กและตัวเลข"
+        },
+        "te": {
+            "legacy_caption_pid": 42108,
+            "legacy_language_pid": 24,
+            "text": "అది ఒక ఆల్ఫాన్యూమరిక్ చిన్న లేదు ఎందుకంటే వినియోగదారు పేరు (ID) నిర్ధారించారు సాధ్యం కాదు",
+            "auto_translated": "అది ఒక ఆల్ఫాన్యూమరిక్ చిన్న లేదు ఎందుకంటే వినియోగదారు పేరు (ID) నిర్ధారించారు సాధ్యం కాదు"
+        },
+        "mr": {
+            "legacy_caption_pid": 42109,
+            "legacy_language_pid": 25,
+            "text": "तो एक वर्णांक लोअरकेस नाही कारण वापरकर्ता नाव (ID) पुष्टी करणे शक्य नाही",
+            "auto_translated": "तो एक वर्णांक लोअरकेस नाही कारण वापरकर्ता नाव (ID) पुष्टी करणे शक्य नाही"
+        },
+        "ur": {
+            "legacy_caption_pid": 42110,
+            "legacy_language_pid": 26,
+            "text": "یہ ایک اکشرانکیی خفی نہیں ہے کیونکہ صارف کا نام (ID) کی تصدیق نہیں کی جا سکتی",
+            "auto_translated": "یہ ایک اکشرانکیی خفی نہیں ہے کیونکہ صارف کا نام (ID) کی تصدیق نہیں کی جا سکتی"
+        },
+        "gu": {
+            "legacy_caption_pid": 42111,
+            "legacy_language_pid": 27,
+            "text": "વપરાશકર્તા નામ (આઇડી) પુષ્ટિ કરી શકાતી નથી કારણ કે તે આલ્ફાન્યૂમેરિક લોઅરકેસ નથી",
+            "auto_translated": "વપરાશકર્તા નામ (આઇડી) પુષ્ટિ કરી શકાતી નથી કારણ કે તે આલ્ફાન્યૂમેરિક લોઅરકેસ નથી"
+        },
+        "uk": {
+            "legacy_caption_pid": 42112,
+            "legacy_language_pid": 28,
+            "text": "Ім'я користувача (ID) не може бути підтверджена, тому що це не алфавітно-цифровий нижній регістр",
+            "auto_translated": "Ім'я користувача (ID) не може бути підтверджена, тому що це не алфавітно-цифровий нижній регістр"
+        },
+        "ml": {
+            "legacy_caption_pid": 42113,
+            "legacy_language_pid": 29,
+            "text": "അത് ഒരു അക്കങ്ങളും ലോവർകേസ് അല്ല കാരണം ഉപയോക്താവ് പേര് (ഐഡി) സ്ഥിരീകരിച്ചു കഴിയില്ല",
+            "auto_translated": "അത് ഒരു അക്കങ്ങളും ലോവർകേസ് അല്ല കാരണം ഉപയോക്താവ് പേര് (ഐഡി) സ്ഥിരീകരിച്ചു കഴിയില്ല"
+        },
+        "kn": {
+            "legacy_caption_pid": 42114,
+            "legacy_language_pid": 30,
+            "text": "ಇದು ಒಂದು ಅಕ್ಷರಸಂಖ್ಯಾಯುಕ್ತ ಸಣ್ಣ ಏಕೆಂದರೆ ಬಳಕೆದಾರ ಹೆಸರು (ಐಡಿ) ಖಚಿತಪಡಿಸಲಾಗಿಲ್ಲ",
+            "auto_translated": "ಇದು ಒಂದು ಅಕ್ಷರಸಂಖ್ಯಾಯುಕ್ತ ಸಣ್ಣ ಏಕೆಂದರೆ ಬಳಕೆದಾರ ಹೆಸರು (ಐಡಿ) ಖಚಿತಪಡಿಸಲಾಗಿಲ್ಲ"
+        },
+        "su": {
+            "legacy_caption_pid": 42115,
+            "legacy_language_pid": 31,
+            "text": "Ngaran pamaké (ID) teu bisa dikonfirmasi sabab henteu hiji aksara leutik alpanumérik",
+            "auto_translated": "Ngaran pamaké (ID) teu bisa dikonfirmasi sabab henteu hiji aksara leutik alpanumérik"
+        },
+        "ku": {
+            "legacy_caption_pid": 42116,
+            "legacy_language_pid": 32,
+            "text": "Navê bikarhêner (ID) ne dikarin bên piştrast kirin ji ber ku ev e an dilhewîna alphanumeric ne",
+            "auto_translated": "Navê bikarhêner (ID) ne dikarin bên piştrast kirin ji ber ku ev e an dilhewîna alphanumeric ne"
+        },
+        "ps": {
+            "legacy_caption_pid": 42117,
+            "legacy_language_pid": 33,
+            "text": "کارن نوم (تذکرو) تاييد نه شي ځکه چې دا د يو په الفبې lowercase نه ده",
+            "auto_translated": "کارن نوم (تذکرو) تاييد نه شي ځکه چې دا د يو په الفبې lowercase نه ده"
+        },
+        "ro": {
+            "legacy_caption_pid": 42118,
+            "legacy_language_pid": 34,
+            "text": "Nume utilizator (ID-ul) nu poate fi confirmată, pentru că nu este o literă mică alfanumeric",
+            "auto_translated": "Nume utilizator (ID-ul) nu poate fi confirmată, pentru că nu este o literă mică alfanumeric"
+        },
+        "id": {
+            "legacy_caption_pid": 42119,
+            "legacy_language_pid": 35,
+            "text": "Nama pengguna (ID) tidak dapat dikonfirmasi karena bukan merupakan huruf kecil alfanumerik",
+            "auto_translated": "Nama pengguna (ID) tidak dapat dikonfirmasi karena bukan merupakan huruf kecil alfanumerik"
+        },
+        "sd": {
+            "legacy_caption_pid": 42120,
+            "legacy_language_pid": 36,
+            "text": "استعمال ڪندڙ جو نالو (سڃاڻپ) جي تصديق نه ٿي ڪري سگهي ٿو، ڇاڪاڻ ته ان کي هڪ alphanumeric ننڍو نه آهي",
+            "auto_translated": "استعمال ڪندڙ جو نالو (سڃاڻپ) جي تصديق نه ٿي ڪري سگهي ٿو، ڇاڪاڻ ته ان کي هڪ alphanumeric ننڍو نه آهي"
+        },
+        "af": {
+            "legacy_caption_pid": 42121,
+            "legacy_language_pid": 37,
+            "text": "Bynaam (ID) kan nie bevestig word nie, want dit is nie 'n alfanumeriese klein",
+            "auto_translated": "Bynaam (ID) kan nie bevestig word nie, want dit is nie 'n alfanumeriese klein"
+        },
+        "sw": {
+            "legacy_caption_pid": 42122,
+            "legacy_language_pid": 38,
+            "text": "Jina la mtumiaji (ID) hawawezi kuwa imara kwa sababu si alphanumeric lowercase",
+            "auto_translated": "Jina la mtumiaji (ID) hawawezi kuwa imara kwa sababu si alphanumeric lowercase"
+        },
+        "lo": {
+            "legacy_caption_pid": 42123,
+            "legacy_language_pid": 39,
+            "text": "ຊື່ຜູ້ໃຊ້ (ID) ບໍ່ສາມາດໄດ້ຮັບການຢືນຢັນເນື່ອງຈາກວ່າມັນບໍ່ແມ່ນອັກສອນຕົວນ້ອຍຕົວເລກ",
+            "auto_translated": "ຊື່ຜູ້ໃຊ້ (ID) ບໍ່ສາມາດໄດ້ຮັບການຢືນຢັນເນື່ອງຈາກວ່າມັນບໍ່ແມ່ນອັກສອນຕົວນ້ອຍຕົວເລກ"
+        },
+        "nl": {
+            "legacy_caption_pid": 42124,
+            "legacy_language_pid": 40,
+            "text": "User name (ID) kan niet worden bevestigd, omdat het niet een alfanumerieke kleine letters",
+            "auto_translated": "User name (ID) kan niet worden bevestigd, omdat het niet een alfanumerieke kleine letters"
+        },
+        "tl": {
+            "legacy_caption_pid": 42125,
+            "legacy_language_pid": 41,
+            "text": "Pangalan ng User (ID) ay hindi mapatunayan na ito sapagkat ito ay hindi isang alphanumeric lowercase",
+            "auto_translated": "Pangalan ng User (ID) ay hindi mapatunayan na ito sapagkat ito ay hindi isang alphanumeric lowercase"
+        },
+        "ne": {
+            "legacy_caption_pid": 42126,
+            "legacy_language_pid": 42,
+            "text": "प्रयोगकर्ता नाम (आईडी) छैन पुष्टि गर्न सकिन्छ यो एक अल्फान्यूमेरिक सानो छैन किनभने",
+            "auto_translated": "प्रयोगकर्ता नाम (आईडी) छैन पुष्टि गर्न सकिन्छ यो एक अल्फान्यूमेरिक सानो छैन किनभने"
+        },
+        "hu": {
+            "legacy_caption_pid": 42127,
+            "legacy_language_pid": 43,
+            "text": "Felhasználói név (ID) nem lehet megerősíteni, mert nem alfanumerikus kisbetűs",
+            "auto_translated": "Felhasználói név (ID) nem lehet megerősíteni, mert nem alfanumerikus kisbetűs"
+        },
+        "cs": {
+            "legacy_caption_pid": 42128,
+            "legacy_language_pid": 44,
+            "text": "Uživatelské jméno (ID) nemůže být potvrzena, protože to není alfanumerický malými písmeny",
+            "auto_translated": "Uživatelské jméno (ID) nemůže být potvrzena, protože to není alfanumerický malými písmeny"
+        },
+        "el": {
+            "legacy_caption_pid": 42129,
+            "legacy_language_pid": 45,
+            "text": "Όνομα χρήστη (ID) δεν μπορεί να επιβεβαιωθεί, διότι δεν είναι ένας αλφαριθμητικός πεζά",
+            "auto_translated": "Όνομα χρήστη (ID) δεν μπορεί να επιβεβαιωθεί, διότι δεν είναι ένας αλφαριθμητικός πεζά"
+        },
+        "sv": {
+            "legacy_caption_pid": 42130,
+            "legacy_language_pid": 46,
+            "text": "Användarnamn (ID) kan inte bekräftas, eftersom det inte är en alfanumerisk gemener",
+            "auto_translated": "Användarnamn (ID) kan inte bekräftas, eftersom det inte är en alfanumerisk gemener"
+        },
+        "kk": {
+            "legacy_caption_pid": 42131,
+            "legacy_language_pid": 47,
+            "text": "ол әріптік-сандық кіші емес, өйткені Пайдаланушының аты (ID) расталған болуы мүмкін емес",
+            "auto_translated": "ол әріптік-сандық кіші емес, өйткені Пайдаланушының аты (ID) расталған болуы мүмкін емес"
+        },
+        "fi": {
+            "legacy_caption_pid": 42132,
+            "legacy_language_pid": 48,
+            "text": "Käyttäjätunnus (ID) ei voida vahvistaa, koska se ei ole aakkosnumeerista pieniä",
+            "auto_translated": "Käyttäjätunnus (ID) ei voida vahvistaa, koska se ei ole aakkosnumeerista pieniä"
+        },
+        "da": {
+            "legacy_caption_pid": 42133,
+            "legacy_language_pid": 49,
+            "text": "Bruger navn (ID) ikke kan bekræftes, fordi det ikke er en alfanumerisk små bogstaver",
+            "auto_translated": "Bruger navn (ID) ikke kan bekræftes, fordi det ikke er en alfanumerisk små bogstaver"
+        },
+        "he": {
+            "legacy_caption_pid": 42134,
+            "legacy_language_pid": 50,
+            "text": "שם משתמש (ID) לא ניתן לאשר כי זה לא קטן אלפאנומרי",
+            "auto_translated": "שם משתמש (ID) לא ניתן לאשר כי זה לא קטן אלפאנומרי"
+        },
+        "no": {
+            "legacy_caption_pid": 42135,
+            "legacy_language_pid": 51,
+            "text": "Brukernavn (ID) kan ikke bekreftes fordi det ikke er en alfanumerisk små bokstaver",
+            "auto_translated": "Brukernavn (ID) kan ikke bekreftes fordi det ikke er en alfanumerisk små bokstaver"
+        }
+    }
+}

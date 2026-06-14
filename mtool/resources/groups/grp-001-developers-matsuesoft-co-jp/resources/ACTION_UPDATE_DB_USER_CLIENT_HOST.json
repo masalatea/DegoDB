@@ -1,0 +1,27 @@
+{
+    "resource_key": "ACTION_UPDATE_DB_USER_CLIENT_HOST",
+    "legacy_resource_pid": 467,
+    "base_group_key": "grp-001-developers-matsuesoft-co-jp",
+    "additional_group_keys": [],
+    "key_for_update": "0",
+    "sort_group": "ACTION DB_USER_CLIENT_HOST",
+    "key_name": "ACTION_UPDATE_DB_USER_CLIENT_HOST",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": true,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 3760,
+            "legacy_language_pid": 1,
+            "text": "クライアントホスト更新",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 3761,
+            "legacy_language_pid": 2,
+            "text": "Update Client Host",
+            "auto_translated": ""
+        }
+    }
+}

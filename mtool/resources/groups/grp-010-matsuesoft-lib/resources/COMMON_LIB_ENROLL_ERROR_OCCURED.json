@@ -1,0 +1,321 @@
+{
+    "resource_key": "COMMON_LIB_ENROLL_ERROR_OCCURED",
+    "legacy_resource_pid": 1400,
+    "base_group_key": "grp-010-matsuesoft-lib",
+    "additional_group_keys": [],
+    "key_for_update": "r5wUkM1hbtwaKxqV7pgNDd5gf8kBDIitL9DllVt098UrP09HtgZIN9qg5ScV7al7pcInxXcKMILO8goq1o3ttiitss9OxQtKYZ606jsJzw2pJiD6kY4uSunrh2wzA34D",
+    "sort_group": "ENROLL",
+    "key_name": "COMMON_LIB_ENROLL_ERROR_OCCURED",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": false,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 5874,
+            "legacy_language_pid": 1,
+            "text": "情報設定時にエラーが発生しました。",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 5875,
+            "legacy_language_pid": 2,
+            "text": "Error occured while setting information.",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 5876,
+            "legacy_language_pid": 3,
+            "text": "当信息被设置发生错误。",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 5877,
+            "legacy_language_pid": 4,
+            "text": "정보 설정시 오류가 발생했습니다.",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 10771,
+            "legacy_language_pid": 5,
+            "text": "Se ha producido un error al configurar la información.",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 10772,
+            "legacy_language_pid": 6,
+            "text": "Ocorreu um erro ao configurar informações.",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 10773,
+            "legacy_language_pid": 7,
+            "text": "當信息被設置發生錯誤。",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 16465,
+            "legacy_language_pid": 8,
+            "text": "Une erreur s'est produite lors du réglage des informations.",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 16466,
+            "legacy_language_pid": 9,
+            "text": "जानकारी सेट करते समय त्रुटि हुई",
+            "auto_translated": ""
+        },
+        "ar": {
+            "legacy_caption_pid": 31186,
+            "legacy_language_pid": 10,
+            "text": "حدث خطأ عندما يتم تعيين المعلومات.",
+            "auto_translated": "حدث خطأ عندما يتم تعيين المعلومات."
+        },
+        "fa": {
+            "legacy_caption_pid": 31187,
+            "legacy_language_pid": 11,
+            "text": "زمانی که اطلاعات قرار است یک خطا رخ داده است.",
+            "auto_translated": "زمانی که اطلاعات قرار است یک خطا رخ داده است."
+        },
+        "de": {
+            "legacy_caption_pid": 31188,
+            "legacy_language_pid": 12,
+            "text": "Ein Fehler ist aufgetreten, wenn die Informationen festgelegt ist.",
+            "auto_translated": "Ein Fehler ist aufgetreten, wenn die Informationen festgelegt ist."
+        },
+        "ru": {
+            "legacy_caption_pid": 31189,
+            "legacy_language_pid": 13,
+            "text": "Произошла ошибка при установлена ​​информации.",
+            "auto_translated": "Произошла ошибка при установлена ​​информации."
+        },
+        "ms": {
+            "legacy_caption_pid": 31190,
+            "legacy_language_pid": 14,
+            "text": "Ralat berlaku apabila maklumat yang ditetapkan.",
+            "auto_translated": "Ralat berlaku apabila maklumat yang ditetapkan."
+        },
+        "ta": {
+            "legacy_caption_pid": 31191,
+            "legacy_language_pid": 15,
+            "text": "தகவல் அமைக்கும் போது பிழை ஏற்பட்டது.",
+            "auto_translated": "தகவல் அமைக்கும் போது பிழை ஏற்பட்டது."
+        },
+        "it": {
+            "legacy_caption_pid": 31192,
+            "legacy_language_pid": 16,
+            "text": "Si è verificato un errore durante l'informazione è impostato.",
+            "auto_translated": "Si è verificato un errore durante l'informazione è impostato."
+        },
+        "bn": {
+            "legacy_caption_pid": 31193,
+            "legacy_language_pid": 17,
+            "text": "যখন তথ্য সেট করা হয় একটি ত্রুটি ঘটেছে।",
+            "auto_translated": "যখন তথ্য সেট করা হয় একটি ত্রুটি ঘটেছে।"
+        },
+        "tr": {
+            "legacy_caption_pid": 31194,
+            "legacy_language_pid": 18,
+            "text": "bilgi ayarlandığında bir hata oluştu.",
+            "auto_translated": "bilgi ayarlandığında bir hata oluştu."
+        },
+        "vi": {
+            "legacy_caption_pid": 31195,
+            "legacy_language_pid": 19,
+            "text": "Có lỗi xảy ra khi thông tin được thiết lập.",
+            "auto_translated": "Có lỗi xảy ra khi thông tin được thiết lập."
+        },
+        "pl": {
+            "legacy_caption_pid": 31196,
+            "legacy_language_pid": 20,
+            "text": "Wystąpił błąd, gdy informacja jest ustawiony.",
+            "auto_translated": "Wystąpił błąd, gdy informacja jest ustawiony."
+        },
+        "jv": {
+            "legacy_caption_pid": 31197,
+            "legacy_language_pid": 21,
+            "text": "Kesalahan wonten nalika informasi wis disetel.",
+            "auto_translated": "Kesalahan wonten nalika informasi wis disetel."
+        },
+        "pa": {
+            "legacy_caption_pid": 31198,
+            "legacy_language_pid": 22,
+            "text": "ਜਾਣਕਾਰੀ ਸੈੱਟ ਕੀਤਾ ਗਿਆ ਹੈ ਇੱਕ ਗਲਤੀ ਆਈ ਹੈ.",
+            "auto_translated": "ਜਾਣਕਾਰੀ ਸੈੱਟ ਕੀਤਾ ਗਿਆ ਹੈ ਇੱਕ ਗਲਤੀ ਆਈ ਹੈ."
+        },
+        "th": {
+            "legacy_caption_pid": 31199,
+            "legacy_language_pid": 23,
+            "text": "เกิดข้อผิดพลาดเมื่อมีข้อมูลที่ถูกกำหนด",
+            "auto_translated": "เกิดข้อผิดพลาดเมื่อมีข้อมูลที่ถูกกำหนด"
+        },
+        "te": {
+            "legacy_caption_pid": 42052,
+            "legacy_language_pid": 24,
+            "text": "సమాచారాన్ని సెట్ చేస్తున్నప్పుడు లోపం సంభవించింది.",
+            "auto_translated": "సమాచారాన్ని సెట్ చేస్తున్నప్పుడు లోపం సంభవించింది."
+        },
+        "mr": {
+            "legacy_caption_pid": 42053,
+            "legacy_language_pid": 25,
+            "text": "माहिती सेट आहे करताना एक त्रुटी आली.",
+            "auto_translated": "माहिती सेट आहे करताना एक त्रुटी आली."
+        },
+        "ur": {
+            "legacy_caption_pid": 42054,
+            "legacy_language_pid": 26,
+            "text": "معلومات مقرر کیا گیا ہے جب ایک خرابی واقع ہوئی ہے.",
+            "auto_translated": "معلومات مقرر کیا گیا ہے جب ایک خرابی واقع ہوئی ہے."
+        },
+        "gu": {
+            "legacy_caption_pid": 42055,
+            "legacy_language_pid": 27,
+            "text": "જ્યારે માહિતી પર સેટ કરેલી છે એક ભૂલ આવી.",
+            "auto_translated": "જ્યારે માહિતી પર સેટ કરેલી છે એક ભૂલ આવી."
+        },
+        "uk": {
+            "legacy_caption_pid": 42056,
+            "legacy_language_pid": 28,
+            "text": "Помилка під час встановлена ​​інформації.",
+            "auto_translated": "Помилка під час встановлена ​​інформації."
+        },
+        "ml": {
+            "legacy_caption_pid": 42057,
+            "legacy_language_pid": 29,
+            "text": "വിവരം ക്രമീകരിക്കാൻ ചെയ്യുമ്പോൾ ഒരു പിശക് സംഭവിച്ചു.",
+            "auto_translated": "വിവരം ക്രമീകരിക്കാൻ ചെയ്യുമ്പോൾ ഒരു പിശക് സംഭവിച്ചു."
+        },
+        "kn": {
+            "legacy_caption_pid": 42058,
+            "legacy_language_pid": 30,
+            "text": "ಮಾಹಿತಿ ಸೆಟ್ ಮಾಡಿದಾಗ ದೋಷ ಸಂಭವಿಸಿದೆ.",
+            "auto_translated": "ಮಾಹಿತಿ ಸೆಟ್ ಮಾಡಿದಾಗ ದೋಷ ಸಂಭವಿಸಿದೆ."
+        },
+        "su": {
+            "legacy_caption_pid": 42059,
+            "legacy_language_pid": 31,
+            "text": "Kasalahan lumangsung nalika informasi tos disetel.",
+            "auto_translated": "Kasalahan lumangsung nalika informasi tos disetel."
+        },
+        "ku": {
+            "legacy_caption_pid": 42060,
+            "legacy_language_pid": 32,
+            "text": "dema ku agahiyên ku danîn Çewtiyek derket.",
+            "auto_translated": "dema ku agahiyên ku danîn Çewtiyek derket."
+        },
+        "ps": {
+            "legacy_caption_pid": 42061,
+            "legacy_language_pid": 33,
+            "text": "کله چې د معلوماتو د ټاکل شوې ده چې یوه تېروتنه رامنځته شوه.",
+            "auto_translated": "کله چې د معلوماتو د ټاکل شوې ده چې یوه تېروتنه رامنځته شوه."
+        },
+        "ro": {
+            "legacy_caption_pid": 42062,
+            "legacy_language_pid": 34,
+            "text": "A apărut o eroare atunci când informația este setată.",
+            "auto_translated": "A apărut o eroare atunci când informația este setată."
+        },
+        "id": {
+            "legacy_caption_pid": 42063,
+            "legacy_language_pid": 35,
+            "text": "Kesalahan terjadi ketika informasi diatur.",
+            "auto_translated": "Kesalahan terjadi ketika informasi diatur."
+        },
+        "sd": {
+            "legacy_caption_pid": 42064,
+            "legacy_language_pid": 36,
+            "text": "جڏهن معلومات قائم آهي غلطي ٿي ويئي آهي.",
+            "auto_translated": "جڏهن معلومات قائم آهي غلطي ٿي ويئي آهي."
+        },
+        "af": {
+            "legacy_caption_pid": 42065,
+            "legacy_language_pid": 37,
+            "text": "'N Fout het voorgekom wanneer die inligting is ingestel.",
+            "auto_translated": "'N Fout het voorgekom wanneer die inligting is ingestel."
+        },
+        "sw": {
+            "legacy_caption_pid": 42066,
+            "legacy_language_pid": 38,
+            "text": "Hitilafu imetokea wakati wa habari ni kuweka.",
+            "auto_translated": "Hitilafu imetokea wakati wa habari ni kuweka."
+        },
+        "lo": {
+            "legacy_caption_pid": 42067,
+            "legacy_language_pid": 39,
+            "text": "ເກີດຄວາມຜິດພາດໃນເວລາທີ່ຂໍ້ມູນຂ່າວສານໄດ້ຖືກກໍານົດ.",
+            "auto_translated": "ເກີດຄວາມຜິດພາດໃນເວລາທີ່ຂໍ້ມູນຂ່າວສານໄດ້ຖືກກໍານົດ."
+        },
+        "nl": {
+            "legacy_caption_pid": 42068,
+            "legacy_language_pid": 40,
+            "text": "Een fout opgetreden bij de informatie is ingesteld.",
+            "auto_translated": "Een fout opgetreden bij de informatie is ingesteld."
+        },
+        "tl": {
+            "legacy_caption_pid": 42069,
+            "legacy_language_pid": 41,
+            "text": "May naganap na error kapag ang impormasyon ay naka-set.",
+            "auto_translated": "May naganap na error kapag ang impormasyon ay naka-set."
+        },
+        "ne": {
+            "legacy_caption_pid": 42070,
+            "legacy_language_pid": 42,
+            "text": "जानकारी सेट गर्दा एउटा त्रुटि देखापर्यो।",
+            "auto_translated": "जानकारी सेट गर्दा एउटा त्रुटि देखापर्यो।"
+        },
+        "hu": {
+            "legacy_caption_pid": 42071,
+            "legacy_language_pid": 43,
+            "text": "Hiba történt, amikor az információ be van állítva.",
+            "auto_translated": "Hiba történt, amikor az információ be van állítva."
+        },
+        "cs": {
+            "legacy_caption_pid": 42072,
+            "legacy_language_pid": 44,
+            "text": "Při nastavení informací došlo k chybě.",
+            "auto_translated": "Při nastavení informací došlo k chybě."
+        },
+        "el": {
+            "legacy_caption_pid": 42073,
+            "legacy_language_pid": 45,
+            "text": "Παρουσιάστηκε σφάλμα κατά βρίσκεται η πληροφορία.",
+            "auto_translated": "Παρουσιάστηκε σφάλμα κατά βρίσκεται η πληροφορία."
+        },
+        "sv": {
+            "legacy_caption_pid": 42074,
+            "legacy_language_pid": 46,
+            "text": "Ett fel inträffade när informationen är inställd.",
+            "auto_translated": "Ett fel inträffade när informationen är inställd."
+        },
+        "kk": {
+            "legacy_caption_pid": 42075,
+            "legacy_language_pid": 47,
+            "text": "ақпараттық орнатылған кезде қате пайда болды.",
+            "auto_translated": "ақпараттық орнатылған кезде қате пайда болды."
+        },
+        "fi": {
+            "legacy_caption_pid": 42076,
+            "legacy_language_pid": 48,
+            "text": "Virhe tapahtui, kun tiedot on asetettu.",
+            "auto_translated": "Virhe tapahtui, kun tiedot on asetettu."
+        },
+        "da": {
+            "legacy_caption_pid": 42077,
+            "legacy_language_pid": 49,
+            "text": "Der opstod en fejl, da oplysningerne er indstillet.",
+            "auto_translated": "Der opstod en fejl, da oplysningerne er indstillet."
+        },
+        "he": {
+            "legacy_caption_pid": 42078,
+            "legacy_language_pid": 50,
+            "text": "ארעה שגיאה כאשר המידע מוגדר.",
+            "auto_translated": "ארעה שגיאה כאשר המידע מוגדר."
+        },
+        "no": {
+            "legacy_caption_pid": 42079,
+            "legacy_language_pid": 51,
+            "text": "Det oppstod en feil når informasjonen er angitt.",
+            "auto_translated": "Det oppstod en feil når informasjonen er angitt."
+        }
+    }
+}

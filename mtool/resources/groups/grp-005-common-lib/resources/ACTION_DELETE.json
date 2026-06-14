@@ -1,0 +1,321 @@
+{
+    "resource_key": "ACTION_DELETE",
+    "legacy_resource_pid": 577,
+    "base_group_key": "grp-005-common-lib",
+    "additional_group_keys": [],
+    "key_for_update": "DIYRp9ygXDpHDmoTcEi4XOAVxwnpWuo0Vdb0fStovnrsk9BJRGfrHFHv1LBCe1W352LFMiPLph8MiOMcl7TfvUtvXzLGRYlyZ5D4bleBGnPBCmB1vznCUfbRhZGzPZkV",
+    "sort_group": "ACTION",
+    "key_name": "ACTION_DELETE",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": false,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 1343,
+            "legacy_language_pid": 1,
+            "text": "削除",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 1344,
+            "legacy_language_pid": 2,
+            "text": "Delete",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 6510,
+            "legacy_language_pid": 3,
+            "text": "删除",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 6511,
+            "legacy_language_pid": 4,
+            "text": "삭제",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 10390,
+            "legacy_language_pid": 5,
+            "text": "Eliminar",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 10391,
+            "legacy_language_pid": 6,
+            "text": "Excluir",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 10392,
+            "legacy_language_pid": 7,
+            "text": "刪除",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 16257,
+            "legacy_language_pid": 8,
+            "text": "Effacer",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 16258,
+            "legacy_language_pid": 9,
+            "text": "हटाना",
+            "auto_translated": ""
+        },
+        "ar": {
+            "legacy_caption_pid": 29296,
+            "legacy_language_pid": 10,
+            "text": "شطب",
+            "auto_translated": "شطب"
+        },
+        "fa": {
+            "legacy_caption_pid": 29297,
+            "legacy_language_pid": 11,
+            "text": "حذف",
+            "auto_translated": "حذف"
+        },
+        "de": {
+            "legacy_caption_pid": 29298,
+            "legacy_language_pid": 12,
+            "text": "Löschung",
+            "auto_translated": "Löschung"
+        },
+        "ru": {
+            "legacy_caption_pid": 29299,
+            "legacy_language_pid": 13,
+            "text": "делеция",
+            "auto_translated": "делеция"
+        },
+        "ms": {
+            "legacy_caption_pid": 29300,
+            "legacy_language_pid": 14,
+            "text": "penghapusan",
+            "auto_translated": "penghapusan"
+        },
+        "ta": {
+            "legacy_caption_pid": 29301,
+            "legacy_language_pid": 15,
+            "text": "நீக்குதல்",
+            "auto_translated": "நீக்குதல்"
+        },
+        "it": {
+            "legacy_caption_pid": 29302,
+            "legacy_language_pid": 16,
+            "text": "cancellazione",
+            "auto_translated": "cancellazione"
+        },
+        "bn": {
+            "legacy_caption_pid": 29303,
+            "legacy_language_pid": 17,
+            "text": "মুছিয়াতা",
+            "auto_translated": "মুছিয়াতা"
+        },
+        "tr": {
+            "legacy_caption_pid": 29304,
+            "legacy_language_pid": 18,
+            "text": "silme",
+            "auto_translated": "silme"
+        },
+        "vi": {
+            "legacy_caption_pid": 29305,
+            "legacy_language_pid": 19,
+            "text": "xóa",
+            "auto_translated": "xóa"
+        },
+        "pl": {
+            "legacy_caption_pid": 29306,
+            "legacy_language_pid": 20,
+            "text": "usunięcie",
+            "auto_translated": "usunięcie"
+        },
+        "jv": {
+            "legacy_caption_pid": 29307,
+            "legacy_language_pid": 21,
+            "text": "pambusakan",
+            "auto_translated": "pambusakan"
+        },
+        "pa": {
+            "legacy_caption_pid": 29308,
+            "legacy_language_pid": 22,
+            "text": "ਹਟਾਉਣ",
+            "auto_translated": "ਹਟਾਉਣ"
+        },
+        "th": {
+            "legacy_caption_pid": 29309,
+            "legacy_language_pid": 23,
+            "text": "การลบ",
+            "auto_translated": "การลบ"
+        },
+        "te": {
+            "legacy_caption_pid": 37824,
+            "legacy_language_pid": 24,
+            "text": "తొలగింపు",
+            "auto_translated": "తొలగింపు"
+        },
+        "mr": {
+            "legacy_caption_pid": 37825,
+            "legacy_language_pid": 25,
+            "text": "हटविणे",
+            "auto_translated": "हटविणे"
+        },
+        "ur": {
+            "legacy_caption_pid": 37826,
+            "legacy_language_pid": 26,
+            "text": "منسوخی",
+            "auto_translated": "منسوخی"
+        },
+        "gu": {
+            "legacy_caption_pid": 37827,
+            "legacy_language_pid": 27,
+            "text": "કાઢી નાખવામાં",
+            "auto_translated": "કાઢી નાખવામાં"
+        },
+        "uk": {
+            "legacy_caption_pid": 37828,
+            "legacy_language_pid": 28,
+            "text": "делеция",
+            "auto_translated": "делеция"
+        },
+        "ml": {
+            "legacy_caption_pid": 37829,
+            "legacy_language_pid": 29,
+            "text": "ഇല്ലാതാക്കൽ",
+            "auto_translated": "ഇല്ലാതാക്കൽ"
+        },
+        "kn": {
+            "legacy_caption_pid": 37830,
+            "legacy_language_pid": 30,
+            "text": "ಅಳಿಸುವಿಕೆ",
+            "auto_translated": "ಅಳಿಸುವಿಕೆ"
+        },
+        "su": {
+            "legacy_caption_pid": 37831,
+            "legacy_language_pid": 31,
+            "text": "ngahapus",
+            "auto_translated": "ngahapus"
+        },
+        "ku": {
+            "legacy_caption_pid": 37832,
+            "legacy_language_pid": 32,
+            "text": "Jêbirina",
+            "auto_translated": "Jêbirina"
+        },
+        "ps": {
+            "legacy_caption_pid": 37833,
+            "legacy_language_pid": 33,
+            "text": "د ړنګېدنې",
+            "auto_translated": "د ړنګېدنې"
+        },
+        "ro": {
+            "legacy_caption_pid": 37834,
+            "legacy_language_pid": 34,
+            "text": "ștergere",
+            "auto_translated": "ștergere"
+        },
+        "id": {
+            "legacy_caption_pid": 37835,
+            "legacy_language_pid": 35,
+            "text": "penghapusan",
+            "auto_translated": "penghapusan"
+        },
+        "sd": {
+            "legacy_caption_pid": 37836,
+            "legacy_language_pid": 36,
+            "text": "خارج ٿيڻ",
+            "auto_translated": "خارج ٿيڻ"
+        },
+        "af": {
+            "legacy_caption_pid": 37837,
+            "legacy_language_pid": 37,
+            "text": "skrap",
+            "auto_translated": "skrap"
+        },
+        "sw": {
+            "legacy_caption_pid": 37838,
+            "legacy_language_pid": 38,
+            "text": "Ufutaji",
+            "auto_translated": "Ufutaji"
+        },
+        "lo": {
+            "legacy_caption_pid": 37839,
+            "legacy_language_pid": 39,
+            "text": "ລຶບ",
+            "auto_translated": "ລຶບ"
+        },
+        "nl": {
+            "legacy_caption_pid": 37840,
+            "legacy_language_pid": 40,
+            "text": "verwijdering",
+            "auto_translated": "verwijdering"
+        },
+        "tl": {
+            "legacy_caption_pid": 37841,
+            "legacy_language_pid": 41,
+            "text": "pagtanggal",
+            "auto_translated": "pagtanggal"
+        },
+        "ne": {
+            "legacy_caption_pid": 37842,
+            "legacy_language_pid": 42,
+            "text": "मेटाउने",
+            "auto_translated": "मेटाउने"
+        },
+        "hu": {
+            "legacy_caption_pid": 37843,
+            "legacy_language_pid": 43,
+            "text": "törlés",
+            "auto_translated": "törlés"
+        },
+        "cs": {
+            "legacy_caption_pid": 37844,
+            "legacy_language_pid": 44,
+            "text": "vymazání",
+            "auto_translated": "vymazání"
+        },
+        "el": {
+            "legacy_caption_pid": 37845,
+            "legacy_language_pid": 45,
+            "text": "διαγραφή",
+            "auto_translated": "διαγραφή"
+        },
+        "sv": {
+            "legacy_caption_pid": 37846,
+            "legacy_language_pid": 46,
+            "text": "Strykning",
+            "auto_translated": "Strykning"
+        },
+        "kk": {
+            "legacy_caption_pid": 37847,
+            "legacy_language_pid": 47,
+            "text": "жою",
+            "auto_translated": "жою"
+        },
+        "fi": {
+            "legacy_caption_pid": 37848,
+            "legacy_language_pid": 48,
+            "text": "poisto",
+            "auto_translated": "poisto"
+        },
+        "da": {
+            "legacy_caption_pid": 37849,
+            "legacy_language_pid": 49,
+            "text": "Sletning",
+            "auto_translated": "Sletning"
+        },
+        "he": {
+            "legacy_caption_pid": 37850,
+            "legacy_language_pid": 50,
+            "text": "מחיק",
+            "auto_translated": "מחיק"
+        },
+        "no": {
+            "legacy_caption_pid": 37851,
+            "legacy_language_pid": 51,
+            "text": "sletting",
+            "auto_translated": "sletting"
+        }
+    }
+}

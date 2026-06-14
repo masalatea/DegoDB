@@ -1,0 +1,321 @@
+{
+    "resource_key": "TITLE_RESIGN",
+    "legacy_resource_pid": 1899,
+    "base_group_key": "grp-005-common-lib",
+    "additional_group_keys": [],
+    "key_for_update": "i4IuGvJPPdyuCreXQvVm7knVjJEtbm2YX90rkhySiAeb1LGAhprCi7Sj6r1i47JyLg40LohGQstQ1T5H1C8xclIHEdGdAnSVq4heiWFow17OfK7oqnqe0VY6YmlmpnjP",
+    "sort_group": "TITLE",
+    "key_name": "TITLE_RESIGN",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": false,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 8386,
+            "legacy_language_pid": 1,
+            "text": "退会する",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 8387,
+            "legacy_language_pid": 2,
+            "text": "Resign",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 8388,
+            "legacy_language_pid": 3,
+            "text": "退会",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 8389,
+            "legacy_language_pid": 4,
+            "text": "탈퇴",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 10588,
+            "legacy_language_pid": 5,
+            "text": "Darse de baja",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 10589,
+            "legacy_language_pid": 6,
+            "text": "retirar-se",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 10590,
+            "legacy_language_pid": 7,
+            "text": "退會",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 16345,
+            "legacy_language_pid": 8,
+            "text": "Démissionner",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 16346,
+            "legacy_language_pid": 9,
+            "text": " त्यागपत्र देना",
+            "auto_translated": ""
+        },
+        "ar": {
+            "legacy_caption_pid": 30248,
+            "legacy_language_pid": 10,
+            "text": "لإلغاء الاشتراك",
+            "auto_translated": "لإلغاء الاشتراك"
+        },
+        "fa": {
+            "legacy_caption_pid": 30249,
+            "legacy_language_pid": 11,
+            "text": "برای لغو اشتراک",
+            "auto_translated": "برای لغو اشتراک"
+        },
+        "de": {
+            "legacy_caption_pid": 30250,
+            "legacy_language_pid": 12,
+            "text": "Um sich abzumelden",
+            "auto_translated": "Um sich abzumelden"
+        },
+        "ru": {
+            "legacy_caption_pid": 30251,
+            "legacy_language_pid": 13,
+            "text": "Чтобы отказаться от подписки",
+            "auto_translated": "Чтобы отказаться от подписки"
+        },
+        "ms": {
+            "legacy_caption_pid": 30252,
+            "legacy_language_pid": 14,
+            "text": "untuk menghentikan langganan",
+            "auto_translated": "untuk menghentikan langganan"
+        },
+        "ta": {
+            "legacy_caption_pid": 30253,
+            "legacy_language_pid": 15,
+            "text": "விலக",
+            "auto_translated": "விலக"
+        },
+        "it": {
+            "legacy_caption_pid": 30254,
+            "legacy_language_pid": 16,
+            "text": "per annullare l'iscrizione",
+            "auto_translated": "per annullare l'iscrizione"
+        },
+        "bn": {
+            "legacy_caption_pid": 30255,
+            "legacy_language_pid": 17,
+            "text": "সদস্যতা ত্যাগ করতে",
+            "auto_translated": "সদস্যতা ত্যাগ করতে"
+        },
+        "tr": {
+            "legacy_caption_pid": 30256,
+            "legacy_language_pid": 18,
+            "text": "aboneliğinizi iptal etmek için",
+            "auto_translated": "aboneliğinizi iptal etmek için"
+        },
+        "vi": {
+            "legacy_caption_pid": 30257,
+            "legacy_language_pid": 19,
+            "text": "để hủy đăng ký",
+            "auto_translated": "để hủy đăng ký"
+        },
+        "pl": {
+            "legacy_caption_pid": 30258,
+            "legacy_language_pid": 20,
+            "text": "aby zrezygnować z subskrypcji",
+            "auto_translated": "aby zrezygnować z subskrypcji"
+        },
+        "jv": {
+            "legacy_caption_pid": 30259,
+            "legacy_language_pid": 21,
+            "text": "kanggo batal",
+            "auto_translated": "kanggo batal"
+        },
+        "pa": {
+            "legacy_caption_pid": 30260,
+            "legacy_language_pid": 22,
+            "text": "ਗਾਹਕੀ ਰੱਦ ਕਰਨ ਲਈ",
+            "auto_translated": "ਗਾਹਕੀ ਰੱਦ ਕਰਨ ਲਈ"
+        },
+        "th": {
+            "legacy_caption_pid": 30261,
+            "legacy_language_pid": 23,
+            "text": "ยกเลิกการรับข่าวสาร",
+            "auto_translated": "ยกเลิกการรับข่าวสาร"
+        },
+        "te": {
+            "legacy_caption_pid": 35948,
+            "legacy_language_pid": 24,
+            "text": "వైదొలగేందుకు",
+            "auto_translated": "వైదొలగేందుకు"
+        },
+        "mr": {
+            "legacy_caption_pid": 35949,
+            "legacy_language_pid": 25,
+            "text": "सदस्यत्व रद्द करण्यासाठी",
+            "auto_translated": "सदस्यत्व रद्द करण्यासाठी"
+        },
+        "ur": {
+            "legacy_caption_pid": 35950,
+            "legacy_language_pid": 26,
+            "text": "رکنیت ختم کرنے",
+            "auto_translated": "رکنیت ختم کرنے"
+        },
+        "gu": {
+            "legacy_caption_pid": 35951,
+            "legacy_language_pid": 27,
+            "text": "અનસબ્સ્ક્રાઇબ કરવા",
+            "auto_translated": "અનસબ્સ્ક્રાઇબ કરવા"
+        },
+        "uk": {
+            "legacy_caption_pid": 35952,
+            "legacy_language_pid": 28,
+            "text": "Щоб відмовитися від підписки",
+            "auto_translated": "Щоб відмовитися від підписки"
+        },
+        "ml": {
+            "legacy_caption_pid": 35953,
+            "legacy_language_pid": 29,
+            "text": "കത്തു",
+            "auto_translated": "കത്തു"
+        },
+        "kn": {
+            "legacy_caption_pid": 35954,
+            "legacy_language_pid": 30,
+            "text": "ಅನ್ಸಬ್ಸ್ಕ್ರೈಬ್ ಮಾಡಲು",
+            "auto_translated": "ಅನ್ಸಬ್ಸ್ಕ್ರೈಬ್ ಮಾಡಲು"
+        },
+        "su": {
+            "legacy_caption_pid": 35955,
+            "legacy_language_pid": 31,
+            "text": "pikeun unsubscribe",
+            "auto_translated": "pikeun unsubscribe"
+        },
+        "ku": {
+            "legacy_caption_pid": 35956,
+            "legacy_language_pid": 32,
+            "text": "ji grûpê",
+            "auto_translated": "ji grûpê"
+        },
+        "ps": {
+            "legacy_caption_pid": 35957,
+            "legacy_language_pid": 33,
+            "text": "ته ویسي",
+            "auto_translated": "ته ویسي"
+        },
+        "ro": {
+            "legacy_caption_pid": 35958,
+            "legacy_language_pid": 34,
+            "text": "Pentru a vă dezabona",
+            "auto_translated": "Pentru a vă dezabona"
+        },
+        "id": {
+            "legacy_caption_pid": 35959,
+            "legacy_language_pid": 35,
+            "text": "untuk berhenti berlangganan",
+            "auto_translated": "untuk berhenti berlangganan"
+        },
+        "sd": {
+            "legacy_caption_pid": 35960,
+            "legacy_language_pid": 36,
+            "text": "جي ميمبرشپ ختم ڪرڻ",
+            "auto_translated": "جي ميمبرشپ ختم ڪرڻ"
+        },
+        "af": {
+            "legacy_caption_pid": 35961,
+            "legacy_language_pid": 37,
+            "text": "om die diens te stop",
+            "auto_translated": "om die diens te stop"
+        },
+        "sw": {
+            "legacy_caption_pid": 35962,
+            "legacy_language_pid": 38,
+            "text": "ili kujiondoa",
+            "auto_translated": "ili kujiondoa"
+        },
+        "lo": {
+            "legacy_caption_pid": 35963,
+            "legacy_language_pid": 39,
+            "text": "ຍົກເລີກການ",
+            "auto_translated": "ຍົກເລີກການ"
+        },
+        "nl": {
+            "legacy_caption_pid": 35964,
+            "legacy_language_pid": 40,
+            "text": "om uit te schrijven",
+            "auto_translated": "om uit te schrijven"
+        },
+        "tl": {
+            "legacy_caption_pid": 35965,
+            "legacy_language_pid": 41,
+            "text": "upang mag-unsubscribe",
+            "auto_translated": "upang mag-unsubscribe"
+        },
+        "ne": {
+            "legacy_caption_pid": 35966,
+            "legacy_language_pid": 42,
+            "text": "सदस्यता खारेज गर्न",
+            "auto_translated": "सदस्यता खारेज गर्न"
+        },
+        "hu": {
+            "legacy_caption_pid": 35967,
+            "legacy_language_pid": 43,
+            "text": "Ha le szeretne iratkozni",
+            "auto_translated": "Ha le szeretne iratkozni"
+        },
+        "cs": {
+            "legacy_caption_pid": 35968,
+            "legacy_language_pid": 44,
+            "text": "odhlásit",
+            "auto_translated": "odhlásit"
+        },
+        "el": {
+            "legacy_caption_pid": 35969,
+            "legacy_language_pid": 45,
+            "text": "Για να διαγραφείτε",
+            "auto_translated": "Για να διαγραφείτε"
+        },
+        "sv": {
+            "legacy_caption_pid": 35970,
+            "legacy_language_pid": 46,
+            "text": "För att avbeställa",
+            "auto_translated": "För att avbeställa"
+        },
+        "kk": {
+            "legacy_caption_pid": 35971,
+            "legacy_language_pid": 47,
+            "text": "жазылудан бас",
+            "auto_translated": "жазылудан бас"
+        },
+        "fi": {
+            "legacy_caption_pid": 35972,
+            "legacy_language_pid": 48,
+            "text": "lopettaa tilauksen",
+            "auto_translated": "lopettaa tilauksen"
+        },
+        "da": {
+            "legacy_caption_pid": 35973,
+            "legacy_language_pid": 49,
+            "text": "For at afmelde",
+            "auto_translated": "For at afmelde"
+        },
+        "he": {
+            "legacy_caption_pid": 35974,
+            "legacy_language_pid": 50,
+            "text": "כדי לבטל את המנוי",
+            "auto_translated": "כדי לבטל את המנוי"
+        },
+        "no": {
+            "legacy_caption_pid": 35975,
+            "legacy_language_pid": 51,
+            "text": "For å avslutte abonnementet",
+            "auto_translated": "For å avslutte abonnementet"
+        }
+    }
+}

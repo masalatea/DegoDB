@@ -1,0 +1,321 @@
+{
+    "resource_key": "COMMON_LIB_ENROLL_HEADER_AGREE_TO_TERMS_OF_SERVICE_OPEN_ACTION",
+    "legacy_resource_pid": 1441,
+    "base_group_key": "grp-010-matsuesoft-lib",
+    "additional_group_keys": [],
+    "key_for_update": "Q4bcmD4qTNiQJ800Kne3djYVfn9q2LJE2uPdzfR5xDIBYlbMO5dlqLwgQIEpFz7xRDDBMHOFYyR0rjt2QrV93J3fotRhVVHD0rQjLSSaI92spJyTgZKjytc7P5Aa042k",
+    "sort_group": "ENROLL",
+    "key_name": "COMMON_LIB_ENROLL_HEADER_AGREE_TO_TERMS_OF_SERVICE_OPEN_ACTION",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": false,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 6038,
+            "legacy_language_pid": 1,
+            "text": "利用規約を開く",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 6039,
+            "legacy_language_pid": 2,
+            "text": "Open Terms of Service",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 6040,
+            "legacy_language_pid": 3,
+            "text": "打开利用条款",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 6041,
+            "legacy_language_pid": 4,
+            "text": "이용 약관 열기",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 10808,
+            "legacy_language_pid": 5,
+            "text": "Condiciones de servicio abiertas",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 10809,
+            "legacy_language_pid": 6,
+            "text": "Termos de Serviço abertos",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 10810,
+            "legacy_language_pid": 7,
+            "text": "打開利用條款",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 16483,
+            "legacy_language_pid": 8,
+            "text": "Conditions de service ouvertes",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 16484,
+            "legacy_language_pid": 9,
+            "text": "सेवा की शर्तें खोलें",
+            "auto_translated": ""
+        },
+        "ar": {
+            "legacy_caption_pid": 31326,
+            "legacy_language_pid": 10,
+            "text": "شروط فتح الخدمة",
+            "auto_translated": "شروط فتح الخدمة"
+        },
+        "fa": {
+            "legacy_caption_pid": 31327,
+            "legacy_language_pid": 11,
+            "text": "شرایط باز کردن خدمات",
+            "auto_translated": "شرایط باز کردن خدمات"
+        },
+        "de": {
+            "legacy_caption_pid": 31328,
+            "legacy_language_pid": 12,
+            "text": "Offene Nutzungsbedingungen",
+            "auto_translated": "Offene Nutzungsbedingungen"
+        },
+        "ru": {
+            "legacy_caption_pid": 31329,
+            "legacy_language_pid": 13,
+            "text": "Открытые Условия предоставления услуг",
+            "auto_translated": "Открытые Условия предоставления услуг"
+        },
+        "ms": {
+            "legacy_caption_pid": 31330,
+            "legacy_language_pid": 14,
+            "text": "Terma terbuka Perkhidmatan",
+            "auto_translated": "Terma terbuka Perkhidmatan"
+        },
+        "ta": {
+            "legacy_caption_pid": 31331,
+            "legacy_language_pid": 15,
+            "text": "சேவை திறந்த விதிமுறைகள்",
+            "auto_translated": "சேவை திறந்த விதிமுறைகள்"
+        },
+        "it": {
+            "legacy_caption_pid": 31332,
+            "legacy_language_pid": 16,
+            "text": "Aperte Termini di servizio",
+            "auto_translated": "Aperte Termini di servizio"
+        },
+        "bn": {
+            "legacy_caption_pid": 31333,
+            "legacy_language_pid": 17,
+            "text": "পরিষেবার শর্তাবলী খুলুন",
+            "auto_translated": "পরিষেবার শর্তাবলী খুলুন"
+        },
+        "tr": {
+            "legacy_caption_pid": 31334,
+            "legacy_language_pid": 18,
+            "text": "Hizmet Açık Şartları",
+            "auto_translated": "Hizmet Açık Şartları"
+        },
+        "vi": {
+            "legacy_caption_pid": 31335,
+            "legacy_language_pid": 19,
+            "text": "Mở Điều khoản Dịch vụ",
+            "auto_translated": "Mở Điều khoản Dịch vụ"
+        },
+        "pl": {
+            "legacy_caption_pid": 31336,
+            "legacy_language_pid": 20,
+            "text": "Otwarte Warunki korzystania z usługi",
+            "auto_translated": "Otwarte Warunki korzystania z usługi"
+        },
+        "jv": {
+            "legacy_caption_pid": 31337,
+            "legacy_language_pid": 21,
+            "text": "Open Terms of Service",
+            "auto_translated": "Open Terms of Service"
+        },
+        "pa": {
+            "legacy_caption_pid": 31338,
+            "legacy_language_pid": 22,
+            "text": "ਸੇਵਾ ਦੇ ਓਪਨ ਨਿਯਮ",
+            "auto_translated": "ਸੇਵਾ ਦੇ ਓਪਨ ਨਿਯਮ"
+        },
+        "th": {
+            "legacy_caption_pid": 31339,
+            "legacy_language_pid": 23,
+            "text": "เปิดเงื่อนไขการให้บริการ",
+            "auto_translated": "เปิดเงื่อนไขการให้บริการ"
+        },
+        "te": {
+            "legacy_caption_pid": 39392,
+            "legacy_language_pid": 24,
+            "text": "సేవా నిబంధనలను తెరువు",
+            "auto_translated": "సేవా నిబంధనలను తెరువు"
+        },
+        "mr": {
+            "legacy_caption_pid": 39393,
+            "legacy_language_pid": 25,
+            "text": "सेवा अटी उघडा",
+            "auto_translated": "सेवा अटी उघडा"
+        },
+        "ur": {
+            "legacy_caption_pid": 39394,
+            "legacy_language_pid": 26,
+            "text": "کھولیں سروس کی شرائط",
+            "auto_translated": "کھولیں سروس کی شرائط"
+        },
+        "gu": {
+            "legacy_caption_pid": 39395,
+            "legacy_language_pid": 27,
+            "text": "સેવાની શરતો ખોલો",
+            "auto_translated": "સેવાની શરતો ખોલો"
+        },
+        "uk": {
+            "legacy_caption_pid": 39396,
+            "legacy_language_pid": 28,
+            "text": "Відкриті Загальні положення та умови",
+            "auto_translated": "Відкриті Загальні положення та умови"
+        },
+        "ml": {
+            "legacy_caption_pid": 39397,
+            "legacy_language_pid": 29,
+            "text": "സേവന നിബന്ധനകൾ തുറക്കുക",
+            "auto_translated": "സേവന നിബന്ധനകൾ തുറക്കുക"
+        },
+        "kn": {
+            "legacy_caption_pid": 39398,
+            "legacy_language_pid": 30,
+            "text": "ಸೇವಾ ನಿಯಮಗಳನ್ನು ತೆರೆ",
+            "auto_translated": "ಸೇವಾ ನಿಯಮಗಳನ್ನು ತೆರೆ"
+        },
+        "su": {
+            "legacy_caption_pid": 39399,
+            "legacy_language_pid": 31,
+            "text": "Buka Sarat Service",
+            "auto_translated": "Buka Sarat Service"
+        },
+        "ku": {
+            "legacy_caption_pid": 39400,
+            "legacy_language_pid": 32,
+            "text": "Termên Open of Service",
+            "auto_translated": "Termên Open of Service"
+        },
+        "ps": {
+            "legacy_caption_pid": 39401,
+            "legacy_language_pid": 33,
+            "text": "د Service دابرخه شرطونه",
+            "auto_translated": "د Service دابرخه شرطونه"
+        },
+        "ro": {
+            "legacy_caption_pid": 39402,
+            "legacy_language_pid": 34,
+            "text": "Condiții deschise de serviciu",
+            "auto_translated": "Condiții deschise de serviciu"
+        },
+        "id": {
+            "legacy_caption_pid": 39403,
+            "legacy_language_pid": 35,
+            "text": "Terbuka Persyaratan Layanan",
+            "auto_translated": "Terbuka Persyaratan Layanan"
+        },
+        "sd": {
+            "legacy_caption_pid": 39404,
+            "legacy_language_pid": 36,
+            "text": "خدمت جي کليل شرطن",
+            "auto_translated": "خدمت جي کليل شرطن"
+        },
+        "af": {
+            "legacy_caption_pid": 39405,
+            "legacy_language_pid": 37,
+            "text": "Oop Algemene Diens",
+            "auto_translated": "Oop Algemene Diens"
+        },
+        "sw": {
+            "legacy_caption_pid": 39406,
+            "legacy_language_pid": 38,
+            "text": "Open Masharti ya Huduma",
+            "auto_translated": "Open Masharti ya Huduma"
+        },
+        "lo": {
+            "legacy_caption_pid": 39407,
+            "legacy_language_pid": 39,
+            "text": "ເປີດເງື່ອນໄຂການໃຫ້ບໍລິການ",
+            "auto_translated": "ເປີດເງື່ອນໄຂການໃຫ້ບໍລິການ"
+        },
+        "nl": {
+            "legacy_caption_pid": 39408,
+            "legacy_language_pid": 40,
+            "text": "Open Gebruiksvoorwaarden",
+            "auto_translated": "Open Gebruiksvoorwaarden"
+        },
+        "tl": {
+            "legacy_caption_pid": 39409,
+            "legacy_language_pid": 41,
+            "text": "Buksan ang Mga Tuntunin ng Serbisyo",
+            "auto_translated": "Buksan ang Mga Tuntunin ng Serbisyo"
+        },
+        "ne": {
+            "legacy_caption_pid": 39410,
+            "legacy_language_pid": 42,
+            "text": "सेवा सर्तहरू खुला",
+            "auto_translated": "सेवा सर्तहरू खुला"
+        },
+        "hu": {
+            "legacy_caption_pid": 39411,
+            "legacy_language_pid": 43,
+            "text": "Nyílt szolgáltatási feltételek",
+            "auto_translated": "Nyílt szolgáltatási feltételek"
+        },
+        "cs": {
+            "legacy_caption_pid": 39412,
+            "legacy_language_pid": 44,
+            "text": "Otevřené Podmínky služby",
+            "auto_translated": "Otevřené Podmínky služby"
+        },
+        "el": {
+            "legacy_caption_pid": 39413,
+            "legacy_language_pid": 45,
+            "text": "Ανοικτή Όροι Χρήσης",
+            "auto_translated": "Ανοικτή Όροι Χρήσης"
+        },
+        "sv": {
+            "legacy_caption_pid": 39414,
+            "legacy_language_pid": 46,
+            "text": "Öppna användarvillkor",
+            "auto_translated": "Öppna användarvillkor"
+        },
+        "kk": {
+            "legacy_caption_pid": 39415,
+            "legacy_language_pid": 47,
+            "text": "Қызмет Ашық шарттары",
+            "auto_translated": "Қызмет Ашық шарттары"
+        },
+        "fi": {
+            "legacy_caption_pid": 39416,
+            "legacy_language_pid": 48,
+            "text": "Avoin käyttöehtoja",
+            "auto_translated": "Avoin käyttöehtoja"
+        },
+        "da": {
+            "legacy_caption_pid": 39417,
+            "legacy_language_pid": 49,
+            "text": "Åbne Servicevilkår",
+            "auto_translated": "Åbne Servicevilkår"
+        },
+        "he": {
+            "legacy_caption_pid": 39418,
+            "legacy_language_pid": 50,
+            "text": "תנאי פתיחה של שירות",
+            "auto_translated": "תנאי פתיחה של שירות"
+        },
+        "no": {
+            "legacy_caption_pid": 39419,
+            "legacy_language_pid": 51,
+            "text": "Åpne Vilkår for bruk",
+            "auto_translated": "Åpne Vilkår for bruk"
+        }
+    }
+}

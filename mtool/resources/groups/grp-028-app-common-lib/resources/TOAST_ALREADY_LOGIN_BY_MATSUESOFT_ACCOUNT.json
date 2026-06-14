@@ -1,0 +1,321 @@
+{
+    "resource_key": "TOAST_ALREADY_LOGIN_BY_MATSUESOFT_ACCOUNT",
+    "legacy_resource_pid": 923,
+    "base_group_key": "grp-028-app-common-lib",
+    "additional_group_keys": [],
+    "key_for_update": "ObVICtO7xAHWt18spHAzmO6wkLRVh6QG5fFZUHia6FL8enurEAMAD4I6ubxy4BFRXD7AgX2ll4EuWCOCFJBekCh3Wr1sJqg0qcsblqCZaPFLYR8kSNniopIPrF7MJZmd",
+    "sort_group": "Toast",
+    "key_name": "TOAST_ALREADY_LOGIN_BY_MATSUESOFT_ACCOUNT",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": false,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 911,
+            "legacy_language_pid": 1,
+            "text": "既にMatsuesoftアカウントでログイン中です。一端ログアウトしてからログイン下さい。",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 912,
+            "legacy_language_pid": 2,
+            "text": "You are already Logged in by Matsuesoft Account. Please logout before login.",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 6476,
+            "legacy_language_pid": 3,
+            "text": "您在Matsuesoft帐户已经登录。请注销并退出。",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 6477,
+            "legacy_language_pid": 4,
+            "text": "이미 Matsuesoft 계정으로 로그인 중입니다. 로그아웃하고 다시 로그인하세요.",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 10265,
+            "legacy_language_pid": 5,
+            "text": "Ya has iniciado sesión en la cuenta de Matsuesoft. Salga antes de iniciar sesión.",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 10266,
+            "legacy_language_pid": 6,
+            "text": "Ya iniciou sessão na conta de Matsuesoft. Salga antes de iniciar sessão.",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 10267,
+            "legacy_language_pid": 7,
+            "text": "您在Matsuesoft帳戶已經登錄。請註銷並退出。",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 16215,
+            "legacy_language_pid": 8,
+            "text": "Vous êtes déjà connecté par le compte Matsuesoft. Veuillez vous déconnecter avant de vous connecter.",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 16216,
+            "legacy_language_pid": 9,
+            "text": "आप पहले से ही Matsuesoft खाता से लॉग इन हैं। लॉगिन से पहले लॉगआउट करें",
+            "auto_translated": ""
+        },
+        "ar": {
+            "legacy_caption_pid": 28960,
+            "legacy_language_pid": 10,
+            "text": "قمت بتسجيل بالفعل في حساب في Matsuesoft. يرجى تسجيل الخروج وتسجيل الخروج.",
+            "auto_translated": "قمت بتسجيل بالفعل في حساب في Matsuesoft. يرجى تسجيل الخروج وتسجيل الخروج."
+        },
+        "fa": {
+            "legacy_caption_pid": 28961,
+            "legacy_language_pid": 11,
+            "text": "شما در حال حاضر در حساب Matsuesoft وارد سایت شوید. لطفا از سیستم خارج و از سیستم خارج شوید.",
+            "auto_translated": "شما در حال حاضر در حساب Matsuesoft وارد سایت شوید. لطفا از سیستم خارج و از سیستم خارج شوید."
+        },
+        "de": {
+            "legacy_caption_pid": 28962,
+            "legacy_language_pid": 12,
+            "text": "Sie sind bereits bei Matsuesoft Konto angemeldet. Bitte melden Sie sich ab und melden Sie sich an.",
+            "auto_translated": "Sie sind bereits bei Matsuesoft Konto angemeldet. Bitte melden Sie sich ab und melden Sie sich an."
+        },
+        "ru": {
+            "legacy_caption_pid": 28963,
+            "legacy_language_pid": 13,
+            "text": "Вы уже зарегистрированы на Matsuesoft счете. Пожалуйста, выйдите из системы и выйти из системы.",
+            "auto_translated": "Вы уже зарегистрированы на Matsuesoft счете. Пожалуйста, выйдите из системы и выйти из системы."
+        },
+        "ms": {
+            "legacy_caption_pid": 28964,
+            "legacy_language_pid": 14,
+            "text": "Anda sudah log masuk pada akaun Matsuesoft. Sila log keluar dan log keluar.",
+            "auto_translated": "Anda sudah log masuk pada akaun Matsuesoft. Sila log keluar dan log keluar."
+        },
+        "ta": {
+            "legacy_caption_pid": 28965,
+            "legacy_language_pid": 15,
+            "text": "நீங்கள் ஏற்கனவே Matsuesoft கணக்கு உள்நுழைந்துள்ளீர்கள். வெளியே உள்நுழைந்து வெளியே உள்நுழையவும்.",
+            "auto_translated": "நீங்கள் ஏற்கனவே Matsuesoft கணக்கு உள்நுழைந்துள்ளீர்கள். வெளியே உள்நுழைந்து வெளியே உள்நுழையவும்."
+        },
+        "it": {
+            "legacy_caption_pid": 28966,
+            "legacy_language_pid": 16,
+            "text": "Sei già effettuato l'accesso al conto Matsuesoft. Si prega di disconnettersi e uscire.",
+            "auto_translated": "Sei già effettuato l'accesso al conto Matsuesoft. Si prega di disconnettersi e uscire."
+        },
+        "bn": {
+            "legacy_caption_pid": 28967,
+            "legacy_language_pid": 17,
+            "text": "আপনি ইতিমধ্যে Matsuesoft অ্যাকাউন্ট এ লগ ইন করেছেন। লগ আউট করে লগ আউট করুন।",
+            "auto_translated": "আপনি ইতিমধ্যে Matsuesoft অ্যাকাউন্ট এ লগ ইন করেছেন। লগ আউট করে লগ আউট করুন।"
+        },
+        "tr": {
+            "legacy_caption_pid": 28968,
+            "legacy_language_pid": 18,
+            "text": "Zaten Matsuesoft hesabına kaydedilir. çıkış yapıp çıkış yapın.",
+            "auto_translated": "Zaten Matsuesoft hesabına kaydedilir. çıkış yapıp çıkış yapın."
+        },
+        "vi": {
+            "legacy_caption_pid": 28969,
+            "legacy_language_pid": 19,
+            "text": "Bạn đã đăng nhập vào tài khoản Matsuesoft. Vui lòng đăng xuất và đăng xuất.",
+            "auto_translated": "Bạn đã đăng nhập vào tài khoản Matsuesoft. Vui lòng đăng xuất và đăng xuất."
+        },
+        "pl": {
+            "legacy_caption_pid": 28970,
+            "legacy_language_pid": 20,
+            "text": "Jesteś już zalogowany na koncie Matsuesoft. Proszę się wylogować i zalogować się.",
+            "auto_translated": "Jesteś już zalogowany na koncie Matsuesoft. Proszę się wylogować i zalogować się."
+        },
+        "jv": {
+            "legacy_caption_pid": 28971,
+            "legacy_language_pid": 21,
+            "text": "Sampeyan wis mlebu ing akun Matsuesoft. Mangga log metu lan mlebu metu.",
+            "auto_translated": "Sampeyan wis mlebu ing akun Matsuesoft. Mangga log metu lan mlebu metu."
+        },
+        "pa": {
+            "legacy_caption_pid": 28972,
+            "legacy_language_pid": 22,
+            "text": "ਤੁਹਾਨੂੰ ਹੀ Matsuesoft ਖਾਤੇ ਵਿੱਚ ਲਾਗਇਨ ਕਰ ਰਹੇ ਹਨ. ਬਾਹਰ ਤੇ ਲਾਗਇਨ ਕਰੋ ਅਤੇ ਲਾਗ ਆਉਟ ਕਰੋ.",
+            "auto_translated": "ਤੁਹਾਨੂੰ ਹੀ Matsuesoft ਖਾਤੇ ਵਿੱਚ ਲਾਗਇਨ ਕਰ ਰਹੇ ਹਨ. ਬਾਹਰ ਤੇ ਲਾਗਇਨ ਕਰੋ ਅਤੇ ਲਾਗ ਆਉਟ ਕਰੋ."
+        },
+        "th": {
+            "legacy_caption_pid": 28973,
+            "legacy_language_pid": 23,
+            "text": "คุณจะถูกบันทึกไว้แล้วในบัญชี Matsuesoft โปรดออกจากระบบและออกจากระบบ",
+            "auto_translated": "คุณจะถูกบันทึกไว้แล้วในบัญชี Matsuesoft โปรดออกจากระบบและออกจากระบบ"
+        },
+        "te": {
+            "legacy_caption_pid": 34856,
+            "legacy_language_pid": 24,
+            "text": "మీరు ఇప్పటికే Matsuesoft ఎకౌంటు లాగిన్ అయ్యారు. లాగ్ అవుట్ మరియు లాగ్ అవుట్ దయచేసి.",
+            "auto_translated": "మీరు ఇప్పటికే Matsuesoft ఎకౌంటు లాగిన్ అయ్యారు. లాగ్ అవుట్ మరియు లాగ్ అవుట్ దయచేసి."
+        },
+        "mr": {
+            "legacy_caption_pid": 34857,
+            "legacy_language_pid": 25,
+            "text": "आपण आधीच Matsuesoft खाते लॉग इन केले आहे. लॉग आउट करा आणि लॉग इन करा.",
+            "auto_translated": "आपण आधीच Matsuesoft खाते लॉग इन केले आहे. लॉग आउट करा आणि लॉग इन करा."
+        },
+        "ur": {
+            "legacy_caption_pid": 34858,
+            "legacy_language_pid": 26,
+            "text": "آپ نے پہلے ہی Matsuesoft اکاؤنٹ میں لاگ ان ہیں. لاگ آؤٹ کریں اور باہر لاگ ان کریں.",
+            "auto_translated": "آپ نے پہلے ہی Matsuesoft اکاؤنٹ میں لاگ ان ہیں. لاگ آؤٹ کریں اور باہر لاگ ان کریں."
+        },
+        "gu": {
+            "legacy_caption_pid": 34859,
+            "legacy_language_pid": 27,
+            "text": "જો તમે પહેલાથી જ Matsuesoft એકાઉન્ટ પર લૉગ ઇન છો. લૉગ આઉટ અને બહાર લૉગ ઇન કરો.",
+            "auto_translated": "જો તમે પહેલાથી જ Matsuesoft એકાઉન્ટ પર લૉગ ઇન છો. લૉગ આઉટ અને બહાર લૉગ ઇન કરો."
+        },
+        "uk": {
+            "legacy_caption_pid": 34860,
+            "legacy_language_pid": 28,
+            "text": "Ви вже зареєстровані на Matsuesoft рахунку. Будь ласка, вийдіть із системи і вийти з системи.",
+            "auto_translated": "Ви вже зареєстровані на Matsuesoft рахунку. Будь ласка, вийдіть із системи і вийти з системи."
+        },
+        "ml": {
+            "legacy_caption_pid": 34861,
+            "legacy_language_pid": 29,
+            "text": "നിങ്ങൾ ഇതിനകം മത്സുഎസൊഫ്ത് അക്കൗണ്ട് ലോഗിൻ ചെയ്തു. ലോഗ് ഔട്ട് പുറത്ത് ദയവായി.",
+            "auto_translated": "നിങ്ങൾ ഇതിനകം മത്സുഎസൊഫ്ത് അക്കൗണ്ട് ലോഗിൻ ചെയ്തു. ലോഗ് ഔട്ട് പുറത്ത് ദയവായി."
+        },
+        "kn": {
+            "legacy_caption_pid": 34862,
+            "legacy_language_pid": 30,
+            "text": "ನೀವು ಈಗಾಗಲೇ Matsuesoft ಖಾತೆಯನ್ನು ಪ್ರವೇಶಿಸಿದ್ದೀರಿ. ಲಾಗ್ ಔಟ್ ಲಾಗ್ ಔಟ್ ಮಾಡಿ.",
+            "auto_translated": "ನೀವು ಈಗಾಗಲೇ Matsuesoft ಖಾತೆಯನ್ನು ಪ್ರವೇಶಿಸಿದ್ದೀರಿ. ಲಾಗ್ ಔಟ್ ಲಾಗ್ ಔಟ್ ಮಾಡಿ."
+        },
+        "su": {
+            "legacy_caption_pid": 34863,
+            "legacy_language_pid": 31,
+            "text": "Anjeun geus asup dina akun Matsuesoft. Mangga kaluar na kaluar.",
+            "auto_translated": "Anjeun geus asup dina akun Matsuesoft. Mangga kaluar na kaluar."
+        },
+        "ku": {
+            "legacy_caption_pid": 34864,
+            "legacy_language_pid": 32,
+            "text": "Tu bi xwe di at account Matsuesoft têketî. Ji kerema xwe log out û log out.",
+            "auto_translated": "Tu bi xwe di at account Matsuesoft têketî. Ji kerema xwe log out û log out."
+        },
+        "ps": {
+            "legacy_caption_pid": 34865,
+            "legacy_language_pid": 33,
+            "text": "تاسو مخکې په Matsuesoft حساب غونډال کې. لطفا وتنه او وتنه.",
+            "auto_translated": "تاسو مخکې په Matsuesoft حساب غونډال کې. لطفا وتنه او وتنه."
+        },
+        "ro": {
+            "legacy_caption_pid": 34866,
+            "legacy_language_pid": 34,
+            "text": "Sunteți deja conectat la contul Matsuesoft. Deconectați-vă și conectați afară.",
+            "auto_translated": "Sunteți deja conectat la contul Matsuesoft. Deconectați-vă și conectați afară."
+        },
+        "id": {
+            "legacy_caption_pid": 34867,
+            "legacy_language_pid": 35,
+            "text": "Anda sudah login di akun Matsuesoft. Silakan log out dan log out.",
+            "auto_translated": "Anda sudah login di akun Matsuesoft. Silakan log out dan log out."
+        },
+        "sd": {
+            "legacy_caption_pid": 34868,
+            "legacy_language_pid": 36,
+            "text": "تون اڳ ۾ ئي Matsuesoft اڪائونٽ تي لاگ ان رهيا آهن. ٻاهر جو لاگ ان ۽ ٻاهر جو لاگ ان ڪريو.",
+            "auto_translated": "تون اڳ ۾ ئي Matsuesoft اڪائونٽ تي لاگ ان رهيا آهن. ٻاهر جو لاگ ان ۽ ٻاهر جو لاگ ان ڪريو."
+        },
+        "af": {
+            "legacy_caption_pid": 34869,
+            "legacy_language_pid": 37,
+            "text": "Jy is reeds aangemeld by Matsuesoft rekening. Asseblief uit te teken en teken uit.",
+            "auto_translated": "Jy is reeds aangemeld by Matsuesoft rekening. Asseblief uit te teken en teken uit."
+        },
+        "sw": {
+            "legacy_caption_pid": 34870,
+            "legacy_language_pid": 38,
+            "text": "Tayari umeingia katika akaunti Matsuesoft. Tafadhali toka na kuingia nje.",
+            "auto_translated": "Tayari umeingia katika akaunti Matsuesoft. Tafadhali toka na kuingia nje."
+        },
+        "lo": {
+            "legacy_caption_pid": 34871,
+            "legacy_language_pid": 39,
+            "text": "ເຈົ້າຍັງບໍ່ໄດ້ເຂົ້າສູ່ລະບົບແລ້ວໃນບັນຊີ Matsuesoft. ກະລຸນາເຂົ້າສູ່ລະບົບແລະອອກຈາກລະບົບ.",
+            "auto_translated": "ເຈົ້າຍັງບໍ່ໄດ້ເຂົ້າສູ່ລະບົບແລ້ວໃນບັນຊີ Matsuesoft. ກະລຸນາເຂົ້າສູ່ລະບົບແລະອອກຈາກລະບົບ."
+        },
+        "nl": {
+            "legacy_caption_pid": 34872,
+            "legacy_language_pid": 40,
+            "text": "Je bent al aangemeld bij Matsuesoft account. Gelieve uit te loggen en uit te loggen.",
+            "auto_translated": "Je bent al aangemeld bij Matsuesoft account. Gelieve uit te loggen en uit te loggen."
+        },
+        "tl": {
+            "legacy_caption_pid": 34873,
+            "legacy_language_pid": 41,
+            "text": "Gumagamit ka na naka-log in sa Matsuesoft account. Mangyaring mag-log out at mag-log out.",
+            "auto_translated": "Gumagamit ka na naka-log in sa Matsuesoft account. Mangyaring mag-log out at mag-log out."
+        },
+        "ne": {
+            "legacy_caption_pid": 34874,
+            "legacy_language_pid": 42,
+            "text": "तपाईंले पहिले नै Matsuesoft खाता मा लग इन हुनुहुन्छ। कृपया लग आउट गर्नुहोस् र लग आउट।",
+            "auto_translated": "तपाईंले पहिले नै Matsuesoft खाता मा लग इन हुनुहुन्छ। कृपया लग आउट गर्नुहोस् र लग आउट।"
+        },
+        "hu": {
+            "legacy_caption_pid": 34875,
+            "legacy_language_pid": 43,
+            "text": "Ön már bejelentkezett a Matsuesoft venni. Kérjük, jelentkezzen ki és jelentkezzen ki.",
+            "auto_translated": "Ön már bejelentkezett a Matsuesoft venni. Kérjük, jelentkezzen ki és jelentkezzen ki."
+        },
+        "cs": {
+            "legacy_caption_pid": 34876,
+            "legacy_language_pid": 44,
+            "text": "Již jste přihlášeni na Matsuesoft účtu. Prosím, přihlaste se a odhlásit.",
+            "auto_translated": "Již jste přihlášeni na Matsuesoft účtu. Prosím, přihlaste se a odhlásit."
+        },
+        "el": {
+            "legacy_caption_pid": 34877,
+            "legacy_language_pid": 45,
+            "text": "Είστε ήδη συνδεδεμένοι στο λογαριασμό Matsuesoft. Παρακαλούμε συνδεθείτε και να αποσυνδεθείτε.",
+            "auto_translated": "Είστε ήδη συνδεδεμένοι στο λογαριασμό Matsuesoft. Παρακαλούμε συνδεθείτε και να αποσυνδεθείτε."
+        },
+        "sv": {
+            "legacy_caption_pid": 34878,
+            "legacy_language_pid": 46,
+            "text": "Du är redan inloggad på Matsuesoft konto. Logga ut och logga ut.",
+            "auto_translated": "Du är redan inloggad på Matsuesoft konto. Logga ut och logga ut."
+        },
+        "kk": {
+            "legacy_caption_pid": 34879,
+            "legacy_language_pid": 47,
+            "text": "Сіз қазірдің өзінде Matsuesoft есебінен тіркеледі. шығу және шығу сұраймыз.",
+            "auto_translated": "Сіз қазірдің өзінде Matsuesoft есебінен тіркеледі. шығу және шығу сұраймыз."
+        },
+        "fi": {
+            "legacy_caption_pid": 34880,
+            "legacy_language_pid": 48,
+            "text": "Olet jo kirjautunut sisään osoitteessa Matsuesoft tilillä. Kirjaudu ulos ja kirjaudu ulos.",
+            "auto_translated": "Olet jo kirjautunut sisään osoitteessa Matsuesoft tilillä. Kirjaudu ulos ja kirjaudu ulos."
+        },
+        "da": {
+            "legacy_caption_pid": 34881,
+            "legacy_language_pid": 49,
+            "text": "Du er allerede logget ind på Matsuesoft konto. Du skal logge ud og logge ud.",
+            "auto_translated": "Du er allerede logget ind på Matsuesoft konto. Du skal logge ud og logge ud."
+        },
+        "he": {
+            "legacy_caption_pid": 34882,
+            "legacy_language_pid": 50,
+            "text": "אתה כבר מחובר אל חשבון Matsuesoft. אנא להתנתק ולהתחבר החוצה.",
+            "auto_translated": "אתה כבר מחובר אל חשבון Matsuesoft. אנא להתנתק ולהתחבר החוצה."
+        },
+        "no": {
+            "legacy_caption_pid": 34883,
+            "legacy_language_pid": 51,
+            "text": "Du er allerede logget inn på Matsuesoft konto. Vennligst logge ut og logge ut.",
+            "auto_translated": "Du er allerede logget inn på Matsuesoft konto. Vennligst logge ut og logge ut."
+        }
+    }
+}

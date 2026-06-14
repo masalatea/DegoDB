@@ -1,0 +1,69 @@
+{
+    "resource_key": "TITLE_CLOUD_EMAIL_TOP",
+    "legacy_resource_pid": 651,
+    "base_group_key": "grp-010-matsuesoft-lib",
+    "additional_group_keys": [],
+    "key_for_update": "czoO0XRhAeZbu7CS9zhMna1rNFAr7GRRRKFKWYAssWTZOY2AX2e0YNypMJzr3QW7MqzwHLKuidIkpgLZFhB2RzCOZR0GyU80y2gXzlKwiMp2MwgBVWmVLQH9wfuqWzZ1",
+    "sort_group": "TITLE",
+    "key_name": "TITLE_CLOUD_EMAIL_TOP",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": true,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 4652,
+            "legacy_language_pid": 1,
+            "text": "メール管理オプション - $DOMAINNAMECAPTION_JP",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 4653,
+            "legacy_language_pid": 2,
+            "text": "Email Management Option - $DOMAINNAMECAPTION_EN",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 14346,
+            "legacy_language_pid": 3,
+            "text": "",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 14347,
+            "legacy_language_pid": 4,
+            "text": "",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 14348,
+            "legacy_language_pid": 5,
+            "text": "Opción de administración de correo electrónico - $DOMAINNAMECAPTION_ES",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 14349,
+            "legacy_language_pid": 6,
+            "text": "Opção de gerenciamento de email - $DOMAINNAMECAPTION_PT",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 14350,
+            "legacy_language_pid": 7,
+            "text": "",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 17307,
+            "legacy_language_pid": 8,
+            "text": "Option de gestion de messagerie - $DOMAINNAMECAPTION_FR",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 17308,
+            "legacy_language_pid": 9,
+            "text": "ईमेल प्रबंधन विकल्प - $ DOMAINNAMECAPTION_HI",
+            "auto_translated": ""
+        }
+    }
+}

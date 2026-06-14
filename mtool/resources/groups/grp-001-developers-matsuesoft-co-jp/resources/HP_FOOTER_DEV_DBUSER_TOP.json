@@ -1,0 +1,27 @@
+{
+    "resource_key": "HP_FOOTER_DEV_DBUSER_TOP",
+    "legacy_resource_pid": 135,
+    "base_group_key": "grp-001-developers-matsuesoft-co-jp",
+    "additional_group_keys": [],
+    "key_for_update": "0",
+    "sort_group": "HP FOOTER",
+    "key_name": "HP_FOOTER_DEV_DBUSER_TOP",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": true,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 4226,
+            "legacy_language_pid": 1,
+            "text": "DBユーザ設定 [設定グループ管理者専用]",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 4227,
+            "legacy_language_pid": 2,
+            "text": "DB User Setting [Setting Group Admin Only]",
+            "auto_translated": ""
+        }
+    }
+}

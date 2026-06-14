@@ -1,0 +1,321 @@
+{
+    "resource_key": "COMMON_LIB_LOGIN_HEADER_FOR_GOOGLE_ACCOUNT",
+    "legacy_resource_pid": 1497,
+    "base_group_key": "grp-010-matsuesoft-lib",
+    "additional_group_keys": [],
+    "key_for_update": "85lmA39l0cGAUlStdgJTY7sx5revBpZ5NfbbanwOlbacRoR52kZ4C45SGySh8wzpl3fhPho1zdpHv2if8uTxTb3uGsAJNiolnPcjdHARZ9CL1zGC3m2tFa2MwvJpf6a0",
+    "sort_group": "LOGIN",
+    "key_name": "COMMON_LIB_LOGIN_HEADER_FOR_GOOGLE_ACCOUNT",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": false,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 6262,
+            "legacy_language_pid": 1,
+            "text": "Googleアカウントでログイン",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 6263,
+            "legacy_language_pid": 2,
+            "text": "Log in with your Google Account",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 6264,
+            "legacy_language_pid": 3,
+            "text": "请使用您的谷歌帐户",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 6265,
+            "legacy_language_pid": 4,
+            "text": "Google 계정으로 로그인",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 11081,
+            "legacy_language_pid": 5,
+            "text": "Accede con tu cuenta de Google",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 11082,
+            "legacy_language_pid": 6,
+            "text": "Faça login com sua Conta do Google",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 11083,
+            "legacy_language_pid": 7,
+            "text": "請使用您的谷歌帳戶",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 17243,
+            "legacy_language_pid": 8,
+            "text": "Connectez-vous avec votre compte Google",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 17244,
+            "legacy_language_pid": 9,
+            "text": "अपने गूगल खाते से लॉग इन करें",
+            "auto_translated": ""
+        },
+        "ar": {
+            "legacy_caption_pid": 32614,
+            "legacy_language_pid": 10,
+            "text": "تسجيل الدخول باستخدام حسابك في Google",
+            "auto_translated": "تسجيل الدخول باستخدام حسابك في Google"
+        },
+        "fa": {
+            "legacy_caption_pid": 32615,
+            "legacy_language_pid": 11,
+            "text": "ورود به سیستم با حساب Google خود",
+            "auto_translated": "ورود به سیستم با حساب Google خود"
+        },
+        "de": {
+            "legacy_caption_pid": 32616,
+            "legacy_language_pid": 12,
+            "text": "Melden Sie sich mit Ihrem Google-Konto",
+            "auto_translated": "Melden Sie sich mit Ihrem Google-Konto"
+        },
+        "ru": {
+            "legacy_caption_pid": 32617,
+            "legacy_language_pid": 13,
+            "text": "Войти с помощью аккаунта Google",
+            "auto_translated": "Войти с помощью аккаунта Google"
+        },
+        "ms": {
+            "legacy_caption_pid": 32618,
+            "legacy_language_pid": 14,
+            "text": "Daftar masuk dengan akaun Google anda",
+            "auto_translated": "Daftar masuk dengan akaun Google anda"
+        },
+        "ta": {
+            "legacy_caption_pid": 32619,
+            "legacy_language_pid": 15,
+            "text": "உங்கள் Google கணக்கில் கொண்டு உள்நுழையவும்",
+            "auto_translated": "உங்கள் Google கணக்கில் கொண்டு உள்நுழையவும்"
+        },
+        "it": {
+            "legacy_caption_pid": 32620,
+            "legacy_language_pid": 16,
+            "text": "Accedi con il tuo account Google",
+            "auto_translated": "Accedi con il tuo account Google"
+        },
+        "bn": {
+            "legacy_caption_pid": 32621,
+            "legacy_language_pid": 17,
+            "text": "আপনার Google অ্যাকাউন্ট দিয়ে সাইন ইন",
+            "auto_translated": "আপনার Google অ্যাকাউন্ট দিয়ে সাইন ইন"
+        },
+        "tr": {
+            "legacy_caption_pid": 32622,
+            "legacy_language_pid": 18,
+            "text": "Google hesabınızla giriş yapın",
+            "auto_translated": "Google hesabınızla giriş yapın"
+        },
+        "vi": {
+            "legacy_caption_pid": 32623,
+            "legacy_language_pid": 19,
+            "text": "Đăng nhập bằng tài khoản Google của bạn",
+            "auto_translated": "Đăng nhập bằng tài khoản Google của bạn"
+        },
+        "pl": {
+            "legacy_caption_pid": 32624,
+            "legacy_language_pid": 20,
+            "text": "Zaloguj się na swoje konto Google",
+            "auto_translated": "Zaloguj się na swoje konto Google"
+        },
+        "jv": {
+            "legacy_caption_pid": 32625,
+            "legacy_language_pid": 21,
+            "text": "Mlebu karo akun Google",
+            "auto_translated": "Mlebu karo akun Google"
+        },
+        "pa": {
+            "legacy_caption_pid": 32626,
+            "legacy_language_pid": 22,
+            "text": "ਆਪਣੇ Google ਖਾਤੇ ਦੇ ਨਾਲ ਸਾਈਨ",
+            "auto_translated": "ਆਪਣੇ Google ਖਾਤੇ ਦੇ ਨਾਲ ਸਾਈਨ"
+        },
+        "th": {
+            "legacy_caption_pid": 32627,
+            "legacy_language_pid": 23,
+            "text": "เข้าสู่ระบบด้วยบัญชี Google ของคุณ",
+            "auto_translated": "เข้าสู่ระบบด้วยบัญชี Google ของคุณ"
+        },
+        "te": {
+            "legacy_caption_pid": 40400,
+            "legacy_language_pid": 24,
+            "text": "మీ Google ఖాతాతో సైన్ ఇన్",
+            "auto_translated": "మీ Google ఖాతాతో సైన్ ఇన్"
+        },
+        "mr": {
+            "legacy_caption_pid": 40401,
+            "legacy_language_pid": 25,
+            "text": "आपल्या Google खात्यासह साइन इन करा",
+            "auto_translated": "आपल्या Google खात्यासह साइन इन करा"
+        },
+        "ur": {
+            "legacy_caption_pid": 40402,
+            "legacy_language_pid": 26,
+            "text": "آپ کے Google اکاؤنٹ کے ساتھ میں سائن ان کریں",
+            "auto_translated": "آپ کے Google اکاؤنٹ کے ساتھ میں سائن ان کریں"
+        },
+        "gu": {
+            "legacy_caption_pid": 40403,
+            "legacy_language_pid": 27,
+            "text": "તમારા Google એકાઉન્ટ સાથે સાઇન ઇન કરો",
+            "auto_translated": "તમારા Google એકાઉન્ટ સાથે સાઇન ઇન કરો"
+        },
+        "uk": {
+            "legacy_caption_pid": 40404,
+            "legacy_language_pid": 28,
+            "text": "Увійти за допомогою облікового запису Google",
+            "auto_translated": "Увійти за допомогою облікового запису Google"
+        },
+        "ml": {
+            "legacy_caption_pid": 40405,
+            "legacy_language_pid": 29,
+            "text": "നിങ്ങളുടെ Google അക്കൗണ്ട് ഉപയോഗിച്ച് പ്രവേശിക്കുക",
+            "auto_translated": "നിങ്ങളുടെ Google അക്കൗണ്ട് ഉപയോഗിച്ച് പ്രവേശിക്കുക"
+        },
+        "kn": {
+            "legacy_caption_pid": 40406,
+            "legacy_language_pid": 30,
+            "text": "ನಿಮ್ಮ Google ಖಾತೆಯೊಂದಿಗೆ ಸೈನ್ ಇನ್",
+            "auto_translated": "ನಿಮ್ಮ Google ಖಾತೆಯೊಂದಿಗೆ ಸೈನ್ ಇನ್"
+        },
+        "su": {
+            "legacy_caption_pid": 40407,
+            "legacy_language_pid": 31,
+            "text": "Asup jeung akun Google Anjeun",
+            "auto_translated": "Asup jeung akun Google Anjeun"
+        },
+        "ku": {
+            "legacy_caption_pid": 40408,
+            "legacy_language_pid": 32,
+            "text": "Sign in bi account Google te",
+            "auto_translated": "Sign in bi account Google te"
+        },
+        "ps": {
+            "legacy_caption_pid": 40409,
+            "legacy_language_pid": 33,
+            "text": "ستاسو د ګووګل ګڼون ننوتنه یا ساین اېن",
+            "auto_translated": "ستاسو د ګووګل ګڼون ننوتنه یا ساین اېن"
+        },
+        "ro": {
+            "legacy_caption_pid": 40410,
+            "legacy_language_pid": 34,
+            "text": "Conectați-vă cu contul dvs. Google",
+            "auto_translated": "Conectați-vă cu contul dvs. Google"
+        },
+        "id": {
+            "legacy_caption_pid": 40411,
+            "legacy_language_pid": 35,
+            "text": "Masuk dengan akun Google Anda",
+            "auto_translated": "Masuk dengan akun Google Anda"
+        },
+        "sd": {
+            "legacy_caption_pid": 40412,
+            "legacy_language_pid": 36,
+            "text": "توهان جي گوگل اڪائونٽ سان سائن ان",
+            "auto_translated": "توهان جي گوگل اڪائونٽ سان سائن ان"
+        },
+        "af": {
+            "legacy_caption_pid": 40413,
+            "legacy_language_pid": 37,
+            "text": "Teken in met jou Google-rekening",
+            "auto_translated": "Teken in met jou Google-rekening"
+        },
+        "sw": {
+            "legacy_caption_pid": 40414,
+            "legacy_language_pid": 38,
+            "text": "Ingia kwa kutumia Akaunti yako ya Google",
+            "auto_translated": "Ingia kwa kutumia Akaunti yako ya Google"
+        },
+        "lo": {
+            "legacy_caption_pid": 40415,
+            "legacy_language_pid": 39,
+            "text": "ເຂົ້າສູ່ລະບົບກັບບັນຊີຂອງທ່ານກູໂກ",
+            "auto_translated": "ເຂົ້າສູ່ລະບົບກັບບັນຊີຂອງທ່ານກູໂກ"
+        },
+        "nl": {
+            "legacy_caption_pid": 40416,
+            "legacy_language_pid": 40,
+            "text": "Log in met uw Google-account",
+            "auto_translated": "Log in met uw Google-account"
+        },
+        "tl": {
+            "legacy_caption_pid": 40417,
+            "legacy_language_pid": 41,
+            "text": "Mag-sign in gamit ang iyong Google account",
+            "auto_translated": "Mag-sign in gamit ang iyong Google account"
+        },
+        "ne": {
+            "legacy_caption_pid": 40418,
+            "legacy_language_pid": 42,
+            "text": "आफ्नो Google खातामा साइन इन गर्नुहोस्",
+            "auto_translated": "आफ्नो Google खातामा साइन इन गर्नुहोस्"
+        },
+        "hu": {
+            "legacy_caption_pid": 40419,
+            "legacy_language_pid": 43,
+            "text": "Jelentkezzen be Google-fiókjába",
+            "auto_translated": "Jelentkezzen be Google-fiókjába"
+        },
+        "cs": {
+            "legacy_caption_pid": 40420,
+            "legacy_language_pid": 44,
+            "text": "Přihlaste se pomocí svého účtu Google",
+            "auto_translated": "Přihlaste se pomocí svého účtu Google"
+        },
+        "el": {
+            "legacy_caption_pid": 40421,
+            "legacy_language_pid": 45,
+            "text": "Συνδεθείτε με τον λογαριασμό σας στο Google",
+            "auto_translated": "Συνδεθείτε με τον λογαριασμό σας στο Google"
+        },
+        "sv": {
+            "legacy_caption_pid": 40422,
+            "legacy_language_pid": 46,
+            "text": "Logga in med ditt Google-konto",
+            "auto_translated": "Logga in med ditt Google-konto"
+        },
+        "kk": {
+            "legacy_caption_pid": 40423,
+            "legacy_language_pid": 47,
+            "text": "Сіздің Google тіркелгісімен кіру",
+            "auto_translated": "Сіздің Google тіркелгісімен кіру"
+        },
+        "fi": {
+            "legacy_caption_pid": 40424,
+            "legacy_language_pid": 48,
+            "text": "Kirjaudu sisään Google-tilin",
+            "auto_translated": "Kirjaudu sisään Google-tilin"
+        },
+        "da": {
+            "legacy_caption_pid": 40425,
+            "legacy_language_pid": 49,
+            "text": "Log ind med din Google-konto",
+            "auto_translated": "Log ind med din Google-konto"
+        },
+        "he": {
+            "legacy_caption_pid": 40426,
+            "legacy_language_pid": 50,
+            "text": "היכנס באמצעות חשבון Google שלך",
+            "auto_translated": "היכנס באמצעות חשבון Google שלך"
+        },
+        "no": {
+            "legacy_caption_pid": 40427,
+            "legacy_language_pid": 51,
+            "text": "Logg deg på med Google-kontoen din",
+            "auto_translated": "Logg deg på med Google-kontoen din"
+        }
+    }
+}

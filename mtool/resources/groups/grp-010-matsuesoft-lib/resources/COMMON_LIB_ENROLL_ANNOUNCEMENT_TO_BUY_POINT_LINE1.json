@@ -1,0 +1,321 @@
+{
+    "resource_key": "COMMON_LIB_ENROLL_ANNOUNCEMENT_TO_BUY_POINT_LINE1",
+    "legacy_resource_pid": 1453,
+    "base_group_key": "grp-010-matsuesoft-lib",
+    "additional_group_keys": [],
+    "key_for_update": "kBIWhEWHB0L0iDq9rZWQNLADj4outeUzg6OyHyDCgB46990KtbEPfdvVj6jjT4DBeOv1mnxbGFS3A4CQ5dkB7uVsvGalx6mQvAkPbtcydTjW8x2sg4ANEu6gZQDDUbXs",
+    "sort_group": "ENROLL",
+    "key_name": "COMMON_LIB_ENROLL_ANNOUNCEMENT_TO_BUY_POINT_LINE1",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": false,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 6086,
+            "legacy_language_pid": 1,
+            "text": "会員ページにログインし、お試しプランをご購入下さい。",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 6087,
+            "legacy_language_pid": 2,
+            "text": "Please login to the membership page and purchase the trial plan.",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 6088,
+            "legacy_language_pid": 3,
+            "text": "登录到会员页面，请购买试用计划。",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 6089,
+            "legacy_language_pid": 4,
+            "text": "회원 페이지에 로그인하여 트라이얼 플랜을 구입하세요.",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 10753,
+            "legacy_language_pid": 5,
+            "text": "Por favor, ingrese a la página de pertenencia y comprenda la plan de prueba.",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 10754,
+            "legacy_language_pid": 6,
+            "text": "Por favor acessar a página de associação e comprar o plano de julgamento.",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 10755,
+            "legacy_language_pid": 7,
+            "text": "登錄到會員頁面，請購買試用計劃。",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 16455,
+            "legacy_language_pid": 8,
+            "text": "Veuillez vous connecter à la page d'adhésion et acheter le plan d'essai.",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 16456,
+            "legacy_language_pid": 9,
+            "text": "कृपया सदस्यता पृष्ठ में लॉगिन करें और परीक्षण योजना खरीदें",
+            "auto_translated": ""
+        },
+        "ar": {
+            "legacy_caption_pid": 31102,
+            "legacy_language_pid": 10,
+            "text": "تسجيل الدخول إلى صفحة الأعضاء، يرجى شراء خطة محاكمة.",
+            "auto_translated": "تسجيل الدخول إلى صفحة الأعضاء، يرجى شراء خطة محاكمة."
+        },
+        "fa": {
+            "legacy_caption_pid": 31103,
+            "legacy_language_pid": 11,
+            "text": "ورود به صفحه عضو، لطفا خرید طرح آزمایشی.",
+            "auto_translated": "ورود به صفحه عضو، لطفا خرید طرح آزمایشی."
+        },
+        "de": {
+            "legacy_caption_pid": 31104,
+            "legacy_language_pid": 12,
+            "text": "Melden Sie sich bei der Mitgliederseite, kaufen Sie bitte den Testplan.",
+            "auto_translated": "Melden Sie sich bei der Mitgliederseite, kaufen Sie bitte den Testplan."
+        },
+        "ru": {
+            "legacy_caption_pid": 31105,
+            "legacy_language_pid": 13,
+            "text": "Войти на страницу членов, пожалуйста, приобрести план суда.",
+            "auto_translated": "Войти на страницу членов, пожалуйста, приобрести план суда."
+        },
+        "ms": {
+            "legacy_caption_pid": 31106,
+            "legacy_language_pid": 14,
+            "text": "Log masuk ke laman ahli, sila membeli pelan perbicaraan.",
+            "auto_translated": "Log masuk ke laman ahli, sila membeli pelan perbicaraan."
+        },
+        "ta": {
+            "legacy_caption_pid": 31107,
+            "legacy_language_pid": 15,
+            "text": "உறுப்பினர் பக்கம் உள்நுழையவும் சோதனைத் திட்டத்திற்கு வாங்குக.",
+            "auto_translated": "உறுப்பினர் பக்கம் உள்நுழையவும் சோதனைத் திட்டத்திற்கு வாங்குக."
+        },
+        "it": {
+            "legacy_caption_pid": 31108,
+            "legacy_language_pid": 16,
+            "text": "Accedere alla pagina di membro, si prega di acquistare il piano di prova.",
+            "auto_translated": "Accedere alla pagina di membro, si prega di acquistare il piano di prova."
+        },
+        "bn": {
+            "legacy_caption_pid": 31109,
+            "legacy_language_pid": 17,
+            "text": "সদস্য পৃষ্ঠায় লগ ইন করুন, বিচারের পরিকল্পনা ক্রয় করুন।",
+            "auto_translated": "সদস্য পৃষ্ঠায় লগ ইন করুন, বিচারের পরিকল্পনা ক্রয় করুন।"
+        },
+        "tr": {
+            "legacy_caption_pid": 31110,
+            "legacy_language_pid": 18,
+            "text": "üye sayfasına giriş yapın, deneme planı satın alın.",
+            "auto_translated": "üye sayfasına giriş yapın, deneme planı satın alın."
+        },
+        "vi": {
+            "legacy_caption_pid": 31111,
+            "legacy_language_pid": 19,
+            "text": "Đăng nhập vào trang thành viên, hãy mua các kế hoạch thử nghiệm.",
+            "auto_translated": "Đăng nhập vào trang thành viên, hãy mua các kế hoạch thử nghiệm."
+        },
+        "pl": {
+            "legacy_caption_pid": 31112,
+            "legacy_language_pid": 20,
+            "text": "Logowanie do strony członkowskim, należy zakupić plan próbną.",
+            "auto_translated": "Logowanie do strony członkowskim, należy zakupić plan próbną."
+        },
+        "jv": {
+            "legacy_caption_pid": 31113,
+            "legacy_language_pid": 21,
+            "text": "Mlebu menyang kaca anggota, mangga tuku rencana nyoba.",
+            "auto_translated": "Mlebu menyang kaca anggota, mangga tuku rencana nyoba."
+        },
+        "pa": {
+            "legacy_caption_pid": 31114,
+            "legacy_language_pid": 22,
+            "text": "ਸਦੱਸ ਸਫ਼ਾ ਕਰਨ ਲਈ ਲਾਗ, ਮੁਕੱਦਮੇ ਦੀ ਯੋਜਨਾ ਨੂੰ ਖਰੀਦਣ ਕਰੋ ਜੀ.",
+            "auto_translated": "ਸਦੱਸ ਸਫ਼ਾ ਕਰਨ ਲਈ ਲਾਗ, ਮੁਕੱਦਮੇ ਦੀ ਯੋਜਨਾ ਨੂੰ ਖਰੀਦਣ ਕਰੋ ਜੀ."
+        },
+        "th": {
+            "legacy_caption_pid": 31115,
+            "legacy_language_pid": 23,
+            "text": "เข้าสู่ระบบเพื่อหน้าสมาชิกโปรดซื้อแผนทดลอง",
+            "auto_translated": "เข้าสู่ระบบเพื่อหน้าสมาชิกโปรดซื้อแผนทดลอง"
+        },
+        "te": {
+            "legacy_caption_pid": 42220,
+            "legacy_language_pid": 24,
+            "text": "సభ్యుని పేజీకి లోనికి ప్రవేశించండి, విచారణ ప్రణాళిక కొనుగోలు దయచేసి.",
+            "auto_translated": "సభ్యుని పేజీకి లోనికి ప్రవేశించండి, విచారణ ప్రణాళిక కొనుగోలు దయచేసి."
+        },
+        "mr": {
+            "legacy_caption_pid": 42221,
+            "legacy_language_pid": 25,
+            "text": "सदस्य पृष्ठ मध्ये लॉग इन करा, चाचणी योजना खरेदी करा.",
+            "auto_translated": "सदस्य पृष्ठ मध्ये लॉग इन करा, चाचणी योजना खरेदी करा."
+        },
+        "ur": {
+            "legacy_caption_pid": 42222,
+            "legacy_language_pid": 26,
+            "text": "رکن صفحے پر لاگ ان کریں، آزمائشی منصوبہ بندی کی خریداری براہ مہربانی.",
+            "auto_translated": "رکن صفحے پر لاگ ان کریں، آزمائشی منصوبہ بندی کی خریداری براہ مہربانی."
+        },
+        "gu": {
+            "legacy_caption_pid": 42223,
+            "legacy_language_pid": 27,
+            "text": "સભ્ય પાનાં પર લોગ ઇન કરો, ટ્રાયલ યોજના ખરીદી કરો.",
+            "auto_translated": "સભ્ય પાનાં પર લોગ ઇન કરો, ટ્રાયલ યોજના ખરીદી કરો."
+        },
+        "uk": {
+            "legacy_caption_pid": 42224,
+            "legacy_language_pid": 28,
+            "text": "Увійти на сторінку членів, будь ласка, придбати план суду.",
+            "auto_translated": "Увійти на сторінку членів, будь ласка, придбати план суду."
+        },
+        "ml": {
+            "legacy_caption_pid": 42225,
+            "legacy_language_pid": 29,
+            "text": "അംഗം പേജിലേക്ക് പ്രവേശിക്കുക, വിചാരണ പ്ലാൻ വാങ്ങുക.",
+            "auto_translated": "അംഗം പേജിലേക്ക് പ്രവേശിക്കുക, വിചാരണ പ്ലാൻ വാങ്ങുക."
+        },
+        "kn": {
+            "legacy_caption_pid": 42226,
+            "legacy_language_pid": 30,
+            "text": "ಸದಸ್ಯ ಪುಟ ಲಾಗಿನ್, ಪ್ರಾಯೋಗಿಕ ಯೋಜನೆಗೆ ಖರೀದಿಸಲು ದಯವಿಟ್ಟು.",
+            "auto_translated": "ಸದಸ್ಯ ಪುಟ ಲಾಗಿನ್, ಪ್ರಾಯೋಗಿಕ ಯೋಜನೆಗೆ ಖರೀದಿಸಲು ದಯವಿಟ್ಟು."
+        },
+        "su": {
+            "legacy_caption_pid": 42227,
+            "legacy_language_pid": 31,
+            "text": "Lebet ka kaca anggota, mangga mésér rencana sidang.",
+            "auto_translated": "Lebet ka kaca anggota, mangga mésér rencana sidang."
+        },
+        "ku": {
+            "legacy_caption_pid": 42228,
+            "legacy_language_pid": 32,
+            "text": "Têkeve ji bo rûpel endam, ji kerema xwe bikirin plana dadgehkirin.",
+            "auto_translated": "Têkeve ji bo rûpel endam, ji kerema xwe bikirin plana dadgehkirin."
+        },
+        "ps": {
+            "legacy_caption_pid": 42229,
+            "legacy_language_pid": 33,
+            "text": "په څېره د غړو پاڼې ته، نو مهرباني وکړئ د محاکمې پلان اخلي.",
+            "auto_translated": "په څېره د غړو پاڼې ته، نو مهرباني وکړئ د محاکمې پلان اخلي."
+        },
+        "ro": {
+            "legacy_caption_pid": 42230,
+            "legacy_language_pid": 34,
+            "text": "Conectați-vă la pagina de membru, vă rugăm să achiziționați planul de proces.",
+            "auto_translated": "Conectați-vă la pagina de membru, vă rugăm să achiziționați planul de proces."
+        },
+        "id": {
+            "legacy_caption_pid": 42231,
+            "legacy_language_pid": 35,
+            "text": "Masuk ke halaman anggota, silahkan membeli rencana uji coba.",
+            "auto_translated": "Masuk ke halaman anggota, silahkan membeli rencana uji coba."
+        },
+        "sd": {
+            "legacy_caption_pid": 42232,
+            "legacy_language_pid": 36,
+            "text": "جي ميمبر صفحي کي جو لاگ ان، جي پرک رٿ خريد ڪريو.",
+            "auto_translated": "جي ميمبر صفحي کي جو لاگ ان، جي پرک رٿ خريد ڪريو."
+        },
+        "af": {
+            "legacy_caption_pid": 42233,
+            "legacy_language_pid": 37,
+            "text": "Teken in om die lid bladsy, kan jy die aankoop van die verhoor plan.",
+            "auto_translated": "Teken in om die lid bladsy, kan jy die aankoop van die verhoor plan."
+        },
+        "sw": {
+            "legacy_caption_pid": 42234,
+            "legacy_language_pid": 38,
+            "text": "Ingia ili mwanachama ukurasa, tafadhali kununua mpango majaribio.",
+            "auto_translated": "Ingia ili mwanachama ukurasa, tafadhali kununua mpango majaribio."
+        },
+        "lo": {
+            "legacy_caption_pid": 42235,
+            "legacy_language_pid": 39,
+            "text": "ເຂົ້າສູ່ລະບົບທີ່ຫນ້າສະມາຊິກ, ກະລຸນາຊື້ແຜນການທົດລອງໄດ້.",
+            "auto_translated": "ເຂົ້າສູ່ລະບົບທີ່ຫນ້າສະມາຊິກ, ກະລຸນາຊື້ແຜນການທົດລອງໄດ້."
+        },
+        "nl": {
+            "legacy_caption_pid": 42236,
+            "legacy_language_pid": 40,
+            "text": "Meld u aan bij de leden pagina, dan kunt u de aankoop van de proef plan.",
+            "auto_translated": "Meld u aan bij de leden pagina, dan kunt u de aankoop van de proef plan."
+        },
+        "tl": {
+            "legacy_caption_pid": 42237,
+            "legacy_language_pid": 41,
+            "text": "Mag-log in sa pahina ng miyembro, mangyaring bilhin ang pagsubok plano.",
+            "auto_translated": "Mag-log in sa pahina ng miyembro, mangyaring bilhin ang pagsubok plano."
+        },
+        "ne": {
+            "legacy_caption_pid": 42238,
+            "legacy_language_pid": 42,
+            "text": "सदस्य पृष्ठ मा लग, कृपया परीक्षण योजना खरीद।",
+            "auto_translated": "सदस्य पृष्ठ मा लग, कृपया परीक्षण योजना खरीद।"
+        },
+        "hu": {
+            "legacy_caption_pid": 42239,
+            "legacy_language_pid": 43,
+            "text": "Jelentkezzen be az oldalra tag, kérjük, vásárolja a tárgyalás tervét.",
+            "auto_translated": "Jelentkezzen be az oldalra tag, kérjük, vásárolja a tárgyalás tervét."
+        },
+        "cs": {
+            "legacy_caption_pid": 42240,
+            "legacy_language_pid": 44,
+            "text": "Přihlaste se do uživatelské stránce, nutno zakoupit zkušební plán.",
+            "auto_translated": "Přihlaste se do uživatelské stránce, nutno zakoupit zkušební plán."
+        },
+        "el": {
+            "legacy_caption_pid": 42241,
+            "legacy_language_pid": 45,
+            "text": "Συνδεθείτε στη σελίδα μέλος, μπορείτε να προμηθευτείτε το σχέδιο δοκιμής.",
+            "auto_translated": "Συνδεθείτε στη σελίδα μέλος, μπορείτε να προμηθευτείτε το σχέδιο δοκιμής."
+        },
+        "sv": {
+            "legacy_caption_pid": 42242,
+            "legacy_language_pid": 46,
+            "text": "Logga in på medlemssida, köp provplanen.",
+            "auto_translated": "Logga in på medlemssida, köp provplanen."
+        },
+        "kk": {
+            "legacy_caption_pid": 42243,
+            "legacy_language_pid": 47,
+            "text": "мүше бетке кіріңіз, сынақ жоспарын сатып алуды сұраймыз.",
+            "auto_translated": "мүше бетке кіріңіз, сынақ жоспарын сатып алуды сұраймыз."
+        },
+        "fi": {
+            "legacy_caption_pid": 42244,
+            "legacy_language_pid": 48,
+            "text": "Kirjautua jäsensivuilta, hanki oikeudenkäyntiä suunnitelma.",
+            "auto_translated": "Kirjautua jäsensivuilta, hanki oikeudenkäyntiä suunnitelma."
+        },
+        "da": {
+            "legacy_caption_pid": 42245,
+            "legacy_language_pid": 49,
+            "text": "Log ind på medlemssiden, skal du købe retssagen planen.",
+            "auto_translated": "Log ind på medlemssiden, skal du købe retssagen planen."
+        },
+        "he": {
+            "legacy_caption_pid": 42246,
+            "legacy_language_pid": 50,
+            "text": "היכנסו לדף חבר, בבקשה לרכוש את תוכנית הניסוי.",
+            "auto_translated": "היכנסו לדף חבר, בבקשה לרכוש את תוכנית הניסוי."
+        },
+        "no": {
+            "legacy_caption_pid": 42247,
+            "legacy_language_pid": 51,
+            "text": "Logg inn på medlemssiden, må du kjøpe rettssaken plan.",
+            "auto_translated": "Logg inn på medlemssiden, må du kjøpe rettssaken plan."
+        }
+    }
+}

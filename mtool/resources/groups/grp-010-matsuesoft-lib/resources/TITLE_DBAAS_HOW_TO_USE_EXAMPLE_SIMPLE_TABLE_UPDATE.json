@@ -1,0 +1,69 @@
+{
+    "resource_key": "TITLE_DBAAS_HOW_TO_USE_EXAMPLE_SIMPLE_TABLE_UPDATE",
+    "legacy_resource_pid": 593,
+    "base_group_key": "grp-010-matsuesoft-lib",
+    "additional_group_keys": [],
+    "key_for_update": "APRxcwGqO7uY8vI3Fc32hACz1aSqinyR85VpL9zNH7P6TIHhSi3Q3TAgt6WvRX8IWqS0bqv73GdxBgRMsK3r9fBgSACNBU6rHZaMq1itlhrCKbUmgBy6KNDKkFF71KhW",
+    "sort_group": "TITLE",
+    "key_name": "TITLE_DBAAS_HOW_TO_USE_EXAMPLE_SIMPLE_TABLE_UPDATE",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": true,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 4700,
+            "legacy_language_pid": 1,
+            "text": "単純な単一テーブルのデータ更新",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 4701,
+            "legacy_language_pid": 2,
+            "text": "Update Data on Simple One Table",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 14466,
+            "legacy_language_pid": 3,
+            "text": "",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 14467,
+            "legacy_language_pid": 4,
+            "text": "",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 14468,
+            "legacy_language_pid": 5,
+            "text": "Actualizar datos en Simple One Table",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 14469,
+            "legacy_language_pid": 6,
+            "text": "Atualizar dados em uma tabela simples",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 14470,
+            "legacy_language_pid": 7,
+            "text": "",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 17355,
+            "legacy_language_pid": 8,
+            "text": "Mettre à jour les données sur une table simple",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 17356,
+            "legacy_language_pid": 9,
+            "text": "सरल एक तालिका पर डेटा अपडेट करें",
+            "auto_translated": ""
+        }
+    }
+}

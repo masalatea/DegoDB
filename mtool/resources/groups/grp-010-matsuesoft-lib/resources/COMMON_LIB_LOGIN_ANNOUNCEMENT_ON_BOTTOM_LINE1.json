@@ -1,0 +1,321 @@
+{
+    "resource_key": "COMMON_LIB_LOGIN_ANNOUNCEMENT_ON_BOTTOM_LINE1",
+    "legacy_resource_pid": 1507,
+    "base_group_key": "grp-010-matsuesoft-lib",
+    "additional_group_keys": [],
+    "key_for_update": "gtBIX8enPgW3PnTWSu1aMXTM2bFWcZUFG0IbysKQGFzVYwARQ0h25d2Vv1rm3uT8nRZ11UYw5qrmI96UzA5uQAtymU9nZ4xEmPablJypvfdHlEr1qlacFX0R0HBYwfZe",
+    "sort_group": "LOGIN",
+    "key_name": "COMMON_LIB_LOGIN_ANNOUNCEMENT_ON_BOTTOM_LINE1",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": false,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 6302,
+            "legacy_language_pid": 1,
+            "text": "いずれかの方法でログインお願い致します。",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 6303,
+            "legacy_language_pid": 2,
+            "text": "Please login in either way.",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 6304,
+            "legacy_language_pid": 3,
+            "text": "可以使用任何方法登录。",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 6305,
+            "legacy_language_pid": 4,
+            "text": "다음 중 하나의 방법으로 로그인 부탁드립니다.",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 11039,
+            "legacy_language_pid": 5,
+            "text": "Inicie sesión de cualquier forma.",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 11040,
+            "legacy_language_pid": 6,
+            "text": "Faça o login de qualquer maneira.",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 11041,
+            "legacy_language_pid": 7,
+            "text": "可以使用任何方法登錄。",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 17221,
+            "legacy_language_pid": 8,
+            "text": "Veuillez vous connecter de l'une ou l'autre manière.",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 17222,
+            "legacy_language_pid": 9,
+            "text": "कृपया किसी भी तरह प्रवेश करें",
+            "auto_translated": ""
+        },
+        "ar": {
+            "legacy_caption_pid": 32418,
+            "legacy_language_pid": 10,
+            "text": "مساعدة دخول أي من الأساليب.",
+            "auto_translated": "مساعدة دخول أي من الأساليب."
+        },
+        "fa": {
+            "legacy_caption_pid": 32419,
+            "legacy_language_pid": 11,
+            "text": "کمک ورود توسط هر یک از روش.",
+            "auto_translated": "کمک ورود توسط هر یک از روش."
+        },
+        "de": {
+            "legacy_caption_pid": 32420,
+            "legacy_language_pid": 12,
+            "text": "Login Hilfe durch eine der Methoden.",
+            "auto_translated": "Login Hilfe durch eine der Methoden."
+        },
+        "ru": {
+            "legacy_caption_pid": 32421,
+            "legacy_language_pid": 13,
+            "text": "Войти при помощи любого из методов.",
+            "auto_translated": "Войти при помощи любого из методов."
+        },
+        "ms": {
+            "legacy_caption_pid": 32422,
+            "legacy_language_pid": 14,
+            "text": "bantuan Login oleh mana-mana kaedah.",
+            "auto_translated": "bantuan Login oleh mana-mana kaedah."
+        },
+        "ta": {
+            "legacy_caption_pid": 32423,
+            "legacy_language_pid": 15,
+            "text": "முறைகள் எந்த உள்நுழைய உதவி.",
+            "auto_translated": "முறைகள் எந்த உள்நுழைய உதவி."
+        },
+        "it": {
+            "legacy_caption_pid": 32424,
+            "legacy_language_pid": 16,
+            "text": "Accesso aiuto da uno qualsiasi dei metodi.",
+            "auto_translated": "Accesso aiuto da uno qualsiasi dei metodi."
+        },
+        "bn": {
+            "legacy_caption_pid": 32425,
+            "legacy_language_pid": 17,
+            "text": "যে কোনো পদ্ধতি দ্বারা লগইন সহায়তা।",
+            "auto_translated": "যে কোনো পদ্ধতি দ্বারা লগইন সহায়তা।"
+        },
+        "tr": {
+            "legacy_caption_pid": 32426,
+            "legacy_language_pid": 18,
+            "text": "yöntemlerin herhangi biri ile Giriş yardımı.",
+            "auto_translated": "yöntemlerin herhangi biri ile Giriş yardımı."
+        },
+        "vi": {
+            "legacy_caption_pid": 32427,
+            "legacy_language_pid": 19,
+            "text": "trợ giúp đăng nhập bằng bất kỳ phương pháp.",
+            "auto_translated": "trợ giúp đăng nhập bằng bất kỳ phương pháp."
+        },
+        "pl": {
+            "legacy_caption_pid": 32428,
+            "legacy_language_pid": 20,
+            "text": "Logowanie pomoc dowolnymi metodami.",
+            "auto_translated": "Logowanie pomoc dowolnymi metodami."
+        },
+        "jv": {
+            "legacy_caption_pid": 32429,
+            "legacy_language_pid": 21,
+            "text": "bantuan Login dening metode apa wae sing.",
+            "auto_translated": "bantuan Login dening metode apa wae sing."
+        },
+        "pa": {
+            "legacy_caption_pid": 32430,
+            "legacy_language_pid": 22,
+            "text": "ਕਿਸੇ ਵੀ ਹੋਰ ਢੰਗ ਨਾਲ ਲਾਗਇਨ ਮਦਦ.",
+            "auto_translated": "ਕਿਸੇ ਵੀ ਹੋਰ ਢੰਗ ਨਾਲ ਲਾਗਇਨ ਮਦਦ."
+        },
+        "th": {
+            "legacy_caption_pid": 32431,
+            "legacy_language_pid": 23,
+            "text": "ความช่วยเหลือเข้าสู่ระบบโดยใด ๆ ของวิธีการ",
+            "auto_translated": "ความช่วยเหลือเข้าสู่ระบบโดยใด ๆ ของวิธีการ"
+        },
+        "te": {
+            "legacy_caption_pid": 40792,
+            "legacy_language_pid": 24,
+            "text": "పద్ధతులు ఏ ద్వారా లాగిన్ సహాయం.",
+            "auto_translated": "పద్ధతులు ఏ ద్వారా లాగిన్ సహాయం."
+        },
+        "mr": {
+            "legacy_caption_pid": 40793,
+            "legacy_language_pid": 25,
+            "text": "पद्धती कोणत्याही लॉग इन करा मदत.",
+            "auto_translated": "पद्धती कोणत्याही लॉग इन करा मदत."
+        },
+        "ur": {
+            "legacy_caption_pid": 40794,
+            "legacy_language_pid": 26,
+            "text": "طریقوں میں سے کسی کی طرف سے لاگ ان کی مدد کی.",
+            "auto_translated": "طریقوں میں سے کسی کی طرف سے لاگ ان کی مدد کی."
+        },
+        "gu": {
+            "legacy_caption_pid": 40795,
+            "legacy_language_pid": 27,
+            "text": "પદ્ધતિઓ કોઈપણ કરીને લૉગિન કરો સહાય.",
+            "auto_translated": "પદ્ધતિઓ કોઈપણ કરીને લૉગિન કરો સહાય."
+        },
+        "uk": {
+            "legacy_caption_pid": 40796,
+            "legacy_language_pid": 28,
+            "text": "Ввійти за допомогою будь-якого з методів.",
+            "auto_translated": "Ввійти за допомогою будь-якого з методів."
+        },
+        "ml": {
+            "legacy_caption_pid": 40797,
+            "legacy_language_pid": 29,
+            "text": "രീതികൾ ഏതെങ്കിലും ലോഗിൻ സഹായം.",
+            "auto_translated": "രീതികൾ ഏതെങ്കിലും ലോഗിൻ സഹായം."
+        },
+        "kn": {
+            "legacy_caption_pid": 40798,
+            "legacy_language_pid": 30,
+            "text": "ಯಾವುದೇ ವಿಧಾನಗಳ ಮೂಲಕ ಸಹಾಯ ಲಾಗಿನ್.",
+            "auto_translated": "ಯಾವುದೇ ವಿಧಾನಗಳ ಮೂಲಕ ಸಹಾಯ ಲಾಗಿನ್."
+        },
+        "su": {
+            "legacy_caption_pid": 40799,
+            "legacy_language_pid": 31,
+            "text": "pitulung Login ku salah sahiji metodeu.",
+            "auto_translated": "pitulung Login ku salah sahiji metodeu."
+        },
+        "ku": {
+            "legacy_caption_pid": 40800,
+            "legacy_language_pid": 32,
+            "text": "alîkarî Login bi destê hin ji rêbazên.",
+            "auto_translated": "alîkarî Login bi destê hin ji rêbazên."
+        },
+        "ps": {
+            "legacy_caption_pid": 40801,
+            "legacy_language_pid": 33,
+            "text": "له خوا د ميتودونو هر ننوتل مرسته.",
+            "auto_translated": "له خوا د ميتودونو هر ننوتل مرسته."
+        },
+        "ro": {
+            "legacy_caption_pid": 40802,
+            "legacy_language_pid": 34,
+            "text": "Conectare ajutor prin oricare dintre metodele.",
+            "auto_translated": "Conectare ajutor prin oricare dintre metodele."
+        },
+        "id": {
+            "legacy_caption_pid": 40803,
+            "legacy_language_pid": 35,
+            "text": "bantuan login dengan salah satu metode.",
+            "auto_translated": "bantuan login dengan salah satu metode."
+        },
+        "sd": {
+            "legacy_caption_pid": 40804,
+            "legacy_language_pid": 36,
+            "text": "جي طريقن جو ڪنهن جي هتي ڪلڪ ڪري مدد.",
+            "auto_translated": "جي طريقن جو ڪنهن جي هتي ڪلڪ ڪري مدد."
+        },
+        "af": {
+            "legacy_caption_pid": 40805,
+            "legacy_language_pid": 37,
+            "text": "Teken hulp deur enige van die metodes.",
+            "auto_translated": "Teken hulp deur enige van die metodes."
+        },
+        "sw": {
+            "legacy_caption_pid": 40806,
+            "legacy_language_pid": 38,
+            "text": "msaada Login na yoyote ya mbinu.",
+            "auto_translated": "msaada Login na yoyote ya mbinu."
+        },
+        "lo": {
+            "legacy_caption_pid": 40807,
+            "legacy_language_pid": 39,
+            "text": "ການຊ່ວຍເຫຼືອລະບົບໂດຍມີວິທີການ.",
+            "auto_translated": "ການຊ່ວຍເຫຼືອລະບົບໂດຍມີວິທີການ."
+        },
+        "nl": {
+            "legacy_caption_pid": 40808,
+            "legacy_language_pid": 40,
+            "text": "Inloggen hulp door een van de methoden.",
+            "auto_translated": "Inloggen hulp door een van de methoden."
+        },
+        "tl": {
+            "legacy_caption_pid": 40809,
+            "legacy_language_pid": 41,
+            "text": "Login ng tulong sa pamamagitan ng anumang mga pamamaraan.",
+            "auto_translated": "Login ng tulong sa pamamagitan ng anumang mga pamamaraan."
+        },
+        "ne": {
+            "legacy_caption_pid": 40810,
+            "legacy_language_pid": 42,
+            "text": "तरीकाहरु को कुनै पनि द्वारा लग इन मद्दत।",
+            "auto_translated": "तरीकाहरु को कुनै पनि द्वारा लग इन मद्दत।"
+        },
+        "hu": {
+            "legacy_caption_pid": 40811,
+            "legacy_language_pid": 43,
+            "text": "Bejelentkezés segítséget módszerek bármelyikével.",
+            "auto_translated": "Bejelentkezés segítséget módszerek bármelyikével."
+        },
+        "cs": {
+            "legacy_caption_pid": 40812,
+            "legacy_language_pid": 44,
+            "text": "Vstup pomoc některou z těchto metod.",
+            "auto_translated": "Vstup pomoc některou z těchto metod."
+        },
+        "el": {
+            "legacy_caption_pid": 40813,
+            "legacy_language_pid": 45,
+            "text": "Είσοδος βοήθεια από οποιαδήποτε από τις μεθόδους.",
+            "auto_translated": "Είσοδος βοήθεια από οποιαδήποτε από τις μεθόδους."
+        },
+        "sv": {
+            "legacy_caption_pid": 40814,
+            "legacy_language_pid": 46,
+            "text": "Logga hjälp av någon av metoderna.",
+            "auto_translated": "Logga hjälp av någon av metoderna."
+        },
+        "kk": {
+            "legacy_caption_pid": 40815,
+            "legacy_language_pid": 47,
+            "text": "кез келген тәсілмен Логин көмек.",
+            "auto_translated": "кез келген тәсілмен Логин көмек."
+        },
+        "fi": {
+            "legacy_caption_pid": 40816,
+            "legacy_language_pid": 48,
+            "text": "Kirjautumisohjeita millä tahansa menetelmistä.",
+            "auto_translated": "Kirjautumisohjeita millä tahansa menetelmistä."
+        },
+        "da": {
+            "legacy_caption_pid": 40817,
+            "legacy_language_pid": 49,
+            "text": "Login hjælp af en af ​​de metoder.",
+            "auto_translated": "Login hjælp af en af ​​de metoder."
+        },
+        "he": {
+            "legacy_caption_pid": 40818,
+            "legacy_language_pid": 50,
+            "text": "עזרת כניסה על ידי כל אחת מהשיטות.",
+            "auto_translated": "עזרת כניסה על ידי כל אחת מהשיטות."
+        },
+        "no": {
+            "legacy_caption_pid": 40819,
+            "legacy_language_pid": 51,
+            "text": "Pålogging hjelp av noen av metodene.",
+            "auto_translated": "Pålogging hjelp av noen av metodene."
+        }
+    }
+}

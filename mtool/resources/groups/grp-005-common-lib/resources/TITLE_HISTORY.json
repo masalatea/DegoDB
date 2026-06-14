@@ -1,0 +1,321 @@
+{
+    "resource_key": "TITLE_HISTORY",
+    "legacy_resource_pid": 554,
+    "base_group_key": "grp-005-common-lib",
+    "additional_group_keys": [],
+    "key_for_update": "9HIh4A2fwhfGaC5b4I8zZhyg1AECqL8CIk4AdWpCypB2HbHe5y6nTAipFncRMeWUqflsiVI6MjVdjSi0ghuiIY9CmG4nXyUF0QOvxMhP5TxTaSyfUNPcamFlueAxn0fs",
+    "sort_group": "TITLE",
+    "key_name": "TITLE_HISTORY",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": false,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 1375,
+            "legacy_language_pid": 1,
+            "text": "更新履歴",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 1376,
+            "legacy_language_pid": 2,
+            "text": "Update History",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 6542,
+            "legacy_language_pid": 3,
+            "text": "更新历史记录",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 6543,
+            "legacy_language_pid": 4,
+            "text": "업데이트 내역",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 10555,
+            "legacy_language_pid": 5,
+            "text": "Historial de actualizaciones",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 10556,
+            "legacy_language_pid": 6,
+            "text": "Histórico de atualizações",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 10557,
+            "legacy_language_pid": 7,
+            "text": "更新歷史記錄",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 16323,
+            "legacy_language_pid": 8,
+            "text": "Historique des mises à jour",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 16324,
+            "legacy_language_pid": 9,
+            "text": " अपडेट इतिहास",
+            "auto_translated": ""
+        },
+        "ar": {
+            "legacy_caption_pid": 30108,
+            "legacy_language_pid": 10,
+            "text": "تاريخ التحديث",
+            "auto_translated": "تاريخ التحديث"
+        },
+        "fa": {
+            "legacy_caption_pid": 30109,
+            "legacy_language_pid": 11,
+            "text": "تاریخ به روز رسانی",
+            "auto_translated": "تاریخ به روز رسانی"
+        },
+        "de": {
+            "legacy_caption_pid": 30110,
+            "legacy_language_pid": 12,
+            "text": "Update-Historie",
+            "auto_translated": "Update-Historie"
+        },
+        "ru": {
+            "legacy_caption_pid": 30111,
+            "legacy_language_pid": 13,
+            "text": "История обновлений",
+            "auto_translated": "История обновлений"
+        },
+        "ms": {
+            "legacy_caption_pid": 30112,
+            "legacy_language_pid": 14,
+            "text": "Kemaskini Sejarah",
+            "auto_translated": "Kemaskini Sejarah"
+        },
+        "ta": {
+            "legacy_caption_pid": 30113,
+            "legacy_language_pid": 15,
+            "text": "புதுப்பிக்கப்பட்டது வரலாறு",
+            "auto_translated": "புதுப்பிக்கப்பட்டது வரலாறு"
+        },
+        "it": {
+            "legacy_caption_pid": 30114,
+            "legacy_language_pid": 16,
+            "text": "Storia Aggiornamento",
+            "auto_translated": "Storia Aggiornamento"
+        },
+        "bn": {
+            "legacy_caption_pid": 30115,
+            "legacy_language_pid": 17,
+            "text": "আপডেট ইতিহাস",
+            "auto_translated": "আপডেট ইতিহাস"
+        },
+        "tr": {
+            "legacy_caption_pid": 30116,
+            "legacy_language_pid": 18,
+            "text": "Güncelleme Tarihi",
+            "auto_translated": "Güncelleme Tarihi"
+        },
+        "vi": {
+            "legacy_caption_pid": 30117,
+            "legacy_language_pid": 19,
+            "text": "Lịch sử cập nhật",
+            "auto_translated": "Lịch sử cập nhật"
+        },
+        "pl": {
+            "legacy_caption_pid": 30118,
+            "legacy_language_pid": 20,
+            "text": "Historia aktualizacji",
+            "auto_translated": "Historia aktualizacji"
+        },
+        "jv": {
+            "legacy_caption_pid": 30119,
+            "legacy_language_pid": 21,
+            "text": "History Update",
+            "auto_translated": "History Update"
+        },
+        "pa": {
+            "legacy_caption_pid": 30120,
+            "legacy_language_pid": 22,
+            "text": "ਅੱਪਡੇਟ ਅਤੀਤ",
+            "auto_translated": "ਅੱਪਡੇਟ ਅਤੀਤ"
+        },
+        "th": {
+            "legacy_caption_pid": 30121,
+            "legacy_language_pid": 23,
+            "text": "ประวัติการอัพเดต",
+            "auto_translated": "ประวัติการอัพเดต"
+        },
+        "te": {
+            "legacy_caption_pid": 36228,
+            "legacy_language_pid": 24,
+            "text": "నవీకరణ చరిత్ర",
+            "auto_translated": "నవీకరణ చరిత్ర"
+        },
+        "mr": {
+            "legacy_caption_pid": 36229,
+            "legacy_language_pid": 25,
+            "text": "अद्यतन इतिहास",
+            "auto_translated": "अद्यतन इतिहास"
+        },
+        "ur": {
+            "legacy_caption_pid": 36230,
+            "legacy_language_pid": 26,
+            "text": "اپ ڈیٹ کی تاریخ",
+            "auto_translated": "اپ ڈیٹ کی تاریخ"
+        },
+        "gu": {
+            "legacy_caption_pid": 36231,
+            "legacy_language_pid": 27,
+            "text": "અપડેટ ઇતિહાસ",
+            "auto_translated": "અપડેટ ઇતિહાસ"
+        },
+        "uk": {
+            "legacy_caption_pid": 36232,
+            "legacy_language_pid": 28,
+            "text": "Історія оновлень",
+            "auto_translated": "Історія оновлень"
+        },
+        "ml": {
+            "legacy_caption_pid": 36233,
+            "legacy_language_pid": 29,
+            "text": "ചരിത്രം അപ്ഡേറ്റ്",
+            "auto_translated": "ചരിത്രം അപ്ഡേറ്റ്"
+        },
+        "kn": {
+            "legacy_caption_pid": 36234,
+            "legacy_language_pid": 30,
+            "text": "ಅಪ್ಡೇಟ್ ಇತಿಹಾಸ",
+            "auto_translated": "ಅಪ್ಡೇಟ್ ಇತಿಹಾಸ"
+        },
+        "su": {
+            "legacy_caption_pid": 36235,
+            "legacy_language_pid": 31,
+            "text": "Sajarah Update",
+            "auto_translated": "Sajarah Update"
+        },
+        "ku": {
+            "legacy_caption_pid": 36236,
+            "legacy_language_pid": 32,
+            "text": "Dîrokê",
+            "auto_translated": "Dîrokê"
+        },
+        "ps": {
+            "legacy_caption_pid": 36237,
+            "legacy_language_pid": 33,
+            "text": "تازه تاریخ",
+            "auto_translated": "تازه تاریخ"
+        },
+        "ro": {
+            "legacy_caption_pid": 36238,
+            "legacy_language_pid": 34,
+            "text": "Istoric actualizări",
+            "auto_translated": "Istoric actualizări"
+        },
+        "id": {
+            "legacy_caption_pid": 36239,
+            "legacy_language_pid": 35,
+            "text": "Sejarah pembaruan",
+            "auto_translated": "Sejarah pembaruan"
+        },
+        "sd": {
+            "legacy_caption_pid": 36240,
+            "legacy_language_pid": 36,
+            "text": "تاريخ تازه",
+            "auto_translated": "تاريخ تازه"
+        },
+        "af": {
+            "legacy_caption_pid": 36241,
+            "legacy_language_pid": 37,
+            "text": "update Geskiedenis",
+            "auto_translated": "update Geskiedenis"
+        },
+        "sw": {
+            "legacy_caption_pid": 36242,
+            "legacy_language_pid": 38,
+            "text": "Mwisho Historia",
+            "auto_translated": "Mwisho Historia"
+        },
+        "lo": {
+            "legacy_caption_pid": 36243,
+            "legacy_language_pid": 39,
+            "text": "ປະຫວັດສາດການປັບປຸງ",
+            "auto_translated": "ປະຫວັດສາດການປັບປຸງ"
+        },
+        "nl": {
+            "legacy_caption_pid": 36244,
+            "legacy_language_pid": 40,
+            "text": "Bijwerkingsgeschiedenis",
+            "auto_translated": "Bijwerkingsgeschiedenis"
+        },
+        "tl": {
+            "legacy_caption_pid": 36245,
+            "legacy_language_pid": 41,
+            "text": "I-update ang Kasaysayan",
+            "auto_translated": "I-update ang Kasaysayan"
+        },
+        "ne": {
+            "legacy_caption_pid": 36246,
+            "legacy_language_pid": 42,
+            "text": "इतिहास अद्यावधिक",
+            "auto_translated": "इतिहास अद्यावधिक"
+        },
+        "hu": {
+            "legacy_caption_pid": 36247,
+            "legacy_language_pid": 43,
+            "text": "Frissítési előzmények",
+            "auto_translated": "Frissítési előzmények"
+        },
+        "cs": {
+            "legacy_caption_pid": 36248,
+            "legacy_language_pid": 44,
+            "text": "Historie aktualizace",
+            "auto_translated": "Historie aktualizace"
+        },
+        "el": {
+            "legacy_caption_pid": 36249,
+            "legacy_language_pid": 45,
+            "text": "Ιστορία Ενημέρωση",
+            "auto_translated": "Ιστορία Ενημέρωση"
+        },
+        "sv": {
+            "legacy_caption_pid": 36250,
+            "legacy_language_pid": 46,
+            "text": "Update History",
+            "auto_translated": "Update History"
+        },
+        "kk": {
+            "legacy_caption_pid": 36251,
+            "legacy_language_pid": 47,
+            "text": "тарихын жаңартыңыз",
+            "auto_translated": "тарихын жаңартыңыз"
+        },
+        "fi": {
+            "legacy_caption_pid": 36252,
+            "legacy_language_pid": 48,
+            "text": "Päivityshistoria",
+            "auto_translated": "Päivityshistoria"
+        },
+        "da": {
+            "legacy_caption_pid": 36253,
+            "legacy_language_pid": 49,
+            "text": "Opdatering Historie",
+            "auto_translated": "Opdatering Historie"
+        },
+        "he": {
+            "legacy_caption_pid": 36254,
+            "legacy_language_pid": 50,
+            "text": "היסטורית עדכון",
+            "auto_translated": "היסטורית עדכון"
+        },
+        "no": {
+            "legacy_caption_pid": 36255,
+            "legacy_language_pid": 51,
+            "text": "Update History",
+            "auto_translated": "Update History"
+        }
+    }
+}

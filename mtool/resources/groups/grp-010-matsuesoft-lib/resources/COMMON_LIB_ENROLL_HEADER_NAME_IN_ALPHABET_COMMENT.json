@@ -1,0 +1,321 @@
+{
+    "resource_key": "COMMON_LIB_ENROLL_HEADER_NAME_IN_ALPHABET_COMMENT",
+    "legacy_resource_pid": 1415,
+    "base_group_key": "grp-010-matsuesoft-lib",
+    "additional_group_keys": [],
+    "key_for_update": "CshAkE8GmcyPWeCUxA3dERNVYzdMjAWufhCj7h7ImZfKYqPsqKCTb0zkJaRGhSWf1sTSIVbO3jHmtdwsxFbiunkTZtsKQm8jiiZeNlwIueVJV3CCEmhPr3BDooFJBmnq",
+    "sort_group": "ENROLL",
+    "key_name": "COMMON_LIB_ENROLL_HEADER_NAME_IN_ALPHABET_COMMENT",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": false,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 5934,
+            "legacy_language_pid": 1,
+            "text": "アルファベット入力",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 5935,
+            "legacy_language_pid": 2,
+            "text": "Alphabetic input",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 5936,
+            "legacy_language_pid": 3,
+            "text": "字母输入",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 5937,
+            "legacy_language_pid": 4,
+            "text": "알파벳 입력",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 10847,
+            "legacy_language_pid": 5,
+            "text": "Entrada alfabética",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 10848,
+            "legacy_language_pid": 6,
+            "text": "Entrada alfabética",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 10849,
+            "legacy_language_pid": 7,
+            "text": "字母輸入",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 16999,
+            "legacy_language_pid": 8,
+            "text": "Entrée alphabétique",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 17000,
+            "legacy_language_pid": 9,
+            "text": "वर्णमाला इनपुट",
+            "auto_translated": ""
+        },
+        "ar": {
+            "legacy_caption_pid": 31508,
+            "legacy_language_pid": 10,
+            "text": "إدخال الأبجدية",
+            "auto_translated": "إدخال الأبجدية"
+        },
+        "fa": {
+            "legacy_caption_pid": 31509,
+            "legacy_language_pid": 11,
+            "text": "ورودی حروف الفبا",
+            "auto_translated": "ورودی حروف الفبا"
+        },
+        "de": {
+            "legacy_caption_pid": 31510,
+            "legacy_language_pid": 12,
+            "text": "Alphabet Eingangs",
+            "auto_translated": "Alphabet Eingangs"
+        },
+        "ru": {
+            "legacy_caption_pid": 31511,
+            "legacy_language_pid": 13,
+            "text": "алфавит ввода",
+            "auto_translated": "алфавит ввода"
+        },
+        "ms": {
+            "legacy_caption_pid": 31512,
+            "legacy_language_pid": 14,
+            "text": "input abjad",
+            "auto_translated": "input abjad"
+        },
+        "ta": {
+            "legacy_caption_pid": 31513,
+            "legacy_language_pid": 15,
+            "text": "நெடுங்கணக்கு உள்ளீடு",
+            "auto_translated": "நெடுங்கணக்கு உள்ளீடு"
+        },
+        "it": {
+            "legacy_caption_pid": 31514,
+            "legacy_language_pid": 16,
+            "text": "ingresso Alphabet",
+            "auto_translated": "ingresso Alphabet"
+        },
+        "bn": {
+            "legacy_caption_pid": 31515,
+            "legacy_language_pid": 17,
+            "text": "বর্ণমালা ইনপুট",
+            "auto_translated": "বর্ণমালা ইনপুট"
+        },
+        "tr": {
+            "legacy_caption_pid": 31516,
+            "legacy_language_pid": 18,
+            "text": "Alfabe girdi",
+            "auto_translated": "Alfabe girdi"
+        },
+        "vi": {
+            "legacy_caption_pid": 31517,
+            "legacy_language_pid": 19,
+            "text": "đầu vào bảng chữ cái",
+            "auto_translated": "đầu vào bảng chữ cái"
+        },
+        "pl": {
+            "legacy_caption_pid": 31518,
+            "legacy_language_pid": 20,
+            "text": "alfabet wejściowy",
+            "auto_translated": "alfabet wejściowy"
+        },
+        "jv": {
+            "legacy_caption_pid": 31519,
+            "legacy_language_pid": 21,
+            "text": "input Alphabet",
+            "auto_translated": "input Alphabet"
+        },
+        "pa": {
+            "legacy_caption_pid": 31520,
+            "legacy_language_pid": 22,
+            "text": "ਵਰਣਮਾਲਾ ਇੰਪੁੱਟ",
+            "auto_translated": "ਵਰਣਮਾਲਾ ਇੰਪੁੱਟ"
+        },
+        "th": {
+            "legacy_caption_pid": 31521,
+            "legacy_language_pid": 23,
+            "text": "การป้อนตัวอักษร",
+            "auto_translated": "การป้อนตัวอักษร"
+        },
+        "te": {
+            "legacy_caption_pid": 39028,
+            "legacy_language_pid": 24,
+            "text": "అక్షరం ఇన్పుట్",
+            "auto_translated": "అక్షరం ఇన్పుట్"
+        },
+        "mr": {
+            "legacy_caption_pid": 39029,
+            "legacy_language_pid": 25,
+            "text": "वर्णमाला इनपुट",
+            "auto_translated": "वर्णमाला इनपुट"
+        },
+        "ur": {
+            "legacy_caption_pid": 39030,
+            "legacy_language_pid": 26,
+            "text": "الف بے 'کے ان پٹ",
+            "auto_translated": "الف بے 'کے ان پٹ"
+        },
+        "gu": {
+            "legacy_caption_pid": 39031,
+            "legacy_language_pid": 27,
+            "text": "આલ્ફાબેટ ઇનપુટ",
+            "auto_translated": "આલ્ફાબેટ ઇનપુટ"
+        },
+        "uk": {
+            "legacy_caption_pid": 39032,
+            "legacy_language_pid": 28,
+            "text": "алфавіт введення",
+            "auto_translated": "алфавіт введення"
+        },
+        "ml": {
+            "legacy_caption_pid": 39033,
+            "legacy_language_pid": 29,
+            "text": "അക്ഷരമാല ഇൻപുട്ട്",
+            "auto_translated": "അക്ഷരമാല ഇൻപുട്ട്"
+        },
+        "kn": {
+            "legacy_caption_pid": 39034,
+            "legacy_language_pid": 30,
+            "text": "ಆಲ್ಫಾಬೆಟ್ ಇನ್ಪುಟ್",
+            "auto_translated": "ಆಲ್ಫಾಬೆಟ್ ಇನ್ಪುಟ್"
+        },
+        "su": {
+            "legacy_caption_pid": 39035,
+            "legacy_language_pid": 31,
+            "text": "input alfabét",
+            "auto_translated": "input alfabét"
+        },
+        "ku": {
+            "legacy_caption_pid": 39036,
+            "legacy_language_pid": 32,
+            "text": "input alphabet",
+            "auto_translated": "input alphabet"
+        },
+        "ps": {
+            "legacy_caption_pid": 39037,
+            "legacy_language_pid": 33,
+            "text": "د الفبا په آخذه",
+            "auto_translated": "د الفبا په آخذه"
+        },
+        "ro": {
+            "legacy_caption_pid": 39038,
+            "legacy_language_pid": 34,
+            "text": "intrare alfabet",
+            "auto_translated": "intrare alfabet"
+        },
+        "id": {
+            "legacy_caption_pid": 39039,
+            "legacy_language_pid": 35,
+            "text": "masukan Alphabet",
+            "auto_translated": "masukan Alphabet"
+        },
+        "sd": {
+            "legacy_caption_pid": 39040,
+            "legacy_language_pid": 36,
+            "text": "رسم الخط پٽ",
+            "auto_translated": "رسم الخط پٽ"
+        },
+        "af": {
+            "legacy_caption_pid": 39041,
+            "legacy_language_pid": 37,
+            "text": "alfabet insette",
+            "auto_translated": "alfabet insette"
+        },
+        "sw": {
+            "legacy_caption_pid": 39042,
+            "legacy_language_pid": 38,
+            "text": "alfabeti ya pembejeo",
+            "auto_translated": "alfabeti ya pembejeo"
+        },
+        "lo": {
+            "legacy_caption_pid": 39043,
+            "legacy_language_pid": 39,
+            "text": "ການປ້ອນຂໍ້ມູນເປັນອັກຂະຣະ",
+            "auto_translated": "ການປ້ອນຂໍ້ມູນເປັນອັກຂະຣະ"
+        },
+        "nl": {
+            "legacy_caption_pid": 39044,
+            "legacy_language_pid": 40,
+            "text": "Alphabet ingang",
+            "auto_translated": "Alphabet ingang"
+        },
+        "tl": {
+            "legacy_caption_pid": 39045,
+            "legacy_language_pid": 41,
+            "text": "Alphabet input",
+            "auto_translated": "Alphabet input"
+        },
+        "ne": {
+            "legacy_caption_pid": 39046,
+            "legacy_language_pid": 42,
+            "text": "वर्णमाला इनपुट",
+            "auto_translated": "वर्णमाला इनपुट"
+        },
+        "hu": {
+            "legacy_caption_pid": 39047,
+            "legacy_language_pid": 43,
+            "text": "ábécé beviteli",
+            "auto_translated": "ábécé beviteli"
+        },
+        "cs": {
+            "legacy_caption_pid": 39048,
+            "legacy_language_pid": 44,
+            "text": "abeceda input",
+            "auto_translated": "abeceda input"
+        },
+        "el": {
+            "legacy_caption_pid": 39049,
+            "legacy_language_pid": 45,
+            "text": "Αλφάβητο εισόδου",
+            "auto_translated": "Αλφάβητο εισόδου"
+        },
+        "sv": {
+            "legacy_caption_pid": 39050,
+            "legacy_language_pid": 46,
+            "text": "alfabetet ingång",
+            "auto_translated": "alfabetet ingång"
+        },
+        "kk": {
+            "legacy_caption_pid": 39051,
+            "legacy_language_pid": 47,
+            "text": "Alphabet енгізу",
+            "auto_translated": "Alphabet енгізу"
+        },
+        "fi": {
+            "legacy_caption_pid": 39052,
+            "legacy_language_pid": 48,
+            "text": "aakkoset tulo",
+            "auto_translated": "aakkoset tulo"
+        },
+        "da": {
+            "legacy_caption_pid": 39053,
+            "legacy_language_pid": 49,
+            "text": "alfabet input",
+            "auto_translated": "alfabet input"
+        },
+        "he": {
+            "legacy_caption_pid": 39054,
+            "legacy_language_pid": 50,
+            "text": "קלט אלפבית",
+            "auto_translated": "קלט אלפבית"
+        },
+        "no": {
+            "legacy_caption_pid": 39055,
+            "legacy_language_pid": 51,
+            "text": "alfabetet innspill",
+            "auto_translated": "alfabetet innspill"
+        }
+    }
+}

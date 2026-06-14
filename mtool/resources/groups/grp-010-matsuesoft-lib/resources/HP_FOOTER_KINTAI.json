@@ -1,0 +1,69 @@
+{
+    "resource_key": "HP_FOOTER_KINTAI",
+    "legacy_resource_pid": 758,
+    "base_group_key": "grp-010-matsuesoft-lib",
+    "additional_group_keys": [],
+    "key_for_update": "ZquDm56eW2ym73hA3wP5PZ6cnMCqzbt2fEO5W3uM1YC3D9iaUIjUcEIMjlZnpXQhK1GKqWC4pknWfS7kUabCYnO0O0R2bB5oQNIAloUCGzQb0lWU6zIk4d8cjKh3gBJN",
+    "sort_group": "HP FOOTER",
+    "key_name": "HP_FOOTER_KINTAI",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": true,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 4606,
+            "legacy_language_pid": 1,
+            "text": "勤怠管理",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 4607,
+            "legacy_language_pid": 2,
+            "text": "Attendance Management",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 14231,
+            "legacy_language_pid": 3,
+            "text": "",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 14232,
+            "legacy_language_pid": 4,
+            "text": "",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 14233,
+            "legacy_language_pid": 5,
+            "text": "Gestión de Asistencia",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 14234,
+            "legacy_language_pid": 6,
+            "text": "Gestão de atendimento",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 14235,
+            "legacy_language_pid": 7,
+            "text": "",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 17133,
+            "legacy_language_pid": 8,
+            "text": "Gestion de présence",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 17134,
+            "legacy_language_pid": 9,
+            "text": "उपस्थिति प्रबंधन",
+            "auto_translated": ""
+        }
+    }
+}

@@ -1,0 +1,321 @@
+{
+    "resource_key": "ACTION_IMPORTD",
+    "legacy_resource_pid": 581,
+    "base_group_key": "grp-005-common-lib",
+    "additional_group_keys": [],
+    "key_for_update": "bvSNPALVPpGrGLCRYqPCbEUp6jPe4OYgcOjqo14WIDsFiCG5TEfs7wm7Wjm5EZJLIusYlThs3noChJGUYXPpLAXZ7f7eOO4nhHIRMINWeM9Re77leYBsrvZrEvWKF7Oe",
+    "sort_group": "ACTION",
+    "key_name": "ACTION_IMPORTD",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": false,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 1351,
+            "legacy_language_pid": 1,
+            "text": "インポートしました",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 1352,
+            "legacy_language_pid": 2,
+            "text": "Imported",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 6518,
+            "legacy_language_pid": 3,
+            "text": "输入了",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 6519,
+            "legacy_language_pid": 4,
+            "text": "가져왔습니다",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 10465,
+            "legacy_language_pid": 5,
+            "text": "Importado",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 10466,
+            "legacy_language_pid": 6,
+            "text": "importados",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 10467,
+            "legacy_language_pid": 7,
+            "text": "輸入了",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 16265,
+            "legacy_language_pid": 8,
+            "text": "importé",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 16266,
+            "legacy_language_pid": 9,
+            "text": "आयातित",
+            "auto_translated": ""
+        },
+        "ar": {
+            "legacy_caption_pid": 29352,
+            "legacy_language_pid": 10,
+            "text": "استوردنا",
+            "auto_translated": "استوردنا"
+        },
+        "fa": {
+            "legacy_caption_pid": 29353,
+            "legacy_language_pid": 11,
+            "text": "ما وارد کرده اند",
+            "auto_translated": "ما وارد کرده اند"
+        },
+        "de": {
+            "legacy_caption_pid": 29354,
+            "legacy_language_pid": 12,
+            "text": "Wir haben importiert",
+            "auto_translated": "Wir haben importiert"
+        },
+        "ru": {
+            "legacy_caption_pid": 29355,
+            "legacy_language_pid": 13,
+            "text": "Мы импортировали",
+            "auto_translated": "Мы импортировали"
+        },
+        "ms": {
+            "legacy_caption_pid": 29356,
+            "legacy_language_pid": 14,
+            "text": "Kami telah mengimport",
+            "auto_translated": "Kami telah mengimport"
+        },
+        "ta": {
+            "legacy_caption_pid": 29357,
+            "legacy_language_pid": 15,
+            "text": "நாம் இறக்குமதி செய்திருக்கிறோம்",
+            "auto_translated": "நாம் இறக்குமதி செய்திருக்கிறோம்"
+        },
+        "it": {
+            "legacy_caption_pid": 29358,
+            "legacy_language_pid": 16,
+            "text": "Abbiamo importato",
+            "auto_translated": "Abbiamo importato"
+        },
+        "bn": {
+            "legacy_caption_pid": 29359,
+            "legacy_language_pid": 17,
+            "text": "আমরা আমদানি করেছি",
+            "auto_translated": "আমরা আমদানি করেছি"
+        },
+        "tr": {
+            "legacy_caption_pid": 29360,
+            "legacy_language_pid": 18,
+            "text": "Biz ithal var",
+            "auto_translated": "Biz ithal var"
+        },
+        "vi": {
+            "legacy_caption_pid": 29361,
+            "legacy_language_pid": 19,
+            "text": "Chúng tôi đã nhập khẩu",
+            "auto_translated": "Chúng tôi đã nhập khẩu"
+        },
+        "pl": {
+            "legacy_caption_pid": 29362,
+            "legacy_language_pid": 20,
+            "text": "Mamy importowane",
+            "auto_translated": "Mamy importowane"
+        },
+        "jv": {
+            "legacy_caption_pid": 29363,
+            "legacy_language_pid": 21,
+            "text": "We tau ngimpor",
+            "auto_translated": "We tau ngimpor"
+        },
+        "pa": {
+            "legacy_caption_pid": 29364,
+            "legacy_language_pid": 22,
+            "text": "ਸਾਨੂੰ ਆਯਾਤ ਕੀਤਾ ਹੈ,",
+            "auto_translated": "ਸਾਨੂੰ ਆਯਾਤ ਕੀਤਾ ਹੈ,"
+        },
+        "th": {
+            "legacy_caption_pid": 29365,
+            "legacy_language_pid": 23,
+            "text": "เราได้นำเข้า",
+            "auto_translated": "เราได้นำเข้า"
+        },
+        "te": {
+            "legacy_caption_pid": 37712,
+            "legacy_language_pid": 24,
+            "text": "మేము దిగుమతి చేశారు",
+            "auto_translated": "మేము దిగుమతి చేశారు"
+        },
+        "mr": {
+            "legacy_caption_pid": 37713,
+            "legacy_language_pid": 25,
+            "text": "आम्ही आयात केले आहेत",
+            "auto_translated": "आम्ही आयात केले आहेत"
+        },
+        "ur": {
+            "legacy_caption_pid": 37714,
+            "legacy_language_pid": 26,
+            "text": "ہم درآمد کرلیا",
+            "auto_translated": "ہم درآمد کرلیا"
+        },
+        "gu": {
+            "legacy_caption_pid": 37715,
+            "legacy_language_pid": 27,
+            "text": "અમે આયાત કરી છે",
+            "auto_translated": "અમે આયાત કરી છે"
+        },
+        "uk": {
+            "legacy_caption_pid": 37716,
+            "legacy_language_pid": 28,
+            "text": "ми імпортували",
+            "auto_translated": "ми імпортували"
+        },
+        "ml": {
+            "legacy_caption_pid": 37717,
+            "legacy_language_pid": 29,
+            "text": "ഞങ്ങൾ ഇറക്കുമതി ചെയ്തു",
+            "auto_translated": "ഞങ്ങൾ ഇറക്കുമതി ചെയ്തു"
+        },
+        "kn": {
+            "legacy_caption_pid": 37718,
+            "legacy_language_pid": 30,
+            "text": "ನಾವು ಆಮದು ಮಾಡಿದ್ದೇವೆ",
+            "auto_translated": "ನಾವು ಆಮದು ಮಾಡಿದ್ದೇವೆ"
+        },
+        "su": {
+            "legacy_caption_pid": 37719,
+            "legacy_language_pid": 31,
+            "text": "Kami geus diimpor",
+            "auto_translated": "Kami geus diimpor"
+        },
+        "ku": {
+            "legacy_caption_pid": 37720,
+            "legacy_language_pid": 32,
+            "text": "Em derhanîn hatine",
+            "auto_translated": "Em derhanîn hatine"
+        },
+        "ps": {
+            "legacy_caption_pid": 37721,
+            "legacy_language_pid": 33,
+            "text": "موږ وارداتي",
+            "auto_translated": "موږ وارداتي"
+        },
+        "ro": {
+            "legacy_caption_pid": 37722,
+            "legacy_language_pid": 34,
+            "text": "Am importat",
+            "auto_translated": "Am importat"
+        },
+        "id": {
+            "legacy_caption_pid": 37723,
+            "legacy_language_pid": 35,
+            "text": "Kami telah mengimpor",
+            "auto_translated": "Kami telah mengimpor"
+        },
+        "sd": {
+            "legacy_caption_pid": 37724,
+            "legacy_language_pid": 36,
+            "text": "اسان آندو آهن",
+            "auto_translated": "اسان آندو آهن"
+        },
+        "af": {
+            "legacy_caption_pid": 37725,
+            "legacy_language_pid": 37,
+            "text": "Ons het ingevoerde",
+            "auto_translated": "Ons het ingevoerde"
+        },
+        "sw": {
+            "legacy_caption_pid": 37726,
+            "legacy_language_pid": 38,
+            "text": "Tumeingiza",
+            "auto_translated": "Tumeingiza"
+        },
+        "lo": {
+            "legacy_caption_pid": 37727,
+            "legacy_language_pid": 39,
+            "text": "ພວກເຮົາໄດ້ນໍາເຂົ້າ",
+            "auto_translated": "ພວກເຮົາໄດ້ນໍາເຂົ້າ"
+        },
+        "nl": {
+            "legacy_caption_pid": 37728,
+            "legacy_language_pid": 40,
+            "text": "We hebben ingevoerd",
+            "auto_translated": "We hebben ingevoerd"
+        },
+        "tl": {
+            "legacy_caption_pid": 37729,
+            "legacy_language_pid": 41,
+            "text": "Na-import namin",
+            "auto_translated": "Na-import namin"
+        },
+        "ne": {
+            "legacy_caption_pid": 37730,
+            "legacy_language_pid": 42,
+            "text": "हामी आयात गरेका",
+            "auto_translated": "हामी आयात गरेका"
+        },
+        "hu": {
+            "legacy_caption_pid": 37731,
+            "legacy_language_pid": 43,
+            "text": "Mi az importált",
+            "auto_translated": "Mi az importált"
+        },
+        "cs": {
+            "legacy_caption_pid": 37732,
+            "legacy_language_pid": 44,
+            "text": "Jsme importovali",
+            "auto_translated": "Jsme importovali"
+        },
+        "el": {
+            "legacy_caption_pid": 37733,
+            "legacy_language_pid": 45,
+            "text": "Έχουμε εισαγάγει",
+            "auto_translated": "Έχουμε εισαγάγει"
+        },
+        "sv": {
+            "legacy_caption_pid": 37734,
+            "legacy_language_pid": 46,
+            "text": "Vi har importerat",
+            "auto_translated": "Vi har importerat"
+        },
+        "kk": {
+            "legacy_caption_pid": 37735,
+            "legacy_language_pid": 47,
+            "text": "Біз импортталған",
+            "auto_translated": "Біз импортталған"
+        },
+        "fi": {
+            "legacy_caption_pid": 37736,
+            "legacy_language_pid": 48,
+            "text": "Olemme tuoneet",
+            "auto_translated": "Olemme tuoneet"
+        },
+        "da": {
+            "legacy_caption_pid": 37737,
+            "legacy_language_pid": 49,
+            "text": "Vi har importeret",
+            "auto_translated": "Vi har importeret"
+        },
+        "he": {
+            "legacy_caption_pid": 37738,
+            "legacy_language_pid": 50,
+            "text": "ייבאנו",
+            "auto_translated": "ייבאנו"
+        },
+        "no": {
+            "legacy_caption_pid": 37739,
+            "legacy_language_pid": 51,
+            "text": "Vi har importert",
+            "auto_translated": "Vi har importert"
+        }
+    }
+}

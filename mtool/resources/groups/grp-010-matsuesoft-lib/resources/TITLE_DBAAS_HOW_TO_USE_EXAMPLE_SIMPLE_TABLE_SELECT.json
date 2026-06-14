@@ -1,0 +1,69 @@
+{
+    "resource_key": "TITLE_DBAAS_HOW_TO_USE_EXAMPLE_SIMPLE_TABLE_SELECT",
+    "legacy_resource_pid": 591,
+    "base_group_key": "grp-010-matsuesoft-lib",
+    "additional_group_keys": [],
+    "key_for_update": "2nEUzRwQeHgRfXQ74g8thIGwQYM7I4VkVpRzEqzQKo19XdN2Vl8W9i6NoaSNlj1HaMMxZ0YIRIJLT7MNzj558o1a3zysJIm6cLUAdrTypgflTgLuOQyhKkvN63RKikCm",
+    "sort_group": "TITLE",
+    "key_name": "TITLE_DBAAS_HOW_TO_USE_EXAMPLE_SIMPLE_TABLE_SELECT",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": true,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 4698,
+            "legacy_language_pid": 1,
+            "text": "単純な単一テーブルからのデータ読み込み",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 4699,
+            "legacy_language_pid": 2,
+            "text": "Read Data from Simple One Table",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 14461,
+            "legacy_language_pid": 3,
+            "text": "",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 14462,
+            "legacy_language_pid": 4,
+            "text": "",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 14463,
+            "legacy_language_pid": 5,
+            "text": "Leer datos de Simple One Table",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 14464,
+            "legacy_language_pid": 6,
+            "text": "Leia dados da tabela simples",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 14465,
+            "legacy_language_pid": 7,
+            "text": "",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 17353,
+            "legacy_language_pid": 8,
+            "text": "Lire les données de Simple One Table",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 17354,
+            "legacy_language_pid": 9,
+            "text": "सरल एक तालिका से डेटा पढ़ें",
+            "auto_translated": ""
+        }
+    }
+}

@@ -1,0 +1,321 @@
+{
+    "resource_key": "COMMON_LIB_ENROLL_LOGIN_TO_MEMBER_PAGE",
+    "legacy_resource_pid": 1451,
+    "base_group_key": "grp-010-matsuesoft-lib",
+    "additional_group_keys": [],
+    "key_for_update": "reC5K1YIbVn798F9NPdvgGqdAAEAq2N991hh2nYXelcW11qLAaO00hny3882jhezOuU8NGpDkBHX9aevjrjjBn8jB1scnbhcOikIblaxDoSv2mtlPJpScNUbsfVxy6lk",
+    "sort_group": "ENROLL",
+    "key_name": "COMMON_LIB_ENROLL_LOGIN_TO_MEMBER_PAGE",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": false,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 6078,
+            "legacy_language_pid": 1,
+            "text": "会員ページにアクセスする",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 6079,
+            "legacy_language_pid": 2,
+            "text": "Access member page",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 6080,
+            "legacy_language_pid": 3,
+            "text": "要访问会员页面",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 6081,
+            "legacy_language_pid": 4,
+            "text": "회원 페이지에 접속",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 10916,
+            "legacy_language_pid": 5,
+            "text": "Acceso a la página de miembros",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 10917,
+            "legacy_language_pid": 6,
+            "text": "Acesse a página do membro",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 10918,
+            "legacy_language_pid": 7,
+            "text": "要訪問會員頁面",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 17041,
+            "legacy_language_pid": 8,
+            "text": "Accéder à la page des membres",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 17042,
+            "legacy_language_pid": 9,
+            "text": "प्रवेश सदस्य पृष्ठ",
+            "auto_translated": ""
+        },
+        "ar": {
+            "legacy_caption_pid": 31816,
+            "legacy_language_pid": 10,
+            "text": "للوصول إلى صفحة الأعضاء",
+            "auto_translated": "للوصول إلى صفحة الأعضاء"
+        },
+        "fa": {
+            "legacy_caption_pid": 31817,
+            "legacy_language_pid": 11,
+            "text": "برای دسترسی به صفحه عضو",
+            "auto_translated": "برای دسترسی به صفحه عضو"
+        },
+        "de": {
+            "legacy_caption_pid": 31818,
+            "legacy_language_pid": 12,
+            "text": "Zum Zugriff auf die Mitgliederseite",
+            "auto_translated": "Zum Zugriff auf die Mitgliederseite"
+        },
+        "ru": {
+            "legacy_caption_pid": 31819,
+            "legacy_language_pid": 13,
+            "text": "Чтобы получить доступ к странице участника",
+            "auto_translated": "Чтобы получить доступ к странице участника"
+        },
+        "ms": {
+            "legacy_caption_pid": 31820,
+            "legacy_language_pid": 14,
+            "text": "Untuk mengakses halaman ahli",
+            "auto_translated": "Untuk mengakses halaman ahli"
+        },
+        "ta": {
+            "legacy_caption_pid": 31821,
+            "legacy_language_pid": 15,
+            "text": "உறுப்பினர் பக்கம் அணுக",
+            "auto_translated": "உறுப்பினர் பக்கம் அணுக"
+        },
+        "it": {
+            "legacy_caption_pid": 31822,
+            "legacy_language_pid": 16,
+            "text": "Per accedere alla pagina membro",
+            "auto_translated": "Per accedere alla pagina membro"
+        },
+        "bn": {
+            "legacy_caption_pid": 31823,
+            "legacy_language_pid": 17,
+            "text": "সদস্য পৃষ্ঠা অ্যাক্সেস করার জন্য",
+            "auto_translated": "সদস্য পৃষ্ঠা অ্যাক্সেস করার জন্য"
+        },
+        "tr": {
+            "legacy_caption_pid": 31824,
+            "legacy_language_pid": 18,
+            "text": "üye sayfasına erişmek için",
+            "auto_translated": "üye sayfasına erişmek için"
+        },
+        "vi": {
+            "legacy_caption_pid": 31825,
+            "legacy_language_pid": 19,
+            "text": "Để truy cập vào trang thành viên",
+            "auto_translated": "Để truy cập vào trang thành viên"
+        },
+        "pl": {
+            "legacy_caption_pid": 31826,
+            "legacy_language_pid": 20,
+            "text": "Aby uzyskać dostęp do strony użytkownika",
+            "auto_translated": "Aby uzyskać dostęp do strony użytkownika"
+        },
+        "jv": {
+            "legacy_caption_pid": 31827,
+            "legacy_language_pid": 21,
+            "text": "Kanggo ngakses kaca anggota",
+            "auto_translated": "Kanggo ngakses kaca anggota"
+        },
+        "pa": {
+            "legacy_caption_pid": 31828,
+            "legacy_language_pid": 22,
+            "text": "ਅੰਗ ਸਫ਼ੇ ਤੱਕ ਪਹੁੰਚ ਕਰਨ ਲਈ",
+            "auto_translated": "ਅੰਗ ਸਫ਼ੇ ਤੱਕ ਪਹੁੰਚ ਕਰਨ ਲਈ"
+        },
+        "th": {
+            "legacy_caption_pid": 31829,
+            "legacy_language_pid": 23,
+            "text": "เพื่อเข้าสู่หน้าสมาชิก",
+            "auto_translated": "เพื่อเข้าสู่หน้าสมาชิก"
+        },
+        "te": {
+            "legacy_caption_pid": 38496,
+            "legacy_language_pid": 24,
+            "text": "సభ్యుని పేజీ యాక్సెస్ చేయడానికి",
+            "auto_translated": "సభ్యుని పేజీ యాక్సెస్ చేయడానికి"
+        },
+        "mr": {
+            "legacy_caption_pid": 38497,
+            "legacy_language_pid": 25,
+            "text": "सदस्य पृष्ठ प्रवेश करण्यासाठी",
+            "auto_translated": "सदस्य पृष्ठ प्रवेश करण्यासाठी"
+        },
+        "ur": {
+            "legacy_caption_pid": 38498,
+            "legacy_language_pid": 26,
+            "text": "رکن صفحہ تک رسائی کی",
+            "auto_translated": "رکن صفحہ تک رسائی کی"
+        },
+        "gu": {
+            "legacy_caption_pid": 38499,
+            "legacy_language_pid": 27,
+            "text": "સભ્ય પાનું ઍક્સેસ કરવા માટે",
+            "auto_translated": "સભ્ય પાનું ઍક્સેસ કરવા માટે"
+        },
+        "uk": {
+            "legacy_caption_pid": 38500,
+            "legacy_language_pid": 28,
+            "text": "Щоб отримати доступ до сторінки учасника",
+            "auto_translated": "Щоб отримати доступ до сторінки учасника"
+        },
+        "ml": {
+            "legacy_caption_pid": 38501,
+            "legacy_language_pid": 29,
+            "text": "അംഗം പേജ് ആക്സസ് ചെയ്യാൻ",
+            "auto_translated": "അംഗം പേജ് ആക്സസ് ചെയ്യാൻ"
+        },
+        "kn": {
+            "legacy_caption_pid": 38502,
+            "legacy_language_pid": 30,
+            "text": "ಸದಸ್ಯ ಪುಟ ಪ್ರವೇಶಿಸಲು",
+            "auto_translated": "ಸದಸ್ಯ ಪುಟ ಪ್ರವೇಶಿಸಲು"
+        },
+        "su": {
+            "legacy_caption_pid": 38503,
+            "legacy_language_pid": 31,
+            "text": "Pikeun ngakses kaca anggota",
+            "auto_translated": "Pikeun ngakses kaca anggota"
+        },
+        "ku": {
+            "legacy_caption_pid": 38504,
+            "legacy_language_pid": 32,
+            "text": "Bo gihiştina rûpel endam",
+            "auto_translated": "Bo gihiştina rûpel endam"
+        },
+        "ps": {
+            "legacy_caption_pid": 38505,
+            "legacy_language_pid": 33,
+            "text": "د غړي مخ لاسرسی",
+            "auto_translated": "د غړي مخ لاسرسی"
+        },
+        "ro": {
+            "legacy_caption_pid": 38506,
+            "legacy_language_pid": 34,
+            "text": "Pentru a accesa pagina de membru",
+            "auto_translated": "Pentru a accesa pagina de membru"
+        },
+        "id": {
+            "legacy_caption_pid": 38507,
+            "legacy_language_pid": 35,
+            "text": "Untuk mengakses halaman anggota",
+            "auto_translated": "Untuk mengakses halaman anggota"
+        },
+        "sd": {
+            "legacy_caption_pid": 38508,
+            "legacy_language_pid": 36,
+            "text": "جي ميمبر صفحو رسائي حاصل ڪرڻ لاء",
+            "auto_translated": "جي ميمبر صفحو رسائي حاصل ڪرڻ لاء"
+        },
+        "af": {
+            "legacy_caption_pid": 38509,
+            "legacy_language_pid": 37,
+            "text": "Om toegang tot die lid bladsy",
+            "auto_translated": "Om toegang tot die lid bladsy"
+        },
+        "sw": {
+            "legacy_caption_pid": 38510,
+            "legacy_language_pid": 38,
+            "text": "Kupata wanachama ukurasa",
+            "auto_translated": "Kupata wanachama ukurasa"
+        },
+        "lo": {
+            "legacy_caption_pid": 38511,
+            "legacy_language_pid": 39,
+            "text": "ໃນການເຂົ້າເຖິງຫນ້າສະມາຊິກໄດ້",
+            "auto_translated": "ໃນການເຂົ້າເຖິງຫນ້າສະມາຊິກໄດ້"
+        },
+        "nl": {
+            "legacy_caption_pid": 38512,
+            "legacy_language_pid": 40,
+            "text": "Voor toegang tot de ledenpagina",
+            "auto_translated": "Voor toegang tot de ledenpagina"
+        },
+        "tl": {
+            "legacy_caption_pid": 38513,
+            "legacy_language_pid": 41,
+            "text": "Upang ma-access ang mga miyembro pahinang",
+            "auto_translated": "Upang ma-access ang mga miyembro pahinang"
+        },
+        "ne": {
+            "legacy_caption_pid": 38514,
+            "legacy_language_pid": 42,
+            "text": "सदस्य पृष्ठ पहुँच गर्न",
+            "auto_translated": "सदस्य पृष्ठ पहुँच गर्न"
+        },
+        "hu": {
+            "legacy_caption_pid": 38515,
+            "legacy_language_pid": 43,
+            "text": "Ahhoz, hogy a tag az oldalon",
+            "auto_translated": "Ahhoz, hogy a tag az oldalon"
+        },
+        "cs": {
+            "legacy_caption_pid": 38516,
+            "legacy_language_pid": 44,
+            "text": "Pro vstup na stránku člen",
+            "auto_translated": "Pro vstup na stránku člen"
+        },
+        "el": {
+            "legacy_caption_pid": 38517,
+            "legacy_language_pid": 45,
+            "text": "Για να αποκτήσετε πρόσβαση στη σελίδα του μέλους",
+            "auto_translated": "Για να αποκτήσετε πρόσβαση στη σελίδα του μέλους"
+        },
+        "sv": {
+            "legacy_caption_pid": 38518,
+            "legacy_language_pid": 46,
+            "text": "För att komma åt medlemssida",
+            "auto_translated": "För att komma åt medlemssida"
+        },
+        "kk": {
+            "legacy_caption_pid": 38519,
+            "legacy_language_pid": 47,
+            "text": "мүше бетке қол жеткізу үшін",
+            "auto_translated": "мүше бетке қол жеткізу үшін"
+        },
+        "fi": {
+            "legacy_caption_pid": 38520,
+            "legacy_language_pid": 48,
+            "text": "Pääset jäsen sivua",
+            "auto_translated": "Pääset jäsen sivua"
+        },
+        "da": {
+            "legacy_caption_pid": 38521,
+            "legacy_language_pid": 49,
+            "text": "For at få adgang medlemmet side",
+            "auto_translated": "For at få adgang medlemmet side"
+        },
+        "he": {
+            "legacy_caption_pid": 38522,
+            "legacy_language_pid": 50,
+            "text": "כדי לגשת לדף חבר",
+            "auto_translated": "כדי לגשת לדף חבר"
+        },
+        "no": {
+            "legacy_caption_pid": 38523,
+            "legacy_language_pid": 51,
+            "text": "For å få tilgang til medlemsside",
+            "auto_translated": "For å få tilgang til medlemsside"
+        }
+    }
+}

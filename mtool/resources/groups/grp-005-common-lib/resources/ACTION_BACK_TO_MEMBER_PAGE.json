@@ -1,0 +1,321 @@
+{
+    "resource_key": "ACTION_BACK_TO_MEMBER_PAGE",
+    "legacy_resource_pid": 1584,
+    "base_group_key": "grp-005-common-lib",
+    "additional_group_keys": [],
+    "key_for_update": "JqcNcdGv0dWph8Nd4IGqY0O3FGS95ekiIYeSQxnn22TXceBVndCX58q0h71ELjuJ33rkkzeJfi5mZV3GGm4coGXQMTpEcnf7h4LLS8eDJ1ogQbII041Q2983lkT8E275",
+    "sort_group": "ACTION",
+    "key_name": "ACTION_BACK_TO_MEMBER_PAGE",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": false,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 7118,
+            "legacy_language_pid": 1,
+            "text": "会員ページのトップに戻る",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 7119,
+            "legacy_language_pid": 2,
+            "text": "Return to the Top of the Member Page",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 7120,
+            "legacy_language_pid": 3,
+            "text": "返回会员页面顶部",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 7121,
+            "legacy_language_pid": 4,
+            "text": "회원 페이지의 맨 위로",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 10380,
+            "legacy_language_pid": 5,
+            "text": "Regresar a la parte superior de la página de miembro",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 10381,
+            "legacy_language_pid": 6,
+            "text": "Retornar ao topo da página do membro",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 10382,
+            "legacy_language_pid": 7,
+            "text": "返回會員頁面頂部",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 16255,
+            "legacy_language_pid": 8,
+            "text": "Retourner au haut de la page Membres",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 16256,
+            "legacy_language_pid": 9,
+            "text": "सदस्य पृष्ठ के शीर्ष पर लौटें",
+            "auto_translated": ""
+        },
+        "ar": {
+            "legacy_caption_pid": 29282,
+            "legacy_language_pid": 10,
+            "text": "العودة إلى أعلى الصفحة عضو",
+            "auto_translated": "العودة إلى أعلى الصفحة عضو"
+        },
+        "fa": {
+            "legacy_caption_pid": 29283,
+            "legacy_language_pid": 11,
+            "text": "بازگشت به بالای صفحه عضو",
+            "auto_translated": "بازگشت به بالای صفحه عضو"
+        },
+        "de": {
+            "legacy_caption_pid": 29284,
+            "legacy_language_pid": 12,
+            "text": "Zum Anfang der Mitgliederseite",
+            "auto_translated": "Zum Anfang der Mitgliederseite"
+        },
+        "ru": {
+            "legacy_caption_pid": 29285,
+            "legacy_language_pid": 13,
+            "text": "Перейти к началу страницы члена",
+            "auto_translated": "Перейти к началу страницы члена"
+        },
+        "ms": {
+            "legacy_caption_pid": 29286,
+            "legacy_language_pid": 14,
+            "text": "Kembali ke bahagian atas halaman ahli",
+            "auto_translated": "Kembali ke bahagian atas halaman ahli"
+        },
+        "ta": {
+            "legacy_caption_pid": 29287,
+            "legacy_language_pid": 15,
+            "text": "மீண்டும் உறுப்பினராக பக்கத்தின் மேல்",
+            "auto_translated": "மீண்டும் உறுப்பினராக பக்கத்தின் மேல்"
+        },
+        "it": {
+            "legacy_caption_pid": 29288,
+            "legacy_language_pid": 16,
+            "text": "Torna all'inizio della pagina membro",
+            "auto_translated": "Torna all'inizio della pagina membro"
+        },
+        "bn": {
+            "legacy_caption_pid": 29289,
+            "legacy_language_pid": 17,
+            "text": "পিছনে সদস্য পৃষ্ঠার উপরে",
+            "auto_translated": "পিছনে সদস্য পৃষ্ঠার উপরে"
+        },
+        "tr": {
+            "legacy_caption_pid": 29290,
+            "legacy_language_pid": 18,
+            "text": "Geri üye Sayfanın en üstüne",
+            "auto_translated": "Geri üye Sayfanın en üstüne"
+        },
+        "vi": {
+            "legacy_caption_pid": 29291,
+            "legacy_language_pid": 19,
+            "text": "Quay lại đầu trang viên",
+            "auto_translated": "Quay lại đầu trang viên"
+        },
+        "pl": {
+            "legacy_caption_pid": 29292,
+            "legacy_language_pid": 20,
+            "text": "Powrót na górę strony użytkownik",
+            "auto_translated": "Powrót na górę strony użytkownik"
+        },
+        "jv": {
+            "legacy_caption_pid": 29293,
+            "legacy_language_pid": 21,
+            "text": "Bali menyang ndhuwur kaca anggota",
+            "auto_translated": "Bali menyang ndhuwur kaca anggota"
+        },
+        "pa": {
+            "legacy_caption_pid": 29294,
+            "legacy_language_pid": 22,
+            "text": "ਵਾਪਸ ਸਦੱਸ ਸਫ਼ੇ ਦੇ ਸਿਖਰ ਨੂੰ",
+            "auto_translated": "ਵਾਪਸ ਸਦੱਸ ਸਫ਼ੇ ਦੇ ਸਿਖਰ ਨੂੰ"
+        },
+        "th": {
+            "legacy_caption_pid": 29295,
+            "legacy_language_pid": 23,
+            "text": "กลับไปที่ด้านบนของหน้าสมาชิกที่",
+            "auto_translated": "กลับไปที่ด้านบนของหน้าสมาชิกที่"
+        },
+        "te": {
+            "legacy_caption_pid": 37852,
+            "legacy_language_pid": 24,
+            "text": "తిరిగి సభ్య పేజీ ఎగువకు",
+            "auto_translated": "తిరిగి సభ్య పేజీ ఎగువకు"
+        },
+        "mr": {
+            "legacy_caption_pid": 37853,
+            "legacy_language_pid": 25,
+            "text": "मागे सदस्य पृष्ठाच्या शीर्षस्थानी",
+            "auto_translated": "मागे सदस्य पृष्ठाच्या शीर्षस्थानी"
+        },
+        "ur": {
+            "legacy_caption_pid": 37854,
+            "legacy_language_pid": 26,
+            "text": "رکن صفحے کے سب پر جایئے",
+            "auto_translated": "رکن صفحے کے سب پر جایئے"
+        },
+        "gu": {
+            "legacy_caption_pid": 37855,
+            "legacy_language_pid": 27,
+            "text": "પાછા સભ્ય પૃષ્ઠની ટોચ પર",
+            "auto_translated": "પાછા સભ્ય પૃષ્ઠની ટોચ પર"
+        },
+        "uk": {
+            "legacy_caption_pid": 37856,
+            "legacy_language_pid": 28,
+            "text": "На початок члена",
+            "auto_translated": "На початок члена"
+        },
+        "ml": {
+            "legacy_caption_pid": 37857,
+            "legacy_language_pid": 29,
+            "text": "തിരികെ അംഗം പേജിന് മുകളിലേക്ക്",
+            "auto_translated": "തിരികെ അംഗം പേജിന് മുകളിലേക്ക്"
+        },
+        "kn": {
+            "legacy_caption_pid": 37858,
+            "legacy_language_pid": 30,
+            "text": "ಬ್ಯಾಕ್ ಸದಸ್ಯ ಪುಟ ಮೇಲಕ್ಕೆ",
+            "auto_translated": "ಬ್ಯಾಕ್ ಸದಸ್ಯ ಪುಟ ಮೇಲಕ್ಕೆ"
+        },
+        "su": {
+            "legacy_caption_pid": 37859,
+            "legacy_language_pid": 31,
+            "text": "Deui ka luhur kaca anggota",
+            "auto_translated": "Deui ka luhur kaca anggota"
+        },
+        "ku": {
+            "legacy_caption_pid": 37860,
+            "legacy_language_pid": 32,
+            "text": "Back to the top of page endam",
+            "auto_translated": "Back to the top of page endam"
+        },
+        "ps": {
+            "legacy_caption_pid": 37861,
+            "legacy_language_pid": 33,
+            "text": "بېرته د غړي مخ په سر کې",
+            "auto_translated": "بېرته د غړي مخ په سر کې"
+        },
+        "ro": {
+            "legacy_caption_pid": 37862,
+            "legacy_language_pid": 34,
+            "text": "Înapoi la partea de sus a paginii membru",
+            "auto_translated": "Înapoi la partea de sus a paginii membru"
+        },
+        "id": {
+            "legacy_caption_pid": 37863,
+            "legacy_language_pid": 35,
+            "text": "Kembali ke atas halaman anggota",
+            "auto_translated": "Kembali ke atas halaman anggota"
+        },
+        "sd": {
+            "legacy_caption_pid": 37864,
+            "legacy_language_pid": 36,
+            "text": "واپس ميمبر صفحي جي چوٽي کي",
+            "auto_translated": "واپس ميمبر صفحي جي چوٽي کي"
+        },
+        "af": {
+            "legacy_caption_pid": 37865,
+            "legacy_language_pid": 37,
+            "text": "Terug na die top van die lid bladsy",
+            "auto_translated": "Terug na die top van die lid bladsy"
+        },
+        "sw": {
+            "legacy_caption_pid": 37866,
+            "legacy_language_pid": 38,
+            "text": "Rudi juu ya mwanachama ukurasa",
+            "auto_translated": "Rudi juu ya mwanachama ukurasa"
+        },
+        "lo": {
+            "legacy_caption_pid": 37867,
+            "legacy_language_pid": 39,
+            "text": "ກັບຄືນໄປບ່ອນເທິງຂອງຫນ້າສະມາຊິກໄດ້",
+            "auto_translated": "ກັບຄືນໄປບ່ອນເທິງຂອງຫນ້າສະມາຊິກໄດ້"
+        },
+        "nl": {
+            "legacy_caption_pid": 37868,
+            "legacy_language_pid": 40,
+            "text": "Terug naar de top van de ledenpagina",
+            "auto_translated": "Terug naar de top van de ledenpagina"
+        },
+        "tl": {
+            "legacy_caption_pid": 37869,
+            "legacy_language_pid": 41,
+            "text": "Bumalik sa tuktok ng pahina miyembro",
+            "auto_translated": "Bumalik sa tuktok ng pahina miyembro"
+        },
+        "ne": {
+            "legacy_caption_pid": 37870,
+            "legacy_language_pid": 42,
+            "text": "फिर्ता सदस्य पृष्ठ को शीर्ष गर्न",
+            "auto_translated": "फिर्ता सदस्य पृष्ठ को शीर्ष गर्न"
+        },
+        "hu": {
+            "legacy_caption_pid": 37871,
+            "legacy_language_pid": 43,
+            "text": "A lap tetejére A tag az oldalon",
+            "auto_translated": "A lap tetejére A tag az oldalon"
+        },
+        "cs": {
+            "legacy_caption_pid": 37872,
+            "legacy_language_pid": 44,
+            "text": "Zpět na začátek uživatelské stránce",
+            "auto_translated": "Zpět na začátek uživatelské stránce"
+        },
+        "el": {
+            "legacy_caption_pid": 37873,
+            "legacy_language_pid": 45,
+            "text": "Επιστροφή στην κορυφή της σελίδας μέλος",
+            "auto_translated": "Επιστροφή στην κορυφή της σελίδας μέλος"
+        },
+        "sv": {
+            "legacy_caption_pid": 37874,
+            "legacy_language_pid": 46,
+            "text": "Tillbaka till toppen av medlemssida",
+            "auto_translated": "Tillbaka till toppen av medlemssida"
+        },
+        "kk": {
+            "legacy_caption_pid": 37875,
+            "legacy_language_pid": 47,
+            "text": "Артқа мүше беттің жоғарғы жағына",
+            "auto_translated": "Артқа мүше беттің жоғарғы жағына"
+        },
+        "fi": {
+            "legacy_caption_pid": 37876,
+            "legacy_language_pid": 48,
+            "text": "Takaisin alkuun jäsenen sivun",
+            "auto_translated": "Takaisin alkuun jäsenen sivun"
+        },
+        "da": {
+            "legacy_caption_pid": 37877,
+            "legacy_language_pid": 49,
+            "text": "Tilbage til toppen af ​​medlem siden",
+            "auto_translated": "Tilbage til toppen af ​​medlem siden"
+        },
+        "he": {
+            "legacy_caption_pid": 37878,
+            "legacy_language_pid": 50,
+            "text": "חזרה לראש העמוד חבר",
+            "auto_translated": "חזרה לראש העמוד חבר"
+        },
+        "no": {
+            "legacy_caption_pid": 37879,
+            "legacy_language_pid": 51,
+            "text": "Tilbake til toppen av medlemsside",
+            "auto_translated": "Tilbake til toppen av medlemsside"
+        }
+    }
+}

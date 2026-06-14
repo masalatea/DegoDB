@@ -1,0 +1,321 @@
+{
+    "resource_key": "COMMON_LIB_ENROLL_EMAIL_ERROR_WHILE_SENDING_EMAIL",
+    "legacy_resource_pid": 1445,
+    "base_group_key": "grp-010-matsuesoft-lib",
+    "additional_group_keys": [],
+    "key_for_update": "ZtVaKkIFN4CBr8kkFQ5V1OXzuktADgLoSwDbpN9L9V5O1y8xIkElMCTb7MWqkqj4JF93glaslkPojj8kkta6hGTQ4xGFRAWE5PepWmYdXmKTjZV4sHwCzrAqp68mtSbV",
+    "sort_group": "ENROLL EMAIL",
+    "key_name": "COMMON_LIB_ENROLL_EMAIL_ERROR_WHILE_SENDING_EMAIL",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": false,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 6054,
+            "legacy_language_pid": 1,
+            "text": "（メールサーバにてエラーが発生しましたので後ほどリトライの上、送信させて頂きます。以下に記載のユーザ名(ID)とパスワードは既にお使い頂ける筈です。問題がございましたらお手数ですが事務局までご連絡頂ければと思います。）",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 6055,
+            "legacy_language_pid": 2,
+            "text": "(Email error occured. We will resend later. Following User Name (ID) and Password can be used already. Please contact to office if somethng wrong. Sorry for inconvenience.)",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 6056,
+            "legacy_language_pid": 3,
+            "text": "（由于通过e-mail服务器的错误稍后重试发生，用户名ID和密码，你应该能已经可以使用。如果有问题，麻烦您联系事务所。）",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 6057,
+            "legacy_language_pid": 4,
+            "text": "(메일 서버에서 오류가 발생했으므로 나중에 재전송하겠습니다. 아래의 아이디와 비밀번호는 이미 사용하실 수 있습니다. 문제가 발생한 경우, 번거로우시겠지만 사무국으로 연락해주시기 바랍니다.)",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 10940,
+            "legacy_language_pid": 5,
+            "text": "(Se ha producido un error en el correo electrónico, lo reenviaremos más tarde, ya que se puede utilizar el ID y la contraseña, póngase en contacto con la oficina si hay algo incorrecto).",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 10941,
+            "legacy_language_pid": 6,
+            "text": "(Ocorreu um erro de e-mail. Reenviaremos mais tarde. Após a identificação e a senha já podem ser usados. Entre em contato com o escritório se algo estiver errado. Desculpe pelo inconveniente.)",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 10942,
+            "legacy_language_pid": 7,
+            "text": "（由於通過e-mail服務器的錯誤稍後重試發生，用户名ID和密碼，你應該能已經可以使用。如果有問題，麻煩您聯繫事務所。）",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 16037,
+            "legacy_language_pid": 8,
+            "text": "(Une erreur de courrier électronique s'est produite. Nous reviendrons plus tard. Le nom d'utilisateur (ID) et le mot de passe suivants peuvent être utilisés. Veuillez contacter le bureau si quelque chose ne va pas. Désolé pour les inconvénients.)",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 16038,
+            "legacy_language_pid": 9,
+            "text": "(ईमेल त्रुटि हुई। हम बाद में फिर से भेजेंगे। निम्नलिखित यूज़र नेम (आई डी) और पासवर्ड का प्रयोग पहले ही किया जा सकता है। अगर कुछ गलत हो तो कार्यालय से संपर्क करें। असुविधा के लिए क्षमा करें।)",
+            "auto_translated": ""
+        },
+        "ar": {
+            "legacy_caption_pid": 31956,
+            "legacy_language_pid": 10,
+            "text": "(منذ الخطأ من قبل خادم البريد الإلكتروني حدث في وقت لاحق إعادة المحاولة، وسوف ترسل لك. صفها اسم المستخدم أدناه و (ID) كلمة السر يجب أن تكون قادرا على استخدام لديك بالفعل. عذرا لك المتاعب، ولكن الأمانة إذا كان لديك أي مشكلة أعتقد أنه إذا يمكنك الاتصال.)",
+            "auto_translated": "(منذ الخطأ من قبل خادم البريد الإلكتروني حدث في وقت لاحق إعادة المحاولة، وسوف ترسل لك. صفها اسم المستخدم أدناه و (ID) كلمة السر يجب أن تكون قادرا على استخدام لديك بالفعل. عذرا لك المتاعب، ولكن الأمانة إذا كان لديك أي مشكلة أعتقد أنه إذا يمكنك الاتصال.)"
+        },
+        "fa": {
+            "legacy_caption_pid": 31957,
+            "legacy_language_pid": 11,
+            "text": "(از آنجا که خطا توسط سرور ایمیل است بعد از آن در سعی مجدد رخ داده است، شما ارسال خواهد شد. نام کاربری در زیر توضیح داده و (ID) رمز عبور باید بتواند به شما استفاده از قبل باشد. با عرض پوزش برای شما مشکل است، اما دبیرخانه اگر شما هر گونه مشکل من فکر می کنم که اگر شما می توانید برای اتصال.)",
+            "auto_translated": "(از آنجا که خطا توسط سرور ایمیل است بعد از آن در سعی مجدد رخ داده است، شما ارسال خواهد شد. نام کاربری در زیر توضیح داده و (ID) رمز عبور باید بتواند به شما استفاده از قبل باشد. با عرض پوزش برای شما مشکل است، اما دبیرخانه اگر شما هر گونه مشکل من فکر می کنم که اگر شما می توانید برای اتصال.)"
+        },
+        "de": {
+            "legacy_caption_pid": 31958,
+            "legacy_language_pid": 12,
+            "text": "(Da der Fehler per E-Mail-Server später auf dem Wiederholungs aufgetreten ist, werden Sie gesendet werden. Benutzername unten beschrieben und (ID) Passwort der Lage sein, sollten Sie bereits verwenden. Entschuldigen Sie die Störung, aber das Sekretariat Wenn Sie ein Problem haben ich glaube, wenn Sie eine Verbindung zu können.)",
+            "auto_translated": "(Da der Fehler per E-Mail-Server später auf dem Wiederholungs aufgetreten ist, werden Sie gesendet werden. Benutzername unten beschrieben und (ID) Passwort der Lage sein, sollten Sie bereits verwenden. Entschuldigen Sie die Störung, aber das Sekretariat Wenn Sie ein Problem haben ich glaube, wenn Sie eine Verbindung zu können.)"
+        },
+        "ru": {
+            "legacy_caption_pid": 31959,
+            "legacy_language_pid": 13,
+            "text": "(Так как ошибка по электронной почте сервера произошла позже на повторных попыток, вы будете отправлены. Имя пользователя описано ниже, и (ID) Пароль должен быть в состоянии использовать вас уже. Извините, что беспокою вас, но Секретариат Если у вас есть какие-либо проблемы Я думаю, что если вы можете подключиться.)",
+            "auto_translated": "(Так как ошибка по электронной почте сервера произошла позже на повторных попыток, вы будете отправлены. Имя пользователя описано ниже, и (ID) Пароль должен быть в состоянии использовать вас уже. Извините, что беспокою вас, но Секретариат Если у вас есть какие-либо проблемы Я думаю, что если вы можете подключиться.)"
+        },
+        "ms": {
+            "legacy_caption_pid": 31960,
+            "legacy_language_pid": 14,
+            "text": "(Oleh kerana kesilapan itu dengan pelayan e-mel telah berlaku kemudian cuba semula, anda akan dihantar. Nama pengguna yang dinyatakan di bawah dan (ID) dan kata laluan akan dapat menggunakan anda sudah. ​​Maaf untuk masalah anda, tetapi Sekretariat Jika anda mempunyai sebarang masalah Saya berfikir bahawa jika anda boleh menyambung ke.)",
+            "auto_translated": "(Oleh kerana kesilapan itu dengan pelayan e-mel telah berlaku kemudian cuba semula, anda akan dihantar. Nama pengguna yang dinyatakan di bawah dan (ID) dan kata laluan akan dapat menggunakan anda sudah. ​​Maaf untuk masalah anda, tetapi Sekretariat Jika anda mempunyai sebarang masalah Saya berfikir bahawa jika anda boleh menyambung ke.)"
+        },
+        "ta": {
+            "legacy_caption_pid": 31961,
+            "legacy_language_pid": 15,
+            "text": "(மின்னஞ்சல் சர்வர் பிழையின் மீள்முயற்சி பின்னர் ஏற்பட்டுள்ளது என்பதனால், நீங்கள் எந்த பிரச்சனை இருந்தால் அனுப்பப்படும் வேண்டும். பயனர்பெயர் மற்றும் (ஐடி) கடவுச்சொல் ஏற்கனவே நீங்கள் பயன்படுத்த முடியும் இங்கே அளிக்கப்பட்டுள்ளது. நீங்கள் தொல்லை கொடுக்கக் மன்னிக்கவும், செயலகம் நான் நீங்கள் இணைக்க முடியும் என்றால் என்று நினைக்கிறேன்.)",
+            "auto_translated": "(மின்னஞ்சல் சர்வர் பிழையின் மீள்முயற்சி பின்னர் ஏற்பட்டுள்ளது என்பதனால், நீங்கள் எந்த பிரச்சனை இருந்தால் அனுப்பப்படும் வேண்டும். பயனர்பெயர் மற்றும் (ஐடி) கடவுச்சொல் ஏற்கனவே நீங்கள் பயன்படுத்த முடியும் இங்கே அளிக்கப்பட்டுள்ளது. நீங்கள் தொல்லை கொடுக்கக் மன்னிக்கவும், செயலகம் நான் நீங்கள் இணைக்க முடியும் என்றால் என்று நினைக்கிறேன்.)"
+        },
+        "it": {
+            "legacy_caption_pid": 31962,
+            "legacy_language_pid": 16,
+            "text": "(Dal momento che l'errore da server di posta elettronica si è verificato in seguito il nuovo tentativo, ti verrà inviato. Nome utente descritto di seguito e (ID) password deve essere in grado di utilizzare già. Mi spiace disturbarla, ma la segreteria Se avete qualche problema Penso che se è possibile connettersi a.)",
+            "auto_translated": "(Dal momento che l'errore da server di posta elettronica si è verificato in seguito il nuovo tentativo, ti verrà inviato. Nome utente descritto di seguito e (ID) password deve essere in grado di utilizzare già. Mi spiace disturbarla, ma la segreteria Se avete qualche problema Penso che se è possibile connettersi a.)"
+        },
+        "bn": {
+            "legacy_caption_pid": 31963,
+            "legacy_language_pid": 17,
+            "text": "(যেহেতু ই-মেইল সার্ভার দ্বারা ত্রুটি পুনরায় চেষ্টা পরে ঘটেছে, আপনাকে পাঠানো হবে। ব্যবহারকারীর নাম নীচে বর্ণিত এবং (আইডি) পাসওয়ার্ড যদি আপনার আগে থেকেই ব্যবহার করতে সক্ষম হওয়া উচিত। আপনি কষ্ট করতে দুঃখিত, কিন্তু সচিবালয় যদি আপনার কোন সমস্যা থাকে তাহলে আমি মনে করি যে যদি আপনি সংযোগ করতে পারেন।)",
+            "auto_translated": "(যেহেতু ই-মেইল সার্ভার দ্বারা ত্রুটি পুনরায় চেষ্টা পরে ঘটেছে, আপনাকে পাঠানো হবে। ব্যবহারকারীর নাম নীচে বর্ণিত এবং (আইডি) পাসওয়ার্ড যদি আপনার আগে থেকেই ব্যবহার করতে সক্ষম হওয়া উচিত। আপনি কষ্ট করতে দুঃখিত, কিন্তু সচিবালয় যদি আপনার কোন সমস্যা থাকে তাহলে আমি মনে করি যে যদি আপনি সংযোগ করতে পারেন।)"
+        },
+        "tr": {
+            "legacy_caption_pid": 31964,
+            "legacy_language_pid": 18,
+            "text": "E-posta sunucusu tarafından hata yeniden deneme daha sonra oluştu beri Herhangi bir sorun varsa (, sizin sorun için üzgünüm. Kullanıcı adı ve (ID) şifre önceden seni kullanmak gerekir aşağıda açıklanan. gönderildi ancak Sekreterliği edilecek Ben bağlanmak eğer düşünüyorum.)",
+            "auto_translated": "E-posta sunucusu tarafından hata yeniden deneme daha sonra oluştu beri Herhangi bir sorun varsa (, sizin sorun için üzgünüm. Kullanıcı adı ve (ID) şifre önceden seni kullanmak gerekir aşağıda açıklanan. gönderildi ancak Sekreterliği edilecek Ben bağlanmak eğer düşünüyorum.)"
+        },
+        "vi": {
+            "legacy_caption_pid": 31965,
+            "legacy_language_pid": 19,
+            "text": "(Kể từ khi lỗi bởi máy chủ e-mail đã xảy ra sau đó trên retry, bạn sẽ được gửi đi. Tên mô tả dưới đây và (ID) mật khẩu nên có thể sử dụng bạn rồi. Xin lỗi vì đã làm phiền bạn, nhưng Ban Thư ký Nếu bạn có bất kỳ vấn đề tôi nghĩ rằng nếu bạn có thể kết nối tới.)",
+            "auto_translated": "(Kể từ khi lỗi bởi máy chủ e-mail đã xảy ra sau đó trên retry, bạn sẽ được gửi đi. Tên mô tả dưới đây và (ID) mật khẩu nên có thể sử dụng bạn rồi. Xin lỗi vì đã làm phiền bạn, nhưng Ban Thư ký Nếu bạn có bất kỳ vấn đề tôi nghĩ rằng nếu bạn có thể kết nối tới.)"
+        },
+        "pl": {
+            "legacy_caption_pid": 31966,
+            "legacy_language_pid": 20,
+            "text": "(Ponieważ błąd przez serwer e-mail wystąpił później na ponownej próby, zostanie wysłana. Nazwa opisano poniżej i (ID) Hasło powinno mieć możliwość korzystania z was już. Przepraszam za kłopot, ale Sekretariat Jeśli masz problem Myślę, że jeśli można połączyć).",
+            "auto_translated": "(Ponieważ błąd przez serwer e-mail wystąpił później na ponownej próby, zostanie wysłana. Nazwa opisano poniżej i (ID) Hasło powinno mieć możliwość korzystania z was już. Przepraszam za kłopot, ale Sekretariat Jeśli masz problem Myślę, że jeśli można połączyć)."
+        },
+        "jv": {
+            "legacy_caption_pid": 31967,
+            "legacy_language_pid": 21,
+            "text": "(Wiwit kesalahan dening server e-mail wis dumadi ing mengko Coba maneh, sampeyan bakal dikirim. Jeneng diterangake ing ngisor iki lan (ID) sandi kudu bisa nggunakake sampeyan wis. Sorry alangan, nanging Sekretariat Yen sampeyan duwe masalah Aku mikir yen sampeyan bisa nyambung menyang.)",
+            "auto_translated": "(Wiwit kesalahan dening server e-mail wis dumadi ing mengko Coba maneh, sampeyan bakal dikirim. Jeneng diterangake ing ngisor iki lan (ID) sandi kudu bisa nggunakake sampeyan wis. Sorry alangan, nanging Sekretariat Yen sampeyan duwe masalah Aku mikir yen sampeyan bisa nyambung menyang.)"
+        },
+        "pa": {
+            "legacy_caption_pid": 31968,
+            "legacy_language_pid": 22,
+            "text": "(ਇਸ ਈ-ਮੇਲ ਸਰਵਰ ਦੁਆਰਾ ਗਲਤੀ ਮੁੜ 'ਤੇ ਬਾਅਦ ਵਿੱਚ ਆਈ ਹੈ, ਤੁਹਾਨੂੰ ਭੇਜਿਆ ਜਾਵੇਗਾ. ਯੂਜ਼ਰ ਹੇਠ ਦੱਸਿਆ ਗਿਆ ਹੈ ਅਤੇ (ID) ਪਾਸਵਰਡ ਤੁਹਾਡੇ ਹੀ ਵਰਤਣ ਦੇ ਯੋਗ ਹੋਣਾ ਚਾਹੀਦਾ ਹੈ. ਤੁਹਾਨੂੰ ਕੋਈ ਸਮੱਸਿਆ ਹੈ ਕਰਨ ਲਈ ਅਫਸੋਸ ਹੈ, ਪਰ ਸਕੱਤਰੇਤ ਤੁਹਾਨੂੰ ਕਿਸੇ ਵੀ ਸਮੱਸਿਆ ਹੈ, ਜੇਕਰ ਮੈਨੂੰ ਲੱਗਦਾ ਹੈ ਕਿ ਜੇ ਤੁਹਾਡੇ ਨਾਲ ਕੁਨੈਕਟ ਕਰ ਸਕਦੇ ਹੋ.)",
+            "auto_translated": "(ਇਸ ਈ-ਮੇਲ ਸਰਵਰ ਦੁਆਰਾ ਗਲਤੀ ਮੁੜ 'ਤੇ ਬਾਅਦ ਵਿੱਚ ਆਈ ਹੈ, ਤੁਹਾਨੂੰ ਭੇਜਿਆ ਜਾਵੇਗਾ. ਯੂਜ਼ਰ ਹੇਠ ਦੱਸਿਆ ਗਿਆ ਹੈ ਅਤੇ (ID) ਪਾਸਵਰਡ ਤੁਹਾਡੇ ਹੀ ਵਰਤਣ ਦੇ ਯੋਗ ਹੋਣਾ ਚਾਹੀਦਾ ਹੈ. ਤੁਹਾਨੂੰ ਕੋਈ ਸਮੱਸਿਆ ਹੈ ਕਰਨ ਲਈ ਅਫਸੋਸ ਹੈ, ਪਰ ਸਕੱਤਰੇਤ ਤੁਹਾਨੂੰ ਕਿਸੇ ਵੀ ਸਮੱਸਿਆ ਹੈ, ਜੇਕਰ ਮੈਨੂੰ ਲੱਗਦਾ ਹੈ ਕਿ ਜੇ ਤੁਹਾਡੇ ਨਾਲ ਕੁਨੈਕਟ ਕਰ ਸਕਦੇ ਹੋ.)"
+        },
+        "th": {
+            "legacy_caption_pid": 31969,
+            "legacy_language_pid": 23,
+            "text": "(เนื่องจากข้อผิดพลาดโดยเซิร์ฟเวอร์อีเมลได้เกิดขึ้นในภายหลังลองใหม่อีกครั้งคุณจะถูกส่งไป. ชื่อผู้ใช้อธิบายไว้ด้านล่างและ (ID) รหัสผ่านควรจะสามารถที่จะใช้คุณมีอยู่แล้ว. ขออภัยเป็นปัญหากับคุณ แต่สำนักเลขาธิการถ้าคุณมีปัญหาใด ๆ ผมคิดว่าถ้าคุณสามารถเชื่อมต่อ.)",
+            "auto_translated": "(เนื่องจากข้อผิดพลาดโดยเซิร์ฟเวอร์อีเมลได้เกิดขึ้นในภายหลังลองใหม่อีกครั้งคุณจะถูกส่งไป. ชื่อผู้ใช้อธิบายไว้ด้านล่างและ (ID) รหัสผ่านควรจะสามารถที่จะใช้คุณมีอยู่แล้ว. ขออภัยเป็นปัญหากับคุณ แต่สำนักเลขาธิการถ้าคุณมีปัญหาใด ๆ ผมคิดว่าถ้าคุณสามารถเชื่อมต่อ.)"
+        },
+        "te": {
+            "legacy_caption_pid": 41716,
+            "legacy_language_pid": 24,
+            "text": "(ఇ-మెయిల్ సర్వర్ లోపం మళ్ళీ తర్వాత సంభవించింది కనుక, మీరు పంపిన చేయబడుతుంది. యూజర్పేరు మరియు (ID) పాస్ ఇప్పటికే మీరు ఉపయోగించడానికి ఉండాలి క్రింద వివరించిన. మీకు క్షమించాలి, కానీ సెక్రటేరియట్ మీరు ఏ సమస్య ఉంటే నేను మీకు కనెక్ట్ లేదో అనుకుంటున్నాను.)",
+            "auto_translated": "(ఇ-మెయిల్ సర్వర్ లోపం మళ్ళీ తర్వాత సంభవించింది కనుక, మీరు పంపిన చేయబడుతుంది. యూజర్పేరు మరియు (ID) పాస్ ఇప్పటికే మీరు ఉపయోగించడానికి ఉండాలి క్రింద వివరించిన. మీకు క్షమించాలి, కానీ సెక్రటేరియట్ మీరు ఏ సమస్య ఉంటే నేను మీకు కనెక్ట్ లేదో అనుకుంటున్నాను.)"
+        },
+        "mr": {
+            "legacy_caption_pid": 41717,
+            "legacy_language_pid": 25,
+            "text": "(ई-मेल सर्व्हर त्रुटी पुन्हा प्रयत्न करा नंतर आली असल्याने, आपण पाठविले जाईल. वापरकर्तानाव आणि (ID) पासवर्ड आधीच आपण वापरू सक्षम असावे खाली वर्णन. आपल्याला समस्या क्षमस्व, पण सचिवालय आपण काही समस्या असल्यास मी तुम्हाला कनेक्ट करू शकता तर, असे वाटते.)",
+            "auto_translated": "(ई-मेल सर्व्हर त्रुटी पुन्हा प्रयत्न करा नंतर आली असल्याने, आपण पाठविले जाईल. वापरकर्तानाव आणि (ID) पासवर्ड आधीच आपण वापरू सक्षम असावे खाली वर्णन. आपल्याला समस्या क्षमस्व, पण सचिवालय आपण काही समस्या असल्यास मी तुम्हाला कनेक्ट करू शकता तर, असे वाटते.)"
+        },
+        "ur": {
+            "legacy_caption_pid": 41718,
+            "legacy_language_pid": 26,
+            "text": "(ای میل سرور کی طرف سے غلطی دوبارہ کوشش پر بعد واقع ہوا ہے کے بعد سے، آپ کو آپ کو کسی بھی مسئلہ ہے تو بھیجا جائے گا. صارف کا نام ذیل میں بیان اور (ID) پاس ورڈ پہلے سے ہی آپ کو استعمال کرنے کے قابل ہونا چاہئے. آپ کو پریشان کرنے معذرت، لیکن سیکرٹریٹ مجھے آپ سے رابطہ قائم کر سکتے ہیں تو لگتا ہے کہ.)",
+            "auto_translated": "(ای میل سرور کی طرف سے غلطی دوبارہ کوشش پر بعد واقع ہوا ہے کے بعد سے، آپ کو آپ کو کسی بھی مسئلہ ہے تو بھیجا جائے گا. صارف کا نام ذیل میں بیان اور (ID) پاس ورڈ پہلے سے ہی آپ کو استعمال کرنے کے قابل ہونا چاہئے. آپ کو پریشان کرنے معذرت، لیکن سیکرٹریٹ مجھے آپ سے رابطہ قائم کر سکتے ہیں تو لگتا ہے کہ.)"
+        },
+        "gu": {
+            "legacy_caption_pid": 41719,
+            "legacy_language_pid": 27,
+            "text": "(થી ઇ-મેઇલ સર્વર દ્વારા ભૂલ ફરી પ્રયાસ પર પછીથી આવી છે, તમને મોકલ્યા આવશે. વપરાશકર્તા નામ નીચે વર્ણવેલ અને (ID) પાસવર્ડ જો તમે પહેલાથી જ ઉપયોગ કરવા માટે સક્ષમ હોવા જોઈએ. તમે મુશ્કેલી માટે માફ કરશો, પરંતુ સચિવાલય જો તમે કોઇ સમસ્યા હોય તો મને લાગે છે કે જો તમે કનેક્ટ કરી શકો છો.)",
+            "auto_translated": "(થી ઇ-મેઇલ સર્વર દ્વારા ભૂલ ફરી પ્રયાસ પર પછીથી આવી છે, તમને મોકલ્યા આવશે. વપરાશકર્તા નામ નીચે વર્ણવેલ અને (ID) પાસવર્ડ જો તમે પહેલાથી જ ઉપયોગ કરવા માટે સક્ષમ હોવા જોઈએ. તમે મુશ્કેલી માટે માફ કરશો, પરંતુ સચિવાલય જો તમે કોઇ સમસ્યા હોય તો મને લાગે છે કે જો તમે કનેક્ટ કરી શકો છો.)"
+        },
+        "uk": {
+            "legacy_caption_pid": 41720,
+            "legacy_language_pid": 28,
+            "text": "(Так як помилка по електронній пошті сервера сталася пізніше на повторних спроб, ви будете відправлені. Ім'я користувача описано нижче, і (ID) Пароль повинен бути в змозі використати вас вже. Вибачте, що турбую вас, але Секретаріат Якщо у вас є які-небудь проблеми Я думаю, що якщо ви можете підключитися.)",
+            "auto_translated": "(Так як помилка по електронній пошті сервера сталася пізніше на повторних спроб, ви будете відправлені. Ім'я користувача описано нижче, і (ID) Пароль повинен бути в змозі використати вас вже. Вибачте, що турбую вас, але Секретаріат Якщо у вас є які-небудь проблеми Я думаю, що якщо ви можете підключитися.)"
+        },
+        "ml": {
+            "legacy_caption_pid": 41721,
+            "legacy_language_pid": 29,
+            "text": "(ചെയ്തത് ഇ-മെയിൽ സെർവർ ശ്രമിക്കൽ പിന്നീട് സംഭവിച്ചു പിശക് എന്നതിനാൽ, അയയ്ക്കും. ഉപയോക്തൃനാമം താഴെ വിശേഷിപ്പിച്ച (ഐഡി) പാസ്വേഡ് ഇതിനകം നിങ്ങൾ ഉപയോഗിക്കാൻ കഴിയണം. ഇടവിടാതെ ക്ഷമിക്കണം, എന്നാൽ സെക്രട്ടേറിയറ്റ് എന്തെങ്കിലും പ്രശ്നം ഉണ്ടെങ്കിൽ ഞാൻ നിങ്ങളെ കണക്ട് എടുക്കും എന്നു തോന്നുന്നു.)",
+            "auto_translated": "(ചെയ്തത് ഇ-മെയിൽ സെർവർ ശ്രമിക്കൽ പിന്നീട് സംഭവിച്ചു പിശക് എന്നതിനാൽ, അയയ്ക്കും. ഉപയോക്തൃനാമം താഴെ വിശേഷിപ്പിച്ച (ഐഡി) പാസ്വേഡ് ഇതിനകം നിങ്ങൾ ഉപയോഗിക്കാൻ കഴിയണം. ഇടവിടാതെ ക്ഷമിക്കണം, എന്നാൽ സെക്രട്ടേറിയറ്റ് എന്തെങ്കിലും പ്രശ്നം ഉണ്ടെങ്കിൽ ഞാൻ നിങ്ങളെ കണക്ട് എടുക്കും എന്നു തോന്നുന്നു.)"
+        },
+        "kn": {
+            "legacy_caption_pid": 41722,
+            "legacy_language_pid": 30,
+            "text": "(ಇ-ಮೇಲ್ ಸರ್ವರ್ ತಪ್ಪುಗ್ರಹಿಕೆಯಿಂದ ಮರುಪ್ರಯತ್ನಿಸಿ ನಂತರ ಸಂಭವಿಸಿದೆ ರಿಂದ, ನೀವು ಕಳುಹಿಸಿದ ಹೋಗುತ್ತವೆ. ಬಳಕೆದಾರ ಹೆಸರು ಮತ್ತು (ಐಡಿ) ಪಾಸ್ವರ್ಡ್ ಈಗಾಗಲೇ ನೀವು ಬಳಸಲು ಸಾಧ್ಯವಾಗುತ್ತದೆ ಕೆಳಗೆ ವಿವರಿಸಲಾಗಿದೆ. ತೊಂದರೆ ನಿಮಗೆ ಕ್ಷಮಿಸಿ, ಸಚಿವಾಲಯದ ನೀವು ಯಾವುದೇ ಸಮಸ್ಯೆ ಇದ್ದರೆ ನಾನು ನಿಮಗೆ ಸಂಪರ್ಕಿಸಬಹುದು ವೇಳೆ ಭಾವಿಸುತ್ತೇನೆ.)",
+            "auto_translated": "(ಇ-ಮೇಲ್ ಸರ್ವರ್ ತಪ್ಪುಗ್ರಹಿಕೆಯಿಂದ ಮರುಪ್ರಯತ್ನಿಸಿ ನಂತರ ಸಂಭವಿಸಿದೆ ರಿಂದ, ನೀವು ಕಳುಹಿಸಿದ ಹೋಗುತ್ತವೆ. ಬಳಕೆದಾರ ಹೆಸರು ಮತ್ತು (ಐಡಿ) ಪಾಸ್ವರ್ಡ್ ಈಗಾಗಲೇ ನೀವು ಬಳಸಲು ಸಾಧ್ಯವಾಗುತ್ತದೆ ಕೆಳಗೆ ವಿವರಿಸಲಾಗಿದೆ. ತೊಂದರೆ ನಿಮಗೆ ಕ್ಷಮಿಸಿ, ಸಚಿವಾಲಯದ ನೀವು ಯಾವುದೇ ಸಮಸ್ಯೆ ಇದ್ದರೆ ನಾನು ನಿಮಗೆ ಸಂಪರ್ಕಿಸಬಹುದು ವೇಳೆ ಭಾವಿಸುತ್ತೇನೆ.)"
+        },
+        "su": {
+            "legacy_caption_pid": 41723,
+            "legacy_language_pid": 31,
+            "text": "(Saprak kasalahan ku server e-mail geus lumangsung engké dina Coba deui, Anjeun bakal dikirim. Username digambarkeun di handap na (ID) sandi kudu bisa ngagunakeun anjeun geus. Hampura mun kasulitan Anjeun, tapi Sekretariat Upami Anjeun gaduh masalah wae Jigana eta lamun bisa nyambung ka.)",
+            "auto_translated": "(Saprak kasalahan ku server e-mail geus lumangsung engké dina Coba deui, Anjeun bakal dikirim. Username digambarkeun di handap na (ID) sandi kudu bisa ngagunakeun anjeun geus. Hampura mun kasulitan Anjeun, tapi Sekretariat Upami Anjeun gaduh masalah wae Jigana eta lamun bisa nyambung ka.)"
+        },
+        "ku": {
+            "legacy_caption_pid": 41724,
+            "legacy_language_pid": 32,
+            "text": "(Ji ber ku error destê server e-mail hatiye paşê li ser biceribîne qewimiye, hûn dê were şandin. Username jêr û (ID) şîfreya divê ku tu bi kar jixwe be. Mixabin ji bo ku we aciz bike, di heman demê de Sekreteriya Eger tu pirsgirêk hene ez difikirim ku, ger tu ji bo girêdanê.)",
+            "auto_translated": "(Ji ber ku error destê server e-mail hatiye paşê li ser biceribîne qewimiye, hûn dê were şandin. Username jêr û (ID) şîfreya divê ku tu bi kar jixwe be. Mixabin ji bo ku we aciz bike, di heman demê de Sekreteriya Eger tu pirsgirêk hene ez difikirim ku, ger tu ji bo girêdanê.)"
+        },
+        "ps": {
+            "legacy_caption_pid": 41725,
+            "legacy_language_pid": 33,
+            "text": "(ځکه E-mail سرور له خوا تېروتنه وروسته وشوه په retry، تاسو به واستول شي. نوم لاندې تشريح او (تذکرو) پټنوم بايد تاسو ته له مخکې ګټه وي. تاسو ته تکليف بښنه غواړو، خو د دارالانشاء که تاسو کومه ستونزه لري زه فکر کوم چې که تاسو کولای شي سره ونښلوي.)",
+            "auto_translated": "(ځکه E-mail سرور له خوا تېروتنه وروسته وشوه په retry، تاسو به واستول شي. نوم لاندې تشريح او (تذکرو) پټنوم بايد تاسو ته له مخکې ګټه وي. تاسو ته تکليف بښنه غواړو، خو د دارالانشاء که تاسو کومه ستونزه لري زه فکر کوم چې که تاسو کولای شي سره ونښلوي.)"
+        },
+        "ro": {
+            "legacy_caption_pid": 41726,
+            "legacy_language_pid": 34,
+            "text": "(Deoarece eroarea de serverul de e-mail a avut loc mai târziu reîncercarea, va fi trimis. Utilizator descris mai jos și (ID), parola ar trebui să fie în măsură să utilizați deja. Îmi pare rău că vă deranjez, dar Secretariatul Dacă aveți orice problemă cred că, dacă vă puteți conecta la.)",
+            "auto_translated": "(Deoarece eroarea de serverul de e-mail a avut loc mai târziu reîncercarea, va fi trimis. Utilizator descris mai jos și (ID), parola ar trebui să fie în măsură să utilizați deja. Îmi pare rău că vă deranjez, dar Secretariatul Dacă aveți orice problemă cred că, dacă vă puteți conecta la.)"
+        },
+        "id": {
+            "legacy_caption_pid": 41727,
+            "legacy_language_pid": 35,
+            "text": "(Karena kesalahan dengan server e-mail telah terjadi nanti coba lagi, Anda akan dikirim. Nama pengguna dijelaskan di bawah dan (ID) password harus dapat menggunakan Anda sudah. ​​Maaf untuk masalah Anda, tetapi Sekretariat Jika Anda memiliki masalah saya berpikir bahwa jika Anda dapat terhubung ke.)",
+            "auto_translated": "(Karena kesalahan dengan server e-mail telah terjadi nanti coba lagi, Anda akan dikirim. Nama pengguna dijelaskan di bawah dan (ID) password harus dapat menggunakan Anda sudah. ​​Maaf untuk masalah Anda, tetapi Sekretariat Jika Anda memiliki masalah saya berpikir bahwa jika Anda dapat terhubung ke.)"
+        },
+        "sd": {
+            "legacy_caption_pid": 41728,
+            "legacy_language_pid": 36,
+            "text": "(جي اي-ميل سرور جي ٻيهر تي ٿوري دير ٿي ويئي آهي ته غلطي کان وٺي، اوھان کي موڪليو ويندو. اسم هيٺ بيان ۽ (سڃاڻپ) ڳجھو لفظ توهان کي اڳ ۾ ئي استعمال ڪرڻ جي قابل ٿي وڃن. مصيبت کي معاف ڪجو توهان، پر Secretariat اوھان کي ڪو مسئلو آهي ته مان سمجهان ٿو ته جيڪڏهن توهان کي ڳنڍي سگهو ٿا.)",
+            "auto_translated": "(جي اي-ميل سرور جي ٻيهر تي ٿوري دير ٿي ويئي آهي ته غلطي کان وٺي، اوھان کي موڪليو ويندو. اسم هيٺ بيان ۽ (سڃاڻپ) ڳجھو لفظ توهان کي اڳ ۾ ئي استعمال ڪرڻ جي قابل ٿي وڃن. مصيبت کي معاف ڪجو توهان، پر Secretariat اوھان کي ڪو مسئلو آهي ته مان سمجهان ٿو ته جيڪڏهن توهان کي ڳنڍي سگهو ٿا.)"
+        },
+        "af": {
+            "legacy_caption_pid": 41729,
+            "legacy_language_pid": 37,
+            "text": "(Sedert die fout per e-pos bediener later plaasgevind het op die weer probeer, sal u gestuur word. Gebruikersnaam beskryf hieronder en (ID) wagwoord moet in staat wees om wat jy reeds gebruik. Jammer om moeilikheid nie, maar die sekretariaat As jy 'n probleem het Ek dink dat as jy kan koppel aan.)",
+            "auto_translated": "(Sedert die fout per e-pos bediener later plaasgevind het op die weer probeer, sal u gestuur word. Gebruikersnaam beskryf hieronder en (ID) wagwoord moet in staat wees om wat jy reeds gebruik. Jammer om moeilikheid nie, maar die sekretariaat As jy 'n probleem het Ek dink dat as jy kan koppel aan.)"
+        },
+        "sw": {
+            "legacy_caption_pid": 41730,
+            "legacy_language_pid": 38,
+            "text": "(Kwa kuwa makosa kwa barua pepe server imetokea baadaye kujaribu tena, utakuwa kutumwa. Username ilivyoelezwa hapo chini na (ID) password lazima kuwa na uwezo wa kutumia tayari. Pole kwa shida, lakini Sekretarieti Kama una tatizo lolote Nadhani kama unaweza kuunganisha.)",
+            "auto_translated": "(Kwa kuwa makosa kwa barua pepe server imetokea baadaye kujaribu tena, utakuwa kutumwa. Username ilivyoelezwa hapo chini na (ID) password lazima kuwa na uwezo wa kutumia tayari. Pole kwa shida, lakini Sekretarieti Kama una tatizo lolote Nadhani kama unaweza kuunganisha.)"
+        },
+        "lo": {
+            "legacy_caption_pid": 41731,
+            "legacy_language_pid": 39,
+            "text": "(ເນື່ອງຈາກຄວາມຜິດພາດໂດຍເຄື່ອງແມ່ຂ່າຍຂອງອີເມລໄດ້ເກີດຂຶ້ນໃນຕອນຕໍ່ມາລອງສົ່ງໃຫມ່, ທ່ານຈະຖືກສົ່ງໄປ. ຊື່ຜູ້ໃຊ້ອະທິບາຍຂ້າງລຸ່ມນີ້ແລະ (ID) ລະຫັດຜ່ານຄວນຈະສາມາດທີ່ຈະນໍາໃຊ້ຄຸນແລ້ວ. ຂໍໂທດນໍາບັນຫາທ່ານ, ແຕ່ກອງເລຂາຖ້າຫາກວ່າທ່ານມີບັນຫາໃດຫນຶ່ງ ຂ້າພະເຈົ້າຄິດວ່າຖ້າຫາກວ່າທ່ານສາມາດເຊື່ອມຕໍ່ກັບ.)",
+            "auto_translated": "(ເນື່ອງຈາກຄວາມຜິດພາດໂດຍເຄື່ອງແມ່ຂ່າຍຂອງອີເມລໄດ້ເກີດຂຶ້ນໃນຕອນຕໍ່ມາລອງສົ່ງໃຫມ່, ທ່ານຈະຖືກສົ່ງໄປ. ຊື່ຜູ້ໃຊ້ອະທິບາຍຂ້າງລຸ່ມນີ້ແລະ (ID) ລະຫັດຜ່ານຄວນຈະສາມາດທີ່ຈະນໍາໃຊ້ຄຸນແລ້ວ. ຂໍໂທດນໍາບັນຫາທ່ານ, ແຕ່ກອງເລຂາຖ້າຫາກວ່າທ່ານມີບັນຫາໃດຫນຶ່ງ ຂ້າພະເຈົ້າຄິດວ່າຖ້າຫາກວ່າທ່ານສາມາດເຊື່ອມຕໍ່ກັບ.)"
+        },
+        "nl": {
+            "legacy_caption_pid": 41732,
+            "legacy_language_pid": 40,
+            "text": "(Aangezien de fout per e-mail server later heeft plaatsgevonden op het opnieuw proberen, zal u worden toegestuurd. Gebruikersnaam hieronder beschreven en (ID) wachtwoord moet in staat zijn om u al gebruikt. Sorry dat ik u ontroeren, maar het secretariaat Als je een probleem hebt ik denk dat als u verbinding kunt maken.)",
+            "auto_translated": "(Aangezien de fout per e-mail server later heeft plaatsgevonden op het opnieuw proberen, zal u worden toegestuurd. Gebruikersnaam hieronder beschreven en (ID) wachtwoord moet in staat zijn om u al gebruikt. Sorry dat ik u ontroeren, maar het secretariaat Als je een probleem hebt ik denk dat als u verbinding kunt maken.)"
+        },
+        "tl": {
+            "legacy_caption_pid": 41733,
+            "legacy_language_pid": 41,
+            "text": "(Dahil sa error sa pamamagitan ng e-mail server na naganap sa ibang pagkakataon sa muling pagsubok, ikaw ay ipinadala. Username inilarawan sa ibaba at (ID) na password ay dapat magagawang gamitin mo na. Paumanhin sa pag-mo, ngunit ang kalihiman Kung mayroon kang anumang mga problema sa tingin ko na kung maaari mong kumonekta sa.)",
+            "auto_translated": "(Dahil sa error sa pamamagitan ng e-mail server na naganap sa ibang pagkakataon sa muling pagsubok, ikaw ay ipinadala. Username inilarawan sa ibaba at (ID) na password ay dapat magagawang gamitin mo na. Paumanhin sa pag-mo, ngunit ang kalihiman Kung mayroon kang anumang mga problema sa tingin ko na kung maaari mong kumonekta sa.)"
+        },
+        "ne": {
+            "legacy_caption_pid": 41734,
+            "legacy_language_pid": 42,
+            "text": "(द्वारा ई-मेल सर्भर त्रुटि पुन: प्रयास मा पछि देखा परेको छ भएकोले, तपाईंले कुनै पनि समस्या छ भने पठाएको गरिनेछ। प्रयोगकर्ता नाम र परिचय) पासवर्ड (तपाईंले पहिले नै प्रयोग गर्न सक्षम हुनुपर्छ तल वर्णन गरे। समस्या तपाईं माफ गर्नुहोस्, तर सचिवालय म तपाईंलाई जडान गर्न सक्नुहुन्छ भने ठान्छन्।)",
+            "auto_translated": "(द्वारा ई-मेल सर्भर त्रुटि पुन: प्रयास मा पछि देखा परेको छ भएकोले, तपाईंले कुनै पनि समस्या छ भने पठाएको गरिनेछ। प्रयोगकर्ता नाम र परिचय) पासवर्ड (तपाईंले पहिले नै प्रयोग गर्न सक्षम हुनुपर्छ तल वर्णन गरे। समस्या तपाईं माफ गर्नुहोस्, तर सचिवालय म तपाईंलाई जडान गर्न सक्नुहुन्छ भने ठान्छन्।)"
+        },
+        "hu": {
+            "legacy_caption_pid": 41735,
+            "legacy_language_pid": 43,
+            "text": "(Mivel a hiba, e-mail kiszolgáló történt később a helyreállítás, akkor kell küldeni. Felhasználói név alábbiakban ismertetett és (ID) jelszó kell tudni használni már. Sajnálom, hogy baj van, de a titkárság Ha bármilyen probléma úgy gondolom, hogy ha lehet csatlakozni.)",
+            "auto_translated": "(Mivel a hiba, e-mail kiszolgáló történt később a helyreállítás, akkor kell küldeni. Felhasználói név alábbiakban ismertetett és (ID) jelszó kell tudni használni már. Sajnálom, hogy baj van, de a titkárság Ha bármilyen probléma úgy gondolom, hogy ha lehet csatlakozni.)"
+        },
+        "cs": {
+            "legacy_caption_pid": 41736,
+            "legacy_language_pid": 44,
+            "text": "(Vzhledem k tomu, došlo k chybě na e-mailový server došlo později na opakování, bude vám zaslána. Uživatel je popsáno níže a (ID), heslo by měl být schopen vám již používají. Omlouvám se, že vás obtěžuji, ale sekretariát Pokud máte nějaký problém myslím, že když se můžete připojit.)",
+            "auto_translated": "(Vzhledem k tomu, došlo k chybě na e-mailový server došlo později na opakování, bude vám zaslána. Uživatel je popsáno níže a (ID), heslo by měl být schopen vám již používají. Omlouvám se, že vás obtěžuji, ale sekretariát Pokud máte nějaký problém myslím, že když se můžete připojit.)"
+        },
+        "el": {
+            "legacy_caption_pid": 41737,
+            "legacy_language_pid": 45,
+            "text": "(Από το σφάλμα με e-mail server έχει συμβεί αργότερα στο επανάληψης, θα σας σταλεί. Όνομα Χρήστη περιγράφεται παρακάτω και (ID) τον κωδικό πρόσβασης θα πρέπει να είναι σε θέση να σας χρησιμοποιούν ήδη. Συγγνώμη να σας απασχολήσω, αλλά η Γραμματεία Αν έχετε οποιοδήποτε πρόβλημα νομίζω ότι αν μπορείτε να συνδεθείτε.)",
+            "auto_translated": "(Από το σφάλμα με e-mail server έχει συμβεί αργότερα στο επανάληψης, θα σας σταλεί. Όνομα Χρήστη περιγράφεται παρακάτω και (ID) τον κωδικό πρόσβασης θα πρέπει να είναι σε θέση να σας χρησιμοποιούν ήδη. Συγγνώμη να σας απασχολήσω, αλλά η Γραμματεία Αν έχετε οποιοδήποτε πρόβλημα νομίζω ότι αν μπορείτε να συνδεθείτε.)"
+        },
+        "sv": {
+            "legacy_caption_pid": 41738,
+            "legacy_language_pid": 46,
+            "text": "(Eftersom felet genom e-postserver har inträffat senare på nytt försök, kommer du att skickas. Användarnamn beskrivs nedan och (ID) lösenord bör kunna använda dig redan. Ledsen att besvära er, men sekretariatet Om du har några problem jag tror att om du kan ansluta till.)",
+            "auto_translated": "(Eftersom felet genom e-postserver har inträffat senare på nytt försök, kommer du att skickas. Användarnamn beskrivs nedan och (ID) lösenord bör kunna använda dig redan. Ledsen att besvära er, men sekretariatet Om du har några problem jag tror att om du kan ansluta till.)"
+        },
+        "kk": {
+            "legacy_caption_pid": 41739,
+            "legacy_language_pid": 47,
+            "text": "(Электрондық пошта сервері қайталау кейінірек орын алды арқылы қате болғандықтан, сіз жіберіледі. Пайдаланушы аты төменде сипатталған және (ID) құпия сөз өзінде сізді пайдалануға мүмкіндігі болуы тиіс. Кешіріңіз алаңдаушылық үшін, бірақ Хатшылық сіз кез келген мәселені, онда Мен сізге қосыла аласыз, егер деп ойлаймын.)",
+            "auto_translated": "(Электрондық пошта сервері қайталау кейінірек орын алды арқылы қате болғандықтан, сіз жіберіледі. Пайдаланушы аты төменде сипатталған және (ID) құпия сөз өзінде сізді пайдалануға мүмкіндігі болуы тиіс. Кешіріңіз алаңдаушылық үшін, бірақ Хатшылық сіз кез келген мәселені, онда Мен сізге қосыла аласыз, егер деп ойлаймын.)"
+        },
+        "fi": {
+            "legacy_caption_pid": 41740,
+            "legacy_language_pid": 48,
+            "text": "(Koska virheen sähköpostipalvelin on tapahtunut myöhemmin uudelleenyritysbitin, sinulle lähetetään. Käyttäjätunnus kuvattu alla ja (ID) salasana pitäisi pystyä käyttämään jo. Anteeksi vaivata teitä, mutta sihteeristön Jos sinulla on ongelmia Uskon, että jos voit muodostaa yhteyden.)",
+            "auto_translated": "(Koska virheen sähköpostipalvelin on tapahtunut myöhemmin uudelleenyritysbitin, sinulle lähetetään. Käyttäjätunnus kuvattu alla ja (ID) salasana pitäisi pystyä käyttämään jo. Anteeksi vaivata teitä, mutta sihteeristön Jos sinulla on ongelmia Uskon, että jos voit muodostaa yhteyden.)"
+        },
+        "da": {
+            "legacy_caption_pid": 41741,
+            "legacy_language_pid": 49,
+            "text": "(Da fejlen ved e-mail-server er opstået senere på nyt forsøg, vil du blive sendt. Brugernavn beskrevet nedenfor og (ID) adgangskode bør være i stand til at bruge dig allerede. Undskyld at besvære dig, men sekretariatet Hvis du har noget problem jeg tror, ​​at hvis du kan oprette forbindelse til.)",
+            "auto_translated": "(Da fejlen ved e-mail-server er opstået senere på nyt forsøg, vil du blive sendt. Brugernavn beskrevet nedenfor og (ID) adgangskode bør være i stand til at bruge dig allerede. Undskyld at besvære dig, men sekretariatet Hvis du har noget problem jeg tror, ​​at hvis du kan oprette forbindelse til.)"
+        },
+        "he": {
+            "legacy_caption_pid": 41742,
+            "legacy_language_pid": 50,
+            "text": "(הואיל והטעות ידי שרת דואר אלקטרוני התרחשה מאוחר יותר על נסה שנית, אתה תישלח. שם משתמש המתוארות להלן (ID) וסיסמא אמורה להיות מסוגל להשתמש לך כבר. אני מתנצל על טרחה, אך במזכירות אם יש לך בעיה כלשהי אני חושב שאם אתה יכול להתחבר.)",
+            "auto_translated": "(הואיל והטעות ידי שרת דואר אלקטרוני התרחשה מאוחר יותר על נסה שנית, אתה תישלח. שם משתמש המתוארות להלן (ID) וסיסמא אמורה להיות מסוגל להשתמש לך כבר. אני מתנצל על טרחה, אך במזכירות אם יש לך בעיה כלשהי אני חושב שאם אתה יכול להתחבר.)"
+        },
+        "no": {
+            "legacy_caption_pid": 41743,
+            "legacy_language_pid": 51,
+            "text": "(Siden feilen via e-postserveren har oppstått senere retry, vil du bli sendt. Brukernavn beskrevet nedenfor og (ID) passord bør være i stand til å bruke deg allerede. Beklager å plage deg, men sekretariatet Hvis du har noen problemer jeg tror at hvis du kan koble deg til.)",
+            "auto_translated": "(Siden feilen via e-postserveren har oppstått senere retry, vil du bli sendt. Brukernavn beskrevet nedenfor og (ID) passord bør være i stand til å bruke deg allerede. Beklager å plage deg, men sekretariatet Hvis du har noen problemer jeg tror at hvis du kan koble deg til.)"
+        }
+    }
+}

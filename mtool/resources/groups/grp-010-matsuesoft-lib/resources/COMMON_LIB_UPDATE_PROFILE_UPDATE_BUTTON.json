@@ -1,0 +1,321 @@
+{
+    "resource_key": "COMMON_LIB_UPDATE_PROFILE_UPDATE_BUTTON",
+    "legacy_resource_pid": 1620,
+    "base_group_key": "grp-010-matsuesoft-lib",
+    "additional_group_keys": [],
+    "key_for_update": "c3Kd3m6AilDwQaTS78420LmYDA5kB1uwZwgnX1pKdMvfjsyUFyEAPMZ84I49mXgJDldvlDQrm5T2bslSz1R9kqqy1xUXUODSZk9Yqb4zVKPH1MHTNtcgELPU5uQJQLT5",
+    "sort_group": "PROFILE",
+    "key_name": "COMMON_LIB_UPDATE_PROFILE_UPDATE_BUTTON",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": false,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 7262,
+            "legacy_language_pid": 1,
+            "text": "更新",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 7263,
+            "legacy_language_pid": 2,
+            "text": "Update",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 7264,
+            "legacy_language_pid": 3,
+            "text": "更新",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 7265,
+            "legacy_language_pid": 4,
+            "text": "업데이트",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 11159,
+            "legacy_language_pid": 5,
+            "text": "Actualizar ",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 11160,
+            "legacy_language_pid": 6,
+            "text": " Atualizar ",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 11161,
+            "legacy_language_pid": 7,
+            "text": "更新",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 17299,
+            "legacy_language_pid": 8,
+            "text": "Mettre à jour",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 17300,
+            "legacy_language_pid": 9,
+            "text": "अपडेट",
+            "auto_translated": ""
+        },
+        "ar": {
+            "legacy_caption_pid": 33078,
+            "legacy_language_pid": 10,
+            "text": "تحديث",
+            "auto_translated": "تحديث"
+        },
+        "fa": {
+            "legacy_caption_pid": 33079,
+            "legacy_language_pid": 11,
+            "text": "به روز رسانی",
+            "auto_translated": "به روز رسانی"
+        },
+        "de": {
+            "legacy_caption_pid": 33080,
+            "legacy_language_pid": 12,
+            "text": "Aktualisierung",
+            "auto_translated": "Aktualisierung"
+        },
+        "ru": {
+            "legacy_caption_pid": 33081,
+            "legacy_language_pid": 13,
+            "text": "обновление",
+            "auto_translated": "обновление"
+        },
+        "ms": {
+            "legacy_caption_pid": 33082,
+            "legacy_language_pid": 14,
+            "text": "Kemas kini",
+            "auto_translated": "Kemas kini"
+        },
+        "ta": {
+            "legacy_caption_pid": 33083,
+            "legacy_language_pid": 15,
+            "text": "புதுப்பிக்கப்பட்டது",
+            "auto_translated": "புதுப்பிக்கப்பட்டது"
+        },
+        "it": {
+            "legacy_caption_pid": 33084,
+            "legacy_language_pid": 16,
+            "text": "aggiornare",
+            "auto_translated": "aggiornare"
+        },
+        "bn": {
+            "legacy_caption_pid": 33085,
+            "legacy_language_pid": 17,
+            "text": "আপডেট",
+            "auto_translated": "আপডেট"
+        },
+        "tr": {
+            "legacy_caption_pid": 33086,
+            "legacy_language_pid": 18,
+            "text": "güncelleştirme",
+            "auto_translated": "güncelleştirme"
+        },
+        "vi": {
+            "legacy_caption_pid": 33087,
+            "legacy_language_pid": 19,
+            "text": "cập nhật",
+            "auto_translated": "cập nhật"
+        },
+        "pl": {
+            "legacy_caption_pid": 33088,
+            "legacy_language_pid": 20,
+            "text": "aktualizacja",
+            "auto_translated": "aktualizacja"
+        },
+        "jv": {
+            "legacy_caption_pid": 33089,
+            "legacy_language_pid": 21,
+            "text": "Update",
+            "auto_translated": "Update"
+        },
+        "pa": {
+            "legacy_caption_pid": 33090,
+            "legacy_language_pid": 22,
+            "text": "ਅੱਪਡੇਟ",
+            "auto_translated": "ਅੱਪਡੇਟ"
+        },
+        "th": {
+            "legacy_caption_pid": 33091,
+            "legacy_language_pid": 23,
+            "text": "ปรับปรุง",
+            "auto_translated": "ปรับปรุง"
+        },
+        "te": {
+            "legacy_caption_pid": 39448,
+            "legacy_language_pid": 24,
+            "text": "నవీకరణ",
+            "auto_translated": "నవీకరణ"
+        },
+        "mr": {
+            "legacy_caption_pid": 39449,
+            "legacy_language_pid": 25,
+            "text": "अद्यतनित करा",
+            "auto_translated": "अद्यतनित करा"
+        },
+        "ur": {
+            "legacy_caption_pid": 39450,
+            "legacy_language_pid": 26,
+            "text": "اپ ڈیٹ کریں",
+            "auto_translated": "اپ ڈیٹ کریں"
+        },
+        "gu": {
+            "legacy_caption_pid": 39451,
+            "legacy_language_pid": 27,
+            "text": "અપડેટ",
+            "auto_translated": "અપડેટ"
+        },
+        "uk": {
+            "legacy_caption_pid": 39452,
+            "legacy_language_pid": 28,
+            "text": "оновлення",
+            "auto_translated": "оновлення"
+        },
+        "ml": {
+            "legacy_caption_pid": 39453,
+            "legacy_language_pid": 29,
+            "text": "അപ്ഡേറ്റ്",
+            "auto_translated": "അപ്ഡേറ്റ്"
+        },
+        "kn": {
+            "legacy_caption_pid": 39454,
+            "legacy_language_pid": 30,
+            "text": "ನವೀಕರಣ",
+            "auto_translated": "ನವೀಕರಣ"
+        },
+        "su": {
+            "legacy_caption_pid": 39455,
+            "legacy_language_pid": 31,
+            "text": "Update",
+            "auto_translated": "Update"
+        },
+        "ku": {
+            "legacy_caption_pid": 39456,
+            "legacy_language_pid": 32,
+            "text": "update",
+            "auto_translated": "update"
+        },
+        "ps": {
+            "legacy_caption_pid": 39457,
+            "legacy_language_pid": 33,
+            "text": "تازه",
+            "auto_translated": "تازه"
+        },
+        "ro": {
+            "legacy_caption_pid": 39458,
+            "legacy_language_pid": 34,
+            "text": "Actualizare",
+            "auto_translated": "Actualizare"
+        },
+        "id": {
+            "legacy_caption_pid": 39459,
+            "legacy_language_pid": 35,
+            "text": "memperbarui",
+            "auto_translated": "memperbarui"
+        },
+        "sd": {
+            "legacy_caption_pid": 39460,
+            "legacy_language_pid": 36,
+            "text": "ڪاري",
+            "auto_translated": "ڪاري"
+        },
+        "af": {
+            "legacy_caption_pid": 39461,
+            "legacy_language_pid": 37,
+            "text": "werk",
+            "auto_translated": "werk"
+        },
+        "sw": {
+            "legacy_caption_pid": 39462,
+            "legacy_language_pid": 38,
+            "text": "Mwisho",
+            "auto_translated": "Mwisho"
+        },
+        "lo": {
+            "legacy_caption_pid": 39463,
+            "legacy_language_pid": 39,
+            "text": "ການປັບປຸງ",
+            "auto_translated": "ການປັບປຸງ"
+        },
+        "nl": {
+            "legacy_caption_pid": 39464,
+            "legacy_language_pid": 40,
+            "text": "bijwerken",
+            "auto_translated": "bijwerken"
+        },
+        "tl": {
+            "legacy_caption_pid": 39465,
+            "legacy_language_pid": 41,
+            "text": "I-update",
+            "auto_translated": "I-update"
+        },
+        "ne": {
+            "legacy_caption_pid": 39466,
+            "legacy_language_pid": 42,
+            "text": "अद्यावधिक",
+            "auto_translated": "अद्यावधिक"
+        },
+        "hu": {
+            "legacy_caption_pid": 39467,
+            "legacy_language_pid": 43,
+            "text": "frissítés",
+            "auto_translated": "frissítés"
+        },
+        "cs": {
+            "legacy_caption_pid": 39468,
+            "legacy_language_pid": 44,
+            "text": "aktualizovat",
+            "auto_translated": "aktualizovat"
+        },
+        "el": {
+            "legacy_caption_pid": 39469,
+            "legacy_language_pid": 45,
+            "text": "Ενημέρωση",
+            "auto_translated": "Ενημέρωση"
+        },
+        "sv": {
+            "legacy_caption_pid": 39470,
+            "legacy_language_pid": 46,
+            "text": "uppdatering",
+            "auto_translated": "uppdatering"
+        },
+        "kk": {
+            "legacy_caption_pid": 39471,
+            "legacy_language_pid": 47,
+            "text": "жаңарту",
+            "auto_translated": "жаңарту"
+        },
+        "fi": {
+            "legacy_caption_pid": 39472,
+            "legacy_language_pid": 48,
+            "text": "päivitys",
+            "auto_translated": "päivitys"
+        },
+        "da": {
+            "legacy_caption_pid": 39473,
+            "legacy_language_pid": 49,
+            "text": "Opdatering",
+            "auto_translated": "Opdatering"
+        },
+        "he": {
+            "legacy_caption_pid": 39474,
+            "legacy_language_pid": 50,
+            "text": "עדכון",
+            "auto_translated": "עדכון"
+        },
+        "no": {
+            "legacy_caption_pid": 39475,
+            "legacy_language_pid": 51,
+            "text": "Oppdater",
+            "auto_translated": "Oppdater"
+        }
+    }
+}

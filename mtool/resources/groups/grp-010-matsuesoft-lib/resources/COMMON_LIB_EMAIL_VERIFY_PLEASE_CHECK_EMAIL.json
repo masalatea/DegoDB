@@ -1,0 +1,321 @@
+{
+    "resource_key": "COMMON_LIB_EMAIL_VERIFY_PLEASE_CHECK_EMAIL",
+    "legacy_resource_pid": 1391,
+    "base_group_key": "grp-010-matsuesoft-lib",
+    "additional_group_keys": [],
+    "key_for_update": "4WJ1X4algvM0PnLhIj0f73DXX56ghCBk8ATlsXXlzmlvuS3wKQlscPYcq2PgMj7QpXQwyUPcAWI2XITdk51JoYEocSAJoo5sVj6uA7FDK6sJ8X9P5zEFRlBdqX5aD5Fj",
+    "sort_group": "EMAIL VERIFY",
+    "key_name": "COMMON_LIB_EMAIL_VERIFY_PLEASE_CHECK_EMAIL",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": false,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 5838,
+            "legacy_language_pid": 1,
+            "text": "メールをご確認頂ければと思います。",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 5839,
+            "legacy_language_pid": 2,
+            "text": "Please check email.",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 5840,
+            "legacy_language_pid": 3,
+            "text": "请检查邮件。",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 5841,
+            "legacy_language_pid": 4,
+            "text": "이메일을 확인하십시오.",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 10729,
+            "legacy_language_pid": 5,
+            "text": "Por favor, verifique e-mail.",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 10730,
+            "legacy_language_pid": 6,
+            "text": "Verifique o e-mail.",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 10731,
+            "legacy_language_pid": 7,
+            "text": "請檢查郵件。",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 16441,
+            "legacy_language_pid": 8,
+            "text": "Veuillez vérifier le courrier électronique.",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 16442,
+            "legacy_language_pid": 9,
+            "text": "कृपया ईमेल जांचें",
+            "auto_translated": ""
+        },
+        "ar": {
+            "legacy_caption_pid": 31004,
+            "legacy_language_pid": 10,
+            "text": "أعتقد أن عليك التحقق من بريدك الإلكتروني.",
+            "auto_translated": "أعتقد أن عليك التحقق من بريدك الإلكتروني."
+        },
+        "fa": {
+            "legacy_caption_pid": 31005,
+            "legacy_language_pid": 11,
+            "text": "من فکر می کنم که شما ایمیل خود را چک کنید.",
+            "auto_translated": "من فکر می کنم که شما ایمیل خود را چک کنید."
+        },
+        "de": {
+            "legacy_caption_pid": 31006,
+            "legacy_language_pid": 12,
+            "text": "Ich denke, dass Sie Ihre E-Mail überprüfen.",
+            "auto_translated": "Ich denke, dass Sie Ihre E-Mail überprüfen."
+        },
+        "ru": {
+            "legacy_caption_pid": 31007,
+            "legacy_language_pid": 13,
+            "text": "Я думаю, что вы проверяете электронную почту.",
+            "auto_translated": "Я думаю, что вы проверяете электронную почту."
+        },
+        "ms": {
+            "legacy_caption_pid": 31008,
+            "legacy_language_pid": 14,
+            "text": "Saya berfikir bahawa anda memeriksa e-mel anda.",
+            "auto_translated": "Saya berfikir bahawa anda memeriksa e-mel anda."
+        },
+        "ta": {
+            "legacy_caption_pid": 31009,
+            "legacy_language_pid": 15,
+            "text": "நான் உங்கள் மின்னஞ்சல் பார்க்கலாம் என்று நினைக்கிறேன்.",
+            "auto_translated": "நான் உங்கள் மின்னஞ்சல் பார்க்கலாம் என்று நினைக்கிறேன்."
+        },
+        "it": {
+            "legacy_caption_pid": 31010,
+            "legacy_language_pid": 16,
+            "text": "Penso che si controlla la posta.",
+            "auto_translated": "Penso che si controlla la posta."
+        },
+        "bn": {
+            "legacy_caption_pid": 31011,
+            "legacy_language_pid": 17,
+            "text": "আমি যে আপনি আপনার ইমেল চেক করি।",
+            "auto_translated": "আমি যে আপনি আপনার ইমেল চেক করি।"
+        },
+        "tr": {
+            "legacy_caption_pid": 31012,
+            "legacy_language_pid": 18,
+            "text": "Ben E-postalarınızı kontrol düşünüyorum.",
+            "auto_translated": "Ben E-postalarınızı kontrol düşünüyorum."
+        },
+        "vi": {
+            "legacy_caption_pid": 31013,
+            "legacy_language_pid": 19,
+            "text": "Tôi nghĩ bạn nên kiểm tra email của bạn.",
+            "auto_translated": "Tôi nghĩ bạn nên kiểm tra email của bạn."
+        },
+        "pl": {
+            "legacy_caption_pid": 31014,
+            "legacy_language_pid": 20,
+            "text": "Myślę, że sprawdzić pocztę.",
+            "auto_translated": "Myślę, że sprawdzić pocztę."
+        },
+        "jv": {
+            "legacy_caption_pid": 31015,
+            "legacy_language_pid": 21,
+            "text": "Aku sing mriksa email.",
+            "auto_translated": "Aku sing mriksa email."
+        },
+        "pa": {
+            "legacy_caption_pid": 31016,
+            "legacy_language_pid": 22,
+            "text": "ਮੈਨੂੰ ਲੱਗਦਾ ਹੈ ਕਿ ਤੁਹਾਨੂੰ ਆਪਣੇ ਈ-ਮੇਲ ਚੈੱਕ ਸੋਚਦੇ.",
+            "auto_translated": "ਮੈਨੂੰ ਲੱਗਦਾ ਹੈ ਕਿ ਤੁਹਾਨੂੰ ਆਪਣੇ ਈ-ਮੇਲ ਚੈੱਕ ਸੋਚਦੇ."
+        },
+        "th": {
+            "legacy_caption_pid": 31017,
+            "legacy_language_pid": 23,
+            "text": "ผมคิดว่าคุณตรวจสอบอีเมลของคุณ",
+            "auto_translated": "ผมคิดว่าคุณตรวจสอบอีเมลของคุณ"
+        },
+        "te": {
+            "legacy_caption_pid": 42458,
+            "legacy_language_pid": 24,
+            "text": "నేను మీరు మీ ఇమెయిల్ తనిఖీ అనుకుంటున్నాను.",
+            "auto_translated": "నేను మీరు మీ ఇమెయిల్ తనిఖీ అనుకుంటున్నాను."
+        },
+        "mr": {
+            "legacy_caption_pid": 42459,
+            "legacy_language_pid": 25,
+            "text": "मी तुम्हाला तुमच्या ईमेल तपासा, असे वाटते.",
+            "auto_translated": "मी तुम्हाला तुमच्या ईमेल तपासा, असे वाटते."
+        },
+        "ur": {
+            "legacy_caption_pid": 42460,
+            "legacy_language_pid": 26,
+            "text": "مجھے یقین ہے کہ آپ کو آپ کے ای میل کی جانچ میں سوچنا.",
+            "auto_translated": "مجھے یقین ہے کہ آپ کو آپ کے ای میل کی جانچ میں سوچنا."
+        },
+        "gu": {
+            "legacy_caption_pid": 42461,
+            "legacy_language_pid": 27,
+            "text": "હું માનું છું કે તમે તમારા ઇમેઇલ તપાસો લાગે છે.",
+            "auto_translated": "હું માનું છું કે તમે તમારા ઇમેઇલ તપાસો લાગે છે."
+        },
+        "uk": {
+            "legacy_caption_pid": 42462,
+            "legacy_language_pid": 28,
+            "text": "Я думаю, що ви перевіряєте електронну пошту.",
+            "auto_translated": "Я думаю, що ви перевіряєте електронну пошту."
+        },
+        "ml": {
+            "legacy_caption_pid": 42463,
+            "legacy_language_pid": 29,
+            "text": "ഞാൻ നിങ്ങളുടെ ഇമെയിൽ പരിശോധിക്കുക എന്നു തോന്നുന്നു.",
+            "auto_translated": "ഞാൻ നിങ്ങളുടെ ഇമെയിൽ പരിശോധിക്കുക എന്നു തോന്നുന്നു."
+        },
+        "kn": {
+            "legacy_caption_pid": 42464,
+            "legacy_language_pid": 30,
+            "text": "ನಾನು ನಿಮ್ಮ ಇಮೇಲ್ ಪರಿಶೀಲಿಸಿ ಭಾವಿಸುತ್ತೇನೆ.",
+            "auto_translated": "ನಾನು ನಿಮ್ಮ ಇಮೇಲ್ ಪರಿಶೀಲಿಸಿ ಭಾವಿಸುತ್ತೇನೆ."
+        },
+        "su": {
+            "legacy_caption_pid": 42465,
+            "legacy_language_pid": 31,
+            "text": "Jigana nu parios email Anjeun.",
+            "auto_translated": "Jigana nu parios email Anjeun."
+        },
+        "ku": {
+            "legacy_caption_pid": 42466,
+            "legacy_language_pid": 32,
+            "text": "Ez wisa difikirim, ku tu email xwe kontrol bike.",
+            "auto_translated": "Ez wisa difikirim, ku tu email xwe kontrol bike."
+        },
+        "ps": {
+            "legacy_caption_pid": 42467,
+            "legacy_language_pid": 33,
+            "text": "زه فکر کوم چې تاسو خپل ایمیل وګورئ.",
+            "auto_translated": "زه فکر کوم چې تاسو خپل ایمیل وګورئ."
+        },
+        "ro": {
+            "legacy_caption_pid": 42468,
+            "legacy_language_pid": 34,
+            "text": "Cred că vă verificați e-mail.",
+            "auto_translated": "Cred că vă verificați e-mail."
+        },
+        "id": {
+            "legacy_caption_pid": 42469,
+            "legacy_language_pid": 35,
+            "text": "Saya berpikir bahwa Anda memeriksa email Anda.",
+            "auto_translated": "Saya berpikir bahwa Anda memeriksa email Anda."
+        },
+        "sd": {
+            "legacy_caption_pid": 42470,
+            "legacy_language_pid": 36,
+            "text": "مون کي ته توهان پنهنجي اي ميل چيڪ خيال آهي.",
+            "auto_translated": "مون کي ته توهان پنهنجي اي ميل چيڪ خيال آهي."
+        },
+        "af": {
+            "legacy_caption_pid": 42471,
+            "legacy_language_pid": 37,
+            "text": "Ek dink dat jy jou e-pos na te gaan.",
+            "auto_translated": "Ek dink dat jy jou e-pos na te gaan."
+        },
+        "sw": {
+            "legacy_caption_pid": 42472,
+            "legacy_language_pid": 38,
+            "text": "Nadhani kuangalia barua pepe yako.",
+            "auto_translated": "Nadhani kuangalia barua pepe yako."
+        },
+        "lo": {
+            "legacy_caption_pid": 42473,
+            "legacy_language_pid": 39,
+            "text": "ຂ້າພະເຈົ້າຄິດວ່າທ່ານເຂົ້າມາຊົມອີເມວຂອງທ່ານ.",
+            "auto_translated": "ຂ້າພະເຈົ້າຄິດວ່າທ່ານເຂົ້າມາຊົມອີເມວຂອງທ່ານ."
+        },
+        "nl": {
+            "legacy_caption_pid": 42474,
+            "legacy_language_pid": 40,
+            "text": "Ik denk dat je je e-mail checken.",
+            "auto_translated": "Ik denk dat je je e-mail checken."
+        },
+        "tl": {
+            "legacy_caption_pid": 42475,
+            "legacy_language_pid": 41,
+            "text": "Sa tingin ko na suriin mo ang iyong email.",
+            "auto_translated": "Sa tingin ko na suriin mo ang iyong email."
+        },
+        "ne": {
+            "legacy_caption_pid": 42476,
+            "legacy_language_pid": 42,
+            "text": "म आफ्नो इमेल जाँच ठान्छन्।",
+            "auto_translated": "म आफ्नो इमेल जाँच ठान्छन्।"
+        },
+        "hu": {
+            "legacy_caption_pid": 42477,
+            "legacy_language_pid": 43,
+            "text": "Azt hiszem, hogy ellenőrizze az e-mail.",
+            "auto_translated": "Azt hiszem, hogy ellenőrizze az e-mail."
+        },
+        "cs": {
+            "legacy_caption_pid": 42478,
+            "legacy_language_pid": 44,
+            "text": "Domnívám se, že jste zkontrolovat svůj e-mail.",
+            "auto_translated": "Domnívám se, že jste zkontrolovat svůj e-mail."
+        },
+        "el": {
+            "legacy_caption_pid": 42479,
+            "legacy_language_pid": 45,
+            "text": "Νομίζω ότι μπορείτε να ελέγξετε το email σας.",
+            "auto_translated": "Νομίζω ότι μπορείτε να ελέγξετε το email σας."
+        },
+        "sv": {
+            "legacy_caption_pid": 42480,
+            "legacy_language_pid": 46,
+            "text": "Jag tror att du kontrollera din e-post.",
+            "auto_translated": "Jag tror att du kontrollera din e-post."
+        },
+        "kk": {
+            "legacy_caption_pid": 42481,
+            "legacy_language_pid": 47,
+            "text": "Мен сізге электрондық поштаны тексеру деп ойлаймын.",
+            "auto_translated": "Мен сізге электрондық поштаны тексеру деп ойлаймын."
+        },
+        "fi": {
+            "legacy_caption_pid": 42482,
+            "legacy_language_pid": 48,
+            "text": "Uskon, että voit tarkistaa sähköpostisi.",
+            "auto_translated": "Uskon, että voit tarkistaa sähköpostisi."
+        },
+        "da": {
+            "legacy_caption_pid": 42483,
+            "legacy_language_pid": 49,
+            "text": "Jeg tror, ​​at du tjekker din e-mail.",
+            "auto_translated": "Jeg tror, ​​at du tjekker din e-mail."
+        },
+        "he": {
+            "legacy_caption_pid": 42484,
+            "legacy_language_pid": 50,
+            "text": "אני חושב שאתה בודק את הדוא\"ל שלך.",
+            "auto_translated": "אני חושב שאתה בודק את הדוא\"ל שלך."
+        },
+        "no": {
+            "legacy_caption_pid": 42485,
+            "legacy_language_pid": 51,
+            "text": "Jeg tror at du sjekker e-posten.",
+            "auto_translated": "Jeg tror at du sjekker e-posten."
+        }
+    }
+}

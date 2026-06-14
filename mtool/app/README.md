@@ -1,0 +1,101 @@
+# app
+
+- `admin/` と `lab/` の両方から読む current runtime application code を配置する。
+- 画面ごとの責務は分けるが、共通ロジックはここへ集約する。
+- `shared` のような曖昧カテゴリは使わず、実行コードの正本として `mtool/app/` に置く。
+- `config.php` で環境変数とサイト既定値から設定オブジェクトを組み立てる。
+- `APP_GENERATED_DBCLASSES_MODE` が空なら、`mtool/reference/dbclasses/_support/runtime-generation-manifest.json` から self-generated runtime mode を自動判定する。
+- `bootstrap.php` でサイト設定と DB 接続情報の初期化をまとめる。
+- `database.php` で PDO の生成と接続確認を共通化する。
+- `request.php` で request 情報と request id を正規化する。
+- `session.php` で session cookie 設定と session 開始を共通化する。
+- `csrf.php` で POST 用の CSRF token を扱う。
+- `auth.php` で認証状態とスタブ認証の処理を共通化する。
+- `domain_validation.php` で `Project` / `Experiment` / DB Access metadata 入力の最小バリデーションを扱う。
+- proxy auth type の allowed values と、`GetFunc` 系での get function 必須条件もここで揃える。
+- `db_access_endpoint_policy.php` で shared proxy auth policy resolver を扱い、`db_access function` 用 `SingleProxy_*` と `custom proxy` 用 `AuthType` の両方を同じ規則で解釈する。
+- `db_access_repository.php` を DB Access metadata adapter とする。
+- `db_access_repository_pdo.php` で `project_db_access_classes` / `project_db_access_functions` / query designer sub-resource の fetch / upsert / CRUD を実装する。
+- `custom_proxy_repository.php` を Custom Proxy metadata adapter とする。
+- `custom_proxy_repository_pdo.php` で `project_custom_proxies` / `project_custom_proxy_steps` / `project_custom_proxy_source_output_targets` の fetch / CRUD を実装する。
+- `custom_proxy_service.php` で custom proxy 表示名、runtime function catalog 参照、target source output key 正規化を扱う。
+- `middleware.php` で dispatch 前の保護ルート制御と例外ハンドリングをまとめる。
+- `project_repository.php` を project repository adapter とし、driver 切替の公開入口にする。
+- `project_repository_pdo.php` で `db-config` 上の project CRUD を実装する。
+- `project_repository_generated_bootstrap.php` で generated driver の差し替え位置を固定する。
+- `experiment_repository.php` を experiment repository adapter とし、driver 切替の公開入口にする。
+- `experiment_repository_pdo.php` で `db-lab` 上の experiment CRUD を実装する。
+- `experiment_repository_generated_bootstrap.php` で generated driver の差し替え位置を固定する。
+- `generated_runtime.php` で runtime reference の配置状況を要約する。
+- `generated_catalog.php` で `data-*.php` / `dbaccess-*.php` から runtime reference catalog を作る。
+- current emitted `RUNTIME-DBCLASSES` layout の source of truth は `docs/internal/generated-code-strategy.md` とする。
+- promoted runtime reference 自体は top-level wrapper + `base/` layout を使い、`generated_catalog.php` は historical self-generated bundle input として残る `base/` / `_base/` / `_wrappers/` も解決して logical method/property/class catalog を返す。
+- `ApacheHostSetting` / `ApacheHostSettingTemplate` は runtime reference scope から除外する。旧実装での用途は Apache config template 展開と host assignment infra であり、current app runtime の自己生成対象ではない。
+- `project_output_template_renderer.php` で repo 管理の source template を解決し、canonical source-output generator から使う。
+- `mtool/reference/source-templates/` に canonical `DATACLASS` / `DBACCESS` の固定骨格 template を置く。
+- `project_output_runtime_generator.php` で `RUNTIME-DBCLASSES` 用の prepared runtime source tree を作る。
+- runtime reference を staging し、sync 済み canonical DB Access metadata があれば root `dbaccess-*` を overlay する。
+- `_support/runtime-generation-manifest.json` に generation summary を残す。
+- `runtime_reference_promotion.php` で verified runtime artifact の `mtool/dbclasses` を `mtool/reference/dbclasses` へ promote し、同時に durable snapshot を `mtool/reference/runtime-reference-snapshots/` へ保存する。
+- `runtime_reference_status.php` で promoted runtime reference と latest runtime artifact の `artifact_key` / manifest 状態に加えて、snapshot-backed recovery 可否も比較する。
+- `project_output_service.php` で prepared runtime source tree または staged proxy source tree を artifact bundle / archive にまとめる。
+- `project_output_proxy_generator.php` で custom proxy build plan または single-function proxy target plan から proxy server / client の staged source tree を組み立てる。
+- `response.php` で HTML / JSON の共通レスポンスヘッダを付与する。
+- `router.php` で request path から route を決める。
+- `http.php` で front controller と dispatch をまとめる。
+- `health.php` で health endpoint 用の JSON 生成を共通化する。
+- `error_page.php` で 404 ページを返す。
+- `bootstrap_page.php` で初期ブートストラップ画面の描画を共通化する。
+- `login_page.php` でログイン画面と POST ハンドラを共通化する。
+- `dashboard_page.php` でログイン後の保護ルートを共通化する。
+- `project_list_page.php` で admin 側の project 一覧を描画する。
+- `project_detail_page.php` で project hub を描画する。
+- `project_custom_proxy_route_common.php` で `/projects/{project_key}/proxy/custom` 配下の共通 bootstrap と route helper を扱う。
+- `project_custom_proxies_page.php` で custom proxy 一覧、作成、削除を描画する。
+- `project_custom_proxy_detail_page.php` で custom proxy 本体の auth / transaction / target source output 編集を描画する。
+- `project_custom_proxy_functions_page.php` で custom proxy step の一覧、追加、更新、削除を描画する。
+- `project_settings_page.php` で project 基本設定を描画する。
+- `project_tables_page.php` で table metadata 一覧を描画する。canonical row を優先し、空なら runtime reference fallback を表示する。
+- `project_tables_import_page.php` で table import preview / apply を描画する。
+- `project_table_detail_page.php` で table detail を描画する。canonical row を優先し、必要なら runtime reference を併記する。
+- `project_table_columns_page.php` で column detail を描画する。canonical row を優先し、必要なら runtime reference を併記する。
+- `project_data_classes_page.php` で data class 一覧を描画する。canonical row を優先し、空なら runtime reference fallback を表示する。
+- `project_data_classes_sync_page.php` で data class sync preview / apply を描画する。
+- `project_data_class_detail_page.php` で data class detail を描画する。canonical row を優先し、必要なら runtime reference を併記する。
+- `project_data_class_fields_page.php` で data class field detail を描画する。canonical row を優先し、必要なら runtime reference を併記する。
+- `project_data_class_source_page.php` で data class source preview を描画する。runtime reference source が無い canonical-only class では metadata summary を返す。
+- `project_db_access_page.php` で DB Access runtime reference catalog を描画する。
+- 保存済み class metadata があれば一覧に重ねる。
+- `project_db_access_sync_page.php` で DB Access class/function sync UI を描画する。
+- `project_db_access_detail_page.php` で DB Access class detail preview を描画する。
+- 保存済み class metadata があれば detail に併記する。
+- `project_db_access_edit_page.php` で `data-da.php` / `dbaccess-da.php` を使った class setting と canonical save を描画する。
+- `project_db_access_functions_page.php` で function candidate preview を描画する。
+- `project_db_access_function_change_order_page.php` で function の一括並び替えと `RESET` を描画する。
+- 保存済み function metadata があれば一覧に重ねる。
+- `project_db_access_source_page.php` で DB Access source preview を描画する。
+- `project_db_access_function_detail_page.php` で `data-dafunc.php` を併記した function detail と canonical save を描画する。
+- `SingleProxy_*` は単体 function proxy 用 metadata として select 入力と解釈済み summary を同じ画面で確認できる。
+- `project_db_access_function_move_page.php` で function の move を描画する。
+- runtime reference dbaccess file に同名 method がある DB Access へ canonical function row を移し、child designer row は同じ function id に残す。
+- `project_db_access_function_select_where_page.php` で select where designer 一覧を描画する。
+- `project_db_access_function_select_where_input_aid_page.php` で select where の input-aid を描画する。
+- `project_db_access_function_select_where_change_order_page.php` で select where の一括並び替えと `RESET` を描画する。
+- `project_db_access_function_select_where_edit_page.php` で select where designer の canonical save / delete を描画する。
+- `project_db_access_function_select_target_fields_page.php` で select target fields designer 一覧を描画する。
+- `project_db_access_function_select_target_field_edit_page.php` で select target field designer の canonical save / delete を描画する。
+- `project_db_access_function_select_having_page.php` で select having designer 一覧を描画する。
+- `project_db_access_function_select_having_edit_page.php` で select having designer の canonical save / delete を描画する。
+- `project_db_access_function_insert_target_fields_page.php` で insert target fields designer 一覧を描画する。
+- `project_db_access_function_insert_target_field_edit_page.php` で insert target field designer の canonical save / delete を描画する。
+- `project_db_access_function_update_target_fields_page.php` で update target fields designer 一覧を描画する。
+- `project_db_access_function_update_target_field_edit_page.php` で update target field designer の canonical save / delete を描画する。
+- `project_db_access_function_update_delete_where_page.php` で update/delete where designer 一覧を描画する。
+- `project_db_access_function_update_delete_where_input_aid_page.php` で update/delete where の input-aid を描画する。
+- `project_db_access_function_update_delete_where_change_order_page.php` で update/delete where の一括並び替えと `RESET` を描画する。
+- `project_db_access_function_update_delete_where_edit_page.php` で update/delete where designer の canonical save / delete を描画する。
+- `project_db_access_function_source_page.php` で function source preview を描画する。
+- `project_db_access_function_endpoint_page.php` で `SingleProxy_AuthType` を含む endpoint contract preview を描画する。
+- auth policy は shared resolver で解釈し、未指定時は legacy default として `ProjectToken` 扱いにする。multi-step custom proxy の auth は `project_custom_proxies` 側で別管理する。
+- 保存済み function metadata があれば endpoint draft に反映する。
+- `experiment_list_page.php` で lab 側の experiment 一覧を描画する。

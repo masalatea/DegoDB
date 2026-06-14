@@ -1,0 +1,331 @@
+# 2026 Reports / 2026 年の履歴
+
+2026 年の plan、progress、handoff、slice report をまとめるディレクトリ。
+
+## 整理メモ
+
+- 2026-05-14 の棚卸し時点で、現行の Markdown 群に exact duplicate file はない。
+- `2026-0513-resume-prompt.md` は `2026-0513-end-of-day-handoff.md` から切り出した派生 prompt であり、背景説明の正本ではない。
+- `2026-0512-end-of-day-handoff.md` は履歴保持のため残すが、再開基準としては superseded である。
+- `2026-0513-*` の slice report 群は route / bridge / guard ごとの作業記録なので、似た日付でも別件として残す。
+
+## Index
+
+- `2026-0507-rebuild-plan.md`
+  - 初期の再構築 scope と進め方。
+- `2026-0508-rebuild-status.md`
+  - 2026-05-08 時点の進捗スナップショット。
+- `2026-0508-runtime-self-generation-report.md`
+  - runtime self-generation まわりの報告。
+- `2026-0511-gradual-legacy-absorption-plan.md`
+  - legacy 吸収を段階的に進める parent framework。Status: `PENDING`。
+- `2026-0511-self-host-import-loop-plan.md`
+  - self-host import / sync loop の first slice 計画。first slice 完了。Status: `DONE`。
+- `2026-0512-end-of-day-handoff.md`
+  - 2026-05-12 終了時点の handoff。superseded。
+- `2026-0512-mtool-project1-output-parity-plan.md`
+  - Project 1 output parity の計画。
+- `2026-0512-seed-separation-progress.md`
+  - seed separation の進捗記録。
+- `2026-0513-db-access-function-route-currentization.md`
+  - DB access function route の currentization。
+- `2026-0513-end-of-day-handoff.md`
+  - 2026-05-13 終了時点の handoff。2026-05-14 再開の基準。
+- `2026-0513-endpoint-helper-cleanup.md`
+  - endpoint helper cleanup の slice report。
+- `2026-0513-endpoint-test-guard-handoff-reduction.md`
+  - endpoint test guard / handoff reduction の slice report。
+- `2026-0513-endpoint-test-post-bridge.md`
+  - endpoint test POST bridge の slice report。
+- `2026-0513-html-authoring-save-bridge.md`
+  - HTML authoring save bridge の slice report。
+- `2026-0513-proxy-bridge-error-route-reduction.md`
+  - proxy bridge error route reduction の slice report。
+- `2026-0513-proxy-get-unknown-id-redirects.md`
+  - proxy GET unknown-id redirect 対応の slice report。
+- `2026-0513-proxy-post-unknown-id-current-errors.md`
+  - proxy POST unknown-id current errors の slice report。
+- `2026-0513-proxy-preview-guard-currentization.md`
+  - proxy preview guard currentization の slice report。
+- `2026-0513-proxy-shared-root-guard-reduction.md`
+  - proxy shared-root guard reduction の slice report。
+- `2026-0513-redirect-only-guard-currentization.md`
+  - redirect-only guard currentization の slice report。
+- `2026-0513-resume-prompt.md`
+  - `2026-0513-end-of-day-handoff.md` 由来の copy/paste 用 resume prompt。
+- `2026-0513-run-ajax-mismatch-currentization.md`
+  - run-ajax mismatch currentization の slice report。
+- `2026-0513-source-output-bridge.md`
+  - source-output bridge の slice report。
+- `2026-0513-table-data-class-compare-route-currentization.md`
+  - table/data-class compare route currentization の slice report。
+- `2026-0514-source-output-candidate-policy.md`
+  - source-output candidate policy の最新整理。
+- `2026-0514-source-output-legacy-metadata.md`
+  - source-output legacy-only field を `notes` structured block へ退避する方針と実装。
+- `2026-0514-progress-snapshot.md`
+  - 2026-05-14 時点の broad scope / Project 1 parity / sample 整理の進捗スナップショット。
+- `2026-0515-progress-snapshot.md`
+  - 2026-05-15 時点の最新 broad scope / Project 1 parity / LanguageResource 方針再確認つき進捗スナップショット。
+- `2026-0514-project-security-first-slice.md`
+  - `Project Security / Host Assignment` の first slice currentization。
+- `2026-0514-project-security-second-slice.md`
+  - page security / host assignment に current canonical landing zone を入れた second slice。
+- `2026-0514-functional-migration-vs-self-host-plan.md`
+  - `機能移植完了` と `self-host / runtime 置換完了` を分ける gate/reference plan。Status: `PENDING`。
+- `2026-0514-language-resource-current-entry-slice.md`
+  - `LanguageResource` の current admin 入口と copied legacy catalog 化。
+- `2026-0514-language-resource-canonical-write-path.md`
+  - `LanguageResource` の current canonical table / basic CRUD / smoke test。
+- `2026-0514-html-source-binding-first-slice.md`
+  - HTML source binding の current landing zone 追加。
+- `2026-0514-html-source-binding-lookup-integration.md`
+  - HTML source binding を route / generated wrapper lookup に接続。
+- `2026-0514-html-template-canonical-settings.md`
+  - HTML template settings の canonical table / current route / smoke test。
+- `2026-0514-output-directory-reorganization.md`
+  - `mtool/app` / `mtool/reference` / `work/` / `sample/output-baselines/` / `published/` の整理方針と実装変更。
+- `2026-0514-sample-pack-reorganization.md`
+  - `Project 1 = MTOOL` と `Project 2+ = sample pack` に合わせた sample/seed/scenario の再配置。
+- `2026-0515-language-resource-seed-overlay-split.md`
+  - `LanguageResource` seed / overlay を core から外した slice。
+- `2026-0515-language-resource-additional-group-currentization.md`
+  - additional group 系 route/currentization の途中経過。
+- `2026-0515-language-resource-html-db-wrapper-currentization.md`
+  - generated `HTML-DB` wrapper currentization。後続変更あり。
+- `2026-0515-language-resource-file-tree-bootstrap.md`
+  - `LanguageResource` file tree bootstrap の初期 report。後続変更あり。
+- `2026-0515-language-resource-auto-translate-currentization.md`
+  - 一時的な auto-translate currentization。same-day superseded。
+- `2026-0515-language-resource-file-source-of-truth-plan.md`
+  - `LanguageResource` の final file-based source of truth / tableless 方針。
+- `2026-0515-language-resource-debug-bridge-hardening.md`
+  - bulk export/validate と debug bridge hardening。
+- `2026-0515-language-resource-debug-script-relocation.md`
+  - DB bridge / retirement script を `debug/language_resource/` へ移した整理。
+- `2026-0518-language-resource-compatibility-wrapper-policy.md`
+  - LanguageResource debug CLI wrapper の維持範囲と削除条件の整理。
+- `2026-0518-sample-pack-number-shift.md`
+  - sample pack 番号を `+1` して `Sample 1` 追加用の空きを作った整理。
+- `2026-0518-sample1-simple-table.md`
+  - `Sample 1` として最小の table / data class / mirror output を追加した記録。
+- `2026-0518-sample1-output-provenance-correction.md`
+  - `Sample 1` の imitation output を除去し、actual output のみ sample に置く方針へ補正した記録。
+- `2026-0518-disposable-output-under-work.md`
+  - sample pack を含む disposable output を `work/` / `tmp/` へ寄せた整理。
+- `2026-0518-root-tmp-removal.md`
+  - root `tmp/` を廃止し、scratch / log を `work/tmp/` へ統一した整理。
+- `2026-0518-runtime-constructor-currentization.md`
+  - runtime dbaccess constructor delegate を解消した self-host slice。
+- `2026-0518-runtime-data-overlay-manifest.md`
+  - `data-*` overlay の per-source manifest と残件 count の可視化。
+- `2026-0518-mtool-runtime-dbaccess-phase1.md`
+  - runtime DB Access regeneration の phase 1 到達点。
+- `2026-0518-mtool-runtime-data-phase2.md`
+  - runtime `data-*` regeneration の phase 2 到達点。
+- `2026-0518-mtool-runtime-layout-audit.md`
+  - self-generated runtime bundle layout の監査メモ。
+- `2026-0518-mtool-runtime-wrapper-base-migration-plan.md`
+  - wrapper/base 移行の implementation detail と次段方針。`2026-0527` active plan の supporting doc。Status: `PENDING`。
+- `2026-0520-legacy-helper-host-only-cleanup.md`
+  - `bootstrap_dbclasses.sh` と `export_legacy_*_reference.php` 群を host-side helper として整理した記録。
+- `2026-0520-bootstrap-dbclasses-runtime-reference-isolation.md`
+  - `bootstrap_dbclasses.sh` の default target を `work/legacy-recovery/dbclasses` へ隔離し、runtime reference overwrite を explicit override に分けた記録。
+- `2026-0520-bootstrap-dbclasses-archive-readiness.md`
+  - `make promote-runtime-reference` だけでは durable rollback にならず、`bootstrap_dbclasses.sh` をまだ archive できない理由を整理した記録。
+- `2026-0520-original-codes-helper-inventory.md`
+  - `original-codes/` 参照の残存箇所を host-only helper と provenance metadata に分類した記録。
+- `2026-0520-legacy-table-schema-helper-classification.md`
+  - `export_legacy_table_schema_reference.php` を dump-path helper 群の例外として整理した記録。
+- `2026-0520-unused-legacy-dbclasses-helper-removal.md`
+  - 未使用になっていた `app_runtime_storage_legacy_dbclasses_*()` を削除し、current code から `original-codes/` へ届く runtime path helper をなくした記録。
+- `2026-0520-provenance-metadata-wording-cleanup.md`
+  - `source_dump_path` / `bootstrap-reference` を rename せず、provenance-only の読み方を current code と prompt に補強した記録。
+- `2026-0520-runtime-replacement-two-stage-rollout.md`
+  - runtime 置換を `simple form direct replacement` と `complex/new form の sample gate` の 2 段で進める運用整理。
+- `2026-0520-runtime-replacement-rollout-inventory.md`
+  - current manifest 上の non-plain `data-*` を lane / sample gate ごとに棚卸しし、未分類 `0` を確認した記録。
+- `2026-0520-runtime-manifest-artifact-provenance.md`
+  - runtime-generation-manifest に `artifact_key` provenance を残し、promoted reference でも追えるようにした記録。
+- `2026-0520-runtime-reference-status-check.md`
+  - promoted runtime reference と latest runtime artifact の同期状態を機械的に確認できるようにした記録。
+- `2026-0520-runtime-reference-durable-snapshot-recovery.md`
+  - promoted artifact の durable snapshot capture / restore と snapshot-backed status を追加した記録。
+- `2026-0520-bootstrap-dbclasses-runtime-reference-retirement.md`
+  - `bootstrap_dbclasses.sh` の direct runtime overwrite を retire し、snapshot restore を唯一の repair path に揃えた記録。
+- `2026-0520-bootstrap-dbclasses-last-resort-gate.md`
+  - `bootstrap_dbclasses.sh` / `make bootstrap-dbclasses` に explicit acknowledgment を必須化し、casual use を減らした記録。
+- `2026-0520-host-side-export-helper-explicit-gate.md`
+  - host-side export helper に `--host-side` を必須化し、casual use を減らした記録。
+- `2026-0520-buildsourcefunccache-companion-declarations-sample.md`
+  - `BuildSourceFuncCache` の 3-class companion declarations variant を `sample14` として追加した記録。
+- `2026-0520-buildlog-companion-declarations-sample.md`
+  - `BuildLog` の no-top-level companion declarations variant を `sample15` として追加した記録。
+- `2026-0520-livecheckresult-companion-declarations-sample.md`
+  - `LiveCheckResult` の 3-class no-top-level companion declarations variant を `sample16` として追加した記録。
+- `2026-0520-speccontent-top-level-declaration-sample.md`
+  - `SpecContent` の 1-class top-level declaration variant を `sample17` として追加した記録。
+- `2026-0520-projectuser-top-level-declaration-sample.md`
+  - `ProjectUser` の 3-class top-level declaration variant を `sample18` として追加した記録。
+- `2026-0520-htmltemplate-top-level-declaration-sample.md`
+  - `htmlTemplate` の 4-class top-level declaration variant を `sample19` として追加した記録。
+- `2026-0520-dacustomproxy-method-and-enum-sample.md`
+  - `daCustomProxy` の no-top-level method-and-enum variant を `sample20` として追加した記録。
+- `2026-0520-project-method-and-enum-sample.md`
+  - `Project` の multi-method + top-level helper method-and-enum variant を `sample21` として追加した記録。
+- `2026-0520-projectsourceoutput-method-and-enum-sample.md`
+  - `ProjectSourceOutput` の heavy multi-method + top-level helper method-and-enum variant を `sample22` として追加した記録。
+- `2026-0520-post-sample22-verification-and-table-schema-usage-correction.md`
+  - `table_schema` helper の host-side DSN example 補正と、post-sample22 verification / promote 再確認の記録。
+- `2026-0525-external-database-source-lab-smoke.md`
+  - external named DB source を admin で作成し、import / sync / `OPENAPI-JSON` / `DBTABLE-PROXY-SERVER` publish / lab load までを reusable smoke command にした記録。
+- `2026-0525-lab-swagger-db-source-selector.md`
+  - Lab Swagger viewer の `db_source_key` selector と URL state 保持を追加した記録。
+- `2026-0525-proxy-runtime-db-source-policy.md`
+  - viewer / published proxy の explicit `db_source_key` 許容条件を `supports_proxy_runtime_read` に揃えた記録。
+- `2026-0525-lab-swagger-browser-smoke.md`
+  - external named source から Lab Swagger `Try It Out` list read を actual browser で通した記録。
+- `2026-0525-lab-swagger-browser-crud-smoke.md`
+  - Lab Swagger browser smoke を CRUD cycle まで拡張した記録。
+- `2026-0525-project-token-fail-closed-hardening.md`
+  - generated proxy `ProjectToken` auth を fail-open から fail-closed へ修正し、Swagger viewer notice と contract test を補強した記録。
+- `2026-0525-openapi-auth-persistence-plan.md`
+  - OpenAPI exposure、generated proxy auth、canonical metadata export/import、config DB externalization をまとめて見直した hardening plan。
+- `2026-0525-openapi-spec-visibility-control.md`
+  - `project_source_outputs.spec_visibility` を追加し、OpenAPI spec の viewer exposure を `internal-only` / `disabled` で制御できるようにした記録。
+- `2026-0525-resume-prompt.md`
+  - 2026-05-25 終了時点の copy/paste 用 resume prompt。
+- `2026-0527-broad-rewrite-temporary-closure-plan.md`
+  - broad rewrite current wave の唯一の execution plan。2026-05-28 の status freeze で `M1` / `M2` / `M3` / `Close` をすべて `DONE` に倒した最終 plan。
+- `2026-0527-human-ai-existing-db-journey-plan.md`
+  - 他の contributor と AI が、既存 DB 接続から canonical metadata 永続化、設計、output publish まで迷わず辿れるようにするための flow-first 再編計画。first pass 完了。Status: `DONE`。
+- `2026-0527-resume-prompt.md`
+  - 2026-05-28 再開用の copy/paste prompt。05-27 の status 正規化と `M1` 開始点を反映。
+- `2026-0528-runtime-contract-truth-normalization.md`
+  - `M1. runtime contract truth normalization` の slice report。current promoted runtime tree は `_base/` / `_wrappers/` を emit せず、historical layered path は input-only compatibility だと正規化した記録。
+- `2026-0528-dbaccess-legacy-support-normalization.md`
+  - `M2. DBACCESS wrapper/base migration` の slice report。current DBACCESS base は legacy 親を持たず、`_support/legacy-dbaccess/` は compatibility placeholder へ正規化した記録。
+- `2026-0528-canonical-data-wrapper-base-completion.md`
+  - `M3. canonical generated data-* wrapper/base migration` の slice report。current promoted runtime では `data-*` 全 `99` class が wrapper/base で揃い、manifest `bootstrap_data_class_count=0` を focused test で固定した記録。
+- `2026-0528-close-docs-normalization-progress.md`
+  - `Close` の docs normalization slice。permanent docs 全件へ英語 companion を追加し、docs rule を明文化した時点までを記録し、最終 verification は別 report に分離した。
+- `2026-0528-close-verification-status-freeze.md`
+  - Docker 復旧後に docs contract / focused verification / self-loop / full suite を完走し、`Close` と broad rewrite current wave の status freeze を完了した final close report。
+- `2026-0528-resume-prompt.md`
+  - 2026-05-28 status freeze 後の frozen state と next-wave entry point を反映した self-contained resume prompt。
+- `2026-0526-project-metadata-bundle-cli-first-slice.md`
+  - canonical metadata の project-scoped export / import CLI first slice と current scope / validation / CLI smoke の記録。
+- `2026-0526-project-metadata-bundle-database-sources-secrets.md`
+  - optional `database_sources` sidecar、separate secrets map、existing password preserve / new row fail-closed rule を追加した記録。
+- `2026-0526-project-metadata-bundle-secrets-template-export.md`
+  - `database-source-secrets.template.json` の自動生成と manifest `supplemental_files` を追加した記録。
+- `2026-0526-project-metadata-bundle-secret-env-reference.md`
+  - `password_env` 参照、missing env warning、env-based import rule を追加した記録。
+- `2026-0526-config-db-externalization-preflight.md`
+  - `APP_CONFIG_DB_*` override、config DB preflight CLI、admin `APP_DB_*` mirror rule の first slice 記録。
+- `2026-0526-config-db-externalization-metadata-routing.md`
+  - admin canonical metadata repository を `config_db` 直結にし、`APP_DB_*` mirror hard requirement を外した記録。
+- `2026-0526-config-db-externalization-compose-dependency.md`
+  - root compose の `db-config` 起動順依存を外し、external config DB 向け起動 lane を追加した記録。
+- `2026-0526-config-db-externalization-local-compose-overlay.md`
+  - base compose から `db-config` service を外し、local overlay と sample/scenario helper 側の merge を整えた記録。
+- `2026-0526-config-db-externalization-manual-lane-wording.md`
+  - current docs/help/tutorial sample README を local overlay / external lane wording に揃えた記録。
+- `2026-0526-compose-stack-helper-commonization.md`
+  - local compose overlay の merge 順解決を helper script に寄せ、sample/helper 系の重複を減らした記録。
+- `2026-0526-external-config-db-convenience-targets.md`
+  - external config DB lane の minimal follow-up target を追加した記録。
+- `2026-0526-external-config-db-parity-scope-decision.md`
+  - external config DB lane の `start/stop/reset/shell` parity を current では増やさないと判断した記録。
+- `2026-0526-show-compose-access-urls-base-lane-decision.md`
+  - `show_compose_access_urls.sh` を current では base-only default のまま維持すると決めた記録。
+- `2026-0526-goal-based-doc-entry-guide.md`
+  - `docs/choose-your-path.md` を追加し、goal-based な入口導線を整備した記録。
+- `2026-0526-permanent-doc-promotion-bundle-and-config-db.md`
+  - `project metadata bundle` と `config DB externalization` の stable rule を恒久文書へ昇格した記録。
+- `2026-0526-troubleshooting-doc-guide.md`
+  - `docs/troubleshooting.md` を追加し、current lane の warning / error 切り分けを恒久文書化した記録。
+- `2026-0526-openapi-public-route-policy.md`
+  - OpenAPI public alias/raw route を current では見送り、authenticated viewer と admin artifact download だけを supported lane として固定した記録。
+- `2026-0526-progress-snapshot.md`
+  - 2026-05-26 時点の completed scope / compose lane cleanup / deferred item の snapshot。
+- `2026-0526-resume-prompt.md`
+  - 2026-05-26 終了時点の copy/paste 用 resume prompt。
+- `2026-0522-sample07-dbaccess-crud-basic-pack.md`
+  - `sample07-dbaccess-crud-basic` を追加し、tutorial lane の write metadata (`insert` / `update` / `delete`) を固定した記録。
+- `2026-0522-sample08-dbaccess-join-read-model-pack.md`
+  - `sample08-dbaccess-join-read-model` を追加し、2 live table + 1 read model table の joined select tutorial を固定した記録。
+- `2026-0522-sample09-dbaccess-aggregate-report-pack.md`
+  - `sample09-dbaccess-aggregate-report` を追加し、join + group by + having を持つ aggregate report tutorial を固定した記録。
+- `2026-0522-sample10-dbaccess-mini-crud-flow-pack.md`
+  - `sample10-dbaccess-mini-crud-flow` を追加し、1 table で list/detail/create/update/delete をまとめた capstone tutorial を固定した記録。
+- `2026-0522-ai-facing-docs-entrance-plan.md`
+  - Git 公開と AI 利用を前提に、入口 doc をどう再編するかの情報設計 plan。
+- `2026-0522-lab-admin-swagger-flow-plan.md`
+  - `Lab DB schema -> Admin import -> output -> Lab Swagger` を current lane の次の主線として進めるための週次実装 plan。
+- `2026-0522-end-of-day-status.md`
+  - tutorial lane を `sample10` まで current 化した時点の停止点、full test pass、runtime reference status の current wording をまとめた handoff。
+- `2026-0522-resume-prompt.md`
+  - 2026-05-22 終了時点の copy/paste 用 resume prompt。
+- `2026-0520-end-of-day-status.md`
+  - 2026-05-20 の最終停止点、latest promoted artifact、helper gate、翌日再開時の論点をまとめた記録。
+- `2026-0520-resume-prompt.md`
+  - 2026-05-20 終了時点の copy/paste 用 resume prompt。
+- `2026-0521-host-only-helper-lane-classification.md`
+  - host-only helper を `explicit export` / `last-resort staging` / `provenance metadata` に分け、archive 候補を `bootstrap_dbclasses.sh` 系へ絞った記録。
+- `2026-0521-phase2-completion-boundary-refresh.md`
+  - `Phase 2 / full replacement` を `bounded full replacement` として読み替え、done 条件と optional track を整理した記録。
+- `2026-0521-runtime-reference-promote-operation-split.md`
+  - `verification run` と `promote candidate run` を分け、`stale-reference` を latest artifact 未採用の運用状態として読む基準を整理した記録。
+- `2026-0521-bootstrap-dbclasses-staged-copy-use-inventory.md`
+  - `bootstrap_dbclasses.sh` の staged copy 用途を棚卸しし、`diff / inspection` を keep reason から外して `host-side quarantined full-tree emergency preparation` へ絞った記録。
+- `2026-0521-bootstrap-dbclasses-archived.md`
+  - `bootstrap_dbclasses.sh` を `mtool/old/archived-bootstrap-dbclasses/` へ archive し、current Makefile 導線を fail-fast alias に切り替えた記録。
+- `2026-0521-post-archive-verification-and-promotion.md`
+  - archive 後に `make test` / `make mtool-self-loop-check` / promote を実行し、artifact `20260521-012440-66c2a545` を current promoted baseline にした記録。
+- `2026-0521-runtime-autoload-classmap-lazy-load.md`
+  - `autoload_mtool.php` を compatibility entry のまま generated classmap lazy load へ切り替え、artifact `20260521-023351-d52e8c8b` を promote した記録。
+- `2026-0521-sample-pack-category-split.md`
+  - active sample pack を `sample/patterns/` と `sample/legacy-projects/` へ分け、番号は historical ID のまま役割を path で読めるようにした記録。
+- `2026-0521-sample-category-guides-and-scan-stability.md`
+  - sample category guide README、fixture/test coverage guard、sample output tree scan 安定化を入れた記録。
+- `2026-0521-sample-pack-renumbering-and-pack-target-aliases.md`
+  - active sample pack を `sample01-15` / `sample51-57` の current numbering へ揃え、Makefile に `sampleXX-pack-output-test` 導線を追加した記録。
+- `2026-0521-runtime-pack-compose-runner-contract-guard.md`
+  - active runtime pack の `compose.yaml` / `run.sh` / shared runner path contract を static test で固定した記録。
+- `2026-0521-sample-pack-compose-smoke-check.md`
+  - active runtime sample pack の compose override merge を `docker compose config --services` で軽く検証する host-side smoke を追加した記録。
+- `2026-0521-sample-pack-runtime-smoke-check.md`
+  - representative runtime sample pack を `up -> apply-seed -> health -> seed-loaded check` まで見る heavier smoke を追加した記録。
+- `2026-0521-top-level-sample-readme-catalog-guard.md`
+  - `sample/README.md` を active catalog の入口として test で固定し、catalog guard 導線を追加した記録。
+- `2026-0521-legacy-project-sample-contract-gate.md`
+  - `sample2-8` representative project pack の README/seed/resource manifest contract を静的 test で固定した記録。
+- `2026-0521-legacy-project-pack-slug-alignment.md`
+  - `sample4-whiteboard-reference` の旧 slug 取りこぼしを解消し、`sample2-8` の project slug を pack 名と一致させる contract を固定した記録。
+- `2026-0521-phase2-core-done-checklist.md`
+  - `Phase 2 core done` を 1 画面で判定するための短い checklist。current baseline では `done=yes` と読む基準。
+- `2026-0521-end-of-day-status.md`
+  - 2026-05-21 の最終停止点、bounded full replacement の読み方、latest promoted artifact、tail cleanup 優先度をまとめた記録。
+- `2026-0521-resume-prompt.md`
+  - 2026-05-21 終了時点の copy/paste 用 resume prompt。
+- `2026-0518-self-generated-bootstrap-readiness.md`
+  - self-generated bundle を bootstrap reader へ入れる準備状況。
+- `2026-0519-apache-host-setting-runtime-exclusion.md`
+  - `ApacheHostSetting` / `ApacheHostSettingTemplate` を runtime/self-loop から除外した理由と確認結果。
+- `2026-0519-file-blob-runtime-delegate-decision.md`
+  - legacy blob/file contract を確認し、`IsBlobTarget=1` を current runtime SQL regenerate の明示 delegate 対象にした記録。
+- `2026-0519-self-generated-runtime-reference-promotion.md`
+  - verified self-generated runtime artifact を durable reference へ promote した記録。
+- `2026-0519-runtime-reference-terminology-cleanup.md`
+  - promoted runtime reference を既定にした後の helper 追加、文言整理、self-loop 再確認。
+- `2026-0519-original-codes-host-only-enforcement.md`
+  - `original-codes/` を host-side reference only に固定し、Docker mount と test direct dependency を外した記録。
+- `2026-0519-resume-prompt.md`
+  - 同日終了時点の copy/paste 用 resume prompt。
+- `2026-0519-dbtablecolumns-wrapper-property-migration.md`
+  - `dbtablecolumns` の wrapper-property + helper-method migration を layered-stub upgrade まで通した記録。
+- `2026-0515-end-of-day-handoff.md`
+  - 2026-05-15 終了時点の handoff。次回再開の基準。
+- `2026-0515-resume-prompt.md`
+  - `2026-0515-end-of-day-handoff.md` 由来の copy/paste 用 resume prompt。

@@ -1,0 +1,321 @@
+{
+    "resource_key": "COMMON_LIB_EMAIL_VERIFY_DISABLE_OLD_KEY",
+    "legacy_resource_pid": 1397,
+    "base_group_key": "grp-010-matsuesoft-lib",
+    "additional_group_keys": [],
+    "key_for_update": "YgAZUhUvuZSlFtLvBVI5O5biFx2OYieAMa1GvO3MsbhDl892HgSDZlYQZ5xhuoTBUkDWATYUTrHskot8IDnELKkAIoHX020UjDuFzzNc2eQ8RiV6P2tcomGFStXyZJaY",
+    "sort_group": "EMAIL VERIFY",
+    "key_name": "COMMON_LIB_EMAIL_VERIFY_DISABLE_OLD_KEY",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": false,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 5862,
+            "legacy_language_pid": 1,
+            "text": "(前回のキーを無効にしました。最新のメールにて認証下さい)",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 5863,
+            "legacy_language_pid": 2,
+            "text": "(Old email's key became void now. Please verify by newest email.)",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 5864,
+            "legacy_language_pid": 3,
+            "text": "（上次发送的验证码已经是无效的了，所以请确认最新的邮件）",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 5865,
+            "legacy_language_pid": 4,
+            "text": "(이전 키를 해제했습니다. 최신 이메일로 인증하세요)",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 10711,
+            "legacy_language_pid": 5,
+            "text": "(La clave del correo antiguo se anuló ahora. Compruebe por correo electrónico nuevo).",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 10712,
+            "legacy_language_pid": 6,
+            "text": "(A chave do e-mail antigo tornou-se nula agora. Verifique o novo e-mail.)",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 10713,
+            "legacy_language_pid": 7,
+            "text": "（上次發送的驗證碼已經是無效的了，所以請確認最新的郵件）",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 16429,
+            "legacy_language_pid": 8,
+            "text": "(La clé du vieux courrier est devenue nulle maintenant. Vérifiez par courriel le plus récent.)",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 16430,
+            "legacy_language_pid": 9,
+            "text": "(पुरानी ईमेल की कुंजी अभी व्यर्थ हो गई है। कृपया नवीनतम ईमेल द्वारा सत्यापित करें।)",
+            "auto_translated": ""
+        },
+        "ar": {
+            "legacy_caption_pid": 30878,
+            "legacy_language_pid": 10,
+            "text": "(لقد تعطيل مفتاح السابق. يرجى المصادقة في أحدث البريد الإلكتروني)",
+            "auto_translated": "(لقد تعطيل مفتاح السابق. يرجى المصادقة في أحدث البريد الإلكتروني)"
+        },
+        "fa": {
+            "legacy_caption_pid": 30879,
+            "legacy_language_pid": 11,
+            "text": "(شما کلید قبلی غیر فعال شده است. لطفا در آخرین ایمیل احراز هویت)",
+            "auto_translated": "(شما کلید قبلی غیر فعال شده است. لطفا در آخرین ایمیل احراز هویت)"
+        },
+        "de": {
+            "legacy_caption_pid": 30880,
+            "legacy_language_pid": 12,
+            "text": "(Sie haben den vorherigen Schlüssel deaktiviert. Bitte Authentifizierung in der neuesten E-Mail)",
+            "auto_translated": "(Sie haben den vorherigen Schlüssel deaktiviert. Bitte Authentifizierung in der neuesten E-Mail)"
+        },
+        "ru": {
+            "legacy_caption_pid": 30881,
+            "legacy_language_pid": 13,
+            "text": "(Вы отключили предыдущий ключ. Пожалуйста аутентификации в последней электронной почте)",
+            "auto_translated": "(Вы отключили предыдущий ключ. Пожалуйста аутентификации в последней электронной почте)"
+        },
+        "ms": {
+            "legacy_caption_pid": 30882,
+            "legacy_language_pid": 14,
+            "text": "(Anda telah melumpuhkan kunci sebelumnya. Sila pengesahan dalam e-mel terkini)",
+            "auto_translated": "(Anda telah melumpuhkan kunci sebelumnya. Sila pengesahan dalam e-mel terkini)"
+        },
+        "ta": {
+            "legacy_caption_pid": 30883,
+            "legacy_language_pid": 15,
+            "text": "(நீங்கள் முந்தைய விசையை முடக்கியுள்ளோம். சமீபத்திய மின்னஞ்சலில் கொள்ளவும் அங்கீகரிப்பு)",
+            "auto_translated": "(நீங்கள் முந்தைய விசையை முடக்கியுள்ளோம். சமீபத்திய மின்னஞ்சலில் கொள்ளவும் அங்கீகரிப்பு)"
+        },
+        "it": {
+            "legacy_caption_pid": 30884,
+            "legacy_language_pid": 16,
+            "text": "(Hai disattivato la chiave precedente. Si prega di autenticazione nella sua ultima e-mail)",
+            "auto_translated": "(Hai disattivato la chiave precedente. Si prega di autenticazione nella sua ultima e-mail)"
+        },
+        "bn": {
+            "legacy_caption_pid": 30885,
+            "legacy_language_pid": 17,
+            "text": "(আপনি পূর্ববর্তী কী নিষ্ক্রিয় করে দিয়েছি। সর্বশেষ ই-মেইল প্রমাণীকরণ করুন)",
+            "auto_translated": "(আপনি পূর্ববর্তী কী নিষ্ক্রিয় করে দিয়েছি। সর্বশেষ ই-মেইল প্রমাণীকরণ করুন)"
+        },
+        "tr": {
+            "legacy_caption_pid": 30886,
+            "legacy_language_pid": 18,
+            "text": "(Bir önceki anahtar devre dışı bıraktık. En son e-postada kimlik doğrulama Lütfen)",
+            "auto_translated": "(Bir önceki anahtar devre dışı bıraktık. En son e-postada kimlik doğrulama Lütfen)"
+        },
+        "vi": {
+            "legacy_caption_pid": 30887,
+            "legacy_language_pid": 19,
+            "text": "(Bạn đã vô hiệu hóa các khoá trước đó. Hãy xác thực trong e-mail mới nhất)",
+            "auto_translated": "(Bạn đã vô hiệu hóa các khoá trước đó. Hãy xác thực trong e-mail mới nhất)"
+        },
+        "pl": {
+            "legacy_caption_pid": 30888,
+            "legacy_language_pid": 20,
+            "text": "(Trzeba wyłączyć poprzedni klucz. Proszę uwierzytelniania w najnowszym e-mail)",
+            "auto_translated": "(Trzeba wyłączyć poprzedni klucz. Proszę uwierzytelniania w najnowszym e-mail)"
+        },
+        "jv": {
+            "legacy_caption_pid": 30889,
+            "legacy_language_pid": 21,
+            "text": "(Sampeyan wis dipatèni tombol sadurungé. Mangga bukti asli ing e-mail anyar)",
+            "auto_translated": "(Sampeyan wis dipatèni tombol sadurungé. Mangga bukti asli ing e-mail anyar)"
+        },
+        "pa": {
+            "legacy_caption_pid": 30890,
+            "legacy_language_pid": 22,
+            "text": "(ਤੁਹਾਨੂੰ ਪਿਛਲੇ ਕੁੰਜੀ ਆਯੋਗ ਕੀਤੀ ਹੈ. ਨਵੀਨਤਮ ਈ-ਮੇਲ ਵਿੱਚ ਪਰਮਾਣਕਿਤਾ ਕਰੋ ਜੀ)",
+            "auto_translated": "(ਤੁਹਾਨੂੰ ਪਿਛਲੇ ਕੁੰਜੀ ਆਯੋਗ ਕੀਤੀ ਹੈ. ਨਵੀਨਤਮ ਈ-ਮੇਲ ਵਿੱਚ ਪਰਮਾਣਕਿਤਾ ਕਰੋ ਜੀ)"
+        },
+        "th": {
+            "legacy_caption_pid": 30891,
+            "legacy_language_pid": 23,
+            "text": "(คุณได้ปิดการใช้งานที่สำคัญก่อนหน้านี้. กรุณารับรองความถูกต้องใน e-mail ล่าสุด)",
+            "auto_translated": "(คุณได้ปิดการใช้งานที่สำคัญก่อนหน้านี้. กรุณารับรองความถูกต้องใน e-mail ล่าสุด)"
+        },
+        "te": {
+            "legacy_caption_pid": 42626,
+            "legacy_language_pid": 24,
+            "text": "(ఇందాకటి కీ నిలిపివేసారు. తాజా ఇ-మెయిల్ ప్రమాణీకరణ చేయండి)",
+            "auto_translated": "(ఇందాకటి కీ నిలిపివేసారు. తాజా ఇ-మెయిల్ ప్రమాణీకరణ చేయండి)"
+        },
+        "mr": {
+            "legacy_caption_pid": 42627,
+            "legacy_language_pid": 25,
+            "text": "(आपण मागील की अक्षम केले आहे. कृपया नवीनतम ई-मेल मध्ये प्रमाणीकरण)",
+            "auto_translated": "(आपण मागील की अक्षम केले आहे. कृपया नवीनतम ई-मेल मध्ये प्रमाणीकरण)"
+        },
+        "ur": {
+            "legacy_caption_pid": 42628,
+            "legacy_language_pid": 26,
+            "text": "(آپ پچھلے کلید غیر فعال کر دیا ہے. تازہ ترین ای میل میں استناد کی مہربانی)",
+            "auto_translated": "(آپ پچھلے کلید غیر فعال کر دیا ہے. تازہ ترین ای میل میں استناد کی مہربانی)"
+        },
+        "gu": {
+            "legacy_caption_pid": 42629,
+            "legacy_language_pid": 27,
+            "text": "(તમે પહેલાની કી અક્ષમ કર્યું છે. તાજેતરની ઈ-મેલ સત્તાધિકરણનું કરીને)",
+            "auto_translated": "(તમે પહેલાની કી અક્ષમ કર્યું છે. તાજેતરની ઈ-મેલ સત્તાધિકરણનું કરીને)"
+        },
+        "uk": {
+            "legacy_caption_pid": 42630,
+            "legacy_language_pid": 28,
+            "text": "(Ви відключили попередній ключ. Будь ласка аутентифікації в останній електронній пошті)",
+            "auto_translated": "(Ви відключили попередній ключ. Будь ласка аутентифікації в останній електронній пошті)"
+        },
+        "ml": {
+            "legacy_caption_pid": 42631,
+            "legacy_language_pid": 29,
+            "text": "(മുമ്പത്തെ കീ പ്രവർത്തനരഹിതമാക്കി. പുതിയ ഇ-മെയിലിൽ ആധികാരികത ദയവായി)",
+            "auto_translated": "(മുമ്പത്തെ കീ പ്രവർത്തനരഹിതമാക്കി. പുതിയ ഇ-മെയിലിൽ ആധികാരികത ദയവായി)"
+        },
+        "kn": {
+            "legacy_caption_pid": 42632,
+            "legacy_language_pid": 30,
+            "text": "(ನೀವು ಹಿಂದಿನ ಕೀಲಿಯನ್ನು ನಿಷ್ಕ್ರಿಯಗೊಳಿಸಿದ್ದೇವೆ. ಇತ್ತೀಚಿನ ಇಮೇಲ್ ದೃಢೀಕರಣ ದಯವಿಟ್ಟು)",
+            "auto_translated": "(ನೀವು ಹಿಂದಿನ ಕೀಲಿಯನ್ನು ನಿಷ್ಕ್ರಿಯಗೊಳಿಸಿದ್ದೇವೆ. ಇತ್ತೀಚಿನ ಇಮೇಲ್ ದೃಢೀಕರಣ ದಯವಿಟ್ಟು)"
+        },
+        "su": {
+            "legacy_caption_pid": 42633,
+            "legacy_language_pid": 31,
+            "text": "(Geus ditumpurkeun tombol saméméhna. Mangga auténtikasi dina e-mail panganyarna)",
+            "auto_translated": "(Geus ditumpurkeun tombol saméméhna. Mangga auténtikasi dina e-mail panganyarna)"
+        },
+        "ku": {
+            "legacy_caption_pid": 42634,
+            "legacy_language_pid": 32,
+            "text": "(Hûn key berê qedexekirin kirine. Ji kerema xwe li latest e-mail azmûmkirina)",
+            "auto_translated": "(Hûn key berê qedexekirin kirine. Ji kerema xwe li latest e-mail azmûmkirina)"
+        },
+        "ps": {
+            "legacy_caption_pid": 42635,
+            "legacy_language_pid": 33,
+            "text": "(تاسو د تیرو مهمو ناچارن. مهرباني وکړی په وروستیو E-mail اعتبار)",
+            "auto_translated": "(تاسو د تیرو مهمو ناچارن. مهرباني وکړی په وروستیو E-mail اعتبار)"
+        },
+        "ro": {
+            "legacy_caption_pid": 42636,
+            "legacy_language_pid": 34,
+            "text": "(Ați dezactivat cheia anterioară. Vă rugăm să autentificării în ultimul e-mail)",
+            "auto_translated": "(Ați dezactivat cheia anterioară. Vă rugăm să autentificării în ultimul e-mail)"
+        },
+        "id": {
+            "legacy_caption_pid": 42637,
+            "legacy_language_pid": 35,
+            "text": "(Anda telah dinonaktifkan kunci sebelumnya. Silakan otentikasi dalam e-mail terbaru)",
+            "auto_translated": "(Anda telah dinonaktifkan kunci sebelumnya. Silakan otentikasi dalam e-mail terbaru)"
+        },
+        "sd": {
+            "legacy_caption_pid": 42638,
+            "legacy_language_pid": 36,
+            "text": "(توهان جي پوئين اهم بند ڪيو آهي. مهرباني ڪري جديد اي-ميل ۾ اصليت)",
+            "auto_translated": "(توهان جي پوئين اهم بند ڪيو آهي. مهرباني ڪري جديد اي-ميل ۾ اصليت)"
+        },
+        "af": {
+            "legacy_caption_pid": 42639,
+            "legacy_language_pid": 37,
+            "text": "(Jy het die vorige sleutel afgeskakel. Asseblief verifikasie in die jongste e-pos)",
+            "auto_translated": "(Jy het die vorige sleutel afgeskakel. Asseblief verifikasie in die jongste e-pos)"
+        },
+        "sw": {
+            "legacy_caption_pid": 42640,
+            "legacy_language_pid": 38,
+            "text": "(Kwa walemavu muhimu uliopita. Tafadhali uthibitisho katika latest barua pepe)",
+            "auto_translated": "(Kwa walemavu muhimu uliopita. Tafadhali uthibitisho katika latest barua pepe)"
+        },
+        "lo": {
+            "legacy_caption_pid": 42641,
+            "legacy_language_pid": 39,
+            "text": "(ທ່ານໄດ້ພິທີ່ສໍາຄັນທີ່ຜ່ານມາ. ກະລຸນາ authentication ໃນ e-mail ຫຼ້າສຸດ)",
+            "auto_translated": "(ທ່ານໄດ້ພິທີ່ສໍາຄັນທີ່ຜ່ານມາ. ກະລຸນາ authentication ໃນ e-mail ຫຼ້າສຸດ)"
+        },
+        "nl": {
+            "legacy_caption_pid": 42642,
+            "legacy_language_pid": 40,
+            "text": "(U hebt de vorige sleutel uitgeschakeld. Gelieve authenticatie in de nieuwste e-mail)",
+            "auto_translated": "(U hebt de vorige sleutel uitgeschakeld. Gelieve authenticatie in de nieuwste e-mail)"
+        },
+        "tl": {
+            "legacy_caption_pid": 42643,
+            "legacy_language_pid": 41,
+            "text": "(Hindi mo pinagana ang nakaraang key. Mangyaring authentication sa mga pinakabagong e-mail)",
+            "auto_translated": "(Hindi mo pinagana ang nakaraang key. Mangyaring authentication sa mga pinakabagong e-mail)"
+        },
+        "ne": {
+            "legacy_caption_pid": 42644,
+            "legacy_language_pid": 42,
+            "text": "(अघिल्लो प्रमुख अक्षम। कृपया नवीनतम ई-मेल मा प्रमाणीकरण)",
+            "auto_translated": "(अघिल्लो प्रमुख अक्षम। कृपया नवीनतम ई-मेल मा प्रमाणीकरण)"
+        },
+        "hu": {
+            "legacy_caption_pid": 42645,
+            "legacy_language_pid": 43,
+            "text": "(Letiltotta az előző kulcs. Kérjük hitelesítés a legújabb e-mail)",
+            "auto_translated": "(Letiltotta az előző kulcs. Kérjük hitelesítés a legújabb e-mail)"
+        },
+        "cs": {
+            "legacy_caption_pid": 42646,
+            "legacy_language_pid": 44,
+            "text": "(Jste zakázali předchozí klíč. Prosím autentizace v posledním e-mailu)",
+            "auto_translated": "(Jste zakázali předchozí klíč. Prosím autentizace v posledním e-mailu)"
+        },
+        "el": {
+            "legacy_caption_pid": 42647,
+            "legacy_language_pid": 45,
+            "text": "(Έχετε απενεργοποιήσει την προηγούμενη κλειδί. Παρακαλώ κύρωση, στην τελευταία e-mail)",
+            "auto_translated": "(Έχετε απενεργοποιήσει την προηγούμενη κλειδί. Παρακαλώ κύρωση, στην τελευταία e-mail)"
+        },
+        "sv": {
+            "legacy_caption_pid": 42648,
+            "legacy_language_pid": 46,
+            "text": "(Du har inaktiverat tidigare nyckeln. Vänligen autentisering i den senaste e-post)",
+            "auto_translated": "(Du har inaktiverat tidigare nyckeln. Vänligen autentisering i den senaste e-post)"
+        },
+        "kk": {
+            "legacy_caption_pid": 42649,
+            "legacy_language_pid": 47,
+            "text": "(Сіз алдыңғы пернесін өшірілген. Соңғы электрондық пошта түпнұсқалық растама сұраймыз)",
+            "auto_translated": "(Сіз алдыңғы пернесін өшірілген. Соңғы электрондық пошта түпнұсқалық растама сұраймыз)"
+        },
+        "fi": {
+            "legacy_caption_pid": 42650,
+            "legacy_language_pid": 48,
+            "text": "(Olet poistanut edellisen avain. Ole hyvä authentication uusin sähköposti)",
+            "auto_translated": "(Olet poistanut edellisen avain. Ole hyvä authentication uusin sähköposti)"
+        },
+        "da": {
+            "legacy_caption_pid": 42651,
+            "legacy_language_pid": 49,
+            "text": "(Du har deaktiveret forrige nøgle. Venligst autentificering i den seneste e-mail)",
+            "auto_translated": "(Du har deaktiveret forrige nøgle. Venligst autentificering i den seneste e-mail)"
+        },
+        "he": {
+            "legacy_caption_pid": 42652,
+            "legacy_language_pid": 50,
+            "text": "(השבתת המפתח הקודם. אנא אימות הדואר האלקטרוני האחרונה)",
+            "auto_translated": "(השבתת המפתח הקודם. אנא אימות הדואר האלקטרוני האחרונה)"
+        },
+        "no": {
+            "legacy_caption_pid": 42653,
+            "legacy_language_pid": 51,
+            "text": "(Du har deaktivert forrige nøkkelen. Vennligst godkjenning i den siste e-post)",
+            "auto_translated": "(Du har deaktivert forrige nøkkelen. Vennligst godkjenning i den siste e-post)"
+        }
+    }
+}

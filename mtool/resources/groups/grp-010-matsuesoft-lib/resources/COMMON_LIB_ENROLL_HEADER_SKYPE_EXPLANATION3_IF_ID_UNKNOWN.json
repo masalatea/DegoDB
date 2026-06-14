@@ -1,0 +1,321 @@
+{
+    "resource_key": "COMMON_LIB_ENROLL_HEADER_SKYPE_EXPLANATION3_IF_ID_UNKNOWN",
+    "legacy_resource_pid": 1425,
+    "base_group_key": "grp-010-matsuesoft-lib",
+    "additional_group_keys": [],
+    "key_for_update": "dVhOhVFNVE4sz8mK4HXfMF0I2X9haJAXbL2vmSfXEBojN2Xo7NDyGkcEe2RVH9TXcmPTTOUlrvaMIzQDnpOKVhtOJl6azJwBl8rRgPQvfgYxnWJYOyNBDbZ1BYiBH2OS",
+    "sort_group": "ENROLL",
+    "key_name": "COMMON_LIB_ENROLL_HEADER_SKYPE_EXPLANATION3_IF_ID_UNKNOWN",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": false,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 5974,
+            "legacy_language_pid": 1,
+            "text": "既にスカイプを使っているがスカイプ名が不明な場合：",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 5975,
+            "legacy_language_pid": 2,
+            "text": "If you are already using Skype but Skype name is unknown:",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 5976,
+            "legacy_language_pid": 3,
+            "text": "如果已经有SKYPE，但是不记得SKYPE名的时候",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 5977,
+            "legacy_language_pid": 4,
+            "text": "이미 스카이프를 사용하고 있지만, 스카이프 아이디를 모르는 경우 :",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 10889,
+            "legacy_language_pid": 5,
+            "text": "Si ya está usando Skype, pero el nombre de Skype es desconocido:",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 10890,
+            "legacy_language_pid": 6,
+            "text": "Se você já está usando o Skype, mas o nome do Skype é desconhecido:",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 10891,
+            "legacy_language_pid": 7,
+            "text": "如果已經有SKYPE，但是不記得SKYPE名的時候",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 17029,
+            "legacy_language_pid": 8,
+            "text": "Si vous utilisez déjà Skype mais que le nom de Skype est inconnu:",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 17030,
+            "legacy_language_pid": 9,
+            "text": "यदि आप पहले से ही स्काइप का उपयोग कर रहे हैं लेकिन स्काइप नाम अज्ञात है:",
+            "auto_translated": ""
+        },
+        "ar": {
+            "legacy_caption_pid": 31718,
+            "legacy_language_pid": 10,
+            "text": "إذا كان بالفعل غير معروف ولكن تستخدم اسم سكايب سكايب:",
+            "auto_translated": "إذا كان بالفعل غير معروف ولكن تستخدم اسم سكايب سكايب:"
+        },
+        "fa": {
+            "legacy_caption_pid": 31719,
+            "legacy_language_pid": 11,
+            "text": "اگر در حال حاضر ناشناخته است اما با استفاده از نام اسکایپ اسکایپ:",
+            "auto_translated": "اگر در حال حاضر ناشناخته است اما با استفاده از نام اسکایپ اسکایپ:"
+        },
+        "de": {
+            "legacy_caption_pid": 31720,
+            "legacy_language_pid": 12,
+            "text": "Wenn es bereits bekannt ist, sondern auch über Skype Skype name:",
+            "auto_translated": "Wenn es bereits bekannt ist, sondern auch über Skype Skype name:"
+        },
+        "ru": {
+            "legacy_caption_pid": 31721,
+            "legacy_language_pid": 13,
+            "text": "Если это уже неизвестно, но используя имя Skype Skype:",
+            "auto_translated": "Если это уже неизвестно, но используя имя Skype Skype:"
+        },
+        "ms": {
+            "legacy_caption_pid": 31722,
+            "legacy_language_pid": 14,
+            "text": "Jika ia sudah tidak diketahui tetapi menggunakan nama Skype Skype:",
+            "auto_translated": "Jika ia sudah tidak diketahui tetapi menggunakan nama Skype Skype:"
+        },
+        "ta": {
+            "legacy_caption_pid": 31723,
+            "legacy_language_pid": 15,
+            "text": "அது ஏற்கனவே தெரியவில்லை ஆனால் என்றால் ஸ்கைப் ஸ்கைப் பெயர் பயன்படுத்துகிறீர்கள்:",
+            "auto_translated": "அது ஏற்கனவே தெரியவில்லை ஆனால் என்றால் ஸ்கைப் ஸ்கைப் பெயர் பயன்படுத்துகிறீர்கள்:"
+        },
+        "it": {
+            "legacy_caption_pid": 31724,
+            "legacy_language_pid": 16,
+            "text": "Se già non si sa, ma sono usando il nome Skype Skype:",
+            "auto_translated": "Se già non si sa, ma sono usando il nome Skype Skype:"
+        },
+        "bn": {
+            "legacy_caption_pid": 31725,
+            "legacy_language_pid": 17,
+            "text": "এটি আগে থেকেই অজানা কিন্তু যদি ব্যবহার করছেন স্কাইপ স্কাইপ নাম:",
+            "auto_translated": "এটি আগে থেকেই অজানা কিন্তু যদি ব্যবহার করছেন স্কাইপ স্কাইপ নাম:"
+        },
+        "tr": {
+            "legacy_caption_pid": 31726,
+            "legacy_language_pid": 18,
+            "text": "Zaten bilinmemektedir fakat ise Skype'a adını kullanıyor:",
+            "auto_translated": "Zaten bilinmemektedir fakat ise Skype'a adını kullanıyor:"
+        },
+        "vi": {
+            "legacy_caption_pid": 31727,
+            "legacy_language_pid": 19,
+            "text": "Nếu nó đã không được biết nhưng đang sử dụng tên Skype Skype:",
+            "auto_translated": "Nếu nó đã không được biết nhưng đang sử dụng tên Skype Skype:"
+        },
+        "pl": {
+            "legacy_caption_pid": 31728,
+            "legacy_language_pid": 20,
+            "text": "Jeśli już nie jest znana, ale są przy użyciu nazwy Skype Skype:",
+            "auto_translated": "Jeśli już nie jest znana, ale są przy użyciu nazwy Skype Skype:"
+        },
+        "jv": {
+            "legacy_caption_pid": 31729,
+            "legacy_language_pid": 21,
+            "text": "Yen wis ora dingerteni nanging nggunakake jeneng Skype Skype:",
+            "auto_translated": "Yen wis ora dingerteni nanging nggunakake jeneng Skype Skype:"
+        },
+        "pa": {
+            "legacy_caption_pid": 31730,
+            "legacy_language_pid": 22,
+            "text": "ਇਸ ਨੂੰ ਹੀ ਅਣਜਾਣ ਹੈ, ਪਰ ਜੇ ਵਰਤ ਰਹੇ ਹੋ ਸਕਾਈਪ ਸਕਾਈਪ ਨਾਮ:",
+            "auto_translated": "ਇਸ ਨੂੰ ਹੀ ਅਣਜਾਣ ਹੈ, ਪਰ ਜੇ ਵਰਤ ਰਹੇ ਹੋ ਸਕਾਈਪ ਸਕਾਈਪ ਨਾਮ:"
+        },
+        "th": {
+            "legacy_caption_pid": 31731,
+            "legacy_language_pid": 23,
+            "text": "ถ้ามันไม่เป็นที่รู้จักอยู่แล้ว แต่จะมีการใช้ชื่อ Skype Skype:",
+            "auto_translated": "ถ้ามันไม่เป็นที่รู้จักอยู่แล้ว แต่จะมีการใช้ชื่อ Skype Skype:"
+        },
+        "te": {
+            "legacy_caption_pid": 38636,
+            "legacy_language_pid": 24,
+            "text": "ఇది ఇప్పటికే తెలియదు కాని ఉంటే స్కైప్ స్కైప్ పేరు ఉపయోగిస్తున్నారు:",
+            "auto_translated": "ఇది ఇప్పటికే తెలియదు కాని ఉంటే స్కైప్ స్కైప్ పేరు ఉపయోగిస్తున్నారు:"
+        },
+        "mr": {
+            "legacy_caption_pid": 38637,
+            "legacy_language_pid": 25,
+            "text": "तो आधीच अज्ञात आहे, पण जर वापरत आहात स्काईप स्काईप नाव:",
+            "auto_translated": "तो आधीच अज्ञात आहे, पण जर वापरत आहात स्काईप स्काईप नाव:"
+        },
+        "ur": {
+            "legacy_caption_pid": 38638,
+            "legacy_language_pid": 26,
+            "text": "یہ پہلے سے نامعلوم ہے لیکن اگر اسکائپ اسکائپ کا نام استعمال کر رہے ہیں:",
+            "auto_translated": "یہ پہلے سے نامعلوم ہے لیکن اگر اسکائپ اسکائپ کا نام استعمال کر رہے ہیں:"
+        },
+        "gu": {
+            "legacy_caption_pid": 38639,
+            "legacy_language_pid": 27,
+            "text": "તે પહેલાથી જ અજ્ઞાત છે, પરંતુ જો ઉપયોગ કરી રહ્યા છો સ્કાયપે સ્કાયપે નામ:",
+            "auto_translated": "તે પહેલાથી જ અજ્ઞાત છે, પરંતુ જો ઉપયોગ કરી રહ્યા છો સ્કાયપે સ્કાયપે નામ:"
+        },
+        "uk": {
+            "legacy_caption_pid": 38640,
+            "legacy_language_pid": 28,
+            "text": "Якщо це вже невідомо, але використовуючи ім'я Skype Skype:",
+            "auto_translated": "Якщо це вже невідомо, але використовуючи ім'я Skype Skype:"
+        },
+        "ml": {
+            "legacy_caption_pid": 38641,
+            "legacy_language_pid": 29,
+            "text": "അത് ഇതിനകം അജ്ഞാതമാണ് എന്നാൽ സ്കൈപ്പ് സ്കൈപ്പ് പേര് ഉപയോഗിക്കുന്നു എങ്കിൽ:",
+            "auto_translated": "അത് ഇതിനകം അജ്ഞാതമാണ് എന്നാൽ സ്കൈപ്പ് സ്കൈപ്പ് പേര് ഉപയോഗിക്കുന്നു എങ്കിൽ:"
+        },
+        "kn": {
+            "legacy_caption_pid": 38642,
+            "legacy_language_pid": 30,
+            "text": "ಇದು ಈಗಾಗಲೇ ತಿಳಿದಿಲ್ಲ ಆದರೆ ವೇಳೆ ಬಳಸುತ್ತಿದ್ದರೆ ಸ್ಕೈಪ್ ಸ್ಕೈಪ್ ಹೆಸರು:",
+            "auto_translated": "ಇದು ಈಗಾಗಲೇ ತಿಳಿದಿಲ್ಲ ಆದರೆ ವೇಳೆ ಬಳಸುತ್ತಿದ್ದರೆ ಸ್ಕೈಪ್ ಸ್ಕೈಪ್ ಹೆಸರು:"
+        },
+        "su": {
+            "legacy_caption_pid": 38643,
+            "legacy_language_pid": 31,
+            "text": "Lamun geus aya kanyahoan tapi anggo ngaran Skype Skype:",
+            "auto_translated": "Lamun geus aya kanyahoan tapi anggo ngaran Skype Skype:"
+        },
+        "ku": {
+            "legacy_caption_pid": 38644,
+            "legacy_language_pid": 32,
+            "text": "Eger ew ji niha ve ne diyar e, lê bi bikaranîna navê Skype Skype:",
+            "auto_translated": "Eger ew ji niha ve ne diyar e, lê bi bikaranîna navê Skype Skype:"
+        },
+        "ps": {
+            "legacy_caption_pid": 38645,
+            "legacy_language_pid": 33,
+            "text": "که دا لا معلومه نه ده خو د سکايپ له سکایپ نوم په کارولو:",
+            "auto_translated": "که دا لا معلومه نه ده خو د سکايپ له سکایپ نوم په کارولو:"
+        },
+        "ro": {
+            "legacy_caption_pid": 38646,
+            "legacy_language_pid": 34,
+            "text": "În cazul în care deja se cunoaște, dar sunt folosind numele Skype:",
+            "auto_translated": "În cazul în care deja se cunoaște, dar sunt folosind numele Skype:"
+        },
+        "id": {
+            "legacy_caption_pid": 38647,
+            "legacy_language_pid": 35,
+            "text": "Jika sudah diketahui tetapi menggunakan nama Skype Skype:",
+            "auto_translated": "Jika sudah diketahui tetapi menggunakan nama Skype Skype:"
+        },
+        "sd": {
+            "legacy_caption_pid": 38648,
+            "legacy_language_pid": 36,
+            "text": "ان کان اڳ نامعلوم آهي پر استعمال ڪري رهيا آهن Skype جي Skype جي نالي سان ته:",
+            "auto_translated": "ان کان اڳ نامعلوم آهي پر استعمال ڪري رهيا آهن Skype جي Skype جي نالي سان ته:"
+        },
+        "af": {
+            "legacy_caption_pid": 38649,
+            "legacy_language_pid": 37,
+            "text": "As dit reeds is onbekend, maar is met behulp van Skype Skype naam:",
+            "auto_translated": "As dit reeds is onbekend, maar is met behulp van Skype Skype naam:"
+        },
+        "sw": {
+            "legacy_caption_pid": 38650,
+            "legacy_language_pid": 38,
+            "text": "Kama tayari haijulikani lakini kwa kutumia jina Skype Skype:",
+            "auto_translated": "Kama tayari haijulikani lakini kwa kutumia jina Skype Skype:"
+        },
+        "lo": {
+            "legacy_caption_pid": 38651,
+            "legacy_language_pid": 39,
+            "text": "ຖ້າຫາກວ່າມັນແລ້ວແມ່ນຮູ້ຈັກແຕ່ໃຊ້ຊື່ Skype Skype:",
+            "auto_translated": "ຖ້າຫາກວ່າມັນແລ້ວແມ່ນຮູ້ຈັກແຕ່ໃຊ້ຊື່ Skype Skype:"
+        },
+        "nl": {
+            "legacy_caption_pid": 38652,
+            "legacy_language_pid": 40,
+            "text": "Als het al is onbekend, maar gebruik maakt van Skype Skype naam:",
+            "auto_translated": "Als het al is onbekend, maar gebruik maakt van Skype Skype naam:"
+        },
+        "tl": {
+            "legacy_caption_pid": 38653,
+            "legacy_language_pid": 41,
+            "text": "Kung ito na ay hindi kilala ngunit ay gumagamit ng pangalan ng Skype Skype:",
+            "auto_translated": "Kung ito na ay hindi kilala ngunit ay gumagamit ng pangalan ng Skype Skype:"
+        },
+        "ne": {
+            "legacy_caption_pid": 38654,
+            "legacy_language_pid": 42,
+            "text": "यसलाई पहिले नै अज्ञात छ भने, तर प्रयोग गर्दै स्काइप स्काइप नाम:",
+            "auto_translated": "यसलाई पहिले नै अज्ञात छ भने, तर प्रयोग गर्दै स्काइप स्काइप नाम:"
+        },
+        "hu": {
+            "legacy_caption_pid": 38655,
+            "legacy_language_pid": 43,
+            "text": "Ha már nem ismert, de használ Skype név:",
+            "auto_translated": "Ha már nem ismert, de használ Skype név:"
+        },
+        "cs": {
+            "legacy_caption_pid": 38656,
+            "legacy_language_pid": 44,
+            "text": "Pokud již není známa, ale jsou pomocí jména Skype:",
+            "auto_translated": "Pokud již není známa, ale jsou pomocí jména Skype:"
+        },
+        "el": {
+            "legacy_caption_pid": 38657,
+            "legacy_language_pid": 45,
+            "text": "Αν ήδη δεν είναι γνωστή, αλλά χρησιμοποιώντας το όνομα Skype Skype:",
+            "auto_translated": "Αν ήδη δεν είναι γνωστή, αλλά χρησιμοποιώντας το όνομα Skype Skype:"
+        },
+        "sv": {
+            "legacy_caption_pid": 38658,
+            "legacy_language_pid": 46,
+            "text": "Om det redan är okänd, men använder Skype Skype-namn:",
+            "auto_translated": "Om det redan är okänd, men använder Skype Skype-namn:"
+        },
+        "kk": {
+            "legacy_caption_pid": 38659,
+            "legacy_language_pid": 47,
+            "text": "ол қазірдің өзінде белгісіз, бірақ Skype Skype атын пайдаланып жатсаңыз:",
+            "auto_translated": "ол қазірдің өзінде белгісіз, бірақ Skype Skype атын пайдаланып жатсаңыз:"
+        },
+        "fi": {
+            "legacy_caption_pid": 38660,
+            "legacy_language_pid": 48,
+            "text": "Jos se jo on tiedossa, mutta käyttävät Skype nimi:",
+            "auto_translated": "Jos se jo on tiedossa, mutta käyttävät Skype nimi:"
+        },
+        "da": {
+            "legacy_caption_pid": 38661,
+            "legacy_language_pid": 49,
+            "text": "Hvis det allerede er ukendt, men bruger Skype Skype-navn:",
+            "auto_translated": "Hvis det allerede er ukendt, men bruger Skype Skype-navn:"
+        },
+        "he": {
+            "legacy_caption_pid": 38662,
+            "legacy_language_pid": 50,
+            "text": "אם זה כבר ידוע, אבל משתמש בשם סקייפ סקייפ:",
+            "auto_translated": "אם זה כבר ידוע, אבל משתמש בשם סקייפ סקייפ:"
+        },
+        "no": {
+            "legacy_caption_pid": 38663,
+            "legacy_language_pid": 51,
+            "text": "Hvis det allerede er ukjent, men bruker Skype Skype navn:",
+            "auto_translated": "Hvis det allerede er ukjent, men bruker Skype Skype navn:"
+        }
+    }
+}

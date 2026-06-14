@@ -1,0 +1,27 @@
+{
+    "resource_key": "TITLE_PROJECT_SOURCE_COMPARE_ADDITIONAL_PATH_VIEW",
+    "legacy_resource_pid": 1529,
+    "base_group_key": "grp-001-developers-matsuesoft-co-jp",
+    "additional_group_keys": [],
+    "key_for_update": "WO7bKMG7nKYOkZkbnaWSTmCOmVxLhDCA2DlniYaw84iYOpbmRt0ta8ona5aU60y0z7nF42Tgq7gQiX6oJkx2ZihZNukLeDOqNS0XQmPcc4hla9Wh941HBQDHhPQmduUl",
+    "sort_group": "TITLE",
+    "key_name": "TITLE_PROJECT_SOURCE_COMPARE_ADDITIONAL_PATH_VIEW",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": true,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 6910,
+            "legacy_language_pid": 1,
+            "text": "出力ソース比較 追加パス設定",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 6911,
+            "legacy_language_pid": 2,
+            "text": "Additional Path for Compare Source Setting",
+            "auto_translated": ""
+        }
+    }
+}

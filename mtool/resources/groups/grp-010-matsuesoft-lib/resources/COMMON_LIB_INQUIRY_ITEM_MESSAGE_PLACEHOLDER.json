@@ -1,0 +1,321 @@
+{
+    "resource_key": "COMMON_LIB_INQUIRY_ITEM_MESSAGE_PLACEHOLDER",
+    "legacy_resource_pid": 1468,
+    "base_group_key": "grp-010-matsuesoft-lib",
+    "additional_group_keys": [],
+    "key_for_update": "mjTlOmumYSkHuloB9URQ3eyKvVDWdyvU5qxUzAJeADFddehg3SuXF0hY1tkguSQgJxLZyMxoGi9JMHoZLvxQv6EQVo4RkEPXspzynlw2YgjnjWXO1EnRVUvBMIggDUbl",
+    "sort_group": "INQUIRY",
+    "key_name": "COMMON_LIB_INQUIRY_ITEM_MESSAGE_PLACEHOLDER",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": false,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 6146,
+            "legacy_language_pid": 1,
+            "text": "メッセージを入力して下さい",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 6147,
+            "legacy_language_pid": 2,
+            "text": "Please enter your message",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 6148,
+            "legacy_language_pid": 3,
+            "text": "请输入信息",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 6149,
+            "legacy_language_pid": 4,
+            "text": "메시지를 입력해주세요",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 11003,
+            "legacy_language_pid": 5,
+            "text": " Por favor ingrese su mensaje",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 11004,
+            "legacy_language_pid": 6,
+            "text": "Por favor insira a sua mensagem ",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 11005,
+            "legacy_language_pid": 7,
+            "text": "請輸入信息",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 17201,
+            "legacy_language_pid": 8,
+            "text": "Entrez votre message",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 17202,
+            "legacy_language_pid": 9,
+            "text": "कृपया अपना संदेश लिखें",
+            "auto_translated": ""
+        },
+        "ar": {
+            "legacy_caption_pid": 32250,
+            "legacy_language_pid": 10,
+            "text": "الرجاء إدخال رسالة",
+            "auto_translated": "الرجاء إدخال رسالة"
+        },
+        "fa": {
+            "legacy_caption_pid": 32251,
+            "legacy_language_pid": 11,
+            "text": "لطفا یک پیام وارد کنید",
+            "auto_translated": "لطفا یک پیام وارد کنید"
+        },
+        "de": {
+            "legacy_caption_pid": 32252,
+            "legacy_language_pid": 12,
+            "text": "Bitte geben Sie eine Nachricht",
+            "auto_translated": "Bitte geben Sie eine Nachricht"
+        },
+        "ru": {
+            "legacy_caption_pid": 32253,
+            "legacy_language_pid": 13,
+            "text": "Пожалуйста, введите сообщение",
+            "auto_translated": "Пожалуйста, введите сообщение"
+        },
+        "ms": {
+            "legacy_caption_pid": 32254,
+            "legacy_language_pid": 14,
+            "text": "Sila masukkan mesej",
+            "auto_translated": "Sila masukkan mesej"
+        },
+        "ta": {
+            "legacy_caption_pid": 32255,
+            "legacy_language_pid": 15,
+            "text": "செய்தியை உள்ளிடவும்",
+            "auto_translated": "செய்தியை உள்ளிடவும்"
+        },
+        "it": {
+            "legacy_caption_pid": 32256,
+            "legacy_language_pid": 16,
+            "text": "Si prega di inserire un messaggio",
+            "auto_translated": "Si prega di inserire un messaggio"
+        },
+        "bn": {
+            "legacy_caption_pid": 32257,
+            "legacy_language_pid": 17,
+            "text": "কে একটি বার্তা লিখুন দয়া করে",
+            "auto_translated": "কে একটি বার্তা লিখুন দয়া করে"
+        },
+        "tr": {
+            "legacy_caption_pid": 32258,
+            "legacy_language_pid": 18,
+            "text": "Lütfen bir mesaj girin",
+            "auto_translated": "Lütfen bir mesaj girin"
+        },
+        "vi": {
+            "legacy_caption_pid": 32259,
+            "legacy_language_pid": 19,
+            "text": "Vui lòng nhập một thông điệp",
+            "auto_translated": "Vui lòng nhập một thông điệp"
+        },
+        "pl": {
+            "legacy_caption_pid": 32260,
+            "legacy_language_pid": 20,
+            "text": "Wpisz wiadomość",
+            "auto_translated": "Wpisz wiadomość"
+        },
+        "jv": {
+            "legacy_caption_pid": 32261,
+            "legacy_language_pid": 21,
+            "text": "Mangga ketik pesen",
+            "auto_translated": "Mangga ketik pesen"
+        },
+        "pa": {
+            "legacy_caption_pid": 32262,
+            "legacy_language_pid": 22,
+            "text": "ਇੱਕ ਸੁਨੇਹਾ ਦਿਓ ਜੀ",
+            "auto_translated": "ਇੱਕ ਸੁਨੇਹਾ ਦਿਓ ਜੀ"
+        },
+        "th": {
+            "legacy_caption_pid": 32263,
+            "legacy_language_pid": 23,
+            "text": "กรุณากรอกข้อความ",
+            "auto_translated": "กรุณากรอกข้อความ"
+        },
+        "te": {
+            "legacy_caption_pid": 41128,
+            "legacy_language_pid": 24,
+            "text": "ఒక సందేశాన్ని నమోదు చేయండి",
+            "auto_translated": "ఒక సందేశాన్ని నమోదు చేయండి"
+        },
+        "mr": {
+            "legacy_caption_pid": 41129,
+            "legacy_language_pid": 25,
+            "text": "कृपया संदेश प्रविष्ट करा",
+            "auto_translated": "कृपया संदेश प्रविष्ट करा"
+        },
+        "ur": {
+            "legacy_caption_pid": 41130,
+            "legacy_language_pid": 26,
+            "text": "ایک پیغام درج کریں",
+            "auto_translated": "ایک پیغام درج کریں"
+        },
+        "gu": {
+            "legacy_caption_pid": 41131,
+            "legacy_language_pid": 27,
+            "text": "એક સંદેશ દાખલ કરો",
+            "auto_translated": "એક સંદેશ દાખલ કરો"
+        },
+        "uk": {
+            "legacy_caption_pid": 41132,
+            "legacy_language_pid": 28,
+            "text": "Будь ласка, введіть повідомлення",
+            "auto_translated": "Будь ласка, введіть повідомлення"
+        },
+        "ml": {
+            "legacy_caption_pid": 41133,
+            "legacy_language_pid": 29,
+            "text": "ഒരു സന്ദേശം നൽകുക",
+            "auto_translated": "ഒരു സന്ദേശം നൽകുക"
+        },
+        "kn": {
+            "legacy_caption_pid": 41134,
+            "legacy_language_pid": 30,
+            "text": "ಸಂದೇಶವನ್ನು ನಮೂದಿಸಿ",
+            "auto_translated": "ಸಂದೇಶವನ್ನು ನಮೂದಿಸಿ"
+        },
+        "su": {
+            "legacy_caption_pid": 41135,
+            "legacy_language_pid": 31,
+            "text": "Mangga lebetkeun pesen",
+            "auto_translated": "Mangga lebetkeun pesen"
+        },
+        "ku": {
+            "legacy_caption_pid": 41136,
+            "legacy_language_pid": 32,
+            "text": "Ji kerema xwe, peyamek binivîse",
+            "auto_translated": "Ji kerema xwe, peyamek binivîse"
+        },
+        "ps": {
+            "legacy_caption_pid": 41137,
+            "legacy_language_pid": 33,
+            "text": "لطفا یو پیغام ته ننوځي",
+            "auto_translated": "لطفا یو پیغام ته ننوځي"
+        },
+        "ro": {
+            "legacy_caption_pid": 41138,
+            "legacy_language_pid": 34,
+            "text": "Vă rugăm să introduceți un mesaj",
+            "auto_translated": "Vă rugăm să introduceți un mesaj"
+        },
+        "id": {
+            "legacy_caption_pid": 41139,
+            "legacy_language_pid": 35,
+            "text": "Masukkan pesan",
+            "auto_translated": "Masukkan pesan"
+        },
+        "sd": {
+            "legacy_caption_pid": 41140,
+            "legacy_language_pid": 36,
+            "text": "هڪ پيغام ۾ داخل ڪريو",
+            "auto_translated": "هڪ پيغام ۾ داخل ڪريو"
+        },
+        "af": {
+            "legacy_caption_pid": 41141,
+            "legacy_language_pid": 37,
+            "text": "Voer asseblief 'n boodskap",
+            "auto_translated": "Voer asseblief 'n boodskap"
+        },
+        "sw": {
+            "legacy_caption_pid": 41142,
+            "legacy_language_pid": 38,
+            "text": "Tafadhali ingiza ujumbe",
+            "auto_translated": "Tafadhali ingiza ujumbe"
+        },
+        "lo": {
+            "legacy_caption_pid": 41143,
+            "legacy_language_pid": 39,
+            "text": "ກະລຸນາໃສ່ຂໍ້ຄວາມ",
+            "auto_translated": "ກະລຸນາໃສ່ຂໍ້ຄວາມ"
+        },
+        "nl": {
+            "legacy_caption_pid": 41144,
+            "legacy_language_pid": 40,
+            "text": "Voer een bericht in",
+            "auto_translated": "Voer een bericht in"
+        },
+        "tl": {
+            "legacy_caption_pid": 41145,
+            "legacy_language_pid": 41,
+            "text": "Pakipasok ang isang mensahe",
+            "auto_translated": "Pakipasok ang isang mensahe"
+        },
+        "ne": {
+            "legacy_caption_pid": 41146,
+            "legacy_language_pid": 42,
+            "text": "एक सन्देश प्रविष्ट गर्नुहोस्",
+            "auto_translated": "एक सन्देश प्रविष्ट गर्नुहोस्"
+        },
+        "hu": {
+            "legacy_caption_pid": 41147,
+            "legacy_language_pid": 43,
+            "text": "Írja be az üzenetet",
+            "auto_translated": "Írja be az üzenetet"
+        },
+        "cs": {
+            "legacy_caption_pid": 41148,
+            "legacy_language_pid": 44,
+            "text": "Zadejte prosím zprávu",
+            "auto_translated": "Zadejte prosím zprávu"
+        },
+        "el": {
+            "legacy_caption_pid": 41149,
+            "legacy_language_pid": 45,
+            "text": "Παρακαλώ εισάγετε ένα μήνυμα",
+            "auto_translated": "Παρακαλώ εισάγετε ένα μήνυμα"
+        },
+        "sv": {
+            "legacy_caption_pid": 41150,
+            "legacy_language_pid": 46,
+            "text": "Knappa in ett meddelande",
+            "auto_translated": "Knappa in ett meddelande"
+        },
+        "kk": {
+            "legacy_caption_pid": 41151,
+            "legacy_language_pid": 47,
+            "text": "Хабарды енгізіңіз",
+            "auto_translated": "Хабарды енгізіңіз"
+        },
+        "fi": {
+            "legacy_caption_pid": 41152,
+            "legacy_language_pid": 48,
+            "text": "Anna viesti",
+            "auto_translated": "Anna viesti"
+        },
+        "da": {
+            "legacy_caption_pid": 41153,
+            "legacy_language_pid": 49,
+            "text": "Indtast en besked",
+            "auto_translated": "Indtast en besked"
+        },
+        "he": {
+            "legacy_caption_pid": 41154,
+            "legacy_language_pid": 50,
+            "text": "נא להזין הודעה",
+            "auto_translated": "נא להזין הודעה"
+        },
+        "no": {
+            "legacy_caption_pid": 41155,
+            "legacy_language_pid": 51,
+            "text": "Legg inn en beskjed",
+            "auto_translated": "Legg inn en beskjed"
+        }
+    }
+}

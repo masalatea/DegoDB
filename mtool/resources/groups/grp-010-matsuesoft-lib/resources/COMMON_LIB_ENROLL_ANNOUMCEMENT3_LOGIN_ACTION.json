@@ -1,0 +1,321 @@
+{
+    "resource_key": "COMMON_LIB_ENROLL_ANNOUMCEMENT3_LOGIN_ACTION",
+    "legacy_resource_pid": 1406,
+    "base_group_key": "grp-010-matsuesoft-lib",
+    "additional_group_keys": [],
+    "key_for_update": "nZEM2uEUXNXZ3sSeHYpKd9iI6HMAzNpav2rJloWXJwAUp4Rpzbs7bQqlK1dBbe8Toj7X2IoSpoy8IABCLTKxReQNVXar7fpusNsSHxou7KEK3EI8wzMXleMkpHDFsU5Y",
+    "sort_group": "ENROLL",
+    "key_name": "COMMON_LIB_ENROLL_ANNOUMCEMENT3_LOGIN_ACTION",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": false,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 5898,
+            "legacy_language_pid": 1,
+            "text": "ログインする",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 5899,
+            "legacy_language_pid": 2,
+            "text": "Do Login",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 5900,
+            "legacy_language_pid": 3,
+            "text": "要登录",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 5901,
+            "legacy_language_pid": 4,
+            "text": "로그인",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 10750,
+            "legacy_language_pid": 5,
+            "text": "Iniciar sesión",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 10751,
+            "legacy_language_pid": 6,
+            "text": "Iniciar sessão",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 10752,
+            "legacy_language_pid": 7,
+            "text": "要登錄",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 16453,
+            "legacy_language_pid": 8,
+            "text": "Se connecter",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 16454,
+            "legacy_language_pid": 9,
+            "text": "लॉग इन करें",
+            "auto_translated": ""
+        },
+        "ar": {
+            "legacy_caption_pid": 31088,
+            "legacy_language_pid": 10,
+            "text": "لتسجيل الدخول",
+            "auto_translated": "لتسجيل الدخول"
+        },
+        "fa": {
+            "legacy_caption_pid": 31089,
+            "legacy_language_pid": 11,
+            "text": "برای ورود",
+            "auto_translated": "برای ورود"
+        },
+        "de": {
+            "legacy_caption_pid": 31090,
+            "legacy_language_pid": 12,
+            "text": "Um sich einzuloggen",
+            "auto_translated": "Um sich einzuloggen"
+        },
+        "ru": {
+            "legacy_caption_pid": 31091,
+            "legacy_language_pid": 13,
+            "text": "Для того, чтобы войти",
+            "auto_translated": "Для того, чтобы войти"
+        },
+        "ms": {
+            "legacy_caption_pid": 31092,
+            "legacy_language_pid": 14,
+            "text": "untuk log",
+            "auto_translated": "untuk log"
+        },
+        "ta": {
+            "legacy_caption_pid": 31093,
+            "legacy_language_pid": 15,
+            "text": "உள்நுழைய",
+            "auto_translated": "உள்நுழைய"
+        },
+        "it": {
+            "legacy_caption_pid": 31094,
+            "legacy_language_pid": 16,
+            "text": "per effettuare il login",
+            "auto_translated": "per effettuare il login"
+        },
+        "bn": {
+            "legacy_caption_pid": 31095,
+            "legacy_language_pid": 17,
+            "text": "লগ ইন করতে",
+            "auto_translated": "লগ ইন করতে"
+        },
+        "tr": {
+            "legacy_caption_pid": 31096,
+            "legacy_language_pid": 18,
+            "text": "giriş yapmak",
+            "auto_translated": "giriş yapmak"
+        },
+        "vi": {
+            "legacy_caption_pid": 31097,
+            "legacy_language_pid": 19,
+            "text": "để đăng nhập",
+            "auto_translated": "để đăng nhập"
+        },
+        "pl": {
+            "legacy_caption_pid": 31098,
+            "legacy_language_pid": 20,
+            "text": "aby zalogować",
+            "auto_translated": "aby zalogować"
+        },
+        "jv": {
+            "legacy_caption_pid": 31099,
+            "legacy_language_pid": 21,
+            "text": "kanggo",
+            "auto_translated": "kanggo"
+        },
+        "pa": {
+            "legacy_caption_pid": 31100,
+            "legacy_language_pid": 22,
+            "text": "ਲਾਗਇਨ ਕਰਨ ਲਈ",
+            "auto_translated": "ਲਾਗਇਨ ਕਰਨ ਲਈ"
+        },
+        "th": {
+            "legacy_caption_pid": 31101,
+            "legacy_language_pid": 23,
+            "text": "เข้าสู่ระบบ",
+            "auto_translated": "เข้าสู่ระบบ"
+        },
+        "te": {
+            "legacy_caption_pid": 42248,
+            "legacy_language_pid": 24,
+            "text": "లాగిన్",
+            "auto_translated": "లాగిన్"
+        },
+        "mr": {
+            "legacy_caption_pid": 42249,
+            "legacy_language_pid": 25,
+            "text": "लॉग इन करा",
+            "auto_translated": "लॉग इन करा"
+        },
+        "ur": {
+            "legacy_caption_pid": 42250,
+            "legacy_language_pid": 26,
+            "text": "لاگ",
+            "auto_translated": "لاگ"
+        },
+        "gu": {
+            "legacy_caption_pid": 42251,
+            "legacy_language_pid": 27,
+            "text": "પ્રવેશ કરો",
+            "auto_translated": "પ્રવેશ કરો"
+        },
+        "uk": {
+            "legacy_caption_pid": 42252,
+            "legacy_language_pid": 28,
+            "text": "Для того, щоб увійти",
+            "auto_translated": "Для того, щоб увійти"
+        },
+        "ml": {
+            "legacy_caption_pid": 42253,
+            "legacy_language_pid": 29,
+            "text": "ലോഗിൻ ചെയ്യാൻ",
+            "auto_translated": "ലോഗിൻ ചെയ്യാൻ"
+        },
+        "kn": {
+            "legacy_caption_pid": 42254,
+            "legacy_language_pid": 30,
+            "text": "ಲಾಗ್",
+            "auto_translated": "ಲಾಗ್"
+        },
+        "su": {
+            "legacy_caption_pid": 42255,
+            "legacy_language_pid": 31,
+            "text": "asup",
+            "auto_translated": "asup"
+        },
+        "ku": {
+            "legacy_caption_pid": 42256,
+            "legacy_language_pid": 32,
+            "text": "ji bo têketina",
+            "auto_translated": "ji bo têketina"
+        },
+        "ps": {
+            "legacy_caption_pid": 42257,
+            "legacy_language_pid": 33,
+            "text": "د يادښت",
+            "auto_translated": "د يادښت"
+        },
+        "ro": {
+            "legacy_caption_pid": 42258,
+            "legacy_language_pid": 34,
+            "text": "Pentru a vă conecta",
+            "auto_translated": "Pentru a vă conecta"
+        },
+        "id": {
+            "legacy_caption_pid": 42259,
+            "legacy_language_pid": 35,
+            "text": "untuk log",
+            "auto_translated": "untuk log"
+        },
+        "sd": {
+            "legacy_caption_pid": 42260,
+            "legacy_language_pid": 36,
+            "text": "لاگ ان کي",
+            "auto_translated": "لاگ ان کي"
+        },
+        "af": {
+            "legacy_caption_pid": 42261,
+            "legacy_language_pid": 37,
+            "text": "om aan te meld",
+            "auto_translated": "om aan te meld"
+        },
+        "sw": {
+            "legacy_caption_pid": 42262,
+            "legacy_language_pid": 38,
+            "text": "ili kuingia",
+            "auto_translated": "ili kuingia"
+        },
+        "lo": {
+            "legacy_caption_pid": 42263,
+            "legacy_language_pid": 39,
+            "text": "ເຂົ້າສູ່ລະບົບ",
+            "auto_translated": "ເຂົ້າສູ່ລະບົບ"
+        },
+        "nl": {
+            "legacy_caption_pid": 42264,
+            "legacy_language_pid": 40,
+            "text": "om in te loggen",
+            "auto_translated": "om in te loggen"
+        },
+        "tl": {
+            "legacy_caption_pid": 42265,
+            "legacy_language_pid": 41,
+            "text": "upang mag-log",
+            "auto_translated": "upang mag-log"
+        },
+        "ne": {
+            "legacy_caption_pid": 42266,
+            "legacy_language_pid": 42,
+            "text": "लग गर्न",
+            "auto_translated": "लग गर्न"
+        },
+        "hu": {
+            "legacy_caption_pid": 42267,
+            "legacy_language_pid": 43,
+            "text": "A bejelentkezéshez",
+            "auto_translated": "A bejelentkezéshez"
+        },
+        "cs": {
+            "legacy_caption_pid": 42268,
+            "legacy_language_pid": 44,
+            "text": "Chcete-li se přihlásit",
+            "auto_translated": "Chcete-li se přihlásit"
+        },
+        "el": {
+            "legacy_caption_pid": 42269,
+            "legacy_language_pid": 45,
+            "text": "Για να συνδεθείτε",
+            "auto_translated": "Για να συνδεθείτε"
+        },
+        "sv": {
+            "legacy_caption_pid": 42270,
+            "legacy_language_pid": 46,
+            "text": "För att logga",
+            "auto_translated": "För att logga"
+        },
+        "kk": {
+            "legacy_caption_pid": 42271,
+            "legacy_language_pid": 47,
+            "text": "кіру үшін",
+            "auto_translated": "кіру үшін"
+        },
+        "fi": {
+            "legacy_caption_pid": 42272,
+            "legacy_language_pid": 48,
+            "text": "kirjautua",
+            "auto_translated": "kirjautua"
+        },
+        "da": {
+            "legacy_caption_pid": 42273,
+            "legacy_language_pid": 49,
+            "text": "For at logge",
+            "auto_translated": "For at logge"
+        },
+        "he": {
+            "legacy_caption_pid": 42274,
+            "legacy_language_pid": 50,
+            "text": "כדי להיכנס",
+            "auto_translated": "כדי להיכנס"
+        },
+        "no": {
+            "legacy_caption_pid": 42275,
+            "legacy_language_pid": 51,
+            "text": "For å logge",
+            "auto_translated": "For å logge"
+        }
+    }
+}

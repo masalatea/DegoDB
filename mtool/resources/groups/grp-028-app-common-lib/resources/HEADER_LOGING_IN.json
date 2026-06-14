@@ -1,0 +1,321 @@
+{
+    "resource_key": "HEADER_LOGING_IN",
+    "legacy_resource_pid": 927,
+    "base_group_key": "grp-028-app-common-lib",
+    "additional_group_keys": [],
+    "key_for_update": "FtaVFrMURWhKiiXgplW4L1RT4jw29hjvddwgw32n46M6p7S0xm7JEXnxTIk1EBsCGFe39q6jFo7sGxT1fESBi183HdPLFuWT4omCEEf9jn1WEB0NyRwCzskyIV0cXY9S",
+    "sort_group": "HEADER",
+    "key_name": "HEADER_LOGING_IN",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": false,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 855,
+            "legacy_language_pid": 1,
+            "text": "ログイン中:",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 856,
+            "legacy_language_pid": 2,
+            "text": "Logging in:",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 6420,
+            "legacy_language_pid": 3,
+            "text": "在登录过程中：",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 6421,
+            "legacy_language_pid": 4,
+            "text": "로그인 중 :",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 10139,
+            "legacy_language_pid": 5,
+            "text": "Iniciando sesión:",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 10140,
+            "legacy_language_pid": 6,
+            "text": "Logging:",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 10141,
+            "legacy_language_pid": 7,
+            "text": "在登錄過程中：",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 16163,
+            "legacy_language_pid": 8,
+            "text": "Se connecter:",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 16164,
+            "legacy_language_pid": 9,
+            "text": "लॉग इन करना:",
+            "auto_translated": ""
+        },
+        "ar": {
+            "legacy_caption_pid": 28568,
+            "legacy_language_pid": 10,
+            "text": "أثناء تسجيل الدخول:",
+            "auto_translated": "أثناء تسجيل الدخول:"
+        },
+        "fa": {
+            "legacy_caption_pid": 28569,
+            "legacy_language_pid": 11,
+            "text": "در حین ورود به:",
+            "auto_translated": "در حین ورود به:"
+        },
+        "de": {
+            "legacy_caption_pid": 28570,
+            "legacy_language_pid": 12,
+            "text": "Während der Anmeldung:",
+            "auto_translated": "Während der Anmeldung:"
+        },
+        "ru": {
+            "legacy_caption_pid": 28571,
+            "legacy_language_pid": 13,
+            "text": "Во время входа в систему:",
+            "auto_translated": "Во время входа в систему:"
+        },
+        "ms": {
+            "legacy_caption_pid": 28572,
+            "legacy_language_pid": 14,
+            "text": "Semasa login:",
+            "auto_translated": "Semasa login:"
+        },
+        "ta": {
+            "legacy_caption_pid": 28573,
+            "legacy_language_pid": 15,
+            "text": "உள்நுழைவின் போது:",
+            "auto_translated": "உள்நுழைவின் போது:"
+        },
+        "it": {
+            "legacy_caption_pid": 28574,
+            "legacy_language_pid": 16,
+            "text": "Durante login:",
+            "auto_translated": "Durante login:"
+        },
+        "bn": {
+            "legacy_caption_pid": 28575,
+            "legacy_language_pid": 17,
+            "text": "লগিনের সময়:",
+            "auto_translated": "লগিনের সময়:"
+        },
+        "tr": {
+            "legacy_caption_pid": 28576,
+            "legacy_language_pid": 18,
+            "text": "Oturum sırasında:",
+            "auto_translated": "Oturum sırasında:"
+        },
+        "vi": {
+            "legacy_caption_pid": 28577,
+            "legacy_language_pid": 19,
+            "text": "Trong khi đăng nhập:",
+            "auto_translated": "Trong khi đăng nhập:"
+        },
+        "pl": {
+            "legacy_caption_pid": 28578,
+            "legacy_language_pid": 20,
+            "text": "Podczas logowania:",
+            "auto_translated": "Podczas logowania:"
+        },
+        "jv": {
+            "legacy_caption_pid": 28579,
+            "legacy_language_pid": 21,
+            "text": "Sak mlebu:",
+            "auto_translated": "Sak mlebu:"
+        },
+        "pa": {
+            "legacy_caption_pid": 28580,
+            "legacy_language_pid": 22,
+            "text": "ਲਾਗਇਨ ਦੌਰਾਨ:",
+            "auto_translated": "ਲਾਗਇਨ ਦੌਰਾਨ:"
+        },
+        "th": {
+            "legacy_caption_pid": 28581,
+            "legacy_language_pid": 23,
+            "text": "ในระหว่างการเข้าสู่ระบบ:",
+            "auto_translated": "ในระหว่างการเข้าสู่ระบบ:"
+        },
+        "te": {
+            "legacy_caption_pid": 34072,
+            "legacy_language_pid": 24,
+            "text": "లాగిన్ సమయంలో:",
+            "auto_translated": "లాగిన్ సమయంలో:"
+        },
+        "mr": {
+            "legacy_caption_pid": 34073,
+            "legacy_language_pid": 25,
+            "text": "लॉगिन दरम्यान:",
+            "auto_translated": "लॉगिन दरम्यान:"
+        },
+        "ur": {
+            "legacy_caption_pid": 34074,
+            "legacy_language_pid": 26,
+            "text": "لاگ ان دوران:",
+            "auto_translated": "لاگ ان دوران:"
+        },
+        "gu": {
+            "legacy_caption_pid": 34075,
+            "legacy_language_pid": 27,
+            "text": "પ્રવેશ દરમ્યાન:",
+            "auto_translated": "પ્રવેશ દરમ્યાન:"
+        },
+        "uk": {
+            "legacy_caption_pid": 34076,
+            "legacy_language_pid": 28,
+            "text": "Під час входу в систему:",
+            "auto_translated": "Під час входу в систему:"
+        },
+        "ml": {
+            "legacy_caption_pid": 34077,
+            "legacy_language_pid": 29,
+            "text": "ലോഗിൻ ചെയ്യുന്ന സമയത്ത്:",
+            "auto_translated": "ലോഗിൻ ചെയ്യുന്ന സമയത്ത്:"
+        },
+        "kn": {
+            "legacy_caption_pid": 34078,
+            "legacy_language_pid": 30,
+            "text": "ಲಾಗಿನ್ ಮಾಡುವ ವೇಳೆ:",
+            "auto_translated": "ಲಾಗಿನ್ ಮಾಡುವ ವೇಳೆ:"
+        },
+        "su": {
+            "legacy_caption_pid": 34079,
+            "legacy_language_pid": 31,
+            "text": "Salila login:",
+            "auto_translated": "Salila login:"
+        },
+        "ku": {
+            "legacy_caption_pid": 34080,
+            "legacy_language_pid": 32,
+            "text": "Di dema têketinê:",
+            "auto_translated": "Di dema têketinê:"
+        },
+        "ps": {
+            "legacy_caption_pid": 34081,
+            "legacy_language_pid": 33,
+            "text": "په ترڅ کې د ننوت:",
+            "auto_translated": "په ترڅ کې د ننوت:"
+        },
+        "ro": {
+            "legacy_caption_pid": 34082,
+            "legacy_language_pid": 34,
+            "text": "În timpul de conectare:",
+            "auto_translated": "În timpul de conectare:"
+        },
+        "id": {
+            "legacy_caption_pid": 34083,
+            "legacy_language_pid": 35,
+            "text": "Selama login:",
+            "auto_translated": "Selama login:"
+        },
+        "sd": {
+            "legacy_caption_pid": 34084,
+            "legacy_language_pid": 36,
+            "text": "لاگ ان دور ۾:",
+            "auto_translated": "لاگ ان دور ۾:"
+        },
+        "af": {
+            "legacy_caption_pid": 34085,
+            "legacy_language_pid": 37,
+            "text": "Tydens aanmelding:",
+            "auto_translated": "Tydens aanmelding:"
+        },
+        "sw": {
+            "legacy_caption_pid": 34086,
+            "legacy_language_pid": 38,
+            "text": "Wakati wa kuingia:",
+            "auto_translated": "Wakati wa kuingia:"
+        },
+        "lo": {
+            "legacy_caption_pid": 34087,
+            "legacy_language_pid": 39,
+            "text": "ໃນລະຫວ່າງການເຂົ້າສູ່ລະບົບ:",
+            "auto_translated": "ໃນລະຫວ່າງການເຂົ້າສູ່ລະບົບ:"
+        },
+        "nl": {
+            "legacy_caption_pid": 34088,
+            "legacy_language_pid": 40,
+            "text": "Tijdens ingelogd:",
+            "auto_translated": "Tijdens ingelogd:"
+        },
+        "tl": {
+            "legacy_caption_pid": 34089,
+            "legacy_language_pid": 41,
+            "text": "Sa panahon login:",
+            "auto_translated": "Sa panahon login:"
+        },
+        "ne": {
+            "legacy_caption_pid": 34090,
+            "legacy_language_pid": 42,
+            "text": "लग इन समयमा:",
+            "auto_translated": "लग इन समयमा:"
+        },
+        "hu": {
+            "legacy_caption_pid": 34091,
+            "legacy_language_pid": 43,
+            "text": "Bejelentkezés során:",
+            "auto_translated": "Bejelentkezés során:"
+        },
+        "cs": {
+            "legacy_caption_pid": 34092,
+            "legacy_language_pid": 44,
+            "text": "Během přihlášení:",
+            "auto_translated": "Během přihlášení:"
+        },
+        "el": {
+            "legacy_caption_pid": 34093,
+            "legacy_language_pid": 45,
+            "text": "Κατά τη διάρκεια της σύνδεσης:",
+            "auto_translated": "Κατά τη διάρκεια της σύνδεσης:"
+        },
+        "sv": {
+            "legacy_caption_pid": 34094,
+            "legacy_language_pid": 46,
+            "text": "Under login:",
+            "auto_translated": "Under login:"
+        },
+        "kk": {
+            "legacy_caption_pid": 34095,
+            "legacy_language_pid": 47,
+            "text": "Кіру барысында:",
+            "auto_translated": "Кіру барысында:"
+        },
+        "fi": {
+            "legacy_caption_pid": 34096,
+            "legacy_language_pid": 48,
+            "text": "Kirjautumisen yhteydessä:",
+            "auto_translated": "Kirjautumisen yhteydessä:"
+        },
+        "da": {
+            "legacy_caption_pid": 34097,
+            "legacy_language_pid": 49,
+            "text": "Under login:",
+            "auto_translated": "Under login:"
+        },
+        "he": {
+            "legacy_caption_pid": 34098,
+            "legacy_language_pid": 50,
+            "text": "במהלך הכניסה:",
+            "auto_translated": "במהלך הכניסה:"
+        },
+        "no": {
+            "legacy_caption_pid": 34099,
+            "legacy_language_pid": 51,
+            "text": "Under pålogging:",
+            "auto_translated": "Under pålogging:"
+        }
+    }
+}

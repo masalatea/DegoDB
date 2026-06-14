@@ -1,0 +1,321 @@
+{
+    "resource_key": "COMMON_LIB_LOGIN_ANNOUNCEMENT_ON_BOTTOM_LINE3_ABOUT_LOGOUT",
+    "legacy_resource_pid": 1509,
+    "base_group_key": "grp-010-matsuesoft-lib",
+    "additional_group_keys": [],
+    "key_for_update": "I6MP49NkcvanryZOOmhmrsDfrgJXG0TGPePVwEMAU4zgSbhJt2MkBfPhgwQ0bK7LKahJl8muqRq9u44X6LkmoycLe8yx4uYrWkJvfi0jghYp34X3slFBSvocEHNKcekJ",
+    "sort_group": "LOGIN",
+    "key_name": "COMMON_LIB_LOGIN_ANNOUNCEMENT_ON_BOTTOM_LINE3_ABOUT_LOGOUT",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": false,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 6310,
+            "legacy_language_pid": 1,
+            "text": "クッキー(Cookie)設定が有効でもうまくログインできない場合、一旦ログアウトページにアクセスしてログイン情報をリセットしてから再度ログインを試みて頂ければと思います。",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 6311,
+            "legacy_language_pid": 2,
+            "text": "If you can not login successfully even though cookie setting is valid, I think that you can try logging in again after resetting login information by accessing the logout page.",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 6312,
+            "legacy_language_pid": 3,
+            "text": "如果cookie设置无法成功登录，即使有效，我认为你试图从重置登录信息一次访问注销页面重新登录。",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 6313,
+            "legacy_language_pid": 4,
+            "text": "Cookie 설정이 유효해도 로그인할 수 없는 경우, 일단 로그아웃 페이지를 방문하여 로그인 정보를 초기화한 후 다시 로그인해주시기 바랍니다.",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 11051,
+            "legacy_language_pid": 5,
+            "text": "Si no puede iniciar sesión con éxito aunque la configuración de cookie es válida, creo que puede intentar iniciar sesión de nuevo después de restablecer la información de inicio de sesión accediendo a la página de cierre de sesión.",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 11052,
+            "legacy_language_pid": 6,
+            "text": "Se você não conseguir fazer o login com sucesso, mesmo que a configuração do cookie seja válida, acho que você pode tentar efetuar o login novamente depois de redefinir as informações de login acessando a página de logout.",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 11053,
+            "legacy_language_pid": 7,
+            "text": "如果cookie設置無法成功登錄，即使有效，我認為你試圖從重置登錄信息一次訪問註銷頁面重新登錄。",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 17225,
+            "legacy_language_pid": 8,
+            "text": "Si vous ne parvenez pas à vous connecter correctement, même si le paramètre de cookie est valide, je pense que vous pouvez essayer de vous connecter à nouveau après avoir réinitialisé les informations de connexion en accédant à la page de déconnexion.",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 17226,
+            "legacy_language_pid": 9,
+            "text": "अगर ऐसा मामला नहीं है, तो मुझे लगता है कि आप बुनियादी प्रमाणीकरण (इस साइट का यूज़र नेम (आईडी) के साथ लॉग इन करने का प्रयास करने के लिए यहां क्लिक कर सकते हैं)",
+            "auto_translated": ""
+        },
+        "ar": {
+            "legacy_caption_pid": 32460,
+            "legacy_language_pid": 10,
+            "text": "إذا كانت مجموعة الكعكة غير قادر على تسجيل الدخول بنجاح حتى في صالحة، وأعتقد أن حاولت تسجيل الدخول مرة أخرى من إعادة تعيين معلومات تسجيل الدخول مرة واحدة للوصول إلى تسجيل الخروج الصفحة.",
+            "auto_translated": "إذا كانت مجموعة الكعكة غير قادر على تسجيل الدخول بنجاح حتى في صالحة، وأعتقد أن حاولت تسجيل الدخول مرة أخرى من إعادة تعيين معلومات تسجيل الدخول مرة واحدة للوصول إلى تسجيل الخروج الصفحة."
+        },
+        "fa": {
+            "legacy_caption_pid": 32461,
+            "legacy_language_pid": 11,
+            "text": "اگر کوکی قادر به موفقیت در حتی معتبر ورود است، من فکر می کنم که شما سعی می کنید برای ورود دوباره از تنظیم مجدد اطلاعات ورود به سیستم یک بار برای دسترسی به صفحه از سیستم خارج شوید.",
+            "auto_translated": "اگر کوکی قادر به موفقیت در حتی معتبر ورود است، من فکر می کنم که شما سعی می کنید برای ورود دوباره از تنظیم مجدد اطلاعات ورود به سیستم یک بار برای دسترسی به صفحه از سیستم خارج شوید."
+        },
+        "de": {
+            "legacy_caption_pid": 32462,
+            "legacy_language_pid": 12,
+            "text": "Wenn die Cookie-Gruppe nicht in der Lage ist, erfolgreich in noch gültig einzuloggen, denke ich, dass Sie versuchen, sich erneut anzumelden aus zurückgesetzt, wenn die Anmeldeinformationen, die sie abzumelden Seite zuzugreifen.",
+            "auto_translated": "Wenn die Cookie-Gruppe nicht in der Lage ist, erfolgreich in noch gültig einzuloggen, denke ich, dass Sie versuchen, sich erneut anzumelden aus zurückgesetzt, wenn die Anmeldeinformationen, die sie abzumelden Seite zuzugreifen."
+        },
+        "ru": {
+            "legacy_caption_pid": 32463,
+            "legacy_language_pid": 13,
+            "text": "Если набор печенья не может успешно войти даже действительно, я думаю, что вы пытаетесь войти снова из сброса информации входа в систему один раз, чтобы получить доступ к журналу соответствующей странице.",
+            "auto_translated": "Если набор печенья не может успешно войти даже действительно, я думаю, что вы пытаетесь войти снова из сброса информации входа в систему один раз, чтобы получить доступ к журналу соответствующей странице."
+        },
+        "ms": {
+            "legacy_caption_pid": 32464,
+            "legacy_language_pid": 14,
+            "text": "Jika set cookie tidak dapat berjaya log masuk walaupun sah, saya berfikir bahawa anda cuba untuk log masuk semula dari menetapkan semula maklumat log masuk sekali untuk mengakses halaman log keluar.",
+            "auto_translated": "Jika set cookie tidak dapat berjaya log masuk walaupun sah, saya berfikir bahawa anda cuba untuk log masuk semula dari menetapkan semula maklumat log masuk sekali untuk mengakses halaman log keluar."
+        },
+        "ta": {
+            "legacy_caption_pid": 32465,
+            "legacy_language_pid": 15,
+            "text": "குக்கீ அமைக்கப்படவில்லை வெற்றிகரமாக கூட செல்லுபடியாகும் உள்நுழைய முடியவில்லை என்றால், நான் நான் வெளியேறும்போது பக்கம் அணுக முறை உள்நுழைவு தகவல் மீட்டமைக்க இருந்து மீண்டும் நுழைய முயற்சி என்று நினைக்கிறேன்.",
+            "auto_translated": "குக்கீ அமைக்கப்படவில்லை வெற்றிகரமாக கூட செல்லுபடியாகும் உள்நுழைய முடியவில்லை என்றால், நான் நான் வெளியேறும்போது பக்கம் அணுக முறை உள்நுழைவு தகவல் மீட்டமைக்க இருந்து மீண்டும் நுழைய முயற்சி என்று நினைக்கிறேன்."
+        },
+        "it": {
+            "legacy_caption_pid": 32466,
+            "legacy_language_pid": 16,
+            "text": "Se il set di cookie è in grado di accedere con successo in anche valida, penso che si tenta di accedere nuovamente da ripristinare le informazioni di accesso, una volta per accedere alla pagina di log out.",
+            "auto_translated": "Se il set di cookie è in grado di accedere con successo in anche valida, penso che si tenta di accedere nuovamente da ripristinare le informazioni di accesso, una volta per accedere alla pagina di log out."
+        },
+        "bn": {
+            "legacy_caption_pid": 32467,
+            "legacy_language_pid": 17,
+            "text": "তাহলে কুকি সেট সফলভাবে এমনকি বৈধ লগ ইন করার অক্ষম, আমি মনে করি যে আপনি লগ আউট পৃষ্ঠা অ্যাক্সেস করার জন্য লগ-ইন তথ্য রিসেট একবার থেকে আবার লগ ইন করার চেষ্টা করুন।",
+            "auto_translated": "তাহলে কুকি সেট সফলভাবে এমনকি বৈধ লগ ইন করার অক্ষম, আমি মনে করি যে আপনি লগ আউট পৃষ্ঠা অ্যাক্সেস করার জন্য লগ-ইন তথ্য রিসেট একবার থেকে আবার লগ ইন করার চেষ্টা করুন।"
+        },
+        "tr": {
+            "legacy_caption_pid": 32468,
+            "legacy_language_pid": 18,
+            "text": "çerez grubu başarıyla dahi geçerli giriş yapamıyorsa, ben Oturumu sayfasına erişmek için bir kez giriş bilgilerini sıfırlamak tekrar oturum açmayı deneyin düşünüyorum.",
+            "auto_translated": "çerez grubu başarıyla dahi geçerli giriş yapamıyorsa, ben Oturumu sayfasına erişmek için bir kez giriş bilgilerini sıfırlamak tekrar oturum açmayı deneyin düşünüyorum."
+        },
+        "vi": {
+            "legacy_caption_pid": 32469,
+            "legacy_language_pid": 19,
+            "text": "Nếu bộ cookie là không thể đăng nhập thành công thậm chí còn hiệu lực, tôi nghĩ rằng bạn cố gắng đăng nhập lại từ thiết lập lại các thông tin đăng nhập một lần để truy cập vào trang đăng xuất.",
+            "auto_translated": "Nếu bộ cookie là không thể đăng nhập thành công thậm chí còn hiệu lực, tôi nghĩ rằng bạn cố gắng đăng nhập lại từ thiết lập lại các thông tin đăng nhập một lần để truy cập vào trang đăng xuất."
+        },
+        "pl": {
+            "legacy_caption_pid": 32470,
+            "legacy_language_pid": 20,
+            "text": "Jeśli zestaw plików cookie nie jest w stanie z powodzeniem zalogować nawet ważne, myślę, że spróbować zalogować się ponownie z zresetować dane logowania, aby otworzyć stronę logowania się.",
+            "auto_translated": "Jeśli zestaw plików cookie nie jest w stanie z powodzeniem zalogować nawet ważne, myślę, że spróbować zalogować się ponownie z zresetować dane logowania, aby otworzyć stronę logowania się."
+        },
+        "jv": {
+            "legacy_caption_pid": 32471,
+            "legacy_language_pid": 21,
+            "text": "Yen cookie pesawat Tukang kasil mlebu malah bener, aku sing nyoba kanggo mlebu log manèh saka ngreset informasi login sapisan kanggo ngakses metu kaca.",
+            "auto_translated": "Yen cookie pesawat Tukang kasil mlebu malah bener, aku sing nyoba kanggo mlebu log manèh saka ngreset informasi login sapisan kanggo ngakses metu kaca."
+        },
+        "pa": {
+            "legacy_caption_pid": 32472,
+            "legacy_language_pid": 22,
+            "text": "ਜੇ ਕੂਕੀਜ਼ ਸੈੱਟ ਸਫਲਤਾਪੂਰਕ ਵੀ ਠੀਕ ਵਿੱਚ ਲਾਗਇਨ ਕਰਨ ਲਈ ਅਸਮਰੱਥ ਹੈ, ਮੈਨੂੰ ਲੱਗਦਾ ਹੈ ਕਿ ਤੁਹਾਨੂੰ ਲਾਗ ਸਫ਼ੇ ਤੱਕ ਪਹੁੰਚ ਕਰਨ ਲਈ ਲਾਗਇਨ ਜਾਣਕਾਰੀ ਨੂੰ ਰੀਸੈੱਟ ਇਕ ਵਾਰ ਤੱਕ ਦੁਬਾਰਾ ਲਾਗਇਨ ਕਰਨ ਦੀ ਕੋਸ਼ਿਸ਼ ਕਰੋ.",
+            "auto_translated": "ਜੇ ਕੂਕੀਜ਼ ਸੈੱਟ ਸਫਲਤਾਪੂਰਕ ਵੀ ਠੀਕ ਵਿੱਚ ਲਾਗਇਨ ਕਰਨ ਲਈ ਅਸਮਰੱਥ ਹੈ, ਮੈਨੂੰ ਲੱਗਦਾ ਹੈ ਕਿ ਤੁਹਾਨੂੰ ਲਾਗ ਸਫ਼ੇ ਤੱਕ ਪਹੁੰਚ ਕਰਨ ਲਈ ਲਾਗਇਨ ਜਾਣਕਾਰੀ ਨੂੰ ਰੀਸੈੱਟ ਇਕ ਵਾਰ ਤੱਕ ਦੁਬਾਰਾ ਲਾਗਇਨ ਕਰਨ ਦੀ ਕੋਸ਼ਿਸ਼ ਕਰੋ."
+        },
+        "th": {
+            "legacy_caption_pid": 32473,
+            "legacy_language_pid": 23,
+            "text": "หากชุดคุกกี้ไม่สามารถที่จะประสบความสำเร็จในการเข้าสู่ระบบที่ถูกต้องแม้ผมคิดว่าคุณพยายามที่จะเข้าสู่ระบบอีกครั้งจากการตั้งค่าข้อมูลเข้าสู่ระบบครั้งเดียวเพื่อเข้าถึงบันทึกการออกหน้า",
+            "auto_translated": "หากชุดคุกกี้ไม่สามารถที่จะประสบความสำเร็จในการเข้าสู่ระบบที่ถูกต้องแม้ผมคิดว่าคุณพยายามที่จะเข้าสู่ระบบอีกครั้งจากการตั้งค่าข้อมูลเข้าสู่ระบบครั้งเดียวเพื่อเข้าถึงบันทึกการออกหน้า"
+        },
+        "te": {
+            "legacy_caption_pid": 40708,
+            "legacy_language_pid": 24,
+            "text": "కుకీ (కుకీ) సెట్టింగ్ లాగిన్ అయి కూడా చెల్లుబాటు పోతే విజయవంతంగా, నేను మీరు పేజీ లాగ్ అవుట్ యాక్సెస్ ఒకసారి లాగిన్ సమాచారాన్ని రీసెట్ నుండి మరలా లాగిన్ ప్రయత్నించండి అనుకుంటున్నాను.",
+            "auto_translated": "కుకీ (కుకీ) సెట్టింగ్ లాగిన్ అయి కూడా చెల్లుబాటు పోతే విజయవంతంగా, నేను మీరు పేజీ లాగ్ అవుట్ యాక్సెస్ ఒకసారి లాగిన్ సమాచారాన్ని రీసెట్ నుండి మరలా లాగిన్ ప్రయత్నించండి అనుకుంటున్నాను."
+        },
+        "mr": {
+            "legacy_caption_pid": 40709,
+            "legacy_language_pid": 25,
+            "text": "कुकी (कुकी) सेटिंग मध्ये लॉग इन नाही यशस्वीरित्या अगदी वैध नसेल तर मी आपण लॉग आउट पृष्ठावर प्रवेश करण्यासाठी एकदा लॉगइन माहिती रीसेट पुन्हा लॉग इन करण्याचा प्रयत्न असे वाटते.",
+            "auto_translated": "कुकी (कुकी) सेटिंग मध्ये लॉग इन नाही यशस्वीरित्या अगदी वैध नसेल तर मी आपण लॉग आउट पृष्ठावर प्रवेश करण्यासाठी एकदा लॉगइन माहिती रीसेट पुन्हा लॉग इन करण्याचा प्रयत्न असे वाटते."
+        },
+        "ur": {
+            "legacy_caption_pid": 40710,
+            "legacy_language_pid": 26,
+            "text": "کوکی (کوکی) کی ترتیب کو کامیابی بھی درست لاگ ان نہیں کیا جا سکتا ہے، تو میں آپ کے لاگ آؤٹ صفحہ تک رسائی کی ایک بار لاگ ان معلومات کو ری سیٹ سے دوبارہ لاگ ان کرنے کی کوشش کریں گے کہ لگتا ہے.",
+            "auto_translated": "کوکی (کوکی) کی ترتیب کو کامیابی بھی درست لاگ ان نہیں کیا جا سکتا ہے، تو میں آپ کے لاگ آؤٹ صفحہ تک رسائی کی ایک بار لاگ ان معلومات کو ری سیٹ سے دوبارہ لاگ ان کرنے کی کوشش کریں گے کہ لگتا ہے."
+        },
+        "gu": {
+            "legacy_caption_pid": 40711,
+            "legacy_language_pid": 27,
+            "text": "કૂકીનો (કૂકી) સેટિંગ પ્રવેશ ન કરી શકે તો હોવું સફળતાપૂર્વક પણ માન્ય છે, મને લાગે છે કે તમે લૉગ આઉટ પૃષ્ઠ ઍક્સેસ કરવાની લૉગિન રીસેટ માહિતી વાર ફરી લોગ ઇન કરવાનો પ્રયાસ કરો.",
+            "auto_translated": "કૂકીનો (કૂકી) સેટિંગ પ્રવેશ ન કરી શકે તો હોવું સફળતાપૂર્વક પણ માન્ય છે, મને લાગે છે કે તમે લૉગ આઉટ પૃષ્ઠ ઍક્સેસ કરવાની લૉગિન રીસેટ માહિતી વાર ફરી લોગ ઇન કરવાનો પ્રયાસ કરો."
+        },
+        "uk": {
+            "legacy_caption_pid": 40712,
+            "legacy_language_pid": 28,
+            "text": "Якщо параметр куки (Cookie) не може бути успішно увійти ще в силі, я думаю, що ви намагаєтеся увійти знову з скидання інформації входу в систему один раз, щоб отримати доступ до журналу відповідній сторінці.",
+            "auto_translated": "Якщо параметр куки (Cookie) не може бути успішно увійти ще в силі, я думаю, що ви намагаєтеся увійти знову з скидання інформації входу в систему один раз, щоб отримати доступ до журналу відповідній сторінці."
+        },
+        "ml": {
+            "legacy_caption_pid": 40713,
+            "legacy_language_pid": 29,
+            "text": "കുക്കി (കുക്കി) ക്രമീകരണം വിജയകരമായി സാധുവായ പോലും ലോഗിൻ ചെയ്യാൻ കഴിയില്ല, ഞാൻ ലോഗ് ഔട്ട് പേജ് ആക്സസ് ഒരിക്കൽ ലോഗിൻ വിവരങ്ങൾ റീസെറ്റ് നിന്ന് വീണ്ടും ലോഗിൻ ചെയ്യാൻ ശ്രമിക്കുക എന്നു തോന്നുന്നു.",
+            "auto_translated": "കുക്കി (കുക്കി) ക്രമീകരണം വിജയകരമായി സാധുവായ പോലും ലോഗിൻ ചെയ്യാൻ കഴിയില്ല, ഞാൻ ലോഗ് ഔട്ട് പേജ് ആക്സസ് ഒരിക്കൽ ലോഗിൻ വിവരങ്ങൾ റീസെറ്റ് നിന്ന് വീണ്ടും ലോഗിൻ ചെയ്യാൻ ശ്രമിക്കുക എന്നു തോന്നുന്നു."
+        },
+        "kn": {
+            "legacy_caption_pid": 40714,
+            "legacy_language_pid": 30,
+            "text": "ಕುಕಿ (ಕುಕಿ) ಸೆಟ್ಟಿಂಗ್ ಯಶಸ್ವಿಯಾಗಿ ಸಹ ಮಾನ್ಯ ಲಾಗ್ ಸಾಧ್ಯವಿಲ್ಲ ರಲ್ಲಿ, ನಾನು ನೀವು ಲಾಗ್ ಔಟ್ ಪುಟವನ್ನು ಪ್ರವೇಶಿಸಲು ಒಮ್ಮೆ ಲಾಗಿನ್ ಮಾಹಿತಿಯನ್ನು ಮರುಹೊಂದಿಸಲು ನಿಂದ ಮತ್ತೆ ಪ್ರವೇಶಿಸಲು ಪ್ರಯತ್ನಿಸಿ ಭಾವಿಸುತ್ತೇನೆ.",
+            "auto_translated": "ಕುಕಿ (ಕುಕಿ) ಸೆಟ್ಟಿಂಗ್ ಯಶಸ್ವಿಯಾಗಿ ಸಹ ಮಾನ್ಯ ಲಾಗ್ ಸಾಧ್ಯವಿಲ್ಲ ರಲ್ಲಿ, ನಾನು ನೀವು ಲಾಗ್ ಔಟ್ ಪುಟವನ್ನು ಪ್ರವೇಶಿಸಲು ಒಮ್ಮೆ ಲಾಗಿನ್ ಮಾಹಿತಿಯನ್ನು ಮರುಹೊಂದಿಸಲು ನಿಂದ ಮತ್ತೆ ಪ್ರವೇಶಿಸಲು ಪ್ರಯತ್ನಿಸಿ ಭಾವಿಸುತ್ತೇನೆ."
+        },
+        "su": {
+            "legacy_caption_pid": 40715,
+            "legacy_language_pid": 31,
+            "text": "Mun cookie (cookie) setting teu bisa hasil asup sanajan sah, Jigana nu coba asup deui ti ngareset informasi login sakali pikeun ngakses kaluar kaca.",
+            "auto_translated": "Mun cookie (cookie) setting teu bisa hasil asup sanajan sah, Jigana nu coba asup deui ti ngareset informasi login sakali pikeun ngakses kaluar kaca."
+        },
+        "ku": {
+            "legacy_caption_pid": 40716,
+            "legacy_language_pid": 32,
+            "text": "Eger cookie (cookie) mîheng bi serkeftî ne bê têkevim heta derbasdar, ez difikirim ku hûn hewl bidin ku dîsa têkeve ji reset agahî têketinê carekê gîhîştina log out rûpel.",
+            "auto_translated": "Eger cookie (cookie) mîheng bi serkeftî ne bê têkevim heta derbasdar, ez difikirim ku hûn hewl bidin ku dîsa têkeve ji reset agahî têketinê carekê gîhîştina log out rûpel."
+        },
+        "ps": {
+            "legacy_caption_pid": 40717,
+            "legacy_language_pid": 33,
+            "text": "که د کوکيز (کوکی) د جوړولو نه شي په بریالیتوب کې ننوځۍ هم د اعتبار وړ، زه فکر کوم چې تاسو هڅه بیا په څخه د وتنه مخ لاسرسی د login معلومات يو ځل بيا وزېرمئ log.",
+            "auto_translated": "که د کوکيز (کوکی) د جوړولو نه شي په بریالیتوب کې ننوځۍ هم د اعتبار وړ، زه فکر کوم چې تاسو هڅه بیا په څخه د وتنه مخ لاسرسی د login معلومات يو ځل بيا وزېرمئ log."
+        },
+        "ro": {
+            "legacy_caption_pid": 40718,
+            "legacy_language_pid": 34,
+            "text": "Dacă setarea cookie (Cookie) nu poate fi cu succes autentifica chiar și valabilă, cred că încercați să vă conectați din nou la reseta informațiile de conectare o dată pentru a accesa pagina de log out.",
+            "auto_translated": "Dacă setarea cookie (Cookie) nu poate fi cu succes autentifica chiar și valabilă, cred că încercați să vă conectați din nou la reseta informațiile de conectare o dată pentru a accesa pagina de log out."
+        },
+        "id": {
+            "legacy_caption_pid": 40719,
+            "legacy_language_pid": 35,
+            "text": "Jika cookie (Cookie) pengaturan tidak dapat berhasil login bahkan valid, saya berpikir bahwa Anda mencoba untuk login lagi dari ulang informasi login sekali untuk mengakses log out halaman.",
+            "auto_translated": "Jika cookie (Cookie) pengaturan tidak dapat berhasil login bahkan valid, saya berpikir bahwa Anda mencoba untuk login lagi dari ulang informasi login sekali untuk mengakses log out halaman."
+        },
+        "sd": {
+            "legacy_caption_pid": 40720,
+            "legacy_language_pid": 36,
+            "text": "ڪوڪيز (ڪوڪي) لھڻ ڪاميابي ۾ به صحيح لاگ ان نه ٿو ٿي سگهي ته، مون کي خيال آهي ته توهان کي ٻاهر جو لاگ ان صفحي جي رسائي حاصل ڪرڻ لاء هتي ڪلڪ ڪري معلومات ري سيٽ هڪ ڀيرو کان ٻيهر لاگ ان ڪرڻ جي ڪوشش ڪئي.",
+            "auto_translated": "ڪوڪيز (ڪوڪي) لھڻ ڪاميابي ۾ به صحيح لاگ ان نه ٿو ٿي سگهي ته، مون کي خيال آهي ته توهان کي ٻاهر جو لاگ ان صفحي جي رسائي حاصل ڪرڻ لاء هتي ڪلڪ ڪري معلومات ري سيٽ هڪ ڀيرو کان ٻيهر لاگ ان ڪرڻ جي ڪوشش ڪئي."
+        },
+        "af": {
+            "legacy_caption_pid": 40721,
+            "legacy_language_pid": 37,
+            "text": "As die koekie (Cookie) omgewing nie suksesvol kan aanmeld selfs geldig, ek dink dat jy probeer weer in te teken van herstel die login inligting eens om toegang tot die teken uit bladsy.",
+            "auto_translated": "As die koekie (Cookie) omgewing nie suksesvol kan aanmeld selfs geldig, ek dink dat jy probeer weer in te teken van herstel die login inligting eens om toegang tot die teken uit bladsy."
+        },
+        "sw": {
+            "legacy_caption_pid": 40722,
+            "legacy_language_pid": 38,
+            "text": "Kama kidakuzi (Cookie) kuweka haiwezi mafanikio kuingia hata halali, nadhani kwamba kujaribu kuingia tena kutoka upya taarifa za kuingia mara moja kupata ondoka ukurasa.",
+            "auto_translated": "Kama kidakuzi (Cookie) kuweka haiwezi mafanikio kuingia hata halali, nadhani kwamba kujaribu kuingia tena kutoka upya taarifa za kuingia mara moja kupata ondoka ukurasa."
+        },
+        "lo": {
+            "legacy_caption_pid": 40723,
+            "legacy_language_pid": 39,
+            "text": "ຖ້າຄຸກກີ້ (Cookie) ການຕັ້ງຄ່າທີ່ບໍ່ສາມາດສົບຜົນສໍາເລັດເຂົ້າໃນທີ່ຖືກຕ້ອງເຖິງແມ່ນວ່າ, ຂ້າພະເຈົ້າຄິດວ່າທ່ານພະຍາຍາມທີ່ຈະເຂົ້າສູ່ລະບົບອີກເທື່ອຫນຶ່ງຈາກປັບຂໍ້ມູນເຂົ້າສູ່ລະບົບເມື່ອໃນການເຂົ້າເຖິງໄດ້ອອກຈາກລະບົບຫນ້າ.",
+            "auto_translated": "ຖ້າຄຸກກີ້ (Cookie) ການຕັ້ງຄ່າທີ່ບໍ່ສາມາດສົບຜົນສໍາເລັດເຂົ້າໃນທີ່ຖືກຕ້ອງເຖິງແມ່ນວ່າ, ຂ້າພະເຈົ້າຄິດວ່າທ່ານພະຍາຍາມທີ່ຈະເຂົ້າສູ່ລະບົບອີກເທື່ອຫນຶ່ງຈາກປັບຂໍ້ມູນເຂົ້າສູ່ລະບົບເມື່ອໃນການເຂົ້າເຖິງໄດ້ອອກຈາກລະບົບຫນ້າ."
+        },
+        "nl": {
+            "legacy_caption_pid": 40724,
+            "legacy_language_pid": 40,
+            "text": "Als het cookie (Cookie) instelling niet met succes kan worden inloggen nog geldig is, ik denk dat je het opnieuw proberen in te loggen uit te resetten de login-gegevens eenmaal op om de uitloggen pagina.",
+            "auto_translated": "Als het cookie (Cookie) instelling niet met succes kan worden inloggen nog geldig is, ik denk dat je het opnieuw proberen in te loggen uit te resetten de login-gegevens eenmaal op om de uitloggen pagina."
+        },
+        "tl": {
+            "legacy_caption_pid": 40725,
+            "legacy_language_pid": 41,
+            "text": "Kung ang cookie (Cookie) setting ay hindi maaaring matagumpay na mag-log in kahit may-bisa, sa tingin ko na subukan mo upang mag-log in muli mula reset ang impormasyon sa pag-login nang isang beses upang ma-access ang log out page.",
+            "auto_translated": "Kung ang cookie (Cookie) setting ay hindi maaaring matagumpay na mag-log in kahit may-bisa, sa tingin ko na subukan mo upang mag-log in muli mula reset ang impormasyon sa pag-login nang isang beses upang ma-access ang log out page."
+        },
+        "ne": {
+            "legacy_caption_pid": 40726,
+            "legacy_language_pid": 42,
+            "text": "यस कुकी (कुकी) सेटिङ छैन लग हुन भने सफलतापूर्वक गर्न सक्छन् मान्य, म तपाईं लग आउट पृष्ठ पहुँच गर्न एक पटक लगइन जानकारी रिसेट फेरि लग इन गर्नुहोस् प्रयास ठान्छन्।",
+            "auto_translated": "यस कुकी (कुकी) सेटिङ छैन लग हुन भने सफलतापूर्वक गर्न सक्छन् मान्य, म तपाईं लग आउट पृष्ठ पहुँच गर्न एक पटक लगइन जानकारी रिसेट फेरि लग इन गर्नुहोस् प्रयास ठान्छन्।"
+        },
+        "hu": {
+            "legacy_caption_pid": 40727,
+            "legacy_language_pid": 43,
+            "text": "Ha a süti (cookie) beállítás nem sikeres bejelentkezés még érvényes, azt hiszem, hogy megpróbál bejelentkezni újra vissza a bejelentkezési adatokat egyszer a kijelentkezéshez oldalt.",
+            "auto_translated": "Ha a süti (cookie) beállítás nem sikeres bejelentkezés még érvényes, azt hiszem, hogy megpróbál bejelentkezni újra vissza a bejelentkezési adatokat egyszer a kijelentkezéshez oldalt."
+        },
+        "cs": {
+            "legacy_caption_pid": 40728,
+            "legacy_language_pid": 44,
+            "text": "Je-li nastavení cookie (Cookie) nelze úspěšně přihlásit ještě platný, myslím, že se pokusíte znovu přihlásit z obnovit přihlašovací údaje jednou pro otevření stránky odhlásit.",
+            "auto_translated": "Je-li nastavení cookie (Cookie) nelze úspěšně přihlásit ještě platný, myslím, že se pokusíte znovu přihlásit z obnovit přihlašovací údaje jednou pro otevření stránky odhlásit."
+        },
+        "el": {
+            "legacy_caption_pid": 40729,
+            "legacy_language_pid": 45,
+            "text": "Εάν η ρύθμιση μπισκότων (Cookie) δεν μπορούν να συνδεθούν με επιτυχία ακόμα και ισχύει, νομίζω ότι μπορείτε να δοκιμάσετε να συνδεθείτε ξανά από επαναφέρετε τα στοιχεία σύνδεσης μία φορά για να αποκτήσετε πρόσβαση στη σελίδα log out.",
+            "auto_translated": "Εάν η ρύθμιση μπισκότων (Cookie) δεν μπορούν να συνδεθούν με επιτυχία ακόμα και ισχύει, νομίζω ότι μπορείτε να δοκιμάσετε να συνδεθείτε ξανά από επαναφέρετε τα στοιχεία σύνδεσης μία φορά για να αποκτήσετε πρόσβαση στη σελίδα log out."
+        },
+        "sv": {
+            "legacy_caption_pid": 40730,
+            "legacy_language_pid": 46,
+            "text": "Om inställningen cookien (Cookie) inte kan lyckas logga in med giltigt, jag tror att du försöker logga in igen från återställer inloggningsinformationen en gång för att få tillgång till logga ut sida.",
+            "auto_translated": "Om inställningen cookien (Cookie) inte kan lyckas logga in med giltigt, jag tror att du försöker logga in igen från återställer inloggningsinformationen en gång för att få tillgång till logga ut sida."
+        },
+        "kk": {
+            "legacy_caption_pid": 40731,
+            "legacy_language_pid": 47,
+            "text": "куки (Cookie) параметрі табысты жарамды тіпті кіру мүмкін емес болса, онда менің ойымша, сіз шығу бетіне кіру үшін бір рет кіру ақпарат ысыру қайтадан кіру көріңіз деп ойлаймын.",
+            "auto_translated": "куки (Cookie) параметрі табысты жарамды тіпті кіру мүмкін емес болса, онда менің ойымша, сіз шығу бетіне кіру үшін бір рет кіру ақпарат ысыру қайтадан кіру көріңіз деп ойлаймын."
+        },
+        "fi": {
+            "legacy_caption_pid": 40732,
+            "legacy_language_pid": 48,
+            "text": "Jos evästeen (Cookie) asetusta ei voi onnistuneesti kirjautua edes voimassa, uskon, että yrität kirjautua uudelleen nollata kirjautumistiedot kerran käynnistääksesi kirjautua ulos sivulle.",
+            "auto_translated": "Jos evästeen (Cookie) asetusta ei voi onnistuneesti kirjautua edes voimassa, uskon, että yrität kirjautua uudelleen nollata kirjautumistiedot kerran käynnistääksesi kirjautua ulos sivulle."
+        },
+        "da": {
+            "legacy_caption_pid": 40733,
+            "legacy_language_pid": 49,
+            "text": "Hvis indstillingen cookie (Cookie) ikke med held kan logge ind selv gyldigt, jeg tror, ​​at du prøver at logge på igen fra nulstille login-oplysninger én gang for at få adgang til at logge ud side.",
+            "auto_translated": "Hvis indstillingen cookie (Cookie) ikke med held kan logge ind selv gyldigt, jeg tror, ​​at du prøver at logge på igen fra nulstille login-oplysninger én gang for at få adgang til at logge ud side."
+        },
+        "he": {
+            "legacy_caption_pid": 40734,
+            "legacy_language_pid": 50,
+            "text": "אם העוגייה (קוקי) הגדרה לא ניתן להתחבר בהצלחה גם תקף, אני חושב שאתה מנסה להתחבר שוב לאפס את פרטי הכניסה פעם לגשת לדף להתנתק.",
+            "auto_translated": "אם העוגייה (קוקי) הגדרה לא ניתן להתחבר בהצלחה גם תקף, אני חושב שאתה מנסה להתחבר שוב לאפס את פרטי הכניסה פעם לגשת לדף להתנתק."
+        },
+        "no": {
+            "legacy_caption_pid": 40735,
+            "legacy_language_pid": 51,
+            "text": "Dersom cookie (informasjonskapsel) innstillingen ikke kan ha logget inn enda gyldig, tror jeg at du prøver å logge på igjen fra nullstille påloggingsinformasjonen én gang for å få tilgang til å logge ut siden.",
+            "auto_translated": "Dersom cookie (informasjonskapsel) innstillingen ikke kan ha logget inn enda gyldig, tror jeg at du prøver å logge på igjen fra nullstille påloggingsinformasjonen én gang for å få tilgang til å logge ut siden."
+        }
+    }
+}

@@ -1,0 +1,321 @@
+{
+    "resource_key": "COMMON_LIB_ENROLL_HEADER_ID_DESIRED_CHECK_ACTION",
+    "legacy_resource_pid": 1413,
+    "base_group_key": "grp-010-matsuesoft-lib",
+    "additional_group_keys": [],
+    "key_for_update": "hhZSAsM46UBKIXudjkjyjSxZJei5eE17RFvPfis2riAf4jhCXxyEH7Y16AbsvEDUYmAglQ51OYbpSFVccMSdcqEc5dKB4YBRfOTVvviPCOq5dregm7yoDGZ3zXGAIhKP",
+    "sort_group": "ENROLL",
+    "key_name": "COMMON_LIB_ENROLL_HEADER_ID_DESIRED_CHECK_ACTION",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": false,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 5926,
+            "legacy_language_pid": 1,
+            "text": "利用可能か確認する",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 5927,
+            "legacy_language_pid": 2,
+            "text": "Check if possible to use",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 5928,
+            "legacy_language_pid": 3,
+            "text": "检查是否可用",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 5929,
+            "legacy_language_pid": 4,
+            "text": "이용 가능 여부 확인하기",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 10832,
+            "legacy_language_pid": 5,
+            "text": "Compruebe si es posible usar",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 10833,
+            "legacy_language_pid": 6,
+            "text": "Verifique se possível usar",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 10834,
+            "legacy_language_pid": 7,
+            "text": "檢查是否可用",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 16993,
+            "legacy_language_pid": 8,
+            "text": "Vérifiez si possible d'utiliser",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 16994,
+            "legacy_language_pid": 9,
+            "text": "जांचें यदि उपयोग करने के लिए संभव हो तो ",
+            "auto_translated": ""
+        },
+        "ar": {
+            "legacy_caption_pid": 31438,
+            "legacy_language_pid": 10,
+            "text": "تحقق إذا كان متوفرا",
+            "auto_translated": "تحقق إذا كان متوفرا"
+        },
+        "fa": {
+            "legacy_caption_pid": 31439,
+            "legacy_language_pid": 11,
+            "text": "بررسی کنید که در دسترس",
+            "auto_translated": "بررسی کنید که در دسترس"
+        },
+        "de": {
+            "legacy_caption_pid": 31440,
+            "legacy_language_pid": 12,
+            "text": "Überprüfen Sie, ob verfügbar",
+            "auto_translated": "Überprüfen Sie, ob verfügbar"
+        },
+        "ru": {
+            "legacy_caption_pid": 31441,
+            "legacy_language_pid": 13,
+            "text": "Проверьте, если доступен",
+            "auto_translated": "Проверьте, если доступен"
+        },
+        "ms": {
+            "legacy_caption_pid": 31442,
+            "legacy_language_pid": 14,
+            "text": "Periksa sama ada",
+            "auto_translated": "Periksa sama ada"
+        },
+        "ta": {
+            "legacy_caption_pid": 31443,
+            "legacy_language_pid": 15,
+            "text": "கிடைக்கும் என்று சரிபார்க்கவும்",
+            "auto_translated": "கிடைக்கும் என்று சரிபார்க்கவும்"
+        },
+        "it": {
+            "legacy_caption_pid": 31444,
+            "legacy_language_pid": 16,
+            "text": "Controllare se disponibile",
+            "auto_translated": "Controllare se disponibile"
+        },
+        "bn": {
+            "legacy_caption_pid": 31445,
+            "legacy_language_pid": 17,
+            "text": "প্রাপ্তিসাধ্য কিনা পরীক্ষা করুন",
+            "auto_translated": "প্রাপ্তিসাধ্য কিনা পরীক্ষা করুন"
+        },
+        "tr": {
+            "legacy_caption_pid": 31446,
+            "legacy_language_pid": 18,
+            "text": "Varsa edin",
+            "auto_translated": "Varsa edin"
+        },
+        "vi": {
+            "legacy_caption_pid": 31447,
+            "legacy_language_pid": 19,
+            "text": "Kiểm tra nếu có",
+            "auto_translated": "Kiểm tra nếu có"
+        },
+        "pl": {
+            "legacy_caption_pid": 31448,
+            "legacy_language_pid": 20,
+            "text": "Sprawdź, czy dostępne",
+            "auto_translated": "Sprawdź, czy dostępne"
+        },
+        "jv": {
+            "legacy_caption_pid": 31449,
+            "legacy_language_pid": 21,
+            "text": "Priksa yen kasedhiya",
+            "auto_translated": "Priksa yen kasedhiya"
+        },
+        "pa": {
+            "legacy_caption_pid": 31450,
+            "legacy_language_pid": 22,
+            "text": "ਉਪਲੱਬਧ ਹੈ ਜੇ ਚੈੱਕ ਕਰੋ",
+            "auto_translated": "ਉਪਲੱਬਧ ਹੈ ਜੇ ਚੈੱਕ ਕਰੋ"
+        },
+        "th": {
+            "legacy_caption_pid": 31451,
+            "legacy_language_pid": 23,
+            "text": "ตรวจสอบว่าใช้ได้",
+            "auto_translated": "ตรวจสอบว่าใช้ได้"
+        },
+        "te": {
+            "legacy_caption_pid": 39168,
+            "legacy_language_pid": 24,
+            "text": "అందుబాటులో ఉంటే తనిఖీ",
+            "auto_translated": "అందుబాటులో ఉంటే తనిఖీ"
+        },
+        "mr": {
+            "legacy_caption_pid": 39169,
+            "legacy_language_pid": 25,
+            "text": "उपलब्ध असल्यास तपासा",
+            "auto_translated": "उपलब्ध असल्यास तपासा"
+        },
+        "ur": {
+            "legacy_caption_pid": 39170,
+            "legacy_language_pid": 26,
+            "text": "آپ چیک کریں اگر",
+            "auto_translated": "آپ چیک کریں اگر"
+        },
+        "gu": {
+            "legacy_caption_pid": 39171,
+            "legacy_language_pid": 27,
+            "text": "જો ઉપલબ્ધ હોય તો તપાસો",
+            "auto_translated": "જો ઉપલબ્ધ હોય તો તપાસો"
+        },
+        "uk": {
+            "legacy_caption_pid": 39172,
+            "legacy_language_pid": 28,
+            "text": "Перевірте, якщо доступний",
+            "auto_translated": "Перевірте, якщо доступний"
+        },
+        "ml": {
+            "legacy_caption_pid": 39173,
+            "legacy_language_pid": 29,
+            "text": "ലഭ്യമാണെങ്കിൽ പരിശോധിക്കുക",
+            "auto_translated": "ലഭ്യമാണെങ്കിൽ പരിശോധിക്കുക"
+        },
+        "kn": {
+            "legacy_caption_pid": 39174,
+            "legacy_language_pid": 30,
+            "text": "ಲಭ್ಯವಿದ್ದಲ್ಲಿ ಪರಿಶೀಲಿಸಿ",
+            "auto_translated": "ಲಭ್ಯವಿದ್ದಲ್ಲಿ ಪರಿಶೀಲಿಸಿ"
+        },
+        "su": {
+            "legacy_caption_pid": 39175,
+            "legacy_language_pid": 31,
+            "text": "Pariksa lamun sadia",
+            "auto_translated": "Pariksa lamun sadia"
+        },
+        "ku": {
+            "legacy_caption_pid": 39176,
+            "legacy_language_pid": 32,
+            "text": "Check eger License de",
+            "auto_translated": "Check eger License de"
+        },
+        "ps": {
+            "legacy_caption_pid": 39177,
+            "legacy_language_pid": 33,
+            "text": "چک شتون په صورت کې",
+            "auto_translated": "چک شتون په صورت کې"
+        },
+        "ro": {
+            "legacy_caption_pid": 39178,
+            "legacy_language_pid": 34,
+            "text": "Verificați dacă este disponibil",
+            "auto_translated": "Verificați dacă este disponibil"
+        },
+        "id": {
+            "legacy_caption_pid": 39179,
+            "legacy_language_pid": 35,
+            "text": "Periksa apakah tersedia",
+            "auto_translated": "Periksa apakah tersedia"
+        },
+        "sd": {
+            "legacy_caption_pid": 39180,
+            "legacy_language_pid": 36,
+            "text": "جيڪڏهن موجود چيڪ ڪريو",
+            "auto_translated": "جيڪڏهن موجود چيڪ ڪريو"
+        },
+        "af": {
+            "legacy_caption_pid": 39181,
+            "legacy_language_pid": 37,
+            "text": "Kyk of beskikbaar",
+            "auto_translated": "Kyk of beskikbaar"
+        },
+        "sw": {
+            "legacy_caption_pid": 39182,
+            "legacy_language_pid": 38,
+            "text": "Angalia kama ipo",
+            "auto_translated": "Angalia kama ipo"
+        },
+        "lo": {
+            "legacy_caption_pid": 39183,
+            "legacy_language_pid": 39,
+            "text": "ໃຫ້ກວດເບິ່ງວ່າສາມາດໃຊ້ໄດ້",
+            "auto_translated": "ໃຫ້ກວດເບິ່ງວ່າສາມາດໃຊ້ໄດ້"
+        },
+        "nl": {
+            "legacy_caption_pid": 39184,
+            "legacy_language_pid": 40,
+            "text": "Controleer indien beschikbaar",
+            "auto_translated": "Controleer indien beschikbaar"
+        },
+        "tl": {
+            "legacy_caption_pid": 39185,
+            "legacy_language_pid": 41,
+            "text": "Suriin kung magagamit",
+            "auto_translated": "Suriin kung magagamit"
+        },
+        "ne": {
+            "legacy_caption_pid": 39186,
+            "legacy_language_pid": 42,
+            "text": "उपलब्ध भएमा जाँच",
+            "auto_translated": "उपलब्ध भएमा जाँच"
+        },
+        "hu": {
+            "legacy_caption_pid": 39187,
+            "legacy_language_pid": 43,
+            "text": "Ellenőrizze, hogy a rendelkezésre álló",
+            "auto_translated": "Ellenőrizze, hogy a rendelkezésre álló"
+        },
+        "cs": {
+            "legacy_caption_pid": 39188,
+            "legacy_language_pid": 44,
+            "text": "Zkontrolujte, zda je k dispozici",
+            "auto_translated": "Zkontrolujte, zda je k dispozici"
+        },
+        "el": {
+            "legacy_caption_pid": 39189,
+            "legacy_language_pid": 45,
+            "text": "Ελέγξτε εάν είναι διαθέσιμο",
+            "auto_translated": "Ελέγξτε εάν είναι διαθέσιμο"
+        },
+        "sv": {
+            "legacy_caption_pid": 39190,
+            "legacy_language_pid": 46,
+            "text": "Kontrollera om det finns",
+            "auto_translated": "Kontrollera om det finns"
+        },
+        "kk": {
+            "legacy_caption_pid": 39191,
+            "legacy_language_pid": 47,
+            "text": "Қол жетімді тексеріңіз",
+            "auto_translated": "Қол жетімді тексеріңіз"
+        },
+        "fi": {
+            "legacy_caption_pid": 39192,
+            "legacy_language_pid": 48,
+            "text": "Tarkista, onko käytettävissä",
+            "auto_translated": "Tarkista, onko käytettävissä"
+        },
+        "da": {
+            "legacy_caption_pid": 39193,
+            "legacy_language_pid": 49,
+            "text": "Kontroller, om tilgængelige",
+            "auto_translated": "Kontroller, om tilgængelige"
+        },
+        "he": {
+            "legacy_caption_pid": 39194,
+            "legacy_language_pid": 50,
+            "text": "בדקו אם קיימים",
+            "auto_translated": "בדקו אם קיימים"
+        },
+        "no": {
+            "legacy_caption_pid": 39195,
+            "legacy_language_pid": 51,
+            "text": "Sjekk om tilgjengelig",
+            "auto_translated": "Sjekk om tilgjengelig"
+        }
+    }
+}

@@ -1,0 +1,321 @@
+{
+    "resource_key": "COMMON_LIB_ENROLL_HEADER_ID_DESIRED_ANNOUNCEMENT",
+    "legacy_resource_pid": 1412,
+    "base_group_key": "grp-010-matsuesoft-lib",
+    "additional_group_keys": [],
+    "key_for_update": "8vKQVrEmey0qSQxCVRAMVYBbnACna4RJHDGWbaL3RTfzUQ2wnjJcD8xBABeR2ytefT7xgPf64ScmQPA1YC97FLKdX7hvMkuKpoRutZUVFaKMaLsihZWi5rL8BcvuKOue",
+    "sort_group": "ENROLL",
+    "key_name": "COMMON_LIB_ENROLL_HEADER_ID_DESIRED_ANNOUNCEMENT",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": false,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 5922,
+            "legacy_language_pid": 1,
+            "text": "小文字の英数字入力。4文字以上",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 5923,
+            "legacy_language_pid": 2,
+            "text": "Small character of alphabet or number. Input 4 character or more.",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 5924,
+            "legacy_language_pid": 3,
+            "text": "小写字母字母数字输入。4点或更多的字符",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 5925,
+            "legacy_language_pid": 4,
+            "text": "영숫자(소문자) 입력. 4자 이상",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 10823,
+            "legacy_language_pid": 5,
+            "text": "Pequeño carácter de alfabeto o número. Ingrese 4 caracteres o más.",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 10824,
+            "legacy_language_pid": 6,
+            "text": "Caráter pequeno do alfabeto ou número. Insira 4 caracteres ou mais.",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 10825,
+            "legacy_language_pid": 7,
+            "text": "小寫字母字母數字輸入。4點或更多的字符",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 16991,
+            "legacy_language_pid": 8,
+            "text": "Petit caractère d'alphabet ou de numéro. Saisissez 4 caractères ou plus.",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 16992,
+            "legacy_language_pid": 9,
+            "text": "वर्णमाला के छोटे अक्षर या संख्या। 4 अक्षर या अधिक इनपुट करें",
+            "auto_translated": ""
+        },
+        "ar": {
+            "legacy_caption_pid": 31424,
+            "legacy_language_pid": 10,
+            "text": "إدخال أبجدية من الأحرف صغير. 4 أحرف أو أكثر",
+            "auto_translated": "إدخال أبجدية من الأحرف صغير. 4 أحرف أو أكثر"
+        },
+        "fa": {
+            "legacy_caption_pid": 31425,
+            "legacy_language_pid": 11,
+            "text": "ورودی عدد و الفبایی، از حروف پایین تر. 4 حرف یا بیشتر",
+            "auto_translated": "ورودی عدد و الفبایی، از حروف پایین تر. 4 حرف یا بیشتر"
+        },
+        "de": {
+            "legacy_caption_pid": 31426,
+            "legacy_language_pid": 12,
+            "text": "Alphanumerische Eingabe von Kleinbuchstaben. 4 oder mehr Zeichen",
+            "auto_translated": "Alphanumerische Eingabe von Kleinbuchstaben. 4 oder mehr Zeichen"
+        },
+        "ru": {
+            "legacy_caption_pid": 31427,
+            "legacy_language_pid": 13,
+            "text": "Буквенно-цифровой ввод строчных букв. 4 или более символов",
+            "auto_translated": "Буквенно-цифровой ввод строчных букв. 4 или более символов"
+        },
+        "ms": {
+            "legacy_caption_pid": 31428,
+            "legacy_language_pid": 14,
+            "text": "input abjad angka huruf kecil. 4 atau lebih aksara",
+            "auto_translated": "input abjad angka huruf kecil. 4 atau lebih aksara"
+        },
+        "ta": {
+            "legacy_caption_pid": 31429,
+            "legacy_language_pid": 15,
+            "text": "குறைந்த வழக்கு கடிதங்கள் எண்ணெழுத்து உள்ளீடு. 4 அல்லது அதற்கு மேற்பட்ட எழுத்துக்கள்",
+            "auto_translated": "குறைந்த வழக்கு கடிதங்கள் எண்ணெழுத்து உள்ளீடு. 4 அல்லது அதற்கு மேற்பட்ட எழுத்துக்கள்"
+        },
+        "it": {
+            "legacy_caption_pid": 31430,
+            "legacy_language_pid": 16,
+            "text": "immissione alfanumerica di lettere minuscole. 4 o più caratteri",
+            "auto_translated": "immissione alfanumerica di lettere minuscole. 4 o più caratteri"
+        },
+        "bn": {
+            "legacy_caption_pid": 31431,
+            "legacy_language_pid": 17,
+            "text": "ছোট হাতের অক্ষরের আলফানিউমেরিক ইনপুট। 4 বা তার বেশি অক্ষরের",
+            "auto_translated": "ছোট হাতের অক্ষরের আলফানিউমেরিক ইনপুট। 4 বা তার বেশি অক্ষরের"
+        },
+        "tr": {
+            "legacy_caption_pid": 31432,
+            "legacy_language_pid": 18,
+            "text": "küçük harfler arasında Alfanümerik girişi. 4 veya daha fazla karakter",
+            "auto_translated": "küçük harfler arasında Alfanümerik girişi. 4 veya daha fazla karakter"
+        },
+        "vi": {
+            "legacy_caption_pid": 31433,
+            "legacy_language_pid": 19,
+            "text": "đầu vào chữ của chữ thường. 4 hoặc nhiều ký tự",
+            "auto_translated": "đầu vào chữ của chữ thường. 4 hoặc nhiều ký tự"
+        },
+        "pl": {
+            "legacy_caption_pid": 31434,
+            "legacy_language_pid": 20,
+            "text": "Alfanumeryczny wprowadzanie małymi literami. 4 lub więcej znaków",
+            "auto_translated": "Alfanumeryczny wprowadzanie małymi literami. 4 lub więcej znaków"
+        },
+        "jv": {
+            "legacy_caption_pid": 31435,
+            "legacy_language_pid": 21,
+            "text": "input alphanumeric aksara cilik. 4 utawa luwih aksara",
+            "auto_translated": "input alphanumeric aksara cilik. 4 utawa luwih aksara"
+        },
+        "pa": {
+            "legacy_caption_pid": 31436,
+            "legacy_language_pid": 22,
+            "text": "ਛੋਟੇ ਅੱਖਰ ਦੇ ਅਲਫਾਨਿਉਮੈਰਿਕ ਇੰਪੁੱਟ. 4 ਜ ਹੋਰ ਅੱਖਰ",
+            "auto_translated": "ਛੋਟੇ ਅੱਖਰ ਦੇ ਅਲਫਾਨਿਉਮੈਰਿਕ ਇੰਪੁੱਟ. 4 ਜ ਹੋਰ ਅੱਖਰ"
+        },
+        "th": {
+            "legacy_caption_pid": 31437,
+            "legacy_language_pid": 23,
+            "text": "การป้อนข้อมูลตัวเลขและตัวอักษรกรณีที่ต่ำกว่า 4 หรือมากกว่าตัวอักษร",
+            "auto_translated": "การป้อนข้อมูลตัวเลขและตัวอักษรกรณีที่ต่ำกว่า 4 หรือมากกว่าตัวอักษร"
+        },
+        "te": {
+            "legacy_caption_pid": 39196,
+            "legacy_language_pid": 24,
+            "text": "చిన్నబడి అక్షరాల ఆల్ఫాన్యూమరిక్ ఇన్పుట్. 4 లేదా ఎక్కువ అక్షరాలు",
+            "auto_translated": "చిన్నబడి అక్షరాల ఆల్ఫాన్యూమరిక్ ఇన్పుట్. 4 లేదా ఎక్కువ అక్షరాలు"
+        },
+        "mr": {
+            "legacy_caption_pid": 39197,
+            "legacy_language_pid": 25,
+            "text": "लोअर केस अक्षरे वर्णांक इनपुट. 4 किंवा अधिक वर्ण",
+            "auto_translated": "लोअर केस अक्षरे वर्णांक इनपुट. 4 किंवा अधिक वर्ण"
+        },
+        "ur": {
+            "legacy_caption_pid": 39198,
+            "legacy_language_pid": 26,
+            "text": "کم کیس خط کے اکشرانکیی ان پٹ. 4 یا اس سے زیادہ حروف",
+            "auto_translated": "کم کیس خط کے اکشرانکیی ان پٹ. 4 یا اس سے زیادہ حروف"
+        },
+        "gu": {
+            "legacy_caption_pid": 39199,
+            "legacy_language_pid": 27,
+            "text": "લોઅર કેસ અક્ષરો આલ્ફાન્યુમેરિક ઇનપુટ. 4 અથવા વધુ અક્ષરો",
+            "auto_translated": "લોઅર કેસ અક્ષરો આલ્ફાન્યુમેરિક ઇનપુટ. 4 અથવા વધુ અક્ષરો"
+        },
+        "uk": {
+            "legacy_caption_pid": 39200,
+            "legacy_language_pid": 28,
+            "text": "Буквено-цифровий введення малих літер. 4 або більше символів",
+            "auto_translated": "Буквено-цифровий введення малих літер. 4 або більше символів"
+        },
+        "ml": {
+            "legacy_caption_pid": 39201,
+            "legacy_language_pid": 29,
+            "text": "ലോവർ കേസ് കത്തുകളുടെ അക്കങ്ങളും ഇൻപുട്ട്. 4 അല്ലെങ്കിൽ കൂടുതൽ പ്രതീകങ്ങൾ",
+            "auto_translated": "ലോവർ കേസ് കത്തുകളുടെ അക്കങ്ങളും ഇൻപുട്ട്. 4 അല്ലെങ്കിൽ കൂടുതൽ പ്രതീകങ്ങൾ"
+        },
+        "kn": {
+            "legacy_caption_pid": 39202,
+            "legacy_language_pid": 30,
+            "text": "ಸಣ್ಣ ಅಕ್ಷರಗಳ ಅಕ್ಷರಸಂಖ್ಯಾಯುಕ್ತ ಇನ್ಪುಟ್. 4 ಅಥವಾ ಹೆಚ್ಚು ಪಾತ್ರಗಳು",
+            "auto_translated": "ಸಣ್ಣ ಅಕ್ಷರಗಳ ಅಕ್ಷರಸಂಖ್ಯಾಯುಕ್ತ ಇನ್ಪುಟ್. 4 ಅಥವಾ ಹೆಚ್ಚು ಪಾತ್ರಗಳು"
+        },
+        "su": {
+            "legacy_caption_pid": 39203,
+            "legacy_language_pid": 31,
+            "text": "input alpanumérik tina hurup hal handap. 4 atawa leuwih karakter",
+            "auto_translated": "input alpanumérik tina hurup hal handap. 4 atawa leuwih karakter"
+        },
+        "ku": {
+            "legacy_caption_pid": 39204,
+            "legacy_language_pid": 32,
+            "text": "input alphanumeric ji tîpên doza danaye. 4 yan zêdetir characters",
+            "auto_translated": "input alphanumeric ji tîpên doza danaye. 4 yan zêdetir characters"
+        },
+        "ps": {
+            "legacy_caption_pid": 39205,
+            "legacy_language_pid": 33,
+            "text": "د lower case لیکونه په الفبې وسيله ده. 4 یا زیات خویونه",
+            "auto_translated": "د lower case لیکونه په الفبې وسيله ده. 4 یا زیات خویونه"
+        },
+        "ro": {
+            "legacy_caption_pid": 39206,
+            "legacy_language_pid": 34,
+            "text": "intrare alfanumerică de litere mici. 4 sau mai multe caractere",
+            "auto_translated": "intrare alfanumerică de litere mici. 4 sau mai multe caractere"
+        },
+        "id": {
+            "legacy_caption_pid": 39207,
+            "legacy_language_pid": 35,
+            "text": "masukan alfanumerik dari huruf kecil. 4 atau lebih karakter",
+            "auto_translated": "masukan alfanumerik dari huruf kecil. 4 atau lebih karakter"
+        },
+        "sd": {
+            "legacy_caption_pid": 39208,
+            "legacy_language_pid": 36,
+            "text": "هيٺين ڪيس خط جي alphanumeric پٽ. 4 يا وڌيڪ لفظ",
+            "auto_translated": "هيٺين ڪيس خط جي alphanumeric پٽ. 4 يا وڌيڪ لفظ"
+        },
+        "af": {
+            "legacy_caption_pid": 39209,
+            "legacy_language_pid": 37,
+            "text": "Alfanumeriese insette van kleinletters. 4 of meer karakters",
+            "auto_translated": "Alfanumeriese insette van kleinletters. 4 of meer karakters"
+        },
+        "sw": {
+            "legacy_caption_pid": 39210,
+            "legacy_language_pid": 38,
+            "text": "Alphanumeric mchango wa barua kesi ya chini. wahusika 4 au zaidi",
+            "auto_translated": "Alphanumeric mchango wa barua kesi ya chini. wahusika 4 au zaidi"
+        },
+        "lo": {
+            "legacy_caption_pid": 39211,
+            "legacy_language_pid": 39,
+            "text": "ວັດສະດຸປ້ອນ Alphanumeric ຂອງຕົວອັກສອນກໍລະນີຕ່ໍາ. 4 ຫຼືຫຼາຍກວ່ານັ້ນລັກສະນະ",
+            "auto_translated": "ວັດສະດຸປ້ອນ Alphanumeric ຂອງຕົວອັກສອນກໍລະນີຕ່ໍາ. 4 ຫຼືຫຼາຍກວ່ານັ້ນລັກສະນະ"
+        },
+        "nl": {
+            "legacy_caption_pid": 39212,
+            "legacy_language_pid": 40,
+            "text": "Alfanumerieke invoer van kleine letters. 4 of meer karakters",
+            "auto_translated": "Alfanumerieke invoer van kleine letters. 4 of meer karakters"
+        },
+        "tl": {
+            "legacy_caption_pid": 39213,
+            "legacy_language_pid": 41,
+            "text": "Alphanumeric input ng mas mababang mga titik kaso. 4 o higit pang mga character",
+            "auto_translated": "Alphanumeric input ng mas mababang mga titik kaso. 4 o higit pang mga character"
+        },
+        "ne": {
+            "legacy_caption_pid": 39214,
+            "legacy_language_pid": 42,
+            "text": "कम अक्षरहरू को वर्णसंख्या इनपुट। 4 वा बढी वर्ण",
+            "auto_translated": "कम अक्षरहरू को वर्णसंख्या इनपुट। 4 वा बढी वर्ण"
+        },
+        "hu": {
+            "legacy_caption_pid": 39215,
+            "legacy_language_pid": 43,
+            "text": "Alfanumerikus beviteli kisbetűk. 4 vagy több karakter",
+            "auto_translated": "Alfanumerikus beviteli kisbetűk. 4 vagy több karakter"
+        },
+        "cs": {
+            "legacy_caption_pid": 39216,
+            "legacy_language_pid": 44,
+            "text": "Alfanumerický vstup malých písmen. 4 nebo více znaků",
+            "auto_translated": "Alfanumerický vstup malých písmen. 4 nebo více znaků"
+        },
+        "el": {
+            "legacy_caption_pid": 39217,
+            "legacy_language_pid": 45,
+            "text": "Αλφαριθμητικό εισόδου των πεζών γραμμάτων. 4 ή περισσότερους χαρακτήρες",
+            "auto_translated": "Αλφαριθμητικό εισόδου των πεζών γραμμάτων. 4 ή περισσότερους χαρακτήρες"
+        },
+        "sv": {
+            "legacy_caption_pid": 39218,
+            "legacy_language_pid": 46,
+            "text": "Alfanumerisk inmatning av små bokstäver. 4 eller fler tecken",
+            "auto_translated": "Alfanumerisk inmatning av små bokstäver. 4 eller fler tecken"
+        },
+        "kk": {
+            "legacy_caption_pid": 39219,
+            "legacy_language_pid": 47,
+            "text": "төменгі регистрлерді әріптер əріптік-сандық кіріс. 4 немесе одан да көп таңбадан",
+            "auto_translated": "төменгі регистрлерді әріптер əріптік-сандық кіріс. 4 немесе одан да көп таңбадан"
+        },
+        "fi": {
+            "legacy_caption_pid": 39220,
+            "legacy_language_pid": 48,
+            "text": "Alfanumeerisen syötteen ja pieniä kirjaimia. 4 tai useampia merkkejä",
+            "auto_translated": "Alfanumeerisen syötteen ja pieniä kirjaimia. 4 tai useampia merkkejä"
+        },
+        "da": {
+            "legacy_caption_pid": 39221,
+            "legacy_language_pid": 49,
+            "text": "Alfanumerisk indgang af små bogstaver. 4 eller flere tegn",
+            "auto_translated": "Alfanumerisk indgang af små bogstaver. 4 eller flere tegn"
+        },
+        "he": {
+            "legacy_caption_pid": 39222,
+            "legacy_language_pid": 50,
+            "text": "קלט אלפאנומרי של אותיות קטנות. דמויות 4 או יותר",
+            "auto_translated": "קלט אלפאנומרי של אותיות קטנות. דמויות 4 או יותר"
+        },
+        "no": {
+            "legacy_caption_pid": 39223,
+            "legacy_language_pid": 51,
+            "text": "Alfanumerisk input av små bokstaver. 4 eller flere tegn",
+            "auto_translated": "Alfanumerisk input av små bokstaver. 4 eller flere tegn"
+        }
+    }
+}

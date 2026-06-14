@@ -1,0 +1,321 @@
+{
+    "resource_key": "COMMON_LIB_EMAIL_VERIFY_RESEND_VERIFICATION_KEY",
+    "legacy_resource_pid": 1394,
+    "base_group_key": "grp-010-matsuesoft-lib",
+    "additional_group_keys": [],
+    "key_for_update": "FCpfJqVuDb2YXFVk0CMlvN4SdU9E0GoLqJ9TY9i5f6jv3tnFVerbdH4EmCz2z6BbymQ9FXboVzvUPhEvFo2owjmuXQ3XRnw3uQSI7u5stNOiz0ZGOYbhsd9L6n69lf40",
+    "sort_group": "EMAIL VERIFY",
+    "key_name": "COMMON_LIB_EMAIL_VERIFY_RESEND_VERIFICATION_KEY",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": false,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 5850,
+            "legacy_language_pid": 1,
+            "text": "認証キーを送信する",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 5851,
+            "legacy_language_pid": 2,
+            "text": "Resend verification key.",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 5852,
+            "legacy_language_pid": 3,
+            "text": "认证码发送",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 5853,
+            "legacy_language_pid": 4,
+            "text": "인증 키를 보내기",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 10738,
+            "legacy_language_pid": 5,
+            "text": "Vuelva a enviar la clave de verificación.",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 10739,
+            "legacy_language_pid": 6,
+            "text": "Reenviar a chave de verificação.",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 10740,
+            "legacy_language_pid": 7,
+            "text": "認證碼發送",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 16445,
+            "legacy_language_pid": 8,
+            "text": "Renvoyer la clé de vérification.",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 16446,
+            "legacy_language_pid": 9,
+            "text": "सत्यापन कुंजी फिर से भेजें",
+            "auto_translated": ""
+        },
+        "ar": {
+            "legacy_caption_pid": 31032,
+            "legacy_language_pid": 10,
+            "text": "فإنه ينقل مفتاح المصادقة",
+            "auto_translated": "فإنه ينقل مفتاح المصادقة"
+        },
+        "fa": {
+            "legacy_caption_pid": 31033,
+            "legacy_language_pid": 11,
+            "text": "این انتقال یک کلید احراز هویت",
+            "auto_translated": "این انتقال یک کلید احراز هویت"
+        },
+        "de": {
+            "legacy_caption_pid": 31034,
+            "legacy_language_pid": 12,
+            "text": "Es überträgt einen Authentifizierungs-Schlüssel",
+            "auto_translated": "Es überträgt einen Authentifizierungs-Schlüssel"
+        },
+        "ru": {
+            "legacy_caption_pid": 31035,
+            "legacy_language_pid": 13,
+            "text": "Он передает ключ аутентификации",
+            "auto_translated": "Он передает ключ аутентификации"
+        },
+        "ms": {
+            "legacy_caption_pid": 31036,
+            "legacy_language_pid": 14,
+            "text": "Ia menghantar kunci pengesahan",
+            "auto_translated": "Ia menghantar kunci pengesahan"
+        },
+        "ta": {
+            "legacy_caption_pid": 31037,
+            "legacy_language_pid": 15,
+            "text": "அது ஒரு அங்கீகார முக்கிய கடத்துகிறது",
+            "auto_translated": "அது ஒரு அங்கீகார முக்கிய கடத்துகிறது"
+        },
+        "it": {
+            "legacy_caption_pid": 31038,
+            "legacy_language_pid": 16,
+            "text": "Trasmette una chiave di autenticazione",
+            "auto_translated": "Trasmette una chiave di autenticazione"
+        },
+        "bn": {
+            "legacy_caption_pid": 31039,
+            "legacy_language_pid": 17,
+            "text": "এটি একটি প্রমাণীকরণ কী প্রেরণ",
+            "auto_translated": "এটি একটি প্রমাণীকরণ কী প্রেরণ"
+        },
+        "tr": {
+            "legacy_caption_pid": 31040,
+            "legacy_language_pid": 18,
+            "text": "Bir kimlik doğrulama anahtarı iletir",
+            "auto_translated": "Bir kimlik doğrulama anahtarı iletir"
+        },
+        "vi": {
+            "legacy_caption_pid": 31041,
+            "legacy_language_pid": 19,
+            "text": "Nó truyền tải một phím xác thực",
+            "auto_translated": "Nó truyền tải một phím xác thực"
+        },
+        "pl": {
+            "legacy_caption_pid": 31042,
+            "legacy_language_pid": 20,
+            "text": "Przekazuje klucza uwierzytelniającego",
+            "auto_translated": "Przekazuje klucza uwierzytelniającego"
+        },
+        "jv": {
+            "legacy_caption_pid": 31043,
+            "legacy_language_pid": 21,
+            "text": "Iku ngirim tombol bukti asli",
+            "auto_translated": "Iku ngirim tombol bukti asli"
+        },
+        "pa": {
+            "legacy_caption_pid": 31044,
+            "legacy_language_pid": 22,
+            "text": "ਇਹ ਇੱਕ ਪ੍ਰਮਾਣਿਕਤਾ ਕੁੰਜੀ ਪ੍ਰਸਾਰਤ",
+            "auto_translated": "ਇਹ ਇੱਕ ਪ੍ਰਮਾਣਿਕਤਾ ਕੁੰਜੀ ਪ੍ਰਸਾਰਤ"
+        },
+        "th": {
+            "legacy_caption_pid": 31045,
+            "legacy_language_pid": 23,
+            "text": "มันส่งคีย์รับรองความถูกต้อง",
+            "auto_translated": "มันส่งคีย์รับรองความถูกต้อง"
+        },
+        "te": {
+            "legacy_caption_pid": 42402,
+            "legacy_language_pid": 24,
+            "text": "ఇది ఒక ప్రమాణీకరణ కీ ప్రసారం",
+            "auto_translated": "ఇది ఒక ప్రమాణీకరణ కీ ప్రసారం"
+        },
+        "mr": {
+            "legacy_caption_pid": 42403,
+            "legacy_language_pid": 25,
+            "text": "तो एक प्रमाणीकरण की प्रसारित",
+            "auto_translated": "तो एक प्रमाणीकरण की प्रसारित"
+        },
+        "ur": {
+            "legacy_caption_pid": 42404,
+            "legacy_language_pid": 26,
+            "text": "یہ ایک تصدیق کی چابی کو منتقل",
+            "auto_translated": "یہ ایک تصدیق کی چابی کو منتقل"
+        },
+        "gu": {
+            "legacy_caption_pid": 42405,
+            "legacy_language_pid": 27,
+            "text": "તે એક પ્રમાણીકરણ કી પ્રસારણ",
+            "auto_translated": "તે એક પ્રમાણીકરણ કી પ્રસારણ"
+        },
+        "uk": {
+            "legacy_caption_pid": 42406,
+            "legacy_language_pid": 28,
+            "text": "Він передає ключ аутентифікації",
+            "auto_translated": "Він передає ключ аутентифікації"
+        },
+        "ml": {
+            "legacy_caption_pid": 42407,
+            "legacy_language_pid": 29,
+            "text": "ഇത് ഒരു ആധികാരികത കീ പ്രേഷണം",
+            "auto_translated": "ഇത് ഒരു ആധികാരികത കീ പ്രേഷണം"
+        },
+        "kn": {
+            "legacy_caption_pid": 42408,
+            "legacy_language_pid": 30,
+            "text": "ಇದು ಒಂದು ದೃಢೀಕರಣ ಕೀಲಿ ಪ್ರಸಾರ",
+            "auto_translated": "ಇದು ಒಂದು ದೃಢೀಕರಣ ಕೀಲಿ ಪ್ರಸಾರ"
+        },
+        "su": {
+            "legacy_caption_pid": 42409,
+            "legacy_language_pid": 31,
+            "text": "Ieu transmits hiji konci auténtikasi",
+            "auto_translated": "Ieu transmits hiji konci auténtikasi"
+        },
+        "ku": {
+            "legacy_caption_pid": 42410,
+            "legacy_language_pid": 32,
+            "text": "Ev guwastinewey an key authentication",
+            "auto_translated": "Ev guwastinewey an key authentication"
+        },
+        "ps": {
+            "legacy_caption_pid": 42411,
+            "legacy_language_pid": 33,
+            "text": "دا لېږد سره یو د اعتبار د مهمو",
+            "auto_translated": "دا لېږد سره یو د اعتبار د مهمو"
+        },
+        "ro": {
+            "legacy_caption_pid": 42412,
+            "legacy_language_pid": 34,
+            "text": "Acesta transmite o cheie de autentificare",
+            "auto_translated": "Acesta transmite o cheie de autentificare"
+        },
+        "id": {
+            "legacy_caption_pid": 42413,
+            "legacy_language_pid": 35,
+            "text": "Ini mentransmisikan kunci otentikasi",
+            "auto_translated": "Ini mentransmisikan kunci otentikasi"
+        },
+        "sd": {
+            "legacy_caption_pid": 42414,
+            "legacy_language_pid": 36,
+            "text": "اهو هڪ اصليت اهم transmits",
+            "auto_translated": "اهو هڪ اصليت اهم transmits"
+        },
+        "af": {
+            "legacy_caption_pid": 42415,
+            "legacy_language_pid": 37,
+            "text": "Dit stuur 'n verifikasie sleutel",
+            "auto_translated": "Dit stuur 'n verifikasie sleutel"
+        },
+        "sw": {
+            "legacy_caption_pid": 42416,
+            "legacy_language_pid": 38,
+            "text": "Hupeperusha muhimu uthibitisho",
+            "auto_translated": "Hupeperusha muhimu uthibitisho"
+        },
+        "lo": {
+            "legacy_caption_pid": 42417,
+            "legacy_language_pid": 39,
+            "text": "ຈະສົ່ງເປັນສໍາຄັນການກວດສອບ",
+            "auto_translated": "ຈະສົ່ງເປັນສໍາຄັນການກວດສອບ"
+        },
+        "nl": {
+            "legacy_caption_pid": 42418,
+            "legacy_language_pid": 40,
+            "text": "Het zendt een authenticatiesleutel",
+            "auto_translated": "Het zendt een authenticatiesleutel"
+        },
+        "tl": {
+            "legacy_caption_pid": 42419,
+            "legacy_language_pid": 41,
+            "text": "Ito ay nagpapadala ng authentication key",
+            "auto_translated": "Ito ay nagpapadala ng authentication key"
+        },
+        "ne": {
+            "legacy_caption_pid": 42420,
+            "legacy_language_pid": 42,
+            "text": "यो एक प्रमाणीकरण प्रमुख पहुंचाता",
+            "auto_translated": "यो एक प्रमाणीकरण प्रमुख पहुंचाता"
+        },
+        "hu": {
+            "legacy_caption_pid": 42421,
+            "legacy_language_pid": 43,
+            "text": "Ez továbbít egy hitelesítő kulcsot",
+            "auto_translated": "Ez továbbít egy hitelesítő kulcsot"
+        },
+        "cs": {
+            "legacy_caption_pid": 42422,
+            "legacy_language_pid": 44,
+            "text": "To přenáší ověřovací klíč",
+            "auto_translated": "To přenáší ověřovací klíč"
+        },
+        "el": {
+            "legacy_caption_pid": 42423,
+            "legacy_language_pid": 45,
+            "text": "Μεταδίδει ένα κλειδί ταυτότητας",
+            "auto_translated": "Μεταδίδει ένα κλειδί ταυτότητας"
+        },
+        "sv": {
+            "legacy_caption_pid": 42424,
+            "legacy_language_pid": 46,
+            "text": "Den sänder en autenticeringsnyckel",
+            "auto_translated": "Den sänder en autenticeringsnyckel"
+        },
+        "kk": {
+            "legacy_caption_pid": 42425,
+            "legacy_language_pid": 47,
+            "text": "Бұл аутентификация пернесін тасымалдайды",
+            "auto_translated": "Бұл аутентификация пернесін тасымалдайды"
+        },
+        "fi": {
+            "legacy_caption_pid": 42426,
+            "legacy_language_pid": 48,
+            "text": "Se lähettää autentikointiavain",
+            "auto_translated": "Se lähettää autentikointiavain"
+        },
+        "da": {
+            "legacy_caption_pid": 42427,
+            "legacy_language_pid": 49,
+            "text": "Den sender et godkendelsesnøglen",
+            "auto_translated": "Den sender et godkendelsesnøglen"
+        },
+        "he": {
+            "legacy_caption_pid": 42428,
+            "legacy_language_pid": 50,
+            "text": "הוא משדר מפתח אימות",
+            "auto_translated": "הוא משדר מפתח אימות"
+        },
+        "no": {
+            "legacy_caption_pid": 42429,
+            "legacy_language_pid": 51,
+            "text": "Den sender en autentiseringsnøkkel",
+            "auto_translated": "Den sender en autentiseringsnøkkel"
+        }
+    }
+}

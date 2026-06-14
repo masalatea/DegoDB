@@ -1,0 +1,69 @@
+{
+    "resource_key": "HP_FOOTER_CLOUD_DB",
+    "legacy_resource_pid": 685,
+    "base_group_key": "grp-010-matsuesoft-lib",
+    "additional_group_keys": [],
+    "key_for_update": "q2g9nCUD7soZ0BLxzhpFA5sZ2D1EO51MTmuuFIoyG543oRznEhE8SYbCcspgDuNGBf9XseQHKVzUsuM9OzoQD1OLAeKvs3TxynUdZKrPMA0gLUmK0XCimaHMaLuNBwWO",
+    "sort_group": "HP FOOTER",
+    "key_name": "HP_FOOTER_CLOUD_DB",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": true,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 4554,
+            "legacy_language_pid": 1,
+            "text": "データベース用クラウド管理/開発プラン",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 4555,
+            "legacy_language_pid": 2,
+            "text": "Database Cloud Management and Development Plan",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 13397,
+            "legacy_language_pid": 3,
+            "text": "",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 13398,
+            "legacy_language_pid": 4,
+            "text": "",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 13399,
+            "legacy_language_pid": 5,
+            "text": "Plan de gestión y desarrollo de nube de base de datos",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 13400,
+            "legacy_language_pid": 6,
+            "text": "Plano de Gerenciamento e Desenvolvimento de Nuvem de Banco de Dados",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 13401,
+            "legacy_language_pid": 7,
+            "text": "",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 17081,
+            "legacy_language_pid": 8,
+            "text": "Plan de gestion et de développement de la base de données Cloud",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 17082,
+            "legacy_language_pid": 9,
+            "text": "डेटाबेस क्लाउड प्रबंधन और विकास योजना",
+            "auto_translated": ""
+        }
+    }
+}

@@ -1,0 +1,27 @@
+{
+    "resource_key": "ACTION_DELETE_DBTABLE_COLUMN",
+    "legacy_resource_pid": 212,
+    "base_group_key": "grp-001-developers-matsuesoft-co-jp",
+    "additional_group_keys": [],
+    "key_for_update": "0",
+    "sort_group": "ACTION DBTABLE_COLUMN",
+    "key_name": "ACTION_DELETE_DBTABLE_COLUMN",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": true,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 3730,
+            "legacy_language_pid": 1,
+            "text": "テーブル カラム削除",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 3731,
+            "legacy_language_pid": 2,
+            "text": "Delete Table Field",
+            "auto_translated": ""
+        }
+    }
+}

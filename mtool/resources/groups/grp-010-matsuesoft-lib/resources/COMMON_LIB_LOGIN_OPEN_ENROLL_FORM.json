@@ -1,0 +1,321 @@
+{
+    "resource_key": "COMMON_LIB_LOGIN_OPEN_ENROLL_FORM",
+    "legacy_resource_pid": 1494,
+    "base_group_key": "grp-010-matsuesoft-lib",
+    "additional_group_keys": [],
+    "key_for_update": "FpB3gBJLDqIuAHsZBGrT9RiXGh7HKa7L8rXQgkJxz8IPPib1uAS9sijjtI63Fy3zNtpdoyhHm8eyzVe2CVPmxkTozQWNIZM0YSxiFP2OCbCI96GltV6qY2jl7BmdrGIP",
+    "sort_group": "LOGIN",
+    "key_name": "COMMON_LIB_LOGIN_OPEN_ENROLL_FORM",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": false,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 6250,
+            "legacy_language_pid": 1,
+            "text": "登録フォームを開く",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 6251,
+            "legacy_language_pid": 2,
+            "text": "Open the registration form",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 6252,
+            "legacy_language_pid": 3,
+            "text": "打开所述登记表",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 6253,
+            "legacy_language_pid": 4,
+            "text": "등록 양식을 열기",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 11111,
+            "legacy_language_pid": 5,
+            "text": "Abrir el formulario de inscripción",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 11112,
+            "legacy_language_pid": 6,
+            "text": "Abra o formulário de inscrição",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 11113,
+            "legacy_language_pid": 7,
+            "text": "打開所述登記表",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 17249,
+            "legacy_language_pid": 8,
+            "text": "Ouvrez le formulaire d'inscription",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 17250,
+            "legacy_language_pid": 9,
+            "text": "पंजीकरण फॉर्म खोलें",
+            "auto_translated": ""
+        },
+        "ar": {
+            "legacy_caption_pid": 32756,
+            "legacy_language_pid": 10,
+            "text": "فتح استمارة التسجيل",
+            "auto_translated": "فتح استمارة التسجيل"
+        },
+        "fa": {
+            "legacy_caption_pid": 32757,
+            "legacy_language_pid": 11,
+            "text": "باز کردن فرم ثبت نام",
+            "auto_translated": "باز کردن فرم ثبت نام"
+        },
+        "de": {
+            "legacy_caption_pid": 32758,
+            "legacy_language_pid": 12,
+            "text": "Öffnen Sie das Anmeldeformular",
+            "auto_translated": "Öffnen Sie das Anmeldeformular"
+        },
+        "ru": {
+            "legacy_caption_pid": 32759,
+            "legacy_language_pid": 13,
+            "text": "Открытие формы регистрации",
+            "auto_translated": "Открытие формы регистрации"
+        },
+        "ms": {
+            "legacy_caption_pid": 32760,
+            "legacy_language_pid": 14,
+            "text": "Membuka borang pendaftaran",
+            "auto_translated": "Membuka borang pendaftaran"
+        },
+        "ta": {
+            "legacy_caption_pid": 32761,
+            "legacy_language_pid": 15,
+            "text": "பதிவு வடிவம் திறந்து",
+            "auto_translated": "பதிவு வடிவம் திறந்து"
+        },
+        "it": {
+            "legacy_caption_pid": 32762,
+            "legacy_language_pid": 16,
+            "text": "Apertura del modulo di registrazione",
+            "auto_translated": "Apertura del modulo di registrazione"
+        },
+        "bn": {
+            "legacy_caption_pid": 32763,
+            "legacy_language_pid": 17,
+            "text": "খোলা রেজিস্ট্রেশন ফর্ম",
+            "auto_translated": "খোলা রেজিস্ট্রেশন ফর্ম"
+        },
+        "tr": {
+            "legacy_caption_pid": 32764,
+            "legacy_language_pid": 18,
+            "text": "Kayıt formunu Açılış",
+            "auto_translated": "Kayıt formunu Açılış"
+        },
+        "vi": {
+            "legacy_caption_pid": 32765,
+            "legacy_language_pid": 19,
+            "text": "Khai mạc vào mẫu đăng ký",
+            "auto_translated": "Khai mạc vào mẫu đăng ký"
+        },
+        "pl": {
+            "legacy_caption_pid": 32766,
+            "legacy_language_pid": 20,
+            "text": "Otwarcie formularza rejestracyjnego",
+            "auto_translated": "Otwarcie formularza rejestracyjnego"
+        },
+        "jv": {
+            "legacy_caption_pid": 32767,
+            "legacy_language_pid": 21,
+            "text": "Mbukak wangun",
+            "auto_translated": "Mbukak wangun"
+        },
+        "pa": {
+            "legacy_caption_pid": 32768,
+            "legacy_language_pid": 22,
+            "text": "ਖੋਲ੍ਹਣ ਰਜਿਸਟਰੇਸ਼ਨ ਫਾਰਮ",
+            "auto_translated": "ਖੋਲ੍ਹਣ ਰਜਿਸਟਰੇਸ਼ਨ ਫਾਰਮ"
+        },
+        "th": {
+            "legacy_caption_pid": 32769,
+            "legacy_language_pid": 23,
+            "text": "เปิดแบบฟอร์มลงทะเบียน",
+            "auto_translated": "เปิดแบบฟอร์มลงทะเบียน"
+        },
+        "te": {
+            "legacy_caption_pid": 40148,
+            "legacy_language_pid": 24,
+            "text": "నమోదు రూపం తెరవడం",
+            "auto_translated": "నమోదు రూపం తెరవడం"
+        },
+        "mr": {
+            "legacy_caption_pid": 40149,
+            "legacy_language_pid": 25,
+            "text": "नोंदणी फॉर्म उघडत",
+            "auto_translated": "नोंदणी फॉर्म उघडत"
+        },
+        "ur": {
+            "legacy_caption_pid": 40150,
+            "legacy_language_pid": 26,
+            "text": "رجسٹریشن فارم کھولنے",
+            "auto_translated": "رجسٹریشن فارم کھولنے"
+        },
+        "gu": {
+            "legacy_caption_pid": 40151,
+            "legacy_language_pid": 27,
+            "text": "ખુલવાનો નોંધણી ફોર્મ",
+            "auto_translated": "ખુલવાનો નોંધણી ફોર્મ"
+        },
+        "uk": {
+            "legacy_caption_pid": 40152,
+            "legacy_language_pid": 28,
+            "text": "Відкриття форми реєстрації",
+            "auto_translated": "Відкриття форми реєстрації"
+        },
+        "ml": {
+            "legacy_caption_pid": 40153,
+            "legacy_language_pid": 29,
+            "text": "രജിസ്ട്രേഷൻ ഫോം തുറക്കുന്നു",
+            "auto_translated": "രജിസ്ട്രേഷൻ ഫോം തുറക്കുന്നു"
+        },
+        "kn": {
+            "legacy_caption_pid": 40154,
+            "legacy_language_pid": 30,
+            "text": "ನೋಂದಣಿ ರೂಪ ತೆರೆದ",
+            "auto_translated": "ನೋಂದಣಿ ರೂಪ ತೆರೆದ"
+        },
+        "su": {
+            "legacy_caption_pid": 40155,
+            "legacy_language_pid": 31,
+            "text": "Muka wangun pendaptaran",
+            "auto_translated": "Muka wangun pendaptaran"
+        },
+        "ku": {
+            "legacy_caption_pid": 40156,
+            "legacy_language_pid": 32,
+            "text": "Vekirina forma qeydê",
+            "auto_translated": "Vekirina forma qeydê"
+        },
+        "ps": {
+            "legacy_caption_pid": 40157,
+            "legacy_language_pid": 33,
+            "text": "د ثبت فورمه پرانيستل",
+            "auto_translated": "د ثبت فورمه پرانيستل"
+        },
+        "ro": {
+            "legacy_caption_pid": 40158,
+            "legacy_language_pid": 34,
+            "text": "Deschiderea formularului de înregistrare",
+            "auto_translated": "Deschiderea formularului de înregistrare"
+        },
+        "id": {
+            "legacy_caption_pid": 40159,
+            "legacy_language_pid": 35,
+            "text": "Membuka formulir pendaftaran",
+            "auto_translated": "Membuka formulir pendaftaran"
+        },
+        "sd": {
+            "legacy_caption_pid": 40160,
+            "legacy_language_pid": 36,
+            "text": "کلڻ جو نامزدگي فارم",
+            "auto_translated": "کلڻ جو نامزدگي فارم"
+        },
+        "af": {
+            "legacy_caption_pid": 40161,
+            "legacy_language_pid": 37,
+            "text": "Die opening van die registrasievorm",
+            "auto_translated": "Die opening van die registrasievorm"
+        },
+        "sw": {
+            "legacy_caption_pid": 40162,
+            "legacy_language_pid": 38,
+            "text": "Ufunguzi fomu ya usajili",
+            "auto_translated": "Ufunguzi fomu ya usajili"
+        },
+        "lo": {
+            "legacy_caption_pid": 40163,
+            "legacy_language_pid": 39,
+            "text": "ເປີດຮູບແບບການຈົດທະບຽນໄດ້",
+            "auto_translated": "ເປີດຮູບແບບການຈົດທະບຽນໄດ້"
+        },
+        "nl": {
+            "legacy_caption_pid": 40164,
+            "legacy_language_pid": 40,
+            "text": "Openen van het registratieformulier",
+            "auto_translated": "Openen van het registratieformulier"
+        },
+        "tl": {
+            "legacy_caption_pid": 40165,
+            "legacy_language_pid": 41,
+            "text": "Pagbubukas ng registration form",
+            "auto_translated": "Pagbubukas ng registration form"
+        },
+        "ne": {
+            "legacy_caption_pid": 40166,
+            "legacy_language_pid": 42,
+            "text": "दर्ता फारम खोल्ने",
+            "auto_translated": "दर्ता फारम खोल्ने"
+        },
+        "hu": {
+            "legacy_caption_pid": 40167,
+            "legacy_language_pid": 43,
+            "text": "Nyitva a regisztrációs űrlapot",
+            "auto_translated": "Nyitva a regisztrációs űrlapot"
+        },
+        "cs": {
+            "legacy_caption_pid": 40168,
+            "legacy_language_pid": 44,
+            "text": "Otevření registračního formuláře",
+            "auto_translated": "Otevření registračního formuláře"
+        },
+        "el": {
+            "legacy_caption_pid": 40169,
+            "legacy_language_pid": 45,
+            "text": "Ανοίγοντας τη φόρμα εγγραφής",
+            "auto_translated": "Ανοίγοντας τη φόρμα εγγραφής"
+        },
+        "sv": {
+            "legacy_caption_pid": 40170,
+            "legacy_language_pid": 46,
+            "text": "Öppning i registreringsformuläret",
+            "auto_translated": "Öppning i registreringsformuläret"
+        },
+        "kk": {
+            "legacy_caption_pid": 40171,
+            "legacy_language_pid": 47,
+            "text": "тіркеу формасын ашу",
+            "auto_translated": "тіркеу формасын ашу"
+        },
+        "fi": {
+            "legacy_caption_pid": 40172,
+            "legacy_language_pid": 48,
+            "text": "Avaaminen ilmoittautumislomake",
+            "auto_translated": "Avaaminen ilmoittautumislomake"
+        },
+        "da": {
+            "legacy_caption_pid": 40173,
+            "legacy_language_pid": 49,
+            "text": "Åbning af tilmeldingsblanket",
+            "auto_translated": "Åbning af tilmeldingsblanket"
+        },
+        "he": {
+            "legacy_caption_pid": 40174,
+            "legacy_language_pid": 50,
+            "text": "פתיחת טופס הרישום",
+            "auto_translated": "פתיחת טופס הרישום"
+        },
+        "no": {
+            "legacy_caption_pid": 40175,
+            "legacy_language_pid": 51,
+            "text": "Åpning registreringsskjemaet",
+            "auto_translated": "Åpning registreringsskjemaet"
+        }
+    }
+}

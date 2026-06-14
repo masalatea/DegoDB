@@ -1,0 +1,321 @@
+{
+    "resource_key": "COMMON_LIB_EMAIL_TEST_INFO_AFTER_SENDING_EMAIL_LINE2_NOTE1",
+    "legacy_resource_pid": 1600,
+    "base_group_key": "grp-010-matsuesoft-lib",
+    "additional_group_keys": [],
+    "key_for_update": "NAX7Nb0PKznktfIy19faWiyqcAFXGozAvzC6yAuKgaf2oX02ETheLd43Y4CaWdID1CoSRjOl4FPnyuOmzr8vkb45KksEgRnob0hPRCEYE8m9zVZZdpjaM58Dg1xrEbJq",
+    "sort_group": "EMAIL TEST",
+    "key_name": "COMMON_LIB_EMAIL_TEST_INFO_AFTER_SENDING_EMAIL_LINE2_NOTE1",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": false,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 7182,
+            "legacy_language_pid": 1,
+            "text": "1. メールアドレスが間違っていないか。",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 7183,
+            "legacy_language_pid": 2,
+            "text": "1. Is the e-mail address correct?",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 7184,
+            "legacy_language_pid": 3,
+            "text": "1. 或E-mail地址是没有错的。",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 7185,
+            "legacy_language_pid": 4,
+            "text": "1. 이메일 주소가 정확합니까?",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 10687,
+            "legacy_language_pid": 5,
+            "text": "1. ¿La dirección de correo electrónico es correcta?",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 10688,
+            "legacy_language_pid": 6,
+            "text": "1. O endereço de e-mail está correto?",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 10689,
+            "legacy_language_pid": 7,
+            "text": "1. 或E-mail地址是沒有錯的。",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 16413,
+            "legacy_language_pid": 8,
+            "text": "1. L'adresse e-mail est-elle correcte?",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 16414,
+            "legacy_language_pid": 9,
+            "text": "1. क्या ई-मेल पता सही है?",
+            "auto_translated": ""
+        },
+        "ar": {
+            "legacy_caption_pid": 30766,
+            "legacy_language_pid": 10,
+            "text": "1. أو عنوان البريد الإلكتروني ليست خاطئة.",
+            "auto_translated": "1. أو عنوان البريد الإلكتروني ليست خاطئة."
+        },
+        "fa": {
+            "legacy_caption_pid": 30767,
+            "legacy_language_pid": 11,
+            "text": "1. یا آدرس ایمیل اشتباه نیست.",
+            "auto_translated": "1. یا آدرس ایمیل اشتباه نیست."
+        },
+        "de": {
+            "legacy_caption_pid": 30768,
+            "legacy_language_pid": 12,
+            "text": "1. oder E-Mail-Adresse ist nicht falsch.",
+            "auto_translated": "1. oder E-Mail-Adresse ist nicht falsch."
+        },
+        "ru": {
+            "legacy_caption_pid": 30769,
+            "legacy_language_pid": 13,
+            "text": "1. или адрес электронной почты не является неправильным.",
+            "auto_translated": "1. или адрес электронной почты не является неправильным."
+        },
+        "ms": {
+            "legacy_caption_pid": 30770,
+            "legacy_language_pid": 14,
+            "text": "1. atau alamat e-mel tidak salah.",
+            "auto_translated": "1. atau alamat e-mel tidak salah."
+        },
+        "ta": {
+            "legacy_caption_pid": 30771,
+            "legacy_language_pid": 15,
+            "text": "1. அல்லது இ-மெயில் முகவரி தவறானது அல்ல.",
+            "auto_translated": "1. அல்லது இ-மெயில் முகவரி தவறானது அல்ல."
+        },
+        "it": {
+            "legacy_caption_pid": 30772,
+            "legacy_language_pid": 16,
+            "text": "1. o l'indirizzo e-mail non è sbagliato.",
+            "auto_translated": "1. o l'indirizzo e-mail non è sbagliato."
+        },
+        "bn": {
+            "legacy_caption_pid": 30773,
+            "legacy_language_pid": 17,
+            "text": "1. অথবা ই-মেইল ঠিকানাটি ভুল নয়।",
+            "auto_translated": "1. অথবা ই-মেইল ঠিকানাটি ভুল নয়।"
+        },
+        "tr": {
+            "legacy_caption_pid": 30774,
+            "legacy_language_pid": 18,
+            "text": "1. veya e-posta adresi yanlış değildir.",
+            "auto_translated": "1. veya e-posta adresi yanlış değildir."
+        },
+        "vi": {
+            "legacy_caption_pid": 30775,
+            "legacy_language_pid": 19,
+            "text": "1. hoặc địa chỉ e-mail là không sai.",
+            "auto_translated": "1. hoặc địa chỉ e-mail là không sai."
+        },
+        "pl": {
+            "legacy_caption_pid": 30776,
+            "legacy_language_pid": 20,
+            "text": "1. lub adres e-mail nie jest źle.",
+            "auto_translated": "1. lub adres e-mail nie jest źle."
+        },
+        "jv": {
+            "legacy_caption_pid": 30777,
+            "legacy_language_pid": 21,
+            "text": "1. utawa alamat e-mail iki ora salah.",
+            "auto_translated": "1. utawa alamat e-mail iki ora salah."
+        },
+        "pa": {
+            "legacy_caption_pid": 30778,
+            "legacy_language_pid": 22,
+            "text": "1. ਜ ਈ-ਮੇਲ ਪਤਾ ਵੀ ਗਲਤ ਨਹੀ ਹੈ.",
+            "auto_translated": "1. ਜ ਈ-ਮੇਲ ਪਤਾ ਵੀ ਗਲਤ ਨਹੀ ਹੈ."
+        },
+        "th": {
+            "legacy_caption_pid": 30779,
+            "legacy_language_pid": 23,
+            "text": "1. E-mail address เป็นทั้งไม่ผิด",
+            "auto_translated": "1. E-mail address เป็นทั้งไม่ผิด"
+        },
+        "te": {
+            "legacy_caption_pid": 42850,
+            "legacy_language_pid": 24,
+            "text": "1. లేదా ఇ-మెయిల్ చిరునామా తప్పు కాదు.",
+            "auto_translated": "1. లేదా ఇ-మెయిల్ చిరునామా తప్పు కాదు."
+        },
+        "mr": {
+            "legacy_caption_pid": 42851,
+            "legacy_language_pid": 25,
+            "text": "1. किंवा ई-मेल पत्ता चुकीचा नाही.",
+            "auto_translated": "1. किंवा ई-मेल पत्ता चुकीचा नाही."
+        },
+        "ur": {
+            "legacy_caption_pid": 42852,
+            "legacy_language_pid": 26,
+            "text": "1. یا ای میل پتہ غلط نہیں ہے.",
+            "auto_translated": "1. یا ای میل پتہ غلط نہیں ہے."
+        },
+        "gu": {
+            "legacy_caption_pid": 42853,
+            "legacy_language_pid": 27,
+            "text": "1. અથવા ઇ-મેઇલ સરનામું ખોટું નથી.",
+            "auto_translated": "1. અથવા ઇ-મેઇલ સરનામું ખોટું નથી."
+        },
+        "uk": {
+            "legacy_caption_pid": 42854,
+            "legacy_language_pid": 28,
+            "text": "1. або адресу електронної пошти не є неправильним.",
+            "auto_translated": "1. або адресу електронної пошти не є неправильним."
+        },
+        "ml": {
+            "legacy_caption_pid": 42855,
+            "legacy_language_pid": 29,
+            "text": "1. ഇ-മെയിൽ വിലാസം തെറ്റായ ഒരു കാര്യമല്ല.",
+            "auto_translated": "1. ഇ-മെയിൽ വിലാസം തെറ്റായ ഒരു കാര്യമല്ല."
+        },
+        "kn": {
+            "legacy_caption_pid": 42856,
+            "legacy_language_pid": 30,
+            "text": "1. ಅಥವಾ ಇಮೇಲ್ ವಿಳಾಸಕ್ಕೆ ತಪ್ಪು ಅಲ್ಲ.",
+            "auto_translated": "1. ಅಥವಾ ಇಮೇಲ್ ವಿಳಾಸಕ್ಕೆ ತಪ್ಪು ಅಲ್ಲ."
+        },
+        "su": {
+            "legacy_caption_pid": 42857,
+            "legacy_language_pid": 31,
+            "text": "1. atawa alamat e-mail teu salah.",
+            "auto_translated": "1. atawa alamat e-mail teu salah."
+        },
+        "ku": {
+            "legacy_caption_pid": 42858,
+            "legacy_language_pid": 32,
+            "text": "1. yan navnîşana e-mail e neheqî ne.",
+            "auto_translated": "1. yan navnîşana e-mail e neheqî ne."
+        },
+        "ps": {
+            "legacy_caption_pid": 42859,
+            "legacy_language_pid": 33,
+            "text": "1. يا برېښليک پته غلط نه ده.",
+            "auto_translated": "1. يا برېښليک پته غلط نه ده."
+        },
+        "ro": {
+            "legacy_caption_pid": 42860,
+            "legacy_language_pid": 34,
+            "text": "1. sau adresa de e-mail nu este greșit.",
+            "auto_translated": "1. sau adresa de e-mail nu este greșit."
+        },
+        "id": {
+            "legacy_caption_pid": 42861,
+            "legacy_language_pid": 35,
+            "text": "1. atau alamat e-mail tidak salah.",
+            "auto_translated": "1. atau alamat e-mail tidak salah."
+        },
+        "sd": {
+            "legacy_caption_pid": 42862,
+            "legacy_language_pid": 36,
+            "text": "1. يا اي-ميل ايڊريس غلط نه آهي.",
+            "auto_translated": "1. يا اي-ميل ايڊريس غلط نه آهي."
+        },
+        "af": {
+            "legacy_caption_pid": 42863,
+            "legacy_language_pid": 37,
+            "text": "1. of e-pos adres is nie verkeerd nie.",
+            "auto_translated": "1. of e-pos adres is nie verkeerd nie."
+        },
+        "sw": {
+            "legacy_caption_pid": 42864,
+            "legacy_language_pid": 38,
+            "text": "1. au barua pepe si sahihi.",
+            "auto_translated": "1. au barua pepe si sahihi."
+        },
+        "lo": {
+            "legacy_caption_pid": 42865,
+            "legacy_language_pid": 39,
+            "text": "1. ຫຼືທີ່ຢູ່ອີເມລບໍ່ແມ່ນຜິດພາດ.",
+            "auto_translated": "1. ຫຼືທີ່ຢູ່ອີເມລບໍ່ແມ່ນຜິດພາດ."
+        },
+        "nl": {
+            "legacy_caption_pid": 42866,
+            "legacy_language_pid": 40,
+            "text": "1. of e-mail adres is niet verkeerd.",
+            "auto_translated": "1. of e-mail adres is niet verkeerd."
+        },
+        "tl": {
+            "legacy_caption_pid": 42867,
+            "legacy_language_pid": 41,
+            "text": "1. o e-mail address ay hindi mali.",
+            "auto_translated": "1. o e-mail address ay hindi mali."
+        },
+        "ne": {
+            "legacy_caption_pid": 42868,
+            "legacy_language_pid": 42,
+            "text": "1 वा ई-मेल ठेगाना गलत छैन।",
+            "auto_translated": "1 वा ई-मेल ठेगाना गलत छैन।"
+        },
+        "hu": {
+            "legacy_caption_pid": 42869,
+            "legacy_language_pid": 43,
+            "text": "1. vagy e-mail cím nem rossz.",
+            "auto_translated": "1. vagy e-mail cím nem rossz."
+        },
+        "cs": {
+            "legacy_caption_pid": 42870,
+            "legacy_language_pid": 44,
+            "text": "1. nebo e-mailová adresa není špatné.",
+            "auto_translated": "1. nebo e-mailová adresa není špatné."
+        },
+        "el": {
+            "legacy_caption_pid": 42871,
+            "legacy_language_pid": 45,
+            "text": "1. ή τη διεύθυνση e-mail δεν είναι λάθος.",
+            "auto_translated": "1. ή τη διεύθυνση e-mail δεν είναι λάθος."
+        },
+        "sv": {
+            "legacy_caption_pid": 42872,
+            "legacy_language_pid": 46,
+            "text": "1. eller e-postadressen är inte fel.",
+            "auto_translated": "1. eller e-postadressen är inte fel."
+        },
+        "kk": {
+            "legacy_caption_pid": 42873,
+            "legacy_language_pid": 47,
+            "text": "1. немесе электрондық пошта мекен-жайы дұрыс емес.",
+            "auto_translated": "1. немесе электрондық пошта мекен-жайы дұрыс емес."
+        },
+        "fi": {
+            "legacy_caption_pid": 42874,
+            "legacy_language_pid": 48,
+            "text": "1. tai sähköpostiosoite ei ole väärin.",
+            "auto_translated": "1. tai sähköpostiosoite ei ole väärin."
+        },
+        "da": {
+            "legacy_caption_pid": 42875,
+            "legacy_language_pid": 49,
+            "text": "1. eller e-mail-adressen er ikke forkert.",
+            "auto_translated": "1. eller e-mail-adressen er ikke forkert."
+        },
+        "he": {
+            "legacy_caption_pid": 42876,
+            "legacy_language_pid": 50,
+            "text": "1. או כתובת דואר אלקטרוני אינה טועה.",
+            "auto_translated": "1. או כתובת דואר אלקטרוני אינה טועה."
+        },
+        "no": {
+            "legacy_caption_pid": 42877,
+            "legacy_language_pid": 51,
+            "text": "1. eller e-post adressen er ikke galt.",
+            "auto_translated": "1. eller e-post adressen er ikke galt."
+        }
+    }
+}

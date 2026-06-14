@@ -1,0 +1,321 @@
+{
+    "resource_key": "EMAIL_COMMON_SEND_TEST_LINE1",
+    "legacy_resource_pid": 2578,
+    "base_group_key": "grp-005-common-lib",
+    "additional_group_keys": [],
+    "key_for_update": "HRkVBwn7RBzjbkdJUrvGEj0yyy5iK4fZhxhfenRkh2Gp3n5n6tSKBfyoI0tiidsiCq85rnCnx8HV7vygEZtR4SbHFSCaSZWmulERsu24rUoCoEQ04SYeGq42rbizbRYQ",
+    "sort_group": "EMAIL SEND TEST",
+    "key_name": "EMAIL_COMMON_SEND_TEST_LINE1",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": false,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 19439,
+            "legacy_language_pid": 1,
+            "text": "こちら、テストメールとなります。",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 19440,
+            "legacy_language_pid": 2,
+            "text": "This will be a test mail.",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 19441,
+            "legacy_language_pid": 3,
+            "text": "这将是一个测试邮件",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 19442,
+            "legacy_language_pid": 4,
+            "text": "여기 테스트 메일이됩니다.",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 19443,
+            "legacy_language_pid": 5,
+            "text": "Este será un correo de prueba.",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 19444,
+            "legacy_language_pid": 6,
+            "text": "Este será um correio de teste.",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 19445,
+            "legacy_language_pid": 7,
+            "text": "這將是一個測試郵件",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 19446,
+            "legacy_language_pid": 8,
+            "text": "Ce sera un mail de test.",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 19447,
+            "legacy_language_pid": 9,
+            "text": "यह एक परीक्षण मेल होगा।",
+            "auto_translated": ""
+        },
+        "ar": {
+            "legacy_caption_pid": 29590,
+            "legacy_language_pid": 10,
+            "text": "هنا، سيكون البريد الاختبار.",
+            "auto_translated": "هنا، سيكون البريد الاختبار."
+        },
+        "fa": {
+            "legacy_caption_pid": 29591,
+            "legacy_language_pid": 11,
+            "text": "در اینجا، از آن خواهد شد را اعلام آزمون.",
+            "auto_translated": "در اینجا، از آن خواهد شد را اعلام آزمون."
+        },
+        "de": {
+            "legacy_caption_pid": 29592,
+            "legacy_language_pid": 12,
+            "text": "Hier wird es die Test-Mail sein.",
+            "auto_translated": "Hier wird es die Test-Mail sein."
+        },
+        "ru": {
+            "legacy_caption_pid": 29593,
+            "legacy_language_pid": 13,
+            "text": "Здесь будет тест почты.",
+            "auto_translated": "Здесь будет тест почты."
+        },
+        "ms": {
+            "legacy_caption_pid": 29594,
+            "legacy_language_pid": 14,
+            "text": "Di sini, ia akan menjadi mail ujian.",
+            "auto_translated": "Di sini, ia akan menjadi mail ujian."
+        },
+        "ta": {
+            "legacy_caption_pid": 29595,
+            "legacy_language_pid": 15,
+            "text": "இங்கே, அது சோதனை மெயில் இருக்கும்.",
+            "auto_translated": "இங்கே, அது சோதனை மெயில் இருக்கும்."
+        },
+        "it": {
+            "legacy_caption_pid": 29596,
+            "legacy_language_pid": 16,
+            "text": "Qui, sarà il messaggio di prova.",
+            "auto_translated": "Qui, sarà il messaggio di prova."
+        },
+        "bn": {
+            "legacy_caption_pid": 29597,
+            "legacy_language_pid": 17,
+            "text": "এখানে, এটা পরীক্ষা মেইল ​​হবে।",
+            "auto_translated": "এখানে, এটা পরীক্ষা মেইল ​​হবে।"
+        },
+        "tr": {
+            "legacy_caption_pid": 29598,
+            "legacy_language_pid": 18,
+            "text": "Burada, test posta olacaktır.",
+            "auto_translated": "Burada, test posta olacaktır."
+        },
+        "vi": {
+            "legacy_caption_pid": 29599,
+            "legacy_language_pid": 19,
+            "text": "Ở đây, nó sẽ được thư kiểm tra.",
+            "auto_translated": "Ở đây, nó sẽ được thư kiểm tra."
+        },
+        "pl": {
+            "legacy_caption_pid": 29600,
+            "legacy_language_pid": 20,
+            "text": "Tutaj będzie to poczta testu.",
+            "auto_translated": "Tutaj będzie to poczta testu."
+        },
+        "jv": {
+            "legacy_caption_pid": 29601,
+            "legacy_language_pid": 21,
+            "text": "Kene, iku bakal dadi mail test.",
+            "auto_translated": "Kene, iku bakal dadi mail test."
+        },
+        "pa": {
+            "legacy_caption_pid": 29602,
+            "legacy_language_pid": 22,
+            "text": "ਇੱਥੇ, ਇਸ ਨੂੰ ਟੈਸਟ ਮੇਲ ਹੋ ਜਾਵੇਗਾ.",
+            "auto_translated": "ਇੱਥੇ, ਇਸ ਨੂੰ ਟੈਸਟ ਮੇਲ ਹੋ ਜਾਵੇਗਾ."
+        },
+        "th": {
+            "legacy_caption_pid": 29603,
+            "legacy_language_pid": 23,
+            "text": "นี่ก็จะเป็นอีเมลทดสอบ",
+            "auto_translated": "นี่ก็จะเป็นอีเมลทดสอบ"
+        },
+        "te": {
+            "legacy_caption_pid": 37264,
+            "legacy_language_pid": 24,
+            "text": "ఇక్కడ, అది పరీక్ష మెయిల్ ఉంటుంది.",
+            "auto_translated": "ఇక్కడ, అది పరీక్ష మెయిల్ ఉంటుంది."
+        },
+        "mr": {
+            "legacy_caption_pid": 37265,
+            "legacy_language_pid": 25,
+            "text": "येथे, तो चाचणी मेल होईल.",
+            "auto_translated": "येथे, तो चाचणी मेल होईल."
+        },
+        "ur": {
+            "legacy_caption_pid": 37266,
+            "legacy_language_pid": 26,
+            "text": "یہاں، یہ ٹیسٹ میل ہو جائے گا.",
+            "auto_translated": "یہاں، یہ ٹیسٹ میل ہو جائے گا."
+        },
+        "gu": {
+            "legacy_caption_pid": 37267,
+            "legacy_language_pid": 27,
+            "text": "અહીં, તે પરીક્ષણ મેલ હશે.",
+            "auto_translated": "અહીં, તે પરીક્ષણ મેલ હશે."
+        },
+        "uk": {
+            "legacy_caption_pid": 37268,
+            "legacy_language_pid": 28,
+            "text": "Тут буде тест пошти.",
+            "auto_translated": "Тут буде тест пошти."
+        },
+        "ml": {
+            "legacy_caption_pid": 37269,
+            "legacy_language_pid": 29,
+            "text": "ഇവിടെ, അത് ടെസ്റ്റ് മെയിൽ ആയിരിക്കും.",
+            "auto_translated": "ഇവിടെ, അത് ടെസ്റ്റ് മെയിൽ ആയിരിക്കും."
+        },
+        "kn": {
+            "legacy_caption_pid": 37270,
+            "legacy_language_pid": 30,
+            "text": "ಇಲ್ಲಿ, ಇದು ಮೇಲ್ ಇರುತ್ತದೆ.",
+            "auto_translated": "ಇಲ್ಲಿ, ಇದು ಮೇಲ್ ಇರುತ್ತದೆ."
+        },
+        "su": {
+            "legacy_caption_pid": 37271,
+            "legacy_language_pid": 31,
+            "text": "Di dieu, eta bakal di mail test.",
+            "auto_translated": "Di dieu, eta bakal di mail test."
+        },
+        "ku": {
+            "legacy_caption_pid": 37272,
+            "legacy_language_pid": 32,
+            "text": "Li vir, ev dê bibe mail ji îmtîhana.",
+            "auto_translated": "Li vir, ev dê bibe mail ji îmtîhana."
+        },
+        "ps": {
+            "legacy_caption_pid": 37273,
+            "legacy_language_pid": 33,
+            "text": "دلته، چې دا به د امتحان پست وي.",
+            "auto_translated": "دلته، چې دا به د امتحان پست وي."
+        },
+        "ro": {
+            "legacy_caption_pid": 37274,
+            "legacy_language_pid": 34,
+            "text": "Aici, acesta va fi e-mail de test.",
+            "auto_translated": "Aici, acesta va fi e-mail de test."
+        },
+        "id": {
+            "legacy_caption_pid": 37275,
+            "legacy_language_pid": 35,
+            "text": "Di sini, itu akan menjadi email tes.",
+            "auto_translated": "Di sini, itu akan menjadi email tes."
+        },
+        "sd": {
+            "legacy_caption_pid": 37276,
+            "legacy_language_pid": 36,
+            "text": "هتي، ان جو امتحان ميل ٿيندو.",
+            "auto_translated": "هتي، ان جو امتحان ميل ٿيندو."
+        },
+        "af": {
+            "legacy_caption_pid": 37277,
+            "legacy_language_pid": 37,
+            "text": "Hier, sal dit die toets pos wees.",
+            "auto_translated": "Hier, sal dit die toets pos wees."
+        },
+        "sw": {
+            "legacy_caption_pid": 37278,
+            "legacy_language_pid": 38,
+            "text": "Hapa, itakuwa mtihani pepe.",
+            "auto_translated": "Hapa, itakuwa mtihani pepe."
+        },
+        "lo": {
+            "legacy_caption_pid": 37279,
+            "legacy_language_pid": 39,
+            "text": "ທີ່ນີ້, ມັນຈະເປັນ mail ທົດສອບ.",
+            "auto_translated": "ທີ່ນີ້, ມັນຈະເປັນ mail ທົດສອບ."
+        },
+        "nl": {
+            "legacy_caption_pid": 37280,
+            "legacy_language_pid": 40,
+            "text": "Hier zal het de test e-mail zijn.",
+            "auto_translated": "Hier zal het de test e-mail zijn."
+        },
+        "tl": {
+            "legacy_caption_pid": 37281,
+            "legacy_language_pid": 41,
+            "text": "Narito, ito ay ang mga pagsubok mail.",
+            "auto_translated": "Narito, ito ay ang mga pagsubok mail."
+        },
+        "ne": {
+            "legacy_caption_pid": 37282,
+            "legacy_language_pid": 42,
+            "text": "यहाँ, यो परीक्षण मेल हुनेछ।",
+            "auto_translated": "यहाँ, यो परीक्षण मेल हुनेछ।"
+        },
+        "hu": {
+            "legacy_caption_pid": 37283,
+            "legacy_language_pid": 43,
+            "text": "Itt, ez lesz a teszt-mail.",
+            "auto_translated": "Itt, ez lesz a teszt-mail."
+        },
+        "cs": {
+            "legacy_caption_pid": 37284,
+            "legacy_language_pid": 44,
+            "text": "Tady to bude test pošty.",
+            "auto_translated": "Tady to bude test pošty."
+        },
+        "el": {
+            "legacy_caption_pid": 37285,
+            "legacy_language_pid": 45,
+            "text": "Εδώ, θα είναι η δοκιμή ταχυδρομείου.",
+            "auto_translated": "Εδώ, θα είναι η δοκιμή ταχυδρομείου."
+        },
+        "sv": {
+            "legacy_caption_pid": 37286,
+            "legacy_language_pid": 46,
+            "text": "Här kommer det att vara test post.",
+            "auto_translated": "Här kommer det att vara test post."
+        },
+        "kk": {
+            "legacy_caption_pid": 37287,
+            "legacy_language_pid": 47,
+            "text": "Мұнда, ол сынақ пошта болады.",
+            "auto_translated": "Мұнда, ол сынақ пошта болады."
+        },
+        "fi": {
+            "legacy_caption_pid": 37288,
+            "legacy_language_pid": 48,
+            "text": "Täällä se on testi postitse.",
+            "auto_translated": "Täällä se on testi postitse."
+        },
+        "da": {
+            "legacy_caption_pid": 37289,
+            "legacy_language_pid": 49,
+            "text": "Her vil det være testen mail.",
+            "auto_translated": "Her vil det være testen mail."
+        },
+        "he": {
+            "legacy_caption_pid": 37290,
+            "legacy_language_pid": 50,
+            "text": "הנה, זה יהיה בדואר המבחן.",
+            "auto_translated": "הנה, זה יהיה בדואר המבחן."
+        },
+        "no": {
+            "legacy_caption_pid": 37291,
+            "legacy_language_pid": 51,
+            "text": "Her vil det være testpost.",
+            "auto_translated": "Her vil det være testpost."
+        }
+    }
+}

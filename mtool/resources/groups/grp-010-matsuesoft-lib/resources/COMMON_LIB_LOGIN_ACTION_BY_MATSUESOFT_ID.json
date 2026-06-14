@@ -1,0 +1,321 @@
+{
+    "resource_key": "COMMON_LIB_LOGIN_ACTION_BY_MATSUESOFT_ID",
+    "legacy_resource_pid": 1474,
+    "base_group_key": "grp-010-matsuesoft-lib",
+    "additional_group_keys": [],
+    "key_for_update": "hABZZxhgCHFbVdN0WBAAd8debCXrBn9Fq02vgfTG59ilB617Y2ODrYSzdx4m4OM5jO3bPqH55rAg5DMVnbOougeZik8EIBjKhMLJdLMFMQELbLXOC5a83JVlGa1Rc8D3",
+    "sort_group": "LOGIN",
+    "key_name": "COMMON_LIB_LOGIN_ACTION_BY_MATSUESOFT_ID",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": false,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 6170,
+            "legacy_language_pid": 1,
+            "text": "当サイトのユーザ名(ID)でログイン",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 6171,
+            "legacy_language_pid": 2,
+            "text": "Login with this Site's User Name (ID)",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 6172,
+            "legacy_language_pid": 3,
+            "text": "登录这个网站用户名ID",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 6173,
+            "legacy_language_pid": 4,
+            "text": "사이트 아이디로 로그인",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 11024,
+            "legacy_language_pid": 5,
+            "text": "Inicie sesión con este ID de sitio ",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 11025,
+            "legacy_language_pid": 6,
+            "text": "Entre com este ID do site",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 11026,
+            "legacy_language_pid": 7,
+            "text": "登錄這個網站用户名ID",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 16039,
+            "legacy_language_pid": 8,
+            "text": "Connectez-vous avec le nom d'utilisateur (ID) de ce site",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 16040,
+            "legacy_language_pid": 9,
+            "text": "इस साइट के यूज़र नेम (आईडी) के साथ लॉगिन करें",
+            "auto_translated": ""
+        },
+        "ar": {
+            "legacy_caption_pid": 32334,
+            "legacy_language_pid": 10,
+            "text": "تسجيل الدخول باستخدام اسم المستخدم للموقع (ID)",
+            "auto_translated": "تسجيل الدخول باستخدام اسم المستخدم للموقع (ID)"
+        },
+        "fa": {
+            "legacy_caption_pid": 32335,
+            "legacy_language_pid": 11,
+            "text": "ورود به سیستم با نام کاربری از سایت (ID)",
+            "auto_translated": "ورود به سیستم با نام کاربری از سایت (ID)"
+        },
+        "de": {
+            "legacy_caption_pid": 32336,
+            "legacy_language_pid": 12,
+            "text": "Melden Sie sich mit dem Benutzername der Website (ID)",
+            "auto_translated": "Melden Sie sich mit dem Benutzername der Website (ID)"
+        },
+        "ru": {
+            "legacy_caption_pid": 32337,
+            "legacy_language_pid": 13,
+            "text": "Войти с именем пользователя сайта (ID)",
+            "auto_translated": "Войти с именем пользователя сайта (ID)"
+        },
+        "ms": {
+            "legacy_caption_pid": 32338,
+            "legacy_language_pid": 14,
+            "text": "Log masuk dengan nama pengguna tapak (ID)",
+            "auto_translated": "Log masuk dengan nama pengguna tapak (ID)"
+        },
+        "ta": {
+            "legacy_caption_pid": 32339,
+            "legacy_language_pid": 15,
+            "text": "தளத்தின் பயனர் பெயர் (ஐடி) மூலம் உள்நுழையவும்",
+            "auto_translated": "தளத்தின் பயனர் பெயர் (ஐடி) மூலம் உள்நுழையவும்"
+        },
+        "it": {
+            "legacy_caption_pid": 32340,
+            "legacy_language_pid": 16,
+            "text": "Accedi con il nome utente del sito (ID)",
+            "auto_translated": "Accedi con il nome utente del sito (ID)"
+        },
+        "bn": {
+            "legacy_caption_pid": 32341,
+            "legacy_language_pid": 17,
+            "text": "সাইটের ব্যবহারকারী নাম (আইডি) দিয়ে লগ ইন করুন",
+            "auto_translated": "সাইটের ব্যবহারকারী নাম (আইডি) দিয়ে লগ ইন করুন"
+        },
+        "tr": {
+            "legacy_caption_pid": 32342,
+            "legacy_language_pid": 18,
+            "text": "Sitenin kullanıcı adı (ID) ile giriş yapın",
+            "auto_translated": "Sitenin kullanıcı adı (ID) ile giriş yapın"
+        },
+        "vi": {
+            "legacy_caption_pid": 32343,
+            "legacy_language_pid": 19,
+            "text": "Đăng nhập với tên người dùng của trang web (ID)",
+            "auto_translated": "Đăng nhập với tên người dùng của trang web (ID)"
+        },
+        "pl": {
+            "legacy_caption_pid": 32344,
+            "legacy_language_pid": 20,
+            "text": "Zaloguj się przy użyciu nazwy użytkownika serwisu (ID)",
+            "auto_translated": "Zaloguj się przy użyciu nazwy użytkownika serwisu (ID)"
+        },
+        "jv": {
+            "legacy_caption_pid": 32345,
+            "legacy_language_pid": 21,
+            "text": "Mlebu karo jeneng panganggo saka situs (ID)",
+            "auto_translated": "Mlebu karo jeneng panganggo saka situs (ID)"
+        },
+        "pa": {
+            "legacy_caption_pid": 32346,
+            "legacy_language_pid": 22,
+            "text": "ਸਾਈਟ ਦੀ ਯੂਜ਼ਰ ਨੂੰ ਨਾਮ ਹੈ (ID) ਨਾਲ ਲਾਗਇਨ",
+            "auto_translated": "ਸਾਈਟ ਦੀ ਯੂਜ਼ਰ ਨੂੰ ਨਾਮ ਹੈ (ID) ਨਾਲ ਲਾਗਇਨ"
+        },
+        "th": {
+            "legacy_caption_pid": 32347,
+            "legacy_language_pid": 23,
+            "text": "เข้าสู่ระบบด้วยชื่อผู้ใช้ของเว็บไซต์ (ID)",
+            "auto_translated": "เข้าสู่ระบบด้วยชื่อผู้ใช้ของเว็บไซต์ (ID)"
+        },
+        "te": {
+            "legacy_caption_pid": 40960,
+            "legacy_language_pid": 24,
+            "text": "సైట్ యొక్క వినియోగదారు పేరు (ID) తో లాగిన్",
+            "auto_translated": "సైట్ యొక్క వినియోగదారు పేరు (ID) తో లాగిన్"
+        },
+        "mr": {
+            "legacy_caption_pid": 40961,
+            "legacy_language_pid": 25,
+            "text": "साइट वापरकर्ता नाव (ID) लॉग इन करा",
+            "auto_translated": "साइट वापरकर्ता नाव (ID) लॉग इन करा"
+        },
+        "ur": {
+            "legacy_caption_pid": 40962,
+            "legacy_language_pid": 26,
+            "text": "سائٹ کا صارف کا نام (ID) کے ساتھ لاگ ان کریں",
+            "auto_translated": "سائٹ کا صارف کا نام (ID) کے ساتھ لاگ ان کریں"
+        },
+        "gu": {
+            "legacy_caption_pid": 40963,
+            "legacy_language_pid": 27,
+            "text": "સાઇટ વપરાશકર્તા નામ (આઇડી) સાથે લૉગ ઇન",
+            "auto_translated": "સાઇટ વપરાશકર્તા નામ (આઇડી) સાથે લૉગ ઇન"
+        },
+        "uk": {
+            "legacy_caption_pid": 40964,
+            "legacy_language_pid": 28,
+            "text": "Увійти з ім'ям користувача сайту (ID)",
+            "auto_translated": "Увійти з ім'ям користувача сайту (ID)"
+        },
+        "ml": {
+            "legacy_caption_pid": 40965,
+            "legacy_language_pid": 29,
+            "text": "സൈറ്റിന്റെ ഉപയോക്തൃ നാമം (ഐഡി) ഉപയോഗിച്ച് പ്രവേശിക്കുക",
+            "auto_translated": "സൈറ്റിന്റെ ഉപയോക്തൃ നാമം (ഐഡി) ഉപയോഗിച്ച് പ്രവേശിക്കുക"
+        },
+        "kn": {
+            "legacy_caption_pid": 40966,
+            "legacy_language_pid": 30,
+            "text": "ಸೈಟ್ನ ಬಳಕೆದಾರ ಹೆಸರು (ID) ಲಾಗ್",
+            "auto_translated": "ಸೈಟ್ನ ಬಳಕೆದಾರ ಹೆಸರು (ID) ಲಾಗ್"
+        },
+        "su": {
+            "legacy_caption_pid": 40967,
+            "legacy_language_pid": 31,
+            "text": "Asup jeung ngaran pamaké loka (ID)",
+            "auto_translated": "Asup jeung ngaran pamaké loka (ID)"
+        },
+        "ku": {
+            "legacy_caption_pid": 40968,
+            "legacy_language_pid": 32,
+            "text": "Log in bi navê user di malperê de (ID)",
+            "auto_translated": "Log in bi navê user di malperê de (ID)"
+        },
+        "ps": {
+            "legacy_caption_pid": 40969,
+            "legacy_language_pid": 33,
+            "text": "په څېره سره د ځای د کارن نوم (تذکرو)",
+            "auto_translated": "په څېره سره د ځای د کارن نوم (تذکرو)"
+        },
+        "ro": {
+            "legacy_caption_pid": 40970,
+            "legacy_language_pid": 34,
+            "text": "Autentificare cu numele de utilizator al site-ului (ID)",
+            "auto_translated": "Autentificare cu numele de utilizator al site-ului (ID)"
+        },
+        "id": {
+            "legacy_caption_pid": 40971,
+            "legacy_language_pid": 35,
+            "text": "Masuk dengan nama pengguna situs (ID)",
+            "auto_translated": "Masuk dengan nama pengguna situs (ID)"
+        },
+        "sd": {
+            "legacy_caption_pid": 40972,
+            "legacy_language_pid": 36,
+            "text": "سائيٽ جي استعمال ڪندڙ جو نالو (سڃاڻپ) سان جو لاگ ان",
+            "auto_translated": "سائيٽ جي استعمال ڪندڙ جو نالو (سڃاڻپ) سان جو لاگ ان"
+        },
+        "af": {
+            "legacy_caption_pid": 40973,
+            "legacy_language_pid": 37,
+            "text": "Teken in met die gebruiker naam van die webwerf (ID)",
+            "auto_translated": "Teken in met die gebruiker naam van die webwerf (ID)"
+        },
+        "sw": {
+            "legacy_caption_pid": 40974,
+            "legacy_language_pid": 38,
+            "text": "Ingia kwa jina la mtumiaji wa tovuti (ID)",
+            "auto_translated": "Ingia kwa jina la mtumiaji wa tovuti (ID)"
+        },
+        "lo": {
+            "legacy_caption_pid": 40975,
+            "legacy_language_pid": 39,
+            "text": "ເຂົ້າສູ່ລະບົບທີ່ມີຊື່ຜູ້ໃຊ້ຂອງເວັບໄຊດັ່ງກ່າວ (ID)",
+            "auto_translated": "ເຂົ້າສູ່ລະບົບທີ່ມີຊື່ຜູ້ໃຊ້ຂອງເວັບໄຊດັ່ງກ່າວ (ID)"
+        },
+        "nl": {
+            "legacy_caption_pid": 40976,
+            "legacy_language_pid": 40,
+            "text": "Meld u aan met de gebruikersnaam van de site (ID)",
+            "auto_translated": "Meld u aan met de gebruikersnaam van de site (ID)"
+        },
+        "tl": {
+            "legacy_caption_pid": 40977,
+            "legacy_language_pid": 41,
+            "text": "Mag-log in gamit ang user name ng site (ID)",
+            "auto_translated": "Mag-log in gamit ang user name ng site (ID)"
+        },
+        "ne": {
+            "legacy_caption_pid": 40978,
+            "legacy_language_pid": 42,
+            "text": "साइटको प्रयोगकर्ता नाम (आईडी) सँग लग इन गर्नुहोस्",
+            "auto_translated": "साइटको प्रयोगकर्ता नाम (आईडी) सँग लग इन गर्नुहोस्"
+        },
+        "hu": {
+            "legacy_caption_pid": 40979,
+            "legacy_language_pid": 43,
+            "text": "Belépés a felhasználó neve az oldalon (ID)",
+            "auto_translated": "Belépés a felhasználó neve az oldalon (ID)"
+        },
+        "cs": {
+            "legacy_caption_pid": 40980,
+            "legacy_language_pid": 44,
+            "text": "Přihlaste se pomocí uživatelského jména lokality (ID)",
+            "auto_translated": "Přihlaste se pomocí uživatelského jména lokality (ID)"
+        },
+        "el": {
+            "legacy_caption_pid": 40981,
+            "legacy_language_pid": 45,
+            "text": "Συνδεθείτε με το όνομα χρήστη του δικτυακού τόπου (ID)",
+            "auto_translated": "Συνδεθείτε με το όνομα χρήστη του δικτυακού τόπου (ID)"
+        },
+        "sv": {
+            "legacy_caption_pid": 40982,
+            "legacy_language_pid": 46,
+            "text": "Logga in med användarnamn på webbplatsen (ID)",
+            "auto_translated": "Logga in med användarnamn på webbplatsen (ID)"
+        },
+        "kk": {
+            "legacy_caption_pid": 40983,
+            "legacy_language_pid": 47,
+            "text": "Сайттың пайдаланушы аты (ID) арқылы Кіру",
+            "auto_translated": "Сайттың пайдаланушы аты (ID) арқылы Кіру"
+        },
+        "fi": {
+            "legacy_caption_pid": 40984,
+            "legacy_language_pid": 48,
+            "text": "Kirjautua sisään käyttäjänimen sivuston (ID)",
+            "auto_translated": "Kirjautua sisään käyttäjänimen sivuston (ID)"
+        },
+        "da": {
+            "legacy_caption_pid": 40985,
+            "legacy_language_pid": 49,
+            "text": "Log ind med brugernavnet på sitet (ID)",
+            "auto_translated": "Log ind med brugernavnet på sitet (ID)"
+        },
+        "he": {
+            "legacy_caption_pid": 40986,
+            "legacy_language_pid": 50,
+            "text": "התחבר עם שם המשתמש של האתר (ID)",
+            "auto_translated": "התחבר עם שם המשתמש של האתר (ID)"
+        },
+        "no": {
+            "legacy_caption_pid": 40987,
+            "legacy_language_pid": 51,
+            "text": "Logg inn med brukernavnet på nettstedet (ID)",
+            "auto_translated": "Logg inn med brukernavnet på nettstedet (ID)"
+        }
+    }
+}

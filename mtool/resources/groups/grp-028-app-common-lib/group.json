@@ -1,0 +1,362 @@
+{
+    "group_key": "grp-028-app-common-lib",
+    "legacy_group_pid": 28,
+    "name": "App Common Lib",
+    "function_name_prefix": "",
+    "function_name_suffix": "",
+    "filename_suffix_for_php": "",
+    "filename_suffix": "AppCommon",
+    "filename_for_xcode": "DegoDBAppCommon",
+    "last_modified_dt": "2017-11-02 10:46:00",
+    "locales": [
+        "ja",
+        "en",
+        "zh-CN",
+        "ko",
+        "es",
+        "pt",
+        "zh-TW",
+        "fr",
+        "hi",
+        "ar",
+        "fa",
+        "de",
+        "ru",
+        "ms",
+        "ta",
+        "it",
+        "bn",
+        "tr",
+        "vi",
+        "pl",
+        "jv",
+        "pa",
+        "th",
+        "te",
+        "mr",
+        "ur",
+        "gu",
+        "uk",
+        "ml",
+        "kn",
+        "su",
+        "ku",
+        "ps",
+        "ro",
+        "id",
+        "sd",
+        "af",
+        "sw",
+        "lo",
+        "nl",
+        "tl",
+        "ne",
+        "hu",
+        "cs",
+        "el",
+        "sv",
+        "kk",
+        "fi",
+        "da",
+        "he",
+        "no"
+    ],
+    "language_bindings": [
+        {
+            "legacy_group_language_pid": 6,
+            "legacy_language_pid": 1,
+            "locale": "ja"
+        },
+        {
+            "legacy_group_language_pid": 7,
+            "legacy_language_pid": 2,
+            "locale": "en"
+        },
+        {
+            "legacy_group_language_pid": 72,
+            "legacy_language_pid": 3,
+            "locale": "zh-CN"
+        },
+        {
+            "legacy_group_language_pid": 73,
+            "legacy_language_pid": 4,
+            "locale": "ko"
+        },
+        {
+            "legacy_group_language_pid": 74,
+            "legacy_language_pid": 5,
+            "locale": "es"
+        },
+        {
+            "legacy_group_language_pid": 75,
+            "legacy_language_pid": 6,
+            "locale": "pt"
+        },
+        {
+            "legacy_group_language_pid": 88,
+            "legacy_language_pid": 7,
+            "locale": "zh-TW"
+        },
+        {
+            "legacy_group_language_pid": 102,
+            "legacy_language_pid": 8,
+            "locale": "fr"
+        },
+        {
+            "legacy_group_language_pid": 103,
+            "legacy_language_pid": 9,
+            "locale": "hi"
+        },
+        {
+            "legacy_group_language_pid": 153,
+            "legacy_language_pid": 10,
+            "locale": "ar"
+        },
+        {
+            "legacy_group_language_pid": 154,
+            "legacy_language_pid": 11,
+            "locale": "fa"
+        },
+        {
+            "legacy_group_language_pid": 155,
+            "legacy_language_pid": 12,
+            "locale": "de"
+        },
+        {
+            "legacy_group_language_pid": 156,
+            "legacy_language_pid": 13,
+            "locale": "ru"
+        },
+        {
+            "legacy_group_language_pid": 157,
+            "legacy_language_pid": 14,
+            "locale": "ms"
+        },
+        {
+            "legacy_group_language_pid": 158,
+            "legacy_language_pid": 15,
+            "locale": "ta"
+        },
+        {
+            "legacy_group_language_pid": 159,
+            "legacy_language_pid": 16,
+            "locale": "it"
+        },
+        {
+            "legacy_group_language_pid": 160,
+            "legacy_language_pid": 17,
+            "locale": "bn"
+        },
+        {
+            "legacy_group_language_pid": 161,
+            "legacy_language_pid": 18,
+            "locale": "tr"
+        },
+        {
+            "legacy_group_language_pid": 162,
+            "legacy_language_pid": 19,
+            "locale": "vi"
+        },
+        {
+            "legacy_group_language_pid": 163,
+            "legacy_language_pid": 20,
+            "locale": "pl"
+        },
+        {
+            "legacy_group_language_pid": 164,
+            "legacy_language_pid": 21,
+            "locale": "jv"
+        },
+        {
+            "legacy_group_language_pid": 165,
+            "legacy_language_pid": 22,
+            "locale": "pa"
+        },
+        {
+            "legacy_group_language_pid": 166,
+            "legacy_language_pid": 23,
+            "locale": "th"
+        },
+        {
+            "legacy_group_language_pid": 321,
+            "legacy_language_pid": 24,
+            "locale": "te"
+        },
+        {
+            "legacy_group_language_pid": 322,
+            "legacy_language_pid": 25,
+            "locale": "mr"
+        },
+        {
+            "legacy_group_language_pid": 323,
+            "legacy_language_pid": 26,
+            "locale": "ur"
+        },
+        {
+            "legacy_group_language_pid": 324,
+            "legacy_language_pid": 27,
+            "locale": "gu"
+        },
+        {
+            "legacy_group_language_pid": 325,
+            "legacy_language_pid": 28,
+            "locale": "uk"
+        },
+        {
+            "legacy_group_language_pid": 326,
+            "legacy_language_pid": 29,
+            "locale": "ml"
+        },
+        {
+            "legacy_group_language_pid": 327,
+            "legacy_language_pid": 30,
+            "locale": "kn"
+        },
+        {
+            "legacy_group_language_pid": 328,
+            "legacy_language_pid": 31,
+            "locale": "su"
+        },
+        {
+            "legacy_group_language_pid": 329,
+            "legacy_language_pid": 32,
+            "locale": "ku"
+        },
+        {
+            "legacy_group_language_pid": 330,
+            "legacy_language_pid": 33,
+            "locale": "ps"
+        },
+        {
+            "legacy_group_language_pid": 331,
+            "legacy_language_pid": 34,
+            "locale": "ro"
+        },
+        {
+            "legacy_group_language_pid": 332,
+            "legacy_language_pid": 35,
+            "locale": "id"
+        },
+        {
+            "legacy_group_language_pid": 333,
+            "legacy_language_pid": 36,
+            "locale": "sd"
+        },
+        {
+            "legacy_group_language_pid": 334,
+            "legacy_language_pid": 37,
+            "locale": "af"
+        },
+        {
+            "legacy_group_language_pid": 335,
+            "legacy_language_pid": 38,
+            "locale": "sw"
+        },
+        {
+            "legacy_group_language_pid": 336,
+            "legacy_language_pid": 39,
+            "locale": "lo"
+        },
+        {
+            "legacy_group_language_pid": 337,
+            "legacy_language_pid": 40,
+            "locale": "nl"
+        },
+        {
+            "legacy_group_language_pid": 338,
+            "legacy_language_pid": 41,
+            "locale": "tl"
+        },
+        {
+            "legacy_group_language_pid": 339,
+            "legacy_language_pid": 42,
+            "locale": "ne"
+        },
+        {
+            "legacy_group_language_pid": 340,
+            "legacy_language_pid": 43,
+            "locale": "hu"
+        },
+        {
+            "legacy_group_language_pid": 341,
+            "legacy_language_pid": 44,
+            "locale": "cs"
+        },
+        {
+            "legacy_group_language_pid": 342,
+            "legacy_language_pid": 45,
+            "locale": "el"
+        },
+        {
+            "legacy_group_language_pid": 343,
+            "legacy_language_pid": 46,
+            "locale": "sv"
+        },
+        {
+            "legacy_group_language_pid": 344,
+            "legacy_language_pid": 47,
+            "locale": "kk"
+        },
+        {
+            "legacy_group_language_pid": 345,
+            "legacy_language_pid": 48,
+            "locale": "fi"
+        },
+        {
+            "legacy_group_language_pid": 346,
+            "legacy_language_pid": 49,
+            "locale": "da"
+        },
+        {
+            "legacy_group_language_pid": 347,
+            "legacy_language_pid": 50,
+            "locale": "he"
+        },
+        {
+            "legacy_group_language_pid": 348,
+            "legacy_language_pid": 51,
+            "locale": "no"
+        }
+    ],
+    "source_output_keys": [
+        "LANGRES-JAVA-MATSUESOFT-COMMON",
+        "LANGRES-SWIFT-IOS",
+        "LANGRES-CS-UWP-COMMONSTRINGS",
+        "LANGRES-CS-DEGODB-RESOURCES"
+    ],
+    "source_outputs": [
+        {
+            "legacy_group_source_output_pid": 31,
+            "legacy_project_source_output_pid": 329,
+            "source_output_key": "LANGRES-JAVA-MATSUESOFT-COMMON",
+            "name": "Mtool Language Resource Java Matsuesoft Common",
+            "program_language": "java",
+            "source_template_dir": "mtool/reference/legacy-source-placeholders/mtool/language-resource/LANGRES-JAVA-MATSUESOFT-COMMON"
+        },
+        {
+            "legacy_group_source_output_pid": 44,
+            "legacy_project_source_output_pid": 353,
+            "source_output_key": "LANGRES-SWIFT-IOS",
+            "name": "Mtool Language Resource Swift iOS",
+            "program_language": "swift",
+            "source_template_dir": "mtool/reference/legacy-source-placeholders/mtool/language-resource/LANGRES-SWIFT-IOS"
+        },
+        {
+            "legacy_group_source_output_pid": 47,
+            "legacy_project_source_output_pid": 355,
+            "source_output_key": "LANGRES-CS-UWP-COMMONSTRINGS",
+            "name": "Mtool Language Resource CS UWP Common Strings",
+            "program_language": "cs",
+            "source_template_dir": "mtool/reference/legacy-source-placeholders/mtool/language-resource/LANGRES-CS-UWP-COMMONSTRINGS"
+        },
+        {
+            "legacy_group_source_output_pid": 50,
+            "legacy_project_source_output_pid": 361,
+            "source_output_key": "LANGRES-CS-DEGODB-RESOURCES",
+            "name": "Mtool Language Resource CS DegoDB Resources",
+            "program_language": "cs",
+            "source_template_dir": "mtool/reference/legacy-source-placeholders/mtool/language-resource/LANGRES-CS-DEGODB-RESOURCES"
+        }
+    ],
+    "resource_count": 66
+}

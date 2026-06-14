@@ -1,0 +1,69 @@
+{
+    "resource_key": "TITLE_DBAAS_HOW_TO_USE_EXAMPLE_INNER_JOIN",
+    "legacy_resource_pid": 595,
+    "base_group_key": "grp-010-matsuesoft-lib",
+    "additional_group_keys": [],
+    "key_for_update": "56f873G9P5tyJAqBC5oCqufpqToYOXMdRNNPg7YaEBuvdPke9GioJDEdjWfxOtTNeFHlqhZlQiwIJOTeWcpay13rKwlCQYBjvDSaFkd24mDASEDkQwY22WIahuXRX9Sb",
+    "sort_group": "TITLE",
+    "key_name": "TITLE_DBAAS_HOW_TO_USE_EXAMPLE_INNER_JOIN",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": true,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 4676,
+            "legacy_language_pid": 1,
+            "text": "複数テーブルを内結合してデータ取得",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 4677,
+            "legacy_language_pid": 2,
+            "text": "Read Data from Some Table combining by Inner Join",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 14406,
+            "legacy_language_pid": 3,
+            "text": "",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 14407,
+            "legacy_language_pid": 4,
+            "text": "",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 14408,
+            "legacy_language_pid": 5,
+            "text": "Leer los datos de algunas combinaciones de tablas por Inner Join",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 14409,
+            "legacy_language_pid": 6,
+            "text": "Leia dados de algumas tabelas combinando por Inner Join",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 14410,
+            "legacy_language_pid": 7,
+            "text": "",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 17331,
+            "legacy_language_pid": 8,
+            "text": "Lire les données d'une table combinée par Inner Join",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 17332,
+            "legacy_language_pid": 9,
+            "text": "इनर जॉइन के द्वारा शामिल होने से कुछ टेबल से डाटा पढ़ें",
+            "auto_translated": ""
+        }
+    }
+}

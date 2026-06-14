@@ -1,0 +1,321 @@
+{
+    "resource_key": "HEADER_PLEASE_INPUT_ID_WITH_SMALL_CHAR_ALPHABET_AND_NUMBER",
+    "legacy_resource_pid": 1318,
+    "base_group_key": "grp-028-app-common-lib",
+    "additional_group_keys": [],
+    "key_for_update": "MJTaIlHwO9JQrUi2XVU5foXtu9yzDEqE1fjTEHn47cC63JAh70rFg2arwCtSWYN4Av8i8V10KUlazdjwFT6DyPwE58UXc36r5AiJF09hGcexSsmnWxD4XMRsLqXJ1jen",
+    "sort_group": "ENROLL",
+    "key_name": "HEADER_PLEASE_INPUT_ID_WITH_SMALL_CHAR_ALPHABET_AND_NUMBER",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": false,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 851,
+            "legacy_language_pid": 1,
+            "text": "ユーザ名(ID)は小文字の英数字で入力して下さい",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 852,
+            "legacy_language_pid": 2,
+            "text": "Please input User Name (ID) with small character alphabet and number",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 6416,
+            "legacy_language_pid": 3,
+            "text": "用户名应该在字母小写输入",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 6417,
+            "legacy_language_pid": 4,
+            "text": "아이디 는 소문자와 숫자로 입력해주세요",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 10133,
+            "legacy_language_pid": 5,
+            "text": "Introduzca el ID con el alfabeto de caracteres pequeños y el número",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 10134,
+            "legacy_language_pid": 6,
+            "text": "Digite o ID com o caráter pequeno alfabeto e número",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 10135,
+            "legacy_language_pid": 7,
+            "text": "用户名應該在字母小寫輸入",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 15995,
+            "legacy_language_pid": 8,
+            "text": "Veuillez entrer le nom d'utilisateur (ID) avec l'alphabet et le nombre de caractères petits",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 15996,
+            "legacy_language_pid": 9,
+            "text": " कृपया छोटे वर्ण वर्णमाला और संख्या वाले उपयोगकर्ता नाम (आईडी) को इनपुट करें",
+            "auto_translated": ""
+        },
+        "ar": {
+            "legacy_caption_pid": 28540,
+            "legacy_language_pid": 10,
+            "text": "يجب إدخال اسم المستخدم (ID) في صغيرة أبجدية",
+            "auto_translated": "يجب إدخال اسم المستخدم (ID) في صغيرة أبجدية"
+        },
+        "fa": {
+            "legacy_caption_pid": 28541,
+            "legacy_language_pid": 11,
+            "text": "نام کاربری (ID) باید در حروف کوچک وارد الفبایی",
+            "auto_translated": "نام کاربری (ID) باید در حروف کوچک وارد الفبایی"
+        },
+        "de": {
+            "legacy_caption_pid": 28542,
+            "legacy_language_pid": 12,
+            "text": "Benutzername (ID) sollte in alphanumerische Kleinbuchstaben eingegeben werden",
+            "auto_translated": "Benutzername (ID) sollte in alphanumerische Kleinbuchstaben eingegeben werden"
+        },
+        "ru": {
+            "legacy_caption_pid": 28543,
+            "legacy_language_pid": 13,
+            "text": "Имя пользователя (ID) должно быть введено в буквенно-цифровом нижнем регистре",
+            "auto_translated": "Имя пользователя (ID) должно быть введено в буквенно-цифровом нижнем регистре"
+        },
+        "ms": {
+            "legacy_caption_pid": 28544,
+            "legacy_language_pid": 14,
+            "text": "nama pengguna (ID) hendaklah dimasukkan dalam huruf kecil abjad angka",
+            "auto_translated": "nama pengguna (ID) hendaklah dimasukkan dalam huruf kecil abjad angka"
+        },
+        "ta": {
+            "legacy_caption_pid": 28545,
+            "legacy_language_pid": 15,
+            "text": "பயனர் பெயர் (ஐடி) எண்ணெழுத்து ஸ்மால் உள்ளிடப்பட வேண்டும்",
+            "auto_translated": "பயனர் பெயர் (ஐடி) எண்ணெழுத்து ஸ்மால் உள்ளிடப்பட வேண்டும்"
+        },
+        "it": {
+            "legacy_caption_pid": 28546,
+            "legacy_language_pid": 16,
+            "text": "Nome utente (ID) deve essere immesso in minuscolo alfanumerico",
+            "auto_translated": "Nome utente (ID) deve essere immesso in minuscolo alfanumerico"
+        },
+        "bn": {
+            "legacy_caption_pid": 28547,
+            "legacy_language_pid": 17,
+            "text": "ইউজার নেম (আইডি) আলফানিউমেরিক ছোট হাতের মধ্যে প্রবেশ করানো উচিত",
+            "auto_translated": "ইউজার নেম (আইডি) আলফানিউমেরিক ছোট হাতের মধ্যে প্রবেশ করানো উচিত"
+        },
+        "tr": {
+            "legacy_caption_pid": 28548,
+            "legacy_language_pid": 18,
+            "text": "Kullanıcı adı (ID) alfanümerik küçük harflerle girilmelidir",
+            "auto_translated": "Kullanıcı adı (ID) alfanümerik küçük harflerle girilmelidir"
+        },
+        "vi": {
+            "legacy_caption_pid": 28549,
+            "legacy_language_pid": 19,
+            "text": "tên người dùng (ID) sẽ được nhập ở dạng chữ thường chữ và số",
+            "auto_translated": "tên người dùng (ID) sẽ được nhập ở dạng chữ thường chữ và số"
+        },
+        "pl": {
+            "legacy_caption_pid": 28550,
+            "legacy_language_pid": 20,
+            "text": "Nazwa użytkownika (ID) powinny być wpisane małymi literami alfanumerycznym",
+            "auto_translated": "Nazwa użytkownika (ID) powinny być wpisane małymi literami alfanumerycznym"
+        },
+        "jv": {
+            "legacy_caption_pid": 28551,
+            "legacy_language_pid": 21,
+            "text": "jeneng panganggo (ID) kudu mlebu ing cilik alphanumeric",
+            "auto_translated": "jeneng panganggo (ID) kudu mlebu ing cilik alphanumeric"
+        },
+        "pa": {
+            "legacy_caption_pid": 28552,
+            "legacy_language_pid": 22,
+            "text": "ਯੂਜ਼ਰ ਦਾ ਨਾਮ ਹੈ (ID), ਅੱਖਰ ਅੱਖਰ ਵਿੱਚ ਦਿੱਤਾ ਜਾਣਾ ਚਾਹੀਦਾ ਹੈ",
+            "auto_translated": "ਯੂਜ਼ਰ ਦਾ ਨਾਮ ਹੈ (ID), ਅੱਖਰ ਅੱਖਰ ਵਿੱਚ ਦਿੱਤਾ ਜਾਣਾ ਚਾਹੀਦਾ ਹੈ"
+        },
+        "th": {
+            "legacy_caption_pid": 28553,
+            "legacy_language_pid": 23,
+            "text": "ชื่อผู้ใช้ (ID) ควรจะเข้าไปอยู่ในตัวพิมพ์เล็กและตัวเลข",
+            "auto_translated": "ชื่อผู้ใช้ (ID) ควรจะเข้าไปอยู่ในตัวพิมพ์เล็กและตัวเลข"
+        },
+        "te": {
+            "legacy_caption_pid": 34016,
+            "legacy_language_pid": 24,
+            "text": "వాడుకరి పేరు (ID) ఆల్ఫాన్యూమరిక్ చిన్న లో నమోదు చేయాలి",
+            "auto_translated": "వాడుకరి పేరు (ID) ఆల్ఫాన్యూమరిక్ చిన్న లో నమోదు చేయాలి"
+        },
+        "mr": {
+            "legacy_caption_pid": 34017,
+            "legacy_language_pid": 25,
+            "text": "वापरकर्ता नाव (ID) वर्णांक लोअरकेस प्रविष्ट केले पाहिजे",
+            "auto_translated": "वापरकर्ता नाव (ID) वर्णांक लोअरकेस प्रविष्ट केले पाहिजे"
+        },
+        "ur": {
+            "legacy_caption_pid": 34018,
+            "legacy_language_pid": 26,
+            "text": "صارف کا نام (ID) اکشرانکیی خفی میں درج کیا جانا چاہیے",
+            "auto_translated": "صارف کا نام (ID) اکشرانکیی خفی میں درج کیا جانا چاہیے"
+        },
+        "gu": {
+            "legacy_caption_pid": 34019,
+            "legacy_language_pid": 27,
+            "text": "વપરાશકર્તા નામ (આઇડી) આલ્ફાન્યૂમેરિક લોઅરકેસ દાખલ કરવા જોઈએ",
+            "auto_translated": "વપરાશકર્તા નામ (આઇડી) આલ્ફાન્યૂમેરિક લોઅરકેસ દાખલ કરવા જોઈએ"
+        },
+        "uk": {
+            "legacy_caption_pid": 34020,
+            "legacy_language_pid": 28,
+            "text": "Ім'я користувача (ID) повинно бути введено в буквено-цифровому нижньому регістрі",
+            "auto_translated": "Ім'я користувача (ID) повинно бути введено в буквено-цифровому нижньому регістрі"
+        },
+        "ml": {
+            "legacy_caption_pid": 34021,
+            "legacy_language_pid": 29,
+            "text": "ഉപയോക്തൃ നാമം (ഐഡി) അക്കങ്ങളും ലോവർകേസ് നൽകേണ്ടതാണ്",
+            "auto_translated": "ഉപയോക്തൃ നാമം (ഐഡി) അക്കങ്ങളും ലോവർകേസ് നൽകേണ്ടതാണ്"
+        },
+        "kn": {
+            "legacy_caption_pid": 34022,
+            "legacy_language_pid": 30,
+            "text": "ಬಳಕೆದಾರ ಹೆಸರು (ಐಡಿ) ಅಕ್ಷರಸಂಖ್ಯಾಯುಕ್ತ ಸಣ್ಣ ನಮೂದಿಸಬೇಕು",
+            "auto_translated": "ಬಳಕೆದಾರ ಹೆಸರು (ಐಡಿ) ಅಕ್ಷರಸಂಖ್ಯಾಯುಕ್ತ ಸಣ್ಣ ನಮೂದಿಸಬೇಕು"
+        },
+        "su": {
+            "legacy_caption_pid": 34023,
+            "legacy_language_pid": 31,
+            "text": "Ngaran pamaké (ID) kudu diasupkeun dina aksara leutik alpanumérik",
+            "auto_translated": "Ngaran pamaké (ID) kudu diasupkeun dina aksara leutik alpanumérik"
+        },
+        "ku": {
+            "legacy_caption_pid": 34024,
+            "legacy_language_pid": 32,
+            "text": "Navê bikarhêner (ID), divê di dilhewîna alphanumeric ketin",
+            "auto_translated": "Navê bikarhêner (ID), divê di dilhewîna alphanumeric ketin"
+        },
+        "ps": {
+            "legacy_caption_pid": 34025,
+            "legacy_language_pid": 33,
+            "text": "کارن نوم (تذکرو) بايد په الفبې lowercase داخل شي",
+            "auto_translated": "کارن نوم (تذکرو) بايد په الفبې lowercase داخل شي"
+        },
+        "ro": {
+            "legacy_caption_pid": 34026,
+            "legacy_language_pid": 34,
+            "text": "Nume utilizator (ID) ar trebui să fie introduse în litere mici alfanumerice",
+            "auto_translated": "Nume utilizator (ID) ar trebui să fie introduse în litere mici alfanumerice"
+        },
+        "id": {
+            "legacy_caption_pid": 34027,
+            "legacy_language_pid": 35,
+            "text": "Nama pengguna (ID) harus dimasukkan dalam huruf kecil alfanumerik",
+            "auto_translated": "Nama pengguna (ID) harus dimasukkan dalam huruf kecil alfanumerik"
+        },
+        "sd": {
+            "legacy_caption_pid": 34028,
+            "legacy_language_pid": 36,
+            "text": "استعمال ڪندڙ جو نالو (سڃاڻپ) alphanumeric ننڍو ۾ داخل ڪيو وڃي",
+            "auto_translated": "استعمال ڪندڙ جو نالو (سڃاڻپ) alphanumeric ننڍو ۾ داخل ڪيو وڃي"
+        },
+        "af": {
+            "legacy_caption_pid": 34029,
+            "legacy_language_pid": 37,
+            "text": "Bynaam (ID) moet in alfanumeriese klein daaroor gevoer word nie",
+            "auto_translated": "Bynaam (ID) moet in alfanumeriese klein daaroor gevoer word nie"
+        },
+        "sw": {
+            "legacy_caption_pid": 34030,
+            "legacy_language_pid": 38,
+            "text": "Jina la mtumiaji (ID) yanafaa kuingizwa kwenye lowercase alphanumeric",
+            "auto_translated": "Jina la mtumiaji (ID) yanafaa kuingizwa kwenye lowercase alphanumeric"
+        },
+        "lo": {
+            "legacy_caption_pid": 34031,
+            "legacy_language_pid": 39,
+            "text": "ຊື່ຜູ້ໃຊ້ (ID) ຄວນໄດ້ຮັບການເຂົ້າໃນອັກສອນຕົວນ້ອຍຕົວເລກ",
+            "auto_translated": "ຊື່ຜູ້ໃຊ້ (ID) ຄວນໄດ້ຮັບການເຂົ້າໃນອັກສອນຕົວນ້ອຍຕົວເລກ"
+        },
+        "nl": {
+            "legacy_caption_pid": 34032,
+            "legacy_language_pid": 40,
+            "text": "User name (ID) dient in alfanumerieke kleine letters worden ingevoerd",
+            "auto_translated": "User name (ID) dient in alfanumerieke kleine letters worden ingevoerd"
+        },
+        "tl": {
+            "legacy_caption_pid": 34033,
+            "legacy_language_pid": 41,
+            "text": "Palayaw (ID) ay dapat na ipinasok sa alphanumeric lowercase",
+            "auto_translated": "Palayaw (ID) ay dapat na ipinasok sa alphanumeric lowercase"
+        },
+        "ne": {
+            "legacy_caption_pid": 34034,
+            "legacy_language_pid": 42,
+            "text": "प्रयोगकर्ता नाम (आईडी) अल्फान्यूमेरिक सानो प्रविष्ट गर्नुपर्छ",
+            "auto_translated": "प्रयोगकर्ता नाम (आईडी) अल्फान्यूमेरिक सानो प्रविष्ट गर्नुपर्छ"
+        },
+        "hu": {
+            "legacy_caption_pid": 34035,
+            "legacy_language_pid": 43,
+            "text": "Felhasználói név (ID) kell beírni alfanumerikus kisbetűvel",
+            "auto_translated": "Felhasználói név (ID) kell beírni alfanumerikus kisbetűvel"
+        },
+        "cs": {
+            "legacy_caption_pid": 34036,
+            "legacy_language_pid": 44,
+            "text": "Uživatelské jméno (ID) je třeba zadat v alfanumerickém malými písmeny",
+            "auto_translated": "Uživatelské jméno (ID) je třeba zadat v alfanumerickém malými písmeny"
+        },
+        "el": {
+            "legacy_caption_pid": 34037,
+            "legacy_language_pid": 45,
+            "text": "Όνομα χρήστη (ID) πρέπει να εγγραφεί στο αλφαριθμητικό πεζά",
+            "auto_translated": "Όνομα χρήστη (ID) πρέπει να εγγραφεί στο αλφαριθμητικό πεζά"
+        },
+        "sv": {
+            "legacy_caption_pid": 34038,
+            "legacy_language_pid": 46,
+            "text": "Användarnamn (ID) ska anges i alfanumerisk gemener",
+            "auto_translated": "Användarnamn (ID) ska anges i alfanumerisk gemener"
+        },
+        "kk": {
+            "legacy_caption_pid": 34039,
+            "legacy_language_pid": 47,
+            "text": "Пайдаланушының аты (ID) әріптік-сандық кіші әріппен енгізілуі тиіс",
+            "auto_translated": "Пайдаланушының аты (ID) әріптік-сандық кіші әріппен енгізілуі тиіс"
+        },
+        "fi": {
+            "legacy_caption_pid": 34040,
+            "legacy_language_pid": 48,
+            "text": "Käyttäjätunnus (ID) olisi merkittävä aakkosnumeerinen pienillä",
+            "auto_translated": "Käyttäjätunnus (ID) olisi merkittävä aakkosnumeerinen pienillä"
+        },
+        "da": {
+            "legacy_caption_pid": 34041,
+            "legacy_language_pid": 49,
+            "text": "Bruger navn (ID) skal indtastes i alfanumerisk små bogstaver",
+            "auto_translated": "Bruger navn (ID) skal indtastes i alfanumerisk små bogstaver"
+        },
+        "he": {
+            "legacy_caption_pid": 34042,
+            "legacy_language_pid": 50,
+            "text": "שם משתמש (ID) יש להזין אותיות קטנות אלפאנומרי",
+            "auto_translated": "שם משתמש (ID) יש להזין אותיות קטנות אלפאנומרי"
+        },
+        "no": {
+            "legacy_caption_pid": 34043,
+            "legacy_language_pid": 51,
+            "text": "Brukernavn (ID) bør legges inn i alfanumerisk små bokstaver",
+            "auto_translated": "Brukernavn (ID) bør legges inn i alfanumerisk små bokstaver"
+        }
+    }
+}

@@ -1,0 +1,321 @@
+{
+    "resource_key": "COMMON_LIB_EMAIL_VERIFY_SUCCESS",
+    "legacy_resource_pid": 1395,
+    "base_group_key": "grp-010-matsuesoft-lib",
+    "additional_group_keys": [],
+    "key_for_update": "ca8wD6sT4BcJP7lCKI7eeYDEF04mfvetfu2WdKFbGAJ0gbMvlXjQ83fu5eACSb5BWNbTlgWZ0CuMwfrNTlrucwPXEK1iyhIhy5WzYIxFE8WZFfjhzaP4duHXNh9Qq2NJ",
+    "sort_group": "EMAIL VERIFY",
+    "key_name": "COMMON_LIB_EMAIL_VERIFY_SUCCESS",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": false,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 5854,
+            "legacy_language_pid": 1,
+            "text": "メールアドレス認証成功致しました",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 5855,
+            "legacy_language_pid": 2,
+            "text": "Email verification success.",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 5856,
+            "legacy_language_pid": 3,
+            "text": "E-mail地址，我们认证成功",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 5857,
+            "legacy_language_pid": 4,
+            "text": "이메일 인증에 성공했습니다",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 10732,
+            "legacy_language_pid": 5,
+            "text": "Éxito de verificación de correo electrónico.",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 10733,
+            "legacy_language_pid": 6,
+            "text": "Exito da verificação de e-mail.",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 10734,
+            "legacy_language_pid": 7,
+            "text": "E-mail地址，我們認證成功",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 16447,
+            "legacy_language_pid": 8,
+            "text": "Vérification de la vérification par courrier électronique.",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 16448,
+            "legacy_language_pid": 9,
+            "text": "ईमेल सत्यापन सफल",
+            "auto_translated": ""
+        },
+        "ar": {
+            "legacy_caption_pid": 31046,
+            "legacy_language_pid": 10,
+            "text": "عنوان البريد الإلكتروني E-نحن المصادقة النجاح",
+            "auto_translated": "عنوان البريد الإلكتروني E-نحن المصادقة النجاح"
+        },
+        "fa": {
+            "legacy_caption_pid": 31047,
+            "legacy_language_pid": 11,
+            "text": "آدرس ایمیل ما موفقیت احراز هویت",
+            "auto_translated": "آدرس ایمیل ما موفقیت احراز هویت"
+        },
+        "de": {
+            "legacy_caption_pid": 31048,
+            "legacy_language_pid": 12,
+            "text": "E-Mail-Adresse, die wir Erfolg Authentifizierung",
+            "auto_translated": "E-Mail-Adresse, die wir Erfolg Authentifizierung"
+        },
+        "ru": {
+            "legacy_caption_pid": 31049,
+            "legacy_language_pid": 13,
+            "text": "Адрес электронной почты мы аутентификация успеха",
+            "auto_translated": "Адрес электронной почты мы аутентификация успеха"
+        },
+        "ms": {
+            "legacy_caption_pid": 31050,
+            "legacy_language_pid": 14,
+            "text": "Alamat e-mel kita Pengesahan kejayaan",
+            "auto_translated": "Alamat e-mel kita Pengesahan kejayaan"
+        },
+        "ta": {
+            "legacy_caption_pid": 31051,
+            "legacy_language_pid": 15,
+            "text": "மின்னஞ்சல் முகவரி நாங்கள் வெற்றி அங்கீகார",
+            "auto_translated": "மின்னஞ்சல் முகவரி நாங்கள் வெற்றி அங்கீகார"
+        },
+        "it": {
+            "legacy_caption_pid": 31052,
+            "legacy_language_pid": 16,
+            "text": "Indirizzo e-mail che l'autenticazione successo",
+            "auto_translated": "Indirizzo e-mail che l'autenticazione successo"
+        },
+        "bn": {
+            "legacy_caption_pid": 31053,
+            "legacy_language_pid": 17,
+            "text": "ই-মেইল ঠিকানা আমরা সাফল্য বিশুদ্ধিকরণ",
+            "auto_translated": "ই-মেইল ঠিকানা আমরা সাফল্য বিশুদ্ধিকরণ"
+        },
+        "tr": {
+            "legacy_caption_pid": 31054,
+            "legacy_language_pid": 18,
+            "text": "E-posta adresi başarıyı kimlik doğrulama",
+            "auto_translated": "E-posta adresi başarıyı kimlik doğrulama"
+        },
+        "vi": {
+            "legacy_caption_pid": 31055,
+            "legacy_language_pid": 19,
+            "text": "địa chỉ E-mail chúng tôi xác thực thành công",
+            "auto_translated": "địa chỉ E-mail chúng tôi xác thực thành công"
+        },
+        "pl": {
+            "legacy_caption_pid": 31056,
+            "legacy_language_pid": 20,
+            "text": "Adres e-mail my uwierzytelniania sukces",
+            "auto_translated": "Adres e-mail my uwierzytelniania sukces"
+        },
+        "jv": {
+            "legacy_caption_pid": 31057,
+            "legacy_language_pid": 21,
+            "text": "alamat E-mail kita bukti asli sukses",
+            "auto_translated": "alamat E-mail kita bukti asli sukses"
+        },
+        "pa": {
+            "legacy_caption_pid": 31058,
+            "legacy_language_pid": 22,
+            "text": "ਈ-ਮੇਲ ਪਤਾ ਸਾਨੂੰ ਸਫਲਤਾ ਪਰਮਾਣਕਿਤਾ",
+            "auto_translated": "ਈ-ਮੇਲ ਪਤਾ ਸਾਨੂੰ ਸਫਲਤਾ ਪਰਮਾਣਕਿਤਾ"
+        },
+        "th": {
+            "legacy_caption_pid": 31059,
+            "legacy_language_pid": 23,
+            "text": "E-mail ของเรารับรองความถูกต้องประสบความสำเร็จ",
+            "auto_translated": "E-mail ของเรารับรองความถูกต้องประสบความสำเร็จ"
+        },
+        "te": {
+            "legacy_caption_pid": 42374,
+            "legacy_language_pid": 24,
+            "text": "ఇ-మెయిల్ చిరునామా మనం విజయం ప్రమాణీకరణ",
+            "auto_translated": "ఇ-మెయిల్ చిరునామా మనం విజయం ప్రమాణీకరణ"
+        },
+        "mr": {
+            "legacy_caption_pid": 42375,
+            "legacy_language_pid": 25,
+            "text": "ई-मेल पत्ता आम्ही यश प्रमाणीकरण",
+            "auto_translated": "ई-मेल पत्ता आम्ही यश प्रमाणीकरण"
+        },
+        "ur": {
+            "legacy_caption_pid": 42376,
+            "legacy_language_pid": 26,
+            "text": "ای میل ایڈریس ہمیں کامیابی استناد",
+            "auto_translated": "ای میل ایڈریس ہمیں کامیابی استناد"
+        },
+        "gu": {
+            "legacy_caption_pid": 42377,
+            "legacy_language_pid": 27,
+            "text": "ઇ-મેઇલ સરનામું અમે સફળતા authentication",
+            "auto_translated": "ઇ-મેઇલ સરનામું અમે સફળતા authentication"
+        },
+        "uk": {
+            "legacy_caption_pid": 42378,
+            "legacy_language_pid": 28,
+            "text": "Адреса електронної пошти ми аутентифікація успіху",
+            "auto_translated": "Адреса електронної пошти ми аутентифікація успіху"
+        },
+        "ml": {
+            "legacy_caption_pid": 42379,
+            "legacy_language_pid": 29,
+            "text": "ഞങ്ങൾ വിജയം ആധികാരികത ഇ-മെയിൽ വിലാസം",
+            "auto_translated": "ഞങ്ങൾ വിജയം ആധികാരികത ഇ-മെയിൽ വിലാസം"
+        },
+        "kn": {
+            "legacy_caption_pid": 42380,
+            "legacy_language_pid": 30,
+            "text": "ಇ ಮೇಲ್ ನಾವು ಯಶಸ್ಸು ದೃಢೀಕರಣ",
+            "auto_translated": "ಇ ಮೇಲ್ ನಾವು ಯಶಸ್ಸು ದೃಢೀಕರಣ"
+        },
+        "su": {
+            "legacy_caption_pid": 42381,
+            "legacy_language_pid": 31,
+            "text": "Alamat surélék urang auténtikasi ayaan",
+            "auto_translated": "Alamat surélék urang auténtikasi ayaan"
+        },
+        "ku": {
+            "legacy_caption_pid": 42382,
+            "legacy_language_pid": 32,
+            "text": "Navnîşana E-mail em serkeftina azmûmkirina",
+            "auto_translated": "Navnîşana E-mail em serkeftina azmûmkirina"
+        },
+        "ps": {
+            "legacy_caption_pid": 42383,
+            "legacy_language_pid": 33,
+            "text": "پست برېښلیک پته موږ د بریالیتوب اعتبار",
+            "auto_translated": "پست برېښلیک پته موږ د بریالیتوب اعتبار"
+        },
+        "ro": {
+            "legacy_caption_pid": 42384,
+            "legacy_language_pid": 34,
+            "text": "Adresa de e-mail noi de autentificare succes",
+            "auto_translated": "Adresa de e-mail noi de autentificare succes"
+        },
+        "id": {
+            "legacy_caption_pid": 42385,
+            "legacy_language_pid": 35,
+            "text": "Alamat e-mail kami otentikasi sukses",
+            "auto_translated": "Alamat e-mail kami otentikasi sukses"
+        },
+        "sd": {
+            "legacy_caption_pid": 42386,
+            "legacy_language_pid": 36,
+            "text": "اي-ميل پتو اسان کي ڪاميابي جي اصليت",
+            "auto_translated": "اي-ميل پتو اسان کي ڪاميابي جي اصليت"
+        },
+        "af": {
+            "legacy_caption_pid": 42387,
+            "legacy_language_pid": 37,
+            "text": "E-pos adres wat ons stawingbediener sukses",
+            "auto_translated": "E-pos adres wat ons stawingbediener sukses"
+        },
+        "sw": {
+            "legacy_caption_pid": 42388,
+            "legacy_language_pid": 38,
+            "text": "E-mail anwani sisi uthibitisho mafanikio",
+            "auto_translated": "E-mail anwani sisi uthibitisho mafanikio"
+        },
+        "lo": {
+            "legacy_caption_pid": 42389,
+            "legacy_language_pid": 39,
+            "text": "ອີເມລພວກເຮົາ authentication ຜົນສໍາເລັດ",
+            "auto_translated": "ອີເມລພວກເຮົາ authentication ຜົນສໍາເລັດ"
+        },
+        "nl": {
+            "legacy_caption_pid": 42390,
+            "legacy_language_pid": 40,
+            "text": "E-mail adres we authentiseringsucces",
+            "auto_translated": "E-mail adres we authentiseringsucces"
+        },
+        "tl": {
+            "legacy_caption_pid": 42391,
+            "legacy_language_pid": 41,
+            "text": "E-mail address namin authentication tagumpay",
+            "auto_translated": "E-mail address namin authentication tagumpay"
+        },
+        "ne": {
+            "legacy_caption_pid": 42392,
+            "legacy_language_pid": 42,
+            "text": "ई-मेल ठेगाना हामी सफलता प्रमाणीकरण",
+            "auto_translated": "ई-मेल ठेगाना हामी सफलता प्रमाणीकरण"
+        },
+        "hu": {
+            "legacy_caption_pid": 42393,
+            "legacy_language_pid": 43,
+            "text": "E-mail cím, hitelesítés siker",
+            "auto_translated": "E-mail cím, hitelesítés siker"
+        },
+        "cs": {
+            "legacy_caption_pid": 42394,
+            "legacy_language_pid": 44,
+            "text": "E-mailová adresa jsme autentizace úspěch",
+            "auto_translated": "E-mailová adresa jsme autentizace úspěch"
+        },
+        "el": {
+            "legacy_caption_pid": 42395,
+            "legacy_language_pid": 45,
+            "text": "E-mail διεύθυνση που κύρωση, την επιτυχία",
+            "auto_translated": "E-mail διεύθυνση που κύρωση, την επιτυχία"
+        },
+        "sv": {
+            "legacy_caption_pid": 42396,
+            "legacy_language_pid": 46,
+            "text": "E-postadress vi autentisering framgång",
+            "auto_translated": "E-postadress vi autentisering framgång"
+        },
+        "kk": {
+            "legacy_caption_pid": 42397,
+            "legacy_language_pid": 47,
+            "text": "біз табысқа пн с алы растама Электрондық пошта мекен-жайы",
+            "auto_translated": "біз табысқа пн с алы растама Электрондық пошта мекен-жайы"
+        },
+        "fi": {
+            "legacy_caption_pid": 42398,
+            "legacy_language_pid": 48,
+            "text": "Sähköpostiosoite me onnistunutta todentamista",
+            "auto_translated": "Sähköpostiosoite me onnistunutta todentamista"
+        },
+        "da": {
+            "legacy_caption_pid": 42399,
+            "legacy_language_pid": 49,
+            "text": "E-mail-adresse, vi autentificering succes",
+            "auto_translated": "E-mail-adresse, vi autentificering succes"
+        },
+        "he": {
+            "legacy_caption_pid": 42400,
+            "legacy_language_pid": 50,
+            "text": "כתובת דואר אלקטרוני אנו אימות הצלחה",
+            "auto_translated": "כתובת דואר אלקטרוני אנו אימות הצלחה"
+        },
+        "no": {
+            "legacy_caption_pid": 42401,
+            "legacy_language_pid": 51,
+            "text": "E-postadressen vi godkjenninger suksess",
+            "auto_translated": "E-postadressen vi godkjenninger suksess"
+        }
+    }
+}

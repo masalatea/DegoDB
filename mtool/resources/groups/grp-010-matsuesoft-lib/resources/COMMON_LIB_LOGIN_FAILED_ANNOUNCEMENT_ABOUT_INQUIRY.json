@@ -1,0 +1,321 @@
+{
+    "resource_key": "COMMON_LIB_LOGIN_FAILED_ANNOUNCEMENT_ABOUT_INQUIRY",
+    "legacy_resource_pid": 1487,
+    "base_group_key": "grp-010-matsuesoft-lib",
+    "additional_group_keys": [],
+    "key_for_update": "P1mxTrOG5eNNx39IGER5arbAVWvTkYACFhAnSZBVQN8O9kJkUBLfhkkA5WOo35z9cXZFyA7ipLXhSAJ3H8WB5hc1B46IyqyTlw1Y4ZbEAfWrXlJfZMVEt6RYVOeMKgDT",
+    "sort_group": "LOGIN",
+    "key_name": "COMMON_LIB_LOGIN_FAILED_ANNOUNCEMENT_ABOUT_INQUIRY",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": false,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 6222,
+            "legacy_language_pid": 1,
+            "text": "何度試してもログインできない場合はお手数ですが事務局までご連絡頂ければと思います。",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 6223,
+            "legacy_language_pid": 2,
+            "text": "If you can not log in no matter how many times you try, I'm sorry to trouble you but I would like to contact the secretariat.",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 6224,
+            "legacy_language_pid": 3,
+            "text": "如果你已经尝试过很多次无法登录是抱歉打扰你，请联系事务所",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 6225,
+            "legacy_language_pid": 4,
+            "text": "여러번 시도해도 로그인할 수 없는 경우, 번거로우시겠지만 사무국으로 연락주시기 바랍니다.",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 11057,
+            "legacy_language_pid": 5,
+            "text": "Si no puede iniciar sesión sin importar cuántas veces lo intente, siento molestarlo pero me gustaría contactar con la secretaría.",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 11058,
+            "legacy_language_pid": 6,
+            "text": "Se você não pode fazer login, independentemente de quantas vezes você tentar, lamento incomodar você, mas eu gostaria de entrar em contato com o secretariado",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 11059,
+            "legacy_language_pid": 7,
+            "text": "如果你已經嘗試過很多次無法登錄是抱歉打擾你，請聯繫事務所",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 17235,
+            "legacy_language_pid": 8,
+            "text": "Si vous ne pouvez pas vous connecter, peu importe combien de fois vous essayez, je suis désolé de vous déranger, mais j'aimerais communiquer avec le secrétariat.",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 17236,
+            "legacy_language_pid": 9,
+            "text": "यदि आप लॉग-इन नहीं कर सकते हैं, आप कितनी बार कोशिश करते हैं, मैं परेशान करने के लिए माफी चाहता हूं, लेकिन मैं सचिवालय से संपर्क करना चाहता हूं।",
+            "auto_translated": ""
+        },
+        "ar": {
+            "legacy_caption_pid": 32530,
+            "legacy_language_pid": 10,
+            "text": "إذا كنت قد حاولت عدة مرات لم يتمكن من تسجيل الدخول غير آسف لمتاعب لك، ولكن أعتقد أنه إذا يمكنك الاتصال إلى الأمانة.",
+            "auto_translated": "إذا كنت قد حاولت عدة مرات لم يتمكن من تسجيل الدخول غير آسف لمتاعب لك، ولكن أعتقد أنه إذا يمكنك الاتصال إلى الأمانة."
+        },
+        "fa": {
+            "legacy_caption_pid": 32531,
+            "legacy_language_pid": 11,
+            "text": "اگر شما سعی کردم چند بار قادر به ورود به سیستم با عرض پوزش به مشکل شما است، اما من فکر می کنم که اگر شما می توانید به دبیرخانه ارتباط برقرار کنند.",
+            "auto_translated": "اگر شما سعی کردم چند بار قادر به ورود به سیستم با عرض پوزش به مشکل شما است، اما من فکر می کنم که اگر شما می توانید به دبیرخانه ارتباط برقرار کنند."
+        },
+        "de": {
+            "legacy_caption_pid": 32532,
+            "legacy_language_pid": 12,
+            "text": "Wenn Sie viele Male der Lage versucht haben, nicht eingeloggt ist Entschuldigen Sie die Störung, aber ich denke, dass, wenn Sie an das Sekretariat eine Verbindung herstellen können.",
+            "auto_translated": "Wenn Sie viele Male der Lage versucht haben, nicht eingeloggt ist Entschuldigen Sie die Störung, aber ich denke, dass, wenn Sie an das Sekretariat eine Verbindung herstellen können."
+        },
+        "ru": {
+            "legacy_caption_pid": 32533,
+            "legacy_language_pid": 13,
+            "text": "Если вы уже пробовали много раз, не в состоянии войти жаль беспокоить вас, но я думаю, что если вы можете подключиться к секретариату.",
+            "auto_translated": "Если вы уже пробовали много раз, не в состоянии войти жаль беспокоить вас, но я думаю, что если вы можете подключиться к секретариату."
+        },
+        "ms": {
+            "legacy_caption_pid": 32534,
+            "legacy_language_pid": 14,
+            "text": "Jika anda telah mencuba banyak kali tidak dapat log masuk adalah maaf untuk masalah anda, tetapi saya berfikir bahawa jika anda boleh menyambung kepada urus setia.",
+            "auto_translated": "Jika anda telah mencuba banyak kali tidak dapat log masuk adalah maaf untuk masalah anda, tetapi saya berfikir bahawa jika anda boleh menyambung kepada urus setia."
+        },
+        "ta": {
+            "legacy_caption_pid": 32535,
+            "legacy_language_pid": 15,
+            "text": "நீங்கள் பல காலங்களில் உள் செல்ல முடியவில்லை முன்பே முயற்சித்திருந்தால் நீங்கள் பிரச்சனையில் வருந்துகிறது, ஆனால் நான் நீங்கள் செயலகம் இணைக்க முடியும் என்றால் என்று நினைக்கிறேன்.",
+            "auto_translated": "நீங்கள் பல காலங்களில் உள் செல்ல முடியவில்லை முன்பே முயற்சித்திருந்தால் நீங்கள் பிரச்சனையில் வருந்துகிறது, ஆனால் நான் நீங்கள் செயலகம் இணைக்க முடியும் என்றால் என்று நினைக்கிறேன்."
+        },
+        "it": {
+            "legacy_caption_pid": 32536,
+            "legacy_language_pid": 16,
+            "text": "Se hai provato molte volte non in grado di accedere è dispiace disturbarla, ma penso che se è possibile connettersi alla segreteria.",
+            "auto_translated": "Se hai provato molte volte non in grado di accedere è dispiace disturbarla, ma penso che se è possibile connettersi alla segreteria."
+        },
+        "bn": {
+            "legacy_caption_pid": 32537,
+            "legacy_language_pid": 17,
+            "text": "আপনি অনেক বার লগ ইন করতে পারবেন না ব্যবহার করে থাকেন তাহলে আপনি কষ্ট করার জন্য দুঃখিত, কিন্তু আমি মনে করি যে যদি আপনি সচিবালয় সংযোগ করতে পারেন।",
+            "auto_translated": "আপনি অনেক বার লগ ইন করতে পারবেন না ব্যবহার করে থাকেন তাহলে আপনি কষ্ট করার জন্য দুঃখিত, কিন্তু আমি মনে করি যে যদি আপনি সচিবালয় সংযোগ করতে পারেন।"
+        },
+        "tr": {
+            "legacy_caption_pid": 32538,
+            "legacy_language_pid": 18,
+            "text": "Giriş yapmak birçok kez mümkün değildir denediyseniz sorun sen için üzgün, ama sekreterya bağlanabilir eğer düşünüyorum.",
+            "auto_translated": "Giriş yapmak birçok kez mümkün değildir denediyseniz sorun sen için üzgün, ama sekreterya bağlanabilir eğer düşünüyorum."
+        },
+        "vi": {
+            "legacy_caption_pid": 32539,
+            "legacy_language_pid": 19,
+            "text": "Nếu bạn đã thử nhiều lần không thể đăng nhập vào rất tiếc khi rắc rối cho bạn, nhưng tôi nghĩ rằng nếu bạn có thể kết nối với Ban thư ký.",
+            "auto_translated": "Nếu bạn đã thử nhiều lần không thể đăng nhập vào rất tiếc khi rắc rối cho bạn, nhưng tôi nghĩ rằng nếu bạn có thể kết nối với Ban thư ký."
+        },
+        "pl": {
+            "legacy_caption_pid": 32540,
+            "legacy_language_pid": 20,
+            "text": "Jeśli nie próbowałem wiele razy nie mógł się zalogować jest przepraszam za kłopot, ale myślę, że jeśli można połączyć się z sekretariatem.",
+            "auto_translated": "Jeśli nie próbowałem wiele razy nie mógł się zalogować jest przepraszam za kłopot, ale myślę, że jeśli można połączyć się z sekretariatem."
+        },
+        "jv": {
+            "legacy_caption_pid": 32541,
+            "legacy_language_pid": 21,
+            "text": "Yen sampeyan wis nampa kakehan ora bisa log in punika nuwun kanggo alangan sampeyan, nanging aku sing yen sampeyan bisa nyambung menyang Sekretariat ing.",
+            "auto_translated": "Yen sampeyan wis nampa kakehan ora bisa log in punika nuwun kanggo alangan sampeyan, nanging aku sing yen sampeyan bisa nyambung menyang Sekretariat ing."
+        },
+        "pa": {
+            "legacy_caption_pid": 32542,
+            "legacy_language_pid": 22,
+            "text": "ਤੁਹਾਨੂੰ ਕਈ ਵਾਰ ਲਾਗਇਨ ਕਰਨ ਦੇ ਯੋਗ ਨਾ ਦੀ ਕੋਸ਼ਿਸ਼ ਕੀਤੀ ਹੈ, ਜੇ ਤੁਹਾਨੂੰ ਕੋਈ ਸਮੱਸਿਆ ਹੈ ਨੂੰ ਅਫ਼ਸੋਸ ਹੈ, ਪਰ ਮੈਨੂੰ ਲੱਗਦਾ ਹੈ ਕਿ ਜੇ ਤੁਹਾਨੂੰ ਸਕੱਤਰੇਤ ਨਾਲ ਜੁੜ ਸਕਦਾ ਹੈ.",
+            "auto_translated": "ਤੁਹਾਨੂੰ ਕਈ ਵਾਰ ਲਾਗਇਨ ਕਰਨ ਦੇ ਯੋਗ ਨਾ ਦੀ ਕੋਸ਼ਿਸ਼ ਕੀਤੀ ਹੈ, ਜੇ ਤੁਹਾਨੂੰ ਕੋਈ ਸਮੱਸਿਆ ਹੈ ਨੂੰ ਅਫ਼ਸੋਸ ਹੈ, ਪਰ ਮੈਨੂੰ ਲੱਗਦਾ ਹੈ ਕਿ ਜੇ ਤੁਹਾਨੂੰ ਸਕੱਤਰੇਤ ਨਾਲ ਜੁੜ ਸਕਦਾ ਹੈ."
+        },
+        "th": {
+            "legacy_caption_pid": 32543,
+            "legacy_language_pid": 23,
+            "text": "หากคุณได้ลองหลายครั้งไม่สามารถเข้าสู่ระบบเสียใจเป็นปัญหากับคุณ แต่ผมคิดว่าถ้าคุณสามารถเชื่อมต่อไปยังสำนักเลขาธิการ",
+            "auto_translated": "หากคุณได้ลองหลายครั้งไม่สามารถเข้าสู่ระบบเสียใจเป็นปัญหากับคุณ แต่ผมคิดว่าถ้าคุณสามารถเชื่อมต่อไปยังสำนักเลขาธิการ"
+        },
+        "te": {
+            "legacy_caption_pid": 40568,
+            "legacy_language_pid": 24,
+            "text": "మీరు లాగిన్ అనేక సార్లు చెయ్యలేక ప్రయత్నించాము ఉంటే ఇబ్బంది క్షమించండి, కానీ నేను మీరు సచివాలయానికి కనెక్ట్ లేదో అనుకుంటున్నాను.",
+            "auto_translated": "మీరు లాగిన్ అనేక సార్లు చెయ్యలేక ప్రయత్నించాము ఉంటే ఇబ్బంది క్షమించండి, కానీ నేను మీరు సచివాలయానికి కనెక్ట్ లేదో అనుకుంటున్నాను."
+        },
+        "mr": {
+            "legacy_caption_pid": 40569,
+            "legacy_language_pid": 25,
+            "text": "आपण प्रयत्न केले तर लॉग इन करू शकत नाही अनेक वेळा आपल्याला समस्या दिलगीर आहे, पण मी तुला सचिवालय कनेक्ट करू शकता तर, असे वाटते.",
+            "auto_translated": "आपण प्रयत्न केले तर लॉग इन करू शकत नाही अनेक वेळा आपल्याला समस्या दिलगीर आहे, पण मी तुला सचिवालय कनेक्ट करू शकता तर, असे वाटते."
+        },
+        "ur": {
+            "legacy_caption_pid": 40570,
+            "legacy_language_pid": 26,
+            "text": "آپ لاگ کئی بار کے قابل نہیں کی کوشش کی ہے تو آپ کو مصیبت کو افسوس ہے، لیکن میں آپ کو سیکرٹریٹ سے رابطہ قائم کر سکتے ہیں تو لگتا ہے کہ.",
+            "auto_translated": "آپ لاگ کئی بار کے قابل نہیں کی کوشش کی ہے تو آپ کو مصیبت کو افسوس ہے، لیکن میں آپ کو سیکرٹریٹ سے رابطہ قائم کر سکتے ہیں تو لگتا ہے کہ."
+        },
+        "gu": {
+            "legacy_caption_pid": 40571,
+            "legacy_language_pid": 27,
+            "text": "તમે ઘણી વખત લૉગ ઇન કરવામાં સક્ષમ નથી પ્રયત્ન કર્યો છે, તો તમે મુશ્કેલી ખેદ છે, પરંતુ મને લાગે છે કે જો તમે સચિવાલય સાથે કનેક્ટ કરી શકો છો.",
+            "auto_translated": "તમે ઘણી વખત લૉગ ઇન કરવામાં સક્ષમ નથી પ્રયત્ન કર્યો છે, તો તમે મુશ્કેલી ખેદ છે, પરંતુ મને લાગે છે કે જો તમે સચિવાલય સાથે કનેક્ટ કરી શકો છો."
+        },
+        "uk": {
+            "legacy_caption_pid": 40572,
+            "legacy_language_pid": 28,
+            "text": "Якщо ви вже пробували багато разів, не в змозі увійти шкода турбувати вас, але я думаю, що якщо ви можете підключитися до секретаріату.",
+            "auto_translated": "Якщо ви вже пробували багато разів, не в змозі увійти шкода турбувати вас, але я думаю, що якщо ви можете підключитися до секретаріату."
+        },
+        "ml": {
+            "legacy_caption_pid": 40573,
+            "legacy_language_pid": 29,
+            "text": "നിങ്ങൾ പ്രവേശിക്കാൻ കഴിയാത്ത പല തവണ ശ്രമിച്ചിട്ടുണ്ട് എങ്കിൽ നിങ്ങൾക്ക് പ്രശ്നം ഖേദിക്കുന്നു, ഞാൻ നിങ്ങളെ സെക്രട്ടേറിയറ്റിൽ കണക്ട് എടുക്കും എന്നു കരുതുന്നു.",
+            "auto_translated": "നിങ്ങൾ പ്രവേശിക്കാൻ കഴിയാത്ത പല തവണ ശ്രമിച്ചിട്ടുണ്ട് എങ്കിൽ നിങ്ങൾക്ക് പ്രശ്നം ഖേദിക്കുന്നു, ഞാൻ നിങ്ങളെ സെക്രട്ടേറിയറ്റിൽ കണക്ട് എടുക്കും എന്നു കരുതുന്നു."
+        },
+        "kn": {
+            "legacy_caption_pid": 40574,
+            "legacy_language_pid": 30,
+            "text": "ನೀವು ಲಾಗಿನ್ ಮಾಡಲು ಸಾಧ್ಯವಿಲ್ಲ ಅನೇಕ ಬಾರಿ ಪ್ರಯತ್ನಿಸಿದ ವೇಳೆ ನೀವು ತೊಂದರೆಗೆ ಕ್ಷಮಿಸಿ, ಆದರೆ ನಾನು ಸಚಿವಾಲಯದ ಗೆ ಸಂಪರ್ಕಿಸಬಹುದು ವೇಳೆ ಭಾವಿಸುತ್ತೇನೆ.",
+            "auto_translated": "ನೀವು ಲಾಗಿನ್ ಮಾಡಲು ಸಾಧ್ಯವಿಲ್ಲ ಅನೇಕ ಬಾರಿ ಪ್ರಯತ್ನಿಸಿದ ವೇಳೆ ನೀವು ತೊಂದರೆಗೆ ಕ್ಷಮಿಸಿ, ಆದರೆ ನಾನು ಸಚಿವಾಲಯದ ಗೆ ಸಂಪರ್ಕಿಸಬಹುದು ವೇಳೆ ಭಾವಿಸುತ್ತೇನೆ."
+        },
+        "su": {
+            "legacy_caption_pid": 40575,
+            "legacy_language_pid": 31,
+            "text": "Lamun geus diusahakeun sababaraha kali teu bisa asup nya punten ka gangguan anjeun, tapi kuring mikir yen lamun bisa nyambung ka sekretariat di.",
+            "auto_translated": "Lamun geus diusahakeun sababaraha kali teu bisa asup nya punten ka gangguan anjeun, tapi kuring mikir yen lamun bisa nyambung ka sekretariat di."
+        },
+        "ku": {
+            "legacy_caption_pid": 40576,
+            "legacy_language_pid": 32,
+            "text": "Ger tu tried gelek caran nikarin têkevim xemgîn ji bo ku we aciz e, lê ez bawer im ku, ger tu ji bo sekreteriya girêdan.",
+            "auto_translated": "Ger tu tried gelek caran nikarin têkevim xemgîn ji bo ku we aciz e, lê ez bawer im ku, ger tu ji bo sekreteriya girêdan."
+        },
+        "ps": {
+            "legacy_caption_pid": 40577,
+            "legacy_language_pid": 33,
+            "text": "که تاسو هڅه وکړه څو ځلې نه شي کولای څېره ده چې د ستونزو تاسو بخښنه، خو زه فکر کوم چې که تاسو کولای شي چې د دارالانشا سره ونښلوي.",
+            "auto_translated": "که تاسو هڅه وکړه څو ځلې نه شي کولای څېره ده چې د ستونزو تاسو بخښنه، خو زه فکر کوم چې که تاسو کولای شي چې د دارالانشا سره ونښلوي."
+        },
+        "ro": {
+            "legacy_caption_pid": 40578,
+            "legacy_language_pid": 34,
+            "text": "Dacă ați încercat de multe ori nu este în măsură să vă conectați este rău să vă deranjez, dar cred că, dacă vă puteți conecta la secretariat.",
+            "auto_translated": "Dacă ați încercat de multe ori nu este în măsură să vă conectați este rău să vă deranjez, dar cred că, dacă vă puteți conecta la secretariat."
+        },
+        "id": {
+            "legacy_caption_pid": 40579,
+            "legacy_language_pid": 35,
+            "text": "Jika Anda sudah mencoba berkali-kali tidak dapat log in adalah maaf untuk masalah Anda, tapi saya berpikir bahwa jika Anda dapat terhubung ke sekretariat.",
+            "auto_translated": "Jika Anda sudah mencoba berkali-kali tidak dapat log in adalah maaf untuk masalah Anda, tapi saya berpikir bahwa jika Anda dapat terhubung ke sekretariat."
+        },
+        "sd": {
+            "legacy_caption_pid": 40580,
+            "legacy_language_pid": 36,
+            "text": "توهان کي ڪيترا ڀيرا لاگ ان ڪرڻ جي قابل نه جي ڪوشش ڪئي وئي ته اوھان کي ڏکي کي افسوس آهي، پر مان سمجهان ٿو ته جيڪڏهن توهان جي secretariat کي ڳنڍي سگهو ٿا.",
+            "auto_translated": "توهان کي ڪيترا ڀيرا لاگ ان ڪرڻ جي قابل نه جي ڪوشش ڪئي وئي ته اوھان کي ڏکي کي افسوس آهي، پر مان سمجهان ٿو ته جيڪڏهن توهان جي secretariat کي ڳنڍي سگهو ٿا."
+        },
+        "af": {
+            "legacy_caption_pid": 40581,
+            "legacy_language_pid": 37,
+            "text": "As jy probeer om soveel keer nie in staat om aan te meld is jammer om moeilikheid jou, maar ek dink dat as jy kan koppel aan die sekretariaat.",
+            "auto_translated": "As jy probeer om soveel keer nie in staat om aan te meld is jammer om moeilikheid jou, maar ek dink dat as jy kan koppel aan die sekretariaat."
+        },
+        "sw": {
+            "legacy_caption_pid": 40582,
+            "legacy_language_pid": 38,
+            "text": "Kama wameweza alijaribu mara nyingi hawawezi kuingia kwenye kitu pole kwa shida, lakini nadhani kwamba kama unaweza kuunganisha na sekretarieti.",
+            "auto_translated": "Kama wameweza alijaribu mara nyingi hawawezi kuingia kwenye kitu pole kwa shida, lakini nadhani kwamba kama unaweza kuunganisha na sekretarieti."
+        },
+        "lo": {
+            "legacy_caption_pid": 40583,
+            "legacy_language_pid": 39,
+            "text": "ຖ້າຫາກວ່າທ່ານໄດ້ພະຍາຍາມຫຼາຍເທື່ອແລ້ວບໍ່ສາມາດທີ່ຈະເຂົ້າສູ່ລະບົບແມ່ນຂໍອະໄພກັບບັນຫາທ່ານ, ແຕ່ຂ້າພະເຈົ້າຄິດວ່າຖ້າຫາກວ່າທ່ານສາມາດເຊື່ອມຕໍ່ກັບກອງເລຂາ.",
+            "auto_translated": "ຖ້າຫາກວ່າທ່ານໄດ້ພະຍາຍາມຫຼາຍເທື່ອແລ້ວບໍ່ສາມາດທີ່ຈະເຂົ້າສູ່ລະບົບແມ່ນຂໍອະໄພກັບບັນຫາທ່ານ, ແຕ່ຂ້າພະເຈົ້າຄິດວ່າຖ້າຫາກວ່າທ່ານສາມາດເຊື່ອມຕໍ່ກັບກອງເລຂາ."
+        },
+        "nl": {
+            "legacy_caption_pid": 40584,
+            "legacy_language_pid": 40,
+            "text": "Als je hebt geprobeerd vaak niet in staat om in te loggen is het jammer dat je lastig, maar ik denk dat als je verbinding kunt maken met het secretariaat.",
+            "auto_translated": "Als je hebt geprobeerd vaak niet in staat om in te loggen is het jammer dat je lastig, maar ik denk dat als je verbinding kunt maken met het secretariaat."
+        },
+        "tl": {
+            "legacy_caption_pid": 40585,
+            "legacy_language_pid": 41,
+            "text": "Kung nasubukan mo na maraming beses na hindi magagawang mag-log in ay humihingi nang paumanhin sa pag-mo, ngunit sa tingin ko na kung maaari mong kumonekta sa kalihiman.",
+            "auto_translated": "Kung nasubukan mo na maraming beses na hindi magagawang mag-log in ay humihingi nang paumanhin sa pag-mo, ngunit sa tingin ko na kung maaari mong kumonekta sa kalihiman."
+        },
+        "ne": {
+            "legacy_caption_pid": 40586,
+            "legacy_language_pid": 42,
+            "text": "तपाईं धेरै पटक लग इन गर्नुहोस् गर्न सक्षम गर्नुभएको छ भने समस्या तपाईं दु: खी छ, तर म तिमीलाई सचिवालय जडान गर्न सक्नुहुन्छ भने ठान्छन्।",
+            "auto_translated": "तपाईं धेरै पटक लग इन गर्नुहोस् गर्न सक्षम गर्नुभएको छ भने समस्या तपाईं दु: खी छ, तर म तिमीलाई सचिवालय जडान गर्न सक्नुहुन्छ भने ठान्छन्।"
+        },
+        "hu": {
+            "legacy_caption_pid": 40587,
+            "legacy_language_pid": 43,
+            "text": "Ha már próbáltam sokszor nem tud bejelentkezni az sajnálom, hogy baj van, de azt hiszem, hogy tud-e csatlakozni a titkárságnak.",
+            "auto_translated": "Ha már próbáltam sokszor nem tud bejelentkezni az sajnálom, hogy baj van, de azt hiszem, hogy tud-e csatlakozni a titkárságnak."
+        },
+        "cs": {
+            "legacy_caption_pid": 40588,
+            "legacy_language_pid": 44,
+            "text": "Pokud jste se snažil mnohokrát nemohl přihlásit je líto, že vás obtěžuji, ale myslím, že pokud se můžete připojit na sekretariát.",
+            "auto_translated": "Pokud jste se snažil mnohokrát nemohl přihlásit je líto, že vás obtěžuji, ale myslím, že pokud se můžete připojit na sekretariát."
+        },
+        "el": {
+            "legacy_caption_pid": 40589,
+            "legacy_language_pid": 45,
+            "text": "Εάν έχετε δοκιμάσει πολλές φορές δεν είναι σε θέση να συνδεθείτε είναι θλιβερό να σας απασχολήσω, αλλά νομίζω ότι αν μπορείτε να συνδεθείτε με τη γραμματεία.",
+            "auto_translated": "Εάν έχετε δοκιμάσει πολλές φορές δεν είναι σε θέση να συνδεθείτε είναι θλιβερό να σας απασχολήσω, αλλά νομίζω ότι αν μπορείτε να συνδεθείτε με τη γραμματεία."
+        },
+        "sv": {
+            "legacy_caption_pid": 40590,
+            "legacy_language_pid": 46,
+            "text": "Om du har provat många gånger inte kan logga in är ledsen att besvära er, men jag tror att om du kan ansluta till sekretariatet.",
+            "auto_translated": "Om du har provat många gånger inte kan logga in är ledsen att besvära er, men jag tror att om du kan ansluta till sekretariatet."
+        },
+        "kk": {
+            "legacy_caption_pid": 40591,
+            "legacy_language_pid": 47,
+            "text": "Сіз кіру мүмкін емес бірнеше рет тырысты болсаңыз сізді алаңдатпай өкінішті, бірақ менің ойымша, сіз хатшылығының қосылуға болады, егер деп ойлаймын.",
+            "auto_translated": "Сіз кіру мүмкін емес бірнеше рет тырысты болсаңыз сізді алаңдатпай өкінішті, бірақ менің ойымша, сіз хатшылығының қосылуға болады, егер деп ойлаймын."
+        },
+        "fi": {
+            "legacy_caption_pid": 40592,
+            "legacy_language_pid": 48,
+            "text": "Jos olet yrittänyt monta kertaa pysty kirjautumaan sisään on pahoillani vaivata sinua, mutta luulen, että jos pystyt yhdistämään sihteeristölle.",
+            "auto_translated": "Jos olet yrittänyt monta kertaa pysty kirjautumaan sisään on pahoillani vaivata sinua, mutta luulen, että jos pystyt yhdistämään sihteeristölle."
+        },
+        "da": {
+            "legacy_caption_pid": 40593,
+            "legacy_language_pid": 49,
+            "text": "Hvis du har prøvet mange gange ikke er i stand til at logge ind, er ked af at besvære dig, men jeg tror, ​​at hvis du kan oprette forbindelse til sekretariatet.",
+            "auto_translated": "Hvis du har prøvet mange gange ikke er i stand til at logge ind, er ked af at besvære dig, men jeg tror, ​​at hvis du kan oprette forbindelse til sekretariatet."
+        },
+        "he": {
+            "legacy_caption_pid": 40594,
+            "legacy_language_pid": 50,
+            "text": "אם ניסית פעמים רבות לא יכולות להתחבר הוא מטריח אותך, אבל אני חושב שאם אתה יכול להתחבר המזכירות.",
+            "auto_translated": "אם ניסית פעמים רבות לא יכולות להתחבר הוא מטריח אותך, אבל אני חושב שאם אתה יכול להתחבר המזכירות."
+        },
+        "no": {
+            "legacy_caption_pid": 40595,
+            "legacy_language_pid": 51,
+            "text": "Hvis du har prøvd mange ganger ikke klarer å logge inn er lei for å plage deg, men jeg tror at hvis du kan koble til sekretariatet.",
+            "auto_translated": "Hvis du har prøvd mange ganger ikke klarer å logge inn er lei for å plage deg, men jeg tror at hvis du kan koble til sekretariatet."
+        }
+    }
+}

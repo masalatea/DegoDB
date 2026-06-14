@@ -1,0 +1,69 @@
+{
+    "resource_key": "TITLE_SLA",
+    "legacy_resource_pid": 665,
+    "base_group_key": "grp-010-matsuesoft-lib",
+    "additional_group_keys": [],
+    "key_for_update": "6lJgvNL4xffOvuEAgme02m1TG1bLo9X8uU1EPpbcSDQGlLwgyHPwwEL7l9l5TKOdo3iywHwCgcvgRrArTSTMWn7zIxpEygJvY9SoQa1zafVO9A9X9gKlKHamDjd34v8A",
+    "sort_group": "TITLE",
+    "key_name": "TITLE_SLA",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": true,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 4742,
+            "legacy_language_pid": 1,
+            "text": "サービスレベルアグリーメント (SLA) - $DOMAINNAMECAPTION_JP",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 4743,
+            "legacy_language_pid": 2,
+            "text": "Service Level Agreement (SLA) - $DOMAINNAMECAPTION_EN",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 15408,
+            "legacy_language_pid": 3,
+            "text": "",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 15409,
+            "legacy_language_pid": 4,
+            "text": "",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 15410,
+            "legacy_language_pid": 5,
+            "text": "Acuerdo de nivel de servicio (SLA) - $DOMAINNAMECAPTION_ES",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 15411,
+            "legacy_language_pid": 6,
+            "text": "Contrato de nível de serviço (SLA) - $DOMAINNAMECAPTION_EN",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 15412,
+            "legacy_language_pid": 7,
+            "text": "",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 17397,
+            "legacy_language_pid": 8,
+            "text": "Accord de niveau de service (SLA) - $DOMAINNAMECAPTION_EN",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 17398,
+            "legacy_language_pid": 9,
+            "text": "सर्विस लेवल एग्रीमेंट (एसएलए) - $ DOMAINNAMECAPTION_HI",
+            "auto_translated": ""
+        }
+    }
+}

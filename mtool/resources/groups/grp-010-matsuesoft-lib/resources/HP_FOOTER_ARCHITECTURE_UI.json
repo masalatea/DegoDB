@@ -1,0 +1,69 @@
+{
+    "resource_key": "HP_FOOTER_ARCHITECTURE_UI",
+    "legacy_resource_pid": 722,
+    "base_group_key": "grp-010-matsuesoft-lib",
+    "additional_group_keys": [],
+    "key_for_update": "uzD7iBFzOQV6AIfUsNgOvUJz04MvAgyZH5y2gJ4u8RIKNHhuoJwovf2k67ahkIr23LO61yXUCkgsZGItoq1TV2zHxzCnOo1fkB3LeRkxO1OcaXyqbHxn5IoD58J0Wilj",
+    "sort_group": "HP FOOTER",
+    "key_name": "HP_FOOTER_ARCHITECTURE_UI",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": true,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 4544,
+            "legacy_language_pid": 1,
+            "text": "ユーザインタフェース・アーキテクチャ",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 4545,
+            "legacy_language_pid": 2,
+            "text": "User Interface Architecture",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 13372,
+            "legacy_language_pid": 3,
+            "text": "",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 13373,
+            "legacy_language_pid": 4,
+            "text": "",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 13374,
+            "legacy_language_pid": 5,
+            "text": "Arquitectura de la interfaz de usuario",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 13375,
+            "legacy_language_pid": 6,
+            "text": "Arquitetura de interface de usuário",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 13376,
+            "legacy_language_pid": 7,
+            "text": "",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 17071,
+            "legacy_language_pid": 8,
+            "text": "Architecture de base de données",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 17072,
+            "legacy_language_pid": 9,
+            "text": "उपयोगकर्ता इंटरफ़ेस वास्तुकला",
+            "auto_translated": ""
+        }
+    }
+}

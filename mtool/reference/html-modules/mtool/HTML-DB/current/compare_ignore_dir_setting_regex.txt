@@ -1,0 +1,37 @@
+# 無視するディレクトリ設定
+
+/\/fonts$/i
+/\/images$/i
+/\/js$/i
+/\/database_backup$/i
+/\/root_tools$/i
+/\/css$/i
+/\/live_check$/i
+/\/PHPMailer$/i
+/\/enroll_logs$/i
+/\/obj$/i
+/\/bin$/i
+/\/.gradle$/i
+/\/gradle$/i
+/\/.idea$/i
+/\/build$/i
+/\/.vs$/i
+/\/packages$/i
+
+/\/no[ _\-]?upload$/i
+/\/old$/i
+/\/old - modules$/i
+/\/Templates$/i
+/\/_notes$/i
+/\/_cnskin$/i
+/\/past_terms_of_service$/i
+/\/_module$/i
+/\/photocinema$/i
+/\/cn26$/i
+/\/_src$/i
+/phpMyAdmin.*management$/i
+/\/資料$/i
+/\/素材$/i
+/\/メモ$/i
+/\/移動用ドメイン各種$/i
+/\/\.DS_Store$/i

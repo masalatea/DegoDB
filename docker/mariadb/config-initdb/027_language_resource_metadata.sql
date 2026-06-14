@@ -1,0 +1,3 @@
+-- LanguageResource canonical DB metadata retired on 2026-05-15.
+-- Source of truth is the JSON file tree under mtool/resources/<PROJECT_KEY>/.
+-- This file intentionally remains as a no-op placeholder to keep initdb numbering stable.

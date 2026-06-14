@@ -1,0 +1,69 @@
+{
+    "resource_key": "HP_FOOTER_MISSON",
+    "legacy_resource_pid": 681,
+    "base_group_key": "grp-010-matsuesoft-lib",
+    "additional_group_keys": [],
+    "key_for_update": "vkKsBYdifJTBwLPzapk3gYGO23U5OPlfFMcmkIUiXKlLyx3AS7fQfuyV4OWS1N44BBzzaAczJ0EjGCRwqipkOrtMm2bIjb0ZMXEmzBOPw8QcAnSf2zCThAkTD9vzO1rT",
+    "sort_group": "HP FOOTER",
+    "key_name": "HP_FOOTER_MISSON",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": true,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 4608,
+            "legacy_language_pid": 1,
+            "text": "マツエソフト創立の理念 (ミッション・ビジョン・社是・ポリシー)",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 4609,
+            "legacy_language_pid": 2,
+            "text": "Philosophy of Matsuesoft Foundation",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 14236,
+            "legacy_language_pid": 3,
+            "text": "",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 14237,
+            "legacy_language_pid": 4,
+            "text": "",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 14238,
+            "legacy_language_pid": 5,
+            "text": "Filosofía de la Fundación Matsuesoft",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 14239,
+            "legacy_language_pid": 6,
+            "text": "Fundação Filosofia da Matsuesoft",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 14240,
+            "legacy_language_pid": 7,
+            "text": "",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 17135,
+            "legacy_language_pid": 8,
+            "text": "Fondation Philosophie de Matsuesoft",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 17136,
+            "legacy_language_pid": 9,
+            "text": "Matsuesoft फाउंडेशन का दर्शन",
+            "auto_translated": ""
+        }
+    }
+}

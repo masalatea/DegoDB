@@ -1,0 +1,321 @@
+{
+    "resource_key": "COMMON_LIB_ENROLL_HEADER_SKYPE_EXPLANATION1",
+    "legacy_resource_pid": 1423,
+    "base_group_key": "grp-010-matsuesoft-lib",
+    "additional_group_keys": [],
+    "key_for_update": "e0RwUYjpwHxSgke5ZgXkHezZtj35DrbURuwmYYEeWBsMBxaGCCQ3dUAad3HylwmWeWXWilxx3MIrOUPjsJNOjTiYnRHjEJ6sGZirr1yPVR8o6Gev7lvPqocftFkGAvUz",
+    "sort_group": "ENROLL",
+    "key_name": "COMMON_LIB_ENROLL_HEADER_SKYPE_EXPLANATION1",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": false,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 5966,
+            "legacy_language_pid": 1,
+            "text": "半角でご入力下さい。",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 5967,
+            "legacy_language_pid": 2,
+            "text": "Please enter in half size.",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 5968,
+            "legacy_language_pid": 3,
+            "text": "请输入半角。",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 5969,
+            "legacy_language_pid": 4,
+            "text": "반각으로 입력 해주세요.",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 10886,
+            "legacy_language_pid": 5,
+            "text": "Por favor, introduzca la mitad de ancho.",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 10887,
+            "legacy_language_pid": 6,
+            "text": "Por favor, indique meia largura.",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 10888,
+            "legacy_language_pid": 7,
+            "text": "請輸入半角。",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 17025,
+            "legacy_language_pid": 8,
+            "text": "S'il vous plaît entrer demi-largeur.",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 17026,
+            "legacy_language_pid": 9,
+            "text": "अर्ध-चौड़ाई दर्ज करें।",
+            "auto_translated": ""
+        },
+        "ar": {
+            "legacy_caption_pid": 31690,
+            "legacy_language_pid": 10,
+            "text": "الرجاء إدخال بنصف العرض.",
+            "auto_translated": "الرجاء إدخال بنصف العرض."
+        },
+        "fa": {
+            "legacy_caption_pid": 31691,
+            "legacy_language_pid": 11,
+            "text": "لطفا نیمه عرض را وارد کنید.",
+            "auto_translated": "لطفا نیمه عرض را وارد کنید."
+        },
+        "de": {
+            "legacy_caption_pid": 31692,
+            "legacy_language_pid": 12,
+            "text": "Bitte geben Sie mit halber Breite.",
+            "auto_translated": "Bitte geben Sie mit halber Breite."
+        },
+        "ru": {
+            "legacy_caption_pid": 31693,
+            "legacy_language_pid": 13,
+            "text": "Пожалуйста, введите половину ширины.",
+            "auto_translated": "Пожалуйста, введите половину ширины."
+        },
+        "ms": {
+            "legacy_caption_pid": 31694,
+            "legacy_language_pid": 14,
+            "text": "Sila masukkan separuh lebar.",
+            "auto_translated": "Sila masukkan separuh lebar."
+        },
+        "ta": {
+            "legacy_caption_pid": 31695,
+            "legacy_language_pid": 15,
+            "text": "தயவு செய்து அரை அகல உள்ளிடவும்.",
+            "auto_translated": "தயவு செய்து அரை அகல உள்ளிடவும்."
+        },
+        "it": {
+            "legacy_caption_pid": 31696,
+            "legacy_language_pid": 16,
+            "text": "Si prega di inserire metà larghezza.",
+            "auto_translated": "Si prega di inserire metà larghezza."
+        },
+        "bn": {
+            "legacy_caption_pid": 31697,
+            "legacy_language_pid": 17,
+            "text": "অর্ধ-প্রস্থ লিখুন দয়া করে।",
+            "auto_translated": "অর্ধ-প্রস্থ লিখুন দয়া করে।"
+        },
+        "tr": {
+            "legacy_caption_pid": 31698,
+            "legacy_language_pid": 18,
+            "text": "Yarım genişlik girin.",
+            "auto_translated": "Yarım genişlik girin."
+        },
+        "vi": {
+            "legacy_caption_pid": 31699,
+            "legacy_language_pid": 19,
+            "text": "Vui lòng nhập nửa chiều rộng.",
+            "auto_translated": "Vui lòng nhập nửa chiều rộng."
+        },
+        "pl": {
+            "legacy_caption_pid": 31700,
+            "legacy_language_pid": 20,
+            "text": "Proszę wpisać połowę szerokości.",
+            "auto_translated": "Proszę wpisać połowę szerokości."
+        },
+        "jv": {
+            "legacy_caption_pid": 31701,
+            "legacy_language_pid": 21,
+            "text": "Mangga ketik setengah jembaré.",
+            "auto_translated": "Mangga ketik setengah jembaré."
+        },
+        "pa": {
+            "legacy_caption_pid": 31702,
+            "legacy_language_pid": 22,
+            "text": "ਅੱਧੇ-ਚੌੜਾਈ ਦਿਓ ਜੀ.",
+            "auto_translated": "ਅੱਧੇ-ਚੌੜਾਈ ਦਿਓ ਜੀ."
+        },
+        "th": {
+            "legacy_caption_pid": 31703,
+            "legacy_language_pid": 23,
+            "text": "กรุณากรอกครึ่งความกว้าง",
+            "auto_translated": "กรุณากรอกครึ่งความกว้าง"
+        },
+        "te": {
+            "legacy_caption_pid": 38692,
+            "legacy_language_pid": 24,
+            "text": "సగం వెడల్పు నమోదు చేయండి.",
+            "auto_translated": "సగం వెడల్పు నమోదు చేయండి."
+        },
+        "mr": {
+            "legacy_caption_pid": 38693,
+            "legacy_language_pid": 25,
+            "text": "अर्धा रूंदी प्रविष्ट करा.",
+            "auto_translated": "अर्धा रूंदी प्रविष्ट करा."
+        },
+        "ur": {
+            "legacy_caption_pid": 38694,
+            "legacy_language_pid": 26,
+            "text": "نصف چوڑائی داخل کریں.",
+            "auto_translated": "نصف چوڑائی داخل کریں."
+        },
+        "gu": {
+            "legacy_caption_pid": 38695,
+            "legacy_language_pid": 27,
+            "text": "અર્ધ-પહોળાઈ દાખલ કરો.",
+            "auto_translated": "અર્ધ-પહોળાઈ દાખલ કરો."
+        },
+        "uk": {
+            "legacy_caption_pid": 38696,
+            "legacy_language_pid": 28,
+            "text": "Будь ласка, введіть половину ширини.",
+            "auto_translated": "Будь ласка, введіть половину ширини."
+        },
+        "ml": {
+            "legacy_caption_pid": 38697,
+            "legacy_language_pid": 29,
+            "text": "ദയവായി പകുതി-വീതി നൽകുക.",
+            "auto_translated": "ദയവായി പകുതി-വീതി നൽകുക."
+        },
+        "kn": {
+            "legacy_caption_pid": 38698,
+            "legacy_language_pid": 30,
+            "text": "ದಯವಿಟ್ಟು ಅರ್ಧ ಅಗಲ ನಮೂದಿಸಿ.",
+            "auto_translated": "ದಯವಿಟ್ಟು ಅರ್ಧ ಅಗಲ ನಮೂದಿಸಿ."
+        },
+        "su": {
+            "legacy_caption_pid": 38699,
+            "legacy_language_pid": 31,
+            "text": "Mangga lebetkeun satengah lebar.",
+            "auto_translated": "Mangga lebetkeun satengah lebar."
+        },
+        "ku": {
+            "legacy_caption_pid": 38700,
+            "legacy_language_pid": 32,
+            "text": "Ji kerema xwe nîv-width bikevin.",
+            "auto_translated": "Ji kerema xwe nîv-width bikevin."
+        },
+        "ps": {
+            "legacy_caption_pid": 38701,
+            "legacy_language_pid": 33,
+            "text": "لطفا نیم سور وليکئ.",
+            "auto_translated": "لطفا نیم سور وليکئ."
+        },
+        "ro": {
+            "legacy_caption_pid": 38702,
+            "legacy_language_pid": 34,
+            "text": "Vă rugăm să introduceți jumătate de lățime.",
+            "auto_translated": "Vă rugăm să introduceți jumătate de lățime."
+        },
+        "id": {
+            "legacy_caption_pid": 38703,
+            "legacy_language_pid": 35,
+            "text": "Masukkan setengah-lebar.",
+            "auto_translated": "Masukkan setengah-lebar."
+        },
+        "sd": {
+            "legacy_caption_pid": 38704,
+            "legacy_language_pid": 36,
+            "text": "اڌ-ويڪر ۾ داخل ڪريو.",
+            "auto_translated": "اڌ-ويڪر ۾ داخل ڪريو."
+        },
+        "af": {
+            "legacy_caption_pid": 38705,
+            "legacy_language_pid": 37,
+            "text": "Voer half-breedte.",
+            "auto_translated": "Voer half-breedte."
+        },
+        "sw": {
+            "legacy_caption_pid": 38706,
+            "legacy_language_pid": 38,
+            "text": "Tafadhali weka nusu upana.",
+            "auto_translated": "Tafadhali weka nusu upana."
+        },
+        "lo": {
+            "legacy_caption_pid": 38707,
+            "legacy_language_pid": 39,
+            "text": "ກະລຸນາໃສ່ເຄິ່ງ width.",
+            "auto_translated": "ກະລຸນາໃສ່ເຄິ່ງ width."
+        },
+        "nl": {
+            "legacy_caption_pid": 38708,
+            "legacy_language_pid": 40,
+            "text": "Vul de halve breedte.",
+            "auto_translated": "Vul de halve breedte."
+        },
+        "tl": {
+            "legacy_caption_pid": 38709,
+            "legacy_language_pid": 41,
+            "text": "Pakipasok ang half-width.",
+            "auto_translated": "Pakipasok ang half-width."
+        },
+        "ne": {
+            "legacy_caption_pid": 38710,
+            "legacy_language_pid": 42,
+            "text": "कृपया आधा-चौडाइ प्रविष्ट गर्नुहोस्।",
+            "auto_translated": "कृपया आधा-चौडाइ प्रविष्ट गर्नुहोस्।"
+        },
+        "hu": {
+            "legacy_caption_pid": 38711,
+            "legacy_language_pid": 43,
+            "text": "Kérjük, adja félszélességű.",
+            "auto_translated": "Kérjük, adja félszélességű."
+        },
+        "cs": {
+            "legacy_caption_pid": 38712,
+            "legacy_language_pid": 44,
+            "text": "Prosím, zadejte poloviční šířky.",
+            "auto_translated": "Prosím, zadejte poloviční šířky."
+        },
+        "el": {
+            "legacy_caption_pid": 38713,
+            "legacy_language_pid": 45,
+            "text": "Παρακαλώ εισάγετε μισού πλάτους.",
+            "auto_translated": "Παρακαλώ εισάγετε μισού πλάτους."
+        },
+        "sv": {
+            "legacy_caption_pid": 38714,
+            "legacy_language_pid": 46,
+            "text": "Ange halv bredd.",
+            "auto_translated": "Ange halv bredd."
+        },
+        "kk": {
+            "legacy_caption_pid": 38715,
+            "legacy_language_pid": 47,
+            "text": "жарты енін енгізіңіз.",
+            "auto_translated": "жарты енін енгізіңіз."
+        },
+        "fi": {
+            "legacy_caption_pid": 38716,
+            "legacy_language_pid": 48,
+            "text": "Anna puolileveä.",
+            "auto_translated": "Anna puolileveä."
+        },
+        "da": {
+            "legacy_caption_pid": 38717,
+            "legacy_language_pid": 49,
+            "text": "Indtast venligst halv bredde.",
+            "auto_translated": "Indtast venligst halv bredde."
+        },
+        "he": {
+            "legacy_caption_pid": 38718,
+            "legacy_language_pid": 50,
+            "text": "נא להזין את רוחב מחצית.",
+            "auto_translated": "נא להזין את רוחב מחצית."
+        },
+        "no": {
+            "legacy_caption_pid": 38719,
+            "legacy_language_pid": 51,
+            "text": "Oppgi halv bredde.",
+            "auto_translated": "Oppgi halv bredde."
+        }
+    }
+}

@@ -1,0 +1,321 @@
+{
+    "resource_key": "COMMON_LIB_ENROLL_HEADER_EMAIL_CONFIRMATION",
+    "legacy_resource_pid": 1419,
+    "base_group_key": "grp-010-matsuesoft-lib",
+    "additional_group_keys": [],
+    "key_for_update": "n4cYfHYGFCQAueMFEUNAB513FVrzsM2Z2nMpyOLJizkCgLRcOWBY8ZmIjmNxkjQSXl5mmuAVF6Sh4zjt5U5FVrXNuDv19CzdoX48EHnwNNwFWa7zyo9wrdLqlucWYFoD",
+    "sort_group": "ENROLL",
+    "key_name": "COMMON_LIB_ENROLL_HEADER_EMAIL_CONFIRMATION",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": false,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 5950,
+            "legacy_language_pid": 1,
+            "text": "メールアドレス確認:",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 5951,
+            "legacy_language_pid": 2,
+            "text": "Confirm email address:",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 5952,
+            "legacy_language_pid": 3,
+            "text": "确认电子邮件地址：",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 5953,
+            "legacy_language_pid": 4,
+            "text": "이메일 주소 확인 :",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 10820,
+            "legacy_language_pid": 5,
+            "text": "Confirmar el correo:",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 10821,
+            "legacy_language_pid": 6,
+            "text": "Confirme o endereço de e-mail:",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 10822,
+            "legacy_language_pid": 7,
+            "text": "確認電子郵件地址：",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 16987,
+            "legacy_language_pid": 8,
+            "text": "Confirmez votre adresse email:",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 16988,
+            "legacy_language_pid": 9,
+            "text": "ईमेल पते की पुष्टि करें:",
+            "auto_translated": ""
+        },
+        "ar": {
+            "legacy_caption_pid": 31382,
+            "legacy_language_pid": 10,
+            "text": "تأكيد عنوان البريد الإلكتروني:",
+            "auto_translated": "تأكيد عنوان البريد الإلكتروني:"
+        },
+        "fa": {
+            "legacy_caption_pid": 31383,
+            "legacy_language_pid": 11,
+            "text": "تأیید آدرس ایمیل:",
+            "auto_translated": "تأیید آدرس ایمیل:"
+        },
+        "de": {
+            "legacy_caption_pid": 31384,
+            "legacy_language_pid": 12,
+            "text": "Bestätigen Sie E-Mail Adresse:",
+            "auto_translated": "Bestätigen Sie E-Mail Adresse:"
+        },
+        "ru": {
+            "legacy_caption_pid": 31385,
+            "legacy_language_pid": 13,
+            "text": "Подтвердите адрес электронной почты:",
+            "auto_translated": "Подтвердите адрес электронной почты:"
+        },
+        "ms": {
+            "legacy_caption_pid": 31386,
+            "legacy_language_pid": 14,
+            "text": "Mengesahkan alamat e-mel:",
+            "auto_translated": "Mengesahkan alamat e-mel:"
+        },
+        "ta": {
+            "legacy_caption_pid": 31387,
+            "legacy_language_pid": 15,
+            "text": "மின்னஞ்சல் முகவரியைச் சரிபார்க்கவும்:",
+            "auto_translated": "மின்னஞ்சல் முகவரியைச் சரிபார்க்கவும்:"
+        },
+        "it": {
+            "legacy_caption_pid": 31388,
+            "legacy_language_pid": 16,
+            "text": "Confermare indirizzo e-mail:",
+            "auto_translated": "Confermare indirizzo e-mail:"
+        },
+        "bn": {
+            "legacy_caption_pid": 31389,
+            "legacy_language_pid": 17,
+            "text": "ই-মেইল ঠিকানা নিশ্চিত করুন:",
+            "auto_translated": "ই-মেইল ঠিকানা নিশ্চিত করুন:"
+        },
+        "tr": {
+            "legacy_caption_pid": 31390,
+            "legacy_language_pid": 18,
+            "text": "E-posta adresini onaylayın:",
+            "auto_translated": "E-posta adresini onaylayın:"
+        },
+        "vi": {
+            "legacy_caption_pid": 31391,
+            "legacy_language_pid": 19,
+            "text": "Xác nhận địa chỉ email:",
+            "auto_translated": "Xác nhận địa chỉ email:"
+        },
+        "pl": {
+            "legacy_caption_pid": 31392,
+            "legacy_language_pid": 20,
+            "text": "Potwierdź adres e-mail:",
+            "auto_translated": "Potwierdź adres e-mail:"
+        },
+        "jv": {
+            "legacy_caption_pid": 31393,
+            "legacy_language_pid": 21,
+            "text": "Konfirmasi alamat email:",
+            "auto_translated": "Konfirmasi alamat email:"
+        },
+        "pa": {
+            "legacy_caption_pid": 31394,
+            "legacy_language_pid": 22,
+            "text": "ਈਮੇਲ ਪਤੇ ਦੀ ਪੁਸ਼ਟੀ:",
+            "auto_translated": "ਈਮੇਲ ਪਤੇ ਦੀ ਪੁਸ਼ਟੀ:"
+        },
+        "th": {
+            "legacy_caption_pid": 31395,
+            "legacy_language_pid": 23,
+            "text": "ยืนยันที่อยู่อีเมล:",
+            "auto_translated": "ยืนยันที่อยู่อีเมล:"
+        },
+        "te": {
+            "legacy_caption_pid": 39280,
+            "legacy_language_pid": 24,
+            "text": "ఇమెయిల్ చిరునామా నిర్ధారించండి:",
+            "auto_translated": "ఇమెయిల్ చిరునామా నిర్ధారించండి:"
+        },
+        "mr": {
+            "legacy_caption_pid": 39281,
+            "legacy_language_pid": 25,
+            "text": "ई-मेल पत्त्याची पुष्टी करा:",
+            "auto_translated": "ई-मेल पत्त्याची पुष्टी करा:"
+        },
+        "ur": {
+            "legacy_caption_pid": 39282,
+            "legacy_language_pid": 26,
+            "text": "ای میل ایڈریس کی تصدیق کریں:",
+            "auto_translated": "ای میل ایڈریس کی تصدیق کریں:"
+        },
+        "gu": {
+            "legacy_caption_pid": 39283,
+            "legacy_language_pid": 27,
+            "text": "ઇમેઇલ સરનામું પુષ્ટિ કરો:",
+            "auto_translated": "ઇમેઇલ સરનામું પુષ્ટિ કરો:"
+        },
+        "uk": {
+            "legacy_caption_pid": 39284,
+            "legacy_language_pid": 28,
+            "text": "Підтвердіть адресу електронної пошти:",
+            "auto_translated": "Підтвердіть адресу електронної пошти:"
+        },
+        "ml": {
+            "legacy_caption_pid": 39285,
+            "legacy_language_pid": 29,
+            "text": "ഇമെയിൽ വിലാസം സ്ഥിരീകരിക്കുക:",
+            "auto_translated": "ഇമെയിൽ വിലാസം സ്ഥിരീകരിക്കുക:"
+        },
+        "kn": {
+            "legacy_caption_pid": 39286,
+            "legacy_language_pid": 30,
+            "text": "ಇಮೇಲ್ ವಿಳಾಸವನ್ನು ಖಚಿತಪಡಿಸಿ:",
+            "auto_translated": "ಇಮೇಲ್ ವಿಳಾಸವನ್ನು ಖಚಿತಪಡಿಸಿ:"
+        },
+        "su": {
+            "legacy_caption_pid": 39287,
+            "legacy_language_pid": 31,
+            "text": "Mastikeun alamat surélék:",
+            "auto_translated": "Mastikeun alamat surélék:"
+        },
+        "ku": {
+            "legacy_caption_pid": 39288,
+            "legacy_language_pid": 32,
+            "text": "E-Mail adresê:",
+            "auto_translated": "E-Mail adresê:"
+        },
+        "ps": {
+            "legacy_caption_pid": 39289,
+            "legacy_language_pid": 33,
+            "text": "تاييد دبرېښنا ليک پته:",
+            "auto_translated": "تاييد دبرېښنا ليک پته:"
+        },
+        "ro": {
+            "legacy_caption_pid": 39290,
+            "legacy_language_pid": 34,
+            "text": "Confirmați adresa de e-mail:",
+            "auto_translated": "Confirmați adresa de e-mail:"
+        },
+        "id": {
+            "legacy_caption_pid": 39291,
+            "legacy_language_pid": 35,
+            "text": "Konfirmasi alamat email:",
+            "auto_translated": "Konfirmasi alamat email:"
+        },
+        "sd": {
+            "legacy_caption_pid": 39292,
+            "legacy_language_pid": 36,
+            "text": "اي ميل پتي جي تصديق:",
+            "auto_translated": "اي ميل پتي جي تصديق:"
+        },
+        "af": {
+            "legacy_caption_pid": 39293,
+            "legacy_language_pid": 37,
+            "text": "Bevestig e-pos adres:",
+            "auto_translated": "Bevestig e-pos adres:"
+        },
+        "sw": {
+            "legacy_caption_pid": 39294,
+            "legacy_language_pid": 38,
+            "text": "Thibitisha barua pepe:",
+            "auto_translated": "Thibitisha barua pepe:"
+        },
+        "lo": {
+            "legacy_caption_pid": 39295,
+            "legacy_language_pid": 39,
+            "text": "ຢືນຢັນທີ່ຢູ່ອີເມວ:",
+            "auto_translated": "ຢືນຢັນທີ່ຢູ່ອີເມວ:"
+        },
+        "nl": {
+            "legacy_caption_pid": 39296,
+            "legacy_language_pid": 40,
+            "text": "Bevestig e-mail adres:",
+            "auto_translated": "Bevestig e-mail adres:"
+        },
+        "tl": {
+            "legacy_caption_pid": 39297,
+            "legacy_language_pid": 41,
+            "text": "Kumpirmahin ang email Address:",
+            "auto_translated": "Kumpirmahin ang email Address:"
+        },
+        "ne": {
+            "legacy_caption_pid": 39298,
+            "legacy_language_pid": 42,
+            "text": "इमेल ठेगाना पुष्टि गर्नुहोस्:",
+            "auto_translated": "इमेल ठेगाना पुष्टि गर्नुहोस्:"
+        },
+        "hu": {
+            "legacy_caption_pid": 39299,
+            "legacy_language_pid": 43,
+            "text": "Erősítse e-mail cím:",
+            "auto_translated": "Erősítse e-mail cím:"
+        },
+        "cs": {
+            "legacy_caption_pid": 39300,
+            "legacy_language_pid": 44,
+            "text": "Potvrďte e-mailovou adresu:",
+            "auto_translated": "Potvrďte e-mailovou adresu:"
+        },
+        "el": {
+            "legacy_caption_pid": 39301,
+            "legacy_language_pid": 45,
+            "text": "Επιβεβαιώστε τη διεύθυνση ηλεκτρονικού ταχυδρομείου:",
+            "auto_translated": "Επιβεβαιώστε τη διεύθυνση ηλεκτρονικού ταχυδρομείου:"
+        },
+        "sv": {
+            "legacy_caption_pid": 39302,
+            "legacy_language_pid": 46,
+            "text": "Bekräfta e-postadress:",
+            "auto_translated": "Bekräfta e-postadress:"
+        },
+        "kk": {
+            "legacy_caption_pid": 39303,
+            "legacy_language_pid": 47,
+            "text": "Электрондық пошта мекенжайын растау:",
+            "auto_translated": "Электрондық пошта мекенжайын растау:"
+        },
+        "fi": {
+            "legacy_caption_pid": 39304,
+            "legacy_language_pid": 48,
+            "text": "Vahvista sähköpostiosoite:",
+            "auto_translated": "Vahvista sähköpostiosoite:"
+        },
+        "da": {
+            "legacy_caption_pid": 39305,
+            "legacy_language_pid": 49,
+            "text": "Bekræft e-mail-adresse:",
+            "auto_translated": "Bekræft e-mail-adresse:"
+        },
+        "he": {
+            "legacy_caption_pid": 39306,
+            "legacy_language_pid": 50,
+            "text": "אשר את כתובת הדוא\"ל:",
+            "auto_translated": "אשר את כתובת הדוא\"ל:"
+        },
+        "no": {
+            "legacy_caption_pid": 39307,
+            "legacy_language_pid": 51,
+            "text": "Bekreft e-postadresse:",
+            "auto_translated": "Bekreft e-postadresse:"
+        }
+    }
+}

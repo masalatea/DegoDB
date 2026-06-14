@@ -1,0 +1,321 @@
+{
+    "resource_key": "COMMON_LIB_LOGIN_INTERNAL_ERROR_TO_RECOGNIZE_FACEBOOK_ID_COMMENT",
+    "legacy_resource_pid": 1482,
+    "base_group_key": "grp-010-matsuesoft-lib",
+    "additional_group_keys": [],
+    "key_for_update": "YrHXOLk0dNRLAhSL5FeV5aeCbDSsuNVXpPBlwB6bGLOHrJ0bnCuijxQrFBsMfWIbqAybORdw9PEFm9uaswZVT9dA5VhvPy1xhhijyHVe2wiu153pd5EgEreLBmt7m2wu",
+    "sort_group": "LOGIN",
+    "key_name": "COMMON_LIB_LOGIN_INTERNAL_ERROR_TO_RECOGNIZE_FACEBOOK_ID_COMMENT",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": false,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 6202,
+            "legacy_language_pid": 1,
+            "text": "[内部エラー] Facebookのユーザ名(ID)が認識できません。症状が続く場合はお手数ですが事務局までご連絡頂ければと思います。",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 6203,
+            "legacy_language_pid": 2,
+            "text": "[Internal error] Unable to recognize Facebook Account's User Name (ID). Sorry to trouble you, but if symptoms persist I think that you can contact the secretariat.",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 6204,
+            "legacy_language_pid": 3,
+            "text": "[内部错误]用户名 ID的Facebook的不能识别。可以联系事务所。",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 6205,
+            "legacy_language_pid": 4,
+            "text": "[내부 오류] Facebook 아이디 를 인식할 수 없습니다. 증상이 지속되면 번거로우시겠지만 사무국으로 연락주시기 바랍니다.",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 11087,
+            "legacy_language_pid": 5,
+            "text": " [Error interno] No se puede reconocer la ID de Facebook. Siento molestarlo, pero si persisten los síntomas, creo que puede ponerse en contacto con la secretaría.",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 11088,
+            "legacy_language_pid": 6,
+            "text": "[Erro interno] Não é possível reconhecer o ID do Facebook. Desculpe incomodar você, mas se os sintomas persistirem, acho que você pode entrar em contato com o secretariado.",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 11089,
+            "legacy_language_pid": 7,
+            "text": "[內部錯誤] 用户名ID的Facebook的不能識別。可以聯繫事務所。",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 16053,
+            "legacy_language_pid": 8,
+            "text": "[Erreur interne] Impossible de reconnaître le nom d'utilisateur (ID) du compte Facebook. Désolé de vous déranger, mais si les symptômes persistent, je pense que vous pouvez contacter le secrétariat.",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 16054,
+            "legacy_language_pid": 9,
+            "text": "[आंतरिक त्रुटि] फेसबुक अकाउंट के यूज़र नेम (आईडी) को पहचानने में असमर्थ आपको परेशान करने के लिए क्षमा करें, लेकिन यदि लक्षण दिखता है तो मुझे लगता है कि आप सचिवालय से संपर्क कर सकते हैं।",
+            "auto_translated": ""
+        },
+        "ar": {
+            "legacy_caption_pid": 32672,
+            "legacy_language_pid": 10,
+            "text": "[خطأ داخلي] لا يمكن التعرف على الفيسبوك اسم المستخدم (ID). إذا استمرت الأعراض آسف لك المتاعب، ولكن أعتقد أنه إذا يمكنك الاتصال إلى الأمانة.",
+            "auto_translated": "[خطأ داخلي] لا يمكن التعرف على الفيسبوك اسم المستخدم (ID). إذا استمرت الأعراض آسف لك المتاعب، ولكن أعتقد أنه إذا يمكنك الاتصال إلى الأمانة."
+        },
+        "fa": {
+            "legacy_caption_pid": 32673,
+            "legacy_language_pid": 11,
+            "text": "[خطای داخلی] نام کاربری فیس بوک (ID) نمی تواند رسمیت شناخته شود. اگر علائم پایدار با عرض پوزش برای شما مشکل است، اما من فکر می کنم که اگر شما می توانید به دبیرخانه ارتباط برقرار کنند.",
+            "auto_translated": "[خطای داخلی] نام کاربری فیس بوک (ID) نمی تواند رسمیت شناخته شود. اگر علائم پایدار با عرض پوزش برای شما مشکل است، اما من فکر می کنم که اگر شما می توانید به دبیرخانه ارتباط برقرار کنند."
+        },
+        "de": {
+            "legacy_caption_pid": 32674,
+            "legacy_language_pid": 12,
+            "text": "[Interner Fehler] Facebook-Benutzername (ID) können nicht erkannt werden. Bei anhaltenden Beschwerden Entschuldigen Sie die Störung, aber ich denke, dass, wenn Sie an das Sekretariat eine Verbindung herstellen können.",
+            "auto_translated": "[Interner Fehler] Facebook-Benutzername (ID) können nicht erkannt werden. Bei anhaltenden Beschwerden Entschuldigen Sie die Störung, aber ich denke, dass, wenn Sie an das Sekretariat eine Verbindung herstellen können."
+        },
+        "ru": {
+            "legacy_caption_pid": 32675,
+            "legacy_language_pid": 13,
+            "text": "[Внутренняя ошибка] имя пользователя Facebook (ID) не может быть распознана. Если симптомы сохраняются жаль беспокоить вас, но я думаю, что если вы можете подключиться к секретариату.",
+            "auto_translated": "[Внутренняя ошибка] имя пользователя Facebook (ID) не может быть распознана. Если симптомы сохраняются жаль беспокоить вас, но я думаю, что если вы можете подключиться к секретариату."
+        },
+        "ms": {
+            "legacy_caption_pid": 32676,
+            "legacy_language_pid": 14,
+            "text": "[Ralat dalaman] Facebook nama pengguna (ID) tidak boleh diiktiraf. Jika penyakit berlarutan maaf untuk masalah anda, tetapi saya berfikir bahawa jika anda boleh menyambung kepada urus setia.",
+            "auto_translated": "[Ralat dalaman] Facebook nama pengguna (ID) tidak boleh diiktiraf. Jika penyakit berlarutan maaf untuk masalah anda, tetapi saya berfikir bahawa jika anda boleh menyambung kepada urus setia."
+        },
+        "ta": {
+            "legacy_caption_pid": 32677,
+            "legacy_language_pid": 15,
+            "text": "[அகப் பிழை] பேஸ்புக் பயனர் பெயர் (ஐடி) ஏற்க முடியாது. அறிகுறிகள் நீங்கள் பிரச்சனையில் வருந்துகிறது தொடர்ந்து, ஆனால் நான் நீங்கள் செயலகம் இணைக்க முடியும் என்றால் என்று நினைத்தால்.",
+            "auto_translated": "[அகப் பிழை] பேஸ்புக் பயனர் பெயர் (ஐடி) ஏற்க முடியாது. அறிகுறிகள் நீங்கள் பிரச்சனையில் வருந்துகிறது தொடர்ந்து, ஆனால் நான் நீங்கள் செயலகம் இணைக்க முடியும் என்றால் என்று நினைத்தால்."
+        },
+        "it": {
+            "legacy_caption_pid": 32678,
+            "legacy_language_pid": 16,
+            "text": "Facebook nome utente (ID) non può essere riconosciuto [Errore interno]. Se i sintomi persistono dispiace disturbarla, ma penso che se è possibile connettersi alla segreteria.",
+            "auto_translated": "Facebook nome utente (ID) non può essere riconosciuto [Errore interno]. Se i sintomi persistono dispiace disturbarla, ma penso che se è possibile connettersi alla segreteria."
+        },
+        "bn": {
+            "legacy_caption_pid": 32679,
+            "legacy_language_pid": 17,
+            "text": "[অভ্যন্তরীণ ত্রুটি] ফেসবুক ব্যবহারকারী নাম (আইডি) স্বীকৃত করা যাবে না। উপসর্গ আপনি কষ্ট করার জন্য দুঃখিত জিদ, কিন্তু আমি মনে করি যে যদি আপনি সচিবালয় সংযোগ করতে পারেন।",
+            "auto_translated": "[অভ্যন্তরীণ ত্রুটি] ফেসবুক ব্যবহারকারী নাম (আইডি) স্বীকৃত করা যাবে না। উপসর্গ আপনি কষ্ট করার জন্য দুঃখিত জিদ, কিন্তু আমি মনে করি যে যদি আপনি সচিবালয় সংযোগ করতে পারেন।"
+        },
+        "tr": {
+            "legacy_caption_pid": 32680,
+            "legacy_language_pid": 18,
+            "text": "[İç hata] Facebook kullanıcı adı (ID) kabul edilemez. Semptomlar sorun size üzüntü inat, ama sekreterya bağlanabilir eğer düşünüyorsanız.",
+            "auto_translated": "[İç hata] Facebook kullanıcı adı (ID) kabul edilemez. Semptomlar sorun size üzüntü inat, ama sekreterya bağlanabilir eğer düşünüyorsanız."
+        },
+        "vi": {
+            "legacy_caption_pid": 32681,
+            "legacy_language_pid": 19,
+            "text": "[Lỗi nội bộ] Tên người dùng Facebook (ID) có thể không được công nhận. Nếu triệu chứng không giảm xin lỗi làm phiền bạn, nhưng tôi nghĩ rằng nếu bạn có thể kết nối với Ban thư ký.",
+            "auto_translated": "[Lỗi nội bộ] Tên người dùng Facebook (ID) có thể không được công nhận. Nếu triệu chứng không giảm xin lỗi làm phiền bạn, nhưng tôi nghĩ rằng nếu bạn có thể kết nối với Ban thư ký."
+        },
+        "pl": {
+            "legacy_caption_pid": 32682,
+            "legacy_language_pid": 20,
+            "text": "[Błąd wewnętrzny] Facebook nazwa użytkownika (identyfikator) może nie zostać rozpoznane. Jeśli objawy utrzymują się przepraszam za kłopot, ale myślę, że jeśli można połączyć się z sekretariatem.",
+            "auto_translated": "[Błąd wewnętrzny] Facebook nazwa użytkownika (identyfikator) może nie zostać rozpoznane. Jeśli objawy utrzymują się przepraszam za kłopot, ale myślę, że jeśli można połączyć się z sekretariatem."
+        },
+        "jv": {
+            "legacy_caption_pid": 32683,
+            "legacy_language_pid": 21,
+            "text": "[Kaluputan internal] Facebook jeneng panganggo (ID) ora bisa dikenali. Yen gejala tahan nuwun kanggo alangan sampeyan, nanging aku sing yen sampeyan bisa nyambung menyang Sekretariat ing.",
+            "auto_translated": "[Kaluputan internal] Facebook jeneng panganggo (ID) ora bisa dikenali. Yen gejala tahan nuwun kanggo alangan sampeyan, nanging aku sing yen sampeyan bisa nyambung menyang Sekretariat ing."
+        },
+        "pa": {
+            "legacy_caption_pid": 32684,
+            "legacy_language_pid": 22,
+            "text": "[ਅੰਦਰੂਨੀ ਗਲਤੀ] ਫੇਸਬੁੱਕ ਯੂਜ਼ਰ ਨੂੰ ਨਾਮ ਹੈ (ID) ਮਾਨਤਾ ਪ੍ਰਾਪਤ ਨਹੀ ਕੀਤਾ ਜਾ ਸਕਦਾ ਹੈ. ਜੇ ਲੱਛਣ ਜੇ ਤੁਹਾਨੂੰ ਕੋਈ ਸਮੱਸਿਆ ਨੂੰ ਅਫ਼ਸੋਸ ਜਾਰੀ ਹੈ, ਪਰ ਮੈਨੂੰ ਲੱਗਦਾ ਹੈ ਕਿ ਜੇ ਤੁਹਾਨੂੰ ਸਕੱਤਰੇਤ ਨਾਲ ਜੁੜ ਸਕਦਾ ਹੈ.",
+            "auto_translated": "[ਅੰਦਰੂਨੀ ਗਲਤੀ] ਫੇਸਬੁੱਕ ਯੂਜ਼ਰ ਨੂੰ ਨਾਮ ਹੈ (ID) ਮਾਨਤਾ ਪ੍ਰਾਪਤ ਨਹੀ ਕੀਤਾ ਜਾ ਸਕਦਾ ਹੈ. ਜੇ ਲੱਛਣ ਜੇ ਤੁਹਾਨੂੰ ਕੋਈ ਸਮੱਸਿਆ ਨੂੰ ਅਫ਼ਸੋਸ ਜਾਰੀ ਹੈ, ਪਰ ਮੈਨੂੰ ਲੱਗਦਾ ਹੈ ਕਿ ਜੇ ਤੁਹਾਨੂੰ ਸਕੱਤਰੇਤ ਨਾਲ ਜੁੜ ਸਕਦਾ ਹੈ."
+        },
+        "th": {
+            "legacy_caption_pid": 32685,
+            "legacy_language_pid": 23,
+            "text": "[ข้อผิดพลาดภายใน] ชื่อผู้ใช้ Facebook (ID) ไม่สามารถได้รับการยอมรับ ถ้าอาการยังคงเสียใจเป็นปัญหากับคุณ แต่ผมคิดว่าถ้าคุณสามารถเชื่อมต่อไปยังสำนักเลขาธิการ",
+            "auto_translated": "[ข้อผิดพลาดภายใน] ชื่อผู้ใช้ Facebook (ID) ไม่สามารถได้รับการยอมรับ ถ้าอาการยังคงเสียใจเป็นปัญหากับคุณ แต่ผมคิดว่าถ้าคุณสามารถเชื่อมต่อไปยังสำนักเลขาธิการ"
+        },
+        "te": {
+            "legacy_caption_pid": 40316,
+            "legacy_language_pid": 24,
+            "text": "[అంతర్గత లోపం] ఫేస్బుక్ వినియోగదారు పేరు (ID) గుర్తింపు సాధ్యం కాదు. లక్షణాలు ఇబ్బంది క్షమించండి అంటిపెట్టుకుని, కానీ నేను మీరు సచివాలయానికి కనెక్ట్ లేదో భావిస్తే.",
+            "auto_translated": "[అంతర్గత లోపం] ఫేస్బుక్ వినియోగదారు పేరు (ID) గుర్తింపు సాధ్యం కాదు. లక్షణాలు ఇబ్బంది క్షమించండి అంటిపెట్టుకుని, కానీ నేను మీరు సచివాలయానికి కనెక్ట్ లేదో భావిస్తే."
+        },
+        "mr": {
+            "legacy_caption_pid": 40317,
+            "legacy_language_pid": 25,
+            "text": "[अंतर्गत त्रुटी] फेसबुक वापरकर्ता नाव (ID) ओळखले जाऊ शकत नाही. लक्षणे आपल्याला समस्या दिलगीर टिकून राहाणे, तर मी तुम्हांला सचिवालय कनेक्ट करू शकता तर असे वाटते की, तर.",
+            "auto_translated": "[अंतर्गत त्रुटी] फेसबुक वापरकर्ता नाव (ID) ओळखले जाऊ शकत नाही. लक्षणे आपल्याला समस्या दिलगीर टिकून राहाणे, तर मी तुम्हांला सचिवालय कनेक्ट करू शकता तर असे वाटते की, तर."
+        },
+        "ur": {
+            "legacy_caption_pid": 40318,
+            "legacy_language_pid": 26,
+            "text": "[داخلی مسئلہ] فیس بک کے صارف نام (ID) تسلیم شدہ نہیں کیا جا سکتا. علامات آپ کو مصیبت کو معاف برقرار رہتا ہے، لیکن میں آپ کو سیکرٹریٹ سے رابطہ قائم کر سکتے ہیں تو لگتا ہے کہ تو.",
+            "auto_translated": "[داخلی مسئلہ] فیس بک کے صارف نام (ID) تسلیم شدہ نہیں کیا جا سکتا. علامات آپ کو مصیبت کو معاف برقرار رہتا ہے، لیکن میں آپ کو سیکرٹریٹ سے رابطہ قائم کر سکتے ہیں تو لگتا ہے کہ تو."
+        },
+        "gu": {
+            "legacy_caption_pid": 40319,
+            "legacy_language_pid": 27,
+            "text": "[આંતરિક ભૂલ] ફેસબુક વપરાશકર્તા નામ (આઈડી) ને ઓળખવામાં કરી શકાતી નથી. જો લક્ષણો તમે મુશ્કેલી દિલગીર જબરજસ્તી કરે છે, પરંતુ મને લાગે છે કે જો તમે સચિવાલય સાથે કનેક્ટ કરી શકો છો.",
+            "auto_translated": "[આંતરિક ભૂલ] ફેસબુક વપરાશકર્તા નામ (આઈડી) ને ઓળખવામાં કરી શકાતી નથી. જો લક્ષણો તમે મુશ્કેલી દિલગીર જબરજસ્તી કરે છે, પરંતુ મને લાગે છે કે જો તમે સચિવાલય સાથે કનેક્ટ કરી શકો છો."
+        },
+        "uk": {
+            "legacy_caption_pid": 40320,
+            "legacy_language_pid": 28,
+            "text": "[Внутрішня помилка] ім'я користувача Facebook (ID) не може бути розпізнано. Якщо симптоми зберігаються шкода турбувати вас, але я думаю, що якщо ви можете підключитися до секретаріату.",
+            "auto_translated": "[Внутрішня помилка] ім'я користувача Facebook (ID) не може бути розпізнано. Якщо симптоми зберігаються шкода турбувати вас, але я думаю, що якщо ви можете підключитися до секретаріату."
+        },
+        "ml": {
+            "legacy_caption_pid": 40321,
+            "legacy_language_pid": 29,
+            "text": "[ആന്തരിക പിശക്] ഫേസ്ബുക്ക് ഉപയോക്തൃ നാമം (ഐഡി) അംഗീകരിക്കാൻ കഴിയില്ല. ലക്ഷണങ്ങൾ ഇടവിടാതെ ക്ഷമിക്കണം, നിങ്ങൾ എന്നാൽ നിലനിൽക്കുന്നുവെങ്കിൽ ഞാൻ നിങ്ങളെ സെക്രട്ടേറിയറ്റിൽ കണക്ട് എടുക്കും എന്നു കരുതുന്നു.",
+            "auto_translated": "[ആന്തരിക പിശക്] ഫേസ്ബുക്ക് ഉപയോക്തൃ നാമം (ഐഡി) അംഗീകരിക്കാൻ കഴിയില്ല. ലക്ഷണങ്ങൾ ഇടവിടാതെ ക്ഷമിക്കണം, നിങ്ങൾ എന്നാൽ നിലനിൽക്കുന്നുവെങ്കിൽ ഞാൻ നിങ്ങളെ സെക്രട്ടേറിയറ്റിൽ കണക്ട് എടുക്കും എന്നു കരുതുന്നു."
+        },
+        "kn": {
+            "legacy_caption_pid": 40322,
+            "legacy_language_pid": 30,
+            "text": "[ಆಂತರಿಕ ದೋಷ] ಫೇಸ್ಬುಕ್ ಬಳಕೆದಾರರ ಹೆಸರು (ಐಡಿ) ಗುರುತಿಸಲು ಸಾಧ್ಯವಿಲ್ಲ. ಲಕ್ಷಣಗಳನ್ನು ನೀವು ತೊಂದರೆಗೆ ಕ್ಷಮಿಸಿ ಇರುತ್ತವೆ, ಆದರೆ ನಾನು ಸಚಿವಾಲಯದ ಗೆ ಸಂಪರ್ಕಿಸಬಹುದು ವೇಳೆ ಭಾವಿಸಿದರೆ.",
+            "auto_translated": "[ಆಂತರಿಕ ದೋಷ] ಫೇಸ್ಬುಕ್ ಬಳಕೆದಾರರ ಹೆಸರು (ಐಡಿ) ಗುರುತಿಸಲು ಸಾಧ್ಯವಿಲ್ಲ. ಲಕ್ಷಣಗಳನ್ನು ನೀವು ತೊಂದರೆಗೆ ಕ್ಷಮಿಸಿ ಇರುತ್ತವೆ, ಆದರೆ ನಾನು ಸಚಿವಾಲಯದ ಗೆ ಸಂಪರ್ಕಿಸಬಹುದು ವೇಳೆ ಭಾವಿಸಿದರೆ."
+        },
+        "su": {
+            "legacy_caption_pid": 40323,
+            "legacy_language_pid": 31,
+            "text": "[Kasalahan internal] Facebook ngaran pamaké (ID) tiasa teu dipikawanoh. Mun gejala persist punten mun gangguan anjeun, tapi kuring mikir yen lamun bisa nyambung ka sekretariat di.",
+            "auto_translated": "[Kasalahan internal] Facebook ngaran pamaké (ID) tiasa teu dipikawanoh. Mun gejala persist punten mun gangguan anjeun, tapi kuring mikir yen lamun bisa nyambung ka sekretariat di."
+        },
+        "ku": {
+            "legacy_caption_pid": 40324,
+            "legacy_language_pid": 32,
+            "text": "[Şaşbûnekî înternal] user name Facebook (ID) ne dikarin bên naskirin. Heke nîşanên jî didomin xemgîn ji bo ku we aciz bike, lê ez difikirim ku, ger tu ji bo sekreteriya girêdan.",
+            "auto_translated": "[Şaşbûnekî înternal] user name Facebook (ID) ne dikarin bên naskirin. Heke nîşanên jî didomin xemgîn ji bo ku we aciz bike, lê ez difikirim ku, ger tu ji bo sekreteriya girêdan."
+        },
+        "ps": {
+            "legacy_caption_pid": 40325,
+            "legacy_language_pid": 33,
+            "text": "[وراني] فیسبوک کارن نوم (تذکرو) په رسمیت نه شي. که نښې نښانې شته چې د ستونزو تاسو بخښنه، خو زه فکر کوم چې که تاسو کولای شي چې د دارالانشا سره ونښلوي.",
+            "auto_translated": "[وراني] فیسبوک کارن نوم (تذکرو) په رسمیت نه شي. که نښې نښانې شته چې د ستونزو تاسو بخښنه، خو زه فکر کوم چې که تاسو کولای شي چې د دارالانشا سره ونښلوي."
+        },
+        "ro": {
+            "legacy_caption_pid": 40326,
+            "legacy_language_pid": 34,
+            "text": "[Eroare internă] Facebook numele de utilizator (ID), nu poate fi recunoscută. Dacă simptomele persistă rău să vă deranjez, dar cred că, dacă vă puteți conecta la secretariat.",
+            "auto_translated": "[Eroare internă] Facebook numele de utilizator (ID), nu poate fi recunoscută. Dacă simptomele persistă rău să vă deranjez, dar cred că, dacă vă puteți conecta la secretariat."
+        },
+        "id": {
+            "legacy_caption_pid": 40327,
+            "legacy_language_pid": 35,
+            "text": "[Kesalahan internal] Facebook nama pengguna (ID) tidak dapat diakui. Jika gejalanya menetap maaf untuk masalah Anda, tapi saya berpikir bahwa jika Anda dapat terhubung ke sekretariat.",
+            "auto_translated": "[Kesalahan internal] Facebook nama pengguna (ID) tidak dapat diakui. Jika gejalanya menetap maaf untuk masalah Anda, tapi saya berpikir bahwa jika Anda dapat terhubung ke sekretariat."
+        },
+        "sd": {
+            "legacy_caption_pid": 40328,
+            "legacy_language_pid": 36,
+            "text": "[اندروني مسئلو] ڪريو صارف نالو (سڃاڻپ) کي تسليم نه ٿو ڪري سگهجي. علامت اوھان کي ڏکي کي معاف ڪندا، پر موجود جيڪڏهن مون کي خيال آهي ته جيڪڏهن توهان جي secretariat کي ڳنڍي سگهو ٿا.",
+            "auto_translated": "[اندروني مسئلو] ڪريو صارف نالو (سڃاڻپ) کي تسليم نه ٿو ڪري سگهجي. علامت اوھان کي ڏکي کي معاف ڪندا، پر موجود جيڪڏهن مون کي خيال آهي ته جيڪڏهن توهان جي secretariat کي ڳنڍي سگهو ٿا."
+        },
+        "af": {
+            "legacy_caption_pid": 40329,
+            "legacy_language_pid": 37,
+            "text": "[Interne fout] Facebook gebruikersnaam (ID) kan nie erken word. Indien simptome voortduur jammer om moeilikheid jou, maar ek dink dat as jy kan koppel aan die sekretariaat.",
+            "auto_translated": "[Interne fout] Facebook gebruikersnaam (ID) kan nie erken word. Indien simptome voortduur jammer om moeilikheid jou, maar ek dink dat as jy kan koppel aan die sekretariaat."
+        },
+        "sw": {
+            "legacy_caption_pid": 40330,
+            "legacy_language_pid": 38,
+            "text": "[Hitilafu ya ndani] Facebook jina la mtumiaji (ID) hawawezi kutambuliwa. Kama dalili yanaendelea pole kwa shida, lakini nadhani kwamba kama unaweza kuunganisha na sekretarieti.",
+            "auto_translated": "[Hitilafu ya ndani] Facebook jina la mtumiaji (ID) hawawezi kutambuliwa. Kama dalili yanaendelea pole kwa shida, lakini nadhani kwamba kama unaweza kuunganisha na sekretarieti."
+        },
+        "lo": {
+            "legacy_caption_pid": 40331,
+            "legacy_language_pid": 39,
+            "text": "[ຜິດພາດພາຍໃນ] ຊື່ຜູ້ໃຊ້ເຟສບຸກ (ID) ບໍ່ສາມາດຮັບຮູ້. ຖ້າຫາກວ່າອາການຍັງຄົງເສຍໃຈທີ່ບັນຫາທີ່ທ່ານ, ແຕ່ຂ້າພະເຈົ້າຄິດວ່າຖ້າຫາກວ່າທ່ານສາມາດເຊື່ອມຕໍ່ກັບກອງເລຂາ.",
+            "auto_translated": "[ຜິດພາດພາຍໃນ] ຊື່ຜູ້ໃຊ້ເຟສບຸກ (ID) ບໍ່ສາມາດຮັບຮູ້. ຖ້າຫາກວ່າອາການຍັງຄົງເສຍໃຈທີ່ບັນຫາທີ່ທ່ານ, ແຕ່ຂ້າພະເຈົ້າຄິດວ່າຖ້າຫາກວ່າທ່ານສາມາດເຊື່ອມຕໍ່ກັບກອງເລຂາ."
+        },
+        "nl": {
+            "legacy_caption_pid": 40332,
+            "legacy_language_pid": 40,
+            "text": "[Interne fout] Facebook gebruikersnaam (ID) kan niet worden herkend. Bij aanhoudende klachten Sorry dat problemen u, maar ik denk dat als je verbinding kunt maken met het secretariaat.",
+            "auto_translated": "[Interne fout] Facebook gebruikersnaam (ID) kan niet worden herkend. Bij aanhoudende klachten Sorry dat problemen u, maar ik denk dat als je verbinding kunt maken met het secretariaat."
+        },
+        "tl": {
+            "legacy_caption_pid": 40333,
+            "legacy_language_pid": 41,
+            "text": "[Internal error] Facebook user name (ID) ay hindi maaaring nakilala. Kung sintomas magpumilit paumanhin sa pag-mo, ngunit sa tingin ko na kung maaari mong kumonekta sa kalihiman.",
+            "auto_translated": "[Internal error] Facebook user name (ID) ay hindi maaaring nakilala. Kung sintomas magpumilit paumanhin sa pag-mo, ngunit sa tingin ko na kung maaari mong kumonekta sa kalihiman."
+        },
+        "ne": {
+            "legacy_caption_pid": 40334,
+            "legacy_language_pid": 42,
+            "text": "[आन्तरिक त्रुटि] छैन फेसबुक प्रयोगकर्ता नाम (आईडी) पहिचान गर्न सकिन्छ। लक्षण समस्या तपाईं दु: खी विद्यमान भने, तर म तिमीलाई सचिवालय जडान गर्न सक्नुहुन्छ भने ठान्छन्।",
+            "auto_translated": "[आन्तरिक त्रुटि] छैन फेसबुक प्रयोगकर्ता नाम (आईडी) पहिचान गर्न सकिन्छ। लक्षण समस्या तपाईं दु: खी विद्यमान भने, तर म तिमीलाई सचिवालय जडान गर्न सक्नुहुन्छ भने ठान्छन्।"
+        },
+        "hu": {
+            "legacy_caption_pid": 40335,
+            "legacy_language_pid": 43,
+            "text": "[Internal error] Facebook felhasználói név (ID) nem ismerhető fel. Ha a tünetek továbbra is fennállnak, sajnálom, hogy baj van, de azt hiszem, hogy tud-e csatlakozni a titkárságnak.",
+            "auto_translated": "[Internal error] Facebook felhasználói név (ID) nem ismerhető fel. Ha a tünetek továbbra is fennállnak, sajnálom, hogy baj van, de azt hiszem, hogy tud-e csatlakozni a titkárságnak."
+        },
+        "cs": {
+            "legacy_caption_pid": 40336,
+            "legacy_language_pid": 44,
+            "text": "[Vnitřní chyba] Facebook uživatelské jméno (ID) nemůže být uznán. Pokud příznaky přetrvávají líto, že vás obtěžuji, ale myslím, že pokud se můžete připojit na sekretariát.",
+            "auto_translated": "[Vnitřní chyba] Facebook uživatelské jméno (ID) nemůže být uznán. Pokud příznaky přetrvávají líto, že vás obtěžuji, ale myslím, že pokud se můžete připojit na sekretariát."
+        },
+        "el": {
+            "legacy_caption_pid": 40337,
+            "legacy_language_pid": 45,
+            "text": "[Εσωτερικό σφάλμα] το όνομα χρήστη του Facebook (ID) δεν είναι δυνατό να αναγνωριστεί. Αν τα συμπτώματα επιμένουν συγγνώμη για την ταλαιπωρία σας, αλλά νομίζω ότι αν μπορείτε να συνδεθείτε με τη γραμματεία.",
+            "auto_translated": "[Εσωτερικό σφάλμα] το όνομα χρήστη του Facebook (ID) δεν είναι δυνατό να αναγνωριστεί. Αν τα συμπτώματα επιμένουν συγγνώμη για την ταλαιπωρία σας, αλλά νομίζω ότι αν μπορείτε να συνδεθείτε με τη γραμματεία."
+        },
+        "sv": {
+            "legacy_caption_pid": 40338,
+            "legacy_language_pid": 46,
+            "text": "[Internt fel] Facebook användarnamn (ID) kan inte identifieras. Om symptomen kvarstår ledsen att besvära er, men jag tror att om du kan ansluta till sekretariatet.",
+            "auto_translated": "[Internt fel] Facebook användarnamn (ID) kan inte identifieras. Om symptomen kvarstår ledsen att besvära er, men jag tror att om du kan ansluta till sekretariatet."
+        },
+        "kk": {
+            "legacy_caption_pid": 40339,
+            "legacy_language_pid": 47,
+            "text": "[Ішкі қате] Facebook пайдаланушы аты (ID) танылуы мүмкін емес. симптомдары сізді алаңдатпай өкінішті, бірақ кетпесе Мен сізге хатшылығының қосылуға болады, егер деп ойлаймын.",
+            "auto_translated": "[Ішкі қате] Facebook пайдаланушы аты (ID) танылуы мүмкін емес. симптомдары сізді алаңдатпай өкінішті, бірақ кетпесе Мен сізге хатшылығының қосылуға болады, егер деп ойлаймын."
+        },
+        "fi": {
+            "legacy_caption_pid": 40340,
+            "legacy_language_pid": 48,
+            "text": "[Sisäinen virhe] Facebook käyttäjätunnus (ID) ei voida tunnistaa. Jos oireet jatkuvat pahoillani vaivata sinua, mutta luulen, että jos pystyt yhdistämään sihteeristölle.",
+            "auto_translated": "[Sisäinen virhe] Facebook käyttäjätunnus (ID) ei voida tunnistaa. Jos oireet jatkuvat pahoillani vaivata sinua, mutta luulen, että jos pystyt yhdistämään sihteeristölle."
+        },
+        "da": {
+            "legacy_caption_pid": 40341,
+            "legacy_language_pid": 49,
+            "text": "[Intern fejl] Facebook-brugernavn (ID) kan ikke genkendes. Hvis symptomerne fortsætter ked af at besvære dig, men jeg tror, ​​at hvis du kan oprette forbindelse til sekretariatet.",
+            "auto_translated": "[Intern fejl] Facebook-brugernavn (ID) kan ikke genkendes. Hvis symptomerne fortsætter ked af at besvære dig, men jeg tror, ​​at hvis du kan oprette forbindelse til sekretariatet."
+        },
+        "he": {
+            "legacy_caption_pid": 40342,
+            "legacy_language_pid": 50,
+            "text": "[שגיאה פנימית] שם משתמש פייסבוק (ID) לא יכול להיות מוכר. אם התופעות נמשכות מטריח אותך, אבל אני חושב שאם אתה יכול להתחבר מזכירות.",
+            "auto_translated": "[שגיאה פנימית] שם משתמש פייסבוק (ID) לא יכול להיות מוכר. אם התופעות נמשכות מטריח אותך, אבל אני חושב שאם אתה יכול להתחבר מזכירות."
+        },
+        "no": {
+            "legacy_caption_pid": 40343,
+            "legacy_language_pid": 51,
+            "text": "[Intern feil] Facebook brukernavn (ID) kan ikke bli gjenkjent. Hvis symptomene vedvarer beklager å plage deg, men jeg tror at hvis du kan koble til sekretariatet.",
+            "auto_translated": "[Intern feil] Facebook brukernavn (ID) kan ikke bli gjenkjent. Hvis symptomene vedvarer beklager å plage deg, men jeg tror at hvis du kan koble til sekretariatet."
+        }
+    }
+}

@@ -1,0 +1,69 @@
+{
+    "resource_key": "TITLE_DEV_SMALL",
+    "legacy_resource_pid": 714,
+    "base_group_key": "grp-010-matsuesoft-lib",
+    "additional_group_keys": [],
+    "key_for_update": "1tsvZQ9sfA0B0VI4PSpfOAOslhsfC1fmNZUGPsyqRd3QGscLhAVZVw2atNVkK15IT7UW1KneGKgQXFD3hkQuMFZ8GtNdeCE85T2RwYXbpelCgciD4Urq2fNHWJZ7qtir",
+    "sort_group": "TITLE",
+    "key_name": "TITLE_DEV_SMALL",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": true,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 4730,
+            "legacy_language_pid": 1,
+            "text": "小規模開発パッケージ - $DOMAINNAMECAPTION_JP",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 4731,
+            "legacy_language_pid": 2,
+            "text": "Small Entrusted Development Package - $DOMAINNAMECAPTION_EN",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 15378,
+            "legacy_language_pid": 3,
+            "text": "",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 15379,
+            "legacy_language_pid": 4,
+            "text": "",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 15380,
+            "legacy_language_pid": 5,
+            "text": "Paquete pequeño de desarrollo confiado - $DOMAINNAMECAPTION_ES",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 15381,
+            "legacy_language_pid": 6,
+            "text": "Pacote de desenvolvimento pequeno confiado - $DOMAINNAMECAPTION_EN",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 15382,
+            "legacy_language_pid": 7,
+            "text": "",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 17385,
+            "legacy_language_pid": 8,
+            "text": "Petit paquet de développement confié - $DOMAINNAMECAPTION_EN",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 17386,
+            "legacy_language_pid": 9,
+            "text": "लघु एंटरस्ड डेवलपमेंट पैकेज - $ DOMAINNAMECAPTION_HI",
+            "auto_translated": ""
+        }
+    }
+}

@@ -1,0 +1,321 @@
+{
+    "resource_key": "BUTTON_INQUIRY_SUBMIT",
+    "legacy_resource_pid": 1300,
+    "base_group_key": "grp-028-app-common-lib",
+    "additional_group_keys": [],
+    "key_for_update": "4NJqRS5FE68Nd0iPLGoEYI32lowDhh2pcqP9rTzVWJXKYG2belY0i2wDIgtlKapEFBgRV8hFk3XjYgdeKgX0fTCA9aQaEC0zsGDj4qnjBDiRCLPvW8kWU33wwBwNdTxM",
+    "sort_group": "INQUIRY",
+    "key_name": "BUTTON_INQUIRY_SUBMIT",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": false,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 871,
+            "legacy_language_pid": 1,
+            "text": "送信",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 872,
+            "legacy_language_pid": 2,
+            "text": "Submit",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 6436,
+            "legacy_language_pid": 3,
+            "text": "送信",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 6437,
+            "legacy_language_pid": 4,
+            "text": "보내기",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 10163,
+            "legacy_language_pid": 5,
+            "text": "Enviar",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 10164,
+            "legacy_language_pid": 6,
+            "text": "enviar",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 10165,
+            "legacy_language_pid": 7,
+            "text": "送信",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 16177,
+            "legacy_language_pid": 8,
+            "text": "Soumettre",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 16178,
+            "legacy_language_pid": 9,
+            "text": " जमा करें",
+            "auto_translated": ""
+        },
+        "ar": {
+            "legacy_caption_pid": 28680,
+            "legacy_language_pid": 10,
+            "text": "نقل",
+            "auto_translated": "نقل"
+        },
+        "fa": {
+            "legacy_caption_pid": 28681,
+            "legacy_language_pid": 11,
+            "text": "انتقال",
+            "auto_translated": "انتقال"
+        },
+        "de": {
+            "legacy_caption_pid": 28682,
+            "legacy_language_pid": 12,
+            "text": "Übertragung",
+            "auto_translated": "Übertragung"
+        },
+        "ru": {
+            "legacy_caption_pid": 28683,
+            "legacy_language_pid": 13,
+            "text": "передача",
+            "auto_translated": "передача"
+        },
+        "ms": {
+            "legacy_caption_pid": 28684,
+            "legacy_language_pid": 14,
+            "text": "penghantaran",
+            "auto_translated": "penghantaran"
+        },
+        "ta": {
+            "legacy_caption_pid": 28685,
+            "legacy_language_pid": 15,
+            "text": "ஒலிபரப்பு",
+            "auto_translated": "ஒலிபரப்பு"
+        },
+        "it": {
+            "legacy_caption_pid": 28686,
+            "legacy_language_pid": 16,
+            "text": "trasmissione",
+            "auto_translated": "trasmissione"
+        },
+        "bn": {
+            "legacy_caption_pid": 28687,
+            "legacy_language_pid": 17,
+            "text": "ট্রান্সমিশন",
+            "auto_translated": "ট্রান্সমিশন"
+        },
+        "tr": {
+            "legacy_caption_pid": 28688,
+            "legacy_language_pid": 18,
+            "text": "transmisyon",
+            "auto_translated": "transmisyon"
+        },
+        "vi": {
+            "legacy_caption_pid": 28689,
+            "legacy_language_pid": 19,
+            "text": "truyền",
+            "auto_translated": "truyền"
+        },
+        "pl": {
+            "legacy_caption_pid": 28690,
+            "legacy_language_pid": 20,
+            "text": "transmisja",
+            "auto_translated": "transmisja"
+        },
+        "jv": {
+            "legacy_caption_pid": 28691,
+            "legacy_language_pid": 21,
+            "text": "Transmission",
+            "auto_translated": "Transmission"
+        },
+        "pa": {
+            "legacy_caption_pid": 28692,
+            "legacy_language_pid": 22,
+            "text": "ਸੰਚਾਰਨ",
+            "auto_translated": "ਸੰਚਾਰਨ"
+        },
+        "th": {
+            "legacy_caption_pid": 28693,
+            "legacy_language_pid": 23,
+            "text": "การส่งผ่าน",
+            "auto_translated": "การส่งผ่าน"
+        },
+        "te": {
+            "legacy_caption_pid": 34296,
+            "legacy_language_pid": 24,
+            "text": "ట్రాన్స్మిషన్",
+            "auto_translated": "ట్రాన్స్మిషన్"
+        },
+        "mr": {
+            "legacy_caption_pid": 34297,
+            "legacy_language_pid": 25,
+            "text": "ट्रान्समिशन",
+            "auto_translated": "ट्रान्समिशन"
+        },
+        "ur": {
+            "legacy_caption_pid": 34298,
+            "legacy_language_pid": 26,
+            "text": "ٹرانسمیشن",
+            "auto_translated": "ٹرانسمیشن"
+        },
+        "gu": {
+            "legacy_caption_pid": 34299,
+            "legacy_language_pid": 27,
+            "text": "ટ્રાન્સમિશન",
+            "auto_translated": "ટ્રાન્સમિશન"
+        },
+        "uk": {
+            "legacy_caption_pid": 34300,
+            "legacy_language_pid": 28,
+            "text": "передача",
+            "auto_translated": "передача"
+        },
+        "ml": {
+            "legacy_caption_pid": 34301,
+            "legacy_language_pid": 29,
+            "text": "പേഷണം",
+            "auto_translated": "പേഷണം"
+        },
+        "kn": {
+            "legacy_caption_pid": 34302,
+            "legacy_language_pid": 30,
+            "text": "ಪ್ರಸರಣ",
+            "auto_translated": "ಪ್ರಸರಣ"
+        },
+        "su": {
+            "legacy_caption_pid": 34303,
+            "legacy_language_pid": 31,
+            "text": "pangiriman",
+            "auto_translated": "pangiriman"
+        },
+        "ku": {
+            "legacy_caption_pid": 34304,
+            "legacy_language_pid": 32,
+            "text": "nifşek",
+            "auto_translated": "nifşek"
+        },
+        "ps": {
+            "legacy_caption_pid": 34305,
+            "legacy_language_pid": 33,
+            "text": "د تمديد",
+            "auto_translated": "د تمديد"
+        },
+        "ro": {
+            "legacy_caption_pid": 34306,
+            "legacy_language_pid": 34,
+            "text": "transmisie",
+            "auto_translated": "transmisie"
+        },
+        "id": {
+            "legacy_caption_pid": 34307,
+            "legacy_language_pid": 35,
+            "text": "transmisi",
+            "auto_translated": "transmisi"
+        },
+        "sd": {
+            "legacy_caption_pid": 34308,
+            "legacy_language_pid": 36,
+            "text": "نشريات",
+            "auto_translated": "نشريات"
+        },
+        "af": {
+            "legacy_caption_pid": 34309,
+            "legacy_language_pid": 37,
+            "text": "oordrag",
+            "auto_translated": "oordrag"
+        },
+        "sw": {
+            "legacy_caption_pid": 34310,
+            "legacy_language_pid": 38,
+            "text": "Transmission",
+            "auto_translated": "Transmission"
+        },
+        "lo": {
+            "legacy_caption_pid": 34311,
+            "legacy_language_pid": 39,
+            "text": "ລະບົບສາຍສົ່ງ",
+            "auto_translated": "ລະບົບສາຍສົ່ງ"
+        },
+        "nl": {
+            "legacy_caption_pid": 34312,
+            "legacy_language_pid": 40,
+            "text": "transmissie",
+            "auto_translated": "transmissie"
+        },
+        "tl": {
+            "legacy_caption_pid": 34313,
+            "legacy_language_pid": 41,
+            "text": "transmisyon",
+            "auto_translated": "transmisyon"
+        },
+        "ne": {
+            "legacy_caption_pid": 34314,
+            "legacy_language_pid": 42,
+            "text": "प्रसारण",
+            "auto_translated": "प्रसारण"
+        },
+        "hu": {
+            "legacy_caption_pid": 34315,
+            "legacy_language_pid": 43,
+            "text": "átvitel",
+            "auto_translated": "átvitel"
+        },
+        "cs": {
+            "legacy_caption_pid": 34316,
+            "legacy_language_pid": 44,
+            "text": "převodovka",
+            "auto_translated": "převodovka"
+        },
+        "el": {
+            "legacy_caption_pid": 34317,
+            "legacy_language_pid": 45,
+            "text": "μετάδοση",
+            "auto_translated": "μετάδοση"
+        },
+        "sv": {
+            "legacy_caption_pid": 34318,
+            "legacy_language_pid": 46,
+            "text": "transmission",
+            "auto_translated": "transmission"
+        },
+        "kk": {
+            "legacy_caption_pid": 34319,
+            "legacy_language_pid": 47,
+            "text": "трансмиссия",
+            "auto_translated": "трансмиссия"
+        },
+        "fi": {
+            "legacy_caption_pid": 34320,
+            "legacy_language_pid": 48,
+            "text": "lähetys",
+            "auto_translated": "lähetys"
+        },
+        "da": {
+            "legacy_caption_pid": 34321,
+            "legacy_language_pid": 49,
+            "text": "Transmission",
+            "auto_translated": "Transmission"
+        },
+        "he": {
+            "legacy_caption_pid": 34322,
+            "legacy_language_pid": 50,
+            "text": "הילוכים",
+            "auto_translated": "הילוכים"
+        },
+        "no": {
+            "legacy_caption_pid": 34323,
+            "legacy_language_pid": 51,
+            "text": "Transmission",
+            "auto_translated": "Transmission"
+        }
+    }
+}

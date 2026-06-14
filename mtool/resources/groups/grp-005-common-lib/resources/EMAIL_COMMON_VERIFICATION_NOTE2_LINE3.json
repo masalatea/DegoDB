@@ -1,0 +1,321 @@
+{
+    "resource_key": "EMAIL_COMMON_VERIFICATION_NOTE2_LINE3",
+    "legacy_resource_pid": 2587,
+    "base_group_key": "grp-005-common-lib",
+    "additional_group_keys": [],
+    "key_for_update": "gS6qpVy2C7eTOQlnFpHxAy8H9t1245QPbae23OvbLyQH5H5NYhC49bi39JBrDJ8sNyuHYvYOqeHgL1zQ6pm9WNn6ityNKsuXFps8LNTwmsqpCjIMiSwhDLbHewCowGsM",
+    "sort_group": "EMAIL VERIFICATION",
+    "key_name": "EMAIL_COMMON_VERIFICATION_NOTE2_LINE3",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": false,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 19520,
+            "legacy_language_pid": 1,
+            "text": "既にログイン済の場合は上記URLを表示するとすぐにメールアドレス確認が行われます。",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 19521,
+            "legacy_language_pid": 2,
+            "text": "If you are already logged in, the email address will be confirmed as soon as the above URL is displayed.",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 19522,
+            "legacy_language_pid": 3,
+            "text": "如果您已经登录，只要上述URL显示，电子邮件地址就会被确认",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 19523,
+            "legacy_language_pid": 4,
+            "text": "이미 로그인 한 경우에는 위의 URL을 표시하면 즉시 이메일 주소 확인이 이루어집니다.",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 19524,
+            "legacy_language_pid": 5,
+            "text": "Si ya has iniciado sesión, la dirección de correo electrónico se confirmará tan pronto como se muestre la URL anterior.",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 19525,
+            "legacy_language_pid": 6,
+            "text": "Se você já está logado, o endereço de e-mail será confirmado assim que o URL acima for exibido.",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 19526,
+            "legacy_language_pid": 7,
+            "text": "如果您已經登錄，只要上述URL顯示，電子郵件地址就會被確認",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 19527,
+            "legacy_language_pid": 8,
+            "text": "Si vous êtes déjà connecté, l'adresse électronique sera confirmée dès que l'URL ci-dessus sera affichée.",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 19528,
+            "legacy_language_pid": 9,
+            "text": "यदि आप पहले ही लॉग इन हैं, तो उपरोक्त URL प्रदर्शित होने पर ईमेल पते की पुष्टि हो जाएगी।",
+            "auto_translated": ""
+        },
+        "ar": {
+            "legacy_caption_pid": 29702,
+            "legacy_language_pid": 10,
+            "text": "وسوف يتم تأكيد عنوان البريد الإلكتروني في أقرب وقت عرض URL إذا كنت في دخوله بالفعل.",
+            "auto_translated": "وسوف يتم تأكيد عنوان البريد الإلكتروني في أقرب وقت عرض URL إذا كنت في دخوله بالفعل."
+        },
+        "fa": {
+            "legacy_caption_pid": 29703,
+            "legacy_language_pid": 11,
+            "text": "تایید نشانی پست الکترونیکی به عنوان به زودی به عنوان نمایش URL اگر شما در حال حاضر وارد شده انجام می شود.",
+            "auto_translated": "تایید نشانی پست الکترونیکی به عنوان به زودی به عنوان نمایش URL اگر شما در حال حاضر وارد شده انجام می شود."
+        },
+        "de": {
+            "legacy_caption_pid": 29704,
+            "legacy_language_pid": 12,
+            "text": "E-Mail-Adresse bestätigt wird, sobald die Anzeige der URL erfolgen Wenn Sie bereits angemeldet.",
+            "auto_translated": "E-Mail-Adresse bestätigt wird, sobald die Anzeige der URL erfolgen Wenn Sie bereits angemeldet."
+        },
+        "ru": {
+            "legacy_caption_pid": 29705,
+            "legacy_language_pid": 13,
+            "text": "Подтверждение электронной почты адрес будет сделано, как только отображение URL Если вы уже вошли в систему.",
+            "auto_translated": "Подтверждение электронной почты адрес будет сделано, как только отображение URL Если вы уже вошли в систему."
+        },
+        "ms": {
+            "legacy_caption_pid": 29706,
+            "legacy_language_pid": 14,
+            "text": "pengesahan alamat E-mel akan dilakukan secepat memaparkan URL Jika anda sudah log masuk.",
+            "auto_translated": "pengesahan alamat E-mel akan dilakukan secepat memaparkan URL Jika anda sudah log masuk."
+        },
+        "ta": {
+            "legacy_caption_pid": 29707,
+            "legacy_language_pid": 15,
+            "text": "மின்னஞ்சல் முகவரி உறுதிப்படுத்தல் நீங்கள் ஏற்கனவே உள்நுழைந்த என்றால் URL ஐ காண்பிக்கும் விரைவில் செய்யப்படும்.",
+            "auto_translated": "மின்னஞ்சல் முகவரி உறுதிப்படுத்தல் நீங்கள் ஏற்கனவே உள்நுழைந்த என்றால் URL ஐ காண்பிக்கும் விரைவில் செய்யப்படும்."
+        },
+        "it": {
+            "legacy_caption_pid": 29708,
+            "legacy_language_pid": 16,
+            "text": "conferma l'indirizzo e-mail sarà fatto non appena la visualizzazione di URL Se già loggato.",
+            "auto_translated": "conferma l'indirizzo e-mail sarà fatto non appena la visualizzazione di URL Se già loggato."
+        },
+        "bn": {
+            "legacy_caption_pid": 29709,
+            "legacy_language_pid": 17,
+            "text": "ই-মেল ঠিকানা নিশ্চিতকরণ আপনার আগে থেকেই লগ-ইন তাহলে URL টি প্রদর্শন হিসাবে যত তাড়াতাড়ি সম্পন্ন করা হবে।",
+            "auto_translated": "ই-মেল ঠিকানা নিশ্চিতকরণ আপনার আগে থেকেই লগ-ইন তাহলে URL টি প্রদর্শন হিসাবে যত তাড়াতাড়ি সম্পন্ন করা হবে।"
+        },
+        "tr": {
+            "legacy_caption_pid": 29710,
+            "legacy_language_pid": 18,
+            "text": "E-posta adresi onay Zaten açmış-in Eğer URL gösteren en kısa sürede yapılacaktır.",
+            "auto_translated": "E-posta adresi onay Zaten açmış-in Eğer URL gösteren en kısa sürede yapılacaktır."
+        },
+        "vi": {
+            "legacy_caption_pid": 29711,
+            "legacy_language_pid": 19,
+            "text": "xác nhận địa chỉ E-mail sẽ được thực hiện càng sớm càng hiển thị URL Nếu bạn đã đăng nhập.",
+            "auto_translated": "xác nhận địa chỉ E-mail sẽ được thực hiện càng sớm càng hiển thị URL Nếu bạn đã đăng nhập."
+        },
+        "pl": {
+            "legacy_caption_pid": 29712,
+            "legacy_language_pid": 20,
+            "text": "E-mail z potwierdzeniem adresu nastąpi tak szybko, jak wyświetlanie URL Jeśli już zalogowany.",
+            "auto_translated": "E-mail z potwierdzeniem adresu nastąpi tak szybko, jak wyświetlanie URL Jeśli już zalogowany."
+        },
+        "jv": {
+            "legacy_caption_pid": 29713,
+            "legacy_language_pid": 21,
+            "text": "konfirmasi alamat e-mail bakal rampung sanalika nampilake URL Yen sampeyan wis mlebu ing.",
+            "auto_translated": "konfirmasi alamat e-mail bakal rampung sanalika nampilake URL Yen sampeyan wis mlebu ing."
+        },
+        "pa": {
+            "legacy_caption_pid": 29714,
+            "legacy_language_pid": 22,
+            "text": "ਈ-ਮੇਲ ਪਤਾ ਪੁਸ਼ਟੀ ਤੁਹਾਨੂੰ ਹੀ ਲਾਗ-ਜੇਕਰ URL ਵੇਖਾਉਣ ਰੂਪ ਵਿੱਚ ਦੇ ਰੂਪ ਵਿੱਚ ਜਲਦੀ ਹੀ ਕੀਤਾ ਜਾਵੇਗਾ.",
+            "auto_translated": "ਈ-ਮੇਲ ਪਤਾ ਪੁਸ਼ਟੀ ਤੁਹਾਨੂੰ ਹੀ ਲਾਗ-ਜੇਕਰ URL ਵੇਖਾਉਣ ਰੂਪ ਵਿੱਚ ਦੇ ਰੂਪ ਵਿੱਚ ਜਲਦੀ ਹੀ ਕੀਤਾ ਜਾਵੇਗਾ."
+        },
+        "th": {
+            "legacy_caption_pid": 29715,
+            "legacy_language_pid": 23,
+            "text": "ยืนยัน E-mail address จะทำเร็วที่สุดเท่าที่จะแสดง URL หากคุณเข้าสู่ระบบในแล้ว",
+            "auto_translated": "ยืนยัน E-mail address จะทำเร็วที่สุดเท่าที่จะแสดง URL หากคุณเข้าสู่ระบบในแล้ว"
+        },
+        "te": {
+            "legacy_caption_pid": 37040,
+            "legacy_language_pid": 24,
+            "text": "ఇ-మెయిల్ చిరునామా నిర్ధారణని మీరు ఇప్పటికే లాగ్ ఇన్ ఉంటే URL ప్రదర్శించడం వెంటనే పూర్తి అవుతుంది.",
+            "auto_translated": "ఇ-మెయిల్ చిరునామా నిర్ధారణని మీరు ఇప్పటికే లాగ్ ఇన్ ఉంటే URL ప్రదర్శించడం వెంటనే పూర్తి అవుతుంది."
+        },
+        "mr": {
+            "legacy_caption_pid": 37041,
+            "legacy_language_pid": 25,
+            "text": "ई-मेल पत्ता पुष्टीकरण आधीच लॉग-इन केले असेल तर URL प्रदर्शित तितक्या लवकर पूर्ण केले जाईल.",
+            "auto_translated": "ई-मेल पत्ता पुष्टीकरण आधीच लॉग-इन केले असेल तर URL प्रदर्शित तितक्या लवकर पूर्ण केले जाईल."
+        },
+        "ur": {
+            "legacy_caption_pid": 37042,
+            "legacy_language_pid": 26,
+            "text": "ای میل ایڈریس کی تصدیق آپ کے پاس پہلے کا میں تو URL کی نمائش کے طور پر جیسے ہی کیا جائے گا.",
+            "auto_translated": "ای میل ایڈریس کی تصدیق آپ کے پاس پہلے کا میں تو URL کی نمائش کے طور پر جیسے ہی کیا جائے گا."
+        },
+        "gu": {
+            "legacy_caption_pid": 37043,
+            "legacy_language_pid": 27,
+            "text": "ઇ-મેઇલ સરનામું પુષ્ટિ જો તમે પહેલાથી જ લોગ-ઇન જો URL પ્રદર્શિત તરીકે ટૂંક સમયમાં પૂર્ણ થશે.",
+            "auto_translated": "ઇ-મેઇલ સરનામું પુષ્ટિ જો તમે પહેલાથી જ લોગ-ઇન જો URL પ્રદર્શિત તરીકે ટૂંક સમયમાં પૂર્ણ થશે."
+        },
+        "uk": {
+            "legacy_caption_pid": 37044,
+            "legacy_language_pid": 28,
+            "text": "Підтвердження електронної пошти адресу буде зроблено, як тільки відображення URL Якщо ви вже увійшли в систему.",
+            "auto_translated": "Підтвердження електронної пошти адресу буде зроблено, як тільки відображення URL Якщо ви вже увійшли в систему."
+        },
+        "ml": {
+            "legacy_caption_pid": 37045,
+            "legacy_language_pid": 29,
+            "text": "ഇ-മെയിൽ വിലാസ സ്ഥിരീകരണം ഉടൻ ഇതിനകം ലോഗ് ഇൻ എങ്കിൽ URL, പ്രദർശിപ്പിക്കുന്ന പൂർത്തിയാക്കാനാകും ചെയ്യും.",
+            "auto_translated": "ഇ-മെയിൽ വിലാസ സ്ഥിരീകരണം ഉടൻ ഇതിനകം ലോഗ് ഇൻ എങ്കിൽ URL, പ്രദർശിപ്പിക്കുന്ന പൂർത്തിയാക്കാനാകും ചെയ്യും."
+        },
+        "kn": {
+            "legacy_caption_pid": 37046,
+            "legacy_language_pid": 30,
+            "text": "ಇ ಮೇಲ್ ದೃಢೀಕರಣ ನೀವು ಈಗಾಗಲೇ ಲಾಗ್ ಇನ್ URL ಒಂದು ವೇಳೆ ಪ್ರದರ್ಶಿಸುವ ತಕ್ಷಣ ಮಾಡಲಾಗುವುದು.",
+            "auto_translated": "ಇ ಮೇಲ್ ದೃಢೀಕರಣ ನೀವು ಈಗಾಗಲೇ ಲಾಗ್ ಇನ್ URL ಒಂದು ವೇಳೆ ಪ್ರದರ್ಶಿಸುವ ತಕ್ಷಣ ಮಾಡಲಾಗುವುದು."
+        },
+        "su": {
+            "legacy_caption_pid": 37047,
+            "legacy_language_pid": 31,
+            "text": "konfirmasi alamat surélék bakal dilakukeun pas mintonkeun URL Mun anjeun geus asup log.",
+            "auto_translated": "konfirmasi alamat surélék bakal dilakukeun pas mintonkeun URL Mun anjeun geus asup log."
+        },
+        "ku": {
+            "legacy_caption_pid": 37048,
+            "legacy_language_pid": 32,
+            "text": "confirmation Navnîşana E-mail dê di demeke xweşik URL Heke tu jixwe têketî-di kirin.",
+            "auto_translated": "confirmation Navnîşana E-mail dê di demeke xweşik URL Heke tu jixwe têketî-di kirin."
+        },
+        "ps": {
+            "legacy_caption_pid": 37049,
+            "legacy_language_pid": 33,
+            "text": "پست پته تایید به ژر کار په توګه د حافظی ښودنه که تاسو لا غونډال کې شي.",
+            "auto_translated": "پست پته تایید به ژر کار په توګه د حافظی ښودنه که تاسو لا غونډال کې شي."
+        },
+        "ro": {
+            "legacy_caption_pid": 37050,
+            "legacy_language_pid": 34,
+            "text": "Confirmarea adresei de e-mail se va face imediat ce afișarea URL-ul Dacă deja conectat.",
+            "auto_translated": "Confirmarea adresei de e-mail se va face imediat ce afișarea URL-ul Dacă deja conectat."
+        },
+        "id": {
+            "legacy_caption_pid": 37051,
+            "legacy_language_pid": 35,
+            "text": "Konfirmasi alamat E-mail akan dilakukan sesegera menampilkan URL Jika Anda sudah log-in.",
+            "auto_translated": "Konfirmasi alamat E-mail akan dilakukan sesegera menampilkan URL Jika Anda sudah log-in."
+        },
+        "sd": {
+            "legacy_caption_pid": 37052,
+            "legacy_language_pid": 36,
+            "text": "اي-ميل ايڊريس تصديق طور تي جلد اوهان کي اڳ ۾ ئي وڏي ۾ جي URL نمائش طور تي ڪيو ويندو.",
+            "auto_translated": "اي-ميل ايڊريس تصديق طور تي جلد اوهان کي اڳ ۾ ئي وڏي ۾ جي URL نمائش طور تي ڪيو ويندو."
+        },
+        "af": {
+            "legacy_caption_pid": 37053,
+            "legacy_language_pid": 37,
+            "text": "E-pos adres bevestiging sal so gou gedoen word as die vertoning van die URL As jy reeds ingeteken-in.",
+            "auto_translated": "E-pos adres bevestiging sal so gou gedoen word as die vertoning van die URL As jy reeds ingeteken-in."
+        },
+        "sw": {
+            "legacy_caption_pid": 37054,
+            "legacy_language_pid": 38,
+            "text": "E-mail anwani ya uthibitishaji itafanyika mara tu kuonyesha URL Kama tayari umeingia katika akaunti.",
+            "auto_translated": "E-mail anwani ya uthibitishaji itafanyika mara tu kuonyesha URL Kama tayari umeingia katika akaunti."
+        },
+        "lo": {
+            "legacy_caption_pid": 37055,
+            "legacy_language_pid": 39,
+            "text": "ການຢືນຢັນທີ່ຢູ່ອີເມລ໌ຈະໄດ້ຮັບການເຮັດໃນທັນທີທີ່ສະແດງຢູ່ເວັບໄຊຖ້າຫາກວ່າທ່ານບໍ່ສະແດງແລ້ວ.",
+            "auto_translated": "ການຢືນຢັນທີ່ຢູ່ອີເມລ໌ຈະໄດ້ຮັບການເຮັດໃນທັນທີທີ່ສະແດງຢູ່ເວັບໄຊຖ້າຫາກວ່າທ່ານບໍ່ສະແດງແລ້ວ."
+        },
+        "nl": {
+            "legacy_caption_pid": 37056,
+            "legacy_language_pid": 40,
+            "text": "E-mail adres bevestiging zal zo snel worden gedaan als de weergave van de URL Als u al ingelogd-in.",
+            "auto_translated": "E-mail adres bevestiging zal zo snel worden gedaan als de weergave van de URL Als u al ingelogd-in."
+        },
+        "tl": {
+            "legacy_caption_pid": 37057,
+            "legacy_language_pid": 41,
+            "text": "E-mail address kumpirmasyon ay tapos na sa lalong madaling pagpapakita ng mga URL Kung mayroon ka nang naka-log-in.",
+            "auto_translated": "E-mail address kumpirmasyon ay tapos na sa lalong madaling pagpapakita ng mga URL Kung mayroon ka nang naka-log-in."
+        },
+        "ne": {
+            "legacy_caption_pid": 37058,
+            "legacy_language_pid": 42,
+            "text": "ई-मेल ठेगाना पुष्टि तपाईं पहिले नै लग-मा यदि URL प्रदर्शन रूपमा बित्तिकै हुनेछ।",
+            "auto_translated": "ई-मेल ठेगाना पुष्टि तपाईं पहिले नै लग-मा यदि URL प्रदर्शन रूपमा बित्तिकै हुनेछ।"
+        },
+        "hu": {
+            "legacy_caption_pid": 37059,
+            "legacy_language_pid": 43,
+            "text": "E-mail cím megerősítés akaratod, amint megjelenítő URL Ha már bejelentkezett.",
+            "auto_translated": "E-mail cím megerősítés akaratod, amint megjelenítő URL Ha már bejelentkezett."
+        },
+        "cs": {
+            "legacy_caption_pid": 37060,
+            "legacy_language_pid": 44,
+            "text": "E-mailová adresa Potvrzení bude provedeno co nejdříve zobrazování URL Pokud již přihlášený.",
+            "auto_translated": "E-mailová adresa Potvrzení bude provedeno co nejdříve zobrazování URL Pokud již přihlášený."
+        },
+        "el": {
+            "legacy_caption_pid": 37061,
+            "legacy_language_pid": 45,
+            "text": "επιβεβαίωση της διεύθυνσης e-mail θα πρέπει να γίνει το συντομότερο εμφανίζει τη διεύθυνση URL Αν έχετε ήδη συνδεδεμένοι.",
+            "auto_translated": "επιβεβαίωση της διεύθυνσης e-mail θα πρέπει να γίνει το συντομότερο εμφανίζει τη διεύθυνση URL Αν έχετε ήδη συνδεδεμένοι."
+        },
+        "sv": {
+            "legacy_caption_pid": 37062,
+            "legacy_language_pid": 46,
+            "text": "E-postadress bekräftelse kommer att ske så snart som visar webbadressen Om du redan loggat in.",
+            "auto_translated": "E-postadress bekräftelse kommer att ske så snart som visar webbadressen Om du redan loggat in."
+        },
+        "kk": {
+            "legacy_caption_pid": 37063,
+            "legacy_language_pid": 47,
+            "text": "Электрондық пошта мекен-жайы растау тезірек сіз әлдеқашан кірген болса URL визуализацияланған ретінде жүргізілетін болады.",
+            "auto_translated": "Электрондық пошта мекен-жайы растау тезірек сіз әлдеқашан кірген болса URL визуализацияланған ретінде жүргізілетін болады."
+        },
+        "fi": {
+            "legacy_caption_pid": 37064,
+            "legacy_language_pid": 48,
+            "text": "Sähköpostiosoite vahvistus tehdään heti näyttää URL Jos jo kirjautunut sisään.",
+            "auto_translated": "Sähköpostiosoite vahvistus tehdään heti näyttää URL Jos jo kirjautunut sisään."
+        },
+        "da": {
+            "legacy_caption_pid": 37065,
+            "legacy_language_pid": 49,
+            "text": "E-mail-adresse bekræftelse vil ske, så snart vise URL Hvis du allerede er logget ind.",
+            "auto_translated": "E-mail-adresse bekræftelse vil ske, så snart vise URL Hvis du allerede er logget ind."
+        },
+        "he": {
+            "legacy_caption_pid": 37066,
+            "legacy_language_pid": 50,
+            "text": "דואר אלקטרוני אישור כתובת ייעשה בהקדם מוצגות ה- URL אם כבר אתה מחובר.",
+            "auto_translated": "דואר אלקטרוני אישור כתובת ייעשה בהקדם מוצגות ה- URL אם כבר אתה מחובר."
+        },
+        "no": {
+            "legacy_caption_pid": 37067,
+            "legacy_language_pid": 51,
+            "text": "E-post adresse bekreftelse vil bli gjort så snart du mottar den ovennevnte URL Hvis du allerede logget på.",
+            "auto_translated": "E-post adresse bekreftelse vil bli gjort så snart du mottar den ovennevnte URL Hvis du allerede logget på."
+        }
+    }
+}

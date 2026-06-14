@@ -1,0 +1,321 @@
+{
+    "resource_key": "COMMON_LIB_EMAIL_TEST_FAILED_TO_SEND_AND_RETRY_LATER",
+    "legacy_resource_pid": 1597,
+    "base_group_key": "grp-010-matsuesoft-lib",
+    "additional_group_keys": [],
+    "key_for_update": "oV3qnFVgYglE77oV9VZW1Dtw5ME0asPUaqHfg7zlJ7HBFPm5Uhz0sRg7bIL3rUEQdODAi9Z2k248COIsy4NKfSLvi8ZQVhj0e2M0NcpNqzA5KWAsnKadcYhK1TX7vvJ8",
+    "sort_group": "EMAIL TEST",
+    "key_name": "COMMON_LIB_EMAIL_TEST_FAILED_TO_SEND_AND_RETRY_LATER",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": false,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 7170,
+            "legacy_language_pid": 1,
+            "text": "メールサーバがエラーを返しました。後ほど自動再送させて頂きますので少しお待ち頂ければと思います。ご迷惑おかけ致します。",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 7171,
+            "legacy_language_pid": 2,
+            "text": "The mail server returned an error. I will resend it automatically later so I'd like to wait a while. We are sorry for the inconvenience.",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 7172,
+            "legacy_language_pid": 3,
+            "text": "邮件服务器返回错误。稍后我们将重新发送，给您带来不便，我们很抱歉。",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 7173,
+            "legacy_language_pid": 4,
+            "text": "메일 서버가 오류를 반환했습니다. 잠시 후 자동으로 재전송되오니 조금만 기다려주시기 바랍니다. 불편을 끼쳐드려 죄송합니다.",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 10681,
+            "legacy_language_pid": 5,
+            "text": "El servidor de correo devolvió un error. Lo reenviaré automáticamente más tarde, así que me gustaría esperar un tiempo. Lamentamos las molestias.",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 10682,
+            "legacy_language_pid": 6,
+            "text": "O servidor de correio retornou um erro. Vou reenviar-lo automaticamente mais tarde, então eu gostaria de esperar um pouco. Lamentamos o inconveniente.",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 10683,
+            "legacy_language_pid": 7,
+            "text": "郵件服務器返回錯誤。稍後我們將重新發送，給您帶來不便，我們很抱歉。",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 16409,
+            "legacy_language_pid": 8,
+            "text": "Le serveur de messagerie a renvoyé une erreur. Je le renverrai automatiquement plus tard, alors j'aimerais attendre un moment. Nous sommes désolés du dérangement.",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 16410,
+            "legacy_language_pid": 9,
+            "text": "मेल सर्वर ने एक त्रुटि लौटा दी मैं इसे बाद में फिर से भेज दूंगा, इसलिए मैं थोड़ी देर प्रतीक्षा करना चाहता हूं। असुविधा के लिए खेद है।",
+            "auto_translated": ""
+        },
+        "ar": {
+            "legacy_caption_pid": 30738,
+            "legacy_language_pid": 10,
+            "text": "خادم البريد إرجاع خطأ. أعتقد أن عليك الانتظار قليلا لذلك نحن في وقت لاحق من تكرار تلقائي. ونحن نعتذر عن أي إزعاج.",
+            "auto_translated": "خادم البريد إرجاع خطأ. أعتقد أن عليك الانتظار قليلا لذلك نحن في وقت لاحق من تكرار تلقائي. ونحن نعتذر عن أي إزعاج."
+        },
+        "fa": {
+            "legacy_caption_pid": 30739,
+            "legacy_language_pid": 11,
+            "text": "میل سرور خطایی را بازگرداند. من فکر می کنم که شما کمی صبر کنید تا ما بعدا خواهیم توسط تکرار اتوماتیک. ما برای هر مشکل پوزش می طلبیم.",
+            "auto_translated": "میل سرور خطایی را بازگرداند. من فکر می کنم که شما کمی صبر کنید تا ما بعدا خواهیم توسط تکرار اتوماتیک. ما برای هر مشکل پوزش می طلبیم."
+        },
+        "de": {
+            "legacy_caption_pid": 30740,
+            "legacy_language_pid": 12,
+            "text": "Mail-Server hat einen Fehler zurückgegeben. Ich denke, dass Sie wenig warten, so werden wir später durch automatische Wiederholung. Wir entschuldigen uns für etwaige Unannehmlichkeiten.",
+            "auto_translated": "Mail-Server hat einen Fehler zurückgegeben. Ich denke, dass Sie wenig warten, so werden wir später durch automatische Wiederholung. Wir entschuldigen uns für etwaige Unannehmlichkeiten."
+        },
+        "ru": {
+            "legacy_caption_pid": 30741,
+            "legacy_language_pid": 13,
+            "text": "Почтовый сервер возвратил ошибку. Я думаю, что вы немного подождать, так мы будем позже автоматического повтора. Приносим извинения за доставленные неудобства.",
+            "auto_translated": "Почтовый сервер возвратил ошибку. Я думаю, что вы немного подождать, так мы будем позже автоматического повтора. Приносим извинения за доставленные неудобства."
+        },
+        "ms": {
+            "legacy_caption_pid": 30742,
+            "legacy_language_pid": 14,
+            "text": "pelayan mel mengembalikan ralat. Saya berfikir bahawa anda sedikit menunggu jadi kami akan kemudian dengan berulang automatik. Kami memohon maaf atas sebarang kesulitan.",
+            "auto_translated": "pelayan mel mengembalikan ralat. Saya berfikir bahawa anda sedikit menunggu jadi kami akan kemudian dengan berulang automatik. Kami memohon maaf atas sebarang kesulitan."
+        },
+        "ta": {
+            "legacy_caption_pid": 30743,
+            "legacy_language_pid": 15,
+            "text": "மின்னஞ்சல் சர்வர் பிழை ஏற்பட்டது. நான் நீங்கள் சிறிய நாம் செய்வோம் பின்னர் தானியங்கி மறுஒளிபரப்பு எனவே காத்திருக்க என்று நினைக்கிறேன். சிரமத்திற்கு வருந்துகிறோம்.",
+            "auto_translated": "மின்னஞ்சல் சர்வர் பிழை ஏற்பட்டது. நான் நீங்கள் சிறிய நாம் செய்வோம் பின்னர் தானியங்கி மறுஒளிபரப்பு எனவே காத்திருக்க என்று நினைக்கிறேன். சிரமத்திற்கு வருந்துகிறோம்."
+        },
+        "it": {
+            "legacy_caption_pid": 30744,
+            "legacy_language_pid": 16,
+            "text": "Mail server ha restituito un errore. Penso che si po 'aspettare così ci sarà più tardi da ripetizione automatica. Ci scusiamo per gli eventuali disagi.",
+            "auto_translated": "Mail server ha restituito un errore. Penso che si po 'aspettare così ci sarà più tardi da ripetizione automatica. Ci scusiamo per gli eventuali disagi."
+        },
+        "bn": {
+            "legacy_caption_pid": 30745,
+            "legacy_language_pid": 17,
+            "text": "মেল সার্ভারটি একটি ত্রুটি ফিরিয়ে দিয়েছে। আমি মনে করি যে আপনি সামান্য আমরা করব পরে স্বয়ংক্রিয় পুনরাবৃত্তি দ্বারা তা অপেক্ষা করুন। কোন অসুবিধার জন্য আমরা ক্ষমাপ্রার্থী।",
+            "auto_translated": "মেল সার্ভারটি একটি ত্রুটি ফিরিয়ে দিয়েছে। আমি মনে করি যে আপনি সামান্য আমরা করব পরে স্বয়ংক্রিয় পুনরাবৃত্তি দ্বারা তা অপেক্ষা করুন। কোন অসুবিধার জন্য আমরা ক্ষমাপ্রার্থী।"
+        },
+        "tr": {
+            "legacy_caption_pid": 30746,
+            "legacy_language_pid": 18,
+            "text": "Posta sunucusu hata verdi. Ben seni küçük biz olacak daha sonra otomatik tekrar bunu beklemek düşünüyorum. Verdiğimiz rahatsızlıktan dolayı özür dileriz.",
+            "auto_translated": "Posta sunucusu hata verdi. Ben seni küçük biz olacak daha sonra otomatik tekrar bunu beklemek düşünüyorum. Verdiğimiz rahatsızlıktan dolayı özür dileriz."
+        },
+        "vi": {
+            "legacy_caption_pid": 30747,
+            "legacy_language_pid": 19,
+            "text": "mail server trả về một lỗi. Tôi nghĩ rằng bạn ít chờ đợi vì vậy chúng tôi sẽ sau đó bằng cách lặp lại tự động. Chúng tôi xin lỗi vì sự bất tiện.",
+            "auto_translated": "mail server trả về một lỗi. Tôi nghĩ rằng bạn ít chờ đợi vì vậy chúng tôi sẽ sau đó bằng cách lặp lại tự động. Chúng tôi xin lỗi vì sự bất tiện."
+        },
+        "pl": {
+            "legacy_caption_pid": 30748,
+            "legacy_language_pid": 20,
+            "text": "Serwer poczty zwrócił błąd. Myślę, że trochę poczekać, więc będziemy później automatycznego powtarzania. Przepraszamy za wszelkie niedogodności.",
+            "auto_translated": "Serwer poczty zwrócił błąd. Myślę, że trochę poczekać, więc będziemy później automatycznego powtarzania. Przepraszamy za wszelkie niedogodności."
+        },
+        "jv": {
+            "legacy_caption_pid": 30749,
+            "legacy_language_pid": 21,
+            "text": "server mail bali kesalahan. Aku sing sethitik ngenteni supaya kita bakal mengko dening baleni otomatis. We apologize kanggo maksud apa nyaman.",
+            "auto_translated": "server mail bali kesalahan. Aku sing sethitik ngenteni supaya kita bakal mengko dening baleni otomatis. We apologize kanggo maksud apa nyaman."
+        },
+        "pa": {
+            "legacy_caption_pid": 30750,
+            "legacy_language_pid": 22,
+            "text": "ਮੇਲ ਸਰਵਰ ਨੇ ਗਲਤੀ ਦਿੱਤੀ ਹੈ. ਮੈਨੂੰ ਲੱਗਦਾ ਹੈ ਕਿ ਤੁਹਾਨੂੰ ਬਹੁਤ ਘੱਟ ਸਾਨੂੰ ਕਰੇਗਾ ਨੂੰ ਬਾਅਦ ਆਟੋਮੈਟਿਕ ਦੁਹਰਾਉ ਕਰ ਕੇ, ਇਸ ਦੀ ਉਡੀਕ ਕਰੋ. ਸਾਨੂੰ ਕਿਸੇ ਵੀ ਅਸੁਵਿਧਾ ਲਈ ਮੁਆਫੀ.",
+            "auto_translated": "ਮੇਲ ਸਰਵਰ ਨੇ ਗਲਤੀ ਦਿੱਤੀ ਹੈ. ਮੈਨੂੰ ਲੱਗਦਾ ਹੈ ਕਿ ਤੁਹਾਨੂੰ ਬਹੁਤ ਘੱਟ ਸਾਨੂੰ ਕਰੇਗਾ ਨੂੰ ਬਾਅਦ ਆਟੋਮੈਟਿਕ ਦੁਹਰਾਉ ਕਰ ਕੇ, ਇਸ ਦੀ ਉਡੀਕ ਕਰੋ. ਸਾਨੂੰ ਕਿਸੇ ਵੀ ਅਸੁਵਿਧਾ ਲਈ ਮੁਆਫੀ."
+        },
+        "th": {
+            "legacy_caption_pid": 30751,
+            "legacy_language_pid": 23,
+            "text": "เซิร์ฟเวอร์อีเมลกลับข้อผิดพลาด ผมคิดว่าคุณเล็ก ๆ น้อย ๆ รอดังนั้นเราจะทำซ้ำในภายหลังโดยอัตโนมัติ เราต้องขออภัยในความไม่สะดวก",
+            "auto_translated": "เซิร์ฟเวอร์อีเมลกลับข้อผิดพลาด ผมคิดว่าคุณเล็ก ๆ น้อย ๆ รอดังนั้นเราจะทำซ้ำในภายหลังโดยอัตโนมัติ เราต้องขออภัยในความไม่สะดวก"
+        },
+        "te": {
+            "legacy_caption_pid": 42906,
+            "legacy_language_pid": 24,
+            "text": "మెయిల్ సర్వర్ లోపం తిరిగి. నేను మీరు కొద్దిగా మేము రెడీ తరువాత స్వయంచాలక పునరుక్తి ద్వారా వేచి అనుకుంటున్నాను. మేము ఏ అసౌకర్యానికి చింతిస్తున్నాము.",
+            "auto_translated": "మెయిల్ సర్వర్ లోపం తిరిగి. నేను మీరు కొద్దిగా మేము రెడీ తరువాత స్వయంచాలక పునరుక్తి ద్వారా వేచి అనుకుంటున్నాను. మేము ఏ అసౌకర్యానికి చింతిస్తున్నాము."
+        },
+        "mr": {
+            "legacy_caption_pid": 42907,
+            "legacy_language_pid": 25,
+            "text": "मेल सर्व्हर त्रुटी आली. मी तुम्हाला थोडे आम्ही नंतर स्वयंचलित वारंवार करून इच्छा प्रतीक्षा, असे वाटते. कोणत्याही गैरसोयीबद्दल आम्ही दिलगीर आहोत.",
+            "auto_translated": "मेल सर्व्हर त्रुटी आली. मी तुम्हाला थोडे आम्ही नंतर स्वयंचलित वारंवार करून इच्छा प्रतीक्षा, असे वाटते. कोणत्याही गैरसोयीबद्दल आम्ही दिलगीर आहोत."
+        },
+        "ur": {
+            "legacy_caption_pid": 42908,
+            "legacy_language_pid": 26,
+            "text": "میل سرور میں ایک خامی واپس آئے. مجھے یقین ہے کہ آپ کی بہت کم ہم بعد خود کار طریقے سے دوبارہ طرف جائے گا تو انتظار میں سوچنا. ہم کسی بھی قسم کی تکلیف کے لئے معذرت خواہ ہیں.",
+            "auto_translated": "میل سرور میں ایک خامی واپس آئے. مجھے یقین ہے کہ آپ کی بہت کم ہم بعد خود کار طریقے سے دوبارہ طرف جائے گا تو انتظار میں سوچنا. ہم کسی بھی قسم کی تکلیف کے لئے معذرت خواہ ہیں."
+        },
+        "gu": {
+            "legacy_caption_pid": 42909,
+            "legacy_language_pid": 27,
+            "text": "મેલ સર્વર એક ભૂલ આપી. મને લાગે છે કે તમે થોડી અમે પાછળથી આપોઆપ વારંવાર આમ રાહ જુઓ. અમે કોઈપણ અસુવિધા માટે દિલગીર છીએ.",
+            "auto_translated": "મેલ સર્વર એક ભૂલ આપી. મને લાગે છે કે તમે થોડી અમે પાછળથી આપોઆપ વારંવાર આમ રાહ જુઓ. અમે કોઈપણ અસુવિધા માટે દિલગીર છીએ."
+        },
+        "uk": {
+            "legacy_caption_pid": 42910,
+            "legacy_language_pid": 28,
+            "text": "Поштовий сервер повернув помилку. Я думаю, що ви трохи почекати, так ми будемо пізніше автоматичного повтору. Приносимо вибачення за доставлені незручності.",
+            "auto_translated": "Поштовий сервер повернув помилку. Я думаю, що ви трохи почекати, так ми будемо пізніше автоматичного повтору. Приносимо вибачення за доставлені незручності."
+        },
+        "ml": {
+            "legacy_caption_pid": 42911,
+            "legacy_language_pid": 29,
+            "text": "മെയിൽ സെർവർ പിശക്. ഞാൻ നിങ്ങളെ ചെറിയ ഓട്ടോമാറ്റിക് ആവർത്തിച്ച് പിന്നീട് അങ്ങനെ നാം ഉദ്ദേശിക്കുന്ന കാത്തിരിക്കുക എന്നു തോന്നുന്നു. അസൗകര്യത്തിൽ ഖേദിക്കുന്നു.",
+            "auto_translated": "മെയിൽ സെർവർ പിശക്. ഞാൻ നിങ്ങളെ ചെറിയ ഓട്ടോമാറ്റിക് ആവർത്തിച്ച് പിന്നീട് അങ്ങനെ നാം ഉദ്ദേശിക്കുന്ന കാത്തിരിക്കുക എന്നു തോന്നുന്നു. അസൗകര്യത്തിൽ ഖേദിക്കുന്നു."
+        },
+        "kn": {
+            "legacy_caption_pid": 42912,
+            "legacy_language_pid": 30,
+            "text": "ಮೇಲ್ ಸರ್ವರ್ ದೋಷವನ್ನು ಹಿಂತಿರುಗಿಸಿದೆ. ನಾನು ಕಡಿಮೆ ನಾವು ನಂತರ ಸ್ವಯಂಚಾಲಿತ ಪುನರಾವರ್ತಿತ ತಿನ್ನುವೆ ಆದ್ದರಿಂದ ನಿರೀಕ್ಷಿಸಿ ಭಾವಿಸುತ್ತೇನೆ. ನಾವು ಯಾವುದೇ ನೊಡನೆ.",
+            "auto_translated": "ಮೇಲ್ ಸರ್ವರ್ ದೋಷವನ್ನು ಹಿಂತಿರುಗಿಸಿದೆ. ನಾನು ಕಡಿಮೆ ನಾವು ನಂತರ ಸ್ವಯಂಚಾಲಿತ ಪುನರಾವರ್ತಿತ ತಿನ್ನುವೆ ಆದ್ದರಿಂದ ನಿರೀಕ್ಷಿಸಿ ಭಾವಿಸುತ್ತೇನೆ. ನಾವು ಯಾವುದೇ ನೊಡನೆ."
+        },
+        "su": {
+            "legacy_caption_pid": 42913,
+            "legacy_language_pid": 31,
+            "text": "server mail balik kasalahan. Jigana nu saeutik antosan sangkan bakal engké ku ulang otomatis. Urang hapunten kasulitan nanaon.",
+            "auto_translated": "server mail balik kasalahan. Jigana nu saeutik antosan sangkan bakal engké ku ulang otomatis. Urang hapunten kasulitan nanaon."
+        },
+        "ku": {
+            "legacy_caption_pid": 42914,
+            "legacy_language_pid": 32,
+            "text": "server Mail an error vegeriya. Ez wisa difikirim, ku hûn hindik bisekine, da em ê piştre ji aliyê dubare otomatîk. Em ji bo acizîyên ku lêborînê dixwazin.",
+            "auto_translated": "server Mail an error vegeriya. Ez wisa difikirim, ku hûn hindik bisekine, da em ê piştre ji aliyê dubare otomatîk. Em ji bo acizîyên ku lêborînê dixwazin."
+        },
+        "ps": {
+            "legacy_caption_pid": 42915,
+            "legacy_language_pid": 33,
+            "text": "Mail پالنګر د تیروتنې ته راستون شو. زه فکر کوم چې تاسو لږ موږ به وروسته له خوا اتومات تکرار نو انتظار. موږ د هر ډول آرامه کولو څخه بښنه.",
+            "auto_translated": "Mail پالنګر د تیروتنې ته راستون شو. زه فکر کوم چې تاسو لږ موږ به وروسته له خوا اتومات تکرار نو انتظار. موږ د هر ډول آرامه کولو څخه بښنه."
+        },
+        "ro": {
+            "legacy_caption_pid": 42916,
+            "legacy_language_pid": 34,
+            "text": "Serverul de mesagerie electronică a returnat o eroare. Cred că așteptați puțin mai târziu, vom repeta de automată. Ne cerem scuze pentru eventualele neplăceri.",
+            "auto_translated": "Serverul de mesagerie electronică a returnat o eroare. Cred că așteptați puțin mai târziu, vom repeta de automată. Ne cerem scuze pentru eventualele neplăceri."
+        },
+        "id": {
+            "legacy_caption_pid": 42917,
+            "legacy_language_pid": 35,
+            "text": "Mail server kembali kesalahan. Saya berpikir bahwa Anda sedikit menunggu jadi kami akan kemudian oleh mengulang otomatis. Kami mohon maaf atas ketidaknyamanan.",
+            "auto_translated": "Mail server kembali kesalahan. Saya berpikir bahwa Anda sedikit menunggu jadi kami akan kemudian oleh mengulang otomatis. Kami mohon maaf atas ketidaknyamanan."
+        },
+        "sd": {
+            "legacy_caption_pid": 42918,
+            "legacy_language_pid": 36,
+            "text": "ميل سرور غلطي موٽي آيو. مون سمجهيو ته اوهان کي ٿورو پوء اسان ٿيندو خودڪار ورجائي جي دير سان انتظار. اسان کي ڪنهن به تڪليف لاء معذرت.",
+            "auto_translated": "ميل سرور غلطي موٽي آيو. مون سمجهيو ته اوهان کي ٿورو پوء اسان ٿيندو خودڪار ورجائي جي دير سان انتظار. اسان کي ڪنهن به تڪليف لاء معذرت."
+        },
+        "af": {
+            "legacy_caption_pid": 42919,
+            "legacy_language_pid": 37,
+            "text": "Pos bediener het 'n fout. Ek dink dat jy bietjie so wag ons sal later deur 'n outomatiese herhaling. Ons vra om verskoning vir enige ongerief.",
+            "auto_translated": "Pos bediener het 'n fout. Ek dink dat jy bietjie so wag ons sal later deur 'n outomatiese herhaling. Ons vra om verskoning vir enige ongerief."
+        },
+        "sw": {
+            "legacy_caption_pid": 42920,
+            "legacy_language_pid": 38,
+            "text": "Barua imerudisha hitilafu. Nadhani kidogo kusubiri hivyo itakuwa baadaye kwa kurudia moja kwa moja. Tunaomba radhi kwa usumbufu wowote.",
+            "auto_translated": "Barua imerudisha hitilafu. Nadhani kidogo kusubiri hivyo itakuwa baadaye kwa kurudia moja kwa moja. Tunaomba radhi kwa usumbufu wowote."
+        },
+        "lo": {
+            "legacy_caption_pid": 42921,
+            "legacy_language_pid": 39,
+            "text": "ເຄື່ອງແມ່ຂ່າຍຂອງອີເມລກັບຄວາມຜິດພາດ. ຂ້າພະເຈົ້າຄິດວ່າທ່ານພຽງເລັກນ້ອຍລໍຖ້າດັ່ງນັ້ນພວກເຮົາຈະຕໍ່ມາໂດຍເຮັດເລື້ມຄືນອັດຕະໂນມັດ. ພວກເຮົາຂໍອະໄພໃນຄວາມບໍ່ສະດວກ.",
+            "auto_translated": "ເຄື່ອງແມ່ຂ່າຍຂອງອີເມລກັບຄວາມຜິດພາດ. ຂ້າພະເຈົ້າຄິດວ່າທ່ານພຽງເລັກນ້ອຍລໍຖ້າດັ່ງນັ້ນພວກເຮົາຈະຕໍ່ມາໂດຍເຮັດເລື້ມຄືນອັດຕະໂນມັດ. ພວກເຮົາຂໍອະໄພໃນຄວາມບໍ່ສະດວກ."
+        },
+        "nl": {
+            "legacy_caption_pid": 42922,
+            "legacy_language_pid": 40,
+            "text": "Mail server heeft een fout geretourneerd. Ik denk dat je weinig dus wachten we zullen later door automatische herhaling. Onze excuses voor het eventuele ongemak.",
+            "auto_translated": "Mail server heeft een fout geretourneerd. Ik denk dat je weinig dus wachten we zullen later door automatische herhaling. Onze excuses voor het eventuele ongemak."
+        },
+        "tl": {
+            "legacy_caption_pid": 42923,
+            "legacy_language_pid": 41,
+            "text": "Mail server ay nagbalik ng isang error. Sa tingin ko na ang maliit na kang maghintay kaya kami mamaya sa pamamagitan ng awtomatikong ulitin. Humihingi kami ng paumanhin para sa anumang abala.",
+            "auto_translated": "Mail server ay nagbalik ng isang error. Sa tingin ko na ang maliit na kang maghintay kaya kami mamaya sa pamamagitan ng awtomatikong ulitin. Humihingi kami ng paumanhin para sa anumang abala."
+        },
+        "ne": {
+            "legacy_caption_pid": 42924,
+            "legacy_language_pid": 42,
+            "text": "मेल सर्भर त्रुटि फर्के। म सानो हामी हुनेछ पछि स्वचालित दोहोरिने त्यसैले प्रतीक्षा लाग्छ। हामी कुनै पनि असुविधाको लागि क्षमा चाहन्छौं।",
+            "auto_translated": "मेल सर्भर त्रुटि फर्के। म सानो हामी हुनेछ पछि स्वचालित दोहोरिने त्यसैले प्रतीक्षा लाग्छ। हामी कुनै पनि असुविधाको लागि क्षमा चाहन्छौं।"
+        },
+        "hu": {
+            "legacy_caption_pid": 42925,
+            "legacy_language_pid": 43,
+            "text": "Mail szerver hibát. Úgy gondolom, hogy kicsit várni, mi lesz később automatikus ismétlés. Elnézést kérünk a kellemetlenségért.",
+            "auto_translated": "Mail szerver hibát. Úgy gondolom, hogy kicsit várni, mi lesz később automatikus ismétlés. Elnézést kérünk a kellemetlenségért."
+        },
+        "cs": {
+            "legacy_caption_pid": 42926,
+            "legacy_language_pid": 44,
+            "text": "Mailový server vrátil chybu. Myslím, že jste trochu počkat, takže budeme později automatické opakování. Omlouváme se za případné nepříjemnosti.",
+            "auto_translated": "Mailový server vrátil chybu. Myslím, že jste trochu počkat, takže budeme později automatické opakování. Omlouváme se za případné nepříjemnosti."
+        },
+        "el": {
+            "legacy_caption_pid": 42927,
+            "legacy_language_pid": 45,
+            "text": "διακομιστή αλληλογραφίας επέστρεψε ένα σφάλμα. Νομίζω ότι μπορείτε λίγο να περιμένει γι 'αυτό αργότερα θα με αυτόματη επανάληψη. Ζητούμε συγγνώμη για την όποια ταλαιπωρία.",
+            "auto_translated": "διακομιστή αλληλογραφίας επέστρεψε ένα σφάλμα. Νομίζω ότι μπορείτε λίγο να περιμένει γι 'αυτό αργότερα θα με αυτόματη επανάληψη. Ζητούμε συγγνώμη για την όποια ταλαιπωρία."
+        },
+        "sv": {
+            "legacy_caption_pid": 42928,
+            "legacy_language_pid": 46,
+            "text": "Postservern returnerade ett fel. Jag tror att du lilla vänta så vi kommer senare genom automatisk upprepning. Vi ber om ursäkt för eventuella besvär.",
+            "auto_translated": "Postservern returnerade ett fel. Jag tror att du lilla vänta så vi kommer senare genom automatisk upprepning. Vi ber om ursäkt för eventuella besvär."
+        },
+        "kk": {
+            "legacy_caption_pid": 42929,
+            "legacy_language_pid": 47,
+            "text": "Пошта сервері қате қайтарылады. Мен сізге кішкентай автоматты қайталау арқылы кейінірек біз де солай болады күтіп деп ойлаймын. Келтірілген қолайсыздықтар үшін кешірім сұраймыз.",
+            "auto_translated": "Пошта сервері қате қайтарылады. Мен сізге кішкентай автоматты қайталау арқылы кейінірек біз де солай болады күтіп деп ойлаймын. Келтірілген қолайсыздықтар үшін кешірім сұраймыз."
+        },
+        "fi": {
+            "legacy_caption_pid": 42930,
+            "legacy_language_pid": 48,
+            "text": "Sähköpostipalvelin palautti virheen. Uskon, että senkin odottaa niin me myöhemmin automaattisella toista. Pahoittelemme häiriötä.",
+            "auto_translated": "Sähköpostipalvelin palautti virheen. Uskon, että senkin odottaa niin me myöhemmin automaattisella toista. Pahoittelemme häiriötä."
+        },
+        "da": {
+            "legacy_caption_pid": 42931,
+            "legacy_language_pid": 49,
+            "text": "Mail-server returnerede en fejl. Jeg tror, ​​at du lidt vente så vil vi senere ved automatisk gentagelse. Vi beklager ulejligheden.",
+            "auto_translated": "Mail-server returnerede en fejl. Jeg tror, ​​at du lidt vente så vil vi senere ved automatisk gentagelse. Vi beklager ulejligheden."
+        },
+        "he": {
+            "legacy_caption_pid": 42932,
+            "legacy_language_pid": 50,
+            "text": "שרת הדואר החזיר שגיאה. אני חושב שאתה קצת לחכות אז אנחנו נעשה מאוחר יותר על ידי חוזרים אוטומטית. אנו מתנצלים על אי הנוחות.",
+            "auto_translated": "שרת הדואר החזיר שגיאה. אני חושב שאתה קצת לחכות אז אנחנו נעשה מאוחר יותר על ידי חוזרים אוטומטית. אנו מתנצלים על אי הנוחות."
+        },
+        "no": {
+            "legacy_caption_pid": 42933,
+            "legacy_language_pid": 51,
+            "text": "Postserveren returnerte en feil. Jeg tror at du lite vente så vi vil senere av automatisk gjenta. Vi beklager eventuelle ulemper.",
+            "auto_translated": "Postserveren returnerte en feil. Jeg tror at du lite vente så vi vil senere av automatisk gjenta. Vi beklager eventuelle ulemper."
+        }
+    }
+}

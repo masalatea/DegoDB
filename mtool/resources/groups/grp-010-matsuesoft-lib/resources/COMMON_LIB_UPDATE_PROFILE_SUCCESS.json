@@ -1,0 +1,321 @@
+{
+    "resource_key": "COMMON_LIB_UPDATE_PROFILE_SUCCESS",
+    "legacy_resource_pid": 1609,
+    "base_group_key": "grp-010-matsuesoft-lib",
+    "additional_group_keys": [],
+    "key_for_update": "9XYKS1pWopOVg64YIUN1KnZ97KIL38XJcIJUqsXGDfrqsvTiFPn5B3LUluZh7NCKswO5lxwao2Drs4K1GKIe7p3Gs1g7rFj9vkG9ucrDPG1H5EQYQAYdX2bwJyh0MMXD",
+    "sort_group": "PROFILE",
+    "key_name": "COMMON_LIB_UPDATE_PROFILE_SUCCESS",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": false,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 7218,
+            "legacy_language_pid": 1,
+            "text": "更新しました。",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 7219,
+            "legacy_language_pid": 2,
+            "text": "Has been updated.",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 7220,
+            "legacy_language_pid": 3,
+            "text": "它已被更新。",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 7221,
+            "legacy_language_pid": 4,
+            "text": "업데이트했습니다.",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 11162,
+            "legacy_language_pid": 5,
+            "text": "Ha sido actualizado. ",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 11163,
+            "legacy_language_pid": 6,
+            "text": "Tem sido atualizado.",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 11164,
+            "legacy_language_pid": 7,
+            "text": "它已被更新。",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 17297,
+            "legacy_language_pid": 8,
+            "text": "A été mis à jour.",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 17298,
+            "legacy_language_pid": 9,
+            "text": "अपडेट किया गया है।",
+            "auto_translated": ""
+        },
+        "ar": {
+            "legacy_caption_pid": 33064,
+            "legacy_language_pid": 10,
+            "text": "تم تحديثه.",
+            "auto_translated": "تم تحديثه."
+        },
+        "fa": {
+            "legacy_caption_pid": 33065,
+            "legacy_language_pid": 11,
+            "text": "به روز شده است.",
+            "auto_translated": "به روز شده است."
+        },
+        "de": {
+            "legacy_caption_pid": 33066,
+            "legacy_language_pid": 12,
+            "text": "Es wird aktualisiert.",
+            "auto_translated": "Es wird aktualisiert."
+        },
+        "ru": {
+            "legacy_caption_pid": 33067,
+            "legacy_language_pid": 13,
+            "text": "Он был обновлен.",
+            "auto_translated": "Он был обновлен."
+        },
+        "ms": {
+            "legacy_caption_pid": 33068,
+            "legacy_language_pid": 14,
+            "text": "Ia telah dikemaskini.",
+            "auto_translated": "Ia telah dikemaskini."
+        },
+        "ta": {
+            "legacy_caption_pid": 33069,
+            "legacy_language_pid": 15,
+            "text": "அது புதுப்பிக்கப்பட்டுள்ளது.",
+            "auto_translated": "அது புதுப்பிக்கப்பட்டுள்ளது."
+        },
+        "it": {
+            "legacy_caption_pid": 33070,
+            "legacy_language_pid": 16,
+            "text": "E 'stato aggiornato.",
+            "auto_translated": "E 'stato aggiornato."
+        },
+        "bn": {
+            "legacy_caption_pid": 33071,
+            "legacy_language_pid": 17,
+            "text": "এটা তোলে আপডেট করা হয়েছে।",
+            "auto_translated": "এটা তোলে আপডেট করা হয়েছে।"
+        },
+        "tr": {
+            "legacy_caption_pid": 33072,
+            "legacy_language_pid": 18,
+            "text": "Bu güncellendi.",
+            "auto_translated": "Bu güncellendi."
+        },
+        "vi": {
+            "legacy_caption_pid": 33073,
+            "legacy_language_pid": 19,
+            "text": "Nó đã được cập nhật.",
+            "auto_translated": "Nó đã được cập nhật."
+        },
+        "pl": {
+            "legacy_caption_pid": 33074,
+            "legacy_language_pid": 20,
+            "text": "Został zaktualizowany.",
+            "auto_translated": "Został zaktualizowany."
+        },
+        "jv": {
+            "legacy_caption_pid": 33075,
+            "legacy_language_pid": 21,
+            "text": "Iku wis dianyari.",
+            "auto_translated": "Iku wis dianyari."
+        },
+        "pa": {
+            "legacy_caption_pid": 33076,
+            "legacy_language_pid": 22,
+            "text": "ਇਹ ਅੱਪਡੇਟ ਕੀਤਾ ਗਿਆ ਹੈ.",
+            "auto_translated": "ਇਹ ਅੱਪਡੇਟ ਕੀਤਾ ਗਿਆ ਹੈ."
+        },
+        "th": {
+            "legacy_caption_pid": 33077,
+            "legacy_language_pid": 23,
+            "text": "มันได้รับการปรับปรุง",
+            "auto_translated": "มันได้รับการปรับปรุง"
+        },
+        "te": {
+            "legacy_caption_pid": 39476,
+            "legacy_language_pid": 24,
+            "text": "ఇది నవీకరించబడింది.",
+            "auto_translated": "ఇది నవీకరించబడింది."
+        },
+        "mr": {
+            "legacy_caption_pid": 39477,
+            "legacy_language_pid": 25,
+            "text": "हे सुधारित केले आहे.",
+            "auto_translated": "हे सुधारित केले आहे."
+        },
+        "ur": {
+            "legacy_caption_pid": 39478,
+            "legacy_language_pid": 26,
+            "text": "اس کو اپ ڈیٹ کر دیا گیا ہے.",
+            "auto_translated": "اس کو اپ ڈیٹ کر دیا گیا ہے."
+        },
+        "gu": {
+            "legacy_caption_pid": 39479,
+            "legacy_language_pid": 27,
+            "text": "તે અપડેટ કરવામાં આવી.",
+            "auto_translated": "તે અપડેટ કરવામાં આવી."
+        },
+        "uk": {
+            "legacy_caption_pid": 39480,
+            "legacy_language_pid": 28,
+            "text": "Він був оновлений.",
+            "auto_translated": "Він був оновлений."
+        },
+        "ml": {
+            "legacy_caption_pid": 39481,
+            "legacy_language_pid": 29,
+            "text": "ഇത് അപ്ഡേറ്റ് ചെയ്തു.",
+            "auto_translated": "ഇത് അപ്ഡേറ്റ് ചെയ്തു."
+        },
+        "kn": {
+            "legacy_caption_pid": 39482,
+            "legacy_language_pid": 30,
+            "text": "ಇದು ನವೀಕರಿಸಲಾಗಿದೆ.",
+            "auto_translated": "ಇದು ನವೀಕರಿಸಲಾಗಿದೆ."
+        },
+        "su": {
+            "legacy_caption_pid": 39483,
+            "legacy_language_pid": 31,
+            "text": "Eta geus diropéa.",
+            "auto_translated": "Eta geus diropéa."
+        },
+        "ku": {
+            "legacy_caption_pid": 39484,
+            "legacy_language_pid": 32,
+            "text": "Ev cara ghurrînikarî bi serda.",
+            "auto_translated": "Ev cara ghurrînikarî bi serda."
+        },
+        "ps": {
+            "legacy_caption_pid": 39485,
+            "legacy_language_pid": 33,
+            "text": "دا تازه شوي دي.",
+            "auto_translated": "دا تازه شوي دي."
+        },
+        "ro": {
+            "legacy_caption_pid": 39486,
+            "legacy_language_pid": 34,
+            "text": "Acesta a fost actualizat.",
+            "auto_translated": "Acesta a fost actualizat."
+        },
+        "id": {
+            "legacy_caption_pid": 39487,
+            "legacy_language_pid": 35,
+            "text": "Ini telah diperbarui.",
+            "auto_translated": "Ini telah diperbarui."
+        },
+        "sd": {
+            "legacy_caption_pid": 39488,
+            "legacy_language_pid": 36,
+            "text": "ان کي اپڊيٽ ڪيو ويو آهي.",
+            "auto_translated": "ان کي اپڊيٽ ڪيو ويو آهي."
+        },
+        "af": {
+            "legacy_caption_pid": 39489,
+            "legacy_language_pid": 37,
+            "text": "Dit is opgedateer.",
+            "auto_translated": "Dit is opgedateer."
+        },
+        "sw": {
+            "legacy_caption_pid": 39490,
+            "legacy_language_pid": 38,
+            "text": "Imekuwa updated.",
+            "auto_translated": "Imekuwa updated."
+        },
+        "lo": {
+            "legacy_caption_pid": 39491,
+            "legacy_language_pid": 39,
+            "text": "ມັນໄດ້ຮັບການປັບປຸງ.",
+            "auto_translated": "ມັນໄດ້ຮັບການປັບປຸງ."
+        },
+        "nl": {
+            "legacy_caption_pid": 39492,
+            "legacy_language_pid": 40,
+            "text": "Het is bijgewerkt.",
+            "auto_translated": "Het is bijgewerkt."
+        },
+        "tl": {
+            "legacy_caption_pid": 39493,
+            "legacy_language_pid": 41,
+            "text": "Ito ay na-update.",
+            "auto_translated": "Ito ay na-update."
+        },
+        "ne": {
+            "legacy_caption_pid": 39494,
+            "legacy_language_pid": 42,
+            "text": "यसलाई अद्यावधिक गरिएको छ।",
+            "auto_translated": "यसलाई अद्यावधिक गरिएको छ।"
+        },
+        "hu": {
+            "legacy_caption_pid": 39495,
+            "legacy_language_pid": 43,
+            "text": "Ez frissült.",
+            "auto_translated": "Ez frissült."
+        },
+        "cs": {
+            "legacy_caption_pid": 39496,
+            "legacy_language_pid": 44,
+            "text": "To byl aktualizován.",
+            "auto_translated": "To byl aktualizován."
+        },
+        "el": {
+            "legacy_caption_pid": 39497,
+            "legacy_language_pid": 45,
+            "text": "Έχει ενημερωθεί.",
+            "auto_translated": "Έχει ενημερωθεί."
+        },
+        "sv": {
+            "legacy_caption_pid": 39498,
+            "legacy_language_pid": 46,
+            "text": "Det har uppdaterats.",
+            "auto_translated": "Det har uppdaterats."
+        },
+        "kk": {
+            "legacy_caption_pid": 39499,
+            "legacy_language_pid": 47,
+            "text": "Ол жаңартылды.",
+            "auto_translated": "Ол жаңартылды."
+        },
+        "fi": {
+            "legacy_caption_pid": 39500,
+            "legacy_language_pid": 48,
+            "text": "Se on päivitetty.",
+            "auto_translated": "Se on päivitetty."
+        },
+        "da": {
+            "legacy_caption_pid": 39501,
+            "legacy_language_pid": 49,
+            "text": "Det er blevet opdateret.",
+            "auto_translated": "Det er blevet opdateret."
+        },
+        "he": {
+            "legacy_caption_pid": 39502,
+            "legacy_language_pid": 50,
+            "text": "זה עודכן.",
+            "auto_translated": "זה עודכן."
+        },
+        "no": {
+            "legacy_caption_pid": 39503,
+            "legacy_language_pid": 51,
+            "text": "Det har blitt oppdatert.",
+            "auto_translated": "Det har blitt oppdatert."
+        }
+    }
+}

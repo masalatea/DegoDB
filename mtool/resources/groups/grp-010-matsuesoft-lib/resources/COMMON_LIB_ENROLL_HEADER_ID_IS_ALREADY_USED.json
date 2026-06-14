@@ -1,0 +1,321 @@
+{
+    "resource_key": "COMMON_LIB_ENROLL_HEADER_ID_IS_ALREADY_USED",
+    "legacy_resource_pid": 1570,
+    "base_group_key": "grp-010-matsuesoft-lib",
+    "additional_group_keys": [],
+    "key_for_update": "sQofzey9dMRky5c1SMoR722oKQpY2yExQxbIZu9FbULfbnTyBGq1br9hWei5dgeCMvIKm9ROufV8JnZJHYQ8rFSdsiKm4FE8Tjn6exKsNfulmAQLf8rXXUfo6V6xnQqq",
+    "sort_group": "ENROLL",
+    "key_name": "COMMON_LIB_ENROLL_HEADER_ID_IS_ALREADY_USED",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": false,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 7062,
+            "legacy_language_pid": 1,
+            "text": "このユーザ名(ID)は既に使用されております。他のユーザ名(ID)をご入力下さい。",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 7063,
+            "legacy_language_pid": 2,
+            "text": "This User Name (ID) is already in use. Please enter another User Name (ID).",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 7064,
+            "legacy_language_pid": 3,
+            "text": "此用户名ID已被使用。请输入另一个ID。",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 7065,
+            "legacy_language_pid": 4,
+            "text": "이 아이디 는 이미 사용중입니다. 다른 아이디 를 입력해주세요.",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 10841,
+            "legacy_language_pid": 5,
+            "text": "Este ID ya esta en uso. Ingrese otro ID.",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 10842,
+            "legacy_language_pid": 6,
+            "text": "Este ID já está em uso. Digite outro ID.",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 10843,
+            "legacy_language_pid": 7,
+            "text": "此用户名ID已被使用。請輸入另一個ID。",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 16027,
+            "legacy_language_pid": 8,
+            "text": "Ce nom d'utilisateur (ID) est déjà utilisé. Entrez un autre nom d'utilisateur (ID).",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 16028,
+            "legacy_language_pid": 9,
+            "text": "यह उपयोगकर्ता नाम (आईडी) पहले से उपयोग में है। कृपया अन्य यूजर नेम (आईडी) दर्ज करें।",
+            "auto_translated": ""
+        },
+        "ar": {
+            "legacy_caption_pid": 31452,
+            "legacy_language_pid": 10,
+            "text": "هذا الاسم مستخدم (ID) قيد الاستخدام بالفعل. اسم مستخدم آخر (ID) الرجاء الإدخال.",
+            "auto_translated": "هذا الاسم مستخدم (ID) قيد الاستخدام بالفعل. اسم مستخدم آخر (ID) الرجاء الإدخال."
+        },
+        "fa": {
+            "legacy_caption_pid": 31453,
+            "legacy_language_pid": 11,
+            "text": "این نام کاربری (ID) در حال حاضر در حال استفاده است. دیگر نام کاربری (ID) لطفا ورودی.",
+            "auto_translated": "این نام کاربری (ID) در حال حاضر در حال استفاده است. دیگر نام کاربری (ID) لطفا ورودی."
+        },
+        "de": {
+            "legacy_caption_pid": 31454,
+            "legacy_language_pid": 12,
+            "text": "Dieser Benutzername (ID) ist bereits im Einsatz. Andere Benutzernamen (ID) Bitte geben Sie.",
+            "auto_translated": "Dieser Benutzername (ID) ist bereits im Einsatz. Andere Benutzernamen (ID) Bitte geben Sie."
+        },
+        "ru": {
+            "legacy_caption_pid": 31455,
+            "legacy_language_pid": 13,
+            "text": "Это имя пользователя (ID) уже используется. Другое имя пользователя (ID) Пожалуйста, введите.",
+            "auto_translated": "Это имя пользователя (ID) уже используется. Другое имя пользователя (ID) Пожалуйста, введите."
+        },
+        "ms": {
+            "legacy_caption_pid": 31456,
+            "legacy_language_pid": 14,
+            "text": "Ini nama pengguna (ID) telah digunakan. Nama pengguna yang lain (ID) Sila input.",
+            "auto_translated": "Ini nama pengguna (ID) telah digunakan. Nama pengguna yang lain (ID) Sila input."
+        },
+        "ta": {
+            "legacy_caption_pid": 31457,
+            "legacy_language_pid": 15,
+            "text": "இந்த பயனர் பெயர் (ஐடி) ஏற்கனவே பயன்பாட்டில் உள்ளது. பிற பயனர் பெயர் (ஐடி) தயவு செய்து உள்ளீடு.",
+            "auto_translated": "இந்த பயனர் பெயர் (ஐடி) ஏற்கனவே பயன்பாட்டில் உள்ளது. பிற பயனர் பெயர் (ஐடி) தயவு செய்து உள்ளீடு."
+        },
+        "it": {
+            "legacy_caption_pid": 31458,
+            "legacy_language_pid": 16,
+            "text": "Questo nome utente (ID) è già in uso. Altro nome utente (ID) Si prega di inserire.",
+            "auto_translated": "Questo nome utente (ID) è già in uso. Altro nome utente (ID) Si prega di inserire."
+        },
+        "bn": {
+            "legacy_caption_pid": 31459,
+            "legacy_language_pid": 17,
+            "text": "এই ব্যবহারকারী নাম (আইডি) ইতিমধ্যে ব্যবহার করা হচ্ছে। অন্যান্য ব্যবহারকারী নাম (আইডি) দয়া করে ইনপুট।",
+            "auto_translated": "এই ব্যবহারকারী নাম (আইডি) ইতিমধ্যে ব্যবহার করা হচ্ছে। অন্যান্য ব্যবহারকারী নাম (আইডি) দয়া করে ইনপুট।"
+        },
+        "tr": {
+            "legacy_caption_pid": 31460,
+            "legacy_language_pid": 18,
+            "text": "Bu kullanıcı adı (ID) zaten kullanılıyor. Diğer kullanıcı adı (ID) Lütfen girişi.",
+            "auto_translated": "Bu kullanıcı adı (ID) zaten kullanılıyor. Diğer kullanıcı adı (ID) Lütfen girişi."
+        },
+        "vi": {
+            "legacy_caption_pid": 31461,
+            "legacy_language_pid": 19,
+            "text": "Tên thành viên này (ID) đã được sử dụng. tên người dùng khác (ID) Vui lòng nhập.",
+            "auto_translated": "Tên thành viên này (ID) đã được sử dụng. tên người dùng khác (ID) Vui lòng nhập."
+        },
+        "pl": {
+            "legacy_caption_pid": 31462,
+            "legacy_language_pid": 20,
+            "text": "Ta nazwa użytkownika (ID) jest już w użyciu. Inne nazwy użytkownika (ID) Proszę wejściowego.",
+            "auto_translated": "Ta nazwa użytkownika (ID) jest już w użyciu. Inne nazwy użytkownika (ID) Proszę wejściowego."
+        },
+        "jv": {
+            "legacy_caption_pid": 31463,
+            "legacy_language_pid": 21,
+            "text": "jeneng pengguna kiye (ID) wis ana. jeneng panganggo liyane (ID) Mangga input.",
+            "auto_translated": "jeneng pengguna kiye (ID) wis ana. jeneng panganggo liyane (ID) Mangga input."
+        },
+        "pa": {
+            "legacy_caption_pid": 31464,
+            "legacy_language_pid": 22,
+            "text": "ਇਹ ਯੂਜ਼ਰ ਨੂੰ ਨਾਮ ਹੈ (ID) ਹੀ ਵਰਤੋ ਵਿੱਚ ਹੈ. ਹੋਰ ਯੂਜ਼ਰ ਨੂੰ ਨਾਮ ਹੈ (ID) ਕਿਰਪਾ ਕਰਕੇ.",
+            "auto_translated": "ਇਹ ਯੂਜ਼ਰ ਨੂੰ ਨਾਮ ਹੈ (ID) ਹੀ ਵਰਤੋ ਵਿੱਚ ਹੈ. ਹੋਰ ਯੂਜ਼ਰ ਨੂੰ ਨਾਮ ਹੈ (ID) ਕਿਰਪਾ ਕਰਕੇ."
+        },
+        "th": {
+            "legacy_caption_pid": 31465,
+            "legacy_language_pid": 23,
+            "text": "ชื่อผู้ใช้นี้ (ID) ที่มีอยู่แล้วในการใช้งาน ชื่อผู้ใช้อื่น ๆ (ID) กรุณาใส่",
+            "auto_translated": "ชื่อผู้ใช้นี้ (ID) ที่มีอยู่แล้วในการใช้งาน ชื่อผู้ใช้อื่น ๆ (ID) กรุณาใส่"
+        },
+        "te": {
+            "legacy_caption_pid": 39140,
+            "legacy_language_pid": 24,
+            "text": "ఈ వినియోగదారు పేరు (ID) వినియోగంలో ఉంది. యూజర్ పేరు (ID) దయచేసి ఇన్పుట్.",
+            "auto_translated": "ఈ వినియోగదారు పేరు (ID) వినియోగంలో ఉంది. యూజర్ పేరు (ID) దయచేసి ఇన్పుట్."
+        },
+        "mr": {
+            "legacy_caption_pid": 39141,
+            "legacy_language_pid": 25,
+            "text": "या वापरकर्ता नाव (ID) आधीच वापरात आहे. इतर वापरकर्ता नाव (ID) कृपया इनपुट.",
+            "auto_translated": "या वापरकर्ता नाव (ID) आधीच वापरात आहे. इतर वापरकर्ता नाव (ID) कृपया इनपुट."
+        },
+        "ur": {
+            "legacy_caption_pid": 39142,
+            "legacy_language_pid": 26,
+            "text": "یہ صارف کا نام (ID) پہلے سے استعمال میں ہے. دوسرے صارف کا نام (ID) براہ مہربانی ان پٹ.",
+            "auto_translated": "یہ صارف کا نام (ID) پہلے سے استعمال میں ہے. دوسرے صارف کا نام (ID) براہ مہربانی ان پٹ."
+        },
+        "gu": {
+            "legacy_caption_pid": 39143,
+            "legacy_language_pid": 27,
+            "text": "આ વપરાશકર્તા નામ (આઈડી) પહેલેથી જ વપરાશમાં છે. અન્ય વપરાશકર્તા નામ (આઈડી) કૃપા કરીને ઇનપુટ.",
+            "auto_translated": "આ વપરાશકર્તા નામ (આઈડી) પહેલેથી જ વપરાશમાં છે. અન્ય વપરાશકર્તા નામ (આઈડી) કૃપા કરીને ઇનપુટ."
+        },
+        "uk": {
+            "legacy_caption_pid": 39144,
+            "legacy_language_pid": 28,
+            "text": "Це ім'я користувача (ID) вже використовується. Інше ім'я користувача (ID) Будь ласка, введіть.",
+            "auto_translated": "Це ім'я користувача (ID) вже використовується. Інше ім'я користувача (ID) Будь ласка, введіть."
+        },
+        "ml": {
+            "legacy_caption_pid": 39145,
+            "legacy_language_pid": 29,
+            "text": "ഈ ഉപയോക്തൃ നാമം (ഐഡി) ഇതിനകം തന്നെ ഉപയോഗത്തിലുണ്ട്. മറ്റ് ഉപയോക്തൃ നാമം (ഐഡി) ദയവായി.",
+            "auto_translated": "ഈ ഉപയോക്തൃ നാമം (ഐഡി) ഇതിനകം തന്നെ ഉപയോഗത്തിലുണ്ട്. മറ്റ് ഉപയോക്തൃ നാമം (ഐഡി) ദയവായി."
+        },
+        "kn": {
+            "legacy_caption_pid": 39146,
+            "legacy_language_pid": 30,
+            "text": "ಈ ಬಳಕೆದಾರರು ಹೆಸರು (ಐಡಿ) ಈಗಾಗಲೇ ಬಳಕೆಯಲ್ಲಿದೆ. ಇತರೆ ಬಳಕೆದಾರ ಹೆಸರು (ಐಡಿ) ದಯವಿಟ್ಟು ಇನ್ಪುಟ್.",
+            "auto_translated": "ಈ ಬಳಕೆದಾರರು ಹೆಸರು (ಐಡಿ) ಈಗಾಗಲೇ ಬಳಕೆಯಲ್ಲಿದೆ. ಇತರೆ ಬಳಕೆದಾರ ಹೆಸರು (ಐಡಿ) ದಯವಿಟ್ಟು ಇನ್ಪುಟ್."
+        },
+        "su": {
+            "legacy_caption_pid": 39147,
+            "legacy_language_pid": 31,
+            "text": "Ngaran pamaké ieu (ID) geus dipaké. Ngaran pamaké séjén (ID) Mangga input.",
+            "auto_translated": "Ngaran pamaké ieu (ID) geus dipaké. Ngaran pamaké séjén (ID) Mangga input."
+        },
+        "ku": {
+            "legacy_caption_pid": 39148,
+            "legacy_language_pid": 32,
+            "text": "Ev name bikarhêner (ID) e jixwe tê bikaranîn. Other user name (ID) Ji kerema xwe input.",
+            "auto_translated": "Ev name bikarhêner (ID) e jixwe tê bikaranîn. Other user name (ID) Ji kerema xwe input."
+        },
+        "ps": {
+            "legacy_caption_pid": 39149,
+            "legacy_language_pid": 33,
+            "text": "دغه کارن نوم (تذکرو) په استعمال کې مخکې دی. نور کارن نوم (تذکرو) لطفا وسيله ده.",
+            "auto_translated": "دغه کارن نوم (تذکرو) په استعمال کې مخکې دی. نور کارن نوم (تذکرو) لطفا وسيله ده."
+        },
+        "ro": {
+            "legacy_caption_pid": 39150,
+            "legacy_language_pid": 34,
+            "text": "Acest nume de utilizator (ID) este deja în uz. Alte nume de utilizator (ID) Vă rugăm să intrare.",
+            "auto_translated": "Acest nume de utilizator (ID) este deja în uz. Alte nume de utilizator (ID) Vă rugăm să intrare."
+        },
+        "id": {
+            "legacy_caption_pid": 39151,
+            "legacy_language_pid": 35,
+            "text": "Nama pengguna ini (ID) sudah digunakan. nama pengguna lainnya (ID) Silakan masukan.",
+            "auto_translated": "Nama pengguna ini (ID) sudah digunakan. nama pengguna lainnya (ID) Silakan masukan."
+        },
+        "sd": {
+            "legacy_caption_pid": 39152,
+            "legacy_language_pid": 36,
+            "text": "اهو صارف جي نالي سان (سڃاڻپ) اڳ ۾ ئي استعمال ۾ آهي. ٻئي صارف نالو (سڃاڻپ) پٽ مھرباني ڪري.",
+            "auto_translated": "اهو صارف جي نالي سان (سڃاڻپ) اڳ ۾ ئي استعمال ۾ آهي. ٻئي صارف نالو (سڃاڻپ) پٽ مھرباني ڪري."
+        },
+        "af": {
+            "legacy_caption_pid": 39153,
+            "legacy_language_pid": 37,
+            "text": "Hierdie gebruiker naam (ID) is reeds in gebruik. Ander gebruiker naam (ID) asseblief insette.",
+            "auto_translated": "Hierdie gebruiker naam (ID) is reeds in gebruik. Ander gebruiker naam (ID) asseblief insette."
+        },
+        "sw": {
+            "legacy_caption_pid": 39154,
+            "legacy_language_pid": 38,
+            "text": "Jina hili la mtumiaji (ID) tayari linatumika. Nyingine jina la mtumiaji (ID) Tafadhali kuingiza.",
+            "auto_translated": "Jina hili la mtumiaji (ID) tayari linatumika. Nyingine jina la mtumiaji (ID) Tafadhali kuingiza."
+        },
+        "lo": {
+            "legacy_caption_pid": 39155,
+            "legacy_language_pid": 39,
+            "text": "ຊື່ຜູ້ໃຊ້ນີ້ (ID) ແມ່ນແລ້ວໃນການນໍາໃຊ້. ໃຊ້ຊື່ຜູ້ໃຊ້ (ລະຫັດ) ກະລຸນາປ້ອນຂໍ້ມູນ.",
+            "auto_translated": "ຊື່ຜູ້ໃຊ້ນີ້ (ID) ແມ່ນແລ້ວໃນການນໍາໃຊ້. ໃຊ້ຊື່ຜູ້ໃຊ້ (ລະຫັດ) ກະລຸນາປ້ອນຂໍ້ມູນ."
+        },
+        "nl": {
+            "legacy_caption_pid": 39156,
+            "legacy_language_pid": 40,
+            "text": "Deze gebruikersnaam (ID) is al in gebruik. Andere gebruikersnaam (ID) Gelieve input.",
+            "auto_translated": "Deze gebruikersnaam (ID) is al in gebruik. Andere gebruikersnaam (ID) Gelieve input."
+        },
+        "tl": {
+            "legacy_caption_pid": 39157,
+            "legacy_language_pid": 41,
+            "text": "Ang user name (ID) ay ginagamit na. Iba pang mga pangalan ng user (ID) Mangyaring input.",
+            "auto_translated": "Ang user name (ID) ay ginagamit na. Iba pang mga pangalan ng user (ID) Mangyaring input."
+        },
+        "ne": {
+            "legacy_caption_pid": 39158,
+            "legacy_language_pid": 42,
+            "text": "यो प्रयोगकर्ता नाम (आईडी) पहिले नै प्रयोगमा छ। अन्य प्रयोगकर्ता नाम (आईडी) कृपया इनपुट।",
+            "auto_translated": "यो प्रयोगकर्ता नाम (आईडी) पहिले नै प्रयोगमा छ। अन्य प्रयोगकर्ता नाम (आईडी) कृपया इनपुट।"
+        },
+        "hu": {
+            "legacy_caption_pid": 39159,
+            "legacy_language_pid": 43,
+            "text": "Ez a felhasználó név (ID) már használatban van. Más felhasználói nevét (azonosítóját) Kérem bemenet.",
+            "auto_translated": "Ez a felhasználó név (ID) már használatban van. Más felhasználói nevét (azonosítóját) Kérem bemenet."
+        },
+        "cs": {
+            "legacy_caption_pid": 39160,
+            "legacy_language_pid": 44,
+            "text": "Toto uživatelské jméno (ID) je již používán. Ostatní uživatelské jméno (ID) Prosím, vstup.",
+            "auto_translated": "Toto uživatelské jméno (ID) je již používán. Ostatní uživatelské jméno (ID) Prosím, vstup."
+        },
+        "el": {
+            "legacy_caption_pid": 39161,
+            "legacy_language_pid": 45,
+            "text": "Αυτό το όνομα χρήστη (ID) είναι ήδη σε χρήση. Άλλο όνομα χρήστη (ID) Παρακαλώ εισάγετε.",
+            "auto_translated": "Αυτό το όνομα χρήστη (ID) είναι ήδη σε χρήση. Άλλο όνομα χρήστη (ID) Παρακαλώ εισάγετε."
+        },
+        "sv": {
+            "legacy_caption_pid": 39162,
+            "legacy_language_pid": 46,
+            "text": "Detta användarnamn (ID) är redan i bruk. Andra användarnamn (ID) Vänligen ingång.",
+            "auto_translated": "Detta användarnamn (ID) är redan i bruk. Andra användarnamn (ID) Vänligen ingång."
+        },
+        "kk": {
+            "legacy_caption_pid": 39163,
+            "legacy_language_pid": 47,
+            "text": "Бұл пайдаланушы аты (ID) пайдаланылуда. Басқа пайдаланушы аты (ID) енгізіңіз.",
+            "auto_translated": "Бұл пайдаланушы аты (ID) пайдаланылуда. Басқа пайдаланушы аты (ID) енгізіңіз."
+        },
+        "fi": {
+            "legacy_caption_pid": 39164,
+            "legacy_language_pid": 48,
+            "text": "Tämä käyttäjätunnus (ID) on jo käytössä. Muut käyttäjätunnus (ID) Ole hyvä ja kirjoita.",
+            "auto_translated": "Tämä käyttäjätunnus (ID) on jo käytössä. Muut käyttäjätunnus (ID) Ole hyvä ja kirjoita."
+        },
+        "da": {
+            "legacy_caption_pid": 39165,
+            "legacy_language_pid": 49,
+            "text": "Dette brugernavn (ID) er allerede i brug. Andre brugernavn (ID) Venligst input.",
+            "auto_translated": "Dette brugernavn (ID) er allerede i brug. Andre brugernavn (ID) Venligst input."
+        },
+        "he": {
+            "legacy_caption_pid": 39166,
+            "legacy_language_pid": 50,
+            "text": "שם משתמש זה (ID) נמצא כבר בשימוש. שם משתמש אחר (ID) אנא קלט.",
+            "auto_translated": "שם משתמש זה (ID) נמצא כבר בשימוש. שם משתמש אחר (ID) אנא קלט."
+        },
+        "no": {
+            "legacy_caption_pid": 39167,
+            "legacy_language_pid": 51,
+            "text": "Dette brukernavnet (ID) er allerede i bruk. Andre brukernavnet (ID) Vennligst inngang.",
+            "auto_translated": "Dette brukernavnet (ID) er allerede i bruk. Andre brukernavnet (ID) Vennligst inngang."
+        }
+    }
+}

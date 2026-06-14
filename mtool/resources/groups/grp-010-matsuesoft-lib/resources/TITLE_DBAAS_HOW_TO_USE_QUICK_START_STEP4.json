@@ -1,0 +1,69 @@
+{
+    "resource_key": "TITLE_DBAAS_HOW_TO_USE_QUICK_START_STEP4",
+    "legacy_resource_pid": 589,
+    "base_group_key": "grp-010-matsuesoft-lib",
+    "additional_group_keys": [],
+    "key_for_update": "5JGRMXzPrI2Y9O0aZnsXbdQcDRSLvutCAsgIySwNkEBkvX30zBo6RE0y0AEFfr03gFCG1jSqXHJIsixNdQEi0wVVmDAY7juuvYWc2fhw17Ekj0pM2P9rrApSomyYrKIQ",
+    "sort_group": "TITLE",
+    "key_name": "TITLE_DBAAS_HOW_TO_USE_QUICK_START_STEP4",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": true,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 4712,
+            "legacy_language_pid": 1,
+            "text": "関数定義",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 4713,
+            "legacy_language_pid": 2,
+            "text": "Define Function",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 15333,
+            "legacy_language_pid": 3,
+            "text": "",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 15334,
+            "legacy_language_pid": 4,
+            "text": "",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 15335,
+            "legacy_language_pid": 5,
+            "text": "Definir la función",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 15336,
+            "legacy_language_pid": 6,
+            "text": "Definir Função",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 15337,
+            "legacy_language_pid": 7,
+            "text": "",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 17367,
+            "legacy_language_pid": 8,
+            "text": "Définir la fonction",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 17368,
+            "legacy_language_pid": 9,
+            "text": "फ़ंक्शन परिभाषित करें",
+            "auto_translated": ""
+        }
+    }
+}

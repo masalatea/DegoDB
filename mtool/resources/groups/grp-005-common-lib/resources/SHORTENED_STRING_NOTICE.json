@@ -1,0 +1,321 @@
+{
+    "resource_key": "SHORTENED_STRING_NOTICE",
+    "legacy_resource_pid": 570,
+    "base_group_key": "grp-005-common-lib",
+    "additional_group_keys": [],
+    "key_for_update": "yL5flb9gE1aTiVyWoZlqQs3F4HjlIzHmfynG0y7R2rsq9T9e2SkLvKYK2yi4Wb6z12qXYxtYzJW75JX3GjwZpWdxdDOwkRn1B7CdgYv8ZmMlQYSpAmiwLTWHlFjYlM3o",
+    "sort_group": "",
+    "key_name": "SHORTENED_STRING_NOTICE",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": false,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 1335,
+            "legacy_language_pid": 1,
+            "text": "… (続きは省略されました)",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 1336,
+            "legacy_language_pid": 2,
+            "text": "…(Omit the rest)",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 6502,
+            "legacy_language_pid": 3,
+            "text": "...(更多已被省略)",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 6503,
+            "legacy_language_pid": 4,
+            "text": "...(이하 생략되었습니다)",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 10351,
+            "legacy_language_pid": 5,
+            "text": "... (Omitir el resto)",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 10352,
+            "legacy_language_pid": 6,
+            "text": "... (Ir o resto)",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 10353,
+            "legacy_language_pid": 7,
+            "text": "...(更多已被省略)",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 16247,
+            "legacy_language_pid": 8,
+            "text": "... (Omettre le reste)",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 16248,
+            "legacy_language_pid": 9,
+            "text": "...(बाकी को छोड़ दें)",
+            "auto_translated": ""
+        },
+        "ar": {
+            "legacy_caption_pid": 29212,
+            "legacy_language_pid": 10,
+            "text": "(تم حذف أكثر)",
+            "auto_translated": "(تم حذف أكثر)"
+        },
+        "fa": {
+            "legacy_caption_pid": 29213,
+            "legacy_language_pid": 11,
+            "text": "... (بیشتر حذف شده است)",
+            "auto_translated": "... (بیشتر حذف شده است)"
+        },
+        "de": {
+            "legacy_caption_pid": 29214,
+            "legacy_language_pid": 12,
+            "text": "... (mehr wurde weggelassen)",
+            "auto_translated": "... (mehr wurde weggelassen)"
+        },
+        "ru": {
+            "legacy_caption_pid": 29215,
+            "legacy_language_pid": 13,
+            "text": "... (далее опущено)",
+            "auto_translated": "... (далее опущено)"
+        },
+        "ms": {
+            "legacy_caption_pid": 29216,
+            "legacy_language_pid": 14,
+            "text": "... (more telah ditinggalkan)",
+            "auto_translated": "... (more telah ditinggalkan)"
+        },
+        "ta": {
+            "legacy_caption_pid": 29217,
+            "legacy_language_pid": 15,
+            "text": "... (மேலும் விடப்பட்டிருக்கின்றன)",
+            "auto_translated": "... (மேலும் விடப்பட்டிருக்கின்றன)"
+        },
+        "it": {
+            "legacy_caption_pid": 29218,
+            "legacy_language_pid": 16,
+            "text": "... (altro è stato omesso)",
+            "auto_translated": "... (altro è stato omesso)"
+        },
+        "bn": {
+            "legacy_caption_pid": 29219,
+            "legacy_language_pid": 17,
+            "text": "... (আরও বাদ দেওয়া হয়েছে)",
+            "auto_translated": "... (আরও বাদ দেওয়া হয়েছে)"
+        },
+        "tr": {
+            "legacy_caption_pid": 29220,
+            "legacy_language_pid": 18,
+            "text": "... (diğer atlanmış)",
+            "auto_translated": "... (diğer atlanmış)"
+        },
+        "vi": {
+            "legacy_caption_pid": 29221,
+            "legacy_language_pid": 19,
+            "text": "... (thêm đã được bỏ qua)",
+            "auto_translated": "... (thêm đã được bỏ qua)"
+        },
+        "pl": {
+            "legacy_caption_pid": 29222,
+            "legacy_language_pid": 20,
+            "text": "... (więcej została pominięta)",
+            "auto_translated": "... (więcej została pominięta)"
+        },
+        "jv": {
+            "legacy_caption_pid": 29223,
+            "legacy_language_pid": 21,
+            "text": "... (luwih wis dilirwakaké)",
+            "auto_translated": "... (luwih wis dilirwakaké)"
+        },
+        "pa": {
+            "legacy_caption_pid": 29224,
+            "legacy_language_pid": 22,
+            "text": "... (ਹੋਰ ਹਟਾਈ ਕੀਤਾ ਗਿਆ ਹੈ)",
+            "auto_translated": "... (ਹੋਰ ਹਟਾਈ ਕੀਤਾ ਗਿਆ ਹੈ)"
+        },
+        "th": {
+            "legacy_caption_pid": 29225,
+            "legacy_language_pid": 23,
+            "text": "... (เพิ่มเติมได้รับการละเว้น)",
+            "auto_translated": "... (เพิ่มเติมได้รับการละเว้น)"
+        },
+        "te": {
+            "legacy_caption_pid": 35332,
+            "legacy_language_pid": 24,
+            "text": "... (మరిన్ని విస్మరించబడింది)",
+            "auto_translated": "... (మరిన్ని విస్మరించబడింది)"
+        },
+        "mr": {
+            "legacy_caption_pid": 35333,
+            "legacy_language_pid": 25,
+            "text": "... (अधिक वगळले गेले आहे)",
+            "auto_translated": "... (अधिक वगळले गेले आहे)"
+        },
+        "ur": {
+            "legacy_caption_pid": 35334,
+            "legacy_language_pid": 26,
+            "text": "... (مزید لپ کیا گیا ہے)",
+            "auto_translated": "... (مزید لپ کیا گیا ہے)"
+        },
+        "gu": {
+            "legacy_caption_pid": 35335,
+            "legacy_language_pid": 27,
+            "text": "... (વધુ અવગણવામાં આવ્યા છે)",
+            "auto_translated": "... (વધુ અવગણવામાં આવ્યા છે)"
+        },
+        "uk": {
+            "legacy_caption_pid": 35336,
+            "legacy_language_pid": 28,
+            "text": "... (далі опущено)",
+            "auto_translated": "... (далі опущено)"
+        },
+        "ml": {
+            "legacy_caption_pid": 35337,
+            "legacy_language_pid": 29,
+            "text": "... (കൂടുതൽ ഒഴിവാക്കി ചെയ്തു)",
+            "auto_translated": "... (കൂടുതൽ ഒഴിവാക്കി ചെയ്തു)"
+        },
+        "kn": {
+            "legacy_caption_pid": 35338,
+            "legacy_language_pid": 30,
+            "text": "... (ಹೆಚ್ಚು ಕೈಬಿಡಲಾಗಿದೆ ಮಾಡಲಾಗಿದೆ)",
+            "auto_translated": "... (ಹೆಚ್ಚು ಕೈಬಿಡಲಾಗಿದೆ ಮಾಡಲಾಗಿದೆ)"
+        },
+        "su": {
+            "legacy_caption_pid": 35339,
+            "legacy_language_pid": 31,
+            "text": "... (more geus disingkahkeun)",
+            "auto_translated": "... (more geus disingkahkeun)"
+        },
+        "ku": {
+            "legacy_caption_pid": 35340,
+            "legacy_language_pid": 32,
+            "text": "... (more hatiye tevgerandin dîtin)",
+            "auto_translated": "... (more hatiye tevgerandin dîtin)"
+        },
+        "ps": {
+            "legacy_caption_pid": 35341,
+            "legacy_language_pid": 33,
+            "text": "... (پاتې دی حذف شوي دي)",
+            "auto_translated": "... (پاتې دی حذف شوي دي)"
+        },
+        "ro": {
+            "legacy_caption_pid": 35342,
+            "legacy_language_pid": 34,
+            "text": "... (mai mult a fost omisă)",
+            "auto_translated": "... (mai mult a fost omisă)"
+        },
+        "id": {
+            "legacy_caption_pid": 35343,
+            "legacy_language_pid": 35,
+            "text": "... (lebih telah dihilangkan)",
+            "auto_translated": "... (lebih telah dihilangkan)"
+        },
+        "sd": {
+            "legacy_caption_pid": 35344,
+            "legacy_language_pid": 36,
+            "text": "... (وڌيڪ ڪري ڇڏيا ڪيو ويو آهي)",
+            "auto_translated": "... (وڌيڪ ڪري ڇڏيا ڪيو ويو آهي)"
+        },
+        "af": {
+            "legacy_caption_pid": 35345,
+            "legacy_language_pid": 37,
+            "text": "... (meer weggelaat)",
+            "auto_translated": "... (meer weggelaat)"
+        },
+        "sw": {
+            "legacy_caption_pid": 35346,
+            "legacy_language_pid": 38,
+            "text": "... (zaidi imekuwa omitted)",
+            "auto_translated": "... (zaidi imekuwa omitted)"
+        },
+        "lo": {
+            "legacy_caption_pid": 35347,
+            "legacy_language_pid": 39,
+            "text": "... (ເພີ່ມເຕີມໄດ້ຮັບການຍົກເວັ້ນ)",
+            "auto_translated": "... (ເພີ່ມເຕີມໄດ້ຮັບການຍົກເວັ້ນ)"
+        },
+        "nl": {
+            "legacy_caption_pid": 35348,
+            "legacy_language_pid": 40,
+            "text": "... (meer is weggelaten)",
+            "auto_translated": "... (meer is weggelaten)"
+        },
+        "tl": {
+            "legacy_caption_pid": 35349,
+            "legacy_language_pid": 41,
+            "text": "... (karagdagan ay tinanggal)",
+            "auto_translated": "... (karagdagan ay tinanggal)"
+        },
+        "ne": {
+            "legacy_caption_pid": 35350,
+            "legacy_language_pid": 42,
+            "text": "... (थप हटाइएका गरिएको छ)",
+            "auto_translated": "... (थप हटाइएका गरिएको छ)"
+        },
+        "hu": {
+            "legacy_caption_pid": 35351,
+            "legacy_language_pid": 43,
+            "text": "... (tovább kimaradt)",
+            "auto_translated": "... (tovább kimaradt)"
+        },
+        "cs": {
+            "legacy_caption_pid": 35352,
+            "legacy_language_pid": 44,
+            "text": "... (více byl vynechán)",
+            "auto_translated": "... (více byl vynechán)"
+        },
+        "el": {
+            "legacy_caption_pid": 35353,
+            "legacy_language_pid": 45,
+            "text": "... (περισσότερα έχει παραλειφθεί)",
+            "auto_translated": "... (περισσότερα έχει παραλειφθεί)"
+        },
+        "sv": {
+            "legacy_caption_pid": 35354,
+            "legacy_language_pid": 46,
+            "text": "... (mer har utelämnats)",
+            "auto_translated": "... (mer har utelämnats)"
+        },
+        "kk": {
+            "legacy_caption_pid": 35355,
+            "legacy_language_pid": 47,
+            "text": "... (көп алынып тасталған)",
+            "auto_translated": "... (көп алынып тасталған)"
+        },
+        "fi": {
+            "legacy_caption_pid": 35356,
+            "legacy_language_pid": 48,
+            "text": "... (lisää on jätetty pois)",
+            "auto_translated": "... (lisää on jätetty pois)"
+        },
+        "da": {
+            "legacy_caption_pid": 35357,
+            "legacy_language_pid": 49,
+            "text": "... (mere er udeladt)",
+            "auto_translated": "... (mere er udeladt)"
+        },
+        "he": {
+            "legacy_caption_pid": 35358,
+            "legacy_language_pid": 50,
+            "text": "... (עוד הושמט)",
+            "auto_translated": "... (עוד הושמט)"
+        },
+        "no": {
+            "legacy_caption_pid": 35359,
+            "legacy_language_pid": 51,
+            "text": "... (les mer er utelatt)",
+            "auto_translated": "... (les mer er utelatt)"
+        }
+    }
+}

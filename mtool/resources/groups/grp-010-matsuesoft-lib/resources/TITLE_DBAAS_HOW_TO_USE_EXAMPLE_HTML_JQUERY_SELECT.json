@@ -1,0 +1,69 @@
+{
+    "resource_key": "TITLE_DBAAS_HOW_TO_USE_EXAMPLE_HTML_JQUERY_SELECT",
+    "legacy_resource_pid": 601,
+    "base_group_key": "grp-010-matsuesoft-lib",
+    "additional_group_keys": [],
+    "key_for_update": "uwjbyNlr1qUQZ4s0mcE7XOlIc077X4gr8IL7bxlm6Eqhv4sZk1ZtCJgek18BXdk9dCosvekGkhzEG7SGhmYvDDCYT8ep9hXOFetkYuwKxNcpcHmLo2FpZ0t6pZi025LY",
+    "sort_group": "TITLE",
+    "key_name": "TITLE_DBAAS_HOW_TO_USE_EXAMPLE_HTML_JQUERY_SELECT",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": true,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 4674,
+            "legacy_language_pid": 1,
+            "text": "HTML(jQuery)でデータ読み込み",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 4675,
+            "legacy_language_pid": 2,
+            "text": "Read Data by HTML(jQuery)",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 14401,
+            "legacy_language_pid": 3,
+            "text": "",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 14402,
+            "legacy_language_pid": 4,
+            "text": "",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 14403,
+            "legacy_language_pid": 5,
+            "text": "Leer datos por HTML (jQuery)",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 14404,
+            "legacy_language_pid": 6,
+            "text": "Leia dados por HTML (jQuery)",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 14405,
+            "legacy_language_pid": 7,
+            "text": "",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 17329,
+            "legacy_language_pid": 8,
+            "text": "Lire les données par HTML (jQuery)",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 17330,
+            "legacy_language_pid": 9,
+            "text": "HTML (jQuery) द्वारा डेटा पढ़ें ",
+            "auto_translated": ""
+        }
+    }
+}

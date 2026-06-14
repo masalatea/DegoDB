@@ -1,0 +1,321 @@
+{
+    "resource_key": "COMMON_LIB_INQUIRY_DONE_SENDING_MESSAGE_LINE3",
+    "legacy_resource_pid": 1587,
+    "base_group_key": "grp-010-matsuesoft-lib",
+    "additional_group_keys": [],
+    "key_for_update": "tAYzRhToX9EY8b7kYNRz59ZWkznmo5oydlldeF9jl5oudWIvY4rLe5qTOSV6FcJ1Mm4MIrRjZT5BDiASart0Dqp8TNfxR4fNqWyV1EFehgAsmtQQc9kea6XAXSq4hZni",
+    "sort_group": "INQUIRY",
+    "key_name": "COMMON_LIB_INQUIRY_DONE_SENDING_MESSAGE_LINE3",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": false,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 7130,
+            "legacy_language_pid": 1,
+            "text": "注: 返事がない場合、メールアドレスが間違っている、あるいはメール送達エラーの可能性がございます。その場合、お手数ですがメールアドレスを再度確認して再送して頂くか、あるいは別のメールアドレスでお問い合わせ頂ければと思います。よろしくお願いいたします。",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 7131,
+            "legacy_language_pid": 2,
+            "text": "Note: If there is no reply, the e-mail address is incorrect or there is a possibility of mail delivery error. In that case, I'm sorry to trouble you, but I'd like you to confirm your email address again and resend it or contact us with a different email address. Thank you.",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 7132,
+            "legacy_language_pid": 3,
+            "text": "注意：如果没有回复您，E-mail地址是错误的，或者有一个电子邮件发送错误的可能性。在这种情况下，请再次确认邮件地址后再次给我们发邮件，或者用其他邮件给我们发送邮件也可以的。",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 7133,
+            "legacy_language_pid": 4,
+            "text": "참고 : 답장이 없다면 메일 주소 오류 또는 전송 오류의 가능성이 있습니다. 그럴 경우, 번거로우시겠지만 메일 주소를 다시 확인하여 재전송하시거나, 다른 이메일 주소로 문의주시면 감사하겠습니다. 잘 부탁드립니다.",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 10964,
+            "legacy_language_pid": 5,
+            "text": " Nota: Si no hay respuesta, la dirección de correo electrónico es incorrecta o existe la posibilidad de error de entrega de correo. En ese caso, siento molestarlo, pero me gustaría que confirmara su dirección de correo electrónico nuevamente y lo reenvíe o póngase en contacto con nosotros con una dirección de correo electrónico diferente. Gracias. ",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 10965,
+            "legacy_language_pid": 6,
+            "text": "Nota: se não houver resposta, o endereço de e-mail está incorreto ou existe a possibilidade de erro de entrega de correio. Nesse caso, lamento incomodar você, mas gostaria que você confirmas seu endereço de e-mail novamente e reenviar ou nos contatar com um endereço de e-mail diferente. Obrigado. ",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 10966,
+            "legacy_language_pid": 7,
+            "text": "注意：如果沒有回復您，E-mail地址是錯誤的，或者有一個電子郵件發送錯誤的可能性。在這種情況下，請再次確認郵件地址後再次給我們發郵件，或者用其他郵件給我們發送郵件也可以的。",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 17175,
+            "legacy_language_pid": 8,
+            "text": "Remarque: s'il n'y a pas de réponse, l'adresse e-mail est incorrecte ou il existe une possibilité d'erreur de livraison par courrier. Dans ce cas, je suis désolé de vous déranger, mais j'aimerais que vous confirmiez votre adresse e-mail et renvoyez-le ou contactez-nous avec une adresse email différente. Je vous remercie.",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 17176,
+            "legacy_language_pid": 9,
+            "text": "नोट: यदि कोई जवाब नहीं है, ई-मेल पता गलत है या मेल वितरण त्रुटि की संभावना है। उस मामले में, मुझे आपको परेशान करने के लिए खेद है, लेकिन मैं चाहता हूं कि आप अपने ईमेल पते की दुबारा पुष्टि करें और उसे फिर से भेजें या किसी भिन्न ईमेल पते से हमसे संपर्क करें। धन्यवाद।",
+            "auto_translated": ""
+        },
+        "ar": {
+            "legacy_caption_pid": 32068,
+            "legacy_language_pid": 10,
+            "text": "ملاحظة: إذا كان هناك من جواب، وعنوان البريد الإلكتروني غير صحيح، أو أن هناك إمكانية لحدوث خطأ تسليم البريد الإلكتروني. في هذه الحالة، آسف لمتاعب لك، ولكن أعتقد أن عليك الاتصال بنا إذا كنت إعادة التحقق من عنوان البريد الإلكتروني الخاص بك مرة أخرى، أو في عنوان بريد إلكتروني آخر. شكرا لك.",
+            "auto_translated": "ملاحظة: إذا كان هناك من جواب، وعنوان البريد الإلكتروني غير صحيح، أو أن هناك إمكانية لحدوث خطأ تسليم البريد الإلكتروني. في هذه الحالة، آسف لمتاعب لك، ولكن أعتقد أن عليك الاتصال بنا إذا كنت إعادة التحقق من عنوان البريد الإلكتروني الخاص بك مرة أخرى، أو في عنوان بريد إلكتروني آخر. شكرا لك."
+        },
+        "fa": {
+            "legacy_caption_pid": 32069,
+            "legacy_language_pid": 11,
+            "text": "توجه: اگر هیچ پاسخ وجود دارد، آدرس ایمیل اشتباه است، یا یک امکان خطا تحویل ایمیل وجود دارد. در این صورت، با عرض پوزش به مشکل شما، اما من فکر می کنم که شما با ما تماس بگیرید که آیا شما مجددا ارسال آدرس ایمیل خود را دوباره بررسی کنید، و یا در یک آدرس ایمیل دیگر. متشکرم.",
+            "auto_translated": "توجه: اگر هیچ پاسخ وجود دارد، آدرس ایمیل اشتباه است، یا یک امکان خطا تحویل ایمیل وجود دارد. در این صورت، با عرض پوزش به مشکل شما، اما من فکر می کنم که شما با ما تماس بگیرید که آیا شما مجددا ارسال آدرس ایمیل خود را دوباره بررسی کنید، و یا در یک آدرس ایمیل دیگر. متشکرم."
+        },
+        "de": {
+            "legacy_caption_pid": 32070,
+            "legacy_language_pid": 12,
+            "text": "Hinweis: Wenn es keine Antwort gibt, E-Mail-Adresse ist falsch, oder es besteht die Möglichkeit einer Lieferung Fehler E-Mail. In diesem Fall Entschuldigen Sie die Störung, aber ich denke, dass Sie mit uns in Verbindung, ob Sie erneut Ihre E-Mail-Adresse erneut überprüfen, oder in einer anderen E-Mail-Adresse. Danke.",
+            "auto_translated": "Hinweis: Wenn es keine Antwort gibt, E-Mail-Adresse ist falsch, oder es besteht die Möglichkeit einer Lieferung Fehler E-Mail. In diesem Fall Entschuldigen Sie die Störung, aber ich denke, dass Sie mit uns in Verbindung, ob Sie erneut Ihre E-Mail-Adresse erneut überprüfen, oder in einer anderen E-Mail-Adresse. Danke."
+        },
+        "ru": {
+            "legacy_caption_pid": 32071,
+            "legacy_language_pid": 13,
+            "text": "Примечание: Если нет ответа, адрес электронной почты неправильно, или есть возможность ошибки доставки электронной почты. В таком случае, жаль беспокоить вас, но я думаю, что вы с нами ли вы повторно проверить свой адрес электронной почты еще раз, или в другой адрес электронной почты. Спасибо.",
+            "auto_translated": "Примечание: Если нет ответа, адрес электронной почты неправильно, или есть возможность ошибки доставки электронной почты. В таком случае, жаль беспокоить вас, но я думаю, что вы с нами ли вы повторно проверить свой адрес электронной почты еще раз, или в другой адрес электронной почты. Спасибо."
+        },
+        "ms": {
+            "legacy_caption_pid": 32072,
+            "legacy_language_pid": 14,
+            "text": "Nota: Jika tidak ada jawapan, alamat e-mel adalah salah, atau ada kemungkinan berlaku kesilapan penghantaran e-mel. Dalam kes itu, maaf untuk masalah anda, tetapi saya berfikir bahawa anda menghubungi kami sama ada anda menghantar semula semak alamat e-mel anda sekali lagi, atau alamat e-mel lain. Terima kasih.",
+            "auto_translated": "Nota: Jika tidak ada jawapan, alamat e-mel adalah salah, atau ada kemungkinan berlaku kesilapan penghantaran e-mel. Dalam kes itu, maaf untuk masalah anda, tetapi saya berfikir bahawa anda menghubungi kami sama ada anda menghantar semula semak alamat e-mel anda sekali lagi, atau alamat e-mel lain. Terima kasih."
+        },
+        "ta": {
+            "legacy_caption_pid": 32073,
+            "legacy_language_pid": 15,
+            "text": "குறிப்பு: பதில் இல்லை என்றால், மின்னஞ்சல் முகவரி தவறானது, அல்லது ஒரு மின்னஞ்சல் விநியோக பிழை ஒரு வாய்ப்புள்ளது. அந்த வழக்கில், பிரச்சனையில் வருந்துகிறது நீங்கள், ஆனால் நான் நீங்கள் மீண்டும் உங்கள் மின்னஞ்சல் முகவரியை சரிபார்த்து, அல்லது வேறு மின்னஞ்சல் முகவரியைப் உள்ள மீண்டும் அனுப்பி என்பதை நீங்கள் எங்களை தொடர்பு என்று நினைக்கிறேன். நன்றி.",
+            "auto_translated": "குறிப்பு: பதில் இல்லை என்றால், மின்னஞ்சல் முகவரி தவறானது, அல்லது ஒரு மின்னஞ்சல் விநியோக பிழை ஒரு வாய்ப்புள்ளது. அந்த வழக்கில், பிரச்சனையில் வருந்துகிறது நீங்கள், ஆனால் நான் நீங்கள் மீண்டும் உங்கள் மின்னஞ்சல் முகவரியை சரிபார்த்து, அல்லது வேறு மின்னஞ்சல் முகவரியைப் உள்ள மீண்டும் அனுப்பி என்பதை நீங்கள் எங்களை தொடர்பு என்று நினைக்கிறேன். நன்றி."
+        },
+        "it": {
+            "legacy_caption_pid": 32074,
+            "legacy_language_pid": 16,
+            "text": "Nota: Se non c'è risposta, l'indirizzo e-mail è sbagliata, o v'è la possibilità di un errore di recapito della posta elettronica. In questo caso, mi spiace disturbarla, ma penso che ci contatti se inviare nuovamente prova di nuovo il tuo indirizzo e-mail, o in un altro indirizzo email. Grazie.",
+            "auto_translated": "Nota: Se non c'è risposta, l'indirizzo e-mail è sbagliata, o v'è la possibilità di un errore di recapito della posta elettronica. In questo caso, mi spiace disturbarla, ma penso che ci contatti se inviare nuovamente prova di nuovo il tuo indirizzo e-mail, o in un altro indirizzo email. Grazie."
+        },
+        "bn": {
+            "legacy_caption_pid": 32075,
+            "legacy_language_pid": 17,
+            "text": "দ্রষ্টব্য: যদি কোন উত্তর হল, ই-মেইল ঠিকানা ভুল, অথবা একটি ই-মেল বিতরণ ত্রুটির একটি সম্ভাবনা আছে। সেক্ষেত্রে, বিরক্ত করার জন্য দুঃখিত, কিন্তু আমি মনে করি যে আপনি আমাদের সাথে যোগাযোগ কিনা আবার পাঠাতে আবার আপনার ইমেল ঠিকানা চেক করুন, অথবা অন্য ইমেল ঠিকানা। আপনাকে ধন্যবাদ।",
+            "auto_translated": "দ্রষ্টব্য: যদি কোন উত্তর হল, ই-মেইল ঠিকানা ভুল, অথবা একটি ই-মেল বিতরণ ত্রুটির একটি সম্ভাবনা আছে। সেক্ষেত্রে, বিরক্ত করার জন্য দুঃখিত, কিন্তু আমি মনে করি যে আপনি আমাদের সাথে যোগাযোগ কিনা আবার পাঠাতে আবার আপনার ইমেল ঠিকানা চেক করুন, অথবা অন্য ইমেল ঠিকানা। আপনাকে ধন্যবাদ।"
+        },
+        "tr": {
+            "legacy_caption_pid": 32076,
+            "legacy_language_pid": 18,
+            "text": "Not: yanıt yoksa, e-posta adresi yanlış veya bir e-posta teslim hatası olasılığı vardır. Bu durumda, rahatsız ettiğim için özür sen, ama yine e-posta adresini kontrol veya başka bir e-posta adresini yeniden olmadığını bizimle iletişime düşünüyorum. teşekkür ederiz.",
+            "auto_translated": "Not: yanıt yoksa, e-posta adresi yanlış veya bir e-posta teslim hatası olasılığı vardır. Bu durumda, rahatsız ettiğim için özür sen, ama yine e-posta adresini kontrol veya başka bir e-posta adresini yeniden olmadığını bizimle iletişime düşünüyorum. teşekkür ederiz."
+        },
+        "vi": {
+            "legacy_caption_pid": 32077,
+            "legacy_language_pid": 19,
+            "text": "Lưu ý: Nếu không có câu trả lời, địa chỉ e-mail là sai, hoặc có một khả năng của một lỗi giao hàng e-mail. Trong trường hợp đó, xin lỗi gây rắc rối cho bạn, nhưng tôi nghĩ rằng bạn liên hệ với chúng tôi cho dù bạn gửi lại kiểm tra địa chỉ email của bạn một lần nữa, hoặc trong một địa chỉ email. Cám ơn.",
+            "auto_translated": "Lưu ý: Nếu không có câu trả lời, địa chỉ e-mail là sai, hoặc có một khả năng của một lỗi giao hàng e-mail. Trong trường hợp đó, xin lỗi gây rắc rối cho bạn, nhưng tôi nghĩ rằng bạn liên hệ với chúng tôi cho dù bạn gửi lại kiểm tra địa chỉ email của bạn một lần nữa, hoặc trong một địa chỉ email. Cám ơn."
+        },
+        "pl": {
+            "legacy_caption_pid": 32078,
+            "legacy_language_pid": 20,
+            "text": "Uwaga: Jeśli nie ma odpowiedzi, adres e-mail jest nieprawidłowy, lub istnieje możliwość wystąpienia błędu dostarczania poczty e-mail. W takim razie, przepraszam za kłopot, ale myślę, że skontaktujesz się z nami, czy wysłać ponownie sprawdzić swój adres e-mail ponownie, lub w inny adres e-mail. Dziękuję.",
+            "auto_translated": "Uwaga: Jeśli nie ma odpowiedzi, adres e-mail jest nieprawidłowy, lub istnieje możliwość wystąpienia błędu dostarczania poczty e-mail. W takim razie, przepraszam za kłopot, ale myślę, że skontaktujesz się z nami, czy wysłać ponownie sprawdzić swój adres e-mail ponownie, lub w inny adres e-mail. Dziękuję."
+        },
+        "jv": {
+            "legacy_caption_pid": 32079,
+            "legacy_language_pid": 21,
+            "text": "Wigati: Yen ora ana jawaban, alamat e-mail iku salah, utawa ana kamungkinan saka kesalahan layang e-mail. Ing kasus-kasus iku, nuwun kanggo alangan, nanging Aku sing hubungi kita apa sing resend mriksa alamat email maneh, utawa ing alamat email liyane. Matur nuwun.",
+            "auto_translated": "Wigati: Yen ora ana jawaban, alamat e-mail iku salah, utawa ana kamungkinan saka kesalahan layang e-mail. Ing kasus-kasus iku, nuwun kanggo alangan, nanging Aku sing hubungi kita apa sing resend mriksa alamat email maneh, utawa ing alamat email liyane. Matur nuwun."
+        },
+        "pa": {
+            "legacy_caption_pid": 32080,
+            "legacy_language_pid": 22,
+            "text": "ਨੋਟ: ਜੇ ਕੋਈ ਜਵਾਬ ਹੈ, ਈ-ਮੇਲ ਪਤਾ ਗਲਤ ਹੈ, ਜ ਉਥੇ ਇੱਕ ਈ-ਮੇਲ ਡਿਲਿਵਰੀ ਗਲਤੀ ਦੀ ਸੰਭਾਵਨਾ ਹੈ. ਜੋ ਕਿ ਇਸ ਕੇਸ ਵਿੱਚ, ਮੁਸੀਬਤ ਨੂੰ ਅਫ਼ਸੋਸ ਹੈ ਕਿ ਤੁਹਾਨੂੰ, ਪਰ ਮੈਨੂੰ ਲੱਗਦਾ ਹੈ ਕਿ ਤੁਹਾਨੂੰ ਸਾਡੇ ਨਾਲ ਸੰਪਰਕ ਕਰੋ ਕਿ ਤੁਹਾਨੂੰ ਭੇਜਣਾ ਮੁੜ ਕੇ ਆਪਣੇ ਈ-ਮੇਲ ਪਤੇ ਨੂੰ ਚੈੱਕ, ਜ ਹੋਰ ਈਮੇਲ ਪਤਾ ਹੈ. ਤੁਹਾਡਾ ਧੰਨਵਾਦ ਹੈ.",
+            "auto_translated": "ਨੋਟ: ਜੇ ਕੋਈ ਜਵਾਬ ਹੈ, ਈ-ਮੇਲ ਪਤਾ ਗਲਤ ਹੈ, ਜ ਉਥੇ ਇੱਕ ਈ-ਮੇਲ ਡਿਲਿਵਰੀ ਗਲਤੀ ਦੀ ਸੰਭਾਵਨਾ ਹੈ. ਜੋ ਕਿ ਇਸ ਕੇਸ ਵਿੱਚ, ਮੁਸੀਬਤ ਨੂੰ ਅਫ਼ਸੋਸ ਹੈ ਕਿ ਤੁਹਾਨੂੰ, ਪਰ ਮੈਨੂੰ ਲੱਗਦਾ ਹੈ ਕਿ ਤੁਹਾਨੂੰ ਸਾਡੇ ਨਾਲ ਸੰਪਰਕ ਕਰੋ ਕਿ ਤੁਹਾਨੂੰ ਭੇਜਣਾ ਮੁੜ ਕੇ ਆਪਣੇ ਈ-ਮੇਲ ਪਤੇ ਨੂੰ ਚੈੱਕ, ਜ ਹੋਰ ਈਮੇਲ ਪਤਾ ਹੈ. ਤੁਹਾਡਾ ਧੰਨਵਾਦ ਹੈ."
+        },
+        "th": {
+            "legacy_caption_pid": 32081,
+            "legacy_language_pid": 23,
+            "text": "หมายเหตุ: หากไม่มีคำตอบที่อยู่อีเมลที่ไม่ถูกต้องหรือมีความเป็นไปได้ของข้อผิดพลาดในการจัดส่งอีเมล์ ในกรณีที่เสียใจเป็นปัญหากับคุณ แต่ผมคิดว่าคุณติดต่อเราไม่ว่าคุณจะส่งตรวจสอบที่อยู่อีเมลของคุณอีกครั้งหรือในที่อยู่อีเมลอื่น ขอบคุณ",
+            "auto_translated": "หมายเหตุ: หากไม่มีคำตอบที่อยู่อีเมลที่ไม่ถูกต้องหรือมีความเป็นไปได้ของข้อผิดพลาดในการจัดส่งอีเมล์ ในกรณีที่เสียใจเป็นปัญหากับคุณ แต่ผมคิดว่าคุณติดต่อเราไม่ว่าคุณจะส่งตรวจสอบที่อยู่อีเมลของคุณอีกครั้งหรือในที่อยู่อีเมลอื่น ขอบคุณ"
+        },
+        "te": {
+            "legacy_caption_pid": 41492,
+            "legacy_language_pid": 24,
+            "text": "గమనిక: సమాధానం లేదు ఉంటే, ఇ-మెయిల్ చిరునామా తప్పు, లేదా ఇ-మెయిల్ డెలివరీ లోపం అవకాశం ఉంది. ఆ సందర్భంలో, ఇబ్బంది క్షమించండి మీరు, కానీ నేను మీరు మళ్ళీ మీ ఇమెయిల్ చిరునామా తనిఖీ, లేదా మరొక ఇమెయిల్ చిరునామా లో మళ్లీ పంపి లేదో మీరు మమ్మల్ని సంప్రదించవచ్చు అని అనుకుంటున్నాను. ధన్యవాదాలు.",
+            "auto_translated": "గమనిక: సమాధానం లేదు ఉంటే, ఇ-మెయిల్ చిరునామా తప్పు, లేదా ఇ-మెయిల్ డెలివరీ లోపం అవకాశం ఉంది. ఆ సందర్భంలో, ఇబ్బంది క్షమించండి మీరు, కానీ నేను మీరు మళ్ళీ మీ ఇమెయిల్ చిరునామా తనిఖీ, లేదా మరొక ఇమెయిల్ చిరునామా లో మళ్లీ పంపి లేదో మీరు మమ్మల్ని సంప్రదించవచ్చు అని అనుకుంటున్నాను. ధన్యవాదాలు."
+        },
+        "mr": {
+            "legacy_caption_pid": 41493,
+            "legacy_language_pid": 25,
+            "text": "टीप: उत्तर नाही आहे, तर, ई-मेल पत्ता चुकीचा आहे, किंवा एक ई-मेल चेंडू त्रुटी एक शक्यता आहे. त्या प्रकरणात, त्रास दिलगीर, पण मी तुम्हाला तुमचा ईमेल पत्ता पुन्हा तपासा किंवा दुसरा ईमेल पत्ता पुन्हा की नाही हे आपण आमच्याशी संपर्क, असे वाटते. धन्यवाद.",
+            "auto_translated": "टीप: उत्तर नाही आहे, तर, ई-मेल पत्ता चुकीचा आहे, किंवा एक ई-मेल चेंडू त्रुटी एक शक्यता आहे. त्या प्रकरणात, त्रास दिलगीर, पण मी तुम्हाला तुमचा ईमेल पत्ता पुन्हा तपासा किंवा दुसरा ईमेल पत्ता पुन्हा की नाही हे आपण आमच्याशी संपर्क, असे वाटते. धन्यवाद."
+        },
+        "ur": {
+            "legacy_caption_pid": 41494,
+            "legacy_language_pid": 26,
+            "text": "نوٹ: کوئی جواب نہیں ہے تو، ای میل ایڈریس غلط ہے، یا ایک ای میل کی ترسیل غلطی کا امکان ہے. اس صورت میں، مصیبت کو افسوس ہے کہ آپ، لیکن میں آپ کو ایک بار پھر آپ کا ای میل ایڈریس چیک کریں، یا کسی اور ای میل ایڈریس میں بھیج چاہے آپ ہم سے رابطہ لگتا ہے کہ. آپ کا شکریہ.",
+            "auto_translated": "نوٹ: کوئی جواب نہیں ہے تو، ای میل ایڈریس غلط ہے، یا ایک ای میل کی ترسیل غلطی کا امکان ہے. اس صورت میں، مصیبت کو افسوس ہے کہ آپ، لیکن میں آپ کو ایک بار پھر آپ کا ای میل ایڈریس چیک کریں، یا کسی اور ای میل ایڈریس میں بھیج چاہے آپ ہم سے رابطہ لگتا ہے کہ. آپ کا شکریہ."
+        },
+        "gu": {
+            "legacy_caption_pid": 41495,
+            "legacy_language_pid": 27,
+            "text": "નોંધ: જો ત્યાં કોઈ જવાબ છે, ઈ-મેલ સરનામું ખોટું છે, અથવા ત્યાં એક ઈ-મેલ ડિલિવરી ભૂલ સંભાવના છે. તે કિસ્સામાં, મુશ્કેલી દિલગીર તમે, પરંતુ મને લાગે છે કે તમે અમને સંપર્ક કે તમે ફરીથી ફરીથી તમારું ઇમેઇલ સરનામું તપાસો, અથવા અન્ય ઇમેઇલ સરનામું. આપનો આભાર.",
+            "auto_translated": "નોંધ: જો ત્યાં કોઈ જવાબ છે, ઈ-મેલ સરનામું ખોટું છે, અથવા ત્યાં એક ઈ-મેલ ડિલિવરી ભૂલ સંભાવના છે. તે કિસ્સામાં, મુશ્કેલી દિલગીર તમે, પરંતુ મને લાગે છે કે તમે અમને સંપર્ક કે તમે ફરીથી ફરીથી તમારું ઇમેઇલ સરનામું તપાસો, અથવા અન્ય ઇમેઇલ સરનામું. આપનો આભાર."
+        },
+        "uk": {
+            "legacy_caption_pid": 41496,
+            "legacy_language_pid": 28,
+            "text": "Примітка: Якщо немає відповіді, адреса електронної пошти неправильно, або є можливість помилки доставки електронної пошти. В такому випадку, шкода турбувати вас, але я думаю, що ви з нами ви повторно перевірити свою адресу електронної пошти ще раз, або в іншу адресу електронної пошти. Дякую.",
+            "auto_translated": "Примітка: Якщо немає відповіді, адреса електронної пошти неправильно, або є можливість помилки доставки електронної пошти. В такому випадку, шкода турбувати вас, але я думаю, що ви з нами ви повторно перевірити свою адресу електронної пошти ще раз, або в іншу адресу електронної пошти. Дякую."
+        },
+        "ml": {
+            "legacy_caption_pid": 41497,
+            "legacy_language_pid": 29,
+            "text": "ശ്രദ്ധിക്കുക: ഉത്തരം ഇല്ല എങ്കിൽ, ഇ-മെയിൽ വിലാസം തെറ്റാണ്, അല്ലെങ്കിൽ ഒരു ഇ-മെയിൽ ഡെലിവറി പിശക് ഒരു സാദ്ധ്യത. ആ സാഹചര്യത്തിൽ, ഇടവിടാതെ ക്ഷമിക്കണം, പക്ഷെ ഞാൻ നിന്നെ ഞങ്ങളോടു ബന്ധപ്പെടാൻ നിങ്ങളുടെ ഇമെയിൽ വിലാസം വീണ്ടും പരിശോധിക്കുക വീണ്ടും അയക്കൂ, അല്ലെങ്കിൽ മറ്റൊരു ഇമെയിൽ വിലാസത്തിൽ എന്ന് തോന്നുന്നു. നന്ദി.",
+            "auto_translated": "ശ്രദ്ധിക്കുക: ഉത്തരം ഇല്ല എങ്കിൽ, ഇ-മെയിൽ വിലാസം തെറ്റാണ്, അല്ലെങ്കിൽ ഒരു ഇ-മെയിൽ ഡെലിവറി പിശക് ഒരു സാദ്ധ്യത. ആ സാഹചര്യത്തിൽ, ഇടവിടാതെ ക്ഷമിക്കണം, പക്ഷെ ഞാൻ നിന്നെ ഞങ്ങളോടു ബന്ധപ്പെടാൻ നിങ്ങളുടെ ഇമെയിൽ വിലാസം വീണ്ടും പരിശോധിക്കുക വീണ്ടും അയക്കൂ, അല്ലെങ്കിൽ മറ്റൊരു ഇമെയിൽ വിലാസത്തിൽ എന്ന് തോന്നുന്നു. നന്ദി."
+        },
+        "kn": {
+            "legacy_caption_pid": 41498,
+            "legacy_language_pid": 30,
+            "text": "ಗಮನಿಸಿ: ಯಾವುದೇ ಉತ್ತರವನ್ನು ಇದ್ದರೆ, ಇಮೇಲ್ ವಿಳಾಸ ತಪ್ಪಾಗಿದೆ, ಅಥವಾ ಇಮೇಲ್ ವಿತರಣಾ ದೋಷದ ಸಾಧ್ಯತೆ ಇದೆ. ಆ ಸಂದರ್ಭದಲ್ಲಿ, ತೊಂದರೆಗೆ ಕ್ಷಮಿಸಿ ನೀವು, ಆದರೆ ನಾನು ನೀವು ಮತ್ತೆ ನಿಮ್ಮ ಇಮೇಲ್ ವಿಳಾಸವನ್ನು ಪರಿಶೀಲಿಸಿ, ಅಥವಾ ಇನ್ನೊಂದು ಇಮೇಲ್ ವಿಳಾಸವನ್ನು ಮರುಕಳುಹಿಸಲು ಎಂಬುದನ್ನು ನಮ್ಮನ್ನು ಸಂಪರ್ಕಿಸಿ ಭಾವಿಸುತ್ತೇನೆ. ಧನ್ಯವಾದಗಳು.",
+            "auto_translated": "ಗಮನಿಸಿ: ಯಾವುದೇ ಉತ್ತರವನ್ನು ಇದ್ದರೆ, ಇಮೇಲ್ ವಿಳಾಸ ತಪ್ಪಾಗಿದೆ, ಅಥವಾ ಇಮೇಲ್ ವಿತರಣಾ ದೋಷದ ಸಾಧ್ಯತೆ ಇದೆ. ಆ ಸಂದರ್ಭದಲ್ಲಿ, ತೊಂದರೆಗೆ ಕ್ಷಮಿಸಿ ನೀವು, ಆದರೆ ನಾನು ನೀವು ಮತ್ತೆ ನಿಮ್ಮ ಇಮೇಲ್ ವಿಳಾಸವನ್ನು ಪರಿಶೀಲಿಸಿ, ಅಥವಾ ಇನ್ನೊಂದು ಇಮೇಲ್ ವಿಳಾಸವನ್ನು ಮರುಕಳುಹಿಸಲು ಎಂಬುದನ್ನು ನಮ್ಮನ್ನು ಸಂಪರ್ಕಿಸಿ ಭಾವಿಸುತ್ತೇನೆ. ಧನ್ಯವಾದಗಳು."
+        },
+        "su": {
+            "legacy_caption_pid": 41499,
+            "legacy_language_pid": 31,
+            "text": "Catetan: Upama teu aya jawaban, alamat e-mail anu salah, atawa aya anu kamungkinan kasalahan pangiriman e-mail. Dina kasus eta, punten ka gangguan anjeun, tapi kuring mikir nu ngahubungan kami naha anjeun resend pariksa alamat surélék anjeun deui, atanapi di alamat surélék nu sejen. Hatur nuhun.",
+            "auto_translated": "Catetan: Upama teu aya jawaban, alamat e-mail anu salah, atawa aya anu kamungkinan kasalahan pangiriman e-mail. Dina kasus eta, punten ka gangguan anjeun, tapi kuring mikir nu ngahubungan kami naha anjeun resend pariksa alamat surélék anjeun deui, atanapi di alamat surélék nu sejen. Hatur nuhun."
+        },
+        "ku": {
+            "legacy_caption_pid": 41500,
+            "legacy_language_pid": 32,
+            "text": "Not: Heke tu bersiva wê derê, navnîşana e-mail çewt e, an jî îhtîmala an error delivery e-mail hene. Di vê rewşê de, mixabin ku we aciz bike, lê ez bawerim ku tu bi me re têkilî ka Veavakirin your email address dîsa jî, an li email address din. Spas dikim.",
+            "auto_translated": "Not: Heke tu bersiva wê derê, navnîşana e-mail çewt e, an jî îhtîmala an error delivery e-mail hene. Di vê rewşê de, mixabin ku we aciz bike, lê ez bawerim ku tu bi me re têkilî ka Veavakirin your email address dîsa jî, an li email address din. Spas dikim."
+        },
+        "ps": {
+            "legacy_caption_pid": 41501,
+            "legacy_language_pid": 33,
+            "text": "نوټ: که هیڅ ځواب نه شته، e برېښلیک پته د غلط دی، او يا د يو برېښليک رسولو تېروتنې امکان شته دی. په دې صورت کې، چې د ستونزو بخښنه تاسو، خو زه فکر کوم چې آیا تاسو ته واستول شي ستاسو دبرېښنا ليک پته وګورئ بیا، او یا په بل برېښليک پته چې تاسو له موږ سره اړیکه. مننه.",
+            "auto_translated": "نوټ: که هیڅ ځواب نه شته، e برېښلیک پته د غلط دی، او يا د يو برېښليک رسولو تېروتنې امکان شته دی. په دې صورت کې، چې د ستونزو بخښنه تاسو، خو زه فکر کوم چې آیا تاسو ته واستول شي ستاسو دبرېښنا ليک پته وګورئ بیا، او یا په بل برېښليک پته چې تاسو له موږ سره اړیکه. مننه."
+        },
+        "ro": {
+            "legacy_caption_pid": 41502,
+            "legacy_language_pid": 34,
+            "text": "Notă: În cazul în care nu există nici un răspuns, o adresă de e-mail este greșit, sau există posibilitatea unei erori de livrare de e-mail. În acest caz, îmi pare rău să vă deranjez, dar cred că ne contactați dacă retrimiteți verificați adresa de e-mail din nou, sau într-o altă adresă de e-mail. Mulțumesc.",
+            "auto_translated": "Notă: În cazul în care nu există nici un răspuns, o adresă de e-mail este greșit, sau există posibilitatea unei erori de livrare de e-mail. În acest caz, îmi pare rău să vă deranjez, dar cred că ne contactați dacă retrimiteți verificați adresa de e-mail din nou, sau într-o altă adresă de e-mail. Mulțumesc."
+        },
+        "id": {
+            "legacy_caption_pid": 41503,
+            "legacy_language_pid": 35,
+            "text": "Catatan: Jika tidak ada jawaban, alamat e-mail yang salah, atau ada kemungkinan kesalahan pengiriman e-mail. Dalam hal ini, maaf untuk masalah Anda, tapi saya berpikir bahwa Anda menghubungi kami apakah Anda mengirim ulang memeriksa alamat email Anda lagi, atau di alamat email lain. Terima kasih.",
+            "auto_translated": "Catatan: Jika tidak ada jawaban, alamat e-mail yang salah, atau ada kemungkinan kesalahan pengiriman e-mail. Dalam hal ini, maaf untuk masalah Anda, tapi saya berpikir bahwa Anda menghubungi kami apakah Anda mengirim ulang memeriksa alamat email Anda lagi, atau di alamat email lain. Terima kasih."
+        },
+        "sd": {
+            "legacy_caption_pid": 41504,
+            "legacy_language_pid": 36,
+            "text": "نوٽ: جيڪڏهن ڪو جواب آهي، اي-ميل ايڊريس غلط آهي، يا ڪو هڪ اي-ميل پهچائڻ جي غلطي جو امڪان آهي. ته صورت ۾، توهان کي مصيبت کي معاف ڪندا، پر مان سمجهان ٿو ته تون اسان سان رابطو ڇا توهان پنهنجي اي ميل پتو ٻيهر چيڪ resend، يا ٻي اي ميل پتي ۾. توهان جي مهرباني.",
+            "auto_translated": "نوٽ: جيڪڏهن ڪو جواب آهي، اي-ميل ايڊريس غلط آهي، يا ڪو هڪ اي-ميل پهچائڻ جي غلطي جو امڪان آهي. ته صورت ۾، توهان کي مصيبت کي معاف ڪندا، پر مان سمجهان ٿو ته تون اسان سان رابطو ڇا توهان پنهنجي اي ميل پتو ٻيهر چيڪ resend، يا ٻي اي ميل پتي ۾. توهان جي مهرباني."
+        },
+        "af": {
+            "legacy_caption_pid": 41505,
+            "legacy_language_pid": 37,
+            "text": "Let wel: Indien daar geen antwoord, e-pos adres is verkeerd, of is daar 'n moontlikheid van 'n e-pos aflewering fout. In daardie geval, jammer om moeilikheid jou, maar ek dink dat jy ons kontak of jy weer stuur jou e-pos adres weer, of in 'n ander e-posadres. Baie dankie.",
+            "auto_translated": "Let wel: Indien daar geen antwoord, e-pos adres is verkeerd, of is daar 'n moontlikheid van 'n e-pos aflewering fout. In daardie geval, jammer om moeilikheid jou, maar ek dink dat jy ons kontak of jy weer stuur jou e-pos adres weer, of in 'n ander e-posadres. Baie dankie."
+        },
+        "sw": {
+            "legacy_caption_pid": 41506,
+            "legacy_language_pid": 38,
+            "text": "Kumbuka: Kama hakuna jibu, barua pepe ni sahihi, au kuna uwezekano wa makosa ya barua ya kujifungua. Katika hali hiyo, pole kwa shida, lakini nadhani kuwa wewe kuwasiliana na sisi kama wewe kutuma tena kuangalia barua pepe yako tena, au katika hotuba nyingine ya barua pepe. Asante.",
+            "auto_translated": "Kumbuka: Kama hakuna jibu, barua pepe ni sahihi, au kuna uwezekano wa makosa ya barua ya kujifungua. Katika hali hiyo, pole kwa shida, lakini nadhani kuwa wewe kuwasiliana na sisi kama wewe kutuma tena kuangalia barua pepe yako tena, au katika hotuba nyingine ya barua pepe. Asante."
+        },
+        "lo": {
+            "legacy_caption_pid": 41507,
+            "legacy_language_pid": 39,
+            "text": "ຫມາຍເຫດ: ຖ້າຫາກວ່າບໍ່ມີຄໍາຕອບທີ່ຢູ່ອີເມລບໍ່ຖືກຕ້ອງ, ຫຼືມີຄວາມເປັນໄປໄດ້ຂອງຄວາມຜິດພາດການຈັດສົ່ງ e-mail. ໃນກໍລະນີນັ້ນ, ຂໍອະໄພກັບບັນຫາທ່ານ, ແຕ່ຂ້າພະເຈົ້າຄິດວ່າທ່ານຕິດຕໍ່ພວກເຮົາບໍ່ວ່າຈະເປັນທ່ານ resend ກວດເບິ່ງທີ່ຢູ່ອີເມລ໌ຂອງທ່ານອີກເທື່ອຫນຶ່ງ, ຫຼືທີ່ຢູ່ອີເມວອື່ນ. ຂໍຂອບໃຈທ່ານ.",
+            "auto_translated": "ຫມາຍເຫດ: ຖ້າຫາກວ່າບໍ່ມີຄໍາຕອບທີ່ຢູ່ອີເມລບໍ່ຖືກຕ້ອງ, ຫຼືມີຄວາມເປັນໄປໄດ້ຂອງຄວາມຜິດພາດການຈັດສົ່ງ e-mail. ໃນກໍລະນີນັ້ນ, ຂໍອະໄພກັບບັນຫາທ່ານ, ແຕ່ຂ້າພະເຈົ້າຄິດວ່າທ່ານຕິດຕໍ່ພວກເຮົາບໍ່ວ່າຈະເປັນທ່ານ resend ກວດເບິ່ງທີ່ຢູ່ອີເມລ໌ຂອງທ່ານອີກເທື່ອຫນຶ່ງ, ຫຼືທີ່ຢູ່ອີເມວອື່ນ. ຂໍຂອບໃຈທ່ານ."
+        },
+        "nl": {
+            "legacy_caption_pid": 41508,
+            "legacy_language_pid": 40,
+            "text": "Let op: Als er geen antwoord, e-mail adres verkeerd is, of er een mogelijkheid van een e-mail levering error. In dat geval is het jammer dat je lastig, maar ik denk dat je contact met ons op of u opnieuw uw e-mail adres opnieuw, of in een ander e-mailadres. Dank je wel.",
+            "auto_translated": "Let op: Als er geen antwoord, e-mail adres verkeerd is, of er een mogelijkheid van een e-mail levering error. In dat geval is het jammer dat je lastig, maar ik denk dat je contact met ons op of u opnieuw uw e-mail adres opnieuw, of in een ander e-mailadres. Dank je wel."
+        },
+        "tl": {
+            "legacy_caption_pid": 41509,
+            "legacy_language_pid": 41,
+            "text": "Tandaan: Kung walang sagot, e-mail address ay mali, o mayroong isang posibilidad ng isang e-mail na paghahatid error. Sa kasong iyon, paumanhin sa pag-mo, ngunit sa tingin ko na makipag-ugnay ka sa amin kung muli mong ipapadala suriin ang iyong email address muli, o sa isa pang email address. Salamat sa inyo.",
+            "auto_translated": "Tandaan: Kung walang sagot, e-mail address ay mali, o mayroong isang posibilidad ng isang e-mail na paghahatid error. Sa kasong iyon, paumanhin sa pag-mo, ngunit sa tingin ko na makipag-ugnay ka sa amin kung muli mong ipapadala suriin ang iyong email address muli, o sa isa pang email address. Salamat sa inyo."
+        },
+        "ne": {
+            "legacy_caption_pid": 41510,
+            "legacy_language_pid": 42,
+            "text": "नोट: कुनै जवाफ छ भने, ई-मेल ठेगाना गलत छ, वा त्यहाँ एउटा ई-मेल वितरण त्रुटि को एक संभावना छ। त्यस अवस्थामा, समस्या दु: खी तिमी, तर म पुन: पठाउनुहोस् कि फेरि आफ्नो इमेल ठेगाना जाँच, वा अर्को इमेल ठेगाना तपाईं हामीलाई सम्पर्क ठान्छन्। धन्यवाद।",
+            "auto_translated": "नोट: कुनै जवाफ छ भने, ई-मेल ठेगाना गलत छ, वा त्यहाँ एउटा ई-मेल वितरण त्रुटि को एक संभावना छ। त्यस अवस्थामा, समस्या दु: खी तिमी, तर म पुन: पठाउनुहोस् कि फेरि आफ्नो इमेल ठेगाना जाँच, वा अर्को इमेल ठेगाना तपाईं हामीलाई सम्पर्क ठान्छन्। धन्यवाद।"
+        },
+        "hu": {
+            "legacy_caption_pid": 41511,
+            "legacy_language_pid": 43,
+            "text": "Megjegyzés: Ha nincs válasz, az e-mail cím hibás, vagy lehetőség van az e-mail kézbesítési hiba. Ebben az esetben, sajnálom, hogy baj van, de azt hiszem, hogy lépjen kapcsolatba velünk, hogy küldje el újra ellenőrizze az e-mail cím újra, vagy egy másik e-mail címre. Köszönöm.",
+            "auto_translated": "Megjegyzés: Ha nincs válasz, az e-mail cím hibás, vagy lehetőség van az e-mail kézbesítési hiba. Ebben az esetben, sajnálom, hogy baj van, de azt hiszem, hogy lépjen kapcsolatba velünk, hogy küldje el újra ellenőrizze az e-mail cím újra, vagy egy másik e-mail címre. Köszönöm."
+        },
+        "cs": {
+            "legacy_caption_pid": 41512,
+            "legacy_language_pid": 44,
+            "text": "Poznámka: Pokud není žádná odpověď, e-mailová adresa je špatně, nebo je zde možnost chyby doručení e-mailu. V takovém případě se omlouvám, že vás obtěžuji, ale myslím, že se na nás obrátit, zda se znovu odeslat zkontrolovat svou e-mailovou adresu znovu, nebo v jiné e-mailové adresy. Děkuju.",
+            "auto_translated": "Poznámka: Pokud není žádná odpověď, e-mailová adresa je špatně, nebo je zde možnost chyby doručení e-mailu. V takovém případě se omlouvám, že vás obtěžuji, ale myslím, že se na nás obrátit, zda se znovu odeslat zkontrolovat svou e-mailovou adresu znovu, nebo v jiné e-mailové adresy. Děkuju."
+        },
+        "el": {
+            "legacy_caption_pid": 41513,
+            "legacy_language_pid": 45,
+            "text": "Σημείωση: Εάν δεν υπάρχει καμία απάντηση, η διεύθυνση ηλεκτρονικού ταχυδρομείου είναι λάθος, ή υπάρχει πιθανότητα λάθους παράδοσης e-mail. Σε αυτή την περίπτωση, λυπάμαι να σας απασχολήσω, αλλά νομίζω ότι μπορείτε να επικοινωνήσετε μαζί μας αν έχετε στείλει ξανά ελέγξετε τη διεύθυνση ηλεκτρονικού ταχυδρομείου σας και πάλι, ή σε άλλη διεύθυνση ηλεκτρονικού ταχυδρομείου. Σας ευχαριστώ.",
+            "auto_translated": "Σημείωση: Εάν δεν υπάρχει καμία απάντηση, η διεύθυνση ηλεκτρονικού ταχυδρομείου είναι λάθος, ή υπάρχει πιθανότητα λάθους παράδοσης e-mail. Σε αυτή την περίπτωση, λυπάμαι να σας απασχολήσω, αλλά νομίζω ότι μπορείτε να επικοινωνήσετε μαζί μας αν έχετε στείλει ξανά ελέγξετε τη διεύθυνση ηλεκτρονικού ταχυδρομείου σας και πάλι, ή σε άλλη διεύθυνση ηλεκτρονικού ταχυδρομείου. Σας ευχαριστώ."
+        },
+        "sv": {
+            "legacy_caption_pid": 41514,
+            "legacy_language_pid": 46,
+            "text": "Obs: Om det inte finns något svar, är e-postadress fel, eller om det finns en möjlighet att ett e-postleverans fel. I så fall, ledsen att besvära er, men jag tror att du kontaktar oss om du skickar kontrollera din e-postadress igen, eller i en annan e-postadress. Tack.",
+            "auto_translated": "Obs: Om det inte finns något svar, är e-postadress fel, eller om det finns en möjlighet att ett e-postleverans fel. I så fall, ledsen att besvära er, men jag tror att du kontaktar oss om du skickar kontrollera din e-postadress igen, eller i en annan e-postadress. Tack."
+        },
+        "kk": {
+            "legacy_caption_pid": 41515,
+            "legacy_language_pid": 47,
+            "text": "Ескерту: жауап жоқ болса, электрондық пошта мекен-жайы дұрыс емес, немесе электрондық пошта жеткізу қате мүмкіндігі бар. сізді алаңдатпай бұл жағдайда, кешіріңіз, бірақ менің ойымша, сіз, сіз, сіздің электрондық пошта мекен-жайы қайтадан тексеру қайта жіберуге, немесе басқа электрондық пошта мекен-жайы ма бізбен деп ойлаймын. рахмет.",
+            "auto_translated": "Ескерту: жауап жоқ болса, электрондық пошта мекен-жайы дұрыс емес, немесе электрондық пошта жеткізу қате мүмкіндігі бар. сізді алаңдатпай бұл жағдайда, кешіріңіз, бірақ менің ойымша, сіз, сіз, сіздің электрондық пошта мекен-жайы қайтадан тексеру қайта жіберуге, немесе басқа электрондық пошта мекен-жайы ма бізбен деп ойлаймын. рахмет."
+        },
+        "fi": {
+            "legacy_caption_pid": 41516,
+            "legacy_language_pid": 48,
+            "text": "Huomaa: Jos ei ole vastausta, sähköpostiosoite on väärä, tai on mahdollista sähköpostin toimituksen virhe. Siinä tapauksessa pahoillani vaivata sinua, mutta luulen, että otat yhteyttä meihin, oletko lähettää tarkistaa sähköpostiosoitteesi uudelleen, tai toiseen sähköpostiosoitteeseen. Kiitos.",
+            "auto_translated": "Huomaa: Jos ei ole vastausta, sähköpostiosoite on väärä, tai on mahdollista sähköpostin toimituksen virhe. Siinä tapauksessa pahoillani vaivata sinua, mutta luulen, että otat yhteyttä meihin, oletko lähettää tarkistaa sähköpostiosoitteesi uudelleen, tai toiseen sähköpostiosoitteeseen. Kiitos."
+        },
+        "da": {
+            "legacy_caption_pid": 41517,
+            "legacy_language_pid": 49,
+            "text": "Bemærk: Hvis der ikke er noget svar, e-mail-adresse er forkert, eller der er mulighed for en leverance fejl e-mail. I så fald ked af at besvære dig, men jeg tror, ​​at du kontakter os, om du gensender tjekke din e-mailadresse igen, eller i anden e-mailadresse. Tak.",
+            "auto_translated": "Bemærk: Hvis der ikke er noget svar, e-mail-adresse er forkert, eller der er mulighed for en leverance fejl e-mail. I så fald ked af at besvære dig, men jeg tror, ​​at du kontakter os, om du gensender tjekke din e-mailadresse igen, eller i anden e-mailadresse. Tak."
+        },
+        "he": {
+            "legacy_caption_pid": 41518,
+            "legacy_language_pid": 50,
+            "text": "הערה: אם אין תשובה, כתובת דואר אלקטרוני לא בסדר, או קיימת אפשרות של טעות משלוח דואר אלקטרונית. במקרה כזה, מטריח אותך, אבל אני חושב שאתה לפנות אלינו אם תשלח שוב לבדוק את כתובת הדוא\"ל שלך שוב, או כתובת דוא\"ל נוספת. תודה.",
+            "auto_translated": "הערה: אם אין תשובה, כתובת דואר אלקטרוני לא בסדר, או קיימת אפשרות של טעות משלוח דואר אלקטרונית. במקרה כזה, מטריח אותך, אבל אני חושב שאתה לפנות אלינו אם תשלח שוב לבדוק את כתובת הדוא\"ל שלך שוב, או כתובת דוא\"ל נוספת. תודה."
+        },
+        "no": {
+            "legacy_caption_pid": 41519,
+            "legacy_language_pid": 51,
+            "text": "Merk: Hvis du ikke får svar, er e-postadressen feil, eller er det en mulighet for e-postlevering feil. I så fall beklager å plage deg, men jeg tror at du tar kontakt med oss ​​om du sende sjekke din e-postadresse igjen, eller i en annen e-postadresse. Takk.",
+            "auto_translated": "Merk: Hvis du ikke får svar, er e-postadressen feil, eller er det en mulighet for e-postlevering feil. I så fall beklager å plage deg, men jeg tror at du tar kontakt med oss ​​om du sende sjekke din e-postadresse igjen, eller i en annen e-postadresse. Takk."
+        }
+    }
+}

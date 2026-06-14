@@ -1,0 +1,27 @@
+{
+    "resource_key": "ACTION_ADD_COMPARE_OUTPUT",
+    "legacy_resource_pid": 1525,
+    "base_group_key": "grp-001-developers-matsuesoft-co-jp",
+    "additional_group_keys": [],
+    "key_for_update": "f4KNIYS1c2NBM1h5EBmQpWEBIijl7ELgG0ix3luV5DeD05cYIrs9WfvRg5Ne4IGc4mgg6slo2948JRZsNbnv9YokSk0zPLnaPzn9s324tHe5hdS8T4Gz7xg0YOXGx767",
+    "sort_group": "ACTION COMPARE OUTPUT",
+    "key_name": "ACTION_ADD_COMPARE_OUTPUT",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": true,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 6902,
+            "legacy_language_pid": 1,
+            "text": "出力比較設定追加",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 6903,
+            "legacy_language_pid": 2,
+            "text": "Add Compare Output ",
+            "auto_translated": ""
+        }
+    }
+}

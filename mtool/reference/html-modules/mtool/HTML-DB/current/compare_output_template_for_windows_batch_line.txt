@@ -1,0 +1,1 @@
+"__COMPARE_COMMAND__" ".__PATH_A__" ".__PATH_B__"

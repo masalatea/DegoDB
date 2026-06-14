@@ -1,0 +1,321 @@
+{
+    "resource_key": "app_name",
+    "legacy_resource_pid": 894,
+    "base_group_key": "grp-028-app-common-lib",
+    "additional_group_keys": [],
+    "key_for_update": "WnGo6BtqE3wXmEhUoAga1ZSDpB1lH01lMh2jdXyZoY5U9jCGPuaWTdQ7S8zfGgfnbUaHFkyMh4cBb2FCIVMM7dyDiyeFCibNGrUPlhnpiul8WoWLAnkWuvkZtsKwY71j",
+    "sort_group": "App",
+    "key_name": "app_name",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": false,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 817,
+            "legacy_language_pid": 1,
+            "text": "共通ライブラリ",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 818,
+            "legacy_language_pid": 2,
+            "text": "Common Library",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 7270,
+            "legacy_language_pid": 3,
+            "text": "共同图书馆",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 7271,
+            "legacy_language_pid": 4,
+            "text": "공용 도서관",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 10078,
+            "legacy_language_pid": 5,
+            "text": "Biblioteca común",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 10079,
+            "legacy_language_pid": 6,
+            "text": "Biblioteca comum",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 10080,
+            "legacy_language_pid": 7,
+            "text": "共同圖書館",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 16137,
+            "legacy_language_pid": 8,
+            "text": "Bibliothèque commune",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 16138,
+            "legacy_language_pid": 9,
+            "text": "आम पुस्तकालय",
+            "auto_translated": ""
+        },
+        "ar": {
+            "legacy_caption_pid": 28246,
+            "legacy_language_pid": 10,
+            "text": "المكتبة العامة",
+            "auto_translated": "المكتبة العامة"
+        },
+        "fa": {
+            "legacy_caption_pid": 28247,
+            "legacy_language_pid": 11,
+            "text": "کتابخانه اشتراکی",
+            "auto_translated": "کتابخانه اشتراکی"
+        },
+        "de": {
+            "legacy_caption_pid": 28248,
+            "legacy_language_pid": 12,
+            "text": "gemeinsame Bibliothek",
+            "auto_translated": "gemeinsame Bibliothek"
+        },
+        "ru": {
+            "legacy_caption_pid": 28249,
+            "legacy_language_pid": 13,
+            "text": "Общая библиотека",
+            "auto_translated": "Общая библиотека"
+        },
+        "ms": {
+            "legacy_caption_pid": 28250,
+            "legacy_language_pid": 14,
+            "text": "perpustakaan biasa",
+            "auto_translated": "perpustakaan biasa"
+        },
+        "ta": {
+            "legacy_caption_pid": 28251,
+            "legacy_language_pid": 15,
+            "text": "பொதுவான நூலகம்",
+            "auto_translated": "பொதுவான நூலகம்"
+        },
+        "it": {
+            "legacy_caption_pid": 28252,
+            "legacy_language_pid": 16,
+            "text": "Common library",
+            "auto_translated": "Common library"
+        },
+        "bn": {
+            "legacy_caption_pid": 28253,
+            "legacy_language_pid": 17,
+            "text": "প্রচলিত গ্রন্থাগার",
+            "auto_translated": "প্রচলিত গ্রন্থাগার"
+        },
+        "tr": {
+            "legacy_caption_pid": 28254,
+            "legacy_language_pid": 18,
+            "text": "Ortak kütüphane",
+            "auto_translated": "Ortak kütüphane"
+        },
+        "vi": {
+            "legacy_caption_pid": 28255,
+            "legacy_language_pid": 19,
+            "text": "thư viện chung",
+            "auto_translated": "thư viện chung"
+        },
+        "pl": {
+            "legacy_caption_pid": 28256,
+            "legacy_language_pid": 20,
+            "text": "wspólna biblioteka",
+            "auto_translated": "wspólna biblioteka"
+        },
+        "jv": {
+            "legacy_caption_pid": 28257,
+            "legacy_language_pid": 21,
+            "text": "perpustakaan umum",
+            "auto_translated": "perpustakaan umum"
+        },
+        "pa": {
+            "legacy_caption_pid": 28258,
+            "legacy_language_pid": 22,
+            "text": "ਆਮ ਲਾਇਬਰੇਰੀ",
+            "auto_translated": "ਆਮ ਲਾਇਬਰੇਰੀ"
+        },
+        "th": {
+            "legacy_caption_pid": 28259,
+            "legacy_language_pid": 23,
+            "text": "ห้องสมุดทั่วไป",
+            "auto_translated": "ห้องสมุดทั่วไป"
+        },
+        "te": {
+            "legacy_caption_pid": 33540,
+            "legacy_language_pid": 24,
+            "text": "సాధారణ లైబ్రరీ",
+            "auto_translated": "సాధారణ లైబ్రరీ"
+        },
+        "mr": {
+            "legacy_caption_pid": 33541,
+            "legacy_language_pid": 25,
+            "text": "सामान्य लायब्ररी",
+            "auto_translated": "सामान्य लायब्ररी"
+        },
+        "ur": {
+            "legacy_caption_pid": 33542,
+            "legacy_language_pid": 26,
+            "text": "کامن لائبریری",
+            "auto_translated": "کامن لائبریری"
+        },
+        "gu": {
+            "legacy_caption_pid": 33543,
+            "legacy_language_pid": 27,
+            "text": "સામાન્ય પુસ્તકાલય",
+            "auto_translated": "સામાન્ય પુસ્તકાલય"
+        },
+        "uk": {
+            "legacy_caption_pid": 33544,
+            "legacy_language_pid": 28,
+            "text": "Загальна бібліотека",
+            "auto_translated": "Загальна бібліотека"
+        },
+        "ml": {
+            "legacy_caption_pid": 33545,
+            "legacy_language_pid": 29,
+            "text": "സാധാരണ ലൈബ്രറി",
+            "auto_translated": "സാധാരണ ലൈബ്രറി"
+        },
+        "kn": {
+            "legacy_caption_pid": 33546,
+            "legacy_language_pid": 30,
+            "text": "ಕಾಮನ್ ಗ್ರಂಥಾಲಯದ",
+            "auto_translated": "ಕಾಮನ್ ಗ್ರಂಥಾಲಯದ"
+        },
+        "su": {
+            "legacy_caption_pid": 33547,
+            "legacy_language_pid": 31,
+            "text": "perpustakaan umum",
+            "auto_translated": "perpustakaan umum"
+        },
+        "ku": {
+            "legacy_caption_pid": 33548,
+            "legacy_language_pid": 32,
+            "text": "pirtûkxaneya Common",
+            "auto_translated": "pirtûkxaneya Common"
+        },
+        "ps": {
+            "legacy_caption_pid": 33549,
+            "legacy_language_pid": 33,
+            "text": "عام کړی",
+            "auto_translated": "عام کړی"
+        },
+        "ro": {
+            "legacy_caption_pid": 33550,
+            "legacy_language_pid": 34,
+            "text": "bibliotecă comună",
+            "auto_translated": "bibliotecă comună"
+        },
+        "id": {
+            "legacy_caption_pid": 33551,
+            "legacy_language_pid": 35,
+            "text": "perpustakaan umum",
+            "auto_translated": "perpustakaan umum"
+        },
+        "sd": {
+            "legacy_caption_pid": 33552,
+            "legacy_language_pid": 36,
+            "text": "عام لائبريري",
+            "auto_translated": "عام لائبريري"
+        },
+        "af": {
+            "legacy_caption_pid": 33553,
+            "legacy_language_pid": 37,
+            "text": "algemene biblioteek",
+            "auto_translated": "algemene biblioteek"
+        },
+        "sw": {
+            "legacy_caption_pid": 33554,
+            "legacy_language_pid": 38,
+            "text": "maktaba ya kawaida",
+            "auto_translated": "maktaba ya kawaida"
+        },
+        "lo": {
+            "legacy_caption_pid": 33555,
+            "legacy_language_pid": 39,
+            "text": "ຫ້ອງສະຫມຸດທົ່ວໄປ",
+            "auto_translated": "ຫ້ອງສະຫມຸດທົ່ວໄປ"
+        },
+        "nl": {
+            "legacy_caption_pid": 33556,
+            "legacy_language_pid": 40,
+            "text": "gemeenschappelijke bibliotheek",
+            "auto_translated": "gemeenschappelijke bibliotheek"
+        },
+        "tl": {
+            "legacy_caption_pid": 33557,
+            "legacy_language_pid": 41,
+            "text": "Mga karaniwang library",
+            "auto_translated": "Mga karaniwang library"
+        },
+        "ne": {
+            "legacy_caption_pid": 33558,
+            "legacy_language_pid": 42,
+            "text": "साधारण पुस्तकालय",
+            "auto_translated": "साधारण पुस्तकालय"
+        },
+        "hu": {
+            "legacy_caption_pid": 33559,
+            "legacy_language_pid": 43,
+            "text": "közös könyvtár",
+            "auto_translated": "közös könyvtár"
+        },
+        "cs": {
+            "legacy_caption_pid": 33560,
+            "legacy_language_pid": 44,
+            "text": "společná knihovna",
+            "auto_translated": "společná knihovna"
+        },
+        "el": {
+            "legacy_caption_pid": 33561,
+            "legacy_language_pid": 45,
+            "text": "κοινή βιβλιοθήκη",
+            "auto_translated": "κοινή βιβλιοθήκη"
+        },
+        "sv": {
+            "legacy_caption_pid": 33562,
+            "legacy_language_pid": 46,
+            "text": "gemensamt bibliotek",
+            "auto_translated": "gemensamt bibliotek"
+        },
+        "kk": {
+            "legacy_caption_pid": 33563,
+            "legacy_language_pid": 47,
+            "text": "Жалпы кітапхана",
+            "auto_translated": "Жалпы кітапхана"
+        },
+        "fi": {
+            "legacy_caption_pid": 33564,
+            "legacy_language_pid": 48,
+            "text": "yhteinen kirjasto",
+            "auto_translated": "yhteinen kirjasto"
+        },
+        "da": {
+            "legacy_caption_pid": 33565,
+            "legacy_language_pid": 49,
+            "text": "fælles bibliotek",
+            "auto_translated": "fælles bibliotek"
+        },
+        "he": {
+            "legacy_caption_pid": 33566,
+            "legacy_language_pid": 50,
+            "text": "ספריית Common",
+            "auto_translated": "ספריית Common"
+        },
+        "no": {
+            "legacy_caption_pid": 33567,
+            "legacy_language_pid": 51,
+            "text": "felles bibliotek",
+            "auto_translated": "felles bibliotek"
+        }
+    }
+}

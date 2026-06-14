@@ -1,0 +1,27 @@
+{
+    "resource_key": "ACTION_DELETED_TEST_PATTERN",
+    "legacy_resource_pid": 410,
+    "base_group_key": "grp-001-developers-matsuesoft-co-jp",
+    "additional_group_keys": [],
+    "key_for_update": "0",
+    "sort_group": "ACTION TEST_PATTERN",
+    "key_name": "ACTION_DELETED_TEST_PATTERN",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": true,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 4146,
+            "legacy_language_pid": 1,
+            "text": "テストパターン削除完了",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 4147,
+            "legacy_language_pid": 2,
+            "text": "Deleted Test Pattern",
+            "auto_translated": ""
+        }
+    }
+}

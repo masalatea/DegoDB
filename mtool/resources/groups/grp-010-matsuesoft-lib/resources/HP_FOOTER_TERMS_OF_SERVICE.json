@@ -1,0 +1,69 @@
+{
+    "resource_key": "HP_FOOTER_TERMS_OF_SERVICE",
+    "legacy_resource_pid": 826,
+    "base_group_key": "grp-010-matsuesoft-lib",
+    "additional_group_keys": [],
+    "key_for_update": "vz2Yv3dBxsIC2uC31fSy95yPsFCWmdsuuBI5Zp6FlJH5mNW1PqJcsr0yLSnrz8RrUWhx228j4jNVEJ69GlUNPEFIwuyVAdIX5Pbau6qTnvJ2w7EpsrS4hutBlTYnh5Hr",
+    "sort_group": "HP FOOTER",
+    "key_name": "HP_FOOTER_TERMS_OF_SERVICE",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": true,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 4636,
+            "legacy_language_pid": 1,
+            "text": "利用規約",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 4637,
+            "legacy_language_pid": 2,
+            "text": "Terms of Service",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 14306,
+            "legacy_language_pid": 3,
+            "text": "",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 14307,
+            "legacy_language_pid": 4,
+            "text": "",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 14308,
+            "legacy_language_pid": 5,
+            "text": "Términos de servicio",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 14309,
+            "legacy_language_pid": 6,
+            "text": "Termos de serviço",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 14310,
+            "legacy_language_pid": 7,
+            "text": "",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 17163,
+            "legacy_language_pid": 8,
+            "text": "Conditions d'utilisation",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 17164,
+            "legacy_language_pid": 9,
+            "text": "सेवा की शर्तें",
+            "auto_translated": ""
+        }
+    }
+}

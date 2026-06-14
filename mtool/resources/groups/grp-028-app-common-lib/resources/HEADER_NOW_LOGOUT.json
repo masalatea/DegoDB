@@ -1,0 +1,321 @@
+{
+    "resource_key": "HEADER_NOW_LOGOUT",
+    "legacy_resource_pid": 916,
+    "base_group_key": "grp-028-app-common-lib",
+    "additional_group_keys": [],
+    "key_for_update": "kqQuiWDAOLmL4uBLr2HsvCeMhZS5Z6rUPuXB33mh06Cwp4hG8prq6bQoyE6EktRvNwutz2KCCgzeVg6LUmCJBaJtkz7ctAtfGF47EOGb4hb8touECN3LU83vdsNN5k8P",
+    "sort_group": "HEADER",
+    "key_name": "HEADER_NOW_LOGOUT",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": false,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 865,
+            "legacy_language_pid": 1,
+            "text": "ログアウト処理中...",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 866,
+            "legacy_language_pid": 2,
+            "text": "Logout Progress...",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 6430,
+            "legacy_language_pid": 3,
+            "text": "在注销过程中...",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 6431,
+            "legacy_language_pid": 4,
+            "text": "로그아웃 처리 중 ...",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 10154,
+            "legacy_language_pid": 5,
+            "text": "Cerrando sesión...",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 10155,
+            "legacy_language_pid": 6,
+            "text": "Sair em andamento...",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 10156,
+            "legacy_language_pid": 7,
+            "text": "在註銷過程中...",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 16173,
+            "legacy_language_pid": 8,
+            "text": "Déconnexion de la progression ...",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 16174,
+            "legacy_language_pid": 9,
+            "text": "लॉगआउट प्रगति...",
+            "auto_translated": ""
+        },
+        "ar": {
+            "legacy_caption_pid": 28638,
+            "legacy_language_pid": 10,
+            "text": "أثناء عملية تسجيل الخروج ...",
+            "auto_translated": "أثناء عملية تسجيل الخروج ..."
+        },
+        "fa": {
+            "legacy_caption_pid": 28639,
+            "legacy_language_pid": 11,
+            "text": "در طول فرایند خروج از سیستم ...",
+            "auto_translated": "در طول فرایند خروج از سیستم ..."
+        },
+        "de": {
+            "legacy_caption_pid": 28640,
+            "legacy_language_pid": 12,
+            "text": "Während der Abmeldevorgang ...",
+            "auto_translated": "Während der Abmeldevorgang ..."
+        },
+        "ru": {
+            "legacy_caption_pid": 28641,
+            "legacy_language_pid": 13,
+            "text": "В процессе выхода из системы ...",
+            "auto_translated": "В процессе выхода из системы ..."
+        },
+        "ms": {
+            "legacy_caption_pid": 28642,
+            "legacy_language_pid": 14,
+            "text": "Semasa proses logout ...",
+            "auto_translated": "Semasa proses logout ..."
+        },
+        "ta": {
+            "legacy_caption_pid": 28643,
+            "legacy_language_pid": 15,
+            "text": "வெளியேறு பணியின் போது ...",
+            "auto_translated": "வெளியேறு பணியின் போது ..."
+        },
+        "it": {
+            "legacy_caption_pid": 28644,
+            "legacy_language_pid": 16,
+            "text": "Durante il processo di disconnessione ...",
+            "auto_translated": "Durante il processo di disconnessione ..."
+        },
+        "bn": {
+            "legacy_caption_pid": 28645,
+            "legacy_language_pid": 17,
+            "text": "লগ-আউট প্রক্রিয়া চলাকালীন ...",
+            "auto_translated": "লগ-আউট প্রক্রিয়া চলাকালীন ..."
+        },
+        "tr": {
+            "legacy_caption_pid": 28646,
+            "legacy_language_pid": 18,
+            "text": "çıkış sürecinde ...",
+            "auto_translated": "çıkış sürecinde ..."
+        },
+        "vi": {
+            "legacy_caption_pid": 28647,
+            "legacy_language_pid": 19,
+            "text": "Trong quá trình đăng xuất ...",
+            "auto_translated": "Trong quá trình đăng xuất ..."
+        },
+        "pl": {
+            "legacy_caption_pid": 28648,
+            "legacy_language_pid": 20,
+            "text": "Podczas procesu wylogowania ...",
+            "auto_translated": "Podczas procesu wylogowania ..."
+        },
+        "jv": {
+            "legacy_caption_pid": 28649,
+            "legacy_language_pid": 21,
+            "text": "Sak proses logout ...",
+            "auto_translated": "Sak proses logout ..."
+        },
+        "pa": {
+            "legacy_caption_pid": 28650,
+            "legacy_language_pid": 22,
+            "text": "ਲਾਗਆਉਟ ਦੀ ਪ੍ਰਕਿਰਿਆ ਦੌਰਾਨ ...",
+            "auto_translated": "ਲਾਗਆਉਟ ਦੀ ਪ੍ਰਕਿਰਿਆ ਦੌਰਾਨ ..."
+        },
+        "th": {
+            "legacy_caption_pid": 28651,
+            "legacy_language_pid": 23,
+            "text": "ในระหว่างกระบวนการออกจากระบบ ...",
+            "auto_translated": "ในระหว่างกระบวนการออกจากระบบ ..."
+        },
+        "te": {
+            "legacy_caption_pid": 34212,
+            "legacy_language_pid": 24,
+            "text": "లాగ్అవుట్ విధానం సమయంలో ...",
+            "auto_translated": "లాగ్అవుట్ విధానం సమయంలో ..."
+        },
+        "mr": {
+            "legacy_caption_pid": 34213,
+            "legacy_language_pid": 25,
+            "text": "बाहेर पडणे प्रक्रिया दरम्यान ...",
+            "auto_translated": "बाहेर पडणे प्रक्रिया दरम्यान ..."
+        },
+        "ur": {
+            "legacy_caption_pid": 34214,
+            "legacy_language_pid": 26,
+            "text": "لاگ آؤٹ کے عمل کے دوران ...",
+            "auto_translated": "لاگ آؤٹ کے عمل کے دوران ..."
+        },
+        "gu": {
+            "legacy_caption_pid": 34215,
+            "legacy_language_pid": 27,
+            "text": "લૉગઆઉટ પ્રક્રિયા દરમિયાન ...",
+            "auto_translated": "લૉગઆઉટ પ્રક્રિયા દરમિયાન ..."
+        },
+        "uk": {
+            "legacy_caption_pid": 34216,
+            "legacy_language_pid": 28,
+            "text": "У процесі виходу з системи ...",
+            "auto_translated": "У процесі виходу з системи ..."
+        },
+        "ml": {
+            "legacy_caption_pid": 34217,
+            "legacy_language_pid": 29,
+            "text": "ലോഗൌട്ട് പ്രോസസ്സ് സമയത്ത് ...",
+            "auto_translated": "ലോഗൌട്ട് പ്രോസസ്സ് സമയത്ത് ..."
+        },
+        "kn": {
+            "legacy_caption_pid": 34218,
+            "legacy_language_pid": 30,
+            "text": "ಲಾಗ್ಔಟ್ ಪ್ರಕ್ರಿಯೆಯಲ್ಲಿ ...",
+            "auto_translated": "ಲಾಗ್ಔಟ್ ಪ್ರಕ್ರಿಯೆಯಲ್ಲಿ ..."
+        },
+        "su": {
+            "legacy_caption_pid": 34219,
+            "legacy_language_pid": 31,
+            "text": "Salila prosés logout ...",
+            "auto_translated": "Salila prosés logout ..."
+        },
+        "ku": {
+            "legacy_caption_pid": 34220,
+            "legacy_language_pid": 32,
+            "text": "Di pêvajoya derketinê de ...",
+            "auto_translated": "Di pêvajoya derketinê de ..."
+        },
+        "ps": {
+            "legacy_caption_pid": 34221,
+            "legacy_language_pid": 33,
+            "text": "د logout د پروسې په ترڅ کې ...",
+            "auto_translated": "د logout د پروسې په ترڅ کې ..."
+        },
+        "ro": {
+            "legacy_caption_pid": 34222,
+            "legacy_language_pid": 34,
+            "text": "În timpul procesului ... logout",
+            "auto_translated": "În timpul procesului ... logout"
+        },
+        "id": {
+            "legacy_caption_pid": 34223,
+            "legacy_language_pid": 35,
+            "text": "Selama proses logout ...",
+            "auto_translated": "Selama proses logout ..."
+        },
+        "sd": {
+            "legacy_caption_pid": 34224,
+            "legacy_language_pid": 36,
+            "text": "جي logout عمل دوران ...",
+            "auto_translated": "جي logout عمل دوران ..."
+        },
+        "af": {
+            "legacy_caption_pid": 34225,
+            "legacy_language_pid": 37,
+            "text": "Gedurende die logout proses ...",
+            "auto_translated": "Gedurende die logout proses ..."
+        },
+        "sw": {
+            "legacy_caption_pid": 34226,
+            "legacy_language_pid": 38,
+            "text": "Wakati wa mchakato wa logout ...",
+            "auto_translated": "Wakati wa mchakato wa logout ..."
+        },
+        "lo": {
+            "legacy_caption_pid": 34227,
+            "legacy_language_pid": 39,
+            "text": "ໃນລະຫວ່າງການຂະບວນການລັອກເອົ້າ ...",
+            "auto_translated": "ໃນລະຫວ່າງການຂະບວນການລັອກເອົ້າ ..."
+        },
+        "nl": {
+            "legacy_caption_pid": 34228,
+            "legacy_language_pid": 40,
+            "text": "Tijdens het logout proces ...",
+            "auto_translated": "Tijdens het logout proces ..."
+        },
+        "tl": {
+            "legacy_caption_pid": 34229,
+            "legacy_language_pid": 41,
+            "text": "Sa panahon ng proseso logout ...",
+            "auto_translated": "Sa panahon ng proseso logout ..."
+        },
+        "ne": {
+            "legacy_caption_pid": 34230,
+            "legacy_language_pid": 42,
+            "text": "को लगआउट प्रक्रिया चलिरहेको बेला ...",
+            "auto_translated": "को लगआउट प्रक्रिया चलिरहेको बेला ..."
+        },
+        "hu": {
+            "legacy_caption_pid": 34231,
+            "legacy_language_pid": 43,
+            "text": "A logout folyamat ...",
+            "auto_translated": "A logout folyamat ..."
+        },
+        "cs": {
+            "legacy_caption_pid": 34232,
+            "legacy_language_pid": 44,
+            "text": "Během procesu odhlášení ...",
+            "auto_translated": "Během procesu odhlášení ..."
+        },
+        "el": {
+            "legacy_caption_pid": 34233,
+            "legacy_language_pid": 45,
+            "text": "Κατά τη διαδικασία αποσύνδεσης ...",
+            "auto_translated": "Κατά τη διαδικασία αποσύνδεσης ..."
+        },
+        "sv": {
+            "legacy_caption_pid": 34234,
+            "legacy_language_pid": 46,
+            "text": "Under utloggning processen ...",
+            "auto_translated": "Under utloggning processen ..."
+        },
+        "kk": {
+            "legacy_caption_pid": 34235,
+            "legacy_language_pid": 47,
+            "text": "шығу процесінің барысында ...",
+            "auto_translated": "шығу процесінің барысында ..."
+        },
+        "fi": {
+            "legacy_caption_pid": 34236,
+            "legacy_language_pid": 48,
+            "text": "Aikana uloskirjautumisprosessin ...",
+            "auto_translated": "Aikana uloskirjautumisprosessin ..."
+        },
+        "da": {
+            "legacy_caption_pid": 34237,
+            "legacy_language_pid": 49,
+            "text": "Under logout proces ...",
+            "auto_translated": "Under logout proces ..."
+        },
+        "he": {
+            "legacy_caption_pid": 34238,
+            "legacy_language_pid": 50,
+            "text": "במהלך תהליך ההתנתקות ...",
+            "auto_translated": "במהלך תהליך ההתנתקות ..."
+        },
+        "no": {
+            "legacy_caption_pid": 34239,
+            "legacy_language_pid": 51,
+            "text": "Under utlogging prosessen ...",
+            "auto_translated": "Under utlogging prosessen ..."
+        }
+    }
+}

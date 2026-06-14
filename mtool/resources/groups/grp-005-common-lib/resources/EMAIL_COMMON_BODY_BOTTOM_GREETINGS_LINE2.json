@@ -1,0 +1,321 @@
+{
+    "resource_key": "EMAIL_COMMON_BODY_BOTTOM_GREETINGS_LINE2",
+    "legacy_resource_pid": 2570,
+    "base_group_key": "grp-005-common-lib",
+    "additional_group_keys": [],
+    "key_for_update": "EQdg3ER1zOUvJHSwCmmhJjZgJUTtG2xUaj6ntk0AXjo2Otdp0r1SR2mV8mqs2A8C94DeRFv7VXF0otAb5u4J9za30u4mKELQwEg8Xe9O2xkJgx4vp6osS6xkr362xjCV",
+    "sort_group": "EMAIL COMMON",
+    "key_name": "EMAIL_COMMON_BODY_BOTTOM_GREETINGS_LINE2",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": false,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 19367,
+            "legacy_language_pid": 1,
+            "text": "どうぞよろしくお願いいたします。",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 19368,
+            "legacy_language_pid": 2,
+            "text": "Thank you for choosing us.",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 19369,
+            "legacy_language_pid": 3,
+            "text": "感谢您选择我们",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 19370,
+            "legacy_language_pid": 4,
+            "text": "우리를 선택해 주셔서 감사합니다.",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 19371,
+            "legacy_language_pid": 5,
+            "text": "Gracias por elegirnos.",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 19372,
+            "legacy_language_pid": 6,
+            "text": "Obrigado por nos escolher.",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 19373,
+            "legacy_language_pid": 7,
+            "text": "感謝您選擇我們",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 19374,
+            "legacy_language_pid": 8,
+            "text": "Merci de nous avoir choisi.",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 19375,
+            "legacy_language_pid": 9,
+            "text": "हमें चुनने के लिए धन्यवाद।",
+            "auto_translated": ""
+        },
+        "ar": {
+            "legacy_caption_pid": 29436,
+            "legacy_language_pid": 10,
+            "text": "شكرا جزيلا لك.",
+            "auto_translated": "شكرا جزيلا لك."
+        },
+        "fa": {
+            "legacy_caption_pid": 29437,
+            "legacy_language_pid": 11,
+            "text": "بسیار متشکرم.",
+            "auto_translated": "بسیار متشکرم."
+        },
+        "de": {
+            "legacy_caption_pid": 29438,
+            "legacy_language_pid": 12,
+            "text": "Vielen Dank.",
+            "auto_translated": "Vielen Dank."
+        },
+        "ru": {
+            "legacy_caption_pid": 29439,
+            "legacy_language_pid": 13,
+            "text": "Большое спасибо.",
+            "auto_translated": "Большое спасибо."
+        },
+        "ms": {
+            "legacy_caption_pid": 29440,
+            "legacy_language_pid": 14,
+            "text": "Terima kasih banyak.",
+            "auto_translated": "Terima kasih banyak."
+        },
+        "ta": {
+            "legacy_caption_pid": 29441,
+            "legacy_language_pid": 15,
+            "text": "மிகவும் நன்றி.",
+            "auto_translated": "மிகவும் நன்றி."
+        },
+        "it": {
+            "legacy_caption_pid": 29442,
+            "legacy_language_pid": 16,
+            "text": "Grazie mille.",
+            "auto_translated": "Grazie mille."
+        },
+        "bn": {
+            "legacy_caption_pid": 29443,
+            "legacy_language_pid": 17,
+            "text": "আপনাকে অনেক ধন্যবাদ।",
+            "auto_translated": "আপনাকে অনেক ধন্যবাদ।"
+        },
+        "tr": {
+            "legacy_caption_pid": 29444,
+            "legacy_language_pid": 18,
+            "text": "Çok teşekkür ederim.",
+            "auto_translated": "Çok teşekkür ederim."
+        },
+        "vi": {
+            "legacy_caption_pid": 29445,
+            "legacy_language_pid": 19,
+            "text": "Cám ơn rất nhiều.",
+            "auto_translated": "Cám ơn rất nhiều."
+        },
+        "pl": {
+            "legacy_caption_pid": 29446,
+            "legacy_language_pid": 20,
+            "text": "Dziękuję bardzo.",
+            "auto_translated": "Dziękuję bardzo."
+        },
+        "jv": {
+            "legacy_caption_pid": 29447,
+            "legacy_language_pid": 21,
+            "text": "Matur nuwun kanthi sanget.",
+            "auto_translated": "Matur nuwun kanthi sanget."
+        },
+        "pa": {
+            "legacy_caption_pid": 29448,
+            "legacy_language_pid": 22,
+            "text": "ਤੁਹਾਡਾ ਬਹੁਤ-ਬਹੁਤ ਧੰਨਵਾਦ.",
+            "auto_translated": "ਤੁਹਾਡਾ ਬਹੁਤ-ਬਹੁਤ ਧੰਨਵਾਦ."
+        },
+        "th": {
+            "legacy_caption_pid": 29449,
+            "legacy_language_pid": 23,
+            "text": "ขอบคุณมาก",
+            "auto_translated": "ขอบคุณมาก"
+        },
+        "te": {
+            "legacy_caption_pid": 37544,
+            "legacy_language_pid": 24,
+            "text": "చాలా ధన్యవాదాలు.",
+            "auto_translated": "చాలా ధన్యవాదాలు."
+        },
+        "mr": {
+            "legacy_caption_pid": 37545,
+            "legacy_language_pid": 25,
+            "text": "खूप खूप धन्यवाद.",
+            "auto_translated": "खूप खूप धन्यवाद."
+        },
+        "ur": {
+            "legacy_caption_pid": 37546,
+            "legacy_language_pid": 26,
+            "text": "آپ کا بہت بہت شکریہ.",
+            "auto_translated": "آپ کا بہت بہت شکریہ."
+        },
+        "gu": {
+            "legacy_caption_pid": 37547,
+            "legacy_language_pid": 27,
+            "text": "તમે ખૂબ ખૂબ આભાર.",
+            "auto_translated": "તમે ખૂબ ખૂબ આભાર."
+        },
+        "uk": {
+            "legacy_caption_pid": 37548,
+            "legacy_language_pid": 28,
+            "text": "Велике спасибі.",
+            "auto_translated": "Велике спасибі."
+        },
+        "ml": {
+            "legacy_caption_pid": 37549,
+            "legacy_language_pid": 29,
+            "text": "വളരെ വളരെ നന്ദി.",
+            "auto_translated": "വളരെ വളരെ നന്ദി."
+        },
+        "kn": {
+            "legacy_caption_pid": 37550,
+            "legacy_language_pid": 30,
+            "text": "ತುಂಬಾ ಧನ್ಯವಾದಗಳು.",
+            "auto_translated": "ತುಂಬಾ ಧನ್ಯವಾದಗಳು."
+        },
+        "su": {
+            "legacy_caption_pid": 37551,
+            "legacy_language_pid": 31,
+            "text": "Hatur nuhun pisan.",
+            "auto_translated": "Hatur nuhun pisan."
+        },
+        "ku": {
+            "legacy_caption_pid": 37552,
+            "legacy_language_pid": 32,
+            "text": "Gelek spas dikim.",
+            "auto_translated": "Gelek spas dikim."
+        },
+        "ps": {
+            "legacy_caption_pid": 37553,
+            "legacy_language_pid": 33,
+            "text": "ډېره زیاته مننه.",
+            "auto_translated": "ډېره زیاته مننه."
+        },
+        "ro": {
+            "legacy_caption_pid": 37554,
+            "legacy_language_pid": 34,
+            "text": "Mulțumesc mult.",
+            "auto_translated": "Mulțumesc mult."
+        },
+        "id": {
+            "legacy_caption_pid": 37555,
+            "legacy_language_pid": 35,
+            "text": "Terima kasih banyak.",
+            "auto_translated": "Terima kasih banyak."
+        },
+        "sd": {
+            "legacy_caption_pid": 37556,
+            "legacy_language_pid": 36,
+            "text": "توهان جي وڏي مهرباني.",
+            "auto_translated": "توهان جي وڏي مهرباني."
+        },
+        "af": {
+            "legacy_caption_pid": 37557,
+            "legacy_language_pid": 37,
+            "text": "Thank you very much.",
+            "auto_translated": "Thank you very much."
+        },
+        "sw": {
+            "legacy_caption_pid": 37558,
+            "legacy_language_pid": 38,
+            "text": "Asante sana.",
+            "auto_translated": "Asante sana."
+        },
+        "lo": {
+            "legacy_caption_pid": 37559,
+            "legacy_language_pid": 39,
+            "text": "ຂອບໃຈຫຼາຍໆເດີ້.",
+            "auto_translated": "ຂອບໃຈຫຼາຍໆເດີ້."
+        },
+        "nl": {
+            "legacy_caption_pid": 37560,
+            "legacy_language_pid": 40,
+            "text": "Heel hartelijk bedankt.",
+            "auto_translated": "Heel hartelijk bedankt."
+        },
+        "tl": {
+            "legacy_caption_pid": 37561,
+            "legacy_language_pid": 41,
+            "text": "Maraming salamat sa inyo.",
+            "auto_translated": "Maraming salamat sa inyo."
+        },
+        "ne": {
+            "legacy_caption_pid": 37562,
+            "legacy_language_pid": 42,
+            "text": "तपाईं धेरै धन्यवाद।",
+            "auto_translated": "तपाईं धेरै धन्यवाद।"
+        },
+        "hu": {
+            "legacy_caption_pid": 37563,
+            "legacy_language_pid": 43,
+            "text": "Köszönöm szépen.",
+            "auto_translated": "Köszönöm szépen."
+        },
+        "cs": {
+            "legacy_caption_pid": 37564,
+            "legacy_language_pid": 44,
+            "text": "Děkuju mnohokrát.",
+            "auto_translated": "Děkuju mnohokrát."
+        },
+        "el": {
+            "legacy_caption_pid": 37565,
+            "legacy_language_pid": 45,
+            "text": "Σας ευχαριστώ πολύ.",
+            "auto_translated": "Σας ευχαριστώ πολύ."
+        },
+        "sv": {
+            "legacy_caption_pid": 37566,
+            "legacy_language_pid": 46,
+            "text": "Tack så mycket.",
+            "auto_translated": "Tack så mycket."
+        },
+        "kk": {
+            "legacy_caption_pid": 37567,
+            "legacy_language_pid": 47,
+            "text": "өте көп рахмет.",
+            "auto_translated": "өте көп рахмет."
+        },
+        "fi": {
+            "legacy_caption_pid": 37568,
+            "legacy_language_pid": 48,
+            "text": "Paljon kiitoksia.",
+            "auto_translated": "Paljon kiitoksia."
+        },
+        "da": {
+            "legacy_caption_pid": 37569,
+            "legacy_language_pid": 49,
+            "text": "Mange tak.",
+            "auto_translated": "Mange tak."
+        },
+        "he": {
+            "legacy_caption_pid": 37570,
+            "legacy_language_pid": 50,
+            "text": "תוֹדָה רַבָּה.",
+            "auto_translated": "תוֹדָה רַבָּה."
+        },
+        "no": {
+            "legacy_caption_pid": 37571,
+            "legacy_language_pid": 51,
+            "text": "Tusen takk.",
+            "auto_translated": "Tusen takk."
+        }
+    }
+}

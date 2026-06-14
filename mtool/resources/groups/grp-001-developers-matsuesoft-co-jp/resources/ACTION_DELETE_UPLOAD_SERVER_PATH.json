@@ -1,0 +1,27 @@
+{
+    "resource_key": "ACTION_DELETE_UPLOAD_SERVER_PATH",
+    "legacy_resource_pid": 161,
+    "base_group_key": "grp-001-developers-matsuesoft-co-jp",
+    "additional_group_keys": [],
+    "key_for_update": "0",
+    "sort_group": "ACTION UPLOAD_SERVER_PATH",
+    "key_name": "ACTION_DELETE_UPLOAD_SERVER_PATH",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": true,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 4206,
+            "legacy_language_pid": 1,
+            "text": "パス削除",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 4207,
+            "legacy_language_pid": 2,
+            "text": "Delete Path",
+            "auto_translated": ""
+        }
+    }
+}

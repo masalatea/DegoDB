@@ -1,0 +1,321 @@
+{
+    "resource_key": "COMMON_LIB_UPDATE_PROFILE_FAILED",
+    "legacy_resource_pid": 1610,
+    "base_group_key": "grp-010-matsuesoft-lib",
+    "additional_group_keys": [],
+    "key_for_update": "nqiwE4hIfDEwT4bM9MWsnJL9Nc6X6BjgUwBOhVuW0ngnGBwkR5tuGlPRiEClMowgdZjwFBjf6RjG3OFn7eampKKKWPFhpaIszCTomMwMu2DA1Bj3C7rLEYNxIaalh6AO",
+    "sort_group": "PROFILE",
+    "key_name": "COMMON_LIB_UPDATE_PROFILE_FAILED",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": false,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 7222,
+            "legacy_language_pid": 1,
+            "text": "更新失敗しました。",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 7223,
+            "legacy_language_pid": 2,
+            "text": "Update failed.",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 7224,
+            "legacy_language_pid": 3,
+            "text": "更新失败。",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 7225,
+            "legacy_language_pid": 4,
+            "text": "업데이트가 실패했습니다.",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 11150,
+            "legacy_language_pid": 5,
+            "text": "Error en la actualización. ",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 11151,
+            "legacy_language_pid": 6,
+            "text": "Atualização falhou. ",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 11152,
+            "legacy_language_pid": 7,
+            "text": "更新失敗。",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 17277,
+            "legacy_language_pid": 8,
+            "text": "Mise à jour a échoué.",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 17278,
+            "legacy_language_pid": 9,
+            "text": "अपडेट विफल हुआ।",
+            "auto_translated": ""
+        },
+        "ar": {
+            "legacy_caption_pid": 32938,
+            "legacy_language_pid": 10,
+            "text": "تم تحديث فشلت.",
+            "auto_translated": "تم تحديث فشلت."
+        },
+        "fa": {
+            "legacy_caption_pid": 32939,
+            "legacy_language_pid": 11,
+            "text": "از آن شده است به روز شده شکست خورده است.",
+            "auto_translated": "از آن شده است به روز شده شکست خورده است."
+        },
+        "de": {
+            "legacy_caption_pid": 32940,
+            "legacy_language_pid": 12,
+            "text": "Es wurde aktualisiert, ist fehlgeschlagen.",
+            "auto_translated": "Es wurde aktualisiert, ist fehlgeschlagen."
+        },
+        "ru": {
+            "legacy_caption_pid": 32941,
+            "legacy_language_pid": 13,
+            "text": "Он был обновлен не удалось.",
+            "auto_translated": "Он был обновлен не удалось."
+        },
+        "ms": {
+            "legacy_caption_pid": 32942,
+            "legacy_language_pid": 14,
+            "text": "Ia telah dikemaskini gagal.",
+            "auto_translated": "Ia telah dikemaskini gagal."
+        },
+        "ta": {
+            "legacy_caption_pid": 32943,
+            "legacy_language_pid": 15,
+            "text": "அது தோல்வி புதுப்பிக்கப்பட்டுள்ளது.",
+            "auto_translated": "அது தோல்வி புதுப்பிக்கப்பட்டுள்ளது."
+        },
+        "it": {
+            "legacy_caption_pid": 32944,
+            "legacy_language_pid": 16,
+            "text": "E 'stato aggiornato fallito.",
+            "auto_translated": "E 'stato aggiornato fallito."
+        },
+        "bn": {
+            "legacy_caption_pid": 32945,
+            "legacy_language_pid": 17,
+            "text": "এটা তোলে ব্যর্থ আপডেট করা হয়েছে।",
+            "auto_translated": "এটা তোলে ব্যর্থ আপডেট করা হয়েছে।"
+        },
+        "tr": {
+            "legacy_caption_pid": 32946,
+            "legacy_language_pid": 18,
+            "text": "Başarısız güncelleme edilmiştir.",
+            "auto_translated": "Başarısız güncelleme edilmiştir."
+        },
+        "vi": {
+            "legacy_caption_pid": 32947,
+            "legacy_language_pid": 19,
+            "text": "Nó đã được cập nhật thất bại.",
+            "auto_translated": "Nó đã được cập nhật thất bại."
+        },
+        "pl": {
+            "legacy_caption_pid": 32948,
+            "legacy_language_pid": 20,
+            "text": "To zostało zaktualizowane powiodło się.",
+            "auto_translated": "To zostało zaktualizowane powiodło się."
+        },
+        "jv": {
+            "legacy_caption_pid": 32949,
+            "legacy_language_pid": 21,
+            "text": "Iku wis dianyari gagal.",
+            "auto_translated": "Iku wis dianyari gagal."
+        },
+        "pa": {
+            "legacy_caption_pid": 32950,
+            "legacy_language_pid": 22,
+            "text": "ਇਹ ਅਸਫਲ ਹੋ ਅੱਪਡੇਟ ਕੀਤਾ ਗਿਆ ਹੈ.",
+            "auto_translated": "ਇਹ ਅਸਫਲ ਹੋ ਅੱਪਡੇਟ ਕੀਤਾ ਗਿਆ ਹੈ."
+        },
+        "th": {
+            "legacy_caption_pid": 32951,
+            "legacy_language_pid": 23,
+            "text": "มันได้รับการปรับปรุงล้มเหลว",
+            "auto_translated": "มันได้รับการปรับปรุงล้มเหลว"
+        },
+        "te": {
+            "legacy_caption_pid": 39756,
+            "legacy_language_pid": 24,
+            "text": "దరిద్రంగా నవీకరించబడింది.",
+            "auto_translated": "దరిద్రంగా నవీకరించబడింది."
+        },
+        "mr": {
+            "legacy_caption_pid": 39757,
+            "legacy_language_pid": 25,
+            "text": "तो अयशस्वी झाले अद्यतनित केले गेले आहे.",
+            "auto_translated": "तो अयशस्वी झाले अद्यतनित केले गेले आहे."
+        },
+        "ur": {
+            "legacy_caption_pid": 39758,
+            "legacy_language_pid": 26,
+            "text": "یہ ناکام تازہ کاری ہوگئی ہے.",
+            "auto_translated": "یہ ناکام تازہ کاری ہوگئی ہے."
+        },
+        "gu": {
+            "legacy_caption_pid": 39759,
+            "legacy_language_pid": 27,
+            "text": "તે નિષ્ફળ અપડેટ કરવામાં આવ્યું.",
+            "auto_translated": "તે નિષ્ફળ અપડેટ કરવામાં આવ્યું."
+        },
+        "uk": {
+            "legacy_caption_pid": 39760,
+            "legacy_language_pid": 28,
+            "text": "Він був оновлений не вдалося.",
+            "auto_translated": "Він був оновлений не вдалося."
+        },
+        "ml": {
+            "legacy_caption_pid": 39761,
+            "legacy_language_pid": 29,
+            "text": "ഇത് പരാജയപ്പെട്ടു അപ്ഡേറ്റ് ചെയ്തു.",
+            "auto_translated": "ഇത് പരാജയപ്പെട്ടു അപ്ഡേറ്റ് ചെയ്തു."
+        },
+        "kn": {
+            "legacy_caption_pid": 39762,
+            "legacy_language_pid": 30,
+            "text": "ಇದು ನವೀಕರಿಸಿ ವಿಫಲವಾಗಿದೆ.",
+            "auto_translated": "ಇದು ನವೀಕರಿಸಿ ವಿಫಲವಾಗಿದೆ."
+        },
+        "su": {
+            "legacy_caption_pid": 39763,
+            "legacy_language_pid": 31,
+            "text": "Eta geus diropéa gagal.",
+            "auto_translated": "Eta geus diropéa gagal."
+        },
+        "ku": {
+            "legacy_caption_pid": 39764,
+            "legacy_language_pid": 32,
+            "text": "Ev hatiye dîtin ghurrînikarî bi ser neket.",
+            "auto_translated": "Ev hatiye dîtin ghurrînikarî bi ser neket."
+        },
+        "ps": {
+            "legacy_caption_pid": 39765,
+            "legacy_language_pid": 33,
+            "text": "دا په دې کې پاتې شوي دي Updated.",
+            "auto_translated": "دا په دې کې پاتې شوي دي Updated."
+        },
+        "ro": {
+            "legacy_caption_pid": 39766,
+            "legacy_language_pid": 34,
+            "text": "Acesta a fost actualizat nu a reușit.",
+            "auto_translated": "Acesta a fost actualizat nu a reușit."
+        },
+        "id": {
+            "legacy_caption_pid": 39767,
+            "legacy_language_pid": 35,
+            "text": "Telah diperbarui gagal.",
+            "auto_translated": "Telah diperbarui gagal."
+        },
+        "sd": {
+            "legacy_caption_pid": 39768,
+            "legacy_language_pid": 36,
+            "text": "ان کي ناڪام تبديل ٿي ويو آهي.",
+            "auto_translated": "ان کي ناڪام تبديل ٿي ويو آهي."
+        },
+        "af": {
+            "legacy_caption_pid": 39769,
+            "legacy_language_pid": 37,
+            "text": "Dit is opgedateer misluk.",
+            "auto_translated": "Dit is opgedateer misluk."
+        },
+        "sw": {
+            "legacy_caption_pid": 39770,
+            "legacy_language_pid": 38,
+            "text": "Imekuwa sasisho alishindwa.",
+            "auto_translated": "Imekuwa sasisho alishindwa."
+        },
+        "lo": {
+            "legacy_caption_pid": 39771,
+            "legacy_language_pid": 39,
+            "text": "ມັນໄດ້ຖືກປັບປຸງສົບຜົນສໍາເລັດ.",
+            "auto_translated": "ມັນໄດ້ຖືກປັບປຸງສົບຜົນສໍາເລັດ."
+        },
+        "nl": {
+            "legacy_caption_pid": 39772,
+            "legacy_language_pid": 40,
+            "text": "Het is bijgewerkt mislukt.",
+            "auto_translated": "Het is bijgewerkt mislukt."
+        },
+        "tl": {
+            "legacy_caption_pid": 39773,
+            "legacy_language_pid": 41,
+            "text": "Ito ay na-update nabigo.",
+            "auto_translated": "Ito ay na-update nabigo."
+        },
+        "ne": {
+            "legacy_caption_pid": 39774,
+            "legacy_language_pid": 42,
+            "text": "यसलाई असफल अद्यावधिक गरिएको छ।",
+            "auto_translated": "यसलाई असफल अद्यावधिक गरिएको छ।"
+        },
+        "hu": {
+            "legacy_caption_pid": 39775,
+            "legacy_language_pid": 43,
+            "text": "Ez frissült sikerült.",
+            "auto_translated": "Ez frissült sikerült."
+        },
+        "cs": {
+            "legacy_caption_pid": 39776,
+            "legacy_language_pid": 44,
+            "text": "Bylo aktualizováno selhal.",
+            "auto_translated": "Bylo aktualizováno selhal."
+        },
+        "el": {
+            "legacy_caption_pid": 39777,
+            "legacy_language_pid": 45,
+            "text": "Έχει ενημερωθεί απέτυχε.",
+            "auto_translated": "Έχει ενημερωθεί απέτυχε."
+        },
+        "sv": {
+            "legacy_caption_pid": 39778,
+            "legacy_language_pid": 46,
+            "text": "Det har uppdaterats misslyckats.",
+            "auto_translated": "Det har uppdaterats misslyckats."
+        },
+        "kk": {
+            "legacy_caption_pid": 39779,
+            "legacy_language_pid": 47,
+            "text": "Бұл сәтсіз жаңартылды.",
+            "auto_translated": "Бұл сәтсіз жаңартылды."
+        },
+        "fi": {
+            "legacy_caption_pid": 39780,
+            "legacy_language_pid": 48,
+            "text": "Se on päivitetty epäonnistunut.",
+            "auto_translated": "Se on päivitetty epäonnistunut."
+        },
+        "da": {
+            "legacy_caption_pid": 39781,
+            "legacy_language_pid": 49,
+            "text": "Det er blevet opdateret mislykkedes.",
+            "auto_translated": "Det er blevet opdateret mislykkedes."
+        },
+        "he": {
+            "legacy_caption_pid": 39782,
+            "legacy_language_pid": 50,
+            "text": "זה עודכן נכשל.",
+            "auto_translated": "זה עודכן נכשל."
+        },
+        "no": {
+            "legacy_caption_pid": 39783,
+            "legacy_language_pid": 51,
+            "text": "Det har blitt oppdatert mislyktes.",
+            "auto_translated": "Det har blitt oppdatert mislyktes."
+        }
+    }
+}

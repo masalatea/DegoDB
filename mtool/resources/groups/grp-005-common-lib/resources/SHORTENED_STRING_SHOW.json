@@ -1,0 +1,321 @@
+{
+    "resource_key": "SHORTENED_STRING_SHOW",
+    "legacy_resource_pid": 571,
+    "base_group_key": "grp-005-common-lib",
+    "additional_group_keys": [],
+    "key_for_update": "gDAb93LVka8fCBnlntjLZnlBZ7bLbmkGV0R62eX1c7kvdwfezMHpDljHkq10fUoYl7tc2a8HB32OILxufpOcfsZTziQexKOeyBICPUSCrKM0O5SmxLM5s6oojFMvnw9W",
+    "sort_group": "",
+    "key_name": "SHORTENED_STRING_SHOW",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": false,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 1337,
+            "legacy_language_pid": 1,
+            "text": "[全て表示]",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 1338,
+            "legacy_language_pid": 2,
+            "text": "[Show]",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 6504,
+            "legacy_language_pid": 3,
+            "text": "[显示全部]",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 6505,
+            "legacy_language_pid": 4,
+            "text": "[모두 표시]",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 10354,
+            "legacy_language_pid": 5,
+            "text": "[Mostrar]",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 10355,
+            "legacy_language_pid": 6,
+            "text": "[Show]",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 10356,
+            "legacy_language_pid": 7,
+            "text": "[顯示全部]",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 16007,
+            "legacy_language_pid": 8,
+            "text": "[Montrer]",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 16008,
+            "legacy_language_pid": 9,
+            "text": "[दिखाना]",
+            "auto_translated": ""
+        },
+        "ar": {
+            "legacy_caption_pid": 29226,
+            "legacy_language_pid": 10,
+            "text": "[عرض الكل]",
+            "auto_translated": "[عرض الكل]"
+        },
+        "fa": {
+            "legacy_caption_pid": 29227,
+            "legacy_language_pid": 11,
+            "text": "[نمایش همه]",
+            "auto_translated": "[نمایش همه]"
+        },
+        "de": {
+            "legacy_caption_pid": 29228,
+            "legacy_language_pid": 12,
+            "text": "[Alle anzeigen]",
+            "auto_translated": "[Alle anzeigen]"
+        },
+        "ru": {
+            "legacy_caption_pid": 29229,
+            "legacy_language_pid": 13,
+            "text": "[Display All]",
+            "auto_translated": "[Display All]"
+        },
+        "ms": {
+            "legacy_caption_pid": 29230,
+            "legacy_language_pid": 14,
+            "text": "[Paparan Semua]",
+            "auto_translated": "[Paparan Semua]"
+        },
+        "ta": {
+            "legacy_caption_pid": 29231,
+            "legacy_language_pid": 15,
+            "text": "[அனைத்து காட்ட]",
+            "auto_translated": "[அனைத்து காட்ட]"
+        },
+        "it": {
+            "legacy_caption_pid": 29232,
+            "legacy_language_pid": 16,
+            "text": "[Visualizza tutto]",
+            "auto_translated": "[Visualizza tutto]"
+        },
+        "bn": {
+            "legacy_caption_pid": 29233,
+            "legacy_language_pid": 17,
+            "text": "[সকল DISPLAY]",
+            "auto_translated": "[সকল DISPLAY]"
+        },
+        "tr": {
+            "legacy_caption_pid": 29234,
+            "legacy_language_pid": 18,
+            "text": "[Tümünü Göster]",
+            "auto_translated": "[Tümünü Göster]"
+        },
+        "vi": {
+            "legacy_caption_pid": 29235,
+            "legacy_language_pid": 19,
+            "text": "[Hiển thị Tất cả]",
+            "auto_translated": "[Hiển thị Tất cả]"
+        },
+        "pl": {
+            "legacy_caption_pid": 29236,
+            "legacy_language_pid": 20,
+            "text": "[Pokaż wszystkie]",
+            "auto_translated": "[Pokaż wszystkie]"
+        },
+        "jv": {
+            "legacy_caption_pid": 29237,
+            "legacy_language_pid": 21,
+            "text": "[Tampilan Kabeh]",
+            "auto_translated": "[Tampilan Kabeh]"
+        },
+        "pa": {
+            "legacy_caption_pid": 29238,
+            "legacy_language_pid": 22,
+            "text": "[ਸਾਰੇ ਵੇਖਾਓ]",
+            "auto_translated": "[ਸਾਰੇ ਵੇਖਾਓ]"
+        },
+        "th": {
+            "legacy_caption_pid": 29239,
+            "legacy_language_pid": 23,
+            "text": "[แสดงทั้งหมด]",
+            "auto_translated": "[แสดงทั้งหมด]"
+        },
+        "te": {
+            "legacy_caption_pid": 35360,
+            "legacy_language_pid": 24,
+            "text": "[ప్రదర్శించు అన్ని]",
+            "auto_translated": "[ప్రదర్శించు అన్ని]"
+        },
+        "mr": {
+            "legacy_caption_pid": 35361,
+            "legacy_language_pid": 25,
+            "text": "[सर्व प्रदर्शित]",
+            "auto_translated": "[सर्व प्रदर्शित]"
+        },
+        "ur": {
+            "legacy_caption_pid": 35362,
+            "legacy_language_pid": 26,
+            "text": "[تمام دکھائیں]",
+            "auto_translated": "[تمام دکھائیں]"
+        },
+        "gu": {
+            "legacy_caption_pid": 35363,
+            "legacy_language_pid": 27,
+            "text": "[બધા DISPLAY]",
+            "auto_translated": "[બધા DISPLAY]"
+        },
+        "uk": {
+            "legacy_caption_pid": 35364,
+            "legacy_language_pid": 28,
+            "text": "[Display All]",
+            "auto_translated": "[Display All]"
+        },
+        "ml": {
+            "legacy_caption_pid": 35365,
+            "legacy_language_pid": 29,
+            "text": "[എല്ലാം പ്രദർശിപ്പിക്കുക]",
+            "auto_translated": "[എല്ലാം പ്രദർശിപ്പിക്കുക]"
+        },
+        "kn": {
+            "legacy_caption_pid": 35366,
+            "legacy_language_pid": 30,
+            "text": "[ಎಲ್ಲಾ ಪ್ರದರ್ಶಿಸಿ]",
+            "auto_translated": "[ಎಲ್ಲಾ ಪ್ರದರ್ಶಿಸಿ]"
+        },
+        "su": {
+            "legacy_caption_pid": 35367,
+            "legacy_language_pid": 31,
+            "text": "[Mintonkeun sadaya]",
+            "auto_translated": "[Mintonkeun sadaya]"
+        },
+        "ku": {
+            "legacy_caption_pid": 35368,
+            "legacy_language_pid": 32,
+            "text": "[Display Hemû]",
+            "auto_translated": "[Display Hemû]"
+        },
+        "ps": {
+            "legacy_caption_pid": 35369,
+            "legacy_language_pid": 33,
+            "text": "[وښایه ټول]",
+            "auto_translated": "[وښایه ټول]"
+        },
+        "ro": {
+            "legacy_caption_pid": 35370,
+            "legacy_language_pid": 34,
+            "text": "[Display All]",
+            "auto_translated": "[Display All]"
+        },
+        "id": {
+            "legacy_caption_pid": 35371,
+            "legacy_language_pid": 35,
+            "text": "[Tampilkan Semua]",
+            "auto_translated": "[Tampilkan Semua]"
+        },
+        "sd": {
+            "legacy_caption_pid": 35372,
+            "legacy_language_pid": 36,
+            "text": "[ظاهر سڀ]",
+            "auto_translated": "[ظاهر سڀ]"
+        },
+        "af": {
+            "legacy_caption_pid": 35373,
+            "legacy_language_pid": 37,
+            "text": "[All Wys]",
+            "auto_translated": "[All Wys]"
+        },
+        "sw": {
+            "legacy_caption_pid": 35374,
+            "legacy_language_pid": 38,
+            "text": "[Onyesha yote]",
+            "auto_translated": "[Onyesha yote]"
+        },
+        "lo": {
+            "legacy_caption_pid": 35375,
+            "legacy_language_pid": 39,
+            "text": "[ສະແດງທັງຫມົດ]",
+            "auto_translated": "[ສະແດງທັງຫມົດ]"
+        },
+        "nl": {
+            "legacy_caption_pid": 35376,
+            "legacy_language_pid": 40,
+            "text": "[All Display]",
+            "auto_translated": "[All Display]"
+        },
+        "tl": {
+            "legacy_caption_pid": 35377,
+            "legacy_language_pid": 41,
+            "text": "[Ipakita ang Lahat]",
+            "auto_translated": "[Ipakita ang Lahat]"
+        },
+        "ne": {
+            "legacy_caption_pid": 35378,
+            "legacy_language_pid": 42,
+            "text": "[सबै प्रदर्शन]",
+            "auto_translated": "[सबै प्रदर्शन]"
+        },
+        "hu": {
+            "legacy_caption_pid": 35379,
+            "legacy_language_pid": 43,
+            "text": "[Display All]",
+            "auto_translated": "[Display All]"
+        },
+        "cs": {
+            "legacy_caption_pid": 35380,
+            "legacy_language_pid": 44,
+            "text": "[Zobrazit vše]",
+            "auto_translated": "[Zobrazit vše]"
+        },
+        "el": {
+            "legacy_caption_pid": 35381,
+            "legacy_language_pid": 45,
+            "text": "[Display All]",
+            "auto_translated": "[Display All]"
+        },
+        "sv": {
+            "legacy_caption_pid": 35382,
+            "legacy_language_pid": 46,
+            "text": "[Visa alla]",
+            "auto_translated": "[Visa alla]"
+        },
+        "kk": {
+            "legacy_caption_pid": 35383,
+            "legacy_language_pid": 47,
+            "text": "[Display All]",
+            "auto_translated": "[Display All]"
+        },
+        "fi": {
+            "legacy_caption_pid": 35384,
+            "legacy_language_pid": 48,
+            "text": "[Näytä kaikki]",
+            "auto_translated": "[Näytä kaikki]"
+        },
+        "da": {
+            "legacy_caption_pid": 35385,
+            "legacy_language_pid": 49,
+            "text": "[Vis alle]",
+            "auto_translated": "[Vis alle]"
+        },
+        "he": {
+            "legacy_caption_pid": 35386,
+            "legacy_language_pid": 50,
+            "text": "[הצגת כל]",
+            "auto_translated": "[הצגת כל]"
+        },
+        "no": {
+            "legacy_caption_pid": 35387,
+            "legacy_language_pid": 51,
+            "text": "[Vis alle]",
+            "auto_translated": "[Vis alle]"
+        }
+    }
+}

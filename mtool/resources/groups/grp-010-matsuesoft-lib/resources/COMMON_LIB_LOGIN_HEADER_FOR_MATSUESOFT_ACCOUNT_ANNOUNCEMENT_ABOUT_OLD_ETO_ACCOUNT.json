@@ -1,0 +1,153 @@
+{
+    "resource_key": "COMMON_LIB_LOGIN_HEADER_FOR_MATSUESOFT_ACCOUNT_ANNOUNCEMENT_ABOUT_OLD_ETO_ACCOUNT",
+    "legacy_resource_pid": 1503,
+    "base_group_key": "grp-010-matsuesoft-lib",
+    "additional_group_keys": [],
+    "key_for_update": "ShuKi4bFw1LsZ53AGYnjrXn4GknFJ1STnw6EymGINX4VurDn5bJWkRemNffZ7xz7rZIt5SXHaybF8Q6iZhLljC5M6RtxDNqRxNxpgjYkk2oJh8xLsz9abf51Jsw6bNFT",
+    "sort_group": "LOGIN",
+    "key_name": "COMMON_LIB_LOGIN_HEADER_FOR_MATSUESOFT_ACCOUNT_ANNOUNCEMENT_ABOUT_OLD_ETO_ACCOUNT",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": false,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 6286,
+            "legacy_language_pid": 1,
+            "text": "(旧English Teacher Onlineのユーザ名(ID)と同一です)",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 6287,
+            "legacy_language_pid": 2,
+            "text": "",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 6288,
+            "legacy_language_pid": 3,
+            "text": "",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 6289,
+            "legacy_language_pid": 4,
+            "text": "",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 15981,
+            "legacy_language_pid": 5,
+            "text": "",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 15982,
+            "legacy_language_pid": 6,
+            "text": "",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 15983,
+            "legacy_language_pid": 7,
+            "text": "",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 32656,
+            "legacy_language_pid": 8,
+            "text": "",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 32657,
+            "legacy_language_pid": 9,
+            "text": "",
+            "auto_translated": ""
+        },
+        "ar": {
+            "legacy_caption_pid": 32658,
+            "legacy_language_pid": 10,
+            "text": "",
+            "auto_translated": ""
+        },
+        "fa": {
+            "legacy_caption_pid": 32659,
+            "legacy_language_pid": 11,
+            "text": "",
+            "auto_translated": ""
+        },
+        "de": {
+            "legacy_caption_pid": 32660,
+            "legacy_language_pid": 12,
+            "text": "",
+            "auto_translated": ""
+        },
+        "ru": {
+            "legacy_caption_pid": 32661,
+            "legacy_language_pid": 13,
+            "text": "",
+            "auto_translated": ""
+        },
+        "ms": {
+            "legacy_caption_pid": 32662,
+            "legacy_language_pid": 14,
+            "text": "",
+            "auto_translated": ""
+        },
+        "ta": {
+            "legacy_caption_pid": 32663,
+            "legacy_language_pid": 15,
+            "text": "",
+            "auto_translated": ""
+        },
+        "it": {
+            "legacy_caption_pid": 32664,
+            "legacy_language_pid": 16,
+            "text": "",
+            "auto_translated": ""
+        },
+        "bn": {
+            "legacy_caption_pid": 32665,
+            "legacy_language_pid": 17,
+            "text": "",
+            "auto_translated": ""
+        },
+        "tr": {
+            "legacy_caption_pid": 32666,
+            "legacy_language_pid": 18,
+            "text": "",
+            "auto_translated": ""
+        },
+        "vi": {
+            "legacy_caption_pid": 32667,
+            "legacy_language_pid": 19,
+            "text": "",
+            "auto_translated": ""
+        },
+        "pl": {
+            "legacy_caption_pid": 32668,
+            "legacy_language_pid": 20,
+            "text": "",
+            "auto_translated": ""
+        },
+        "jv": {
+            "legacy_caption_pid": 32669,
+            "legacy_language_pid": 21,
+            "text": "",
+            "auto_translated": ""
+        },
+        "pa": {
+            "legacy_caption_pid": 32670,
+            "legacy_language_pid": 22,
+            "text": "",
+            "auto_translated": ""
+        },
+        "th": {
+            "legacy_caption_pid": 32671,
+            "legacy_language_pid": 23,
+            "text": "",
+            "auto_translated": ""
+        }
+    }
+}

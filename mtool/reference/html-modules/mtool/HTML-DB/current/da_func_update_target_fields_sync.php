@@ -1,0 +1,62 @@
+<?php
+$ORIGINAL_FILE = __FILE__;
+$HTML_TEMPLATE_FILE = "HTMLTemplate_default.php";
+include_once("/srv/legacy/www/mtool_lib/template_include.php");
+
+// Start Template Content: MTOOL_VARIABLES
+$MTOOL_NO_GOOGLE_ANALYTICS = true;
+$MTOOL_JQUERY_PERIODICAL_UPDATER = true;
+$MTOOL_CHECK_WHITEBOARD_UPDATE = true;
+$MTOOL_BODY_FLUID_STYLE = true;
+$MTOOL_NEED_LOGIN_ONLY_BY_USER = true;
+// End Template Content
+
+// Start Template Content: MTOOL_HTTP_HEADER
+// End Template Content
+?>
+
+// Start Template Content: HTML_HEAD
+<title><?php print getres("TITLE_DA_FUNC_UPDATE_TARGET_FIELDS_SYNC"); ?> - <?php print getres("TITLE_TOP"); ?></title>
+// End Template Content
+
+// Start Template Content: HTML_HEAD_BOTTOM
+// End Template Content
+
+// Start Template Content: HTML_BODY_MAIN_JUMBOTRON
+// End Template Content
+
+// Start Template Content: HTML_BODY_MAIN_UPPER
+// End Template Content
+
+// Start Template Content: HTML_BODY_MAIN
+// End Template Content
+
+// Start Template Content: HTML_BODY_MAIN_SIMPLE
+<?php
+
+$PathCaption = "Synchronize Update Target Field(s)";
+$currentActionType = dafuncActionTypeEnum::$UPDATE;
+$FormTarget = $_SERVER['SCRIPT_NAME'];
+
+include_once("da_func_target_fields_for_insert_and_update_common_include.php");
+
+?>
+// End Template Content
+
+// Start Template Content: HTML_BODY_MAIN_LANG_JP
+// End Template Content
+
+// Start Template Content: HTML_BODY_MAIN_LANG_EN
+// End Template Content
+
+// Start Template Content: HTML_BODY_MAIN_LANG_ZH
+// End Template Content
+
+// Start Template Content: HTML_BODY_MAIN_LANG_KO
+// End Template Content
+
+// Start Template Content: HTML_BODY_MAIN_BOTTOM
+// End Template Content
+
+// Start Template Content: HTML_BOTTOM
+// End Template Content

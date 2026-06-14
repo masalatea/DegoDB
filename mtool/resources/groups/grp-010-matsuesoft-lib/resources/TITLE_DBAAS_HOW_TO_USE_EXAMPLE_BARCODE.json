@@ -1,0 +1,69 @@
+{
+    "resource_key": "TITLE_DBAAS_HOW_TO_USE_EXAMPLE_BARCODE",
+    "legacy_resource_pid": 602,
+    "base_group_key": "grp-010-matsuesoft-lib",
+    "additional_group_keys": [],
+    "key_for_update": "TjUlWh91rNTiGLfmM75vJy5wbJw3uxBLXW0KfSzXtzi7vAJrdhfIgxemUVf529MRWIw62MfPgHYNbNNH6nu93cg2Ld0hHIIg8KwEsB6hA2aKUsGbmFPmohPhyFOMhopI",
+    "sort_group": "TITLE",
+    "key_name": "TITLE_DBAAS_HOW_TO_USE_EXAMPLE_BARCODE",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": true,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 4662,
+            "legacy_language_pid": 1,
+            "text": "HTML(jQuery)でバーコード物品管理 (ブラウザでカメラを利用)",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 4663,
+            "legacy_language_pid": 2,
+            "text": "Manage Item by Barcode by using Camera on Web Browser by HTML(jQuery)",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 14371,
+            "legacy_language_pid": 3,
+            "text": "",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 14372,
+            "legacy_language_pid": 4,
+            "text": "",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 14373,
+            "legacy_language_pid": 5,
+            "text": "Administrar el elemento por código de barras utilizando la cámara en el navegador web mediante HTML (jQuery)",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 14374,
+            "legacy_language_pid": 6,
+            "text": "Gerencie o item por código de barras usando a câmera no navegador da Web por HTML (jQuery)",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 14375,
+            "legacy_language_pid": 7,
+            "text": "",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 17317,
+            "legacy_language_pid": 8,
+            "text": "Gérer l'élément par code à barres en utilisant Camera on Web Browser par HTML (jQuery)",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 17318,
+            "legacy_language_pid": 9,
+            "text": "HTML (jQuery) द्वारा वेब ब्राउज़र पर कैमरा का उपयोग करके बारकोड द्वारा आइटम प्रबंधित करें",
+            "auto_translated": ""
+        }
+    }
+}

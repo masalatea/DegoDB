@@ -1,0 +1,69 @@
+{
+    "resource_key": "TITLE_DBAAS_HOW_TO_USE_EXAMPLE_RUBY",
+    "legacy_resource_pid": 607,
+    "base_group_key": "grp-010-matsuesoft-lib",
+    "additional_group_keys": [],
+    "key_for_update": "Udn2UjzpuI11YdQgOUS95uyULSvCYyJRyeXDU7erLRQvWE5uAetsCPTgVsAFpsgh3CbuokVEYWEr3x8fyWuYeftAAMW68iiuqdF1I47jrSbok7nLXGKngqWvJvvHQlED",
+    "sort_group": "TITLE",
+    "key_name": "TITLE_DBAAS_HOW_TO_USE_EXAMPLE_RUBY",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": true,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 4690,
+            "legacy_language_pid": 1,
+            "text": "Rubyでエンドポイントにアクセス",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 4691,
+            "legacy_language_pid": 2,
+            "text": "Access Endpoint by Ruby",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 14441,
+            "legacy_language_pid": 3,
+            "text": "",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 14442,
+            "legacy_language_pid": 4,
+            "text": "",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 14443,
+            "legacy_language_pid": 5,
+            "text": "Acceso a Endpoint porRuby",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 14444,
+            "legacy_language_pid": 6,
+            "text": "Endpoint Acesso por Ruby",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 14445,
+            "legacy_language_pid": 7,
+            "text": "",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 17345,
+            "legacy_language_pid": 8,
+            "text": "Accéder au point final par Ruby",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 17346,
+            "legacy_language_pid": 9,
+            "text": "Ruby द्वारा एंडपॉइंट एक्सेस करे",
+            "auto_translated": ""
+        }
+    }
+}

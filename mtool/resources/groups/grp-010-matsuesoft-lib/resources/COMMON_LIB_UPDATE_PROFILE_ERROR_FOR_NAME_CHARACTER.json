@@ -1,0 +1,321 @@
+{
+    "resource_key": "COMMON_LIB_UPDATE_PROFILE_ERROR_FOR_NAME_CHARACTER",
+    "legacy_resource_pid": 1603,
+    "base_group_key": "grp-010-matsuesoft-lib",
+    "additional_group_keys": [],
+    "key_for_update": "NnA28KYcnERjr5VV0rSnUy2EOoW5ngBxGBfjE56jYlNh6bh3B5HEZDs0k6V4lbALNyST6l5JkPtuTNBJ8GEj8fj1MiIq4XEARUvdPEsom37QVaidXzKEuDA9mZsKTTOz",
+    "sort_group": "PROFILE",
+    "key_name": "COMMON_LIB_UPDATE_PROFILE_ERROR_FOR_NAME_CHARACTER",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": false,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 7194,
+            "legacy_language_pid": 1,
+            "text": "名前は半角アルファベットで入力下さい。",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 7195,
+            "legacy_language_pid": 2,
+            "text": "Please enter your name in alphabet.",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 7196,
+            "legacy_language_pid": 3,
+            "text": "这个名字，请输入字母表。",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 7197,
+            "legacy_language_pid": 4,
+            "text": "이름은 알파벳으로 입력하세요.",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 11141,
+            "legacy_language_pid": 5,
+            "text": "Por favor ingrese su nombre en alfabeto.",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 11142,
+            "legacy_language_pid": 6,
+            "text": "Digite seu nome no alfabeto.",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 11143,
+            "legacy_language_pid": 7,
+            "text": "這個名字，請輸入字母表。",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 17267,
+            "legacy_language_pid": 8,
+            "text": "Entrez votre nom dans l'alphabet.",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 17268,
+            "legacy_language_pid": 9,
+            "text": "वर्णमाला में अपना नाम दर्ज करें।",
+            "auto_translated": ""
+        },
+        "ar": {
+            "legacy_caption_pid": 32882,
+            "legacy_language_pid": 10,
+            "text": "اسم، يرجى إدخال في الأبجدية.",
+            "auto_translated": "اسم، يرجى إدخال في الأبجدية."
+        },
+        "fa": {
+            "legacy_caption_pid": 32883,
+            "legacy_language_pid": 11,
+            "text": "نام، لطفا در الفبای.",
+            "auto_translated": "نام، لطفا در الفبای."
+        },
+        "de": {
+            "legacy_caption_pid": 32884,
+            "legacy_language_pid": 12,
+            "text": "Der Name, bitte Eingabe im Alphabet.",
+            "auto_translated": "Der Name, bitte Eingabe im Alphabet."
+        },
+        "ru": {
+            "legacy_caption_pid": 32885,
+            "legacy_language_pid": 13,
+            "text": "Имя, введите, пожалуйста, в алфавите.",
+            "auto_translated": "Имя, введите, пожалуйста, в алфавите."
+        },
+        "ms": {
+            "legacy_caption_pid": 32886,
+            "legacy_language_pid": 14,
+            "text": "nama, memudahkan input dalam abjad.",
+            "auto_translated": "nama, memudahkan input dalam abjad."
+        },
+        "ta": {
+            "legacy_caption_pid": 32887,
+            "legacy_language_pid": 15,
+            "text": "பெயர், எழுத்துக்களை உள்ளீடு தயவு.",
+            "auto_translated": "பெயர், எழுத்துக்களை உள்ளீடு தயவு."
+        },
+        "it": {
+            "legacy_caption_pid": 32888,
+            "legacy_language_pid": 16,
+            "text": "Il nome, per favore dell'ingresso in alfabeto.",
+            "auto_translated": "Il nome, per favore dell'ingresso in alfabeto."
+        },
+        "bn": {
+            "legacy_caption_pid": 32889,
+            "legacy_language_pid": 17,
+            "text": "নাম, বর্ণমালা ইনপুট দয়া করে।",
+            "auto_translated": "নাম, বর্ণমালা ইনপুট দয়া করে।"
+        },
+        "tr": {
+            "legacy_caption_pid": 32890,
+            "legacy_language_pid": 18,
+            "text": "ad, alfabedeki girişi memnun.",
+            "auto_translated": "ad, alfabedeki girişi memnun."
+        },
+        "vi": {
+            "legacy_caption_pid": 32891,
+            "legacy_language_pid": 19,
+            "text": "Tên, xin vui lòng nhập vào trong bảng chữ cái.",
+            "auto_translated": "Tên, xin vui lòng nhập vào trong bảng chữ cái."
+        },
+        "pl": {
+            "legacy_caption_pid": 32892,
+            "legacy_language_pid": 20,
+            "text": "Nazwisko, proszę wejście w alfabecie.",
+            "auto_translated": "Nazwisko, proszę wejście w alfabecie."
+        },
+        "jv": {
+            "legacy_caption_pid": 32893,
+            "legacy_language_pid": 21,
+            "text": "Jeneng, please input ing aksara.",
+            "auto_translated": "Jeneng, please input ing aksara."
+        },
+        "pa": {
+            "legacy_caption_pid": 32894,
+            "legacy_language_pid": 22,
+            "text": "ਨਾਮ, ਵਰਣਮਾਲਾ ਵਿੱਚ ਇੰਪੁੱਟ ਜੀ.",
+            "auto_translated": "ਨਾਮ, ਵਰਣਮਾਲਾ ਵਿੱਚ ਇੰਪੁੱਟ ਜੀ."
+        },
+        "th": {
+            "legacy_caption_pid": 32895,
+            "legacy_language_pid": 23,
+            "text": "ชื่อกรุณาใส่ในตัวอักษร",
+            "auto_translated": "ชื่อกรุณาใส่ในตัวอักษร"
+        },
+        "te": {
+            "legacy_caption_pid": 39896,
+            "legacy_language_pid": 24,
+            "text": "పేరు, వర్ణమాలలో ఇన్పుట్ దయచేసి.",
+            "auto_translated": "పేరు, వర్ణమాలలో ఇన్పుట్ దయచేసి."
+        },
+        "mr": {
+            "legacy_caption_pid": 39897,
+            "legacy_language_pid": 25,
+            "text": "नाव, वर्णमाला इनपुट करा.",
+            "auto_translated": "नाव, वर्णमाला इनपुट करा."
+        },
+        "ur": {
+            "legacy_caption_pid": 39898,
+            "legacy_language_pid": 26,
+            "text": "نام، حروف تہجی میں ان پٹ کو خوش.",
+            "auto_translated": "نام، حروف تہجی میں ان پٹ کو خوش."
+        },
+        "gu": {
+            "legacy_caption_pid": 39899,
+            "legacy_language_pid": 27,
+            "text": "નામ, મૂળાક્ષરમાં ઇનપુટ કૃપા કરીને.",
+            "auto_translated": "નામ, મૂળાક્ષરમાં ઇનપુટ કૃપા કરીને."
+        },
+        "uk": {
+            "legacy_caption_pid": 39900,
+            "legacy_language_pid": 28,
+            "text": "Ім'я, введіть, будь ласка, в алфавіті.",
+            "auto_translated": "Ім'я, введіть, будь ласка, в алфавіті."
+        },
+        "ml": {
+            "legacy_caption_pid": 39901,
+            "legacy_language_pid": 29,
+            "text": "പേര്, അക്ഷരമാലയിലെ ദയവായി.",
+            "auto_translated": "പേര്, അക്ഷരമാലയിലെ ദയവായി."
+        },
+        "kn": {
+            "legacy_caption_pid": 39902,
+            "legacy_language_pid": 30,
+            "text": "ಹೆಸರು, ವರ್ಣಮಾಲೆಯ ಇನ್ಪುಟ್ ದಯವಿಟ್ಟು.",
+            "auto_translated": "ಹೆಸರು, ವರ್ಣಮಾಲೆಯ ಇನ್ಪುಟ್ ದಯವಿಟ್ಟು."
+        },
+        "su": {
+            "legacy_caption_pid": 39903,
+            "legacy_language_pid": 31,
+            "text": "Ngaranna, mangga input dina abjad.",
+            "auto_translated": "Ngaranna, mangga input dina abjad."
+        },
+        "ku": {
+            "legacy_caption_pid": 39904,
+            "legacy_language_pid": 32,
+            "text": "The name, xweş input di alfabeya.",
+            "auto_translated": "The name, xweş input di alfabeya."
+        },
+        "ps": {
+            "legacy_caption_pid": 39905,
+            "legacy_language_pid": 33,
+            "text": "د نوم، د الفبا په آخذه خوښ.",
+            "auto_translated": "د نوم، د الفبا په آخذه خوښ."
+        },
+        "ro": {
+            "legacy_caption_pid": 39906,
+            "legacy_language_pid": 34,
+            "text": "Numele, vă rugăm intrare în alfabetul.",
+            "auto_translated": "Numele, vă rugăm intrare în alfabetul."
+        },
+        "id": {
+            "legacy_caption_pid": 39907,
+            "legacy_language_pid": 35,
+            "text": "Nama, mohon masukan dalam alfabet.",
+            "auto_translated": "Nama, mohon masukan dalam alfabet."
+        },
+        "sd": {
+            "legacy_caption_pid": 39908,
+            "legacy_language_pid": 36,
+            "text": "هن جو نالو، سنڌ جي رسم الخط ۾ ان پٽ وڻي.",
+            "auto_translated": "هن جو نالو، سنڌ جي رسم الخط ۾ ان پٽ وڻي."
+        },
+        "af": {
+            "legacy_caption_pid": 39909,
+            "legacy_language_pid": 37,
+            "text": "Die naam, asseblief insette in die alfabet.",
+            "auto_translated": "Die naam, asseblief insette in die alfabet."
+        },
+        "sw": {
+            "legacy_caption_pid": 39910,
+            "legacy_language_pid": 38,
+            "text": "jina, tafadhali pembejeo katika alfabeti.",
+            "auto_translated": "jina, tafadhali pembejeo katika alfabeti."
+        },
+        "lo": {
+            "legacy_caption_pid": 39911,
+            "legacy_language_pid": 39,
+            "text": "ຊື່, ກະລຸນາປ້ອນຂໍ້ມູນໃນຫນັງສືໄດ້.",
+            "auto_translated": "ຊື່, ກະລຸນາປ້ອນຂໍ້ມູນໃນຫນັງສືໄດ້."
+        },
+        "nl": {
+            "legacy_caption_pid": 39912,
+            "legacy_language_pid": 40,
+            "text": "De naam, vul aub in het alfabet.",
+            "auto_translated": "De naam, vul aub in het alfabet."
+        },
+        "tl": {
+            "legacy_caption_pid": 39913,
+            "legacy_language_pid": 41,
+            "text": "Ang pangalan, mangyaring input sa alpabeto.",
+            "auto_translated": "Ang pangalan, mangyaring input sa alpabeto."
+        },
+        "ne": {
+            "legacy_caption_pid": 39914,
+            "legacy_language_pid": 42,
+            "text": "को नाम, वर्णमाला इनपुट गर्नुहोस्।",
+            "auto_translated": "को नाम, वर्णमाला इनपुट गर्नुहोस्।"
+        },
+        "hu": {
+            "legacy_caption_pid": 39915,
+            "legacy_language_pid": 43,
+            "text": "A név, akkor adja meg az ábécé.",
+            "auto_translated": "A név, akkor adja meg az ábécé."
+        },
+        "cs": {
+            "legacy_caption_pid": 39916,
+            "legacy_language_pid": 44,
+            "text": "Jméno, prosím, vstup v abecedě.",
+            "auto_translated": "Jméno, prosím, vstup v abecedě."
+        },
+        "el": {
+            "legacy_caption_pid": 39917,
+            "legacy_language_pid": 45,
+            "text": "Το όνομα, παρακαλούμε πληκτρολογήστε το αλφάβητο.",
+            "auto_translated": "Το όνομα, παρακαλούμε πληκτρολογήστε το αλφάβητο."
+        },
+        "sv": {
+            "legacy_caption_pid": 39918,
+            "legacy_language_pid": 46,
+            "text": "Namnet, vänligen input i alfabetet.",
+            "auto_translated": "Namnet, vänligen input i alfabetet."
+        },
+        "kk": {
+            "legacy_caption_pid": 39919,
+            "legacy_language_pid": 47,
+            "text": "атауы, Алфавит енгізу өтінеміз.",
+            "auto_translated": "атауы, Алфавит енгізу өтінеміз."
+        },
+        "fi": {
+            "legacy_caption_pid": 39920,
+            "legacy_language_pid": 48,
+            "text": "Nimen, syötä aakkosissa.",
+            "auto_translated": "Nimen, syötä aakkosissa."
+        },
+        "da": {
+            "legacy_caption_pid": 39921,
+            "legacy_language_pid": 49,
+            "text": "Navnet, behage input i alfabetet.",
+            "auto_translated": "Navnet, behage input i alfabetet."
+        },
+        "he": {
+            "legacy_caption_pid": 39922,
+            "legacy_language_pid": 50,
+            "text": "השם, לרצות קלט באלפבית.",
+            "auto_translated": "השם, לרצות קלט באלפבית."
+        },
+        "no": {
+            "legacy_caption_pid": 39923,
+            "legacy_language_pid": 51,
+            "text": "Navnet legg inn i alfabetet.",
+            "auto_translated": "Navnet legg inn i alfabetet."
+        }
+    }
+}

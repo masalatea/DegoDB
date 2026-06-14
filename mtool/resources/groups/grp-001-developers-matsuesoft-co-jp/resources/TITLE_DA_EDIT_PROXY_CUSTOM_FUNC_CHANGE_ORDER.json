@@ -1,0 +1,27 @@
+{
+    "resource_key": "TITLE_DA_EDIT_PROXY_CUSTOM_FUNC_CHANGE_ORDER",
+    "legacy_resource_pid": 39,
+    "base_group_key": "grp-001-developers-matsuesoft-co-jp",
+    "additional_group_keys": [],
+    "key_for_update": "0",
+    "sort_group": "TITLE",
+    "key_name": "TITLE_DA_EDIT_PROXY_CUSTOM_FUNC_CHANGE_ORDER",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": true,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 4328,
+            "legacy_language_pid": 1,
+            "text": "データアクセスクラス Proxy対象 関数一覧[カスタム, 複数対象]順番変更 ",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 4329,
+            "legacy_language_pid": 2,
+            "text": "Change Order of Proxy Target Function of Data Access Class [Custom, Multi Target]",
+            "auto_translated": ""
+        }
+    }
+}

@@ -1,0 +1,321 @@
+{
+    "resource_key": "EMAIL_COMMON_VERIFICATION_NOTE2_LINE2",
+    "legacy_resource_pid": 2586,
+    "base_group_key": "grp-005-common-lib",
+    "additional_group_keys": [],
+    "key_for_update": "xBd7u2UuTeZdGAoW79buBvDWQZ5KGrcQxIdRtBi1iZkAKknYQOpoHUCBenrr0us5cTivzBfhdR9QKSaxMtH4kOPC942HUp1urTYa9IjvSS8Rw7ew2n7KKYHbLF0apdPz",
+    "sort_group": "EMAIL VERIFICATION",
+    "key_name": "EMAIL_COMMON_VERIFICATION_NOTE2_LINE2",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": false,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 19511,
+            "legacy_language_pid": 1,
+            "text": "上記URLを表示した際にログイン画面が表示される場合はログイン下さい。",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 19512,
+            "legacy_language_pid": 2,
+            "text": "Please login if login screen is displayed when displaying the above URL.",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 19513,
+            "legacy_language_pid": 3,
+            "text": "显示上述URL时，如果登录屏幕显示，请登录",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 19514,
+            "legacy_language_pid": 4,
+            "text": "위 URL을 표시했을 때 로그인 화면이 나타나면 로그인하세요.",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 19515,
+            "legacy_language_pid": 5,
+            "text": "Inicie sesión si se muestra la pantalla de inicio de sesión al mostrar la URL anterior.",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 19516,
+            "legacy_language_pid": 6,
+            "text": "Faça login se a tela de login for exibida ao exibir o URL acima.",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 19517,
+            "legacy_language_pid": 7,
+            "text": "顯示上述URL時，如果登錄屏幕顯示，請登錄",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 19518,
+            "legacy_language_pid": 8,
+            "text": "Veuillez vous connecter si l'écran de connexion s'affiche lorsque vous affichez l'URL ci-dessus.",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 19519,
+            "legacy_language_pid": 9,
+            "text": "उपरोक्त URL प्रदर्शित करते समय लॉगिन स्क्रीन प्रदर्शित होने पर कृपया लॉगिन करें",
+            "auto_translated": ""
+        },
+        "ar": {
+            "legacy_caption_pid": 29688,
+            "legacy_language_pid": 10,
+            "text": "الرجاء تسجيل الدخول في حالة ظهور شاشة تسجيل الدخول عند عرض URL المذكورة أعلاه.",
+            "auto_translated": "الرجاء تسجيل الدخول في حالة ظهور شاشة تسجيل الدخول عند عرض URL المذكورة أعلاه."
+        },
+        "fa": {
+            "legacy_caption_pid": 29689,
+            "legacy_language_pid": 11,
+            "text": "لطفا ورود اگر صفحه ورود به سیستم نمایش داده می شود زمانی که شما URL ذکر شده در بالا را مشاهده کنید.",
+            "auto_translated": "لطفا ورود اگر صفحه ورود به سیستم نمایش داده می شود زمانی که شما URL ذکر شده در بالا را مشاهده کنید."
+        },
+        "de": {
+            "legacy_caption_pid": 29690,
+            "legacy_language_pid": 12,
+            "text": "Bitte einloggen, wenn der Login-Bildschirm angezeigt wird, wenn Sie die oben genannte URL anzuzeigen.",
+            "auto_translated": "Bitte einloggen, wenn der Login-Bildschirm angezeigt wird, wenn Sie die oben genannte URL anzuzeigen."
+        },
+        "ru": {
+            "legacy_caption_pid": 29691,
+            "legacy_language_pid": 13,
+            "text": "Пожалуйста, войдите Если экран Логин отображается при просмотре Вышеупомянутый URL.",
+            "auto_translated": "Пожалуйста, войдите Если экран Логин отображается при просмотре Вышеупомянутый URL."
+        },
+        "ms": {
+            "legacy_caption_pid": 29692,
+            "legacy_language_pid": 14,
+            "text": "Sila log masuk Jika skrin log masuk yang dipaparkan apabila anda melihat URL yang tersebut di atas.",
+            "auto_translated": "Sila log masuk Jika skrin log masuk yang dipaparkan apabila anda melihat URL yang tersebut di atas."
+        },
+        "ta": {
+            "legacy_caption_pid": 29693,
+            "legacy_language_pid": 15,
+            "text": "நீங்கள் மேலே குறிப்பிடப்பட்ட URL ஐ பார்வையிட போது உள்நுழைவு திரையில் காட்டப்படும் என்றால் உள்நுழையவும்.",
+            "auto_translated": "நீங்கள் மேலே குறிப்பிடப்பட்ட URL ஐ பார்வையிட போது உள்நுழைவு திரையில் காட்டப்படும் என்றால் உள்நுழையவும்."
+        },
+        "it": {
+            "legacy_caption_pid": 29694,
+            "legacy_language_pid": 16,
+            "text": "Effettua l'accesso Se viene visualizzata la schermata di accesso quando si visualizza l'URL di cui sopra.",
+            "auto_translated": "Effettua l'accesso Se viene visualizzata la schermata di accesso quando si visualizza l'URL di cui sopra."
+        },
+        "bn": {
+            "legacy_caption_pid": 29695,
+            "legacy_language_pid": 17,
+            "text": "দয়া করে লগইন করুন লগইন স্ক্রীনে যখন আপনি উল্লিখিত URL- এ দেখতে প্রদর্শিত হয়।",
+            "auto_translated": "দয়া করে লগইন করুন লগইন স্ক্রীনে যখন আপনি উল্লিখিত URL- এ দেখতে প্রদর্শিত হয়।"
+        },
+        "tr": {
+            "legacy_caption_pid": 29696,
+            "legacy_language_pid": 18,
+            "text": "Yukarıda belirtilen URL görüntülerken giriş ekranı görüntülenirse giriş yapınız.",
+            "auto_translated": "Yukarıda belirtilen URL görüntülerken giriş ekranı görüntülenirse giriş yapınız."
+        },
+        "vi": {
+            "legacy_caption_pid": 29697,
+            "legacy_language_pid": 19,
+            "text": "Please login Nếu màn hình đăng nhập sẽ được hiển thị khi bạn xem các URL nêu trên.",
+            "auto_translated": "Please login Nếu màn hình đăng nhập sẽ được hiển thị khi bạn xem các URL nêu trên."
+        },
+        "pl": {
+            "legacy_caption_pid": 29698,
+            "legacy_language_pid": 20,
+            "text": "Proszę się zalogować Jeśli ekran logowania jest wyświetlany podczas przeglądania wyżej wymienionych URL.",
+            "auto_translated": "Proszę się zalogować Jeśli ekran logowania jest wyświetlany podczas przeglądania wyżej wymienionych URL."
+        },
+        "jv": {
+            "legacy_caption_pid": 29699,
+            "legacy_language_pid": 21,
+            "text": "Mangga mlebet Yen layar login ditampilake yen sampeyan ndeleng URL ing ndhuwur-kasebut.",
+            "auto_translated": "Mangga mlebet Yen layar login ditampilake yen sampeyan ndeleng URL ing ndhuwur-kasebut."
+        },
+        "pa": {
+            "legacy_caption_pid": 29700,
+            "legacy_language_pid": 22,
+            "text": "ਲਾਗਇਨ ਕਰੋ ਜੀ, ਜੇ ਲਾਗਇਨ ਸਕਰੀਨ ਤੁਹਾਨੂੰ ਉੱਪਰ ਦੱਸੇ URL ਨੂੰ ਵੇਖਣ ਲਈ ਵੇਖਾਇਆ ਗਿਆ ਹੈ.",
+            "auto_translated": "ਲਾਗਇਨ ਕਰੋ ਜੀ, ਜੇ ਲਾਗਇਨ ਸਕਰੀਨ ਤੁਹਾਨੂੰ ਉੱਪਰ ਦੱਸੇ URL ਨੂੰ ਵੇਖਣ ਲਈ ਵੇਖਾਇਆ ਗਿਆ ਹੈ."
+        },
+        "th": {
+            "legacy_caption_pid": 29701,
+            "legacy_language_pid": 23,
+            "text": "กรุณาเข้าสู่ระบบถ้าหน้าจอเข้าสู่ระบบจะปรากฏขึ้นเมื่อคุณดู URL ที่ดังกล่าวข้างต้น",
+            "auto_translated": "กรุณาเข้าสู่ระบบถ้าหน้าจอเข้าสู่ระบบจะปรากฏขึ้นเมื่อคุณดู URL ที่ดังกล่าวข้างต้น"
+        },
+        "te": {
+            "legacy_caption_pid": 37068,
+            "legacy_language_pid": 24,
+            "text": "లాగిన్ అవ్వండి మీరు పైన చెప్పిన URL చూసేటప్పుడు లాగిన్ స్క్రీన్ ప్రదర్శించబడుతుంది లేకపోతే.",
+            "auto_translated": "లాగిన్ అవ్వండి మీరు పైన చెప్పిన URL చూసేటప్పుడు లాగిన్ స్క్రీన్ ప్రదర్శించబడుతుంది లేకపోతే."
+        },
+        "mr": {
+            "legacy_caption_pid": 37069,
+            "legacy_language_pid": 25,
+            "text": "कृपया लॉग इन करा आपल्याला वर उल्लेख URL पाहता तेव्हा लॉगिन पडदा दाखवले जाते.",
+            "auto_translated": "कृपया लॉग इन करा आपल्याला वर उल्लेख URL पाहता तेव्हा लॉगिन पडदा दाखवले जाते."
+        },
+        "ur": {
+            "legacy_caption_pid": 37070,
+            "legacy_language_pid": 26,
+            "text": "لاگ ان لاگ ان سکرین آپ مندرجہ بالا URL دیکھنے جب دکھایا جاتا ہے تو براہ مہربانی.",
+            "auto_translated": "لاگ ان لاگ ان سکرین آپ مندرجہ بالا URL دیکھنے جب دکھایا جاتا ہے تو براہ مہربانی."
+        },
+        "gu": {
+            "legacy_caption_pid": 37071,
+            "legacy_language_pid": 27,
+            "text": "કૃપા કરીને લૉગિન કરો જો લોગિન સ્ક્રીન જ્યારે તમે ઉપર જણાવેલી URL જુઓ પ્રદર્શિત થાય છે.",
+            "auto_translated": "કૃપા કરીને લૉગિન કરો જો લોગિન સ્ક્રીન જ્યારે તમે ઉપર જણાવેલી URL જુઓ પ્રદર્શિત થાય છે."
+        },
+        "uk": {
+            "legacy_caption_pid": 37072,
+            "legacy_language_pid": 28,
+            "text": "Будь ласка, увійдіть Якщо екран Логін відображається при перегляді Вищезгаданий URL.",
+            "auto_translated": "Будь ласка, увійдіть Якщо екран Логін відображається при перегляді Вищезгаданий URL."
+        },
+        "ml": {
+            "legacy_caption_pid": 37073,
+            "legacy_language_pid": 29,
+            "text": "മുകളിൽ സൂചിപ്പിച്ച, URL കാണുമ്പോൾ ലോഗിൻ സ്ക്രീൻ ലോഗിൻ ദയവായി.",
+            "auto_translated": "മുകളിൽ സൂചിപ്പിച്ച, URL കാണുമ്പോൾ ലോഗിൻ സ്ക്രീൻ ലോഗിൻ ദയവായി."
+        },
+        "kn": {
+            "legacy_caption_pid": 37074,
+            "legacy_language_pid": 30,
+            "text": "ಲಾಗಿನ್ ನೀವು ಮೇಲೆ ಸೂಚಿಸಿದ URL ಅನ್ನು ವೀಕ್ಷಿಸಲು ಲಾಗಿನ್ ಪರದೆ ಕಾಣಿಸಿಕೊಳ್ಳುತ್ತದೆ.",
+            "auto_translated": "ಲಾಗಿನ್ ನೀವು ಮೇಲೆ ಸೂಚಿಸಿದ URL ಅನ್ನು ವೀಕ್ಷಿಸಲು ಲಾಗಿನ್ ಪರದೆ ಕಾಣಿಸಿಕೊಳ್ಳುತ್ತದೆ."
+        },
+        "su": {
+            "legacy_caption_pid": 37075,
+            "legacy_language_pid": 31,
+            "text": "Mangga login Lamun layar login dipintonkeun mun anjeun nempo URL di luhur-disebutkeun.",
+            "auto_translated": "Mangga login Lamun layar login dipintonkeun mun anjeun nempo URL di luhur-disebutkeun."
+        },
+        "ku": {
+            "legacy_caption_pid": 37076,
+            "legacy_language_pid": 32,
+            "text": "Please login Eger screen têketinê nishan Gava ku hûn URL li jor dîyarkirine Wikimedia.",
+            "auto_translated": "Please login Eger screen têketinê nishan Gava ku hûn URL li jor dîyarkirine Wikimedia."
+        },
+        "ps": {
+            "legacy_caption_pid": 37077,
+            "legacy_language_pid": 33,
+            "text": "لطفا سئ که login پرده ښکاره کېږي کله چې تاسو د پورته ذکر لياره.",
+            "auto_translated": "لطفا سئ که login پرده ښکاره کېږي کله چې تاسو د پورته ذکر لياره."
+        },
+        "ro": {
+            "legacy_caption_pid": 37078,
+            "legacy_language_pid": 34,
+            "text": "Conectați-vă Dacă ecranul de conectare este afișat atunci când vizualizați URL-ul menționat mai sus.",
+            "auto_translated": "Conectați-vă Dacă ecranul de conectare este afișat atunci când vizualizați URL-ul menționat mai sus."
+        },
+        "id": {
+            "legacy_caption_pid": 37079,
+            "legacy_language_pid": 35,
+            "text": "Silahkan login Jika layar login ditampilkan ketika Anda melihat URL yang disebutkan di atas.",
+            "auto_translated": "Silahkan login Jika layar login ditampilkan ketika Anda melihat URL yang disebutkan di atas."
+        },
+        "sd": {
+            "legacy_caption_pid": 37080,
+            "legacy_language_pid": 36,
+            "text": "لاگ ته هتي ڪلڪ ڪري اسڪرين جڏھن اوھان جي مٿان-جو ذڪر URL جو ڏسڻ ڏيکاريل آهي.",
+            "auto_translated": "لاگ ته هتي ڪلڪ ڪري اسڪرين جڏھن اوھان جي مٿان-جو ذڪر URL جو ڏسڻ ڏيکاريل آهي."
+        },
+        "af": {
+            "legacy_caption_pid": 37081,
+            "legacy_language_pid": 37,
+            "text": "Sal u asseblief aanmeld As die login skerm sal vertoon word wanneer jy die bogenoemde URL te sien.",
+            "auto_translated": "Sal u asseblief aanmeld As die login skerm sal vertoon word wanneer jy die bogenoemde URL te sien."
+        },
+        "sw": {
+            "legacy_caption_pid": 37082,
+            "legacy_language_pid": 38,
+            "text": "Tafadhali ingia Kama skrini ya kuingia ni kuonyeshwa wakati wewe kuona URL zilizotajwa hapo juu.",
+            "auto_translated": "Tafadhali ingia Kama skrini ya kuingia ni kuonyeshwa wakati wewe kuona URL zilizotajwa hapo juu."
+        },
+        "lo": {
+            "legacy_caption_pid": 37083,
+            "legacy_language_pid": 39,
+            "text": "ກະລຸນາເຂົ້າສູ່ລະບົບຖ້າຫາກວ່າຫນ້າຈໍເຂົ້າສູ່ລະບົບໄດ້ຖືກສະແດງໃນເວລາທີ່ທ່ານເບິ່ງ URL ຂ້າງເທິງນີ້, ທີ່ໄດ້ກ່າວມາ.",
+            "auto_translated": "ກະລຸນາເຂົ້າສູ່ລະບົບຖ້າຫາກວ່າຫນ້າຈໍເຂົ້າສູ່ລະບົບໄດ້ຖືກສະແດງໃນເວລາທີ່ທ່ານເບິ່ງ URL ຂ້າງເທິງນີ້, ທີ່ໄດ້ກ່າວມາ."
+        },
+        "nl": {
+            "legacy_caption_pid": 37084,
+            "legacy_language_pid": 40,
+            "text": "Gelieve in te loggen Als het inlogscherm wordt weergegeven wanneer u de bovengenoemde URL weer te geven.",
+            "auto_translated": "Gelieve in te loggen Als het inlogscherm wordt weergegeven wanneer u de bovengenoemde URL weer te geven."
+        },
+        "tl": {
+            "legacy_caption_pid": 37085,
+            "legacy_language_pid": 41,
+            "text": "Mangyaring mag-login Kung ang login screen ay ipinapakita kapag tiningnan mo ang mga nabanggit na URL.",
+            "auto_translated": "Mangyaring mag-login Kung ang login screen ay ipinapakita kapag tiningnan mo ang mga nabanggit na URL."
+        },
+        "ne": {
+            "legacy_caption_pid": 37086,
+            "legacy_language_pid": 42,
+            "text": "लग तपाईंले माथि-उल्लेख URL हेर्न जब लगइन पर्दा प्रदर्शित हुन्छ भने।",
+            "auto_translated": "लग तपाईंले माथि-उल्लेख URL हेर्न जब लगइन पर्दा प्रदर्शित हुन्छ भने।"
+        },
+        "hu": {
+            "legacy_caption_pid": 37087,
+            "legacy_language_pid": 43,
+            "text": "Kérjük, jelentkezzen be Ha a bejelentkezési képernyő jelenik meg, ha megnézi a fenti URL-t.",
+            "auto_translated": "Kérjük, jelentkezzen be Ha a bejelentkezési képernyő jelenik meg, ha megnézi a fenti URL-t."
+        },
+        "cs": {
+            "legacy_caption_pid": 37088,
+            "legacy_language_pid": 44,
+            "text": "Prosím přihlašte se Pokud se zobrazí přihlašovací obrazovka při zobrazení výše uvedené URL.",
+            "auto_translated": "Prosím přihlašte se Pokud se zobrazí přihlašovací obrazovka při zobrazení výše uvedené URL."
+        },
+        "el": {
+            "legacy_caption_pid": 37089,
+            "legacy_language_pid": 45,
+            "text": "Παρακαλούμε συνδεθείτε Εάν εμφανιστεί η οθόνη σύνδεσης όταν προβάλλετε την προαναφερθείσα διεύθυνση URL.",
+            "auto_translated": "Παρακαλούμε συνδεθείτε Εάν εμφανιστεί η οθόνη σύνδεσης όταν προβάλλετε την προαναφερθείσα διεύθυνση URL."
+        },
+        "sv": {
+            "legacy_caption_pid": 37090,
+            "legacy_language_pid": 46,
+            "text": "Vänligen logga Om inloggningsskärmen visas när du visar den ovan nämnda webbadress.",
+            "auto_translated": "Vänligen logga Om inloggningsskärmen visas när du visar den ovan nämnda webbadress."
+        },
+        "kk": {
+            "legacy_caption_pid": 37091,
+            "legacy_language_pid": 47,
+            "text": "Егер сіз жоғарыда аталған URL көру кезінде кіру экраны пайда болса, кіріңіз сұраймыз.",
+            "auto_translated": "Егер сіз жоғарыда аталған URL көру кезінде кіру экраны пайда болса, кіріңіз сұраймыз."
+        },
+        "fi": {
+            "legacy_caption_pid": 37092,
+            "legacy_language_pid": 48,
+            "text": "Ole hyvä ja kirjaudu Jos sisäänkirjautumisen on näkyvissä, kun tarkastelet edellä mainittu URL-osoite.",
+            "auto_translated": "Ole hyvä ja kirjaudu Jos sisäänkirjautumisen on näkyvissä, kun tarkastelet edellä mainittu URL-osoite."
+        },
+        "da": {
+            "legacy_caption_pid": 37093,
+            "legacy_language_pid": 49,
+            "text": "Venligst login Hvis login-skærmen vises, når du se ovennævnte webadresse.",
+            "auto_translated": "Venligst login Hvis login-skærmen vises, når du se ovennævnte webadresse."
+        },
+        "he": {
+            "legacy_caption_pid": 37094,
+            "legacy_language_pid": 50,
+            "text": "בבקשה התחבר אם מוצג מסך הכניסה בעת הצגת ה- URL הנ\"ל.",
+            "auto_translated": "בבקשה התחבר אם מוצג מסך הכניסה בעת הצגת ה- URL הנ\"ל."
+        },
+        "no": {
+            "legacy_caption_pid": 37095,
+            "legacy_language_pid": 51,
+            "text": "Vennligst logg Hvis innloggingsskjermen vises når du viser ovennevnte nettadresse.",
+            "auto_translated": "Vennligst logg Hvis innloggingsskjermen vises når du viser ovennevnte nettadresse."
+        }
+    }
+}

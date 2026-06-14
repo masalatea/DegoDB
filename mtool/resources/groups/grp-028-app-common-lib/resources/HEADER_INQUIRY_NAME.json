@@ -1,0 +1,321 @@
+{
+    "resource_key": "HEADER_INQUIRY_NAME",
+    "legacy_resource_pid": 1297,
+    "base_group_key": "grp-028-app-common-lib",
+    "additional_group_keys": [],
+    "key_for_update": "Ci8925KfXOJ2TF4siN1RbyGANe4doChIk0cScITcXeckAJNcrp4CrdJ238wZUiTLs5ChGxnzqWZC9JEAoPnHLHL7KY6f64ZFs2G6b6WGJGG3p3l4Y4tmDSzbjwzByRAj",
+    "sort_group": "INQUIRY",
+    "key_name": "HEADER_INQUIRY_NAME",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": false,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 879,
+            "legacy_language_pid": 1,
+            "text": "名前",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 880,
+            "legacy_language_pid": 2,
+            "text": "Name",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 6444,
+            "legacy_language_pid": 3,
+            "text": "名字",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 6445,
+            "legacy_language_pid": 4,
+            "text": "이름",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 10182,
+            "legacy_language_pid": 5,
+            "text": "Nombre",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 10183,
+            "legacy_language_pid": 6,
+            "text": "Nome",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 10184,
+            "legacy_language_pid": 7,
+            "text": "名字",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 16185,
+            "legacy_language_pid": 8,
+            "text": "prénom",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 16186,
+            "legacy_language_pid": 9,
+            "text": "नाम",
+            "auto_translated": ""
+        },
+        "ar": {
+            "legacy_caption_pid": 28736,
+            "legacy_language_pid": 10,
+            "text": "اسم",
+            "auto_translated": "اسم"
+        },
+        "fa": {
+            "legacy_caption_pid": 28737,
+            "legacy_language_pid": 11,
+            "text": "نام",
+            "auto_translated": "نام"
+        },
+        "de": {
+            "legacy_caption_pid": 28738,
+            "legacy_language_pid": 12,
+            "text": "Name",
+            "auto_translated": "Name"
+        },
+        "ru": {
+            "legacy_caption_pid": 28739,
+            "legacy_language_pid": 13,
+            "text": "имя",
+            "auto_translated": "имя"
+        },
+        "ms": {
+            "legacy_caption_pid": 28740,
+            "legacy_language_pid": 14,
+            "text": "nama",
+            "auto_translated": "nama"
+        },
+        "ta": {
+            "legacy_caption_pid": 28741,
+            "legacy_language_pid": 15,
+            "text": "பெயர்",
+            "auto_translated": "பெயர்"
+        },
+        "it": {
+            "legacy_caption_pid": 28742,
+            "legacy_language_pid": 16,
+            "text": "nome",
+            "auto_translated": "nome"
+        },
+        "bn": {
+            "legacy_caption_pid": 28743,
+            "legacy_language_pid": 17,
+            "text": "নাম",
+            "auto_translated": "নাম"
+        },
+        "tr": {
+            "legacy_caption_pid": 28744,
+            "legacy_language_pid": 18,
+            "text": "isim",
+            "auto_translated": "isim"
+        },
+        "vi": {
+            "legacy_caption_pid": 28745,
+            "legacy_language_pid": 19,
+            "text": "tên",
+            "auto_translated": "tên"
+        },
+        "pl": {
+            "legacy_caption_pid": 28746,
+            "legacy_language_pid": 20,
+            "text": "nazwa",
+            "auto_translated": "nazwa"
+        },
+        "jv": {
+            "legacy_caption_pid": 28747,
+            "legacy_language_pid": 21,
+            "text": "jeneng",
+            "auto_translated": "jeneng"
+        },
+        "pa": {
+            "legacy_caption_pid": 28748,
+            "legacy_language_pid": 22,
+            "text": "ਦਾ ਨਾਮ",
+            "auto_translated": "ਦਾ ਨਾਮ"
+        },
+        "th": {
+            "legacy_caption_pid": 28749,
+            "legacy_language_pid": 23,
+            "text": "ชื่อ",
+            "auto_translated": "ชื่อ"
+        },
+        "te": {
+            "legacy_caption_pid": 34408,
+            "legacy_language_pid": 24,
+            "text": "పేరు",
+            "auto_translated": "పేరు"
+        },
+        "mr": {
+            "legacy_caption_pid": 34409,
+            "legacy_language_pid": 25,
+            "text": "नाव",
+            "auto_translated": "नाव"
+        },
+        "ur": {
+            "legacy_caption_pid": 34410,
+            "legacy_language_pid": 26,
+            "text": "نام",
+            "auto_translated": "نام"
+        },
+        "gu": {
+            "legacy_caption_pid": 34411,
+            "legacy_language_pid": 27,
+            "text": "નામ",
+            "auto_translated": "નામ"
+        },
+        "uk": {
+            "legacy_caption_pid": 34412,
+            "legacy_language_pid": 28,
+            "text": "ім'я",
+            "auto_translated": "ім'я"
+        },
+        "ml": {
+            "legacy_caption_pid": 34413,
+            "legacy_language_pid": 29,
+            "text": "പേര്",
+            "auto_translated": "പേര്"
+        },
+        "kn": {
+            "legacy_caption_pid": 34414,
+            "legacy_language_pid": 30,
+            "text": "ಹೆಸರು",
+            "auto_translated": "ಹೆಸರು"
+        },
+        "su": {
+            "legacy_caption_pid": 34415,
+            "legacy_language_pid": 31,
+            "text": "nami",
+            "auto_translated": "nami"
+        },
+        "ku": {
+            "legacy_caption_pid": 34416,
+            "legacy_language_pid": 32,
+            "text": "nav",
+            "auto_translated": "nav"
+        },
+        "ps": {
+            "legacy_caption_pid": 34417,
+            "legacy_language_pid": 33,
+            "text": "نوم",
+            "auto_translated": "نوم"
+        },
+        "ro": {
+            "legacy_caption_pid": 34418,
+            "legacy_language_pid": 34,
+            "text": "nume",
+            "auto_translated": "nume"
+        },
+        "id": {
+            "legacy_caption_pid": 34419,
+            "legacy_language_pid": 35,
+            "text": "nama",
+            "auto_translated": "nama"
+        },
+        "sd": {
+            "legacy_caption_pid": 34420,
+            "legacy_language_pid": 36,
+            "text": "نالو",
+            "auto_translated": "نالو"
+        },
+        "af": {
+            "legacy_caption_pid": 34421,
+            "legacy_language_pid": 37,
+            "text": "naam",
+            "auto_translated": "naam"
+        },
+        "sw": {
+            "legacy_caption_pid": 34422,
+            "legacy_language_pid": 38,
+            "text": "jina",
+            "auto_translated": "jina"
+        },
+        "lo": {
+            "legacy_caption_pid": 34423,
+            "legacy_language_pid": 39,
+            "text": "ຊື່",
+            "auto_translated": "ຊື່"
+        },
+        "nl": {
+            "legacy_caption_pid": 34424,
+            "legacy_language_pid": 40,
+            "text": "naam",
+            "auto_translated": "naam"
+        },
+        "tl": {
+            "legacy_caption_pid": 34425,
+            "legacy_language_pid": 41,
+            "text": "pangalan",
+            "auto_translated": "pangalan"
+        },
+        "ne": {
+            "legacy_caption_pid": 34426,
+            "legacy_language_pid": 42,
+            "text": "नाम",
+            "auto_translated": "नाम"
+        },
+        "hu": {
+            "legacy_caption_pid": 34427,
+            "legacy_language_pid": 43,
+            "text": "név",
+            "auto_translated": "név"
+        },
+        "cs": {
+            "legacy_caption_pid": 34428,
+            "legacy_language_pid": 44,
+            "text": "název",
+            "auto_translated": "název"
+        },
+        "el": {
+            "legacy_caption_pid": 34429,
+            "legacy_language_pid": 45,
+            "text": "όνομα",
+            "auto_translated": "όνομα"
+        },
+        "sv": {
+            "legacy_caption_pid": 34430,
+            "legacy_language_pid": 46,
+            "text": "namn",
+            "auto_translated": "namn"
+        },
+        "kk": {
+            "legacy_caption_pid": 34431,
+            "legacy_language_pid": 47,
+            "text": "ат",
+            "auto_translated": "ат"
+        },
+        "fi": {
+            "legacy_caption_pid": 34432,
+            "legacy_language_pid": 48,
+            "text": "nimi",
+            "auto_translated": "nimi"
+        },
+        "da": {
+            "legacy_caption_pid": 34433,
+            "legacy_language_pid": 49,
+            "text": "navn",
+            "auto_translated": "navn"
+        },
+        "he": {
+            "legacy_caption_pid": 34434,
+            "legacy_language_pid": 50,
+            "text": "שם",
+            "auto_translated": "שם"
+        },
+        "no": {
+            "legacy_caption_pid": 34435,
+            "legacy_language_pid": 51,
+            "text": "navn",
+            "auto_translated": "navn"
+        }
+    }
+}

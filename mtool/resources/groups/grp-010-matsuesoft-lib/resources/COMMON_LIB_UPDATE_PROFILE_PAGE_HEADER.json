@@ -1,0 +1,321 @@
+{
+    "resource_key": "COMMON_LIB_UPDATE_PROFILE_PAGE_HEADER",
+    "legacy_resource_pid": 1611,
+    "base_group_key": "grp-010-matsuesoft-lib",
+    "additional_group_keys": [],
+    "key_for_update": "cSs3cMhk1iXD1jW8ZR3nz7LjGD6N0z4h246q4qDCzvbXFcsZYoDdEWuNxGdNrTaawyti4viERXM3QUUWENsDqo0mDaGMtzCizWBlm1NGUcb5EGwWf4m7Ue0mRx9zKIyJ",
+    "sort_group": "PROFILE",
+    "key_name": "COMMON_LIB_UPDATE_PROFILE_PAGE_HEADER",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": false,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 7226,
+            "legacy_language_pid": 1,
+            "text": "個人情報の更新",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 7227,
+            "legacy_language_pid": 2,
+            "text": "Update personal information",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 7228,
+            "legacy_language_pid": 3,
+            "text": "更新您的个人信息",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 7229,
+            "legacy_language_pid": 4,
+            "text": "개인 정보 업데이트",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 11171,
+            "legacy_language_pid": 5,
+            "text": "Actualizar datos personales ",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 11172,
+            "legacy_language_pid": 6,
+            "text": "Atualizar informações pessoais ",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 11173,
+            "legacy_language_pid": 7,
+            "text": "更新您的個人信息",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 17285,
+            "legacy_language_pid": 8,
+            "text": "Mettre à jour les informations personnelles",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 17286,
+            "legacy_language_pid": 9,
+            "text": "व्यक्तिगत जानकारी अपडेट करें",
+            "auto_translated": ""
+        },
+        "ar": {
+            "legacy_caption_pid": 32994,
+            "legacy_language_pid": 10,
+            "text": "تحديث المعلومات الشخصية الخاصة بك",
+            "auto_translated": "تحديث المعلومات الشخصية الخاصة بك"
+        },
+        "fa": {
+            "legacy_caption_pid": 32995,
+            "legacy_language_pid": 11,
+            "text": "به روز رسانی اطلاعات شخصی شما",
+            "auto_translated": "به روز رسانی اطلاعات شخصی شما"
+        },
+        "de": {
+            "legacy_caption_pid": 32996,
+            "legacy_language_pid": 12,
+            "text": "Aktualisieren Sie Ihre Daten",
+            "auto_translated": "Aktualisieren Sie Ihre Daten"
+        },
+        "ru": {
+            "legacy_caption_pid": 32997,
+            "legacy_language_pid": 13,
+            "text": "Обновите свою личную информацию",
+            "auto_translated": "Обновите свою личную информацию"
+        },
+        "ms": {
+            "legacy_caption_pid": 32998,
+            "legacy_language_pid": 14,
+            "text": "Kemas kini maklumat peribadi anda",
+            "auto_translated": "Kemas kini maklumat peribadi anda"
+        },
+        "ta": {
+            "legacy_caption_pid": 32999,
+            "legacy_language_pid": 15,
+            "text": "உங்கள் தனிப்பட்ட தகவல்களை புதுப்பிக்கவும்",
+            "auto_translated": "உங்கள் தனிப்பட்ட தகவல்களை புதுப்பிக்கவும்"
+        },
+        "it": {
+            "legacy_caption_pid": 33000,
+            "legacy_language_pid": 16,
+            "text": "Aggiornare le informazioni personali",
+            "auto_translated": "Aggiornare le informazioni personali"
+        },
+        "bn": {
+            "legacy_caption_pid": 33001,
+            "legacy_language_pid": 17,
+            "text": "আপনার ব্যক্তিগত তথ্য আপডেট করুন",
+            "auto_translated": "আপনার ব্যক্তিগত তথ্য আপডেট করুন"
+        },
+        "tr": {
+            "legacy_caption_pid": 33002,
+            "legacy_language_pid": 18,
+            "text": "Kişisel bilgilerinizi güncelleyin",
+            "auto_translated": "Kişisel bilgilerinizi güncelleyin"
+        },
+        "vi": {
+            "legacy_caption_pid": 33003,
+            "legacy_language_pid": 19,
+            "text": "Cập nhật thông tin cá nhân của bạn",
+            "auto_translated": "Cập nhật thông tin cá nhân của bạn"
+        },
+        "pl": {
+            "legacy_caption_pid": 33004,
+            "legacy_language_pid": 20,
+            "text": "Aktualizować swoje dane osobowe",
+            "auto_translated": "Aktualizować swoje dane osobowe"
+        },
+        "jv": {
+            "legacy_caption_pid": 33005,
+            "legacy_language_pid": 21,
+            "text": "Update informasi pribadhi",
+            "auto_translated": "Update informasi pribadhi"
+        },
+        "pa": {
+            "legacy_caption_pid": 33006,
+            "legacy_language_pid": 22,
+            "text": "ਆਪਣੀ ਨਿੱਜੀ ਜਾਣਕਾਰੀ ਨੂੰ ਅਪਡੇਟ ਕਰੋ",
+            "auto_translated": "ਆਪਣੀ ਨਿੱਜੀ ਜਾਣਕਾਰੀ ਨੂੰ ਅਪਡੇਟ ਕਰੋ"
+        },
+        "th": {
+            "legacy_caption_pid": 33007,
+            "legacy_language_pid": 23,
+            "text": "อัปเดตข้อมูลส่วนบุคคลของคุณ",
+            "auto_translated": "อัปเดตข้อมูลส่วนบุคคลของคุณ"
+        },
+        "te": {
+            "legacy_caption_pid": 39644,
+            "legacy_language_pid": 24,
+            "text": "మీ వ్యక్తిగత సమాచారాన్ని నవీకరించండి",
+            "auto_translated": "మీ వ్యక్తిగత సమాచారాన్ని నవీకరించండి"
+        },
+        "mr": {
+            "legacy_caption_pid": 39645,
+            "legacy_language_pid": 25,
+            "text": "आपल्या वैयक्तिक माहिती अपडेट करा",
+            "auto_translated": "आपल्या वैयक्तिक माहिती अपडेट करा"
+        },
+        "ur": {
+            "legacy_caption_pid": 39646,
+            "legacy_language_pid": 26,
+            "text": "آپ کی ذاتی معلومات کی تازہ کاری کریں",
+            "auto_translated": "آپ کی ذاتی معلومات کی تازہ کاری کریں"
+        },
+        "gu": {
+            "legacy_caption_pid": 39647,
+            "legacy_language_pid": 27,
+            "text": "તમારી વ્યક્તિગત માહિતી અપડેટ",
+            "auto_translated": "તમારી વ્યક્તિગત માહિતી અપડેટ"
+        },
+        "uk": {
+            "legacy_caption_pid": 39648,
+            "legacy_language_pid": 28,
+            "text": "Оновлення свою особисту інформацію",
+            "auto_translated": "Оновлення свою особисту інформацію"
+        },
+        "ml": {
+            "legacy_caption_pid": 39649,
+            "legacy_language_pid": 29,
+            "text": "നിങ്ങളുടെ സ്വകാര്യ വിവരങ്ങൾ അപ്ഡേറ്റ്",
+            "auto_translated": "നിങ്ങളുടെ സ്വകാര്യ വിവരങ്ങൾ അപ്ഡേറ്റ്"
+        },
+        "kn": {
+            "legacy_caption_pid": 39650,
+            "legacy_language_pid": 30,
+            "text": "ನಿಮ್ಮ ವೈಯಕ್ತಿಕ ಮಾಹಿತಿಯನ್ನು ನವೀಕರಿಸಿ",
+            "auto_translated": "ನಿಮ್ಮ ವೈಯಕ್ತಿಕ ಮಾಹಿತಿಯನ್ನು ನವೀಕರಿಸಿ"
+        },
+        "su": {
+            "legacy_caption_pid": 39651,
+            "legacy_language_pid": 31,
+            "text": "Ngapdet inpo pribadi Anjeun",
+            "auto_translated": "Ngapdet inpo pribadi Anjeun"
+        },
+        "ku": {
+            "legacy_caption_pid": 39652,
+            "legacy_language_pid": 32,
+            "text": "Baştir agahiyên xwe yên takekesî",
+            "auto_translated": "Baştir agahiyên xwe yên takekesî"
+        },
+        "ps": {
+            "legacy_caption_pid": 39653,
+            "legacy_language_pid": 33,
+            "text": "ستاسو شخصي معلومات اوسمهالی",
+            "auto_translated": "ستاسو شخصي معلومات اوسمهالی"
+        },
+        "ro": {
+            "legacy_caption_pid": 39654,
+            "legacy_language_pid": 34,
+            "text": "Actualizați informațiile personale",
+            "auto_translated": "Actualizați informațiile personale"
+        },
+        "id": {
+            "legacy_caption_pid": 39655,
+            "legacy_language_pid": 35,
+            "text": "Memperbarui informasi pribadi Anda",
+            "auto_translated": "Memperbarui informasi pribadi Anda"
+        },
+        "sd": {
+            "legacy_caption_pid": 39656,
+            "legacy_language_pid": 36,
+            "text": "توهان جي ذاتي معلومات جي تازه ڪاري",
+            "auto_translated": "توهان جي ذاتي معلومات جي تازه ڪاري"
+        },
+        "af": {
+            "legacy_caption_pid": 39657,
+            "legacy_language_pid": 37,
+            "text": "Werk jou persoonlike inligting",
+            "auto_translated": "Werk jou persoonlike inligting"
+        },
+        "sw": {
+            "legacy_caption_pid": 39658,
+            "legacy_language_pid": 38,
+            "text": "Mwisho taarifa yako binafsi",
+            "auto_translated": "Mwisho taarifa yako binafsi"
+        },
+        "lo": {
+            "legacy_caption_pid": 39659,
+            "legacy_language_pid": 39,
+            "text": "ປັບປຸງຂໍ້ມູນຂ່າວສານສ່ວນບຸກຄົນຂອງທ່ານ",
+            "auto_translated": "ປັບປຸງຂໍ້ມູນຂ່າວສານສ່ວນບຸກຄົນຂອງທ່ານ"
+        },
+        "nl": {
+            "legacy_caption_pid": 39660,
+            "legacy_language_pid": 40,
+            "text": "Werk uw persoonlijke gegevens",
+            "auto_translated": "Werk uw persoonlijke gegevens"
+        },
+        "tl": {
+            "legacy_caption_pid": 39661,
+            "legacy_language_pid": 41,
+            "text": "I-update ang iyong personal na impormasyon",
+            "auto_translated": "I-update ang iyong personal na impormasyon"
+        },
+        "ne": {
+            "legacy_caption_pid": 39662,
+            "legacy_language_pid": 42,
+            "text": "आफ्नो व्यक्तिगत जानकारी अद्यावधिक",
+            "auto_translated": "आफ्नो व्यक्तिगत जानकारी अद्यावधिक"
+        },
+        "hu": {
+            "legacy_caption_pid": 39663,
+            "legacy_language_pid": 43,
+            "text": "Frissítse a személyes adatait",
+            "auto_translated": "Frissítse a személyes adatait"
+        },
+        "cs": {
+            "legacy_caption_pid": 39664,
+            "legacy_language_pid": 44,
+            "text": "Aktualizovat své osobní údaje",
+            "auto_translated": "Aktualizovat své osobní údaje"
+        },
+        "el": {
+            "legacy_caption_pid": 39665,
+            "legacy_language_pid": 45,
+            "text": "Ενημερώστε τα προσωπικά σας στοιχεία",
+            "auto_translated": "Ενημερώστε τα προσωπικά σας στοιχεία"
+        },
+        "sv": {
+            "legacy_caption_pid": 39666,
+            "legacy_language_pid": 46,
+            "text": "Uppdatera din personliga information",
+            "auto_translated": "Uppdatera din personliga information"
+        },
+        "kk": {
+            "legacy_caption_pid": 39667,
+            "legacy_language_pid": 47,
+            "text": "Сіздің жеке ақпарат жаңарту",
+            "auto_translated": "Сіздің жеке ақпарат жаңарту"
+        },
+        "fi": {
+            "legacy_caption_pid": 39668,
+            "legacy_language_pid": 48,
+            "text": "Päivitä tietosi",
+            "auto_translated": "Päivitä tietosi"
+        },
+        "da": {
+            "legacy_caption_pid": 39669,
+            "legacy_language_pid": 49,
+            "text": "Opdater dine personlige oplysninger",
+            "auto_translated": "Opdater dine personlige oplysninger"
+        },
+        "he": {
+            "legacy_caption_pid": 39670,
+            "legacy_language_pid": 50,
+            "text": "עדכן את פרטיך האישיים",
+            "auto_translated": "עדכן את פרטיך האישיים"
+        },
+        "no": {
+            "legacy_caption_pid": 39671,
+            "legacy_language_pid": 51,
+            "text": "Oppdatere din personlige informasjon",
+            "auto_translated": "Oppdatere din personlige informasjon"
+        }
+    }
+}

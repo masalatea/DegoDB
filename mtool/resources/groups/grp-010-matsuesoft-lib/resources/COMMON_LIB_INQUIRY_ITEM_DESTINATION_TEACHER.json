@@ -1,0 +1,321 @@
+{
+    "resource_key": "COMMON_LIB_INQUIRY_ITEM_DESTINATION_TEACHER",
+    "legacy_resource_pid": 1463,
+    "base_group_key": "grp-010-matsuesoft-lib",
+    "additional_group_keys": [],
+    "key_for_update": "k1iLHh6qxgQNe57ZOgvH8rNq8cwV7hb2olWrjq9BaDxAHWzDsrg1RabTbKDDzeew3LCOYojaDMv5C5gF2bZJqoV78nSBmdbNwTaYdkIOGPhSsFQzjhWoVlDqDuYgDhky",
+    "sort_group": "INQUIRY",
+    "key_name": "COMMON_LIB_INQUIRY_ITEM_DESTINATION_TEACHER",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": false,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 6126,
+            "legacy_language_pid": 1,
+            "text": "先生にメール送信: ",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 6127,
+            "legacy_language_pid": 2,
+            "text": "Email to Teacher: ",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 6128,
+            "legacy_language_pid": 3,
+            "text": "发给老师的电子邮件: ",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 6129,
+            "legacy_language_pid": 4,
+            "text": "강사에게 이메일 보내기: ",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 10991,
+            "legacy_language_pid": 5,
+            "text": "Correo electrónico al profesor:",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 10992,
+            "legacy_language_pid": 6,
+            "text": "E-mail ao professor: ",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 10993,
+            "legacy_language_pid": 7,
+            "text": "發給老師的電子郵件: ",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 17191,
+            "legacy_language_pid": 8,
+            "text": "Courrier électronique à l'enseignant:",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 17192,
+            "legacy_language_pid": 9,
+            "text": "शिक्षक को ईमेल करें:",
+            "auto_translated": ""
+        },
+        "ar": {
+            "legacy_caption_pid": 32180,
+            "legacy_language_pid": 10,
+            "text": "المعلم لإرسال البريد:",
+            "auto_translated": "المعلم لإرسال البريد:"
+        },
+        "fa": {
+            "legacy_caption_pid": 32181,
+            "legacy_language_pid": 11,
+            "text": "معلم برای ارسال ایمیل:",
+            "auto_translated": "معلم برای ارسال ایمیل:"
+        },
+        "de": {
+            "legacy_caption_pid": 32182,
+            "legacy_language_pid": 12,
+            "text": "Lehrer E-Mail senden:",
+            "auto_translated": "Lehrer E-Mail senden:"
+        },
+        "ru": {
+            "legacy_caption_pid": 32183,
+            "legacy_language_pid": 13,
+            "text": "Учитель для отправки почты:",
+            "auto_translated": "Учитель для отправки почты:"
+        },
+        "ms": {
+            "legacy_caption_pid": 32184,
+            "legacy_language_pid": 14,
+            "text": "Guru untuk menghantar mel:",
+            "auto_translated": "Guru untuk menghantar mel:"
+        },
+        "ta": {
+            "legacy_caption_pid": 32185,
+            "legacy_language_pid": 15,
+            "text": "ஆசிரியர் மெயில் அனுப்ப:",
+            "auto_translated": "ஆசிரியர் மெயில் அனுப்ப:"
+        },
+        "it": {
+            "legacy_caption_pid": 32186,
+            "legacy_language_pid": 16,
+            "text": "Docente per inviare la posta:",
+            "auto_translated": "Docente per inviare la posta:"
+        },
+        "bn": {
+            "legacy_caption_pid": 32187,
+            "legacy_language_pid": 17,
+            "text": "গুরু মেইল ​​পাঠাতে:",
+            "auto_translated": "গুরু মেইল ​​পাঠাতে:"
+        },
+        "tr": {
+            "legacy_caption_pid": 32188,
+            "legacy_language_pid": 18,
+            "text": "Öğretmen posta göndermek için:",
+            "auto_translated": "Öğretmen posta göndermek için:"
+        },
+        "vi": {
+            "legacy_caption_pid": 32189,
+            "legacy_language_pid": 19,
+            "text": "Giáo viên để gửi mail:",
+            "auto_translated": "Giáo viên để gửi mail:"
+        },
+        "pl": {
+            "legacy_caption_pid": 32190,
+            "legacy_language_pid": 20,
+            "text": "Nauczyciel wysłać mail:",
+            "auto_translated": "Nauczyciel wysłać mail:"
+        },
+        "jv": {
+            "legacy_caption_pid": 32191,
+            "legacy_language_pid": 21,
+            "text": "Guru kanggo ngirim mail:",
+            "auto_translated": "Guru kanggo ngirim mail:"
+        },
+        "pa": {
+            "legacy_caption_pid": 32192,
+            "legacy_language_pid": 22,
+            "text": "ਗੁਰੂ ਮੇਲ ਭੇਜਣ ਲਈ:",
+            "auto_translated": "ਗੁਰੂ ਮੇਲ ਭੇਜਣ ਲਈ:"
+        },
+        "th": {
+            "legacy_caption_pid": 32193,
+            "legacy_language_pid": 23,
+            "text": "ครูในการส่งอีเมล:",
+            "auto_translated": "ครูในการส่งอีเมล:"
+        },
+        "te": {
+            "legacy_caption_pid": 41268,
+            "legacy_language_pid": 24,
+            "text": "మెయిల్ పంపడానికి టీచర్:",
+            "auto_translated": "మెయిల్ పంపడానికి టీచర్:"
+        },
+        "mr": {
+            "legacy_caption_pid": 41269,
+            "legacy_language_pid": 25,
+            "text": "शिक्षक मेल पाठविण्याची:",
+            "auto_translated": "शिक्षक मेल पाठविण्याची:"
+        },
+        "ur": {
+            "legacy_caption_pid": 41270,
+            "legacy_language_pid": 26,
+            "text": "ٹیچر میل بھیجنے کے لئے:",
+            "auto_translated": "ٹیچر میل بھیجنے کے لئے:"
+        },
+        "gu": {
+            "legacy_caption_pid": 41271,
+            "legacy_language_pid": 27,
+            "text": "શિક્ષક મેલ મોકલવા માટે:",
+            "auto_translated": "શિક્ષક મેલ મોકલવા માટે:"
+        },
+        "uk": {
+            "legacy_caption_pid": 41272,
+            "legacy_language_pid": 28,
+            "text": "Учитель для відправки пошти:",
+            "auto_translated": "Учитель для відправки пошти:"
+        },
+        "ml": {
+            "legacy_caption_pid": 41273,
+            "legacy_language_pid": 29,
+            "text": "മെയിൽ അയയ്ക്കാൻ ടീച്ചർ:",
+            "auto_translated": "മെയിൽ അയയ്ക്കാൻ ടീച്ചർ:"
+        },
+        "kn": {
+            "legacy_caption_pid": 41274,
+            "legacy_language_pid": 30,
+            "text": "ಮೇಲ್ ಕಳುಹಿಸಲು ಶಿಕ್ಷಕರ:",
+            "auto_translated": "ಮೇಲ್ ಕಳುಹಿಸಲು ಶಿಕ್ಷಕರ:"
+        },
+        "su": {
+            "legacy_caption_pid": 41275,
+            "legacy_language_pid": 31,
+            "text": "Guru pikeun ngirim surélék:",
+            "auto_translated": "Guru pikeun ngirim surélék:"
+        },
+        "ku": {
+            "legacy_caption_pid": 41276,
+            "legacy_language_pid": 32,
+            "text": "Mamoste to send mail:",
+            "auto_translated": "Mamoste to send mail:"
+        },
+        "ps": {
+            "legacy_caption_pid": 41277,
+            "legacy_language_pid": 33,
+            "text": "د ښوونکو ته د کرنې وزارت ته واستوي:",
+            "auto_translated": "د ښوونکو ته د کرنې وزارت ته واستوي:"
+        },
+        "ro": {
+            "legacy_caption_pid": 41278,
+            "legacy_language_pid": 34,
+            "text": "Profesor pentru a trimite e-mail:",
+            "auto_translated": "Profesor pentru a trimite e-mail:"
+        },
+        "id": {
+            "legacy_caption_pid": 41279,
+            "legacy_language_pid": 35,
+            "text": "Guru untuk mengirim email:",
+            "auto_translated": "Guru untuk mengirim email:"
+        },
+        "sd": {
+            "legacy_caption_pid": 41280,
+            "legacy_language_pid": 36,
+            "text": "ميل موڪلڻ لاء استاد:",
+            "auto_translated": "ميل موڪلڻ لاء استاد:"
+        },
+        "af": {
+            "legacy_caption_pid": 41281,
+            "legacy_language_pid": 37,
+            "text": "Onderwyser om pos te stuur:",
+            "auto_translated": "Onderwyser om pos te stuur:"
+        },
+        "sw": {
+            "legacy_caption_pid": 41282,
+            "legacy_language_pid": 38,
+            "text": "Mwalimu kutuma barua:",
+            "auto_translated": "Mwalimu kutuma barua:"
+        },
+        "lo": {
+            "legacy_caption_pid": 41283,
+            "legacy_language_pid": 39,
+            "text": "ຄູອາຈານທີ່ຈະສົ່ງຈົດຫມາຍ:",
+            "auto_translated": "ຄູອາຈານທີ່ຈະສົ່ງຈົດຫມາຍ:"
+        },
+        "nl": {
+            "legacy_caption_pid": 41284,
+            "legacy_language_pid": 40,
+            "text": "Leraar om mail te sturen:",
+            "auto_translated": "Leraar om mail te sturen:"
+        },
+        "tl": {
+            "legacy_caption_pid": 41285,
+            "legacy_language_pid": 41,
+            "text": "Guro upang magpadala ng mail:",
+            "auto_translated": "Guro upang magpadala ng mail:"
+        },
+        "ne": {
+            "legacy_caption_pid": 41286,
+            "legacy_language_pid": 42,
+            "text": "शिक्षक मेल पठाउन:",
+            "auto_translated": "शिक्षक मेल पठाउन:"
+        },
+        "hu": {
+            "legacy_caption_pid": 41287,
+            "legacy_language_pid": 43,
+            "text": "Tanár levelet küldeni:",
+            "auto_translated": "Tanár levelet küldeni:"
+        },
+        "cs": {
+            "legacy_caption_pid": 41288,
+            "legacy_language_pid": 44,
+            "text": "Učitel odeslat poštu:",
+            "auto_translated": "Učitel odeslat poštu:"
+        },
+        "el": {
+            "legacy_caption_pid": 41289,
+            "legacy_language_pid": 45,
+            "text": "Δάσκαλος για να στείλετε mail:",
+            "auto_translated": "Δάσκαλος για να στείλετε mail:"
+        },
+        "sv": {
+            "legacy_caption_pid": 41290,
+            "legacy_language_pid": 46,
+            "text": "Lärare att skicka e-post:",
+            "auto_translated": "Lärare att skicka e-post:"
+        },
+        "kk": {
+            "legacy_caption_pid": 41291,
+            "legacy_language_pid": 47,
+            "text": "поштаны жіберу үшін Мұғалім:",
+            "auto_translated": "поштаны жіберу үшін Мұғалім:"
+        },
+        "fi": {
+            "legacy_caption_pid": 41292,
+            "legacy_language_pid": 48,
+            "text": "Opettaja lähettää sähköpostia:",
+            "auto_translated": "Opettaja lähettää sähköpostia:"
+        },
+        "da": {
+            "legacy_caption_pid": 41293,
+            "legacy_language_pid": 49,
+            "text": "Lærer at sende mail:",
+            "auto_translated": "Lærer at sende mail:"
+        },
+        "he": {
+            "legacy_caption_pid": 41294,
+            "legacy_language_pid": 50,
+            "text": "מורה לשלוח דואר:",
+            "auto_translated": "מורה לשלוח דואר:"
+        },
+        "no": {
+            "legacy_caption_pid": 41295,
+            "legacy_language_pid": 51,
+            "text": "Lærer å sende e-post:",
+            "auto_translated": "Lærer å sende e-post:"
+        }
+    }
+}

@@ -1,0 +1,321 @@
+{
+    "resource_key": "MESSAGE_TO_CREATE_MATSUESOFT_ACCOUNT",
+    "legacy_resource_pid": 921,
+    "base_group_key": "grp-028-app-common-lib",
+    "additional_group_keys": [],
+    "key_for_update": "3SBd4Ojr2UCg2U7YsrEwki0wcHlZm33ZpjMzJdwxWNoh3xPWGQ98wnvLtURXncW90oiZUR7m4FaAKUXQDHblkAGlCsSBzsbMQ1iuxBxMynHVdPcftFxyOvEjUPGtJv9k",
+    "sort_group": "Message",
+    "key_name": "MESSAGE_TO_CREATE_MATSUESOFT_ACCOUNT",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": false,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 901,
+            "legacy_language_pid": 1,
+            "text": "Matsuesoftアカウント作成",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 902,
+            "legacy_language_pid": 2,
+            "text": "Sign up for Matsuesoft Account",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 6466,
+            "legacy_language_pid": 3,
+            "text": "Matsuesoft创建帐户",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 6467,
+            "legacy_language_pid": 4,
+            "text": "Matsuesoft 계정 만들기",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 10243,
+            "legacy_language_pid": 5,
+            "text": "Regístrese para la cuenta de Matsuesoft",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 10244,
+            "legacy_language_pid": 6,
+            "text": "Assine conta Matsuesoft",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 10245,
+            "legacy_language_pid": 7,
+            "text": "Matsuesoft創建帳戶",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 16205,
+            "legacy_language_pid": 8,
+            "text": "Inscrivez-vous au compte Matsuesoft",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 16206,
+            "legacy_language_pid": 9,
+            "text": "Matsuesoft खाता  से साइन अप करें",
+            "auto_translated": ""
+        },
+        "ar": {
+            "legacy_caption_pid": 28890,
+            "legacy_language_pid": 10,
+            "text": "Matsuesoft إنشاء حساب",
+            "auto_translated": "Matsuesoft إنشاء حساب"
+        },
+        "fa": {
+            "legacy_caption_pid": 28891,
+            "legacy_language_pid": 11,
+            "text": "Matsuesoft ایجاد حساب کاربری",
+            "auto_translated": "Matsuesoft ایجاد حساب کاربری"
+        },
+        "de": {
+            "legacy_caption_pid": 28892,
+            "legacy_language_pid": 12,
+            "text": "Matsuesoft Konto erstellen",
+            "auto_translated": "Matsuesoft Konto erstellen"
+        },
+        "ru": {
+            "legacy_caption_pid": 28893,
+            "legacy_language_pid": 13,
+            "text": "Matsuesoft Создать учетную запись",
+            "auto_translated": "Matsuesoft Создать учетную запись"
+        },
+        "ms": {
+            "legacy_caption_pid": 28894,
+            "legacy_language_pid": 14,
+            "text": "Matsuesoft Buat Akaun",
+            "auto_translated": "Matsuesoft Buat Akaun"
+        },
+        "ta": {
+            "legacy_caption_pid": 28895,
+            "legacy_language_pid": 15,
+            "text": "Matsuesoft கணக்கு உருவாக்கு",
+            "auto_translated": "Matsuesoft கணக்கு உருவாக்கு"
+        },
+        "it": {
+            "legacy_caption_pid": 28896,
+            "legacy_language_pid": 16,
+            "text": "Matsuesoft Crea account",
+            "auto_translated": "Matsuesoft Crea account"
+        },
+        "bn": {
+            "legacy_caption_pid": 28897,
+            "legacy_language_pid": 17,
+            "text": "Matsuesoft অ্যাকাউন্ট তৈরি",
+            "auto_translated": "Matsuesoft অ্যাকাউন্ট তৈরি"
+        },
+        "tr": {
+            "legacy_caption_pid": 28898,
+            "legacy_language_pid": 18,
+            "text": "Hesap Oluştur Matsuesoft",
+            "auto_translated": "Hesap Oluştur Matsuesoft"
+        },
+        "vi": {
+            "legacy_caption_pid": 28899,
+            "legacy_language_pid": 19,
+            "text": "Matsuesoft Tạo tài khoản",
+            "auto_translated": "Matsuesoft Tạo tài khoản"
+        },
+        "pl": {
+            "legacy_caption_pid": 28900,
+            "legacy_language_pid": 20,
+            "text": "Matsuesoft Utwórz konto",
+            "auto_translated": "Matsuesoft Utwórz konto"
+        },
+        "jv": {
+            "legacy_caption_pid": 28901,
+            "legacy_language_pid": 21,
+            "text": "Matsuesoft Gawe akun",
+            "auto_translated": "Matsuesoft Gawe akun"
+        },
+        "pa": {
+            "legacy_caption_pid": 28902,
+            "legacy_language_pid": 22,
+            "text": "Matsuesoft ਖਾਤਾ ਬਣਾਓ",
+            "auto_translated": "Matsuesoft ਖਾਤਾ ਬਣਾਓ"
+        },
+        "th": {
+            "legacy_caption_pid": 28903,
+            "legacy_language_pid": 23,
+            "text": "Matsuesoft สร้างบัญชี",
+            "auto_translated": "Matsuesoft สร้างบัญชี"
+        },
+        "te": {
+            "legacy_caption_pid": 34716,
+            "legacy_language_pid": 24,
+            "text": "Matsuesoft ఖాతా సృష్టించు",
+            "auto_translated": "Matsuesoft ఖాతా సృష్టించు"
+        },
+        "mr": {
+            "legacy_caption_pid": 34717,
+            "legacy_language_pid": 25,
+            "text": "खाते तयार करा Matsuesoft",
+            "auto_translated": "खाते तयार करा Matsuesoft"
+        },
+        "ur": {
+            "legacy_caption_pid": 34718,
+            "legacy_language_pid": 26,
+            "text": "Matsuesoft اکاؤنٹ بنائیں",
+            "auto_translated": "Matsuesoft اکاؤنٹ بنائیں"
+        },
+        "gu": {
+            "legacy_caption_pid": 34719,
+            "legacy_language_pid": 27,
+            "text": "Matsuesoft એકાઉન્ટ બનાવો",
+            "auto_translated": "Matsuesoft એકાઉન્ટ બનાવો"
+        },
+        "uk": {
+            "legacy_caption_pid": 34720,
+            "legacy_language_pid": 28,
+            "text": "Matsuesoft Створити обліковий запис",
+            "auto_translated": "Matsuesoft Створити обліковий запис"
+        },
+        "ml": {
+            "legacy_caption_pid": 34721,
+            "legacy_language_pid": 29,
+            "text": "മത്സുഎസൊഫ്ത് അക്കൗണ്ട് സൃഷ്ടിക്കുക",
+            "auto_translated": "മത്സുഎസൊഫ്ത് അക്കൗണ്ട് സൃഷ്ടിക്കുക"
+        },
+        "kn": {
+            "legacy_caption_pid": 34722,
+            "legacy_language_pid": 30,
+            "text": "Matsuesoft ಖಾತೆ ರಚಿಸಿ",
+            "auto_translated": "Matsuesoft ಖಾತೆ ರಚಿಸಿ"
+        },
+        "su": {
+            "legacy_caption_pid": 34723,
+            "legacy_language_pid": 31,
+            "text": "Matsuesoft Jieun Akun",
+            "auto_translated": "Matsuesoft Jieun Akun"
+        },
+        "ku": {
+            "legacy_caption_pid": 34724,
+            "legacy_language_pid": 32,
+            "text": "Matsuesoft Create Account",
+            "auto_translated": "Matsuesoft Create Account"
+        },
+        "ps": {
+            "legacy_caption_pid": 34725,
+            "legacy_language_pid": 33,
+            "text": "Matsuesoft حساب جوړول",
+            "auto_translated": "Matsuesoft حساب جوړول"
+        },
+        "ro": {
+            "legacy_caption_pid": 34726,
+            "legacy_language_pid": 34,
+            "text": "Matsuesoft Creare cont",
+            "auto_translated": "Matsuesoft Creare cont"
+        },
+        "id": {
+            "legacy_caption_pid": 34727,
+            "legacy_language_pid": 35,
+            "text": "Matsuesoft Buat Akun",
+            "auto_translated": "Matsuesoft Buat Akun"
+        },
+        "sd": {
+            "legacy_caption_pid": 34728,
+            "legacy_language_pid": 36,
+            "text": "Matsuesoft اڪائونٽ ٺاهيو",
+            "auto_translated": "Matsuesoft اڪائونٽ ٺاهيو"
+        },
+        "af": {
+            "legacy_caption_pid": 34729,
+            "legacy_language_pid": 37,
+            "text": "Matsuesoft rekening te skep",
+            "auto_translated": "Matsuesoft rekening te skep"
+        },
+        "sw": {
+            "legacy_caption_pid": 34730,
+            "legacy_language_pid": 38,
+            "text": "Matsuesoft Fungua Akaunti",
+            "auto_translated": "Matsuesoft Fungua Akaunti"
+        },
+        "lo": {
+            "legacy_caption_pid": 34731,
+            "legacy_language_pid": 39,
+            "text": "Matsuesoft ສ້າງບັນຊີ",
+            "auto_translated": "Matsuesoft ສ້າງບັນຊີ"
+        },
+        "nl": {
+            "legacy_caption_pid": 34732,
+            "legacy_language_pid": 40,
+            "text": "Matsuesoft Account aanmaken",
+            "auto_translated": "Matsuesoft Account aanmaken"
+        },
+        "tl": {
+            "legacy_caption_pid": 34733,
+            "legacy_language_pid": 41,
+            "text": "Matsuesoft Lumikha ng Account",
+            "auto_translated": "Matsuesoft Lumikha ng Account"
+        },
+        "ne": {
+            "legacy_caption_pid": 34734,
+            "legacy_language_pid": 42,
+            "text": "खाता सिर्जना गर्नुहोस् Matsuesoft",
+            "auto_translated": "खाता सिर्जना गर्नुहोस् Matsuesoft"
+        },
+        "hu": {
+            "legacy_caption_pid": 34735,
+            "legacy_language_pid": 43,
+            "text": "Matsuesoft létrehozása",
+            "auto_translated": "Matsuesoft létrehozása"
+        },
+        "cs": {
+            "legacy_caption_pid": 34736,
+            "legacy_language_pid": 44,
+            "text": "Matsuesoft Vytvořit účet",
+            "auto_translated": "Matsuesoft Vytvořit účet"
+        },
+        "el": {
+            "legacy_caption_pid": 34737,
+            "legacy_language_pid": 45,
+            "text": "Matsuesoft Δημιουργία λογαριασμού",
+            "auto_translated": "Matsuesoft Δημιουργία λογαριασμού"
+        },
+        "sv": {
+            "legacy_caption_pid": 34738,
+            "legacy_language_pid": 46,
+            "text": "Matsuesoft Skapa konto",
+            "auto_translated": "Matsuesoft Skapa konto"
+        },
+        "kk": {
+            "legacy_caption_pid": 34739,
+            "legacy_language_pid": 47,
+            "text": "Тіркелгі жасау Matsuesoft",
+            "auto_translated": "Тіркелгі жасау Matsuesoft"
+        },
+        "fi": {
+            "legacy_caption_pid": 34740,
+            "legacy_language_pid": 48,
+            "text": "Matsuesoft Luo tili",
+            "auto_translated": "Matsuesoft Luo tili"
+        },
+        "da": {
+            "legacy_caption_pid": 34741,
+            "legacy_language_pid": 49,
+            "text": "Matsuesoft Opret konto",
+            "auto_translated": "Matsuesoft Opret konto"
+        },
+        "he": {
+            "legacy_caption_pid": 34742,
+            "legacy_language_pid": 50,
+            "text": "Matsuesoft צור חשבון",
+            "auto_translated": "Matsuesoft צור חשבון"
+        },
+        "no": {
+            "legacy_caption_pid": 34743,
+            "legacy_language_pid": 51,
+            "text": "Matsuesoft Opprett konto",
+            "auto_translated": "Matsuesoft Opprett konto"
+        }
+    }
+}

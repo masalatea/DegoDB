@@ -1,0 +1,330 @@
+# 2026-0508 Rebuild Status
+
+## 概要
+
+- 2026-05-11 時点の最新スナップショット。
+- `Project 1 (Mtool)` を新実装の canonical 初期 seed として扱う方針で固定。
+- `Source Output` は、`RUNTIME-DBCLASSES` の first runtime self-generation slice と、Project 1 由来 proxy server/client の first-pass artifact 生成まで到達した。
+- `Compare Output` は、admin 側の canonical 設定画面に加えて `lab` 側の実行画面、job 履歴、review/API 画面まで到達した。
+- `Custom Proxy` は canonical metadata / step 編集 UI、`Project 1 (Mtool)` seed、target source output の canonical key 再マップ、source output 単位 build plan preview、proxy artifact 生成入力まで到達した。
+- `Single Function Proxy Target` は `project_db_access_function_source_output_targets` を追加し、function detail / source output detail から canonical metadata として編集・参照できるところまで到達した。
+- `DB Table` / `Data Class` upstream loop は first slice が入り、`MTOOL` では live schema import と canonical sync を実行できる。
+- `DB Access` は class/function sync に加えて `Project 1 (Mtool)` の canonical seed 化まで到達し、class/function `101 / 626` と designer sub-resource `609 / 2110 / 0 / 567 / 460 / 453` を initdb で再投入できる。
+- `RUNTIME-DBCLASSES` では canonical SQL regeneration slice を継続拡張しており、2026-05-11 時点の最新 bundle では `100` class / `518` function が canonical SQL、`7` function が canonical helper、`64` data class が canonical plain DTO / derived DTO、`101` function が legacy delegate になった。warning は `0` まで減った。
+
+## 現状サマリ
+
+- `RUNTIME-DBCLASSES`
+  - UI / CLI の両方から source output artifact を生成できる。
+  - `generated/mtool/dbclasses` を bootstrap source にした staging tree を artifact 化する。
+  - sync 済み `project_db_access_classes` / `project_db_access_functions` があれば、root `dbaccess-*` を canonical wrapper に差し替える。
+  - 現在の mode は `canonical-dbaccess-partial-sql-regenerated` であり、simple CRUD / first-pass joined select / same-table OR group を含む select-update-delete は SQL 本体まで canonical 再生成し、既知 helper-style method は canonical helper として PHP body を再生成する。`data-*` は plain DTO を対象に canonical declared property set を突き合わせ、親 DTO の raw property を non-plain class からも導出したうえで、set 一致かつ順序差のみの class は bootstrap 宣言順で canonical 生成する。それ以外は bootstrap copy を維持する。
+  - 最新 bundle では `generated_dbaccess_count=101`、`fallback_dbaccess_count=0`、`canonical_function_count=626`、`sql_regenerated_dbaccess_count=100`、`sql_regenerated_function_count=518`、`canonical_helper_function_count=7`、`canonical_data_class_count=64`、`legacy_delegate_function_count=101` を確認済み。
+  - `sync_project_db_access.php` は method catalog に存在しない `sync-bootstrap` row を stale metadata として prune する。
+  - `db-access/sync` UI と `scripts/sync_project_db_access.php` により、bootstrap copy された `dbaccess-*.php` を canonical class/function row へ bulk sync できる。
+  - `MTOOL` では class 101 / function 626 row を sync 済みで、staging bundle には `_support/runtime-generation-manifest.json` を含める。
+- `DBIMPORT-PROXY-SERVER` / `DBIMPORT-PROXY-CLIENT`
+  - `custom-proxy-server` / `custom-proxy-client` definition として canonical DB に入っている。
+  - UI / CLI の両方から proxy artifact を生成できる。
+  - UI detail と CLI から target custom proxy の build plan preview も見られる。
+  - shared proxy auth resolver は `db_access function` 用 `SingleProxy_*` と `custom proxy` 用 `AuthType` を別責務として扱うよう整理した。
+  - `MTOOL` では custom proxy 4 件、step 8 件、未解決 step 0 件を確認済み。
+  - single-function proxy target row は別 table へ切り出したが、現行 `custom-proxy-*` generator はまだ custom proxy build plan だけを読む。
+- `DB Table` / `Data Class`
+  - `dbtable` / `dbtablecolumns` / `dataclass` / `dataclassfields` を canonical schema として追加済み。
+  - `tables/import` は preview / apply を持ち、`MTOOL` では `config_app` の live schema から import を実行できる。
+  - `data-classes/sync` は preview / apply を持ち、`dbtable.name == dataclass.name` の first-pass sync を実行できる。
+  - 一覧 / detail は canonical row を優先表示し、未導入 project だけ bootstrap fallback を使う。
+  - 実測では current live-schema managed scope が `21` tables / `239` columns same、current data-class sync が `40` classes / `387` fields same を確認済み。
+- 未了
+  - runtime layer 全体はまだ bootstrap / legacy SQL support 依存であり、canonical metadata からの full self-generation には到達していない。
+  - DB Access designer sub-resource の `Project 1` baseline seed はできたが、bootstrap-to-canonical refresh job はまだ class/function 以外に持っていない。
+  - DB import connector はまだ `MTOOL` 固定の first slice であり、外部 MySQL / PostgreSQL / SQLite への一般化は未了である。
+  - semantic hook / collaborator の粒度、project 固有 auth 実装、app 自身の self-generated runtime 切り替えはまだ次段。
+
+## 自己置換の到達条件
+
+- 2026-05-08 時点では、まだ「自身の出力コードに自分を置き換える」段階ではない。
+- 現在地は `proxy artifact 出力` と `first runtime self-generation slice` の段階であり、自己置換の直前ではない。
+- 到達条件は次の 3 点である。
+  - canonical metadata から `DBIMPORT-PROXY-SERVER` / `DBIMPORT-PROXY-CLIENT` の actual source output artifact を生成できること
+  - `generated/mtool/dbclasses` への legacy copy bootstrap に依存せず、canonical metadata から runtime layer 自体を再生成できること
+  - `APP_GENERATED_DBCLASSES_MODE` と repository driver を self-generated runtime 側へ切り替えても、admin / lab の主要導線が成立すること
+- 現在は 1 点目を満たしたが、2 点目と 3 点目は未了である。
+- したがって、次の実装マイルストーンは「canonical metadata と designer sub-resource seed をもとに SQL 本体まで出して legacy SQL support を外すこと」、その次が「app 自身を self-generated runtime 側へ切り替えること」である。
+
+## 今回完了したこと
+
+- `db-config` に `project_source_outputs` を追加。
+- `db-config` に `dbtable` / `dbtablecolumns` / `dataclass` / `dataclassfields` を追加。
+- `shared/table_metadata_repository.php` / `table_metadata_repository_pdo.php` を追加し、table / column canonical metadata の取得・保存を実装した。
+- `shared/data_class_repository.php` / `data_class_repository_pdo.php` を追加し、data class canonical metadata の取得・保存を実装した。
+- `shared/project_table_import_service.php` を追加し、live schema と canonical table metadata の差分比較と apply を実装した。
+- `shared/project_data_class_sync_service.php` を追加し、table metadata から data class metadata への first-pass sync を実装した。
+- `scripts/import_project_tables.php` と `scripts/sync_project_data_classes.php` を追加し、CLI からも同じ import / sync を実行できるようにした。
+- `admin:/projects/{project_key}/tables/import` と `admin:/projects/{project_key}/data-classes/sync` を preview-only から apply 付き UI へ更新した。
+- `admin:/projects/{project_key}/tables` / `/tables/{table_key}` / `/tables/{table_key}/columns` と `admin:/projects/{project_key}/data-classes` / `/{data_class_key}` / `/fields` は canonical row 優先表示へ更新した。
+- `011_project_source_output_metadata.sql` で `MTOOL / RUNTIME-DBCLASSES` を既定 definition として seed。
+- `admin:/projects/{project_key}/source-outputs` を definition 一覧兼 artifact 一覧として実装。
+- `admin:/projects/{project_key}/source-outputs/{source_output_key}` を detail と artifact 生成画面として実装。
+- `admin:/projects/{project_key}/source-outputs/{source_output_key}/edit` を canonical metadata 編集画面として実装。
+- `original-codes/docs/2026-0508-legacy-self-replacement-scope.md` を追加し、旧実装の自己置換対象を `ProjectSourceOutput` / build / Custom Proxy 中心に棚卸しした。
+- `original-codes/docs/2026-0508-legacy-source-output-inventory.md` を追加し、`ProjectSourceOutput` 全体と proxy target を対象外込みで一覧化した。
+- `admin:/projects/{project_key}/source-outputs/artifacts/{artifact_key}/download` を download endpoint として実装。
+- `scripts/create_project_output.php` を更新し、CLI からも artifact を生成可能にした。
+  - `--source-output-key` 未指定時は DB なしの local default definition を使う。
+  - canonical definition 指定時は `web-admin` container からの実行を想定する。
+- artifact の保存先は `generated/source-outputs/{project_key}/{artifact_key}/` とし、`manifest.json` schema version 3 と `tar.gz` archive を出力する。
+- source output artifact には `custom/source-outputs/{project_key}/{source_output_key}` 規約の custom layer も同梱するようにした。
+  - workspace 側に custom layer がある場合はその内容を copy する。
+  - 未作成の場合は bundle 内へ strategy 別 scaffold を生成する。
+- source output artifact の runtime を `Base/Custom wrapper` 方式へ変更した。
+  - `mtool/dbclasses/data-*.php` / `dbaccess-*.php` は root basename entry file として残す。
+  - `mtool/dbclasses/_base/` に `*Base` class を出力する。
+  - `mtool/dbclasses/_wrappers/` に default wrapper を出力する。
+  - `mtool/dbclasses/_runtime_loader.php` で custom layer の `bootstrap.php` と custom wrapper を解決する。
+- `custom/source-outputs/MTOOL/RUNTIME-DBCLASSES/README.md` と `bootstrap.php` を追加し、MTOOL runtime dbclasses 向けの user-owned custom layer entry point を作成した。
+- `shared/project_output_runtime_generator.php` を追加し、`RUNTIME-DBCLASSES` 生成時に bootstrap runtime を staging し、sync 済み canonical DB Access metadata を使って root `dbaccess-*` を overlay できるようにした。
+- `shared/project_output_runtime_sql_generator.php` を追加し、designer sub-resource と method signature から simple CRUD / first-pass joined select を関数単位で canonical SQL へ再生成できるようにした。
+- `shared/generated_catalog.php` を更新し、global helper function を dbaccess method catalog に混ぜないよう class scope のみを検出対象にした。
+- `shared/project_output_service.php` を更新し、`RUNTIME-DBCLASSES` では prepared runtime source tree を bundle 化するようにした。
+- runtime staging bundle には `_support/runtime-generation-manifest.json` を書き、mode / counts / warnings を保存するようにした。
+- `shared/db_access_repository_pdo.php` の function catalog を拡張し、runtime generator が `sort_order_columns` / `parameter_type` / `limit_parameter_type` などの full metadata を見られるようにした。
+- `shared/project_output_proxy_generator.php` を追加し、custom proxy build plan から PHP proxy server / C# proxy client の first-pass source tree を生成できるようにした。
+  - server 側は `proxyserver-*.php`、`_base/handlers/*.php`、`_wrappers/handlers/*.php`、`_support/` を出力する。
+  - client 側は `*ProxyClientBase.cs`、`*ProxyClient.cs`、request/result/DTO class を出力する。
+- generated proxy server runtime に `singleGetFunctionName()`、`authorizeByGetFunction()`、`authorizeByLoginCookieToken()` hook を追加し、`GetFunc` / `ProjectTokenOrGetFunc` / `LoginCookieToken` を wrapper handler で受けられるようにした。
+- generated proxy client request class は auth strategy に応じて `TOKEN` / `LOGIN_COOKIE_TOKEN` を出し分けるようにした。
+- `shared/project_output_service.php` を拡張し、`custom-proxy-server` / `custom-proxy-client` strategy でも artifact を bundle / archive できるようにした。
+- proxy client 向け custom layer scaffold として `ClientExtensions.cs` を追加し、proxy server 向け custom layer entry point を `handlers/*.php` ベースへ整理した。
+- `db-config` に `project_compare_outputs` / `project_compare_output_additional_paths` を追加。
+- `012_compare_output_metadata.sql` を追加し、既存 volume への手動適用パスを用意した。
+- `013_compare_output_seed.sql` を追加し、`Project 1 (Mtool)` 由来の `MAIN` / `CLIENTCOMMON` compare output と additional path seed を投入可能にした。
+- `db-config` に `project_custom_proxies` / `project_custom_proxy_steps` / `project_custom_proxy_source_output_targets` を追加。
+- `014_custom_proxy_metadata.sql` を追加し、Custom Proxy canonical metadata の保存先を用意した。
+- `015_custom_proxy_seed.sql` を追加し、`Project 1 (Mtool)` 由来の `DB::Import` / `DB::GetTableDefinition` / `DB::GetColumnDefinition` / `DB::GetProjectList` を seed 可能にした。
+- `016_proxy_source_output_seed.sql` を更新し、`DBIMPORT-PROXY-SERVER` / `DBIMPORT-PROXY-CLIENT` を proxy artifact 生成可能な source output definition として seed 可能にした。
+- `017_proxy_source_output_generation_enable.sql` を追加し、既存 volume 上の proxy definition を generation enabled な値へ更新できるようにした。後に `target_binding_type=custom-proxy` も同時に揃える形へ更新した。
+- `admin:/projects/{project_key}/compare-output-settings` を definition 一覧兼編集画面として実装。
+- `admin:/projects/{project_key}/compare-output-settings/additional-paths` を additional path 一覧兼編集画面として実装。
+- `shared/custom_proxy_repository.php` / `custom_proxy_repository_pdo.php` を追加し、Custom Proxy 本体 / step / target の CRUD を実装した。
+- `shared/custom_proxy_service.php` を追加し、generated function catalog 参照と target source output key 正規化を共通化した。
+- `shared/custom_proxy_build_plan_service.php` を追加し、source output ごとに canonical custom proxy metadata を build plan preview へ解決できるようにした。
+- `admin:/projects/{project_key}/proxy/custom` を Custom Proxy 一覧・作成・削除画面として実装した。
+- `admin:/projects/{project_key}/proxy/custom/{custom_proxy_key}` を auth / transaction / target source output 編集画面として実装した。
+- `admin:/projects/{project_key}/proxy/custom/{custom_proxy_key}/functions` を step 一覧・追加・更新・削除画面として実装した。
+- `admin:/projects/{project_key}/source-outputs/{source_output_key}` に Custom Proxy Build Plan section を追加し、proxy artifact definition でも target proxy / step / generated function 解決状況を見られるようにした。
+- `scripts/show_source_output_build_plan.php` を追加し、CLI / Codex からも source output ごとの custom proxy build plan preview を JSON で取得できるようにした。
+- project hub から Custom Proxy 画面へ遷移できるようにした。
+- `shared/compare_output_service.php` を追加し、local filesystem 上の compare root / additional path から compare output file を生成可能にした。
+- `scripts/create_compare_output.php` を追加し、CLI からも compare output file を生成可能にした。
+- `shared/compare_output_asset_service.php` を追加し、template asset / ignore rule asset を project 単位の file-based override として扱えるようにした。
+- `shared/compare_output_job_service.php` を追加し、compare output 実行結果を file-based job manifest と snapshot として保存可能にした。
+- `shared/project_db_access_metadata_helper.php` を追加し、DB Access class/function の preview-derived canonical default を UI と sync service で共通化した。
+- `shared/project_db_access_sync_service.php` を追加し、bootstrap copy された `dbaccess-*.php` から `project_db_access_classes` / `project_db_access_functions` を bulk sync できるようにした。
+- `admin:/projects/{project_key}/db-access/sync` を preview-only から実行 UI へ変更し、`manual` / `seed-legacy` row を保持したまま `sync-bootstrap` row を upsert するようにした。
+- `scripts/sync_project_db_access.php` と `make db-access-sync PROJECT_KEY=MTOOL` を追加し、CLI / Codex からも同じ sync を実行できるようにした。
+- `shared/project_db_access_sync_page.php` から legacy import UI を除去し、DB Access sync は class/function canonical sync 専用に戻した。
+- DB Access designer metadata の試験列 `legacy_source_pid` を schema / repository / existing volume から除去し、`018_drop_db_access_designer_legacy_source_pid.sql` を追加した。
+- `scripts/export_mtool_db_access_seed.php` を追加し、current config DB と temporary imported `legacy_seed_tmp` から `019_project_db_access_class_function_seed.sql` / `020_project_db_access_designer_seed.sql` を再生成できるようにした。
+- `019_project_db_access_class_function_seed.sql` を追加し、`Project 1 (Mtool)` の class 101 / function 628 canonical baseline を initdb seed 化した。
+- `020_project_db_access_designer_seed.sql` を追加し、`Project 1 (Mtool)` の query designer sub-resource `609 / 2110 / 0 / 567 / 460 / 453` row を `source_of_truth=seed-legacy` で initdb seed 化した。
+- `019_project_db_access_class_function_seed.sql` と `021_backfill_runtime_first_slice_sort_order_columns.sql` を更新し、first slice で必要な `dbtable` / `dbtablecolumns` / `Project` list 関数の `sort_order_columns` を canonical metadata 側へ補正した。
+- `scripts/export_mtool_db_access_seed.php` を拡張し、`022_backfill_runtime_legacy_selectlist_sort_order_columns.sql` を再生成できるようにした。
+- `022_backfill_runtime_legacy_selectlist_sort_order_columns.sql` を追加し、`Project 1 (Mtool)` legacy baseline に明示 order がある `SELECTLIST` 76 件の `sort_order_columns` を canonical metadata 側へ補完できるようにした。
+- `shared/project_output_runtime_sql_generator.php` を更新し、legacy baseline で `sort_order_columns` が blank の `SELECTLIST` は `ORDER BY` なしで canonical SQL を生成するようにした。
+- project hub から Compare Output 設定へ遷移できるようにした。
+- `lab` から `db-config` の canonical compare definition を read-only 参照する secondary config DB access を追加。
+- `web-admin` にも `APP_CONFIG_DB_*` environment を明示し、config repository が `.env` の実パスワードを読むように修正した。
+- `lab:/runs/compare-output/{project_key}` を追加し、selected definition から compare output file を生成できるようにした。
+- `lab:/runs/compare-output/{job_key}` と `lab:/api/runs/compare-output/{job_key}` を追加し、保存済み job の review と JSON 取得を可能にした。
+- `lab:/runs/compare-output/{project_key}` に recent jobs 一覧と job detail 導線を追加した。
+- `admin:/projects/{project_key}/compare-output-settings` に template asset / ignore rule asset の編集 UI を追加した。
+- `web-lab` に `/var/www/scripts` mount と `generated` writable mount を追加し、lab container から CLI でも compare output file を生成できるようにした。
+- `scripts/create_compare_output.php` は `job_key`、manifest path、job review route、job API route を JSON で返すようにした。
+
+## 検証結果
+
+- `php -l` は今回追加・更新した Compare Output 関連 PHP で通過。
+- `php -l` は `shared/project_output_runtime_generator.php` と `shared/project_output_service.php` でも通過。
+- `db-config` へ `011_project_source_output_metadata.sql` を適用済み。
+- `db-config` へ `013_compare_output_seed.sql` を適用し、`MTOOL / MAIN` と `MTOOL / CLIENTCOMMON` を確認済み。
+- `db-config` へ `014_custom_proxy_metadata.sql` と `015_custom_proxy_seed.sql` を適用し、`MTOOL` に 4 件の custom proxy と 8 件の step が入ることを確認済み。
+- `db-config` へ `016_proxy_source_output_seed.sql` と `017_proxy_source_output_generation_enable.sql` を適用し、`MTOOL` の `DBIMPORT-PROXY-SERVER` / `DBIMPORT-PROXY-CLIENT` が generation enabled な strategy / path / URL と `target_binding_type=custom-proxy` を持つことを確認済み。
+- `db-config` へ `018_drop_db_access_designer_legacy_source_pid.sql` を適用し、designer table 6 種から `legacy_source_pid` 列と関連 index が消えることを確認済み。
+- `docker compose exec -T web-admin php /var/www/scripts/sync_project_db_access.php --project-key=MTOOL` を 2 回実行し、1 回目は class 101 / function 628 inserted、2 回目は class 101 / function 628 updated の idempotent な結果を確認済み。
+- sync 後の `project_db_access_classes` / `project_db_access_functions` は `MTOOL` で class 101 / function 628 row を持つことを確認済み。
+- `php scripts/export_mtool_db_access_seed.php` を実行し、`019_project_db_access_class_function_seed.sql` / `020_project_db_access_designer_seed.sql` が生成されることを確認済み。
+- `db-config` へ `019_project_db_access_class_function_seed.sql` と `020_project_db_access_designer_seed.sql` を 2 回ずつ適用し、class/function は `101 / 628`、designer sub-resource は `609 / 2110 / 0 / 567 / 460 / 453` のまま増殖しないことを確認済み。
+- `db-config` へ upstream metadata migration を適用し、`dbtable` / `dbtablecolumns` / `dataclass` / `dataclassfields` が作成されることを確認済み。
+- `docker compose exec -T web-admin php /var/www/scripts/import_project_tables.php --project-key=MTOOL` を 2 回実行し、1 回目は `20 tables / 233 columns` imported、2 回目は all same を確認済み。
+- `docker compose exec -T web-admin php /var/www/scripts/sync_project_data_classes.php --project-key=MTOOL` を 2 回実行し、1 回目は `20 classes / 233 fields` inserted、2 回目は all same を確認済み。
+- `db-config` 上の row count として `dbtable=20`、`dbtablecolumns=233`、`dataclass=20`、`dataclassfields=233` を確認済み。
+- `web-admin` の stub login 後に `/projects/MTOOL/tables/import`、`/projects/MTOOL/data-classes/sync`、`/projects/MTOOL/tables`、`/projects/MTOOL/data-classes`、`/projects/MTOOL/tables/projects/columns`、`/projects/MTOOL/data-classes/projects/fields` が 200 で描画されることを確認済み。
+- `docker compose exec -T web-admin php /var/www/scripts/create_project_output.php --project-key=MTOOL --source-output-key=RUNTIME-DBCLASSES --requested-by=...` の生成結果として、artifact key `20260508-071211-ef09f3d5` を確認済み。
+- 上記 bundle では `_base/dbaccess-Project.php` が canonical-generated wrapper になり、`GetProjectList` / `GetProjectbyOwnerOrUserSecurityList` / `GetProject` が canonical SQL へ切り替わっていること、`_support/legacy-dbaccess/dbaccess-Project.php` が `ProjectDBAccessLegacy` を含むことを確認済み。
+- 上記 bundle の `_support/runtime-generation-manifest.json` では `mode=canonical-dbaccess-partial-sql-regenerated`、`generated_dbaccess_count=101`、`canonical_function_count=626`、`sql_regenerated_dbaccess_count=90`、`sql_regenerated_function_count=386`、`legacy_delegate_function_count=240`、`fallback_dbaccess_count=0` を確認済み。
+- temporary imported `legacy_seed_tmp` を作成して `php scripts/export_mtool_db_access_seed.php` を再実行し、`022_backfill_runtime_legacy_selectlist_sort_order_columns.sql` が `76` 件の `SELECTLIST.sort_order_columns` backfill を生成することを確認済み。
+- `db-config` へ `022_backfill_runtime_legacy_selectlist_sort_order_columns.sql` を適用し、`sort_order_columns <> ''` の function が `76` 件になり、対象 `SELECTLIST` が `source_of_truth=seed-legacy` へ更新されることを確認済み。
+- `docker compose exec -T web-admin php /var/www/scripts/create_project_output.php --project-key=MTOOL --source-output-key=RUNTIME-DBCLASSES --requested-by=...` の再生成結果として、artifact key `20260508-073458-87945340` を確認済み。
+- 上記 bundle の `_support/runtime-generation-manifest.json` では `mode=canonical-dbaccess-partial-sql-regenerated`、`generated_dbaccess_count=101`、`canonical_function_count=626`、`sql_regenerated_dbaccess_count=100`、`sql_regenerated_function_count=501`、`legacy_delegate_function_count=125`、`fallback_dbaccess_count=0` を確認済み。
+- 上記 bundle の delegate 理由分布では `sort_order_columns is required for select list regeneration` が `0` 件になり、残りは `method has no parameters=11`、`select where OR groups are not supported yet=5`、`select target fields are empty=5`、`unsupported action type: UNKNOWN=2`、`delete where OR groups are not supported yet=1` に整理されたことを確認済み。
+- `shared/project_output_runtime_sql_generator.php` を更新し、zero-arg write method でも designer row が `fixed/raw` だけで成立する場合は canonical SQL generation を継続できるようにした。
+- `shared/project_output_runtime_sql_generator.php` を更新し、`MySQLShowColumn` / `htmlTemplateParameter_leftouterjoin_AnotherHtmlTemplate` / `LanguageResourceCaption` の helper-style method を `canonical-helper` として生成できるようにした。
+- `shared/project_output_runtime_generator.php` を更新し、plain DTO として安全に一致確認が通った `data-*` だけを canonical metadata から overlay 生成できるようにした。
+- `shared/project_output_runtime_generator.php` を更新し、non-plain 親 DTO からも raw property を導出し、declared property set が一致して順序だけ異なる plain DTO は bootstrap 宣言順で canonical 化できるようにした。
+- `shared/project_output_runtime_generator.php` を更新し、`CompareOutputSearchCache`、`ProjectSourceOutputSavedFiles`、`TestPatternSelection`、`UploadDropboxPathCache` では legacy dataclass / table schema 由来 property を supplement し、`TestCondition` では stale canonical property `ConditionOrder` を plain DTO 導出対象から除外するようにした。
+- `shared/project_output_runtime_generator.php` を更新し、`daCustomProxyFunc_leftouterjoin_dafunc_and_da` の `AuthType` / `SingleGetFuncPID` を bootstrap-only field として扱い、bootstrap copy 維持理由を warning へ明示するようにした。
+- `docker compose exec -T web-admin php /var/www/scripts/create_project_output.php --project-key=MTOOL --source-output-key=RUNTIME-DBCLASSES --requested-by=codex` の再生成結果として、artifact key `20260511-011311-f03adb06` を確認済み。
+- 最新 bundle の `_support/runtime-generation-manifest.json` では `mode=canonical-dbaccess-partial-sql-regenerated`、`generated_dbaccess_count=101`、`canonical_function_count=626`、`sql_regenerated_dbaccess_count=100`、`sql_regenerated_function_count=518`、`canonical_helper_function_count=7`、`canonical_data_class_count=63`、`legacy_delegate_function_count=101`、`fallback_dbaccess_count=0` を確認済み。
+- 最新 bundle の delegate 理由分布は `constructor keeps legacy behavior=101` のみであり、non-constructor delegate は `0` 件であることを確認済み。
+- 最新 bundle では `Server` 4 件と `TestConditionSelection` 1 件の select OR group、`DropboxBaseFolder::DeleteDropboxBaseFolderByUserForAllSettingGroup` と `ProjectSourceOutputSavedFiles::DeleteOld` の delete OR group が canonical SQL へ切り替わり、`MySQLShowColumn` 3 件、`htmlTemplateParameter_leftouterjoin_AnotherHtmlTemplate` 3 件、`LanguageResourceCaption` 1 件が canonical helper へ切り替わったことに加え、`CompareOutputSearchCache`、`ProjectSourceOutputSavedFiles`、`TestCondition`、`TestPatternSelection`、`UploadDropboxPathCache` を含む plain DTO `63` class が canonical data generation へ切り替わったことを確認済み。
+- 上記 bundle の `_base/dbaccess-dbtable.php` / `_base/dbaccess-dbtablecolumns.php` では list / single / insert / update / delete が canonical SQL へ切り替わっていることを確認済み。
+- 上記 bundle の warning は stale `sync-bootstrap` row 2 件の除外に加え、`daCustomProxyFunc_leftouterjoin_dafunc_and_da` の bootstrap-only field 1 件のみであることを確認済み。
+- `shared/project_table_import_source.php` を更新し、`legacy-reference-test-module` と `legacy-reference-build-run-state` の scoped legacy import source を追加した。`MTOOL` では apply 済み canonical table metadata が `39` tables まで拡張された。
+- `scripts/sync_project_data_classes.php --project-key=MTOOL` を再実行し、canonical `dataclass` / `dataclassfields` を `39` class まで同期した。これにより `CompareOutputSearchCache`、`ProjectSourceOutputSavedFiles`、`TestCondition`、`TestPatternSelection`、`UploadDropboxPathCache` が upstream metadata 側へ入った。
+- `shared/project_output_runtime_generator.php` を更新し、upstream metadata が存在する class では `source_of_truth=sync-bootstrap` の designer row から導出した property を upstream property set で絞り込むようにした。これにより `TestCondition` の stale `ConditionOrder` を class 個別 exclusion なしで落とせるようにした。
+- `docker compose exec -T web-admin php /var/www/scripts/create_project_output.php --project-key=MTOOL --source-output-key=RUNTIME-DBCLASSES --requested-by=codex` の再生成結果として、artifact key `20260511-031938-4b54f4cc` を確認済み。
+- 上記 bundle の `_support/runtime-generation-manifest.json` では `mode=canonical-dbaccess-partial-sql-regenerated`、`generated_dbaccess_count=101`、`canonical_function_count=626`、`sql_regenerated_dbaccess_count=100`、`sql_regenerated_function_count=518`、`canonical_helper_function_count=7`、`canonical_data_class_count=63`、`legacy_delegate_function_count=101`、`fallback_dbaccess_count=0` を維持し、warning は stale `sync-bootstrap` 2 件と `daCustomProxyFunc_leftouterjoin_dafunc_and_da` の bootstrap-only field 1 件のみであることを確認済み。
+- `shared/project_output_runtime_generator.php` を更新し、`daCustomProxyFunc_leftouterjoin_dafunc_and_da` を `daCustomProxyFuncData` 継承の intentional derived DTO として generator から出せるようにした。`AuthType` / `SingleGetFuncPID` は bootstrap copy ではなく generated declared property として保持する。
+- `docker compose exec -T web-admin php /var/www/scripts/create_project_output.php --project-key=MTOOL --source-output-key=RUNTIME-DBCLASSES --requested-by=codex` の再生成結果として、artifact key `20260511-032651-b72bf84e` を確認済み。
+- 上記 bundle の `_support/runtime-generation-manifest.json` では `mode=canonical-dbaccess-partial-sql-regenerated`、`generated_dbaccess_count=101`、`canonical_function_count=626`、`sql_regenerated_dbaccess_count=100`、`sql_regenerated_function_count=518`、`canonical_helper_function_count=7`、`canonical_data_class_count=64`、`legacy_delegate_function_count=101`、`fallback_dbaccess_count=0` を確認済み。warning は stale `sync-bootstrap` 2 件のみであることを確認済み。
+- `shared/db_access_repository.php` / `shared/db_access_repository_pdo.php` / `shared/project_db_access_sync_service.php` / `shared/project_db_access_sync_page.php` を更新し、method catalog に存在しない `sync-bootstrap` stale function row を sync 時に prune できるようにした。
+- `docker compose exec -T web-admin php /var/www/scripts/sync_project_db_access.php --project-key=MTOOL` を再実行し、class updated `101` / function updated `626` / stale sync-bootstrap functions pruned `2` を確認済み。
+- `php scripts/export_mtool_db_access_seed.php` を再実行し、`019_project_db_access_class_function_seed.sql` を class `101` / function `626` の current canonical state に更新した。
+- `docker compose exec -T web-admin php /var/www/scripts/create_project_output.php --project-key=MTOOL --source-output-key=RUNTIME-DBCLASSES --requested-by=codex` の再生成結果として、artifact key `20260511-041032-2c6fd3e1` を確認済み。
+- 上記 bundle の `_support/runtime-generation-manifest.json` では `mode=canonical-dbaccess-partial-sql-regenerated`、`generated_dbaccess_count=101`、`canonical_function_count=626`、`sql_regenerated_dbaccess_count=100`、`sql_regenerated_function_count=518`、`canonical_helper_function_count=7`、`canonical_data_class_count=64`、`legacy_delegate_function_count=101`、`fallback_dbaccess_count=0` を確認済み。warning は `0` 件であることを確認済み。
+- `shared/db_access_endpoint_policy.php` と custom proxy / db access UI を更新し、single-function proxy auth と multi-step custom proxy auth の ownership を明示した。
+- `db-config` に `project_db_access_function_source_output_targets` を追加し、`025_db_access_function_source_output_targets.sql` を追加した。
+- `shared/db_access_repository.php` / `shared/db_access_repository_pdo.php` を更新し、function ごとの target source output key 保存と source output detail 向けの target catalog 取得を実装した。
+- `shared/project_db_access_function_detail_page.php` を更新し、legacy `dafuncSimpleProxySourceOutputTarget` 相当の target source output checkbox を保存できるようにした。
+- `shared/project_source_output_detail_page.php` を更新し、source output ごとの single-function proxy target 一覧を確認できるようにした。
+- `docker compose exec -T web-admin php /var/www/scripts/show_source_output_build_plan.php --project-key=MTOOL --source-output-key=DBIMPORT-PROXY-SERVER` の build plan で、custom proxy 4 件 / step 8 件 / unresolved 0 を再確認し、`AuthType` 未指定時の summary が custom proxy 側の field 名で解釈されることを確認済み。
+- `docker compose exec -T web-admin php /var/www/scripts/create_project_output.php --project-key=MTOOL --source-output-key=DBIMPORT-PROXY-SERVER --requested-by=codex` の再生成結果として、artifact key `20260511-042004-29dedfb9` を確認済み。
+- `docker compose exec -T web-admin php /var/www/scripts/create_project_output.php --project-key=MTOOL --source-output-key=DBIMPORT-PROXY-CLIENT --requested-by=codex` の再生成結果として、artifact key `20260511-042004-2218c5a5` を確認済み。
+- `shared/project_output_runtime_generator.php` を更新し、bootstrap にだけ残っていた field を「保持する/落とす」で切り替えられるようにしたうえで、`daCustomProxyFunc_leftouterjoin_dafunc_and_da` は `AuthType` / `SingleGetFuncPID` を持たない intentional derived DTO として確定した。
+- `docker compose exec -T web-admin php /var/www/scripts/create_project_output.php --project-key=MTOOL --source-output-key=RUNTIME-DBCLASSES --requested-by=codex` の再生成結果として、artifact key `20260511-042649-8cd8267b` を確認済み。
+- 上記 bundle の `_base/data-daCustomProxyFunc_leftouterjoin_dafunc_and_da.php` では declared property が `daname` / `dafuncname` / `dafuncActionType` / `daPID` のみになり、legacy `AuthType` / `SingleGetFuncPID` を持たないことを確認済み。
+- 上記 bundle の `_support/runtime-generation-manifest.json` では `mode=canonical-dbaccess-partial-sql-regenerated`、`generated_dbaccess_count=101`、`canonical_function_count=626`、`sql_regenerated_dbaccess_count=100`、`sql_regenerated_function_count=518`、`canonical_helper_function_count=7`、`canonical_data_class_count=64`、`legacy_delegate_function_count=101`、`fallback_dbaccess_count=0`、warning `0` を維持したことを確認済み。
+- `db-config` へ `025_db_access_function_source_output_targets.sql` を適用し、`project_db_access_function_source_output_targets` table が作成されることを確認済み。
+- 現時点の `MTOOL` canonical row count は `0` であり、legacy temporary DB `legacy_seed_tmp.dafuncSimpleProxySourceOutputTarget` は `374` row を持つことを確認済みである。
+  - `Project 1 (Mtool)` に絞ると `17` row で、`ApacheHostSetting` `8` / `Project` `6` / `PaypalSubscription` `1` / `DropboxUploadToken` `1` に分かれる。
+  - current canonical source output は `RUNTIME-DBCLASSES` / `DBIMPORT-PROXY-SERVER` / `DBIMPORT-PROXY-CLIENT` の 3 件だけであり、project discovery は `DB-GETPROJECTLIST` custom proxy が `GetProjectbyOwnerOrUserSecurityList` を `DBIMPORT-PROXY-*` へ載せている。
+  - したがって、legacy simple proxy row の remap/backfill は current self-loop の blocker ではなく、次段で扱う。
+- `docker compose exec -T web-admin php /var/www/scripts/create_project_output.php --project-key=MTOOL --source-output-key=RUNTIME-DBCLASSES --requested-by=codex` の再生成結果として、artifact key `20260511-043825-d4f59a4b` を確認済み。
+- 上記 bundle の `_support/runtime-generation-manifest.json` では `mode=canonical-dbaccess-partial-sql-regenerated`、`generated_dbaccess_count=101`、`canonical_function_count=626`、`sql_regenerated_dbaccess_count=100`、`sql_regenerated_function_count=518`、`canonical_helper_function_count=7`、`canonical_data_class_count=64`、`legacy_delegate_function_count=101`、`fallback_dbaccess_count=0`、warning `0` を維持したことを確認済み。
+- `shared/legacy_table_schema_reference.php` を更新し、`project_db_access_function_source_output_targets` を legacy `dafuncSimpleProxySourceOutputTarget` 対応として self-host import managed scope へ追加した。
+- `shared/project_table_import_service.php` を更新し、managed source tables だけを import apply 対象にするよう修正した。これにより unmanaged table が live schema にあっても duplicate insert せず、live import は再び idempotent になった。
+- `scripts/check_mtool_self_loop.php` と `make mtool-self-loop-check` を追加し、`MTOOL` の import / sync / generate を一括で回す self-loop smoke/acceptance check を実装した。
+- `shared/reference/mtool-self-loop-expected-output.json` を追加し、runtime manifest expected summary と representative generated file 8 件の digest baseline を固定した。
+- `docker compose exec -T web-admin php /var/www/scripts/check_mtool_self_loop.php --requested-by=codex` を実行し、live import `21 tables / 239 columns same`、data-class sync `40 classes / 387 fields same`、artifact key `20260511-053817-487dac40`、runtime manifest warning `0`、representative generated file digest 8 件一致を確認済み。
+- `scripts/check_mtool_proxy_outputs.php` と `make mtool-proxy-output-check` を追加し、`DBIMPORT-PROXY-SERVER` / `DBIMPORT-PROXY-CLIENT` の build plan summary、artifact summary、representative proxy file digest を baseline JSON で固定できるようにした。
+- `shared/reference/mtool-proxy-expected-output.json` を追加し、proxy server/client 各 5 件の representative generated file digest baseline を固定した。
+- `docker compose exec -T web-admin php /var/www/scripts/check_mtool_proxy_outputs.php --requested-by=codex` を実行し、`DBIMPORT-PROXY-SERVER` artifact key `20260511-053821-0511609e`、`DBIMPORT-PROXY-CLIENT` artifact key `20260511-053821-8616e3c5`、build plan `custom_proxy_count=4` / `step_count=8` / `unresolved_step_count=0`、artifact summary `23 files / 88724 bytes` と `29 files / 26127 bytes`、representative digest `5 + 5` 件一致を確認済み。
+- `shared/domain_validation.php` / `shared/project_db_access_metadata_helper.php` / `shared/custom_proxy_service.php` / UI を更新し、source output の target binding scope を `runtime` / `custom-proxy` / `single-function-proxy` / `proxy-metadata-only` で判定する helper を追加した。
+- current `MTOOL` source output catalog は `runtime=1` / `custom-proxy=2` / `single-function-proxy=0` を確認済みであり、function detail では `DBIMPORT-PROXY-*` を single-function proxy target 候補に出さず、custom proxy detail では `RUNTIME-DBCLASSES` を target 候補に出さないようにした。
+- `project_source_outputs.target_binding_type` を追加し、source output の用途区分を explicit metadata として保持できるようにした。`MTOOL` では `RUNTIME-DBCLASSES=runtime`、`DBIMPORT-PROXY-SERVER/CLIENT=custom-proxy` を backfill 済みで、UI / helper はこの値を優先し、空 row だけ heuristic fallback を使う。
+- `docker compose exec -T db-config sh -lc 'mariadb -uroot -pconfig_root_local_2026 config_app -N -e "SELECT COUNT(*) FROM project_db_access_function_source_output_targets;"'` で canonical single-function target row がまだ `0` 件であることを確認済み。
+- 生成済み bundle 内の `_base/dbaccess-Project.php` と `_base/dbaccess-dbtablecolumns.php` に対して `php -l` が通ることを確認済み。
+- 上記 freshly generated proxy server bundle の `proxyserver-DB-Import.php` と `_base/handlers/DBImportProxyHandler.php` に対しても `php -l` が通ることを確認済み。
+- `web-admin` の stub login 後に、以下を確認済み。
+  - `/projects/MTOOL/source-outputs` は 200
+  - `/projects/MTOOL/source-outputs/RUNTIME-DBCLASSES` は 200
+  - `/projects/MTOOL/source-outputs/RUNTIME-DBCLASSES/edit` は 200
+  - `/projects/MTOOL/source-outputs/DBIMPORT-PROXY-SERVER` は 200
+  - `/projects/MTOOL/source-outputs/DBIMPORT-PROXY-CLIENT` は 200
+  - `/projects/MTOOL/source-outputs/DBIMPORT-PROXY-SERVER` では `Custom Proxy Build Plan` section と CLI preview command の描画を確認済み
+  - edit 保存 POST は 302
+  - detail からの artifact 生成 POST は 302
+  - artifact download は 200 `application/gzip`
+  - `/projects/MTOOL/compare-output-settings` は 200
+  - `/projects/MTOOL/compare-output-settings?compare_output_key=MAIN` は 200
+  - `/projects/MTOOL/compare-output-settings/additional-paths?compare_output_key=CLIENTCOMMON` は 200
+  - `/projects/MTOOL/proxy/custom` は 200
+  - `/projects/MTOOL/proxy/custom/DB-IMPORT` は 200
+  - `/projects/MTOOL/proxy/custom/DB-IMPORT/functions` は 200
+  - `/projects/MTOOL/proxy/custom/DB-IMPORT` では `DBIMPORT-PROXY-SERVER` / `DBIMPORT-PROXY-CLIENT` checkbox が checked で表示される
+  - compare output asset 編集 UI は `Save Compare Output Assets` ボタンの描画を確認済み
+  - compare output file 生成 POST は 200
+- `web-lab` の stub login 後に、以下を確認済み。
+  - `/runs/compare-output/MTOOL?compare_output_key=MAIN` は 200
+  - `/runs/compare-output/MTOOL?compare_output_key=CLIENTCOMMON` は 200
+  - `/runs/compare-output/20260508-013438-6d025c5c` は 200
+  - `/api/runs/compare-output/20260508-013438-6d025c5c` は 200
+  - compare output file 生成 POST は 200
+- CLI は以下を確認済み。
+  - host: `php scripts/create_project_output.php --project-key=MTOOL --requested-by=...`
+  - container: `docker compose exec -T web-admin php /var/www/scripts/create_project_output.php --project-key=MTOOL --source-output-key=RUNTIME-DBCLASSES --requested-by=...`
+  - container: `docker compose exec -T web-admin php /var/www/scripts/create_project_output.php --project-key=MTOOL --source-output-key=DBIMPORT-PROXY-SERVER --requested-by=...`
+  - container: `docker compose exec -T web-admin php /var/www/scripts/create_project_output.php --project-key=MTOOL --source-output-key=DBIMPORT-PROXY-CLIENT --requested-by=...`
+  - container: `docker compose exec -T web-admin php /var/www/scripts/sync_project_db_access.php --project-key=MTOOL`
+  - container: `docker compose exec -T web-admin php /var/www/scripts/check_mtool_self_loop.php --requested-by=...`
+  - container: `docker compose exec -T web-admin php /var/www/scripts/check_mtool_proxy_outputs.php --requested-by=...`
+  - container: `docker compose exec -T web-admin php /var/www/scripts/create_compare_output.php --project-key=MTOOL --compare-output-key=MAIN --requested-by=...`
+  - container: `docker compose exec -T web-admin php /var/www/scripts/create_compare_output.php --project-key=MTOOL --compare-output-key=CLIENTCOMMON --requested-by=...`
+  - container: `docker compose exec -T web-admin php /var/www/scripts/show_source_output_build_plan.php --project-key=MTOOL --source-output-key=DBIMPORT-PROXY-SERVER`
+  - container: `docker compose exec -T web-lab php /var/www/scripts/create_compare_output.php --project-key=MTOOL --compare-output-key=MAIN --requested-by=...`
+  - container: `docker compose exec -T web-lab php /var/www/scripts/create_compare_output.php --project-key=MTOOL --compare-output-key=CLIENTCOMMON --requested-by=...`
+- host CLI の source output 生成結果で、manifest に `schema_version=3`、`customization_model=base-custom-wrapper-layer`、`custom_layer_relative_path`、`custom_layer_source=workspace` が入ることを確認済み。
+- source output archive の中に `custom/source-outputs/MTOOL/RUNTIME-DBCLASSES/README.md` と `bootstrap.php` が含まれることを確認済み。
+- proxy server artifact の生成結果で、`proxyserver-DB-Import.php`、`_base/handlers/*.php`、`_wrappers/handlers/*.php`、`_support/runtime_dbclasses/*.php` が bundle に入ることを確認済み。
+- proxy client artifact の生成結果で、`DBCustomProxyClientBase.cs`、`DBCustomProxyClient.cs`、request/result/DTO class 群、および `custom/source-outputs/MTOOL/DBIMPORT-PROXY-CLIENT/ClientExtensions.cs` が bundle に入ることを確認済み。
+- 生成された proxy server bundle 配下の PHP 一式に対して `php -l` を通し、syntax error がないことを確認済み。
+- source output bundle の `autoload_mtool.php` 読み込みで `ProjectData` / `ProjectDataBase` が両方定義され、`TestGroup_leftouterjoin_ProjectData` が `TestGroupData` を継承していることを確認済み。
+- `web-admin` / `web-lab` CLI の生成結果はいずれも `job_key` を返し、`generated/compare-output-jobs/MTOOL/{job_key}/manifest.json` と snapshot file を保存することを確認済み。
+- `compare-output-assets/MTOOL` に一時的な Mac Command template override を保存し、`web-lab` CLI の出力先 file が `# Custom Verify` へ変わることを確認した後、asset reset で built-in default に戻ることを確認済み。
+- asset reset 後の catalog は `custom_count=0`、`asset_count=7` を確認済み。
+- runnable placeholder root として `generated/compare-output/MTOOL/MAIN/compare-root/` と `generated/compare-output/MTOOL/CLIENTCOMMON/compare-root/` を追加した。
+- `SingleProxy_*` auth policy は `shared/db_access_endpoint_policy.php` に切り出し、detail 画面と endpoint preview が同じ解釈を使うようにした。
+- `single_proxy_auth_type` は select 化し、blank を legacy default の `ProjectToken` として扱い、`GetFunc` / `ProjectTokenOrGetFunc` では `single_proxy_single_get_function_name` を必須にした。
+- `php -l` は custom proxy 関連 PHP でも通過。
+  - `shared/custom_proxy_repository.php`
+  - `shared/custom_proxy_repository_pdo.php`
+  - `shared/custom_proxy_service.php`
+  - `shared/project_custom_proxy_route_common.php`
+  - `shared/project_custom_proxies_page.php`
+  - `shared/project_custom_proxy_detail_page.php`
+  - `shared/project_custom_proxy_functions_page.php`
+  - `shared/router.php`
+  - `shared/http.php`
+  - `shared/project_detail_page.php`
+
+## 現在の制約
+
+- 現行 generator は bootstrap source を前提にする実装であり、`dbaccess-*` / `data-*` の partial overlay は入ったが、canonical metadata だけで runtime 全体を再生成する full self-generation には未到達である。
+- current bootstrap の Base/Custom 化は class 単位 wrapper までであり、意味のある semantic hook / collaborator 出力はまだ限定的。
+- DB Access sync UI / CLI は class/function row までであり、designer sub-resource の refresh はまだ seed/export ベースである。
+- `Custom Proxy` は canonical metadata / step UI / Project 1 seed / target key 再マップに加え、first-pass actual source output build と auth hook 境界までは入ったが、project 固有 auth 実装、より意味のある hook 粒度、template metadata 反映はまだ未移植。
+- `source comment`、template preview、change-order 専用画面、saved files / build token 周辺は未移植。
+- artifact 履歴はまだ DB ではなく file-based manifest で管理している。
+- Compare Output template / ignore rule asset も現時点では DB ではなく `generated/compare-output-assets/` 配下の file-based override で管理している。
+- Compare Output job 履歴も現時点では DB ではなく `generated/compare-output-jobs/` 配下の file-based manifest で管理している。
+- host CLI から canonical definition をそのまま読むと、既定の `APP_DB_HOST=db-config` では名前解決できないため、container 実行か DB 接続先の上書きが必要。
+- `CLIENTCOMMON` の additional path は legacy directory 名をそのまま seed しているため、実データを local filesystem へマップするまでは warning 付きの空出力になる。
+
+## 次段の主な残件
+
+- `Source Output` の strategy 拡張、canonical metadata + designer sub-resource からの SQL 再生成、semantic hook / collaborator 出力、template 系 metadata の反映。
+- DB import connector の一般化。現在の `MTOOL` 固定 live schema import を、将来の外部 MySQL / PostgreSQL / SQLite 接続へ広げる。
+- `dbtable` / `dataclass` / `db-access` の canonical metadata と generator の実接続。
+- `Project 1` 以外の DB Access designer migration / refresh 手順の整理。
+- `Build` の設定と実行系の再構築。
+- `Compare Output` job history の DB 化が必要なら、その境界設計。
+- `proxy/single` UI、Custom Proxy build plan preview を実際の build/source-output generator へ接続する実装。
+- `html`、`lang_res`、`project_security` の移植。
+
+## 今日の停止位置
+
+- 区切りとしては妥当である。
+- `RUNTIME-DBCLASSES` の current improvement は、`dbaccess-*` 側の non-constructor delegate 解消が維持されたまま、`data-*` 側も「親 DTO の raw property 導出」「順序差だけの mismatch 吸収」に加えて「upstream import / sync 済み metadata の接続」「stale `sync-bootstrap` property の除外」「intentional derived DTO の generator 化」まで入った状態で一段落している。
+- 今日の最終 artifact は `20260511-053817-487dac40` であり、`canonical_data_class_count=64`、warning は `0` になった。
+- あわせて upstream import / sync の first slice も実装し、`MTOOL` では self-host loop の起点が一度閉じた。
+- proxy source output 2 件についても expected-output baseline と acceptance check が入り、build plan / artifact / representative digest の固定点ができた。
+- 次の主作業は upstream 未実装の解消ではなく、connector の一般化、generator 側の正式接続、custom proxy / endpoint 境界の semantic metadata 正規化である。
+
+## 次の再開点
+
+1. upstream canonical slice を runtime generator の supplement 置換にどこまで接続できるか再評価する。
+2. `MTOOL` 固定の import source を、外部 DB connector を追加しやすい boundary へ整理する。
+3. `dafuncSimpleProxySourceOutputTarget` と `project_custom_proxy_source_output_targets` の境界を整理し、simple proxy / custom proxy の target metadata を正規化する。
+4. その後に `RUNTIME-DBCLASSES` を再生成し、self-generated runtime への切り替え条件にどこまで近づいたかを再評価する。

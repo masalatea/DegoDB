@@ -1,0 +1,321 @@
+{
+    "resource_key": "EIKAIWA_DOMAINNAMECAPTION",
+    "legacy_resource_pid": 704,
+    "base_group_key": "grp-010-matsuesoft-lib",
+    "additional_group_keys": [],
+    "key_for_update": "NcrWRMyldSHr8JyuFhXYUdkNsE3K2yXpgSFPKZn1HGhO8tXErjIUQ77ZJQGLBLXjypxo4I6tXZ38CQ1VfGiMlfmP4No9fJQVBZvn3K6b4rXv7kCY2D8iHljDqvwPb7dp",
+    "sort_group": "",
+    "key_name": "EIKAIWA_DOMAINNAMECAPTION",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": false,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 4532,
+            "legacy_language_pid": 1,
+            "text": "どこでも寺子屋(どこてら) オンライン英語塾",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 4533,
+            "legacy_language_pid": 2,
+            "text": "DokoTera English School",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 6360,
+            "legacy_language_pid": 3,
+            "text": "DokoTera 英语学校",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 6361,
+            "legacy_language_pid": 4,
+            "text": "DokoTera 영어스쿨",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 9990,
+            "legacy_language_pid": 5,
+            "text": "DokoTera Escuela de Inglés",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 9991,
+            "legacy_language_pid": 6,
+            "text": "DokoTera Escola de Inglês",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 10006,
+            "legacy_language_pid": 7,
+            "text": "DokoTera 英語學校",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 16385,
+            "legacy_language_pid": 8,
+            "text": "École d'anglais DokoTera",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 16386,
+            "legacy_language_pid": 9,
+            "text": "DokoTera इंग्लिश स्कूल",
+            "auto_translated": ""
+        },
+        "ar": {
+            "legacy_caption_pid": 30542,
+            "legacy_language_pid": 10,
+            "text": "DokoTera مدرسة انجليزية",
+            "auto_translated": "DokoTera مدرسة انجليزية"
+        },
+        "fa": {
+            "legacy_caption_pid": 30543,
+            "legacy_language_pid": 11,
+            "text": "DokoTera مدرسه انگلیسی",
+            "auto_translated": "DokoTera مدرسه انگلیسی"
+        },
+        "de": {
+            "legacy_caption_pid": 30544,
+            "legacy_language_pid": 12,
+            "text": "DokoTera Englische Schule",
+            "auto_translated": "DokoTera Englische Schule"
+        },
+        "ru": {
+            "legacy_caption_pid": 30545,
+            "legacy_language_pid": 13,
+            "text": "DokoTera Школа английского языка",
+            "auto_translated": "DokoTera Школа английского языка"
+        },
+        "ms": {
+            "legacy_caption_pid": 30546,
+            "legacy_language_pid": 14,
+            "text": "DokoTera Sekolah Bahasa Inggeris",
+            "auto_translated": "DokoTera Sekolah Bahasa Inggeris"
+        },
+        "ta": {
+            "legacy_caption_pid": 30547,
+            "legacy_language_pid": 15,
+            "text": "DokoTera ஆங்கிலம் பள்ளி",
+            "auto_translated": "DokoTera ஆங்கிலம் பள்ளி"
+        },
+        "it": {
+            "legacy_caption_pid": 30548,
+            "legacy_language_pid": 16,
+            "text": "DokoTera Scuola Inglese",
+            "auto_translated": "DokoTera Scuola Inglese"
+        },
+        "bn": {
+            "legacy_caption_pid": 30549,
+            "legacy_language_pid": 17,
+            "text": "DokoTera ইংরেজি স্কুল",
+            "auto_translated": "DokoTera ইংরেজি স্কুল"
+        },
+        "tr": {
+            "legacy_caption_pid": 30550,
+            "legacy_language_pid": 18,
+            "text": "DokoTera İngilizce Okulu",
+            "auto_translated": "DokoTera İngilizce Okulu"
+        },
+        "vi": {
+            "legacy_caption_pid": 30551,
+            "legacy_language_pid": 19,
+            "text": "DokoTera Trường học Tiếng Anh",
+            "auto_translated": "DokoTera Trường học Tiếng Anh"
+        },
+        "pl": {
+            "legacy_caption_pid": 30552,
+            "legacy_language_pid": 20,
+            "text": "DokoTera Szkoła Angielska",
+            "auto_translated": "DokoTera Szkoła Angielska"
+        },
+        "jv": {
+            "legacy_caption_pid": 30553,
+            "legacy_language_pid": 21,
+            "text": "DokoTera English School",
+            "auto_translated": "DokoTera English School"
+        },
+        "pa": {
+            "legacy_caption_pid": 30554,
+            "legacy_language_pid": 22,
+            "text": "DokoTera ਇੰਗਲਿਸ਼ ਸਕੂਲ",
+            "auto_translated": "DokoTera ਇੰਗਲਿਸ਼ ਸਕੂਲ"
+        },
+        "th": {
+            "legacy_caption_pid": 30555,
+            "legacy_language_pid": 23,
+            "text": "โรงเรียนสอนภาษาอังกฤษ DokoTera",
+            "auto_translated": "โรงเรียนสอนภาษาอังกฤษ DokoTera"
+        },
+        "te": {
+            "legacy_caption_pid": 43018,
+            "legacy_language_pid": 24,
+            "text": "DokoTera ఆన్లైన్ ఆంగ్ల పాఠశాల",
+            "auto_translated": "DokoTera ఆన్లైన్ ఆంగ్ల పాఠశాల"
+        },
+        "mr": {
+            "legacy_caption_pid": 43019,
+            "legacy_language_pid": 25,
+            "text": "DokoTera ऑनलाइन इंग्रजी शाळा",
+            "auto_translated": "DokoTera ऑनलाइन इंग्रजी शाळा"
+        },
+        "ur": {
+            "legacy_caption_pid": 43020,
+            "legacy_language_pid": 26,
+            "text": "DokoTera لائن انگریزی اسکول",
+            "auto_translated": "DokoTera لائن انگریزی اسکول"
+        },
+        "gu": {
+            "legacy_caption_pid": 43021,
+            "legacy_language_pid": 27,
+            "text": "DokoTera ઓનલાઇન ઇંગલિશ શાળા",
+            "auto_translated": "DokoTera ઓનલાઇન ઇંગલિશ શાળા"
+        },
+        "uk": {
+            "legacy_caption_pid": 43022,
+            "legacy_language_pid": 28,
+            "text": "DokoTera онлайн школа англійської мови",
+            "auto_translated": "DokoTera онлайн школа англійської мови"
+        },
+        "ml": {
+            "legacy_caption_pid": 43023,
+            "legacy_language_pid": 29,
+            "text": "ദൊകൊതെര ഓൺലൈൻ ഇംഗ്ലീഷ് സ്കൂൾ",
+            "auto_translated": "ദൊകൊതെര ഓൺലൈൻ ഇംഗ്ലീഷ് സ്കൂൾ"
+        },
+        "kn": {
+            "legacy_caption_pid": 43024,
+            "legacy_language_pid": 30,
+            "text": "DokoTera ಆನ್ಲೈನ್ ಇಂಗ್ಲೀಷ್ ಶಾಲೆಯ",
+            "auto_translated": "DokoTera ಆನ್ಲೈನ್ ಇಂಗ್ಲೀಷ್ ಶಾಲೆಯ"
+        },
+        "su": {
+            "legacy_caption_pid": 43025,
+            "legacy_language_pid": 31,
+            "text": "sakola Inggris online DokoTera",
+            "auto_translated": "sakola Inggris online DokoTera"
+        },
+        "ku": {
+            "legacy_caption_pid": 43026,
+            "legacy_language_pid": 32,
+            "text": "DokoTera bike dibistanê English",
+            "auto_translated": "DokoTera bike dibistanê English"
+        },
+        "ps": {
+            "legacy_caption_pid": 43027,
+            "legacy_language_pid": 33,
+            "text": "DokoTera آنلاین انګلیسي ښوونځي",
+            "auto_translated": "DokoTera آنلاین انګلیسي ښوونځي"
+        },
+        "ro": {
+            "legacy_caption_pid": 43028,
+            "legacy_language_pid": 34,
+            "text": "DokoTera școală on-line English",
+            "auto_translated": "DokoTera școală on-line English"
+        },
+        "id": {
+            "legacy_caption_pid": 43029,
+            "legacy_language_pid": 35,
+            "text": "sekolah bahasa Inggris online DokoTera",
+            "auto_translated": "sekolah bahasa Inggris online DokoTera"
+        },
+        "sd": {
+            "legacy_caption_pid": 43030,
+            "legacy_language_pid": 36,
+            "text": "DokoTera آن لائن انگريزي اسڪول",
+            "auto_translated": "DokoTera آن لائن انگريزي اسڪول"
+        },
+        "af": {
+            "legacy_caption_pid": 43031,
+            "legacy_language_pid": 37,
+            "text": "DokoTera aanlyn Engelse skool",
+            "auto_translated": "DokoTera aanlyn Engelse skool"
+        },
+        "sw": {
+            "legacy_caption_pid": 43032,
+            "legacy_language_pid": 38,
+            "text": "DokoTera online English shule",
+            "auto_translated": "DokoTera online English shule"
+        },
+        "lo": {
+            "legacy_caption_pid": 43033,
+            "legacy_language_pid": 39,
+            "text": "ໂຮງຮຽນພາສາອັງກິດອອນໄລນ໌ DokoTera",
+            "auto_translated": "ໂຮງຮຽນພາສາອັງກິດອອນໄລນ໌ DokoTera"
+        },
+        "nl": {
+            "legacy_caption_pid": 43034,
+            "legacy_language_pid": 40,
+            "text": "DokoTera online school voor Engels",
+            "auto_translated": "DokoTera online school voor Engels"
+        },
+        "tl": {
+            "legacy_caption_pid": 43035,
+            "legacy_language_pid": 41,
+            "text": "DokoTera online English school",
+            "auto_translated": "DokoTera online English school"
+        },
+        "ne": {
+            "legacy_caption_pid": 43036,
+            "legacy_language_pid": 42,
+            "text": "DokoTera अनलाइन अंग्रेजी स्कूल",
+            "auto_translated": "DokoTera अनलाइन अंग्रेजी स्कूल"
+        },
+        "hu": {
+            "legacy_caption_pid": 43037,
+            "legacy_language_pid": 43,
+            "text": "DokoTera online angol iskola",
+            "auto_translated": "DokoTera online angol iskola"
+        },
+        "cs": {
+            "legacy_caption_pid": 43038,
+            "legacy_language_pid": 44,
+            "text": "DokoTera on-line anglické školy",
+            "auto_translated": "DokoTera on-line anglické školy"
+        },
+        "el": {
+            "legacy_caption_pid": 43039,
+            "legacy_language_pid": 45,
+            "text": "DokoTera σε απευθείας σύνδεση αγγλικό σχολείο",
+            "auto_translated": "DokoTera σε απευθείας σύνδεση αγγλικό σχολείο"
+        },
+        "sv": {
+            "legacy_caption_pid": 43040,
+            "legacy_language_pid": 46,
+            "text": "DokoTera nätet Engelska skolan",
+            "auto_translated": "DokoTera nätet Engelska skolan"
+        },
+        "kk": {
+            "legacy_caption_pid": 43041,
+            "legacy_language_pid": 47,
+            "text": "DokoTera онлайн ағылшын мектебі",
+            "auto_translated": "DokoTera онлайн ағылшын мектебі"
+        },
+        "fi": {
+            "legacy_caption_pid": 43042,
+            "legacy_language_pid": 48,
+            "text": "DokoTera verkossa Englanti koulu",
+            "auto_translated": "DokoTera verkossa Englanti koulu"
+        },
+        "da": {
+            "legacy_caption_pid": 43043,
+            "legacy_language_pid": 49,
+            "text": "DokoTera online engelsk skole",
+            "auto_translated": "DokoTera online engelsk skole"
+        },
+        "he": {
+            "legacy_caption_pid": 43044,
+            "legacy_language_pid": 50,
+            "text": "DokoTera באינטרנט ספר אנגלית",
+            "auto_translated": "DokoTera באינטרנט ספר אנגלית"
+        },
+        "no": {
+            "legacy_caption_pid": 43045,
+            "legacy_language_pid": 51,
+            "text": "DokoTera online engelskskole",
+            "auto_translated": "DokoTera online engelskskole"
+        }
+    }
+}

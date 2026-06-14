@@ -1,0 +1,321 @@
+{
+    "resource_key": "TOAST_NOT_SUPPORTED_YET_ON_APP",
+    "legacy_resource_pid": 1276,
+    "base_group_key": "grp-028-app-common-lib",
+    "additional_group_keys": [],
+    "key_for_update": "ZhsxZyiEXjGPMcNYSUvEillQefrwDkz9V0oDdPTc5Nium2iLsHmOgkEdEozgv3M265a8fRSkfMxt2GZz73As6bv9qjEI8h7UXn89B9hFARbk2RT4trQKQTXGCfRcgfRl",
+    "sort_group": "Toast",
+    "key_name": "TOAST_NOT_SUPPORTED_YET_ON_APP",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": false,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 921,
+            "legacy_language_pid": 1,
+            "text": "アプリではまだ未対応です。ウェブをご利用下さい。",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 922,
+            "legacy_language_pid": 2,
+            "text": "It is not supported on App yet. Please use Web.",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 6486,
+            "legacy_language_pid": 3,
+            "text": "不对应手机APP，请打开网站",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 6487,
+            "legacy_language_pid": 4,
+            "text": "아직 어플에서 이용할 수 없습니다. 웹을 이용해 주세요.",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 10287,
+            "legacy_language_pid": 5,
+            "text": "Todavía no se admite en App. Por favor, utilice la Web.",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 10288,
+            "legacy_language_pid": 6,
+            "text": "Ainda não é suportado na aplicação. Use a Web.",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 10289,
+            "legacy_language_pid": 7,
+            "text": "不對應手機APP，請打開網站",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 16225,
+            "legacy_language_pid": 8,
+            "text": "Il n'est pas encore pris en charge sur l'application. Utilisez le Web.",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 16226,
+            "legacy_language_pid": 9,
+            "text": " यह ऐप पर अभी तक समर्थित नहीं है कृपया वेब का उपयोग करें",
+            "auto_translated": ""
+        },
+        "ar": {
+            "legacy_caption_pid": 29030,
+            "legacy_language_pid": 10,
+            "text": "لا تزال غير معتمدة التطبيق. الرجاء استخدام شبكة الإنترنت.",
+            "auto_translated": "لا تزال غير معتمدة التطبيق. الرجاء استخدام شبكة الإنترنت."
+        },
+        "fa": {
+            "legacy_caption_pid": 29031,
+            "legacy_language_pid": 11,
+            "text": "برنامه هنوز هم پشتیبانی نمی شود. لطفا وب استفاده کنید.",
+            "auto_translated": "برنامه هنوز هم پشتیبانی نمی شود. لطفا وب استفاده کنید."
+        },
+        "de": {
+            "legacy_caption_pid": 29032,
+            "legacy_language_pid": 12,
+            "text": "Die App wird noch nicht unterstützt. Bitte benutzen Sie den Web.",
+            "auto_translated": "Die App wird noch nicht unterstützt. Bitte benutzen Sie den Web."
+        },
+        "ru": {
+            "legacy_caption_pid": 29033,
+            "legacy_language_pid": 13,
+            "text": "Приложение по-прежнему не поддерживается. Пожалуйста, используйте Интернет.",
+            "auto_translated": "Приложение по-прежнему не поддерживается. Пожалуйста, используйте Интернет."
+        },
+        "ms": {
+            "legacy_caption_pid": 29034,
+            "legacy_language_pid": 14,
+            "text": "Aplikasi ini masih tidak disokong. Sila gunakan web.",
+            "auto_translated": "Aplikasi ini masih tidak disokong. Sila gunakan web."
+        },
+        "ta": {
+            "legacy_caption_pid": 29035,
+            "legacy_language_pid": 15,
+            "text": "பயன்பாட்டை இன்னும் ஆதரிக்கவில்லை. இணையத்தைப் பயன்படுத்தும்போது கொள்ளவும்.",
+            "auto_translated": "பயன்பாட்டை இன்னும் ஆதரிக்கவில்லை. இணையத்தைப் பயன்படுத்தும்போது கொள்ளவும்."
+        },
+        "it": {
+            "legacy_caption_pid": 29036,
+            "legacy_language_pid": 16,
+            "text": "L'applicazione non è ancora supportato. Si prega di utilizzare il web.",
+            "auto_translated": "L'applicazione non è ancora supportato. Si prega di utilizzare il web."
+        },
+        "bn": {
+            "legacy_caption_pid": 29037,
+            "legacy_language_pid": 17,
+            "text": "অ্যাপ্লিকেশন এখনও সমর্থিত নয়। ওয়েব ব্যবহার করুন।",
+            "auto_translated": "অ্যাপ্লিকেশন এখনও সমর্থিত নয়। ওয়েব ব্যবহার করুন।"
+        },
+        "tr": {
+            "legacy_caption_pid": 29038,
+            "legacy_language_pid": 18,
+            "text": "Uygulamanın hala desteklenmemektedir. web kullanın.",
+            "auto_translated": "Uygulamanın hala desteklenmemektedir. web kullanın."
+        },
+        "vi": {
+            "legacy_caption_pid": 29039,
+            "legacy_language_pid": 19,
+            "text": "Các ứng dụng vẫn chưa được hỗ trợ. Vui lòng sử dụng web.",
+            "auto_translated": "Các ứng dụng vẫn chưa được hỗ trợ. Vui lòng sử dụng web."
+        },
+        "pl": {
+            "legacy_caption_pid": 29040,
+            "legacy_language_pid": 20,
+            "text": "Aplikacja nie jest jeszcze obsługiwany. Aby skorzystać z internetu.",
+            "auto_translated": "Aplikacja nie jest jeszcze obsługiwany. Aby skorzystać z internetu."
+        },
+        "jv": {
+            "legacy_caption_pid": 29041,
+            "legacy_language_pid": 21,
+            "text": "App isih ora didhukung. Mangga nganggo web.",
+            "auto_translated": "App isih ora didhukung. Mangga nganggo web."
+        },
+        "pa": {
+            "legacy_caption_pid": 29042,
+            "legacy_language_pid": 22,
+            "text": "ਐਪ ਨੂੰ ਅਜੇ ਵੀ ਸਹਿਯੋਗ ਨਹੀ ਹੈ. ਵੈੱਬ ਉਪਯੋਗ ਕਰੋ.",
+            "auto_translated": "ਐਪ ਨੂੰ ਅਜੇ ਵੀ ਸਹਿਯੋਗ ਨਹੀ ਹੈ. ਵੈੱਬ ਉਪਯੋਗ ਕਰੋ."
+        },
+        "th": {
+            "legacy_caption_pid": 29043,
+            "legacy_language_pid": 23,
+            "text": "แอปพลิเคยังคงไม่ได้รับการสนับสนุน โปรดใช้เว็บ",
+            "auto_translated": "แอปพลิเคยังคงไม่ได้รับการสนับสนุน โปรดใช้เว็บ"
+        },
+        "te": {
+            "legacy_caption_pid": 34996,
+            "legacy_language_pid": 24,
+            "text": "అనువర్తనం ఇప్పటికీ మద్దతు లేదు. దయచేసి వెబ్ ఉపయోగించండి.",
+            "auto_translated": "అనువర్తనం ఇప్పటికీ మద్దతు లేదు. దయచేసి వెబ్ ఉపయోగించండి."
+        },
+        "mr": {
+            "legacy_caption_pid": 34997,
+            "legacy_language_pid": 25,
+            "text": "अनुप्रयोग अद्याप समर्थित नाही. कृपया वेब वापरा.",
+            "auto_translated": "अनुप्रयोग अद्याप समर्थित नाही. कृपया वेब वापरा."
+        },
+        "ur": {
+            "legacy_caption_pid": 34998,
+            "legacy_language_pid": 26,
+            "text": "اے پی پی اب بھی سہولت نہیں ہے. ویب کا استعمال کریں.",
+            "auto_translated": "اے پی پی اب بھی سہولت نہیں ہے. ویب کا استعمال کریں."
+        },
+        "gu": {
+            "legacy_caption_pid": 34999,
+            "legacy_language_pid": 27,
+            "text": "એપ્લિકેશન હજુ સપોર્ટેડ નથી. વેબ ઉપયોગ કરો.",
+            "auto_translated": "એપ્લિકેશન હજુ સપોર્ટેડ નથી. વેબ ઉપયોગ કરો."
+        },
+        "uk": {
+            "legacy_caption_pid": 35000,
+            "legacy_language_pid": 28,
+            "text": "Додаток як і раніше не підтримується. Будь ласка, використовуйте Інтернет.",
+            "auto_translated": "Додаток як і раніше не підтримується. Будь ласка, використовуйте Інтернет."
+        },
+        "ml": {
+            "legacy_caption_pid": 35001,
+            "legacy_language_pid": 29,
+            "text": "അപ്ലിക്കേഷൻ ഇപ്പോഴും പിന്തുണയ്ക്കുന്നില്ല. വെബ് ഉപയോഗിക്കുക.",
+            "auto_translated": "അപ്ലിക്കേഷൻ ഇപ്പോഴും പിന്തുണയ്ക്കുന്നില്ല. വെബ് ഉപയോഗിക്കുക."
+        },
+        "kn": {
+            "legacy_caption_pid": 35002,
+            "legacy_language_pid": 30,
+            "text": "ಅಪ್ಲಿಕೇಶನ್ ಇನ್ನೂ ಬೆಂಬಲಿತವಾಗಿಲ್ಲ. ದಯವಿಟ್ಟು ವೆಬ್ ಬಳಸಿ.",
+            "auto_translated": "ಅಪ್ಲಿಕೇಶನ್ ಇನ್ನೂ ಬೆಂಬಲಿತವಾಗಿಲ್ಲ. ದಯವಿಟ್ಟು ವೆಬ್ ಬಳಸಿ."
+        },
+        "su": {
+            "legacy_caption_pid": 35003,
+            "legacy_language_pid": 31,
+            "text": "aplikasi eta masih tetep teu dirojong. Mangga pigunakeun web.",
+            "auto_translated": "aplikasi eta masih tetep teu dirojong. Mangga pigunakeun web."
+        },
+        "ku": {
+            "legacy_caption_pid": 35004,
+            "legacy_language_pid": 32,
+            "text": "The app hê jî piştgirî ne. Ji kerema xwe li malpera bi kar tînin.",
+            "auto_translated": "The app hê jî piştgirî ne. Ji kerema xwe li malpera bi kar tînin."
+        },
+        "ps": {
+            "legacy_caption_pid": 35005,
+            "legacy_language_pid": 33,
+            "text": "د ددفتروسایل اوس هم نه منل کيږي. لطفا د پاڼې د وکاروي.",
+            "auto_translated": "د ددفتروسایل اوس هم نه منل کيږي. لطفا د پاڼې د وکاروي."
+        },
+        "ro": {
+            "legacy_caption_pid": 35006,
+            "legacy_language_pid": 34,
+            "text": "Aplicația nu este încă acceptată. Vă rugăm să folosiți web.",
+            "auto_translated": "Aplicația nu este încă acceptată. Vă rugăm să folosiți web."
+        },
+        "id": {
+            "legacy_caption_pid": 35007,
+            "legacy_language_pid": 35,
+            "text": "Aplikasi ini masih belum didukung. Silakan menggunakan web.",
+            "auto_translated": "Aplikasi ini masih belum didukung. Silakan menggunakan web."
+        },
+        "sd": {
+            "legacy_caption_pid": 35008,
+            "legacy_language_pid": 36,
+            "text": "ائپ اڃا سهارو نه آهي. ويب استعمال ڪريو.",
+            "auto_translated": "ائپ اڃا سهارو نه آهي. ويب استعمال ڪريو."
+        },
+        "af": {
+            "legacy_caption_pid": 35009,
+            "legacy_language_pid": 37,
+            "text": "Die inligting is nog nie ondersteun nie. Gebruik asseblief die web.",
+            "auto_translated": "Die inligting is nog nie ondersteun nie. Gebruik asseblief die web."
+        },
+        "sw": {
+            "legacy_caption_pid": 35010,
+            "legacy_language_pid": 38,
+            "text": "programu bado si mkono. Tafadhali kutumia mtandao.",
+            "auto_translated": "programu bado si mkono. Tafadhali kutumia mtandao."
+        },
+        "lo": {
+            "legacy_caption_pid": 35011,
+            "legacy_language_pid": 39,
+            "text": "ການ app ແມ່ນຍັງບໍ່ສະຫນັບສະຫນຸນ. ກະລຸນາໃຊ້ເວັບໄຊຕ໌.",
+            "auto_translated": "ການ app ແມ່ນຍັງບໍ່ສະຫນັບສະຫນຸນ. ກະລຸນາໃຊ້ເວັບໄຊຕ໌."
+        },
+        "nl": {
+            "legacy_caption_pid": 35012,
+            "legacy_language_pid": 40,
+            "text": "De app is nog niet ondersteund. Gebruik het web.",
+            "auto_translated": "De app is nog niet ondersteund. Gebruik het web."
+        },
+        "tl": {
+            "legacy_caption_pid": 35013,
+            "legacy_language_pid": 41,
+            "text": "Ang app na ito ay hindi suportado pa rin. Mangyaring gamitin ang web.",
+            "auto_translated": "Ang app na ito ay hindi suportado pa rin. Mangyaring gamitin ang web."
+        },
+        "ne": {
+            "legacy_caption_pid": 35014,
+            "legacy_language_pid": 42,
+            "text": "अनुप्रयोगलाई अझै समर्थित छैन। वेब प्रयोग गर्नुहोस्।",
+            "auto_translated": "अनुप्रयोगलाई अझै समर्थित छैन। वेब प्रयोग गर्नुहोस्।"
+        },
+        "hu": {
+            "legacy_caption_pid": 35015,
+            "legacy_language_pid": 43,
+            "text": "Az alkalmazás még mindig nem támogatott. Használja az interneten.",
+            "auto_translated": "Az alkalmazás még mindig nem támogatott. Használja az interneten."
+        },
+        "cs": {
+            "legacy_caption_pid": 35016,
+            "legacy_language_pid": 44,
+            "text": "Aplikace je stále ještě není podporován. Využijte web.",
+            "auto_translated": "Aplikace je stále ještě není podporován. Využijte web."
+        },
+        "el": {
+            "legacy_caption_pid": 35017,
+            "legacy_language_pid": 45,
+            "text": "Η εφαρμογή δεν υποστηρίζεται ακόμα. Παρακαλούμε χρησιμοποιήστε το διαδίκτυο.",
+            "auto_translated": "Η εφαρμογή δεν υποστηρίζεται ακόμα. Παρακαλούμε χρησιμοποιήστε το διαδίκτυο."
+        },
+        "sv": {
+            "legacy_caption_pid": 35018,
+            "legacy_language_pid": 46,
+            "text": "Appen är fortfarande stöds inte. Använd webben.",
+            "auto_translated": "Appen är fortfarande stöds inte. Använd webben."
+        },
+        "kk": {
+            "legacy_caption_pid": 35019,
+            "legacy_language_pid": 47,
+            "text": "Қолданба әлі қолдау көрсетілмейді. Интернетті пайдаланыңыз.",
+            "auto_translated": "Қолданба әлі қолдау көрсетілмейді. Интернетті пайдаланыңыз."
+        },
+        "fi": {
+            "legacy_caption_pid": 35020,
+            "legacy_language_pid": 48,
+            "text": "Sovellus ei ole vielä tueta. Käytä verkossa.",
+            "auto_translated": "Sovellus ei ole vielä tueta. Käytä verkossa."
+        },
+        "da": {
+            "legacy_caption_pid": 35021,
+            "legacy_language_pid": 49,
+            "text": "Den app er stadig ikke understøttet. Brug venligst internettet.",
+            "auto_translated": "Den app er stadig ikke understøttet. Brug venligst internettet."
+        },
+        "he": {
+            "legacy_caption_pid": 35022,
+            "legacy_language_pid": 50,
+            "text": "האפליקציה עדיין לא נתמכת. נא להשתמש באינטרנט.",
+            "auto_translated": "האפליקציה עדיין לא נתמכת. נא להשתמש באינטרנט."
+        },
+        "no": {
+            "legacy_caption_pid": 35023,
+            "legacy_language_pid": 51,
+            "text": "Programmet er fortsatt ikke støttet. Bruk nettet.",
+            "auto_translated": "Programmet er fortsatt ikke støttet. Bruk nettet."
+        }
+    }
+}

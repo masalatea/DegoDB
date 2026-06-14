@@ -1,0 +1,321 @@
+{
+    "resource_key": "EMAIL_COMMON_VERIFICATION_NOTE3_LINE1",
+    "legacy_resource_pid": 2588,
+    "base_group_key": "grp-005-common-lib",
+    "additional_group_keys": [],
+    "key_for_update": "TjEc4eR7sTHOzNwuSN0aLHXuqmaYl5MG2rmyL4Ds9CYcyjELgLJVDKVsgETvMfTUFy1qk578bJWPxbA7bPb4gVouZzyltoP3RYG7JpUQU27iTu52ISsB3VkVE9WmYfmO",
+    "sort_group": "EMAIL VERIFICATION",
+    "key_name": "EMAIL_COMMON_VERIFICATION_NOTE3_LINE1",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": false,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 19529,
+            "legacy_language_pid": 1,
+            "text": "まれに、ログイン後にメールアドレス確認がうまくいかない環境がございます。",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 19530,
+            "legacy_language_pid": 2,
+            "text": "In rare cases, there is an environment where mail address confirmation does not work after logging in.",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 19531,
+            "legacy_language_pid": 3,
+            "text": "在极少数情况下，登录后会有邮件地址确认不起作用的环境",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 19532,
+            "legacy_language_pid": 4,
+            "text": "드물게 로그인 후 이메일 주소 확인이 잘되지 않는 환경이 있습니다.",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 19533,
+            "legacy_language_pid": 5,
+            "text": "En casos excepcionales, existe un entorno en el que la confirmación de la dirección de correo no funciona después de iniciar sesión.",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 19534,
+            "legacy_language_pid": 6,
+            "text": "Em casos raros, existe um ambiente em que a confirmação do endereço de correio não funciona após o início de sessão.",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 19535,
+            "legacy_language_pid": 7,
+            "text": "在極少數情況下，登錄後會有郵件地址確認不起作用的環境",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 19536,
+            "legacy_language_pid": 8,
+            "text": "Dans de rares cas, il existe un environnement où la confirmation de l'adresse mail ne fonctionne pas après la connexion.",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 19537,
+            "legacy_language_pid": 9,
+            "text": "दुर्लभ मामलों में, एक ऐसा वातावरण होता है जहां प्रवेश करने के बाद मेल पता पुष्टि काम नहीं करती।",
+            "auto_translated": ""
+        },
+        "ar": {
+            "legacy_caption_pid": 29716,
+            "legacy_language_pid": 10,
+            "text": "في حالات نادرة، وهناك البيئة التي لا تعمل عنوان البريد الإلكتروني تأكيد بعد تسجيل الدخول.",
+            "auto_translated": "في حالات نادرة، وهناك البيئة التي لا تعمل عنوان البريد الإلكتروني تأكيد بعد تسجيل الدخول."
+        },
+        "fa": {
+            "legacy_caption_pid": 29717,
+            "legacy_language_pid": 11,
+            "text": "در موارد نادر، است که محیطی که در آن تایید آدرس ایمیل کار نمی کند پس از شما را در ورود وجود دارد.",
+            "auto_translated": "در موارد نادر، است که محیطی که در آن تایید آدرس ایمیل کار نمی کند پس از شما را در ورود وجود دارد."
+        },
+        "de": {
+            "legacy_caption_pid": 29718,
+            "legacy_language_pid": 12,
+            "text": "In seltenen Fällen ist es die Umgebung, in der E-Mail-Adresse Bestätigung nicht nach dem Anmelden funktioniert.",
+            "auto_translated": "In seltenen Fällen ist es die Umgebung, in der E-Mail-Adresse Bestätigung nicht nach dem Anmelden funktioniert."
+        },
+        "ru": {
+            "legacy_caption_pid": 29719,
+            "legacy_language_pid": 13,
+            "text": "В редких случаях, есть среда, в которой по электронной почте подтверждение адреса не работает после того, как вы войти.",
+            "auto_translated": "В редких случаях, есть среда, в которой по электронной почте подтверждение адреса не работает после того, как вы войти."
+        },
+        "ms": {
+            "legacy_caption_pid": 29720,
+            "legacy_language_pid": 14,
+            "text": "Dalam kes-kes yang jarang berlaku, terdapat persekitaran di mana e-mel pengesahan alamat tidak berfungsi selepas anda log masuk.",
+            "auto_translated": "Dalam kes-kes yang jarang berlaku, terdapat persekitaran di mana e-mel pengesahan alamat tidak berfungsi selepas anda log masuk."
+        },
+        "ta": {
+            "legacy_caption_pid": 29721,
+            "legacy_language_pid": 15,
+            "text": "அரிதான சமயங்களில், நீங்கள் உள்நுழைந்த பின் மின்னஞ்சல் முகவரியை உறுதிப்படுத்தல் வேலை செய்யாது சூழல் உள்ளது.",
+            "auto_translated": "அரிதான சமயங்களில், நீங்கள் உள்நுழைந்த பின் மின்னஞ்சல் முகவரியை உறுதிப்படுத்தல் வேலை செய்யாது சூழல் உள்ளது."
+        },
+        "it": {
+            "legacy_caption_pid": 29722,
+            "legacy_language_pid": 16,
+            "text": "In rari casi, non v'è l'ambiente in cui conferma l'indirizzo e-mail non funziona dopo l'accesso.",
+            "auto_translated": "In rari casi, non v'è l'ambiente in cui conferma l'indirizzo e-mail non funziona dopo l'accesso."
+        },
+        "bn": {
+            "legacy_caption_pid": 29723,
+            "legacy_language_pid": 17,
+            "text": "বিরল ক্ষেত্রে, সেখানে পরিবেশ পর আপনি লগ ইন যা ই-মেইল ঠিকানা নিশ্চিতকরণ কাজ করে না হয়।",
+            "auto_translated": "বিরল ক্ষেত্রে, সেখানে পরিবেশ পর আপনি লগ ইন যা ই-মেইল ঠিকানা নিশ্চিতকরণ কাজ করে না হয়।"
+        },
+        "tr": {
+            "legacy_caption_pid": 29724,
+            "legacy_language_pid": 18,
+            "text": "Nadir durumlarda, giriş yaptıktan sonra, e-posta adresi onay çalışmıyor hangi ortam yoktur.",
+            "auto_translated": "Nadir durumlarda, giriş yaptıktan sonra, e-posta adresi onay çalışmıyor hangi ortam yoktur."
+        },
+        "vi": {
+            "legacy_caption_pid": 29725,
+            "legacy_language_pid": 19,
+            "text": "Trong trường hợp hiếm hoi, có môi trường trong đó e-mail xác nhận địa chỉ không hoạt động sau khi bạn đăng nhập.",
+            "auto_translated": "Trong trường hợp hiếm hoi, có môi trường trong đó e-mail xác nhận địa chỉ không hoạt động sau khi bạn đăng nhập."
+        },
+        "pl": {
+            "legacy_caption_pid": 29726,
+            "legacy_language_pid": 20,
+            "text": "W rzadkich przypadkach, nie jest środowiskiem, w którym e-mail z potwierdzeniem adresu nie działa po zalogowaniu się.",
+            "auto_translated": "W rzadkich przypadkach, nie jest środowiskiem, w którym e-mail z potwierdzeniem adresu nie działa po zalogowaniu się."
+        },
+        "jv": {
+            "legacy_caption_pid": 29727,
+            "legacy_language_pid": 21,
+            "text": "Ing kasus langka, ana ing lingkungan kang e-mail konfirmasi alamat ora bisa sawise sampeyan mlebu.",
+            "auto_translated": "Ing kasus langka, ana ing lingkungan kang e-mail konfirmasi alamat ora bisa sawise sampeyan mlebu."
+        },
+        "pa": {
+            "legacy_caption_pid": 29728,
+            "legacy_language_pid": 22,
+            "text": "ਬਹੁਤ ਘੱਟ ਹਾਲਾਤ ਵਿੱਚ, ਉੱਥੇ ਵਾਤਾਵਰਣ ਨੂੰ ਬਾਅਦ ਵਿੱਚ ਲਾਗਇਨ ਹੈ, ਜਿਸ ਵਿੱਚ ਈ-ਮੇਲ ਪਤਾ ਪੁਸ਼ਟੀ ਕੰਮ ਨਾ ਕਰਦਾ ਹੈ.",
+            "auto_translated": "ਬਹੁਤ ਘੱਟ ਹਾਲਾਤ ਵਿੱਚ, ਉੱਥੇ ਵਾਤਾਵਰਣ ਨੂੰ ਬਾਅਦ ਵਿੱਚ ਲਾਗਇਨ ਹੈ, ਜਿਸ ਵਿੱਚ ਈ-ਮੇਲ ਪਤਾ ਪੁਸ਼ਟੀ ਕੰਮ ਨਾ ਕਰਦਾ ਹੈ."
+        },
+        "th": {
+            "legacy_caption_pid": 29729,
+            "legacy_language_pid": 23,
+            "text": "ในกรณีที่หายากมีสภาพแวดล้อมที่ยืนยันอีเมลไม่ทำงานหลังจากที่คุณเข้าสู่ระบบ",
+            "auto_translated": "ในกรณีที่หายากมีสภาพแวดล้อมที่ยืนยันอีเมลไม่ทำงานหลังจากที่คุณเข้าสู่ระบบ"
+        },
+        "te": {
+            "legacy_caption_pid": 37012,
+            "legacy_language_pid": 24,
+            "text": "అరుదైన సందర్భాలలో, ఇ-మెయిల్ చిరునామా నిర్ధారణని పని లేదు దీనిలో మీరు లాగిన్ తర్వాత వాతావరణంలో ఉంది.",
+            "auto_translated": "అరుదైన సందర్భాలలో, ఇ-మెయిల్ చిరునామా నిర్ధారణని పని లేదు దీనిలో మీరు లాగిన్ తర్వాత వాతావరణంలో ఉంది."
+        },
+        "mr": {
+            "legacy_caption_pid": 37013,
+            "legacy_language_pid": 25,
+            "text": "क्वचित प्रसंगी, वातावरण लॉग इन केल्यानंतर ई-मेल पत्ता पुष्टी कार्य करत नाही जे आहे.",
+            "auto_translated": "क्वचित प्रसंगी, वातावरण लॉग इन केल्यानंतर ई-मेल पत्ता पुष्टी कार्य करत नाही जे आहे."
+        },
+        "ur": {
+            "legacy_caption_pid": 37014,
+            "legacy_language_pid": 26,
+            "text": "شاذ و نادر صورتوں میں، ماحول جس میں آپ میں لاگ ان ہونے کے بعد ای میل ایڈریس کی تصدیق کے کام نہیں کرتا ہے.",
+            "auto_translated": "شاذ و نادر صورتوں میں، ماحول جس میں آپ میں لاگ ان ہونے کے بعد ای میل ایڈریس کی تصدیق کے کام نہیں کرتا ہے."
+        },
+        "gu": {
+            "legacy_caption_pid": 37015,
+            "legacy_language_pid": 27,
+            "text": "જૂજ કિસ્સાઓમાં, ત્યાં પર્યાવરણ પછી તમે લૉગ ઇન જેમાં ઇ-મેઇલ સરનામું પુષ્ટિ કામ કરતું નથી છે.",
+            "auto_translated": "જૂજ કિસ્સાઓમાં, ત્યાં પર્યાવરણ પછી તમે લૉગ ઇન જેમાં ઇ-મેઇલ સરનામું પુષ્ટિ કામ કરતું નથી છે."
+        },
+        "uk": {
+            "legacy_caption_pid": 37016,
+            "legacy_language_pid": 28,
+            "text": "У рідкісних випадках, є середовище, в якій по електронній пошті підтвердження адреси не працює після того, як ви увійти.",
+            "auto_translated": "У рідкісних випадках, є середовище, в якій по електронній пошті підтвердження адреси не працює після того, як ви увійти."
+        },
+        "ml": {
+            "legacy_caption_pid": 37017,
+            "legacy_language_pid": 29,
+            "text": "അപൂർവം സന്ദർഭങ്ങളിൽ, ഇതിൽ നിങ്ങൾ ലോഗിൻ ചെയ്ത ശേഷം ഇ-മെയിൽ വിലാസ സ്ഥിരീകരണം പ്രവർത്തിക്കുന്നില്ല പരിസ്ഥിതി ഇല്ല.",
+            "auto_translated": "അപൂർവം സന്ദർഭങ്ങളിൽ, ഇതിൽ നിങ്ങൾ ലോഗിൻ ചെയ്ത ശേഷം ഇ-മെയിൽ വിലാസ സ്ഥിരീകരണം പ്രവർത്തിക്കുന്നില്ല പരിസ്ഥിതി ഇല്ല."
+        },
+        "kn": {
+            "legacy_caption_pid": 37018,
+            "legacy_language_pid": 30,
+            "text": "ಅಪರೂಪದ ಸಂದರ್ಭಗಳಲ್ಲಿ, ನೀವು ಲಾಗ್ ಇನ್ ನಂತರ ಇದರಲ್ಲಿ ಇಮೇಲ್ ವಿಳಾಸಕ್ಕೆ ದೃಢೀಕರಣ ಕೆಲಸ ಮಾಡುವುದಿಲ್ಲ ಪರಿಸರ ಇಲ್ಲ.",
+            "auto_translated": "ಅಪರೂಪದ ಸಂದರ್ಭಗಳಲ್ಲಿ, ನೀವು ಲಾಗ್ ಇನ್ ನಂತರ ಇದರಲ್ಲಿ ಇಮೇಲ್ ವಿಳಾಸಕ್ಕೆ ದೃಢೀಕರಣ ಕೆಲಸ ಮಾಡುವುದಿಲ್ಲ ಪರಿಸರ ಇಲ್ಲ."
+        },
+        "su": {
+            "legacy_caption_pid": 37019,
+            "legacy_language_pid": 31,
+            "text": "Dina kasus langka, aya lingkungan nu e-mail konfirmasi alamat henteu dianggo saatos Anjeun asup.",
+            "auto_translated": "Dina kasus langka, aya lingkungan nu e-mail konfirmasi alamat henteu dianggo saatos Anjeun asup."
+        },
+        "ku": {
+            "legacy_caption_pid": 37020,
+            "legacy_language_pid": 32,
+            "text": "Di hin rewşan de, ye ya di rewşeke ku confirmation navnîşana e-mail bi kêr nayê, piştî tu têketinê heye.",
+            "auto_translated": "Di hin rewşan de, ye ya di rewşeke ku confirmation navnîşana e-mail bi kêr nayê, piştî tu têketinê heye."
+        },
+        "ps": {
+            "legacy_caption_pid": 37021,
+            "legacy_language_pid": 33,
+            "text": "په ځينو حالتونو کې، د چاپیریال کې په کوم برېښليک پتې د تاييد کار نه وروسته تاسو ته د ننوتلو شته.",
+            "auto_translated": "په ځينو حالتونو کې، د چاپیریال کې په کوم برېښليک پتې د تاييد کار نه وروسته تاسو ته د ننوتلو شته."
+        },
+        "ro": {
+            "legacy_caption_pid": 37022,
+            "legacy_language_pid": 34,
+            "text": "În cazuri rare, există mediul în care e-mail de confirmare adresă nu funcționează după conectarea.",
+            "auto_translated": "În cazuri rare, există mediul în care e-mail de confirmare adresă nu funcționează după conectarea."
+        },
+        "id": {
+            "legacy_caption_pid": 37023,
+            "legacy_language_pid": 35,
+            "text": "Dalam kasus yang jarang terjadi, ada lingkungan di mana e-mail konfirmasi alamat tidak bekerja setelah Anda log in.",
+            "auto_translated": "Dalam kasus yang jarang terjadi, ada lingkungan di mana e-mail konfirmasi alamat tidak bekerja setelah Anda log in."
+        },
+        "sd": {
+            "legacy_caption_pid": 37024,
+            "legacy_language_pid": 36,
+            "text": "ناياب ڪيس ۾، اتان جي ماحول کان پوء توهان جو لاگ ان جنهن ۾ اي-ميل ايڊريس تصديق ڪم نه ايندي آهي.",
+            "auto_translated": "ناياب ڪيس ۾، اتان جي ماحول کان پوء توهان جو لاگ ان جنهن ۾ اي-ميل ايڊريس تصديق ڪم نه ايندي آهي."
+        },
+        "af": {
+            "legacy_caption_pid": 37025,
+            "legacy_language_pid": 37,
+            "text": "In seldsame gevalle, daar is die omgewing waarin e-posadres bevestig nie werk nie nadat jy inteken.",
+            "auto_translated": "In seldsame gevalle, daar is die omgewing waarin e-posadres bevestig nie werk nie nadat jy inteken."
+        },
+        "sw": {
+            "legacy_caption_pid": 37026,
+            "legacy_language_pid": 38,
+            "text": "Katika matukio machache, kuna mazingira ambayo barua pepe ya uthibitisho haifanyi kazi baada ya kuingia.",
+            "auto_translated": "Katika matukio machache, kuna mazingira ambayo barua pepe ya uthibitisho haifanyi kazi baada ya kuingia."
+        },
+        "lo": {
+            "legacy_caption_pid": 37027,
+            "legacy_language_pid": 39,
+            "text": "ໃນກໍລະນີທີ່ຫາຍາກ, ມີສະພາບແວດລ້ອມໃນທີ່ຢືນຢັນທີ່ຢູ່ອີເມລບໍ່ໄດ້ເຮັດວຽກຫຼັງຈາກທີ່ທ່ານເຂົ້າສູ່ລະບົບ.",
+            "auto_translated": "ໃນກໍລະນີທີ່ຫາຍາກ, ມີສະພາບແວດລ້ອມໃນທີ່ຢືນຢັນທີ່ຢູ່ອີເມລບໍ່ໄດ້ເຮັດວຽກຫຼັງຈາກທີ່ທ່ານເຂົ້າສູ່ລະບົບ."
+        },
+        "nl": {
+            "legacy_caption_pid": 37028,
+            "legacy_language_pid": 40,
+            "text": "In zeldzame gevallen is de omgeving waarin e-mail adres bevestiging werkt niet nadat u zich aanmeldt.",
+            "auto_translated": "In zeldzame gevallen is de omgeving waarin e-mail adres bevestiging werkt niet nadat u zich aanmeldt."
+        },
+        "tl": {
+            "legacy_caption_pid": 37029,
+            "legacy_language_pid": 41,
+            "text": "Sa bihirang mga kaso, diyan ay ang kapaligiran kung saan address kumpirmasyon sa e-mail ay hindi gumagana pagkatapos mong mag-log in.",
+            "auto_translated": "Sa bihirang mga kaso, diyan ay ang kapaligiran kung saan address kumpirmasyon sa e-mail ay hindi gumagana pagkatapos mong mag-log in."
+        },
+        "ne": {
+            "legacy_caption_pid": 37030,
+            "legacy_language_pid": 42,
+            "text": "दुर्लभ अवस्थामा, तपाईं लग इन गर्नुहोस् पछि ई-मेल ठेगाना पुष्टि काम गर्दैन जो वातावरण छ।",
+            "auto_translated": "दुर्लभ अवस्थामा, तपाईं लग इन गर्नुहोस् पछि ई-मेल ठेगाना पुष्टि काम गर्दैन जो वातावरण छ।"
+        },
+        "hu": {
+            "legacy_caption_pid": 37031,
+            "legacy_language_pid": 43,
+            "text": "Ritkán, ott van a környezet, amelyben az e-mail cím megerősítés nem működik a bejelentkezést követően.",
+            "auto_translated": "Ritkán, ott van a környezet, amelyben az e-mail cím megerősítés nem működik a bejelentkezést követően."
+        },
+        "cs": {
+            "legacy_caption_pid": 37032,
+            "legacy_language_pid": 44,
+            "text": "Ve vzácných případech je prostředí, ve kterém funguje e-mailová adresa pro potvrzení nefungují po přihlášení.",
+            "auto_translated": "Ve vzácných případech je prostředí, ve kterém funguje e-mailová adresa pro potvrzení nefungují po přihlášení."
+        },
+        "el": {
+            "legacy_caption_pid": 37033,
+            "legacy_language_pid": 45,
+            "text": "Σε σπάνιες περιπτώσεις, υπάρχει το περιβάλλον στο οποίο e-mail επιβεβαίωσης διεύθυνση δεν λειτουργεί αφού συνδεθείτε.",
+            "auto_translated": "Σε σπάνιες περιπτώσεις, υπάρχει το περιβάλλον στο οποίο e-mail επιβεβαίωσης διεύθυνση δεν λειτουργεί αφού συνδεθείτε."
+        },
+        "sv": {
+            "legacy_caption_pid": 37034,
+            "legacy_language_pid": 46,
+            "text": "I sällsynta fall finns den miljö i vilken e-postadress bekräftelse inte fungerar när du loggar in.",
+            "auto_translated": "I sällsynta fall finns den miljö i vilken e-postadress bekräftelse inte fungerar när du loggar in."
+        },
+        "kk": {
+            "legacy_caption_pid": 37035,
+            "legacy_language_pid": 47,
+            "text": "Сирек жағдайларда, сіз жүйеге кіргеннен кейін электрондық пошта мекенжайын құптауы жұмыс істемейді, онда қоршаған ортаны бар.",
+            "auto_translated": "Сирек жағдайларда, сіз жүйеге кіргеннен кейін электрондық пошта мекенжайын құптауы жұмыс істемейді, онда қоршаған ортаны бар."
+        },
+        "fi": {
+            "legacy_caption_pid": 37036,
+            "legacy_language_pid": 48,
+            "text": "Harvoissa tapauksissa on ympäristö, jossa sähköpostiosoite vahvistusta ei toimi, kun olet kirjautunut sisään.",
+            "auto_translated": "Harvoissa tapauksissa on ympäristö, jossa sähköpostiosoite vahvistusta ei toimi, kun olet kirjautunut sisään."
+        },
+        "da": {
+            "legacy_caption_pid": 37037,
+            "legacy_language_pid": 49,
+            "text": "I sjældne tilfælde er der det miljø, hvor e-mail-adresse bekræftelse ikke virker efter du logger ind.",
+            "auto_translated": "I sjældne tilfælde er der det miljø, hvor e-mail-adresse bekræftelse ikke virker efter du logger ind."
+        },
+        "he": {
+            "legacy_caption_pid": 37038,
+            "legacy_language_pid": 50,
+            "text": "במקרים נדירים, יש את הסביבה שבה אישור כתובת דואר אלקטרוני לא עובד לאחר שתתחבר.",
+            "auto_translated": "במקרים נדירים, יש את הסביבה שבה אישור כתובת דואר אלקטרוני לא עובד לאחר שתתחבר."
+        },
+        "no": {
+            "legacy_caption_pid": 37039,
+            "legacy_language_pid": 51,
+            "text": "I sjeldne tilfeller er det miljøet der e-postadressen bekreftelse ikke fungerer etter at du logger på.",
+            "auto_translated": "I sjeldne tilfeller er det miljøet der e-postadressen bekreftelse ikke fungerer etter at du logger på."
+        }
+    }
+}

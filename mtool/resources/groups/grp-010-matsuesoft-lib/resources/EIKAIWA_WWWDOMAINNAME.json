@@ -1,0 +1,69 @@
+{
+    "resource_key": "EIKAIWA_WWWDOMAINNAME",
+    "legacy_resource_pid": 703,
+    "base_group_key": "grp-010-matsuesoft-lib",
+    "additional_group_keys": [],
+    "key_for_update": "Ws1r6kM1MkZBgRtoeVUu9vbdpsUdMWKS0xH1OhZaW8aXUp060tVfOVzFjK5ye41gEPZBgh39OLbKtcXIbJDEFq0mL8VTEkKhl7EBi7phhQIF61JwViadIwoqKKDoN3ZE",
+    "sort_group": "",
+    "key_name": "EIKAIWA_WWWDOMAINNAME",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": true,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 4536,
+            "legacy_language_pid": 1,
+            "text": "eigo.dokotera.com",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 4537,
+            "legacy_language_pid": 2,
+            "text": "english.dokotera.com",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 6362,
+            "legacy_language_pid": 3,
+            "text": "yingyu.dokotera.com",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 6363,
+            "legacy_language_pid": 4,
+            "text": "yeongeo.dokotera.com",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 9992,
+            "legacy_language_pid": 5,
+            "text": "singles.dokotera.com",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 9993,
+            "legacy_language_pid": 6,
+            "text": "pingles.dokotera.com",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 10004,
+            "legacy_language_pid": 7,
+            "text": "yingyut.dokotera.com",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 16013,
+            "legacy_language_pid": 8,
+            "text": "french.dokotera.com",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 16014,
+            "legacy_language_pid": 9,
+            "text": "hindi.dokotera.com",
+            "auto_translated": ""
+        }
+    }
+}

@@ -1,0 +1,321 @@
+{
+    "resource_key": "COMMON_LIB_ENROLL_HEADER_COMMENT_AREA",
+    "legacy_resource_pid": 1437,
+    "base_group_key": "grp-010-matsuesoft-lib",
+    "additional_group_keys": [],
+    "key_for_update": "3RtREOtVFfnD4v2eT7qkodqbvcju2va5Yhdo2zWOtQT8nUBC6kC1jQPuZOR25vzGJ09aGd4jbZcwHmYwEalPMi7egR86ZNe2c4zeht0PrHph8rx1ERZgvJrGIAm5IDlX",
+    "sort_group": "ENROLL",
+    "key_name": "COMMON_LIB_ENROLL_HEADER_COMMENT_AREA",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": false,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 6022,
+            "legacy_language_pid": 1,
+            "text": "通信欄:",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 6023,
+            "legacy_language_pid": 2,
+            "text": "Comment:",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 6024,
+            "legacy_language_pid": 3,
+            "text": "通信领域：",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 6025,
+            "legacy_language_pid": 4,
+            "text": "통신란 :",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 10811,
+            "legacy_language_pid": 5,
+            "text": "Comentario:",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 10812,
+            "legacy_language_pid": 6,
+            "text": "Comente:",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 10813,
+            "legacy_language_pid": 7,
+            "text": "通信領域：",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 16485,
+            "legacy_language_pid": 8,
+            "text": "Commentaire:",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 16486,
+            "legacy_language_pid": 9,
+            "text": "टिप्पणी:",
+            "auto_translated": ""
+        },
+        "ar": {
+            "legacy_caption_pid": 31340,
+            "legacy_language_pid": 10,
+            "text": "مجال الاتصالات:",
+            "auto_translated": "مجال الاتصالات:"
+        },
+        "fa": {
+            "legacy_caption_pid": 31341,
+            "legacy_language_pid": 11,
+            "text": "زمینه ارتباطات:",
+            "auto_translated": "زمینه ارتباطات:"
+        },
+        "de": {
+            "legacy_caption_pid": 31342,
+            "legacy_language_pid": 12,
+            "text": "Kommunikationsfeld:",
+            "auto_translated": "Kommunikationsfeld:"
+        },
+        "ru": {
+            "legacy_caption_pid": 31343,
+            "legacy_language_pid": 13,
+            "text": "Поле связи:",
+            "auto_translated": "Поле связи:"
+        },
+        "ms": {
+            "legacy_caption_pid": 31344,
+            "legacy_language_pid": 14,
+            "text": "bidang komunikasi:",
+            "auto_translated": "bidang komunikasi:"
+        },
+        "ta": {
+            "legacy_caption_pid": 31345,
+            "legacy_language_pid": 15,
+            "text": "தொடர்பாடல் துறையில்:",
+            "auto_translated": "தொடர்பாடல் துறையில்:"
+        },
+        "it": {
+            "legacy_caption_pid": 31346,
+            "legacy_language_pid": 16,
+            "text": "campo della comunicazione:",
+            "auto_translated": "campo della comunicazione:"
+        },
+        "bn": {
+            "legacy_caption_pid": 31347,
+            "legacy_language_pid": 17,
+            "text": "কমিউনিকেশন ক্ষেত্র:",
+            "auto_translated": "কমিউনিকেশন ক্ষেত্র:"
+        },
+        "tr": {
+            "legacy_caption_pid": 31348,
+            "legacy_language_pid": 18,
+            "text": "Haberleşme alanı:",
+            "auto_translated": "Haberleşme alanı:"
+        },
+        "vi": {
+            "legacy_caption_pid": 31349,
+            "legacy_language_pid": 19,
+            "text": "lĩnh vực thông tin liên lạc:",
+            "auto_translated": "lĩnh vực thông tin liên lạc:"
+        },
+        "pl": {
+            "legacy_caption_pid": 31350,
+            "legacy_language_pid": 20,
+            "text": "Field Communication:",
+            "auto_translated": "Field Communication:"
+        },
+        "jv": {
+            "legacy_caption_pid": 31351,
+            "legacy_language_pid": 21,
+            "text": "lapangan Komunikasi:",
+            "auto_translated": "lapangan Komunikasi:"
+        },
+        "pa": {
+            "legacy_caption_pid": 31352,
+            "legacy_language_pid": 22,
+            "text": "ਸੰਚਾਰ ਖੇਤਰ:",
+            "auto_translated": "ਸੰਚਾਰ ਖੇਤਰ:"
+        },
+        "th": {
+            "legacy_caption_pid": 31353,
+            "legacy_language_pid": 23,
+            "text": "สาขาการสื่อสาร:",
+            "auto_translated": "สาขาการสื่อสาร:"
+        },
+        "te": {
+            "legacy_caption_pid": 39364,
+            "legacy_language_pid": 24,
+            "text": "కమ్యూనికేషన్ రంగంలో:",
+            "auto_translated": "కమ్యూనికేషన్ రంగంలో:"
+        },
+        "mr": {
+            "legacy_caption_pid": 39365,
+            "legacy_language_pid": 25,
+            "text": "कम्युनिकेशन क्षेत्रात:",
+            "auto_translated": "कम्युनिकेशन क्षेत्रात:"
+        },
+        "ur": {
+            "legacy_caption_pid": 39366,
+            "legacy_language_pid": 26,
+            "text": "کمیونیکیشن فیلڈ:",
+            "auto_translated": "کمیونیکیشن فیلڈ:"
+        },
+        "gu": {
+            "legacy_caption_pid": 39367,
+            "legacy_language_pid": 27,
+            "text": "કોમ્યુનિકેશન ક્ષેત્ર:",
+            "auto_translated": "કોમ્યુનિકેશન ક્ષેત્ર:"
+        },
+        "uk": {
+            "legacy_caption_pid": 39368,
+            "legacy_language_pid": 28,
+            "text": "Поле зв'язку:",
+            "auto_translated": "Поле зв'язку:"
+        },
+        "ml": {
+            "legacy_caption_pid": 39369,
+            "legacy_language_pid": 29,
+            "text": "കമ്മ്യൂണിക്കേഷൻ ഫീൽഡ്:",
+            "auto_translated": "കമ്മ്യൂണിക്കേഷൻ ഫീൽഡ്:"
+        },
+        "kn": {
+            "legacy_caption_pid": 39370,
+            "legacy_language_pid": 30,
+            "text": "ಸಂವಹನ ಕ್ಷೇತ್ರ:",
+            "auto_translated": "ಸಂವಹನ ಕ್ಷೇತ್ರ:"
+        },
+        "su": {
+            "legacy_caption_pid": 39371,
+            "legacy_language_pid": 31,
+            "text": "médan Komunikasi:",
+            "auto_translated": "médan Komunikasi:"
+        },
+        "ku": {
+            "legacy_caption_pid": 39372,
+            "legacy_language_pid": 32,
+            "text": "warê Communication:",
+            "auto_translated": "warê Communication:"
+        },
+        "ps": {
+            "legacy_caption_pid": 39373,
+            "legacy_language_pid": 33,
+            "text": "د مخابراتو په برخه:",
+            "auto_translated": "د مخابراتو په برخه:"
+        },
+        "ro": {
+            "legacy_caption_pid": 39374,
+            "legacy_language_pid": 34,
+            "text": "câmp de comunicare:",
+            "auto_translated": "câmp de comunicare:"
+        },
+        "id": {
+            "legacy_caption_pid": 39375,
+            "legacy_language_pid": 35,
+            "text": "bidang komunikasi:",
+            "auto_translated": "bidang komunikasi:"
+        },
+        "sd": {
+            "legacy_caption_pid": 39376,
+            "legacy_language_pid": 36,
+            "text": "رابطي جي ميدان ۾:",
+            "auto_translated": "رابطي جي ميدان ۾:"
+        },
+        "af": {
+            "legacy_caption_pid": 39377,
+            "legacy_language_pid": 37,
+            "text": "Kommunikasie veld:",
+            "auto_translated": "Kommunikasie veld:"
+        },
+        "sw": {
+            "legacy_caption_pid": 39378,
+            "legacy_language_pid": 38,
+            "text": "uwanja Mawasiliano:",
+            "auto_translated": "uwanja Mawasiliano:"
+        },
+        "lo": {
+            "legacy_caption_pid": 39379,
+            "legacy_language_pid": 39,
+            "text": "ພາກສະຫນາມການສື່ສານ:",
+            "auto_translated": "ພາກສະຫນາມການສື່ສານ:"
+        },
+        "nl": {
+            "legacy_caption_pid": 39380,
+            "legacy_language_pid": 40,
+            "text": "Gebied van communicatie:",
+            "auto_translated": "Gebied van communicatie:"
+        },
+        "tl": {
+            "legacy_caption_pid": 39381,
+            "legacy_language_pid": 41,
+            "text": "larangan Komunikasyon:",
+            "auto_translated": "larangan Komunikasyon:"
+        },
+        "ne": {
+            "legacy_caption_pid": 39382,
+            "legacy_language_pid": 42,
+            "text": "संचार क्षेत्र:",
+            "auto_translated": "संचार क्षेत्र:"
+        },
+        "hu": {
+            "legacy_caption_pid": 39383,
+            "legacy_language_pid": 43,
+            "text": "Kommunikáció terén:",
+            "auto_translated": "Kommunikáció terén:"
+        },
+        "cs": {
+            "legacy_caption_pid": 39384,
+            "legacy_language_pid": 44,
+            "text": "Komunikační pole:",
+            "auto_translated": "Komunikační pole:"
+        },
+        "el": {
+            "legacy_caption_pid": 39385,
+            "legacy_language_pid": 45,
+            "text": "τομέα της επικοινωνίας:",
+            "auto_translated": "τομέα της επικοινωνίας:"
+        },
+        "sv": {
+            "legacy_caption_pid": 39386,
+            "legacy_language_pid": 46,
+            "text": "Kommunikationsområdet:",
+            "auto_translated": "Kommunikationsområdet:"
+        },
+        "kk": {
+            "legacy_caption_pid": 39387,
+            "legacy_language_pid": 47,
+            "text": "Байланыс саласы:",
+            "auto_translated": "Байланыс саласы:"
+        },
+        "fi": {
+            "legacy_caption_pid": 39388,
+            "legacy_language_pid": 48,
+            "text": "Viestintä kenttään:",
+            "auto_translated": "Viestintä kenttään:"
+        },
+        "da": {
+            "legacy_caption_pid": 39389,
+            "legacy_language_pid": 49,
+            "text": "Kommunikation felt:",
+            "auto_translated": "Kommunikation felt:"
+        },
+        "he": {
+            "legacy_caption_pid": 39390,
+            "legacy_language_pid": 50,
+            "text": "שדה תקשורת:",
+            "auto_translated": "שדה תקשורת:"
+        },
+        "no": {
+            "legacy_caption_pid": 39391,
+            "legacy_language_pid": 51,
+            "text": "Kommunikasjon feltet:",
+            "auto_translated": "Kommunikasjon feltet:"
+        }
+    }
+}

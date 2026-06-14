@@ -1,0 +1,321 @@
+{
+    "resource_key": "COMMON_LIB_LOGIN_AUTHENTICATE_WITH_ANY_MEANS",
+    "legacy_resource_pid": 1495,
+    "base_group_key": "grp-010-matsuesoft-lib",
+    "additional_group_keys": [],
+    "key_for_update": "HXjAtAfpNjDcbXsXYX1YAQxV6Eev2NO3K4eO9GyZTwBM9JeERvBfr07OmgBrkrbnqXJtJYdtQzIdP4FAZkcPT7DR5aeKL17BWPeTzSGuPc79kkY5Y79KtbifFDIDXGaX",
+    "sort_group": "LOGIN",
+    "key_name": "COMMON_LIB_LOGIN_AUTHENTICATE_WITH_ANY_MEANS",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": false,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 6254,
+            "legacy_language_pid": 1,
+            "text": "いずれかの方法で認証をお願いいたします。",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 6255,
+            "legacy_language_pid": 2,
+            "text": "Please do the authentication by either method.",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 6256,
+            "legacy_language_pid": 3,
+            "text": "以下两种方法均可认证",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 6257,
+            "legacy_language_pid": 4,
+            "text": "다음 중 하나의 방법으로 인증을 부탁드립니다.",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 11048,
+            "legacy_language_pid": 5,
+            "text": "Haga por favor la autentificación por cualquier método. ",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 11049,
+            "legacy_language_pid": 6,
+            "text": "Faça a autenticação por qualquer método. ",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 11050,
+            "legacy_language_pid": 7,
+            "text": "以下兩種方法均可認證",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 17227,
+            "legacy_language_pid": 8,
+            "text": "Faites l'authentification par l'une ou l'autre méthode.",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 17228,
+            "legacy_language_pid": 9,
+            "text": "कृपया किसी भी विधि द्वारा प्रमाणीकरण करें।",
+            "auto_translated": ""
+        },
+        "ar": {
+            "legacy_caption_pid": 32474,
+            "legacy_language_pid": 10,
+            "text": "شكرا لك على المصادقة في واحدة من طريقتين.",
+            "auto_translated": "شكرا لك على المصادقة في واحدة من طريقتين."
+        },
+        "fa": {
+            "legacy_caption_pid": 32475,
+            "legacy_language_pid": 11,
+            "text": "با تشکر از شما برای احراز هویت در یکی از دو راه.",
+            "auto_translated": "با تشکر از شما برای احراز هویت در یکی از دو راه."
+        },
+        "de": {
+            "legacy_caption_pid": 32476,
+            "legacy_language_pid": 12,
+            "text": "Vielen Dank für die Authentifizierung in einer von zwei Möglichkeiten.",
+            "auto_translated": "Vielen Dank für die Authentifizierung in einer von zwei Möglichkeiten."
+        },
+        "ru": {
+            "legacy_caption_pid": 32477,
+            "legacy_language_pid": 13,
+            "text": "Спасибо за проверку подлинности в одном из двух способов.",
+            "auto_translated": "Спасибо за проверку подлинности в одном из двух способов."
+        },
+        "ms": {
+            "legacy_caption_pid": 32478,
+            "legacy_language_pid": 14,
+            "text": "Terima kasih untuk pengesahan dalam salah satu daripada dua cara.",
+            "auto_translated": "Terima kasih untuk pengesahan dalam salah satu daripada dua cara."
+        },
+        "ta": {
+            "legacy_caption_pid": 32479,
+            "legacy_language_pid": 15,
+            "text": "இரண்டு வழிகளில் ஒன்று அங்கீகார நன்றி.",
+            "auto_translated": "இரண்டு வழிகளில் ஒன்று அங்கீகார நன்றி."
+        },
+        "it": {
+            "legacy_caption_pid": 32480,
+            "legacy_language_pid": 16,
+            "text": "Grazie per l'autenticazione in uno dei due modi.",
+            "auto_translated": "Grazie per l'autenticazione in uno dei due modi."
+        },
+        "bn": {
+            "legacy_caption_pid": 32481,
+            "legacy_language_pid": 17,
+            "text": "দুটি উপায়ে এক প্রমাণীকরণের জন্য আপনাকে ধন্যবাদ।",
+            "auto_translated": "দুটি উপায়ে এক প্রমাণীকরণের জন্য আপনাকে ধন্যবাদ।"
+        },
+        "tr": {
+            "legacy_caption_pid": 32482,
+            "legacy_language_pid": 18,
+            "text": "İki yöntemden birini kullanarak kimlik doğrulaması için teşekkür ederiz.",
+            "auto_translated": "İki yöntemden birini kullanarak kimlik doğrulaması için teşekkür ederiz."
+        },
+        "vi": {
+            "legacy_caption_pid": 32483,
+            "legacy_language_pid": 19,
+            "text": "Cảm ơn bạn đã xác thực bằng một trong hai cách.",
+            "auto_translated": "Cảm ơn bạn đã xác thực bằng một trong hai cách."
+        },
+        "pl": {
+            "legacy_caption_pid": 32484,
+            "legacy_language_pid": 20,
+            "text": "Dziękuję za uwierzytelnianie na jeden z dwóch sposobów.",
+            "auto_translated": "Dziękuję za uwierzytelnianie na jeden z dwóch sposobów."
+        },
+        "jv": {
+            "legacy_caption_pid": 32485,
+            "legacy_language_pid": 21,
+            "text": "Matur nuwun kanggo bukti asli ing salah siji saka rong cara.",
+            "auto_translated": "Matur nuwun kanggo bukti asli ing salah siji saka rong cara."
+        },
+        "pa": {
+            "legacy_caption_pid": 32486,
+            "legacy_language_pid": 22,
+            "text": "ਦੋ ਤਰੀਕੇ ਦੇ ਇੱਕ ਵਿੱਚ ਪ੍ਰਮਾਣਿਕਤਾ ਲਈ ਧੰਨਵਾਦ.",
+            "auto_translated": "ਦੋ ਤਰੀਕੇ ਦੇ ਇੱਕ ਵਿੱਚ ਪ੍ਰਮਾਣਿਕਤਾ ਲਈ ਧੰਨਵਾਦ."
+        },
+        "th": {
+            "legacy_caption_pid": 32487,
+            "legacy_language_pid": 23,
+            "text": "ขอบคุณสำหรับการตรวจสอบในหนึ่งในสองวิธี",
+            "auto_translated": "ขอบคุณสำหรับการตรวจสอบในหนึ่งในสองวิธี"
+        },
+        "te": {
+            "legacy_caption_pid": 40680,
+            "legacy_language_pid": 24,
+            "text": "రెండు మార్గాల్లో ఒక ప్రమాణీకరణ ధన్యవాదాలు.",
+            "auto_translated": "రెండు మార్గాల్లో ఒక ప్రమాణీకరణ ధన్యవాదాలు."
+        },
+        "mr": {
+            "legacy_caption_pid": 40681,
+            "legacy_language_pid": 25,
+            "text": "दोन प्रकारे एका प्रमाणीकरण धन्यवाद.",
+            "auto_translated": "दोन प्रकारे एका प्रमाणीकरण धन्यवाद."
+        },
+        "ur": {
+            "legacy_caption_pid": 40682,
+            "legacy_language_pid": 26,
+            "text": "دو طریقوں میں سے ایک میں تصدیق کے لئے آپ کا شکریہ.",
+            "auto_translated": "دو طریقوں میں سے ایک میں تصدیق کے لئے آپ کا شکریہ."
+        },
+        "gu": {
+            "legacy_caption_pid": 40683,
+            "legacy_language_pid": 27,
+            "text": "બે માર્ગો એક પ્રમાણીકરણ બદલ આપનો આભાર.",
+            "auto_translated": "બે માર્ગો એક પ્રમાણીકરણ બદલ આપનો આભાર."
+        },
+        "uk": {
+            "legacy_caption_pid": 40684,
+            "legacy_language_pid": 28,
+            "text": "Спасибі за перевірку справжності в одному з двох способів.",
+            "auto_translated": "Спасибі за перевірку справжності в одному з двох способів."
+        },
+        "ml": {
+            "legacy_caption_pid": 40685,
+            "legacy_language_pid": 29,
+            "text": "രണ്ടു മാർഗങ്ങളിൽ ഒന്ന് ആധികാരികത നന്ദി.",
+            "auto_translated": "രണ്ടു മാർഗങ്ങളിൽ ഒന്ന് ആധികാരികത നന്ദി."
+        },
+        "kn": {
+            "legacy_caption_pid": 40686,
+            "legacy_language_pid": 30,
+            "text": "ಎರಡು ವಿಧಾನಗಳಲ್ಲಿ ಒಂದು ದೃಢೀಕರಣ ಧನ್ಯವಾದಗಳು.",
+            "auto_translated": "ಎರಡು ವಿಧಾನಗಳಲ್ಲಿ ಒಂದು ದೃಢೀಕರಣ ಧನ್ಯವಾದಗಳು."
+        },
+        "su": {
+            "legacy_caption_pid": 40687,
+            "legacy_language_pid": 31,
+            "text": "Hatur nuhun pikeun auténtikasi di salah sahiji dua cara.",
+            "auto_translated": "Hatur nuhun pikeun auténtikasi di salah sahiji dua cara."
+        },
+        "ku": {
+            "legacy_caption_pid": 40688,
+            "legacy_language_pid": 32,
+            "text": "Spas dikim ji bo piştrastkirinê li yek ji du awayên.",
+            "auto_translated": "Spas dikim ji bo piştrastkirinê li yek ji du awayên."
+        },
+        "ps": {
+            "legacy_caption_pid": 40689,
+            "legacy_language_pid": 33,
+            "text": "د دوو لارو يوه اعتبار لپاره د تاسو څخه مننه.",
+            "auto_translated": "د دوو لارو يوه اعتبار لپاره د تاسو څخه مننه."
+        },
+        "ro": {
+            "legacy_caption_pid": 40690,
+            "legacy_language_pid": 34,
+            "text": "Vă mulțumim pentru autentificarea într-una din cele două moduri.",
+            "auto_translated": "Vă mulțumim pentru autentificarea într-una din cele două moduri."
+        },
+        "id": {
+            "legacy_caption_pid": 40691,
+            "legacy_language_pid": 35,
+            "text": "Terima kasih untuk otentikasi di salah satu dari dua cara.",
+            "auto_translated": "Terima kasih untuk otentikasi di salah satu dari dua cara."
+        },
+        "sd": {
+            "legacy_caption_pid": 40692,
+            "legacy_language_pid": 36,
+            "text": "ٻن طريقن مان هڪ ۾ اصليت جي لاء توهان جي مهرباني.",
+            "auto_translated": "ٻن طريقن مان هڪ ۾ اصليت جي لاء توهان جي مهرباني."
+        },
+        "af": {
+            "legacy_caption_pid": 40693,
+            "legacy_language_pid": 37,
+            "text": "Dankie vir verifikasie in een van twee maniere.",
+            "auto_translated": "Dankie vir verifikasie in een van twee maniere."
+        },
+        "sw": {
+            "legacy_caption_pid": 40694,
+            "legacy_language_pid": 38,
+            "text": "Asante kwa uthibitisho katika moja ya njia mbili.",
+            "auto_translated": "Asante kwa uthibitisho katika moja ya njia mbili."
+        },
+        "lo": {
+            "legacy_caption_pid": 40695,
+            "legacy_language_pid": 39,
+            "text": "ຂໍຂອບໃຈທ່ານສໍາລັບການກວດສອບໃນຫນຶ່ງໃນສອງວິທີ.",
+            "auto_translated": "ຂໍຂອບໃຈທ່ານສໍາລັບການກວດສອບໃນຫນຶ່ງໃນສອງວິທີ."
+        },
+        "nl": {
+            "legacy_caption_pid": 40696,
+            "legacy_language_pid": 40,
+            "text": "Dank u voor authenticatie in een van twee manieren.",
+            "auto_translated": "Dank u voor authenticatie in een van twee manieren."
+        },
+        "tl": {
+            "legacy_caption_pid": 40697,
+            "legacy_language_pid": 41,
+            "text": "Salamat sa iyo para sa pagpapatunay sa isa sa dalawang paraan.",
+            "auto_translated": "Salamat sa iyo para sa pagpapatunay sa isa sa dalawang paraan."
+        },
+        "ne": {
+            "legacy_caption_pid": 40698,
+            "legacy_language_pid": 42,
+            "text": "दुई तरिकामा मध्ये प्रमाणीकरण लागि धन्यवाद।",
+            "auto_translated": "दुई तरिकामा मध्ये प्रमाणीकरण लागि धन्यवाद।"
+        },
+        "hu": {
+            "legacy_caption_pid": 40699,
+            "legacy_language_pid": 43,
+            "text": "Köszönjük hitelesítés két módon.",
+            "auto_translated": "Köszönjük hitelesítés két módon."
+        },
+        "cs": {
+            "legacy_caption_pid": 40700,
+            "legacy_language_pid": 44,
+            "text": "Děkujeme vám za ověření v jednom ze dvou způsobů.",
+            "auto_translated": "Děkujeme vám za ověření v jednom ze dvou způsobů."
+        },
+        "el": {
+            "legacy_caption_pid": 40701,
+            "legacy_language_pid": 45,
+            "text": "Σας ευχαριστώ για τον έλεγχο ταυτότητας σε έναν από τους δύο τρόπους.",
+            "auto_translated": "Σας ευχαριστώ για τον έλεγχο ταυτότητας σε έναν από τους δύο τρόπους."
+        },
+        "sv": {
+            "legacy_caption_pid": 40702,
+            "legacy_language_pid": 46,
+            "text": "Tack för autentisering i ett av två sätt.",
+            "auto_translated": "Tack för autentisering i ett av två sätt."
+        },
+        "kk": {
+            "legacy_caption_pid": 40703,
+            "legacy_language_pid": 47,
+            "text": "екі жолдардың бірінде Аутентификация үшін рахмет.",
+            "auto_translated": "екі жолдардың бірінде Аутентификация үшін рахмет."
+        },
+        "fi": {
+            "legacy_caption_pid": 40704,
+            "legacy_language_pid": 48,
+            "text": "Kiitos tunnistukseen kahdella tavalla.",
+            "auto_translated": "Kiitos tunnistukseen kahdella tavalla."
+        },
+        "da": {
+            "legacy_caption_pid": 40705,
+            "legacy_language_pid": 49,
+            "text": "Tak for godkendelse på en af ​​to måder.",
+            "auto_translated": "Tak for godkendelse på en af ​​to måder."
+        },
+        "he": {
+            "legacy_caption_pid": 40706,
+            "legacy_language_pid": 50,
+            "text": "תודה על אימות באחת משתי דרכים.",
+            "auto_translated": "תודה על אימות באחת משתי דרכים."
+        },
+        "no": {
+            "legacy_caption_pid": 40707,
+            "legacy_language_pid": 51,
+            "text": "Takk for autentisering i en av to måter.",
+            "auto_translated": "Takk for autentisering i en av to måter."
+        }
+    }
+}

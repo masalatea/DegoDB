@@ -1,0 +1,321 @@
+{
+    "resource_key": "TITLE_PRIVACY_POLICY",
+    "legacy_resource_pid": 561,
+    "base_group_key": "grp-005-common-lib",
+    "additional_group_keys": [],
+    "key_for_update": "QyS95QJ4nZMS6hCF7dxA21PCwP7rLWCtjPfwwqrCZveVXXyTEXQ6mylLo9zJAO9OadbG6OWGlJCer3EvXaUWhBxnUaXTOFAkiDygw49t3pva8ux3DLbFKH1v9WJr7lNN",
+    "sort_group": "TITLE",
+    "key_name": "TITLE_PRIVACY_POLICY",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": false,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 1391,
+            "legacy_language_pid": 1,
+            "text": "プライバシーポリシー",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 1392,
+            "legacy_language_pid": 2,
+            "text": "Privacy Policy",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 6558,
+            "legacy_language_pid": 3,
+            "text": "隐私政策",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 6559,
+            "legacy_language_pid": 4,
+            "text": "개인정보보호정책",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 10585,
+            "legacy_language_pid": 5,
+            "text": "Política de privacidad",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 10586,
+            "legacy_language_pid": 6,
+            "text": "Política de Privacidade",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 10587,
+            "legacy_language_pid": 7,
+            "text": "隱私政策",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 16343,
+            "legacy_language_pid": 8,
+            "text": "Politique de confidentialité",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 16344,
+            "legacy_language_pid": 9,
+            "text": "गोपनीयता नीति",
+            "auto_translated": ""
+        },
+        "ar": {
+            "legacy_caption_pid": 30234,
+            "legacy_language_pid": 10,
+            "text": "سياسة الخصوصية",
+            "auto_translated": "سياسة الخصوصية"
+        },
+        "fa": {
+            "legacy_caption_pid": 30235,
+            "legacy_language_pid": 11,
+            "text": "سیاست حفظ حریم خصوصی",
+            "auto_translated": "سیاست حفظ حریم خصوصی"
+        },
+        "de": {
+            "legacy_caption_pid": 30236,
+            "legacy_language_pid": 12,
+            "text": "Datenschutz",
+            "auto_translated": "Datenschutz"
+        },
+        "ru": {
+            "legacy_caption_pid": 30237,
+            "legacy_language_pid": 13,
+            "text": "Политика конфиденциальности",
+            "auto_translated": "Политика конфиденциальности"
+        },
+        "ms": {
+            "legacy_caption_pid": 30238,
+            "legacy_language_pid": 14,
+            "text": "Dasar privasi",
+            "auto_translated": "Dasar privasi"
+        },
+        "ta": {
+            "legacy_caption_pid": 30239,
+            "legacy_language_pid": 15,
+            "text": "தனியுரிமை கொள்கை",
+            "auto_translated": "தனியுரிமை கொள்கை"
+        },
+        "it": {
+            "legacy_caption_pid": 30240,
+            "legacy_language_pid": 16,
+            "text": "Privacy Policy",
+            "auto_translated": "Privacy Policy"
+        },
+        "bn": {
+            "legacy_caption_pid": 30241,
+            "legacy_language_pid": 17,
+            "text": "গোপনীয়তা নীতি",
+            "auto_translated": "গোপনীয়তা নীতি"
+        },
+        "tr": {
+            "legacy_caption_pid": 30242,
+            "legacy_language_pid": 18,
+            "text": "Gizlilik Politikası",
+            "auto_translated": "Gizlilik Politikası"
+        },
+        "vi": {
+            "legacy_caption_pid": 30243,
+            "legacy_language_pid": 19,
+            "text": "Chính sách bảo mật",
+            "auto_translated": "Chính sách bảo mật"
+        },
+        "pl": {
+            "legacy_caption_pid": 30244,
+            "legacy_language_pid": 20,
+            "text": "Polityka prywatności",
+            "auto_translated": "Polityka prywatności"
+        },
+        "jv": {
+            "legacy_caption_pid": 30245,
+            "legacy_language_pid": 21,
+            "text": "Kebijakan Privasi",
+            "auto_translated": "Kebijakan Privasi"
+        },
+        "pa": {
+            "legacy_caption_pid": 30246,
+            "legacy_language_pid": 22,
+            "text": "ਗੁਪਤ ਨੀਤੀ",
+            "auto_translated": "ਗੁਪਤ ਨੀਤੀ"
+        },
+        "th": {
+            "legacy_caption_pid": 30247,
+            "legacy_language_pid": 23,
+            "text": "นโยบายความเป็นส่วนตัว",
+            "auto_translated": "นโยบายความเป็นส่วนตัว"
+        },
+        "te": {
+            "legacy_caption_pid": 35976,
+            "legacy_language_pid": 24,
+            "text": "గోప్యతా విధానం",
+            "auto_translated": "గోప్యతా విధానం"
+        },
+        "mr": {
+            "legacy_caption_pid": 35977,
+            "legacy_language_pid": 25,
+            "text": "गोपनीयता धोरण",
+            "auto_translated": "गोपनीयता धोरण"
+        },
+        "ur": {
+            "legacy_caption_pid": 35978,
+            "legacy_language_pid": 26,
+            "text": "پرائیویسی پالیسی",
+            "auto_translated": "پرائیویسی پالیسی"
+        },
+        "gu": {
+            "legacy_caption_pid": 35979,
+            "legacy_language_pid": 27,
+            "text": "ગોપનીયતા નીતિ",
+            "auto_translated": "ગોપનીયતા નીતિ"
+        },
+        "uk": {
+            "legacy_caption_pid": 35980,
+            "legacy_language_pid": 28,
+            "text": "політика конфіденційності",
+            "auto_translated": "політика конфіденційності"
+        },
+        "ml": {
+            "legacy_caption_pid": 35981,
+            "legacy_language_pid": 29,
+            "text": "സ്വകാര്യത നയം",
+            "auto_translated": "സ്വകാര്യത നയം"
+        },
+        "kn": {
+            "legacy_caption_pid": 35982,
+            "legacy_language_pid": 30,
+            "text": "ಗೌಪ್ಯತಾ ನೀತಿ",
+            "auto_translated": "ಗೌಪ್ಯತಾ ನೀತಿ"
+        },
+        "su": {
+            "legacy_caption_pid": 35983,
+            "legacy_language_pid": 31,
+            "text": "Sarat jeung Kaayaan Pamakéan",
+            "auto_translated": "Sarat jeung Kaayaan Pamakéan"
+        },
+        "ku": {
+            "legacy_caption_pid": 35984,
+            "legacy_language_pid": 32,
+            "text": "Privacy Policy",
+            "auto_translated": "Privacy Policy"
+        },
+        "ps": {
+            "legacy_caption_pid": 35985,
+            "legacy_language_pid": 33,
+            "text": "د محرميت تگلاره",
+            "auto_translated": "د محرميت تگلاره"
+        },
+        "ro": {
+            "legacy_caption_pid": 35986,
+            "legacy_language_pid": 34,
+            "text": "Politica de confidențialitate",
+            "auto_translated": "Politica de confidențialitate"
+        },
+        "id": {
+            "legacy_caption_pid": 35987,
+            "legacy_language_pid": 35,
+            "text": "Kebijakan Privasi",
+            "auto_translated": "Kebijakan Privasi"
+        },
+        "sd": {
+            "legacy_caption_pid": 35988,
+            "legacy_language_pid": 36,
+            "text": "ذاتي زندگي جي پاليسي",
+            "auto_translated": "ذاتي زندگي جي پاليسي"
+        },
+        "af": {
+            "legacy_caption_pid": 35989,
+            "legacy_language_pid": 37,
+            "text": "Privaatheidsbeleid",
+            "auto_translated": "Privaatheidsbeleid"
+        },
+        "sw": {
+            "legacy_caption_pid": 35990,
+            "legacy_language_pid": 38,
+            "text": "Sera ya faragha",
+            "auto_translated": "Sera ya faragha"
+        },
+        "lo": {
+            "legacy_caption_pid": 35991,
+            "legacy_language_pid": 39,
+            "text": "ນະໂຍບາຍຄວາມເປັນສ່ວນຕົວ",
+            "auto_translated": "ນະໂຍບາຍຄວາມເປັນສ່ວນຕົວ"
+        },
+        "nl": {
+            "legacy_caption_pid": 35992,
+            "legacy_language_pid": 40,
+            "text": "Privacy Policy",
+            "auto_translated": "Privacy Policy"
+        },
+        "tl": {
+            "legacy_caption_pid": 35993,
+            "legacy_language_pid": 41,
+            "text": "Patakaran sa Privacy",
+            "auto_translated": "Patakaran sa Privacy"
+        },
+        "ne": {
+            "legacy_caption_pid": 35994,
+            "legacy_language_pid": 42,
+            "text": "गोपनीयता नीति",
+            "auto_translated": "गोपनीयता नीति"
+        },
+        "hu": {
+            "legacy_caption_pid": 35995,
+            "legacy_language_pid": 43,
+            "text": "Adatvédelem",
+            "auto_translated": "Adatvédelem"
+        },
+        "cs": {
+            "legacy_caption_pid": 35996,
+            "legacy_language_pid": 44,
+            "text": "Ochrana osobních údajů",
+            "auto_translated": "Ochrana osobních údajů"
+        },
+        "el": {
+            "legacy_caption_pid": 35997,
+            "legacy_language_pid": 45,
+            "text": "Πολιτική Προστασίας Προσωπικών Δεδομένων",
+            "auto_translated": "Πολιτική Προστασίας Προσωπικών Δεδομένων"
+        },
+        "sv": {
+            "legacy_caption_pid": 35998,
+            "legacy_language_pid": 46,
+            "text": "Privacy Policy",
+            "auto_translated": "Privacy Policy"
+        },
+        "kk": {
+            "legacy_caption_pid": 35999,
+            "legacy_language_pid": 47,
+            "text": "Құпиялылық саясаты",
+            "auto_translated": "Құпиялылық саясаты"
+        },
+        "fi": {
+            "legacy_caption_pid": 36000,
+            "legacy_language_pid": 48,
+            "text": "yksityisyyden suoja",
+            "auto_translated": "yksityisyyden suoja"
+        },
+        "da": {
+            "legacy_caption_pid": 36001,
+            "legacy_language_pid": 49,
+            "text": "Privacy Policy",
+            "auto_translated": "Privacy Policy"
+        },
+        "he": {
+            "legacy_caption_pid": 36002,
+            "legacy_language_pid": 50,
+            "text": "מדיניות הפרטיות",
+            "auto_translated": "מדיניות הפרטיות"
+        },
+        "no": {
+            "legacy_caption_pid": 36003,
+            "legacy_language_pid": 51,
+            "text": "personvern",
+            "auto_translated": "personvern"
+        }
+    }
+}

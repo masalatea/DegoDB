@@ -1,0 +1,69 @@
+{
+    "resource_key": "TITLE_ARCHITECTURE_DATABASE_TOP",
+    "legacy_resource_pid": 659,
+    "base_group_key": "grp-010-matsuesoft-lib",
+    "additional_group_keys": [],
+    "key_for_update": "WlMzQU8rKMnqsHOml9J8XUljAGPAg3vTADXLQWYNMlki56Y1LEMtTDFmYew0FY3Qtk6M07egofXQA65UN8YEX2KZf4tymP4hhLHcKAJYEtEbXhR2MRX75OgnM2UNrS2V",
+    "sort_group": "TITLE",
+    "key_name": "TITLE_ARCHITECTURE_DATABASE_TOP",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": true,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 4644,
+            "legacy_language_pid": 1,
+            "text": "データベース・アーキテクチャ - $DOMAINNAMECAPTION_JP",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 4645,
+            "legacy_language_pid": 2,
+            "text": "Database Architecture - $DOMAINNAMECAPTION_EN",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 14326,
+            "legacy_language_pid": 3,
+            "text": "",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 14327,
+            "legacy_language_pid": 4,
+            "text": "",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 14328,
+            "legacy_language_pid": 5,
+            "text": "Arquitectura de base de datos - $DOMAINNAMECAPTION_ES",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 14329,
+            "legacy_language_pid": 6,
+            "text": "Arquitetura de banco de dados - $DOMAINNAMECAPTION_PT",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 14330,
+            "legacy_language_pid": 7,
+            "text": "",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 16061,
+            "legacy_language_pid": 8,
+            "text": "Architecture de base de données - $DOMAINNAMECAPTION_FR",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 16062,
+            "legacy_language_pid": 9,
+            "text": "डेटाबेस वास्तुकला - $ DOMAINNAMECAPTION_HI",
+            "auto_translated": ""
+        }
+    }
+}

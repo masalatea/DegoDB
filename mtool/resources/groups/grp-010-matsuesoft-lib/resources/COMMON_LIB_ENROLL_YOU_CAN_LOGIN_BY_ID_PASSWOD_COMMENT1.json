@@ -1,0 +1,321 @@
+{
+    "resource_key": "COMMON_LIB_ENROLL_YOU_CAN_LOGIN_BY_ID_PASSWOD_COMMENT1",
+    "legacy_resource_pid": 1449,
+    "base_group_key": "grp-010-matsuesoft-lib",
+    "additional_group_keys": [],
+    "key_for_update": "4gOtIddzA6gRgg93O6j7xu9I3OELc3FTHiIEU4m2PXnkZv5D0ntjb3JadyvHiMrpEpAUSU4l8PVM4gs1yR3HhETLfD3sTmbAthlTRtUwiY84JvxlKY0aIB6ik3zDeV98",
+    "sort_group": "ENROLL",
+    "key_name": "COMMON_LIB_ENROLL_YOU_CAN_LOGIN_BY_ID_PASSWOD_COMMENT1",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": false,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 6070,
+            "legacy_language_pid": 1,
+            "text": "こちらのユーザ名(ID)およびパスワードは必ず記録あるいは印刷して下さい。",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 6071,
+            "legacy_language_pid": 2,
+            "text": "Please write down the memo of those User Name (ID) and Password.",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 6072,
+            "legacy_language_pid": 3,
+            "text": "该用户名ID和密码，请务必记录或打印。",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 6073,
+            "legacy_language_pid": 4,
+            "text": "이 아이디와 암호는 반드시 기록 또는 인쇄하십시오.",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 10931,
+            "legacy_language_pid": 5,
+            "text": "Por favor escriba el memo de esos ID y Contraseña.",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 10932,
+            "legacy_language_pid": 6,
+            "text": "Por favor, anote o memorando da ID e Senha.",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 10933,
+            "legacy_language_pid": 7,
+            "text": "該用户名ID和密碼，請務必記錄或打印。",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 16035,
+            "legacy_language_pid": 8,
+            "text": "Écrivez la mémoire de ces Nom d'utilisateur (ID) et Mot de passe.",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 16036,
+            "legacy_language_pid": 9,
+            "text": "कृपया उन यूजर नेम (आईडी) और पासवर्ड के मेमो को लिखें।",
+            "auto_translated": ""
+        },
+        "ar": {
+            "legacy_caption_pid": 31928,
+            "legacy_language_pid": 10,
+            "text": "هذا الاسم مستخدم (ID) وكلمة المرور ومن المؤكد أن تسجيل أو الطباعة.",
+            "auto_translated": "هذا الاسم مستخدم (ID) وكلمة المرور ومن المؤكد أن تسجيل أو الطباعة."
+        },
+        "fa": {
+            "legacy_caption_pid": 31929,
+            "legacy_language_pid": 11,
+            "text": "این نام کاربری (ID) و رمز عبور مطمئن شوید که به ضبط و یا چاپ است.",
+            "auto_translated": "این نام کاربری (ID) و رمز عبور مطمئن شوید که به ضبط و یا چاپ است."
+        },
+        "de": {
+            "legacy_caption_pid": 31930,
+            "legacy_language_pid": 12,
+            "text": "Dieser Benutzername (ID) und das Passwort, um die Aufnahme oder Druck sicher.",
+            "auto_translated": "Dieser Benutzername (ID) und das Passwort, um die Aufnahme oder Druck sicher."
+        },
+        "ru": {
+            "legacy_caption_pid": 31931,
+            "legacy_language_pid": 13,
+            "text": "Это имя пользователя (ID) и пароль обязательно записи или печати.",
+            "auto_translated": "Это имя пользователя (ID) и пароль обязательно записи или печати."
+        },
+        "ms": {
+            "legacy_caption_pid": 31932,
+            "legacy_language_pid": 14,
+            "text": "Ini nama pengguna (ID) dan kata laluan ini pasti rakaman atau percetakan.",
+            "auto_translated": "Ini nama pengguna (ID) dan kata laluan ini pasti rakaman atau percetakan."
+        },
+        "ta": {
+            "legacy_caption_pid": 31933,
+            "legacy_language_pid": 15,
+            "text": "இந்த பயனர் பெயர் (ஐடி) கடவுச்சொல்லும் பதிவு அல்லது அச்சிடும் நிச்சயம்.",
+            "auto_translated": "இந்த பயனர் பெயர் (ஐடி) கடவுச்சொல்லும் பதிவு அல்லது அச்சிடும் நிச்சயம்."
+        },
+        "it": {
+            "legacy_caption_pid": 31934,
+            "legacy_language_pid": 16,
+            "text": "Questo nome utente (ID) e la password è sicuro di registrazione o la stampa.",
+            "auto_translated": "Questo nome utente (ID) e la password è sicuro di registrazione o la stampa."
+        },
+        "bn": {
+            "legacy_caption_pid": 31935,
+            "legacy_language_pid": 17,
+            "text": "এই ব্যবহারকারী নাম (আইডি) এবং পাসওয়ার্ড রেকর্ডিং বা মুদ্রণ নিশ্চিত।",
+            "auto_translated": "এই ব্যবহারকারী নাম (আইডি) এবং পাসওয়ার্ড রেকর্ডিং বা মুদ্রণ নিশ্চিত।"
+        },
+        "tr": {
+            "legacy_caption_pid": 31936,
+            "legacy_language_pid": 18,
+            "text": "Bu kullanıcı adı (ID) ve şifre kayıt veya baskı emin olabilirsiniz.",
+            "auto_translated": "Bu kullanıcı adı (ID) ve şifre kayıt veya baskı emin olabilirsiniz."
+        },
+        "vi": {
+            "legacy_caption_pid": 31937,
+            "legacy_language_pid": 19,
+            "text": "Tên này dùng (ID) và mật khẩu chắc chắn sẽ ghi hoặc in ấn.",
+            "auto_translated": "Tên này dùng (ID) và mật khẩu chắc chắn sẽ ghi hoặc in ấn."
+        },
+        "pl": {
+            "legacy_caption_pid": 31938,
+            "legacy_language_pid": 20,
+            "text": "Ta nazwa użytkownika (ID) oraz hasło z pewnością zapisu lub drukowania.",
+            "auto_translated": "Ta nazwa użytkownika (ID) oraz hasło z pewnością zapisu lub drukowania."
+        },
+        "jv": {
+            "legacy_caption_pid": 31939,
+            "legacy_language_pid": 21,
+            "text": "jeneng pengguna kiye (ID) lan sandhi iku manawa kanggo ngrekam utawa printing.",
+            "auto_translated": "jeneng pengguna kiye (ID) lan sandhi iku manawa kanggo ngrekam utawa printing."
+        },
+        "pa": {
+            "legacy_caption_pid": 31940,
+            "legacy_language_pid": 22,
+            "text": "ਇਹ ਯੂਜ਼ਰ ਨੂੰ ਨਾਮ ਹੈ (ID) ਅਤੇ ਪਾਸਵਰਡ ਰਿਕਾਰਡਿੰਗ ਜ ਛਪਾਈ ਕਰਨ ਲਈ ਇਹ ਯਕੀਨੀ ਹੁੰਦਾ ਹੈ.",
+            "auto_translated": "ਇਹ ਯੂਜ਼ਰ ਨੂੰ ਨਾਮ ਹੈ (ID) ਅਤੇ ਪਾਸਵਰਡ ਰਿਕਾਰਡਿੰਗ ਜ ਛਪਾਈ ਕਰਨ ਲਈ ਇਹ ਯਕੀਨੀ ਹੁੰਦਾ ਹੈ."
+        },
+        "th": {
+            "legacy_caption_pid": 31941,
+            "legacy_language_pid": 23,
+            "text": "ชื่อผู้ใช้นี้ (ID) และรหัสผ่านเพื่อให้แน่ใจว่าการบันทึกหรือพิมพ์",
+            "auto_translated": "ชื่อผู้ใช้นี้ (ID) และรหัสผ่านเพื่อให้แน่ใจว่าการบันทึกหรือพิมพ์"
+        },
+        "te": {
+            "legacy_caption_pid": 41772,
+            "legacy_language_pid": 24,
+            "text": "ఈ వినియోగదారు పేరు (ID) మరియు పాస్వర్డ్ రికార్డింగ్ లేదా ముద్రణ ఖచ్చితంగా.",
+            "auto_translated": "ఈ వినియోగదారు పేరు (ID) మరియు పాస్వర్డ్ రికార్డింగ్ లేదా ముద్రణ ఖచ్చితంగా."
+        },
+        "mr": {
+            "legacy_caption_pid": 41773,
+            "legacy_language_pid": 25,
+            "text": "या वापरकर्ता नाव (ID) आणि पासवर्ड रेकॉर्डिंग किंवा मुद्रण खात्री आहे.",
+            "auto_translated": "या वापरकर्ता नाव (ID) आणि पासवर्ड रेकॉर्डिंग किंवा मुद्रण खात्री आहे."
+        },
+        "ur": {
+            "legacy_caption_pid": 41774,
+            "legacy_language_pid": 26,
+            "text": "یہ صارف کا نام (ID) اور پاس ریکارڈنگ یا پرنٹنگ کے لئے بات کا یقین ہے.",
+            "auto_translated": "یہ صارف کا نام (ID) اور پاس ریکارڈنگ یا پرنٹنگ کے لئے بات کا یقین ہے."
+        },
+        "gu": {
+            "legacy_caption_pid": 41775,
+            "legacy_language_pid": 27,
+            "text": "આ વપરાશકર્તા નામ (આઈડી) અને પાસવર્ડ રેકોર્ડિંગ અથવા પ્રિન્ટીંગ ખાતરી છે.",
+            "auto_translated": "આ વપરાશકર્તા નામ (આઈડી) અને પાસવર્ડ રેકોર્ડિંગ અથવા પ્રિન્ટીંગ ખાતરી છે."
+        },
+        "uk": {
+            "legacy_caption_pid": 41776,
+            "legacy_language_pid": 28,
+            "text": "Це ім'я користувача (ID) і пароль обов'язково записи або друку.",
+            "auto_translated": "Це ім'я користувача (ID) і пароль обов'язково записи або друку."
+        },
+        "ml": {
+            "legacy_caption_pid": 41777,
+            "legacy_language_pid": 29,
+            "text": "ഈ ഉപയോക്തൃ നാമം (ഐഡി) പാസ്വേഡും റെക്കോർഡിംഗ് അല്ലെങ്കിൽ പ്രിന്റിംഗ് തന്നെ.",
+            "auto_translated": "ഈ ഉപയോക്തൃ നാമം (ഐഡി) പാസ്വേഡും റെക്കോർഡിംഗ് അല്ലെങ്കിൽ പ്രിന്റിംഗ് തന്നെ."
+        },
+        "kn": {
+            "legacy_caption_pid": 41778,
+            "legacy_language_pid": 30,
+            "text": "ಈ ಬಳಕೆದಾರರು ಹೆಸರು (ಐಡಿ) ಮತ್ತು ಪಾಸ್ವರ್ಡ್ ರೆಕಾರ್ಡಿಂಗ್ ಅಥವಾ ಮುದ್ರಣ ಖಚಿತ.",
+            "auto_translated": "ಈ ಬಳಕೆದಾರರು ಹೆಸರು (ಐಡಿ) ಮತ್ತು ಪಾಸ್ವರ್ಡ್ ರೆಕಾರ್ಡಿಂಗ್ ಅಥವಾ ಮುದ್ರಣ ಖಚಿತ."
+        },
+        "su": {
+            "legacy_caption_pid": 41779,
+            "legacy_language_pid": 31,
+            "text": "Ngaran ieu pamaké (ID) jeung sandi teh nyaeta pastikeun rekaman atawa percetakan.",
+            "auto_translated": "Ngaran ieu pamaké (ID) jeung sandi teh nyaeta pastikeun rekaman atawa percetakan."
+        },
+        "ku": {
+            "legacy_caption_pid": 41780,
+            "legacy_language_pid": 32,
+            "text": "Ev name bikarhêner (ID) û şîfreya sure to recording an çapkirinê e.",
+            "auto_translated": "Ev name bikarhêner (ID) û şîfreya sure to recording an çapkirinê e."
+        },
+        "ps": {
+            "legacy_caption_pid": 41781,
+            "legacy_language_pid": 33,
+            "text": "دغه کارن نوم (ID) او پټنوم ډاډه دی چې د ثبت او يا د چاپ.",
+            "auto_translated": "دغه کارن نوم (ID) او پټنوم ډاډه دی چې د ثبت او يا د چاپ."
+        },
+        "ro": {
+            "legacy_caption_pid": 41782,
+            "legacy_language_pid": 34,
+            "text": "Acest nume de utilizator (ID) și parola este sigur de a înregistrării sau imprimare.",
+            "auto_translated": "Acest nume de utilizator (ID) și parola este sigur de a înregistrării sau imprimare."
+        },
+        "id": {
+            "legacy_caption_pid": 41783,
+            "legacy_language_pid": 35,
+            "text": "Nama pengguna (ID) dan password pasti untuk merekam atau pencetakan.",
+            "auto_translated": "Nama pengguna (ID) dan password pasti untuk merekam atau pencetakan."
+        },
+        "sd": {
+            "legacy_caption_pid": 41784,
+            "legacy_language_pid": 36,
+            "text": "اهو صارف جي نالي سان (سڃاڻپ) ۽ ڳجھو لفظ لکندا يا ڇپائي کي پڪ آهي.",
+            "auto_translated": "اهو صارف جي نالي سان (سڃاڻپ) ۽ ڳجھو لفظ لکندا يا ڇپائي کي پڪ آهي."
+        },
+        "af": {
+            "legacy_caption_pid": 41785,
+            "legacy_language_pid": 37,
+            "text": "Hierdie gebruiker naam (ID) en die wagwoord is seker om die opname of druk.",
+            "auto_translated": "Hierdie gebruiker naam (ID) en die wagwoord is seker om die opname of druk."
+        },
+        "sw": {
+            "legacy_caption_pid": 41786,
+            "legacy_language_pid": 38,
+            "text": "Jina hili la mtumiaji (ID) na password ni uhakika wa kurekodi au uchapishaji.",
+            "auto_translated": "Jina hili la mtumiaji (ID) na password ni uhakika wa kurekodi au uchapishaji."
+        },
+        "lo": {
+            "legacy_caption_pid": 41787,
+            "legacy_language_pid": 39,
+            "text": "ຊື່ຂອງຜູ່ໃຊ້ (ລະຫັດ) ແລະລະຫັດຜ່ານແມ່ນແນ່ໃຈວ່າໄດ້ບັນທຶກຫຼືການພິມ.",
+            "auto_translated": "ຊື່ຂອງຜູ່ໃຊ້ (ລະຫັດ) ແລະລະຫັດຜ່ານແມ່ນແນ່ໃຈວ່າໄດ້ບັນທຶກຫຼືການພິມ."
+        },
+        "nl": {
+            "legacy_caption_pid": 41788,
+            "legacy_language_pid": 40,
+            "text": "Deze gebruikersnaam (ID) en het wachtwoord is zeker om de opname of afdrukken.",
+            "auto_translated": "Deze gebruikersnaam (ID) en het wachtwoord is zeker om de opname of afdrukken."
+        },
+        "tl": {
+            "legacy_caption_pid": 41789,
+            "legacy_language_pid": 41,
+            "text": "Ang user name (ID) at ang password ay sigurado na pag-record o pag-print.",
+            "auto_translated": "Ang user name (ID) at ang password ay sigurado na pag-record o pag-print."
+        },
+        "ne": {
+            "legacy_caption_pid": 41790,
+            "legacy_language_pid": 42,
+            "text": "यो प्रयोगकर्ता नाम (आईडी) र पासवर्ड रेकर्डिङ वा मुद्रण गर्न निश्चित छ।",
+            "auto_translated": "यो प्रयोगकर्ता नाम (आईडी) र पासवर्ड रेकर्डिङ वा मुद्रण गर्न निश्चित छ।"
+        },
+        "hu": {
+            "legacy_caption_pid": 41791,
+            "legacy_language_pid": 43,
+            "text": "Ez a felhasználó név (ID) és jelszó biztosan felvétel vagy a nyomtatást.",
+            "auto_translated": "Ez a felhasználó név (ID) és jelszó biztosan felvétel vagy a nyomtatást."
+        },
+        "cs": {
+            "legacy_caption_pid": 41792,
+            "legacy_language_pid": 44,
+            "text": "Toto uživatelské jméno (ID) a heslo je určitě záznamu nebo tisku.",
+            "auto_translated": "Toto uživatelské jméno (ID) a heslo je určitě záznamu nebo tisku."
+        },
+        "el": {
+            "legacy_caption_pid": 41793,
+            "legacy_language_pid": 45,
+            "text": "Αυτό το όνομα χρήστη (ID) και ο κωδικός πρόσβασης είναι βέβαιο ότι θα την εγγραφή ή την εκτύπωση.",
+            "auto_translated": "Αυτό το όνομα χρήστη (ID) και ο κωδικός πρόσβασης είναι βέβαιο ότι θα την εγγραφή ή την εκτύπωση."
+        },
+        "sv": {
+            "legacy_caption_pid": 41794,
+            "legacy_language_pid": 46,
+            "text": "Detta användarnamn (ID) och lösenord är säker på att inspelning eller utskrift.",
+            "auto_translated": "Detta användarnamn (ID) och lösenord är säker på att inspelning eller utskrift."
+        },
+        "kk": {
+            "legacy_caption_pid": 41795,
+            "legacy_language_pid": 47,
+            "text": "Бұл пайдаланушы аты (ID) және пароль жазу немесе басып шығару үшін сенімді.",
+            "auto_translated": "Бұл пайдаланушы аты (ID) және пароль жазу немесе басып шығару үшін сенімді."
+        },
+        "fi": {
+            "legacy_caption_pid": 41796,
+            "legacy_language_pid": 48,
+            "text": "Tämä käyttäjätunnus (ID) ja salasana on varmasti tallennus- tai tulostamista.",
+            "auto_translated": "Tämä käyttäjätunnus (ID) ja salasana on varmasti tallennus- tai tulostamista."
+        },
+        "da": {
+            "legacy_caption_pid": 41797,
+            "legacy_language_pid": 49,
+            "text": "Dette brugernavn (ID) og adgangskoden er sikker på at optagelse eller udskrivning.",
+            "auto_translated": "Dette brugernavn (ID) og adgangskoden er sikker på at optagelse eller udskrivning."
+        },
+        "he": {
+            "legacy_caption_pid": 41798,
+            "legacy_language_pid": 50,
+            "text": "שם משתמש זה (ID) ואת הסיסמה בטוח הקלטה או הדפסה.",
+            "auto_translated": "שם משתמש זה (ID) ואת הסיסמה בטוח הקלטה או הדפסה."
+        },
+        "no": {
+            "legacy_caption_pid": 41799,
+            "legacy_language_pid": 51,
+            "text": "Dette brukernavnet (ID) og passordet er sikker på å opptak eller utskrift.",
+            "auto_translated": "Dette brukernavnet (ID) og passordet er sikker på å opptak eller utskrift."
+        }
+    }
+}

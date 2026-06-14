@@ -1,0 +1,69 @@
+{
+    "resource_key": "TITLE_DBAAS_HOW_TO_USE_EXAMPLE_CS",
+    "legacy_resource_pid": 608,
+    "base_group_key": "grp-010-matsuesoft-lib",
+    "additional_group_keys": [],
+    "key_for_update": "wMth1wlBOCkmXAV8zOSYKTP9bRgK2OZUUum6sSDIZfk5aA9lUKB9psLzJk1yC5Iy2lXO37B9u5htimkqNOemwKKrU2jM9o1fo8lk1hVjJxhuzDl1aDoOI8e81SCMhtgI",
+    "sort_group": "TITLE",
+    "key_name": "TITLE_DBAAS_HOW_TO_USE_EXAMPLE_CS",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": true,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 4664,
+            "legacy_language_pid": 1,
+            "text": "C#でエンドポイントにアクセス",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 4665,
+            "legacy_language_pid": 2,
+            "text": "Access Endpoint by C#",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 14376,
+            "legacy_language_pid": 3,
+            "text": "",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 14377,
+            "legacy_language_pid": 4,
+            "text": "",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 14378,
+            "legacy_language_pid": 5,
+            "text": " Acceso a Endpoint por C#",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 14379,
+            "legacy_language_pid": 6,
+            "text": "Acesse Endpoint por C# ",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 14380,
+            "legacy_language_pid": 7,
+            "text": "",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 17319,
+            "legacy_language_pid": 8,
+            "text": "Accéder au point d'extrémité par C#",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 17320,
+            "legacy_language_pid": 9,
+            "text": "C# के द्वारा एक्सेस एंडपॉइंट  ",
+            "auto_translated": ""
+        }
+    }
+}

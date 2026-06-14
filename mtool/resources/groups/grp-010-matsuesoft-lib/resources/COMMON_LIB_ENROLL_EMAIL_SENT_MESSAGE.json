@@ -1,0 +1,321 @@
+{
+    "resource_key": "COMMON_LIB_ENROLL_EMAIL_SENT_MESSAGE",
+    "legacy_resource_pid": 1443,
+    "base_group_key": "grp-010-matsuesoft-lib",
+    "additional_group_keys": [],
+    "key_for_update": "7WVzsRv0obLIGV2W1dGTql01TSxdqYLOPDjOrLWzb4HT22OzdWDdjX5hzLJLJcC6QgBP0LWcY6GJGBpfG0RGEkrNthupzt5MitJ5Ctr4ptrh2ONTl2fuXeFfH83N7Tkw",
+    "sort_group": "ENROLL EMAIL",
+    "key_name": "COMMON_LIB_ENROLL_EMAIL_SENT_MESSAGE",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": false,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 6046,
+            "legacy_language_pid": 1,
+            "text": "登録完了メールを送信致しました。",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 6047,
+            "legacy_language_pid": 2,
+            "text": "We've sent a registration completion email.",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 6048,
+            "legacy_language_pid": 3,
+            "text": "我们发送注册完成邮件。",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 6049,
+            "legacy_language_pid": 4,
+            "text": "등록 완료 메일을 보냈습니다.",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 10949,
+            "legacy_language_pid": 5,
+            "text": "Hemos enviado un correo electrónico de finalización del registro.",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 10950,
+            "legacy_language_pid": 6,
+            "text": "Enviamos um e-mail de conclusão de registro.",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 10951,
+            "legacy_language_pid": 7,
+            "text": "我們發送註冊完成郵件。",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 17061,
+            "legacy_language_pid": 8,
+            "text": "Nous avons envoyé un courrier électronique d'achèvement de l'inscription.",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 17062,
+            "legacy_language_pid": 9,
+            "text": "हमने एक पंजीकरण पूर्णता ईमेल भेजा है",
+            "auto_translated": ""
+        },
+        "ar": {
+            "legacy_caption_pid": 31998,
+            "legacy_language_pid": 10,
+            "text": "نرسل البريد استكمال التسجيل.",
+            "auto_translated": "نرسل البريد استكمال التسجيل."
+        },
+        "fa": {
+            "legacy_caption_pid": 31999,
+            "legacy_language_pid": 11,
+            "text": "ما ارسال ایمیل از تکمیل ثبت نام.",
+            "auto_translated": "ما ارسال ایمیل از تکمیل ثبت نام."
+        },
+        "de": {
+            "legacy_caption_pid": 32000,
+            "legacy_language_pid": 12,
+            "text": "Wir senden die Registrierung Abschluss Mail.",
+            "auto_translated": "Wir senden die Registrierung Abschluss Mail."
+        },
+        "ru": {
+            "legacy_caption_pid": 32001,
+            "legacy_language_pid": 13,
+            "text": "Мы посылаем завершения регистрации почты.",
+            "auto_translated": "Мы посылаем завершения регистрации почты."
+        },
+        "ms": {
+            "legacy_caption_pid": 32002,
+            "legacy_language_pid": 14,
+            "text": "Kami menghantar mel selesai pendaftaran.",
+            "auto_translated": "Kami menghantar mel selesai pendaftaran."
+        },
+        "ta": {
+            "legacy_caption_pid": 32003,
+            "legacy_language_pid": 15,
+            "text": "நாம் பதிவு நிறைவு மெயில் அனுப்ப.",
+            "auto_translated": "நாம் பதிவு நிறைவு மெயில் அனுப்ப."
+        },
+        "it": {
+            "legacy_caption_pid": 32004,
+            "legacy_language_pid": 16,
+            "text": "Inviamo la posta di completamento di registrazione.",
+            "auto_translated": "Inviamo la posta di completamento di registrazione."
+        },
+        "bn": {
+            "legacy_caption_pid": 32005,
+            "legacy_language_pid": 17,
+            "text": "আমরা নিবন্ধন সমাপ্তির মেইল ​​পাঠান।",
+            "auto_translated": "আমরা নিবন্ধন সমাপ্তির মেইল ​​পাঠান।"
+        },
+        "tr": {
+            "legacy_caption_pid": 32006,
+            "legacy_language_pid": 18,
+            "text": "Biz kayıt tamamlama posta göndermek.",
+            "auto_translated": "Biz kayıt tamamlama posta göndermek."
+        },
+        "vi": {
+            "legacy_caption_pid": 32007,
+            "legacy_language_pid": 19,
+            "text": "Chúng tôi gửi qua đường bưu điện hoàn thành đăng ký.",
+            "auto_translated": "Chúng tôi gửi qua đường bưu điện hoàn thành đăng ký."
+        },
+        "pl": {
+            "legacy_caption_pid": 32008,
+            "legacy_language_pid": 20,
+            "text": "Wysyłamy pocztę zakończenia rejestracji.",
+            "auto_translated": "Wysyłamy pocztę zakończenia rejestracji."
+        },
+        "jv": {
+            "legacy_caption_pid": 32009,
+            "legacy_language_pid": 21,
+            "text": "We ngirim mail completion Pendhaftaran.",
+            "auto_translated": "We ngirim mail completion Pendhaftaran."
+        },
+        "pa": {
+            "legacy_caption_pid": 32010,
+            "legacy_language_pid": 22,
+            "text": "ਸਾਨੂੰ ਰਜਿਸਟਰੇਸ਼ਨ ਨੂੰ ਪੂਰਾ ਮੇਲ ਭੇਜਣ.",
+            "auto_translated": "ਸਾਨੂੰ ਰਜਿਸਟਰੇਸ਼ਨ ਨੂੰ ਪੂਰਾ ਮੇਲ ਭੇਜਣ."
+        },
+        "th": {
+            "legacy_caption_pid": 32011,
+            "legacy_language_pid": 23,
+            "text": "เราจะส่งจดหมายลงทะเบียนเสร็จสิ้น",
+            "auto_translated": "เราจะส่งจดหมายลงทะเบียนเสร็จสิ้น"
+        },
+        "te": {
+            "legacy_caption_pid": 41632,
+            "legacy_language_pid": 24,
+            "text": "మేము నమోదు పూర్తి మెయిల్ పంపండి.",
+            "auto_translated": "మేము నమోదు పూర్తి మెయిల్ పంపండి."
+        },
+        "mr": {
+            "legacy_caption_pid": 41633,
+            "legacy_language_pid": 25,
+            "text": "आम्ही नोंदणी पूर्ण मेल पाठवा.",
+            "auto_translated": "आम्ही नोंदणी पूर्ण मेल पाठवा."
+        },
+        "ur": {
+            "legacy_caption_pid": 41634,
+            "legacy_language_pid": 26,
+            "text": "ہم رجسٹریشن تکمیل میل بھیجیں.",
+            "auto_translated": "ہم رجسٹریشن تکمیل میل بھیجیں."
+        },
+        "gu": {
+            "legacy_caption_pid": 41635,
+            "legacy_language_pid": 27,
+            "text": "અમે રજીસ્ટ્રેશન પૂર્ણ મેલ મોકલી શકો છો.",
+            "auto_translated": "અમે રજીસ્ટ્રેશન પૂર્ણ મેલ મોકલી શકો છો."
+        },
+        "uk": {
+            "legacy_caption_pid": 41636,
+            "legacy_language_pid": 28,
+            "text": "Ми посилаємо завершення реєстрації пошти.",
+            "auto_translated": "Ми посилаємо завершення реєстрації пошти."
+        },
+        "ml": {
+            "legacy_caption_pid": 41637,
+            "legacy_language_pid": 29,
+            "text": "രജിസ്ട്രേഷൻ പൂർത്തീകരണം മെയിൽ അയയ്ക്കുക.",
+            "auto_translated": "രജിസ്ട്രേഷൻ പൂർത്തീകരണം മെയിൽ അയയ്ക്കുക."
+        },
+        "kn": {
+            "legacy_caption_pid": 41638,
+            "legacy_language_pid": 30,
+            "text": "ನಾವು ನೋಂದಣಿ ಪೂರ್ಣಗೊಂಡ ಮೇಲ್ ಕಳುಹಿಸಿ.",
+            "auto_translated": "ನಾವು ನೋಂದಣಿ ಪೂರ್ಣಗೊಂಡ ಮೇಲ್ ಕಳುಹಿಸಿ."
+        },
+        "su": {
+            "legacy_caption_pid": 41639,
+            "legacy_language_pid": 31,
+            "text": "Urang ngirim surélék parantosan pendaptaran.",
+            "auto_translated": "Urang ngirim surélék parantosan pendaptaran."
+        },
+        "ku": {
+            "legacy_caption_pid": 41640,
+            "legacy_language_pid": 32,
+            "text": "Em bişîne mail temamkirina qeyda.",
+            "auto_translated": "Em bişîne mail temamkirina qeyda."
+        },
+        "ps": {
+            "legacy_caption_pid": 41641,
+            "legacy_language_pid": 33,
+            "text": "موږ د نوم ليکنې د بشپړیدو او مالدارۍ وزارت ته واستوي.",
+            "auto_translated": "موږ د نوم ليکنې د بشپړیدو او مالدارۍ وزارت ته واستوي."
+        },
+        "ro": {
+            "legacy_caption_pid": 41642,
+            "legacy_language_pid": 34,
+            "text": "Noi trimite e-mail de finalizare de înregistrare.",
+            "auto_translated": "Noi trimite e-mail de finalizare de înregistrare."
+        },
+        "id": {
+            "legacy_caption_pid": 41643,
+            "legacy_language_pid": 35,
+            "text": "Kami mengirim surat selesai pendaftaran.",
+            "auto_translated": "Kami mengirim surat selesai pendaftaran."
+        },
+        "sd": {
+            "legacy_caption_pid": 41644,
+            "legacy_language_pid": 36,
+            "text": "اسان جي رجسٽريشن مڪمل ميل موڪليو.",
+            "auto_translated": "اسان جي رجسٽريشن مڪمل ميل موڪليو."
+        },
+        "af": {
+            "legacy_caption_pid": 41645,
+            "legacy_language_pid": 37,
+            "text": "Ons stuur die registrasie voltooiing pos.",
+            "auto_translated": "Ons stuur die registrasie voltooiing pos."
+        },
+        "sw": {
+            "legacy_caption_pid": 41646,
+            "legacy_language_pid": 38,
+            "text": "Tunatuma usajili kukamilika pepe.",
+            "auto_translated": "Tunatuma usajili kukamilika pepe."
+        },
+        "lo": {
+            "legacy_caption_pid": 41647,
+            "legacy_language_pid": 39,
+            "text": "ພວກເຮົາສົ່ງຈົດຫມາຍລົງທະບຽນສໍາເລັດ.",
+            "auto_translated": "ພວກເຮົາສົ່ງຈົດຫມາຍລົງທະບຽນສໍາເລັດ."
+        },
+        "nl": {
+            "legacy_caption_pid": 41648,
+            "legacy_language_pid": 40,
+            "text": "Wij sturen de registratie voltooid mail.",
+            "auto_translated": "Wij sturen de registratie voltooid mail."
+        },
+        "tl": {
+            "legacy_caption_pid": 41649,
+            "legacy_language_pid": 41,
+            "text": "Ipinapadala namin ang registration pagkumpleto mail.",
+            "auto_translated": "Ipinapadala namin ang registration pagkumpleto mail."
+        },
+        "ne": {
+            "legacy_caption_pid": 41650,
+            "legacy_language_pid": 42,
+            "text": "हामी दर्ता पूरा मेल पठाउनुहोस्।",
+            "auto_translated": "हामी दर्ता पूरा मेल पठाउनुहोस्।"
+        },
+        "hu": {
+            "legacy_caption_pid": 41651,
+            "legacy_language_pid": 43,
+            "text": "Küldjük a regisztrációs befejezését mail.",
+            "auto_translated": "Küldjük a regisztrációs befejezését mail."
+        },
+        "cs": {
+            "legacy_caption_pid": 41652,
+            "legacy_language_pid": 44,
+            "text": "Zašleme dokončení registrace pošty.",
+            "auto_translated": "Zašleme dokončení registrace pošty."
+        },
+        "el": {
+            "legacy_caption_pid": 41653,
+            "legacy_language_pid": 45,
+            "text": "Στέλνουμε το μήνυμα ολοκλήρωσης εγγραφής.",
+            "auto_translated": "Στέλνουμε το μήνυμα ολοκλήρωσης εγγραφής."
+        },
+        "sv": {
+            "legacy_caption_pid": 41654,
+            "legacy_language_pid": 46,
+            "text": "Vi skickar registreringen avslutad post.",
+            "auto_translated": "Vi skickar registreringen avslutad post."
+        },
+        "kk": {
+            "legacy_caption_pid": 41655,
+            "legacy_language_pid": 47,
+            "text": "Біз тіркеу аяқтау поштаны жіберу.",
+            "auto_translated": "Біз тіркеу аяқтау поштаны жіберу."
+        },
+        "fi": {
+            "legacy_caption_pid": 41656,
+            "legacy_language_pid": 48,
+            "text": "Lähetämme rekisteröinnin valmis postia.",
+            "auto_translated": "Lähetämme rekisteröinnin valmis postia."
+        },
+        "da": {
+            "legacy_caption_pid": 41657,
+            "legacy_language_pid": 49,
+            "text": "Vi sender registreringen færdiggørelse mail.",
+            "auto_translated": "Vi sender registreringen færdiggørelse mail."
+        },
+        "he": {
+            "legacy_caption_pid": 41658,
+            "legacy_language_pid": 50,
+            "text": "אנחנו שולחים בדואר השלים רישום.",
+            "auto_translated": "אנחנו שולחים בדואר השלים רישום."
+        },
+        "no": {
+            "legacy_caption_pid": 41659,
+            "legacy_language_pid": 51,
+            "text": "Vi sender registrerings ferdigstillelse post.",
+            "auto_translated": "Vi sender registrerings ferdigstillelse post."
+        }
+    }
+}

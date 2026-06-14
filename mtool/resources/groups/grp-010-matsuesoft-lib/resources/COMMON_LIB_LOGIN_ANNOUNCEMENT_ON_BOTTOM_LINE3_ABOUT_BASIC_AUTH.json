@@ -1,0 +1,321 @@
+{
+    "resource_key": "COMMON_LIB_LOGIN_ANNOUNCEMENT_ON_BOTTOM_LINE3_ABOUT_BASIC_AUTH",
+    "legacy_resource_pid": 1510,
+    "base_group_key": "grp-010-matsuesoft-lib",
+    "additional_group_keys": [],
+    "key_for_update": "wBA4c8nB5XXxefh7kQiq5AO9AJHag22mLCiB9R7xrO5HYDdSojMRaFssaQrc4U6TFLJis9KZjEgH69xPfeg2MBwSo5quaR1zBmBCNhjrvN96zARibmxelQntRjLln9PU",
+    "sort_group": "LOGIN",
+    "key_name": "COMMON_LIB_LOGIN_ANNOUNCEMENT_ON_BOTTOM_LINE3_ABOUT_BASIC_AUTH",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": false,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 6314,
+            "legacy_language_pid": 1,
+            "text": "それでもだめな場合、こちらをクリックしてBASIC認証でのログインを試みて頂ければと思います (当サイトのユーザ名(ID)のみ)",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 6315,
+            "legacy_language_pid": 2,
+            "text": "If that is not the case, I think that you can click here to try logging in with BASIC certification (This site's User Name (ID) only)",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 6316,
+            "legacy_language_pid": 3,
+            "text": "如果还是不行，我认为你试图通过单击此处登录基本身份验证（仅适用Matsuesoft的用户名ID）",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 6317,
+            "legacy_language_pid": 4,
+            "text": "그래도 안된다면, 여기를 클릭하여 BASIC 인증 로그인을 시도해 주시기 바라비다 (Matsuesoft의 아이디인 경우에만)",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 11045,
+            "legacy_language_pid": 5,
+            "text": "Si ese no es el caso, creo que puede hacer clic aquí para probar el inicio de sesión con la certificación BASIC (sólo Matsuesoft ID)",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 11046,
+            "legacy_language_pid": 6,
+            "text": "Se esse não for o caso, acho que você pode clicar aqui para tentar iniciar sessão com a certificação BASIC (somente Matsuesoft ID)",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 11047,
+            "legacy_language_pid": 7,
+            "text": "如果還是不行，我認為你試圖通過單擊此處登錄基本身份驗證（僅適用Matsuesoft的用户名ID）",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 16043,
+            "legacy_language_pid": 8,
+            "text": "Si ce n'est pas le cas, je pense que vous pouvez cliquer ici pour essayer de vous connecter avec la certification BASIC (Nom d'utilisateur (ID) de ce site uniquement)",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 16044,
+            "legacy_language_pid": 9,
+            "text": "अगर ऐसा मामला नहीं है, तो मुझे लगता है कि आप बुनियादी प्रमाणीकरण (इस साइट का यूज़र नेम (आईडी) के साथ प्रवेश करने का प्रयास करने के लिए यहां क्लिक कर सकते हैं)",
+            "auto_translated": ""
+        },
+        "ar": {
+            "legacy_caption_pid": 32446,
+            "legacy_language_pid": 10,
+            "text": "إذا كان لا يزال لا يعمل، وأعتقد أن حاولت تسجيل الدخول المصادقة الأساسية من خلال النقر هنا (اسم المستخدم للموقع (ID) فقط)",
+            "auto_translated": "إذا كان لا يزال لا يعمل، وأعتقد أن حاولت تسجيل الدخول المصادقة الأساسية من خلال النقر هنا (اسم المستخدم للموقع (ID) فقط)"
+        },
+        "fa": {
+            "legacy_caption_pid": 32447,
+            "legacy_language_pid": 11,
+            "text": "در صورتی که هنوز کار نمی کند، من فکر می کنم که شما تلاش برای ورود اعتبار اولیه با کلیک در اینجا (نام کاربری از سایت (ID) تنها)",
+            "auto_translated": "در صورتی که هنوز کار نمی کند، من فکر می کنم که شما تلاش برای ورود اعتبار اولیه با کلیک در اینجا (نام کاربری از سایت (ID) تنها)"
+        },
+        "de": {
+            "legacy_caption_pid": 32448,
+            "legacy_language_pid": 12,
+            "text": "Wenn es immer noch nicht funktioniert, denke ich, dass Sie, indem Sie hier in BASIC-Authentifizierung anzumelden versuchen (Benutzername der Website (ID) nur)",
+            "auto_translated": "Wenn es immer noch nicht funktioniert, denke ich, dass Sie, indem Sie hier in BASIC-Authentifizierung anzumelden versuchen (Benutzername der Website (ID) nur)"
+        },
+        "ru": {
+            "legacy_caption_pid": 32449,
+            "legacy_language_pid": 13,
+            "text": "Если он все еще не работает, я думаю, что вы пытаетесь войти в систему BASIC аутентификации, нажав здесь (имя пользователя сайта (ID) только)",
+            "auto_translated": "Если он все еще не работает, я думаю, что вы пытаетесь войти в систему BASIC аутентификации, нажав здесь (имя пользователя сайта (ID) только)"
+        },
+        "ms": {
+            "legacy_caption_pid": 32450,
+            "legacy_language_pid": 14,
+            "text": "Jika ia masih tidak berfungsi, saya berfikir bahawa anda cuba untuk log masuk pengesahan BASIC dengan klik di sini (nama pengguna tapak (ID) sahaja)",
+            "auto_translated": "Jika ia masih tidak berfungsi, saya berfikir bahawa anda cuba untuk log masuk pengesahan BASIC dengan klik di sini (nama pengguna tapak (ID) sahaja)"
+        },
+        "ta": {
+            "legacy_caption_pid": 32451,
+            "legacy_language_pid": 15,
+            "text": "அது இன்னும் வேலை செய்யவில்லை என்றால், நான் நீங்கள் இங்கே கிளிக் செய்வதன் மூலம் அடிப்படை அங்கீகார உள்நுழைய முயற்சிக்கும் என்று (தளத்தின் பயனர் பெயர் (ஐடி) மட்டும்)",
+            "auto_translated": "அது இன்னும் வேலை செய்யவில்லை என்றால், நான் நீங்கள் இங்கே கிளிக் செய்வதன் மூலம் அடிப்படை அங்கீகார உள்நுழைய முயற்சிக்கும் என்று (தளத்தின் பயனர் பெயர் (ஐடி) மட்டும்)"
+        },
+        "it": {
+            "legacy_caption_pid": 32452,
+            "legacy_language_pid": 16,
+            "text": "Se ancora non funziona, penso che si tenta di accedere a autenticazione di base cliccando qui (nome utente del sito (ID) unico)",
+            "auto_translated": "Se ancora non funziona, penso che si tenta di accedere a autenticazione di base cliccando qui (nome utente del sito (ID) unico)"
+        },
+        "bn": {
+            "legacy_caption_pid": 32453,
+            "legacy_language_pid": 17,
+            "text": "এটা এখনও কাজ না করে, তাহলে আমি মনে করি যে আপনি এখানে ক্লিক করে বেসিক প্রমাণীকরণ লগ ইন করার প্রচেষ্টা (সাইটের ব্যবহারকারী নাম (আইডি) শুধুমাত্র)",
+            "auto_translated": "এটা এখনও কাজ না করে, তাহলে আমি মনে করি যে আপনি এখানে ক্লিক করে বেসিক প্রমাণীকরণ লগ ইন করার প্রচেষ্টা (সাইটের ব্যবহারকারী নাম (আইডি) শুধুমাত্র)"
+        },
+        "tr": {
+            "legacy_caption_pid": 32454,
+            "legacy_language_pid": 18,
+            "text": "hala işe yaramazsa, ben (sadece) sitenin kullanıcı adı (ID) burayı tıklayarak TEMEL kimlik doğrulaması oturum girişiminde düşünüyorum",
+            "auto_translated": "hala işe yaramazsa, ben (sadece) sitenin kullanıcı adı (ID) burayı tıklayarak TEMEL kimlik doğrulaması oturum girişiminde düşünüyorum"
+        },
+        "vi": {
+            "legacy_caption_pid": 32455,
+            "legacy_language_pid": 19,
+            "text": "Nếu nó vẫn không hoạt động, tôi nghĩ rằng bạn cố gắng đăng nhập xác thực BASIC bằng cách nhấn vào đây (tên người dùng của trang web (ID) duy nhất)",
+            "auto_translated": "Nếu nó vẫn không hoạt động, tôi nghĩ rằng bạn cố gắng đăng nhập xác thực BASIC bằng cách nhấn vào đây (tên người dùng của trang web (ID) duy nhất)"
+        },
+        "pl": {
+            "legacy_caption_pid": 32456,
+            "legacy_language_pid": 20,
+            "text": "Jeśli nadal nie działa, myślę, że spróbujesz zalogować uwierzytelnianie podstawowe, klikając tutaj (nazwa użytkownika witryny (ID) tylko)",
+            "auto_translated": "Jeśli nadal nie działa, myślę, że spróbujesz zalogować uwierzytelnianie podstawowe, klikając tutaj (nazwa użytkownika witryny (ID) tylko)"
+        },
+        "jv": {
+            "legacy_caption_pid": 32457,
+            "legacy_language_pid": 21,
+            "text": "Yèn isih tetep ora bisa, aku sing nyoba kanggo mlebu bukti asli BASIC kanthi ngeklik kene (jeneng panganggo saka situs (ID) mung)",
+            "auto_translated": "Yèn isih tetep ora bisa, aku sing nyoba kanggo mlebu bukti asli BASIC kanthi ngeklik kene (jeneng panganggo saka situs (ID) mung)"
+        },
+        "pa": {
+            "legacy_caption_pid": 32458,
+            "legacy_language_pid": 22,
+            "text": "ਇਸ ਨੂੰ ਅਜੇ ਵੀ ਕੰਮ ਨਹੀ ਕਰਦਾ ਹੈ, ਜੇ, ਮੈਨੂੰ ਲੱਗਦਾ ਹੈ ਕਿ ਤੁਹਾਨੂੰ ਇੱਥੇ ਕਲਿੱਕ ਕਰ ਕੇ ਮੁੱਢਲੀ ਪ੍ਰਮਾਣਿਕਤਾ ਵਿੱਚ ਲਾਗਇਨ ਕਰਨ ਦੀ ਕੋਸ਼ਿਸ਼ (ਸਾਈਟ ਦੀ ਯੂਜ਼ਰ ਨੂੰ ਨਾਮ ਹੈ (ID) ਹੀ)",
+            "auto_translated": "ਇਸ ਨੂੰ ਅਜੇ ਵੀ ਕੰਮ ਨਹੀ ਕਰਦਾ ਹੈ, ਜੇ, ਮੈਨੂੰ ਲੱਗਦਾ ਹੈ ਕਿ ਤੁਹਾਨੂੰ ਇੱਥੇ ਕਲਿੱਕ ਕਰ ਕੇ ਮੁੱਢਲੀ ਪ੍ਰਮਾਣਿਕਤਾ ਵਿੱਚ ਲਾਗਇਨ ਕਰਨ ਦੀ ਕੋਸ਼ਿਸ਼ (ਸਾਈਟ ਦੀ ਯੂਜ਼ਰ ਨੂੰ ਨਾਮ ਹੈ (ID) ਹੀ)"
+        },
+        "th": {
+            "legacy_caption_pid": 32459,
+            "legacy_language_pid": 23,
+            "text": "ถ้ามันยังไม่ทำงานผมคิดว่าคุณพยายามที่จะเข้าสู่ระบบการตรวจสอบเบื้องต้นโดยคลิกที่นี่ (ชื่อผู้ใช้ของเว็บไซต์ (ID) เท่านั้น)",
+            "auto_translated": "ถ้ามันยังไม่ทำงานผมคิดว่าคุณพยายามที่จะเข้าสู่ระบบการตรวจสอบเบื้องต้นโดยคลิกที่นี่ (ชื่อผู้ใช้ของเว็บไซต์ (ID) เท่านั้น)"
+        },
+        "te": {
+            "legacy_caption_pid": 40736,
+            "legacy_language_pid": 24,
+            "text": "అది ఇప్పటికీ పని చెయ్యకపోతే, నేను మీరు ద్వారా ప్రాథమిక ప్రమాణీకరణ లాగిన్ చేయడానికి ప్రయత్నిస్తుంది అనుకుంటున్నాను (సైట్ యొక్క వినియోగదారు పేరు (ID) మాత్రమే)",
+            "auto_translated": "అది ఇప్పటికీ పని చెయ్యకపోతే, నేను మీరు ద్వారా ప్రాథమిక ప్రమాణీకరణ లాగిన్ చేయడానికి ప్రయత్నిస్తుంది అనుకుంటున్నాను (సైట్ యొక్క వినియోగదారు పేరు (ID) మాత్రమే)"
+        },
+        "mr": {
+            "legacy_caption_pid": 40737,
+            "legacy_language_pid": 25,
+            "text": "ते अद्याप कार्य करत नसेल, तर मी तुम्हाला येथे क्लिक करून बेसिक प्रमाणीकरण लॉग इन करण्याचा प्रयत्न असे वाटते की, (साइट वापरकर्ता नाव (ID) फक्त)",
+            "auto_translated": "ते अद्याप कार्य करत नसेल, तर मी तुम्हाला येथे क्लिक करून बेसिक प्रमाणीकरण लॉग इन करण्याचा प्रयत्न असे वाटते की, (साइट वापरकर्ता नाव (ID) फक्त)"
+        },
+        "ur": {
+            "legacy_caption_pid": 40738,
+            "legacy_language_pid": 26,
+            "text": "یہ اب بھی کام نہیں کرتا ہے، میں آپ یہاں کلک کر کے بنیادی توثیق میں لاگ ان کرنے کی کوشش کریں گے کہ لگتا ہے کہ (ویب سائٹ کے صارف نام (ID) صرف)",
+            "auto_translated": "یہ اب بھی کام نہیں کرتا ہے، میں آپ یہاں کلک کر کے بنیادی توثیق میں لاگ ان کرنے کی کوشش کریں گے کہ لگتا ہے کہ (ویب سائٹ کے صارف نام (ID) صرف)"
+        },
+        "gu": {
+            "legacy_caption_pid": 40739,
+            "legacy_language_pid": 27,
+            "text": "તે હજુ પણ કામ ન કરે તો, મને લાગે છે કે તમે અહીં ક્લિક કરીને બેઝિક Authentication માં પ્રવેશ કરવા પ્રયત્ન કરે છે (સાઇટ વપરાશકર્તા નામ (આઈડી) માત્ર)",
+            "auto_translated": "તે હજુ પણ કામ ન કરે તો, મને લાગે છે કે તમે અહીં ક્લિક કરીને બેઝિક Authentication માં પ્રવેશ કરવા પ્રયત્ન કરે છે (સાઇટ વપરાશકર્તા નામ (આઈડી) માત્ર)"
+        },
+        "uk": {
+            "legacy_caption_pid": 40740,
+            "legacy_language_pid": 28,
+            "text": "Якщо він все ще не працює, я думаю, що ви намагаєтеся увійти в систему BASIC аутентифікації, натиснувши тут (ім'я користувача сайту (ID) тільки)",
+            "auto_translated": "Якщо він все ще не працює, я думаю, що ви намагаєтеся увійти в систему BASIC аутентифікації, натиснувши тут (ім'я користувача сайту (ID) тільки)"
+        },
+        "ml": {
+            "legacy_caption_pid": 40741,
+            "legacy_language_pid": 29,
+            "text": "ഇപ്പോഴും പ്രവർത്തിക്കുന്നില്ലെങ്കിൽ, ഞാൻ നിന്നെ (മാത്രം സൈറ്റിന്റെ ഉപയോക്തൃ നാമം (ഐഡി)) ഇവിടെ ക്ലിക്കുചെയ്ത് ബേസിക് ആധികാരികത ലോഗിൻ ചെയ്യാൻ ശ്രമിക്കും എന്നു തോന്നുന്നു",
+            "auto_translated": "ഇപ്പോഴും പ്രവർത്തിക്കുന്നില്ലെങ്കിൽ, ഞാൻ നിന്നെ (മാത്രം സൈറ്റിന്റെ ഉപയോക്തൃ നാമം (ഐഡി)) ഇവിടെ ക്ലിക്കുചെയ്ത് ബേസിക് ആധികാരികത ലോഗിൻ ചെയ്യാൻ ശ്രമിക്കും എന്നു തോന്നുന്നു"
+        },
+        "kn": {
+            "legacy_caption_pid": 40742,
+            "legacy_language_pid": 30,
+            "text": "ಇದು ಇನ್ನೂ ಕೆಲಸ ಮಾಡದಿದ್ದರೆ, ನಾನು ನೀವು ಮೂಲಕ ಬೇಸಿಕ್ ದೃಢೀಕರಣ ಪ್ರವೇಶಿಸಲು ಪ್ರಯತ್ನಿಸುವ ಭಾವಿಸುತ್ತೇನೆ (ಸೈಟ್ ಬಳಕೆದಾರ ಹೆಸರು (ಐಡಿ) ಮಾತ್ರ)",
+            "auto_translated": "ಇದು ಇನ್ನೂ ಕೆಲಸ ಮಾಡದಿದ್ದರೆ, ನಾನು ನೀವು ಮೂಲಕ ಬೇಸಿಕ್ ದೃಢೀಕರಣ ಪ್ರವೇಶಿಸಲು ಪ್ರಯತ್ನಿಸುವ ಭಾವಿಸುತ್ತೇನೆ (ಸೈಟ್ ಬಳಕೆದಾರ ಹೆಸರು (ಐಡಿ) ಮಾತ್ರ)"
+        },
+        "su": {
+            "legacy_caption_pid": 40743,
+            "legacy_language_pid": 31,
+            "text": "Mun tetep teu metu, Jigana nu nyobian lebet auténtikasi dasar ku ngaklik didieu (ngaran pamaké loka (ID) wungkul)",
+            "auto_translated": "Mun tetep teu metu, Jigana nu nyobian lebet auténtikasi dasar ku ngaklik didieu (ngaran pamaké loka (ID) wungkul)"
+        },
+        "ku": {
+            "legacy_caption_pid": 40744,
+            "legacy_language_pid": 32,
+            "text": "Eger ew hê jî bi kêr nayê, ez bawerim ku tu hewldana ji bo têkevim authentication BASIC dikarī xwe li vir (user name of the site (ID) bi tenê)",
+            "auto_translated": "Eger ew hê jî bi kêr nayê, ez bawerim ku tu hewldana ji bo têkevim authentication BASIC dikarī xwe li vir (user name of the site (ID) bi tenê)"
+        },
+        "ps": {
+            "legacy_caption_pid": 40745,
+            "legacy_language_pid": 33,
+            "text": "که دا اوس هم کار نه کوي، زه فکر کوم چې تاسو ته په کېکاږلو سره په اساسي اعتبار log هڅه (د ځای کارن نوم (تذکرو) یوازې)",
+            "auto_translated": "که دا اوس هم کار نه کوي، زه فکر کوم چې تاسو ته په کېکاږلو سره په اساسي اعتبار log هڅه (د ځای کارن نوم (تذکرو) یوازې)"
+        },
+        "ro": {
+            "legacy_caption_pid": 40746,
+            "legacy_language_pid": 34,
+            "text": "În cazul în care încă nu funcționează, cred că încercați să vă conectați autentificarea de bază făcând clic aici (numele de utilizator al site-ului (ID) numai)",
+            "auto_translated": "În cazul în care încă nu funcționează, cred că încercați să vă conectați autentificarea de bază făcând clic aici (numele de utilizator al site-ului (ID) numai)"
+        },
+        "id": {
+            "legacy_caption_pid": 40747,
+            "legacy_language_pid": 35,
+            "text": "Jika masih tidak berhasil, saya berpikir bahwa Anda mencoba untuk login otentikasi BASIC dengan mengklik di sini (nama pengguna dari situs (ID) saja)",
+            "auto_translated": "Jika masih tidak berhasil, saya berpikir bahwa Anda mencoba untuk login otentikasi BASIC dengan mengklik di sini (nama pengguna dari situs (ID) saja)"
+        },
+        "sd": {
+            "legacy_caption_pid": 40748,
+            "legacy_language_pid": 36,
+            "text": "ان کي اڃا به ڪم نه ايندي ته، مون کي خيال آهي ته توهان کي هتي (جي سائيٽ جي استعمال ڪندڙ جو نالو (سڃاڻپ) رڳو) ڪلڪ ڪري بنيادي جي اصليت جو لاگ ان ڪرڻ جي ڪوشش ڪئي",
+            "auto_translated": "ان کي اڃا به ڪم نه ايندي ته، مون کي خيال آهي ته توهان کي هتي (جي سائيٽ جي استعمال ڪندڙ جو نالو (سڃاڻپ) رڳو) ڪلڪ ڪري بنيادي جي اصليت جو لاگ ان ڪرڻ جي ڪوشش ڪئي"
+        },
+        "af": {
+            "legacy_caption_pid": 40749,
+            "legacy_language_pid": 37,
+            "text": "As dit nog steeds nie werk nie, ek dink dat jy probeer om aan te meld in BASIC verifikasie deur hier te klik (gebruiker naam van die webwerf (ID) net)",
+            "auto_translated": "As dit nog steeds nie werk nie, ek dink dat jy probeer om aan te meld in BASIC verifikasie deur hier te klik (gebruiker naam van die webwerf (ID) net)"
+        },
+        "sw": {
+            "legacy_caption_pid": 40750,
+            "legacy_language_pid": 38,
+            "text": "Kama bado haifanyi kazi, Nadhani jaribio la kuingia kwenye uthibitisho BASIC kwa kubonyeza hapa (jina la mtumiaji wa tovuti (ID) tu)",
+            "auto_translated": "Kama bado haifanyi kazi, Nadhani jaribio la kuingia kwenye uthibitisho BASIC kwa kubonyeza hapa (jina la mtumiaji wa tovuti (ID) tu)"
+        },
+        "lo": {
+            "legacy_caption_pid": 40751,
+            "legacy_language_pid": 39,
+            "text": "ຖ້າຫາກວ່າມັນຍັງບໍ່ໄດ້ເຮັດວຽກ, ຂ້າພະເຈົ້າຄິດວ່າທ່ານພະຍາຍາມທີ່ຈະເຂົ້າໃນການກວດສອບພື້ນຖານໂດຍການຄລິກທີ່ນີ້ (ຊື່ຜູ້ໃຊ້ຂອງເວັບໄຊດັ່ງກ່າວ (ID) ເທົ່ານັ້ນ)",
+            "auto_translated": "ຖ້າຫາກວ່າມັນຍັງບໍ່ໄດ້ເຮັດວຽກ, ຂ້າພະເຈົ້າຄິດວ່າທ່ານພະຍາຍາມທີ່ຈະເຂົ້າໃນການກວດສອບພື້ນຖານໂດຍການຄລິກທີ່ນີ້ (ຊື່ຜູ້ໃຊ້ຂອງເວັບໄຊດັ່ງກ່າວ (ID) ເທົ່ານັ້ນ)"
+        },
+        "nl": {
+            "legacy_caption_pid": 40752,
+            "legacy_language_pid": 40,
+            "text": "Als het dan nog niet werkt, ik denk dat je probeert aan te melden in BASIC authenticatie door hier te klikken (gebruikersnaam van de site (ID) only)",
+            "auto_translated": "Als het dan nog niet werkt, ik denk dat je probeert aan te melden in BASIC authenticatie door hier te klikken (gebruikersnaam van de site (ID) only)"
+        },
+        "tl": {
+            "legacy_caption_pid": 40753,
+            "legacy_language_pid": 41,
+            "text": "Kung hindi pa rin ito gumagana, sa tingin ko na tinangka mong mag-log in BATAYANG authentication sa pamamagitan ng pag-click dito (user name ng site (ID) lamang)",
+            "auto_translated": "Kung hindi pa rin ito gumagana, sa tingin ko na tinangka mong mag-log in BATAYANG authentication sa pamamagitan ng pag-click dito (user name ng site (ID) lamang)"
+        },
+        "ne": {
+            "legacy_caption_pid": 40754,
+            "legacy_language_pid": 42,
+            "text": "यदि यो अझै पनि काम गर्दैन, म तपाईं बेसिक प्रमाणीकरण यहाँ क्लिक गरेर लग प्रयास लाग्छ ((आईडी साइटको प्रयोगकर्ता नाम) मात्र)",
+            "auto_translated": "यदि यो अझै पनि काम गर्दैन, म तपाईं बेसिक प्रमाणीकरण यहाँ क्लिक गरेर लग प्रयास लाग्छ ((आईडी साइटको प्रयोगकर्ता नाम) मात्र)"
+        },
+        "hu": {
+            "legacy_caption_pid": 40755,
+            "legacy_language_pid": 43,
+            "text": "Ha még mindig nem működik, azt hiszem, hogy megpróbál bejelentkezni BASIC hitelesítési ide kattintva (felhasználó neve az oldalon (ID) esetében)",
+            "auto_translated": "Ha még mindig nem működik, azt hiszem, hogy megpróbál bejelentkezni BASIC hitelesítési ide kattintva (felhasználó neve az oldalon (ID) esetében)"
+        },
+        "cs": {
+            "legacy_caption_pid": 40756,
+            "legacy_language_pid": 44,
+            "text": "Pokud to stále nefunguje, myslím, že pokusu o přihlášení do základní ověřování kliknutím zde (uživatelské jméno webu (ID) pouze)",
+            "auto_translated": "Pokud to stále nefunguje, myslím, že pokusu o přihlášení do základní ověřování kliknutím zde (uživatelské jméno webu (ID) pouze)"
+        },
+        "el": {
+            "legacy_caption_pid": 40757,
+            "legacy_language_pid": 45,
+            "text": "Εάν εξακολουθεί να μην λειτουργεί, νομίζω ότι προσπαθείτε να συνδεθείτε στο βασικό έλεγχο ταυτότητας, κάνοντας κλικ εδώ (το όνομα χρήστη του δικτυακού τόπου (ID) μόνο)",
+            "auto_translated": "Εάν εξακολουθεί να μην λειτουργεί, νομίζω ότι προσπαθείτε να συνδεθείτε στο βασικό έλεγχο ταυτότητας, κάνοντας κλικ εδώ (το όνομα χρήστη του δικτυακού τόπου (ID) μόνο)"
+        },
+        "sv": {
+            "legacy_caption_pid": 40758,
+            "legacy_language_pid": 46,
+            "text": "Om det fortfarande inte fungerar, jag tror att du försöker logga in grundläggande autentisering genom att klicka här (användarnamn på webbplatsen (ID) only)",
+            "auto_translated": "Om det fortfarande inte fungerar, jag tror att du försöker logga in grundläggande autentisering genom att klicka här (användarnamn på webbplatsen (ID) only)"
+        },
+        "kk": {
+            "legacy_caption_pid": 40759,
+            "legacy_language_pid": 47,
+            "text": "ол әлі жұмыс істемесе, менің ойымша, сіз (тек сайттың пайдаланушы атын (ID)), мұнда басу арқылы негізгі түпнұсқалық растаманы кіру әрекет деп ойлаймын",
+            "auto_translated": "ол әлі жұмыс істемесе, менің ойымша, сіз (тек сайттың пайдаланушы атын (ID)), мұнда басу арқылы негізгі түпнұсқалық растаманы кіру әрекет деп ойлаймын"
+        },
+        "fi": {
+            "legacy_caption_pid": 40760,
+            "legacy_language_pid": 48,
+            "text": "Jos se ei vieläkään toimi, luulen että yrität kirjautua perustodennuksella klikkaamalla tästä (käyttäjätunnus sivuston (ID) vain)",
+            "auto_translated": "Jos se ei vieläkään toimi, luulen että yrität kirjautua perustodennuksella klikkaamalla tästä (käyttäjätunnus sivuston (ID) vain)"
+        },
+        "da": {
+            "legacy_caption_pid": 40761,
+            "legacy_language_pid": 49,
+            "text": "Hvis det stadig ikke virker, jeg tror, ​​at du forsøger at logge på grundlæggende godkendelse ved at klikke her (brugernavn på sitet (ID) kun)",
+            "auto_translated": "Hvis det stadig ikke virker, jeg tror, ​​at du forsøger at logge på grundlæggende godkendelse ved at klikke her (brugernavn på sitet (ID) kun)"
+        },
+        "he": {
+            "legacy_caption_pid": 40762,
+            "legacy_language_pid": 50,
+            "text": "אם זה עדיין לא עובד, אני חושב שאתה מנסה להתחבר אימות בסיסי על ידי לחיצה כאן (שם המשתמש של האתר (ID) בלבד)",
+            "auto_translated": "אם זה עדיין לא עובד, אני חושב שאתה מנסה להתחבר אימות בסיסי על ידי לחיצה כאן (שם המשתמש של האתר (ID) בלבד)"
+        },
+        "no": {
+            "legacy_caption_pid": 40763,
+            "legacy_language_pid": 51,
+            "text": "Hvis det fortsatt ikke fungerer, tror jeg at du forsøker å logge inn BASIC-autentisering ved å klikke her (bruker navnet på området (ID) bare)",
+            "auto_translated": "Hvis det fortsatt ikke fungerer, tror jeg at du forsøker å logge inn BASIC-autentisering ved å klikke her (bruker navnet på området (ID) bare)"
+        }
+    }
+}

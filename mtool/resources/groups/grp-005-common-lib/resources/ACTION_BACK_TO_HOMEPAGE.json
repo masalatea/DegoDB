@@ -1,0 +1,321 @@
+{
+    "resource_key": "ACTION_BACK_TO_HOMEPAGE",
+    "legacy_resource_pid": 1583,
+    "base_group_key": "grp-005-common-lib",
+    "additional_group_keys": [],
+    "key_for_update": "rLja7mOcb7TQYZ9AuoosMT6phs6d8UpuZZxPnwgMdmkrSJpU1h1Xc9r1cmmPHO3zUArwHKVS7MgpXxT9itiSsVzNwVbZqkpJRNDOniWmT8yO8Ups1NgV90pal8B8KREY",
+    "sort_group": "ACTION",
+    "key_name": "ACTION_BACK_TO_HOMEPAGE",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": false,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 7114,
+            "legacy_language_pid": 1,
+            "text": "トップページに戻る",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 7115,
+            "legacy_language_pid": 2,
+            "text": "Back to the Top Page",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 7116,
+            "legacy_language_pid": 3,
+            "text": "返回首页",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 7117,
+            "legacy_language_pid": 4,
+            "text": "상단 페이지로 돌아가기",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 10370,
+            "legacy_language_pid": 5,
+            "text": "Volver a la página principal",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 10371,
+            "legacy_language_pid": 6,
+            "text": "Voltar à Página Inicial",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 10372,
+            "legacy_language_pid": 7,
+            "text": "返回首頁",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 16253,
+            "legacy_language_pid": 8,
+            "text": "Retour au haut de la page",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 16254,
+            "legacy_language_pid": 9,
+            "text": "शीर्ष पृष्ठ पर वापस जाएँ",
+            "auto_translated": ""
+        },
+        "ar": {
+            "legacy_caption_pid": 29268,
+            "legacy_language_pid": 10,
+            "text": "العودة إلى أعلى الصفحة",
+            "auto_translated": "العودة إلى أعلى الصفحة"
+        },
+        "fa": {
+            "legacy_caption_pid": 29269,
+            "legacy_language_pid": 11,
+            "text": "بازگشت به بالای صفحه",
+            "auto_translated": "بازگشت به بالای صفحه"
+        },
+        "de": {
+            "legacy_caption_pid": 29270,
+            "legacy_language_pid": 12,
+            "text": "Nach oben Seite",
+            "auto_translated": "Nach oben Seite"
+        },
+        "ru": {
+            "legacy_caption_pid": 29271,
+            "legacy_language_pid": 13,
+            "text": "Вернуться к началу страницы",
+            "auto_translated": "Вернуться к началу страницы"
+        },
+        "ms": {
+            "legacy_caption_pid": 29272,
+            "legacy_language_pid": 14,
+            "text": "Kembali ke halaman atas",
+            "auto_translated": "Kembali ke halaman atas"
+        },
+        "ta": {
+            "legacy_caption_pid": 29273,
+            "legacy_language_pid": 15,
+            "text": "மேலே பக்கம்",
+            "auto_translated": "மேலே பக்கம்"
+        },
+        "it": {
+            "legacy_caption_pid": 29274,
+            "legacy_language_pid": 16,
+            "text": "Torna ad inizio pagina",
+            "auto_translated": "Torna ad inizio pagina"
+        },
+        "bn": {
+            "legacy_caption_pid": 29275,
+            "legacy_language_pid": 17,
+            "text": "শীর্ষে ফিরে পৃষ্ঠায়",
+            "auto_translated": "শীর্ষে ফিরে পৃষ্ঠায়"
+        },
+        "tr": {
+            "legacy_caption_pid": 29276,
+            "legacy_language_pid": 18,
+            "text": "Başa dön Sayfayı",
+            "auto_translated": "Başa dön Sayfayı"
+        },
+        "vi": {
+            "legacy_caption_pid": 29277,
+            "legacy_language_pid": 19,
+            "text": "Quay lại trang đầu",
+            "auto_translated": "Quay lại trang đầu"
+        },
+        "pl": {
+            "legacy_caption_pid": 29278,
+            "legacy_language_pid": 20,
+            "text": "Powrót do góry strony",
+            "auto_translated": "Powrót do góry strony"
+        },
+        "jv": {
+            "legacy_caption_pid": 29279,
+            "legacy_language_pid": 21,
+            "text": "Back to kaca ndhuwur",
+            "auto_translated": "Back to kaca ndhuwur"
+        },
+        "pa": {
+            "legacy_caption_pid": 29280,
+            "legacy_language_pid": 22,
+            "text": "ਵਾਪਸ ਚੋਟੀ ਦੇ ਸਫ਼ੇ ਤੱਕ",
+            "auto_translated": "ਵਾਪਸ ਚੋਟੀ ਦੇ ਸਫ਼ੇ ਤੱਕ"
+        },
+        "th": {
+            "legacy_caption_pid": 29281,
+            "legacy_language_pid": 23,
+            "text": "กลับไปที่ด้านบนของหน้า",
+            "auto_translated": "กลับไปที่ด้านบนของหน้า"
+        },
+        "te": {
+            "legacy_caption_pid": 37880,
+            "legacy_language_pid": 24,
+            "text": "తిరిగి టాప్ పేజీకి",
+            "auto_translated": "తిరిగి టాప్ పేజీకి"
+        },
+        "mr": {
+            "legacy_caption_pid": 37881,
+            "legacy_language_pid": 25,
+            "text": "परत वर पृष्ठावर",
+            "auto_translated": "परत वर पृष्ठावर"
+        },
+        "ur": {
+            "legacy_caption_pid": 37882,
+            "legacy_language_pid": 26,
+            "text": "سب کے صفحے پر جایئے",
+            "auto_translated": "سب کے صفحے پر جایئے"
+        },
+        "gu": {
+            "legacy_caption_pid": 37883,
+            "legacy_language_pid": 27,
+            "text": "શીર્ષ પર પાછા પાનાં પર",
+            "auto_translated": "શીર્ષ પર પાછા પાનાં પર"
+        },
+        "uk": {
+            "legacy_caption_pid": 37884,
+            "legacy_language_pid": 28,
+            "text": "Повернутися до початку сторінки",
+            "auto_translated": "Повернутися до початку сторінки"
+        },
+        "ml": {
+            "legacy_caption_pid": 37885,
+            "legacy_language_pid": 29,
+            "text": "മുകളിലേയ്ക്ക് പേജിലേക്ക്",
+            "auto_translated": "മുകളിലേയ്ക്ക് പേജിലേക്ക്"
+        },
+        "kn": {
+            "legacy_caption_pid": 37886,
+            "legacy_language_pid": 30,
+            "text": "ಮೇಲಕ್ಕೆ ಪುಟಕ್ಕೆ",
+            "auto_translated": "ಮೇಲಕ್ಕೆ ಪುಟಕ್ಕೆ"
+        },
+        "su": {
+            "legacy_caption_pid": 37887,
+            "legacy_language_pid": 31,
+            "text": "Deui ka kaca luhureun",
+            "auto_translated": "Deui ka kaca luhureun"
+        },
+        "ku": {
+            "legacy_caption_pid": 37888,
+            "legacy_language_pid": 32,
+            "text": "Back to rûpel top",
+            "auto_translated": "Back to rûpel top"
+        },
+        "ps": {
+            "legacy_caption_pid": 37889,
+            "legacy_language_pid": 33,
+            "text": "بېرته سر پاڼې ته",
+            "auto_translated": "بېرته سر پاڼې ته"
+        },
+        "ro": {
+            "legacy_caption_pid": 37890,
+            "legacy_language_pid": 34,
+            "text": "Înapoi la pagina de început",
+            "auto_translated": "Înapoi la pagina de început"
+        },
+        "id": {
+            "legacy_caption_pid": 37891,
+            "legacy_language_pid": 35,
+            "text": "Kembali ke halaman atas",
+            "auto_translated": "Kembali ke halaman atas"
+        },
+        "sd": {
+            "legacy_caption_pid": 37892,
+            "legacy_language_pid": 36,
+            "text": "موٽي مٿي صفحي کي",
+            "auto_translated": "موٽي مٿي صفحي کي"
+        },
+        "af": {
+            "legacy_caption_pid": 37893,
+            "legacy_language_pid": 37,
+            "text": "Terug na bo bladsy",
+            "auto_translated": "Terug na bo bladsy"
+        },
+        "sw": {
+            "legacy_caption_pid": 37894,
+            "legacy_language_pid": 38,
+            "text": "Rudi kwa ukurasa wa juu",
+            "auto_translated": "Rudi kwa ukurasa wa juu"
+        },
+        "lo": {
+            "legacy_caption_pid": 37895,
+            "legacy_language_pid": 39,
+            "text": "ກັບໄປທີ່ຫນ້າດ້ານເທິງ",
+            "auto_translated": "ກັບໄປທີ່ຫນ້າດ້ານເທິງ"
+        },
+        "nl": {
+            "legacy_caption_pid": 37896,
+            "legacy_language_pid": 40,
+            "text": "Terug naar begin pagina",
+            "auto_translated": "Terug naar begin pagina"
+        },
+        "tl": {
+            "legacy_caption_pid": 37897,
+            "legacy_language_pid": 41,
+            "text": "Bumalik sa tuktok ng pahina",
+            "auto_translated": "Bumalik sa tuktok ng pahina"
+        },
+        "ne": {
+            "legacy_caption_pid": 37898,
+            "legacy_language_pid": 42,
+            "text": "फिर्ता माथि पृष्ठमा",
+            "auto_translated": "फिर्ता माथि पृष्ठमा"
+        },
+        "hu": {
+            "legacy_caption_pid": 37899,
+            "legacy_language_pid": 43,
+            "text": "Vissza az oldal tetejére",
+            "auto_translated": "Vissza az oldal tetejére"
+        },
+        "cs": {
+            "legacy_caption_pid": 37900,
+            "legacy_language_pid": 44,
+            "text": "Zpět na začátek stránky",
+            "auto_translated": "Zpět na začátek stránky"
+        },
+        "el": {
+            "legacy_caption_pid": 37901,
+            "legacy_language_pid": 45,
+            "text": "Επιστροφή στην κορυφή της σελίδας",
+            "auto_translated": "Επιστροφή στην κορυφή της σελίδας"
+        },
+        "sv": {
+            "legacy_caption_pid": 37902,
+            "legacy_language_pid": 46,
+            "text": "Tillbaka till toppen sida",
+            "auto_translated": "Tillbaka till toppen sida"
+        },
+        "kk": {
+            "legacy_caption_pid": 37903,
+            "legacy_language_pid": 47,
+            "text": "Басына бетке",
+            "auto_translated": "Басына бетке"
+        },
+        "fi": {
+            "legacy_caption_pid": 37904,
+            "legacy_language_pid": 48,
+            "text": "Takaisin alkuun Sivu",
+            "auto_translated": "Takaisin alkuun Sivu"
+        },
+        "da": {
+            "legacy_caption_pid": 37905,
+            "legacy_language_pid": 49,
+            "text": "Tilbage til toppen side",
+            "auto_translated": "Tilbage til toppen side"
+        },
+        "he": {
+            "legacy_caption_pid": 37906,
+            "legacy_language_pid": 50,
+            "text": "חזרה לדף העליון",
+            "auto_translated": "חזרה לדף העליון"
+        },
+        "no": {
+            "legacy_caption_pid": 37907,
+            "legacy_language_pid": 51,
+            "text": "Tilbake til toppen siden",
+            "auto_translated": "Tilbake til toppen siden"
+        }
+    }
+}

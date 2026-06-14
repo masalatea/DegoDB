@@ -1,0 +1,321 @@
+{
+    "resource_key": "COMMON_LIB_INQUIRY_DONE_SENDING_MESSAGE_LINE1",
+    "legacy_resource_pid": 1585,
+    "base_group_key": "grp-010-matsuesoft-lib",
+    "additional_group_keys": [],
+    "key_for_update": "aYGodMz3lOwcj19EtZ744zuT1MchEQgDAxpu5vWuo7kDR7rLFTxRPnuzx7c1cnXtKl7gBVLLRREfN2xfrGA00UlYJKPyylAGl1lW39teEH2P8BBx4HRcB4W1P2TaBfy8",
+    "sort_group": "INQUIRY",
+    "key_name": "COMMON_LIB_INQUIRY_DONE_SENDING_MESSAGE_LINE1",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": false,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 7122,
+            "legacy_language_pid": 1,
+            "text": "メッセージを受け付けました。",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 7123,
+            "legacy_language_pid": 2,
+            "text": "Received a message.",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 7124,
+            "legacy_language_pid": 3,
+            "text": "该消息已被接受。",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 7125,
+            "legacy_language_pid": 4,
+            "text": "메시지를 수신했습니다.",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 10958,
+            "legacy_language_pid": 5,
+            "text": "Recibió un mensaje. ",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 10959,
+            "legacy_language_pid": 6,
+            "text": "Recebeu uma mensagem. ",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 10960,
+            "legacy_language_pid": 7,
+            "text": "該消息已被接受。",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 17171,
+            "legacy_language_pid": 8,
+            "text": "J'ai reçu un message.",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 17172,
+            "legacy_language_pid": 9,
+            "text": "एक संदेश प्राप्त हुआ",
+            "auto_translated": ""
+        },
+        "ar": {
+            "legacy_caption_pid": 32040,
+            "legacy_language_pid": 10,
+            "text": "تم قبول الرسالة.",
+            "auto_translated": "تم قبول الرسالة."
+        },
+        "fa": {
+            "legacy_caption_pid": 32041,
+            "legacy_language_pid": 11,
+            "text": "پیام پذیرفته شده است.",
+            "auto_translated": "پیام پذیرفته شده است."
+        },
+        "de": {
+            "legacy_caption_pid": 32042,
+            "legacy_language_pid": 12,
+            "text": "Die Nachricht wird akzeptiert.",
+            "auto_translated": "Die Nachricht wird akzeptiert."
+        },
+        "ru": {
+            "legacy_caption_pid": 32043,
+            "legacy_language_pid": 13,
+            "text": "Сообщение было принято.",
+            "auto_translated": "Сообщение было принято."
+        },
+        "ms": {
+            "legacy_caption_pid": 32044,
+            "legacy_language_pid": 14,
+            "text": "Mesej telah diterima.",
+            "auto_translated": "Mesej telah diterima."
+        },
+        "ta": {
+            "legacy_caption_pid": 32045,
+            "legacy_language_pid": 15,
+            "text": "செய்தி ஏற்கப்பட்டுள்ளது.",
+            "auto_translated": "செய்தி ஏற்கப்பட்டுள்ளது."
+        },
+        "it": {
+            "legacy_caption_pid": 32046,
+            "legacy_language_pid": 16,
+            "text": "Il messaggio è stato accettato.",
+            "auto_translated": "Il messaggio è stato accettato."
+        },
+        "bn": {
+            "legacy_caption_pid": 32047,
+            "legacy_language_pid": 17,
+            "text": "বার্তা স্বীকার করা হয়েছে।",
+            "auto_translated": "বার্তা স্বীকার করা হয়েছে।"
+        },
+        "tr": {
+            "legacy_caption_pid": 32048,
+            "legacy_language_pid": 18,
+            "text": "mesajı kabul edildi.",
+            "auto_translated": "mesajı kabul edildi."
+        },
+        "vi": {
+            "legacy_caption_pid": 32049,
+            "legacy_language_pid": 19,
+            "text": "Thông điệp đã được chấp nhận.",
+            "auto_translated": "Thông điệp đã được chấp nhận."
+        },
+        "pl": {
+            "legacy_caption_pid": 32050,
+            "legacy_language_pid": 20,
+            "text": "Wiadomość została przyjęta.",
+            "auto_translated": "Wiadomość została przyjęta."
+        },
+        "jv": {
+            "legacy_caption_pid": 32051,
+            "legacy_language_pid": 21,
+            "text": "pesen wis ditampa.",
+            "auto_translated": "pesen wis ditampa."
+        },
+        "pa": {
+            "legacy_caption_pid": 32052,
+            "legacy_language_pid": 22,
+            "text": "ਦੇ ਸੰਦੇਸ਼ ਨੂੰ ਸਵੀਕਾਰ ਕੀਤਾ ਗਿਆ ਹੈ.",
+            "auto_translated": "ਦੇ ਸੰਦੇਸ਼ ਨੂੰ ਸਵੀਕਾਰ ਕੀਤਾ ਗਿਆ ਹੈ."
+        },
+        "th": {
+            "legacy_caption_pid": 32053,
+            "legacy_language_pid": 23,
+            "text": "ข้อความที่ได้รับการยอมรับ",
+            "auto_translated": "ข้อความที่ได้รับการยอมรับ"
+        },
+        "te": {
+            "legacy_caption_pid": 41548,
+            "legacy_language_pid": 24,
+            "text": "సందేశం అంగీకరిస్తాడు.",
+            "auto_translated": "సందేశం అంగీకరిస్తాడు."
+        },
+        "mr": {
+            "legacy_caption_pid": 41549,
+            "legacy_language_pid": 25,
+            "text": "संदेश स्वीकारले गेले आहे.",
+            "auto_translated": "संदेश स्वीकारले गेले आहे."
+        },
+        "ur": {
+            "legacy_caption_pid": 41550,
+            "legacy_language_pid": 26,
+            "text": "پیغام قبول کر لیا گیا ہے.",
+            "auto_translated": "پیغام قبول کر لیا گیا ہے."
+        },
+        "gu": {
+            "legacy_caption_pid": 41551,
+            "legacy_language_pid": 27,
+            "text": "સંદેશ સ્વીકારવામાં આવ્યું છે.",
+            "auto_translated": "સંદેશ સ્વીકારવામાં આવ્યું છે."
+        },
+        "uk": {
+            "legacy_caption_pid": 41552,
+            "legacy_language_pid": 28,
+            "text": "Повідомлення було прийнято.",
+            "auto_translated": "Повідомлення було прийнято."
+        },
+        "ml": {
+            "legacy_caption_pid": 41553,
+            "legacy_language_pid": 29,
+            "text": "സന്ദേശം അംഗീകരിക്കപ്പെട്ടിരിക്കുന്നു.",
+            "auto_translated": "സന്ദേശം അംഗീകരിക്കപ്പെട്ടിരിക്കുന്നു."
+        },
+        "kn": {
+            "legacy_caption_pid": 41554,
+            "legacy_language_pid": 30,
+            "text": "ಸಂದೇಶವನ್ನು ಸ್ವೀಕರಿಸಲಾಗಿದೆ.",
+            "auto_translated": "ಸಂದೇಶವನ್ನು ಸ್ವೀಕರಿಸಲಾಗಿದೆ."
+        },
+        "su": {
+            "legacy_caption_pid": 41555,
+            "legacy_language_pid": 31,
+            "text": "Suratna geus katampa.",
+            "auto_translated": "Suratna geus katampa."
+        },
+        "ku": {
+            "legacy_caption_pid": 41556,
+            "legacy_language_pid": 32,
+            "text": "Peyama hatiye pejirandin.",
+            "auto_translated": "Peyama hatiye pejirandin."
+        },
+        "ps": {
+            "legacy_caption_pid": 41557,
+            "legacy_language_pid": 33,
+            "text": "په پيغام کې منل شوې ده.",
+            "auto_translated": "په پيغام کې منل شوې ده."
+        },
+        "ro": {
+            "legacy_caption_pid": 41558,
+            "legacy_language_pid": 34,
+            "text": "Mesajul a fost acceptat.",
+            "auto_translated": "Mesajul a fost acceptat."
+        },
+        "id": {
+            "legacy_caption_pid": 41559,
+            "legacy_language_pid": 35,
+            "text": "pesan telah diterima.",
+            "auto_translated": "pesan telah diterima."
+        },
+        "sd": {
+            "legacy_caption_pid": 41560,
+            "legacy_language_pid": 36,
+            "text": "هن پيغام کي قبول ڪيو ويو آهي.",
+            "auto_translated": "هن پيغام کي قبول ڪيو ويو آهي."
+        },
+        "af": {
+            "legacy_caption_pid": 41561,
+            "legacy_language_pid": 37,
+            "text": "Die boodskap is aanvaar.",
+            "auto_translated": "Die boodskap is aanvaar."
+        },
+        "sw": {
+            "legacy_caption_pid": 41562,
+            "legacy_language_pid": 38,
+            "text": "Ujumbe yakubaliwe.",
+            "auto_translated": "Ujumbe yakubaliwe."
+        },
+        "lo": {
+            "legacy_caption_pid": 41563,
+            "legacy_language_pid": 39,
+            "text": "ຂໍ້ຄວາມດັ່ງກ່າວໄດ້ຮັບການຍອມຮັບ.",
+            "auto_translated": "ຂໍ້ຄວາມດັ່ງກ່າວໄດ້ຮັບການຍອມຮັບ."
+        },
+        "nl": {
+            "legacy_caption_pid": 41564,
+            "legacy_language_pid": 40,
+            "text": "Het bericht is geaccepteerd.",
+            "auto_translated": "Het bericht is geaccepteerd."
+        },
+        "tl": {
+            "legacy_caption_pid": 41565,
+            "legacy_language_pid": 41,
+            "text": "Ang mensahe ay natanggap na.",
+            "auto_translated": "Ang mensahe ay natanggap na."
+        },
+        "ne": {
+            "legacy_caption_pid": 41566,
+            "legacy_language_pid": 42,
+            "text": "सन्देश स्वीकार गरिएको छ।",
+            "auto_translated": "सन्देश स्वीकार गरिएको छ।"
+        },
+        "hu": {
+            "legacy_caption_pid": 41567,
+            "legacy_language_pid": 43,
+            "text": "Az üzenet el lett fogadva.",
+            "auto_translated": "Az üzenet el lett fogadva."
+        },
+        "cs": {
+            "legacy_caption_pid": 41568,
+            "legacy_language_pid": 44,
+            "text": "Tato zpráva byla přijata.",
+            "auto_translated": "Tato zpráva byla přijata."
+        },
+        "el": {
+            "legacy_caption_pid": 41569,
+            "legacy_language_pid": 45,
+            "text": "Το μήνυμα έχει γίνει αποδεκτή.",
+            "auto_translated": "Το μήνυμα έχει γίνει αποδεκτή."
+        },
+        "sv": {
+            "legacy_caption_pid": 41570,
+            "legacy_language_pid": 46,
+            "text": "Meddelandet har accepterats.",
+            "auto_translated": "Meddelandet har accepterats."
+        },
+        "kk": {
+            "legacy_caption_pid": 41571,
+            "legacy_language_pid": 47,
+            "text": "Хабарлама қабылданды.",
+            "auto_translated": "Хабарлама қабылданды."
+        },
+        "fi": {
+            "legacy_caption_pid": 41572,
+            "legacy_language_pid": 48,
+            "text": "Viesti on hyväksytty.",
+            "auto_translated": "Viesti on hyväksytty."
+        },
+        "da": {
+            "legacy_caption_pid": 41573,
+            "legacy_language_pid": 49,
+            "text": "Beskeden er blevet accepteret.",
+            "auto_translated": "Beskeden er blevet accepteret."
+        },
+        "he": {
+            "legacy_caption_pid": 41574,
+            "legacy_language_pid": 50,
+            "text": "המסר התקבל.",
+            "auto_translated": "המסר התקבל."
+        },
+        "no": {
+            "legacy_caption_pid": 41575,
+            "legacy_language_pid": 51,
+            "text": "Meldingen har blitt akseptert.",
+            "auto_translated": "Meldingen har blitt akseptert."
+        }
+    }
+}

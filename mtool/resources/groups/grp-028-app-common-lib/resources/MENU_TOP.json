@@ -1,0 +1,321 @@
+{
+    "resource_key": "MENU_TOP",
+    "legacy_resource_pid": 1082,
+    "base_group_key": "grp-028-app-common-lib",
+    "additional_group_keys": [],
+    "key_for_update": "Jw1J4Aav8EznBPTtrq7msJeUNBKWIIhq6ImuXj4hPa3SEYQTAf39z9Fz2cDyaf9QNRU1Az9GM9ZUXjtvOgKpvzHsuLGXicov0pzmIJIEO1ovvKjjfP6zYQFZwpaJNwK8",
+    "sort_group": "Menu",
+    "key_name": "MENU_TOP",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "Label",
+    "is_resource_fixed": false,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 899,
+            "legacy_language_pid": 1,
+            "text": "トップ",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 900,
+            "legacy_language_pid": 2,
+            "text": "Top",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 6464,
+            "legacy_language_pid": 3,
+            "text": "顶",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 6465,
+            "legacy_language_pid": 4,
+            "text": "상단",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 10233,
+            "legacy_language_pid": 5,
+            "text": "Top",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 10234,
+            "legacy_language_pid": 6,
+            "text": "Top",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 10235,
+            "legacy_language_pid": 7,
+            "text": "頂",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 16203,
+            "legacy_language_pid": 8,
+            "text": "Haut",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 16204,
+            "legacy_language_pid": 9,
+            "text": "ऊपर का हिस्सा",
+            "auto_translated": ""
+        },
+        "ar": {
+            "legacy_caption_pid": 28876,
+            "legacy_language_pid": 10,
+            "text": "أعلى",
+            "auto_translated": "أعلى"
+        },
+        "fa": {
+            "legacy_caption_pid": 28877,
+            "legacy_language_pid": 11,
+            "text": "بالا",
+            "auto_translated": "بالا"
+        },
+        "de": {
+            "legacy_caption_pid": 28878,
+            "legacy_language_pid": 12,
+            "text": "Top",
+            "auto_translated": "Top"
+        },
+        "ru": {
+            "legacy_caption_pid": 28879,
+            "legacy_language_pid": 13,
+            "text": "топ",
+            "auto_translated": "топ"
+        },
+        "ms": {
+            "legacy_caption_pid": 28880,
+            "legacy_language_pid": 14,
+            "text": "Top",
+            "auto_translated": "Top"
+        },
+        "ta": {
+            "legacy_caption_pid": 28881,
+            "legacy_language_pid": 15,
+            "text": "சிறந்த",
+            "auto_translated": "சிறந்த"
+        },
+        "it": {
+            "legacy_caption_pid": 28882,
+            "legacy_language_pid": 16,
+            "text": "top",
+            "auto_translated": "top"
+        },
+        "bn": {
+            "legacy_caption_pid": 28883,
+            "legacy_language_pid": 17,
+            "text": "শীর্ষ",
+            "auto_translated": "শীর্ষ"
+        },
+        "tr": {
+            "legacy_caption_pid": 28884,
+            "legacy_language_pid": 18,
+            "text": "üst",
+            "auto_translated": "üst"
+        },
+        "vi": {
+            "legacy_caption_pid": 28885,
+            "legacy_language_pid": 19,
+            "text": "đỉnh",
+            "auto_translated": "đỉnh"
+        },
+        "pl": {
+            "legacy_caption_pid": 28886,
+            "legacy_language_pid": 20,
+            "text": "top",
+            "auto_translated": "top"
+        },
+        "jv": {
+            "legacy_caption_pid": 28887,
+            "legacy_language_pid": 21,
+            "text": "Top",
+            "auto_translated": "Top"
+        },
+        "pa": {
+            "legacy_caption_pid": 28888,
+            "legacy_language_pid": 22,
+            "text": "ਸਿਖਰ",
+            "auto_translated": "ਸਿਖਰ"
+        },
+        "th": {
+            "legacy_caption_pid": 28889,
+            "legacy_language_pid": 23,
+            "text": "ด้านบน",
+            "auto_translated": "ด้านบน"
+        },
+        "te": {
+            "legacy_caption_pid": 34688,
+            "legacy_language_pid": 24,
+            "text": "టాప్",
+            "auto_translated": "టాప్"
+        },
+        "mr": {
+            "legacy_caption_pid": 34689,
+            "legacy_language_pid": 25,
+            "text": "शीर्ष",
+            "auto_translated": "शीर्ष"
+        },
+        "ur": {
+            "legacy_caption_pid": 34690,
+            "legacy_language_pid": 26,
+            "text": "اوپر",
+            "auto_translated": "اوپر"
+        },
+        "gu": {
+            "legacy_caption_pid": 34691,
+            "legacy_language_pid": 27,
+            "text": "ટોચના",
+            "auto_translated": "ટોચના"
+        },
+        "uk": {
+            "legacy_caption_pid": 34692,
+            "legacy_language_pid": 28,
+            "text": "топ",
+            "auto_translated": "топ"
+        },
+        "ml": {
+            "legacy_caption_pid": 34693,
+            "legacy_language_pid": 29,
+            "text": "ടോപ്പ്",
+            "auto_translated": "ടോപ്പ്"
+        },
+        "kn": {
+            "legacy_caption_pid": 34694,
+            "legacy_language_pid": 30,
+            "text": "ಟಾಪ್",
+            "auto_translated": "ಟಾಪ್"
+        },
+        "su": {
+            "legacy_caption_pid": 34695,
+            "legacy_language_pid": 31,
+            "text": "puncak",
+            "auto_translated": "puncak"
+        },
+        "ku": {
+            "legacy_caption_pid": 34696,
+            "legacy_language_pid": 32,
+            "text": "Top",
+            "auto_translated": "Top"
+        },
+        "ps": {
+            "legacy_caption_pid": 34697,
+            "legacy_language_pid": 33,
+            "text": "Top",
+            "auto_translated": "Top"
+        },
+        "ro": {
+            "legacy_caption_pid": 34698,
+            "legacy_language_pid": 34,
+            "text": "top",
+            "auto_translated": "top"
+        },
+        "id": {
+            "legacy_caption_pid": 34699,
+            "legacy_language_pid": 35,
+            "text": "teratas",
+            "auto_translated": "teratas"
+        },
+        "sd": {
+            "legacy_caption_pid": 34700,
+            "legacy_language_pid": 36,
+            "text": "مٿي",
+            "auto_translated": "مٿي"
+        },
+        "af": {
+            "legacy_caption_pid": 34701,
+            "legacy_language_pid": 37,
+            "text": "Top",
+            "auto_translated": "Top"
+        },
+        "sw": {
+            "legacy_caption_pid": 34702,
+            "legacy_language_pid": 38,
+            "text": "Top",
+            "auto_translated": "Top"
+        },
+        "lo": {
+            "legacy_caption_pid": 34703,
+            "legacy_language_pid": 39,
+            "text": "Top",
+            "auto_translated": "Top"
+        },
+        "nl": {
+            "legacy_caption_pid": 34704,
+            "legacy_language_pid": 40,
+            "text": "top",
+            "auto_translated": "top"
+        },
+        "tl": {
+            "legacy_caption_pid": 34705,
+            "legacy_language_pid": 41,
+            "text": "tuktok",
+            "auto_translated": "tuktok"
+        },
+        "ne": {
+            "legacy_caption_pid": 34706,
+            "legacy_language_pid": 42,
+            "text": "शीर्ष",
+            "auto_translated": "शीर्ष"
+        },
+        "hu": {
+            "legacy_caption_pid": 34707,
+            "legacy_language_pid": 43,
+            "text": "felső",
+            "auto_translated": "felső"
+        },
+        "cs": {
+            "legacy_caption_pid": 34708,
+            "legacy_language_pid": 44,
+            "text": "top",
+            "auto_translated": "top"
+        },
+        "el": {
+            "legacy_caption_pid": 34709,
+            "legacy_language_pid": 45,
+            "text": "κορυφή",
+            "auto_translated": "κορυφή"
+        },
+        "sv": {
+            "legacy_caption_pid": 34710,
+            "legacy_language_pid": 46,
+            "text": "topp",
+            "auto_translated": "topp"
+        },
+        "kk": {
+            "legacy_caption_pid": 34711,
+            "legacy_language_pid": 47,
+            "text": "Жоғары",
+            "auto_translated": "Жоғары"
+        },
+        "fi": {
+            "legacy_caption_pid": 34712,
+            "legacy_language_pid": 48,
+            "text": "ylin",
+            "auto_translated": "ylin"
+        },
+        "da": {
+            "legacy_caption_pid": 34713,
+            "legacy_language_pid": 49,
+            "text": "top",
+            "auto_translated": "top"
+        },
+        "he": {
+            "legacy_caption_pid": 34714,
+            "legacy_language_pid": 50,
+            "text": "למעלה",
+            "auto_translated": "למעלה"
+        },
+        "no": {
+            "legacy_caption_pid": 34715,
+            "legacy_language_pid": 51,
+            "text": "topp",
+            "auto_translated": "topp"
+        }
+    }
+}

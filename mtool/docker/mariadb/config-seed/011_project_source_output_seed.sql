@@ -1,0 +1,43 @@
+INSERT IGNORE INTO project_source_outputs (
+    project_id,
+    source_output_key,
+    name,
+    program_language,
+    class_type,
+    release_target_type,
+    source_template_dir,
+    source_output_dir,
+    source_temp_output_dir,
+    proxy_base_url,
+    autoload_filename_suffix,
+    source_text_char_code,
+    runtime_source_relative_path,
+    artifact_strategy,
+    target_binding_type,
+    output_archive_format,
+    source_output_list_order,
+    notes,
+    source_of_truth
+)
+SELECT
+    p.id,
+    'RUNTIME-DBCLASSES',
+    'Mtool Runtime DBClasses',
+    'php',
+    'DBAccess',
+    'Release',
+    '',
+    'work/source-outputs/MTOOL/RUNTIME-DBCLASSES',
+    'work/staging/source-outputs/MTOOL/RUNTIME-DBCLASSES',
+    '',
+    'mtool',
+    'UTF-8',
+    'mtool/dbclasses',
+    'generated-bootstrap-dbclasses',
+    'runtime',
+    'tar.gz',
+    10,
+    'current bootstrap runtime mtool/reference/dbclasses を source output artifact として固める既定 definition です。',
+    'bootstrap-default'
+FROM projects AS p
+WHERE p.project_key = 'MTOOL';

@@ -1,0 +1,27 @@
+{
+    "resource_key": "ACTION_DELETE_DA_FUNC_SELECT_HAVING",
+    "legacy_resource_pid": 278,
+    "base_group_key": "grp-001-developers-matsuesoft-co-jp",
+    "additional_group_keys": [],
+    "key_for_update": "0",
+    "sort_group": "ACTION DA_FUNC_SELECT_HAVING",
+    "key_name": "ACTION_DELETE_DA_FUNC_SELECT_HAVING",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": true,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 3642,
+            "legacy_language_pid": 1,
+            "text": "データアクセス関数 SelectのHaving削除",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 3643,
+            "legacy_language_pid": 2,
+            "text": "Delete Select's Having of Data Access Function",
+            "auto_translated": ""
+        }
+    }
+}

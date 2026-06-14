@@ -1,0 +1,27 @@
+{
+    "resource_key": "ACTION_DELETED_PROXY_CUSTOM",
+    "legacy_resource_pid": 249,
+    "base_group_key": "grp-001-developers-matsuesoft-co-jp",
+    "additional_group_keys": [],
+    "key_for_update": "0",
+    "sort_group": "ACTION PROXY_CUSTOM",
+    "key_name": "ACTION_DELETED_PROXY_CUSTOM",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": true,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 3974,
+            "legacy_language_pid": 1,
+            "text": "データアクセスクラス Proxy対象[カスタム, 複数対象]削除完了",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 3975,
+            "legacy_language_pid": 2,
+            "text": "Deleted Proxy Target Setting of Data Access Class [Custom, Multi Target]",
+            "auto_translated": ""
+        }
+    }
+}

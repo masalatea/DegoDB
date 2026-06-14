@@ -1,0 +1,321 @@
+{
+    "resource_key": "TOAST_INQUIRY_SUBMIT_SUCCESS",
+    "legacy_resource_pid": 1301,
+    "base_group_key": "grp-028-app-common-lib",
+    "additional_group_keys": [],
+    "key_for_update": "QPzLcRIJJDCFNWi1skhjxYQqTuf51psEc2IYq1BFWY3rs91UkUA0KkNtFLEXW1RHdWVf75JNBamOu8YY6Go1IrUN2uTiwDIeNijsG76UGa3wHjpYbCtI4DsBlAuSA52P",
+    "sort_group": "INQUIRY",
+    "key_name": "TOAST_INQUIRY_SUBMIT_SUCCESS",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": false,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 881,
+            "legacy_language_pid": 1,
+            "text": "送信しました",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 882,
+            "legacy_language_pid": 2,
+            "text": "Submitted",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 6446,
+            "legacy_language_pid": 3,
+            "text": "它已发送",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 6447,
+            "legacy_language_pid": 4,
+            "text": "보냈습니다",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 10192,
+            "legacy_language_pid": 5,
+            "text": "Enviado",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 10193,
+            "legacy_language_pid": 6,
+            "text": "Enviado",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 10194,
+            "legacy_language_pid": 7,
+            "text": "它已發送",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 15999,
+            "legacy_language_pid": 8,
+            "text": "Soumis",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 16000,
+            "legacy_language_pid": 9,
+            "text": " प्रस्तुत",
+            "auto_translated": ""
+        },
+        "ar": {
+            "legacy_caption_pid": 28750,
+            "legacy_language_pid": 10,
+            "text": "وقد تم إرساله",
+            "auto_translated": "وقد تم إرساله"
+        },
+        "fa": {
+            "legacy_caption_pid": 28751,
+            "legacy_language_pid": 11,
+            "text": "این ارسال گردیده است",
+            "auto_translated": "این ارسال گردیده است"
+        },
+        "de": {
+            "legacy_caption_pid": 28752,
+            "legacy_language_pid": 12,
+            "text": "Es wurde versendet",
+            "auto_translated": "Es wurde versendet"
+        },
+        "ru": {
+            "legacy_caption_pid": 28753,
+            "legacy_language_pid": 13,
+            "text": "Это было отправлено",
+            "auto_translated": "Это было отправлено"
+        },
+        "ms": {
+            "legacy_caption_pid": 28754,
+            "legacy_language_pid": 14,
+            "text": "Ia telah dihantar",
+            "auto_translated": "Ia telah dihantar"
+        },
+        "ta": {
+            "legacy_caption_pid": 28755,
+            "legacy_language_pid": 15,
+            "text": "அது அனுப்பப்பட்டுள்ளது",
+            "auto_translated": "அது அனுப்பப்பட்டுள்ளது"
+        },
+        "it": {
+            "legacy_caption_pid": 28756,
+            "legacy_language_pid": 16,
+            "text": "E 'stato inviato",
+            "auto_translated": "E 'stato inviato"
+        },
+        "bn": {
+            "legacy_caption_pid": 28757,
+            "legacy_language_pid": 17,
+            "text": "এটা তোলে পাঠানো হয়েছে",
+            "auto_translated": "এটা তোলে পাঠানো হয়েছে"
+        },
+        "tr": {
+            "legacy_caption_pid": 28758,
+            "legacy_language_pid": 18,
+            "text": "Bu gönderildi",
+            "auto_translated": "Bu gönderildi"
+        },
+        "vi": {
+            "legacy_caption_pid": 28759,
+            "legacy_language_pid": 19,
+            "text": "Nó đã được gửi đi",
+            "auto_translated": "Nó đã được gửi đi"
+        },
+        "pl": {
+            "legacy_caption_pid": 28760,
+            "legacy_language_pid": 20,
+            "text": "Został on wysłany",
+            "auto_translated": "Został on wysłany"
+        },
+        "jv": {
+            "legacy_caption_pid": 28761,
+            "legacy_language_pid": 21,
+            "text": "Wis dikirim",
+            "auto_translated": "Wis dikirim"
+        },
+        "pa": {
+            "legacy_caption_pid": 28762,
+            "legacy_language_pid": 22,
+            "text": "ਇਹ ਭੇਜਿਆ ਗਿਆ ਹੈ",
+            "auto_translated": "ਇਹ ਭੇਜਿਆ ਗਿਆ ਹੈ"
+        },
+        "th": {
+            "legacy_caption_pid": 28763,
+            "legacy_language_pid": 23,
+            "text": "มันได้รับการส่ง",
+            "auto_translated": "มันได้รับการส่ง"
+        },
+        "te": {
+            "legacy_caption_pid": 34436,
+            "legacy_language_pid": 24,
+            "text": "ఇది పంపబడింది",
+            "auto_translated": "ఇది పంపబడింది"
+        },
+        "mr": {
+            "legacy_caption_pid": 34437,
+            "legacy_language_pid": 25,
+            "text": "तो पाठविण्यात आले आहे",
+            "auto_translated": "तो पाठविण्यात आले आहे"
+        },
+        "ur": {
+            "legacy_caption_pid": 34438,
+            "legacy_language_pid": 26,
+            "text": "یہ بھیج دیا گیا ہے",
+            "auto_translated": "یہ بھیج دیا گیا ہے"
+        },
+        "gu": {
+            "legacy_caption_pid": 34439,
+            "legacy_language_pid": 27,
+            "text": "તે મોકલવામાં આવ્યો છે",
+            "auto_translated": "તે મોકલવામાં આવ્યો છે"
+        },
+        "uk": {
+            "legacy_caption_pid": 34440,
+            "legacy_language_pid": 28,
+            "text": "Це було відправлено",
+            "auto_translated": "Це було відправлено"
+        },
+        "ml": {
+            "legacy_caption_pid": 34441,
+            "legacy_language_pid": 29,
+            "text": "ഇത് അയച്ചു",
+            "auto_translated": "ഇത് അയച്ചു"
+        },
+        "kn": {
+            "legacy_caption_pid": 34442,
+            "legacy_language_pid": 30,
+            "text": "ಇದು ಕಳುಹಿಸಲಾಗಿದೆ",
+            "auto_translated": "ಇದು ಕಳುಹಿಸಲಾಗಿದೆ"
+        },
+        "su": {
+            "legacy_caption_pid": 34443,
+            "legacy_language_pid": 31,
+            "text": "Eta geus dikirim",
+            "auto_translated": "Eta geus dikirim"
+        },
+        "ku": {
+            "legacy_caption_pid": 34444,
+            "legacy_language_pid": 32,
+            "text": "Ev hatiye şandin.",
+            "auto_translated": "Ev hatiye şandin."
+        },
+        "ps": {
+            "legacy_caption_pid": 34445,
+            "legacy_language_pid": 33,
+            "text": "دا استول شوي دي",
+            "auto_translated": "دا استول شوي دي"
+        },
+        "ro": {
+            "legacy_caption_pid": 34446,
+            "legacy_language_pid": 34,
+            "text": "Acesta a fost trimis",
+            "auto_translated": "Acesta a fost trimis"
+        },
+        "id": {
+            "legacy_caption_pid": 34447,
+            "legacy_language_pid": 35,
+            "text": "Telah dikirim",
+            "auto_translated": "Telah dikirim"
+        },
+        "sd": {
+            "legacy_caption_pid": 34448,
+            "legacy_language_pid": 36,
+            "text": "ان کي موڪليو ويو آهي",
+            "auto_translated": "ان کي موڪليو ويو آهي"
+        },
+        "af": {
+            "legacy_caption_pid": 34449,
+            "legacy_language_pid": 37,
+            "text": "Dit is gestuur",
+            "auto_translated": "Dit is gestuur"
+        },
+        "sw": {
+            "legacy_caption_pid": 34450,
+            "legacy_language_pid": 38,
+            "text": "Ni imetumwa",
+            "auto_translated": "Ni imetumwa"
+        },
+        "lo": {
+            "legacy_caption_pid": 34451,
+            "legacy_language_pid": 39,
+            "text": "ມັນໄດ້ຖືກສົ່ງໄປແລ້ວ",
+            "auto_translated": "ມັນໄດ້ຖືກສົ່ງໄປແລ້ວ"
+        },
+        "nl": {
+            "legacy_caption_pid": 34452,
+            "legacy_language_pid": 40,
+            "text": "Het is verzonden",
+            "auto_translated": "Het is verzonden"
+        },
+        "tl": {
+            "legacy_caption_pid": 34453,
+            "legacy_language_pid": 41,
+            "text": "Ito ay naipadala na",
+            "auto_translated": "Ito ay naipadala na"
+        },
+        "ne": {
+            "legacy_caption_pid": 34454,
+            "legacy_language_pid": 42,
+            "text": "यसलाई पठाइएको छ",
+            "auto_translated": "यसलाई पठाइएको छ"
+        },
+        "hu": {
+            "legacy_caption_pid": 34455,
+            "legacy_language_pid": 43,
+            "text": "Elküldtük",
+            "auto_translated": "Elküldtük"
+        },
+        "cs": {
+            "legacy_caption_pid": 34456,
+            "legacy_language_pid": 44,
+            "text": "To byla odeslána",
+            "auto_translated": "To byla odeslána"
+        },
+        "el": {
+            "legacy_caption_pid": 34457,
+            "legacy_language_pid": 45,
+            "text": "Έχει σταλεί",
+            "auto_translated": "Έχει σταλεί"
+        },
+        "sv": {
+            "legacy_caption_pid": 34458,
+            "legacy_language_pid": 46,
+            "text": "Det har skickats",
+            "auto_translated": "Det har skickats"
+        },
+        "kk": {
+            "legacy_caption_pid": 34459,
+            "legacy_language_pid": 47,
+            "text": "Ол жіберілген",
+            "auto_translated": "Ол жіберілген"
+        },
+        "fi": {
+            "legacy_caption_pid": 34460,
+            "legacy_language_pid": 48,
+            "text": "Se on lähetetty",
+            "auto_translated": "Se on lähetetty"
+        },
+        "da": {
+            "legacy_caption_pid": 34461,
+            "legacy_language_pid": 49,
+            "text": "Det er blevet sendt",
+            "auto_translated": "Det er blevet sendt"
+        },
+        "he": {
+            "legacy_caption_pid": 34462,
+            "legacy_language_pid": 50,
+            "text": "זה נשלח",
+            "auto_translated": "זה נשלח"
+        },
+        "no": {
+            "legacy_caption_pid": 34463,
+            "legacy_language_pid": 51,
+            "text": "Det har blitt sendt",
+            "auto_translated": "Det har blitt sendt"
+        }
+    }
+}

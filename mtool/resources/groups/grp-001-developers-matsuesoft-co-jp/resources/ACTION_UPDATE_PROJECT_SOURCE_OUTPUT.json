@@ -1,0 +1,27 @@
+{
+    "resource_key": "ACTION_UPDATE_PROJECT_SOURCE_OUTPUT",
+    "legacy_resource_pid": 182,
+    "base_group_key": "grp-001-developers-matsuesoft-co-jp",
+    "additional_group_keys": [],
+    "key_for_update": "0",
+    "sort_group": "ACTION PROJECT_SOURCE_OUTPUT",
+    "key_name": "ACTION_UPDATE_PROJECT_SOURCE_OUTPUT",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": true,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 3966,
+            "legacy_language_pid": 1,
+            "text": "ソース出力設定更新",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 3967,
+            "legacy_language_pid": 2,
+            "text": "Update Source Output Setting",
+            "auto_translated": ""
+        }
+    }
+}

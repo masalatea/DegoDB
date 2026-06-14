@@ -1,0 +1,321 @@
+{
+    "resource_key": "ACTION_SEND",
+    "legacy_resource_pid": 968,
+    "base_group_key": "grp-028-app-common-lib",
+    "additional_group_keys": [],
+    "key_for_update": "4ZiRhve0e4bx4FVFNRaPi3gqZVcWjBDnlpeCNKjpZhL3fv6m58t8vlHodpbsnUJwzyJmD243MypuWwyIDbE91zsZfGyeq5QcHSt5lKeSVcyVaAOwoczV5YcTqu4pOusI",
+    "sort_group": "Action",
+    "key_name": "ACTION_SEND",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": false,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 811,
+            "legacy_language_pid": 1,
+            "text": "送る",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 812,
+            "legacy_language_pid": 2,
+            "text": "Send",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 6382,
+            "legacy_language_pid": 3,
+            "text": "发送",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 6383,
+            "legacy_language_pid": 4,
+            "text": "쓰기",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 10069,
+            "legacy_language_pid": 5,
+            "text": "Enviar",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 10070,
+            "legacy_language_pid": 6,
+            "text": "Enviar",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 10071,
+            "legacy_language_pid": 7,
+            "text": "發送",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 16131,
+            "legacy_language_pid": 8,
+            "text": "Envoyer",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 16132,
+            "legacy_language_pid": 9,
+            "text": "भेजना",
+            "auto_translated": ""
+        },
+        "ar": {
+            "legacy_caption_pid": 28204,
+            "legacy_language_pid": 10,
+            "text": "إرسال",
+            "auto_translated": "إرسال"
+        },
+        "fa": {
+            "legacy_caption_pid": 28205,
+            "legacy_language_pid": 11,
+            "text": "ارسال",
+            "auto_translated": "ارسال"
+        },
+        "de": {
+            "legacy_caption_pid": 28206,
+            "legacy_language_pid": 12,
+            "text": "senden",
+            "auto_translated": "senden"
+        },
+        "ru": {
+            "legacy_caption_pid": 28207,
+            "legacy_language_pid": 13,
+            "text": "послать",
+            "auto_translated": "послать"
+        },
+        "ms": {
+            "legacy_caption_pid": 28208,
+            "legacy_language_pid": 14,
+            "text": "Hantar",
+            "auto_translated": "Hantar"
+        },
+        "ta": {
+            "legacy_caption_pid": 28209,
+            "legacy_language_pid": 15,
+            "text": "அனுப்பவும்",
+            "auto_translated": "அனுப்பவும்"
+        },
+        "it": {
+            "legacy_caption_pid": 28210,
+            "legacy_language_pid": 16,
+            "text": "inviare",
+            "auto_translated": "inviare"
+        },
+        "bn": {
+            "legacy_caption_pid": 28211,
+            "legacy_language_pid": 17,
+            "text": "পাঠান",
+            "auto_translated": "পাঠান"
+        },
+        "tr": {
+            "legacy_caption_pid": 28212,
+            "legacy_language_pid": 18,
+            "text": "göndermek",
+            "auto_translated": "göndermek"
+        },
+        "vi": {
+            "legacy_caption_pid": 28213,
+            "legacy_language_pid": 19,
+            "text": "gởi",
+            "auto_translated": "gởi"
+        },
+        "pl": {
+            "legacy_caption_pid": 28214,
+            "legacy_language_pid": 20,
+            "text": "wysłać",
+            "auto_translated": "wysłać"
+        },
+        "jv": {
+            "legacy_caption_pid": 28215,
+            "legacy_language_pid": 21,
+            "text": "Kirimi",
+            "auto_translated": "Kirimi"
+        },
+        "pa": {
+            "legacy_caption_pid": 28216,
+            "legacy_language_pid": 22,
+            "text": "ਭੇਜੋ",
+            "auto_translated": "ਭੇਜੋ"
+        },
+        "th": {
+            "legacy_caption_pid": 28217,
+            "legacy_language_pid": 23,
+            "text": "ส่ง",
+            "auto_translated": "ส่ง"
+        },
+        "te": {
+            "legacy_caption_pid": 33456,
+            "legacy_language_pid": 24,
+            "text": "పంపండి",
+            "auto_translated": "పంపండి"
+        },
+        "mr": {
+            "legacy_caption_pid": 33457,
+            "legacy_language_pid": 25,
+            "text": "पाठवा",
+            "auto_translated": "पाठवा"
+        },
+        "ur": {
+            "legacy_caption_pid": 33458,
+            "legacy_language_pid": 26,
+            "text": "حساب",
+            "auto_translated": "حساب"
+        },
+        "gu": {
+            "legacy_caption_pid": 33459,
+            "legacy_language_pid": 27,
+            "text": "મોકલો",
+            "auto_translated": "મોકલો"
+        },
+        "uk": {
+            "legacy_caption_pid": 33460,
+            "legacy_language_pid": 28,
+            "text": "послати",
+            "auto_translated": "послати"
+        },
+        "ml": {
+            "legacy_caption_pid": 33461,
+            "legacy_language_pid": 29,
+            "text": "അയയ്ക്കുക",
+            "auto_translated": "അയയ്ക്കുക"
+        },
+        "kn": {
+            "legacy_caption_pid": 33462,
+            "legacy_language_pid": 30,
+            "text": "ಕಳುಹಿಸಿ",
+            "auto_translated": "ಕಳುಹಿಸಿ"
+        },
+        "su": {
+            "legacy_caption_pid": 33463,
+            "legacy_language_pid": 31,
+            "text": "ngirim",
+            "auto_translated": "ngirim"
+        },
+        "ku": {
+            "legacy_caption_pid": 33464,
+            "legacy_language_pid": 32,
+            "text": "şandin",
+            "auto_translated": "şandin"
+        },
+        "ps": {
+            "legacy_caption_pid": 33465,
+            "legacy_language_pid": 33,
+            "text": "وليږئ",
+            "auto_translated": "وليږئ"
+        },
+        "ro": {
+            "legacy_caption_pid": 33466,
+            "legacy_language_pid": 34,
+            "text": "trimite",
+            "auto_translated": "trimite"
+        },
+        "id": {
+            "legacy_caption_pid": 33467,
+            "legacy_language_pid": 35,
+            "text": "mengirim",
+            "auto_translated": "mengirim"
+        },
+        "sd": {
+            "legacy_caption_pid": 33468,
+            "legacy_language_pid": 36,
+            "text": "موڪليو",
+            "auto_translated": "موڪليو"
+        },
+        "af": {
+            "legacy_caption_pid": 33469,
+            "legacy_language_pid": 37,
+            "text": "stuur",
+            "auto_translated": "stuur"
+        },
+        "sw": {
+            "legacy_caption_pid": 33470,
+            "legacy_language_pid": 38,
+            "text": "Tuma",
+            "auto_translated": "Tuma"
+        },
+        "lo": {
+            "legacy_caption_pid": 33471,
+            "legacy_language_pid": 39,
+            "text": "ສົ່ງ",
+            "auto_translated": "ສົ່ງ"
+        },
+        "nl": {
+            "legacy_caption_pid": 33472,
+            "legacy_language_pid": 40,
+            "text": "sturen",
+            "auto_translated": "sturen"
+        },
+        "tl": {
+            "legacy_caption_pid": 33473,
+            "legacy_language_pid": 41,
+            "text": "ipadala",
+            "auto_translated": "ipadala"
+        },
+        "ne": {
+            "legacy_caption_pid": 33474,
+            "legacy_language_pid": 42,
+            "text": "पठाउन",
+            "auto_translated": "पठाउन"
+        },
+        "hu": {
+            "legacy_caption_pid": 33475,
+            "legacy_language_pid": 43,
+            "text": "küld",
+            "auto_translated": "küld"
+        },
+        "cs": {
+            "legacy_caption_pid": 33476,
+            "legacy_language_pid": 44,
+            "text": "odeslat",
+            "auto_translated": "odeslat"
+        },
+        "el": {
+            "legacy_caption_pid": 33477,
+            "legacy_language_pid": 45,
+            "text": "Αποστολή",
+            "auto_translated": "Αποστολή"
+        },
+        "sv": {
+            "legacy_caption_pid": 33478,
+            "legacy_language_pid": 46,
+            "text": "skicka",
+            "auto_translated": "skicka"
+        },
+        "kk": {
+            "legacy_caption_pid": 33479,
+            "legacy_language_pid": 47,
+            "text": "жіберу",
+            "auto_translated": "жіберу"
+        },
+        "fi": {
+            "legacy_caption_pid": 33480,
+            "legacy_language_pid": 48,
+            "text": "lähettää",
+            "auto_translated": "lähettää"
+        },
+        "da": {
+            "legacy_caption_pid": 33481,
+            "legacy_language_pid": 49,
+            "text": "sende",
+            "auto_translated": "sende"
+        },
+        "he": {
+            "legacy_caption_pid": 33482,
+            "legacy_language_pid": 50,
+            "text": "שלח",
+            "auto_translated": "שלח"
+        },
+        "no": {
+            "legacy_caption_pid": 33483,
+            "legacy_language_pid": 51,
+            "text": "sende",
+            "auto_translated": "sende"
+        }
+    }
+}

@@ -1,0 +1,321 @@
+{
+    "resource_key": "ACTION_MOVE",
+    "legacy_resource_pid": 729,
+    "base_group_key": "grp-005-common-lib",
+    "additional_group_keys": [],
+    "key_for_update": "pTcweyQPUg0KdKi4kIRefQ1krT2HBj3Rdb7v8wcpuaDGwPo4C1boF05y5ktxpEBd7q3CkaBYrMS86CAlXq0Lx4H32hrQeBAp1RhhkBdkq9ZVXzfrovL4X8FRm6GVDHHV",
+    "sort_group": "ACTION",
+    "key_name": "ACTION_MOVE",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": false,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 1353,
+            "legacy_language_pid": 1,
+            "text": "移動",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 1354,
+            "legacy_language_pid": 2,
+            "text": "Move",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 6520,
+            "legacy_language_pid": 3,
+            "text": "移动",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 6521,
+            "legacy_language_pid": 4,
+            "text": "이동",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 10468,
+            "legacy_language_pid": 5,
+            "text": "Mover",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 10469,
+            "legacy_language_pid": 6,
+            "text": "mudança",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 10470,
+            "legacy_language_pid": 7,
+            "text": "移動",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 16267,
+            "legacy_language_pid": 8,
+            "text": "Bouge toi",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 16268,
+            "legacy_language_pid": 9,
+            "text": "ले जाओ",
+            "auto_translated": ""
+        },
+        "ar": {
+            "legacy_caption_pid": 29366,
+            "legacy_language_pid": 10,
+            "text": "حركة",
+            "auto_translated": "حركة"
+        },
+        "fa": {
+            "legacy_caption_pid": 29367,
+            "legacy_language_pid": 11,
+            "text": "جنبش",
+            "auto_translated": "جنبش"
+        },
+        "de": {
+            "legacy_caption_pid": 29368,
+            "legacy_language_pid": 12,
+            "text": "Bewegung",
+            "auto_translated": "Bewegung"
+        },
+        "ru": {
+            "legacy_caption_pid": 29369,
+            "legacy_language_pid": 13,
+            "text": "движение",
+            "auto_translated": "движение"
+        },
+        "ms": {
+            "legacy_caption_pid": 29370,
+            "legacy_language_pid": 14,
+            "text": "pergerakan",
+            "auto_translated": "pergerakan"
+        },
+        "ta": {
+            "legacy_caption_pid": 29371,
+            "legacy_language_pid": 15,
+            "text": "இயக்கம்",
+            "auto_translated": "இயக்கம்"
+        },
+        "it": {
+            "legacy_caption_pid": 29372,
+            "legacy_language_pid": 16,
+            "text": "movimento",
+            "auto_translated": "movimento"
+        },
+        "bn": {
+            "legacy_caption_pid": 29373,
+            "legacy_language_pid": 17,
+            "text": "আন্দোলন",
+            "auto_translated": "আন্দোলন"
+        },
+        "tr": {
+            "legacy_caption_pid": 29374,
+            "legacy_language_pid": 18,
+            "text": "hareket",
+            "auto_translated": "hareket"
+        },
+        "vi": {
+            "legacy_caption_pid": 29375,
+            "legacy_language_pid": 19,
+            "text": "sự vận động",
+            "auto_translated": "sự vận động"
+        },
+        "pl": {
+            "legacy_caption_pid": 29376,
+            "legacy_language_pid": 20,
+            "text": "ruch",
+            "auto_translated": "ruch"
+        },
+        "jv": {
+            "legacy_caption_pid": 29377,
+            "legacy_language_pid": 21,
+            "text": "gerakan",
+            "auto_translated": "gerakan"
+        },
+        "pa": {
+            "legacy_caption_pid": 29378,
+            "legacy_language_pid": 22,
+            "text": "ਲਹਿਰ",
+            "auto_translated": "ਲਹਿਰ"
+        },
+        "th": {
+            "legacy_caption_pid": 29379,
+            "legacy_language_pid": 23,
+            "text": "การเคลื่อนไหว",
+            "auto_translated": "การเคลื่อนไหว"
+        },
+        "te": {
+            "legacy_caption_pid": 37684,
+            "legacy_language_pid": 24,
+            "text": "ఉద్యమం",
+            "auto_translated": "ఉద్యమం"
+        },
+        "mr": {
+            "legacy_caption_pid": 37685,
+            "legacy_language_pid": 25,
+            "text": "चळवळ",
+            "auto_translated": "चळवळ"
+        },
+        "ur": {
+            "legacy_caption_pid": 37686,
+            "legacy_language_pid": 26,
+            "text": "تحریک",
+            "auto_translated": "تحریک"
+        },
+        "gu": {
+            "legacy_caption_pid": 37687,
+            "legacy_language_pid": 27,
+            "text": "ચળવળ",
+            "auto_translated": "ચળવળ"
+        },
+        "uk": {
+            "legacy_caption_pid": 37688,
+            "legacy_language_pid": 28,
+            "text": "рух",
+            "auto_translated": "рух"
+        },
+        "ml": {
+            "legacy_caption_pid": 37689,
+            "legacy_language_pid": 29,
+            "text": "ചലനം",
+            "auto_translated": "ചലനം"
+        },
+        "kn": {
+            "legacy_caption_pid": 37690,
+            "legacy_language_pid": 30,
+            "text": "ಚಳವಳಿ",
+            "auto_translated": "ಚಳವಳಿ"
+        },
+        "su": {
+            "legacy_caption_pid": 37691,
+            "legacy_language_pid": 31,
+            "text": "gerakan",
+            "auto_translated": "gerakan"
+        },
+        "ku": {
+            "legacy_caption_pid": 37692,
+            "legacy_language_pid": 32,
+            "text": "tevgera",
+            "auto_translated": "tevgera"
+        },
+        "ps": {
+            "legacy_caption_pid": 37693,
+            "legacy_language_pid": 33,
+            "text": "غورځنګ",
+            "auto_translated": "غورځنګ"
+        },
+        "ro": {
+            "legacy_caption_pid": 37694,
+            "legacy_language_pid": 34,
+            "text": "circulație",
+            "auto_translated": "circulație"
+        },
+        "id": {
+            "legacy_caption_pid": 37695,
+            "legacy_language_pid": 35,
+            "text": "gerakan",
+            "auto_translated": "gerakan"
+        },
+        "sd": {
+            "legacy_caption_pid": 37696,
+            "legacy_language_pid": 36,
+            "text": "تحريڪ",
+            "auto_translated": "تحريڪ"
+        },
+        "af": {
+            "legacy_caption_pid": 37697,
+            "legacy_language_pid": 37,
+            "text": "beweging",
+            "auto_translated": "beweging"
+        },
+        "sw": {
+            "legacy_caption_pid": 37698,
+            "legacy_language_pid": 38,
+            "text": "Movement",
+            "auto_translated": "Movement"
+        },
+        "lo": {
+            "legacy_caption_pid": 37699,
+            "legacy_language_pid": 39,
+            "text": "ການເຄື່ອນໄຫວ",
+            "auto_translated": "ການເຄື່ອນໄຫວ"
+        },
+        "nl": {
+            "legacy_caption_pid": 37700,
+            "legacy_language_pid": 40,
+            "text": "beweging",
+            "auto_translated": "beweging"
+        },
+        "tl": {
+            "legacy_caption_pid": 37701,
+            "legacy_language_pid": 41,
+            "text": "kilusan",
+            "auto_translated": "kilusan"
+        },
+        "ne": {
+            "legacy_caption_pid": 37702,
+            "legacy_language_pid": 42,
+            "text": "आन्दोलन",
+            "auto_translated": "आन्दोलन"
+        },
+        "hu": {
+            "legacy_caption_pid": 37703,
+            "legacy_language_pid": 43,
+            "text": "mozgás",
+            "auto_translated": "mozgás"
+        },
+        "cs": {
+            "legacy_caption_pid": 37704,
+            "legacy_language_pid": 44,
+            "text": "pohyb",
+            "auto_translated": "pohyb"
+        },
+        "el": {
+            "legacy_caption_pid": 37705,
+            "legacy_language_pid": 45,
+            "text": "κίνημα",
+            "auto_translated": "κίνημα"
+        },
+        "sv": {
+            "legacy_caption_pid": 37706,
+            "legacy_language_pid": 46,
+            "text": "rörelsen",
+            "auto_translated": "rörelsen"
+        },
+        "kk": {
+            "legacy_caption_pid": 37707,
+            "legacy_language_pid": 47,
+            "text": "қозғалыс",
+            "auto_translated": "қозғалыс"
+        },
+        "fi": {
+            "legacy_caption_pid": 37708,
+            "legacy_language_pid": 48,
+            "text": "liike",
+            "auto_translated": "liike"
+        },
+        "da": {
+            "legacy_caption_pid": 37709,
+            "legacy_language_pid": 49,
+            "text": "bevægelse",
+            "auto_translated": "bevægelse"
+        },
+        "he": {
+            "legacy_caption_pid": 37710,
+            "legacy_language_pid": 50,
+            "text": "תנועה",
+            "auto_translated": "תנועה"
+        },
+        "no": {
+            "legacy_caption_pid": 37711,
+            "legacy_language_pid": 51,
+            "text": "Movement",
+            "auto_translated": "Movement"
+        }
+    }
+}

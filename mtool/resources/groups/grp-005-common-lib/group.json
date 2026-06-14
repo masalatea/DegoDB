@@ -1,0 +1,335 @@
+{
+    "group_key": "grp-005-common-lib",
+    "legacy_group_pid": 5,
+    "name": "Common Lib",
+    "function_name_prefix": "",
+    "function_name_suffix": "common",
+    "filename_suffix_for_php": "_common",
+    "filename_suffix": "_common",
+    "filename_for_xcode": "",
+    "last_modified_dt": "2018-08-02 14:51:07",
+    "locales": [
+        "ja",
+        "en",
+        "zh-CN",
+        "ko",
+        "es",
+        "pt",
+        "zh-TW",
+        "fr",
+        "hi",
+        "ar",
+        "fa",
+        "de",
+        "ru",
+        "ms",
+        "ta",
+        "it",
+        "bn",
+        "tr",
+        "vi",
+        "pl",
+        "jv",
+        "pa",
+        "th",
+        "te",
+        "mr",
+        "ur",
+        "gu",
+        "uk",
+        "ml",
+        "kn",
+        "su",
+        "ku",
+        "ps",
+        "ro",
+        "id",
+        "sd",
+        "af",
+        "sw",
+        "lo",
+        "nl",
+        "tl",
+        "ne",
+        "hu",
+        "cs",
+        "el",
+        "sv",
+        "kk",
+        "fi",
+        "da",
+        "he",
+        "no"
+    ],
+    "language_bindings": [
+        {
+            "legacy_group_language_pid": 8,
+            "legacy_language_pid": 1,
+            "locale": "ja"
+        },
+        {
+            "legacy_group_language_pid": 9,
+            "legacy_language_pid": 2,
+            "locale": "en"
+        },
+        {
+            "legacy_group_language_pid": 66,
+            "legacy_language_pid": 3,
+            "locale": "zh-CN"
+        },
+        {
+            "legacy_group_language_pid": 67,
+            "legacy_language_pid": 4,
+            "locale": "ko"
+        },
+        {
+            "legacy_group_language_pid": 76,
+            "legacy_language_pid": 5,
+            "locale": "es"
+        },
+        {
+            "legacy_group_language_pid": 77,
+            "legacy_language_pid": 6,
+            "locale": "pt"
+        },
+        {
+            "legacy_group_language_pid": 89,
+            "legacy_language_pid": 7,
+            "locale": "zh-TW"
+        },
+        {
+            "legacy_group_language_pid": 104,
+            "legacy_language_pid": 8,
+            "locale": "fr"
+        },
+        {
+            "legacy_group_language_pid": 105,
+            "legacy_language_pid": 9,
+            "locale": "hi"
+        },
+        {
+            "legacy_group_language_pid": 167,
+            "legacy_language_pid": 10,
+            "locale": "ar"
+        },
+        {
+            "legacy_group_language_pid": 168,
+            "legacy_language_pid": 11,
+            "locale": "fa"
+        },
+        {
+            "legacy_group_language_pid": 169,
+            "legacy_language_pid": 12,
+            "locale": "de"
+        },
+        {
+            "legacy_group_language_pid": 170,
+            "legacy_language_pid": 13,
+            "locale": "ru"
+        },
+        {
+            "legacy_group_language_pid": 171,
+            "legacy_language_pid": 14,
+            "locale": "ms"
+        },
+        {
+            "legacy_group_language_pid": 172,
+            "legacy_language_pid": 15,
+            "locale": "ta"
+        },
+        {
+            "legacy_group_language_pid": 173,
+            "legacy_language_pid": 16,
+            "locale": "it"
+        },
+        {
+            "legacy_group_language_pid": 174,
+            "legacy_language_pid": 17,
+            "locale": "bn"
+        },
+        {
+            "legacy_group_language_pid": 175,
+            "legacy_language_pid": 18,
+            "locale": "tr"
+        },
+        {
+            "legacy_group_language_pid": 176,
+            "legacy_language_pid": 19,
+            "locale": "vi"
+        },
+        {
+            "legacy_group_language_pid": 177,
+            "legacy_language_pid": 20,
+            "locale": "pl"
+        },
+        {
+            "legacy_group_language_pid": 178,
+            "legacy_language_pid": 21,
+            "locale": "jv"
+        },
+        {
+            "legacy_group_language_pid": 179,
+            "legacy_language_pid": 22,
+            "locale": "pa"
+        },
+        {
+            "legacy_group_language_pid": 180,
+            "legacy_language_pid": 23,
+            "locale": "th"
+        },
+        {
+            "legacy_group_language_pid": 349,
+            "legacy_language_pid": 24,
+            "locale": "te"
+        },
+        {
+            "legacy_group_language_pid": 350,
+            "legacy_language_pid": 25,
+            "locale": "mr"
+        },
+        {
+            "legacy_group_language_pid": 351,
+            "legacy_language_pid": 26,
+            "locale": "ur"
+        },
+        {
+            "legacy_group_language_pid": 352,
+            "legacy_language_pid": 27,
+            "locale": "gu"
+        },
+        {
+            "legacy_group_language_pid": 353,
+            "legacy_language_pid": 28,
+            "locale": "uk"
+        },
+        {
+            "legacy_group_language_pid": 354,
+            "legacy_language_pid": 29,
+            "locale": "ml"
+        },
+        {
+            "legacy_group_language_pid": 355,
+            "legacy_language_pid": 30,
+            "locale": "kn"
+        },
+        {
+            "legacy_group_language_pid": 356,
+            "legacy_language_pid": 31,
+            "locale": "su"
+        },
+        {
+            "legacy_group_language_pid": 357,
+            "legacy_language_pid": 32,
+            "locale": "ku"
+        },
+        {
+            "legacy_group_language_pid": 358,
+            "legacy_language_pid": 33,
+            "locale": "ps"
+        },
+        {
+            "legacy_group_language_pid": 359,
+            "legacy_language_pid": 34,
+            "locale": "ro"
+        },
+        {
+            "legacy_group_language_pid": 360,
+            "legacy_language_pid": 35,
+            "locale": "id"
+        },
+        {
+            "legacy_group_language_pid": 361,
+            "legacy_language_pid": 36,
+            "locale": "sd"
+        },
+        {
+            "legacy_group_language_pid": 362,
+            "legacy_language_pid": 37,
+            "locale": "af"
+        },
+        {
+            "legacy_group_language_pid": 363,
+            "legacy_language_pid": 38,
+            "locale": "sw"
+        },
+        {
+            "legacy_group_language_pid": 364,
+            "legacy_language_pid": 39,
+            "locale": "lo"
+        },
+        {
+            "legacy_group_language_pid": 365,
+            "legacy_language_pid": 40,
+            "locale": "nl"
+        },
+        {
+            "legacy_group_language_pid": 366,
+            "legacy_language_pid": 41,
+            "locale": "tl"
+        },
+        {
+            "legacy_group_language_pid": 367,
+            "legacy_language_pid": 42,
+            "locale": "ne"
+        },
+        {
+            "legacy_group_language_pid": 368,
+            "legacy_language_pid": 43,
+            "locale": "hu"
+        },
+        {
+            "legacy_group_language_pid": 369,
+            "legacy_language_pid": 44,
+            "locale": "cs"
+        },
+        {
+            "legacy_group_language_pid": 370,
+            "legacy_language_pid": 45,
+            "locale": "el"
+        },
+        {
+            "legacy_group_language_pid": 371,
+            "legacy_language_pid": 46,
+            "locale": "sv"
+        },
+        {
+            "legacy_group_language_pid": 372,
+            "legacy_language_pid": 47,
+            "locale": "kk"
+        },
+        {
+            "legacy_group_language_pid": 373,
+            "legacy_language_pid": 48,
+            "locale": "fi"
+        },
+        {
+            "legacy_group_language_pid": 374,
+            "legacy_language_pid": 49,
+            "locale": "da"
+        },
+        {
+            "legacy_group_language_pid": 375,
+            "legacy_language_pid": 50,
+            "locale": "he"
+        },
+        {
+            "legacy_group_language_pid": 376,
+            "legacy_language_pid": 51,
+            "locale": "no"
+        }
+    ],
+    "source_output_keys": [
+        "LANGRES-PHP-MTOOL-LIB"
+    ],
+    "source_outputs": [
+        {
+            "legacy_group_source_output_pid": 5,
+            "legacy_project_source_output_pid": 269,
+            "source_output_key": "LANGRES-PHP-MTOOL-LIB",
+            "name": "Mtool Language Resource PHP Mtool Lib",
+            "program_language": "php",
+            "source_template_dir": "mtool/reference/legacy-source-snapshots/mtool/language-resource/LANGRES-PHP-MTOOL-LIB"
+        }
+    ],
+    "resource_count": 110
+}

@@ -1,0 +1,321 @@
+{
+    "resource_key": "HEADER_ENROLL_NAME_ALPHABET",
+    "legacy_resource_pid": 1305,
+    "base_group_key": "grp-028-app-common-lib",
+    "additional_group_keys": [],
+    "key_for_update": "KnYeCy4cJK7cr7r6VVRahAyyyoaYtOl7XfxduthxbDNjrmRqGhQI4iqc5HLPE2bKuKwbz7OnHbZFbyPzlspehEjNW3FtT5FunJr3VONYyF9o4UWEACTBRMrQ0VLCYy8f",
+    "sort_group": "ENROLL",
+    "key_name": "HEADER_ENROLL_NAME_ALPHABET",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": false,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 837,
+            "legacy_language_pid": 1,
+            "text": "名前(アルファベット)",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 838,
+            "legacy_language_pid": 2,
+            "text": "Nickname",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 6402,
+            "legacy_language_pid": 3,
+            "text": "名称（按字母顺序排列）",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 6403,
+            "legacy_language_pid": 4,
+            "text": "이름 (알파벳)",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 10115,
+            "legacy_language_pid": 5,
+            "text": "Nombre (alfabético)",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 10116,
+            "legacy_language_pid": 6,
+            "text": "Nome (ordem alfabética)",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 10117,
+            "legacy_language_pid": 7,
+            "text": "名稱（按字母順序排列）",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 16153,
+            "legacy_language_pid": 8,
+            "text": "Nom (par ordre alphabétique)",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 16154,
+            "legacy_language_pid": 9,
+            "text": "नाम (वर्णमाला)",
+            "auto_translated": ""
+        },
+        "ar": {
+            "legacy_caption_pid": 28442,
+            "legacy_language_pid": 10,
+            "text": "اسم (الأبجدي)",
+            "auto_translated": "اسم (الأبجدي)"
+        },
+        "fa": {
+            "legacy_caption_pid": 28443,
+            "legacy_language_pid": 11,
+            "text": "نام (به ترتیب حروف الفبا)",
+            "auto_translated": "نام (به ترتیب حروف الفبا)"
+        },
+        "de": {
+            "legacy_caption_pid": 28444,
+            "legacy_language_pid": 12,
+            "text": "Name (alphabetisch)",
+            "auto_translated": "Name (alphabetisch)"
+        },
+        "ru": {
+            "legacy_caption_pid": 28445,
+            "legacy_language_pid": 13,
+            "text": "Название (по алфавиту)",
+            "auto_translated": "Название (по алфавиту)"
+        },
+        "ms": {
+            "legacy_caption_pid": 28446,
+            "legacy_language_pid": 14,
+            "text": "Nama (abjad)",
+            "auto_translated": "Nama (abjad)"
+        },
+        "ta": {
+            "legacy_caption_pid": 28447,
+            "legacy_language_pid": 15,
+            "text": "பெயர் (அகரவரிசை)",
+            "auto_translated": "பெயர் (அகரவரிசை)"
+        },
+        "it": {
+            "legacy_caption_pid": 28448,
+            "legacy_language_pid": 16,
+            "text": "Nome (alfabetico)",
+            "auto_translated": "Nome (alfabetico)"
+        },
+        "bn": {
+            "legacy_caption_pid": 28449,
+            "legacy_language_pid": 17,
+            "text": "নাম (বর্ণানুক্রমিক)",
+            "auto_translated": "নাম (বর্ণানুক্রমিক)"
+        },
+        "tr": {
+            "legacy_caption_pid": 28450,
+            "legacy_language_pid": 18,
+            "text": "İsim (alfabetik)",
+            "auto_translated": "İsim (alfabetik)"
+        },
+        "vi": {
+            "legacy_caption_pid": 28451,
+            "legacy_language_pid": 19,
+            "text": "Tên (sắp xếp ABC)",
+            "auto_translated": "Tên (sắp xếp ABC)"
+        },
+        "pl": {
+            "legacy_caption_pid": 28452,
+            "legacy_language_pid": 20,
+            "text": "Nazwa (w kolejności alfabetycznej)",
+            "auto_translated": "Nazwa (w kolejności alfabetycznej)"
+        },
+        "jv": {
+            "legacy_caption_pid": 28453,
+            "legacy_language_pid": 21,
+            "text": "Jeneng (abjad)",
+            "auto_translated": "Jeneng (abjad)"
+        },
+        "pa": {
+            "legacy_caption_pid": 28454,
+            "legacy_language_pid": 22,
+            "text": "ਨਾਮ (ਵਰਣਮਾਲਾ)",
+            "auto_translated": "ਨਾਮ (ਵਰਣਮਾਲਾ)"
+        },
+        "th": {
+            "legacy_caption_pid": 28455,
+            "legacy_language_pid": 23,
+            "text": "ชื่อ (ตัวอักษร)",
+            "auto_translated": "ชื่อ (ตัวอักษร)"
+        },
+        "te": {
+            "legacy_caption_pid": 33820,
+            "legacy_language_pid": 24,
+            "text": "పేరు (అక్షర)",
+            "auto_translated": "పేరు (అక్షర)"
+        },
+        "mr": {
+            "legacy_caption_pid": 33821,
+            "legacy_language_pid": 25,
+            "text": "नाव (वर्णमाला)",
+            "auto_translated": "नाव (वर्णमाला)"
+        },
+        "ur": {
+            "legacy_caption_pid": 33822,
+            "legacy_language_pid": 26,
+            "text": "نام (حروف تہجی)",
+            "auto_translated": "نام (حروف تہجی)"
+        },
+        "gu": {
+            "legacy_caption_pid": 33823,
+            "legacy_language_pid": 27,
+            "text": "નામ (મૂળાક્ષર)",
+            "auto_translated": "નામ (મૂળાક્ષર)"
+        },
+        "uk": {
+            "legacy_caption_pid": 33824,
+            "legacy_language_pid": 28,
+            "text": "Назва (за алфавітом)",
+            "auto_translated": "Назва (за алфавітом)"
+        },
+        "ml": {
+            "legacy_caption_pid": 33825,
+            "legacy_language_pid": 29,
+            "text": "പേര് (അക്ഷരമാല)",
+            "auto_translated": "പേര് (അക്ഷരമാല)"
+        },
+        "kn": {
+            "legacy_caption_pid": 33826,
+            "legacy_language_pid": 30,
+            "text": "ಹೆಸರು (ಆಂಗ್ಲ ವರ್ಣಮಾಲೆಯ)",
+            "auto_translated": "ಹೆಸರು (ಆಂಗ್ಲ ವರ್ಣಮಾಲೆಯ)"
+        },
+        "su": {
+            "legacy_caption_pid": 33827,
+            "legacy_language_pid": 31,
+            "text": "Ngaran (abjad)",
+            "auto_translated": "Ngaran (abjad)"
+        },
+        "ku": {
+            "legacy_caption_pid": 33828,
+            "legacy_language_pid": 32,
+            "text": "Name (alfabetîk)",
+            "auto_translated": "Name (alfabetîk)"
+        },
+        "ps": {
+            "legacy_caption_pid": 33829,
+            "legacy_language_pid": 33,
+            "text": "نوم (الفبا)",
+            "auto_translated": "نوم (الفبا)"
+        },
+        "ro": {
+            "legacy_caption_pid": 33830,
+            "legacy_language_pid": 34,
+            "text": "Nume (alfabetic)",
+            "auto_translated": "Nume (alfabetic)"
+        },
+        "id": {
+            "legacy_caption_pid": 33831,
+            "legacy_language_pid": 35,
+            "text": "Nama (abjad)",
+            "auto_translated": "Nama (abjad)"
+        },
+        "sd": {
+            "legacy_caption_pid": 33832,
+            "legacy_language_pid": 36,
+            "text": "نالو (صورتخطي جي لحاظ کان)",
+            "auto_translated": "نالو (صورتخطي جي لحاظ کان)"
+        },
+        "af": {
+            "legacy_caption_pid": 33833,
+            "legacy_language_pid": 37,
+            "text": "Naam (alfabetiese)",
+            "auto_translated": "Naam (alfabetiese)"
+        },
+        "sw": {
+            "legacy_caption_pid": 33834,
+            "legacy_language_pid": 38,
+            "text": "Jina (herufi)",
+            "auto_translated": "Jina (herufi)"
+        },
+        "lo": {
+            "legacy_caption_pid": 33835,
+            "legacy_language_pid": 39,
+            "text": "ຊື່ (ຕາມຕົວອັກສອນ)",
+            "auto_translated": "ຊື່ (ຕາມຕົວອັກສອນ)"
+        },
+        "nl": {
+            "legacy_caption_pid": 33836,
+            "legacy_language_pid": 40,
+            "text": "Naam (alfabetisch)",
+            "auto_translated": "Naam (alfabetisch)"
+        },
+        "tl": {
+            "legacy_caption_pid": 33837,
+            "legacy_language_pid": 41,
+            "text": "Pangalan (alphabetical)",
+            "auto_translated": "Pangalan (alphabetical)"
+        },
+        "ne": {
+            "legacy_caption_pid": 33838,
+            "legacy_language_pid": 42,
+            "text": "नाम (वर्णमाला)",
+            "auto_translated": "नाम (वर्णमाला)"
+        },
+        "hu": {
+            "legacy_caption_pid": 33839,
+            "legacy_language_pid": 43,
+            "text": "Név (abc)",
+            "auto_translated": "Név (abc)"
+        },
+        "cs": {
+            "legacy_caption_pid": 33840,
+            "legacy_language_pid": 44,
+            "text": "Názvu (abecedně)",
+            "auto_translated": "Názvu (abecedně)"
+        },
+        "el": {
+            "legacy_caption_pid": 33841,
+            "legacy_language_pid": 45,
+            "text": "Όνομα (αλφαβητικά)",
+            "auto_translated": "Όνομα (αλφαβητικά)"
+        },
+        "sv": {
+            "legacy_caption_pid": 33842,
+            "legacy_language_pid": 46,
+            "text": "Namn (alfabetiskt)",
+            "auto_translated": "Namn (alfabetiskt)"
+        },
+        "kk": {
+            "legacy_caption_pid": 33843,
+            "legacy_language_pid": 47,
+            "text": "Аты (әліпбилік)",
+            "auto_translated": "Аты (әліпбилік)"
+        },
+        "fi": {
+            "legacy_caption_pid": 33844,
+            "legacy_language_pid": 48,
+            "text": "Nimi (aakkosjärjestyksessä)",
+            "auto_translated": "Nimi (aakkosjärjestyksessä)"
+        },
+        "da": {
+            "legacy_caption_pid": 33845,
+            "legacy_language_pid": 49,
+            "text": "Navn (alfabetisk)",
+            "auto_translated": "Navn (alfabetisk)"
+        },
+        "he": {
+            "legacy_caption_pid": 33846,
+            "legacy_language_pid": 50,
+            "text": "שם (אלפביתי)",
+            "auto_translated": "שם (אלפביתי)"
+        },
+        "no": {
+            "legacy_caption_pid": 33847,
+            "legacy_language_pid": 51,
+            "text": "Navn (alfabetisk)",
+            "auto_translated": "Navn (alfabetisk)"
+        }
+    }
+}

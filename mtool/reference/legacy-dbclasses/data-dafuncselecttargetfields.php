@@ -1,0 +1,34 @@
+<?PHP
+
+// THIS CLASS WAS AUTOMATICALLY CREATED BY MTOOL. DON'T EDIT EXCEPT THE EDITABLE AREA.
+// [JP] このクラスは自動生成されています。編集可能領域以外は変更しないで下さい。
+
+// == START OF EDITABLE AREA FOR ABOVE ==
+// == END OF EDITABLE AREA FOR ABOVE ==
+
+class dafuncselecttargetfieldsData
+{
+	public $ProjectPID;
+	public $daPID;
+	public $dafuncPID;
+	public $PID;
+	public $targetTableName;
+	public $targetTableAliasName;
+	public $targetTableColumnName;
+	public $targetTableColumnPrefix;
+	public $targetTableColumnSuffix;
+	public $storeClassFieldName;
+	public $GroupByTarget;
+	public $FieldListOrder;
+	
+	public function __construct() {
+	}
+	
+	// == START OF EDITABLE AREA FOR ADDITIONAL CLASS DEFINITION ==
+	// == END OF EDITABLE AREA FOR ADDITIONAL CLASS DEFINITION ==
+}
+
+// == START OF EDITABLE AREA FOR BOTTOM ==
+// == END OF EDITABLE AREA FOR BOTTOM ==
+
+?>

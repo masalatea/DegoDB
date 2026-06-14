@@ -1,0 +1,321 @@
+{
+    "resource_key": "BACK_BUTTON_CAPTION",
+    "legacy_resource_pid": 969,
+    "base_group_key": "grp-028-app-common-lib",
+    "additional_group_keys": [],
+    "key_for_update": "IKbUvwxUxdGSLM05E6yUbL8hNFFx2QjEzaWYfMoafRFpnKvir7qQRctUSMWy0ocRhFiq6Sj74Y7syeguXXte68pVQjoB7NpvCfdGBvIG2CgddDyIb2TZH0vGp6TZR36e",
+    "sort_group": "Action",
+    "key_name": "BACK_BUTTON_CAPTION",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": false,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 813,
+            "legacy_language_pid": 1,
+            "text": "戻る",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 814,
+            "legacy_language_pid": 2,
+            "text": "Back",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 6384,
+            "legacy_language_pid": 3,
+            "text": "返回",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 6385,
+            "legacy_language_pid": 4,
+            "text": "돌아가기",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 10072,
+            "legacy_language_pid": 5,
+            "text": "Atrás",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 10073,
+            "legacy_language_pid": 6,
+            "text": "Volta",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 10074,
+            "legacy_language_pid": 7,
+            "text": "返回",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 16133,
+            "legacy_language_pid": 8,
+            "text": "Arrière",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 16134,
+            "legacy_language_pid": 9,
+            "text": "वापस",
+            "auto_translated": ""
+        },
+        "ar": {
+            "legacy_caption_pid": 28218,
+            "legacy_language_pid": 10,
+            "text": "عودة",
+            "auto_translated": "عودة"
+        },
+        "fa": {
+            "legacy_caption_pid": 28219,
+            "legacy_language_pid": 11,
+            "text": "برگشت",
+            "auto_translated": "برگشت"
+        },
+        "de": {
+            "legacy_caption_pid": 28220,
+            "legacy_language_pid": 12,
+            "text": "Rückkehr",
+            "auto_translated": "Rückkehr"
+        },
+        "ru": {
+            "legacy_caption_pid": 28221,
+            "legacy_language_pid": 13,
+            "text": "возвращение",
+            "auto_translated": "возвращение"
+        },
+        "ms": {
+            "legacy_caption_pid": 28222,
+            "legacy_language_pid": 14,
+            "text": "Pulang",
+            "auto_translated": "Pulang"
+        },
+        "ta": {
+            "legacy_caption_pid": 28223,
+            "legacy_language_pid": 15,
+            "text": "திரும்ப",
+            "auto_translated": "திரும்ப"
+        },
+        "it": {
+            "legacy_caption_pid": 28224,
+            "legacy_language_pid": 16,
+            "text": "ritorno",
+            "auto_translated": "ritorno"
+        },
+        "bn": {
+            "legacy_caption_pid": 28225,
+            "legacy_language_pid": 17,
+            "text": "প্রত্যাবর্তন",
+            "auto_translated": "প্রত্যাবর্তন"
+        },
+        "tr": {
+            "legacy_caption_pid": 28226,
+            "legacy_language_pid": 18,
+            "text": "dönüş",
+            "auto_translated": "dönüş"
+        },
+        "vi": {
+            "legacy_caption_pid": 28227,
+            "legacy_language_pid": 19,
+            "text": "trả lại",
+            "auto_translated": "trả lại"
+        },
+        "pl": {
+            "legacy_caption_pid": 28228,
+            "legacy_language_pid": 20,
+            "text": "powrót",
+            "auto_translated": "powrót"
+        },
+        "jv": {
+            "legacy_caption_pid": 28229,
+            "legacy_language_pid": 21,
+            "text": "bali",
+            "auto_translated": "bali"
+        },
+        "pa": {
+            "legacy_caption_pid": 28230,
+            "legacy_language_pid": 22,
+            "text": "ਵਾਪਸੀ",
+            "auto_translated": "ਵਾਪਸੀ"
+        },
+        "th": {
+            "legacy_caption_pid": 28231,
+            "legacy_language_pid": 23,
+            "text": "กลับ",
+            "auto_translated": "กลับ"
+        },
+        "te": {
+            "legacy_caption_pid": 33484,
+            "legacy_language_pid": 24,
+            "text": "రిటర్న్",
+            "auto_translated": "రిటర్న్"
+        },
+        "mr": {
+            "legacy_caption_pid": 33485,
+            "legacy_language_pid": 25,
+            "text": "परत",
+            "auto_translated": "परत"
+        },
+        "ur": {
+            "legacy_caption_pid": 33486,
+            "legacy_language_pid": 26,
+            "text": "واپسی",
+            "auto_translated": "واپسی"
+        },
+        "gu": {
+            "legacy_caption_pid": 33487,
+            "legacy_language_pid": 27,
+            "text": "રીટર્ન",
+            "auto_translated": "રીટર્ન"
+        },
+        "uk": {
+            "legacy_caption_pid": 33488,
+            "legacy_language_pid": 28,
+            "text": "повернення",
+            "auto_translated": "повернення"
+        },
+        "ml": {
+            "legacy_caption_pid": 33489,
+            "legacy_language_pid": 29,
+            "text": "മടക്ക",
+            "auto_translated": "മടക്ക"
+        },
+        "kn": {
+            "legacy_caption_pid": 33490,
+            "legacy_language_pid": 30,
+            "text": "ರಿಟರ್ನ್",
+            "auto_translated": "ರಿಟರ್ನ್"
+        },
+        "su": {
+            "legacy_caption_pid": 33491,
+            "legacy_language_pid": 31,
+            "text": "kasumpingan",
+            "auto_translated": "kasumpingan"
+        },
+        "ku": {
+            "legacy_caption_pid": 33492,
+            "legacy_language_pid": 32,
+            "text": "Return",
+            "auto_translated": "Return"
+        },
+        "ps": {
+            "legacy_caption_pid": 33493,
+            "legacy_language_pid": 33,
+            "text": "بیرته",
+            "auto_translated": "بیرته"
+        },
+        "ro": {
+            "legacy_caption_pid": 33494,
+            "legacy_language_pid": 34,
+            "text": "întoarcere",
+            "auto_translated": "întoarcere"
+        },
+        "id": {
+            "legacy_caption_pid": 33495,
+            "legacy_language_pid": 35,
+            "text": "kembali",
+            "auto_translated": "kembali"
+        },
+        "sd": {
+            "legacy_caption_pid": 33496,
+            "legacy_language_pid": 36,
+            "text": "موٽڻ",
+            "auto_translated": "موٽڻ"
+        },
+        "af": {
+            "legacy_caption_pid": 33497,
+            "legacy_language_pid": 37,
+            "text": "terugkeer",
+            "auto_translated": "terugkeer"
+        },
+        "sw": {
+            "legacy_caption_pid": 33498,
+            "legacy_language_pid": 38,
+            "text": "Return",
+            "auto_translated": "Return"
+        },
+        "lo": {
+            "legacy_caption_pid": 33499,
+            "legacy_language_pid": 39,
+            "text": "Return",
+            "auto_translated": "Return"
+        },
+        "nl": {
+            "legacy_caption_pid": 33500,
+            "legacy_language_pid": 40,
+            "text": "terugkeer",
+            "auto_translated": "terugkeer"
+        },
+        "tl": {
+            "legacy_caption_pid": 33501,
+            "legacy_language_pid": 41,
+            "text": "pagbabalik",
+            "auto_translated": "pagbabalik"
+        },
+        "ne": {
+            "legacy_caption_pid": 33502,
+            "legacy_language_pid": 42,
+            "text": "फिर्ती",
+            "auto_translated": "फिर्ती"
+        },
+        "hu": {
+            "legacy_caption_pid": 33503,
+            "legacy_language_pid": 43,
+            "text": "visszatérés",
+            "auto_translated": "visszatérés"
+        },
+        "cs": {
+            "legacy_caption_pid": 33504,
+            "legacy_language_pid": 44,
+            "text": "zpáteční",
+            "auto_translated": "zpáteční"
+        },
+        "el": {
+            "legacy_caption_pid": 33505,
+            "legacy_language_pid": 45,
+            "text": "απόδοση",
+            "auto_translated": "απόδοση"
+        },
+        "sv": {
+            "legacy_caption_pid": 33506,
+            "legacy_language_pid": 46,
+            "text": "Return",
+            "auto_translated": "Return"
+        },
+        "kk": {
+            "legacy_caption_pid": 33507,
+            "legacy_language_pid": 47,
+            "text": "қайтару",
+            "auto_translated": "қайтару"
+        },
+        "fi": {
+            "legacy_caption_pid": 33508,
+            "legacy_language_pid": 48,
+            "text": "paluu",
+            "auto_translated": "paluu"
+        },
+        "da": {
+            "legacy_caption_pid": 33509,
+            "legacy_language_pid": 49,
+            "text": "Retur",
+            "auto_translated": "Retur"
+        },
+        "he": {
+            "legacy_caption_pid": 33510,
+            "legacy_language_pid": 50,
+            "text": "השב",
+            "auto_translated": "השב"
+        },
+        "no": {
+            "legacy_caption_pid": 33511,
+            "legacy_language_pid": 51,
+            "text": "Return",
+            "auto_translated": "Return"
+        }
+    }
+}

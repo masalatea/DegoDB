@@ -1,0 +1,69 @@
+{
+    "resource_key": "TITLE_WHITEBOARD_TOP",
+    "legacy_resource_pid": 656,
+    "base_group_key": "grp-010-matsuesoft-lib",
+    "additional_group_keys": [],
+    "key_for_update": "ZIdoBA5PJFrg5tSgOXob8AtPE2wyv6obD3Q7VAKQIR4nId2bGqeUFFfZXzavRR4yorVq1MUR11vvFJAuPJdpEq5fUJWpnf3Ppk21ubMnT5BpkWZUAx5Ckkw6oqYbjW7O",
+    "sort_group": "TITLE",
+    "key_name": "TITLE_WHITEBOARD_TOP",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": true,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 4760,
+            "legacy_language_pid": 1,
+            "text": "バーチャル・ホワイトボード - $DOMAINNAMECAPTION_JP",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 4761,
+            "legacy_language_pid": 2,
+            "text": "Virtual Whiteboard - $DOMAINNAMECAPTION_EN",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 15453,
+            "legacy_language_pid": 3,
+            "text": "",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 15454,
+            "legacy_language_pid": 4,
+            "text": "",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 15455,
+            "legacy_language_pid": 5,
+            "text": "Pizarra virtual - $DOMAINNAMECAPTION_ES",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 15456,
+            "legacy_language_pid": 6,
+            "text": "Quadro virtual virtual - $DOMAINNAMECAPTION_EN",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 15457,
+            "legacy_language_pid": 7,
+            "text": "",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 17415,
+            "legacy_language_pid": 8,
+            "text": "ableau blanc virtuel - $DOMAINNAMECAPTION_FR",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 17416,
+            "legacy_language_pid": 9,
+            "text": "आभासी व्हाइटबोर्ड - $ DOMAINNAMECAPTION_HI",
+            "auto_translated": ""
+        }
+    }
+}

@@ -1,0 +1,321 @@
+{
+    "resource_key": "COMMON_LIB_EMAIL_VERIFY_EMAIL_SUBJECT_FOR_VERIFY_EMAIL",
+    "legacy_resource_pid": 1399,
+    "base_group_key": "grp-010-matsuesoft-lib",
+    "additional_group_keys": [],
+    "key_for_update": "mfi4Nr39sf3ijokwsFSW6JsolFti6Ni4VvkWu3CdSmrzuvhtXxUPancBoq40jb3BFUNuODFdJIoBcuN7HtOUjpPqX8RFaW52NQJHwZxcP2JwzGXbJM7vvVDWvX5ziIF1",
+    "sort_group": "EMAIL VERIFY",
+    "key_name": "COMMON_LIB_EMAIL_VERIFY_EMAIL_SUBJECT_FOR_VERIFY_EMAIL",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": false,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 5870,
+            "legacy_language_pid": 1,
+            "text": "メールアドレス確認",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 5871,
+            "legacy_language_pid": 2,
+            "text": "Email Confirmation",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 5872,
+            "legacy_language_pid": 3,
+            "text": "E-mail地址确认",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 5873,
+            "legacy_language_pid": 4,
+            "text": "이메일 주소 확인",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 10714,
+            "legacy_language_pid": 5,
+            "text": "confirmación de correo electrónico",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 10715,
+            "legacy_language_pid": 6,
+            "text": "Confirmação de e-mail",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 10716,
+            "legacy_language_pid": 7,
+            "text": "E-mail地址確認",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 16431,
+            "legacy_language_pid": 8,
+            "text": "confirmation de l'émail",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 16432,
+            "legacy_language_pid": 9,
+            "text": "ईमेल की पुष्टि",
+            "auto_translated": ""
+        },
+        "ar": {
+            "legacy_caption_pid": 30892,
+            "legacy_language_pid": 10,
+            "text": "البريد الإلكتروني E تأكيد عنوان",
+            "auto_translated": "البريد الإلكتروني E تأكيد عنوان"
+        },
+        "fa": {
+            "legacy_caption_pid": 30893,
+            "legacy_language_pid": 11,
+            "text": "پست الکترونیک تایید نشانی",
+            "auto_translated": "پست الکترونیک تایید نشانی"
+        },
+        "de": {
+            "legacy_caption_pid": 30894,
+            "legacy_language_pid": 12,
+            "text": "E-Mail-Adresse Bestätigung",
+            "auto_translated": "E-Mail-Adresse Bestätigung"
+        },
+        "ru": {
+            "legacy_caption_pid": 30895,
+            "legacy_language_pid": 13,
+            "text": "Электронная почта подтверждение адреса",
+            "auto_translated": "Электронная почта подтверждение адреса"
+        },
+        "ms": {
+            "legacy_caption_pid": 30896,
+            "legacy_language_pid": 14,
+            "text": "E-mel pengesahan alamat",
+            "auto_translated": "E-mel pengesahan alamat"
+        },
+        "ta": {
+            "legacy_caption_pid": 30897,
+            "legacy_language_pid": 15,
+            "text": "மின்னஞ்சல் முகவரி உறுதிப்படுத்தல்",
+            "auto_translated": "மின்னஞ்சல் முகவரி உறுதிப்படுத்தல்"
+        },
+        "it": {
+            "legacy_caption_pid": 30898,
+            "legacy_language_pid": 16,
+            "text": "conferma l'indirizzo e-mail",
+            "auto_translated": "conferma l'indirizzo e-mail"
+        },
+        "bn": {
+            "legacy_caption_pid": 30899,
+            "legacy_language_pid": 17,
+            "text": "ই-মেল ঠিকানা নিশ্চিতকরণ",
+            "auto_translated": "ই-মেল ঠিকানা নিশ্চিতকরণ"
+        },
+        "tr": {
+            "legacy_caption_pid": 30900,
+            "legacy_language_pid": 18,
+            "text": "E-posta adresi onay",
+            "auto_translated": "E-posta adresi onay"
+        },
+        "vi": {
+            "legacy_caption_pid": 30901,
+            "legacy_language_pid": 19,
+            "text": "xác nhận địa chỉ E-mail",
+            "auto_translated": "xác nhận địa chỉ E-mail"
+        },
+        "pl": {
+            "legacy_caption_pid": 30902,
+            "legacy_language_pid": 20,
+            "text": "E-mail z potwierdzeniem adresu",
+            "auto_translated": "E-mail z potwierdzeniem adresu"
+        },
+        "jv": {
+            "legacy_caption_pid": 30903,
+            "legacy_language_pid": 21,
+            "text": "E-mail konfirmasi alamat",
+            "auto_translated": "E-mail konfirmasi alamat"
+        },
+        "pa": {
+            "legacy_caption_pid": 30904,
+            "legacy_language_pid": 22,
+            "text": "ਈ-ਮੇਲ ਪਤਾ ਪੁਸ਼ਟੀ",
+            "auto_translated": "ਈ-ਮੇਲ ਪਤਾ ਪੁਸ਼ਟੀ"
+        },
+        "th": {
+            "legacy_caption_pid": 30905,
+            "legacy_language_pid": 23,
+            "text": "ยืนยัน E-mail address",
+            "auto_translated": "ยืนยัน E-mail address"
+        },
+        "te": {
+            "legacy_caption_pid": 42598,
+            "legacy_language_pid": 24,
+            "text": "ఇ-మెయిల్ చిరునామా నిర్ధారణ",
+            "auto_translated": "ఇ-మెయిల్ చిరునామా నిర్ధారణ"
+        },
+        "mr": {
+            "legacy_caption_pid": 42599,
+            "legacy_language_pid": 25,
+            "text": "ई-मेल पत्ता पुष्टी",
+            "auto_translated": "ई-मेल पत्ता पुष्टी"
+        },
+        "ur": {
+            "legacy_caption_pid": 42600,
+            "legacy_language_pid": 26,
+            "text": "ای میل ایڈریس کی تصدیق",
+            "auto_translated": "ای میل ایڈریس کی تصدیق"
+        },
+        "gu": {
+            "legacy_caption_pid": 42601,
+            "legacy_language_pid": 27,
+            "text": "ઇ-મેઇલ સરનામું પુષ્ટિ",
+            "auto_translated": "ઇ-મેઇલ સરનામું પુષ્ટિ"
+        },
+        "uk": {
+            "legacy_caption_pid": 42602,
+            "legacy_language_pid": 28,
+            "text": "Електронна пошта підтвердження адреси",
+            "auto_translated": "Електронна пошта підтвердження адреси"
+        },
+        "ml": {
+            "legacy_caption_pid": 42603,
+            "legacy_language_pid": 29,
+            "text": "ഇ-മെയിൽ വിലാസ സ്ഥിരീകരണം",
+            "auto_translated": "ഇ-മെയിൽ വിലാസ സ്ഥിരീകരണം"
+        },
+        "kn": {
+            "legacy_caption_pid": 42604,
+            "legacy_language_pid": 30,
+            "text": "ಇ ಮೇಲ್ ದೃಢೀಕರಣ",
+            "auto_translated": "ಇ ಮೇಲ್ ದೃಢೀಕರಣ"
+        },
+        "su": {
+            "legacy_caption_pid": 42605,
+            "legacy_language_pid": 31,
+            "text": "Surélék konfirmasi alamat",
+            "auto_translated": "Surélék konfirmasi alamat"
+        },
+        "ku": {
+            "legacy_caption_pid": 42606,
+            "legacy_language_pid": 32,
+            "text": "E-mail address confirmation",
+            "auto_translated": "E-mail address confirmation"
+        },
+        "ps": {
+            "legacy_caption_pid": 42607,
+            "legacy_language_pid": 33,
+            "text": "پست برېښلیک پته د تاييد",
+            "auto_translated": "پست برېښلیک پته د تاييد"
+        },
+        "ro": {
+            "legacy_caption_pid": 42608,
+            "legacy_language_pid": 34,
+            "text": "E-mail de confirmare adresă",
+            "auto_translated": "E-mail de confirmare adresă"
+        },
+        "id": {
+            "legacy_caption_pid": 42609,
+            "legacy_language_pid": 35,
+            "text": "E-mail konfirmasi alamat",
+            "auto_translated": "E-mail konfirmasi alamat"
+        },
+        "sd": {
+            "legacy_caption_pid": 42610,
+            "legacy_language_pid": 36,
+            "text": "اي-ميل ايڊريس تصديق",
+            "auto_translated": "اي-ميل ايڊريس تصديق"
+        },
+        "af": {
+            "legacy_caption_pid": 42611,
+            "legacy_language_pid": 37,
+            "text": "E-pos adres bevestiging",
+            "auto_translated": "E-pos adres bevestiging"
+        },
+        "sw": {
+            "legacy_caption_pid": 42612,
+            "legacy_language_pid": 38,
+            "text": "E-mail anwani ya uthibitishaji",
+            "auto_translated": "E-mail anwani ya uthibitishaji"
+        },
+        "lo": {
+            "legacy_caption_pid": 42613,
+            "legacy_language_pid": 39,
+            "text": "ການຢືນຢັນທີ່ຢູ່ອີເມວ",
+            "auto_translated": "ການຢືນຢັນທີ່ຢູ່ອີເມວ"
+        },
+        "nl": {
+            "legacy_caption_pid": 42614,
+            "legacy_language_pid": 40,
+            "text": "E-mail adres bevestiging",
+            "auto_translated": "E-mail adres bevestiging"
+        },
+        "tl": {
+            "legacy_caption_pid": 42615,
+            "legacy_language_pid": 41,
+            "text": "address confirmation E-mail",
+            "auto_translated": "address confirmation E-mail"
+        },
+        "ne": {
+            "legacy_caption_pid": 42616,
+            "legacy_language_pid": 42,
+            "text": "ई-मेल ठेगाना पुष्टि",
+            "auto_translated": "ई-मेल ठेगाना पुष्टि"
+        },
+        "hu": {
+            "legacy_caption_pid": 42617,
+            "legacy_language_pid": 43,
+            "text": "E-mail cím megerősítés",
+            "auto_translated": "E-mail cím megerősítés"
+        },
+        "cs": {
+            "legacy_caption_pid": 42618,
+            "legacy_language_pid": 44,
+            "text": "E-mailová adresa Potvrzení",
+            "auto_translated": "E-mailová adresa Potvrzení"
+        },
+        "el": {
+            "legacy_caption_pid": 42619,
+            "legacy_language_pid": 45,
+            "text": "επιβεβαίωση της διεύθυνσης ηλεκτρονικού ταχυδρομείου",
+            "auto_translated": "επιβεβαίωση της διεύθυνσης ηλεκτρονικού ταχυδρομείου"
+        },
+        "sv": {
+            "legacy_caption_pid": 42620,
+            "legacy_language_pid": 46,
+            "text": "E-postadress bekräftelse",
+            "auto_translated": "E-postadress bekräftelse"
+        },
+        "kk": {
+            "legacy_caption_pid": 42621,
+            "legacy_language_pid": 47,
+            "text": "Электрондық пошта мекен-жайы растау",
+            "auto_translated": "Электрондық пошта мекен-жайы растау"
+        },
+        "fi": {
+            "legacy_caption_pid": 42622,
+            "legacy_language_pid": 48,
+            "text": "Sähköpostiosoite vahvistus",
+            "auto_translated": "Sähköpostiosoite vahvistus"
+        },
+        "da": {
+            "legacy_caption_pid": 42623,
+            "legacy_language_pid": 49,
+            "text": "E-mail-bekræftelse adresse",
+            "auto_translated": "E-mail-bekræftelse adresse"
+        },
+        "he": {
+            "legacy_caption_pid": 42624,
+            "legacy_language_pid": 50,
+            "text": "דואר אלקטרוני אישור כתובת",
+            "auto_translated": "דואר אלקטרוני אישור כתובת"
+        },
+        "no": {
+            "legacy_caption_pid": 42625,
+            "legacy_language_pid": 51,
+            "text": "E-post adresse bekreftelse",
+            "auto_translated": "E-post adresse bekreftelse"
+        }
+    }
+}

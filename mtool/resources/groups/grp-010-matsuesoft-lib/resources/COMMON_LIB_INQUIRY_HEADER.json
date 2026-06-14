@@ -1,0 +1,321 @@
+{
+    "resource_key": "COMMON_LIB_INQUIRY_HEADER",
+    "legacy_resource_pid": 1456,
+    "base_group_key": "grp-010-matsuesoft-lib",
+    "additional_group_keys": [],
+    "key_for_update": "5GJ09YLnzshkTEU6ZuDbUM6rO2nTYoM7AMFNgSdlnn4BO5rVxUVbrdyvGV9toUXMPz9EnjqI19QqibDOnIAhWINrIoryY2iok3F7mT3xcgpyqPoT6XLgWsq2M64zvQf5",
+    "sort_group": "INQUIRY",
+    "key_name": "COMMON_LIB_INQUIRY_HEADER",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": false,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 6098,
+            "legacy_language_pid": 1,
+            "text": "お問い合わせ",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 6099,
+            "legacy_language_pid": 2,
+            "text": "Inquiry",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 6100,
+            "legacy_language_pid": 3,
+            "text": "查询",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 6101,
+            "legacy_language_pid": 4,
+            "text": "문의",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 10970,
+            "legacy_language_pid": 5,
+            "text": "Consulta",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 10971,
+            "legacy_language_pid": 6,
+            "text": "Inquérito",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 10972,
+            "legacy_language_pid": 7,
+            "text": "查詢",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 17179,
+            "legacy_language_pid": 8,
+            "text": "Enquête",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 17180,
+            "legacy_language_pid": 9,
+            "text": "पूछताछ",
+            "auto_translated": ""
+        },
+        "ar": {
+            "legacy_caption_pid": 32096,
+            "legacy_language_pid": 10,
+            "text": "تحقيقا",
+            "auto_translated": "تحقيقا"
+        },
+        "fa": {
+            "legacy_caption_pid": 32097,
+            "legacy_language_pid": 11,
+            "text": "پرس و جو",
+            "auto_translated": "پرس و جو"
+        },
+        "de": {
+            "legacy_caption_pid": 32098,
+            "legacy_language_pid": 12,
+            "text": "eine Anfrage",
+            "auto_translated": "eine Anfrage"
+        },
+        "ru": {
+            "legacy_caption_pid": 32099,
+            "legacy_language_pid": 13,
+            "text": "запрос",
+            "auto_translated": "запрос"
+        },
+        "ms": {
+            "legacy_caption_pid": 32100,
+            "legacy_language_pid": 14,
+            "text": "Sesuatu siasatan",
+            "auto_translated": "Sesuatu siasatan"
+        },
+        "ta": {
+            "legacy_caption_pid": 32101,
+            "legacy_language_pid": 15,
+            "text": "நடத்திய விசாரணையில்",
+            "auto_translated": "நடத்திய விசாரணையில்"
+        },
+        "it": {
+            "legacy_caption_pid": 32102,
+            "legacy_language_pid": 16,
+            "text": "un'inchiesta",
+            "auto_translated": "un'inchiesta"
+        },
+        "bn": {
+            "legacy_caption_pid": 32103,
+            "legacy_language_pid": 17,
+            "text": "একটি তদন্ত",
+            "auto_translated": "একটি তদন্ত"
+        },
+        "tr": {
+            "legacy_caption_pid": 32104,
+            "legacy_language_pid": 18,
+            "text": "bir soruşturma",
+            "auto_translated": "bir soruşturma"
+        },
+        "vi": {
+            "legacy_caption_pid": 32105,
+            "legacy_language_pid": 19,
+            "text": "một cuộc điều tra",
+            "auto_translated": "một cuộc điều tra"
+        },
+        "pl": {
+            "legacy_caption_pid": 32106,
+            "legacy_language_pid": 20,
+            "text": "zapytanie",
+            "auto_translated": "zapytanie"
+        },
+        "jv": {
+            "legacy_caption_pid": 32107,
+            "legacy_language_pid": 21,
+            "text": "priksaan",
+            "auto_translated": "priksaan"
+        },
+        "pa": {
+            "legacy_caption_pid": 32108,
+            "legacy_language_pid": 22,
+            "text": "ਇੱਕ ਪੜਤਾਲ",
+            "auto_translated": "ਇੱਕ ਪੜਤਾਲ"
+        },
+        "th": {
+            "legacy_caption_pid": 32109,
+            "legacy_language_pid": 23,
+            "text": "สอบถามรายละเอียดเพิ่มเติม",
+            "auto_translated": "สอบถามรายละเอียดเพิ่มเติม"
+        },
+        "te": {
+            "legacy_caption_pid": 41436,
+            "legacy_language_pid": 24,
+            "text": "విచారణ",
+            "auto_translated": "విచారణ"
+        },
+        "mr": {
+            "legacy_caption_pid": 41437,
+            "legacy_language_pid": 25,
+            "text": "चौकशी",
+            "auto_translated": "चौकशी"
+        },
+        "ur": {
+            "legacy_caption_pid": 41438,
+            "legacy_language_pid": 26,
+            "text": "ایک انکوائری",
+            "auto_translated": "ایک انکوائری"
+        },
+        "gu": {
+            "legacy_caption_pid": 41439,
+            "legacy_language_pid": 27,
+            "text": "એક તપાસ",
+            "auto_translated": "એક તપાસ"
+        },
+        "uk": {
+            "legacy_caption_pid": 41440,
+            "legacy_language_pid": 28,
+            "text": "запит",
+            "auto_translated": "запит"
+        },
+        "ml": {
+            "legacy_caption_pid": 41441,
+            "legacy_language_pid": 29,
+            "text": "ഒരു അന്വേഷണം",
+            "auto_translated": "ഒരു അന്വേഷണം"
+        },
+        "kn": {
+            "legacy_caption_pid": 41442,
+            "legacy_language_pid": 30,
+            "text": "ತನಿಖಾ",
+            "auto_translated": "ತನಿಖಾ"
+        },
+        "su": {
+            "legacy_caption_pid": 41443,
+            "legacy_language_pid": 31,
+            "text": "hiji panalungtikan",
+            "auto_translated": "hiji panalungtikan"
+        },
+        "ku": {
+            "legacy_caption_pid": 41444,
+            "legacy_language_pid": 32,
+            "text": "Ev yek di lêkolînek",
+            "auto_translated": "Ev yek di lêkolînek"
+        },
+        "ps": {
+            "legacy_caption_pid": 41445,
+            "legacy_language_pid": 33,
+            "text": "د پلټنې يو",
+            "auto_translated": "د پلټنې يو"
+        },
+        "ro": {
+            "legacy_caption_pid": 41446,
+            "legacy_language_pid": 34,
+            "text": "o anchetă",
+            "auto_translated": "o anchetă"
+        },
+        "id": {
+            "legacy_caption_pid": 41447,
+            "legacy_language_pid": 35,
+            "text": "penyelidikan",
+            "auto_translated": "penyelidikan"
+        },
+        "sd": {
+            "legacy_caption_pid": 41448,
+            "legacy_language_pid": 36,
+            "text": "هڪ انڪوائري",
+            "auto_translated": "هڪ انڪوائري"
+        },
+        "af": {
+            "legacy_caption_pid": 41449,
+            "legacy_language_pid": 37,
+            "text": "'n ondersoek",
+            "auto_translated": "'n ondersoek"
+        },
+        "sw": {
+            "legacy_caption_pid": 41450,
+            "legacy_language_pid": 38,
+            "text": "uchunguzi",
+            "auto_translated": "uchunguzi"
+        },
+        "lo": {
+            "legacy_caption_pid": 41451,
+            "legacy_language_pid": 39,
+            "text": "ສອບຖາມ",
+            "auto_translated": "ສອບຖາມ"
+        },
+        "nl": {
+            "legacy_caption_pid": 41452,
+            "legacy_language_pid": 40,
+            "text": "een onderzoek",
+            "auto_translated": "een onderzoek"
+        },
+        "tl": {
+            "legacy_caption_pid": 41453,
+            "legacy_language_pid": 41,
+            "text": "Ang isang pagtatanong",
+            "auto_translated": "Ang isang pagtatanong"
+        },
+        "ne": {
+            "legacy_caption_pid": 41454,
+            "legacy_language_pid": 42,
+            "text": "एक जांच",
+            "auto_translated": "एक जांच"
+        },
+        "hu": {
+            "legacy_caption_pid": 41455,
+            "legacy_language_pid": 43,
+            "text": "vizsgálatot",
+            "auto_translated": "vizsgálatot"
+        },
+        "cs": {
+            "legacy_caption_pid": 41456,
+            "legacy_language_pid": 44,
+            "text": "dotaz",
+            "auto_translated": "dotaz"
+        },
+        "el": {
+            "legacy_caption_pid": 41457,
+            "legacy_language_pid": 45,
+            "text": "μια έρευνα",
+            "auto_translated": "μια έρευνα"
+        },
+        "sv": {
+            "legacy_caption_pid": 41458,
+            "legacy_language_pid": 46,
+            "text": "en utredning",
+            "auto_translated": "en utredning"
+        },
+        "kk": {
+            "legacy_caption_pid": 41459,
+            "legacy_language_pid": 47,
+            "text": "Сұраным",
+            "auto_translated": "Сұраным"
+        },
+        "fi": {
+            "legacy_caption_pid": 41460,
+            "legacy_language_pid": 48,
+            "text": "tiedustelu",
+            "auto_translated": "tiedustelu"
+        },
+        "da": {
+            "legacy_caption_pid": 41461,
+            "legacy_language_pid": 49,
+            "text": "en undersøgelse",
+            "auto_translated": "en undersøgelse"
+        },
+        "he": {
+            "legacy_caption_pid": 41462,
+            "legacy_language_pid": 50,
+            "text": "מבירור",
+            "auto_translated": "מבירור"
+        },
+        "no": {
+            "legacy_caption_pid": 41463,
+            "legacy_language_pid": 51,
+            "text": "en henvendelse",
+            "auto_translated": "en henvendelse"
+        }
+    }
+}

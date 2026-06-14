@@ -1,0 +1,459 @@
+{
+    "project_key": "MTOOL",
+    "project_pid": 1,
+    "source_dump_path": "original-codes/mtool.sql",
+    "generated_at": "2026-05-12T05:17:02+00:00",
+    "table_count": 90,
+    "tables": [
+        {
+            "project_pid": 1,
+            "legacy_table_pid": 1,
+            "name": "Project"
+        },
+        {
+            "project_pid": 1,
+            "legacy_table_pid": 10,
+            "name": "da"
+        },
+        {
+            "project_pid": 1,
+            "legacy_table_pid": 11,
+            "name": "dafunc"
+        },
+        {
+            "project_pid": 1,
+            "legacy_table_pid": 12,
+            "name": "dafuncinserttargetfields"
+        },
+        {
+            "project_pid": 1,
+            "legacy_table_pid": 13,
+            "name": "dafuncselecttargetfields"
+        },
+        {
+            "project_pid": 1,
+            "legacy_table_pid": 14,
+            "name": "dafuncselectwhere"
+        },
+        {
+            "project_pid": 1,
+            "legacy_table_pid": 15,
+            "name": "dafuncupdatedeletewhere"
+        },
+        {
+            "project_pid": 1,
+            "legacy_table_pid": 16,
+            "name": "dafuncupdatetargetfields"
+        },
+        {
+            "project_pid": 1,
+            "legacy_table_pid": 17,
+            "name": "dataclass"
+        },
+        {
+            "project_pid": 1,
+            "legacy_table_pid": 18,
+            "name": "dataclassfields"
+        },
+        {
+            "project_pid": 1,
+            "legacy_table_pid": 19,
+            "name": "dbtable"
+        },
+        {
+            "project_pid": 1,
+            "legacy_table_pid": 20,
+            "name": "dbtablecolumns"
+        },
+        {
+            "project_pid": 1,
+            "legacy_table_pid": 24,
+            "name": "ProjectUser"
+        },
+        {
+            "project_pid": 1,
+            "legacy_table_pid": 25,
+            "name": "Req"
+        },
+        {
+            "project_pid": 1,
+            "legacy_table_pid": 27,
+            "name": "Test"
+        },
+        {
+            "project_pid": 1,
+            "legacy_table_pid": 28,
+            "name": "TestGroup"
+        },
+        {
+            "project_pid": 1,
+            "legacy_table_pid": 29,
+            "name": "TestCondition"
+        },
+        {
+            "project_pid": 1,
+            "legacy_table_pid": 30,
+            "name": "TestConditionSelection"
+        },
+        {
+            "project_pid": 1,
+            "legacy_table_pid": 31,
+            "name": "TestPattern"
+        },
+        {
+            "project_pid": 1,
+            "legacy_table_pid": 32,
+            "name": "TestPatternSelection"
+        },
+        {
+            "project_pid": 1,
+            "legacy_table_pid": 33,
+            "name": "TestPatternExecuteResult"
+        },
+        {
+            "project_pid": 1,
+            "legacy_table_pid": 35,
+            "name": "Spec"
+        },
+        {
+            "project_pid": 1,
+            "legacy_table_pid": 37,
+            "name": "SpecContent"
+        },
+        {
+            "project_pid": 1,
+            "legacy_table_pid": 41,
+            "name": "ProjectSourceOutput"
+        },
+        {
+            "project_pid": 1,
+            "legacy_table_pid": 45,
+            "name": "daCustomProxy"
+        },
+        {
+            "project_pid": 1,
+            "legacy_table_pid": 46,
+            "name": "daCustomProxyFunc"
+        },
+        {
+            "project_pid": 1,
+            "legacy_table_pid": 47,
+            "name": "dafuncselecthaving"
+        },
+        {
+            "project_pid": 1,
+            "legacy_table_pid": 52,
+            "name": "chattopic"
+        },
+        {
+            "project_pid": 1,
+            "legacy_table_pid": 53,
+            "name": "ProjectSecurityForEachPage"
+        },
+        {
+            "project_pid": 1,
+            "legacy_table_pid": 54,
+            "name": "ProjectSecurityForEachPageDetails"
+        },
+        {
+            "project_pid": 1,
+            "legacy_table_pid": 55,
+            "name": "chattopicAttachment"
+        },
+        {
+            "project_pid": 1,
+            "legacy_table_pid": 57,
+            "name": "minutes"
+        },
+        {
+            "project_pid": 1,
+            "legacy_table_pid": 61,
+            "name": "html"
+        },
+        {
+            "project_pid": 1,
+            "legacy_table_pid": 62,
+            "name": "htmlTemplate"
+        },
+        {
+            "project_pid": 1,
+            "legacy_table_pid": 63,
+            "name": "htmlTemplateParameter"
+        },
+        {
+            "project_pid": 1,
+            "legacy_table_pid": 64,
+            "name": "htmlParameter"
+        },
+        {
+            "project_pid": 1,
+            "legacy_table_pid": 68,
+            "name": "UploadGroup"
+        },
+        {
+            "project_pid": 1,
+            "legacy_table_pid": 69,
+            "name": "UploadGroupAssignedServerPath"
+        },
+        {
+            "project_pid": 1,
+            "legacy_table_pid": 70,
+            "name": "UploadServer"
+        },
+        {
+            "project_pid": 1,
+            "legacy_table_pid": 71,
+            "name": "UploadServerPath"
+        },
+        {
+            "project_pid": 1,
+            "legacy_table_pid": 72,
+            "name": "UploadGroupAssignedUser"
+        },
+        {
+            "project_pid": 1,
+            "legacy_table_pid": 74,
+            "name": "ApacheSetting"
+        },
+        {
+            "project_pid": 1,
+            "legacy_table_pid": 75,
+            "name": "ApacheHostSetting"
+        },
+        {
+            "project_pid": 1,
+            "legacy_table_pid": 76,
+            "name": "ApacheHostSettingTemplate"
+        },
+        {
+            "project_pid": 1,
+            "legacy_table_pid": 77,
+            "name": "DropboxSetting"
+        },
+        {
+            "project_pid": 1,
+            "legacy_table_pid": 78,
+            "name": "DropboxOauth2StatusHash"
+        },
+        {
+            "project_pid": 1,
+            "legacy_table_pid": 82,
+            "name": "daCustomProxySourceOutputTarget"
+        },
+        {
+            "project_pid": 1,
+            "legacy_table_pid": 83,
+            "name": "dafuncSimpleProxySourceOutputTarget"
+        },
+        {
+            "project_pid": 1,
+            "legacy_table_pid": 89,
+            "name": "BuildSourceCache"
+        },
+        {
+            "project_pid": 1,
+            "legacy_table_pid": 90,
+            "name": "ProjectHostSetting"
+        },
+        {
+            "project_pid": 1,
+            "legacy_table_pid": 93,
+            "name": "SpecialHoliday"
+        },
+        {
+            "project_pid": 1,
+            "legacy_table_pid": 96,
+            "name": "PaypalSubscription"
+        },
+        {
+            "project_pid": 1,
+            "legacy_table_pid": 99,
+            "name": "Server"
+        },
+        {
+            "project_pid": 1,
+            "legacy_table_pid": 100,
+            "name": "DBUser"
+        },
+        {
+            "project_pid": 1,
+            "legacy_table_pid": 101,
+            "name": "DBConnection"
+        },
+        {
+            "project_pid": 1,
+            "legacy_table_pid": 102,
+            "name": "DBUserClientHost"
+        },
+        {
+            "project_pid": 1,
+            "legacy_table_pid": 103,
+            "name": "UploadDropboxPathCache"
+        },
+        {
+            "project_pid": 1,
+            "legacy_table_pid": 104,
+            "name": "UploadDropboxPathCacheItems"
+        },
+        {
+            "project_pid": 1,
+            "legacy_table_pid": 105,
+            "name": "DropboxBaseFolder"
+        },
+        {
+            "project_pid": 1,
+            "legacy_table_pid": 107,
+            "name": "InternalUser"
+        },
+        {
+            "project_pid": 1,
+            "legacy_table_pid": 108,
+            "name": "SettingGroupUser"
+        },
+        {
+            "project_pid": 1,
+            "legacy_table_pid": 109,
+            "name": "SettingGroup"
+        },
+        {
+            "project_pid": 1,
+            "legacy_table_pid": 111,
+            "name": "DropboxBaseFolderUser"
+        },
+        {
+            "project_pid": 1,
+            "legacy_table_pid": 112,
+            "name": "BuildToken"
+        },
+        {
+            "project_pid": 1,
+            "legacy_table_pid": 113,
+            "name": "BuildTokenProjectSourceOutput"
+        },
+        {
+            "project_pid": 1,
+            "legacy_table_pid": 114,
+            "name": "BuildTokenTemplateCache"
+        },
+        {
+            "project_pid": 1,
+            "legacy_table_pid": 115,
+            "name": "BuildTokenCompletedItem"
+        },
+        {
+            "project_pid": 1,
+            "legacy_table_pid": 116,
+            "name": "BuildSourceFuncCache"
+        },
+        {
+            "project_pid": 1,
+            "legacy_table_pid": 118,
+            "name": "LastBuild"
+        },
+        {
+            "project_pid": 1,
+            "legacy_table_pid": 119,
+            "name": "ProjectGroup"
+        },
+        {
+            "project_pid": 1,
+            "legacy_table_pid": 121,
+            "name": "DropboxUploadToken"
+        },
+        {
+            "project_pid": 1,
+            "legacy_table_pid": 122,
+            "name": "ProjectGroupTemplate"
+        },
+        {
+            "project_pid": 1,
+            "legacy_table_pid": 127,
+            "name": "LiveCheckResult"
+        },
+        {
+            "project_pid": 1,
+            "legacy_table_pid": 128,
+            "name": "LiveCheckTarget"
+        },
+        {
+            "project_pid": 1,
+            "legacy_table_pid": 139,
+            "name": "LanguageResource"
+        },
+        {
+            "project_pid": 1,
+            "legacy_table_pid": 140,
+            "name": "LanguageResourceGroup"
+        },
+        {
+            "project_pid": 1,
+            "legacy_table_pid": 141,
+            "name": "LanguageResourceGroupProjectSourceOutput"
+        },
+        {
+            "project_pid": 1,
+            "legacy_table_pid": 146,
+            "name": "LiveCheckResultSummaryForEachHour"
+        },
+        {
+            "project_pid": 1,
+            "legacy_table_pid": 147,
+            "name": "BuildLog"
+        },
+        {
+            "project_pid": 1,
+            "legacy_table_pid": 161,
+            "name": "ProjectSourceOutputSavedFiles"
+        },
+        {
+            "project_pid": 1,
+            "legacy_table_pid": 164,
+            "name": "LanguageResourceAdditionalGroupAssignment"
+        },
+        {
+            "project_pid": 1,
+            "legacy_table_pid": 200,
+            "name": "DBBackup"
+        },
+        {
+            "project_pid": 1,
+            "legacy_table_pid": 201,
+            "name": "DBBackupUser"
+        },
+        {
+            "project_pid": 1,
+            "legacy_table_pid": 212,
+            "name": "LanguageResourceCaption"
+        },
+        {
+            "project_pid": 1,
+            "legacy_table_pid": 213,
+            "name": "LanguageResourceGroupLang"
+        },
+        {
+            "project_pid": 1,
+            "legacy_table_pid": 214,
+            "name": "LanguageResourceLang"
+        },
+        {
+            "project_pid": 1,
+            "legacy_table_pid": 215,
+            "name": "CompareOutput"
+        },
+        {
+            "project_pid": 1,
+            "legacy_table_pid": 217,
+            "name": "CompareOutputAdditionalPath"
+        },
+        {
+            "project_pid": 1,
+            "legacy_table_pid": 218,
+            "name": "CompareOutputSearchCache"
+        },
+        {
+            "project_pid": 1,
+            "legacy_table_pid": 220,
+            "name": "CompareOutputSearchCacheHint"
+        }
+    ]
+}

@@ -1,0 +1,321 @@
+{
+    "resource_key": "HEADER_ENROLL_DESIRE_ID",
+    "legacy_resource_pid": 1303,
+    "base_group_key": "grp-028-app-common-lib",
+    "additional_group_keys": [],
+    "key_for_update": "28Ypc5NipsPgnxZdz9IIxjs4uji3xCjFZvc2mK2koAMPiwxIwU35w2xKyyCDCODVhDlsNER9eVrQlWKWEoP5nIumSRbSRhBlZXWMVRnPCLHWyr3aE0xc9gMnbPEfiBw4",
+    "sort_group": "ENROLL",
+    "key_name": "HEADER_ENROLL_DESIRE_ID",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": false,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 829,
+            "legacy_language_pid": 1,
+            "text": "希望ユーザ名(ID) (小文字の英数字)",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 830,
+            "legacy_language_pid": 2,
+            "text": "Desired User Name (ID) (Small character alphabet and number)",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 6394,
+            "legacy_language_pid": 3,
+            "text": "希望使用的用户名（字母数字小写）",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 6395,
+            "legacy_language_pid": 4,
+            "text": "희망 아이디 (영숫자 소문자)",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 10103,
+            "legacy_language_pid": 5,
+            "text": "ID deseado (alfabeto y número con caracteres pequeños)",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 10104,
+            "legacy_language_pid": 6,
+            "text": "ID desejada (alfabeto e número com caracteres pequenos)",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 10105,
+            "legacy_language_pid": 7,
+            "text": "希望使用的用户名（字母數字小寫）",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 16101,
+            "legacy_language_pid": 8,
+            "text": "Nom d'utilisateur désiré (ID) (alphabet et nombre de caractères petits)",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 16102,
+            "legacy_language_pid": 9,
+            "text": "वांछित उपयोगकर्ता नाम (आईडी) (लघु अक्षर वर्णमाला और संख्या)",
+            "auto_translated": ""
+        },
+        "ar": {
+            "legacy_caption_pid": 28386,
+            "legacy_language_pid": 10,
+            "text": "اسم المستخدم المطلوب (ID) (صغيرة أبجدية)",
+            "auto_translated": "اسم المستخدم المطلوب (ID) (صغيرة أبجدية)"
+        },
+        "fa": {
+            "legacy_caption_pid": 28387,
+            "legacy_language_pid": 11,
+            "text": "نام کاربر مورد نظر (ID) (با حروف کوچک الفبایی)",
+            "auto_translated": "نام کاربر مورد نظر (ID) (با حروف کوچک الفبایی)"
+        },
+        "de": {
+            "legacy_caption_pid": 28388,
+            "legacy_language_pid": 12,
+            "text": "Gewünschten Benutzernamen (ID) (alphanumerische Kleinbuchstaben)",
+            "auto_translated": "Gewünschten Benutzernamen (ID) (alphanumerische Kleinbuchstaben)"
+        },
+        "ru": {
+            "legacy_caption_pid": 28389,
+            "legacy_language_pid": 13,
+            "text": "Имя пользователя Желаемого (ID) (буквенно-цифровой нижний регистр)",
+            "auto_translated": "Имя пользователя Желаемого (ID) (буквенно-цифровой нижний регистр)"
+        },
+        "ms": {
+            "legacy_caption_pid": 28390,
+            "legacy_language_pid": 14,
+            "text": "nama yang dikehendaki pengguna (ID) (huruf kecil abjad angka)",
+            "auto_translated": "nama yang dikehendaki pengguna (ID) (huruf kecil abjad angka)"
+        },
+        "ta": {
+            "legacy_caption_pid": 28391,
+            "legacy_language_pid": 15,
+            "text": "விரும்பிய பயனர் பெயர் (ஐடி) (எண்ணெழுத்து ஸ்மால்)",
+            "auto_translated": "விரும்பிய பயனர் பெயர் (ஐடி) (எண்ணெழுத்து ஸ்மால்)"
+        },
+        "it": {
+            "legacy_caption_pid": 28392,
+            "legacy_language_pid": 16,
+            "text": "Nome utente desiderato (ID) (minuscolo alfanumerico)",
+            "auto_translated": "Nome utente desiderato (ID) (minuscolo alfanumerico)"
+        },
+        "bn": {
+            "legacy_caption_pid": 28393,
+            "legacy_language_pid": 17,
+            "text": "কাঙ্খিত ব্যবহারকারী নাম (আইডি) (আলফানিউমেরিক ছোট হাতের)",
+            "auto_translated": "কাঙ্খিত ব্যবহারকারী নাম (আইডি) (আলফানিউমেরিক ছোট হাতের)"
+        },
+        "tr": {
+            "legacy_caption_pid": 28394,
+            "legacy_language_pid": 18,
+            "text": "İstenilen kullanıcı adı (İD) (alfanümerik küçük)",
+            "auto_translated": "İstenilen kullanıcı adı (İD) (alfanümerik küçük)"
+        },
+        "vi": {
+            "legacy_caption_pid": 28395,
+            "legacy_language_pid": 19,
+            "text": "tên người dùng mong muốn (ID) (chữ thường)",
+            "auto_translated": "tên người dùng mong muốn (ID) (chữ thường)"
+        },
+        "pl": {
+            "legacy_caption_pid": 28396,
+            "legacy_language_pid": 20,
+            "text": "Nazwa życzenia użytkownika (ID) (małe alfanumeryczny)",
+            "auto_translated": "Nazwa życzenia użytkownika (ID) (małe alfanumeryczny)"
+        },
+        "jv": {
+            "legacy_caption_pid": 28397,
+            "legacy_language_pid": 21,
+            "text": "jeneng dikarepake pengguna (ID) (alphanumeric cilik)",
+            "auto_translated": "jeneng dikarepake pengguna (ID) (alphanumeric cilik)"
+        },
+        "pa": {
+            "legacy_caption_pid": 28398,
+            "legacy_language_pid": 22,
+            "text": "ਲੋੜੀਦੀ ਉਪਭੋਗਤਾ ਨਾਮ (ID) (ਅੱਖਰ ਅੱਖਰ)",
+            "auto_translated": "ਲੋੜੀਦੀ ਉਪਭੋਗਤਾ ਨਾਮ (ID) (ਅੱਖਰ ਅੱਖਰ)"
+        },
+        "th": {
+            "legacy_caption_pid": 28399,
+            "legacy_language_pid": 23,
+            "text": "ชื่อผู้ใช้ที่ต้องการ (ID) (ตัวพิมพ์เล็กและตัวเลข)",
+            "auto_translated": "ชื่อผู้ใช้ที่ต้องการ (ID) (ตัวพิมพ์เล็กและตัวเลข)"
+        },
+        "te": {
+            "legacy_caption_pid": 33708,
+            "legacy_language_pid": 24,
+            "text": "కావలిసిన వినియోగదారుని పేరు (ID) (ఆల్ఫాన్యూమరిక్ చిన్న)",
+            "auto_translated": "కావలిసిన వినియోగదారుని పేరు (ID) (ఆల్ఫాన్యూమరిక్ చిన్న)"
+        },
+        "mr": {
+            "legacy_caption_pid": 33709,
+            "legacy_language_pid": 25,
+            "text": "इच्छित वापरकर्ता नाव (ID) (वर्णांक लोअरकेस)",
+            "auto_translated": "इच्छित वापरकर्ता नाव (ID) (वर्णांक लोअरकेस)"
+        },
+        "ur": {
+            "legacy_caption_pid": 33710,
+            "legacy_language_pid": 26,
+            "text": "مطلوبہ صارف کا نام (ID) (اکشرانکیی خفی)",
+            "auto_translated": "مطلوبہ صارف کا نام (ID) (اکشرانکیی خفی)"
+        },
+        "gu": {
+            "legacy_caption_pid": 33711,
+            "legacy_language_pid": 27,
+            "text": "ઇચ્છિત વપરાશકર્તા નામ (આઈડી) (આલ્ફાન્યૂમેરિક લોઅરકેસ)",
+            "auto_translated": "ઇચ્છિત વપરાશકર્તા નામ (આઈડી) (આલ્ફાન્યૂમેરિક લોઅરકેસ)"
+        },
+        "uk": {
+            "legacy_caption_pid": 33712,
+            "legacy_language_pid": 28,
+            "text": "Ім'я користувача Бажаного (ID) (буквено-цифровий нижній регістр)",
+            "auto_translated": "Ім'я користувача Бажаного (ID) (буквено-цифровий нижній регістр)"
+        },
+        "ml": {
+            "legacy_caption_pid": 33713,
+            "legacy_language_pid": 29,
+            "text": "ആഗ്രഹിക്കുന്ന ഉപയോക്തൃനാമം (ഐഡി) (അക്കങ്ങളും ചെറിയക്ഷരം)",
+            "auto_translated": "ആഗ്രഹിക്കുന്ന ഉപയോക്തൃനാമം (ഐഡി) (അക്കങ്ങളും ചെറിയക്ഷരം)"
+        },
+        "kn": {
+            "legacy_caption_pid": 33714,
+            "legacy_language_pid": 30,
+            "text": "ಅಪೇಕ್ಷಿತ ಬಳಕೆದಾರರ ಹೆಸರು (ಐಡಿ) (ಅಕ್ಷರಸಂಖ್ಯಾಯುಕ್ತ ಸಣ್ಣ)",
+            "auto_translated": "ಅಪೇಕ್ಷಿತ ಬಳಕೆದಾರರ ಹೆಸರು (ಐಡಿ) (ಅಕ್ಷರಸಂಖ್ಯಾಯುಕ್ತ ಸಣ್ಣ)"
+        },
+        "su": {
+            "legacy_caption_pid": 33715,
+            "legacy_language_pid": 31,
+            "text": "Ngaran dipikahoyong pamaké (ID) (alpanumérik aksara leutik)",
+            "auto_translated": "Ngaran dipikahoyong pamaké (ID) (alpanumérik aksara leutik)"
+        },
+        "ku": {
+            "legacy_caption_pid": 33716,
+            "legacy_language_pid": 32,
+            "text": "navê bikarhêner xwestin (ID) (lowercase alphanumeric)",
+            "auto_translated": "navê bikarhêner xwestin (ID) (lowercase alphanumeric)"
+        },
+        "ps": {
+            "legacy_caption_pid": 33717,
+            "legacy_language_pid": 33,
+            "text": "مطلوبې کارن نوم (تذکرو) (په الفبې lowercase)",
+            "auto_translated": "مطلوبې کارن نوم (تذکرو) (په الفبې lowercase)"
+        },
+        "ro": {
+            "legacy_caption_pid": 33718,
+            "legacy_language_pid": 34,
+            "text": "nume de utilizator dorit (ID) (litere mici alfanumeric)",
+            "auto_translated": "nume de utilizator dorit (ID) (litere mici alfanumeric)"
+        },
+        "id": {
+            "legacy_caption_pid": 33719,
+            "legacy_language_pid": 35,
+            "text": "nama yang diinginkan pengguna (ID) (alfanumerik huruf kecil)",
+            "auto_translated": "nama yang diinginkan pengguna (ID) (alfanumerik huruf kecil)"
+        },
+        "sd": {
+            "legacy_caption_pid": 33720,
+            "legacy_language_pid": 36,
+            "text": "گهربل صارف نالو (سڃاڻپ) (alphanumeric ننڍو)",
+            "auto_translated": "گهربل صارف نالو (سڃاڻپ) (alphanumeric ننڍو)"
+        },
+        "af": {
+            "legacy_caption_pid": 33721,
+            "legacy_language_pid": 37,
+            "text": "Gewenste gebruikersnaam (OD) (alfanumeriese klein)",
+            "auto_translated": "Gewenste gebruikersnaam (OD) (alfanumeriese klein)"
+        },
+        "sw": {
+            "legacy_caption_pid": 33722,
+            "legacy_language_pid": 38,
+            "text": "Taka jina la mtumiaji (ID) (alphanumeric lowercase)",
+            "auto_translated": "Taka jina la mtumiaji (ID) (alphanumeric lowercase)"
+        },
+        "lo": {
+            "legacy_caption_pid": 33723,
+            "legacy_language_pid": 39,
+            "text": "ຊື່ຜູ້ໃຊ້ທີ່ຕ້ອງການ (ລະຫັດ) (ອັກສອນຕົວນ້ອຍຕົວເລກ)",
+            "auto_translated": "ຊື່ຜູ້ໃຊ້ທີ່ຕ້ອງການ (ລະຫັດ) (ອັກສອນຕົວນ້ອຍຕົວເລກ)"
+        },
+        "nl": {
+            "legacy_caption_pid": 33724,
+            "legacy_language_pid": 40,
+            "text": "Gewenste gebruikersnaam (ID) (alfanumeriek kleine letters)",
+            "auto_translated": "Gewenste gebruikersnaam (ID) (alfanumeriek kleine letters)"
+        },
+        "tl": {
+            "legacy_caption_pid": 33725,
+            "legacy_language_pid": 41,
+            "text": "Ninanais na user name (ID) (alphanumeric lowercase)",
+            "auto_translated": "Ninanais na user name (ID) (alphanumeric lowercase)"
+        },
+        "ne": {
+            "legacy_caption_pid": 33726,
+            "legacy_language_pid": 42,
+            "text": "इच्छित प्रयोगकर्ता नाम (आईडी) (अल्फान्यूमेरिक सानो)",
+            "auto_translated": "इच्छित प्रयोगकर्ता नाम (आईडी) (अल्फान्यूमेरिक सानो)"
+        },
+        "hu": {
+            "legacy_caption_pid": 33727,
+            "legacy_language_pid": 43,
+            "text": "Kívánt felhasználó név (ID) (alfanumerikus kisbetű)",
+            "auto_translated": "Kívánt felhasználó név (ID) (alfanumerikus kisbetű)"
+        },
+        "cs": {
+            "legacy_caption_pid": 33728,
+            "legacy_language_pid": 44,
+            "text": "Požadovaný uživatelské jméno (ID) (alfanumerický malými písmeny)",
+            "auto_translated": "Požadovaný uživatelské jméno (ID) (alfanumerický malými písmeny)"
+        },
+        "el": {
+            "legacy_caption_pid": 33729,
+            "legacy_language_pid": 45,
+            "text": "Το όνομά επιθυμητό χρήστη (ID) (αλφαριθμητικό πεζά)",
+            "auto_translated": "Το όνομά επιθυμητό χρήστη (ID) (αλφαριθμητικό πεζά)"
+        },
+        "sv": {
+            "legacy_caption_pid": 33730,
+            "legacy_language_pid": 46,
+            "text": "Önskat användarnamn (ID) (alfanumeriskt gemener)",
+            "auto_translated": "Önskat användarnamn (ID) (alfanumeriskt gemener)"
+        },
+        "kk": {
+            "legacy_caption_pid": 33731,
+            "legacy_language_pid": 47,
+            "text": "Қалаған пайдаланушы аты (ID) (әріптік-сандық кіші)",
+            "auto_translated": "Қалаған пайдаланушы аты (ID) (әріптік-сандық кіші)"
+        },
+        "fi": {
+            "legacy_caption_pid": 33732,
+            "legacy_language_pid": 48,
+            "text": "Haluttu käyttäjätunnus (ID) (aakkosnumeerinen pieniä)",
+            "auto_translated": "Haluttu käyttäjätunnus (ID) (aakkosnumeerinen pieniä)"
+        },
+        "da": {
+            "legacy_caption_pid": 33733,
+            "legacy_language_pid": 49,
+            "text": "Ønsket brugernavn (ID) (alfanumeriske små bogstaver)",
+            "auto_translated": "Ønsket brugernavn (ID) (alfanumeriske små bogstaver)"
+        },
+        "he": {
+            "legacy_caption_pid": 33734,
+            "legacy_language_pid": 50,
+            "text": "שם משתמש רצוי (ID) (קטן אלפאנומרי)",
+            "auto_translated": "שם משתמש רצוי (ID) (קטן אלפאנומרי)"
+        },
+        "no": {
+            "legacy_caption_pid": 33735,
+            "legacy_language_pid": 51,
+            "text": "Ønsket brukernavn (ID) (alfanumerisk små bokstaver)",
+            "auto_translated": "Ønsket brukernavn (ID) (alfanumerisk små bokstaver)"
+        }
+    }
+}

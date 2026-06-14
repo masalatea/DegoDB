@@ -1,0 +1,321 @@
+{
+    "resource_key": "COMMON_LIB_ENROLL_HEADER_NUMBER_INPUT",
+    "legacy_resource_pid": 1407,
+    "base_group_key": "grp-010-matsuesoft-lib",
+    "additional_group_keys": [],
+    "key_for_update": "XAONlyEH9XYzFw0rOIB8jCVnuLh2QDaCtipN8YoetPowd19hXWrSJlgwMDYoxXRI60M4hEuHzo6h6XZKgwWkx2OyPaVdkTVEXSgF4zji1LOC9WsWyQrmj1blduuMRHp4",
+    "sort_group": "ENROLL",
+    "key_name": "COMMON_LIB_ENROLL_HEADER_NUMBER_INPUT",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": false,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 5902,
+            "legacy_language_pid": 1,
+            "text": "数値入力:",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 5903,
+            "legacy_language_pid": 2,
+            "text": "Numerical value input:",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 5904,
+            "legacy_language_pid": 3,
+            "text": "数字输入：",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 5905,
+            "legacy_language_pid": 4,
+            "text": "수치 입력 :",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 10856,
+            "legacy_language_pid": 5,
+            "text": "Entrada de valores numéricos:",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 10857,
+            "legacy_language_pid": 6,
+            "text": "Introduzir valores numéricos:",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 10858,
+            "legacy_language_pid": 7,
+            "text": "數字輸入：",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 17005,
+            "legacy_language_pid": 8,
+            "text": "Entrée de valeur numérique:",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 17006,
+            "legacy_language_pid": 9,
+            "text": "संख्यात्मक मान इनपुट:",
+            "auto_translated": ""
+        },
+        "ar": {
+            "legacy_caption_pid": 31550,
+            "legacy_language_pid": 10,
+            "text": "المدخلات الرقمية:",
+            "auto_translated": "المدخلات الرقمية:"
+        },
+        "fa": {
+            "legacy_caption_pid": 31551,
+            "legacy_language_pid": 11,
+            "text": "ورودی عددی:",
+            "auto_translated": "ورودی عددی:"
+        },
+        "de": {
+            "legacy_caption_pid": 31552,
+            "legacy_language_pid": 12,
+            "text": "Numerische Eingabe:",
+            "auto_translated": "Numerische Eingabe:"
+        },
+        "ru": {
+            "legacy_caption_pid": 31553,
+            "legacy_language_pid": 13,
+            "text": "Цифровой вход:",
+            "auto_translated": "Цифровой вход:"
+        },
+        "ms": {
+            "legacy_caption_pid": 31554,
+            "legacy_language_pid": 14,
+            "text": "Input angka:",
+            "auto_translated": "Input angka:"
+        },
+        "ta": {
+            "legacy_caption_pid": 31555,
+            "legacy_language_pid": 15,
+            "text": "எண் உள்ளீட்டு:",
+            "auto_translated": "எண் உள்ளீட்டு:"
+        },
+        "it": {
+            "legacy_caption_pid": 31556,
+            "legacy_language_pid": 16,
+            "text": "input numerico:",
+            "auto_translated": "input numerico:"
+        },
+        "bn": {
+            "legacy_caption_pid": 31557,
+            "legacy_language_pid": 17,
+            "text": "সাংখ্যিক ইনপুট:",
+            "auto_translated": "সাংখ্যিক ইনপুট:"
+        },
+        "tr": {
+            "legacy_caption_pid": 31558,
+            "legacy_language_pid": 18,
+            "text": "Sayısal girdi:",
+            "auto_translated": "Sayısal girdi:"
+        },
+        "vi": {
+            "legacy_caption_pid": 31559,
+            "legacy_language_pid": 19,
+            "text": "nhập số:",
+            "auto_translated": "nhập số:"
+        },
+        "pl": {
+            "legacy_caption_pid": 31560,
+            "legacy_language_pid": 20,
+            "text": "Numeryczne:",
+            "auto_translated": "Numeryczne:"
+        },
+        "jv": {
+            "legacy_caption_pid": 31561,
+            "legacy_language_pid": 21,
+            "text": "input numerik:",
+            "auto_translated": "input numerik:"
+        },
+        "pa": {
+            "legacy_caption_pid": 31562,
+            "legacy_language_pid": 22,
+            "text": "ਅੰਕੀ ਇੰਪੁੱਟ:",
+            "auto_translated": "ਅੰਕੀ ਇੰਪੁੱਟ:"
+        },
+        "th": {
+            "legacy_caption_pid": 31563,
+            "legacy_language_pid": 23,
+            "text": "การป้อนข้อมูลตัวเลข:",
+            "auto_translated": "การป้อนข้อมูลตัวเลข:"
+        },
+        "te": {
+            "legacy_caption_pid": 38972,
+            "legacy_language_pid": 24,
+            "text": "సంఖ్యా ఇన్పుట్:",
+            "auto_translated": "సంఖ్యా ఇన్పుట్:"
+        },
+        "mr": {
+            "legacy_caption_pid": 38973,
+            "legacy_language_pid": 25,
+            "text": "संख्यात्मक इनपुट:",
+            "auto_translated": "संख्यात्मक इनपुट:"
+        },
+        "ur": {
+            "legacy_caption_pid": 38974,
+            "legacy_language_pid": 26,
+            "text": "نمبری ان پٹ:",
+            "auto_translated": "نمبری ان پٹ:"
+        },
+        "gu": {
+            "legacy_caption_pid": 38975,
+            "legacy_language_pid": 27,
+            "text": "આંકડાકીય ઇનપુટ:",
+            "auto_translated": "આંકડાકીય ઇનપુટ:"
+        },
+        "uk": {
+            "legacy_caption_pid": 38976,
+            "legacy_language_pid": 28,
+            "text": "Цифровий вхід:",
+            "auto_translated": "Цифровий вхід:"
+        },
+        "ml": {
+            "legacy_caption_pid": 38977,
+            "legacy_language_pid": 29,
+            "text": "സംഖ്യാ ഇൻപുട്ട്:",
+            "auto_translated": "സംഖ്യാ ഇൻപുട്ട്:"
+        },
+        "kn": {
+            "legacy_caption_pid": 38978,
+            "legacy_language_pid": 30,
+            "text": "ಸಾಂಖ್ಯಿಕ ಆದಾನ:",
+            "auto_translated": "ಸಾಂಖ್ಯಿಕ ಆದಾನ:"
+        },
+        "su": {
+            "legacy_caption_pid": 38979,
+            "legacy_language_pid": 31,
+            "text": "input numerik:",
+            "auto_translated": "input numerik:"
+        },
+        "ku": {
+            "legacy_caption_pid": 38980,
+            "legacy_language_pid": 32,
+            "text": "input hejmar:",
+            "auto_translated": "input hejmar:"
+        },
+        "ps": {
+            "legacy_caption_pid": 38981,
+            "legacy_language_pid": 33,
+            "text": "شمېريزو آخذه:",
+            "auto_translated": "شمېريزو آخذه:"
+        },
+        "ro": {
+            "legacy_caption_pid": 38982,
+            "legacy_language_pid": 34,
+            "text": "intrare numerică:",
+            "auto_translated": "intrare numerică:"
+        },
+        "id": {
+            "legacy_caption_pid": 38983,
+            "legacy_language_pid": 35,
+            "text": "input numerik:",
+            "auto_translated": "input numerik:"
+        },
+        "sd": {
+            "legacy_caption_pid": 38984,
+            "legacy_language_pid": 36,
+            "text": "انگن جي ايوانن:",
+            "auto_translated": "انگن جي ايوانن:"
+        },
+        "af": {
+            "legacy_caption_pid": 38985,
+            "legacy_language_pid": 37,
+            "text": "Numeriese insette:",
+            "auto_translated": "Numeriese insette:"
+        },
+        "sw": {
+            "legacy_caption_pid": 38986,
+            "legacy_language_pid": 38,
+            "text": "Nambari ya pembejeo:",
+            "auto_translated": "Nambari ya pembejeo:"
+        },
+        "lo": {
+            "legacy_caption_pid": 38987,
+            "legacy_language_pid": 39,
+            "text": "ການປ້ອນຂໍ້ມູນທີ່ເປັນຕົວເລກ:",
+            "auto_translated": "ການປ້ອນຂໍ້ມູນທີ່ເປັນຕົວເລກ:"
+        },
+        "nl": {
+            "legacy_caption_pid": 38988,
+            "legacy_language_pid": 40,
+            "text": "Numerieke invoer:",
+            "auto_translated": "Numerieke invoer:"
+        },
+        "tl": {
+            "legacy_caption_pid": 38989,
+            "legacy_language_pid": 41,
+            "text": "Numeric input:",
+            "auto_translated": "Numeric input:"
+        },
+        "ne": {
+            "legacy_caption_pid": 38990,
+            "legacy_language_pid": 42,
+            "text": "संख्यात्मक इनपुट:",
+            "auto_translated": "संख्यात्मक इनपुट:"
+        },
+        "hu": {
+            "legacy_caption_pid": 38991,
+            "legacy_language_pid": 43,
+            "text": "Numerikus bemenet:",
+            "auto_translated": "Numerikus bemenet:"
+        },
+        "cs": {
+            "legacy_caption_pid": 38992,
+            "legacy_language_pid": 44,
+            "text": "Číselné zadání:",
+            "auto_translated": "Číselné zadání:"
+        },
+        "el": {
+            "legacy_caption_pid": 38993,
+            "legacy_language_pid": 45,
+            "text": "Αριθμητική εισόδου:",
+            "auto_translated": "Αριθμητική εισόδου:"
+        },
+        "sv": {
+            "legacy_caption_pid": 38994,
+            "legacy_language_pid": 46,
+            "text": "Numerisk input:",
+            "auto_translated": "Numerisk input:"
+        },
+        "kk": {
+            "legacy_caption_pid": 38995,
+            "legacy_language_pid": 47,
+            "text": "Сандық кіріс:",
+            "auto_translated": "Сандық кіріс:"
+        },
+        "fi": {
+            "legacy_caption_pid": 38996,
+            "legacy_language_pid": 48,
+            "text": "Numeerinen tulo:",
+            "auto_translated": "Numeerinen tulo:"
+        },
+        "da": {
+            "legacy_caption_pid": 38997,
+            "legacy_language_pid": 49,
+            "text": "Numerisk input:",
+            "auto_translated": "Numerisk input:"
+        },
+        "he": {
+            "legacy_caption_pid": 38998,
+            "legacy_language_pid": 50,
+            "text": "קלט מספרי:",
+            "auto_translated": "קלט מספרי:"
+        },
+        "no": {
+            "legacy_caption_pid": 38999,
+            "legacy_language_pid": 51,
+            "text": "Numerisk inngang:",
+            "auto_translated": "Numerisk inngang:"
+        }
+    }
+}

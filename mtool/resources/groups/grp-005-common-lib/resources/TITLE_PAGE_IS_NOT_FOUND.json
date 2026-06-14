@@ -1,0 +1,321 @@
+{
+    "resource_key": "TITLE_PAGE_IS_NOT_FOUND",
+    "legacy_resource_pid": 546,
+    "base_group_key": "grp-005-common-lib",
+    "additional_group_keys": [],
+    "key_for_update": "rdiXke4tT5d7QdN27d6z5OKVr3OlyRUMhHezJlmmt3wlzTTE5wR88wBZP79kOb2NfMxvJcObrIlzXIhMdsswMmyzJQgQ2NM7QGCvpf9G8rGu777QVatvPy98buqLg8SG",
+    "sort_group": "TITLE",
+    "key_name": "TITLE_PAGE_IS_NOT_FOUND",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": false,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 1387,
+            "legacy_language_pid": 1,
+            "text": "ページが見つかりませんでした",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 1388,
+            "legacy_language_pid": 2,
+            "text": "Page is not found",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 6554,
+            "legacy_language_pid": 3,
+            "text": "页面无法找到",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 6555,
+            "legacy_language_pid": 4,
+            "text": "페이지를 찾을 수 없습니다",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 10573,
+            "legacy_language_pid": 5,
+            "text": "Página no encontrada",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 10574,
+            "legacy_language_pid": 6,
+            "text": "Página não encontrada",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 10575,
+            "legacy_language_pid": 7,
+            "text": "頁面無法找到",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 16335,
+            "legacy_language_pid": 8,
+            "text": "La page n'est pas trouvée",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 16336,
+            "legacy_language_pid": 9,
+            "text": "पृष्ठ नहीं मिला है",
+            "auto_translated": ""
+        },
+        "ar": {
+            "legacy_caption_pid": 30192,
+            "legacy_language_pid": 10,
+            "text": "لم يتم العثور على الصفحة",
+            "auto_translated": "لم يتم العثور على الصفحة"
+        },
+        "fa": {
+            "legacy_caption_pid": 30193,
+            "legacy_language_pid": 11,
+            "text": "صفحه پیدا نشد",
+            "auto_translated": "صفحه پیدا نشد"
+        },
+        "de": {
+            "legacy_caption_pid": 30194,
+            "legacy_language_pid": 12,
+            "text": "Seite konnte nicht gefunden werden",
+            "auto_translated": "Seite konnte nicht gefunden werden"
+        },
+        "ru": {
+            "legacy_caption_pid": 30195,
+            "legacy_language_pid": 13,
+            "text": "Страница не может быть найдена",
+            "auto_translated": "Страница не может быть найдена"
+        },
+        "ms": {
+            "legacy_caption_pid": 30196,
+            "legacy_language_pid": 14,
+            "text": "Halaman tidak dapat ditemui",
+            "auto_translated": "Halaman tidak dapat ditemui"
+        },
+        "ta": {
+            "legacy_caption_pid": 30197,
+            "legacy_language_pid": 15,
+            "text": "பக்கத்தைக் காணோம் முடியவில்லை",
+            "auto_translated": "பக்கத்தைக் காணோம் முடியவில்லை"
+        },
+        "it": {
+            "legacy_caption_pid": 30198,
+            "legacy_language_pid": 16,
+            "text": "Pagina non è stato trovato",
+            "auto_translated": "Pagina non è stato trovato"
+        },
+        "bn": {
+            "legacy_caption_pid": 30199,
+            "legacy_language_pid": 17,
+            "text": "পৃষ্ঠা খুঁজে পাওয়া যাবে না",
+            "auto_translated": "পৃষ্ঠা খুঁজে পাওয়া যাবে না"
+        },
+        "tr": {
+            "legacy_caption_pid": 30200,
+            "legacy_language_pid": 18,
+            "text": "Sayfa bulunamadı",
+            "auto_translated": "Sayfa bulunamadı"
+        },
+        "vi": {
+            "legacy_caption_pid": 30201,
+            "legacy_language_pid": 19,
+            "text": "Trang không thể được tìm thấy",
+            "auto_translated": "Trang không thể được tìm thấy"
+        },
+        "pl": {
+            "legacy_caption_pid": 30202,
+            "legacy_language_pid": 20,
+            "text": "Strona nie została znaleziona",
+            "auto_translated": "Strona nie została znaleziona"
+        },
+        "jv": {
+            "legacy_caption_pid": 30203,
+            "legacy_language_pid": 21,
+            "text": "Page ora ketemu",
+            "auto_translated": "Page ora ketemu"
+        },
+        "pa": {
+            "legacy_caption_pid": 30204,
+            "legacy_language_pid": 22,
+            "text": "ਪੰਨਾ ਨਾ ਲੱਭਿਆ ਜਾ ਸਕਦਾ ਹੈ",
+            "auto_translated": "ਪੰਨਾ ਨਾ ਲੱਭਿਆ ਜਾ ਸਕਦਾ ਹੈ"
+        },
+        "th": {
+            "legacy_caption_pid": 30205,
+            "legacy_language_pid": 23,
+            "text": "หน้าไม่พบ",
+            "auto_translated": "หน้าไม่พบ"
+        },
+        "te": {
+            "legacy_caption_pid": 36060,
+            "legacy_language_pid": 24,
+            "text": "పేజీ కనపడుటలేదు",
+            "auto_translated": "పేజీ కనపడుటలేదు"
+        },
+        "mr": {
+            "legacy_caption_pid": 36061,
+            "legacy_language_pid": 25,
+            "text": "पृष्ठ आढळले नाही",
+            "auto_translated": "पृष्ठ आढळले नाही"
+        },
+        "ur": {
+            "legacy_caption_pid": 36062,
+            "legacy_language_pid": 26,
+            "text": "صفحہ نہیں مل سکا",
+            "auto_translated": "صفحہ نہیں مل سکا"
+        },
+        "gu": {
+            "legacy_caption_pid": 36063,
+            "legacy_language_pid": 27,
+            "text": "પૃષ્ઠ મળ્યું નથી કરી શકાઈ નથી",
+            "auto_translated": "પૃષ્ઠ મળ્યું નથી કરી શકાઈ નથી"
+        },
+        "uk": {
+            "legacy_caption_pid": 36064,
+            "legacy_language_pid": 28,
+            "text": "Сторінку не може бути знайдена",
+            "auto_translated": "Сторінку не може бути знайдена"
+        },
+        "ml": {
+            "legacy_caption_pid": 36065,
+            "legacy_language_pid": 29,
+            "text": "പേജ് കണ്ടെത്താൻ കഴിഞ്ഞില്ല",
+            "auto_translated": "പേജ് കണ്ടെത്താൻ കഴിഞ്ഞില്ല"
+        },
+        "kn": {
+            "legacy_caption_pid": 36066,
+            "legacy_language_pid": 30,
+            "text": "ಪುಟ ಪತ್ತೆಯಾಗಿಲ್ಲ",
+            "auto_translated": "ಪುಟ ಪತ್ತೆಯಾಗಿಲ್ಲ"
+        },
+        "su": {
+            "legacy_caption_pid": 36067,
+            "legacy_language_pid": 31,
+            "text": "Page teu bisa kapanggih",
+            "auto_translated": "Page teu bisa kapanggih"
+        },
+        "ku": {
+            "legacy_caption_pid": 36068,
+            "legacy_language_pid": 32,
+            "text": "Page nehat dîtin",
+            "auto_translated": "Page nehat dîtin"
+        },
+        "ps": {
+            "legacy_caption_pid": 36069,
+            "legacy_language_pid": 33,
+            "text": "Page ونه موندل شي",
+            "auto_translated": "Page ونه موندل شي"
+        },
+        "ro": {
+            "legacy_caption_pid": 36070,
+            "legacy_language_pid": 34,
+            "text": "Pagina nu a putut fi găsită",
+            "auto_translated": "Pagina nu a putut fi găsită"
+        },
+        "id": {
+            "legacy_caption_pid": 36071,
+            "legacy_language_pid": 35,
+            "text": "Halaman tidak dapat ditemukan",
+            "auto_translated": "Halaman tidak dapat ditemukan"
+        },
+        "sd": {
+            "legacy_caption_pid": 36072,
+            "legacy_language_pid": 36,
+            "text": "صفحي کي نه ملي سگهي",
+            "auto_translated": "صفحي کي نه ملي سگهي"
+        },
+        "af": {
+            "legacy_caption_pid": 36073,
+            "legacy_language_pid": 37,
+            "text": "Page kon nie gevind word",
+            "auto_translated": "Page kon nie gevind word"
+        },
+        "sw": {
+            "legacy_caption_pid": 36074,
+            "legacy_language_pid": 38,
+            "text": "Ukurasa haikupatikana",
+            "auto_translated": "Ukurasa haikupatikana"
+        },
+        "lo": {
+            "legacy_caption_pid": 36075,
+            "legacy_language_pid": 39,
+            "text": "ຫນ້າບໍ່ສາມາດໄດ້ຮັບການພົບເຫັນ",
+            "auto_translated": "ຫນ້າບໍ່ສາມາດໄດ້ຮັບການພົບເຫັນ"
+        },
+        "nl": {
+            "legacy_caption_pid": 36076,
+            "legacy_language_pid": 40,
+            "text": "Pagina kon niet worden gevonden",
+            "auto_translated": "Pagina kon niet worden gevonden"
+        },
+        "tl": {
+            "legacy_caption_pid": 36077,
+            "legacy_language_pid": 41,
+            "text": "Pahina ay hindi matagpuan",
+            "auto_translated": "Pahina ay hindi matagpuan"
+        },
+        "ne": {
+            "legacy_caption_pid": 36078,
+            "legacy_language_pid": 42,
+            "text": "पृष्ठ भेट्टाउन सकिएन",
+            "auto_translated": "पृष्ठ भेट्टाउन सकिएन"
+        },
+        "hu": {
+            "legacy_caption_pid": 36079,
+            "legacy_language_pid": 43,
+            "text": "Oldal nem található",
+            "auto_translated": "Oldal nem található"
+        },
+        "cs": {
+            "legacy_caption_pid": 36080,
+            "legacy_language_pid": 44,
+            "text": "Stránku nelze nalézt",
+            "auto_translated": "Stránku nelze nalézt"
+        },
+        "el": {
+            "legacy_caption_pid": 36081,
+            "legacy_language_pid": 45,
+            "text": "Η σελίδα δεν μπορεί να βρεθεί",
+            "auto_translated": "Η σελίδα δεν μπορεί να βρεθεί"
+        },
+        "sv": {
+            "legacy_caption_pid": 36082,
+            "legacy_language_pid": 46,
+            "text": "Sidan kunde inte hittas",
+            "auto_translated": "Sidan kunde inte hittas"
+        },
+        "kk": {
+            "legacy_caption_pid": 36083,
+            "legacy_language_pid": 47,
+            "text": "Бет табу мүмкін емес",
+            "auto_translated": "Бет табу мүмкін емес"
+        },
+        "fi": {
+            "legacy_caption_pid": 36084,
+            "legacy_language_pid": 48,
+            "text": "Sivua ei löydy",
+            "auto_translated": "Sivua ei löydy"
+        },
+        "da": {
+            "legacy_caption_pid": 36085,
+            "legacy_language_pid": 49,
+            "text": "Siden kunne ikke findes",
+            "auto_translated": "Siden kunne ikke findes"
+        },
+        "he": {
+            "legacy_caption_pid": 36086,
+            "legacy_language_pid": 50,
+            "text": "דף לא נמצא",
+            "auto_translated": "דף לא נמצא"
+        },
+        "no": {
+            "legacy_caption_pid": 36087,
+            "legacy_language_pid": 51,
+            "text": "Page ble ikke funnet",
+            "auto_translated": "Page ble ikke funnet"
+        }
+    }
+}

@@ -1,0 +1,128 @@
+# Choose Your Path
+
+English companion:
+This guide is a reverse index from goals to the right permanent docs and first commands. Use it when you know what you want to do but do not yet know which lane, document, or bootstrap step should be treated as current.
+
+この文書は、「今やりたいこと」から current な入口を選ぶための逆引きガイドです。  
+細かい背景や履歴を先に追うのではなく、date-less な恒久文書と最初のコマンドをすぐ見つけることだけに絞ります。  
+`start-here` と合わせて入口 layer を構成し、ここでゴールを決めたら golden path layer へ進み、detail layer は必要な時だけ開きます。
+
+## 3 層で迷わない読み方
+
+1. 入口 layer
+   - [start-here.md](start-here.md)
+   - [choose-your-path.md](choose-your-path.md)
+2. golden path layer
+   - [existing-db-to-output.md](existing-db-to-output.md)
+   - [common-tasks.md](common-tasks.md)
+   - [current-supported-workflow.md](current-supported-workflow.md)
+   - [troubleshooting.md](troubleshooting.md)
+3. detail layer
+   - [overview.md](overview.md)
+   - [storage-and-state-model.md](storage-and-state-model.md)
+   - [project-metadata-bundle.md](project-metadata-bundle.md)
+   - [config-db-externalization.md](config-db-externalization.md)
+   - [sample-tutorial-roadmap.md](sample-tutorial-roadmap.md)
+   - [internal/README.md](internal/README.md)
+
+existing DB を current repo に自然につなぎ、canonical metadata 永続化から output verify まで進める時は、入口 layer の次に golden path layer を優先します。
+
+## 先に知っておくこと
+
+- `original-codes/` は host-side reference only。runtime input には戻さない
+- current mainline は `DB 構造 -> import -> Data Class -> DB Access -> Source Output`
+- default local stack は `compose.yaml + compose.local-db-config.yaml` を使う
+- external config DB を使う時だけ `APP_CONFIG_DB_*` と `make up-external-config-db` を使う
+- tutorial lane の current は `sample01` から `sample10`
+- top-level `docs/` は外部ユーザ向け導線で、実装内部は [internal/README.md](internal/README.md) から辿る
+- `docs/reports/` は history / handoff 用であり、current spec の正本ではない
+
+## ゴールから選ぶ
+
+| ゴール | まず読む | 最初に打つ |
+| --- | --- | --- |
+| repo 全体像を掴む | [../README.md](../README.md), [start-here.md](start-here.md), [overview.md](overview.md) | `make help` |
+| existing DB に接続して canonical metadata を永続化し、設計と output まで進める | [existing-db-to-output.md](existing-db-to-output.md), [common-tasks.md](common-tasks.md), [storage-and-state-model.md](storage-and-state-model.md), [troubleshooting.md](troubleshooting.md) | `make env`<br>`make up`<br>`make config-db-preflight` |
+| 共同作業の handoff から resume する | [existing-db-to-output.md#e10-handoff-payload](existing-db-to-output.md#e10-handoff-payload), [storage-and-state-model.md#s1-resume-checkpoints](storage-and-state-model.md#s1-resume-checkpoints), [internal/README.md](internal/README.md), [troubleshooting.md](troubleshooting.md) | `make help | sed -n '1,80p'`<br>`make config-db-preflight`<br>`php mtool/scripts/show_runtime_reference_status.php --require-current` |
+| local default stack を起動する | [start-here.md](start-here.md), [common-tasks.md](common-tasks.md) | `make env`<br>`make up` |
+| external config DB で起動する | [config-db-externalization.md](config-db-externalization.md), [common-tasks.md](common-tasks.md) | `APP_CONFIG_DB_HOST=... make up-external-config-db`<br>`make ps-external-config-db`<br>`make health-external-config-db` |
+| `MTOOL` の canonical import / sync を流す | [current-supported-workflow.md](current-supported-workflow.md), [common-tasks.md](common-tasks.md) | `docker compose exec -T web-admin php /var/www/mtool/scripts/import_project_tables.php --project-key=MTOOL`<br>`docker compose exec -T web-admin php /var/www/mtool/scripts/sync_project_data_classes.php --project-key=MTOOL`<br>`docker compose exec -T web-admin php /var/www/mtool/scripts/sync_project_db_access.php --project-key=MTOOL` |
+| canonical metadata bundle を export / import preview する | [project-metadata-bundle.md](project-metadata-bundle.md), [common-tasks.md](common-tasks.md) | `docker compose exec -T web-admin php /var/www/mtool/scripts/export_project_metadata.php ...`<br>`docker compose exec -T web-admin php /var/www/mtool/scripts/import_project_metadata.php ... --mode=preview` |
+| tutorial sample を 1 本触る | [sample-tutorial-roadmap.md](sample-tutorial-roadmap.md), [../sample/tutorials/README.md](../sample/tutorials/README.md) | `make sample01-pack-runtime-test` |
+| green state を確認する | [common-tasks.md](common-tasks.md), [../tests/README.md](../tests/README.md) | `make config-db-preflight`<br>`ADMIN_HTTP_PORT=18091 LAB_HTTP_PORT=18092 CONFIG_DB_HOST_PORT=43091 LAB_DB_HOST_PORT=43092 make test` |
+| external named source から Lab Swagger まで確認する | [existing-db-to-output.md](existing-db-to-output.md), [current-supported-workflow.md](current-supported-workflow.md), [common-tasks.md](common-tasks.md) | `make mtool-external-source-lab-smoke`<br>`make mtool-external-source-lab-browser-smoke` |
+| runtime reference の状態や emitted layout を確認する | [current-supported-workflow.md](current-supported-workflow.md), [internal/README.md](internal/README.md) | `php mtool/scripts/show_runtime_reference_status.php --require-current`<br>`php mtool/scripts/show_runtime_replacement_rollout.php --non-plain-only` |
+| 実装 boundary や migration map を確認する | [internal/README.md](internal/README.md), [overview.md](overview.md) | `rg --files docs/internal` |
+| warning / error の意味を切り分ける | [troubleshooting.md](troubleshooting.md), [common-tasks.md](common-tasks.md) | `make config-db-preflight`<br>`php mtool/scripts/show_runtime_reference_status.php --require-current` |
+
+## 典型的な 3 ルート
+
+existing DB を named source としてつなぎ、canonical metadata 永続化から output verify まで 1 本で辿る時は [existing-db-to-output.md](existing-db-to-output.md) を正本にします。  
+この文書では「最初にどこを開くか」と「最初のコマンド」だけを残します。
+
+途中再開なら [existing-db-to-output.md#e10-handoff-payload](existing-db-to-output.md#e10-handoff-payload) で payload を確認し、[storage-and-state-model.md#s1-resume-checkpoints](storage-and-state-model.md#s1-resume-checkpoints) で `config_db` / artifact 側の残存 state を確認してから、必要な stage へ戻ります。内部 contract が必要になった時だけ [internal/README.md](internal/README.md) へ進みます。
+
+### 新しい contributor が local で最初の 1 周をする
+
+```bash
+make help | sed -n '1,80p'
+make env
+make up
+docker compose exec -T web-admin php /var/www/mtool/scripts/import_project_tables.php --project-key=MTOOL
+docker compose exec -T web-admin php /var/www/mtool/scripts/sync_project_data_classes.php --project-key=MTOOL
+docker compose exec -T web-admin php /var/www/mtool/scripts/sync_project_db_access.php --project-key=MTOOL
+make sample01-pack-runtime-test
+```
+
+まず end-to-end の流れを 1 回通したいだけなら `sample01` で十分です。  
+DB Access の小さい CRUD flow まで見たい時だけ `make sample10-pack-runtime-test` へ進みます。
+
+### shared / external config DB につなぐ
+
+```bash
+APP_CONFIG_DB_HOST=external-db.example \
+APP_CONFIG_DB_PORT=3306 \
+APP_CONFIG_DB_NAME=config_app \
+APP_CONFIG_DB_USER=config_app \
+APP_CONFIG_DB_PASSWORD=secret \
+make up-external-config-db
+
+make ps-external-config-db
+make health-external-config-db
+make config-db-preflight-external-config-db
+```
+
+external lane で shell や一時 stop が必要な時だけ raw base compose を使います。
+
+```bash
+docker compose -f compose.yaml exec web-admin bash
+COMPOSE_PROFILES=lab-db-ui docker compose -f compose.yaml stop
+```
+
+### 変更前後で green state を確認する
+
+```bash
+make config-db-preflight
+make sample-pack-compose-smoke
+ADMIN_HTTP_PORT=18091 LAB_HTTP_PORT=18092 CONFIG_DB_HOST_PORT=43091 LAB_DB_HOST_PORT=43092 make test
+php mtool/scripts/show_runtime_reference_status.php --require-current
+php mtool/scripts/show_runtime_replacement_rollout.php --non-plain-only
+```
+
+`make test` だけでは「runtime reference が今の promoted state とどうずれているか」は分からないので、最後の 2 本もセットで見ます。
+
+## 迷った時の優先順位
+
+1. まず [start-here.md](start-here.md) と [overview.md](overview.md) を読む
+2. existing DB をつなぐ主導線なら [existing-db-to-output.md](existing-db-to-output.md) と [storage-and-state-model.md](storage-and-state-model.md) を先に読む
+3. 次に [current-supported-workflow.md](current-supported-workflow.md) か [common-tasks.md](common-tasks.md) を目的別に使い分ける
+4. 学習目的なら [sample-tutorial-roadmap.md](sample-tutorial-roadmap.md) に戻り、`sample01` から順に触る
+5. architecture / migration / contributor contract が必要な時だけ [internal/README.md](internal/README.md) を開く
+6. 履歴や判断経緯が必要な時だけ [reports/2026/README.md](reports/2026/README.md) を開く
+
+## 使わない導線
+
+- `original-codes/` を Docker runtime input に戻す
+- archived helper や旧 alias target を current mainline として扱う
+- external lane のために local overlay lane の target を混ぜる
+- `openapi.json` を public static file や raw alias route として配る前提で進める

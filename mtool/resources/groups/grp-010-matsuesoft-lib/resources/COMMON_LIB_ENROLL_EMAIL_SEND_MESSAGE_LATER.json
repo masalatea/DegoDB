@@ -1,0 +1,321 @@
+{
+    "resource_key": "COMMON_LIB_ENROLL_EMAIL_SEND_MESSAGE_LATER",
+    "legacy_resource_pid": 1444,
+    "base_group_key": "grp-010-matsuesoft-lib",
+    "additional_group_keys": [],
+    "key_for_update": "ZB1W4k3F4zWlR9CSXt1EY1HPgTZF38MOLiHXo1bOzYysCYoKlFeGAEaWJ7gGGms4dhbceFqZixo3uqKoQvYDPPsJnQEh6G8ozVLSb87isnnhhq3jq7yiCUwp097i1PpO",
+    "sort_group": "ENROLL EMAIL",
+    "key_name": "COMMON_LIB_ENROLL_EMAIL_SEND_MESSAGE_LATER",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": false,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 6050,
+            "legacy_language_pid": 1,
+            "text": "登録完了メールを後ほど送信致させて頂きます。",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 6051,
+            "legacy_language_pid": 2,
+            "text": "We'll send a registration completion email.",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 6052,
+            "legacy_language_pid": 3,
+            "text": "登录完成的邮件，，稍后将给您发送邮件",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 6053,
+            "legacy_language_pid": 4,
+            "text": "등록 완료 메일을 나중에 보내겠습니다.",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 10946,
+            "legacy_language_pid": 5,
+            "text": "Enviaremos un correo electrónico de finalización del registro.",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 10947,
+            "legacy_language_pid": 6,
+            "text": "Enviaremos um e-mail de conclusão do registro.",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 10948,
+            "legacy_language_pid": 7,
+            "text": "登錄完成的郵件，，稍後將給您發送郵件",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 17059,
+            "legacy_language_pid": 8,
+            "text": "Nous vous enverrons un courrier électronique d'achèvement d'inscription.",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 17060,
+            "legacy_language_pid": 9,
+            "text": "हम एक पंजीकरण पूर्णता ईमेल भेजेंगे।",
+            "auto_translated": ""
+        },
+        "ar": {
+            "legacy_caption_pid": 31984,
+            "legacy_language_pid": 10,
+            "text": "واسمحوا لي Itasa يرسل البريد استكمال التسجيل في وقت لاحق.",
+            "auto_translated": "واسمحوا لي Itasa يرسل البريد استكمال التسجيل في وقت لاحق."
+        },
+        "fa": {
+            "legacy_caption_pid": 31985,
+            "legacy_language_pid": 11,
+            "text": "لطفا اجازه دهید من می فرستد Itasa یک ایمیل از تکمیل ثبت نام بعد.",
+            "auto_translated": "لطفا اجازه دهید من می فرستد Itasa یک ایمیل از تکمیل ثبت نام بعد."
+        },
+        "de": {
+            "legacy_caption_pid": 31986,
+            "legacy_language_pid": 12,
+            "text": "Bitte lassen Sie mich ITASA sendet eine Registrierungsabschluss Mail später.",
+            "auto_translated": "Bitte lassen Sie mich ITASA sendet eine Registrierungsabschluss Mail später."
+        },
+        "ru": {
+            "legacy_caption_pid": 31987,
+            "legacy_language_pid": 13,
+            "text": "Пожалуйста, дайте мне Itasa отправляет завершения регистрации почты позже.",
+            "auto_translated": "Пожалуйста, дайте мне Itasa отправляет завершения регистрации почты позже."
+        },
+        "ms": {
+            "legacy_caption_pid": 31988,
+            "legacy_language_pid": 14,
+            "text": "Sila maklumkan kepada saya Itasa menghantar mel selesai pendaftaran kemudian.",
+            "auto_translated": "Sila maklumkan kepada saya Itasa menghantar mel selesai pendaftaran kemudian."
+        },
+        "ta": {
+            "legacy_caption_pid": 31989,
+            "legacy_language_pid": 15,
+            "text": "Itasa ஒரு பதிவு நிறைவு மெயில் பின்னர் அனுப்புகிறது எனக்கு தெரியப்படுத்துங்கள்.",
+            "auto_translated": "Itasa ஒரு பதிவு நிறைவு மெயில் பின்னர் அனுப்புகிறது எனக்கு தெரியப்படுத்துங்கள்."
+        },
+        "it": {
+            "legacy_caption_pid": 31990,
+            "legacy_language_pid": 16,
+            "text": "Per favore fatemi Itasa invia una mail di completamento di registrazione in seguito.",
+            "auto_translated": "Per favore fatemi Itasa invia una mail di completamento di registrazione in seguito."
+        },
+        "bn": {
+            "legacy_caption_pid": 31991,
+            "legacy_language_pid": 17,
+            "text": "আমাকে দয়া করে Itasa একটি নিবন্ধন সমাপ্তির মেইল ​​পরে পাঠায়।",
+            "auto_translated": "আমাকে দয়া করে Itasa একটি নিবন্ধন সমাপ্তির মেইল ​​পরে পাঠায়।"
+        },
+        "tr": {
+            "legacy_caption_pid": 31992,
+            "legacy_language_pid": 18,
+            "text": "Itâsa sonra bir kayıt tamamlama posta gönderir bana bildirin.",
+            "auto_translated": "Itâsa sonra bir kayıt tamamlama posta gönderir bana bildirin."
+        },
+        "vi": {
+            "legacy_caption_pid": 31993,
+            "legacy_language_pid": 19,
+            "text": "Xin vui lòng cho tôi Itasa gửi một email hoàn thành đăng ký sau.",
+            "auto_translated": "Xin vui lòng cho tôi Itasa gửi một email hoàn thành đăng ký sau."
+        },
+        "pl": {
+            "legacy_caption_pid": 31994,
+            "legacy_language_pid": 20,
+            "text": "Proszę pozwolić mi Itasa wysyła wiadomość o zakończeniu rejestracji później.",
+            "auto_translated": "Proszę pozwolić mi Itasa wysyła wiadomość o zakończeniu rejestracji później."
+        },
+        "jv": {
+            "legacy_caption_pid": 31995,
+            "legacy_language_pid": 21,
+            "text": "Keparenga kula Itasa ngirim mail completion Pendhaftaran mengko.",
+            "auto_translated": "Keparenga kula Itasa ngirim mail completion Pendhaftaran mengko."
+        },
+        "pa": {
+            "legacy_caption_pid": 31996,
+            "legacy_language_pid": 22,
+            "text": "ਮੈਨੂੰ ਚਾਹੀਦਾ ਹੈ ਕਿਰਪਾ ਕਰਕੇ Itasa ਨੂੰ ਇੱਕ ਰਜਿਸਟਰੇਸ਼ਨ ਨੂੰ ਮੁਕੰਮਲ ਮੇਲ ਬਾਅਦ ਵਿੱਚ ਭੇਜਦਾ ਹੈ.",
+            "auto_translated": "ਮੈਨੂੰ ਚਾਹੀਦਾ ਹੈ ਕਿਰਪਾ ਕਰਕੇ Itasa ਨੂੰ ਇੱਕ ਰਜਿਸਟਰੇਸ਼ਨ ਨੂੰ ਮੁਕੰਮਲ ਮੇਲ ਬਾਅਦ ਵਿੱਚ ਭੇਜਦਾ ਹੈ."
+        },
+        "th": {
+            "legacy_caption_pid": 31997,
+            "legacy_language_pid": 23,
+            "text": "กรุณาแจ้งให้เรา Itasa ส่งจดหมายลงทะเบียนเสร็จสิ้นในภายหลัง",
+            "auto_translated": "กรุณาแจ้งให้เรา Itasa ส่งจดหมายลงทะเบียนเสร็จสิ้นในภายหลัง"
+        },
+        "te": {
+            "legacy_caption_pid": 41660,
+            "legacy_language_pid": 24,
+            "text": "Itasa తరువాత రిజిస్ట్రేషన్ పూర్తయిన మెయిల్ పంపుతుంది నాకు తెలపండి.",
+            "auto_translated": "Itasa తరువాత రిజిస్ట్రేషన్ పూర్తయిన మెయిల్ పంపుతుంది నాకు తెలపండి."
+        },
+        "mr": {
+            "legacy_caption_pid": 41661,
+            "legacy_language_pid": 25,
+            "text": "Itasa नंतर नोंदणी पूर्ण मेल पाठवते मला द्या.",
+            "auto_translated": "Itasa नंतर नोंदणी पूर्ण मेल पाठवते मला द्या."
+        },
+        "ur": {
+            "legacy_caption_pid": 41662,
+            "legacy_language_pid": 26,
+            "text": "Itasa بعد میں ایک رجسٹریشن تکمیل میل بھیجتا ہے براہ مہربانی مجھے بتائیں.",
+            "auto_translated": "Itasa بعد میں ایک رجسٹریشن تکمیل میل بھیجتا ہے براہ مہربانی مجھے بتائیں."
+        },
+        "gu": {
+            "legacy_caption_pid": 41663,
+            "legacy_language_pid": 27,
+            "text": "મને દો કૃપા કરીને Itasa રજીસ્ટ્રેશન પૂર્ણ મેલ પાછળથી મોકલે છે.",
+            "auto_translated": "મને દો કૃપા કરીને Itasa રજીસ્ટ્રેશન પૂર્ણ મેલ પાછળથી મોકલે છે."
+        },
+        "uk": {
+            "legacy_caption_pid": 41664,
+            "legacy_language_pid": 28,
+            "text": "Будь ласка, дайте мені Itasa відправляє завершення реєстрації пошти пізніше.",
+            "auto_translated": "Будь ласка, дайте мені Itasa відправляє завершення реєстрації пошти пізніше."
+        },
+        "ml": {
+            "legacy_caption_pid": 41665,
+            "legacy_language_pid": 29,
+            "text": "എന്നെ ഇതസ പിന്നീട് ഒരു രജിസ്ട്രേഷൻ പൂർത്തീകരണം മെയിൽ അയയ്ക്കുന്നു അറിയിക്കുക.",
+            "auto_translated": "എന്നെ ഇതസ പിന്നീട് ഒരു രജിസ്ട്രേഷൻ പൂർത്തീകരണം മെയിൽ അയയ്ക്കുന്നു അറിയിക്കുക."
+        },
+        "kn": {
+            "legacy_caption_pid": 41666,
+            "legacy_language_pid": 30,
+            "text": "Itasa ನಂತರ ನೋಂದಣಿ ಪೂರ್ಣಗೊಂಡ ಮೇಲ್ ಕಳುಹಿಸುತ್ತದೆ ನನಗೆ ತಿಳಿಸಿ ದಯವಿಟ್ಟು.",
+            "auto_translated": "Itasa ನಂತರ ನೋಂದಣಿ ಪೂರ್ಣಗೊಂಡ ಮೇಲ್ ಕಳುಹಿಸುತ್ತದೆ ನನಗೆ ತಿಳಿಸಿ ದಯವಿಟ್ಟು."
+        },
+        "su": {
+            "legacy_caption_pid": 41667,
+            "legacy_language_pid": 31,
+            "text": "Mangga hayu atuh Itasa ngirimkeun hiji surat parantosan pendaptaran engké.",
+            "auto_translated": "Mangga hayu atuh Itasa ngirimkeun hiji surat parantosan pendaptaran engké."
+        },
+        "ku": {
+            "legacy_caption_pid": 41668,
+            "legacy_language_pid": 32,
+            "text": "Ji kerema xwe ji min re bila Itasa dişîne a mail temamkirina qeyda paşê.",
+            "auto_translated": "Ji kerema xwe ji min re bila Itasa dişîne a mail temamkirina qeyda paşê."
+        },
+        "ps": {
+            "legacy_caption_pid": 41669,
+            "legacy_language_pid": 33,
+            "text": "لطفا ما ته اجازه Itasa د نوم ليکنې د بشپړیدو او مالدارۍ استوي وروسته.",
+            "auto_translated": "لطفا ما ته اجازه Itasa د نوم ليکنې د بشپړیدو او مالدارۍ استوي وروسته."
+        },
+        "ro": {
+            "legacy_caption_pid": 41670,
+            "legacy_language_pid": 34,
+            "text": "Te rog să-mi Itasa trimite un e-mail de finalizare înregistrare ulterior.",
+            "auto_translated": "Te rog să-mi Itasa trimite un e-mail de finalizare înregistrare ulterior."
+        },
+        "id": {
+            "legacy_caption_pid": 41671,
+            "legacy_language_pid": 35,
+            "text": "Tolong beritahu saya Itasa mengirimkan email selesai pendaftaran nanti.",
+            "auto_translated": "Tolong beritahu saya Itasa mengirimkan email selesai pendaftaran nanti."
+        },
+        "sd": {
+            "legacy_caption_pid": 41672,
+            "legacy_language_pid": 36,
+            "text": "مهرباني ڪري مون کي Itasa بعد ۾ هڪ رجسٽريشن مڪمل ميل موڪلي ڏين.",
+            "auto_translated": "مهرباني ڪري مون کي Itasa بعد ۾ هڪ رجسٽريشن مڪمل ميل موڪلي ڏين."
+        },
+        "af": {
+            "legacy_caption_pid": 41673,
+            "legacy_language_pid": 37,
+            "text": "Laat my asseblief Itasa stuur 'n registrasie voltooiing pos later.",
+            "auto_translated": "Laat my asseblief Itasa stuur 'n registrasie voltooiing pos later."
+        },
+        "sw": {
+            "legacy_caption_pid": 41674,
+            "legacy_language_pid": 38,
+            "text": "Tafadhali nipe Itasa inapeleka usajili kukamilika mail baadaye.",
+            "auto_translated": "Tafadhali nipe Itasa inapeleka usajili kukamilika mail baadaye."
+        },
+        "lo": {
+            "legacy_caption_pid": 41675,
+            "legacy_language_pid": 39,
+            "text": "ກະລຸນາໃຫ້ຂ້າພະເຈົ້າ Itasa ສົ່ງ mail ຈົດທະບຽນສໍາເລັດໃນພາຍຫລັງ.",
+            "auto_translated": "ກະລຸນາໃຫ້ຂ້າພະເຈົ້າ Itasa ສົ່ງ mail ຈົດທະບຽນສໍາເລັດໃນພາຍຫລັງ."
+        },
+        "nl": {
+            "legacy_caption_pid": 41676,
+            "legacy_language_pid": 40,
+            "text": "Laat het me Itasa stuurt een registratie voltooid mail later.",
+            "auto_translated": "Laat het me Itasa stuurt een registratie voltooid mail later."
+        },
+        "tl": {
+            "legacy_caption_pid": 41677,
+            "legacy_language_pid": 41,
+            "text": "Mangyaring ipaalam sa akin Itasa nagpapadala ng registration pagkumpleto mail sa ibang pagkakataon.",
+            "auto_translated": "Mangyaring ipaalam sa akin Itasa nagpapadala ng registration pagkumpleto mail sa ibang pagkakataon."
+        },
+        "ne": {
+            "legacy_caption_pid": 41678,
+            "legacy_language_pid": 42,
+            "text": "कृपया मलाई गरौं Itasa पछि दर्ता पूरा मेल पठाउँछ।",
+            "auto_translated": "कृपया मलाई गरौं Itasa पछि दर्ता पूरा मेल पठाउँछ।"
+        },
+        "hu": {
+            "legacy_caption_pid": 41679,
+            "legacy_language_pid": 43,
+            "text": "Kérem, engedje meg Itasa küld egy regisztrációs befejezését mail később.",
+            "auto_translated": "Kérem, engedje meg Itasa küld egy regisztrációs befejezését mail később."
+        },
+        "cs": {
+            "legacy_caption_pid": 41680,
+            "legacy_language_pid": 44,
+            "text": "Prosím, dejte mi Itasa pošle dokončení registrace mailu později.",
+            "auto_translated": "Prosím, dejte mi Itasa pošle dokončení registrace mailu později."
+        },
+        "el": {
+            "legacy_caption_pid": 41681,
+            "legacy_language_pid": 45,
+            "text": "Παρακαλώ επιτρέψτε μου να Itasa στέλνει ένα e-mail ολοκλήρωση εγγραφής αργότερα.",
+            "auto_translated": "Παρακαλώ επιτρέψτε μου να Itasa στέλνει ένα e-mail ολοκλήρωση εγγραφής αργότερα."
+        },
+        "sv": {
+            "legacy_caption_pid": 41682,
+            "legacy_language_pid": 46,
+            "text": "Låt mig Itasa sänder en registrerings avslutad mail senare.",
+            "auto_translated": "Låt mig Itasa sänder en registrerings avslutad mail senare."
+        },
+        "kk": {
+            "legacy_caption_pid": 41683,
+            "legacy_language_pid": 47,
+            "text": "Маған Itasa кейінірек тіркеу аяқтау пошта жібереді мүмкіндік сұраймыз.",
+            "auto_translated": "Маған Itasa кейінірек тіркеу аяқтау пошта жібереді мүмкіндік сұраймыз."
+        },
+        "fi": {
+            "legacy_caption_pid": 41684,
+            "legacy_language_pid": 48,
+            "text": "Kerrothan Itasa lähettää rekisteröinninpäätösilmoitusta postia myöhemmin.",
+            "auto_translated": "Kerrothan Itasa lähettää rekisteröinninpäätösilmoitusta postia myöhemmin."
+        },
+        "da": {
+            "legacy_caption_pid": 41685,
+            "legacy_language_pid": 49,
+            "text": "Lad mig Itasa sender en registrering færdiggørelse mailen senere.",
+            "auto_translated": "Lad mig Itasa sender en registrering færdiggørelse mailen senere."
+        },
+        "he": {
+            "legacy_caption_pid": 41686,
+            "legacy_language_pid": 50,
+            "text": "אנא תן לי Itasa שולח בדואר השלים רישום מאוחר.",
+            "auto_translated": "אנא תן לי Itasa שולח בדואר השלים רישום מאוחר."
+        },
+        "no": {
+            "legacy_caption_pid": 41687,
+            "legacy_language_pid": 51,
+            "text": "Vennligst la meg Itasa sender en registrerings ferdigstillelse posten senere.",
+            "auto_translated": "Vennligst la meg Itasa sender en registrerings ferdigstillelse posten senere."
+        }
+    }
+}

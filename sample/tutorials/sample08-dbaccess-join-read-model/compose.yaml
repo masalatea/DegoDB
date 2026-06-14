@@ -1,0 +1,29 @@
+name: mtool-sample-sample08-dbaccess-join-read-model
+
+services:
+  web-admin:
+    environment:
+      APP_WORK_ROOT: /var/www/work/sample-packs/sample08-dbaccess-join-read-model
+
+  web-lab:
+    environment:
+      APP_WORK_ROOT: /var/www/work/sample-packs/sample08-dbaccess-join-read-model
+
+  db-config:
+    entrypoint:
+      - /bin/sh
+      - -lc
+      - |
+        set -eu
+        rm -rf /docker-entrypoint-initdb.d/*
+        cp -R /docker-entrypoint-initdb-core/. /docker-entrypoint-initdb.d/
+        cp -R /docker-entrypoint-initdb-sample/. /docker-entrypoint-initdb.d/
+        exec docker-entrypoint.sh mariadbd
+    volumes:
+      - db-config-data:/var/lib/mysql
+      - db-config-initdb:/docker-entrypoint-initdb.d
+      - ./docker/mariadb/config-initdb:/docker-entrypoint-initdb-core:ro
+      - ./sample/tutorials/sample08-dbaccess-join-read-model/seed:/docker-entrypoint-initdb-sample:ro
+
+volumes:
+  db-config-initdb:

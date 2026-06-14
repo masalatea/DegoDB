@@ -1,0 +1,321 @@
+{
+    "resource_key": "COMMON_LIB_EMAIL_VERIFY_CATION_FOR_REMAKE_AND_RESEND_VERIFICATION_KEY",
+    "legacy_resource_pid": 1393,
+    "base_group_key": "grp-010-matsuesoft-lib",
+    "additional_group_keys": [],
+    "key_for_update": "shwc2SAWHiLUF2ToqqjWeyR9gABtidR3IY2AQWr6yb07jVONRlZZYGBD4iQHoiVIY6f8yLztqZTeeDoZ9G1XVQaf8Ui4H2D1tNNQZx9lidGZ5yoeHqqDy0mjY1Tq4qqb",
+    "sort_group": "EMAIL VERIFY",
+    "key_name": "COMMON_LIB_EMAIL_VERIFY_CATION_FOR_REMAKE_AND_RESEND_VERIFICATION_KEY",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": false,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 5846,
+            "legacy_language_pid": 1,
+            "text": "認証キーを再作成しますと、今までに送信済の認証メールに記載されているURLはすべて無効となり、最新のメールにてご確認が必要になります。",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 5847,
+            "legacy_language_pid": 2,
+            "text": "If you recreate verification key, all URL already sent will be void. Then, only newest email is valid to verification.",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 5848,
+            "legacy_language_pid": 3,
+            "text": "验证码再次发送，刚才已经发送结束的验证邮件所记载的连接已经是无效的了，所以请确认最新的邮件。",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 5849,
+            "legacy_language_pid": 4,
+            "text": "인증 키를 다시 작성하면 지금까지 전송된 인증메일에 기재되어 있는 URL이 모두 무효가 됩니다. 최신 메일에서 다시 확인이 필요합니다.",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 10708,
+            "legacy_language_pid": 5,
+            "text": "i vuelve a crear la clave de verificación, se anulará toda la URL ya enviada. Entonces, sólo el correo electrónico más reciente es válido para la verificación.",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 10709,
+            "legacy_language_pid": 6,
+            "text": "Se você recriar a chave de verificação, todos os URLs já enviados serão anulados. Então, o único e-mail mais recente é válido para a verificação.",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 10710,
+            "legacy_language_pid": 7,
+            "text": "驗證碼再次發送，剛才已經發送結束的驗證郵件所記載的連接已經是無效的了，所以請確認最新的郵件。",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 16427,
+            "legacy_language_pid": 8,
+            "text": "Si vous recréez une clé de vérification, toutes les URL déjà envoyées seront annulées. Ensuite, seul le courrier électronique le plus récent est valable pour la vérification.",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 16428,
+            "legacy_language_pid": 9,
+            "text": "यदि आप सत्यापन कुंजी को पुन: बनाएं, तो पहले से भेजा गया सभी यूआरएल व्यर्थ हो जाएगा। फिर, केवल नवीनतम ईमेल सत्यापन के लिए मान्य है।",
+            "auto_translated": ""
+        },
+        "ar": {
+            "legacy_caption_pid": 30864,
+            "legacy_language_pid": 10,
+            "text": "إذا قمت بإعادة إنشاء مفتاح المصادقة، URL المدرجة في البريد الإلكتروني المصادقة المرسلة إلى حتى الآن كلها المعوقين، تحتاج إلى التحقق مع أحدث البريد الإلكتروني.",
+            "auto_translated": "إذا قمت بإعادة إنشاء مفتاح المصادقة، URL المدرجة في البريد الإلكتروني المصادقة المرسلة إلى حتى الآن كلها المعوقين، تحتاج إلى التحقق مع أحدث البريد الإلكتروني."
+        },
+        "fa": {
+            "legacy_caption_pid": 30865,
+            "legacy_language_pid": 11,
+            "text": "اگر شما دوباره ایجاد کلید احراز هویت، URL ذکر شده در احراز هویت ایمیل ارسال به تا به حال همه معلول، شما نیاز به با آخرین ایمیل تیک بزنید.",
+            "auto_translated": "اگر شما دوباره ایجاد کلید احراز هویت، URL ذکر شده در احراز هویت ایمیل ارسال به تا به حال همه معلول، شما نیاز به با آخرین ایمیل تیک بزنید."
+        },
+        "de": {
+            "legacy_caption_pid": 30866,
+            "legacy_language_pid": 12,
+            "text": "Wenn Sie den Authentifizierungsschlüssel, URL in der Authentifizierungs-E-Mail jetzt Sent aufgeführt neu erstellen, bis alle deaktiviert sind, müssen Sie mit der neuesten E-Mail überprüfen.",
+            "auto_translated": "Wenn Sie den Authentifizierungsschlüssel, URL in der Authentifizierungs-E-Mail jetzt Sent aufgeführt neu erstellen, bis alle deaktiviert sind, müssen Sie mit der neuesten E-Mail überprüfen."
+        },
+        "ru": {
+            "legacy_caption_pid": 30867,
+            "legacy_language_pid": 13,
+            "text": "Если вы повторно не создать ключ аутентификации, URL, указанный в аутентификации электронной почты, отправляемой до сих пор все отключен, вы должны проверить с последней электронной почтой.",
+            "auto_translated": "Если вы повторно не создать ключ аутентификации, URL, указанный в аутентификации электронной почты, отправляемой до сих пор все отключен, вы должны проверить с последней электронной почтой."
+        },
+        "ms": {
+            "legacy_caption_pid": 30868,
+            "legacy_language_pid": 14,
+            "text": "Jika anda mencipta semula kunci pengesahan, URL yang disenaraikan dalam e-mel pengesahan yang dihantar ke sehingga kini semua orang kurang upaya, anda perlu menyemak dengan e-mel terkini.",
+            "auto_translated": "Jika anda mencipta semula kunci pengesahan, URL yang disenaraikan dalam e-mel pengesahan yang dihantar ke sehingga kini semua orang kurang upaya, anda perlu menyemak dengan e-mel terkini."
+        },
+        "ta": {
+            "legacy_caption_pid": 30869,
+            "legacy_language_pid": 15,
+            "text": "இப்போது அனைத்து முடக்கினால், சமீபத்திய மின்னஞ்சல் மூலம் சரிபார்க்க வேண்டும் வரை நீங்கள் என்றால் மீண்டும் உருவாக்க அனுப்பப்பட்டது அங்கீகார மின்னஞ்சலில் பட்டியலிடப்பட்ட அங்கீகார விசை, URL ஐ.",
+            "auto_translated": "இப்போது அனைத்து முடக்கினால், சமீபத்திய மின்னஞ்சல் மூலம் சரிபார்க்க வேண்டும் வரை நீங்கள் என்றால் மீண்டும் உருவாக்க அனுப்பப்பட்டது அங்கீகார மின்னஞ்சலில் பட்டியலிடப்பட்ட அங்கீகார விசை, URL ஐ."
+        },
+        "it": {
+            "legacy_caption_pid": 30870,
+            "legacy_language_pid": 16,
+            "text": "Se si ri-creare la chiave di autenticazione, URL nella e-mail di autenticazione Inviato a fino ad ora sono tutti disabili, è necessario verificare con l'ultima e-mail.",
+            "auto_translated": "Se si ri-creare la chiave di autenticazione, URL nella e-mail di autenticazione Inviato a fino ad ora sono tutti disabili, è necessario verificare con l'ultima e-mail."
+        },
+        "bn": {
+            "legacy_caption_pid": 30871,
+            "legacy_language_pid": 17,
+            "text": "আপনি যদি না হওয়া পর্যন্ত এখন সব প্রতিবন্ধী, আপনার সর্বশেষ ই-মেইল দিয়ে চেক করতে হবে প্রমাণীকরণ কী, প্রমাণীকরণ ই-মেইল পাঠানো হয়েছে তালিকাভুক্ত URL টি পুনরায় তৈরি করুন।",
+            "auto_translated": "আপনি যদি না হওয়া পর্যন্ত এখন সব প্রতিবন্ধী, আপনার সর্বশেষ ই-মেইল দিয়ে চেক করতে হবে প্রমাণীকরণ কী, প্রমাণীকরণ ই-মেইল পাঠানো হয়েছে তালিকাভুক্ত URL টি পুনরায় তৈরি করুন।"
+        },
+        "tr": {
+            "legacy_caption_pid": 30872,
+            "legacy_language_pid": 18,
+            "text": "Eğer varsa artık tüm özürlü, en son e-mail ile kontrol etmeniz gerekir kadar Gönderilen kimlik doğrulama e-postada belirtilen doğrulama anahtarı, URL'yi yeniden oluşturun.",
+            "auto_translated": "Eğer varsa artık tüm özürlü, en son e-mail ile kontrol etmeniz gerekir kadar Gönderilen kimlik doğrulama e-postada belirtilen doğrulama anahtarı, URL'yi yeniden oluşturun."
+        },
+        "vi": {
+            "legacy_caption_pid": 30873,
+            "legacy_language_pid": 19,
+            "text": "Nếu bạn tạo lại chìa khóa xác thực, URL được liệt kê trong chứng thực e-mail gửi đến cho đến nay đều bị tắt, bạn cần phải kiểm tra với e-mail mới nhất.",
+            "auto_translated": "Nếu bạn tạo lại chìa khóa xác thực, URL được liệt kê trong chứng thực e-mail gửi đến cho đến nay đều bị tắt, bạn cần phải kiểm tra với e-mail mới nhất."
+        },
+        "pl": {
+            "legacy_caption_pid": 30874,
+            "legacy_language_pid": 20,
+            "text": "Jeśli ponownie utworzyć klucz uwierzytelniania, adres URL podany w uwierzytelniania e-mail wysłany do tej pory są wyłączone, trzeba sprawdzić z najnowszymi e-mail.",
+            "auto_translated": "Jeśli ponownie utworzyć klucz uwierzytelniania, adres URL podany w uwierzytelniania e-mail wysłany do tej pory są wyłączone, trzeba sprawdzić z najnowszymi e-mail."
+        },
+        "jv": {
+            "legacy_caption_pid": 30875,
+            "legacy_language_pid": 21,
+            "text": "Yen sampeyan maneh nggawe tombol bukti asli, URL kadhaptar ing bukti asli e-mail sing dikongkon kanggo nganti saiki sing kabeh dipatèni, sampeyan kudu mriksa karo e-mail anyar.",
+            "auto_translated": "Yen sampeyan maneh nggawe tombol bukti asli, URL kadhaptar ing bukti asli e-mail sing dikongkon kanggo nganti saiki sing kabeh dipatèni, sampeyan kudu mriksa karo e-mail anyar."
+        },
+        "pa": {
+            "legacy_caption_pid": 30876,
+            "legacy_language_pid": 22,
+            "text": "ਜੇ ਤੁਹਾਨੂੰ, ਜਦ ਤੱਕ, ਹੁਣ ਕਰ ਰਹੇ ਹਨ ਕਿ ਸਾਰੇ ਅਯੋਗ ਹੈ, ਤੁਸੀ ਨਵੀਨਤਮ ਈ-ਮੇਲ ਦੇ ਨਾਲ ਚੈੱਕ ਕਰਨ ਦੀ ਲੋੜ ਹੈ ਪ੍ਰਮਾਣਿਕਤਾ ਕੁੰਜੀ, ਪ੍ਰਮਾਣਿਕਤਾ ਈ-ਮੇਲ ਕਰਨ ਲਈ ਭੇਜਿਆ ਵਿਚ ਸੂਚੀਬੱਧ URL ਨੂੰ ਮੁੜ-ਬਣਾਉਣ.",
+            "auto_translated": "ਜੇ ਤੁਹਾਨੂੰ, ਜਦ ਤੱਕ, ਹੁਣ ਕਰ ਰਹੇ ਹਨ ਕਿ ਸਾਰੇ ਅਯੋਗ ਹੈ, ਤੁਸੀ ਨਵੀਨਤਮ ਈ-ਮੇਲ ਦੇ ਨਾਲ ਚੈੱਕ ਕਰਨ ਦੀ ਲੋੜ ਹੈ ਪ੍ਰਮਾਣਿਕਤਾ ਕੁੰਜੀ, ਪ੍ਰਮਾਣਿਕਤਾ ਈ-ਮੇਲ ਕਰਨ ਲਈ ਭੇਜਿਆ ਵਿਚ ਸੂਚੀਬੱਧ URL ਨੂੰ ਮੁੜ-ਬਣਾਉਣ."
+        },
+        "th": {
+            "legacy_caption_pid": 30877,
+            "legacy_language_pid": 23,
+            "text": "ถ้าคุณสร้างใหม่อีกครั้งที่สำคัญการตรวจสอบ URL ที่ระบุไว้ในการตรวจสอบอีเมลที่ส่งไปจนถึงขณะนี้มีทั้งหมดปิดใช้งานคุณต้องตรวจสอบกับอีเมลล่าสุด",
+            "auto_translated": "ถ้าคุณสร้างใหม่อีกครั้งที่สำคัญการตรวจสอบ URL ที่ระบุไว้ในการตรวจสอบอีเมลที่ส่งไปจนถึงขณะนี้มีทั้งหมดปิดใช้งานคุณต้องตรวจสอบกับอีเมลล่าสุด"
+        },
+        "te": {
+            "legacy_caption_pid": 42654,
+            "legacy_language_pid": 24,
+            "text": "మీరు ఉంటే ఇప్పుడు అన్ని వికలాంగ, మీరు తాజా ఇ-మెయిల్ తనిఖీ అవసరం వరకు పంపిన ధృవీకరణ ఇ-మెయిల్ జాబితా ప్రమాణీకరణ కీ, URL తిరిగి సృష్టించడానికి.",
+            "auto_translated": "మీరు ఉంటే ఇప్పుడు అన్ని వికలాంగ, మీరు తాజా ఇ-మెయిల్ తనిఖీ అవసరం వరకు పంపిన ధృవీకరణ ఇ-మెయిల్ జాబితా ప్రమాణీకరణ కీ, URL తిరిగి సృష్టించడానికి."
+        },
+        "mr": {
+            "legacy_caption_pid": 42655,
+            "legacy_language_pid": 25,
+            "text": "आता सर्व अक्षम केले नवीनतम ई-मेल सह तपासणी करणे आवश्यक आहे होईपर्यंत पाठविले प्रमाणीकरण ई-मेल सूचीबद्ध प्रमाणीकरण की, URL तयार असाल तर.",
+            "auto_translated": "आता सर्व अक्षम केले नवीनतम ई-मेल सह तपासणी करणे आवश्यक आहे होईपर्यंत पाठविले प्रमाणीकरण ई-मेल सूचीबद्ध प्रमाणीकरण की, URL तयार असाल तर."
+        },
+        "ur": {
+            "legacy_caption_pid": 42656,
+            "legacy_language_pid": 26,
+            "text": "اگر آپ اب تمام معذور، آپ کو تازہ ترین ای میل کے ساتھ چیک کرنے کی ضرورت ہے جب تک تصدیق کی چابی، URL کی تصدیق کے ای میل کرنے کے لئے بھیجا میں درج دوبارہ تخلیق.",
+            "auto_translated": "اگر آپ اب تمام معذور، آپ کو تازہ ترین ای میل کے ساتھ چیک کرنے کی ضرورت ہے جب تک تصدیق کی چابی، URL کی تصدیق کے ای میل کرنے کے لئے بھیجا میں درج دوبارہ تخلیق."
+        },
+        "gu": {
+            "legacy_caption_pid": 42657,
+            "legacy_language_pid": 27,
+            "text": "જો તમે ત્યાં સુધી હવે બધા અક્ષમ છે, તો તમે તાજેતરની ઈ-મેલ સાથે તપાસ કરવાની જરૂર પ્રમાણીકરણ કી, પ્રમાણીકરણ ઈ-મેલ મોકલ્યો સૂચિબદ્ધ URL ને ફરીથી બનાવો.",
+            "auto_translated": "જો તમે ત્યાં સુધી હવે બધા અક્ષમ છે, તો તમે તાજેતરની ઈ-મેલ સાથે તપાસ કરવાની જરૂર પ્રમાણીકરણ કી, પ્રમાણીકરણ ઈ-મેલ મોકલ્યો સૂચિબદ્ધ URL ને ફરીથી બનાવો."
+        },
+        "uk": {
+            "legacy_caption_pid": 42658,
+            "legacy_language_pid": 28,
+            "text": "Якщо ви повторно не створити ключ аутентифікації, URL, вказаний в аутентифікації електронної пошти, що відправляється до сих пір все відключений, ви повинні перевірити з останньої електронною поштою.",
+            "auto_translated": "Якщо ви повторно не створити ключ аутентифікації, URL, вказаний в аутентифікації електронної пошти, що відправляється до сих пір все відключений, ви повинні перевірити з останньої електронною поштою."
+        },
+        "ml": {
+            "legacy_caption_pid": 42659,
+            "legacy_language_pid": 29,
+            "text": "ആധികാരികത കീ എങ്കിൽ വീണ്ടും സൃഷ്ടിക്കാൻ, ഇപ്പോൾ വരെ അയച്ചു ആധികാരികത ഇ-മെയിലിൽ ലിസ്റ്റ് URL- ൽ എല്ലാ പ്രവർത്തനരഹിതമാണ്, ഏറ്റവും പുതിയ ഇ-മെയിൽ പരിശോധിക്കേണ്ടതുണ്ട്.",
+            "auto_translated": "ആധികാരികത കീ എങ്കിൽ വീണ്ടും സൃഷ്ടിക്കാൻ, ഇപ്പോൾ വരെ അയച്ചു ആധികാരികത ഇ-മെയിലിൽ ലിസ്റ്റ് URL- ൽ എല്ലാ പ്രവർത്തനരഹിതമാണ്, ഏറ്റവും പുതിയ ഇ-മെയിൽ പരിശോധിക്കേണ്ടതുണ്ട്."
+        },
+        "kn": {
+            "legacy_caption_pid": 42660,
+            "legacy_language_pid": 30,
+            "text": "ನೀವು ಈಗ ಎಲ್ಲಾ ನಿಷ್ಕ್ರಿಯಗೊಳಿಸಲಾಗಿದೆ, ಇತ್ತೀಚಿನ ಇಮೇಲ್ ಪರಿಶೀಲಿಸಬೇಕು ಮಾಡುವವರೆಗೂ ದೃಢೀಕರಣ ಇಮೇಲ್ ಕಳುಹಿಸಲಾಗಿದೆ ಪಟ್ಟಿ ದೃಢೀಕರಣ ಕೀ, URL ಅನ್ನು ಮರು ರಚಿಸಲು.",
+            "auto_translated": "ನೀವು ಈಗ ಎಲ್ಲಾ ನಿಷ್ಕ್ರಿಯಗೊಳಿಸಲಾಗಿದೆ, ಇತ್ತೀಚಿನ ಇಮೇಲ್ ಪರಿಶೀಲಿಸಬೇಕು ಮಾಡುವವರೆಗೂ ದೃಢೀಕರಣ ಇಮೇಲ್ ಕಳುಹಿಸಲಾಗಿದೆ ಪಟ್ಟಿ ದೃಢೀಕರಣ ಕೀ, URL ಅನ್ನು ಮರು ರಚಿಸಲು."
+        },
+        "su": {
+            "legacy_caption_pid": 42661,
+            "legacy_language_pid": 31,
+            "text": "Lamun ulang nyieun tombol auténtikasi, URL didaptarkeun dina auténtikasi e-mail Dikirim ka dugi ayeuna aya kabeh ditumpurkeun, Anjeun kedah parios ku e-mail nu pangahirna.",
+            "auto_translated": "Lamun ulang nyieun tombol auténtikasi, URL didaptarkeun dina auténtikasi e-mail Dikirim ka dugi ayeuna aya kabeh ditumpurkeun, Anjeun kedah parios ku e-mail nu pangahirna."
+        },
+        "ku": {
+            "legacy_caption_pid": 42662,
+            "legacy_language_pid": 32,
+            "text": "Eger tu ji nû-biafirîne key authentication, URL di lîsteyê de li authentication e-mail ku ji bo heta niha bi hemû seqet, divê hûn ji bo bi dawî ya e-mail kontrol bike.",
+            "auto_translated": "Eger tu ji nû-biafirîne key authentication, URL di lîsteyê de li authentication e-mail ku ji bo heta niha bi hemû seqet, divê hûn ji bo bi dawî ya e-mail kontrol bike."
+        },
+        "ps": {
+            "legacy_caption_pid": 42663,
+            "legacy_language_pid": 33,
+            "text": "که تاسو د اعتبار مهم، په حافظی په اعتبار E-mail ته واستول لست تر اوس دي د ټولو معلولينو، تاسو اړتیا سره د وروستيو E-mail وګورئ بیا رامنځته کړي.",
+            "auto_translated": "که تاسو د اعتبار مهم، په حافظی په اعتبار E-mail ته واستول لست تر اوس دي د ټولو معلولينو، تاسو اړتیا سره د وروستيو E-mail وګورئ بیا رامنځته کړي."
+        },
+        "ro": {
+            "legacy_caption_pid": 42664,
+            "legacy_language_pid": 34,
+            "text": "Dacă re-crea cheia de autentificare, adresa URL afișată în e-mail de autentificare Trimis până acum sunt dezactivate, trebuie să verificați cu cele mai recente de e-mail.",
+            "auto_translated": "Dacă re-crea cheia de autentificare, adresa URL afișată în e-mail de autentificare Trimis până acum sunt dezactivate, trebuie să verificați cu cele mai recente de e-mail."
+        },
+        "id": {
+            "legacy_caption_pid": 42665,
+            "legacy_language_pid": 35,
+            "text": "Jika Anda membuat ulang kunci otentikasi, URL yang tercantum dalam otentikasi e-mail Dikirim ke sampai sekarang semua dinonaktifkan, Anda perlu memeriksa dengan e-mail terbaru.",
+            "auto_translated": "Jika Anda membuat ulang kunci otentikasi, URL yang tercantum dalam otentikasi e-mail Dikirim ke sampai sekarang semua dinonaktifkan, Anda perlu memeriksa dengan e-mail terbaru."
+        },
+        "sd": {
+            "legacy_caption_pid": 42666,
+            "legacy_language_pid": 36,
+            "text": "جي اصليت اهم جيڪڏھن اوھان کي ٻيهر ٺاهي، جي اصليت اي-ميل هاڻي جيستائين موڪليو ۾ درج URL جو سڀ معذور آهن، توهان جي تازي اي-ميل سان چيڪ ڪرڻ جي ضرورت آهي.",
+            "auto_translated": "جي اصليت اهم جيڪڏھن اوھان کي ٻيهر ٺاهي، جي اصليت اي-ميل هاڻي جيستائين موڪليو ۾ درج URL جو سڀ معذور آهن، توهان جي تازي اي-ميل سان چيڪ ڪرڻ جي ضرورت آهي."
+        },
+        "af": {
+            "legacy_caption_pid": 42667,
+            "legacy_language_pid": 37,
+            "text": "As jy weer skep die verifikasie sleutel, URL in die verifikasie e-pos gestuur om gelys tot nou toe is almal gestremde, moet jy seker te maak met die nuutste e-pos.",
+            "auto_translated": "As jy weer skep die verifikasie sleutel, URL in die verifikasie e-pos gestuur om gelys tot nou toe is almal gestremde, moet jy seker te maak met die nuutste e-pos."
+        },
+        "sw": {
+            "legacy_caption_pid": 42668,
+            "legacy_language_pid": 38,
+            "text": "Kama upya kujenga uthibitisho muhimu, URL waliotajwa katika uthibitisho wa barua pepe uliotumwa katika mpaka sasa kila walemavu, unahitaji wasiliana na karibuni barua pepe.",
+            "auto_translated": "Kama upya kujenga uthibitisho muhimu, URL waliotajwa katika uthibitisho wa barua pepe uliotumwa katika mpaka sasa kila walemavu, unahitaji wasiliana na karibuni barua pepe."
+        },
+        "lo": {
+            "legacy_caption_pid": 42669,
+            "legacy_language_pid": 39,
+            "text": "ຖ້າຫາກວ່າທ່ານກໍາລັງສ້າງທີ່ສໍາຄັນການກວດສອບ, URL ໄດ້ລະບຸໄວ້ໃນການກວດສອບອີເມລທີ່ສົ່ງໃຫ້ຈົນກ່ວາໃນປັດຈຸບັນກໍາລັງພິການທັງຫມົດ, ທ່ານຈໍາເປັນຕ້ອງກວດສອບກັບ e-mail ຫຼ້າສຸດ.",
+            "auto_translated": "ຖ້າຫາກວ່າທ່ານກໍາລັງສ້າງທີ່ສໍາຄັນການກວດສອບ, URL ໄດ້ລະບຸໄວ້ໃນການກວດສອບອີເມລທີ່ສົ່ງໃຫ້ຈົນກ່ວາໃນປັດຈຸບັນກໍາລັງພິການທັງຫມົດ, ທ່ານຈໍາເປັນຕ້ອງກວດສອບກັບ e-mail ຫຼ້າສຸດ."
+        },
+        "nl": {
+            "legacy_caption_pid": 42670,
+            "legacy_language_pid": 40,
+            "text": "Als u opnieuw maken van de authenticatie-toets, URL in de verificatie e-mail gestuurd naar vermelde tot nu toe zijn allemaal uitgeschakeld, dient u te controleren met de nieuwste e-mail.",
+            "auto_translated": "Als u opnieuw maken van de authenticatie-toets, URL in de verificatie e-mail gestuurd naar vermelde tot nu toe zijn allemaal uitgeschakeld, dient u te controleren met de nieuwste e-mail."
+        },
+        "tl": {
+            "legacy_caption_pid": 42671,
+            "legacy_language_pid": 41,
+            "text": "Kung ikaw muling likhain ang authentication key, URL na nakalista sa pagpapatotoo ng e-mail Ipinadala sa hanggang ngayon ay ang lahat ng may kapansanan, kailangan mong suriin sa mga pinakabagong e-mail.",
+            "auto_translated": "Kung ikaw muling likhain ang authentication key, URL na nakalista sa pagpapatotoo ng e-mail Ipinadala sa hanggang ngayon ay ang lahat ng may kapansanan, kailangan mong suriin sa mga pinakabagong e-mail."
+        },
+        "ne": {
+            "legacy_caption_pid": 42672,
+            "legacy_language_pid": 42,
+            "text": "यदि तपाईं अब सबै असक्षम, तपाईं नवीनतम ई-मेल संग जाँच गर्न आवश्यक नभएसम्म प्रमाणीकरण कुञ्जी, प्रमाणीकरण गर्न पठाइयो ई-मेल मा सूचीबद्ध URL पुन: सिर्जना गर्नुहोस्।",
+            "auto_translated": "यदि तपाईं अब सबै असक्षम, तपाईं नवीनतम ई-मेल संग जाँच गर्न आवश्यक नभएसम्म प्रमाणीकरण कुञ्जी, प्रमाणीकरण गर्न पठाइयो ई-मेल मा सूचीबद्ध URL पुन: सिर्जना गर्नुहोस्।"
+        },
+        "hu": {
+            "legacy_caption_pid": 42673,
+            "legacy_language_pid": 43,
+            "text": "Ha újra létrehozni a hitelesítő kulcs, URL szerepel a hitelesítő e-mailt küldött eddig mind a fogyatékkal élő, akkor ellenőrizni kell a legújabb e-mailben.",
+            "auto_translated": "Ha újra létrehozni a hitelesítő kulcs, URL szerepel a hitelesítő e-mailt küldött eddig mind a fogyatékkal élő, akkor ellenőrizni kell a legújabb e-mailben."
+        },
+        "cs": {
+            "legacy_caption_pid": 42674,
+            "legacy_language_pid": 44,
+            "text": "Máte-li znovu vytvořit ověřovací klíč, URL uvedenou v e-mailu autentizaci odeslané na doteď jsou zakázány, je třeba zkontrolovat s nejnovějšími e-mailu.",
+            "auto_translated": "Máte-li znovu vytvořit ověřovací klíč, URL uvedenou v e-mailu autentizaci odeslané na doteď jsou zakázány, je třeba zkontrolovat s nejnovějšími e-mailu."
+        },
+        "el": {
+            "legacy_caption_pid": 42675,
+            "legacy_language_pid": 45,
+            "text": "Εάν δημιουργήσετε εκ νέου το πλήκτρο ελέγχου ταυτότητας, η διεύθυνση URL που αναφέρονται στην πιστοποίηση e-mail Αποστολή σε μέχρι τώρα είναι όλα άτομα με ειδικές ανάγκες, θα πρέπει να ελέγξετε με το πιο πρόσφατο e-mail.",
+            "auto_translated": "Εάν δημιουργήσετε εκ νέου το πλήκτρο ελέγχου ταυτότητας, η διεύθυνση URL που αναφέρονται στην πιστοποίηση e-mail Αποστολή σε μέχρι τώρα είναι όλα άτομα με ειδικές ανάγκες, θα πρέπει να ελέγξετε με το πιο πρόσφατο e-mail."
+        },
+        "sv": {
+            "legacy_caption_pid": 42676,
+            "legacy_language_pid": 46,
+            "text": "Om du återskapa autentiseringsnyckeln, URL som anges i autentiserings e-post som skickas till hittills är alla funktionshindrade, måste du kontrollera med den senaste e-post.",
+            "auto_translated": "Om du återskapa autentiseringsnyckeln, URL som anges i autentiserings e-post som skickas till hittills är alla funktionshindrade, måste du kontrollera med den senaste e-post."
+        },
+        "kk": {
+            "legacy_caption_pid": 42677,
+            "legacy_language_pid": 47,
+            "text": "Егер сіз, аутентификация пернесін қайта-құру, әлі күнге дейін жіберілген аутентификация электрондық поштамен тізімделген URL барлық мүгедектер болып, ең соңғы электронды поштамен тексеру қажет.",
+            "auto_translated": "Егер сіз, аутентификация пернесін қайта-құру, әлі күнге дейін жіберілген аутентификация электрондық поштамен тізімделген URL барлық мүгедектер болып, ең соңғы электронды поштамен тексеру қажет."
+        },
+        "fi": {
+            "legacy_caption_pid": 42678,
+            "legacy_language_pid": 48,
+            "text": "Jos luoda uudelleen autentikointiavaimesta URL lueteltu autentikointi sähköpostitse Lähetetyt asti eivät toimi, sinun täytyy tarkistaa uusimman sähköpostin.",
+            "auto_translated": "Jos luoda uudelleen autentikointiavaimesta URL lueteltu autentikointi sähköpostitse Lähetetyt asti eivät toimi, sinun täytyy tarkistaa uusimman sähköpostin."
+        },
+        "da": {
+            "legacy_caption_pid": 42679,
+            "legacy_language_pid": 49,
+            "text": "Hvis du genskabe godkendelsesnøglen, webadresse opført i autentificering e-mail sendt til indtil nu er alle deaktiveret, skal du tjekke med den nyeste e-mail.",
+            "auto_translated": "Hvis du genskabe godkendelsesnøglen, webadresse opført i autentificering e-mail sendt til indtil nu er alle deaktiveret, skal du tjekke med den nyeste e-mail."
+        },
+        "he": {
+            "legacy_caption_pid": 42680,
+            "legacy_language_pid": 50,
+            "text": "אם ליצור מחדש את אימות מפתח, מופיעה כתובת הדואר האלקטרוני אימות נשלח עד עכשיו כל נכה, אתה צריך לבדוק עם הדואר האלקטרוני האחרונה.",
+            "auto_translated": "אם ליצור מחדש את אימות מפתח, מופיעה כתובת הדואר האלקטרוני אימות נשלח עד עכשיו כל נכה, אתה צריך לבדוק עם הדואר האלקטרוני האחרונה."
+        },
+        "no": {
+            "legacy_caption_pid": 42681,
+            "legacy_language_pid": 51,
+            "text": "Hvis du gjenskape autentiseringsnøkkelen, webadresse i godkjennings e-post sendt til før nå er alle deaktivert, må du sjekke med den nyeste e-post.",
+            "auto_translated": "Hvis du gjenskape autentiseringsnøkkelen, webadresse i godkjennings e-post sendt til før nå er alle deaktivert, må du sjekke med den nyeste e-post."
+        }
+    }
+}

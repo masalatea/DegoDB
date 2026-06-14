@@ -1,0 +1,42 @@
+.DS_Store
+
+# Local environment files
+.env
+.env.*
+!.env.example
+
+# PHP / Composer
+vendor/
+composer.phar
+.phpunit.result.cache
+.phpunit.cache/
+
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Editors
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Logs and temporary files
+*.log
+output/
+work/
+temp/
+.cache/
+coverage/
+
+# Playwright
+.playwright-cli
+
+# Runtime path policy
+# - Keep durable source trees under mtool/ (including mtool/extensions/) and sample/
+# - Ignore disposable runtime output under work/
+# See docs/source-output-path-policy.md for the directory role definitions.

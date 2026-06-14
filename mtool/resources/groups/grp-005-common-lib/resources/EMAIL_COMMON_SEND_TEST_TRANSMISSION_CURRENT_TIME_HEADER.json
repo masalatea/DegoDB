@@ -1,0 +1,321 @@
+{
+    "resource_key": "EMAIL_COMMON_SEND_TEST_TRANSMISSION_CURRENT_TIME_HEADER",
+    "legacy_resource_pid": 2580,
+    "base_group_key": "grp-005-common-lib",
+    "additional_group_keys": [],
+    "key_for_update": "Fy6jnVWKPm3GJqCwxcGM60yuqoG80n7zGwbsTgx9jvtZGZ8D9LMhllFgcU5JYvH1ND63doDCmSWngRPqvsBtwY6kG00KDDWrWbGc1unl7wGZkJ5OIS3cO3DwtabvrloL",
+    "sort_group": "EMAIL SEND TEST",
+    "key_name": "EMAIL_COMMON_SEND_TEST_TRANSMISSION_CURRENT_TIME_HEADER",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": false,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 19457,
+            "legacy_language_pid": 1,
+            "text": "送信時刻",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 19458,
+            "legacy_language_pid": 2,
+            "text": "Sent time",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 19459,
+            "legacy_language_pid": 3,
+            "text": "发送时间",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 19460,
+            "legacy_language_pid": 4,
+            "text": "전송 시간",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 19461,
+            "legacy_language_pid": 5,
+            "text": "Tiempo de envío",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 19462,
+            "legacy_language_pid": 6,
+            "text": "Tempo de envio",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 19463,
+            "legacy_language_pid": 7,
+            "text": "發送時間",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 19464,
+            "legacy_language_pid": 8,
+            "text": "Temps d'envoi",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 19465,
+            "legacy_language_pid": 9,
+            "text": "समय भेजें",
+            "auto_translated": ""
+        },
+        "ar": {
+            "legacy_caption_pid": 29618,
+            "legacy_language_pid": 10,
+            "text": "وقت الإرسال",
+            "auto_translated": "وقت الإرسال"
+        },
+        "fa": {
+            "legacy_caption_pid": 29619,
+            "legacy_language_pid": 11,
+            "text": "زمان انتقال",
+            "auto_translated": "زمان انتقال"
+        },
+        "de": {
+            "legacy_caption_pid": 29620,
+            "legacy_language_pid": 12,
+            "text": "Sendezeit",
+            "auto_translated": "Sendezeit"
+        },
+        "ru": {
+            "legacy_caption_pid": 29621,
+            "legacy_language_pid": 13,
+            "text": "время передачи",
+            "auto_translated": "время передачи"
+        },
+        "ms": {
+            "legacy_caption_pid": 29622,
+            "legacy_language_pid": 14,
+            "text": "masa penghantaran",
+            "auto_translated": "masa penghantaran"
+        },
+        "ta": {
+            "legacy_caption_pid": 29623,
+            "legacy_language_pid": 15,
+            "text": "இடமாற்ற நேரமும்",
+            "auto_translated": "இடமாற்ற நேரமும்"
+        },
+        "it": {
+            "legacy_caption_pid": 29624,
+            "legacy_language_pid": 16,
+            "text": "tempo di trasmissione",
+            "auto_translated": "tempo di trasmissione"
+        },
+        "bn": {
+            "legacy_caption_pid": 29625,
+            "legacy_language_pid": 17,
+            "text": "ট্রান্সমিশন সময়",
+            "auto_translated": "ট্রান্সমিশন সময়"
+        },
+        "tr": {
+            "legacy_caption_pid": 29626,
+            "legacy_language_pid": 18,
+            "text": "İletim zamanı",
+            "auto_translated": "İletim zamanı"
+        },
+        "vi": {
+            "legacy_caption_pid": 29627,
+            "legacy_language_pid": 19,
+            "text": "thời gian truyền",
+            "auto_translated": "thời gian truyền"
+        },
+        "pl": {
+            "legacy_caption_pid": 29628,
+            "legacy_language_pid": 20,
+            "text": "czas transmisji",
+            "auto_translated": "czas transmisji"
+        },
+        "jv": {
+            "legacy_caption_pid": 29629,
+            "legacy_language_pid": 21,
+            "text": "wektu transmisi",
+            "auto_translated": "wektu transmisi"
+        },
+        "pa": {
+            "legacy_caption_pid": 29630,
+            "legacy_language_pid": 22,
+            "text": "ਸੰਚਾਰਨ ਵਾਰ",
+            "auto_translated": "ਸੰਚਾਰਨ ਵਾਰ"
+        },
+        "th": {
+            "legacy_caption_pid": 29631,
+            "legacy_language_pid": 23,
+            "text": "เวลาการส่ง",
+            "auto_translated": "เวลาการส่ง"
+        },
+        "te": {
+            "legacy_caption_pid": 37208,
+            "legacy_language_pid": 24,
+            "text": "ప్రసార సమయం",
+            "auto_translated": "ప్రసార సమయం"
+        },
+        "mr": {
+            "legacy_caption_pid": 37209,
+            "legacy_language_pid": 25,
+            "text": "ट्रान्समिशन वेळ",
+            "auto_translated": "ट्रान्समिशन वेळ"
+        },
+        "ur": {
+            "legacy_caption_pid": 37210,
+            "legacy_language_pid": 26,
+            "text": "نشر کا وقت",
+            "auto_translated": "نشر کا وقت"
+        },
+        "gu": {
+            "legacy_caption_pid": 37211,
+            "legacy_language_pid": 27,
+            "text": "ટ્રાન્સમિશન સમય",
+            "auto_translated": "ટ્રાન્સમિશન સમય"
+        },
+        "uk": {
+            "legacy_caption_pid": 37212,
+            "legacy_language_pid": 28,
+            "text": "час передачі",
+            "auto_translated": "час передачі"
+        },
+        "ml": {
+            "legacy_caption_pid": 37213,
+            "legacy_language_pid": 29,
+            "text": "ട്രാൻസ്മിഷൻ സമയം",
+            "auto_translated": "ട്രാൻസ്മിഷൻ സമയം"
+        },
+        "kn": {
+            "legacy_caption_pid": 37214,
+            "legacy_language_pid": 30,
+            "text": "ಪ್ರಸರಣ ಸಮಯ",
+            "auto_translated": "ಪ್ರಸರಣ ಸಮಯ"
+        },
+        "su": {
+            "legacy_caption_pid": 37215,
+            "legacy_language_pid": 31,
+            "text": "waktos transmisi",
+            "auto_translated": "waktos transmisi"
+        },
+        "ku": {
+            "legacy_caption_pid": 37216,
+            "legacy_language_pid": 32,
+            "text": "dem ji nifşek",
+            "auto_translated": "dem ji nifşek"
+        },
+        "ps": {
+            "legacy_caption_pid": 37217,
+            "legacy_language_pid": 33,
+            "text": "د انتقال وخت",
+            "auto_translated": "د انتقال وخت"
+        },
+        "ro": {
+            "legacy_caption_pid": 37218,
+            "legacy_language_pid": 34,
+            "text": "Perioada de transmisie",
+            "auto_translated": "Perioada de transmisie"
+        },
+        "id": {
+            "legacy_caption_pid": 37219,
+            "legacy_language_pid": 35,
+            "text": "waktu transmisi",
+            "auto_translated": "waktu transmisi"
+        },
+        "sd": {
+            "legacy_caption_pid": 37220,
+            "legacy_language_pid": 36,
+            "text": "نشريات وقت",
+            "auto_translated": "نشريات وقت"
+        },
+        "af": {
+            "legacy_caption_pid": 37221,
+            "legacy_language_pid": 37,
+            "text": "transmissie tyd",
+            "auto_translated": "transmissie tyd"
+        },
+        "sw": {
+            "legacy_caption_pid": 37222,
+            "legacy_language_pid": 38,
+            "text": "Transmission wakati",
+            "auto_translated": "Transmission wakati"
+        },
+        "lo": {
+            "legacy_caption_pid": 37223,
+            "legacy_language_pid": 39,
+            "text": "ທີ່ໃຊ້ເວລາລະບົບສາຍສົ່ງ",
+            "auto_translated": "ທີ່ໃຊ້ເວລາລະບົບສາຍສົ່ງ"
+        },
+        "nl": {
+            "legacy_caption_pid": 37224,
+            "legacy_language_pid": 40,
+            "text": "zendtijd",
+            "auto_translated": "zendtijd"
+        },
+        "tl": {
+            "legacy_caption_pid": 37225,
+            "legacy_language_pid": 41,
+            "text": "transmission oras",
+            "auto_translated": "transmission oras"
+        },
+        "ne": {
+            "legacy_caption_pid": 37226,
+            "legacy_language_pid": 42,
+            "text": "प्रसारण समय",
+            "auto_translated": "प्रसारण समय"
+        },
+        "hu": {
+            "legacy_caption_pid": 37227,
+            "legacy_language_pid": 43,
+            "text": "Átviteli idő",
+            "auto_translated": "Átviteli idő"
+        },
+        "cs": {
+            "legacy_caption_pid": 37228,
+            "legacy_language_pid": 44,
+            "text": "doba přenosu",
+            "auto_translated": "doba přenosu"
+        },
+        "el": {
+            "legacy_caption_pid": 37229,
+            "legacy_language_pid": 45,
+            "text": "Ο χρόνος μετάδοσης",
+            "auto_translated": "Ο χρόνος μετάδοσης"
+        },
+        "sv": {
+            "legacy_caption_pid": 37230,
+            "legacy_language_pid": 46,
+            "text": "sändningstid",
+            "auto_translated": "sändningstid"
+        },
+        "kk": {
+            "legacy_caption_pid": 37231,
+            "legacy_language_pid": 47,
+            "text": "трансмиссия уақыты",
+            "auto_translated": "трансмиссия уақыты"
+        },
+        "fi": {
+            "legacy_caption_pid": 37232,
+            "legacy_language_pid": 48,
+            "text": "lähetysaika",
+            "auto_translated": "lähetysaika"
+        },
+        "da": {
+            "legacy_caption_pid": 37233,
+            "legacy_language_pid": 49,
+            "text": "Transmission tid",
+            "auto_translated": "Transmission tid"
+        },
+        "he": {
+            "legacy_caption_pid": 37234,
+            "legacy_language_pid": 50,
+            "text": "זמן שידור",
+            "auto_translated": "זמן שידור"
+        },
+        "no": {
+            "legacy_caption_pid": 37235,
+            "legacy_language_pid": 51,
+            "text": "sendetid",
+            "auto_translated": "sendetid"
+        }
+    }
+}

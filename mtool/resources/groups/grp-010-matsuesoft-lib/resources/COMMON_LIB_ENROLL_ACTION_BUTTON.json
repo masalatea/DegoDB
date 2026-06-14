@@ -1,0 +1,321 @@
+{
+    "resource_key": "COMMON_LIB_ENROLL_ACTION_BUTTON",
+    "legacy_resource_pid": 1582,
+    "base_group_key": "grp-010-matsuesoft-lib",
+    "additional_group_keys": [],
+    "key_for_update": "6VgtqLBFSH9Tq1DBKaqnjJlFJ7a3fSxWRRWW6WFJicCxYjxSDkJDZVwaGOXvZSOn9cTMbleAjairOwFQGxyBZ43MHxUn1olp6jIuUVAql2EEKD3oV0s5S5R1PKftwXzO",
+    "sort_group": "ENROLL",
+    "key_name": "COMMON_LIB_ENROLL_ACTION_BUTTON",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": false,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 7110,
+            "legacy_language_pid": 1,
+            "text": "ご登録実行",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 7111,
+            "legacy_language_pid": 2,
+            "text": "Execute Registration",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 7112,
+            "legacy_language_pid": 3,
+            "text": "您登记执行",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 7113,
+            "legacy_language_pid": 4,
+            "text": "등록 실행",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 10741,
+            "legacy_language_pid": 5,
+            "text": "Ejecutar registro",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 10742,
+            "legacy_language_pid": 6,
+            "text": "Execute o registro",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 10743,
+            "legacy_language_pid": 7,
+            "text": "您登記執行",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 16449,
+            "legacy_language_pid": 8,
+            "text": "Exécuter l'enregistrement",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 16450,
+            "legacy_language_pid": 9,
+            "text": "पंजीकरण निष्पादित करें",
+            "auto_translated": ""
+        },
+        "ar": {
+            "legacy_caption_pid": 31060,
+            "legacy_language_pid": 10,
+            "text": "تنفيذ تسجيلك",
+            "auto_translated": "تنفيذ تسجيلك"
+        },
+        "fa": {
+            "legacy_caption_pid": 31061,
+            "legacy_language_pid": 11,
+            "text": "اعدام ثبت نام شما",
+            "auto_translated": "اعدام ثبت نام شما"
+        },
+        "de": {
+            "legacy_caption_pid": 31062,
+            "legacy_language_pid": 12,
+            "text": "Ihre Registrierung Ausführung",
+            "auto_translated": "Ihre Registrierung Ausführung"
+        },
+        "ru": {
+            "legacy_caption_pid": 31063,
+            "legacy_language_pid": 13,
+            "text": "Ваше исполнение регистрации",
+            "auto_translated": "Ваше исполнение регистрации"
+        },
+        "ms": {
+            "legacy_caption_pid": 31064,
+            "legacy_language_pid": 14,
+            "text": "pelaksanaan pendaftaran anda",
+            "auto_translated": "pelaksanaan pendaftaran anda"
+        },
+        "ta": {
+            "legacy_caption_pid": 31065,
+            "legacy_language_pid": 15,
+            "text": "உங்களின் பதிவுக் மரணதண்டனை",
+            "auto_translated": "உங்களின் பதிவுக் மரணதண்டனை"
+        },
+        "it": {
+            "legacy_caption_pid": 31066,
+            "legacy_language_pid": 16,
+            "text": "La vostra esecuzione di registrazione",
+            "auto_translated": "La vostra esecuzione di registrazione"
+        },
+        "bn": {
+            "legacy_caption_pid": 31067,
+            "legacy_language_pid": 17,
+            "text": "আপনার নিবন্ধীকরণ ফাঁসি",
+            "auto_translated": "আপনার নিবন্ধীকরণ ফাঁসি"
+        },
+        "tr": {
+            "legacy_caption_pid": 31068,
+            "legacy_language_pid": 18,
+            "text": "Kaydınız yürütme",
+            "auto_translated": "Kaydınız yürütme"
+        },
+        "vi": {
+            "legacy_caption_pid": 31069,
+            "legacy_language_pid": 19,
+            "text": "thực hiện đăng ký của bạn",
+            "auto_translated": "thực hiện đăng ký của bạn"
+        },
+        "pl": {
+            "legacy_caption_pid": 31070,
+            "legacy_language_pid": 20,
+            "text": "Twój wykonanie Rejestracja",
+            "auto_translated": "Twój wykonanie Rejestracja"
+        },
+        "jv": {
+            "legacy_caption_pid": 31071,
+            "legacy_language_pid": 21,
+            "text": "eksekusi gratis",
+            "auto_translated": "eksekusi gratis"
+        },
+        "pa": {
+            "legacy_caption_pid": 31072,
+            "legacy_language_pid": 22,
+            "text": "ਤੁਹਾਡਾ ਰਜਿਸਟਰੇਸ਼ਨ ਚੱਲਣ",
+            "auto_translated": "ਤੁਹਾਡਾ ਰਜਿਸਟਰੇਸ਼ਨ ਚੱਲਣ"
+        },
+        "th": {
+            "legacy_caption_pid": 31073,
+            "legacy_language_pid": 23,
+            "text": "การดำเนินการลงทะเบียนของคุณ",
+            "auto_translated": "การดำเนินการลงทะเบียนของคุณ"
+        },
+        "te": {
+            "legacy_caption_pid": 42346,
+            "legacy_language_pid": 24,
+            "text": "మీ నమోదు అమలు",
+            "auto_translated": "మీ నమోదు అమలు"
+        },
+        "mr": {
+            "legacy_caption_pid": 42347,
+            "legacy_language_pid": 25,
+            "text": "आपले नोंदणी अंमलबजावणी",
+            "auto_translated": "आपले नोंदणी अंमलबजावणी"
+        },
+        "ur": {
+            "legacy_caption_pid": 42348,
+            "legacy_language_pid": 26,
+            "text": "آپ کے رجسٹریشن پر عملدرآمد",
+            "auto_translated": "آپ کے رجسٹریشن پر عملدرآمد"
+        },
+        "gu": {
+            "legacy_caption_pid": 42349,
+            "legacy_language_pid": 27,
+            "text": "તમારી નોંધણી અમલ",
+            "auto_translated": "તમારી નોંધણી અમલ"
+        },
+        "uk": {
+            "legacy_caption_pid": 42350,
+            "legacy_language_pid": 28,
+            "text": "Ваше виконання реєстрації",
+            "auto_translated": "Ваше виконання реєстрації"
+        },
+        "ml": {
+            "legacy_caption_pid": 42351,
+            "legacy_language_pid": 29,
+            "text": "നിങ്ങളുടെ രജിസ്ട്രേഷൻ വധശിക്ഷ",
+            "auto_translated": "നിങ്ങളുടെ രജിസ്ട്രേഷൻ വധശിക്ഷ"
+        },
+        "kn": {
+            "legacy_caption_pid": 42352,
+            "legacy_language_pid": 30,
+            "text": "ನಿಮ್ಮ ನೋಂದಣಿ ಮರಣದಂಡನೆ",
+            "auto_translated": "ನಿಮ್ಮ ನೋಂದಣಿ ಮರಣದಂಡನೆ"
+        },
+        "su": {
+            "legacy_caption_pid": 42353,
+            "legacy_language_pid": 31,
+            "text": "palaksanaan pendaptaran Anjeun",
+            "auto_translated": "palaksanaan pendaptaran Anjeun"
+        },
+        "ku": {
+            "legacy_caption_pid": 42354,
+            "legacy_language_pid": 32,
+            "text": "îdamê qeyda te",
+            "auto_translated": "îdamê qeyda te"
+        },
+        "ps": {
+            "legacy_caption_pid": 42355,
+            "legacy_language_pid": 33,
+            "text": "ستاسو د نوم ليکنې د اعدام",
+            "auto_translated": "ستاسو د نوم ليکنې د اعدام"
+        },
+        "ro": {
+            "legacy_caption_pid": 42356,
+            "legacy_language_pid": 34,
+            "text": "Execuția ta de înregistrare",
+            "auto_translated": "Execuția ta de înregistrare"
+        },
+        "id": {
+            "legacy_caption_pid": 42357,
+            "legacy_language_pid": 35,
+            "text": "eksekusi pendaftaran Anda",
+            "auto_translated": "eksekusi pendaftaran Anda"
+        },
+        "sd": {
+            "legacy_caption_pid": 42358,
+            "legacy_language_pid": 36,
+            "text": "توهان جي رجسٽريشن execution",
+            "auto_translated": "توهان جي رجسٽريشن execution"
+        },
+        "af": {
+            "legacy_caption_pid": 42359,
+            "legacy_language_pid": 37,
+            "text": "Jou registrasie uitvoering",
+            "auto_translated": "Jou registrasie uitvoering"
+        },
+        "sw": {
+            "legacy_caption_pid": 42360,
+            "legacy_language_pid": 38,
+            "text": "utekelezaji yako ya usajili",
+            "auto_translated": "utekelezaji yako ya usajili"
+        },
+        "lo": {
+            "legacy_caption_pid": 42361,
+            "legacy_language_pid": 39,
+            "text": "ປະຕິບັດການຈົດທະບຽນຂອງທ່ານ",
+            "auto_translated": "ປະຕິບັດການຈົດທະບຽນຂອງທ່ານ"
+        },
+        "nl": {
+            "legacy_caption_pid": 42362,
+            "legacy_language_pid": 40,
+            "text": "Uw registratie uitvoering",
+            "auto_translated": "Uw registratie uitvoering"
+        },
+        "tl": {
+            "legacy_caption_pid": 42363,
+            "legacy_language_pid": 41,
+            "text": "Ang iyong pagpaparehistro execution",
+            "auto_translated": "Ang iyong pagpaparehistro execution"
+        },
+        "ne": {
+            "legacy_caption_pid": 42364,
+            "legacy_language_pid": 42,
+            "text": "आफ्नो दर्ता कार्यान्वयन",
+            "auto_translated": "आफ्नो दर्ता कार्यान्वयन"
+        },
+        "hu": {
+            "legacy_caption_pid": 42365,
+            "legacy_language_pid": 43,
+            "text": "A regisztráció végrehajtása",
+            "auto_translated": "A regisztráció végrehajtása"
+        },
+        "cs": {
+            "legacy_caption_pid": 42366,
+            "legacy_language_pid": 44,
+            "text": "Váš provedení registrace",
+            "auto_translated": "Váš provedení registrace"
+        },
+        "el": {
+            "legacy_caption_pid": 42367,
+            "legacy_language_pid": 45,
+            "text": "εκτέλεση εγγραφή σας",
+            "auto_translated": "εκτέλεση εγγραφή σας"
+        },
+        "sv": {
+            "legacy_caption_pid": 42368,
+            "legacy_language_pid": 46,
+            "text": "Din registrering utförande",
+            "auto_translated": "Din registrering utförande"
+        },
+        "kk": {
+            "legacy_caption_pid": 42369,
+            "legacy_language_pid": 47,
+            "text": "Сіздің тіркеу орындау",
+            "auto_translated": "Сіздің тіркеу орындау"
+        },
+        "fi": {
+            "legacy_caption_pid": 42370,
+            "legacy_language_pid": 48,
+            "text": "Rekisteröintisi suoritus",
+            "auto_translated": "Rekisteröintisi suoritus"
+        },
+        "da": {
+            "legacy_caption_pid": 42371,
+            "legacy_language_pid": 49,
+            "text": "Din udførelse registrering",
+            "auto_translated": "Din udførelse registrering"
+        },
+        "he": {
+            "legacy_caption_pid": 42372,
+            "legacy_language_pid": 50,
+            "text": "ביצוע הרישום שלך",
+            "auto_translated": "ביצוע הרישום שלך"
+        },
+        "no": {
+            "legacy_caption_pid": 42373,
+            "legacy_language_pid": 51,
+            "text": "Din registrering utførelse",
+            "auto_translated": "Din registrering utførelse"
+        }
+    }
+}

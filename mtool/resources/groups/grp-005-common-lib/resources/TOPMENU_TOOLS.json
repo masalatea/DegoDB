@@ -1,0 +1,321 @@
+{
+    "resource_key": "TOPMENU_TOOLS",
+    "legacy_resource_pid": 532,
+    "base_group_key": "grp-005-common-lib",
+    "additional_group_keys": [],
+    "key_for_update": "kXUXvJjjYrcE5fY8qV1QsxqG2eZSI21GxBEGrMm3auDMHaPtvDkQyug7wTiaVY6DjpV4ZiGolNM23ZEls1TqvW1V0zXICehBhXTn5U9D29USeZo6dHyFgwkH9cwav11U",
+    "sort_group": "TOPMENU",
+    "key_name": "TOPMENU_TOOLS",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": false,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 1427,
+            "legacy_language_pid": 1,
+            "text": "ツール一覧",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 1428,
+            "legacy_language_pid": 2,
+            "text": "Tool List",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 6594,
+            "legacy_language_pid": 3,
+            "text": "工具列表",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 6595,
+            "legacy_language_pid": 4,
+            "text": "도구 목록",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 10642,
+            "legacy_language_pid": 5,
+            "text": "Lista de herramientas",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 10643,
+            "legacy_language_pid": 6,
+            "text": "Lista de ferramentas",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 10644,
+            "legacy_language_pid": 7,
+            "text": "工具列表",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 16381,
+            "legacy_language_pid": 8,
+            "text": "Liste des outils",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 16382,
+            "legacy_language_pid": 9,
+            "text": "उपकरण सूची",
+            "auto_translated": ""
+        },
+        "ar": {
+            "legacy_caption_pid": 30514,
+            "legacy_language_pid": 10,
+            "text": "قائمة أدوات",
+            "auto_translated": "قائمة أدوات"
+        },
+        "fa": {
+            "legacy_caption_pid": 30515,
+            "legacy_language_pid": 11,
+            "text": "ابزارهای لیست",
+            "auto_translated": "ابزارهای لیست"
+        },
+        "de": {
+            "legacy_caption_pid": 30516,
+            "legacy_language_pid": 12,
+            "text": "Werkzeuge Liste",
+            "auto_translated": "Werkzeuge Liste"
+        },
+        "ru": {
+            "legacy_caption_pid": 30517,
+            "legacy_language_pid": 13,
+            "text": "Список Инструменты",
+            "auto_translated": "Список Инструменты"
+        },
+        "ms": {
+            "legacy_caption_pid": 30518,
+            "legacy_language_pid": 14,
+            "text": "Senarai alat",
+            "auto_translated": "Senarai alat"
+        },
+        "ta": {
+            "legacy_caption_pid": 30519,
+            "legacy_language_pid": 15,
+            "text": "கருவிகள் பட்டியல்",
+            "auto_translated": "கருவிகள் பட்டியல்"
+        },
+        "it": {
+            "legacy_caption_pid": 30520,
+            "legacy_language_pid": 16,
+            "text": "Lista Strumenti",
+            "auto_translated": "Lista Strumenti"
+        },
+        "bn": {
+            "legacy_caption_pid": 30521,
+            "legacy_language_pid": 17,
+            "text": "সরঞ্জাম তালিকা",
+            "auto_translated": "সরঞ্জাম তালিকা"
+        },
+        "tr": {
+            "legacy_caption_pid": 30522,
+            "legacy_language_pid": 18,
+            "text": "Araçlar listesi",
+            "auto_translated": "Araçlar listesi"
+        },
+        "vi": {
+            "legacy_caption_pid": 30523,
+            "legacy_language_pid": 19,
+            "text": "Danh sách các công cụ",
+            "auto_translated": "Danh sách các công cụ"
+        },
+        "pl": {
+            "legacy_caption_pid": 30524,
+            "legacy_language_pid": 20,
+            "text": "Lista narzędzi",
+            "auto_translated": "Lista narzędzi"
+        },
+        "jv": {
+            "legacy_caption_pid": 30525,
+            "legacy_language_pid": 21,
+            "text": "Dhaftar pribadi",
+            "auto_translated": "Dhaftar pribadi"
+        },
+        "pa": {
+            "legacy_caption_pid": 30526,
+            "legacy_language_pid": 22,
+            "text": "ਸੰਦ ਹਨ ਸੂਚੀ",
+            "auto_translated": "ਸੰਦ ਹਨ ਸੂਚੀ"
+        },
+        "th": {
+            "legacy_caption_pid": 30527,
+            "legacy_language_pid": 23,
+            "text": "รายการเครื่องมือ",
+            "auto_translated": "รายการเครื่องมือ"
+        },
+        "te": {
+            "legacy_caption_pid": 35388,
+            "legacy_language_pid": 24,
+            "text": "పరికరములు జాబితా",
+            "auto_translated": "పరికరములు జాబితా"
+        },
+        "mr": {
+            "legacy_caption_pid": 35389,
+            "legacy_language_pid": 25,
+            "text": "साधने यादी",
+            "auto_translated": "साधने यादी"
+        },
+        "ur": {
+            "legacy_caption_pid": 35390,
+            "legacy_language_pid": 26,
+            "text": "ٹولز کی فہرست",
+            "auto_translated": "ٹولز کی فہرست"
+        },
+        "gu": {
+            "legacy_caption_pid": 35391,
+            "legacy_language_pid": 27,
+            "text": "સાધનો યાદી",
+            "auto_translated": "સાધનો યાદી"
+        },
+        "uk": {
+            "legacy_caption_pid": 35392,
+            "legacy_language_pid": 28,
+            "text": "список Інструменти",
+            "auto_translated": "список Інструменти"
+        },
+        "ml": {
+            "legacy_caption_pid": 35393,
+            "legacy_language_pid": 29,
+            "text": "ഉപകരണങ്ങൾ പട്ടിക",
+            "auto_translated": "ഉപകരണങ്ങൾ പട്ടിക"
+        },
+        "kn": {
+            "legacy_caption_pid": 35394,
+            "legacy_language_pid": 30,
+            "text": "ಪರಿಕರಗಳು ಪಟ್ಟಿ",
+            "auto_translated": "ಪರಿಕರಗಳು ಪಟ್ಟಿ"
+        },
+        "su": {
+            "legacy_caption_pid": 35395,
+            "legacy_language_pid": 31,
+            "text": "Daptar parabot",
+            "auto_translated": "Daptar parabot"
+        },
+        "ku": {
+            "legacy_caption_pid": 35396,
+            "legacy_language_pid": 32,
+            "text": "Lîsteya Tools",
+            "auto_translated": "Lîsteya Tools"
+        },
+        "ps": {
+            "legacy_caption_pid": 35397,
+            "legacy_language_pid": 33,
+            "text": "وسیلې ساده لټون",
+            "auto_translated": "وسیلې ساده لټون"
+        },
+        "ro": {
+            "legacy_caption_pid": 35398,
+            "legacy_language_pid": 34,
+            "text": "Listă Instrumente",
+            "auto_translated": "Listă Instrumente"
+        },
+        "id": {
+            "legacy_caption_pid": 35399,
+            "legacy_language_pid": 35,
+            "text": "Daftar alat-alat",
+            "auto_translated": "Daftar alat-alat"
+        },
+        "sd": {
+            "legacy_caption_pid": 35400,
+            "legacy_language_pid": 36,
+            "text": "اوزار لسٽ",
+            "auto_translated": "اوزار لسٽ"
+        },
+        "af": {
+            "legacy_caption_pid": 35401,
+            "legacy_language_pid": 37,
+            "text": "gereedskap Lys",
+            "auto_translated": "gereedskap Lys"
+        },
+        "sw": {
+            "legacy_caption_pid": 35402,
+            "legacy_language_pid": 38,
+            "text": "Orodha Tools",
+            "auto_translated": "Orodha Tools"
+        },
+        "lo": {
+            "legacy_caption_pid": 35403,
+            "legacy_language_pid": 39,
+            "text": "ບັນຊີເຄື່ອງມື",
+            "auto_translated": "ບັນຊີເຄື່ອງມື"
+        },
+        "nl": {
+            "legacy_caption_pid": 35404,
+            "legacy_language_pid": 40,
+            "text": "Gereedschap Lijst",
+            "auto_translated": "Gereedschap Lijst"
+        },
+        "tl": {
+            "legacy_caption_pid": 35405,
+            "legacy_language_pid": 41,
+            "text": "Listahan ng Tools",
+            "auto_translated": "Listahan ng Tools"
+        },
+        "ne": {
+            "legacy_caption_pid": 35406,
+            "legacy_language_pid": 42,
+            "text": "उपकरण सूची",
+            "auto_translated": "उपकरण सूची"
+        },
+        "hu": {
+            "legacy_caption_pid": 35407,
+            "legacy_language_pid": 43,
+            "text": "Eszközök listája",
+            "auto_translated": "Eszközök listája"
+        },
+        "cs": {
+            "legacy_caption_pid": 35408,
+            "legacy_language_pid": 44,
+            "text": "Nástroje Seznam",
+            "auto_translated": "Nástroje Seznam"
+        },
+        "el": {
+            "legacy_caption_pid": 35409,
+            "legacy_language_pid": 45,
+            "text": "Εργαλεία Λίστα",
+            "auto_translated": "Εργαλεία Λίστα"
+        },
+        "sv": {
+            "legacy_caption_pid": 35410,
+            "legacy_language_pid": 46,
+            "text": "Verktyg Lista",
+            "auto_translated": "Verktyg Lista"
+        },
+        "kk": {
+            "legacy_caption_pid": 35411,
+            "legacy_language_pid": 47,
+            "text": "Құралдар тізімі",
+            "auto_translated": "Құралдар тізімі"
+        },
+        "fi": {
+            "legacy_caption_pid": 35412,
+            "legacy_language_pid": 48,
+            "text": "Työkalut List",
+            "auto_translated": "Työkalut List"
+        },
+        "da": {
+            "legacy_caption_pid": 35413,
+            "legacy_language_pid": 49,
+            "text": "Værktøj Liste",
+            "auto_translated": "Værktøj Liste"
+        },
+        "he": {
+            "legacy_caption_pid": 35414,
+            "legacy_language_pid": 50,
+            "text": "רשימת כלים",
+            "auto_translated": "רשימת כלים"
+        },
+        "no": {
+            "legacy_caption_pid": 35415,
+            "legacy_language_pid": 51,
+            "text": "verktøy List",
+            "auto_translated": "verktøy List"
+        }
+    }
+}

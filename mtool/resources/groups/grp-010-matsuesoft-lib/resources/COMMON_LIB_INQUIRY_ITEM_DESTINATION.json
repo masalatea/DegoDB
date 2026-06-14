@@ -1,0 +1,321 @@
+{
+    "resource_key": "COMMON_LIB_INQUIRY_ITEM_DESTINATION",
+    "legacy_resource_pid": 1461,
+    "base_group_key": "grp-010-matsuesoft-lib",
+    "additional_group_keys": [],
+    "key_for_update": "oQlmSTOn5AeCJ3uUxWmZS1cqcmegDx9fFqQvlgLQegOXQL90nnabzQed19Wi6q6nAD6ZiF7krbJwjnAL9kfLOZQY5cJxxc4ZkVQ1rQ8ccvc56xTO9NzbY9QbgvuMeAv7",
+    "sort_group": "INQUIRY",
+    "key_name": "COMMON_LIB_INQUIRY_ITEM_DESTINATION",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": false,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 6118,
+            "legacy_language_pid": 1,
+            "text": "宛先",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 6119,
+            "legacy_language_pid": 2,
+            "text": "Destination",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 6120,
+            "legacy_language_pid": 3,
+            "text": "目的地",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 6121,
+            "legacy_language_pid": 4,
+            "text": "대상",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 10973,
+            "legacy_language_pid": 5,
+            "text": "Destino",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 10974,
+            "legacy_language_pid": 6,
+            "text": " Destino ",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 10975,
+            "legacy_language_pid": 7,
+            "text": "目的地",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 17181,
+            "legacy_language_pid": 8,
+            "text": "Destination",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 17182,
+            "legacy_language_pid": 9,
+            "text": "गंतव्य",
+            "auto_translated": ""
+        },
+        "ar": {
+            "legacy_caption_pid": 32110,
+            "legacy_language_pid": 10,
+            "text": "غاية",
+            "auto_translated": "غاية"
+        },
+        "fa": {
+            "legacy_caption_pid": 32111,
+            "legacy_language_pid": 11,
+            "text": "مقصد",
+            "auto_translated": "مقصد"
+        },
+        "de": {
+            "legacy_caption_pid": 32112,
+            "legacy_language_pid": 12,
+            "text": "Ziel",
+            "auto_translated": "Ziel"
+        },
+        "ru": {
+            "legacy_caption_pid": 32113,
+            "legacy_language_pid": 13,
+            "text": "назначения",
+            "auto_translated": "назначения"
+        },
+        "ms": {
+            "legacy_caption_pid": 32114,
+            "legacy_language_pid": 14,
+            "text": "Destinasi",
+            "auto_translated": "Destinasi"
+        },
+        "ta": {
+            "legacy_caption_pid": 32115,
+            "legacy_language_pid": 15,
+            "text": "இலக்கு",
+            "auto_translated": "இலக்கு"
+        },
+        "it": {
+            "legacy_caption_pid": 32116,
+            "legacy_language_pid": 16,
+            "text": "destinazione",
+            "auto_translated": "destinazione"
+        },
+        "bn": {
+            "legacy_caption_pid": 32117,
+            "legacy_language_pid": 17,
+            "text": "গন্তব্য",
+            "auto_translated": "গন্তব্য"
+        },
+        "tr": {
+            "legacy_caption_pid": 32118,
+            "legacy_language_pid": 18,
+            "text": "hedef",
+            "auto_translated": "hedef"
+        },
+        "vi": {
+            "legacy_caption_pid": 32119,
+            "legacy_language_pid": 19,
+            "text": "điểm đến",
+            "auto_translated": "điểm đến"
+        },
+        "pl": {
+            "legacy_caption_pid": 32120,
+            "legacy_language_pid": 20,
+            "text": "cel",
+            "auto_translated": "cel"
+        },
+        "jv": {
+            "legacy_caption_pid": 32121,
+            "legacy_language_pid": 21,
+            "text": "panggonan",
+            "auto_translated": "panggonan"
+        },
+        "pa": {
+            "legacy_caption_pid": 32122,
+            "legacy_language_pid": 22,
+            "text": "ਟਿਕਾਣਾ",
+            "auto_translated": "ਟਿਕਾਣਾ"
+        },
+        "th": {
+            "legacy_caption_pid": 32123,
+            "legacy_language_pid": 23,
+            "text": "ปลายทาง",
+            "auto_translated": "ปลายทาง"
+        },
+        "te": {
+            "legacy_caption_pid": 41408,
+            "legacy_language_pid": 24,
+            "text": "గమ్యం",
+            "auto_translated": "గమ్యం"
+        },
+        "mr": {
+            "legacy_caption_pid": 41409,
+            "legacy_language_pid": 25,
+            "text": "गंतव्य",
+            "auto_translated": "गंतव्य"
+        },
+        "ur": {
+            "legacy_caption_pid": 41410,
+            "legacy_language_pid": 26,
+            "text": "مقصود",
+            "auto_translated": "مقصود"
+        },
+        "gu": {
+            "legacy_caption_pid": 41411,
+            "legacy_language_pid": 27,
+            "text": "લક્ષ્યસ્થાન",
+            "auto_translated": "લક્ષ્યસ્થાન"
+        },
+        "uk": {
+            "legacy_caption_pid": 41412,
+            "legacy_language_pid": 28,
+            "text": "призначення",
+            "auto_translated": "призначення"
+        },
+        "ml": {
+            "legacy_caption_pid": 41413,
+            "legacy_language_pid": 29,
+            "text": "ലക്ഷ്യസ്ഥാനം",
+            "auto_translated": "ലക്ഷ്യസ്ഥാനം"
+        },
+        "kn": {
+            "legacy_caption_pid": 41414,
+            "legacy_language_pid": 30,
+            "text": "ಗಮ್ಯಸ್ಥಾನ",
+            "auto_translated": "ಗಮ್ಯಸ್ಥಾನ"
+        },
+        "su": {
+            "legacy_caption_pid": 41415,
+            "legacy_language_pid": 31,
+            "text": "tujuan",
+            "auto_translated": "tujuan"
+        },
+        "ku": {
+            "legacy_caption_pid": 41416,
+            "legacy_language_pid": 32,
+            "text": "destination",
+            "auto_translated": "destination"
+        },
+        "ps": {
+            "legacy_caption_pid": 41417,
+            "legacy_language_pid": 33,
+            "text": "موخه",
+            "auto_translated": "موخه"
+        },
+        "ro": {
+            "legacy_caption_pid": 41418,
+            "legacy_language_pid": 34,
+            "text": "destinație",
+            "auto_translated": "destinație"
+        },
+        "id": {
+            "legacy_caption_pid": 41419,
+            "legacy_language_pid": 35,
+            "text": "tujuan",
+            "auto_translated": "tujuan"
+        },
+        "sd": {
+            "legacy_caption_pid": 41420,
+            "legacy_language_pid": 36,
+            "text": "منزل",
+            "auto_translated": "منزل"
+        },
+        "af": {
+            "legacy_caption_pid": 41421,
+            "legacy_language_pid": 37,
+            "text": "bestemming",
+            "auto_translated": "bestemming"
+        },
+        "sw": {
+            "legacy_caption_pid": 41422,
+            "legacy_language_pid": 38,
+            "text": "Destination",
+            "auto_translated": "Destination"
+        },
+        "lo": {
+            "legacy_caption_pid": 41423,
+            "legacy_language_pid": 39,
+            "text": "ຈຸດຫມາຍປາຍທາງ",
+            "auto_translated": "ຈຸດຫມາຍປາຍທາງ"
+        },
+        "nl": {
+            "legacy_caption_pid": 41424,
+            "legacy_language_pid": 40,
+            "text": "bestemming",
+            "auto_translated": "bestemming"
+        },
+        "tl": {
+            "legacy_caption_pid": 41425,
+            "legacy_language_pid": 41,
+            "text": "destinasyon",
+            "auto_translated": "destinasyon"
+        },
+        "ne": {
+            "legacy_caption_pid": 41426,
+            "legacy_language_pid": 42,
+            "text": "गन्तव्य",
+            "auto_translated": "गन्तव्य"
+        },
+        "hu": {
+            "legacy_caption_pid": 41427,
+            "legacy_language_pid": 43,
+            "text": "cél",
+            "auto_translated": "cél"
+        },
+        "cs": {
+            "legacy_caption_pid": 41428,
+            "legacy_language_pid": 44,
+            "text": "destinace",
+            "auto_translated": "destinace"
+        },
+        "el": {
+            "legacy_caption_pid": 41429,
+            "legacy_language_pid": 45,
+            "text": "προορισμός",
+            "auto_translated": "προορισμός"
+        },
+        "sv": {
+            "legacy_caption_pid": 41430,
+            "legacy_language_pid": 46,
+            "text": "destination",
+            "auto_translated": "destination"
+        },
+        "kk": {
+            "legacy_caption_pid": 41431,
+            "legacy_language_pid": 47,
+            "text": "тағайындалған орын",
+            "auto_translated": "тағайындалған орын"
+        },
+        "fi": {
+            "legacy_caption_pid": 41432,
+            "legacy_language_pid": 48,
+            "text": "määränpää",
+            "auto_translated": "määränpää"
+        },
+        "da": {
+            "legacy_caption_pid": 41433,
+            "legacy_language_pid": 49,
+            "text": "destination",
+            "auto_translated": "destination"
+        },
+        "he": {
+            "legacy_caption_pid": 41434,
+            "legacy_language_pid": 50,
+            "text": "יעד",
+            "auto_translated": "יעד"
+        },
+        "no": {
+            "legacy_caption_pid": 41435,
+            "legacy_language_pid": 51,
+            "text": "bestemmelsessted",
+            "auto_translated": "bestemmelsessted"
+        }
+    }
+}

@@ -1,0 +1,27 @@
+{
+    "resource_key": "ACTION_UPDATE_SECURITY_USER_DETAIL",
+    "legacy_resource_pid": 192,
+    "base_group_key": "grp-001-developers-matsuesoft-co-jp",
+    "additional_group_keys": [],
+    "key_for_update": "0",
+    "sort_group": "ACTION SECURITY_USER_DETAIL",
+    "key_name": "ACTION_UPDATE_SECURITY_USER_DETAIL",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": true,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 4044,
+            "legacy_language_pid": 1,
+            "text": "プロジェクト セキュリティ詳細更新",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 4045,
+            "legacy_language_pid": 2,
+            "text": "Update Project Detail",
+            "auto_translated": ""
+        }
+    }
+}

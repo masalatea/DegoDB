@@ -1,0 +1,321 @@
+{
+    "resource_key": "MENU_COMPANY_WEB",
+    "legacy_resource_pid": 1295,
+    "base_group_key": "grp-028-app-common-lib",
+    "additional_group_keys": [],
+    "key_for_update": "ovrb6opSxGWmJqfXvSpHMz8MPgzrVwNG4ZQhrXn9kHxiHyLAJP0eFUT1Wn2KbWKmj9pdq1FqCcVviuuZFFqVH3rK9EseF0CYBjxRP7YcoUcYGgZm0bUPSCocqV0iBB4E",
+    "sort_group": "Menu",
+    "key_name": "MENU_COMPANY_WEB",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": false,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 885,
+            "legacy_language_pid": 1,
+            "text": "会社Web",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 886,
+            "legacy_language_pid": 2,
+            "text": "Company Web",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 6450,
+            "legacy_language_pid": 3,
+            "text": "公司网站",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 6451,
+            "legacy_language_pid": 4,
+            "text": "회사 Web",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 10198,
+            "legacy_language_pid": 5,
+            "text": "Compañia Web",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 10199,
+            "legacy_language_pid": 6,
+            "text": "Empresa de web",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 10200,
+            "legacy_language_pid": 7,
+            "text": "公司網站",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 16189,
+            "legacy_language_pid": 8,
+            "text": "Société Web",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 16190,
+            "legacy_language_pid": 9,
+            "text": "कंपनी वेब",
+            "auto_translated": ""
+        },
+        "ar": {
+            "legacy_caption_pid": 28778,
+            "legacy_language_pid": 10,
+            "text": "شركة ويب",
+            "auto_translated": "شركة ويب"
+        },
+        "fa": {
+            "legacy_caption_pid": 28779,
+            "legacy_language_pid": 11,
+            "text": "وب سایت شرکت",
+            "auto_translated": "وب سایت شرکت"
+        },
+        "de": {
+            "legacy_caption_pid": 28780,
+            "legacy_language_pid": 12,
+            "text": "Unternehmen Web",
+            "auto_translated": "Unternehmen Web"
+        },
+        "ru": {
+            "legacy_caption_pid": 28781,
+            "legacy_language_pid": 13,
+            "text": "веб-компании",
+            "auto_translated": "веб-компании"
+        },
+        "ms": {
+            "legacy_caption_pid": 28782,
+            "legacy_language_pid": 14,
+            "text": "web syarikat",
+            "auto_translated": "web syarikat"
+        },
+        "ta": {
+            "legacy_caption_pid": 28783,
+            "legacy_language_pid": 15,
+            "text": "நிறுவனத்தின் வலை",
+            "auto_translated": "நிறுவனத்தின் வலை"
+        },
+        "it": {
+            "legacy_caption_pid": 28784,
+            "legacy_language_pid": 16,
+            "text": "Web Company",
+            "auto_translated": "Web Company"
+        },
+        "bn": {
+            "legacy_caption_pid": 28785,
+            "legacy_language_pid": 17,
+            "text": "কোম্পানির ওয়েব",
+            "auto_translated": "কোম্পানির ওয়েব"
+        },
+        "tr": {
+            "legacy_caption_pid": 28786,
+            "legacy_language_pid": 18,
+            "text": "Şirket Web",
+            "auto_translated": "Şirket Web"
+        },
+        "vi": {
+            "legacy_caption_pid": 28787,
+            "legacy_language_pid": 19,
+            "text": "Web công ty",
+            "auto_translated": "Web công ty"
+        },
+        "pl": {
+            "legacy_caption_pid": 28788,
+            "legacy_language_pid": 20,
+            "text": "Web Company",
+            "auto_translated": "Web Company"
+        },
+        "jv": {
+            "legacy_caption_pid": 28789,
+            "legacy_language_pid": 21,
+            "text": "perusahaan",
+            "auto_translated": "perusahaan"
+        },
+        "pa": {
+            "legacy_caption_pid": 28790,
+            "legacy_language_pid": 22,
+            "text": "ਕੰਪਨੀ ਵੈੱਬ",
+            "auto_translated": "ਕੰਪਨੀ ਵੈੱਬ"
+        },
+        "th": {
+            "legacy_caption_pid": 28791,
+            "legacy_language_pid": 23,
+            "text": "บริษัท Web",
+            "auto_translated": "บริษัท Web"
+        },
+        "te": {
+            "legacy_caption_pid": 34492,
+            "legacy_language_pid": 24,
+            "text": "కంపెనీ వెబ్",
+            "auto_translated": "కంపెనీ వెబ్"
+        },
+        "mr": {
+            "legacy_caption_pid": 34493,
+            "legacy_language_pid": 25,
+            "text": "कंपनी वेब",
+            "auto_translated": "कंपनी वेब"
+        },
+        "ur": {
+            "legacy_caption_pid": 34494,
+            "legacy_language_pid": 26,
+            "text": "کمپنی کی ویب",
+            "auto_translated": "کمپنی کی ویب"
+        },
+        "gu": {
+            "legacy_caption_pid": 34495,
+            "legacy_language_pid": 27,
+            "text": "કંપની વેબ",
+            "auto_translated": "કંપની વેબ"
+        },
+        "uk": {
+            "legacy_caption_pid": 34496,
+            "legacy_language_pid": 28,
+            "text": "веб-компанії",
+            "auto_translated": "веб-компанії"
+        },
+        "ml": {
+            "legacy_caption_pid": 34497,
+            "legacy_language_pid": 29,
+            "text": "കമ്പനി വെബ്",
+            "auto_translated": "കമ്പനി വെബ്"
+        },
+        "kn": {
+            "legacy_caption_pid": 34498,
+            "legacy_language_pid": 30,
+            "text": "ಕಂಪನಿ ವೆಬ್",
+            "auto_translated": "ಕಂಪನಿ ವೆಬ್"
+        },
+        "su": {
+            "legacy_caption_pid": 34499,
+            "legacy_language_pid": 31,
+            "text": "parusahaan Web",
+            "auto_translated": "parusahaan Web"
+        },
+        "ku": {
+            "legacy_caption_pid": 34500,
+            "legacy_language_pid": 32,
+            "text": "Web Company",
+            "auto_translated": "Web Company"
+        },
+        "ps": {
+            "legacy_caption_pid": 34501,
+            "legacy_language_pid": 33,
+            "text": "شرکت ويب",
+            "auto_translated": "شرکت ويب"
+        },
+        "ro": {
+            "legacy_caption_pid": 34502,
+            "legacy_language_pid": 34,
+            "text": "Web companie",
+            "auto_translated": "Web companie"
+        },
+        "id": {
+            "legacy_caption_pid": 34503,
+            "legacy_language_pid": 35,
+            "text": "perusahaan Web",
+            "auto_translated": "perusahaan Web"
+        },
+        "sd": {
+            "legacy_caption_pid": 34504,
+            "legacy_language_pid": 36,
+            "text": "ڪمپني جي ويب",
+            "auto_translated": "ڪمپني جي ويب"
+        },
+        "af": {
+            "legacy_caption_pid": 34505,
+            "legacy_language_pid": 37,
+            "text": "maatskappy Web",
+            "auto_translated": "maatskappy Web"
+        },
+        "sw": {
+            "legacy_caption_pid": 34506,
+            "legacy_language_pid": 38,
+            "text": "kampuni ya Tovuti",
+            "auto_translated": "kampuni ya Tovuti"
+        },
+        "lo": {
+            "legacy_caption_pid": 34507,
+            "legacy_language_pid": 39,
+            "text": "Web ບໍລິສັດ",
+            "auto_translated": "Web ບໍລິສັດ"
+        },
+        "nl": {
+            "legacy_caption_pid": 34508,
+            "legacy_language_pid": 40,
+            "text": "Company Web",
+            "auto_translated": "Company Web"
+        },
+        "tl": {
+            "legacy_caption_pid": 34509,
+            "legacy_language_pid": 41,
+            "text": "Company Web",
+            "auto_translated": "Company Web"
+        },
+        "ne": {
+            "legacy_caption_pid": 34510,
+            "legacy_language_pid": 42,
+            "text": "कम्पनी वेब",
+            "auto_translated": "कम्पनी वेब"
+        },
+        "hu": {
+            "legacy_caption_pid": 34511,
+            "legacy_language_pid": 43,
+            "text": "társaság Web",
+            "auto_translated": "társaság Web"
+        },
+        "cs": {
+            "legacy_caption_pid": 34512,
+            "legacy_language_pid": 44,
+            "text": "Web Company",
+            "auto_translated": "Web Company"
+        },
+        "el": {
+            "legacy_caption_pid": 34513,
+            "legacy_language_pid": 45,
+            "text": "Εταιρεία Web",
+            "auto_translated": "Εταιρεία Web"
+        },
+        "sv": {
+            "legacy_caption_pid": 34514,
+            "legacy_language_pid": 46,
+            "text": "företag Web",
+            "auto_translated": "företag Web"
+        },
+        "kk": {
+            "legacy_caption_pid": 34515,
+            "legacy_language_pid": 47,
+            "text": "Компанияның веб",
+            "auto_translated": "Компанияның веб"
+        },
+        "fi": {
+            "legacy_caption_pid": 34516,
+            "legacy_language_pid": 48,
+            "text": "Yrityksen Web",
+            "auto_translated": "Yrityksen Web"
+        },
+        "da": {
+            "legacy_caption_pid": 34517,
+            "legacy_language_pid": 49,
+            "text": "Firma Web",
+            "auto_translated": "Firma Web"
+        },
+        "he": {
+            "legacy_caption_pid": 34518,
+            "legacy_language_pid": 50,
+            "text": "אינטרנט החברה",
+            "auto_translated": "אינטרנט החברה"
+        },
+        "no": {
+            "legacy_caption_pid": 34519,
+            "legacy_language_pid": 51,
+            "text": "Company Web",
+            "auto_translated": "Company Web"
+        }
+    }
+}

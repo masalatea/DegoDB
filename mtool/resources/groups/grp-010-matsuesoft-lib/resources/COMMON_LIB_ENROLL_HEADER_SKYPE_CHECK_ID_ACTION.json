@@ -1,0 +1,321 @@
+{
+    "resource_key": "COMMON_LIB_ENROLL_HEADER_SKYPE_CHECK_ID_ACTION",
+    "legacy_resource_pid": 1431,
+    "base_group_key": "grp-010-matsuesoft-lib",
+    "additional_group_keys": [],
+    "key_for_update": "Z4QDvkDyOoUIT3S3OioA0BxR0NVcP49BfBLwlMdSr8ZU7ss8w1fffigwhnKnlQLUfwINmx2UsMpXHrBd08pkWDi8Yj5YgQNbgMvWAwgyMZv6T4RrRbXaZYe67mYgAYPO",
+    "sort_group": "ENROLL",
+    "key_name": "COMMON_LIB_ENROLL_HEADER_SKYPE_CHECK_ID_ACTION",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": false,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 5998,
+            "legacy_language_pid": 1,
+            "text": "Skype名(スカイプのユーザ名)をチェックする",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 5999,
+            "legacy_language_pid": 2,
+            "text": "Check Skype Name(ID)",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 6000,
+            "legacy_language_pid": 3,
+            "text": "要检查Skype用户名（ID）",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 6001,
+            "legacy_language_pid": 4,
+            "text": "Skype 아이디 확인",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 10880,
+            "legacy_language_pid": 5,
+            "text": "Compruebe el nombre de Skype (ID)",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 10881,
+            "legacy_language_pid": 6,
+            "text": "Verifique o nome do Skype (ID)",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 10882,
+            "legacy_language_pid": 7,
+            "text": "要檢查Skype用戶名（ID）",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 17023,
+            "legacy_language_pid": 8,
+            "text": "Vérifiez le nom de Skype (ID)",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 17024,
+            "legacy_language_pid": 9,
+            "text": "स्काइप नाम जांचें (आईडी)",
+            "auto_translated": ""
+        },
+        "ar": {
+            "legacy_caption_pid": 31676,
+            "legacy_language_pid": 10,
+            "text": "للتحقق من اسم سكايب (سكايب اسم المستخدم)",
+            "auto_translated": "للتحقق من اسم سكايب (سكايب اسم المستخدم)"
+        },
+        "fa": {
+            "legacy_caption_pid": 31677,
+            "legacy_language_pid": 11,
+            "text": "برای بررسی نام اسکایپ (نام کاربری اسکایپ)",
+            "auto_translated": "برای بررسی نام اسکایپ (نام کاربری اسکایپ)"
+        },
+        "de": {
+            "legacy_caption_pid": 31678,
+            "legacy_language_pid": 12,
+            "text": "Um zu überprüfen, Skype-Name (Skype-Benutzername)",
+            "auto_translated": "Um zu überprüfen, Skype-Name (Skype-Benutzername)"
+        },
+        "ru": {
+            "legacy_caption_pid": 31679,
+            "legacy_language_pid": 13,
+            "text": "Для того, чтобы проверить имя Skype (Skype имя пользователя)",
+            "auto_translated": "Для того, чтобы проверить имя Skype (Skype имя пользователя)"
+        },
+        "ms": {
+            "legacy_caption_pid": 31680,
+            "legacy_language_pid": 14,
+            "text": "Untuk menyemak nama Skype (Skype nama pengguna)",
+            "auto_translated": "Untuk menyemak nama Skype (Skype nama pengguna)"
+        },
+        "ta": {
+            "legacy_caption_pid": 31681,
+            "legacy_language_pid": 15,
+            "text": "ஸ்கைப் பெயர் காண (ஸ்கைப் பயனர் பெயர்)",
+            "auto_translated": "ஸ்கைப் பெயர் காண (ஸ்கைப் பயனர் பெயர்)"
+        },
+        "it": {
+            "legacy_caption_pid": 31682,
+            "legacy_language_pid": 16,
+            "text": "Per controllare il nome Skype (Skype nome utente)",
+            "auto_translated": "Per controllare il nome Skype (Skype nome utente)"
+        },
+        "bn": {
+            "legacy_caption_pid": 31683,
+            "legacy_language_pid": 17,
+            "text": "স্কাইপ নাম দেখতে (স্কাইপ ব্যবহারকারীর নাম)",
+            "auto_translated": "স্কাইপ নাম দেখতে (স্কাইপ ব্যবহারকারীর নাম)"
+        },
+        "tr": {
+            "legacy_caption_pid": 31684,
+            "legacy_language_pid": 18,
+            "text": "Skype adını kontrol etmek için (Skype kullanıcı adı)",
+            "auto_translated": "Skype adını kontrol etmek için (Skype kullanıcı adı)"
+        },
+        "vi": {
+            "legacy_caption_pid": 31685,
+            "legacy_language_pid": 19,
+            "text": "Để kiểm tra tên Skype (tên người dùng Skype)",
+            "auto_translated": "Để kiểm tra tên Skype (tên người dùng Skype)"
+        },
+        "pl": {
+            "legacy_caption_pid": 31686,
+            "legacy_language_pid": 20,
+            "text": "Aby sprawdzić nazwę Skype (Skype nazwa użytkownika)",
+            "auto_translated": "Aby sprawdzić nazwę Skype (Skype nazwa użytkownika)"
+        },
+        "jv": {
+            "legacy_caption_pid": 31687,
+            "legacy_language_pid": 21,
+            "text": "Kanggo mriksa jeneng Skype (Skype jeneng panganggo)",
+            "auto_translated": "Kanggo mriksa jeneng Skype (Skype jeneng panganggo)"
+        },
+        "pa": {
+            "legacy_caption_pid": 31688,
+            "legacy_language_pid": 22,
+            "text": "ਸਕਾਈਪ ਨਾਮ ਨੂੰ ਚੈੱਕ ਕਰਨ ਲਈ (ਸਕਾਈਪ ਉਪਭੋਗੀ ਨੂੰ ਨਾਮ)",
+            "auto_translated": "ਸਕਾਈਪ ਨਾਮ ਨੂੰ ਚੈੱਕ ਕਰਨ ਲਈ (ਸਕਾਈਪ ਉਪਭੋਗੀ ਨੂੰ ਨਾਮ)"
+        },
+        "th": {
+            "legacy_caption_pid": 31689,
+            "legacy_language_pid": 23,
+            "text": "เพื่อตรวจสอบชื่อ Skype (ชื่อผู้ใช้ Skype)",
+            "auto_translated": "เพื่อตรวจสอบชื่อ Skype (ชื่อผู้ใช้ Skype)"
+        },
+        "te": {
+            "legacy_caption_pid": 38720,
+            "legacy_language_pid": 24,
+            "text": "స్కైప్ పేరును తనిఖీ (స్కైప్ యూజర్ పేరు)",
+            "auto_translated": "స్కైప్ పేరును తనిఖీ (స్కైప్ యూజర్ పేరు)"
+        },
+        "mr": {
+            "legacy_caption_pid": 38721,
+            "legacy_language_pid": 25,
+            "text": "स्काईप नाव तपासण्यासाठी (स्काईप वापरकर्ता नाव)",
+            "auto_translated": "स्काईप नाव तपासण्यासाठी (स्काईप वापरकर्ता नाव)"
+        },
+        "ur": {
+            "legacy_caption_pid": 38722,
+            "legacy_language_pid": 26,
+            "text": "اسکائپ کے نام کی جانچ کرنا (اسکائپ صارف نام)",
+            "auto_translated": "اسکائپ کے نام کی جانچ کرنا (اسکائپ صارف نام)"
+        },
+        "gu": {
+            "legacy_caption_pid": 38723,
+            "legacy_language_pid": 27,
+            "text": "સ્કાયપે નામ તપાસો માટે (સ્કાયપે વપરાશકર્તા નામ)",
+            "auto_translated": "સ્કાયપે નામ તપાસો માટે (સ્કાયપે વપરાશકર્તા નામ)"
+        },
+        "uk": {
+            "legacy_caption_pid": 38724,
+            "legacy_language_pid": 28,
+            "text": "Для того, щоб перевірити ім'я Skype (Skype ім'я користувача)",
+            "auto_translated": "Для того, щоб перевірити ім'я Skype (Skype ім'я користувача)"
+        },
+        "ml": {
+            "legacy_caption_pid": 38725,
+            "legacy_language_pid": 29,
+            "text": "സ്കൈപ്പ് പേര് (സ്കൈപ്പ് ഉപയോക്തൃ നാമം) പരിശോധിക്കാൻ",
+            "auto_translated": "സ്കൈപ്പ് പേര് (സ്കൈപ്പ് ഉപയോക്തൃ നാമം) പരിശോധിക്കാൻ"
+        },
+        "kn": {
+            "legacy_caption_pid": 38726,
+            "legacy_language_pid": 30,
+            "text": "ಸ್ಕೈಪ್ ಹೆಸರು ಪರೀಕ್ಷಿಸಲು (ಸ್ಕೈಪ್ ಬಳಕೆದಾರರ ಹೆಸರು)",
+            "auto_translated": "ಸ್ಕೈಪ್ ಹೆಸರು ಪರೀಕ್ಷಿಸಲು (ಸ್ಕೈಪ್ ಬಳಕೆದಾರರ ಹೆಸರು)"
+        },
+        "su": {
+            "legacy_caption_pid": 38727,
+            "legacy_language_pid": 31,
+            "text": "Mariksa ngaran Skype (Skype ngaran pamaké)",
+            "auto_translated": "Mariksa ngaran Skype (Skype ngaran pamaké)"
+        },
+        "ku": {
+            "legacy_caption_pid": 38728,
+            "legacy_language_pid": 32,
+            "text": "Ji bo ku seh bi navê Skype (user name Skype)",
+            "auto_translated": "Ji bo ku seh bi navê Skype (user name Skype)"
+        },
+        "ps": {
+            "legacy_caption_pid": 38729,
+            "legacy_language_pid": 33,
+            "text": "د سکايپ نوم وګورئ (سکایپ کارن نوم)",
+            "auto_translated": "د سکايپ نوم وګورئ (سکایپ کارن نوم)"
+        },
+        "ro": {
+            "legacy_caption_pid": 38730,
+            "legacy_language_pid": 34,
+            "text": "Pentru a verifica numele Skype (Skype numele de utilizator)",
+            "auto_translated": "Pentru a verifica numele Skype (Skype numele de utilizator)"
+        },
+        "id": {
+            "legacy_caption_pid": 38731,
+            "legacy_language_pid": 35,
+            "text": "Untuk memeriksa nama Skype (Skype nama pengguna)",
+            "auto_translated": "Untuk memeriksa nama Skype (Skype nama pengguna)"
+        },
+        "sd": {
+            "legacy_caption_pid": 38732,
+            "legacy_language_pid": 36,
+            "text": "Skype جي نالي سان (Skype جي استعمال ڪندڙ جو نالو) چيڪ ڪرڻ",
+            "auto_translated": "Skype جي نالي سان (Skype جي استعمال ڪندڙ جو نالو) چيڪ ڪرڻ"
+        },
+        "af": {
+            "legacy_caption_pid": 38733,
+            "legacy_language_pid": 37,
+            "text": "Skype naam nagaan (Skype gebruiker naam)",
+            "auto_translated": "Skype naam nagaan (Skype gebruiker naam)"
+        },
+        "sw": {
+            "legacy_caption_pid": 38734,
+            "legacy_language_pid": 38,
+            "text": "Kuangalia jina Skype (Skype user jina)",
+            "auto_translated": "Kuangalia jina Skype (Skype user jina)"
+        },
+        "lo": {
+            "legacy_caption_pid": 38735,
+            "legacy_language_pid": 39,
+            "text": "ການກວດສອບຊື່ Skype (ຊື່ຜູ້ໃຊ້ Skype)",
+            "auto_translated": "ການກວດສອບຊື່ Skype (ຊື່ຜູ້ໃຊ້ Skype)"
+        },
+        "nl": {
+            "legacy_caption_pid": 38736,
+            "legacy_language_pid": 40,
+            "text": "Om Skype-naam te controleren (Skype gebruikersnaam)",
+            "auto_translated": "Om Skype-naam te controleren (Skype gebruikersnaam)"
+        },
+        "tl": {
+            "legacy_caption_pid": 38737,
+            "legacy_language_pid": 41,
+            "text": "Upang suriin name Skype (Skype user name)",
+            "auto_translated": "Upang suriin name Skype (Skype user name)"
+        },
+        "ne": {
+            "legacy_caption_pid": 38738,
+            "legacy_language_pid": 42,
+            "text": "स्काइप नाम जाँच गर्न (स्काइप प्रयोगकर्ता नाम)",
+            "auto_translated": "स्काइप नाम जाँच गर्न (स्काइप प्रयोगकर्ता नाम)"
+        },
+        "hu": {
+            "legacy_caption_pid": 38739,
+            "legacy_language_pid": 43,
+            "text": "Annak ellenőrzésére, Skype nevét (Skype felhasználó név)",
+            "auto_translated": "Annak ellenőrzésére, Skype nevét (Skype felhasználó név)"
+        },
+        "cs": {
+            "legacy_caption_pid": 38740,
+            "legacy_language_pid": 44,
+            "text": "Chcete-li zjistit název Skype (Skype uživatelské jméno)",
+            "auto_translated": "Chcete-li zjistit název Skype (Skype uživatelské jméno)"
+        },
+        "el": {
+            "legacy_caption_pid": 38741,
+            "legacy_language_pid": 45,
+            "text": "Για να ελέγξετε το όνομα Skype (όνομα χρήστη Skype)",
+            "auto_translated": "Για να ελέγξετε το όνομα Skype (όνομα χρήστη Skype)"
+        },
+        "sv": {
+            "legacy_caption_pid": 38742,
+            "legacy_language_pid": 46,
+            "text": "För att kontrollera Skype-namn (Skype användarnamn)",
+            "auto_translated": "För att kontrollera Skype-namn (Skype användarnamn)"
+        },
+        "kk": {
+            "legacy_caption_pid": 38743,
+            "legacy_language_pid": 47,
+            "text": "Skype атын (Skype пайдаланушы аты) тексеру үшін",
+            "auto_translated": "Skype атын (Skype пайдаланушы аты) тексеру үшін"
+        },
+        "fi": {
+            "legacy_caption_pid": 38744,
+            "legacy_language_pid": 48,
+            "text": "Voit tarkistaa Skype-nimi (Skype käyttäjätunnus)",
+            "auto_translated": "Voit tarkistaa Skype-nimi (Skype käyttäjätunnus)"
+        },
+        "da": {
+            "legacy_caption_pid": 38745,
+            "legacy_language_pid": 49,
+            "text": "For at kontrollere Skype-navn (Skype-brugernavn)",
+            "auto_translated": "For at kontrollere Skype-navn (Skype-brugernavn)"
+        },
+        "he": {
+            "legacy_caption_pid": 38746,
+            "legacy_language_pid": 50,
+            "text": "כדי לבדוק את שם סקייפ (שם משתמש בסקייפ)",
+            "auto_translated": "כדי לבדוק את שם סקייפ (שם משתמש בסקייפ)"
+        },
+        "no": {
+            "legacy_caption_pid": 38747,
+            "legacy_language_pid": 51,
+            "text": "For å sjekke Skype navn (Skype brukernavn)",
+            "auto_translated": "For å sjekke Skype navn (Skype brukernavn)"
+        }
+    }
+}

@@ -1,0 +1,321 @@
+{
+    "resource_key": "TITLE_UPDATE_HISTORY",
+    "legacy_resource_pid": 1556,
+    "base_group_key": "grp-005-common-lib",
+    "additional_group_keys": [],
+    "key_for_update": "dnsEcWaxAuzhorURQAYLutQHCheJR5WaqCQui1J0XEJXRl0p6wMkkgCX2bHC7aw3q6YiqMptRN2NRFAgoiBhIgaF5R9d0VgUGdVHdoMC0bPCCpJv86hawVu9OT0GKexw",
+    "sort_group": "TITLE",
+    "key_name": "TITLE_UPDATE_HISTORY",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": false,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 7006,
+            "legacy_language_pid": 1,
+            "text": "過去のお知らせ",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 7007,
+            "legacy_language_pid": 2,
+            "text": "Past Announcements",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 7008,
+            "legacy_language_pid": 3,
+            "text": "过去的通知",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 7009,
+            "legacy_language_pid": 4,
+            "text": "지난 알림",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 10600,
+            "legacy_language_pid": 5,
+            "text": "Anuncios pasados",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 10601,
+            "legacy_language_pid": 6,
+            "text": "Anúncios passados",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 10602,
+            "legacy_language_pid": 7,
+            "text": "過去的通知",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 16353,
+            "legacy_language_pid": 8,
+            "text": "Annonces passées",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 16354,
+            "legacy_language_pid": 9,
+            "text": "पिछले घोषणाएँ",
+            "auto_translated": ""
+        },
+        "ar": {
+            "legacy_caption_pid": 30304,
+            "legacy_language_pid": 10,
+            "text": "معلومات الماضية",
+            "auto_translated": "معلومات الماضية"
+        },
+        "fa": {
+            "legacy_caption_pid": 30305,
+            "legacy_language_pid": 11,
+            "text": "اطلاعات گذشته",
+            "auto_translated": "اطلاعات گذشته"
+        },
+        "de": {
+            "legacy_caption_pid": 30306,
+            "legacy_language_pid": 12,
+            "text": "Historische Informationen",
+            "auto_translated": "Historische Informationen"
+        },
+        "ru": {
+            "legacy_caption_pid": 30307,
+            "legacy_language_pid": 13,
+            "text": "Прошлая информация",
+            "auto_translated": "Прошлая информация"
+        },
+        "ms": {
+            "legacy_caption_pid": 30308,
+            "legacy_language_pid": 14,
+            "text": "Maklumat lalu",
+            "auto_translated": "Maklumat lalu"
+        },
+        "ta": {
+            "legacy_caption_pid": 30309,
+            "legacy_language_pid": 15,
+            "text": "கடந்தகால தகவல்கள்",
+            "auto_translated": "கடந்தகால தகவல்கள்"
+        },
+        "it": {
+            "legacy_caption_pid": 30310,
+            "legacy_language_pid": 16,
+            "text": "Informazioni passato",
+            "auto_translated": "Informazioni passato"
+        },
+        "bn": {
+            "legacy_caption_pid": 30311,
+            "legacy_language_pid": 17,
+            "text": "অতীতের তথ্য",
+            "auto_translated": "অতীতের তথ্য"
+        },
+        "tr": {
+            "legacy_caption_pid": 30312,
+            "legacy_language_pid": 18,
+            "text": "Geçmiş Bilgi",
+            "auto_translated": "Geçmiş Bilgi"
+        },
+        "vi": {
+            "legacy_caption_pid": 30313,
+            "legacy_language_pid": 19,
+            "text": "Thông tin quá khứ",
+            "auto_translated": "Thông tin quá khứ"
+        },
+        "pl": {
+            "legacy_caption_pid": 30314,
+            "legacy_language_pid": 20,
+            "text": "Informacja przeszłość",
+            "auto_translated": "Informacja przeszłość"
+        },
+        "jv": {
+            "legacy_caption_pid": 30315,
+            "legacy_language_pid": 21,
+            "text": "Informasi kepungkur",
+            "auto_translated": "Informasi kepungkur"
+        },
+        "pa": {
+            "legacy_caption_pid": 30316,
+            "legacy_language_pid": 22,
+            "text": "ਪੂਰਵ ਸੂਚਨਾ",
+            "auto_translated": "ਪੂਰਵ ਸੂਚਨਾ"
+        },
+        "th": {
+            "legacy_caption_pid": 30317,
+            "legacy_language_pid": 23,
+            "text": "ข้อมูลที่ผ่านมา",
+            "auto_translated": "ข้อมูลที่ผ่านมา"
+        },
+        "te": {
+            "legacy_caption_pid": 35836,
+            "legacy_language_pid": 24,
+            "text": "గత ఇన్ఫర్మేషన్",
+            "auto_translated": "గత ఇన్ఫర్మేషన్"
+        },
+        "mr": {
+            "legacy_caption_pid": 35837,
+            "legacy_language_pid": 25,
+            "text": "मागील माहिती",
+            "auto_translated": "मागील माहिती"
+        },
+        "ur": {
+            "legacy_caption_pid": 35838,
+            "legacy_language_pid": 26,
+            "text": "ماضی میں معلومات",
+            "auto_translated": "ماضی میں معلومات"
+        },
+        "gu": {
+            "legacy_caption_pid": 35839,
+            "legacy_language_pid": 27,
+            "text": "ભૂતકાળના માહિતી",
+            "auto_translated": "ભૂતકાળના માહિતી"
+        },
+        "uk": {
+            "legacy_caption_pid": 35840,
+            "legacy_language_pid": 28,
+            "text": "минула інформація",
+            "auto_translated": "минула інформація"
+        },
+        "ml": {
+            "legacy_caption_pid": 35841,
+            "legacy_language_pid": 29,
+            "text": "കഴിഞ്ഞ വിവരങ്ങൾ",
+            "auto_translated": "കഴിഞ്ഞ വിവരങ്ങൾ"
+        },
+        "kn": {
+            "legacy_caption_pid": 35842,
+            "legacy_language_pid": 30,
+            "text": "ಕಳೆದ ಮಾಹಿತಿ",
+            "auto_translated": "ಕಳೆದ ಮಾಹಿತಿ"
+        },
+        "su": {
+            "legacy_caption_pid": 35843,
+            "legacy_language_pid": 31,
+            "text": "Émbaran kaliwat",
+            "auto_translated": "Émbaran kaliwat"
+        },
+        "ku": {
+            "legacy_caption_pid": 35844,
+            "legacy_language_pid": 32,
+            "text": "Information past",
+            "auto_translated": "Information past"
+        },
+        "ps": {
+            "legacy_caption_pid": 35845,
+            "legacy_language_pid": 33,
+            "text": "په تېرو معلومات",
+            "auto_translated": "په تېرو معلومات"
+        },
+        "ro": {
+            "legacy_caption_pid": 35846,
+            "legacy_language_pid": 34,
+            "text": "Informații Trecut",
+            "auto_translated": "Informații Trecut"
+        },
+        "id": {
+            "legacy_caption_pid": 35847,
+            "legacy_language_pid": 35,
+            "text": "Informasi terakhir",
+            "auto_translated": "Informasi terakhir"
+        },
+        "sd": {
+            "legacy_caption_pid": 35848,
+            "legacy_language_pid": 36,
+            "text": "گذريل معلومات",
+            "auto_translated": "گذريل معلومات"
+        },
+        "af": {
+            "legacy_caption_pid": 35849,
+            "legacy_language_pid": 37,
+            "text": "verlede inligting",
+            "auto_translated": "verlede inligting"
+        },
+        "sw": {
+            "legacy_caption_pid": 35850,
+            "legacy_language_pid": 38,
+            "text": "Taarifa zamani",
+            "auto_translated": "Taarifa zamani"
+        },
+        "lo": {
+            "legacy_caption_pid": 35851,
+            "legacy_language_pid": 39,
+            "text": "ຂໍ້ມູນຂ່າວສານທີ່ຜ່ານມາ",
+            "auto_translated": "ຂໍ້ມູນຂ່າວສານທີ່ຜ່ານມາ"
+        },
+        "nl": {
+            "legacy_caption_pid": 35852,
+            "legacy_language_pid": 40,
+            "text": "Past Informatie",
+            "auto_translated": "Past Informatie"
+        },
+        "tl": {
+            "legacy_caption_pid": 35853,
+            "legacy_language_pid": 41,
+            "text": "nakalipas na Inpormasyon",
+            "auto_translated": "nakalipas na Inpormasyon"
+        },
+        "ne": {
+            "legacy_caption_pid": 35854,
+            "legacy_language_pid": 42,
+            "text": "विगत सूचना",
+            "auto_translated": "विगत सूचना"
+        },
+        "hu": {
+            "legacy_caption_pid": 35855,
+            "legacy_language_pid": 43,
+            "text": "Korábbi információk",
+            "auto_translated": "Korábbi információk"
+        },
+        "cs": {
+            "legacy_caption_pid": 35856,
+            "legacy_language_pid": 44,
+            "text": "Past Informace",
+            "auto_translated": "Past Informace"
+        },
+        "el": {
+            "legacy_caption_pid": 35857,
+            "legacy_language_pid": 45,
+            "text": "παρελθόν Πληροφορίες",
+            "auto_translated": "παρελθόν Πληροφορίες"
+        },
+        "sv": {
+            "legacy_caption_pid": 35858,
+            "legacy_language_pid": 46,
+            "text": "Past Information",
+            "auto_translated": "Past Information"
+        },
+        "kk": {
+            "legacy_caption_pid": 35859,
+            "legacy_language_pid": 47,
+            "text": "өткен ақпарат",
+            "auto_translated": "өткен ақпарат"
+        },
+        "fi": {
+            "legacy_caption_pid": 35860,
+            "legacy_language_pid": 48,
+            "text": "ohi Tietoja",
+            "auto_translated": "ohi Tietoja"
+        },
+        "da": {
+            "legacy_caption_pid": 35861,
+            "legacy_language_pid": 49,
+            "text": "Tidligere oplysninger",
+            "auto_translated": "Tidligere oplysninger"
+        },
+        "he": {
+            "legacy_caption_pid": 35862,
+            "legacy_language_pid": 50,
+            "text": "מידע קודם",
+            "auto_translated": "מידע קודם"
+        },
+        "no": {
+            "legacy_caption_pid": 35863,
+            "legacy_language_pid": 51,
+            "text": "Past Informasjon",
+            "auto_translated": "Past Informasjon"
+        }
+    }
+}

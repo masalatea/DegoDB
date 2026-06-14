@@ -1,0 +1,321 @@
+{
+    "resource_key": "COMMON_LIB_LOGOUT_ACTION",
+    "legacy_resource_pid": 1478,
+    "base_group_key": "grp-010-matsuesoft-lib",
+    "additional_group_keys": [],
+    "key_for_update": "PRPcnJ0VYJnK6JU9RK4PaUCdVx1KTsRdGbX1mvHrp2SsLe4CpIChZWgzI8kz0aMrNgHeas0JFDUWCkWdWH1emswdrW3NnqT9drVI38xID19BUL3WrosG401LToUTEyS9",
+    "sort_group": "LOGOUT",
+    "key_name": "COMMON_LIB_LOGOUT_ACTION",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": false,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 6186,
+            "legacy_language_pid": 1,
+            "text": "ログアウト",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 6187,
+            "legacy_language_pid": 2,
+            "text": "Logout",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 6188,
+            "legacy_language_pid": 3,
+            "text": "登出",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 6189,
+            "legacy_language_pid": 4,
+            "text": "로그아웃",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 11129,
+            "legacy_language_pid": 5,
+            "text": "Cerrar sesión ",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 11130,
+            "legacy_language_pid": 6,
+            "text": "Sair",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 11131,
+            "legacy_language_pid": 7,
+            "text": "登出",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 17259,
+            "legacy_language_pid": 8,
+            "text": "Connectez - Out",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 17260,
+            "legacy_language_pid": 9,
+            "text": "लोग आउट",
+            "auto_translated": ""
+        },
+        "ar": {
+            "legacy_caption_pid": 32826,
+            "legacy_language_pid": 10,
+            "text": "تسجيل الخروج",
+            "auto_translated": "تسجيل الخروج"
+        },
+        "fa": {
+            "legacy_caption_pid": 32827,
+            "legacy_language_pid": 11,
+            "text": "از سیستم خارج شوید",
+            "auto_translated": "از سیستم خارج شوید"
+        },
+        "de": {
+            "legacy_caption_pid": 32828,
+            "legacy_language_pid": 12,
+            "text": "ausloggen",
+            "auto_translated": "ausloggen"
+        },
+        "ru": {
+            "legacy_caption_pid": 32829,
+            "legacy_language_pid": 13,
+            "text": "Выйти",
+            "auto_translated": "Выйти"
+        },
+        "ms": {
+            "legacy_caption_pid": 32830,
+            "legacy_language_pid": 14,
+            "text": "Log keluar",
+            "auto_translated": "Log keluar"
+        },
+        "ta": {
+            "legacy_caption_pid": 32831,
+            "legacy_language_pid": 15,
+            "text": "வெளியேறு",
+            "auto_translated": "வெளியேறு"
+        },
+        "it": {
+            "legacy_caption_pid": 32832,
+            "legacy_language_pid": 16,
+            "text": "Esci",
+            "auto_translated": "Esci"
+        },
+        "bn": {
+            "legacy_caption_pid": 32833,
+            "legacy_language_pid": 17,
+            "text": "লগ আউট করুন",
+            "auto_translated": "লগ আউট করুন"
+        },
+        "tr": {
+            "legacy_caption_pid": 32834,
+            "legacy_language_pid": 18,
+            "text": "Oturumu",
+            "auto_translated": "Oturumu"
+        },
+        "vi": {
+            "legacy_caption_pid": 32835,
+            "legacy_language_pid": 19,
+            "text": "Đăng xuất",
+            "auto_translated": "Đăng xuất"
+        },
+        "pl": {
+            "legacy_caption_pid": 32836,
+            "legacy_language_pid": 20,
+            "text": "Wyloguj się",
+            "auto_translated": "Wyloguj się"
+        },
+        "jv": {
+            "legacy_caption_pid": 32837,
+            "legacy_language_pid": 21,
+            "text": "Mlebu metu",
+            "auto_translated": "Mlebu metu"
+        },
+        "pa": {
+            "legacy_caption_pid": 32838,
+            "legacy_language_pid": 22,
+            "text": "ਲਾਗਆਉਟ",
+            "auto_translated": "ਲਾਗਆਉਟ"
+        },
+        "th": {
+            "legacy_caption_pid": 32839,
+            "legacy_language_pid": 23,
+            "text": "ออกจากระบบ",
+            "auto_translated": "ออกจากระบบ"
+        },
+        "te": {
+            "legacy_caption_pid": 40008,
+            "legacy_language_pid": 24,
+            "text": "లాగ్ అవుట్",
+            "auto_translated": "లాగ్ అవుట్"
+        },
+        "mr": {
+            "legacy_caption_pid": 40009,
+            "legacy_language_pid": 25,
+            "text": "लॉग आउट करा",
+            "auto_translated": "लॉग आउट करा"
+        },
+        "ur": {
+            "legacy_caption_pid": 40010,
+            "legacy_language_pid": 26,
+            "text": "لاگ آؤٹ",
+            "auto_translated": "لاگ آؤٹ"
+        },
+        "gu": {
+            "legacy_caption_pid": 40011,
+            "legacy_language_pid": 27,
+            "text": "લૉગ આઉટ",
+            "auto_translated": "લૉગ આઉટ"
+        },
+        "uk": {
+            "legacy_caption_pid": 40012,
+            "legacy_language_pid": 28,
+            "text": "вийти",
+            "auto_translated": "вийти"
+        },
+        "ml": {
+            "legacy_caption_pid": 40013,
+            "legacy_language_pid": 29,
+            "text": "ലോഗ് ഔട്ട്",
+            "auto_translated": "ലോഗ് ഔട്ട്"
+        },
+        "kn": {
+            "legacy_caption_pid": 40014,
+            "legacy_language_pid": 30,
+            "text": "ಲಾಗ್ ಔಟ್",
+            "auto_translated": "ಲಾಗ್ ಔಟ್"
+        },
+        "su": {
+            "legacy_caption_pid": 40015,
+            "legacy_language_pid": 31,
+            "text": "kaluar",
+            "auto_translated": "kaluar"
+        },
+        "ku": {
+            "legacy_caption_pid": 40016,
+            "legacy_language_pid": 32,
+            "text": "Log out",
+            "auto_translated": "Log out"
+        },
+        "ps": {
+            "legacy_caption_pid": 40017,
+            "legacy_language_pid": 33,
+            "text": "وتنه",
+            "auto_translated": "وتنه"
+        },
+        "ro": {
+            "legacy_caption_pid": 40018,
+            "legacy_language_pid": 34,
+            "text": "Log out",
+            "auto_translated": "Log out"
+        },
+        "id": {
+            "legacy_caption_pid": 40019,
+            "legacy_language_pid": 35,
+            "text": "Log out",
+            "auto_translated": "Log out"
+        },
+        "sd": {
+            "legacy_caption_pid": 40020,
+            "legacy_language_pid": 36,
+            "text": "ٻاهر جو لاگ ان",
+            "auto_translated": "ٻاهر جو لاگ ان"
+        },
+        "af": {
+            "legacy_caption_pid": 40021,
+            "legacy_language_pid": 37,
+            "text": "Teken uit",
+            "auto_translated": "Teken uit"
+        },
+        "sw": {
+            "legacy_caption_pid": 40022,
+            "legacy_language_pid": 38,
+            "text": "ondoka kwenye",
+            "auto_translated": "ondoka kwenye"
+        },
+        "lo": {
+            "legacy_caption_pid": 40023,
+            "legacy_language_pid": 39,
+            "text": "ອອກຈາກລະບົບ",
+            "auto_translated": "ອອກຈາກລະບົບ"
+        },
+        "nl": {
+            "legacy_caption_pid": 40024,
+            "legacy_language_pid": 40,
+            "text": "Afmelden",
+            "auto_translated": "Afmelden"
+        },
+        "tl": {
+            "legacy_caption_pid": 40025,
+            "legacy_language_pid": 41,
+            "text": "Mag-log out",
+            "auto_translated": "Mag-log out"
+        },
+        "ne": {
+            "legacy_caption_pid": 40026,
+            "legacy_language_pid": 42,
+            "text": "लग आउट",
+            "auto_translated": "लग आउट"
+        },
+        "hu": {
+            "legacy_caption_pid": 40027,
+            "legacy_language_pid": 43,
+            "text": "Kijelentkezés",
+            "auto_translated": "Kijelentkezés"
+        },
+        "cs": {
+            "legacy_caption_pid": 40028,
+            "legacy_language_pid": 44,
+            "text": "Odhlásit",
+            "auto_translated": "Odhlásit"
+        },
+        "el": {
+            "legacy_caption_pid": 40029,
+            "legacy_language_pid": 45,
+            "text": "Αποσύνδεση",
+            "auto_translated": "Αποσύνδεση"
+        },
+        "sv": {
+            "legacy_caption_pid": 40030,
+            "legacy_language_pid": 46,
+            "text": "Logga ut",
+            "auto_translated": "Logga ut"
+        },
+        "kk": {
+            "legacy_caption_pid": 40031,
+            "legacy_language_pid": 47,
+            "text": "шығу",
+            "auto_translated": "шығу"
+        },
+        "fi": {
+            "legacy_caption_pid": 40032,
+            "legacy_language_pid": 48,
+            "text": "kirjaudu ulos",
+            "auto_translated": "kirjaudu ulos"
+        },
+        "da": {
+            "legacy_caption_pid": 40033,
+            "legacy_language_pid": 49,
+            "text": "Log ud",
+            "auto_translated": "Log ud"
+        },
+        "he": {
+            "legacy_caption_pid": 40034,
+            "legacy_language_pid": 50,
+            "text": "התנתק",
+            "auto_translated": "התנתק"
+        },
+        "no": {
+            "legacy_caption_pid": 40035,
+            "legacy_language_pid": 51,
+            "text": "Logg ut",
+            "auto_translated": "Logg ut"
+        }
+    }
+}

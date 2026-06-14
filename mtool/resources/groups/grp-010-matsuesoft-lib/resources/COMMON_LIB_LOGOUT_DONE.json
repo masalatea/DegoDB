@@ -1,0 +1,321 @@
+{
+    "resource_key": "COMMON_LIB_LOGOUT_DONE",
+    "legacy_resource_pid": 1471,
+    "base_group_key": "grp-010-matsuesoft-lib",
+    "additional_group_keys": [],
+    "key_for_update": "Gvbc0DZT9HWnCUMrUcoAoPuykm4gavepz7Fuuq3uu2xN3PNrxJgVEtOhAAXX6fPVuSXJ5fHQukRFdGsJ2ZjPgBqklssps10GwhSlRf1k7Tq4Lpq8Qlu4DawV6MGKuPQM",
+    "sort_group": "LOGOUT",
+    "key_name": "COMMON_LIB_LOGOUT_DONE",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": false,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 6158,
+            "legacy_language_pid": 1,
+            "text": "ログアウトしました。",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 6159,
+            "legacy_language_pid": 2,
+            "text": "You've logged out.",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 6160,
+            "legacy_language_pid": 3,
+            "text": "我们已经登出。",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 6161,
+            "legacy_language_pid": 4,
+            "text": "로그아웃했습니다.",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 11138,
+            "legacy_language_pid": 5,
+            "text": "Ha cerrado la sesión.",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 11139,
+            "legacy_language_pid": 6,
+            "text": "Você se desconectou.",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 11140,
+            "legacy_language_pid": 7,
+            "text": "我們已經登出。",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 17261,
+            "legacy_language_pid": 8,
+            "text": "Vous êtes déconnecté.",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 17262,
+            "legacy_language_pid": 9,
+            "text": "आपने लॉग आउट कर दिया है।",
+            "auto_translated": ""
+        },
+        "ar": {
+            "legacy_caption_pid": 32840,
+            "legacy_language_pid": 10,
+            "text": "لقد تم تسجيل الخروج.",
+            "auto_translated": "لقد تم تسجيل الخروج."
+        },
+        "fa": {
+            "legacy_caption_pid": 32841,
+            "legacy_language_pid": 11,
+            "text": "ما از سیستم خارج.",
+            "auto_translated": "ما از سیستم خارج."
+        },
+        "de": {
+            "legacy_caption_pid": 32842,
+            "legacy_language_pid": 12,
+            "text": "Wir wurden abgemeldet.",
+            "auto_translated": "Wir wurden abgemeldet."
+        },
+        "ru": {
+            "legacy_caption_pid": 32843,
+            "legacy_language_pid": 13,
+            "text": "Мы вышли из системы.",
+            "auto_translated": "Мы вышли из системы."
+        },
+        "ms": {
+            "legacy_caption_pid": 32844,
+            "legacy_language_pid": 14,
+            "text": "Kami telah log keluar.",
+            "auto_translated": "Kami telah log keluar."
+        },
+        "ta": {
+            "legacy_caption_pid": 32845,
+            "legacy_language_pid": 15,
+            "text": "நாம் வெளியேறி விட்டீர்கள்.",
+            "auto_translated": "நாம் வெளியேறி விட்டீர்கள்."
+        },
+        "it": {
+            "legacy_caption_pid": 32846,
+            "legacy_language_pid": 16,
+            "text": "C'è stato disconnesso.",
+            "auto_translated": "C'è stato disconnesso."
+        },
+        "bn": {
+            "legacy_caption_pid": 32847,
+            "legacy_language_pid": 17,
+            "text": "আমরা লগ আউট হয়েছেন।",
+            "auto_translated": "আমরা লগ আউট হয়েছেন।"
+        },
+        "tr": {
+            "legacy_caption_pid": 32848,
+            "legacy_language_pid": 18,
+            "text": "Biz çıkış yaptınız.",
+            "auto_translated": "Biz çıkış yaptınız."
+        },
+        "vi": {
+            "legacy_caption_pid": 32849,
+            "legacy_language_pid": 19,
+            "text": "Chúng tôi đã bị đăng xuất.",
+            "auto_translated": "Chúng tôi đã bị đăng xuất."
+        },
+        "pl": {
+            "legacy_caption_pid": 32850,
+            "legacy_language_pid": 20,
+            "text": "Zostaliśmy wylogowany.",
+            "auto_translated": "Zostaliśmy wylogowany."
+        },
+        "jv": {
+            "legacy_caption_pid": 32851,
+            "legacy_language_pid": 21,
+            "text": "Kita wis metu log.",
+            "auto_translated": "Kita wis metu log."
+        },
+        "pa": {
+            "legacy_caption_pid": 32852,
+            "legacy_language_pid": 22,
+            "text": "ਸਾਨੂੰ ਲਾਗਆਉਟ ਕੀਤਾ ਗਿਆ ਹੈ.",
+            "auto_translated": "ਸਾਨੂੰ ਲਾਗਆਉਟ ਕੀਤਾ ਗਿਆ ਹੈ."
+        },
+        "th": {
+            "legacy_caption_pid": 32853,
+            "legacy_language_pid": 23,
+            "text": "เราได้รับการออกจากระบบ",
+            "auto_translated": "เราได้รับการออกจากระบบ"
+        },
+        "te": {
+            "legacy_caption_pid": 39980,
+            "legacy_language_pid": 24,
+            "text": "మేము లాగ్ అవుట్ చేశారు.",
+            "auto_translated": "మేము లాగ్ అవుట్ చేశారు."
+        },
+        "mr": {
+            "legacy_caption_pid": 39981,
+            "legacy_language_pid": 25,
+            "text": "आम्ही लॉग आउट केले आहे.",
+            "auto_translated": "आम्ही लॉग आउट केले आहे."
+        },
+        "ur": {
+            "legacy_caption_pid": 39982,
+            "legacy_language_pid": 26,
+            "text": "ہم سے لاگ آؤٹ ہو چکے ہیں.",
+            "auto_translated": "ہم سے لاگ آؤٹ ہو چکے ہیں."
+        },
+        "gu": {
+            "legacy_caption_pid": 39983,
+            "legacy_language_pid": 27,
+            "text": "અમે લૉગ આઉટ કરવામાં આવ્યા છે.",
+            "auto_translated": "અમે લૉગ આઉટ કરવામાં આવ્યા છે."
+        },
+        "uk": {
+            "legacy_caption_pid": 39984,
+            "legacy_language_pid": 28,
+            "text": "Ми вийшли з системи.",
+            "auto_translated": "Ми вийшли з системи."
+        },
+        "ml": {
+            "legacy_caption_pid": 39985,
+            "legacy_language_pid": 29,
+            "text": "ഞങ്ങൾ പുറത്ത് കടന്നിരിക്കുന്നു.",
+            "auto_translated": "ഞങ്ങൾ പുറത്ത് കടന്നിരിക്കുന്നു."
+        },
+        "kn": {
+            "legacy_caption_pid": 39986,
+            "legacy_language_pid": 30,
+            "text": "ನಾವು ಲಾಗ್ ಔಟ್ ಮಾಡಲಾಗಿದೆ.",
+            "auto_translated": "ನಾವು ಲಾಗ್ ಔಟ್ ಮಾಡಲಾಗಿದೆ."
+        },
+        "su": {
+            "legacy_caption_pid": 39987,
+            "legacy_language_pid": 31,
+            "text": "Simkuring geus asup kaluar.",
+            "auto_translated": "Simkuring geus asup kaluar."
+        },
+        "ku": {
+            "legacy_caption_pid": 39988,
+            "legacy_language_pid": 32,
+            "text": "Em qeyd kirin, derket.",
+            "auto_translated": "Em qeyd kirin, derket."
+        },
+        "ps": {
+            "legacy_caption_pid": 39989,
+            "legacy_language_pid": 33,
+            "text": "موږ لومړی غونډال کې شوي دي.",
+            "auto_translated": "موږ لومړی غونډال کې شوي دي."
+        },
+        "ro": {
+            "legacy_caption_pid": 39990,
+            "legacy_language_pid": 34,
+            "text": "Am fost deconectat.",
+            "auto_translated": "Am fost deconectat."
+        },
+        "id": {
+            "legacy_caption_pid": 39991,
+            "legacy_language_pid": 35,
+            "text": "Kami telah keluar.",
+            "auto_translated": "Kami telah keluar."
+        },
+        "sd": {
+            "legacy_caption_pid": 39992,
+            "legacy_language_pid": 36,
+            "text": "اسان ٻاهر لاگ ان ويو آهي.",
+            "auto_translated": "اسان ٻاهر لاگ ان ويو آهي."
+        },
+        "af": {
+            "legacy_caption_pid": 39993,
+            "legacy_language_pid": 37,
+            "text": "Ons is uitgeteken.",
+            "auto_translated": "Ons is uitgeteken."
+        },
+        "sw": {
+            "legacy_caption_pid": 39994,
+            "legacy_language_pid": 38,
+            "text": "Tumekuwa watumiaji nje.",
+            "auto_translated": "Tumekuwa watumiaji nje."
+        },
+        "lo": {
+            "legacy_caption_pid": 39995,
+            "legacy_language_pid": 39,
+            "text": "ພວກເຮົາໄດ້ຮັບການອອກຈາກລະບົບ.",
+            "auto_translated": "ພວກເຮົາໄດ້ຮັບການອອກຈາກລະບົບ."
+        },
+        "nl": {
+            "legacy_caption_pid": 39996,
+            "legacy_language_pid": 40,
+            "text": "We zijn uitgelogd.",
+            "auto_translated": "We zijn uitgelogd."
+        },
+        "tl": {
+            "legacy_caption_pid": 39997,
+            "legacy_language_pid": 41,
+            "text": "Kami ay nai-log out.",
+            "auto_translated": "Kami ay nai-log out."
+        },
+        "ne": {
+            "legacy_caption_pid": 39998,
+            "legacy_language_pid": 42,
+            "text": "हामी लग आउट गरिएको छ।",
+            "auto_translated": "हामी लग आउट गरिएको छ।"
+        },
+        "hu": {
+            "legacy_caption_pid": 39999,
+            "legacy_language_pid": 43,
+            "text": "Mi már kijelentkezett.",
+            "auto_translated": "Mi már kijelentkezett."
+        },
+        "cs": {
+            "legacy_caption_pid": 40000,
+            "legacy_language_pid": 44,
+            "text": "Byly zaznamenány jsme ven.",
+            "auto_translated": "Byly zaznamenány jsme ven."
+        },
+        "el": {
+            "legacy_caption_pid": 40001,
+            "legacy_language_pid": 45,
+            "text": "Μας έχουν αποσυνδεθεί.",
+            "auto_translated": "Μας έχουν αποσυνδεθεί."
+        },
+        "sv": {
+            "legacy_caption_pid": 40002,
+            "legacy_language_pid": 46,
+            "text": "Vi har loggats ut.",
+            "auto_translated": "Vi har loggats ut."
+        },
+        "kk": {
+            "legacy_caption_pid": 40003,
+            "legacy_language_pid": 47,
+            "text": "Біз теңдестіруден өткен болатын.",
+            "auto_translated": "Біз теңдестіруден өткен болатын."
+        },
+        "fi": {
+            "legacy_caption_pid": 40004,
+            "legacy_language_pid": 48,
+            "text": "Meillä on kirjattu ulos.",
+            "auto_translated": "Meillä on kirjattu ulos."
+        },
+        "da": {
+            "legacy_caption_pid": 40005,
+            "legacy_language_pid": 49,
+            "text": "Vi er blevet logget ud.",
+            "auto_translated": "Vi er blevet logget ud."
+        },
+        "he": {
+            "legacy_caption_pid": 40006,
+            "legacy_language_pid": 50,
+            "text": "אנחנו כבר מתנתקים.",
+            "auto_translated": "אנחנו כבר מתנתקים."
+        },
+        "no": {
+            "legacy_caption_pid": 40007,
+            "legacy_language_pid": 51,
+            "text": "Vi har blitt logget ut.",
+            "auto_translated": "Vi har blitt logget ut."
+        }
+    }
+}

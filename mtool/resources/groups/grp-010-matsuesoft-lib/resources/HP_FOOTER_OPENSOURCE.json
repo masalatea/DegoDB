@@ -1,0 +1,69 @@
+{
+    "resource_key": "HP_FOOTER_OPENSOURCE",
+    "legacy_resource_pid": 895,
+    "base_group_key": "grp-010-matsuesoft-lib",
+    "additional_group_keys": [],
+    "key_for_update": "hIU6guqteka9ENHRYE7lcqOew5qI5vpQle9yRT7nqsw7y2JP71tIgqcDk4WTeuc0CkFaJgGGnYs4voYnUhFUIeO5IdXp5dCTQ46yOxdEhtPYno4aQnMFEYxLQXTzmr15",
+    "sort_group": "HP FOOTER",
+    "key_name": "HP_FOOTER_OPENSOURCE",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": true,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 4610,
+            "legacy_language_pid": 1,
+            "text": "オープンソース",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 4611,
+            "legacy_language_pid": 2,
+            "text": "Open Source",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 14241,
+            "legacy_language_pid": 3,
+            "text": "",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 14242,
+            "legacy_language_pid": 4,
+            "text": "",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 14243,
+            "legacy_language_pid": 5,
+            "text": "Fuente abierta",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 14244,
+            "legacy_language_pid": 6,
+            "text": "Código aberto",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 14245,
+            "legacy_language_pid": 7,
+            "text": "",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 17137,
+            "legacy_language_pid": 8,
+            "text": "Open source",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 17138,
+            "legacy_language_pid": 9,
+            "text": "खुला स्त्रोत",
+            "auto_translated": ""
+        }
+    }
+}

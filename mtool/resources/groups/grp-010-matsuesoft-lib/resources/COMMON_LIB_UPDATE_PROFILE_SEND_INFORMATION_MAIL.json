@@ -1,0 +1,321 @@
+{
+    "resource_key": "COMMON_LIB_UPDATE_PROFILE_SEND_INFORMATION_MAIL",
+    "legacy_resource_pid": 1618,
+    "base_group_key": "grp-010-matsuesoft-lib",
+    "additional_group_keys": [],
+    "key_for_update": "r4JsvZdgyE76IatNUonXyp9E400vm8X90hLS72nveg3bGXPIZWHcbi0io5xP8bPOK9G6BMXeiNH6Du7X7WuHidXiACc8GiRYL0yV9rFuflGtwbd8Z17ZBjlqRVbicD81",
+    "sort_group": "PROFILE",
+    "key_name": "COMMON_LIB_UPDATE_PROFILE_SEND_INFORMATION_MAIL",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": false,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 7254,
+            "legacy_language_pid": 1,
+            "text": "お知らせメールを送信する:",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 7255,
+            "legacy_language_pid": 2,
+            "text": "Send notification mail:",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 7256,
+            "legacy_language_pid": 3,
+            "text": "要发送电子邮件通知：",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 7257,
+            "legacy_language_pid": 4,
+            "text": "알림 메일 보내기 :",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 11180,
+            "legacy_language_pid": 5,
+            "text": "Enviar correo de notificación: ",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 11181,
+            "legacy_language_pid": 6,
+            "text": "Enviar correio de notificação:",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 11182,
+            "legacy_language_pid": 7,
+            "text": "要發送電子郵件通知：",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 17293,
+            "legacy_language_pid": 8,
+            "text": "Envoyer un courrier de notification:",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 17294,
+            "legacy_language_pid": 9,
+            "text": "सूचना मेल भेजें:",
+            "auto_translated": ""
+        },
+        "ar": {
+            "legacy_caption_pid": 33036,
+            "legacy_language_pid": 10,
+            "text": "لإرسال البريد الإلكتروني الإعلام:",
+            "auto_translated": "لإرسال البريد الإلكتروني الإعلام:"
+        },
+        "fa": {
+            "legacy_caption_pid": 33037,
+            "legacy_language_pid": 11,
+            "text": "برای ارسال یک ایمیل اطلاع رسانی:",
+            "auto_translated": "برای ارسال یک ایمیل اطلاع رسانی:"
+        },
+        "de": {
+            "legacy_caption_pid": 33038,
+            "legacy_language_pid": 12,
+            "text": "Um eine Benachrichtigung per E-Mail an:",
+            "auto_translated": "Um eine Benachrichtigung per E-Mail an:"
+        },
+        "ru": {
+            "legacy_caption_pid": 33039,
+            "legacy_language_pid": 13,
+            "text": "Чтобы отправить уведомление по электронной почте:",
+            "auto_translated": "Чтобы отправить уведомление по электронной почте:"
+        },
+        "ms": {
+            "legacy_caption_pid": 33040,
+            "legacy_language_pid": 14,
+            "text": "Untuk menghantar e-mel pemberitahuan:",
+            "auto_translated": "Untuk menghantar e-mel pemberitahuan:"
+        },
+        "ta": {
+            "legacy_caption_pid": 33041,
+            "legacy_language_pid": 15,
+            "text": "ஒரு அறிவிப்பு மின்னஞ்சல் அனுப்ப:",
+            "auto_translated": "ஒரு அறிவிப்பு மின்னஞ்சல் அனுப்ப:"
+        },
+        "it": {
+            "legacy_caption_pid": 33042,
+            "legacy_language_pid": 16,
+            "text": "Per inviare un e-mail di notifica:",
+            "auto_translated": "Per inviare un e-mail di notifica:"
+        },
+        "bn": {
+            "legacy_caption_pid": 33043,
+            "legacy_language_pid": 17,
+            "text": "একটি বিজ্ঞপ্তি ই-মেইল পাঠানোর জন্য:",
+            "auto_translated": "একটি বিজ্ঞপ্তি ই-মেইল পাঠানোর জন্য:"
+        },
+        "tr": {
+            "legacy_caption_pid": 33044,
+            "legacy_language_pid": 18,
+            "text": "Bir bildirim e-posta göndermek için:",
+            "auto_translated": "Bir bildirim e-posta göndermek için:"
+        },
+        "vi": {
+            "legacy_caption_pid": 33045,
+            "legacy_language_pid": 19,
+            "text": "Để gửi một thông báo e-mail:",
+            "auto_translated": "Để gửi một thông báo e-mail:"
+        },
+        "pl": {
+            "legacy_caption_pid": 33046,
+            "legacy_language_pid": 20,
+            "text": "Aby wysłać powiadomienie e-mail:",
+            "auto_translated": "Aby wysłać powiadomienie e-mail:"
+        },
+        "jv": {
+            "legacy_caption_pid": 33047,
+            "legacy_language_pid": 21,
+            "text": "Kanggo ngirim e-mail kabar:",
+            "auto_translated": "Kanggo ngirim e-mail kabar:"
+        },
+        "pa": {
+            "legacy_caption_pid": 33048,
+            "legacy_language_pid": 22,
+            "text": "ਇੱਕ ਸੂਚਨਾ ਈ-ਮੇਲ ਭੇਜਣ ਲਈ:",
+            "auto_translated": "ਇੱਕ ਸੂਚਨਾ ਈ-ਮੇਲ ਭੇਜਣ ਲਈ:"
+        },
+        "th": {
+            "legacy_caption_pid": 33049,
+            "legacy_language_pid": 23,
+            "text": "เพื่อส่งการแจ้งเตือนทาง e-mail:",
+            "auto_translated": "เพื่อส่งการแจ้งเตือนทาง e-mail:"
+        },
+        "te": {
+            "legacy_caption_pid": 39532,
+            "legacy_language_pid": 24,
+            "text": "ఒక నోటిఫికేషన్ ఇ-మెయిల్ పంపడానికి:",
+            "auto_translated": "ఒక నోటిఫికేషన్ ఇ-మెయిల్ పంపడానికి:"
+        },
+        "mr": {
+            "legacy_caption_pid": 39533,
+            "legacy_language_pid": 25,
+            "text": "एक सूचना ई-मेल पाठविण्यासाठी:",
+            "auto_translated": "एक सूचना ई-मेल पाठविण्यासाठी:"
+        },
+        "ur": {
+            "legacy_caption_pid": 39534,
+            "legacy_language_pid": 26,
+            "text": "ایک نوٹیفکیشن ای میل بھیجنے کے لئے:",
+            "auto_translated": "ایک نوٹیفکیشن ای میل بھیجنے کے لئے:"
+        },
+        "gu": {
+            "legacy_caption_pid": 39535,
+            "legacy_language_pid": 27,
+            "text": "એક સૂચના ઈ-મેલ મોકલવા માટે:",
+            "auto_translated": "એક સૂચના ઈ-મેલ મોકલવા માટે:"
+        },
+        "uk": {
+            "legacy_caption_pid": 39536,
+            "legacy_language_pid": 28,
+            "text": "Щоб відправити повідомлення по електронній пошті:",
+            "auto_translated": "Щоб відправити повідомлення по електронній пошті:"
+        },
+        "ml": {
+            "legacy_caption_pid": 39537,
+            "legacy_language_pid": 29,
+            "text": "ഒരു അറിയിപ്പ് ഇ-മെയിൽ അയക്കാൻ:",
+            "auto_translated": "ഒരു അറിയിപ്പ് ഇ-മെയിൽ അയക്കാൻ:"
+        },
+        "kn": {
+            "legacy_caption_pid": 39538,
+            "legacy_language_pid": 30,
+            "text": "ಅಧಿಸೂಚನೆ ಇಮೇಲ್ ಕಳುಹಿಸಿ:",
+            "auto_translated": "ಅಧಿಸೂಚನೆ ಇಮೇಲ್ ಕಳುಹಿಸಿ:"
+        },
+        "su": {
+            "legacy_caption_pid": 39539,
+            "legacy_language_pid": 31,
+            "text": "Pikeun ngirim hiji e-mail iber:",
+            "auto_translated": "Pikeun ngirim hiji e-mail iber:"
+        },
+        "ku": {
+            "legacy_caption_pid": 39540,
+            "legacy_language_pid": 32,
+            "text": "Ji bo şandina notification e-mail:",
+            "auto_translated": "Ji bo şandina notification e-mail:"
+        },
+        "ps": {
+            "legacy_caption_pid": 39541,
+            "legacy_language_pid": 33,
+            "text": "د خبرتیا د E-mail ته واستوي:",
+            "auto_translated": "د خبرتیا د E-mail ته واستوي:"
+        },
+        "ro": {
+            "legacy_caption_pid": 39542,
+            "legacy_language_pid": 34,
+            "text": "Pentru a trimite un e-mail de notificare:",
+            "auto_translated": "Pentru a trimite un e-mail de notificare:"
+        },
+        "id": {
+            "legacy_caption_pid": 39543,
+            "legacy_language_pid": 35,
+            "text": "Untuk mengirim e-mail pemberitahuan:",
+            "auto_translated": "Untuk mengirim e-mail pemberitahuan:"
+        },
+        "sd": {
+            "legacy_caption_pid": 39544,
+            "legacy_language_pid": 36,
+            "text": "هڪ نوٽيفڪيشن اي-ميل موڪلڻ لاء:",
+            "auto_translated": "هڪ نوٽيفڪيشن اي-ميل موڪلڻ لاء:"
+        },
+        "af": {
+            "legacy_caption_pid": 39545,
+            "legacy_language_pid": 37,
+            "text": "'N kennisgewing e-pos te stuur:",
+            "auto_translated": "'N kennisgewing e-pos te stuur:"
+        },
+        "sw": {
+            "legacy_caption_pid": 39546,
+            "legacy_language_pid": 38,
+            "text": "Kutuma taarifa ya barua pepe:",
+            "auto_translated": "Kutuma taarifa ya barua pepe:"
+        },
+        "lo": {
+            "legacy_caption_pid": 39547,
+            "legacy_language_pid": 39,
+            "text": "ການສົ່ງແຈ້ງການອີເມລ:",
+            "auto_translated": "ການສົ່ງແຈ້ງການອີເມລ:"
+        },
+        "nl": {
+            "legacy_caption_pid": 39548,
+            "legacy_language_pid": 40,
+            "text": "Als u een melding e-mail sturen naar:",
+            "auto_translated": "Als u een melding e-mail sturen naar:"
+        },
+        "tl": {
+            "legacy_caption_pid": 39549,
+            "legacy_language_pid": 41,
+            "text": "Upang magpadala ng isang abiso ng e-mail:",
+            "auto_translated": "Upang magpadala ng isang abiso ng e-mail:"
+        },
+        "ne": {
+            "legacy_caption_pid": 39550,
+            "legacy_language_pid": 42,
+            "text": "एउटा सूचना ई-मेल पठाउन:",
+            "auto_translated": "एउटा सूचना ई-मेल पठाउन:"
+        },
+        "hu": {
+            "legacy_caption_pid": 39551,
+            "legacy_language_pid": 43,
+            "text": "Egy értesítést küld e-mail:",
+            "auto_translated": "Egy értesítést küld e-mail:"
+        },
+        "cs": {
+            "legacy_caption_pid": 39552,
+            "legacy_language_pid": 44,
+            "text": "Chcete-li poslat e-mail s oznámením:",
+            "auto_translated": "Chcete-li poslat e-mail s oznámením:"
+        },
+        "el": {
+            "legacy_caption_pid": 39553,
+            "legacy_language_pid": 45,
+            "text": "Για να στείλετε μια ειδοποίηση e-mail:",
+            "auto_translated": "Για να στείλετε μια ειδοποίηση e-mail:"
+        },
+        "sv": {
+            "legacy_caption_pid": 39554,
+            "legacy_language_pid": 46,
+            "text": "Om du vill skicka ett e-postmeddelande:",
+            "auto_translated": "Om du vill skicka ett e-postmeddelande:"
+        },
+        "kk": {
+            "legacy_caption_pid": 39555,
+            "legacy_language_pid": 47,
+            "text": "хабарландыру электрондық пошта жіберу үшін:",
+            "auto_translated": "хабарландыру электрондық пошта жіберу үшін:"
+        },
+        "fi": {
+            "legacy_caption_pid": 39556,
+            "legacy_language_pid": 48,
+            "text": "Laite lähettää ilmoituksen sähköpostilla:",
+            "auto_translated": "Laite lähettää ilmoituksen sähköpostilla:"
+        },
+        "da": {
+            "legacy_caption_pid": 39557,
+            "legacy_language_pid": 49,
+            "text": "For at sende en meddelelse e-mail:",
+            "auto_translated": "For at sende en meddelelse e-mail:"
+        },
+        "he": {
+            "legacy_caption_pid": 39558,
+            "legacy_language_pid": 50,
+            "text": "כדי לשלוח הודעה בדואר אלקטרוני:",
+            "auto_translated": "כדי לשלוח הודעה בדואר אלקטרוני:"
+        },
+        "no": {
+            "legacy_caption_pid": 39559,
+            "legacy_language_pid": 51,
+            "text": "For å sende en melding via e-post:",
+            "auto_translated": "For å sende en melding via e-post:"
+        }
+    }
+}

@@ -1,0 +1,321 @@
+{
+    "resource_key": "TOAST_PAYMENT_FAILED",
+    "legacy_resource_pid": 1323,
+    "base_group_key": "grp-028-app-common-lib",
+    "additional_group_keys": [],
+    "key_for_update": "XZGiVhtvnNbKQrj72ycDhyZSvTv8hJnOilNppzlfD8HTsPgYxgUN73NySxXZM81LiBVrFkbrFFlc8PkQKdpnxBfV9c2zJsm13Q10KaNNrUUApSfkmBPWvcOxmw4AHMq5",
+    "sort_group": "Toast",
+    "key_name": "TOAST_PAYMENT_FAILED",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": false,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 923,
+            "legacy_language_pid": 1,
+            "text": "支払い失敗しました",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 924,
+            "legacy_language_pid": 2,
+            "text": "Payment Failed",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 6488,
+            "legacy_language_pid": 3,
+            "text": "付款失败",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 6489,
+            "legacy_language_pid": 4,
+            "text": "결제 실패",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 10297,
+            "legacy_language_pid": 5,
+            "text": "Pago fallido",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 10298,
+            "legacy_language_pid": 6,
+            "text": "Pagamento falhou",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 10299,
+            "legacy_language_pid": 7,
+            "text": "付款失敗",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 16227,
+            "legacy_language_pid": 8,
+            "text": "Paiement échoué",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 16228,
+            "legacy_language_pid": 9,
+            "text": " भुगतान असफल ",
+            "auto_translated": ""
+        },
+        "ar": {
+            "legacy_caption_pid": 29044,
+            "legacy_language_pid": 10,
+            "text": "وكان الفشل دفع",
+            "auto_translated": "وكان الفشل دفع"
+        },
+        "fa": {
+            "legacy_caption_pid": 29045,
+            "legacy_language_pid": 11,
+            "text": "این شکست پرداخت شد",
+            "auto_translated": "این شکست پرداخت شد"
+        },
+        "de": {
+            "legacy_caption_pid": 29046,
+            "legacy_language_pid": 12,
+            "text": "Es war Zahlung Ausfall",
+            "auto_translated": "Es war Zahlung Ausfall"
+        },
+        "ru": {
+            "legacy_caption_pid": 29047,
+            "legacy_language_pid": 13,
+            "text": "Это был отказ оплаты",
+            "auto_translated": "Это был отказ оплаты"
+        },
+        "ms": {
+            "legacy_caption_pid": 29048,
+            "legacy_language_pid": 14,
+            "text": "Ia adalah kegagalan pembayaran",
+            "auto_translated": "Ia adalah kegagalan pembayaran"
+        },
+        "ta": {
+            "legacy_caption_pid": 29049,
+            "legacy_language_pid": 15,
+            "text": "அது பணம் தோல்வியைத் தழுவியது",
+            "auto_translated": "அது பணம் தோல்வியைத் தழுவியது"
+        },
+        "it": {
+            "legacy_caption_pid": 29050,
+            "legacy_language_pid": 16,
+            "text": "E 'stato il fallimento pagamento",
+            "auto_translated": "E 'stato il fallimento pagamento"
+        },
+        "bn": {
+            "legacy_caption_pid": 29051,
+            "legacy_language_pid": 17,
+            "text": "এটা পেমেন্ট সাফল্যর মুখ",
+            "auto_translated": "এটা পেমেন্ট সাফল্যর মুখ"
+        },
+        "tr": {
+            "legacy_caption_pid": 29052,
+            "legacy_language_pid": 18,
+            "text": "Bu ödeme hatası oldu",
+            "auto_translated": "Bu ödeme hatası oldu"
+        },
+        "vi": {
+            "legacy_caption_pid": 29053,
+            "legacy_language_pid": 19,
+            "text": "Đó là thất bại thanh toán",
+            "auto_translated": "Đó là thất bại thanh toán"
+        },
+        "pl": {
+            "legacy_caption_pid": 29054,
+            "legacy_language_pid": 20,
+            "text": "To była awaria płatności",
+            "auto_translated": "To była awaria płatności"
+        },
+        "jv": {
+            "legacy_caption_pid": 29055,
+            "legacy_language_pid": 21,
+            "text": "Iku Gagal pembayaran",
+            "auto_translated": "Iku Gagal pembayaran"
+        },
+        "pa": {
+            "legacy_caption_pid": 29056,
+            "legacy_language_pid": 22,
+            "text": "ਇਹ ਭੁਗਤਾਨ ਦੀ ਅਸਫਲਤਾ ਸੀ",
+            "auto_translated": "ਇਹ ਭੁਗਤਾਨ ਦੀ ਅਸਫਲਤਾ ਸੀ"
+        },
+        "th": {
+            "legacy_caption_pid": 29057,
+            "legacy_language_pid": 23,
+            "text": "มันเป็นความล้มเหลวในการชำระเงิน",
+            "auto_translated": "มันเป็นความล้มเหลวในการชำระเงิน"
+        },
+        "te": {
+            "legacy_caption_pid": 35024,
+            "legacy_language_pid": 24,
+            "text": "ఇది చెల్లింపు వైఫల్యం ఉంది",
+            "auto_translated": "ఇది చెల్లింపు వైఫల్యం ఉంది"
+        },
+        "mr": {
+            "legacy_caption_pid": 35025,
+            "legacy_language_pid": 25,
+            "text": "हे पैसे अपयश होते",
+            "auto_translated": "हे पैसे अपयश होते"
+        },
+        "ur": {
+            "legacy_caption_pid": 35026,
+            "legacy_language_pid": 26,
+            "text": "اس کی ادائیگی میں ناکامی تھا",
+            "auto_translated": "اس کی ادائیگی میں ناکامی تھا"
+        },
+        "gu": {
+            "legacy_caption_pid": 35027,
+            "legacy_language_pid": 27,
+            "text": "તે ચુકવણી નિષ્ફળ રહી હતી",
+            "auto_translated": "તે ચુકવણી નિષ્ફળ રહી હતી"
+        },
+        "uk": {
+            "legacy_caption_pid": 35028,
+            "legacy_language_pid": 28,
+            "text": "Це була відмова оплати",
+            "auto_translated": "Це була відмова оплати"
+        },
+        "ml": {
+            "legacy_caption_pid": 35029,
+            "legacy_language_pid": 29,
+            "text": "അതു പേയ്മെന്റ് പരാജയമായിരുന്നു",
+            "auto_translated": "അതു പേയ്മെന്റ് പരാജയമായിരുന്നു"
+        },
+        "kn": {
+            "legacy_caption_pid": 35030,
+            "legacy_language_pid": 30,
+            "text": "ಪಾವತಿ ಮಾಡುವುದಕ್ಕೆ ವಿಫಲವಾಯಿತು",
+            "auto_translated": "ಪಾವತಿ ಮಾಡುವುದಕ್ಕೆ ವಿಫಲವಾಯಿತು"
+        },
+        "su": {
+            "legacy_caption_pid": 35031,
+            "legacy_language_pid": 31,
+            "text": "Ieu gagalna pamayaran",
+            "auto_translated": "Ieu gagalna pamayaran"
+        },
+        "ku": {
+            "legacy_caption_pid": 35032,
+            "legacy_language_pid": 32,
+            "text": "Ev têkçûna peredana bû",
+            "auto_translated": "Ev têkçûna peredana bû"
+        },
+        "ps": {
+            "legacy_caption_pid": 35033,
+            "legacy_language_pid": 33,
+            "text": "دا د پیسو ناکامي وه",
+            "auto_translated": "دا د پیسو ناکامي وه"
+        },
+        "ro": {
+            "legacy_caption_pid": 35034,
+            "legacy_language_pid": 34,
+            "text": "A fost eșec de plată",
+            "auto_translated": "A fost eșec de plată"
+        },
+        "id": {
+            "legacy_caption_pid": 35035,
+            "legacy_language_pid": 35,
+            "text": "Itu kegagalan pembayaran",
+            "auto_translated": "Itu kegagalan pembayaran"
+        },
+        "sd": {
+            "legacy_caption_pid": 35036,
+            "legacy_language_pid": 36,
+            "text": "اهو ادائگي ناڪامي ٿي ويو",
+            "auto_translated": "اهو ادائگي ناڪامي ٿي ويو"
+        },
+        "af": {
+            "legacy_caption_pid": 35037,
+            "legacy_language_pid": 37,
+            "text": "Dit was die betaling misluk",
+            "auto_translated": "Dit was die betaling misluk"
+        },
+        "sw": {
+            "legacy_caption_pid": 35038,
+            "legacy_language_pid": 38,
+            "text": "Ilikuwa malipo kushindwa",
+            "auto_translated": "Ilikuwa malipo kushindwa"
+        },
+        "lo": {
+            "legacy_caption_pid": 35039,
+            "legacy_language_pid": 39,
+            "text": "ມັນແມ່ນຄວາມລົ້ມເຫຼວຊໍາລະເງິນ",
+            "auto_translated": "ມັນແມ່ນຄວາມລົ້ມເຫຼວຊໍາລະເງິນ"
+        },
+        "nl": {
+            "legacy_caption_pid": 35040,
+            "legacy_language_pid": 40,
+            "text": "Het was wanbetaling",
+            "auto_translated": "Het was wanbetaling"
+        },
+        "tl": {
+            "legacy_caption_pid": 35041,
+            "legacy_language_pid": 41,
+            "text": "Ito ay pagbabayad kabiguan",
+            "auto_translated": "Ito ay pagbabayad kabiguan"
+        },
+        "ne": {
+            "legacy_caption_pid": 35042,
+            "legacy_language_pid": 42,
+            "text": "यसलाई भुक्तानी विफलता थियो",
+            "auto_translated": "यसलाई भुक्तानी विफलता थियो"
+        },
+        "hu": {
+            "legacy_caption_pid": 35043,
+            "legacy_language_pid": 43,
+            "text": "Ez volt sikertelen fizetés",
+            "auto_translated": "Ez volt sikertelen fizetés"
+        },
+        "cs": {
+            "legacy_caption_pid": 35044,
+            "legacy_language_pid": 44,
+            "text": "Bylo to selhání platební",
+            "auto_translated": "Bylo to selhání platební"
+        },
+        "el": {
+            "legacy_caption_pid": 35045,
+            "legacy_language_pid": 45,
+            "text": "Ήταν αποτυχία πληρωμής",
+            "auto_translated": "Ήταν αποτυχία πληρωμής"
+        },
+        "sv": {
+            "legacy_caption_pid": 35046,
+            "legacy_language_pid": 46,
+            "text": "Det var betalning misslyckande",
+            "auto_translated": "Det var betalning misslyckande"
+        },
+        "kk": {
+            "legacy_caption_pid": 35047,
+            "legacy_language_pid": 47,
+            "text": "Бұл төлем жеткіліксіздігі болды",
+            "auto_translated": "Бұл төлем жеткіліксіздігі болды"
+        },
+        "fi": {
+            "legacy_caption_pid": 35048,
+            "legacy_language_pid": 48,
+            "text": "Se oli maksuhäiriöitä",
+            "auto_translated": "Se oli maksuhäiriöitä"
+        },
+        "da": {
+            "legacy_caption_pid": 35049,
+            "legacy_language_pid": 49,
+            "text": "Det var betaling fiasko",
+            "auto_translated": "Det var betaling fiasko"
+        },
+        "he": {
+            "legacy_caption_pid": 35050,
+            "legacy_language_pid": 50,
+            "text": "זה היה כישלון תשלום",
+            "auto_translated": "זה היה כישלון תשלום"
+        },
+        "no": {
+            "legacy_caption_pid": 35051,
+            "legacy_language_pid": 51,
+            "text": "Det var manglende betaling",
+            "auto_translated": "Det var manglende betaling"
+        }
+    }
+}

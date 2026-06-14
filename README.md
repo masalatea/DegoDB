@@ -1,2 +1,206 @@
 # DegoDB
-RDB Connecter with managed O/R Mapping and Client
+
+Metadata-driven Development Workbench  
+メタデータ駆動の開発ワークベンチ
+
+Codename コードネーム: `mtool`  
+
+DegoDB is a metadata-driven development workbench built around imported schemas.  
+DegoDB は、既存のスキーマを取り込み、その情報を正本となるメタデータとして管理する Metadata-driven Development Workbench です。
+
+It maintains a canonical metadata model from which Data Classes, DB Access code, APIs, and other development artifacts can be generated consistently.  
+Data Class、DB Access、API、その他の開発成果物を、一貫したメタデータモデルから生成できることを目的としています。
+
+This repository currently focuses on the workflow:  
+現在の主線となるワークフローは次のとおりです。
+
+Database Schema -> Import -> Data Class -> DB Access -> Source Output  
+DB 構造 -> Import -> Data Class -> DB Access -> Source Output
+
+## How to Read This / 文書の読み方
+
+The documentation in this repository is intended to be read in the following three layers.  
+この repo の docs は、次の 3 層で読む前提にします。
+
+1. Entry layer / 入口 layer
+   - [Start Here / 最初の入口](docs/start-here.md)
+   - [Choose Your Path / 目的別の読み方](docs/choose-your-path.md)
+2. Golden path layer / ゴールデンパス layer
+   - [Existing DB To Output / 既存 DB から出力まで](docs/existing-db-to-output.md)
+   - [Common Tasks / よく使う作業](docs/common-tasks.md)
+   - [Current Supported Workflow / 現在サポートするワークフロー](docs/current-supported-workflow.md)
+   - [Troubleshooting / トラブルシューティング](docs/troubleshooting.md)
+3. Detail layer / 詳細 layer
+   - [Concept Overview / 概念概要](docs/overview.md)
+   - [Storage And State Model / 保存先と状態モデル](docs/storage-and-state-model.md)
+   - [Project Metadata Bundle / プロジェクトメタデータ bundle](docs/project-metadata-bundle.md)
+   - [Config DB Externalization / config DB 外部化](docs/config-db-externalization.md)
+   - [Glossary / 用語集](docs/glossary.md)
+   - [Sample Tutorial Roadmap / sample 学習導線](docs/sample-tutorial-roadmap.md)
+   - [Internal Documentation Index / 内部ドキュメント索引](docs/internal/README.md)
+
+Do not reconstruct the mainline by reading the detail docs first. Choose a reading order from the entry layer, understand the execution flow through the golden path layer, and then consult the detail layer.  
+先に detail doc を横断して mainline を再構成するのではなく、入口 layer で読む順番を決め、golden path layer で実行の流れを掴み、その後に detail layer を参照します。
+
+## Start Here / まず読む文書
+
+1. [Start Here / 最初の入口](docs/start-here.md)
+2. [Choose Your Path / 目的別の読み方](docs/choose-your-path.md)
+3. [Existing DB To Output / 既存 DB から出力まで](docs/existing-db-to-output.md)
+4. [Common Tasks / よく使う作業](docs/common-tasks.md)
+5. [Current Supported Workflow / 現在サポートするワークフロー](docs/current-supported-workflow.md)
+6. [Concept Overview / 概念概要](docs/overview.md)
+7. [Sample Tutorial Roadmap / sample 学習導線](docs/sample-tutorial-roadmap.md)
+8. [Troubleshooting / トラブルシューティング](docs/troubleshooting.md)
+9. [Storage And State Model / 保存先と状態モデル](docs/storage-and-state-model.md)
+10. [Internal Documentation Index / 内部ドキュメント索引](docs/internal/README.md)
+
+## Important Invariants / 重要な不変条件
+
+- `mtool/` is the source of truth for the current runtime, generator, and scripts.  
+  `mtool/` が current runtime / generator / script の正本です。
+- `sample/tutorials/` is the user-facing tutorial lane, ordered from simple to complex.  
+  `sample/tutorials/` は simple-to-complex の user-facing tutorial lane です。
+- `sample/internal-patterns/` is the internal sample lane for rewrite and migration guards.  
+  `sample/internal-patterns/` は rewrite / migration guard 用の internal sample lane です。
+- `sample/legacy-projects/` stores representative project packs.  
+  `sample/legacy-projects/` は representative project pack の置き場です。
+- `tests/` contains integration, scenario, and fixture verification assets.  
+  `tests/` は integration / scenario / fixture の検証資産です。
+- `work/` stores disposable outputs and compare workspaces.  
+  `work/` は disposable output と compare workspace の置き場です。
+- `original-codes/` is host-side reference only.  
+  `original-codes/` は host-side reference only です。
+- The current runtime, generator, and Docker containers must not use `original-codes/` directly as input.  
+  新実装の runtime / generator / Docker container は `original-codes/` を直接入力として使いません。
+
+## Shortest Entry Path / 最短の入口
+
+### Understand the Repository / repo を把握する
+
+- Documentation navigator: [Documentation Index / 文書索引](docs/README.md)  
+  文書ナビゲータ: [Documentation Index / 文書索引](docs/README.md)
+- Five-minute overview: [Start Here / 最初の入口](docs/start-here.md)  
+  5 分で全体を掴む入口: [Start Here / 最初の入口](docs/start-here.md)
+- Goal-oriented reverse lookup: [Choose Your Path / 目的別の読み方](docs/choose-your-path.md)  
+  目的別の逆引き入口: [Choose Your Path / 目的別の読み方](docs/choose-your-path.md)
+- Main path from existing DB to output: [Existing DB To Output / 既存 DB から出力まで](docs/existing-db-to-output.md)  
+  existing DB から output までの主導線: [Existing DB To Output / 既存 DB から出力まで](docs/existing-db-to-output.md)
+- Common commands: [Common Tasks / よく使う作業](docs/common-tasks.md)  
+  よく使うコマンド集: [Common Tasks / よく使う作業](docs/common-tasks.md)
+- Supported lane for the current mainline: [Current Supported Workflow / 現在サポートするワークフロー](docs/current-supported-workflow.md)  
+  current mainline の supported lane: [Current Supported Workflow / 現在サポートするワークフロー](docs/current-supported-workflow.md)
+- State and persistence map: [Storage And State Model / 保存先と状態モデル](docs/storage-and-state-model.md)  
+  何がどこに残るか: [Storage And State Model / 保存先と状態モデル](docs/storage-and-state-model.md)
+- Warning and error triage: [Troubleshooting / トラブルシューティング](docs/troubleshooting.md)  
+  warning / error の切り分け: [Troubleshooting / トラブルシューティング](docs/troubleshooting.md)
+- Sample learning path: [Sample Tutorial Roadmap / sample 学習導線](docs/sample-tutorial-roadmap.md)  
+  sample 学習導線: [Sample Tutorial Roadmap / sample 学習導線](docs/sample-tutorial-roadmap.md)
+- Internal contributor reference: [Internal Documentation Index / 内部ドキュメント索引](docs/internal/README.md)  
+  contributor 向け内部 reference: [Internal Documentation Index / 内部ドキュメント索引](docs/internal/README.md)
+- Test guide: [Test Guide / テストガイド](tests/README.md)  
+  test 導線: [Test Guide / テストガイド](tests/README.md)
+
+When in doubt, keep the current rule: `entry layer -> golden path layer -> detail layer`.  
+読む順番に迷った時は、`入口 layer -> golden path layer -> detail layer` の順を崩さないのが current rule です。
+
+### Start the Environment / 環境を起動する
+
+```bash
+make env
+make up
+docker compose exec -T web-admin php /var/www/mtool/scripts/import_project_tables.php --project-key=MTOOL
+docker compose exec -T web-admin php /var/www/mtool/scripts/sync_project_data_classes.php --project-key=MTOOL
+docker compose exec -T web-admin php /var/www/mtool/scripts/sync_project_db_access.php --project-key=MTOOL
+```
+
+`make up` uses `compose.yaml + compose.local-db-config.yaml` as the current local default. When using an external config DB, set `APP_CONFIG_DB_*` and run `make up-external-config-db`. After startup, use `make ps-external-config-db`, `make health-external-config-db`, and `make config-db-preflight-external-config-db` for checks. Use raw `docker compose -f compose.yaml ...` only when the external lane needs a shell or temporary stop.  
+`make up` は current local default として `compose.yaml + compose.local-db-config.yaml` を使います。external config DB を使う時は `APP_CONFIG_DB_*` を指定して `make up-external-config-db` を使います。起動後の確認は `make ps-external-config-db` / `make health-external-config-db` / `make config-db-preflight-external-config-db` を使います。external lane で shell や一時 stop が必要な時だけ raw `docker compose -f compose.yaml ...` を使います。
+
+`make up` also shows the URL for `lab-db-ui` in addition to admin and lab.  
+`make up` は admin / lab に加えて `lab-db-ui` の URL も表示します。
+
+`lab-db-ui` is a lightweight UI for editing `db-lab` in a browser. After changing the schema, admin can import it into canonical metadata from the `lab-live-schema` source.  
+`lab-db-ui` は `db-lab` をブラウザで編集するための軽量 UI で、schema を変えた後は admin 側の `lab-live-schema` source から canonical metadata へ取り込めます。
+
+### Try One Tutorial Sample / tutorial sample を 1 本触る
+
+- Entry sample: `sample/tutorials/sample01-simple-table-runtime`  
+  入口 sample: `sample/tutorials/sample01-simple-table-runtime`
+- Current tutorial lane: `sample01` through `sample10`  
+  current tutorial lane: `sample01` から `sample10`
+- Capstone sample: `sample/tutorials/sample10-dbaccess-mini-crud-flow`  
+  capstone sample: `sample/tutorials/sample10-dbaccess-mini-crud-flow`
+
+```bash
+make sample01-pack-runtime-test
+```
+
+See [Sample Tutorial Roadmap / sample 学習導線](docs/sample-tutorial-roadmap.md) for the sample learning order and role split.  
+sample の学習順と役割分担は [Sample Tutorial Roadmap / sample 学習導線](docs/sample-tutorial-roadmap.md) を参照してください。
+
+### Current Verified Full Suite / 現在の検証済み full suite
+
+Because the old stack can conflict with local ports, the full suite uses the following override as the baseline.  
+local で旧 stack と port 衝突することがあるため、full suite は次の override 付き実行を基準にします。
+
+```bash
+ADMIN_HTTP_PORT=18091 LAB_HTTP_PORT=18092 CONFIG_DB_HOST_PORT=43091 LAB_DB_HOST_PORT=43092 make test
+```
+
+## Directory Guide / ディレクトリの見方
+
+- `mtool/`
+  - Current implementation.  
+    現行実装
+- `sample/`
+  - Tutorial, internal pattern, and representative project packs.  
+    tutorial / internal pattern / representative project pack の置き場
+- `tests/`
+  - PHPUnit integration tests and scenarios.  
+    PHPUnit integration test と scenario の置き場
+- `docs/`
+  - Top-level docs are date-less permanent documents for external users.  
+    top-level は外部ユーザ向けの date-less な恒久文書
+  - Internal contributor references are under [Internal Documentation Index / 内部ドキュメント索引](docs/internal/README.md).  
+    [Internal Documentation Index / 内部ドキュメント索引](docs/internal/README.md) 配下に contributor 向け内部 reference をまとめる
+  - `docs/reports/` stores history, progress, and handoff records.  
+    `docs/reports/` は履歴、progress、handoff の保存先
+- `work/`
+  - Disposable runtime output, artifact history, and compare workspace.  
+    disposable runtime output、artifact history、compare workspace
+- `original-codes/`
+  - Host-side reference and investigation materials for the legacy implementation.  
+    旧実装の host-side reference と調査資料
+
+## Deep Dives / 深掘り先
+
+- Tool concept model: [Concept Overview / 概念概要](docs/overview.md)  
+  ツールの概念モデル: [Concept Overview / 概念概要](docs/overview.md)
+- Main path from existing DB to output: [Existing DB To Output / 既存 DB から出力まで](docs/existing-db-to-output.md)  
+  existing DB から output までの主導線: [Existing DB To Output / 既存 DB から出力まで](docs/existing-db-to-output.md)
+- State and persistence map: [Storage And State Model / 保存先と状態モデル](docs/storage-and-state-model.md)  
+  state / persistence map: [Storage And State Model / 保存先と状態モデル](docs/storage-and-state-model.md)
+- Current workflow: [Current Supported Workflow / 現在サポートするワークフロー](docs/current-supported-workflow.md)  
+  current workflow: [Current Supported Workflow / 現在サポートするワークフロー](docs/current-supported-workflow.md)
+- Common task collection: [Common Tasks / よく使う作業](docs/common-tasks.md)  
+  common task 集: [Common Tasks / よく使う作業](docs/common-tasks.md)
+- Canonical metadata bundle: [Project Metadata Bundle / プロジェクトメタデータ bundle](docs/project-metadata-bundle.md)  
+  canonical metadata bundle: [Project Metadata Bundle / プロジェクトメタデータ bundle](docs/project-metadata-bundle.md)
+- Config DB externalization: [Config DB Externalization / config DB 外部化](docs/config-db-externalization.md)  
+  config DB externalization: [Config DB Externalization / config DB 外部化](docs/config-db-externalization.md)
+- Troubleshooting: [Troubleshooting / トラブルシューティング](docs/troubleshooting.md)  
+  troubleshooting: [Troubleshooting / トラブルシューティング](docs/troubleshooting.md)
+- Glossary: [Glossary / 用語集](docs/glossary.md)  
+  用語集: [Glossary / 用語集](docs/glossary.md)
+- Sample learning path: [Sample Tutorial Roadmap / sample 学習導線](docs/sample-tutorial-roadmap.md)  
+  sample 学習導線: [Sample Tutorial Roadmap / sample 学習導線](docs/sample-tutorial-roadmap.md)
+- Internal implementation, architecture, and migration map: [Internal Documentation Index / 内部ドキュメント索引](docs/internal/README.md)  
+  実装内部 / architecture / migration map: [Internal Documentation Index / 内部ドキュメント索引](docs/internal/README.md)
+- Release history: [History](HISTORY.md)
+  release history: [History](HISTORY.md)
+- History and handoff records: [2026 Reports / 2026 年の履歴](docs/reports/2026/README.md)  
+  履歴・handoff: [2026 Reports / 2026 年の履歴](docs/reports/2026/README.md)
+
+Read `docs/reports/` only when history is needed. For everyday source of truth, prefer the date-less docs under `docs/`.  
+履歴が必要なときだけ `docs/reports/` を読み、普段の source of truth は date-less な `docs/` 側を優先してください。

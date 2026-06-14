@@ -1,0 +1,69 @@
+{
+    "resource_key": "HP_FOOTER_WORKPLACE",
+    "legacy_resource_pid": 1271,
+    "base_group_key": "grp-010-matsuesoft-lib",
+    "additional_group_keys": [],
+    "key_for_update": "stDJ3xJVemGrWvdUv6Q9thsGyJjjat0shcD8rmHmL9hILhgaumyQ0i9hOOwdG8ysppzGAZDzOCzvqZHw7WvjsdRsT6u02JUjQGEINch698gVZ2YWhGrNJexhvDSHXj9F",
+    "sort_group": "HP FOOTER",
+    "key_name": "HP_FOOTER_WORKPLACE",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": true,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 4640,
+            "legacy_language_pid": 1,
+            "text": "会員ページ作成して情報公開するクラウド DegoWP",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 4641,
+            "legacy_language_pid": 2,
+            "text": "Cloud to make member page and publish information - DegoWP",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 14316,
+            "legacy_language_pid": 3,
+            "text": "",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 14317,
+            "legacy_language_pid": 4,
+            "text": "",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 14318,
+            "legacy_language_pid": 5,
+            "text": "Cloud para crear una página de miembros y publicar información - GroUP",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 14319,
+            "legacy_language_pid": 6,
+            "text": "Cloud para criar página de membro e publicar informações - GroUP",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 14320,
+            "legacy_language_pid": 7,
+            "text": "",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 17167,
+            "legacy_language_pid": 8,
+            "text": "Cloud pour créer une page membre et publier des informations - GroUP",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 17168,
+            "legacy_language_pid": 9,
+            "text": "सदस्य पृष्ठ बनाने और जानकारी प्रकाशित करने के लिए क्लाउड - DegoWP",
+            "auto_translated": ""
+        }
+    }
+}

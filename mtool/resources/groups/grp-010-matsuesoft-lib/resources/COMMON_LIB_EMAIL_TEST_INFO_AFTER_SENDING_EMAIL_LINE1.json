@@ -1,0 +1,321 @@
+{
+    "resource_key": "COMMON_LIB_EMAIL_TEST_INFO_AFTER_SENDING_EMAIL_LINE1",
+    "legacy_resource_pid": 1599,
+    "base_group_key": "grp-010-matsuesoft-lib",
+    "additional_group_keys": [],
+    "key_for_update": "PaR41i2666i7xJXGx3L6E4egNghnIH3PFYqvlWatRvezdOKZYBF627k3DvJ2F0d82hidbo1xBr6B2g325opuEQ5AJWZQSAwUotI3hF94nLxuQ9aPhVuFBsbO0yjX6vUq",
+    "sort_group": "EMAIL TEST",
+    "key_name": "COMMON_LIB_EMAIL_TEST_INFO_AFTER_SENDING_EMAIL_LINE1",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": false,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 7178,
+            "legacy_language_pid": 1,
+            "text": "メールが届かない場合は以下をご確認下さい。",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 7179,
+            "legacy_language_pid": 2,
+            "text": "If you do not receive the email please check the following.",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 7180,
+            "legacy_language_pid": 3,
+            "text": "如果邮件没有到达，请检查以下内容。",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 7181,
+            "legacy_language_pid": 4,
+            "text": "메일이 도착하지 않는 경우 다음 사항을 확인하시기 바랍니다.",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 10684,
+            "legacy_language_pid": 5,
+            "text": "Si no recibe el correo electrónico, compruebe lo siguiente.",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 10685,
+            "legacy_language_pid": 6,
+            "text": "Se você não receber o email, verifique o seguinte.",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 10686,
+            "legacy_language_pid": 7,
+            "text": "如果郵件沒有到達，請檢查以下內容。",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 16411,
+            "legacy_language_pid": 8,
+            "text": "Si vous ne recevez pas le courrier électronique, vérifiez les points suivants.",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 16412,
+            "legacy_language_pid": 9,
+            "text": "यदि आपको ईमेल नहीं मिला है तो कृपया निम्नलिखित की जांच करें",
+            "auto_translated": ""
+        },
+        "ar": {
+            "legacy_caption_pid": 30752,
+            "legacy_language_pid": 10,
+            "text": "إذا لم تصل البريد يرجى التحقق من يلي.",
+            "auto_translated": "إذا لم تصل البريد يرجى التحقق من يلي."
+        },
+        "fa": {
+            "legacy_caption_pid": 30753,
+            "legacy_language_pid": 11,
+            "text": "اگر ایمیل نمی رسد لطفا موارد زیر را بررسی کنید.",
+            "auto_translated": "اگر ایمیل نمی رسد لطفا موارد زیر را بررسی کنید."
+        },
+        "de": {
+            "legacy_caption_pid": 30754,
+            "legacy_language_pid": 12,
+            "text": "Wenn die E-Mail die folgenden nicht erreichen Bitte überprüfen.",
+            "auto_translated": "Wenn die E-Mail die folgenden nicht erreichen Bitte überprüfen."
+        },
+        "ru": {
+            "legacy_caption_pid": 30755,
+            "legacy_language_pid": 13,
+            "text": "Если почта не доходит до Пожалуйста, проверьте следующее.",
+            "auto_translated": "Если почта не доходит до Пожалуйста, проверьте следующее."
+        },
+        "ms": {
+            "legacy_caption_pid": 30756,
+            "legacy_language_pid": 14,
+            "text": "Jika mel tidak mencapai Sila semak berikut.",
+            "auto_translated": "Jika mel tidak mencapai Sila semak berikut."
+        },
+        "ta": {
+            "legacy_caption_pid": 30757,
+            "legacy_language_pid": 15,
+            "text": "மெயில் அடைய முடியவில்லை எனில் பின்வரும் சரிபார்க்கவும்.",
+            "auto_translated": "மெயில் அடைய முடியவில்லை எனில் பின்வரும் சரிபார்க்கவும்."
+        },
+        "it": {
+            "legacy_caption_pid": 30758,
+            "legacy_language_pid": 16,
+            "text": "Se la posta non raggiunge Si prega di verificare quanto segue.",
+            "auto_translated": "Se la posta non raggiunge Si prega di verificare quanto segue."
+        },
+        "bn": {
+            "legacy_caption_pid": 30759,
+            "legacy_language_pid": 17,
+            "text": "মেইল পৌঁছানোর না হয়, তাহলে নিম্নলিখিত চেক করুন।",
+            "auto_translated": "মেইল পৌঁছানোর না হয়, তাহলে নিম্নলিখিত চেক করুন।"
+        },
+        "tr": {
+            "legacy_caption_pid": 30760,
+            "legacy_language_pid": 18,
+            "text": "posta ulaşamazsa aşağıdakileri kontrol edin.",
+            "auto_translated": "posta ulaşamazsa aşağıdakileri kontrol edin."
+        },
+        "vi": {
+            "legacy_caption_pid": 30761,
+            "legacy_language_pid": 19,
+            "text": "Nếu thư không đạt Vui lòng kiểm tra sau.",
+            "auto_translated": "Nếu thư không đạt Vui lòng kiểm tra sau."
+        },
+        "pl": {
+            "legacy_caption_pid": 30762,
+            "legacy_language_pid": 20,
+            "text": "Jeśli poczta nie dociera proszę sprawdzić następujące.",
+            "auto_translated": "Jeśli poczta nie dociera proszę sprawdzić następujące."
+        },
+        "jv": {
+            "legacy_caption_pid": 30763,
+            "legacy_language_pid": 21,
+            "text": "Yen mail ora tekan Mangga dipriksa ing ngisor iki.",
+            "auto_translated": "Yen mail ora tekan Mangga dipriksa ing ngisor iki."
+        },
+        "pa": {
+            "legacy_caption_pid": 30764,
+            "legacy_language_pid": 22,
+            "text": "ਮੇਲ ਪਹੁੰਚਣ ਨਾ ਕਰਦਾ, ਜੇ ਹੇਠ ਦਿੱਤੀ ਚੈੱਕ ਕਰੋ ਜੀ.",
+            "auto_translated": "ਮੇਲ ਪਹੁੰਚਣ ਨਾ ਕਰਦਾ, ਜੇ ਹੇਠ ਦਿੱਤੀ ਚੈੱਕ ਕਰੋ ਜੀ."
+        },
+        "th": {
+            "legacy_caption_pid": 30765,
+            "legacy_language_pid": 23,
+            "text": "ถ้าจดหมายไม่ถึงกรุณาตรวจสอบดังต่อไปนี้",
+            "auto_translated": "ถ้าจดหมายไม่ถึงกรุณาตรวจสอบดังต่อไปนี้"
+        },
+        "te": {
+            "legacy_caption_pid": 42878,
+            "legacy_language_pid": 24,
+            "text": "మెయిల్ చేరుకునే ఒకవేళ కింది తనిఖీ చేయండి.",
+            "auto_translated": "మెయిల్ చేరుకునే ఒకవేళ కింది తనిఖీ చేయండి."
+        },
+        "mr": {
+            "legacy_caption_pid": 42879,
+            "legacy_language_pid": 25,
+            "text": "मेल पोहोचू शकत नाही, तर कृपया खालील तपासा.",
+            "auto_translated": "मेल पोहोचू शकत नाही, तर कृपया खालील तपासा."
+        },
+        "ur": {
+            "legacy_caption_pid": 42880,
+            "legacy_language_pid": 26,
+            "text": "میل تک پہنچ نہیں ہے تو مندرجہ ذیل چیک کریں.",
+            "auto_translated": "میل تک پہنچ نہیں ہے تو مندرجہ ذیل چیک کریں."
+        },
+        "gu": {
+            "legacy_caption_pid": 42881,
+            "legacy_language_pid": 27,
+            "text": "મેલ સુધી પહોંચવા નથી, તો નીચેના તપાસો.",
+            "auto_translated": "મેલ સુધી પહોંચવા નથી, તો નીચેના તપાસો."
+        },
+        "uk": {
+            "legacy_caption_pid": 42882,
+            "legacy_language_pid": 28,
+            "text": "Якщо пошта не доходить до ласка, перевірте наступне.",
+            "auto_translated": "Якщо пошта не доходить до ласка, перевірте наступне."
+        },
+        "ml": {
+            "legacy_caption_pid": 42883,
+            "legacy_language_pid": 29,
+            "text": "മെയിൽ എത്താത്തതിനാൽ എങ്കിൽ താഴെ പരിശോധിക്കുക.",
+            "auto_translated": "മെയിൽ എത്താത്തതിനാൽ എങ്കിൽ താഴെ പരിശോധിക്കുക."
+        },
+        "kn": {
+            "legacy_caption_pid": 42884,
+            "legacy_language_pid": 30,
+            "text": "ಮೇಲ್ ತಲುಪದಿದ್ದರೆ ದಯವಿಟ್ಟು ಕೆಳಗಿನ ಪರಿಶೀಲಿಸಿ.",
+            "auto_translated": "ಮೇಲ್ ತಲುಪದಿದ್ದರೆ ದಯವಿಟ್ಟು ಕೆಳಗಿನ ಪರಿಶೀಲಿಸಿ."
+        },
+        "su": {
+            "legacy_caption_pid": 42885,
+            "legacy_language_pid": 31,
+            "text": "Mun mail nu teu ngahontal Mangga parios handap.",
+            "auto_translated": "Mun mail nu teu ngahontal Mangga parios handap."
+        },
+        "ku": {
+            "legacy_caption_pid": 42886,
+            "legacy_language_pid": 32,
+            "text": "Eger mail nade bigihîne ne Tikaye jêr kontrol bike.",
+            "auto_translated": "Eger mail nade bigihîne ne Tikaye jêr kontrol bike."
+        },
+        "ps": {
+            "legacy_caption_pid": 42887,
+            "legacy_language_pid": 33,
+            "text": "که د کرنې وزارت نه رسېدو لطفا لاندې وګورئ.",
+            "auto_translated": "که د کرنې وزارت نه رسېدو لطفا لاندې وګورئ."
+        },
+        "ro": {
+            "legacy_caption_pid": 42888,
+            "legacy_language_pid": 34,
+            "text": "Dacă mesajul nu ajunge Vă rugăm să verificați următoarele.",
+            "auto_translated": "Dacă mesajul nu ajunge Vă rugăm să verificați următoarele."
+        },
+        "id": {
+            "legacy_caption_pid": 42889,
+            "legacy_language_pid": 35,
+            "text": "Jika surat tidak mencapai Silakan periksa berikut.",
+            "auto_translated": "Jika surat tidak mencapai Silakan periksa berikut."
+        },
+        "sd": {
+            "legacy_caption_pid": 42890,
+            "legacy_language_pid": 36,
+            "text": "جي ميل تائين پهچي نه ٿو ته هيٺين چيڪ ڪريو.",
+            "auto_translated": "جي ميل تائين پهچي نه ٿو ته هيٺين چيڪ ڪريو."
+        },
+        "af": {
+            "legacy_caption_pid": 42891,
+            "legacy_language_pid": 37,
+            "text": "As die pos nie bereik Gaan asseblief die volgende.",
+            "auto_translated": "As die pos nie bereik Gaan asseblief die volgende."
+        },
+        "sw": {
+            "legacy_caption_pid": 42892,
+            "legacy_language_pid": 38,
+            "text": "Kama barua haina kufikia Tafadhali angalia zifuatazo.",
+            "auto_translated": "Kama barua haina kufikia Tafadhali angalia zifuatazo."
+        },
+        "lo": {
+            "legacy_caption_pid": 42893,
+            "legacy_language_pid": 39,
+            "text": "ຖ້າ mail ບໍ່ສາມາດບັນລຸກະລຸນາກວດສອບການດັ່ງຕໍ່ໄປນີ້.",
+            "auto_translated": "ຖ້າ mail ບໍ່ສາມາດບັນລຸກະລຸນາກວດສອບການດັ່ງຕໍ່ໄປນີ້."
+        },
+        "nl": {
+            "legacy_caption_pid": 42894,
+            "legacy_language_pid": 40,
+            "text": "Als je de mail helemaal niet bereikt Controleer de volgende.",
+            "auto_translated": "Als je de mail helemaal niet bereikt Controleer de volgende."
+        },
+        "tl": {
+            "legacy_caption_pid": 42895,
+            "legacy_language_pid": 41,
+            "text": "Kung ang mail ay hindi maabot Mangyaring suriin ang mga sumusunod.",
+            "auto_translated": "Kung ang mail ay hindi maabot Mangyaring suriin ang mga sumusunod."
+        },
+        "ne": {
+            "legacy_caption_pid": 42896,
+            "legacy_language_pid": 42,
+            "text": "यदि मेल पुग्न गर्दैन निम्न जाँच गर्नुहोस्।",
+            "auto_translated": "यदि मेल पुग्न गर्दैन निम्न जाँच गर्नुहोस्।"
+        },
+        "hu": {
+            "legacy_caption_pid": 42897,
+            "legacy_language_pid": 43,
+            "text": "Ha a levél nem éri Kérjük, ellenőrizze a következőket.",
+            "auto_translated": "Ha a levél nem éri Kérjük, ellenőrizze a következőket."
+        },
+        "cs": {
+            "legacy_caption_pid": 42898,
+            "legacy_language_pid": 44,
+            "text": "Pokud poštovní nedosáhne zkontrolujte následující.",
+            "auto_translated": "Pokud poštovní nedosáhne zkontrolujte následující."
+        },
+        "el": {
+            "legacy_caption_pid": 42899,
+            "legacy_language_pid": 45,
+            "text": "Αν το μήνυμα δεν φτάνει Παρακαλούμε ελέγξτε τα ακόλουθα.",
+            "auto_translated": "Αν το μήνυμα δεν φτάνει Παρακαλούμε ελέγξτε τα ακόλουθα."
+        },
+        "sv": {
+            "legacy_caption_pid": 42900,
+            "legacy_language_pid": 46,
+            "text": "Om e-post inte når Kontrollera följande.",
+            "auto_translated": "Om e-post inte når Kontrollera följande."
+        },
+        "kk": {
+            "legacy_caption_pid": 42901,
+            "legacy_language_pid": 47,
+            "text": "пошта жетеді істемесе, мыналарды тексеріңіз сұраймыз.",
+            "auto_translated": "пошта жетеді істемесе, мыналарды тексеріңіз сұраймыз."
+        },
+        "fi": {
+            "legacy_caption_pid": 42902,
+            "legacy_language_pid": 48,
+            "text": "Jos posti ei pääse Tarkista seuraavat.",
+            "auto_translated": "Jos posti ei pääse Tarkista seuraavat."
+        },
+        "da": {
+            "legacy_caption_pid": 42903,
+            "legacy_language_pid": 49,
+            "text": "Hvis posten ikke nå Kontroller følgende.",
+            "auto_translated": "Hvis posten ikke nå Kontroller følgende."
+        },
+        "he": {
+            "legacy_caption_pid": 42904,
+            "legacy_language_pid": 50,
+            "text": "אם הדואר לא מגיע אנא בדוק את הדברים הבאים.",
+            "auto_translated": "אם הדואר לא מגיע אנא בדוק את הדברים הבאים."
+        },
+        "no": {
+            "legacy_caption_pid": 42905,
+            "legacy_language_pid": 51,
+            "text": "Hvis posten ikke når Vennligst sjekk følgende.",
+            "auto_translated": "Hvis posten ikke når Vennligst sjekk følgende."
+        }
+    }
+}

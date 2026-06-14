@@ -1,0 +1,321 @@
+{
+    "resource_key": "MENU_COMPANY",
+    "legacy_resource_pid": 1005,
+    "base_group_key": "grp-028-app-common-lib",
+    "additional_group_keys": [],
+    "key_for_update": "1ohEMZcdHXkAjl1QIzEtf9EMjaKalMsH2lnSSLHVGTqDE7A3jk7yfGlOkKEcbgHQm0hzDnli9RGShLgGtf8P2Z1rUon6wIHUURUe1C69EMvsPBgWFTUIuNQ9qPu3ldpA",
+    "sort_group": "Menu",
+    "key_name": "MENU_COMPANY",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "Label",
+    "is_resource_fixed": false,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 883,
+            "legacy_language_pid": 1,
+            "text": "会社概要",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 884,
+            "legacy_language_pid": 2,
+            "text": "Company",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 6448,
+            "legacy_language_pid": 3,
+            "text": "公司简介",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 6449,
+            "legacy_language_pid": 4,
+            "text": "회사 소개",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 10195,
+            "legacy_language_pid": 5,
+            "text": "Compañia",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 10196,
+            "legacy_language_pid": 6,
+            "text": "companhia",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 10197,
+            "legacy_language_pid": 7,
+            "text": "公司簡介",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 16187,
+            "legacy_language_pid": 8,
+            "text": "Compagnie",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 16188,
+            "legacy_language_pid": 9,
+            "text": "कंपनी",
+            "auto_translated": ""
+        },
+        "ar": {
+            "legacy_caption_pid": 28764,
+            "legacy_language_pid": 10,
+            "text": "لمحة عن الشركة",
+            "auto_translated": "لمحة عن الشركة"
+        },
+        "fa": {
+            "legacy_caption_pid": 28765,
+            "legacy_language_pid": 11,
+            "text": "مشخصات شرکت",
+            "auto_translated": "مشخصات شرکت"
+        },
+        "de": {
+            "legacy_caption_pid": 28766,
+            "legacy_language_pid": 12,
+            "text": "UNTERNEHMENSPROFIL",
+            "auto_translated": "UNTERNEHMENSPROFIL"
+        },
+        "ru": {
+            "legacy_caption_pid": 28767,
+            "legacy_language_pid": 13,
+            "text": "О КОМПАНИИ",
+            "auto_translated": "О КОМПАНИИ"
+        },
+        "ms": {
+            "legacy_caption_pid": 28768,
+            "legacy_language_pid": 14,
+            "text": "PROFIL SYARIKAT",
+            "auto_translated": "PROFIL SYARIKAT"
+        },
+        "ta": {
+            "legacy_caption_pid": 28769,
+            "legacy_language_pid": 15,
+            "text": "எங்களை பற்றி",
+            "auto_translated": "எங்களை பற்றி"
+        },
+        "it": {
+            "legacy_caption_pid": 28770,
+            "legacy_language_pid": 16,
+            "text": "COMPANY PROFILE",
+            "auto_translated": "COMPANY PROFILE"
+        },
+        "bn": {
+            "legacy_caption_pid": 28771,
+            "legacy_language_pid": 17,
+            "text": "কোম্পানি নথিপত্র",
+            "auto_translated": "কোম্পানি নথিপত্র"
+        },
+        "tr": {
+            "legacy_caption_pid": 28772,
+            "legacy_language_pid": 18,
+            "text": "ŞİRKET PROFİLİ",
+            "auto_translated": "ŞİRKET PROFİLİ"
+        },
+        "vi": {
+            "legacy_caption_pid": 28773,
+            "legacy_language_pid": 19,
+            "text": "HỒ SƠ CÔNG TY",
+            "auto_translated": "HỒ SƠ CÔNG TY"
+        },
+        "pl": {
+            "legacy_caption_pid": 28774,
+            "legacy_language_pid": 20,
+            "text": "PROFIL FIRMY",
+            "auto_translated": "PROFIL FIRMY"
+        },
+        "jv": {
+            "legacy_caption_pid": 28775,
+            "legacy_language_pid": 21,
+            "text": "PROFIL COMPANY",
+            "auto_translated": "PROFIL COMPANY"
+        },
+        "pa": {
+            "legacy_caption_pid": 28776,
+            "legacy_language_pid": 22,
+            "text": "ਕੰਪਨੀ ਦਾ",
+            "auto_translated": "ਕੰਪਨੀ ਦਾ"
+        },
+        "th": {
+            "legacy_caption_pid": 28777,
+            "legacy_language_pid": 23,
+            "text": "ประวัติ บริษัท",
+            "auto_translated": "ประวัติ บริษัท"
+        },
+        "te": {
+            "legacy_caption_pid": 34464,
+            "legacy_language_pid": 24,
+            "text": "కంపెనీ ప్రొఫైల్",
+            "auto_translated": "కంపెనీ ప్రొఫైల్"
+        },
+        "mr": {
+            "legacy_caption_pid": 34465,
+            "legacy_language_pid": 25,
+            "text": "कंपनी",
+            "auto_translated": "कंपनी"
+        },
+        "ur": {
+            "legacy_caption_pid": 34466,
+            "legacy_language_pid": 26,
+            "text": "کمپنی پروفائل",
+            "auto_translated": "کمپنی پروفائل"
+        },
+        "gu": {
+            "legacy_caption_pid": 34467,
+            "legacy_language_pid": 27,
+            "text": "COMPANY PROFILE",
+            "auto_translated": "COMPANY PROFILE"
+        },
+        "uk": {
+            "legacy_caption_pid": 34468,
+            "legacy_language_pid": 28,
+            "text": "Про КОМПАНІЮ",
+            "auto_translated": "Про КОМПАНІЮ"
+        },
+        "ml": {
+            "legacy_caption_pid": 34469,
+            "legacy_language_pid": 29,
+            "text": "കമ്പനി പ്രൊഫൈൽ",
+            "auto_translated": "കമ്പനി പ്രൊഫൈൽ"
+        },
+        "kn": {
+            "legacy_caption_pid": 34470,
+            "legacy_language_pid": 30,
+            "text": "ಕಂಪನಿಯ ವಿವರ",
+            "auto_translated": "ಕಂಪನಿಯ ವಿವರ"
+        },
+        "su": {
+            "legacy_caption_pid": 34471,
+            "legacy_language_pid": 31,
+            "text": "profil parusahaan",
+            "auto_translated": "profil parusahaan"
+        },
+        "ku": {
+            "legacy_caption_pid": 34472,
+            "legacy_language_pid": 32,
+            "text": "PROFILE COMPANY",
+            "auto_translated": "PROFILE COMPANY"
+        },
+        "ps": {
+            "legacy_caption_pid": 34473,
+            "legacy_language_pid": 33,
+            "text": "کمپني پيژند پاڼه",
+            "auto_translated": "کمپني پيژند پاڼه"
+        },
+        "ro": {
+            "legacy_caption_pid": 34474,
+            "legacy_language_pid": 34,
+            "text": "PROFIL COMPANIE",
+            "auto_translated": "PROFIL COMPANIE"
+        },
+        "id": {
+            "legacy_caption_pid": 34475,
+            "legacy_language_pid": 35,
+            "text": "PROFIL PERUSAHAAN",
+            "auto_translated": "PROFIL PERUSAHAAN"
+        },
+        "sd": {
+            "legacy_caption_pid": 34476,
+            "legacy_language_pid": 36,
+            "text": "صحبت سلامت",
+            "auto_translated": "صحبت سلامت"
+        },
+        "af": {
+            "legacy_caption_pid": 34477,
+            "legacy_language_pid": 37,
+            "text": "BEDRIJFSPROFIEL",
+            "auto_translated": "BEDRIJFSPROFIEL"
+        },
+        "sw": {
+            "legacy_caption_pid": 34478,
+            "legacy_language_pid": 38,
+            "text": "KAMPUNI PROFILE",
+            "auto_translated": "KAMPUNI PROFILE"
+        },
+        "lo": {
+            "legacy_caption_pid": 34479,
+            "legacy_language_pid": 39,
+            "text": "ຂໍ້ມູນບໍລິສັດ",
+            "auto_translated": "ຂໍ້ມູນບໍລິສັດ"
+        },
+        "nl": {
+            "legacy_caption_pid": 34480,
+            "legacy_language_pid": 40,
+            "text": "BEDRIJFSPROFIEL",
+            "auto_translated": "BEDRIJFSPROFIEL"
+        },
+        "tl": {
+            "legacy_caption_pid": 34481,
+            "legacy_language_pid": 41,
+            "text": "COMPANY PROFILE",
+            "auto_translated": "COMPANY PROFILE"
+        },
+        "ne": {
+            "legacy_caption_pid": 34482,
+            "legacy_language_pid": 42,
+            "text": "कम्पनी प्रोफाइल",
+            "auto_translated": "कम्पनी प्रोफाइल"
+        },
+        "hu": {
+            "legacy_caption_pid": 34483,
+            "legacy_language_pid": 43,
+            "text": "CÉGISMERTETŐ",
+            "auto_translated": "CÉGISMERTETŐ"
+        },
+        "cs": {
+            "legacy_caption_pid": 34484,
+            "legacy_language_pid": 44,
+            "text": "PROFIL SPOLEČNOSTI",
+            "auto_translated": "PROFIL SPOLEČNOSTI"
+        },
+        "el": {
+            "legacy_caption_pid": 34485,
+            "legacy_language_pid": 45,
+            "text": "Η ΕΤΑΙΡΙΑ",
+            "auto_translated": "Η ΕΤΑΙΡΙΑ"
+        },
+        "sv": {
+            "legacy_caption_pid": 34486,
+            "legacy_language_pid": 46,
+            "text": "FÖRETAGSPROFIL",
+            "auto_translated": "FÖRETAGSPROFIL"
+        },
+        "kk": {
+            "legacy_caption_pid": 34487,
+            "legacy_language_pid": 47,
+            "text": "КОМПАНИЯ ТУРАЛЫ",
+            "auto_translated": "КОМПАНИЯ ТУРАЛЫ"
+        },
+        "fi": {
+            "legacy_caption_pid": 34488,
+            "legacy_language_pid": 48,
+            "text": "YRITYSINFO",
+            "auto_translated": "YRITYSINFO"
+        },
+        "da": {
+            "legacy_caption_pid": 34489,
+            "legacy_language_pid": 49,
+            "text": "FIRMAPROFIL",
+            "auto_translated": "FIRMAPROFIL"
+        },
+        "he": {
+            "legacy_caption_pid": 34490,
+            "legacy_language_pid": 50,
+            "text": "פרופיל חברה",
+            "auto_translated": "פרופיל חברה"
+        },
+        "no": {
+            "legacy_caption_pid": 34491,
+            "legacy_language_pid": 51,
+            "text": "Selskapets profil",
+            "auto_translated": "Selskapets profil"
+        }
+    }
+}

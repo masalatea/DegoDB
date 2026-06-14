@@ -1,0 +1,69 @@
+{
+    "resource_key": "HP_FOOTER_ENTRUSTED_DEV_SMALL_FROM_EXCEL",
+    "legacy_resource_pid": 724,
+    "base_group_key": "grp-010-matsuesoft-lib",
+    "additional_group_keys": [],
+    "key_for_update": "1cuQe35PWQaOxIYJB656kDKYGEawpN99edgPvusGHx65RoUFTPHD70mOGY5Y9FG9xT3pGyADWpCBowCcA5GOtxzSid14EKR0ekcGt5V8SxtDbh0p9wcpVySNDJXog96b",
+    "sort_group": "HP FOOTER",
+    "key_name": "HP_FOOTER_ENTRUSTED_DEV_SMALL_FROM_EXCEL",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": true,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 4584,
+            "legacy_language_pid": 1,
+            "text": "エクセル変換＋小規模開発パッケージ",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 4585,
+            "legacy_language_pid": 2,
+            "text": "Package to convert Excel to Application",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 14176,
+            "legacy_language_pid": 3,
+            "text": "",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 14177,
+            "legacy_language_pid": 4,
+            "text": "",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 14178,
+            "legacy_language_pid": 5,
+            "text": "Paquete para convertir Excel a Aplicación",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 14179,
+            "legacy_language_pid": 6,
+            "text": "Pacote para converter Excel para Aplicação",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 14180,
+            "legacy_language_pid": 7,
+            "text": "",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 17111,
+            "legacy_language_pid": 8,
+            "text": "Package pour convertir Excel en application",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 17112,
+            "legacy_language_pid": 9,
+            "text": "एक्सेल को एप्लीकेशन में बदलने के लिए पैकेज",
+            "auto_translated": ""
+        }
+    }
+}

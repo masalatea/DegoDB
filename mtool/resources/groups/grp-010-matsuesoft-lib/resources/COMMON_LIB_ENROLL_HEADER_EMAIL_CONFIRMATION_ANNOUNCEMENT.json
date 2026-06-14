@@ -1,0 +1,321 @@
+{
+    "resource_key": "COMMON_LIB_ENROLL_HEADER_EMAIL_CONFIRMATION_ANNOUNCEMENT",
+    "legacy_resource_pid": 1420,
+    "base_group_key": "grp-010-matsuesoft-lib",
+    "additional_group_keys": [],
+    "key_for_update": "6BWmFi6Z4XRKE284cI4AggtF58lpYk1T6wVGR0yO7yhlh2DnSqOucNyXjI4M4yP06gnOb73OAtrHYvzADuAzUxT9JqjhfIWZX3TEv5sm0tqNSSLlD2JQszFiZc1hEkyB",
+    "sort_group": "ENROLL",
+    "key_name": "COMMON_LIB_ENROLL_HEADER_EMAIL_CONFIRMATION_ANNOUNCEMENT",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": false,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 5954,
+            "legacy_language_pid": 1,
+            "text": "\"@\"で区切って上と同じメールアドレスを入力して下さい。",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 5955,
+            "legacy_language_pid": 2,
+            "text": "Please input same Email address with above.",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 5956,
+            "legacy_language_pid": 3,
+            "text": "请输入以上相同的电子邮件地址。",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 5957,
+            "legacy_language_pid": 4,
+            "text": "위와 동일한 이메일 주소를 입력하십시오.",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 10826,
+            "legacy_language_pid": 5,
+            "text": "Por favor ingrese la misma dirección de correo electrónico con arriba.",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 10827,
+            "legacy_language_pid": 6,
+            "text": "Por favor insira o mesmo endereço de e-mail com o acima.",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 10828,
+            "legacy_language_pid": 7,
+            "text": "請輸入以上相同的電子郵件地址。",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 16989,
+            "legacy_language_pid": 8,
+            "text": "Veuillez entrer la même adresse e-mail ci-dessus.",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 16990,
+            "legacy_language_pid": 9,
+            "text": "उपरोक्त के साथ कृपया उसी ईमेल पते को इनपुट करें",
+            "auto_translated": ""
+        },
+        "ar": {
+            "legacy_caption_pid": 31396,
+            "legacy_language_pid": 10,
+            "text": "\"@\" الرجاء إدخال عنوان البريد الإلكتروني نفسه على النحو الوارد أعلاه، مفصولة.",
+            "auto_translated": "\"@\" الرجاء إدخال عنوان البريد الإلكتروني نفسه على النحو الوارد أعلاه، مفصولة."
+        },
+        "fa": {
+            "legacy_caption_pid": 31397,
+            "legacy_language_pid": 11,
+            "text": "\"@\" لطفا همان آدرس ایمیل به عنوان فوق را وارد کنید، از هم جدا شده توسط.",
+            "auto_translated": "\"@\" لطفا همان آدرس ایمیل به عنوان فوق را وارد کنید، از هم جدا شده توسط."
+        },
+        "de": {
+            "legacy_caption_pid": 31398,
+            "legacy_language_pid": 12,
+            "text": "„@“ Bitte geben Sie die gleiche E-Mail-Adresse wie oben, getrennt durch.",
+            "auto_translated": "„@“ Bitte geben Sie die gleiche E-Mail-Adresse wie oben, getrennt durch."
+        },
+        "ru": {
+            "legacy_caption_pid": 31399,
+            "legacy_language_pid": 13,
+            "text": "«@» Пожалуйста, введите тот же адрес электронной почты, как указано выше, разделенные.",
+            "auto_translated": "«@» Пожалуйста, введите тот же адрес электронной почты, как указано выше, разделенные."
+        },
+        "ms": {
+            "legacy_caption_pid": 31400,
+            "legacy_language_pid": 14,
+            "text": "\"@\" Sila masukkan alamat e-mel yang sama seperti di atas, dipisahkan oleh.",
+            "auto_translated": "\"@\" Sila masukkan alamat e-mel yang sama seperti di atas, dipisahkan oleh."
+        },
+        "ta": {
+            "legacy_caption_pid": 31401,
+            "legacy_language_pid": 15,
+            "text": "\"@\" தயவு செய்து மேலே அதே மின்னஞ்சல் முகவரியை உள்ளிடவும், பிரிக்கப்பட்ட.",
+            "auto_translated": "\"@\" தயவு செய்து மேலே அதே மின்னஞ்சல் முகவரியை உள்ளிடவும், பிரிக்கப்பட்ட."
+        },
+        "it": {
+            "legacy_caption_pid": 31402,
+            "legacy_language_pid": 16,
+            "text": "\"@\" Si prega di inserire lo stesso indirizzo di posta elettronica di cui sopra, separati da.",
+            "auto_translated": "\"@\" Si prega di inserire lo stesso indirizzo di posta elettronica di cui sopra, separati da."
+        },
+        "bn": {
+            "legacy_caption_pid": 31403,
+            "legacy_language_pid": 17,
+            "text": "\"@\" দয়া করে উপরের হিসাবে একই ইমেল ঠিকানা লিখুন, দ্বারা পৃথক।",
+            "auto_translated": "\"@\" দয়া করে উপরের হিসাবে একই ইমেল ঠিকানা লিখুন, দ্বারা পৃথক।"
+        },
+        "tr": {
+            "legacy_caption_pid": 31404,
+            "legacy_language_pid": 18,
+            "text": "Yukarıdaki aynı e-posta adresini giriniz \"@\", ayrılmış.",
+            "auto_translated": "Yukarıdaki aynı e-posta adresini giriniz \"@\", ayrılmış."
+        },
+        "vi": {
+            "legacy_caption_pid": 31405,
+            "legacy_language_pid": 19,
+            "text": "\"@\" Hãy nhập địa chỉ email tương tự như trên, cách nhau bằng.",
+            "auto_translated": "\"@\" Hãy nhập địa chỉ email tương tự như trên, cách nhau bằng."
+        },
+        "pl": {
+            "legacy_caption_pid": 31406,
+            "legacy_language_pid": 20,
+            "text": "„@” Proszę podać ten sam adres email, jak powyżej, oddzielone.",
+            "auto_translated": "„@” Proszę podać ten sam adres email, jak powyżej, oddzielone."
+        },
+        "jv": {
+            "legacy_caption_pid": 31407,
+            "legacy_language_pid": 21,
+            "text": "\"@\" Mangga ketik alamat email sing padha ing ndhuwur, kapisah dening.",
+            "auto_translated": "\"@\" Mangga ketik alamat email sing padha ing ndhuwur, kapisah dening."
+        },
+        "pa": {
+            "legacy_caption_pid": 31408,
+            "legacy_language_pid": 22,
+            "text": "\"@\" ਕਿਰਪਾ ਕਰਕੇ ਉਪਰੋਕਤ ਉਸੇ ਈਮੇਲ ਪਤਾ ਦਾਖਲ, ਨਾਲ ਵੱਖ.",
+            "auto_translated": "\"@\" ਕਿਰਪਾ ਕਰਕੇ ਉਪਰੋਕਤ ਉਸੇ ਈਮੇਲ ਪਤਾ ਦਾਖਲ, ਨਾਲ ਵੱਖ."
+        },
+        "th": {
+            "legacy_caption_pid": 31409,
+            "legacy_language_pid": 23,
+            "text": "\"@\" โปรดป้อนที่อยู่อีเมลเดียวกันกับข้างต้นแยกจากกันโดย",
+            "auto_translated": "\"@\" โปรดป้อนที่อยู่อีเมลเดียวกันกับข้างต้นแยกจากกันโดย"
+        },
+        "te": {
+            "legacy_caption_pid": 39252,
+            "legacy_language_pid": 24,
+            "text": "\"@\" పైన చెప్పిన ఇమెయిల్ చిరునామాను నమోదు చేయండి, వేరు.",
+            "auto_translated": "\"@\" పైన చెప్పిన ఇమెయిల్ చిరునామాను నమోదు చేయండి, వేరు."
+        },
+        "mr": {
+            "legacy_caption_pid": 39253,
+            "legacy_language_pid": 25,
+            "text": "\"@\" समान ईमेल पत्ता प्रविष्ट करा, विभक्त.",
+            "auto_translated": "\"@\" समान ईमेल पत्ता प्रविष्ट करा, विभक्त."
+        },
+        "ur": {
+            "legacy_caption_pid": 39254,
+            "legacy_language_pid": 26,
+            "text": "\"@\" کے طور پر مندرجہ بالا ایک ہی ای میل ایڈریس درج کریں، سے علیحدہ.",
+            "auto_translated": "\"@\" کے طور پر مندرجہ بالا ایک ہی ای میل ایڈریس درج کریں، سے علیحدہ."
+        },
+        "gu": {
+            "legacy_caption_pid": 39255,
+            "legacy_language_pid": 27,
+            "text": "\"@\" કૃપા કરીને ઉપર જ ઇમેઇલ સરનામું દાખલ કરો, દ્વારા અલગ.",
+            "auto_translated": "\"@\" કૃપા કરીને ઉપર જ ઇમેઇલ સરનામું દાખલ કરો, દ્વારા અલગ."
+        },
+        "uk": {
+            "legacy_caption_pid": 39256,
+            "legacy_language_pid": 28,
+            "text": "«@» Будь ласка, введіть ту ж адресу електронної пошти, як зазначено вище, розділені.",
+            "auto_translated": "«@» Будь ласка, введіть ту ж адресу електронної пошти, як зазначено вище, розділені."
+        },
+        "ml": {
+            "legacy_caption_pid": 39257,
+            "legacy_language_pid": 29,
+            "text": "\"@\" ദയവായി അതേ ഇമെയിൽ വിലാസം മുകളിൽ, ഉപയോഗിച്ച് വേർതിരിച്ച് നൽകുക.",
+            "auto_translated": "\"@\" ദയവായി അതേ ഇമെയിൽ വിലാസം മുകളിൽ, ഉപയോഗിച്ച് വേർതിരിച്ച് നൽകുക."
+        },
+        "kn": {
+            "legacy_caption_pid": 39258,
+            "legacy_language_pid": 30,
+            "text": "\"@\" ದಯವಿಟ್ಟು ಮೇಲಿನಂತೆಯೇ ಇಮೇಲ್ ವಿಳಾಸವನ್ನು ನಮೂದಿಸಿ, ಬೇರ್ಪಡಿಸಲಾಗಿರುತ್ತದೆ.",
+            "auto_translated": "\"@\" ದಯವಿಟ್ಟು ಮೇಲಿನಂತೆಯೇ ಇಮೇಲ್ ವಿಳಾಸವನ್ನು ನಮೂದಿಸಿ, ಬೇರ್ಪಡಿಸಲಾಗಿರುತ್ತದೆ."
+        },
+        "su": {
+            "legacy_caption_pid": 39259,
+            "legacy_language_pid": 31,
+            "text": "\"@\" Mangga asupkeun alamat surélék nu sarua jeung di luhur, dipisahkeun ku.",
+            "auto_translated": "\"@\" Mangga asupkeun alamat surélék nu sarua jeung di luhur, dipisahkeun ku."
+        },
+        "ku": {
+            "legacy_caption_pid": 39260,
+            "legacy_language_pid": 32,
+            "text": "\"@\" Ji kerema xwe re email address eynî wek ku li jor binivîse, ji hev veqetîne.",
+            "auto_translated": "\"@\" Ji kerema xwe re email address eynî wek ku li jor binivîse, ji hev veqetîne."
+        },
+        "ps": {
+            "legacy_caption_pid": 39261,
+            "legacy_language_pid": 33,
+            "text": "\"@\" لطفا په همدې ایمیل ادرس په توګه پورته ننوځي، جلا له خوا.",
+            "auto_translated": "\"@\" لطفا په همدې ایمیل ادرس په توګه پورته ننوځي، جلا له خوا."
+        },
+        "ro": {
+            "legacy_caption_pid": 39262,
+            "legacy_language_pid": 34,
+            "text": "„@“ Vă rugăm să introduceți aceeași adresă de e-mail ca mai sus, separate prin.",
+            "auto_translated": "„@“ Vă rugăm să introduceți aceeași adresă de e-mail ca mai sus, separate prin."
+        },
+        "id": {
+            "legacy_caption_pid": 39263,
+            "legacy_language_pid": 35,
+            "text": "\"@\" Silakan masukkan alamat email yang sama seperti di atas, dipisahkan oleh.",
+            "auto_translated": "\"@\" Silakan masukkan alamat email yang sama seperti di atas, dipisahkan oleh."
+        },
+        "sd": {
+            "legacy_caption_pid": 39264,
+            "legacy_language_pid": 36,
+            "text": "\"@\" مهرباني ڪري اهو ساڳيو اي ميل پتو مٿي جي جدا ۾ داخل،.",
+            "auto_translated": "\"@\" مهرباني ڪري اهو ساڳيو اي ميل پتو مٿي جي جدا ۾ داخل،."
+        },
+        "af": {
+            "legacy_caption_pid": 39265,
+            "legacy_language_pid": 37,
+            "text": "\"@\" Voer dieselfde e-posadres soos hierbo, geskei deur.",
+            "auto_translated": "\"@\" Voer dieselfde e-posadres soos hierbo, geskei deur."
+        },
+        "sw": {
+            "legacy_caption_pid": 39266,
+            "legacy_language_pid": 38,
+            "text": "\"@\" Tafadhali ingiza anwani ya barua pepe hiyo hapo juu, kutengwa kwa.",
+            "auto_translated": "\"@\" Tafadhali ingiza anwani ya barua pepe hiyo hapo juu, kutengwa kwa."
+        },
+        "lo": {
+            "legacy_caption_pid": 39267,
+            "legacy_language_pid": 39,
+            "text": "\"@\" ກະລຸນາໃສ່ທີ່ຢູ່ອີເມລ໌ເຊັ່ນດຽວກັນກັບຂ້າງເທິງນີ້, ແຍກອອກໂດຍ.",
+            "auto_translated": "\"@\" ກະລຸນາໃສ່ທີ່ຢູ່ອີເມລ໌ເຊັ່ນດຽວກັນກັບຂ້າງເທິງນີ້, ແຍກອອກໂດຍ."
+        },
+        "nl": {
+            "legacy_caption_pid": 39268,
+            "legacy_language_pid": 40,
+            "text": "\"@\" Voer hetzelfde e-mailadres als hierboven, gescheiden door.",
+            "auto_translated": "\"@\" Voer hetzelfde e-mailadres als hierboven, gescheiden door."
+        },
+        "tl": {
+            "legacy_caption_pid": 39269,
+            "legacy_language_pid": 41,
+            "text": "\"@\" Mangyaring ipasok ang parehong email address tulad ng nasa itaas, na pinaghihiwalay ng.",
+            "auto_translated": "\"@\" Mangyaring ipasok ang parehong email address tulad ng nasa itaas, na pinaghihiwalay ng."
+        },
+        "ne": {
+            "legacy_caption_pid": 39270,
+            "legacy_language_pid": 42,
+            "text": "\"@\" कृपया माथिको नै इमेल ठेगाना प्रविष्ट गर्नुहोस्, अलग।",
+            "auto_translated": "\"@\" कृपया माथिको नै इमेल ठेगाना प्रविष्ट गर्नुहोस्, अलग।"
+        },
+        "hu": {
+            "legacy_caption_pid": 39271,
+            "legacy_language_pid": 43,
+            "text": "„@” Kérem adja meg azt a címet, mint fent, elválasztva.",
+            "auto_translated": "„@” Kérem adja meg azt a címet, mint fent, elválasztva."
+        },
+        "cs": {
+            "legacy_caption_pid": 39272,
+            "legacy_language_pid": 44,
+            "text": "„@“ Zadejte stejnou e-mailovou adresu, jak je uvedeno výše, které jsou odděleny.",
+            "auto_translated": "„@“ Zadejte stejnou e-mailovou adresu, jak je uvedeno výše, které jsou odděleny."
+        },
+        "el": {
+            "legacy_caption_pid": 39273,
+            "legacy_language_pid": 45,
+            "text": "«@» Παρακαλώ εισάγετε την ίδια διεύθυνση ηλεκτρονικού ταχυδρομείου ως ανωτέρω, που χωρίζονται από.",
+            "auto_translated": "«@» Παρακαλώ εισάγετε την ίδια διεύθυνση ηλεκτρονικού ταχυδρομείου ως ανωτέρω, που χωρίζονται από."
+        },
+        "sv": {
+            "legacy_caption_pid": 39274,
+            "legacy_language_pid": 46,
+            "text": "\"@\" Ange samma e-postadress som ovan, separerade med.",
+            "auto_translated": "\"@\" Ange samma e-postadress som ovan, separerade med."
+        },
+        "kk": {
+            "legacy_caption_pid": 39275,
+            "legacy_language_pid": 47,
+            "text": "«@» Бөлінген, сондай-ақ жоғарыда аталған сол электрондық пошта мекенжайын енгізіңіз.",
+            "auto_translated": "«@» Бөлінген, сондай-ақ жоғарыда аталған сол электрондық пошта мекенжайын енгізіңіз."
+        },
+        "fi": {
+            "legacy_caption_pid": 39276,
+            "legacy_language_pid": 48,
+            "text": "\"@\" Anna sama sähköpostiosoite kuin edellä, erotettu.",
+            "auto_translated": "\"@\" Anna sama sähköpostiosoite kuin edellä, erotettu."
+        },
+        "da": {
+            "legacy_caption_pid": 39277,
+            "legacy_language_pid": 49,
+            "text": "\"@\" Indtast den samme e-mailadresse som ovenfor, adskilt af.",
+            "auto_translated": "\"@\" Indtast den samme e-mailadresse som ovenfor, adskilt af."
+        },
+        "he": {
+            "legacy_caption_pid": 39278,
+            "legacy_language_pid": 50,
+            "text": "\"@\" נא להזין אותה כתובת דוא\"ל כאמור, מופרדות.",
+            "auto_translated": "\"@\" נא להזין אותה כתובת דוא\"ל כאמור, מופרדות."
+        },
+        "no": {
+            "legacy_caption_pid": 39279,
+            "legacy_language_pid": 51,
+            "text": "\"@\" Skriv også e-postadressen som ovenfor, adskilt med.",
+            "auto_translated": "\"@\" Skriv også e-postadressen som ovenfor, adskilt med."
+        }
+    }
+}

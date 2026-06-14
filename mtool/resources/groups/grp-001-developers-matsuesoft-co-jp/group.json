@@ -1,0 +1,41 @@
+{
+    "group_key": "grp-001-developers-matsuesoft-co-jp",
+    "legacy_group_pid": 1,
+    "name": "developers.matsuesoft.co.jp",
+    "function_name_prefix": "",
+    "function_name_suffix": "",
+    "filename_suffix_for_php": "",
+    "filename_suffix": "",
+    "filename_for_xcode": "",
+    "last_modified_dt": "2017-06-26 08:27:01",
+    "locales": [
+        "ja",
+        "en"
+    ],
+    "language_bindings": [
+        {
+            "legacy_group_language_pid": 10,
+            "legacy_language_pid": 1,
+            "locale": "ja"
+        },
+        {
+            "legacy_group_language_pid": 11,
+            "legacy_language_pid": 2,
+            "locale": "en"
+        }
+    ],
+    "source_output_keys": [
+        "LANGRES-PHP-DEV-LIB"
+    ],
+    "source_outputs": [
+        {
+            "legacy_group_source_output_pid": 6,
+            "legacy_project_source_output_pid": 265,
+            "source_output_key": "LANGRES-PHP-DEV-LIB",
+            "name": "Mtool Language Resource PHP Dev Lib",
+            "program_language": "php",
+            "source_template_dir": "mtool/reference/legacy-source-snapshots/mtool/language-resource/LANGRES-PHP-DEV-LIB"
+        }
+    ],
+    "resource_count": 533
+}

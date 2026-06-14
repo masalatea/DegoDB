@@ -1,0 +1,69 @@
+{
+    "resource_key": "TITLE_TOP-647",
+    "legacy_resource_pid": 647,
+    "base_group_key": "grp-010-matsuesoft-lib",
+    "additional_group_keys": [],
+    "key_for_update": "irxKK3dcm7opJkqblIPAHoWHGS3e3TbHrsurBdz4QuWjlZV8bTgliZJBsTYsa1i8cH3MKRjG0Rr71pvkdKWVKS2W4NOxb03uNtdAD2SCcOE89agtvjzkT4Oxgt255utQ",
+    "sort_group": "TITLE",
+    "key_name": "TITLE_TOP",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": true,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 4758,
+            "legacy_language_pid": 1,
+            "text": "$DOMAINNAMECAPTION_JP - Web/iOS/Android/Windowsアプリケーション/クラウドの開発・運用",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 4759,
+            "legacy_language_pid": 2,
+            "text": "$DOMAINNAMECAPTION_EN - Web/iOS/Android/Windows Application/Cloud Development and Management",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 15448,
+            "legacy_language_pid": 3,
+            "text": "",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 15449,
+            "legacy_language_pid": 4,
+            "text": "",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 15450,
+            "legacy_language_pid": 5,
+            "text": "$DOMAINNAMECAPTION_EN",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 15451,
+            "legacy_language_pid": 6,
+            "text": "$DOMAINNAMECAPTION_PT",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 15452,
+            "legacy_language_pid": 7,
+            "text": "",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 17413,
+            "legacy_language_pid": 8,
+            "text": "$DOMAINNAMECAPTION_FR",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 17414,
+            "legacy_language_pid": 9,
+            "text": "$DOMAINNAMECAPTION_HI",
+            "auto_translated": ""
+        }
+    }
+}

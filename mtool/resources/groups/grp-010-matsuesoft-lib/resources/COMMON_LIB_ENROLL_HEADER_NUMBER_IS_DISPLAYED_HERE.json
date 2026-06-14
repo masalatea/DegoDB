@@ -1,0 +1,321 @@
+{
+    "resource_key": "COMMON_LIB_ENROLL_HEADER_NUMBER_IS_DISPLAYED_HERE",
+    "legacy_resource_pid": 1408,
+    "base_group_key": "grp-010-matsuesoft-lib",
+    "additional_group_keys": [],
+    "key_for_update": "4cLhP79UPe3TNmEcWyQPX8OBjUynLLhrKl980b2V4Uup7qD4JD82PPW6AFerLbwSXbjtC68haTRAvll9gJ0QvdiPMB5LZ9Vvb81eoD2jHEBQKMh7F9sXOKj4khXPIFMw",
+    "sort_group": "ENROLL",
+    "key_name": "COMMON_LIB_ENROLL_HEADER_NUMBER_IS_DISPLAYED_HERE",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": false,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 5906,
+            "legacy_language_pid": 1,
+            "text": "←こちらに表示されます。",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 5907,
+            "legacy_language_pid": 2,
+            "text": "← It will be displayed here.",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 5908,
+            "legacy_language_pid": 3,
+            "text": "←将在这里显示。",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 5909,
+            "legacy_language_pid": 4,
+            "text": "← 여기에 표시됩니다.",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 12310,
+            "legacy_language_pid": 5,
+            "text": "← Se mostrará aquí.",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 12311,
+            "legacy_language_pid": 6,
+            "text": "← Ele será exibido aqui.",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 12312,
+            "legacy_language_pid": 7,
+            "text": "← 將在此顯示。",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 17009,
+            "legacy_language_pid": 8,
+            "text": "← Il sera affiché ici.",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 17010,
+            "legacy_language_pid": 9,
+            "text": "← यह यहां प्रदर्शित किया जाएगा",
+            "auto_translated": ""
+        },
+        "ar": {
+            "legacy_caption_pid": 31578,
+            "legacy_language_pid": 10,
+            "text": "← سيتم عرضها هنا.",
+            "auto_translated": "← سيتم عرضها هنا."
+        },
+        "fa": {
+            "legacy_caption_pid": 31579,
+            "legacy_language_pid": 11,
+            "text": "← خواهد شد در اینجا نمایش داده شود.",
+            "auto_translated": "← خواهد شد در اینجا نمایش داده شود."
+        },
+        "de": {
+            "legacy_caption_pid": 31580,
+            "legacy_language_pid": 12,
+            "text": "← wird hier angezeigt.",
+            "auto_translated": "← wird hier angezeigt."
+        },
+        "ru": {
+            "legacy_caption_pid": 31581,
+            "legacy_language_pid": 13,
+            "text": "← будет отображаться здесь.",
+            "auto_translated": "← будет отображаться здесь."
+        },
+        "ms": {
+            "legacy_caption_pid": 31582,
+            "legacy_language_pid": 14,
+            "text": "← akan dipaparkan di sini.",
+            "auto_translated": "← akan dipaparkan di sini."
+        },
+        "ta": {
+            "legacy_caption_pid": 31583,
+            "legacy_language_pid": 15,
+            "text": "← இங்கே காட்டப்படும்.",
+            "auto_translated": "← இங்கே காட்டப்படும்."
+        },
+        "it": {
+            "legacy_caption_pid": 31584,
+            "legacy_language_pid": 16,
+            "text": "← sarà visualizzata qui.",
+            "auto_translated": "← sarà visualizzata qui."
+        },
+        "bn": {
+            "legacy_caption_pid": 31585,
+            "legacy_language_pid": 17,
+            "text": "← এখানে প্রদর্শিত হবে।",
+            "auto_translated": "← এখানে প্রদর্শিত হবে।"
+        },
+        "tr": {
+            "legacy_caption_pid": 31586,
+            "legacy_language_pid": 18,
+            "text": "← burada görüntülenir.",
+            "auto_translated": "← burada görüntülenir."
+        },
+        "vi": {
+            "legacy_caption_pid": 31587,
+            "legacy_language_pid": 19,
+            "text": "← sẽ được hiển thị ở đây.",
+            "auto_translated": "← sẽ được hiển thị ở đây."
+        },
+        "pl": {
+            "legacy_caption_pid": 31588,
+            "legacy_language_pid": 20,
+            "text": "← będą tutaj wyświetlane.",
+            "auto_translated": "← będą tutaj wyświetlane."
+        },
+        "jv": {
+            "legacy_caption_pid": 31589,
+            "legacy_language_pid": 21,
+            "text": "← bakal katampil kene.",
+            "auto_translated": "← bakal katampil kene."
+        },
+        "pa": {
+            "legacy_caption_pid": 31590,
+            "legacy_language_pid": 22,
+            "text": "← ਇੱਥੇ ਪ੍ਰਦਰਸ਼ਿਤ ਕੀਤਾ ਜਾਵੇਗਾ.",
+            "auto_translated": "← ਇੱਥੇ ਪ੍ਰਦਰਸ਼ਿਤ ਕੀਤਾ ਜਾਵੇਗਾ."
+        },
+        "th": {
+            "legacy_caption_pid": 31591,
+            "legacy_language_pid": 23,
+            "text": "←จะปรากฏที่นี่",
+            "auto_translated": "←จะปรากฏที่นี่"
+        },
+        "te": {
+            "legacy_caption_pid": 38916,
+            "legacy_language_pid": 24,
+            "text": "← ఇక్కడ ప్రదర్శించబడుతుంది.",
+            "auto_translated": "← ఇక్కడ ప్రదర్శించబడుతుంది."
+        },
+        "mr": {
+            "legacy_caption_pid": 38917,
+            "legacy_language_pid": 25,
+            "text": "← येथे प्रदर्शित केले जाईल.",
+            "auto_translated": "← येथे प्रदर्शित केले जाईल."
+        },
+        "ur": {
+            "legacy_caption_pid": 38918,
+            "legacy_language_pid": 26,
+            "text": "← یہاں دکھایا جائے گا.",
+            "auto_translated": "← یہاں دکھایا جائے گا."
+        },
+        "gu": {
+            "legacy_caption_pid": 38919,
+            "legacy_language_pid": 27,
+            "text": "← અહીં દર્શાવવામાં આવશે.",
+            "auto_translated": "← અહીં દર્શાવવામાં આવશે."
+        },
+        "uk": {
+            "legacy_caption_pid": 38920,
+            "legacy_language_pid": 28,
+            "text": "← буде відображатися тут.",
+            "auto_translated": "← буде відображатися тут."
+        },
+        "ml": {
+            "legacy_caption_pid": 38921,
+            "legacy_language_pid": 29,
+            "text": "← ഇവിടെ പ്രദർശിപ്പിക്കും.",
+            "auto_translated": "← ഇവിടെ പ്രദർശിപ്പിക്കും."
+        },
+        "kn": {
+            "legacy_caption_pid": 38922,
+            "legacy_language_pid": 30,
+            "text": "← ಅನ್ನು ಪ್ರದರ್ಶಿಸಲಾಗುತ್ತದೆ.",
+            "auto_translated": "← ಅನ್ನು ಪ್ರದರ್ಶಿಸಲಾಗುತ್ತದೆ."
+        },
+        "su": {
+            "legacy_caption_pid": 38923,
+            "legacy_language_pid": 31,
+            "text": "← bakal dipintonkeun di dieu.",
+            "auto_translated": "← bakal dipintonkeun di dieu."
+        },
+        "ku": {
+            "legacy_caption_pid": 38924,
+            "legacy_language_pid": 32,
+            "text": "←, wê bê li vir nîşan dan.",
+            "auto_translated": "←, wê bê li vir nîşan dan."
+        },
+        "ps": {
+            "legacy_caption_pid": 38925,
+            "legacy_language_pid": 33,
+            "text": "← به دلته نندارې ته شي.",
+            "auto_translated": "← به دلته نندارې ته شي."
+        },
+        "ro": {
+            "legacy_caption_pid": 38926,
+            "legacy_language_pid": 34,
+            "text": "← va fi afișată aici.",
+            "auto_translated": "← va fi afișată aici."
+        },
+        "id": {
+            "legacy_caption_pid": 38927,
+            "legacy_language_pid": 35,
+            "text": "← akan ditampilkan di sini.",
+            "auto_translated": "← akan ditampilkan di sini."
+        },
+        "sd": {
+            "legacy_caption_pid": 38928,
+            "legacy_language_pid": 36,
+            "text": "← هتي ڏيکاري ويندي.",
+            "auto_translated": "← هتي ڏيکاري ويندي."
+        },
+        "af": {
+            "legacy_caption_pid": 38929,
+            "legacy_language_pid": 37,
+            "text": "← sal hier vertoon word.",
+            "auto_translated": "← sal hier vertoon word."
+        },
+        "sw": {
+            "legacy_caption_pid": 38930,
+            "legacy_language_pid": 38,
+            "text": "← itaonyeshwa hapa.",
+            "auto_translated": "← itaonyeshwa hapa."
+        },
+        "lo": {
+            "legacy_caption_pid": 38931,
+            "legacy_language_pid": 39,
+            "text": "←ຈະໄດ້ຮັບການສະແດງຢູ່ທີ່ນີ້.",
+            "auto_translated": "←ຈະໄດ້ຮັບການສະແດງຢູ່ທີ່ນີ້."
+        },
+        "nl": {
+            "legacy_caption_pid": 38932,
+            "legacy_language_pid": 40,
+            "text": "← worden hier getoond.",
+            "auto_translated": "← worden hier getoond."
+        },
+        "tl": {
+            "legacy_caption_pid": 38933,
+            "legacy_language_pid": 41,
+            "text": "← ay ipapakita dito.",
+            "auto_translated": "← ay ipapakita dito."
+        },
+        "ne": {
+            "legacy_caption_pid": 38934,
+            "legacy_language_pid": 42,
+            "text": "← यहाँ प्रदर्शित हुनेछ।",
+            "auto_translated": "← यहाँ प्रदर्शित हुनेछ।"
+        },
+        "hu": {
+            "legacy_caption_pid": 38935,
+            "legacy_language_pid": 43,
+            "text": "← itt fog megjelenni.",
+            "auto_translated": "← itt fog megjelenni."
+        },
+        "cs": {
+            "legacy_caption_pid": 38936,
+            "legacy_language_pid": 44,
+            "text": "← zde budou zobrazeny.",
+            "auto_translated": "← zde budou zobrazeny."
+        },
+        "el": {
+            "legacy_caption_pid": 38937,
+            "legacy_language_pid": 45,
+            "text": "← θα εμφανιστεί εδώ.",
+            "auto_translated": "← θα εμφανιστεί εδώ."
+        },
+        "sv": {
+            "legacy_caption_pid": 38938,
+            "legacy_language_pid": 46,
+            "text": "← visas här.",
+            "auto_translated": "← visas här."
+        },
+        "kk": {
+            "legacy_caption_pid": 38939,
+            "legacy_language_pid": 47,
+            "text": "← мұнда көрсетіледі.",
+            "auto_translated": "← мұнда көрсетіледі."
+        },
+        "fi": {
+            "legacy_caption_pid": 38940,
+            "legacy_language_pid": 48,
+            "text": "← näytetään tässä.",
+            "auto_translated": "← näytetään tässä."
+        },
+        "da": {
+            "legacy_caption_pid": 38941,
+            "legacy_language_pid": 49,
+            "text": "← vil blive vist her.",
+            "auto_translated": "← vil blive vist her."
+        },
+        "he": {
+            "legacy_caption_pid": 38942,
+            "legacy_language_pid": 50,
+            "text": "← יוצג כאן.",
+            "auto_translated": "← יוצג כאן."
+        },
+        "no": {
+            "legacy_caption_pid": 38943,
+            "legacy_language_pid": 51,
+            "text": "← vil bli vist her.",
+            "auto_translated": "← vil bli vist her."
+        }
+    }
+}

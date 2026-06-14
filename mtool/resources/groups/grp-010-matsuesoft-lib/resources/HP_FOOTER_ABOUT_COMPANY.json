@@ -1,0 +1,321 @@
+{
+    "resource_key": "HP_FOOTER_ABOUT_COMPANY",
+    "legacy_resource_pid": 682,
+    "base_group_key": "grp-010-matsuesoft-lib",
+    "additional_group_keys": [],
+    "key_for_update": "nPMl0dgNMGWGp8sQOJqq8F40WPn0M6rnDE9fpBZU2oNgnYcfng7DHX7cpU7xfOV9bsTtvopdIay6YDYH8AlcMhD6MCchQKy8qQI5h31bEjOHhsqgkD16LTpOHsLgpNef",
+    "sort_group": "HP FOOTER",
+    "key_name": "HP_FOOTER_ABOUT_COMPANY",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": false,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 4540,
+            "legacy_language_pid": 1,
+            "text": "マツエソフトについて",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 4541,
+            "legacy_language_pid": 2,
+            "text": "About Matsuesoft",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 13362,
+            "legacy_language_pid": 3,
+            "text": "",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 13363,
+            "legacy_language_pid": 4,
+            "text": "",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 13364,
+            "legacy_language_pid": 5,
+            "text": "Acerca de Matsuesoft",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 13365,
+            "legacy_language_pid": 6,
+            "text": "Sobre Matsuesoft",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 13366,
+            "legacy_language_pid": 7,
+            "text": "",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 17067,
+            "legacy_language_pid": 8,
+            "text": "À propos de Matsuesoft",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 17068,
+            "legacy_language_pid": 9,
+            "text": "Matsuesoft के बारे में",
+            "auto_translated": ""
+        },
+        "ar": {
+            "legacy_caption_pid": 48321,
+            "legacy_language_pid": 10,
+            "text": "",
+            "auto_translated": ""
+        },
+        "fa": {
+            "legacy_caption_pid": 48322,
+            "legacy_language_pid": 11,
+            "text": "",
+            "auto_translated": ""
+        },
+        "de": {
+            "legacy_caption_pid": 48323,
+            "legacy_language_pid": 12,
+            "text": "",
+            "auto_translated": ""
+        },
+        "ru": {
+            "legacy_caption_pid": 48324,
+            "legacy_language_pid": 13,
+            "text": "",
+            "auto_translated": ""
+        },
+        "ms": {
+            "legacy_caption_pid": 48325,
+            "legacy_language_pid": 14,
+            "text": "",
+            "auto_translated": ""
+        },
+        "ta": {
+            "legacy_caption_pid": 48326,
+            "legacy_language_pid": 15,
+            "text": "",
+            "auto_translated": ""
+        },
+        "it": {
+            "legacy_caption_pid": 48327,
+            "legacy_language_pid": 16,
+            "text": "",
+            "auto_translated": ""
+        },
+        "bn": {
+            "legacy_caption_pid": 48328,
+            "legacy_language_pid": 17,
+            "text": "",
+            "auto_translated": ""
+        },
+        "tr": {
+            "legacy_caption_pid": 48329,
+            "legacy_language_pid": 18,
+            "text": "",
+            "auto_translated": ""
+        },
+        "vi": {
+            "legacy_caption_pid": 48330,
+            "legacy_language_pid": 19,
+            "text": "",
+            "auto_translated": ""
+        },
+        "pl": {
+            "legacy_caption_pid": 48331,
+            "legacy_language_pid": 20,
+            "text": "",
+            "auto_translated": ""
+        },
+        "jv": {
+            "legacy_caption_pid": 48332,
+            "legacy_language_pid": 21,
+            "text": "",
+            "auto_translated": ""
+        },
+        "pa": {
+            "legacy_caption_pid": 48333,
+            "legacy_language_pid": 22,
+            "text": "",
+            "auto_translated": ""
+        },
+        "th": {
+            "legacy_caption_pid": 48334,
+            "legacy_language_pid": 23,
+            "text": "",
+            "auto_translated": ""
+        },
+        "te": {
+            "legacy_caption_pid": 48335,
+            "legacy_language_pid": 24,
+            "text": "",
+            "auto_translated": ""
+        },
+        "mr": {
+            "legacy_caption_pid": 48336,
+            "legacy_language_pid": 25,
+            "text": "",
+            "auto_translated": ""
+        },
+        "ur": {
+            "legacy_caption_pid": 48337,
+            "legacy_language_pid": 26,
+            "text": "",
+            "auto_translated": ""
+        },
+        "gu": {
+            "legacy_caption_pid": 48338,
+            "legacy_language_pid": 27,
+            "text": "",
+            "auto_translated": ""
+        },
+        "uk": {
+            "legacy_caption_pid": 48339,
+            "legacy_language_pid": 28,
+            "text": "",
+            "auto_translated": ""
+        },
+        "ml": {
+            "legacy_caption_pid": 48340,
+            "legacy_language_pid": 29,
+            "text": "",
+            "auto_translated": ""
+        },
+        "kn": {
+            "legacy_caption_pid": 48341,
+            "legacy_language_pid": 30,
+            "text": "",
+            "auto_translated": ""
+        },
+        "su": {
+            "legacy_caption_pid": 48342,
+            "legacy_language_pid": 31,
+            "text": "",
+            "auto_translated": ""
+        },
+        "ku": {
+            "legacy_caption_pid": 48343,
+            "legacy_language_pid": 32,
+            "text": "",
+            "auto_translated": ""
+        },
+        "ps": {
+            "legacy_caption_pid": 48344,
+            "legacy_language_pid": 33,
+            "text": "",
+            "auto_translated": ""
+        },
+        "ro": {
+            "legacy_caption_pid": 48345,
+            "legacy_language_pid": 34,
+            "text": "",
+            "auto_translated": ""
+        },
+        "id": {
+            "legacy_caption_pid": 48346,
+            "legacy_language_pid": 35,
+            "text": "",
+            "auto_translated": ""
+        },
+        "sd": {
+            "legacy_caption_pid": 48347,
+            "legacy_language_pid": 36,
+            "text": "",
+            "auto_translated": ""
+        },
+        "af": {
+            "legacy_caption_pid": 48348,
+            "legacy_language_pid": 37,
+            "text": "",
+            "auto_translated": ""
+        },
+        "sw": {
+            "legacy_caption_pid": 48349,
+            "legacy_language_pid": 38,
+            "text": "",
+            "auto_translated": ""
+        },
+        "lo": {
+            "legacy_caption_pid": 48350,
+            "legacy_language_pid": 39,
+            "text": "",
+            "auto_translated": ""
+        },
+        "nl": {
+            "legacy_caption_pid": 48351,
+            "legacy_language_pid": 40,
+            "text": "",
+            "auto_translated": ""
+        },
+        "tl": {
+            "legacy_caption_pid": 48352,
+            "legacy_language_pid": 41,
+            "text": "",
+            "auto_translated": ""
+        },
+        "ne": {
+            "legacy_caption_pid": 48353,
+            "legacy_language_pid": 42,
+            "text": "",
+            "auto_translated": ""
+        },
+        "hu": {
+            "legacy_caption_pid": 48354,
+            "legacy_language_pid": 43,
+            "text": "",
+            "auto_translated": ""
+        },
+        "cs": {
+            "legacy_caption_pid": 48355,
+            "legacy_language_pid": 44,
+            "text": "",
+            "auto_translated": ""
+        },
+        "el": {
+            "legacy_caption_pid": 48356,
+            "legacy_language_pid": 45,
+            "text": "",
+            "auto_translated": ""
+        },
+        "sv": {
+            "legacy_caption_pid": 48357,
+            "legacy_language_pid": 46,
+            "text": "",
+            "auto_translated": ""
+        },
+        "kk": {
+            "legacy_caption_pid": 48358,
+            "legacy_language_pid": 47,
+            "text": "",
+            "auto_translated": ""
+        },
+        "fi": {
+            "legacy_caption_pid": 48359,
+            "legacy_language_pid": 48,
+            "text": "",
+            "auto_translated": ""
+        },
+        "da": {
+            "legacy_caption_pid": 48360,
+            "legacy_language_pid": 49,
+            "text": "",
+            "auto_translated": ""
+        },
+        "he": {
+            "legacy_caption_pid": 48361,
+            "legacy_language_pid": 50,
+            "text": "",
+            "auto_translated": ""
+        },
+        "no": {
+            "legacy_caption_pid": 48362,
+            "legacy_language_pid": 51,
+            "text": "",
+            "auto_translated": ""
+        }
+    }
+}

@@ -1,0 +1,321 @@
+{
+    "resource_key": "EMAIL_COMMON_SEND_TEST_TARGET_EMAIL_ADDRESS_HEADER",
+    "legacy_resource_pid": 2579,
+    "base_group_key": "grp-005-common-lib",
+    "additional_group_keys": [],
+    "key_for_update": "783AEDx8P4xEsWfLbEYwHnbeoCLrcTI1zFpEcGQvWso3YfqCpgG5mTtJSjZRLTYzsIKV60ubTUXQ2NUXx2WXBEeyd73NmvDP3kollQYlmKHvAats3u01AFke4SIISn9K",
+    "sort_group": "EMAIL SEND TEST",
+    "key_name": "EMAIL_COMMON_SEND_TEST_TARGET_EMAIL_ADDRESS_HEADER",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": false,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 19448,
+            "legacy_language_pid": 1,
+            "text": "送信アドレス",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 19449,
+            "legacy_language_pid": 2,
+            "text": "Transmission address",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 19450,
+            "legacy_language_pid": 3,
+            "text": "传输地址",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 19451,
+            "legacy_language_pid": 4,
+            "text": "전송 주소",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 19452,
+            "legacy_language_pid": 5,
+            "text": "Dirección de transmisión",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 19453,
+            "legacy_language_pid": 6,
+            "text": "Endereço de transmissão",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 19454,
+            "legacy_language_pid": 7,
+            "text": "傳輸地址",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 19455,
+            "legacy_language_pid": 8,
+            "text": "Adresse de transmission",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 19456,
+            "legacy_language_pid": 9,
+            "text": "ट्रांसमिशन पता",
+            "auto_translated": ""
+        },
+        "ar": {
+            "legacy_caption_pid": 29604,
+            "legacy_language_pid": 10,
+            "text": "إرسال عنوان",
+            "auto_translated": "إرسال عنوان"
+        },
+        "fa": {
+            "legacy_caption_pid": 29605,
+            "legacy_language_pid": 11,
+            "text": "ارسال آدرس",
+            "auto_translated": "ارسال آدرس"
+        },
+        "de": {
+            "legacy_caption_pid": 29606,
+            "legacy_language_pid": 12,
+            "text": "Senden Adresse",
+            "auto_translated": "Senden Adresse"
+        },
+        "ru": {
+            "legacy_caption_pid": 29607,
+            "legacy_language_pid": 13,
+            "text": "Отправить адрес",
+            "auto_translated": "Отправить адрес"
+        },
+        "ms": {
+            "legacy_caption_pid": 29608,
+            "legacy_language_pid": 14,
+            "text": "hantar alamat",
+            "auto_translated": "hantar alamat"
+        },
+        "ta": {
+            "legacy_caption_pid": 29609,
+            "legacy_language_pid": 15,
+            "text": "முகவரியைச் சமர்ப்பிக்கவும்",
+            "auto_translated": "முகவரியைச் சமர்ப்பிக்கவும்"
+        },
+        "it": {
+            "legacy_caption_pid": 29610,
+            "legacy_language_pid": 16,
+            "text": "Invia indirizzo",
+            "auto_translated": "Invia indirizzo"
+        },
+        "bn": {
+            "legacy_caption_pid": 29611,
+            "legacy_language_pid": 17,
+            "text": "ঠিকানা জমা দিন",
+            "auto_translated": "ঠিকানা জমা দিন"
+        },
+        "tr": {
+            "legacy_caption_pid": 29612,
+            "legacy_language_pid": 18,
+            "text": "adresini gönderin",
+            "auto_translated": "adresini gönderin"
+        },
+        "vi": {
+            "legacy_caption_pid": 29613,
+            "legacy_language_pid": 19,
+            "text": "Gửi địa chỉ",
+            "auto_translated": "Gửi địa chỉ"
+        },
+        "pl": {
+            "legacy_caption_pid": 29614,
+            "legacy_language_pid": 20,
+            "text": "Prześlij adres",
+            "auto_translated": "Prześlij adres"
+        },
+        "jv": {
+            "legacy_caption_pid": 29615,
+            "legacy_language_pid": 21,
+            "text": "Kirim alamat",
+            "auto_translated": "Kirim alamat"
+        },
+        "pa": {
+            "legacy_caption_pid": 29616,
+            "legacy_language_pid": 22,
+            "text": "ਦਾ ਪਤਾ ਦਰਜ ਕਰੋ",
+            "auto_translated": "ਦਾ ਪਤਾ ਦਰਜ ਕਰੋ"
+        },
+        "th": {
+            "legacy_caption_pid": 29617,
+            "legacy_language_pid": 23,
+            "text": "ส่งที่อยู่",
+            "auto_translated": "ส่งที่อยู่"
+        },
+        "te": {
+            "legacy_caption_pid": 37236,
+            "legacy_language_pid": 24,
+            "text": "చిరునామా సమర్పించండి",
+            "auto_translated": "చిరునామా సమర్పించండి"
+        },
+        "mr": {
+            "legacy_caption_pid": 37237,
+            "legacy_language_pid": 25,
+            "text": "पत्ता सबमिट",
+            "auto_translated": "पत्ता सबमिट"
+        },
+        "ur": {
+            "legacy_caption_pid": 37238,
+            "legacy_language_pid": 26,
+            "text": "ایڈریس جمع",
+            "auto_translated": "ایڈریس جمع"
+        },
+        "gu": {
+            "legacy_caption_pid": 37239,
+            "legacy_language_pid": 27,
+            "text": "સરનામું સબમિટ",
+            "auto_translated": "સરનામું સબમિટ"
+        },
+        "uk": {
+            "legacy_caption_pid": 37240,
+            "legacy_language_pid": 28,
+            "text": "Надіслати розташування",
+            "auto_translated": "Надіслати розташування"
+        },
+        "ml": {
+            "legacy_caption_pid": 37241,
+            "legacy_language_pid": 29,
+            "text": "വിലാസം സമർപ്പിക്കുക",
+            "auto_translated": "വിലാസം സമർപ്പിക്കുക"
+        },
+        "kn": {
+            "legacy_caption_pid": 37242,
+            "legacy_language_pid": 30,
+            "text": "ವಿಳಾಸಕ್ಕೆ ಸಲ್ಲಿಸಿ",
+            "auto_translated": "ವಿಳಾಸಕ್ಕೆ ಸಲ್ಲಿಸಿ"
+        },
+        "su": {
+            "legacy_caption_pid": 37243,
+            "legacy_language_pid": 31,
+            "text": "nepikeun alamat",
+            "auto_translated": "nepikeun alamat"
+        },
+        "ku": {
+            "legacy_caption_pid": 37244,
+            "legacy_language_pid": 32,
+            "text": "Submit address",
+            "auto_translated": "Submit address"
+        },
+        "ps": {
+            "legacy_caption_pid": 37245,
+            "legacy_language_pid": 33,
+            "text": "سپارل پته",
+            "auto_translated": "سپارل پته"
+        },
+        "ro": {
+            "legacy_caption_pid": 37246,
+            "legacy_language_pid": 34,
+            "text": "Introdu adresa ta",
+            "auto_translated": "Introdu adresa ta"
+        },
+        "id": {
+            "legacy_caption_pid": 37247,
+            "legacy_language_pid": 35,
+            "text": "mengirimkan alamat",
+            "auto_translated": "mengirimkan alamat"
+        },
+        "sd": {
+            "legacy_caption_pid": 37248,
+            "legacy_language_pid": 36,
+            "text": "ايڊريس درج ڪريو",
+            "auto_translated": "ايڊريس درج ڪريو"
+        },
+        "af": {
+            "legacy_caption_pid": 37249,
+            "legacy_language_pid": 37,
+            "text": "voorlê adres",
+            "auto_translated": "voorlê adres"
+        },
+        "sw": {
+            "legacy_caption_pid": 37250,
+            "legacy_language_pid": 38,
+            "text": "wasilisha mahali",
+            "auto_translated": "wasilisha mahali"
+        },
+        "lo": {
+            "legacy_caption_pid": 37251,
+            "legacy_language_pid": 39,
+            "text": "ຍື່ນສະເຫນີທີ່ຢູ່",
+            "auto_translated": "ຍື່ນສະເຫນີທີ່ຢູ່"
+        },
+        "nl": {
+            "legacy_caption_pid": 37252,
+            "legacy_language_pid": 40,
+            "text": "Verzend adres",
+            "auto_translated": "Verzend adres"
+        },
+        "tl": {
+            "legacy_caption_pid": 37253,
+            "legacy_language_pid": 41,
+            "text": "Isumite address",
+            "auto_translated": "Isumite address"
+        },
+        "ne": {
+            "legacy_caption_pid": 37254,
+            "legacy_language_pid": 42,
+            "text": "ठेगाना पेश",
+            "auto_translated": "ठेगाना पेश"
+        },
+        "hu": {
+            "legacy_caption_pid": 37255,
+            "legacy_language_pid": 43,
+            "text": "Küldje címe",
+            "auto_translated": "Küldje címe"
+        },
+        "cs": {
+            "legacy_caption_pid": 37256,
+            "legacy_language_pid": 44,
+            "text": "odeslat adresy",
+            "auto_translated": "odeslat adresy"
+        },
+        "el": {
+            "legacy_caption_pid": 37257,
+            "legacy_language_pid": 45,
+            "text": "Υποβάλετε τη διεύθυνση",
+            "auto_translated": "Υποβάλετε τη διεύθυνση"
+        },
+        "sv": {
+            "legacy_caption_pid": 37258,
+            "legacy_language_pid": 46,
+            "text": "Skicka adress",
+            "auto_translated": "Skicka adress"
+        },
+        "kk": {
+            "legacy_caption_pid": 37259,
+            "legacy_language_pid": 47,
+            "text": "мекен-жайы жіберу",
+            "auto_translated": "мекен-жайы жіберу"
+        },
+        "fi": {
+            "legacy_caption_pid": 37260,
+            "legacy_language_pid": 48,
+            "text": "lähetä osoitteeseen",
+            "auto_translated": "lähetä osoitteeseen"
+        },
+        "da": {
+            "legacy_caption_pid": 37261,
+            "legacy_language_pid": 49,
+            "text": "Indsend adresse",
+            "auto_translated": "Indsend adresse"
+        },
+        "he": {
+            "legacy_caption_pid": 37262,
+            "legacy_language_pid": 50,
+            "text": "שלח כתובת",
+            "auto_translated": "שלח כתובת"
+        },
+        "no": {
+            "legacy_caption_pid": 37263,
+            "legacy_language_pid": 51,
+            "text": "Send inn adresse",
+            "auto_translated": "Send inn adresse"
+        }
+    }
+}

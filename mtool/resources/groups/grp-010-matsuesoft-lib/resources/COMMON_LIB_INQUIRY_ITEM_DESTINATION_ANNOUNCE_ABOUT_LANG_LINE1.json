@@ -1,0 +1,321 @@
+{
+    "resource_key": "COMMON_LIB_INQUIRY_ITEM_DESTINATION_ANNOUNCE_ABOUT_LANG_LINE1",
+    "legacy_resource_pid": 1466,
+    "base_group_key": "grp-010-matsuesoft-lib",
+    "additional_group_keys": [],
+    "key_for_update": "prdkXRT7X22CzAajXSYcno7FEaJgs7aFUTaRTIG6wxKeF8rCnlWn5VCvkan9Jbmf257aMHgfFI24zbvxUlwdFVSGtPhq5V6E8QPCMXM74qKe8o7SUZ77szfugHFpBX8M",
+    "sort_group": "INQUIRY",
+    "key_name": "COMMON_LIB_INQUIRY_ITEM_DESTINATION_ANNOUNCE_ABOUT_LANG_LINE1",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": false,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 6138,
+            "legacy_language_pid": 1,
+            "text": "英語で書いて頂くと現地のスタッフ/先生がそのまま読めますので比較的早く対応できます。",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 6139,
+            "legacy_language_pid": 2,
+            "text": "If you write in English, local staff / teacher can read directly, so we can respond relatively quickly.",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 6140,
+            "legacy_language_pid": 3,
+            "text": "如果用英语写的话，我们可以及时确认",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 6141,
+            "legacy_language_pid": 4,
+            "text": "영어로 작성하시면 현지 직원 / 강사가 바로 읽을 수 있기 때문에 비교적 빨리 대응할 수 있습니다.",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 10979,
+            "legacy_language_pid": 5,
+            "text": " Si escribe en inglés, el personal / maestro local puede leer directamente, para que podamos responder con relativa rapidez. ",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 10980,
+            "legacy_language_pid": 6,
+            "text": "Se você escrever em inglês, a equipe / professora local pode ler diretamente, para que possamos responder com relativa rapidez. ",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 10981,
+            "legacy_language_pid": 7,
+            "text": "如果用英語寫的話，我們可以及時確認",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 17185,
+            "legacy_language_pid": 8,
+            "text": "Si vous écrivez en anglais, le personnel / enseignant local peut lire directement, afin que nous puissions répondre relativement rapidement.",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 17186,
+            "legacy_language_pid": 9,
+            "text": "यदि आप अंग्रेजी में लिखते हैं, स्थानीय स्टाफ / शिक्षक सीधे पढ़ सकते हैं, इसलिए हम अपेक्षाकृत जल्दी से प्रतिक्रिया कर सकते हैं",
+            "auto_translated": ""
+        },
+        "ar": {
+            "legacy_caption_pid": 32138,
+            "legacy_language_pid": 10,
+            "text": "عندما كنت أكتب في اللغة الإنجليزية يمكن قراءتها كما هو الموظفين / المعلم المحلية حتى تتمكن من الاستجابة بسرعة نسبيا.",
+            "auto_translated": "عندما كنت أكتب في اللغة الإنجليزية يمكن قراءتها كما هو الموظفين / المعلم المحلية حتى تتمكن من الاستجابة بسرعة نسبيا."
+        },
+        "fa": {
+            "legacy_caption_pid": 32139,
+            "legacy_language_pid": 11,
+            "text": "وقتی که من به انگلیسی مینویسم را می توان خواندن آن را به عنوان کارمندان محلی / معلم است، بنابراین شما می توانید نسبتا به سرعت پاسخ می دهند.",
+            "auto_translated": "وقتی که من به انگلیسی مینویسم را می توان خواندن آن را به عنوان کارمندان محلی / معلم است، بنابراین شما می توانید نسبتا به سرعت پاسخ می دهند."
+        },
+        "de": {
+            "legacy_caption_pid": 32140,
+            "legacy_language_pid": 12,
+            "text": "Wenn ich auf Englisch schreibe gelesen werden kann, wie es der lokalen Mitarbeiter / Lehrer ist, so dass Sie relativ schnell reagieren zu können.",
+            "auto_translated": "Wenn ich auf Englisch schreibe gelesen werden kann, wie es der lokalen Mitarbeiter / Lehrer ist, so dass Sie relativ schnell reagieren zu können."
+        },
+        "ru": {
+            "legacy_caption_pid": 32141,
+            "legacy_language_pid": 13,
+            "text": "Когда я пишу на английском языке можно прочитать, как это местный персонал / учитель, так что вы можете ответить относительно быстро.",
+            "auto_translated": "Когда я пишу на английском языке можно прочитать, как это местный персонал / учитель, так что вы можете ответить относительно быстро."
+        },
+        "ms": {
+            "legacy_caption_pid": 32142,
+            "legacy_language_pid": 14,
+            "text": "Apabila saya menulis dalam bahasa Inggeris boleh dibaca kerana ia adalah staff / guru tempatan supaya anda boleh bertindak balas agak cepat.",
+            "auto_translated": "Apabila saya menulis dalam bahasa Inggeris boleh dibaca kerana ia adalah staff / guru tempatan supaya anda boleh bertindak balas agak cepat."
+        },
+        "ta": {
+            "legacy_caption_pid": 32143,
+            "legacy_language_pid": 15,
+            "text": "அது எனவே நீங்கள் ஒப்பீட்டளவில் விரைவாக பதிலளிக்க முடியும் உள்ளூர் ஊழியர்கள் / ஆசிரியர் உள்ளது நான் ஆங்கிலத்தில் எழுதுகிறேன் போது படிக்க முடியும்.",
+            "auto_translated": "அது எனவே நீங்கள் ஒப்பீட்டளவில் விரைவாக பதிலளிக்க முடியும் உள்ளூர் ஊழியர்கள் / ஆசிரியர் உள்ளது நான் ஆங்கிலத்தில் எழுதுகிறேன் போது படிக்க முடியும்."
+        },
+        "it": {
+            "legacy_caption_pid": 32144,
+            "legacy_language_pid": 16,
+            "text": "Quando scrivo in inglese può essere letto in quanto è il locale di personale / docente in modo da poter rispondere in tempi relativamente brevi.",
+            "auto_translated": "Quando scrivo in inglese può essere letto in quanto è il locale di personale / docente in modo da poter rispondere in tempi relativamente brevi."
+        },
+        "bn": {
+            "legacy_caption_pid": 32145,
+            "legacy_language_pid": 17,
+            "text": "যখন আমি ইংরেজিতে লিখছি যেমন স্থানীয় কর্মীদের / শিক্ষক, তাই আপনি অপেক্ষাকৃত দ্রুত উত্তর দিতে পারেন পড়া যায়।",
+            "auto_translated": "যখন আমি ইংরেজিতে লিখছি যেমন স্থানীয় কর্মীদের / শিক্ষক, তাই আপনি অপেক্ষাকৃত দ্রুত উত্তর দিতে পারেন পড়া যায়।"
+        },
+        "tr": {
+            "legacy_caption_pid": 32146,
+            "legacy_language_pid": 18,
+            "text": "Ben İngilizce yazıyorum Ne zaman nispeten hızlı bir şekilde cevap verebilir böylece yerel personel / öğretmen olarak okunabilir.",
+            "auto_translated": "Ben İngilizce yazıyorum Ne zaman nispeten hızlı bir şekilde cevap verebilir böylece yerel personel / öğretmen olarak okunabilir."
+        },
+        "vi": {
+            "legacy_caption_pid": 32147,
+            "legacy_language_pid": 19,
+            "text": "Khi tôi đang viết bằng tiếng Anh có thể được đọc vì nó là cán bộ địa phương / giáo viên để bạn có thể đáp ứng tương đối nhanh chóng.",
+            "auto_translated": "Khi tôi đang viết bằng tiếng Anh có thể được đọc vì nó là cán bộ địa phương / giáo viên để bạn có thể đáp ứng tương đối nhanh chóng."
+        },
+        "pl": {
+            "legacy_caption_pid": 32148,
+            "legacy_language_pid": 20,
+            "text": "Kiedy piszę w języku angielskim można przeczytać, ponieważ jest to personel miejscowy / nauczyciel, więc można reagować stosunkowo szybko.",
+            "auto_translated": "Kiedy piszę w języku angielskim można przeczytać, ponieważ jest to personel miejscowy / nauczyciel, więc można reagować stosunkowo szybko."
+        },
+        "jv": {
+            "legacy_caption_pid": 32149,
+            "legacy_language_pid": 21,
+            "text": "Nalika aku nulis ing Inggris bisa maca iku Staff / guru lokal supaya sampeyan bisa nanggapi sacepete.",
+            "auto_translated": "Nalika aku nulis ing Inggris bisa maca iku Staff / guru lokal supaya sampeyan bisa nanggapi sacepete."
+        },
+        "pa": {
+            "legacy_caption_pid": 32150,
+            "legacy_language_pid": 22,
+            "text": "ਮੈਨੂੰ ਅੰਗਰੇਜ਼ੀ ਵਿਚ ਲਿਖ ਰਿਹਾ ਤੌਰ ਤੇ ਇਸ ਨੂੰ ਸਥਾਨਕ ਸਟਾਫ / ਅਧਿਆਪਕ ਹੈ, ਇਸ ਲਈ ਤੁਹਾਨੂੰ ਮੁਕਾਬਲਤਨ ਤੇਜ਼ੀ ਨਾਲ ਜਵਾਬ ਦੇ ਸਕਦੇ ਪੜ੍ਹਿਆ ਜਾ ਸਕਦਾ ਹੈ.",
+            "auto_translated": "ਮੈਨੂੰ ਅੰਗਰੇਜ਼ੀ ਵਿਚ ਲਿਖ ਰਿਹਾ ਤੌਰ ਤੇ ਇਸ ਨੂੰ ਸਥਾਨਕ ਸਟਾਫ / ਅਧਿਆਪਕ ਹੈ, ਇਸ ਲਈ ਤੁਹਾਨੂੰ ਮੁਕਾਬਲਤਨ ਤੇਜ਼ੀ ਨਾਲ ਜਵਾਬ ਦੇ ਸਕਦੇ ਪੜ੍ਹਿਆ ਜਾ ਸਕਦਾ ਹੈ."
+        },
+        "th": {
+            "legacy_caption_pid": 32151,
+            "legacy_language_pid": 23,
+            "text": "เมื่อผมเขียนในภาษาอังกฤษสามารถอ่านมันเป็นท้องถิ่นพนักงาน / ครูเพื่อให้คุณสามารถตอบสนองได้อย่างรวดเร็ว",
+            "auto_translated": "เมื่อผมเขียนในภาษาอังกฤษสามารถอ่านมันเป็นท้องถิ่นพนักงาน / ครูเพื่อให้คุณสามารถตอบสนองได้อย่างรวดเร็ว"
+        },
+        "te": {
+            "legacy_caption_pid": 41352,
+            "legacy_language_pid": 24,
+            "text": "నేను ఇంగ్లీష్ లో రాస్తున్నాను చేసినప్పుడు, కాబట్టి మీరు చాలా త్వరగా స్పందించవచ్చు స్థానిక సిబ్బంది / గురువు చదవవచ్చు.",
+            "auto_translated": "నేను ఇంగ్లీష్ లో రాస్తున్నాను చేసినప్పుడు, కాబట్టి మీరు చాలా త్వరగా స్పందించవచ్చు స్థానిక సిబ్బంది / గురువు చదవవచ్చు."
+        },
+        "mr": {
+            "legacy_caption_pid": 41353,
+            "legacy_language_pid": 25,
+            "text": "मी इंग्रजी मध्ये लिहित आहे म्हणून जेव्हा आपण तुलनेने लवकर प्रतिसाद देऊ शकता स्थानिक कर्मचारी / शिक्षक आहे म्हणून वाचले जाऊ शकते.",
+            "auto_translated": "मी इंग्रजी मध्ये लिहित आहे म्हणून जेव्हा आपण तुलनेने लवकर प्रतिसाद देऊ शकता स्थानिक कर्मचारी / शिक्षक आहे म्हणून वाचले जाऊ शकते."
+        },
+        "ur": {
+            "legacy_caption_pid": 41354,
+            "legacy_language_pid": 26,
+            "text": "میں نے انگریزی میں لکھ رہا ہوں جب یہ مقامی عملے / استاد ہے کے طور پر، لہذا آپ کو نسبتا تیزی سے جواب دے سکتے پڑھا جا سکتا ہے.",
+            "auto_translated": "میں نے انگریزی میں لکھ رہا ہوں جب یہ مقامی عملے / استاد ہے کے طور پر، لہذا آپ کو نسبتا تیزی سے جواب دے سکتے پڑھا جا سکتا ہے."
+        },
+        "gu": {
+            "legacy_caption_pid": 41355,
+            "legacy_language_pid": 27,
+            "text": "જ્યારે હું ઇંગલિશ માં લખું છું કારણ કે તે સ્થાનિક સ્ટાફ / શિક્ષક છે, જેથી તમે પ્રમાણમાં ઝડપથી પ્રતિભાવ આપી શકે છે વાંચી શકાય છે.",
+            "auto_translated": "જ્યારે હું ઇંગલિશ માં લખું છું કારણ કે તે સ્થાનિક સ્ટાફ / શિક્ષક છે, જેથી તમે પ્રમાણમાં ઝડપથી પ્રતિભાવ આપી શકે છે વાંચી શકાય છે."
+        },
+        "uk": {
+            "legacy_caption_pid": 41356,
+            "legacy_language_pid": 28,
+            "text": "Коли я пишу англійською мовою можна прочитати, як це місцевий персонал / вчитель, так що ви можете відповісти відносно швидко.",
+            "auto_translated": "Коли я пишу англійською мовою можна прочитати, як це місцевий персонал / вчитель, так що ви можете відповісти відносно швидко."
+        },
+        "ml": {
+            "legacy_caption_pid": 41357,
+            "legacy_language_pid": 29,
+            "text": "ഞാൻ ഇംഗ്ലീഷിൽ എഴുതുന്നു ചെയ്യുമ്പോൾ അതിനാൽ നിങ്ങൾ താരതമ്യേന വേഗത്തിൽ പ്രതികരിക്കാൻ കഴിയും പ്രാദേശിക സ്റ്റാഫ് / ഗുരു ആയി വായിക്കാൻ കഴിയും.",
+            "auto_translated": "ഞാൻ ഇംഗ്ലീഷിൽ എഴുതുന്നു ചെയ്യുമ്പോൾ അതിനാൽ നിങ്ങൾ താരതമ്യേന വേഗത്തിൽ പ്രതികരിക്കാൻ കഴിയും പ്രാദേശിക സ്റ്റാഫ് / ഗുരു ആയി വായിക്കാൻ കഴിയും."
+        },
+        "kn": {
+            "legacy_caption_pid": 41358,
+            "legacy_language_pid": 30,
+            "text": "ನಾನು ಇಂಗ್ಲೀಷ್ ನಲ್ಲಿ ಬರೆಯಲು ನಾನು ಅದು ಆದ್ದರಿಂದ ನೀವು ತುಲನಾತ್ಮಕವಾಗಿ ವೇಗವಾಗಿ ಪ್ರತಿಕ್ರಿಯಿಸಬಹುದು ಸ್ಥಳೀಯ ಸಿಬ್ಬಂದಿ / ಶಿಕ್ಷಕ ಎಂದು ಓದಬಹುದು.",
+            "auto_translated": "ನಾನು ಇಂಗ್ಲೀಷ್ ನಲ್ಲಿ ಬರೆಯಲು ನಾನು ಅದು ಆದ್ದರಿಂದ ನೀವು ತುಲನಾತ್ಮಕವಾಗಿ ವೇಗವಾಗಿ ಪ್ರತಿಕ್ರಿಯಿಸಬಹುದು ಸ್ಥಳೀಯ ಸಿಬ್ಬಂದಿ / ಶಿಕ್ಷಕ ಎಂದು ಓದಬಹುದು."
+        },
+        "su": {
+            "legacy_caption_pid": 41359,
+            "legacy_language_pid": 31,
+            "text": "Lamun Kuring keur nulis dina basa Inggris bisa maca sakumaha anu kasebut staf / guruna lokal sangkan anjeun bisa ngabales rélatif gancang.",
+            "auto_translated": "Lamun Kuring keur nulis dina basa Inggris bisa maca sakumaha anu kasebut staf / guruna lokal sangkan anjeun bisa ngabales rélatif gancang."
+        },
+        "ku": {
+            "legacy_caption_pid": 41360,
+            "legacy_language_pid": 32,
+            "text": "Dema ku ez li English dinivîsim dikare bê xwendin wek ku karmendên herêmî / mamoste ye vê yekê tu dikarî bi relatîfî bi lez bersiv.",
+            "auto_translated": "Dema ku ez li English dinivîsim dikare bê xwendin wek ku karmendên herêmî / mamoste ye vê yekê tu dikarî bi relatîfî bi lez bersiv."
+        },
+        "ps": {
+            "legacy_caption_pid": 41361,
+            "legacy_language_pid": 33,
+            "text": "کله چې زه په انګلیسي لیکلو یم ولوستل شي لکه څنګه چې د ځايي کارکوونکو / ښوونکی دی نو تاسو په نسبي ډول په چټکۍ سره ځواب شي.",
+            "auto_translated": "کله چې زه په انګلیسي لیکلو یم ولوستل شي لکه څنګه چې د ځايي کارکوونکو / ښوونکی دی نو تاسو په نسبي ډول په چټکۍ سره ځواب شي."
+        },
+        "ro": {
+            "legacy_caption_pid": 41362,
+            "legacy_language_pid": 34,
+            "text": "Când scriu în limba engleză poate fi citit ca este local, personalul / profesor, astfel încât să poată răspunde relativ repede.",
+            "auto_translated": "Când scriu în limba engleză poate fi citit ca este local, personalul / profesor, astfel încât să poată răspunde relativ repede."
+        },
+        "id": {
+            "legacy_caption_pid": 41363,
+            "legacy_language_pid": 35,
+            "text": "Ketika saya menulis dalam bahasa Inggris dapat dibaca sebagai itu adalah staf / guru lokal sehingga Anda dapat merespon relatif cepat.",
+            "auto_translated": "Ketika saya menulis dalam bahasa Inggris dapat dibaca sebagai itu adalah staf / guru lokal sehingga Anda dapat merespon relatif cepat."
+        },
+        "sd": {
+            "legacy_caption_pid": 41364,
+            "legacy_language_pid": 36,
+            "text": "جڏهن مون کي انگريزي ۾ لکي رهيو آهيان ته جيئن ان جي مقامي عملي / استاد آهي جو مطالعو ڪري سگهجي ٿو پوء تون نسبتا جلدي جواب ڪري سگهي ٿو.",
+            "auto_translated": "جڏهن مون کي انگريزي ۾ لکي رهيو آهيان ته جيئن ان جي مقامي عملي / استاد آهي جو مطالعو ڪري سگهجي ٿو پوء تون نسبتا جلدي جواب ڪري سگهي ٿو."
+        },
+        "af": {
+            "legacy_caption_pid": 41365,
+            "legacy_language_pid": 37,
+            "text": "Wanneer ek skryf in Engels kan gelees word as dit die plaaslike personeel / onderwyser sodat jy relatief vinnig kan reageer.",
+            "auto_translated": "Wanneer ek skryf in Engels kan gelees word as dit die plaaslike personeel / onderwyser sodat jy relatief vinnig kan reageer."
+        },
+        "sw": {
+            "legacy_caption_pid": 41366,
+            "legacy_language_pid": 38,
+            "text": "Wakati Ninaandika kwa Kiingereza inaweza kusomwa kama ilivyo ndani ya wafanyakazi / mwalimu hivyo unaweza kujibu kiasi haraka.",
+            "auto_translated": "Wakati Ninaandika kwa Kiingereza inaweza kusomwa kama ilivyo ndani ya wafanyakazi / mwalimu hivyo unaweza kujibu kiasi haraka."
+        },
+        "lo": {
+            "legacy_caption_pid": 41367,
+            "legacy_language_pid": 39,
+            "text": "ໃນເວລາທີ່ຂ້າພະເຈົ້າຂຽນພາສາອັງກິດສາມາດໄດ້ຮັບການອ່ານຍ້ອນວ່າມັນເປັນໃນທ້ອງຖິ່ນພະນັກງານ / ຄູອາຈານສະນັ້ນທ່ານສາມາດຕອບສະຫນອງຕໍ່ຂ້ອນຂ້າງໄວ.",
+            "auto_translated": "ໃນເວລາທີ່ຂ້າພະເຈົ້າຂຽນພາສາອັງກິດສາມາດໄດ້ຮັບການອ່ານຍ້ອນວ່າມັນເປັນໃນທ້ອງຖິ່ນພະນັກງານ / ຄູອາຈານສະນັ້ນທ່ານສາມາດຕອບສະຫນອງຕໍ່ຂ້ອນຂ້າງໄວ."
+        },
+        "nl": {
+            "legacy_caption_pid": 41368,
+            "legacy_language_pid": 40,
+            "text": "Toen ik schrijf in het Engels kan gelezen worden als het de lokale staf / docent, zodat u relatief snel kan reageren.",
+            "auto_translated": "Toen ik schrijf in het Engels kan gelezen worden als het de lokale staf / docent, zodat u relatief snel kan reageren."
+        },
+        "tl": {
+            "legacy_caption_pid": 41369,
+            "legacy_language_pid": 41,
+            "text": "Kapag ako ay sumusulat sa Ingles ay maaaring basahin bilang ito ay ang lokal na kawani / guro upang maaari mong tumugon relatibong mabilis.",
+            "auto_translated": "Kapag ako ay sumusulat sa Ingles ay maaaring basahin bilang ito ay ang lokal na kawani / guro upang maaari mong tumugon relatibong mabilis."
+        },
+        "ne": {
+            "legacy_caption_pid": 41370,
+            "legacy_language_pid": 42,
+            "text": "तपाईं अपेक्षाकृत चाँडै प्रतिक्रिया गर्न सक्नुहुन्छ त यो स्थानीय कर्मचारी / शिक्षक रूपमा म अंग्रेजी मा लेख्दै छु जब पढ्न सकिन्छ।",
+            "auto_translated": "तपाईं अपेक्षाकृत चाँडै प्रतिक्रिया गर्न सक्नुहुन्छ त यो स्थानीय कर्मचारी / शिक्षक रूपमा म अंग्रेजी मा लेख्दै छु जब पढ्न सकिन्छ।"
+        },
+        "hu": {
+            "legacy_caption_pid": 41371,
+            "legacy_language_pid": 43,
+            "text": "Amikor írok angolul is olvasható, ez a helyi alkalmazottak / tanár így válaszolt viszonylag gyorsan.",
+            "auto_translated": "Amikor írok angolul is olvasható, ez a helyi alkalmazottak / tanár így válaszolt viszonylag gyorsan."
+        },
+        "cs": {
+            "legacy_caption_pid": 41372,
+            "legacy_language_pid": 44,
+            "text": "Když píši v angličtině si můžete přečíst, jak to je místní personál / učitel, takže můžete reagovat poměrně rychle.",
+            "auto_translated": "Když píši v angličtině si můžete přečíst, jak to je místní personál / učitel, takže můžete reagovat poměrně rychle."
+        },
+        "el": {
+            "legacy_caption_pid": 41373,
+            "legacy_language_pid": 45,
+            "text": "Όταν γράφω στα αγγλικά μπορεί να διαβαστεί όπως είναι το τοπικό προσωπικό / δάσκαλος, έτσι ώστε να μπορεί να ανταποκριθεί σχετικά γρήγορα.",
+            "auto_translated": "Όταν γράφω στα αγγλικά μπορεί να διαβαστεί όπως είναι το τοπικό προσωπικό / δάσκαλος, έτσι ώστε να μπορεί να ανταποκριθεί σχετικά γρήγορα."
+        },
+        "sv": {
+            "legacy_caption_pid": 41374,
+            "legacy_language_pid": 46,
+            "text": "När jag skriver på engelska kan läsas som det är den lokala personal / lärare så att du kan svara relativt snabbt.",
+            "auto_translated": "När jag skriver på engelska kan läsas som det är den lokala personal / lärare så att du kan svara relativt snabbt."
+        },
+        "kk": {
+            "legacy_caption_pid": 41375,
+            "legacy_language_pid": 47,
+            "text": "Мен ағылшын тілінде жазып жатырмын кезде, ол жергілікті персонал / мұғалімі ретінде сіз салыстырмалы тез жауап беруге болады, сондықтан оқуға болады.",
+            "auto_translated": "Мен ағылшын тілінде жазып жатырмын кезде, ол жергілікті персонал / мұғалімі ретінде сіз салыстырмалы тез жауап беруге болады, сондықтан оқуға болады."
+        },
+        "fi": {
+            "legacy_caption_pid": 41376,
+            "legacy_language_pid": 48,
+            "text": "Kun olen kirjallisesti Englanti voidaan lukea, koska se on paikallinen henkilökunta / opettaja joten voit vastata suhteellisen nopeasti.",
+            "auto_translated": "Kun olen kirjallisesti Englanti voidaan lukea, koska se on paikallinen henkilökunta / opettaja joten voit vastata suhteellisen nopeasti."
+        },
+        "da": {
+            "legacy_caption_pid": 41377,
+            "legacy_language_pid": 49,
+            "text": "Når jeg skriver på engelsk kan læses som det er det lokale personale / lærer, så du kan reagere relativt hurtigt.",
+            "auto_translated": "Når jeg skriver på engelsk kan læses som det er det lokale personale / lærer, så du kan reagere relativt hurtigt."
+        },
+        "he": {
+            "legacy_caption_pid": 41378,
+            "legacy_language_pid": 50,
+            "text": "כאשר אני כותב באנגלית ניתן לקרוא כפי שהוא הצוות המקומי / מורה, כך שתוכל להגיב במהירות יחסית.",
+            "auto_translated": "כאשר אני כותב באנגלית ניתן לקרוא כפי שהוא הצוות המקומי / מורה, כך שתוכל להגיב במהירות יחסית."
+        },
+        "no": {
+            "legacy_caption_pid": 41379,
+            "legacy_language_pid": 51,
+            "text": "Når jeg skriver på engelsk kan leses som det er den lokale avdelingen / lærer slik at du kan svare relativt raskt.",
+            "auto_translated": "Når jeg skriver på engelsk kan leses som det er den lokale avdelingen / lærer slik at du kan svare relativt raskt."
+        }
+    }
+}

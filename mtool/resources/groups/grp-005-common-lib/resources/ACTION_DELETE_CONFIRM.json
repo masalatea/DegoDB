@@ -1,0 +1,321 @@
+{
+    "resource_key": "ACTION_DELETE_CONFIRM",
+    "legacy_resource_pid": 579,
+    "base_group_key": "grp-005-common-lib",
+    "additional_group_keys": [],
+    "key_for_update": "muIW0pqDVULmBoBaH3xTesYsLQJdHou4bq1PR370xFHKda2omiYsgvziG8ktOyUCuVJj5ZKfptevHH1dIYVlwovpkplpXp76JdMdLNNFb14WTaB7Y94Yh85We98EfhSd",
+    "sort_group": "ACTION",
+    "key_name": "ACTION_DELETE_CONFIRM",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": false,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 1347,
+            "legacy_language_pid": 1,
+            "text": "削除してもよろしいですか？(取り消しできません)",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 1348,
+            "legacy_language_pid": 2,
+            "text": "Is it OK to delete completely?",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 6514,
+            "legacy_language_pid": 3,
+            "text": "您确定要删除？（删除后不能取消）",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 6515,
+            "legacy_language_pid": 4,
+            "text": "삭제하시겠습니까? (취소할 수 없습니다)",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 10417,
+            "legacy_language_pid": 5,
+            "text": "¿Está bien borrar completamente?",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 10418,
+            "legacy_language_pid": 6,
+            "text": "É OK para apagar completamente?",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 10419,
+            "legacy_language_pid": 7,
+            "text": "您確定要刪除？（刪除後不能取消）",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 16261,
+            "legacy_language_pid": 8,
+            "text": "Est-ce OK de supprimer complètement?",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 16262,
+            "legacy_language_pid": 9,
+            "text": " क्या इसे पूरी तरह से हटाना ठीक है?",
+            "auto_translated": ""
+        },
+        "ar": {
+            "legacy_caption_pid": 29324,
+            "legacy_language_pid": 10,
+            "text": "حذف هل أنت متأكد أنك تريد؟ (لا يمكنك إلغاء)",
+            "auto_translated": "حذف هل أنت متأكد أنك تريد؟ (لا يمكنك إلغاء)"
+        },
+        "fa": {
+            "legacy_caption_pid": 29325,
+            "legacy_language_pid": 11,
+            "text": "حذف مطمئنید که می خواهید؟ (شما نمی توانید لغو)",
+            "auto_translated": "حذف مطمئنید که می خواهید؟ (شما نمی توانید لغو)"
+        },
+        "de": {
+            "legacy_caption_pid": 29326,
+            "legacy_language_pid": 12,
+            "text": "Löschen Sind Sie sicher, dass Sie das wollen? (Sie können nicht abbrechen)",
+            "auto_translated": "Löschen Sind Sie sicher, dass Sie das wollen? (Sie können nicht abbrechen)"
+        },
+        "ru": {
+            "legacy_caption_pid": 29327,
+            "legacy_language_pid": 13,
+            "text": "Удалить Вы уверены, что хотите? (Вы не можете отменить)",
+            "auto_translated": "Удалить Вы уверены, что хотите? (Вы не можете отменить)"
+        },
+        "ms": {
+            "legacy_caption_pid": 29328,
+            "legacy_language_pid": 14,
+            "text": "Memadam Adakah anda pasti anda mahu? (Anda tidak boleh membatalkan)",
+            "auto_translated": "Memadam Adakah anda pasti anda mahu? (Anda tidak boleh membatalkan)"
+        },
+        "ta": {
+            "legacy_caption_pid": 29329,
+            "legacy_language_pid": 15,
+            "text": "நிச்சயமாக விரும்புகிறீர்களா நீக்கு? (நீங்கள் ரத்து செய்ய முடியாது)",
+            "auto_translated": "நிச்சயமாக விரும்புகிறீர்களா நீக்கு? (நீங்கள் ரத்து செய்ய முடியாது)"
+        },
+        "it": {
+            "legacy_caption_pid": 29330,
+            "legacy_language_pid": 16,
+            "text": "Elimina Sei sicuro di volere? (Non è possibile annullare)",
+            "auto_translated": "Elimina Sei sicuro di volere? (Non è possibile annullare)"
+        },
+        "bn": {
+            "legacy_caption_pid": 29331,
+            "legacy_language_pid": 17,
+            "text": "মুছুন আপনি কি নিশ্চিতরূপে করার ব্যাপারে নিশ্চিত? (আপনি বাতিল করা যাবে না)",
+            "auto_translated": "মুছুন আপনি কি নিশ্চিতরূপে করার ব্যাপারে নিশ্চিত? (আপনি বাতিল করা যাবে না)"
+        },
+        "tr": {
+            "legacy_caption_pid": 29332,
+            "legacy_language_pid": 18,
+            "text": "Eğer istediğinden emin misin Sil? (Iptal edebilir olamaz)",
+            "auto_translated": "Eğer istediğinden emin misin Sil? (Iptal edebilir olamaz)"
+        },
+        "vi": {
+            "legacy_caption_pid": 29333,
+            "legacy_language_pid": 19,
+            "text": "Xóa Bạn có chắc chắn bạn muốn? (Bạn không thể hủy bỏ)",
+            "auto_translated": "Xóa Bạn có chắc chắn bạn muốn? (Bạn không thể hủy bỏ)"
+        },
+        "pl": {
+            "legacy_caption_pid": 29334,
+            "legacy_language_pid": 20,
+            "text": "Usuń Czy na pewno chcesz? (Nie można anulować)",
+            "auto_translated": "Usuń Czy na pewno chcesz? (Nie można anulować)"
+        },
+        "jv": {
+            "legacy_caption_pid": 29335,
+            "legacy_language_pid": 21,
+            "text": "Busak Apa panjenengan yakin arep? (Sampeyan ora bisa mbatalake)",
+            "auto_translated": "Busak Apa panjenengan yakin arep? (Sampeyan ora bisa mbatalake)"
+        },
+        "pa": {
+            "legacy_caption_pid": 29336,
+            "legacy_language_pid": 22,
+            "text": "ਹਟਾਓ ਤੁਹਾਨੂੰ ਯਕੀਨ ਹੈ ਕਿ ਤੁਹਾਨੂੰ ਕਰਨਾ ਚਾਹੁੰਦੇ ਹੋ? (ਤੁਹਾਨੂੰ ਨੂੰ ਰੱਦ ਨਾ ਕਰ ਸਕਦਾ ਹੈ)",
+            "auto_translated": "ਹਟਾਓ ਤੁਹਾਨੂੰ ਯਕੀਨ ਹੈ ਕਿ ਤੁਹਾਨੂੰ ਕਰਨਾ ਚਾਹੁੰਦੇ ਹੋ? (ਤੁਹਾਨੂੰ ਨੂੰ ਰੱਦ ਨਾ ਕਰ ਸਕਦਾ ਹੈ)"
+        },
+        "th": {
+            "legacy_caption_pid": 29337,
+            "legacy_language_pid": 23,
+            "text": "ลบคุณแน่ใจหรือว่าต้องการ? (คุณไม่สามารถยกเลิก)",
+            "auto_translated": "ลบคุณแน่ใจหรือว่าต้องการ? (คุณไม่สามารถยกเลิก)"
+        },
+        "te": {
+            "legacy_caption_pid": 37768,
+            "legacy_language_pid": 24,
+            "text": "మీరు ఖచ్చితంగా నిశ్చయించుకున్నారా తొలగించు? (మీరు రద్దు కాదు)",
+            "auto_translated": "మీరు ఖచ్చితంగా నిశ్చయించుకున్నారా తొలగించు? (మీరు రద్దు కాదు)"
+        },
+        "mr": {
+            "legacy_caption_pid": 37769,
+            "legacy_language_pid": 25,
+            "text": "आपली खात्री आहे की आपण इच्छित आहेत हटवा? (आपण रद्द करू शकत नाही)",
+            "auto_translated": "आपली खात्री आहे की आपण इच्छित आहेत हटवा? (आपण रद्द करू शकत नाही)"
+        },
+        "ur": {
+            "legacy_caption_pid": 37770,
+            "legacy_language_pid": 26,
+            "text": "حذف کیا آپ چاہتے ہیں؟ (آپ کو منسوخ نہیں کر سکتے ہیں)",
+            "auto_translated": "حذف کیا آپ چاہتے ہیں؟ (آپ کو منسوخ نہیں کر سکتے ہیں)"
+        },
+        "gu": {
+            "legacy_caption_pid": 37771,
+            "legacy_language_pid": 27,
+            "text": "કાઢી નાખો તમે ખરેખર કરવા માંગો છો? (તમે રદ કરી શકતા નથી)",
+            "auto_translated": "કાઢી નાખો તમે ખરેખર કરવા માંગો છો? (તમે રદ કરી શકતા નથી)"
+        },
+        "uk": {
+            "legacy_caption_pid": 37772,
+            "legacy_language_pid": 28,
+            "text": "Видалити Ви впевнені, що хочете? (Ви не можете скасувати)",
+            "auto_translated": "Видалити Ви впевнені, що хочете? (Ви не можете скасувати)"
+        },
+        "ml": {
+            "legacy_caption_pid": 37773,
+            "legacy_language_pid": 29,
+            "text": "ഇല്ലാതാക്കുക നിങ്ങൾക്ക് ഉറപ്പാണോ ചെയ്യണമെന്ന് ഉറപ്പാണോ? (നിങ്ങൾ റദ്ദാക്കാൻ കഴിയില്ല)",
+            "auto_translated": "ഇല്ലാതാക്കുക നിങ്ങൾക്ക് ഉറപ്പാണോ ചെയ്യണമെന്ന് ഉറപ്പാണോ? (നിങ്ങൾ റദ്ദാക്കാൻ കഴിയില്ല)"
+        },
+        "kn": {
+            "legacy_caption_pid": 37774,
+            "legacy_language_pid": 30,
+            "text": "ನೀವು ಖಚಿತವಾಗಿ ಬಯಸುವಿರಾ ಅಳಿಸುವುದೇ? (ನೀವು ರದ್ದುಗೊಳಿಸಲು ಸಾಧ್ಯವಿಲ್ಲ)",
+            "auto_translated": "ನೀವು ಖಚಿತವಾಗಿ ಬಯಸುವಿರಾ ಅಳಿಸುವುದೇ? (ನೀವು ರದ್ದುಗೊಳಿಸಲು ಸಾಧ್ಯವಿಲ್ಲ)"
+        },
+        "su": {
+            "legacy_caption_pid": 37775,
+            "legacy_language_pid": 31,
+            "text": "Ngahapus Dupi anjeun yakin rék? (Anjeun teu bisa ngabolaykeun)",
+            "auto_translated": "Ngahapus Dupi anjeun yakin rék? (Anjeun teu bisa ngabolaykeun)"
+        },
+        "ku": {
+            "legacy_caption_pid": 37776,
+            "legacy_language_pid": 32,
+            "text": "Vemirandina Ma tu dixwazî ​​ku tu dixwazî? (Tu nikarî betal bike)",
+            "auto_translated": "Vemirandina Ma tu dixwazî ​​ku tu dixwazî? (Tu nikarî betal bike)"
+        },
+        "ps": {
+            "legacy_caption_pid": 37777,
+            "legacy_language_pid": 33,
+            "text": "ړنګول تاسو په ډاډمنه توګه غواړئ؟ (تاسو کولای نه فسخه)",
+            "auto_translated": "ړنګول تاسو په ډاډمنه توګه غواړئ؟ (تاسو کولای نه فسخه)"
+        },
+        "ro": {
+            "legacy_caption_pid": 37778,
+            "legacy_language_pid": 34,
+            "text": "Ștergere Sunteți sigur că doriți să? (Nu se poate anula)",
+            "auto_translated": "Ștergere Sunteți sigur că doriți să? (Nu se poate anula)"
+        },
+        "id": {
+            "legacy_caption_pid": 37779,
+            "legacy_language_pid": 35,
+            "text": "Hapus Anda yakin Anda ingin? (Anda tidak dapat membatalkan)",
+            "auto_translated": "Hapus Anda yakin Anda ingin? (Anda tidak dapat membatalkan)"
+        },
+        "sd": {
+            "legacy_caption_pid": 37780,
+            "legacy_language_pid": 36,
+            "text": "حذف اوھان کي پڪ ڪرڻ چاھيو ٿا؟ (توهان کي رد نه ڪري سگهي ٿو)",
+            "auto_translated": "حذف اوھان کي پڪ ڪرڻ چاھيو ٿا؟ (توهان کي رد نه ڪري سگهي ٿو)"
+        },
+        "af": {
+            "legacy_caption_pid": 37781,
+            "legacy_language_pid": 37,
+            "text": "Verwyder Is jy seker jy wil? (Jy kan nie kanselleer)",
+            "auto_translated": "Verwyder Is jy seker jy wil? (Jy kan nie kanselleer)"
+        },
+        "sw": {
+            "legacy_caption_pid": 37782,
+            "legacy_language_pid": 38,
+            "text": "Futa Una uhakika unataka? (Huwezi kufuta)",
+            "auto_translated": "Futa Una uhakika unataka? (Huwezi kufuta)"
+        },
+        "lo": {
+            "legacy_caption_pid": 37783,
+            "legacy_language_pid": 39,
+            "text": "ລົບທ່ານແນ່ໃຈບໍວ່າທ່ານຕ້ອງການທີ່ຈະ? (ທ່ານບໍ່ສາມາດຍົກເລີກການ)",
+            "auto_translated": "ລົບທ່ານແນ່ໃຈບໍວ່າທ່ານຕ້ອງການທີ່ຈະ? (ທ່ານບໍ່ສາມາດຍົກເລີກການ)"
+        },
+        "nl": {
+            "legacy_caption_pid": 37784,
+            "legacy_language_pid": 40,
+            "text": "Verwijderen Weet u zeker dat u wilt? (U kunt niet annuleren)",
+            "auto_translated": "Verwijderen Weet u zeker dat u wilt? (U kunt niet annuleren)"
+        },
+        "tl": {
+            "legacy_caption_pid": 37785,
+            "legacy_language_pid": 41,
+            "text": "Tanggalin Sigurado kang gusto mong? (Hindi mo maaaring kanselahin)",
+            "auto_translated": "Tanggalin Sigurado kang gusto mong? (Hindi mo maaaring kanselahin)"
+        },
+        "ne": {
+            "legacy_caption_pid": 37786,
+            "legacy_language_pid": 42,
+            "text": "के तपाईं निश्चित हुनुहुन्छ मेटाउने? (तपाईं रद्द गर्न सक्दैन)",
+            "auto_translated": "के तपाईं निश्चित हुनुहुन्छ मेटाउने? (तपाईं रद्द गर्न सक्दैन)"
+        },
+        "hu": {
+            "legacy_caption_pid": 37787,
+            "legacy_language_pid": 43,
+            "text": "Törlés Biztosan akarod? (Nem lehet törölni)",
+            "auto_translated": "Törlés Biztosan akarod? (Nem lehet törölni)"
+        },
+        "cs": {
+            "legacy_caption_pid": 37788,
+            "legacy_language_pid": 44,
+            "text": "Smazat Opravdu chcete? (Nelze zrušit)",
+            "auto_translated": "Smazat Opravdu chcete? (Nelze zrušit)"
+        },
+        "el": {
+            "legacy_caption_pid": 37789,
+            "legacy_language_pid": 45,
+            "text": "Διαγραφή Είστε βέβαιοι ότι θέλετε να; (Δεν μπορείτε να ακυρώσετε)",
+            "auto_translated": "Διαγραφή Είστε βέβαιοι ότι θέλετε να; (Δεν μπορείτε να ακυρώσετε)"
+        },
+        "sv": {
+            "legacy_caption_pid": 37790,
+            "legacy_language_pid": 46,
+            "text": "Radera Är du säker på att du vill? (Du kan inte avbryta)",
+            "auto_translated": "Radera Är du säker på att du vill? (Du kan inte avbryta)"
+        },
+        "kk": {
+            "legacy_caption_pid": 37791,
+            "legacy_language_pid": 47,
+            "text": "Жою Сіз сенімді жойғыңыз келе ме? (Сіз болдырмау мүмкін емес)",
+            "auto_translated": "Жою Сіз сенімді жойғыңыз келе ме? (Сіз болдырмау мүмкін емес)"
+        },
+        "fi": {
+            "legacy_caption_pid": 37792,
+            "legacy_language_pid": 48,
+            "text": "Poisto Oletko varma, että haluat? (Ei voi peruuttaa)",
+            "auto_translated": "Poisto Oletko varma, että haluat? (Ei voi peruuttaa)"
+        },
+        "da": {
+            "legacy_caption_pid": 37793,
+            "legacy_language_pid": 49,
+            "text": "Slet Er du sikker på du vil? (Du kan ikke annullere)",
+            "auto_translated": "Slet Er du sikker på du vil? (Du kan ikke annullere)"
+        },
+        "he": {
+            "legacy_caption_pid": 37794,
+            "legacy_language_pid": 50,
+            "text": "מחק האם אתה בטוח שאתה רוצה? (לא ניתן לבטל)",
+            "auto_translated": "מחק האם אתה בטוח שאתה רוצה? (לא ניתן לבטל)"
+        },
+        "no": {
+            "legacy_caption_pid": 37795,
+            "legacy_language_pid": 51,
+            "text": "Slett Er du sikker på at du vil? (Du kan ikke avbryte)",
+            "auto_translated": "Slett Er du sikker på at du vil? (Du kan ikke avbryte)"
+        }
+    }
+}

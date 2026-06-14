@@ -1,0 +1,321 @@
+{
+    "resource_key": "COMMON_LIB_ENROLL_ANNOUMCEMENT1",
+    "legacy_resource_pid": 1404,
+    "base_group_key": "grp-010-matsuesoft-lib",
+    "additional_group_keys": [],
+    "key_for_update": "3VZKH76CKJrZwpsQ51zWOai0vV15XCZsornLwGUhvne3hCpr8MCL5AfLeO2esp3Gg0NO7yHQdrqGXGR2Cuo9HHSVfPXh80wBujvdlvwgAaAeXFm3aZM2se1KoRZYynQS",
+    "sort_group": "ENROLL",
+    "key_name": "COMMON_LIB_ENROLL_ANNOUMCEMENT1",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": false,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 5890,
+            "legacy_language_pid": 1,
+            "text": "これは、当サイト専用のユーザ名(ID)を発行するためのページです。",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 5891,
+            "legacy_language_pid": 2,
+            "text": "This registration is to issue this site's User Name (ID).",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 5892,
+            "legacy_language_pid": 3,
+            "text": "这是只发放该网站的ID的页面。",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 5893,
+            "legacy_language_pid": 4,
+            "text": "본 사이트 전용 아이디 를 발행하기 위한 페이지입니다.",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 10747,
+            "legacy_language_pid": 5,
+            "text": "Este registro es para emitir el ID de este sitio.",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 10748,
+            "legacy_language_pid": 6,
+            "text": "Este registro é para emitir o ID desse site.",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 10749,
+            "legacy_language_pid": 7,
+            "text": "這是只發放該網站的ID的頁面。",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 16019,
+            "legacy_language_pid": 8,
+            "text": "Cette inscription consiste à émettre le nom d'utilisateur (ID) de ce site.",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 16020,
+            "legacy_language_pid": 9,
+            "text": "यह पंजीकरण इस साइट के यूज़र नेम (आईडी) को जारी करना है।",
+            "auto_translated": ""
+        },
+        "ar": {
+            "legacy_caption_pid": 42304,
+            "legacy_language_pid": 10,
+            "text": "هذه هي الصفحة لإصدار هذا الموقع مخصص اسم المستخدم (ID).",
+            "auto_translated": "هذه هي الصفحة لإصدار هذا الموقع مخصص اسم المستخدم (ID)."
+        },
+        "fa": {
+            "legacy_caption_pid": 42305,
+            "legacy_language_pid": 11,
+            "text": "این صفحه را برای صدور این سایت اختصاص داده شده نام کاربری (ID) است.",
+            "auto_translated": "این صفحه را برای صدور این سایت اختصاص داده شده نام کاربری (ID) است."
+        },
+        "de": {
+            "legacy_caption_pid": 42306,
+            "legacy_language_pid": 12,
+            "text": "Dies ist die Seite zur Ausstellung dieser Website gewidmet Benutzername (ID).",
+            "auto_translated": "Dies ist die Seite zur Ausstellung dieser Website gewidmet Benutzername (ID)."
+        },
+        "ru": {
+            "legacy_caption_pid": 42307,
+            "legacy_language_pid": 13,
+            "text": "Это страница для выдачи данного сайта, посвященного имя пользователя (ID).",
+            "auto_translated": "Это страница для выдачи данного сайта, посвященного имя пользователя (ID)."
+        },
+        "ms": {
+            "legacy_caption_pid": 42308,
+            "legacy_language_pid": 14,
+            "text": "Ini adalah halaman untuk mengeluarkan ini tapak yang dikhususkan nama pengguna (ID).",
+            "auto_translated": "Ini adalah halaman untuk mengeluarkan ini tapak yang dikhususkan nama pengguna (ID)."
+        },
+        "ta": {
+            "legacy_caption_pid": 42309,
+            "legacy_language_pid": 15,
+            "text": "இந்த தளத்தில் அர்ப்பணிக்கப்பட்ட பயனர் பெயர் (ஐடி) வழங்குவதற்கான பக்கமாகும்.",
+            "auto_translated": "இந்த தளத்தில் அர்ப்பணிக்கப்பட்ட பயனர் பெயர் (ஐடி) வழங்குவதற்கான பக்கமாகும்."
+        },
+        "it": {
+            "legacy_caption_pid": 42310,
+            "legacy_language_pid": 16,
+            "text": "Questa è la pagina per il rilascio di questo nome utente sito dedicato (ID).",
+            "auto_translated": "Questa è la pagina per il rilascio di questo nome utente sito dedicato (ID)."
+        },
+        "bn": {
+            "legacy_caption_pid": 42311,
+            "legacy_language_pid": 17,
+            "text": "এই সাইটে নিবেদিত ব্যবহারকারী নাম (আইডি) জারি জন্য পাতা।",
+            "auto_translated": "এই সাইটে নিবেদিত ব্যবহারকারী নাম (আইডি) জারি জন্য পাতা।"
+        },
+        "tr": {
+            "legacy_caption_pid": 42312,
+            "legacy_language_pid": 18,
+            "text": "Bu bu site adanmış kullanıcı adı (ID) verilmesine yönelik sayfası.",
+            "auto_translated": "Bu bu site adanmış kullanıcı adı (ID) verilmesine yönelik sayfası."
+        },
+        "vi": {
+            "legacy_caption_pid": 42313,
+            "legacy_language_pid": 19,
+            "text": "Đây là trang phát hành trang web dành riêng tên người dùng (ID) này.",
+            "auto_translated": "Đây là trang phát hành trang web dành riêng tên người dùng (ID) này."
+        },
+        "pl": {
+            "legacy_caption_pid": 42314,
+            "legacy_language_pid": 20,
+            "text": "To jest strona dla wydawania Ta witryna poświęcona nazwę użytkownika (ID).",
+            "auto_translated": "To jest strona dla wydawania Ta witryna poświęcona nazwę użytkownika (ID)."
+        },
+        "jv": {
+            "legacy_caption_pid": 42315,
+            "legacy_language_pid": 21,
+            "text": "Iki kaca kanggo nerbitake situs kebon iki jeneng panganggo (ID).",
+            "auto_translated": "Iki kaca kanggo nerbitake situs kebon iki jeneng panganggo (ID)."
+        },
+        "pa": {
+            "legacy_caption_pid": 42316,
+            "legacy_language_pid": 22,
+            "text": "ਇਹ ਇਸ ਸਾਈਟ ਨੂੰ ਸਮਰਪਿਤ ਯੂਜ਼ਰ ਨੂੰ ਨਾਮ ਹੈ (ID) ਜਾਰੀ ਕਰਨ ਲਈ ਸਫ਼ਾ ਹੈ.",
+            "auto_translated": "ਇਹ ਇਸ ਸਾਈਟ ਨੂੰ ਸਮਰਪਿਤ ਯੂਜ਼ਰ ਨੂੰ ਨਾਮ ਹੈ (ID) ਜਾਰੀ ਕਰਨ ਲਈ ਸਫ਼ਾ ਹੈ."
+        },
+        "th": {
+            "legacy_caption_pid": 42317,
+            "legacy_language_pid": 23,
+            "text": "นี่คือหน้าที่ในการออกเว็บไซต์ทุ่มเทชื่อผู้ใช้นี้ (ID)",
+            "auto_translated": "นี่คือหน้าที่ในการออกเว็บไซต์ทุ่มเทชื่อผู้ใช้นี้ (ID)"
+        },
+        "te": {
+            "legacy_caption_pid": 42318,
+            "legacy_language_pid": 24,
+            "text": "ఈ సైట్ను అంకితం యూజర్ పేరు (ID) జారీ కోసం పేజీ ఉంది.",
+            "auto_translated": "ఈ సైట్ను అంకితం యూజర్ పేరు (ID) జారీ కోసం పేజీ ఉంది."
+        },
+        "mr": {
+            "legacy_caption_pid": 42319,
+            "legacy_language_pid": 25,
+            "text": "या साइटवरील समर्पित वापरकर्ता नाव (ID) इश्यु करण्यासाठी पृष्ठ आहे.",
+            "auto_translated": "या साइटवरील समर्पित वापरकर्ता नाव (ID) इश्यु करण्यासाठी पृष्ठ आहे."
+        },
+        "ur": {
+            "legacy_caption_pid": 42320,
+            "legacy_language_pid": 26,
+            "text": "یہ اس سائٹ وقف صارف کا نام (ID) جاری کرنے کے لئے صفحہ ہے.",
+            "auto_translated": "یہ اس سائٹ وقف صارف کا نام (ID) جاری کرنے کے لئے صفحہ ہے."
+        },
+        "gu": {
+            "legacy_caption_pid": 42321,
+            "legacy_language_pid": 27,
+            "text": "આ સાઇટ માટે સમર્પિત વપરાશકર્તા નામ (આઇડી) જારી માટે પૃષ્ઠ છે.",
+            "auto_translated": "આ સાઇટ માટે સમર્પિત વપરાશકર્તા નામ (આઇડી) જારી માટે પૃષ્ઠ છે."
+        },
+        "uk": {
+            "legacy_caption_pid": 42322,
+            "legacy_language_pid": 28,
+            "text": "Це сторінка для видачі даного сайту, присвяченого ім'я користувача (ID).",
+            "auto_translated": "Це сторінка для видачі даного сайту, присвяченого ім'я користувача (ID)."
+        },
+        "ml": {
+            "legacy_caption_pid": 42323,
+            "legacy_language_pid": 29,
+            "text": "ഈ ഈ സൈറ്റ് സമർപ്പിത ഉപയോക്തൃ നാമം (ഐഡി) നൽകുന്നതിന് പേജാണ്.",
+            "auto_translated": "ഈ ഈ സൈറ്റ് സമർപ്പിത ഉപയോക്തൃ നാമം (ഐഡി) നൽകുന്നതിന് പേജാണ്."
+        },
+        "kn": {
+            "legacy_caption_pid": 42324,
+            "legacy_language_pid": 30,
+            "text": "ಈ ಸೈಟ್ ಮೀಸಲಾಗಿರುವ ಬಳಕೆದಾರ ಹೆಸರು (ಐಡಿ) ಒದಗಿಸುವುದನ್ನು ಪುಟ.",
+            "auto_translated": "ಈ ಸೈಟ್ ಮೀಸಲಾಗಿರುವ ಬಳಕೆದಾರ ಹೆಸರು (ಐಡಿ) ಒದಗಿಸುವುದನ್ನು ಪುಟ."
+        },
+        "su": {
+            "legacy_caption_pid": 42325,
+            "legacy_language_pid": 31,
+            "text": "Ieu kaca keur ngaluarkeun situs dedicated ieu ngaran pamaké (ID).",
+            "auto_translated": "Ieu kaca keur ngaluarkeun situs dedicated ieu ngaran pamaké (ID)."
+        },
+        "ku": {
+            "legacy_caption_pid": 42326,
+            "legacy_language_pid": 32,
+            "text": "Ev rûpel ji bo derxistina vê malperê diyarî user name (ID) e.",
+            "auto_translated": "Ev rûpel ji bo derxistina vê malperê diyarî user name (ID) e."
+        },
+        "ps": {
+            "legacy_caption_pid": 42327,
+            "legacy_language_pid": 33,
+            "text": "دا د دې ګورتپاڼې وقف کارن نوم (تذکرو) د وېش د مخ.",
+            "auto_translated": "دا د دې ګورتپاڼې وقف کارن نوم (تذکرو) د وېش د مخ."
+        },
+        "ro": {
+            "legacy_caption_pid": 42328,
+            "legacy_language_pid": 34,
+            "text": "Aceasta este pagina pentru eliberarea acestui nume de utilizator site dedicat (ID).",
+            "auto_translated": "Aceasta este pagina pentru eliberarea acestui nume de utilizator site dedicat (ID)."
+        },
+        "id": {
+            "legacy_caption_pid": 42329,
+            "legacy_language_pid": 35,
+            "text": "Ini adalah halaman untuk mengeluarkan situs yang didedikasikan ini nama pengguna (ID).",
+            "auto_translated": "Ini adalah halaman untuk mengeluarkan situs yang didedikasikan ini nama pengguna (ID)."
+        },
+        "sd": {
+            "legacy_caption_pid": 42330,
+            "legacy_language_pid": 36,
+            "text": "اهو هن سائيٽ وقف صارف نالو (سڃاڻپ) لائينز جي صفحي آهي.",
+            "auto_translated": "اهو هن سائيٽ وقف صارف نالو (سڃاڻپ) لائينز جي صفحي آهي."
+        },
+        "af": {
+            "legacy_caption_pid": 42331,
+            "legacy_language_pid": 37,
+            "text": "Dit is die blad vir die uitreiking van hierdie blad toegewyd gebruikersnaam (ID).",
+            "auto_translated": "Dit is die blad vir die uitreiking van hierdie blad toegewyd gebruikersnaam (ID)."
+        },
+        "sw": {
+            "legacy_caption_pid": 42332,
+            "legacy_language_pid": 38,
+            "text": "Hii ni ukurasa kwa ajili ya kutoa tovuti wakfu huu wa mtumiaji jina (ID).",
+            "auto_translated": "Hii ni ukurasa kwa ajili ya kutoa tovuti wakfu huu wa mtumiaji jina (ID)."
+        },
+        "lo": {
+            "legacy_caption_pid": 42333,
+            "legacy_language_pid": 39,
+            "text": "ນີ້ແມ່ນຫນ້າທີ່ສໍາລັບການອອກເວັບໄຊອຸທິດຕົນນີ້ຊື່ຜູ້ໃຊ້ (ລະຫັດ).",
+            "auto_translated": "ນີ້ແມ່ນຫນ້າທີ່ສໍາລັບການອອກເວັບໄຊອຸທິດຕົນນີ້ຊື່ຜູ້ໃຊ້ (ລະຫັດ)."
+        },
+        "nl": {
+            "legacy_caption_pid": 42334,
+            "legacy_language_pid": 40,
+            "text": "Dit is de pagina voor de afgifte van deze site gewijd gebruikersnaam (ID).",
+            "auto_translated": "Dit is de pagina voor de afgifte van deze site gewijd gebruikersnaam (ID)."
+        },
+        "tl": {
+            "legacy_caption_pid": 42335,
+            "legacy_language_pid": 41,
+            "text": "Ito ang pahina para sa issuing ang site na nakatuon user name (ID).",
+            "auto_translated": "Ito ang pahina para sa issuing ang site na nakatuon user name (ID)."
+        },
+        "ne": {
+            "legacy_caption_pid": 42336,
+            "legacy_language_pid": 42,
+            "text": "यो यस साइट समर्पित प्रयोगकर्ता नाम (आईडी) issuing लागि पृष्ठ हो।",
+            "auto_translated": "यो यस साइट समर्पित प्रयोगकर्ता नाम (आईडी) issuing लागि पृष्ठ हो।"
+        },
+        "hu": {
+            "legacy_caption_pid": 42337,
+            "legacy_language_pid": 43,
+            "text": "Ez az oldal a kibocsátó webhely szentelt felhasználó nevét (ID).",
+            "auto_translated": "Ez az oldal a kibocsátó webhely szentelt felhasználó nevét (ID)."
+        },
+        "cs": {
+            "legacy_caption_pid": 42338,
+            "legacy_language_pid": 44,
+            "text": "To je stránka pro vydání tohoto webu věnovaná uživatelské jméno (ID).",
+            "auto_translated": "To je stránka pro vydání tohoto webu věnovaná uživatelské jméno (ID)."
+        },
+        "el": {
+            "legacy_caption_pid": 42339,
+            "legacy_language_pid": 45,
+            "text": "Αυτή είναι η σελίδα για την έκδοση αυτού του site αφιερωμένο το όνομα χρήστη (ID).",
+            "auto_translated": "Αυτή είναι η σελίδα για την έκδοση αυτού του site αφιερωμένο το όνομα χρήστη (ID)."
+        },
+        "sv": {
+            "legacy_caption_pid": 42340,
+            "legacy_language_pid": 46,
+            "text": "Det här är sidan för att utfärda denna webbplats tillägnad användarnamn (ID).",
+            "auto_translated": "Det här är sidan för att utfärda denna webbplats tillägnad användarnamn (ID)."
+        },
+        "kk": {
+            "legacy_caption_pid": 42341,
+            "legacy_language_pid": 47,
+            "text": "Бұл сайт арнайы пайдаланушы атын (ID) мыналарды бергенi үшiн беті.",
+            "auto_translated": "Бұл сайт арнайы пайдаланушы атын (ID) мыналарды бергенi үшiн беті."
+        },
+        "fi": {
+            "legacy_caption_pid": 42342,
+            "legacy_language_pid": 48,
+            "text": "Tämä on sivu, laatinut tämän sivuston omistettu käyttäjätunnus (ID).",
+            "auto_translated": "Tämä on sivu, laatinut tämän sivuston omistettu käyttäjätunnus (ID)."
+        },
+        "da": {
+            "legacy_caption_pid": 42343,
+            "legacy_language_pid": 49,
+            "text": "Dette er siden for at udstede denne site dedikeret brugernavn (ID).",
+            "auto_translated": "Dette er siden for at udstede denne site dedikeret brugernavn (ID)."
+        },
+        "he": {
+            "legacy_caption_pid": 42344,
+            "legacy_language_pid": 50,
+            "text": "זהו הדף להוצאת שם משתמש מוקדש אתר זה (ID).",
+            "auto_translated": "זהו הדף להוצאת שם משתמש מוקדש אתר זה (ID)."
+        },
+        "no": {
+            "legacy_caption_pid": 42345,
+            "legacy_language_pid": 51,
+            "text": "Dette er siden for å utstede dette nettstedet er dedikert brukernavnet (ID).",
+            "auto_translated": "Dette er siden for å utstede dette nettstedet er dedikert brukernavnet (ID)."
+        }
+    }
+}

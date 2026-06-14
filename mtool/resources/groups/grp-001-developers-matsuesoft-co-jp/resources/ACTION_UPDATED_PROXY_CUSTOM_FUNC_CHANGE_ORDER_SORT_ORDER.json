@@ -1,0 +1,27 @@
+{
+    "resource_key": "ACTION_UPDATED_PROXY_CUSTOM_FUNC_CHANGE_ORDER_SORT_ORDER",
+    "legacy_resource_pid": 303,
+    "base_group_key": "grp-001-developers-matsuesoft-co-jp",
+    "additional_group_keys": [],
+    "key_for_update": "0",
+    "sort_group": "ACTION PROXY_CUSTOM_FUNC_CHANGE_ORDER_SORT_ORDER",
+    "key_name": "ACTION_UPDATED_PROXY_CUSTOM_FUNC_CHANGE_ORDER_SORT_ORDER",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": true,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 3994,
+            "legacy_language_pid": 1,
+            "text": "データアクセスクラス Proxy対象 関数一覧[カスタム, 複数対象] Sort Order更新完了",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 3995,
+            "legacy_language_pid": 2,
+            "text": "Updated Sort Order of Data Access Class [Custom, Multi Target]",
+            "auto_translated": ""
+        }
+    }
+}

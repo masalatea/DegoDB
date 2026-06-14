@@ -1,0 +1,27 @@
+{
+    "resource_key": "ACTION_UPDATE_DROPBOX_EMAIL",
+    "legacy_resource_pid": 473,
+    "base_group_key": "grp-001-developers-matsuesoft-co-jp",
+    "additional_group_keys": [],
+    "key_for_update": "0",
+    "sort_group": "ACTION DROPBOX_EMAIL",
+    "key_name": "ACTION_UPDATE_DROPBOX_EMAIL",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": true,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 3796,
+            "legacy_language_pid": 1,
+            "text": "プロジェクト Dropbox用Email更新",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 3797,
+            "legacy_language_pid": 2,
+            "text": "Update Project User's Email for Dropbox",
+            "auto_translated": ""
+        }
+    }
+}

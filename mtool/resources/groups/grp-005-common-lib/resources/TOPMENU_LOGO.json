@@ -1,0 +1,321 @@
+{
+    "resource_key": "TOPMENU_LOGO",
+    "legacy_resource_pid": 528,
+    "base_group_key": "grp-005-common-lib",
+    "additional_group_keys": [],
+    "key_for_update": "bPmCvhNUXCs339iYjuhNTGVOzNfci5HWvk7H787D29A72Qw5Xn3NWpTpCufvPSIlv6q7tAFkD1ZARYQRZdxeK0sYRUfXt6WQR9dopUmG3HWboYkbso67G7hvrdcq82TS",
+    "sort_group": "TOPMENU",
+    "key_name": "TOPMENU_LOGO",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": false,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 1413,
+            "legacy_language_pid": 1,
+            "text": "$DOMAINNAMECAPTION_JP",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 1414,
+            "legacy_language_pid": 2,
+            "text": "$DOMAINNAMECAPTION_EN",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 6580,
+            "legacy_language_pid": 3,
+            "text": "$DOMAINNAMECAPTION_ZH",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 6581,
+            "legacy_language_pid": 4,
+            "text": "$DOMAINNAMECAPTION_KO",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 9984,
+            "legacy_language_pid": 5,
+            "text": "$DOMAINNAMECAPTION_ES",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 9985,
+            "legacy_language_pid": 6,
+            "text": "$DOMAINNAMECAPTION_PT",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 10003,
+            "legacy_language_pid": 7,
+            "text": "$DOMAINNAMECAPTION_TZH",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 16367,
+            "legacy_language_pid": 8,
+            "text": "$DOMAINNAMECAPTION_FR",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 16368,
+            "legacy_language_pid": 9,
+            "text": "$DOMAINNAMECAPTION_HI",
+            "auto_translated": ""
+        },
+        "ar": {
+            "legacy_caption_pid": 30416,
+            "legacy_language_pid": 10,
+            "text": "$DOMAINNAMECAPTION_AR",
+            "auto_translated": "$DOMAINNAMECAPTION_AR"
+        },
+        "fa": {
+            "legacy_caption_pid": 30417,
+            "legacy_language_pid": 11,
+            "text": "$DOMAINNAMECAPTION_FA",
+            "auto_translated": "$DOMAINNAMECAPTION_FA"
+        },
+        "de": {
+            "legacy_caption_pid": 30418,
+            "legacy_language_pid": 12,
+            "text": "$DOMAINNAMECAPTION_DE",
+            "auto_translated": "$DOMAINNAMECAPTION_DE"
+        },
+        "ru": {
+            "legacy_caption_pid": 30419,
+            "legacy_language_pid": 13,
+            "text": "$DOMAINNAMECAPTION_RU",
+            "auto_translated": "$DOMAINNAMECAPTION_RU"
+        },
+        "ms": {
+            "legacy_caption_pid": 30420,
+            "legacy_language_pid": 14,
+            "text": "$DOMAINNAMECAPTION_MS",
+            "auto_translated": "$DOMAINNAMECAPTION_MS"
+        },
+        "ta": {
+            "legacy_caption_pid": 30421,
+            "legacy_language_pid": 15,
+            "text": "$DOMAINNAMECAPTION_TA",
+            "auto_translated": "$DOMAINNAMECAPTION_TA"
+        },
+        "it": {
+            "legacy_caption_pid": 30422,
+            "legacy_language_pid": 16,
+            "text": "$DOMAINNAMECAPTION_IT",
+            "auto_translated": "$DOMAINNAMECAPTION_IT"
+        },
+        "bn": {
+            "legacy_caption_pid": 30423,
+            "legacy_language_pid": 17,
+            "text": "$DOMAINNAMECAPTION_BN",
+            "auto_translated": "$DOMAINNAMECAPTION_BN"
+        },
+        "tr": {
+            "legacy_caption_pid": 30424,
+            "legacy_language_pid": 18,
+            "text": "$DOMAINNAMECAPTION_TR",
+            "auto_translated": "$DOMAINNAMECAPTION_TR"
+        },
+        "vi": {
+            "legacy_caption_pid": 30425,
+            "legacy_language_pid": 19,
+            "text": "$DOMAINNAMECAPTION_VI",
+            "auto_translated": "$DOMAINNAMECAPTION_VI"
+        },
+        "pl": {
+            "legacy_caption_pid": 30426,
+            "legacy_language_pid": 20,
+            "text": "$DOMAINNAMECAPTION_PL",
+            "auto_translated": "$DOMAINNAMECAPTION_PL"
+        },
+        "jv": {
+            "legacy_caption_pid": 30427,
+            "legacy_language_pid": 21,
+            "text": "$DOMAINNAMECAPTION_JV",
+            "auto_translated": "$DOMAINNAMECAPTION_JV"
+        },
+        "pa": {
+            "legacy_caption_pid": 30428,
+            "legacy_language_pid": 22,
+            "text": "$DOMAINNAMECAPTION_PA",
+            "auto_translated": "$DOMAINNAMECAPTION_PA"
+        },
+        "th": {
+            "legacy_caption_pid": 30429,
+            "legacy_language_pid": 23,
+            "text": "$DOMAINNAMECAPTION_TH",
+            "auto_translated": "$DOMAINNAMECAPTION_TH"
+        },
+        "te": {
+            "legacy_caption_pid": 35612,
+            "legacy_language_pid": 24,
+            "text": "$DOMAINNAMECAPTION_TE",
+            "auto_translated": "$DOMAINNAMECAPTION_TE"
+        },
+        "mr": {
+            "legacy_caption_pid": 35613,
+            "legacy_language_pid": 25,
+            "text": "$DOMAINNAMECAPTION_MR",
+            "auto_translated": "$DOMAINNAMECAPTION_MR"
+        },
+        "ur": {
+            "legacy_caption_pid": 35614,
+            "legacy_language_pid": 26,
+            "text": "$DOMAINNAMECAPTION_UR",
+            "auto_translated": "$DOMAINNAMECAPTION_UR"
+        },
+        "gu": {
+            "legacy_caption_pid": 35615,
+            "legacy_language_pid": 27,
+            "text": "$DOMAINNAMECAPTION_GU",
+            "auto_translated": "$DOMAINNAMECAPTION_GU"
+        },
+        "uk": {
+            "legacy_caption_pid": 35616,
+            "legacy_language_pid": 28,
+            "text": "$DOMAINNAMECAPTION_UK",
+            "auto_translated": "$DOMAINNAMECAPTION_UK"
+        },
+        "ml": {
+            "legacy_caption_pid": 35617,
+            "legacy_language_pid": 29,
+            "text": "$DOMAINNAMECAPTION_ML",
+            "auto_translated": "$DOMAINNAMECAPTION_ML"
+        },
+        "kn": {
+            "legacy_caption_pid": 35618,
+            "legacy_language_pid": 30,
+            "text": "$DOMAINNAMECAPTION_KN",
+            "auto_translated": "$DOMAINNAMECAPTION_KN"
+        },
+        "su": {
+            "legacy_caption_pid": 35619,
+            "legacy_language_pid": 31,
+            "text": "$DOMAINNAMECAPTION_SU",
+            "auto_translated": "$DOMAINNAMECAPTION_SU"
+        },
+        "ku": {
+            "legacy_caption_pid": 35620,
+            "legacy_language_pid": 32,
+            "text": "$DOMAINNAMECAPTION_KU",
+            "auto_translated": "$DOMAINNAMECAPTION_KU"
+        },
+        "ps": {
+            "legacy_caption_pid": 35621,
+            "legacy_language_pid": 33,
+            "text": "$DOMAINNAMECAPTION_PS",
+            "auto_translated": "$DOMAINNAMECAPTION_PS"
+        },
+        "ro": {
+            "legacy_caption_pid": 35622,
+            "legacy_language_pid": 34,
+            "text": "$DOMAINNAMECAPTION_RO",
+            "auto_translated": "$DOMAINNAMECAPTION_RO"
+        },
+        "id": {
+            "legacy_caption_pid": 35623,
+            "legacy_language_pid": 35,
+            "text": "$DOMAINNAMECAPTION_ID",
+            "auto_translated": "$DOMAINNAMECAPTION_ID"
+        },
+        "sd": {
+            "legacy_caption_pid": 35624,
+            "legacy_language_pid": 36,
+            "text": "$DOMAINNAMECAPTION_SD",
+            "auto_translated": "$DOMAINNAMECAPTION_SD"
+        },
+        "af": {
+            "legacy_caption_pid": 35625,
+            "legacy_language_pid": 37,
+            "text": "$DOMAINNAMECAPTION_AF",
+            "auto_translated": "$DOMAINNAMECAPTION_AF"
+        },
+        "sw": {
+            "legacy_caption_pid": 35626,
+            "legacy_language_pid": 38,
+            "text": "$DOMAINNAMECAPTION_SW",
+            "auto_translated": "$DOMAINNAMECAPTION_SW"
+        },
+        "lo": {
+            "legacy_caption_pid": 35627,
+            "legacy_language_pid": 39,
+            "text": "$DOMAINNAMECAPTION_LO",
+            "auto_translated": "$DOMAINNAMECAPTION_LO"
+        },
+        "nl": {
+            "legacy_caption_pid": 35628,
+            "legacy_language_pid": 40,
+            "text": "$DOMAINNAMECAPTION_NL",
+            "auto_translated": "$DOMAINNAMECAPTION_NL"
+        },
+        "tl": {
+            "legacy_caption_pid": 35629,
+            "legacy_language_pid": 41,
+            "text": "$DOMAINNAMECAPTION_TL",
+            "auto_translated": "$DOMAINNAMECAPTION_TL"
+        },
+        "ne": {
+            "legacy_caption_pid": 35630,
+            "legacy_language_pid": 42,
+            "text": "$DOMAINNAMECAPTION_NE",
+            "auto_translated": "$DOMAINNAMECAPTION_NE"
+        },
+        "hu": {
+            "legacy_caption_pid": 35631,
+            "legacy_language_pid": 43,
+            "text": "$DOMAINNAMECAPTION_HU",
+            "auto_translated": "$DOMAINNAMECAPTION_HU"
+        },
+        "cs": {
+            "legacy_caption_pid": 35632,
+            "legacy_language_pid": 44,
+            "text": "$DOMAINNAMECAPTION_CS",
+            "auto_translated": "$DOMAINNAMECAPTION_CS"
+        },
+        "el": {
+            "legacy_caption_pid": 35633,
+            "legacy_language_pid": 45,
+            "text": "$DOMAINNAMECAPTION_EL",
+            "auto_translated": "$DOMAINNAMECAPTION_EL"
+        },
+        "sv": {
+            "legacy_caption_pid": 35634,
+            "legacy_language_pid": 46,
+            "text": "$DOMAINNAMECAPTION_SV",
+            "auto_translated": "$DOMAINNAMECAPTION_SV"
+        },
+        "kk": {
+            "legacy_caption_pid": 35635,
+            "legacy_language_pid": 47,
+            "text": "$DOMAINNAMECAPTION_KK",
+            "auto_translated": "$DOMAINNAMECAPTION_KK"
+        },
+        "fi": {
+            "legacy_caption_pid": 35636,
+            "legacy_language_pid": 48,
+            "text": "$DOMAINNAMECAPTION_FI",
+            "auto_translated": "$DOMAINNAMECAPTION_FI"
+        },
+        "da": {
+            "legacy_caption_pid": 35637,
+            "legacy_language_pid": 49,
+            "text": "$DOMAINNAMECAPTION_DA",
+            "auto_translated": "$DOMAINNAMECAPTION_DA"
+        },
+        "he": {
+            "legacy_caption_pid": 35638,
+            "legacy_language_pid": 50,
+            "text": "$DOMAINNAMECAPTION_HE",
+            "auto_translated": "$DOMAINNAMECAPTION_HE"
+        },
+        "no": {
+            "legacy_caption_pid": 35639,
+            "legacy_language_pid": 51,
+            "text": "$DOMAINNAMECAPTION_NO",
+            "auto_translated": "$DOMAINNAMECAPTION_NO"
+        }
+    }
+}

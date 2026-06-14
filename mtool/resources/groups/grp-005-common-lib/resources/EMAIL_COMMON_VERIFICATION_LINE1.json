@@ -1,0 +1,321 @@
+{
+    "resource_key": "EMAIL_COMMON_VERIFICATION_LINE1",
+    "legacy_resource_pid": 2581,
+    "base_group_key": "grp-005-common-lib",
+    "additional_group_keys": [],
+    "key_for_update": "WkU6XkaR7gaoUyGBH63vNiMtdXe66FlxMKmO0aVCeSf6Hc5jXt5nvmEKp9A4HbGQMTPBtH0PW1Mu2mWyBP08SlsWUcTA9MFzi13YdrwWnqfuTLn51hGs9oWNePI6UuDn",
+    "sort_group": "EMAIL VERIFICATION",
+    "key_name": "EMAIL_COMMON_VERIFICATION_LINE1",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": false,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 19466,
+            "legacy_language_pid": 1,
+            "text": "以下URLをクリックしますとメールアドレス確認は完了になります。",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 19467,
+            "legacy_language_pid": 2,
+            "text": "Click the URL below and the mail address check will be completed.",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 19468,
+            "legacy_language_pid": 3,
+            "text": "点击下面的URL，邮件地址检查将完成。",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 19469,
+            "legacy_language_pid": 4,
+            "text": "다음 URL을 클릭하면 이메일 주소 확인이 완료됩니다.",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 19470,
+            "legacy_language_pid": 5,
+            "text": "Haga clic en la URL a continuación y se completará la comprobación de la dirección de correo.",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 19471,
+            "legacy_language_pid": 6,
+            "text": "Clique no URL abaixo e a verificação do endereço de email será completada.",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 19472,
+            "legacy_language_pid": 7,
+            "text": "點擊下面的URL，郵件地址檢查將完成。",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 19473,
+            "legacy_language_pid": 8,
+            "text": "Cliquez sur l'URL ci-dessous et la vérification de l'adresse de courrier sera complétée.",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 19474,
+            "legacy_language_pid": 9,
+            "text": "नीचे दिए गए URL पर क्लिक करें और मेल पता चेक पूरा हो जाएगा।",
+            "auto_translated": ""
+        },
+        "ar": {
+            "legacy_caption_pid": 29632,
+            "legacy_language_pid": 10,
+            "text": "دون النقر فوق URL وتأكيد عنوان البريد الإلكتروني سوف تكون كاملة.",
+            "auto_translated": "دون النقر فوق URL وتأكيد عنوان البريد الإلكتروني سوف تكون كاملة."
+        },
+        "fa": {
+            "legacy_caption_pid": 29633,
+            "legacy_language_pid": 11,
+            "text": "در زیر شما با کلیک بر روی URL و تایید آدرس ایمیل کامل خواهد بود.",
+            "auto_translated": "در زیر شما با کلیک بر روی URL و تایید آدرس ایمیل کامل خواهد بود."
+        },
+        "de": {
+            "legacy_caption_pid": 29634,
+            "legacy_language_pid": 12,
+            "text": "Unten sehen Sie die URL klicken und Adresse Bestätigungs-E-Mail komplett sein wird.",
+            "auto_translated": "Unten sehen Sie die URL klicken und Adresse Bestätigungs-E-Mail komplett sein wird."
+        },
+        "ru": {
+            "legacy_caption_pid": 29635,
+            "legacy_language_pid": 13,
+            "text": "Ниже выберите URL и адрес электронной почты подтверждение адреса будет завершена.",
+            "auto_translated": "Ниже выберите URL и адрес электронной почты подтверждение адреса будет завершена."
+        },
+        "ms": {
+            "legacy_caption_pid": 29636,
+            "legacy_language_pid": 14,
+            "text": "Di bawah, anda klik URL dan pengesahan alamat e-mel akan lengkap.",
+            "auto_translated": "Di bawah, anda klik URL dan pengesahan alamat e-mel akan lengkap."
+        },
+        "ta": {
+            "legacy_caption_pid": 29637,
+            "legacy_language_pid": 15,
+            "text": "நீங்கள் கீழே URL மற்றும் மின்னஞ்சல் முகவரியை உறுதிப்படுத்தல் கிளிக் முழு இருக்கும்.",
+            "auto_translated": "நீங்கள் கீழே URL மற்றும் மின்னஞ்சல் முகவரியை உறுதிப்படுத்தல் கிளிக் முழு இருக்கும்."
+        },
+        "it": {
+            "legacy_caption_pid": 29638,
+            "legacy_language_pid": 16,
+            "text": "Qui di seguito si fa clic l'URL e la conferma indirizzo e-mail sarà completa.",
+            "auto_translated": "Qui di seguito si fa clic l'URL e la conferma indirizzo e-mail sarà completa."
+        },
+        "bn": {
+            "legacy_caption_pid": 29639,
+            "legacy_language_pid": 17,
+            "text": "আপনি নীচের URL এবং ই-মেইল ঠিকানা নিশ্চিতকরণ ক্লিক সম্পূর্ণ হবে।",
+            "auto_translated": "আপনি নীচের URL এবং ই-মেইল ঠিকানা নিশ্চিতকরণ ক্লিক সম্পূর্ণ হবে।"
+        },
+        "tr": {
+            "legacy_caption_pid": 29640,
+            "legacy_language_pid": 18,
+            "text": "Aşağıda sizin tamamlanmış olacaktır URL ve e-mail adresi onayı tıklayın.",
+            "auto_translated": "Aşağıda sizin tamamlanmış olacaktır URL ve e-mail adresi onayı tıklayın."
+        },
+        "vi": {
+            "legacy_caption_pid": 29641,
+            "legacy_language_pid": 19,
+            "text": "Dưới đây bạn nhấp vào URL và xác nhận địa chỉ e-mail sẽ được hoàn thành.",
+            "auto_translated": "Dưới đây bạn nhấp vào URL và xác nhận địa chỉ e-mail sẽ được hoàn thành."
+        },
+        "pl": {
+            "legacy_caption_pid": 29642,
+            "legacy_language_pid": 20,
+            "text": "Poniżej kliknij URL i e-mail potwierdzenie adresu będzie kompletna.",
+            "auto_translated": "Poniżej kliknij URL i e-mail potwierdzenie adresu będzie kompletna."
+        },
+        "jv": {
+            "legacy_caption_pid": 29643,
+            "legacy_language_pid": 21,
+            "text": "Ngisor sampeyan klik URL lan konfirmasi alamat e-mail bakal lengkap.",
+            "auto_translated": "Ngisor sampeyan klik URL lan konfirmasi alamat e-mail bakal lengkap."
+        },
+        "pa": {
+            "legacy_caption_pid": 29644,
+            "legacy_language_pid": 22,
+            "text": "ਤੁਹਾਨੂੰ ਹੇਠ URL ਅਤੇ ਈ-ਮੇਲ ਪਤਾ ਪੁਸ਼ਟੀ ਨੂੰ ਦਬਾਉ ਨੂੰ ਪੂਰਾ ਹੋ ਜਾਵੇਗਾ.",
+            "auto_translated": "ਤੁਹਾਨੂੰ ਹੇਠ URL ਅਤੇ ਈ-ਮੇਲ ਪਤਾ ਪੁਸ਼ਟੀ ਨੂੰ ਦਬਾਉ ਨੂੰ ਪੂਰਾ ਹੋ ਜਾਵੇਗਾ."
+        },
+        "th": {
+            "legacy_caption_pid": 29645,
+            "legacy_language_pid": 23,
+            "text": "ด้านล่างนี้คุณคลิก URL และยืนยัน e-mail address จะเสร็จสมบูรณ์",
+            "auto_translated": "ด้านล่างนี้คุณคลิก URL และยืนยัน e-mail address จะเสร็จสมบูรณ์"
+        },
+        "te": {
+            "legacy_caption_pid": 37180,
+            "legacy_language_pid": 24,
+            "text": "మీరు క్రింద URL మరియు ఇ-మెయిల్ చిరునామా నిర్ధారణ క్లిక్ పూర్తి ఉంటుంది.",
+            "auto_translated": "మీరు క్రింద URL మరియు ఇ-మెయిల్ చిరునామా నిర్ధారణ క్లిక్ పూర్తి ఉంటుంది."
+        },
+        "mr": {
+            "legacy_caption_pid": 37181,
+            "legacy_language_pid": 25,
+            "text": "आपण खालील URL आणि ई-मेल पत्ता पुष्टी क्लिक करा पूर्ण होईल.",
+            "auto_translated": "आपण खालील URL आणि ई-मेल पत्ता पुष्टी क्लिक करा पूर्ण होईल."
+        },
+        "ur": {
+            "legacy_caption_pid": 37182,
+            "legacy_language_pid": 26,
+            "text": "ذیل میں آپ کے یو آر ایل اور ای میل ایڈریس کی تصدیق کریں مکمل ہو جائے گا.",
+            "auto_translated": "ذیل میں آپ کے یو آر ایل اور ای میل ایڈریس کی تصدیق کریں مکمل ہو جائے گا."
+        },
+        "gu": {
+            "legacy_caption_pid": 37183,
+            "legacy_language_pid": 27,
+            "text": "તમે નીચેની URL અને ઇ-મેઇલ સરનામું પુષ્ટિ ક્લિક પૂર્ણ થશે.",
+            "auto_translated": "તમે નીચેની URL અને ઇ-મેઇલ સરનામું પુષ્ટિ ક્લિક પૂર્ણ થશે."
+        },
+        "uk": {
+            "legacy_caption_pid": 37184,
+            "legacy_language_pid": 28,
+            "text": "Нижче виберіть URL та адресу електронної пошти підтвердження адреси буде завершена.",
+            "auto_translated": "Нижче виберіть URL та адресу електронної пошти підтвердження адреси буде завершена."
+        },
+        "ml": {
+            "legacy_caption_pid": 37185,
+            "legacy_language_pid": 29,
+            "text": "നിങ്ങൾ താഴെ ഇ-മെയിൽ വിലാസ സ്ഥിരീകരണം സമാപിക്കുകയും ചെയ്യും ക്ലിക്ക്.",
+            "auto_translated": "നിങ്ങൾ താഴെ ഇ-മെയിൽ വിലാസ സ്ഥിരീകരണം സമാപിക്കുകയും ചെയ്യും ക്ലിക്ക്."
+        },
+        "kn": {
+            "legacy_caption_pid": 37186,
+            "legacy_language_pid": 30,
+            "text": "ನೀವು ಕೆಳಗೆ URL ಮತ್ತು ಇಮೇಲ್ ವಿಳಾಸಕ್ಕೆ ದೃಢೀಕರಣ ಕ್ಲಿಕ್ ಸಂಪೂರ್ಣ ಇರುತ್ತದೆ.",
+            "auto_translated": "ನೀವು ಕೆಳಗೆ URL ಮತ್ತು ಇಮೇಲ್ ವಿಳಾಸಕ್ಕೆ ದೃಢೀಕರಣ ಕ್ಲಿಕ್ ಸಂಪೂರ್ಣ ಇರುತ್ತದೆ."
+        },
+        "su": {
+            "legacy_caption_pid": 37187,
+            "legacy_language_pid": 31,
+            "text": "Handap maneh klik URL na konfirmasi alamat surélék bakal lengkep.",
+            "auto_translated": "Handap maneh klik URL na konfirmasi alamat surélék bakal lengkep."
+        },
+        "ku": {
+            "legacy_caption_pid": 37188,
+            "legacy_language_pid": 32,
+            "text": "Li jêr, pêl vê URL û rastderxistina navnîşana e-mail temam bibe.",
+            "auto_translated": "Li jêr, pêl vê URL û rastderxistina navnîşana e-mail temam bibe."
+        },
+        "ps": {
+            "legacy_caption_pid": 37189,
+            "legacy_language_pid": 33,
+            "text": "لاندې تاسو د حافظی او e برېښلیک پته د تایید کلیک به بشپړ شي.",
+            "auto_translated": "لاندې تاسو د حافظی او e برېښلیک پته د تایید کلیک به بشپړ شي."
+        },
+        "ro": {
+            "legacy_caption_pid": 37190,
+            "legacy_language_pid": 34,
+            "text": "Mai jos faceți clic pe adresa URL și confirmarea adresă de e-mail va fi completă.",
+            "auto_translated": "Mai jos faceți clic pe adresa URL și confirmarea adresă de e-mail va fi completă."
+        },
+        "id": {
+            "legacy_caption_pid": 37191,
+            "legacy_language_pid": 35,
+            "text": "Di bawah ini Anda klik URL dan konfirmasi alamat e-mail akan lengkap.",
+            "auto_translated": "Di bawah ini Anda klik URL dan konfirmasi alamat e-mail akan lengkap."
+        },
+        "sd": {
+            "legacy_caption_pid": 37192,
+            "legacy_language_pid": 36,
+            "text": "توهان هيٺ ڪلڪ ڪريو جي URL ۽ اي-ميل ايڊريس تصديق مڪمل ٿي ويندي.",
+            "auto_translated": "توهان هيٺ ڪلڪ ڪريو جي URL ۽ اي-ميل ايڊريس تصديق مڪمل ٿي ويندي."
+        },
+        "af": {
+            "legacy_caption_pid": 37193,
+            "legacy_language_pid": 37,
+            "text": "Hier vind u kliek op die URL en e-pos adres bevestiging sal volledig wees.",
+            "auto_translated": "Hier vind u kliek op die URL en e-pos adres bevestiging sal volledig wees."
+        },
+        "sw": {
+            "legacy_caption_pid": 37194,
+            "legacy_language_pid": 38,
+            "text": "Hapa chini bonyeza URL na barua pepe ya uthibitisho itakuwa kamili.",
+            "auto_translated": "Hapa chini bonyeza URL na barua pepe ya uthibitisho itakuwa kamili."
+        },
+        "lo": {
+            "legacy_caption_pid": 37195,
+            "legacy_language_pid": 39,
+            "text": "ຕ່ໍາກວ່າທີ່ທ່ານຄລິກໃສ່ທີ່ຢູ່ເວັບໄຊແລະການຢືນຢັນທີ່ຢູ່ອີເມລຈະສໍາເລັດ.",
+            "auto_translated": "ຕ່ໍາກວ່າທີ່ທ່ານຄລິກໃສ່ທີ່ຢູ່ເວັບໄຊແລະການຢືນຢັນທີ່ຢູ່ອີເມລຈະສໍາເລັດ."
+        },
+        "nl": {
+            "legacy_caption_pid": 37196,
+            "legacy_language_pid": 40,
+            "text": "Hieronder vindt u op de URL en e-mail adres bevestiging zal worden voltooid.",
+            "auto_translated": "Hieronder vindt u op de URL en e-mail adres bevestiging zal worden voltooid."
+        },
+        "tl": {
+            "legacy_caption_pid": 37197,
+            "legacy_language_pid": 41,
+            "text": "Sa ibaba mong i-click ang URL at e-mail address kumpirmasyon ay hindi kumpleto.",
+            "auto_translated": "Sa ibaba mong i-click ang URL at e-mail address kumpirmasyon ay hindi kumpleto."
+        },
+        "ne": {
+            "legacy_caption_pid": 37198,
+            "legacy_language_pid": 42,
+            "text": "तपाईँले तल URL र ई-मेल ठेगाना पुष्टि पूरा हुनेछ क्लिक गर्नुहोस्।",
+            "auto_translated": "तपाईँले तल URL र ई-मेल ठेगाना पुष्टि पूरा हुनेछ क्लिक गर्नुहोस्।"
+        },
+        "hu": {
+            "legacy_caption_pid": 37199,
+            "legacy_language_pid": 43,
+            "text": "Alul kattintson az URL-t és e-mail cím megerősítés teljes lesz.",
+            "auto_translated": "Alul kattintson az URL-t és e-mail cím megerősítés teljes lesz."
+        },
+        "cs": {
+            "legacy_caption_pid": 37200,
+            "legacy_language_pid": 44,
+            "text": "Níže naleznete URL a e-mailové potvrzení adresy bude kompletní.",
+            "auto_translated": "Níže naleznete URL a e-mailové potvrzení adresy bude kompletní."
+        },
+        "el": {
+            "legacy_caption_pid": 37201,
+            "legacy_language_pid": 45,
+            "text": "Παρακάτω μπορείτε κάντε κλικ στη διεύθυνση URL και επιβεβαίωση της διεύθυνσης e-mail θα είναι πλήρης.",
+            "auto_translated": "Παρακάτω μπορείτε κάντε κλικ στη διεύθυνση URL και επιβεβαίωση της διεύθυνσης e-mail θα είναι πλήρης."
+        },
+        "sv": {
+            "legacy_caption_pid": 37202,
+            "legacy_language_pid": 46,
+            "text": "Nedan du klickar på webbadressen och e-postadress bekräftelse kommer att vara fullständig.",
+            "auto_translated": "Nedan du klickar på webbadressen och e-postadress bekräftelse kommer att vara fullständig."
+        },
+        "kk": {
+            "legacy_caption_pid": 37203,
+            "legacy_language_pid": 47,
+            "text": "Төменде сіздер URL және электрондық пошта мекен-жайы растау толық болады басыңыз.",
+            "auto_translated": "Төменде сіздер URL және электрондық пошта мекен-жайы растау толық болады басыңыз."
+        },
+        "fi": {
+            "legacy_caption_pid": 37204,
+            "legacy_language_pid": 48,
+            "text": "Alla osoitat osoitetta ja sähköpostiosoite vahvistuksen saadaan päätökseen.",
+            "auto_translated": "Alla osoitat osoitetta ja sähköpostiosoite vahvistuksen saadaan päätökseen."
+        },
+        "da": {
+            "legacy_caption_pid": 37205,
+            "legacy_language_pid": 49,
+            "text": "Nedenfor kan du klikke på URL og e-mail-adresse bekræftelse vil være komplet.",
+            "auto_translated": "Nedenfor kan du klikke på URL og e-mail-adresse bekræftelse vil være komplet."
+        },
+        "he": {
+            "legacy_caption_pid": 37206,
+            "legacy_language_pid": 50,
+            "text": "להלן תלחץ את כתובת האתר ואת אישור כתובת דואר אלקטרוני יהיה שלם.",
+            "auto_translated": "להלן תלחץ את כתובת האתר ואת אישור כתובת דואר אלקטרוני יהיה שלם."
+        },
+        "no": {
+            "legacy_caption_pid": 37207,
+            "legacy_language_pid": 51,
+            "text": "Nedenfor du klikker på URL og e-post adresse bekreftelse vil bli fullført.",
+            "auto_translated": "Nedenfor du klikker på URL og e-post adresse bekreftelse vil bli fullført."
+        }
+    }
+}

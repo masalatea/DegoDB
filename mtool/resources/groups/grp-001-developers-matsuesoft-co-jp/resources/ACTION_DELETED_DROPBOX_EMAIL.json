@@ -1,0 +1,27 @@
+{
+    "resource_key": "ACTION_DELETED_DROPBOX_EMAIL",
+    "legacy_resource_pid": 476,
+    "base_group_key": "grp-001-developers-matsuesoft-co-jp",
+    "additional_group_keys": [],
+    "key_for_update": "0",
+    "sort_group": "ACTION DROPBOX_EMAIL",
+    "key_name": "ACTION_DELETED_DROPBOX_EMAIL",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": true,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 3790,
+            "legacy_language_pid": 1,
+            "text": "プロジェクト Dropbox用Email削除完了",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 3791,
+            "legacy_language_pid": 2,
+            "text": "Deleted Project User's Email for Dropbox",
+            "auto_translated": ""
+        }
+    }
+}

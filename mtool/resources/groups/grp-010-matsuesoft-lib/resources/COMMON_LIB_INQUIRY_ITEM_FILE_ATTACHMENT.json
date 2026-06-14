@@ -1,0 +1,321 @@
+{
+    "resource_key": "COMMON_LIB_INQUIRY_ITEM_FILE_ATTACHMENT",
+    "legacy_resource_pid": 1469,
+    "base_group_key": "grp-010-matsuesoft-lib",
+    "additional_group_keys": [],
+    "key_for_update": "P3sFPoePkVWNoSqmXNGs3ZcLYkUaCtJmX70ecPIygeI7WwOCCXFW6A9Hn3b40TsE2RHqiTRg3jYrxlEkuqjOhNYkuG6YYdQvGrnUxRWRBmZ0YXvmGTLSefHjlIbkDOsp",
+    "sort_group": "INQUIRY",
+    "key_name": "COMMON_LIB_INQUIRY_ITEM_FILE_ATTACHMENT",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": false,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 6150,
+            "legacy_language_pid": 1,
+            "text": "添付ファイル",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 6151,
+            "legacy_language_pid": 2,
+            "text": "File Attachment",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 6152,
+            "legacy_language_pid": 3,
+            "text": "附件",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 6153,
+            "legacy_language_pid": 4,
+            "text": "첨부 파일",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 10997,
+            "legacy_language_pid": 5,
+            "text": "Archivo adjunto ",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 10998,
+            "legacy_language_pid": 6,
+            "text": "Arquivo anexo ",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 10999,
+            "legacy_language_pid": 7,
+            "text": "附件",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 17197,
+            "legacy_language_pid": 8,
+            "text": "Pièce jointe",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 17198,
+            "legacy_language_pid": 9,
+            "text": "दस्तावेज़ संलग्नक",
+            "auto_translated": ""
+        },
+        "ar": {
+            "legacy_caption_pid": 32222,
+            "legacy_language_pid": 10,
+            "text": "ملف مرفق",
+            "auto_translated": "ملف مرفق"
+        },
+        "fa": {
+            "legacy_caption_pid": 32223,
+            "legacy_language_pid": 11,
+            "text": "ضمیمه فایل",
+            "auto_translated": "ضمیمه فایل"
+        },
+        "de": {
+            "legacy_caption_pid": 32224,
+            "legacy_language_pid": 12,
+            "text": "Dateianhang",
+            "auto_translated": "Dateianhang"
+        },
+        "ru": {
+            "legacy_caption_pid": 32225,
+            "legacy_language_pid": 13,
+            "text": "Файл вложения",
+            "auto_translated": "Файл вложения"
+        },
+        "ms": {
+            "legacy_caption_pid": 32226,
+            "legacy_language_pid": 14,
+            "text": "Lampiran Fail",
+            "auto_translated": "Lampiran Fail"
+        },
+        "ta": {
+            "legacy_caption_pid": 32227,
+            "legacy_language_pid": 15,
+            "text": "கோப்பு இணைப்பு",
+            "auto_translated": "கோப்பு இணைப்பு"
+        },
+        "it": {
+            "legacy_caption_pid": 32228,
+            "legacy_language_pid": 16,
+            "text": "File allegato",
+            "auto_translated": "File allegato"
+        },
+        "bn": {
+            "legacy_caption_pid": 32229,
+            "legacy_language_pid": 17,
+            "text": "নথি সংযুক্তি",
+            "auto_translated": "নথি সংযুক্তি"
+        },
+        "tr": {
+            "legacy_caption_pid": 32230,
+            "legacy_language_pid": 18,
+            "text": "Dosya eklentisi",
+            "auto_translated": "Dosya eklentisi"
+        },
+        "vi": {
+            "legacy_caption_pid": 32231,
+            "legacy_language_pid": 19,
+            "text": "Tài liệu đính kèm",
+            "auto_translated": "Tài liệu đính kèm"
+        },
+        "pl": {
+            "legacy_caption_pid": 32232,
+            "legacy_language_pid": 20,
+            "text": "Załącznik",
+            "auto_translated": "Załącznik"
+        },
+        "jv": {
+            "legacy_caption_pid": 32233,
+            "legacy_language_pid": 21,
+            "text": "File Lampiran",
+            "auto_translated": "File Lampiran"
+        },
+        "pa": {
+            "legacy_caption_pid": 32234,
+            "legacy_language_pid": 22,
+            "text": "ਫਾਇਲ ਅਟੈਚਮੈਂਟ",
+            "auto_translated": "ਫਾਇਲ ਅਟੈਚਮੈਂਟ"
+        },
+        "th": {
+            "legacy_caption_pid": 32235,
+            "legacy_language_pid": 23,
+            "text": "ไฟล์แนบ",
+            "auto_translated": "ไฟล์แนบ"
+        },
+        "te": {
+            "legacy_caption_pid": 41156,
+            "legacy_language_pid": 24,
+            "text": "అటాచ్మెంట్లు",
+            "auto_translated": "అటాచ్మెంట్లు"
+        },
+        "mr": {
+            "legacy_caption_pid": 41157,
+            "legacy_language_pid": 25,
+            "text": "संलग्नक",
+            "auto_translated": "संलग्नक"
+        },
+        "ur": {
+            "legacy_caption_pid": 41158,
+            "legacy_language_pid": 26,
+            "text": "آئٹم کے ساتھ منسلک",
+            "auto_translated": "آئٹم کے ساتھ منسلک"
+        },
+        "gu": {
+            "legacy_caption_pid": 41159,
+            "legacy_language_pid": 27,
+            "text": "જોડાણો",
+            "auto_translated": "જોડાણો"
+        },
+        "uk": {
+            "legacy_caption_pid": 41160,
+            "legacy_language_pid": 28,
+            "text": "вкладення",
+            "auto_translated": "вкладення"
+        },
+        "ml": {
+            "legacy_caption_pid": 41161,
+            "legacy_language_pid": 29,
+            "text": "അറ്റാച്മെന്റ്",
+            "auto_translated": "അറ്റാച്മെന്റ്"
+        },
+        "kn": {
+            "legacy_caption_pid": 41162,
+            "legacy_language_pid": 30,
+            "text": "ಲಗತ್ತುಗಳು",
+            "auto_translated": "ಲಗತ್ತುಗಳು"
+        },
+        "su": {
+            "legacy_caption_pid": 41163,
+            "legacy_language_pid": 31,
+            "text": "kantétan",
+            "auto_translated": "kantétan"
+        },
+        "ku": {
+            "legacy_caption_pid": 41164,
+            "legacy_language_pid": 32,
+            "text": "Attachments",
+            "auto_translated": "Attachments"
+        },
+        "ps": {
+            "legacy_caption_pid": 41165,
+            "legacy_language_pid": 33,
+            "text": "ضم",
+            "auto_translated": "ضم"
+        },
+        "ro": {
+            "legacy_caption_pid": 41166,
+            "legacy_language_pid": 34,
+            "text": "Fișiere atașate",
+            "auto_translated": "Fișiere atașate"
+        },
+        "id": {
+            "legacy_caption_pid": 41167,
+            "legacy_language_pid": 35,
+            "text": "lampiran",
+            "auto_translated": "lampiran"
+        },
+        "sd": {
+            "legacy_caption_pid": 41168,
+            "legacy_language_pid": 36,
+            "text": "ڳنڍي",
+            "auto_translated": "ڳنڍي"
+        },
+        "af": {
+            "legacy_caption_pid": 41169,
+            "legacy_language_pid": 37,
+            "text": "aanhegsels",
+            "auto_translated": "aanhegsels"
+        },
+        "sw": {
+            "legacy_caption_pid": 41170,
+            "legacy_language_pid": 38,
+            "text": "Viambatisho",
+            "auto_translated": "Viambatisho"
+        },
+        "lo": {
+            "legacy_caption_pid": 41171,
+            "legacy_language_pid": 39,
+            "text": "ໄຟລ໌ແນບ",
+            "auto_translated": "ໄຟລ໌ແນບ"
+        },
+        "nl": {
+            "legacy_caption_pid": 41172,
+            "legacy_language_pid": 40,
+            "text": "toebehoren",
+            "auto_translated": "toebehoren"
+        },
+        "tl": {
+            "legacy_caption_pid": 41173,
+            "legacy_language_pid": 41,
+            "text": "Mga attachment",
+            "auto_translated": "Mga attachment"
+        },
+        "ne": {
+            "legacy_caption_pid": 41174,
+            "legacy_language_pid": 42,
+            "text": "संलग्नहरू",
+            "auto_translated": "संलग्नहरू"
+        },
+        "hu": {
+            "legacy_caption_pid": 41175,
+            "legacy_language_pid": 43,
+            "text": "Mellékletek",
+            "auto_translated": "Mellékletek"
+        },
+        "cs": {
+            "legacy_caption_pid": 41176,
+            "legacy_language_pid": 44,
+            "text": "Přílohy",
+            "auto_translated": "Přílohy"
+        },
+        "el": {
+            "legacy_caption_pid": 41177,
+            "legacy_language_pid": 45,
+            "text": "συνημμένα",
+            "auto_translated": "συνημμένα"
+        },
+        "sv": {
+            "legacy_caption_pid": 41178,
+            "legacy_language_pid": 46,
+            "text": "bilagor",
+            "auto_translated": "bilagor"
+        },
+        "kk": {
+            "legacy_caption_pid": 41179,
+            "legacy_language_pid": 47,
+            "text": "Тіркемелер",
+            "auto_translated": "Тіркемелер"
+        },
+        "fi": {
+            "legacy_caption_pid": 41180,
+            "legacy_language_pid": 48,
+            "text": "Liitteet",
+            "auto_translated": "Liitteet"
+        },
+        "da": {
+            "legacy_caption_pid": 41181,
+            "legacy_language_pid": 49,
+            "text": "Vedhæftede filer",
+            "auto_translated": "Vedhæftede filer"
+        },
+        "he": {
+            "legacy_caption_pid": 41182,
+            "legacy_language_pid": 50,
+            "text": "קבצים מצורפים",
+            "auto_translated": "קבצים מצורפים"
+        },
+        "no": {
+            "legacy_caption_pid": 41183,
+            "legacy_language_pid": 51,
+            "text": "vedlegg",
+            "auto_translated": "vedlegg"
+        }
+    }
+}

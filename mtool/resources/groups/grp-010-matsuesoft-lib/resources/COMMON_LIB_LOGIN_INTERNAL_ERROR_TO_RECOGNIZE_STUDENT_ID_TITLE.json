@@ -1,0 +1,321 @@
+{
+    "resource_key": "COMMON_LIB_LOGIN_INTERNAL_ERROR_TO_RECOGNIZE_STUDENT_ID_TITLE",
+    "legacy_resource_pid": 1483,
+    "base_group_key": "grp-010-matsuesoft-lib",
+    "additional_group_keys": [],
+    "key_for_update": "M0mXT2ZUwwo1ydyVptO95NzfUQWL0lmKe9Bur3PTE4z94eLvECwwetox6Pog8VEjicRrKN5ZyAmyaRaQcnBx06c0UMY3MCm6ayNg95nOjvoUGNvQ883Q35ZTMq5NaZ25",
+    "sort_group": "LOGIN",
+    "key_name": "COMMON_LIB_LOGIN_INTERNAL_ERROR_TO_RECOGNIZE_STUDENT_ID_TITLE",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": false,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 6206,
+            "legacy_language_pid": 1,
+            "text": "[内部エラー] 会員ユーザ名(ID)が認識できません。",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 6207,
+            "legacy_language_pid": 2,
+            "text": "[Internal error] The member's User Name (ID) can not be recognized.",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 6208,
+            "legacy_language_pid": 3,
+            "text": "[内部错误]成员用户名ID不能被识别。",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 6209,
+            "legacy_language_pid": 4,
+            "text": "[내부 오류] 회원 아이디 를 인식 할 수 없습니다.",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 11099,
+            "legacy_language_pid": 5,
+            "text": "[Error interno] No se puede reconocer el ID de miembro.",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 11100,
+            "legacy_language_pid": 6,
+            "text": "[Erro interno] O ID do membro não pode ser reconhecido.",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 11101,
+            "legacy_language_pid": 7,
+            "text": "[內部錯誤]成員用户名ID不能被識別。",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 16059,
+            "legacy_language_pid": 8,
+            "text": "[Erreur interne] Non se puede reconocer l'ID de membre.",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 16060,
+            "legacy_language_pid": 9,
+            "text": "[आंतरिक त्रुटि] सदस्य का उपयोगकर्ता नाम (आईडी) पहचान नहीं किया जा सकता।",
+            "auto_translated": ""
+        },
+        "ar": {
+            "legacy_caption_pid": 32714,
+            "legacy_language_pid": 10,
+            "text": "لا يمكن التعرف على [خطأ داخلي] اسم المستخدم عضوا (ID).",
+            "auto_translated": "لا يمكن التعرف على [خطأ داخلي] اسم المستخدم عضوا (ID)."
+        },
+        "fa": {
+            "legacy_caption_pid": 32715,
+            "legacy_language_pid": 11,
+            "text": "[داخلی خطای نام کاربری عضو (ID) نمی تواند رسمیت شناخته شود.",
+            "auto_translated": "[داخلی خطای نام کاربری عضو (ID) نمی تواند رسمیت شناخته شود."
+        },
+        "de": {
+            "legacy_caption_pid": 32716,
+            "legacy_language_pid": 12,
+            "text": "[Interner Fehler] Mitglied Benutzername (ID) kann nicht erkannt werden.",
+            "auto_translated": "[Interner Fehler] Mitglied Benutzername (ID) kann nicht erkannt werden."
+        },
+        "ru": {
+            "legacy_caption_pid": 32717,
+            "legacy_language_pid": 13,
+            "text": "[Внутренняя ошибка] Имя пользователя члена (ID), не может быть признано.",
+            "auto_translated": "[Внутренняя ошибка] Имя пользователя члена (ID), не может быть признано."
+        },
+        "ms": {
+            "legacy_caption_pid": 32718,
+            "legacy_language_pid": 14,
+            "text": "[Dalaman ralat] Nama ahli pengguna (ID) tidak boleh diiktiraf.",
+            "auto_translated": "[Dalaman ralat] Nama ahli pengguna (ID) tidak boleh diiktiraf."
+        },
+        "ta": {
+            "legacy_caption_pid": 32719,
+            "legacy_language_pid": 15,
+            "text": "[அகப் பிழை] உறுப்பினரை பயனர் பெயர் (ஐடி) ஏற்க முடியாது.",
+            "auto_translated": "[அகப் பிழை] உறுப்பினரை பயனர் பெயர் (ஐடி) ஏற்க முடியாது."
+        },
+        "it": {
+            "legacy_caption_pid": 32720,
+            "legacy_language_pid": 16,
+            "text": "[Errore interno] nome utente utente (ID) non può essere riconosciuto.",
+            "auto_translated": "[Errore interno] nome utente utente (ID) non può essere riconosciuto."
+        },
+        "bn": {
+            "legacy_caption_pid": 32721,
+            "legacy_language_pid": 17,
+            "text": "[অভ্যন্তরীণ ত্রুটি] সদস্য ব্যবহারকারী নাম (আইডি) স্বীকৃত করা যাবে না।",
+            "auto_translated": "[অভ্যন্তরীণ ত্রুটি] সদস্য ব্যবহারকারী নাম (আইডি) স্বীকৃত করা যাবে না।"
+        },
+        "tr": {
+            "legacy_caption_pid": 32722,
+            "legacy_language_pid": 18,
+            "text": "[İç hata] elemanı kullanıcı adı (İD) kabul edilemez.",
+            "auto_translated": "[İç hata] elemanı kullanıcı adı (İD) kabul edilemez."
+        },
+        "vi": {
+            "legacy_caption_pid": 32723,
+            "legacy_language_pid": 19,
+            "text": "[Internal lỗi] tên người dùng thành viên (ID) không thể được công nhận.",
+            "auto_translated": "[Internal lỗi] tên người dùng thành viên (ID) không thể được công nhận."
+        },
+        "pl": {
+            "legacy_caption_pid": 32724,
+            "legacy_language_pid": 20,
+            "text": "[Błąd wewnętrzny] nazwa użytkownika użytkownik (ID) nie może zostać rozpoznana.",
+            "auto_translated": "[Błąd wewnętrzny] nazwa użytkownika użytkownik (ID) nie może zostać rozpoznana."
+        },
+        "jv": {
+            "legacy_caption_pid": 32725,
+            "legacy_language_pid": 21,
+            "text": "[Internal kesalahan] jeneng anggota pengguna (ID) ora bisa dikenali.",
+            "auto_translated": "[Internal kesalahan] jeneng anggota pengguna (ID) ora bisa dikenali."
+        },
+        "pa": {
+            "legacy_caption_pid": 32726,
+            "legacy_language_pid": 22,
+            "text": "[ਅੰਦਰੂਨੀ ਗਲਤੀ] ਸਦੱਸ ਯੂਜ਼ਰ ਨੂੰ ਨਾਮ ਹੈ (ID) ਮਾਨਤਾ ਪ੍ਰਾਪਤ ਨਹੀ ਕੀਤਾ ਜਾ ਸਕਦਾ ਹੈ.",
+            "auto_translated": "[ਅੰਦਰੂਨੀ ਗਲਤੀ] ਸਦੱਸ ਯੂਜ਼ਰ ਨੂੰ ਨਾਮ ਹੈ (ID) ਮਾਨਤਾ ਪ੍ਰਾਪਤ ਨਹੀ ਕੀਤਾ ਜਾ ਸਕਦਾ ਹੈ."
+        },
+        "th": {
+            "legacy_caption_pid": 32727,
+            "legacy_language_pid": 23,
+            "text": "[ข้อผิดพลาดภายใน] ชื่อผู้ใช้ของสมาชิก (ID) ไม่สามารถได้รับการยอมรับ",
+            "auto_translated": "[ข้อผิดพลาดภายใน] ชื่อผู้ใช้ของสมาชิก (ID) ไม่สามารถได้รับการยอมรับ"
+        },
+        "te": {
+            "legacy_caption_pid": 40232,
+            "legacy_language_pid": 24,
+            "text": "[అంతర్గత లోపం] సభ్యుని యూజర్ పేరు (ID) గుర్తింపు సాధ్యం కాదు.",
+            "auto_translated": "[అంతర్గత లోపం] సభ్యుని యూజర్ పేరు (ID) గుర్తింపు సాధ్యం కాదు."
+        },
+        "mr": {
+            "legacy_caption_pid": 40233,
+            "legacy_language_pid": 25,
+            "text": "[अंतर्गत त्रुटी] सदस्य वापरकर्ता नाव (ID) ओळखले जाऊ शकत नाही.",
+            "auto_translated": "[अंतर्गत त्रुटी] सदस्य वापरकर्ता नाव (ID) ओळखले जाऊ शकत नाही."
+        },
+        "ur": {
+            "legacy_caption_pid": 40234,
+            "legacy_language_pid": 26,
+            "text": "[داخلی مسئلہ] ممبر صارف کا نام (ID) تسلیم شدہ نہیں کیا جا سکتا.",
+            "auto_translated": "[داخلی مسئلہ] ممبر صارف کا نام (ID) تسلیم شدہ نہیں کیا جا سکتا."
+        },
+        "gu": {
+            "legacy_caption_pid": 40235,
+            "legacy_language_pid": 27,
+            "text": "[આંતરિક ભૂલ] સભ્ય વપરાશકર્તા નામ (આઈડી) ને ઓળખવામાં કરી શકાતી નથી.",
+            "auto_translated": "[આંતરિક ભૂલ] સભ્ય વપરાશકર્તા નામ (આઈડી) ને ઓળખવામાં કરી શકાતી નથી."
+        },
+        "uk": {
+            "legacy_caption_pid": 40236,
+            "legacy_language_pid": 28,
+            "text": "[Внутрішня помилка] Ім'я користувача члена (ID), не може бути визнано.",
+            "auto_translated": "[Внутрішня помилка] Ім'я користувача члена (ID), не може бути визнано."
+        },
+        "ml": {
+            "legacy_caption_pid": 40237,
+            "legacy_language_pid": 29,
+            "text": "[ആന്തരിക പിശക്] അംഗം ഉപയോക്തൃനാമം (ഐഡി) അംഗീകരിക്കാൻ കഴിയില്ല.",
+            "auto_translated": "[ആന്തരിക പിശക്] അംഗം ഉപയോക്തൃനാമം (ഐഡി) അംഗീകരിക്കാൻ കഴിയില്ല."
+        },
+        "kn": {
+            "legacy_caption_pid": 40238,
+            "legacy_language_pid": 30,
+            "text": "[ಆಂತರಿಕ ದೋಷ] ಸದಸ್ಯರ ಬಳಕೆದಾರ ಹೆಸರು (ಐಡಿ) ಗುರುತಿಸಲು ಸಾಧ್ಯವಿಲ್ಲ.",
+            "auto_translated": "[ಆಂತರಿಕ ದೋಷ] ಸದಸ್ಯರ ಬಳಕೆದಾರ ಹೆಸರು (ಐಡಿ) ಗುರುತಿಸಲು ಸಾಧ್ಯವಿಲ್ಲ."
+        },
+        "su": {
+            "legacy_caption_pid": 40239,
+            "legacy_language_pid": 31,
+            "text": "[Internal kasalahan] ngaran anggota pamaké (ID) teu bisa dipikawanoh.",
+            "auto_translated": "[Internal kasalahan] ngaran anggota pamaké (ID) teu bisa dipikawanoh."
+        },
+        "ku": {
+            "legacy_caption_pid": 40240,
+            "legacy_language_pid": 32,
+            "text": "[Navxweyî error] user name endamê (ID) ne dikarin bên naskirin.",
+            "auto_translated": "[Navxweyî error] user name endamê (ID) ne dikarin bên naskirin."
+        },
+        "ps": {
+            "legacy_caption_pid": 40241,
+            "legacy_language_pid": 33,
+            "text": "[وراني] غړي د کارن نوم (تذکرو) په رسمیت نه شي.",
+            "auto_translated": "[وراني] غړي د کارن نوم (تذکرو) په رسمیت نه شي."
+        },
+        "ro": {
+            "legacy_caption_pid": 40242,
+            "legacy_language_pid": 34,
+            "text": "Nume utilizator membru [Eroare internă] (ID) nu pot fi recunoscute.",
+            "auto_translated": "Nume utilizator membru [Eroare internă] (ID) nu pot fi recunoscute."
+        },
+        "id": {
+            "legacy_caption_pid": 40243,
+            "legacy_language_pid": 35,
+            "text": "[Internal error] nama anggota pengguna (ID) tidak dapat dikenali.",
+            "auto_translated": "[Internal error] nama anggota pengguna (ID) tidak dapat dikenali."
+        },
+        "sd": {
+            "legacy_caption_pid": 40244,
+            "legacy_language_pid": 36,
+            "text": "[اندروني مسئلو] ميمبر صارف نالو (سڃاڻپ) کي تسليم نه ٿو ڪري سگهجي.",
+            "auto_translated": "[اندروني مسئلو] ميمبر صارف نالو (سڃاڻپ) کي تسليم نه ٿو ڪري سگهجي."
+        },
+        "af": {
+            "legacy_caption_pid": 40245,
+            "legacy_language_pid": 37,
+            "text": "[Interne fout] lid gebruikersnaam (ID) kan nie erken word.",
+            "auto_translated": "[Interne fout] lid gebruikersnaam (ID) kan nie erken word."
+        },
+        "sw": {
+            "legacy_caption_pid": 40246,
+            "legacy_language_pid": 38,
+            "text": "[Hitilafu] mmojawapo jina la mtumiaji (ID) hawawezi kutambuliwa.",
+            "auto_translated": "[Hitilafu] mmojawapo jina la mtumiaji (ID) hawawezi kutambuliwa."
+        },
+        "lo": {
+            "legacy_caption_pid": 40247,
+            "legacy_language_pid": 39,
+            "text": "[ພາຍໃນຄວາມຜິດພາດ] ຊື່ຜູ້ໃຊ້ສະມາຊິກ (ID) ບໍ່ສາມາດໄດ້ຮັບການຍອມຮັບ.",
+            "auto_translated": "[ພາຍໃນຄວາມຜິດພາດ] ຊື່ຜູ້ໃຊ້ສະມາຊິກ (ID) ບໍ່ສາມາດໄດ້ຮັບການຍອມຮັບ."
+        },
+        "nl": {
+            "legacy_caption_pid": 40248,
+            "legacy_language_pid": 40,
+            "text": "[Interne fout] lidgebruiker (ID) niet herkend.",
+            "auto_translated": "[Interne fout] lidgebruiker (ID) niet herkend."
+        },
+        "tl": {
+            "legacy_caption_pid": 40249,
+            "legacy_language_pid": 41,
+            "text": "[Internal error] user miyembro name (ID) ay hindi maaaring nakilala.",
+            "auto_translated": "[Internal error] user miyembro name (ID) ay hindi maaaring nakilala."
+        },
+        "ne": {
+            "legacy_caption_pid": 40250,
+            "legacy_language_pid": 42,
+            "text": "[आन्तरिक त्रुटि] सदस्य प्रयोगकर्ता नाम (आईडी) पहिचान गर्न सकिन्छ।",
+            "auto_translated": "[आन्तरिक त्रुटि] सदस्य प्रयोगकर्ता नाम (आईडी) पहिचान गर्न सकिन्छ।"
+        },
+        "hu": {
+            "legacy_caption_pid": 40251,
+            "legacy_language_pid": 43,
+            "text": "[Internal error] tag felhasználói név (ID) nem ismerhető fel.",
+            "auto_translated": "[Internal error] tag felhasználói név (ID) nem ismerhető fel."
+        },
+        "cs": {
+            "legacy_caption_pid": 40252,
+            "legacy_language_pid": 44,
+            "text": "[Vnitřní chyba] člen uživatelské jméno (ID) nelze rozpoznat.",
+            "auto_translated": "[Vnitřní chyba] člen uživatelské jméno (ID) nelze rozpoznat."
+        },
+        "el": {
+            "legacy_caption_pid": 40253,
+            "legacy_language_pid": 45,
+            "text": "[Εσωτερικό σφάλμα] το όνομα χρήστη μέλους (ID) δεν είναι δυνατό να αναγνωριστεί.",
+            "auto_translated": "[Εσωτερικό σφάλμα] το όνομα χρήστη μέλους (ID) δεν είναι δυνατό να αναγνωριστεί."
+        },
+        "sv": {
+            "legacy_caption_pid": 40254,
+            "legacy_language_pid": 46,
+            "text": "[Internt fel] medlem användarnamn (ID) kan inte identifieras.",
+            "auto_translated": "[Internt fel] medlem användarnamn (ID) kan inte identifieras."
+        },
+        "kk": {
+            "legacy_caption_pid": 40255,
+            "legacy_language_pid": 47,
+            "text": "[Ішкі қате] мүшесі пайдаланушы аты (ID) танылуы мүмкін емес.",
+            "auto_translated": "[Ішкі қате] мүшесі пайдаланушы аты (ID) танылуы мүмкін емес."
+        },
+        "fi": {
+            "legacy_caption_pid": 40256,
+            "legacy_language_pid": 48,
+            "text": "[Sisäinen virhe] jäsen Lempinimi (ID) ei voida tunnistaa.",
+            "auto_translated": "[Sisäinen virhe] jäsen Lempinimi (ID) ei voida tunnistaa."
+        },
+        "da": {
+            "legacy_caption_pid": 40257,
+            "legacy_language_pid": 49,
+            "text": "[Intern fejl] medlem brugernavn (ID) kan ikke genkendes.",
+            "auto_translated": "[Intern fejl] medlem brugernavn (ID) kan ikke genkendes."
+        },
+        "he": {
+            "legacy_caption_pid": 40258,
+            "legacy_language_pid": 50,
+            "text": "[שגיאה פנימית] שם המשתמש חבר (ID) לא יכול להיות מוכר.",
+            "auto_translated": "[שגיאה פנימית] שם המשתמש חבר (ID) לא יכול להיות מוכר."
+        },
+        "no": {
+            "legacy_caption_pid": 40259,
+            "legacy_language_pid": 51,
+            "text": "[Intern feil] medlem brukernavn (ID) kan ikke bli gjenkjent.",
+            "auto_translated": "[Intern feil] medlem brukernavn (ID) kan ikke bli gjenkjent."
+        }
+    }
+}

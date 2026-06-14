@@ -1,0 +1,321 @@
+{
+    "resource_key": "ACTION_ENROLL_SUBMIT",
+    "legacy_resource_pid": 1312,
+    "base_group_key": "grp-028-app-common-lib",
+    "additional_group_keys": [],
+    "key_for_update": "pmM8qOTss9UEZDRnOQjd9LHaK3BmzZSIOUVulxLGxdSxPUWuI3mlSEV7fTpiBy7YZfYfOv8KQRurOOg4OIfWReVC4inDEXyjtLAlVwRfQTMRONQ1KZQ9I7712keSo3Kp",
+    "sort_group": "ENROLL",
+    "key_name": "ACTION_ENROLL_SUBMIT",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": false,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 823,
+            "legacy_language_pid": 1,
+            "text": "入会する",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 824,
+            "legacy_language_pid": 2,
+            "text": "Enroll",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 6388,
+            "legacy_language_pid": 3,
+            "text": "加入会员",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 6389,
+            "legacy_language_pid": 4,
+            "text": "가입하기",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 10094,
+            "legacy_language_pid": 5,
+            "text": "Registrar",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 10095,
+            "legacy_language_pid": 6,
+            "text": "Registro",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 10096,
+            "legacy_language_pid": 7,
+            "text": "加入會員",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 16143,
+            "legacy_language_pid": 8,
+            "text": "Inscrire",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 16144,
+            "legacy_language_pid": 9,
+            "text": " नामांकन",
+            "auto_translated": ""
+        },
+        "ar": {
+            "legacy_caption_pid": 28288,
+            "legacy_language_pid": 10,
+            "text": "انضم",
+            "auto_translated": "انضم"
+        },
+        "fa": {
+            "legacy_caption_pid": 28289,
+            "legacy_language_pid": 11,
+            "text": "پیوستن",
+            "auto_translated": "پیوستن"
+        },
+        "de": {
+            "legacy_caption_pid": 28290,
+            "legacy_language_pid": 12,
+            "text": "beitreten",
+            "auto_translated": "beitreten"
+        },
+        "ru": {
+            "legacy_caption_pid": 28291,
+            "legacy_language_pid": 13,
+            "text": "присоединиться",
+            "auto_translated": "присоединиться"
+        },
+        "ms": {
+            "legacy_caption_pid": 28292,
+            "legacy_language_pid": 14,
+            "text": "Sertai",
+            "auto_translated": "Sertai"
+        },
+        "ta": {
+            "legacy_caption_pid": 28293,
+            "legacy_language_pid": 15,
+            "text": "சேர",
+            "auto_translated": "சேர"
+        },
+        "it": {
+            "legacy_caption_pid": 28294,
+            "legacy_language_pid": 16,
+            "text": "unirsi",
+            "auto_translated": "unirsi"
+        },
+        "bn": {
+            "legacy_caption_pid": 28295,
+            "legacy_language_pid": 17,
+            "text": "যোগদান",
+            "auto_translated": "যোগদান"
+        },
+        "tr": {
+            "legacy_caption_pid": 28296,
+            "legacy_language_pid": 18,
+            "text": "katılmak",
+            "auto_translated": "katılmak"
+        },
+        "vi": {
+            "legacy_caption_pid": 28297,
+            "legacy_language_pid": 19,
+            "text": "Tham gia",
+            "auto_translated": "Tham gia"
+        },
+        "pl": {
+            "legacy_caption_pid": 28298,
+            "legacy_language_pid": 20,
+            "text": "przystąpić",
+            "auto_translated": "przystąpić"
+        },
+        "jv": {
+            "legacy_caption_pid": 28299,
+            "legacy_language_pid": 21,
+            "text": "Gabung",
+            "auto_translated": "Gabung"
+        },
+        "pa": {
+            "legacy_caption_pid": 28300,
+            "legacy_language_pid": 22,
+            "text": "ਵਿੱਚ ਸ਼ਾਮਲ ਹੋ ਜਾਓ",
+            "auto_translated": "ਵਿੱਚ ਸ਼ਾਮਲ ਹੋ ਜਾਓ"
+        },
+        "th": {
+            "legacy_caption_pid": 28301,
+            "legacy_language_pid": 23,
+            "text": "ร่วม",
+            "auto_translated": "ร่วม"
+        },
+        "te": {
+            "legacy_caption_pid": 33624,
+            "legacy_language_pid": 24,
+            "text": "చేరండి",
+            "auto_translated": "చేరండి"
+        },
+        "mr": {
+            "legacy_caption_pid": 33625,
+            "legacy_language_pid": 25,
+            "text": "सामील व्हा",
+            "auto_translated": "सामील व्हा"
+        },
+        "ur": {
+            "legacy_caption_pid": 33626,
+            "legacy_language_pid": 26,
+            "text": "شامل ہوں",
+            "auto_translated": "شامل ہوں"
+        },
+        "gu": {
+            "legacy_caption_pid": 33627,
+            "legacy_language_pid": 27,
+            "text": "જોડાઓ",
+            "auto_translated": "જોડાઓ"
+        },
+        "uk": {
+            "legacy_caption_pid": 33628,
+            "legacy_language_pid": 28,
+            "text": "приєднатися",
+            "auto_translated": "приєднатися"
+        },
+        "ml": {
+            "legacy_caption_pid": 33629,
+            "legacy_language_pid": 29,
+            "text": "ചേരുക",
+            "auto_translated": "ചേരുക"
+        },
+        "kn": {
+            "legacy_caption_pid": 33630,
+            "legacy_language_pid": 30,
+            "text": "ಸೇರಿ",
+            "auto_translated": "ಸೇರಿ"
+        },
+        "su": {
+            "legacy_caption_pid": 33631,
+            "legacy_language_pid": 31,
+            "text": "gabung",
+            "auto_translated": "gabung"
+        },
+        "ku": {
+            "legacy_caption_pid": 33632,
+            "legacy_language_pid": 32,
+            "text": "Join",
+            "auto_translated": "Join"
+        },
+        "ps": {
+            "legacy_caption_pid": 33633,
+            "legacy_language_pid": 33,
+            "text": "سره یو ځای شول",
+            "auto_translated": "سره یو ځای شول"
+        },
+        "ro": {
+            "legacy_caption_pid": 33634,
+            "legacy_language_pid": 34,
+            "text": "alătura",
+            "auto_translated": "alătura"
+        },
+        "id": {
+            "legacy_caption_pid": 33635,
+            "legacy_language_pid": 35,
+            "text": "ikut",
+            "auto_translated": "ikut"
+        },
+        "sd": {
+            "legacy_caption_pid": 33636,
+            "legacy_language_pid": 36,
+            "text": "شامل ٿيڻ جي",
+            "auto_translated": "شامل ٿيڻ جي"
+        },
+        "af": {
+            "legacy_caption_pid": 33637,
+            "legacy_language_pid": 37,
+            "text": "aansluit",
+            "auto_translated": "aansluit"
+        },
+        "sw": {
+            "legacy_caption_pid": 33638,
+            "legacy_language_pid": 38,
+            "text": "Kujiunga",
+            "auto_translated": "Kujiunga"
+        },
+        "lo": {
+            "legacy_caption_pid": 33639,
+            "legacy_language_pid": 39,
+            "text": "ເຂົ້າຮ່ວມ",
+            "auto_translated": "ເຂົ້າຮ່ວມ"
+        },
+        "nl": {
+            "legacy_caption_pid": 33640,
+            "legacy_language_pid": 40,
+            "text": "toetreden",
+            "auto_translated": "toetreden"
+        },
+        "tl": {
+            "legacy_caption_pid": 33641,
+            "legacy_language_pid": 41,
+            "text": "sumali",
+            "auto_translated": "sumali"
+        },
+        "ne": {
+            "legacy_caption_pid": 33642,
+            "legacy_language_pid": 42,
+            "text": "सामेल",
+            "auto_translated": "सामेल"
+        },
+        "hu": {
+            "legacy_caption_pid": 33643,
+            "legacy_language_pid": 43,
+            "text": "csatlakozik",
+            "auto_translated": "csatlakozik"
+        },
+        "cs": {
+            "legacy_caption_pid": 33644,
+            "legacy_language_pid": 44,
+            "text": "připojit",
+            "auto_translated": "připojit"
+        },
+        "el": {
+            "legacy_caption_pid": 33645,
+            "legacy_language_pid": 45,
+            "text": "ένωση",
+            "auto_translated": "ένωση"
+        },
+        "sv": {
+            "legacy_caption_pid": 33646,
+            "legacy_language_pid": 46,
+            "text": "Gå",
+            "auto_translated": "Gå"
+        },
+        "kk": {
+            "legacy_caption_pid": 33647,
+            "legacy_language_pid": 47,
+            "text": "қосылу",
+            "auto_translated": "қосылу"
+        },
+        "fi": {
+            "legacy_caption_pid": 33648,
+            "legacy_language_pid": 48,
+            "text": "yhtyä",
+            "auto_translated": "yhtyä"
+        },
+        "da": {
+            "legacy_caption_pid": 33649,
+            "legacy_language_pid": 49,
+            "text": "Deltag",
+            "auto_translated": "Deltag"
+        },
+        "he": {
+            "legacy_caption_pid": 33650,
+            "legacy_language_pid": 50,
+            "text": "הצטרף",
+            "auto_translated": "הצטרף"
+        },
+        "no": {
+            "legacy_caption_pid": 33651,
+            "legacy_language_pid": 51,
+            "text": "Bli med",
+            "auto_translated": "Bli med"
+        }
+    }
+}

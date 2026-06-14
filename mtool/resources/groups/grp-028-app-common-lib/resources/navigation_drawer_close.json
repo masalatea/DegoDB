@@ -1,0 +1,321 @@
+{
+    "resource_key": "navigation_drawer_close",
+    "legacy_resource_pid": 972,
+    "base_group_key": "grp-028-app-common-lib",
+    "additional_group_keys": [],
+    "key_for_update": "NMhPJ7dGvyLrDGYw7AM1yi4d4WL7r2cbieGNADWxP17BwIPweIHbW7lDwpHGEE1GEBScMrnY0rNbKhSIoGBB0JIPF5jKbhRTQ2Z8c5PgKnyQt2w2WQu4ibbfTt0NHVkr",
+    "sort_group": "App",
+    "key_name": "navigation_drawer_close",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": false,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 819,
+            "legacy_language_pid": 1,
+            "text": "ナビゲーション・ドロワーを閉じる",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 820,
+            "legacy_language_pid": 2,
+            "text": "Close navigation drawer",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 7272,
+            "legacy_language_pid": 3,
+            "text": "关闭导航栏",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 7273,
+            "legacy_language_pid": 4,
+            "text": "검색 창 닫기",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 10088,
+            "legacy_language_pid": 5,
+            "text": "Cerrar el cajón de navegación",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 10089,
+            "legacy_language_pid": 6,
+            "text": "Fechar gaveta de navegação",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 10090,
+            "legacy_language_pid": 7,
+            "text": "關閉導航欄",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 16139,
+            "legacy_language_pid": 8,
+            "text": "Fermer le tiroir de navigation",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 16140,
+            "legacy_language_pid": 9,
+            "text": " पथ प्रदर्शन आदेशक को बंद करें",
+            "auto_translated": ""
+        },
+        "ar": {
+            "legacy_caption_pid": 28260,
+            "legacy_language_pid": 10,
+            "text": "إغلاق درج التنقل",
+            "auto_translated": "إغلاق درج التنقل"
+        },
+        "fa": {
+            "legacy_caption_pid": 28261,
+            "legacy_language_pid": 11,
+            "text": "بستن کشو ناوبری",
+            "auto_translated": "بستن کشو ناوبری"
+        },
+        "de": {
+            "legacy_caption_pid": 28262,
+            "legacy_language_pid": 12,
+            "text": "Schließen Sie die Navigationsleiste",
+            "auto_translated": "Schließen Sie die Navigationsleiste"
+        },
+        "ru": {
+            "legacy_caption_pid": 28263,
+            "legacy_language_pid": 13,
+            "text": "Закрыть панель навигации",
+            "auto_translated": "Закрыть панель навигации"
+        },
+        "ms": {
+            "legacy_caption_pid": 28264,
+            "legacy_language_pid": 14,
+            "text": "Menutup laci navigasi",
+            "auto_translated": "Menutup laci navigasi"
+        },
+        "ta": {
+            "legacy_caption_pid": 28265,
+            "legacy_language_pid": 15,
+            "text": "வழிசெலுத்தல் டிராயரை மூடு",
+            "auto_translated": "வழிசெலுத்தல் டிராயரை மூடு"
+        },
+        "it": {
+            "legacy_caption_pid": 28266,
+            "legacy_language_pid": 16,
+            "text": "Chiudere il cassetto di navigazione",
+            "auto_translated": "Chiudere il cassetto di navigazione"
+        },
+        "bn": {
+            "legacy_caption_pid": 28267,
+            "legacy_language_pid": 17,
+            "text": "নেভিগেশান ড্রয়ার বন্ধ করুন",
+            "auto_translated": "নেভিগেশান ড্রয়ার বন্ধ করুন"
+        },
+        "tr": {
+            "legacy_caption_pid": 28268,
+            "legacy_language_pid": 18,
+            "text": "Navigasyon gözünü kapatın",
+            "auto_translated": "Navigasyon gözünü kapatın"
+        },
+        "vi": {
+            "legacy_caption_pid": 28269,
+            "legacy_language_pid": 19,
+            "text": "Đóng ngăn điều hướng",
+            "auto_translated": "Đóng ngăn điều hướng"
+        },
+        "pl": {
+            "legacy_caption_pid": 28270,
+            "legacy_language_pid": 20,
+            "text": "Zamknąć szufladę nawigacji",
+            "auto_translated": "Zamknąć szufladę nawigacji"
+        },
+        "jv": {
+            "legacy_caption_pid": 28271,
+            "legacy_language_pid": 21,
+            "text": "Nutup laci pandhu arah",
+            "auto_translated": "Nutup laci pandhu arah"
+        },
+        "pa": {
+            "legacy_caption_pid": 28272,
+            "legacy_language_pid": 22,
+            "text": "ਨੇਵੀਗੇਸ਼ਨ ਦਰਾਜ਼ ਬੰਦ ਕਰੋ",
+            "auto_translated": "ਨੇਵੀਗੇਸ਼ਨ ਦਰਾਜ਼ ਬੰਦ ਕਰੋ"
+        },
+        "th": {
+            "legacy_caption_pid": 28273,
+            "legacy_language_pid": 23,
+            "text": "ปิดลิ้นชักการนำทาง",
+            "auto_translated": "ปิดลิ้นชักการนำทาง"
+        },
+        "te": {
+            "legacy_caption_pid": 33568,
+            "legacy_language_pid": 24,
+            "text": "పేజీకి సంబంధించిన లింకులు సొరుగు మూసివేయి",
+            "auto_translated": "పేజీకి సంబంధించిన లింకులు సొరుగు మూసివేయి"
+        },
+        "mr": {
+            "legacy_caption_pid": 33569,
+            "legacy_language_pid": 25,
+            "text": "नेव्हिगेशन ड्रॉवर बंद करा",
+            "auto_translated": "नेव्हिगेशन ड्रॉवर बंद करा"
+        },
+        "ur": {
+            "legacy_caption_pid": 33570,
+            "legacy_language_pid": 26,
+            "text": "نیویگیشن دراز بند کریں",
+            "auto_translated": "نیویگیشن دراز بند کریں"
+        },
+        "gu": {
+            "legacy_caption_pid": 33571,
+            "legacy_language_pid": 27,
+            "text": "નેવિગેશન ડ્રોઅર બંધ કરો",
+            "auto_translated": "નેવિગેશન ડ્રોઅર બંધ કરો"
+        },
+        "uk": {
+            "legacy_caption_pid": 33572,
+            "legacy_language_pid": 28,
+            "text": "Закрити панель навігації",
+            "auto_translated": "Закрити панель навігації"
+        },
+        "ml": {
+            "legacy_caption_pid": 33573,
+            "legacy_language_pid": 29,
+            "text": "നാവിഗേഷൻ ഡ്രോയർ അടയ്ക്കുക",
+            "auto_translated": "നാവിഗേഷൻ ഡ്രോയർ അടയ്ക്കുക"
+        },
+        "kn": {
+            "legacy_caption_pid": 33574,
+            "legacy_language_pid": 30,
+            "text": "ಸಂಚರಣೆ ಡ್ರಾಯರ್ ಮುಚ್ಚಿ",
+            "auto_translated": "ಸಂಚರಣೆ ಡ್ರಾಯರ್ ಮುಚ್ಚಿ"
+        },
+        "su": {
+            "legacy_caption_pid": 33575,
+            "legacy_language_pid": 31,
+            "text": "Nutup laci navigasi",
+            "auto_translated": "Nutup laci navigasi"
+        },
+        "ku": {
+            "legacy_caption_pid": 33576,
+            "legacy_language_pid": 32,
+            "text": "Close berkêşkê navîgasyon, ji",
+            "auto_translated": "Close berkêşkê navîgasyon, ji"
+        },
+        "ps": {
+            "legacy_caption_pid": 33577,
+            "legacy_language_pid": 33,
+            "text": "د ګرځښت مېزه بندوي",
+            "auto_translated": "د ګرځښت مېزه بندوي"
+        },
+        "ro": {
+            "legacy_caption_pid": 33578,
+            "legacy_language_pid": 34,
+            "text": "Închideți sertarul de navigare",
+            "auto_translated": "Închideți sertarul de navigare"
+        },
+        "id": {
+            "legacy_caption_pid": 33579,
+            "legacy_language_pid": 35,
+            "text": "Tutup laci navigasi",
+            "auto_translated": "Tutup laci navigasi"
+        },
+        "sd": {
+            "legacy_caption_pid": 33580,
+            "legacy_language_pid": 36,
+            "text": "جي چر پر ڀريندڙ بند",
+            "auto_translated": "جي چر پر ڀريندڙ بند"
+        },
+        "af": {
+            "legacy_caption_pid": 33581,
+            "legacy_language_pid": 37,
+            "text": "Maak die navigasie laai",
+            "auto_translated": "Maak die navigasie laai"
+        },
+        "sw": {
+            "legacy_caption_pid": 33582,
+            "legacy_language_pid": 38,
+            "text": "Funga droo ya kusogeza",
+            "auto_translated": "Funga droo ya kusogeza"
+        },
+        "lo": {
+            "legacy_caption_pid": 33583,
+            "legacy_language_pid": 39,
+            "text": "ປິດລິ້ນຊັກນໍາທາງ",
+            "auto_translated": "ປິດລິ້ນຊັກນໍາທາງ"
+        },
+        "nl": {
+            "legacy_caption_pid": 33584,
+            "legacy_language_pid": 40,
+            "text": "Sluit de navigatielade",
+            "auto_translated": "Sluit de navigatielade"
+        },
+        "tl": {
+            "legacy_caption_pid": 33585,
+            "legacy_language_pid": 41,
+            "text": "Isara ang navigation drawer",
+            "auto_translated": "Isara ang navigation drawer"
+        },
+        "ne": {
+            "legacy_caption_pid": 33586,
+            "legacy_language_pid": 42,
+            "text": "नेभिगेसन ड्रअर बन्द",
+            "auto_translated": "नेभिगेसन ड्रअर बन्द"
+        },
+        "hu": {
+            "legacy_caption_pid": 33587,
+            "legacy_language_pid": 43,
+            "text": "Zárja le a navigációs fiók",
+            "auto_translated": "Zárja le a navigációs fiók"
+        },
+        "cs": {
+            "legacy_caption_pid": 33588,
+            "legacy_language_pid": 44,
+            "text": "Zavřít vysouvací panel navigace",
+            "auto_translated": "Zavřít vysouvací panel navigace"
+        },
+        "el": {
+            "legacy_caption_pid": 33589,
+            "legacy_language_pid": 45,
+            "text": "Κλείστε το συρτάρι πλοήγησης",
+            "auto_translated": "Κλείστε το συρτάρι πλοήγησης"
+        },
+        "sv": {
+            "legacy_caption_pid": 33590,
+            "legacy_language_pid": 46,
+            "text": "Stäng navigeringslådan",
+            "auto_translated": "Stäng navigeringslådan"
+        },
+        "kk": {
+            "legacy_caption_pid": 33591,
+            "legacy_language_pid": 47,
+            "text": "Навигация тартпасын жабыңыз",
+            "auto_translated": "Навигация тартпасын жабыңыз"
+        },
+        "fi": {
+            "legacy_caption_pid": 33592,
+            "legacy_language_pid": 48,
+            "text": "Sulje navigointipaneeli",
+            "auto_translated": "Sulje navigointipaneeli"
+        },
+        "da": {
+            "legacy_caption_pid": 33593,
+            "legacy_language_pid": 49,
+            "text": "Luk sidemenuen",
+            "auto_translated": "Luk sidemenuen"
+        },
+        "he": {
+            "legacy_caption_pid": 33594,
+            "legacy_language_pid": 50,
+            "text": "סגור את מגירת הניווט",
+            "auto_translated": "סגור את מגירת הניווט"
+        },
+        "no": {
+            "legacy_caption_pid": 33595,
+            "legacy_language_pid": 51,
+            "text": "Lukk navigasjonsmenyen",
+            "auto_translated": "Lukk navigasjonsmenyen"
+        }
+    }
+}

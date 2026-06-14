@@ -1,0 +1,69 @@
+{
+    "resource_key": "HP_FOOTER_TECHNOLOGY_DATABASE",
+    "legacy_resource_pid": 695,
+    "base_group_key": "grp-010-matsuesoft-lib",
+    "additional_group_keys": [],
+    "key_for_update": "6d8YNH3TPVHJb8MTHvXUB5lPxqSBlv6GEbmg8E3nzXGcFLf9Pskojo6KfxfK2OgMEjal0TBUk2BMgwUPBbnyeFcLtLDfpcTj1qpISqdyKu532IlyO6c9Ulgj0Mlq8H03",
+    "sort_group": "HP FOOTER",
+    "key_name": "HP_FOOTER_TECHNOLOGY_DATABASE",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": true,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 4622,
+            "legacy_language_pid": 1,
+            "text": "データベース・テクノロジー",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 4623,
+            "legacy_language_pid": 2,
+            "text": "Database Technology",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 14271,
+            "legacy_language_pid": 3,
+            "text": "",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 14272,
+            "legacy_language_pid": 4,
+            "text": "",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 14273,
+            "legacy_language_pid": 5,
+            "text": "Tecnología de la base de datos",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 14274,
+            "legacy_language_pid": 6,
+            "text": "Tecnologia de banco de dados",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 14275,
+            "legacy_language_pid": 7,
+            "text": "",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 17149,
+            "legacy_language_pid": 8,
+            "text": "Technologie de base de données",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 17150,
+            "legacy_language_pid": 9,
+            "text": "डेटाबेस प्रौद्योगिकी",
+            "auto_translated": ""
+        }
+    }
+}

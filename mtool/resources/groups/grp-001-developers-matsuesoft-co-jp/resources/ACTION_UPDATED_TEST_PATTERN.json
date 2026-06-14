@@ -1,0 +1,27 @@
+{
+    "resource_key": "ACTION_UPDATED_TEST_PATTERN",
+    "legacy_resource_pid": 408,
+    "base_group_key": "grp-001-developers-matsuesoft-co-jp",
+    "additional_group_keys": [],
+    "key_for_update": "0",
+    "sort_group": "ACTION TEST_PATTERN",
+    "key_name": "ACTION_UPDATED_TEST_PATTERN",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": true,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 4150,
+            "legacy_language_pid": 1,
+            "text": "テストパターン更新完了",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 4151,
+            "legacy_language_pid": 2,
+            "text": "Updated Test Pattern",
+            "auto_translated": ""
+        }
+    }
+}

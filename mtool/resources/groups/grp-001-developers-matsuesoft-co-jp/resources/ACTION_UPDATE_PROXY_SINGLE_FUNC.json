@@ -1,0 +1,27 @@
+{
+    "resource_key": "ACTION_UPDATE_PROXY_SINGLE_FUNC",
+    "legacy_resource_pid": 240,
+    "base_group_key": "grp-001-developers-matsuesoft-co-jp",
+    "additional_group_keys": [],
+    "key_for_update": "0",
+    "sort_group": "ACTION PROXY_SINGLE_FUNC",
+    "key_name": "ACTION_UPDATE_PROXY_SINGLE_FUNC",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": true,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 4020,
+            "legacy_language_pid": 1,
+            "text": "データアクセスクラス Proxy対象[単一対象]関数更新",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 4021,
+            "legacy_language_pid": 2,
+            "text": "Update Proxy Target Function of Data Access Class [Single Target]",
+            "auto_translated": ""
+        }
+    }
+}

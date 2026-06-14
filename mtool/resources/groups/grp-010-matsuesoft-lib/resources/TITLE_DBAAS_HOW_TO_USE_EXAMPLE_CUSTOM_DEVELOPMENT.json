@@ -1,0 +1,69 @@
+{
+    "resource_key": "TITLE_DBAAS_HOW_TO_USE_EXAMPLE_CUSTOM_DEVELOPMENT",
+    "legacy_resource_pid": 603,
+    "base_group_key": "grp-010-matsuesoft-lib",
+    "additional_group_keys": [],
+    "key_for_update": "4P5KrFewJ26zCx2vyhjaP6gkQ5bZra12gKAz91Q7CungC6kQ8zKOvNhjICDyesYgVk8AQZkS4iSvChCk2MHo2rT65FiJKeQAZmHZffzfN1zhA9fJIL5RY5ceGuEwMwgS",
+    "sort_group": "TITLE",
+    "key_name": "TITLE_DBAAS_HOW_TO_USE_EXAMPLE_CUSTOM_DEVELOPMENT",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": true,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 4668,
+            "legacy_language_pid": 1,
+            "text": "カスタム開発でエンドポイントを編集/追加する例",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 4669,
+            "legacy_language_pid": 2,
+            "text": "Example for Edit or Add Endpoint by Custom Development Option",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 14386,
+            "legacy_language_pid": 3,
+            "text": "",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 14387,
+            "legacy_language_pid": 4,
+            "text": "",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 14388,
+            "legacy_language_pid": 5,
+            "text": "Ejemplo de Edición o Añadir punto final mediante una opción de desarrollo personalizado",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 14389,
+            "legacy_language_pid": 6,
+            "text": "Exemplo para editar ou adicionar ponto final por opção de desenvolvimento personalizado",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 14390,
+            "legacy_language_pid": 7,
+            "text": "",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 17323,
+            "legacy_language_pid": 8,
+            "text": "Exemple d'édition ou d'ajout de point final par option de développement personnalisé",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 17324,
+            "legacy_language_pid": 9,
+            "text": "कस्टम डेवलपमेंट ऑप्शन के द्वारा संपादित या समापन बिंदु के लिए उदाहरण",
+            "auto_translated": ""
+        }
+    }
+}

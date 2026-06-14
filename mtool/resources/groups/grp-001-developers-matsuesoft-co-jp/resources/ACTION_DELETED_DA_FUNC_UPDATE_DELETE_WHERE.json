@@ -1,0 +1,27 @@
+{
+    "resource_key": "ACTION_DELETED_DA_FUNC_UPDATE_DELETE_WHERE",
+    "legacy_resource_pid": 291,
+    "base_group_key": "grp-001-developers-matsuesoft-co-jp",
+    "additional_group_keys": [],
+    "key_for_update": "0",
+    "sort_group": "ACTION DA_FUNC_UPDATE_DELETE_WHERE",
+    "key_name": "ACTION_DELETED_DA_FUNC_UPDATE_DELETE_WHERE",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": true,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 3680,
+            "legacy_language_pid": 1,
+            "text": "データアクセス関数 Update/DeleteのWhere削除完了",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 3681,
+            "legacy_language_pid": 2,
+            "text": "Deleted Update/Delete's Where of Data Access Function",
+            "auto_translated": ""
+        }
+    }
+}

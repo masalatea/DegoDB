@@ -1,0 +1,321 @@
+{
+    "resource_key": "COMMON_LIB_ENROLL_HEADER_SKYPE_CHECK_COMMENT3",
+    "legacy_resource_pid": 1434,
+    "base_group_key": "grp-010-matsuesoft-lib",
+    "additional_group_keys": [],
+    "key_for_update": "XpXBmrDVv1TEqPzv2SwM5MEcXo4YjxWomkZtcv27Xl6z1AG9VlnJ6VEdEVJXleXNfiupJJOuiS3QfkjbA1vp95eNWnygApqhbXOAutXBngxZmOGKR5jxVueXiwvAFjYn",
+    "sort_group": "ENROLL",
+    "key_name": "COMMON_LIB_ENROLL_HEADER_SKYPE_CHECK_COMMENT3",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": false,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 6010,
+            "legacy_language_pid": 1,
+            "text": "Windowsの場合、ブラウザの裏に隠れて表示される場合もありますので、タスクバーも合わせてご確認下さい。 ",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 6011,
+            "legacy_language_pid": 2,
+            "text": "In the case of Windows, it may be hidden behind the browser, so please also check the task bar as well.",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 6012,
+            "legacy_language_pid": 3,
+            "text": "在Windows的情况下，因此，有可能隐藏在浏览器里的，请检查任务栏。",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 6013,
+            "legacy_language_pid": 4,
+            "text": "Windows의 경우 브라우저의 뒷면에 숨겨진 상태로 표시될 수 있습니다.툴바도 확인하시기 바랍니다.",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 10868,
+            "legacy_language_pid": 5,
+            "text": "En el caso de Windows, puede estar oculto detrás del navegador, así que por favor, compruebe también la barra de tareas.",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 10869,
+            "legacy_language_pid": 6,
+            "text": "No caso do Windows, pode estar escondido atrás do navegador, então também verifique também a barra de tarefas.",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 10870,
+            "legacy_language_pid": 7,
+            "text": "在Windows的情況下，因此，有可能隱藏在瀏覽器里的，請檢查任務欄。",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 17017,
+            "legacy_language_pid": 8,
+            "text": "Dans le cas de Windows, il peut être caché derrière le navigateur, alors vérifiez également la barre des tâches.",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 17018,
+            "legacy_language_pid": 9,
+            "text": "विंडोज के मामले में, यह ब्राउजर के पीछे छिपाया जा सकता है, इसलिए कृपया कार्य पट्टी को भी जांचें।",
+            "auto_translated": ""
+        },
+        "ar": {
+            "legacy_caption_pid": 31634,
+            "legacy_language_pid": 10,
+            "text": "في حالة ويندوز، وذلك حتى هناك كنت عند عرضه خفية وراء المتصفح، يرجى التحقق أيضا تناسب شريط المهام.",
+            "auto_translated": "في حالة ويندوز، وذلك حتى هناك كنت عند عرضه خفية وراء المتصفح، يرجى التحقق أيضا تناسب شريط المهام."
+        },
+        "fa": {
+            "legacy_caption_pid": 31635,
+            "legacy_language_pid": 11,
+            "text": "در مورد ویندوز، بنابراین حتی وجود دارد که شما هنگامی که آن را پنهان در پشت مرورگر نمایش داده، لطفا نیز بررسی تناسب نوار وظیفه.",
+            "auto_translated": "در مورد ویندوز، بنابراین حتی وجود دارد که شما هنگامی که آن را پنهان در پشت مرورگر نمایش داده، لطفا نیز بررسی تناسب نوار وظیفه."
+        },
+        "de": {
+            "legacy_caption_pid": 31636,
+            "legacy_language_pid": 12,
+            "text": "Im Fall von Windows, so dass auch für Sie da, wenn es hinter dem Browser verborgen angezeigt wird, überprüfen Sie bitte auch die Taskleiste passen.",
+            "auto_translated": "Im Fall von Windows, so dass auch für Sie da, wenn es hinter dem Browser verborgen angezeigt wird, überprüfen Sie bitte auch die Taskleiste passen."
+        },
+        "ru": {
+            "legacy_caption_pid": 31637,
+            "legacy_language_pid": 13,
+            "text": "В случае Windows, так что даже там вы, когда она отображается скрыта за браузером, пожалуйста, проверьте также подходят панель задач.",
+            "auto_translated": "В случае Windows, так что даже там вы, когда она отображается скрыта за браузером, пожалуйста, проверьте также подходят панель задач."
+        },
+        "ms": {
+            "legacy_caption_pid": 31638,
+            "legacy_language_pid": 14,
+            "text": "Dalam kes Windows, jadi walaupun di sana anda apabila dipaparkan tersembunyi di sebalik pelayar, sila periksa juga sesuai bar tugas.",
+            "auto_translated": "Dalam kes Windows, jadi walaupun di sana anda apabila dipaparkan tersembunyi di sebalik pelayar, sila periksa juga sesuai bar tugas."
+        },
+        "ta": {
+            "legacy_caption_pid": 31639,
+            "legacy_language_pid": 15,
+            "text": "விண்டோஸ் வழக்கில், இதனால் கூட அங்கு நீங்கள் அதை உலாவி பின்னால் ஒளிந்திருக்கும் காட்டப்படும் போது, மேலும் சரிபார்க்கவும் டாஸ்க் பொருந்தும்.",
+            "auto_translated": "விண்டோஸ் வழக்கில், இதனால் கூட அங்கு நீங்கள் அதை உலாவி பின்னால் ஒளிந்திருக்கும் காட்டப்படும் போது, மேலும் சரிபார்க்கவும் டாஸ்க் பொருந்தும்."
+        },
+        "it": {
+            "legacy_caption_pid": 31640,
+            "legacy_language_pid": 16,
+            "text": "Nel caso di Windows, quindi, anche lì si quando viene visualizzato nascosto dietro il browser, si prega di controllare anche in forma nella barra delle applicazioni.",
+            "auto_translated": "Nel caso di Windows, quindi, anche lì si quando viene visualizzato nascosto dietro il browser, si prega di controllare anche in forma nella barra delle applicazioni."
+        },
+        "bn": {
+            "legacy_caption_pid": 31641,
+            "legacy_language_pid": 17,
+            "text": "উইন্ডোজের ক্ষেত্রে ইন, তাই এমনকি সেখানে আপনি যখন এটি ব্রাউজার পিছনে লুকিয়ে প্রদর্শন করা হয়, এছাড়াও চেক টাস্কবার মাপসই দয়া করে।",
+            "auto_translated": "উইন্ডোজের ক্ষেত্রে ইন, তাই এমনকি সেখানে আপনি যখন এটি ব্রাউজার পিছনে লুকিয়ে প্রদর্শন করা হয়, এছাড়াও চেক টাস্কবার মাপসই দয়া করে।"
+        },
+        "tr": {
+            "legacy_caption_pid": 31642,
+            "legacy_language_pid": 18,
+            "text": "tarayıcının arkasına gizlenmiş görüntülendiğinde Windows'un durumunda, bu yüzden bile orada da kontrol görev çubuğunu sığdırmak edin.",
+            "auto_translated": "tarayıcının arkasına gizlenmiş görüntülendiğinde Windows'un durumunda, bu yüzden bile orada da kontrol görev çubuğunu sığdırmak edin."
+        },
+        "vi": {
+            "legacy_caption_pid": 31643,
+            "legacy_language_pid": 19,
+            "text": "Trong trường hợp của Windows, vì vậy ngay cả đó bạn khi nó được hiển thị ẩn đằng sau trình duyệt, hãy kiểm tra cũng phù hợp với thanh tác vụ.",
+            "auto_translated": "Trong trường hợp của Windows, vì vậy ngay cả đó bạn khi nó được hiển thị ẩn đằng sau trình duyệt, hãy kiểm tra cũng phù hợp với thanh tác vụ."
+        },
+        "pl": {
+            "legacy_caption_pid": 31644,
+            "legacy_language_pid": 20,
+            "text": "W przypadku systemu Windows, więc nawet tam jesteś, gdy wyświetlany jest ukryty za pomocą przeglądarki, prosimy sprawdzić także dopasować pasek zadań.",
+            "auto_translated": "W przypadku systemu Windows, więc nawet tam jesteś, gdy wyświetlany jest ukryty za pomocą przeglądarki, prosimy sprawdzić także dopasować pasek zadań."
+        },
+        "jv": {
+            "legacy_caption_pid": 31645,
+            "legacy_language_pid": 21,
+            "text": "Ing cilik saka Windows, dadi malah ana sing nalika ditampilake ndhelik browser, mangga dipriksa uga pas taskbar.",
+            "auto_translated": "Ing cilik saka Windows, dadi malah ana sing nalika ditampilake ndhelik browser, mangga dipriksa uga pas taskbar."
+        },
+        "pa": {
+            "legacy_caption_pid": 31646,
+            "legacy_language_pid": 22,
+            "text": "Windows ਦੇ ਮਾਮਲੇ ', ਵਿਚ, ਇਸ ਲਈ ਵੀ ਹੈ ਕਿ ਤੁਹਾਡੇ ਇਸ ਨੂੰ ਬਰਾਊਜ਼ਰ ਦੇ ਪਿੱਛੇ ਲੁਕਿਆ ਵੇਖਾਇਆ ਗਿਆ ਹੈ, ਇਹ ਵੀ ਚੈੱਕ ਕਰੋ ਟਾਸਕਬਾਰ ਫਿੱਟ ਕਰੋ.",
+            "auto_translated": "Windows ਦੇ ਮਾਮਲੇ ', ਵਿਚ, ਇਸ ਲਈ ਵੀ ਹੈ ਕਿ ਤੁਹਾਡੇ ਇਸ ਨੂੰ ਬਰਾਊਜ਼ਰ ਦੇ ਪਿੱਛੇ ਲੁਕਿਆ ਵੇਖਾਇਆ ਗਿਆ ਹੈ, ਇਹ ਵੀ ਚੈੱਕ ਕਰੋ ਟਾਸਕਬਾਰ ਫਿੱਟ ਕਰੋ."
+        },
+        "th": {
+            "legacy_caption_pid": 31647,
+            "legacy_language_pid": 23,
+            "text": "ในกรณีของ Windows ดังนั้นแม้จะมีคุณเมื่อมีการแสดงที่ซ่อนอยู่หลังเบราว์เซอร์โปรดตรวจสอบยังพอดีกับแถบงาน",
+            "auto_translated": "ในกรณีของ Windows ดังนั้นแม้จะมีคุณเมื่อมีการแสดงที่ซ่อนอยู่หลังเบราว์เซอร์โปรดตรวจสอบยังพอดีกับแถบงาน"
+        },
+        "te": {
+            "legacy_caption_pid": 38804,
+            "legacy_language_pid": 24,
+            "text": "Windows విషయంలో, కాబట్టి కూడా అక్కడ మీరు బ్రౌజర్ వెనుక దాగి ప్రదర్శించినప్పుడు, కూడా తనిఖీ చెయ్యండి టాస్క్బార్ సరిపోయే.",
+            "auto_translated": "Windows విషయంలో, కాబట్టి కూడా అక్కడ మీరు బ్రౌజర్ వెనుక దాగి ప్రదర్శించినప్పుడు, కూడా తనిఖీ చెయ్యండి టాస్క్బార్ సరిపోయే."
+        },
+        "mr": {
+            "legacy_caption_pid": 38805,
+            "legacy_language_pid": 25,
+            "text": "विंडोज बाबतीत, त्यामुळे अगदी आपण ते प्रदर्शित केले जाते तेव्हा ब्राउझर मागे लपली देखील तपासणी करा टास्कबार फिट.",
+            "auto_translated": "विंडोज बाबतीत, त्यामुळे अगदी आपण ते प्रदर्शित केले जाते तेव्हा ब्राउझर मागे लपली देखील तपासणी करा टास्कबार फिट."
+        },
+        "ur": {
+            "legacy_caption_pid": 38806,
+            "legacy_language_pid": 26,
+            "text": "ونڈوز کی صورت میں، تو بھی آپ کو وہاں جب یہ براؤزر کے پیچھے چھپے ہوئے دکھایا جاتا ہے، بھی چیک کریں ٹاسک بار فٹ.",
+            "auto_translated": "ونڈوز کی صورت میں، تو بھی آپ کو وہاں جب یہ براؤزر کے پیچھے چھپے ہوئے دکھایا جاتا ہے، بھی چیک کریں ٹاسک بار فٹ."
+        },
+        "gu": {
+            "legacy_caption_pid": 38807,
+            "legacy_language_pid": 27,
+            "text": "વિન્ડોઝ કિસ્સામાં, તેમ છતાં ત્યાં તમે જ્યારે તે બ્રાઉઝર પાછળ છુપાયેલ પ્રદર્શિત થાય છે, પણ ચેક ટાસ્કબાર ફિટ વિનંતી.",
+            "auto_translated": "વિન્ડોઝ કિસ્સામાં, તેમ છતાં ત્યાં તમે જ્યારે તે બ્રાઉઝર પાછળ છુપાયેલ પ્રદર્શિત થાય છે, પણ ચેક ટાસ્કબાર ફિટ વિનંતી."
+        },
+        "uk": {
+            "legacy_caption_pid": 38808,
+            "legacy_language_pid": 28,
+            "text": "У разі Windows, так що навіть там ви, коли вона відображається прихована за браузером, будь ласка, перевірте також підходять панель задач.",
+            "auto_translated": "У разі Windows, так що навіть там ви, коли вона відображається прихована за браузером, будь ласка, перевірте також підходять панель задач."
+        },
+        "ml": {
+            "legacy_caption_pid": 38809,
+            "legacy_language_pid": 29,
+            "text": "അങ്ങനെ പോലും അവിടെ അത് ബ്രൗസർ മറഞ്ഞു പ്രദർശിപ്പിക്കുമ്പോഴല്ല വിൻഡോസ് കാര്യത്തിൽ, ൽ, പുറമേ ടാസ്ക്ബാറിൽ fit പരിശോധിക്കുക.",
+            "auto_translated": "അങ്ങനെ പോലും അവിടെ അത് ബ്രൗസർ മറഞ്ഞു പ്രദർശിപ്പിക്കുമ്പോഴല്ല വിൻഡോസ് കാര്യത്തിൽ, ൽ, പുറമേ ടാസ്ക്ബാറിൽ fit പരിശോധിക്കുക."
+        },
+        "kn": {
+            "legacy_caption_pid": 38810,
+            "legacy_language_pid": 30,
+            "text": "ವಿಂಡೋಸ್, ವಿಷಯದಲ್ಲಿ ಆದ್ದರಿಂದ ಅಲ್ಲಿ ನೀವು ಬ್ರೌಸರ್ ಹಿಂದೆ ಮರೆಮಾಡಲಾಗಿದೆ ಪ್ರದರ್ಶಿಸುತ್ತದೆ ಮಾಡಿದಾಗ, ದಯವಿಟ್ಟು ಪರಿಶೀಲಿಸಿ ಕಾರ್ಯಪಟ್ಟಿಯು ಹೊಂದಿಕೊಳ್ಳುತ್ತವೆ.",
+            "auto_translated": "ವಿಂಡೋಸ್, ವಿಷಯದಲ್ಲಿ ಆದ್ದರಿಂದ ಅಲ್ಲಿ ನೀವು ಬ್ರೌಸರ್ ಹಿಂದೆ ಮರೆಮಾಡಲಾಗಿದೆ ಪ್ರದರ್ಶಿಸುತ್ತದೆ ಮಾಡಿದಾಗ, ದಯವಿಟ್ಟು ಪರಿಶೀಲಿಸಿ ಕಾರ್ಯಪಟ್ಟಿಯು ಹೊಂದಿಕೊಳ್ಳುತ್ತವೆ."
+        },
+        "su": {
+            "legacy_caption_pid": 38811,
+            "legacy_language_pid": 31,
+            "text": "Dina kasus Windows, jadi sanajan aya nu keur ditampilkeun disumputkeun tukangeun browser, punten parios oge cocog taskbar nu.",
+            "auto_translated": "Dina kasus Windows, jadi sanajan aya nu keur ditampilkeun disumputkeun tukangeun browser, punten parios oge cocog taskbar nu."
+        },
+        "ku": {
+            "legacy_caption_pid": 38812,
+            "legacy_language_pid": 32,
+            "text": "Di doza Windows, wusa jî li wir tu dema ku veşartî li pişt browser nîşan dan, ji kerema xwe ve jî kontrol fit ketan.",
+            "auto_translated": "Di doza Windows, wusa jî li wir tu dema ku veşartî li pişt browser nîşan dan, ji kerema xwe ve jî kontrol fit ketan."
+        },
+        "ps": {
+            "legacy_caption_pid": 38813,
+            "legacy_language_pid": 33,
+            "text": "د وينډوز په صورت کې، له دې امله هم شته چې تاسو کله چې د کتنمل تر شا پټ نندارې، لطفا دا هم وګورئ دندپټې سره برابر شي.",
+            "auto_translated": "د وينډوز په صورت کې، له دې امله هم شته چې تاسو کله چې د کتنمل تر شا پټ نندارې، لطفا دا هم وګورئ دندپټې سره برابر شي."
+        },
+        "ro": {
+            "legacy_caption_pid": 38814,
+            "legacy_language_pid": 34,
+            "text": "În cazul Windows, astfel încât chiar și acolo vă atunci când este afișat ascuns în spatele browser-ul, vă rugăm să verificați, de asemenea, se potrivesc în bara de activități.",
+            "auto_translated": "În cazul Windows, astfel încât chiar și acolo vă atunci când este afișat ascuns în spatele browser-ul, vă rugăm să verificați, de asemenea, se potrivesc în bara de activități."
+        },
+        "id": {
+            "legacy_caption_pid": 38815,
+            "legacy_language_pid": 35,
+            "text": "Dalam kasus Windows, sehingga bahkan di sana Anda ketika ditampilkan tersembunyi di balik browser, periksa juga sesuai taskbar.",
+            "auto_translated": "Dalam kasus Windows, sehingga bahkan di sana Anda ketika ditampilkan tersembunyi di balik browser, periksa juga sesuai taskbar."
+        },
+        "sd": {
+            "legacy_caption_pid": 38816,
+            "legacy_language_pid": 36,
+            "text": "ونڊوز جي صورت ۾، پوء به اتي اوھان کي جنھن مھل ان کي برائوزر جي پويان لڪل ڏيکاريل آهي، مهرباني ڪري به taskbar وسيلو نه هڻندا.",
+            "auto_translated": "ونڊوز جي صورت ۾، پوء به اتي اوھان کي جنھن مھل ان کي برائوزر جي پويان لڪل ڏيکاريل آهي، مهرباني ڪري به taskbar وسيلو نه هڻندا."
+        },
+        "af": {
+            "legacy_caption_pid": 38817,
+            "legacy_language_pid": 37,
+            "text": "In die geval van Windows, so selfs daar jy wanneer dit vertoon word weggesteek agter die leser, kyk ook pas die taakbalk.",
+            "auto_translated": "In die geval van Windows, so selfs daar jy wanneer dit vertoon word weggesteek agter die leser, kyk ook pas die taakbalk."
+        },
+        "sw": {
+            "legacy_caption_pid": 38818,
+            "legacy_language_pid": 38,
+            "text": "Katika kesi ya Windows, hivyo hata pale wewe wakati ni kuonyeshwa siri nyuma ya browser, tafadhali angalia pia fit kuanzia.",
+            "auto_translated": "Katika kesi ya Windows, hivyo hata pale wewe wakati ni kuonyeshwa siri nyuma ya browser, tafadhali angalia pia fit kuanzia."
+        },
+        "lo": {
+            "legacy_caption_pid": 38819,
+            "legacy_language_pid": 39,
+            "text": "ໃນກໍລະນີຂອງ Windows ໄດ້, ສະນັ້ນເຖິງແມ່ນວ່າມີທ່ານໃນເວລາທີ່ມັນແມ່ນການສະແດງເຊື່ອງໄວ້ທາງຫລັງຂອງຕົວທ່ອງເວັບ, ກະລຸນາກວດສອບຍັງເຫມາະ taskbar ໄດ້.",
+            "auto_translated": "ໃນກໍລະນີຂອງ Windows ໄດ້, ສະນັ້ນເຖິງແມ່ນວ່າມີທ່ານໃນເວລາທີ່ມັນແມ່ນການສະແດງເຊື່ອງໄວ້ທາງຫລັງຂອງຕົວທ່ອງເວັບ, ກະລຸນາກວດສອບຍັງເຫມາະ taskbar ໄດ້."
+        },
+        "nl": {
+            "legacy_caption_pid": 38820,
+            "legacy_language_pid": 40,
+            "text": "In het geval van Windows, dus zelfs daar heb je als het wordt weergegeven verborgen achter de browser, kijk dan ook passen bij de taakbalk.",
+            "auto_translated": "In het geval van Windows, dus zelfs daar heb je als het wordt weergegeven verborgen achter de browser, kijk dan ook passen bij de taakbalk."
+        },
+        "tl": {
+            "legacy_caption_pid": 38821,
+            "legacy_language_pid": 41,
+            "text": "Sa kaso ng Windows, kaya kahit doon sa iyo kapag ito ay ipinapakita na nakatago sa likod ng mga browser, mangyaring suriin din magkasya sa taskbar.",
+            "auto_translated": "Sa kaso ng Windows, kaya kahit doon sa iyo kapag ito ay ipinapakita na nakatago sa likod ng mga browser, mangyaring suriin din magkasya sa taskbar."
+        },
+        "ne": {
+            "legacy_caption_pid": 38822,
+            "legacy_language_pid": 42,
+            "text": "विन्डोज को मामला मा त त्यहाँ पनि तपाईं यो ब्राउजर पछि लुकेको प्रदर्शन गर्दा पनि जाँच गर्नुहोस् कार्यपट्टी फिट।",
+            "auto_translated": "विन्डोज को मामला मा त त्यहाँ पनि तपाईं यो ब्राउजर पछि लुकेको प्रदर्शन गर्दा पनि जाँच गर्नुहोस् कार्यपट्टी फिट।"
+        },
+        "hu": {
+            "legacy_caption_pid": 38823,
+            "legacy_language_pid": 43,
+            "text": "Abban az esetben, a Windows, így még ott, amikor megjelenik mögött a böngésző, ellenőrizze illeszkednek a tálcán.",
+            "auto_translated": "Abban az esetben, a Windows, így még ott, amikor megjelenik mögött a böngésző, ellenőrizze illeszkednek a tálcán."
+        },
+        "cs": {
+            "legacy_caption_pid": 38824,
+            "legacy_language_pid": 44,
+            "text": "V případě systému Windows, takže i tam, kdy je zobrazen skrytý za prohlížeče, zkontrolujte také hodí na hlavním panelu.",
+            "auto_translated": "V případě systému Windows, takže i tam, kdy je zobrazen skrytý za prohlížeče, zkontrolujte také hodí na hlavním panelu."
+        },
+        "el": {
+            "legacy_caption_pid": 38825,
+            "legacy_language_pid": 45,
+            "text": "Στην περίπτωση των Windows, έτσι ώστε ακόμη και εκεί που όταν εμφανίζεται κρύβεται πίσω από το πρόγραμμα περιήγησης, παρακαλούμε, ελέγξτε επίσης ταιριάζει στη γραμμή εργασιών.",
+            "auto_translated": "Στην περίπτωση των Windows, έτσι ώστε ακόμη και εκεί που όταν εμφανίζεται κρύβεται πίσω από το πρόγραμμα περιήγησης, παρακαλούμε, ελέγξτε επίσης ταιριάζει στη γραμμή εργασιών."
+        },
+        "sv": {
+            "legacy_caption_pid": 38826,
+            "legacy_language_pid": 46,
+            "text": "När det gäller Windows, så även där du när det visas dold bakom webbläsaren, kontrollera också passa aktivitetsfältet.",
+            "auto_translated": "När det gäller Windows, så även där du när det visas dold bakom webbläsaren, kontrollera också passa aktivitetsfältet."
+        },
+        "kk": {
+            "legacy_caption_pid": 38827,
+            "legacy_language_pid": 47,
+            "text": "сондықтан тіпті сіз ол браузер артта жасырын көрсетілгенде Windows жағдайда, жылы, сондай-ақ, тапсырмалар тақтасы қиыстыру тексеріңіз.",
+            "auto_translated": "сондықтан тіпті сіз ол браузер артта жасырын көрсетілгенде Windows жағдайда, жылы, сондай-ақ, тапсырмалар тақтасы қиыстыру тексеріңіз."
+        },
+        "fi": {
+            "legacy_caption_pid": 38828,
+            "legacy_language_pid": 48,
+            "text": "Kun kyseessä on Windows, joten sielläkin kun se näkyy takana selaimen, tarkista sopivat myös tehtäväpalkissa.",
+            "auto_translated": "Kun kyseessä on Windows, joten sielläkin kun se näkyy takana selaimen, tarkista sopivat myös tehtäväpalkissa."
+        },
+        "da": {
+            "legacy_caption_pid": 38829,
+            "legacy_language_pid": 49,
+            "text": "I tilfældet med Windows, så selv der dig, når den vises skjult bag browseren, skal du kontrollere også passe på proceslinjen.",
+            "auto_translated": "I tilfældet med Windows, så selv der dig, når den vises skjult bag browseren, skal du kontrollere også passe på proceslinjen."
+        },
+        "he": {
+            "legacy_caption_pid": 38830,
+            "legacy_language_pid": 50,
+            "text": "במקרה של Windows, כך שגם שם אתה כשזה מוצג חבוי מאחורי הדפדפן, בבקשה לבדוק גם להתאים את שורת המשימות.",
+            "auto_translated": "במקרה של Windows, כך שגם שם אתה כשזה מוצג חבוי מאחורי הדפדפן, בבקשה לבדוק גם להתאים את שורת המשימות."
+        },
+        "no": {
+            "legacy_caption_pid": 38831,
+            "legacy_language_pid": 51,
+            "text": "I tilfelle av Windows, så selv der du når den vises skjult bak browser, vennligst se også passe på oppgavelinjen.",
+            "auto_translated": "I tilfelle av Windows, så selv der du når den vises skjult bak browser, vennligst se også passe på oppgavelinjen."
+        }
+    }
+}

@@ -1,0 +1,69 @@
+{
+    "resource_key": "TITLE_CLOUD_PACKAGE_FOR_ENGLISH_SCHOOL",
+    "legacy_resource_pid": 654,
+    "base_group_key": "grp-010-matsuesoft-lib",
+    "additional_group_keys": [],
+    "key_for_update": "q7p3N2vcR2B568pymdfx1qHncnBISVN3NYu8R4lDDKDdxi9AN6jbKyI15a8y6bLDYTsqNNcOJyb7a9iwxO7JiTbV1Y4PY0mXIZCY6AMozUIyBmQ8T35gy54VonJnlB8F",
+    "sort_group": "TITLE",
+    "key_name": "TITLE_CLOUD_PACKAGE_FOR_ENGLISH_SCHOOL",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": true,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 4658,
+            "legacy_language_pid": 1,
+            "text": "オンライン英会話スクール向けサーバ管理パッケージ - $DOMAINNAMECAPTION_JP",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 4659,
+            "legacy_language_pid": 2,
+            "text": "Server Management Service Package for Online English School - $DOMAINNAMECAPTION_EN",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 14361,
+            "legacy_language_pid": 3,
+            "text": "",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 14362,
+            "legacy_language_pid": 4,
+            "text": "",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 14363,
+            "legacy_language_pid": 5,
+            "text": "Paquete de servicios de administración de servidores para la escuela de inglés en línea - $DOMAINNAMECAPTION_ES",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 14364,
+            "legacy_language_pid": 6,
+            "text": "Pacote de serviço de gerenciamento de servidor para a escola de inglês on-line - $DOMAINNAMECAPTION_PT",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 14365,
+            "legacy_language_pid": 7,
+            "text": "",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 17313,
+            "legacy_language_pid": 8,
+            "text": "Package de service de gestion de serveur pour l'école d'anglais en ligne - $DOMAINNAMECAPTION_FR",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 17314,
+            "legacy_language_pid": 9,
+            "text": "ऑनलाइन अंग्रेजी स्कूल के लिए सर्वर प्रबंधन सेवा पैकेज - $ DOMAINNAMECAPTION_HI",
+            "auto_translated": ""
+        }
+    }
+}

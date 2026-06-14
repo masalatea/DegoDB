@@ -1,0 +1,69 @@
+{
+    "resource_key": "HP_FOOTER_ARCHITECTURE_DATABASE",
+    "legacy_resource_pid": 692,
+    "base_group_key": "grp-010-matsuesoft-lib",
+    "additional_group_keys": [],
+    "key_for_update": "ZckYtmVhbCLdihYWXqV0jdCnsovcmxWISRQrQHkQJHZmtvMds3jYpDrCPKBITcRZhWQVvPJmTZvhYXhAMkHs7unChH1kDXREq6DT9tFnXhQXFvNZguxOndfWbbSaHDW9",
+    "sort_group": "HP FOOTER",
+    "key_name": "HP_FOOTER_ARCHITECTURE_DATABASE",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": true,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 4542,
+            "legacy_language_pid": 1,
+            "text": "データベース・アーキテクチャ",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 4543,
+            "legacy_language_pid": 2,
+            "text": "Database Architecutre",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 13367,
+            "legacy_language_pid": 3,
+            "text": "",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 13368,
+            "legacy_language_pid": 4,
+            "text": "",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 13369,
+            "legacy_language_pid": 5,
+            "text": "Arquitectura de la base de datos",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 13370,
+            "legacy_language_pid": 6,
+            "text": "Arquitetura de banco de dados",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 13371,
+            "legacy_language_pid": 7,
+            "text": "",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 17069,
+            "legacy_language_pid": 8,
+            "text": "Architecture de base de données",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 17070,
+            "legacy_language_pid": 9,
+            "text": "डाटाबेस वास्तुकला",
+            "auto_translated": ""
+        }
+    }
+}

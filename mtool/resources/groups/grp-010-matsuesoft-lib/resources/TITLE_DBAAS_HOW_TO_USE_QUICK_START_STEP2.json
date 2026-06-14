@@ -1,0 +1,69 @@
+{
+    "resource_key": "TITLE_DBAAS_HOW_TO_USE_QUICK_START_STEP2",
+    "legacy_resource_pid": 587,
+    "base_group_key": "grp-010-matsuesoft-lib",
+    "additional_group_keys": [],
+    "key_for_update": "CgjA4HqvJm4Q8oDorUhQic8v7KnJe7KhPx2TtgS4LGz67cJx8tzy3C72xe9mQkRRWY4fi6jNB9CTLjKMBOxQUxs1FKAPFLoxwBd2657taAZcyjFPUI0KViJWMESOtgrR",
+    "sort_group": "TITLE",
+    "key_name": "TITLE_DBAAS_HOW_TO_USE_QUICK_START_STEP2",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": true,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 4708,
+            "legacy_language_pid": 1,
+            "text": "データベースを定義",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 4709,
+            "legacy_language_pid": 2,
+            "text": "Define Database",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 14486,
+            "legacy_language_pid": 3,
+            "text": "",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 14487,
+            "legacy_language_pid": 4,
+            "text": "",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 14488,
+            "legacy_language_pid": 5,
+            "text": "Definir base de datos",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 14489,
+            "legacy_language_pid": 6,
+            "text": "Definir banco de dados",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 14490,
+            "legacy_language_pid": 7,
+            "text": "",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 17363,
+            "legacy_language_pid": 8,
+            "text": "Définir la base de données",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 17364,
+            "legacy_language_pid": 9,
+            "text": "डेटाबेस को परिभाषित करें",
+            "auto_translated": ""
+        }
+    }
+}

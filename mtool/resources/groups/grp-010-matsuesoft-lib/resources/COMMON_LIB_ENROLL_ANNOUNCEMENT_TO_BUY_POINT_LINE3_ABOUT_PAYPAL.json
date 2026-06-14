@@ -1,0 +1,321 @@
+{
+    "resource_key": "COMMON_LIB_ENROLL_ANNOUNCEMENT_TO_BUY_POINT_LINE3_ABOUT_PAYPAL",
+    "legacy_resource_pid": 1455,
+    "base_group_key": "grp-010-matsuesoft-lib",
+    "additional_group_keys": [],
+    "key_for_update": "xNzSbC3UJuyI5iGKatn67X7Rep1QUaBgC4HJr0tfAe3lcWdlzlcjYGHQnTWG5PgzURu9QTcAio655jhkWCsd32DlLvulbJrOejAJEm4jjNTaarLnzn3uRa5EMjSYoDF6",
+    "sort_group": "ENROLL",
+    "key_name": "COMMON_LIB_ENROLL_ANNOUNCEMENT_TO_BUY_POINT_LINE3_ABOUT_PAYPAL",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": false,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 6094,
+            "legacy_language_pid": 1,
+            "text": "PayPalのアカウントをまだお持ちでない方はあらかじめ作成後に購入するとスムーズです。",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 6095,
+            "legacy_language_pid": 2,
+            "text": "If you do not already have a PayPal account, it is smooth if you purchase it after creating it in advance.",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 6096,
+            "legacy_language_pid": 3,
+            "text": "如果你没有一个PayPal帐户请先创建后，在进行购买。",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 6097,
+            "legacy_language_pid": 4,
+            "text": "PayPal 계정을 아직 가지고 있지 않으신 경우, 계정을 만든 후 구매하시면 편리합니다.",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 10759,
+            "legacy_language_pid": 5,
+            "text": "Si ya no tiene una cuenta de PayPal, es suave si lo compra después de que lo haga de antemano.",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 10760,
+            "legacy_language_pid": 6,
+            "text": "Se você não tiver uma conta PayPal já, é bom se você comprá-lo depois de criá-lo com antecedência.",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 10761,
+            "legacy_language_pid": 7,
+            "text": "如果你沒有一個PayPal帳戶請先創建後，在進行購買。",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 16459,
+            "legacy_language_pid": 8,
+            "text": "Si vous n'avez pas encore de compte PayPal, il est doux si vous l'achetez après l'avoir créé à l'avance.",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 16460,
+            "legacy_language_pid": 9,
+            "text": "अगर आपके पास पहले से पेपैल खाता नहीं है, तो यह आसान है अगर आप इसे पहले ही बनाते समय खरीदते हैं।",
+            "auto_translated": ""
+        },
+        "ar": {
+            "legacy_caption_pid": 31130,
+            "legacy_language_pid": 10,
+            "text": "إذا لم يكن لديك حساب باي بال لا يزال على نحو سلس مع شراء بعد أن تم إنشاؤه مسبقا.",
+            "auto_translated": "إذا لم يكن لديك حساب باي بال لا يزال على نحو سلس مع شراء بعد أن تم إنشاؤه مسبقا."
+        },
+        "fa": {
+            "legacy_caption_pid": 31131,
+            "legacy_language_pid": 11,
+            "text": "اگر شما یک حساب پی پال ندارد همچنان صاف با خرید بعد از آن در پیش ایجاد شده است.",
+            "auto_translated": "اگر شما یک حساب پی پال ندارد همچنان صاف با خرید بعد از آن در پیش ایجاد شده است."
+        },
+        "de": {
+            "legacy_caption_pid": 31132,
+            "legacy_language_pid": 12,
+            "text": "Wenn Sie ein PayPal-Konto nicht noch haben, ist glatt mit dem Kauf, nachdem sie im Voraus erstellt wurde.",
+            "auto_translated": "Wenn Sie ein PayPal-Konto nicht noch haben, ist glatt mit dem Kauf, nachdem sie im Voraus erstellt wurde."
+        },
+        "ru": {
+            "legacy_caption_pid": 31133,
+            "legacy_language_pid": 13,
+            "text": "Если у вас нет учетной записи PayPal все еще гладко с покупкой после того, как он был создан заранее.",
+            "auto_translated": "Если у вас нет учетной записи PayPal все еще гладко с покупкой после того, как он был создан заранее."
+        },
+        "ms": {
+            "legacy_caption_pid": 31134,
+            "legacy_language_pid": 14,
+            "text": "Jika anda tidak mempunyai akaun PayPal masih lancar dengan pembelian selepas ia telah dicipta terlebih dahulu.",
+            "auto_translated": "Jika anda tidak mempunyai akaun PayPal masih lancar dengan pembelian selepas ia telah dicipta terlebih dahulu."
+        },
+        "ta": {
+            "legacy_caption_pid": 31135,
+            "legacy_language_pid": 15,
+            "text": "நீங்கள் ஒரு பேபால் கணக்கு இல்லை என்றால் இன்னும் அதை முன்கூட்டியே உருவாக்கப்பட்ட செய்யப்பட்டப்பிறகு கொள்முதல் சீரானது.",
+            "auto_translated": "நீங்கள் ஒரு பேபால் கணக்கு இல்லை என்றால் இன்னும் அதை முன்கூட்டியே உருவாக்கப்பட்ட செய்யப்பட்டப்பிறகு கொள்முதல் சீரானது."
+        },
+        "it": {
+            "legacy_caption_pid": 31136,
+            "legacy_language_pid": 16,
+            "text": "Se non si dispone di un conto PayPal è ancora liscio con l'acquisto dopo che è stato creato in anticipo.",
+            "auto_translated": "Se non si dispone di un conto PayPal è ancora liscio con l'acquisto dopo che è stato creato in anticipo."
+        },
+        "bn": {
+            "legacy_caption_pid": 31137,
+            "legacy_language_pid": 17,
+            "text": "আপনি যদি একটি PayPal অ্যাকাউন্ট না থেকে থাকে তবে এখনও কেনার পরে এটা আগাম তৈরি করা হয়েছে সঙ্গে মসৃণ।",
+            "auto_translated": "আপনি যদি একটি PayPal অ্যাকাউন্ট না থেকে থাকে তবে এখনও কেনার পরে এটা আগাম তৈরি করা হয়েছে সঙ্গে মসৃণ।"
+        },
+        "tr": {
+            "legacy_caption_pid": 31138,
+            "legacy_language_pid": 18,
+            "text": "Eğer bir PayPal hesabı yoksa yine önceden oluşturulduktan sonra satın düzgün.",
+            "auto_translated": "Eğer bir PayPal hesabı yoksa yine önceden oluşturulduktan sonra satın düzgün."
+        },
+        "vi": {
+            "legacy_caption_pid": 31139,
+            "legacy_language_pid": 19,
+            "text": "Nếu bạn không có một tài khoản PayPal vẫn là mịn với việc mua sau khi nó đã được tạo ra trước.",
+            "auto_translated": "Nếu bạn không có một tài khoản PayPal vẫn là mịn với việc mua sau khi nó đã được tạo ra trước."
+        },
+        "pl": {
+            "legacy_caption_pid": 31140,
+            "legacy_language_pid": 20,
+            "text": "Jeśli nie masz jeszcze konta PayPal jest gładka z zakupu po to został stworzony z góry.",
+            "auto_translated": "Jeśli nie masz jeszcze konta PayPal jest gładka z zakupu po to został stworzony z góry."
+        },
+        "jv": {
+            "legacy_caption_pid": 31141,
+            "legacy_language_pid": 21,
+            "text": "Yen sampeyan ora duwe akun PayPal isih Gamelan karo tuku sawise wis digawe ing advance.",
+            "auto_translated": "Yen sampeyan ora duwe akun PayPal isih Gamelan karo tuku sawise wis digawe ing advance."
+        },
+        "pa": {
+            "legacy_caption_pid": 31142,
+            "legacy_language_pid": 22,
+            "text": "ਜੇਕਰ ਤੁਹਾਡੇ ਕੋਲ ਇੱਕ ਪੇਪਾਲ ਖਾਤਾ ਹੈ ਨਾ ਕਰਦੇ ਹੋ ਅਜੇ ਵੀ ਖਰੀਦ ਦੇ ਬਾਅਦ ਇਸ ਨੂੰ ਪੇਸ਼ਗੀ ਵਿੱਚ ਬਣਾਇਆ ਗਿਆ ਹੈ ਦੇ ਨਾਲ ਨਿਰਵਿਘਨ ਹੈ.",
+            "auto_translated": "ਜੇਕਰ ਤੁਹਾਡੇ ਕੋਲ ਇੱਕ ਪੇਪਾਲ ਖਾਤਾ ਹੈ ਨਾ ਕਰਦੇ ਹੋ ਅਜੇ ਵੀ ਖਰੀਦ ਦੇ ਬਾਅਦ ਇਸ ਨੂੰ ਪੇਸ਼ਗੀ ਵਿੱਚ ਬਣਾਇਆ ਗਿਆ ਹੈ ਦੇ ਨਾਲ ਨਿਰਵਿਘਨ ਹੈ."
+        },
+        "th": {
+            "legacy_caption_pid": 31143,
+            "legacy_language_pid": 23,
+            "text": "หากคุณไม่ได้มีบัญชี PayPal ยังคงเป็นไปอย่างราบรื่นกับการซื้อหลังจากที่มันได้รับการสร้างขึ้นล่วงหน้า",
+            "auto_translated": "หากคุณไม่ได้มีบัญชี PayPal ยังคงเป็นไปอย่างราบรื่นกับการซื้อหลังจากที่มันได้รับการสร้างขึ้นล่วงหน้า"
+        },
+        "te": {
+            "legacy_caption_pid": 42164,
+            "legacy_language_pid": 24,
+            "text": "మీరు ఒక ఖాతా లేకపోతే ఇంకా ముందుగానే సృష్టించబడింది తరువాత కొనుగోలుతో నునుపుగా ఉంటుంది.",
+            "auto_translated": "మీరు ఒక ఖాతా లేకపోతే ఇంకా ముందుగానే సృష్టించబడింది తరువాత కొనుగోలుతో నునుపుగా ఉంటుంది."
+        },
+        "mr": {
+            "legacy_caption_pid": 42165,
+            "legacy_language_pid": 25,
+            "text": "आपण एक पोपल खाते नसेल तर अजूनही ते अगोदर तयार केले गेले आहे नंतर खरेदी गुळगुळीत आहे.",
+            "auto_translated": "आपण एक पोपल खाते नसेल तर अजूनही ते अगोदर तयार केले गेले आहे नंतर खरेदी गुळगुळीत आहे."
+        },
+        "ur": {
+            "legacy_caption_pid": 42166,
+            "legacy_language_pid": 26,
+            "text": "آپ کو ایک پے پال اکاؤنٹ نہیں ہے تو پھر بھی بعد اسے پیشگی بنا دیا گیا ہے کی خریداری کے ساتھ ہموار ہے.",
+            "auto_translated": "آپ کو ایک پے پال اکاؤنٹ نہیں ہے تو پھر بھی بعد اسے پیشگی بنا دیا گیا ہے کی خریداری کے ساتھ ہموار ہے."
+        },
+        "gu": {
+            "legacy_caption_pid": 42167,
+            "legacy_language_pid": 27,
+            "text": "તમે પેપાલ એકાઉન્ટ ન હોય તો હજુ પણ ખરીદી કર્યા પછી તેને અગાઉથી બનાવવામાં આવ્યું છે સાથે સુંવાળી હોય છે.",
+            "auto_translated": "તમે પેપાલ એકાઉન્ટ ન હોય તો હજુ પણ ખરીદી કર્યા પછી તેને અગાઉથી બનાવવામાં આવ્યું છે સાથે સુંવાળી હોય છે."
+        },
+        "uk": {
+            "legacy_caption_pid": 42168,
+            "legacy_language_pid": 28,
+            "text": "Якщо у вас немає облікового запису PayPal все ще гладко з покупкою після того, як він був створений заздалегідь.",
+            "auto_translated": "Якщо у вас немає облікового запису PayPal все ще гладко з покупкою після того, як він був створений заздалегідь."
+        },
+        "ml": {
+            "legacy_caption_pid": 42169,
+            "legacy_language_pid": 29,
+            "text": "നിങ്ങൾ ഒരു പേപാൽ അക്കൗണ്ട് ഇല്ലെങ്കിൽ ഇപ്പോഴും അത് മുൻകൂട്ടി സൃഷ്ടിച്ച ശേഷം വാങ്ങലിൽ മിനുസമാർന്ന.",
+            "auto_translated": "നിങ്ങൾ ഒരു പേപാൽ അക്കൗണ്ട് ഇല്ലെങ്കിൽ ഇപ്പോഴും അത് മുൻകൂട്ടി സൃഷ്ടിച്ച ശേഷം വാങ്ങലിൽ മിനുസമാർന്ന."
+        },
+        "kn": {
+            "legacy_caption_pid": 42170,
+            "legacy_language_pid": 30,
+            "text": "ನೀವು ಪೇಪಾಲ್ ಖಾತೆಯನ್ನು ಹೊಂದಿಲ್ಲದಿದ್ದರೆ ಇನ್ನೂ ಮುಂಚಿತವಾಗಿ ರಚಿಸಲಾಗಿದೆ ನಂತರ ಖರೀದಿಯೊಂದಿಗೆ ಮೆದುವಾಗಿರುತ್ತದೆ.",
+            "auto_translated": "ನೀವು ಪೇಪಾಲ್ ಖಾತೆಯನ್ನು ಹೊಂದಿಲ್ಲದಿದ್ದರೆ ಇನ್ನೂ ಮುಂಚಿತವಾಗಿ ರಚಿಸಲಾಗಿದೆ ನಂತರ ಖರೀದಿಯೊಂದಿಗೆ ಮೆದುವಾಗಿರುತ್ತದೆ."
+        },
+        "su": {
+            "legacy_caption_pid": 42171,
+            "legacy_language_pid": 31,
+            "text": "Mun anjeun teu boga akun PayPal kénéh téh lancar jeung meuli sanggeus eta geus dijieun sateuacanna.",
+            "auto_translated": "Mun anjeun teu boga akun PayPal kénéh téh lancar jeung meuli sanggeus eta geus dijieun sateuacanna."
+        },
+        "ku": {
+            "legacy_caption_pid": 42172,
+            "legacy_language_pid": 32,
+            "text": "Eger tu hesabekî PayPal tune ne hê jî hilû bi kirîna piştî ew hatiye di pêş hatiye afirandin e.",
+            "auto_translated": "Eger tu hesabekî PayPal tune ne hê jî hilû bi kirîna piştî ew hatiye di pêş hatiye afirandin e."
+        },
+        "ps": {
+            "legacy_caption_pid": 42173,
+            "legacy_language_pid": 33,
+            "text": "سره د اخیستلو وروسته دا له مخکې جوړ شوي دي ملایم که تاسو د يو وی.دا نه لري اوس هم دی.",
+            "auto_translated": "سره د اخیستلو وروسته دا له مخکې جوړ شوي دي ملایم که تاسو د يو وی.دا نه لري اوس هم دی."
+        },
+        "ro": {
+            "legacy_caption_pid": 42174,
+            "legacy_language_pid": 34,
+            "text": "Dacă nu aveți un cont PayPal este încă buna cu achiziția după ce a fost creat în prealabil.",
+            "auto_translated": "Dacă nu aveți un cont PayPal este încă buna cu achiziția după ce a fost creat în prealabil."
+        },
+        "id": {
+            "legacy_caption_pid": 42175,
+            "legacy_language_pid": 35,
+            "text": "Jika Anda tidak memiliki account PayPal masih halus dengan pembelian setelah telah dibuat terlebih dahulu.",
+            "auto_translated": "Jika Anda tidak memiliki account PayPal masih halus dengan pembelian setelah telah dibuat terlebih dahulu."
+        },
+        "sd": {
+            "legacy_caption_pid": 42176,
+            "legacy_language_pid": 36,
+            "text": "توهان هڪ PayPal اڪائونٽ ڪونه آهي ته اڃا به خريد ڪري پوء ان کي اڳواٽ ۾ پيدا ڪئي وئي آهي سان ڪري ڇڏيندو آهي.",
+            "auto_translated": "توهان هڪ PayPal اڪائونٽ ڪونه آهي ته اڃا به خريد ڪري پوء ان کي اڳواٽ ۾ پيدا ڪئي وئي آهي سان ڪري ڇڏيندو آهي."
+        },
+        "af": {
+            "legacy_caption_pid": 42177,
+            "legacy_language_pid": 37,
+            "text": "As jy nie 'n PayPal rekening het nog glad met die aankoop nadat dit geskep in advance.",
+            "auto_translated": "As jy nie 'n PayPal rekening het nog glad met die aankoop nadat dit geskep in advance."
+        },
+        "sw": {
+            "legacy_caption_pid": 42178,
+            "legacy_language_pid": 38,
+            "text": "Kama huna akaunti PayPal bado ni laini na ununuzi baada imeanzishwa mapema.",
+            "auto_translated": "Kama huna akaunti PayPal bado ni laini na ununuzi baada imeanzishwa mapema."
+        },
+        "lo": {
+            "legacy_caption_pid": 42179,
+            "legacy_language_pid": 39,
+            "text": "ຖ້າຫາກວ່າທ່ານບໍ່ມີບັນຊີ PayPal ຍັງແມ່ນກ້ຽງແລະມີການຊື້ຫຼັງຈາກທີ່ມັນໄດ້ຮັບການສ້າງຕັ້ງຂື້ນໃນການລ່ວງຫນ້າ.",
+            "auto_translated": "ຖ້າຫາກວ່າທ່ານບໍ່ມີບັນຊີ PayPal ຍັງແມ່ນກ້ຽງແລະມີການຊື້ຫຼັງຈາກທີ່ມັນໄດ້ຮັບການສ້າງຕັ້ງຂື້ນໃນການລ່ວງຫນ້າ."
+        },
+        "nl": {
+            "legacy_caption_pid": 42180,
+            "legacy_language_pid": 40,
+            "text": "Als u niet beschikt over een PayPal-account nog steeds glad is met de aankoop nadat deze is gemaakt op voorhand.",
+            "auto_translated": "Als u niet beschikt over een PayPal-account nog steeds glad is met de aankoop nadat deze is gemaakt op voorhand."
+        },
+        "tl": {
+            "legacy_caption_pid": 42181,
+            "legacy_language_pid": 41,
+            "text": "Kung hindi ka magkaroon ng isang PayPal account pa rin ay makinis na may mga pagbili na ito ay nai nilikha nang maaga.",
+            "auto_translated": "Kung hindi ka magkaroon ng isang PayPal account pa rin ay makinis na may mga pagbili na ito ay nai nilikha nang maaga."
+        },
+        "ne": {
+            "legacy_caption_pid": 42182,
+            "legacy_language_pid": 42,
+            "text": "तपाईं एक PayPal खाता छैन भने अझै पनि यो अग्रिम सिर्जना भएको छ पछि खरीद चिल्लो छ।",
+            "auto_translated": "तपाईं एक PayPal खाता छैन भने अझै पनि यो अग्रिम सिर्जना भएको छ पछि खरीद चिल्लो छ।"
+        },
+        "hu": {
+            "legacy_caption_pid": 42183,
+            "legacy_language_pid": 43,
+            "text": "Ha nem rendelkezik PayPal számla még sima a vásárlás után jött létre előre.",
+            "auto_translated": "Ha nem rendelkezik PayPal számla még sima a vásárlás után jött létre előre."
+        },
+        "cs": {
+            "legacy_caption_pid": 42184,
+            "legacy_language_pid": 44,
+            "text": "Pokud nemáte účet PayPal ještě je hladká s nákupem poté, co byl vytvořen v předstihu.",
+            "auto_translated": "Pokud nemáte účet PayPal ještě je hladká s nákupem poté, co byl vytvořen v předstihu."
+        },
+        "el": {
+            "legacy_caption_pid": 42185,
+            "legacy_language_pid": 45,
+            "text": "Αν δεν έχετε λογαριασμό στο PayPal εξακολουθεί να είναι ομαλή με την αγορά αφού έχει δημιουργηθεί εκ των προτέρων.",
+            "auto_translated": "Αν δεν έχετε λογαριασμό στο PayPal εξακολουθεί να είναι ομαλή με την αγορά αφού έχει δημιουργηθεί εκ των προτέρων."
+        },
+        "sv": {
+            "legacy_caption_pid": 42186,
+            "legacy_language_pid": 46,
+            "text": "Om du inte har ett PayPal-konto fortfarande är jämn med köpet efter att det har skapats i förväg.",
+            "auto_translated": "Om du inte har ett PayPal-konto fortfarande är jämn med köpet efter att det har skapats i förväg."
+        },
+        "kk": {
+            "legacy_caption_pid": 42187,
+            "legacy_language_pid": 47,
+            "text": "Егер сіз PayPal есептік жазбасы жоқ болса әлі де алдын ала жасалғаннан кейін сатып тегіс болып табылады.",
+            "auto_translated": "Егер сіз PayPal есептік жазбасы жоқ болса әлі де алдын ала жасалғаннан кейін сатып тегіс болып табылады."
+        },
+        "fi": {
+            "legacy_caption_pid": 42188,
+            "legacy_language_pid": 48,
+            "text": "Jos sinulla ei ole PayPal-tili on edelleen tasainen oston jälkeen, kun se on luotu etukäteen.",
+            "auto_translated": "Jos sinulla ei ole PayPal-tili on edelleen tasainen oston jälkeen, kun se on luotu etukäteen."
+        },
+        "da": {
+            "legacy_caption_pid": 42189,
+            "legacy_language_pid": 49,
+            "text": "Hvis du ikke har en PayPal-konto stadig er glat med købet efter at den er skabt på forhånd.",
+            "auto_translated": "Hvis du ikke har en PayPal-konto stadig er glat med købet efter at den er skabt på forhånd."
+        },
+        "he": {
+            "legacy_caption_pid": 42190,
+            "legacy_language_pid": 50,
+            "text": "אם אין לך חשבון PayPal עדיין חלק עם הרכישה לאחר שנוצר מראש.",
+            "auto_translated": "אם אין לך חשבון PayPal עדיין חלק עם הרכישה לאחר שנוצר מראש."
+        },
+        "no": {
+            "legacy_caption_pid": 42191,
+            "legacy_language_pid": 51,
+            "text": "Hvis du ikke har en PayPal-konto fortsatt er glatt med kjøp etter at det har blitt opprettet på forhånd.",
+            "auto_translated": "Hvis du ikke har en PayPal-konto fortsatt er glatt med kjøp etter at det har blitt opprettet på forhånd."
+        }
+    }
+}

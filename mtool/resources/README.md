@@ -1,0 +1,25 @@
+# Language Resource File Catalog
+
+- `mtool/resources/` は `MTOOL` 用 `LanguageResource` の file-based source of truth root。
+- 現在この tree に置くのは `MTOOL` 本体の catalog だけとし、sample project の catalog は各 sample pack 配下へ置く。
+- 初期 slice では `mtool/reference/*language-resource-catalog.json` から export した JSON tree を置く。
+- current runtime / current admin は、この tree があれば `file-canonical` を primary read source として使う。
+- `MTOOL` の export は archived overlay seed を使わず、repo 内の stable legacy PID registry から `LANGRES-*` の `source_output_key` を解決する。
+- `manifest.json` が project-level metadata、`groups/<group_key>/group.json` が group metadata、`groups/<group_key>/resources/<resource_key>.json` が resource/caption data を持つ。
+- `mtool/resources/` は durable tree であり、`make clean` では削除しない前提で扱う。
+- `export_language_resource_file_tree.php --clean` は root 丸ごとではなく generated file (`manifest.json`, `groups/`) だけを掃除し、`README.md` のような durable 補助ファイルは残す。
+- `manifest.json` の `counts` は legacy reference の生 count ではなく、file tree 実体の count を持つ。
+- legacy reference に含まれる孤児 row は `manifest.json.normalization` に記録しつつ、file tree 本体からは除外する。
+- 旧 `Lang` 編集画面は再実装しない前提で、`LanguageResource` の更新は repo 配下の JSON file を AI / 人が直接編集する。
+- auto translate も current admin route では扱わず、必要なら file 編集 workflow の中で AI / 人が直接更新する。
+- 現在の bootstrap/export 済み project は `MTOOL`。
+- path は `MTOOL -> mtool/resources/` とする。
+- `make mtool-lang-res-file-tree-export` で既知 project 全件の file tree を `--clean` 付きで再生成できる。
+- `make mtool-lang-res-file-tree-check` で既知 project 全件の file tree を一括 validate できる。
+- `php mtool/scripts/export_language_resource_file_tree.php --all --clean` で既知 project 全件の file tree を再生成できる。
+- `php mtool/scripts/validate_language_resource_file_tree.php --all` で既知 project 全件の file tree を一括 validate できる。
+- `php mtool/scripts/validate_language_resource_file_tree.php --project-key=MTOOL` で個別 project を validate できる。
+- migration/debug 用 DB bridge CLI の正本は `mtool/scripts/debug/language_resource/` 配下の 4 script (`sync_project_language_resource_from_file_tree.php`, `inspect_language_resource_db_residual_rows.php`, `retire_project_language_resource_db_rows.php`, `drop_project_language_resource_db_tables.php`) である。
+- `php mtool/scripts/debug/language_resource/sync_project_language_resource_from_file_tree.php --project-key=MTOOL` は migration/debug 用 DB bridge preview であり、tableless な通常運用では不要。`--apply` は canonical DB table を意図的に残している検証環境でだけ使う。
+- 旧 `mtool/scripts/*.php` の top-level path は historical command 互換の thin wrapper としてだけ残し、新しい runbook では debug path を優先する。
+- wrapper は stable doc / automation 参照が消え、migration/debug 期間が閉じたら削除候補とする。

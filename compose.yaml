@@ -1,0 +1,176 @@
+name: mtool-rebuild
+
+services:
+  web-admin:
+    build:
+      context: .
+      dockerfile: docker/php-apache/Dockerfile
+    environment:
+      APP_SITE: admin
+      APP_SITE_NAME: 設定変更用サイト
+      APP_APP_ROOT: /var/www/mtool/app
+      APP_SESSION_NAME: ${ADMIN_SESSION_NAME:-}
+      APP_AUTH_MODE: ${ADMIN_AUTH_MODE:-}
+      APP_AUTH_STUB_USER: ${ADMIN_AUTH_STUB_USER:-}
+      APP_AUTH_STUB_PASSWORD: ${ADMIN_AUTH_STUB_PASSWORD:-}
+      APP_AUTH_STUB_NAME: ${ADMIN_AUTH_STUB_NAME:-}
+      APP_AUTH_STUB_ROLES: ${ADMIN_AUTH_STUB_ROLES:-}
+      APP_TRANSLATION_PROVIDER: ${APP_TRANSLATION_PROVIDER:-}
+      APP_TRANSLATION_GOOGLE_API_KEY: ${APP_TRANSLATION_GOOGLE_API_KEY:-}
+      APP_TRANSLATION_TIMEOUT_SECONDS: ${APP_TRANSLATION_TIMEOUT_SECONDS:-}
+      APP_DB_HOST: ${APP_CONFIG_DB_HOST:-db-config}
+      APP_DB_PORT: ${APP_CONFIG_DB_PORT:-3306}
+      APP_DB_NAME: ${APP_CONFIG_DB_NAME:-${CONFIG_DB_NAME:-config_app}}
+      APP_DB_USER: ${APP_CONFIG_DB_USER:-${CONFIG_DB_USER:-config_app}}
+      APP_DB_PASSWORD: ${APP_CONFIG_DB_PASSWORD:-${CONFIG_DB_PASSWORD:-}}
+      APP_CONFIG_DB_HOST: ${APP_CONFIG_DB_HOST:-db-config}
+      APP_CONFIG_DB_PORT: ${APP_CONFIG_DB_PORT:-3306}
+      APP_CONFIG_DB_NAME: ${APP_CONFIG_DB_NAME:-${CONFIG_DB_NAME:-config_app}}
+      APP_CONFIG_DB_USER: ${APP_CONFIG_DB_USER:-${CONFIG_DB_USER:-config_app}}
+      APP_CONFIG_DB_PASSWORD: ${APP_CONFIG_DB_PASSWORD:-${CONFIG_DB_PASSWORD:-}}
+      APP_LAB_DB_HOST: db-lab
+      APP_LAB_DB_PORT: 3306
+      APP_LAB_DB_NAME: ${LAB_DB_NAME:-lab_app}
+      APP_LAB_DB_USER: ${LAB_DB_USER:-lab_app}
+      APP_LAB_DB_PASSWORD: ${LAB_DB_PASSWORD:-}
+      APP_REFERENCE_ROOT: /var/www/mtool/reference
+      APP_WORK_ROOT: /var/www/work
+      APP_GENERATED_DBCLASSES_MODE: ${APP_GENERATED_DBCLASSES_MODE:-}
+      APP_PROJECT_REPOSITORY_DRIVER: ${APP_PROJECT_REPOSITORY_DRIVER:-pdo}
+      APP_EXPERIMENT_REPOSITORY_DRIVER: ${APP_EXPERIMENT_REPOSITORY_DRIVER:-pdo}
+    healthcheck:
+      test: ["CMD-SHELL", "curl -fsS http://127.0.0.1/health >/dev/null || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+    ports:
+      - "${ADMIN_HTTP_PORT:-8081}:80"
+    restart: unless-stopped
+    volumes:
+      - ./.env.example:/var/www/.env.example:ro
+      - ./compose.yaml:/var/www/compose.yaml:ro
+      - ./compose.local-db-config.yaml:/var/www/compose.local-db-config.yaml:ro
+      - ./docker:/var/www/docker:ro
+      - ./Makefile:/var/www/Makefile:ro
+      - ./README.md:/var/www/README.md:ro
+      - ./docs:/var/www/docs:ro
+      - ./mtool/admin/public:/var/www/html:ro
+      - ./mtool/app:/var/www/mtool/app:ro
+      - ./mtool/docker:/var/www/mtool/docker:ro
+      - ./mtool/extensions:/var/www/mtool/extensions
+      - ./mtool/reference:/var/www/mtool/reference:ro
+      - ./mtool/resources:/var/www/mtool/resources:ro
+      - ./mtool/scripts:/var/www/mtool/scripts:ro
+      - ./tests:/var/www/tests:ro
+      - ./work:/var/www/work
+      - ./sample:/var/www/sample:ro
+
+  web-lab:
+    build:
+      context: .
+      dockerfile: docker/php-apache/Dockerfile
+    depends_on:
+      db-lab:
+        condition: service_healthy
+    environment:
+      APP_SITE: lab
+      APP_SITE_NAME: 実験用サイト
+      APP_APP_ROOT: /var/www/mtool/app
+      APP_SESSION_NAME: ${LAB_SESSION_NAME:-}
+      APP_AUTH_MODE: ${LAB_AUTH_MODE:-}
+      APP_AUTH_STUB_USER: ${LAB_AUTH_STUB_USER:-}
+      APP_AUTH_STUB_PASSWORD: ${LAB_AUTH_STUB_PASSWORD:-}
+      APP_AUTH_STUB_NAME: ${LAB_AUTH_STUB_NAME:-}
+      APP_AUTH_STUB_ROLES: ${LAB_AUTH_STUB_ROLES:-}
+      APP_DB_HOST: db-lab
+      APP_DB_PORT: 3306
+      APP_DB_NAME: ${LAB_DB_NAME:-lab_app}
+      APP_DB_USER: ${LAB_DB_USER:-lab_app}
+      APP_DB_PASSWORD: ${LAB_DB_PASSWORD:-}
+      APP_CONFIG_DB_HOST: ${APP_CONFIG_DB_HOST:-db-config}
+      APP_CONFIG_DB_PORT: ${APP_CONFIG_DB_PORT:-3306}
+      APP_CONFIG_DB_NAME: ${APP_CONFIG_DB_NAME:-${CONFIG_DB_NAME:-config_app}}
+      APP_CONFIG_DB_USER: ${APP_CONFIG_DB_USER:-${CONFIG_DB_USER:-config_app}}
+      APP_CONFIG_DB_PASSWORD: ${APP_CONFIG_DB_PASSWORD:-${CONFIG_DB_PASSWORD:-}}
+      APP_LAB_DB_HOST: db-lab
+      APP_LAB_DB_PORT: 3306
+      APP_LAB_DB_NAME: ${LAB_DB_NAME:-lab_app}
+      APP_LAB_DB_USER: ${LAB_DB_USER:-lab_app}
+      APP_LAB_DB_PASSWORD: ${LAB_DB_PASSWORD:-}
+      APP_REFERENCE_ROOT: /var/www/mtool/reference
+      APP_WORK_ROOT: /var/www/work
+      APP_GENERATED_DBCLASSES_MODE: ${APP_GENERATED_DBCLASSES_MODE:-}
+      APP_PROJECT_REPOSITORY_DRIVER: ${APP_PROJECT_REPOSITORY_DRIVER:-pdo}
+      APP_EXPERIMENT_REPOSITORY_DRIVER: ${APP_EXPERIMENT_REPOSITORY_DRIVER:-pdo}
+    healthcheck:
+      test: ["CMD-SHELL", "curl -fsS http://127.0.0.1/health >/dev/null || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+    ports:
+      - "${LAB_HTTP_PORT:-8082}:80"
+    restart: unless-stopped
+    volumes:
+      - ./.env.example:/var/www/.env.example:ro
+      - ./compose.yaml:/var/www/compose.yaml:ro
+      - ./compose.local-db-config.yaml:/var/www/compose.local-db-config.yaml:ro
+      - ./docker:/var/www/docker:ro
+      - ./Makefile:/var/www/Makefile:ro
+      - ./README.md:/var/www/README.md:ro
+      - ./docs:/var/www/docs:ro
+      - ./mtool/lab/public:/var/www/html:ro
+      - ./mtool/app:/var/www/mtool/app:ro
+      - ./mtool/docker:/var/www/mtool/docker:ro
+      - ./mtool/extensions:/var/www/mtool/extensions
+      - ./mtool/reference:/var/www/mtool/reference:ro
+      - ./mtool/resources:/var/www/mtool/resources:ro
+      - ./mtool/scripts:/var/www/mtool/scripts:ro
+      - ./tests:/var/www/tests:ro
+      - ./work:/var/www/work
+      - ./sample:/var/www/sample:ro
+
+  db-lab:
+    image: mariadb:11.4
+    environment:
+      MARIADB_ROOT_PASSWORD: ${LAB_DB_ROOT_PASSWORD:-}
+      MARIADB_DATABASE: ${LAB_DB_NAME:-lab_app}
+      MARIADB_USER: ${LAB_DB_USER:-lab_app}
+      MARIADB_PASSWORD: ${LAB_DB_PASSWORD:-}
+    healthcheck:
+      test: ["CMD-SHELL", "mariadb-admin ping -h 127.0.0.1 -uroot -p$${MARIADB_ROOT_PASSWORD} --silent"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+      start_period: 10s
+    ports:
+      - "${LAB_DB_HOST_PORT:-33062}:3306"
+    restart: unless-stopped
+    volumes:
+      - db-lab-data:/var/lib/mysql
+      - ./docker/mariadb/lab-initdb:/docker-entrypoint-initdb.d:ro
+
+  lab-db-ui:
+    image: adminer:4.8.1
+    profiles: ["lab-db-ui"]
+    depends_on:
+      db-lab:
+        condition: service_healthy
+    environment:
+      ADMINER_DEFAULT_SERVER: db-lab
+    ports:
+      - "${LAB_DB_UI_HTTP_PORT:-8083}:8080"
+    restart: unless-stopped
+
+  maildev:
+    image: maildev/maildev:2.2.1
+    profiles: ["dev-tools"]
+    ports:
+      - "${MAILDEV_SMTP_PORT:-1025}:1025"
+      - "${MAILDEV_HTTP_PORT:-1080}:1080"
+    restart: unless-stopped
+
+volumes:
+  db-config-data:
+  db-lab-data:

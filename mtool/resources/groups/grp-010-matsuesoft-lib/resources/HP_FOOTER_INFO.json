@@ -1,0 +1,69 @@
+{
+    "resource_key": "HP_FOOTER_INFO",
+    "legacy_resource_pid": 701,
+    "base_group_key": "grp-010-matsuesoft-lib",
+    "additional_group_keys": [],
+    "key_for_update": "zkczL5F7CojtVQjZIHjciJjnR1AgGq2YcBcauZame3mDWtagAAD1b6JwP7IwlRjOCwG2wAJ5W7dRGup6mfDL1A74YojREMs51N0s98dN77EwwOoKhrRIMo0pbZg6KXBP",
+    "sort_group": "HP FOOTER",
+    "key_name": "HP_FOOTER_INFO",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": true,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 4604,
+            "legacy_language_pid": 1,
+            "text": "各種情報",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 4605,
+            "legacy_language_pid": 2,
+            "text": "Information",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 14226,
+            "legacy_language_pid": 3,
+            "text": "",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 14227,
+            "legacy_language_pid": 4,
+            "text": "",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 14228,
+            "legacy_language_pid": 5,
+            "text": "Información",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 14229,
+            "legacy_language_pid": 6,
+            "text": "Em formação",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 14230,
+            "legacy_language_pid": 7,
+            "text": "",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 17131,
+            "legacy_language_pid": 8,
+            "text": "Information",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 17132,
+            "legacy_language_pid": 9,
+            "text": "सूचना",
+            "auto_translated": ""
+        }
+    }
+}

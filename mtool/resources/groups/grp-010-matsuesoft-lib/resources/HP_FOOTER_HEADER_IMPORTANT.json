@@ -1,0 +1,69 @@
+{
+    "resource_key": "HP_FOOTER_HEADER_IMPORTANT",
+    "legacy_resource_pid": 672,
+    "base_group_key": "grp-010-matsuesoft-lib",
+    "additional_group_keys": [],
+    "key_for_update": "iKs4hnOcMJHGb0XZhB5LjFHX6y0gTBN76BygX7FeXA5dF0esxkefxqvtFN7pHaqc22BqlDlF4WQDdskGxBzL68tH3QLSiqp9NvvcSuEBkyOUbVVYM9Ahd9fZqjJOrvQa",
+    "sort_group": "HP FOOTER",
+    "key_name": "HP_FOOTER_HEADER_IMPORTANT",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": true,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 4596,
+            "legacy_language_pid": 1,
+            "text": "重要な情報",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 4597,
+            "legacy_language_pid": 2,
+            "text": "Values",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 14206,
+            "legacy_language_pid": 3,
+            "text": "",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 14207,
+            "legacy_language_pid": 4,
+            "text": "",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 14208,
+            "legacy_language_pid": 5,
+            "text": " información clave",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 14209,
+            "legacy_language_pid": 6,
+            "text": "Informações-chave",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 14210,
+            "legacy_language_pid": 7,
+            "text": "",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 17123,
+            "legacy_language_pid": 8,
+            "text": "Valeurs",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 17124,
+            "legacy_language_pid": 9,
+            "text": "मान",
+            "auto_translated": ""
+        }
+    }
+}

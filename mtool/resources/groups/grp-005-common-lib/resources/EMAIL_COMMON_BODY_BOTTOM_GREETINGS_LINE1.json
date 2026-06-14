@@ -1,0 +1,321 @@
+{
+    "resource_key": "EMAIL_COMMON_BODY_BOTTOM_GREETINGS_LINE1",
+    "legacy_resource_pid": 2571,
+    "base_group_key": "grp-005-common-lib",
+    "additional_group_keys": [],
+    "key_for_update": "mroOn6IiurQKSrVV1opOxblBDdXVsaVt87b4aWE1fKpXLSP1L7CfApaBp6JOV6FC444oOsnUoSMKH5sw9wNcwV7QM65n1MhRxqhWDO01kVcWyDbeDXzPNBLwmmianHXL",
+    "sort_group": "EMAIL COMMON",
+    "key_name": "EMAIL_COMMON_BODY_BOTTOM_GREETINGS_LINE1",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": false,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 19376,
+            "legacy_language_pid": 1,
+            "text": "ご不明点がございましたら事務局までお気軽にお問い合わせ下さい。",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 19377,
+            "legacy_language_pid": 2,
+            "text": "If you have any questions, please do not hesitate to contact the secretariat.",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 19378,
+            "legacy_language_pid": 3,
+            "text": "如果您有任何问题，请随时联系秘书处。",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 19379,
+            "legacy_language_pid": 4,
+            "text": "문의 사항이 있으시면 사무실로 연락 주시기 바랍니다.",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 19380,
+            "legacy_language_pid": 5,
+            "text": "Si tiene alguna pregunta, no dude en ponerse en contacto con la secretaría.",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 19381,
+            "legacy_language_pid": 6,
+            "text": "Se você tiver alguma dúvida, não hesite em contactar o secretariado.",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 19382,
+            "legacy_language_pid": 7,
+            "text": "如果您有任何問題，請隨時聯繫秘書處。",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 19383,
+            "legacy_language_pid": 8,
+            "text": "Si vous avez des questions, n'hésitez pas à contacter le secrétariat.",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 19384,
+            "legacy_language_pid": 9,
+            "text": "यदि आपके कोई प्रश्न हैं, तो कृपया सचिवालय से संपर्क करने में संकोच न करें।",
+            "auto_translated": ""
+        },
+        "ar": {
+            "legacy_caption_pid": 29422,
+            "legacy_language_pid": 10,
+            "text": "لا تتردد في الاتصال بمكتب إذا كان لديك أي أسئلة.",
+            "auto_translated": "لا تتردد في الاتصال بمكتب إذا كان لديك أي أسئلة."
+        },
+        "fa": {
+            "legacy_caption_pid": 29423,
+            "legacy_language_pid": 11,
+            "text": "لطفا در صورت تمایل با دفتر اگر شما هر گونه سوال.",
+            "auto_translated": "لطفا در صورت تمایل با دفتر اگر شما هر گونه سوال."
+        },
+        "de": {
+            "legacy_caption_pid": 29424,
+            "legacy_language_pid": 12,
+            "text": "Bitte zögern Sie nicht, das Büro zu kontaktieren, wenn Sie Fragen haben.",
+            "auto_translated": "Bitte zögern Sie nicht, das Büro zu kontaktieren, wenn Sie Fragen haben."
+        },
+        "ru": {
+            "legacy_caption_pid": 29425,
+            "legacy_language_pid": 13,
+            "text": "Пожалуйста, не стесняйтесь связаться с офисом, если у вас есть какие-либо вопросы.",
+            "auto_translated": "Пожалуйста, не стесняйтесь связаться с офисом, если у вас есть какие-либо вопросы."
+        },
+        "ms": {
+            "legacy_caption_pid": 29426,
+            "legacy_language_pid": 14,
+            "text": "Sila berasa bebas untuk menghubungi pejabat jika anda mempunyai sebarang soalan.",
+            "auto_translated": "Sila berasa bebas untuk menghubungi pejabat jika anda mempunyai sebarang soalan."
+        },
+        "ta": {
+            "legacy_caption_pid": 29427,
+            "legacy_language_pid": 15,
+            "text": "நீங்கள் ஏதேனும் சந்தேகங்கள் இருந்தால் அலுவலகம் தொடர்பு கொள்ள தயங்க கொள்ளவும்.",
+            "auto_translated": "நீங்கள் ஏதேனும் சந்தேகங்கள் இருந்தால் அலுவலகம் தொடர்பு கொள்ள தயங்க கொள்ளவும்."
+        },
+        "it": {
+            "legacy_caption_pid": 29428,
+            "legacy_language_pid": 16,
+            "text": "Non esitate a contattare l'ufficio se avete domande.",
+            "auto_translated": "Non esitate a contattare l'ufficio se avete domande."
+        },
+        "bn": {
+            "legacy_caption_pid": 29429,
+            "legacy_language_pid": 17,
+            "text": "দয়া করে কোন প্রশ্ন থাকে তাহলে অফিসের সাথে যোগাযোগ করুন মুক্ত মনে।",
+            "auto_translated": "দয়া করে কোন প্রশ্ন থাকে তাহলে অফিসের সাথে যোগাযোগ করুন মুক্ত মনে।"
+        },
+        "tr": {
+            "legacy_caption_pid": 29430,
+            "legacy_language_pid": 18,
+            "text": "Herhangi bir sorunuz varsa ofis iletişim kurmaktan çekinmeyin.",
+            "auto_translated": "Herhangi bir sorunuz varsa ofis iletişim kurmaktan çekinmeyin."
+        },
+        "vi": {
+            "legacy_caption_pid": 29431,
+            "legacy_language_pid": 19,
+            "text": "Xin vui lòng liên hệ với văn phòng nếu bạn có bất cứ thắc mắc.",
+            "auto_translated": "Xin vui lòng liên hệ với văn phòng nếu bạn có bất cứ thắc mắc."
+        },
+        "pl": {
+            "legacy_caption_pid": 29432,
+            "legacy_language_pid": 20,
+            "text": "Prosimy o kontakt z biurem, jeśli masz jakiekolwiek pytania.",
+            "auto_translated": "Prosimy o kontakt z biurem, jeśli masz jakiekolwiek pytania."
+        },
+        "jv": {
+            "legacy_caption_pid": 29433,
+            "legacy_language_pid": 21,
+            "text": "Mangga aran gratis kanggo hubungi kantor yen sampeyan duwe pitakon.",
+            "auto_translated": "Mangga aran gratis kanggo hubungi kantor yen sampeyan duwe pitakon."
+        },
+        "pa": {
+            "legacy_caption_pid": 29434,
+            "legacy_language_pid": 22,
+            "text": "ਕਿਰਪਾ ਕਰਕੇ ਤੁਹਾਡੇ ਕੋਈ ਸਵਾਲ ਹਨ, ਜੇ ਦੇ ਦਫ਼ਤਰ ਨਾਲ ਸੰਪਰਕ ਕਰਨ ਲਈ ਮੁਫ਼ਤ ਮਹਿਸੂਸ ਕਰਦੇ ਹਨ.",
+            "auto_translated": "ਕਿਰਪਾ ਕਰਕੇ ਤੁਹਾਡੇ ਕੋਈ ਸਵਾਲ ਹਨ, ਜੇ ਦੇ ਦਫ਼ਤਰ ਨਾਲ ਸੰਪਰਕ ਕਰਨ ਲਈ ਮੁਫ਼ਤ ਮਹਿਸੂਸ ਕਰਦੇ ਹਨ."
+        },
+        "th": {
+            "legacy_caption_pid": 29435,
+            "legacy_language_pid": 23,
+            "text": "โปรดอย่าลังเลที่จะติดต่อกับสำนักงานได้ถ้าคุณมีคำถามใด ๆ",
+            "auto_translated": "โปรดอย่าลังเลที่จะติดต่อกับสำนักงานได้ถ้าคุณมีคำถามใด ๆ"
+        },
+        "te": {
+            "legacy_caption_pid": 37572,
+            "legacy_language_pid": 24,
+            "text": "కార్యాలయం సంప్రదించడానికి మీరు ఏవైనా ప్రశ్నలు ఉంటే సంకోచించకండి దయచేసి.",
+            "auto_translated": "కార్యాలయం సంప్రదించడానికి మీరు ఏవైనా ప్రశ్నలు ఉంటే సంకోచించకండి దయచేసి."
+        },
+        "mr": {
+            "legacy_caption_pid": 37573,
+            "legacy_language_pid": 25,
+            "text": "आपण काही प्रश्न असतील तर कार्यालय संपर्क मोकळ्या करा.",
+            "auto_translated": "आपण काही प्रश्न असतील तर कार्यालय संपर्क मोकळ्या करा."
+        },
+        "ur": {
+            "legacy_caption_pid": 37574,
+            "legacy_language_pid": 26,
+            "text": "براہ کرم اگر آپ کو کوئی سوال ہے تو دفتر سے رابطہ کرنے کے لئے آزاد محسوس.",
+            "auto_translated": "براہ کرم اگر آپ کو کوئی سوال ہے تو دفتر سے رابطہ کرنے کے لئے آزاد محسوس."
+        },
+        "gu": {
+            "legacy_caption_pid": 37575,
+            "legacy_language_pid": 27,
+            "text": "કૃપા કરીને જો તમે કોઇ પ્રશ્નો હોય, તો ઓફિસનો સંપર્ક કરવા માટે મુક્ત લાગે છે.",
+            "auto_translated": "કૃપા કરીને જો તમે કોઇ પ્રશ્નો હોય, તો ઓફિસનો સંપર્ક કરવા માટે મુક્ત લાગે છે."
+        },
+        "uk": {
+            "legacy_caption_pid": 37576,
+            "legacy_language_pid": 28,
+            "text": "Будь ласка, не соромтеся зв'язатися з офісом, якщо у вас є які-небудь питання.",
+            "auto_translated": "Будь ласка, не соромтеся зв'язатися з офісом, якщо у вас є які-небудь питання."
+        },
+        "ml": {
+            "legacy_caption_pid": 37577,
+            "legacy_language_pid": 29,
+            "text": "നിങ്ങൾക്ക് എന്തെങ്കിലും ചോദ്യങ്ങൾ ഉണ്ടെങ്കിൽ ഓഫീസ് ബന്ധപ്പെടാൻ മടിക്കേണ്ടതില്ല.",
+            "auto_translated": "നിങ്ങൾക്ക് എന്തെങ്കിലും ചോദ്യങ്ങൾ ഉണ്ടെങ്കിൽ ഓഫീസ് ബന്ധപ്പെടാൻ മടിക്കേണ്ടതില്ല."
+        },
+        "kn": {
+            "legacy_caption_pid": 37578,
+            "legacy_language_pid": 30,
+            "text": "ದಯವಿಟ್ಟು ಮುಕ್ತವಾಗಿರಿ ನೀವು ಯಾವುದೇ ಪ್ರಶ್ನೆಗಳನ್ನು ಹೊಂದಿದ್ದರೆ ಕಚೇರಿಯಲ್ಲಿ ಸಂಪರ್ಕಿಸಲು ಮುಕ್ತವಾಗಿರಿ.",
+            "auto_translated": "ದಯವಿಟ್ಟು ಮುಕ್ತವಾಗಿರಿ ನೀವು ಯಾವುದೇ ಪ್ರಶ್ನೆಗಳನ್ನು ಹೊಂದಿದ್ದರೆ ಕಚೇರಿಯಲ್ಲಿ ಸಂಪರ್ಕಿಸಲು ಮುಕ್ತವಾಗಿರಿ."
+        },
+        "su": {
+            "legacy_caption_pid": 37579,
+            "legacy_language_pid": 31,
+            "text": "Mangga ngarasa Luncat ngahubungan kantor lamun anjeun mibanda patalékan.",
+            "auto_translated": "Mangga ngarasa Luncat ngahubungan kantor lamun anjeun mibanda patalékan."
+        },
+        "ku": {
+            "legacy_caption_pid": 37580,
+            "legacy_language_pid": 32,
+            "text": "Ji kerema xwe, ji bo serî li ofîsa eger pirsên te hebin tu hîs.",
+            "auto_translated": "Ji kerema xwe, ji bo serî li ofîsa eger pirsên te hebin tu hîs."
+        },
+        "ps": {
+            "legacy_caption_pid": 37581,
+            "legacy_language_pid": 33,
+            "text": "لطفا وړيا که تاسو کومه پوښتنه لري د دفتر سره تماس احساس کوي.",
+            "auto_translated": "لطفا وړيا که تاسو کومه پوښتنه لري د دفتر سره تماس احساس کوي."
+        },
+        "ro": {
+            "legacy_caption_pid": 37582,
+            "legacy_language_pid": 34,
+            "text": "Vă rugăm să nu ezitați să contactați biroul dacă aveți întrebări.",
+            "auto_translated": "Vă rugăm să nu ezitați să contactați biroul dacă aveți întrebări."
+        },
+        "id": {
+            "legacy_caption_pid": 37583,
+            "legacy_language_pid": 35,
+            "text": "Silahkan menghubungi kantor jika Anda memiliki pertanyaan.",
+            "auto_translated": "Silahkan menghubungi kantor jika Anda memiliki pertanyaan."
+        },
+        "sd": {
+            "legacy_caption_pid": 37584,
+            "legacy_language_pid": 36,
+            "text": "مهرباني ڪري توهان ڪنهن به سوال ڪيو آهي ته سنڌ جي آفيس سان رابطو ڪري آزاد محسوس.",
+            "auto_translated": "مهرباني ڪري توهان ڪنهن به سوال ڪيو آهي ته سنڌ جي آفيس سان رابطو ڪري آزاد محسوس."
+        },
+        "af": {
+            "legacy_caption_pid": 37585,
+            "legacy_language_pid": 37,
+            "text": "Voel asseblief vry om ons te kontak die kantoor indien u enige vrae.",
+            "auto_translated": "Voel asseblief vry om ons te kontak die kantoor indien u enige vrae."
+        },
+        "sw": {
+            "legacy_caption_pid": 37586,
+            "legacy_language_pid": 38,
+            "text": "Tafadhali jisikie huru kuwasiliana ofisi kama una maswali yoyote.",
+            "auto_translated": "Tafadhali jisikie huru kuwasiliana ofisi kama una maswali yoyote."
+        },
+        "lo": {
+            "legacy_caption_pid": 37587,
+            "legacy_language_pid": 39,
+            "text": "ກະລຸນາຮູ້ສຶກວ່າບໍ່ເສຍຄ່າເພື່ອຕິດຕໍ່ຫາຫ້ອງການຖ້າຫາກວ່າທ່ານມີຄໍາຖາມໃດໆ.",
+            "auto_translated": "ກະລຸນາຮູ້ສຶກວ່າບໍ່ເສຍຄ່າເພື່ອຕິດຕໍ່ຫາຫ້ອງການຖ້າຫາກວ່າທ່ານມີຄໍາຖາມໃດໆ."
+        },
+        "nl": {
+            "legacy_caption_pid": 37588,
+            "legacy_language_pid": 40,
+            "text": "Neem gerust contact op met het kantoor als u vragen hebt.",
+            "auto_translated": "Neem gerust contact op met het kantoor als u vragen hebt."
+        },
+        "tl": {
+            "legacy_caption_pid": 37589,
+            "legacy_language_pid": 41,
+            "text": "Mangyaring huwag mag-atubiling makipag-ugnay sa opisina kung mayroon kang anumang mga katanungan.",
+            "auto_translated": "Mangyaring huwag mag-atubiling makipag-ugnay sa opisina kung mayroon kang anumang mga katanungan."
+        },
+        "ne": {
+            "legacy_caption_pid": 37590,
+            "legacy_language_pid": 42,
+            "text": "कृपया तपाईं कुनै प्रश्न छ भने कार्यालय सम्पर्क गर्न नहिच्किचाउनुहोस्।",
+            "auto_translated": "कृपया तपाईं कुनै प्रश्न छ भने कार्यालय सम्पर्क गर्न नहिच्किचाउनुहोस्।"
+        },
+        "hu": {
+            "legacy_caption_pid": 37591,
+            "legacy_language_pid": 43,
+            "text": "Kérjük, bátran forduljon az irodában, ha bármilyen kérdése van.",
+            "auto_translated": "Kérjük, bátran forduljon az irodában, ha bármilyen kérdése van."
+        },
+        "cs": {
+            "legacy_caption_pid": 37592,
+            "legacy_language_pid": 44,
+            "text": "Neváhejte se obrátit na úřad, pokud máte nějaké otázky.",
+            "auto_translated": "Neváhejte se obrátit na úřad, pokud máte nějaké otázky."
+        },
+        "el": {
+            "legacy_caption_pid": 37593,
+            "legacy_language_pid": 45,
+            "text": "Παρακαλώ μη διστάσετε να επικοινωνήσετε με το γραφείο εάν έχετε οποιεσδήποτε ερωτήσεις.",
+            "auto_translated": "Παρακαλώ μη διστάσετε να επικοινωνήσετε με το γραφείο εάν έχετε οποιεσδήποτε ερωτήσεις."
+        },
+        "sv": {
+            "legacy_caption_pid": 37594,
+            "legacy_language_pid": 46,
+            "text": "Tveka inte att kontakta kontoret om du har några frågor.",
+            "auto_translated": "Tveka inte att kontakta kontoret om du har några frågor."
+        },
+        "kk": {
+            "legacy_caption_pid": 37595,
+            "legacy_language_pid": 47,
+            "text": "Егер сіз қандай да бір сұрақтарыңыз болса кеңсесіне хабарласыңыз еркін сезінеді сұраймыз.",
+            "auto_translated": "Егер сіз қандай да бір сұрақтарыңыз болса кеңсесіне хабарласыңыз еркін сезінеді сұраймыз."
+        },
+        "fi": {
+            "legacy_caption_pid": 37596,
+            "legacy_language_pid": 48,
+            "text": "Ota rohkeasti yhteyttä toimistoon jos sinulla on kysyttävää.",
+            "auto_translated": "Ota rohkeasti yhteyttä toimistoon jos sinulla on kysyttävää."
+        },
+        "da": {
+            "legacy_caption_pid": 37597,
+            "legacy_language_pid": 49,
+            "text": "Du er velkommen til at kontakte kontoret, hvis du har spørgsmål.",
+            "auto_translated": "Du er velkommen til at kontakte kontoret, hvis du har spørgsmål."
+        },
+        "he": {
+            "legacy_caption_pid": 37598,
+            "legacy_language_pid": 50,
+            "text": "אנא אל תהסס לפנות למשרד אם יש לך שאלות.",
+            "auto_translated": "אנא אל תהסס לפנות למשרד אם יש לך שאלות."
+        },
+        "no": {
+            "legacy_caption_pid": 37599,
+            "legacy_language_pid": 51,
+            "text": "Ta gjerne kontakt med kontoret hvis du har spørsmål.",
+            "auto_translated": "Ta gjerne kontakt med kontoret hvis du har spørsmål."
+        }
+    }
+}

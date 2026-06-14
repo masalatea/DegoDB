@@ -1,0 +1,321 @@
+{
+    "resource_key": "ACTION_DELETED",
+    "legacy_resource_pid": 578,
+    "base_group_key": "grp-005-common-lib",
+    "additional_group_keys": [],
+    "key_for_update": "w5kub3YyuRkxr2sKPC6giXtVayGNdoaBrzVucOIAUAVna2gDFoVSJbdAMjPVJ0bBrjfuHRgakht6uoF2lrp3XSpr48OHbB3xDKGrFrrcvur5y7aySXbva3N4wPQnzApg",
+    "sort_group": "ACTION",
+    "key_name": "ACTION_DELETED",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": false,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 1345,
+            "legacy_language_pid": 1,
+            "text": "削除しました",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 1346,
+            "legacy_language_pid": 2,
+            "text": "Deleted",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 6512,
+            "legacy_language_pid": 3,
+            "text": "删除了",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 6513,
+            "legacy_language_pid": 4,
+            "text": "삭제했습니다",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 10407,
+            "legacy_language_pid": 5,
+            "text": "Eliminado",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 10408,
+            "legacy_language_pid": 6,
+            "text": "Excluído",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 10409,
+            "legacy_language_pid": 7,
+            "text": "删除了",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 16259,
+            "legacy_language_pid": 8,
+            "text": "Supprimé",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 16260,
+            "legacy_language_pid": 9,
+            "text": "हटाए गए",
+            "auto_translated": ""
+        },
+        "ar": {
+            "legacy_caption_pid": 29310,
+            "legacy_language_pid": 10,
+            "text": "تم حذفه",
+            "auto_translated": "تم حذفه"
+        },
+        "fa": {
+            "legacy_caption_pid": 29311,
+            "legacy_language_pid": 11,
+            "text": "آن حذف شده است",
+            "auto_translated": "آن حذف شده است"
+        },
+        "de": {
+            "legacy_caption_pid": 29312,
+            "legacy_language_pid": 12,
+            "text": "Es wurde gelöscht",
+            "auto_translated": "Es wurde gelöscht"
+        },
+        "ru": {
+            "legacy_caption_pid": 29313,
+            "legacy_language_pid": 13,
+            "text": "Он был удален",
+            "auto_translated": "Он был удален"
+        },
+        "ms": {
+            "legacy_caption_pid": 29314,
+            "legacy_language_pid": 14,
+            "text": "Ia telah dipadam",
+            "auto_translated": "Ia telah dipadam"
+        },
+        "ta": {
+            "legacy_caption_pid": 29315,
+            "legacy_language_pid": 15,
+            "text": "அது நீக்கப்பட்டிருக்கும்",
+            "auto_translated": "அது நீக்கப்பட்டிருக்கும்"
+        },
+        "it": {
+            "legacy_caption_pid": 29316,
+            "legacy_language_pid": 16,
+            "text": "E 'stato cancellato",
+            "auto_translated": "E 'stato cancellato"
+        },
+        "bn": {
+            "legacy_caption_pid": 29317,
+            "legacy_language_pid": 17,
+            "text": "এটা তোলে মুছে ফেলা হয়েছে",
+            "auto_translated": "এটা তোলে মুছে ফেলা হয়েছে"
+        },
+        "tr": {
+            "legacy_caption_pid": 29318,
+            "legacy_language_pid": 18,
+            "text": "Bu silindi",
+            "auto_translated": "Bu silindi"
+        },
+        "vi": {
+            "legacy_caption_pid": 29319,
+            "legacy_language_pid": 19,
+            "text": "Nó đã bị xóa",
+            "auto_translated": "Nó đã bị xóa"
+        },
+        "pl": {
+            "legacy_caption_pid": 29320,
+            "legacy_language_pid": 20,
+            "text": "Został usunięty",
+            "auto_translated": "Został usunięty"
+        },
+        "jv": {
+            "legacy_caption_pid": 29321,
+            "legacy_language_pid": 21,
+            "text": "Iku wis dibusak",
+            "auto_translated": "Iku wis dibusak"
+        },
+        "pa": {
+            "legacy_caption_pid": 29322,
+            "legacy_language_pid": 22,
+            "text": "ਇਹ ਹਟਾ ਦਿੱਤਾ ਗਿਆ ਹੈ",
+            "auto_translated": "ਇਹ ਹਟਾ ਦਿੱਤਾ ਗਿਆ ਹੈ"
+        },
+        "th": {
+            "legacy_caption_pid": 29323,
+            "legacy_language_pid": 23,
+            "text": "มันได้ถูกลบไปแล้ว",
+            "auto_translated": "มันได้ถูกลบไปแล้ว"
+        },
+        "te": {
+            "legacy_caption_pid": 37796,
+            "legacy_language_pid": 24,
+            "text": "తొలగించిన",
+            "auto_translated": "తొలగించిన"
+        },
+        "mr": {
+            "legacy_caption_pid": 37797,
+            "legacy_language_pid": 25,
+            "text": "तो हटविला गेला आहे",
+            "auto_translated": "तो हटविला गेला आहे"
+        },
+        "ur": {
+            "legacy_caption_pid": 37798,
+            "legacy_language_pid": 26,
+            "text": "اس سے خارج کر دیا گیا ہے",
+            "auto_translated": "اس سے خارج کر دیا گیا ہے"
+        },
+        "gu": {
+            "legacy_caption_pid": 37799,
+            "legacy_language_pid": 27,
+            "text": "તે કાઢી નાખવામાં આવ્યું",
+            "auto_translated": "તે કાઢી નાખવામાં આવ્યું"
+        },
+        "uk": {
+            "legacy_caption_pid": 37800,
+            "legacy_language_pid": 28,
+            "text": "Він був видалений",
+            "auto_translated": "Він був видалений"
+        },
+        "ml": {
+            "legacy_caption_pid": 37801,
+            "legacy_language_pid": 29,
+            "text": "അത് ഇല്ലാതാക്കി",
+            "auto_translated": "അത് ഇല്ലാതാക്കി"
+        },
+        "kn": {
+            "legacy_caption_pid": 37802,
+            "legacy_language_pid": 30,
+            "text": "ಇದು ಅಳಿಸಲಾಗಿದೆ",
+            "auto_translated": "ಇದು ಅಳಿಸಲಾಗಿದೆ"
+        },
+        "su": {
+            "legacy_caption_pid": 37803,
+            "legacy_language_pid": 31,
+            "text": "Eta geus dihapus",
+            "auto_translated": "Eta geus dihapus"
+        },
+        "ku": {
+            "legacy_caption_pid": 37804,
+            "legacy_language_pid": 32,
+            "text": "Ev hatiye jêbirin",
+            "auto_translated": "Ev hatiye jêbirin"
+        },
+        "ps": {
+            "legacy_caption_pid": 37805,
+            "legacy_language_pid": 33,
+            "text": "دا ړنګ شوی",
+            "auto_translated": "دا ړنګ شوی"
+        },
+        "ro": {
+            "legacy_caption_pid": 37806,
+            "legacy_language_pid": 34,
+            "text": "Acesta a fost șters",
+            "auto_translated": "Acesta a fost șters"
+        },
+        "id": {
+            "legacy_caption_pid": 37807,
+            "legacy_language_pid": 35,
+            "text": "Sudah dihapus",
+            "auto_translated": "Sudah dihapus"
+        },
+        "sd": {
+            "legacy_caption_pid": 37808,
+            "legacy_language_pid": 36,
+            "text": "اهو ختم ٿي ويو آهي",
+            "auto_translated": "اهو ختم ٿي ويو آهي"
+        },
+        "af": {
+            "legacy_caption_pid": 37809,
+            "legacy_language_pid": 37,
+            "text": "Dit kon geskrap gewees het",
+            "auto_translated": "Dit kon geskrap gewees het"
+        },
+        "sw": {
+            "legacy_caption_pid": 37810,
+            "legacy_language_pid": 38,
+            "text": "Imefutwa",
+            "auto_translated": "Imefutwa"
+        },
+        "lo": {
+            "legacy_caption_pid": 37811,
+            "legacy_language_pid": 39,
+            "text": "ມັນໄດ້ຖືກລຶບອອກແລ້ວ",
+            "auto_translated": "ມັນໄດ້ຖືກລຶບອອກແລ້ວ"
+        },
+        "nl": {
+            "legacy_caption_pid": 37812,
+            "legacy_language_pid": 40,
+            "text": "Het is verwijderd",
+            "auto_translated": "Het is verwijderd"
+        },
+        "tl": {
+            "legacy_caption_pid": 37813,
+            "legacy_language_pid": 41,
+            "text": "Ito ay binura",
+            "auto_translated": "Ito ay binura"
+        },
+        "ne": {
+            "legacy_caption_pid": 37814,
+            "legacy_language_pid": 42,
+            "text": "यसलाई हटाइएको छ",
+            "auto_translated": "यसलाई हटाइएको छ"
+        },
+        "hu": {
+            "legacy_caption_pid": 37815,
+            "legacy_language_pid": 43,
+            "text": "Törölve lett",
+            "auto_translated": "Törölve lett"
+        },
+        "cs": {
+            "legacy_caption_pid": 37816,
+            "legacy_language_pid": 44,
+            "text": "Byla odstraněna",
+            "auto_translated": "Byla odstraněna"
+        },
+        "el": {
+            "legacy_caption_pid": 37817,
+            "legacy_language_pid": 45,
+            "text": "Έχει διαγραφεί",
+            "auto_translated": "Έχει διαγραφεί"
+        },
+        "sv": {
+            "legacy_caption_pid": 37818,
+            "legacy_language_pid": 46,
+            "text": "Det har tagits bort",
+            "auto_translated": "Det har tagits bort"
+        },
+        "kk": {
+            "legacy_caption_pid": 37819,
+            "legacy_language_pid": 47,
+            "text": "Ол жойылған",
+            "auto_translated": "Ол жойылған"
+        },
+        "fi": {
+            "legacy_caption_pid": 37820,
+            "legacy_language_pid": 48,
+            "text": "Se on poistettu",
+            "auto_translated": "Se on poistettu"
+        },
+        "da": {
+            "legacy_caption_pid": 37821,
+            "legacy_language_pid": 49,
+            "text": "Det er blevet slettet",
+            "auto_translated": "Det er blevet slettet"
+        },
+        "he": {
+            "legacy_caption_pid": 37822,
+            "legacy_language_pid": 50,
+            "text": "זה נמחק",
+            "auto_translated": "זה נמחק"
+        },
+        "no": {
+            "legacy_caption_pid": 37823,
+            "legacy_language_pid": 51,
+            "text": "Det har blitt slettet",
+            "auto_translated": "Det har blitt slettet"
+        }
+    }
+}

@@ -1,0 +1,321 @@
+{
+    "resource_key": "ACTION_IMPORT",
+    "legacy_resource_pid": 580,
+    "base_group_key": "grp-005-common-lib",
+    "additional_group_keys": [],
+    "key_for_update": "wt2Ztim5W3gtUdVECifwo1of5HEGYVRKgEnAyWB5q56yRGQJQxM0XN3Z5tv5furZan00h0Duj7Hq6Fk0Pn2qj8kadCDjwcWD66AXCKSnwwx4jIBRRlP7LJ2ObSc7h1XN",
+    "sort_group": "ACTION",
+    "key_name": "ACTION_IMPORT",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": false,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 1349,
+            "legacy_language_pid": 1,
+            "text": "インポート",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 1350,
+            "legacy_language_pid": 2,
+            "text": "Import",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 6516,
+            "legacy_language_pid": 3,
+            "text": "输入",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 6517,
+            "legacy_language_pid": 4,
+            "text": "가져오기",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 10462,
+            "legacy_language_pid": 5,
+            "text": "Importar",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 10463,
+            "legacy_language_pid": 6,
+            "text": "importação",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 10464,
+            "legacy_language_pid": 7,
+            "text": "輸入",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 16263,
+            "legacy_language_pid": 8,
+            "text": "importer",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 16264,
+            "legacy_language_pid": 9,
+            "text": "आयात",
+            "auto_translated": ""
+        },
+        "ar": {
+            "legacy_caption_pid": 29338,
+            "legacy_language_pid": 10,
+            "text": "استيراد",
+            "auto_translated": "استيراد"
+        },
+        "fa": {
+            "legacy_caption_pid": 29339,
+            "legacy_language_pid": 11,
+            "text": "واردات",
+            "auto_translated": "واردات"
+        },
+        "de": {
+            "legacy_caption_pid": 29340,
+            "legacy_language_pid": 12,
+            "text": "Import",
+            "auto_translated": "Import"
+        },
+        "ru": {
+            "legacy_caption_pid": 29341,
+            "legacy_language_pid": 13,
+            "text": "импорт",
+            "auto_translated": "импорт"
+        },
+        "ms": {
+            "legacy_caption_pid": 29342,
+            "legacy_language_pid": 14,
+            "text": "import",
+            "auto_translated": "import"
+        },
+        "ta": {
+            "legacy_caption_pid": 29343,
+            "legacy_language_pid": 15,
+            "text": "இறக்குமதி",
+            "auto_translated": "இறக்குமதி"
+        },
+        "it": {
+            "legacy_caption_pid": 29344,
+            "legacy_language_pid": 16,
+            "text": "importazione",
+            "auto_translated": "importazione"
+        },
+        "bn": {
+            "legacy_caption_pid": 29345,
+            "legacy_language_pid": 17,
+            "text": "আমদানি",
+            "auto_translated": "আমদানি"
+        },
+        "tr": {
+            "legacy_caption_pid": 29346,
+            "legacy_language_pid": 18,
+            "text": "ithalat",
+            "auto_translated": "ithalat"
+        },
+        "vi": {
+            "legacy_caption_pid": 29347,
+            "legacy_language_pid": 19,
+            "text": "nhập khẩu",
+            "auto_translated": "nhập khẩu"
+        },
+        "pl": {
+            "legacy_caption_pid": 29348,
+            "legacy_language_pid": 20,
+            "text": "import",
+            "auto_translated": "import"
+        },
+        "jv": {
+            "legacy_caption_pid": 29349,
+            "legacy_language_pid": 21,
+            "text": "Impor",
+            "auto_translated": "Impor"
+        },
+        "pa": {
+            "legacy_caption_pid": 29350,
+            "legacy_language_pid": 22,
+            "text": "ਆਯਾਤ ਕਰੋ",
+            "auto_translated": "ਆਯਾਤ ਕਰੋ"
+        },
+        "th": {
+            "legacy_caption_pid": 29351,
+            "legacy_language_pid": 23,
+            "text": "นำเข้า",
+            "auto_translated": "นำเข้า"
+        },
+        "te": {
+            "legacy_caption_pid": 37740,
+            "legacy_language_pid": 24,
+            "text": "దిగుమతి",
+            "auto_translated": "దిగుమతి"
+        },
+        "mr": {
+            "legacy_caption_pid": 37741,
+            "legacy_language_pid": 25,
+            "text": "आयात",
+            "auto_translated": "आयात"
+        },
+        "ur": {
+            "legacy_caption_pid": 37742,
+            "legacy_language_pid": 26,
+            "text": "درآمد کریں",
+            "auto_translated": "درآمد کریں"
+        },
+        "gu": {
+            "legacy_caption_pid": 37743,
+            "legacy_language_pid": 27,
+            "text": "આયાત",
+            "auto_translated": "આયાત"
+        },
+        "uk": {
+            "legacy_caption_pid": 37744,
+            "legacy_language_pid": 28,
+            "text": "імпорт",
+            "auto_translated": "імпорт"
+        },
+        "ml": {
+            "legacy_caption_pid": 37745,
+            "legacy_language_pid": 29,
+            "text": "ഇറക്കുമതി",
+            "auto_translated": "ഇറക്കുമതി"
+        },
+        "kn": {
+            "legacy_caption_pid": 37746,
+            "legacy_language_pid": 30,
+            "text": "ಆಮದು",
+            "auto_translated": "ಆಮದು"
+        },
+        "su": {
+            "legacy_caption_pid": 37747,
+            "legacy_language_pid": 31,
+            "text": "impor",
+            "auto_translated": "impor"
+        },
+        "ku": {
+            "legacy_caption_pid": 37748,
+            "legacy_language_pid": 32,
+            "text": "Import",
+            "auto_translated": "Import"
+        },
+        "ps": {
+            "legacy_caption_pid": 37749,
+            "legacy_language_pid": 33,
+            "text": "واردات",
+            "auto_translated": "واردات"
+        },
+        "ro": {
+            "legacy_caption_pid": 37750,
+            "legacy_language_pid": 34,
+            "text": "import",
+            "auto_translated": "import"
+        },
+        "id": {
+            "legacy_caption_pid": 37751,
+            "legacy_language_pid": 35,
+            "text": "impor",
+            "auto_translated": "impor"
+        },
+        "sd": {
+            "legacy_caption_pid": 37752,
+            "legacy_language_pid": 36,
+            "text": "آمد",
+            "auto_translated": "آمد"
+        },
+        "af": {
+            "legacy_caption_pid": 37753,
+            "legacy_language_pid": 37,
+            "text": "invoer",
+            "auto_translated": "invoer"
+        },
+        "sw": {
+            "legacy_caption_pid": 37754,
+            "legacy_language_pid": 38,
+            "text": "Import",
+            "auto_translated": "Import"
+        },
+        "lo": {
+            "legacy_caption_pid": 37755,
+            "legacy_language_pid": 39,
+            "text": "ນໍາເຂົ້າ",
+            "auto_translated": "ນໍາເຂົ້າ"
+        },
+        "nl": {
+            "legacy_caption_pid": 37756,
+            "legacy_language_pid": 40,
+            "text": "import",
+            "auto_translated": "import"
+        },
+        "tl": {
+            "legacy_caption_pid": 37757,
+            "legacy_language_pid": 41,
+            "text": "angkat",
+            "auto_translated": "angkat"
+        },
+        "ne": {
+            "legacy_caption_pid": 37758,
+            "legacy_language_pid": 42,
+            "text": "आयात",
+            "auto_translated": "आयात"
+        },
+        "hu": {
+            "legacy_caption_pid": 37759,
+            "legacy_language_pid": 43,
+            "text": "import",
+            "auto_translated": "import"
+        },
+        "cs": {
+            "legacy_caption_pid": 37760,
+            "legacy_language_pid": 44,
+            "text": "import",
+            "auto_translated": "import"
+        },
+        "el": {
+            "legacy_caption_pid": 37761,
+            "legacy_language_pid": 45,
+            "text": "εισαγωγή",
+            "auto_translated": "εισαγωγή"
+        },
+        "sv": {
+            "legacy_caption_pid": 37762,
+            "legacy_language_pid": 46,
+            "text": "import",
+            "auto_translated": "import"
+        },
+        "kk": {
+            "legacy_caption_pid": 37763,
+            "legacy_language_pid": 47,
+            "text": "импорт",
+            "auto_translated": "импорт"
+        },
+        "fi": {
+            "legacy_caption_pid": 37764,
+            "legacy_language_pid": 48,
+            "text": "tuonti",
+            "auto_translated": "tuonti"
+        },
+        "da": {
+            "legacy_caption_pid": 37765,
+            "legacy_language_pid": 49,
+            "text": "Import",
+            "auto_translated": "Import"
+        },
+        "he": {
+            "legacy_caption_pid": 37766,
+            "legacy_language_pid": 50,
+            "text": "יבוא",
+            "auto_translated": "יבוא"
+        },
+        "no": {
+            "legacy_caption_pid": 37767,
+            "legacy_language_pid": 51,
+            "text": "import",
+            "auto_translated": "import"
+        }
+    }
+}

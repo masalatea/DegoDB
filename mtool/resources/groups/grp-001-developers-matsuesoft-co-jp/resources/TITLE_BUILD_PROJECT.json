@@ -1,0 +1,27 @@
+{
+    "resource_key": "TITLE_BUILD_PROJECT",
+    "legacy_resource_pid": 4,
+    "base_group_key": "grp-001-developers-matsuesoft-co-jp",
+    "additional_group_keys": [],
+    "key_for_update": "0",
+    "sort_group": "TITLE",
+    "key_name": "TITLE_BUILD_PROJECT",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": true,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 4292,
+            "legacy_language_pid": 1,
+            "text": "プロジェクトビルド",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 4293,
+            "legacy_language_pid": 2,
+            "text": "Build Project",
+            "auto_translated": ""
+        }
+    }
+}

@@ -1,0 +1,27 @@
+{
+    "resource_key": "ACTION_UPDATED_PROJECT_SOURCE_OUTPUT_SORT_ORDER",
+    "legacy_resource_pid": 186,
+    "base_group_key": "grp-001-developers-matsuesoft-co-jp",
+    "additional_group_keys": [],
+    "key_for_update": "0",
+    "sort_group": "ACTION PROJECT_SOURCE_OUTPUT_SORT_ORDER",
+    "key_name": "ACTION_UPDATED_PROJECT_SOURCE_OUTPUT_SORT_ORDER",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": true,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 3968,
+            "legacy_language_pid": 1,
+            "text": "ソース出力設定 Sort Order更新完了",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 3969,
+            "legacy_language_pid": 2,
+            "text": "Updated Sort Order of Source Output Setting",
+            "auto_translated": ""
+        }
+    }
+}

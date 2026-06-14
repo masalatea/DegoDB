@@ -1,0 +1,69 @@
+{
+    "resource_key": "TITLE_DBAAS_HOW_TO_USE_EXAMPLE_OBJECTIVEC_PROXY",
+    "legacy_resource_pid": 1096,
+    "base_group_key": "grp-010-matsuesoft-lib",
+    "additional_group_keys": [],
+    "key_for_update": "pjgob1sCIlAmLD8EjcXCgzSBIXxX4e3A0Wovmb7mfLYK15cSRsXHX6sre6dbJNDSeGvftIKEJ3G3DlMv4iBhQWHyRBKpbk1Y1ZF9WUtrVZYgpKeYwkuMggIl09EZp0V6",
+    "sort_group": "TITLE",
+    "key_name": "TITLE_DBAAS_HOW_TO_USE_EXAMPLE_OBJECTIVEC_PROXY",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": true,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 4684,
+            "legacy_language_pid": 1,
+            "text": "カスタム開発でObjective-C(iOS)のクライアントを作成する例",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 4685,
+            "legacy_language_pid": 2,
+            "text": "Example for Objective-C(iOS) Client by Custom Development Option",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 14426,
+            "legacy_language_pid": 3,
+            "text": "",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 14427,
+            "legacy_language_pid": 4,
+            "text": "",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 14428,
+            "legacy_language_pid": 5,
+            "text": "Ejemplo para el cliente de Objective-C (iOS) mediante una opción de desarrollo personalizado",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 14429,
+            "legacy_language_pid": 6,
+            "text": "Exemplo para cliente Objective-C (iOS) por opção de desenvolvimento personalizado",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 14430,
+            "legacy_language_pid": 7,
+            "text": "",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 17339,
+            "legacy_language_pid": 8,
+            "text": "Exemple pour client Objective-C (iOS) par option de développement personnalisé",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 17340,
+            "legacy_language_pid": 9,
+            "text": "कस्टम डेवलपमेंट ऑप्शन के द्वारा Objective-C (iOS) क्लाइंट का उदाहरण",
+            "auto_translated": ""
+        }
+    }
+}

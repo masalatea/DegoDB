@@ -1,0 +1,31 @@
+CREATE TABLE IF NOT EXISTS project_source_outputs (
+    id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+    project_id BIGINT UNSIGNED NOT NULL,
+    source_output_key VARCHAR(64) NOT NULL,
+    name VARCHAR(191) NOT NULL,
+    program_language VARCHAR(32) NOT NULL DEFAULT 'php',
+    class_type VARCHAR(64) NOT NULL DEFAULT 'DBAccess',
+    release_target_type VARCHAR(32) NOT NULL DEFAULT 'Release',
+    source_template_dir VARCHAR(512) NOT NULL DEFAULT '',
+    source_output_dir VARCHAR(512) NOT NULL DEFAULT '',
+    source_temp_output_dir VARCHAR(512) NOT NULL DEFAULT '',
+    proxy_base_url VARCHAR(512) NOT NULL DEFAULT '',
+    autoload_filename_suffix VARCHAR(191) NOT NULL DEFAULT '',
+    source_text_char_code VARCHAR(64) NOT NULL DEFAULT '',
+    runtime_source_relative_path VARCHAR(512) NOT NULL DEFAULT 'mtool/dbclasses',
+    artifact_strategy VARCHAR(64) NOT NULL DEFAULT 'generated-bootstrap-dbclasses',
+    target_binding_type VARCHAR(64) NOT NULL DEFAULT '',
+    spec_visibility VARCHAR(64) NOT NULL DEFAULT 'internal-only',
+    output_archive_format VARCHAR(32) NOT NULL DEFAULT 'tar.gz',
+    source_output_list_order INT UNSIGNED NOT NULL DEFAULT 100,
+    notes TEXT NOT NULL,
+    source_of_truth VARCHAR(32) NOT NULL DEFAULT 'manual',
+    created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    PRIMARY KEY (id),
+    UNIQUE KEY uq_project_source_outputs_project_key (project_id, source_output_key),
+    KEY idx_project_source_outputs_project_order (project_id, source_output_list_order, source_output_key),
+    CONSTRAINT fk_project_source_outputs_project
+        FOREIGN KEY (project_id) REFERENCES projects(id)
+        ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;

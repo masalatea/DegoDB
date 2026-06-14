@@ -1,0 +1,321 @@
+{
+    "resource_key": "COMMON_LIB_EMAIL_VERIFY_INTERNAL_ERROR_FAILED_TO_MAKE_KEY",
+    "legacy_resource_pid": 1398,
+    "base_group_key": "grp-010-matsuesoft-lib",
+    "additional_group_keys": [],
+    "key_for_update": "juy0qODhkBJQrCFHlRfteKleCRNFXgyVR6Yu2CHFrTBZnbaDRcvy9mdSrN1aZ0vkcGH5de8OqDThnV0986zzeZ1UshhqDT1MbXzkzBpmZ6vZnymutAa06FJt0b4bYgKr",
+    "sort_group": "EMAIL VERIFY",
+    "key_name": "COMMON_LIB_EMAIL_VERIFY_INTERNAL_ERROR_FAILED_TO_MAKE_KEY",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": false,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 5866,
+            "legacy_language_pid": 1,
+            "text": "内部エラー! キー作成失敗",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 5867,
+            "legacy_language_pid": 2,
+            "text": "Internal error! Failed to create key.",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 5868,
+            "legacy_language_pid": 3,
+            "text": "内部错误！验证码做成失败",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 5869,
+            "legacy_language_pid": 4,
+            "text": "내부 오류! 키 생성 실패",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 10717,
+            "legacy_language_pid": 5,
+            "text": "¡Error interno! No se pudo crear la clave.",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 10718,
+            "legacy_language_pid": 6,
+            "text": "Erro interno! Falha ao criar a chave.",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 10719,
+            "legacy_language_pid": 7,
+            "text": "內部錯誤！驗證碼做成失敗",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 16435,
+            "legacy_language_pid": 8,
+            "text": "Erreur interne! Impossible de créer une clé.",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 16436,
+            "legacy_language_pid": 9,
+            "text": "आंतरिक गलती! कुंजी बनाने में विफल",
+            "auto_translated": ""
+        },
+        "ar": {
+            "legacy_caption_pid": 30920,
+            "legacy_language_pid": 10,
+            "text": "خطأ داخلي! فشل إنشاء مفتاح",
+            "auto_translated": "خطأ داخلي! فشل إنشاء مفتاح"
+        },
+        "fa": {
+            "legacy_caption_pid": 30921,
+            "legacy_language_pid": 11,
+            "text": "خطای داخلی! شکست ایجاد کلید",
+            "auto_translated": "خطای داخلی! شکست ایجاد کلید"
+        },
+        "de": {
+            "legacy_caption_pid": 30922,
+            "legacy_language_pid": 12,
+            "text": "Interner Fehler! Key Erstellungsfehler",
+            "auto_translated": "Interner Fehler! Key Erstellungsfehler"
+        },
+        "ru": {
+            "legacy_caption_pid": 30923,
+            "legacy_language_pid": 13,
+            "text": "Внутренняя ошибка! Ключ отказ создания",
+            "auto_translated": "Внутренняя ошибка! Ключ отказ создания"
+        },
+        "ms": {
+            "legacy_caption_pid": 30924,
+            "legacy_language_pid": 14,
+            "text": "Ralat dalaman! kegagalan penciptaan Key",
+            "auto_translated": "Ralat dalaman! kegagalan penciptaan Key"
+        },
+        "ta": {
+            "legacy_caption_pid": 30925,
+            "legacy_language_pid": 15,
+            "text": "அகப் பிழை! சாவி உருவாக்கம் தோல்வி",
+            "auto_translated": "அகப் பிழை! சாவி உருவாக்கம் தோல்வி"
+        },
+        "it": {
+            "legacy_caption_pid": 30926,
+            "legacy_language_pid": 16,
+            "text": "Errore interno! Errore di creazione chiave",
+            "auto_translated": "Errore interno! Errore di creazione chiave"
+        },
+        "bn": {
+            "legacy_caption_pid": 30927,
+            "legacy_language_pid": 17,
+            "text": "অভ্যন্তরীণ ত্রুটি! কী সৃষ্টি ব্যর্থতা",
+            "auto_translated": "অভ্যন্তরীণ ত্রুটি! কী সৃষ্টি ব্যর্থতা"
+        },
+        "tr": {
+            "legacy_caption_pid": 30928,
+            "legacy_language_pid": 18,
+            "text": "Dahili hata! Anahtar oluşturma hatası",
+            "auto_translated": "Dahili hata! Anahtar oluşturma hatası"
+        },
+        "vi": {
+            "legacy_caption_pid": 30929,
+            "legacy_language_pid": 19,
+            "text": "Lỗi nội bộ! thất bại tạo chính",
+            "auto_translated": "Lỗi nội bộ! thất bại tạo chính"
+        },
+        "pl": {
+            "legacy_caption_pid": 30930,
+            "legacy_language_pid": 20,
+            "text": "Błąd wewnętrzny! Key awaria tworzenie",
+            "auto_translated": "Błąd wewnętrzny! Key awaria tworzenie"
+        },
+        "jv": {
+            "legacy_caption_pid": 30931,
+            "legacy_language_pid": 21,
+            "text": "Kaluputan internal! Gagal nggawe Key",
+            "auto_translated": "Kaluputan internal! Gagal nggawe Key"
+        },
+        "pa": {
+            "legacy_caption_pid": 30932,
+            "legacy_language_pid": 22,
+            "text": "ਅੰਦਰੂਨੀ ਗਲਤੀ! ਕੁੰਜੀ ਬਣਾਉਣ 'ਚ ਫੇਲ੍ਹ",
+            "auto_translated": "ਅੰਦਰੂਨੀ ਗਲਤੀ! ਕੁੰਜੀ ਬਣਾਉਣ 'ਚ ਫੇਲ੍ਹ"
+        },
+        "th": {
+            "legacy_caption_pid": 30933,
+            "legacy_language_pid": 23,
+            "text": "ข้อผิดพลาดภายใน! ความล้มเหลวในการสร้างกุญแจ",
+            "auto_translated": "ข้อผิดพลาดภายใน! ความล้มเหลวในการสร้างกุญแจ"
+        },
+        "te": {
+            "legacy_caption_pid": 42542,
+            "legacy_language_pid": 24,
+            "text": "అంతర్గత లోపం! కీ సృష్టి వైఫల్యం",
+            "auto_translated": "అంతర్గత లోపం! కీ సృష్టి వైఫల్యం"
+        },
+        "mr": {
+            "legacy_caption_pid": 42543,
+            "legacy_language_pid": 25,
+            "text": "अंतर्गत त्रुटी! की निर्मिती अपयश",
+            "auto_translated": "अंतर्गत त्रुटी! की निर्मिती अपयश"
+        },
+        "ur": {
+            "legacy_caption_pid": 42544,
+            "legacy_language_pid": 26,
+            "text": "داخلی مسئلہ! کلید تخلیق ناکامی",
+            "auto_translated": "داخلی مسئلہ! کلید تخلیق ناکامی"
+        },
+        "gu": {
+            "legacy_caption_pid": 42545,
+            "legacy_language_pid": 27,
+            "text": "આંતરિક ભૂલ! કી બનાવટ નિષ્ફળતા",
+            "auto_translated": "આંતરિક ભૂલ! કી બનાવટ નિષ્ફળતા"
+        },
+        "uk": {
+            "legacy_caption_pid": 42546,
+            "legacy_language_pid": 28,
+            "text": "Внутрішня помилка! Ключ відмова створення",
+            "auto_translated": "Внутрішня помилка! Ключ відмова створення"
+        },
+        "ml": {
+            "legacy_caption_pid": 42547,
+            "legacy_language_pid": 29,
+            "text": "ആന്തരിക പിശക്! കീ സൃഷ്ടി പരാജയം",
+            "auto_translated": "ആന്തരിക പിശക്! കീ സൃഷ്ടി പരാജയം"
+        },
+        "kn": {
+            "legacy_caption_pid": 42548,
+            "legacy_language_pid": 30,
+            "text": "ಆಂತರಿಕ ದೋಷ! ಕೀ ಸೃಷ್ಟಿ ವೈಫಲ್ಯ",
+            "auto_translated": "ಆಂತರಿಕ ದೋಷ! ಕೀ ಸೃಷ್ಟಿ ವೈಫಲ್ಯ"
+        },
+        "su": {
+            "legacy_caption_pid": 42549,
+            "legacy_language_pid": 31,
+            "text": "kasalahan internal! gagalna kreasi Key",
+            "auto_translated": "kasalahan internal! gagalna kreasi Key"
+        },
+        "ku": {
+            "legacy_caption_pid": 42550,
+            "legacy_language_pid": 32,
+            "text": "Çewtiya navxweyî ye! creation failure Key",
+            "auto_translated": "Çewtiya navxweyî ye! creation failure Key"
+        },
+        "ps": {
+            "legacy_caption_pid": 42551,
+            "legacy_language_pid": 33,
+            "text": "وراني! مهمې رامنځته ناکامي",
+            "auto_translated": "وراني! مهمې رامنځته ناکامي"
+        },
+        "ro": {
+            "legacy_caption_pid": 42552,
+            "legacy_language_pid": 34,
+            "text": "Eroare internă! eșec cheie creație",
+            "auto_translated": "Eroare internă! eșec cheie creație"
+        },
+        "id": {
+            "legacy_caption_pid": 42553,
+            "legacy_language_pid": 35,
+            "text": "Kesalahan internal! kegagalan penciptaan Key",
+            "auto_translated": "Kesalahan internal! kegagalan penciptaan Key"
+        },
+        "sd": {
+            "legacy_caption_pid": 42554,
+            "legacy_language_pid": 36,
+            "text": "اندروني مسئلو! چاٻي موڪلڻ ناڪامي",
+            "auto_translated": "اندروني مسئلو! چاٻي موڪلڻ ناڪامي"
+        },
+        "af": {
+            "legacy_caption_pid": 42555,
+            "legacy_language_pid": 37,
+            "text": "Interne fout! Sleutel skepping mislukking",
+            "auto_translated": "Interne fout! Sleutel skepping mislukking"
+        },
+        "sw": {
+            "legacy_caption_pid": 42556,
+            "legacy_language_pid": 38,
+            "text": "Hitilafu ya ndani! Key viumbe kushindwa",
+            "auto_translated": "Hitilafu ya ndani! Key viumbe kushindwa"
+        },
+        "lo": {
+            "legacy_caption_pid": 42557,
+            "legacy_language_pid": 39,
+            "text": "ຄວາມຜິດພາດພາຍໃນ! ຄວາມລົ້ມເຫຼວຂອງການສ້າງທີ່ສໍາຄັນ",
+            "auto_translated": "ຄວາມຜິດພາດພາຍໃນ! ຄວາມລົ້ມເຫຼວຂອງການສ້າງທີ່ສໍາຄັນ"
+        },
+        "nl": {
+            "legacy_caption_pid": 42558,
+            "legacy_language_pid": 40,
+            "text": "Interne fout! Key creatie mislukking",
+            "auto_translated": "Interne fout! Key creatie mislukking"
+        },
+        "tl": {
+            "legacy_caption_pid": 42559,
+            "legacy_language_pid": 41,
+            "text": "Panloob na error! Key paglikha failure",
+            "auto_translated": "Panloob na error! Key paglikha failure"
+        },
+        "ne": {
+            "legacy_caption_pid": 42560,
+            "legacy_language_pid": 42,
+            "text": "आन्तरिक त्रुटि! प्रमुख सिर्जना विफलता",
+            "auto_translated": "आन्तरिक त्रुटि! प्रमुख सिर्जना विफलता"
+        },
+        "hu": {
+            "legacy_caption_pid": 42561,
+            "legacy_language_pid": 43,
+            "text": "Belső hiba! Kulcs létrehozása hiba",
+            "auto_translated": "Belső hiba! Kulcs létrehozása hiba"
+        },
+        "cs": {
+            "legacy_caption_pid": 42562,
+            "legacy_language_pid": 44,
+            "text": "Vnitřní chyba! Selhání vytvoření Key",
+            "auto_translated": "Vnitřní chyba! Selhání vytvoření Key"
+        },
+        "el": {
+            "legacy_caption_pid": 42563,
+            "legacy_language_pid": 45,
+            "text": "Εσωτερικό σφάλμα! Βασικά αποτυχία δημιουργίας",
+            "auto_translated": "Εσωτερικό σφάλμα! Βασικά αποτυχία δημιουργίας"
+        },
+        "sv": {
+            "legacy_caption_pid": 42564,
+            "legacy_language_pid": 46,
+            "text": "Internt fel Key fel skapelse!",
+            "auto_translated": "Internt fel Key fel skapelse!"
+        },
+        "kk": {
+            "legacy_caption_pid": 42565,
+            "legacy_language_pid": 47,
+            "text": "Ішкі қате! Негізгі құру жеткіліксіздігі",
+            "auto_translated": "Ішкі қате! Негізгі құру жеткіліксіздігі"
+        },
+        "fi": {
+            "legacy_caption_pid": 42566,
+            "legacy_language_pid": 48,
+            "text": "Sisäinen virhe! Key luomisen epäonnistumisen",
+            "auto_translated": "Sisäinen virhe! Key luomisen epäonnistumisen"
+        },
+        "da": {
+            "legacy_caption_pid": 42567,
+            "legacy_language_pid": 49,
+            "text": "Intern fejl! Key skabelse fiasko",
+            "auto_translated": "Intern fejl! Key skabelse fiasko"
+        },
+        "he": {
+            "legacy_caption_pid": 42568,
+            "legacy_language_pid": 50,
+            "text": "שגיאה פנימית! כשל ביצירת מפתח",
+            "auto_translated": "שגיאה פנימית! כשל ביצירת מפתח"
+        },
+        "no": {
+            "legacy_caption_pid": 42569,
+            "legacy_language_pid": 51,
+            "text": "Intern feil! Key etableringen fiasko",
+            "auto_translated": "Intern feil! Key etableringen fiasko"
+        }
+    }
+}

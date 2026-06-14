@@ -1,0 +1,69 @@
+{
+    "resource_key": "HP_FOOTER_PRIVACY",
+    "legacy_resource_pid": 680,
+    "base_group_key": "grp-010-matsuesoft-lib",
+    "additional_group_keys": [],
+    "key_for_update": "xBd7u2UuTeZdGAoW79buBvDWQZ5KGrcQxIdRtBi1iZkAKknYQOpoHUCBenrr0us5cTivzBfhdR9QKSaxMtH4kOPC942HUp1urTYa9IjvSS8Rw7ew2n7KKYHbLF0apdPz",
+    "sort_group": "HP FOOTER",
+    "key_name": "HP_FOOTER_PRIVACY",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": true,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 4616,
+            "legacy_language_pid": 1,
+            "text": "マツエソフトにおけるプライバシー",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 4617,
+            "legacy_language_pid": 2,
+            "text": "Policy at Matsuesoft",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 14256,
+            "legacy_language_pid": 3,
+            "text": "",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 14257,
+            "legacy_language_pid": 4,
+            "text": "",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 14258,
+            "legacy_language_pid": 5,
+            "text": "Política en Matsuesoft",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 14259,
+            "legacy_language_pid": 6,
+            "text": "Política em Matsuesoft",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 14260,
+            "legacy_language_pid": 7,
+            "text": "",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 17143,
+            "legacy_language_pid": 8,
+            "text": "Politique à Matsuesoft",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 17144,
+            "legacy_language_pid": 9,
+            "text": "Matsuesoft में नीति",
+            "auto_translated": ""
+        }
+    }
+}

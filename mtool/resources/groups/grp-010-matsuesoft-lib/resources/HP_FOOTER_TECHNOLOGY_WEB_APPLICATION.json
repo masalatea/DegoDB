@@ -1,0 +1,69 @@
+{
+    "resource_key": "HP_FOOTER_TECHNOLOGY_WEB_APPLICATION",
+    "legacy_resource_pid": 694,
+    "base_group_key": "grp-010-matsuesoft-lib",
+    "additional_group_keys": [],
+    "key_for_update": "UWXRj96DcKjVbuT0zj44SzEiAuIxfFnryNTNQGjDvHzBEfFbbJskaoSsBhKVmpPp8AEb1LfR7xWnqJai5fro31e1PUifg2qj0qEbwCpoaghfBQjRlcgVEPg4fzyUlr0T",
+    "sort_group": "HP FOOTER",
+    "key_name": "HP_FOOTER_TECHNOLOGY_WEB_APPLICATION",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": true,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 4632,
+            "legacy_language_pid": 1,
+            "text": "ウェブ・アプリケーション・テクノロジー",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 4633,
+            "legacy_language_pid": 2,
+            "text": "Web Application Technology",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 14296,
+            "legacy_language_pid": 3,
+            "text": "",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 14297,
+            "legacy_language_pid": 4,
+            "text": "",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 14298,
+            "legacy_language_pid": 5,
+            "text": "Tecnología de aplicaciones web",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 14299,
+            "legacy_language_pid": 6,
+            "text": "Tecnologia de Aplicação Web",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 14300,
+            "legacy_language_pid": 7,
+            "text": "",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 17159,
+            "legacy_language_pid": 8,
+            "text": "Technologie d'application Web",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 17160,
+            "legacy_language_pid": 9,
+            "text": "वेब अनुप्रयोग प्रौद्योगिकी",
+            "auto_translated": ""
+        }
+    }
+}

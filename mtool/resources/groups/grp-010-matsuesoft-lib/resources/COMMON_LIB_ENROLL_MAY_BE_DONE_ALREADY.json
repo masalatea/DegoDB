@@ -1,0 +1,321 @@
+{
+    "resource_key": "COMMON_LIB_ENROLL_MAY_BE_DONE_ALREADY",
+    "legacy_resource_pid": 1401,
+    "base_group_key": "grp-010-matsuesoft-lib",
+    "additional_group_keys": [],
+    "key_for_update": "eWKV1hu7J577AEhGbAiJ7IMsQEt2GvKwdzZS8e3ZALeU8pfb6u1p0czG0ePx1ZRVovJJ93RddGP5YIIc7hqTFH1b3rBNhNj7mVYacUY8z5GI1qivpUxLRU14Q0oZz1lg",
+    "sort_group": "ENROLL",
+    "key_name": "COMMON_LIB_ENROLL_MAY_BE_DONE_ALREADY",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": false,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 5878,
+            "legacy_language_pid": 1,
+            "text": "既に登録済の可能性がありますのでメールをご確認下さい。",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 5879,
+            "legacy_language_pid": 2,
+            "text": "Registration may be completed already. Please check email.",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 5880,
+            "legacy_language_pid": 3,
+            "text": "注册可能已经完成。 请检查邮件。",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 5881,
+            "legacy_language_pid": 4,
+            "text": "이미 등록되었을 수 있습니다. 이메일을 확인해주세요.",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 10913,
+            "legacy_language_pid": 5,
+            "text": "La inscripción ya puede ser completada. Por favor revise su correo electrónico.",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 10914,
+            "legacy_language_pid": 6,
+            "text": "O registro já pode estar completo. Verifique o e-mail.",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 10915,
+            "legacy_language_pid": 7,
+            "text": "註冊可能已經完成。 請檢查郵件。",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 17043,
+            "legacy_language_pid": 8,
+            "text": "L'inscription peut être complétée déjà. Veuillez vérifier le courrier électronique.",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 17044,
+            "legacy_language_pid": 9,
+            "text": "पंजीकरण पहले ही पूरा हो सकता है कृपया ईमेल जांचें",
+            "auto_translated": ""
+        },
+        "ar": {
+            "legacy_caption_pid": 31830,
+            "legacy_language_pid": 10,
+            "text": "يرجى التحقق من البريد الإلكتروني الخاص بك بالفعل لأن هناك إمكانية مسجلة.",
+            "auto_translated": "يرجى التحقق من البريد الإلكتروني الخاص بك بالفعل لأن هناك إمكانية مسجلة."
+        },
+        "fa": {
+            "legacy_caption_pid": 31831,
+            "legacy_language_pid": 11,
+            "text": "لطفا ایمیل خود را چک کنید در حال حاضر به دلیل امکان ثبت نام وجود دارد.",
+            "auto_translated": "لطفا ایمیل خود را چک کنید در حال حاضر به دلیل امکان ثبت نام وجود دارد."
+        },
+        "de": {
+            "legacy_caption_pid": 31832,
+            "legacy_language_pid": 12,
+            "text": "Bitte überprüfen Sie Ihre E-Mail schon, weil es eine Möglichkeit, registriert ist.",
+            "auto_translated": "Bitte überprüfen Sie Ihre E-Mail schon, weil es eine Möglichkeit, registriert ist."
+        },
+        "ru": {
+            "legacy_caption_pid": 31833,
+            "legacy_language_pid": 13,
+            "text": "Пожалуйста, проверьте свою электронную почту, уже потому, что есть возможность зарегистрированных.",
+            "auto_translated": "Пожалуйста, проверьте свою электронную почту, уже потому, что есть возможность зарегистрированных."
+        },
+        "ms": {
+            "legacy_caption_pid": 31834,
+            "legacy_language_pid": 14,
+            "text": "Sila semak e-mel anda sudah kerana ada kemungkinan berdaftar.",
+            "auto_translated": "Sila semak e-mel anda sudah kerana ada kemungkinan berdaftar."
+        },
+        "ta": {
+            "legacy_caption_pid": 31835,
+            "legacy_language_pid": 15,
+            "text": "பதிவு ஒரு வாய்ப்பு இருப்பதால் ஏற்கனவே உங்கள் மின்னஞ்சலைப் பார்க்கவும்.",
+            "auto_translated": "பதிவு ஒரு வாய்ப்பு இருப்பதால் ஏற்கனவே உங்கள் மின்னஞ்சலைப் பார்க்கவும்."
+        },
+        "it": {
+            "legacy_caption_pid": 31836,
+            "legacy_language_pid": 16,
+            "text": "Si prega di controllare la posta elettronica già perché c'è una possibilità di raccomandata.",
+            "auto_translated": "Si prega di controllare la posta elettronica già perché c'è una possibilità di raccomandata."
+        },
+        "bn": {
+            "legacy_caption_pid": 31837,
+            "legacy_language_pid": 17,
+            "text": "ইতিমধ্যে আপনার ইমেইল চেক করুন কারণ নিবন্ধিত একটি সম্ভাবনা নেই। '",
+            "auto_translated": "ইতিমধ্যে আপনার ইমেইল চেক করুন কারণ নিবন্ধিত একটি সম্ভাবনা নেই। '"
+        },
+        "tr": {
+            "legacy_caption_pid": 31838,
+            "legacy_language_pid": 18,
+            "text": "Kayıtlı bir olasılık var, çünkü zaten e-postanızı kontrol edin.",
+            "auto_translated": "Kayıtlı bir olasılık var, çünkü zaten e-postanızı kontrol edin."
+        },
+        "vi": {
+            "legacy_caption_pid": 31839,
+            "legacy_language_pid": 19,
+            "text": "Hãy kiểm tra email của bạn đã vì có một khả năng đã đăng ký.",
+            "auto_translated": "Hãy kiểm tra email của bạn đã vì có một khả năng đã đăng ký."
+        },
+        "pl": {
+            "legacy_caption_pid": 31840,
+            "legacy_language_pid": 20,
+            "text": "Proszę sprawdzić pocztę już ponieważ istnieje możliwość rejestracji.",
+            "auto_translated": "Proszę sprawdzić pocztę już ponieważ istnieje możliwość rejestracji."
+        },
+        "jv": {
+            "legacy_caption_pid": 31841,
+            "legacy_language_pid": 21,
+            "text": "Mangga mriksa email wis amarga ana kamungkinan saka kadhaptar.",
+            "auto_translated": "Mangga mriksa email wis amarga ana kamungkinan saka kadhaptar."
+        },
+        "pa": {
+            "legacy_caption_pid": 31842,
+            "legacy_language_pid": 22,
+            "text": "ਹੀ ਆਪਣੇ ਈ-ਮੇਲ ਚੈੱਕ ਕਰੋ ਜੀ, ਕਿਉਕਿ ਰਜਿਸਟਰਡ ਦੀ ਸੰਭਾਵਨਾ ਹੈ.",
+            "auto_translated": "ਹੀ ਆਪਣੇ ਈ-ਮੇਲ ਚੈੱਕ ਕਰੋ ਜੀ, ਕਿਉਕਿ ਰਜਿਸਟਰਡ ਦੀ ਸੰਭਾਵਨਾ ਹੈ."
+        },
+        "th": {
+            "legacy_caption_pid": 31843,
+            "legacy_language_pid": 23,
+            "text": "โปรดตรวจสอบอีเมลของคุณอยู่แล้วเพราะมีความเป็นไปได้ของการลงทะเบียน",
+            "auto_translated": "โปรดตรวจสอบอีเมลของคุณอยู่แล้วเพราะมีความเป็นไปได้ของการลงทะเบียน"
+        },
+        "te": {
+            "legacy_caption_pid": 38468,
+            "legacy_language_pid": 24,
+            "text": "నమోదిత అవకాశం లేనందున ఇప్పటికే మీ ఇమెయిల్ తనిఖీ చేయండి.",
+            "auto_translated": "నమోదిత అవకాశం లేనందున ఇప్పటికే మీ ఇమెయిల్ తనిఖీ చేయండి."
+        },
+        "mr": {
+            "legacy_caption_pid": 38469,
+            "legacy_language_pid": 25,
+            "text": "तेथे नोंदणीकृत एक शक्यता आहे कारण कृपया आधीच आपले ईमेल तपासा.",
+            "auto_translated": "तेथे नोंदणीकृत एक शक्यता आहे कारण कृपया आधीच आपले ईमेल तपासा."
+        },
+        "ur": {
+            "legacy_caption_pid": 38470,
+            "legacy_language_pid": 26,
+            "text": "رجسٹرڈ کا امکان ہے کیونکہ پہلے ہی آپ کا ای میل چیک کریں.",
+            "auto_translated": "رجسٹرڈ کا امکان ہے کیونکہ پہلے ہی آپ کا ای میل چیک کریں."
+        },
+        "gu": {
+            "legacy_caption_pid": 38471,
+            "legacy_language_pid": 27,
+            "text": "પહેલાથી જ તમારી ઇમેઇલ તપાસો કારણ કે રજિસ્ટર્ડ શક્યતા છે ત્યાં.",
+            "auto_translated": "પહેલાથી જ તમારી ઇમેઇલ તપાસો કારણ કે રજિસ્ટર્ડ શક્યતા છે ત્યાં."
+        },
+        "uk": {
+            "legacy_caption_pid": 38472,
+            "legacy_language_pid": 28,
+            "text": "Будь ласка, перевірте свою електронну пошту, хоча б тому, що є можливість зареєстрованих.",
+            "auto_translated": "Будь ласка, перевірте свою електронну пошту, хоча б тому, що є можливість зареєстрованих."
+        },
+        "ml": {
+            "legacy_caption_pid": 38473,
+            "legacy_language_pid": 29,
+            "text": "രജിസ്റ്റർ ഒരു സാദ്ധ്യത കാരണം ഇതിനകം നിങ്ങളുടെ ഇമെയിൽ പരിശോധിക്കുക.",
+            "auto_translated": "രജിസ്റ്റർ ഒരു സാദ്ധ്യത കാരണം ഇതിനകം നിങ്ങളുടെ ഇമെയിൽ പരിശോധിക്കുക."
+        },
+        "kn": {
+            "legacy_caption_pid": 38474,
+            "legacy_language_pid": 30,
+            "text": "ಈಗಾಗಲೇ ನಿಮ್ಮ ಇಮೇಲ್ ಪರಿಶೀಲಿಸಿ ನೋಂದಾಯಿತ ನ ಇರುತ್ತದೆ ಏಕೆಂದರೆ.",
+            "auto_translated": "ಈಗಾಗಲೇ ನಿಮ್ಮ ಇಮೇಲ್ ಪರಿಶೀಲಿಸಿ ನೋಂದಾಯಿತ ನ ಇರುತ್ತದೆ ಏಕೆಂದರೆ."
+        },
+        "su": {
+            "legacy_caption_pid": 38475,
+            "legacy_language_pid": 31,
+            "text": "Mangga parios surélék anjeun geus kusabab aya hiji kamungkinan nu kadaptar.",
+            "auto_translated": "Mangga parios surélék anjeun geus kusabab aya hiji kamungkinan nu kadaptar."
+        },
+        "ku": {
+            "legacy_caption_pid": 38476,
+            "legacy_language_pid": 32,
+            "text": "Emaila xwe jî jixwe ji ber ku derfeta qeydkirî heye.",
+            "auto_translated": "Emaila xwe jî jixwe ji ber ku derfeta qeydkirî heye."
+        },
+        "ps": {
+            "legacy_caption_pid": 38477,
+            "legacy_language_pid": 33,
+            "text": "خپل ایمیل وګورئ لا ځکه چې هلته د ثبت امکان دی.",
+            "auto_translated": "خپل ایمیل وګورئ لا ځکه چې هلته د ثبت امکان دی."
+        },
+        "ro": {
+            "legacy_caption_pid": 38478,
+            "legacy_language_pid": 34,
+            "text": "Vă rugăm să verificați e-mail-ul, deoarece deja există o posibilitate de înregistrat.",
+            "auto_translated": "Vă rugăm să verificați e-mail-ul, deoarece deja există o posibilitate de înregistrat."
+        },
+        "id": {
+            "legacy_caption_pid": 38479,
+            "legacy_language_pid": 35,
+            "text": "Silakan periksa email Anda sudah karena ada kemungkinan terdaftar.",
+            "auto_translated": "Silakan periksa email Anda sudah karena ada kemungkinan terdaftar."
+        },
+        "sd": {
+            "legacy_caption_pid": 38480,
+            "legacy_language_pid": 36,
+            "text": "اڳ ۾ ئي توهان جي اي ميل چيڪ ڪريو ڇو ته داخل جو امڪان آهي نه.",
+            "auto_translated": "اڳ ۾ ئي توهان جي اي ميل چيڪ ڪريو ڇو ته داخل جو امڪان آهي نه."
+        },
+        "af": {
+            "legacy_caption_pid": 38481,
+            "legacy_language_pid": 37,
+            "text": "Gaan asseblief jou e-pos reeds, want daar is 'n moontlikheid van geregistreerde.",
+            "auto_translated": "Gaan asseblief jou e-pos reeds, want daar is 'n moontlikheid van geregistreerde."
+        },
+        "sw": {
+            "legacy_caption_pid": 38482,
+            "legacy_language_pid": 38,
+            "text": "Tafadhali angalia barua pepe yako tayari kwa sababu kuna uwezekano wa usajili.",
+            "auto_translated": "Tafadhali angalia barua pepe yako tayari kwa sababu kuna uwezekano wa usajili."
+        },
+        "lo": {
+            "legacy_caption_pid": 38483,
+            "legacy_language_pid": 39,
+            "text": "ກະລຸນາກວດສອບອີເມວຂອງທ່ານແລ້ວເພາະວ່າມີຄວາມເປັນໄປໄດ້ຂອງທີ່ຈົດທະບຽນ.",
+            "auto_translated": "ກະລຸນາກວດສອບອີເມວຂອງທ່ານແລ້ວເພາະວ່າມີຄວາມເປັນໄປໄດ້ຂອງທີ່ຈົດທະບຽນ."
+        },
+        "nl": {
+            "legacy_caption_pid": 38484,
+            "legacy_language_pid": 40,
+            "text": "Controleer uw e-mail al, want er is een mogelijkheid van geregistreerde.",
+            "auto_translated": "Controleer uw e-mail al, want er is een mogelijkheid van geregistreerde."
+        },
+        "tl": {
+            "legacy_caption_pid": 38485,
+            "legacy_language_pid": 41,
+            "text": "Mangyaring suriin ang iyong email ay dahil doon ay isang posibilidad ng mga nakarehistrong.",
+            "auto_translated": "Mangyaring suriin ang iyong email ay dahil doon ay isang posibilidad ng mga nakarehistrong."
+        },
+        "ne": {
+            "legacy_caption_pid": 38486,
+            "legacy_language_pid": 42,
+            "text": "त्यहाँ दर्ता को एक संभावना छ किनभने तपाईंको ईमेल पहिले नै जाँच गर्नुहोस्।",
+            "auto_translated": "त्यहाँ दर्ता को एक संभावना छ किनभने तपाईंको ईमेल पहिले नै जाँच गर्नुहोस्।"
+        },
+        "hu": {
+            "legacy_caption_pid": 38487,
+            "legacy_language_pid": 43,
+            "text": "Kérjük, ellenőrizze az e-mail miatt már lehetőség van a regisztrált.",
+            "auto_translated": "Kérjük, ellenőrizze az e-mail miatt már lehetőség van a regisztrált."
+        },
+        "cs": {
+            "legacy_caption_pid": 38488,
+            "legacy_language_pid": 44,
+            "text": "Zkontrolujte prosím svůj e-mail už proto, že je zde možnost zapsat.",
+            "auto_translated": "Zkontrolujte prosím svůj e-mail už proto, že je zde možnost zapsat."
+        },
+        "el": {
+            "legacy_caption_pid": 38489,
+            "legacy_language_pid": 45,
+            "text": "Παρακαλώ ελέγξτε το email σας ήδη, διότι υπάρχει η δυνατότητα των εγγεγραμμένων.",
+            "auto_translated": "Παρακαλώ ελέγξτε το email σας ήδη, διότι υπάρχει η δυνατότητα των εγγεγραμμένων."
+        },
+        "sv": {
+            "legacy_caption_pid": 38490,
+            "legacy_language_pid": 46,
+            "text": "Kontrollera din e-post redan eftersom det finns en möjlighet till registrerat.",
+            "auto_translated": "Kontrollera din e-post redan eftersom det finns en möjlighet till registrerat."
+        },
+        "kk": {
+            "legacy_caption_pid": 38491,
+            "legacy_language_pid": 47,
+            "text": "тіркелген мүмкіндігі бар, өйткені қазірдің өзінде электрондық поштаңызды тексеріңіз.",
+            "auto_translated": "тіркелген мүмкіндігі бар, өйткені қазірдің өзінде электрондық поштаңызды тексеріңіз."
+        },
+        "fi": {
+            "legacy_caption_pid": 38492,
+            "legacy_language_pid": 48,
+            "text": "Tarkista sähköpostisi jo koska on olemassa mahdollisuus rekisteröityjen.",
+            "auto_translated": "Tarkista sähköpostisi jo koska on olemassa mahdollisuus rekisteröityjen."
+        },
+        "da": {
+            "legacy_caption_pid": 38493,
+            "legacy_language_pid": 49,
+            "text": "Tjek din e-mail allerede fordi der er en mulighed for registreret.",
+            "auto_translated": "Tjek din e-mail allerede fordi der er en mulighed for registreret."
+        },
+        "he": {
+            "legacy_caption_pid": 38494,
+            "legacy_language_pid": 50,
+            "text": "בדוק את האימייל שלך כבר כי קיימת אפשרות של רשום.",
+            "auto_translated": "בדוק את האימייל שלך כבר כי קיימת אפשרות של רשום."
+        },
+        "no": {
+            "legacy_caption_pid": 38495,
+            "legacy_language_pid": 51,
+            "text": "Sjekk e-posten allerede, fordi det er en mulighet av registrert.",
+            "auto_translated": "Sjekk e-posten allerede, fordi det er en mulighet av registrert."
+        }
+    }
+}

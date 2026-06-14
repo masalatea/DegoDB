@@ -1,0 +1,69 @@
+{
+    "resource_key": "TITLE_DBAAS_HOW_TO_USE_EXAMPLE_PERL",
+    "legacy_resource_pid": 605,
+    "base_group_key": "grp-010-matsuesoft-lib",
+    "additional_group_keys": [],
+    "key_for_update": "9N6V2wYaYvitjGMTEfQ4MDFhz56zFVKCeDgTatES3T0jYSYfBScw6lCoNc1KoQvSQKrkFi7L6HHmf84GMqN1r2vy2ADGxxnLcaoN49kFX5gnz4oNFZC2Y1VFwmTyrINw",
+    "sort_group": "TITLE",
+    "key_name": "TITLE_DBAAS_HOW_TO_USE_EXAMPLE_PERL",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": true,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 4686,
+            "legacy_language_pid": 1,
+            "text": "Perlでエンドポイントにアクセス",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 4687,
+            "legacy_language_pid": 2,
+            "text": "Access Endpoint by Perl",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 14431,
+            "legacy_language_pid": 3,
+            "text": "",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 14432,
+            "legacy_language_pid": 4,
+            "text": "",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 14433,
+            "legacy_language_pid": 5,
+            "text": "Acceder Endpoint mediante Perl",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 14434,
+            "legacy_language_pid": 6,
+            "text": "Parámetro Acceder através Perl",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 14435,
+            "legacy_language_pid": 7,
+            "text": "",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 17341,
+            "legacy_language_pid": 8,
+            "text": "Accéder au point final par Perl",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 17342,
+            "legacy_language_pid": 9,
+            "text": "Pearl द्वारा एंडपॉइंट एक्सेस करे",
+            "auto_translated": ""
+        }
+    }
+}

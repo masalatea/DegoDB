@@ -1,0 +1,69 @@
+{
+    "resource_key": "TITLE_TECHNOLOGY_DATABASE_TRANSACTION_ISOLATION_LEVEL",
+    "legacy_resource_pid": 1176,
+    "base_group_key": "grp-010-matsuesoft-lib",
+    "additional_group_keys": [],
+    "key_for_update": "QDh9yZVhUSaiCxUz59dS56TxRcslMOW14zyzhKawtKXNfCv18o9nfyid1gR9UOz9SlYCYhgVFe30FgH1sRf1U7UvaQlFWJk6XMdcssY9qVYlmwlxgepBdpaJYt4LF9EP",
+    "sort_group": "TITLE",
+    "key_name": "TITLE_TECHNOLOGY_DATABASE_TRANSACTION_ISOLATION_LEVEL",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": true,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 4748,
+            "legacy_language_pid": 1,
+            "text": "データベースのトランザクション分離レベル - $DOMAINNAMECAPTION_JP",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 4749,
+            "legacy_language_pid": 2,
+            "text": "Database's Transaction Isolation Level - $DOMAINNAMECAPTION_EN",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 15423,
+            "legacy_language_pid": 3,
+            "text": "",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 15424,
+            "legacy_language_pid": 4,
+            "text": "",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 15425,
+            "legacy_language_pid": 5,
+            "text": "Nivel de aislamiento de la transacción de la base de datos: $DOMAINNAMECAPTION_ES",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 15426,
+            "legacy_language_pid": 6,
+            "text": "Nível de isolamento da transação do banco de dados - $DOMAINNAMECAPTION_EN",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 15427,
+            "legacy_language_pid": 7,
+            "text": "",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 17403,
+            "legacy_language_pid": 8,
+            "text": "Niveau d'isolation des transactions de la base de données - $DOMAINNAMECAPTION_FR",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 17404,
+            "legacy_language_pid": 9,
+            "text": "डाटाबेस का लेनदेन अलगाव स्तर - $ DOMAINNAMECAPTION_HI",
+            "auto_translated": ""
+        }
+    }
+}

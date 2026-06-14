@@ -1,0 +1,69 @@
+{
+    "resource_key": "TITLE_CLOUD_HP_TOP",
+    "legacy_resource_pid": 652,
+    "base_group_key": "grp-010-matsuesoft-lib",
+    "additional_group_keys": [],
+    "key_for_update": "XzrcDJYE0qn78XMqaZTndMVexQXjhlnkB81HoMABJNiOYQvZv0XVteEZ9buvpnTcNkqluf1zABX5DMwasvPWHdnYdVdxZqS1Me5BF1dcuD3Ldwz2dD0KkzCEgOT7DKbA",
+    "sort_group": "TITLE",
+    "key_name": "TITLE_CLOUD_HP_TOP",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": true,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 4654,
+            "legacy_language_pid": 1,
+            "text": "ホームページ・ポータル化オプション - $DOMAINNAMECAPTION_JP",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 4655,
+            "legacy_language_pid": 2,
+            "text": "Portal Management Option - $DOMAINNAMECAPTION_EN",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 14351,
+            "legacy_language_pid": 3,
+            "text": "",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 14352,
+            "legacy_language_pid": 4,
+            "text": "",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 14353,
+            "legacy_language_pid": 5,
+            "text": "Opción de administración de portal - $DOMAINNAMECAPTION_ES",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 14354,
+            "legacy_language_pid": 6,
+            "text": "Opção de gerenciamento de portal - $DOMAINNAMECAPTION_PT",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 14355,
+            "legacy_language_pid": 7,
+            "text": "",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 17309,
+            "legacy_language_pid": 8,
+            "text": "Option de gestion de portail - $DOMAIN NAME CAPTION_FR",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 17310,
+            "legacy_language_pid": 9,
+            "text": "पोर्टल प्रबंधन विकल्प - $ DOMAINNAMECAPTION_HI",
+            "auto_translated": ""
+        }
+    }
+}

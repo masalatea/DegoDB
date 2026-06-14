@@ -1,0 +1,69 @@
+{
+    "resource_key": "HP_FOOTER_DBAAS",
+    "legacy_resource_pid": 678,
+    "base_group_key": "grp-010-matsuesoft-lib",
+    "additional_group_keys": [],
+    "key_for_update": "xNIUm5sYHp1SrwE9TsvlhGg9egIWyYPkC9I9AmGkkjkitgj3ELnToGVGAlVVZmq0FIKDUGpbRHXA65Y8c1n6ORbNF5mN2RclCYN3JSW8t7cOOIYawUXfI4bGJBxUIcUY",
+    "sort_group": "HP FOOTER",
+    "key_name": "HP_FOOTER_DBAAS",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": true,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 4564,
+            "legacy_language_pid": 1,
+            "text": "DegoDB - 開発フレームワークとクラウド・データベース",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 4565,
+            "legacy_language_pid": 2,
+            "text": "DegoDB - Development Framework & Cloud Database",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 14126,
+            "legacy_language_pid": 3,
+            "text": "",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 14127,
+            "legacy_language_pid": 4,
+            "text": "",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 14128,
+            "legacy_language_pid": 5,
+            "text": "DegoDB - Marco de desarrollo y base de datos en la nube",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 14129,
+            "legacy_language_pid": 6,
+            "text": "DegoDB - Framework de desenvolvimento e banco de dados de nuvem",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 14130,
+            "legacy_language_pid": 7,
+            "text": "",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 17091,
+            "legacy_language_pid": 8,
+            "text": "DegoDB - Development Framework & Cloud Database",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 17092,
+            "legacy_language_pid": 9,
+            "text": "DegoDB - डेवलपमेंट फ़्रेमवर्क और क्लाउड डेटाबेस",
+            "auto_translated": ""
+        }
+    }
+}

@@ -1,0 +1,69 @@
+{
+    "resource_key": "HP_FOOTER_DBAAS_EXPLANATION",
+    "legacy_resource_pid": 736,
+    "base_group_key": "grp-010-matsuesoft-lib",
+    "additional_group_keys": [],
+    "key_for_update": "9yMTxAzHwFTg4dn4r6i5bMbTo3ze1t60HTFTzLr9UeW5TermSEluCjq3hurkkFbRd7GJJIk4xx81pn1gEunTefZCWgcmMoMX4CMVSTc57kL9EnZrUnbOdjYVKhqH9SQD",
+    "sort_group": "HP FOOTER",
+    "key_name": "HP_FOOTER_DBAAS_EXPLANATION",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": true,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 4566,
+            "legacy_language_pid": 1,
+            "text": "弊社の開発フレームワークおよびクラウド・データベースです",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 4567,
+            "legacy_language_pid": 2,
+            "text": "This is our Development Framework and Cloud Database",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 14131,
+            "legacy_language_pid": 3,
+            "text": "",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 14132,
+            "legacy_language_pid": 4,
+            "text": "",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 14133,
+            "legacy_language_pid": 5,
+            "text": "Este es nuestro marco de desarrollo y base de datos de nubes",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 14134,
+            "legacy_language_pid": 6,
+            "text": "Esta é a nossa estrutura de desenvolvimento e base de dados em nuvem",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 14135,
+            "legacy_language_pid": 7,
+            "text": "",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 17093,
+            "legacy_language_pid": 8,
+            "text": "C'est notre cadre de développement et notre base de données Cloud",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 17094,
+            "legacy_language_pid": 9,
+            "text": "यह हमारा विकास ढांचा और क्लाउड डेटाबेस है",
+            "auto_translated": ""
+        }
+    }
+}

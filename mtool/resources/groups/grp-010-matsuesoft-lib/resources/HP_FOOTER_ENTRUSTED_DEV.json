@@ -1,0 +1,69 @@
+{
+    "resource_key": "HP_FOOTER_ENTRUSTED_DEV",
+    "legacy_resource_pid": 712,
+    "base_group_key": "grp-010-matsuesoft-lib",
+    "additional_group_keys": [],
+    "key_for_update": "isCaFrbk2I3bhajr9Xq5DdvHigjvoW80ZbxRWjFIcv03rmdpqeQnbW6tNXf2JbvAbuqAMvusqKFEkPXdvInVUFLgfTGc4k9DltrParEdV5i61x8FtpgSXXVeKWg33cot",
+    "sort_group": "HP FOOTER",
+    "key_name": "HP_FOOTER_ENTRUSTED_DEV",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": true,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 4578,
+            "legacy_language_pid": 1,
+            "text": "受注開発",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 4579,
+            "legacy_language_pid": 2,
+            "text": "Entrusted Development",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 14161,
+            "legacy_language_pid": 3,
+            "text": "",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 14162,
+            "legacy_language_pid": 4,
+            "text": "",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 14163,
+            "legacy_language_pid": 5,
+            "text": "Desarrollo confiado",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 14164,
+            "legacy_language_pid": 6,
+            "text": "Desenvolvimento confiado",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 14165,
+            "legacy_language_pid": 7,
+            "text": "",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 17105,
+            "legacy_language_pid": 8,
+            "text": "Développement confié",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 17106,
+            "legacy_language_pid": 9,
+            "text": "न्यासित विकास",
+            "auto_translated": ""
+        }
+    }
+}

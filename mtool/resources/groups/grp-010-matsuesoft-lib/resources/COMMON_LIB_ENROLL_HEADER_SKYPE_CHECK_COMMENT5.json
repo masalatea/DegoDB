@@ -1,0 +1,321 @@
+{
+    "resource_key": "COMMON_LIB_ENROLL_HEADER_SKYPE_CHECK_COMMENT5",
+    "legacy_resource_pid": 1436,
+    "base_group_key": "grp-010-matsuesoft-lib",
+    "additional_group_keys": [],
+    "key_for_update": "WBlp6lle4r9KueBbgfEqKTNvCzw6VyxnKTOzSgADB7DdE3Cy50NtQUkOkK3WKHnOfio9xaw8eDzp15bI1DszvNjYomOhNIkCGDbmqkSYSRPy4GzWiDmCr2mH0thkfRdp",
+    "sort_group": "ENROLL",
+    "key_name": "COMMON_LIB_ENROLL_HEADER_SKYPE_CHECK_COMMENT5",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": false,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 6018,
+            "legacy_language_pid": 1,
+            "text": "OSやブラウザによってはこのチェックは動きませんので、そのままご登録下さい。",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 6019,
+            "legacy_language_pid": 2,
+            "text": "This check does not work depending on OS and browser, so please register as it is.",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 6020,
+            "legacy_language_pid": 3,
+            "text": "由于此检查操作系统和浏览器中运行，所以不能立刻确认，请先这样注册",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 6021,
+            "legacy_language_pid": 4,
+            "text": "이 검사는 OS나 브라우저에서 실행되지 않습니다. 그대로 등록해주세요.",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 10874,
+            "legacy_language_pid": 5,
+            "text": "Esta comprobación no funciona dependiendo del sistema operativo y el navegador, por favor, regístrese como está.",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 10875,
+            "legacy_language_pid": 6,
+            "text": "Esta verificação não funciona dependendo do sistema operacional e do navegador, então registre-se como está.",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 10876,
+            "legacy_language_pid": 7,
+            "text": "由於此檢查操作系統和瀏覽器中運行，所以不能立刻確認，請先這樣註冊",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 17021,
+            "legacy_language_pid": 8,
+            "text": "Cette vérification ne fonctionne pas selon le système d'exploitation et le navigateur, alors merci de vous enregistrer comme il se présente.",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 17022,
+            "legacy_language_pid": 9,
+            "text": "यह चेक ओएस और ब्राउज़र के आधार पर काम नहीं करता है, इसलिए कृपया ज्यों का त्यों पंजीकृत करें।",
+            "auto_translated": ""
+        },
+        "ar": {
+            "legacy_caption_pid": 31662,
+            "legacy_language_pid": 10,
+            "text": "وبما أن هذا الاختيار لا تعمل من قبل نظام التشغيل والمتصفح، يرجى تسجيل كما هو.",
+            "auto_translated": "وبما أن هذا الاختيار لا تعمل من قبل نظام التشغيل والمتصفح، يرجى تسجيل كما هو."
+        },
+        "fa": {
+            "legacy_caption_pid": 31663,
+            "legacy_language_pid": 11,
+            "text": "از آنجا که این چک کند که توسط سیستم عامل و مرورگر کار نمی کند، لطفا ثبت نام به عنوان آن است.",
+            "auto_translated": "از آنجا که این چک کند که توسط سیستم عامل و مرورگر کار نمی کند، لطفا ثبت نام به عنوان آن است."
+        },
+        "de": {
+            "legacy_caption_pid": 31664,
+            "legacy_language_pid": 12,
+            "text": "Da diese Prüfung durch das Betriebssystem und Browser nicht funktioniert, melden Sie sich bitte, wie es ist.",
+            "auto_translated": "Da diese Prüfung durch das Betriebssystem und Browser nicht funktioniert, melden Sie sich bitte, wie es ist."
+        },
+        "ru": {
+            "legacy_caption_pid": 31665,
+            "legacy_language_pid": 13,
+            "text": "Поскольку эта проверка не работает в ОС и браузер, пожалуйста, зарегистрируйтесь как это.",
+            "auto_translated": "Поскольку эта проверка не работает в ОС и браузер, пожалуйста, зарегистрируйтесь как это."
+        },
+        "ms": {
+            "legacy_caption_pid": 31666,
+            "legacy_language_pid": 14,
+            "text": "Sejak semakan ini tidak berfungsi oleh OS dan pelayar, sila mendaftar kerana ia adalah.",
+            "auto_translated": "Sejak semakan ini tidak berfungsi oleh OS dan pelayar, sila mendaftar kerana ia adalah."
+        },
+        "ta": {
+            "legacy_caption_pid": 31667,
+            "legacy_language_pid": 15,
+            "text": "இந்த காசோலை OS மற்றும் உலாவி வேலை செய்யாது என்பதால், அது போன்ற பதிவுசெய்யவும்.",
+            "auto_translated": "இந்த காசோலை OS மற்றும் உலாவி வேலை செய்யாது என்பதால், அது போன்ற பதிவுசெய்யவும்."
+        },
+        "it": {
+            "legacy_caption_pid": 31668,
+            "legacy_language_pid": 16,
+            "text": "Dal momento che questo controllo non funziona con il sistema operativo e il browser, puoi registrarti come è.",
+            "auto_translated": "Dal momento che questo controllo non funziona con il sistema operativo e il browser, puoi registrarti come è."
+        },
+        "bn": {
+            "legacy_caption_pid": 31669,
+            "legacy_language_pid": 17,
+            "text": "যেহেতু এই চেক OS এবং ব্রাউজার দ্বারা কাজ না করে, দয়া করে নিবন্ধন এটা হিসাবে।",
+            "auto_translated": "যেহেতু এই চেক OS এবং ব্রাউজার দ্বারা কাজ না করে, দয়া করে নিবন্ধন এটা হিসাবে।"
+        },
+        "tr": {
+            "legacy_caption_pid": 31670,
+            "legacy_language_pid": 18,
+            "text": "Bu onay OS ve tarayıcı tarafından çalışmaz beri olduğu gibi kayıt ediniz.",
+            "auto_translated": "Bu onay OS ve tarayıcı tarafından çalışmaz beri olduğu gibi kayıt ediniz."
+        },
+        "vi": {
+            "legacy_caption_pid": 31671,
+            "legacy_language_pid": 19,
+            "text": "Kể từ khi việc kiểm tra này không hoạt động bởi hệ điều hành và trình duyệt, xin vui lòng đăng ký làm nó được.",
+            "auto_translated": "Kể từ khi việc kiểm tra này không hoạt động bởi hệ điều hành và trình duyệt, xin vui lòng đăng ký làm nó được."
+        },
+        "pl": {
+            "legacy_caption_pid": 31672,
+            "legacy_language_pid": 20,
+            "text": "Od tego wyboru nie działa przez system operacyjny i przeglądarkę, należy zarejestrować się, jak to jest.",
+            "auto_translated": "Od tego wyboru nie działa przez system operacyjny i przeglądarkę, należy zarejestrować się, jak to jest."
+        },
+        "jv": {
+            "legacy_caption_pid": 31673,
+            "legacy_language_pid": 21,
+            "text": "Wiwit mriksa iki ora bisa dening OS lan browser, silahkan daftar iku.",
+            "auto_translated": "Wiwit mriksa iki ora bisa dening OS lan browser, silahkan daftar iku."
+        },
+        "pa": {
+            "legacy_caption_pid": 31674,
+            "legacy_language_pid": 22,
+            "text": "ਇਸ ਚੈੱਕ ਨੂੰ OS ਤੇ ਅਤੇ ਬਰਾਊਜ਼ਰ ਨਾਲ ਕੰਮ ਨਹੀ ਕਰਦਾ ਹੈ, ਰਜਿਸਟਰ ਕਰੋ ਜੀ ਇਸ ਨੂੰ ਹੈ ਦੇ ਰੂਪ ਵਿੱਚ.",
+            "auto_translated": "ਇਸ ਚੈੱਕ ਨੂੰ OS ਤੇ ਅਤੇ ਬਰਾਊਜ਼ਰ ਨਾਲ ਕੰਮ ਨਹੀ ਕਰਦਾ ਹੈ, ਰਜਿਸਟਰ ਕਰੋ ਜੀ ਇਸ ਨੂੰ ਹੈ ਦੇ ਰੂਪ ਵਿੱਚ."
+        },
+        "th": {
+            "legacy_caption_pid": 31675,
+            "legacy_language_pid": 23,
+            "text": "ตั้งแต่การตรวจสอบนี้ไม่ได้ทำงานโดยระบบปฏิบัติการและเบราว์เซอร์โปรดลงทะเบียนตามที่มันเป็น",
+            "auto_translated": "ตั้งแต่การตรวจสอบนี้ไม่ได้ทำงานโดยระบบปฏิบัติการและเบราว์เซอร์โปรดลงทะเบียนตามที่มันเป็น"
+        },
+        "te": {
+            "legacy_caption_pid": 38748,
+            "legacy_language_pid": 24,
+            "text": "ఈ చెక్ OS మరియు బ్రౌజర్ ద్వారా పని లేదు కాబట్టి, నమోదు దయచేసి ఉంది.",
+            "auto_translated": "ఈ చెక్ OS మరియు బ్రౌజర్ ద్వారా పని లేదు కాబట్టి, నమోదు దయచేసి ఉంది."
+        },
+        "mr": {
+            "legacy_caption_pid": 38749,
+            "legacy_language_pid": 25,
+            "text": "हा चेक OS आणि ब्राउझरद्वारे कार्य करत नाही असल्याने, ती आहे म्हणून नोंदणी करा.",
+            "auto_translated": "हा चेक OS आणि ब्राउझरद्वारे कार्य करत नाही असल्याने, ती आहे म्हणून नोंदणी करा."
+        },
+        "ur": {
+            "legacy_caption_pid": 38750,
+            "legacy_language_pid": 26,
+            "text": "چونکہ اس چیک OS اور براؤزر کی طرف سے کام نہیں کرتا، ویسے بھی رجسٹر کریں.",
+            "auto_translated": "چونکہ اس چیک OS اور براؤزر کی طرف سے کام نہیں کرتا، ویسے بھی رجسٹر کریں."
+        },
+        "gu": {
+            "legacy_caption_pid": 38751,
+            "legacy_language_pid": 27,
+            "text": "જ્યારથી આ ચેક OS અને બ્રાઉઝર દ્વારા કામ કરતું નથી, કૃપા કરીને રજિસ્ટર તે છે.",
+            "auto_translated": "જ્યારથી આ ચેક OS અને બ્રાઉઝર દ્વારા કામ કરતું નથી, કૃપા કરીને રજિસ્ટર તે છે."
+        },
+        "uk": {
+            "legacy_caption_pid": 38752,
+            "legacy_language_pid": 28,
+            "text": "Оскільки ця перевірка не працює в ОС і браузер, будь ласка, зареєструйтесь як це.",
+            "auto_translated": "Оскільки ця перевірка не працює в ОС і браузер, будь ласка, зареєструйтесь як це."
+        },
+        "ml": {
+            "legacy_caption_pid": 38753,
+            "legacy_language_pid": 29,
+            "text": "ഈ ചെക്ക് ഒഎസ് ബ്രൗസർ പ്രവർത്തിക്കുന്നില്ലെങ്കിൽ ശേഷം, അത് പോലെ രജിസ്റ്റർ ചെയ്യുക.",
+            "auto_translated": "ഈ ചെക്ക് ഒഎസ് ബ്രൗസർ പ്രവർത്തിക്കുന്നില്ലെങ്കിൽ ശേഷം, അത് പോലെ രജിസ്റ്റർ ചെയ്യുക."
+        },
+        "kn": {
+            "legacy_caption_pid": 38754,
+            "legacy_language_pid": 30,
+            "text": "ಈ ಚೆಕ್ ರಿಂದ OS ಮತ್ತು ಬ್ರೌಸರ್ ಕೆಲಸ ಮಾಡುವುದಿಲ್ಲ, ಅದು ನೊಂದಾಯಿಸಿಕೊಳ್ಳಬಹುದು ಮಾಡಿ.",
+            "auto_translated": "ಈ ಚೆಕ್ ರಿಂದ OS ಮತ್ತು ಬ್ರೌಸರ್ ಕೆಲಸ ಮಾಡುವುದಿಲ್ಲ, ಅದು ನೊಂದಾಯಿಸಿಕೊಳ್ಳಬಹುದು ಮಾಡಿ."
+        },
+        "su": {
+            "legacy_caption_pid": 38755,
+            "legacy_language_pid": 31,
+            "text": "Kusabab dipariksa ieu teu dianggo ku OS na panyungsi, mangga ngadaptar sakumaha anu kasebut.",
+            "auto_translated": "Kusabab dipariksa ieu teu dianggo ku OS na panyungsi, mangga ngadaptar sakumaha anu kasebut."
+        },
+        "ku": {
+            "legacy_caption_pid": 38756,
+            "legacy_language_pid": 32,
+            "text": "Ji ber ku ev check nayê ji aliyê OS û browser kar ne, ji kerema xwe qeyd bike wek ew e.",
+            "auto_translated": "Ji ber ku ev check nayê ji aliyê OS û browser kar ne, ji kerema xwe qeyd bike wek ew e."
+        },
+        "ps": {
+            "legacy_caption_pid": 38757,
+            "legacy_language_pid": 33,
+            "text": "راهیسې د دې پوستې د OS او کتنمل له خوا کار نه کوي، لطفا راجستر په توګه دا ده.",
+            "auto_translated": "راهیسې د دې پوستې د OS او کتنمل له خوا کار نه کوي، لطفا راجستر په توګه دا ده."
+        },
+        "ro": {
+            "legacy_caption_pid": 38758,
+            "legacy_language_pid": 34,
+            "text": "Deoarece această verificare nu funcționează de sistemul de operare și browser-ul, vă rugăm să vă înregistrați ca este.",
+            "auto_translated": "Deoarece această verificare nu funcționează de sistemul de operare și browser-ul, vă rugăm să vă înregistrați ca este."
+        },
+        "id": {
+            "legacy_caption_pid": 38759,
+            "legacy_language_pid": 35,
+            "text": "Sejak pemeriksaan ini tidak bekerja dengan OS dan peramban, silahkan mendaftar seperti itu.",
+            "auto_translated": "Sejak pemeriksaan ini tidak bekerja dengan OS dan peramban, silahkan mendaftar seperti itu."
+        },
+        "sd": {
+            "legacy_caption_pid": 38760,
+            "legacy_language_pid": 36,
+            "text": "تنهنڪري هن چيڪ جي او ايس ۽ برائوزر جي ڪم نه ايندي، رجسٽر مهرباني ڪري ان کي آهي.",
+            "auto_translated": "تنهنڪري هن چيڪ جي او ايس ۽ برائوزر جي ڪم نه ايندي، رجسٽر مهرباني ڪري ان کي آهي."
+        },
+        "af": {
+            "legacy_caption_pid": 38761,
+            "legacy_language_pid": 37,
+            "text": "Aangesien hierdie tjek nie werk nie deur die bedryfstelsel en die leser, asseblief registreer as dit is.",
+            "auto_translated": "Aangesien hierdie tjek nie werk nie deur die bedryfstelsel en die leser, asseblief registreer as dit is."
+        },
+        "sw": {
+            "legacy_caption_pid": 38762,
+            "legacy_language_pid": 38,
+            "text": "Kwa kuwa hundi hii haifanyi kazi na OS na browser, tafadhali kujiandikisha kama ni.",
+            "auto_translated": "Kwa kuwa hundi hii haifanyi kazi na OS na browser, tafadhali kujiandikisha kama ni."
+        },
+        "lo": {
+            "legacy_caption_pid": 38763,
+            "legacy_language_pid": 39,
+            "text": "ເນື່ອງຈາກການກວດສອບນີ້ບໍ່ໄດ້ເຮັດວຽກໂດຍ OS ແລະຕົວທ່ອງເວັບ, ກະລຸນາລົງທະບຽນເປັນ.",
+            "auto_translated": "ເນື່ອງຈາກການກວດສອບນີ້ບໍ່ໄດ້ເຮັດວຽກໂດຍ OS ແລະຕົວທ່ອງເວັບ, ກະລຸນາລົງທະບຽນເປັນ."
+        },
+        "nl": {
+            "legacy_caption_pid": 38764,
+            "legacy_language_pid": 40,
+            "text": "Aangezien deze controle niet werkt door het besturingssysteem en de browser, registreer u dan zoals het is.",
+            "auto_translated": "Aangezien deze controle niet werkt door het besturingssysteem en de browser, registreer u dan zoals het is."
+        },
+        "tl": {
+            "legacy_caption_pid": 38765,
+            "legacy_language_pid": 41,
+            "text": "Dahil ito tseke ay hindi gumagana sa pamamagitan ng OS at browser, mangyaring magparehistro bilang ito ay.",
+            "auto_translated": "Dahil ito tseke ay hindi gumagana sa pamamagitan ng OS at browser, mangyaring magparehistro bilang ito ay."
+        },
+        "ne": {
+            "legacy_caption_pid": 38766,
+            "legacy_language_pid": 42,
+            "text": "पछि यो जाँच OS र ब्राउजर द्वारा काम गर्छ, कृपया दर्ता यो छ रूपमा।",
+            "auto_translated": "पछि यो जाँच OS र ब्राउजर द्वारा काम गर्छ, कृपया दर्ता यो छ रूपमा।"
+        },
+        "hu": {
+            "legacy_caption_pid": 38767,
+            "legacy_language_pid": 43,
+            "text": "Mivel ez az ellenőrzés nem működik az operációs rendszer és a böngésző, kérjük regisztráljon, ahogy van.",
+            "auto_translated": "Mivel ez az ellenőrzés nem működik az operációs rendszer és a böngésző, kérjük regisztráljon, ahogy van."
+        },
+        "cs": {
+            "legacy_caption_pid": 38768,
+            "legacy_language_pid": 44,
+            "text": "Vzhledem k tomu, kontrola nefunguje podle operačního systému a prohlížeče, zaregistrujte se, jak to je.",
+            "auto_translated": "Vzhledem k tomu, kontrola nefunguje podle operačního systému a prohlížeče, zaregistrujte se, jak to je."
+        },
+        "el": {
+            "legacy_caption_pid": 38769,
+            "legacy_language_pid": 45,
+            "text": "Δεδομένου ότι αυτός ο έλεγχος δεν λειτουργεί από το λειτουργικό σύστημα και το πρόγραμμα περιήγησης, μπορείτε να εγγραφείτε ως έχει.",
+            "auto_translated": "Δεδομένου ότι αυτός ο έλεγχος δεν λειτουργεί από το λειτουργικό σύστημα και το πρόγραμμα περιήγησης, μπορείτε να εγγραφείτε ως έχει."
+        },
+        "sv": {
+            "legacy_caption_pid": 38770,
+            "legacy_language_pid": 46,
+            "text": "Eftersom denna kontroll inte fungerar med OS och webbläsaren, vänligen registrera sig som det är.",
+            "auto_translated": "Eftersom denna kontroll inte fungerar med OS och webbläsaren, vänligen registrera sig som det är."
+        },
+        "kk": {
+            "legacy_caption_pid": 38771,
+            "legacy_language_pid": 47,
+            "text": "Осы тексеру OS және шолғыш арқылы жұмыс істемейді бастап, ол сондай-ақ тіркеліңіз.",
+            "auto_translated": "Осы тексеру OS және шолғыш арқылы жұмыс істемейді бастап, ол сондай-ақ тіркеліңіз."
+        },
+        "fi": {
+            "legacy_caption_pid": 38772,
+            "legacy_language_pid": 48,
+            "text": "Koska tämä tarkistus ei töihin OS ja selain, ilmoittaudu sellaisenaan.",
+            "auto_translated": "Koska tämä tarkistus ei töihin OS ja selain, ilmoittaudu sellaisenaan."
+        },
+        "da": {
+            "legacy_caption_pid": 38773,
+            "legacy_language_pid": 49,
+            "text": "Da denne kontrol ikke virker af OS og browser, skal du registrere dig som det er.",
+            "auto_translated": "Da denne kontrol ikke virker af OS og browser, skal du registrere dig som det er."
+        },
+        "he": {
+            "legacy_caption_pid": 38774,
+            "legacy_language_pid": 50,
+            "text": "מאז המחאה הזה לא עובד על ידי מערכת ההפעלה והדפדפן, בבקשה לרשום כפי שהוא.",
+            "auto_translated": "מאז המחאה הזה לא עובד על ידי מערכת ההפעלה והדפדפן, בבקשה לרשום כפי שהוא."
+        },
+        "no": {
+            "legacy_caption_pid": 38775,
+            "legacy_language_pid": 51,
+            "text": "Siden denne kontrollen ikke fungerer av OS og nettleser, kan du registrere deg som det er.",
+            "auto_translated": "Siden denne kontrollen ikke fungerer av OS og nettleser, kan du registrere deg som det er."
+        }
+    }
+}

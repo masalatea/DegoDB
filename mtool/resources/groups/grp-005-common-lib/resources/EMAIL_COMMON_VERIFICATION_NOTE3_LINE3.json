@@ -1,0 +1,321 @@
+{
+    "resource_key": "EMAIL_COMMON_VERIFICATION_NOTE3_LINE3",
+    "legacy_resource_pid": 2590,
+    "base_group_key": "grp-005-common-lib",
+    "additional_group_keys": [],
+    "key_for_update": "mBl8QZlyMqhscJSwP5swaA8TlkJ9vtxZnUl7JEQyO4LulzXMSo8K5qnObLXos4uqwjcXc3yfR8k4IrVeXtSNf0fJn48iHNLLy6LqysmUnkM40lrotSzyrZdtkiUHt5qd",
+    "sort_group": "EMAIL VERIFICATION",
+    "key_name": "EMAIL_COMMON_VERIFICATION_NOTE3_LINE3",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": false,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 19547,
+            "legacy_language_pid": 1,
+            "text": "お手数おかけ致します。",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 19548,
+            "legacy_language_pid": 2,
+            "text": "I'm sorry for troubling you.",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 19549,
+            "legacy_language_pid": 3,
+            "text": "我很抱歉困扰你",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 19550,
+            "legacy_language_pid": 4,
+            "text": "불편 끼쳐 드려 죄송합니다.",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 19551,
+            "legacy_language_pid": 5,
+            "text": "Lo siento por molestarte.",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 19552,
+            "legacy_language_pid": 6,
+            "text": "Desculpe-me por incomodar você.",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 19553,
+            "legacy_language_pid": 7,
+            "text": "我很抱歉困擾你",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 19554,
+            "legacy_language_pid": 8,
+            "text": "Je suis désolé de vous avoir troublé.",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 19555,
+            "legacy_language_pid": 9,
+            "text": "मैं तुम्हें परेशान करने के लिए माफी चाहता हूँ",
+            "auto_translated": ""
+        },
+        "ar": {
+            "legacy_caption_pid": 29744,
+            "legacy_language_pid": 10,
+            "text": "وسوف تعتذر المتاعب.",
+            "auto_translated": "وسوف تعتذر المتاعب."
+        },
+        "fa": {
+            "legacy_caption_pid": 29745,
+            "legacy_language_pid": 11,
+            "text": "من مشکل عذر خواهی خواهد کرد.",
+            "auto_translated": "من مشکل عذر خواهی خواهد کرد."
+        },
+        "de": {
+            "legacy_caption_pid": 29746,
+            "legacy_language_pid": 12,
+            "text": "Ich werde Probleme entschuldigen.",
+            "auto_translated": "Ich werde Probleme entschuldigen."
+        },
+        "ru": {
+            "legacy_caption_pid": 29747,
+            "legacy_language_pid": 13,
+            "text": "Я неприятности извиниться.",
+            "auto_translated": "Я неприятности извиниться."
+        },
+        "ms": {
+            "legacy_caption_pid": 29748,
+            "legacy_language_pid": 14,
+            "text": "Saya akan masalah meminta maaf.",
+            "auto_translated": "Saya akan masalah meminta maaf."
+        },
+        "ta": {
+            "legacy_caption_pid": 29749,
+            "legacy_language_pid": 15,
+            "text": "நான் பிரச்சனையில் மன்னிப்பு கேட்கிறேன்.",
+            "auto_translated": "நான் பிரச்சனையில் மன்னிப்பு கேட்கிறேன்."
+        },
+        "it": {
+            "legacy_caption_pid": 29750,
+            "legacy_language_pid": 16,
+            "text": "Mi scuso guai.",
+            "auto_translated": "Mi scuso guai."
+        },
+        "bn": {
+            "legacy_caption_pid": 29751,
+            "legacy_language_pid": 17,
+            "text": "আমি কষ্ট ক্ষমাপ্রার্থী হবে।",
+            "auto_translated": "আমি কষ্ট ক্ষমাপ্রার্থী হবে।"
+        },
+        "tr": {
+            "legacy_caption_pid": 29752,
+            "legacy_language_pid": 18,
+            "text": "Zahmet özür dileyeceğim.",
+            "auto_translated": "Zahmet özür dileyeceğim."
+        },
+        "vi": {
+            "legacy_caption_pid": 29753,
+            "legacy_language_pid": 19,
+            "text": "Tôi sẽ gặp rắc rối xin lỗi.",
+            "auto_translated": "Tôi sẽ gặp rắc rối xin lỗi."
+        },
+        "pl": {
+            "legacy_caption_pid": 29754,
+            "legacy_language_pid": 20,
+            "text": "Kłopot będę przepraszać.",
+            "auto_translated": "Kłopot będę przepraszać."
+        },
+        "jv": {
+            "legacy_caption_pid": 29755,
+            "legacy_language_pid": 21,
+            "text": "Aku bakal alangan apologize.",
+            "auto_translated": "Aku bakal alangan apologize."
+        },
+        "pa": {
+            "legacy_caption_pid": 29756,
+            "legacy_language_pid": 22,
+            "text": "ਮੈਨੂੰ ਮੁਸ਼ਕਲ ਮੁਆਫੀ ਜਾਵੇਗਾ.",
+            "auto_translated": "ਮੈਨੂੰ ਮੁਸ਼ਕਲ ਮੁਆਫੀ ਜਾਵੇਗਾ."
+        },
+        "th": {
+            "legacy_caption_pid": 29757,
+            "legacy_language_pid": 23,
+            "text": "ฉันปัญหาจะขอโทษ",
+            "auto_translated": "ฉันปัญหาจะขอโทษ"
+        },
+        "te": {
+            "legacy_caption_pid": 36956,
+            "legacy_language_pid": 24,
+            "text": "నేను ఇబ్బంది క్షమాపణ ఉంటుంది.",
+            "auto_translated": "నేను ఇబ్బంది క్షమాపణ ఉంటుంది."
+        },
+        "mr": {
+            "legacy_caption_pid": 36957,
+            "legacy_language_pid": 25,
+            "text": "देवा, मी संकटात माफी मागतात.",
+            "auto_translated": "देवा, मी संकटात माफी मागतात."
+        },
+        "ur": {
+            "legacy_caption_pid": 36958,
+            "legacy_language_pid": 26,
+            "text": "میں مصیبت معذرت خواہ ہوں گے.",
+            "auto_translated": "میں مصیبت معذرت خواہ ہوں گے."
+        },
+        "gu": {
+            "legacy_caption_pid": 36959,
+            "legacy_language_pid": 27,
+            "text": "હું મુશ્કેલીમાં દિલગીર કરશે.",
+            "auto_translated": "હું મુશ્કેલીમાં દિલગીર કરશે."
+        },
+        "uk": {
+            "legacy_caption_pid": 36960,
+            "legacy_language_pid": 28,
+            "text": "Я неприємності вибачитися.",
+            "auto_translated": "Я неприємності вибачитися."
+        },
+        "ml": {
+            "legacy_caption_pid": 36961,
+            "legacy_language_pid": 29,
+            "text": "ഞാൻ പ്രശ്നം .ശോകാന്തമിപ്രേമനാടകമാടുവാൻലോകമേ.",
+            "auto_translated": "ഞാൻ പ്രശ്നം .ശോകാന്തമിപ്രേമനാടകമാടുവാൻലോകമേ."
+        },
+        "kn": {
+            "legacy_caption_pid": 36962,
+            "legacy_language_pid": 30,
+            "text": "ನಾನು ತೊಂದರೆ ಕ್ಷಮೆ ಕಾಣಿಸುತ್ತದೆ.",
+            "auto_translated": "ನಾನು ತೊಂದರೆ ಕ್ಷಮೆ ಕಾಣಿಸುತ್ತದೆ."
+        },
+        "su": {
+            "legacy_caption_pid": 36963,
+            "legacy_language_pid": 31,
+            "text": "Kuring bakal kasulitan ngahaturkeun.",
+            "auto_translated": "Kuring bakal kasulitan ngahaturkeun."
+        },
+        "ku": {
+            "legacy_caption_pid": 36964,
+            "legacy_language_pid": 32,
+            "text": "Ez teng de lêborînê wê.",
+            "auto_translated": "Ez teng de lêborînê wê."
+        },
+        "ps": {
+            "legacy_caption_pid": 36965,
+            "legacy_language_pid": 33,
+            "text": "زه به له ستونزو بښنه وغواړي.",
+            "auto_translated": "زه به له ستونزو بښنه وغواړي."
+        },
+        "ro": {
+            "legacy_caption_pid": 36966,
+            "legacy_language_pid": 34,
+            "text": "Voi cere scuze probleme.",
+            "auto_translated": "Voi cere scuze probleme."
+        },
+        "id": {
+            "legacy_caption_pid": 36967,
+            "legacy_language_pid": 35,
+            "text": "Saya akan kesulitan meminta maaf.",
+            "auto_translated": "Saya akan kesulitan meminta maaf."
+        },
+        "sd": {
+            "legacy_caption_pid": 36968,
+            "legacy_language_pid": 36,
+            "text": "مون کي مصيبت تڪليف ٿيندي.",
+            "auto_translated": "مون کي مصيبت تڪليف ٿيندي."
+        },
+        "af": {
+            "legacy_caption_pid": 36969,
+            "legacy_language_pid": 37,
+            "text": "Ek sal die moeilikheid vra om verskoning.",
+            "auto_translated": "Ek sal die moeilikheid vra om verskoning."
+        },
+        "sw": {
+            "legacy_caption_pid": 36970,
+            "legacy_language_pid": 38,
+            "text": "Mimi shida msamaha.",
+            "auto_translated": "Mimi shida msamaha."
+        },
+        "lo": {
+            "legacy_caption_pid": 36971,
+            "legacy_language_pid": 39,
+            "text": "ຂ້າພະເຈົ້າບັນຫາຈະຂໍອະໄພ.",
+            "auto_translated": "ຂ້າພະເຈົ້າບັນຫາຈະຂໍອະໄພ."
+        },
+        "nl": {
+            "legacy_caption_pid": 36972,
+            "legacy_language_pid": 40,
+            "text": "Ik zal dit zeker problemen verontschuldigen.",
+            "auto_translated": "Ik zal dit zeker problemen verontschuldigen."
+        },
+        "tl": {
+            "legacy_caption_pid": 36973,
+            "legacy_language_pid": 41,
+            "text": "Ako problema humihingi ng paumanhin.",
+            "auto_translated": "Ako problema humihingi ng paumanhin."
+        },
+        "ne": {
+            "legacy_caption_pid": 36974,
+            "legacy_language_pid": 42,
+            "text": "म समस्या क्षमा चाहन्छौं हुनेछ।",
+            "auto_translated": "म समस्या क्षमा चाहन्छौं हुनेछ।"
+        },
+        "hu": {
+            "legacy_caption_pid": 36975,
+            "legacy_language_pid": 43,
+            "text": "Én baj bocsánatot.",
+            "auto_translated": "Én baj bocsánatot."
+        },
+        "cs": {
+            "legacy_caption_pid": 36976,
+            "legacy_language_pid": 44,
+            "text": "Budu potíže se omlouváme.",
+            "auto_translated": "Budu potíže se omlouváme."
+        },
+        "el": {
+            "legacy_caption_pid": 36977,
+            "legacy_language_pid": 45,
+            "text": "Θα ζητήσω συγγνώμη πρόβλημα.",
+            "auto_translated": "Θα ζητήσω συγγνώμη πρόβλημα."
+        },
+        "sv": {
+            "legacy_caption_pid": 36978,
+            "legacy_language_pid": 46,
+            "text": "Jag kommer problem om ursäkt.",
+            "auto_translated": "Jag kommer problem om ursäkt."
+        },
+        "kk": {
+            "legacy_caption_pid": 36979,
+            "legacy_language_pid": 47,
+            "text": "Мен қиыншылықта кешірім сұраймын.",
+            "auto_translated": "Мен қиыншылықта кешірім сұраймын."
+        },
+        "fi": {
+            "legacy_caption_pid": 36980,
+            "legacy_language_pid": 48,
+            "text": "Aion ongelmia anteeksi.",
+            "auto_translated": "Aion ongelmia anteeksi."
+        },
+        "da": {
+            "legacy_caption_pid": 36981,
+            "legacy_language_pid": 49,
+            "text": "Jeg vil problemer undskylde.",
+            "auto_translated": "Jeg vil problemer undskylde."
+        },
+        "he": {
+            "legacy_caption_pid": 36982,
+            "legacy_language_pid": 50,
+            "text": "אני מתקשה אתנצל.",
+            "auto_translated": "אני מתקשה אתנצל."
+        },
+        "no": {
+            "legacy_caption_pid": 36983,
+            "legacy_language_pid": 51,
+            "text": "Jeg vil trøbbel beklager.",
+            "auto_translated": "Jeg vil trøbbel beklager."
+        }
+    }
+}

@@ -1,0 +1,321 @@
+{
+    "resource_key": "TOPMENU_OTHER_DROPDOWN",
+    "legacy_resource_pid": 541,
+    "base_group_key": "grp-005-common-lib",
+    "additional_group_keys": [],
+    "key_for_update": "umUk0osqGIK6GTo0iQcRwX3aodJ757438a3IshcFcaRMwyvW6fUbGNL30qvlALDNtRmn0gT0Yq3VzYobiYi10ilknjst6DfLAlEfc9gzD8YA0IPDqCRmNzJuUT3YmnZs",
+    "sort_group": "TOPMENU",
+    "key_name": "TOPMENU_OTHER_DROPDOWN",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": false,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 1419,
+            "legacy_language_pid": 1,
+            "text": "メニュー",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 1420,
+            "legacy_language_pid": 2,
+            "text": "Menu",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 6586,
+            "legacy_language_pid": 3,
+            "text": "菜单",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 6587,
+            "legacy_language_pid": 4,
+            "text": "메뉴",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 10630,
+            "legacy_language_pid": 5,
+            "text": "Menú",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 10631,
+            "legacy_language_pid": 6,
+            "text": "Cardápio",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 10632,
+            "legacy_language_pid": 7,
+            "text": "菜單",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 16373,
+            "legacy_language_pid": 8,
+            "text": "Menu",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 16374,
+            "legacy_language_pid": 9,
+            "text": "मेन्यू",
+            "auto_translated": ""
+        },
+        "ar": {
+            "legacy_caption_pid": 30458,
+            "legacy_language_pid": 10,
+            "text": "قائمة الطعام",
+            "auto_translated": "قائمة الطعام"
+        },
+        "fa": {
+            "legacy_caption_pid": 30459,
+            "legacy_language_pid": 11,
+            "text": "منو",
+            "auto_translated": "منو"
+        },
+        "de": {
+            "legacy_caption_pid": 30460,
+            "legacy_language_pid": 12,
+            "text": "Menü",
+            "auto_translated": "Menü"
+        },
+        "ru": {
+            "legacy_caption_pid": 30461,
+            "legacy_language_pid": 13,
+            "text": "меню",
+            "auto_translated": "меню"
+        },
+        "ms": {
+            "legacy_caption_pid": 30462,
+            "legacy_language_pid": 14,
+            "text": "menu",
+            "auto_translated": "menu"
+        },
+        "ta": {
+            "legacy_caption_pid": 30463,
+            "legacy_language_pid": 15,
+            "text": "பட்டி",
+            "auto_translated": "பட்டி"
+        },
+        "it": {
+            "legacy_caption_pid": 30464,
+            "legacy_language_pid": 16,
+            "text": "menu",
+            "auto_translated": "menu"
+        },
+        "bn": {
+            "legacy_caption_pid": 30465,
+            "legacy_language_pid": 17,
+            "text": "মেনু",
+            "auto_translated": "মেনু"
+        },
+        "tr": {
+            "legacy_caption_pid": 30466,
+            "legacy_language_pid": 18,
+            "text": "menü",
+            "auto_translated": "menü"
+        },
+        "vi": {
+            "legacy_caption_pid": 30467,
+            "legacy_language_pid": 19,
+            "text": "thực đơn",
+            "auto_translated": "thực đơn"
+        },
+        "pl": {
+            "legacy_caption_pid": 30468,
+            "legacy_language_pid": 20,
+            "text": "menu",
+            "auto_translated": "menu"
+        },
+        "jv": {
+            "legacy_caption_pid": 30469,
+            "legacy_language_pid": 21,
+            "text": "Menu",
+            "auto_translated": "Menu"
+        },
+        "pa": {
+            "legacy_caption_pid": 30470,
+            "legacy_language_pid": 22,
+            "text": "ਮੇਨੂ",
+            "auto_translated": "ਮੇਨੂ"
+        },
+        "th": {
+            "legacy_caption_pid": 30471,
+            "legacy_language_pid": 23,
+            "text": "เมนู",
+            "auto_translated": "เมนู"
+        },
+        "te": {
+            "legacy_caption_pid": 35500,
+            "legacy_language_pid": 24,
+            "text": "మెనూ",
+            "auto_translated": "మెనూ"
+        },
+        "mr": {
+            "legacy_caption_pid": 35501,
+            "legacy_language_pid": 25,
+            "text": "मेनू",
+            "auto_translated": "मेनू"
+        },
+        "ur": {
+            "legacy_caption_pid": 35502,
+            "legacy_language_pid": 26,
+            "text": "مینو",
+            "auto_translated": "مینو"
+        },
+        "gu": {
+            "legacy_caption_pid": 35503,
+            "legacy_language_pid": 27,
+            "text": "મેનુ",
+            "auto_translated": "મેનુ"
+        },
+        "uk": {
+            "legacy_caption_pid": 35504,
+            "legacy_language_pid": 28,
+            "text": "меню",
+            "auto_translated": "меню"
+        },
+        "ml": {
+            "legacy_caption_pid": 35505,
+            "legacy_language_pid": 29,
+            "text": "മെനു",
+            "auto_translated": "മെനു"
+        },
+        "kn": {
+            "legacy_caption_pid": 35506,
+            "legacy_language_pid": 30,
+            "text": "ಮೆನು",
+            "auto_translated": "ಮೆನು"
+        },
+        "su": {
+            "legacy_caption_pid": 35507,
+            "legacy_language_pid": 31,
+            "text": "menu",
+            "auto_translated": "menu"
+        },
+        "ku": {
+            "legacy_caption_pid": 35508,
+            "legacy_language_pid": 32,
+            "text": "menu",
+            "auto_translated": "menu"
+        },
+        "ps": {
+            "legacy_caption_pid": 35509,
+            "legacy_language_pid": 33,
+            "text": "غورنۍ",
+            "auto_translated": "غورنۍ"
+        },
+        "ro": {
+            "legacy_caption_pid": 35510,
+            "legacy_language_pid": 34,
+            "text": "meniu",
+            "auto_translated": "meniu"
+        },
+        "id": {
+            "legacy_caption_pid": 35511,
+            "legacy_language_pid": 35,
+            "text": "menu",
+            "auto_translated": "menu"
+        },
+        "sd": {
+            "legacy_caption_pid": 35512,
+            "legacy_language_pid": 36,
+            "text": "پروجيڪٽ",
+            "auto_translated": "پروجيڪٽ"
+        },
+        "af": {
+            "legacy_caption_pid": 35513,
+            "legacy_language_pid": 37,
+            "text": "spyskaart",
+            "auto_translated": "spyskaart"
+        },
+        "sw": {
+            "legacy_caption_pid": 35514,
+            "legacy_language_pid": 38,
+            "text": "menu",
+            "auto_translated": "menu"
+        },
+        "lo": {
+            "legacy_caption_pid": 35515,
+            "legacy_language_pid": 39,
+            "text": "ເມນູ",
+            "auto_translated": "ເມນູ"
+        },
+        "nl": {
+            "legacy_caption_pid": 35516,
+            "legacy_language_pid": 40,
+            "text": "menu",
+            "auto_translated": "menu"
+        },
+        "tl": {
+            "legacy_caption_pid": 35517,
+            "legacy_language_pid": 41,
+            "text": "menu",
+            "auto_translated": "menu"
+        },
+        "ne": {
+            "legacy_caption_pid": 35518,
+            "legacy_language_pid": 42,
+            "text": "मेनु",
+            "auto_translated": "मेनु"
+        },
+        "hu": {
+            "legacy_caption_pid": 35519,
+            "legacy_language_pid": 43,
+            "text": "menü",
+            "auto_translated": "menü"
+        },
+        "cs": {
+            "legacy_caption_pid": 35520,
+            "legacy_language_pid": 44,
+            "text": "menu",
+            "auto_translated": "menu"
+        },
+        "el": {
+            "legacy_caption_pid": 35521,
+            "legacy_language_pid": 45,
+            "text": "μενού",
+            "auto_translated": "μενού"
+        },
+        "sv": {
+            "legacy_caption_pid": 35522,
+            "legacy_language_pid": 46,
+            "text": "meny",
+            "auto_translated": "meny"
+        },
+        "kk": {
+            "legacy_caption_pid": 35523,
+            "legacy_language_pid": 47,
+            "text": "Мәзір",
+            "auto_translated": "Мәзір"
+        },
+        "fi": {
+            "legacy_caption_pid": 35524,
+            "legacy_language_pid": 48,
+            "text": "valikko",
+            "auto_translated": "valikko"
+        },
+        "da": {
+            "legacy_caption_pid": 35525,
+            "legacy_language_pid": 49,
+            "text": "menu",
+            "auto_translated": "menu"
+        },
+        "he": {
+            "legacy_caption_pid": 35526,
+            "legacy_language_pid": 50,
+            "text": "תפריט",
+            "auto_translated": "תפריט"
+        },
+        "no": {
+            "legacy_caption_pid": 35527,
+            "legacy_language_pid": 51,
+            "text": "meny",
+            "auto_translated": "meny"
+        }
+    }
+}

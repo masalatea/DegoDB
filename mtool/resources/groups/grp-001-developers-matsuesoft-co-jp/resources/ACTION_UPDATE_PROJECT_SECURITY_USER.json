@@ -1,0 +1,27 @@
+{
+    "resource_key": "ACTION_UPDATE_PROJECT_SECURITY_USER",
+    "legacy_resource_pid": 188,
+    "base_group_key": "grp-001-developers-matsuesoft-co-jp",
+    "additional_group_keys": [],
+    "key_for_update": "0",
+    "sort_group": "ACTION PROJECT_SECURITY_USER",
+    "key_name": "ACTION_UPDATE_PROJECT_SECURITY_USER",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": true,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 3954,
+            "legacy_language_pid": 1,
+            "text": "プロジェクト セキュリティ：ユーザ情報更新",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 3955,
+            "legacy_language_pid": 2,
+            "text": "Update User of Project Security",
+            "auto_translated": ""
+        }
+    }
+}

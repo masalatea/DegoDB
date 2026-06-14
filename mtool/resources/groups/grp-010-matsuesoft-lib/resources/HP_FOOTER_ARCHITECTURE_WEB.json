@@ -1,0 +1,69 @@
+{
+    "resource_key": "HP_FOOTER_ARCHITECTURE_WEB",
+    "legacy_resource_pid": 691,
+    "base_group_key": "grp-010-matsuesoft-lib",
+    "additional_group_keys": [],
+    "key_for_update": "0zZHKhEFn6U0UxzusDhZPmhO74C3DLh724GQ3rF9MfkKv9bPGbfqoGmQBZGyGlJlvQW91C8BO0xLwI2VwjkHh9Hc0VLUEbfkONT1etDt0QVualWSY5jCrp9WTKo3IvxO",
+    "sort_group": "HP FOOTER",
+    "key_name": "HP_FOOTER_ARCHITECTURE_WEB",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": true,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 4546,
+            "legacy_language_pid": 1,
+            "text": "ウェブ・アーキテクチャ",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 4547,
+            "legacy_language_pid": 2,
+            "text": "Web Architecutre",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 13377,
+            "legacy_language_pid": 3,
+            "text": "",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 13378,
+            "legacy_language_pid": 4,
+            "text": "",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 13379,
+            "legacy_language_pid": 5,
+            "text": "Arquitectura Web",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 13380,
+            "legacy_language_pid": 6,
+            "text": "Arquitetura da Web",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 13381,
+            "legacy_language_pid": 7,
+            "text": "",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 17073,
+            "legacy_language_pid": 8,
+            "text": "Architecture Web",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 17074,
+            "legacy_language_pid": 9,
+            "text": "वेब वास्तुकला",
+            "auto_translated": ""
+        }
+    }
+}

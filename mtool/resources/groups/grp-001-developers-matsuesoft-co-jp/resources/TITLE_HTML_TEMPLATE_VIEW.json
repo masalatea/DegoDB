@@ -1,0 +1,27 @@
+{
+    "resource_key": "TITLE_HTML_TEMPLATE_VIEW",
+    "legacy_resource_pid": 74,
+    "base_group_key": "grp-001-developers-matsuesoft-co-jp",
+    "additional_group_keys": [],
+    "key_for_update": "0",
+    "sort_group": "TITLE",
+    "key_name": "TITLE_HTML_TEMPLATE_VIEW",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": true,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 4434,
+            "legacy_language_pid": 1,
+            "text": "HTMLテンプレート一覧",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 4435,
+            "legacy_language_pid": 2,
+            "text": "HTML Template List",
+            "auto_translated": ""
+        }
+    }
+}

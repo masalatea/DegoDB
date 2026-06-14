@@ -1,0 +1,91 @@
+{
+    "project_key": "MTOOL",
+    "outputs": [
+        {
+            "source_output_key": "DBIMPORT-PROXY-SERVER",
+            "build_plan_summary": {
+                "custom_proxy_count": 4,
+                "step_count": 8,
+                "unresolved_step_count": 0,
+                "generated_catalog_summary": {
+                    "total_entities": 101,
+                    "paired_count": 101,
+                    "data_only_count": 0,
+                    "dbaccess_only_count": 0
+                }
+            },
+            "artifact_summary": {
+                "source_file_count": 23,
+                "source_total_bytes": 89302,
+                "custom_layer_source": "bundle-scaffold",
+                "custom_layer_file_count": 2,
+                "custom_layer_total_bytes": 2107
+            },
+            "runtime_files": [
+                {
+                    "relative_path": "build-plan.json",
+                    "sha256": "7665e9f759b792b461c9435dcf2592601fc1cfa647d9d99ac068ad6ed182d479"
+                },
+                {
+                    "relative_path": "proxyserver-DB-Import.php",
+                    "sha256": "bd15ee23156079512471936e72ab3da024816d17aa68fb0a6fb6fc75ffbc0ff5"
+                },
+                {
+                    "relative_path": "_base/handlers/DBImportProxyHandler.php",
+                    "sha256": "3b2f367dd1388efaee2736abeab602be54a9544972d00464ea7b9768279409ac"
+                },
+                {
+                    "relative_path": "_support/custom_proxy_runtime.php",
+                    "sha256": "91fa5d7a26c7f60c2ca13b5ccffed754e5efb0ec75dd7ab52960d7b33067498b"
+                },
+                {
+                    "relative_path": "_support/runtime_dbclasses/dbaccess-dbtable.php",
+                    "sha256": "e9d8b8146df257901cfa7c1367e66b73e98d5bbbd320a15f88a8e90ae44dcc31"
+                }
+            ]
+        },
+        {
+            "source_output_key": "DBIMPORT-PROXY-CLIENT",
+            "build_plan_summary": {
+                "custom_proxy_count": 4,
+                "step_count": 8,
+                "unresolved_step_count": 0,
+                "generated_catalog_summary": {
+                    "total_entities": 101,
+                    "paired_count": 101,
+                    "data_only_count": 0,
+                    "dbaccess_only_count": 0
+                }
+            },
+            "artifact_summary": {
+                "source_file_count": 29,
+                "source_total_bytes": 26122,
+                "custom_layer_source": "bundle-scaffold",
+                "custom_layer_file_count": 2,
+                "custom_layer_total_bytes": 1900
+            },
+            "runtime_files": [
+                {
+                    "relative_path": "build-plan.json",
+                    "sha256": "5e2ab6adae1ec8645309d78c51aa2e7fa3f38e93aa1efa7ae88fd1e0c71a6726"
+                },
+                {
+                    "relative_path": "DBCustomProxyClientBase.cs",
+                    "sha256": "415614140f1e757cf1ecf4199cfc58d37b978bbefd8edbab368f77afd76b3c35"
+                },
+                {
+                    "relative_path": "DBCustomProxyClient.cs",
+                    "sha256": "db0a3b59384832a893a7544089545f33fdd6e32a7cb35fff90decd51bbc29f02"
+                },
+                {
+                    "relative_path": "DBCustomProxyImportRequestParams.cs",
+                    "sha256": "4659d230ed72a8a02d14383678c8c6a77a2a34d012d167291cf54c128427e054"
+                },
+                {
+                    "relative_path": "ProjectData.cs",
+                    "sha256": "2e726837bc8336f7aec076b450c909e71c1e54a11cba5ce322e7be1ba1924068"
+                }
+            ]
+        }
+    ]
+}

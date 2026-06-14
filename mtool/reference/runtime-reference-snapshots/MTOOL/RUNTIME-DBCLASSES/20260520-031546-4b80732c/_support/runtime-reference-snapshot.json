@@ -1,0 +1,9 @@
+{
+    "project_key": "MTOOL",
+    "source_output_key": "RUNTIME-DBCLASSES",
+    "artifact_key": "20260520-031546-4b80732c",
+    "runtime_source_relative_path": "mtool/dbclasses",
+    "captured_at": "2026-05-20T03:15:56+00:00",
+    "requested_by": "codex",
+    "source_root": "<repo-root>/mtool/reference/dbclasses"
+}

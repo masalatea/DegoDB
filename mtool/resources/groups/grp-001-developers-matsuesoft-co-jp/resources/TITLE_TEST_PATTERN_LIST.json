@@ -1,0 +1,27 @@
+{
+    "resource_key": "TITLE_TEST_PATTERN_LIST",
+    "legacy_resource_pid": 108,
+    "base_group_key": "grp-001-developers-matsuesoft-co-jp",
+    "additional_group_keys": [],
+    "key_for_update": "0",
+    "sort_group": "TITLE",
+    "key_name": "TITLE_TEST_PATTERN_LIST",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": true,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 4524,
+            "legacy_language_pid": 1,
+            "text": "テストパターン一覧",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 4525,
+            "legacy_language_pid": 2,
+            "text": "Test Pattern(s)",
+            "auto_translated": ""
+        }
+    }
+}

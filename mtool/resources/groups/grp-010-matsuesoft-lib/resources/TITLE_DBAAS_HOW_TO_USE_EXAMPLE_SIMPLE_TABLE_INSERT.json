@@ -1,0 +1,69 @@
+{
+    "resource_key": "TITLE_DBAAS_HOW_TO_USE_EXAMPLE_SIMPLE_TABLE_INSERT",
+    "legacy_resource_pid": 592,
+    "base_group_key": "grp-010-matsuesoft-lib",
+    "additional_group_keys": [],
+    "key_for_update": "grFHJhPNmYEpTB4MthtqvDZ9MCmEIy8CAIbUvD62UeyLpwmxVr7rsYoX85oFeqWk0giFlTen9wC0cpoJGER7gQ1IMUENa9fkXAhy8LNRPo9efdqPhe9rb5reKWYAQQTR",
+    "sort_group": "TITLE",
+    "key_name": "TITLE_DBAAS_HOW_TO_USE_EXAMPLE_SIMPLE_TABLE_INSERT",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": true,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 4696,
+            "legacy_language_pid": 1,
+            "text": "単純な単一テーブルへのデータ追加",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 4697,
+            "legacy_language_pid": 2,
+            "text": "Insert Data into Simple One Table",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 14456,
+            "legacy_language_pid": 3,
+            "text": "",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 14457,
+            "legacy_language_pid": 4,
+            "text": "",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 14458,
+            "legacy_language_pid": 5,
+            "text": "Insertar datos en una sola tabla",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 14459,
+            "legacy_language_pid": 6,
+            "text": "Inserir dados em uma tabela simples",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 14460,
+            "legacy_language_pid": 7,
+            "text": "",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 17351,
+            "legacy_language_pid": 8,
+            "text": "Insérer des données dans une table simple",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 17352,
+            "legacy_language_pid": 9,
+            "text": "सरल एक तालिका में डेटा डालें",
+            "auto_translated": ""
+        }
+    }
+}

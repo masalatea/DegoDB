@@ -1,0 +1,321 @@
+{
+    "resource_key": "COMMON_LIB_INQUIRY_DONE_SENDING_MESSAGE_LINE2",
+    "legacy_resource_pid": 1586,
+    "base_group_key": "grp-010-matsuesoft-lib",
+    "additional_group_keys": [],
+    "key_for_update": "IAcFfQViFepwzTacOwXXwvONWKppVwdQmNGmhZiYjctlxWMYxvxGgfmkRc68zTKvxXfM1nYWl9B2BPZCJ0skK241yRiZwuNdeDonMgjbFG5c4d6LmvvTKrhHjTT6nkGc",
+    "sort_group": "INQUIRY",
+    "key_name": "COMMON_LIB_INQUIRY_DONE_SENDING_MESSAGE_LINE2",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": false,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 7126,
+            "legacy_language_pid": 1,
+            "text": "数日以内に返事をさせて頂きます",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 7127,
+            "legacy_language_pid": 2,
+            "text": "We will reply within a few days",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 7128,
+            "legacy_language_pid": 3,
+            "text": "我们将在几天之内回复",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 7129,
+            "legacy_language_pid": 4,
+            "text": "며칠 내로 답변을 드리겠습니다",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 10961,
+            "legacy_language_pid": 5,
+            "text": "Le responderemos dentro de unos días ",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 10962,
+            "legacy_language_pid": 6,
+            "text": "Responderemos dentro de alguns dias  ",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 10963,
+            "legacy_language_pid": 7,
+            "text": "我們將在幾天之內回復",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 17173,
+            "legacy_language_pid": 8,
+            "text": "Nous répondrons dans quelques jours",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 17174,
+            "legacy_language_pid": 9,
+            "text": "हम कुछ दिनों के भीतर जवाब देंगे",
+            "auto_translated": ""
+        },
+        "ar": {
+            "legacy_caption_pid": 32054,
+            "legacy_language_pid": 10,
+            "text": "وسوف نقوم بالرد في غضون بضعة أيام",
+            "auto_translated": "وسوف نقوم بالرد في غضون بضعة أيام"
+        },
+        "fa": {
+            "legacy_caption_pid": 32055,
+            "legacy_language_pid": 11,
+            "text": "ما در عرض چند روز پاسخ داده خواهد شد",
+            "auto_translated": "ما در عرض چند روز پاسخ داده خواهد شد"
+        },
+        "de": {
+            "legacy_caption_pid": 32056,
+            "legacy_language_pid": 12,
+            "text": "Wir werden innerhalb von wenigen Tagen antworten",
+            "auto_translated": "Wir werden innerhalb von wenigen Tagen antworten"
+        },
+        "ru": {
+            "legacy_caption_pid": 32057,
+            "legacy_language_pid": 13,
+            "text": "Мы ответим в течение нескольких дней",
+            "auto_translated": "Мы ответим в течение нескольких дней"
+        },
+        "ms": {
+            "legacy_caption_pid": 32058,
+            "legacy_language_pid": 14,
+            "text": "Kami akan membalas dalam masa beberapa hari",
+            "auto_translated": "Kami akan membalas dalam masa beberapa hari"
+        },
+        "ta": {
+            "legacy_caption_pid": 32059,
+            "legacy_language_pid": 15,
+            "text": "நாம் ஒரு சில நாட்களுக்குள் பதில் அளிக்கப்படும்",
+            "auto_translated": "நாம் ஒரு சில நாட்களுக்குள் பதில் அளிக்கப்படும்"
+        },
+        "it": {
+            "legacy_caption_pid": 32060,
+            "legacy_language_pid": 16,
+            "text": "Risponderemo entro pochi giorni",
+            "auto_translated": "Risponderemo entro pochi giorni"
+        },
+        "bn": {
+            "legacy_caption_pid": 32061,
+            "legacy_language_pid": 17,
+            "text": "আমরা কয়েক দিনের মধ্যে উত্তর দিতে হবে",
+            "auto_translated": "আমরা কয়েক দিনের মধ্যে উত্তর দিতে হবে"
+        },
+        "tr": {
+            "legacy_caption_pid": 32062,
+            "legacy_language_pid": 18,
+            "text": "Biz birkaç gün içinde cevap verecektir",
+            "auto_translated": "Biz birkaç gün içinde cevap verecektir"
+        },
+        "vi": {
+            "legacy_caption_pid": 32063,
+            "legacy_language_pid": 19,
+            "text": "Chúng tôi sẽ trả lời trong vòng một vài ngày",
+            "auto_translated": "Chúng tôi sẽ trả lời trong vòng một vài ngày"
+        },
+        "pl": {
+            "legacy_caption_pid": 32064,
+            "legacy_language_pid": 20,
+            "text": "Postaramy się odpowiedzieć w ciągu kilku dni",
+            "auto_translated": "Postaramy się odpowiedzieć w ciągu kilku dni"
+        },
+        "jv": {
+            "legacy_caption_pid": 32065,
+            "legacy_language_pid": 21,
+            "text": "Kita bakal reply ing sawetara dina",
+            "auto_translated": "Kita bakal reply ing sawetara dina"
+        },
+        "pa": {
+            "legacy_caption_pid": 32066,
+            "legacy_language_pid": 22,
+            "text": "ਸਾਨੂੰ ਕੁਝ ਦਿਨ ਦੇ ਅੰਦਰ-ਅੰਦਰ ਜਵਾਬ ਦੇਵੇਗਾ",
+            "auto_translated": "ਸਾਨੂੰ ਕੁਝ ਦਿਨ ਦੇ ਅੰਦਰ-ਅੰਦਰ ਜਵਾਬ ਦੇਵੇਗਾ"
+        },
+        "th": {
+            "legacy_caption_pid": 32067,
+            "legacy_language_pid": 23,
+            "text": "เราจะตอบกลับภายในไม่กี่วัน",
+            "auto_translated": "เราจะตอบกลับภายในไม่กี่วัน"
+        },
+        "te": {
+            "legacy_caption_pid": 41520,
+            "legacy_language_pid": 24,
+            "text": "మేము కొన్ని రోజుల్లో ప్రత్యుత్తరం ఉంటుంది",
+            "auto_translated": "మేము కొన్ని రోజుల్లో ప్రత్యుత్తరం ఉంటుంది"
+        },
+        "mr": {
+            "legacy_caption_pid": 41521,
+            "legacy_language_pid": 25,
+            "text": "आम्ही काही दिवसात प्रत्युत्तर दिले जाईल",
+            "auto_translated": "आम्ही काही दिवसात प्रत्युत्तर दिले जाईल"
+        },
+        "ur": {
+            "legacy_caption_pid": 41522,
+            "legacy_language_pid": 26,
+            "text": "ہم نے چند دنوں کے اندر اندر جواب دیں گے",
+            "auto_translated": "ہم نے چند دنوں کے اندر اندر جواب دیں گے"
+        },
+        "gu": {
+            "legacy_caption_pid": 41523,
+            "legacy_language_pid": 27,
+            "text": "અમે થોડા દિવસની અંદર જવાબ આપશે",
+            "auto_translated": "અમે થોડા દિવસની અંદર જવાબ આપશે"
+        },
+        "uk": {
+            "legacy_caption_pid": 41524,
+            "legacy_language_pid": 28,
+            "text": "Ми відповімо протягом декількох днів",
+            "auto_translated": "Ми відповімо протягом декількох днів"
+        },
+        "ml": {
+            "legacy_caption_pid": 41525,
+            "legacy_language_pid": 29,
+            "text": "നാം ഏതാനും ദിവസങ്ങൾക്കുള്ളിൽ പറയും",
+            "auto_translated": "നാം ഏതാനും ദിവസങ്ങൾക്കുള്ളിൽ പറയും"
+        },
+        "kn": {
+            "legacy_caption_pid": 41526,
+            "legacy_language_pid": 30,
+            "text": "ನಾವು ಕೆಲವೇ ದಿನಗಳಲ್ಲಿ ಪ್ರತ್ಯುತ್ತರಿಸಲಾಗುತ್ತದೆ",
+            "auto_translated": "ನಾವು ಕೆಲವೇ ದಿನಗಳಲ್ಲಿ ಪ್ರತ್ಯುತ್ತರಿಸಲಾಗುತ್ತದೆ"
+        },
+        "su": {
+            "legacy_caption_pid": 41527,
+            "legacy_language_pid": 31,
+            "text": "Urang baris bales dina sababaraha poé",
+            "auto_translated": "Urang baris bales dina sababaraha poé"
+        },
+        "ku": {
+            "legacy_caption_pid": 41528,
+            "legacy_language_pid": 32,
+            "text": "Em di nava çend rojan de wê bersiva",
+            "auto_translated": "Em di nava çend rojan de wê bersiva"
+        },
+        "ps": {
+            "legacy_caption_pid": 41529,
+            "legacy_language_pid": 33,
+            "text": "موږ به په يو څو ورځو په ترڅ کې ځواب",
+            "auto_translated": "موږ به په يو څو ورځو په ترڅ کې ځواب"
+        },
+        "ro": {
+            "legacy_caption_pid": 41530,
+            "legacy_language_pid": 34,
+            "text": "Vom răspunde în termen de câteva zile",
+            "auto_translated": "Vom răspunde în termen de câteva zile"
+        },
+        "id": {
+            "legacy_caption_pid": 41531,
+            "legacy_language_pid": 35,
+            "text": "Kami akan membalas dalam beberapa hari",
+            "auto_translated": "Kami akan membalas dalam beberapa hari"
+        },
+        "sd": {
+            "legacy_caption_pid": 41532,
+            "legacy_language_pid": 36,
+            "text": "اسان چند ڏينهن اندر جواب ڏيندو",
+            "auto_translated": "اسان چند ڏينهن اندر جواب ڏيندو"
+        },
+        "af": {
+            "legacy_caption_pid": 41533,
+            "legacy_language_pid": 37,
+            "text": "Ons sal antwoord binne 'n paar dae",
+            "auto_translated": "Ons sal antwoord binne 'n paar dae"
+        },
+        "sw": {
+            "legacy_caption_pid": 41534,
+            "legacy_language_pid": 38,
+            "text": "Sisi jibu ndani ya siku chache",
+            "auto_translated": "Sisi jibu ndani ya siku chache"
+        },
+        "lo": {
+            "legacy_caption_pid": 41535,
+            "legacy_language_pid": 39,
+            "text": "ພວກເຮົາຈະຕອບກັບພາຍໃນສອງສາມມື້",
+            "auto_translated": "ພວກເຮົາຈະຕອບກັບພາຍໃນສອງສາມມື້"
+        },
+        "nl": {
+            "legacy_caption_pid": 41536,
+            "legacy_language_pid": 40,
+            "text": "We zullen antwoorden binnen een paar dagen",
+            "auto_translated": "We zullen antwoorden binnen een paar dagen"
+        },
+        "tl": {
+            "legacy_caption_pid": 41537,
+            "legacy_language_pid": 41,
+            "text": "Kami ay tumugon sa loob ng ilang araw",
+            "auto_translated": "Kami ay tumugon sa loob ng ilang araw"
+        },
+        "ne": {
+            "legacy_caption_pid": 41538,
+            "legacy_language_pid": 42,
+            "text": "हामी केही दिन भित्र जवाफ हुनेछ",
+            "auto_translated": "हामी केही दिन भित्र जवाफ हुनेछ"
+        },
+        "hu": {
+            "legacy_caption_pid": 41539,
+            "legacy_language_pid": 43,
+            "text": "Mi fog válaszolni néhány napon belül",
+            "auto_translated": "Mi fog válaszolni néhány napon belül"
+        },
+        "cs": {
+            "legacy_caption_pid": 41540,
+            "legacy_language_pid": 44,
+            "text": "Odpovíme Vám do několika dnů",
+            "auto_translated": "Odpovíme Vám do několika dnů"
+        },
+        "el": {
+            "legacy_caption_pid": 41541,
+            "legacy_language_pid": 45,
+            "text": "Θα σας απαντήσουμε μέσα σε λίγες ημέρες",
+            "auto_translated": "Θα σας απαντήσουμε μέσα σε λίγες ημέρες"
+        },
+        "sv": {
+            "legacy_caption_pid": 41542,
+            "legacy_language_pid": 46,
+            "text": "Vi kommer att svara inom några dagar",
+            "auto_translated": "Vi kommer att svara inom några dagar"
+        },
+        "kk": {
+            "legacy_caption_pid": 41543,
+            "legacy_language_pid": 47,
+            "text": "Біз бірнеше күн ішінде жауап береді",
+            "auto_translated": "Біз бірнеше күн ішінде жауап береді"
+        },
+        "fi": {
+            "legacy_caption_pid": 41544,
+            "legacy_language_pid": 48,
+            "text": "Me vastaamme muutamassa päivässä",
+            "auto_translated": "Me vastaamme muutamassa päivässä"
+        },
+        "da": {
+            "legacy_caption_pid": 41545,
+            "legacy_language_pid": 49,
+            "text": "Vi vil svare inden for få dage",
+            "auto_translated": "Vi vil svare inden for få dage"
+        },
+        "he": {
+            "legacy_caption_pid": 41546,
+            "legacy_language_pid": 50,
+            "text": "אנחנו נשיב תוך כמה ימים",
+            "auto_translated": "אנחנו נשיב תוך כמה ימים"
+        },
+        "no": {
+            "legacy_caption_pid": 41547,
+            "legacy_language_pid": 51,
+            "text": "Vi vil svare innen få dager",
+            "auto_translated": "Vi vil svare innen få dager"
+        }
+    }
+}

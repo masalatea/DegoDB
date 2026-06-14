@@ -1,0 +1,321 @@
+{
+    "resource_key": "TOPMENU_TERMS_OF_SERVICE",
+    "legacy_resource_pid": 537,
+    "base_group_key": "grp-005-common-lib",
+    "additional_group_keys": [],
+    "key_for_update": "7FJB5o5y3BfBLDf6DSFyR1WCcild6alVV4PWcjCgetCGDrZ4BCT59gg3qhlTNIDYP9Ai1KsFdxsvB1QwDY2JQ1wU4MmxdDlG6DSm94f9fnls4zHpEc6F8G0vbEak2eqg",
+    "sort_group": "TOPMENU",
+    "key_name": "TOPMENU_TERMS_OF_SERVICE",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": false,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 1425,
+            "legacy_language_pid": 1,
+            "text": "利用規約",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 1426,
+            "legacy_language_pid": 2,
+            "text": "Terms of Service",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 6592,
+            "legacy_language_pid": 3,
+            "text": "使用条款",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 6593,
+            "legacy_language_pid": 4,
+            "text": "이용약관",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 10639,
+            "legacy_language_pid": 5,
+            "text": "Términos de servicio",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 10640,
+            "legacy_language_pid": 6,
+            "text": "Termos de serviço",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 10641,
+            "legacy_language_pid": 7,
+            "text": "使用條款",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 16379,
+            "legacy_language_pid": 8,
+            "text": "Conditions d'utilisation",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 16380,
+            "legacy_language_pid": 9,
+            "text": "सेवा की शर्तें",
+            "auto_translated": ""
+        },
+        "ar": {
+            "legacy_caption_pid": 30500,
+            "legacy_language_pid": 10,
+            "text": "شروط الاستخدام",
+            "auto_translated": "شروط الاستخدام"
+        },
+        "fa": {
+            "legacy_caption_pid": 30501,
+            "legacy_language_pid": 11,
+            "text": "شرایط استفاده",
+            "auto_translated": "شرایط استفاده"
+        },
+        "de": {
+            "legacy_caption_pid": 30502,
+            "legacy_language_pid": 12,
+            "text": "Nutzungsbedingungen",
+            "auto_translated": "Nutzungsbedingungen"
+        },
+        "ru": {
+            "legacy_caption_pid": 30503,
+            "legacy_language_pid": 13,
+            "text": "Условия использования",
+            "auto_translated": "Условия использования"
+        },
+        "ms": {
+            "legacy_caption_pid": 30504,
+            "legacy_language_pid": 14,
+            "text": "Syarat Penggunaan",
+            "auto_translated": "Syarat Penggunaan"
+        },
+        "ta": {
+            "legacy_caption_pid": 30505,
+            "legacy_language_pid": 15,
+            "text": "விதிமுறைகள்",
+            "auto_translated": "விதிமுறைகள்"
+        },
+        "it": {
+            "legacy_caption_pid": 30506,
+            "legacy_language_pid": 16,
+            "text": "Condizioni di utilizzo",
+            "auto_translated": "Condizioni di utilizzo"
+        },
+        "bn": {
+            "legacy_caption_pid": 30507,
+            "legacy_language_pid": 17,
+            "text": "ব্যবহারের শর্তাবলী",
+            "auto_translated": "ব্যবহারের শর্তাবলী"
+        },
+        "tr": {
+            "legacy_caption_pid": 30508,
+            "legacy_language_pid": 18,
+            "text": "Kullanım Koşulları",
+            "auto_translated": "Kullanım Koşulları"
+        },
+        "vi": {
+            "legacy_caption_pid": 30509,
+            "legacy_language_pid": 19,
+            "text": "Quy định sử dụng",
+            "auto_translated": "Quy định sử dụng"
+        },
+        "pl": {
+            "legacy_caption_pid": 30510,
+            "legacy_language_pid": 20,
+            "text": "Warunki korzystania",
+            "auto_translated": "Warunki korzystania"
+        },
+        "jv": {
+            "legacy_caption_pid": 30511,
+            "legacy_language_pid": 21,
+            "text": "Katentuan Pangginaan supados langkung",
+            "auto_translated": "Katentuan Pangginaan supados langkung"
+        },
+        "pa": {
+            "legacy_caption_pid": 30512,
+            "legacy_language_pid": 22,
+            "text": "ਵਰਤੋ ਦੇ ਆਧਾਰ '",
+            "auto_translated": "ਵਰਤੋ ਦੇ ਆਧਾਰ '"
+        },
+        "th": {
+            "legacy_caption_pid": 30513,
+            "legacy_language_pid": 23,
+            "text": "เงื่อนไขการใช้งาน",
+            "auto_translated": "เงื่อนไขการใช้งาน"
+        },
+        "te": {
+            "legacy_caption_pid": 35416,
+            "legacy_language_pid": 24,
+            "text": "వినియోగ నిబంధనలు",
+            "auto_translated": "వినియోగ నిబంధనలు"
+        },
+        "mr": {
+            "legacy_caption_pid": 35417,
+            "legacy_language_pid": 25,
+            "text": "वापर अटी",
+            "auto_translated": "वापर अटी"
+        },
+        "ur": {
+            "legacy_caption_pid": 35418,
+            "legacy_language_pid": 26,
+            "text": "استعمال کی شرائط",
+            "auto_translated": "استعمال کی شرائط"
+        },
+        "gu": {
+            "legacy_caption_pid": 35419,
+            "legacy_language_pid": 27,
+            "text": "ઉપયોગની શરતો",
+            "auto_translated": "ઉપયોગની શરતો"
+        },
+        "uk": {
+            "legacy_caption_pid": 35420,
+            "legacy_language_pid": 28,
+            "text": "умови використання",
+            "auto_translated": "умови використання"
+        },
+        "ml": {
+            "legacy_caption_pid": 35421,
+            "legacy_language_pid": 29,
+            "text": "ഉപയോഗ നിബന്ധനകൾ",
+            "auto_translated": "ഉപയോഗ നിബന്ധനകൾ"
+        },
+        "kn": {
+            "legacy_caption_pid": 35422,
+            "legacy_language_pid": 30,
+            "text": "ಬಳಕೆಯ ನಿಯಮಗಳು",
+            "auto_translated": "ಬಳಕೆಯ ನಿಯಮಗಳು"
+        },
+        "su": {
+            "legacy_caption_pid": 35423,
+            "legacy_language_pid": 31,
+            "text": "Sarat Paké",
+            "auto_translated": "Sarat Paké"
+        },
+        "ku": {
+            "legacy_caption_pid": 35424,
+            "legacy_language_pid": 32,
+            "text": "Termên bikaranînê",
+            "auto_translated": "Termên bikaranînê"
+        },
+        "ps": {
+            "legacy_caption_pid": 35425,
+            "legacy_language_pid": 33,
+            "text": "د کارولو شرايط",
+            "auto_translated": "د کارولو شرايط"
+        },
+        "ro": {
+            "legacy_caption_pid": 35426,
+            "legacy_language_pid": 34,
+            "text": "Conditii de utilizare",
+            "auto_translated": "Conditii de utilizare"
+        },
+        "id": {
+            "legacy_caption_pid": 35427,
+            "legacy_language_pid": 35,
+            "text": "Syarat Penggunaan",
+            "auto_translated": "Syarat Penggunaan"
+        },
+        "sd": {
+            "legacy_caption_pid": 35428,
+            "legacy_language_pid": 36,
+            "text": "استعمال جا شرط",
+            "auto_translated": "استعمال جا شرط"
+        },
+        "af": {
+            "legacy_caption_pid": 35429,
+            "legacy_language_pid": 37,
+            "text": "Voorwaardes",
+            "auto_translated": "Voorwaardes"
+        },
+        "sw": {
+            "legacy_caption_pid": 35430,
+            "legacy_language_pid": 38,
+            "text": "Masharti ya matumizi",
+            "auto_translated": "Masharti ya matumizi"
+        },
+        "lo": {
+            "legacy_caption_pid": 35431,
+            "legacy_language_pid": 39,
+            "text": "ເງື່ອນໄຂຂອງການນໍາໃຊ້",
+            "auto_translated": "ເງື່ອນໄຂຂອງການນໍາໃຊ້"
+        },
+        "nl": {
+            "legacy_caption_pid": 35432,
+            "legacy_language_pid": 40,
+            "text": "Voorwaarden",
+            "auto_translated": "Voorwaarden"
+        },
+        "tl": {
+            "legacy_caption_pid": 35433,
+            "legacy_language_pid": 41,
+            "text": "Mga Tuntunin sa Paggamit",
+            "auto_translated": "Mga Tuntunin sa Paggamit"
+        },
+        "ne": {
+            "legacy_caption_pid": 35434,
+            "legacy_language_pid": 42,
+            "text": "प्रयोगका शर्तहरु",
+            "auto_translated": "प्रयोगका शर्तहरु"
+        },
+        "hu": {
+            "legacy_caption_pid": 35435,
+            "legacy_language_pid": 43,
+            "text": "Felhasználási feltételek",
+            "auto_translated": "Felhasználási feltételek"
+        },
+        "cs": {
+            "legacy_caption_pid": 35436,
+            "legacy_language_pid": 44,
+            "text": "Podmínky použití",
+            "auto_translated": "Podmínky použití"
+        },
+        "el": {
+            "legacy_caption_pid": 35437,
+            "legacy_language_pid": 45,
+            "text": "Όροι Χρήσης",
+            "auto_translated": "Όροι Χρήσης"
+        },
+        "sv": {
+            "legacy_caption_pid": 35438,
+            "legacy_language_pid": 46,
+            "text": "Villkor för användning",
+            "auto_translated": "Villkor för användning"
+        },
+        "kk": {
+            "legacy_caption_pid": 35439,
+            "legacy_language_pid": 47,
+            "text": "Қолдану шарттары",
+            "auto_translated": "Қолдану шарттары"
+        },
+        "fi": {
+            "legacy_caption_pid": 35440,
+            "legacy_language_pid": 48,
+            "text": "Käyttöehdot",
+            "auto_translated": "Käyttöehdot"
+        },
+        "da": {
+            "legacy_caption_pid": 35441,
+            "legacy_language_pid": 49,
+            "text": "Betingelser for brug",
+            "auto_translated": "Betingelser for brug"
+        },
+        "he": {
+            "legacy_caption_pid": 35442,
+            "legacy_language_pid": 50,
+            "text": "תנאי שימוש",
+            "auto_translated": "תנאי שימוש"
+        },
+        "no": {
+            "legacy_caption_pid": 35443,
+            "legacy_language_pid": 51,
+            "text": "Betingelser for bruk",
+            "auto_translated": "Betingelser for bruk"
+        }
+    }
+}

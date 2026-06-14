@@ -1,0 +1,69 @@
+{
+    "resource_key": "HP_FOOTER_CLOUD_PACKAGE",
+    "legacy_resource_pid": 688,
+    "base_group_key": "grp-010-matsuesoft-lib",
+    "additional_group_keys": [],
+    "key_for_update": "ykQ1tj3Ejbce3ESqTX8SMorisnzeEiuopLIudngFFCahDtCD0i7sb4lAKkWJnbuPX7FpG47H65vT53Jym9Oz0KlwL6W2eDyHHfwNkdiTMpk4hJdI0d8ei0WCEzGv4y8p",
+    "sort_group": "HP FOOTER",
+    "key_name": "HP_FOOTER_CLOUD_PACKAGE",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": true,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 4560,
+            "legacy_language_pid": 1,
+            "text": "パッケージ",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 4561,
+            "legacy_language_pid": 2,
+            "text": "Packages",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 13412,
+            "legacy_language_pid": 3,
+            "text": "",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 13413,
+            "legacy_language_pid": 4,
+            "text": "",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 13414,
+            "legacy_language_pid": 5,
+            "text": "Paquetes",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 13415,
+            "legacy_language_pid": 6,
+            "text": "Pacotes",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 13416,
+            "legacy_language_pid": 7,
+            "text": "",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 17087,
+            "legacy_language_pid": 8,
+            "text": "Paquets",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 17088,
+            "legacy_language_pid": 9,
+            "text": "संकुल",
+            "auto_translated": ""
+        }
+    }
+}

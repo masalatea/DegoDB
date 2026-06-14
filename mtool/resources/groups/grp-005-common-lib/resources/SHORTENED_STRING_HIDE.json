@@ -1,0 +1,321 @@
+{
+    "resource_key": "SHORTENED_STRING_HIDE",
+    "legacy_resource_pid": 572,
+    "base_group_key": "grp-005-common-lib",
+    "additional_group_keys": [],
+    "key_for_update": "xK4NWqKDXfRrAAmvkuf0YwgjVqGwMNDCN0c6mgOzOpQVEYm8Xf8BWFcPDXvmF9uNwhfR3FfpaH04jr5BzN9KSMVmaYAv4dwe7DlWCUHAaIGxrqSnBCq8k0C1U0delrwJ",
+    "sort_group": "",
+    "key_name": "SHORTENED_STRING_HIDE",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": false,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 1333,
+            "legacy_language_pid": 1,
+            "text": "[非表示]",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 1334,
+            "legacy_language_pid": 2,
+            "text": "[Hide]",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 6500,
+            "legacy_language_pid": 3,
+            "text": "[隐藏]",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 6501,
+            "legacy_language_pid": 4,
+            "text": "[숨기기]",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 10348,
+            "legacy_language_pid": 5,
+            "text": "[Ocultar]",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 10349,
+            "legacy_language_pid": 6,
+            "text": "[esconder]",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 10350,
+            "legacy_language_pid": 7,
+            "text": "[隱藏]",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 16245,
+            "legacy_language_pid": 8,
+            "text": "[Cacher]",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 16246,
+            "legacy_language_pid": 9,
+            "text": "[छिपाना]",
+            "auto_translated": ""
+        },
+        "ar": {
+            "legacy_caption_pid": 29198,
+            "legacy_language_pid": 10,
+            "text": "[إخفاء]",
+            "auto_translated": "[إخفاء]"
+        },
+        "fa": {
+            "legacy_caption_pid": 29199,
+            "legacy_language_pid": 11,
+            "text": "[نهفتن]",
+            "auto_translated": "[نهفتن]"
+        },
+        "de": {
+            "legacy_caption_pid": 29200,
+            "legacy_language_pid": 12,
+            "text": "[Ausblenden]",
+            "auto_translated": "[Ausblenden]"
+        },
+        "ru": {
+            "legacy_caption_pid": 29201,
+            "legacy_language_pid": 13,
+            "text": "[Скрыть]",
+            "auto_translated": "[Скрыть]"
+        },
+        "ms": {
+            "legacy_caption_pid": 29202,
+            "legacy_language_pid": 14,
+            "text": "[Menyembunyikan]",
+            "auto_translated": "[Menyembunyikan]"
+        },
+        "ta": {
+            "legacy_caption_pid": 29203,
+            "legacy_language_pid": 15,
+            "text": "[மறை]",
+            "auto_translated": "[மறை]"
+        },
+        "it": {
+            "legacy_caption_pid": 29204,
+            "legacy_language_pid": 16,
+            "text": "[Nascondere]",
+            "auto_translated": "[Nascondere]"
+        },
+        "bn": {
+            "legacy_caption_pid": 29205,
+            "legacy_language_pid": 17,
+            "text": "[লুকান]",
+            "auto_translated": "[লুকান]"
+        },
+        "tr": {
+            "legacy_caption_pid": 29206,
+            "legacy_language_pid": 18,
+            "text": "[Gizle]",
+            "auto_translated": "[Gizle]"
+        },
+        "vi": {
+            "legacy_caption_pid": 29207,
+            "legacy_language_pid": 19,
+            "text": "[Hide]",
+            "auto_translated": "[Hide]"
+        },
+        "pl": {
+            "legacy_caption_pid": 29208,
+            "legacy_language_pid": 20,
+            "text": "[Ukryj]",
+            "auto_translated": "[Ukryj]"
+        },
+        "jv": {
+            "legacy_caption_pid": 29209,
+            "legacy_language_pid": 21,
+            "text": "[Singidaken]",
+            "auto_translated": "[Singidaken]"
+        },
+        "pa": {
+            "legacy_caption_pid": 29210,
+            "legacy_language_pid": 22,
+            "text": "[ਓਹਲੇ]",
+            "auto_translated": "[ਓਹਲੇ]"
+        },
+        "th": {
+            "legacy_caption_pid": 29211,
+            "legacy_language_pid": 23,
+            "text": "[Hide]",
+            "auto_translated": "[Hide]"
+        },
+        "te": {
+            "legacy_caption_pid": 35304,
+            "legacy_language_pid": 24,
+            "text": "[దాచు]",
+            "auto_translated": "[దాచు]"
+        },
+        "mr": {
+            "legacy_caption_pid": 35305,
+            "legacy_language_pid": 25,
+            "text": "[लपवा]",
+            "auto_translated": "[लपवा]"
+        },
+        "ur": {
+            "legacy_caption_pid": 35306,
+            "legacy_language_pid": 26,
+            "text": "[چھپائیں]",
+            "auto_translated": "[چھپائیں]"
+        },
+        "gu": {
+            "legacy_caption_pid": 35307,
+            "legacy_language_pid": 27,
+            "text": "[છુપાવો]",
+            "auto_translated": "[છુપાવો]"
+        },
+        "uk": {
+            "legacy_caption_pid": 35308,
+            "legacy_language_pid": 28,
+            "text": "[Приховати]",
+            "auto_translated": "[Приховати]"
+        },
+        "ml": {
+            "legacy_caption_pid": 35309,
+            "legacy_language_pid": 29,
+            "text": "[മറയ്ക്കുക]",
+            "auto_translated": "[മറയ്ക്കുക]"
+        },
+        "kn": {
+            "legacy_caption_pid": 35310,
+            "legacy_language_pid": 30,
+            "text": "[ಮರೆಮಾಡಿ]",
+            "auto_translated": "[ಮರೆಮಾಡಿ]"
+        },
+        "su": {
+            "legacy_caption_pid": 35311,
+            "legacy_language_pid": 31,
+            "text": "[Sumputkeun]",
+            "auto_translated": "[Sumputkeun]"
+        },
+        "ku": {
+            "legacy_caption_pid": 35312,
+            "legacy_language_pid": 32,
+            "text": "[Veşêre]",
+            "auto_translated": "[Veşêre]"
+        },
+        "ps": {
+            "legacy_caption_pid": 35313,
+            "legacy_language_pid": 33,
+            "text": "[پټول]",
+            "auto_translated": "[پټول]"
+        },
+        "ro": {
+            "legacy_caption_pid": 35314,
+            "legacy_language_pid": 34,
+            "text": "[Ascundere]",
+            "auto_translated": "[Ascundere]"
+        },
+        "id": {
+            "legacy_caption_pid": 35315,
+            "legacy_language_pid": 35,
+            "text": "[Sembunyikan]",
+            "auto_translated": "[Sembunyikan]"
+        },
+        "sd": {
+            "legacy_caption_pid": 35316,
+            "legacy_language_pid": 36,
+            "text": "[لڪايو]",
+            "auto_translated": "[لڪايو]"
+        },
+        "af": {
+            "legacy_caption_pid": 35317,
+            "legacy_language_pid": 37,
+            "text": "[Versteek]",
+            "auto_translated": "[Versteek]"
+        },
+        "sw": {
+            "legacy_caption_pid": 35318,
+            "legacy_language_pid": 38,
+            "text": "[Hide]",
+            "auto_translated": "[Hide]"
+        },
+        "lo": {
+            "legacy_caption_pid": 35319,
+            "legacy_language_pid": 39,
+            "text": "[ເຊື່ອງ]",
+            "auto_translated": "[ເຊື່ອງ]"
+        },
+        "nl": {
+            "legacy_caption_pid": 35320,
+            "legacy_language_pid": 40,
+            "text": "[Verbergen]",
+            "auto_translated": "[Verbergen]"
+        },
+        "tl": {
+            "legacy_caption_pid": 35321,
+            "legacy_language_pid": 41,
+            "text": "[Itago]",
+            "auto_translated": "[Itago]"
+        },
+        "ne": {
+            "legacy_caption_pid": 35322,
+            "legacy_language_pid": 42,
+            "text": "[लुकाउनुहोस्]",
+            "auto_translated": "[लुकाउनुहोस्]"
+        },
+        "hu": {
+            "legacy_caption_pid": 35323,
+            "legacy_language_pid": 43,
+            "text": "[Elrejtése]",
+            "auto_translated": "[Elrejtése]"
+        },
+        "cs": {
+            "legacy_caption_pid": 35324,
+            "legacy_language_pid": 44,
+            "text": "[Hide]",
+            "auto_translated": "[Hide]"
+        },
+        "el": {
+            "legacy_caption_pid": 35325,
+            "legacy_language_pid": 45,
+            "text": "[Απόκρυψη]",
+            "auto_translated": "[Απόκρυψη]"
+        },
+        "sv": {
+            "legacy_caption_pid": 35326,
+            "legacy_language_pid": 46,
+            "text": "[Göm]",
+            "auto_translated": "[Göm]"
+        },
+        "kk": {
+            "legacy_caption_pid": 35327,
+            "legacy_language_pid": 47,
+            "text": "[Жасыру]",
+            "auto_translated": "[Жасыру]"
+        },
+        "fi": {
+            "legacy_caption_pid": 35328,
+            "legacy_language_pid": 48,
+            "text": "[Näytä]",
+            "auto_translated": "[Näytä]"
+        },
+        "da": {
+            "legacy_caption_pid": 35329,
+            "legacy_language_pid": 49,
+            "text": "[Hide]",
+            "auto_translated": "[Hide]"
+        },
+        "he": {
+            "legacy_caption_pid": 35330,
+            "legacy_language_pid": 50,
+            "text": "[הסתר]",
+            "auto_translated": "[הסתר]"
+        },
+        "no": {
+            "legacy_caption_pid": 35331,
+            "legacy_language_pid": 51,
+            "text": "[Skjul]",
+            "auto_translated": "[Skjul]"
+        }
+    }
+}

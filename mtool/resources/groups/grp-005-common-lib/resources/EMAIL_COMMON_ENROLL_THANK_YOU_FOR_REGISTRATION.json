@@ -1,0 +1,321 @@
+{
+    "resource_key": "EMAIL_COMMON_ENROLL_THANK_YOU_FOR_REGISTRATION",
+    "legacy_resource_pid": 2592,
+    "base_group_key": "grp-005-common-lib",
+    "additional_group_keys": [],
+    "key_for_update": "QvsHy7Bkn4Exl4UXtOcbGijviGngFWfCwnZkHM4rhI6raoGCdRj5uNIaQEmrKQr4DZtW3t8X9DkLXbybLajbFd3DmC3lhgdo6thSgnUdWNlqHbjjJkQ0BaCGtwq1K5wk",
+    "sort_group": "EMAIL ENROLL",
+    "key_name": "EMAIL_COMMON_ENROLL_THANK_YOU_FOR_REGISTRATION",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": false,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 19565,
+            "legacy_language_pid": 1,
+            "text": "この度はご登録ありがとうございます。",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 19566,
+            "legacy_language_pid": 2,
+            "text": "Thank you for registering this time.",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 19567,
+            "legacy_language_pid": 3,
+            "text": "谢谢你这次注册",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 19568,
+            "legacy_language_pid": 4,
+            "text": "이번에 가입 해 주셔서 감사합니다.",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 19569,
+            "legacy_language_pid": 5,
+            "text": "Gracias por registrarse esta vez.",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 19570,
+            "legacy_language_pid": 6,
+            "text": "Obrigado por registrar este tempo.",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 19571,
+            "legacy_language_pid": 7,
+            "text": "謝謝你這次註冊",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 19572,
+            "legacy_language_pid": 8,
+            "text": "Merci de vous enregistrer cette fois.",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 19573,
+            "legacy_language_pid": 9,
+            "text": "इस बार पंजीकरण के लिए धन्यवाद।",
+            "auto_translated": ""
+        },
+        "ar": {
+            "legacy_caption_pid": 29534,
+            "legacy_language_pid": 10,
+            "text": "هذه المرة شكرا لتسجيلك.",
+            "auto_translated": "هذه المرة شكرا لتسجيلك."
+        },
+        "fa": {
+            "legacy_caption_pid": 29535,
+            "legacy_language_pid": 11,
+            "text": "این بار با تشکر از شما برای ثبت نام خود را.",
+            "auto_translated": "این بار با تشکر از شما برای ثبت نام خود را."
+        },
+        "de": {
+            "legacy_caption_pid": 29536,
+            "legacy_language_pid": 12,
+            "text": "Diesmal Vielen Dank für Ihre Anmeldung.",
+            "auto_translated": "Diesmal Vielen Dank für Ihre Anmeldung."
+        },
+        "ru": {
+            "legacy_caption_pid": 29537,
+            "legacy_language_pid": 13,
+            "text": "На этот раз Спасибо за регистрацию.",
+            "auto_translated": "На этот раз Спасибо за регистрацию."
+        },
+        "ms": {
+            "legacy_caption_pid": 29538,
+            "legacy_language_pid": 14,
+            "text": "masa ini Terima kasih kerana pendaftaran anda.",
+            "auto_translated": "masa ini Terima kasih kerana pendaftaran anda."
+        },
+        "ta": {
+            "legacy_caption_pid": 29539,
+            "legacy_language_pid": 15,
+            "text": "இந்த முறை உங்கள் பதிவு நன்றி.",
+            "auto_translated": "இந்த முறை உங்கள் பதிவு நன்றி."
+        },
+        "it": {
+            "legacy_caption_pid": 29540,
+            "legacy_language_pid": 16,
+            "text": "Questa volta Grazie per la vostra registrazione.",
+            "auto_translated": "Questa volta Grazie per la vostra registrazione."
+        },
+        "bn": {
+            "legacy_caption_pid": 29541,
+            "legacy_language_pid": 17,
+            "text": "এই সময় আপনার রেজিস্ট্রেশন জন্য আপনাকে ধন্যবাদ।",
+            "auto_translated": "এই সময় আপনার রেজিস্ট্রেশন জন্য আপনাকে ধন্যবাদ।"
+        },
+        "tr": {
+            "legacy_caption_pid": 29542,
+            "legacy_language_pid": 18,
+            "text": "Bu kez kaydınız için teşekkür ederiz.",
+            "auto_translated": "Bu kez kaydınız için teşekkür ederiz."
+        },
+        "vi": {
+            "legacy_caption_pid": 29543,
+            "legacy_language_pid": 19,
+            "text": "Lần này Cảm ơn bạn đã đăng ký của bạn.",
+            "auto_translated": "Lần này Cảm ơn bạn đã đăng ký của bạn."
+        },
+        "pl": {
+            "legacy_caption_pid": 29544,
+            "legacy_language_pid": 20,
+            "text": "Tym razem Dziękujemy za rejestrację.",
+            "auto_translated": "Tym razem Dziękujemy za rejestrację."
+        },
+        "jv": {
+            "legacy_caption_pid": 29545,
+            "legacy_language_pid": 21,
+            "text": "wektu iki Matur nuwun kanggo gratis.",
+            "auto_translated": "wektu iki Matur nuwun kanggo gratis."
+        },
+        "pa": {
+            "legacy_caption_pid": 29546,
+            "legacy_language_pid": 22,
+            "text": "ਇਸ ਵਾਰ ਆਪਣੇ ਰਜਿਸਟਰੇਸ਼ਨ ਲਈ ਧੰਨਵਾਦ.",
+            "auto_translated": "ਇਸ ਵਾਰ ਆਪਣੇ ਰਜਿਸਟਰੇਸ਼ਨ ਲਈ ਧੰਨਵਾਦ."
+        },
+        "th": {
+            "legacy_caption_pid": 29547,
+            "legacy_language_pid": 23,
+            "text": "คราวนี้ขอขอบคุณสำหรับการลงทะเบียนของคุณ",
+            "auto_translated": "คราวนี้ขอขอบคุณสำหรับการลงทะเบียนของคุณ"
+        },
+        "te": {
+            "legacy_caption_pid": 37376,
+            "legacy_language_pid": 24,
+            "text": "ఈ సమయం మీ రిజిస్ట్రేషన్ ధన్యవాదాలు.",
+            "auto_translated": "ఈ సమయం మీ రిజిస్ట్రేషన్ ధన్యవాదాలు."
+        },
+        "mr": {
+            "legacy_caption_pid": 37377,
+            "legacy_language_pid": 25,
+            "text": "आपल्या नोंदणीसाठी या वेळी धन्यवाद.",
+            "auto_translated": "आपल्या नोंदणीसाठी या वेळी धन्यवाद."
+        },
+        "ur": {
+            "legacy_caption_pid": 37378,
+            "legacy_language_pid": 26,
+            "text": "اس وقت آپ کے رجسٹریشن کے لئے آپ کا شکریہ.",
+            "auto_translated": "اس وقت آپ کے رجسٹریشن کے لئے آپ کا شکریہ."
+        },
+        "gu": {
+            "legacy_caption_pid": 37379,
+            "legacy_language_pid": 27,
+            "text": "આ સમય તમારી નોંધણી કરવા બદલ આપનો આભાર.",
+            "auto_translated": "આ સમય તમારી નોંધણી કરવા બદલ આપનો આભાર."
+        },
+        "uk": {
+            "legacy_caption_pid": 37380,
+            "legacy_language_pid": 28,
+            "text": "На цей раз Дякую за реєстрацію.",
+            "auto_translated": "На цей раз Дякую за реєстрацію."
+        },
+        "ml": {
+            "legacy_caption_pid": 37381,
+            "legacy_language_pid": 29,
+            "text": "ഈ സമയം നിങ്ങളുടെ രജിസ്ട്രേഷൻ നന്ദി.",
+            "auto_translated": "ഈ സമയം നിങ്ങളുടെ രജിസ്ട്രേഷൻ നന്ദി."
+        },
+        "kn": {
+            "legacy_caption_pid": 37382,
+            "legacy_language_pid": 30,
+            "text": "ಈ ಸಮಯದಲ್ಲಿ ನಿಮ್ಮ ನೋಂದಣಿ ಧನ್ಯವಾದಗಳು.",
+            "auto_translated": "ಈ ಸಮಯದಲ್ಲಿ ನಿಮ್ಮ ನೋಂದಣಿ ಧನ್ಯವಾದಗಳು."
+        },
+        "su": {
+            "legacy_caption_pid": 37383,
+            "legacy_language_pid": 31,
+            "text": "waktos Ieu Hatur nuhun pikeun pendaptaran Anjeun.",
+            "auto_translated": "waktos Ieu Hatur nuhun pikeun pendaptaran Anjeun."
+        },
+        "ku": {
+            "legacy_caption_pid": 37384,
+            "legacy_language_pid": 32,
+            "text": "Ev dem Spas dikim ji bo we xwe qeyd kir.",
+            "auto_translated": "Ev dem Spas dikim ji bo we xwe qeyd kir."
+        },
+        "ps": {
+            "legacy_caption_pid": 37385,
+            "legacy_language_pid": 33,
+            "text": "دا ځل تاسو د خپل د ثبت مننه.",
+            "auto_translated": "دا ځل تاسو د خپل د ثبت مننه."
+        },
+        "ro": {
+            "legacy_caption_pid": 37386,
+            "legacy_language_pid": 34,
+            "text": "De data aceasta Vă mulțumim pentru înregistrarea.",
+            "auto_translated": "De data aceasta Vă mulțumim pentru înregistrarea."
+        },
+        "id": {
+            "legacy_caption_pid": 37387,
+            "legacy_language_pid": 35,
+            "text": "Kali ini Terima kasih untuk pendaftaran Anda.",
+            "auto_translated": "Kali ini Terima kasih untuk pendaftaran Anda."
+        },
+        "sd": {
+            "legacy_caption_pid": 37388,
+            "legacy_language_pid": 36,
+            "text": "هن وقت توهان جي رجسٽريشن لاء توهان جي مهرباني.",
+            "auto_translated": "هن وقت توهان جي رجسٽريشن لاء توهان جي مهرباني."
+        },
+        "af": {
+            "legacy_caption_pid": 37389,
+            "legacy_language_pid": 37,
+            "text": "Hierdie keer Dankie vir jou registrasie.",
+            "auto_translated": "Hierdie keer Dankie vir jou registrasie."
+        },
+        "sw": {
+            "legacy_caption_pid": 37390,
+            "legacy_language_pid": 38,
+            "text": "Wakati huu Asante kwa usajili wako.",
+            "auto_translated": "Wakati huu Asante kwa usajili wako."
+        },
+        "lo": {
+            "legacy_caption_pid": 37391,
+            "legacy_language_pid": 39,
+            "text": "ທີ່ໃຊ້ເວລານີ້ຂໍຂອບໃຈທ່ານສໍາລັບການຈົດທະບຽນຂອງທ່ານ.",
+            "auto_translated": "ທີ່ໃຊ້ເວລານີ້ຂໍຂອບໃຈທ່ານສໍາລັບການຈົດທະບຽນຂອງທ່ານ."
+        },
+        "nl": {
+            "legacy_caption_pid": 37392,
+            "legacy_language_pid": 40,
+            "text": "Deze keer Dank u voor uw registratie.",
+            "auto_translated": "Deze keer Dank u voor uw registratie."
+        },
+        "tl": {
+            "legacy_caption_pid": 37393,
+            "legacy_language_pid": 41,
+            "text": "Ang oras na ito Maraming salamat sa inyong registration.",
+            "auto_translated": "Ang oras na ito Maraming salamat sa inyong registration."
+        },
+        "ne": {
+            "legacy_caption_pid": 37394,
+            "legacy_language_pid": 42,
+            "text": "यो समय तपाईं आफ्नो दर्ता लागि धन्यवाद।",
+            "auto_translated": "यो समय तपाईं आफ्नो दर्ता लागि धन्यवाद।"
+        },
+        "hu": {
+            "legacy_caption_pid": 37395,
+            "legacy_language_pid": 43,
+            "text": "Ezúttal Köszönjük a regisztrációt.",
+            "auto_translated": "Ezúttal Köszönjük a regisztrációt."
+        },
+        "cs": {
+            "legacy_caption_pid": 37396,
+            "legacy_language_pid": 44,
+            "text": "Tentokrát Děkujeme za vaši registraci.",
+            "auto_translated": "Tentokrát Děkujeme za vaši registraci."
+        },
+        "el": {
+            "legacy_caption_pid": 37397,
+            "legacy_language_pid": 45,
+            "text": "Αυτή τη φορά Σας ευχαριστούμε για την εγγραφή σας.",
+            "auto_translated": "Αυτή τη φορά Σας ευχαριστούμε για την εγγραφή σας."
+        },
+        "sv": {
+            "legacy_caption_pid": 37398,
+            "legacy_language_pid": 46,
+            "text": "Den här gången Tack för din registrering.",
+            "auto_translated": "Den här gången Tack för din registrering."
+        },
+        "kk": {
+            "legacy_caption_pid": 37399,
+            "legacy_language_pid": 47,
+            "text": "Бұл жолы сіздің тіркеу үшін рахмет.",
+            "auto_translated": "Бұл жолы сіздің тіркеу үшін рахмет."
+        },
+        "fi": {
+            "legacy_caption_pid": 37400,
+            "legacy_language_pid": 48,
+            "text": "Tällä kertaa Kiitos rekisteröinnistä.",
+            "auto_translated": "Tällä kertaa Kiitos rekisteröinnistä."
+        },
+        "da": {
+            "legacy_caption_pid": 37401,
+            "legacy_language_pid": 49,
+            "text": "Denne gang Tak for din tilmelding.",
+            "auto_translated": "Denne gang Tak for din tilmelding."
+        },
+        "he": {
+            "legacy_caption_pid": 37402,
+            "legacy_language_pid": 50,
+            "text": "הפעם אנו מודים לך על הרשמתך.",
+            "auto_translated": "הפעם אנו מודים לך על הרשמתך."
+        },
+        "no": {
+            "legacy_caption_pid": 37403,
+            "legacy_language_pid": 51,
+            "text": "Denne gangen Takk for din registrering.",
+            "auto_translated": "Denne gangen Takk for din registrering."
+        }
+    }
+}

@@ -1,0 +1,321 @@
+{
+    "resource_key": "COMMON_LIB_UPDATE_PROFILE_ERROR_FOR_SUB_EMAIL_FORMAT",
+    "legacy_resource_pid": 1606,
+    "base_group_key": "grp-010-matsuesoft-lib",
+    "additional_group_keys": [],
+    "key_for_update": "ibjM8n3vLopv3WPSsrequOlI7a5jhgW2kkfQCKq7fa9zLfvdkJWPewKjIlim2jnVFraCRf4LC0yYUCw8EEr57qmSoQhsuLtsa838ApberWXkSzwlsxdn55MG0uWjdfXO",
+    "sort_group": "PROFILE",
+    "key_name": "COMMON_LIB_UPDATE_PROFILE_ERROR_FOR_SUB_EMAIL_FORMAT",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": false,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 7206,
+            "legacy_language_pid": 1,
+            "text": "サブのメールアドレスの形式が xxx@xxx.xxx の形式で識別できません。",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 7207,
+            "legacy_language_pid": 2,
+            "text": "The sub mail address format can not be identified in the format of xxx@xxx.xxx.",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 7208,
+            "legacy_language_pid": 3,
+            "text": "邮件地址，xxx@xxx.xxx的形式不能识别。",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 7209,
+            "legacy_language_pid": 4,
+            "text": "하위의 이메일 주소 형식이 xxx@xxx.xxx 형식으로 식별 할 수 없습니다.",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 11123,
+            "legacy_language_pid": 5,
+            "text": "El formato de la dirección de correo subordinado no se puede identificar en el formato xxx@xxx.xxx.",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 11124,
+            "legacy_language_pid": 6,
+            "text": "O formato do endereço de sub mail não pode ser identificado no formato de xxx@xxx.xxx.",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 11125,
+            "legacy_language_pid": 7,
+            "text": "郵件地址，xxx@xxx.xxx的形式不能識別。",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 17273,
+            "legacy_language_pid": 8,
+            "text": "Le format d'adresse de sous-mail ne peut pas être identifié au format xxx@xxx.xxx.",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 17274,
+            "legacy_language_pid": 9,
+            "text": "उप मेल पता प्रारूप को xxx@xxx.xxx के प्रारूप में नहीं पहचाना जा सकता है।",
+            "auto_translated": ""
+        },
+        "ar": {
+            "legacy_caption_pid": 32910,
+            "legacy_language_pid": 10,
+            "text": "شكل عنوان البريد الإلكتروني الفرعية، حيث أنه ليس من الممكن تحديد في شكل xxx@xxx.xxx.",
+            "auto_translated": "شكل عنوان البريد الإلكتروني الفرعية، حيث أنه ليس من الممكن تحديد في شكل xxx@xxx.xxx."
+        },
+        "fa": {
+            "legacy_caption_pid": 32911,
+            "legacy_language_pid": 11,
+            "text": "فرمت آدرس زیر ایمیل، که در آن ممکن است برای شناسایی در قالب xxx@xxx.xxx.",
+            "auto_translated": "فرمت آدرس زیر ایمیل، که در آن ممکن است برای شناسایی در قالب xxx@xxx.xxx."
+        },
+        "de": {
+            "legacy_caption_pid": 32912,
+            "legacy_language_pid": 12,
+            "text": "Format der Unter-Mail-Adresse, wo es nicht möglich ist, in Form von xxx@xxx.xxx zu identifizieren.",
+            "auto_translated": "Format der Unter-Mail-Adresse, wo es nicht möglich ist, in Form von xxx@xxx.xxx zu identifizieren."
+        },
+        "ru": {
+            "legacy_caption_pid": 32913,
+            "legacy_language_pid": 13,
+            "text": "Формат суб-почты, где это не представляется возможным определить в виде xxx@xxx.xxx.",
+            "auto_translated": "Формат суб-почты, где это не представляется возможным определить в виде xxx@xxx.xxx."
+        },
+        "ms": {
+            "legacy_caption_pid": 32914,
+            "legacy_language_pid": 14,
+            "text": "Format untuk alamat sub-mel, di mana ia tidak mungkin untuk mengenal pasti dalam bentuk xxx@xxx.xxx.",
+            "auto_translated": "Format untuk alamat sub-mel, di mana ia tidak mungkin untuk mengenal pasti dalam bentuk xxx@xxx.xxx."
+        },
+        "ta": {
+            "legacy_caption_pid": 32915,
+            "legacy_language_pid": 15,
+            "text": "அது xxx@xxx.xxx வடிவில் அடையாளம் முடியாது எங்கே துணை மெயில் முகவரி, வடிவம்.",
+            "auto_translated": "அது xxx@xxx.xxx வடிவில் அடையாளம் முடியாது எங்கே துணை மெயில் முகவரி, வடிவம்."
+        },
+        "it": {
+            "legacy_caption_pid": 32916,
+            "legacy_language_pid": 16,
+            "text": "Formato di l'indirizzo secondario di posta elettronica, in cui non è possibile identificare in forma di xxx@xxx.xxx.",
+            "auto_translated": "Formato di l'indirizzo secondario di posta elettronica, in cui non è possibile identificare in forma di xxx@xxx.xxx."
+        },
+        "bn": {
+            "legacy_caption_pid": 32917,
+            "legacy_language_pid": 17,
+            "text": "সাব-মেইল ঠিকানা, যেখানে এটি সম্ভব xxx@xxx.xxx আকারে চিহ্নিত করতে নয় এর বিন্যাস।",
+            "auto_translated": "সাব-মেইল ঠিকানা, যেখানে এটি সম্ভব xxx@xxx.xxx আকারে চিহ্নিত করতে নয় এর বিন্যাস।"
+        },
+        "tr": {
+            "legacy_caption_pid": 32918,
+            "legacy_language_pid": 18,
+            "text": "o xxx@xxx.xxx şeklinde tanımlamak mümkün değildir alt posta adresine, biçimi.",
+            "auto_translated": "o xxx@xxx.xxx şeklinde tanımlamak mümkün değildir alt posta adresine, biçimi."
+        },
+        "vi": {
+            "legacy_caption_pid": 32919,
+            "legacy_language_pid": 19,
+            "text": "Định dạng của địa chỉ tiểu thư, nơi mà nó không thể xác định theo hình thức xxx@xxx.xxx.",
+            "auto_translated": "Định dạng của địa chỉ tiểu thư, nơi mà nó không thể xác định theo hình thức xxx@xxx.xxx."
+        },
+        "pl": {
+            "legacy_caption_pid": 32920,
+            "legacy_language_pid": 20,
+            "text": "Format adresu sub-mail, gdy nie jest możliwe określenie w formie xxx@xxx.xxx.",
+            "auto_translated": "Format adresu sub-mail, gdy nie jest możliwe określenie w formie xxx@xxx.xxx."
+        },
+        "jv": {
+            "legacy_caption_pid": 32921,
+            "legacy_language_pid": 21,
+            "text": "Format saka alamat sub-mail, ing ngendi iku ora bisa kanggo ngenali ing wangun xxx@xxx.xxx.",
+            "auto_translated": "Format saka alamat sub-mail, ing ngendi iku ora bisa kanggo ngenali ing wangun xxx@xxx.xxx."
+        },
+        "pa": {
+            "legacy_caption_pid": 32922,
+            "legacy_language_pid": 22,
+            "text": "ਸਬ-ਮੇਲ ਪਤਾ ਹੈ, ਜਿੱਥੇ ਇਸ ਨੂੰ ਸੰਭਵ xxx@xxx.xxx ਦੇ ਰੂਪ ਵਿੱਚ ਪਛਾਣ ਕਰਨ ਲਈ ਨਹੀ ਹੈ, ਦੇ ਫਾਰਮੈਟ.",
+            "auto_translated": "ਸਬ-ਮੇਲ ਪਤਾ ਹੈ, ਜਿੱਥੇ ਇਸ ਨੂੰ ਸੰਭਵ xxx@xxx.xxx ਦੇ ਰੂਪ ਵਿੱਚ ਪਛਾਣ ਕਰਨ ਲਈ ਨਹੀ ਹੈ, ਦੇ ਫਾਰਮੈਟ."
+        },
+        "th": {
+            "legacy_caption_pid": 32923,
+            "legacy_language_pid": 23,
+            "text": "รูปแบบที่อยู่ย่อย-mail ที่มันเป็นไปไม่ได้ที่จะระบุในรูปแบบของ xxx@xxx.xxx",
+            "auto_translated": "รูปแบบที่อยู่ย่อย-mail ที่มันเป็นไปไม่ได้ที่จะระบุในรูปแบบของ xxx@xxx.xxx"
+        },
+        "te": {
+            "legacy_caption_pid": 39812,
+            "legacy_language_pid": 24,
+            "text": "ఉప-మెయిల్ చిరునామా, అది xxx@xxx.xxx రూపంలో గుర్తించడానికి అవకాశం కాదు అక్కడ ఫార్మాట్.",
+            "auto_translated": "ఉప-మెయిల్ చిరునామా, అది xxx@xxx.xxx రూపంలో గుర్తించడానికి అవకాశం కాదు అక్కడ ఫార్మాట్."
+        },
+        "mr": {
+            "legacy_caption_pid": 39813,
+            "legacy_language_pid": 25,
+            "text": "तो xxx@xxx.xxx स्वरूपात ओळख करणे शक्य नाही जेथे उप-मेल पत्ता, स्वरूप.",
+            "auto_translated": "तो xxx@xxx.xxx स्वरूपात ओळख करणे शक्य नाही जेथे उप-मेल पत्ता, स्वरूप."
+        },
+        "ur": {
+            "legacy_caption_pid": 39814,
+            "legacy_language_pid": 26,
+            "text": "یہ xxx@xxx.xxx کی شکل میں شناخت کرنے کے لئے ممکن نہیں ہے جہاں ذیلی میل ایڈریس کی شکل.",
+            "auto_translated": "یہ xxx@xxx.xxx کی شکل میں شناخت کرنے کے لئے ممکن نہیں ہے جہاں ذیلی میل ایڈریس کی شکل."
+        },
+        "gu": {
+            "legacy_caption_pid": 39815,
+            "legacy_language_pid": 27,
+            "text": "પેટા-મેઇલ સરનામું, જ્યાં તે શક્ય xxx@xxx.xxx સ્વરૂપમાં ઓળખવા માટે નથી ફોર્મેટ.",
+            "auto_translated": "પેટા-મેઇલ સરનામું, જ્યાં તે શક્ય xxx@xxx.xxx સ્વરૂપમાં ઓળખવા માટે નથી ફોર્મેટ."
+        },
+        "uk": {
+            "legacy_caption_pid": 39816,
+            "legacy_language_pid": 28,
+            "text": "Формат суб-пошти, де це не представляється можливим визначити у вигляді xxx@xxx.xxx.",
+            "auto_translated": "Формат суб-пошти, де це не представляється можливим визначити у вигляді xxx@xxx.xxx."
+        },
+        "ml": {
+            "legacy_caption_pid": 39817,
+            "legacy_language_pid": 29,
+            "text": "അത് xxx@xxx.xxx രൂപത്തിൽ തിരിച്ചറിയാൻ സാധ്യമല്ല എവിടെ സബ്-മെയിൽ വിലാസം, ഒരു ഫോർമാറ്റ്.",
+            "auto_translated": "അത് xxx@xxx.xxx രൂപത്തിൽ തിരിച്ചറിയാൻ സാധ്യമല്ല എവിടെ സബ്-മെയിൽ വിലാസം, ഒരു ഫോർമാറ്റ്."
+        },
+        "kn": {
+            "legacy_caption_pid": 39818,
+            "legacy_language_pid": 30,
+            "text": "ಇದು xxx@xxx.xxx ರೂಪದಲ್ಲಿ ಗುರುತಿಸಲು ಸಾಧ್ಯವಾಗದ ಉಪ-ಮೇಲ್ ವಿಳಾಸ, ಸ್ವರೂಪ.",
+            "auto_translated": "ಇದು xxx@xxx.xxx ರೂಪದಲ್ಲಿ ಗುರುತಿಸಲು ಸಾಧ್ಯವಾಗದ ಉಪ-ಮೇಲ್ ವಿಳಾಸ, ಸ್ವರೂಪ."
+        },
+        "su": {
+            "legacy_caption_pid": 39819,
+            "legacy_language_pid": 31,
+            "text": "Format tina alamat sub-mail, dimana teu mungkin pikeun ngaidentipikasi dina bentuk xxx@xxx.xxx.",
+            "auto_translated": "Format tina alamat sub-mail, dimana teu mungkin pikeun ngaidentipikasi dina bentuk xxx@xxx.xxx."
+        },
+        "ku": {
+            "legacy_caption_pid": 39820,
+            "legacy_language_pid": 32,
+            "text": "Format yên navnîşana sub-mail, ku ne mumkin e ku ji bo diyarkirina nasnameya di form of xxx@xxx.xxx.",
+            "auto_translated": "Format yên navnîşana sub-mail, ku ne mumkin e ku ji bo diyarkirina nasnameya di form of xxx@xxx.xxx."
+        },
+        "ps": {
+            "legacy_caption_pid": 39821,
+            "legacy_language_pid": 33,
+            "text": "د فرعي برېښلیک پته، چې دا ممکنه نه ده چې په د xxx@xxx.xxx په بڼه په ګوته شکل.",
+            "auto_translated": "د فرعي برېښلیک پته، چې دا ممکنه نه ده چې په د xxx@xxx.xxx په بڼه په ګوته شکل."
+        },
+        "ro": {
+            "legacy_caption_pid": 39822,
+            "legacy_language_pid": 34,
+            "text": "Formatul adresei de sub-mail, în cazul în care nu este posibil să se identifice în formă de xxx@xxx.xxx.",
+            "auto_translated": "Formatul adresei de sub-mail, în cazul în care nu este posibil să se identifice în formă de xxx@xxx.xxx."
+        },
+        "id": {
+            "legacy_caption_pid": 39823,
+            "legacy_language_pid": 35,
+            "text": "Format dari alamat sub-mail, di mana tidak mungkin untuk mengidentifikasi dalam bentuk xxx@xxx.xxx.",
+            "auto_translated": "Format dari alamat sub-mail, di mana tidak mungkin untuk mengidentifikasi dalam bentuk xxx@xxx.xxx."
+        },
+        "sd": {
+            "legacy_caption_pid": 39824,
+            "legacy_language_pid": 36,
+            "text": "جي ذيلي ميل پتو، جتي اهو ممڪن xxx@xxx.xxx جي صورت ۾ جي نشاندهي ڪري نه آهي جو فارميٽ.",
+            "auto_translated": "جي ذيلي ميل پتو، جتي اهو ممڪن xxx@xxx.xxx جي صورت ۾ جي نشاندهي ڪري نه آهي جو فارميٽ."
+        },
+        "af": {
+            "legacy_caption_pid": 39825,
+            "legacy_language_pid": 37,
+            "text": "Formaat van die sub-posadres, waar dit nie moontlik is om te identifiseer in die vorm van xxx@xxx.xxx.",
+            "auto_translated": "Formaat van die sub-posadres, waar dit nie moontlik is om te identifiseer in die vorm van xxx@xxx.xxx."
+        },
+        "sw": {
+            "legacy_caption_pid": 39826,
+            "legacy_language_pid": 38,
+            "text": "Format ya ndogo ya barua, ambapo si rahisi kutambua katika mfumo wa xxx@xxx.xxx.",
+            "auto_translated": "Format ya ndogo ya barua, ambapo si rahisi kutambua katika mfumo wa xxx@xxx.xxx."
+        },
+        "lo": {
+            "legacy_caption_pid": 39827,
+            "legacy_language_pid": 39,
+            "text": "ຮູບແບບຂອງທີ່ຢູ່ຍ່ອຍເມລ, ບ່ອນທີ່ມັນເປັນໄປບໍ່ໄດ້ທີ່ຈະລະບຸຢູ່ໃນຮູບແບບຂອງການ xxx@xxx.xxx ໄດ້.",
+            "auto_translated": "ຮູບແບບຂອງທີ່ຢູ່ຍ່ອຍເມລ, ບ່ອນທີ່ມັນເປັນໄປບໍ່ໄດ້ທີ່ຈະລະບຸຢູ່ໃນຮູບແບບຂອງການ xxx@xxx.xxx ໄດ້."
+        },
+        "nl": {
+            "legacy_caption_pid": 39828,
+            "legacy_language_pid": 40,
+            "text": "Formaat van de sub-mail adres, waar het niet mogelijk vast te stellen in de vorm van xxx@xxx.xxx.",
+            "auto_translated": "Formaat van de sub-mail adres, waar het niet mogelijk vast te stellen in de vorm van xxx@xxx.xxx."
+        },
+        "tl": {
+            "legacy_caption_pid": 39829,
+            "legacy_language_pid": 41,
+            "text": "Format ng sub-mail address, kung saan ito ay hindi posible upang makilala sa anyo ng xxx@xxx.xxx.",
+            "auto_translated": "Format ng sub-mail address, kung saan ito ay hindi posible upang makilala sa anyo ng xxx@xxx.xxx."
+        },
+        "ne": {
+            "legacy_caption_pid": 39830,
+            "legacy_language_pid": 42,
+            "text": "यो xxx@xxx.xxx को रूप मा पहिचान गर्न सम्भव छैन जहाँ उप-मेल ठेगाना, को ढाँचा।",
+            "auto_translated": "यो xxx@xxx.xxx को रूप मा पहिचान गर्न सम्भव छैन जहाँ उप-मेल ठेगाना, को ढाँचा।"
+        },
+        "hu": {
+            "legacy_caption_pid": 39831,
+            "legacy_language_pid": 43,
+            "text": "Format az al-mail címet, ahol nem lehet azonosítani formájában xxx@xxx.xxx.",
+            "auto_translated": "Format az al-mail címet, ahol nem lehet azonosítani formájában xxx@xxx.xxx."
+        },
+        "cs": {
+            "legacy_caption_pid": 39832,
+            "legacy_language_pid": 44,
+            "text": "Formát sub-mailovou adresu, kde to není možné identifikovat v podobě xxx@xxx.xxx.",
+            "auto_translated": "Formát sub-mailovou adresu, kde to není možné identifikovat v podobě xxx@xxx.xxx."
+        },
+        "el": {
+            "legacy_caption_pid": 39833,
+            "legacy_language_pid": 45,
+            "text": "Μορφή της διεύθυνσης υπο-mail, όπου δεν είναι δυνατόν να προσδιοριστούν με τη μορφή xxx@xxx.xxx.",
+            "auto_translated": "Μορφή της διεύθυνσης υπο-mail, όπου δεν είναι δυνατόν να προσδιοριστούν με τη μορφή xxx@xxx.xxx."
+        },
+        "sv": {
+            "legacy_caption_pid": 39834,
+            "legacy_language_pid": 46,
+            "text": "Format av under postadress, där det inte är möjligt att identifiera i form av xxx@xxx.xxx.",
+            "auto_translated": "Format av under postadress, där det inte är möjligt att identifiera i form av xxx@xxx.xxx."
+        },
+        "kk": {
+            "legacy_caption_pid": 39835,
+            "legacy_language_pid": 47,
+            "text": "ол xxx@xxx.xxx түрінде анықтау мүмкін емес суб-пошта мекен-жайы, форматы.",
+            "auto_translated": "ол xxx@xxx.xxx түрінде анықтау мүмкін емес суб-пошта мекен-жайы, форматы."
+        },
+        "fi": {
+            "legacy_caption_pid": 39836,
+            "legacy_language_pid": 48,
+            "text": "Formaatti osa-sähköpostiosoite, jos se ei ole mahdollista määrittää muodossa xxx@xxx.xxx.",
+            "auto_translated": "Formaatti osa-sähköpostiosoite, jos se ei ole mahdollista määrittää muodossa xxx@xxx.xxx."
+        },
+        "da": {
+            "legacy_caption_pid": 39837,
+            "legacy_language_pid": 49,
+            "text": "Format af sub-mail-adresse, hvor det ikke er muligt at identificere i form af xxx@xxx.xxx.",
+            "auto_translated": "Format af sub-mail-adresse, hvor det ikke er muligt at identificere i form af xxx@xxx.xxx."
+        },
+        "he": {
+            "legacy_caption_pid": 39838,
+            "legacy_language_pid": 50,
+            "text": "התבנית של כתובת תת-mail, שבו לא ניתן לזהות בצורה של xxx@xxx.xxx.",
+            "auto_translated": "התבנית של כתובת תת-mail, שבו לא ניתן לזהות בצורה של xxx@xxx.xxx."
+        },
+        "no": {
+            "legacy_caption_pid": 39839,
+            "legacy_language_pid": 51,
+            "text": "Formatet på sub-postadresse, der det ikke er mulig å identifisere i form av xxx@xxx.xxx.",
+            "auto_translated": "Formatet på sub-postadresse, der det ikke er mulig å identifisere i form av xxx@xxx.xxx."
+        }
+    }
+}

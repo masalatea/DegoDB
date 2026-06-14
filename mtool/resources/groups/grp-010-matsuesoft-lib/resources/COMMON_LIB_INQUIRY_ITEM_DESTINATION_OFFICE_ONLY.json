@@ -1,0 +1,321 @@
+{
+    "resource_key": "COMMON_LIB_INQUIRY_ITEM_DESTINATION_OFFICE_ONLY",
+    "legacy_resource_pid": 1462,
+    "base_group_key": "grp-010-matsuesoft-lib",
+    "additional_group_keys": [],
+    "key_for_update": "tsHjnuKs3esNjdrG9JN4TVqP76eiqXzpFviVqnr8NcIifVsohYGM8GYjbMBDye33saL7r59xfpGl3u1H2lIvwNWYMVXZXmeKziWACHukANpmr0Roq6je6PNYDRQxPLjY",
+    "sort_group": "INQUIRY",
+    "key_name": "COMMON_LIB_INQUIRY_ITEM_DESTINATION_OFFICE_ONLY",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": false,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 6122,
+            "legacy_language_pid": 1,
+            "text": "事務局のみに送信する",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 6123,
+            "legacy_language_pid": 2,
+            "text": "Send to the Office Only",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 6124,
+            "legacy_language_pid": 3,
+            "text": "它只是发送到事务所",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 6125,
+            "legacy_language_pid": 4,
+            "text": "사무국에만 보내기",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 10985,
+            "legacy_language_pid": 5,
+            "text": "Enviar a la oficina solamente",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 10986,
+            "legacy_language_pid": 6,
+            "text": " Enviar apenas para o escritório",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 10987,
+            "legacy_language_pid": 7,
+            "text": "它只是發送到事務所",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 17189,
+            "legacy_language_pid": 8,
+            "text": "Envoyer uniquement au bureau",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 17190,
+            "legacy_language_pid": 9,
+            "text": "केवल कार्यालय को भेजें",
+            "auto_translated": ""
+        },
+        "ar": {
+            "legacy_caption_pid": 32166,
+            "legacy_language_pid": 10,
+            "text": "يتم إرسالها فقط إلى الأمانة",
+            "auto_translated": "يتم إرسالها فقط إلى الأمانة"
+        },
+        "fa": {
+            "legacy_caption_pid": 32167,
+            "legacy_language_pid": 11,
+            "text": "آن است که تنها به دبیرخانه ارسال گردیده",
+            "auto_translated": "آن است که تنها به دبیرخانه ارسال گردیده"
+        },
+        "de": {
+            "legacy_caption_pid": 32168,
+            "legacy_language_pid": 12,
+            "text": "Es wird nur an das Sekretariat geschickt",
+            "auto_translated": "Es wird nur an das Sekretariat geschickt"
+        },
+        "ru": {
+            "legacy_caption_pid": 32169,
+            "legacy_language_pid": 13,
+            "text": "Он отправляется только в секретариат",
+            "auto_translated": "Он отправляется только в секретариат"
+        },
+        "ms": {
+            "legacy_caption_pid": 32170,
+            "legacy_language_pid": 14,
+            "text": "Ia dihantar hanya kepada urus setia",
+            "auto_translated": "Ia dihantar hanya kepada urus setia"
+        },
+        "ta": {
+            "legacy_caption_pid": 32171,
+            "legacy_language_pid": 15,
+            "text": "அது செயலகம் ஒரே அனுப்பப்படும்",
+            "auto_translated": "அது செயலகம் ஒரே அனுப்பப்படும்"
+        },
+        "it": {
+            "legacy_caption_pid": 32172,
+            "legacy_language_pid": 16,
+            "text": "Viene inviato solo alla segreteria",
+            "auto_translated": "Viene inviato solo alla segreteria"
+        },
+        "bn": {
+            "legacy_caption_pid": 32173,
+            "legacy_language_pid": 17,
+            "text": "এটা তোলে সচিবালয় একমাত্র পাঠানো হয়",
+            "auto_translated": "এটা তোলে সচিবালয় একমাত্র পাঠানো হয়"
+        },
+        "tr": {
+            "legacy_caption_pid": 32174,
+            "legacy_language_pid": 18,
+            "text": "Bu sekreterya için gönderilen",
+            "auto_translated": "Bu sekreterya için gönderilen"
+        },
+        "vi": {
+            "legacy_caption_pid": 32175,
+            "legacy_language_pid": 19,
+            "text": "Nó chỉ được gửi đến Ban thư ký",
+            "auto_translated": "Nó chỉ được gửi đến Ban thư ký"
+        },
+        "pl": {
+            "legacy_caption_pid": 32176,
+            "legacy_language_pid": 20,
+            "text": "Jest on wysyłany tylko do sekretariatu",
+            "auto_translated": "Jest on wysyłany tylko do sekretariatu"
+        },
+        "jv": {
+            "legacy_caption_pid": 32177,
+            "legacy_language_pid": 21,
+            "text": "Punika dikirim mung kanggo Sekretariat ing",
+            "auto_translated": "Punika dikirim mung kanggo Sekretariat ing"
+        },
+        "pa": {
+            "legacy_caption_pid": 32178,
+            "legacy_language_pid": 22,
+            "text": "ਇਹ ਸਕੱਤਰੇਤ ਨੂੰ ਸਿਰਫ ਭੇਜਿਆ ਹੈ",
+            "auto_translated": "ਇਹ ਸਕੱਤਰੇਤ ਨੂੰ ਸਿਰਫ ਭੇਜਿਆ ਹੈ"
+        },
+        "th": {
+            "legacy_caption_pid": 32179,
+            "legacy_language_pid": 23,
+            "text": "มันถูกส่งไปยังสำนักเลขาธิการ",
+            "auto_translated": "มันถูกส่งไปยังสำนักเลขาธิการ"
+        },
+        "te": {
+            "legacy_caption_pid": 41296,
+            "legacy_language_pid": 24,
+            "text": "ఇది సచివాలయం మాత్రమే పంపబడుతుంది",
+            "auto_translated": "ఇది సచివాలయం మాత్రమే పంపబడుతుంది"
+        },
+        "mr": {
+            "legacy_caption_pid": 41297,
+            "legacy_language_pid": 25,
+            "text": "हे सचिवालय पाठविले आहे",
+            "auto_translated": "हे सचिवालय पाठविले आहे"
+        },
+        "ur": {
+            "legacy_caption_pid": 41298,
+            "legacy_language_pid": 26,
+            "text": "یہ صرف سیکرٹریٹ کو بھیجا جاتا ہے",
+            "auto_translated": "یہ صرف سیکرٹریٹ کو بھیجا جاتا ہے"
+        },
+        "gu": {
+            "legacy_caption_pid": 41299,
+            "legacy_language_pid": 27,
+            "text": "તે સચિવાલય માત્ર મોકલવામાં આવે છે",
+            "auto_translated": "તે સચિવાલય માત્ર મોકલવામાં આવે છે"
+        },
+        "uk": {
+            "legacy_caption_pid": 41300,
+            "legacy_language_pid": 28,
+            "text": "Він відправляється тільки в секретаріат",
+            "auto_translated": "Він відправляється тільки в секретаріат"
+        },
+        "ml": {
+            "legacy_caption_pid": 41301,
+            "legacy_language_pid": 29,
+            "text": "അതു മാത്രം സെക്രട്ടേറിയറ്റ് അയയ്ക്കുന്ന",
+            "auto_translated": "അതു മാത്രം സെക്രട്ടേറിയറ്റ് അയയ്ക്കുന്ന"
+        },
+        "kn": {
+            "legacy_caption_pid": 41302,
+            "legacy_language_pid": 30,
+            "text": "ಇದು ಆಡಳಿತ ಮಾತ್ರ ಕಳುಹಿಸಲಾಗುತ್ತದೆ",
+            "auto_translated": "ಇದು ಆಡಳಿತ ಮಾತ್ರ ಕಳುಹಿಸಲಾಗುತ್ತದೆ"
+        },
+        "su": {
+            "legacy_caption_pid": 41303,
+            "legacy_language_pid": 31,
+            "text": "Hal ieu dikirim ukur keur sekretariat di",
+            "auto_translated": "Hal ieu dikirim ukur keur sekretariat di"
+        },
+        "ku": {
+            "legacy_caption_pid": 41304,
+            "legacy_language_pid": 32,
+            "text": "Ev tenê ji bo sekreteriya şandin",
+            "auto_translated": "Ev tenê ji bo sekreteriya şandin"
+        },
+        "ps": {
+            "legacy_caption_pid": 41305,
+            "legacy_language_pid": 33,
+            "text": "دا یوازې د دارالانشا ته استول کیږي",
+            "auto_translated": "دا یوازې د دارالانشا ته استول کیږي"
+        },
+        "ro": {
+            "legacy_caption_pid": 41306,
+            "legacy_language_pid": 34,
+            "text": "Acesta este trimis numai la secretariatul",
+            "auto_translated": "Acesta este trimis numai la secretariatul"
+        },
+        "id": {
+            "legacy_caption_pid": 41307,
+            "legacy_language_pid": 35,
+            "text": "Hal ini dikirim hanya ke sekretariat",
+            "auto_translated": "Hal ini dikirim hanya ke sekretariat"
+        },
+        "sd": {
+            "legacy_caption_pid": 41308,
+            "legacy_language_pid": 36,
+            "text": "اهو رڳو secretariat ڪرڻ لاء موڪليو آهي",
+            "auto_translated": "اهو رڳو secretariat ڪرڻ لاء موڪليو آهي"
+        },
+        "af": {
+            "legacy_caption_pid": 41309,
+            "legacy_language_pid": 37,
+            "text": "Dit is net gestuur na die sekretariaat",
+            "auto_translated": "Dit is net gestuur na die sekretariaat"
+        },
+        "sw": {
+            "legacy_caption_pid": 41310,
+            "legacy_language_pid": 38,
+            "text": "Ni ujumbe tu kwa sekretarieti",
+            "auto_translated": "Ni ujumbe tu kwa sekretarieti"
+        },
+        "lo": {
+            "legacy_caption_pid": 41311,
+            "legacy_language_pid": 39,
+            "text": "ມັນຈະຖືກສົ່ງພຽງແຕ່ເສນາທິການ",
+            "auto_translated": "ມັນຈະຖືກສົ່ງພຽງແຕ່ເສນາທິການ"
+        },
+        "nl": {
+            "legacy_caption_pid": 41312,
+            "legacy_language_pid": 40,
+            "text": "Het wordt alleen verstuurd naar het secretariaat",
+            "auto_translated": "Het wordt alleen verstuurd naar het secretariaat"
+        },
+        "tl": {
+            "legacy_caption_pid": 41313,
+            "legacy_language_pid": 41,
+            "text": "Ito ay ipinadala lamang sa kalihiman",
+            "auto_translated": "Ito ay ipinadala lamang sa kalihiman"
+        },
+        "ne": {
+            "legacy_caption_pid": 41314,
+            "legacy_language_pid": 42,
+            "text": "यो केवल सचिवालय पठाइएको छ",
+            "auto_translated": "यो केवल सचिवालय पठाइएको छ"
+        },
+        "hu": {
+            "legacy_caption_pid": 41315,
+            "legacy_language_pid": 43,
+            "text": "Úgy küldeni csak a titkárság",
+            "auto_translated": "Úgy küldeni csak a titkárság"
+        },
+        "cs": {
+            "legacy_caption_pid": 41316,
+            "legacy_language_pid": 44,
+            "text": "To je odeslán pouze na sekretariát",
+            "auto_translated": "To je odeslán pouze na sekretariát"
+        },
+        "el": {
+            "legacy_caption_pid": 41317,
+            "legacy_language_pid": 45,
+            "text": "Αποστέλλεται μόνο στη γραμματεία",
+            "auto_translated": "Αποστέλλεται μόνο στη γραμματεία"
+        },
+        "sv": {
+            "legacy_caption_pid": 41318,
+            "legacy_language_pid": 46,
+            "text": "Det skickas endast till sekretariatet",
+            "auto_translated": "Det skickas endast till sekretariatet"
+        },
+        "kk": {
+            "legacy_caption_pid": 41319,
+            "legacy_language_pid": 47,
+            "text": "Ол тек хатшылығына жіберіледі",
+            "auto_translated": "Ол тек хатшылығына жіберіледі"
+        },
+        "fi": {
+            "legacy_caption_pid": 41320,
+            "legacy_language_pid": 48,
+            "text": "Se lähetetään vain sihteeristölle",
+            "auto_translated": "Se lähetetään vain sihteeristölle"
+        },
+        "da": {
+            "legacy_caption_pid": 41321,
+            "legacy_language_pid": 49,
+            "text": "Den sendes kun til sekretariatet",
+            "auto_translated": "Den sendes kun til sekretariatet"
+        },
+        "he": {
+            "legacy_caption_pid": 41322,
+            "legacy_language_pid": 50,
+            "text": "זה נשלח רק מזכיר",
+            "auto_translated": "זה נשלח רק מזכיר"
+        },
+        "no": {
+            "legacy_caption_pid": 41323,
+            "legacy_language_pid": 51,
+            "text": "Det sendes bare til sekretariatet",
+            "auto_translated": "Det sendes bare til sekretariatet"
+        }
+    }
+}

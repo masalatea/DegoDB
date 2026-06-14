@@ -1,0 +1,321 @@
+{
+    "resource_key": "TOAST_LOGOUT_SUCCESS",
+    "legacy_resource_pid": 915,
+    "base_group_key": "grp-028-app-common-lib",
+    "additional_group_keys": [],
+    "key_for_update": "jslPj6rd4nhM67f1SAjsL24DxjLmp2UBIoapdj1VcYLldzDrdkXflapB0vPTgs2dfP2WZ9I2rSlvyG0aa3glnPxeyzlcOGJMEwdEGVhPnPVSGcrvJHPuywI63ilARQnq",
+    "sort_group": "Toast",
+    "key_name": "TOAST_LOGOUT_SUCCESS",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": false,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 919,
+            "legacy_language_pid": 1,
+            "text": "ログアウト成功しました",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 920,
+            "legacy_language_pid": 2,
+            "text": "Logout Success",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 6484,
+            "legacy_language_pid": 3,
+            "text": "注销成功",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 6485,
+            "legacy_language_pid": 4,
+            "text": "로그아웃 했습니다",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 10284,
+            "legacy_language_pid": 5,
+            "text": "Cierre de sesión correcto",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 10285,
+            "legacy_language_pid": 6,
+            "text": "Logout bem sucedido",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 10286,
+            "legacy_language_pid": 7,
+            "text": "註銷成功",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 16223,
+            "legacy_language_pid": 8,
+            "text": "Déconnexion Succès",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 16224,
+            "legacy_language_pid": 9,
+            "text": "लॉगआउट सफल",
+            "auto_translated": ""
+        },
+        "ar": {
+            "legacy_caption_pid": 29016,
+            "legacy_language_pid": 10,
+            "text": "تسجيل الخروج كان ناجحا",
+            "auto_translated": "تسجيل الخروج كان ناجحا"
+        },
+        "fa": {
+            "legacy_caption_pid": 29017,
+            "legacy_language_pid": 11,
+            "text": "از سیستم خارج شوید موفق بود",
+            "auto_translated": "از سیستم خارج شوید موفق بود"
+        },
+        "de": {
+            "legacy_caption_pid": 29018,
+            "legacy_language_pid": 12,
+            "text": "Ausloggen war erfolgreich",
+            "auto_translated": "Ausloggen war erfolgreich"
+        },
+        "ru": {
+            "legacy_caption_pid": 29019,
+            "legacy_language_pid": 13,
+            "text": "Выйти был успешным",
+            "auto_translated": "Выйти был успешным"
+        },
+        "ms": {
+            "legacy_caption_pid": 29020,
+            "legacy_language_pid": 14,
+            "text": "Log keluar berjaya",
+            "auto_translated": "Log keluar berjaya"
+        },
+        "ta": {
+            "legacy_caption_pid": 29021,
+            "legacy_language_pid": 15,
+            "text": "வெளியேறு வெற்றி பெற்றது",
+            "auto_translated": "வெளியேறு வெற்றி பெற்றது"
+        },
+        "it": {
+            "legacy_caption_pid": 29022,
+            "legacy_language_pid": 16,
+            "text": "Esci ha avuto successo",
+            "auto_translated": "Esci ha avuto successo"
+        },
+        "bn": {
+            "legacy_caption_pid": 29023,
+            "legacy_language_pid": 17,
+            "text": "লগ আউট সফল হয়েছে",
+            "auto_translated": "লগ আউট সফল হয়েছে"
+        },
+        "tr": {
+            "legacy_caption_pid": 29024,
+            "legacy_language_pid": 18,
+            "text": "Oturumu başarılı oldu",
+            "auto_translated": "Oturumu başarılı oldu"
+        },
+        "vi": {
+            "legacy_caption_pid": 29025,
+            "legacy_language_pid": 19,
+            "text": "Đăng xuất đã thành công",
+            "auto_translated": "Đăng xuất đã thành công"
+        },
+        "pl": {
+            "legacy_caption_pid": 29026,
+            "legacy_language_pid": 20,
+            "text": "Wyloguj się powiodło",
+            "auto_translated": "Wyloguj się powiodło"
+        },
+        "jv": {
+            "legacy_caption_pid": 29027,
+            "legacy_language_pid": 21,
+            "text": "Mlebu metu sukses",
+            "auto_translated": "Mlebu metu sukses"
+        },
+        "pa": {
+            "legacy_caption_pid": 29028,
+            "legacy_language_pid": 22,
+            "text": "ਲਾਗਆਉਟ ਸਫ਼ਲ ਸੀ",
+            "auto_translated": "ਲਾਗਆਉਟ ਸਫ਼ਲ ਸੀ"
+        },
+        "th": {
+            "legacy_caption_pid": 29029,
+            "legacy_language_pid": 23,
+            "text": "ออกจากระบบก็ประสบความสำเร็จ",
+            "auto_translated": "ออกจากระบบก็ประสบความสำเร็จ"
+        },
+        "te": {
+            "legacy_caption_pid": 34968,
+            "legacy_language_pid": 24,
+            "text": "లాగ్ అవుట్ విజయవంతమైంది",
+            "auto_translated": "లాగ్ అవుట్ విజయవంతమైంది"
+        },
+        "mr": {
+            "legacy_caption_pid": 34969,
+            "legacy_language_pid": 25,
+            "text": "लॉग आउट करा यशस्वी झाले",
+            "auto_translated": "लॉग आउट करा यशस्वी झाले"
+        },
+        "ur": {
+            "legacy_caption_pid": 34970,
+            "legacy_language_pid": 26,
+            "text": "کامیاب رہا لاگ آؤٹ",
+            "auto_translated": "کامیاب رہا لاگ آؤٹ"
+        },
+        "gu": {
+            "legacy_caption_pid": 34971,
+            "legacy_language_pid": 27,
+            "text": "લૉગ આઉટ સફળ રહ્યો હતો",
+            "auto_translated": "લૉગ આઉટ સફળ રહ્યો હતો"
+        },
+        "uk": {
+            "legacy_caption_pid": 34972,
+            "legacy_language_pid": 28,
+            "text": "Вийти був успішним",
+            "auto_translated": "Вийти був успішним"
+        },
+        "ml": {
+            "legacy_caption_pid": 34973,
+            "legacy_language_pid": 29,
+            "text": "ലോഗ് ഔട്ട് വിജയകരമായിരുന്നു",
+            "auto_translated": "ലോഗ് ഔട്ട് വിജയകരമായിരുന്നു"
+        },
+        "kn": {
+            "legacy_caption_pid": 34974,
+            "legacy_language_pid": 30,
+            "text": "ಲಾಗ್ ಔಟ್ ಯಶಸ್ವಿಯಾಯಿತು",
+            "auto_translated": "ಲಾಗ್ ಔಟ್ ಯಶಸ್ವಿಯಾಯಿತು"
+        },
+        "su": {
+            "legacy_caption_pid": 34975,
+            "legacy_language_pid": 31,
+            "text": "Kaluar éta suksés",
+            "auto_translated": "Kaluar éta suksés"
+        },
+        "ku": {
+            "legacy_caption_pid": 34976,
+            "legacy_language_pid": 32,
+            "text": "Log out serkeftî bû",
+            "auto_translated": "Log out serkeftî bû"
+        },
+        "ps": {
+            "legacy_caption_pid": 34977,
+            "legacy_language_pid": 33,
+            "text": "وتنه کې بریالی وو",
+            "auto_translated": "وتنه کې بریالی وو"
+        },
+        "ro": {
+            "legacy_caption_pid": 34978,
+            "legacy_language_pid": 34,
+            "text": "Log out a fost de succes",
+            "auto_translated": "Log out a fost de succes"
+        },
+        "id": {
+            "legacy_caption_pid": 34979,
+            "legacy_language_pid": 35,
+            "text": "Log out berhasil",
+            "auto_translated": "Log out berhasil"
+        },
+        "sd": {
+            "legacy_caption_pid": 34980,
+            "legacy_language_pid": 36,
+            "text": "ٻاهر جو لاگ ان ڪامياب ٿي ويو",
+            "auto_translated": "ٻاهر جو لاگ ان ڪامياب ٿي ويو"
+        },
+        "af": {
+            "legacy_caption_pid": 34981,
+            "legacy_language_pid": 37,
+            "text": "Teken uit was suksesvol",
+            "auto_translated": "Teken uit was suksesvol"
+        },
+        "sw": {
+            "legacy_caption_pid": 34982,
+            "legacy_language_pid": 38,
+            "text": "Ondoka kwenye ilifanikiwa",
+            "auto_translated": "Ondoka kwenye ilifanikiwa"
+        },
+        "lo": {
+            "legacy_caption_pid": 34983,
+            "legacy_language_pid": 39,
+            "text": "ອອກຈາກລະບົບສໍາເລັດແລ້ວ",
+            "auto_translated": "ອອກຈາກລະບົບສໍາເລັດແລ້ວ"
+        },
+        "nl": {
+            "legacy_caption_pid": 34984,
+            "legacy_language_pid": 40,
+            "text": "Afmelden was succesvol",
+            "auto_translated": "Afmelden was succesvol"
+        },
+        "tl": {
+            "legacy_caption_pid": 34985,
+            "legacy_language_pid": 41,
+            "text": "Mag-log out ay matagumpay",
+            "auto_translated": "Mag-log out ay matagumpay"
+        },
+        "ne": {
+            "legacy_caption_pid": 34986,
+            "legacy_language_pid": 42,
+            "text": "लग आउट सफल भयो",
+            "auto_translated": "लग आउट सफल भयो"
+        },
+        "hu": {
+            "legacy_caption_pid": 34987,
+            "legacy_language_pid": 43,
+            "text": "Kijelentkezés sikeres volt",
+            "auto_translated": "Kijelentkezés sikeres volt"
+        },
+        "cs": {
+            "legacy_caption_pid": 34988,
+            "legacy_language_pid": 44,
+            "text": "Odhlásit byla úspěšná",
+            "auto_translated": "Odhlásit byla úspěšná"
+        },
+        "el": {
+            "legacy_caption_pid": 34989,
+            "legacy_language_pid": 45,
+            "text": "Αποσύνδεση ήταν επιτυχής",
+            "auto_translated": "Αποσύνδεση ήταν επιτυχής"
+        },
+        "sv": {
+            "legacy_caption_pid": 34990,
+            "legacy_language_pid": 46,
+            "text": "Logga ut lyckades",
+            "auto_translated": "Logga ut lyckades"
+        },
+        "kk": {
+            "legacy_caption_pid": 34991,
+            "legacy_language_pid": 47,
+            "text": "Шығу табысты болды",
+            "auto_translated": "Шығу табысты болды"
+        },
+        "fi": {
+            "legacy_caption_pid": 34992,
+            "legacy_language_pid": 48,
+            "text": "Kirjaudu ulos onnistui",
+            "auto_translated": "Kirjaudu ulos onnistui"
+        },
+        "da": {
+            "legacy_caption_pid": 34993,
+            "legacy_language_pid": 49,
+            "text": "Log ud var en succes",
+            "auto_translated": "Log ud var en succes"
+        },
+        "he": {
+            "legacy_caption_pid": 34994,
+            "legacy_language_pid": 50,
+            "text": "התנתקתי היה מוצלח",
+            "auto_translated": "התנתקתי היה מוצלח"
+        },
+        "no": {
+            "legacy_caption_pid": 34995,
+            "legacy_language_pid": 51,
+            "text": "Logg ut var vellykket",
+            "auto_translated": "Logg ut var vellykket"
+        }
+    }
+}

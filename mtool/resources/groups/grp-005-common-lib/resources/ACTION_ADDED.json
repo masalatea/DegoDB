@@ -1,0 +1,321 @@
+{
+    "resource_key": "ACTION_ADDED",
+    "legacy_resource_pid": 574,
+    "base_group_key": "grp-005-common-lib",
+    "additional_group_keys": [],
+    "key_for_update": "pcbNElbivMz54laNKJKoLUvA5GUCujCdfydLL8QeJwtpIYoLmsgZYUMEPFBoHkbom0ezDWZeDIrmPZ6uIHH0UaLwAF8scunJguoHixTBZZcYmLQVNNCvvPz4LZFhazZs",
+    "sort_group": "ACTION",
+    "key_name": "ACTION_ADDED",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": false,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 1341,
+            "legacy_language_pid": 1,
+            "text": "追加",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 1342,
+            "legacy_language_pid": 2,
+            "text": "Added",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 6508,
+            "legacy_language_pid": 3,
+            "text": "追加",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 6509,
+            "legacy_language_pid": 4,
+            "text": "추가했습니다",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 10360,
+            "legacy_language_pid": 5,
+            "text": "Añadido",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 10361,
+            "legacy_language_pid": 6,
+            "text": "adicionado",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 10362,
+            "legacy_language_pid": 7,
+            "text": "追加",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 16251,
+            "legacy_language_pid": 8,
+            "text": "Ajoutée",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 16252,
+            "legacy_language_pid": 9,
+            "text": "जोड़ा",
+            "auto_translated": ""
+        },
+        "ar": {
+            "legacy_caption_pid": 29254,
+            "legacy_language_pid": 10,
+            "text": "إضافة",
+            "auto_translated": "إضافة"
+        },
+        "fa": {
+            "legacy_caption_pid": 29255,
+            "legacy_language_pid": 11,
+            "text": "اضافه",
+            "auto_translated": "اضافه"
+        },
+        "de": {
+            "legacy_caption_pid": 29256,
+            "legacy_language_pid": 12,
+            "text": "Zusatz",
+            "auto_translated": "Zusatz"
+        },
+        "ru": {
+            "legacy_caption_pid": 29257,
+            "legacy_language_pid": 13,
+            "text": "прибавление",
+            "auto_translated": "прибавление"
+        },
+        "ms": {
+            "legacy_caption_pid": 29258,
+            "legacy_language_pid": 14,
+            "text": "Addition",
+            "auto_translated": "Addition"
+        },
+        "ta": {
+            "legacy_caption_pid": 29259,
+            "legacy_language_pid": 15,
+            "text": "கூடுதலாக",
+            "auto_translated": "கூடுதலாக"
+        },
+        "it": {
+            "legacy_caption_pid": 29260,
+            "legacy_language_pid": 16,
+            "text": "aggiunta",
+            "auto_translated": "aggiunta"
+        },
+        "bn": {
+            "legacy_caption_pid": 29261,
+            "legacy_language_pid": 17,
+            "text": "সংযোজন",
+            "auto_translated": "সংযোজন"
+        },
+        "tr": {
+            "legacy_caption_pid": 29262,
+            "legacy_language_pid": 18,
+            "text": "ilave",
+            "auto_translated": "ilave"
+        },
+        "vi": {
+            "legacy_caption_pid": 29263,
+            "legacy_language_pid": 19,
+            "text": "thêm vào",
+            "auto_translated": "thêm vào"
+        },
+        "pl": {
+            "legacy_caption_pid": 29264,
+            "legacy_language_pid": 20,
+            "text": "dodatek",
+            "auto_translated": "dodatek"
+        },
+        "jv": {
+            "legacy_caption_pid": 29265,
+            "legacy_language_pid": 21,
+            "text": "Saliyane",
+            "auto_translated": "Saliyane"
+        },
+        "pa": {
+            "legacy_caption_pid": 29266,
+            "legacy_language_pid": 22,
+            "text": "ਇਸ ਦੇ ਨਾਲ ਹੀ",
+            "auto_translated": "ਇਸ ਦੇ ਨਾਲ ਹੀ"
+        },
+        "th": {
+            "legacy_caption_pid": 29267,
+            "legacy_language_pid": 23,
+            "text": "การเพิ่ม",
+            "auto_translated": "การเพิ่ม"
+        },
+        "te": {
+            "legacy_caption_pid": 37908,
+            "legacy_language_pid": 24,
+            "text": "అదనంగా",
+            "auto_translated": "అదనంగా"
+        },
+        "mr": {
+            "legacy_caption_pid": 37909,
+            "legacy_language_pid": 25,
+            "text": "बेरीज",
+            "auto_translated": "बेरीज"
+        },
+        "ur": {
+            "legacy_caption_pid": 37910,
+            "legacy_language_pid": 26,
+            "text": "اضافہ",
+            "auto_translated": "اضافہ"
+        },
+        "gu": {
+            "legacy_caption_pid": 37911,
+            "legacy_language_pid": 27,
+            "text": "વધુમાં",
+            "auto_translated": "વધુમાં"
+        },
+        "uk": {
+            "legacy_caption_pid": 37912,
+            "legacy_language_pid": 28,
+            "text": "додаток",
+            "auto_translated": "додаток"
+        },
+        "ml": {
+            "legacy_caption_pid": 37913,
+            "legacy_language_pid": 29,
+            "text": "ചേർത്ത",
+            "auto_translated": "ചേർത്ത"
+        },
+        "kn": {
+            "legacy_caption_pid": 37914,
+            "legacy_language_pid": 30,
+            "text": "ಸಂಕಲನ",
+            "auto_translated": "ಸಂಕಲನ"
+        },
+        "su": {
+            "legacy_caption_pid": 37915,
+            "legacy_language_pid": 31,
+            "text": "tambahan",
+            "auto_translated": "tambahan"
+        },
+        "ku": {
+            "legacy_caption_pid": 37916,
+            "legacy_language_pid": 32,
+            "text": "Ji bilî",
+            "auto_translated": "Ji bilî"
+        },
+        "ps": {
+            "legacy_caption_pid": 37917,
+            "legacy_language_pid": 33,
+            "text": "سربېره",
+            "auto_translated": "سربېره"
+        },
+        "ro": {
+            "legacy_caption_pid": 37918,
+            "legacy_language_pid": 34,
+            "text": "plus",
+            "auto_translated": "plus"
+        },
+        "id": {
+            "legacy_caption_pid": 37919,
+            "legacy_language_pid": 35,
+            "text": "tambahan",
+            "auto_translated": "tambahan"
+        },
+        "sd": {
+            "legacy_caption_pid": 37920,
+            "legacy_language_pid": 36,
+            "text": "ان کان سواء",
+            "auto_translated": "ان کان سواء"
+        },
+        "af": {
+            "legacy_caption_pid": 37921,
+            "legacy_language_pid": 37,
+            "text": "Daarbenewens",
+            "auto_translated": "Daarbenewens"
+        },
+        "sw": {
+            "legacy_caption_pid": 37922,
+            "legacy_language_pid": 38,
+            "text": "Aidha",
+            "auto_translated": "Aidha"
+        },
+        "lo": {
+            "legacy_caption_pid": 37923,
+            "legacy_language_pid": 39,
+            "text": "ນອກຈາກນັ້ນ",
+            "auto_translated": "ນອກຈາກນັ້ນ"
+        },
+        "nl": {
+            "legacy_caption_pid": 37924,
+            "legacy_language_pid": 40,
+            "text": "toevoeging",
+            "auto_translated": "toevoeging"
+        },
+        "tl": {
+            "legacy_caption_pid": 37925,
+            "legacy_language_pid": 41,
+            "text": "dagdag",
+            "auto_translated": "dagdag"
+        },
+        "ne": {
+            "legacy_caption_pid": 37926,
+            "legacy_language_pid": 42,
+            "text": "साथै",
+            "auto_translated": "साथै"
+        },
+        "hu": {
+            "legacy_caption_pid": 37927,
+            "legacy_language_pid": 43,
+            "text": "kiegészítés",
+            "auto_translated": "kiegészítés"
+        },
+        "cs": {
+            "legacy_caption_pid": 37928,
+            "legacy_language_pid": 44,
+            "text": "přidání",
+            "auto_translated": "přidání"
+        },
+        "el": {
+            "legacy_caption_pid": 37929,
+            "legacy_language_pid": 45,
+            "text": "πρόσθεση",
+            "auto_translated": "πρόσθεση"
+        },
+        "sv": {
+            "legacy_caption_pid": 37930,
+            "legacy_language_pid": 46,
+            "text": "Dessutom",
+            "auto_translated": "Dessutom"
+        },
+        "kk": {
+            "legacy_caption_pid": 37931,
+            "legacy_language_pid": 47,
+            "text": "қосу",
+            "auto_translated": "қосу"
+        },
+        "fi": {
+            "legacy_caption_pid": 37932,
+            "legacy_language_pid": 48,
+            "text": "lisäys",
+            "auto_translated": "lisäys"
+        },
+        "da": {
+            "legacy_caption_pid": 37933,
+            "legacy_language_pid": 49,
+            "text": "Addition",
+            "auto_translated": "Addition"
+        },
+        "he": {
+            "legacy_caption_pid": 37934,
+            "legacy_language_pid": 50,
+            "text": "תוספת",
+            "auto_translated": "תוספת"
+        },
+        "no": {
+            "legacy_caption_pid": 37935,
+            "legacy_language_pid": 51,
+            "text": "Tilsetting",
+            "auto_translated": "Tilsetting"
+        }
+    }
+}

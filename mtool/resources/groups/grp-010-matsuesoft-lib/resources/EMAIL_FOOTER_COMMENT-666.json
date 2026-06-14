@@ -1,0 +1,321 @@
+{
+    "resource_key": "EMAIL_FOOTER_COMMENT-666",
+    "legacy_resource_pid": 666,
+    "base_group_key": "grp-010-matsuesoft-lib",
+    "additional_group_keys": [],
+    "key_for_update": "G7SiBTD8ChvvKiotBY2kO9CxJi1CGPERB03gu1jJcDLzf5eYhWDqQdUco5YjOpnUb3dv2Hz5vjXUUDvjII1tIWOILwNunDxzXo8WaMI0FnK2y8HBwUDFke14tMdOHeoS",
+    "sort_group": "EMAIL FOOTER",
+    "key_name": "EMAIL_FOOTER_COMMENT",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": false,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 4538,
+            "legacy_language_pid": 1,
+            "text": "$DOMAINNAMECAPTION_JP - Official Home Page",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 4539,
+            "legacy_language_pid": 2,
+            "text": "$DOMAINNAMECAPTION_EN - Official Home Page",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 7276,
+            "legacy_language_pid": 3,
+            "text": "$DOMAINNAMECAPTION_ZH - 官方主页",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 7277,
+            "legacy_language_pid": 4,
+            "text": "$DOMAINNAMECAPTION_KO - 공식 홈페이지",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 9986,
+            "legacy_language_pid": 5,
+            "text": "$DOMAINNAMECAPTION_ES - Página Oficial",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 9987,
+            "legacy_language_pid": 6,
+            "text": "$DOMAINNAMECAPTION_PT - Página inicial oficial",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 10007,
+            "legacy_language_pid": 7,
+            "text": "$DOMAINNAMECAPTION_TZH - 官方主頁",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 16405,
+            "legacy_language_pid": 8,
+            "text": "$DOMAINNAMECAPTION_FR - Page d'accueil officielle",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 16406,
+            "legacy_language_pid": 9,
+            "text": "$DOMAINNAMECAPTION_HI - आधिकारिक होम पेज",
+            "auto_translated": ""
+        },
+        "ar": {
+            "legacy_caption_pid": 30710,
+            "legacy_language_pid": 10,
+            "text": "$DOMAINNAMECAPTION_AR - الصفحة الرئيسية الرسمية",
+            "auto_translated": "$DOMAINNAMECAPTION_AR - الصفحة الرئيسية الرسمية"
+        },
+        "fa": {
+            "legacy_caption_pid": 30711,
+            "legacy_language_pid": 11,
+            "text": "$DOMAINNAMECAPTION_FA - صفحه اصلی رسمی",
+            "auto_translated": "$DOMAINNAMECAPTION_FA - صفحه اصلی رسمی"
+        },
+        "de": {
+            "legacy_caption_pid": 30712,
+            "legacy_language_pid": 12,
+            "text": "$DOMAINNAMECAPTION_DE - Offizielle Homepage",
+            "auto_translated": "$DOMAINNAMECAPTION_DE - Offizielle Homepage"
+        },
+        "ru": {
+            "legacy_caption_pid": 30713,
+            "legacy_language_pid": 13,
+            "text": "$DOMAINNAMECAPTION_RU - Официальная домашняя страница",
+            "auto_translated": "$DOMAINNAMECAPTION_RU - Официальная домашняя страница"
+        },
+        "ms": {
+            "legacy_caption_pid": 30714,
+            "legacy_language_pid": 14,
+            "text": "$DOMAINNAMECAPTION_MS - Laman Utama Rasmi",
+            "auto_translated": "$DOMAINNAMECAPTION_MS - Laman Utama Rasmi"
+        },
+        "ta": {
+            "legacy_caption_pid": 30715,
+            "legacy_language_pid": 15,
+            "text": "$DOMAINNAMECAPTION_TA - அதிகாரப்பூர்வ முகப்பு பக்கம்",
+            "auto_translated": "$DOMAINNAMECAPTION_TA - அதிகாரப்பூர்வ முகப்பு பக்கம்"
+        },
+        "it": {
+            "legacy_caption_pid": 30716,
+            "legacy_language_pid": 16,
+            "text": "$DOMAINNAMECAPTION_IT - Home Page ufficiale",
+            "auto_translated": "$DOMAINNAMECAPTION_IT - Home Page ufficiale"
+        },
+        "bn": {
+            "legacy_caption_pid": 30717,
+            "legacy_language_pid": 17,
+            "text": "$DOMAINNAMECAPTION_BN - অফিসিয়াল হোম পেজ",
+            "auto_translated": "$DOMAINNAMECAPTION_BN - অফিসিয়াল হোম পেজ"
+        },
+        "tr": {
+            "legacy_caption_pid": 30718,
+            "legacy_language_pid": 18,
+            "text": "$DOMAINNAMECAPTION_TR - Resmi Ev Sayfası",
+            "auto_translated": "$DOMAINNAMECAPTION_TR - Resmi Ev Sayfası"
+        },
+        "vi": {
+            "legacy_caption_pid": 30719,
+            "legacy_language_pid": 19,
+            "text": "$DOMAINNAMECAPTION_VI - Trang chủ chính thức",
+            "auto_translated": "$DOMAINNAMECAPTION_VI - Trang chủ chính thức"
+        },
+        "pl": {
+            "legacy_caption_pid": 30720,
+            "legacy_language_pid": 20,
+            "text": "$DOMAINNAMECAPTION_PL - oficjalna strona domowa",
+            "auto_translated": "$DOMAINNAMECAPTION_PL - oficjalna strona domowa"
+        },
+        "jv": {
+            "legacy_caption_pid": 30721,
+            "legacy_language_pid": 21,
+            "text": "$DOMAINNAMECAPTION_JV - Official Home Page",
+            "auto_translated": "$DOMAINNAMECAPTION_JV - Official Home Page"
+        },
+        "pa": {
+            "legacy_caption_pid": 30722,
+            "legacy_language_pid": 22,
+            "text": "$DOMAINNAMECAPTION_PA - ਸਰਕਾਰੀ ਮੁੱਖ ਪੰਨਾ",
+            "auto_translated": "$DOMAINNAMECAPTION_PA - ਸਰਕਾਰੀ ਮੁੱਖ ਪੰਨਾ"
+        },
+        "th": {
+            "legacy_caption_pid": 30723,
+            "legacy_language_pid": 23,
+            "text": "$DOMAINNAMECAPTION_TH - หน้าแรกอย่างเป็นทางการ",
+            "auto_translated": "$DOMAINNAMECAPTION_TH - หน้าแรกอย่างเป็นทางการ"
+        },
+        "te": {
+            "legacy_caption_pid": 37964,
+            "legacy_language_pid": 24,
+            "text": "$DOMAINNAMECAPTION_TE - అధికారిక హోం పేజి",
+            "auto_translated": "$DOMAINNAMECAPTION_TE - అధికారిక హోం పేజి"
+        },
+        "mr": {
+            "legacy_caption_pid": 37965,
+            "legacy_language_pid": 25,
+            "text": "$DOMAINNAMECAPTION_MR - अधिकृत मुख्यपृष्ठ",
+            "auto_translated": "$DOMAINNAMECAPTION_MR - अधिकृत मुख्यपृष्ठ"
+        },
+        "ur": {
+            "legacy_caption_pid": 37966,
+            "legacy_language_pid": 26,
+            "text": "$DOMAINNAMECAPTION_UR - سرکاری ہوم پیج",
+            "auto_translated": "$DOMAINNAMECAPTION_UR - سرکاری ہوم پیج"
+        },
+        "gu": {
+            "legacy_caption_pid": 37967,
+            "legacy_language_pid": 27,
+            "text": "$DOMAINNAMECAPTION_GU - સત્તાવાર હોમ પેજ",
+            "auto_translated": "$DOMAINNAMECAPTION_GU - સત્તાવાર હોમ પેજ"
+        },
+        "uk": {
+            "legacy_caption_pid": 37968,
+            "legacy_language_pid": 28,
+            "text": "$DOMAINNAMECAPTION_UK - Офіційний Головна сторінка",
+            "auto_translated": "$DOMAINNAMECAPTION_UK - Офіційний Головна сторінка"
+        },
+        "ml": {
+            "legacy_caption_pid": 37969,
+            "legacy_language_pid": 29,
+            "text": "$DOMAINNAMECAPTION_ML - ഔദ്യോഗിക ഹോം പേജ്",
+            "auto_translated": "$DOMAINNAMECAPTION_ML - ഔദ്യോഗിക ഹോം പേജ്"
+        },
+        "kn": {
+            "legacy_caption_pid": 37970,
+            "legacy_language_pid": 30,
+            "text": "$DOMAINNAMECAPTION_KN - ಅಧಿಕೃತ ಮುಖಪುಟ",
+            "auto_translated": "$DOMAINNAMECAPTION_KN - ಅಧಿಕೃತ ಮುಖಪುಟ"
+        },
+        "su": {
+            "legacy_caption_pid": 37971,
+            "legacy_language_pid": 31,
+            "text": "$DOMAINNAMECAPTION_SU - resmi Imah Page",
+            "auto_translated": "$DOMAINNAMECAPTION_SU - resmi Imah Page"
+        },
+        "ku": {
+            "legacy_caption_pid": 37972,
+            "legacy_language_pid": 32,
+            "text": "$DOMAINNAMECAPTION_KU - Official Page Home",
+            "auto_translated": "$DOMAINNAMECAPTION_KU - Official Page Home"
+        },
+        "ps": {
+            "legacy_caption_pid": 37973,
+            "legacy_language_pid": 33,
+            "text": "$DOMAINNAMECAPTION_PS - چارواکي - لمړی مخ",
+            "auto_translated": "$DOMAINNAMECAPTION_PS - چارواکي - لمړی مخ"
+        },
+        "ro": {
+            "legacy_caption_pid": 37974,
+            "legacy_language_pid": 34,
+            "text": "$DOMAINNAMECAPTION_RO - Official Pagina Principală",
+            "auto_translated": "$DOMAINNAMECAPTION_RO - Official Pagina Principală"
+        },
+        "id": {
+            "legacy_caption_pid": 37975,
+            "legacy_language_pid": 35,
+            "text": "$DOMAINNAMECAPTION_ID - Official Halaman",
+            "auto_translated": "$DOMAINNAMECAPTION_ID - Official Halaman"
+        },
+        "sd": {
+            "legacy_caption_pid": 37976,
+            "legacy_language_pid": 36,
+            "text": "$DOMAINNAMECAPTION_SD - سرڪاري گهر جي صفحي",
+            "auto_translated": "$DOMAINNAMECAPTION_SD - سرڪاري گهر جي صفحي"
+        },
+        "af": {
+            "legacy_caption_pid": 37977,
+            "legacy_language_pid": 37,
+            "text": "$DOMAINNAMECAPTION_AF - Amptelike Tuisblad",
+            "auto_translated": "$DOMAINNAMECAPTION_AF - Amptelike Tuisblad"
+        },
+        "sw": {
+            "legacy_caption_pid": 37978,
+            "legacy_language_pid": 38,
+            "text": "$DOMAINNAMECAPTION_SW - Official Ukurasa",
+            "auto_translated": "$DOMAINNAMECAPTION_SW - Official Ukurasa"
+        },
+        "lo": {
+            "legacy_caption_pid": 37979,
+            "legacy_language_pid": 39,
+            "text": "$DOMAINNAMECAPTION_LO - ທີ່ເປັນທາງການຫນ້າທໍາອິດ",
+            "auto_translated": "$DOMAINNAMECAPTION_LO - ທີ່ເປັນທາງການຫນ້າທໍາອິດ"
+        },
+        "nl": {
+            "legacy_caption_pid": 37980,
+            "legacy_language_pid": 40,
+            "text": "$DOMAINNAMECAPTION_NL - Official Homepage",
+            "auto_translated": "$DOMAINNAMECAPTION_NL - Official Homepage"
+        },
+        "tl": {
+            "legacy_caption_pid": 37981,
+            "legacy_language_pid": 41,
+            "text": "$DOMAINNAMECAPTION_TL - Official Home Page",
+            "auto_translated": "$DOMAINNAMECAPTION_TL - Official Home Page"
+        },
+        "ne": {
+            "legacy_caption_pid": 37982,
+            "legacy_language_pid": 42,
+            "text": "$DOMAINNAMECAPTION_NE - आधिकारिक पृष्ठ",
+            "auto_translated": "$DOMAINNAMECAPTION_NE - आधिकारिक पृष्ठ"
+        },
+        "hu": {
+            "legacy_caption_pid": 37983,
+            "legacy_language_pid": 43,
+            "text": "$DOMAINNAMECAPTION_HU - Hivatalos Honlap",
+            "auto_translated": "$DOMAINNAMECAPTION_HU - Hivatalos Honlap"
+        },
+        "cs": {
+            "legacy_caption_pid": 37984,
+            "legacy_language_pid": 44,
+            "text": "$DOMAINNAMECAPTION_CS - oficiální stránka",
+            "auto_translated": "$DOMAINNAMECAPTION_CS - oficiální stránka"
+        },
+        "el": {
+            "legacy_caption_pid": 37985,
+            "legacy_language_pid": 45,
+            "text": "$DOMAINNAMECAPTION_EL - Επίσημη Αρχική Σελίδα",
+            "auto_translated": "$DOMAINNAMECAPTION_EL - Επίσημη Αρχική Σελίδα"
+        },
+        "sv": {
+            "legacy_caption_pid": 37986,
+            "legacy_language_pid": 46,
+            "text": "$DOMAINNAMECAPTION_SV - Officiell Hemsida",
+            "auto_translated": "$DOMAINNAMECAPTION_SV - Officiell Hemsida"
+        },
+        "kk": {
+            "legacy_caption_pid": 37987,
+            "legacy_language_pid": 47,
+            "text": "$DOMAINNAMECAPTION_KK - Ресми Басты бет",
+            "auto_translated": "$DOMAINNAMECAPTION_KK - Ресми Басты бет"
+        },
+        "fi": {
+            "legacy_caption_pid": 37988,
+            "legacy_language_pid": 48,
+            "text": "$DOMAINNAMECAPTION_FI - virallinen kotisivu",
+            "auto_translated": "$DOMAINNAMECAPTION_FI - virallinen kotisivu"
+        },
+        "da": {
+            "legacy_caption_pid": 37989,
+            "legacy_language_pid": 49,
+            "text": "$DOMAINNAMECAPTION_DA - officielle hjemmeside",
+            "auto_translated": "$DOMAINNAMECAPTION_DA - officielle hjemmeside"
+        },
+        "he": {
+            "legacy_caption_pid": 37990,
+            "legacy_language_pid": 50,
+            "text": "$DOMAINNAMECAPTION_HE - דף הבית הרשמי",
+            "auto_translated": "$DOMAINNAMECAPTION_HE - דף הבית הרשמי"
+        },
+        "no": {
+            "legacy_caption_pid": 37991,
+            "legacy_language_pid": 51,
+            "text": "$DOMAINNAMECAPTION_NO - Offisiell Hjemmeside",
+            "auto_translated": "$DOMAINNAMECAPTION_NO - Offisiell Hjemmeside"
+        }
+    }
+}

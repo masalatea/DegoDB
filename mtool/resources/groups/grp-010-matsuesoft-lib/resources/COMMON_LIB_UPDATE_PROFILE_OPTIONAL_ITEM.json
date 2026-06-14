@@ -1,0 +1,321 @@
+{
+    "resource_key": "COMMON_LIB_UPDATE_PROFILE_OPTIONAL_ITEM",
+    "legacy_resource_pid": 1616,
+    "base_group_key": "grp-010-matsuesoft-lib",
+    "additional_group_keys": [],
+    "key_for_update": "1FCesffu8H21CXdrI2ih1SwTMt9rpM3FYa6f0ADOUYGpGazzALUjPhU6tiz3712rYFs0n6xLY3HwL57mN5M2XXqIIxulFc0t36UcaWTC8BmTueAPhDVOIUkScZ7wS266",
+    "sort_group": "PROFILE",
+    "key_name": "COMMON_LIB_UPDATE_PROFILE_OPTIONAL_ITEM",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": false,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 7246,
+            "legacy_language_pid": 1,
+            "text": "省略可",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 7247,
+            "legacy_language_pid": 2,
+            "text": "Optional",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 7248,
+            "legacy_language_pid": 3,
+            "text": "可省略",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 7249,
+            "legacy_language_pid": 4,
+            "text": "생략가능",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 11156,
+            "legacy_language_pid": 5,
+            "text": "Opcional",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 11157,
+            "legacy_language_pid": 6,
+            "text": "Opcional ",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 11158,
+            "legacy_language_pid": 7,
+            "text": "省略可",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 17281,
+            "legacy_language_pid": 8,
+            "text": "Optionnel",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 17282,
+            "legacy_language_pid": 9,
+            "text": "ऐच्छिक",
+            "auto_translated": ""
+        },
+        "ar": {
+            "legacy_caption_pid": 32966,
+            "legacy_language_pid": 10,
+            "text": "اختياري",
+            "auto_translated": "اختياري"
+        },
+        "fa": {
+            "legacy_caption_pid": 32967,
+            "legacy_language_pid": 11,
+            "text": "اختیاری",
+            "auto_translated": "اختیاری"
+        },
+        "de": {
+            "legacy_caption_pid": 32968,
+            "legacy_language_pid": 12,
+            "text": "fakultativ",
+            "auto_translated": "fakultativ"
+        },
+        "ru": {
+            "legacy_caption_pid": 32969,
+            "legacy_language_pid": 13,
+            "text": "опциональный",
+            "auto_translated": "опциональный"
+        },
+        "ms": {
+            "legacy_caption_pid": 32970,
+            "legacy_language_pid": 14,
+            "text": "pilihan",
+            "auto_translated": "pilihan"
+        },
+        "ta": {
+            "legacy_caption_pid": 32971,
+            "legacy_language_pid": 15,
+            "text": "விருப்ப",
+            "auto_translated": "விருப்ப"
+        },
+        "it": {
+            "legacy_caption_pid": 32972,
+            "legacy_language_pid": 16,
+            "text": "opzionale",
+            "auto_translated": "opzionale"
+        },
+        "bn": {
+            "legacy_caption_pid": 32973,
+            "legacy_language_pid": 17,
+            "text": "ঐচ্ছিক",
+            "auto_translated": "ঐচ্ছিক"
+        },
+        "tr": {
+            "legacy_caption_pid": 32974,
+            "legacy_language_pid": 18,
+            "text": "isteğe bağlı",
+            "auto_translated": "isteğe bağlı"
+        },
+        "vi": {
+            "legacy_caption_pid": 32975,
+            "legacy_language_pid": 19,
+            "text": "không bắt buộc",
+            "auto_translated": "không bắt buộc"
+        },
+        "pl": {
+            "legacy_caption_pid": 32976,
+            "legacy_language_pid": 20,
+            "text": "fakultatywny",
+            "auto_translated": "fakultatywny"
+        },
+        "jv": {
+            "legacy_caption_pid": 32977,
+            "legacy_language_pid": 21,
+            "text": "pilihan",
+            "auto_translated": "pilihan"
+        },
+        "pa": {
+            "legacy_caption_pid": 32978,
+            "legacy_language_pid": 22,
+            "text": "ਅਖ਼ਤਿਆਰੀ",
+            "auto_translated": "ਅਖ਼ਤਿਆਰੀ"
+        },
+        "th": {
+            "legacy_caption_pid": 32979,
+            "legacy_language_pid": 23,
+            "text": "ไม่จำเป็น",
+            "auto_translated": "ไม่จำเป็น"
+        },
+        "te": {
+            "legacy_caption_pid": 39700,
+            "legacy_language_pid": 24,
+            "text": "ఐచ్ఛికము",
+            "auto_translated": "ఐచ్ఛికము"
+        },
+        "mr": {
+            "legacy_caption_pid": 39701,
+            "legacy_language_pid": 25,
+            "text": "पर्यायी",
+            "auto_translated": "पर्यायी"
+        },
+        "ur": {
+            "legacy_caption_pid": 39702,
+            "legacy_language_pid": 26,
+            "text": "اختیاری",
+            "auto_translated": "اختیاری"
+        },
+        "gu": {
+            "legacy_caption_pid": 39703,
+            "legacy_language_pid": 27,
+            "text": "વૈકલ્પિક",
+            "auto_translated": "વૈકલ્પિક"
+        },
+        "uk": {
+            "legacy_caption_pid": 39704,
+            "legacy_language_pid": 28,
+            "text": "опціональний",
+            "auto_translated": "опціональний"
+        },
+        "ml": {
+            "legacy_caption_pid": 39705,
+            "legacy_language_pid": 29,
+            "text": "ഓപ്ഷണൽ",
+            "auto_translated": "ഓപ്ഷണൽ"
+        },
+        "kn": {
+            "legacy_caption_pid": 39706,
+            "legacy_language_pid": 30,
+            "text": "ಐಚ್ಛಿಕ",
+            "auto_translated": "ಐಚ್ಛಿಕ"
+        },
+        "su": {
+            "legacy_caption_pid": 39707,
+            "legacy_language_pid": 31,
+            "text": "meunang milih",
+            "auto_translated": "meunang milih"
+        },
+        "ku": {
+            "legacy_caption_pid": 39708,
+            "legacy_language_pid": 32,
+            "text": "Bijarî",
+            "auto_translated": "Bijarî"
+        },
+        "ps": {
+            "legacy_caption_pid": 39709,
+            "legacy_language_pid": 33,
+            "text": "اختیاري",
+            "auto_translated": "اختیاري"
+        },
+        "ro": {
+            "legacy_caption_pid": 39710,
+            "legacy_language_pid": 34,
+            "text": "facultativ",
+            "auto_translated": "facultativ"
+        },
+        "id": {
+            "legacy_caption_pid": 39711,
+            "legacy_language_pid": 35,
+            "text": "opsional",
+            "auto_translated": "opsional"
+        },
+        "sd": {
+            "legacy_caption_pid": 39712,
+            "legacy_language_pid": 36,
+            "text": "اختياري",
+            "auto_translated": "اختياري"
+        },
+        "af": {
+            "legacy_caption_pid": 39713,
+            "legacy_language_pid": 37,
+            "text": "opsioneel",
+            "auto_translated": "opsioneel"
+        },
+        "sw": {
+            "legacy_caption_pid": 39714,
+            "legacy_language_pid": 38,
+            "text": "Hiari",
+            "auto_translated": "Hiari"
+        },
+        "lo": {
+            "legacy_caption_pid": 39715,
+            "legacy_language_pid": 39,
+            "text": "ທາງເລືອກ",
+            "auto_translated": "ທາງເລືອກ"
+        },
+        "nl": {
+            "legacy_caption_pid": 39716,
+            "legacy_language_pid": 40,
+            "text": "facultatief",
+            "auto_translated": "facultatief"
+        },
+        "tl": {
+            "legacy_caption_pid": 39717,
+            "legacy_language_pid": 41,
+            "text": "opsyonal",
+            "auto_translated": "opsyonal"
+        },
+        "ne": {
+            "legacy_caption_pid": 39718,
+            "legacy_language_pid": 42,
+            "text": "वैकल्पिक",
+            "auto_translated": "वैकल्पिक"
+        },
+        "hu": {
+            "legacy_caption_pid": 39719,
+            "legacy_language_pid": 43,
+            "text": "választható",
+            "auto_translated": "választható"
+        },
+        "cs": {
+            "legacy_caption_pid": 39720,
+            "legacy_language_pid": 44,
+            "text": "volitelný",
+            "auto_translated": "volitelný"
+        },
+        "el": {
+            "legacy_caption_pid": 39721,
+            "legacy_language_pid": 45,
+            "text": "προαιρετικός",
+            "auto_translated": "προαιρετικός"
+        },
+        "sv": {
+            "legacy_caption_pid": 39722,
+            "legacy_language_pid": 46,
+            "text": "valfri",
+            "auto_translated": "valfri"
+        },
+        "kk": {
+            "legacy_caption_pid": 39723,
+            "legacy_language_pid": 47,
+            "text": "міндетті емес",
+            "auto_translated": "міндетті емес"
+        },
+        "fi": {
+            "legacy_caption_pid": 39724,
+            "legacy_language_pid": 48,
+            "text": "valinnainen",
+            "auto_translated": "valinnainen"
+        },
+        "da": {
+            "legacy_caption_pid": 39725,
+            "legacy_language_pid": 49,
+            "text": "Valgfri",
+            "auto_translated": "Valgfri"
+        },
+        "he": {
+            "legacy_caption_pid": 39726,
+            "legacy_language_pid": 50,
+            "text": "אופציונאלי",
+            "auto_translated": "אופציונאלי"
+        },
+        "no": {
+            "legacy_caption_pid": 39727,
+            "legacy_language_pid": 51,
+            "text": "valgfritt",
+            "auto_translated": "valgfritt"
+        }
+    }
+}

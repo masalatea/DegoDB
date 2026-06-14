@@ -1,0 +1,69 @@
+{
+    "resource_key": "TITLE_DBAAS_HOW_TO_USE_EXAMPLE_SECURITY",
+    "legacy_resource_pid": 597,
+    "base_group_key": "grp-010-matsuesoft-lib",
+    "additional_group_keys": [],
+    "key_for_update": "aTv8VLujHOBENNTBlkKiTy6BFQuJpgULQvIrmI8X4T52nh52LgMvwHQ1RaQzPcHmjDUGAHxjunp8fGFIXbz1zEyeO8QVwK8G5dCbxWNrP9ug3DiZmPwUjDxuQJi77gMs",
+    "sort_group": "TITLE",
+    "key_name": "TITLE_DBAAS_HOW_TO_USE_EXAMPLE_SECURITY",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": true,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 4692,
+            "legacy_language_pid": 1,
+            "text": "セキュリティ設定の例",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 4693,
+            "legacy_language_pid": 2,
+            "text": "Security Setting Example",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 14446,
+            "legacy_language_pid": 3,
+            "text": "",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 14447,
+            "legacy_language_pid": 4,
+            "text": "",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 14448,
+            "legacy_language_pid": 5,
+            "text": "Ejemplo de configuración de seguridad",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 14449,
+            "legacy_language_pid": 6,
+            "text": "Configuração de Segurança Exemplo",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 14450,
+            "legacy_language_pid": 7,
+            "text": "",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 17347,
+            "legacy_language_pid": 8,
+            "text": "Exemple de réglage de sécurité",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 17348,
+            "legacy_language_pid": 9,
+            "text": "सुरक्षा सेटिंग का उदाहरण",
+            "auto_translated": ""
+        }
+    }
+}

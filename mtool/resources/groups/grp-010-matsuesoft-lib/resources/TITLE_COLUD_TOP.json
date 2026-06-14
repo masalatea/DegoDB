@@ -1,0 +1,69 @@
+{
+    "resource_key": "TITLE_COLUD_TOP",
+    "legacy_resource_pid": 648,
+    "base_group_key": "grp-010-matsuesoft-lib",
+    "additional_group_keys": [],
+    "key_for_update": "cwEVxSvUL5EdFvCZ4Rqxw0iMaI9wYcV0avZtFjvctbvoSFqWECrr5L8nnsQpOhoYCweWAONZPawrlW6JW4io6maA55gJT3hVL77qseWkGmBFovM4kwN0BGerVt2rNLzN",
+    "sort_group": "TITLE",
+    "key_name": "TITLE_COLUD_TOP",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": true,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 4660,
+            "legacy_language_pid": 1,
+            "text": "クラウド運用・開発サービス(準委任) - $DOMAINNAMECAPTION_JP",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 4661,
+            "legacy_language_pid": 2,
+            "text": "Deputize Cloud Management and Development - $DOMAINNAMECAPTION_EN",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 14366,
+            "legacy_language_pid": 3,
+            "text": "",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 14367,
+            "legacy_language_pid": 4,
+            "text": "",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 14368,
+            "legacy_language_pid": 5,
+            "text": "Deputize Cloud Management and Development - $DOMAINNAMECAPTION_EN",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 14369,
+            "legacy_language_pid": 6,
+            "text": "Deputize Cloud Management and Development - $DOMAINNAMECAPTION_PT",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 14370,
+            "legacy_language_pid": 7,
+            "text": "",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 17315,
+            "legacy_language_pid": 8,
+            "text": "Déléguer la gestion et le développement du cloud - $DOMAINNAMECAPTION_FR",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 17316,
+            "legacy_language_pid": 9,
+            "text": "क्लाउड प्रबंधन और विकास को वंचित करें - $ DOMAINNAMECAPTION_HI",
+            "auto_translated": ""
+        }
+    }
+}

@@ -1,0 +1,321 @@
+{
+    "resource_key": "COMMON_LIB_ENROLL_ERROR_EMAIL_IS_NOT_MATCH",
+    "legacy_resource_pid": 1579,
+    "base_group_key": "grp-010-matsuesoft-lib",
+    "additional_group_keys": [],
+    "key_for_update": "weVmrEcFYaG5IrVjoqspsVCrywXCWwHbIecrJENWlo27UhTVgHUeVrRMd8OdrS3mDaObOremxAKgUIH3T5C8Yz4mjgfUEUVulbqzMyBP3d6Ox5k1a7Tvq9aMLEHfL2eE",
+    "sort_group": "ENROLL",
+    "key_name": "COMMON_LIB_ENROLL_ERROR_EMAIL_IS_NOT_MATCH",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": false,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 7098,
+            "legacy_language_pid": 1,
+            "text": "メールアドレスが一致しません。入力を確認して下さい。",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 7099,
+            "legacy_language_pid": 2,
+            "text": "Mail address does not match. Please confirm input.",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 7100,
+            "legacy_language_pid": 3,
+            "text": "E-mail地址不匹配。检查输入。",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 7101,
+            "legacy_language_pid": 4,
+            "text": "이메일 주소가 일치하지 않습니다. 입력내용을 확인해주세요.",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 10762,
+            "legacy_language_pid": 5,
+            "text": "La dirección de correo no coincide. Por favor, confirme la entrada.",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 10763,
+            "legacy_language_pid": 6,
+            "text": "O endereço de email não corresponde. Confirme a entrada.",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 10764,
+            "legacy_language_pid": 7,
+            "text": "E-mail地址不匹配。檢查輸入。",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 16461,
+            "legacy_language_pid": 8,
+            "text": "L'adresse mail ne correspond pas. Veuillez confirmer la saisie.",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 16462,
+            "legacy_language_pid": 9,
+            "text": "मेल पता से मेल नहीं खाती। कृपया इनपुट की पुष्टि करें",
+            "auto_translated": ""
+        },
+        "ar": {
+            "legacy_caption_pid": 31144,
+            "legacy_language_pid": 10,
+            "text": "لا يتطابق مع عنوان البريد الإلكتروني. التحقق من المدخلات.",
+            "auto_translated": "لا يتطابق مع عنوان البريد الإلكتروني. التحقق من المدخلات."
+        },
+        "fa": {
+            "legacy_caption_pid": 31145,
+            "legacy_language_pid": 11,
+            "text": "آدرس ایمیل مطابقت ندارد. ورودی را بررسی کنید.",
+            "auto_translated": "آدرس ایمیل مطابقت ندارد. ورودی را بررسی کنید."
+        },
+        "de": {
+            "legacy_caption_pid": 31146,
+            "legacy_language_pid": 12,
+            "text": "E-Mail-Adresse nicht übereinstimmt. Überprüfen Sie die Eingabe.",
+            "auto_translated": "E-Mail-Adresse nicht übereinstimmt. Überprüfen Sie die Eingabe."
+        },
+        "ru": {
+            "legacy_caption_pid": 31147,
+            "legacy_language_pid": 13,
+            "text": "Адрес электронной почты не совпадают. Проверьте вход.",
+            "auto_translated": "Адрес электронной почты не совпадают. Проверьте вход."
+        },
+        "ms": {
+            "legacy_caption_pid": 31148,
+            "legacy_language_pid": 14,
+            "text": "E-mel tidak sama. Semak input.",
+            "auto_translated": "E-mel tidak sama. Semak input."
+        },
+        "ta": {
+            "legacy_caption_pid": 31149,
+            "legacy_language_pid": 15,
+            "text": "மின்னஞ்சல் முகவரியுடன் பொருந்தாது. உள்ளீட்டைச் சரிபார்க்கவும்.",
+            "auto_translated": "மின்னஞ்சல் முகவரியுடன் பொருந்தாது. உள்ளீட்டைச் சரிபார்க்கவும்."
+        },
+        "it": {
+            "legacy_caption_pid": 31150,
+            "legacy_language_pid": 16,
+            "text": "Indirizzo e-mail non corrisponde. Controllare l'ingresso.",
+            "auto_translated": "Indirizzo e-mail non corrisponde. Controllare l'ingresso."
+        },
+        "bn": {
+            "legacy_caption_pid": 31151,
+            "legacy_language_pid": 17,
+            "text": "ই-মেইল ঠিকানার সাথে মেলে না। ইনপুট চেক করুন।",
+            "auto_translated": "ই-মেইল ঠিকানার সাথে মেলে না। ইনপুট চেক করুন।"
+        },
+        "tr": {
+            "legacy_caption_pid": 31152,
+            "legacy_language_pid": 18,
+            "text": "E-posta adresi eşleşmiyor. girişini kontrol edin.",
+            "auto_translated": "E-posta adresi eşleşmiyor. girişini kontrol edin."
+        },
+        "vi": {
+            "legacy_caption_pid": 31153,
+            "legacy_language_pid": 19,
+            "text": "địa chỉ E-mail không phù hợp. Kiểm tra đầu vào.",
+            "auto_translated": "địa chỉ E-mail không phù hợp. Kiểm tra đầu vào."
+        },
+        "pl": {
+            "legacy_caption_pid": 31154,
+            "legacy_language_pid": 20,
+            "text": "Adres e-mail nie pasuje. Sprawdzić wejście.",
+            "auto_translated": "Adres e-mail nie pasuje. Sprawdzić wejście."
+        },
+        "jv": {
+            "legacy_caption_pid": 31155,
+            "legacy_language_pid": 21,
+            "text": "alamat E-mail Panjenengan ora cocog. Priksa input.",
+            "auto_translated": "alamat E-mail Panjenengan ora cocog. Priksa input."
+        },
+        "pa": {
+            "legacy_caption_pid": 31156,
+            "legacy_language_pid": 22,
+            "text": "ਈ-ਮੇਲ ਪਤਾ ਮੇਲ ਨਹੀ ਹੈ. ਇੰਪੁੱਟ ਚੈੱਕ ਕਰੋ.",
+            "auto_translated": "ਈ-ਮੇਲ ਪਤਾ ਮੇਲ ਨਹੀ ਹੈ. ਇੰਪੁੱਟ ਚੈੱਕ ਕਰੋ."
+        },
+        "th": {
+            "legacy_caption_pid": 31157,
+            "legacy_language_pid": 23,
+            "text": "E-mail address ไม่ตรงกับ ตรวจสอบการป้อนข้อมูล",
+            "auto_translated": "E-mail address ไม่ตรงกับ ตรวจสอบการป้อนข้อมูล"
+        },
+        "te": {
+            "legacy_caption_pid": 42136,
+            "legacy_language_pid": 24,
+            "text": "ఇ-మెయిల్ చిరునామాతో సరిపోలడం లేదు. ఇన్పుట్ తనిఖీ.",
+            "auto_translated": "ఇ-మెయిల్ చిరునామాతో సరిపోలడం లేదు. ఇన్పుట్ తనిఖీ."
+        },
+        "mr": {
+            "legacy_caption_pid": 42137,
+            "legacy_language_pid": 25,
+            "text": "ई-मेल पत्ता जुळत नाही. इनपुट तपासा.",
+            "auto_translated": "ई-मेल पत्ता जुळत नाही. इनपुट तपासा."
+        },
+        "ur": {
+            "legacy_caption_pid": 42138,
+            "legacy_language_pid": 26,
+            "text": "ای میل ایڈریس سے میل نہیں کھاتا. ان پٹ چیک کریں.",
+            "auto_translated": "ای میل ایڈریس سے میل نہیں کھاتا. ان پٹ چیک کریں."
+        },
+        "gu": {
+            "legacy_caption_pid": 42139,
+            "legacy_language_pid": 27,
+            "text": "ઇ-મેઇલ સરનામું મેળ ખાતું નથી. ઇનપુટ તપાસો.",
+            "auto_translated": "ઇ-મેઇલ સરનામું મેળ ખાતું નથી. ઇનપુટ તપાસો."
+        },
+        "uk": {
+            "legacy_caption_pid": 42140,
+            "legacy_language_pid": 28,
+            "text": "Адреса електронної пошти не збігаються. Перевірте вхід.",
+            "auto_translated": "Адреса електронної пошти не збігаються. Перевірте вхід."
+        },
+        "ml": {
+            "legacy_caption_pid": 42141,
+            "legacy_language_pid": 29,
+            "text": "ഇ-മെയിൽ വിലാസം പൊരുത്തപ്പെടുന്നില്ല. ഇൻപുട്ട് പരിശോധിക്കുക.",
+            "auto_translated": "ഇ-മെയിൽ വിലാസം പൊരുത്തപ്പെടുന്നില്ല. ഇൻപുട്ട് പരിശോധിക്കുക."
+        },
+        "kn": {
+            "legacy_caption_pid": 42142,
+            "legacy_language_pid": 30,
+            "text": "ಮೇಲ್ ವಿಳಾಸಕ್ಕೆ ಹೊಂದಿಕೆಯಾಗುವುದಿಲ್ಲ. ಇನ್ಪುಟ್ ಪರಿಶೀಲಿಸಿ.",
+            "auto_translated": "ಮೇಲ್ ವಿಳಾಸಕ್ಕೆ ಹೊಂದಿಕೆಯಾಗುವುದಿಲ್ಲ. ಇನ್ಪುಟ್ ಪರಿಶೀಲಿಸಿ."
+        },
+        "su": {
+            "legacy_caption_pid": 42143,
+            "legacy_language_pid": 31,
+            "text": "Alamat surélék teu cocog. Pariksa input.",
+            "auto_translated": "Alamat surélék teu cocog. Pariksa input."
+        },
+        "ku": {
+            "legacy_caption_pid": 42144,
+            "legacy_language_pid": 32,
+            "text": "Navnîşana E-mail hev yek nayên. li input kontrol bike.",
+            "auto_translated": "Navnîşana E-mail hev yek nayên. li input kontrol bike."
+        },
+        "ps": {
+            "legacy_caption_pid": 42145,
+            "legacy_language_pid": 33,
+            "text": "پست پته سمون نه خوري. آخذه وګورئ.",
+            "auto_translated": "پست پته سمون نه خوري. آخذه وګورئ."
+        },
+        "ro": {
+            "legacy_caption_pid": 42146,
+            "legacy_language_pid": 34,
+            "text": "Adresa de e-mail nu se potrivește. Verificați intrarea.",
+            "auto_translated": "Adresa de e-mail nu se potrivește. Verificați intrarea."
+        },
+        "id": {
+            "legacy_caption_pid": 42147,
+            "legacy_language_pid": 35,
+            "text": "Alamat e-mail tidak cocok. Periksa input.",
+            "auto_translated": "Alamat e-mail tidak cocok. Periksa input."
+        },
+        "sd": {
+            "legacy_caption_pid": 42148,
+            "legacy_language_pid": 36,
+            "text": "اي-ميل پتي سان ڀيٽ نه ٿو. هن ان پٽ چيڪ ڪريو.",
+            "auto_translated": "اي-ميل پتي سان ڀيٽ نه ٿو. هن ان پٽ چيڪ ڪريو."
+        },
+        "af": {
+            "legacy_caption_pid": 42149,
+            "legacy_language_pid": 37,
+            "text": "E-pos adres kom nie ooreen met. Gaan die insette.",
+            "auto_translated": "E-pos adres kom nie ooreen met. Gaan die insette."
+        },
+        "sw": {
+            "legacy_caption_pid": 42150,
+            "legacy_language_pid": 38,
+            "text": "E-mail anwani hailingani. Angalia ingizo.",
+            "auto_translated": "E-mail anwani hailingani. Angalia ingizo."
+        },
+        "lo": {
+            "legacy_caption_pid": 42151,
+            "legacy_language_pid": 39,
+            "text": "ທີ່ຢູ່ອີເມລ໌ບໍ່ກົງກັບ. ກວດສອບວັດຖຸດິບ.",
+            "auto_translated": "ທີ່ຢູ່ອີເມລ໌ບໍ່ກົງກັບ. ກວດສອບວັດຖຸດິບ."
+        },
+        "nl": {
+            "legacy_caption_pid": 42152,
+            "legacy_language_pid": 40,
+            "text": "E-mail adres komt niet overeen. Controleer de input.",
+            "auto_translated": "E-mail adres komt niet overeen. Controleer de input."
+        },
+        "tl": {
+            "legacy_caption_pid": 42153,
+            "legacy_language_pid": 41,
+            "text": "E-mail address ay hindi tugma. Lagyan ng check ang input.",
+            "auto_translated": "E-mail address ay hindi tugma. Lagyan ng check ang input."
+        },
+        "ne": {
+            "legacy_caption_pid": 42154,
+            "legacy_language_pid": 42,
+            "text": "ई-मेल ठेगाना मेल खाँदैन। इनपुट जाँच गर्नुहोस्।",
+            "auto_translated": "ई-मेल ठेगाना मेल खाँदैन। इनपुट जाँच गर्नुहोस्।"
+        },
+        "hu": {
+            "legacy_caption_pid": 42155,
+            "legacy_language_pid": 43,
+            "text": "E-mail cím nem egyezik. Ellenőrizze a bemeneti.",
+            "auto_translated": "E-mail cím nem egyezik. Ellenőrizze a bemeneti."
+        },
+        "cs": {
+            "legacy_caption_pid": 42156,
+            "legacy_language_pid": 44,
+            "text": "E-mailová adresa neodpovídá. Zkontrolujte vstup.",
+            "auto_translated": "E-mailová adresa neodpovídá. Zkontrolujte vstup."
+        },
+        "el": {
+            "legacy_caption_pid": 42157,
+            "legacy_language_pid": 45,
+            "text": "Διεύθυνση ηλεκτρονικού ταχυδρομείου δεν ταιριάζει. Ελέγξτε την είσοδο.",
+            "auto_translated": "Διεύθυνση ηλεκτρονικού ταχυδρομείου δεν ταιριάζει. Ελέγξτε την είσοδο."
+        },
+        "sv": {
+            "legacy_caption_pid": 42158,
+            "legacy_language_pid": 46,
+            "text": "E-postadressen stämmer inte. Kontrollera ingång.",
+            "auto_translated": "E-postadressen stämmer inte. Kontrollera ingång."
+        },
+        "kk": {
+            "legacy_caption_pid": 42159,
+            "legacy_language_pid": 47,
+            "text": "Электрондық пошта мекен-жайы сәйкес келмейді. кірісін тексеріңіз.",
+            "auto_translated": "Электрондық пошта мекен-жайы сәйкес келмейді. кірісін тексеріңіз."
+        },
+        "fi": {
+            "legacy_caption_pid": 42160,
+            "legacy_language_pid": 48,
+            "text": "Sähköpostiosoite ei täsmää. Sisääntulovirran.",
+            "auto_translated": "Sähköpostiosoite ei täsmää. Sisääntulovirran."
+        },
+        "da": {
+            "legacy_caption_pid": 42161,
+            "legacy_language_pid": 49,
+            "text": "E-mail-adressen ikke passer. Kontrollér input.",
+            "auto_translated": "E-mail-adressen ikke passer. Kontrollér input."
+        },
+        "he": {
+            "legacy_caption_pid": 42162,
+            "legacy_language_pid": 50,
+            "text": "כתובת דואר אלקטרונית אינה תואמת. בדוק את הקלט.",
+            "auto_translated": "כתובת דואר אלקטרונית אינה תואמת. בדוק את הקלט."
+        },
+        "no": {
+            "legacy_caption_pid": 42163,
+            "legacy_language_pid": 51,
+            "text": "E-postadressen samsvarer ikke. Sjekk inngangs.",
+            "auto_translated": "E-postadressen samsvarer ikke. Sjekk inngangs."
+        }
+    }
+}

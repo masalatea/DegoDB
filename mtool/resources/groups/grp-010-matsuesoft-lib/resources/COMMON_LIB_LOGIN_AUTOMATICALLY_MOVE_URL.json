@@ -1,0 +1,321 @@
+{
+    "resource_key": "COMMON_LIB_LOGIN_AUTOMATICALLY_MOVE_URL",
+    "legacy_resource_pid": 1473,
+    "base_group_key": "grp-010-matsuesoft-lib",
+    "additional_group_keys": [],
+    "key_for_update": "ewQvTVWf3WwyOLtLQwo65saBJnGATvTP6aCxjapyziQTkbhw6crFYPMNWsO4Xb8fR3k6oKKpHxO6icgsx2448H6U0xdXnEz3EOzSyKyboLH1yLcDYhB0tC7Qmq8AA9In",
+    "sort_group": "LOGIN",
+    "key_name": "COMMON_LIB_LOGIN_AUTOMATICALLY_MOVE_URL",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": false,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 6166,
+            "legacy_language_pid": 1,
+            "text": "自動的に移動します",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 6167,
+            "legacy_language_pid": 2,
+            "text": "We will move pages automatically",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 6168,
+            "legacy_language_pid": 3,
+            "text": "自动移动",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 6169,
+            "legacy_language_pid": 4,
+            "text": "자동으로 페이지 이동합니다",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 11054,
+            "legacy_language_pid": 5,
+            "text": "Mudaremos las páginas automáticamente ",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 11055,
+            "legacy_language_pid": 6,
+            "text": "Vamos mover páginas automaticamente ",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 11056,
+            "legacy_language_pid": 7,
+            "text": "自動移動",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 17229,
+            "legacy_language_pid": 8,
+            "text": "Nous allons déplacer des pages automatiquement",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 17230,
+            "legacy_language_pid": 9,
+            "text": "हम पृष्ठों को स्वचालित रूप से स्थानांतरित करेंगे",
+            "auto_translated": ""
+        },
+        "ar": {
+            "legacy_caption_pid": 32488,
+            "legacy_language_pid": 10,
+            "text": "يتحرك تلقائيا",
+            "auto_translated": "يتحرك تلقائيا"
+        },
+        "fa": {
+            "legacy_caption_pid": 32489,
+            "legacy_language_pid": 11,
+            "text": "به صورت خودکار حرکت",
+            "auto_translated": "به صورت خودکار حرکت"
+        },
+        "de": {
+            "legacy_caption_pid": 32490,
+            "legacy_language_pid": 12,
+            "text": "bewegt sich automatisch",
+            "auto_translated": "bewegt sich automatisch"
+        },
+        "ru": {
+            "legacy_caption_pid": 32491,
+            "legacy_language_pid": 13,
+            "text": "Автоматически перемещает",
+            "auto_translated": "Автоматически перемещает"
+        },
+        "ms": {
+            "legacy_caption_pid": 32492,
+            "legacy_language_pid": 14,
+            "text": "bergerak secara automatik",
+            "auto_translated": "bergerak secara automatik"
+        },
+        "ta": {
+            "legacy_caption_pid": 32493,
+            "legacy_language_pid": 15,
+            "text": "தானாகவே நகரும்",
+            "auto_translated": "தானாகவே நகரும்"
+        },
+        "it": {
+            "legacy_caption_pid": 32494,
+            "legacy_language_pid": 16,
+            "text": "sposta automaticamente",
+            "auto_translated": "sposta automaticamente"
+        },
+        "bn": {
+            "legacy_caption_pid": 32495,
+            "legacy_language_pid": 17,
+            "text": "স্বয়ংক্রিয়ভাবে চলে আসে",
+            "auto_translated": "স্বয়ংক্রিয়ভাবে চলে আসে"
+        },
+        "tr": {
+            "legacy_caption_pid": 32496,
+            "legacy_language_pid": 18,
+            "text": "otomatik olarak hareket eder",
+            "auto_translated": "otomatik olarak hareket eder"
+        },
+        "vi": {
+            "legacy_caption_pid": 32497,
+            "legacy_language_pid": 19,
+            "text": "tự động di chuyển",
+            "auto_translated": "tự động di chuyển"
+        },
+        "pl": {
+            "legacy_caption_pid": 32498,
+            "legacy_language_pid": 20,
+            "text": "automatycznie przenosi",
+            "auto_translated": "automatycznie przenosi"
+        },
+        "jv": {
+            "legacy_caption_pid": 32499,
+            "legacy_language_pid": 21,
+            "text": "gerakane otomatis",
+            "auto_translated": "gerakane otomatis"
+        },
+        "pa": {
+            "legacy_caption_pid": 32500,
+            "legacy_language_pid": 22,
+            "text": "ਆਟੋਮੈਟਿਕ ਭੇਜਦੀ ਹੈ",
+            "auto_translated": "ਆਟੋਮੈਟਿਕ ਭੇਜਦੀ ਹੈ"
+        },
+        "th": {
+            "legacy_caption_pid": 32501,
+            "legacy_language_pid": 23,
+            "text": "ย้ายโดยอัตโนมัติ",
+            "auto_translated": "ย้ายโดยอัตโนมัติ"
+        },
+        "te": {
+            "legacy_caption_pid": 40652,
+            "legacy_language_pid": 24,
+            "text": "స్వయంచాలకంగా కదులుతుంది",
+            "auto_translated": "స్వయంచాలకంగా కదులుతుంది"
+        },
+        "mr": {
+            "legacy_caption_pid": 40653,
+            "legacy_language_pid": 25,
+            "text": "स्वयंचलितपणे आणले",
+            "auto_translated": "स्वयंचलितपणे आणले"
+        },
+        "ur": {
+            "legacy_caption_pid": 40654,
+            "legacy_language_pid": 26,
+            "text": "خود کار طریقے سے چلتا ہے",
+            "auto_translated": "خود کار طریقے سے چلتا ہے"
+        },
+        "gu": {
+            "legacy_caption_pid": 40655,
+            "legacy_language_pid": 27,
+            "text": "આપમેળે ફરે",
+            "auto_translated": "આપમેળે ફરે"
+        },
+        "uk": {
+            "legacy_caption_pid": 40656,
+            "legacy_language_pid": 28,
+            "text": "автоматично переміщує",
+            "auto_translated": "автоматично переміщує"
+        },
+        "ml": {
+            "legacy_caption_pid": 40657,
+            "legacy_language_pid": 29,
+            "text": "യാന്ത്രികമായി നീക്കുന്നു",
+            "auto_translated": "യാന്ത്രികമായി നീക്കുന്നു"
+        },
+        "kn": {
+            "legacy_caption_pid": 40658,
+            "legacy_language_pid": 30,
+            "text": "ಸ್ವಯಂಚಾಲಿತವಾಗಿ ಚಲಿಸುತ್ತದೆ",
+            "auto_translated": "ಸ್ವಯಂಚಾಲಿತವಾಗಿ ಚಲಿಸುತ್ತದೆ"
+        },
+        "su": {
+            "legacy_caption_pid": 40659,
+            "legacy_language_pid": 31,
+            "text": "ngalir otomatis",
+            "auto_translated": "ngalir otomatis"
+        },
+        "ku": {
+            "legacy_caption_pid": 40660,
+            "legacy_language_pid": 32,
+            "text": "otomatîk bar dike",
+            "auto_translated": "otomatîk bar dike"
+        },
+        "ps": {
+            "legacy_caption_pid": 40661,
+            "legacy_language_pid": 33,
+            "text": "په خپلکارې توګه حرکت کوي",
+            "auto_translated": "په خپلکارې توګه حرکت کوي"
+        },
+        "ro": {
+            "legacy_caption_pid": 40662,
+            "legacy_language_pid": 34,
+            "text": "mută automat",
+            "auto_translated": "mută automat"
+        },
+        "id": {
+            "legacy_caption_pid": 40663,
+            "legacy_language_pid": 35,
+            "text": "bergerak secara otomatis",
+            "auto_translated": "bergerak secara otomatis"
+        },
+        "sd": {
+            "legacy_caption_pid": 40664,
+            "legacy_language_pid": 36,
+            "text": "خودڪار هلڻ",
+            "auto_translated": "خودڪار هلڻ"
+        },
+        "af": {
+            "legacy_caption_pid": 40665,
+            "legacy_language_pid": 37,
+            "text": "outomaties beweeg",
+            "auto_translated": "outomaties beweeg"
+        },
+        "sw": {
+            "legacy_caption_pid": 40666,
+            "legacy_language_pid": 38,
+            "text": "hatua moja kwa moja",
+            "auto_translated": "hatua moja kwa moja"
+        },
+        "lo": {
+            "legacy_caption_pid": 40667,
+            "legacy_language_pid": 39,
+            "text": "ຍ້າຍອັດຕະໂນມັດ",
+            "auto_translated": "ຍ້າຍອັດຕະໂນມັດ"
+        },
+        "nl": {
+            "legacy_caption_pid": 40668,
+            "legacy_language_pid": 40,
+            "text": "automatisch beweegt",
+            "auto_translated": "automatisch beweegt"
+        },
+        "tl": {
+            "legacy_caption_pid": 40669,
+            "legacy_language_pid": 41,
+            "text": "awtomatikong gumagalaw",
+            "auto_translated": "awtomatikong gumagalaw"
+        },
+        "ne": {
+            "legacy_caption_pid": 40670,
+            "legacy_language_pid": 42,
+            "text": "स्वचालित रूपमा उत्प्रेरित गर्छ",
+            "auto_translated": "स्वचालित रूपमा उत्प्रेरित गर्छ"
+        },
+        "hu": {
+            "legacy_caption_pid": 40671,
+            "legacy_language_pid": 43,
+            "text": "automatikusan mozog",
+            "auto_translated": "automatikusan mozog"
+        },
+        "cs": {
+            "legacy_caption_pid": 40672,
+            "legacy_language_pid": 44,
+            "text": "automaticky přesune",
+            "auto_translated": "automaticky přesune"
+        },
+        "el": {
+            "legacy_caption_pid": 40673,
+            "legacy_language_pid": 45,
+            "text": "αυτόματη κινείται",
+            "auto_translated": "αυτόματη κινείται"
+        },
+        "sv": {
+            "legacy_caption_pid": 40674,
+            "legacy_language_pid": 46,
+            "text": "automatiskt flyttar",
+            "auto_translated": "automatiskt flyttar"
+        },
+        "kk": {
+            "legacy_caption_pid": 40675,
+            "legacy_language_pid": 47,
+            "text": "автоматты түрде жылжытады",
+            "auto_translated": "автоматты түрде жылжытады"
+        },
+        "fi": {
+            "legacy_caption_pid": 40676,
+            "legacy_language_pid": 48,
+            "text": "siirtyy automaattisesti",
+            "auto_translated": "siirtyy automaattisesti"
+        },
+        "da": {
+            "legacy_caption_pid": 40677,
+            "legacy_language_pid": 49,
+            "text": "flytter automatisk",
+            "auto_translated": "flytter automatisk"
+        },
+        "he": {
+            "legacy_caption_pid": 40678,
+            "legacy_language_pid": 50,
+            "text": "באופן אוטומטי מעביר",
+            "auto_translated": "באופן אוטומטי מעביר"
+        },
+        "no": {
+            "legacy_caption_pid": 40679,
+            "legacy_language_pid": 51,
+            "text": "flyttes automatisk",
+            "auto_translated": "flyttes automatisk"
+        }
+    }
+}

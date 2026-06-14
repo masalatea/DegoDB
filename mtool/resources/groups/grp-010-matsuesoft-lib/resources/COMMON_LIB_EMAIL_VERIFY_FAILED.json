@@ -1,0 +1,321 @@
+{
+    "resource_key": "COMMON_LIB_EMAIL_VERIFY_FAILED",
+    "legacy_resource_pid": 1396,
+    "base_group_key": "grp-010-matsuesoft-lib",
+    "additional_group_keys": [],
+    "key_for_update": "4XXezm3JJh2NkJOFPJKajxzRfCsoIj0Qur9fzCX9bxJO9nw7Py1PUnWOwYrbJaEm2ekGu61HsJLHSR8lSpPC6ruzwI8NReS415TrWOnPNMoN3NVgBJ8nVDkgWANEgbVt",
+    "sort_group": "EMAIL VERIFY",
+    "key_name": "COMMON_LIB_EMAIL_VERIFY_FAILED",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": false,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 5858,
+            "legacy_language_pid": 1,
+            "text": "メールアドレス認証失敗しました",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 5859,
+            "legacy_language_pid": 2,
+            "text": "Email verification failed.",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 5860,
+            "legacy_language_pid": 3,
+            "text": "E-mail地址进行验证失败",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 5861,
+            "legacy_language_pid": 4,
+            "text": "이메일 주소 인증 실패",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 10720,
+            "legacy_language_pid": 5,
+            "text": "Error en la verificación de correo electrónico.",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 10721,
+            "legacy_language_pid": 6,
+            "text": "A verificação do email falhou.",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 10722,
+            "legacy_language_pid": 7,
+            "text": "E-mail地址進行驗證失敗",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 16433,
+            "legacy_language_pid": 8,
+            "text": "La vérification du courrier électronique a échoué",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 16434,
+            "legacy_language_pid": 9,
+            "text": "ईमेल सत्यापन विफल हुआ",
+            "auto_translated": ""
+        },
+        "ar": {
+            "legacy_caption_pid": 30934,
+            "legacy_language_pid": 10,
+            "text": "تم مصادقة عنوان البريد الإلكتروني E-فاشل",
+            "auto_translated": "تم مصادقة عنوان البريد الإلكتروني E-فاشل"
+        },
+        "fa": {
+            "legacy_caption_pid": 30935,
+            "legacy_language_pid": 11,
+            "text": "آدرس ایمیل ناموفق تصدیق شد",
+            "auto_translated": "آدرس ایمیل ناموفق تصدیق شد"
+        },
+        "de": {
+            "legacy_caption_pid": 30936,
+            "legacy_language_pid": 12,
+            "text": "E-Mail-Adresse wurde failed authentifiziert",
+            "auto_translated": "E-Mail-Adresse wurde failed authentifiziert"
+        },
+        "ru": {
+            "legacy_caption_pid": 30937,
+            "legacy_language_pid": 13,
+            "text": "Адрес электронной почты подтверждён несостоявшимся",
+            "auto_translated": "Адрес электронной почты подтверждён несостоявшимся"
+        },
+        "ms": {
+            "legacy_caption_pid": 30938,
+            "legacy_language_pid": 14,
+            "text": "E-mel telah disahkan gagal",
+            "auto_translated": "E-mel telah disahkan gagal"
+        },
+        "ta": {
+            "legacy_caption_pid": 30939,
+            "legacy_language_pid": 15,
+            "text": "மின்னஞ்சல் முகவரி தோல்வி உறுதிப்படுத்தப்பட்டது",
+            "auto_translated": "மின்னஞ்சல் முகவரி தோல்வி உறுதிப்படுத்தப்பட்டது"
+        },
+        "it": {
+            "legacy_caption_pid": 30940,
+            "legacy_language_pid": 16,
+            "text": "Indirizzo e-mail è stato autenticato fallito",
+            "auto_translated": "Indirizzo e-mail è stato autenticato fallito"
+        },
+        "bn": {
+            "legacy_caption_pid": 30941,
+            "legacy_language_pid": 17,
+            "text": "ই-মেল ঠিকানা ব্যর্থ প্রামাণ হয়",
+            "auto_translated": "ই-মেল ঠিকানা ব্যর্থ প্রামাণ হয়"
+        },
+        "tr": {
+            "legacy_caption_pid": 30942,
+            "legacy_language_pid": 18,
+            "text": "E-posta adresi başarısız doğrulanmış oldu",
+            "auto_translated": "E-posta adresi başarısız doğrulanmış oldu"
+        },
+        "vi": {
+            "legacy_caption_pid": 30943,
+            "legacy_language_pid": 19,
+            "text": "địa chỉ E-mail được xác nhận thất bại",
+            "auto_translated": "địa chỉ E-mail được xác nhận thất bại"
+        },
+        "pl": {
+            "legacy_caption_pid": 30944,
+            "legacy_language_pid": 20,
+            "text": "Adres e-mail został uwierzytelniony nieudanym",
+            "auto_translated": "Adres e-mail został uwierzytelniony nieudanym"
+        },
+        "jv": {
+            "legacy_caption_pid": 30945,
+            "legacy_language_pid": 21,
+            "text": "alamat E-mail iki gagal",
+            "auto_translated": "alamat E-mail iki gagal"
+        },
+        "pa": {
+            "legacy_caption_pid": 30946,
+            "legacy_language_pid": 22,
+            "text": "ਈ-ਮੇਲ ਪਤਾ ਅਸਫ਼ਲ ਪ੍ਰਮਾਣਿਤ ਕੀਤਾ ਗਿਆ ਸੀ",
+            "auto_translated": "ਈ-ਮੇਲ ਪਤਾ ਅਸਫ਼ਲ ਪ੍ਰਮਾਣਿਤ ਕੀਤਾ ਗਿਆ ਸੀ"
+        },
+        "th": {
+            "legacy_caption_pid": 30947,
+            "legacy_language_pid": 23,
+            "text": "E-mail address ได้รับการรับรองความถูกต้องล้มเหลว",
+            "auto_translated": "E-mail address ได้รับการรับรองความถูกต้องล้มเหลว"
+        },
+        "te": {
+            "legacy_caption_pid": 42570,
+            "legacy_language_pid": 24,
+            "text": "ఇ-మెయిల్ చిరునామా విఫలమైంది ధృవీకరింపబడింది",
+            "auto_translated": "ఇ-మెయిల్ చిరునామా విఫలమైంది ధృవీకరింపబడింది"
+        },
+        "mr": {
+            "legacy_caption_pid": 42571,
+            "legacy_language_pid": 25,
+            "text": "ई-मेल पत्ता प्रमाणित होते अयशस्वी",
+            "auto_translated": "ई-मेल पत्ता प्रमाणित होते अयशस्वी"
+        },
+        "ur": {
+            "legacy_caption_pid": 42572,
+            "legacy_language_pid": 26,
+            "text": "ای میل ایڈریس ناکام توثیق بھی",
+            "auto_translated": "ای میل ایڈریس ناکام توثیق بھی"
+        },
+        "gu": {
+            "legacy_caption_pid": 42573,
+            "legacy_language_pid": 27,
+            "text": "ઇ-મેઇલ સરનામું નિષ્ફળ પ્રમાણિત કરવામાં આવી હતી",
+            "auto_translated": "ઇ-મેઇલ સરનામું નિષ્ફળ પ્રમાણિત કરવામાં આવી હતી"
+        },
+        "uk": {
+            "legacy_caption_pid": 42574,
+            "legacy_language_pid": 28,
+            "text": "Адреса електронної пошти підтверджено, що не відбувся",
+            "auto_translated": "Адреса електронної пошти підтверджено, що не відбувся"
+        },
+        "ml": {
+            "legacy_caption_pid": 42575,
+            "legacy_language_pid": 29,
+            "text": "ഇ-മെയിൽ വിലാസം പരാജയപ്പെട്ടു സാധുത തെളിയിച്ചതാണ്",
+            "auto_translated": "ഇ-മെയിൽ വിലാസം പരാജയപ്പെട്ടു സാധുത തെളിയിച്ചതാണ്"
+        },
+        "kn": {
+            "legacy_caption_pid": 42576,
+            "legacy_language_pid": 30,
+            "text": "ಇ ಮೇಲ್ ವಿಫಲವಾಗಿದೆ ಪ್ರಮಾಣೀಕೃತ ಮಾಡಲಾಯಿತು",
+            "auto_translated": "ಇ ಮೇಲ್ ವಿಫಲವಾಗಿದೆ ಪ್ರಮಾಣೀಕೃತ ಮಾಡಲಾಯಿತು"
+        },
+        "su": {
+            "legacy_caption_pid": 42577,
+            "legacy_language_pid": 31,
+            "text": "Alamat surélék ieu dioténtikasi gagal",
+            "auto_translated": "Alamat surélék ieu dioténtikasi gagal"
+        },
+        "ku": {
+            "legacy_caption_pid": 42578,
+            "legacy_language_pid": 32,
+            "text": "Navnîşana E-mail şikestin hate naskirin",
+            "auto_translated": "Navnîşana E-mail şikestin hate naskirin"
+        },
+        "ps": {
+            "legacy_caption_pid": 42579,
+            "legacy_language_pid": 33,
+            "text": "پست پته وه کره ناکام",
+            "auto_translated": "پست پته وه کره ناکام"
+        },
+        "ro": {
+            "legacy_caption_pid": 42580,
+            "legacy_language_pid": 34,
+            "text": "Adresa de e-mail a fost autentificată esuata",
+            "auto_translated": "Adresa de e-mail a fost autentificată esuata"
+        },
+        "id": {
+            "legacy_caption_pid": 42581,
+            "legacy_language_pid": 35,
+            "text": "Alamat e-mail telah dikonfirmasi gagal",
+            "auto_translated": "Alamat e-mail telah dikonfirmasi gagal"
+        },
+        "sd": {
+            "legacy_caption_pid": 42582,
+            "legacy_language_pid": 36,
+            "text": "اي-ميل ايڊريس ناڪام تصديق ٿي ويو",
+            "auto_translated": "اي-ميل ايڊريس ناڪام تصديق ٿي ويو"
+        },
+        "af": {
+            "legacy_caption_pid": 42583,
+            "legacy_language_pid": 37,
+            "text": "E-pos adres gedruip geverifieerde",
+            "auto_translated": "E-pos adres gedruip geverifieerde"
+        },
+        "sw": {
+            "legacy_caption_pid": 42584,
+            "legacy_language_pid": 38,
+            "text": "E-mail anwani ilikuwa kuthibitishwa imeshindwa",
+            "auto_translated": "E-mail anwani ilikuwa kuthibitishwa imeshindwa"
+        },
+        "lo": {
+            "legacy_caption_pid": 42585,
+            "legacy_language_pid": 39,
+            "text": "ທີ່ຢູ່ອີເມລໄດ້ກວດສອບລົ້ມເຫລວ",
+            "auto_translated": "ທີ່ຢູ່ອີເມລໄດ້ກວດສອບລົ້ມເຫລວ"
+        },
+        "nl": {
+            "legacy_caption_pid": 42586,
+            "legacy_language_pid": 40,
+            "text": "E-mail adres is mislukt geauthenticeerd",
+            "auto_translated": "E-mail adres is mislukt geauthenticeerd"
+        },
+        "tl": {
+            "legacy_caption_pid": 42587,
+            "legacy_language_pid": 41,
+            "text": "E-mail address ay napatotohanan ang nabigo",
+            "auto_translated": "E-mail address ay napatotohanan ang nabigo"
+        },
+        "ne": {
+            "legacy_caption_pid": 42588,
+            "legacy_language_pid": 42,
+            "text": "ई-मेल ठेगाना असफल प्रमाणित भएको थियो",
+            "auto_translated": "ई-मेल ठेगाना असफल प्रमाणित भएको थियो"
+        },
+        "hu": {
+            "legacy_caption_pid": 42589,
+            "legacy_language_pid": 43,
+            "text": "E-mail címedet sikertelen",
+            "auto_translated": "E-mail címedet sikertelen"
+        },
+        "cs": {
+            "legacy_caption_pid": 42590,
+            "legacy_language_pid": 44,
+            "text": "E-mailová adresa byla ověřena nezdařilo",
+            "auto_translated": "E-mailová adresa byla ověřena nezdařilo"
+        },
+        "el": {
+            "legacy_caption_pid": 42591,
+            "legacy_language_pid": 45,
+            "text": "Διεύθυνση ηλεκτρονικού ταχυδρομείου κυρώθηκε απέτυχε",
+            "auto_translated": "Διεύθυνση ηλεκτρονικού ταχυδρομείου κυρώθηκε απέτυχε"
+        },
+        "sv": {
+            "legacy_caption_pid": 42592,
+            "legacy_language_pid": 46,
+            "text": "E-postadress var autentiserad misslyckades",
+            "auto_translated": "E-postadress var autentiserad misslyckades"
+        },
+        "kk": {
+            "legacy_caption_pid": 42593,
+            "legacy_language_pid": 47,
+            "text": "Электрондық пошта мекен-жайы аспады куәландырылған кезі",
+            "auto_translated": "Электрондық пошта мекен-жайы аспады куәландырылған кезі"
+        },
+        "fi": {
+            "legacy_caption_pid": 42594,
+            "legacy_language_pid": 48,
+            "text": "Sähköpostiosoite on todennettu epäonnistui",
+            "auto_translated": "Sähköpostiosoite on todennettu epäonnistui"
+        },
+        "da": {
+            "legacy_caption_pid": 42595,
+            "legacy_language_pid": 49,
+            "text": "E-mail-adresse blev bekræftet mislykket",
+            "auto_translated": "E-mail-adresse blev bekræftet mislykket"
+        },
+        "he": {
+            "legacy_caption_pid": 42596,
+            "legacy_language_pid": 50,
+            "text": "כתובת דואר אלקטרוני אושר שנכשלה",
+            "auto_translated": "כתובת דואר אלקטרוני אושר שנכשלה"
+        },
+        "no": {
+            "legacy_caption_pid": 42597,
+            "legacy_language_pid": 51,
+            "text": "E-postadresse ble bekreftet feilet",
+            "auto_translated": "E-postadresse ble bekreftet feilet"
+        }
+    }
+}

@@ -1,0 +1,27 @@
+{
+    "resource_key": "ACTION_UPDATE_DB_BACKUP_USER",
+    "legacy_resource_pid": 1245,
+    "base_group_key": "grp-001-developers-matsuesoft-co-jp",
+    "additional_group_keys": [],
+    "key_for_update": "kHEO8fMHhQh5ZPmy9uIq4jSocAmTRm6bBcI8MX0xBcrGNiixnMTVOrC95NEsB1KLwQhnvHkGVupcaMroFp3abXUrBCeHddzCPvFSnMaAWmQcQmQAlc58aq0Gg9IVTfI0",
+    "sort_group": "ACTION DB_BACKUP_USER",
+    "key_name": "ACTION_UPDATE_DB_BACKUP_USER",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": true,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 3748,
+            "legacy_language_pid": 1,
+            "text": "DBバックアップユーザ更新",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 3749,
+            "legacy_language_pid": 2,
+            "text": "Update DB Backup User",
+            "auto_translated": ""
+        }
+    }
+}

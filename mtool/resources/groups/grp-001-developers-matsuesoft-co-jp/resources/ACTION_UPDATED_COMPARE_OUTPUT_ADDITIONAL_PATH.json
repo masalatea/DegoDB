@@ -1,0 +1,27 @@
+{
+    "resource_key": "ACTION_UPDATED_COMPARE_OUTPUT_ADDITIONAL_PATH",
+    "legacy_resource_pid": 1533,
+    "base_group_key": "grp-001-developers-matsuesoft-co-jp",
+    "additional_group_keys": [],
+    "key_for_update": "D0vf9U2aU2OgEsd3XDGLTazVtXvH2Ks4N75cjbPTcA5X7QafJBKX8UHTizFO7wTVZ62ZZjnW51fyXoaX3zpy5kTsmPifaUvSF3kX3xBGvlum4gAyRTUJZnc0fc8qsqkY",
+    "sort_group": "ACTION COMPARE OUTPUT",
+    "key_name": "ACTION_UPDATED_COMPARE_OUTPUT_ADDITIONAL_PATH",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": true,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 6918,
+            "legacy_language_pid": 1,
+            "text": "出力比較設定用追加パス 更新完了 ",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 6919,
+            "legacy_language_pid": 2,
+            "text": "Updated Additional Path for Compare Output ",
+            "auto_translated": ""
+        }
+    }
+}

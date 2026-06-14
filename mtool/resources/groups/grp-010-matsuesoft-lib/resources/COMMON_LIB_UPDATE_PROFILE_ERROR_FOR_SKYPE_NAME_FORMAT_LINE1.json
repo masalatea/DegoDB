@@ -1,0 +1,321 @@
+{
+    "resource_key": "COMMON_LIB_UPDATE_PROFILE_ERROR_FOR_SKYPE_NAME_FORMAT_LINE1",
+    "legacy_resource_pid": 1607,
+    "base_group_key": "grp-010-matsuesoft-lib",
+    "additional_group_keys": [],
+    "key_for_update": "sCt5TdjKQtyR8kC3wzbasjISHoAAo5Hi6yaS6M8b9cCmL3r3ivWyfaOkPGtr5FHH7T6E5G65l3nnm4VWR1xT5QolkUCap6szaeRFj6GIBYQjtW7bRZxsxNsrmXfL1j12",
+    "sort_group": "PROFILE",
+    "key_name": "COMMON_LIB_UPDATE_PROFILE_ERROR_FOR_SKYPE_NAME_FORMAT_LINE1",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": false,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 7210,
+            "legacy_language_pid": 1,
+            "text": "Skype名は以下の文字を使って入力して下さい。",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 7211,
+            "legacy_language_pid": 2,
+            "text": "Please enter the Skype name using the following letters.",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 7212,
+            "legacy_language_pid": 3,
+            "text": "Skype用户名应使用以下字符输入。",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 7213,
+            "legacy_language_pid": 4,
+            "text": "Skype 이름은 다음 문자를 사용하여 입력하십시오.",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 11132,
+            "legacy_language_pid": 5,
+            "text": "Ingrese el nombre de Skype usando las siguientes letras.",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 11133,
+            "legacy_language_pid": 6,
+            "text": "Digite o nome do Skype usando as seguintes letras.",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 11134,
+            "legacy_language_pid": 7,
+            "text": "Skype用戶名應使用以下字符輸入。",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 17269,
+            "legacy_language_pid": 8,
+            "text": "Entrez le nom Skype en utilisant les lettres suivantes",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 17270,
+            "legacy_language_pid": 9,
+            "text": "कृपया निम्नलिखित अक्षर का उपयोग करके स्काइप नाम दर्ज करें",
+            "auto_translated": ""
+        },
+        "ar": {
+            "legacy_caption_pid": 32896,
+            "legacy_language_pid": 10,
+            "text": "يجب إدخال اسم سكايب باستخدام الأحرف التالية.",
+            "auto_translated": "يجب إدخال اسم سكايب باستخدام الأحرف التالية."
+        },
+        "fa": {
+            "legacy_caption_pid": 32897,
+            "legacy_language_pid": 11,
+            "text": "نام اسکایپ باید با استفاده از شخصیت های زیر وارد شده است.",
+            "auto_translated": "نام اسکایپ باید با استفاده از شخصیت های زیر وارد شده است."
+        },
+        "de": {
+            "legacy_caption_pid": 32898,
+            "legacy_language_pid": 12,
+            "text": "Skype-Name sollte mit den folgenden Zeichen eingegeben werden.",
+            "auto_translated": "Skype-Name sollte mit den folgenden Zeichen eingegeben werden."
+        },
+        "ru": {
+            "legacy_caption_pid": 32899,
+            "legacy_language_pid": 13,
+            "text": "Имя Skype должно быть введено с помощью следующих символов.",
+            "auto_translated": "Имя Skype должно быть введено с помощью следующих символов."
+        },
+        "ms": {
+            "legacy_caption_pid": 32900,
+            "legacy_language_pid": 14,
+            "text": "nama Skype harus dimasukkan menggunakan watak-watak berikut.",
+            "auto_translated": "nama Skype harus dimasukkan menggunakan watak-watak berikut."
+        },
+        "ta": {
+            "legacy_caption_pid": 32901,
+            "legacy_language_pid": 15,
+            "text": "ஸ்கைப் பெயர் பின்வரும் எழுத்துக்கள் பயன்படுத்தி உள்ளிட வேண்டும்.",
+            "auto_translated": "ஸ்கைப் பெயர் பின்வரும் எழுத்துக்கள் பயன்படுத்தி உள்ளிட வேண்டும்."
+        },
+        "it": {
+            "legacy_caption_pid": 32902,
+            "legacy_language_pid": 16,
+            "text": "Nome Skype deve essere inserita utilizzando i seguenti caratteri.",
+            "auto_translated": "Nome Skype deve essere inserita utilizzando i seguenti caratteri."
+        },
+        "bn": {
+            "legacy_caption_pid": 32903,
+            "legacy_language_pid": 17,
+            "text": "স্কাইপ নাম নিম্নলিখিত অক্ষর ব্যবহার করে লেখা উচিত।",
+            "auto_translated": "স্কাইপ নাম নিম্নলিখিত অক্ষর ব্যবহার করে লেখা উচিত।"
+        },
+        "tr": {
+            "legacy_caption_pid": 32904,
+            "legacy_language_pid": 18,
+            "text": "Skype adı şu karakterleri kullanılarak girilmelidir.",
+            "auto_translated": "Skype adı şu karakterleri kullanılarak girilmelidir."
+        },
+        "vi": {
+            "legacy_caption_pid": 32905,
+            "legacy_language_pid": 19,
+            "text": "Tên Skype nên được nhập bằng cách sử dụng ký tự sau.",
+            "auto_translated": "Tên Skype nên được nhập bằng cách sử dụng ký tự sau."
+        },
+        "pl": {
+            "legacy_caption_pid": 32906,
+            "legacy_language_pid": 20,
+            "text": "Nazwa Skype powinny być wprowadzane przy użyciu następujących znaków.",
+            "auto_translated": "Nazwa Skype powinny być wprowadzane przy użyciu następujących znaków."
+        },
+        "jv": {
+            "legacy_caption_pid": 32907,
+            "legacy_language_pid": 21,
+            "text": "jeneng Skype kudu ngetik nggunakake Karakter iki.",
+            "auto_translated": "jeneng Skype kudu ngetik nggunakake Karakter iki."
+        },
+        "pa": {
+            "legacy_caption_pid": 32908,
+            "legacy_language_pid": 22,
+            "text": "ਸਕਾਈਪ ਨਾਮ ਹੇਠ ਅੱਖਰ ਵਰਤ ਦਿੱਤਾ ਹੈ, ਹੋਣਾ ਚਾਹੀਦਾ ਹੈ.",
+            "auto_translated": "ਸਕਾਈਪ ਨਾਮ ਹੇਠ ਅੱਖਰ ਵਰਤ ਦਿੱਤਾ ਹੈ, ਹੋਣਾ ਚਾਹੀਦਾ ਹੈ."
+        },
+        "th": {
+            "legacy_caption_pid": 32909,
+            "legacy_language_pid": 23,
+            "text": "ชื่อ Skype ควรจะป้อนโดยใช้ตัวอักษรต่อไป",
+            "auto_translated": "ชื่อ Skype ควรจะป้อนโดยใช้ตัวอักษรต่อไป"
+        },
+        "te": {
+            "legacy_caption_pid": 39868,
+            "legacy_language_pid": 24,
+            "text": "స్కైప్ పేరు క్రింది అక్షరాలు ఉపయోగించి ఎంటర్ చేయాలి.",
+            "auto_translated": "స్కైప్ పేరు క్రింది అక్షరాలు ఉపయోగించి ఎంటర్ చేయాలి."
+        },
+        "mr": {
+            "legacy_caption_pid": 39869,
+            "legacy_language_pid": 25,
+            "text": "स्काईप नाव वर्ण वापरून प्रविष्ट करणे आवश्यक आहे.",
+            "auto_translated": "स्काईप नाव वर्ण वापरून प्रविष्ट करणे आवश्यक आहे."
+        },
+        "ur": {
+            "legacy_caption_pid": 39870,
+            "legacy_language_pid": 26,
+            "text": "اسکائپ کے نام مندرجہ ذیل حروف کا استعمال کرتے ہوئے درج کیا جانا چاہئے.",
+            "auto_translated": "اسکائپ کے نام مندرجہ ذیل حروف کا استعمال کرتے ہوئے درج کیا جانا چاہئے."
+        },
+        "gu": {
+            "legacy_caption_pid": 39871,
+            "legacy_language_pid": 27,
+            "text": "સ્કાયપે નામ નીચેના અક્ષરોની મદદથી દાખલ કરવા જોઈએ.",
+            "auto_translated": "સ્કાયપે નામ નીચેના અક્ષરોની મદદથી દાખલ કરવા જોઈએ."
+        },
+        "uk": {
+            "legacy_caption_pid": 39872,
+            "legacy_language_pid": 28,
+            "text": "Ім'я Skype має бути введено за допомогою наступних символів.",
+            "auto_translated": "Ім'я Skype має бути введено за допомогою наступних символів."
+        },
+        "ml": {
+            "legacy_caption_pid": 39873,
+            "legacy_language_pid": 29,
+            "text": "സ്കൈപ്പ് പേര് താഴെ പ്രതീകങ്ങൾ ഉപയോഗിച്ച് നൽകേണ്ടതാണ്.",
+            "auto_translated": "സ്കൈപ്പ് പേര് താഴെ പ്രതീകങ്ങൾ ഉപയോഗിച്ച് നൽകേണ്ടതാണ്."
+        },
+        "kn": {
+            "legacy_caption_pid": 39874,
+            "legacy_language_pid": 30,
+            "text": "ಸ್ಕೈಪ್ ಹೆಸರು ಈ ಕೆಳಗಿನ ಅಕ್ಷರಗಳನ್ನು ನಮೂದಿಸಬೇಕು.",
+            "auto_translated": "ಸ್ಕೈಪ್ ಹೆಸರು ಈ ಕೆಳಗಿನ ಅಕ್ಷರಗಳನ್ನು ನಮೂದಿಸಬೇಕು."
+        },
+        "su": {
+            "legacy_caption_pid": 39875,
+            "legacy_language_pid": 31,
+            "text": "Ngaran Skype kudu diasupkeun ngagunakeun karakter handap.",
+            "auto_translated": "Ngaran Skype kudu diasupkeun ngagunakeun karakter handap."
+        },
+        "ku": {
+            "legacy_caption_pid": 39876,
+            "legacy_language_pid": 32,
+            "text": "Navê Skype, divê bikaranîna tîpan jêr ketin.",
+            "auto_translated": "Navê Skype, divê bikaranîna tîpan jêr ketin."
+        },
+        "ps": {
+            "legacy_caption_pid": 39877,
+            "legacy_language_pid": 33,
+            "text": "سکايپ نوم باید د لاندې تورو په کارولو سره راننوتل شي.",
+            "auto_translated": "سکايپ نوم باید د لاندې تورو په کارولو سره راننوتل شي."
+        },
+        "ro": {
+            "legacy_caption_pid": 39878,
+            "legacy_language_pid": 34,
+            "text": "Numele Skype ar trebui să fie introduse folosind următoarele caractere.",
+            "auto_translated": "Numele Skype ar trebui să fie introduse folosind următoarele caractere."
+        },
+        "id": {
+            "legacy_caption_pid": 39879,
+            "legacy_language_pid": 35,
+            "text": "Nama skype harus dimasukkan menggunakan karakter berikut.",
+            "auto_translated": "Nama skype harus dimasukkan menggunakan karakter berikut."
+        },
+        "sd": {
+            "legacy_caption_pid": 39880,
+            "legacy_language_pid": 36,
+            "text": "Skype جي نالي هيٺ ڏنل اکرن کي استعمال ڪرڻ ۾ داخل ڪيو وڃي.",
+            "auto_translated": "Skype جي نالي هيٺ ڏنل اکرن کي استعمال ڪرڻ ۾ داخل ڪيو وڃي."
+        },
+        "af": {
+            "legacy_caption_pid": 39881,
+            "legacy_language_pid": 37,
+            "text": "Skype naam moet ingeskryf word met behulp van die volgende karakters.",
+            "auto_translated": "Skype naam moet ingeskryf word met behulp van die volgende karakters."
+        },
+        "sw": {
+            "legacy_caption_pid": 39882,
+            "legacy_language_pid": 38,
+            "text": "jina Skype yanafaa kuingizwa kutumia herufi zifuatazo.",
+            "auto_translated": "jina Skype yanafaa kuingizwa kutumia herufi zifuatazo."
+        },
+        "lo": {
+            "legacy_caption_pid": 39883,
+            "legacy_language_pid": 39,
+            "text": "ຊື່ Skype ຄວນໄດ້ຮັບການເຂົ້າໂດຍໃຊ້ຕົວອັກສອນດັ່ງຕໍ່ໄປນີ້.",
+            "auto_translated": "ຊື່ Skype ຄວນໄດ້ຮັບການເຂົ້າໂດຍໃຊ້ຕົວອັກສອນດັ່ງຕໍ່ໄປນີ້."
+        },
+        "nl": {
+            "legacy_caption_pid": 39884,
+            "legacy_language_pid": 40,
+            "text": "Skype-naam moet worden ingevoerd met de volgende tekens.",
+            "auto_translated": "Skype-naam moet worden ingevoerd met de volgende tekens."
+        },
+        "tl": {
+            "legacy_caption_pid": 39885,
+            "legacy_language_pid": 41,
+            "text": "Pangalan ng Skype ay dapat na ilagay paggamit ng sumusunod na mga character.",
+            "auto_translated": "Pangalan ng Skype ay dapat na ilagay paggamit ng sumusunod na mga character."
+        },
+        "ne": {
+            "legacy_caption_pid": 39886,
+            "legacy_language_pid": 42,
+            "text": "स्काइप नाम निम्न वर्ण प्रयोग गरी प्रविष्ट गर्नुपर्छ।",
+            "auto_translated": "स्काइप नाम निम्न वर्ण प्रयोग गरी प्रविष्ट गर्नुपर्छ।"
+        },
+        "hu": {
+            "legacy_caption_pid": 39887,
+            "legacy_language_pid": 43,
+            "text": "Skype elnevezést be kell jegyezni a következő karaktereket.",
+            "auto_translated": "Skype elnevezést be kell jegyezni a következő karaktereket."
+        },
+        "cs": {
+            "legacy_caption_pid": 39888,
+            "legacy_language_pid": 44,
+            "text": "Název Skype by měly být zadány pomocí následujících znaků.",
+            "auto_translated": "Název Skype by měly být zadány pomocí následujících znaků."
+        },
+        "el": {
+            "legacy_caption_pid": 39889,
+            "legacy_language_pid": 45,
+            "text": "Το όνομά Skype θα πρέπει να εισαχθούν χρησιμοποιώντας τους παρακάτω χαρακτήρες.",
+            "auto_translated": "Το όνομά Skype θα πρέπει να εισαχθούν χρησιμοποιώντας τους παρακάτω χαρακτήρες."
+        },
+        "sv": {
+            "legacy_caption_pid": 39890,
+            "legacy_language_pid": 46,
+            "text": "Skype-namn ska anges med följande tecken.",
+            "auto_translated": "Skype-namn ska anges med följande tecken."
+        },
+        "kk": {
+            "legacy_caption_pid": 39891,
+            "legacy_language_pid": 47,
+            "text": "Skype аты мынадай таңбаларды пайдаланып енгізілуі тиіс.",
+            "auto_translated": "Skype аты мынадай таңбаларды пайдаланып енгізілуі тиіс."
+        },
+        "fi": {
+            "legacy_caption_pid": 39892,
+            "legacy_language_pid": 48,
+            "text": "Skype-nimi tulee antaa seuraavasti merkkiä.",
+            "auto_translated": "Skype-nimi tulee antaa seuraavasti merkkiä."
+        },
+        "da": {
+            "legacy_caption_pid": 39893,
+            "legacy_language_pid": 49,
+            "text": "Skype-navn skal indtastes ved hjælp af følgende tegn.",
+            "auto_translated": "Skype-navn skal indtastes ved hjælp af følgende tegn."
+        },
+        "he": {
+            "legacy_caption_pid": 39894,
+            "legacy_language_pid": 50,
+            "text": "שם סקייפ לא יוזן באמצעות התווים הבאים.",
+            "auto_translated": "שם סקייפ לא יוזן באמצעות התווים הבאים."
+        },
+        "no": {
+            "legacy_caption_pid": 39895,
+            "legacy_language_pid": 51,
+            "text": "Skype navn skal angis med følgende tegn.",
+            "auto_translated": "Skype navn skal angis med følgende tegn."
+        }
+    }
+}

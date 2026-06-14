@@ -1,0 +1,69 @@
+{
+    "resource_key": "TITLE_DBAAS_HOW_TO_USE_EXAMPLE_CUSTOM_PROXY",
+    "legacy_resource_pid": 598,
+    "base_group_key": "grp-010-matsuesoft-lib",
+    "additional_group_keys": [],
+    "key_for_update": "hEA4rF9aoOMhK8gqD3JvORiNC1ypNGj1bGMnuk79RkSiwuLT5OX1xGOwllHYNnvrYqZpRyb7UFREe5Gw0DMojYMhsIv7LWiolKNFtTnClbhTzzHXUiGq3HLpRaEIHcJj",
+    "sort_group": "TITLE",
+    "key_name": "TITLE_DBAAS_HOW_TO_USE_EXAMPLE_CUSTOM_PROXY",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": true,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 4670,
+            "legacy_language_pid": 1,
+            "text": "複数関数同時呼び出しの例",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 4671,
+            "legacy_language_pid": 2,
+            "text": "Example to Call multiple function at the same time",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 14391,
+            "legacy_language_pid": 3,
+            "text": "",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 14392,
+            "legacy_language_pid": 4,
+            "text": "",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 14393,
+            "legacy_language_pid": 5,
+            "text": "Ejemplo para llamar a varias funciones al mismo tiempo",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 14394,
+            "legacy_language_pid": 6,
+            "text": "Exemplo para chamar várias funções ao mesmo tempo",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 14395,
+            "legacy_language_pid": 7,
+            "text": "",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 17325,
+            "legacy_language_pid": 8,
+            "text": "Exemple pour appeler plusieurs fonctions en même temps",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 17326,
+            "legacy_language_pid": 9,
+            "text": "एक ही समय में विभिन्न फ़ंक्शन कॉल करने के लिए उदाहरण",
+            "auto_translated": ""
+        }
+    }
+}

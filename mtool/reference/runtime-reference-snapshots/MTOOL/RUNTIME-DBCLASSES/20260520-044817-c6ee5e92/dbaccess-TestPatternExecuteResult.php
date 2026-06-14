@@ -1,0 +1,15 @@
+<?php
+
+require_once __DIR__ . '/_runtime_loader.php';
+require_once __DIR__ . '/base/dbaccess-TestPatternExecuteResultBase.php';
+
+if (!mtool_runtime_bundle_load_custom_wrapper('dbaccess-TestPatternExecuteResult.php')) {
+    // Generated wrapper entry for runtime DB Access.
+    // Override `mtool/extensions/MTOOL/RUNTIME-DBCLASSES/dbaccess-TestPatternExecuteResult.php` and extend `TestPatternExecuteResultDBAccessBase` for project-specific customizations.
+
+    class TestPatternExecuteResultDBAccess extends TestPatternExecuteResultDBAccessBase
+    {
+    }
+}
+
+?>

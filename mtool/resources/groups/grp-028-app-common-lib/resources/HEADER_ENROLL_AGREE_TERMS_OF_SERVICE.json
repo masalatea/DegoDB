@@ -1,0 +1,321 @@
+{
+    "resource_key": "HEADER_ENROLL_AGREE_TERMS_OF_SERVICE",
+    "legacy_resource_pid": 1309,
+    "base_group_key": "grp-028-app-common-lib",
+    "additional_group_keys": [],
+    "key_for_update": "dqNXk9auqAPbhs6UZLXapQwhOCMzoHt2dsb7dWsy7Hn2reEKyzyiDjWOTNMbQSj150Px3VGTLt6lRvJGK9A2DjHoO8oLIxPDPSz14BM0dVCEfxupJjRXUvhwPkJmfHoD",
+    "sort_group": "ENROLL",
+    "key_name": "HEADER_ENROLL_AGREE_TERMS_OF_SERVICE",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": false,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 827,
+            "legacy_language_pid": 1,
+            "text": "利用規約に合意したものとみなします",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 828,
+            "legacy_language_pid": 2,
+            "text": "Submit after agree with Terms of Service",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 6392,
+            "legacy_language_pid": 3,
+            "text": "视为已同意本条款和条件",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 6393,
+            "legacy_language_pid": 4,
+            "text": "이용 약관에 동의한 것으로 간주합니다",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 10100,
+            "legacy_language_pid": 5,
+            "text": "Enviar después de acuerdo con Términos de servicio",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 10101,
+            "legacy_language_pid": 6,
+            "text": "Enviar mais tarde de acordo com os termos de serviço",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 10102,
+            "legacy_language_pid": 7,
+            "text": "視為已同意本條款和條件",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 16105,
+            "legacy_language_pid": 8,
+            "text": "Soumettre après accord avec les Conditions d'utilisation",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 16106,
+            "legacy_language_pid": 9,
+            "text": "सेवा की शर्तों से सहमत होने के बाद जमा करें",
+            "auto_translated": ""
+        },
+        "ar": {
+            "legacy_caption_pid": 28316,
+            "legacy_language_pid": 10,
+            "text": "اعتبر وافقت على الشروط والأحكام",
+            "auto_translated": "اعتبر وافقت على الشروط والأحكام"
+        },
+        "fa": {
+            "legacy_caption_pid": 28317,
+            "legacy_language_pid": 11,
+            "text": "تلقی به کلیه قوانین و مقررات",
+            "auto_translated": "تلقی به کلیه قوانین و مقررات"
+        },
+        "de": {
+            "legacy_caption_pid": 28318,
+            "legacy_language_pid": 12,
+            "text": "Gilt mit den Nutzungsbedingungen einverstanden",
+            "auto_translated": "Gilt mit den Nutzungsbedingungen einverstanden"
+        },
+        "ru": {
+            "legacy_caption_pid": 28319,
+            "legacy_language_pid": 13,
+            "text": "Наносящий согласился с Условиями",
+            "auto_translated": "Наносящий согласился с Условиями"
+        },
+        "ms": {
+            "legacy_caption_pid": 28320,
+            "legacy_language_pid": 14,
+            "text": "Dianggap telah bersetuju dengan Terma dan Syarat",
+            "auto_translated": "Dianggap telah bersetuju dengan Terma dan Syarat"
+        },
+        "ta": {
+            "legacy_caption_pid": 28321,
+            "legacy_language_pid": 15,
+            "text": "விதிமுறைகள் மற்றும் நிபந்தனைகள் இணங்கிக் கொண்டுள்ளது போல் கருதப்படும்",
+            "auto_translated": "விதிமுறைகள் மற்றும் நிபந்தனைகள் இணங்கிக் கொண்டுள்ளது போல் கருதப்படும்"
+        },
+        "it": {
+            "legacy_caption_pid": 28322,
+            "legacy_language_pid": 16,
+            "text": "Ritiene che abbia accettato i termini e condizioni",
+            "auto_translated": "Ritiene che abbia accettato i termini e condizioni"
+        },
+        "bn": {
+            "legacy_caption_pid": 28323,
+            "legacy_language_pid": 17,
+            "text": "বলিয়া গণ্য শর্তাবলী করতে সম্মত হয়েছে থেকে",
+            "auto_translated": "বলিয়া গণ্য শর্তাবলী করতে সম্মত হয়েছে থেকে"
+        },
+        "tr": {
+            "legacy_caption_pid": 28324,
+            "legacy_language_pid": 18,
+            "text": "Şartlar ve Koşullar kabul etmiş sayılır",
+            "auto_translated": "Şartlar ve Koşullar kabul etmiş sayılır"
+        },
+        "vi": {
+            "legacy_caption_pid": 28325,
+            "legacy_language_pid": 19,
+            "text": "Coi như đã đồng ý với các Điều khoản và Điều kiện",
+            "auto_translated": "Coi như đã đồng ý với các Điều khoản và Điều kiện"
+        },
+        "pl": {
+            "legacy_caption_pid": 28326,
+            "legacy_language_pid": 20,
+            "text": "Uznaje się, że zgodził się na Warunkach",
+            "auto_translated": "Uznaje się, że zgodził się na Warunkach"
+        },
+        "jv": {
+            "legacy_caption_pid": 28327,
+            "legacy_language_pid": 21,
+            "text": "Dianggep wis sarujuk menyang Sarat lan Ketentuan",
+            "auto_translated": "Dianggep wis sarujuk menyang Sarat lan Ketentuan"
+        },
+        "pa": {
+            "legacy_caption_pid": 28328,
+            "legacy_language_pid": 22,
+            "text": "ਡੀਮਡ ਨਿਯਮ ਅਤੇ ਹਾਲਾਤ ਕਰਨ ਲਈ ਸਹਿਮਤ ਹੋ ਗਏ ਹਨ,",
+            "auto_translated": "ਡੀਮਡ ਨਿਯਮ ਅਤੇ ਹਾਲਾਤ ਕਰਨ ਲਈ ਸਹਿਮਤ ਹੋ ਗਏ ਹਨ,"
+        },
+        "th": {
+            "legacy_caption_pid": 28329,
+            "legacy_language_pid": 23,
+            "text": "ถือว่าได้ตกลงที่จะข้อตกลงและเงื่อนไข",
+            "auto_translated": "ถือว่าได้ตกลงที่จะข้อตกลงและเงื่อนไข"
+        },
+        "te": {
+            "legacy_caption_pid": 33680,
+            "legacy_language_pid": 24,
+            "text": "నియమాలు మరియు నిబంధనలు అంగీకరించింది డీమ్డ్",
+            "auto_translated": "నియమాలు మరియు నిబంధనలు అంగీకరించింది డీమ్డ్"
+        },
+        "mr": {
+            "legacy_caption_pid": 33681,
+            "legacy_language_pid": 25,
+            "text": "अटी आणि शर्ती मान्य केले आहे, असे मानण्यात",
+            "auto_translated": "अटी आणि शर्ती मान्य केले आहे, असे मानण्यात"
+        },
+        "ur": {
+            "legacy_caption_pid": 33682,
+            "legacy_language_pid": 26,
+            "text": "شرائط و ضوابط سے اتفاق کیا ہے کرنے کے لئے تصور",
+            "auto_translated": "شرائط و ضوابط سے اتفاق کیا ہے کرنے کے لئے تصور"
+        },
+        "gu": {
+            "legacy_caption_pid": 33683,
+            "legacy_language_pid": 27,
+            "text": "માનવામાં નિયમો અને શરતો માટે સંમત થયા",
+            "auto_translated": "માનવામાં નિયમો અને શરતો માટે સંમત થયા"
+        },
+        "uk": {
+            "legacy_caption_pid": 33684,
+            "legacy_language_pid": 28,
+            "text": "Наносить погодився з Умовами",
+            "auto_translated": "Наносить погодився з Умовами"
+        },
+        "ml": {
+            "legacy_caption_pid": 33685,
+            "legacy_language_pid": 29,
+            "text": "കണക്കാക്കപ്പെട്ടിരുന്നത് നിബന്ധനകളും വ്യവസ്ഥകളും സമ്മതിച്ചു എന്ന്",
+            "auto_translated": "കണക്കാക്കപ്പെട്ടിരുന്നത് നിബന്ധനകളും വ്യവസ്ഥകളും സമ്മതിച്ചു എന്ന്"
+        },
+        "kn": {
+            "legacy_caption_pid": 33686,
+            "legacy_language_pid": 30,
+            "text": "ನಿಯಮಗಳು ಮತ್ತು ನಿಯಮಗಳು ಒಪ್ಪಿಗೆ ಎಂದು ಪರಿಗಣಿಸಲ್ಪಟ್ಟಿತು",
+            "auto_translated": "ನಿಯಮಗಳು ಮತ್ತು ನಿಯಮಗಳು ಒಪ್ಪಿಗೆ ಎಂದು ಪರಿಗಣಿಸಲ್ಪಟ್ಟಿತು"
+        },
+        "su": {
+            "legacy_caption_pid": 33687,
+            "legacy_language_pid": 31,
+            "text": "Dianggap geus sapuk kana Sarat jeung Kaayaan",
+            "auto_translated": "Dianggap geus sapuk kana Sarat jeung Kaayaan"
+        },
+        "ku": {
+            "legacy_caption_pid": 33688,
+            "legacy_language_pid": 32,
+            "text": "Qenaetê ku ji bo şert û mercan li hev",
+            "auto_translated": "Qenaetê ku ji bo şert û mercan li hev"
+        },
+        "ps": {
+            "legacy_caption_pid": 33689,
+            "legacy_language_pid": 33,
+            "text": "وگڼل ته د شرایطو او مقرراتو موافقه",
+            "auto_translated": "وگڼل ته د شرایطو او مقرراتو موافقه"
+        },
+        "ro": {
+            "legacy_caption_pid": 33690,
+            "legacy_language_pid": 34,
+            "text": "Consideră că au fost de acord cu Termenii și condițiile",
+            "auto_translated": "Consideră că au fost de acord cu Termenii și condițiile"
+        },
+        "id": {
+            "legacy_caption_pid": 33691,
+            "legacy_language_pid": 35,
+            "text": "Dianggap telah menyetujui Syarat dan Ketentuan",
+            "auto_translated": "Dianggap telah menyetujui Syarat dan Ketentuan"
+        },
+        "sd": {
+            "legacy_caption_pid": 33692,
+            "legacy_language_pid": 36,
+            "text": "تعليمي ادارا جي شرطن ۽ حالتون ڪرڻ تي اتفاق ڪيو",
+            "auto_translated": "تعليمي ادارا جي شرطن ۽ حالتون ڪرڻ تي اتفاق ڪيو"
+        },
+        "af": {
+            "legacy_caption_pid": 33693,
+            "legacy_language_pid": 37,
+            "text": "Geag het ingestem om die terme en voorwaardes",
+            "auto_translated": "Geag het ingestem om die terme en voorwaardes"
+        },
+        "sw": {
+            "legacy_caption_pid": 33694,
+            "legacy_language_pid": 38,
+            "text": "Ikionyesha kuwa walikubaliana Kanuni na Masharti",
+            "auto_translated": "Ikionyesha kuwa walikubaliana Kanuni na Masharti"
+        },
+        "lo": {
+            "legacy_caption_pid": 33695,
+            "legacy_language_pid": 39,
+            "text": "ຖືວ່າໄດ້ຕົກລົງກັນກັບຂໍ້ກໍານົດແລະເງື່ອນໄຂ",
+            "auto_translated": "ຖືວ່າໄດ້ຕົກລົງກັນກັບຂໍ້ກໍານົດແລະເງື່ອນໄຂ"
+        },
+        "nl": {
+            "legacy_caption_pid": 33696,
+            "legacy_language_pid": 40,
+            "text": "Geacht te hebben ingestemd met de Algemene Voorwaarden",
+            "auto_translated": "Geacht te hebben ingestemd met de Algemene Voorwaarden"
+        },
+        "tl": {
+            "legacy_caption_pid": 33697,
+            "legacy_language_pid": 41,
+            "text": "Ipapalagay na sumang-ayon sa Mga Tuntunin at Kundisyon",
+            "auto_translated": "Ipapalagay na sumang-ayon sa Mga Tuntunin at Kundisyon"
+        },
+        "ne": {
+            "legacy_caption_pid": 33698,
+            "legacy_language_pid": 42,
+            "text": "नियम र सर्तहरू गर्न सहमत गरेका ठानेको",
+            "auto_translated": "नियम र सर्तहरू गर्न सहमत गरेका ठानेको"
+        },
+        "hu": {
+            "legacy_caption_pid": 33699,
+            "legacy_language_pid": 43,
+            "text": "Tekintendő, hogy elfogadta, hogy az Általános Szerződési Feltételek",
+            "auto_translated": "Tekintendő, hogy elfogadta, hogy az Általános Szerződési Feltételek"
+        },
+        "cs": {
+            "legacy_caption_pid": 33700,
+            "legacy_language_pid": 44,
+            "text": "Za to, že souhlasila s Podmínkami",
+            "auto_translated": "Za to, že souhlasila s Podmínkami"
+        },
+        "el": {
+            "legacy_caption_pid": 33701,
+            "legacy_language_pid": 45,
+            "text": "Θεωρείται ότι έχει συμφωνήσει με τους Όρους και Προϋποθέσεις",
+            "auto_translated": "Θεωρείται ότι έχει συμφωνήσει με τους Όρους και Προϋποθέσεις"
+        },
+        "sv": {
+            "legacy_caption_pid": 33702,
+            "legacy_language_pid": 46,
+            "text": "Anses ha samtyckt till Villkoren",
+            "auto_translated": "Anses ha samtyckt till Villkoren"
+        },
+        "kk": {
+            "legacy_caption_pid": 33703,
+            "legacy_language_pid": 47,
+            "text": "Танылған Шарттар мен келісті үшін",
+            "auto_translated": "Танылған Шарттар мен келісті үшін"
+        },
+        "fi": {
+            "legacy_caption_pid": 33704,
+            "legacy_language_pid": 48,
+            "text": "Katsotaan suostunut Ehtojen",
+            "auto_translated": "Katsotaan suostunut Ehtojen"
+        },
+        "da": {
+            "legacy_caption_pid": 33705,
+            "legacy_language_pid": 49,
+            "text": "Anses for at have accepteret de vilkår og betingelser",
+            "auto_translated": "Anses for at have accepteret de vilkår og betingelser"
+        },
+        "he": {
+            "legacy_caption_pid": 33706,
+            "legacy_language_pid": 50,
+            "text": "כמי שהסכים לתנאים והגבלות",
+            "auto_translated": "כמי שהסכים לתנאים והגבלות"
+        },
+        "no": {
+            "legacy_caption_pid": 33707,
+            "legacy_language_pid": 51,
+            "text": "Anses å ha samtykket til vilkårene",
+            "auto_translated": "Anses å ha samtykket til vilkårene"
+        }
+    }
+}

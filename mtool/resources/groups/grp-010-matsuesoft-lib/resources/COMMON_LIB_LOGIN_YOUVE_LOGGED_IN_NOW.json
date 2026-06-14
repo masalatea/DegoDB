@@ -1,0 +1,321 @@
+{
+    "resource_key": "COMMON_LIB_LOGIN_YOUVE_LOGGED_IN_NOW",
+    "legacy_resource_pid": 1479,
+    "base_group_key": "grp-010-matsuesoft-lib",
+    "additional_group_keys": [],
+    "key_for_update": "o5PUqLjuJOxPmIwK3TFsFCl0h9BW12zI6HVlzsj51JIyuWWFME3mEWKWNVxgd4PNCeLglcxlcRqKTeylGJYyoMroe3CzDZR7BnEosiFjNrNfucKnFb5La5yzlueXb8Gj",
+    "sort_group": "LOGIN",
+    "key_name": "COMMON_LIB_LOGIN_YOUVE_LOGGED_IN_NOW",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": false,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 6190,
+            "legacy_language_pid": 1,
+            "text": "ログインしました",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 6191,
+            "legacy_language_pid": 2,
+            "text": "You've logged in",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 6192,
+            "legacy_language_pid": 3,
+            "text": "您现在登录",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 6193,
+            "legacy_language_pid": 4,
+            "text": "로그인했습니다",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 11117,
+            "legacy_language_pid": 5,
+            "text": "Has iniciado sesión ",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 11118,
+            "legacy_language_pid": 6,
+            "text": "Você fez logon ",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 11119,
+            "legacy_language_pid": 7,
+            "text": "您現在登錄",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 17255,
+            "legacy_language_pid": 8,
+            "text": "Vous êtes connecté",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 17256,
+            "legacy_language_pid": 9,
+            "text": "आपने लॉग इन किया है",
+            "auto_translated": ""
+        },
+        "ar": {
+            "legacy_caption_pid": 32798,
+            "legacy_language_pid": 10,
+            "text": "والآن تسجيل دخولك",
+            "auto_translated": "والآن تسجيل دخولك"
+        },
+        "fa": {
+            "legacy_caption_pid": 32799,
+            "legacy_language_pid": 11,
+            "text": "شما در حال حاضر به سیستم وارد شده",
+            "auto_translated": "شما در حال حاضر به سیستم وارد شده"
+        },
+        "de": {
+            "legacy_caption_pid": 32800,
+            "legacy_language_pid": 12,
+            "text": "Sie sind jetzt angemeldet",
+            "auto_translated": "Sie sind jetzt angemeldet"
+        },
+        "ru": {
+            "legacy_caption_pid": 32801,
+            "legacy_language_pid": 13,
+            "text": "Теперь Вы зарегистрированы",
+            "auto_translated": "Теперь Вы зарегистрированы"
+        },
+        "ms": {
+            "legacy_caption_pid": 32802,
+            "legacy_language_pid": 14,
+            "text": "Anda sekarang telah log",
+            "auto_translated": "Anda sekarang telah log"
+        },
+        "ta": {
+            "legacy_caption_pid": 32803,
+            "legacy_language_pid": 15,
+            "text": "தற்போது நீங்கள்",
+            "auto_translated": "தற்போது நீங்கள்"
+        },
+        "it": {
+            "legacy_caption_pid": 32804,
+            "legacy_language_pid": 16,
+            "text": "Si è ora collegato",
+            "auto_translated": "Si è ora collegato"
+        },
+        "bn": {
+            "legacy_caption_pid": 32805,
+            "legacy_language_pid": 17,
+            "text": "আপনি এখন লগ ইন করা হয়",
+            "auto_translated": "আপনি এখন লগ ইন করা হয়"
+        },
+        "tr": {
+            "legacy_caption_pid": 32806,
+            "legacy_language_pid": 18,
+            "text": "Artık kaydedilir",
+            "auto_translated": "Artık kaydedilir"
+        },
+        "vi": {
+            "legacy_caption_pid": 32807,
+            "legacy_language_pid": 19,
+            "text": "Bạn đã đăng",
+            "auto_translated": "Bạn đã đăng"
+        },
+        "pl": {
+            "legacy_caption_pid": 32808,
+            "legacy_language_pid": 20,
+            "text": "Jesteś teraz zalogowany",
+            "auto_translated": "Jesteś teraz zalogowany"
+        },
+        "jv": {
+            "legacy_caption_pid": 32809,
+            "legacy_language_pid": 21,
+            "text": "Panjenengan saiki mlebu",
+            "auto_translated": "Panjenengan saiki mlebu"
+        },
+        "pa": {
+            "legacy_caption_pid": 32810,
+            "legacy_language_pid": 22,
+            "text": "ਤੁਹਾਨੂੰ ਹੁਣ ਲਾਗਇਨ ਕਰ ਰਹੇ ਹਨ",
+            "auto_translated": "ਤੁਹਾਨੂੰ ਹੁਣ ਲਾਗਇਨ ਕਰ ਰਹੇ ਹਨ"
+        },
+        "th": {
+            "legacy_caption_pid": 32811,
+            "legacy_language_pid": 23,
+            "text": "คุณเข้าสู่ระบบในขณะนี้",
+            "auto_translated": "คุณเข้าสู่ระบบในขณะนี้"
+        },
+        "te": {
+            "legacy_caption_pid": 40064,
+            "legacy_language_pid": 24,
+            "text": "మీరు ఇప్పుడు లాగిన్",
+            "auto_translated": "మీరు ఇప్పుడు లాగిన్"
+        },
+        "mr": {
+            "legacy_caption_pid": 40065,
+            "legacy_language_pid": 25,
+            "text": "आपण आता लॉग इन केले आहे",
+            "auto_translated": "आपण आता लॉग इन केले आहे"
+        },
+        "ur": {
+            "legacy_caption_pid": 40066,
+            "legacy_language_pid": 26,
+            "text": "اب آپ لاگ ان ہیں",
+            "auto_translated": "اب آپ لاگ ان ہیں"
+        },
+        "gu": {
+            "legacy_caption_pid": 40067,
+            "legacy_language_pid": 27,
+            "text": "હવે તમે લૉગ ઇન છો",
+            "auto_translated": "હવે તમે લૉગ ઇન છો"
+        },
+        "uk": {
+            "legacy_caption_pid": 40068,
+            "legacy_language_pid": 28,
+            "text": "Тепер Ви зареєстровані",
+            "auto_translated": "Тепер Ви зареєстровані"
+        },
+        "ml": {
+            "legacy_caption_pid": 40069,
+            "legacy_language_pid": 29,
+            "text": "നിങ്ങൾ ഇപ്പോൾ ലോഗിൻ ചെയ്തു",
+            "auto_translated": "നിങ്ങൾ ഇപ്പോൾ ലോഗിൻ ചെയ്തു"
+        },
+        "kn": {
+            "legacy_caption_pid": 40070,
+            "legacy_language_pid": 30,
+            "text": "ನೀವು ಈಗ ಲಾಗ್",
+            "auto_translated": "ನೀವು ಈಗ ಲಾಗ್"
+        },
+        "su": {
+            "legacy_caption_pid": 40071,
+            "legacy_language_pid": 31,
+            "text": "Anjeun ayeuna log",
+            "auto_translated": "Anjeun ayeuna log"
+        },
+        "ku": {
+            "legacy_caption_pid": 40072,
+            "legacy_language_pid": 32,
+            "text": "Tu niha",
+            "auto_translated": "Tu niha"
+        },
+        "ps": {
+            "legacy_caption_pid": 40073,
+            "legacy_language_pid": 33,
+            "text": "تاسو اوس غونډال",
+            "auto_translated": "تاسو اوس غونډال"
+        },
+        "ro": {
+            "legacy_caption_pid": 40074,
+            "legacy_language_pid": 34,
+            "text": "Acum sunteți autentificat",
+            "auto_translated": "Acum sunteți autentificat"
+        },
+        "id": {
+            "legacy_caption_pid": 40075,
+            "legacy_language_pid": 35,
+            "text": "Anda sekarang login",
+            "auto_translated": "Anda sekarang login"
+        },
+        "sd": {
+            "legacy_caption_pid": 40076,
+            "legacy_language_pid": 36,
+            "text": "هاڻي توهان جو لاگ ان رهيا آهن",
+            "auto_translated": "هاڻي توهان جو لاگ ان رهيا آهن"
+        },
+        "af": {
+            "legacy_caption_pid": 40077,
+            "legacy_language_pid": 37,
+            "text": "Jy is nou uitgeteken",
+            "auto_translated": "Jy is nou uitgeteken"
+        },
+        "sw": {
+            "legacy_caption_pid": 40078,
+            "legacy_language_pid": 38,
+            "text": "Wewe ni sasa watumiaji",
+            "auto_translated": "Wewe ni sasa watumiaji"
+        },
+        "lo": {
+            "legacy_caption_pid": 40079,
+            "legacy_language_pid": 39,
+            "text": "ເຈົ້າຍັງບໍ່ໄດ້ເຂົ້າສູ່ລະບົບໃນປັດຈຸບັນ",
+            "auto_translated": "ເຈົ້າຍັງບໍ່ໄດ້ເຂົ້າສູ່ລະບົບໃນປັດຈຸບັນ"
+        },
+        "nl": {
+            "legacy_caption_pid": 40080,
+            "legacy_language_pid": 40,
+            "text": "U bent nu aangemeld",
+            "auto_translated": "U bent nu aangemeld"
+        },
+        "tl": {
+            "legacy_caption_pid": 40081,
+            "legacy_language_pid": 41,
+            "text": "Nakaalis ka",
+            "auto_translated": "Nakaalis ka"
+        },
+        "ne": {
+            "legacy_caption_pid": 40082,
+            "legacy_language_pid": 42,
+            "text": "अब तपाईं लग इन हुनुहुन्छ",
+            "auto_translated": "अब तपाईं लग इन हुनुहुन्छ"
+        },
+        "hu": {
+            "legacy_caption_pid": 40083,
+            "legacy_language_pid": 43,
+            "text": "Ön most bejelentkezve",
+            "auto_translated": "Ön most bejelentkezve"
+        },
+        "cs": {
+            "legacy_caption_pid": 40084,
+            "legacy_language_pid": 44,
+            "text": "Nyní jste přihlášeni",
+            "auto_translated": "Nyní jste přihlášeni"
+        },
+        "el": {
+            "legacy_caption_pid": 40085,
+            "legacy_language_pid": 45,
+            "text": "Είστε τώρα συνδεδεμένοι",
+            "auto_translated": "Είστε τώρα συνδεδεμένοι"
+        },
+        "sv": {
+            "legacy_caption_pid": 40086,
+            "legacy_language_pid": 46,
+            "text": "Du är nu inloggad",
+            "auto_translated": "Du är nu inloggad"
+        },
+        "kk": {
+            "legacy_caption_pid": 40087,
+            "legacy_language_pid": 47,
+            "text": "Сіз енді тіркеледі",
+            "auto_translated": "Сіз енді тіркеледі"
+        },
+        "fi": {
+            "legacy_caption_pid": 40088,
+            "legacy_language_pid": 48,
+            "text": "Olet kirjautunut",
+            "auto_translated": "Olet kirjautunut"
+        },
+        "da": {
+            "legacy_caption_pid": 40089,
+            "legacy_language_pid": 49,
+            "text": "Du er nu logget",
+            "auto_translated": "Du er nu logget"
+        },
+        "he": {
+            "legacy_caption_pid": 40090,
+            "legacy_language_pid": 50,
+            "text": "כעת אתה מחובר",
+            "auto_translated": "כעת אתה מחובר"
+        },
+        "no": {
+            "legacy_caption_pid": 40091,
+            "legacy_language_pid": 51,
+            "text": "Du er nå logget",
+            "auto_translated": "Du er nå logget"
+        }
+    }
+}

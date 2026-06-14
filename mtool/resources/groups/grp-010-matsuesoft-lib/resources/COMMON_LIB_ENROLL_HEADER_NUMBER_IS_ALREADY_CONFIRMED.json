@@ -1,0 +1,321 @@
+{
+    "resource_key": "COMMON_LIB_ENROLL_HEADER_NUMBER_IS_ALREADY_CONFIRMED",
+    "legacy_resource_pid": 1410,
+    "base_group_key": "grp-010-matsuesoft-lib",
+    "additional_group_keys": [],
+    "key_for_update": "Cthgt9ylk3x7U8TXArfO8m73dzMBKrdTbbqrRcroQ9EryITpvAfwnzWrEt1jkW6AV6kwU2nmrrDd1H0A7HXyrylMPKGfcQyusMKVlcOYq5W2sskKpmA2gv5Urw4DfY4I",
+    "sort_group": "ENROLL",
+    "key_name": "COMMON_LIB_ENROLL_HEADER_NUMBER_IS_ALREADY_CONFIRMED",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": false,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 5914,
+            "legacy_language_pid": 1,
+            "text": "確認済",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 5915,
+            "legacy_language_pid": 2,
+            "text": "Confirmed",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 5916,
+            "legacy_language_pid": 3,
+            "text": "已确认",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 5917,
+            "legacy_language_pid": 4,
+            "text": "확인완료",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 10859,
+            "legacy_language_pid": 5,
+            "text": "Confirmado",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 10860,
+            "legacy_language_pid": 6,
+            "text": "Confirmado",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 10861,
+            "legacy_language_pid": 7,
+            "text": "已確認",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 17007,
+            "legacy_language_pid": 8,
+            "text": "Confirmé",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 17008,
+            "legacy_language_pid": 9,
+            "text": "पुष्टीकृत",
+            "auto_translated": ""
+        },
+        "ar": {
+            "legacy_caption_pid": 31564,
+            "legacy_language_pid": 10,
+            "text": "مؤكد",
+            "auto_translated": "مؤكد"
+        },
+        "fa": {
+            "legacy_caption_pid": 31565,
+            "legacy_language_pid": 11,
+            "text": "تایید شده",
+            "auto_translated": "تایید شده"
+        },
+        "de": {
+            "legacy_caption_pid": 31566,
+            "legacy_language_pid": 12,
+            "text": "bestätigt",
+            "auto_translated": "bestätigt"
+        },
+        "ru": {
+            "legacy_caption_pid": 31567,
+            "legacy_language_pid": 13,
+            "text": "подтвердил",
+            "auto_translated": "подтвердил"
+        },
+        "ms": {
+            "legacy_caption_pid": 31568,
+            "legacy_language_pid": 14,
+            "text": "disahkan",
+            "auto_translated": "disahkan"
+        },
+        "ta": {
+            "legacy_caption_pid": 31569,
+            "legacy_language_pid": 15,
+            "text": "உறுதிசெய்யப்பட்ட",
+            "auto_translated": "உறுதிசெய்யப்பட்ட"
+        },
+        "it": {
+            "legacy_caption_pid": 31570,
+            "legacy_language_pid": 16,
+            "text": "confermato",
+            "auto_translated": "confermato"
+        },
+        "bn": {
+            "legacy_caption_pid": 31571,
+            "legacy_language_pid": 17,
+            "text": "নিশ্চিত",
+            "auto_translated": "নিশ্চিত"
+        },
+        "tr": {
+            "legacy_caption_pid": 31572,
+            "legacy_language_pid": 18,
+            "text": "onaylı",
+            "auto_translated": "onaylı"
+        },
+        "vi": {
+            "legacy_caption_pid": 31573,
+            "legacy_language_pid": 19,
+            "text": "khẳng định",
+            "auto_translated": "khẳng định"
+        },
+        "pl": {
+            "legacy_caption_pid": 31574,
+            "legacy_language_pid": 20,
+            "text": "potwierdzone",
+            "auto_translated": "potwierdzone"
+        },
+        "jv": {
+            "legacy_caption_pid": 31575,
+            "legacy_language_pid": 21,
+            "text": "dikonfirmasi",
+            "auto_translated": "dikonfirmasi"
+        },
+        "pa": {
+            "legacy_caption_pid": 31576,
+            "legacy_language_pid": 22,
+            "text": "ਪੁਸ਼ਟੀ",
+            "auto_translated": "ਪੁਸ਼ਟੀ"
+        },
+        "th": {
+            "legacy_caption_pid": 31577,
+            "legacy_language_pid": 23,
+            "text": "ได้รับการยืนยัน",
+            "auto_translated": "ได้รับการยืนยัน"
+        },
+        "te": {
+            "legacy_caption_pid": 38944,
+            "legacy_language_pid": 24,
+            "text": "ధృవీకరించబడిన",
+            "auto_translated": "ధృవీకరించబడిన"
+        },
+        "mr": {
+            "legacy_caption_pid": 38945,
+            "legacy_language_pid": 25,
+            "text": "पुष्टी",
+            "auto_translated": "पुष्टी"
+        },
+        "ur": {
+            "legacy_caption_pid": 38946,
+            "legacy_language_pid": 26,
+            "text": "اس بات کی تصدیق",
+            "auto_translated": "اس بات کی تصدیق"
+        },
+        "gu": {
+            "legacy_caption_pid": 38947,
+            "legacy_language_pid": 27,
+            "text": "પુષ્ટિ",
+            "auto_translated": "પુષ્ટિ"
+        },
+        "uk": {
+            "legacy_caption_pid": 38948,
+            "legacy_language_pid": 28,
+            "text": "підтвердив",
+            "auto_translated": "підтвердив"
+        },
+        "ml": {
+            "legacy_caption_pid": 38949,
+            "legacy_language_pid": 29,
+            "text": "സ്ഥിരീകരിച്ചു",
+            "auto_translated": "സ്ഥിരീകരിച്ചു"
+        },
+        "kn": {
+            "legacy_caption_pid": 38950,
+            "legacy_language_pid": 30,
+            "text": "ಕನ್ಫರ್ಮ್ಡ್",
+            "auto_translated": "ಕನ್ಫರ್ಮ್ಡ್"
+        },
+        "su": {
+            "legacy_caption_pid": 38951,
+            "legacy_language_pid": 31,
+            "text": "dikonfirmasi",
+            "auto_translated": "dikonfirmasi"
+        },
+        "ku": {
+            "legacy_caption_pid": 38952,
+            "legacy_language_pid": 32,
+            "text": "Confirmed",
+            "auto_translated": "Confirmed"
+        },
+        "ps": {
+            "legacy_caption_pid": 38953,
+            "legacy_language_pid": 33,
+            "text": "تاييد شوي",
+            "auto_translated": "تاييد شوي"
+        },
+        "ro": {
+            "legacy_caption_pid": 38954,
+            "legacy_language_pid": 34,
+            "text": "confirmat",
+            "auto_translated": "confirmat"
+        },
+        "id": {
+            "legacy_caption_pid": 38955,
+            "legacy_language_pid": 35,
+            "text": "dikonfirmasi",
+            "auto_translated": "dikonfirmasi"
+        },
+        "sd": {
+            "legacy_caption_pid": 38956,
+            "legacy_language_pid": 36,
+            "text": "جي تصديق",
+            "auto_translated": "جي تصديق"
+        },
+        "af": {
+            "legacy_caption_pid": 38957,
+            "legacy_language_pid": 37,
+            "text": "bevestig",
+            "auto_translated": "bevestig"
+        },
+        "sw": {
+            "legacy_caption_pid": 38958,
+            "legacy_language_pid": 38,
+            "text": "alithibitisha",
+            "auto_translated": "alithibitisha"
+        },
+        "lo": {
+            "legacy_caption_pid": 38959,
+            "legacy_language_pid": 39,
+            "text": "ຢືນຢັນ",
+            "auto_translated": "ຢືນຢັນ"
+        },
+        "nl": {
+            "legacy_caption_pid": 38960,
+            "legacy_language_pid": 40,
+            "text": "bevestigd",
+            "auto_translated": "bevestigd"
+        },
+        "tl": {
+            "legacy_caption_pid": 38961,
+            "legacy_language_pid": 41,
+            "text": "nakumpirma",
+            "auto_translated": "nakumpirma"
+        },
+        "ne": {
+            "legacy_caption_pid": 38962,
+            "legacy_language_pid": 42,
+            "text": "पुष्टि",
+            "auto_translated": "पुष्टि"
+        },
+        "hu": {
+            "legacy_caption_pid": 38963,
+            "legacy_language_pid": 43,
+            "text": "megerősített",
+            "auto_translated": "megerősített"
+        },
+        "cs": {
+            "legacy_caption_pid": 38964,
+            "legacy_language_pid": 44,
+            "text": "potvrzena",
+            "auto_translated": "potvrzena"
+        },
+        "el": {
+            "legacy_caption_pid": 38965,
+            "legacy_language_pid": 45,
+            "text": "επιβεβαιώθηκε",
+            "auto_translated": "επιβεβαιώθηκε"
+        },
+        "sv": {
+            "legacy_caption_pid": 38966,
+            "legacy_language_pid": 46,
+            "text": "bekräftat",
+            "auto_translated": "bekräftat"
+        },
+        "kk": {
+            "legacy_caption_pid": 38967,
+            "legacy_language_pid": 47,
+            "text": "расталған",
+            "auto_translated": "расталған"
+        },
+        "fi": {
+            "legacy_caption_pid": 38968,
+            "legacy_language_pid": 48,
+            "text": "Vahvistettu",
+            "auto_translated": "Vahvistettu"
+        },
+        "da": {
+            "legacy_caption_pid": 38969,
+            "legacy_language_pid": 49,
+            "text": "bekræftet",
+            "auto_translated": "bekræftet"
+        },
+        "he": {
+            "legacy_caption_pid": 38970,
+            "legacy_language_pid": 50,
+            "text": "אושר",
+            "auto_translated": "אושר"
+        },
+        "no": {
+            "legacy_caption_pid": 38971,
+            "legacy_language_pid": 51,
+            "text": "bekreftet",
+            "auto_translated": "bekreftet"
+        }
+    }
+}

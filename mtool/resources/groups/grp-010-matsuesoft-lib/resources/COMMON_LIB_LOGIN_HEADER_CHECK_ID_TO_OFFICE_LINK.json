@@ -1,0 +1,321 @@
+{
+    "resource_key": "COMMON_LIB_LOGIN_HEADER_CHECK_ID_TO_OFFICE_LINK",
+    "legacy_resource_pid": 1506,
+    "base_group_key": "grp-010-matsuesoft-lib",
+    "additional_group_keys": [],
+    "key_for_update": "XZl8JZzGeGzRrH4b27En9Ozq0dfh2NqmhUgWa5QtpynpsZVeLXopoyL5KMdorEeYznmyBbMB4BLJ7YQAUfXqZr1CgBheyEp0NucY30G05vESYTkrUvNItPPhSnnElVwl",
+    "sort_group": "LOGIN",
+    "key_name": "COMMON_LIB_LOGIN_HEADER_CHECK_ID_TO_OFFICE_LINK",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": false,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 6298,
+            "legacy_language_pid": 1,
+            "text": "ユーザ名(ID)を忘れた場合は事務局までお問い合わせ下さい",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 6299,
+            "legacy_language_pid": 2,
+            "text": "Please contact the secretariat if you forget your User Name (ID)",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 6300,
+            "legacy_language_pid": 3,
+            "text": "如果您忘记了用户名ID，请联系事务所",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 6301,
+            "legacy_language_pid": 4,
+            "text": "아이디 를 잊어버린 경우 사무국으로 문의하시기 바랍니다",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 11066,
+            "legacy_language_pid": 5,
+            "text": "Póngase en contacto con la secretaría si olvida su identificación",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 11067,
+            "legacy_language_pid": 6,
+            "text": "Entre em contato com o secretariado se você esquecer sua ID",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 11068,
+            "legacy_language_pid": 7,
+            "text": "如果您忘記了用户名ID，請聯繫事務所",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 16045,
+            "legacy_language_pid": 8,
+            "text": "Veuillez contacter le secrétariat si vous oubliez votre nom d'utilisateur (ID)",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 16046,
+            "legacy_language_pid": 9,
+            "text": "यदि आप अपना यूजर नेम (आईडी) भूल जाते हैं तो कृपया सचिवालय से संपर्क करें",
+            "auto_translated": ""
+        },
+        "ar": {
+            "legacy_caption_pid": 32544,
+            "legacy_language_pid": 10,
+            "text": "يرجى الاتصال بأمانة إذا كنت قد نسيت اسم المستخدم (ID)",
+            "auto_translated": "يرجى الاتصال بأمانة إذا كنت قد نسيت اسم المستخدم (ID)"
+        },
+        "fa": {
+            "legacy_caption_pid": 32545,
+            "legacy_language_pid": 11,
+            "text": "لطفا دبیرخانه تماس بگیرید اگر شما نام کاربری را فراموش کرده ام (ID)",
+            "auto_translated": "لطفا دبیرخانه تماس بگیرید اگر شما نام کاربری را فراموش کرده ام (ID)"
+        },
+        "de": {
+            "legacy_caption_pid": 32546,
+            "legacy_language_pid": 12,
+            "text": "Bitte kontaktieren Sie das Sekretariat, wenn Sie den Benutzernamen (ID) vergessen",
+            "auto_translated": "Bitte kontaktieren Sie das Sekretariat, wenn Sie den Benutzernamen (ID) vergessen"
+        },
+        "ru": {
+            "legacy_caption_pid": 32547,
+            "legacy_language_pid": 13,
+            "text": "Пожалуйста, свяжитесь с секретариатом, если вы забыли имя пользователя (ID)",
+            "auto_translated": "Пожалуйста, свяжитесь с секретариатом, если вы забыли имя пользователя (ID)"
+        },
+        "ms": {
+            "legacy_caption_pid": 32548,
+            "legacy_language_pid": 14,
+            "text": "Sila hubungi sekretariat jika anda terlupa nama pengguna (ID)",
+            "auto_translated": "Sila hubungi sekretariat jika anda terlupa nama pengguna (ID)"
+        },
+        "ta": {
+            "legacy_caption_pid": 32549,
+            "legacy_language_pid": 15,
+            "text": "செயலகம் தொடர்பு கொள்ளவும் நீங்கள் பயனர் பெயர் மறந்து விட்டால் (ஐடி)",
+            "auto_translated": "செயலகம் தொடர்பு கொள்ளவும் நீங்கள் பயனர் பெயர் மறந்து விட்டால் (ஐடி)"
+        },
+        "it": {
+            "legacy_caption_pid": 32550,
+            "legacy_language_pid": 16,
+            "text": "Si prega di contattare la segreteria se si dimentica il nome utente (ID)",
+            "auto_translated": "Si prega di contattare la segreteria se si dimentica il nome utente (ID)"
+        },
+        "bn": {
+            "legacy_caption_pid": 32551,
+            "legacy_language_pid": 17,
+            "text": "সচিবালয় সাথে যোগাযোগ করুন যদি আপনি ব্যবহারকারীর নাম ভুলে (আইডি)",
+            "auto_translated": "সচিবালয় সাথে যোগাযোগ করুন যদি আপনি ব্যবহারকারীর নাম ভুলে (আইডি)"
+        },
+        "tr": {
+            "legacy_caption_pid": 32552,
+            "legacy_language_pid": 18,
+            "text": "Eğer kullanıcı adı unutursanız sekreterya temasa geçiniz (ID)",
+            "auto_translated": "Eğer kullanıcı adı unutursanız sekreterya temasa geçiniz (ID)"
+        },
+        "vi": {
+            "legacy_caption_pid": 32553,
+            "legacy_language_pid": 19,
+            "text": "Vui lòng liên hệ Ban thư ký nếu bạn quên tên người dùng (ID)",
+            "auto_translated": "Vui lòng liên hệ Ban thư ký nếu bạn quên tên người dùng (ID)"
+        },
+        "pl": {
+            "legacy_caption_pid": 32554,
+            "legacy_language_pid": 20,
+            "text": "Proszę skontaktować się z sekretariatem jeśli zapomnisz nazwy użytkownika (ID)",
+            "auto_translated": "Proszę skontaktować się z sekretariatem jeśli zapomnisz nazwy użytkownika (ID)"
+        },
+        "jv": {
+            "legacy_caption_pid": 32555,
+            "legacy_language_pid": 21,
+            "text": "Hubungi Sekretariat yen lali jeneng panganggo (ID)",
+            "auto_translated": "Hubungi Sekretariat yen lali jeneng panganggo (ID)"
+        },
+        "pa": {
+            "legacy_caption_pid": 32556,
+            "legacy_language_pid": 22,
+            "text": "ਸਕੱਤਰੇਤ ਨਾਲ ਸੰਪਰਕ ਕਰੋ ਜੀ, ਜੇ ਤੁਹਾਨੂੰ ਯੂਜ਼ਰ ਨਾਮ ਭੁੱਲ ਹੈ (ID)",
+            "auto_translated": "ਸਕੱਤਰੇਤ ਨਾਲ ਸੰਪਰਕ ਕਰੋ ਜੀ, ਜੇ ਤੁਹਾਨੂੰ ਯੂਜ਼ਰ ਨਾਮ ਭੁੱਲ ਹੈ (ID)"
+        },
+        "th": {
+            "legacy_caption_pid": 32557,
+            "legacy_language_pid": 23,
+            "text": "กรุณาติดต่อสำนักเลขาธิการหากคุณลืมชื่อผู้ใช้ (ID)",
+            "auto_translated": "กรุณาติดต่อสำนักเลขาธิการหากคุณลืมชื่อผู้ใช้ (ID)"
+        },
+        "te": {
+            "legacy_caption_pid": 40540,
+            "legacy_language_pid": 24,
+            "text": "మీరు యూజర్ పేరు మర్చిపోతే ఉంటే దయచేసి సెక్రటేరియట్ సంప్రదించండి (ID)",
+            "auto_translated": "మీరు యూజర్ పేరు మర్చిపోతే ఉంటే దయచేసి సెక్రటేరియట్ సంప్రదించండి (ID)"
+        },
+        "mr": {
+            "legacy_caption_pid": 40541,
+            "legacy_language_pid": 25,
+            "text": "आपण वापरकर्ता नाव विसरल्यास सचिवालय संपर्क साधा (ID)",
+            "auto_translated": "आपण वापरकर्ता नाव विसरल्यास सचिवालय संपर्क साधा (ID)"
+        },
+        "ur": {
+            "legacy_caption_pid": 40542,
+            "legacy_language_pid": 26,
+            "text": "آپ صارف کا نام بھول جائیں تو سیکرٹریٹ سے رابطہ کریں (ID)",
+            "auto_translated": "آپ صارف کا نام بھول جائیں تو سیکرٹریٹ سے رابطہ کریں (ID)"
+        },
+        "gu": {
+            "legacy_caption_pid": 40543,
+            "legacy_language_pid": 27,
+            "text": "સચિવાલય સંપર્ક કરો જો તમે વપરાશકર્તા નામ ભૂલશો (આઇડી)",
+            "auto_translated": "સચિવાલય સંપર્ક કરો જો તમે વપરાશકર્તા નામ ભૂલશો (આઇડી)"
+        },
+        "uk": {
+            "legacy_caption_pid": 40544,
+            "legacy_language_pid": 28,
+            "text": "Будь ласка, зв'яжіться з секретаріатом, якщо ви забули ім'я користувача (ID)",
+            "auto_translated": "Будь ласка, зв'яжіться з секретаріатом, якщо ви забули ім'я користувача (ID)"
+        },
+        "ml": {
+            "legacy_caption_pid": 40545,
+            "legacy_language_pid": 29,
+            "text": "ഉപയോക്തൃ നാമം (ഐഡി) മറന്നാൽ സെക്രട്ടറിയേറ്റ് ബന്ധപ്പെടുക",
+            "auto_translated": "ഉപയോക്തൃ നാമം (ഐഡി) മറന്നാൽ സെക്രട്ടറിയേറ്റ് ബന്ധപ്പെടുക"
+        },
+        "kn": {
+            "legacy_caption_pid": 40546,
+            "legacy_language_pid": 30,
+            "text": "ನೀವು ಬಳಕೆದಾರ ಹೆಸರನ್ನು ಮರೆತರೆ ದಯವಿಟ್ಟು ಕಾರ್ಯದರ್ಶಿ ಸಂಪರ್ಕಿಸಿ (ಐಡಿ)",
+            "auto_translated": "ನೀವು ಬಳಕೆದಾರ ಹೆಸರನ್ನು ಮರೆತರೆ ದಯವಿಟ್ಟು ಕಾರ್ಯದರ್ಶಿ ಸಂಪರ್ಕಿಸಿ (ಐಡಿ)"
+        },
+        "su": {
+            "legacy_caption_pid": 40547,
+            "legacy_language_pid": 31,
+            "text": "Mangga wartosan sekretariat upami anjeun poho nami pamaké (ID)",
+            "auto_translated": "Mangga wartosan sekretariat upami anjeun poho nami pamaké (ID)"
+        },
+        "ku": {
+            "legacy_caption_pid": 40548,
+            "legacy_language_pid": 32,
+            "text": "Ji kerema xwe ve sekreteriya têkiliyê, eger hûn navê bikarhêner ji bîr (ID)",
+            "auto_translated": "Ji kerema xwe ve sekreteriya têkiliyê, eger hûn navê bikarhêner ji bîr (ID)"
+        },
+        "ps": {
+            "legacy_caption_pid": 40549,
+            "legacy_language_pid": 33,
+            "text": "لطفا د سکرتریت په تماس که تاسو د کارن نوم هېر (تذکرو)",
+            "auto_translated": "لطفا د سکرتریت په تماس که تاسو د کارن نوم هېر (تذکرو)"
+        },
+        "ro": {
+            "legacy_caption_pid": 40550,
+            "legacy_language_pid": 34,
+            "text": "Vă rugăm să contactați secretariatul dacă uitați numele de utilizator (ID)",
+            "auto_translated": "Vă rugăm să contactați secretariatul dacă uitați numele de utilizator (ID)"
+        },
+        "id": {
+            "legacy_caption_pid": 40551,
+            "legacy_language_pid": 35,
+            "text": "Silahkan hubungi sekretariat jika Anda lupa nama pengguna (ID)",
+            "auto_translated": "Silahkan hubungi sekretariat jika Anda lupa nama pengguna (ID)"
+        },
+        "sd": {
+            "legacy_caption_pid": 40552,
+            "legacy_language_pid": 36,
+            "text": "جيڪڏهن توهان جي استعمال ڪندڙ جو نالو (سڃاڻپ) وسارڻ جي secretariat سان رابطو ڪريو",
+            "auto_translated": "جيڪڏهن توهان جي استعمال ڪندڙ جو نالو (سڃاڻپ) وسارڻ جي secretariat سان رابطو ڪريو"
+        },
+        "af": {
+            "legacy_caption_pid": 40553,
+            "legacy_language_pid": 37,
+            "text": "Kontak asseblief die sekretariaat as jy die gebruikersnaam vergeet (ID)",
+            "auto_translated": "Kontak asseblief die sekretariaat as jy die gebruikersnaam vergeet (ID)"
+        },
+        "sw": {
+            "legacy_caption_pid": 40554,
+            "legacy_language_pid": 38,
+            "text": "Tafadhali wasiliana sekretarieti ukisahau jina la mtumiaji (ID)",
+            "auto_translated": "Tafadhali wasiliana sekretarieti ukisahau jina la mtumiaji (ID)"
+        },
+        "lo": {
+            "legacy_caption_pid": 40555,
+            "legacy_language_pid": 39,
+            "text": "ກະລຸນາຕິດຕໍ່ຫາກອງເລຂາຂອງຖ້າຫາກວ່າທ່ານລືມຊື່ຜູ້ໃຊ້ (ລະຫັດ)",
+            "auto_translated": "ກະລຸນາຕິດຕໍ່ຫາກອງເລຂາຂອງຖ້າຫາກວ່າທ່ານລືມຊື່ຜູ້ໃຊ້ (ລະຫັດ)"
+        },
+        "nl": {
+            "legacy_caption_pid": 40556,
+            "legacy_language_pid": 40,
+            "text": "Neem contact op met het secretariaat als je de gebruikersnaam vergeten (ID)",
+            "auto_translated": "Neem contact op met het secretariaat als je de gebruikersnaam vergeten (ID)"
+        },
+        "tl": {
+            "legacy_caption_pid": 40557,
+            "legacy_language_pid": 41,
+            "text": "Mangyaring makipag-ugnay sa kalihiman kung nakalimutan mo ang user name (ID)",
+            "auto_translated": "Mangyaring makipag-ugnay sa kalihiman kung nakalimutan mo ang user name (ID)"
+        },
+        "ne": {
+            "legacy_caption_pid": 40558,
+            "legacy_language_pid": 42,
+            "text": "सचिवालय सम्पर्क गर्नुहोस् तपाईं प्रयोगकर्ता नाम बिर्सनुभयो भने (आईडी)",
+            "auto_translated": "सचिवालय सम्पर्क गर्नुहोस् तपाईं प्रयोगकर्ता नाम बिर्सनुभयो भने (आईडी)"
+        },
+        "hu": {
+            "legacy_caption_pid": 40559,
+            "legacy_language_pid": 43,
+            "text": "Kérjük, lépjen kapcsolatba a titkárság, ha elfelejti a felhasználói név (ID)",
+            "auto_translated": "Kérjük, lépjen kapcsolatba a titkárság, ha elfelejti a felhasználói név (ID)"
+        },
+        "cs": {
+            "legacy_caption_pid": 40560,
+            "legacy_language_pid": 44,
+            "text": "Obraťte se prosím na sekretariát, pokud zapomenete své uživatelské jméno (ID)",
+            "auto_translated": "Obraťte se prosím na sekretariát, pokud zapomenete své uživatelské jméno (ID)"
+        },
+        "el": {
+            "legacy_caption_pid": 40561,
+            "legacy_language_pid": 45,
+            "text": "Παρακαλούμε επικοινωνήστε με τη γραμματεία σε περίπτωση που ξεχάσετε το όνομα χρήστη (ID)",
+            "auto_translated": "Παρακαλούμε επικοινωνήστε με τη γραμματεία σε περίπτωση που ξεχάσετε το όνομα χρήστη (ID)"
+        },
+        "sv": {
+            "legacy_caption_pid": 40562,
+            "legacy_language_pid": 46,
+            "text": "Kontakta sekretariatet om du glömmer användarnamnet (ID)",
+            "auto_translated": "Kontakta sekretariatet om du glömmer användarnamnet (ID)"
+        },
+        "kk": {
+            "legacy_caption_pid": 40563,
+            "legacy_language_pid": 47,
+            "text": "Егер пайдаланушы атын (ID) ұмытып, егер хатшылық хабарласыңыз",
+            "auto_translated": "Егер пайдаланушы атын (ID) ұмытып, егер хатшылық хабарласыңыз"
+        },
+        "fi": {
+            "legacy_caption_pid": 40564,
+            "legacy_language_pid": 48,
+            "text": "Ota yhteyttä sihteeristöön jos unohdat käyttäjänimi (ID)",
+            "auto_translated": "Ota yhteyttä sihteeristöön jos unohdat käyttäjänimi (ID)"
+        },
+        "da": {
+            "legacy_caption_pid": 40565,
+            "legacy_language_pid": 49,
+            "text": "Kontakt venligst sekretariatet, hvis du glemmer det brugernavn (ID)",
+            "auto_translated": "Kontakt venligst sekretariatet, hvis du glemmer det brugernavn (ID)"
+        },
+        "he": {
+            "legacy_caption_pid": 40566,
+            "legacy_language_pid": 50,
+            "text": "נא ליצור קשר עם המזכירות אם שכחת את שם המשתמש (ID)",
+            "auto_translated": "נא ליצור קשר עם המזכירות אם שכחת את שם המשתמש (ID)"
+        },
+        "no": {
+            "legacy_caption_pid": 40567,
+            "legacy_language_pid": 51,
+            "text": "Ta kontakt med sekretariatet hvis du glemmer brukernavnet (ID)",
+            "auto_translated": "Ta kontakt med sekretariatet hvis du glemmer brukernavnet (ID)"
+        }
+    }
+}

@@ -1,0 +1,321 @@
+{
+    "resource_key": "COMMON_LIB_LOGIN_HEADER_COMMENT_ABOUT_ENROLL",
+    "legacy_resource_pid": 1504,
+    "base_group_key": "grp-010-matsuesoft-lib",
+    "additional_group_keys": [],
+    "key_for_update": "DpPchslsX6aOebmoviJCVqLXpXOlh1Y89FkC9eb3MgA97VQA6Rlc8aYsnvBy3DmuC1HLLjwqp7iLyNfCtNkJ4I5myKgYnPls6W0giNZlJ0TKUOBhahfzEXmDPqj9YmUG",
+    "sort_group": "LOGIN",
+    "key_name": "COMMON_LIB_LOGIN_HEADER_COMMENT_ABOUT_ENROLL",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": false,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 6290,
+            "legacy_language_pid": 1,
+            "text": "会員登録がお済みでない方は、あらかじめご登録フォームにて登録をお願いいたします。",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 6291,
+            "legacy_language_pid": 2,
+            "text": "Those who are not yet registered as membership, please register on the registration form in advance.",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 6292,
+            "legacy_language_pid": 3,
+            "text": "如果会员登录没有完成，，请重新进行登录注册",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 6293,
+            "legacy_language_pid": 4,
+            "text": "회원 가입하시지 않은 분은 미리 등록 양식에서 등록을 부탁드립니다.",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 11078,
+            "legacy_language_pid": 5,
+            "text": "Aquellos que aún no están registrados como miembros, por favor regístrese en el formulario de registro por adelantado.",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 11079,
+            "legacy_language_pid": 6,
+            "text": "Aqueles que ainda não estão registrados como membros, inscreva-se com antecedência no formulário de inscrição.",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 11080,
+            "legacy_language_pid": 7,
+            "text": "如果會員登錄沒有完成，，請重新進行登錄註冊",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 17239,
+            "legacy_language_pid": 8,
+            "text": "Ceux qui ne sont pas encore inscrits comme membres, veuillez vous inscrire au formulaire d'inscription à l'avance.",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 17240,
+            "legacy_language_pid": 9,
+            "text": "जो लोग अभी तक सदस्यता के रूप में पंजीकृत नहीं हैं, कृपया पंजीकरण फॉर्म को अग्रिम में पंजीकृत करें।",
+            "auto_translated": ""
+        },
+        "ar": {
+            "legacy_caption_pid": 32572,
+            "legacy_language_pid": 10,
+            "text": "لست عضوا بعد؟ هل، شكرا لك لتسجيل مقدما لاستمارة التسجيل الخاصة بك.",
+            "auto_translated": "لست عضوا بعد؟ هل، شكرا لك لتسجيل مقدما لاستمارة التسجيل الخاصة بك."
+        },
+        "fa": {
+            "legacy_caption_pid": 32573,
+            "legacy_language_pid": 11,
+            "text": "لازم است تا راهنمای؟ آیا، از شما سپاسگزارم برای ثبت نام در پیش برای فرم ثبت نام خود را.",
+            "auto_translated": "لازم است تا راهنمای؟ آیا، از شما سپاسگزارم برای ثبت نام در پیش برای فرم ثبت نام خود را."
+        },
+        "de": {
+            "legacy_caption_pid": 32574,
+            "legacy_language_pid": 12,
+            "text": "Noch nicht Mitglied? Ist, danke im Voraus für Ihr Anmeldeformular zu registrieren.",
+            "auto_translated": "Noch nicht Mitglied? Ist, danke im Voraus für Ihr Anmeldeformular zu registrieren."
+        },
+        "ru": {
+            "legacy_caption_pid": 32575,
+            "legacy_language_pid": 13,
+            "text": "Еще не зарегистрированы? Есть, спасибо вам заранее зарегистрироваться для регистрации.",
+            "auto_translated": "Еще не зарегистрированы? Есть, спасибо вам заранее зарегистрироваться для регистрации."
+        },
+        "ms": {
+            "legacy_caption_pid": 32576,
+            "legacy_language_pid": 14,
+            "text": "Belum Ahli? Adakah, terima kasih untuk mendaftar terlebih dahulu untuk borang pendaftaran anda.",
+            "auto_translated": "Belum Ahli? Adakah, terima kasih untuk mendaftar terlebih dahulu untuk borang pendaftaran anda."
+        },
+        "ta": {
+            "legacy_caption_pid": 32577,
+            "legacy_language_pid": 15,
+            "text": "இன்னுமில்லை உறுப்பினராக? அவ்வளவு தானா, நீங்கள் உங்கள் பதிவு படிவத்தை முன்கூட்டியே பதிவு செய்ய நன்றி.",
+            "auto_translated": "இன்னுமில்லை உறுப்பினராக? அவ்வளவு தானா, நீங்கள் உங்கள் பதிவு படிவத்தை முன்கூட்டியே பதிவு செய்ய நன்றி."
+        },
+        "it": {
+            "legacy_caption_pid": 32578,
+            "legacy_language_pid": 16,
+            "text": "Non sei ancora socio? È, grazie a registrarsi in anticipo per il vostro modulo di registrazione.",
+            "auto_translated": "Non sei ancora socio? È, grazie a registrarsi in anticipo per il vostro modulo di registrazione."
+        },
+        "bn": {
+            "legacy_caption_pid": 32579,
+            "legacy_language_pid": 17,
+            "text": "এখনো পর্যন্ত কোনো সদস্য?, আপনি আপনার রেজিস্ট্রেশন ফর্ম জন্য অগ্রিম রেজিস্টার ধন্যবাদ।",
+            "auto_translated": "এখনো পর্যন্ত কোনো সদস্য?, আপনি আপনার রেজিস্ট্রেশন ফর্ম জন্য অগ্রিম রেজিস্টার ধন্যবাদ।"
+        },
+        "tr": {
+            "legacy_caption_pid": 32580,
+            "legacy_language_pid": 18,
+            "text": "Oysa bir üye? Mi, sen kayıt formu için önceden kayıt teşekkür değil.",
+            "auto_translated": "Oysa bir üye? Mi, sen kayıt formu için önceden kayıt teşekkür değil."
+        },
+        "vi": {
+            "legacy_caption_pid": 32581,
+            "legacy_language_pid": 19,
+            "text": "Chưa là Thành viên? Is, cảm ơn bạn để đăng ký trước cho mẫu đăng ký của bạn.",
+            "auto_translated": "Chưa là Thành viên? Is, cảm ơn bạn để đăng ký trước cho mẫu đăng ký của bạn."
+        },
+        "pl": {
+            "legacy_caption_pid": 32582,
+            "legacy_language_pid": 20,
+            "text": "Jeszcze państwo? Czy, dziękuję Ci zgłosić się wcześniej do formularza rejestracyjnego.",
+            "auto_translated": "Jeszcze państwo? Czy, dziękuję Ci zgłosić się wcześniej do formularza rejestracyjnego."
+        },
+        "jv": {
+            "legacy_caption_pid": 32583,
+            "legacy_language_pid": 21,
+            "text": "Ora Nanging Anggota? Apa, matur nuwun kanggo daftar kanggo wangun Panjenengan.",
+            "auto_translated": "Ora Nanging Anggota? Apa, matur nuwun kanggo daftar kanggo wangun Panjenengan."
+        },
+        "pa": {
+            "legacy_caption_pid": 32584,
+            "legacy_language_pid": 22,
+            "text": "ਅਜੇ ਇੱਕ ਸਦੱਸ? ਹੈ, ਤੁਹਾਨੂੰ ਆਪਣੇ ਰਜਿਸਟਰੇਸ਼ਨ ਫਾਰਮ ਲਈ ਪੇਸ਼ਗੀ ਵਿੱਚ ਰਜਿਸਟਰ ਕਰਨ ਲਈ ਧੰਨਵਾਦ.",
+            "auto_translated": "ਅਜੇ ਇੱਕ ਸਦੱਸ? ਹੈ, ਤੁਹਾਨੂੰ ਆਪਣੇ ਰਜਿਸਟਰੇਸ਼ਨ ਫਾਰਮ ਲਈ ਪੇਸ਼ਗੀ ਵਿੱਚ ਰਜਿਸਟਰ ਕਰਨ ਲਈ ਧੰਨਵਾਦ."
+        },
+        "th": {
+            "legacy_caption_pid": 32585,
+            "legacy_language_pid": 23,
+            "text": "ยังไม่เป็นสมาชิกหรือไม่ขอขอบคุณในการลงทะเบียนล่วงหน้าสำหรับแบบฟอร์มการลงทะเบียนของคุณ",
+            "auto_translated": "ยังไม่เป็นสมาชิกหรือไม่ขอขอบคุณในการลงทะเบียนล่วงหน้าสำหรับแบบฟอร์มการลงทะเบียนของคุณ"
+        },
+        "te": {
+            "legacy_caption_pid": 40484,
+            "legacy_language_pid": 24,
+            "text": "ఇంకా సభ్యుడు? ఈజ్, మీరు మీ నమోదు రూపం కోసం ముందుగానే నమోదు ధన్యవాదాలు.",
+            "auto_translated": "ఇంకా సభ్యుడు? ఈజ్, మీరు మీ నమోదు రూపం కోసం ముందుగానే నమోదు ధన్యవాదాలు."
+        },
+        "mr": {
+            "legacy_caption_pid": 40485,
+            "legacy_language_pid": 25,
+            "text": "अजून सभासद नाही? आहे, आपण आपल्या नोंदणी फॉर्म आगाऊ नोंदणी धन्यवाद नाही.",
+            "auto_translated": "अजून सभासद नाही? आहे, आपण आपल्या नोंदणी फॉर्म आगाऊ नोंदणी धन्यवाद नाही."
+        },
+        "ur": {
+            "legacy_caption_pid": 40486,
+            "legacy_language_pid": 26,
+            "text": "نہیں ابھی تک رکن؟ ہے، آپ کو آپ کے رجسٹریشن فارم کے لئے پیشگی میں رجسٹر کرنے کا شکریہ.",
+            "auto_translated": "نہیں ابھی تک رکن؟ ہے، آپ کو آپ کے رجسٹریشن فارم کے لئے پیشگی میں رجسٹر کرنے کا شکریہ."
+        },
+        "gu": {
+            "legacy_caption_pid": 40487,
+            "legacy_language_pid": 27,
+            "text": "હજુ સુધી સભ્ય છો?, તમે તમારા નોંધણી ફોર્મ માટે અગાઉથી નોંધણી કરાવવાની આભાર.",
+            "auto_translated": "હજુ સુધી સભ્ય છો?, તમે તમારા નોંધણી ફોર્મ માટે અગાઉથી નોંધણી કરાવવાની આભાર."
+        },
+        "uk": {
+            "legacy_caption_pid": 40488,
+            "legacy_language_pid": 28,
+            "text": "Ще не зареєстровані? Є, спасибі вам заздалегідь зареєструватися для реєстрації.",
+            "auto_translated": "Ще не зареєстровані? Є, спасибі вам заздалегідь зареєструватися для реєстрації."
+        },
+        "ml": {
+            "legacy_caption_pid": 40489,
+            "legacy_language_pid": 29,
+            "text": "ഇതുവരെ ഒരു അംഗം?, നിങ്ങളുടെ രജിസ്ട്രേഷൻ ഫോം മുൻകൂറായി രജിസ്റ്റർ നന്ദി.",
+            "auto_translated": "ഇതുവരെ ഒരു അംഗം?, നിങ്ങളുടെ രജിസ്ട്രേഷൻ ഫോം മുൻകൂറായി രജിസ്റ്റർ നന്ദി."
+        },
+        "kn": {
+            "legacy_caption_pid": 40490,
+            "legacy_language_pid": 30,
+            "text": "ಇಷ್ಟಾಗಿಯೂ ಒಂದು ಸದಸ್ಯ?, ನಿಮ್ಮ ನೋಂದಣಿ ರೂಪ ಮುಂಚಿತವಾಗಿ ನೋಂದಣಿ ಧನ್ಯವಾದ ಈಸ್.",
+            "auto_translated": "ಇಷ್ಟಾಗಿಯೂ ಒಂದು ಸದಸ್ಯ?, ನಿಮ್ಮ ನೋಂದಣಿ ರೂಪ ಮುಂಚಿತವಾಗಿ ನೋಂದಣಿ ಧನ್ಯವಾದ ಈಸ್."
+        },
+        "su": {
+            "legacy_caption_pid": 40491,
+            "legacy_language_pid": 31,
+            "text": "Henteu acan a Anggota? Dupi, hatur nuhun kana ngadaptar sateuacanna pikeun formulir pendaptaran Anjeun.",
+            "auto_translated": "Henteu acan a Anggota? Dupi, hatur nuhun kana ngadaptar sateuacanna pikeun formulir pendaptaran Anjeun."
+        },
+        "ku": {
+            "legacy_caption_pid": 40492,
+            "legacy_language_pid": 32,
+            "text": "Hîn ne Member? Gelo, spas dikim ji bo forumê qeyd di pêş ji bo forma qeydê xwe.",
+            "auto_translated": "Hîn ne Member? Gelo, spas dikim ji bo forumê qeyd di pêş ji bo forma qeydê xwe."
+        },
+        "ps": {
+            "legacy_caption_pid": 40493,
+            "legacy_language_pid": 33,
+            "text": "تر اوسه نه يو غړی؟ ده، مننه تاسو ته ستاسو د ثبت فورمه مخکې ثبت کړي.",
+            "auto_translated": "تر اوسه نه يو غړی؟ ده، مننه تاسو ته ستاسو د ثبت فورمه مخکې ثبت کړي."
+        },
+        "ro": {
+            "legacy_caption_pid": 40494,
+            "legacy_language_pid": 34,
+            "text": "Nu este încă membru? Este, vă mulțumesc să se înregistreze în prealabil pentru formularul de înregistrare.",
+            "auto_translated": "Nu este încă membru? Este, vă mulțumesc să se înregistreze în prealabil pentru formularul de înregistrare."
+        },
+        "id": {
+            "legacy_caption_pid": 40495,
+            "legacy_language_pid": 35,
+            "text": "Belum Anggota? Apakah, terima kasih untuk mendaftar di muka untuk formulir pendaftaran Anda.",
+            "auto_translated": "Belum Anggota? Apakah, terima kasih untuk mendaftar di muka untuk formulir pendaftaran Anda."
+        },
+        "sd": {
+            "legacy_caption_pid": 40496,
+            "legacy_language_pid": 36,
+            "text": "اڃا نه هڪ رڪن آهي؟، پنهنجي لاء نامزدگي فارم ڏيڻ لاء اڳواٽ ۾ رجسٽر ڪرڻ لاء توهان جي مهرباني.",
+            "auto_translated": "اڃا نه هڪ رڪن آهي؟، پنهنجي لاء نامزدگي فارم ڏيڻ لاء اڳواٽ ۾ رجسٽر ڪرڻ لاء توهان جي مهرباني."
+        },
+        "af": {
+            "legacy_caption_pid": 40497,
+            "legacy_language_pid": 37,
+            "text": "Nog nie 'n lid nie? Is, dankie aan by voorbaat vir u registrasievorm.",
+            "auto_translated": "Nog nie 'n lid nie? Is, dankie aan by voorbaat vir u registrasievorm."
+        },
+        "sw": {
+            "legacy_caption_pid": 40498,
+            "legacy_language_pid": 38,
+            "text": "Bado Mwanachama? Je, asante kujiandikisha mapema kwa fomu yako ya usajili.",
+            "auto_translated": "Bado Mwanachama? Je, asante kujiandikisha mapema kwa fomu yako ya usajili."
+        },
+        "lo": {
+            "legacy_caption_pid": 40499,
+            "legacy_language_pid": 39,
+            "text": "ຍັງບໍ່ໄດ້ເປັນສະມາຊິກຫລືບໍ່, ຂອບໃຈທ່ານສະມາຊິກໃນການລ່ວງຫນ້າສໍາລັບການຮູບແບບການຈົດທະບຽນຂອງທ່ານ.",
+            "auto_translated": "ຍັງບໍ່ໄດ້ເປັນສະມາຊິກຫລືບໍ່, ຂອບໃຈທ່ານສະມາຊິກໃນການລ່ວງຫນ້າສໍາລັບການຮູບແບບການຈົດທະບຽນຂອງທ່ານ."
+        },
+        "nl": {
+            "legacy_caption_pid": 40500,
+            "legacy_language_pid": 40,
+            "text": "Nog geen lid? Is, dank u bij voorbaat registreren voor uw inschrijfformulier.",
+            "auto_translated": "Nog geen lid? Is, dank u bij voorbaat registreren voor uw inschrijfformulier."
+        },
+        "tl": {
+            "legacy_caption_pid": 40501,
+            "legacy_language_pid": 41,
+            "text": "Hindi Pa isang Miyembro? Ay, salamat sa iyo upang magrehistro nang maaga para sa iyong registration form.",
+            "auto_translated": "Hindi Pa isang Miyembro? Ay, salamat sa iyo upang magrehistro nang maaga para sa iyong registration form."
+        },
+        "ne": {
+            "legacy_caption_pid": 40502,
+            "legacy_language_pid": 42,
+            "text": "यद्यपि एक सदस्य? छ, तपाईंले आफ्नो दर्ता फारम लागि अग्रिम दर्ता धन्यवाद छैन।",
+            "auto_translated": "यद्यपि एक सदस्य? छ, तपाईंले आफ्नो दर्ता फारम लागि अग्रिम दर्ता धन्यवाद छैन।"
+        },
+        "hu": {
+            "legacy_caption_pid": 40503,
+            "legacy_language_pid": 43,
+            "text": "Még nem tag? Van, köszönöm előre bejelentkezni a regisztrációs űrlapot.",
+            "auto_translated": "Még nem tag? Van, köszönöm előre bejelentkezni a regisztrációs űrlapot."
+        },
+        "cs": {
+            "legacy_caption_pid": 40504,
+            "legacy_language_pid": 44,
+            "text": "-Li ještě členem? Je, děkuji vám zaregistrovat předem za vaši registračním formuláři.",
+            "auto_translated": "-Li ještě členem? Je, děkuji vám zaregistrovat předem za vaši registračním formuláři."
+        },
+        "el": {
+            "legacy_caption_pid": 40505,
+            "legacy_language_pid": 45,
+            "text": "Δεν έχει ακόμη ένα μέλος; Είναι, σας ευχαριστώ για την εγγραφή των προτέρων για την αίτηση εγγραφής σας.",
+            "auto_translated": "Δεν έχει ακόμη ένα μέλος; Είναι, σας ευχαριστώ για την εγγραφή των προτέρων για την αίτηση εγγραφής σας."
+        },
+        "sv": {
+            "legacy_caption_pid": 40506,
+            "legacy_language_pid": 46,
+            "text": "Inte medlem ännu? Är, tack för att registrera sig i förväg för registreringsformuläret.",
+            "auto_translated": "Inte medlem ännu? Är, tack för att registrera sig i förväg för registreringsformuläret."
+        },
+        "kk": {
+            "legacy_caption_pid": 40507,
+            "legacy_language_pid": 47,
+            "text": "Әзірге жоқ мүшесі?, Сіздің тіркеу формасы үшін алдын ала тіркелу рахмет.",
+            "auto_translated": "Әзірге жоқ мүшесі?, Сіздің тіркеу формасы үшін алдын ала тіркелу рахмет."
+        },
+        "fi": {
+            "legacy_caption_pid": 40508,
+            "legacy_language_pid": 48,
+            "text": "Etkö ole vielä jäsen? Onko, kiitos ilmoittautua jo etukäteen ilmoittautumislomakkeella.",
+            "auto_translated": "Etkö ole vielä jäsen? Onko, kiitos ilmoittautua jo etukäteen ilmoittautumislomakkeella."
+        },
+        "da": {
+            "legacy_caption_pid": 40509,
+            "legacy_language_pid": 49,
+            "text": "Endnu ikke medlem? Er, tak til tilmelde sig på forhånd for din tilmeldingsblanket.",
+            "auto_translated": "Endnu ikke medlem? Er, tak til tilmelde sig på forhånd for din tilmeldingsblanket."
+        },
+        "he": {
+            "legacy_caption_pid": 40510,
+            "legacy_language_pid": 50,
+            "text": "עדיין לא חבר? האם, תודה להירשם מראש בטופס ההרשמה שלך.",
+            "auto_translated": "עדיין לא חבר? האם, תודה להירשם מראש בטופס ההרשמה שלך."
+        },
+        "no": {
+            "legacy_caption_pid": 40511,
+            "legacy_language_pid": 51,
+            "text": "Er du ikke medlem? Er, takk til registrere seg på forhånd for påmelding.",
+            "auto_translated": "Er du ikke medlem? Er, takk til registrere seg på forhånd for påmelding."
+        }
+    }
+}

@@ -1,0 +1,321 @@
+{
+    "resource_key": "COMMON_LIB_EMAIL_TEST_INFO_AFTER_SENDING_EMAIL_LINE3_NOTE2",
+    "legacy_resource_pid": 1601,
+    "base_group_key": "grp-010-matsuesoft-lib",
+    "additional_group_keys": [],
+    "key_for_update": "viVhM8cy4CHjQhEjjNVp6ky8xoykKyzgrbxbdAtuP5xjuxiO43DtR1454jfjezpvLldknYh7u1z3eKiLWej2eOD7C2W8LfKVbjhO7TkpFcUFDrpoSk6gRabBoE00MDSe",
+    "sort_group": "EMAIL TEST",
+    "key_name": "COMMON_LIB_EMAIL_TEST_INFO_AFTER_SENDING_EMAIL_LINE3_NOTE2",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": false,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 7186,
+            "legacy_language_pid": 1,
+            "text": "2. ”迷惑メールフォルダ”に入っていないか。",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 7187,
+            "legacy_language_pid": 2,
+            "text": "2. Is not it in \"Spam folder\"?",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 7188,
+            "legacy_language_pid": 3,
+            "text": "2.是否在“垃圾邮件文件夹”。",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 7189,
+            "legacy_language_pid": 4,
+            "text": "2. \"스팸메일 폴더\"에 들어있지 않습니까?",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 10690,
+            "legacy_language_pid": 5,
+            "text": "2. ¿No está en \"Spam folder\"?",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 10691,
+            "legacy_language_pid": 6,
+            "text": "2. Não está na \"pasta de Spam\"?",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 10692,
+            "legacy_language_pid": 7,
+            "text": "2.是否在“垃圾郵件文件夾”。",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 16415,
+            "legacy_language_pid": 8,
+            "text": "2. N'est-ce pas dans \"dossier Spam\"?",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 16416,
+            "legacy_language_pid": 9,
+            "text": "2. क्या यह \"स्पैम फ़ोल्डर\" में नहीं है?",
+            "auto_translated": ""
+        },
+        "ar": {
+            "legacy_caption_pid": 30780,
+            "legacy_language_pid": 10,
+            "text": "2. ليس في \"مجلد البريد غير المرغوب فيه\".",
+            "auto_translated": "2. ليس في \"مجلد البريد غير المرغوب فيه\"."
+        },
+        "fa": {
+            "legacy_caption_pid": 30781,
+            "legacy_language_pid": 11,
+            "text": "2. در \"پوشه ایمیل های ناخواسته\" است.",
+            "auto_translated": "2. در \"پوشه ایمیل های ناخواسته\" است."
+        },
+        "de": {
+            "legacy_caption_pid": 30782,
+            "legacy_language_pid": 12,
+            "text": "2. nicht in dem \"Junk-Mail-Ordner\".",
+            "auto_translated": "2. nicht in dem \"Junk-Mail-Ordner\"."
+        },
+        "ru": {
+            "legacy_caption_pid": 30783,
+            "legacy_language_pid": 13,
+            "text": "2. не в «почтовой папке нежелательной».",
+            "auto_translated": "2. не в «почтовой папке нежелательной»."
+        },
+        "ms": {
+            "legacy_caption_pid": 30784,
+            "legacy_language_pid": 14,
+            "text": "2. tidak dalam \"folder mel sampah\".",
+            "auto_translated": "2. tidak dalam \"folder mel sampah\"."
+        },
+        "ta": {
+            "legacy_caption_pid": 30785,
+            "legacy_language_pid": 15,
+            "text": "2. இல்லை \"குப்பை அஞ்சல்களை கோப்புறை\" இல்.",
+            "auto_translated": "2. இல்லை \"குப்பை அஞ்சல்களை கோப்புறை\" இல்."
+        },
+        "it": {
+            "legacy_caption_pid": 30786,
+            "legacy_language_pid": 16,
+            "text": "2. non nella cartella \"posta indesiderata\".",
+            "auto_translated": "2. non nella cartella \"posta indesiderata\"."
+        },
+        "bn": {
+            "legacy_caption_pid": 30787,
+            "legacy_language_pid": 17,
+            "text": "2. নয় \"জাঙ্ক মেইল ​​ফোল্ডার\" হবে।",
+            "auto_translated": "2. নয় \"জাঙ্ক মেইল ​​ফোল্ডার\" হবে।"
+        },
+        "tr": {
+            "legacy_caption_pid": 30788,
+            "legacy_language_pid": 18,
+            "text": "2. değil \"önemsiz posta klasörüne\" in.",
+            "auto_translated": "2. değil \"önemsiz posta klasörüne\" in."
+        },
+        "vi": {
+            "legacy_caption_pid": 30789,
+            "legacy_language_pid": 19,
+            "text": "2. không có trong \"thư mục thư rác\".",
+            "auto_translated": "2. không có trong \"thư mục thư rác\"."
+        },
+        "pl": {
+            "legacy_caption_pid": 30790,
+            "legacy_language_pid": 20,
+            "text": "2. Nie w „folderu Wiadomości-śmieci”.",
+            "auto_translated": "2. Nie w „folderu Wiadomości-śmieci”."
+        },
+        "jv": {
+            "legacy_caption_pid": 30791,
+            "legacy_language_pid": 21,
+            "text": "2. ora ing \"folder mail ajur\".",
+            "auto_translated": "2. ora ing \"folder mail ajur\"."
+        },
+        "pa": {
+            "legacy_caption_pid": 30792,
+            "legacy_language_pid": 22,
+            "text": "2. ਨਾ \"ਜੰਕ ਮੇਲ ਫੋਲਡਰ ਨੂੰ\" ਵਿੱਚ.",
+            "auto_translated": "2. ਨਾ \"ਜੰਕ ਮੇਲ ਫੋਲਡਰ ਨੂੰ\" ਵਿੱਚ."
+        },
+        "th": {
+            "legacy_caption_pid": 30793,
+            "legacy_language_pid": 23,
+            "text": "2. ไม่ได้อยู่ในโฟลเดอร์ \"อีเมลขยะ\"",
+            "auto_translated": "2. ไม่ได้อยู่ในโฟลเดอร์ \"อีเมลขยะ\""
+        },
+        "te": {
+            "legacy_caption_pid": 42822,
+            "legacy_language_pid": 24,
+            "text": "2. కాదు \"జంక్ మెయిల్ ఫోల్డర్\" లో.",
+            "auto_translated": "2. కాదు \"జంక్ మెయిల్ ఫోల్డర్\" లో."
+        },
+        "mr": {
+            "legacy_caption_pid": 42823,
+            "legacy_language_pid": 25,
+            "text": "2. नाही \"जंक मेल फोल्डर\" मध्ये.",
+            "auto_translated": "2. नाही \"जंक मेल फोल्डर\" मध्ये."
+        },
+        "ur": {
+            "legacy_caption_pid": 42824,
+            "legacy_language_pid": 26,
+            "text": "2. \"جنک میل فولڈر\" میں نہیں.",
+            "auto_translated": "2. \"جنک میل فولڈر\" میں نہیں."
+        },
+        "gu": {
+            "legacy_caption_pid": 42825,
+            "legacy_language_pid": 27,
+            "text": "2. નથી \"જંક મેઇલ ફોલ્ડર\" છે.",
+            "auto_translated": "2. નથી \"જંક મેઇલ ફોલ્ડર\" છે."
+        },
+        "uk": {
+            "legacy_caption_pid": 42826,
+            "legacy_language_pid": 28,
+            "text": "2. не в «поштової папці небажаної».",
+            "auto_translated": "2. не в «поштової папці небажаної»."
+        },
+        "ml": {
+            "legacy_caption_pid": 42827,
+            "legacy_language_pid": 29,
+            "text": "2. അല്ല \"ജങ്ക് മെയിൽ ഫോൾഡർ\" ൽ.",
+            "auto_translated": "2. അല്ല \"ജങ്ക് മെയിൽ ഫോൾഡർ\" ൽ."
+        },
+        "kn": {
+            "legacy_caption_pid": 42828,
+            "legacy_language_pid": 30,
+            "text": "2. ಅಲ್ಲ \"ಜಂಕ್ ಮೇಲ್ ಫೋಲ್ಡರ್\" ರಲ್ಲಿ.",
+            "auto_translated": "2. ಅಲ್ಲ \"ಜಂಕ್ ಮೇಲ್ ಫೋಲ್ಡರ್\" ರಲ್ಲಿ."
+        },
+        "su": {
+            "legacy_caption_pid": 42829,
+            "legacy_language_pid": 31,
+            "text": "2. teu di \"folder mail junk\".",
+            "auto_translated": "2. teu di \"folder mail junk\"."
+        },
+        "ku": {
+            "legacy_caption_pid": 42830,
+            "legacy_language_pid": 32,
+            "text": "2. di \"Peldanka pisra\" ne.",
+            "auto_translated": "2. di \"Peldanka pisra\" ne."
+        },
+        "ps": {
+            "legacy_caption_pid": 42831,
+            "legacy_language_pid": 33,
+            "text": "2. په \"بی ګټی او مالدارۍ پوښۍ\" نه.",
+            "auto_translated": "2. په \"بی ګټی او مالدارۍ پوښۍ\" نه."
+        },
+        "ro": {
+            "legacy_caption_pid": 42832,
+            "legacy_language_pid": 34,
+            "text": "2. nu în „dosarul junk mail“.",
+            "auto_translated": "2. nu în „dosarul junk mail“."
+        },
+        "id": {
+            "legacy_caption_pid": 42833,
+            "legacy_language_pid": 35,
+            "text": "2. tidak di \"folder junk mail\".",
+            "auto_translated": "2. tidak di \"folder junk mail\"."
+        },
+        "sd": {
+            "legacy_caption_pid": 42834,
+            "legacy_language_pid": 36,
+            "text": "2. نه ئي \"فضول ميل فولڊر\" ۾.",
+            "auto_translated": "2. نه ئي \"فضول ميل فولڊر\" ۾."
+        },
+        "af": {
+            "legacy_caption_pid": 42835,
+            "legacy_language_pid": 37,
+            "text": "2. nie in die \"gids junk mail\".",
+            "auto_translated": "2. nie in die \"gids junk mail\"."
+        },
+        "sw": {
+            "legacy_caption_pid": 42836,
+            "legacy_language_pid": 38,
+            "text": "2. si katika \"Junk mail folder\".",
+            "auto_translated": "2. si katika \"Junk mail folder\"."
+        },
+        "lo": {
+            "legacy_caption_pid": 42837,
+            "legacy_language_pid": 39,
+            "text": "2. ບໍ່ໄດ້ຢູ່ໃນ \"ໂຟນເດີ mail junk\".",
+            "auto_translated": "2. ບໍ່ໄດ້ຢູ່ໃນ \"ໂຟນເດີ mail junk\"."
+        },
+        "nl": {
+            "legacy_caption_pid": 42838,
+            "legacy_language_pid": 40,
+            "text": "2. niet in de map \"ongewenste e-mail\".",
+            "auto_translated": "2. niet in de map \"ongewenste e-mail\"."
+        },
+        "tl": {
+            "legacy_caption_pid": 42839,
+            "legacy_language_pid": 41,
+            "text": "2. Hindi sa \"junk mail folder\".",
+            "auto_translated": "2. Hindi sa \"junk mail folder\"."
+        },
+        "ne": {
+            "legacy_caption_pid": 42840,
+            "legacy_language_pid": 42,
+            "text": "2. \"जंक मेल फोल्डर\" मा छैन।",
+            "auto_translated": "2. \"जंक मेल फोल्डर\" मा छैन।"
+        },
+        "hu": {
+            "legacy_caption_pid": 42841,
+            "legacy_language_pid": 43,
+            "text": "2. Nem a „levélszemét mappába”.",
+            "auto_translated": "2. Nem a „levélszemét mappába”."
+        },
+        "cs": {
+            "legacy_caption_pid": 42842,
+            "legacy_language_pid": 44,
+            "text": "2. není v „poštovní složky nevyžádané“.",
+            "auto_translated": "2. není v „poštovní složky nevyžádané“."
+        },
+        "el": {
+            "legacy_caption_pid": 42843,
+            "legacy_language_pid": 45,
+            "text": "2. όχι στο «φάκελο ανεπιθύμητης αλληλογραφίας».",
+            "auto_translated": "2. όχι στο «φάκελο ανεπιθύμητης αλληλογραφίας»."
+        },
+        "sv": {
+            "legacy_caption_pid": 42844,
+            "legacy_language_pid": 46,
+            "text": "2. inte i \"skräppost mappen\".",
+            "auto_translated": "2. inte i \"skräppost mappen\"."
+        },
+        "kk": {
+            "legacy_caption_pid": 42845,
+            "legacy_language_pid": 47,
+            "text": "2. емес «Қалаусыз пошта қалтасында» жылы.",
+            "auto_translated": "2. емес «Қалаусыз пошта қалтасында» жылы."
+        },
+        "fi": {
+            "legacy_caption_pid": 42846,
+            "legacy_language_pid": 48,
+            "text": "2. ole \"roskapostikansiostasi\".",
+            "auto_translated": "2. ole \"roskapostikansiostasi\"."
+        },
+        "da": {
+            "legacy_caption_pid": 42847,
+            "legacy_language_pid": 49,
+            "text": "2. ikke i \"post-mappe junk\".",
+            "auto_translated": "2. ikke i \"post-mappe junk\"."
+        },
+        "he": {
+            "legacy_caption_pid": 42848,
+            "legacy_language_pid": 50,
+            "text": "2. לא בתיקייה \"דואר הזבל\".",
+            "auto_translated": "2. לא בתיקייה \"דואר הזבל\"."
+        },
+        "no": {
+            "legacy_caption_pid": 42849,
+            "legacy_language_pid": 51,
+            "text": "2. ikke i \"søppelpost mappen\".",
+            "auto_translated": "2. ikke i \"søppelpost mappen\"."
+        }
+    }
+}

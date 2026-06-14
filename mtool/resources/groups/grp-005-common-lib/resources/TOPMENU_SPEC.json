@@ -1,0 +1,321 @@
+{
+    "resource_key": "TOPMENU_SPEC",
+    "legacy_resource_pid": 536,
+    "base_group_key": "grp-005-common-lib",
+    "additional_group_keys": [],
+    "key_for_update": "3XtqMrXWCf6zdN3tM8Bbctmn8rg7TlRWEd8YldgLrRqutBMfYpb58zduGJRM0IxkHCDrvILULTdz16a6caIqwXXgkXpPv0z0ARmfRUQMN7uzIchboSO5QQhRN02awRz7",
+    "sort_group": "TOPMENU",
+    "key_name": "TOPMENU_SPEC",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": false,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 1423,
+            "legacy_language_pid": 1,
+            "text": "特定商取引法",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 1424,
+            "legacy_language_pid": 2,
+            "text": "Specified Commercial Transaction Law",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 6590,
+            "legacy_language_pid": 3,
+            "text": "特定商业交易法",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 6591,
+            "legacy_language_pid": 4,
+            "text": "특정상거래법",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 10636,
+            "legacy_language_pid": 5,
+            "text": "Ley de Transacciones Comerciales Especificas",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 10637,
+            "legacy_language_pid": 6,
+            "text": "Lei específica de transações comerciais",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 10638,
+            "legacy_language_pid": 7,
+            "text": "特定商取引法",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 16377,
+            "legacy_language_pid": 8,
+            "text": "Droit des transactions commerciales spécifiques",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 16378,
+            "legacy_language_pid": 9,
+            "text": "विशेष निर्देश",
+            "auto_translated": ""
+        },
+        "ar": {
+            "legacy_caption_pid": 30486,
+            "legacy_language_pid": 10,
+            "text": "تحديد قانون المعاملات التجارية",
+            "auto_translated": "تحديد قانون المعاملات التجارية"
+        },
+        "fa": {
+            "legacy_caption_pid": 30487,
+            "legacy_language_pid": 11,
+            "text": "تعیین قانون معاملات تجاری",
+            "auto_translated": "تعیین قانون معاملات تجاری"
+        },
+        "de": {
+            "legacy_caption_pid": 30488,
+            "legacy_language_pid": 12,
+            "text": "Spezifizierte Handelsgeschäften Gesetz",
+            "auto_translated": "Spezifizierte Handelsgeschäften Gesetz"
+        },
+        "ru": {
+            "legacy_caption_pid": 30489,
+            "legacy_language_pid": 13,
+            "text": "Указанный Закон коммерческих сделок",
+            "auto_translated": "Указанный Закон коммерческих сделок"
+        },
+        "ms": {
+            "legacy_caption_pid": 30490,
+            "legacy_language_pid": 14,
+            "text": "Urusniaga Transaksi Commercial Law",
+            "auto_translated": "Urusniaga Transaksi Commercial Law"
+        },
+        "ta": {
+            "legacy_caption_pid": 30491,
+            "legacy_language_pid": 15,
+            "text": "குறிப்பிட்ட வர்த்தகரீதியான பரிவர்த்தனைகள் சட்டம்",
+            "auto_translated": "குறிப்பிட்ட வர்த்தகரீதியான பரிவர்த்தனைகள் சட்டம்"
+        },
+        "it": {
+            "legacy_caption_pid": 30492,
+            "legacy_language_pid": 16,
+            "text": "Specificato legge transazioni commerciali",
+            "auto_translated": "Specificato legge transazioni commerciali"
+        },
+        "bn": {
+            "legacy_caption_pid": 30493,
+            "legacy_language_pid": 17,
+            "text": "নির্দিষ্ট বাণিজ্যিক লেনদেন আইনের",
+            "auto_translated": "নির্দিষ্ট বাণিজ্যিক লেনদেন আইনের"
+        },
+        "tr": {
+            "legacy_caption_pid": 30494,
+            "legacy_language_pid": 18,
+            "text": "Belirtilen Ticari İşlemler Kanunu",
+            "auto_translated": "Belirtilen Ticari İşlemler Kanunu"
+        },
+        "vi": {
+            "legacy_caption_pid": 30495,
+            "legacy_language_pid": 19,
+            "text": "Quy định Luật giao dịch thương mại",
+            "auto_translated": "Quy định Luật giao dịch thương mại"
+        },
+        "pl": {
+            "legacy_caption_pid": 30496,
+            "legacy_language_pid": 20,
+            "text": "Prawo określone transakcje handlowe",
+            "auto_translated": "Prawo określone transakcje handlowe"
+        },
+        "jv": {
+            "legacy_caption_pid": 30497,
+            "legacy_language_pid": 21,
+            "text": "Kasebut Hukum Transaksi Commercial",
+            "auto_translated": "Kasebut Hukum Transaksi Commercial"
+        },
+        "pa": {
+            "legacy_caption_pid": 30498,
+            "legacy_language_pid": 22,
+            "text": "ਦਿੱਤਾ ਵਪਾਰਕ ਲੈਣ ਦੇ ਕਾਨੂੰਨ",
+            "auto_translated": "ਦਿੱਤਾ ਵਪਾਰਕ ਲੈਣ ਦੇ ਕਾਨੂੰਨ"
+        },
+        "th": {
+            "legacy_caption_pid": 30499,
+            "legacy_language_pid": 23,
+            "text": "ระบุกฎหมายธุรกรรมพาณิชย์",
+            "auto_translated": "ระบุกฎหมายธุรกรรมพาณิชย์"
+        },
+        "te": {
+            "legacy_caption_pid": 35444,
+            "legacy_language_pid": 24,
+            "text": "స్పెసిఫైడ్ కమర్షియల్స్ ట్రాన్సాక్షన్స్ లా",
+            "auto_translated": "స్పెసిఫైడ్ కమర్షియల్స్ ట్రాన్సాక్షన్స్ లా"
+        },
+        "mr": {
+            "legacy_caption_pid": 35445,
+            "legacy_language_pid": 25,
+            "text": "निर्दिष्ट व्यावसायिक व्यवहार कायदा",
+            "auto_translated": "निर्दिष्ट व्यावसायिक व्यवहार कायदा"
+        },
+        "ur": {
+            "legacy_caption_pid": 35446,
+            "legacy_language_pid": 26,
+            "text": "مخصوص تجارتی لین دین قانون",
+            "auto_translated": "مخصوص تجارتی لین دین قانون"
+        },
+        "gu": {
+            "legacy_caption_pid": 35447,
+            "legacy_language_pid": 27,
+            "text": "ઉલ્લેખિત વાણિજ્ય વ્યવહારો લો",
+            "auto_translated": "ઉલ્લેખિત વાણિજ્ય વ્યવહારો લો"
+        },
+        "uk": {
+            "legacy_caption_pid": 35448,
+            "legacy_language_pid": 28,
+            "text": "Зазначений Закон комерційних угод",
+            "auto_translated": "Зазначений Закон комерційних угод"
+        },
+        "ml": {
+            "legacy_caption_pid": 35449,
+            "legacy_language_pid": 29,
+            "text": "വ്യക്തമാക്കിയ വാണിജ്യ ഇടപാടുകൾ നിയമം",
+            "auto_translated": "വ്യക്തമാക്കിയ വാണിജ്യ ഇടപാടുകൾ നിയമം"
+        },
+        "kn": {
+            "legacy_caption_pid": 35450,
+            "legacy_language_pid": 30,
+            "text": "ನಿಗದಿತ ವಾಣಿಜ್ಯ ಟ್ರಾನ್ಸಾಕ್ಷನ್ಸ್ ಲಾ",
+            "auto_translated": "ನಿಗದಿತ ವಾಣಿಜ್ಯ ಟ್ರಾನ್ಸಾಕ್ಷನ್ಸ್ ಲಾ"
+        },
+        "su": {
+            "legacy_caption_pid": 35451,
+            "legacy_language_pid": 31,
+            "text": "Dieusian Hukum transaksi komérsial",
+            "auto_translated": "Dieusian Hukum transaksi komérsial"
+        },
+        "ku": {
+            "legacy_caption_pid": 35452,
+            "legacy_language_pid": 32,
+            "text": "Diyarkirî Law Transactions Commercial",
+            "auto_translated": "Diyarkirî Law Transactions Commercial"
+        },
+        "ps": {
+            "legacy_caption_pid": 35453,
+            "legacy_language_pid": 33,
+            "text": "مشخص تجارتي معاملې قانون",
+            "auto_translated": "مشخص تجارتي معاملې قانون"
+        },
+        "ro": {
+            "legacy_caption_pid": 35454,
+            "legacy_language_pid": 34,
+            "text": "Specificate Legea tranzacțiilor comerciale",
+            "auto_translated": "Specificate Legea tranzacțiilor comerciale"
+        },
+        "id": {
+            "legacy_caption_pid": 35455,
+            "legacy_language_pid": 35,
+            "text": "Ditentukan Hukum Transaksi Komersial",
+            "auto_translated": "Ditentukan Hukum Transaksi Komersial"
+        },
+        "sd": {
+            "legacy_caption_pid": 35456,
+            "legacy_language_pid": 36,
+            "text": "مخصوص تجارتي ڏيتي ليتي قانون",
+            "auto_translated": "مخصوص تجارتي ڏيتي ليتي قانون"
+        },
+        "af": {
+            "legacy_caption_pid": 35457,
+            "legacy_language_pid": 37,
+            "text": "Bepaalde kommersiële transaksies Regte",
+            "auto_translated": "Bepaalde kommersiële transaksies Regte"
+        },
+        "sw": {
+            "legacy_caption_pid": 35458,
+            "legacy_language_pid": 38,
+            "text": "Maalum shughuli Sheria ya Biashara",
+            "auto_translated": "Maalum shughuli Sheria ya Biashara"
+        },
+        "lo": {
+            "legacy_caption_pid": 35459,
+            "legacy_language_pid": 39,
+            "text": "ລະບຸກົດຫມາຍທຸລະກໍາທາງການຄ້າ",
+            "auto_translated": "ລະບຸກົດຫມາຍທຸລະກໍາທາງການຄ້າ"
+        },
+        "nl": {
+            "legacy_caption_pid": 35460,
+            "legacy_language_pid": 40,
+            "text": "Gespecificeerd handelstransacties Law",
+            "auto_translated": "Gespecificeerd handelstransacties Law"
+        },
+        "tl": {
+            "legacy_caption_pid": 35461,
+            "legacy_language_pid": 41,
+            "text": "Tinukoy na Commercial Transactions Law",
+            "auto_translated": "Tinukoy na Commercial Transactions Law"
+        },
+        "ne": {
+            "legacy_caption_pid": 35462,
+            "legacy_language_pid": 42,
+            "text": "निर्दिष्ट व्यावसायिक लेनदेन व्यवस्था",
+            "auto_translated": "निर्दिष्ट व्यावसायिक लेनदेन व्यवस्था"
+        },
+        "hu": {
+            "legacy_caption_pid": 35463,
+            "legacy_language_pid": 43,
+            "text": "Meghatározott kereskedelemmel kapcsolatos törvények",
+            "auto_translated": "Meghatározott kereskedelemmel kapcsolatos törvények"
+        },
+        "cs": {
+            "legacy_caption_pid": 35464,
+            "legacy_language_pid": 44,
+            "text": "Specifikováno právo obchodních transakcích",
+            "auto_translated": "Specifikováno právo obchodních transakcích"
+        },
+        "el": {
+            "legacy_caption_pid": 35465,
+            "legacy_language_pid": 45,
+            "text": "Καθορισμένη Δίκαιο Εμπορικές Συναλλαγές",
+            "auto_translated": "Καθορισμένη Δίκαιο Εμπορικές Συναλλαγές"
+        },
+        "sv": {
+            "legacy_caption_pid": 35466,
+            "legacy_language_pid": 46,
+            "text": "Specificerade kommersiella transaktioner Law",
+            "auto_translated": "Specificerade kommersiella transaktioner Law"
+        },
+        "kk": {
+            "legacy_caption_pid": 35467,
+            "legacy_language_pid": 47,
+            "text": "Көрсетілген Коммерциялық мәмiлелер заңда",
+            "auto_translated": "Көрсетілген Коммерциялық мәмiлелер заңда"
+        },
+        "fi": {
+            "legacy_caption_pid": 35468,
+            "legacy_language_pid": 48,
+            "text": "Määritelty kauppalakien",
+            "auto_translated": "Määritelty kauppalakien"
+        },
+        "da": {
+            "legacy_caption_pid": 35469,
+            "legacy_language_pid": 49,
+            "text": "Angivet handelstransaktioner Law",
+            "auto_translated": "Angivet handelstransaktioner Law"
+        },
+        "he": {
+            "legacy_caption_pid": 35470,
+            "legacy_language_pid": 50,
+            "text": "חוק צוין עסקאות מסחריות",
+            "auto_translated": "חוק צוין עסקאות מסחריות"
+        },
+        "no": {
+            "legacy_caption_pid": 35471,
+            "legacy_language_pid": 51,
+            "text": "Spesifisert Commercial Transactions Law",
+            "auto_translated": "Spesifisert Commercial Transactions Law"
+        }
+    }
+}

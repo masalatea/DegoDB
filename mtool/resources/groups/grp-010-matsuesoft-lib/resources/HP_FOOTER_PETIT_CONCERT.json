@@ -1,0 +1,69 @@
+{
+    "resource_key": "HP_FOOTER_PETIT_CONCERT",
+    "legacy_resource_pid": 827,
+    "base_group_key": "grp-010-matsuesoft-lib",
+    "additional_group_keys": [],
+    "key_for_update": "4RPM5MEZC7CuUkkDWtpBKCv0NKNlVXowcYEUk8uHkv7z2aOjAaR3jOBUUejThHOVhLY4efyN65CZHTAAwGpxoTvHtatSyYIE7azGapZnQY8SPgXBGhW3agVEM0lOVvqh",
+    "sort_group": "HP FOOTER",
+    "key_name": "HP_FOOTER_PETIT_CONCERT",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": true,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 4612,
+            "legacy_language_pid": 1,
+            "text": "プチコンサート(ぷちこん) - 街角コンサート情報",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 4613,
+            "legacy_language_pid": 2,
+            "text": "Petit Concert - Mini Live Music",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 14246,
+            "legacy_language_pid": 3,
+            "text": "",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 14247,
+            "legacy_language_pid": 4,
+            "text": "",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 14248,
+            "legacy_language_pid": 5,
+            "text": "Petit Concert - Mini Música en Directo",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 14249,
+            "legacy_language_pid": 6,
+            "text": "Petit Concert - Mini Música ao vivo",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 14250,
+            "legacy_language_pid": 7,
+            "text": "",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 17139,
+            "legacy_language_pid": 8,
+            "text": "Petit Concert - Mini Live Music",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 17140,
+            "legacy_language_pid": 9,
+            "text": "Petit Concert -मिनी लाइव संगीत",
+            "auto_translated": ""
+        }
+    }
+}

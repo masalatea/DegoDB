@@ -1,0 +1,321 @@
+{
+    "resource_key": "SHOW_SHARE",
+    "legacy_resource_pid": 967,
+    "base_group_key": "grp-028-app-common-lib",
+    "additional_group_keys": [],
+    "key_for_update": "C50iUmioXZfIHVySBSntpgBJmSEI9xVhHwWgnxAOFLWVE3KVNLxeZE2rsTtrPnStiqwuhpnWQtQaQbIUmKhd2ZGD2wXyLANQQOg7TfMjCjcAcPhQofYVARUS1X3jhqp7",
+    "sort_group": "Action",
+    "key_name": "SHOW_SHARE",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": false,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 815,
+            "legacy_language_pid": 1,
+            "text": "共有",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 816,
+            "legacy_language_pid": 2,
+            "text": "Share",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 6386,
+            "legacy_language_pid": 3,
+            "text": "分享",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 6387,
+            "legacy_language_pid": 4,
+            "text": "공유",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 10075,
+            "legacy_language_pid": 5,
+            "text": "Compartir",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 10076,
+            "legacy_language_pid": 6,
+            "text": "compartilhar",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 10077,
+            "legacy_language_pid": 7,
+            "text": "分享",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 16135,
+            "legacy_language_pid": 8,
+            "text": "Partager",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 16136,
+            "legacy_language_pid": 9,
+            "text": " हिस्सा",
+            "auto_translated": ""
+        },
+        "ar": {
+            "legacy_caption_pid": 28232,
+            "legacy_language_pid": 10,
+            "text": "مشاركة",
+            "auto_translated": "مشاركة"
+        },
+        "fa": {
+            "legacy_caption_pid": 28233,
+            "legacy_language_pid": 11,
+            "text": "اشتراک",
+            "auto_translated": "اشتراک"
+        },
+        "de": {
+            "legacy_caption_pid": 28234,
+            "legacy_language_pid": 12,
+            "text": "Gemeinsame Nutzung",
+            "auto_translated": "Gemeinsame Nutzung"
+        },
+        "ru": {
+            "legacy_caption_pid": 28235,
+            "legacy_language_pid": 13,
+            "text": "разделение",
+            "auto_translated": "разделение"
+        },
+        "ms": {
+            "legacy_caption_pid": 28236,
+            "legacy_language_pid": 14,
+            "text": "berkongsi",
+            "auto_translated": "berkongsi"
+        },
+        "ta": {
+            "legacy_caption_pid": 28237,
+            "legacy_language_pid": 15,
+            "text": "பகிர்வது",
+            "auto_translated": "பகிர்வது"
+        },
+        "it": {
+            "legacy_caption_pid": 28238,
+            "legacy_language_pid": 16,
+            "text": "compartecipazione",
+            "auto_translated": "compartecipazione"
+        },
+        "bn": {
+            "legacy_caption_pid": 28239,
+            "legacy_language_pid": 17,
+            "text": "ভাগ করা",
+            "auto_translated": "ভাগ করা"
+        },
+        "tr": {
+            "legacy_caption_pid": 28240,
+            "legacy_language_pid": 18,
+            "text": "Paylaşım",
+            "auto_translated": "Paylaşım"
+        },
+        "vi": {
+            "legacy_caption_pid": 28241,
+            "legacy_language_pid": 19,
+            "text": "chia sẻ",
+            "auto_translated": "chia sẻ"
+        },
+        "pl": {
+            "legacy_caption_pid": 28242,
+            "legacy_language_pid": 20,
+            "text": "Udostępnianie",
+            "auto_translated": "Udostępnianie"
+        },
+        "jv": {
+            "legacy_caption_pid": 28243,
+            "legacy_language_pid": 21,
+            "text": "nuduhake",
+            "auto_translated": "nuduhake"
+        },
+        "pa": {
+            "legacy_caption_pid": 28244,
+            "legacy_language_pid": 22,
+            "text": "ਸ਼ੇਅਰ",
+            "auto_translated": "ਸ਼ੇਅਰ"
+        },
+        "th": {
+            "legacy_caption_pid": 28245,
+            "legacy_language_pid": 23,
+            "text": "ที่ใช้ร่วมกัน",
+            "auto_translated": "ที่ใช้ร่วมกัน"
+        },
+        "te": {
+            "legacy_caption_pid": 33512,
+            "legacy_language_pid": 24,
+            "text": "పంచుకోవడం",
+            "auto_translated": "పంచుకోవడం"
+        },
+        "mr": {
+            "legacy_caption_pid": 33513,
+            "legacy_language_pid": 25,
+            "text": "सामायिकरण",
+            "auto_translated": "सामायिकरण"
+        },
+        "ur": {
+            "legacy_caption_pid": 33514,
+            "legacy_language_pid": 26,
+            "text": "اشتراک کرنا",
+            "auto_translated": "اشتراک کرنا"
+        },
+        "gu": {
+            "legacy_caption_pid": 33515,
+            "legacy_language_pid": 27,
+            "text": "શેરિંગ",
+            "auto_translated": "શેરિંગ"
+        },
+        "uk": {
+            "legacy_caption_pid": 33516,
+            "legacy_language_pid": 28,
+            "text": "поділ",
+            "auto_translated": "поділ"
+        },
+        "ml": {
+            "legacy_caption_pid": 33517,
+            "legacy_language_pid": 29,
+            "text": "പങ്കിടൽ",
+            "auto_translated": "പങ്കിടൽ"
+        },
+        "kn": {
+            "legacy_caption_pid": 33518,
+            "legacy_language_pid": 30,
+            "text": "ಹಂಚಿಕೆ",
+            "auto_translated": "ಹಂಚಿಕೆ"
+        },
+        "su": {
+            "legacy_caption_pid": 33519,
+            "legacy_language_pid": 31,
+            "text": "Ngabagikeun",
+            "auto_translated": "Ngabagikeun"
+        },
+        "ku": {
+            "legacy_caption_pid": 33520,
+            "legacy_language_pid": 32,
+            "text": "Hev",
+            "auto_translated": "Hev"
+        },
+        "ps": {
+            "legacy_caption_pid": 33521,
+            "legacy_language_pid": 33,
+            "text": "شریکول",
+            "auto_translated": "شریکول"
+        },
+        "ro": {
+            "legacy_caption_pid": 33522,
+            "legacy_language_pid": 34,
+            "text": "Partajarea",
+            "auto_translated": "Partajarea"
+        },
+        "id": {
+            "legacy_caption_pid": 33523,
+            "legacy_language_pid": 35,
+            "text": "berbagi",
+            "auto_translated": "berbagi"
+        },
+        "sd": {
+            "legacy_caption_pid": 33524,
+            "legacy_language_pid": 36,
+            "text": "حصيداري",
+            "auto_translated": "حصيداري"
+        },
+        "af": {
+            "legacy_caption_pid": 33525,
+            "legacy_language_pid": 37,
+            "text": "deel",
+            "auto_translated": "deel"
+        },
+        "sw": {
+            "legacy_caption_pid": 33526,
+            "legacy_language_pid": 38,
+            "text": "Kushiriki",
+            "auto_translated": "Kushiriki"
+        },
+        "lo": {
+            "legacy_caption_pid": 33527,
+            "legacy_language_pid": 39,
+            "text": "ການແລກປ່ຽນ",
+            "auto_translated": "ການແລກປ່ຽນ"
+        },
+        "nl": {
+            "legacy_caption_pid": 33528,
+            "legacy_language_pid": 40,
+            "text": "Het delen van",
+            "auto_translated": "Het delen van"
+        },
+        "tl": {
+            "legacy_caption_pid": 33529,
+            "legacy_language_pid": 41,
+            "text": "pagbabahagi",
+            "auto_translated": "pagbabahagi"
+        },
+        "ne": {
+            "legacy_caption_pid": 33530,
+            "legacy_language_pid": 42,
+            "text": "साझा",
+            "auto_translated": "साझा"
+        },
+        "hu": {
+            "legacy_caption_pid": 33531,
+            "legacy_language_pid": 43,
+            "text": "megosztása",
+            "auto_translated": "megosztása"
+        },
+        "cs": {
+            "legacy_caption_pid": 33532,
+            "legacy_language_pid": 44,
+            "text": "sdílení",
+            "auto_translated": "sdílení"
+        },
+        "el": {
+            "legacy_caption_pid": 33533,
+            "legacy_language_pid": 45,
+            "text": "Κοινή χρήση",
+            "auto_translated": "Κοινή χρήση"
+        },
+        "sv": {
+            "legacy_caption_pid": 33534,
+            "legacy_language_pid": 46,
+            "text": "dela",
+            "auto_translated": "dela"
+        },
+        "kk": {
+            "legacy_caption_pid": 33535,
+            "legacy_language_pid": 47,
+            "text": "ортақ пайдалану",
+            "auto_translated": "ортақ пайдалану"
+        },
+        "fi": {
+            "legacy_caption_pid": 33536,
+            "legacy_language_pid": 48,
+            "text": "jakaminen",
+            "auto_translated": "jakaminen"
+        },
+        "da": {
+            "legacy_caption_pid": 33537,
+            "legacy_language_pid": 49,
+            "text": "Deling",
+            "auto_translated": "Deling"
+        },
+        "he": {
+            "legacy_caption_pid": 33538,
+            "legacy_language_pid": 50,
+            "text": "שיתוף",
+            "auto_translated": "שיתוף"
+        },
+        "no": {
+            "legacy_caption_pid": 33539,
+            "legacy_language_pid": 51,
+            "text": "dele",
+            "auto_translated": "dele"
+        }
+    }
+}

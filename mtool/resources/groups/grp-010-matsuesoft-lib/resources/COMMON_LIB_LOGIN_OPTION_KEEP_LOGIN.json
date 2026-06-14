@@ -1,0 +1,321 @@
+{
+    "resource_key": "COMMON_LIB_LOGIN_OPTION_KEEP_LOGIN",
+    "legacy_resource_pid": 1498,
+    "base_group_key": "grp-010-matsuesoft-lib",
+    "additional_group_keys": [],
+    "key_for_update": "TIbpGTDmgcipVtSYGL5Ih2aww2nWmkumAUmNYZaPEj2t8Y8cp4PurgXCY2utaG1VqFVUIqDrFGsIUlLnDg6pIwteUA160BCh30lX7xl2FTmHmddwBbIiBCWheLaj8YNF",
+    "sort_group": "LOGIN",
+    "key_name": "COMMON_LIB_LOGIN_OPTION_KEEP_LOGIN",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": false,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 6266,
+            "legacy_language_pid": 1,
+            "text": "一定期間ログイン状態を保持",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 6267,
+            "legacy_language_pid": 2,
+            "text": "Maintain login state for a certain period",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 6268,
+            "legacy_language_pid": 3,
+            "text": "保持时间登录状态的一段时间",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 6269,
+            "legacy_language_pid": 4,
+            "text": "일정 기간 로그인 상태 유지",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 11114,
+            "legacy_language_pid": 5,
+            "text": "Mantener el estado de inicio de sesión durante un período determinado",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 11115,
+            "legacy_language_pid": 6,
+            "text": "Manter o estado de login por um determinado período",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 11116,
+            "legacy_language_pid": 7,
+            "text": "保持時間登錄狀態的一段時間",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 17251,
+            "legacy_language_pid": 8,
+            "text": "Maintenir l'état de connexion pendant une certaine période",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 17252,
+            "legacy_language_pid": 9,
+            "text": "एक निश्चित अवधि के लिए लॉगिन स्थिति बनाए रखें",
+            "auto_translated": ""
+        },
+        "ar": {
+            "legacy_caption_pid": 32770,
+            "legacy_language_pid": 10,
+            "text": "عقد لفترة معينة من الوقت الدخول دولة",
+            "auto_translated": "عقد لفترة معينة من الوقت الدخول دولة"
+        },
+        "fa": {
+            "legacy_caption_pid": 32771,
+            "legacy_language_pid": 11,
+            "text": "نگه دارید برای یک دوره معینی از زمان وضعیت ورود به سیستم",
+            "auto_translated": "نگه دارید برای یک دوره معینی از زمان وضعیت ورود به سیستم"
+        },
+        "de": {
+            "legacy_caption_pid": 32772,
+            "legacy_language_pid": 12,
+            "text": "Halten Sie für einen bestimmten Zeitraum Zu",
+            "auto_translated": "Halten Sie für einen bestimmten Zeitraum Zu"
+        },
+        "ru": {
+            "legacy_caption_pid": 32773,
+            "legacy_language_pid": 13,
+            "text": "Держитесь в течение определенного периода времени состояния входа",
+            "auto_translated": "Держитесь в течение определенного периода времени состояния входа"
+        },
+        "ms": {
+            "legacy_caption_pid": 32774,
+            "legacy_language_pid": 14,
+            "text": "Tahan untuk tempoh masa yang tertentu negeri login",
+            "auto_translated": "Tahan untuk tempoh masa yang tertentu negeri login"
+        },
+        "ta": {
+            "legacy_caption_pid": 32775,
+            "legacy_language_pid": 15,
+            "text": "நேரம் உள்நுழைவு நிலையானது ஒரு குறிப்பிட்ட காலத்திற்கு பிடி",
+            "auto_translated": "நேரம் உள்நுழைவு நிலையானது ஒரு குறிப்பிட்ட காலத்திற்கு பிடி"
+        },
+        "it": {
+            "legacy_caption_pid": 32776,
+            "legacy_language_pid": 16,
+            "text": "Mantenere la posizione per un certo periodo di tempo dello stato di login",
+            "auto_translated": "Mantenere la posizione per un certo periodo di tempo dello stato di login"
+        },
+        "bn": {
+            "legacy_caption_pid": 32777,
+            "legacy_language_pid": 17,
+            "text": "সময় লগইন রাষ্ট্র একটি নির্দিষ্ট সময়ের জন্য ধরে রাখুন",
+            "auto_translated": "সময় লগইন রাষ্ট্র একটি নির্দিষ্ট সময়ের জন্য ধরে রাখুন"
+        },
+        "tr": {
+            "legacy_caption_pid": 32778,
+            "legacy_language_pid": 18,
+            "text": "Zaman giriş devletin belirli bir süre için tutun",
+            "auto_translated": "Zaman giriş devletin belirli bir süre için tutun"
+        },
+        "vi": {
+            "legacy_caption_pid": 32779,
+            "legacy_language_pid": 19,
+            "text": "Giữ trong một thời gian nhất định của nhà nước thời gian đăng nhập",
+            "auto_translated": "Giữ trong một thời gian nhất định của nhà nước thời gian đăng nhập"
+        },
+        "pl": {
+            "legacy_caption_pid": 32780,
+            "legacy_language_pid": 20,
+            "text": "Przytrzymać przez pewien okres czasu stan logowania",
+            "auto_translated": "Przytrzymać przez pewien okres czasu stan logowania"
+        },
+        "jv": {
+            "legacy_caption_pid": 32781,
+            "legacy_language_pid": 21,
+            "text": "Terus kanggo periode tartamtu wektu negara mlebu",
+            "auto_translated": "Terus kanggo periode tartamtu wektu negara mlebu"
+        },
+        "pa": {
+            "legacy_caption_pid": 32782,
+            "legacy_language_pid": 22,
+            "text": "ਵਾਰ ਲਾਗਇਨ ਰਾਜ ਦੇ ਇੱਕ ਨੂੰ ਕੁਝ ਮਿਆਦ ਲਈ ਹੋਲਡ",
+            "auto_translated": "ਵਾਰ ਲਾਗਇਨ ਰਾਜ ਦੇ ਇੱਕ ਨੂੰ ਕੁਝ ਮਿਆਦ ਲਈ ਹੋਲਡ"
+        },
+        "th": {
+            "legacy_caption_pid": 32783,
+            "legacy_language_pid": 23,
+            "text": "ถือเป็นระยะเวลาหนึ่งของรัฐเข้าสู่ระบบเวลา",
+            "auto_translated": "ถือเป็นระยะเวลาหนึ่งของรัฐเข้าสู่ระบบเวลา"
+        },
+        "te": {
+            "legacy_caption_pid": 40120,
+            "legacy_language_pid": 24,
+            "text": "సమయం లాగిన్ రాష్ట్ర ఒక నిర్దిష్ట కాలం కోసం పట్టుకోండి",
+            "auto_translated": "సమయం లాగిన్ రాష్ట్ర ఒక నిర్దిష్ట కాలం కోసం పట్టుకోండి"
+        },
+        "mr": {
+            "legacy_caption_pid": 40121,
+            "legacy_language_pid": 25,
+            "text": "वेळ लॉगिन स्थिती एक विशिष्ट कालावधीनंतर धरून ठेवा",
+            "auto_translated": "वेळ लॉगिन स्थिती एक विशिष्ट कालावधीनंतर धरून ठेवा"
+        },
+        "ur": {
+            "legacy_caption_pid": 40122,
+            "legacy_language_pid": 26,
+            "text": "وقت لاگ ان ریاست کی ایک مخصوص مدت کے لئے پکڑو",
+            "auto_translated": "وقت لاگ ان ریاست کی ایک مخصوص مدت کے لئے پکڑو"
+        },
+        "gu": {
+            "legacy_caption_pid": 40123,
+            "legacy_language_pid": 27,
+            "text": "સમય લૉગિન રાજ્ય અમુક ચોક્કસ સમયગાળા માટે હોલ્ડ",
+            "auto_translated": "સમય લૉગિન રાજ્ય અમુક ચોક્કસ સમયગાળા માટે હોલ્ડ"
+        },
+        "uk": {
+            "legacy_caption_pid": 40124,
+            "legacy_language_pid": 28,
+            "text": "Тримайтеся протягом певного періоду часу стану входу",
+            "auto_translated": "Тримайтеся протягом певного періоду часу стану входу"
+        },
+        "ml": {
+            "legacy_caption_pid": 40125,
+            "legacy_language_pid": 29,
+            "text": "സമയം ലോഗിൻ ഒരു നിശ്ചിതകാലത്തേക്ക് പിടിക്കുക",
+            "auto_translated": "സമയം ലോഗിൻ ഒരു നിശ്ചിതകാലത്തേക്ക് പിടിക്കുക"
+        },
+        "kn": {
+            "legacy_caption_pid": 40126,
+            "legacy_language_pid": 30,
+            "text": "ಸಮಯ ಲಾಗಿನ್ ಸ್ಥಿತಿಯನ್ನು ಒಂದು ನಿರ್ದಿಷ್ಟ ಅವಧಿಗೆ ಹೋಲ್ಡ್",
+            "auto_translated": "ಸಮಯ ಲಾಗಿನ್ ಸ್ಥಿತಿಯನ್ನು ಒಂದು ನಿರ್ದಿಷ್ಟ ಅವಧಿಗೆ ಹೋಲ್ಡ್"
+        },
+        "su": {
+            "legacy_caption_pid": 40127,
+            "legacy_language_pid": 31,
+            "text": "Tahan pikeun kurun waktu nu tangtu kaayaan login",
+            "auto_translated": "Tahan pikeun kurun waktu nu tangtu kaayaan login"
+        },
+        "ku": {
+            "legacy_caption_pid": 40128,
+            "legacy_language_pid": 32,
+            "text": "Bigire ji bo demeke xuyakirî de dewletê login",
+            "auto_translated": "Bigire ji bo demeke xuyakirî de dewletê login"
+        },
+        "ps": {
+            "legacy_caption_pid": 40129,
+            "legacy_language_pid": 33,
+            "text": "د وخت د ننوتو د بهرنیو چارو یوه معین وخت لپاره ونيسئ",
+            "auto_translated": "د وخت د ننوتو د بهرنیو چارو یوه معین وخت لپاره ونيسئ"
+        },
+        "ro": {
+            "legacy_caption_pid": 40130,
+            "legacy_language_pid": 34,
+            "text": "Țineți pentru o anumită perioadă de timp de conectare de stat",
+            "auto_translated": "Țineți pentru o anumită perioadă de timp de conectare de stat"
+        },
+        "id": {
+            "legacy_caption_pid": 40131,
+            "legacy_language_pid": 35,
+            "text": "Tahan selama jangka waktu tertentu negara masuk",
+            "auto_translated": "Tahan selama jangka waktu tertentu negara masuk"
+        },
+        "sd": {
+            "legacy_caption_pid": 40132,
+            "legacy_language_pid": 36,
+            "text": "وقت هتي ڪلڪ ڪري رياست جي ڪجهه عرصي لاء وٺو",
+            "auto_translated": "وقت هتي ڪلڪ ڪري رياست جي ڪجهه عرصي لاء وٺو"
+        },
+        "af": {
+            "legacy_caption_pid": 40133,
+            "legacy_language_pid": 37,
+            "text": "Hou vir 'n sekere tydperk van die tyd aanteken staat",
+            "auto_translated": "Hou vir 'n sekere tydperk van die tyd aanteken staat"
+        },
+        "sw": {
+            "legacy_caption_pid": 40134,
+            "legacy_language_pid": 38,
+            "text": "Kushikilia kwa kipindi cha muda fulani hali ya kuingia",
+            "auto_translated": "Kushikilia kwa kipindi cha muda fulani hali ya kuingia"
+        },
+        "lo": {
+            "legacy_caption_pid": 40135,
+            "legacy_language_pid": 39,
+            "text": "ຖືສໍາລັບໄລຍະເວລາສະເພາະໃດຫນຶ່ງຂອງລັດເຂົ້າສູ່ລະບົບທີ່ໃຊ້ເວລາ",
+            "auto_translated": "ຖືສໍາລັບໄລຍະເວລາສະເພາະໃດຫນຶ່ງຂອງລັດເຂົ້າສູ່ລະບົບທີ່ໃຊ້ເວລາ"
+        },
+        "nl": {
+            "legacy_caption_pid": 40136,
+            "legacy_language_pid": 40,
+            "text": "Houd voor een bepaalde tijd ingelogd staat",
+            "auto_translated": "Houd voor een bepaalde tijd ingelogd staat"
+        },
+        "tl": {
+            "legacy_caption_pid": 40137,
+            "legacy_language_pid": 41,
+            "text": "I-hold para sa isang tiyak na tagal ng panahon estado sa pag-login",
+            "auto_translated": "I-hold para sa isang tiyak na tagal ng panahon estado sa pag-login"
+        },
+        "ne": {
+            "legacy_caption_pid": 40138,
+            "legacy_language_pid": 42,
+            "text": "समय लग इन राज्य एक निश्चित अवधिका लागि होल्ड",
+            "auto_translated": "समय लग इन राज्य एक निश्चित अवधिका लागि होल्ड"
+        },
+        "hu": {
+            "legacy_caption_pid": 40139,
+            "legacy_language_pid": 43,
+            "text": "Tartsa egy bizonyos ideig bejelentkezési állapot",
+            "auto_translated": "Tartsa egy bizonyos ideig bejelentkezési állapot"
+        },
+        "cs": {
+            "legacy_caption_pid": 40140,
+            "legacy_language_pid": 44,
+            "text": "Držet po určitou dobu času stavu přihlášení",
+            "auto_translated": "Držet po určitou dobu času stavu přihlášení"
+        },
+        "el": {
+            "legacy_caption_pid": 40141,
+            "legacy_language_pid": 45,
+            "text": "Κρατήστε για ένα ορισμένο χρονικό διάστημα κατάσταση σύνδεσης",
+            "auto_translated": "Κρατήστε για ένα ορισμένο χρονικό διάστημα κατάσταση σύνδεσης"
+        },
+        "sv": {
+            "legacy_caption_pid": 40142,
+            "legacy_language_pid": 46,
+            "text": "Håll i en viss tidsperiod inloggningstillstånd",
+            "auto_translated": "Håll i en viss tidsperiod inloggningstillstånd"
+        },
+        "kk": {
+            "legacy_caption_pid": 40143,
+            "legacy_language_pid": 47,
+            "text": "уақыт Логин мемлекеттің белгілі бір мерзімге ұстап тұрыңыз",
+            "auto_translated": "уақыт Логин мемлекеттің белгілі бір мерзімге ұстап тұрыңыз"
+        },
+        "fi": {
+            "legacy_caption_pid": 40144,
+            "legacy_language_pid": 48,
+            "text": "Pidä tietyn ajan kirjautumistilaan",
+            "auto_translated": "Pidä tietyn ajan kirjautumistilaan"
+        },
+        "da": {
+            "legacy_caption_pid": 40145,
+            "legacy_language_pid": 49,
+            "text": "Hold for en vis periode login tilstand",
+            "auto_translated": "Hold for en vis periode login tilstand"
+        },
+        "he": {
+            "legacy_caption_pid": 40146,
+            "legacy_language_pid": 50,
+            "text": "חזק למשך תקופה מסוימת של מצב התחברות זמן",
+            "auto_translated": "חזק למשך תקופה מסוימת של מצב התחברות זמן"
+        },
+        "no": {
+            "legacy_caption_pid": 40147,
+            "legacy_language_pid": 51,
+            "text": "Hold i en viss tid innlogging state",
+            "auto_translated": "Hold i en viss tid innlogging state"
+        }
+    }
+}

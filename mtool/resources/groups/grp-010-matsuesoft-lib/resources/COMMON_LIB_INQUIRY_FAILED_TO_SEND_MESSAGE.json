@@ -1,0 +1,321 @@
+{
+    "resource_key": "COMMON_LIB_INQUIRY_FAILED_TO_SEND_MESSAGE",
+    "legacy_resource_pid": 1588,
+    "base_group_key": "grp-010-matsuesoft-lib",
+    "additional_group_keys": [],
+    "key_for_update": "YODi3mkxfWF4du7AkiL7nWFHuQtqferEwK5BQzooULNMClURsUM1Vsg1auNZOeCF08nhxCoYRM7FIWoJZ5qFX2YuhAjX7GFYij9q4YxIS21fFcRCtSqYuFXPmsx2GfBh",
+    "sort_group": "INQUIRY",
+    "key_name": "COMMON_LIB_INQUIRY_FAILED_TO_SEND_MESSAGE",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": false,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 7134,
+            "legacy_language_pid": 1,
+            "text": "まことに申し訳ございません。内部システムエラーにつきメール送信失敗しました。後ほど再度送信下さい。ご迷惑おかけ致します。",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 7135,
+            "legacy_language_pid": 2,
+            "text": "We are truly sorry. Mail transmission failed for internal system error. Please send it again later. We are sorry for the inconvenience.",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 7136,
+            "legacy_language_pid": 3,
+            "text": "抱歉。因为内部系统错误邮件传输失败。请稍后重新发送。",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 7137,
+            "legacy_language_pid": 4,
+            "text": "매우 죄송합니다. 내부 시스템 오류로 인해 이메일 전송에 실패했습니다. 나중에 다시 보내주세요. 불편을 끼쳐드려 죄송합니다.",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 10967,
+            "legacy_language_pid": 5,
+            "text": "Lo sentimos mucho.Error en la transmisión de correo para el error interno del sistema. Envíelo de nuevo más tarde. Lamentamos las molestias. ",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 10968,
+            "legacy_language_pid": 6,
+            "text": "Desculpe-nos verdadeiramente. A transmissão de correio falhou para o erro interno do sistema. Envie-o novamente mais tarde. Lamentamos o inconveniente.",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 10969,
+            "legacy_language_pid": 7,
+            "text": "抱歉。因為內部系統錯誤郵件傳輸失敗。請稍後重新發送。",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 17177,
+            "legacy_language_pid": 8,
+            "text": "Nous sommes vraiment désolés. La transmission du courrier a échoué pour l'erreur interne du système. Veuillez l'envoyer plus tard. Nous sommes désolés du dérangement.",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 17178,
+            "legacy_language_pid": 9,
+            "text": "हमें वास्तव में खेद है। मेल ट्रांसमिशन आंतरिक सिस्टम त्रुटि के कारण विफल रहा कृपया बाद में इसे फिर से भेजें। असुविधा के लिए खेद है।",
+            "auto_translated": ""
+        },
+        "ar": {
+            "legacy_caption_pid": 32082,
+            "legacy_language_pid": 10,
+            "text": "آسف. وكان البريد الإلكتروني فشل انتقال في خطأ في النظام الداخلي. يرجى إرسالها لاحقا مرة أخرى. ونحن نعتذر عن أي إزعاج.",
+            "auto_translated": "آسف. وكان البريد الإلكتروني فشل انتقال في خطأ في النظام الداخلي. يرجى إرسالها لاحقا مرة أخرى. ونحن نعتذر عن أي إزعاج."
+        },
+        "fa": {
+            "legacy_caption_pid": 32083,
+            "legacy_language_pid": 11,
+            "text": "با عرض پوزش. این نارسایی های انتقال ایمیل در هر خطای سیستم داخلی بود. لطفا بعدا دوباره ارسال می کند. ما برای هر مشکل پوزش می طلبیم.",
+            "auto_translated": "با عرض پوزش. این نارسایی های انتقال ایمیل در هر خطای سیستم داخلی بود. لطفا بعدا دوباره ارسال می کند. ما برای هر مشکل پوزش می طلبیم."
+        },
+        "de": {
+            "legacy_caption_pid": 32084,
+            "legacy_language_pid": 12,
+            "text": "Entschuldigung. Es war Übertragungsfehler pro interner Systemfehler E-Mail. Bitte senden Sie es später erneut. Wir entschuldigen uns für etwaige Unannehmlichkeiten.",
+            "auto_translated": "Entschuldigung. Es war Übertragungsfehler pro interner Systemfehler E-Mail. Bitte senden Sie es später erneut. Wir entschuldigen uns für etwaige Unannehmlichkeiten."
+        },
+        "ru": {
+            "legacy_caption_pid": 32085,
+            "legacy_language_pid": 13,
+            "text": "Извините. Это было электронной почты Ошибка передачи на внутренней системной ошибки. Пожалуйста, пришлите позже снова. Приносим извинения за доставленные неудобства.",
+            "auto_translated": "Извините. Это было электронной почты Ошибка передачи на внутренней системной ошибки. Пожалуйста, пришлите позже снова. Приносим извинения за доставленные неудобства."
+        },
+        "ms": {
+            "legacy_caption_pid": 32086,
+            "legacy_language_pid": 14,
+            "text": "Maaf. Ia adalah e-mel kegagalan penghantaran per ralat sistem dalaman. Sila hantar kemudian lagi. Kami memohon maaf atas sebarang kesulitan.",
+            "auto_translated": "Maaf. Ia adalah e-mel kegagalan penghantaran per ralat sistem dalaman. Sila hantar kemudian lagi. Kami memohon maaf atas sebarang kesulitan."
+        },
+        "ta": {
+            "legacy_caption_pid": 32087,
+            "legacy_language_pid": 15,
+            "text": "மன்னிக்கவும். அது அக அமைப்பின் பிழை ஒன்றுக்கு மின்னஞ்சல் ஒலிபரப்பு தோல்வியைத் தழுவியது. பின்னர் மீண்டும் அனுப்பவும். சிரமத்திற்கு வருந்துகிறோம்.",
+            "auto_translated": "மன்னிக்கவும். அது அக அமைப்பின் பிழை ஒன்றுக்கு மின்னஞ்சல் ஒலிபரப்பு தோல்வியைத் தழுவியது. பின்னர் மீண்டும் அனுப்பவும். சிரமத்திற்கு வருந்துகிறோம்."
+        },
+        "it": {
+            "legacy_caption_pid": 32088,
+            "legacy_language_pid": 16,
+            "text": "Scusi. E 'stato e-mail errore di trasmissione per errore di sistema interno. Si prega di inviare più tardi. Ci scusiamo per gli eventuali disagi.",
+            "auto_translated": "Scusi. E 'stato e-mail errore di trasmissione per errore di sistema interno. Si prega di inviare più tardi. Ci scusiamo per gli eventuali disagi."
+        },
+        "bn": {
+            "legacy_caption_pid": 32089,
+            "legacy_language_pid": 17,
+            "text": "দুঃখিত। অভ্যন্তরীণ সিস্টেম ত্রুটি প্রতি ই-মেইল সংক্রমণ ব্যর্থতা ছিল। পরে আবার পাঠাতে দয়া করে। কোন অসুবিধার জন্য আমরা ক্ষমাপ্রার্থী।",
+            "auto_translated": "দুঃখিত। অভ্যন্তরীণ সিস্টেম ত্রুটি প্রতি ই-মেইল সংক্রমণ ব্যর্থতা ছিল। পরে আবার পাঠাতে দয়া করে। কোন অসুবিধার জন্য আমরা ক্ষমাপ্রার্থী।"
+        },
+        "tr": {
+            "legacy_caption_pid": 32090,
+            "legacy_language_pid": 18,
+            "text": "Özür dilerim. İç sistem hatası başına e-posta iletim hatası oldu. Daha sonra yeniden gönderin. Verdiğimiz rahatsızlıktan dolayı özür dileriz.",
+            "auto_translated": "Özür dilerim. İç sistem hatası başına e-posta iletim hatası oldu. Daha sonra yeniden gönderin. Verdiğimiz rahatsızlıktan dolayı özür dileriz."
+        },
+        "vi": {
+            "legacy_caption_pid": 32091,
+            "legacy_language_pid": 19,
+            "text": "Xin lỗi. Đó là e-mail thất bại truyền mỗi lỗi hệ thống nội bộ. Xin vui lòng gửi sau nữa. Chúng tôi xin lỗi vì sự bất tiện.",
+            "auto_translated": "Xin lỗi. Đó là e-mail thất bại truyền mỗi lỗi hệ thống nội bộ. Xin vui lòng gửi sau nữa. Chúng tôi xin lỗi vì sự bất tiện."
+        },
+        "pl": {
+            "legacy_caption_pid": 32092,
+            "legacy_language_pid": 20,
+            "text": "Przepraszam. Było e-mail awarii transmisja za błąd systemu wewnętrznego. Proszę wysłać później ponownie. Przepraszamy za wszelkie niedogodności.",
+            "auto_translated": "Przepraszam. Było e-mail awarii transmisja za błąd systemu wewnętrznego. Proszę wysłać później ponownie. Przepraszamy za wszelkie niedogodności."
+        },
+        "jv": {
+            "legacy_caption_pid": 32093,
+            "legacy_language_pid": 21,
+            "text": "Sorry. Iku e-mail Gagal transmisi saben kesalahan sistem internal. Mangga ngirim mengko maneh. We apologize kanggo maksud apa nyaman.",
+            "auto_translated": "Sorry. Iku e-mail Gagal transmisi saben kesalahan sistem internal. Mangga ngirim mengko maneh. We apologize kanggo maksud apa nyaman."
+        },
+        "pa": {
+            "legacy_caption_pid": 32094,
+            "legacy_language_pid": 22,
+            "text": "ਅਫਸੋਸ ਹੈ. ਇਹ ਅੰਦਰੂਨੀ ਸਿਸਟਮ ਗਲਤੀ ਪ੍ਰਤੀ ਈ-ਮੇਲ ਸੰਚਾਰ ਅਸਫਲਤਾ ਸੀ. ਬਾਅਦ ਵਿੱਚ ਦੁਬਾਰਾ ਭੇਜਣ ਜੀ. ਸਾਨੂੰ ਕਿਸੇ ਵੀ ਅਸੁਵਿਧਾ ਲਈ ਮੁਆਫੀ.",
+            "auto_translated": "ਅਫਸੋਸ ਹੈ. ਇਹ ਅੰਦਰੂਨੀ ਸਿਸਟਮ ਗਲਤੀ ਪ੍ਰਤੀ ਈ-ਮੇਲ ਸੰਚਾਰ ਅਸਫਲਤਾ ਸੀ. ਬਾਅਦ ਵਿੱਚ ਦੁਬਾਰਾ ਭੇਜਣ ਜੀ. ਸਾਨੂੰ ਕਿਸੇ ਵੀ ਅਸੁਵਿਧਾ ਲਈ ਮੁਆਫੀ."
+        },
+        "th": {
+            "legacy_caption_pid": 32095,
+            "legacy_language_pid": 23,
+            "text": "ขอโทษ มันเป็นอีเมลล้มเหลวในการส่งต่อข้อผิดพลาดของระบบภายใน กรุณาส่งต่อมาอีกครั้ง เราต้องขออภัยในความไม่สะดวก",
+            "auto_translated": "ขอโทษ มันเป็นอีเมลล้มเหลวในการส่งต่อข้อผิดพลาดของระบบภายใน กรุณาส่งต่อมาอีกครั้ง เราต้องขออภัยในความไม่สะดวก"
+        },
+        "te": {
+            "legacy_caption_pid": 41464,
+            "legacy_language_pid": 24,
+            "text": "క్షమించాలి. ఇది అంతర్గత సిస్టమ్ లోపం శాతం ఇ-మెయిల్ ప్రసారం వైఫల్యం ఉంది. దయచేసి తర్వాత మళ్లీ పంపండి. మేము ఏ అసౌకర్యానికి చింతిస్తున్నాము.",
+            "auto_translated": "క్షమించాలి. ఇది అంతర్గత సిస్టమ్ లోపం శాతం ఇ-మెయిల్ ప్రసారం వైఫల్యం ఉంది. దయచేసి తర్వాత మళ్లీ పంపండి. మేము ఏ అసౌకర్యానికి చింతిస్తున్నాము."
+        },
+        "mr": {
+            "legacy_caption_pid": 41465,
+            "legacy_language_pid": 25,
+            "text": "क्षमस्व. प्रति अंतर्गत सिस्टम त्रुटी ई-मेल ट्रान्समिशन अपयश होते. नंतर पुन्हा पाठवा. कोणत्याही गैरसोयीबद्दल आम्ही दिलगीर आहोत.",
+            "auto_translated": "क्षमस्व. प्रति अंतर्गत सिस्टम त्रुटी ई-मेल ट्रान्समिशन अपयश होते. नंतर पुन्हा पाठवा. कोणत्याही गैरसोयीबद्दल आम्ही दिलगीर आहोत."
+        },
+        "ur": {
+            "legacy_caption_pid": 41466,
+            "legacy_language_pid": 26,
+            "text": "معذرت. یہ اندرونی نظام کی خرابی فی ای میل ٹرانسمیشن کی ناکامی تھی. بعد میں دوبارہ بھیجیں. ہم کسی بھی قسم کی تکلیف کے لئے معذرت خواہ ہیں.",
+            "auto_translated": "معذرت. یہ اندرونی نظام کی خرابی فی ای میل ٹرانسمیشن کی ناکامی تھی. بعد میں دوبارہ بھیجیں. ہم کسی بھی قسم کی تکلیف کے لئے معذرت خواہ ہیں."
+        },
+        "gu": {
+            "legacy_caption_pid": 41467,
+            "legacy_language_pid": 27,
+            "text": "માફ કરશો. તે આંતરિક સિસ્ટમ ભૂલ દીઠ ઈ-મેલ ટ્રાન્સમિશન નિષ્ફળ નિવડી હતી. કૃપા કરીને પછીથી ફરી મોકલો. અમે કોઈપણ અસુવિધા માટે દિલગીર છીએ.",
+            "auto_translated": "માફ કરશો. તે આંતરિક સિસ્ટમ ભૂલ દીઠ ઈ-મેલ ટ્રાન્સમિશન નિષ્ફળ નિવડી હતી. કૃપા કરીને પછીથી ફરી મોકલો. અમે કોઈપણ અસુવિધા માટે દિલગીર છીએ."
+        },
+        "uk": {
+            "legacy_caption_pid": 41468,
+            "legacy_language_pid": 28,
+            "text": "Вибачте. Це було електронної пошти Помилка передачі на внутрішній системної помилки. Будь ласка, надішліть пізніше знову. Приносимо вибачення за доставлені незручності.",
+            "auto_translated": "Вибачте. Це було електронної пошти Помилка передачі на внутрішній системної помилки. Будь ласка, надішліть пізніше знову. Приносимо вибачення за доставлені незручності."
+        },
+        "ml": {
+            "legacy_caption_pid": 41469,
+            "legacy_language_pid": 29,
+            "text": "ക്ഷമിക്കണം. ഇത് ആന്തരിക സിസ്റ്റം പിശക് ശതമാനം ഇ-മെയിൽ ട്രാൻസ്മിഷൻ പരാജയമായിരുന്നു. വീണ്ടും പിന്നീട് അയയ്ക്കുക. അസൗകര്യത്തിൽ ഖേദിക്കുന്നു.",
+            "auto_translated": "ക്ഷമിക്കണം. ഇത് ആന്തരിക സിസ്റ്റം പിശക് ശതമാനം ഇ-മെയിൽ ട്രാൻസ്മിഷൻ പരാജയമായിരുന്നു. വീണ്ടും പിന്നീട് അയയ്ക്കുക. അസൗകര്യത്തിൽ ഖേദിക്കുന്നു."
+        },
+        "kn": {
+            "legacy_caption_pid": 41470,
+            "legacy_language_pid": 30,
+            "text": "ಕ್ಷಮಿಸಿ. ಇದು ಪ್ರತಿ ಆಂತರಿಕ ಸಿಸ್ಟಮ್ ದೋಷವು ಇಮೇಲ್ ಪ್ರಸರಣ ವಿಫಲವಾಯಿತು. ನಂತರ ಮತ್ತೆ ಕಳುಹಿಸಿ. ನಾವು ಯಾವುದೇ ನೊಡನೆ.",
+            "auto_translated": "ಕ್ಷಮಿಸಿ. ಇದು ಪ್ರತಿ ಆಂತರಿಕ ಸಿಸ್ಟಮ್ ದೋಷವು ಇಮೇಲ್ ಪ್ರಸರಣ ವಿಫಲವಾಯಿತು. ನಂತರ ಮತ್ತೆ ಕಳುಹಿಸಿ. ನಾವು ಯಾವುದೇ ನೊಡನೆ."
+        },
+        "su": {
+            "legacy_caption_pid": 41471,
+            "legacy_language_pid": 31,
+            "text": "Hampura. Ieu e-mail gagalna transmisi per kasalahan sistem internal. Mangga ngirim engké deui. Urang hapunten kasulitan nanaon.",
+            "auto_translated": "Hampura. Ieu e-mail gagalna transmisi per kasalahan sistem internal. Mangga ngirim engké deui. Urang hapunten kasulitan nanaon."
+        },
+        "ku": {
+            "legacy_caption_pid": 41472,
+            "legacy_language_pid": 32,
+            "text": "Mixabin. Ev têkçûna transmission e-mail per çewtiyek pergala navxweyî bû. Ji kerema xwe re dîsa bişînim. Em ji bo acizîyên ku lêborînê dixwazin.",
+            "auto_translated": "Mixabin. Ev têkçûna transmission e-mail per çewtiyek pergala navxweyî bû. Ji kerema xwe re dîsa bişînim. Em ji bo acizîyên ku lêborînê dixwazin."
+        },
+        "ps": {
+            "legacy_caption_pid": 41473,
+            "legacy_language_pid": 33,
+            "text": "بخښنه غواړو. دا هر داخلي سیستم د ګمراهۍ E-mail انتقال ناکامي وه. لطفا وروسته بیا واستوي. موږ د هر ډول آرامه کولو څخه بښنه.",
+            "auto_translated": "بخښنه غواړو. دا هر داخلي سیستم د ګمراهۍ E-mail انتقال ناکامي وه. لطفا وروسته بیا واستوي. موږ د هر ډول آرامه کولو څخه بښنه."
+        },
+        "ro": {
+            "legacy_caption_pid": 41474,
+            "legacy_language_pid": 34,
+            "text": "Scuze. A fost eșecul transmisiei de e-mail pe eroare de sistem intern. Vă rugăm să trimiteți mai târziu din nou. Ne cerem scuze pentru eventualele neplăceri.",
+            "auto_translated": "Scuze. A fost eșecul transmisiei de e-mail pe eroare de sistem intern. Vă rugăm să trimiteți mai târziu din nou. Ne cerem scuze pentru eventualele neplăceri."
+        },
+        "id": {
+            "legacy_caption_pid": 41475,
+            "legacy_language_pid": 35,
+            "text": "Maaf. Itu e-mail kegagalan transmisi per kesalahan sistem internal. Silakan kirim nanti lagi. Kami mohon maaf atas ketidaknyamanan.",
+            "auto_translated": "Maaf. Itu e-mail kegagalan transmisi per kesalahan sistem internal. Silakan kirim nanti lagi. Kami mohon maaf atas ketidaknyamanan."
+        },
+        "sd": {
+            "legacy_caption_pid": 41476,
+            "legacy_language_pid": 36,
+            "text": "معاف ڪجو. ان کي اندروني نظام غلطي في اي-ميل سند ناڪامي هو. مهرباني ڪري ٿوري دير کان پوء وري به موڪلي. اسان کي ڪنهن به تڪليف لاء معذرت.",
+            "auto_translated": "معاف ڪجو. ان کي اندروني نظام غلطي في اي-ميل سند ناڪامي هو. مهرباني ڪري ٿوري دير کان پوء وري به موڪلي. اسان کي ڪنهن به تڪليف لاء معذرت."
+        },
+        "af": {
+            "legacy_caption_pid": 41477,
+            "legacy_language_pid": 37,
+            "text": "Jammer. Dit was e-pos gestuur mislukking per interne stelsel fout. Stuur asseblief later weer. Ons vra om verskoning vir enige ongerief.",
+            "auto_translated": "Jammer. Dit was e-pos gestuur mislukking per interne stelsel fout. Stuur asseblief later weer. Ons vra om verskoning vir enige ongerief."
+        },
+        "sw": {
+            "legacy_caption_pid": 41478,
+            "legacy_language_pid": 38,
+            "text": "Samahani. Ilikuwa barua maambukizi kushindwa kwa mfumo wa hitilafu ya ndani. Tafadhali tuma baadaye tena. Tunaomba radhi kwa usumbufu wowote.",
+            "auto_translated": "Samahani. Ilikuwa barua maambukizi kushindwa kwa mfumo wa hitilafu ya ndani. Tafadhali tuma baadaye tena. Tunaomba radhi kwa usumbufu wowote."
+        },
+        "lo": {
+            "legacy_caption_pid": 41479,
+            "legacy_language_pid": 39,
+            "text": "ຂໍອະໄພ. ມັນແມ່ນຄວາມລົ້ມເຫຼວລະບົບສາຍສົ່ງ e-mail ຕໍ່ຄວາມຜິດພາດໃນລະບົບ. ກະລຸນາສົ່ງຕໍ່ມາອີກເທື່ອຫນຶ່ງ. ພວກເຮົາຂໍອະໄພໃນຄວາມບໍ່ສະດວກ.",
+            "auto_translated": "ຂໍອະໄພ. ມັນແມ່ນຄວາມລົ້ມເຫຼວລະບົບສາຍສົ່ງ e-mail ຕໍ່ຄວາມຜິດພາດໃນລະບົບ. ກະລຸນາສົ່ງຕໍ່ມາອີກເທື່ອຫນຶ່ງ. ພວກເຮົາຂໍອະໄພໃນຄວາມບໍ່ສະດວກ."
+        },
+        "nl": {
+            "legacy_caption_pid": 41480,
+            "legacy_language_pid": 40,
+            "text": "Sorry. Het was e-mail storing in de overbrenging per interne systeemfout. Stuurt u het later nog eens. Onze excuses voor het eventuele ongemak.",
+            "auto_translated": "Sorry. Het was e-mail storing in de overbrenging per interne systeemfout. Stuurt u het later nog eens. Onze excuses voor het eventuele ongemak."
+        },
+        "tl": {
+            "legacy_caption_pid": 41481,
+            "legacy_language_pid": 41,
+            "text": "Sorry. Ito ay e-mail transmission failure bawat panloob na system error. Mangyaring ipadala sa ibang pagkakataon muli. Humihingi kami ng paumanhin para sa anumang abala.",
+            "auto_translated": "Sorry. Ito ay e-mail transmission failure bawat panloob na system error. Mangyaring ipadala sa ibang pagkakataon muli. Humihingi kami ng paumanhin para sa anumang abala."
+        },
+        "ne": {
+            "legacy_caption_pid": 41482,
+            "legacy_language_pid": 42,
+            "text": "माफ गर्नुहोस्। यो प्रति आन्तरिक प्रणाली त्रुटि ई-मेल प्रसारण विफलता थियो। कृपया पछि फेरि पठाउनुहोस्। हामी कुनै पनि असुविधाको लागि क्षमा चाहन्छौं।",
+            "auto_translated": "माफ गर्नुहोस्। यो प्रति आन्तरिक प्रणाली त्रुटि ई-मेल प्रसारण विफलता थियो। कृपया पछि फेरि पठाउनुहोस्। हामी कुनै पनि असुविधाको लागि क्षमा चाहन्छौं।"
+        },
+        "hu": {
+            "legacy_caption_pid": 41483,
+            "legacy_language_pid": 43,
+            "text": "Bocsánat. Ez az e-mail átviteli hiba után a rendszer belső hiba. Kérjük, küldje el később újra. Elnézést kérünk a kellemetlenségért.",
+            "auto_translated": "Bocsánat. Ez az e-mail átviteli hiba után a rendszer belső hiba. Kérjük, küldje el később újra. Elnézést kérünk a kellemetlenségért."
+        },
+        "cs": {
+            "legacy_caption_pid": 41484,
+            "legacy_language_pid": 44,
+            "text": "Promiňte. Bylo to e-mailová porucha převodovky na vnitřní chybě systému. Prosím pošlete později znovu. Omlouváme se za případné nepříjemnosti.",
+            "auto_translated": "Promiňte. Bylo to e-mailová porucha převodovky na vnitřní chybě systému. Prosím pošlete později znovu. Omlouváme se za případné nepříjemnosti."
+        },
+        "el": {
+            "legacy_caption_pid": 41485,
+            "legacy_language_pid": 45,
+            "text": "Λυπάμαι. Ήταν αποτυχία μετάδοσης e-mail ανά εσωτερικό σφάλμα του συστήματος. Παρακαλούμε να στείλετε αργότερα και πάλι. Ζητούμε συγγνώμη για την όποια ταλαιπωρία.",
+            "auto_translated": "Λυπάμαι. Ήταν αποτυχία μετάδοσης e-mail ανά εσωτερικό σφάλμα του συστήματος. Παρακαλούμε να στείλετε αργότερα και πάλι. Ζητούμε συγγνώμη για την όποια ταλαιπωρία."
+        },
+        "sv": {
+            "legacy_caption_pid": 41486,
+            "legacy_language_pid": 46,
+            "text": "Ursäkta. Det var e-postsändning fel per internt systemfel. Vänligen skicka senare igen. Vi ber om ursäkt för eventuella besvär.",
+            "auto_translated": "Ursäkta. Det var e-postsändning fel per internt systemfel. Vänligen skicka senare igen. Vi ber om ursäkt för eventuella besvär."
+        },
+        "kk": {
+            "legacy_caption_pid": 41487,
+            "legacy_language_pid": 47,
+            "text": "Кешіріңіз. Ол ішкі жүйесі қате бір электрондық пошта беру кезінде іркіліс болды. қайта кейінірек жіберіңіз. Келтірілген қолайсыздықтар үшін кешірім сұраймыз.",
+            "auto_translated": "Кешіріңіз. Ол ішкі жүйесі қате бір электрондық пошта беру кезінде іркіліс болды. қайта кейінірек жіберіңіз. Келтірілген қолайсыздықтар үшін кешірім сұраймыз."
+        },
+        "fi": {
+            "legacy_caption_pid": 41488,
+            "legacy_language_pid": 48,
+            "text": "Anteeksi. Se oli sähköpostin lähetys epäonnistui kohden sisäinen järjestelmävirhe. Lähetä myöhemmin uudelleen. Pahoittelemme häiriötä.",
+            "auto_translated": "Anteeksi. Se oli sähköpostin lähetys epäonnistui kohden sisäinen järjestelmävirhe. Lähetä myöhemmin uudelleen. Pahoittelemme häiriötä."
+        },
+        "da": {
+            "legacy_caption_pid": 41489,
+            "legacy_language_pid": 49,
+            "text": "Undskyld. Det var e-mail-transmission fiasko pr intern systemfejl. Send venligst senere igen. Vi beklager ulejligheden.",
+            "auto_translated": "Undskyld. Det var e-mail-transmission fiasko pr intern systemfejl. Send venligst senere igen. Vi beklager ulejligheden."
+        },
+        "he": {
+            "legacy_caption_pid": 41490,
+            "legacy_language_pid": 50,
+            "text": "סליחה. זה היה כישלון שידור דואר אלקטרוני לכל שגיאת מערכת פנימית. נא לשלוח מאוחר יותר שוב. אנו מתנצלים על אי הנוחות.",
+            "auto_translated": "סליחה. זה היה כישלון שידור דואר אלקטרוני לכל שגיאת מערכת פנימית. נא לשלוח מאוחר יותר שוב. אנו מתנצלים על אי הנוחות."
+        },
+        "no": {
+            "legacy_caption_pid": 41491,
+            "legacy_language_pid": 51,
+            "text": "Unnskyld. Det var e-postoverføring svikt per intern systemfeil. Vennligst send senere igjen. Vi beklager eventuelle ulemper.",
+            "auto_translated": "Unnskyld. Det var e-postoverføring svikt per intern systemfeil. Vennligst send senere igjen. Vi beklager eventuelle ulemper."
+        }
+    }
+}

@@ -1,0 +1,321 @@
+{
+    "resource_key": "HEADER_ENROLL",
+    "legacy_resource_pid": 1304,
+    "base_group_key": "grp-028-app-common-lib",
+    "additional_group_keys": [],
+    "key_for_update": "uodXlXhdRQWOWErSEj8tyKCXLcRcjay42Vl5wnGaiB0UGJuR5yFxOLUOwlBhYKL2z3Zgls6D1NtFbqvqwGkENqeDkkCX2BQWLuzZxNeskf3nbwepT7kNrxkzaXK9g1ms",
+    "sort_group": "ENROLL",
+    "key_name": "HEADER_ENROLL",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": false,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 825,
+            "legacy_language_pid": 1,
+            "text": "入会",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 826,
+            "legacy_language_pid": 2,
+            "text": "Enroll",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 6390,
+            "legacy_language_pid": 3,
+            "text": "入会",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 6391,
+            "legacy_language_pid": 4,
+            "text": "가입",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 10097,
+            "legacy_language_pid": 5,
+            "text": "Inscribirse",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 10098,
+            "legacy_language_pid": 6,
+            "text": "Inscreva-se",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 10099,
+            "legacy_language_pid": 7,
+            "text": "入會",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 16145,
+            "legacy_language_pid": 8,
+            "text": "Inscrire",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 16146,
+            "legacy_language_pid": 9,
+            "text": " नामांकन",
+            "auto_translated": ""
+        },
+        "ar": {
+            "legacy_caption_pid": 28302,
+            "legacy_language_pid": 10,
+            "text": "قبول",
+            "auto_translated": "قبول"
+        },
+        "fa": {
+            "legacy_caption_pid": 28303,
+            "legacy_language_pid": 11,
+            "text": "پذیرش",
+            "auto_translated": "پذیرش"
+        },
+        "de": {
+            "legacy_caption_pid": 28304,
+            "legacy_language_pid": 12,
+            "text": "Zulassung",
+            "auto_translated": "Zulassung"
+        },
+        "ru": {
+            "legacy_caption_pid": 28305,
+            "legacy_language_pid": 13,
+            "text": "вход",
+            "auto_translated": "вход"
+        },
+        "ms": {
+            "legacy_caption_pid": 28306,
+            "legacy_language_pid": 14,
+            "text": "kemasukan",
+            "auto_translated": "kemasukan"
+        },
+        "ta": {
+            "legacy_caption_pid": 28307,
+            "legacy_language_pid": 15,
+            "text": "சேர்க்கை",
+            "auto_translated": "சேர்க்கை"
+        },
+        "it": {
+            "legacy_caption_pid": 28308,
+            "legacy_language_pid": 16,
+            "text": "ammissione",
+            "auto_translated": "ammissione"
+        },
+        "bn": {
+            "legacy_caption_pid": 28309,
+            "legacy_language_pid": 17,
+            "text": "স্বীকারোক্তি",
+            "auto_translated": "স্বীকারোক্তি"
+        },
+        "tr": {
+            "legacy_caption_pid": 28310,
+            "legacy_language_pid": 18,
+            "text": "kabul",
+            "auto_translated": "kabul"
+        },
+        "vi": {
+            "legacy_caption_pid": 28311,
+            "legacy_language_pid": 19,
+            "text": "sự thừa nhận",
+            "auto_translated": "sự thừa nhận"
+        },
+        "pl": {
+            "legacy_caption_pid": 28312,
+            "legacy_language_pid": 20,
+            "text": "wstęp",
+            "auto_translated": "wstęp"
+        },
+        "jv": {
+            "legacy_caption_pid": 28313,
+            "legacy_language_pid": 21,
+            "text": "diakoni",
+            "auto_translated": "diakoni"
+        },
+        "pa": {
+            "legacy_caption_pid": 28314,
+            "legacy_language_pid": 22,
+            "text": "ਦਾਖਲੇ",
+            "auto_translated": "ਦਾਖਲੇ"
+        },
+        "th": {
+            "legacy_caption_pid": 28315,
+            "legacy_language_pid": 23,
+            "text": "การรับเข้า",
+            "auto_translated": "การรับเข้า"
+        },
+        "te": {
+            "legacy_caption_pid": 33652,
+            "legacy_language_pid": 24,
+            "text": "అడ్మిషన్",
+            "auto_translated": "అడ్మిషన్"
+        },
+        "mr": {
+            "legacy_caption_pid": 33653,
+            "legacy_language_pid": 25,
+            "text": "प्रवेश",
+            "auto_translated": "प्रवेश"
+        },
+        "ur": {
+            "legacy_caption_pid": 33654,
+            "legacy_language_pid": 26,
+            "text": "داخلہ",
+            "auto_translated": "داخلہ"
+        },
+        "gu": {
+            "legacy_caption_pid": 33655,
+            "legacy_language_pid": 27,
+            "text": "પ્રવેશ",
+            "auto_translated": "પ્રવેશ"
+        },
+        "uk": {
+            "legacy_caption_pid": 33656,
+            "legacy_language_pid": 28,
+            "text": "вхід",
+            "auto_translated": "вхід"
+        },
+        "ml": {
+            "legacy_caption_pid": 33657,
+            "legacy_language_pid": 29,
+            "text": "പ്രവേശനം",
+            "auto_translated": "പ്രവേശനം"
+        },
+        "kn": {
+            "legacy_caption_pid": 33658,
+            "legacy_language_pid": 30,
+            "text": "ಅಡ್ಮಿಷನ್",
+            "auto_translated": "ಅಡ್ಮಿಷನ್"
+        },
+        "su": {
+            "legacy_caption_pid": 33659,
+            "legacy_language_pid": 31,
+            "text": "pangakuan",
+            "auto_translated": "pangakuan"
+        },
+        "ku": {
+            "legacy_caption_pid": 33660,
+            "legacy_language_pid": 32,
+            "text": "Çawaniya",
+            "auto_translated": "Çawaniya"
+        },
+        "ps": {
+            "legacy_caption_pid": 33661,
+            "legacy_language_pid": 33,
+            "text": "د شاملیدو",
+            "auto_translated": "د شاملیدو"
+        },
+        "ro": {
+            "legacy_caption_pid": 33662,
+            "legacy_language_pid": 34,
+            "text": "admitere",
+            "auto_translated": "admitere"
+        },
+        "id": {
+            "legacy_caption_pid": 33663,
+            "legacy_language_pid": 35,
+            "text": "pengakuan",
+            "auto_translated": "pengakuan"
+        },
+        "sd": {
+            "legacy_caption_pid": 33664,
+            "legacy_language_pid": 36,
+            "text": "داخلا",
+            "auto_translated": "داخلا"
+        },
+        "af": {
+            "legacy_caption_pid": 33665,
+            "legacy_language_pid": 37,
+            "text": "toelating",
+            "auto_translated": "toelating"
+        },
+        "sw": {
+            "legacy_caption_pid": 33666,
+            "legacy_language_pid": 38,
+            "text": "uandikishaji",
+            "auto_translated": "uandikishaji"
+        },
+        "lo": {
+            "legacy_caption_pid": 33667,
+            "legacy_language_pid": 39,
+            "text": "ຄ່າຜ່ານປະຕູ",
+            "auto_translated": "ຄ່າຜ່ານປະຕູ"
+        },
+        "nl": {
+            "legacy_caption_pid": 33668,
+            "legacy_language_pid": 40,
+            "text": "toelating",
+            "auto_translated": "toelating"
+        },
+        "tl": {
+            "legacy_caption_pid": 33669,
+            "legacy_language_pid": 41,
+            "text": "pag-amin",
+            "auto_translated": "pag-amin"
+        },
+        "ne": {
+            "legacy_caption_pid": 33670,
+            "legacy_language_pid": 42,
+            "text": "भर्ना",
+            "auto_translated": "भर्ना"
+        },
+        "hu": {
+            "legacy_caption_pid": 33671,
+            "legacy_language_pid": 43,
+            "text": "belépés",
+            "auto_translated": "belépés"
+        },
+        "cs": {
+            "legacy_caption_pid": 33672,
+            "legacy_language_pid": 44,
+            "text": "vstupné",
+            "auto_translated": "vstupné"
+        },
+        "el": {
+            "legacy_caption_pid": 33673,
+            "legacy_language_pid": 45,
+            "text": "εισδοχή",
+            "auto_translated": "εισδοχή"
+        },
+        "sv": {
+            "legacy_caption_pid": 33674,
+            "legacy_language_pid": 46,
+            "text": "inträde",
+            "auto_translated": "inträde"
+        },
+        "kk": {
+            "legacy_caption_pid": 33675,
+            "legacy_language_pid": 47,
+            "text": "кіру",
+            "auto_translated": "кіру"
+        },
+        "fi": {
+            "legacy_caption_pid": 33676,
+            "legacy_language_pid": 48,
+            "text": "sisäänpääsy",
+            "auto_translated": "sisäänpääsy"
+        },
+        "da": {
+            "legacy_caption_pid": 33677,
+            "legacy_language_pid": 49,
+            "text": "adgang",
+            "auto_translated": "adgang"
+        },
+        "he": {
+            "legacy_caption_pid": 33678,
+            "legacy_language_pid": 50,
+            "text": "קבלתי",
+            "auto_translated": "קבלתי"
+        },
+        "no": {
+            "legacy_caption_pid": 33679,
+            "legacy_language_pid": 51,
+            "text": "opptak",
+            "auto_translated": "opptak"
+        }
+    }
+}

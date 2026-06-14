@@ -1,0 +1,27 @@
+{
+    "resource_key": "HP_FOOTER_DEV_DBBACKUP_TOP",
+    "legacy_resource_pid": 1244,
+    "base_group_key": "grp-001-developers-matsuesoft-co-jp",
+    "additional_group_keys": [],
+    "key_for_update": "ZPw9Erc4UhBBDwCgiObEROduSAnblyzikX0Jgy4UNiPdAmNDWlqdmzLuljYOlcisT63OzDcJPtVrtlabdRnNjh7soijOYUXGR21ce38JhzW1PCvJxi985WInSzEK4JCq",
+    "sort_group": "HP FOOTER",
+    "key_name": "HP_FOOTER_DEV_DBBACKUP_TOP",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": true,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 4222,
+            "legacy_language_pid": 1,
+            "text": "DBバックアップ設定 [設定グループ管理者専用]",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 4223,
+            "legacy_language_pid": 2,
+            "text": "DB Backup Setting [Setting Group Admin Only]",
+            "auto_translated": ""
+        }
+    }
+}

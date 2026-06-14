@@ -1,0 +1,321 @@
+{
+    "resource_key": "COMMON_LIB_ENROLL_HEADER_SKYPE_CHECK_COMMENT2",
+    "legacy_resource_pid": 1433,
+    "base_group_key": "grp-010-matsuesoft-lib",
+    "additional_group_keys": [],
+    "key_for_update": "dxqLSXr5t2wZyDVZTVqrLca20wAvM8AKCa8xGr5PsLLUz6MmLUCik07Pgn8q9z55VnHITSyKcKe1ttvyO5HSUrABHa8f9A0aqj7CttcqSDNWHp8kYruXHIEwXLO8wVWY",
+    "sort_group": "ENROLL",
+    "key_name": "COMMON_LIB_ENROLL_HEADER_SKYPE_CHECK_COMMENT2",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": false,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 6006,
+            "legacy_language_pid": 1,
+            "text": "「自分自身を対象としたアクションは実行できません」と出てくればOKです。",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 6007,
+            "legacy_language_pid": 2,
+            "text": "It is ok if you come out as saying \"You can not perform actions targeting yourself.\"",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 6008,
+            "legacy_language_pid": 3,
+            "text": "【自己作为对象是不能实施行动的】出现后就ok了。",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 6009,
+            "legacy_language_pid": 4,
+            "text": "\"자신을 대상으로 한 액션을 수행할 수 없습니다\"라고 나오면 OK입니다.",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 10871,
+            "legacy_language_pid": 5,
+            "text": "Está bien si sales como diciendo \"No puedes realizar acciones dirigidas a ti mismo\".",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 10872,
+            "legacy_language_pid": 6,
+            "text": "Está certo se você sair dizendo \"Você não pode executar ações visando você mesmo\".",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 10873,
+            "legacy_language_pid": 7,
+            "text": "【自己作為對象是不能實施行動的】出現後就ok了。",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 17015,
+            "legacy_language_pid": 8,
+            "text": "C'est bon si vous dites \"Vous ne pouvez pas effectuer des actions ciblant vous-même\".",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 17016,
+            "legacy_language_pid": 9,
+            "text": "यह ठीक है अगर आप कह रहे हैं कि \"आप अपने लक्ष्य को क्रियान्वित नहीं कर सकते।\"",
+            "auto_translated": ""
+        },
+        "ar": {
+            "legacy_caption_pid": 31620,
+            "legacy_language_pid": 10,
+            "text": "\"العمل الذي يستهدف أنفسهم لا يمكن تشغيل\" على ما يرام إذا لي مع.",
+            "auto_translated": "\"العمل الذي يستهدف أنفسهم لا يمكن تشغيل\" على ما يرام إذا لي مع."
+        },
+        "fa": {
+            "legacy_caption_pid": 31621,
+            "legacy_language_pid": 11,
+            "text": "\"اقدام که هدف خود را نمی تواند اجرا شود\" OK اگر من با است.",
+            "auto_translated": "\"اقدام که هدف خود را نمی تواند اجرا شود\" OK اگر من با است."
+        },
+        "de": {
+            "legacy_caption_pid": 31622,
+            "legacy_language_pid": 12,
+            "text": "„Aktion, die sich Ziele kann nicht ausgeführt werden“ ist in Ordnung, wenn mich mit.",
+            "auto_translated": "„Aktion, die sich Ziele kann nicht ausgeführt werden“ ist in Ordnung, wenn mich mit."
+        },
+        "ru": {
+            "legacy_caption_pid": 31623,
+            "legacy_language_pid": 13,
+            "text": "«Действие, что цели сами по себе не могут работать» в порядке, если меня с.",
+            "auto_translated": "«Действие, что цели сами по себе не могут работать» в порядке, если меня с."
+        },
+        "ms": {
+            "legacy_caption_pid": 31624,
+            "legacy_language_pid": 14,
+            "text": "\"Tindakan yang menyasarkan diri mereka tidak dapat berjalan\" adalah OK jika saya keluar dengan.",
+            "auto_translated": "\"Tindakan yang menyasarkan diri mereka tidak dapat berjalan\" adalah OK jika saya keluar dengan."
+        },
+        "ta": {
+            "legacy_caption_pid": 31625,
+            "legacy_language_pid": 15,
+            "text": "\"குறிவைக்கிறது என்று தங்களை இயக்க முடியாது அதிரடி\" என்னை என்றால் வெளியே சரி.",
+            "auto_translated": "\"குறிவைக்கிறது என்று தங்களை இயக்க முடியாது அதிரடி\" என்னை என்றால் வெளியே சரி."
+        },
+        "it": {
+            "legacy_caption_pid": 31626,
+            "legacy_language_pid": 16,
+            "text": "\"L'azione che rivolge stesse non possono funzionare\" va bene se mi fuori con.",
+            "auto_translated": "\"L'azione che rivolge stesse non possono funzionare\" va bene se mi fuori con."
+        },
+        "bn": {
+            "legacy_caption_pid": 31627,
+            "legacy_language_pid": 17,
+            "text": "\"ক্রিয়ার যে লক্ষ্য বানায় নিজেদের না চালাতে পারেন\" ঠিক আছে আমার যদি বাইরে।",
+            "auto_translated": "\"ক্রিয়ার যে লক্ষ্য বানায় নিজেদের না চালাতে পারেন\" ঠিক আছে আমার যদি বাইরে।"
+        },
+        "tr": {
+            "legacy_caption_pid": 31628,
+            "legacy_language_pid": 18,
+            "text": "\"Kendileri koşamam hedefleyen Eylem\" bana olmadığını sorun yok.",
+            "auto_translated": "\"Kendileri koşamam hedefleyen Eylem\" bana olmadığını sorun yok."
+        },
+        "vi": {
+            "legacy_caption_pid": 31629,
+            "legacy_language_pid": 19,
+            "text": "\"Hành động mà mục tiêu mình không thể chạy\" là OK nếu tôi ra với.",
+            "auto_translated": "\"Hành động mà mục tiêu mình không thể chạy\" là OK nếu tôi ra với."
+        },
+        "pl": {
+            "legacy_caption_pid": 31630,
+            "legacy_language_pid": 20,
+            "text": "„Akcja że cele same w sobie nie może działać” jest OK, jeśli się ze mną.",
+            "auto_translated": "„Akcja że cele same w sobie nie może działać” jest OK, jeśli się ze mną."
+        },
+        "jv": {
+            "legacy_caption_pid": 31631,
+            "legacy_language_pid": 21,
+            "text": "\"Tindakan sing target piyambak ora bisa mbukak\" iku OK yen aku karo.",
+            "auto_translated": "\"Tindakan sing target piyambak ora bisa mbukak\" iku OK yen aku karo."
+        },
+        "pa": {
+            "legacy_caption_pid": 31632,
+            "legacy_language_pid": 22,
+            "text": "\"ਕਾਰਵਾਈ, ਜੋ ਕਿ ਨਿਸ਼ਾਨਾ ਆਪਣੇ ਆਪ ਨੂੰ ਨਾ ਚਲਾ ਸਕਦਾ ਹੈ\" ਠੀਕ ਹੈ ਦੇ ਨਾਲ ਮੇਰੇ ਜੇ ਬਾਹਰ ਹੈ.",
+            "auto_translated": "\"ਕਾਰਵਾਈ, ਜੋ ਕਿ ਨਿਸ਼ਾਨਾ ਆਪਣੇ ਆਪ ਨੂੰ ਨਾ ਚਲਾ ਸਕਦਾ ਹੈ\" ਠੀਕ ਹੈ ਦੇ ਨਾਲ ਮੇਰੇ ਜੇ ਬਾਹਰ ਹੈ."
+        },
+        "th": {
+            "legacy_caption_pid": 31633,
+            "legacy_language_pid": 23,
+            "text": "\"การกระทำที่มีเป้าหมายที่ตัวเองไม่สามารถเรียกใช้\" is OK ถ้าฉันออกไปกับ",
+            "auto_translated": "\"การกระทำที่มีเป้าหมายที่ตัวเองไม่สามารถเรียกใช้\" is OK ถ้าฉันออกไปกับ"
+        },
+        "te": {
+            "legacy_caption_pid": 38832,
+            "legacy_language_pid": 24,
+            "text": "\"గురిపెట్టే తాము అమలు కాదు యాక్షన్\" నాకు ఉంటే సరే.",
+            "auto_translated": "\"గురిపెట్టే తాము అమలు కాదు యాక్షన్\" నాకు ఉంటే సరే."
+        },
+        "mr": {
+            "legacy_caption_pid": 38833,
+            "legacy_language_pid": 25,
+            "text": "\"लक्ष्य की स्वत: शकत नाही क्रिया\" मला तर बाहेर ओके आहे.",
+            "auto_translated": "\"लक्ष्य की स्वत: शकत नाही क्रिया\" मला तर बाहेर ओके आहे."
+        },
+        "ur": {
+            "legacy_caption_pid": 38834,
+            "legacy_language_pid": 26,
+            "text": "\"ہدف ہے کہ خود کو نہیں چلا سکتے ایکشن\" کے ساتھ مجھ سے تو باہر ٹھیک ہے.",
+            "auto_translated": "\"ہدف ہے کہ خود کو نہیں چلا سکتے ایکشن\" کے ساتھ مجھ سے تو باہر ٹھیک ہے."
+        },
+        "gu": {
+            "legacy_caption_pid": 38835,
+            "legacy_language_pid": 27,
+            "text": "\"ઍક્શન કે લક્ષ્યો પોતાને ચલાવી શકતા નથી\" ઓકે મને જો બહાર છે.",
+            "auto_translated": "\"ઍક્શન કે લક્ષ્યો પોતાને ચલાવી શકતા નથી\" ઓકે મને જો બહાર છે."
+        },
+        "uk": {
+            "legacy_caption_pid": 38836,
+            "legacy_language_pid": 28,
+            "text": "«Дія, що цілі самі по собі не можуть працювати» в порядку, якщо мене с.",
+            "auto_translated": "«Дія, що цілі самі по собі не можуть працювати» в порядку, якщо мене с."
+        },
+        "ml": {
+            "legacy_caption_pid": 38837,
+            "legacy_language_pid": 29,
+            "text": "\"സ്വയം പ്രവർത്തിപ്പിക്കാൻ കഴിയില്ല ലക്ഷ്യമിടുന്നത് ആക്ഷൻ\" എന്നെ പുറത്തു ശരി ആണ്.",
+            "auto_translated": "\"സ്വയം പ്രവർത്തിപ്പിക്കാൻ കഴിയില്ല ലക്ഷ്യമിടുന്നത് ആക്ഷൻ\" എന്നെ പുറത്തു ശരി ആണ്."
+        },
+        "kn": {
+            "legacy_caption_pid": 38838,
+            "legacy_language_pid": 30,
+            "text": "\"ತಮ್ಮನ್ನು ಔಟ್ ಸಾಧ್ಯವಿಲ್ಲ ಗುರಿಯಾಗಿಸಿದೆ ಆಕ್ಷನ್\" ನನಗೆ ಔಟ್ ತಪ್ಪಲ್ಲ.",
+            "auto_translated": "\"ತಮ್ಮನ್ನು ಔಟ್ ಸಾಧ್ಯವಿಲ್ಲ ಗುರಿಯಾಗಿಸಿದೆ ಆಕ್ಷನ್\" ನನಗೆ ಔಟ್ ತಪ್ಪಲ್ಲ."
+        },
+        "su": {
+            "legacy_caption_pid": 38839,
+            "legacy_language_pid": 31,
+            "text": "\"Aksi anu nargétkeun sorangan teu bisa ngajalankeun\" nyaeta OK lamun kuring kaluar jeung.",
+            "auto_translated": "\"Aksi anu nargétkeun sorangan teu bisa ngajalankeun\" nyaeta OK lamun kuring kaluar jeung."
+        },
+        "ku": {
+            "legacy_caption_pid": 38840,
+            "legacy_language_pid": 32,
+            "text": "\"Çalakiya ku armanca xwe bi rê ve\" OK, eger min bi e.",
+            "auto_translated": "\"Çalakiya ku armanca xwe bi rê ve\" OK, eger min bi e."
+        },
+        "ps": {
+            "legacy_caption_pid": 38841,
+            "legacy_language_pid": 33,
+            "text": "\"د عمل چې په نښه کولای شي په خپله پرمخ نه\" ده سره د Ok که له ما څخه.",
+            "auto_translated": "\"د عمل چې په نښه کولای شي په خپله پرمخ نه\" ده سره د Ok که له ما څخه."
+        },
+        "ro": {
+            "legacy_caption_pid": 38842,
+            "legacy_language_pid": 34,
+            "text": "„Acțiunea care vizează în sine nu pot rula“ este în regulă dacă mă cu.",
+            "auto_translated": "„Acțiunea care vizează în sine nu pot rula“ este în regulă dacă mă cu."
+        },
+        "id": {
+            "legacy_caption_pid": 38843,
+            "legacy_language_pid": 35,
+            "text": "\"Aksi yang menargetkan diri mereka tidak dapat menjalankan\" OK jika saya keluar dengan.",
+            "auto_translated": "\"Aksi yang menargetkan diri mereka tidak dapat menjalankan\" OK jika saya keluar dengan."
+        },
+        "sd": {
+            "legacy_caption_pid": 38844,
+            "legacy_language_pid": 36,
+            "text": "\"ايڪشن هدف ته پاڻ نه هلائي سگهي ٿو\" مون کي ٻاهر سان ته ٺيڪ آهي.",
+            "auto_translated": "\"ايڪشن هدف ته پاڻ نه هلائي سگهي ٿو\" مون کي ٻاهر سان ته ٺيڪ آهي."
+        },
+        "af": {
+            "legacy_caption_pid": 38845,
+            "legacy_language_pid": 37,
+            "text": "\"Aksie dat teikens hulle kan nie loop\" is OK as my uit met.",
+            "auto_translated": "\"Aksie dat teikens hulle kan nie loop\" is OK as my uit met."
+        },
+        "sw": {
+            "legacy_caption_pid": 38846,
+            "legacy_language_pid": 38,
+            "text": "\"Vitendo inayolenga wenyewe hawawezi kukimbia\" ni sawa kama mimi nje kwa.",
+            "auto_translated": "\"Vitendo inayolenga wenyewe hawawezi kukimbia\" ni sawa kama mimi nje kwa."
+        },
+        "lo": {
+            "legacy_caption_pid": 38847,
+            "legacy_language_pid": 39,
+            "text": "\"ປະຕິບັດງານທີ່ເປົ້າຫມາຍດ້ວຍຕົນເອງບໍ່ສາມາດດໍາເນີນການ\" ບໍ່ເປັນຫຍັງດອກຖ້າຫາກວ່າຂ້າພະເຈົ້າອອກມີ.",
+            "auto_translated": "\"ປະຕິບັດງານທີ່ເປົ້າຫມາຍດ້ວຍຕົນເອງບໍ່ສາມາດດໍາເນີນການ\" ບໍ່ເປັນຫຍັງດອກຖ້າຫາກວ່າຂ້າພະເຈົ້າອອກມີ."
+        },
+        "nl": {
+            "legacy_caption_pid": 38848,
+            "legacy_language_pid": 40,
+            "text": "\"Actie die is gericht op zichzelf kan niet worden uitgevoerd\" is OK als me met.",
+            "auto_translated": "\"Actie die is gericht op zichzelf kan niet worden uitgevoerd\" is OK als me met."
+        },
+        "tl": {
+            "legacy_caption_pid": 38849,
+            "legacy_language_pid": 41,
+            "text": "\"Action na nagta-target ang kanilang mga sarili ay maaaring tumakbo\" ay OK kung ako kasama.",
+            "auto_translated": "\"Action na nagta-target ang kanilang mga sarili ay maaaring tumakbo\" ay OK kung ako kasama."
+        },
+        "ne": {
+            "legacy_caption_pid": 38850,
+            "legacy_language_pid": 42,
+            "text": "\"आफूलाई चलाउन सक्दैन लक्ष्य भनेर कार्य\" मलाई भने बाहिर ठीक छ।",
+            "auto_translated": "\"आफूलाई चलाउन सक्दैन लक्ष्य भनेर कार्य\" मलाई भने बाहिर ठीक छ।"
+        },
+        "hu": {
+            "legacy_caption_pid": 38851,
+            "legacy_language_pid": 43,
+            "text": "„Action, amely megcélozza önmagukban nem fut” rendben van, ha nekem ki.",
+            "auto_translated": "„Action, amely megcélozza önmagukban nem fut” rendben van, ha nekem ki."
+        },
+        "cs": {
+            "legacy_caption_pid": 38852,
+            "legacy_language_pid": 44,
+            "text": "„Akce, která se zaměřuje na samotné nelze spustit“ Je v pořádku, když mě ven s.",
+            "auto_translated": "„Akce, která se zaměřuje na samotné nelze spustit“ Je v pořádku, když mě ven s."
+        },
+        "el": {
+            "legacy_caption_pid": 38853,
+            "legacy_language_pid": 45,
+            "text": "«Δράση που στοχεύει τον εαυτό τους δεν μπορεί να τρέξει» είναι εντάξει αν μου με.",
+            "auto_translated": "«Δράση που στοχεύει τον εαυτό τους δεν μπορεί να τρέξει» είναι εντάξει αν μου με."
+        },
+        "sv": {
+            "legacy_caption_pid": 38854,
+            "legacy_language_pid": 46,
+            "text": "\"Action som riktar sig kan inte köra\" är OK om mig med.",
+            "auto_translated": "\"Action som riktar sig kan inte köra\" är OK om mig med."
+        },
+        "kk": {
+            "legacy_caption_pid": 38855,
+            "legacy_language_pid": 47,
+            "text": "маған сыртқа егер «өздері жұмыс істей алмайды мақсатталған іс-шаралар» OK болып табылады.",
+            "auto_translated": "маған сыртқа егер «өздері жұмыс істей алмайды мақсатталған іс-шаралар» OK болып табылады."
+        },
+        "fi": {
+            "legacy_caption_pid": 38856,
+            "legacy_language_pid": 48,
+            "text": "\"Toiminta, joka kohdistuu itse voi ajaa\" on OK, jos minut ulos.",
+            "auto_translated": "\"Toiminta, joka kohdistuu itse voi ajaa\" on OK, jos minut ulos."
+        },
+        "da": {
+            "legacy_caption_pid": 38857,
+            "legacy_language_pid": 49,
+            "text": "\"Handling, der er målrettet selv kan ikke køre\" er OK, hvis mig ud med.",
+            "auto_translated": "\"Handling, der er målrettet selv kan ikke køre\" er OK, hvis mig ud med."
+        },
+        "he": {
+            "legacy_caption_pid": 38858,
+            "legacy_language_pid": 50,
+            "text": "\"פעולה שמכוונת עצמם לא יכולים לרוץ\" היא בסדר אם אותי עם.",
+            "auto_translated": "\"פעולה שמכוונת עצמם לא יכולים לרוץ\" היא בסדר אם אותי עם."
+        },
+        "no": {
+            "legacy_caption_pid": 38859,
+            "legacy_language_pid": 51,
+            "text": "\"Handling som er rettet mot seg selv kan ikke kjøre\" er OK hvis meg ut med.",
+            "auto_translated": "\"Handling som er rettet mot seg selv kan ikke kjøre\" er OK hvis meg ut med."
+        }
+    }
+}

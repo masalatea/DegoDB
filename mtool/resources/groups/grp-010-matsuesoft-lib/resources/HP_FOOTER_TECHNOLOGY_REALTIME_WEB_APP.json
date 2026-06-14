@@ -1,0 +1,69 @@
+{
+    "resource_key": "HP_FOOTER_TECHNOLOGY_REALTIME_WEB_APP",
+    "legacy_resource_pid": 699,
+    "base_group_key": "grp-010-matsuesoft-lib",
+    "additional_group_keys": [],
+    "key_for_update": "BSvXdaOeqRU4NvGNRmPxbBl9OBqIlth6AaJojVIPYkj7Hr4Ks2u74HmjSozAJH8gdBEIWVeYzLPs3ITUoyiZMesAdX184IiVzh8hblJpzVMDD7pPVIaGBPQCdOoCmxVm",
+    "sort_group": "HP FOOTER",
+    "key_name": "HP_FOOTER_TECHNOLOGY_REALTIME_WEB_APP",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": true,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 4630,
+            "legacy_language_pid": 1,
+            "text": "リアルタイムWebアプリケーション",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 4631,
+            "legacy_language_pid": 2,
+            "text": "Realtime Web Application",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 14291,
+            "legacy_language_pid": 3,
+            "text": "",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 14292,
+            "legacy_language_pid": 4,
+            "text": "",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 14293,
+            "legacy_language_pid": 5,
+            "text": "Aplicación web en tiempo real",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 14294,
+            "legacy_language_pid": 6,
+            "text": "Aplicação Web em tempo real",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 14295,
+            "legacy_language_pid": 7,
+            "text": "",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 17157,
+            "legacy_language_pid": 8,
+            "text": "Application Web en temps réel",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 17158,
+            "legacy_language_pid": 9,
+            "text": "रीयलटाइम वेब अनुप्रयोग",
+            "auto_translated": ""
+        }
+    }
+}

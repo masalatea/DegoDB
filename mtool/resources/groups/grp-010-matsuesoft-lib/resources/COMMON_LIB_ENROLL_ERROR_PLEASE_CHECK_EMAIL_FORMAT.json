@@ -1,0 +1,321 @@
+{
+    "resource_key": "COMMON_LIB_ENROLL_ERROR_PLEASE_CHECK_EMAIL_FORMAT",
+    "legacy_resource_pid": 1578,
+    "base_group_key": "grp-010-matsuesoft-lib",
+    "additional_group_keys": [],
+    "key_for_update": "sbf2SgR7Dr1AlGAYYs69S6sI1S9vZ4JZVmmZ60E1UdmrpHRLZ1CFQN6ROKL9Yr95wAFDI1JixPc2wiDVGdTC36TKF0GGzBEOC2SWju3XD75vURF6hwrlM6MCWnlea2Tq",
+    "sort_group": "ENROLL",
+    "key_name": "COMMON_LIB_ENROLL_ERROR_PLEASE_CHECK_EMAIL_FORMAT",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": false,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 7094,
+            "legacy_language_pid": 1,
+            "text": "Emailがメールアドレスとして認識できません。",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 7095,
+            "legacy_language_pid": 2,
+            "text": "Email can not be recognized as a mail address.",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 7096,
+            "legacy_language_pid": 3,
+            "text": "电子邮件没有被识。",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 7097,
+            "legacy_language_pid": 4,
+            "text": "Email을 이메일 주소로 인식할 수 없습니다.",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 10774,
+            "legacy_language_pid": 5,
+            "text": "El correo electrónico no se puede reconocer como una dirección de correo.",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 10775,
+            "legacy_language_pid": 6,
+            "text": "O email não pode ser reconhecido como um endereço de correio.",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 10776,
+            "legacy_language_pid": 7,
+            "text": "電子郵件沒有被識。",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 16467,
+            "legacy_language_pid": 8,
+            "text": "Le courrier électronique ne peut pas être reconnu comme une adresse mail.",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 16468,
+            "legacy_language_pid": 9,
+            "text": "ईमेल को मेल पता के रूप में पहचाना नहीं जा सकता",
+            "auto_translated": ""
+        },
+        "ar": {
+            "legacy_caption_pid": 31200,
+            "legacy_language_pid": 10,
+            "text": "لم يتم التعرف على البريد الإلكتروني كعنوان البريد.",
+            "auto_translated": "لم يتم التعرف على البريد الإلكتروني كعنوان البريد."
+        },
+        "fa": {
+            "legacy_caption_pid": 31201,
+            "legacy_language_pid": 11,
+            "text": "ایمیل به عنوان یک آدرس پست الکترونیکی به رسمیت شناخته نمی شود.",
+            "auto_translated": "ایمیل به عنوان یک آدرس پست الکترونیکی به رسمیت شناخته نمی شود."
+        },
+        "de": {
+            "legacy_caption_pid": 31202,
+            "legacy_language_pid": 12,
+            "text": "E-Mail ist nicht als Mail-Adresse erkannt.",
+            "auto_translated": "E-Mail ist nicht als Mail-Adresse erkannt."
+        },
+        "ru": {
+            "legacy_caption_pid": 31203,
+            "legacy_language_pid": 13,
+            "text": "Электронная почта не признается в качестве почтового адреса.",
+            "auto_translated": "Электронная почта не признается в качестве почтового адреса."
+        },
+        "ms": {
+            "legacy_caption_pid": 31204,
+            "legacy_language_pid": 14,
+            "text": "E-mel tidak diiktiraf sebagai alamat mel.",
+            "auto_translated": "E-mel tidak diiktiraf sebagai alamat mel."
+        },
+        "ta": {
+            "legacy_caption_pid": 31205,
+            "legacy_language_pid": 15,
+            "text": "மின்னஞ்சல் ஒரு மின்னஞ்சல் முகவரியாக அங்கீகரிக்கப்படவில்லை.",
+            "auto_translated": "மின்னஞ்சல் ஒரு மின்னஞ்சல் முகவரியாக அங்கீகரிக்கப்படவில்லை."
+        },
+        "it": {
+            "legacy_caption_pid": 31206,
+            "legacy_language_pid": 16,
+            "text": "La posta elettronica non è riconosciuto come un indirizzo di posta elettronica.",
+            "auto_translated": "La posta elettronica non è riconosciuto come un indirizzo di posta elettronica."
+        },
+        "bn": {
+            "legacy_caption_pid": 31207,
+            "legacy_language_pid": 17,
+            "text": "ইমেইল মেইল ​​ঠিকানা হিসাবে স্বীকৃত নয়।",
+            "auto_translated": "ইমেইল মেইল ​​ঠিকানা হিসাবে স্বীকৃত নয়।"
+        },
+        "tr": {
+            "legacy_caption_pid": 31208,
+            "legacy_language_pid": 18,
+            "text": "E-posta, posta adresi olarak tanınmaz.",
+            "auto_translated": "E-posta, posta adresi olarak tanınmaz."
+        },
+        "vi": {
+            "legacy_caption_pid": 31209,
+            "legacy_language_pid": 19,
+            "text": "Email không được công nhận như một địa chỉ mail.",
+            "auto_translated": "Email không được công nhận như một địa chỉ mail."
+        },
+        "pl": {
+            "legacy_caption_pid": 31210,
+            "legacy_language_pid": 20,
+            "text": "E-mail nie został rozpoznany jako adres poczty elektronicznej.",
+            "auto_translated": "E-mail nie został rozpoznany jako adres poczty elektronicznej."
+        },
+        "jv": {
+            "legacy_caption_pid": 31211,
+            "legacy_language_pid": 21,
+            "text": "Email wis ora dikenali minangka alamat mail.",
+            "auto_translated": "Email wis ora dikenali minangka alamat mail."
+        },
+        "pa": {
+            "legacy_caption_pid": 31212,
+            "legacy_language_pid": 22,
+            "text": "ਮਿੱਤਰ ਨੂੰ ਮੇਲ ਪਤਾ ਦੇ ਤੌਰ ਤੇ ਮਾਨਤਾ ਨਹੀ ਹੈ.",
+            "auto_translated": "ਮਿੱਤਰ ਨੂੰ ਮੇਲ ਪਤਾ ਦੇ ਤੌਰ ਤੇ ਮਾਨਤਾ ਨਹੀ ਹੈ."
+        },
+        "th": {
+            "legacy_caption_pid": 31213,
+            "legacy_language_pid": 23,
+            "text": "อีเมล์ไม่ได้รับการยอมรับเป็นที่อยู่อีเมล",
+            "auto_translated": "อีเมล์ไม่ได้รับการยอมรับเป็นที่อยู่อีเมล"
+        },
+        "te": {
+            "legacy_caption_pid": 42024,
+            "legacy_language_pid": 24,
+            "text": "ఇమెయిల్ ఒక మెయిల్ చిరునామా గుర్తించబడలేదు.",
+            "auto_translated": "ఇమెయిల్ ఒక మెయిల్ చిరునామా గుర్తించబడలేదు."
+        },
+        "mr": {
+            "legacy_caption_pid": 42025,
+            "legacy_language_pid": 25,
+            "text": "ईमेल मेल पत्ता म्हणून ओळखला जात नाही.",
+            "auto_translated": "ईमेल मेल पत्ता म्हणून ओळखला जात नाही."
+        },
+        "ur": {
+            "legacy_caption_pid": 42026,
+            "legacy_language_pid": 26,
+            "text": "ای میل ایک میل ایڈریس کے طور پر تسلیم نہیں کیا جاتا.",
+            "auto_translated": "ای میل ایک میل ایڈریس کے طور پر تسلیم نہیں کیا جاتا."
+        },
+        "gu": {
+            "legacy_caption_pid": 42027,
+            "legacy_language_pid": 27,
+            "text": "ઇમેઇલ મેઈલ સરનામાં તરીકે ઓળખવામાં આવ્યું નથી.",
+            "auto_translated": "ઇમેઇલ મેઈલ સરનામાં તરીકે ઓળખવામાં આવ્યું નથી."
+        },
+        "uk": {
+            "legacy_caption_pid": 42028,
+            "legacy_language_pid": 28,
+            "text": "Електронна пошта не визнається в якості поштової адреси.",
+            "auto_translated": "Електронна пошта не визнається в якості поштової адреси."
+        },
+        "ml": {
+            "legacy_caption_pid": 42029,
+            "legacy_language_pid": 29,
+            "text": "ഇമെയിൽ ഒരു മെയിൽ വിലാസം തിരിച്ചറിഞ്ഞിട്ടില്ല.",
+            "auto_translated": "ഇമെയിൽ ഒരു മെയിൽ വിലാസം തിരിച്ചറിഞ്ഞിട്ടില്ല."
+        },
+        "kn": {
+            "legacy_caption_pid": 42030,
+            "legacy_language_pid": 30,
+            "text": "ಇಮೇಲ್ ಒಂದು ಮೇಲ್ ವಿಳಾಸ ಗುರುತಿಸಲಾಗಲಿಲ್ಲ.",
+            "auto_translated": "ಇಮೇಲ್ ಒಂದು ಮೇಲ್ ವಿಳಾಸ ಗುರುತಿಸಲಾಗಲಿಲ್ಲ."
+        },
+        "su": {
+            "legacy_caption_pid": 42031,
+            "legacy_language_pid": 31,
+            "text": "Email henteu dipikawanoh salaku alamat surélék.",
+            "auto_translated": "Email henteu dipikawanoh salaku alamat surélék."
+        },
+        "ku": {
+            "legacy_caption_pid": 42032,
+            "legacy_language_pid": 32,
+            "text": "Email wek mail address naskirî ne.",
+            "auto_translated": "Email wek mail address naskirî ne."
+        },
+        "ps": {
+            "legacy_caption_pid": 42033,
+            "legacy_language_pid": 33,
+            "text": "برېښناليک په توګه دا برېښلیک پته ونه پیژندل.",
+            "auto_translated": "برېښناليک په توګه دا برېښلیک پته ونه پیژندل."
+        },
+        "ro": {
+            "legacy_caption_pid": 42034,
+            "legacy_language_pid": 34,
+            "text": "E-mail nu este recunoscută ca o adresă de e-mail.",
+            "auto_translated": "E-mail nu este recunoscută ca o adresă de e-mail."
+        },
+        "id": {
+            "legacy_caption_pid": 42035,
+            "legacy_language_pid": 35,
+            "text": "Email tidak diakui sebagai alamat email.",
+            "auto_translated": "Email tidak diakui sebagai alamat email."
+        },
+        "sd": {
+            "legacy_caption_pid": 42036,
+            "legacy_language_pid": 36,
+            "text": "اي ميل هڪ ميل ايڊريس طور تسليم نه آهي.",
+            "auto_translated": "اي ميل هڪ ميل ايڊريس طور تسليم نه آهي."
+        },
+        "af": {
+            "legacy_caption_pid": 42037,
+            "legacy_language_pid": 37,
+            "text": "E-pos word nie erken as 'n e-pos adres.",
+            "auto_translated": "E-pos word nie erken as 'n e-pos adres."
+        },
+        "sw": {
+            "legacy_caption_pid": 42038,
+            "legacy_language_pid": 38,
+            "text": "Barua pepe haitambuliwi kama mahali pepe.",
+            "auto_translated": "Barua pepe haitambuliwi kama mahali pepe."
+        },
+        "lo": {
+            "legacy_caption_pid": 42039,
+            "legacy_language_pid": 39,
+            "text": "Email ບໍ່ໄດ້ຮັບການຍອມຮັບເປັນທີ່ຢູ່ mail.",
+            "auto_translated": "Email ບໍ່ໄດ້ຮັບການຍອມຮັບເປັນທີ່ຢູ່ mail."
+        },
+        "nl": {
+            "legacy_caption_pid": 42040,
+            "legacy_language_pid": 40,
+            "text": "E-mail wordt niet herkend als een e-mailadres.",
+            "auto_translated": "E-mail wordt niet herkend als een e-mailadres."
+        },
+        "tl": {
+            "legacy_caption_pid": 42041,
+            "legacy_language_pid": 41,
+            "text": "Email ay hindi kinikilala bilang isang mail address.",
+            "auto_translated": "Email ay hindi kinikilala bilang isang mail address."
+        },
+        "ne": {
+            "legacy_caption_pid": 42042,
+            "legacy_language_pid": 42,
+            "text": "इमेल मेल ठेगाना रूपमा मान्यता छैन।",
+            "auto_translated": "इमेल मेल ठेगाना रूपमा मान्यता छैन।"
+        },
+        "hu": {
+            "legacy_caption_pid": 42043,
+            "legacy_language_pid": 43,
+            "text": "E-mail nem ismerik el a mail.",
+            "auto_translated": "E-mail nem ismerik el a mail."
+        },
+        "cs": {
+            "legacy_caption_pid": 42044,
+            "legacy_language_pid": 44,
+            "text": "E-mail není uznáno jako poštovní adresu.",
+            "auto_translated": "E-mail není uznáno jako poštovní adresu."
+        },
+        "el": {
+            "legacy_caption_pid": 42045,
+            "legacy_language_pid": 45,
+            "text": "Email δεν αναγνωρίζεται ως διεύθυνση ηλεκτρονικού ταχυδρομείου.",
+            "auto_translated": "Email δεν αναγνωρίζεται ως διεύθυνση ηλεκτρονικού ταχυδρομείου."
+        },
+        "sv": {
+            "legacy_caption_pid": 42046,
+            "legacy_language_pid": 46,
+            "text": "E-post är inte erkänd som en e-postadress.",
+            "auto_translated": "E-post är inte erkänd som en e-postadress."
+        },
+        "kk": {
+            "legacy_caption_pid": 42047,
+            "legacy_language_pid": 47,
+            "text": "Email пошта мекен-жайы ретінде танылмайды.",
+            "auto_translated": "Email пошта мекен-жайы ретінде танылмайды."
+        },
+        "fi": {
+            "legacy_caption_pid": 42048,
+            "legacy_language_pid": 48,
+            "text": "Sähköposti ei ole tunnustettu sähköpostiosoite.",
+            "auto_translated": "Sähköposti ei ole tunnustettu sähköpostiosoite."
+        },
+        "da": {
+            "legacy_caption_pid": 42049,
+            "legacy_language_pid": 49,
+            "text": "E-mail er ikke anerkendt som en mail-adresse.",
+            "auto_translated": "E-mail er ikke anerkendt som en mail-adresse."
+        },
+        "he": {
+            "legacy_caption_pid": 42050,
+            "legacy_language_pid": 50,
+            "text": "דוא\"ל אינו מוכר ככתובת דואר.",
+            "auto_translated": "דוא\"ל אינו מוכר ככתובת דואר."
+        },
+        "no": {
+            "legacy_caption_pid": 42051,
+            "legacy_language_pid": 51,
+            "text": "E-post er ikke anerkjent som en e-postadresse.",
+            "auto_translated": "E-post er ikke anerkjent som en e-postadresse."
+        }
+    }
+}

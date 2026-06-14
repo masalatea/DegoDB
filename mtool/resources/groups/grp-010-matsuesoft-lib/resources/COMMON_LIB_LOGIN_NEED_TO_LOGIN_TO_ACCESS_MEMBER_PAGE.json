@@ -1,0 +1,321 @@
+{
+    "resource_key": "COMMON_LIB_LOGIN_NEED_TO_LOGIN_TO_ACCESS_MEMBER_PAGE",
+    "legacy_resource_pid": 1489,
+    "base_group_key": "grp-010-matsuesoft-lib",
+    "additional_group_keys": [],
+    "key_for_update": "x5qmw1MrQNO4Q9KChTcKzsp5yleXvk6z0VHTOzIaGg7exBmtOF3yqqaSwnA7IMfyjHx0wIt69Us3EZhuvXQhWkv7Xh3TIk9RHIemiC7NZ7REDY8khcWotz1cVRSc3n6n",
+    "sort_group": "LOGIN",
+    "key_name": "COMMON_LIB_LOGIN_NEED_TO_LOGIN_TO_ACCESS_MEMBER_PAGE",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": false,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 6230,
+            "legacy_language_pid": 1,
+            "text": "会員ページへのアクセスには認証が必要です",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 6231,
+            "legacy_language_pid": 2,
+            "text": "Authentication is required to access the membership page",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 6232,
+            "legacy_language_pid": 3,
+            "text": "身份验证才能访问会员页面",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 6233,
+            "legacy_language_pid": 4,
+            "text": "회원 페이지에 접속하려면 인증이 필요합니다",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 11108,
+            "legacy_language_pid": 5,
+            "text": "Se requiere autenticación para acceder a la página de membresía",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 11109,
+            "legacy_language_pid": 6,
+            "text": "É necessária autenticação para acessar a página de membros",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 11110,
+            "legacy_language_pid": 7,
+            "text": "身份驗證才能訪問會員頁面",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 17247,
+            "legacy_language_pid": 8,
+            "text": "'authentification est nécessaire pour accéder à la page d'adhésion",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 17248,
+            "legacy_language_pid": 9,
+            "text": "सदस्यता पृष्ठ तक पहुंचने के लिए प्रमाणीकरण आवश्यक है",
+            "auto_translated": ""
+        },
+        "ar": {
+            "legacy_caption_pid": 32742,
+            "legacy_language_pid": 10,
+            "text": "مطلوب المصادقة للوصول إلى صفحة الأعضاء",
+            "auto_translated": "مطلوب المصادقة للوصول إلى صفحة الأعضاء"
+        },
+        "fa": {
+            "legacy_caption_pid": 32743,
+            "legacy_language_pid": 11,
+            "text": "تأیید مجوز لازم است برای دسترسی به صفحه عضو",
+            "auto_translated": "تأیید مجوز لازم است برای دسترسی به صفحه عضو"
+        },
+        "de": {
+            "legacy_caption_pid": 32744,
+            "legacy_language_pid": 12,
+            "text": "Authentifizierung erforderlich, um die Mitgliederseite zugreifen",
+            "auto_translated": "Authentifizierung erforderlich, um die Mitgliederseite zugreifen"
+        },
+        "ru": {
+            "legacy_caption_pid": 32745,
+            "legacy_language_pid": 13,
+            "text": "Требуется аутентификация для доступа к странице участника",
+            "auto_translated": "Требуется аутентификация для доступа к странице участника"
+        },
+        "ms": {
+            "legacy_caption_pid": 32746,
+            "legacy_language_pid": 14,
+            "text": "Pengesahan diperlukan untuk mengakses halaman ahli",
+            "auto_translated": "Pengesahan diperlukan untuk mengakses halaman ahli"
+        },
+        "ta": {
+            "legacy_caption_pid": 32747,
+            "legacy_language_pid": 15,
+            "text": "அங்கீகாரம் உறுப்பினராக பக்கம் அணுக வேண்டும்",
+            "auto_translated": "அங்கீகாரம் உறுப்பினராக பக்கம் அணுக வேண்டும்"
+        },
+        "it": {
+            "legacy_caption_pid": 32748,
+            "legacy_language_pid": 16,
+            "text": "L'autenticazione è necessario per accedere alla pagina membro",
+            "auto_translated": "L'autenticazione è necessario per accedere alla pagina membro"
+        },
+        "bn": {
+            "legacy_caption_pid": 32749,
+            "legacy_language_pid": 17,
+            "text": "প্রমাণীকরণ সদস্য পৃষ্ঠা অ্যাক্সেস করার জন্য প্রয়োজন বোধ করা হয়",
+            "auto_translated": "প্রমাণীকরণ সদস্য পৃষ্ঠা অ্যাক্সেস করার জন্য প্রয়োজন বোধ করা হয়"
+        },
+        "tr": {
+            "legacy_caption_pid": 32750,
+            "legacy_language_pid": 18,
+            "text": "Doğrulama üyesi sayfasına erişmek için gereklidir",
+            "auto_translated": "Doğrulama üyesi sayfasına erişmek için gereklidir"
+        },
+        "vi": {
+            "legacy_caption_pid": 32751,
+            "legacy_language_pid": 19,
+            "text": "Xác thực được yêu cầu để truy cập vào trang thành viên",
+            "auto_translated": "Xác thực được yêu cầu để truy cập vào trang thành viên"
+        },
+        "pl": {
+            "legacy_caption_pid": 32752,
+            "legacy_language_pid": 20,
+            "text": "Uwierzytelnianie jest wymagane do uzyskania dostępu do strony użytkownika",
+            "auto_translated": "Uwierzytelnianie jest wymagane do uzyskania dostępu do strony użytkownika"
+        },
+        "jv": {
+            "legacy_caption_pid": 32753,
+            "legacy_language_pid": 21,
+            "text": "Bukti asli dibutuhake kanggo ngakses kaca anggota",
+            "auto_translated": "Bukti asli dibutuhake kanggo ngakses kaca anggota"
+        },
+        "pa": {
+            "legacy_caption_pid": 32754,
+            "legacy_language_pid": 22,
+            "text": "ਪ੍ਰਮਾਣਿਕਤਾ ਸਦੱਸ ਸਫ਼ੇ ਤੱਕ ਪਹੁੰਚ ਕਰਨ ਦੀ ਲੋੜ ਹੈ",
+            "auto_translated": "ਪ੍ਰਮਾਣਿਕਤਾ ਸਦੱਸ ਸਫ਼ੇ ਤੱਕ ਪਹੁੰਚ ਕਰਨ ਦੀ ਲੋੜ ਹੈ"
+        },
+        "th": {
+            "legacy_caption_pid": 32755,
+            "legacy_language_pid": 23,
+            "text": "ตรวจสอบความถูกต้องในการเข้าถึงหน้าสมาชิก",
+            "auto_translated": "ตรวจสอบความถูกต้องในการเข้าถึงหน้าสมาชิก"
+        },
+        "te": {
+            "legacy_caption_pid": 40176,
+            "legacy_language_pid": 24,
+            "text": "ప్రామాణీకరణ సభ్యుడు పేజీ యాక్సెస్ చేయుటకు అవసరమైన",
+            "auto_translated": "ప్రామాణీకరణ సభ్యుడు పేజీ యాక్సెస్ చేయుటకు అవసరమైన"
+        },
+        "mr": {
+            "legacy_caption_pid": 40177,
+            "legacy_language_pid": 25,
+            "text": "प्रमाणीकरण सदस्य पृष्ठ प्रवेश करण्यासाठी आवश्यक आहे",
+            "auto_translated": "प्रमाणीकरण सदस्य पृष्ठ प्रवेश करण्यासाठी आवश्यक आहे"
+        },
+        "ur": {
+            "legacy_caption_pid": 40178,
+            "legacy_language_pid": 26,
+            "text": "توثیق رکن کے صفحے تک رسائی حاصل کرنے کی ضرورت ہے",
+            "auto_translated": "توثیق رکن کے صفحے تک رسائی حاصل کرنے کی ضرورت ہے"
+        },
+        "gu": {
+            "legacy_caption_pid": 40179,
+            "legacy_language_pid": 27,
+            "text": "સત્તાધિકરણ સભ્ય પૃષ્ઠને ઍક્સેસ કરવા માટે જરૂરી છે",
+            "auto_translated": "સત્તાધિકરણ સભ્ય પૃષ્ઠને ઍક્સેસ કરવા માટે જરૂરી છે"
+        },
+        "uk": {
+            "legacy_caption_pid": 40180,
+            "legacy_language_pid": 28,
+            "text": "Потрібно аутентифікація для доступу до сторінки учасника",
+            "auto_translated": "Потрібно аутентифікація для доступу до сторінки учасника"
+        },
+        "ml": {
+            "legacy_caption_pid": 40181,
+            "legacy_language_pid": 29,
+            "text": "ആധികാരികത അംഗം പേജ് ആക്സസ് ആവശ്യമാണ്",
+            "auto_translated": "ആധികാരികത അംഗം പേജ് ആക്സസ് ആവശ്യമാണ്"
+        },
+        "kn": {
+            "legacy_caption_pid": 40182,
+            "legacy_language_pid": 30,
+            "text": "ದೃಢೀಕರಣ ಸದಸ್ಯ ಪುಟ ಪ್ರವೇಶಿಸಲು ಅಗತ್ಯವಿದೆ",
+            "auto_translated": "ದೃಢೀಕರಣ ಸದಸ್ಯ ಪುಟ ಪ್ರವೇಶಿಸಲು ಅಗತ್ಯವಿದೆ"
+        },
+        "su": {
+            "legacy_caption_pid": 40183,
+            "legacy_language_pid": 31,
+            "text": "Auténtikasi anu diperlukeun pikeun ngakses kaca anggota",
+            "auto_translated": "Auténtikasi anu diperlukeun pikeun ngakses kaca anggota"
+        },
+        "ku": {
+            "legacy_caption_pid": 40184,
+            "legacy_language_pid": 32,
+            "text": "Erêkirin pêwist e ji bo derbasbûna rûpel endam",
+            "auto_translated": "Erêkirin pêwist e ji bo derbasbûna rûpel endam"
+        },
+        "ps": {
+            "legacy_caption_pid": 40185,
+            "legacy_language_pid": 33,
+            "text": "اعتبار ته اړتيا ده تر څو د غړو مخ لاسرسی",
+            "auto_translated": "اعتبار ته اړتيا ده تر څو د غړو مخ لاسرسی"
+        },
+        "ro": {
+            "legacy_caption_pid": 40186,
+            "legacy_language_pid": 34,
+            "text": "Este necesară autentificarea pentru a accesa pagina de membru",
+            "auto_translated": "Este necesară autentificarea pentru a accesa pagina de membru"
+        },
+        "id": {
+            "legacy_caption_pid": 40187,
+            "legacy_language_pid": 35,
+            "text": "Otentikasi diperlukan untuk mengakses halaman anggota",
+            "auto_translated": "Otentikasi diperlukan untuk mengakses halaman anggota"
+        },
+        "sd": {
+            "legacy_caption_pid": 40188,
+            "legacy_language_pid": 36,
+            "text": "اصليت جي ميمبر صفحي تي وڃڻ جي ضرورت هوندي آهي",
+            "auto_translated": "اصليت جي ميمبر صفحي تي وڃڻ جي ضرورت هوندي آهي"
+        },
+        "af": {
+            "legacy_caption_pid": 40189,
+            "legacy_language_pid": 37,
+            "text": "Verifikasie is nodig om toegang te verkry tot die lid bladsy",
+            "auto_translated": "Verifikasie is nodig om toegang te verkry tot die lid bladsy"
+        },
+        "sw": {
+            "legacy_caption_pid": 40190,
+            "legacy_language_pid": 38,
+            "text": "Uthibitishaji inahitajika ili kufikia mwanachama ukurasa",
+            "auto_translated": "Uthibitishaji inahitajika ili kufikia mwanachama ukurasa"
+        },
+        "lo": {
+            "legacy_caption_pid": 40191,
+            "legacy_language_pid": 39,
+            "text": "ການກວດສອບທີ່ຈໍາເປັນຕ້ອງເຂົ້າເຖິງຫນ້າສະມາຊິກໄດ້",
+            "auto_translated": "ການກວດສອບທີ່ຈໍາເປັນຕ້ອງເຂົ້າເຖິງຫນ້າສະມາຊິກໄດ້"
+        },
+        "nl": {
+            "legacy_caption_pid": 40192,
+            "legacy_language_pid": 40,
+            "text": "Authenticatie is nodig om toegang te krijgen tot de ledenpagina",
+            "auto_translated": "Authenticatie is nodig om toegang te krijgen tot de ledenpagina"
+        },
+        "tl": {
+            "legacy_caption_pid": 40193,
+            "legacy_language_pid": 41,
+            "text": "Authentication ay kinakailangan upang ma-access ang miyembro pahinang",
+            "auto_translated": "Authentication ay kinakailangan upang ma-access ang miyembro pahinang"
+        },
+        "ne": {
+            "legacy_caption_pid": 40194,
+            "legacy_language_pid": 42,
+            "text": "प्रमाणीकरण सदस्य पृष्ठ पहुँच गर्न आवश्यक छ",
+            "auto_translated": "प्रमाणीकरण सदस्य पृष्ठ पहुँच गर्न आवश्यक छ"
+        },
+        "hu": {
+            "legacy_caption_pid": 40195,
+            "legacy_language_pid": 43,
+            "text": "Hitelesítés eléréséhez szükséges a tag az oldalon",
+            "auto_translated": "Hitelesítés eléréséhez szükséges a tag az oldalon"
+        },
+        "cs": {
+            "legacy_caption_pid": 40196,
+            "legacy_language_pid": 44,
+            "text": "Autentizace je vyžadována pro přístup na stránku člen",
+            "auto_translated": "Autentizace je vyžadována pro přístup na stránku člen"
+        },
+        "el": {
+            "legacy_caption_pid": 40197,
+            "legacy_language_pid": 45,
+            "text": "Απαιτείται πιστοποίηση για την πρόσβαση στη σελίδα του μέλους",
+            "auto_translated": "Απαιτείται πιστοποίηση για την πρόσβαση στη σελίδα του μέλους"
+        },
+        "sv": {
+            "legacy_caption_pid": 40198,
+            "legacy_language_pid": 46,
+            "text": "Autentisering krävs för att komma åt medlemssida",
+            "auto_translated": "Autentisering krävs för att komma åt medlemssida"
+        },
+        "kk": {
+            "legacy_caption_pid": 40199,
+            "legacy_language_pid": 47,
+            "text": "Аутентификация мүшесі бетке кіру үшін қажет",
+            "auto_translated": "Аутентификация мүшесі бетке кіру үшін қажет"
+        },
+        "fi": {
+            "legacy_caption_pid": 40200,
+            "legacy_language_pid": 48,
+            "text": "Tunnistus vaaditaan päästä jäseneksi sivulle",
+            "auto_translated": "Tunnistus vaaditaan päästä jäseneksi sivulle"
+        },
+        "da": {
+            "legacy_caption_pid": 40201,
+            "legacy_language_pid": 49,
+            "text": "Godkendelse er påkrævet for at få adgang til medlem siden",
+            "auto_translated": "Godkendelse er påkrævet for at få adgang til medlem siden"
+        },
+        "he": {
+            "legacy_caption_pid": 40202,
+            "legacy_language_pid": 50,
+            "text": "אימות נדרש לגשת לדף חבר",
+            "auto_translated": "אימות נדרש לגשת לדף חבר"
+        },
+        "no": {
+            "legacy_caption_pid": 40203,
+            "legacy_language_pid": 51,
+            "text": "Det kreves godkjenning for å få tilgang til medlemsside",
+            "auto_translated": "Det kreves godkjenning for å få tilgang til medlemsside"
+        }
+    }
+}

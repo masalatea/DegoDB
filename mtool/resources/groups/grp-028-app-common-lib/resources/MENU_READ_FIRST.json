@@ -1,0 +1,321 @@
+{
+    "resource_key": "MENU_READ_FIRST",
+    "legacy_resource_pid": 1081,
+    "base_group_key": "grp-028-app-common-lib",
+    "additional_group_keys": [],
+    "key_for_update": "Q6khdSK3GACN2vlpMbWdO8KIR4yzuda5agZjmGudvacIcB5HxjR6cKPXqcIfCdVCzlDNFMsGFQT5ZRGjbtUnmW4Eky708pO2cHlZvBtfawE5SWW2ImTlvdtzasmchhhq",
+    "sort_group": "Menu",
+    "key_name": "MENU_READ_FIRST",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "Label",
+    "is_resource_fixed": false,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 893,
+            "legacy_language_pid": 1,
+            "text": "初めての方へ",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 894,
+            "legacy_language_pid": 2,
+            "text": "Read First",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 6458,
+            "legacy_language_pid": 3,
+            "text": "初次使用的人",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 6459,
+            "legacy_language_pid": 4,
+            "text": "처음 이용하시는 분에게",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 10217,
+            "legacy_language_pid": 5,
+            "text": "Lea primero",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 10218,
+            "legacy_language_pid": 6,
+            "text": "Leia primeiro",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 10219,
+            "legacy_language_pid": 7,
+            "text": "初次使用的人",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 16197,
+            "legacy_language_pid": 8,
+            "text": "Lire d'abord",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 16198,
+            "legacy_language_pid": 9,
+            "text": "पहले पढ़िए",
+            "auto_translated": ""
+        },
+        "ar": {
+            "legacy_caption_pid": 28834,
+            "legacy_language_pid": 10,
+            "text": "لأول واحد",
+            "auto_translated": "لأول واحد"
+        },
+        "fa": {
+            "legacy_caption_pid": 28835,
+            "legacy_language_pid": 11,
+            "text": "به یکی از اولین",
+            "auto_translated": "به یکی از اولین"
+        },
+        "de": {
+            "legacy_caption_pid": 28836,
+            "legacy_language_pid": 12,
+            "text": "Zum ersten",
+            "auto_translated": "Zum ersten"
+        },
+        "ru": {
+            "legacy_caption_pid": 28837,
+            "legacy_language_pid": 13,
+            "text": "К первому",
+            "auto_translated": "К первому"
+        },
+        "ms": {
+            "legacy_caption_pid": 28838,
+            "legacy_language_pid": 14,
+            "text": "Dengan yang pertama",
+            "auto_translated": "Dengan yang pertama"
+        },
+        "ta": {
+            "legacy_caption_pid": 28839,
+            "legacy_language_pid": 15,
+            "text": "முதல் ஒரு",
+            "auto_translated": "முதல் ஒரு"
+        },
+        "it": {
+            "legacy_caption_pid": 28840,
+            "legacy_language_pid": 16,
+            "text": "Per la prima",
+            "auto_translated": "Per la prima"
+        },
+        "bn": {
+            "legacy_caption_pid": 28841,
+            "legacy_language_pid": 17,
+            "text": "প্রথম এক",
+            "auto_translated": "প্রথম এক"
+        },
+        "tr": {
+            "legacy_caption_pid": 28842,
+            "legacy_language_pid": 18,
+            "text": "İlki için",
+            "auto_translated": "İlki için"
+        },
+        "vi": {
+            "legacy_caption_pid": 28843,
+            "legacy_language_pid": 19,
+            "text": "Để là người đầu tiên",
+            "auto_translated": "Để là người đầu tiên"
+        },
+        "pl": {
+            "legacy_caption_pid": 28844,
+            "legacy_language_pid": 20,
+            "text": "Do pierwszej z nich",
+            "auto_translated": "Do pierwszej z nich"
+        },
+        "jv": {
+            "legacy_caption_pid": 28845,
+            "legacy_language_pid": 21,
+            "text": "Kanggo siji",
+            "auto_translated": "Kanggo siji"
+        },
+        "pa": {
+            "legacy_caption_pid": 28846,
+            "legacy_language_pid": 22,
+            "text": "ਪਹਿਲੇ ਇੱਕ ਕਰਨ ਲਈ",
+            "auto_translated": "ਪਹਿਲੇ ਇੱਕ ਕਰਨ ਲਈ"
+        },
+        "th": {
+            "legacy_caption_pid": 28847,
+            "legacy_language_pid": 23,
+            "text": "หากต้องการเป็นคนแรก",
+            "auto_translated": "หากต้องการเป็นคนแรก"
+        },
+        "te": {
+            "legacy_caption_pid": 34604,
+            "legacy_language_pid": 24,
+            "text": "మొదటి ఒకటి",
+            "auto_translated": "మొదటి ఒకటి"
+        },
+        "mr": {
+            "legacy_caption_pid": 34605,
+            "legacy_language_pid": 25,
+            "text": "प्रथम एक",
+            "auto_translated": "प्रथम एक"
+        },
+        "ur": {
+            "legacy_caption_pid": 34606,
+            "legacy_language_pid": 26,
+            "text": "سب سے پہلے ایک کے لئے",
+            "auto_translated": "سب سے پہلے ایک کے لئے"
+        },
+        "gu": {
+            "legacy_caption_pid": 34607,
+            "legacy_language_pid": 27,
+            "text": "પ્રથમ એક",
+            "auto_translated": "પ્રથમ એક"
+        },
+        "uk": {
+            "legacy_caption_pid": 34608,
+            "legacy_language_pid": 28,
+            "text": "До першого",
+            "auto_translated": "До першого"
+        },
+        "ml": {
+            "legacy_caption_pid": 34609,
+            "legacy_language_pid": 29,
+            "text": "ആദ്യ ഒരാൾക്ക്",
+            "auto_translated": "ആദ്യ ഒരാൾക്ക്"
+        },
+        "kn": {
+            "legacy_caption_pid": 34610,
+            "legacy_language_pid": 30,
+            "text": "ಮೊದಲ ಒಂದು",
+            "auto_translated": "ಮೊದಲ ಒಂದು"
+        },
+        "su": {
+            "legacy_caption_pid": 34611,
+            "legacy_language_pid": 31,
+            "text": "Ka hiji munggaran",
+            "auto_translated": "Ka hiji munggaran"
+        },
+        "ku": {
+            "legacy_caption_pid": 34612,
+            "legacy_language_pid": 32,
+            "text": "To yê yekem",
+            "auto_translated": "To yê yekem"
+        },
+        "ps": {
+            "legacy_caption_pid": 34613,
+            "legacy_language_pid": 33,
+            "text": "د لومړي یو",
+            "auto_translated": "د لومړي یو"
+        },
+        "ro": {
+            "legacy_caption_pid": 34614,
+            "legacy_language_pid": 34,
+            "text": "Pentru prima",
+            "auto_translated": "Pentru prima"
+        },
+        "id": {
+            "legacy_caption_pid": 34615,
+            "legacy_language_pid": 35,
+            "text": "Untuk yang pertama",
+            "auto_translated": "Untuk yang pertama"
+        },
+        "sd": {
+            "legacy_caption_pid": 34616,
+            "legacy_language_pid": 36,
+            "text": "پهرين هڪ کي",
+            "auto_translated": "پهرين هڪ کي"
+        },
+        "af": {
+            "legacy_caption_pid": 34617,
+            "legacy_language_pid": 37,
+            "text": "Om die eerste een",
+            "auto_translated": "Om die eerste een"
+        },
+        "sw": {
+            "legacy_caption_pid": 34618,
+            "legacy_language_pid": 38,
+            "text": "Kwa mtu wa kwanza",
+            "auto_translated": "Kwa mtu wa kwanza"
+        },
+        "lo": {
+            "legacy_caption_pid": 34619,
+            "legacy_language_pid": 39,
+            "text": "ໄປເປັນຄົນທໍາອິດ",
+            "auto_translated": "ໄປເປັນຄົນທໍາອິດ"
+        },
+        "nl": {
+            "legacy_caption_pid": 34620,
+            "legacy_language_pid": 40,
+            "text": "Om de eerste",
+            "auto_translated": "Om de eerste"
+        },
+        "tl": {
+            "legacy_caption_pid": 34621,
+            "legacy_language_pid": 41,
+            "text": "Upang ang unang isa",
+            "auto_translated": "Upang ang unang isa"
+        },
+        "ne": {
+            "legacy_caption_pid": 34622,
+            "legacy_language_pid": 42,
+            "text": "पहिलो एक",
+            "auto_translated": "पहिलो एक"
+        },
+        "hu": {
+            "legacy_caption_pid": 34623,
+            "legacy_language_pid": 43,
+            "text": "Ahhoz, hogy az első",
+            "auto_translated": "Ahhoz, hogy az első"
+        },
+        "cs": {
+            "legacy_caption_pid": 34624,
+            "legacy_language_pid": 44,
+            "text": "K prvnímu",
+            "auto_translated": "K prvnímu"
+        },
+        "el": {
+            "legacy_caption_pid": 34625,
+            "legacy_language_pid": 45,
+            "text": "Στο πρώτο",
+            "auto_translated": "Στο πρώτο"
+        },
+        "sv": {
+            "legacy_caption_pid": 34626,
+            "legacy_language_pid": 46,
+            "text": "Till den första",
+            "auto_translated": "Till den första"
+        },
+        "kk": {
+            "legacy_caption_pid": 34627,
+            "legacy_language_pid": 47,
+            "text": "бірінші",
+            "auto_translated": "бірінші"
+        },
+        "fi": {
+            "legacy_caption_pid": 34628,
+            "legacy_language_pid": 48,
+            "text": "Jotta ensimmäinen",
+            "auto_translated": "Jotta ensimmäinen"
+        },
+        "da": {
+            "legacy_caption_pid": 34629,
+            "legacy_language_pid": 49,
+            "text": "Til den første",
+            "auto_translated": "Til den første"
+        },
+        "he": {
+            "legacy_caption_pid": 34630,
+            "legacy_language_pid": 50,
+            "text": "לראשון",
+            "auto_translated": "לראשון"
+        },
+        "no": {
+            "legacy_caption_pid": 34631,
+            "legacy_language_pid": 51,
+            "text": "Til den første",
+            "auto_translated": "Til den første"
+        }
+    }
+}

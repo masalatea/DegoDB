@@ -1,0 +1,69 @@
+{
+    "resource_key": "HP_FOOTER_CLOUD",
+    "legacy_resource_pid": 683,
+    "base_group_key": "grp-010-matsuesoft-lib",
+    "additional_group_keys": [],
+    "key_for_update": "qikS8jwfxW9I9oCmZZDRJdGeDt8F97jqRujX8flQDRgrbuLsoYbYpH4gBKq9J43uqogjoVzUZngAVNAu3N3z46Bp9ezgGEAIGvthK6WDzBryQJFGhNK03Ewa5FQW5xtI",
+    "sort_group": "HP FOOTER",
+    "key_name": "HP_FOOTER_CLOUD",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": true,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 4550,
+            "legacy_language_pid": 1,
+            "text": "クラウド開発/運用 (開発から運用まで承ります)",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 4551,
+            "legacy_language_pid": 2,
+            "text": "Deputize Cloud Management and Development",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 13387,
+            "legacy_language_pid": 3,
+            "text": "",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 13388,
+            "legacy_language_pid": 4,
+            "text": "",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 13389,
+            "legacy_language_pid": 5,
+            "text": "Deputize Cloud Management and Development",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 13390,
+            "legacy_language_pid": 6,
+            "text": "Deputize Cloud Management and Development",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 13391,
+            "legacy_language_pid": 7,
+            "text": "",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 17077,
+            "legacy_language_pid": 8,
+            "text": "Déléguer la gestion et le développement du cloud",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 17078,
+            "legacy_language_pid": 9,
+            "text": "Deputize क्लाउड प्रबंधन और विकास",
+            "auto_translated": ""
+        }
+    }
+}

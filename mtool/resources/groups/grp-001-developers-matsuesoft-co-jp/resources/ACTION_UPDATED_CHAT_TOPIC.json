@@ -1,0 +1,27 @@
+{
+    "resource_key": "ACTION_UPDATED_CHAT_TOPIC",
+    "legacy_resource_pid": 343,
+    "base_group_key": "grp-001-developers-matsuesoft-co-jp",
+    "additional_group_keys": [],
+    "key_for_update": "0",
+    "sort_group": "ACTION CHAT_TOPIC",
+    "key_name": "ACTION_UPDATED_CHAT_TOPIC",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": true,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 3540,
+            "legacy_language_pid": 1,
+            "text": "トピック更新完了",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 3541,
+            "legacy_language_pid": 2,
+            "text": "Updated Topic",
+            "auto_translated": ""
+        }
+    }
+}

@@ -1,0 +1,321 @@
+{
+    "resource_key": "COMMON_LIB_ENROLL_HEADER_SKYPE_EXPLANATION6",
+    "legacy_resource_pid": 1428,
+    "base_group_key": "grp-010-matsuesoft-lib",
+    "additional_group_keys": [],
+    "key_for_update": "lXrQxmtcZvpRnVMofUmObYKefzyYW0GJDbfP61Pr7MFnKRoKHveICTBTCGfNmMNkuRiFotlPmyQrFDQyAFGzVZhanUF4wB4dwfPPqh40tA1hkALErGeU2dMCH8v8oWXo",
+    "sort_group": "ENROLL",
+    "key_name": "COMMON_LIB_ENROLL_HEADER_SKYPE_EXPLANATION6",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": false,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 5986,
+            "legacy_language_pid": 1,
+            "text": "同様に、Facebookアカウントで使用している際は「facebook:英数字」のようになりますのでご注意下さい。",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 5987,
+            "legacy_language_pid": 2,
+            "text": "In same way, Facebook account may have \"facebook:alphanumerical\".",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 5988,
+            "legacy_language_pid": 3,
+            "text": "同样，您使用在Facebook帐户时像\"live:字母数字字符\"一样的字母数字列。",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 5989,
+            "legacy_language_pid": 4,
+            "text": "마찬가지로 Facebook 계정으로 사용하는 경우는 다음과 같으므로 주의하시기 바랍니다. \"live:영숫자\"",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 10898,
+            "legacy_language_pid": 5,
+            "text": "De la misma manera, la cuenta de Facebook puede tener \"facebook: alphanumerical\".",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 10899,
+            "legacy_language_pid": 6,
+            "text": "Da mesma forma, a conta do Facebook pode ter \"facebook: alfanumérico\".",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 10900,
+            "legacy_language_pid": 7,
+            "text": "同樣，您使用在Facebook帳戶時像\"live:字母數字字符\"一樣的字母數字列。",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 17035,
+            "legacy_language_pid": 8,
+            "text": "De même, le compte Facebook peut avoir \"facebook: alphanumerique\".",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 17036,
+            "legacy_language_pid": 9,
+            "text": "उसी तरह, फेसबुक अकाउंट में \"facebook:alphanumerical\" हो सकता ह",
+            "auto_translated": ""
+        },
+        "ar": {
+            "legacy_caption_pid": 31760,
+            "legacy_language_pid": 10,
+            "text": "وبالمثل، عندما كنت تستخدم في حساب الفيسبوك: يبدو \"facebook: أبجدية\" يرجى الملاحظة.",
+            "auto_translated": "وبالمثل، عندما كنت تستخدم في حساب الفيسبوك: يبدو \"facebook: أبجدية\" يرجى الملاحظة."
+        },
+        "fa": {
+            "legacy_caption_pid": 31761,
+            "legacy_language_pid": 11,
+            "text": "به طور مشابه، زمانی که شما با استفاده از در حساب فیس بوک: به نظر می رسد مانند \"facebook: الفبایی\" لطفا توجه داشته باشید.",
+            "auto_translated": "به طور مشابه، زمانی که شما با استفاده از در حساب فیس بوک: به نظر می رسد مانند \"facebook: الفبایی\" لطفا توجه داشته باشید."
+        },
+        "de": {
+            "legacy_caption_pid": 31762,
+            "legacy_language_pid": 12,
+            "text": "Ebenso, wenn Sie in dem Facebook-Konto verwenden: sieht aus wie „facebook: alphanumerische“ Bitte beachten Sie.",
+            "auto_translated": "Ebenso, wenn Sie in dem Facebook-Konto verwenden: sieht aus wie „facebook: alphanumerische“ Bitte beachten Sie."
+        },
+        "ru": {
+            "legacy_caption_pid": 31763,
+            "legacy_language_pid": 13,
+            "text": "Точно так же, когда вы используете в учетной записи Facebook: выглядит как «facebook: буквенно-цифровой» Пожалуйста, обратите внимание.",
+            "auto_translated": "Точно так же, когда вы используете в учетной записи Facebook: выглядит как «facebook: буквенно-цифровой» Пожалуйста, обратите внимание."
+        },
+        "ms": {
+            "legacy_caption_pid": 31764,
+            "legacy_language_pid": 14,
+            "text": "Begitu juga, apabila anda menggunakan dengan akaun Facebook: kelihatan seperti \"facebook: abjad angka\" Sila ambil perhatian.",
+            "auto_translated": "Begitu juga, apabila anda menggunakan dengan akaun Facebook: kelihatan seperti \"facebook: abjad angka\" Sila ambil perhatian."
+        },
+        "ta": {
+            "legacy_caption_pid": 31765,
+            "legacy_language_pid": 15,
+            "text": "இதேபோல், நீங்கள் Facebook கணக்கை பயன்படுத்தி போது: போன்ற \"facebook: எண்ணெழுத்து\" நினைவில் கொள்க தெரிகிறது.",
+            "auto_translated": "இதேபோல், நீங்கள் Facebook கணக்கை பயன்படுத்தி போது: போன்ற \"facebook: எண்ணெழுத்து\" நினைவில் கொள்க தெரிகிறது."
+        },
+        "it": {
+            "legacy_caption_pid": 31766,
+            "legacy_language_pid": 16,
+            "text": "Allo stesso modo, quando si utilizza nel account di Facebook: si presenta come \"facebook: alfanumerico\" Si prega di notare.",
+            "auto_translated": "Allo stesso modo, quando si utilizza nel account di Facebook: si presenta come \"facebook: alfanumerico\" Si prega di notare."
+        },
+        "bn": {
+            "legacy_caption_pid": 31767,
+            "legacy_language_pid": 17,
+            "text": "একইভাবে, আপনি ফেসবুক অ্যাকাউন্ট ব্যবহার করছেন যখন: মত \"facebook: আলফানিউমেরিক\" দয়া করে মনে রাখবেন দেখায়।",
+            "auto_translated": "একইভাবে, আপনি ফেসবুক অ্যাকাউন্ট ব্যবহার করছেন যখন: মত \"facebook: আলফানিউমেরিক\" দয়া করে মনে রাখবেন দেখায়।"
+        },
+        "tr": {
+            "legacy_caption_pid": 31768,
+            "legacy_language_pid": 18,
+            "text": "Benzer şekilde, Facebook hesabında kullanırken: \"facebook: alfanümerik\" Lütfen dikkat benziyor.",
+            "auto_translated": "Benzer şekilde, Facebook hesabında kullanırken: \"facebook: alfanümerik\" Lütfen dikkat benziyor."
+        },
+        "vi": {
+            "legacy_caption_pid": 31769,
+            "legacy_language_pid": 19,
+            "text": "Tương tự như vậy, khi bạn đang sử dụng trong các tài khoản Facebook: trông giống như \"facebook: chữ\" Xin lưu ý.",
+            "auto_translated": "Tương tự như vậy, khi bạn đang sử dụng trong các tài khoản Facebook: trông giống như \"facebook: chữ\" Xin lưu ý."
+        },
+        "pl": {
+            "legacy_caption_pid": 31770,
+            "legacy_language_pid": 20,
+            "text": "Podobnie, gdy korzystasz z konta na Facebooku: wygląda „facebook: alfanumeryczny” Uwaga.",
+            "auto_translated": "Podobnie, gdy korzystasz z konta na Facebooku: wygląda „facebook: alfanumeryczny” Uwaga."
+        },
+        "jv": {
+            "legacy_caption_pid": 31771,
+            "legacy_language_pid": 21,
+            "text": "Kajaba iku, nalika sampeyan nggunakake ing akun Facebook: katon kaya \"facebook: alphanumeric\" Mangga digatèkaké.",
+            "auto_translated": "Kajaba iku, nalika sampeyan nggunakake ing akun Facebook: katon kaya \"facebook: alphanumeric\" Mangga digatèkaké."
+        },
+        "pa": {
+            "legacy_caption_pid": 31772,
+            "legacy_language_pid": 22,
+            "text": "ਇਸੇ ਲਈ, ਤੁਹਾਨੂੰ ਫੇਸਬੁੱਕ ਖਾਤੇ ਵਿੱਚ ਵਰਤ ਰਹੇ ਹੋ, ਜਦ: ਵਰਗਾ \"facebook: ਅੱਖਰ\" ਕਿਰਪਾ ਕਰਕੇ ਯਾਦ ਰੱਖੋ ਵੇਖਦਾ ਹੈ.",
+            "auto_translated": "ਇਸੇ ਲਈ, ਤੁਹਾਨੂੰ ਫੇਸਬੁੱਕ ਖਾਤੇ ਵਿੱਚ ਵਰਤ ਰਹੇ ਹੋ, ਜਦ: ਵਰਗਾ \"facebook: ਅੱਖਰ\" ਕਿਰਪਾ ਕਰਕੇ ਯਾਦ ਰੱਖੋ ਵੇਖਦਾ ਹੈ."
+        },
+        "th": {
+            "legacy_caption_pid": 31773,
+            "legacy_language_pid": 23,
+            "text": "ในทำนองเดียวกันเมื่อคุณกำลังใช้ในบัญชี Facebook: ดูเหมือนว่า \"facebook: ตัวเลขและตัวอักษร\" โปรดทราบ",
+            "auto_translated": "ในทำนองเดียวกันเมื่อคุณกำลังใช้ในบัญชี Facebook: ดูเหมือนว่า \"facebook: ตัวเลขและตัวอักษร\" โปรดทราบ"
+        },
+        "te": {
+            "legacy_caption_pid": 38272,
+            "legacy_language_pid": 24,
+            "text": "అదేవిధంగా, మీరు Facebook ఖాతా ఉపయోగించి చేసినప్పుడు, దయచేసి మీరు \"facebook: ఆల్ఫాన్యూమరిక్\" ఇష్టం అని గమనించండి.",
+            "auto_translated": "అదేవిధంగా, మీరు Facebook ఖాతా ఉపయోగించి చేసినప్పుడు, దయచేసి మీరు \"facebook: ఆల్ఫాన్యూమరిక్\" ఇష్టం అని గమనించండి."
+        },
+        "mr": {
+            "legacy_caption_pid": 38273,
+            "legacy_language_pid": 25,
+            "text": "त्याचप्रमाणे, आपण फेसबुक खाते वापरून जातात तेव्हा, कृपया लक्षात घ्या की आपण \"facebook: वर्णांक\" आवडेल की.",
+            "auto_translated": "त्याचप्रमाणे, आपण फेसबुक खाते वापरून जातात तेव्हा, कृपया लक्षात घ्या की आपण \"facebook: वर्णांक\" आवडेल की."
+        },
+        "ur": {
+            "legacy_caption_pid": 38274,
+            "legacy_language_pid": 26,
+            "text": "اسی طرح، اگر آپ فیس بک کے اکاؤنٹ میں استعمال کر رہے ہیں جب، براہ مہربانی نوٹ کریں آپ کو \"facebook: اکشرانکیی\" چاہوں گا.",
+            "auto_translated": "اسی طرح، اگر آپ فیس بک کے اکاؤنٹ میں استعمال کر رہے ہیں جب، براہ مہربانی نوٹ کریں آپ کو \"facebook: اکشرانکیی\" چاہوں گا."
+        },
+        "gu": {
+            "legacy_caption_pid": 38275,
+            "legacy_language_pid": 27,
+            "text": "એ જ રીતે, જ્યારે તમે ફેસબુક એકાઉન્ટમાં ઉપયોગ કરી રહ્યા છો, તો કૃપા કરીને નોંધો કે તમે \"facebook: આલ્ફાન્યૂમેરિક\" પસંદ કરશે.",
+            "auto_translated": "એ જ રીતે, જ્યારે તમે ફેસબુક એકાઉન્ટમાં ઉપયોગ કરી રહ્યા છો, તો કૃપા કરીને નોંધો કે તમે \"facebook: આલ્ફાન્યૂમેરિક\" પસંદ કરશે."
+        },
+        "uk": {
+            "legacy_caption_pid": 38276,
+            "legacy_language_pid": 28,
+            "text": "Точно так же, коли ви використовуєте в обліковому записі Facebook, будь ласка, зверніть увагу, що вам сподобається «facebook: алфавітно-цифровий».",
+            "auto_translated": "Точно так же, коли ви використовуєте в обліковому записі Facebook, будь ласка, зверніть увагу, що вам сподобається «facebook: алфавітно-цифровий»."
+        },
+        "ml": {
+            "legacy_caption_pid": 38277,
+            "legacy_language_pid": 29,
+            "text": "അതുപോലെ, നിങ്ങൾ ഫേസ്ബുക്ക് ഉപയോഗിക്കുന്ന, നിങ്ങൾ \"facebook: അക്കങ്ങളും\" പോലെ ദയവായി ശ്രദ്ധിക്കുക.",
+            "auto_translated": "അതുപോലെ, നിങ്ങൾ ഫേസ്ബുക്ക് ഉപയോഗിക്കുന്ന, നിങ്ങൾ \"facebook: അക്കങ്ങളും\" പോലെ ദയവായി ശ്രദ്ധിക്കുക."
+        },
+        "kn": {
+            "legacy_caption_pid": 38278,
+            "legacy_language_pid": 30,
+            "text": "ಹಾಗೆಯೇ, ನಿಮಗೆ ಫೇಸ್ಬುಕ್ ಖಾತೆಯಲ್ಲಿ ಬಳಸಿ ಮಾಡಿದಾಗ, ನೀವು \"facebook: ಅಕ್ಷರಸಂಖ್ಯಾಯುಕ್ತ\" ಇಷ್ಟ ಎಂದು ಗಮನಿಸಿ.",
+            "auto_translated": "ಹಾಗೆಯೇ, ನಿಮಗೆ ಫೇಸ್ಬುಕ್ ಖಾತೆಯಲ್ಲಿ ಬಳಸಿ ಮಾಡಿದಾಗ, ನೀವು \"facebook: ಅಕ್ಷರಸಂಖ್ಯಾಯುಕ್ತ\" ಇಷ್ಟ ಎಂದು ಗಮನಿಸಿ."
+        },
+        "su": {
+            "legacy_caption_pid": 38279,
+            "legacy_language_pid": 31,
+            "text": "Nya kitu, nalika anjeun ngagunakeun dina akun Facebook, mangga dicatet yén anjeun bakal resep \"facebook:alpanumérik\".",
+            "auto_translated": "Nya kitu, nalika anjeun ngagunakeun dina akun Facebook, mangga dicatet yén anjeun bakal resep \"facebook:alpanumérik\"."
+        },
+        "ku": {
+            "legacy_caption_pid": 38280,
+            "legacy_language_pid": 32,
+            "text": "Bi heman awayî, çaxê ku hûn bi kar tînin, di account Facebook, ji kerema xwe not bikin ku hun dê \"facebook:alphanumeric\" dixwazim.",
+            "auto_translated": "Bi heman awayî, çaxê ku hûn bi kar tînin, di account Facebook, ji kerema xwe not bikin ku hun dê \"facebook:alphanumeric\" dixwazim."
+        },
+        "ps": {
+            "legacy_caption_pid": 38281,
+            "legacy_language_pid": 33,
+            "text": "په همدې ډول، کله چې تاسو د فیسبوک حساب په کارولو سره دي، ياد ولرې چې تاسو به د \"facebook: الفبې\" غواړم.",
+            "auto_translated": "په همدې ډول، کله چې تاسو د فیسبوک حساب په کارولو سره دي، ياد ولرې چې تاسو به د \"facebook: الفبې\" غواړم."
+        },
+        "ro": {
+            "legacy_caption_pid": 38282,
+            "legacy_language_pid": 34,
+            "text": "În mod similar, atunci când sunt utilizați într-un cont de Facebook, vă rugăm să rețineți că vă va place „facebook:alfanumerică“.",
+            "auto_translated": "În mod similar, atunci când sunt utilizați într-un cont de Facebook, vă rugăm să rețineți că vă va place „facebook:alfanumerică“."
+        },
+        "id": {
+            "legacy_caption_pid": 38283,
+            "legacy_language_pid": 35,
+            "text": "Demikian pula, ketika Anda menggunakan dalam akun Facebook, harap dicatat bahwa Anda akan seperti \"facebook:alfanumerik\".",
+            "auto_translated": "Demikian pula, ketika Anda menggunakan dalam akun Facebook, harap dicatat bahwa Anda akan seperti \"facebook:alfanumerik\"."
+        },
+        "sd": {
+            "legacy_caption_pid": 38284,
+            "legacy_language_pid": 36,
+            "text": "اهڙي طرح، جڏهن توهان جي ڪريو اڪائونٽ ۾ استعمال ڪري رهيا آهيو، مهرباني ڪري نوٽ ڪريو ته توهان کي \"facebook: alphanumeric\" پسند ڪندو.",
+            "auto_translated": "اهڙي طرح، جڏهن توهان جي ڪريو اڪائونٽ ۾ استعمال ڪري رهيا آهيو، مهرباني ڪري نوٽ ڪريو ته توهان کي \"facebook: alphanumeric\" پسند ڪندو."
+        },
+        "af": {
+            "legacy_caption_pid": 38285,
+            "legacy_language_pid": 37,
+            "text": "Net so, wanneer jy gebruik in die Facebook-rekening, asseblief daarop let dat jy sal graag \"facebook: alfanumeriese\".",
+            "auto_translated": "Net so, wanneer jy gebruik in die Facebook-rekening, asseblief daarop let dat jy sal graag \"facebook: alfanumeriese\"."
+        },
+        "sw": {
+            "legacy_caption_pid": 38286,
+            "legacy_language_pid": 38,
+            "text": "Vile vile, wakati unatumia kwenye akaunti ya Facebook, tafadhali kumbuka kwamba wewe kama \"facebook: alphanumeric\".",
+            "auto_translated": "Vile vile, wakati unatumia kwenye akaunti ya Facebook, tafadhali kumbuka kwamba wewe kama \"facebook: alphanumeric\"."
+        },
+        "lo": {
+            "legacy_caption_pid": 38287,
+            "legacy_language_pid": 39,
+            "text": "ເຊັ່ນດຽວກັນ, ໃນເວລາທີ່ທ່ານກໍາລັງໃຊ້ໃນບັນຊີຂອງເຟສບຸກ, ກະລຸນາສັງເກດວ່າທ່ານຈະຕ້ອງ \"facebook:alphanumeric\".",
+            "auto_translated": "ເຊັ່ນດຽວກັນ, ໃນເວລາທີ່ທ່ານກໍາລັງໃຊ້ໃນບັນຊີຂອງເຟສບຸກ, ກະລຸນາສັງເກດວ່າທ່ານຈະຕ້ອງ \"facebook:alphanumeric\"."
+        },
+        "nl": {
+            "legacy_caption_pid": 38288,
+            "legacy_language_pid": 40,
+            "text": "Ook wanneer u gebruik maakt van de Facebook-account, dan kunt u er rekening mee dat u wilt \"facebook: alfanumeriek\".",
+            "auto_translated": "Ook wanneer u gebruik maakt van de Facebook-account, dan kunt u er rekening mee dat u wilt \"facebook: alfanumeriek\"."
+        },
+        "tl": {
+            "legacy_caption_pid": 38289,
+            "legacy_language_pid": 41,
+            "text": "Katulad nito, kapag ikaw ay gumagamit sa Facebook account, mangyaring tandaan na magugustuhan mo \"facebook: alphanumeric\".",
+            "auto_translated": "Katulad nito, kapag ikaw ay gumagamit sa Facebook account, mangyaring tandaan na magugustuhan mo \"facebook: alphanumeric\"."
+        },
+        "ne": {
+            "legacy_caption_pid": 38290,
+            "legacy_language_pid": 42,
+            "text": "त्यसै गरी, तपाईं फेसबुक खातामा प्रयोग गर्दा, कृपया नोट गर्नुहोस् तपाईँले \"facebook: अल्फान्यूमेरिक\" मन गर्नेछ।",
+            "auto_translated": "त्यसै गरी, तपाईं फेसबुक खातामा प्रयोग गर्दा, कृपया नोट गर्नुहोस् तपाईँले \"facebook: अल्फान्यूमेरिक\" मन गर्नेछ।"
+        },
+        "hu": {
+            "legacy_caption_pid": 38291,
+            "legacy_language_pid": 43,
+            "text": "Hasonlóképpen, ha használja a Facebook számla, kérjük, vegye figyelembe, hogy tetszeni fog „facebook: alfanumerikus”.",
+            "auto_translated": "Hasonlóképpen, ha használja a Facebook számla, kérjük, vegye figyelembe, hogy tetszeni fog „facebook: alfanumerikus”."
+        },
+        "cs": {
+            "legacy_caption_pid": 38292,
+            "legacy_language_pid": 44,
+            "text": "Podobně, pokud používáte v účtu Facebook, upozorňujeme, že se vám bude líbit „facebook: alfanumerický“.",
+            "auto_translated": "Podobně, pokud používáte v účtu Facebook, upozorňujeme, že se vám bude líbit „facebook: alfanumerický“."
+        },
+        "el": {
+            "legacy_caption_pid": 38293,
+            "legacy_language_pid": 45,
+            "text": "Ομοίως, όταν χρησιμοποιείτε το λογαριασμό στο Facebook, παρακαλώ σημειώστε ότι θα σας αρέσει «facebook: αλφαριθμητικό».",
+            "auto_translated": "Ομοίως, όταν χρησιμοποιείτε το λογαριασμό στο Facebook, παρακαλώ σημειώστε ότι θα σας αρέσει «facebook: αλφαριθμητικό»."
+        },
+        "sv": {
+            "legacy_caption_pid": 38294,
+            "legacy_language_pid": 46,
+            "text": "Likaså när du använder i Facebook-konto, observera att du kommer att gilla \"facebook: alfanumerisk\".",
+            "auto_translated": "Likaså när du använder i Facebook-konto, observera att du kommer att gilla \"facebook: alfanumerisk\"."
+        },
+        "kk": {
+            "legacy_caption_pid": 38295,
+            "legacy_language_pid": 47,
+            "text": "Сіз Facebook шотта пайдаланған кезде Сол сияқты, сіз «facebook: әріп» ұнайды деп ескеріңіз.",
+            "auto_translated": "Сіз Facebook шотта пайдаланған кезде Сол сияқты, сіз «facebook: әріп» ұнайды деп ескеріңіз."
+        },
+        "fi": {
+            "legacy_caption_pid": 38296,
+            "legacy_language_pid": 48,
+            "text": "Vastaavasti, kun käytät Facebook-tilin, huomaa, että pidät \"facebook: aakkosnumeerinen\".",
+            "auto_translated": "Vastaavasti, kun käytät Facebook-tilin, huomaa, että pidät \"facebook: aakkosnumeerinen\"."
+        },
+        "da": {
+            "legacy_caption_pid": 38297,
+            "legacy_language_pid": 49,
+            "text": "På samme måde, når du bruger i Facebook-konto, skal du bemærke, at du vil kunne lide \"facebook: alfanumeriske\".",
+            "auto_translated": "På samme måde, når du bruger i Facebook-konto, skal du bemærke, at du vil kunne lide \"facebook: alfanumeriske\"."
+        },
+        "he": {
+            "legacy_caption_pid": 38298,
+            "legacy_language_pid": 50,
+            "text": "בדומה לכך, יש לציין כי נראה כמו הבא כאשר אתה משתמש בחשבון פייסבוק. \"facebook: אלפאנומרי\"",
+            "auto_translated": "בדומה לכך, יש לציין כי נראה כמו הבא כאשר אתה משתמש בחשבון פייסבוק. \"facebook: אלפאנומרי\""
+        },
+        "no": {
+            "legacy_caption_pid": 38299,
+            "legacy_language_pid": 51,
+            "text": "Tilsvarende når du bruker i Facebook-konto, må du være oppmerksom på at du vil like \"facebook: alfanumerisk\".",
+            "auto_translated": "Tilsvarende når du bruker i Facebook-konto, må du være oppmerksom på at du vil like \"facebook: alfanumerisk\"."
+        }
+    }
+}

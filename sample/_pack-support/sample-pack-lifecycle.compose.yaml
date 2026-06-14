@@ -1,0 +1,12 @@
+services:
+  web-admin:
+    restart: "no"
+
+  web-lab:
+    restart: "no"
+
+  db-config:
+    restart: "no"
+
+  db-lab:
+    restart: "no"

@@ -1,0 +1,321 @@
+{
+    "resource_key": "COMMON_LIB_ENROLL_ERROR_PLEASE_CHECK_NUMBER_INPUT",
+    "legacy_resource_pid": 1574,
+    "base_group_key": "grp-010-matsuesoft-lib",
+    "additional_group_keys": [],
+    "key_for_update": "3GCxgcteC6yOP4P8aVQHbmN2L8qRdBmWTO4Pvfn0KsQmXxIbF60nC0al0fALkTiMf2Z3LtNiXAmAsw78aUQa1pz0tf0dcC2EodOEqEVYVZZq27x6zqN37zHM9U2RlZXi",
+    "sort_group": "ENROLL",
+    "key_name": "COMMON_LIB_ENROLL_ERROR_PLEASE_CHECK_NUMBER_INPUT",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": false,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 7078,
+            "legacy_language_pid": 1,
+            "text": "数値入力を確認して下さい",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 7079,
+            "legacy_language_pid": 2,
+            "text": "Please check the numerical value input",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 7080,
+            "legacy_language_pid": 3,
+            "text": "检查的数值输入",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 7081,
+            "legacy_language_pid": 4,
+            "text": "수치 입력을 확인해주세요",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 10789,
+            "legacy_language_pid": 5,
+            "text": "Compruebe la entrada del valor numérico",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 10790,
+            "legacy_language_pid": 6,
+            "text": "Verifique a entrada do valor numérico",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 10791,
+            "legacy_language_pid": 7,
+            "text": "檢查的數值輸入",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 16475,
+            "legacy_language_pid": 8,
+            "text": "Vérifiez l'entrée de la valeur numérique",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 16476,
+            "legacy_language_pid": 9,
+            "text": "कृपया संख्यात्मक मूल्य इनपुट की जांच करें",
+            "auto_translated": ""
+        },
+        "ar": {
+            "legacy_caption_pid": 31270,
+            "legacy_language_pid": 10,
+            "text": "التحقق من المدخلات القيمة الرقمية",
+            "auto_translated": "التحقق من المدخلات القيمة الرقمية"
+        },
+        "fa": {
+            "legacy_caption_pid": 31271,
+            "legacy_language_pid": 11,
+            "text": "بررسی ورودی مقدار عددی",
+            "auto_translated": "بررسی ورودی مقدار عددی"
+        },
+        "de": {
+            "legacy_caption_pid": 31272,
+            "legacy_language_pid": 12,
+            "text": "Überprüfen Sie den numerischen Wert Eingang",
+            "auto_translated": "Überprüfen Sie den numerischen Wert Eingang"
+        },
+        "ru": {
+            "legacy_caption_pid": 31273,
+            "legacy_language_pid": 13,
+            "text": "Проверьте ввод числового значения",
+            "auto_translated": "Проверьте ввод числового значения"
+        },
+        "ms": {
+            "legacy_caption_pid": 31274,
+            "legacy_language_pid": 14,
+            "text": "Menyemak input nilai angka",
+            "auto_translated": "Menyemak input nilai angka"
+        },
+        "ta": {
+            "legacy_caption_pid": 31275,
+            "legacy_language_pid": 15,
+            "text": "எண் மதிப்பை உள்ளீட்டைச் சரிபார்க்கவும்",
+            "auto_translated": "எண் மதிப்பை உள்ளீட்டைச் சரிபார்க்கவும்"
+        },
+        "it": {
+            "legacy_caption_pid": 31276,
+            "legacy_language_pid": 16,
+            "text": "Controllare l'ingresso valore numerico",
+            "auto_translated": "Controllare l'ingresso valore numerico"
+        },
+        "bn": {
+            "legacy_caption_pid": 31277,
+            "legacy_language_pid": 17,
+            "text": "সাংখ্যিক মান ইনপুট চেক করুন",
+            "auto_translated": "সাংখ্যিক মান ইনপুট চেক করুন"
+        },
+        "tr": {
+            "legacy_caption_pid": 31278,
+            "legacy_language_pid": 18,
+            "text": "sayısal değer girişi kontrol",
+            "auto_translated": "sayısal değer girişi kontrol"
+        },
+        "vi": {
+            "legacy_caption_pid": 31279,
+            "legacy_language_pid": 19,
+            "text": "Kiểm tra đầu vào giá trị số",
+            "auto_translated": "Kiểm tra đầu vào giá trị số"
+        },
+        "pl": {
+            "legacy_caption_pid": 31280,
+            "legacy_language_pid": 20,
+            "text": "Sprawdzić wprowadzoną wartość liczbową",
+            "auto_translated": "Sprawdzić wprowadzoną wartość liczbową"
+        },
+        "jv": {
+            "legacy_caption_pid": 31281,
+            "legacy_language_pid": 21,
+            "text": "Mriksa input Nilai numerik",
+            "auto_translated": "Mriksa input Nilai numerik"
+        },
+        "pa": {
+            "legacy_caption_pid": 31282,
+            "legacy_language_pid": 22,
+            "text": "ਅੰਕੀ ਮੁੱਲ ਇੰਪੁੱਟ ਚੈੱਕ ਕਰੋ",
+            "auto_translated": "ਅੰਕੀ ਮੁੱਲ ਇੰਪੁੱਟ ਚੈੱਕ ਕਰੋ"
+        },
+        "th": {
+            "legacy_caption_pid": 31283,
+            "legacy_language_pid": 23,
+            "text": "ตรวจสอบการป้อนค่าตัวเลข",
+            "auto_translated": "ตรวจสอบการป้อนค่าตัวเลข"
+        },
+        "te": {
+            "legacy_caption_pid": 41884,
+            "legacy_language_pid": 24,
+            "text": "సంఖ్యా విలువ ఇన్పుట్ తనిఖీ",
+            "auto_translated": "సంఖ్యా విలువ ఇన్పుట్ తనిఖీ"
+        },
+        "mr": {
+            "legacy_caption_pid": 41885,
+            "legacy_language_pid": 25,
+            "text": "संख्यात्मक मूल्य इनपुट तपासा",
+            "auto_translated": "संख्यात्मक मूल्य इनपुट तपासा"
+        },
+        "ur": {
+            "legacy_caption_pid": 41886,
+            "legacy_language_pid": 26,
+            "text": "عددی قیمت کی ان پٹ کو چیک کریں",
+            "auto_translated": "عددی قیمت کی ان پٹ کو چیک کریں"
+        },
+        "gu": {
+            "legacy_caption_pid": 41887,
+            "legacy_language_pid": 27,
+            "text": "આંકડાકીય મૂલ્ય ઇનપુટ તપાસો",
+            "auto_translated": "આંકડાકીય મૂલ્ય ઇનપુટ તપાસો"
+        },
+        "uk": {
+            "legacy_caption_pid": 41888,
+            "legacy_language_pid": 28,
+            "text": "Перевірте введення числового значення",
+            "auto_translated": "Перевірте введення числового значення"
+        },
+        "ml": {
+            "legacy_caption_pid": 41889,
+            "legacy_language_pid": 29,
+            "text": "സംഖ്യാ മൂല്യം ഇൻപുട്ട് പരിശോധിക്കുക",
+            "auto_translated": "സംഖ്യാ മൂല്യം ഇൻപുട്ട് പരിശോധിക്കുക"
+        },
+        "kn": {
+            "legacy_caption_pid": 41890,
+            "legacy_language_pid": 30,
+            "text": "ಸಂಖ್ಯಾ ಮೌಲ್ಯವನ್ನು ಇನ್ಪುಟ್ ಪರಿಶೀಲಿಸಿ",
+            "auto_translated": "ಸಂಖ್ಯಾ ಮೌಲ್ಯವನ್ನು ಇನ್ಪುಟ್ ಪರಿಶೀಲಿಸಿ"
+        },
+        "su": {
+            "legacy_caption_pid": 41891,
+            "legacy_language_pid": 31,
+            "text": "Pariksa asupan nilai numerik",
+            "auto_translated": "Pariksa asupan nilai numerik"
+        },
+        "ku": {
+            "legacy_caption_pid": 41892,
+            "legacy_language_pid": 32,
+            "text": "Kontrol bike input nirxa hejmar",
+            "auto_translated": "Kontrol bike input nirxa hejmar"
+        },
+        "ps": {
+            "legacy_caption_pid": 41893,
+            "legacy_language_pid": 33,
+            "text": "د شمېريزو ارزښت آخذه وګورئ",
+            "auto_translated": "د شمېريزو ارزښت آخذه وګورئ"
+        },
+        "ro": {
+            "legacy_caption_pid": 41894,
+            "legacy_language_pid": 34,
+            "text": "Verificați intrarea valoare numerică",
+            "auto_translated": "Verificați intrarea valoare numerică"
+        },
+        "id": {
+            "legacy_caption_pid": 41895,
+            "legacy_language_pid": 35,
+            "text": "Periksa masukan nilai numerik",
+            "auto_translated": "Periksa masukan nilai numerik"
+        },
+        "sd": {
+            "legacy_caption_pid": 41896,
+            "legacy_language_pid": 36,
+            "text": "جي انگن قدر پٽ چيڪ ڪريو",
+            "auto_translated": "جي انگن قدر پٽ چيڪ ڪريو"
+        },
+        "af": {
+            "legacy_caption_pid": 41897,
+            "legacy_language_pid": 37,
+            "text": "Kyk op die numeriese waarde insette",
+            "auto_translated": "Kyk op die numeriese waarde insette"
+        },
+        "sw": {
+            "legacy_caption_pid": 41898,
+            "legacy_language_pid": 38,
+            "text": "Angalia Thamani ya pembejeo",
+            "auto_translated": "Angalia Thamani ya pembejeo"
+        },
+        "lo": {
+            "legacy_caption_pid": 41899,
+            "legacy_language_pid": 39,
+            "text": "ກວດສອບການປ້ອນຂໍ້ມູນຄ່າຈໍານວນຫລາຍ",
+            "auto_translated": "ກວດສອບການປ້ອນຂໍ້ມູນຄ່າຈໍານວນຫລາຍ"
+        },
+        "nl": {
+            "legacy_caption_pid": 41900,
+            "legacy_language_pid": 40,
+            "text": "Controleer de numerieke waarde invoeren",
+            "auto_translated": "Controleer de numerieke waarde invoeren"
+        },
+        "tl": {
+            "legacy_caption_pid": 41901,
+            "legacy_language_pid": 41,
+            "text": "Lagyan ng check ang numerong halaga ng pag-input",
+            "auto_translated": "Lagyan ng check ang numerong halaga ng pag-input"
+        },
+        "ne": {
+            "legacy_caption_pid": 41902,
+            "legacy_language_pid": 42,
+            "text": "संख्यात्मक मूल्य इनपुट जाँच",
+            "auto_translated": "संख्यात्मक मूल्य इनपुट जाँच"
+        },
+        "hu": {
+            "legacy_caption_pid": 41903,
+            "legacy_language_pid": 43,
+            "text": "Ellenőrizze a számérték bemenet",
+            "auto_translated": "Ellenőrizze a számérték bemenet"
+        },
+        "cs": {
+            "legacy_caption_pid": 41904,
+            "legacy_language_pid": 44,
+            "text": "Zkontrolujte vstup číselné hodnoty",
+            "auto_translated": "Zkontrolujte vstup číselné hodnoty"
+        },
+        "el": {
+            "legacy_caption_pid": 41905,
+            "legacy_language_pid": 45,
+            "text": "Ελέγξτε την είσοδο αριθμητική τιμή",
+            "auto_translated": "Ελέγξτε την είσοδο αριθμητική τιμή"
+        },
+        "sv": {
+            "legacy_caption_pid": 41906,
+            "legacy_language_pid": 46,
+            "text": "Kontrollera numeriskt värde input",
+            "auto_translated": "Kontrollera numeriskt värde input"
+        },
+        "kk": {
+            "legacy_caption_pid": 41907,
+            "legacy_language_pid": 47,
+            "text": "сандық мән кірісін тексеріңіз",
+            "auto_translated": "сандық мән кірісін тексеріңіз"
+        },
+        "fi": {
+            "legacy_caption_pid": 41908,
+            "legacy_language_pid": 48,
+            "text": "Tarkista numeerinen arvo tulo",
+            "auto_translated": "Tarkista numeerinen arvo tulo"
+        },
+        "da": {
+            "legacy_caption_pid": 41909,
+            "legacy_language_pid": 49,
+            "text": "Tjek den numeriske værdi input",
+            "auto_translated": "Tjek den numeriske værdi input"
+        },
+        "he": {
+            "legacy_caption_pid": 41910,
+            "legacy_language_pid": 50,
+            "text": "בדוק את קלט ערך מספרי",
+            "auto_translated": "בדוק את קלט ערך מספרי"
+        },
+        "no": {
+            "legacy_caption_pid": 41911,
+            "legacy_language_pid": 51,
+            "text": "Sjekk den numeriske verdien innspill",
+            "auto_translated": "Sjekk den numeriske verdien innspill"
+        }
+    }
+}

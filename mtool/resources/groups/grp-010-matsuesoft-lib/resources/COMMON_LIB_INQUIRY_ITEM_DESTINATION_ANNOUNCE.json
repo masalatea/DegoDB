@@ -1,0 +1,321 @@
+{
+    "resource_key": "COMMON_LIB_INQUIRY_ITEM_DESTINATION_ANNOUNCE",
+    "legacy_resource_pid": 1464,
+    "base_group_key": "grp-010-matsuesoft-lib",
+    "additional_group_keys": [],
+    "key_for_update": "0VdmIhXR4zzs6uG8S7hwWI73UdBOZMrZWFCSlr24l8CtDQk2iNWLmLxnmZgg5L2Y6EZFXzeBbnseIyf5ToZ70C1Z2BKxuMeWPdUu9mIpqDgvYJEXFcLVkpSyy1r7tzWO",
+    "sort_group": "INQUIRY",
+    "key_name": "COMMON_LIB_INQUIRY_ITEM_DESTINATION_ANNOUNCE",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": false,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 6130,
+            "legacy_language_pid": 1,
+            "text": "事務局のみに送信するか先生にも合わせて送信するか選択できます。",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 6131,
+            "legacy_language_pid": 2,
+            "text": "You can choose whether to send it only to the Office or to the teacher.",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 6132,
+            "legacy_language_pid": 3,
+            "text": "您还可以选择是否只给事务所送信或者连同老师一起送信。",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 6133,
+            "legacy_language_pid": 4,
+            "text": "사무국에만 보내거나 강사에게도 함께 보낼 지 선택할 수 있습니다.",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 10976,
+            "legacy_language_pid": 5,
+            "text": " Puede elegir entre enviarlo solo a la Oficina o al profesor.",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 10977,
+            "legacy_language_pid": 6,
+            "text": "Você pode escolher se deve enviá-lo apenas para o escritório ou para o professor. ",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 10978,
+            "legacy_language_pid": 7,
+            "text": "您還可以選擇是否只給事務所送信或者連同老師一起送信。",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 17183,
+            "legacy_language_pid": 8,
+            "text": "Vous pouvez choisir de l'envoyer uniquement au bureau ou à l'enseignant.",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 17184,
+            "legacy_language_pid": 9,
+            "text": "आप चुन सकते हैं कि इसे केवल कार्यालय या शिक्षक को भेजना है या नहीं।",
+            "auto_translated": ""
+        },
+        "ar": {
+            "legacy_caption_pid": 32124,
+            "legacy_language_pid": 10,
+            "text": "يمكنك أيضا تحديد ما اذا كانت سترسل وفقا المعلم يجب أن ترسل فقط إلى الأمانة.",
+            "auto_translated": "يمكنك أيضا تحديد ما اذا كانت سترسل وفقا المعلم يجب أن ترسل فقط إلى الأمانة."
+        },
+        "fa": {
+            "legacy_caption_pid": 32125,
+            "legacy_language_pid": 11,
+            "text": "شما همچنین می توانید که آیا برای ارسال مطابق با معلم باید تنها به دبیرخانه ارسال شود را انتخاب کنید.",
+            "auto_translated": "شما همچنین می توانید که آیا برای ارسال مطابق با معلم باید تنها به دبیرخانه ارسال شود را انتخاب کنید."
+        },
+        "de": {
+            "legacy_caption_pid": 32126,
+            "legacy_language_pid": 12,
+            "text": "Sie können auch auswählen, ob in Übereinstimmung mit dem Lehrer senden sollte nur an das Sekretariat geschickt werden.",
+            "auto_translated": "Sie können auch auswählen, ob in Übereinstimmung mit dem Lehrer senden sollte nur an das Sekretariat geschickt werden."
+        },
+        "ru": {
+            "legacy_caption_pid": 32127,
+            "legacy_language_pid": 13,
+            "text": "Вы также можете выбрать отправку в соответствии с учителем должны быть направлены только в Секретариат.",
+            "auto_translated": "Вы также можете выбрать отправку в соответствии с учителем должны быть направлены только в Секретариат."
+        },
+        "ms": {
+            "legacy_caption_pid": 32128,
+            "legacy_language_pid": 14,
+            "text": "Anda juga boleh memilih sama ada untuk menghantar mengikut guru perlu dihantar hanya kepada Sekretariat.",
+            "auto_translated": "Anda juga boleh memilih sama ada untuk menghantar mengikut guru perlu dihantar hanya kepada Sekretariat."
+        },
+        "ta": {
+            "legacy_caption_pid": 32129,
+            "legacy_language_pid": 15,
+            "text": "நீங்கள் ஆசிரியர் ஏற்ப அனுப்ப வேண்டுமா என்பதை செயலகத்துக்கு மட்டுமே அனுப்ப வேண்டும் தேர்ந்தெடுக்க முடியும்.",
+            "auto_translated": "நீங்கள் ஆசிரியர் ஏற்ப அனுப்ப வேண்டுமா என்பதை செயலகத்துக்கு மட்டுமே அனுப்ப வேண்டும் தேர்ந்தெடுக்க முடியும்."
+        },
+        "it": {
+            "legacy_caption_pid": 32130,
+            "legacy_language_pid": 16,
+            "text": "È inoltre possibile selezionare se inviare in accordo con il docente deve essere inviata unicamente al Segretariato.",
+            "auto_translated": "È inoltre possibile selezionare se inviare in accordo con il docente deve essere inviata unicamente al Segretariato."
+        },
+        "bn": {
+            "legacy_caption_pid": 32131,
+            "legacy_language_pid": 17,
+            "text": "এছাড়াও আপনি শিক্ষকের অনুযায়ী পাঠানো হবে কিনা তা সচিবালয় একমাত্র পাঠানো উচিত নির্বাচন করতে পারেন।",
+            "auto_translated": "এছাড়াও আপনি শিক্ষকের অনুযায়ী পাঠানো হবে কিনা তা সচিবালয় একমাত্র পাঠানো উচিত নির্বাচন করতে পারেন।"
+        },
+        "tr": {
+            "legacy_caption_pid": 32132,
+            "legacy_language_pid": 18,
+            "text": "Ayrıca Sekreterliğine sadece gönderilmesi gerekmektedir öğretmen uyarınca göndermek için seçebilirsiniz.",
+            "auto_translated": "Ayrıca Sekreterliğine sadece gönderilmesi gerekmektedir öğretmen uyarınca göndermek için seçebilirsiniz."
+        },
+        "vi": {
+            "legacy_caption_pid": 32133,
+            "legacy_language_pid": 19,
+            "text": "Bạn cũng có thể chọn xem có nên gửi phù hợp với giáo viên nên chỉ được gửi đến Ban Thư ký.",
+            "auto_translated": "Bạn cũng có thể chọn xem có nên gửi phù hợp với giáo viên nên chỉ được gửi đến Ban Thư ký."
+        },
+        "pl": {
+            "legacy_caption_pid": 32134,
+            "legacy_language_pid": 20,
+            "text": "Można również wybrać, czy wysłać zgodnie z nauczycielem powinny być wysyłane tylko do Sekretariatu.",
+            "auto_translated": "Można również wybrać, czy wysłać zgodnie z nauczycielem powinny być wysyłane tylko do Sekretariatu."
+        },
+        "jv": {
+            "legacy_caption_pid": 32135,
+            "legacy_language_pid": 21,
+            "text": "Sampeyan uga bisa milih apa kanggo ngirim ing sesuai karo guru kudu dikirim mung kanggo Sekretariat.",
+            "auto_translated": "Sampeyan uga bisa milih apa kanggo ngirim ing sesuai karo guru kudu dikirim mung kanggo Sekretariat."
+        },
+        "pa": {
+            "legacy_caption_pid": 32136,
+            "legacy_language_pid": 22,
+            "text": "ਤੁਹਾਨੂੰ ਇਹ ਵੀ ਅਧਿਆਪਕ ਦੇ ਅਨੁਸਾਰ ਭੇਜਣ ਲਈ ਕੀ ਸਕੱਤਰੇਤ ਨੂੰ ਸਿਰਫ ਭੇਜਿਆ ਜਾਣਾ ਚਾਹੀਦਾ ਹੈ ਦੀ ਚੋਣ ਕਰ ਸਕਦੇ ਹੋ.",
+            "auto_translated": "ਤੁਹਾਨੂੰ ਇਹ ਵੀ ਅਧਿਆਪਕ ਦੇ ਅਨੁਸਾਰ ਭੇਜਣ ਲਈ ਕੀ ਸਕੱਤਰੇਤ ਨੂੰ ਸਿਰਫ ਭੇਜਿਆ ਜਾਣਾ ਚਾਹੀਦਾ ਹੈ ਦੀ ਚੋਣ ਕਰ ਸਕਦੇ ਹੋ."
+        },
+        "th": {
+            "legacy_caption_pid": 32137,
+            "legacy_language_pid": 23,
+            "text": "นอกจากนี้คุณยังสามารถเลือกว่าจะส่งให้สอดคล้องกับครูควรจะส่งไปยังสำนักเลขาธิการ",
+            "auto_translated": "นอกจากนี้คุณยังสามารถเลือกว่าจะส่งให้สอดคล้องกับครูควรจะส่งไปยังสำนักเลขาธิการ"
+        },
+        "te": {
+            "legacy_caption_pid": 41380,
+            "legacy_language_pid": 24,
+            "text": "మీరు కూడా సెక్రటేరియట్ మాత్రమే పంపాలి గురువు అనుగుణంగా పంపడానికి లేదో ఎంచుకోవచ్చు.",
+            "auto_translated": "మీరు కూడా సెక్రటేరియట్ మాత్రమే పంపాలి గురువు అనుగుణంగా పంపడానికి లేదో ఎంచుకోవచ్చు."
+        },
+        "mr": {
+            "legacy_caption_pid": 41381,
+            "legacy_language_pid": 25,
+            "text": "आपण शिक्षक नुसार पाठवायचे किंवा नाही ते सचिवालय पाठविले पाहिजे निवडू शकता.",
+            "auto_translated": "आपण शिक्षक नुसार पाठवायचे किंवा नाही ते सचिवालय पाठविले पाहिजे निवडू शकता."
+        },
+        "ur": {
+            "legacy_caption_pid": 41382,
+            "legacy_language_pid": 26,
+            "text": "آپ بھی سیکرٹریٹ کو صرف بھیجا جانا چاہیے استاد کے مطابق بھیجنے کے لئے کہ آیا کو منتخب کر سکتے ہیں.",
+            "auto_translated": "آپ بھی سیکرٹریٹ کو صرف بھیجا جانا چاہیے استاد کے مطابق بھیجنے کے لئے کہ آیا کو منتخب کر سکتے ہیں."
+        },
+        "gu": {
+            "legacy_caption_pid": 41383,
+            "legacy_language_pid": 27,
+            "text": "તમે પણ શિક્ષક અનુસાર મોકલવી કે નહિ તે સચિવાલય માત્ર મોકલવા જોઈએ પસંદ કરી શકો છો.",
+            "auto_translated": "તમે પણ શિક્ષક અનુસાર મોકલવી કે નહિ તે સચિવાલય માત્ર મોકલવા જોઈએ પસંદ કરી શકો છો."
+        },
+        "uk": {
+            "legacy_caption_pid": 41384,
+            "legacy_language_pid": 28,
+            "text": "Ви також можете вибрати відправку відповідно до учителем повинні бути спрямовані тільки в Секретаріат.",
+            "auto_translated": "Ви також можете вибрати відправку відповідно до учителем повинні бути спрямовані тільки в Секретаріат."
+        },
+        "ml": {
+            "legacy_caption_pid": 41385,
+            "legacy_language_pid": 29,
+            "text": "നിങ്ങൾക്ക് മാത്രമേ സെക്രട്ടേറിയറ്റ് അയയ്ക്കും വേണം അധ്യാപകൻ അനുസരിച്ച് അയയ്ക്കാൻ എന്ന് തിരഞ്ഞെടുക്കാൻ കഴിയും.",
+            "auto_translated": "നിങ്ങൾക്ക് മാത്രമേ സെക്രട്ടേറിയറ്റ് അയയ്ക്കും വേണം അധ്യാപകൻ അനുസരിച്ച് അയയ്ക്കാൻ എന്ന് തിരഞ്ഞെടുക്കാൻ കഴിയും."
+        },
+        "kn": {
+            "legacy_caption_pid": 41386,
+            "legacy_language_pid": 30,
+            "text": "ನೀವು ಸಚಿವಾಲಯದ ಮಾತ್ರ ಕಳುಹಿಸಬೇಕು ಶಿಕ್ಷಕ ಅನುಗುಣವಾಗಿ ಕಳುಹಿಸಲು ಆಯ್ಕೆ ಮಾಡಬಹುದು.",
+            "auto_translated": "ನೀವು ಸಚಿವಾಲಯದ ಮಾತ್ರ ಕಳುಹಿಸಬೇಕು ಶಿಕ್ಷಕ ಅನುಗುಣವಾಗಿ ಕಳುಹಿಸಲು ಆಯ್ಕೆ ಮಾಡಬಹುದು."
+        },
+        "su": {
+            "legacy_caption_pid": 41387,
+            "legacy_language_pid": 31,
+            "text": "Anjeun oge bisa milih naha pikeun ngirim luyu jeung guru kudu dikirim ngan ka Sekretariat.",
+            "auto_translated": "Anjeun oge bisa milih naha pikeun ngirim luyu jeung guru kudu dikirim ngan ka Sekretariat."
+        },
+        "ku": {
+            "legacy_caption_pid": 41388,
+            "legacy_language_pid": 32,
+            "text": "Tu dikarî gelo bişîne li gor bi mamoste re, divê bi tenê ji bo Sekreteriya şandin hilbijêre.",
+            "auto_translated": "Tu dikarî gelo bişîne li gor bi mamoste re, divê bi tenê ji bo Sekreteriya şandin hilbijêre."
+        },
+        "ps": {
+            "legacy_caption_pid": 41389,
+            "legacy_language_pid": 33,
+            "text": "تاسو هم کولای شی چې ایا د ټاکلو په سره د ښوونکي سم واستوي بايد د دارالانشاء یوازې ته واستول شي.",
+            "auto_translated": "تاسو هم کولای شی چې ایا د ټاکلو په سره د ښوونکي سم واستوي بايد د دارالانشاء یوازې ته واستول شي."
+        },
+        "ro": {
+            "legacy_caption_pid": 41390,
+            "legacy_language_pid": 34,
+            "text": "Puteți selecta, de asemenea, dacă să trimită în conformitate cu profesorul ar trebui să fie trimise doar Secretariatului.",
+            "auto_translated": "Puteți selecta, de asemenea, dacă să trimită în conformitate cu profesorul ar trebui să fie trimise doar Secretariatului."
+        },
+        "id": {
+            "legacy_caption_pid": 41391,
+            "legacy_language_pid": 35,
+            "text": "Anda juga dapat memilih apakah akan mengirim sesuai dengan guru harus dikirim hanya ke Sekretariat.",
+            "auto_translated": "Anda juga dapat memilih apakah akan mengirim sesuai dengan guru harus dikirim hanya ke Sekretariat."
+        },
+        "sd": {
+            "legacy_caption_pid": 41392,
+            "legacy_language_pid": 36,
+            "text": "تون به چونڊيو سگهي ٿو ته استاد جي مناسبت سان هن ۾ موڪليندا ته ڇا ڪجي رڳو Secretariat ڏانهن موڪليو وڃي.",
+            "auto_translated": "تون به چونڊيو سگهي ٿو ته استاد جي مناسبت سان هن ۾ موڪليندا ته ڇا ڪجي رڳو Secretariat ڏانهن موڪليو وڃي."
+        },
+        "af": {
+            "legacy_caption_pid": 41393,
+            "legacy_language_pid": 37,
+            "text": "Jy kan ook kies of om te stuur in ooreenstemming met die onderwyser moet net gestuur na die sekretariaat.",
+            "auto_translated": "Jy kan ook kies of om te stuur in ooreenstemming met die onderwyser moet net gestuur na die sekretariaat."
+        },
+        "sw": {
+            "legacy_caption_pid": 41394,
+            "legacy_language_pid": 38,
+            "text": "Unaweza pia kuchagua kama kutuma kwa mujibu wa mwalimu inapaswa kutumwa tu kwa Sekretarieti.",
+            "auto_translated": "Unaweza pia kuchagua kama kutuma kwa mujibu wa mwalimu inapaswa kutumwa tu kwa Sekretarieti."
+        },
+        "lo": {
+            "legacy_caption_pid": 41395,
+            "legacy_language_pid": 39,
+            "text": "ນອກນັ້ນທ່ານຍັງສາມາດເລືອກວ່າຈະສົ່ງຢູ່ໃນສອດຄ່ອງກັບຄູອາຈານທີ່ຄວນໄດ້ຮັບການສົ່ງພຽງແຕ່ກອງເລຂາ.",
+            "auto_translated": "ນອກນັ້ນທ່ານຍັງສາມາດເລືອກວ່າຈະສົ່ງຢູ່ໃນສອດຄ່ອງກັບຄູອາຈານທີ່ຄວນໄດ້ຮັບການສົ່ງພຽງແຕ່ກອງເລຂາ."
+        },
+        "nl": {
+            "legacy_caption_pid": 41396,
+            "legacy_language_pid": 40,
+            "text": "U kunt ook kiezen of te sturen in overeenstemming met de leraar mag alleen worden gestuurd naar het secretariaat.",
+            "auto_translated": "U kunt ook kiezen of te sturen in overeenstemming met de leraar mag alleen worden gestuurd naar het secretariaat."
+        },
+        "tl": {
+            "legacy_caption_pid": 41397,
+            "legacy_language_pid": 41,
+            "text": "Maaari mo ring piliin kung upang magpadala ng alinsunod sa mga guro ay dapat na maipadala lamang sa kalihiman.",
+            "auto_translated": "Maaari mo ring piliin kung upang magpadala ng alinsunod sa mga guro ay dapat na maipadala lamang sa kalihiman."
+        },
+        "ne": {
+            "legacy_caption_pid": 41398,
+            "legacy_language_pid": 42,
+            "text": "तपाईं पनि सचिवालय मात्र पठाइने अनुसार शिक्षक संग पठाउने चयन गर्न सक्नुहुन्छ।",
+            "auto_translated": "तपाईं पनि सचिवालय मात्र पठाइने अनुसार शिक्षक संग पठाउने चयन गर्न सक्नुहुन्छ।"
+        },
+        "hu": {
+            "legacy_caption_pid": 41399,
+            "legacy_language_pid": 43,
+            "text": "Azt is megadhatjuk, hogy küldjön-e megfelelően a tanár kell küldeni csak a titkárság.",
+            "auto_translated": "Azt is megadhatjuk, hogy küldjön-e megfelelően a tanár kell küldeni csak a titkárság."
+        },
+        "cs": {
+            "legacy_caption_pid": 41400,
+            "legacy_language_pid": 44,
+            "text": "Můžete si také vybrat, zda chcete odeslat v souladu s učitelem by měly být zasílány pouze sekretariátu.",
+            "auto_translated": "Můžete si také vybrat, zda chcete odeslat v souladu s učitelem by měly být zasílány pouze sekretariátu."
+        },
+        "el": {
+            "legacy_caption_pid": 41401,
+            "legacy_language_pid": 45,
+            "text": "Μπορείτε επίσης να επιλέξετε αν θα στείλει, σύμφωνα με τον καθηγητή θα πρέπει να αποστέλλονται μόνο στη Γραμματεία.",
+            "auto_translated": "Μπορείτε επίσης να επιλέξετε αν θα στείλει, σύμφωνα με τον καθηγητή θα πρέπει να αποστέλλονται μόνο στη Γραμματεία."
+        },
+        "sv": {
+            "legacy_caption_pid": 41402,
+            "legacy_language_pid": 46,
+            "text": "Du kan också välja om du vill skicka i enlighet med läraren ska skickas till sekretariatet.",
+            "auto_translated": "Du kan också välja om du vill skicka i enlighet med läraren ska skickas till sekretariatet."
+        },
+        "kk": {
+            "legacy_caption_pid": 41403,
+            "legacy_language_pid": 47,
+            "text": "Сіз сондай-ақ тек Хатшылығының жіберілуі тиіс мұғалімі сәйкес жіберуге ма таңдауға болады.",
+            "auto_translated": "Сіз сондай-ақ тек Хатшылығының жіберілуі тиіс мұғалімі сәйкес жіберуге ма таңдауға болады."
+        },
+        "fi": {
+            "legacy_caption_pid": 41404,
+            "legacy_language_pid": 48,
+            "text": "Voit myös valita, lähettää mukaisesti opettajan tulisi lähettää ainoastaan ​​sihteeristölle.",
+            "auto_translated": "Voit myös valita, lähettää mukaisesti opettajan tulisi lähettää ainoastaan ​​sihteeristölle."
+        },
+        "da": {
+            "legacy_caption_pid": 41405,
+            "legacy_language_pid": 49,
+            "text": "Du kan også vælge, om at sende i overensstemmelse med læreren skal sendes kun til sekretariatet.",
+            "auto_translated": "Du kan også vælge, om at sende i overensstemmelse med læreren skal sendes kun til sekretariatet."
+        },
+        "he": {
+            "legacy_caption_pid": 41406,
+            "legacy_language_pid": 50,
+            "text": "אתה יכול גם לבחור אם לשלוח בהתאם המורה צריך להישלח רק למזכירות.",
+            "auto_translated": "אתה יכול גם לבחור אם לשלוח בהתאם המורה צריך להישלח רק למזכירות."
+        },
+        "no": {
+            "legacy_caption_pid": 41407,
+            "legacy_language_pid": 51,
+            "text": "Du kan også velge om du vil sende i samsvar med læreren skal kun sendes til sekretariatet.",
+            "auto_translated": "Du kan også velge om du vil sende i samsvar med læreren skal kun sendes til sekretariatet."
+        }
+    }
+}

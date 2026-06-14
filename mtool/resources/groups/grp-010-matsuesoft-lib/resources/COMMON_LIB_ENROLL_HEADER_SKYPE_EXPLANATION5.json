@@ -1,0 +1,321 @@
+{
+    "resource_key": "COMMON_LIB_ENROLL_HEADER_SKYPE_EXPLANATION5",
+    "legacy_resource_pid": 1427,
+    "base_group_key": "grp-010-matsuesoft-lib",
+    "additional_group_keys": [],
+    "key_for_update": "ppDKh2wjhgrNQJp76td2cOJ9lhQL5BezUiUnGaqpkUbppGweS1xkzlprYpssktugEitMYpzAark2YUmYzM5QrpcwAjJPbt87kxOscoQpFEPvj9A8acsosNSMR7Wtt8Pw",
+    "sort_group": "ENROLL",
+    "key_name": "COMMON_LIB_ENROLL_HEADER_SKYPE_EXPLANATION5",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": false,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 5982,
+            "legacy_language_pid": 1,
+            "text": "Skype名は通常英数字の文字列ですが、Microsoftアカウントで使用している際は 「live:英数字」 のようになります。",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 5983,
+            "legacy_language_pid": 2,
+            "text": "Skype Name(ID) is basically only number and alphabet but you may have \"live:alphanumerical\" if you are using Skype by Microsoft account.",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 5984,
+            "legacy_language_pid": 3,
+            "text": "Skype用户名通常是字母数字字符串，你使用Microsoft帐户时比如像\"live:字母数字字符\"一样的字母数列。",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 5985,
+            "legacy_language_pid": 4,
+            "text": "Skype 아이디는 일반적으로 영숫자로 구성되어있으며, Microsoft 계정으로 사용하는 경우는 다음과 같습니다. \"live:영숫자\"",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 10895,
+            "legacy_language_pid": 5,
+            "text": "Skype Nombre (ID) es básicamente sólo el número y el alfabeto, pero puede tener \"en vivo: alfanuméricos\" si está utilizando Skype por cuenta de Microsoft.",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 10896,
+            "legacy_language_pid": 6,
+            "text": "O nome do Skype (ID) é basicamente apenas um número e um alfabeto, mas você pode ter \"live: alphanumerical\" se você estiver usando o Skype pela conta Microsoft.",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 10897,
+            "legacy_language_pid": 7,
+            "text": "Skype用戶名通常是字母數字字符串，你使用Microsoft帳戶時比如像\"live:字母數字字符\"一樣的字母數列。",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 17033,
+            "legacy_language_pid": 8,
+            "text": "Le nom de Skype (ID) est essentiellement uniquement le numéro et l'alphabet, mais vous pouvez avoir \"live: alphanumerical\" si vous utilisez Skype par le compte Microsoft",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 17034,
+            "legacy_language_pid": 9,
+            "text": "स्काइप का नाम (आईडी) मूल रूप से केवल संख्या और वर्णमाला है लेकिन यदि आप माइक्रोसॉफ्ट खाते द्वारा स्काइप का उपयोग कर रहे हैं तो आपके पास \"live:alphanumerical\" हो सकता है।",
+            "auto_translated": ""
+        },
+        "ar": {
+            "legacy_caption_pid": 31746,
+            "legacy_language_pid": 10,
+            "text": "اسم سكايب، ولكن عادة ما يكون سلسلة أبجدية رقمية، عندما كنت تستخدم حساب Microsoft: يشبه \"live: أبجدية\".",
+            "auto_translated": "اسم سكايب، ولكن عادة ما يكون سلسلة أبجدية رقمية، عندما كنت تستخدم حساب Microsoft: يشبه \"live: أبجدية\"."
+        },
+        "fa": {
+            "legacy_caption_pid": 31747,
+            "legacy_language_pid": 11,
+            "text": "نام اسکایپ، اما معمولا رشته عدد و الفبایی، هنگامی که شما با استفاده از یک حساب مایکروسافت: به نظر می رسد مانند \"live: الفبایی\".",
+            "auto_translated": "نام اسکایپ، اما معمولا رشته عدد و الفبایی، هنگامی که شما با استفاده از یک حساب مایکروسافت: به نظر می رسد مانند \"live: الفبایی\"."
+        },
+        "de": {
+            "legacy_caption_pid": 31748,
+            "legacy_language_pid": 12,
+            "text": "Skype-Namen, ist aber in der Regel alphanumerische Zeichenfolge, wenn Sie ein Microsoft-Konto verwenden: sieht aus wie „live: alphanumerische“.",
+            "auto_translated": "Skype-Namen, ist aber in der Regel alphanumerische Zeichenfolge, wenn Sie ein Microsoft-Konto verwenden: sieht aus wie „live: alphanumerische“."
+        },
+        "ru": {
+            "legacy_caption_pid": 31749,
+            "legacy_language_pid": 13,
+            "text": "Название Skype, но, как правило, алфавитно-цифровая строка, при использовании учетной записи Microsoft: выглядит как «live: алфавитно-цифровой».",
+            "auto_translated": "Название Skype, но, как правило, алфавитно-цифровая строка, при использовании учетной записи Microsoft: выглядит как «live: алфавитно-цифровой»."
+        },
+        "ms": {
+            "legacy_caption_pid": 31750,
+            "legacy_language_pid": 14,
+            "text": "nama Skype, tetapi biasanya rentetan abjad angka, apabila anda menggunakan akaun Microsoft: kelihatan seperti \"live: abjad angka\".",
+            "auto_translated": "nama Skype, tetapi biasanya rentetan abjad angka, apabila anda menggunakan akaun Microsoft: kelihatan seperti \"live: abjad angka\"."
+        },
+        "ta": {
+            "legacy_caption_pid": 31751,
+            "legacy_language_pid": 15,
+            "text": "ஸ்கைப் பெயர், ஆனால் பொதுவாக எண்ணெழுத்து சரம், நீங்கள் ஒரு மைக்ரோசாப்ட் கணக்கைப் பயன்படுத்துகிறீர்கள் என்பதை போது: போன்ற \"live: எண்ணெழுத்து\" தெரிகிறது.",
+            "auto_translated": "ஸ்கைப் பெயர், ஆனால் பொதுவாக எண்ணெழுத்து சரம், நீங்கள் ஒரு மைக்ரோசாப்ட் கணக்கைப் பயன்படுத்துகிறீர்கள் என்பதை போது: போன்ற \"live: எண்ணெழுத்து\" தெரிகிறது."
+        },
+        "it": {
+            "legacy_caption_pid": 31752,
+            "legacy_language_pid": 16,
+            "text": "Nome Skype, ma di solito è stringa alfanumerica, quando si utilizza un account di Microsoft: si presenta come \"live: alfanumerico\".",
+            "auto_translated": "Nome Skype, ma di solito è stringa alfanumerica, quando si utilizza un account di Microsoft: si presenta come \"live: alfanumerico\"."
+        },
+        "bn": {
+            "legacy_caption_pid": 31753,
+            "legacy_language_pid": 17,
+            "text": "স্কাইপ নাম, কিন্তু সাধারণত আলফানিউমেরিক স্ট্রিং, আপনি একটি Microsoft অ্যাকাউন্ট ব্যবহার করছেন যখন হল: মত \"live: আলফানিউমেরিক\" দেখায়।",
+            "auto_translated": "স্কাইপ নাম, কিন্তু সাধারণত আলফানিউমেরিক স্ট্রিং, আপনি একটি Microsoft অ্যাকাউন্ট ব্যবহার করছেন যখন হল: মত \"live: আলফানিউমেরিক\" দেখায়।"
+        },
+        "tr": {
+            "legacy_caption_pid": 31754,
+            "legacy_language_pid": 18,
+            "text": "Skype adı, ancak alfasayısal dize, bir Microsoft hesabı kullanıyor genellikle şudur: \"live: alfanümerik\" gibi görünüyor.",
+            "auto_translated": "Skype adı, ancak alfasayısal dize, bir Microsoft hesabı kullanıyor genellikle şudur: \"live: alfanümerik\" gibi görünüyor."
+        },
+        "vi": {
+            "legacy_caption_pid": 31755,
+            "legacy_language_pid": 19,
+            "text": "Tên Skype, nhưng thường là chuỗi chữ và số, khi bạn đang sử dụng một tài khoản Microsoft: trông giống như \"live: chữ và số\".",
+            "auto_translated": "Tên Skype, nhưng thường là chuỗi chữ và số, khi bạn đang sử dụng một tài khoản Microsoft: trông giống như \"live: chữ và số\"."
+        },
+        "pl": {
+            "legacy_caption_pid": 31756,
+            "legacy_language_pid": 20,
+            "text": "Nazwa Skype, ale zazwyczaj jest ciągiem alfanumerycznym, gdy używasz konta Microsoft: wygląda „live: alfanumeryczne”.",
+            "auto_translated": "Nazwa Skype, ale zazwyczaj jest ciągiem alfanumerycznym, gdy używasz konta Microsoft: wygląda „live: alfanumeryczne”."
+        },
+        "jv": {
+            "legacy_caption_pid": 31757,
+            "legacy_language_pid": 21,
+            "text": "jeneng Skype, nanging biasane senar alphanumeric, nalika sampeyan nggunakake akun Microsoft: katon kaya \"live: alphanumeric\".",
+            "auto_translated": "jeneng Skype, nanging biasane senar alphanumeric, nalika sampeyan nggunakake akun Microsoft: katon kaya \"live: alphanumeric\"."
+        },
+        "pa": {
+            "legacy_caption_pid": 31758,
+            "legacy_language_pid": 22,
+            "text": "ਸਕਾਈਪ ਨਾਮ ਹੈ, ਪਰ ਆਮ ਤੌਰ 'ਤੇ, ਅੱਖਰ ਸਤਰ, ਤੁਹਾਨੂੰ ਇੱਕ Microsoft ਖਾਤੇ ਵਰਤ ਰਹੇ ਹੋ, ਜਦ ਹੈ: \"live: ਅੱਖਰ\" ਵਰਗਾ ਦਿਸਦਾ ਹੈ.",
+            "auto_translated": "ਸਕਾਈਪ ਨਾਮ ਹੈ, ਪਰ ਆਮ ਤੌਰ 'ਤੇ, ਅੱਖਰ ਸਤਰ, ਤੁਹਾਨੂੰ ਇੱਕ Microsoft ਖਾਤੇ ਵਰਤ ਰਹੇ ਹੋ, ਜਦ ਹੈ: \"live: ਅੱਖਰ\" ਵਰਗਾ ਦਿਸਦਾ ਹੈ."
+        },
+        "th": {
+            "legacy_caption_pid": 31759,
+            "legacy_language_pid": 23,
+            "text": "ชื่อ Skype แต่มักจะสตริงและตัวเลขเมื่อคุณกำลังใช้บัญชี Microsoft: ดูเหมือนว่า \"live: ตัวเลขและตัวอักษร\"",
+            "auto_translated": "ชื่อ Skype แต่มักจะสตริงและตัวเลขเมื่อคุณกำลังใช้บัญชี Microsoft: ดูเหมือนว่า \"live: ตัวเลขและตัวอักษร\""
+        },
+        "te": {
+            "legacy_caption_pid": 38244,
+            "legacy_language_pid": 24,
+            "text": "స్కైప్ పేరు అనేది ఆల్ఫాన్యూమరిక్ స్ట్రింగ్, కానీ మీరు Microsoft ఖాతాను ఉపయోగించి చేసినప్పుడు \"live: ఆల్ఫాన్యూమరిక్\" లాగా ఉంటుంది.",
+            "auto_translated": "స్కైప్ పేరు అనేది ఆల్ఫాన్యూమరిక్ స్ట్రింగ్, కానీ మీరు Microsoft ఖాతాను ఉపయోగించి చేసినప్పుడు \"live: ఆల్ఫాన్యూమరిక్\" లాగా ఉంటుంది."
+        },
+        "mr": {
+            "legacy_caption_pid": 38245,
+            "legacy_language_pid": 25,
+            "text": "स्काईप नाव सहसा अक्षरअंकीय स्ट्रिंग आहे, परंतु आपण Microsoft खाते वापरून जातात तेव्हा जसे \"live: वर्णांक\" दिसेल.",
+            "auto_translated": "स्काईप नाव सहसा अक्षरअंकीय स्ट्रिंग आहे, परंतु आपण Microsoft खाते वापरून जातात तेव्हा जसे \"live: वर्णांक\" दिसेल."
+        },
+        "ur": {
+            "legacy_caption_pid": 38246,
+            "legacy_language_pid": 26,
+            "text": "اسکائپ کا نام عام طور پر اکشرانکیی سٹرنگ ہے، لیکن آپ Microsoft اکاؤنٹ استعمال کر رہے ہیں جب کی طرح \"live: اکشرانکیی\" نظر آئے گا.",
+            "auto_translated": "اسکائپ کا نام عام طور پر اکشرانکیی سٹرنگ ہے، لیکن آپ Microsoft اکاؤنٹ استعمال کر رہے ہیں جب کی طرح \"live: اکشرانکیی\" نظر آئے گا."
+        },
+        "gu": {
+            "legacy_caption_pid": 38247,
+            "legacy_language_pid": 27,
+            "text": "સ્કાયપે નામ સામાન્ય આલ્ફાન્યૂમેરિક સ્ટ્રિંગ છે, પરંતુ તમે Microsoft એકાઉન્ટનો ઉપયોગ કરી રહ્યા છો ત્યારે જેમ કે \"live: આલ્ફાન્યૂમેરિક\" દેખાશે.",
+            "auto_translated": "સ્કાયપે નામ સામાન્ય આલ્ફાન્યૂમેરિક સ્ટ્રિંગ છે, પરંતુ તમે Microsoft એકાઉન્ટનો ઉપયોગ કરી રહ્યા છો ત્યારે જેમ કે \"live: આલ્ફાન્યૂમેરિક\" દેખાશે."
+        },
+        "uk": {
+            "legacy_caption_pid": 38248,
+            "legacy_language_pid": 28,
+            "text": "Ім'я Skype, як правило, алфавітно-цифрова рядок, але при використанні облікового запису Microsoft буде виглядати «live: алфавітно-цифровий».",
+            "auto_translated": "Ім'я Skype, як правило, алфавітно-цифрова рядок, але при використанні облікового запису Microsoft буде виглядати «live: алфавітно-цифровий»."
+        },
+        "ml": {
+            "legacy_caption_pid": 38249,
+            "legacy_language_pid": 29,
+            "text": "സ്കൈപ്പ് പേര് സാധാരണയായി അക്കങ്ങളും സ്ട്രിംഗ് ആണ്, എന്നാൽ നിങ്ങൾ Microsoft അക്കൗണ്ട് ഉപയോഗിക്കുമ്പോൾ \"live: അക്കങ്ങളും\" കാണപ്പെടും.",
+            "auto_translated": "സ്കൈപ്പ് പേര് സാധാരണയായി അക്കങ്ങളും സ്ട്രിംഗ് ആണ്, എന്നാൽ നിങ്ങൾ Microsoft അക്കൗണ്ട് ഉപയോഗിക്കുമ്പോൾ \"live: അക്കങ്ങളും\" കാണപ്പെടും."
+        },
+        "kn": {
+            "legacy_caption_pid": 38250,
+            "legacy_language_pid": 30,
+            "text": "ಸ್ಕೈಪ್ ಹೆಸರನ್ನು ಸಾಮಾನ್ಯವಾಗಿ ಅಕ್ಷರಸಂಖ್ಯಾಯುಕ್ತ ಸ್ಟ್ರಿಂಗ್, ಆದರೆ ನೀವು Microsoft ಖಾತೆಯನ್ನು ಬಳಸಿ ಮಾಡಿದಾಗ \"live: ಅಕ್ಷರಸಂಖ್ಯಾಯುಕ್ತ\" ಕಾಣಿಸಬೇಕೆಂದು.",
+            "auto_translated": "ಸ್ಕೈಪ್ ಹೆಸರನ್ನು ಸಾಮಾನ್ಯವಾಗಿ ಅಕ್ಷರಸಂಖ್ಯಾಯುಕ್ತ ಸ್ಟ್ರಿಂಗ್, ಆದರೆ ನೀವು Microsoft ಖಾತೆಯನ್ನು ಬಳಸಿ ಮಾಡಿದಾಗ \"live: ಅಕ್ಷರಸಂಖ್ಯಾಯುಕ್ತ\" ಕಾಣಿಸಬೇಕೆಂದು."
+        },
+        "su": {
+            "legacy_caption_pid": 38251,
+            "legacy_language_pid": 31,
+            "text": "Ngaran Skype téh biasana alpanumérik string, tapi lamun anjeun ngagunakeun akun Microsoft bakal kasampak kawas \"live: alpanumérik\".",
+            "auto_translated": "Ngaran Skype téh biasana alpanumérik string, tapi lamun anjeun ngagunakeun akun Microsoft bakal kasampak kawas \"live: alpanumérik\"."
+        },
+        "ku": {
+            "legacy_caption_pid": 38252,
+            "legacy_language_pid": 32,
+            "text": "Navê Skype e bi piranî string alphanumeric, lê gava ku tu bi kar tînî account Microsoft dê wek \"live: alphanumeric\" binêrin.",
+            "auto_translated": "Navê Skype e bi piranî string alphanumeric, lê gava ku tu bi kar tînî account Microsoft dê wek \"live: alphanumeric\" binêrin."
+        },
+        "ps": {
+            "legacy_caption_pid": 38253,
+            "legacy_language_pid": 33,
+            "text": "سکايپ نوم دی معمولا په الفبې تار، خو کله چې تاسو د Microsoft حساب په کارولو سره به په څېر \"live: الفبې\" وګوري.",
+            "auto_translated": "سکايپ نوم دی معمولا په الفبې تار، خو کله چې تاسو د Microsoft حساب په کارولو سره به په څېر \"live: الفبې\" وګوري."
+        },
+        "ro": {
+            "legacy_caption_pid": 38254,
+            "legacy_language_pid": 34,
+            "text": "Numele Skype este de obicei șir de caractere alfanumerice, dar atunci când utilizați contul Microsoft va arata „live: alfanumerice“.",
+            "auto_translated": "Numele Skype este de obicei șir de caractere alfanumerice, dar atunci când utilizați contul Microsoft va arata „live: alfanumerice“."
+        },
+        "id": {
+            "legacy_caption_pid": 38255,
+            "legacy_language_pid": 35,
+            "text": "Nama skype biasanya string alfanumerik, tetapi ketika Anda menggunakan akun Microsoft akan terlihat seperti \"live: alfanumerik\".",
+            "auto_translated": "Nama skype biasanya string alfanumerik, tetapi ketika Anda menggunakan akun Microsoft akan terlihat seperti \"live: alfanumerik\"."
+        },
+        "sd": {
+            "legacy_caption_pid": 38256,
+            "legacy_language_pid": 36,
+            "text": "Skype جي نالي سان اڪثر alphanumeric جملو آهي، پر توهان جي Microsoft اڪائونٽ استعمال ڪري رهيا آهن جڏهن وانگر \"live: alphanumeric\" نظر ايندو.",
+            "auto_translated": "Skype جي نالي سان اڪثر alphanumeric جملو آهي، پر توهان جي Microsoft اڪائونٽ استعمال ڪري رهيا آهن جڏهن وانگر \"live: alphanumeric\" نظر ايندو."
+        },
+        "af": {
+            "legacy_caption_pid": 38257,
+            "legacy_language_pid": 37,
+            "text": "Skype naam is gewoonlik alfanumeriese string, maar wanneer jy met behulp van die Microsoft-rekening sal lyk \"live: alfanumeriese\".",
+            "auto_translated": "Skype naam is gewoonlik alfanumeriese string, maar wanneer jy met behulp van die Microsoft-rekening sal lyk \"live: alfanumeriese\"."
+        },
+        "sw": {
+            "legacy_caption_pid": 38258,
+            "legacy_language_pid": 38,
+            "text": "jina Skype ni kawaida alphanumeric kamba, lakini wakati wewe ni kutumia akaunti ya Microsoft kuangalia kama \"live: alphanumeric\".",
+            "auto_translated": "jina Skype ni kawaida alphanumeric kamba, lakini wakati wewe ni kutumia akaunti ya Microsoft kuangalia kama \"live: alphanumeric\"."
+        },
+        "lo": {
+            "legacy_caption_pid": 38259,
+            "legacy_language_pid": 39,
+            "text": "ຊື່ Skype ຕາມປົກກະຕິເປັນສະຕິງແລະຕົວອັກສອນແຕ່ໃນເວລາທີ່ທ່ານກໍາລັງໃຊ້ບັນຊີ Microsoft ຈະເບິ່ງຄື \"live: alphanumeric\".",
+            "auto_translated": "ຊື່ Skype ຕາມປົກກະຕິເປັນສະຕິງແລະຕົວອັກສອນແຕ່ໃນເວລາທີ່ທ່ານກໍາລັງໃຊ້ບັນຊີ Microsoft ຈະເບິ່ງຄື \"live: alphanumeric\"."
+        },
+        "nl": {
+            "legacy_caption_pid": 38260,
+            "legacy_language_pid": 40,
+            "text": "Skype is doorgaans alfanumerieke tekenreeks, maar als je gebruik maakt van de Microsoft-account eruit zal zien \"live: alfanumeriek\".",
+            "auto_translated": "Skype is doorgaans alfanumerieke tekenreeks, maar als je gebruik maakt van de Microsoft-account eruit zal zien \"live: alfanumeriek\"."
+        },
+        "tl": {
+            "legacy_caption_pid": 38261,
+            "legacy_language_pid": 41,
+            "text": "Pangalan ng Skype ay karaniwang alphanumeric string, ngunit kapag ikaw ay gumagamit ng Microsoft account ang magiging hitsura ng \"live: alphanumeric\".",
+            "auto_translated": "Pangalan ng Skype ay karaniwang alphanumeric string, ngunit kapag ikaw ay gumagamit ng Microsoft account ang magiging hitsura ng \"live: alphanumeric\"."
+        },
+        "ne": {
+            "legacy_caption_pid": 38262,
+            "legacy_language_pid": 42,
+            "text": "स्काइप नाम सामान्यतया अल्फान्युमेरिक स्ट्रिङ छ, तर तपाईं Microsoft खाता प्रयोग गर्दा जस्तै \"live: अल्फान्यूमेरिक\" हेर हुनेछ।",
+            "auto_translated": "स्काइप नाम सामान्यतया अल्फान्युमेरिक स्ट्रिङ छ, तर तपाईं Microsoft खाता प्रयोग गर्दा जस्तै \"live: अल्फान्यूमेरिक\" हेर हुनेछ।"
+        },
+        "hu": {
+            "legacy_caption_pid": 38263,
+            "legacy_language_pid": 43,
+            "text": "Skype név általában alfanumerikus karakterlánc, de ha használja a Microsoft-fiók fog kinézni „live: alfanumerikus”.",
+            "auto_translated": "Skype név általában alfanumerikus karakterlánc, de ha használja a Microsoft-fiók fog kinézni „live: alfanumerikus”."
+        },
+        "cs": {
+            "legacy_caption_pid": 38264,
+            "legacy_language_pid": 44,
+            "text": "jméno Skype je obvykle alfanumerický řetězec, ale při použití účtu Microsoft bude vypadat „live: alfanumerický“.",
+            "auto_translated": "jméno Skype je obvykle alfanumerický řetězec, ale při použití účtu Microsoft bude vypadat „live: alfanumerický“."
+        },
+        "el": {
+            "legacy_caption_pid": 38265,
+            "legacy_language_pid": 45,
+            "text": "Το όνομά Skype είναι συνήθως αλφαριθμητική συμβολοσειρά, αλλά όταν χρησιμοποιείτε το λογαριασμό Microsoft θα μοιάζει με «live: αλφαριθμητικό».",
+            "auto_translated": "Το όνομά Skype είναι συνήθως αλφαριθμητική συμβολοσειρά, αλλά όταν χρησιμοποιείτε το λογαριασμό Microsoft θα μοιάζει με «live: αλφαριθμητικό»."
+        },
+        "sv": {
+            "legacy_caption_pid": 38266,
+            "legacy_language_pid": 46,
+            "text": "Skype-namn är oftast alfanumerisk sträng, men när du använder Microsoft-konto kommer att se ut \"live: alfanumeriskt\".",
+            "auto_translated": "Skype-namn är oftast alfanumerisk sträng, men när du använder Microsoft-konto kommer att se ut \"live: alfanumeriskt\"."
+        },
+        "kk": {
+            "legacy_caption_pid": 38267,
+            "legacy_language_pid": 47,
+            "text": "Skype аты әдетте әріптік-сандық жол болып табылады, бірақ сіз Microsoft тіркелгісін пайдаланып жатқан кезде «live: сандар» көрінеді.",
+            "auto_translated": "Skype аты әдетте әріптік-сандық жол болып табылады, бірақ сіз Microsoft тіркелгісін пайдаланып жатқан кезде «live: сандар» көрінеді."
+        },
+        "fi": {
+            "legacy_caption_pid": 38268,
+            "legacy_language_pid": 48,
+            "text": "Skype-nimi on yleensä Aakkosnumeerinen, mutta kun käytät Microsoft tilin näyttää \"live: aakkosnumeerinen\".",
+            "auto_translated": "Skype-nimi on yleensä Aakkosnumeerinen, mutta kun käytät Microsoft tilin näyttää \"live: aakkosnumeerinen\"."
+        },
+        "da": {
+            "legacy_caption_pid": 38269,
+            "legacy_language_pid": 49,
+            "text": "Skype navn er som regel alfanumerisk streng, men når du bruger Microsoft-konto vil se ud \"live: alfanumeriske\".",
+            "auto_translated": "Skype navn er som regel alfanumerisk streng, men når du bruger Microsoft-konto vil se ud \"live: alfanumeriske\"."
+        },
+        "he": {
+            "legacy_caption_pid": 38270,
+            "legacy_language_pid": 50,
+            "text": "שם סקייפ היא בדרך כלל מחרוזת אלפאנומרי, אבל כאשר אתה משתמש בחשבון Microsoft ייראה \"live: אלפאנומרי\".",
+            "auto_translated": "שם סקייפ היא בדרך כלל מחרוזת אלפאנומרי, אבל כאשר אתה משתמש בחשבון Microsoft ייראה \"live: אלפאנומרי\"."
+        },
+        "no": {
+            "legacy_caption_pid": 38271,
+            "legacy_language_pid": 51,
+            "text": "Skype navn er vanligvis alfanumerisk streng, men når du bruker Microsoft-konto vil se ut \"live: alfanumerisk\".",
+            "auto_translated": "Skype navn er vanligvis alfanumerisk streng, men når du bruker Microsoft-konto vil se ut \"live: alfanumerisk\"."
+        }
+    }
+}

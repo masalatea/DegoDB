@@ -1,0 +1,27 @@
+{
+    "resource_key": "TITLE_DA_SYNC_WITH_DATA_CLASS",
+    "legacy_resource_pid": 40,
+    "base_group_key": "grp-001-developers-matsuesoft-co-jp",
+    "additional_group_keys": [],
+    "key_for_update": "0",
+    "sort_group": "TITLE",
+    "key_name": "TITLE_DA_SYNC_WITH_DATA_CLASS",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": true,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 4394,
+            "legacy_language_pid": 1,
+            "text": "データアクセスクラスのデータクラスとの同期",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 4395,
+            "legacy_language_pid": 2,
+            "text": "Synchronize Data Access Class with Data Class",
+            "auto_translated": ""
+        }
+    }
+}

@@ -1,0 +1,321 @@
+{
+    "resource_key": "COMMON_LIB_ENROLL_HEADER_SKYPE_EXPLANATION7",
+    "legacy_resource_pid": 1429,
+    "base_group_key": "grp-010-matsuesoft-lib",
+    "additional_group_keys": [],
+    "key_for_update": "jOgbAjD16nRaU9jQktQZKBq9lrAJvs4hoC8rmrh9QTxyo00fwPKcbrQaOmabL31hxS42k3xFxz4XWpcuyD7rYQhYiUw5B6EBSOi5hGRrp2d3KXr9ITetVVGkioVHX5Ib",
+    "sort_group": "ENROLL",
+    "key_name": "COMMON_LIB_ENROLL_HEADER_SKYPE_EXPLANATION7",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": false,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 5990,
+            "legacy_language_pid": 1,
+            "text": "どうしてもスカイプ名が不明な場合、「おそらくこれ」と思われるスカイプ名を入力欄に記入の上、その旨を通信欄でお知らせ下さい。その場合、メールアドレスにて検索させて頂きますので、登録のメールアドレス以外でスカイプ登録をされている場合はスカイプに登録しているメールアドレスも合わせてご連絡頂ければと思います。",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 5991,
+            "legacy_language_pid": 2,
+            "text": "If you are not sure which is Skype Name(ID), please input your guessing in comment area. If Skype's registored email is different from email address above, please mention it.",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 5992,
+            "legacy_language_pid": 3,
+            "text": "如果绝对Skype用户名不记得的话，先把能想到的名字输入。在这种情况下，所以我们将通过e-mail地址搜索，我们可以给你发送邮件以及可以连接到Skype的注册电子邮件地址的非注册登记的Skype用户。",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 5993,
+            "legacy_language_pid": 4,
+            "text": "다만 스카이프 이름을 알 수 없는 경우 \"아마도\"라고 생각하는 스카이프 이름을 입력란에 기입하신 후, 통신란에 알려주세요. 이 경우 메일 주소로 검색하겠습니다. 따라서, 등록된 메일 주소 이외 별도로 스카이프 등록되어있는 경우는 스카이프에 등록하신 다른 이메일 주소도 함께 알려주시기 바랍니다.",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 10901,
+            "legacy_language_pid": 5,
+            "text": "Si no está seguro de cuál es el nombre de Skype (ID), ingrese su sugerencia en el área de comentarios. Si el correo electrónico registrado en Skype es diferente de la dirección de correo electrónico anterior, por favor mencionarlo.",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 10902,
+            "legacy_language_pid": 6,
+            "text": "Se você não tem certeza qual é o Nome do Skype (ID), insira sua adivinhação na área de comentários. O e-mail cadastrado no Skype é diferente do endereço de e-mail acima, por favor, mencione-o.",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 10903,
+            "legacy_language_pid": 7,
+            "text": "如果絕對Skype用戶名不記得的話，先把能想到的名字輸入。在這種情況下，所以我們將通過e-mail地址搜索，我們可以給你發送郵件以及可以連接到Skype的註冊電子郵件地址的非註冊登記的Skype用戶。",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 17037,
+            "legacy_language_pid": 8,
+            "text": "Si vous ne savez pas quel est le nom de Skype (ID), saisissez votre estimation dans la zone de commentaires. Si le courrier électronique enregistré de Skype est différent de l'adresse électronique ci-dessus, veuillez le mentionner.",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 17038,
+            "legacy_language_pid": 9,
+            "text": "यदि आप सुनिश्चित नहीं हैं कि स्काइप का नाम (आईडी) कौन सा है, कृपया टिप्पणी क्षेत्र में अपना अनुमान लगाएं, अगर स्काइप की रजिस्टर्ड ईमेल उपरोक्त ईमेल पते से अलग है, तो कृपया इसका उल्लेख करें।",
+            "auto_translated": ""
+        },
+        "ar": {
+            "legacy_caption_pid": 31774,
+            "legacy_language_pid": 10,
+            "text": "إذا الاطلاق سكايب اسم غير معروف، على رأس التعبئة في حقل إدخال اسم سكايب التي يبدو أن \"ولعل هذا\"، واسمحوا لنا أن نعرف في هذا الشأن في مجال الاتصالات. في هذه الحالة، ولذا فإننا سوف ابحث عن طريق عنوان البريد الإلكتروني، إذا كان لديك سكايب مسجل في عدم تسجيل عنوان البريد الإلكتروني وأعتقد أنه إذا يمكنك الاتصال أيضا إلى عنوان البريد الإلكتروني المسجل في سكايب.",
+            "auto_translated": "إذا الاطلاق سكايب اسم غير معروف، على رأس التعبئة في حقل إدخال اسم سكايب التي يبدو أن \"ولعل هذا\"، واسمحوا لنا أن نعرف في هذا الشأن في مجال الاتصالات. في هذه الحالة، ولذا فإننا سوف ابحث عن طريق عنوان البريد الإلكتروني، إذا كان لديك سكايب مسجل في عدم تسجيل عنوان البريد الإلكتروني وأعتقد أنه إذا يمكنك الاتصال أيضا إلى عنوان البريد الإلكتروني المسجل في سكايب."
+        },
+        "fa": {
+            "legacy_caption_pid": 31775,
+            "legacy_language_pid": 11,
+            "text": "اگر کاملا نام اسکایپ ناشناخته است، در بالای پر در فیلد یک نام اسکایپ که به نظر می رسد \"شاید این\"، لطفا با ما به آن اثر در زمینهی ارتباطات و اطلاع دهید. در آن صورت، بنابراین ما با آدرس ایمیل جستجو کنید، اگر شما یک اسکایپ ثبت شده در عدم ثبت آدرس ایمیل من فکر می کنم که اگر شما همچنین می توانید به آدرس ایمیل ثبت شده در اسکایپ اتصال بوده است.",
+            "auto_translated": "اگر کاملا نام اسکایپ ناشناخته است، در بالای پر در فیلد یک نام اسکایپ که به نظر می رسد \"شاید این\"، لطفا با ما به آن اثر در زمینهی ارتباطات و اطلاع دهید. در آن صورت، بنابراین ما با آدرس ایمیل جستجو کنید، اگر شما یک اسکایپ ثبت شده در عدم ثبت آدرس ایمیل من فکر می کنم که اگر شما همچنین می توانید به آدرس ایمیل ثبت شده در اسکایپ اتصال بوده است."
+        },
+        "de": {
+            "legacy_caption_pid": 31776,
+            "legacy_language_pid": 12,
+            "text": "Wenn absolut Skype Name nicht bekannt ist, auf der Oberseite der Füllung in dem Eingabefeld ein Skype-Namen, die „Vielleicht“, teilen Sie uns bitte in diesem Sinne im Kommunikationsfeld zu sein scheinen. In diesem Fall, so werden wir per E-Mail-Adresse suchen, wenn Sie ein Skype waren in der Nicht-Registrierung der E-Mail Adresse registriert Ich glaube, wenn man auch auf die in der Skype registrierten E-Mail-Adresse eine Verbindung herstellen können.",
+            "auto_translated": "Wenn absolut Skype Name nicht bekannt ist, auf der Oberseite der Füllung in dem Eingabefeld ein Skype-Namen, die „Vielleicht“, teilen Sie uns bitte in diesem Sinne im Kommunikationsfeld zu sein scheinen. In diesem Fall, so werden wir per E-Mail-Adresse suchen, wenn Sie ein Skype waren in der Nicht-Registrierung der E-Mail Adresse registriert Ich glaube, wenn man auch auf die in der Skype registrierten E-Mail-Adresse eine Verbindung herstellen können."
+        },
+        "ru": {
+            "legacy_caption_pid": 31777,
+            "legacy_language_pid": 13,
+            "text": "Если уж совсем имя Skype неизвестно, на вершине заливки в поле ввода имя Skype, который, кажется, «Может быть, это», пожалуйста, дайте нам знать об этом в области связи. В этом случае, так что мы будем искать по электронной почте, если вы были Skype зарегистрировано в нерегистрации электронной почты, я думаю, что если вы можете также подключить к электронной почте, зарегистрированной в Skype.",
+            "auto_translated": "Если уж совсем имя Skype неизвестно, на вершине заливки в поле ввода имя Skype, который, кажется, «Может быть, это», пожалуйста, дайте нам знать об этом в области связи. В этом случае, так что мы будем искать по электронной почте, если вы были Skype зарегистрировано в нерегистрации электронной почты, я думаю, что если вы можете также подключить к электронной почте, зарегистрированной в Skype."
+        },
+        "ms": {
+            "legacy_caption_pid": 31778,
+            "legacy_language_pid": 14,
+            "text": "Jika benar-benar nama Skype tidak diketahui, di atas isi dalam medan input nama Skype yang seolah-olah menjadi \"Mungkin ini\", sila maklumkan kepada kami yang bermaksud sedemikian dalam bidang komunikasi. Dalam kes itu, jadi kami akan mencari melalui e-mel, jika anda pernah menjadi Skype berdaftar di kedai-pendaftaran untuk alamat e-mel yang saya berfikir bahawa jika anda boleh menyambung juga ke alamat e-mel yang didaftarkan di Skype.",
+            "auto_translated": "Jika benar-benar nama Skype tidak diketahui, di atas isi dalam medan input nama Skype yang seolah-olah menjadi \"Mungkin ini\", sila maklumkan kepada kami yang bermaksud sedemikian dalam bidang komunikasi. Dalam kes itu, jadi kami akan mencari melalui e-mel, jika anda pernah menjadi Skype berdaftar di kedai-pendaftaran untuk alamat e-mel yang saya berfikir bahawa jika anda boleh menyambung juga ke alamat e-mel yang didaftarkan di Skype."
+        },
+        "ta": {
+            "legacy_caption_pid": 31779,
+            "legacy_language_pid": 15,
+            "text": "முற்றிலும் ஸ்கைப் பெயர் உள்ளீடு துறையில் நிரப்பு மேல் அறியப்படவில்லை என்றால் தெரிகிறது என்று ஒரு ஸ்கைப் பெயர் \"ஒருவேளை இந்த\", எங்களுக்கு தொடர்பு துறையில் அந்த பாதிப்பு தெரியப்படுத்துங்கள். அந்த வழக்கில், நாம் மின்னஞ்சல் முகவரி மூலம், நீங்கள் ஒரு ஸ்கைப் நான் நீங்கள் ஸ்கைப் பதிவு மின்னஞ்சல் முகவரிக்கு மேலும் இணைக்க முடியும் என்றால் என்று மின்னஞ்சல் முகவரியை அல்லாத பதிவு பதிவு இருந்திருக்கும் என்றால் தேடும்.",
+            "auto_translated": "முற்றிலும் ஸ்கைப் பெயர் உள்ளீடு துறையில் நிரப்பு மேல் அறியப்படவில்லை என்றால் தெரிகிறது என்று ஒரு ஸ்கைப் பெயர் \"ஒருவேளை இந்த\", எங்களுக்கு தொடர்பு துறையில் அந்த பாதிப்பு தெரியப்படுத்துங்கள். அந்த வழக்கில், நாம் மின்னஞ்சல் முகவரி மூலம், நீங்கள் ஒரு ஸ்கைப் நான் நீங்கள் ஸ்கைப் பதிவு மின்னஞ்சல் முகவரிக்கு மேலும் இணைக்க முடியும் என்றால் என்று மின்னஞ்சல் முகவரியை அல்லாத பதிவு பதிவு இருந்திருக்கும் என்றால் தேடும்."
+        },
+        "it": {
+            "legacy_caption_pid": 31780,
+            "legacy_language_pid": 16,
+            "text": "Se assolutamente nome Skype è sconosciuto, in cima al riempimento nel campo di immissione di un nome utente Skype che sembra essere \"Forse\", fatecelo sapere in tal senso nel campo della comunicazione. In tal caso, quindi dovremo ricerca per indirizzo e-mail, se sei stato a Skype registrato nella mancata registrazione dell'indirizzo di posta elettronica Penso che se è possibile connettersi anche all'indirizzo e-mail registrato in Skype.",
+            "auto_translated": "Se assolutamente nome Skype è sconosciuto, in cima al riempimento nel campo di immissione di un nome utente Skype che sembra essere \"Forse\", fatecelo sapere in tal senso nel campo della comunicazione. In tal caso, quindi dovremo ricerca per indirizzo e-mail, se sei stato a Skype registrato nella mancata registrazione dell'indirizzo di posta elettronica Penso che se è possibile connettersi anche all'indirizzo e-mail registrato in Skype."
+        },
+        "bn": {
+            "legacy_caption_pid": 31781,
+            "legacy_language_pid": 17,
+            "text": "একেবারে স্কাইপ নাম অজানা থাকলে ইনপুট ক্ষেত্রটি পূরণ উপরে, স্কাইপ নাম মনে করা হয় \"সম্ভবত এই\", আমাদের যোগাযোগ মাঠে যে প্রভাব জানান। যে ক্ষেত্রে, তাই আমরা দ্বারা ই-মেইল ঠিকানা অনুসন্ধান আপনি একটি স্কাইপ ই-মেইল ঠিকানা আমার মনে হয় যে আপনি যদি ই-মেইল স্কাইপ নিবন্ধিত ঠিকানায় এছাড়াও সংযোগ করতে পারেন অ-নিবন্ধন নিবন্ধিত হয়েছে হবে।",
+            "auto_translated": "একেবারে স্কাইপ নাম অজানা থাকলে ইনপুট ক্ষেত্রটি পূরণ উপরে, স্কাইপ নাম মনে করা হয় \"সম্ভবত এই\", আমাদের যোগাযোগ মাঠে যে প্রভাব জানান। যে ক্ষেত্রে, তাই আমরা দ্বারা ই-মেইল ঠিকানা অনুসন্ধান আপনি একটি স্কাইপ ই-মেইল ঠিকানা আমার মনে হয় যে আপনি যদি ই-মেইল স্কাইপ নিবন্ধিত ঠিকানায় এছাড়াও সংযোগ করতে পারেন অ-নিবন্ধন নিবন্ধিত হয়েছে হবে।"
+        },
+        "tr": {
+            "legacy_caption_pid": 31782,
+            "legacy_language_pid": 18,
+            "text": "kesinlikle Skype adı giriş alanında dolgu üstüne, bilinmiyorsa gibi görünüyor Skype adı \"Belki de bu\" bize iletişim alanında bu yönde bildirin. Seni Skype kayıtlı e-posta adresine de bağlanabilir eğer düşünüyorum e-posta adresi olmayan kayıt tescil Skype yapılmadığını Bu durumda, bu yüzden, e-posta adresi ile arayacaktır.",
+            "auto_translated": "kesinlikle Skype adı giriş alanında dolgu üstüne, bilinmiyorsa gibi görünüyor Skype adı \"Belki de bu\" bize iletişim alanında bu yönde bildirin. Seni Skype kayıtlı e-posta adresine de bağlanabilir eğer düşünüyorum e-posta adresi olmayan kayıt tescil Skype yapılmadığını Bu durumda, bu yüzden, e-posta adresi ile arayacaktır."
+        },
+        "vi": {
+            "legacy_caption_pid": 31783,
+            "legacy_language_pid": 19,
+            "text": "Nếu hoàn toàn tên Skype là không rõ, trên đầu trang của các điền trong lĩnh vực đầu vào một tên Skype mà có vẻ là \"Có lẽ đây\", xin vui lòng cho chúng tôi biết để mà ảnh hưởng trong lĩnh vực truyền thông. Trong trường hợp đó, vì vậy chúng tôi sẽ tìm kiếm theo địa chỉ e-mail, nếu bạn đã là một Skype đăng ký tại phi đăng ký địa chỉ e-mail Tôi nghĩ rằng nếu bạn có thể kết nối cũng đến địa chỉ e-mail đăng ký trong Skype.",
+            "auto_translated": "Nếu hoàn toàn tên Skype là không rõ, trên đầu trang của các điền trong lĩnh vực đầu vào một tên Skype mà có vẻ là \"Có lẽ đây\", xin vui lòng cho chúng tôi biết để mà ảnh hưởng trong lĩnh vực truyền thông. Trong trường hợp đó, vì vậy chúng tôi sẽ tìm kiếm theo địa chỉ e-mail, nếu bạn đã là một Skype đăng ký tại phi đăng ký địa chỉ e-mail Tôi nghĩ rằng nếu bạn có thể kết nối cũng đến địa chỉ e-mail đăng ký trong Skype."
+        },
+        "pl": {
+            "legacy_caption_pid": 31784,
+            "legacy_language_pid": 20,
+            "text": "Jeśli absolutnie nazwa Skype jest nieznany, w górnej części wypełnić pola wprowadzania nazwy Skype, który wydaje się być „Być może”, prosimy o poinformowanie nas o tym celu w dziedzinie komunikacji. W tym przypadku, więc będziemy szukać poprzez adres e-mail, jeśli zostały Skype zarejestrowana w braku rejestracji adres e-mail, myślę, że jeśli można połączyć również na adres e-mail zarejestrowany w Skype.",
+            "auto_translated": "Jeśli absolutnie nazwa Skype jest nieznany, w górnej części wypełnić pola wprowadzania nazwy Skype, który wydaje się być „Być może”, prosimy o poinformowanie nas o tym celu w dziedzinie komunikacji. W tym przypadku, więc będziemy szukać poprzez adres e-mail, jeśli zostały Skype zarejestrowana w braku rejestracji adres e-mail, myślę, że jeśli można połączyć również na adres e-mail zarejestrowany w Skype."
+        },
+        "jv": {
+            "legacy_caption_pid": 31785,
+            "legacy_language_pid": 21,
+            "text": "Yen pancen jeneng Skype iku dingerteni, ing ndhuwur Isi ing kolom input jeneng Skype sing misale jek dadi \"Mbok iki\", kabari aku kanggo sing efek ing lapangan komunikasi. Ing kasus-kasus iku, supaya kita bakal nelusuri dening alamat e-mail, yen wis Skype kedhaftar ing non-Pendhaftaran saka alamat e-mail aku mikir yen sampeyan bisa nyambung uga kanggo alamat e-mail kedhaftar ing Skype.",
+            "auto_translated": "Yen pancen jeneng Skype iku dingerteni, ing ndhuwur Isi ing kolom input jeneng Skype sing misale jek dadi \"Mbok iki\", kabari aku kanggo sing efek ing lapangan komunikasi. Ing kasus-kasus iku, supaya kita bakal nelusuri dening alamat e-mail, yen wis Skype kedhaftar ing non-Pendhaftaran saka alamat e-mail aku mikir yen sampeyan bisa nyambung uga kanggo alamat e-mail kedhaftar ing Skype."
+        },
+        "pa": {
+            "legacy_caption_pid": 31786,
+            "legacy_language_pid": 22,
+            "text": "ਬਿਲਕੁਲ ਸਕਾਈਪ ਨਾਮ ਅਣਜਾਣ ਹੈ, ਜੇ ਇੰਪੁੱਟ ਖੇਤਰ ਵਿੱਚ ਭਰੋ ਦੇ ਸਿਖਰ 'ਤੇ, ਇੱਕ Skype ਨਾਮ ਹੈ, ਜੋ ਕਿ ਹੋਣ ਦੀ ਲਗਦੀ ਹੈ \"ਸ਼ਾਇਦ ਇਸ ਨੂੰ\", ਸਾਨੂੰ ਸੰਚਾਰ ਦੇ ਖੇਤਰ ਵਿਚ ਹੈ, ਜੋ ਕਿ ਪ੍ਰਭਾਵ ਨੂੰ ਪਤਾ ਹੋਣਾ ਚਾਹੀਦਾ ਹੈ, ਕਿਰਪਾ ਕਰਕੇ. ਜੋ ਕਿ ਇਸ ਕੇਸ ਵਿੱਚ, ਇਸ ਲਈ ਸਾਨੂੰ, ਦੇ ਕੇ ਈ-ਮੇਲ ਪਤਾ ਖੋਜ ਕਰ, ਜੇ ਤੁਹਾਨੂੰ ਇੱਕ Skype ਈ-ਮੇਲ ਪਤਾ ਕਿ ਮੈਨੂੰ ਲੱਗਦਾ ਹੈ ਕਿ ਜੇ ਤੁਹਾਨੂੰ ਈ-ਮੇਲ ਸਕਾਈਪ ਵਿੱਚ ਦਰਜ ਪਤਾ ਕਰਨ ਲਈ ਇਹ ਵੀ ਜੁੜ ਸਕਦਾ ਹੈ ਦੇ ਗੈਰ-ਰਜਿਸਟਰੇਸ਼ਨ ਵਿੱਚ ਦਰਜ ਕੀਤਾ ਗਿਆ ਹੈ ਜਾਵੇਗਾ.",
+            "auto_translated": "ਬਿਲਕੁਲ ਸਕਾਈਪ ਨਾਮ ਅਣਜਾਣ ਹੈ, ਜੇ ਇੰਪੁੱਟ ਖੇਤਰ ਵਿੱਚ ਭਰੋ ਦੇ ਸਿਖਰ 'ਤੇ, ਇੱਕ Skype ਨਾਮ ਹੈ, ਜੋ ਕਿ ਹੋਣ ਦੀ ਲਗਦੀ ਹੈ \"ਸ਼ਾਇਦ ਇਸ ਨੂੰ\", ਸਾਨੂੰ ਸੰਚਾਰ ਦੇ ਖੇਤਰ ਵਿਚ ਹੈ, ਜੋ ਕਿ ਪ੍ਰਭਾਵ ਨੂੰ ਪਤਾ ਹੋਣਾ ਚਾਹੀਦਾ ਹੈ, ਕਿਰਪਾ ਕਰਕੇ. ਜੋ ਕਿ ਇਸ ਕੇਸ ਵਿੱਚ, ਇਸ ਲਈ ਸਾਨੂੰ, ਦੇ ਕੇ ਈ-ਮੇਲ ਪਤਾ ਖੋਜ ਕਰ, ਜੇ ਤੁਹਾਨੂੰ ਇੱਕ Skype ਈ-ਮੇਲ ਪਤਾ ਕਿ ਮੈਨੂੰ ਲੱਗਦਾ ਹੈ ਕਿ ਜੇ ਤੁਹਾਨੂੰ ਈ-ਮੇਲ ਸਕਾਈਪ ਵਿੱਚ ਦਰਜ ਪਤਾ ਕਰਨ ਲਈ ਇਹ ਵੀ ਜੁੜ ਸਕਦਾ ਹੈ ਦੇ ਗੈਰ-ਰਜਿਸਟਰੇਸ਼ਨ ਵਿੱਚ ਦਰਜ ਕੀਤਾ ਗਿਆ ਹੈ ਜਾਵੇਗਾ."
+        },
+        "th": {
+            "legacy_caption_pid": 31787,
+            "legacy_language_pid": 23,
+            "text": "ถ้าอย่าง Skype ชื่อเป็นที่รู้จักอยู่ด้านบนของการเติมในการป้อนข้อมูลสนามชื่อ Skype ที่ดูเหมือนว่าจะเป็น \"บางทีนี่อาจ\" โปรดแจ้งให้เราทราบว่าจะมีผลกระทบในด้านการสื่อสารที่ ในกรณีที่เราจะค้นหาโดยใช้ e-mail address ถ้าคุณได้รับ Skype จดทะเบียนในไม่ใช่การลงทะเบียนที่อยู่อีเมลที่ผมคิดว่าถ้าคุณสามารถเชื่อมต่อไปยังที่อยู่อีเมลที่ลงทะเบียนใน Skype",
+            "auto_translated": "ถ้าอย่าง Skype ชื่อเป็นที่รู้จักอยู่ด้านบนของการเติมในการป้อนข้อมูลสนามชื่อ Skype ที่ดูเหมือนว่าจะเป็น \"บางทีนี่อาจ\" โปรดแจ้งให้เราทราบว่าจะมีผลกระทบในด้านการสื่อสารที่ ในกรณีที่เราจะค้นหาโดยใช้ e-mail address ถ้าคุณได้รับ Skype จดทะเบียนในไม่ใช่การลงทะเบียนที่อยู่อีเมลที่ผมคิดว่าถ้าคุณสามารถเชื่อมต่อไปยังที่อยู่อีเมลที่ลงทะเบียนใน Skype"
+        },
+        "te": {
+            "legacy_caption_pid": 38580,
+            "legacy_language_pid": 24,
+            "text": "ఖచ్చితంగా స్కైప్ పేరు ఇన్పుట్ రంగంలో పూరక పైన, తెలియని ఉంటే కనబడుతోందని ఒక Skype పేరు \"బహుశా ఈ\" మాకు కమ్యూనికేషన్ రంగంలో ఆ ప్రభావం తెలపండి. ఆ సందర్భంలో, కాబట్టి మేము, ఇ-మెయిల్ చిరునామా ద్వారా శోధిస్తుంది మీరు ఒక స్కైప్ ఇ-మెయిల్ చిరునామా నేను మీరు స్కైప్ లో నమోదు ఇ-మెయిల్ చిరునామాకు కూడా కనెక్ట్ లేదో అనుకుంటున్నాను కాని రిజిస్ట్రేషన్ రిజిస్టర్ అయ్యాయి ఉంటే.",
+            "auto_translated": "ఖచ్చితంగా స్కైప్ పేరు ఇన్పుట్ రంగంలో పూరక పైన, తెలియని ఉంటే కనబడుతోందని ఒక Skype పేరు \"బహుశా ఈ\" మాకు కమ్యూనికేషన్ రంగంలో ఆ ప్రభావం తెలపండి. ఆ సందర్భంలో, కాబట్టి మేము, ఇ-మెయిల్ చిరునామా ద్వారా శోధిస్తుంది మీరు ఒక స్కైప్ ఇ-మెయిల్ చిరునామా నేను మీరు స్కైప్ లో నమోదు ఇ-మెయిల్ చిరునామాకు కూడా కనెక్ట్ లేదో అనుకుంటున్నాను కాని రిజిస్ట్రేషన్ రిజిస్టర్ అయ్యాయి ఉంటే."
+        },
+        "mr": {
+            "legacy_caption_pid": 38581,
+            "legacy_language_pid": 25,
+            "text": "पूर्णपणे स्काईप नाव इनपुट फील्ड भरा वर, अज्ञात आहे, तर असे दिसते की एक स्काईप नाव \"कदाचित हा\", कृपया आम्हाला संपर्क क्षेत्रात की प्रभाव कळवा. त्या प्रकरणात, त्यामुळे आम्ही, ई-मेल पत्ता शोधू तुम्हाला स्काईप आपण Skype नोंदणीकृत ई-मेल पत्त्यावर देखील कनेक्ट करू शकता तर असे वाटते की, ई-मेल पत्ता न नोंदणी आली आहे तर.",
+            "auto_translated": "पूर्णपणे स्काईप नाव इनपुट फील्ड भरा वर, अज्ञात आहे, तर असे दिसते की एक स्काईप नाव \"कदाचित हा\", कृपया आम्हाला संपर्क क्षेत्रात की प्रभाव कळवा. त्या प्रकरणात, त्यामुळे आम्ही, ई-मेल पत्ता शोधू तुम्हाला स्काईप आपण Skype नोंदणीकृत ई-मेल पत्त्यावर देखील कनेक्ट करू शकता तर असे वाटते की, ई-मेल पत्ता न नोंदणी आली आहे तर."
+        },
+        "ur": {
+            "legacy_caption_pid": 38582,
+            "legacy_language_pid": 26,
+            "text": "بالکل اسکائپ کا نام ان پٹ فیلڈ میں بھرنے کے سب سے اوپر پر، نامعلوم ہے تو معلوم پڑتا ہے کہ ایک اسکائپ کا نام \"شاید اس\"، ہم مواصلات کے میدان میں اس سلسلے میں مطلع کریں. اس صورت میں، تو ہم ای میل ایڈریس کے ذریعے تلاش کیا جائے گا کہ آپ کو ایک اسکائپ ای میل ایڈریس میں آپ اسکائپ میں رجسٹرڈ ای میل ایڈریس پر بھی رابطہ قائم کر سکتے ہیں کہ سوچنے کے غیر رجسٹریشن میں رجسٹرڈ کیا گیا ہے کہ اگر.",
+            "auto_translated": "بالکل اسکائپ کا نام ان پٹ فیلڈ میں بھرنے کے سب سے اوپر پر، نامعلوم ہے تو معلوم پڑتا ہے کہ ایک اسکائپ کا نام \"شاید اس\"، ہم مواصلات کے میدان میں اس سلسلے میں مطلع کریں. اس صورت میں، تو ہم ای میل ایڈریس کے ذریعے تلاش کیا جائے گا کہ آپ کو ایک اسکائپ ای میل ایڈریس میں آپ اسکائپ میں رجسٹرڈ ای میل ایڈریس پر بھی رابطہ قائم کر سکتے ہیں کہ سوچنے کے غیر رجسٹریشن میں رجسٹرڈ کیا گیا ہے کہ اگر."
+        },
+        "gu": {
+            "legacy_caption_pid": 38583,
+            "legacy_language_pid": 27,
+            "text": "સંપૂર્ણપણે સ્કાયપે નામ અજ્ઞાત છે, તો ઇનપુટ ફીલ્ડ ભરો ટોચ પર, એક સ્કાયપે નામ કે હોય તેમ લાગે છે \"કદાચ આ\", અમને સંચાર ક્ષેત્રમાં અસર માટે જણાવવા વિનંતી. તે કિસ્સામાં, તેથી અમે દ્વારા ઇ-મેઇલ સરનામું શોધવા જો તમે સ્કાયપે ઇ-મેઇલ સરનામું મને લાગે છે કે જો તમે ઇ-મેઇલ સ્કાયપે નોંધાયેલી સરનામે પણ કનેક્ટ કરી શકો છો બિન પોતાની નોંધણી કરવામાં આવી છે કરશે.",
+            "auto_translated": "સંપૂર્ણપણે સ્કાયપે નામ અજ્ઞાત છે, તો ઇનપુટ ફીલ્ડ ભરો ટોચ પર, એક સ્કાયપે નામ કે હોય તેમ લાગે છે \"કદાચ આ\", અમને સંચાર ક્ષેત્રમાં અસર માટે જણાવવા વિનંતી. તે કિસ્સામાં, તેથી અમે દ્વારા ઇ-મેઇલ સરનામું શોધવા જો તમે સ્કાયપે ઇ-મેઇલ સરનામું મને લાગે છે કે જો તમે ઇ-મેઇલ સ્કાયપે નોંધાયેલી સરનામે પણ કનેક્ટ કરી શકો છો બિન પોતાની નોંધણી કરવામાં આવી છે કરશે."
+        },
+        "uk": {
+            "legacy_caption_pid": 38584,
+            "legacy_language_pid": 28,
+            "text": "Якщо вже зовсім ім'я Skype невідомо, на вершині заливки в поле введення ім'я Skype, який, здається, «Може бути, це», будь ласка, дайте нам знати про це в галузі зв'язку. В цьому випадку, так що ми будемо шукати по електронній пошті, якщо ви були Skype зареєстровано в нереєстрації електронної пошти, я думаю, що якщо ви можете також підключити до електронної пошти, зареєстрованої в Skype.",
+            "auto_translated": "Якщо вже зовсім ім'я Skype невідомо, на вершині заливки в поле введення ім'я Skype, який, здається, «Може бути, це», будь ласка, дайте нам знати про це в галузі зв'язку. В цьому випадку, так що ми будемо шукати по електронній пошті, якщо ви були Skype зареєстровано в нереєстрації електронної пошти, я думаю, що якщо ви можете також підключити до електронної пошти, зареєстрованої в Skype."
+        },
+        "ml": {
+            "legacy_caption_pid": 38585,
+            "legacy_language_pid": 29,
+            "text": "ഇൻപുട്ട് ഫീൽഡിൽ \"ഒരുപക്ഷേ ഈ\" തോന്നിക്കുന്ന ഒരു സ്കൈപ്പ് പേര് ഫിൽ മുകളിൽ തികച്ചും സ്കൈപ്പ് പേര് അജ്ഞാതമാണ്, എങ്കിൽ നമുക്കു ആശയവിനിമയം ഫീൽഡിൽ അത് നടപ്പിൽ വരുത്താൻ അറിയിക്കുക. ഞാൻ നിങ്ങളെ സ്കൈപ്പ് രജിസ്റ്റർ ഇ-മെയിൽ വിലാസത്തിലേക്ക് പുറമേ കണക്ട് എടുക്കും എന്നു തോന്നുന്നു ഇ-മെയിൽ വിലാസം നോൺ-രജിസ്ട്രേഷൻ രജിസ്റ്റർ ഒരു സ്കൈപ്പ് സംഭവിച്ചിട്ടുണ്ടോ എന്നു ഞങ്ങൾ, ഇ-മെയിൽ വിലാസം ഉപയോഗിച്ച് തിരയും. ആ സാഹചര്യത്തിൽ, അങ്ങനെ",
+            "auto_translated": "ഇൻപുട്ട് ഫീൽഡിൽ \"ഒരുപക്ഷേ ഈ\" തോന്നിക്കുന്ന ഒരു സ്കൈപ്പ് പേര് ഫിൽ മുകളിൽ തികച്ചും സ്കൈപ്പ് പേര് അജ്ഞാതമാണ്, എങ്കിൽ നമുക്കു ആശയവിനിമയം ഫീൽഡിൽ അത് നടപ്പിൽ വരുത്താൻ അറിയിക്കുക. ഞാൻ നിങ്ങളെ സ്കൈപ്പ് രജിസ്റ്റർ ഇ-മെയിൽ വിലാസത്തിലേക്ക് പുറമേ കണക്ട് എടുക്കും എന്നു തോന്നുന്നു ഇ-മെയിൽ വിലാസം നോൺ-രജിസ്ട്രേഷൻ രജിസ്റ്റർ ഒരു സ്കൈപ്പ് സംഭവിച്ചിട്ടുണ്ടോ എന്നു ഞങ്ങൾ, ഇ-മെയിൽ വിലാസം ഉപയോഗിച്ച് തിരയും. ആ സാഹചര്യത്തിൽ, അങ്ങനെ"
+        },
+        "kn": {
+            "legacy_caption_pid": 38586,
+            "legacy_language_pid": 30,
+            "text": "ಸಂಪೂರ್ಣವಾಗಿ ಸ್ಕೈಪ್ ಹೆಸರು ಇನ್ಪುಟ್ ಕ್ಷೇತ್ರದಲ್ಲಿ ಗುಡ್ಡೆಯ ಮೇಲೆ, ತಿಳಿದಿರದಿದ್ದರೇ ತೋರುತ್ತದೆ ಒಂದು ಸ್ಕೈಪ್ ಹೆಸರು \"ಬಹುಶಃ ಈ\", ನಮ್ಮನ್ನು ಸಂಪರ್ಕ ಕ್ಷೇತ್ರದಲ್ಲಿ ಪರಿಣಾಮವು ತಿಳಿಸಿ. ಆ ಸಂದರ್ಭದಲ್ಲಿ, ಆದ್ದರಿಂದ ನಾವು ಇಮೇಲ್ ವಿಳಾಸಕ್ಕೆ ಮೂಲಕ ನೀವು ಸ್ಕೈಪ್ ನಾನು ಸ್ಕೈಪ್ ದಾಖಾಲಿಸಲಾಗಿದೆ ಇಮೇಲ್ ವಿಳಾಸಕ್ಕೆ ಸಹ ಸಂಪರ್ಕಿಸಬಹುದು ವೇಳೆ ಭಾವಿಸುತ್ತೇನೆ ಇಮೇಲ್ ವಿಳಾಸಕ್ಕೆ ಅಲ್ಲದ ನೋಂದಾಯಿಸಿ ಇದ್ದಲ್ಲಿ ಶೋಧಿಸುತ್ತದೆ.",
+            "auto_translated": "ಸಂಪೂರ್ಣವಾಗಿ ಸ್ಕೈಪ್ ಹೆಸರು ಇನ್ಪುಟ್ ಕ್ಷೇತ್ರದಲ್ಲಿ ಗುಡ್ಡೆಯ ಮೇಲೆ, ತಿಳಿದಿರದಿದ್ದರೇ ತೋರುತ್ತದೆ ಒಂದು ಸ್ಕೈಪ್ ಹೆಸರು \"ಬಹುಶಃ ಈ\", ನಮ್ಮನ್ನು ಸಂಪರ್ಕ ಕ್ಷೇತ್ರದಲ್ಲಿ ಪರಿಣಾಮವು ತಿಳಿಸಿ. ಆ ಸಂದರ್ಭದಲ್ಲಿ, ಆದ್ದರಿಂದ ನಾವು ಇಮೇಲ್ ವಿಳಾಸಕ್ಕೆ ಮೂಲಕ ನೀವು ಸ್ಕೈಪ್ ನಾನು ಸ್ಕೈಪ್ ದಾಖಾಲಿಸಲಾಗಿದೆ ಇಮೇಲ್ ವಿಳಾಸಕ್ಕೆ ಸಹ ಸಂಪರ್ಕಿಸಬಹುದು ವೇಳೆ ಭಾವಿಸುತ್ತೇನೆ ಇಮೇಲ್ ವಿಳಾಸಕ್ಕೆ ಅಲ್ಲದ ನೋಂದಾಯಿಸಿ ಇದ್ದಲ್ಲಿ ಶೋಧಿಸುತ್ತದೆ."
+        },
+        "su": {
+            "legacy_caption_pid": 38587,
+            "legacy_language_pid": 31,
+            "text": "Mun leres ngaran Skype téh kanyahoan, di luhureun eusian dina widang input ngaran Skype anu sigana \"Sugan ieu\", mangga hayu urang nyaho kana eta pangaruh dina widang komunikasi. Dina kasus eta, sangkan bakal neangan ku alamat e-mail, lamun geus a Skype didaptarkeun dina non-pendaptaran ti alamat e-mail abdi mikir yén lamun bisa nyambung ogé kana alamat e-mail didaptarkeun dina Skype.",
+            "auto_translated": "Mun leres ngaran Skype téh kanyahoan, di luhureun eusian dina widang input ngaran Skype anu sigana \"Sugan ieu\", mangga hayu urang nyaho kana eta pangaruh dina widang komunikasi. Dina kasus eta, sangkan bakal neangan ku alamat e-mail, lamun geus a Skype didaptarkeun dina non-pendaptaran ti alamat e-mail abdi mikir yén lamun bisa nyambung ogé kana alamat e-mail didaptarkeun dina Skype."
+        },
+        "ku": {
+            "legacy_caption_pid": 38588,
+            "legacy_language_pid": 32,
+            "text": "Eger bê guman navê Skype nenas e, li ser dagire li qada input ya bi navê Skype ku xuya dike ku \"Dibe ku ev\", ji kerema xwe ji me re ji bo ku bandora wê di warê ragihandinê de bihêle ku em bizanin. Di vê rewşê de, da em dê bi navnîşana e-mail lêgerîn, eger hûn Skype qeydkirî di non-qeyda ji navnîşana e-mail ku ez difikirim ku, ger tu jî ji navnîşana e-mail ku di Skype pêwendî hatine kirin.",
+            "auto_translated": "Eger bê guman navê Skype nenas e, li ser dagire li qada input ya bi navê Skype ku xuya dike ku \"Dibe ku ev\", ji kerema xwe ji me re ji bo ku bandora wê di warê ragihandinê de bihêle ku em bizanin. Di vê rewşê de, da em dê bi navnîşana e-mail lêgerîn, eger hûn Skype qeydkirî di non-qeyda ji navnîşana e-mail ku ez difikirim ku, ger tu jî ji navnîşana e-mail ku di Skype pêwendî hatine kirin."
+        },
+        "ps": {
+            "legacy_caption_pid": 38589,
+            "legacy_language_pid": 33,
+            "text": "که په بشپړه توګه د سکایپ نوم معلومه نه ده، چې په آخذه د ډګر د ډکول سر یو د سکایپ نوم چې داسې ښکاري چې وي \"ښايي د دې\"، مهرباني وکړئ مونږ ته چې په مخابراتي برخه کې اغېز پوهيږي. په دې صورت کې، له دې امله موږ به د برېښليک پته له خوا پلټنه، که تاسو ته د سکايپ د برېښليک پته زه فکر کوم چې که تاسو هم په سکایپ ثبت د برېښليک پتې ته وصل شي د غیر ثبت ثبت شوي دي.",
+            "auto_translated": "که په بشپړه توګه د سکایپ نوم معلومه نه ده، چې په آخذه د ډګر د ډکول سر یو د سکایپ نوم چې داسې ښکاري چې وي \"ښايي د دې\"، مهرباني وکړئ مونږ ته چې په مخابراتي برخه کې اغېز پوهيږي. په دې صورت کې، له دې امله موږ به د برېښليک پته له خوا پلټنه، که تاسو ته د سکايپ د برېښليک پته زه فکر کوم چې که تاسو هم په سکایپ ثبت د برېښليک پتې ته وصل شي د غیر ثبت ثبت شوي دي."
+        },
+        "ro": {
+            "legacy_caption_pid": 38590,
+            "legacy_language_pid": 34,
+            "text": "În cazul în care este absolut numele Skype este necunoscut, pe partea de sus a umplerii în câmpul de introducere un nume Skype, care pare a fi „Poate că acest lucru“, vă rugăm să ne anunțați în acest sens în domeniul comunicării. În acest caz, așa că vom căuta prin adresa de e-mail, dacă ați fost un Skype înregistrat în neînregistrarea adresa de e-mail cred că dacă vă puteți conecta la adresa de e-mail înregistrată în Skype.",
+            "auto_translated": "În cazul în care este absolut numele Skype este necunoscut, pe partea de sus a umplerii în câmpul de introducere un nume Skype, care pare a fi „Poate că acest lucru“, vă rugăm să ne anunțați în acest sens în domeniul comunicării. În acest caz, așa că vom căuta prin adresa de e-mail, dacă ați fost un Skype înregistrat în neînregistrarea adresa de e-mail cred că dacă vă puteți conecta la adresa de e-mail înregistrată în Skype."
+        },
+        "id": {
+            "legacy_caption_pid": 38591,
+            "legacy_language_pid": 35,
+            "text": "Jika benar-benar nama Skype tidak diketahui, di atas mengisi di bidang masukan nama Skype yang tampaknya menjadi \"Mungkin ini\", beritahukan kami tahu dengan yang berlaku di bidang komunikasi. Dalam hal itu, jadi kita akan mencari berdasarkan alamat e-mail, jika Anda telah menjadi Skype terdaftar di non-pendaftaran alamat e-mail saya berpikir bahwa jika Anda dapat terhubung juga ke alamat e-mail yang terdaftar di Skype.",
+            "auto_translated": "Jika benar-benar nama Skype tidak diketahui, di atas mengisi di bidang masukan nama Skype yang tampaknya menjadi \"Mungkin ini\", beritahukan kami tahu dengan yang berlaku di bidang komunikasi. Dalam hal itu, jadi kita akan mencari berdasarkan alamat e-mail, jika Anda telah menjadi Skype terdaftar di non-pendaftaran alamat e-mail saya berpikir bahwa jika Anda dapat terhubung juga ke alamat e-mail yang terdaftar di Skype."
+        },
+        "sd": {
+            "legacy_caption_pid": 38592,
+            "legacy_language_pid": 36,
+            "text": "جيڪڏهن بلڪل Skype جي نالي جو پٽ ميدان ۾ نامعلوم آهي، ڀريندو جي مٿي تي هڪ Skype جي نالي ته \"شايد هن\" ٿيڻ لڳي ٿو، اسان کي رابطي جي ميدان ۾ ته اثر کي خبر ڏين ڪريو. ته صورت ۾، پوء اسين، جي اي-ميل پتي جي ڳولا جيڪڏھن اوھان کي ڪو Skype جي جي اي-ميل پتي مان سمجهان ٿو ته جيڪڏهن توهان جي Skype جي ۾ داخل ته اي-ميل پتي کي به ڳنڍي سگهو ٿا جي غير رجسٽريشن ۾ داخل ڪيا ويا آهن ٿيندو.",
+            "auto_translated": "جيڪڏهن بلڪل Skype جي نالي جو پٽ ميدان ۾ نامعلوم آهي، ڀريندو جي مٿي تي هڪ Skype جي نالي ته \"شايد هن\" ٿيڻ لڳي ٿو، اسان کي رابطي جي ميدان ۾ ته اثر کي خبر ڏين ڪريو. ته صورت ۾، پوء اسين، جي اي-ميل پتي جي ڳولا جيڪڏھن اوھان کي ڪو Skype جي جي اي-ميل پتي مان سمجهان ٿو ته جيڪڏهن توهان جي Skype جي ۾ داخل ته اي-ميل پتي کي به ڳنڍي سگهو ٿا جي غير رجسٽريشن ۾ داخل ڪيا ويا آهن ٿيندو."
+        },
+        "af": {
+            "legacy_caption_pid": 38593,
+            "legacy_language_pid": 37,
+            "text": "As absoluut Skype naam is onbekend, op die top van die vul in die veld insette 'n Skype naam wat blyk te wees \"Miskien is dit\", laat weet ons asseblief te dien effekte in die veld kommunikasie. In daardie geval, so sal ons soek per e-pos adres, indien jy 'n Skype in die nie-registrasie van die e-posadres ek dink dat as jy kan ook toegang tot die e-pos adres in die Skype geregistreer geregistreer gewees het.",
+            "auto_translated": "As absoluut Skype naam is onbekend, op die top van die vul in die veld insette 'n Skype naam wat blyk te wees \"Miskien is dit\", laat weet ons asseblief te dien effekte in die veld kommunikasie. In daardie geval, so sal ons soek per e-pos adres, indien jy 'n Skype in die nie-registrasie van die e-posadres ek dink dat as jy kan ook toegang tot die e-pos adres in die Skype geregistreer geregistreer gewees het."
+        },
+        "sw": {
+            "legacy_caption_pid": 38594,
+            "legacy_language_pid": 38,
+            "text": "Kama kabisa jina Skype haijulikani, juu ya kujaza katika uwanja pembejeo jina Skype kwamba inaonekana kuwa \"Pengine hii\", tafadhali hebu kujua kwa kuwa athari katika uwanja wa mawasiliano. Katika hali hiyo, hivyo tutakuwa kutafuta kwa barua pepe, kama umekuwa Skype amesajiliwa katika mashirika yasiyo ya usajili wa anwani ya barua pepe Nadhani kwamba kama unaweza kuunganisha pia anwani ya barua pepe amesajiliwa katika Skype.",
+            "auto_translated": "Kama kabisa jina Skype haijulikani, juu ya kujaza katika uwanja pembejeo jina Skype kwamba inaonekana kuwa \"Pengine hii\", tafadhali hebu kujua kwa kuwa athari katika uwanja wa mawasiliano. Katika hali hiyo, hivyo tutakuwa kutafuta kwa barua pepe, kama umekuwa Skype amesajiliwa katika mashirika yasiyo ya usajili wa anwani ya barua pepe Nadhani kwamba kama unaweza kuunganisha pia anwani ya barua pepe amesajiliwa katika Skype."
+        },
+        "lo": {
+            "legacy_caption_pid": 38595,
+            "legacy_language_pid": 39,
+            "text": "ຖ້າຫາກວ່າຢ່າງແທ້ຈິງຊື່ Skype ເປັນທີ່ຮູ້ຈັກ, ເທິງບ່ອນກໍເຕັມໄປໃນພາກສະຫນາມວັດຖຸດິບຊື່ Skype ທີ່ເບິ່ງຄືວ່າຈະເປັນ \"ບາງທີນີ້\" ກະລຸນາໃຫ້ພວກເຮົາຮູ້ທີ່ຈະມີຜົນກະທົບໃນພາກສະຫນາມການສື່ສານທີ່. ໃນກໍລະນີທີ່, ດັ່ງນັ້ນພວກເຮົາຈະຄົ້ນຫາໂດຍອີເມລ, ຖ້າຫາກວ່າທ່ານໄດ້ເປັນ Skype ໄດ້ລົງທະບຽນໃນທີ່ບໍ່ແມ່ນການຈົດທະບຽນທີ່ຢູ່ອີເມລຂອງຂ້າພະເຈົ້າຄິດວ່າຖ້າຫາກວ່າທ່ານສາມາດເຊື່ອມຕໍ່ຍັງໄປຫາທີ່ຢູ່ອີເມລທີ່ລົງທະບຽນໃນວັນສຸກ.",
+            "auto_translated": "ຖ້າຫາກວ່າຢ່າງແທ້ຈິງຊື່ Skype ເປັນທີ່ຮູ້ຈັກ, ເທິງບ່ອນກໍເຕັມໄປໃນພາກສະຫນາມວັດຖຸດິບຊື່ Skype ທີ່ເບິ່ງຄືວ່າຈະເປັນ \"ບາງທີນີ້\" ກະລຸນາໃຫ້ພວກເຮົາຮູ້ທີ່ຈະມີຜົນກະທົບໃນພາກສະຫນາມການສື່ສານທີ່. ໃນກໍລະນີທີ່, ດັ່ງນັ້ນພວກເຮົາຈະຄົ້ນຫາໂດຍອີເມລ, ຖ້າຫາກວ່າທ່ານໄດ້ເປັນ Skype ໄດ້ລົງທະບຽນໃນທີ່ບໍ່ແມ່ນການຈົດທະບຽນທີ່ຢູ່ອີເມລຂອງຂ້າພະເຈົ້າຄິດວ່າຖ້າຫາກວ່າທ່ານສາມາດເຊື່ອມຕໍ່ຍັງໄປຫາທີ່ຢູ່ອີເມລທີ່ລົງທະບຽນໃນວັນສຸກ."
+        },
+        "nl": {
+            "legacy_caption_pid": 38596,
+            "legacy_language_pid": 40,
+            "text": "Als absoluut Skype naam is onbekend, op de top van de vulling in het invoerveld een Skype-naam die lijkt te zijn \"Misschien is dit\", laat het ons weten in die zin op het gebied van communicatie. In dat geval, dus we zullen zoeken op een e-mailadres, als u een Skype in de niet-registratie van het e-mailadres Ik denk dat als je kan ook verbinding maken met de e-mail adres in de Skype-ingeschreven is geweest.",
+            "auto_translated": "Als absoluut Skype naam is onbekend, op de top van de vulling in het invoerveld een Skype-naam die lijkt te zijn \"Misschien is dit\", laat het ons weten in die zin op het gebied van communicatie. In dat geval, dus we zullen zoeken op een e-mailadres, als u een Skype in de niet-registratie van het e-mailadres Ik denk dat als je kan ook verbinding maken met de e-mail adres in de Skype-ingeschreven is geweest."
+        },
+        "tl": {
+            "legacy_caption_pid": 38597,
+            "legacy_language_pid": 41,
+            "text": "Kung ganap Skype name ay hindi kilala, sa itaas ng fill sa patlang ng input ng isang pangalan Skype na anyong \"Marahil ito\", mangyaring ipaalam sa amin na may ganitong epekto sa larangan ng komunikasyon. Sa kasong iyon, kaya kami ay maghanap sa pamamagitan ng e-mail address, kung ikaw ay isang Skype nakarehistro sa non-registration ng e-mail address na sa palagay ko na kung maaari mong ikonekta din sa mga e-mail address na nakarehistro sa Skype.",
+            "auto_translated": "Kung ganap Skype name ay hindi kilala, sa itaas ng fill sa patlang ng input ng isang pangalan Skype na anyong \"Marahil ito\", mangyaring ipaalam sa amin na may ganitong epekto sa larangan ng komunikasyon. Sa kasong iyon, kaya kami ay maghanap sa pamamagitan ng e-mail address, kung ikaw ay isang Skype nakarehistro sa non-registration ng e-mail address na sa palagay ko na kung maaari mong ikonekta din sa mga e-mail address na nakarehistro sa Skype."
+        },
+        "ne": {
+            "legacy_caption_pid": 38598,
+            "legacy_language_pid": 42,
+            "text": "बिल्कुल स्काइप नाम, अज्ञात छ भने इनपुट क्षेत्रमा भरण को शीर्ष मा जस्तो देखिन्छ कि एक स्काइप नाम \"सायद यो\", कृपया हामीलाई संचार क्षेत्रमा कि प्रभाव थाहा दिनुहोस्। त्यस अवस्थामा, त्यसैले हामी द्वारा ई-मेल ठेगाना, तपाईं एक स्काइप ई-मेल ठेगाना म तपाईंलाई स्काइप मा दर्ता ई-मेल ठेगाना पनि जडान गर्न सक्नुहुन्छ भने त्यो विचार को गैर-दर्ता मा दर्ता गरिएको छ भने खोजी हुनेछ।",
+            "auto_translated": "बिल्कुल स्काइप नाम, अज्ञात छ भने इनपुट क्षेत्रमा भरण को शीर्ष मा जस्तो देखिन्छ कि एक स्काइप नाम \"सायद यो\", कृपया हामीलाई संचार क्षेत्रमा कि प्रभाव थाहा दिनुहोस्। त्यस अवस्थामा, त्यसैले हामी द्वारा ई-मेल ठेगाना, तपाईं एक स्काइप ई-मेल ठेगाना म तपाईंलाई स्काइप मा दर्ता ई-मेल ठेगाना पनि जडान गर्न सक्नुहुन्छ भने त्यो विचार को गैर-दर्ता मा दर्ता गरिएको छ भने खोजी हुनेछ।"
+        },
+        "hu": {
+            "legacy_caption_pid": 38599,
+            "legacy_language_pid": 43,
+            "text": "Ha egyáltalán Skype neve ismeretlen, a tetején a kitöltés a beviteli mezőbe a Skype nevet, amely úgy tűnik, hogy „Talán ez”, kérjük ossza meg velünk, hogy ebben az értelemben a kommunikáció terén. Ebben az esetben így fog keresni e-mail címét, ha már a Skype regisztrált a nem-nyilvántartásba az e-mail cím azt hiszem, hogy tud-e csatlakozni is, hogy az e-mail címet a Skype.",
+            "auto_translated": "Ha egyáltalán Skype neve ismeretlen, a tetején a kitöltés a beviteli mezőbe a Skype nevet, amely úgy tűnik, hogy „Talán ez”, kérjük ossza meg velünk, hogy ebben az értelemben a kommunikáció terén. Ebben az esetben így fog keresni e-mail címét, ha már a Skype regisztrált a nem-nyilvántartásba az e-mail cím azt hiszem, hogy tud-e csatlakozni is, hogy az e-mail címet a Skype."
+        },
+        "cs": {
+            "legacy_caption_pid": 38600,
+            "legacy_language_pid": 44,
+            "text": "Pokud je to nezbytně jméno Skype je neznámý, v horní části náplně do vstupního pole název Skype, která se zdá být „Možná, že tento“, dejte nám prosím vědět v tomto smyslu v oblasti komunikace. V tomto případě, tak budeme hledat podle e-mailovou adresu, pokud jste byli Skype zapsána v non-registraci e-mailové adresy si myslím, že pokud se můžete připojit také na e-mailovou adresu registrovanou ve Skype.",
+            "auto_translated": "Pokud je to nezbytně jméno Skype je neznámý, v horní části náplně do vstupního pole název Skype, která se zdá být „Možná, že tento“, dejte nám prosím vědět v tomto smyslu v oblasti komunikace. V tomto případě, tak budeme hledat podle e-mailovou adresu, pokud jste byli Skype zapsána v non-registraci e-mailové adresy si myslím, že pokud se můžete připojit také na e-mailovou adresu registrovanou ve Skype."
+        },
+        "el": {
+            "legacy_caption_pid": 38601,
+            "legacy_language_pid": 45,
+            "text": "Αν απολύτως όνομα Skype είναι άγνωστη, στην κορυφή της πλήρωσης στο πεδίο εισαγωγής ένα όνομα Skype που φαίνεται να είναι «Ίσως αυτό», παρακαλούμε ενημερώστε μας για το σκοπό αυτό στον τομέα της επικοινωνίας. Σε αυτή την περίπτωση, γι 'αυτό θα αναζητήσει με βάση τη διεύθυνση e-mail, αν έχετε μια Skype είναι νηολογημένα σε μη καταχώριση της διεύθυνσης e-mail Νομίζω ότι αν μπορείτε να συνδεθείτε και στην ηλεκτρονική διεύθυνση καταχωρηθεί στο Skype.",
+            "auto_translated": "Αν απολύτως όνομα Skype είναι άγνωστη, στην κορυφή της πλήρωσης στο πεδίο εισαγωγής ένα όνομα Skype που φαίνεται να είναι «Ίσως αυτό», παρακαλούμε ενημερώστε μας για το σκοπό αυτό στον τομέα της επικοινωνίας. Σε αυτή την περίπτωση, γι 'αυτό θα αναζητήσει με βάση τη διεύθυνση e-mail, αν έχετε μια Skype είναι νηολογημένα σε μη καταχώριση της διεύθυνσης e-mail Νομίζω ότι αν μπορείτε να συνδεθείτε και στην ηλεκτρονική διεύθυνση καταχωρηθεί στο Skype."
+        },
+        "sv": {
+            "legacy_caption_pid": 38602,
+            "legacy_language_pid": 46,
+            "text": "Om det är absolut Skype-namn är okänt, på toppen av fyllningen i inmatningsfältet ett Skype-namn som verkar vara \"Kanske\", vänligen meddela oss om detta inom området kommunikation. I så fall, så vi kommer att söka efter e-postadress, om du har varit en Skype registrerat i den icke-registrering av e-postadress Jag tror att om du kan också ansluta till e-postadressen är registrerat i Skype.",
+            "auto_translated": "Om det är absolut Skype-namn är okänt, på toppen av fyllningen i inmatningsfältet ett Skype-namn som verkar vara \"Kanske\", vänligen meddela oss om detta inom området kommunikation. I så fall, så vi kommer att söka efter e-postadress, om du har varit en Skype registrerat i den icke-registrering av e-postadress Jag tror att om du kan också ansluta till e-postadressen är registrerat i Skype."
+        },
+        "kk": {
+            "legacy_caption_pid": 38603,
+            "legacy_language_pid": 47,
+            "text": "мүлдем Skype аты енгізу жолағына толтырыңыз үстіне, «Мүмкін, бұл» болып көрінеді Skype аты белгісіз болса, бізге байланыс саласындағы осы мақсатта хабарлаңыз. Бұл жағдайда, сондықтан сіз Мен сізге Skype тіркелген электрондық пошта мекен-жайы, сондай-ақ қосылуға болады, егер деп ойлаймын электрондық пошта мекен-жайы емес тіркеу тіркелген Skype болды, егер біз, электрондық пошта мекен-жайы арқылы іздеуге болады.",
+            "auto_translated": "мүлдем Skype аты енгізу жолағына толтырыңыз үстіне, «Мүмкін, бұл» болып көрінеді Skype аты белгісіз болса, бізге байланыс саласындағы осы мақсатта хабарлаңыз. Бұл жағдайда, сондықтан сіз Мен сізге Skype тіркелген электрондық пошта мекен-жайы, сондай-ақ қосылуға болады, егер деп ойлаймын электрондық пошта мекен-жайы емес тіркеу тіркелген Skype болды, егер біз, электрондық пошта мекен-жайы арқылы іздеуге болады."
+        },
+        "fi": {
+            "legacy_caption_pid": 38604,
+            "legacy_language_pid": 48,
+            "text": "Jos se on ehdottoman Skype-nimi on tuntematon, päälle täytön syöttökenttään Skype nimi joka näyttää olevan \"Ehkä tämä\", kerro meille vastaavasti tiedonannossa kenttään. Siinä tapauksessa, joten meidän etsiä sähköpostiosoitteen, jos olet ollut Skype rekisteröity ei rekisteröintiä sähköpostiosoitteen Uskon, että jos voit liittää myös sähköpostiosoitteeseen rekisteröity Skypen.",
+            "auto_translated": "Jos se on ehdottoman Skype-nimi on tuntematon, päälle täytön syöttökenttään Skype nimi joka näyttää olevan \"Ehkä tämä\", kerro meille vastaavasti tiedonannossa kenttään. Siinä tapauksessa, joten meidän etsiä sähköpostiosoitteen, jos olet ollut Skype rekisteröity ei rekisteröintiä sähköpostiosoitteen Uskon, että jos voit liittää myös sähköpostiosoitteeseen rekisteröity Skypen."
+        },
+        "da": {
+            "legacy_caption_pid": 38605,
+            "legacy_language_pid": 49,
+            "text": "Hvis absolut Skype navn er ukendt, på toppen af ​​fyldet i indtastningsfeltet et Skype-navn, der synes at være \"Måske\", så lad os vide herom i kommunikationsområdet. I så fald, så vi vil søge efter e-mail-adresse, hvis du har været en Skype registreret i den ikke-registrering af e-mail-adresse, jeg tror, ​​at hvis du også kan oprette forbindelse til e-mail-adresse, der er registreret i Skype.",
+            "auto_translated": "Hvis absolut Skype navn er ukendt, på toppen af ​​fyldet i indtastningsfeltet et Skype-navn, der synes at være \"Måske\", så lad os vide herom i kommunikationsområdet. I så fald, så vi vil søge efter e-mail-adresse, hvis du har været en Skype registreret i den ikke-registrering af e-mail-adresse, jeg tror, ​​at hvis du også kan oprette forbindelse til e-mail-adresse, der er registreret i Skype."
+        },
+        "he": {
+            "legacy_caption_pid": 38606,
+            "legacy_language_pid": 50,
+            "text": "אם ממש שם סקייפ אינו ידוע, על גבי המילוי בתחום הקלט שם סקייפ כי נראה \"אולי זה\", אנא הודע לנו על כך בתחום התקשורת. במקרה כזה, כך נוכל לחפש לפי כתובת דואר אלקטרוני, אם היית סקייפ רשום אי רישום של כתובת הדואר האלקטרוני אני חושב שאם אתה יכול להתחבר גם לכתובת הדואר האלקטרוני הרשום סקייפ.",
+            "auto_translated": "אם ממש שם סקייפ אינו ידוע, על גבי המילוי בתחום הקלט שם סקייפ כי נראה \"אולי זה\", אנא הודע לנו על כך בתחום התקשורת. במקרה כזה, כך נוכל לחפש לפי כתובת דואר אלקטרוני, אם היית סקייפ רשום אי רישום של כתובת הדואר האלקטרוני אני חושב שאם אתה יכול להתחבר גם לכתובת הדואר האלקטרוני הרשום סקייפ."
+        },
+        "no": {
+            "legacy_caption_pid": 38607,
+            "legacy_language_pid": 51,
+            "text": "Hvis det er absolutt Skype navn er ukjent, på toppen av fyllingen i inntastingsfeltet et Skype-navn som ser ut til å være \"Kanskje dette\", vennligst gi oss beskjed om dette i kommunikasjon feltet. I så fall, så vi vil søke etter e-postadresse, hvis du har vært en Skype registrert i den ikke-registrering av e-postadressen Jeg tror at hvis du kan også koble til e-postadressen som er registrert i Skype.",
+            "auto_translated": "Hvis det er absolutt Skype navn er ukjent, på toppen av fyllingen i inntastingsfeltet et Skype-navn som ser ut til å være \"Kanskje dette\", vennligst gi oss beskjed om dette i kommunikasjon feltet. I så fall, så vi vil søke etter e-postadresse, hvis du har vært en Skype registrert i den ikke-registrering av e-postadressen Jeg tror at hvis du kan også koble til e-postadressen som er registrert i Skype."
+        }
+    }
+}

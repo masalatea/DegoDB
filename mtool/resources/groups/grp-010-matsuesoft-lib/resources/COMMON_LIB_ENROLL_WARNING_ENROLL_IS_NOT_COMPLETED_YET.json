@@ -1,0 +1,321 @@
+{
+    "resource_key": "COMMON_LIB_ENROLL_WARNING_ENROLL_IS_NOT_COMPLETED_YET",
+    "legacy_resource_pid": 1573,
+    "base_group_key": "grp-010-matsuesoft-lib",
+    "additional_group_keys": [],
+    "key_for_update": "zs5aX2C0NT3NmszmnS6O0AUhu1c8BwEMdl1o9J3pHU7XcoKbexlSOyA4Jp2Wrqh10yM8fLURQWNAHhtq9SaSk6FlWvlbPpaiHZSL07l1zcMbC3vkINjY41QqWPHGaHm2",
+    "sort_group": "ENROLL",
+    "key_name": "COMMON_LIB_ENROLL_WARNING_ENROLL_IS_NOT_COMPLETED_YET",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": false,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 7074,
+            "legacy_language_pid": 1,
+            "text": "＜注意：まだ登録処理は完了していません＞",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 7075,
+            "legacy_language_pid": 2,
+            "text": "<Note: registration processing has not completed yet>",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 7076,
+            "legacy_language_pid": 3,
+            "text": "<注意：注册还没有结束>",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 7077,
+            "legacy_language_pid": 4,
+            "text": "<주의 : 아직 등록 처리가 완료되지 않았습니다>",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 10922,
+            "legacy_language_pid": 5,
+            "text": "<Nota: el proceso de registro aún no ha finalizado>",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 10923,
+            "legacy_language_pid": 6,
+            "text": "<Nota: o processo de registro ainda não foi concluído>",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 10924,
+            "legacy_language_pid": 7,
+            "text": "<注意：註冊還沒有結束>",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 17053,
+            "legacy_language_pid": 8,
+            "text": "<Note: le traitement d'enregistrement n'a pas encore terminé>",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 17054,
+            "legacy_language_pid": 9,
+            "text": "<नोट: पंजीकरण प्रक्रिया अभी तक पूरा नहीं हुई है>",
+            "auto_translated": ""
+        },
+        "ar": {
+            "legacy_caption_pid": 31900,
+            "legacy_language_pid": 10,
+            "text": "<ملاحظة: لا تزال عملية التسجيل لم تكتمل>",
+            "auto_translated": "<ملاحظة: لا تزال عملية التسجيل لم تكتمل>"
+        },
+        "fa": {
+            "legacy_caption_pid": 31901,
+            "legacy_language_pid": 11,
+            "text": "<توجه: هنوز در مراحل ثبت نام کامل نیست>",
+            "auto_translated": "<توجه: هنوز در مراحل ثبت نام کامل نیست>"
+        },
+        "de": {
+            "legacy_caption_pid": 31902,
+            "legacy_language_pid": 12,
+            "text": "<Hinweis: immer noch der Registrierungsprozess ist nicht abgeschlossen>",
+            "auto_translated": "<Hinweis: immer noch der Registrierungsprozess ist nicht abgeschlossen>"
+        },
+        "ru": {
+            "legacy_caption_pid": 31903,
+            "legacy_language_pid": 13,
+            "text": "<Примечание: до сих пор процесс регистрации не завершен>",
+            "auto_translated": "<Примечание: до сих пор процесс регистрации не завершен>"
+        },
+        "ms": {
+            "legacy_caption_pid": 31904,
+            "legacy_language_pid": 14,
+            "text": "<Nota: masih proses pendaftaran tidak lengkap>",
+            "auto_translated": "<Nota: masih proses pendaftaran tidak lengkap>"
+        },
+        "ta": {
+            "legacy_caption_pid": 31905,
+            "legacy_language_pid": 15,
+            "text": "<குறிப்பு: இன்னும் பதிவு பணியை முடிக்க இல்லை>",
+            "auto_translated": "<குறிப்பு: இன்னும் பதிவு பணியை முடிக்க இல்லை>"
+        },
+        "it": {
+            "legacy_caption_pid": 31906,
+            "legacy_language_pid": 16,
+            "text": "<Nota: ancora il processo di registrazione non è completo>",
+            "auto_translated": "<Nota: ancora il processo di registrazione non è completo>"
+        },
+        "bn": {
+            "legacy_caption_pid": 31907,
+            "legacy_language_pid": 17,
+            "text": "<নোট: এখনও রেজিস্ট্রেশন প্রক্রিয়া সম্পন্ন করা হয় না>",
+            "auto_translated": "<নোট: এখনও রেজিস্ট্রেশন প্রক্রিয়া সম্পন্ন করা হয় না>"
+        },
+        "tr": {
+            "legacy_caption_pid": 31908,
+            "legacy_language_pid": 18,
+            "text": "<Not: hala kayıt işlemi tamamlanmadı>",
+            "auto_translated": "<Not: hala kayıt işlemi tamamlanmadı>"
+        },
+        "vi": {
+            "legacy_caption_pid": 31909,
+            "legacy_language_pid": 19,
+            "text": "<Lưu ý: vẫn là quá trình đăng ký là không hoàn thành>",
+            "auto_translated": "<Lưu ý: vẫn là quá trình đăng ký là không hoàn thành>"
+        },
+        "pl": {
+            "legacy_caption_pid": 31910,
+            "legacy_language_pid": 20,
+            "text": "<Uwaga: nadal proces rejestracji nie jest kompletna>",
+            "auto_translated": "<Uwaga: nadal proces rejestracji nie jest kompletna>"
+        },
+        "jv": {
+            "legacy_caption_pid": 31911,
+            "legacy_language_pid": 21,
+            "text": "<Wigati: isih ing proses registrasi ora ngrampungake>",
+            "auto_translated": "<Wigati: isih ing proses registrasi ora ngrampungake>"
+        },
+        "pa": {
+            "legacy_caption_pid": 31912,
+            "legacy_language_pid": 22,
+            "text": "<ਨੋਟ: ਅਜੇ ਰਜਿਸਟਰੇਸ਼ਨ ਦੀ ਪ੍ਰਕਿਰਿਆ ਨੂੰ ਪੂਰਾ ਨਾ ਕੀਤਾ ਗਿਆ ਹੈ>",
+            "auto_translated": "<ਨੋਟ: ਅਜੇ ਰਜਿਸਟਰੇਸ਼ਨ ਦੀ ਪ੍ਰਕਿਰਿਆ ਨੂੰ ਪੂਰਾ ਨਾ ਕੀਤਾ ਗਿਆ ਹੈ>"
+        },
+        "th": {
+            "legacy_caption_pid": 31913,
+            "legacy_language_pid": 23,
+            "text": "<หมายเหตุ: ยังคงการลงทะเบียนไม่สมบูรณ์>",
+            "auto_translated": "<หมายเหตุ: ยังคงการลงทะเบียนไม่สมบูรณ์>"
+        },
+        "te": {
+            "legacy_caption_pid": 38328,
+            "legacy_language_pid": 24,
+            "text": "<గమనిక: ఇప్పటికీ నమోదు ప్రక్రియ పూర్తి కాదు>",
+            "auto_translated": "<గమనిక: ఇప్పటికీ నమోదు ప్రక్రియ పూర్తి కాదు>"
+        },
+        "mr": {
+            "legacy_caption_pid": 38329,
+            "legacy_language_pid": 25,
+            "text": "<टीप: अजूनही नोंदणी प्रक्रिया पूर्ण नाही आहे>",
+            "auto_translated": "<टीप: अजूनही नोंदणी प्रक्रिया पूर्ण नाही आहे>"
+        },
+        "ur": {
+            "legacy_caption_pid": 38330,
+            "legacy_language_pid": 26,
+            "text": "<نوٹ: اب بھی رجسٹریشن کے عمل کو مکمل نہیں کیا گیا ہے>",
+            "auto_translated": "<نوٹ: اب بھی رجسٹریشن کے عمل کو مکمل نہیں کیا گیا ہے>"
+        },
+        "gu": {
+            "legacy_caption_pid": 38331,
+            "legacy_language_pid": 27,
+            "text": "<નોંધ: હજુ નોંધણી પ્રક્રિયા પૂર્ણ ન થાય>",
+            "auto_translated": "<નોંધ: હજુ નોંધણી પ્રક્રિયા પૂર્ણ ન થાય>"
+        },
+        "uk": {
+            "legacy_caption_pid": 38332,
+            "legacy_language_pid": 28,
+            "text": "<Примітка: до сих пір процес реєстрації не завершений>",
+            "auto_translated": "<Примітка: до сих пір процес реєстрації не завершений>"
+        },
+        "ml": {
+            "legacy_caption_pid": 38333,
+            "legacy_language_pid": 29,
+            "text": "<കുറിപ്പ്: ഇപ്പോഴും രജിസ്ട്രേഷൻ പ്രക്രിയ പൂർത്തിയാക്കാൻ ആണ്>",
+            "auto_translated": "<കുറിപ്പ്: ഇപ്പോഴും രജിസ്ട്രേഷൻ പ്രക്രിയ പൂർത്തിയാക്കാൻ ആണ്>"
+        },
+        "kn": {
+            "legacy_caption_pid": 38334,
+            "legacy_language_pid": 30,
+            "text": "<ಗಮನಿಸಿ: ಇನ್ನೂ ನೋಂದಣಿ ಪ್ರಕ್ರಿಯೆ ಪೂರ್ಣಗೊಳಿಸಲು ಇದೆ>",
+            "auto_translated": "<ಗಮನಿಸಿ: ಇನ್ನೂ ನೋಂದಣಿ ಪ್ರಕ್ರಿಯೆ ಪೂರ್ಣಗೊಳಿಸಲು ಇದೆ>"
+        },
+        "su": {
+            "legacy_caption_pid": 38335,
+            "legacy_language_pid": 31,
+            "text": "<Catetan: masih dina prosés pendaptaran henteu ngalengkepan>",
+            "auto_translated": "<Catetan: masih dina prosés pendaptaran henteu ngalengkepan>"
+        },
+        "ku": {
+            "legacy_caption_pid": 38336,
+            "legacy_language_pid": 32,
+            "text": "<Têbînî: hê jî pêvajoya qeydkirinê, ku hê temam nebûye>",
+            "auto_translated": "<Têbînî: hê jî pêvajoya qeydkirinê, ku hê temam nebûye>"
+        },
+        "ps": {
+            "legacy_caption_pid": 38337,
+            "legacy_language_pid": 33,
+            "text": "<يادونه: اوس هم د نوم ليکنې د بهير د بشپړېدو نه>",
+            "auto_translated": "<يادونه: اوس هم د نوم ليکنې د بهير د بشپړېدو نه>"
+        },
+        "ro": {
+            "legacy_caption_pid": 38338,
+            "legacy_language_pid": 34,
+            "text": "<Notă: în continuare procesul de înregistrare nu este completă>",
+            "auto_translated": "<Notă: în continuare procesul de înregistrare nu este completă>"
+        },
+        "id": {
+            "legacy_caption_pid": 38339,
+            "legacy_language_pid": 35,
+            "text": "<Catatan: masih proses pendaftaran tidak lengkap>",
+            "auto_translated": "<Catatan: masih proses pendaftaran tidak lengkap>"
+        },
+        "sd": {
+            "legacy_caption_pid": 38340,
+            "legacy_language_pid": 36,
+            "text": "<نوٽ: اڃا رجسٽريشن جي عمل ۾ مڪمل نه آهي>",
+            "auto_translated": "<نوٽ: اڃا رجسٽريشن جي عمل ۾ مڪمل نه آهي>"
+        },
+        "af": {
+            "legacy_caption_pid": 38341,
+            "legacy_language_pid": 37,
+            "text": "<Nota: nog die registrasieproses is nie voltooi>",
+            "auto_translated": "<Nota: nog die registrasieproses is nie voltooi>"
+        },
+        "sw": {
+            "legacy_caption_pid": 38342,
+            "legacy_language_pid": 38,
+            "text": "<Kumbuka: bado mchakato wa usajili ni kukamilisha>",
+            "auto_translated": "<Kumbuka: bado mchakato wa usajili ni kukamilisha>"
+        },
+        "lo": {
+            "legacy_caption_pid": 38343,
+            "legacy_language_pid": 39,
+            "text": "<ຫມາຍເຫດ: ຍັງຂະບວນການຈົດທະບຽນທີ່ບໍ່ໄດ້ສໍາເລັດ>",
+            "auto_translated": "<ຫມາຍເຫດ: ຍັງຂະບວນການຈົດທະບຽນທີ່ບໍ່ໄດ້ສໍາເລັດ>"
+        },
+        "nl": {
+            "legacy_caption_pid": 38344,
+            "legacy_language_pid": 40,
+            "text": "<Let op: nog steeds het registratieproces is niet compleet>",
+            "auto_translated": "<Let op: nog steeds het registratieproces is niet compleet>"
+        },
+        "tl": {
+            "legacy_caption_pid": 38345,
+            "legacy_language_pid": 41,
+            "text": "<Tandaan: pa rin ang proseso ng pagpaparehistro hindi pa kumpleto>",
+            "auto_translated": "<Tandaan: pa rin ang proseso ng pagpaparehistro hindi pa kumpleto>"
+        },
+        "ne": {
+            "legacy_caption_pid": 38346,
+            "legacy_language_pid": 42,
+            "text": "<नोट: अझै पनि दर्ता प्रक्रिया पूरा छैन>",
+            "auto_translated": "<नोट: अझै पनि दर्ता प्रक्रिया पूरा छैन>"
+        },
+        "hu": {
+            "legacy_caption_pid": 38347,
+            "legacy_language_pid": 43,
+            "text": "<Megjegyzés: még mindig a regisztrációs folyamat nem teljes>",
+            "auto_translated": "<Megjegyzés: még mindig a regisztrációs folyamat nem teljes>"
+        },
+        "cs": {
+            "legacy_caption_pid": 38348,
+            "legacy_language_pid": 44,
+            "text": "<Poznámka: stále registrační proces není kompletní>",
+            "auto_translated": "<Poznámka: stále registrační proces není kompletní>"
+        },
+        "el": {
+            "legacy_caption_pid": 38349,
+            "legacy_language_pid": 45,
+            "text": "<Σημείωση: ακόμα η διαδικασία εγγραφής δεν έχει ολοκληρωθεί>",
+            "auto_translated": "<Σημείωση: ακόμα η διαδικασία εγγραφής δεν έχει ολοκληρωθεί>"
+        },
+        "sv": {
+            "legacy_caption_pid": 38350,
+            "legacy_language_pid": 46,
+            "text": "<Notera: fortfarande registreringsprocessen inte slutföra>",
+            "auto_translated": "<Notera: fortfarande registreringsprocessen inte slutföra>"
+        },
+        "kk": {
+            "legacy_caption_pid": 38351,
+            "legacy_language_pid": 47,
+            "text": "<Ескерту: әлі күнге дейін тіркеу процесі аяқталған жоқ>",
+            "auto_translated": "<Ескерту: әлі күнге дейін тіркеу процесі аяқталған жоқ>"
+        },
+        "fi": {
+            "legacy_caption_pid": 38352,
+            "legacy_language_pid": 48,
+            "text": "<Huom vielä rekisteröintiprosessi ei ole valmis>",
+            "auto_translated": "<Huom vielä rekisteröintiprosessi ei ole valmis>"
+        },
+        "da": {
+            "legacy_caption_pid": 38353,
+            "legacy_language_pid": 49,
+            "text": "<Bemærk: stadig registreringsprocessen er ikke komplet>",
+            "auto_translated": "<Bemærk: stadig registreringsprocessen er ikke komplet>"
+        },
+        "he": {
+            "legacy_caption_pid": 38354,
+            "legacy_language_pid": 50,
+            "text": "<הערה: עדיין תהליך ההרשמה לא הושלם>",
+            "auto_translated": "<הערה: עדיין תהליך ההרשמה לא הושלם>"
+        },
+        "no": {
+            "legacy_caption_pid": 38355,
+            "legacy_language_pid": 51,
+            "text": "<Merk: fortsatt registreringsprosessen ikke er fullstendig>",
+            "auto_translated": "<Merk: fortsatt registreringsprosessen ikke er fullstendig>"
+        }
+    }
+}

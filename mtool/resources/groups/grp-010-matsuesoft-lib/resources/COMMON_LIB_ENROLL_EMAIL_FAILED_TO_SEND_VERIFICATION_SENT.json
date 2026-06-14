@@ -1,0 +1,321 @@
+{
+    "resource_key": "COMMON_LIB_ENROLL_EMAIL_FAILED_TO_SEND_VERIFICATION_SENT",
+    "legacy_resource_pid": 1447,
+    "base_group_key": "grp-010-matsuesoft-lib",
+    "additional_group_keys": [],
+    "key_for_update": "EByXF2Huzz3I58trNvhdChkVzKDVw1W6191laANWbQ74DHTkN9UvsqXc3JE7z5LJvbvwZysZ391QdqhtRg1VxU1iXCjKJ5EszoDCOFgP8v90IqlemifBKWeQxDtBtTiy",
+    "sort_group": "ENROLL EMAIL",
+    "key_name": "COMMON_LIB_ENROLL_EMAIL_FAILED_TO_SEND_VERIFICATION_SENT",
+    "key_name_for_xcode": "",
+    "uwp_target_property": "",
+    "is_resource_fixed": false,
+    "use_default_if_caption_is_blank": true,
+    "captions": {
+        "ja": {
+            "legacy_caption_pid": 6062,
+            "legacy_language_pid": 1,
+            "text": "メールアドレス認証のためのメール送信中にエラーが発生致しました。お手数でございますが、会員ページログイン後に再度メールアドレス認証の手続きをお願い致します。",
+            "auto_translated": ""
+        },
+        "en": {
+            "legacy_caption_pid": 6063,
+            "legacy_language_pid": 2,
+            "text": "Error occured while sending email of email verification. Please retry to verify email in Profile Page. Sorry for inconvenience.",
+            "auto_translated": ""
+        },
+        "zh-CN": {
+            "legacy_caption_pid": 6064,
+            "legacy_language_pid": 3,
+            "text": "邮件发送的电子邮件地址认证过程中会发生错误。请在会员页面登录后，我们将再次给您发认证邮件。",
+            "auto_translated": ""
+        },
+        "ko": {
+            "legacy_caption_pid": 6065,
+            "legacy_language_pid": 4,
+            "text": "이메일 주소 인증을 위해 이메일을 보내는 동안 오류가 발생했습니다. 번거로우시겠지만 회원 페이지 로그인 후 다시 이메일 인증해주시기 바랍니다.",
+            "auto_translated": ""
+        },
+        "es": {
+            "legacy_caption_pid": 10943,
+            "legacy_language_pid": 5,
+            "text": "Se ha producido un error al enviar un correo electrónico de verificación de correo electrónico. Vuelva a intentar verificar el correo electrónico en la página de perfil. Disculpa las molestias.",
+            "auto_translated": ""
+        },
+        "pt": {
+            "legacy_caption_pid": 10944,
+            "legacy_language_pid": 6,
+            "text": "Ocorreu um erro ao enviar o email de verificação de e-mail. Por favor, tente novamente verificar o email na Página de Perfil. Desculpe pelo inconveniente.",
+            "auto_translated": ""
+        },
+        "zh-TW": {
+            "legacy_caption_pid": 10945,
+            "legacy_language_pid": 7,
+            "text": "郵件發送的電子郵件地址認證過程中會發生錯誤。請在會員頁面登錄後，我們將再次給您發認證郵件。",
+            "auto_translated": ""
+        },
+        "fr": {
+            "legacy_caption_pid": 17057,
+            "legacy_language_pid": 8,
+            "text": "Une erreur s'est produite lors de l'envoi d'un email de vérification par courrier électronique. Veuillez réessayer de vérifier le courrier électronique dans la page de profil. Désolé pour les inconvénients.",
+            "auto_translated": ""
+        },
+        "hi": {
+            "legacy_caption_pid": 17058,
+            "legacy_language_pid": 9,
+            "text": "ईमेल सत्यापन का ईमेल भेजने में त्रुटि हुई कृपया प्रोफ़ाइल पृष्ठ में ईमेल सत्यापित करने का पुन: प्रयास करें असुविधा के लिए खेद है।",
+            "auto_translated": ""
+        },
+        "ar": {
+            "legacy_caption_pid": 31970,
+            "legacy_language_pid": 10,
+            "text": "سيحدث خطأ أثناء نقل البريد للحصول على مصادقة البريد الإلكتروني. هناك آسف لك المتاعب، ولكن، من فضلك أعطني إجراءات المصادقة عنوان إعادة الالكتروني بعد تسجيل الدخول الصفحة الأعضاء.",
+            "auto_translated": "سيحدث خطأ أثناء نقل البريد للحصول على مصادقة البريد الإلكتروني. هناك آسف لك المتاعب، ولكن، من فضلك أعطني إجراءات المصادقة عنوان إعادة الالكتروني بعد تسجيل الدخول الصفحة الأعضاء."
+        },
+        "fa": {
+            "legacy_caption_pid": 31971,
+            "legacy_language_pid": 11,
+            "text": "یک خطا در طول انتقال ایمیل را برای احراز هویت آدرس ایمیل رخ دهد. است با عرض پوزش به مشکل شما وجود دارد، اما، لطفا به من به این روش از احراز هویت آدرس مجدد ایمیل را پس از ورود به صفحه عضو.",
+            "auto_translated": "یک خطا در طول انتقال ایمیل را برای احراز هویت آدرس ایمیل رخ دهد. است با عرض پوزش به مشکل شما وجود دارد، اما، لطفا به من به این روش از احراز هویت آدرس مجدد ایمیل را پس از ورود به صفحه عضو."
+        },
+        "de": {
+            "legacy_caption_pid": 31972,
+            "legacy_language_pid": 12,
+            "text": "Ein Fehler wird bei der Mail-Übertragung für die E-Mail-Adresse Authentifizierung auftreten. Es gibt Entschuldigen Sie die Störung, aber, bitte geben Sie mir die Verfahren zur Wieder-Mail-Adresse Authentifizierung nach der Mitgliederseite einloggen.",
+            "auto_translated": "Ein Fehler wird bei der Mail-Übertragung für die E-Mail-Adresse Authentifizierung auftreten. Es gibt Entschuldigen Sie die Störung, aber, bitte geben Sie mir die Verfahren zur Wieder-Mail-Adresse Authentifizierung nach der Mitgliederseite einloggen."
+        },
+        "ru": {
+            "legacy_caption_pid": 31973,
+            "legacy_language_pid": 13,
+            "text": "будут происходить ошибка во время передачи почты для аутентификации адреса электронной почты. Существует жаль беспокоить вас, но, пожалуйста, дайте мне процедуру аутентификации адреса повторно почты после того, как страницу Вход для зарегистрированных пользователей.",
+            "auto_translated": "будут происходить ошибка во время передачи почты для аутентификации адреса электронной почты. Существует жаль беспокоить вас, но, пожалуйста, дайте мне процедуру аутентификации адреса повторно почты после того, как страницу Вход для зарегистрированных пользователей."
+        },
+        "ms": {
+            "legacy_caption_pid": 31974,
+            "legacy_language_pid": 14,
+            "text": "Ralat berlaku semasa penghantaran mel untuk pengesahan alamat e-mel. Terdapat maaf untuk masalah anda, tetapi, sila berikan saya prosedur pengesahan alamat semula mel selepas log masuk laman ahli.",
+            "auto_translated": "Ralat berlaku semasa penghantaran mel untuk pengesahan alamat e-mel. Terdapat maaf untuk masalah anda, tetapi, sila berikan saya prosedur pengesahan alamat semula mel selepas log masuk laman ahli."
+        },
+        "ta": {
+            "legacy_caption_pid": 31975,
+            "legacy_language_pid": 15,
+            "text": "மின்னஞ்சல் முகவரியை அங்கீகார மெயில் பரிமாற்றம் செய்கையில் பிழை ஏற்படும். அங்கு நீங்கள் ஆனால், என்னை மீண்டும் மெயில் முகவரியை அங்கீகார செயல்முறை உறுப்பினராக பக்கம் உள்நுழைவு பிறகு கொடுங்கள் பிரச்சனையில் வருந்துகிறது.",
+            "auto_translated": "மின்னஞ்சல் முகவரியை அங்கீகார மெயில் பரிமாற்றம் செய்கையில் பிழை ஏற்படும். அங்கு நீங்கள் ஆனால், என்னை மீண்டும் மெயில் முகவரியை அங்கீகார செயல்முறை உறுப்பினராக பக்கம் உள்நுழைவு பிறகு கொடுங்கள் பிரச்சனையில் வருந்துகிறது."
+        },
+        "it": {
+            "legacy_caption_pid": 31976,
+            "legacy_language_pid": 16,
+            "text": "si verificherà un errore durante la trasmissione elettronica per l'autenticazione degli indirizzi di posta elettronica. C'è dispiace disturbarla, ma, per favore dammi la procedura di autenticazione degli indirizzi ri-mail dopo la pagina Entra.",
+            "auto_translated": "si verificherà un errore durante la trasmissione elettronica per l'autenticazione degli indirizzi di posta elettronica. C'è dispiace disturbarla, ma, per favore dammi la procedura di autenticazione degli indirizzi ri-mail dopo la pagina Entra."
+        },
+        "bn": {
+            "legacy_caption_pid": 31977,
+            "legacy_language_pid": 17,
+            "text": "ই-মেইল ঠিকানা প্রমাণীকরণের জন্য মেইল ​​সংক্রমণ সময় একটি ত্রুটি ঘটবে। সেখানে বিরক্ত করার জন্য দুঃখিত, কিন্তু আমাকে পুনরায়-মেইল ঠিকানা প্রমাণীকরণ পদ্ধতি সদস্য পৃষ্ঠা লগইন করার পরে দিন হয়।",
+            "auto_translated": "ই-মেইল ঠিকানা প্রমাণীকরণের জন্য মেইল ​​সংক্রমণ সময় একটি ত্রুটি ঘটবে। সেখানে বিরক্ত করার জন্য দুঃখিত, কিন্তু আমাকে পুনরায়-মেইল ঠিকানা প্রমাণীকরণ পদ্ধতি সদস্য পৃষ্ঠা লগইন করার পরে দিন হয়।"
+        },
+        "tr": {
+            "legacy_caption_pid": 31978,
+            "legacy_language_pid": 18,
+            "text": "Bir hata, e-posta adresi, kimlik doğrulama için posta iletimi sırasında meydana gelecektir. Eğer, ancak, üye sayfa giriş yaptıktan sonra bana yeniden-posta adresi doğrulama prosedürü verin rahatsız ettiğim için özür yoktur.",
+            "auto_translated": "Bir hata, e-posta adresi, kimlik doğrulama için posta iletimi sırasında meydana gelecektir. Eğer, ancak, üye sayfa giriş yaptıktan sonra bana yeniden-posta adresi doğrulama prosedürü verin rahatsız ettiğim için özür yoktur."
+        },
+        "vi": {
+            "legacy_caption_pid": 31979,
+            "legacy_language_pid": 19,
+            "text": "Một lỗi sẽ xảy ra trong việc truyền tải mail cho xác thực địa chỉ e-mail. Có rất tiếc khi rắc rối cho bạn, nhưng, xin vui lòng cho tôi các thủ tục xác thực địa chỉ tái-mail sau khi đăng nhập trang thành viên.",
+            "auto_translated": "Một lỗi sẽ xảy ra trong việc truyền tải mail cho xác thực địa chỉ e-mail. Có rất tiếc khi rắc rối cho bạn, nhưng, xin vui lòng cho tôi các thủ tục xác thực địa chỉ tái-mail sau khi đăng nhập trang thành viên."
+        },
+        "pl": {
+            "legacy_caption_pid": 31980,
+            "legacy_language_pid": 20,
+            "text": "Wystąpi błąd podczas transmisji elektronicznej do uwierzytelniania adresu e-mail. Jest przepraszam za kłopot, ale, proszę mi dać procedurę uwierzytelniania adresowej re-mail po login strona członkiem.",
+            "auto_translated": "Wystąpi błąd podczas transmisji elektronicznej do uwierzytelniania adresu e-mail. Jest przepraszam za kłopot, ale, proszę mi dać procedurę uwierzytelniania adresowej re-mail po login strona członkiem."
+        },
+        "jv": {
+            "legacy_caption_pid": 31981,
+            "legacy_language_pid": 21,
+            "text": "Kesalahan bakal kelakon sak transmisi mail kanggo bukti asli alamat e-mail. Ana nuwun kanggo alangan, nanging, please menehi kula prosedur bukti asli alamat re-mail sawisé kaca anggota mlebu.",
+            "auto_translated": "Kesalahan bakal kelakon sak transmisi mail kanggo bukti asli alamat e-mail. Ana nuwun kanggo alangan, nanging, please menehi kula prosedur bukti asli alamat re-mail sawisé kaca anggota mlebu."
+        },
+        "pa": {
+            "legacy_caption_pid": 31982,
+            "legacy_language_pid": 22,
+            "text": "ਈ-ਮੇਲ ਪਤਾ ਪ੍ਰਮਾਣਿਕਤਾ ਲਈ ਮੇਲ ਸੰਚਾਰ ਦੌਰਾਨ ਇੱਕ ਗਲਤੀ ਵਾਪਰ ਜਾਵੇਗਾ. ਸਮੱਸਿਆ ਨੂੰ ਅਫ਼ਸੋਸ ਹੈ ਕਿ ਤੁਹਾਨੂੰ, ਪਰ, ਮੈਨੂੰ ਮੁੜ-ਮੇਲ ਪਤੇ ਪ੍ਰਮਾਣਿਕਤਾ ਦੀ ਵਿਧੀ ਸਦੱਸ ਸਫ਼ਾ ਲਾਗਇਨ ਬਾਅਦ ਦੇਣ, ਕਿਰਪਾ ਕਰਕੇ ਹੈ.",
+            "auto_translated": "ਈ-ਮੇਲ ਪਤਾ ਪ੍ਰਮਾਣਿਕਤਾ ਲਈ ਮੇਲ ਸੰਚਾਰ ਦੌਰਾਨ ਇੱਕ ਗਲਤੀ ਵਾਪਰ ਜਾਵੇਗਾ. ਸਮੱਸਿਆ ਨੂੰ ਅਫ਼ਸੋਸ ਹੈ ਕਿ ਤੁਹਾਨੂੰ, ਪਰ, ਮੈਨੂੰ ਮੁੜ-ਮੇਲ ਪਤੇ ਪ੍ਰਮਾਣਿਕਤਾ ਦੀ ਵਿਧੀ ਸਦੱਸ ਸਫ਼ਾ ਲਾਗਇਨ ਬਾਅਦ ਦੇਣ, ਕਿਰਪਾ ਕਰਕੇ ਹੈ."
+        },
+        "th": {
+            "legacy_caption_pid": 31983,
+            "legacy_language_pid": 23,
+            "text": "เกิดข้อผิดพลาดที่จะเกิดขึ้นในระหว่างการส่งอีเมลสำหรับการตรวจสอบที่อยู่อีเมล นอกจากนี้เสียใจเป็นปัญหากับคุณ แต่โปรดให้ฉันขั้นตอนของการตรวจสอบที่อยู่อีก-mail หลังจากเข้าสู่ระบบหน้าสมาชิก",
+            "auto_translated": "เกิดข้อผิดพลาดที่จะเกิดขึ้นในระหว่างการส่งอีเมลสำหรับการตรวจสอบที่อยู่อีเมล นอกจากนี้เสียใจเป็นปัญหากับคุณ แต่โปรดให้ฉันขั้นตอนของการตรวจสอบที่อยู่อีก-mail หลังจากเข้าสู่ระบบหน้าสมาชิก"
+        },
+        "te": {
+            "legacy_caption_pid": 41688,
+            "legacy_language_pid": 24,
+            "text": "ఇ-మెయిల్ చిరునామా ధృవీకరణ మెయిల్ ప్రసార సమయంలో ఒక దోషం సంభవిస్తుంది. అక్కడ ఇబ్బంది క్షమించండి మీరు, కానీ, నాకు తిరిగి-మెయిల్ చిరునామా ధృవీకరణ యొక్క విధానం సభ్యుని పేజీ లాగిన్ తర్వాత ఇవ్వాలని దయచేసి.",
+            "auto_translated": "ఇ-మెయిల్ చిరునామా ధృవీకరణ మెయిల్ ప్రసార సమయంలో ఒక దోషం సంభవిస్తుంది. అక్కడ ఇబ్బంది క్షమించండి మీరు, కానీ, నాకు తిరిగి-మెయిల్ చిరునామా ధృవీకరణ యొక్క విధానం సభ్యుని పేజీ లాగిన్ తర్వాత ఇవ్వాలని దయచేసి."
+        },
+        "mr": {
+            "legacy_caption_pid": 41689,
+            "legacy_language_pid": 25,
+            "text": "ई-मेल पत्ता प्रमाणीकरण मेल ट्रान्समिशन करताना एक त्रुटी होणार नाही. तेथे त्रास दिलगीर आहे, पण, मला पुन्हा-मेल पत्ता प्रमाणीकरण प्रक्रिया सदस्य पृष्ठ लॉगिन नंतर द्या.",
+            "auto_translated": "ई-मेल पत्ता प्रमाणीकरण मेल ट्रान्समिशन करताना एक त्रुटी होणार नाही. तेथे त्रास दिलगीर आहे, पण, मला पुन्हा-मेल पत्ता प्रमाणीकरण प्रक्रिया सदस्य पृष्ठ लॉगिन नंतर द्या."
+        },
+        "ur": {
+            "legacy_caption_pid": 41690,
+            "legacy_language_pid": 26,
+            "text": "ای میل ایڈریس کی تصدیق کے لئے ای میل ٹرانسمیشن کے دوران ایک خرابی واقع ہو گا. مصیبت کو معافی نہیں ہے، لیکن، مجھے دوبارہ میل ایڈریس کی توثیق کے طریقہ کار کے رکن کے صفحے لاگ ان ہونے کے بعد دے براہ مہربانی.",
+            "auto_translated": "ای میل ایڈریس کی تصدیق کے لئے ای میل ٹرانسمیشن کے دوران ایک خرابی واقع ہو گا. مصیبت کو معافی نہیں ہے، لیکن، مجھے دوبارہ میل ایڈریس کی توثیق کے طریقہ کار کے رکن کے صفحے لاگ ان ہونے کے بعد دے براہ مہربانی."
+        },
+        "gu": {
+            "legacy_caption_pid": 41691,
+            "legacy_language_pid": 27,
+            "text": "ઇ-મેઇલ સરનામું પ્રમાણીકરણ માટે મેઇલ ટ્રાન્સમિશન દરમિયાન એક ભૂલ થશે. મુશ્કેલી દિલગીર તમે, પરંતુ મને ફરી-મેઇલ સરનામું પ્રમાણીકરણ ની પ્રક્રિયા સભ્ય પાનું લોગિન પછી આપો છે.",
+            "auto_translated": "ઇ-મેઇલ સરનામું પ્રમાણીકરણ માટે મેઇલ ટ્રાન્સમિશન દરમિયાન એક ભૂલ થશે. મુશ્કેલી દિલગીર તમે, પરંતુ મને ફરી-મેઇલ સરનામું પ્રમાણીકરણ ની પ્રક્રિયા સભ્ય પાનું લોગિન પછી આપો છે."
+        },
+        "uk": {
+            "legacy_caption_pid": 41692,
+            "legacy_language_pid": 28,
+            "text": "відбуватимуться помилка під час передачі пошти для аутентифікації адреси електронної пошти. Існує шкода турбувати вас, але, будь ласка, дайте мені процедуру аутентифікації адреси повторно пошти після того, як сторінку Вхід для зареєстрованих користувачів.",
+            "auto_translated": "відбуватимуться помилка під час передачі пошти для аутентифікації адреси електронної пошти. Існує шкода турбувати вас, але, будь ласка, дайте мені процедуру аутентифікації адреси повторно пошти після того, як сторінку Вхід для зареєстрованих користувачів."
+        },
+        "ml": {
+            "legacy_caption_pid": 41693,
+            "legacy_language_pid": 29,
+            "text": "ഇ-മെയിൽ വിലാസം ആധികാരികത മെയിൽ ട്രാൻസ്മിഷൻ സമയത്ത് ഒരു പിശക് സംഭവിക്കാം. അവിടെ, നിങ്ങൾ പ്രശ്നം ഖേദിക്കുന്നു, എന്നാൽ എന്നെ അംഗം പേജ് ലോഗിൻ ശേഷം വീണ്ടും മെയിൽ വിലാസം ആധികാരികത നടപടിക്രമം തരൂ.",
+            "auto_translated": "ഇ-മെയിൽ വിലാസം ആധികാരികത മെയിൽ ട്രാൻസ്മിഷൻ സമയത്ത് ഒരു പിശക് സംഭവിക്കാം. അവിടെ, നിങ്ങൾ പ്രശ്നം ഖേദിക്കുന്നു, എന്നാൽ എന്നെ അംഗം പേജ് ലോഗിൻ ശേഷം വീണ്ടും മെയിൽ വിലാസം ആധികാരികത നടപടിക്രമം തരൂ."
+        },
+        "kn": {
+            "legacy_caption_pid": 41694,
+            "legacy_language_pid": 30,
+            "text": "ದೋಷ ಇಮೇಲ್ ವಿಳಾಸಕ್ಕೆ ದೃಢೀಕರಣ ಮೇಲ್ ರವಾನಿಸುವ ಸಮಯದಲ್ಲಿ ಸಂಭವಿಸುತ್ತದೆ. ಇಲ್ಲ ತೊಂದರೆಗೆ ಕ್ಷಮಿಸಿ ನೀವು, ನನ್ನನ್ನು ಮರು-ಮೇಲ್ ದೃಢೀಕರಣ ಪ್ರಕ್ರಿಯೆಯನ್ನು ಸದಸ್ಯ ಪುಟ ಲಾಗಿನ್ ನಂತರ ನೀಡಿ.",
+            "auto_translated": "ದೋಷ ಇಮೇಲ್ ವಿಳಾಸಕ್ಕೆ ದೃಢೀಕರಣ ಮೇಲ್ ರವಾನಿಸುವ ಸಮಯದಲ್ಲಿ ಸಂಭವಿಸುತ್ತದೆ. ಇಲ್ಲ ತೊಂದರೆಗೆ ಕ್ಷಮಿಸಿ ನೀವು, ನನ್ನನ್ನು ಮರು-ಮೇಲ್ ದೃಢೀಕರಣ ಪ್ರಕ್ರಿಯೆಯನ್ನು ಸದಸ್ಯ ಪುಟ ಲಾಗಿನ್ ನಂತರ ನೀಡಿ."
+        },
+        "su": {
+            "legacy_caption_pid": 41695,
+            "legacy_language_pid": 31,
+            "text": "Kasalahan baris lumangsung salila transmisi mail keur auténtikasi alamat e-mail. Aya punten mun kasulitan Anjeun, tapi, mangga masihan kuring prosedur of auténtikasi alamat ulang mail sanggeus kaca anggota login.",
+            "auto_translated": "Kasalahan baris lumangsung salila transmisi mail keur auténtikasi alamat e-mail. Aya punten mun kasulitan Anjeun, tapi, mangga masihan kuring prosedur of auténtikasi alamat ulang mail sanggeus kaca anggota login."
+        },
+        "ku": {
+            "legacy_caption_pid": 41696,
+            "legacy_language_pid": 32,
+            "text": "An error wê di dema veguhestina di mail ji bo authentication navnîşana e-mail biqewime. e xemgîn to teng de hene hûn, di heman demê de, ji kerema xwe ve ji min re pêvajoya kirarî ya authentication address re-mail bide, piştî têketinê rûpel endam.",
+            "auto_translated": "An error wê di dema veguhestina di mail ji bo authentication navnîşana e-mail biqewime. e xemgîn to teng de hene hûn, di heman demê de, ji kerema xwe ve ji min re pêvajoya kirarî ya authentication address re-mail bide, piştî têketinê rûpel endam."
+        },
+        "ps": {
+            "legacy_caption_pid": 41697,
+            "legacy_language_pid": 33,
+            "text": "An error به د e برېښلیک پته د اعتبار لپاره د مالدارۍ د لیږد پر مهال واقع کيږي. له ستونزو بخښنه شته تاسو، خو، لطفا ما ته د بيا برېښلیک پته د اعتبار د کړنالرې د غړو مخ د ننوتو وروسته ورکړي.",
+            "auto_translated": "An error به د e برېښلیک پته د اعتبار لپاره د مالدارۍ د لیږد پر مهال واقع کيږي. له ستونزو بخښنه شته تاسو، خو، لطفا ما ته د بيا برېښلیک پته د اعتبار د کړنالرې د غړو مخ د ننوتو وروسته ورکړي."
+        },
+        "ro": {
+            "legacy_caption_pid": 41698,
+            "legacy_language_pid": 34,
+            "text": "O eroare va apărea în timpul transmisiei mail pentru autentificare adresă de e-mail. Există rău să vă deranjez, dar, te rog da-mi procedura de re-mail autentificare adresa după pagina de conectare membru.",
+            "auto_translated": "O eroare va apărea în timpul transmisiei mail pentru autentificare adresă de e-mail. Există rău să vă deranjez, dar, te rog da-mi procedura de re-mail autentificare adresa după pagina de conectare membru."
+        },
+        "id": {
+            "legacy_caption_pid": 41699,
+            "legacy_language_pid": 35,
+            "text": "Kesalahan akan terjadi selama transmisi mail untuk otentikasi alamat e-mail. Ada maaf untuk masalah Anda, tapi, tolong beri saya prosedur otentikasi alamat re-mail setelah halaman login member.",
+            "auto_translated": "Kesalahan akan terjadi selama transmisi mail untuk otentikasi alamat e-mail. Ada maaf untuk masalah Anda, tapi, tolong beri saya prosedur otentikasi alamat re-mail setelah halaman login member."
+        },
+        "sd": {
+            "legacy_caption_pid": 41700,
+            "legacy_language_pid": 36,
+            "text": "هن اي-ميل پتي جي اصليت جي ميل سند دوران غلطي رونما ٿيندا. نه مصيبت کي معاف ڪجو توهان مون کي ميمبر صفحو لاگ ان کان پوء ٻيهر-ميل پتي جي اصليت جي طريقيڪار ڏيو مهرباني ڪري آهي، پر،.",
+            "auto_translated": "هن اي-ميل پتي جي اصليت جي ميل سند دوران غلطي رونما ٿيندا. نه مصيبت کي معاف ڪجو توهان مون کي ميمبر صفحو لاگ ان کان پوء ٻيهر-ميل پتي جي اصليت جي طريقيڪار ڏيو مهرباني ڪري آهي، پر،."
+        },
+        "af": {
+            "legacy_caption_pid": 41701,
+            "legacy_language_pid": 37,
+            "text": "'N fout sal plaasvind tydens die pos gestuur vir die e-pos adres verifikasie. Daar is jammer om moeilikheid jou, maar, asseblief die prosedure van re-posadres verifikasie gee my na die lid bladsy login.",
+            "auto_translated": "'N fout sal plaasvind tydens die pos gestuur vir die e-pos adres verifikasie. Daar is jammer om moeilikheid jou, maar, asseblief die prosedure van re-posadres verifikasie gee my na die lid bladsy login."
+        },
+        "sw": {
+            "legacy_caption_pid": 41702,
+            "legacy_language_pid": 38,
+            "text": "makosa kutokea wakati wa kutumwa barua pepe kwa ajili ya barua pepe ya uthibitisho ya mahali. Kuna pole kwa shida, lakini, tafadhali nipe utaratibu wa re-mail uthibitisho mahali baada mwanachama ukurasa wa kuingia.",
+            "auto_translated": "makosa kutokea wakati wa kutumwa barua pepe kwa ajili ya barua pepe ya uthibitisho ya mahali. Kuna pole kwa shida, lakini, tafadhali nipe utaratibu wa re-mail uthibitisho mahali baada mwanachama ukurasa wa kuingia."
+        },
+        "lo": {
+            "legacy_caption_pid": 41703,
+            "legacy_language_pid": 39,
+            "text": "ຄວາມຜິດພາດຈະເກີດຂຶ້ນລະຫວ່າງການສົ່ງ mail ສໍາລັບການກວດສອບອີເມລໄດ້. ມີເສຍໃຈທີ່ບັນຫາທີ່ທ່ານ, ແຕ່ກະລຸນາໃຫ້ຂ້າພະເຈົ້າລະບຽບການຂອງການກວດສອບທີ່ຢູ່ re ເມລຫຼັງຈາກເຂົ້າສູ່ລະບົບຫນ້າສະມາຊິກໄດ້.",
+            "auto_translated": "ຄວາມຜິດພາດຈະເກີດຂຶ້ນລະຫວ່າງການສົ່ງ mail ສໍາລັບການກວດສອບອີເມລໄດ້. ມີເສຍໃຈທີ່ບັນຫາທີ່ທ່ານ, ແຕ່ກະລຸນາໃຫ້ຂ້າພະເຈົ້າລະບຽບການຂອງການກວດສອບທີ່ຢູ່ re ເມລຫຼັງຈາກເຂົ້າສູ່ລະບົບຫນ້າສະມາຊິກໄດ້."
+        },
+        "nl": {
+            "legacy_caption_pid": 41704,
+            "legacy_language_pid": 40,
+            "text": "Er zal een fout optreden tijdens de e-mail bericht voor de e-mail adres verificatie. Er is het jammer dat je lastig, maar, dan kunt u de procedure van re-mailadres authenticatie geef me na de ledenpagina login.",
+            "auto_translated": "Er zal een fout optreden tijdens de e-mail bericht voor de e-mail adres verificatie. Er is het jammer dat je lastig, maar, dan kunt u de procedure van re-mailadres authenticatie geef me na de ledenpagina login."
+        },
+        "tl": {
+            "legacy_caption_pid": 41705,
+            "legacy_language_pid": 41,
+            "text": "Ang isang error ay magaganap sa panahon ng mail paghahatid para sa address na pagpapatotoo ng e-mail. May paumanhin sa pag-mo, ngunit, mangyaring bigyan ako ang mga pamamaraan ng muling-mail address authentication pagkatapos ng pag-login page miyembro.",
+            "auto_translated": "Ang isang error ay magaganap sa panahon ng mail paghahatid para sa address na pagpapatotoo ng e-mail. May paumanhin sa pag-mo, ngunit, mangyaring bigyan ako ang mga pamamaraan ng muling-mail address authentication pagkatapos ng pag-login page miyembro."
+        },
+        "ne": {
+            "legacy_caption_pid": 41706,
+            "legacy_language_pid": 42,
+            "text": "त्रुटि ई-मेल ठेगाना प्रमाणीकरण लागि मेल प्रसारण समयमा हुनेछ। तपाईं, तर, कृपया मलाई पुनः-मेल ठेगाना प्रमाणीकरण को प्रक्रिया सदस्य पृष्ठ लग इन पछि दिन समस्या दु: खी छ।",
+            "auto_translated": "त्रुटि ई-मेल ठेगाना प्रमाणीकरण लागि मेल प्रसारण समयमा हुनेछ। तपाईं, तर, कृपया मलाई पुनः-मेल ठेगाना प्रमाणीकरण को प्रक्रिया सदस्य पृष्ठ लग इन पछि दिन समस्या दु: खी छ।"
+        },
+        "hu": {
+            "legacy_caption_pid": 41707,
+            "legacy_language_pid": 43,
+            "text": "Hiba során előforduló mail küldés az e-mail cím hitelesítése. Van sajnálom, hogy baj van, de kérlek adj eljárás újbóli mail cím hitelesítése után a tag az oldalon bejelentkezést.",
+            "auto_translated": "Hiba során előforduló mail küldés az e-mail cím hitelesítése. Van sajnálom, hogy baj van, de kérlek adj eljárás újbóli mail cím hitelesítése után a tag az oldalon bejelentkezést."
+        },
+        "cs": {
+            "legacy_caption_pid": 41708,
+            "legacy_language_pid": 44,
+            "text": "Dojde k chybě při přenosu pošty pro ověření e-mailové adresy. Tam je líto, že vás obtěžuji, ale, prosím, dej mi postup ověřování re-mailové adrese po přihlášení člena stránky.",
+            "auto_translated": "Dojde k chybě při přenosu pošty pro ověření e-mailové adresy. Tam je líto, že vás obtěžuji, ale, prosím, dej mi postup ověřování re-mailové adrese po přihlášení člena stránky."
+        },
+        "el": {
+            "legacy_caption_pid": 41709,
+            "legacy_language_pid": 45,
+            "text": "Ένα λάθος θα προκύψει κατά τη διάρκεια της μεταφοράς ταχυδρομείου για την εξακρίβωση της γνησιότητας διεύθυνση ηλεκτρονικού ταχυδρομείου. Υπάρχει συγγνώμη για την ταλαιπωρία σας, αλλά, παρακαλώ να μου δώσετε τη διαδικασία της πιστοποίησης διεύθυνση νέου mail μετά την είσοδο της σελίδας μέλος.",
+            "auto_translated": "Ένα λάθος θα προκύψει κατά τη διάρκεια της μεταφοράς ταχυδρομείου για την εξακρίβωση της γνησιότητας διεύθυνση ηλεκτρονικού ταχυδρομείου. Υπάρχει συγγνώμη για την ταλαιπωρία σας, αλλά, παρακαλώ να μου δώσετε τη διαδικασία της πιστοποίησης διεύθυνση νέου mail μετά την είσοδο της σελίδας μέλος."
+        },
+        "sv": {
+            "legacy_caption_pid": 41710,
+            "legacy_language_pid": 46,
+            "text": "Ett fel kommer att inträffa under postsändning för e-postadressen autentisering. Det finns ledsen att besvära dig, men ge mig förfarandet åter postadress autentisering efter medlemssida inloggning.",
+            "auto_translated": "Ett fel kommer att inträffa under postsändning för e-postadressen autentisering. Det finns ledsen att besvära dig, men ge mig förfarandet åter postadress autentisering efter medlemssida inloggning."
+        },
+        "kk": {
+            "legacy_caption_pid": 41711,
+            "legacy_language_pid": 47,
+            "text": "Қате электрондық пошта мекенжайы түпнұсқалығын растау үшін пошта беру кезінде орын алады. маған мүшесі логин кейін қайта пошта мекенжайы аутентификация рәсімін жіберуіңізді сұраймыз, бар сізді алаңдатпай өкінішті, бірақ.",
+            "auto_translated": "Қате электрондық пошта мекенжайы түпнұсқалығын растау үшін пошта беру кезінде орын алады. маған мүшесі логин кейін қайта пошта мекенжайы аутентификация рәсімін жіберуіңізді сұраймыз, бар сізді алаңдатпай өкінішті, бірақ."
+        },
+        "fi": {
+            "legacy_caption_pid": 41712,
+            "legacy_language_pid": 48,
+            "text": "Virhe tapahtuu aikana sähköpostin toimittamisessa sähköpostiosoitteen todennus. On pahoillani vaivata sinua, mutta antakaa minulle menettelyn uudelleen sähköpostiosoitteen todennus jälkeen jäsen sivun login.",
+            "auto_translated": "Virhe tapahtuu aikana sähköpostin toimittamisessa sähköpostiosoitteen todennus. On pahoillani vaivata sinua, mutta antakaa minulle menettelyn uudelleen sähköpostiosoitteen todennus jälkeen jäsen sivun login."
+        },
+        "da": {
+            "legacy_caption_pid": 41713,
+            "legacy_language_pid": 49,
+            "text": "En fejl vil forekomme i løbet af mail-transmission til e-mail-adresse godkendelse. Der er ked af at besvære dig, men, bedes du give mig den procedure for re-mailadresse godkendelse efter medlemmet side login.",
+            "auto_translated": "En fejl vil forekomme i løbet af mail-transmission til e-mail-adresse godkendelse. Der er ked af at besvære dig, men, bedes du give mig den procedure for re-mailadresse godkendelse efter medlemmet side login."
+        },
+        "he": {
+            "legacy_caption_pid": 41714,
+            "legacy_language_pid": 50,
+            "text": "שגיאה תתרחש במהלך השידור האלקטרוני עבור אימות כתובת דואר האלקטרונית. יש מטריח אותך, אבל, בבקשה לתת לי את ההליך של אימות כתובת מחדש אלקטרונית לאחר ההתחברות לדף חבר.",
+            "auto_translated": "שגיאה תתרחש במהלך השידור האלקטרוני עבור אימות כתובת דואר האלקטרונית. יש מטריח אותך, אבל, בבקשה לתת לי את ההליך של אימות כתובת מחדש אלקטרונית לאחר ההתחברות לדף חבר."
+        },
+        "no": {
+            "legacy_caption_pid": 41715,
+            "legacy_language_pid": 51,
+            "text": "En feil vil forekomme i løpet av den postoverføringen for den e-post adresse autentisering. Det er synd å plage deg, men kan du gi meg prosedyren for re-postadressen autentisering etter at medlemmet siden pålogging.",
+            "auto_translated": "En feil vil forekomme i løpet av den postoverføringen for den e-post adresse autentisering. Det er synd å plage deg, men kan du gi meg prosedyren for re-postadressen autentisering etter at medlemmet siden pålogging."
+        }
+    }
+}
