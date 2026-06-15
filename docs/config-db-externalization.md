@@ -81,6 +81,37 @@ current supported target は次です。
 
 external lane の `start/stop/reset/shell` parity target は current では増やしません。
 
+<a id="c4b-durable-lane"></a>
+## durable env file lane
+
+継続利用・チーム利用では、毎回 shell で `APP_CONFIG_DB_*` を渡すのではなく、Git 管理しない env file を使います。
+
+template:
+
+```bash
+cp deploy/durable-config-db.env.example .env.durable
+```
+
+`.env.durable` の `APP_CONFIG_DB_*`、admin / lab password を実値に変更してから起動します。
+
+```bash
+make up-durable-config-db DURABLE_ENV_FILE=.env.durable
+make config-db-preflight-durable-config-db DURABLE_ENV_FILE=.env.durable
+make db-config-migrate-durable-config-db DURABLE_ENV_FILE=.env.durable
+```
+
+supported target:
+
+- `make up-durable-config-db DURABLE_ENV_FILE=.env.durable`
+- `make ps-durable-config-db DURABLE_ENV_FILE=.env.durable`
+- `make logs-durable-config-db DURABLE_ENV_FILE=.env.durable`
+- `make health-durable-config-db DURABLE_ENV_FILE=.env.durable`
+- `make config-db-preflight-durable-config-db DURABLE_ENV_FILE=.env.durable`
+- `make db-config-migrate-durable-config-db DURABLE_ENV_FILE=.env.durable`
+- `make down-durable-config-db DURABLE_ENV_FILE=.env.durable`
+
+この lane は `compose.yaml` だけを使うため、local `db-config` container は起動しません。canonical metadata は `APP_CONFIG_DB_*` の external DB に保存されます。
+
 <a id="c5-preflight-migrate"></a>
 ## preflight / migrate
 

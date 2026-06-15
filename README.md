@@ -1,5 +1,8 @@
 # DegoDB
 
+English companion:
+DegoDB is a metadata-driven development workbench. Start with the Quickstart when you want to verify the local Docker stack before reading the deeper design documents.
+
 Metadata-driven Development Workbench  
 メタデータ駆動の開発ワークベンチ
 
@@ -23,6 +26,7 @@ The documentation in this repository is intended to be read in the following thr
 この repo の docs は、次の 3 層で読む前提にします。
 
 1. Entry layer / 入口 layer
+   - [Quickstart / まず動かしてみる](docs/quickstart.md)
    - [Start Here / 最初の入口](docs/start-here.md)
    - [Choose Your Path / 目的別の読み方](docs/choose-your-path.md)
 2. Golden path layer / ゴールデンパス layer
@@ -37,6 +41,7 @@ The documentation in this repository is intended to be read in the following thr
    - [Config DB Externalization / config DB 外部化](docs/config-db-externalization.md)
    - [Glossary / 用語集](docs/glossary.md)
    - [Sample Tutorial Roadmap / sample 学習導線](docs/sample-tutorial-roadmap.md)
+   - [Study Guide / sample で学ぶ](docs/study/README.md)
    - [Internal Documentation Index / 内部ドキュメント索引](docs/internal/README.md)
 
 Do not reconstruct the mainline by reading the detail docs first. Choose a reading order from the entry layer, understand the execution flow through the golden path layer, and then consult the detail layer.  
@@ -44,16 +49,18 @@ Do not reconstruct the mainline by reading the detail docs first. Choose a readi
 
 ## Start Here / まず読む文書
 
-1. [Start Here / 最初の入口](docs/start-here.md)
-2. [Choose Your Path / 目的別の読み方](docs/choose-your-path.md)
-3. [Existing DB To Output / 既存 DB から出力まで](docs/existing-db-to-output.md)
-4. [Common Tasks / よく使う作業](docs/common-tasks.md)
-5. [Current Supported Workflow / 現在サポートするワークフロー](docs/current-supported-workflow.md)
-6. [Concept Overview / 概念概要](docs/overview.md)
-7. [Sample Tutorial Roadmap / sample 学習導線](docs/sample-tutorial-roadmap.md)
-8. [Troubleshooting / トラブルシューティング](docs/troubleshooting.md)
-9. [Storage And State Model / 保存先と状態モデル](docs/storage-and-state-model.md)
-10. [Internal Documentation Index / 内部ドキュメント索引](docs/internal/README.md)
+1. [Quickstart / まず動かしてみる](docs/quickstart.md)
+2. [Start Here / 最初の入口](docs/start-here.md)
+3. [Choose Your Path / 目的別の読み方](docs/choose-your-path.md)
+4. [Existing DB To Output / 既存 DB から出力まで](docs/existing-db-to-output.md)
+5. [Common Tasks / よく使う作業](docs/common-tasks.md)
+6. [Current Supported Workflow / 現在サポートするワークフロー](docs/current-supported-workflow.md)
+7. [Concept Overview / 概念概要](docs/overview.md)
+8. [Sample Tutorial Roadmap / sample 学習導線](docs/sample-tutorial-roadmap.md)
+9. [Study Guide / sample で学ぶ](docs/study/README.md)
+10. [Troubleshooting / トラブルシューティング](docs/troubleshooting.md)
+11. [Storage And State Model / 保存先と状態モデル](docs/storage-and-state-model.md)
+12. [Internal Documentation Index / 内部ドキュメント索引](docs/internal/README.md)
 
 ## Important Invariants / 重要な不変条件
 
@@ -69,8 +76,8 @@ Do not reconstruct the mainline by reading the detail docs first. Choose a readi
   `tests/` は integration / scenario / fixture の検証資産です。
 - `work/` stores disposable outputs and compare workspaces.  
   `work/` は disposable output と compare workspace の置き場です。
-- `original-codes/` is host-side reference only.  
-  `original-codes/` は host-side reference only です。
+- Legacy full source such as `original-codes/` is host-side reference only; curated legacy reference lives under `mtool/reference/`, for example `mtool/reference/legacy-dbclasses/`.
+  `original-codes/` のような旧実装全体は host-side reference only です。現在の curated legacy reference は `mtool/reference/legacy-dbclasses/` など `mtool/reference/` 配下に限定して置きます。
 - The current runtime, generator, and Docker containers must not use `original-codes/` directly as input.  
   新実装の runtime / generator / Docker container は `original-codes/` を直接入力として使いません。
 
@@ -80,6 +87,8 @@ Do not reconstruct the mainline by reading the detail docs first. Choose a readi
 
 - Documentation navigator: [Documentation Index / 文書索引](docs/README.md)  
   文書ナビゲータ: [Documentation Index / 文書索引](docs/README.md)
+- First hands-on run: [Quickstart / まず動かしてみる](docs/quickstart.md)
+  clone 直後に 1 周だけ動かす入口: [Quickstart / まず動かしてみる](docs/quickstart.md)
 - Five-minute overview: [Start Here / 最初の入口](docs/start-here.md)  
   5 分で全体を掴む入口: [Start Here / 最初の入口](docs/start-here.md)
 - Goal-oriented reverse lookup: [Choose Your Path / 目的別の読み方](docs/choose-your-path.md)  
@@ -108,17 +117,18 @@ When in doubt, keep the current rule: `entry layer -> golden path layer -> detai
 
 ```bash
 make env
-make up
-docker compose exec -T web-admin php /var/www/mtool/scripts/import_project_tables.php --project-key=MTOOL
-docker compose exec -T web-admin php /var/www/mtool/scripts/sync_project_data_classes.php --project-key=MTOOL
-docker compose exec -T web-admin php /var/www/mtool/scripts/sync_project_db_access.php --project-key=MTOOL
+make up-mtool
+make mtool-canonical-sync
 ```
 
-`make up` uses `compose.yaml + compose.local-db-config.yaml` as the current local default. When using an external config DB, set `APP_CONFIG_DB_*` and run `make up-external-config-db`. After startup, use `make ps-external-config-db`, `make health-external-config-db`, and `make config-db-preflight-external-config-db` for checks. Use raw `docker compose -f compose.yaml ...` only when the external lane needs a shell or temporary stop.  
-`make up` は current local default として `compose.yaml + compose.local-db-config.yaml` を使います。external config DB を使う時は `APP_CONFIG_DB_*` を指定して `make up-external-config-db` を使います。起動後の確認は `make ps-external-config-db` / `make health-external-config-db` / `make config-db-preflight-external-config-db` を使います。external lane で shell や一時 stop が必要な時だけ raw `docker compose -f compose.yaml ...` を使います。
+`make up-mtool` uses `compose.yaml + compose.local-db-config.yaml + mtool/docker/compose/01_mtool.compose.yaml` and includes the MTOOL core seed needed by `make mtool-canonical-sync`. When using an external config DB, set `APP_CONFIG_DB_*` and run `make up-external-config-db`. After startup, use `make ps-external-config-db`, `make health-external-config-db`, and `make config-db-preflight-external-config-db` for checks. Use raw `docker compose -f compose.yaml ...` only when the external lane needs a shell or temporary stop.
+`make up-mtool` は `make mtool-canonical-sync` に必要な MTOOL core seed を含めて `compose.yaml + compose.local-db-config.yaml + mtool/docker/compose/01_mtool.compose.yaml` を使います。external config DB を使う時は `APP_CONFIG_DB_*` を指定して `make up-external-config-db` を使います。起動後の確認は `make ps-external-config-db` / `make health-external-config-db` / `make config-db-preflight-external-config-db` を使います。external lane で shell や一時 stop が必要な時だけ raw `docker compose -f compose.yaml ...` を使います。
 
-`make up` also shows the URL for `lab-db-ui` in addition to admin and lab.  
-`make up` は admin / lab に加えて `lab-db-ui` の URL も表示します。
+Persistence note: local quickstart stores design metadata in the local `db-config` Docker volume. Use `make backup-config-db-mtool` before destructive reset, or use `deploy/durable-config-db.env.example` with `make up-durable-config-db DURABLE_ENV_FILE=.env.durable` for durable/team use.
+永続化の注意: local quickstart の設計データは local `db-config` Docker volume に保存されます。破壊的な reset 前には `make backup-config-db-mtool` を使い、継続利用・チーム利用では `deploy/durable-config-db.env.example` と `make up-durable-config-db DURABLE_ENV_FILE=.env.durable` を使います。
+
+`make up-mtool` also shows the URL for `lab-db-ui` in addition to admin and lab.
+`make up-mtool` は admin / lab に加えて `lab-db-ui` の URL も表示します。
 
 `lab-db-ui` is a lightweight UI for editing `db-lab` in a browser. After changing the schema, admin can import it into canonical metadata from the `lab-live-schema` source.  
 `lab-db-ui` は `db-lab` をブラウザで編集するための軽量 UI で、schema を変えた後は admin 側の `lab-live-schema` source から canonical metadata へ取り込めます。
@@ -136,8 +146,8 @@ docker compose exec -T web-admin php /var/www/mtool/scripts/sync_project_db_acce
 make sample01-pack-runtime-test
 ```
 
-See [Sample Tutorial Roadmap / sample 学習導線](docs/sample-tutorial-roadmap.md) for the sample learning order and role split.  
-sample の学習順と役割分担は [Sample Tutorial Roadmap / sample 学習導線](docs/sample-tutorial-roadmap.md) を参照してください。
+See [Study Guide / sample で学ぶ](docs/study/README.md) for the hands-on reading order, and [Sample Tutorial Roadmap / sample 学習導線](docs/sample-tutorial-roadmap.md) for the sample catalog and role split.
+sample を教材として読む順番は [Study Guide / sample で学ぶ](docs/study/README.md)、sample の一覧と役割分担は [Sample Tutorial Roadmap / sample 学習導線](docs/sample-tutorial-roadmap.md) を参照してください。
 
 ### Current Verified Full Suite / 現在の検証済み full suite
 
@@ -169,9 +179,12 @@ ADMIN_HTTP_PORT=18091 LAB_HTTP_PORT=18092 CONFIG_DB_HOST_PORT=43091 LAB_DB_HOST_
 - `work/`
   - Disposable runtime output, artifact history, and compare workspace.  
     disposable runtime output、artifact history、compare workspace
+- `mtool/reference/legacy-dbclasses/`
+  - Curated legacy DB class reference used for limited comparison and migration context.
+    限定された比較・移行文脈で使う curated legacy DB class reference
 - `original-codes/`
-  - Host-side reference and investigation materials for the legacy implementation.  
-    旧実装の host-side reference と調査資料
+  - Host-side reference only when a full legacy source snapshot is present; not a current runtime input.
+    旧実装全体の snapshot がある場合も host-side reference only であり、current runtime input ではない
 
 ## Deep Dives / 深掘り先
 

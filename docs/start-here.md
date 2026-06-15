@@ -9,6 +9,7 @@ This is the five-minute starting point for users and contributors who want to tr
 ## 3 層の読み方
 
 1. 入口 layer
+   - `quickstart`
    - `start-here`
    - `choose-your-path`
 2. golden path layer
@@ -22,6 +23,7 @@ This is the five-minute starting point for users and contributors who want to tr
    - `project-metadata-bundle`
    - `config-db-externalization`
    - `sample-tutorial-roadmap`
+   - `study/README`
    - `internal/README`
 
 入口 layer で読む順番を決め、golden path layer で実行の流れを掴み、その後に detail layer を読むのが current reading model です。
@@ -29,16 +31,18 @@ This is the five-minute starting point for users and contributors who want to tr
 ## 最初に読む順番
 
 1. [../README.md](../README.md)
-2. [choose-your-path.md](choose-your-path.md)
-3. [existing-db-to-output.md](existing-db-to-output.md)
-4. [common-tasks.md](common-tasks.md)
-5. [current-supported-workflow.md](current-supported-workflow.md)
-6. [overview.md](overview.md)
-7. [storage-and-state-model.md](storage-and-state-model.md)
-8. [sample-tutorial-roadmap.md](sample-tutorial-roadmap.md)
-9. [troubleshooting.md](troubleshooting.md)
-10. [internal/README.md](internal/README.md)
-11. [../tests/README.md](../tests/README.md)
+2. [quickstart.md](quickstart.md)
+3. [choose-your-path.md](choose-your-path.md)
+4. [existing-db-to-output.md](existing-db-to-output.md)
+5. [common-tasks.md](common-tasks.md)
+6. [current-supported-workflow.md](current-supported-workflow.md)
+7. [overview.md](overview.md)
+8. [storage-and-state-model.md](storage-and-state-model.md)
+9. [sample-tutorial-roadmap.md](sample-tutorial-roadmap.md)
+10. [study/README.md](study/README.md)
+11. [troubleshooting.md](troubleshooting.md)
+12. [internal/README.md](internal/README.md)
+13. [../tests/README.md](../tests/README.md)
 
 `docs/reports/` は history / handoff / resume prompt 用です。current supported workflow の正本として最初に読む場所ではありません。
 
@@ -76,11 +80,13 @@ dated report は補助であり、まずはこの 3 か所で `project_key`、ch
 | `tests/` | PHPUnit integration test と scenario | 現在の gate を確認するとき |
 | `docs/` | user-facing permanent docs と internal/reference index | まず date-less な正本を追うとき |
 | `work/` | disposable output、artifact history、compare workspace | runtime output や compare 作業を追うとき |
-| `original-codes/` | 旧実装の host-side reference と調査資料 | 差分確認や旧挙動調査が必要なとき |
+| `mtool/reference/legacy-dbclasses/` | curated legacy DB class reference | 限定された比較・移行文脈を見るとき |
+| `original-codes/` | host-side reference only の旧実装 snapshot | full legacy source の差分確認が必要なとき |
 
 ## 重要な boundary
 
 - `original-codes/` は host-side reference only
+- curated legacy reference は `mtool/reference/legacy-dbclasses/` など `mtool/reference/` 配下に限定して置く
 - 新実装の runtime / generator / Docker container は `original-codes/` を直接入力として使わない
 - tutorial lane は `sample/tutorials/` に固定し、simple-to-complex の順番を `sample01` から積む
 - internal pattern guard は `sample/internal-patterns/` に分離し、tutorial lane と混ぜない
@@ -89,38 +95,52 @@ dated report は補助であり、まずはこの 3 か所で `project_key`、ch
 
 ## current supported workflow
 
-1. `make env` と `make up` で base environment を起動する
-2. `MTOOL` に対して table import / data class sync / db access sync を流す
-3. tutorial sample か full suite で current gate を確認する
-4. 必要なら runtime reference / rollout status を script で確認する
+1. clone 直後は [quickstart.md](quickstart.md) で最初の 1 周を通す
+2. `make env` と `make up-mtool` で MTOOL seed 付き environment を起動する
+3. `MTOOL` に対して table import / data class sync / db access sync を流す
+4. tutorial sample か full suite で current gate を確認する
+5. 必要なら runtime reference / rollout status を script で確認する
 
 既存 DB を named source として登録し、canonical metadata 永続化から output publish / verify まで 1 本で辿る時は [existing-db-to-output.md](existing-db-to-output.md) を正本にします。  
 何がどこに保存されるかは [storage-and-state-model.md](storage-and-state-model.md) を参照してください。
 
 最初の確認対象としては、`sample01-simple-table-runtime` か `sample10-dbaccess-mini-crud-flow` が読みやすいです。  
-tutorial lane の正本は [sample-tutorial-roadmap.md](sample-tutorial-roadmap.md) にあります。
+sample を教材として読む順番は [study/README.md](study/README.md)、tutorial lane の正本は [sample-tutorial-roadmap.md](sample-tutorial-roadmap.md) にあります。
 
 ## 最初のコマンド
+
+### 0. clone 直後に 1 周する
+
+```bash
+make env
+make up-mtool
+make health-mtool
+make config-db-preflight-mtool
+make mtool-canonical-sync
+make sample01-pack-runtime-test
+```
+
+期待結果と次の読み先は [quickstart.md](quickstart.md) を参照します。
 
 ### 1. help と環境起動
 
 ```bash
 make help | sed -n '1,80p'
 make env
-make up
+make up-mtool
 ```
 
-`make up` は current local default として `compose.yaml + compose.local-db-config.yaml` を使います。external config DB を使う時は `APP_CONFIG_DB_*` を指定して `make up-external-config-db` を使います。起動後の確認は `make ps-external-config-db` / `make health-external-config-db` / `make config-db-preflight-external-config-db` を使います。external lane で shell や一時 stop が必要な時だけ raw `docker compose -f compose.yaml ...` を使います。
+`make up-mtool` は MTOOL core seed 付きで `compose.yaml + compose.local-db-config.yaml + mtool/docker/compose/01_mtool.compose.yaml` を使います。external config DB を使う時は `APP_CONFIG_DB_*` を指定して `make up-external-config-db` を使います。起動後の確認は `make ps-external-config-db` / `make health-external-config-db` / `make config-db-preflight-external-config-db` を使います。external lane で shell や一時 stop が必要な時だけ raw `docker compose -f compose.yaml ...` を使います。
 
-`make up` の出力には `admin` / `lab` に加えて `lab-db-ui` も含まれます。  
+local `make up-mtool` の設計データは `db-config` Docker volume に保存されます。継続利用では `make backup-config-db-mtool`、本気利用では `deploy/durable-config-db.env.example` から作った `.env.durable` と `make up-durable-config-db DURABLE_ENV_FILE=.env.durable` を使います。
+
+`make up-mtool` の出力には `admin` / `lab` に加えて `lab-db-ui` も含まれます。
 `lab-db-ui` で `db-lab` の table 定義を触り、その後 admin 側の `lab-live-schema` source から canonical metadata へ取り込む流れを試せます。
 
 ### 2. MTOOL の canonical import / sync
 
 ```bash
-docker compose exec -T web-admin php /var/www/mtool/scripts/import_project_tables.php --project-key=MTOOL
-docker compose exec -T web-admin php /var/www/mtool/scripts/sync_project_data_classes.php --project-key=MTOOL
-docker compose exec -T web-admin php /var/www/mtool/scripts/sync_project_db_access.php --project-key=MTOOL
+make mtool-canonical-sync
 ```
 
 ### 3. tutorial sample を 1 本確認する

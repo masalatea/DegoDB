@@ -10,6 +10,7 @@ top-level は外部ユーザ向け導線を優先し、内部向け文書は [In
 ## 3 層の読み方
 
 1. 入口 layer
+   - [Quickstart / まず動かしてみる](quickstart.md)
    - [Start Here / 最初の入口](start-here.md)
    - [Choose Your Path / 目的別の読み方](choose-your-path.md)
 2. golden path layer
@@ -24,6 +25,7 @@ top-level は外部ユーザ向け導線を優先し、内部向け文書は [In
    - [Config DB Externalization / config DB 外部化](config-db-externalization.md)
    - [Glossary / 用語集](glossary.md)
    - [Sample Tutorial Roadmap / sample 学習導線](sample-tutorial-roadmap.md)
+   - [Study Guide / sample で学ぶ](study/README.md)
    - [Internal Documentation Index / 内部ドキュメント索引](internal/README.md)
 
 入口 layer で読む順番を決め、golden path layer で実行の流れを掴み、その後に detail layer へ降ります。  
@@ -33,6 +35,8 @@ detail doc だけを読んで mainline を再構成するのは current reading 
 
 - [DegoDB](../README.md)
   - public / repo top の入口
+- [Quickstart / まず動かしてみる](quickstart.md)
+  - clone 直後に local stack と sample01 を 1 周だけ動かす文書
 - [Start Here / 最初の入口](start-here.md)
   - 最初の 5 分で repo の current な読み方を掴む文書
 - [Choose Your Path / 目的別の読み方](choose-your-path.md)
@@ -40,13 +44,15 @@ detail doc だけを読んで mainline を再構成するのは current reading 
 - [Existing DB To Output / 既存 DB から出力まで](existing-db-to-output.md)
   - existing DB 接続から canonical metadata 永続化、設計、output verify までの primary journey
 - [Common Tasks / よく使う作業](common-tasks.md)
-  - 起動、sample、test、bundle、runtime reference 確認の最短手順
+  - 起動、sample、test、bundle、config DB backup / durable env、runtime reference 確認の最短手順
 - [Current Supported Workflow / 現在サポートするワークフロー](current-supported-workflow.md)
   - current mainline と archived helper の境界
 - [Storage And State Model / 保存先と状態モデル](storage-and-state-model.md)
   - `config_db`、existing DB、artifact、`work/` の役割を 1 枚で見る companion
 - [Sample Tutorial Roadmap / sample 学習導線](sample-tutorial-roadmap.md)
   - tutorial sample の学習順
+- [Study Guide / sample で学ぶ](study/README.md)
+  - tutorial sample を教材として読む hands-on guide
 - [Internal Documentation Index / 内部ドキュメント索引](internal/README.md)
   - contributor / maintainer 向け内部 reference の索引
 - [Test Guide / テストガイド](../tests/README.md)
@@ -63,13 +69,15 @@ detail doc だけを読んで mainline を再構成するのは current reading 
 - [Current Supported Workflow / 現在サポートするワークフロー](current-supported-workflow.md)
   - current mainline と archived 導線の切り分け
 - [Common Tasks / よく使う作業](common-tasks.md)
-  - 起動、sample、test、runtime reference 操作の最短手順
+  - 起動、sample、test、config DB backup / durable env、runtime reference 操作の最短手順
 - [Troubleshooting / トラブルシューティング](troubleshooting.md)
   - current supported lane で踏みやすい warning / error の切り分け
 - [Glossary / 用語集](glossary.md)
   - repo 内の主要用語を短く揃える語彙集
 - [Sample Tutorial Roadmap / sample 学習導線](sample-tutorial-roadmap.md)
   - tutorial sample を simple-to-complex に並べた正本
+- [Study Guide / sample で学ぶ](study/README.md)
+  - `sample01` から `sample10` を学習順に触るための guide
 
 ## Task And Reference Guides
 

@@ -102,19 +102,42 @@ cleanup() {
   "$run_script_abs" reset >/dev/null 2>&1 || true
 }
 
+wait_for_config_db() {
+  local attempts="${1:-90}"
+  local attempt
+
+  for attempt in $(seq 1 "$attempts"); do
+    if "${compose_cmd[@]}" exec -T db-config sh -lc \
+      'mariadb-admin ping -h 127.0.0.1 -uroot -p"$MARIADB_ROOT_PASSWORD" --silent' >/dev/null 2>&1; then
+      return 0
+    fi
+
+    sleep 1
+  done
+
+  echo "db-config did not become ready after ${attempts}s" >&2
+  "${compose_cmd[@]}" ps >&2 || true
+  "${compose_cmd[@]}" logs --tail=80 db-config >&2 || true
+  return 1
+}
+
 trap cleanup EXIT
 
 "${compose_cmd[@]}" build web-admin web-lab
 "$run_script_abs" up
+wait_for_config_db
 
 if [ "$apply_pack_seed" -eq 1 ]; then
   "$run_script_abs" apply-seed
 fi
 
+# Bash 3.2 on macOS treats an empty array expansion as unbound under `set -u`.
+set +u
 for extra_seed_path in "${extra_seed_paths[@]}"; do
   bash "$REPO_ROOT/mtool/scripts/apply_config_sample_seed.sh" \
     "--compose-file=$compose_file" \
     "$extra_seed_path"
 done
+set -u
 
 "${compose_cmd[@]}" exec -T web-admin phpunit --configuration /var/www/tests/phpunit.xml "$phpunit_target"

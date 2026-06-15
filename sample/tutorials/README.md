@@ -4,6 +4,7 @@
 - pack 名は `sample01-*` から始める
 - README / Make help / 今後の導線はここを優先する
 - tutorial backlog と段階設計の正本は `docs/sample-tutorial-roadmap.md` を参照する
+- sample を教材として読む hands-on guide は `docs/study/README.md` を参照する
 
 current runtime tutorial packs:
 

@@ -39,4 +39,4 @@ coverage/
 # Runtime path policy
 # - Keep durable source trees under mtool/ (including mtool/extensions/) and sample/
 # - Ignore disposable runtime output under work/
-# See docs/source-output-path-policy.md for the directory role definitions.
+# See docs/internal/source-output-path-policy.md for the directory role definitions.

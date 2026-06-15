@@ -11,6 +11,8 @@
 
 ## Index
 
+- `2026-0616-design-data-persistence-report.md`
+  - 一般ユーザー利用時の設計データを `config_db` に永続化する方針と、generated artifact / external DB / secrets との境界を整理したレポート。
 - `2026-0507-rebuild-plan.md`
   - 初期の再構築 scope と進め方。
 - `2026-0508-rebuild-status.md`

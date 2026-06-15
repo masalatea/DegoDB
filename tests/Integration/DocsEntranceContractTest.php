@@ -12,25 +12,28 @@ final class DocsEntranceContractTest extends TestCase
     public function testEntranceDocsKeepCoreLinks(): void
     {
         $readme = $this->readRepoFile('README.md');
+        $quickstart = $this->readRepoFile('docs/quickstart.md');
         $startHere = $this->readRepoFile('docs/start-here.md');
         $docsIndex = $this->readRepoFile('docs/README.md');
         $chooseYourPath = $this->readRepoFile('docs/choose-your-path.md');
 
         $this->assertContainsAll(
             [
-                '[docs/start-here.md](docs/start-here.md)',
-                '[docs/choose-your-path.md](docs/choose-your-path.md)',
-                '[docs/existing-db-to-output.md](docs/existing-db-to-output.md)',
-                '[docs/common-tasks.md](docs/common-tasks.md)',
-                '[docs/current-supported-workflow.md](docs/current-supported-workflow.md)',
-                '[docs/storage-and-state-model.md](docs/storage-and-state-model.md)',
-                '[docs/project-metadata-bundle.md](docs/project-metadata-bundle.md)',
-                '[docs/config-db-externalization.md](docs/config-db-externalization.md)',
-                '[docs/troubleshooting.md](docs/troubleshooting.md)',
-                '[docs/glossary.md](docs/glossary.md)',
-                '[docs/sample-tutorial-roadmap.md](docs/sample-tutorial-roadmap.md)',
-                '[docs/internal/README.md](docs/internal/README.md)',
-                '[tests/README.md](tests/README.md)',
+                'docs/quickstart.md',
+                'docs/start-here.md',
+                'docs/choose-your-path.md',
+                'docs/existing-db-to-output.md',
+                'docs/common-tasks.md',
+                'docs/current-supported-workflow.md',
+                'docs/storage-and-state-model.md',
+                'docs/project-metadata-bundle.md',
+                'docs/config-db-externalization.md',
+                'docs/troubleshooting.md',
+                'docs/glossary.md',
+                'docs/sample-tutorial-roadmap.md',
+                'docs/study/README.md',
+                'docs/internal/README.md',
+                'tests/README.md',
             ],
             $readme,
             'README.md',
@@ -38,6 +41,28 @@ final class DocsEntranceContractTest extends TestCase
 
         $this->assertContainsAll(
             [
+                '[choose-your-path.md](choose-your-path.md)',
+                '[start-here.md](start-here.md)',
+                '[existing-db-to-output.md](existing-db-to-output.md)',
+                '[common-tasks.md](common-tasks.md)',
+                '[study/README.md](study/README.md)',
+                '[sample-tutorial-roadmap.md](sample-tutorial-roadmap.md)',
+                'make env',
+                'make up-mtool',
+                'make health-mtool',
+                'make config-db-preflight-mtool',
+                'make mtool-canonical-sync',
+                'make sample01-pack-runtime-test',
+                'mtool/reference/legacy-dbclasses/',
+                '`original-codes/`',
+            ],
+            $quickstart,
+            'docs/quickstart.md',
+        );
+
+        $this->assertContainsAll(
+            [
+                '[quickstart.md](quickstart.md)',
                 '[choose-your-path.md](choose-your-path.md)',
                 '[existing-db-to-output.md](existing-db-to-output.md)',
                 '[existing-db-to-output.md#e10-handoff-payload](existing-db-to-output.md#e10-handoff-payload)',
@@ -48,6 +73,7 @@ final class DocsEntranceContractTest extends TestCase
                 '[overview.md](overview.md)',
                 '[troubleshooting.md](troubleshooting.md)',
                 '[sample-tutorial-roadmap.md](sample-tutorial-roadmap.md)',
+                '[study/README.md](study/README.md)',
                 '[internal/README.md](internal/README.md)',
                 '[../tests/README.md](../tests/README.md)',
             ],
@@ -57,19 +83,21 @@ final class DocsEntranceContractTest extends TestCase
 
         $this->assertContainsAll(
             [
-                '[start-here.md](start-here.md)',
-                '[choose-your-path.md](choose-your-path.md)',
-                '[existing-db-to-output.md](existing-db-to-output.md)',
-                '[common-tasks.md](common-tasks.md)',
-                '[current-supported-workflow.md](current-supported-workflow.md)',
-                '[storage-and-state-model.md](storage-and-state-model.md)',
-                '[project-metadata-bundle.md](project-metadata-bundle.md)',
-                '[config-db-externalization.md](config-db-externalization.md)',
-                '[troubleshooting.md](troubleshooting.md)',
-                '[glossary.md](glossary.md)',
-                '[sample-tutorial-roadmap.md](sample-tutorial-roadmap.md)',
-                '[internal/README.md](internal/README.md)',
-                '[../tests/README.md](../tests/README.md)',
+                'quickstart.md',
+                'start-here.md',
+                'choose-your-path.md',
+                'existing-db-to-output.md',
+                'common-tasks.md',
+                'current-supported-workflow.md',
+                'storage-and-state-model.md',
+                'project-metadata-bundle.md',
+                'config-db-externalization.md',
+                'troubleshooting.md',
+                'glossary.md',
+                'sample-tutorial-roadmap.md',
+                'study/README.md',
+                'internal/README.md',
+                '../tests/README.md',
             ],
             $docsIndex,
             'docs/README.md',
@@ -77,6 +105,7 @@ final class DocsEntranceContractTest extends TestCase
 
         $this->assertContainsAll(
             [
+                '[quickstart.md](quickstart.md)',
                 '[start-here.md](start-here.md)',
                 '[existing-db-to-output.md](existing-db-to-output.md)',
                 '[existing-db-to-output.md#e10-handoff-payload](existing-db-to-output.md#e10-handoff-payload)',
@@ -88,6 +117,7 @@ final class DocsEntranceContractTest extends TestCase
                 '[config-db-externalization.md](config-db-externalization.md)',
                 '[troubleshooting.md](troubleshooting.md)',
                 '[sample-tutorial-roadmap.md](sample-tutorial-roadmap.md)',
+                '[study/README.md](study/README.md)',
                 '[internal/README.md](internal/README.md)',
                 '[../sample/tutorials/README.md](../sample/tutorials/README.md)',
             ],
@@ -100,6 +130,7 @@ final class DocsEntranceContractTest extends TestCase
     {
         $readme = $this->readRepoFile('README.md');
         $docsIndex = $this->readRepoFile('docs/README.md');
+        $quickstart = $this->readRepoFile('docs/quickstart.md');
         $startHere = $this->readRepoFile('docs/start-here.md');
         $chooseYourPath = $this->readRepoFile('docs/choose-your-path.md');
 
@@ -108,6 +139,8 @@ final class DocsEntranceContractTest extends TestCase
             self::assertStringContainsString('golden path layer', $content);
             self::assertStringContainsString('detail layer', $content);
         }
+
+        self::assertStringContainsString('最初に 1 周だけ動かす', $quickstart);
 
         foreach (
             [
@@ -122,6 +155,7 @@ final class DocsEntranceContractTest extends TestCase
 
         $this->assertContainsAll(
             [
+                '[quickstart.md](quickstart.md)',
                 '[start-here.md](start-here.md)',
                 '[existing-db-to-output.md](existing-db-to-output.md)',
                 '[existing-db-to-output.md#e10-handoff-payload](existing-db-to-output.md#e10-handoff-payload)',
@@ -143,6 +177,7 @@ final class DocsEntranceContractTest extends TestCase
     {
         $readme = $this->readRepoFile('README.md');
         $docsIndex = $this->readRepoFile('docs/README.md');
+        $quickstart = $this->readRepoFile('docs/quickstart.md');
         $startHere = $this->readRepoFile('docs/start-here.md');
         $chooseYourPath = $this->readRepoFile('docs/choose-your-path.md');
 
@@ -161,6 +196,7 @@ final class DocsEntranceContractTest extends TestCase
         ) {
             self::assertStringNotContainsString($needle, $readme);
             self::assertStringNotContainsString($needle, $docsIndex);
+            self::assertStringNotContainsString($needle, $quickstart);
             self::assertStringNotContainsString($needle, $startHere);
             self::assertStringNotContainsString($needle, $chooseYourPath);
         }
@@ -172,22 +208,22 @@ final class DocsEntranceContractTest extends TestCase
 
         $this->assertContainsAll(
             [
-                '[../../README.md](../../README.md)',
-                '[../README.md](../README.md)',
-                '[../start-here.md](../start-here.md)',
-                '[../choose-your-path.md](../choose-your-path.md)',
-                '[ai-operator-contract.md](ai-operator-contract.md)',
-                '[repo-boundaries.md](repo-boundaries.md)',
-                '[runtime-architecture.md](runtime-architecture.md)',
-                '[generated-code-strategy.md](generated-code-strategy.md)',
-                '[site-boundaries.md](site-boundaries.md)',
-                '[source-output-path-policy.md](source-output-path-policy.md)',
-                '[auth-architecture.md](auth-architecture.md)',
-                '[data-model.md](data-model.md)',
-                '[mtool-admin-roadmap.md](mtool-admin-roadmap.md)',
-                '[html-db-rewrite-map.md](html-db-rewrite-map.md)',
-                '[legacy-new-db-mapping.md](legacy-new-db-mapping.md)',
-                '[language-resource-separation.md](language-resource-separation.md)',
+                '[DegoDB](../../README.md)',
+                '../README.md',
+                '../start-here.md',
+                '../choose-your-path.md',
+                'ai-operator-contract.md',
+                'repo-boundaries.md',
+                'runtime-architecture.md',
+                'generated-code-strategy.md',
+                'site-boundaries.md',
+                'source-output-path-policy.md',
+                'auth-architecture.md',
+                'data-model.md',
+                'mtool-admin-roadmap.md',
+                'html-db-rewrite-map.md',
+                'legacy-new-db-mapping.md',
+                'language-resource-separation.md',
             ],
             $internalIndex,
             'docs/internal/README.md',
@@ -202,6 +238,7 @@ final class DocsEntranceContractTest extends TestCase
         foreach (
             [
                 'README.md',
+                'docs/quickstart.md',
                 'docs/start-here.md',
                 'docs/storage-and-state-model.md',
                 'docs/internal/ai-operator-contract.md',
@@ -472,12 +509,17 @@ final class DocsEntranceContractTest extends TestCase
         $repoRoot = dirname(__DIR__, 2);
         $docsFiles = glob($repoRoot . '/docs/*.md') ?: [];
         $internalDocsFiles = glob($repoRoot . '/docs/internal/*.md') ?: [];
+        $studyDocsFiles = glob($repoRoot . '/docs/study/*.md') ?: [];
 
         $permanentDocs = ['README.md'];
-        foreach (array_merge($docsFiles, $internalDocsFiles) as $absolutePath) {
-            $prefix = str_contains($absolutePath, '/docs/internal/')
-                ? 'docs/internal/'
-                : 'docs/';
+        foreach (array_merge($docsFiles, $internalDocsFiles, $studyDocsFiles) as $absolutePath) {
+            if (str_contains($absolutePath, '/docs/internal/')) {
+                $prefix = 'docs/internal/';
+            } elseif (str_contains($absolutePath, '/docs/study/')) {
+                $prefix = 'docs/study/';
+            } else {
+                $prefix = 'docs/';
+            }
             $permanentDocs[] = $prefix . basename($absolutePath);
         }
         $permanentDocs = array_values(array_unique($permanentDocs));
@@ -494,7 +536,7 @@ final class DocsEntranceContractTest extends TestCase
         $this->assertContainsAll(
             [
                 '恒久文書は日本語本文を正本にしつつ、冒頭に英語 companion を添えて日英併記で維持する',
-                'top-level `docs/` は外部ユーザ向け導線を優先し、個別 internal doc は [internal/README.md](internal/README.md) から辿る',
+                'top-level `docs/` は外部ユーザ向け導線を優先し、個別 internal doc は [Internal Documentation Index / 内部ドキュメント索引](internal/README.md) から辿る',
                 '`docs/reports/` 配下の progress / handoff / resume prompt / slice report は日本語のみ運用でよい',
             ],
             $this->readRepoFile('docs/README.md'),

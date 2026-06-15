@@ -69,7 +69,7 @@
 - `tests/Integration/SamplePackCatalogTest.php`
   - sample pack の category 分離、pack order、category guide README、共通 runner 名、file-based sample の curated fixture 入力、LanguageResource root 解決、`pattern01-14` に対する dedicated output test coverage が current layout から外れていないことを検証する
 - `tests/Integration/DocsEntranceContractTest.php`
-  - `README.md`、`docs/start-here.md`、`docs/README.md`、`docs/choose-your-path.md`、`docs/internal/README.md`、`docs/internal/repo-boundaries.md`、`docs/current-supported-workflow.md`、`docs/common-tasks.md`、`docs/glossary.md` の入口リンク、top-level external surface、internal docs index、boundary wording、sample lane 表記、full suite command が current 導線から外れていないことを検証する
+  - `README.md`、`docs/quickstart.md`、`docs/start-here.md`、`docs/README.md`、`docs/choose-your-path.md`、`docs/internal/README.md`、`docs/internal/repo-boundaries.md`、`docs/current-supported-workflow.md`、`docs/common-tasks.md`、`docs/glossary.md` の入口リンク、top-level external surface、internal docs index、boundary wording、sample lane 表記、full suite command が current 導線から外れていないことを検証する
 - `tests/Integration/LegacyProjectSampleCatalogTest.php`
   - remaining legacy project packs の canonical project key、project/source output seed、resource manifest contract が current catalog と一致していることを検証する
 - `tests/Integration/RuntimeReferenceStatusTest.php`

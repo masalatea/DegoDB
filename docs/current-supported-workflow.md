@@ -54,10 +54,10 @@ warning / error の意味を切り分けたい時は [troubleshooting.md](troubl
 
 ```bash
 make env
-make up
+make up-mtool
 ```
 
-`make up` は current local default として `compose.yaml` に `compose.local-db-config.yaml` を重ねて起動する。
+`make up-mtool` は MTOOL core seed 付きで `compose.yaml` に `compose.local-db-config.yaml` と `mtool/docker/compose/01_mtool.compose.yaml` を重ねて起動する。空の local config DB だけを起動したい時は `make up` を使う。
 
 external/shared env で `APP_CONFIG_DB_*` を external MariaDB に向け、local `db-config` を起動しない時は次を使う。
 
@@ -69,6 +69,16 @@ APP_CONFIG_DB_USER=config_app \
 APP_CONFIG_DB_PASSWORD=secret \
 make up-external-config-db
 ```
+
+継続利用・チーム利用では、Git 管理外の durable env file を使う。
+
+```bash
+cp deploy/durable-config-db.env.example .env.durable
+make up-durable-config-db DURABLE_ENV_FILE=.env.durable
+make config-db-preflight-durable-config-db DURABLE_ENV_FILE=.env.durable
+```
+
+local `make up-mtool` / `make up` の設計データは Docker volume に残る。reset 前や継続利用では `make backup-config-db-mtool` または `make backup-config-db` で dump を取る。
 
 起動後の確認や teardown は次を使う。
 
@@ -92,16 +102,14 @@ COMPOSE_PROFILES=lab-db-ui docker compose -f compose.yaml stop
 ### 2. MTOOL canonical import / sync
 
 ```bash
-docker compose exec -T web-admin php /var/www/mtool/scripts/import_project_tables.php --project-key=MTOOL
-docker compose exec -T web-admin php /var/www/mtool/scripts/sync_project_data_classes.php --project-key=MTOOL
-docker compose exec -T web-admin php /var/www/mtool/scripts/sync_project_db_access.php --project-key=MTOOL
+make mtool-canonical-sync
 ```
 
 ### 2.5. Lab DB から canonical metadata へ取り込む
 
 operator 向けの step-by-step は [existing-db-to-output.md#e3-register-source](existing-db-to-output.md#e3-register-source) から [existing-db-to-output.md#e5-apply-import](existing-db-to-output.md#e5-apply-import) を使う。ここでは current boundary だけを残す。
 
-- `make up` 後に `lab-db-ui` で `db-lab` の schema を編集できる
+- `make up-mtool` 後に `lab-db-ui` で `db-lab` の schema を編集できる
 - external source を足す時は admin 側の `/settings/database-sources` で named database source を登録する
 - 取り込みは `lab-live-schema` または `named-live-schema:{source_key}` を使う
 - canonical metadata の保存先は引き続き `db-config` で、`db-lab` と external source は import source として使う

@@ -3,6 +3,9 @@ PHP ?= php
 LAB_DB_UI_PROFILE ?= lab-db-ui
 COMPOSE_BASE := $(COMPOSE) -f compose.yaml
 COMPOSE_LOCAL := $(COMPOSE_BASE) -f compose.local-db-config.yaml
+COMPOSE_MTOOL := $(COMPOSE_LOCAL) -f mtool/docker/compose/01_mtool.compose.yaml
+DURABLE_ENV_FILE ?= .env.durable
+COMPOSE_DURABLE := $(COMPOSE) --env-file $(DURABLE_ENV_FILE) -f compose.yaml
 
 .DEFAULT_GOAL := help
 
@@ -45,11 +48,22 @@ LEGACY_GENERATED_CLEAN_DIRS := \
 	work/legacy-generated
 ROOT_TMP_DIR := tmp
 
-.PHONY: help env env-force bootstrap-dbclasses bootstrap-dbclasses-runtime-reference promote-runtime-reference restore-runtime-reference-snapshot mtool-runtime-reference-status clean project-output db-access-sync mtool-self-loop-check mtool-proxy-output-check mtool-html-db-lang-res-wrapper-check mtool-lang-res-file-tree-export mtool-lang-res-file-tree-check mtool-external-source-lab-smoke mtool-external-source-lab-browser-smoke test sample-pack-compose-smoke sample-pack-runtime-smoke sample01-pack-runtime-test sample02-pack-runtime-test sample03-pack-runtime-test sample04-pack-runtime-test sample05-pack-runtime-test sample06-pack-runtime-test sample07-pack-runtime-test sample08-pack-runtime-test sample09-pack-runtime-test sample09-runtime-output-test sample10-pack-runtime-test sample10-runtime-output-test pattern01-output-test pattern02-output-test pattern03-output-test pattern04-output-test pattern05-output-test pattern06-output-test pattern07-output-test pattern08-output-test pattern09-output-test pattern10-output-test pattern11-output-test pattern12-output-test pattern13-output-test pattern14-output-test sample01-pack-output-test sample02-pack-output-test sample03-pack-output-test sample04-pack-output-test sample05-pack-output-test sample06-pack-output-test sample07-pack-output-test sample08-pack-output-test sample09-pack-output-test sample10-pack-output-test sample11-pack-output-test sample12-pack-output-test sample13-pack-output-test sample14-pack-output-test sample15-pack-output-test sample1-output-test sample1-output-check sample2-output-test sample2-output-check sample3-output-test sample3-output-check sample4-output-test sample4-output-check sample5-output-test sample5-output-check sample6-output-test sample6-output-check sample7-output-test sample7-output-check sample8-output-test sample8-output-check sample9-output-test sample9-output-check sample10-output-test sample10-output-check sample11-output-test sample11-output-check sample12-output-test sample12-output-check sample13-output-test sample13-output-check sample14-output-test sample14-output-check sample15-output-test sample15-output-check sample16-output-test sample16-output-check sample17-output-test sample17-output-check sample18-output-test sample18-output-check sample19-output-test sample19-output-check sample20-output-test sample20-output-check sample21-output-test sample21-output-check sample22-output-test sample22-output-check build up up-external-config-db down-external-config-db ps-external-config-db logs-external-config-db health-external-config-db config-db-preflight-external-config-db db-config-migrate-external-config-db start stop down reset ps logs health admin-shell lab-shell db-config-shell db-lab-shell config-db-preflight db-config-migrate db-lab-migrate
+.PHONY: help env env-force bootstrap-dbclasses bootstrap-dbclasses-runtime-reference promote-runtime-reference restore-runtime-reference-snapshot mtool-runtime-reference-status clean project-output db-access-sync mtool-canonical-sync mtool-self-loop-check mtool-proxy-output-check mtool-html-db-lang-res-wrapper-check mtool-lang-res-file-tree-export mtool-lang-res-file-tree-check mtool-external-source-lab-smoke mtool-external-source-lab-browser-smoke test sample-pack-compose-smoke sample-pack-runtime-smoke sample01-pack-runtime-test sample02-pack-runtime-test sample03-pack-runtime-test sample04-pack-runtime-test sample05-pack-runtime-test sample06-pack-runtime-test sample07-pack-runtime-test sample08-pack-runtime-test sample09-pack-runtime-test sample09-runtime-output-test sample10-pack-runtime-test sample10-runtime-output-test pattern01-output-test pattern02-output-test pattern03-output-test pattern04-output-test pattern05-output-test pattern06-output-test pattern07-output-test pattern08-output-test pattern09-output-test pattern10-output-test pattern11-output-test pattern12-output-test pattern13-output-test pattern14-output-test sample01-pack-output-test sample02-pack-output-test sample03-pack-output-test sample04-pack-output-test sample05-pack-output-test sample06-pack-output-test sample07-pack-output-test sample08-pack-output-test sample09-pack-output-test sample10-pack-output-test sample11-pack-output-test sample12-pack-output-test sample13-pack-output-test sample14-pack-output-test sample15-pack-output-test sample1-output-test sample1-output-check sample2-output-test sample2-output-check sample3-output-test sample3-output-check sample4-output-test sample4-output-check sample5-output-test sample5-output-check sample6-output-test sample6-output-check sample7-output-test sample7-output-check sample8-output-test sample8-output-check sample9-output-test sample9-output-check sample10-output-test sample10-output-check sample11-output-test sample11-output-check sample12-output-test sample12-output-check sample13-output-test sample13-output-check sample14-output-test sample14-output-check sample15-output-test sample15-output-check sample16-output-test sample16-output-check sample17-output-test sample17-output-check sample18-output-test sample18-output-check sample19-output-test sample19-output-check sample20-output-test sample20-output-check sample21-output-test sample21-output-check sample22-output-test sample22-output-check build up up-mtool start-mtool stop-mtool down-mtool reset-mtool ps-mtool logs-mtool health-mtool config-db-preflight-mtool up-external-config-db down-external-config-db ps-external-config-db logs-external-config-db health-external-config-db config-db-preflight-external-config-db db-config-migrate-external-config-db start stop down reset ps logs health admin-shell lab-shell db-config-shell db-lab-shell config-db-preflight db-config-migrate db-lab-migrate
+.PHONY: backup-config-db restore-config-db backup-config-db-mtool restore-config-db-mtool up-durable-config-db ps-durable-config-db logs-durable-config-db health-durable-config-db config-db-preflight-durable-config-db db-config-migrate-durable-config-db down-durable-config-db
 
 DOCKER_ENV_TARGETS := \
 	build \
 	up \
+	up-mtool \
+	start-mtool \
+	health-mtool \
+	config-db-preflight-mtool \
+	backup-config-db-mtool \
+	restore-config-db-mtool \
+	up-durable-config-db \
+	health-durable-config-db \
+	config-db-preflight-durable-config-db \
+	db-config-migrate-durable-config-db \
 	up-external-config-db \
 	health-external-config-db \
 	config-db-preflight-external-config-db \
@@ -62,8 +76,11 @@ DOCKER_ENV_TARGETS := \
 	db-lab-shell \
 	config-db-preflight \
 	db-config-migrate \
+	backup-config-db \
+	restore-config-db \
 	db-lab-migrate \
 	db-access-sync \
+	mtool-canonical-sync \
 	mtool-self-loop-check \
 	mtool-proxy-output-check \
 	mtool-html-db-lang-res-wrapper-check \
@@ -141,6 +158,11 @@ project-output: ## runtime reference / staging から source output archive を�
 db-access-sync: ## bootstrap dbaccess preview を canonical metadata へ sync する。PROJECT_KEY=MTOOL を指定する
 	@test -n "$(PROJECT_KEY)" || (echo "PROJECT_KEY is required, e.g. make db-access-sync PROJECT_KEY=MTOOL" >&2; exit 1)
 	$(COMPOSE_LOCAL) exec -T web-admin php /var/www/mtool/scripts/sync_project_db_access.php --project-key=$(PROJECT_KEY)
+
+mtool-canonical-sync: ## MTOOL core seed stack で import / data class sync / DB Access sync を一括実行する
+	$(COMPOSE_MTOOL) exec -T web-admin php /var/www/mtool/scripts/import_project_tables.php --project-key=MTOOL
+	$(COMPOSE_MTOOL) exec -T web-admin php /var/www/mtool/scripts/sync_project_data_classes.php --project-key=MTOOL
+	$(COMPOSE_MTOOL) exec -T web-admin php /var/www/mtool/scripts/sync_project_db_access.php --project-key=MTOOL
 
 mtool-self-loop-check: ## MTOOL の import/sync/generate self-loop を一括検証する
 	$(COMPOSE_LOCAL) exec -T web-admin php /var/www/mtool/scripts/check_mtool_self_loop.php --requested-by=make
@@ -470,6 +492,93 @@ up: ## local default stack を build して起動する。Lab DB UI も含む
 	COMPOSE_PROFILES=$(LAB_DB_UI_PROFILE) $(COMPOSE_LOCAL) up -d lab-db-ui
 	bash mtool/scripts/show_compose_access_urls.sh
 
+up-mtool: ## MTOOL core seed 付き local stack を build して起動する。Quickstart 用
+	$(COMPOSE_MTOOL) up -d --build
+	COMPOSE_PROFILES=$(LAB_DB_UI_PROFILE) $(COMPOSE_MTOOL) up -d lab-db-ui
+	bash mtool/scripts/show_compose_access_urls.sh --compose-file=compose.local-db-config.yaml --compose-file=mtool/docker/compose/01_mtool.compose.yaml
+
+start-mtool: ## 停止済み MTOOL core seed stack を起動する。Lab DB UI も含む
+	$(COMPOSE_MTOOL) start
+	COMPOSE_PROFILES=$(LAB_DB_UI_PROFILE) $(COMPOSE_MTOOL) up -d lab-db-ui
+	bash mtool/scripts/show_compose_access_urls.sh --compose-file=compose.local-db-config.yaml --compose-file=mtool/docker/compose/01_mtool.compose.yaml
+
+stop-mtool: ## MTOOL core seed stack を停止する
+	$(COMPOSE_MTOOL) stop
+	COMPOSE_PROFILES=$(LAB_DB_UI_PROFILE) $(COMPOSE_MTOOL) stop lab-db-ui || true
+
+down-mtool: ## MTOOL core seed stack を停止して削除する
+	COMPOSE_PROFILES=$(LAB_DB_UI_PROFILE) $(COMPOSE_MTOOL) down
+
+reset-mtool: ## MTOOL core seed stack を DB volume ごと削除する
+	COMPOSE_PROFILES=$(LAB_DB_UI_PROFILE) $(COMPOSE_MTOOL) down -v
+
+ps-mtool: ## MTOOL core seed stack のサービス状態を表示する
+	COMPOSE_PROFILES=$(LAB_DB_UI_PROFILE) $(COMPOSE_MTOOL) ps
+
+logs-mtool: ## MTOOL core seed stack の全サービスログを表示する
+	COMPOSE_PROFILES=$(LAB_DB_UI_PROFILE) $(COMPOSE_MTOOL) logs -f --tail=100
+
+health-mtool: ## MTOOL core seed stack の admin / lab health を確認する
+	@echo "[admin]"
+	@$(COMPOSE_MTOOL) exec web-admin curl -fsS http://127.0.0.1/health
+	@echo
+	@echo "[lab]"
+	@$(COMPOSE_MTOOL) exec web-lab curl -fsS http://127.0.0.1/health
+	@echo
+
+config-db-preflight-mtool: ## MTOOL core seed stack の config DB schema を確認する
+	$(COMPOSE_MTOOL) exec -T web-admin php /var/www/mtool/scripts/check_config_db_bootstrap.php --requested-by=make
+
+backup-config-db-mtool: ## MTOOL core seed stack の config DB を work/backups/config-db に SQL dump する
+	@mkdir -p work/backups/config-db
+	@backup_file="work/backups/config-db/config_db-mtool-$$(date +%Y%m%d-%H%M%S).sql"; \
+	tmp_file="$$backup_file.tmp"; \
+	echo "[db-config] dumping to $$backup_file"; \
+	$(COMPOSE_MTOOL) exec -T db-config sh -lc 'mariadb-dump --single-transaction --routines --triggers --events -u"$$MARIADB_USER" -p"$$MARIADB_PASSWORD" "$$MARIADB_DATABASE"' > "$$tmp_file"; \
+	mv "$$tmp_file" "$$backup_file"; \
+	echo "$$backup_file"
+
+restore-config-db-mtool: ## MTOOL core seed stack の config DB を BACKUP_FILE=... から restore する。CONFIRM_RESTORE=yes 必須
+	@test -n "$(BACKUP_FILE)" || (echo "BACKUP_FILE is required, e.g. make restore-config-db-mtool BACKUP_FILE=work/backups/config-db/config_db-mtool-YYYYMMDD-HHMMSS.sql CONFIRM_RESTORE=yes" >&2; exit 1)
+	@test -f "$(BACKUP_FILE)" || (echo "BACKUP_FILE not found: $(BACKUP_FILE)" >&2; exit 1)
+	@test "$(CONFIRM_RESTORE)" = "yes" || (echo "CONFIRM_RESTORE=yes is required because this overwrites config DB state." >&2; exit 1)
+	$(COMPOSE_MTOOL) exec -T db-config sh -lc 'mariadb -u"$$MARIADB_USER" -p"$$MARIADB_PASSWORD" "$$MARIADB_DATABASE"' < "$(BACKUP_FILE)"
+
+up-durable-config-db: ## DURABLE_ENV_FILE の external config DB 設定で local db-config なしに起動する
+	@test -f "$(DURABLE_ENV_FILE)" || (echo "DURABLE_ENV_FILE not found: $(DURABLE_ENV_FILE). Copy deploy/durable-config-db.env.example first." >&2; exit 1)
+	$(COMPOSE_DURABLE) up -d --build web-admin web-lab db-lab
+	COMPOSE_PROFILES=$(LAB_DB_UI_PROFILE) $(COMPOSE_DURABLE) up -d lab-db-ui
+	bash mtool/scripts/show_compose_access_urls.sh
+
+down-durable-config-db: ## DURABLE_ENV_FILE の durable lane コンテナ / network を停止して削除する
+	@test -f "$(DURABLE_ENV_FILE)" || (echo "DURABLE_ENV_FILE not found: $(DURABLE_ENV_FILE)" >&2; exit 1)
+	COMPOSE_PROFILES=$(LAB_DB_UI_PROFILE) $(COMPOSE_DURABLE) down
+
+ps-durable-config-db: ## DURABLE_ENV_FILE の durable lane サービス状態を表示する
+	@test -f "$(DURABLE_ENV_FILE)" || (echo "DURABLE_ENV_FILE not found: $(DURABLE_ENV_FILE)" >&2; exit 1)
+	COMPOSE_PROFILES=$(LAB_DB_UI_PROFILE) $(COMPOSE_DURABLE) ps
+
+logs-durable-config-db: ## DURABLE_ENV_FILE の durable lane 全サービスログを表示する
+	@test -f "$(DURABLE_ENV_FILE)" || (echo "DURABLE_ENV_FILE not found: $(DURABLE_ENV_FILE)" >&2; exit 1)
+	COMPOSE_PROFILES=$(LAB_DB_UI_PROFILE) $(COMPOSE_DURABLE) logs -f --tail=100
+
+health-durable-config-db: ## DURABLE_ENV_FILE の durable lane admin / lab health を確認する
+	@test -f "$(DURABLE_ENV_FILE)" || (echo "DURABLE_ENV_FILE not found: $(DURABLE_ENV_FILE)" >&2; exit 1)
+	@echo "[admin]"
+	@$(COMPOSE_DURABLE) exec web-admin curl -fsS http://127.0.0.1/health
+	@echo
+	@echo "[lab]"
+	@$(COMPOSE_DURABLE) exec web-lab curl -fsS http://127.0.0.1/health
+	@echo
+
+config-db-preflight-durable-config-db: ## DURABLE_ENV_FILE の external config DB schema を確認する
+	@test -f "$(DURABLE_ENV_FILE)" || (echo "DURABLE_ENV_FILE not found: $(DURABLE_ENV_FILE)" >&2; exit 1)
+	$(COMPOSE_DURABLE) exec -T web-admin php /var/www/mtool/scripts/check_config_db_bootstrap.php --requested-by=make
+
+db-config-migrate-durable-config-db: ## DURABLE_ENV_FILE の external config DB に config-initdb を再適用する
+	@test -f "$(DURABLE_ENV_FILE)" || (echo "DURABLE_ENV_FILE not found: $(DURABLE_ENV_FILE)" >&2; exit 1)
+	$(COMPOSE_DURABLE) exec -T web-admin php /var/www/mtool/scripts/migrate_config_db.php --requested-by=make
+
 up-external-config-db: ## external APP_CONFIG_DB_* を使い、local db-config を起動せずに build/start する
 	$(COMPOSE_BASE) up -d --build web-admin web-lab db-lab
 	COMPOSE_PROFILES=$(LAB_DB_UI_PROFILE) $(COMPOSE_BASE) up -d lab-db-ui
@@ -544,6 +653,21 @@ config-db-preflight: ## local default stack 経由で現在の APP_CONFIG_DB_* t
 
 db-config-migrate: ## local default stack 経由で config-initdb を現在の APP_CONFIG_DB target に再適用する
 	$(COMPOSE_LOCAL) exec -T web-admin php /var/www/mtool/scripts/migrate_config_db.php --requested-by=make
+
+backup-config-db: ## local default stack の config DB を work/backups/config-db に SQL dump する
+	@mkdir -p work/backups/config-db
+	@backup_file="work/backups/config-db/config_db-$$(date +%Y%m%d-%H%M%S).sql"; \
+	tmp_file="$$backup_file.tmp"; \
+	echo "[db-config] dumping to $$backup_file"; \
+	$(COMPOSE_LOCAL) exec -T db-config sh -lc 'mariadb-dump --single-transaction --routines --triggers --events -u"$$MARIADB_USER" -p"$$MARIADB_PASSWORD" "$$MARIADB_DATABASE"' > "$$tmp_file"; \
+	mv "$$tmp_file" "$$backup_file"; \
+	echo "$$backup_file"
+
+restore-config-db: ## local default stack の config DB を BACKUP_FILE=... から restore する。CONFIRM_RESTORE=yes 必須
+	@test -n "$(BACKUP_FILE)" || (echo "BACKUP_FILE is required, e.g. make restore-config-db BACKUP_FILE=work/backups/config-db/config_db-YYYYMMDD-HHMMSS.sql CONFIRM_RESTORE=yes" >&2; exit 1)
+	@test -f "$(BACKUP_FILE)" || (echo "BACKUP_FILE not found: $(BACKUP_FILE)" >&2; exit 1)
+	@test "$(CONFIRM_RESTORE)" = "yes" || (echo "CONFIRM_RESTORE=yes is required because this overwrites config DB state." >&2; exit 1)
+	$(COMPOSE_LOCAL) exec -T db-config sh -lc 'mariadb -u"$$MARIADB_USER" -p"$$MARIADB_PASSWORD" "$$MARIADB_DATABASE"' < "$(BACKUP_FILE)"
 
 db-lab-migrate: ## local default stack の db-lab に lab-initdb を再適用する
 	@for f in docker/mariadb/lab-initdb/*.sql; do \

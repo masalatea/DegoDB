@@ -20,10 +20,10 @@ warning / error の意味を切り分けたい時は [troubleshooting.md](troubl
 
 ```bash
 make env
-make up
+make up-mtool
 ```
 
-`make up` は current local default として `compose.yaml` に `compose.local-db-config.yaml` を重ねて起動する。
+`make up-mtool` は MTOOL core seed 付きで `compose.yaml` に `compose.local-db-config.yaml` と `mtool/docker/compose/01_mtool.compose.yaml` を重ねて起動する。空の local config DB だけを起動したい時は `make up` を使う。
 
 external/shared env で local `db-config` を起動せず、`APP_CONFIG_DB_*` で external MariaDB を使う時は次を使う。
 
@@ -36,6 +36,18 @@ APP_CONFIG_DB_PASSWORD=secret \
 make up-external-config-db
 ```
 
+継続利用・チーム利用では、env file を分けて durable lane を使う。
+
+```bash
+cp deploy/durable-config-db.env.example .env.durable
+# .env.durable の APP_CONFIG_DB_* と password 類を実値に変更する
+make up-durable-config-db DURABLE_ENV_FILE=.env.durable
+make config-db-preflight-durable-config-db DURABLE_ENV_FILE=.env.durable
+make db-config-migrate-durable-config-db DURABLE_ENV_FILE=.env.durable
+```
+
+`.env.durable` は `.gitignore` 対象で、Git に入れない。
+
 起動後の確認や teardown は次を使う。
 
 ```bash
@@ -44,6 +56,15 @@ make health-external-config-db
 make config-db-preflight-external-config-db
 make db-config-migrate-external-config-db
 make down-external-config-db
+```
+
+durable lane の確認や teardown は次を使う。
+
+```bash
+make ps-durable-config-db DURABLE_ENV_FILE=.env.durable
+make health-durable-config-db DURABLE_ENV_FILE=.env.durable
+make logs-durable-config-db DURABLE_ENV_FILE=.env.durable
+make down-durable-config-db DURABLE_ENV_FILE=.env.durable
 ```
 
 `make start` / `make stop` / `make ps` / `make logs` / `make db-config-shell` / `make config-db-preflight` / `make db-config-migrate` は local default overlay lane 用で、external lane には混ぜない。
@@ -58,12 +79,10 @@ COMPOSE_PROFILES=lab-db-ui docker compose -f compose.yaml stop
 MTOOL の canonical metadata を揃えるところまで進める場合は次を流す。
 
 ```bash
-docker compose exec -T web-admin php /var/www/mtool/scripts/import_project_tables.php --project-key=MTOOL
-docker compose exec -T web-admin php /var/www/mtool/scripts/sync_project_data_classes.php --project-key=MTOOL
-docker compose exec -T web-admin php /var/www/mtool/scripts/sync_project_db_access.php --project-key=MTOOL
+make mtool-canonical-sync
 ```
 
-`make up` の出力には `lab-db-ui` も含まれる。  
+`make up-mtool` の出力には `lab-db-ui` も含まれる。
 ここから `db-lab` の table 定義を変更し、admin 側の import source として使える。
 
 external DB を named source として足す時は、admin 側の `/settings/database-sources` で接続先を登録してから import source に出す。
@@ -82,7 +101,7 @@ full flow の正本:
 
 ### Lab DB quick loop
 
-1. `make up` で表示された `lab-db-ui` を開く
+1. `make up-mtool` で表示された `lab-db-ui` を開く
 2. `db-lab` 上の table / column を編集する
 3. admin 側で `/projects/{project_key}/tables/import?source=lab-live-schema` を開く
 4. もしくは CLI で次を使う
@@ -163,6 +182,29 @@ docker compose exec -T web-admin php /var/www/mtool/scripts/import_project_metad
 - `--mode=apply` は core metadata を replace するので、first slice では preview を先に確認する
 - secret は bundle に入れず、`--database-source-secrets=...` の separate JSON map で渡す
 - `database_sources` は optional sidecar で、`--database-sources=...` を指定した時だけ export/import する
+
+## config DB を backup / restore する
+
+local Docker volume だけに設計データを閉じ込めないため、継続利用では config DB dump を取る。
+
+MTOOL core seed stack の場合:
+
+```bash
+make backup-config-db-mtool
+make restore-config-db-mtool BACKUP_FILE=work/backups/config-db/config_db-mtool-YYYYMMDD-HHMMSS.sql CONFIRM_RESTORE=yes
+```
+
+local default stack の場合:
+
+```bash
+make backup-config-db
+make restore-config-db BACKUP_FILE=work/backups/config-db/config_db-YYYYMMDD-HHMMSS.sql CONFIRM_RESTORE=yes
+```
+
+- backup は `work/backups/config-db/` に timestamp 付き SQL dump を作る
+- `work/` は Git 管理しない
+- restore は config DB state を上書きするため `CONFIRM_RESTORE=yes` を必須にしている
+- external config DB を使う場合は、この local container dump ではなく managed DB / vendor-native backup を優先する
 
 ## config DB externalization を preflight する
 
