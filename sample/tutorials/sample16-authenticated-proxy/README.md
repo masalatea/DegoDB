@@ -1,0 +1,78 @@
+# sample16-authenticated-proxy
+
+## 役割
+
+- 役割: `ProjectToken` authenticated single proxy server artifact と fail-closed auth behavior を確認する tutorial sample pack
+- project key: `SAMPLE16`
+- runtime root: `work/sample-packs/sample16-authenticated-proxy/`
+- reference output: `reference/AUTH-PROXY-SERVER/`
+
+`sample13` は OpenAPI artifact、`sample14` は custom proxy runtime、`sample15` は project metadata bundle が主題です。`sample16` は generated proxy endpoint の auth 境界に絞ります。
+
+## 読み方
+
+まず `make sample16-pack-runtime-test` を実行します。manual flow は `AUTH-PROXY-SERVER` artifact を publish する部分だけを取り出したものです。auth の成功 / 失敗 case は PHPUnit checker が generated handler を直接ロードして検証します。
+
+## 起動
+
+```sh
+./sample/tutorials/sample16-authenticated-proxy/run.sh up
+```
+
+seed を再適用する場合:
+
+```sh
+./sample/tutorials/sample16-authenticated-proxy/run.sh apply-seed
+```
+
+## 検証
+
+```sh
+make sample16-pack-runtime-test
+```
+
+`sample16-pack-runtime-test` は container 内 PHPUnit で `tests/Integration/Sample16AuthenticatedProxyTest.php` を実行します。
+
+## Seed 内容
+
+- `projects`
+  - `project_key=SAMPLE16`
+- physical table
+  - `AuthTask`
+  - `Id`, `Title`, `Status`, `OwnerName`, `UpdatedAt`
+- DBAccess metadata
+  - `AuthTask.GetAuthTask`
+  - `single_proxy_auth_type=ProjectToken`
+- Source Output
+  - `AUTH-PROXY-SERVER`
+  - `artifact_strategy=single-proxy-server`
+  - `target_binding_type=single-function-proxy`
+
+## 手動 flow
+
+```sh
+docker compose -f compose.yaml -f compose.local-db-config.yaml -f sample/tutorials/sample16-authenticated-proxy/compose.yaml exec -T web-admin \
+  php /var/www/mtool/scripts/import_project_tables.php --project-key=SAMPLE16 --source=live-schema --table=AuthTask
+
+docker compose -f compose.yaml -f compose.local-db-config.yaml -f sample/tutorials/sample16-authenticated-proxy/compose.yaml exec -T web-admin \
+  php /var/www/mtool/scripts/sync_project_data_classes.php --project-key=SAMPLE16
+
+docker compose -f compose.yaml -f compose.local-db-config.yaml -f sample/tutorials/sample16-authenticated-proxy/compose.yaml exec -T web-admin \
+  php /var/www/mtool/scripts/create_project_output.php --project-key=SAMPLE16 --source-output-key=AUTH-PROXY-SERVER --requested-by=sample16-manual --publish
+```
+
+## Auth behavior
+
+- missing `TOKEN` fails.
+- empty `TOKEN` fails.
+- `MTOOL_PROXY_PROJECT_TOKEN` missing fails closed.
+- wrong `TOKEN` fails.
+- matching `TOKEN` passes.
+
+## Scope
+
+- `sample16` は `ProjectToken` auth の generated single proxy server に絞る。
+- `GetFunc` / `ProjectTokenOrGetFunc` / `LoginCookieToken` は後続 scope とする。
+- HTTP browser smoke ではなく、generated endpoint class の auth method を direct verification する。
+
+次は `sample17-multi-output-project` で同じ project から複数 Source Output を publish する capstone を見ます。

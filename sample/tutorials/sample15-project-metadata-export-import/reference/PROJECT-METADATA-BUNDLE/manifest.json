@@ -1,0 +1,81 @@
+{
+    "bundle_type": "mtool-project-metadata",
+    "schema_version": "2026-05-26.project-core.v2",
+    "scope": "project-core",
+    "source_project_key": "SAMPLE15",
+    "exported_at": "2026-06-16T13:48:58+00:00",
+    "requested_by": "sample15-reference",
+    "target_policy": "replace-core-scope",
+    "secrets_policy": "exclude-all",
+    "included_sections": [
+        "project",
+        "memberships",
+        "tables",
+        "data_classes",
+        "db_access",
+        "source_outputs"
+    ],
+    "excluded_sections": [
+        "page_security",
+        "host_assignments",
+        "compare_outputs",
+        "compare_output_assets",
+        "custom_proxies",
+        "project_html",
+        "project_html_source_bindings",
+        "html_templates",
+        "language_resource_file_tree"
+    ],
+    "summary": {
+        "project_count": 1,
+        "membership_user_count": 1,
+        "database_source_count": 0,
+        "database_source_with_password_count": 0,
+        "table_count": 1,
+        "table_column_count": 4,
+        "data_class_count": 1,
+        "data_class_field_count": 4,
+        "source_output_count": 1,
+        "db_access_class_count": 0,
+        "db_access_function_count": 0,
+        "db_access_select_where_count": 0,
+        "db_access_select_target_field_count": 0,
+        "db_access_select_having_count": 0,
+        "db_access_update_delete_where_count": 0,
+        "db_access_insert_target_field_count": 0,
+        "db_access_update_target_field_count": 0,
+        "db_access_source_output_target_count": 0
+    },
+    "files": {
+        "project": {
+            "path": "project.json",
+            "sha256": "20d9afc29a4aeb750113e0c48f12a7c4925ddf86b00f51f2bb1c99ec03a892e5",
+            "bytes": 341
+        },
+        "memberships": {
+            "path": "memberships.json",
+            "sha256": "7e4d5e6a84e30b73d1bfa6a82a3b75229c3035c1b0a3e06794bd5160f0dc8fd1",
+            "bytes": 134
+        },
+        "tables": {
+            "path": "tables.json",
+            "sha256": "ef5dfebd93f9d8c415ff1349e07743bc1deaba62cfcb8c232cac77a6939a0851",
+            "bytes": 1486
+        },
+        "data_classes": {
+            "path": "data-classes.json",
+            "sha256": "7edf49151e9060bcc86a4ccb510e64b200819961cf5b12851949d929c0ac3cb9",
+            "bytes": 1271
+        },
+        "db_access": {
+            "path": "db-access.json",
+            "sha256": "6b537aedc3286c113ebc334d7b6596805525c5adb2a465535fcdf7e3942b5ca1",
+            "bytes": 22
+        },
+        "source_outputs": {
+            "path": "source-outputs.json",
+            "sha256": "e80e02b17e65fcd4e6aaeb4a9886174dc4ac346440c5285a4a40295d8a4f784d",
+            "bytes": 1110
+        }
+    }
+}

@@ -11,6 +11,20 @@
 
 ## Index
 
+- `2026-0616-sample11-html-template-output-plan.md`
+  - `sample11-html-template-output` を次の user-facing tutorial sample とする計画と、続く `sample12-external-db-source-import` / `sample13-openapi-api-surface` / `sample14-custom-proxy-runtime` / `sample15-project-metadata-export-import` / `sample16-authenticated-proxy` / `sample17-multi-output-project` までの実装記録。LanguageResource / i18n を scope から外す。
+- `2026-0616-sample12-external-db-source-import-pack.md`
+  - external named DB source から table import、DataClass sync、`DATACLASS-PHP` publish まで進む tutorial runtime pack の完了記録。
+- `2026-0616-sample13-openapi-api-surface-pack.md`
+  - single-function proxy target metadata から `OPENAPI-JSON` artifact を publish する tutorial runtime pack の完了記録。
+- `2026-0616-sample14-custom-proxy-runtime-pack.md`
+  - custom proxy metadata から `CUSTOM-PROXY-SERVER` artifact を publish する tutorial runtime pack の完了記録。
+- `2026-0616-sample15-project-metadata-export-import-pack.md`
+  - project-core metadata bundle を export し、preview / apply で復元する tutorial runtime pack の完了記録。
+- `2026-0616-sample16-authenticated-proxy-pack.md`
+  - ProjectToken authenticated generated proxy server と fail-closed auth behavior を確認する tutorial runtime pack の完了記録。
+- `2026-0616-sample17-multi-output-project-pack.md`
+  - 1 project から DataClass / DBAccess / HTML / OpenAPI を publish する tutorial capstone runtime pack の完了記録。
 - `2026-0616-design-data-persistence-report.md`
   - 一般ユーザー利用時の設計データを `config_db` に永続化する方針と、generated artifact / external DB / secrets との境界を整理したレポート。
 - `2026-0507-rebuild-plan.md`

@@ -1,0 +1,25 @@
+{
+    "source_outputs": [
+        {
+            "source_output_key": "DATACLASS-PHP",
+            "name": "Bundle Metadata Data Class (PHP)",
+            "program_language": "php",
+            "class_type": "DataClass",
+            "release_target_type": "Release",
+            "source_template_dir": "",
+            "source_output_dir": "work/source-outputs/SAMPLE15/DATACLASS-PHP",
+            "source_temp_output_dir": "work/staging/source-outputs/SAMPLE15/DATACLASS-PHP",
+            "proxy_base_url": "",
+            "autoload_filename_suffix": "",
+            "source_text_char_code": "UTF-8",
+            "runtime_source_relative_path": "mtool/dataclass-source-outputs/SAMPLE15/DATACLASS-PHP",
+            "artifact_strategy": "canonical-dataclass-php",
+            "target_binding_type": "runtime",
+            "spec_visibility": "internal-only",
+            "output_archive_format": "tar.gz",
+            "source_output_list_order": "10",
+            "notes": "Source output metadata included in the project metadata bundle tutorial sample.",
+            "source_of_truth": "manual"
+        }
+    ]
+}

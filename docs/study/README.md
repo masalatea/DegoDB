@@ -16,6 +16,20 @@ This study guide explains how to learn DegoDB by walking through the tutorial sa
    - `sample05` から `sample09` で DB Access metadata と出力を学ぶ
 4. [mini-crud-flow.md](mini-crud-flow.md)
    - `sample10` で小さな CRUD flow としてまとめて見る
+5. [html-source-output.md](html-source-output.md)
+   - `sample11` で HTML template / HTML Source Output の最小 publish flow を見る
+6. [external-db-source-import.md](external-db-source-import.md)
+   - `sample12` で external named source から import / sync / publish へ進む流れを見る
+7. [openapi-api-surface.md](openapi-api-surface.md)
+   - `sample13` で single-function proxy target metadata から OpenAPI artifact を publish する流れを見る
+8. [custom-proxy-runtime.md](custom-proxy-runtime.md)
+   - `sample14` で custom proxy metadata から proxy server artifact を publish する流れを見る
+9. [project-metadata-export-import.md](project-metadata-export-import.md)
+   - `sample15` で project metadata bundle の export / preview / apply を見る
+10. [authenticated-proxy.md](authenticated-proxy.md)
+   - `sample16` で ProjectToken authenticated proxy と fail-closed behavior を見る
+11. [multi-output-capstone.md](multi-output-capstone.md)
+   - `sample17` で同じ project から複数 Source Output を publish する流れを見る
 
 ## study の基本姿勢
 
@@ -26,6 +40,23 @@ This study guide explains how to learn DegoDB by walking through the tutorial sa
 - どの canonical metadata が seed され、どれが import / sync で作られるか
 - どの source output が生成されるか
 - reference と actual output が何を保証しているか
+
+sample README に載っている manual flow は、仕組みを分解して追うための optional path です。
+初回は `make sampleNN-pack-runtime-test` だけで構いません。test が通った後に、manual flow の各 command が checker 内で何をしているかを確認します。
+
+## sample11-17 の読み方
+
+`sample11` から `sample17` は Source Output lane です。`sample01` から `sample10` までで学んだ table import / DataClass sync / DBAccess metadata の上に、artifact publish の種類を 1 つずつ足します。
+
+| sample | まず見るもの | 迷った時の見方 |
+| --- | --- | --- |
+| `sample11` | `HTML-PAGE` | HTML template authoring ではなく、curated HTML module tree を Source Output として publish する例 |
+| `sample12` | `named-live-schema:sample12_lab` | config DB seed ではなく、外部 DB 相当の `db-lab` から table metadata を取り込む例 |
+| `sample13` | `OPENAPI-JSON` | proxy 実行ではなく、DBAccess function から OpenAPI artifact を作る例 |
+| `sample14` | `CUSTOM-PROXY-SERVER` | 複数 DBAccess step を custom proxy metadata で束ね、PHP server artifact を作る例 |
+| `sample15` | `PROJECT-METADATA-BUNDLE` | generated code ではなく、設計 metadata を export / import する例 |
+| `sample16` | `AUTH-PROXY-SERVER` | ProjectToken auth が fail-closed になることを generated artifact で確認する例 |
+| `sample17` | four outputs | 同じ project から DataClass / DBAccess / HTML / OpenAPI を publish する final capstone |
 
 ## Quickstart との関係
 
@@ -56,7 +87,7 @@ make sample01-pack-runtime-test
 Study 全体の test gate を先に確認したい場合は、次を repository root から実行します。
 
 ```bash
-make sample02-pack-runtime-test sample03-pack-runtime-test sample04-pack-runtime-test sample05-pack-runtime-test sample06-pack-runtime-test sample07-pack-runtime-test sample08-pack-runtime-test sample09-pack-runtime-test sample10-pack-runtime-test
+make sample02-pack-runtime-test sample03-pack-runtime-test sample04-pack-runtime-test sample05-pack-runtime-test sample06-pack-runtime-test sample07-pack-runtime-test sample08-pack-runtime-test sample09-pack-runtime-test sample10-pack-runtime-test sample11-pack-runtime-test sample12-pack-runtime-test sample13-pack-runtime-test sample14-pack-runtime-test sample15-pack-runtime-test sample16-pack-runtime-test sample17-pack-runtime-test
 ```
 
 `sample01` は Quickstart で実行済みの前提です。もう一度含めても問題ありません。

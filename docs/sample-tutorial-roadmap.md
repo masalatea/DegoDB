@@ -1,7 +1,7 @@
 # Sample Tutorial Roadmap
 
 English companion:
-This roadmap defines the user-facing tutorial lane under `sample/tutorials/`. It explains the learning order from `sample01` through `sample10`, the design principles behind the packs, and the acceptance criteria for each stage.
+This roadmap defines the user-facing tutorial lane under `sample/tutorials/`. It explains the learning order from `sample01` through `sample17`, the design principles behind the packs, and the acceptance criteria for each stage.
 
 ## 目的
 
@@ -39,7 +39,14 @@ This roadmap defines the user-facing tutorial lane under `sample/tutorials/`. It
 | `sample07-dbaccess-crud-basic` | current | insert / update / delete | 1 table + write metadata | `DATACLASS-PHP`, `DBACCESS-PHP` | `make sample07-pack-runtime-test` |
 | `sample08-dbaccess-join-read-model` | current | join read model | 2 live tables + 1 read model table + join metadata | `DATACLASS-PHP`, `DBACCESS-PHP` | `make sample08-pack-runtime-test` |
 | `sample09-dbaccess-aggregate-report` | current | aggregate / report | 2 live tables + 1 report model table + count/sum/group/having metadata | `DATACLASS-PHP`, `DBACCESS-PHP` | `make sample09-pack-runtime-test` |
-| `sample10-dbaccess-mini-crud-flow` | current | tutorial capstone | 1 table で list/detail/create/update/delete をまとめる最小 flow | `DATACLASS-PHP`, `DBACCESS-PHP` | `make sample10-pack-runtime-test` |
+| `sample10-dbaccess-mini-crud-flow` | current | DBAccess tutorial capstone | 1 table で list/detail/create/update/delete をまとめる最小 flow | `DATACLASS-PHP`, `DBACCESS-PHP` | `make sample10-pack-runtime-test` |
+| `sample11-html-template-output` | current | HTML Source Output | curated HTML module と HTML template metadata の最小 publish flow | `HTML-PAGE` | `make sample11-pack-runtime-test` |
+| `sample12-external-db-source-import` | current | external DB source import | named external source から table import / sync / publish へ進む最小 flow | `DATACLASS-PHP` | `make sample12-pack-runtime-test` |
+| `sample13-openapi-api-surface` | current | OpenAPI / API surface | single-function proxy target metadata から `openapi.json` を publish する最小 flow | `OPENAPI-JSON` | `make sample13-pack-runtime-test` |
+| `sample14-custom-proxy-runtime` | current | custom proxy runtime | custom proxy metadata から PHP proxy server artifact を publish する最小 flow | `CUSTOM-PROXY-SERVER` | `make sample14-pack-runtime-test` |
+| `sample15-project-metadata-export-import` | current | project metadata export / import | project-core metadata bundle を export し、preview / apply で復元する最小 flow | `PROJECT-METADATA-BUNDLE` | `make sample15-pack-runtime-test` |
+| `sample16-authenticated-proxy` | current | authenticated proxy | ProjectToken authenticated single proxy server と fail-closed behavior を確認する最小 flow | `AUTH-PROXY-SERVER` | `make sample16-pack-runtime-test` |
+| `sample17-multi-output-project` | current | multi-output capstone | 1 project から DataClass / DBAccess / HTML / OpenAPI を publish する総合 flow | `DATACLASS-PHP`, `DBACCESS-PHP`, `HTML-PAGE`, `OPENAPI-JSON` | `make sample17-pack-runtime-test` |
 
 ## phase 分け
 
@@ -84,6 +91,38 @@ This roadmap defines the user-facing tutorial lane under `sample/tutorials/`. It
   - `SupportTicket` 1 table と `GetSupportTicketList` / `GetSupportTicket` / `InsertSupportTicket` / `UpdateSupportTicket` / `DeleteSupportTicket` の 5 function を 1 class にまとめ、small but real な CRUD flow を current tutorial として固定した。
   - list は `Status` argument filter + `limit`、detail は `Id` where 1 本、write は `Title` / `Status` / `AssignedTo` / `Body` / `UpdatedAt` を対象にする。
 
+### Phase 3. Source Output lane
+
+- `sample11-html-template-output`
+  - `SAMPLE11/HTML-PAGE` の curated HTML module tree を `html-module-catalog` strategy で publish する current tutorial とした。
+  - `project_html_definitions` / `project_html_parameters` と `html_templates` / `html_template_parameters` の最小 metadata を seed し、HTML template 系 Source Output の入口を DBAccess lane と分けて固定する。
+  - `LanguageResource` / i18n は tool scope から外れたため tutorial lane へ追加しない。
+- `sample12-external-db-source-import`
+  - `database_sources.source_key=sample12_lab` を seed し、`db-lab` 側の `ExternalArticle` table を `named-live-schema:sample12_lab` から import する current tutorial とした。
+  - canonical table / DataClass metadata は seed せず、external source import と sync で作る。
+  - first slice は `DATACLASS-PHP` publish までに絞り、OpenAPI / proxy runtime は後続 sample へ送る。
+- `sample13-openapi-api-surface`
+  - `ApiTask.GetApiTaskList` / `GetApiTask` を `OPENAPI-JSON` の single-function proxy target にし、`openapi-json` strategy で `openapi.json` を publish する current tutorial とした。
+  - actual proxy runtime execution は扱わず、OpenAPI artifact と authenticated Swagger viewer の入口に絞る。
+- `sample14-custom-proxy-runtime`
+  - `CATALOG-SUMMARY` custom proxy を seed し、`dbtable.GetdbtableList` / `ProjectSourceOutput.GetProjectSourceOutputList` の 2 step を `CUSTOM-PROXY-SERVER` に bind する current tutorial とした。
+  - full generated bundle は大きいため、reference は actual output から主要 entrypoint / handler / build plan を選抜して固定する。
+- `sample15-project-metadata-export-import`
+  - `BundleNote` table を import / sync した project-core metadata を `PROJECT-METADATA-BUNDLE` として export する current tutorial とした。
+  - import は同じ project への preview / apply に絞り、bundle reference と runtime export の一致、復元後 metadata 件数を固定する。
+  - `database_sources` sidecar / secret file と別 project key への rename import は後続 scope へ送る。
+- `sample16-authenticated-proxy`
+  - `AuthTask.GetAuthTask` を `ProjectToken` auth の `AUTH-PROXY-SERVER` に bind する current tutorial とした。
+  - generated single proxy server output の reference compare に加え、`TOKEN` missing / empty / wrong / env missing が fail-closed になり、matching token だけが通ることを検証する。
+  - `GetFunc` / `ProjectTokenOrGetFunc` / `LoginCookieToken` は後続 scope へ送る。
+
+### Phase 4. Capstone
+
+- `sample17-multi-output-project`
+  - `CapstoneTask` 1 table と `GetCapstoneTaskList` / `GetCapstoneTask` 2 function を使い、同じ `SAMPLE17` project から複数 Source Output を publish する final capstone とした。
+  - outputs は `DATACLASS-PHP`、`DBACCESS-PHP`、`HTML-PAGE`、`OPENAPI-JSON` に絞り、project metadata bundle / auth / HTTP browser smoke は既存 sample へ分ける。
+  - checker は import / sync 後に 4 output を publish し、actual generated reference tree と一致することを検証する。
+
 ## 各 sample の受け入れ条件
 
 - `README.md` に次を明記する。
@@ -112,4 +151,5 @@ This roadmap defines the user-facing tutorial lane under `sample/tutorials/`. It
 
 - `pattern01-14` は tutorial の代替ではなく、generator / migration contract を守る internal sample として扱う。
 - representative runtime project は引き続き `sample/legacy-projects/` に置き、tutorial numbering に混ぜない。
-- tutorial lane は `sample10` まで current とした。proxy / HTML / LanguageResource tutorial を `sample11+` として増やすかを次段で再判断する。
+- tutorial lane は `sample17` まで current とした。`sample18+` は必要になった時だけ user-facing tutorial として追加する。
+- `LanguageResource` / i18n tutorial は tool scope 外なので追加しない。

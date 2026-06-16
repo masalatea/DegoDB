@@ -18,6 +18,13 @@ current runtime tutorial packs:
 - `sample08-dbaccess-join-read-model`
 - `sample09-dbaccess-aggregate-report`
 - `sample10-dbaccess-mini-crud-flow`
+- `sample11-html-template-output`
+- `sample12-external-db-source-import`
+- `sample13-openapi-api-surface`
+- `sample14-custom-proxy-runtime`
+- `sample15-project-metadata-export-import`
+- `sample16-authenticated-proxy`
+- `sample17-multi-output-project`
 
 上記は runtime pack であり、`compose.yaml` / `run.sh` / `seed/` を持つ。
 
@@ -27,7 +34,14 @@ current runtime tutorial packs:
 ./sample/tutorials/sample01-simple-table-runtime/run.sh up
 ./sample/tutorials/sample01-simple-table-runtime/run.sh apply-seed
 make sample01-pack-runtime-test
+make sample11-pack-runtime-test
+make sample12-pack-runtime-test
+make sample13-pack-runtime-test
+make sample14-pack-runtime-test
+make sample15-pack-runtime-test
+make sample16-pack-runtime-test
+make sample17-pack-runtime-test
 make test
 ```
 
-今後の tutorial sample は `sample11+` として上の順を延長して追加する。
+今後の tutorial sample は `sample18+` として上の順を延長して追加する。

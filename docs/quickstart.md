@@ -76,6 +76,48 @@ DB Access の CRUD flow まで見たい場合は次に進みます。
 make sample10-pack-runtime-test
 ```
 
+HTML Source Output まで見たい場合は次も使えます。
+
+```bash
+make sample11-pack-runtime-test
+```
+
+external DB source import まで見たい場合は次を使います。
+
+```bash
+make sample12-pack-runtime-test
+```
+
+OpenAPI API surface まで見たい場合は次を使います。
+
+```bash
+make sample13-pack-runtime-test
+```
+
+custom proxy runtime まで見たい場合は次を使います。
+
+```bash
+make sample14-pack-runtime-test
+```
+
+project metadata bundle export / import まで見たい場合は次を使います。
+
+```bash
+make sample15-pack-runtime-test
+```
+
+authenticated proxy まで見たい場合は次を使います。
+
+```bash
+make sample16-pack-runtime-test
+```
+
+multi-output capstone まで見たい場合は次を使います。
+
+```bash
+make sample17-pack-runtime-test
+```
+
 ## 5. 停止する
 
 ```bash

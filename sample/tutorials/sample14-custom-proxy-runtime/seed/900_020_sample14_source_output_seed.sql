@@ -1,0 +1,71 @@
+SET @sample14_project_id = (
+    SELECT id
+    FROM projects
+    WHERE project_key = 'SAMPLE14'
+);
+
+DELETE FROM project_source_outputs
+WHERE project_id = @sample14_project_id
+  AND source_output_key = 'CUSTOM-PROXY-SERVER';
+
+INSERT INTO project_source_outputs (
+    project_id,
+    source_output_key,
+    name,
+    program_language,
+    class_type,
+    release_target_type,
+    source_template_dir,
+    source_output_dir,
+    source_temp_output_dir,
+    proxy_base_url,
+    autoload_filename_suffix,
+    source_text_char_code,
+    runtime_source_relative_path,
+    artifact_strategy,
+    target_binding_type,
+    output_archive_format,
+    source_output_list_order,
+    notes,
+    source_of_truth
+) VALUES (
+    @sample14_project_id,
+    'CUSTOM-PROXY-SERVER',
+    'Sample14 Custom Proxy Server',
+    'php',
+    'DBaaSProxyServer',
+    'Release',
+    '',
+    'work/source-outputs/SAMPLE14/CUSTOM-PROXY-SERVER',
+    'work/staging/source-outputs/SAMPLE14/CUSTOM-PROXY-SERVER',
+    'http://127.0.0.1:8082/runs/proxy/SAMPLE14/CUSTOM-PROXY-SERVER',
+    '',
+    '',
+    'mtool/proxy-source-outputs/SAMPLE14/CUSTOM-PROXY-SERVER',
+    'custom-proxy-server',
+    'custom-proxy',
+    'tar.gz',
+    40,
+    'Generate PHP custom proxy server artifact from the CATALOG-SUMMARY custom proxy metadata.',
+    'manual'
+)
+ON DUPLICATE KEY UPDATE
+    name = VALUES(name),
+    program_language = VALUES(program_language),
+    class_type = VALUES(class_type),
+    release_target_type = VALUES(release_target_type),
+    source_template_dir = VALUES(source_template_dir),
+    source_output_dir = VALUES(source_output_dir),
+    source_temp_output_dir = VALUES(source_temp_output_dir),
+    proxy_base_url = VALUES(proxy_base_url),
+    autoload_filename_suffix = VALUES(autoload_filename_suffix),
+    source_text_char_code = VALUES(source_text_char_code),
+    runtime_source_relative_path = VALUES(runtime_source_relative_path),
+    artifact_strategy = VALUES(artifact_strategy),
+    target_binding_type = VALUES(target_binding_type),
+    output_archive_format = VALUES(output_archive_format),
+    source_output_list_order = VALUES(source_output_list_order),
+    notes = VALUES(notes),
+    source_of_truth = VALUES(source_of_truth);
+
+SET @sample14_project_id = NULL;

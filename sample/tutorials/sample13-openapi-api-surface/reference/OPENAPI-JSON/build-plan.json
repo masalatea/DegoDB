@@ -1,0 +1,29 @@
+{
+    "schema_version": 1,
+    "artifact_type": "openapi-build-plan",
+    "project_key": "SAMPLE13",
+    "source_output_key": "OPENAPI-JSON",
+    "source_output_name": "Sample13 OpenAPI JSON",
+    "proxy_base_url": "http://127.0.0.1:8082/runs/proxy/SAMPLE13/API-PROXY-SERVER",
+    "function_count": 2,
+    "unresolved_function_count": 0,
+    "unresolved_auth_count": 0,
+    "operations": [
+        {
+            "source_name": "ApiTask",
+            "function_name": "GetApiTaskList",
+            "endpoint_filename": "proxyserver-ApiTask-GetApiTaskList.php",
+            "auth_strategy": "no-security",
+            "input_kind": "scalar",
+            "response_mode": "direct-result"
+        },
+        {
+            "source_name": "ApiTask",
+            "function_name": "GetApiTask",
+            "endpoint_filename": "proxyserver-ApiTask-GetApiTask.php",
+            "auth_strategy": "no-security",
+            "input_kind": "scalar",
+            "response_mode": "direct-result"
+        }
+    ]
+}

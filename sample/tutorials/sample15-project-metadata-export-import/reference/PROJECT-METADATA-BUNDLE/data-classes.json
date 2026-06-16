@@ -1,0 +1,40 @@
+{
+    "data_classes": [
+        {
+            "name": "BundleNote",
+            "store_base_path": "",
+            "is_autoload": "1",
+            "inherit_parent_data_class_name": "",
+            "fields": [
+                {
+                    "name": "Id",
+                    "datatype": "int",
+                    "field_list_order": 1,
+                    "ref_data_class_name": "",
+                    "ref_data_class_field_name": ""
+                },
+                {
+                    "name": "Title",
+                    "datatype": "string",
+                    "field_list_order": 2,
+                    "ref_data_class_name": "",
+                    "ref_data_class_field_name": ""
+                },
+                {
+                    "name": "Body",
+                    "datatype": "string",
+                    "field_list_order": 3,
+                    "ref_data_class_name": "",
+                    "ref_data_class_field_name": ""
+                },
+                {
+                    "name": "UpdatedAt",
+                    "datatype": "datetime",
+                    "field_list_order": 4,
+                    "ref_data_class_name": "",
+                    "ref_data_class_field_name": ""
+                }
+            ]
+        }
+    ]
+}

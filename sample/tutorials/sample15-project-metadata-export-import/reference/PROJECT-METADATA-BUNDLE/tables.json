@@ -1,0 +1,49 @@
+{
+    "tables": [
+        {
+            "name": "BundleNote",
+            "columns": [
+                {
+                    "name": "Id",
+                    "datatype": "bigint(20) unsigned",
+                    "is_null": "NO",
+                    "is_key": "PRI",
+                    "is_default": "",
+                    "extra": "auto_increment",
+                    "column_list_order": 1,
+                    "memo": ""
+                },
+                {
+                    "name": "Title",
+                    "datatype": "varchar(255)",
+                    "is_null": "NO",
+                    "is_key": "",
+                    "is_default": "",
+                    "extra": "",
+                    "column_list_order": 2,
+                    "memo": ""
+                },
+                {
+                    "name": "Body",
+                    "datatype": "text",
+                    "is_null": "NO",
+                    "is_key": "",
+                    "is_default": "",
+                    "extra": "",
+                    "column_list_order": 3,
+                    "memo": ""
+                },
+                {
+                    "name": "UpdatedAt",
+                    "datatype": "datetime",
+                    "is_null": "NO",
+                    "is_key": "",
+                    "is_default": "",
+                    "extra": "",
+                    "column_list_order": 4,
+                    "memo": ""
+                }
+            ]
+        }
+    ]
+}

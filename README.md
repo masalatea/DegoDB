@@ -137,13 +137,14 @@ Persistence note: local quickstart stores design metadata in the local `db-confi
 
 - Entry sample: `sample/tutorials/sample01-simple-table-runtime`  
   入口 sample: `sample/tutorials/sample01-simple-table-runtime`
-- Current tutorial lane: `sample01` through `sample10`  
-  current tutorial lane: `sample01` から `sample10`
-- Capstone sample: `sample/tutorials/sample10-dbaccess-mini-crud-flow`  
-  capstone sample: `sample/tutorials/sample10-dbaccess-mini-crud-flow`
+- Current tutorial lane: `sample01` through `sample17`
+  current tutorial lane: `sample01` から `sample17`
+- Latest sample: `sample/tutorials/sample17-multi-output-project`
+  latest sample: `sample/tutorials/sample17-multi-output-project`
 
 ```bash
 make sample01-pack-runtime-test
+make sample17-pack-runtime-test
 ```
 
 See [Study Guide / sample で学ぶ](docs/study/README.md) for the hands-on reading order, and [Sample Tutorial Roadmap / sample 学習導線](docs/sample-tutorial-roadmap.md) for the sample catalog and role split.

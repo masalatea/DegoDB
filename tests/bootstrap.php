@@ -12,6 +12,13 @@ require_once dirname(__DIR__) . '/mtool/scripts/lib/sample7_dbaccess_crud_basic_
 require_once dirname(__DIR__) . '/mtool/scripts/lib/sample8_dbaccess_join_read_model_output_check.php';
 require_once dirname(__DIR__) . '/mtool/scripts/lib/sample09_dbaccess_aggregate_report_output_check.php';
 require_once dirname(__DIR__) . '/mtool/scripts/lib/sample10_dbaccess_mini_crud_flow_output_check.php';
+require_once dirname(__DIR__) . '/mtool/scripts/lib/sample11_html_template_output_check.php';
+require_once dirname(__DIR__) . '/mtool/scripts/lib/sample12_external_db_source_import_output_check.php';
+require_once dirname(__DIR__) . '/mtool/scripts/lib/sample13_openapi_api_surface_output_check.php';
+require_once dirname(__DIR__) . '/mtool/scripts/lib/sample14_custom_proxy_runtime_output_check.php';
+require_once dirname(__DIR__) . '/mtool/scripts/lib/sample15_project_metadata_export_import_check.php';
+require_once dirname(__DIR__) . '/mtool/scripts/lib/sample16_authenticated_proxy_check.php';
+require_once dirname(__DIR__) . '/mtool/scripts/lib/sample17_multi_output_project_check.php';
 require_once dirname(__DIR__) . '/mtool/scripts/lib/sample9_testpattern_default_property_output_check.php';
 require_once dirname(__DIR__) . '/mtool/scripts/lib/sample10_compare_output_companion_declarations_output_check.php';
 require_once dirname(__DIR__) . '/mtool/scripts/lib/sample11_da_dataclass_method_only_output_check.php';

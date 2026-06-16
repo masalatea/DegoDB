@@ -1,0 +1,274 @@
+{
+    "openapi": "3.0.3",
+    "info": {
+        "title": "Sample17 OpenAPI JSON",
+        "version": "1.0.0",
+        "description": "Generated from current single-function proxy target metadata."
+    },
+    "servers": [
+        {
+            "url": "http://127.0.0.1:8082/runs/proxy/SAMPLE17/API-PROXY-SERVER"
+        }
+    ],
+    "tags": [
+        {
+            "name": "CapstoneTask",
+            "description": "CapstoneTask single-function proxy endpoints."
+        }
+    ],
+    "paths": {
+        "/proxyserver-CapstoneTask-GetCapstoneTask.php": {
+            "post": {
+                "operationId": "CapstoneTask_GetCapstoneTask",
+                "tags": [
+                    "CapstoneTask"
+                ],
+                "summary": "CapstoneTask.GetCapstoneTask",
+                "description": "Generated from single-function proxy target metadata.\n\nSource function: `CapstoneTask.GetCapstoneTask`.\n\nAuth policy: 認証を掛けません。",
+                "x-mtool": {
+                    "source_name": "CapstoneTask",
+                    "function_name": "GetCapstoneTask",
+                    "endpoint_filename": "proxyserver-CapstoneTask-GetCapstoneTask.php",
+                    "auth_strategy": "no-security",
+                    "input_kind": "scalar",
+                    "response_mode": "direct-result"
+                },
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "param_CapstoneTask_Id_where": {
+                                        "type": "string",
+                                        "example": "string"
+                                    }
+                                },
+                                "required": [
+                                    "param_CapstoneTask_Id_where"
+                                ]
+                            },
+                            "example": {
+                                "param_CapstoneTask_Id_where": "string"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful proxy response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "_status": {
+                                            "type": "string",
+                                            "example": "OK"
+                                        },
+                                        "Message": {
+                                            "type": "string",
+                                            "example": ""
+                                        },
+                                        "Result": {
+                                            "$ref": "#/components/schemas/CapstoneTaskData"
+                                        }
+                                    }
+                                },
+                                "example": {
+                                    "_status": "OK",
+                                    "Message": "",
+                                    "Result": {
+                                        "Id": "string",
+                                        "Title": "string",
+                                        "Status": "string",
+                                        "OwnerName": "string",
+                                        "Priority": "string",
+                                        "DueDate": "string",
+                                        "UpdatedAt": "string"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Runtime or validation error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "_status": {
+                                            "type": "string",
+                                            "example": "NG"
+                                        },
+                                        "Message": {
+                                            "type": "string",
+                                            "example": "error"
+                                        }
+                                    }
+                                },
+                                "example": {
+                                    "_status": "NG",
+                                    "Message": "error"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/proxyserver-CapstoneTask-GetCapstoneTaskList.php": {
+            "post": {
+                "operationId": "CapstoneTask_GetCapstoneTaskList",
+                "tags": [
+                    "CapstoneTask"
+                ],
+                "summary": "CapstoneTask.GetCapstoneTaskList",
+                "description": "Generated from single-function proxy target metadata.\n\nSource function: `CapstoneTask.GetCapstoneTaskList`.\n\nAuth policy: 認証を掛けません。",
+                "x-mtool": {
+                    "source_name": "CapstoneTask",
+                    "function_name": "GetCapstoneTaskList",
+                    "endpoint_filename": "proxyserver-CapstoneTask-GetCapstoneTaskList.php",
+                    "auth_strategy": "no-security",
+                    "input_kind": "scalar",
+                    "response_mode": "direct-result"
+                },
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "param_CapstoneTask_Status_where": {
+                                        "type": "string",
+                                        "example": "string"
+                                    },
+                                    "limit": {
+                                        "type": "string",
+                                        "example": "string"
+                                    }
+                                },
+                                "required": [
+                                    "param_CapstoneTask_Status_where",
+                                    "limit"
+                                ]
+                            },
+                            "example": {
+                                "param_CapstoneTask_Status_where": "string",
+                                "limit": "string"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful proxy response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "_status": {
+                                            "type": "string",
+                                            "example": "OK"
+                                        },
+                                        "Message": {
+                                            "type": "string",
+                                            "example": ""
+                                        },
+                                        "Result": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/components/schemas/CapstoneTaskData"
+                                            }
+                                        }
+                                    }
+                                },
+                                "example": {
+                                    "_status": "OK",
+                                    "Message": "",
+                                    "Result": [
+                                        {
+                                            "Id": "string",
+                                            "Title": "string",
+                                            "Status": "string",
+                                            "OwnerName": "string",
+                                            "Priority": "string",
+                                            "DueDate": "string",
+                                            "UpdatedAt": "string"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Runtime or validation error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "_status": {
+                                            "type": "string",
+                                            "example": "NG"
+                                        },
+                                        "Message": {
+                                            "type": "string",
+                                            "example": "error"
+                                        }
+                                    }
+                                },
+                                "example": {
+                                    "_status": "NG",
+                                    "Message": "error"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "CapstoneTaskData": {
+                "type": "object",
+                "title": "CapstoneTaskData",
+                "properties": {
+                    "Id": {
+                        "type": "string",
+                        "example": "string"
+                    },
+                    "Title": {
+                        "type": "string",
+                        "example": "string"
+                    },
+                    "Status": {
+                        "type": "string",
+                        "example": "string"
+                    },
+                    "OwnerName": {
+                        "type": "string",
+                        "example": "string"
+                    },
+                    "Priority": {
+                        "type": "string",
+                        "example": "string"
+                    },
+                    "DueDate": {
+                        "type": "string",
+                        "example": "string"
+                    },
+                    "UpdatedAt": {
+                        "type": "string",
+                        "example": "string"
+                    }
+                }
+            }
+        }
+    }
+}

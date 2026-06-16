@@ -1,0 +1,8 @@
+{
+    "owner": {
+        "login_id": "admin",
+        "role_code": "owner",
+        "can_administer": true
+    },
+    "members": []
+}

@@ -39,6 +39,13 @@ warning / error の意味を切り分けたい時は [troubleshooting.md](troubl
 - `sample/tutorials/sample08-dbaccess-join-read-model`
 - `sample/tutorials/sample09-dbaccess-aggregate-report`
 - `sample/tutorials/sample10-dbaccess-mini-crud-flow`
+- `sample/tutorials/sample11-html-template-output`
+- `sample/tutorials/sample12-external-db-source-import`
+- `sample/tutorials/sample13-openapi-api-surface`
+- `sample/tutorials/sample14-custom-proxy-runtime`
+- `sample/tutorials/sample15-project-metadata-export-import`
+- `sample/tutorials/sample16-authenticated-proxy`
+- `sample/tutorials/sample17-multi-output-project`
 
 ### internal guard lane
 

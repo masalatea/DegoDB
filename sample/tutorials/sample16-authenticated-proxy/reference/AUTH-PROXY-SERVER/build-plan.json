@@ -1,0 +1,45 @@
+{
+    "project_key": "SAMPLE16",
+    "source_output_key": "AUTH-PROXY-SERVER",
+    "function_count": 1,
+    "unresolved_function_count": 0,
+    "unresolved_auth_count": 0,
+    "generated_catalog_summary": {
+        "total_entities": 99,
+        "paired_count": 99,
+        "data_only_count": 0,
+        "dbaccess_only_count": 0
+    },
+    "items": [
+        {
+            "source_name": "AuthTask",
+            "function_name": "GetAuthTask",
+            "display_name": "AuthTask.GetAuthTask",
+            "endpoint_slug": "getauthtask",
+            "function_list_order": "10",
+            "action_type": "SELECTSINGLE",
+            "auth_policy": {
+                "raw_auth_type": "ProjectToken",
+                "raw_auth_type_caption": "Project's Token (default)",
+                "resolved_auth_type": "ProjectToken",
+                "resolved_auth_type_caption": "Project's Token (default)",
+                "strategy_key": "project-token",
+                "strategy_caption": "Project Token",
+                "resolution_source": "explicit",
+                "requires_get_function": false,
+                "single_get_function_name": "",
+                "security_mode": "project-token",
+                "summary": "project token 認証です。",
+                "notes": [],
+                "is_valid": true
+            },
+            "source_of_truth": "manual",
+            "function_updated_at": "2026-06-16 14:03:00",
+            "target_updated_at": "2026-06-16 14:03:00",
+            "resolved": true,
+            "signature": "public function GetAuthTask($param_AuthTask_Id_where)",
+            "line": 10,
+            "resolution_error": ""
+        }
+    ]
+}

@@ -33,7 +33,7 @@ sample 配下には 2 種類あります。
 category と structure type は別軸です。
 
 - `sample/tutorials/`
-  - current は `sample01-simple-table-runtime`、`sample02-dataclass-nullable-default-status`、`sample03-dataclass-lookup-and-helper`、`sample04-dataclass-parent-child-basic`、`sample05-dbaccess-select-basic`、`sample06-dbaccess-filter-sort-page`、`sample07-dbaccess-crud-basic`、`sample08-dbaccess-join-read-model`、`sample09-dbaccess-aggregate-report`、`sample10-dbaccess-mini-crud-flow`
+  - current は `sample01-simple-table-runtime`、`sample02-dataclass-nullable-default-status`、`sample03-dataclass-lookup-and-helper`、`sample04-dataclass-parent-child-basic`、`sample05-dbaccess-select-basic`、`sample06-dbaccess-filter-sort-page`、`sample07-dbaccess-crud-basic`、`sample08-dbaccess-join-read-model`、`sample09-dbaccess-aggregate-report`、`sample10-dbaccess-mini-crud-flow`、`sample11-html-template-output`、`sample12-external-db-source-import`、`sample13-openapi-api-surface`、`sample14-custom-proxy-runtime`、`sample15-project-metadata-export-import`、`sample16-authenticated-proxy`、`sample17-multi-output-project`
   - 今後の user-facing tutorial はここへ追加する
 - `sample/internal-patterns/`
   - `pattern01-default-property-split` から `pattern14-method-and-enum-heavy-multimethod` までの file-based migration sample
@@ -63,6 +63,13 @@ category と structure type は別軸です。
   - `sample08-dbaccess-join-read-model`
   - `sample09-dbaccess-aggregate-report`
   - `sample10-dbaccess-mini-crud-flow`
+  - `sample11-html-template-output`
+  - `sample12-external-db-source-import`
+  - `sample13-openapi-api-surface`
+  - `sample14-custom-proxy-runtime`
+  - `sample15-project-metadata-export-import`
+  - `sample16-authenticated-proxy`
+  - `sample17-multi-output-project`
 - `sample/internal-patterns/`
   - `pattern01-default-property-split`
   - `pattern02-wrapper-property-helper`

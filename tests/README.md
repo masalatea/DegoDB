@@ -6,7 +6,7 @@
 - Docker を使う検証 scenario は `tests/scenarios/` に置く
 - seed fixture や手動確認用の補助資産も、運用用の `sample/` ではなく `tests/` 側へ寄せる
 - `tests/fixtures/legacy-dbclasses/` には sample / migration test が使う curated legacy dbclasses copy を置く。`original-codes/` は Docker に mount せず、test input としても直接使わない。
-- runtime 置換は 2 段で進める。`Sample1` / `Sample2` / `Sample3` / `Sample4` / `Sample5` / `Sample6` / `Sample7` / `Sample8` / `Sample09` / `Sample10` は tutorial runtime lane、`sample/internal-patterns/pattern01-14-*` は complex/new form の sample gate として扱う。historical pattern test の `Sample9-22` 命名は互換 layer として残しつつ、tutorial 側の 2 桁 sample は `Sample09+` を使って衝突を避ける。
+- runtime 置換は 2 段で進める。`Sample1` / `Sample2` / `Sample3` / `Sample4` / `Sample5` / `Sample6` / `Sample7` / `Sample8` / `Sample09` / `Sample10` / `Sample11` / `Sample12` / `Sample13` / `Sample14` は tutorial runtime lane、`sample/internal-patterns/pattern01-14-*` は complex/new form の sample gate として扱う。historical pattern test の `Sample9-22` 命名は互換 layer として残しつつ、tutorial 側の 2 桁 sample は `Sample09+` を使って衝突を避ける。
 
 現時点では次を持つ。
 
@@ -30,6 +30,20 @@
   - `sample09-dbaccess-aggregate-report` の 2 live table + 1 report model table import / sync / grouped select + having metadata 付き db access output / reference compare を一括検証する
 - `tests/Integration/Sample10DbAccessMiniCrudFlowOutputTest.php`
   - `sample10-dbaccess-mini-crud-flow` の 1 table import / sync / list/detail/create/update/delete metadata 付き db access output / reference compare を一括検証する
+- `tests/Integration/Sample11HtmlTemplateOutputTest.php`
+  - `sample11-html-template-output` の HTML template metadata / html-module-catalog output / reference compare を一括検証する
+- `tests/Integration/Sample12ExternalDbSourceImportOutputTest.php`
+  - `sample12-external-db-source-import` の external named source import / DataClass sync / reference compare を一括検証する
+- `tests/Integration/Sample13OpenApiApiSurfaceOutputTest.php`
+  - `sample13-openapi-api-surface` の OpenAPI JSON publish / Swagger spec resolve / reference compare を一括検証する
+- `tests/Integration/Sample14CustomProxyRuntimeOutputTest.php`
+  - `sample14-custom-proxy-runtime` の custom proxy metadata / PHP proxy server artifact / reference compare を一括検証する
+- `tests/Integration/Sample15ProjectMetadataExportImportTest.php`
+  - `sample15-project-metadata-export-import` の project metadata bundle export / preview / apply / reference compare を一括検証する
+- `tests/Integration/Sample16AuthenticatedProxyTest.php`
+  - `sample16-authenticated-proxy` の ProjectToken authenticated proxy output / fail-closed auth behavior / reference compare を一括検証する
+- `tests/Integration/Sample17MultiOutputProjectTest.php`
+  - `sample17-multi-output-project` の DataClass / DBAccess / HTML / OpenAPI output publish と reference compare を一括検証する
 - `tests/Integration/Sample9TestPatternDefaultPropertyOutputTest.php`
   - `pattern01-default-property-split` の legacy dataclass wrapper/base migration output を検証する
 - `tests/Integration/Sample10CompareOutputCompanionDeclarationsOutputTest.php`

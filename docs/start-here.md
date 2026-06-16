@@ -104,7 +104,7 @@ dated report は補助であり、まずはこの 3 か所で `project_key`、ch
 既存 DB を named source として登録し、canonical metadata 永続化から output publish / verify まで 1 本で辿る時は [existing-db-to-output.md](existing-db-to-output.md) を正本にします。  
 何がどこに保存されるかは [storage-and-state-model.md](storage-and-state-model.md) を参照してください。
 
-最初の確認対象としては、`sample01-simple-table-runtime` か `sample10-dbaccess-mini-crud-flow` が読みやすいです。  
+最初の確認対象としては、`sample01-simple-table-runtime`、`sample10-dbaccess-mini-crud-flow`、`sample11-html-template-output`、`sample12-external-db-source-import`、`sample13-openapi-api-surface`、`sample14-custom-proxy-runtime`、`sample15-project-metadata-export-import`、`sample16-authenticated-proxy`、`sample17-multi-output-project` が読みやすいです。
 sample を教材として読む順番は [study/README.md](study/README.md)、tutorial lane の正本は [sample-tutorial-roadmap.md](sample-tutorial-roadmap.md) にあります。
 
 ## 最初のコマンド

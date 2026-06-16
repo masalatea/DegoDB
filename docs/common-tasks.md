@@ -251,6 +251,48 @@ DB Access tutorial の capstone を見るなら `sample/tutorials/sample10-dbacc
 make sample10-pack-runtime-test
 ```
 
+HTML Source Output tutorial を見るなら `sample/tutorials/sample11-html-template-output` を使う。
+
+```bash
+make sample11-pack-runtime-test
+```
+
+external DB source import tutorial を見るなら `sample/tutorials/sample12-external-db-source-import` を使う。
+
+```bash
+make sample12-pack-runtime-test
+```
+
+OpenAPI API surface tutorial を見るなら `sample/tutorials/sample13-openapi-api-surface` を使う。
+
+```bash
+make sample13-pack-runtime-test
+```
+
+custom proxy runtime tutorial を見るなら `sample/tutorials/sample14-custom-proxy-runtime` を使う。
+
+```bash
+make sample14-pack-runtime-test
+```
+
+project metadata bundle export / import tutorial を見るなら `sample/tutorials/sample15-project-metadata-export-import` を使う。
+
+```bash
+make sample15-pack-runtime-test
+```
+
+authenticated proxy tutorial を見るなら `sample/tutorials/sample16-authenticated-proxy` を使う。
+
+```bash
+make sample16-pack-runtime-test
+```
+
+multi-output capstone tutorial を見るなら `sample/tutorials/sample17-multi-output-project` を使う。
+
+```bash
+make sample17-pack-runtime-test
+```
+
 ## full suite を回す
 
 local で旧 stack と port が衝突しやすいので、まずは次の override 付き実行を使う。

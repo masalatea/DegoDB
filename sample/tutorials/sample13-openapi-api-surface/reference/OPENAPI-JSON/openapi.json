@@ -1,0 +1,268 @@
+{
+    "openapi": "3.0.3",
+    "info": {
+        "title": "Sample13 OpenAPI JSON",
+        "version": "1.0.0",
+        "description": "Generated from current single-function proxy target metadata."
+    },
+    "servers": [
+        {
+            "url": "http://127.0.0.1:8082/runs/proxy/SAMPLE13/API-PROXY-SERVER"
+        }
+    ],
+    "tags": [
+        {
+            "name": "ApiTask",
+            "description": "ApiTask single-function proxy endpoints."
+        }
+    ],
+    "paths": {
+        "/proxyserver-ApiTask-GetApiTask.php": {
+            "post": {
+                "operationId": "ApiTask_GetApiTask",
+                "tags": [
+                    "ApiTask"
+                ],
+                "summary": "ApiTask.GetApiTask",
+                "description": "Generated from single-function proxy target metadata.\n\nSource function: `ApiTask.GetApiTask`.\n\nAuth policy: 認証を掛けません。",
+                "x-mtool": {
+                    "source_name": "ApiTask",
+                    "function_name": "GetApiTask",
+                    "endpoint_filename": "proxyserver-ApiTask-GetApiTask.php",
+                    "auth_strategy": "no-security",
+                    "input_kind": "scalar",
+                    "response_mode": "direct-result"
+                },
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "param_ApiTask_Id_where": {
+                                        "type": "string",
+                                        "example": "string"
+                                    }
+                                },
+                                "required": [
+                                    "param_ApiTask_Id_where"
+                                ]
+                            },
+                            "example": {
+                                "param_ApiTask_Id_where": "string"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful proxy response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "_status": {
+                                            "type": "string",
+                                            "example": "OK"
+                                        },
+                                        "Message": {
+                                            "type": "string",
+                                            "example": ""
+                                        },
+                                        "Result": {
+                                            "$ref": "#/components/schemas/ApiTaskData"
+                                        }
+                                    }
+                                },
+                                "example": {
+                                    "_status": "OK",
+                                    "Message": "",
+                                    "Result": {
+                                        "Id": "string",
+                                        "Title": "string",
+                                        "Status": "string",
+                                        "OwnerName": "string",
+                                        "DueDate": "string",
+                                        "UpdatedAt": "string"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Runtime or validation error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "_status": {
+                                            "type": "string",
+                                            "example": "NG"
+                                        },
+                                        "Message": {
+                                            "type": "string",
+                                            "example": "error"
+                                        }
+                                    }
+                                },
+                                "example": {
+                                    "_status": "NG",
+                                    "Message": "error"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/proxyserver-ApiTask-GetApiTaskList.php": {
+            "post": {
+                "operationId": "ApiTask_GetApiTaskList",
+                "tags": [
+                    "ApiTask"
+                ],
+                "summary": "ApiTask.GetApiTaskList",
+                "description": "Generated from single-function proxy target metadata.\n\nSource function: `ApiTask.GetApiTaskList`.\n\nAuth policy: 認証を掛けません。",
+                "x-mtool": {
+                    "source_name": "ApiTask",
+                    "function_name": "GetApiTaskList",
+                    "endpoint_filename": "proxyserver-ApiTask-GetApiTaskList.php",
+                    "auth_strategy": "no-security",
+                    "input_kind": "scalar",
+                    "response_mode": "direct-result"
+                },
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "param_ApiTask_Status_where": {
+                                        "type": "string",
+                                        "example": "string"
+                                    },
+                                    "limit": {
+                                        "type": "string",
+                                        "example": "string"
+                                    }
+                                },
+                                "required": [
+                                    "param_ApiTask_Status_where",
+                                    "limit"
+                                ]
+                            },
+                            "example": {
+                                "param_ApiTask_Status_where": "string",
+                                "limit": "string"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful proxy response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "_status": {
+                                            "type": "string",
+                                            "example": "OK"
+                                        },
+                                        "Message": {
+                                            "type": "string",
+                                            "example": ""
+                                        },
+                                        "Result": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/components/schemas/ApiTaskData"
+                                            }
+                                        }
+                                    }
+                                },
+                                "example": {
+                                    "_status": "OK",
+                                    "Message": "",
+                                    "Result": [
+                                        {
+                                            "Id": "string",
+                                            "Title": "string",
+                                            "Status": "string",
+                                            "OwnerName": "string",
+                                            "DueDate": "string",
+                                            "UpdatedAt": "string"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Runtime or validation error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "_status": {
+                                            "type": "string",
+                                            "example": "NG"
+                                        },
+                                        "Message": {
+                                            "type": "string",
+                                            "example": "error"
+                                        }
+                                    }
+                                },
+                                "example": {
+                                    "_status": "NG",
+                                    "Message": "error"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "ApiTaskData": {
+                "type": "object",
+                "title": "ApiTaskData",
+                "properties": {
+                    "Id": {
+                        "type": "string",
+                        "example": "string"
+                    },
+                    "Title": {
+                        "type": "string",
+                        "example": "string"
+                    },
+                    "Status": {
+                        "type": "string",
+                        "example": "string"
+                    },
+                    "OwnerName": {
+                        "type": "string",
+                        "example": "string"
+                    },
+                    "DueDate": {
+                        "type": "string",
+                        "example": "string"
+                    },
+                    "UpdatedAt": {
+                        "type": "string",
+                        "example": "string"
+                    }
+                }
+            }
+        }
+    }
+}

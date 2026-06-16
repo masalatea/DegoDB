@@ -1,0 +1,8 @@
+{
+    "project_key": "SAMPLE15",
+    "name": "Sample 15 Project Metadata Export Import",
+    "slug": "sample15-project-metadata-export-import",
+    "lifecycle_status": "paused",
+    "owner_login_id": "admin",
+    "description": "Project-scoped canonical metadata bundle export / preview / apply を確認する tutorial sample project。"
+}

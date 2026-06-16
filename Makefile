@@ -42,13 +42,34 @@ SAMPLE09_RUN := ./$(SAMPLE09_PACK_DIR)/run.sh
 SAMPLE10_PACK_DIR := sample/tutorials/sample10-dbaccess-mini-crud-flow
 SAMPLE10_COMPOSE_FILE := $(SAMPLE10_PACK_DIR)/compose.yaml
 SAMPLE10_RUN := ./$(SAMPLE10_PACK_DIR)/run.sh
+SAMPLE11_PACK_DIR := sample/tutorials/sample11-html-template-output
+SAMPLE11_COMPOSE_FILE := $(SAMPLE11_PACK_DIR)/compose.yaml
+SAMPLE11_RUN := ./$(SAMPLE11_PACK_DIR)/run.sh
+SAMPLE12_PACK_DIR := sample/tutorials/sample12-external-db-source-import
+SAMPLE12_COMPOSE_FILE := $(SAMPLE12_PACK_DIR)/compose.yaml
+SAMPLE12_RUN := ./$(SAMPLE12_PACK_DIR)/run.sh
+SAMPLE13_PACK_DIR := sample/tutorials/sample13-openapi-api-surface
+SAMPLE13_COMPOSE_FILE := $(SAMPLE13_PACK_DIR)/compose.yaml
+SAMPLE13_RUN := ./$(SAMPLE13_PACK_DIR)/run.sh
+SAMPLE14_PACK_DIR := sample/tutorials/sample14-custom-proxy-runtime
+SAMPLE14_COMPOSE_FILE := $(SAMPLE14_PACK_DIR)/compose.yaml
+SAMPLE14_RUN := ./$(SAMPLE14_PACK_DIR)/run.sh
+SAMPLE15_PACK_DIR := sample/tutorials/sample15-project-metadata-export-import
+SAMPLE15_COMPOSE_FILE := $(SAMPLE15_PACK_DIR)/compose.yaml
+SAMPLE15_RUN := ./$(SAMPLE15_PACK_DIR)/run.sh
+SAMPLE16_PACK_DIR := sample/tutorials/sample16-authenticated-proxy
+SAMPLE16_COMPOSE_FILE := $(SAMPLE16_PACK_DIR)/compose.yaml
+SAMPLE16_RUN := ./$(SAMPLE16_PACK_DIR)/run.sh
+SAMPLE17_PACK_DIR := sample/tutorials/sample17-multi-output-project
+SAMPLE17_COMPOSE_FILE := $(SAMPLE17_PACK_DIR)/compose.yaml
+SAMPLE17_RUN := ./$(SAMPLE17_PACK_DIR)/run.sh
 
 LEGACY_GENERATED_CLEAN_DIRS := \
 	generated \
 	work/legacy-generated
 ROOT_TMP_DIR := tmp
 
-.PHONY: help env env-force bootstrap-dbclasses bootstrap-dbclasses-runtime-reference promote-runtime-reference restore-runtime-reference-snapshot mtool-runtime-reference-status clean project-output db-access-sync mtool-canonical-sync mtool-self-loop-check mtool-proxy-output-check mtool-html-db-lang-res-wrapper-check mtool-lang-res-file-tree-export mtool-lang-res-file-tree-check mtool-external-source-lab-smoke mtool-external-source-lab-browser-smoke test sample-pack-compose-smoke sample-pack-runtime-smoke sample01-pack-runtime-test sample02-pack-runtime-test sample03-pack-runtime-test sample04-pack-runtime-test sample05-pack-runtime-test sample06-pack-runtime-test sample07-pack-runtime-test sample08-pack-runtime-test sample09-pack-runtime-test sample09-runtime-output-test sample10-pack-runtime-test sample10-runtime-output-test pattern01-output-test pattern02-output-test pattern03-output-test pattern04-output-test pattern05-output-test pattern06-output-test pattern07-output-test pattern08-output-test pattern09-output-test pattern10-output-test pattern11-output-test pattern12-output-test pattern13-output-test pattern14-output-test sample01-pack-output-test sample02-pack-output-test sample03-pack-output-test sample04-pack-output-test sample05-pack-output-test sample06-pack-output-test sample07-pack-output-test sample08-pack-output-test sample09-pack-output-test sample10-pack-output-test sample11-pack-output-test sample12-pack-output-test sample13-pack-output-test sample14-pack-output-test sample15-pack-output-test sample1-output-test sample1-output-check sample2-output-test sample2-output-check sample3-output-test sample3-output-check sample4-output-test sample4-output-check sample5-output-test sample5-output-check sample6-output-test sample6-output-check sample7-output-test sample7-output-check sample8-output-test sample8-output-check sample9-output-test sample9-output-check sample10-output-test sample10-output-check sample11-output-test sample11-output-check sample12-output-test sample12-output-check sample13-output-test sample13-output-check sample14-output-test sample14-output-check sample15-output-test sample15-output-check sample16-output-test sample16-output-check sample17-output-test sample17-output-check sample18-output-test sample18-output-check sample19-output-test sample19-output-check sample20-output-test sample20-output-check sample21-output-test sample21-output-check sample22-output-test sample22-output-check build up up-mtool start-mtool stop-mtool down-mtool reset-mtool ps-mtool logs-mtool health-mtool config-db-preflight-mtool up-external-config-db down-external-config-db ps-external-config-db logs-external-config-db health-external-config-db config-db-preflight-external-config-db db-config-migrate-external-config-db start stop down reset ps logs health admin-shell lab-shell db-config-shell db-lab-shell config-db-preflight db-config-migrate db-lab-migrate
+.PHONY: help env env-force bootstrap-dbclasses bootstrap-dbclasses-runtime-reference promote-runtime-reference restore-runtime-reference-snapshot mtool-runtime-reference-status clean project-output db-access-sync mtool-canonical-sync mtool-self-loop-check mtool-proxy-output-check mtool-html-db-lang-res-wrapper-check mtool-lang-res-file-tree-export mtool-lang-res-file-tree-check mtool-external-source-lab-smoke mtool-external-source-lab-browser-smoke test sample-pack-compose-smoke sample-pack-runtime-smoke sample01-pack-runtime-test sample02-pack-runtime-test sample03-pack-runtime-test sample04-pack-runtime-test sample05-pack-runtime-test sample06-pack-runtime-test sample07-pack-runtime-test sample08-pack-runtime-test sample09-pack-runtime-test sample09-runtime-output-test sample10-pack-runtime-test sample10-runtime-output-test sample11-pack-runtime-test sample11-runtime-output-test sample12-pack-runtime-test sample12-runtime-output-test sample13-pack-runtime-test sample13-runtime-output-test sample14-pack-runtime-test sample14-runtime-output-test sample15-pack-runtime-test sample15-runtime-output-test sample16-pack-runtime-test sample16-runtime-output-test sample17-pack-runtime-test sample17-runtime-output-test pattern01-output-test pattern02-output-test pattern03-output-test pattern04-output-test pattern05-output-test pattern06-output-test pattern07-output-test pattern08-output-test pattern09-output-test pattern10-output-test pattern11-output-test pattern12-output-test pattern13-output-test pattern14-output-test sample01-pack-output-test sample02-pack-output-test sample03-pack-output-test sample04-pack-output-test sample05-pack-output-test sample06-pack-output-test sample07-pack-output-test sample08-pack-output-test sample09-pack-output-test sample10-pack-output-test sample11-pack-output-test sample12-pack-output-test sample13-pack-output-test sample14-pack-output-test sample15-pack-output-test sample1-output-test sample1-output-check sample2-output-test sample2-output-check sample3-output-test sample3-output-check sample4-output-test sample4-output-check sample5-output-test sample5-output-check sample6-output-test sample6-output-check sample7-output-test sample7-output-check sample8-output-test sample8-output-check sample9-output-test sample9-output-check sample10-output-test sample10-output-check sample11-output-test sample11-output-check sample12-output-test sample12-output-check sample13-output-test sample13-output-check sample14-output-test sample14-output-check sample15-output-test sample15-output-check sample16-output-test sample16-output-check sample17-output-test sample17-output-check sample18-output-test sample18-output-check sample19-output-test sample19-output-check sample20-output-test sample20-output-check sample21-output-test sample21-output-check sample22-output-test sample22-output-check build up up-mtool start-mtool stop-mtool down-mtool reset-mtool ps-mtool logs-mtool health-mtool config-db-preflight-mtool up-external-config-db down-external-config-db ps-external-config-db logs-external-config-db health-external-config-db config-db-preflight-external-config-db db-config-migrate-external-config-db start stop down reset ps logs health admin-shell lab-shell db-config-shell db-lab-shell config-db-preflight db-config-migrate db-lab-migrate
 .PHONY: backup-config-db restore-config-db backup-config-db-mtool restore-config-db-mtool up-durable-config-db ps-durable-config-db logs-durable-config-db health-durable-config-db config-db-preflight-durable-config-db db-config-migrate-durable-config-db down-durable-config-db
 
 DOCKER_ENV_TARGETS := \
@@ -97,6 +118,13 @@ DOCKER_ENV_TARGETS := \
 	sample8-output-test \
 	sample09-runtime-output-test \
 	sample10-runtime-output-test \
+	sample11-runtime-output-test \
+	sample12-runtime-output-test \
+	sample13-runtime-output-test \
+	sample14-runtime-output-test \
+	sample15-runtime-output-test \
+	sample16-runtime-output-test \
+	sample17-runtime-output-test \
 	sample9-output-test \
 	sample10-output-test \
 	sample11-output-test \
@@ -200,6 +228,13 @@ test: ## 現在の自動テスト一式を実行する
 		--extra-seed=$(SAMPLE08_PACK_DIR)/seed \
 		--extra-seed=$(SAMPLE09_PACK_DIR)/seed \
 		--extra-seed=$(SAMPLE10_PACK_DIR)/seed \
+		--extra-seed=$(SAMPLE11_PACK_DIR)/seed \
+		--extra-seed=$(SAMPLE12_PACK_DIR)/seed \
+		--extra-seed=$(SAMPLE13_PACK_DIR)/seed \
+		--extra-seed=$(SAMPLE14_PACK_DIR)/seed \
+		--extra-seed=$(SAMPLE15_PACK_DIR)/seed \
+		--extra-seed=$(SAMPLE16_PACK_DIR)/seed \
+		--extra-seed=$(SAMPLE17_PACK_DIR)/seed \
 		--phpunit-target=/var/www/tests/Integration
 
 sample-pack-compose-smoke: ## active runtime sample pack の compose override merge を軽く検証する
@@ -227,6 +262,20 @@ sample08-pack-runtime-test: sample8-output-test ## sample08 tutorial runtime の
 sample09-pack-runtime-test: sample09-runtime-output-test ## sample09 tutorial runtime の import/sync/output integration test を実行する
 
 sample10-pack-runtime-test: sample10-runtime-output-test ## sample10 tutorial runtime の import/sync/output integration test を実行する
+
+sample11-pack-runtime-test: sample11-runtime-output-test ## sample11 tutorial runtime の HTML source output integration test を実行する
+
+sample12-pack-runtime-test: sample12-runtime-output-test ## sample12 tutorial runtime の external DB source import integration test を実行する
+
+sample13-pack-runtime-test: sample13-runtime-output-test ## sample13 tutorial runtime の OpenAPI API surface integration test を実行する
+
+sample14-pack-runtime-test: sample14-runtime-output-test ## sample14 tutorial runtime の custom proxy runtime integration test を実行する
+
+sample15-pack-runtime-test: sample15-runtime-output-test ## sample15 tutorial runtime の project metadata export/import integration test を実行する
+
+sample16-pack-runtime-test: sample16-runtime-output-test ## sample16 tutorial runtime の authenticated proxy integration test を実行する
+
+sample17-pack-runtime-test: sample17-runtime-output-test ## sample17 tutorial runtime の multi-output capstone integration test を実行する
 
 pattern01-output-test: sample9-output-test ## pattern01 default-property-split の wrapper/base migration test を実行する
 
@@ -371,6 +420,55 @@ sample10-runtime-output-test:
 		--run-script=$(SAMPLE10_RUN) \
 		--apply-pack-seed \
 		--phpunit-target=/var/www/tests/Integration/Sample10DbAccessMiniCrudFlowOutputTest.php
+
+sample11-runtime-output-test:
+	bash mtool/scripts/run_sample_pack_phpunit_test.sh \
+		--compose-file=$(SAMPLE11_COMPOSE_FILE) \
+		--run-script=$(SAMPLE11_RUN) \
+		--apply-pack-seed \
+		--phpunit-target=/var/www/tests/Integration/Sample11HtmlTemplateOutputTest.php
+
+sample12-runtime-output-test:
+	bash mtool/scripts/run_sample_pack_phpunit_test.sh \
+		--compose-file=$(SAMPLE12_COMPOSE_FILE) \
+		--run-script=$(SAMPLE12_RUN) \
+		--apply-pack-seed \
+		--phpunit-target=/var/www/tests/Integration/Sample12ExternalDbSourceImportOutputTest.php
+
+sample13-runtime-output-test:
+	bash mtool/scripts/run_sample_pack_phpunit_test.sh \
+		--compose-file=$(SAMPLE13_COMPOSE_FILE) \
+		--run-script=$(SAMPLE13_RUN) \
+		--apply-pack-seed \
+		--phpunit-target=/var/www/tests/Integration/Sample13OpenApiApiSurfaceOutputTest.php
+
+sample14-runtime-output-test:
+	bash mtool/scripts/run_sample_pack_phpunit_test.sh \
+		--compose-file=$(SAMPLE14_COMPOSE_FILE) \
+		--run-script=$(SAMPLE14_RUN) \
+		--apply-pack-seed \
+		--phpunit-target=/var/www/tests/Integration/Sample14CustomProxyRuntimeOutputTest.php
+
+sample15-runtime-output-test:
+	bash mtool/scripts/run_sample_pack_phpunit_test.sh \
+		--compose-file=$(SAMPLE15_COMPOSE_FILE) \
+		--run-script=$(SAMPLE15_RUN) \
+		--apply-pack-seed \
+		--phpunit-target=/var/www/tests/Integration/Sample15ProjectMetadataExportImportTest.php
+
+sample16-runtime-output-test:
+	bash mtool/scripts/run_sample_pack_phpunit_test.sh \
+		--compose-file=$(SAMPLE16_COMPOSE_FILE) \
+		--run-script=$(SAMPLE16_RUN) \
+		--apply-pack-seed \
+		--phpunit-target=/var/www/tests/Integration/Sample16AuthenticatedProxyTest.php
+
+sample17-runtime-output-test:
+	bash mtool/scripts/run_sample_pack_phpunit_test.sh \
+		--compose-file=$(SAMPLE17_COMPOSE_FILE) \
+		--run-script=$(SAMPLE17_RUN) \
+		--apply-pack-seed \
+		--phpunit-target=/var/www/tests/Integration/Sample17MultiOutputProjectTest.php
 
 sample9-output-test:
 	bash mtool/scripts/run_sample_pack_phpunit_test.sh \

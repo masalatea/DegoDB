@@ -24,6 +24,20 @@
   - `sample/tutorials/sample09-dbaccess-aggregate-report` を使い、2 live table + 1 report model table + grouped select / having metadata の DB Access tutorial lane を検証する
 - `Sample10DbAccessMiniCrudFlowOutputTest.php`
   - `sample/tutorials/sample10-dbaccess-mini-crud-flow` を使い、1 table + list/detail/create/update/delete metadata の DB Access tutorial lane を検証する
+- `Sample11HtmlTemplateOutputTest.php`
+  - `sample/tutorials/sample11-html-template-output` を使い、HTML template metadata と `html-module-catalog` Source Output tutorial lane を検証する
+- `Sample12ExternalDbSourceImportOutputTest.php`
+  - `sample/tutorials/sample12-external-db-source-import` を使い、external named source import から DataClass output publish までの tutorial lane を検証する
+- `Sample13OpenApiApiSurfaceOutputTest.php`
+  - `sample/tutorials/sample13-openapi-api-surface` を使い、single-function proxy target metadata から OpenAPI JSON artifact publish までの tutorial lane を検証する
+- `Sample14CustomProxyRuntimeOutputTest.php`
+  - `sample/tutorials/sample14-custom-proxy-runtime` を使い、custom proxy metadata から PHP proxy server artifact publish までの tutorial lane を検証する
+- `Sample15ProjectMetadataExportImportTest.php`
+  - `sample/tutorials/sample15-project-metadata-export-import` を使い、project metadata bundle export / preview / apply までの tutorial lane を検証する
+- `Sample16AuthenticatedProxyTest.php`
+  - `sample/tutorials/sample16-authenticated-proxy` を使い、ProjectToken authenticated proxy と fail-closed behavior の tutorial lane を検証する
+- `Sample17MultiOutputProjectTest.php`
+  - `sample/tutorials/sample17-multi-output-project` を使い、複数 Source Output を同じ project から publish する capstone tutorial lane を検証する
 - historical な `Sample9...OutputTest.php` から `Sample22...OutputTest.php`
   - `sample/internal-patterns/pattern01-default-property-split` から `pattern14-method-and-enum-heavy-multimethod` までの file-based migration sample を対象に、`tests/fixtures/legacy-dbclasses/` の curated fixture から wrapper/base 出力を再生成し、`reference/` と比較する
 - `LegacyTopLevelDeclarationMigrationTest.php`
