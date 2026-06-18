@@ -1,0 +1,105 @@
+{
+    "schema_version": 1,
+    "artifact_type": "openapi-build-plan",
+    "project_key": "SAMPLE18",
+    "source_output_key": "OPENAPI-JSON",
+    "source_output_name": "Sample18 OpenAPI JSON",
+    "proxy_base_url": "http://127.0.0.1:8082/runs/proxy/SAMPLE18/API-PROXY-SERVER",
+    "function_count": 5,
+    "unresolved_function_count": 0,
+    "unresolved_auth_count": 0,
+    "operations": [
+        {
+            "source_name": "TaskCard",
+            "function_name": "GetTaskCardList",
+            "endpoint_filename": "proxyserver-TaskCard-GetTaskCardList.php",
+            "auth_strategy": "no-security",
+            "input_kind": "scalar",
+            "response_mode": "direct-result",
+            "parameter_schemas": {
+                "param_TaskCard_Status_where": {
+                    "parameter_name": "param_TaskCard_Status_where",
+                    "datatype": "varchar",
+                    "source": "select-where-parameter-data-type",
+                    "target_table_name": "TaskCard",
+                    "target_table_column_name": "Status"
+                },
+                "limit": {
+                    "parameter_name": "limit",
+                    "datatype": "int",
+                    "source": "limit-parameter",
+                    "target_table_name": "",
+                    "target_table_column_name": ""
+                }
+            }
+        },
+        {
+            "source_name": "TaskCard",
+            "function_name": "GetTaskCard",
+            "endpoint_filename": "proxyserver-TaskCard-GetTaskCard.php",
+            "auth_strategy": "no-security",
+            "input_kind": "scalar",
+            "response_mode": "direct-result",
+            "parameter_schemas": {
+                "param_TaskCard_Id_where": {
+                    "parameter_name": "param_TaskCard_Id_where",
+                    "datatype": "int",
+                    "source": "select-where-parameter-data-type",
+                    "target_table_name": "TaskCard",
+                    "target_table_column_name": "Id"
+                }
+            }
+        },
+        {
+            "source_name": "TaskCard",
+            "function_name": "InsertTaskCard",
+            "endpoint_filename": "proxyserver-TaskCard-InsertTaskCard.php",
+            "auth_strategy": "no-security",
+            "input_kind": "object",
+            "response_mode": "insert-id-single",
+            "parameter_schemas": {
+                "TaskCardObj": {
+                    "parameter_name": "TaskCardObj",
+                    "datatype": "",
+                    "source": "name-inference",
+                    "target_table_name": "",
+                    "target_table_column_name": ""
+                }
+            }
+        },
+        {
+            "source_name": "TaskCard",
+            "function_name": "UpdateTaskCard",
+            "endpoint_filename": "proxyserver-TaskCard-UpdateTaskCard.php",
+            "auth_strategy": "no-security",
+            "input_kind": "object",
+            "response_mode": "none",
+            "parameter_schemas": {
+                "TaskCardObj": {
+                    "parameter_name": "TaskCardObj",
+                    "datatype": "",
+                    "source": "name-inference",
+                    "target_table_name": "",
+                    "target_table_column_name": ""
+                }
+            }
+        },
+        {
+            "source_name": "TaskCard",
+            "function_name": "CompleteTaskCard",
+            "endpoint_filename": "proxyserver-TaskCard-CompleteTaskCard.php",
+            "auth_strategy": "no-security",
+            "input_kind": "object",
+            "response_mode": "none",
+            "parameter_schemas": {
+                "TaskCardObj": {
+                    "parameter_name": "TaskCardObj",
+                    "datatype": "",
+                    "source": "name-inference",
+                    "target_table_name": "",
+                    "target_table_column_name": ""
+                }
+            }
+        }
+    ]
+}

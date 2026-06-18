@@ -19,6 +19,7 @@ require_once dirname(__DIR__) . '/mtool/scripts/lib/sample14_custom_proxy_runtim
 require_once dirname(__DIR__) . '/mtool/scripts/lib/sample15_project_metadata_export_import_check.php';
 require_once dirname(__DIR__) . '/mtool/scripts/lib/sample16_authenticated_proxy_check.php';
 require_once dirname(__DIR__) . '/mtool/scripts/lib/sample17_multi_output_project_check.php';
+require_once dirname(__DIR__) . '/mtool/scripts/lib/sample18_mini_task_board_demo_check.php';
 require_once dirname(__DIR__) . '/mtool/scripts/lib/user_db_contract.php';
 require_once dirname(__DIR__) . '/mtool/scripts/lib/user_db_contract_runtime.php';
 require_once dirname(__DIR__) . '/mtool/scripts/lib/sample9_testpattern_default_property_output_check.php';

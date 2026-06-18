@@ -7,7 +7,7 @@
 - `Project 1` の検証 scenario は `tests/scenarios/` に置く
 - `Project 2+` 相当は sample pack として `sample/<category>/<pack>/` に分ける
 - active sample pack は `sample/tutorials/`、`sample/internal-patterns/`、`sample/legacy-projects/` の 3 系統に分ける
-- `sample/tutorials/` は user-facing tutorial の正本であり、`sample01-*` から simple-to-complex に並べる
+- `sample/tutorials/` は user-facing tutorial / demo の正本であり、`sample01-*` から simple-to-complex に並べる
 - tutorial の段階設計と追加順は `docs/sample-tutorial-roadmap.md` を正本にする
 - `sample/internal-patterns/` は rewrite / generator / migration guard 用の internal lane であり、`pattern01-*` から並べる
 - `sample/legacy-projects/` は sanitized representative runtime pack を `sample51` / `sample53` / `sample56` に絞り、`50` 番台で category 境界を明示する
@@ -33,7 +33,7 @@ sample 配下には 2 種類あります。
 category と structure type は別軸です。
 
 - `sample/tutorials/`
-  - current は `sample01-simple-table-runtime`、`sample02-dataclass-nullable-default-status`、`sample03-dataclass-lookup-and-helper`、`sample04-dataclass-parent-child-basic`、`sample05-dbaccess-select-basic`、`sample06-dbaccess-filter-sort-page`、`sample07-dbaccess-crud-basic`、`sample08-dbaccess-join-read-model`、`sample09-dbaccess-aggregate-report`、`sample10-dbaccess-mini-crud-flow`、`sample11-html-template-output`、`sample12-external-db-source-import`、`sample13-openapi-api-surface`、`sample14-custom-proxy-runtime`、`sample15-project-metadata-export-import`、`sample16-authenticated-proxy`、`sample17-multi-output-project`
+  - current は `sample01-simple-table-runtime`、`sample02-dataclass-nullable-default-status`、`sample03-dataclass-lookup-and-helper`、`sample04-dataclass-parent-child-basic`、`sample05-dbaccess-select-basic`、`sample06-dbaccess-filter-sort-page`、`sample07-dbaccess-crud-basic`、`sample08-dbaccess-join-read-model`、`sample09-dbaccess-aggregate-report`、`sample10-dbaccess-mini-crud-flow`、`sample11-html-template-output`、`sample12-external-db-source-import`、`sample13-openapi-api-surface`、`sample14-custom-proxy-runtime`、`sample15-project-metadata-export-import`、`sample16-authenticated-proxy`、`sample17-multi-output-project`、`sample18-mini-task-board-demo`
   - 今後の user-facing tutorial はここへ追加する
 - `sample/internal-patterns/`
   - `pattern01-default-property-split` から `pattern14-method-and-enum-heavy-multimethod` までの file-based migration sample
@@ -70,6 +70,7 @@ category と structure type は別軸です。
   - `sample15-project-metadata-export-import`
   - `sample16-authenticated-proxy`
   - `sample17-multi-output-project`
+  - `sample18-mini-task-board-demo`
 - `sample/internal-patterns/`
   - `pattern01-default-property-split`
   - `pattern02-wrapper-property-helper`

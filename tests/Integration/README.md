@@ -38,6 +38,8 @@
   - `sample/tutorials/sample16-authenticated-proxy` を使い、ProjectToken authenticated proxy と fail-closed behavior の tutorial lane を検証する
 - `Sample17MultiOutputProjectTest.php`
   - `sample/tutorials/sample17-multi-output-project` を使い、複数 Source Output を同じ project から publish する capstone tutorial lane を検証する
+- `Sample18MiniTaskBoardDemoTest.php`
+  - `sample/tutorials/sample18-mini-task-board-demo` を使い、整理済み prompt から作る TaskCard demo lane を検証する
 - historical な `Sample9...OutputTest.php` から `Sample22...OutputTest.php`
   - `sample/internal-patterns/pattern01-default-property-split` から `pattern14-method-and-enum-heavy-multimethod` までの file-based migration sample を対象に、`tests/fixtures/legacy-dbclasses/` の curated fixture から wrapper/base 出力を再生成し、`reference/` と比較する
 - `LegacyTopLevelDeclarationMigrationTest.php`

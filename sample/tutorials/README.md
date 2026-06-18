@@ -1,6 +1,6 @@
 # Sample Tutorial Packs / tutorial sample 一覧
 
-- 役割: user-facing の tutorial sample を simple-to-complex に並べる category
+- 役割: user-facing の tutorial sample / demo sample を simple-to-complex に並べる category
 - pack 名は `sample01-*` から始める
 - README / Make help / 今後の導線はここを優先する
 - tutorial backlog と段階設計の正本は `docs/sample-tutorial-roadmap.md` を参照する
@@ -25,6 +25,7 @@ current runtime tutorial packs:
 - `sample15-project-metadata-export-import`
 - `sample16-authenticated-proxy`
 - `sample17-multi-output-project`
+- `sample18-mini-task-board-demo`
 
 上記は runtime pack であり、`compose.yaml` / `run.sh` / `seed/` を持つ。
 
@@ -41,7 +42,11 @@ make sample14-pack-runtime-test
 make sample15-pack-runtime-test
 make sample16-pack-runtime-test
 make sample17-pack-runtime-test
+make sample18-pack-runtime-test
+make sample18-http-runtime-smoke
 make test
 ```
 
-今後の tutorial sample は `sample18+` として上の順を延長して追加する。
+`sample18-http-runtime-smoke` は `web-lab` の `/samples/sample18-task-board` に login し、画面から task を作成・編集できることまで確認する。
+
+今後の tutorial / demo sample は `sample19+` として上の順を延長して追加する。

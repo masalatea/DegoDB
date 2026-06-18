@@ -114,6 +114,7 @@ final class SamplePackCatalogTest extends TestCase
                 'sample15-project-metadata-export-import',
                 'sample16-authenticated-proxy',
                 'sample17-multi-output-project',
+                'sample18-mini-task-board-demo',
             ],
             app_sample_pack_category_map()['tutorials'] ?? [],
         );
@@ -163,6 +164,7 @@ final class SamplePackCatalogTest extends TestCase
                 'sample15-project-metadata-export-import',
                 'sample16-authenticated-proxy',
                 'sample17-multi-output-project',
+                'sample18-mini-task-board-demo',
                 'sample51-runtime-sql-server',
                 'sample53-runtime-whiteboard',
                 'sample56-runtime-misc-proxy',

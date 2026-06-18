@@ -11,6 +11,8 @@
 
 ## Index
 
+- `2026-0619-instruction-driven-demo-sample-plan.md`
+  - AI 側で仮想ユーザー prompt や整理済み prompt を作り、その prompt から動く runtime demo sample を `sample18+` として固定していく計画。生の試行錯誤ログではなく、sample 向けに再構成する。first candidate `sample18-mini-task-board-demo` を追加済み。Status: `DONE`。
 - `2026-0617-ai-generation-review-sample13-sample16.md`
   - AI-assisted generation review contract を sample13 OpenAPI/proxy と sample16 authenticated proxy に適用し、`generated` / `generated_with_options` / `inherited_custom` / `manual_runtime` の first pass 判定を残した記録。
 - `2026-0617-api-auth-inventory-plan.md`

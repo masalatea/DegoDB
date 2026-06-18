@@ -1,0 +1,588 @@
+{
+    "openapi": "3.0.3",
+    "info": {
+        "title": "Sample18 OpenAPI JSON",
+        "version": "1.0.0",
+        "description": "Generated from current single-function proxy target metadata."
+    },
+    "servers": [
+        {
+            "url": "http://127.0.0.1:8082/runs/proxy/SAMPLE18/API-PROXY-SERVER"
+        }
+    ],
+    "tags": [
+        {
+            "name": "TaskCard",
+            "description": "TaskCard single-function proxy endpoints."
+        }
+    ],
+    "paths": {
+        "/proxyserver-TaskCard-CompleteTaskCard.php": {
+            "post": {
+                "operationId": "TaskCard_CompleteTaskCard",
+                "tags": [
+                    "TaskCard"
+                ],
+                "summary": "TaskCard.CompleteTaskCard",
+                "description": "Generated from single-function proxy target metadata.\n\nSource function: `TaskCard.CompleteTaskCard`.\n\nAuth policy: 認証を掛けません。",
+                "x-mtool": {
+                    "source_name": "TaskCard",
+                    "function_name": "CompleteTaskCard",
+                    "endpoint_filename": "proxyserver-TaskCard-CompleteTaskCard.php",
+                    "auth_strategy": "no-security",
+                    "input_kind": "object",
+                    "response_mode": "none"
+                },
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "TaskCardObj": {
+                                        "$ref": "#/components/schemas/TaskCardData"
+                                    }
+                                },
+                                "required": [
+                                    "TaskCardObj"
+                                ]
+                            },
+                            "example": {
+                                "TaskCardObj": {
+                                    "Id": "string",
+                                    "Title": "string",
+                                    "Body": "string",
+                                    "Status": "string",
+                                    "AssignedTo": "string",
+                                    "Priority": "string",
+                                    "DueDate": "string",
+                                    "CompletedAt": "string",
+                                    "UpdatedAt": "string"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful proxy response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "_status": {
+                                            "type": "string",
+                                            "example": "OK"
+                                        },
+                                        "Message": {
+                                            "type": "string",
+                                            "example": ""
+                                        }
+                                    }
+                                },
+                                "example": {
+                                    "_status": "OK",
+                                    "Message": ""
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Runtime or validation error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "_status": {
+                                            "type": "string",
+                                            "example": "NG"
+                                        },
+                                        "Message": {
+                                            "type": "string",
+                                            "example": "error"
+                                        }
+                                    }
+                                },
+                                "example": {
+                                    "_status": "NG",
+                                    "Message": "error"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/proxyserver-TaskCard-GetTaskCard.php": {
+            "post": {
+                "operationId": "TaskCard_GetTaskCard",
+                "tags": [
+                    "TaskCard"
+                ],
+                "summary": "TaskCard.GetTaskCard",
+                "description": "Generated from single-function proxy target metadata.\n\nSource function: `TaskCard.GetTaskCard`.\n\nAuth policy: 認証を掛けません。",
+                "x-mtool": {
+                    "source_name": "TaskCard",
+                    "function_name": "GetTaskCard",
+                    "endpoint_filename": "proxyserver-TaskCard-GetTaskCard.php",
+                    "auth_strategy": "no-security",
+                    "input_kind": "scalar",
+                    "response_mode": "direct-result"
+                },
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "param_TaskCard_Id_where": {
+                                        "type": "integer",
+                                        "example": 0
+                                    }
+                                },
+                                "required": [
+                                    "param_TaskCard_Id_where"
+                                ]
+                            },
+                            "example": {
+                                "param_TaskCard_Id_where": 0
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful proxy response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "_status": {
+                                            "type": "string",
+                                            "example": "OK"
+                                        },
+                                        "Message": {
+                                            "type": "string",
+                                            "example": ""
+                                        },
+                                        "Result": {
+                                            "$ref": "#/components/schemas/TaskCardData"
+                                        }
+                                    }
+                                },
+                                "example": {
+                                    "_status": "OK",
+                                    "Message": "",
+                                    "Result": {
+                                        "Id": "string",
+                                        "Title": "string",
+                                        "Body": "string",
+                                        "Status": "string",
+                                        "AssignedTo": "string",
+                                        "Priority": "string",
+                                        "DueDate": "string",
+                                        "CompletedAt": "string",
+                                        "UpdatedAt": "string"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Runtime or validation error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "_status": {
+                                            "type": "string",
+                                            "example": "NG"
+                                        },
+                                        "Message": {
+                                            "type": "string",
+                                            "example": "error"
+                                        }
+                                    }
+                                },
+                                "example": {
+                                    "_status": "NG",
+                                    "Message": "error"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/proxyserver-TaskCard-GetTaskCardList.php": {
+            "post": {
+                "operationId": "TaskCard_GetTaskCardList",
+                "tags": [
+                    "TaskCard"
+                ],
+                "summary": "TaskCard.GetTaskCardList",
+                "description": "Generated from single-function proxy target metadata.\n\nSource function: `TaskCard.GetTaskCardList`.\n\nAuth policy: 認証を掛けません。",
+                "x-mtool": {
+                    "source_name": "TaskCard",
+                    "function_name": "GetTaskCardList",
+                    "endpoint_filename": "proxyserver-TaskCard-GetTaskCardList.php",
+                    "auth_strategy": "no-security",
+                    "input_kind": "scalar",
+                    "response_mode": "direct-result"
+                },
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "param_TaskCard_Status_where": {
+                                        "type": "string",
+                                        "example": "string"
+                                    },
+                                    "limit": {
+                                        "type": "integer",
+                                        "example": 0
+                                    }
+                                },
+                                "required": [
+                                    "param_TaskCard_Status_where",
+                                    "limit"
+                                ]
+                            },
+                            "example": {
+                                "param_TaskCard_Status_where": "string",
+                                "limit": 0
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful proxy response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "_status": {
+                                            "type": "string",
+                                            "example": "OK"
+                                        },
+                                        "Message": {
+                                            "type": "string",
+                                            "example": ""
+                                        },
+                                        "Result": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/components/schemas/TaskCardData"
+                                            }
+                                        }
+                                    }
+                                },
+                                "example": {
+                                    "_status": "OK",
+                                    "Message": "",
+                                    "Result": [
+                                        {
+                                            "Id": "string",
+                                            "Title": "string",
+                                            "Body": "string",
+                                            "Status": "string",
+                                            "AssignedTo": "string",
+                                            "Priority": "string",
+                                            "DueDate": "string",
+                                            "CompletedAt": "string",
+                                            "UpdatedAt": "string"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Runtime or validation error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "_status": {
+                                            "type": "string",
+                                            "example": "NG"
+                                        },
+                                        "Message": {
+                                            "type": "string",
+                                            "example": "error"
+                                        }
+                                    }
+                                },
+                                "example": {
+                                    "_status": "NG",
+                                    "Message": "error"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/proxyserver-TaskCard-InsertTaskCard.php": {
+            "post": {
+                "operationId": "TaskCard_InsertTaskCard",
+                "tags": [
+                    "TaskCard"
+                ],
+                "summary": "TaskCard.InsertTaskCard",
+                "description": "Generated from single-function proxy target metadata.\n\nSource function: `TaskCard.InsertTaskCard`.\n\nAuth policy: 認証を掛けません。",
+                "x-mtool": {
+                    "source_name": "TaskCard",
+                    "function_name": "InsertTaskCard",
+                    "endpoint_filename": "proxyserver-TaskCard-InsertTaskCard.php",
+                    "auth_strategy": "no-security",
+                    "input_kind": "object",
+                    "response_mode": "insert-id-single"
+                },
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "TaskCardObj": {
+                                        "$ref": "#/components/schemas/TaskCardData"
+                                    }
+                                },
+                                "required": [
+                                    "TaskCardObj"
+                                ]
+                            },
+                            "example": {
+                                "TaskCardObj": {
+                                    "Id": "string",
+                                    "Title": "string",
+                                    "Body": "string",
+                                    "Status": "string",
+                                    "AssignedTo": "string",
+                                    "Priority": "string",
+                                    "DueDate": "string",
+                                    "CompletedAt": "string",
+                                    "UpdatedAt": "string"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful proxy response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "_status": {
+                                            "type": "string",
+                                            "example": "OK"
+                                        },
+                                        "Message": {
+                                            "type": "string",
+                                            "example": ""
+                                        },
+                                        "InsertID": {
+                                            "type": "integer",
+                                            "example": 1
+                                        }
+                                    }
+                                },
+                                "example": {
+                                    "_status": "OK",
+                                    "Message": "",
+                                    "InsertID": 1
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Runtime or validation error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "_status": {
+                                            "type": "string",
+                                            "example": "NG"
+                                        },
+                                        "Message": {
+                                            "type": "string",
+                                            "example": "error"
+                                        }
+                                    }
+                                },
+                                "example": {
+                                    "_status": "NG",
+                                    "Message": "error"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/proxyserver-TaskCard-UpdateTaskCard.php": {
+            "post": {
+                "operationId": "TaskCard_UpdateTaskCard",
+                "tags": [
+                    "TaskCard"
+                ],
+                "summary": "TaskCard.UpdateTaskCard",
+                "description": "Generated from single-function proxy target metadata.\n\nSource function: `TaskCard.UpdateTaskCard`.\n\nAuth policy: 認証を掛けません。",
+                "x-mtool": {
+                    "source_name": "TaskCard",
+                    "function_name": "UpdateTaskCard",
+                    "endpoint_filename": "proxyserver-TaskCard-UpdateTaskCard.php",
+                    "auth_strategy": "no-security",
+                    "input_kind": "object",
+                    "response_mode": "none"
+                },
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "TaskCardObj": {
+                                        "$ref": "#/components/schemas/TaskCardData"
+                                    }
+                                },
+                                "required": [
+                                    "TaskCardObj"
+                                ]
+                            },
+                            "example": {
+                                "TaskCardObj": {
+                                    "Id": "string",
+                                    "Title": "string",
+                                    "Body": "string",
+                                    "Status": "string",
+                                    "AssignedTo": "string",
+                                    "Priority": "string",
+                                    "DueDate": "string",
+                                    "CompletedAt": "string",
+                                    "UpdatedAt": "string"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful proxy response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "_status": {
+                                            "type": "string",
+                                            "example": "OK"
+                                        },
+                                        "Message": {
+                                            "type": "string",
+                                            "example": ""
+                                        }
+                                    }
+                                },
+                                "example": {
+                                    "_status": "OK",
+                                    "Message": ""
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Runtime or validation error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "_status": {
+                                            "type": "string",
+                                            "example": "NG"
+                                        },
+                                        "Message": {
+                                            "type": "string",
+                                            "example": "error"
+                                        }
+                                    }
+                                },
+                                "example": {
+                                    "_status": "NG",
+                                    "Message": "error"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "TaskCardData": {
+                "type": "object",
+                "title": "TaskCardData",
+                "properties": {
+                    "Id": {
+                        "type": "string",
+                        "example": "string"
+                    },
+                    "Title": {
+                        "type": "string",
+                        "example": "string"
+                    },
+                    "Body": {
+                        "type": "string",
+                        "example": "string"
+                    },
+                    "Status": {
+                        "type": "string",
+                        "example": "string"
+                    },
+                    "AssignedTo": {
+                        "type": "string",
+                        "example": "string"
+                    },
+                    "Priority": {
+                        "type": "string",
+                        "example": "string"
+                    },
+                    "DueDate": {
+                        "type": "string",
+                        "example": "string"
+                    },
+                    "CompletedAt": {
+                        "type": "string",
+                        "example": "string"
+                    },
+                    "UpdatedAt": {
+                        "type": "string",
+                        "example": "string"
+                    }
+                }
+            }
+        }
+    }
+}

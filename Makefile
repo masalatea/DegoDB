@@ -101,15 +101,20 @@ SAMPLE17_COMPOSE_FILE := $(SAMPLE17_PACK_DIR)/compose.yaml
 SAMPLE17_RUN := ./$(SAMPLE17_PACK_DIR)/run.sh
 SAMPLE17_SQLITE_COMPOSE_FILE := $(SAMPLE17_PACK_DIR)/compose.sqlite-config.yaml
 SAMPLE17_SQLITE_RUN := ./$(SAMPLE17_PACK_DIR)/run-sqlite-config.sh
+SAMPLE18_PACK_DIR := sample/tutorials/sample18-mini-task-board-demo
+SAMPLE18_COMPOSE_FILE := $(SAMPLE18_PACK_DIR)/compose.yaml
+SAMPLE18_RUN := ./$(SAMPLE18_PACK_DIR)/run.sh
+SAMPLE18_SQLITE_COMPOSE_FILE := $(SAMPLE18_PACK_DIR)/compose.sqlite-config.yaml
+SAMPLE18_SQLITE_RUN := ./$(SAMPLE18_PACK_DIR)/run-sqlite-config.sh
 
 LEGACY_GENERATED_CLEAN_DIRS := \
 	generated \
 	work/legacy-generated
 ROOT_TMP_DIR := tmp
 
-.PHONY: help env env-force bootstrap-dbclasses bootstrap-dbclasses-runtime-reference promote-runtime-reference restore-runtime-reference-snapshot mtool-runtime-reference-status clean project-output db-access-sync mtool-canonical-sync mtool-self-loop-check mtool-proxy-output-check mtool-html-db-lang-res-wrapper-check mtool-lang-res-file-tree-export mtool-lang-res-file-tree-check mtool-external-source-lab-smoke mtool-external-source-lab-browser-smoke mtool-lite-smoke test sample-pack-compose-smoke sample-pack-runtime-smoke sample01-pack-runtime-test sample02-pack-runtime-test sample03-pack-runtime-test sample04-pack-runtime-test sample05-pack-runtime-test sample06-pack-runtime-test sample07-pack-runtime-test sample08-pack-runtime-test sample09-pack-runtime-test sample09-runtime-output-test sample10-pack-runtime-test sample10-runtime-output-test sample11-pack-runtime-test sample11-runtime-output-test sample12-pack-runtime-test sample12-runtime-output-test sample13-pack-runtime-test sample13-runtime-output-test sample14-pack-runtime-test sample14-runtime-output-test sample15-pack-runtime-test sample15-runtime-output-test sample16-pack-runtime-test sample16-runtime-output-test sample17-pack-runtime-test sample17-runtime-output-test pattern01-output-test pattern02-output-test pattern03-output-test pattern04-output-test pattern05-output-test pattern06-output-test pattern07-output-test pattern08-output-test pattern09-output-test pattern10-output-test pattern11-output-test pattern12-output-test pattern13-output-test pattern14-output-test sample01-pack-output-test sample02-pack-output-test sample03-pack-output-test sample04-pack-output-test sample05-pack-output-test sample06-pack-output-test sample07-pack-output-test sample08-pack-output-test sample09-pack-output-test sample10-pack-output-test sample11-pack-output-test sample12-pack-output-test sample13-pack-output-test sample14-pack-output-test sample15-pack-output-test sample1-output-test sample1-output-check sample2-output-test sample2-output-check sample3-output-test sample3-output-check sample4-output-test sample4-output-check sample5-output-test sample5-output-check sample6-output-test sample6-output-check sample7-output-test sample7-output-check sample8-output-test sample8-output-check sample9-output-test sample9-output-check sample10-output-test sample10-output-check sample11-output-test sample11-output-check sample12-output-test sample12-output-check sample13-output-test sample13-output-check sample14-output-test sample14-output-check sample15-output-test sample15-output-check sample16-output-test sample16-output-check sample17-output-test sample17-output-check sample18-output-test sample18-output-check sample19-output-test sample19-output-check sample20-output-test sample20-output-check sample21-output-test sample21-output-check sample22-output-test sample22-output-check build up up-mtool start-mtool stop-mtool down-mtool reset-mtool ps-mtool logs-mtool health-mtool config-db-preflight-mtool db-config-migrate-mtool up-mtool-lite start-mtool-lite stop-mtool-lite down-mtool-lite reset-mtool-lite ps-mtool-lite logs-mtool-lite health-mtool-lite config-db-preflight-mtool-lite db-config-migrate-mtool-lite up-external-config-db down-external-config-db ps-external-config-db logs-external-config-db health-external-config-db config-db-preflight-external-config-db db-config-migrate-external-config-db start stop down reset ps logs health admin-shell lab-shell db-config-shell db-lab-shell config-db-preflight db-config-migrate db-lab-migrate
+.PHONY: help env env-force bootstrap-dbclasses bootstrap-dbclasses-runtime-reference promote-runtime-reference restore-runtime-reference-snapshot mtool-runtime-reference-status clean project-output db-access-sync mtool-canonical-sync mtool-self-loop-check mtool-proxy-output-check mtool-html-db-lang-res-wrapper-check mtool-lang-res-file-tree-export mtool-lang-res-file-tree-check mtool-external-source-lab-smoke mtool-external-source-lab-browser-smoke mtool-lite-smoke test sample-pack-compose-smoke sample-pack-runtime-smoke sample01-pack-runtime-test sample02-pack-runtime-test sample03-pack-runtime-test sample04-pack-runtime-test sample05-pack-runtime-test sample06-pack-runtime-test sample07-pack-runtime-test sample08-pack-runtime-test sample09-pack-runtime-test sample09-runtime-output-test sample10-pack-runtime-test sample10-runtime-output-test sample11-pack-runtime-test sample11-runtime-output-test sample12-pack-runtime-test sample12-runtime-output-test sample13-pack-runtime-test sample13-runtime-output-test sample14-pack-runtime-test sample14-runtime-output-test sample15-pack-runtime-test sample15-runtime-output-test sample16-pack-runtime-test sample16-runtime-output-test sample17-pack-runtime-test sample17-runtime-output-test sample18-pack-runtime-test sample18-runtime-output-test pattern01-output-test pattern02-output-test pattern03-output-test pattern04-output-test pattern05-output-test pattern06-output-test pattern07-output-test pattern08-output-test pattern09-output-test pattern10-output-test pattern11-output-test pattern12-output-test pattern13-output-test pattern14-output-test sample01-pack-output-test sample02-pack-output-test sample03-pack-output-test sample04-pack-output-test sample05-pack-output-test sample06-pack-output-test sample07-pack-output-test sample08-pack-output-test sample09-pack-output-test sample10-pack-output-test sample11-pack-output-test sample12-pack-output-test sample13-pack-output-test sample14-pack-output-test sample15-pack-output-test sample1-output-test sample1-output-check sample2-output-test sample2-output-check sample3-output-test sample3-output-check sample4-output-test sample4-output-check sample5-output-test sample5-output-check sample6-output-test sample6-output-check sample7-output-test sample7-output-check sample8-output-test sample8-output-check sample9-output-test sample9-output-check sample10-output-test sample10-output-check sample11-output-test sample11-output-check sample12-output-test sample12-output-check sample13-output-test sample13-output-check sample14-output-test sample14-output-check sample15-output-test sample15-output-check sample16-output-test sample16-output-check sample17-output-test sample17-output-check sample18-output-test sample18-output-check sample19-output-test sample19-output-check sample20-output-test sample20-output-check sample21-output-test sample21-output-check sample22-output-test sample22-output-check build up up-mtool start-mtool stop-mtool down-mtool reset-mtool ps-mtool logs-mtool health-mtool config-db-preflight-mtool db-config-migrate-mtool up-mtool-lite start-mtool-lite stop-mtool-lite down-mtool-lite reset-mtool-lite ps-mtool-lite logs-mtool-lite health-mtool-lite config-db-preflight-mtool-lite db-config-migrate-mtool-lite up-external-config-db down-external-config-db ps-external-config-db logs-external-config-db health-external-config-db config-db-preflight-external-config-db db-config-migrate-external-config-db start stop down reset ps logs health admin-shell lab-shell db-config-shell db-lab-shell config-db-preflight db-config-migrate db-lab-migrate
 .PHONY: backup-config-db backup-config-db-rotate restore-config-db backup-config-db-mtool backup-config-db-mtool-rotate restore-config-db-mtool backup-config-db-sqlite backup-config-db-sqlite-rotate restore-config-db-sqlite backup-config-db-mtool-lite backup-config-db-mtool-lite-rotate restore-config-db-mtool-lite up-durable-config-db ps-durable-config-db logs-durable-config-db health-durable-config-db config-db-preflight-durable-config-db db-config-migrate-durable-config-db down-durable-config-db
-.PHONY: sample01-pack-runtime-test-sqlite sample1-output-test-sqlite sample1-output-check-sqlite sample02-pack-runtime-test-sqlite sample2-output-test-sqlite sample2-output-check-sqlite sample03-pack-runtime-test-sqlite sample3-output-test-sqlite sample3-output-check-sqlite sample04-pack-runtime-test-sqlite sample4-output-test-sqlite sample4-output-check-sqlite sample05-pack-runtime-test-sqlite sample5-output-test-sqlite sample5-output-check-sqlite sample06-pack-runtime-test-sqlite sample6-output-test-sqlite sample6-output-check-sqlite sample07-pack-runtime-test-sqlite sample7-output-test-sqlite sample7-output-check-sqlite sample08-pack-runtime-test-sqlite sample8-output-test-sqlite sample8-output-check-sqlite sample09-pack-runtime-test-sqlite sample09-runtime-output-test-sqlite sample10-pack-runtime-test-sqlite sample10-runtime-output-test-sqlite sample11-pack-runtime-test-sqlite sample11-runtime-output-test-sqlite sample12-pack-runtime-test-sqlite sample12-runtime-output-test-sqlite sample13-pack-runtime-test-sqlite sample13-runtime-output-test-sqlite sample13-http-runtime-smoke sample13-http-runtime-smoke-sqlite sample13-browser-try-it-out-smoke sample13-browser-try-it-out-smoke-sqlite sample14-pack-runtime-test-sqlite sample14-runtime-output-test-sqlite sample15-pack-runtime-test-sqlite sample15-runtime-output-test-sqlite sample16-pack-runtime-test-sqlite sample16-runtime-output-test-sqlite sample16-http-runtime-smoke sample16-http-runtime-smoke-sqlite sample17-pack-runtime-test-sqlite sample17-runtime-output-test-sqlite
+.PHONY: sample01-pack-runtime-test-sqlite sample1-output-test-sqlite sample1-output-check-sqlite sample02-pack-runtime-test-sqlite sample2-output-test-sqlite sample2-output-check-sqlite sample03-pack-runtime-test-sqlite sample3-output-test-sqlite sample3-output-check-sqlite sample04-pack-runtime-test-sqlite sample4-output-test-sqlite sample4-output-check-sqlite sample05-pack-runtime-test-sqlite sample5-output-test-sqlite sample5-output-check-sqlite sample06-pack-runtime-test-sqlite sample6-output-test-sqlite sample6-output-check-sqlite sample07-pack-runtime-test-sqlite sample7-output-test-sqlite sample7-output-check-sqlite sample08-pack-runtime-test-sqlite sample8-output-test-sqlite sample8-output-check-sqlite sample09-pack-runtime-test-sqlite sample09-runtime-output-test-sqlite sample10-pack-runtime-test-sqlite sample10-runtime-output-test-sqlite sample11-pack-runtime-test-sqlite sample11-runtime-output-test-sqlite sample12-pack-runtime-test-sqlite sample12-runtime-output-test-sqlite sample13-pack-runtime-test-sqlite sample13-runtime-output-test-sqlite sample13-http-runtime-smoke sample13-http-runtime-smoke-sqlite sample13-browser-try-it-out-smoke sample13-browser-try-it-out-smoke-sqlite sample14-pack-runtime-test-sqlite sample14-runtime-output-test-sqlite sample15-pack-runtime-test-sqlite sample15-runtime-output-test-sqlite sample16-pack-runtime-test-sqlite sample16-runtime-output-test-sqlite sample16-http-runtime-smoke sample16-http-runtime-smoke-sqlite sample17-pack-runtime-test-sqlite sample17-runtime-output-test-sqlite sample18-pack-runtime-test-sqlite sample18-runtime-output-test-sqlite sample18-http-runtime-smoke
 .PHONY: artifact-parity-capture-mysql artifact-parity-capture-sqlite artifact-parity-compare artifact-parity-test
 .PHONY: user-db-contract-capture-mysql user-db-contract-capture-sqlite user-db-contract-compare user-db-contract-test
 
@@ -177,6 +182,7 @@ DOCKER_ENV_TARGETS := \
 	sample15-runtime-output-test \
 	sample16-runtime-output-test \
 	sample17-runtime-output-test \
+	sample18-runtime-output-test \
 	sample9-output-test \
 	sample10-output-test \
 	sample11-output-test \
@@ -328,6 +334,8 @@ sample15-pack-runtime-test: sample15-runtime-output-test ## sample15 tutorial ru
 sample16-pack-runtime-test: sample16-runtime-output-test ## sample16 tutorial runtime の authenticated proxy integration test を実行する
 
 sample17-pack-runtime-test: sample17-runtime-output-test ## sample17 tutorial runtime の multi-output capstone integration test を実行する
+
+sample18-pack-runtime-test: sample18-runtime-output-test ## sample18 tutorial runtime の instruction-driven demo integration test を実行する
 
 pattern01-output-test: sample9-output-test ## pattern01 default-property-split の wrapper/base migration test を実行する
 
@@ -806,6 +814,36 @@ sample17-runtime-output-test-sqlite:
 		--run-script=$(SAMPLE17_SQLITE_RUN) \
 		--apply-pack-seed \
 		--phpunit-target=/var/www/tests/Integration/Sample17MultiOutputProjectTest.php
+
+sample18-runtime-output-test:
+	bash mtool/scripts/run_sample_pack_phpunit_test.sh \
+		--compose-file=$(SAMPLE18_COMPOSE_FILE) \
+		--run-script=$(SAMPLE18_RUN) \
+		--apply-pack-seed \
+		--phpunit-target=/var/www/tests/Integration/Sample18MiniTaskBoardDemoTest.php
+
+sample18-pack-runtime-test-sqlite: sample18-runtime-output-test-sqlite ## sample18 tutorial runtime を SQLite config store profile で実行する
+
+sample18-runtime-output-test-sqlite:
+	APP_CONFIG_STORE_DIR="$${APP_CONFIG_STORE_DIR:-work/tmp/config-store-sample18-sqlite-$$(date +%Y%m%d%H%M%S)}" SAMPLE_PACK_COMPOSE_LANE=base SAMPLE_PACK_INCLUDE_LIFECYCLE=0 bash mtool/scripts/run_sample_pack_phpunit_test.sh \
+		--compose-file=$(SAMPLE18_SQLITE_COMPOSE_FILE) \
+		--run-script=$(SAMPLE18_SQLITE_RUN) \
+		--apply-pack-seed \
+		--phpunit-target=/var/www/tests/Integration/Sample18MiniTaskBoardDemoTest.php
+
+sample18-http-runtime-smoke: ## sample18 task board demo page を HTTP route 経由で検証する
+	set -e; \
+	trap '$(SAMPLE18_RUN) reset >/dev/null 2>&1 || true' EXIT; \
+	KEEP_SAMPLE_STACK_RUNNING=1 bash mtool/scripts/run_sample_pack_phpunit_test.sh \
+		--compose-file=$(SAMPLE18_COMPOSE_FILE) \
+		--run-script=$(SAMPLE18_RUN) \
+		--apply-pack-seed \
+		--phpunit-target=/var/www/tests/Integration/Sample18MiniTaskBoardDemoTest.php; \
+	LAB_HTTP_PORT=18272 $(PHP) mtool/scripts/check_sample18_task_board_http_smoke.php \
+		--lab-base-url=http://127.0.0.1:18272 \
+		--lab-user="$${LAB_AUTH_STUB_USER:-lab-local}" \
+		--lab-password="$${LAB_AUTH_STUB_PASSWORD:-change-this-lab-password}" \
+		--pretty
 
 ARTIFACT_PARITY_RUN_ID ?= latest
 ARTIFACT_PARITY_ROOT := work/artifact-parity/$(ARTIFACT_PARITY_RUN_ID)

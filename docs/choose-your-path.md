@@ -83,7 +83,7 @@ make sample01-pack-runtime-test
 ```
 
 まず end-to-end の流れを 1 回通したいだけなら `sample01` で十分です。  
-DB Access の小さい CRUD flow まで見たい時は `make sample10-pack-runtime-test`、HTML Source Output まで見たい時は `make sample11-pack-runtime-test`、external DB source import まで見たい時は `make sample12-pack-runtime-test`、OpenAPI API surface まで見たい時は `make sample13-pack-runtime-test`、custom proxy runtime まで見たい時は `make sample14-pack-runtime-test`、project metadata bundle まで見たい時は `make sample15-pack-runtime-test`、authenticated proxy まで見たい時は `make sample16-pack-runtime-test`、multi-output capstone まで見たい時は `make sample17-pack-runtime-test` へ進みます。
+DB Access の小さい CRUD flow まで見たい時は `make sample10-pack-runtime-test`、HTML Source Output まで見たい時は `make sample11-pack-runtime-test`、external DB source import まで見たい時は `make sample12-pack-runtime-test`、OpenAPI API surface まで見たい時は `make sample13-pack-runtime-test`、custom proxy runtime まで見たい時は `make sample14-pack-runtime-test`、project metadata bundle まで見たい時は `make sample15-pack-runtime-test`、authenticated proxy まで見たい時は `make sample16-pack-runtime-test`、multi-output capstone まで見たい時は `make sample17-pack-runtime-test`、instruction-driven demo まで見たい時は `make sample18-pack-runtime-test` へ進みます。`sample18` の web-lab page まで触る場合は `make sample18-http-runtime-smoke` を使います。
 
 ### shared / external config DB につなぐ
 

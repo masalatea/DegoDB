@@ -49,6 +49,7 @@ require_once __DIR__ . '/lab_build_job_page.php';
 require_once __DIR__ . '/lab_build_job_api_page.php';
 require_once __DIR__ . '/lab_published_single_proxy_page.php';
 require_once __DIR__ . '/lab_swagger_page.php';
+require_once __DIR__ . '/lab_sample18_task_board_page.php';
 require_once __DIR__ . '/lab_endpoint_test_page.php';
 require_once __DIR__ . '/lab_endpoint_test_job_api_page.php';
 require_once __DIR__ . '/lab_compare_output_page.php';
@@ -274,6 +275,10 @@ function app_run_http_request(): void
 
             case 'lab_swagger':
                 app_render_lab_swagger_page($app, $request);
+                return;
+
+            case 'lab_sample18_task_board':
+                app_render_lab_sample18_task_board_page($app, $request);
                 return;
 
             case 'lab_endpoint':

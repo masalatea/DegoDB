@@ -82,7 +82,7 @@ detail doc だけを読んで mainline を再構成するのは current reading 
 - [Sample Tutorial Roadmap / sample 学習導線](sample-tutorial-roadmap.md)
   - tutorial sample を simple-to-complex に並べた正本
 - [Study Guide / sample で学ぶ](study/README.md)
-  - `sample01` から `sample17` を学習順に触るための guide
+  - `sample01` から `sample18` を学習順に触るための guide
 
 ## Task And Reference Guides
 

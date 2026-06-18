@@ -150,6 +150,12 @@ if [ "$lane" = "mysql" ]; then
   copy_output SAMPLE17 sample17-multi-output-project DBACCESS-PHP
   copy_output SAMPLE17 sample17-multi-output-project HTML-PAGE
   copy_output SAMPLE17 sample17-multi-output-project OPENAPI-JSON
+
+  run_target sample18-pack-runtime-test
+  copy_output SAMPLE18 sample18-mini-task-board-demo DATACLASS-PHP
+  copy_output SAMPLE18 sample18-mini-task-board-demo DBACCESS-PHP
+  copy_output SAMPLE18 sample18-mini-task-board-demo HTML-PAGE
+  copy_output SAMPLE18 sample18-mini-task-board-demo OPENAPI-JSON
 else
   run_target sample01-pack-runtime-test-sqlite
   copy_output SAMPLE1 sample01-simple-table-runtime DATACLASS-PHP
@@ -212,6 +218,12 @@ else
   copy_output SAMPLE17 sample17-multi-output-project DBACCESS-PHP
   copy_output SAMPLE17 sample17-multi-output-project HTML-PAGE
   copy_output SAMPLE17 sample17-multi-output-project OPENAPI-JSON
+
+  run_target sample18-pack-runtime-test-sqlite
+  copy_output SAMPLE18 sample18-mini-task-board-demo DATACLASS-PHP
+  copy_output SAMPLE18 sample18-mini-task-board-demo DBACCESS-PHP
+  copy_output SAMPLE18 sample18-mini-task-board-demo HTML-PAGE
+  copy_output SAMPLE18 sample18-mini-task-board-demo OPENAPI-JSON
 fi
 
 php "$REPO_ROOT/mtool/scripts/artifact_parity.php" manifest \

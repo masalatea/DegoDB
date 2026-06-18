@@ -1,11 +1,12 @@
 # Sample Tutorial Roadmap
 
 English companion:
-This roadmap defines the user-facing tutorial lane under `sample/tutorials/`. It explains the learning order from `sample01` through `sample17`, the design principles behind the packs, and the acceptance criteria for each stage.
+This roadmap defines the user-facing tutorial lane under `sample/tutorials/`. It explains the learning order from `sample01` through `sample18`, the design principles behind the packs, and the acceptance criteria for each stage.
 
 ## 目的
 
 - user-facing tutorial sample を `sample/tutorials/` に固定し、`sample01-*` から simple-to-complex に並べる。
+- instruction-driven demo sample も `sample/tutorials/` の後続番号に置き、AI が整理した prompt から作った動作 demo として扱う。
 - `DB 構造 -> import -> Data Class -> DB Access -> Source Output` という main flow に沿って、何をどの sample で学ぶかを明確にする。
 - rewrite / migration guard 用の `sample/internal-patterns/` を tutorial lane と混ぜず、役割を分離する。
 
@@ -47,6 +48,7 @@ This roadmap defines the user-facing tutorial lane under `sample/tutorials/`. It
 | `sample15-project-metadata-export-import` | current | project metadata export / import | project-core metadata bundle を export し、preview / apply で復元する最小 flow | `PROJECT-METADATA-BUNDLE` | `make sample15-pack-runtime-test` |
 | `sample16-authenticated-proxy` | current | authenticated proxy | ProjectToken authenticated single proxy server と fail-closed behavior を確認する最小 flow | `AUTH-PROXY-SERVER` | `make sample16-pack-runtime-test` |
 | `sample17-multi-output-project` | current | multi-output capstone | 1 project から DataClass / DBAccess / HTML / OpenAPI を publish する総合 flow | `DATACLASS-PHP`, `DBACCESS-PHP`, `HTML-PAGE`, `OPENAPI-JSON` | `make sample17-pack-runtime-test` |
+| `sample18-mini-task-board-demo` | current | instruction-driven task board demo | AI が整理した仮想 prompt から TaskCard demo を作り、CRUD DBAccess と HTML / OpenAPI を publish する。`web-lab` に sample page も持つ | `DATACLASS-PHP`, `DBACCESS-PHP`, `HTML-PAGE`, `OPENAPI-JSON` | `make sample18-pack-runtime-test` / `make sample18-http-runtime-smoke` |
 
 ## phase 分け
 
@@ -123,6 +125,16 @@ This roadmap defines the user-facing tutorial lane under `sample/tutorials/`. It
   - outputs は `DATACLASS-PHP`、`DBACCESS-PHP`、`HTML-PAGE`、`OPENAPI-JSON` に絞り、project metadata bundle / auth / HTTP browser smoke は既存 sample へ分ける。
   - checker は import / sync 後に 4 output を publish し、actual generated reference tree と一致することを検証する。
 
+### Phase 5. Instruction-driven demos
+
+- `sample18-mini-task-board-demo`
+  - 生の会話ログではなく、AI が sample 向けに整理した仮想 prompt から作る first demo とした。
+  - `TaskCard` 1 table と `GetTaskCardList` / `GetTaskCard` / `InsertTaskCard` / `UpdateTaskCard` / `CompleteTaskCard` の 5 function を使う。
+  - outputs は `DATACLASS-PHP`、`DBACCESS-PHP`、`HTML-PAGE`、`OPENAPI-JSON` とし、OpenAPI は read / write の 5 proxy path を含める。
+  - `web-lab` の `/samples/sample18-task-board` で、起動後に簡単な task board UI を触れるようにする。
+  - checker は import / sync 後に 4 output を publish し、actual generated reference tree と一致することを検証する。
+  - HTTP smoke は login、page 表示、task 作成、task 編集まで確認する。
+
 ## 各 sample の受け入れ条件
 
 - `README.md` に次を明記する。
@@ -151,5 +163,5 @@ This roadmap defines the user-facing tutorial lane under `sample/tutorials/`. It
 
 - `pattern01-14` は tutorial の代替ではなく、generator / migration contract を守る internal sample として扱う。
 - representative runtime project は引き続き `sample/legacy-projects/` に置き、tutorial numbering に混ぜない。
-- tutorial lane は `sample17` まで current とした。`sample18+` は必要になった時だけ user-facing tutorial として追加する。
+- tutorial lane は `sample18` まで current とした。`sample19+` は必要になった時だけ user-facing tutorial / demo として追加する。
 - `LanguageResource` / i18n tutorial は tool scope 外なので追加しない。

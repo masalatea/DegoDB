@@ -28,6 +28,7 @@ function app_sample_pack_category_map(): array
             'sample15-project-metadata-export-import',
             'sample16-authenticated-proxy',
             'sample17-multi-output-project',
+            'sample18-mini-task-board-demo',
         ],
         'internal-patterns' => [
             'pattern01-default-property-split',
@@ -101,6 +102,7 @@ function app_sample_pack_runtime_pack_names(): array
         'sample15-project-metadata-export-import',
         'sample16-authenticated-proxy',
         'sample17-multi-output-project',
+        'sample18-mini-task-board-demo',
         'sample51-runtime-sql-server',
         'sample53-runtime-whiteboard',
         'sample56-runtime-misc-proxy',
@@ -130,6 +132,7 @@ function app_sample_pack_project_key_map(): array
         'sample15-project-metadata-export-import' => 'SAMPLE15',
         'sample16-authenticated-proxy' => 'SAMPLE16',
         'sample17-multi-output-project' => 'SAMPLE17',
+        'sample18-mini-task-board-demo' => 'SAMPLE18',
         'sample51-runtime-sql-server' => 'SAMPLE2',
         'sample53-runtime-whiteboard' => 'SAMPLE4',
         'sample56-runtime-misc-proxy' => 'SAMPLE8',

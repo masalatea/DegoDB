@@ -44,6 +44,8 @@
   - `sample16-authenticated-proxy` の ProjectToken authenticated proxy output / fail-closed auth behavior / reference compare を一括検証する
 - `tests/Integration/Sample17MultiOutputProjectTest.php`
   - `sample17-multi-output-project` の DataClass / DBAccess / HTML / OpenAPI output publish と reference compare を一括検証する
+- `tests/Integration/Sample18MiniTaskBoardDemoTest.php`
+  - `sample18-mini-task-board-demo` の instruction-driven TaskCard demo output publish と reference compare を一括検証する
 - `tests/Integration/Sample9TestPatternDefaultPropertyOutputTest.php`
   - `pattern01-default-property-split` の legacy dataclass wrapper/base migration output を検証する
 - `tests/Integration/Sample10CompareOutputCompanionDeclarationsOutputTest.php`

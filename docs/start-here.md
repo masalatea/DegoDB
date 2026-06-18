@@ -126,7 +126,7 @@ Recommended questions:
 JSON 運用から DB 管理へ移行したい時は、初期構想に含まれる前段として [json-to-db-entrance.md](json-to-db-entrance.md) で design draft を作り、その後に existing DB / Lab DB / canonical metadata の mainline へ入ります。これは runtime 機能ではなく、設計準備の指示レイヤです。  
 何がどこに保存されるかは [storage-and-state-model.md](storage-and-state-model.md) を参照してください。
 
-最初の確認対象としては、`sample01-simple-table-runtime`、`sample10-dbaccess-mini-crud-flow`、`sample11-html-template-output`、`sample12-external-db-source-import`、`sample13-openapi-api-surface`、`sample14-custom-proxy-runtime`、`sample15-project-metadata-export-import`、`sample16-authenticated-proxy`、`sample17-multi-output-project` が読みやすいです。
+最初の確認対象としては、`sample01-simple-table-runtime`、`sample10-dbaccess-mini-crud-flow`、`sample11-html-template-output`、`sample12-external-db-source-import`、`sample13-openapi-api-surface`、`sample14-custom-proxy-runtime`、`sample15-project-metadata-export-import`、`sample16-authenticated-proxy`、`sample17-multi-output-project`、`sample18-mini-task-board-demo` が読みやすいです。
 sample を教材として読む順番は [study/README.md](study/README.md)、tutorial lane の正本は [sample-tutorial-roadmap.md](sample-tutorial-roadmap.md) にあります。
 
 ## 最初のコマンド
