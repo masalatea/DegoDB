@@ -31,6 +31,31 @@ final class Sample16AuthenticatedProxyTest extends TestCase
         self::assertFalse((bool) ($authCases['missing_env']['ok'] ?? true));
         self::assertFalse((bool) ($authCases['wrong_token']['ok'] ?? true));
         self::assertTrue((bool) ($authCases['matching_token']['ok'] ?? false));
+
+        $fileChecks = [];
+        foreach ($result['steps']['output']['file_checks'] ?? [] as $fileCheck) {
+            self::assertIsArray($fileCheck);
+            $fileChecks[(string) ($fileCheck['relative_path'] ?? '')] = $fileCheck;
+        }
+
+        self::assertTrue((bool) ($fileChecks['_support/runtime_dbclasses/_support/mtool_runtime_db.php']['ok'] ?? false));
+        self::assertTrue((bool) ($fileChecks['_support/runtime_dbclasses/base/dbaccess-AuthTaskBase.php']['ok'] ?? false));
+
+        $dbAccessBasePath = (string) ($result['steps']['output']['published']['published_root'] ?? '')
+            . '/_support/runtime_dbclasses/base/dbaccess-AuthTaskBase.php';
+        self::assertFileExists($dbAccessBasePath);
+        $dbAccessBase = file_get_contents($dbAccessBasePath);
+        self::assertIsString($dbAccessBase);
+        self::assertStringContainsString('$mtooldb->execute($last_sql_command_for_mtooldb, [', $dbAccessBase);
+        self::assertStringContainsString('where `AuthTask`.`Id` = ?', $dbAccessBase);
+
+        $autoloadPath = (string) ($result['steps']['output']['published']['published_root'] ?? '')
+            . '/_support/runtime_dbclasses/autoload_proxy_runtime.php';
+        self::assertFileExists($autoloadPath);
+        $autoloadText = file_get_contents($autoloadPath);
+        self::assertIsString($autoloadText);
+        self::assertStringContainsString("require_once __DIR__ . '/_support/mtool_runtime_db.php';", $autoloadText);
+        self::assertStringNotContainsString('function connect_mtooldb_if_not_yet(): void', $autoloadText);
     }
 
     private function failureMessageFromResult(array $result): string

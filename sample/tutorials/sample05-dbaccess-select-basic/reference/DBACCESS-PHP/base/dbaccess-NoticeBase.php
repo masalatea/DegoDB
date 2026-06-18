@@ -7,6 +7,9 @@
 // Generated from canonical DB Access metadata.
 // Base class generated from project_db_access_* metadata.
 
+require_once __DIR__ . '/../_support/mtool_runtime_db.php';
+
+
 class NoticeDBAccessBase
 {
     public function __construct()
@@ -22,8 +25,9 @@ class NoticeDBAccessBase
 
         $result = array();
 
-        $last_sql_command_for_mtooldb = 'select Notice.Id, Notice.Title, Notice.Body, Notice.SortOrder from Notice' . ' order by Notice.SortOrder, Notice.Id';
-        $ret = $mtooldb->query($last_sql_command_for_mtooldb);
+        $last_sql_command_for_mtooldb = 'select Notice.Id, Notice.Title, Notice.Body, Notice.SortOrder from Notice order by Notice.SortOrder, Notice.Id';
+        $ret = $mtooldb->execute($last_sql_command_for_mtooldb, [
+        ]);
         if ($mtooldb->errno != 0) {
             error_log("Error occured while executing SQL: " . $mtooldb->error . " in " . __FILE__ . " on line " . __LINE__);
             return $ret;

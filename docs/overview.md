@@ -15,12 +15,15 @@ This is the concept-level overview of the tool. It explains the core flow from D
 - ただし DB 構造そのものを決める作業は、このツールのスコープ外である。
 - まず要求に沿って DB の table / column 構造を決め、その後にこのツールへ import する。
 - import 後は、その設計情報を canonical metadata として管理し、Data Class、DB Access、Source Output の生成へつなげる。
+- JSON file / JSON API cache / JSON config から始める場合は、初期構想に含まれる optional pre-design entrance として [json-to-db-entrance.md](json-to-db-entrance.md) を使う。
+- この optional entrance は DegoDB の起点を JSON に変えるものではなく、AI / 技術者が JSON と現行処理を読んで DB 設計案へ翻訳するための指示レイヤである。
 
 ## 基本フロー
 
 1. ツールの外で DB 構造を決める。
    - 要求に応じて table / column / key / relation を決める。
    - ツール都合の制約を多少考慮することはあっても、起点はあくまで DB 構造である。
+   - 既存データが JSON しかない場合は、[JSON To DB Entrance](json-to-db-entrance.md) で `JSON to DB Design Draft` を作ってからこの step に入る。
 2. DB 設計情報を import する。
    - 取り込み先は `dbtable` / `dbtablecolumns` である。
    - ここで初めてツールが設計情報を扱える状態になる。

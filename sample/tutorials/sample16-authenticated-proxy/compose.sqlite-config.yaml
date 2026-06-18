@@ -1,0 +1,11 @@
+name: mtool-sample-sample16-authenticated-proxy-sqlite
+
+services:
+  web-admin:
+    environment:
+      APP_WORK_ROOT: /var/www/work/sample-packs/sample16-authenticated-proxy-sqlite
+
+  web-lab:
+    environment:
+      APP_WORK_ROOT: /var/www/work/sample-packs/sample16-authenticated-proxy-sqlite
+      MTOOL_PROXY_PROJECT_TOKEN: sample16-token

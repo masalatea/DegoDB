@@ -114,6 +114,7 @@ if [ -n "$compose_file" ]; then
 fi
 
 compose_stack_args=()
+compose_lane="${SAMPLE_PACK_COMPOSE_LANE:-local}"
 case "$scenario" in
   base)
     ;;
@@ -135,7 +136,7 @@ while IFS= read -r resolved_compose_file; do
   [ -n "$resolved_compose_file" ] || continue
   compose_cmd+=(-f "$resolved_compose_file")
 done < <(
-  bash "$REPO_ROOT/mtool/scripts/list_compose_stack_files.sh" "${compose_stack_args[@]}"
+  bash "$REPO_ROOT/mtool/scripts/list_compose_stack_files.sh" "--lane=$compose_lane" "${compose_stack_args[@]}"
 )
 
 seed_files=()
@@ -227,6 +228,34 @@ fi
 if [ "${#seed_files[@]}" -eq 0 ]; then
   echo "no sample seed files found" >&2
   exit 1
+fi
+
+config_store_driver="$("${compose_cmd[@]}" exec -T web-admin php -r 'require "/var/www/mtool/app/config.php"; $app = app_load_config(); echo $app["config_db"]["driver"] ?? "mysql";' 2>/dev/null || echo mysql)"
+if [ "$config_store_driver" = "sqlite" ]; then
+  container_seed_files=()
+  for seed_file in "${seed_files[@]}"; do
+    seed_file_abs="$seed_file"
+    if [ "${seed_file_abs#/}" = "$seed_file_abs" ]; then
+      seed_file_abs="$REPO_ROOT/$seed_file_abs"
+    fi
+
+    case "$seed_file_abs" in
+      "$REPO_ROOT"/*)
+        container_seed_files+=("/var/www/${seed_file_abs#"$REPO_ROOT"/}")
+        ;;
+      *)
+        echo "SQLite sample seed must be under repo root: $seed_file" >&2
+        exit 1
+        ;;
+    esac
+  done
+
+  printf 'applying sample seed [sqlite:%s]: %s\n' "$scenario" "${container_seed_files[*]}"
+  "${compose_cmd[@]}" exec -T web-admin php /var/www/mtool/scripts/apply_config_sample_seed_sqlite.php \
+    --requested-by=apply_config_sample_seed.sh \
+    "${container_seed_files[@]}"
+  echo "applied ${#seed_files[@]} sample seed file(s)"
+  exit 0
 fi
 
 for seed_file in "${seed_files[@]}"; do

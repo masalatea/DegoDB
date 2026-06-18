@@ -29,6 +29,19 @@ make sample10-pack-runtime-test
 
 `sample10-pack-runtime-test` は container 内 PHPUnit で `tests/Integration/Sample10DbAccessMiniCrudFlowOutputTest.php` を実行します。
 
+SQLite config store profile で同じ tutorial を検証:
+
+```bash
+make sample10-pack-runtime-test-sqlite
+```
+
+手元で軽く動かす場合は、DegoDB 自身の設計メタデータを `APP_CONFIG_STORE_DIR` 配下の SQLite file に保存できます。これは tutorial の user / Lab DB とは別です。
+
+```bash
+APP_CONFIG_STORE_DIR=work/config-store-sample10-sqlite \
+  ./sample/tutorials/sample10-dbaccess-mini-crud-flow/run-sqlite-config.sh up
+```
+
 seed される代表 row:
 
 - `SupportTicket`

@@ -5,6 +5,15 @@ declare(strict_types=1);
 require_once __DIR__ . '/database.php';
 require_once __DIR__ . '/domain_validation.php';
 
+function app_custom_proxy_pdo_datetime_select_expr(array $app, string $columnExpression, string $alias = 'updated_at'): string
+{
+    return app_sql_datetime_select_expr(
+        app_sql_dialect_from_db_config(app_database_config($app, 'config_db')),
+        $columnExpression,
+        $alias,
+    );
+}
+
 function app_pdo_fetch_project_custom_proxy_catalog(array $app, string $projectKey): array
 {
     try {
@@ -20,7 +29,7 @@ function app_pdo_fetch_project_custom_proxy_catalog(array $app, string $projectK
                 cp.continue_even_if_failed_to_insert,
                 cp.notes,
                 cp.source_of_truth,
-                DATE_FORMAT(cp.updated_at, "%Y-%m-%d %H:%i:%s") AS updated_at,
+                ' . app_custom_proxy_pdo_datetime_select_expr($app, 'cp.updated_at') . ',
                 COUNT(DISTINCT cps.id) AS step_count,
                 COUNT(DISTINCT cpt.id) AS target_count
             FROM project_custom_proxies AS cp
@@ -88,7 +97,7 @@ function app_pdo_fetch_project_custom_proxy_item(array $app, string $projectKey,
                 cp.continue_even_if_failed_to_insert,
                 cp.notes,
                 cp.source_of_truth,
-                DATE_FORMAT(cp.updated_at, "%Y-%m-%d %H:%i:%s") AS updated_at,
+                ' . app_custom_proxy_pdo_datetime_select_expr($app, 'cp.updated_at') . ',
                 COUNT(DISTINCT cps.id) AS step_count,
                 COUNT(DISTINCT cpt.id) AS target_count
             FROM project_custom_proxies AS cp
@@ -404,7 +413,7 @@ function app_pdo_fetch_project_custom_proxy_step_catalog(array $app, string $pro
                 cps.step_order,
                 cps.notes,
                 cps.source_of_truth,
-                DATE_FORMAT(cps.updated_at, "%Y-%m-%d %H:%i:%s") AS updated_at
+                ' . app_custom_proxy_pdo_datetime_select_expr($app, 'cps.updated_at') . '
             FROM project_custom_proxy_steps AS cps
             INNER JOIN project_custom_proxies AS cp
                 ON cp.id = cps.custom_proxy_id
@@ -659,10 +668,14 @@ function app_pdo_reset_project_custom_proxy_step_order(
         $projectId = app_custom_proxy_pdo_resolve_project_id($pdo, $projectKey);
         $customProxyId = app_custom_proxy_pdo_resolve_custom_proxy_id($pdo, $projectId, $customProxyKey);
 
+        $stepOrderResetExpression = app_sql_dialect_from_db_config(app_database_config($app, 'config_db')) === 'sqlite'
+            ? '100'
+            : 'DEFAULT(step_order)';
+
         $statement = $pdo->prepare(
             'UPDATE project_custom_proxy_steps
             SET
-                step_order = DEFAULT(step_order),
+                step_order = ' . $stepOrderResetExpression . ',
                 updated_at = CURRENT_TIMESTAMP
             WHERE custom_proxy_id = :custom_proxy_id'
         );

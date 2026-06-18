@@ -408,6 +408,30 @@ function app_project_table_import_source_named_live_schema(
         }
 
         $pdo = app_create_pdo_from_db_config($dbConfig);
+        if (app_sql_dialect_from_db_config($dbConfig) === 'sqlite') {
+            $tables = app_project_table_import_source_tables_from_sqlite($pdo);
+            $schemaName = app_sql_current_database_name($pdo);
+
+            return [
+                'ok' => true,
+                'source_key' => $sourceDefinition['key'],
+                'source_label' => $sourceDefinition['label'],
+                'source_description' => $sourceDefinition['description'],
+                'source_schema_name' => $schemaName,
+                'apply_supported' => $sourceDefinition['apply_supported'],
+                'managed_target_table_names' => app_project_table_import_live_schema_managed_target_table_names(
+                    $app,
+                    $normalizedProjectKey,
+                    $sourceDefinition['key'],
+                    $schemaName,
+                    $tables,
+                ),
+                'compare_against_all_canonical' => false,
+                'tables' => $tables,
+                'error' => '',
+            ];
+        }
+
         $statement = $pdo->prepare(
             'SELECT
                 c.TABLE_NAME,
@@ -465,6 +489,89 @@ function app_project_table_import_source_named_live_schema(
             'error' => $throwable->getMessage(),
         ];
     }
+}
+
+/**
+ * @return list<array{
+ *     name:string,
+ *     columns:list<array{
+ *         name:string,
+ *         datatype:string,
+ *         is_null:string,
+ *         is_key:string,
+ *         is_default:string,
+ *         extra:string,
+ *         column_list_order:int
+ *     }>,
+ *     columns_by_name:array<string,array{
+ *         name:string,
+ *         datatype:string,
+ *         is_null:string,
+ *         is_key:string,
+ *         is_default:string,
+ *         extra:string,
+ *         column_list_order:int
+ *     }>
+ * }>
+ */
+function app_project_table_import_source_tables_from_sqlite(PDO $pdo): array
+{
+    $tableRows = $pdo->query(
+        "SELECT name
+         FROM sqlite_schema
+         WHERE type = 'table'
+           AND name NOT LIKE 'sqlite_%'
+         ORDER BY name",
+    )->fetchAll();
+    $tables = [];
+
+    foreach ($tableRows as $tableRow) {
+        if (!is_array($tableRow)) {
+            continue;
+        }
+
+        $tableName = trim((string) ($tableRow['name'] ?? ''));
+        if ($tableName === '') {
+            continue;
+        }
+
+        $columns = [];
+        $columnsByName = [];
+        $columnRows = $pdo->query('PRAGMA table_info(' . app_sql_identifier('sqlite', $tableName) . ')')->fetchAll();
+        foreach ($columnRows as $columnRow) {
+            if (!is_array($columnRow)) {
+                continue;
+            }
+
+            $columnName = trim((string) ($columnRow['name'] ?? ''));
+            if ($columnName === '') {
+                continue;
+            }
+
+            $type = trim((string) ($columnRow['type'] ?? ''));
+            $isPrimary = (int) ($columnRow['pk'] ?? 0) > 0;
+            $isNotNull = (int) ($columnRow['notnull'] ?? 0) > 0 || $isPrimary;
+            $column = [
+                'name' => $columnName,
+                'datatype' => $type !== '' ? $type : 'TEXT',
+                'is_null' => $isNotNull ? 'NO' : 'YES',
+                'is_key' => $isPrimary ? 'PRI' : '',
+                'is_default' => app_project_table_import_source_default_string($columnRow['dflt_value'] ?? null),
+                'extra' => $isPrimary && strtoupper($type) === 'INTEGER' ? 'auto_increment' : '',
+                'column_list_order' => ((int) ($columnRow['cid'] ?? 0)) + 1,
+            ];
+            $columns[] = $column;
+            $columnsByName[$columnName] = $column;
+        }
+
+        $tables[] = [
+            'name' => $tableName,
+            'columns' => $columns,
+            'columns_by_name' => $columnsByName,
+        ];
+    }
+
+    return $tables;
 }
 
 /**

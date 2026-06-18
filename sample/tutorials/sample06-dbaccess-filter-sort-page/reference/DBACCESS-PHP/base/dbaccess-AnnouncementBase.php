@@ -7,6 +7,9 @@
 // Generated from canonical DB Access metadata.
 // Base class generated from project_db_access_* metadata.
 
+require_once __DIR__ . '/../_support/mtool_runtime_db.php';
+
+
 class AnnouncementDBAccessBase
 {
     public function __construct()
@@ -22,8 +25,11 @@ class AnnouncementDBAccessBase
 
         $result = array();
 
-        $last_sql_command_for_mtooldb = 'select Announcement.Id, Announcement.Title, Announcement.Status, Announcement.PublishedAt from Announcement' . ' where ' . 'Announcement.Status = ' . '\'' . $mtooldb->real_escape_string($param_Announcement_Status_where) . '\'' . ' order by Announcement.PublishedAt desc, Announcement.Id desc' . ' limit ' . $limit;
-        $ret = $mtooldb->query($last_sql_command_for_mtooldb);
+        $last_sql_command_for_mtooldb = 'select Announcement.Id, Announcement.Title, Announcement.Status, Announcement.PublishedAt from Announcement where Announcement.Status = ? order by Announcement.PublishedAt desc, Announcement.Id desc limit ?';
+        $ret = $mtooldb->execute($last_sql_command_for_mtooldb, [
+            $param_Announcement_Status_where,
+            $limit,
+        ]);
         if ($mtooldb->errno != 0) {
             error_log("Error occured while executing SQL: " . $mtooldb->error . " in " . __FILE__ . " on line " . __LINE__);
             return $ret;

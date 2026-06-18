@@ -21,6 +21,7 @@ RUN apt-get update \
         php8.4-common \
         php8.4-mbstring \
         php8.4-mysql \
+        php8.4-sqlite3 \
         php8.4-xml \
         phpunit \
     && a2enmod rewrite \

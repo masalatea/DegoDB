@@ -84,6 +84,210 @@ function app_config_db_bootstrap_admin_metadata_routing_warning(): string
 /**
  * @return list<string>
  */
+function app_config_db_bootstrap_split_sql_statements(string $sql): array
+{
+    $statements = [];
+    $current = '';
+    $quote = '';
+    $length = strlen($sql);
+
+    for ($index = 0; $index < $length; $index++) {
+        $char = $sql[$index];
+        $current .= $char;
+
+        if (($char === "'" || $char === '"') && ($index === 0 || $sql[$index - 1] !== '\\')) {
+            if ($quote === '') {
+                $quote = $char;
+            } elseif ($quote === $char) {
+                $quote = '';
+            }
+        }
+
+        if ($char === ';' && $quote === '') {
+            $trimmed = trim($current);
+            if ($trimmed !== '') {
+                $statements[] = rtrim($trimmed, ';');
+            }
+            $current = '';
+        }
+    }
+
+    $trimmed = trim($current);
+    if ($trimmed !== '') {
+        $statements[] = rtrim($trimmed, ';');
+    }
+
+    return $statements;
+}
+
+/**
+ * @return list<string>
+ */
+function app_config_db_bootstrap_split_top_level_csv(string $input): array
+{
+    $items = [];
+    $current = '';
+    $quote = '';
+    $depth = 0;
+    $length = strlen($input);
+
+    for ($index = 0; $index < $length; $index++) {
+        $char = $input[$index];
+
+        if (($char === "'" || $char === '"') && ($index === 0 || $input[$index - 1] !== '\\')) {
+            if ($quote === '') {
+                $quote = $char;
+            } elseif ($quote === $char) {
+                $quote = '';
+            }
+        }
+
+        if ($quote === '') {
+            if ($char === '(') {
+                $depth++;
+            } elseif ($char === ')' && $depth > 0) {
+                $depth--;
+            } elseif ($char === ',' && $depth === 0) {
+                $trimmed = trim($current);
+                if ($trimmed !== '') {
+                    $items[] = $trimmed;
+                }
+                $current = '';
+                continue;
+            }
+        }
+
+        $current .= $char;
+    }
+
+    $trimmed = trim($current);
+    if ($trimmed !== '') {
+        $items[] = $trimmed;
+    }
+
+    return $items;
+}
+
+function app_config_db_bootstrap_sqlite_convert_column_definition(string $definition): string
+{
+    $converted = preg_replace('/\s+AFTER\s+[A-Za-z0-9_]+$/i', '', trim($definition));
+    if (!is_string($converted)) {
+        $converted = trim($definition);
+    }
+    $converted = preg_replace('/\s+ON\s+UPDATE\s+CURRENT_TIMESTAMP/i', '', $converted);
+    if (!is_string($converted)) {
+        $converted = trim($definition);
+    }
+
+    if (preg_match('/^([A-Za-z0-9_]+)\s+BIGINT\s+UNSIGNED\s+NOT\s+NULL\s+AUTO_INCREMENT$/i', $converted, $matches) === 1) {
+        return $matches[1] . ' INTEGER PRIMARY KEY AUTOINCREMENT';
+    }
+
+    $replacements = [
+        '/\bBIGINT\s+UNSIGNED\b/i' => 'INTEGER',
+        '/\bINT\s+UNSIGNED\b/i' => 'INTEGER',
+        '/\bTINYINT\s*\(\s*1\s*\)/i' => 'INTEGER',
+        '/\bVARCHAR\s*\(\s*\d+\s*\)/i' => 'TEXT',
+        '/\bMEDIUMTEXT\b/i' => 'TEXT',
+        '/\bDATETIME\b/i' => 'TEXT',
+        '/\bTIMESTAMP\b/i' => 'TEXT',
+        '/\bINT\b/i' => 'INTEGER',
+    ];
+
+    foreach ($replacements as $pattern => $replacement) {
+        $next = preg_replace($pattern, $replacement, $converted);
+        if (is_string($next)) {
+            $converted = $next;
+        }
+    }
+
+    if (preg_match('/^(IsNull)\b/', $converted, $matches) === 1) {
+        $converted = '"' . $matches[1] . '"' . substr($converted, strlen($matches[1]));
+    }
+
+    return $converted;
+}
+
+function app_config_db_bootstrap_sqlite_convert_create_table_statement(string $statement): string
+{
+    if (preg_match('/^CREATE\s+TABLE\s+(?:IF\s+NOT\s+EXISTS\s+)?([A-Za-z0-9_]+)\s*\((.*)\)\s*ENGINE\s*=/is', trim($statement), $matches) !== 1) {
+        throw new RuntimeException('SQLite schema へ変換できない CREATE TABLE です。');
+    }
+
+    $tableName = $matches[1];
+    $entries = app_config_db_bootstrap_split_top_level_csv($matches[2]);
+    $autoIncrementColumns = [];
+    foreach ($entries as $entry) {
+        if (preg_match('/^([A-Za-z0-9_]+)\s+BIGINT\s+UNSIGNED\s+NOT\s+NULL\s+AUTO_INCREMENT/i', $entry, $columnMatches) === 1) {
+            $autoIncrementColumns[] = $columnMatches[1];
+        }
+    }
+
+    $convertedEntries = [];
+    foreach ($entries as $entry) {
+        $normalized = ltrim($entry);
+        if (preg_match('/^(UNIQUE\s+KEY|KEY|CONSTRAINT|FOREIGN\s+KEY)\b/i', $normalized) === 1) {
+            continue;
+        }
+        if (preg_match('/^PRIMARY\s+KEY\s*\(\s*([A-Za-z0-9_]+)\s*\)$/i', $normalized, $primaryMatches) === 1
+            && in_array($primaryMatches[1], $autoIncrementColumns, true)
+        ) {
+            continue;
+        }
+
+        if (preg_match('/^PRIMARY\s+KEY\b/i', $normalized) === 1) {
+            $convertedEntries[] = $normalized;
+            continue;
+        }
+
+        $convertedEntries[] = app_config_db_bootstrap_sqlite_convert_column_definition($normalized);
+    }
+
+    return sprintf(
+        "CREATE TABLE IF NOT EXISTS %s (\n    %s\n)",
+        $tableName,
+        implode(",\n    ", $convertedEntries),
+    );
+}
+
+/**
+ * @return list<string>
+ */
+function app_config_db_bootstrap_sqlite_prepare_statement(PDO $pdo, string $statement): array
+{
+    $trimmed = trim(preg_replace('/^\s*--.*$/m', '', $statement) ?? $statement);
+    if ($trimmed === '') {
+        return [];
+    }
+
+    if (preg_match('/^CREATE\s+TABLE\b/i', $trimmed) === 1) {
+        return [app_config_db_bootstrap_sqlite_convert_create_table_statement($trimmed)];
+    }
+
+    if (preg_match('/^ALTER\s+TABLE\s+([A-Za-z0-9_]+)\s+ADD\s+COLUMN\s+IF\s+NOT\s+EXISTS\s+(.+)$/is', $trimmed, $matches) === 1) {
+        $tableName = $matches[1];
+        $columnDefinition = app_config_db_bootstrap_sqlite_convert_column_definition($matches[2]);
+        $columnName = strtok($columnDefinition, " \t\r\n");
+        if (is_string($columnName)) {
+            $columnName = trim($columnName, '"');
+        }
+        if (!is_string($columnName) || $columnName === '' || app_sql_column_exists($pdo, $tableName, $columnName)) {
+            return [];
+        }
+
+        return ['ALTER TABLE ' . $tableName . ' ADD COLUMN ' . $columnDefinition];
+    }
+
+    if (preg_match('/^(DROP\s+INDEX|ALTER\s+TABLE\s+[A-Za-z0-9_]+\s+DROP\s+COLUMN)\b/i', $trimmed) === 1) {
+        return [];
+    }
+
+    return [$trimmed];
+}
+
+/**
+ * @return list<string>
+ */
 function app_config_db_bootstrap_required_tables(): array
 {
     return [
@@ -180,36 +384,12 @@ function app_config_db_bootstrap_sql_files(string $sqlDir): array
 
 function app_config_db_bootstrap_pdo_table_exists(PDO $pdo, string $tableName): bool
 {
-    $statement = $pdo->prepare(
-        'SELECT 1
-        FROM information_schema.tables
-        WHERE table_schema = DATABASE()
-          AND table_name = :table_name
-        LIMIT 1'
-    );
-    $statement->execute([
-        ':table_name' => $tableName,
-    ]);
-
-    return $statement->fetchColumn() !== false;
+    return app_sql_table_exists($pdo, $tableName);
 }
 
 function app_config_db_bootstrap_pdo_column_exists(PDO $pdo, string $tableName, string $columnName): bool
 {
-    $statement = $pdo->prepare(
-        'SELECT 1
-        FROM information_schema.columns
-        WHERE table_schema = DATABASE()
-          AND table_name = :table_name
-          AND column_name = :column_name
-        LIMIT 1'
-    );
-    $statement->execute([
-        ':table_name' => $tableName,
-        ':column_name' => $columnName,
-    ]);
-
-    return $statement->fetchColumn() !== false;
+    return app_sql_column_exists($pdo, $tableName, $columnName);
 }
 
 /**
@@ -258,10 +438,13 @@ function app_config_db_bootstrap_preflight(array $app, array $options = []): arr
         ? app_config_db_bootstrap_admin_db_matches_config_db($app)
         : true;
     $targetMode = app_config_db_bootstrap_target_mode($configDb);
+    $dialect = app_sql_dialect_from_db_config($configDb);
     $warnings = [];
 
     if ($targetMode !== 'compose-local-service') {
-        $warnings[] = 'config DB target は local compose 既定値ではありません。target DB に current initdb を適用してから使ってください。';
+        $warnings[] = $dialect === 'sqlite'
+            ? 'config DB target は folder-backed SQLite です。空の SQLite store は初回 bootstrap 時に current initdb から自動作成されます。'
+            : 'config DB target は local compose 既定値ではありません。target DB に current initdb を適用してから使ってください。';
     }
     if (!is_dir($resolvedSqlDir)) {
         $warnings[] = 'config-initdb directory が見つかりません: ' . $resolvedSqlDir;
@@ -296,8 +479,8 @@ function app_config_db_bootstrap_preflight(array $app, array $options = []): arr
 
     try {
         $pdo = app_create_config_pdo($app);
-        $version = $pdo->query('SELECT VERSION()')->fetchColumn();
-        $databaseName = $pdo->query('SELECT DATABASE()')->fetchColumn();
+        $version = app_sql_server_version($pdo);
+        $databaseName = app_sql_current_database_name($pdo);
         $missingTables = [];
         foreach (app_config_db_bootstrap_required_tables() as $tableName) {
             if (!app_config_db_bootstrap_pdo_table_exists($pdo, $tableName)) {
@@ -323,8 +506,8 @@ function app_config_db_bootstrap_preflight(array $app, array $options = []): arr
             }
         }
 
-        $summary['version'] = is_string($version) ? $version : '';
-        $summary['resolved_database_name'] = is_string($databaseName) ? $databaseName : '';
+        $summary['version'] = $version;
+        $summary['resolved_database_name'] = $databaseName;
         $summary['missing_table_count'] = count($missingTables);
         $summary['missing_column_count'] = count($missingColumns);
         $summary['unexpected_legacy_column_count'] = count($unexpectedLegacyColumns);
@@ -397,6 +580,7 @@ function app_config_db_bootstrap_preflight(array $app, array $options = []): arr
 function app_config_db_bootstrap_apply(array $app, array $options = []): array
 {
     $configDb = app_database_config($app, 'config_db');
+    $dialect = app_sql_dialect_from_db_config($configDb);
     $resolvedSqlDir = app_config_db_bootstrap_resolve_sql_dir((string) ($options['sql_dir'] ?? ''));
     $sqlFiles = app_config_db_bootstrap_sql_files($resolvedSqlDir);
     $site = trim((string) ($app['site'] ?? ''));
@@ -446,8 +630,11 @@ function app_config_db_bootstrap_apply(array $app, array $options = []): array
 
     try {
         $pdo = app_create_config_pdo($app);
-        $version = $pdo->query('SELECT VERSION()')->fetchColumn();
-        $databaseName = $pdo->query('SELECT DATABASE()')->fetchColumn();
+        if ($dialect === 'sqlite') {
+            $pdo->exec('PRAGMA foreign_keys = ON');
+        }
+        $version = app_sql_server_version($pdo);
+        $databaseName = app_sql_current_database_name($pdo);
         $appliedFiles = [];
 
         foreach ($sqlFiles as $sqlFile) {
@@ -460,6 +647,20 @@ function app_config_db_bootstrap_apply(array $app, array $options = []): array
                 continue;
             }
 
+            if ($dialect === 'sqlite') {
+                $appliedStatementCount = 0;
+                foreach (app_config_db_bootstrap_split_sql_statements($contents) as $statement) {
+                    foreach (app_config_db_bootstrap_sqlite_prepare_statement($pdo, $statement) as $sqliteStatement) {
+                        $pdo->exec($sqliteStatement);
+                        $appliedStatementCount++;
+                    }
+                }
+                if ($appliedStatementCount > 0) {
+                    $appliedFiles[] = basename($sqlFile);
+                }
+                continue;
+            }
+
             $pdo->exec($contents);
             $appliedFiles[] = basename($sqlFile);
         }
@@ -467,8 +668,8 @@ function app_config_db_bootstrap_apply(array $app, array $options = []): array
         $postPreflight = app_config_db_bootstrap_preflight($app, [
             'sql_dir' => $resolvedSqlDir,
         ]);
-        $summary['version'] = is_string($version) ? $version : '';
-        $summary['resolved_database_name'] = is_string($databaseName) ? $databaseName : '';
+        $summary['version'] = $version;
+        $summary['resolved_database_name'] = $databaseName;
         $summary['applied_file_count'] = count($appliedFiles);
         $summary['schema_current'] = (bool) ($postPreflight['summary']['schema_current'] ?? false);
         $warnings = array_values(array_unique(array_merge(

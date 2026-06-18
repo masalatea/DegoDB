@@ -26,6 +26,10 @@ top-level `docs/` の入口から個別 internal doc へ直接飛ぶのではな
 
 - [AI Operator Contract / AI operator contract](ai-operator-contract.md)
   - AI / contributor の再開順、checkpoint、handoff payload を固定する
+- [JSON To DB AI Contract / JSON から DB 設計案を作る AI contract](json-to-db-ai-contract.md)
+  - JSON sample と現行処理説明から DegoDB-ready な DB design draft を作る時の最低実行 contract
+- [AI Generation Review / AI 生成可否レビュー](ai-generation-review.md)
+  - Mtool generator、継承先 class、custom runtime、manual repository のどこに実装すべきかを AI が分類するための contract
 - [Repo Boundaries / repository 境界](repo-boundaries.md)
   - root directory ごとの durable / disposable / host-side reference boundary を整理する
 

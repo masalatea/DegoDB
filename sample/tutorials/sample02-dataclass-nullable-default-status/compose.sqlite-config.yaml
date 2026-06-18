@@ -1,0 +1,10 @@
+name: mtool-sample-sample02-dataclass-nullable-default-status-sqlite
+
+services:
+  web-admin:
+    environment:
+      APP_WORK_ROOT: /var/www/work/sample-packs/sample02-dataclass-nullable-default-status-sqlite
+
+  web-lab:
+    environment:
+      APP_WORK_ROOT: /var/www/work/sample-packs/sample02-dataclass-nullable-default-status-sqlite

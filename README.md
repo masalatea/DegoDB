@@ -20,6 +20,9 @@ This repository currently focuses on the workflow:
 Database Schema -> Import -> Data Class -> DB Access -> Source Output  
 DB 構造 -> Import -> Data Class -> DB Access -> Source Output
 
+Original concept note: users who only have JSON files, JSON API cache, or JSON config can use [JSON To DB Entrance / JSON から DB 設計へ入る入口](docs/json-to-db-entrance.md) as an AI-assisted preparation layer. This is documentation and design guidance, not a JSON auto-import feature.  
+初期構想の補足: JSON file、JSON API cache、JSON config しかまだ持っていない利用者は、AI-assisted な準備 layer として [JSON To DB Entrance / JSON から DB 設計へ入る入口](docs/json-to-db-entrance.md) を使えます。これは documentation と設計指針であり、JSON 自動 import 機能ではありません。
+
 ## How to Read This / 文書の読み方
 
 The documentation in this repository is intended to be read in the following three layers.  
@@ -30,6 +33,7 @@ The documentation in this repository is intended to be read in the following thr
    - [Start Here / 最初の入口](docs/start-here.md)
    - [Choose Your Path / 目的別の読み方](docs/choose-your-path.md)
 2. Golden path layer / ゴールデンパス layer
+   - [JSON To DB Entrance / JSON から DB 設計へ入る入口](docs/json-to-db-entrance.md) optional pre-design entrance
    - [Existing DB To Output / 既存 DB から出力まで](docs/existing-db-to-output.md)
    - [Common Tasks / よく使う作業](docs/common-tasks.md)
    - [Current Supported Workflow / 現在サポートするワークフロー](docs/current-supported-workflow.md)
@@ -52,15 +56,16 @@ Do not reconstruct the mainline by reading the detail docs first. Choose a readi
 1. [Quickstart / まず動かしてみる](docs/quickstart.md)
 2. [Start Here / 最初の入口](docs/start-here.md)
 3. [Choose Your Path / 目的別の読み方](docs/choose-your-path.md)
-4. [Existing DB To Output / 既存 DB から出力まで](docs/existing-db-to-output.md)
-5. [Common Tasks / よく使う作業](docs/common-tasks.md)
-6. [Current Supported Workflow / 現在サポートするワークフロー](docs/current-supported-workflow.md)
-7. [Concept Overview / 概念概要](docs/overview.md)
-8. [Sample Tutorial Roadmap / sample 学習導線](docs/sample-tutorial-roadmap.md)
-9. [Study Guide / sample で学ぶ](docs/study/README.md)
-10. [Troubleshooting / トラブルシューティング](docs/troubleshooting.md)
-11. [Storage And State Model / 保存先と状態モデル](docs/storage-and-state-model.md)
-12. [Internal Documentation Index / 内部ドキュメント索引](docs/internal/README.md)
+4. [JSON To DB Entrance / JSON から DB 設計へ入る入口](docs/json-to-db-entrance.md) optional
+5. [Existing DB To Output / 既存 DB から出力まで](docs/existing-db-to-output.md)
+6. [Common Tasks / よく使う作業](docs/common-tasks.md)
+7. [Current Supported Workflow / 現在サポートするワークフロー](docs/current-supported-workflow.md)
+8. [Concept Overview / 概念概要](docs/overview.md)
+9. [Sample Tutorial Roadmap / sample 学習導線](docs/sample-tutorial-roadmap.md)
+10. [Study Guide / sample で学ぶ](docs/study/README.md)
+11. [Troubleshooting / トラブルシューティング](docs/troubleshooting.md)
+12. [Storage And State Model / 保存先と状態モデル](docs/storage-and-state-model.md)
+13. [Internal Documentation Index / 内部ドキュメント索引](docs/internal/README.md)
 
 ## Important Invariants / 重要な不変条件
 
@@ -95,6 +100,8 @@ Do not reconstruct the mainline by reading the detail docs first. Choose a readi
   目的別の逆引き入口: [Choose Your Path / 目的別の読み方](docs/choose-your-path.md)
 - Main path from existing DB to output: [Existing DB To Output / 既存 DB から出力まで](docs/existing-db-to-output.md)  
   existing DB から output までの主導線: [Existing DB To Output / 既存 DB から出力まで](docs/existing-db-to-output.md)
+- Original optional path from JSON to DB design draft: [JSON To DB Entrance / JSON から DB 設計へ入る入口](docs/json-to-db-entrance.md)  
+  JSON file / JSON API cache / JSON config から DB 設計案へ入る、初期構想上の optional pre-design entrance: [JSON To DB Entrance / JSON から DB 設計へ入る入口](docs/json-to-db-entrance.md)
 - Common commands: [Common Tasks / よく使う作業](docs/common-tasks.md)  
   よく使うコマンド集: [Common Tasks / よく使う作業](docs/common-tasks.md)
 - Supported lane for the current mainline: [Current Supported Workflow / 現在サポートするワークフロー](docs/current-supported-workflow.md)  
@@ -124,8 +131,8 @@ make mtool-canonical-sync
 `make up-mtool` uses `compose.yaml + compose.local-db-config.yaml + mtool/docker/compose/01_mtool.compose.yaml` and includes the MTOOL core seed needed by `make mtool-canonical-sync`. When using an external config DB, set `APP_CONFIG_DB_*` and run `make up-external-config-db`. After startup, use `make ps-external-config-db`, `make health-external-config-db`, and `make config-db-preflight-external-config-db` for checks. Use raw `docker compose -f compose.yaml ...` only when the external lane needs a shell or temporary stop.
 `make up-mtool` は `make mtool-canonical-sync` に必要な MTOOL core seed を含めて `compose.yaml + compose.local-db-config.yaml + mtool/docker/compose/01_mtool.compose.yaml` を使います。external config DB を使う時は `APP_CONFIG_DB_*` を指定して `make up-external-config-db` を使います。起動後の確認は `make ps-external-config-db` / `make health-external-config-db` / `make config-db-preflight-external-config-db` を使います。external lane で shell や一時 stop が必要な時だけ raw `docker compose -f compose.yaml ...` を使います。
 
-Persistence note: local quickstart stores design metadata in the local `db-config` Docker volume. Use `make backup-config-db-mtool` before destructive reset, or use `deploy/durable-config-db.env.example` with `make up-durable-config-db DURABLE_ENV_FILE=.env.durable` for durable/team use.
-永続化の注意: local quickstart の設計データは local `db-config` Docker volume に保存されます。破壊的な reset 前には `make backup-config-db-mtool` を使い、継続利用・チーム利用では `deploy/durable-config-db.env.example` と `make up-durable-config-db DURABLE_ENV_FILE=.env.durable` を使います。
+Persistence note: local quickstart stores design metadata in the local `db-config` Docker volume by default. The lightweight personal-use path is folder-only: set `APP_CONFIG_STORE_DIR=work/config-store` and DegoDB resolves the SQLite file as `APP_CONFIG_STORE_DIR/config.sqlite`. Missing or empty SQLite files are bootstrapped automatically from the current config schema. Leave that value empty for the MySQL / MariaDB server DB profile. Use `make backup-config-db-mtool` before destructive reset, or use `deploy/durable-config-db.env.example` with `make up-durable-config-db DURABLE_ENV_FILE=.env.durable` for durable/team server DB use.
+永続化の注意: local quickstart の設計データは既定では local `db-config` Docker volume に保存されます。軽い個人利用では `APP_CONFIG_STORE_DIR=work/config-store` のように保存フォルダだけを指定し、`APP_CONFIG_STORE_DIR/config.sqlite` を file store として使います。SQLite ファイルが未作成または空の場合は current config schema から自動 bootstrap されます。server DB 運用ではこの値を空にし、MySQL / MariaDB profile を維持します。破壊的な reset 前には `make backup-config-db-mtool` を使い、チーム利用・server DB 運用では `deploy/durable-config-db.env.example` と `make up-durable-config-db DURABLE_ENV_FILE=.env.durable` を使います。
 
 `make up-mtool` also shows the URL for `lab-db-ui` in addition to admin and lab.
 `make up-mtool` は admin / lab に加えて `lab-db-ui` の URL も表示します。

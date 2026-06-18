@@ -275,7 +275,8 @@ function app_pdo_update_project_host_assignment(
                 virtual_host_name = :virtual_host_name,
                 template_name = :template_name,
                 notes = :notes,
-                source_of_truth = :source_of_truth
+                source_of_truth = :source_of_truth,
+                updated_at = CURRENT_TIMESTAMP
             WHERE
                 id = :assignment_id
                 AND project_id = :project_id'

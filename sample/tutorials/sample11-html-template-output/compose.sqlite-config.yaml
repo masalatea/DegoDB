@@ -1,0 +1,10 @@
+name: mtool-sample-sample11-html-template-output-sqlite
+
+services:
+  web-admin:
+    environment:
+      APP_WORK_ROOT: /var/www/work/sample-packs/sample11-html-template-output-sqlite
+
+  web-lab:
+    environment:
+      APP_WORK_ROOT: /var/www/work/sample-packs/sample11-html-template-output-sqlite

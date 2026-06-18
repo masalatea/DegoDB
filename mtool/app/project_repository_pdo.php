@@ -34,6 +34,8 @@ function app_pdo_fetch_project_catalog(array $app): array
 {
     try {
         $pdo = app_create_config_pdo($app);
+        $dialect = app_sql_dialect_from_db_config(app_database_config($app, 'config_db'));
+        $updatedAtSelect = app_sql_datetime_select_expr($dialect, 'p.updated_at', 'updated_at');
         $statement = $pdo->query(
             'SELECT
                 p.project_key,
@@ -42,7 +44,7 @@ function app_pdo_fetch_project_catalog(array $app): array
                 p.lifecycle_status,
                 p.owner_login_id,
                 COUNT(DISTINCT pm.login_id) AS member_count,
-                DATE_FORMAT(p.updated_at, "%Y-%m-%d %H:%i:%s") AS updated_at,
+                ' . $updatedAtSelect . ',
                 p.description
             FROM projects AS p
             LEFT JOIN project_memberships AS pm
@@ -123,6 +125,8 @@ function app_pdo_fetch_project_by_key(array $app, string $projectKey): array
 {
     try {
         $pdo = app_create_config_pdo($app);
+        $dialect = app_sql_dialect_from_db_config(app_database_config($app, 'config_db'));
+        $updatedAtSelect = app_sql_datetime_select_expr($dialect, 'p.updated_at', 'updated_at');
         $statement = $pdo->prepare(
             'SELECT
                 p.project_key,
@@ -131,7 +135,7 @@ function app_pdo_fetch_project_by_key(array $app, string $projectKey): array
                 p.lifecycle_status,
                 p.owner_login_id,
                 COUNT(DISTINCT pm.login_id) AS member_count,
-                DATE_FORMAT(p.updated_at, "%Y-%m-%d %H:%i:%s") AS updated_at,
+                ' . $updatedAtSelect . ',
                 p.description
             FROM projects AS p
             LEFT JOIN project_memberships AS pm
@@ -327,7 +331,8 @@ function app_pdo_update_project(array $app, array $input): array
                 name = :name,
                 slug = :slug,
                 lifecycle_status = :lifecycle_status,
-                description = :description
+                description = :description,
+                updated_at = CURRENT_TIMESTAMP
             WHERE project_key = :project_key'
         );
 

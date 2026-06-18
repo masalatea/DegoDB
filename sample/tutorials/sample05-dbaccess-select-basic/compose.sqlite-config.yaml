@@ -1,0 +1,10 @@
+name: mtool-sample-sample05-dbaccess-select-basic-sqlite
+
+services:
+  web-admin:
+    environment:
+      APP_WORK_ROOT: /var/www/work/sample-packs/sample05-dbaccess-select-basic-sqlite
+
+  web-lab:
+    environment:
+      APP_WORK_ROOT: /var/www/work/sample-packs/sample05-dbaccess-select-basic-sqlite

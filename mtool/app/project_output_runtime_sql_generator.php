@@ -447,6 +447,212 @@ function app_project_output_runtime_sql_value_parts(
 /**
  * @return array{
  *     ok:bool,
+ *     sql_fragment:string,
+ *     param_expression:string,
+ *     uses_param:bool,
+ *     reason:string
+ * }
+ */
+function app_project_output_runtime_sql_prepared_value(
+    string $parameterType,
+    string $parameterDataType,
+    string $valueExpression,
+    string $fixedParameter = '',
+): array {
+    $normalizedParameterType = app_project_output_runtime_sql_normalize_token($parameterType);
+    if ($normalizedParameterType === '') {
+        $normalizedParameterType = 'argument';
+    }
+
+    $normalizedParameterDataType = app_project_output_runtime_sql_normalize_token($parameterDataType);
+    if ($normalizedParameterDataType === '') {
+        $normalizedParameterDataType = 'default';
+    }
+
+    if ($normalizedParameterDataType === 'file') {
+        return [
+            'ok' => false,
+            'sql_fragment' => '',
+            'param_expression' => '',
+            'uses_param' => false,
+            'reason' => 'file parameter data type is not supported yet',
+        ];
+    }
+
+    if ($normalizedParameterDataType === 'raw') {
+        if ($normalizedParameterType === 'fixed') {
+            return [
+                'ok' => true,
+                'sql_fragment' => $fixedParameter,
+                'param_expression' => '',
+                'uses_param' => false,
+                'reason' => '',
+            ];
+        }
+
+        return [
+            'ok' => false,
+            'sql_fragment' => '',
+            'param_expression' => '',
+            'uses_param' => false,
+            'reason' => 'raw argument data type is not supported by prepared SQL generation yet',
+        ];
+    }
+
+    if ($normalizedParameterType === 'argument') {
+        if ($valueExpression === '') {
+            return [
+                'ok' => false,
+                'sql_fragment' => '',
+                'param_expression' => '',
+                'uses_param' => false,
+                'reason' => 'argument value expression is empty',
+            ];
+        }
+
+        return [
+            'ok' => true,
+            'sql_fragment' => '?',
+            'param_expression' => $valueExpression,
+            'uses_param' => true,
+            'reason' => '',
+        ];
+    }
+
+    if ($normalizedParameterType === 'fixed') {
+        return [
+            'ok' => true,
+            'sql_fragment' => '?',
+            'param_expression' => var_export($fixedParameter, true),
+            'uses_param' => true,
+            'reason' => '',
+        ];
+    }
+
+    return [
+        'ok' => false,
+        'sql_fragment' => '',
+        'param_expression' => '',
+        'uses_param' => false,
+        'reason' => 'unsupported parameter type: ' . $parameterType,
+    ];
+}
+
+/**
+ * @param list<string> $paramExpressions
+ * @return list<string>
+ */
+function app_project_output_runtime_sql_prepared_write_method_body_lines(
+    string $sql,
+    array $paramExpressions,
+): array {
+    return [
+        '        global $mtooldb, $last_sql_command_for_mtooldb;',
+        '        connect_mtooldb_if_not_yet();',
+        '        reconnect_mtooldb_if_necessary();',
+        '',
+        '        $last_sql_command_for_mtooldb = ' . var_export($sql, true) . ';',
+        '        $result = $mtooldb->execute($last_sql_command_for_mtooldb, [',
+        ...array_map(
+            static fn (string $paramExpression): string => '            ' . $paramExpression . ',',
+            $paramExpressions,
+        ),
+        '        ]);',
+        '        if ($mtooldb->errno != 0) {',
+        '            error_log("Error occured while executing SQL: " . $mtooldb->error . " in " . __FILE__ . " on line " . __LINE__);',
+        '        }',
+        '        return $result;',
+    ];
+}
+
+/**
+ * @param list<string> $paramExpressions
+ * @param list<array<string,string>> $selectTargetFields
+ * @return list<string>
+ */
+function app_project_output_runtime_sql_prepared_select_method_body_lines(
+    string $sql,
+    array $paramExpressions,
+    bool $isList,
+    string $dataClassName,
+    array $selectTargetFields,
+): array {
+    $bodyLines = [
+        '        global $mtooldb, $last_sql_command_for_mtooldb;',
+        '        connect_mtooldb_if_not_yet();',
+        '        reconnect_mtooldb_if_necessary();',
+        '',
+    ];
+
+    if ($isList) {
+        $bodyLines[] = '        $result = array();';
+        $bodyLines[] = '';
+    }
+
+    $bodyLines[] = '        $last_sql_command_for_mtooldb = ' . var_export($sql, true) . ';';
+    $bodyLines[] = '        $ret = $mtooldb->execute($last_sql_command_for_mtooldb, [';
+    foreach ($paramExpressions as $paramExpression) {
+        $bodyLines[] = '            ' . $paramExpression . ',';
+    }
+    $bodyLines[] = '        ]);';
+    $bodyLines[] = '        if ($mtooldb->errno != 0) {';
+    $bodyLines[] = '            error_log("Error occured while executing SQL: " . $mtooldb->error . " in " . __FILE__ . " on line " . __LINE__);';
+    $bodyLines[] = '            return $ret;';
+    $bodyLines[] = '        }';
+    $bodyLines[] = '        while($thisline=$ret->fetch_row()) {';
+    $bodyLines[] = '            $thisresult = new ' . $dataClassName . '();';
+
+    foreach (array_values($selectTargetFields) as $index => $field) {
+        $storeClassFieldName = trim((string) ($field['store_class_field_name'] ?? ''));
+        if ($storeClassFieldName === '') {
+            $storeClassFieldName = trim((string) ($field['target_table_column_name'] ?? ''));
+        }
+
+        $bodyLines[] = '            $thisresult->' . $storeClassFieldName . ' = $thisline[' . $index . '];';
+    }
+
+    if ($isList) {
+        $bodyLines[] = '            array_push($result, $thisresult);';
+        $bodyLines[] = '        }';
+        $bodyLines[] = '        return $result;';
+    } else {
+        $bodyLines[] = '            return $thisresult;';
+        $bodyLines[] = '        }';
+        $bodyLines[] = '        return NULL;';
+    }
+
+    return $bodyLines;
+}
+
+/**
+ * @param list<array{type:string,value:string}> $parts
+ * @return array{ok:bool,sql:string,reason:string}
+ */
+function app_project_output_runtime_sql_static_sql_from_parts(array $parts): array
+{
+    $sql = '';
+    foreach ($parts as $part) {
+        if (($part['type'] ?? 'string') !== 'string') {
+            return [
+                'ok' => false,
+                'sql' => '',
+                'reason' => 'prepared SQL contains dynamic fragments',
+            ];
+        }
+
+        $sql .= (string) ($part['value'] ?? '');
+    }
+
+    return [
+        'ok' => true,
+        'sql' => $sql,
+        'reason' => '',
+    ];
+}
+
+/**
+ * @return array{
+ *     ok:bool,
  *     mode:string,
  *     next_scalar_index:int,
  *     value_expression:string,
@@ -978,6 +1184,153 @@ function app_project_output_runtime_sql_compile_select_having_parts(
         foreach ($valuePartsResult['parts'] as $part) {
             $parts[] = $part;
         }
+    }
+
+    $rightTargetSuffix = (string) ($row['right_target_suffix'] ?? '');
+    if ($rightTargetSuffix !== '') {
+        $parts[] = [
+            'type' => 'string',
+            'value' => $rightTargetSuffix,
+        ];
+    }
+
+    return [
+        'ok' => true,
+        'parts' => $parts,
+        'reason' => '',
+    ];
+}
+
+/**
+ * @param array<string,array<string,string>> $selectTargetFieldById
+ * @param list<string> $parameterNames
+ * @param list<string> $paramExpressions
+ * @return array{
+ *     ok:bool,
+ *     parts:list<array{type:string,value:string}>,
+ *     reason:string
+ * }
+ */
+function app_project_output_runtime_sql_compile_select_having_prepared_parts(
+    array $row,
+    array $selectTargetFieldById,
+    array $parameterNames,
+    int &$argumentIndex,
+    array &$paramExpressions,
+): array {
+    $leftExpressionResult = app_project_output_runtime_sql_select_target_field_expression_by_id(
+        $selectTargetFieldById,
+        (string) ($row['left_target_field_id'] ?? ''),
+        'select having left target field',
+    );
+    if (!$leftExpressionResult['ok']) {
+        return [
+            'ok' => false,
+            'parts' => [],
+            'reason' => $leftExpressionResult['reason'],
+        ];
+    }
+
+    $operator = trim((string) ($row['relational_operator'] ?? ''));
+    if ($operator === '') {
+        $operator = '=';
+    }
+
+    $parts = [
+        [
+            'type' => 'string',
+            'value' => (string) ($row['left_target_prefix'] ?? '')
+                . $leftExpressionResult['expression']
+                . (string) ($row['left_target_suffix'] ?? '')
+                . ' '
+                . $operator
+                . ' '
+                . (string) ($row['right_target_prefix'] ?? ''),
+        ],
+    ];
+
+    $parameterType = app_project_output_runtime_sql_normalize_token((string) ($row['right_parameter_type'] ?? ''));
+    if ($parameterType === '') {
+        $parameterType = 'argument';
+    }
+
+    if ($parameterType === 'field') {
+        $rightExpressionResult = app_project_output_runtime_sql_select_target_field_expression_by_id(
+            $selectTargetFieldById,
+            (string) ($row['right_target_field_id'] ?? ''),
+            'select having right target field',
+        );
+        if (!$rightExpressionResult['ok']) {
+            return [
+                'ok' => false,
+                'parts' => [],
+                'reason' => $rightExpressionResult['reason'],
+            ];
+        }
+
+        $parts[] = [
+            'type' => 'string',
+            'value' => $rightExpressionResult['expression'],
+        ];
+    } elseif ($parameterType === 'fixed') {
+        $resolvedValue = app_project_output_runtime_sql_prepared_value(
+            'fixed',
+            (string) ($row['right_parameter_data_type'] ?? ''),
+            '',
+            (string) ($row['right_fixed_parameter'] ?? ''),
+        );
+        if (!$resolvedValue['ok']) {
+            return [
+                'ok' => false,
+                'parts' => [],
+                'reason' => $resolvedValue['reason'],
+            ];
+        }
+
+        $parts[] = [
+            'type' => 'string',
+            'value' => $resolvedValue['sql_fragment'],
+        ];
+        if ($resolvedValue['uses_param']) {
+            $paramExpressions[] = $resolvedValue['param_expression'];
+        }
+    } elseif ($parameterType === 'argument') {
+        if (!isset($parameterNames[$argumentIndex])) {
+            return [
+                'ok' => false,
+                'parts' => [],
+                'reason' => 'select having argument count does not match signature',
+            ];
+        }
+
+        $parameterName = $parameterNames[$argumentIndex];
+        $argumentIndex++;
+        $resolvedValue = app_project_output_runtime_sql_prepared_value(
+            'argument',
+            (string) ($row['right_parameter_data_type'] ?? ''),
+            $parameterName,
+        );
+        if (!$resolvedValue['ok']) {
+            return [
+                'ok' => false,
+                'parts' => [],
+                'reason' => $resolvedValue['reason'],
+            ];
+        }
+
+        $parts[] = [
+            'type' => 'string',
+            'value' => $resolvedValue['sql_fragment'],
+        ];
+        if ($resolvedValue['uses_param']) {
+            $paramExpressions[] = $resolvedValue['param_expression'];
+        }
+    } else {
+        return [
+            'ok' => false,
+            'parts' => [],
+            'reason' => 'select having parameter type is not supported yet: ' . $parameterType,
+        ];
     }
 
     $rightTargetSuffix = (string) ($row['right_target_suffix'] ?? '');
@@ -1942,6 +2295,7 @@ function app_project_output_runtime_sql_try_generate_select_method(
 
     $selectWheres = $fromBuildResult['where_rows'];
     $argumentIndex = 0;
+    $paramExpressions = [];
     if ($selectWheres !== []) {
         $queryParts[] = [
             'type' => 'string',
@@ -1952,7 +2306,8 @@ function app_project_output_runtime_sql_try_generate_select_method(
             $selectWheres,
             static function (array $row) use (
                 $parameterNames,
-                &$argumentIndex
+                &$argumentIndex,
+                &$paramExpressions
             ): array {
                 $parameterType = app_project_output_runtime_sql_normalize_token((string) ($row['parameter_type'] ?? ''));
                 if (!in_array($parameterType, ['', 'argument', 'fixed', 'anotherfield'], true)) {
@@ -1994,7 +2349,7 @@ function app_project_output_runtime_sql_try_generate_select_method(
                 ];
 
                 if ($parameterType === 'fixed') {
-                    $valuePartsResult = app_project_output_runtime_sql_value_parts(
+                    $resolvedValue = app_project_output_runtime_sql_prepared_value(
                         'fixed',
                         (string) ($row['parameter_data_type'] ?? ''),
                         '',
@@ -2025,23 +2380,27 @@ function app_project_output_runtime_sql_try_generate_select_method(
                     }
 
                     $argumentIndex++;
-                    $valuePartsResult = app_project_output_runtime_sql_value_parts(
+                    $resolvedValue = app_project_output_runtime_sql_prepared_value(
                         'argument',
                         (string) ($row['parameter_data_type'] ?? ''),
                         $parameterName,
                     );
                 }
 
-                if (!$valuePartsResult['ok']) {
+                if (!$resolvedValue['ok']) {
                     return [
                         'ok' => false,
                         'parts' => [],
-                        'reason' => $valuePartsResult['reason'],
+                        'reason' => $resolvedValue['reason'],
                     ];
                 }
 
-                foreach ($valuePartsResult['parts'] as $part) {
-                    $parts[] = $part;
+                $parts[] = [
+                    'type' => 'string',
+                    'value' => $resolvedValue['sql_fragment'],
+                ];
+                if ($resolvedValue['uses_param']) {
+                    $paramExpressions[] = $resolvedValue['param_expression'];
                 }
 
                 return [
@@ -2087,13 +2446,15 @@ function app_project_output_runtime_sql_try_generate_select_method(
             static function (array $row) use (
                 $selectTargetFieldById,
                 $parameterNames,
-                &$argumentIndex
+                &$argumentIndex,
+                &$paramExpressions
             ): array {
-                return app_project_output_runtime_sql_compile_select_having_parts(
+                return app_project_output_runtime_sql_compile_select_having_prepared_parts(
                     $row,
                     $selectTargetFieldById,
                     $parameterNames,
                     $argumentIndex,
+                    $paramExpressions,
                 );
             },
         );
@@ -2154,9 +2515,10 @@ function app_project_output_runtime_sql_try_generate_select_method(
             $limitParameterName = $parameterNames[$argumentIndex];
             $argumentIndex++;
             $queryParts[] = [
-                'type' => 'code',
-                'value' => $limitParameterName,
+                'type' => 'string',
+                'value' => '?',
             ];
+            $paramExpressions[] = $limitParameterName;
         }
     }
 
@@ -2167,52 +2529,23 @@ function app_project_output_runtime_sql_try_generate_select_method(
         );
     }
 
-    $queryExpression = app_project_output_runtime_sql_concat_expression($queryParts);
+    $staticSqlResult = app_project_output_runtime_sql_static_sql_from_parts($queryParts);
+    if (!$staticSqlResult['ok']) {
+        return app_project_output_runtime_sql_delegate_result($functionName, $staticSqlResult['reason']);
+    }
+
     $dataClassBaseName = trim((string) ($functionItem['data_class_base_name'] ?? ''));
     if ($dataClassBaseName === '') {
         $dataClassBaseName = $sourceName;
     }
     $dataClassName = $dataClassBaseName . 'Data';
-
-    $bodyLines = [
-        '        global $mtooldb, $last_sql_command_for_mtooldb;',
-        '        connect_mtooldb_if_not_yet();',
-        '        reconnect_mtooldb_if_necessary();',
-        '',
-    ];
-
-    if ($isList) {
-        $bodyLines[] = '        $result = array();';
-        $bodyLines[] = '';
-    }
-
-    $bodyLines[] = '        $last_sql_command_for_mtooldb = ' . $queryExpression . ';';
-    $bodyLines[] = '        $ret = $mtooldb->query($last_sql_command_for_mtooldb);';
-    $bodyLines[] = '        if ($mtooldb->errno != 0) {';
-    $bodyLines[] = '            error_log("Error occured while executing SQL: " . $mtooldb->error . " in " . __FILE__ . " on line " . __LINE__);';
-    $bodyLines[] = '            return $ret;';
-    $bodyLines[] = '        }';
-    $bodyLines[] = '        while($thisline=$ret->fetch_row()) {';
-    $bodyLines[] = '            $thisresult = new ' . $dataClassName . '();';
-
-    foreach (array_values($selectTargetFields) as $index => $field) {
-        $storeClassFieldName = trim((string) ($field['store_class_field_name'] ?? ''));
-        if ($storeClassFieldName === '') {
-            $storeClassFieldName = trim((string) ($field['target_table_column_name'] ?? ''));
-        }
-
-        $bodyLines[] = '            $thisresult->' . $storeClassFieldName . ' = $thisline[' . $index . '];';
-    }
-
-    if ($isList) {
-        $bodyLines[] = '            array_push($result, $thisresult);';
-        $bodyLines[] = '        }';
-        $bodyLines[] = '        return $result;';
-    } else {
-        $bodyLines[] = '            return $thisresult;';
-        $bodyLines[] = '        }';
-        $bodyLines[] = '        return NULL;';
-    }
+    $bodyLines = app_project_output_runtime_sql_prepared_select_method_body_lines(
+        $staticSqlResult['sql'],
+        $paramExpressions,
+        $isList,
+        $dataClassName,
+        $selectTargetFields,
+    );
 
     return [
         'ok' => true,
@@ -2270,10 +2603,11 @@ function app_project_output_runtime_sql_try_generate_insert_method(
     }
 
     $columns = [];
-    $valueParts = [];
+    $valueSqlFragments = [];
+    $paramExpressions = [];
     $scalarIndex = $bindingModeResult['initial_scalar_index'];
 
-    foreach ($insertTargetFields as $fieldIndex => $field) {
+    foreach ($insertTargetFields as $field) {
         $columnName = trim((string) ($field['target_table_column_name'] ?? ''));
         if ($columnName === '') {
             return app_project_output_runtime_sql_delegate_result($functionName, 'insert target column is blank');
@@ -2281,16 +2615,9 @@ function app_project_output_runtime_sql_try_generate_insert_method(
 
         $columns[] = $columnName;
 
-        if ($fieldIndex > 0) {
-            $valueParts[] = [
-                'type' => 'string',
-                'value' => ', ',
-            ];
-        }
-
         $parameterType = app_project_output_runtime_sql_normalize_token((string) ($field['parameter_type'] ?? ''));
         if ($parameterType === 'fixed') {
-            $resolvedValueParts = app_project_output_runtime_sql_value_parts(
+            $resolvedValue = app_project_output_runtime_sql_prepared_value(
                 'fixed',
                 (string) ($field['parameter_data_type'] ?? ''),
                 '',
@@ -2309,19 +2636,20 @@ function app_project_output_runtime_sql_try_generate_insert_method(
             }
 
             $scalarIndex = $argumentExpressionResult['next_scalar_index'];
-            $resolvedValueParts = app_project_output_runtime_sql_value_parts(
+            $resolvedValue = app_project_output_runtime_sql_prepared_value(
                 'argument',
                 (string) ($field['parameter_data_type'] ?? ''),
                 $argumentExpressionResult['value_expression'],
             );
         }
 
-        if (!$resolvedValueParts['ok']) {
-            return app_project_output_runtime_sql_delegate_result($functionName, $resolvedValueParts['reason']);
+        if (!$resolvedValue['ok']) {
+            return app_project_output_runtime_sql_delegate_result($functionName, $resolvedValue['reason']);
         }
 
-        foreach ($resolvedValueParts['parts'] as $part) {
-            $valueParts[] = $part;
+        $valueSqlFragments[] = $resolvedValue['sql_fragment'];
+        if ($resolvedValue['uses_param']) {
+            $paramExpressions[] = $resolvedValue['param_expression'];
         }
     }
 
@@ -2332,33 +2660,19 @@ function app_project_output_runtime_sql_try_generate_insert_method(
         );
     }
 
-    $queryExpression = app_project_output_runtime_sql_concat_expression(
-        array_merge(
-            [
-                [
-                    'type' => 'string',
-                    'value' => 'insert into '
-                        . $targetTableName
-                        . ' ('
-                        . implode(', ', $columns)
-                        . ') values(',
-                ],
-            ],
-            $valueParts,
-            [
-                [
-                    'type' => 'string',
-                    'value' => ')',
-                ],
-            ],
-        ),
-    );
+    $sql = 'insert into '
+        . $targetTableName
+        . ' ('
+        . implode(', ', $columns)
+        . ') values('
+        . implode(', ', $valueSqlFragments)
+        . ')';
 
     return [
         'ok' => true,
         'result' => [
             'mode' => 'canonical-sql',
-            'body_lines' => app_project_output_runtime_sql_write_method_body_lines($queryExpression),
+            'body_lines' => app_project_output_runtime_sql_prepared_write_method_body_lines($sql, $paramExpressions),
             'reason' => '',
             'warning' => '',
         ],
@@ -2413,30 +2727,19 @@ function app_project_output_runtime_sql_try_generate_update_method(
         return app_project_output_runtime_sql_delegate_result($functionName, $bindingModeResult['reason']);
     }
 
-    $setParts = [];
+    $setSqlFragments = [];
+    $paramExpressions = [];
     $scalarIndex = $bindingModeResult['initial_scalar_index'];
 
-    foreach ($updateTargetFields as $fieldIndex => $field) {
+    foreach ($updateTargetFields as $field) {
         $columnName = trim((string) ($field['target_table_column_name'] ?? ''));
         if ($columnName === '') {
             return app_project_output_runtime_sql_delegate_result($functionName, 'update target column is blank');
         }
 
-        if ($fieldIndex > 0) {
-            $setParts[] = [
-                'type' => 'string',
-                'value' => ', ',
-            ];
-        }
-
-        $setParts[] = [
-            'type' => 'string',
-            'value' => $columnName . ' = ',
-        ];
-
         $parameterType = app_project_output_runtime_sql_normalize_token((string) ($field['parameter_type'] ?? ''));
         if ($parameterType === 'fixed') {
-            $resolvedValueParts = app_project_output_runtime_sql_value_parts(
+            $resolvedValue = app_project_output_runtime_sql_prepared_value(
                 'fixed',
                 (string) ($field['parameter_data_type'] ?? ''),
                 '',
@@ -2455,19 +2758,20 @@ function app_project_output_runtime_sql_try_generate_update_method(
             }
 
             $scalarIndex = $argumentExpressionResult['next_scalar_index'];
-            $resolvedValueParts = app_project_output_runtime_sql_value_parts(
+            $resolvedValue = app_project_output_runtime_sql_prepared_value(
                 'argument',
                 (string) ($field['parameter_data_type'] ?? ''),
                 $argumentExpressionResult['value_expression'],
             );
         }
 
-        if (!$resolvedValueParts['ok']) {
-            return app_project_output_runtime_sql_delegate_result($functionName, $resolvedValueParts['reason']);
+        if (!$resolvedValue['ok']) {
+            return app_project_output_runtime_sql_delegate_result($functionName, $resolvedValue['reason']);
         }
 
-        foreach ($resolvedValueParts['parts'] as $part) {
-            $setParts[] = $part;
+        $setSqlFragments[] = $columnName . ' = ' . $resolvedValue['sql_fragment'];
+        if ($resolvedValue['uses_param']) {
+            $paramExpressions[] = $resolvedValue['param_expression'];
         }
     }
 
@@ -2477,6 +2781,7 @@ function app_project_output_runtime_sql_try_generate_update_method(
             $targetTableName,
             $parameterNames,
             $bindingModeResult,
+            &$paramExpressions,
             &$scalarIndex
         ): array {
             $columnName = trim((string) ($row['target_table_column_name'] ?? ''));
@@ -2502,7 +2807,7 @@ function app_project_output_runtime_sql_try_generate_update_method(
 
             $parameterType = app_project_output_runtime_sql_normalize_token((string) ($row['parameter_type'] ?? ''));
             if ($parameterType === 'fixed') {
-                $resolvedValueParts = app_project_output_runtime_sql_value_parts(
+                $resolvedValue = app_project_output_runtime_sql_prepared_value(
                     'fixed',
                     (string) ($row['parameter_data_type'] ?? ''),
                     '',
@@ -2525,23 +2830,27 @@ function app_project_output_runtime_sql_try_generate_update_method(
                 }
 
                 $scalarIndex = $argumentExpressionResult['next_scalar_index'];
-                $resolvedValueParts = app_project_output_runtime_sql_value_parts(
+                $resolvedValue = app_project_output_runtime_sql_prepared_value(
                     'argument',
                     (string) ($row['parameter_data_type'] ?? ''),
                     $argumentExpressionResult['value_expression'],
                 );
             }
 
-            if (!$resolvedValueParts['ok']) {
+            if (!$resolvedValue['ok']) {
                 return [
                     'ok' => false,
                     'parts' => [],
-                    'reason' => $resolvedValueParts['reason'],
+                    'reason' => $resolvedValue['reason'],
                 ];
             }
 
-            foreach ($resolvedValueParts['parts'] as $part) {
-                $parts[] = $part;
+            $parts[] = [
+                'type' => 'string',
+                'value' => $resolvedValue['sql_fragment'],
+            ];
+            if ($resolvedValue['uses_param']) {
+                $paramExpressions[] = $resolvedValue['param_expression'];
             }
 
                 return [
@@ -2555,7 +2864,14 @@ function app_project_output_runtime_sql_try_generate_update_method(
     if (!$wherePartsResult['ok']) {
         return app_project_output_runtime_sql_delegate_result($functionName, $wherePartsResult['reason']);
     }
-    $whereParts = $wherePartsResult['parts'];
+    $whereSqlResult = app_project_output_runtime_sql_static_sql_from_parts($wherePartsResult['parts']);
+    if (!$whereSqlResult['ok']) {
+        return app_project_output_runtime_sql_delegate_result(
+            $functionName,
+            $whereSqlResult['reason'],
+        );
+    }
+    $whereSql = $whereSqlResult['sql'];
 
     if (
         !in_array($bindingModeResult['mode'], ['object'], true)
@@ -2567,30 +2883,13 @@ function app_project_output_runtime_sql_try_generate_update_method(
         );
     }
 
-    $queryExpression = app_project_output_runtime_sql_concat_expression(
-        array_merge(
-            [
-                [
-                    'type' => 'string',
-                    'value' => 'update ' . $targetTableName . ' SET ',
-                ],
-            ],
-            $setParts,
-            [
-                [
-                    'type' => 'string',
-                    'value' => ' where ',
-                ],
-            ],
-            $whereParts,
-        ),
-    );
+    $sql = 'update ' . $targetTableName . ' SET ' . implode(', ', $setSqlFragments) . ' where ' . $whereSql;
 
     return [
         'ok' => true,
         'result' => [
             'mode' => 'canonical-sql',
-            'body_lines' => app_project_output_runtime_sql_write_method_body_lines($queryExpression),
+            'body_lines' => app_project_output_runtime_sql_prepared_write_method_body_lines($sql, $paramExpressions),
             'reason' => '',
             'warning' => '',
         ],
@@ -2634,7 +2933,7 @@ function app_project_output_runtime_sql_try_generate_delete_method(
         return app_project_output_runtime_sql_delegate_result($functionName, $bindingModeResult['reason']);
     }
 
-    $whereParts = [];
+    $paramExpressions = [];
     $scalarIndex = $bindingModeResult['initial_scalar_index'];
 
     $wherePartsResult = app_project_output_runtime_sql_grouped_condition_parts(
@@ -2643,6 +2942,7 @@ function app_project_output_runtime_sql_try_generate_delete_method(
             $targetTableName,
             $parameterNames,
             $bindingModeResult,
+            &$paramExpressions,
             &$scalarIndex
         ): array {
             $columnName = trim((string) ($row['target_table_column_name'] ?? ''));
@@ -2668,7 +2968,7 @@ function app_project_output_runtime_sql_try_generate_delete_method(
 
             $parameterType = app_project_output_runtime_sql_normalize_token((string) ($row['parameter_type'] ?? ''));
             if ($parameterType === 'fixed') {
-                $resolvedValueParts = app_project_output_runtime_sql_value_parts(
+                $resolvedValue = app_project_output_runtime_sql_prepared_value(
                     'fixed',
                     (string) ($row['parameter_data_type'] ?? ''),
                     '',
@@ -2691,23 +2991,27 @@ function app_project_output_runtime_sql_try_generate_delete_method(
                 }
 
                 $scalarIndex = $argumentExpressionResult['next_scalar_index'];
-                $resolvedValueParts = app_project_output_runtime_sql_value_parts(
+                $resolvedValue = app_project_output_runtime_sql_prepared_value(
                     'argument',
                     (string) ($row['parameter_data_type'] ?? ''),
                     $argumentExpressionResult['value_expression'],
                 );
             }
 
-            if (!$resolvedValueParts['ok']) {
+            if (!$resolvedValue['ok']) {
                 return [
                     'ok' => false,
                     'parts' => [],
-                    'reason' => $resolvedValueParts['reason'],
+                    'reason' => $resolvedValue['reason'],
                 ];
             }
 
-            foreach ($resolvedValueParts['parts'] as $part) {
-                $parts[] = $part;
+            $parts[] = [
+                'type' => 'string',
+                'value' => $resolvedValue['sql_fragment'],
+            ];
+            if ($resolvedValue['uses_param']) {
+                $paramExpressions[] = $resolvedValue['param_expression'];
             }
 
                 return [
@@ -2721,7 +3025,14 @@ function app_project_output_runtime_sql_try_generate_delete_method(
     if (!$wherePartsResult['ok']) {
         return app_project_output_runtime_sql_delegate_result($functionName, $wherePartsResult['reason']);
     }
-    $whereParts = $wherePartsResult['parts'];
+    $whereSqlResult = app_project_output_runtime_sql_static_sql_from_parts($wherePartsResult['parts']);
+    if (!$whereSqlResult['ok']) {
+        return app_project_output_runtime_sql_delegate_result(
+            $functionName,
+            $whereSqlResult['reason'],
+        );
+    }
+    $whereSql = $whereSqlResult['sql'];
 
     if (
         !in_array($bindingModeResult['mode'], ['object'], true)
@@ -2733,23 +3044,13 @@ function app_project_output_runtime_sql_try_generate_delete_method(
         );
     }
 
-    $queryExpression = app_project_output_runtime_sql_concat_expression(
-        array_merge(
-            [
-                [
-                    'type' => 'string',
-                    'value' => 'delete from ' . $targetTableName . ' where ',
-                ],
-            ],
-            $whereParts,
-        ),
-    );
+    $sql = 'delete from ' . $targetTableName . ' where ' . $whereSql;
 
     return [
         'ok' => true,
         'result' => [
             'mode' => 'canonical-sql',
-            'body_lines' => app_project_output_runtime_sql_write_method_body_lines($queryExpression),
+            'body_lines' => app_project_output_runtime_sql_prepared_write_method_body_lines($sql, $paramExpressions),
             'reason' => '',
             'warning' => '',
         ],

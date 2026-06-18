@@ -35,6 +35,7 @@ require_once __DIR__ . '/runtime_storage_paths.php';
  *         dsn:string
  *     },
  *     config_db:array{
+ *         driver:string,
  *         host:string,
  *         port:string,
  *         name:string,
@@ -108,6 +109,10 @@ function app_load_config(): array
     $configDbName = app_config_env('APP_CONFIG_DB_NAME', $defaults['config_db_name']);
     $configDbUser = app_config_env('APP_CONFIG_DB_USER', $defaults['config_db_user']);
     $configDbPassword = app_config_env('APP_CONFIG_DB_PASSWORD', $defaults['config_db_password']);
+    $configStoreDir = app_config_env('APP_CONFIG_STORE_DIR', '');
+    $configStoreDriver = app_config_store_driver(
+        app_config_env('APP_CONFIG_STORE_DRIVER', $configStoreDir !== '' ? 'sqlite' : 'mysql'),
+    );
     $labDbHost = app_config_env('APP_LAB_DB_HOST', $labDefaults['db_host']);
     $labDbPort = app_config_env('APP_LAB_DB_PORT', '3306');
     $labDbName = app_config_env('APP_LAB_DB_NAME', $labDefaults['db_name']);
@@ -147,19 +152,26 @@ function app_load_config(): array
             $dbName,
         ),
     ];
-    $configDbConfig = [
-        'host' => $configDbHost,
-        'port' => $configDbPort,
-        'name' => $configDbName,
-        'user' => $configDbUser,
-        'password' => $configDbPassword,
-        'dsn' => sprintf(
-            'mysql:host=%s;port=%s;dbname=%s;charset=utf8mb4',
-            $configDbHost,
-            $configDbPort,
-            $configDbName,
-        ),
-    ];
+    $configDbConfig = app_config_store_config(
+        $configStoreDriver,
+        $configDbHost,
+        $configDbPort,
+        $configDbName,
+        $configDbUser,
+        $configDbPassword,
+        $workRoot,
+        $configStoreDir,
+    );
+    if (
+        $site === 'admin'
+        && $configDbConfig['driver'] === 'sqlite'
+        && app_config_admin_db_uses_default_config_target(
+            $dbConfig,
+            $defaults,
+        )
+    ) {
+        $dbConfig = $configDbConfig;
+    }
     $labDbConfig = [
         'host' => $labDbHost,
         'port' => $labDbPort,
@@ -262,6 +274,165 @@ function app_config_env(string $name, string $default): string
     }
 
     return $value;
+}
+
+/**
+ * @param array{host:string,port:string,name:string,user:string,password:string,dsn:string} $dbConfig
+ * @param array<string,mixed> $defaults
+ */
+function app_config_admin_db_uses_default_config_target(array $dbConfig, array $defaults): bool
+{
+    return $dbConfig['host'] === (string) ($defaults['db_host'] ?? '')
+        && $dbConfig['port'] === '3306'
+        && $dbConfig['name'] === (string) ($defaults['db_name'] ?? '')
+        && $dbConfig['user'] === (string) ($defaults['db_user'] ?? '');
+}
+
+function app_config_store_driver(string $value): string
+{
+    $normalizedValue = strtolower(trim($value));
+
+    return match ($normalizedValue) {
+        'sqlite' => 'sqlite',
+        default => 'mysql',
+    };
+}
+
+function app_config_sqlite_path_is_absolute(string $path): bool
+{
+    if ($path === '') {
+        return false;
+    }
+
+    if ($path[0] === '/') {
+        return true;
+    }
+
+    return preg_match('/^[A-Za-z]:[\\\\\\/]/', $path) === 1;
+}
+
+function app_config_resolve_sqlite_dir(string $value, string $workRoot): string
+{
+    $trimmedValue = trim($value);
+    $normalizedWorkRoot = rtrim(str_replace('\\', '/', $workRoot), '/');
+    $baseDir = $trimmedValue !== '' ? $trimmedValue : $normalizedWorkRoot . '/config-store';
+    $normalizedBaseDir = str_replace('\\', '/', $baseDir);
+
+    if (app_config_sqlite_path_is_absolute($normalizedBaseDir)) {
+        return rtrim($normalizedBaseDir, '/');
+    }
+
+    if ($normalizedWorkRoot === '') {
+        $normalizedWorkRoot = '.';
+    }
+
+    $relativeDir = ltrim($normalizedBaseDir, '/');
+    if (str_starts_with($relativeDir, 'work/') && str_contains($normalizedWorkRoot, '/work/')) {
+        $mountedWorkRoot = substr(
+            $normalizedWorkRoot,
+            0,
+            strpos($normalizedWorkRoot, '/work/') + strlen('/work'),
+        );
+
+        return $mountedWorkRoot . '/' . substr($relativeDir, strlen('work/'));
+    }
+
+    $workRootName = basename($normalizedWorkRoot);
+    $workRootMarker = '/' . $workRootName . '/';
+    if (
+        $workRootName !== ''
+        && str_starts_with($relativeDir, $workRootName . '/')
+        && str_contains($normalizedWorkRoot, $workRootMarker)
+    ) {
+        $mountedWorkRoot = substr(
+            $normalizedWorkRoot,
+            0,
+            strpos($normalizedWorkRoot, $workRootMarker) + strlen($workRootMarker) - 1,
+        );
+
+        return $mountedWorkRoot . '/' . substr($relativeDir, strlen($workRootName) + 1);
+    }
+
+    if ($workRootName !== '' && $relativeDir === $workRootName) {
+        $relativeDir = '';
+    } elseif ($workRootName !== '' && str_starts_with($relativeDir, $workRootName . '/')) {
+        $relativeDir = substr($relativeDir, strlen($workRootName) + 1);
+    }
+
+    if ($relativeDir === '') {
+        return $normalizedWorkRoot;
+    }
+
+    return $normalizedWorkRoot . '/' . $relativeDir;
+}
+
+function app_config_resolve_sqlite_file(string $value): string
+{
+    $trimmedValue = trim($value);
+    if ($trimmedValue === '') {
+        return 'config.sqlite';
+    }
+
+    return basename(str_replace('\\', '/', $trimmedValue));
+}
+
+/**
+ * @return array{
+ *     driver:string,
+ *     host:string,
+ *     port:string,
+ *     name:string,
+ *     user:string,
+ *     password:string,
+ *     dsn:string
+ * }
+ */
+function app_config_store_config(
+    string $driver,
+    string $host,
+    string $port,
+    string $databaseName,
+    string $user,
+    string $password,
+    string $workRoot,
+    string $storeDir = '',
+): array {
+    $normalizedDriver = app_config_store_driver($driver !== '' ? $driver : ($storeDir !== '' ? 'sqlite' : 'mysql'));
+    if ($normalizedDriver === 'sqlite') {
+        $sqliteDir = app_config_resolve_sqlite_dir(
+            $storeDir !== '' ? $storeDir : app_config_env('APP_CONFIG_SQLITE_DIR', ''),
+            $workRoot,
+        );
+        $sqliteFile = app_config_resolve_sqlite_file(
+            app_config_env('APP_CONFIG_SQLITE_FILE', 'config.sqlite'),
+        );
+        $sqlitePath = $sqliteDir . '/' . $sqliteFile;
+
+        return [
+            'driver' => 'sqlite',
+            'host' => '',
+            'port' => '',
+            'name' => $sqlitePath,
+            'user' => '',
+            'password' => '',
+            'dsn' => 'sqlite:' . $sqlitePath,
+        ];
+    }
+
+    return [
+        'driver' => 'mysql',
+        'host' => $host,
+        'port' => $port,
+        'name' => $databaseName,
+        'user' => $user,
+        'password' => $password,
+        'dsn' => sprintf(
+            'mysql:host=%s;port=%s;dbname=%s;charset=utf8mb4',
+            $host,
+            $port,
+            $databaseName,
+        ),
+    ];
 }
 
 /**

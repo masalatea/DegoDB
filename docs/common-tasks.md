@@ -187,10 +187,41 @@ docker compose exec -T web-admin php /var/www/mtool/scripts/import_project_metad
 
 local Docker volume だけに設計データを閉じ込めないため、継続利用では config DB dump を取る。
 
+Lightweight file store note:
+For personal use, the user-facing setup should be folder-only. Put `APP_CONFIG_STORE_DIR` in `.env`; DegoDB resolves the SQLite file as `APP_CONFIG_STORE_DIR/config.sqlite` and bootstraps the current config schema automatically when the file is missing or empty. Leave `APP_CONFIG_STORE_DIR` empty for the MySQL / MariaDB server DB profile.
+
+軽く個人利用したい場合は、file store profile の入口として `.env` に保存フォルダだけを書きます。
+
+```env
+APP_CONFIG_STORE_DIR=work/config-store
+```
+
+この場合、保存ファイル名は既定で `config.sqlite` になり、未作成または空の SQLite ファイルは current config schema から自動 bootstrap されます。server DB を使う場合は `APP_CONFIG_STORE_DIR` を空にし、local MariaDB または external MySQL / MariaDB の設定を使います。
+
+To start without the config DB server, use the lite lane:
+
+```bash
+APP_CONFIG_STORE_DIR=work/config-store make up-mtool-lite
+make health-mtool-lite
+make config-db-preflight-mtool-lite
+make down-mtool-lite
+```
+
+config DB server を起動しない場合は lite lane を使う。`db-lab` は Lab / user DB として残るため、DegoDB 自身の config store とユーザー DB を混同しない。
+
+SQLite lightweight lane の実装状態をまとめて確認する場合:
+
+```bash
+make mtool-lite-smoke
+```
+
+この smoke は temporary SQLite store を使い、lite lane 起動、admin / lab health、admin top page、preflight、migrate、MTOOL core seed、backup / restore、restore 後 preflight を確認する。
+
 MTOOL core seed stack の場合:
 
 ```bash
 make backup-config-db-mtool
+make backup-config-db-mtool-rotate
 make restore-config-db-mtool BACKUP_FILE=work/backups/config-db/config_db-mtool-YYYYMMDD-HHMMSS.sql CONFIRM_RESTORE=yes
 ```
 
@@ -198,12 +229,27 @@ local default stack の場合:
 
 ```bash
 make backup-config-db
+make backup-config-db-rotate
 make restore-config-db BACKUP_FILE=work/backups/config-db/config_db-YYYYMMDD-HHMMSS.sql CONFIRM_RESTORE=yes
 ```
 
-- backup は `work/backups/config-db/` に timestamp 付き SQL dump を作る
+SQLite config store profile の場合:
+
+```bash
+APP_CONFIG_STORE_DIR=work/config-store make backup-config-db-sqlite
+APP_CONFIG_STORE_DIR=work/config-store make backup-config-db-sqlite-rotate
+APP_CONFIG_STORE_DIR=work/config-store make restore-config-db-sqlite BACKUP_FILE=work/backups/config-db/config_store-sqlite-config-store-YYYYMMDD-HHMMSS.sqlite CONFIRM_RESTORE=yes
+```
+
+- MySQL / MariaDB backup は `work/backups/config-db/` に timestamp 付き SQL dump を作る
+- SQLite backup は `VACUUM INTO` で timestamp 付き `.sqlite` file を作る
+- `CONFIG_DB_BACKUP_DIR` で保存先を変更できる
+- `backup-config-db-rotate` / `backup-config-db-mtool-rotate` / `backup-config-db-sqlite-rotate` は backup 後に `CONFIG_DB_BACKUP_KEEP_DAYS` / `CONFIG_DB_BACKUP_KEEP_COUNT` で古い backup を整理する
+- backup は `.manifest.json` も同時に作る
 - `work/` は Git 管理しない
 - restore は config DB state を上書きするため `CONFIRM_RESTORE=yes` を必須にしている
+- restore は実行前に同じ stack の current state を自動 backup する
+- SQLite restore は `PRAGMA integrity_check` を実行し、`ok` であることを確認する
 - external config DB を使う場合は、この local container dump ではなく managed DB / vendor-native backup を優先する
 
 ## config DB externalization を preflight する
@@ -251,10 +297,22 @@ DB Access tutorial の capstone を見るなら `sample/tutorials/sample10-dbacc
 make sample10-pack-runtime-test
 ```
 
+軽量な SQLite config store profile で同じ tutorial を見るなら次を使う。
+
+```bash
+make sample10-pack-runtime-test-sqlite
+```
+
 HTML Source Output tutorial を見るなら `sample/tutorials/sample11-html-template-output` を使う。
 
 ```bash
 make sample11-pack-runtime-test
+```
+
+SQLite config store profile で同じ HTML Source Output tutorial を見るなら次を使う。
+
+```bash
+make sample11-pack-runtime-test-sqlite
 ```
 
 external DB source import tutorial を見るなら `sample/tutorials/sample12-external-db-source-import` を使う。
@@ -263,10 +321,22 @@ external DB source import tutorial を見るなら `sample/tutorials/sample12-ex
 make sample12-pack-runtime-test
 ```
 
+SQLite config store profile で同じ tutorial を見るなら次を使う。`db-lab` は external DB 相当として残るため、DegoDB の config store と user DB を分けて確認できる。
+
+```bash
+make sample12-pack-runtime-test-sqlite
+```
+
 OpenAPI API surface tutorial を見るなら `sample/tutorials/sample13-openapi-api-surface` を使う。
 
 ```bash
 make sample13-pack-runtime-test
+```
+
+SQLite config store profile で同じ tutorial を見るなら次を使う。
+
+```bash
+make sample13-pack-runtime-test-sqlite
 ```
 
 custom proxy runtime tutorial を見るなら `sample/tutorials/sample14-custom-proxy-runtime` を使う。
@@ -275,10 +345,22 @@ custom proxy runtime tutorial を見るなら `sample/tutorials/sample14-custom-
 make sample14-pack-runtime-test
 ```
 
+SQLite config store profile で同じ tutorial を見るなら次を使う。
+
+```bash
+make sample14-pack-runtime-test-sqlite
+```
+
 project metadata bundle export / import tutorial を見るなら `sample/tutorials/sample15-project-metadata-export-import` を使う。
 
 ```bash
 make sample15-pack-runtime-test
+```
+
+SQLite config store profile で同じ tutorial を見るなら次を使う。
+
+```bash
+make sample15-pack-runtime-test-sqlite
 ```
 
 authenticated proxy tutorial を見るなら `sample/tutorials/sample16-authenticated-proxy` を使う。
@@ -287,10 +369,22 @@ authenticated proxy tutorial を見るなら `sample/tutorials/sample16-authenti
 make sample16-pack-runtime-test
 ```
 
+SQLite config store profile で同じ tutorial を見るなら次を使う。
+
+```bash
+make sample16-pack-runtime-test-sqlite
+```
+
 multi-output capstone tutorial を見るなら `sample/tutorials/sample17-multi-output-project` を使う。
 
 ```bash
 make sample17-pack-runtime-test
+```
+
+SQLite config store profile で同じ tutorial を見るなら次を使う。
+
+```bash
+make sample17-pack-runtime-test-sqlite
 ```
 
 ## full suite を回す

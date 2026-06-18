@@ -40,6 +40,8 @@ function app_pdo_fetch_table_metadata_snapshot(array $app, string $projectKey): 
 {
     try {
         $pdo = app_create_config_pdo($app);
+        $dialect = app_sql_dialect_from_db_config(app_database_config($app, 'config_db'));
+        $isNullColumn = app_sql_identifier($dialect, 'IsNull');
         $projectId = app_table_metadata_pdo_resolve_project_id($pdo, $projectKey);
         $statement = $pdo->prepare(
             'SELECT
@@ -51,7 +53,7 @@ function app_pdo_fetch_table_metadata_snapshot(array $app, string $projectKey): 
                 c.PID AS column_pid,
                 c.name AS column_name,
                 c.datatype AS column_datatype,
-                c.IsNull AS column_is_null,
+                c.' . $isNullColumn . ' AS column_is_null,
                 c.IsKey AS column_is_key,
                 c.IsDefault AS column_is_default,
                 c.Extra AS column_extra,
@@ -458,6 +460,8 @@ function app_pdo_create_table_metadata_column(
         }
 
         $pdo = app_create_config_pdo($app);
+        $dialect = app_sql_dialect_from_db_config(app_database_config($app, 'config_db'));
+        $isNullColumn = app_sql_identifier($dialect, 'IsNull');
         $projectId = app_table_metadata_pdo_resolve_project_id($pdo, $projectKey);
         $tableStatement = $pdo->prepare(
             'SELECT name
@@ -493,7 +497,7 @@ function app_pdo_create_table_metadata_column(
                 dbtablePID,
                 name,
                 datatype,
-                IsNull,
+                ' . $isNullColumn . ',
                 IsKey,
                 IsDefault,
                 Extra,
@@ -581,6 +585,8 @@ function app_pdo_update_table_metadata_column(
         }
 
         $pdo = app_create_config_pdo($app);
+        $dialect = app_sql_dialect_from_db_config(app_database_config($app, 'config_db'));
+        $isNullColumn = app_sql_identifier($dialect, 'IsNull');
         $projectId = app_table_metadata_pdo_resolve_project_id($pdo, $projectKey);
         $columnStatement = $pdo->prepare(
             'SELECT
@@ -609,7 +615,7 @@ function app_pdo_update_table_metadata_column(
              SET
                 name = :name,
                 datatype = :datatype,
-                IsNull = :is_null,
+                ' . $isNullColumn . ' = :is_null,
                 IsKey = :is_key,
                 IsDefault = :is_default,
                 Extra = :extra,

@@ -41,8 +41,8 @@
                                 "type": "object",
                                 "properties": {
                                     "param_ApiTask_Id_where": {
-                                        "type": "string",
-                                        "example": "string"
+                                        "type": "integer",
+                                        "example": 0
                                     }
                                 },
                                 "required": [
@@ -50,7 +50,7 @@
                                 ]
                             },
                             "example": {
-                                "param_ApiTask_Id_where": "string"
+                                "param_ApiTask_Id_where": 0
                             }
                         }
                     }
@@ -146,8 +146,8 @@
                                         "example": "string"
                                     },
                                     "limit": {
-                                        "type": "string",
-                                        "example": "string"
+                                        "type": "integer",
+                                        "example": 0
                                     }
                                 },
                                 "required": [
@@ -157,7 +157,7 @@
                             },
                             "example": {
                                 "param_ApiTask_Status_where": "string",
-                                "limit": "string"
+                                "limit": 0
                             }
                         }
                     }

@@ -1,0 +1,10 @@
+name: mtool-sample-sample08-dbaccess-join-read-model-sqlite
+
+services:
+  web-admin:
+    environment:
+      APP_WORK_ROOT: /var/www/work/sample-packs/sample08-dbaccess-join-read-model-sqlite
+
+  web-lab:
+    environment:
+      APP_WORK_ROOT: /var/www/work/sample-packs/sample08-dbaccess-join-read-model-sqlite

@@ -38,6 +38,8 @@ function app_pdo_fetch_project_source_output_catalog(array $app, string $project
 {
     try {
         $pdo = app_create_config_pdo($app);
+        $dialect = app_sql_dialect_from_db_config(app_database_config($app, 'config_db'));
+        $updatedAtSelect = app_sql_datetime_select_expr($dialect, 'so.updated_at', 'updated_at');
         $statement = $pdo->prepare(
             'SELECT
                 so.source_output_key,
@@ -59,7 +61,7 @@ function app_pdo_fetch_project_source_output_catalog(array $app, string $project
                 so.source_output_list_order,
                 so.notes,
                 so.source_of_truth,
-                DATE_FORMAT(so.updated_at, "%Y-%m-%d %H:%i:%s") AS updated_at
+                ' . $updatedAtSelect . '
             FROM project_source_outputs AS so
             INNER JOIN projects AS p
                 ON p.id = so.project_id
@@ -126,6 +128,8 @@ function app_pdo_fetch_project_source_output_item(array $app, string $projectKey
 {
     try {
         $pdo = app_create_config_pdo($app);
+        $dialect = app_sql_dialect_from_db_config(app_database_config($app, 'config_db'));
+        $updatedAtSelect = app_sql_datetime_select_expr($dialect, 'so.updated_at', 'updated_at');
         $statement = $pdo->prepare(
             'SELECT
                 so.source_output_key,
@@ -147,7 +151,7 @@ function app_pdo_fetch_project_source_output_item(array $app, string $projectKey
                 so.source_output_list_order,
                 so.notes,
                 so.source_of_truth,
-                DATE_FORMAT(so.updated_at, "%Y-%m-%d %H:%i:%s") AS updated_at
+                ' . $updatedAtSelect . '
             FROM project_source_outputs AS so
             INNER JOIN projects AS p
                 ON p.id = so.project_id
@@ -215,6 +219,8 @@ function app_pdo_fetch_project_source_output_default_item(array $app, string $pr
 {
     try {
         $pdo = app_create_config_pdo($app);
+        $dialect = app_sql_dialect_from_db_config(app_database_config($app, 'config_db'));
+        $updatedAtSelect = app_sql_datetime_select_expr($dialect, 'so.updated_at', 'updated_at');
         $statement = $pdo->prepare(
             'SELECT
                 so.source_output_key,
@@ -236,7 +242,7 @@ function app_pdo_fetch_project_source_output_default_item(array $app, string $pr
                 so.source_output_list_order,
                 so.notes,
                 so.source_of_truth,
-                DATE_FORMAT(so.updated_at, "%Y-%m-%d %H:%i:%s") AS updated_at
+                ' . $updatedAtSelect . '
             FROM project_source_outputs AS so
             INNER JOIN projects AS p
                 ON p.id = so.project_id
@@ -302,7 +308,7 @@ function app_pdo_fetch_project_source_output_default_item(array $app, string $pr
 function app_pdo_create_project_source_output(array $app, array $input): array
 {
     try {
-        $pdo = app_create_pdo($app);
+        $pdo = app_create_config_pdo($app);
         $projectId = app_source_output_pdo_resolve_project_id($pdo, $input['project_key']);
 
         $statement = $pdo->prepare(
@@ -418,7 +424,7 @@ function app_pdo_create_project_source_output(array $app, array $input): array
 function app_pdo_update_project_source_output(array $app, array $input): array
 {
     try {
-        $pdo = app_create_pdo($app);
+        $pdo = app_create_config_pdo($app);
         $projectId = app_source_output_pdo_resolve_project_id($pdo, $input['project_key']);
         app_source_output_pdo_resolve_source_output_id($pdo, $projectId, $input['source_output_key']);
 
@@ -497,7 +503,7 @@ function app_pdo_update_project_source_output(array $app, array $input): array
 function app_pdo_delete_project_source_output(array $app, array $input): array
 {
     try {
-        $pdo = app_create_pdo($app);
+        $pdo = app_create_config_pdo($app);
         $projectId = app_source_output_pdo_resolve_project_id($pdo, $input['project_key']);
         app_source_output_pdo_resolve_source_output_id($pdo, $projectId, $input['source_output_key']);
 
@@ -541,7 +547,7 @@ function app_pdo_reorder_project_source_outputs(array $app, array $input): array
     $pdo = null;
 
     try {
-        $pdo = app_create_pdo($app);
+        $pdo = app_create_config_pdo($app);
         $projectId = app_source_output_pdo_resolve_project_id($pdo, $input['project_key']);
 
         $expectedKeysStatement = $pdo->prepare(

@@ -214,6 +214,19 @@ function app_project_db_access_bootstrap_php_scalar_sql_value(string $parameterN
         . ") . '\\'')";
 }
 
+function app_project_db_access_bootstrap_php_property_expression(string $objectVariableName, string $propertyName): string
+{
+    return '$'
+        . ltrim(trim($objectVariableName), '$')
+        . '->'
+        . trim($propertyName);
+}
+
+function app_project_db_access_bootstrap_php_scalar_expression(string $parameterName): string
+{
+    return '$' . ltrim(trim($parameterName), '$');
+}
+
 function app_project_db_access_bootstrap_php_string_literal_expression(string $value): string
 {
     return "'" . app_project_db_access_bootstrap_escape_php_string_literal($value) . "'";
@@ -258,6 +271,31 @@ function app_project_db_access_bootstrap_php_join_expressions(array $expressions
     }
 
     return app_project_db_access_bootstrap_php_concat_expression($parts);
+}
+
+/**
+ * @param list<string> $paramExpressions
+ * @return list<string>
+ */
+function app_project_db_access_bootstrap_prepared_write_body_lines(string $sql, array $paramExpressions): array
+{
+    return [
+        '        global $mtooldb, $last_sql_command_for_mtooldb;',
+        '        connect_mtooldb_if_not_yet();',
+        '        reconnect_mtooldb_if_necessary();',
+        '',
+        '        $last_sql_command_for_mtooldb = ' . app_project_db_access_bootstrap_php_string_literal_expression($sql) . ';',
+        '        $result = $mtooldb->execute($last_sql_command_for_mtooldb, [',
+        ...array_map(
+            static fn (string $paramExpression): string => '            ' . $paramExpression . ',',
+            $paramExpressions,
+        ),
+        '        ]);',
+        '        if ($mtooldb->errno != 0) {',
+        '            error_log("Error occured while executing SQL: " . $mtooldb->error . " in " . __FILE__ . " on line " . __LINE__);',
+        '        }',
+        '        return $result;',
+    ];
 }
 
 /**
@@ -351,12 +389,8 @@ function app_project_db_access_bootstrap_select_body_lines(array $table, array $
 {
     $tableName = trim((string) ($table['name'] ?? ''));
     $dataClassName = $tableName . 'Data';
-    $sql = $whereColumns === []
-        ? app_project_db_access_bootstrap_select_sql($table, $columns, [])
-        : app_project_db_access_bootstrap_select_base_sql($table, $columns);
-    $sqlExpressionParts = [
-        app_project_db_access_bootstrap_php_string_literal_expression($sql),
-    ];
+    $sql = app_project_db_access_bootstrap_select_base_sql($table, $columns);
+    $paramExpressions = [];
 
     if ($whereColumns !== []) {
         $conditions = [];
@@ -367,24 +401,36 @@ function app_project_db_access_bootstrap_select_body_lines(array $table, array $
             }
 
             $parameterName = app_project_db_access_bootstrap_scalar_parameter_name($tableName, $columnName);
-            $conditions[] = app_project_db_access_bootstrap_php_concat_expression([
-                app_project_db_access_bootstrap_php_string_literal_expression(
-                    app_project_db_access_bootstrap_sql_identifier($tableName)
-                    . '.'
-                    . app_project_db_access_bootstrap_sql_identifier($columnName)
-                    . ' = '
-                ),
-                app_project_db_access_bootstrap_php_scalar_sql_value($parameterName),
-            ]);
+            $conditions[] = app_project_db_access_bootstrap_sql_identifier($tableName)
+                . '.'
+                . app_project_db_access_bootstrap_sql_identifier($columnName)
+                . ' = ?';
+            $paramExpressions[] = app_project_db_access_bootstrap_php_scalar_expression($parameterName);
         }
 
         if ($conditions !== []) {
-            $sqlExpressionParts[] = app_project_db_access_bootstrap_php_string_literal_expression(' where ');
-            $sqlExpressionParts[] = app_project_db_access_bootstrap_php_join_expressions($conditions, ' and ');
+            $sql .= ' where ' . implode(' and ', $conditions);
+        }
+    } else {
+        $sortOrderColumns = app_project_db_access_bootstrap_default_sort_order_columns($table);
+        if ($sortOrderColumns !== '') {
+            $sortColumns = array_values(array_filter(
+                array_map('trim', explode(',', $sortOrderColumns)),
+                static fn (string $columnName): bool => $columnName !== '',
+            ));
+            if ($sortColumns !== []) {
+                $sql .= ' order by ' . implode(
+                    ', ',
+                    array_map(
+                        static fn (string $columnName): string => app_project_db_access_bootstrap_sql_identifier($tableName)
+                            . '.'
+                            . app_project_db_access_bootstrap_sql_identifier($columnName),
+                        $sortColumns,
+                    ),
+                );
+            }
         }
     }
-
-    $sqlExpression = app_project_db_access_bootstrap_php_concat_expression($sqlExpressionParts);
 
     $lines = [
         '        global $mtooldb, $last_sql_command_for_mtooldb;',
@@ -398,8 +444,12 @@ function app_project_db_access_bootstrap_select_body_lines(array $table, array $
         $lines[] = '';
     }
 
-    $lines[] = '        $last_sql_command_for_mtooldb = ' . $sqlExpression . ';';
-    $lines[] = '        $ret = $mtooldb->query($last_sql_command_for_mtooldb);';
+    $lines[] = '        $last_sql_command_for_mtooldb = ' . app_project_db_access_bootstrap_php_string_literal_expression($sql) . ';';
+    $lines[] = '        $ret = $mtooldb->execute($last_sql_command_for_mtooldb, [';
+    foreach ($paramExpressions as $paramExpression) {
+        $lines[] = '            ' . $paramExpression . ',';
+    }
+    $lines[] = '        ]);';
     $lines[] = '        if ($mtooldb->errno != 0) {';
     $lines[] = '            error_log("Error occured while executing SQL: " . $mtooldb->error . " in " . __FILE__ . " on line " . __LINE__);';
     $lines[] = '            return $ret;';
@@ -446,7 +496,8 @@ function app_project_db_access_bootstrap_insert_body_lines(array $table, array $
     $tableName = trim((string) ($table['name'] ?? ''));
     $objectParameterName = app_project_db_access_bootstrap_object_parameter_name($tableName);
     $columnNames = [];
-    $valueExpressions = [];
+    $valuePlaceholders = [];
+    $paramExpressions = [];
 
     foreach ($columns as $column) {
         $columnName = trim((string) ($column['name'] ?? ''));
@@ -455,42 +506,26 @@ function app_project_db_access_bootstrap_insert_body_lines(array $table, array $
         }
 
         $columnNames[] = app_project_db_access_bootstrap_sql_identifier($columnName);
-        $valueExpressions[] = app_project_db_access_bootstrap_php_property_sql_value(
+        $valuePlaceholders[] = '?';
+        $paramExpressions[] = app_project_db_access_bootstrap_php_property_expression(
             $objectParameterName,
             $columnName,
         );
     }
 
     if ($columnNames === []) {
-        $sqlExpression = app_project_db_access_bootstrap_php_string_literal_expression(
-            'insert into ' . app_project_db_access_bootstrap_sql_identifier($tableName) . ' () values()'
-        );
+        $sql = 'insert into ' . app_project_db_access_bootstrap_sql_identifier($tableName) . ' () values()';
     } else {
-        $sqlExpression = app_project_db_access_bootstrap_php_concat_expression([
-            app_project_db_access_bootstrap_php_string_literal_expression(
-                'insert into '
-                . app_project_db_access_bootstrap_sql_identifier($tableName)
-                . ' ('
-                . implode(', ', $columnNames)
-                . ') values('
-            ),
-            app_project_db_access_bootstrap_php_join_expressions($valueExpressions, ', '),
-            app_project_db_access_bootstrap_php_string_literal_expression(')'),
-        ]);
+        $sql = 'insert into '
+            . app_project_db_access_bootstrap_sql_identifier($tableName)
+            . ' ('
+            . implode(', ', $columnNames)
+            . ') values('
+            . implode(', ', $valuePlaceholders)
+            . ')';
     }
 
-    return [
-        '        global $mtooldb, $last_sql_command_for_mtooldb;',
-        '        connect_mtooldb_if_not_yet();',
-        '        reconnect_mtooldb_if_necessary();',
-        '',
-        '        $last_sql_command_for_mtooldb = ' . $sqlExpression . ';',
-        '        $result = $mtooldb->query($last_sql_command_for_mtooldb);',
-        '        if ($mtooldb->errno != 0) {',
-        '            error_log("Error occured while executing SQL: " . $mtooldb->error . " in " . __FILE__ . " on line " . __LINE__);',
-        '        }',
-        '        return $result;',
-    ];
+    return app_project_db_access_bootstrap_prepared_write_body_lines($sql, $paramExpressions);
 }
 
 /**
@@ -514,8 +549,9 @@ function app_project_db_access_bootstrap_update_body_lines(array $table, array $
 {
     $tableName = trim((string) ($table['name'] ?? ''));
     $objectParameterName = app_project_db_access_bootstrap_object_parameter_name($tableName);
-    $setExpressions = [];
-    $whereExpressions = [];
+    $setFragments = [];
+    $whereFragments = [];
+    $paramExpressions = [];
 
     foreach ($updateColumns as $column) {
         $columnName = trim((string) ($column['name'] ?? ''));
@@ -523,12 +559,8 @@ function app_project_db_access_bootstrap_update_body_lines(array $table, array $
             continue;
         }
 
-        $setExpressions[] = app_project_db_access_bootstrap_php_concat_expression([
-            app_project_db_access_bootstrap_php_string_literal_expression(
-                app_project_db_access_bootstrap_sql_identifier($columnName) . ' = '
-            ),
-            app_project_db_access_bootstrap_php_property_sql_value($objectParameterName, $columnName),
-        ]);
+        $setFragments[] = app_project_db_access_bootstrap_sql_identifier($columnName) . ' = ?';
+        $paramExpressions[] = app_project_db_access_bootstrap_php_property_expression($objectParameterName, $columnName);
     }
 
     foreach ($keyColumns as $column) {
@@ -537,40 +569,21 @@ function app_project_db_access_bootstrap_update_body_lines(array $table, array $
             continue;
         }
 
-        $whereExpressions[] = app_project_db_access_bootstrap_php_concat_expression([
-            app_project_db_access_bootstrap_php_string_literal_expression(
-                app_project_db_access_bootstrap_sql_identifier($tableName)
-                . '.'
-                . app_project_db_access_bootstrap_sql_identifier($columnName)
-                . ' = '
-            ),
-            app_project_db_access_bootstrap_php_property_sql_value($objectParameterName, $columnName),
-        ]);
+        $whereFragments[] = app_project_db_access_bootstrap_sql_identifier($tableName)
+            . '.'
+            . app_project_db_access_bootstrap_sql_identifier($columnName)
+            . ' = ?';
+        $paramExpressions[] = app_project_db_access_bootstrap_php_property_expression($objectParameterName, $columnName);
     }
 
-    $sqlExpression = app_project_db_access_bootstrap_php_concat_expression([
-        app_project_db_access_bootstrap_php_string_literal_expression(
-            'update '
-            . app_project_db_access_bootstrap_sql_identifier($tableName)
-            . ' SET '
-        ),
-        app_project_db_access_bootstrap_php_join_expressions($setExpressions, ', '),
-        app_project_db_access_bootstrap_php_string_literal_expression(' where '),
-        app_project_db_access_bootstrap_php_join_expressions($whereExpressions, ' and '),
-    ]);
+    $sql = 'update '
+        . app_project_db_access_bootstrap_sql_identifier($tableName)
+        . ' SET '
+        . implode(', ', $setFragments)
+        . ' where '
+        . implode(' and ', $whereFragments);
 
-    return [
-        '        global $mtooldb, $last_sql_command_for_mtooldb;',
-        '        connect_mtooldb_if_not_yet();',
-        '        reconnect_mtooldb_if_necessary();',
-        '',
-        '        $last_sql_command_for_mtooldb = ' . $sqlExpression . ';',
-        '        $result = $mtooldb->query($last_sql_command_for_mtooldb);',
-        '        if ($mtooldb->errno != 0) {',
-        '            error_log("Error occured while executing SQL: " . $mtooldb->error . " in " . __FILE__ . " on line " . __LINE__);',
-        '        }',
-        '        return $result;',
-    ];
+    return app_project_db_access_bootstrap_prepared_write_body_lines($sql, $paramExpressions);
 }
 
 /**
@@ -586,7 +599,8 @@ function app_project_db_access_bootstrap_update_body_lines(array $table, array $
 function app_project_db_access_bootstrap_delete_body_lines(array $table, array $keyColumns): array
 {
     $tableName = trim((string) ($table['name'] ?? ''));
-    $whereExpressions = [];
+    $whereFragments = [];
+    $paramExpressions = [];
 
     foreach ($keyColumns as $column) {
         $columnName = trim((string) ($column['name'] ?? ''));
@@ -595,38 +609,19 @@ function app_project_db_access_bootstrap_delete_body_lines(array $table, array $
         }
 
         $parameterName = app_project_db_access_bootstrap_scalar_parameter_name($tableName, $columnName);
-        $whereExpressions[] = app_project_db_access_bootstrap_php_concat_expression([
-            app_project_db_access_bootstrap_php_string_literal_expression(
-                app_project_db_access_bootstrap_sql_identifier($tableName)
-                . '.'
-                . app_project_db_access_bootstrap_sql_identifier($columnName)
-                . ' = '
-            ),
-            app_project_db_access_bootstrap_php_scalar_sql_value($parameterName),
-        ]);
+        $whereFragments[] = app_project_db_access_bootstrap_sql_identifier($tableName)
+            . '.'
+            . app_project_db_access_bootstrap_sql_identifier($columnName)
+            . ' = ?';
+        $paramExpressions[] = app_project_db_access_bootstrap_php_scalar_expression($parameterName);
     }
 
-    $sqlExpression = app_project_db_access_bootstrap_php_concat_expression([
-        app_project_db_access_bootstrap_php_string_literal_expression(
-            'delete from '
-            . app_project_db_access_bootstrap_sql_identifier($tableName)
-            . ' where '
-        ),
-        app_project_db_access_bootstrap_php_join_expressions($whereExpressions, ' and '),
-    ]);
+    $sql = 'delete from '
+        . app_project_db_access_bootstrap_sql_identifier($tableName)
+        . ' where '
+        . implode(' and ', $whereFragments);
 
-    return [
-        '        global $mtooldb, $last_sql_command_for_mtooldb;',
-        '        connect_mtooldb_if_not_yet();',
-        '        reconnect_mtooldb_if_necessary();',
-        '',
-        '        $last_sql_command_for_mtooldb = ' . $sqlExpression . ';',
-        '        $result = $mtooldb->query($last_sql_command_for_mtooldb);',
-        '        if ($mtooldb->errno != 0) {',
-        '            error_log("Error occured while executing SQL: " . $mtooldb->error . " in " . __FILE__ . " on line " . __LINE__);',
-        '        }',
-        '        return $result;',
-    ];
+    return app_project_db_access_bootstrap_prepared_write_body_lines($sql, $paramExpressions);
 }
 
 /**
@@ -1223,6 +1218,7 @@ function app_project_db_access_bootstrap_generate_dbaccess_files(
     $storeBasePath = trim(str_replace('\\', '/', (string) ($classItem['store_base_path'] ?? '')), '/');
     $wrapperRelativePath = app_project_output_db_access_wrapper_relative_path($storeBasePath, $sourceName);
     $baseRelativePath = app_project_output_db_access_base_relative_path($storeBasePath, $sourceName);
+    $runtimeDbSupportRequirePath = app_project_output_db_access_runtime_support_require_path($storeBasePath);
 
     $generatedMethodResults = [];
     $signaturesByFunction = [];
@@ -1240,6 +1236,10 @@ function app_project_db_access_bootstrap_generate_dbaccess_files(
     }
 
     app_project_db_access_bootstrap_write_text_file(
+        $runtimeRoot . '/' . app_project_output_db_access_runtime_support_relative_path(),
+        app_project_output_db_access_runtime_support_php_text(),
+    );
+    app_project_db_access_bootstrap_write_text_file(
         $runtimeRoot . '/' . $baseRelativePath,
         app_project_output_generated_db_access_base_php_text(
             $classItem,
@@ -1247,6 +1247,7 @@ function app_project_db_access_bootstrap_generate_dbaccess_files(
             $generatedMethodResults,
             $signaturesByFunction,
             [],
+            $runtimeDbSupportRequirePath,
         ),
     );
     app_project_db_access_bootstrap_write_text_file(

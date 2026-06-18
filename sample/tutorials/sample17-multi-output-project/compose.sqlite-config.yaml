@@ -1,0 +1,10 @@
+name: mtool-sample-sample17-multi-output-project-sqlite
+
+services:
+  web-admin:
+    environment:
+      APP_WORK_ROOT: /var/www/work/sample-packs/sample17-multi-output-project-sqlite
+
+  web-lab:
+    environment:
+      APP_WORK_ROOT: /var/www/work/sample-packs/sample17-multi-output-project-sqlite

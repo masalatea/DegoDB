@@ -247,10 +247,14 @@ final class SamplePackCatalogTest extends TestCase
         self::assertIsString($runner, 'failed to read: ' . $runnerPath);
 
         self::assertStringContainsString('usage: sample-pack-runner.sh PACK_DIR {up|down|reset|ps|logs|apply-seed}', $runner);
-        self::assertStringContainsString('PACK_COMPOSE="$PACK_DIR/compose.yaml"', $runner);
+        self::assertStringContainsString('PACK_COMPOSE="${SAMPLE_PACK_COMPOSE_FILE:-$PACK_DIR/compose.yaml}"', $runner);
+        self::assertStringContainsString('PACK_COMPOSE_LANE="${SAMPLE_PACK_COMPOSE_LANE:-local}"', $runner);
+        self::assertStringContainsString('PACK_INCLUDE_LIFECYCLE="${SAMPLE_PACK_INCLUDE_LIFECYCLE:-1}"', $runner);
         self::assertStringContainsString('PACK_SEED_DIR="$PACK_DIR/seed"', $runner);
-        self::assertStringContainsString('bash "$REPO_ROOT/mtool/scripts/list_compose_stack_files.sh" \\', $runner);
-        self::assertStringContainsString('"--compose-file=$PACK_COMPOSE" \\', $runner);
+        self::assertStringContainsString('compose_stack_args=(', $runner);
+        self::assertStringContainsString('"--lane=$PACK_COMPOSE_LANE"', $runner);
+        self::assertStringContainsString('"--compose-file=$PACK_COMPOSE"', $runner);
+        self::assertStringContainsString('bash "$REPO_ROOT/mtool/scripts/list_compose_stack_files.sh" "${compose_stack_args[@]}"', $runner);
         self::assertStringContainsString('"--compose-file=sample/_pack-support/sample-pack-lifecycle.compose.yaml"', $runner);
         self::assertStringContainsString('exec bash "$REPO_ROOT/mtool/scripts/apply_config_sample_seed.sh" \\', $runner);
         self::assertStringContainsString('"--compose-file=$PACK_COMPOSE" \\', $runner);

@@ -5,6 +5,15 @@ declare(strict_types=1);
 require_once __DIR__ . '/database.php';
 require_once __DIR__ . '/runtime_storage_paths.php';
 
+function app_compare_output_pdo_datetime_select_expr(array $app, string $columnExpression, string $alias = 'updated_at'): string
+{
+    return app_sql_datetime_select_expr(
+        app_sql_dialect_from_db_config(app_database_config($app, 'config_db')),
+        $columnExpression,
+        $alias,
+    );
+}
+
 function app_compare_output_pdo_canonicalize_base_path_value(string $value): string
 {
     $normalized = trim(str_replace('\\', '/', $value));
@@ -31,7 +40,7 @@ function app_pdo_fetch_project_compare_output_catalog(array $app, string $projec
                 co.compare_output_list_order,
                 co.notes,
                 co.source_of_truth,
-                DATE_FORMAT(co.updated_at, "%Y-%m-%d %H:%i:%s") AS updated_at
+                ' . app_compare_output_pdo_datetime_select_expr($app, 'co.updated_at') . '
             FROM project_compare_outputs AS co
             INNER JOIN projects AS p
                 ON p.id = co.project_id
@@ -82,7 +91,7 @@ function app_pdo_fetch_project_compare_output_item(array $app, string $projectKe
                 co.compare_output_list_order,
                 co.notes,
                 co.source_of_truth,
-                DATE_FORMAT(co.updated_at, "%Y-%m-%d %H:%i:%s") AS updated_at
+                ' . app_compare_output_pdo_datetime_select_expr($app, 'co.updated_at') . '
             FROM project_compare_outputs AS co
             INNER JOIN projects AS p
                 ON p.id = co.project_id
@@ -277,7 +286,7 @@ function app_pdo_fetch_project_compare_output_additional_path_catalog(
                 ap.additional_path_list_order,
                 ap.notes,
                 ap.source_of_truth,
-                DATE_FORMAT(ap.updated_at, "%Y-%m-%d %H:%i:%s") AS updated_at
+                ' . app_compare_output_pdo_datetime_select_expr($app, 'ap.updated_at') . '
             FROM project_compare_output_additional_paths AS ap
             INNER JOIN project_compare_outputs AS co
                 ON co.id = ap.compare_output_id
@@ -335,7 +344,7 @@ function app_pdo_fetch_project_compare_output_additional_path_item(
                 ap.additional_path_list_order,
                 ap.notes,
                 ap.source_of_truth,
-                DATE_FORMAT(ap.updated_at, "%Y-%m-%d %H:%i:%s") AS updated_at
+                ' . app_compare_output_pdo_datetime_select_expr($app, 'ap.updated_at') . '
             FROM project_compare_output_additional_paths AS ap
             INNER JOIN project_compare_outputs AS co
                 ON co.id = ap.compare_output_id

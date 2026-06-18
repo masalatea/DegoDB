@@ -13,7 +13,9 @@ shift 2
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 REPO_ROOT="$(cd "$SCRIPT_DIR/../.." && pwd)"
 PACK_NAME="$(basename "$PACK_DIR")"
-PACK_COMPOSE="$PACK_DIR/compose.yaml"
+PACK_COMPOSE="${SAMPLE_PACK_COMPOSE_FILE:-$PACK_DIR/compose.yaml}"
+PACK_COMPOSE_LANE="${SAMPLE_PACK_COMPOSE_LANE:-local}"
+PACK_INCLUDE_LIFECYCLE="${SAMPLE_PACK_INCLUDE_LIFECYCLE:-1}"
 PACK_SEED_DIR="$PACK_DIR/seed"
 
 compose_cmd=(docker compose)
@@ -21,9 +23,14 @@ while IFS= read -r compose_file; do
   [ -n "$compose_file" ] || continue
   compose_cmd+=(-f "$compose_file")
 done < <(
-  bash "$REPO_ROOT/mtool/scripts/list_compose_stack_files.sh" \
-    "--compose-file=$PACK_COMPOSE" \
-    "--compose-file=sample/_pack-support/sample-pack-lifecycle.compose.yaml"
+  compose_stack_args=(
+    "--lane=$PACK_COMPOSE_LANE"
+    "--compose-file=$PACK_COMPOSE"
+  )
+  if [ "$PACK_INCLUDE_LIFECYCLE" != "0" ]; then
+    compose_stack_args+=("--compose-file=sample/_pack-support/sample-pack-lifecycle.compose.yaml")
+  fi
+  bash "$REPO_ROOT/mtool/scripts/list_compose_stack_files.sh" "${compose_stack_args[@]}"
 )
 
 case "$ACTION" in

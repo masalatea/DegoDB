@@ -260,9 +260,11 @@ Current implementation note:
 
 - local default stack 用に `make backup-config-db` / `make restore-config-db` を用意する。
 - MTOOL core seed stack 用に `make backup-config-db-mtool` / `make restore-config-db-mtool` を用意する。
+- rotation 付き backup として `make backup-config-db-rotate` / `make backup-config-db-mtool-rotate` を用意する。
 - durable env file lane 用に `deploy/durable-config-db.env.example` と `make up-durable-config-db` / `make config-db-preflight-durable-config-db` / `make db-config-migrate-durable-config-db` を用意する。
 - restore は `BACKUP_FILE=...` と `CONFIRM_RESTORE=yes` を必須にする。
-- dump は `work/backups/config-db/` 配下に置き、Git 管理しない。
+- restore 前に current state の automatic backup を取る。
+- dump は default では `work/backups/config-db/` 配下に置き、Git 管理しない。
 
 5. artifact と設計データの UI 分離
    - generated output は成果物として表示する。

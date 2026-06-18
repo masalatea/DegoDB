@@ -35,6 +35,19 @@ make sample14-pack-runtime-test
 
 `sample14-pack-runtime-test` は container 内 PHPUnit で `tests/Integration/Sample14CustomProxyRuntimeOutputTest.php` を実行します。
 
+SQLite config store profile で同じ tutorial を検証:
+
+```sh
+make sample14-pack-runtime-test-sqlite
+```
+
+手元で軽く動かす場合は、DegoDB 自身の設計メタデータを `APP_CONFIG_STORE_DIR` 配下の SQLite file に保存できます。
+
+```sh
+APP_CONFIG_STORE_DIR=work/config-store-sample14-sqlite \
+  ./sample/tutorials/sample14-custom-proxy-runtime/run-sqlite-config.sh up
+```
+
 ## Seed 内容
 
 - `projects`

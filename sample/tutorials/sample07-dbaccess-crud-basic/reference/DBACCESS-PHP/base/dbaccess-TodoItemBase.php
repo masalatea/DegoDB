@@ -7,6 +7,9 @@
 // Generated from canonical DB Access metadata.
 // Base class generated from project_db_access_* metadata.
 
+require_once __DIR__ . '/../_support/mtool_runtime_db.php';
+
+
 class TodoItemDBAccessBase
 {
     public function __construct()
@@ -20,8 +23,12 @@ class TodoItemDBAccessBase
         connect_mtooldb_if_not_yet();
         reconnect_mtooldb_if_necessary();
 
-        $last_sql_command_for_mtooldb = 'insert into TodoItem (Title, Status, Body) values(' . '\'' . $mtooldb->real_escape_string($TodoItemObj->Title) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($TodoItemObj->Status) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($TodoItemObj->Body) . '\'' . ')';
-        $result = $mtooldb->query($last_sql_command_for_mtooldb);
+        $last_sql_command_for_mtooldb = 'insert into TodoItem (Title, Status, Body) values(?, ?, ?)';
+        $result = $mtooldb->execute($last_sql_command_for_mtooldb, [
+            $TodoItemObj->Title,
+            $TodoItemObj->Status,
+            $TodoItemObj->Body,
+        ]);
         if ($mtooldb->errno != 0) {
             error_log("Error occured while executing SQL: " . $mtooldb->error . " in " . __FILE__ . " on line " . __LINE__);
         }
@@ -35,8 +42,13 @@ class TodoItemDBAccessBase
         connect_mtooldb_if_not_yet();
         reconnect_mtooldb_if_necessary();
 
-        $last_sql_command_for_mtooldb = 'update TodoItem SET ' . 'Title = ' . '\'' . $mtooldb->real_escape_string($TodoItemObj->Title) . '\'' . ', ' . 'Status = ' . '\'' . $mtooldb->real_escape_string($TodoItemObj->Status) . '\'' . ', ' . 'Body = ' . '\'' . $mtooldb->real_escape_string($TodoItemObj->Body) . '\'' . ' where ' . 'TodoItem.Id = ' . '\'' . $mtooldb->real_escape_string($TodoItemObj->Id) . '\'';
-        $result = $mtooldb->query($last_sql_command_for_mtooldb);
+        $last_sql_command_for_mtooldb = 'update TodoItem SET Title = ?, Status = ?, Body = ? where TodoItem.Id = ?';
+        $result = $mtooldb->execute($last_sql_command_for_mtooldb, [
+            $TodoItemObj->Title,
+            $TodoItemObj->Status,
+            $TodoItemObj->Body,
+            $TodoItemObj->Id,
+        ]);
         if ($mtooldb->errno != 0) {
             error_log("Error occured while executing SQL: " . $mtooldb->error . " in " . __FILE__ . " on line " . __LINE__);
         }
@@ -50,8 +62,10 @@ class TodoItemDBAccessBase
         connect_mtooldb_if_not_yet();
         reconnect_mtooldb_if_necessary();
 
-        $last_sql_command_for_mtooldb = 'delete from TodoItem where ' . 'TodoItem.Id = ' . '\'' . $mtooldb->real_escape_string($TodoItemObj->Id) . '\'';
-        $result = $mtooldb->query($last_sql_command_for_mtooldb);
+        $last_sql_command_for_mtooldb = 'delete from TodoItem where TodoItem.Id = ?';
+        $result = $mtooldb->execute($last_sql_command_for_mtooldb, [
+            $TodoItemObj->Id,
+        ]);
         if ($mtooldb->errno != 0) {
             error_log("Error occured while executing SQL: " . $mtooldb->error . " in " . __FILE__ . " on line " . __LINE__);
         }

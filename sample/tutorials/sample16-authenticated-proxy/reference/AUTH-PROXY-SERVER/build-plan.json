@@ -18,6 +18,25 @@
             "endpoint_slug": "getauthtask",
             "function_list_order": "10",
             "action_type": "SELECTSINGLE",
+            "limit_parameter_type": "",
+            "limit_fixed_parameter": "",
+            "select_wheres": [
+                {
+                    "target_table_name": "AuthTask",
+                    "target_table_alias_name": "",
+                    "target_table_column_name": "Id",
+                    "parameter_type": "argument",
+                    "parameter_data_type": "int",
+                    "fixed_parameter": "",
+                    "another_table_name": "",
+                    "another_table_alias_name": "",
+                    "another_field_name": "",
+                    "join_type": "",
+                    "or_group": "",
+                    "relational_operator": "=",
+                    "where_order": "10"
+                }
+            ],
             "auth_policy": {
                 "raw_auth_type": "ProjectToken",
                 "raw_auth_type_caption": "Project's Token (default)",
@@ -34,8 +53,8 @@
                 "is_valid": true
             },
             "source_of_truth": "manual",
-            "function_updated_at": "2026-06-16 14:03:00",
-            "target_updated_at": "2026-06-16 14:03:00",
+            "function_updated_at": "2026-06-17 11:03:47",
+            "target_updated_at": "2026-06-17 11:03:47",
             "resolved": true,
             "signature": "public function GetAuthTask($param_AuthTask_Id_where)",
             "line": 10,

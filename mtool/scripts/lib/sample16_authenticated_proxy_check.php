@@ -18,6 +18,14 @@ const APP_SAMPLE16_AUTH_PROXY_REFERENCE_FILES = [
     'build-plan.json',
     'proxyserver-AuthTask-GetAuthTask.php',
     '_base/handlers/AuthTaskGetAuthTaskProxyHandler.php',
+    '_support/runtime_dbclasses/_support/mtool_runtime_db.php',
+    '_support/runtime_dbclasses/autoload_proxy_runtime.php',
+    '_support/runtime_dbclasses/base/data-AuthTaskBase.php',
+    '_support/runtime_dbclasses/base/dbaccess-AuthTaskBase.php',
+    '_support/runtime_dbclasses/data-AuthTask.php',
+    '_support/runtime_dbclasses/dbaccess-AuthTask.php',
+    '_support/single_proxy_loader.php',
+    '_support/single_proxy_runtime.php',
     '_wrappers/handlers/AuthTaskGetAuthTaskProxyHandler.php',
 ];
 

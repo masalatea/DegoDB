@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 require_once __DIR__ . '/database_source_repository.php';
+require_once __DIR__ . '/sql_dialect.php';
 
 /**
  * @param array{
@@ -16,8 +17,19 @@ require_once __DIR__ . '/database_source_repository.php';
  */
 function app_create_pdo_from_db_config(array $dbConfig): PDO
 {
+    $dsn = $dbConfig['dsn'];
+    if (str_starts_with(strtolower(trim($dsn)), 'sqlite:')) {
+        $sqlitePath = substr($dsn, strlen('sqlite:'));
+        if ($sqlitePath !== '' && $sqlitePath !== ':memory:') {
+            $sqliteDir = dirname($sqlitePath);
+            if ($sqliteDir !== '' && $sqliteDir !== '.' && !is_dir($sqliteDir)) {
+                mkdir($sqliteDir, 0775, true);
+            }
+        }
+    }
+
     return new PDO(
-        $dbConfig['dsn'],
+        $dsn,
         $dbConfig['user'],
         $dbConfig['password'],
         [
@@ -459,12 +471,12 @@ function app_probe_database_source(array $app, string $key): array
 {
     try {
         $pdo = app_create_pdo_from_db_config(app_database_source_config($app, $key));
-        $version = $pdo->query('SELECT VERSION()')->fetchColumn();
+        $version = app_sql_server_version($pdo);
 
         return [
             'ok' => true,
             'label' => 'connected',
-            'detail' => is_string($version) && $version !== '' ? $version : 'VERSION() unavailable',
+            'detail' => $version !== '' ? $version : 'version unavailable',
         ];
     } catch (Throwable $throwable) {
         return [
@@ -486,12 +498,12 @@ function app_probe_database_config(array $app, string $key): array
 {
     try {
         $pdo = app_create_pdo_from_db_config(app_database_config($app, $key));
-        $version = $pdo->query('SELECT VERSION()')->fetchColumn();
+        $version = app_sql_server_version($pdo);
 
         return [
             'ok' => true,
             'label' => 'connected',
-            'detail' => is_string($version) && $version !== '' ? $version : 'VERSION() unavailable',
+            'detail' => $version !== '' ? $version : 'version unavailable',
         ];
     } catch (Throwable $throwable) {
         return [

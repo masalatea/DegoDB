@@ -273,6 +273,8 @@ function app_project_table_import_apply(
 
     try {
         $pdo = app_create_config_pdo($app);
+        $dialect = app_sql_dialect_from_db_config(app_database_config($app, 'config_db'));
+        $isNullIdentifier = app_sql_identifier($dialect, 'IsNull');
         $projectId = app_table_metadata_pdo_resolve_project_id($pdo, $normalizedProjectKey);
         $managedSourceTables = app_project_table_import_managed_source_tables($sourceResult);
         $managedCanonicalTables = app_project_table_import_managed_canonical_tables($canonicalSnapshot['items'], $sourceResult);
@@ -330,7 +332,7 @@ function app_project_table_import_apply(
                             dbtablePID,
                             name,
                             datatype,
-                            IsNull,
+                            ' . $isNullIdentifier . ',
                             IsKey,
                             IsDefault,
                             Extra,
@@ -369,7 +371,7 @@ function app_project_table_import_apply(
                         'UPDATE dbtablecolumns
                          SET
                             datatype = :datatype,
-                            IsNull = :is_null,
+                            ' . $isNullIdentifier . ' = :is_null,
                             IsKey = :is_key,
                             IsDefault = :is_default,
                             Extra = :extra,

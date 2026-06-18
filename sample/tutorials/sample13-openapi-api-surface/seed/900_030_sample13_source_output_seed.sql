@@ -6,7 +6,10 @@ SET @sample13_project_id = (
 
 DELETE FROM project_source_outputs
 WHERE project_id = @sample13_project_id
-  AND source_output_key = 'OPENAPI-JSON';
+  AND source_output_key IN (
+      'OPENAPI-JSON',
+      'API-PROXY-SERVER'
+  );
 
 INSERT INTO project_source_outputs (
     project_id,
@@ -29,7 +32,8 @@ INSERT INTO project_source_outputs (
     spec_visibility,
     notes,
     source_of_truth
-) VALUES (
+) VALUES
+(
     @sample13_project_id,
     'OPENAPI-JSON',
     'Sample13 OpenAPI JSON',
@@ -49,6 +53,28 @@ INSERT INTO project_source_outputs (
     30,
     'internal-only',
     'Generate OpenAPI JSON from ApiTask single-function proxy target metadata.',
+    'manual'
+),
+(
+    @sample13_project_id,
+    'API-PROXY-SERVER',
+    'Sample13 API Proxy Server',
+    'php',
+    'ProxyServer',
+    'Release',
+    '',
+    'work/source-outputs/SAMPLE13/API-PROXY-SERVER',
+    'work/staging/source-outputs/SAMPLE13/API-PROXY-SERVER',
+    '',
+    '',
+    'UTF-8',
+    'mtool/proxy-source-outputs/SAMPLE13/API-PROXY-SERVER',
+    'single-proxy-server',
+    'single-function-proxy',
+    'tar.gz',
+    40,
+    'disabled',
+    'Generate a NoSecurity single proxy server endpoint from ApiTask read functions.',
     'manual'
 )
 ON DUPLICATE KEY UPDATE
@@ -78,6 +104,25 @@ INSERT INTO project_db_access_function_source_output_targets (
 SELECT
     functions.id,
     'OPENAPI-JSON'
+FROM project_db_access_functions AS functions
+INNER JOIN project_db_access_classes AS classes
+    ON classes.id = functions.db_access_class_id
+WHERE classes.project_id = @sample13_project_id
+  AND classes.source_name = 'ApiTask'
+  AND functions.function_name IN (
+      'GetApiTaskList',
+      'GetApiTask'
+  )
+ON DUPLICATE KEY UPDATE
+    source_output_key = VALUES(source_output_key);
+
+INSERT INTO project_db_access_function_source_output_targets (
+    db_access_function_id,
+    source_output_key
+)
+SELECT
+    functions.id,
+    'API-PROXY-SERVER'
 FROM project_db_access_functions AS functions
 INNER JOIN project_db_access_classes AS classes
     ON classes.id = functions.db_access_class_id

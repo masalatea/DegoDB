@@ -7,6 +7,9 @@
 // Generated from canonical DB Access metadata.
 // Base class generated from project_db_access_* metadata.
 
+require_once __DIR__ . '/../_support/mtool_runtime_db.php';
+
+
 class BlogPostDBAccessBase
 {
     public function __construct()
@@ -22,8 +25,10 @@ class BlogPostDBAccessBase
 
         $result = array();
 
-        $last_sql_command_for_mtooldb = 'select BlogPost.Id, BlogPost.Title, BlogAuthor.Id, BlogAuthor.Name from BlogPost join BlogAuthor on BlogPost.BlogAuthorId = BlogAuthor.Id' . ' where ' . 'BlogPost.Status = ' . '\'' . $mtooldb->real_escape_string('published') . '\'' . ' and ' . 'BlogAuthor.IsActive = ' . '1' . ' order by BlogPost.Id asc';
-        $ret = $mtooldb->query($last_sql_command_for_mtooldb);
+        $last_sql_command_for_mtooldb = 'select BlogPost.Id, BlogPost.Title, BlogAuthor.Id, BlogAuthor.Name from BlogPost join BlogAuthor on BlogPost.BlogAuthorId = BlogAuthor.Id where BlogPost.Status = ? and BlogAuthor.IsActive = 1 order by BlogPost.Id asc';
+        $ret = $mtooldb->execute($last_sql_command_for_mtooldb, [
+            'published',
+        ]);
         if ($mtooldb->errno != 0) {
             error_log("Error occured while executing SQL: " . $mtooldb->error . " in " . __FILE__ . " on line " . __LINE__);
             return $ret;

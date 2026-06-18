@@ -189,51 +189,35 @@ function app_project_html_reference_template_catalog(string $projectKey): array
     ];
 }
 
-function app_project_html_pdo_current_schema(PDO $pdo): string
-{
-    static $cache = [];
-
-    $objectId = spl_object_id($pdo);
-    if (array_key_exists($objectId, $cache)) {
-        return $cache[$objectId];
-    }
-
-    $schema = $pdo->query('SELECT DATABASE()')->fetchColumn();
-    $cache[$objectId] = is_string($schema) ? $schema : '';
-
-    return $cache[$objectId];
-}
-
 function app_project_html_pdo_table_exists(PDO $pdo, string $tableName): bool
 {
-    $schema = app_project_html_pdo_current_schema($pdo);
     $normalizedTableName = trim($tableName);
-    if ($schema === '' || $normalizedTableName === '') {
+    if ($normalizedTableName === '') {
         return false;
     }
 
     static $cache = [];
 
-    $cacheKey = $schema . ':' . $normalizedTableName;
+    $cacheKey = spl_object_id($pdo) . ':' . $normalizedTableName;
     if (array_key_exists($cacheKey, $cache)) {
         return $cache[$cacheKey];
     }
 
-    $statement = $pdo->prepare(
-        'SELECT 1
-        FROM information_schema.TABLES
-        WHERE TABLE_SCHEMA = :table_schema
-          AND TABLE_NAME = :table_name
-        LIMIT 1'
-    );
-    $statement->execute([
-        ':table_schema' => $schema,
-        ':table_name' => $normalizedTableName,
-    ]);
-
-    $cache[$cacheKey] = $statement->fetchColumn() !== false;
+    $cache[$cacheKey] = app_sql_table_exists($pdo, $normalizedTableName);
 
     return $cache[$cacheKey];
+}
+
+function app_project_html_datetime_select_expr(
+    PDO $pdo,
+    string $columnExpression,
+    string $alias = 'last_modified_dt',
+): string {
+    return app_sql_datetime_select_expr(
+        app_sql_dialect_from_pdo($pdo),
+        $columnExpression,
+        $alias,
+    );
 }
 
 function app_project_html_canonical_tables_available(PDO $pdo): bool
@@ -277,6 +261,166 @@ function app_project_html_bootstrap_reference_source_of_truth(): string
 function app_project_html_bootstrap_reference_notes(): string
 {
     return 'Copied from legacy html reference catalog; source_dump_path stays provenance-only host metadata.';
+}
+
+/**
+ * @param array<string,mixed> $html
+ */
+function app_project_html_canonical_upsert_definition_sqlite(
+    PDO $pdo,
+    int $projectId,
+    array $html,
+    int $htmlListOrder,
+    string $lastModifiedDt,
+): void {
+    $existing = app_project_html_canonical_definition_row_by_legacy_pid(
+        $pdo,
+        $projectId,
+        (int) ($html['legacy_html_pid'] ?? 0),
+    );
+
+    if ($existing !== null) {
+        $statement = $pdo->prepare(
+            'UPDATE project_html_definitions
+            SET
+                html_key = :html_key,
+                name = :name,
+                legacy_project_source_output_pid = :legacy_project_source_output_pid,
+                legacy_html_template_pid = :legacy_html_template_pid,
+                html_list_order = :html_list_order,
+                last_modified_dt = :last_modified_dt,
+                notes = :notes,
+                source_of_truth = :source_of_truth,
+                updated_at = CURRENT_TIMESTAMP
+            WHERE id = :id'
+        );
+        $statement->execute([
+            ':id' => $existing['id'],
+            ':html_key' => (string) ($html['html_key'] ?? ''),
+            ':name' => (string) ($html['name'] ?? ''),
+            ':legacy_project_source_output_pid' => (int) ($html['legacy_project_source_output_pid'] ?? 0),
+            ':legacy_html_template_pid' => (int) ($html['legacy_html_template_pid'] ?? 0),
+            ':html_list_order' => $htmlListOrder,
+            ':last_modified_dt' => $lastModifiedDt,
+            ':notes' => app_project_html_bootstrap_reference_notes(),
+            ':source_of_truth' => app_project_html_bootstrap_reference_source_of_truth(),
+        ]);
+
+        return;
+    }
+
+    $statement = $pdo->prepare(
+        'INSERT INTO project_html_definitions (
+            project_id,
+            legacy_html_pid,
+            html_key,
+            name,
+            legacy_project_source_output_pid,
+            legacy_html_template_pid,
+            html_list_order,
+            last_modified_dt,
+            notes,
+            source_of_truth
+        ) VALUES (
+            :project_id,
+            :legacy_html_pid,
+            :html_key,
+            :name,
+            :legacy_project_source_output_pid,
+            :legacy_html_template_pid,
+            :html_list_order,
+            :last_modified_dt,
+            :notes,
+            :source_of_truth
+        )'
+    );
+    $statement->execute([
+        ':project_id' => $projectId,
+        ':legacy_html_pid' => (int) ($html['legacy_html_pid'] ?? 0),
+        ':html_key' => (string) ($html['html_key'] ?? ''),
+        ':name' => (string) ($html['name'] ?? ''),
+        ':legacy_project_source_output_pid' => (int) ($html['legacy_project_source_output_pid'] ?? 0),
+        ':legacy_html_template_pid' => (int) ($html['legacy_html_template_pid'] ?? 0),
+        ':html_list_order' => $htmlListOrder,
+        ':last_modified_dt' => $lastModifiedDt,
+        ':notes' => app_project_html_bootstrap_reference_notes(),
+        ':source_of_truth' => app_project_html_bootstrap_reference_source_of_truth(),
+    ]);
+}
+
+/**
+ * @param array<string,mixed> $parameter
+ */
+function app_project_html_canonical_upsert_parameter_sqlite(
+    PDO $pdo,
+    int $projectId,
+    int $definitionId,
+    array $parameter,
+    int $parameterListOrder,
+): void {
+    $existing = app_project_html_canonical_parameter_row_by_legacy_pid(
+        $pdo,
+        $projectId,
+        (int) ($parameter['legacy_parameter_pid'] ?? 0),
+    );
+
+    if ($existing !== null) {
+        $statement = $pdo->prepare(
+            'UPDATE project_html_parameters
+            SET
+                project_html_definition_id = :project_html_definition_id,
+                parameter_name = :parameter_name,
+                parameter_value = :parameter_value,
+                parameter_list_order = :parameter_list_order,
+                notes = :notes,
+                source_of_truth = :source_of_truth,
+                updated_at = CURRENT_TIMESTAMP
+            WHERE id = :id'
+        );
+        $statement->execute([
+            ':id' => $existing['id'],
+            ':project_html_definition_id' => $definitionId,
+            ':parameter_name' => (string) ($parameter['parameter_name'] ?? ''),
+            ':parameter_value' => (string) ($parameter['parameter_value'] ?? ''),
+            ':parameter_list_order' => $parameterListOrder,
+            ':notes' => app_project_html_bootstrap_reference_notes(),
+            ':source_of_truth' => app_project_html_bootstrap_reference_source_of_truth(),
+        ]);
+
+        return;
+    }
+
+    $statement = $pdo->prepare(
+        'INSERT INTO project_html_parameters (
+            project_id,
+            project_html_definition_id,
+            legacy_parameter_pid,
+            parameter_name,
+            parameter_value,
+            parameter_list_order,
+            notes,
+            source_of_truth
+        ) VALUES (
+            :project_id,
+            :project_html_definition_id,
+            :legacy_parameter_pid,
+            :parameter_name,
+            :parameter_value,
+            :parameter_list_order,
+            :notes,
+            :source_of_truth
+        )'
+    );
+    $statement->execute([
+        ':project_id' => $projectId,
+        ':project_html_definition_id' => $definitionId,
+        ':legacy_parameter_pid' => (int) ($parameter['legacy_parameter_pid'] ?? 0),
+        ':parameter_name' => (string) ($parameter['parameter_name'] ?? ''),
+        ':parameter_value' => (string) ($parameter['parameter_value'] ?? ''),
+        ':parameter_list_order' => $parameterListOrder,
+        ':notes' => app_project_html_bootstrap_reference_notes(),
+        ':source_of_truth' => app_project_html_bootstrap_reference_source_of_truth(),
+    ]);
 }
 
 function app_project_html_canonical_next_html_pid(PDO $pdo, int $projectId): int
@@ -409,41 +553,45 @@ function app_project_html_bootstrap_reference_into_canonical(PDO $pdo, string $p
     }
 
     try {
-        $definitionStatement = $pdo->prepare(
-            'INSERT INTO project_html_definitions (
-                project_id,
-                legacy_html_pid,
-                html_key,
-                name,
-                legacy_project_source_output_pid,
-                legacy_html_template_pid,
-                html_list_order,
-                last_modified_dt,
-                notes,
-                source_of_truth
-            ) VALUES (
-                :project_id,
-                :legacy_html_pid,
-                :html_key,
-                :name,
-                :legacy_project_source_output_pid,
-                :legacy_html_template_pid,
-                :html_list_order,
-                :last_modified_dt,
-                :notes,
-                :source_of_truth
-            )
-            ON DUPLICATE KEY UPDATE
-                html_key = VALUES(html_key),
-                name = VALUES(name),
-                legacy_project_source_output_pid = VALUES(legacy_project_source_output_pid),
-                legacy_html_template_pid = VALUES(legacy_html_template_pid),
-                html_list_order = VALUES(html_list_order),
-                last_modified_dt = VALUES(last_modified_dt),
-                notes = VALUES(notes),
-                source_of_truth = VALUES(source_of_truth),
-                updated_at = CURRENT_TIMESTAMP'
-        );
+        $dialect = app_sql_dialect_from_pdo($pdo);
+        $definitionStatement = null;
+        if ($dialect !== 'sqlite') {
+            $definitionStatement = $pdo->prepare(
+                'INSERT INTO project_html_definitions (
+                    project_id,
+                    legacy_html_pid,
+                    html_key,
+                    name,
+                    legacy_project_source_output_pid,
+                    legacy_html_template_pid,
+                    html_list_order,
+                    last_modified_dt,
+                    notes,
+                    source_of_truth
+                ) VALUES (
+                    :project_id,
+                    :legacy_html_pid,
+                    :html_key,
+                    :name,
+                    :legacy_project_source_output_pid,
+                    :legacy_html_template_pid,
+                    :html_list_order,
+                    :last_modified_dt,
+                    :notes,
+                    :source_of_truth
+                )
+                ON DUPLICATE KEY UPDATE
+                    html_key = VALUES(html_key),
+                    name = VALUES(name),
+                    legacy_project_source_output_pid = VALUES(legacy_project_source_output_pid),
+                    legacy_html_template_pid = VALUES(legacy_html_template_pid),
+                    html_list_order = VALUES(html_list_order),
+                    last_modified_dt = VALUES(last_modified_dt),
+                    notes = VALUES(notes),
+                    source_of_truth = VALUES(source_of_truth),
+                    updated_at = CURRENT_TIMESTAMP'
+            );
+        }
 
         $htmlListOrder = 10;
         foreach ($reference['item']['htmls'] as $html) {
@@ -452,18 +600,28 @@ function app_project_html_bootstrap_reference_into_canonical(PDO $pdo, string $p
                 $lastModifiedDt = date('Y-m-d H:i:s');
             }
 
-            $definitionStatement->execute([
-                ':project_id' => $projectId,
-                ':legacy_html_pid' => (int) ($html['legacy_html_pid'] ?? 0),
-                ':html_key' => (string) ($html['html_key'] ?? ''),
-                ':name' => (string) ($html['name'] ?? ''),
-                ':legacy_project_source_output_pid' => (int) ($html['legacy_project_source_output_pid'] ?? 0),
-                ':legacy_html_template_pid' => (int) ($html['legacy_html_template_pid'] ?? 0),
-                ':html_list_order' => $htmlListOrder,
-                ':last_modified_dt' => $lastModifiedDt,
-                ':notes' => app_project_html_bootstrap_reference_notes(),
-                ':source_of_truth' => app_project_html_bootstrap_reference_source_of_truth(),
-            ]);
+            if ($dialect === 'sqlite') {
+                app_project_html_canonical_upsert_definition_sqlite(
+                    $pdo,
+                    $projectId,
+                    $html,
+                    $htmlListOrder,
+                    $lastModifiedDt,
+                );
+            } elseif ($definitionStatement instanceof PDOStatement) {
+                $definitionStatement->execute([
+                    ':project_id' => $projectId,
+                    ':legacy_html_pid' => (int) ($html['legacy_html_pid'] ?? 0),
+                    ':html_key' => (string) ($html['html_key'] ?? ''),
+                    ':name' => (string) ($html['name'] ?? ''),
+                    ':legacy_project_source_output_pid' => (int) ($html['legacy_project_source_output_pid'] ?? 0),
+                    ':legacy_html_template_pid' => (int) ($html['legacy_html_template_pid'] ?? 0),
+                    ':html_list_order' => $htmlListOrder,
+                    ':last_modified_dt' => $lastModifiedDt,
+                    ':notes' => app_project_html_bootstrap_reference_notes(),
+                    ':source_of_truth' => app_project_html_bootstrap_reference_source_of_truth(),
+                ]);
+            }
 
             $htmlListOrder += 10;
         }
@@ -492,35 +650,38 @@ function app_project_html_bootstrap_reference_into_canonical(PDO $pdo, string $p
             $definitionIdsByLegacyHtmlPid[(string) $legacyHtmlPid] = $definitionId;
         }
 
-        $parameterStatement = $pdo->prepare(
-            'INSERT INTO project_html_parameters (
-                project_id,
-                project_html_definition_id,
-                legacy_parameter_pid,
-                parameter_name,
-                parameter_value,
-                parameter_list_order,
-                notes,
-                source_of_truth
-            ) VALUES (
-                :project_id,
-                :project_html_definition_id,
-                :legacy_parameter_pid,
-                :parameter_name,
-                :parameter_value,
-                :parameter_list_order,
-                :notes,
-                :source_of_truth
-            )
-            ON DUPLICATE KEY UPDATE
-                project_html_definition_id = VALUES(project_html_definition_id),
-                parameter_name = VALUES(parameter_name),
-                parameter_value = VALUES(parameter_value),
-                parameter_list_order = VALUES(parameter_list_order),
-                notes = VALUES(notes),
-                source_of_truth = VALUES(source_of_truth),
-                updated_at = CURRENT_TIMESTAMP'
-        );
+        $parameterStatement = null;
+        if ($dialect !== 'sqlite') {
+            $parameterStatement = $pdo->prepare(
+                'INSERT INTO project_html_parameters (
+                    project_id,
+                    project_html_definition_id,
+                    legacy_parameter_pid,
+                    parameter_name,
+                    parameter_value,
+                    parameter_list_order,
+                    notes,
+                    source_of_truth
+                ) VALUES (
+                    :project_id,
+                    :project_html_definition_id,
+                    :legacy_parameter_pid,
+                    :parameter_name,
+                    :parameter_value,
+                    :parameter_list_order,
+                    :notes,
+                    :source_of_truth
+                )
+                ON DUPLICATE KEY UPDATE
+                    project_html_definition_id = VALUES(project_html_definition_id),
+                    parameter_name = VALUES(parameter_name),
+                    parameter_value = VALUES(parameter_value),
+                    parameter_list_order = VALUES(parameter_list_order),
+                    notes = VALUES(notes),
+                    source_of_truth = VALUES(source_of_truth),
+                    updated_at = CURRENT_TIMESTAMP'
+            );
+        }
 
         $parameterOrderByHtmlPid = [];
         foreach ($reference['item']['parameters'] as $parameter) {
@@ -533,16 +694,26 @@ function app_project_html_bootstrap_reference_into_canonical(PDO $pdo, string $p
             $orderKey = (string) $legacyHtmlPid;
             $parameterOrderByHtmlPid[$orderKey] = ($parameterOrderByHtmlPid[$orderKey] ?? 0) + 10;
 
-            $parameterStatement->execute([
-                ':project_id' => $projectId,
-                ':project_html_definition_id' => $definitionId,
-                ':legacy_parameter_pid' => (int) ($parameter['legacy_parameter_pid'] ?? 0),
-                ':parameter_name' => (string) ($parameter['parameter_name'] ?? ''),
-                ':parameter_value' => (string) ($parameter['parameter_value'] ?? ''),
-                ':parameter_list_order' => $parameterOrderByHtmlPid[$orderKey],
-                ':notes' => app_project_html_bootstrap_reference_notes(),
-                ':source_of_truth' => app_project_html_bootstrap_reference_source_of_truth(),
-            ]);
+            if ($dialect === 'sqlite') {
+                app_project_html_canonical_upsert_parameter_sqlite(
+                    $pdo,
+                    $projectId,
+                    $definitionId,
+                    $parameter,
+                    $parameterOrderByHtmlPid[$orderKey],
+                );
+            } elseif ($parameterStatement instanceof PDOStatement) {
+                $parameterStatement->execute([
+                    ':project_id' => $projectId,
+                    ':project_html_definition_id' => $definitionId,
+                    ':legacy_parameter_pid' => (int) ($parameter['legacy_parameter_pid'] ?? 0),
+                    ':parameter_name' => (string) ($parameter['parameter_name'] ?? ''),
+                    ':parameter_value' => (string) ($parameter['parameter_value'] ?? ''),
+                    ':parameter_list_order' => $parameterOrderByHtmlPid[$orderKey],
+                    ':notes' => app_project_html_bootstrap_reference_notes(),
+                    ':source_of_truth' => app_project_html_bootstrap_reference_source_of_truth(),
+                ]);
+            }
         }
 
         if ($ownsTransaction) {
@@ -629,7 +800,7 @@ function app_project_html_canonical_fetch_catalog(PDO $pdo, string $projectKey, 
             name,
             legacy_project_source_output_pid,
             legacy_html_template_pid,
-            DATE_FORMAT(last_modified_dt, "%Y-%m-%d %H:%i:%s") AS last_modified_dt
+            ' . app_project_html_datetime_select_expr($pdo, 'last_modified_dt') . '
         FROM project_html_definitions
         WHERE project_id = :project_id
         ORDER BY html_list_order, name, legacy_html_pid'
@@ -678,7 +849,7 @@ function app_project_html_legacy_fetch_catalog(PDO $pdo, string $projectKey, int
             name,
             ProjectSourceOutputPID,
             htmlTemplatePID,
-            DATE_FORMAT(LastModifiedDT, "%Y-%m-%d %H:%i:%s") AS last_modified_dt
+            ' . app_project_html_datetime_select_expr($pdo, 'LastModifiedDT') . '
         FROM html
         WHERE ProjectPID = :project_pid
         ORDER BY name, PID'
@@ -1555,7 +1726,7 @@ function app_project_html_touch_last_modified_legacy(PDO $pdo, int $projectPid, 
 {
     $statement = $pdo->prepare(
         'UPDATE html
-        SET LastModifiedDT = NOW()
+        SET LastModifiedDT = CURRENT_TIMESTAMP
         WHERE ProjectPID = :project_pid
           AND PID = :html_pid'
     );
@@ -1570,7 +1741,7 @@ function app_project_html_touch_last_modified_canonical(PDO $pdo, int $projectId
     $statement = $pdo->prepare(
         'UPDATE project_html_definitions
         SET
-            last_modified_dt = NOW(),
+            last_modified_dt = CURRENT_TIMESTAMP,
             updated_at = CURRENT_TIMESTAMP
         WHERE project_id = :project_id
           AND legacy_html_pid = :legacy_html_pid'
@@ -1727,7 +1898,7 @@ function app_create_project_html(array $app, string $projectKey, array $input): 
                         :legacy_project_source_output_pid,
                         :legacy_html_template_pid,
                         :html_list_order,
-                        NOW(),
+                        CURRENT_TIMESTAMP,
                         :notes,
                         :source_of_truth
                     )'
@@ -1801,7 +1972,7 @@ function app_create_project_html(array $app, string $projectKey, array $input): 
                 :name,
                 :project_source_output_pid,
                 :html_template_pid,
-                NOW()
+                CURRENT_TIMESTAMP
             )'
         );
         $statement->execute([
@@ -1891,7 +2062,7 @@ function app_update_project_html(array $app, string $projectKey, array $input): 
                     name = :name,
                     legacy_project_source_output_pid = :legacy_project_source_output_pid,
                     legacy_html_template_pid = :legacy_html_template_pid,
-                    last_modified_dt = NOW(),
+                    last_modified_dt = CURRENT_TIMESTAMP,
                     notes = :notes,
                     source_of_truth = :source_of_truth,
                     updated_at = CURRENT_TIMESTAMP
@@ -1943,7 +2114,7 @@ function app_update_project_html(array $app, string $projectKey, array $input): 
                 name = :name,
                 ProjectSourceOutputPID = :project_source_output_pid,
                 htmlTemplatePID = :html_template_pid,
-                LastModifiedDT = NOW()
+                LastModifiedDT = CURRENT_TIMESTAMP
             WHERE ProjectPID = :project_pid
               AND PID = :html_pid'
         );

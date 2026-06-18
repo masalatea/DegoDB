@@ -7,6 +7,9 @@
 // Generated from canonical DB Access metadata.
 // Base class generated from project_db_access_* metadata.
 
+require_once __DIR__ . '/../_support/mtool_runtime_db.php';
+
+
 class SalesRecordDBAccessBase
 {
     public function __construct()
@@ -22,8 +25,10 @@ class SalesRecordDBAccessBase
 
         $result = array();
 
-        $last_sql_command_for_mtooldb = 'select SalesRecord.SalesCategoryId, SalesCategory.Name, count(SalesRecord.Id), sum(SalesRecord.Amount) from SalesRecord join SalesCategory on SalesRecord.SalesCategoryId = SalesCategory.Id' . ' where ' . 'SalesRecord.Status = ' . '\'' . $mtooldb->real_escape_string('closed') . '\'' . ' and ' . 'SalesCategory.IsActive = ' . '1' . ' group by SalesRecord.SalesCategoryId, SalesCategory.Name' . ' having ' . 'count(SalesRecord.Id) >= ' . '2' . ' and ' . 'sum(SalesRecord.Amount) >= ' . '100' . ' order by sum(SalesRecord.Amount) desc, SalesRecord.SalesCategoryId asc';
-        $ret = $mtooldb->query($last_sql_command_for_mtooldb);
+        $last_sql_command_for_mtooldb = 'select SalesRecord.SalesCategoryId, SalesCategory.Name, count(SalesRecord.Id), sum(SalesRecord.Amount) from SalesRecord join SalesCategory on SalesRecord.SalesCategoryId = SalesCategory.Id where SalesRecord.Status = ? and SalesCategory.IsActive = 1 group by SalesRecord.SalesCategoryId, SalesCategory.Name having count(SalesRecord.Id) >= 2 and sum(SalesRecord.Amount) >= 100 order by sum(SalesRecord.Amount) desc, SalesRecord.SalesCategoryId asc';
+        $ret = $mtooldb->execute($last_sql_command_for_mtooldb, [
+            'closed',
+        ]);
         if ($mtooldb->errno != 0) {
             error_log("Error occured while executing SQL: " . $mtooldb->error . " in " . __FILE__ . " on line " . __LINE__);
             return $ret;

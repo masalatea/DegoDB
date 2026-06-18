@@ -87,6 +87,247 @@ function app_project_output_db_access_base_relative_path(
         . 'Base.php';
 }
 
+function app_project_output_db_access_runtime_support_relative_path(): string
+{
+    return '_support/mtool_runtime_db.php';
+}
+
+function app_project_output_db_access_runtime_support_require_path(string $storeBasePath): string
+{
+    $segments = $storeBasePath !== ''
+        ? array_values(array_filter(explode('/', trim($storeBasePath, '/')), static fn (string $value): bool => $value !== ''))
+        : [];
+
+    return str_repeat('../', count($segments) + 1)
+        . app_project_output_db_access_runtime_support_relative_path();
+}
+
+function app_project_output_db_access_runtime_support_php_text(): string
+{
+    return <<<'PHP'
+<?php
+
+// Runtime DB adapter for generated canonical DBAccess classes.
+// It preserves the legacy $mtooldb surface while allowing a PDO SQLite DSN.
+
+if (!class_exists('MtoolGeneratedDbAccessPdoResult')) {
+    class MtoolGeneratedDbAccessPdoResult
+    {
+        private PDOStatement $statement;
+
+        public function __construct(PDOStatement $statement)
+        {
+            $this->statement = $statement;
+        }
+
+        public function fetch_row()
+        {
+            $row = $this->statement->fetch(PDO::FETCH_NUM);
+
+            return $row === false ? null : $row;
+        }
+    }
+}
+
+if (!class_exists('MtoolGeneratedDbAccessRuntimeDb')) {
+    class MtoolGeneratedDbAccessRuntimeDb
+    {
+        public int $errno = 0;
+        public string $error = '';
+
+        private ?PDO $pdo = null;
+        private $mysqli = null;
+
+        public function __construct()
+        {
+            $dsn = trim((string) getenv('MTOOL_RUNTIME_DB_DSN'));
+            if ($dsn !== '') {
+                $this->pdo = new PDO(
+                    $dsn,
+                    (string) getenv('MTOOL_RUNTIME_DB_USER'),
+                    (string) getenv('MTOOL_RUNTIME_DB_PASSWORD'),
+                    [
+                        PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+                        PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_NUM,
+                    ],
+                );
+                return;
+            }
+
+            $sqlitePath = trim((string) getenv('MTOOL_RUNTIME_SQLITE_PATH'));
+            if ($sqlitePath !== '') {
+                $parentDir = dirname($sqlitePath);
+                if ($parentDir !== '' && $parentDir !== '.' && !is_dir($parentDir)) {
+                    mkdir($parentDir, 0777, true);
+                }
+                $this->pdo = new PDO(
+                    'sqlite:' . $sqlitePath,
+                    null,
+                    null,
+                    [
+                        PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+                        PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_NUM,
+                    ],
+                );
+                return;
+            }
+
+            if (!class_exists('mysqli')) {
+                throw new RuntimeException('mysqli is not available and no MTOOL_RUNTIME_DB_DSN / MTOOL_RUNTIME_SQLITE_PATH was provided.');
+            }
+
+            $host = (string) (getenv('MTOOL_RUNTIME_DB_HOST') ?: '127.0.0.1');
+            $user = (string) (getenv('MTOOL_RUNTIME_DB_USER') ?: 'root');
+            $password = (string) getenv('MTOOL_RUNTIME_DB_PASSWORD');
+            $database = (string) getenv('MTOOL_RUNTIME_DB_NAME');
+            $port = (int) (getenv('MTOOL_RUNTIME_DB_PORT') ?: 3306);
+
+            $this->mysqli = new mysqli($host, $user, $password, $database, $port);
+            if ($this->mysqli->connect_errno !== 0) {
+                $this->errno = (int) $this->mysqli->connect_errno;
+                $this->error = (string) $this->mysqli->connect_error;
+            }
+        }
+
+        public function query(string $sql)
+        {
+            $this->errno = 0;
+            $this->error = '';
+
+            if ($this->pdo instanceof PDO) {
+                try {
+                    $statement = $this->pdo->query($sql);
+                    if (!$statement instanceof PDOStatement) {
+                        return false;
+                    }
+
+                    return new MtoolGeneratedDbAccessPdoResult($statement);
+                } catch (Throwable $exception) {
+                    $this->errno = 1;
+                    $this->error = $exception->getMessage();
+
+                    return false;
+                }
+            }
+
+            if ($this->mysqli instanceof mysqli) {
+                $result = $this->mysqli->query($sql);
+                $this->errno = (int) $this->mysqli->errno;
+                $this->error = (string) $this->mysqli->error;
+
+                return $result;
+            }
+
+            $this->errno = 1;
+            $this->error = 'runtime DB connection is not initialized';
+
+            return false;
+        }
+
+        public function execute(string $sql, array $params = [])
+        {
+            $this->errno = 0;
+            $this->error = '';
+
+            if ($this->pdo instanceof PDO) {
+                try {
+                    $statement = $this->pdo->prepare($sql);
+                    $statement->execute(array_values($params));
+
+                    return new MtoolGeneratedDbAccessPdoResult($statement);
+                } catch (Throwable $exception) {
+                    $this->errno = 1;
+                    $this->error = $exception->getMessage();
+
+                    return false;
+                }
+            }
+
+            if ($this->mysqli instanceof mysqli) {
+                $statement = $this->mysqli->prepare($sql);
+                if (!$statement instanceof mysqli_stmt) {
+                    $this->errno = (int) $this->mysqli->errno;
+                    $this->error = (string) $this->mysqli->error;
+
+                    return false;
+                }
+
+                if ($params !== []) {
+                    $types = '';
+                    $values = [];
+                    foreach (array_values($params) as $param) {
+                        if (is_int($param)) {
+                            $types .= 'i';
+                        } elseif (is_float($param)) {
+                            $types .= 'd';
+                        } else {
+                            $types .= 's';
+                        }
+                        $values[] = $param;
+                    }
+                    $statement->bind_param($types, ...$values);
+                }
+
+                $ok = $statement->execute();
+                $this->errno = (int) $statement->errno;
+                $this->error = (string) $statement->error;
+                if (!$ok || $this->errno !== 0) {
+                    return false;
+                }
+
+                $result = $statement->get_result();
+
+                return $result !== false ? $result : true;
+            }
+
+            $this->errno = 1;
+            $this->error = 'runtime DB connection is not initialized';
+
+            return false;
+        }
+
+        public function real_escape_string($value): string
+        {
+            $stringValue = (string) $value;
+            if ($this->mysqli instanceof mysqli) {
+                return $this->mysqli->real_escape_string($stringValue);
+            }
+
+            if ($this->pdo instanceof PDO) {
+                $quoted = $this->pdo->quote($stringValue);
+                if (is_string($quoted) && strlen($quoted) >= 2 && $quoted[0] === "'" && substr($quoted, -1) === "'") {
+                    return substr($quoted, 1, -1);
+                }
+            }
+
+            return str_replace("'", "''", $stringValue);
+        }
+    }
+}
+
+if (!function_exists('connect_mtooldb_if_not_yet')) {
+    function connect_mtooldb_if_not_yet(): void
+    {
+        global $mtooldb;
+        if (is_object($mtooldb ?? null)) {
+            return;
+        }
+
+        $mtooldb = new MtoolGeneratedDbAccessRuntimeDb();
+    }
+}
+
+if (!function_exists('reconnect_mtooldb_if_necessary')) {
+    function reconnect_mtooldb_if_necessary(): void
+    {
+        connect_mtooldb_if_not_yet();
+    }
+}
+
+?>
+PHP;
+}
+
 /**
  * @param array<string,bool> $seen
  * @param list<string> $arguments
@@ -339,6 +580,7 @@ function app_project_output_generated_db_access_base_php_text(
     array $generatedMethodResults,
     array $signaturesByFunction,
     array $extraClassLines,
+    string $runtimeDbSupportRequirePath,
 ): string {
     $sourceName = trim((string) ($classItem['source_name'] ?? ''));
     $className = $sourceName . 'DBAccessBase';
@@ -396,6 +638,9 @@ function app_project_output_generated_db_access_base_php_text(
             'canonical-dbaccess-php/base.php.tpl',
             [
                 'CLASS_NAME' => $className,
+                'RUNTIME_DB_SUPPORT_REQUIRE_SECTION' => $runtimeDbSupportRequirePath !== ''
+                    ? "require_once __DIR__ . '/" . $runtimeDbSupportRequirePath . "';\n\n"
+                    : '',
                 'CLASS_BODY_SECTION' => $classBody,
             ],
         ),
@@ -513,6 +758,10 @@ function app_project_output_prepare_db_access_source_tree(array $app, string $pr
     try {
         app_project_output_delete_tree($runtimeSourceRoot);
         app_project_output_ensure_directory($runtimeSourceRoot);
+        app_project_output_write_text_file(
+            $runtimeSourceRoot . '/' . app_project_output_db_access_runtime_support_relative_path(),
+            app_project_output_db_access_runtime_support_php_text(),
+        );
 
         foreach ($classCatalogResult['items'] as $classItem) {
             $sourceName = trim((string) ($classItem['source_name'] ?? ''));
@@ -604,6 +853,7 @@ function app_project_output_prepare_db_access_source_tree(array $app, string $pr
 
             $wrapperRelativePath = app_project_output_db_access_wrapper_relative_path($storeBasePath, $sourceName);
             $baseRelativePath = app_project_output_db_access_base_relative_path($storeBasePath, $sourceName);
+            $runtimeDbSupportRequirePath = app_project_output_db_access_runtime_support_require_path($storeBasePath);
             app_project_output_write_text_file(
                 $runtimeSourceRoot . '/' . $baseRelativePath,
                 app_project_output_generated_db_access_base_php_text(
@@ -612,6 +862,7 @@ function app_project_output_prepare_db_access_source_tree(array $app, string $pr
                     $generatedMethodResults,
                     $signaturesByFunction,
                     app_project_output_runtime_sql_known_helper_class_lines($sourceName),
+                    $runtimeDbSupportRequirePath,
                 ),
             );
             app_project_output_write_text_file(

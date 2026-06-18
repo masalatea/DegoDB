@@ -375,6 +375,26 @@ function app_lab_published_single_proxy_apply_runtime_globals(array $app, string
     $GLOBALS['CustomMySQLDBUserFormtooldb'] = $configDb['user'];
     $GLOBALS['CustomMySQLDBPasswordFormtooldb'] = $configDb['password'];
     $GLOBALS['CustomMySQLDBNameFormtooldb'] = $configDb['name'];
+
+    $dialect = app_sql_dialect_from_db_config($configDb);
+    if ($dialect === 'sqlite') {
+        putenv('MTOOL_RUNTIME_DB_DSN=' . (string) ($configDb['dsn'] ?? ''));
+        putenv('MTOOL_RUNTIME_DB_USER=');
+        putenv('MTOOL_RUNTIME_DB_PASSWORD=');
+        putenv('MTOOL_RUNTIME_DB_HOST=');
+        putenv('MTOOL_RUNTIME_DB_PORT=');
+        putenv('MTOOL_RUNTIME_DB_NAME=');
+        putenv('MTOOL_RUNTIME_SQLITE_PATH=' . (string) ($configDb['name'] ?? ''));
+    } else {
+        putenv('MTOOL_RUNTIME_DB_DSN');
+        putenv('MTOOL_RUNTIME_SQLITE_PATH');
+        putenv('MTOOL_RUNTIME_DB_HOST=' . (string) ($configDb['host'] ?? ''));
+        putenv('MTOOL_RUNTIME_DB_PORT=' . (string) ($configDb['port'] ?? ''));
+        putenv('MTOOL_RUNTIME_DB_USER=' . (string) ($configDb['user'] ?? ''));
+        putenv('MTOOL_RUNTIME_DB_PASSWORD=' . (string) ($configDb['password'] ?? ''));
+        putenv('MTOOL_RUNTIME_DB_NAME=' . (string) ($configDb['name'] ?? ''));
+    }
+
     $_SERVER['MTOOL_PROXY_RUNTIME_DB_CONFIG_KEY'] = $effectiveDatabaseSourceKey;
     $_SERVER['MTOOL_PROXY_RUNTIME_DB_SOURCE_KEY'] = $effectiveDatabaseSourceKey;
 }

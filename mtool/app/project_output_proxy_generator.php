@@ -594,6 +594,10 @@ function app_project_output_single_proxy_enrich_item(array $item, array $entity)
     $inputKind = count($parameterNames) === 1 && str_ends_with($parameterNames[0], 'Obj')
         ? 'object'
         : 'scalar';
+    $parameterSchemas = app_project_output_proxy_parameter_schemas_from_single_proxy_item(
+        $parameterNames,
+        $item,
+    );
 
     $responseKey = '';
     $responseMode = 'none';
@@ -638,6 +642,7 @@ function app_project_output_single_proxy_enrich_item(array $item, array $entity)
                 'is_list' => false,
                 'action' => $action,
                 'parameter_names' => $parameterNames,
+                'parameter_schemas' => $parameterSchemas,
                 'input_kind' => $inputKind,
                 'object_param_name' => $inputKind === 'object' ? ($parameterNames[0] ?? '') : '',
                 'object_class' => $inputKind === 'object' ? $entity['data_class'] : '',
@@ -654,6 +659,69 @@ function app_project_output_single_proxy_enrich_item(array $item, array $entity)
             ],
         ],
     ];
+}
+
+/**
+ * @param list<string> $parameterNames
+ * @return array<string,array<string,string>>
+ */
+function app_project_output_proxy_parameter_schemas_from_single_proxy_item(array $parameterNames, array $item): array
+{
+    $schemas = [];
+    $sourceName = trim((string) ($item['source_name'] ?? ''));
+    $selectWheres = array_values(array_filter(
+        is_array($item['select_wheres'] ?? null) ? $item['select_wheres'] : [],
+        static fn (mixed $row): bool => is_array($row),
+    ));
+    $whereByParameterName = [];
+    foreach ($selectWheres as $where) {
+        $columnName = trim((string) ($where['target_table_column_name'] ?? ''));
+        if ($sourceName === '' || $columnName === '') {
+            continue;
+        }
+
+        $whereByParameterName['param_' . $sourceName . '_' . $columnName . '_where'] = $where;
+    }
+
+    foreach ($parameterNames as $index => $parameterName) {
+        $normalizedParameterName = trim($parameterName);
+        if ($normalizedParameterName === '') {
+            continue;
+        }
+
+        $metadata = [
+            'parameter_name' => $normalizedParameterName,
+            'datatype' => '',
+            'source' => 'name-inference',
+            'target_table_name' => '',
+            'target_table_column_name' => '',
+        ];
+
+        if ($normalizedParameterName === 'limit') {
+            $metadata['datatype'] = 'int';
+            $metadata['source'] = trim((string) ($item['limit_parameter_type'] ?? '')) !== ''
+                ? 'limit-parameter'
+                : 'limit-name';
+            $schemas[$normalizedParameterName] = $metadata;
+            continue;
+        }
+
+        $where = $whereByParameterName[$normalizedParameterName] ?? ($selectWheres[$index] ?? null);
+        if (is_array($where)) {
+            $parameterDataType = trim((string) ($where['parameter_data_type'] ?? ''));
+            $targetColumnName = trim((string) ($where['target_table_column_name'] ?? ''));
+            $metadata['datatype'] = $parameterDataType;
+            $metadata['source'] = $parameterDataType !== ''
+                ? 'select-where-parameter-data-type'
+                : 'select-where-column-name';
+            $metadata['target_table_name'] = trim((string) ($where['target_table_name'] ?? ''));
+            $metadata['target_table_column_name'] = $targetColumnName;
+        }
+
+        $schemas[$normalizedParameterName] = $metadata;
+    }
+
+    return $schemas;
 }
 
 function app_project_output_proxy_enrich_item(array $item, array $sourceEntities, string $clientPrefix): array
@@ -1091,65 +1159,7 @@ declare(strict_types=1);
 \$last_sql_command_for_mtooldb = '';
 \$time_for_reconnect_mtooldb_if_necessary = time();
 
-function connect_error_for_mtooldb(string \$message): void
-{
-    error_log(\$message);
-
-    if (PHP_SAPI !== 'cli' && !headers_sent()) {
-        header('HTTP/1.0 503 Service Temporarily Unavailable');
-    }
-}
-
-function connect_mtooldb_if_not_yet(): void
-{
-    global \$mtooldb;
-
-    if (\$mtooldb instanceof mysqli) {
-        return;
-    }
-
-    \$host = (string) (\$GLOBALS['CustomMySQLDBServerNameFormtooldb'] ?? getenv('MTOOL_PROXY_DB_HOST') ?: 'localhost');
-    \$port = (int) (\$GLOBALS['CustomMySQLDBPortFormtooldb'] ?? getenv('MTOOL_PROXY_DB_PORT') ?: '3306');
-    \$user = (string) (\$GLOBALS['CustomMySQLDBUserFormtooldb'] ?? getenv('MTOOL_PROXY_DB_USER') ?: '');
-    \$password = (string) (\$GLOBALS['CustomMySQLDBPasswordFormtooldb'] ?? getenv('MTOOL_PROXY_DB_PASSWORD') ?: '');
-    \$database = (string) (\$GLOBALS['CustomMySQLDBNameFormtooldb'] ?? getenv('MTOOL_PROXY_DB_NAME') ?: 'mtool');
-
-    \$mtooldb = mysqli_init();
-    if (!\$mtooldb instanceof mysqli) {
-        throw new RuntimeException('mysqli_init に失敗しました。');
-    }
-
-    \$connected = @\$mtooldb->real_connect(\$host, \$user, \$password, \$database, \$port);
-    if (!\$connected || \$mtooldb->connect_errno) {
-        \$message = 'database connect failed: ' . \$mtooldb->connect_error;
-        connect_error_for_mtooldb(\$message);
-        throw new RuntimeException(\$message);
-    }
-
-    if (!\$mtooldb->set_charset('utf8mb4')) {
-        \$message = 'utf8mb4 character set を設定できませんでした: ' . \$mtooldb->error;
-        connect_error_for_mtooldb(\$message);
-        throw new RuntimeException(\$message);
-    }
-}
-
-function reconnect_mtooldb_if_necessary(): void
-{
-    global \$mtooldb;
-    global \$time_for_reconnect_mtooldb_if_necessary;
-
-    if (!\$mtooldb instanceof mysqli) {
-        return;
-    }
-
-    if (abs(time() - \$time_for_reconnect_mtooldb_if_necessary) <= 10) {
-        return;
-    }
-
-    @\$mtooldb->ping();
-    \$time_for_reconnect_mtooldb_if_necessary = time();
-}
-
+require_once __DIR__ . '/_support/mtool_runtime_db.php';
 {$requires}
 PHP;
 }

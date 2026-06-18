@@ -1,0 +1,10 @@
+name: mtool-sample-sample01-simple-table-runtime-sqlite
+
+services:
+  web-admin:
+    environment:
+      APP_WORK_ROOT: /var/www/work/sample-packs/sample01-simple-table-runtime-sqlite
+
+  web-lab:
+    environment:
+      APP_WORK_ROOT: /var/www/work/sample-packs/sample01-simple-table-runtime-sqlite

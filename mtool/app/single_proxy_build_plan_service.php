@@ -114,6 +114,38 @@ function app_single_proxy_build_plan_resolve_function_reference(
 }
 
 /**
+ * @param list<array<string,mixed>> $items
+ * @return list<array<string,string>>
+ */
+function app_single_proxy_build_plan_stable_select_wheres(array $items): array
+{
+    $stableItems = [];
+    foreach ($items as $item) {
+        if (!is_array($item)) {
+            continue;
+        }
+
+        $stableItems[] = [
+            'target_table_name' => (string) ($item['target_table_name'] ?? ''),
+            'target_table_alias_name' => (string) ($item['target_table_alias_name'] ?? ''),
+            'target_table_column_name' => (string) ($item['target_table_column_name'] ?? ''),
+            'parameter_type' => (string) ($item['parameter_type'] ?? ''),
+            'parameter_data_type' => (string) ($item['parameter_data_type'] ?? ''),
+            'fixed_parameter' => (string) ($item['fixed_parameter'] ?? ''),
+            'another_table_name' => (string) ($item['another_table_name'] ?? ''),
+            'another_table_alias_name' => (string) ($item['another_table_alias_name'] ?? ''),
+            'another_field_name' => (string) ($item['another_field_name'] ?? ''),
+            'join_type' => (string) ($item['join_type'] ?? ''),
+            'or_group' => (string) ($item['or_group'] ?? ''),
+            'relational_operator' => (string) ($item['relational_operator'] ?? ''),
+            'where_order' => (string) ($item['where_order'] ?? ''),
+        ];
+    }
+
+    return $stableItems;
+}
+
+/**
  * @return array{
  *     ok:bool,
  *     plan:array{
@@ -229,6 +261,19 @@ function app_single_proxy_build_plan_for_source_output(
         if ($actionType === '') {
             $actionType = $functionProfile['legacy_action_type'];
         }
+        $selectWhereCatalogResult = app_fetch_db_access_function_select_where_catalog(
+            $app,
+            $normalizedProjectKey,
+            $sourceName,
+            $functionName,
+        );
+        if (!$selectWhereCatalogResult['ok']) {
+            return [
+                'ok' => false,
+                'plan' => null,
+                'error' => $selectWhereCatalogResult['error'],
+            ];
+        }
 
         $items[] = [
             'source_name' => $sourceName,
@@ -237,6 +282,9 @@ function app_single_proxy_build_plan_for_source_output(
             'endpoint_slug' => $functionProfile['endpoint_slug'],
             'function_list_order' => (string) ($item['function_list_order'] ?? ''),
             'action_type' => $actionType,
+            'limit_parameter_type' => (string) ($item['limit_parameter_type'] ?? ''),
+            'limit_fixed_parameter' => (string) ($item['limit_fixed_parameter'] ?? ''),
+            'select_wheres' => app_single_proxy_build_plan_stable_select_wheres($selectWhereCatalogResult['items']),
             'auth_policy' => $authPolicy,
             'source_of_truth' => (string) ($item['source_of_truth'] ?? ''),
             'function_updated_at' => (string) ($item['function_updated_at'] ?? ''),

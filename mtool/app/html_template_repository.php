@@ -326,49 +326,21 @@ function app_load_html_template_reference(): array
     return app_load_legacy_html_reference(app_html_template_reference_source_project_key());
 }
 
-function app_html_template_pdo_current_schema(PDO $pdo): string
-{
-    static $cache = [];
-
-    $objectId = spl_object_id($pdo);
-    if (array_key_exists($objectId, $cache)) {
-        return $cache[$objectId];
-    }
-
-    $schema = $pdo->query('SELECT DATABASE()')->fetchColumn();
-    $cache[$objectId] = is_string($schema) ? $schema : '';
-
-    return $cache[$objectId];
-}
-
 function app_html_template_pdo_table_exists(PDO $pdo, string $tableName): bool
 {
-    $schema = app_html_template_pdo_current_schema($pdo);
     $normalizedTableName = trim($tableName);
-    if ($schema === '' || $normalizedTableName === '') {
+    if ($normalizedTableName === '') {
         return false;
     }
 
     static $cache = [];
 
-    $cacheKey = $schema . ':' . $normalizedTableName;
+    $cacheKey = spl_object_id($pdo) . ':' . $normalizedTableName;
     if (array_key_exists($cacheKey, $cache)) {
         return $cache[$cacheKey];
     }
 
-    $statement = $pdo->prepare(
-        'SELECT 1
-        FROM information_schema.TABLES
-        WHERE TABLE_SCHEMA = :table_schema
-          AND TABLE_NAME = :table_name
-        LIMIT 1'
-    );
-    $statement->execute([
-        ':table_schema' => $schema,
-        ':table_name' => $normalizedTableName,
-    ]);
-
-    $cache[$cacheKey] = $statement->fetchColumn() !== false;
+    $cache[$cacheKey] = app_sql_table_exists($pdo, $normalizedTableName);
 
     return $cache[$cacheKey];
 }
@@ -642,6 +614,215 @@ function app_html_template_canonical_next_parameter_pid(PDO $pdo): int
     return max(1, (int) $value);
 }
 
+function app_html_template_canonical_template_id_by_legacy_pid(PDO $pdo, int $legacyTemplatePid): ?int
+{
+    $statement = $pdo->prepare(
+        'SELECT id
+        FROM html_templates
+        WHERE legacy_html_template_pid = :legacy_html_template_pid
+        LIMIT 1'
+    );
+    $statement->execute([
+        ':legacy_html_template_pid' => $legacyTemplatePid,
+    ]);
+
+    $value = $statement->fetchColumn();
+    if (!is_numeric($value)) {
+        return null;
+    }
+
+    return (int) $value;
+}
+
+function app_html_template_canonical_parameter_id_by_legacy_pid(PDO $pdo, int $legacyTemplateParameterPid): ?int
+{
+    $statement = $pdo->prepare(
+        'SELECT id
+        FROM html_template_parameters
+        WHERE legacy_template_parameter_pid = :legacy_template_parameter_pid
+        LIMIT 1'
+    );
+    $statement->execute([
+        ':legacy_template_parameter_pid' => $legacyTemplateParameterPid,
+    ]);
+
+    $value = $statement->fetchColumn();
+    if (!is_numeric($value)) {
+        return null;
+    }
+
+    return (int) $value;
+}
+
+/**
+ * @param array<string,mixed> $template
+ */
+function app_html_template_canonical_upsert_template_sqlite(
+    PDO $pdo,
+    array $template,
+    string $notes,
+    string $sourceOfTruth,
+): void {
+    $legacyTemplatePid = (int) ($template['legacy_html_template_pid'] ?? 0);
+    $templateId = app_html_template_canonical_template_id_by_legacy_pid($pdo, $legacyTemplatePid);
+    if ($templateId !== null) {
+        $statement = $pdo->prepare(
+            'UPDATE html_templates
+            SET
+                target_type = :target_type,
+                parent_legacy_html_template_pid = :parent_legacy_html_template_pid,
+                name = :name,
+                program_language = :program_language,
+                file_name = :file_name,
+                comment = :comment,
+                notes = :notes,
+                source_of_truth = :source_of_truth,
+                updated_at = CURRENT_TIMESTAMP
+            WHERE id = :id'
+        );
+        $statement->execute([
+            ':id' => $templateId,
+            ':target_type' => (string) ($template['target_type'] ?? ''),
+            ':parent_legacy_html_template_pid' => (int) ($template['parent_html_template_pid'] ?? 0),
+            ':name' => (string) ($template['name'] ?? ''),
+            ':program_language' => (string) ($template['program_language'] ?? ''),
+            ':file_name' => (string) ($template['file_name'] ?? ''),
+            ':comment' => (string) ($template['comment'] ?? ''),
+            ':notes' => $notes,
+            ':source_of_truth' => $sourceOfTruth,
+        ]);
+
+        return;
+    }
+
+    $statement = $pdo->prepare(
+        'INSERT INTO html_templates (
+            legacy_html_template_pid,
+            target_type,
+            parent_legacy_html_template_pid,
+            name,
+            program_language,
+            file_name,
+            comment,
+            notes,
+            source_of_truth
+        ) VALUES (
+            :legacy_html_template_pid,
+            :target_type,
+            :parent_legacy_html_template_pid,
+            :name,
+            :program_language,
+            :file_name,
+            :comment,
+            :notes,
+            :source_of_truth
+        )'
+    );
+    $statement->execute([
+        ':legacy_html_template_pid' => $legacyTemplatePid,
+        ':target_type' => (string) ($template['target_type'] ?? ''),
+        ':parent_legacy_html_template_pid' => (int) ($template['parent_html_template_pid'] ?? 0),
+        ':name' => (string) ($template['name'] ?? ''),
+        ':program_language' => (string) ($template['program_language'] ?? ''),
+        ':file_name' => (string) ($template['file_name'] ?? ''),
+        ':comment' => (string) ($template['comment'] ?? ''),
+        ':notes' => $notes,
+        ':source_of_truth' => $sourceOfTruth,
+    ]);
+}
+
+/**
+ * @param array<string,mixed> $parameter
+ */
+function app_html_template_canonical_upsert_parameter_sqlite(
+    PDO $pdo,
+    array $parameter,
+    string $notes,
+    string $sourceOfTruth,
+): void {
+    $legacyParameterPid = (int) ($parameter['legacy_template_parameter_pid'] ?? 0);
+    $parameterId = app_html_template_canonical_parameter_id_by_legacy_pid($pdo, $legacyParameterPid);
+    if ($parameterId !== null) {
+        $statement = $pdo->prepare(
+            'UPDATE html_template_parameters
+            SET
+                legacy_html_template_pid = :legacy_html_template_pid,
+                parameter_name = :parameter_name,
+                target_value_type = :target_value_type,
+                target_variable_or_class_object = :target_variable_or_class_object,
+                target_property_of_class_object = :target_property_of_class_object,
+                another_template_pid = :another_template_pid,
+                trim_last_space = :trim_last_space,
+                trim_last_return = :trim_last_return,
+                data_type = :data_type,
+                notes = :notes,
+                source_of_truth = :source_of_truth,
+                updated_at = CURRENT_TIMESTAMP
+            WHERE id = :id'
+        );
+        $statement->execute([
+            ':id' => $parameterId,
+            ':legacy_html_template_pid' => (int) ($parameter['legacy_html_template_pid'] ?? 0),
+            ':parameter_name' => (string) ($parameter['parameter_name'] ?? ''),
+            ':target_value_type' => (string) ($parameter['target_value_type'] ?? ''),
+            ':target_variable_or_class_object' => (string) ($parameter['target_variable_or_class_object'] ?? ''),
+            ':target_property_of_class_object' => (string) ($parameter['target_property_of_class_object'] ?? ''),
+            ':another_template_pid' => (int) ($parameter['another_template_pid'] ?? 0),
+            ':trim_last_space' => (int) ($parameter['trim_last_space'] ?? 0),
+            ':trim_last_return' => (int) ($parameter['trim_last_return'] ?? 0),
+            ':data_type' => (string) ($parameter['data_type'] ?? ''),
+            ':notes' => $notes,
+            ':source_of_truth' => $sourceOfTruth,
+        ]);
+
+        return;
+    }
+
+    $statement = $pdo->prepare(
+        'INSERT INTO html_template_parameters (
+            legacy_template_parameter_pid,
+            legacy_html_template_pid,
+            parameter_name,
+            target_value_type,
+            target_variable_or_class_object,
+            target_property_of_class_object,
+            another_template_pid,
+            trim_last_space,
+            trim_last_return,
+            data_type,
+            notes,
+            source_of_truth
+        ) VALUES (
+            :legacy_template_parameter_pid,
+            :legacy_html_template_pid,
+            :parameter_name,
+            :target_value_type,
+            :target_variable_or_class_object,
+            :target_property_of_class_object,
+            :another_template_pid,
+            :trim_last_space,
+            :trim_last_return,
+            :data_type,
+            :notes,
+            :source_of_truth
+        )'
+    );
+    $statement->execute([
+        ':legacy_template_parameter_pid' => $legacyParameterPid,
+        ':legacy_html_template_pid' => (int) ($parameter['legacy_html_template_pid'] ?? 0),
+        ':parameter_name' => (string) ($parameter['parameter_name'] ?? ''),
+        ':target_value_type' => (string) ($parameter['target_value_type'] ?? ''),
+        ':target_variable_or_class_object' => (string) ($parameter['target_variable_or_class_object'] ?? ''),
+        ':target_property_of_class_object' => (string) ($parameter['target_property_of_class_object'] ?? ''),
+        ':another_template_pid' => (int) ($parameter['another_template_pid'] ?? 0),
+        ':trim_last_space' => (int) ($parameter['trim_last_space'] ?? 0),
+        ':trim_last_return' => (int) ($parameter['trim_last_return'] ?? 0),
+        ':data_type' => (string) ($parameter['data_type'] ?? ''),
+        ':notes' => $notes,
+        ':source_of_truth' => $sourceOfTruth,
+    ]);
+}
+
 function app_html_template_bootstrap_into_canonical(PDO $pdo): void
 {
     if (!app_html_template_canonical_tables_available($pdo)) {
@@ -687,112 +868,127 @@ function app_html_template_bootstrap_into_canonical(PDO $pdo): void
     }
 
     try {
-        $templateStatement = $pdo->prepare(
-            'INSERT INTO html_templates (
-                legacy_html_template_pid,
-                target_type,
-                parent_legacy_html_template_pid,
-                name,
-                program_language,
-                file_name,
-                comment,
-                notes,
-                source_of_truth
-            ) VALUES (
-                :legacy_html_template_pid,
-                :target_type,
-                :parent_legacy_html_template_pid,
-                :name,
-                :program_language,
-                :file_name,
-                :comment,
-                :notes,
-                :source_of_truth
-            )
-            ON DUPLICATE KEY UPDATE
-                target_type = VALUES(target_type),
-                parent_legacy_html_template_pid = VALUES(parent_legacy_html_template_pid),
-                name = VALUES(name),
-                program_language = VALUES(program_language),
-                file_name = VALUES(file_name),
-                comment = VALUES(comment),
-                notes = VALUES(notes),
-                source_of_truth = VALUES(source_of_truth),
-                updated_at = CURRENT_TIMESTAMP'
-        );
-
-        foreach ($templateCatalog as $template) {
-            $templateStatement->execute([
-                ':legacy_html_template_pid' => (int) ($template['legacy_html_template_pid'] ?? 0),
-                ':target_type' => (string) ($template['target_type'] ?? ''),
-                ':parent_legacy_html_template_pid' => (int) ($template['parent_html_template_pid'] ?? 0),
-                ':name' => (string) ($template['name'] ?? ''),
-                ':program_language' => (string) ($template['program_language'] ?? ''),
-                ':file_name' => (string) ($template['file_name'] ?? ''),
-                ':comment' => (string) ($template['comment'] ?? ''),
-                ':notes' => $notes,
-                ':source_of_truth' => $sourceOfTruth,
-            ]);
+        $dialect = app_sql_dialect_from_pdo($pdo);
+        $templateStatement = null;
+        if ($dialect !== 'sqlite') {
+            $templateStatement = $pdo->prepare(
+                'INSERT INTO html_templates (
+                    legacy_html_template_pid,
+                    target_type,
+                    parent_legacy_html_template_pid,
+                    name,
+                    program_language,
+                    file_name,
+                    comment,
+                    notes,
+                    source_of_truth
+                ) VALUES (
+                    :legacy_html_template_pid,
+                    :target_type,
+                    :parent_legacy_html_template_pid,
+                    :name,
+                    :program_language,
+                    :file_name,
+                    :comment,
+                    :notes,
+                    :source_of_truth
+                )
+                ON DUPLICATE KEY UPDATE
+                    target_type = VALUES(target_type),
+                    parent_legacy_html_template_pid = VALUES(parent_legacy_html_template_pid),
+                    name = VALUES(name),
+                    program_language = VALUES(program_language),
+                    file_name = VALUES(file_name),
+                    comment = VALUES(comment),
+                    notes = VALUES(notes),
+                    source_of_truth = VALUES(source_of_truth),
+                    updated_at = CURRENT_TIMESTAMP'
+            );
         }
 
-        $parameterStatement = $pdo->prepare(
-            'INSERT INTO html_template_parameters (
-                legacy_template_parameter_pid,
-                legacy_html_template_pid,
-                parameter_name,
-                target_value_type,
-                target_variable_or_class_object,
-                target_property_of_class_object,
-                another_template_pid,
-                trim_last_space,
-                trim_last_return,
-                data_type,
-                notes,
-                source_of_truth
-            ) VALUES (
-                :legacy_template_parameter_pid,
-                :legacy_html_template_pid,
-                :parameter_name,
-                :target_value_type,
-                :target_variable_or_class_object,
-                :target_property_of_class_object,
-                :another_template_pid,
-                :trim_last_space,
-                :trim_last_return,
-                :data_type,
-                :notes,
-                :source_of_truth
-            )
-            ON DUPLICATE KEY UPDATE
-                legacy_html_template_pid = VALUES(legacy_html_template_pid),
-                parameter_name = VALUES(parameter_name),
-                target_value_type = VALUES(target_value_type),
-                target_variable_or_class_object = VALUES(target_variable_or_class_object),
-                target_property_of_class_object = VALUES(target_property_of_class_object),
-                another_template_pid = VALUES(another_template_pid),
-                trim_last_space = VALUES(trim_last_space),
-                trim_last_return = VALUES(trim_last_return),
-                data_type = VALUES(data_type),
-                notes = VALUES(notes),
-                source_of_truth = VALUES(source_of_truth),
-                updated_at = CURRENT_TIMESTAMP'
-        );
+        foreach ($templateCatalog as $template) {
+            if ($dialect === 'sqlite') {
+                app_html_template_canonical_upsert_template_sqlite($pdo, $template, $notes, $sourceOfTruth);
+            } elseif ($templateStatement instanceof PDOStatement) {
+                $templateStatement->execute([
+                    ':legacy_html_template_pid' => (int) ($template['legacy_html_template_pid'] ?? 0),
+                    ':target_type' => (string) ($template['target_type'] ?? ''),
+                    ':parent_legacy_html_template_pid' => (int) ($template['parent_html_template_pid'] ?? 0),
+                    ':name' => (string) ($template['name'] ?? ''),
+                    ':program_language' => (string) ($template['program_language'] ?? ''),
+                    ':file_name' => (string) ($template['file_name'] ?? ''),
+                    ':comment' => (string) ($template['comment'] ?? ''),
+                    ':notes' => $notes,
+                    ':source_of_truth' => $sourceOfTruth,
+                ]);
+            }
+        }
+
+        $parameterStatement = null;
+        if ($dialect !== 'sqlite') {
+            $parameterStatement = $pdo->prepare(
+                'INSERT INTO html_template_parameters (
+                    legacy_template_parameter_pid,
+                    legacy_html_template_pid,
+                    parameter_name,
+                    target_value_type,
+                    target_variable_or_class_object,
+                    target_property_of_class_object,
+                    another_template_pid,
+                    trim_last_space,
+                    trim_last_return,
+                    data_type,
+                    notes,
+                    source_of_truth
+                ) VALUES (
+                    :legacy_template_parameter_pid,
+                    :legacy_html_template_pid,
+                    :parameter_name,
+                    :target_value_type,
+                    :target_variable_or_class_object,
+                    :target_property_of_class_object,
+                    :another_template_pid,
+                    :trim_last_space,
+                    :trim_last_return,
+                    :data_type,
+                    :notes,
+                    :source_of_truth
+                )
+                ON DUPLICATE KEY UPDATE
+                    legacy_html_template_pid = VALUES(legacy_html_template_pid),
+                    parameter_name = VALUES(parameter_name),
+                    target_value_type = VALUES(target_value_type),
+                    target_variable_or_class_object = VALUES(target_variable_or_class_object),
+                    target_property_of_class_object = VALUES(target_property_of_class_object),
+                    another_template_pid = VALUES(another_template_pid),
+                    trim_last_space = VALUES(trim_last_space),
+                    trim_last_return = VALUES(trim_last_return),
+                    data_type = VALUES(data_type),
+                    notes = VALUES(notes),
+                    source_of_truth = VALUES(source_of_truth),
+                    updated_at = CURRENT_TIMESTAMP'
+            );
+        }
 
         foreach ($parameterCatalog as $parameter) {
-            $parameterStatement->execute([
-                ':legacy_template_parameter_pid' => (int) ($parameter['legacy_template_parameter_pid'] ?? 0),
-                ':legacy_html_template_pid' => (int) ($parameter['legacy_html_template_pid'] ?? 0),
-                ':parameter_name' => (string) ($parameter['parameter_name'] ?? ''),
-                ':target_value_type' => (string) ($parameter['target_value_type'] ?? ''),
-                ':target_variable_or_class_object' => (string) ($parameter['target_variable_or_class_object'] ?? ''),
-                ':target_property_of_class_object' => (string) ($parameter['target_property_of_class_object'] ?? ''),
-                ':another_template_pid' => (int) ($parameter['another_template_pid'] ?? 0),
-                ':trim_last_space' => (int) ($parameter['trim_last_space'] ?? 0),
-                ':trim_last_return' => (int) ($parameter['trim_last_return'] ?? 0),
-                ':data_type' => (string) ($parameter['data_type'] ?? ''),
-                ':notes' => $notes,
-                ':source_of_truth' => $sourceOfTruth,
-            ]);
+            if ($dialect === 'sqlite') {
+                app_html_template_canonical_upsert_parameter_sqlite($pdo, $parameter, $notes, $sourceOfTruth);
+            } elseif ($parameterStatement instanceof PDOStatement) {
+                $parameterStatement->execute([
+                    ':legacy_template_parameter_pid' => (int) ($parameter['legacy_template_parameter_pid'] ?? 0),
+                    ':legacy_html_template_pid' => (int) ($parameter['legacy_html_template_pid'] ?? 0),
+                    ':parameter_name' => (string) ($parameter['parameter_name'] ?? ''),
+                    ':target_value_type' => (string) ($parameter['target_value_type'] ?? ''),
+                    ':target_variable_or_class_object' => (string) ($parameter['target_variable_or_class_object'] ?? ''),
+                    ':target_property_of_class_object' => (string) ($parameter['target_property_of_class_object'] ?? ''),
+                    ':another_template_pid' => (int) ($parameter['another_template_pid'] ?? 0),
+                    ':trim_last_space' => (int) ($parameter['trim_last_space'] ?? 0),
+                    ':trim_last_return' => (int) ($parameter['trim_last_return'] ?? 0),
+                    ':data_type' => (string) ($parameter['data_type'] ?? ''),
+                    ':notes' => $notes,
+                    ':source_of_truth' => $sourceOfTruth,
+                ]);
+            }
         }
 
         if ($ownsTransaction) {

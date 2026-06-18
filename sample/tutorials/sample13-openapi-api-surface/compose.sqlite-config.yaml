@@ -1,0 +1,10 @@
+name: mtool-sample-sample13-openapi-api-surface-sqlite
+
+services:
+  web-admin:
+    environment:
+      APP_WORK_ROOT: /var/www/work/sample-packs/sample13-openapi-api-surface-sqlite
+
+  web-lab:
+    environment:
+      APP_WORK_ROOT: /var/www/work/sample-packs/sample13-openapi-api-surface-sqlite

@@ -7,6 +7,9 @@
 // Generated from canonical DB Access metadata.
 // Base class generated from project_db_access_* metadata.
 
+require_once __DIR__ . '/../_support/mtool_runtime_db.php';
+
+
 class ArticleDBAccessBase
 {
     public function __construct()
@@ -22,8 +25,9 @@ class ArticleDBAccessBase
 
         $result = array();
 
-        $last_sql_command_for_mtooldb = 'select Article.Id, Article.Title, Article.Body from Article' . ' order by Article.Id';
-        $ret = $mtooldb->query($last_sql_command_for_mtooldb);
+        $last_sql_command_for_mtooldb = 'select Article.Id, Article.Title, Article.Body from Article order by Article.Id';
+        $ret = $mtooldb->execute($last_sql_command_for_mtooldb, [
+        ]);
         if ($mtooldb->errno != 0) {
             error_log("Error occured while executing SQL: " . $mtooldb->error . " in " . __FILE__ . " on line " . __LINE__);
             return $ret;
@@ -45,8 +49,10 @@ class ArticleDBAccessBase
         connect_mtooldb_if_not_yet();
         reconnect_mtooldb_if_necessary();
 
-        $last_sql_command_for_mtooldb = 'select Article.Id, Article.Title, Article.Body from Article' . ' where ' . 'Article.Id = ' . '\'' . $mtooldb->real_escape_string($param_Article_Id_where) . '\'';
-        $ret = $mtooldb->query($last_sql_command_for_mtooldb);
+        $last_sql_command_for_mtooldb = 'select Article.Id, Article.Title, Article.Body from Article where Article.Id = ?';
+        $ret = $mtooldb->execute($last_sql_command_for_mtooldb, [
+            $param_Article_Id_where,
+        ]);
         if ($mtooldb->errno != 0) {
             error_log("Error occured while executing SQL: " . $mtooldb->error . " in " . __FILE__ . " on line " . __LINE__);
             return $ret;
@@ -68,8 +74,11 @@ class ArticleDBAccessBase
         connect_mtooldb_if_not_yet();
         reconnect_mtooldb_if_necessary();
 
-        $last_sql_command_for_mtooldb = 'insert into Article (Title, Body) values(' . '\'' . $mtooldb->real_escape_string($ArticleObj->Title) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($ArticleObj->Body) . '\'' . ')';
-        $result = $mtooldb->query($last_sql_command_for_mtooldb);
+        $last_sql_command_for_mtooldb = 'insert into Article (Title, Body) values(?, ?)';
+        $result = $mtooldb->execute($last_sql_command_for_mtooldb, [
+            $ArticleObj->Title,
+            $ArticleObj->Body,
+        ]);
         if ($mtooldb->errno != 0) {
             error_log("Error occured while executing SQL: " . $mtooldb->error . " in " . __FILE__ . " on line " . __LINE__);
         }
@@ -83,8 +92,12 @@ class ArticleDBAccessBase
         connect_mtooldb_if_not_yet();
         reconnect_mtooldb_if_necessary();
 
-        $last_sql_command_for_mtooldb = 'update Article SET ' . 'Title = ' . '\'' . $mtooldb->real_escape_string($ArticleObj->Title) . '\'' . ', ' . 'Body = ' . '\'' . $mtooldb->real_escape_string($ArticleObj->Body) . '\'' . ' where ' . 'Article.Id = ' . '\'' . $mtooldb->real_escape_string($ArticleObj->Id) . '\'';
-        $result = $mtooldb->query($last_sql_command_for_mtooldb);
+        $last_sql_command_for_mtooldb = 'update Article SET Title = ?, Body = ? where Article.Id = ?';
+        $result = $mtooldb->execute($last_sql_command_for_mtooldb, [
+            $ArticleObj->Title,
+            $ArticleObj->Body,
+            $ArticleObj->Id,
+        ]);
         if ($mtooldb->errno != 0) {
             error_log("Error occured while executing SQL: " . $mtooldb->error . " in " . __FILE__ . " on line " . __LINE__);
         }
@@ -98,8 +111,10 @@ class ArticleDBAccessBase
         connect_mtooldb_if_not_yet();
         reconnect_mtooldb_if_necessary();
 
-        $last_sql_command_for_mtooldb = 'delete from Article where ' . 'Article.Id = ' . '\'' . $mtooldb->real_escape_string($ArticleObj->Id) . '\'';
-        $result = $mtooldb->query($last_sql_command_for_mtooldb);
+        $last_sql_command_for_mtooldb = 'delete from Article where Article.Id = ?';
+        $result = $mtooldb->execute($last_sql_command_for_mtooldb, [
+            $ArticleObj->Id,
+        ]);
         if ($mtooldb->errno != 0) {
             error_log("Error occured while executing SQL: " . $mtooldb->error . " in " . __FILE__ . " on line " . __LINE__);
         }

@@ -7,6 +7,9 @@
 // Generated from canonical DB Access metadata.
 // Base class generated from project_db_access_* metadata.
 
+require_once __DIR__ . '/../_support/mtool_runtime_db.php';
+
+
 class AuthTaskDBAccessBase
 {
     public function __construct()
@@ -21,8 +24,10 @@ class AuthTaskDBAccessBase
         connect_mtooldb_if_not_yet();
         reconnect_mtooldb_if_necessary();
 
-        $last_sql_command_for_mtooldb = 'select `AuthTask`.`Id`, `AuthTask`.`Title`, `AuthTask`.`Status`, `AuthTask`.`OwnerName`, `AuthTask`.`UpdatedAt` from `AuthTask`' . ' where ' . '`AuthTask`.`Id` = ' . ($param_AuthTask_Id_where === null ? 'NULL' : '\'' . $mtooldb->real_escape_string((string) $param_AuthTask_Id_where) . '\'');
-        $ret = $mtooldb->query($last_sql_command_for_mtooldb);
+        $last_sql_command_for_mtooldb = 'select `AuthTask`.`Id`, `AuthTask`.`Title`, `AuthTask`.`Status`, `AuthTask`.`OwnerName`, `AuthTask`.`UpdatedAt` from `AuthTask` where `AuthTask`.`Id` = ?';
+        $ret = $mtooldb->execute($last_sql_command_for_mtooldb, [
+            $param_AuthTask_Id_where,
+        ]);
         if ($mtooldb->errno != 0) {
             error_log("Error occured while executing SQL: " . $mtooldb->error . " in " . __FILE__ . " on line " . __LINE__);
             return $ret;

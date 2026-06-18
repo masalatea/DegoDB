@@ -85,12 +85,20 @@ if [ ! -f "$run_script_abs" ]; then
 fi
 
 compose_cmd=(docker compose)
+compose_lane="${SAMPLE_PACK_COMPOSE_LANE:-local}"
+compose_include_lifecycle="${SAMPLE_PACK_INCLUDE_LIFECYCLE:-1}"
 while IFS= read -r resolved_compose_file; do
   [ -n "$resolved_compose_file" ] || continue
   compose_cmd+=(-f "$resolved_compose_file")
 done < <(
-  bash "$REPO_ROOT/mtool/scripts/list_compose_stack_files.sh" \
+  compose_stack_args=(
+    "--lane=$compose_lane"
     "--compose-file=$compose_file_abs"
+  )
+  if [ "$compose_include_lifecycle" != "0" ]; then
+    compose_stack_args+=("--compose-file=sample/_pack-support/sample-pack-lifecycle.compose.yaml")
+  fi
+  bash "$REPO_ROOT/mtool/scripts/list_compose_stack_files.sh" "${compose_stack_args[@]}"
 )
 
 cleanup() {
@@ -121,11 +129,40 @@ wait_for_config_db() {
   return 1
 }
 
+config_store_driver() {
+  "${compose_cmd[@]}" exec -T web-admin php -r 'require "/var/www/mtool/app/config.php"; $app = app_load_config(); echo $app["config_db"]["driver"] ?? "mysql";' 2>/dev/null || echo mysql
+}
+
+wait_for_config_store() {
+  local driver="${1:-mysql}"
+  local attempts="${2:-90}"
+  local attempt
+
+  if [ "$driver" != "sqlite" ]; then
+    wait_for_config_db "$attempts"
+    return $?
+  fi
+
+  for attempt in $(seq 1 "$attempts"); do
+    if "${compose_cmd[@]}" exec -T web-admin php /var/www/mtool/scripts/check_config_db_bootstrap.php --requested-by=sample-runner >/dev/null 2>&1; then
+      return 0
+    fi
+
+    sleep 1
+  done
+
+  echo "SQLite config store did not become ready after ${attempts}s" >&2
+  "${compose_cmd[@]}" ps >&2 || true
+  "${compose_cmd[@]}" logs --tail=80 web-admin >&2 || true
+  return 1
+}
+
 trap cleanup EXIT
 
 "${compose_cmd[@]}" build web-admin web-lab
 "$run_script_abs" up
-wait_for_config_db
+sample_config_store_driver="$(config_store_driver)"
+wait_for_config_store "$sample_config_store_driver"
 
 if [ "$apply_pack_seed" -eq 1 ]; then
   "$run_script_abs" apply-seed

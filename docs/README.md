@@ -14,6 +14,7 @@ top-level は外部ユーザ向け導線を優先し、内部向け文書は [In
    - [Start Here / 最初の入口](start-here.md)
    - [Choose Your Path / 目的別の読み方](choose-your-path.md)
 2. golden path layer
+   - [JSON To DB Entrance / JSON から DB 設計へ入る入口](json-to-db-entrance.md) optional pre-design entrance
    - [Existing DB To Output / 既存 DB から出力まで](existing-db-to-output.md)
    - [Common Tasks / よく使う作業](common-tasks.md)
    - [Current Supported Workflow / 現在サポートするワークフロー](current-supported-workflow.md)
@@ -43,6 +44,8 @@ detail doc だけを読んで mainline を再構成するのは current reading 
   - 目的別に current doc と最初のコマンドを逆引きする文書
 - [Existing DB To Output / 既存 DB から出力まで](existing-db-to-output.md)
   - existing DB 接続から canonical metadata 永続化、設計、output verify までの primary journey
+- [JSON To DB Entrance / JSON から DB 設計へ入る入口](json-to-db-entrance.md)
+  - 初期構想に含まれる optional pre-design entrance。JSON file / JSON API cache / JSON config から AI-readable な DB design draft を作り、DB-first mainline へ入る。runtime / generator 機能ではない
 - [Common Tasks / よく使う作業](common-tasks.md)
   - 起動、sample、test、bundle、config DB backup / durable env、runtime reference 確認の最短手順
 - [Current Supported Workflow / 現在サポートするワークフロー](current-supported-workflow.md)
@@ -64,6 +67,8 @@ detail doc だけを読んで mainline を再構成するのは current reading 
   - ツール本来の `DB 構造 -> import -> Data Class -> DB Access -> Source Output` の概念モデル
 - [Existing DB To Output / 既存 DB から出力まで](existing-db-to-output.md)
   - existing DB 接続から output verify までの primary journey
+- [JSON To DB Entrance / JSON から DB 設計へ入る入口](json-to-db-entrance.md)
+  - DB をよく知らない利用者が、JSON sample と現在の処理説明から DB 設計案へ進むための、初期構想に含まれる optional pre-design entrance
 - [Storage And State Model / 保存先と状態モデル](storage-and-state-model.md)
   - `config_db`、artifact、`work/` の state map
 - [Current Supported Workflow / 現在サポートするワークフロー](current-supported-workflow.md)

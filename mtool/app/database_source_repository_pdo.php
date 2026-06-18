@@ -2,6 +2,8 @@
 
 declare(strict_types=1);
 
+require_once __DIR__ . '/sql_dialect.php';
+
 /**
  * @param array{
  *     config_db?:array{
@@ -28,8 +30,19 @@ function app_database_source_repository_create_config_pdo(array $app): PDO
         throw new RuntimeException('config_db 接続情報が未設定です。');
     }
 
+    $dsn = (string) $configDb['dsn'];
+    if (str_starts_with(strtolower(trim($dsn)), 'sqlite:')) {
+        $sqlitePath = substr($dsn, strlen('sqlite:'));
+        if ($sqlitePath !== '' && $sqlitePath !== ':memory:') {
+            $sqliteDir = dirname($sqlitePath);
+            if ($sqliteDir !== '' && $sqliteDir !== '.' && !is_dir($sqliteDir)) {
+                mkdir($sqliteDir, 0775, true);
+            }
+        }
+    }
+
     return new PDO(
-        (string) $configDb['dsn'],
+        $dsn,
         (string) $configDb['user'],
         (string) $configDb['password'],
         [
@@ -55,18 +68,7 @@ function app_database_source_repository_mysql_dsn(
 
 function app_database_source_pdo_table_exists(PDO $pdo, string $tableName): bool
 {
-    $statement = $pdo->prepare(
-        'SELECT 1
-        FROM information_schema.tables
-        WHERE table_schema = DATABASE()
-          AND table_name = :table_name
-        LIMIT 1'
-    );
-    $statement->execute([
-        ':table_name' => $tableName,
-    ]);
-
-    return $statement->fetchColumn() !== false;
+    return app_sql_table_exists($pdo, $tableName);
 }
 
 /**
@@ -441,7 +443,8 @@ function app_pdo_update_database_source(array $app, int $sourceId, array $input)
                 supports_live_schema_import = :supports_live_schema_import,
                 supports_proxy_runtime_read = :supports_proxy_runtime_read,
                 proxy_runtime_priority = :proxy_runtime_priority,
-                source_of_truth = :source_of_truth
+                source_of_truth = :source_of_truth,
+                updated_at = CURRENT_TIMESTAMP
             WHERE id = :id'
         );
         $statement->execute([

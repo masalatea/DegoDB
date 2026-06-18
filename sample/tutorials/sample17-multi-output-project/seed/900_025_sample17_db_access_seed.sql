@@ -183,8 +183,8 @@ INSERT INTO project_db_access_function_select_wheres (
     where_order,
     source_of_truth
 ) VALUES
-(@sample17_get_task_list_function_id, 'CapstoneTask', '', 'Status', 'argument', '', '', '', '', '', '', '', '=', 10, 'manual'),
-(@sample17_get_task_function_id, 'CapstoneTask', '', 'Id', 'argument', '', '', '', '', '', '', '', '=', 10, 'manual');
+(@sample17_get_task_list_function_id, 'CapstoneTask', '', 'Status', 'argument', 'varchar', '', '', '', '', '', '', '=', 10, 'manual'),
+(@sample17_get_task_function_id, 'CapstoneTask', '', 'Id', 'argument', 'int', '', '', '', '', '', '', '=', 10, 'manual');
 
 SET @sample17_project_id = NULL;
 SET @sample17_db_access_class_id = NULL;

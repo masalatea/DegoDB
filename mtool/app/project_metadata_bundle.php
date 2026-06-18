@@ -2717,6 +2717,8 @@ function app_project_metadata_bundle_delete_core_scope_rows(PDO $pdo, int $proje
  */
 function app_project_metadata_bundle_insert_tables(PDO $pdo, int $projectId, array $tables): void
 {
+    $dialect = app_sql_dialect_from_pdo($pdo);
+    $isNullIdentifier = app_sql_identifier($dialect, 'IsNull');
     $tableStatement = $pdo->prepare(
         'INSERT INTO dbtable (ProjectPID, name)
          VALUES (:project_id, :name)'
@@ -2727,7 +2729,7 @@ function app_project_metadata_bundle_insert_tables(PDO $pdo, int $projectId, arr
             dbtablePID,
             name,
             datatype,
-            IsNull,
+            ' . $isNullIdentifier . ',
             IsKey,
             IsDefault,
             Extra,

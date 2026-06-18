@@ -1,0 +1,10 @@
+name: mtool-sample-sample15-project-metadata-export-import-sqlite
+
+services:
+  web-admin:
+    environment:
+      APP_WORK_ROOT: /var/www/work/sample-packs/sample15-project-metadata-export-import-sqlite
+
+  web-lab:
+    environment:
+      APP_WORK_ROOT: /var/www/work/sample-packs/sample15-project-metadata-export-import-sqlite

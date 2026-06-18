@@ -1,0 +1,44 @@
+name: mtool-sample-sample12-external-db-source-import-sqlite
+
+services:
+  web-admin:
+    environment:
+      APP_WORK_ROOT: /var/www/work/sample-packs/sample12-external-db-source-import-sqlite
+      APP_LAB_DB_HOST: db-lab
+      APP_LAB_DB_PORT: 3306
+      APP_LAB_DB_NAME: lab_app
+      APP_LAB_DB_USER: lab_app
+      APP_LAB_DB_PASSWORD: sample12_lab_password
+
+  web-lab:
+    environment:
+      APP_WORK_ROOT: /var/www/work/sample-packs/sample12-external-db-source-import-sqlite
+      APP_LAB_DB_HOST: db-lab
+      APP_LAB_DB_PORT: 3306
+      APP_LAB_DB_NAME: lab_app
+      APP_LAB_DB_USER: lab_app
+      APP_LAB_DB_PASSWORD: sample12_lab_password
+
+  db-lab:
+    environment:
+      MARIADB_ROOT_PASSWORD: sample12_root_password
+      MARIADB_DATABASE: lab_app
+      MARIADB_USER: lab_app
+      MARIADB_PASSWORD: sample12_lab_password
+    entrypoint:
+      - /bin/sh
+      - -lc
+      - |
+        set -eu
+        rm -rf /docker-entrypoint-initdb.d/*
+        cp -R /docker-entrypoint-initdb-lab-core/. /docker-entrypoint-initdb.d/
+        cp -R /docker-entrypoint-initdb-lab-sample/. /docker-entrypoint-initdb.d/
+        exec docker-entrypoint.sh mariadbd
+    volumes:
+      - db-lab-data:/var/lib/mysql
+      - db-lab-initdb:/docker-entrypoint-initdb.d
+      - ./docker/mariadb/lab-initdb:/docker-entrypoint-initdb-lab-core:ro
+      - ./sample/tutorials/sample12-external-db-source-import/lab-seed:/docker-entrypoint-initdb-lab-sample:ro
+
+volumes:
+  db-lab-initdb:

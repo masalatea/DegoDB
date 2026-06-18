@@ -41,6 +41,8 @@ function app_pdo_fetch_data_class_metadata_snapshot(array $app, string $projectK
 {
     try {
         $pdo = app_create_config_pdo($app);
+        $dialect = app_sql_dialect_from_db_config(app_database_config($app, 'config_db'));
+        $lastModifiedSelect = app_sql_datetime_select_expr($dialect, 'd.LastModifiedDT', 'last_modified_dt');
         $projectId = app_data_class_pdo_resolve_project_id($pdo, $projectKey);
         $statement = $pdo->prepare(
             'SELECT
@@ -50,7 +52,7 @@ function app_pdo_fetch_data_class_metadata_snapshot(array $app, string $projectK
                 d.StoreBasePath AS store_base_path,
                 d.IsAutoload AS is_autoload,
                 d.InheritParentDataClassName AS inherit_parent_data_class_name,
-                DATE_FORMAT(d.LastModifiedDT, "%Y-%m-%d %H:%i:%s") AS last_modified_dt,
+                ' . $lastModifiedSelect . ',
                 f.ProjectPID AS field_project_pid,
                 f.dataclassPID AS field_dataclass_pid,
                 f.PID AS field_pid,

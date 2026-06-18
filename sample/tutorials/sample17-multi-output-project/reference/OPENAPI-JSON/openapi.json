@@ -41,8 +41,8 @@
                                 "type": "object",
                                 "properties": {
                                     "param_CapstoneTask_Id_where": {
-                                        "type": "string",
-                                        "example": "string"
+                                        "type": "integer",
+                                        "example": 0
                                     }
                                 },
                                 "required": [
@@ -50,7 +50,7 @@
                                 ]
                             },
                             "example": {
-                                "param_CapstoneTask_Id_where": "string"
+                                "param_CapstoneTask_Id_where": 0
                             }
                         }
                     }
@@ -147,8 +147,8 @@
                                         "example": "string"
                                     },
                                     "limit": {
-                                        "type": "string",
-                                        "example": "string"
+                                        "type": "integer",
+                                        "example": 0
                                     }
                                 },
                                 "required": [
@@ -158,7 +158,7 @@
                             },
                             "example": {
                                 "param_CapstoneTask_Status_where": "string",
-                                "limit": "string"
+                                "limit": 0
                             }
                         }
                     }

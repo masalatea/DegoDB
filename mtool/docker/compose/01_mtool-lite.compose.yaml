@@ -1,0 +1,10 @@
+name: mtool-scenario-01-mtool-lite
+
+services:
+  web-admin:
+    environment:
+      APP_WORK_ROOT: /var/www/work/scenarios/01-mtool-lite
+
+  web-lab:
+    environment:
+      APP_WORK_ROOT: /var/www/work/scenarios/01-mtool-lite

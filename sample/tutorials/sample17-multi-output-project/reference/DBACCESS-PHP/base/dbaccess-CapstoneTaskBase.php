@@ -7,6 +7,9 @@
 // Generated from canonical DB Access metadata.
 // Base class generated from project_db_access_* metadata.
 
+require_once __DIR__ . '/../_support/mtool_runtime_db.php';
+
+
 class CapstoneTaskDBAccessBase
 {
     public function __construct()
@@ -22,8 +25,11 @@ class CapstoneTaskDBAccessBase
 
         $result = array();
 
-        $last_sql_command_for_mtooldb = 'select CapstoneTask.Id, CapstoneTask.Title, CapstoneTask.Status, CapstoneTask.OwnerName, CapstoneTask.Priority, CapstoneTask.DueDate from CapstoneTask' . ' where ' . 'CapstoneTask.Status = ' . '\'' . $mtooldb->real_escape_string($param_CapstoneTask_Status_where) . '\'' . ' order by CapstoneTask.Priority desc, CapstoneTask.Id asc' . ' limit ' . $limit;
-        $ret = $mtooldb->query($last_sql_command_for_mtooldb);
+        $last_sql_command_for_mtooldb = 'select CapstoneTask.Id, CapstoneTask.Title, CapstoneTask.Status, CapstoneTask.OwnerName, CapstoneTask.Priority, CapstoneTask.DueDate from CapstoneTask where CapstoneTask.Status = ? order by CapstoneTask.Priority desc, CapstoneTask.Id asc limit ?';
+        $ret = $mtooldb->execute($last_sql_command_for_mtooldb, [
+            $param_CapstoneTask_Status_where,
+            $limit,
+        ]);
         if ($mtooldb->errno != 0) {
             error_log("Error occured while executing SQL: " . $mtooldb->error . " in " . __FILE__ . " on line " . __LINE__);
             return $ret;
@@ -48,8 +54,10 @@ class CapstoneTaskDBAccessBase
         connect_mtooldb_if_not_yet();
         reconnect_mtooldb_if_necessary();
 
-        $last_sql_command_for_mtooldb = 'select CapstoneTask.Id, CapstoneTask.Title, CapstoneTask.Status, CapstoneTask.OwnerName, CapstoneTask.Priority, CapstoneTask.DueDate, CapstoneTask.UpdatedAt from CapstoneTask' . ' where ' . 'CapstoneTask.Id = ' . '\'' . $mtooldb->real_escape_string($param_CapstoneTask_Id_where) . '\'';
-        $ret = $mtooldb->query($last_sql_command_for_mtooldb);
+        $last_sql_command_for_mtooldb = 'select CapstoneTask.Id, CapstoneTask.Title, CapstoneTask.Status, CapstoneTask.OwnerName, CapstoneTask.Priority, CapstoneTask.DueDate, CapstoneTask.UpdatedAt from CapstoneTask where CapstoneTask.Id = ?';
+        $ret = $mtooldb->execute($last_sql_command_for_mtooldb, [
+            $param_CapstoneTask_Id_where,
+        ]);
         if ($mtooldb->errno != 0) {
             error_log("Error occured while executing SQL: " . $mtooldb->error . " in " . __FILE__ . " on line " . __LINE__);
             return $ret;

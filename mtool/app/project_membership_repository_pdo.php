@@ -32,6 +32,7 @@ function app_pdo_fetch_project_membership_summary(array $app, string $projectKey
 {
     try {
         $pdo = app_create_config_pdo($app);
+        $dialect = app_sql_dialect_from_db_config(app_database_config($app, 'config_db'));
         $projectStatement = $pdo->prepare(
             'SELECT id, owner_login_id
             FROM projects
@@ -54,10 +55,20 @@ function app_pdo_fetch_project_membership_summary(array $app, string $projectKey
         $projectId = (int) ($projectRow['id'] ?? 0);
         $ownerLoginId = trim((string) ($projectRow['owner_login_id'] ?? ''));
 
+        $roleCodesSelect = $dialect === 'sqlite'
+            ? '(SELECT group_concat(role_code, ",")
+                FROM (
+                    SELECT DISTINCT pm2.role_code AS role_code
+                    FROM project_memberships AS pm2
+                    WHERE pm2.project_id = project_memberships.project_id
+                      AND pm2.login_id = project_memberships.login_id
+                    ORDER BY pm2.role_code
+                )) AS role_codes'
+            : 'GROUP_CONCAT(DISTINCT role_code ORDER BY role_code SEPARATOR ",") AS role_codes';
         $statement = $pdo->prepare(
             'SELECT
                 login_id,
-                GROUP_CONCAT(DISTINCT role_code ORDER BY role_code SEPARATOR ",") AS role_codes,
+                ' . $roleCodesSelect . ',
                 MAX(can_administer) AS can_administer,
                 COUNT(*) AS membership_row_count
             FROM project_memberships

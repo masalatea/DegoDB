@@ -4,6 +4,18 @@ declare(strict_types=1);
 
 require_once __DIR__ . '/database.php';
 
+function app_project_html_source_binding_pdo_datetime_select_expr(
+    array $app,
+    string $columnExpression,
+    string $alias = 'updated_at',
+): string {
+    return app_sql_datetime_select_expr(
+        app_sql_dialect_from_db_config(app_database_config($app, 'config_db')),
+        $columnExpression,
+        $alias,
+    );
+}
+
 /**
  * @return array{
  *     ok:bool,
@@ -31,7 +43,7 @@ function app_pdo_fetch_project_html_source_bindings(array $app, string $projectK
                 phsb.refresh_policy,
                 phsb.notes,
                 phsb.source_of_truth,
-                DATE_FORMAT(phsb.updated_at, "%Y-%m-%d %H:%i:%s") AS updated_at
+                ' . app_project_html_source_binding_pdo_datetime_select_expr($app, 'phsb.updated_at') . '
             FROM project_html_source_bindings AS phsb
             INNER JOIN projects AS p
                 ON p.id = phsb.project_id
@@ -103,7 +115,7 @@ function app_pdo_fetch_project_html_source_binding(
                 phsb.refresh_policy,
                 phsb.notes,
                 phsb.source_of_truth,
-                DATE_FORMAT(phsb.updated_at, "%Y-%m-%d %H:%i:%s") AS updated_at
+                ' . app_project_html_source_binding_pdo_datetime_select_expr($app, 'phsb.updated_at') . '
             FROM project_html_source_bindings AS phsb
             INNER JOIN projects AS p
                 ON p.id = phsb.project_id
@@ -159,6 +171,75 @@ function app_pdo_upsert_project_html_source_binding(array $app, string $projectK
     try {
         $pdo = app_create_metadata_pdo($app);
         $projectId = app_project_html_source_binding_pdo_resolve_project_id($pdo, $projectKey);
+        $dialect = app_sql_dialect_from_db_config(app_database_config($app, 'config_db'));
+
+        if ($dialect === 'sqlite') {
+            $bindingId = app_project_html_source_binding_pdo_find_binding_id(
+                $pdo,
+                $projectId,
+                (int) $input['legacy_project_source_output_pid'],
+            );
+            if ($bindingId !== null) {
+                $statement = $pdo->prepare(
+                    'UPDATE project_html_source_bindings
+                    SET
+                        source_output_key = :source_output_key,
+                        module_source_ref = :module_source_ref,
+                        refresh_policy = :refresh_policy,
+                        notes = :notes,
+                        source_of_truth = :source_of_truth,
+                        updated_at = CURRENT_TIMESTAMP
+                    WHERE id = :id'
+                );
+                $statement->execute([
+                    ':id' => $bindingId,
+                    ':source_output_key' => $input['source_output_key'],
+                    ':module_source_ref' => $input['module_source_ref'],
+                    ':refresh_policy' => $input['refresh_policy'],
+                    ':notes' => $input['notes'],
+                    ':source_of_truth' => $input['source_of_truth'] ?? 'manual',
+                ]);
+
+                return [
+                    'ok' => true,
+                    'error' => '',
+                ];
+            }
+
+            $statement = $pdo->prepare(
+                'INSERT INTO project_html_source_bindings (
+                    project_id,
+                    legacy_project_source_output_pid,
+                    source_output_key,
+                    module_source_ref,
+                    refresh_policy,
+                    notes,
+                    source_of_truth
+                ) VALUES (
+                    :project_id,
+                    :legacy_project_source_output_pid,
+                    :source_output_key,
+                    :module_source_ref,
+                    :refresh_policy,
+                    :notes,
+                    :source_of_truth
+                )'
+            );
+            $statement->execute([
+                ':project_id' => $projectId,
+                ':legacy_project_source_output_pid' => $input['legacy_project_source_output_pid'],
+                ':source_output_key' => $input['source_output_key'],
+                ':module_source_ref' => $input['module_source_ref'],
+                ':refresh_policy' => $input['refresh_policy'],
+                ':notes' => $input['notes'],
+                ':source_of_truth' => $input['source_of_truth'] ?? 'manual',
+            ]);
+
+            return [
+                'ok' => true,
+                'error' => '',
+            ];
+        }
 
         $statement = $pdo->prepare(
             'INSERT INTO project_html_source_bindings (
@@ -301,4 +382,29 @@ function app_project_html_source_binding_pdo_resolve_project_id(PDO $pdo, string
     }
 
     return (int) $projectId;
+}
+
+function app_project_html_source_binding_pdo_find_binding_id(
+    PDO $pdo,
+    int $projectId,
+    int $legacyProjectSourceOutputPid,
+): ?int {
+    $statement = $pdo->prepare(
+        'SELECT id
+        FROM project_html_source_bindings
+        WHERE project_id = :project_id
+          AND legacy_project_source_output_pid = :legacy_project_source_output_pid
+        LIMIT 1'
+    );
+    $statement->execute([
+        ':project_id' => $projectId,
+        ':legacy_project_source_output_pid' => $legacyProjectSourceOutputPid,
+    ]);
+
+    $bindingId = $statement->fetchColumn();
+    if (!is_numeric($bindingId)) {
+        return null;
+    }
+
+    return (int) $bindingId;
 }

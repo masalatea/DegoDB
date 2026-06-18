@@ -7,6 +7,7 @@
 // Generated from canonical DB Access metadata.
 // Base class generated from project_db_access_* metadata.
 
+{{RUNTIME_DB_SUPPORT_REQUIRE_SECTION}}
 class {{CLASS_NAME}}
 {
 {{CLASS_BODY_SECTION}}}

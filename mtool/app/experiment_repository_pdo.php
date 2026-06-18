@@ -4,6 +4,18 @@ declare(strict_types=1);
 
 require_once __DIR__ . '/database.php';
 
+function app_pdo_lab_experiment_datetime_select_expr(
+    array $app,
+    string $columnExpression = 'updated_at',
+    string $alias = 'updated_at',
+): string {
+    return app_sql_datetime_select_expr(
+        app_sql_dialect_from_db_config(app_database_config($app, 'db')),
+        $columnExpression,
+        $alias,
+    );
+}
+
 /**
  * @param array{
  *     db:array{
@@ -42,7 +54,7 @@ function app_pdo_fetch_lab_experiment_catalog(array $app): array
                 execution_status,
                 runtime_target,
                 COALESCE(executed_by, "") AS executed_by,
-                DATE_FORMAT(updated_at, "%Y-%m-%d %H:%i:%s") AS updated_at,
+                ' . app_pdo_lab_experiment_datetime_select_expr($app) . ',
                 notes
             FROM lab_experiments
             ORDER BY updated_at DESC, id DESC'
@@ -120,7 +132,7 @@ function app_pdo_fetch_lab_experiment_by_key(array $app, string $experimentKey):
                 execution_status,
                 runtime_target,
                 COALESCE(executed_by, "") AS executed_by,
-                DATE_FORMAT(updated_at, "%Y-%m-%d %H:%i:%s") AS updated_at,
+                ' . app_pdo_lab_experiment_datetime_select_expr($app) . ',
                 notes
             FROM lab_experiments
             WHERE experiment_key = :experiment_key
@@ -274,7 +286,8 @@ function app_pdo_update_lab_experiment(array $app, array $input): array
                 name = :name,
                 execution_status = :execution_status,
                 runtime_target = :runtime_target,
-                notes = :notes
+                notes = :notes,
+                updated_at = CURRENT_TIMESTAMP
             WHERE experiment_key = :experiment_key'
         );
 

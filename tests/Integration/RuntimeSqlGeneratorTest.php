@@ -151,6 +151,10 @@ final class RuntimeSqlGeneratorTest extends TestCase
             "        \$last_sql_command_for_mtooldb = 'select Article.PID from Article left outer join Person on (Article.AuthorPID = Person.PID and Article.ReviewerPID = Person.PID)';",
             $result['result']['body_lines'],
         );
+        self::assertContains(
+            '        $ret = $mtooldb->execute($last_sql_command_for_mtooldb, [',
+            $result['result']['body_lines'],
+        );
     }
 
     public function testTryGenerateSelectMethodSupportsHavingArgumentAfterWhereAndBeforeLimit(): void
@@ -198,7 +202,7 @@ final class RuntimeSqlGeneratorTest extends TestCase
                         'relational_operator' => '>=',
                         'right_target_prefix' => '',
                         'right_parameter_type' => 'argument',
-                        'right_parameter_data_type' => 'raw',
+                        'right_parameter_data_type' => '',
                         'right_fixed_parameter' => '',
                         'right_target_field_id' => '0',
                         'right_target_suffix' => '',
@@ -228,9 +232,13 @@ final class RuntimeSqlGeneratorTest extends TestCase
         self::assertSame('canonical-sql', $result['result']['mode']);
 
         $body = implode("\n", $result['result']['body_lines']);
-        self::assertStringContainsString('$mtooldb->real_escape_string($status)', $body);
         self::assertStringContainsString(
-            "' group by Article.Category' . ' having ' . 'count(Article.PID) >= ' . \$minCount . ' order by count(Article.PID) desc' . ' limit ' . \$limit;",
+            "\$last_sql_command_for_mtooldb = 'select Article.Category, count(Article.PID) from Article where Article.Status = ? group by Article.Category having count(Article.PID) >= ? order by count(Article.PID) desc limit ?';",
+            $body,
+        );
+        self::assertStringContainsString('$mtooldb->execute($last_sql_command_for_mtooldb, [', $body);
+        self::assertStringContainsString(
+            "            \$status,\n            \$minCount,\n            \$limit,",
             $body,
         );
     }
@@ -318,10 +326,10 @@ final class RuntimeSqlGeneratorTest extends TestCase
 
         $body = implode("\n", $result['result']['body_lines']);
         self::assertStringContainsString(
-            "' having ' . 'count(Article.PID) >= coalesce(' . 'sum(Article.RequiredCount)' . ', 0)' . ' and ' . 'lower(Article.Category) = lower('",
+            "\$last_sql_command_for_mtooldb = 'select Article.Category, count(Article.PID), sum(Article.RequiredCount) from Article group by Article.Category having count(Article.PID) >= coalesce(sum(Article.RequiredCount), 0) and lower(Article.Category) = lower(?)';",
             $body,
         );
-        self::assertStringContainsString("\$mtooldb->real_escape_string('published')", $body);
+        self::assertStringContainsString("            'published',", $body);
     }
 
     public function testTryGenerateInsertMethodDelegatesBlobTargets(): void

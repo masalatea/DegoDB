@@ -1,0 +1,10 @@
+name: mtool-sample-sample09-dbaccess-aggregate-report-sqlite
+
+services:
+  web-admin:
+    environment:
+      APP_WORK_ROOT: /var/www/work/sample-packs/sample09-dbaccess-aggregate-report-sqlite
+
+  web-lab:
+    environment:
+      APP_WORK_ROOT: /var/www/work/sample-packs/sample09-dbaccess-aggregate-report-sqlite

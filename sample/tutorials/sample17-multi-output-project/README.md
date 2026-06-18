@@ -9,6 +9,8 @@ This tutorial pack is the final capstone of the current tutorial lane. It keeps 
 
 `sample11` から `sample16` は Source Output の種類や auth 境界を個別に確認します。`sample17` はそれらを 1 project にまとめ、同じ canonical metadata から複数 artifact を publish する capstone です。
 
+SQLite config store profile では、DegoDB の設計メタデータだけを folder-backed SQLite file に保存します。runtime 側の user database / lab database は別物として維持されるため、軽量な設定ストアと実アプリの DB を混同せずに確認できます。
+
 ## 読み方
 
 Quickstart と `sample01` から `sample10` を終えた後は、まず次だけ実行します。
@@ -35,6 +37,12 @@ seed を再適用する場合:
 
 ```bash
 make sample17-pack-runtime-test
+```
+
+SQLite config store profile で同じ gate を見る場合:
+
+```bash
+make sample17-pack-runtime-test-sqlite
 ```
 
 `sample17-pack-runtime-test` は container 内 PHPUnit で `tests/Integration/Sample17MultiOutputProjectTest.php` を実行します。

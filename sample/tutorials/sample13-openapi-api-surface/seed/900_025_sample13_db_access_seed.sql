@@ -181,8 +181,8 @@ INSERT INTO project_db_access_function_select_wheres (
     where_order,
     source_of_truth
 ) VALUES
-(@sample13_get_api_task_list_function_id, 'ApiTask', '', 'Status', 'argument', '', '', '', '', '', '', '', '=', 10, 'manual'),
-(@sample13_get_api_task_function_id, 'ApiTask', '', 'Id', 'argument', '', '', '', '', '', '', '', '=', 10, 'manual');
+(@sample13_get_api_task_list_function_id, 'ApiTask', '', 'Status', 'argument', 'varchar', '', '', '', '', '', '', '=', 10, 'manual'),
+(@sample13_get_api_task_function_id, 'ApiTask', '', 'Id', 'argument', 'int', '', '', '', '', '', '', '=', 10, 'manual');
 
 SET @sample13_project_id = NULL;
 SET @sample13_db_access_class_id = NULL;

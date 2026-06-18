@@ -38,6 +38,19 @@ make sample12-pack-runtime-test
 
 `sample12-pack-runtime-test` は container 内 PHPUnit で `tests/Integration/Sample12ExternalDbSourceImportOutputTest.php` を実行します。
 
+SQLite config store profile で同じ tutorial を検証:
+
+```bash
+make sample12-pack-runtime-test-sqlite
+```
+
+この profile でも `db-lab` は external DB 相当として残ります。SQLite file store に保存されるのは DegoDB 自身の設計メタデータだけです。
+
+```bash
+APP_CONFIG_STORE_DIR=work/config-store-sample12-sqlite \
+  ./sample/tutorials/sample12-external-db-source-import/run-sqlite-config.sh up
+```
+
 ## Seed 内容
 
 - `database_sources`

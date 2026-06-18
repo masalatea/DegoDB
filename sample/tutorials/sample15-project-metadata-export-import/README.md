@@ -33,6 +33,19 @@ make sample15-pack-runtime-test
 
 `sample15-pack-runtime-test` は container 内 PHPUnit で `tests/Integration/Sample15ProjectMetadataExportImportTest.php` を実行します。
 
+SQLite config store profile で同じ tutorial を検証:
+
+```sh
+make sample15-pack-runtime-test-sqlite
+```
+
+SQLite profile では live schema の型名が MySQL / MariaDB と異なるため、bundle section の型名完全一致ではなく、manifest / preview / apply / target summary の往復を確認します。
+
+```sh
+APP_CONFIG_STORE_DIR=work/config-store-sample15-sqlite \
+  ./sample/tutorials/sample15-project-metadata-export-import/run-sqlite-config.sh up
+```
+
 ## Seed 内容
 
 - `projects`

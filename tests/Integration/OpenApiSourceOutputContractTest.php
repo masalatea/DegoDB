@@ -337,6 +337,25 @@ final class OpenApiSourceOutputContractTest extends TestCase
             $listOperation['requestBody']['content']['application/json']['schema']['required'] ?? [],
         );
         self::assertSame(
+            'integer',
+            $listOperation['requestBody']['content']['application/json']['schema']['properties']['OwnerID']['type'] ?? '',
+        );
+        self::assertSame(
+            0,
+            $listOperation['requestBody']['content']['application/json']['schema']['properties']['OwnerID']['example'] ?? null,
+        );
+        self::assertSame(
+            'string',
+            $listOperation['requestBody']['content']['application/json']['schema']['properties']['Status']['type'] ?? '',
+        );
+        self::assertSame(
+            [
+                'OwnerID' => 0,
+                'Status' => 'string',
+            ],
+            $listOperation['requestBody']['content']['application/json']['example'] ?? null,
+        );
+        self::assertSame(
             'array',
             $listOperation['responses']['200']['content']['application/json']['schema']['properties']['Result']['type'] ?? '',
         );
@@ -344,6 +363,38 @@ final class OpenApiSourceOutputContractTest extends TestCase
             '#/components/schemas/ProjectData',
             $listOperation['responses']['200']['content']['application/json']['schema']['properties']['Result']['items']['$ref'] ?? '',
         );
+    }
+
+    public function testOpenApiScalarRequestSchemaPrefersProxyParameterMetadata(): void
+    {
+        $schema = app_project_output_openapi_request_schema([
+            'source_name' => 'Project',
+            'function_name' => 'FindProject',
+            'auth_policy' => [
+                'strategy_key' => 'no-security',
+            ],
+            'steps' => [
+                [
+                    'input_kind' => 'scalar',
+                    'object_param_name' => '',
+                    'object_class' => '',
+                    'parameter_names' => ['ExternalCode'],
+                    'parameter_schemas' => [
+                        'ExternalCode' => [
+                            'datatype' => 'int',
+                            'source' => 'select-where-parameter-data-type',
+                            'target_table_column_name' => 'ExternalCode',
+                        ],
+                    ],
+                ],
+            ],
+        ]);
+
+        self::assertSame(
+            'integer',
+            $schema['properties']['ExternalCode']['type'] ?? '',
+        );
+        self::assertSame(0, $schema['properties']['ExternalCode']['example'] ?? null);
     }
 
     public function testLabSwaggerOperationCatalogBuildsAuthHelperMetadata(): void

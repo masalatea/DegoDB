@@ -43,6 +43,18 @@ function app_pdo_db_access_function_supports_blob_streaming_contract(
     return app_generated_file_method_has_blob_streaming_contract($dbaccessPath, $functionName);
 }
 
+function app_pdo_db_access_datetime_select_expr(
+    array $app,
+    string $columnExpression = 'updated_at',
+    string $alias = 'updated_at',
+): string {
+    return app_sql_datetime_select_expr(
+        app_sql_dialect_from_db_config(app_database_config($app, 'config_db')),
+        $columnExpression,
+        $alias,
+    );
+}
+
 /**
  * @param array{
  *     source_name:string,
@@ -179,6 +191,8 @@ function app_pdo_fetch_db_access_class_metadata(array $app, string $projectKey, 
 {
     try {
         $pdo = app_create_metadata_pdo($app);
+        $dialect = app_sql_dialect_from_db_config(app_database_config($app, 'config_db'));
+        $updatedAtSelect = app_sql_datetime_select_expr($dialect, 'c.updated_at', 'updated_at');
         $statement = $pdo->prepare(
             'SELECT
                 c.source_name,
@@ -188,7 +202,7 @@ function app_pdo_fetch_db_access_class_metadata(array $app, string $projectKey, 
                 c.source_of_truth,
                 c.last_detected_dbaccess_file,
                 c.last_detected_data_file,
-                DATE_FORMAT(c.updated_at, "%Y-%m-%d %H:%i:%s") AS updated_at
+                ' . $updatedAtSelect . '
             FROM project_db_access_classes AS c
             INNER JOIN projects AS p
                 ON p.id = c.project_id
@@ -259,6 +273,8 @@ function app_pdo_fetch_db_access_class_metadata_catalog(array $app, string $proj
 {
     try {
         $pdo = app_create_metadata_pdo($app);
+        $dialect = app_sql_dialect_from_db_config(app_database_config($app, 'config_db'));
+        $updatedAtSelect = app_sql_datetime_select_expr($dialect, 'c.updated_at', 'updated_at');
         $statement = $pdo->prepare(
             'SELECT
                 c.source_name,
@@ -267,7 +283,7 @@ function app_pdo_fetch_db_access_class_metadata_catalog(array $app, string $proj
                 c.notes,
                 c.source_of_truth,
                 COUNT(f.id) AS function_count,
-                DATE_FORMAT(c.updated_at, "%Y-%m-%d %H:%i:%s") AS updated_at
+                ' . $updatedAtSelect . '
             FROM project_db_access_classes AS c
             INNER JOIN projects AS p
                 ON p.id = c.project_id
@@ -348,37 +364,130 @@ function app_pdo_upsert_db_access_class_metadata(array $app, array $input): arra
 {
     try {
         $pdo = app_create_metadata_pdo($app);
+        $dialect = app_sql_dialect_from_db_config(app_database_config($app, 'config_db'));
         $projectId = app_pdo_resolve_project_id($pdo, $input['project_key']);
 
-        $statement = $pdo->prepare(
-            'INSERT INTO project_db_access_classes (
-                project_id,
-                source_name,
-                store_base_path,
-                is_autoload,
-                notes,
-                source_of_truth,
-                last_detected_dbaccess_file,
-                last_detected_data_file
-            ) VALUES (
-                :project_id,
-                :source_name,
-                :store_base_path,
-                :is_autoload,
-                :notes,
-                :source_of_truth,
-                :last_detected_dbaccess_file,
-                :last_detected_data_file
-            )
-            ON DUPLICATE KEY UPDATE
-                store_base_path = VALUES(store_base_path),
-                is_autoload = VALUES(is_autoload),
-                notes = VALUES(notes),
-                source_of_truth = VALUES(source_of_truth),
-                last_detected_dbaccess_file = VALUES(last_detected_dbaccess_file),
-                last_detected_data_file = VALUES(last_detected_data_file),
-                updated_at = CURRENT_TIMESTAMP'
-        );
+        if ($dialect === 'sqlite') {
+            $classId = app_pdo_find_db_access_class_id($pdo, $input['project_key'], $input['source_name']);
+            if ($classId !== null) {
+                $statement = $pdo->prepare(
+                    'UPDATE project_db_access_classes
+                    SET
+                        store_base_path = :store_base_path,
+                        is_autoload = :is_autoload,
+                        notes = :notes,
+                        source_of_truth = :source_of_truth,
+                        last_detected_dbaccess_file = :last_detected_dbaccess_file,
+                        last_detected_data_file = :last_detected_data_file,
+                        updated_at = CURRENT_TIMESTAMP
+                    WHERE id = :id'
+                );
+                $statement->execute([
+                    ':id' => $classId,
+                    ':store_base_path' => $input['store_base_path'],
+                    ':is_autoload' => $input['is_autoload'] === '1' ? 1 : 0,
+                    ':notes' => $input['notes'],
+                    ':source_of_truth' => $input['source_of_truth'],
+                    ':last_detected_dbaccess_file' => $input['last_detected_dbaccess_file'],
+                    ':last_detected_data_file' => $input['last_detected_data_file'],
+                ]);
+            } else {
+                $statement = $pdo->prepare(
+                    'INSERT INTO project_db_access_classes (
+                        project_id,
+                        source_name,
+                        store_base_path,
+                        is_autoload,
+                        notes,
+                        source_of_truth,
+                        last_detected_dbaccess_file,
+                        last_detected_data_file
+                    ) VALUES (
+                        :project_id,
+                        :source_name,
+                        :store_base_path,
+                        :is_autoload,
+                        :notes,
+                        :source_of_truth,
+                        :last_detected_dbaccess_file,
+                        :last_detected_data_file
+                    )'
+                );
+                $statement->execute([
+                    ':project_id' => $projectId,
+                    ':source_name' => $input['source_name'],
+                    ':store_base_path' => $input['store_base_path'],
+                    ':is_autoload' => $input['is_autoload'] === '1' ? 1 : 0,
+                    ':notes' => $input['notes'],
+                    ':source_of_truth' => $input['source_of_truth'],
+                    ':last_detected_dbaccess_file' => $input['last_detected_dbaccess_file'],
+                    ':last_detected_data_file' => $input['last_detected_data_file'],
+                ]);
+            }
+
+            return [
+                'ok' => true,
+                'error' => '',
+            ];
+        }
+
+        $sql = $dialect === 'sqlite'
+            ? 'INSERT INTO project_db_access_classes (
+                    project_id,
+                    source_name,
+                    store_base_path,
+                    is_autoload,
+                    notes,
+                    source_of_truth,
+                    last_detected_dbaccess_file,
+                    last_detected_data_file
+                ) VALUES (
+                    :project_id,
+                    :source_name,
+                    :store_base_path,
+                    :is_autoload,
+                    :notes,
+                    :source_of_truth,
+                    :last_detected_dbaccess_file,
+                    :last_detected_data_file
+                )
+                ON CONFLICT(project_id, source_name) DO UPDATE SET
+                    store_base_path = excluded.store_base_path,
+                    is_autoload = excluded.is_autoload,
+                    notes = excluded.notes,
+                    source_of_truth = excluded.source_of_truth,
+                    last_detected_dbaccess_file = excluded.last_detected_dbaccess_file,
+                    last_detected_data_file = excluded.last_detected_data_file,
+                    updated_at = CURRENT_TIMESTAMP'
+            : 'INSERT INTO project_db_access_classes (
+                    project_id,
+                    source_name,
+                    store_base_path,
+                    is_autoload,
+                    notes,
+                    source_of_truth,
+                    last_detected_dbaccess_file,
+                    last_detected_data_file
+                ) VALUES (
+                    :project_id,
+                    :source_name,
+                    :store_base_path,
+                    :is_autoload,
+                    :notes,
+                    :source_of_truth,
+                    :last_detected_dbaccess_file,
+                    :last_detected_data_file
+                )
+                ON DUPLICATE KEY UPDATE
+                    store_base_path = VALUES(store_base_path),
+                    is_autoload = VALUES(is_autoload),
+                    notes = VALUES(notes),
+                    source_of_truth = VALUES(source_of_truth),
+                    last_detected_dbaccess_file = VALUES(last_detected_dbaccess_file),
+                    last_detected_data_file = VALUES(last_detected_data_file),
+                    updated_at = CURRENT_TIMESTAMP';
+
+        $statement = $pdo->prepare($sql);
 
         $statement->execute([
             ':project_id' => $projectId,
@@ -443,6 +552,8 @@ function app_pdo_fetch_db_access_function_metadata(array $app, string $projectKe
 {
     try {
         $pdo = app_create_metadata_pdo($app);
+        $dialect = app_sql_dialect_from_db_config(app_database_config($app, 'config_db'));
+        $updatedAtSelect = app_sql_datetime_select_expr($dialect, 'f.updated_at', 'updated_at');
         $statement = $pdo->prepare(
             'SELECT
                 c.source_name,
@@ -465,7 +576,7 @@ function app_pdo_fetch_db_access_function_metadata(array $app, string $projectKe
                 f.detected_signature,
                 f.detected_line,
                 f.source_of_truth,
-                DATE_FORMAT(f.updated_at, "%Y-%m-%d %H:%i:%s") AS updated_at
+                ' . $updatedAtSelect . '
             FROM project_db_access_functions AS f
             INNER JOIN project_db_access_classes AS c
                 ON c.id = f.db_access_class_id
@@ -566,6 +677,8 @@ function app_pdo_fetch_db_access_function_metadata_catalog(array $app, string $p
 {
     try {
         $pdo = app_create_metadata_pdo($app);
+        $dialect = app_sql_dialect_from_db_config(app_database_config($app, 'config_db'));
+        $updatedAtSelect = app_sql_datetime_select_expr($dialect, 'f.updated_at', 'updated_at');
         $statement = $pdo->prepare(
             'SELECT
                 f.function_name,
@@ -587,7 +700,7 @@ function app_pdo_fetch_db_access_function_metadata_catalog(array $app, string $p
                 f.detected_signature,
                 f.detected_line,
                 f.source_of_truth,
-                DATE_FORMAT(f.updated_at, "%Y-%m-%d %H:%i:%s") AS updated_at
+                ' . $updatedAtSelect . '
             FROM project_db_access_functions AS f
             INNER JOIN project_db_access_classes AS c
                 ON c.id = f.db_access_class_id
@@ -709,6 +822,7 @@ function app_pdo_upsert_db_access_function_metadata(array $app, array $input): a
         }
 
         $pdo = app_create_metadata_pdo($app);
+        $dialect = app_sql_dialect_from_db_config(app_database_config($app, 'config_db'));
         $pdo->beginTransaction();
 
         $classId = app_pdo_ensure_db_access_class_id(
@@ -719,71 +833,266 @@ function app_pdo_upsert_db_access_function_metadata(array $app, array $input): a
             $input['last_detected_data_file'],
         );
 
-        $statement = $pdo->prepare(
-            'INSERT INTO project_db_access_functions (
-                db_access_class_id,
-                function_name,
-                function_list_order,
-                function_suffix,
-                action_type,
-                data_class_base_name,
-                target_table_name,
-                parameter_type,
-                select_by_distinct,
-                sort_order_columns,
-                memo,
-                limit_parameter_type,
-                limit_fixed_parameter,
-                or_group_type,
-                single_proxy_auth_type,
-                single_proxy_single_get_function_name,
-                is_blob_target,
-                detected_signature,
-                detected_line,
-                source_of_truth
-            ) VALUES (
-                :db_access_class_id,
-                :function_name,
-                :function_list_order,
-                :function_suffix,
-                :action_type,
-                :data_class_base_name,
-                :target_table_name,
-                :parameter_type,
-                :select_by_distinct,
-                :sort_order_columns,
-                :memo,
-                :limit_parameter_type,
-                :limit_fixed_parameter,
-                :or_group_type,
-                :single_proxy_auth_type,
-                :single_proxy_single_get_function_name,
-                :is_blob_target,
-                :detected_signature,
-                :detected_line,
-                :source_of_truth
-            )
-            ON DUPLICATE KEY UPDATE
-                function_list_order = VALUES(function_list_order),
-                function_suffix = VALUES(function_suffix),
-                action_type = VALUES(action_type),
-                data_class_base_name = VALUES(data_class_base_name),
-                target_table_name = VALUES(target_table_name),
-                parameter_type = VALUES(parameter_type),
-                select_by_distinct = VALUES(select_by_distinct),
-                sort_order_columns = VALUES(sort_order_columns),
-                memo = VALUES(memo),
-                limit_parameter_type = VALUES(limit_parameter_type),
-                limit_fixed_parameter = VALUES(limit_fixed_parameter),
-                or_group_type = VALUES(or_group_type),
-                single_proxy_auth_type = VALUES(single_proxy_auth_type),
-                single_proxy_single_get_function_name = VALUES(single_proxy_single_get_function_name),
-                is_blob_target = VALUES(is_blob_target),
-                detected_signature = VALUES(detected_signature),
-                detected_line = VALUES(detected_line),
-                source_of_truth = VALUES(source_of_truth),
-                updated_at = CURRENT_TIMESTAMP'
-        );
+        if ($dialect === 'sqlite') {
+            $functionId = app_pdo_find_db_access_function_id(
+                $pdo,
+                $input['project_key'],
+                $input['source_name'],
+                $input['function_name'],
+            );
+            if ($functionId !== null) {
+                $statement = $pdo->prepare(
+                    'UPDATE project_db_access_functions
+                    SET
+                        function_list_order = :function_list_order,
+                        function_suffix = :function_suffix,
+                        action_type = :action_type,
+                        data_class_base_name = :data_class_base_name,
+                        target_table_name = :target_table_name,
+                        parameter_type = :parameter_type,
+                        select_by_distinct = :select_by_distinct,
+                        sort_order_columns = :sort_order_columns,
+                        memo = :memo,
+                        limit_parameter_type = :limit_parameter_type,
+                        limit_fixed_parameter = :limit_fixed_parameter,
+                        or_group_type = :or_group_type,
+                        single_proxy_auth_type = :single_proxy_auth_type,
+                        single_proxy_single_get_function_name = :single_proxy_single_get_function_name,
+                        is_blob_target = :is_blob_target,
+                        detected_signature = :detected_signature,
+                        detected_line = :detected_line,
+                        source_of_truth = :source_of_truth,
+                        updated_at = CURRENT_TIMESTAMP
+                    WHERE id = :id'
+                );
+                $statement->execute([
+                    ':id' => $functionId,
+                    ':function_list_order' => (int) $input['function_list_order'],
+                    ':function_suffix' => $input['function_suffix'],
+                    ':action_type' => $input['action_type'],
+                    ':data_class_base_name' => $input['data_class_base_name'],
+                    ':target_table_name' => $input['target_table_name'],
+                    ':parameter_type' => $input['parameter_type'],
+                    ':select_by_distinct' => $input['select_by_distinct'] === '1' ? 1 : 0,
+                    ':sort_order_columns' => $input['sort_order_columns'],
+                    ':memo' => $input['memo'],
+                    ':limit_parameter_type' => $input['limit_parameter_type'],
+                    ':limit_fixed_parameter' => $input['limit_fixed_parameter'],
+                    ':or_group_type' => $input['or_group_type'],
+                    ':single_proxy_auth_type' => $input['single_proxy_auth_type'],
+                    ':single_proxy_single_get_function_name' => $input['single_proxy_single_get_function_name'],
+                    ':is_blob_target' => $input['is_blob_target'] === '1' ? 1 : 0,
+                    ':detected_signature' => $input['detected_signature'],
+                    ':detected_line' => (int) $input['detected_line'],
+                    ':source_of_truth' => $input['source_of_truth'],
+                ]);
+            } else {
+                $statement = $pdo->prepare(
+                    'INSERT INTO project_db_access_functions (
+                        db_access_class_id,
+                        function_name,
+                        function_list_order,
+                        function_suffix,
+                        action_type,
+                        data_class_base_name,
+                        target_table_name,
+                        parameter_type,
+                        select_by_distinct,
+                        sort_order_columns,
+                        memo,
+                        limit_parameter_type,
+                        limit_fixed_parameter,
+                        or_group_type,
+                        single_proxy_auth_type,
+                        single_proxy_single_get_function_name,
+                        is_blob_target,
+                        detected_signature,
+                        detected_line,
+                        source_of_truth
+                    ) VALUES (
+                        :db_access_class_id,
+                        :function_name,
+                        :function_list_order,
+                        :function_suffix,
+                        :action_type,
+                        :data_class_base_name,
+                        :target_table_name,
+                        :parameter_type,
+                        :select_by_distinct,
+                        :sort_order_columns,
+                        :memo,
+                        :limit_parameter_type,
+                        :limit_fixed_parameter,
+                        :or_group_type,
+                        :single_proxy_auth_type,
+                        :single_proxy_single_get_function_name,
+                        :is_blob_target,
+                        :detected_signature,
+                        :detected_line,
+                        :source_of_truth
+                    )'
+                );
+                $statement->execute([
+                    ':db_access_class_id' => $classId,
+                    ':function_name' => $input['function_name'],
+                    ':function_list_order' => (int) $input['function_list_order'],
+                    ':function_suffix' => $input['function_suffix'],
+                    ':action_type' => $input['action_type'],
+                    ':data_class_base_name' => $input['data_class_base_name'],
+                    ':target_table_name' => $input['target_table_name'],
+                    ':parameter_type' => $input['parameter_type'],
+                    ':select_by_distinct' => $input['select_by_distinct'] === '1' ? 1 : 0,
+                    ':sort_order_columns' => $input['sort_order_columns'],
+                    ':memo' => $input['memo'],
+                    ':limit_parameter_type' => $input['limit_parameter_type'],
+                    ':limit_fixed_parameter' => $input['limit_fixed_parameter'],
+                    ':or_group_type' => $input['or_group_type'],
+                    ':single_proxy_auth_type' => $input['single_proxy_auth_type'],
+                    ':single_proxy_single_get_function_name' => $input['single_proxy_single_get_function_name'],
+                    ':is_blob_target' => $input['is_blob_target'] === '1' ? 1 : 0,
+                    ':detected_signature' => $input['detected_signature'],
+                    ':detected_line' => (int) $input['detected_line'],
+                    ':source_of_truth' => $input['source_of_truth'],
+                ]);
+            }
+
+            $pdo->commit();
+
+            return [
+                'ok' => true,
+                'error' => '',
+            ];
+        }
+
+        $sql = $dialect === 'sqlite'
+            ? 'INSERT INTO project_db_access_functions (
+                    db_access_class_id,
+                    function_name,
+                    function_list_order,
+                    function_suffix,
+                    action_type,
+                    data_class_base_name,
+                    target_table_name,
+                    parameter_type,
+                    select_by_distinct,
+                    sort_order_columns,
+                    memo,
+                    limit_parameter_type,
+                    limit_fixed_parameter,
+                    or_group_type,
+                    single_proxy_auth_type,
+                    single_proxy_single_get_function_name,
+                    is_blob_target,
+                    detected_signature,
+                    detected_line,
+                    source_of_truth
+                ) VALUES (
+                    :db_access_class_id,
+                    :function_name,
+                    :function_list_order,
+                    :function_suffix,
+                    :action_type,
+                    :data_class_base_name,
+                    :target_table_name,
+                    :parameter_type,
+                    :select_by_distinct,
+                    :sort_order_columns,
+                    :memo,
+                    :limit_parameter_type,
+                    :limit_fixed_parameter,
+                    :or_group_type,
+                    :single_proxy_auth_type,
+                    :single_proxy_single_get_function_name,
+                    :is_blob_target,
+                    :detected_signature,
+                    :detected_line,
+                    :source_of_truth
+                )
+                ON CONFLICT(db_access_class_id, function_name) DO UPDATE SET
+                    function_list_order = excluded.function_list_order,
+                    function_suffix = excluded.function_suffix,
+                    action_type = excluded.action_type,
+                    data_class_base_name = excluded.data_class_base_name,
+                    target_table_name = excluded.target_table_name,
+                    parameter_type = excluded.parameter_type,
+                    select_by_distinct = excluded.select_by_distinct,
+                    sort_order_columns = excluded.sort_order_columns,
+                    memo = excluded.memo,
+                    limit_parameter_type = excluded.limit_parameter_type,
+                    limit_fixed_parameter = excluded.limit_fixed_parameter,
+                    or_group_type = excluded.or_group_type,
+                    single_proxy_auth_type = excluded.single_proxy_auth_type,
+                    single_proxy_single_get_function_name = excluded.single_proxy_single_get_function_name,
+                    is_blob_target = excluded.is_blob_target,
+                    detected_signature = excluded.detected_signature,
+                    detected_line = excluded.detected_line,
+                    source_of_truth = excluded.source_of_truth,
+                    updated_at = CURRENT_TIMESTAMP'
+            : 'INSERT INTO project_db_access_functions (
+                    db_access_class_id,
+                    function_name,
+                    function_list_order,
+                    function_suffix,
+                    action_type,
+                    data_class_base_name,
+                    target_table_name,
+                    parameter_type,
+                    select_by_distinct,
+                    sort_order_columns,
+                    memo,
+                    limit_parameter_type,
+                    limit_fixed_parameter,
+                    or_group_type,
+                    single_proxy_auth_type,
+                    single_proxy_single_get_function_name,
+                    is_blob_target,
+                    detected_signature,
+                    detected_line,
+                    source_of_truth
+                ) VALUES (
+                    :db_access_class_id,
+                    :function_name,
+                    :function_list_order,
+                    :function_suffix,
+                    :action_type,
+                    :data_class_base_name,
+                    :target_table_name,
+                    :parameter_type,
+                    :select_by_distinct,
+                    :sort_order_columns,
+                    :memo,
+                    :limit_parameter_type,
+                    :limit_fixed_parameter,
+                    :or_group_type,
+                    :single_proxy_auth_type,
+                    :single_proxy_single_get_function_name,
+                    :is_blob_target,
+                    :detected_signature,
+                    :detected_line,
+                    :source_of_truth
+                )
+                ON DUPLICATE KEY UPDATE
+                    function_list_order = VALUES(function_list_order),
+                    function_suffix = VALUES(function_suffix),
+                    action_type = VALUES(action_type),
+                    data_class_base_name = VALUES(data_class_base_name),
+                    target_table_name = VALUES(target_table_name),
+                    parameter_type = VALUES(parameter_type),
+                    select_by_distinct = VALUES(select_by_distinct),
+                    sort_order_columns = VALUES(sort_order_columns),
+                    memo = VALUES(memo),
+                    limit_parameter_type = VALUES(limit_parameter_type),
+                    limit_fixed_parameter = VALUES(limit_fixed_parameter),
+                    or_group_type = VALUES(or_group_type),
+                    single_proxy_auth_type = VALUES(single_proxy_auth_type),
+                    single_proxy_single_get_function_name = VALUES(single_proxy_single_get_function_name),
+                    is_blob_target = VALUES(is_blob_target),
+                    detected_signature = VALUES(detected_signature),
+                    detected_line = VALUES(detected_line),
+                    source_of_truth = VALUES(source_of_truth),
+                    updated_at = CURRENT_TIMESTAMP';
+
+        $statement = $pdo->prepare($sql);
 
         $statement->execute([
             ':db_access_class_id' => $classId,
@@ -900,6 +1209,9 @@ function app_pdo_fetch_db_access_function_source_output_target_keys(
 ): array {
     try {
         $pdo = app_create_metadata_pdo($app);
+        $dialect = app_sql_dialect_from_db_config(app_database_config($app, 'config_db'));
+        $functionUpdatedAtSelect = app_sql_datetime_select_expr($dialect, 'f.updated_at', 'function_updated_at');
+        $targetUpdatedAtSelect = app_sql_datetime_select_expr($dialect, 'target.updated_at', 'target_updated_at');
         $statement = $pdo->prepare(
             'SELECT
                 target.source_output_key
@@ -1069,17 +1381,22 @@ function app_pdo_fetch_source_output_db_access_function_target_catalog(
 ): array {
     try {
         $pdo = app_create_metadata_pdo($app);
+        $dialect = app_sql_dialect_from_db_config(app_database_config($app, 'config_db'));
+        $functionUpdatedAtSelect = app_sql_datetime_select_expr($dialect, 'f.updated_at', 'function_updated_at');
+        $targetUpdatedAtSelect = app_sql_datetime_select_expr($dialect, 'target.updated_at', 'target_updated_at');
         $statement = $pdo->prepare(
             'SELECT
                 c.source_name,
                 f.function_name,
                 f.function_list_order,
                 f.action_type,
+                f.limit_parameter_type,
+                f.limit_fixed_parameter,
                 f.single_proxy_auth_type,
                 f.single_proxy_single_get_function_name,
                 f.source_of_truth,
-                DATE_FORMAT(f.updated_at, "%Y-%m-%d %H:%i:%s") AS function_updated_at,
-                DATE_FORMAT(target.updated_at, "%Y-%m-%d %H:%i:%s") AS target_updated_at
+                ' . $functionUpdatedAtSelect . ',
+                ' . $targetUpdatedAtSelect . '
             FROM project_db_access_function_source_output_targets AS target
             INNER JOIN project_db_access_functions AS f
                 ON f.id = target.db_access_function_id
@@ -1119,6 +1436,8 @@ function app_pdo_fetch_source_output_db_access_function_target_catalog(
                 'function_name' => (string) ($row['function_name'] ?? ''),
                 'function_list_order' => (string) ((int) ($row['function_list_order'] ?? 0)),
                 'action_type' => (string) ($row['action_type'] ?? ''),
+                'limit_parameter_type' => (string) ($row['limit_parameter_type'] ?? ''),
+                'limit_fixed_parameter' => (string) ($row['limit_fixed_parameter'] ?? ''),
                 'single_proxy_auth_type' => (string) ($row['single_proxy_auth_type'] ?? ''),
                 'single_proxy_single_get_function_name' => (string) ($row['single_proxy_single_get_function_name'] ?? ''),
                 'source_of_truth' => (string) ($row['source_of_truth'] ?? ''),
@@ -1382,7 +1701,7 @@ function app_pdo_fetch_db_access_function_select_where_catalog(
                 relational_operator,
                 where_order,
                 source_of_truth,
-                DATE_FORMAT(updated_at, "%Y-%m-%d %H:%i:%s") AS updated_at
+                ' . app_pdo_db_access_datetime_select_expr($app) . '
             FROM project_db_access_function_select_wheres
             WHERE db_access_function_id = :function_id
             ORDER BY where_order, id'
@@ -1499,7 +1818,7 @@ function app_pdo_fetch_db_access_function_select_where_item(
                 relational_operator,
                 where_order,
                 source_of_truth,
-                DATE_FORMAT(updated_at, "%Y-%m-%d %H:%i:%s") AS updated_at
+                ' . app_pdo_db_access_datetime_select_expr($app) . '
             FROM project_db_access_function_select_wheres
             WHERE db_access_function_id = :function_id
               AND id = :id
@@ -1981,7 +2300,7 @@ function app_pdo_fetch_db_access_function_select_target_field_catalog(
                 group_by_target,
                 field_list_order,
                 source_of_truth,
-                DATE_FORMAT(updated_at, "%Y-%m-%d %H:%i:%s") AS updated_at
+                ' . app_pdo_db_access_datetime_select_expr($app) . '
             FROM project_db_access_function_select_target_fields
             WHERE db_access_function_id = :function_id
             ORDER BY field_list_order, id'
@@ -2083,7 +2402,7 @@ function app_pdo_fetch_db_access_function_select_target_field_item(
                 group_by_target,
                 field_list_order,
                 source_of_truth,
-                DATE_FORMAT(updated_at, "%Y-%m-%d %H:%i:%s") AS updated_at
+                ' . app_pdo_db_access_datetime_select_expr($app) . '
             FROM project_db_access_function_select_target_fields
             WHERE db_access_function_id = :function_id
               AND id = :id
@@ -2408,7 +2727,7 @@ function app_pdo_fetch_db_access_function_select_having_catalog(
                 right_target_suffix,
                 having_order,
                 source_of_truth,
-                DATE_FORMAT(updated_at, "%Y-%m-%d %H:%i:%s") AS updated_at
+                ' . app_pdo_db_access_datetime_select_expr($app) . '
             FROM project_db_access_function_select_havings
             WHERE db_access_function_id = :function_id
             ORDER BY having_order, id'
@@ -2519,7 +2838,7 @@ function app_pdo_fetch_db_access_function_select_having_item(
                 right_target_suffix,
                 having_order,
                 source_of_truth,
-                DATE_FORMAT(updated_at, "%Y-%m-%d %H:%i:%s") AS updated_at
+                ' . app_pdo_db_access_datetime_select_expr($app) . '
             FROM project_db_access_function_select_havings
             WHERE db_access_function_id = :function_id
               AND id = :id
@@ -2860,7 +3179,7 @@ function app_pdo_fetch_db_access_function_update_delete_where_catalog(
                 relational_operator,
                 where_order,
                 source_of_truth,
-                DATE_FORMAT(updated_at, "%Y-%m-%d %H:%i:%s") AS updated_at
+                ' . app_pdo_db_access_datetime_select_expr($app) . '
             FROM project_db_access_function_update_delete_wheres
             WHERE db_access_function_id = :function_id
             ORDER BY where_order, id'
@@ -2959,7 +3278,7 @@ function app_pdo_fetch_db_access_function_update_delete_where_item(
                 relational_operator,
                 where_order,
                 source_of_truth,
-                DATE_FORMAT(updated_at, "%Y-%m-%d %H:%i:%s") AS updated_at
+                ' . app_pdo_db_access_datetime_select_expr($app) . '
             FROM project_db_access_function_update_delete_wheres
             WHERE db_access_function_id = :function_id
               AND id = :id
@@ -3506,7 +3825,7 @@ function app_pdo_fetch_db_access_function_simple_target_field_catalog(
                 fixed_parameter,
                 field_list_order,
                 source_of_truth,
-                DATE_FORMAT(updated_at, "%Y-%m-%d %H:%i:%s") AS updated_at
+                ' . app_pdo_db_access_datetime_select_expr($app) . '
             FROM ' . $tableName . '
             WHERE db_access_function_id = :function_id
             ORDER BY field_list_order, id'
@@ -3577,7 +3896,7 @@ function app_pdo_fetch_db_access_function_simple_target_field_item(
                 fixed_parameter,
                 field_list_order,
                 source_of_truth,
-                DATE_FORMAT(updated_at, "%Y-%m-%d %H:%i:%s") AS updated_at
+                ' . app_pdo_db_access_datetime_select_expr($app) . '
             FROM ' . $tableName . '
             WHERE db_access_function_id = :function_id
               AND id = :id

@@ -140,7 +140,7 @@ INSERT INTO project_db_access_function_select_wheres (
     where_order,
     source_of_truth
 ) VALUES
-(@sample16_get_auth_task_function_id, 'AuthTask', '', 'Id', 'argument', '', '', '', '', '', '', '', '=', 10, 'manual');
+(@sample16_get_auth_task_function_id, 'AuthTask', '', 'Id', 'argument', 'int', '', '', '', '', '', '', '=', 10, 'manual');
 
 SET @sample16_project_id = NULL;
 SET @sample16_db_access_class_id = NULL;

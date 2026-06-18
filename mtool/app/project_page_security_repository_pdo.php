@@ -4,6 +4,21 @@ declare(strict_types=1);
 
 require_once __DIR__ . '/database.php';
 
+function app_pdo_project_page_security_types_select(string $dialect): string
+{
+    if ($dialect === 'sqlite') {
+        return '(SELECT group_concat(security_type, ",")
+            FROM (
+                SELECT pspc2.security_type AS security_type
+                FROM project_page_security_policy_capabilities AS pspc2
+                WHERE pspc2.page_security_policy_id = psp.id
+                ORDER BY pspc2.security_type
+            )) AS security_types';
+    }
+
+    return 'GROUP_CONCAT(pspc.security_type ORDER BY pspc.security_type SEPARATOR ",") AS security_types';
+}
+
 /**
  * @return array{
  *     ok:bool,
@@ -22,6 +37,8 @@ function app_pdo_fetch_project_page_security_policies(array $app, string $projec
 {
     try {
         $pdo = app_create_config_pdo($app);
+        $dialect = app_sql_dialect_from_db_config(app_database_config($app, 'config_db'));
+        $securityTypesSelect = app_pdo_project_page_security_types_select($dialect);
         $statement = $pdo->prepare(
             'SELECT
                 psp.id,
@@ -29,7 +46,7 @@ function app_pdo_fetch_project_page_security_policies(array $app, string $projec
                 psp.script_name,
                 psp.notes,
                 psp.source_of_truth,
-                GROUP_CONCAT(pspc.security_type ORDER BY pspc.security_type SEPARATOR ",") AS security_types
+                ' . $securityTypesSelect . '
             FROM project_page_security_policies AS psp
             INNER JOIN projects AS p
                 ON p.id = psp.project_id
@@ -109,6 +126,8 @@ function app_pdo_fetch_project_page_security_policy(array $app, string $projectK
 
     try {
         $pdo = app_create_config_pdo($app);
+        $dialect = app_sql_dialect_from_db_config(app_database_config($app, 'config_db'));
+        $securityTypesSelect = app_pdo_project_page_security_types_select($dialect);
         $statement = $pdo->prepare(
             'SELECT
                 psp.id,
@@ -116,7 +135,7 @@ function app_pdo_fetch_project_page_security_policy(array $app, string $projectK
                 psp.script_name,
                 psp.notes,
                 psp.source_of_truth,
-                GROUP_CONCAT(pspc.security_type ORDER BY pspc.security_type SEPARATOR ",") AS security_types
+                ' . $securityTypesSelect . '
             FROM project_page_security_policies AS psp
             INNER JOIN projects AS p
                 ON p.id = psp.project_id
@@ -297,7 +316,8 @@ function app_pdo_update_project_page_security_policy(
                 server_name = :server_name,
                 script_name = :script_name,
                 notes = :notes,
-                source_of_truth = :source_of_truth
+                source_of_truth = :source_of_truth,
+                updated_at = CURRENT_TIMESTAMP
             WHERE
                 id = :policy_id
                 AND project_id = :project_id'

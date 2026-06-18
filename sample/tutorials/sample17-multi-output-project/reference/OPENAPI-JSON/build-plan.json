@@ -15,7 +15,23 @@
             "endpoint_filename": "proxyserver-CapstoneTask-GetCapstoneTaskList.php",
             "auth_strategy": "no-security",
             "input_kind": "scalar",
-            "response_mode": "direct-result"
+            "response_mode": "direct-result",
+            "parameter_schemas": {
+                "param_CapstoneTask_Status_where": {
+                    "parameter_name": "param_CapstoneTask_Status_where",
+                    "datatype": "varchar",
+                    "source": "select-where-parameter-data-type",
+                    "target_table_name": "CapstoneTask",
+                    "target_table_column_name": "Status"
+                },
+                "limit": {
+                    "parameter_name": "limit",
+                    "datatype": "int",
+                    "source": "limit-parameter",
+                    "target_table_name": "",
+                    "target_table_column_name": ""
+                }
+            }
         },
         {
             "source_name": "CapstoneTask",
@@ -23,7 +39,16 @@
             "endpoint_filename": "proxyserver-CapstoneTask-GetCapstoneTask.php",
             "auth_strategy": "no-security",
             "input_kind": "scalar",
-            "response_mode": "direct-result"
+            "response_mode": "direct-result",
+            "parameter_schemas": {
+                "param_CapstoneTask_Id_where": {
+                    "parameter_name": "param_CapstoneTask_Id_where",
+                    "datatype": "int",
+                    "source": "select-where-parameter-data-type",
+                    "target_table_name": "CapstoneTask",
+                    "target_table_column_name": "Id"
+                }
+            }
         }
     ]
 }

@@ -216,6 +216,59 @@ function app_project_output_openapi_scalar_schema_from_datatype(string $datatype
 }
 
 /**
+ * Fallback for scalar request parameters that do not carry datatype metadata.
+ * Keep this intentionally conservative so custom/older build items still
+ * produce stable OpenAPI examples.
+ *
+ * @return array<string,mixed>
+ */
+function app_project_output_openapi_scalar_request_schema_from_parameter_name(string $parameterName): array
+{
+    $normalized = trim($parameterName);
+    if ($normalized === '') {
+        return app_project_output_openapi_scalar_schema_from_datatype('');
+    }
+
+    if ($normalized === 'limit') {
+        return app_project_output_openapi_scalar_schema_from_datatype('int');
+    }
+
+    $subject = $normalized;
+    if (preg_match('/^param_.+_([^_]+)_where$/', $normalized, $matches) === 1) {
+        $subject = (string) ($matches[1] ?? $normalized);
+    }
+
+    if (preg_match('/(?:id|pid|count|number|no)$/i', $subject) === 1) {
+        return app_project_output_openapi_scalar_schema_from_datatype('int');
+    }
+
+    return app_project_output_openapi_scalar_schema_from_datatype('');
+}
+
+/**
+ * @param array<string,mixed> $step
+ * @return array<string,mixed>
+ */
+function app_project_output_openapi_scalar_request_schema(string $parameterName, array $step): array
+{
+    $parameterSchemas = is_array($step['parameter_schemas'] ?? null) ? $step['parameter_schemas'] : [];
+    $parameterSchema = is_array($parameterSchemas[$parameterName] ?? null)
+        ? $parameterSchemas[$parameterName]
+        : [];
+    $datatype = trim((string) ($parameterSchema['datatype'] ?? ''));
+    if ($datatype !== '') {
+        return app_project_output_openapi_scalar_schema_from_datatype($datatype);
+    }
+
+    $targetColumnName = trim((string) ($parameterSchema['target_table_column_name'] ?? ''));
+    if ($targetColumnName !== '') {
+        return app_project_output_openapi_scalar_request_schema_from_parameter_name($targetColumnName);
+    }
+
+    return app_project_output_openapi_scalar_request_schema_from_parameter_name($parameterName);
+}
+
+/**
  * @param array{
  *     name:string,
  *     datatype:string,
@@ -515,10 +568,10 @@ function app_project_output_openapi_request_schema(array $item): array
                     continue;
                 }
 
-                $properties[$normalizedParameterName] = [
-                    'type' => 'string',
-                    'example' => 'string',
-                ];
+                $properties[$normalizedParameterName] = app_project_output_openapi_scalar_request_schema(
+                    $normalizedParameterName,
+                    $step,
+                );
                 $required[] = $normalizedParameterName;
             }
         }
@@ -896,6 +949,9 @@ function app_project_output_openapi_build_plan_payload(array $context): array
             'auth_strategy' => trim((string) ($item['auth_policy']['strategy_key'] ?? '')),
             'input_kind' => is_array($step) ? trim((string) ($step['input_kind'] ?? '')) : '',
             'response_mode' => is_array($step) ? trim((string) ($step['response_mode'] ?? '')) : '',
+            'parameter_schemas' => is_array($step) && is_array($step['parameter_schemas'] ?? null)
+                ? app_project_output_openapi_object_map($step['parameter_schemas'])
+                : (object) [],
         ];
     }
 

@@ -43,7 +43,7 @@ class AuthTaskGetAuthTaskProxyHandlerBase extends MtoolGeneratedSingleProxyEndpo
                 'input_kind' => 'scalar',
                 'object_param_name' => '',
                 'object_class' => '',
-                'parameter_names' =>
+                'parameter_names' => 
                     [
                         '0' => 'param_AuthTask_Id_where',
                     ],

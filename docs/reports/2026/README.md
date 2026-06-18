@@ -11,6 +11,36 @@
 
 ## Index
 
+- `2026-0617-ai-generation-review-sample13-sample16.md`
+  - AI-assisted generation review contract を sample13 OpenAPI/proxy と sample16 authenticated proxy に適用し、`generated` / `generated_with_options` / `inherited_custom` / `manual_runtime` の first pass 判定を残した記録。
+- `2026-0617-api-auth-inventory-plan.md`
+  - API 認証を `admin/lab` session auth と generated proxy API auth に分けて棚卸しし、legacy 互換から `static-bearer` / `oidc-jwt-bearer` / SSO IdP 連携へ進める計画を整理した記録。Keycloak first / OIDC generic。実装は SQLite / config-store 対応が安定してから `Phase 1. Policy Contract` で再開する。Status: `PLANNED / WAITING`。
+- `2026-0617-enterprise-personal-feature-plan.md`
+  - personal / lightweight profile と enterprise / team profile の優先順位を分け、SQLite file store completion、backup / restore、security / audit / permission の実装順を整理した計画。Status: `PLANNED / NEXT AFTER SQLITE CLOSE`。
+- `2026-0617-json-to-db-optional-entrance-roadmap.md`
+  - 初期構想に含まれていた、JSON file / JSON API / JSON config 運用から DB 設計へ入る optional entrance、AI 向け指示、tutorial 化 roadmap を明文化した計画。思想 / 入口 / AI contract の first pass 完了。Status: `DONE`。
+- `2026-0617-config-db-backup-rotation.md`
+  - lightweight SQLite persistence plan の first slice として、config DB backup 保存先指定、retention rotation、manifest、restore 前 auto backup を追加した記録。
+- `2026-0617-sql-dialect-inventory.md`
+  - SQLite profile に向けて current MariaDB DDL / repository SQL / preflight / introspection の dialect dependency を棚卸しし、first conversion candidate を整理した記録。
+- `2026-0617-db-layer-parity-inventory.md`
+  - SQLite 対応を SQLite だけの進捗として見ず、Mtool admin config store、generated DBAccess、runtime/proxy bundle、AI-assisted generation review の各 layer で MySQL / MariaDB と SQLite の access layer parity を棚卸しした記録。
+- `2026-0617-user-db-multidb-dialect-roadmap.md`
+  - ユーザー DB 側の SQLite support を SQLite 単独の完了タスクではなく、MySQL / MariaDB mainline と SQLite first expansion を揃える dialect framework として整理した計画。DBAccess class output、schema introspection、runtime adapter、dialect-aware contract comparison を capability matrix として扱う。PostgreSQL / SQL Server は parked / post-must-features。
+- `2026-0617-http-runtime-smoke-plan.md`
+  - generated proxy / OpenAPI runtime を HTTP route として確認する smoke test を、MySQL / MariaDB default lane と SQLite config store lane の両方で設計する計画。sample16 authenticated proxy を first slice 候補にした。
+- `2026-0617-generated-dbaccess-sqlite-runtime-adapter-first-slice.md`
+  - generated DBAccess の legacy `$mtooldb` surface を保ったまま、SQLite PDO DSN でも insert / select できる runtime adapter first slice を追加した記録。
+- `2026-0617-sql-dialect-helper-first-slice.md`
+  - `sql_dialect.php` を追加し、`project_repository_pdo.php` の datetime select expression を default MySQL behavior を保ったまま helper 経由にした first code slice。
+- `2026-0617-config-store-folder-profile-first-slice.md`
+  - user-facing entry を `APP_CONFIG_STORE_DIR` に寄せ、保存フォルダだけで SQLite file store profile を選べる config shape を追加した記録。
+- `2026-0617-config-store-sqlite-bootstrap-first-slice.md`
+  - `APP_CONFIG_STORE_DIR` で作る SQLite config store に current config schema を初期化し、preflight が通る first slice の記録。
+- `2026-0617-lightweight-runtime-lane-first-slice.md`
+  - `db-config` service を起動しない `mtool-lite` lane を追加し、folder-backed SQLite config store だけで admin health / preflight が通ることを確認した記録。
+- `2026-0617-lightweight-sqlite-persistence-plan.md`
+  - MySQL / MariaDB を enterprise-ready default として維持しつつ、lightweight / local / single-user profile として folder-backed SQLite config store を追加する計画。backup rotation 強化も parallel track として整理。
 - `2026-0616-sample11-html-template-output-plan.md`
   - `sample11-html-template-output` を次の user-facing tutorial sample とする計画と、続く `sample12-external-db-source-import` / `sample13-openapi-api-surface` / `sample14-custom-proxy-runtime` / `sample15-project-metadata-export-import` / `sample16-authenticated-proxy` / `sample17-multi-output-project` までの実装記録。LanguageResource / i18n を scope から外す。
 - `2026-0616-sample12-external-db-source-import-pack.md`

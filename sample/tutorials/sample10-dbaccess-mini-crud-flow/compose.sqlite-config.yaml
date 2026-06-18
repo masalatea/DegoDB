@@ -1,0 +1,10 @@
+name: mtool-sample-sample10-dbaccess-mini-crud-flow-sqlite
+
+services:
+  web-admin:
+    environment:
+      APP_WORK_ROOT: /var/www/work/sample-packs/sample10-dbaccess-mini-crud-flow-sqlite
+
+  web-lab:
+    environment:
+      APP_WORK_ROOT: /var/www/work/sample-packs/sample10-dbaccess-mini-crud-flow-sqlite
