@@ -113,7 +113,9 @@ None of the items below are remaining work for the completed `sample19-26` ebook
 
 ### SSO / Membership Follow-up Status
 
+- Current status: `SSO_DONE / AUTHORIZATION_HARDENING_NEXT`.
 - Design source of truth: `docs/internal/auth-architecture.md`.
+- SSO connection source of truth: `docs/internal/sso-oidc-connection.md`.
 - OIDC first slice uses env / compose / config / route / callback interfaces and stores the same session principal shape as stub auth.
 - Mock OIDC smoke is contract-level: verified claims can produce a session principal without depending on a real IdP.
 - OIDC login HTTP smoke is first-slice implemented with a mock IdP and verifies redirect / callback / session principal / project role claim storage.
@@ -124,6 +126,21 @@ None of the items below are remaining work for the completed `sample19-26` ebook
 - New project permission work may use `project_identity_memberships` for `principal_source + principal_subject + role_code`, but this table is local override / break-glass / test support rather than primary membership management.
 - Legacy `project_memberships` remains compatibility fallback only and should not receive new SSO behavior.
 - Project permission roles are `viewer`, `editor`, `publisher`, and `admin`; source output publish/download requires `publisher` or stronger.
+
+### Authorization Hardening Next Status
+
+- Current status: `NEXT`.
+- Source of truth: `docs/internal/authorization-hardening-plan.md`.
+- This is the next phase after SSO, not more SSO implementation.
+- First task is a route capability inventory for authenticated project routes.
+- Then apply enforcement in small route clusters:
+  - read-only project routes with `project.read`;
+  - write metadata routes with `project.edit`;
+  - database source operations with `db_source.manage`;
+  - secret-backed configuration operations with `secret.manage`;
+  - source output publish/download remains `publisher` or stronger.
+- Each enforced cluster should use audited permission decisions and include a small contract or smoke check.
+- Do not mix this phase with member management UI, IdP admin UI, SCIM, invitation flows, or legacy `ProjectUser` reconstruction.
 
 ## Proposal Guardrails
 

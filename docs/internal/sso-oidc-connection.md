@@ -22,6 +22,23 @@ SSO is considered complete for the current first production-usable slice when al
 
 Route-wide enforcement for every existing project edit screen is intentionally not part of this SSO completion boundary. The current first slice fixes the policy contract and enforces the sensitive source output publish/download lane. Broad route-by-route replacement should be a separate authorization hardening phase so that existing 404 / validation behavior is not accidentally converted into 403 responses.
 
+## Next Plan
+
+Status: `NEXT`
+
+The next work is not more SSO. The next work is authorization hardening on top of the completed SSO boundary.
+
+| Order | Status | Item | Completion line |
+| --- | --- | --- | --- |
+| 1 | `NEXT` | Route capability inventory | Map current authenticated project routes to `project.read`, `project.edit`, `db_source.manage`, `secret.manage`, or source output capabilities without changing behavior. |
+| 2 | `NEXT` | Read-only enforcement first | Apply `project.read` to low-risk project view routes and keep existing not-found / validation behavior intact. |
+| 3 | `NEXT` | Edit-route enforcement | Apply `project.edit` to project settings, tables, data classes, DB access metadata, custom proxy metadata, and HTML metadata write routes. |
+| 4 | `NEXT` | Strong capability enforcement | Apply `db_source.manage` and `secret.manage` only where the operation changes database source or secret-backed configuration. |
+| 5 | `NEXT` | Audit coverage expansion | Use audited permission decisions on newly enforced routes and verify denied / allowed events. |
+| 6 | `NEXT` | Browser / HTTP smoke expansion | Add one smoke that proves a viewer can read but cannot perform a write path, and a publisher/admin can perform the intended operation. |
+
+This phase should be split into small commits by route cluster. Do not combine it with member management, IdP administration UI, SCIM, invitation flows, or a full legacy `ProjectUser` reconstruction.
+
 ## Mtool Environment
 
 Set these values for the admin site. The lab site uses the same keys with the `LAB_` prefix in `.env.example`.
