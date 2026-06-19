@@ -552,7 +552,7 @@ function app_render_lab_swagger_page(array $app, array $request): void
             <section class="toolbar auth-helper-panel">
                 <div>
                     <h2>Auth Helper Inputs</h2>
-                    <p class="muted">legacy `project-token` endpoint や `login-cookie-token` endpoint 用の補助入力です。空欄の auth field だけを送信時に補完します。</p>
+                    <p class="muted">auth-required endpoint 用の補助入力です。body auth field または Authorization header を送信時に補完します。</p>
                 </div>
                 <?php if ($authHelperSummary['project_token_required_count'] > 0 || $authHelperSummary['project_token_optional_count'] > 0): ?>
                     <div>
@@ -570,6 +570,15 @@ function app_render_lab_swagger_page(array $app, array $request): void
                             <input type="password" data-auth-helper="login-cookie-token" autocomplete="off" placeholder="login cookie token">
                         </label>
                         <p class="muted">required: <code><?php echo app_h((string) $authHelperSummary['login_cookie_token_required_count']); ?></code></p>
+                    </div>
+                <?php endif; ?>
+                <?php if ($authHelperSummary['static_bearer_required_count'] > 0): ?>
+                    <div>
+                        <label>
+                            bearer_token
+                            <input type="password" data-auth-helper="bearer-token" autocomplete="off" placeholder="bearer token">
+                        </label>
+                        <p class="muted">required: <code><?php echo app_h((string) $authHelperSummary['static_bearer_required_count']); ?></code></p>
                     </div>
                 <?php endif; ?>
             </section>
@@ -647,6 +656,7 @@ function app_render_lab_swagger_page(array $app, array $request): void
             const dbSourceKeyInput = document.querySelector('[name="db_source_key"]');
             const projectTokenInput = document.querySelector('input[data-auth-helper="project-token"]');
             const loginCookieTokenInput = document.querySelector('input[data-auth-helper="login-cookie-token"]');
+            const bearerTokenInput = document.querySelector('input[data-auth-helper="bearer-token"]');
             const joinUrl = (baseUrl, path) => {
                 const normalizedBaseUrl = (baseUrl || '').trim();
                 const normalizedPath = (path || '').trim();
@@ -738,6 +748,18 @@ function app_render_lab_swagger_page(array $app, array $request): void
                     throw new Error('この operation は LOGIN_COOKIE_TOKEN が必要です。Auth Helper か request JSON で指定してください。');
                 }
             };
+            const applyAuthHelperHeaders = (headers, authStrategy) => {
+                if (authStrategy !== 'static-bearer') {
+                    return;
+                }
+
+                const bearerToken = readAuthHelperValue(bearerTokenInput);
+                if (bearerToken === '') {
+                    throw new Error('この operation は Authorization: Bearer token が必要です。Auth Helper の bearer_token を設定してください。');
+                }
+
+                headers.Authorization = 'Bearer ' + bearerToken;
+            };
             const resolveRequestUrl = (card) => {
                 return updateUrlQueryParam(
                     joinUrl(baseUrlInput ? baseUrlInput.value : '', card.dataset.path || ''),
@@ -797,6 +819,10 @@ function app_render_lab_swagger_page(array $app, array $request): void
                     const method = (card.dataset.method || 'POST').toUpperCase();
                     const authStrategy = (card.dataset.authStrategy || '').trim();
                     let requestBody = undefined;
+                    const headers = {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json',
+                    };
 
                     if (method !== 'GET' && method !== 'HEAD') {
                         try {
@@ -812,15 +838,19 @@ function app_render_lab_swagger_page(array $app, array $request): void
                         return;
                     }
 
+                    try {
+                        applyAuthHelperHeaders(headers, authStrategy);
+                    } catch (error) {
+                        responseOutput.textContent = 'Request headers を準備できませんでした: ' + (error instanceof Error ? error.message : String(error));
+                        return;
+                    }
+
                     responseOutput.textContent = 'Loading...';
 
                     try {
                         const response = await fetch(requestUrl, {
                             method,
-                            headers: {
-                                'Accept': 'application/json',
-                                'Content-Type': 'application/json',
-                            },
+                            headers,
                             body: requestBody,
                         });
                         const rawText = await response.text();

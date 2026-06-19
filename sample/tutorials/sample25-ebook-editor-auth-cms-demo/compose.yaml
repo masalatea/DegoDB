@@ -8,6 +8,7 @@ services:
   web-lab:
     environment:
       APP_WORK_ROOT: /var/www/work/sample-packs/sample25-ebook-editor-auth-cms-demo
+      MTOOL_PROXY_PROJECT_TOKEN: sample25-token
 
   db-config:
     entrypoint:

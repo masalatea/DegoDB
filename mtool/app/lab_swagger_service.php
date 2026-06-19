@@ -477,6 +477,11 @@ function app_lab_swagger_auth_helper_descriptor(string $authStrategy): array
             'optional_fields' => [],
             'notice' => 'この operation は `LOGIN_COOKIE_TOKEN` が必要です。Auth Helper に入れると、request body に自動差し込みできます。',
         ],
+        'static-bearer' => [
+            'required_fields' => ['Authorization: Bearer'],
+            'optional_fields' => [],
+            'notice' => 'この operation は `Authorization: Bearer <token>` が必要です。request body に token は入りません。',
+        ],
         default => [
             'required_fields' => [],
             'optional_fields' => [],
@@ -494,6 +499,7 @@ function app_lab_swagger_auth_helper_descriptor(string $authStrategy): array
  *     project_token_required_count:int,
  *     project_token_optional_count:int,
  *     login_cookie_token_required_count:int,
+ *     static_bearer_required_count:int,
  *     requires_auth_helper:bool
  * }
  */
@@ -504,6 +510,7 @@ function app_lab_swagger_auth_helper_summary(array $operations): array
         'project_token_required_count' => 0,
         'project_token_optional_count' => 0,
         'login_cookie_token_required_count' => 0,
+        'static_bearer_required_count' => 0,
         'requires_auth_helper' => false,
     ];
 
@@ -530,6 +537,11 @@ function app_lab_swagger_auth_helper_summary(array $operations): array
 
         if ($authStrategy === 'login-cookie-token') {
             $summary['login_cookie_token_required_count']++;
+            continue;
+        }
+
+        if ($authStrategy === 'static-bearer') {
+            $summary['static_bearer_required_count']++;
         }
     }
 

@@ -518,6 +518,11 @@ function app_project_output_openapi_auth_request_contract(array $item): array
     ];
 }
 
+function app_project_output_openapi_auth_uses_static_bearer(array $item): bool
+{
+    return trim((string) ($item['auth_policy']['strategy_key'] ?? '')) === 'static-bearer';
+}
+
 /**
  * @param array{
  *     source_name:string,
@@ -799,7 +804,7 @@ function app_project_output_openapi_document(array $context, array $snapshotItem
             $descriptionLines[] = 'Auth policy: ' . $authSummary;
         }
 
-        $paths['/' . $endpointFilename] = [
+        $operation = [
             'post' => [
                 'operationId' => $sourceName !== '' && $functionName !== ''
                     ? ($sourceName . '_' . $functionName)
@@ -848,6 +853,15 @@ function app_project_output_openapi_document(array $context, array $snapshotItem
                 ],
             ],
         ];
+        if (app_project_output_openapi_auth_uses_static_bearer($item)) {
+            $operation['post']['security'] = [
+                [
+                    'StaticBearerAuth' => [],
+                ],
+            ];
+        }
+
+        $paths['/' . $endpointFilename] = $operation;
     }
 
     ksort($paths);
@@ -885,7 +899,19 @@ function app_project_output_openapi_document(array $context, array $snapshotItem
         ];
     }
 
-    return [
+    $securitySchemes = [];
+    foreach (($context['proxy_items'] ?? []) as $item) {
+        if (is_array($item) && app_project_output_openapi_auth_uses_static_bearer($item)) {
+            $securitySchemes['StaticBearerAuth'] = [
+                'type' => 'http',
+                'scheme' => 'bearer',
+                'bearerFormat' => 'opaque',
+            ];
+            break;
+        }
+    }
+
+    $openApi = [
         'openapi' => '3.0.3',
         'info' => [
             'title' => trim((string) ($definition['name'] ?? '')) !== ''
@@ -901,6 +927,11 @@ function app_project_output_openapi_document(array $context, array $snapshotItem
             'schemas' => app_project_output_openapi_object_map($components),
         ],
     ];
+    if ($securitySchemes !== []) {
+        $openApi['components']['securitySchemes'] = app_project_output_openapi_object_map($securitySchemes);
+    }
+
+    return $openApi;
 }
 
 /**

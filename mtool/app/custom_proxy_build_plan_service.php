@@ -231,6 +231,8 @@ function app_custom_proxy_build_plan_for_source_output(
         $authPolicy = app_resolve_custom_proxy_auth_policy(
             $customProxy['auth_type'],
             $customProxy['single_get_function_name'],
+            (int) ($customProxy['auth_policy_version'] ?? 1),
+            (string) ($customProxy['auth_policy_json'] ?? ''),
         );
 
         $items[] = [

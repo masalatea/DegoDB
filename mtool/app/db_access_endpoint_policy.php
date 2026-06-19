@@ -90,6 +90,12 @@ function app_resolve_proxy_auth_policy(
                     ? 'project token と get function の併用設定ですが、参照 function 名が未設定です。'
                     : 'project token を優先し、必要時は get function も使う設定です。';
                 break;
+            case 'StaticBearer':
+                $strategyKey = 'static-bearer';
+                $strategyCaption = 'Static Bearer';
+                $securityMode = 'static-bearer';
+                $summary = 'Authorization: Bearer token 認証です。';
+                break;
             case 'NoSecurity':
                 $strategyKey = 'no-security';
                 $strategyCaption = 'No Security';
@@ -138,6 +144,218 @@ function app_resolve_proxy_auth_policy(
 }
 
 /**
+ * @param array{
+ *     auth_type_field_name?:string,
+ *     single_get_field_name?:string
+ * } $options
+ * @return array{
+ *     raw_auth_type:string,
+ *     raw_auth_type_caption:string,
+ *     resolved_auth_type:string,
+ *     resolved_auth_type_caption:string,
+ *     strategy_key:string,
+ *     strategy_caption:string,
+ *     resolution_source:string,
+ *     requires_get_function:bool,
+ *     single_get_function_name:string,
+ *     security_mode:string,
+ *     summary:string,
+ *     notes:list<string>,
+ *     is_valid:bool,
+ *     auth_policy_version:int,
+ *     auth_policy_json:string,
+ *     secret_env:string
+ * }
+ */
+function app_resolve_proxy_auth_policy_with_contract(
+    string $rawAuthType,
+    string $singleGetFunctionName,
+    int $authPolicyVersion,
+    string $authPolicyJson,
+    array $options = [],
+): array {
+    if ($authPolicyVersion <= 1) {
+        $legacyPolicy = app_resolve_proxy_auth_policy($rawAuthType, $singleGetFunctionName, $options);
+        $legacyPolicy['auth_policy_version'] = 1;
+        $legacyPolicy['auth_policy_json'] = '';
+        $legacyPolicy['secret_env'] = '';
+
+        return $legacyPolicy;
+    }
+
+    $trimmedJson = trim($authPolicyJson);
+    if ($trimmedJson === '') {
+        return app_invalid_proxy_auth_policy_contract(
+            $rawAuthType,
+            $singleGetFunctionName,
+            $authPolicyVersion,
+            $authPolicyJson,
+            'auth_policy_json が空です。v2 auth policy は明示的な JSON contract が必要です。',
+        );
+    }
+
+    try {
+        $decoded = json_decode($trimmedJson, true, 512, JSON_THROW_ON_ERROR);
+    } catch (JsonException $exception) {
+        return app_invalid_proxy_auth_policy_contract(
+            $rawAuthType,
+            $singleGetFunctionName,
+            $authPolicyVersion,
+            $authPolicyJson,
+            'auth_policy_json が JSON として解釈できません: ' . $exception->getMessage(),
+        );
+    }
+
+    if (!is_array($decoded)) {
+        return app_invalid_proxy_auth_policy_contract(
+            $rawAuthType,
+            $singleGetFunctionName,
+            $authPolicyVersion,
+            $authPolicyJson,
+            'auth_policy_json は object である必要があります。',
+        );
+    }
+
+    $secretValueField = app_proxy_auth_policy_secret_value_field($decoded);
+    if ($secretValueField !== '') {
+        return app_invalid_proxy_auth_policy_contract(
+            $rawAuthType,
+            $singleGetFunctionName,
+            $authPolicyVersion,
+            $authPolicyJson,
+            'auth_policy_json に secret 値を保存できません。参照名だけを保存してください: ' . $secretValueField,
+        );
+    }
+
+    $policyType = trim((string) ($decoded['type'] ?? ''));
+    if ($policyType === '') {
+        return app_invalid_proxy_auth_policy_contract(
+            $rawAuthType,
+            $singleGetFunctionName,
+            $authPolicyVersion,
+            $authPolicyJson,
+            'auth_policy_json.type が空です。',
+        );
+    }
+
+    if ($policyType !== 'static-bearer') {
+        return app_invalid_proxy_auth_policy_contract(
+            $rawAuthType,
+            $singleGetFunctionName,
+            $authPolicyVersion,
+            $authPolicyJson,
+            '未知の auth_policy_json.type です: ' . $policyType,
+        );
+    }
+
+    $secretEnv = trim((string) ($decoded['secret_env'] ?? ''));
+    if ($secretEnv === '') {
+        return app_invalid_proxy_auth_policy_contract(
+            $rawAuthType,
+            $singleGetFunctionName,
+            $authPolicyVersion,
+            $authPolicyJson,
+            'static-bearer policy には secret_env 参照が必要です。secret 値そのものは保存しません。',
+        );
+    }
+
+    return [
+        'raw_auth_type' => $rawAuthType,
+        'raw_auth_type_caption' => app_proxy_auth_type_caption($rawAuthType),
+        'resolved_auth_type' => 'StaticBearer',
+        'resolved_auth_type_caption' => app_proxy_auth_type_caption('StaticBearer'),
+        'strategy_key' => 'static-bearer',
+        'strategy_caption' => 'Static Bearer',
+        'resolution_source' => 'auth-policy-v2',
+        'requires_get_function' => false,
+        'single_get_function_name' => '',
+        'security_mode' => 'static-bearer',
+        'summary' => 'auth policy v2 の static-bearer 認証です。',
+        'notes' => $singleGetFunctionName === ''
+            ? []
+            : ['auth policy v2 では legacy get function 参照は使いません。'],
+        'is_valid' => true,
+        'auth_policy_version' => $authPolicyVersion,
+        'auth_policy_json' => $trimmedJson,
+        'secret_env' => $secretEnv,
+    ];
+}
+
+/**
+ * @param array<string,mixed> $policy
+ */
+function app_proxy_auth_policy_secret_value_field(array $policy, string $prefix = ''): string
+{
+    foreach ($policy as $key => $value) {
+        $stringKey = (string) $key;
+        $path = $prefix === '' ? $stringKey : $prefix . '.' . $stringKey;
+        $normalizedKey = strtolower(trim($stringKey));
+
+        if ($normalizedKey !== 'secret_env'
+            && preg_match('/(^|_)(password|passwd|secret|token|credential)($|_)/', $normalizedKey) === 1
+        ) {
+            return $path;
+        }
+
+        if (is_array($value)) {
+            $nested = app_proxy_auth_policy_secret_value_field($value, $path);
+            if ($nested !== '') {
+                return $nested;
+            }
+        }
+    }
+
+    return '';
+}
+
+/**
+ * @return array{
+ *     raw_auth_type:string,
+ *     raw_auth_type_caption:string,
+ *     resolved_auth_type:string,
+ *     resolved_auth_type_caption:string,
+ *     strategy_key:string,
+ *     strategy_caption:string,
+ *     resolution_source:string,
+ *     requires_get_function:bool,
+ *     single_get_function_name:string,
+ *     security_mode:string,
+ *     summary:string,
+ *     notes:list<string>,
+ *     is_valid:bool,
+ *     auth_policy_version:int,
+ *     auth_policy_json:string,
+ *     secret_env:string
+ * }
+ */
+function app_invalid_proxy_auth_policy_contract(
+    string $rawAuthType,
+    string $singleGetFunctionName,
+    int $authPolicyVersion,
+    string $authPolicyJson,
+    string $note,
+): array {
+    return [
+        'raw_auth_type' => trim($rawAuthType),
+        'raw_auth_type_caption' => app_proxy_auth_type_caption($rawAuthType),
+        'resolved_auth_type' => trim($rawAuthType),
+        'resolved_auth_type_caption' => app_proxy_auth_type_caption($rawAuthType),
+        'strategy_key' => 'invalid',
+        'strategy_caption' => 'Invalid',
+        'resolution_source' => 'auth-policy-v2-invalid',
+        'requires_get_function' => false,
+        'single_get_function_name' => trim($singleGetFunctionName),
+        'security_mode' => 'invalid',
+        'summary' => 'auth policy v2 contract が無効です。',
+        'notes' => [$note],
+        'is_valid' => false,
+        'auth_policy_version' => $authPolicyVersion,
+        'auth_policy_json' => trim($authPolicyJson),
+        'secret_env' => '',
+    ];
+}
+
+/**
  * @return array{
  *     raw_auth_type:string,
  *     raw_auth_type_caption:string,
@@ -157,8 +375,10 @@ function app_resolve_proxy_auth_policy(
 function app_resolve_db_access_single_proxy_auth_policy(
     string $rawAuthType,
     string $singleGetFunctionName,
+    int $authPolicyVersion = 1,
+    string $authPolicyJson = '',
 ): array {
-    return app_resolve_proxy_auth_policy($rawAuthType, $singleGetFunctionName, [
+    return app_resolve_proxy_auth_policy_with_contract($rawAuthType, $singleGetFunctionName, $authPolicyVersion, $authPolicyJson, [
         'auth_type_field_name' => 'SingleProxy_AuthType',
         'single_get_field_name' => 'SingleProxy_SingleGetFuncPID 相当名',
     ]);
@@ -184,8 +404,10 @@ function app_resolve_db_access_single_proxy_auth_policy(
 function app_resolve_custom_proxy_auth_policy(
     string $rawAuthType,
     string $singleGetFunctionName,
+    int $authPolicyVersion = 1,
+    string $authPolicyJson = '',
 ): array {
-    return app_resolve_proxy_auth_policy($rawAuthType, $singleGetFunctionName, [
+    return app_resolve_proxy_auth_policy_with_contract($rawAuthType, $singleGetFunctionName, $authPolicyVersion, $authPolicyJson, [
         'auth_type_field_name' => 'AuthType',
         'single_get_field_name' => 'SingleGetFunc 相当名',
     ]);

@@ -65,6 +65,18 @@ abstract class MtoolGeneratedSingleProxyEndpointBase
         return getenv('MTOOL_PROXY_PROJECT_TOKEN') ?: '';
     }
 
+    protected function expectedStaticBearerToken(): string
+    {
+        return getenv('DEGODB_PROXY_BEARER_TOKEN') ?: (getenv('MTOOL_PROXY_BEARER_TOKEN') ?: '');
+    }
+
+    protected function authorizationHeader(): string
+    {
+        return $_SERVER['HTTP_AUTHORIZATION']
+            ?? $_SERVER['REDIRECT_HTTP_AUTHORIZATION']
+            ?? '';
+    }
+
     protected function singleGetFunctionName(): string
     {
         return '';
@@ -117,6 +129,32 @@ abstract class MtoolGeneratedSingleProxyEndpointBase
         }
 
         if ($strategy === 'manual') {
+            return;
+        }
+
+        if ($strategy === 'static-bearer') {
+            $header = trim($this->authorizationHeader());
+            if ($header === '') {
+                throw new RuntimeException('Authorization bearer header が必要です。');
+            }
+            if (!preg_match('/^Bearer\s+(.+)$/i', $header, $matches)) {
+                throw new RuntimeException('Authorization header は Bearer token 形式である必要があります。');
+            }
+
+            $suppliedToken = trim((string) ($matches[1] ?? ''));
+            if ($suppliedToken === '') {
+                throw new RuntimeException('Bearer token は空でない string である必要があります。');
+            }
+
+            $expectedToken = $this->expectedStaticBearerToken();
+            if ($expectedToken === '') {
+                throw new RuntimeException('DEGODB_PROXY_BEARER_TOKEN が未設定です。');
+            }
+
+            if (!hash_equals($expectedToken, $suppliedToken)) {
+                throw new RuntimeException('Bearer token が一致しません。');
+            }
+
             return;
         }
 

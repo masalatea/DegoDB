@@ -192,6 +192,8 @@ function app_render_project_source_output_detail_page(array $app, array $request
         $item['auth_policy'] = app_resolve_db_access_single_proxy_auth_policy(
             (string) ($item['single_proxy_auth_type'] ?? ''),
             (string) ($item['single_proxy_single_get_function_name'] ?? ''),
+            (int) ($item['auth_policy_version'] ?? 1),
+            (string) ($item['auth_policy_json'] ?? ''),
         );
         if (!$item['auth_policy']['is_valid']) {
             $simpleProxyUnresolvedAuthCount++;

@@ -50,11 +50,14 @@
                 "security_mode": "project-token",
                 "summary": "project token 認証です。",
                 "notes": [],
-                "is_valid": true
+                "is_valid": true,
+                "auth_policy_version": 1,
+                "auth_policy_json": "",
+                "secret_env": ""
             },
             "source_of_truth": "manual",
-            "function_updated_at": "2026-06-17 11:03:47",
-            "target_updated_at": "2026-06-17 11:03:47",
+            "function_updated_at": "2026-06-19 10:52:20",
+            "target_updated_at": "2026-06-19 10:52:20",
             "resolved": true,
             "signature": "public function GetAuthTask($param_AuthTask_Id_where)",
             "line": 10,

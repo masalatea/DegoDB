@@ -321,6 +321,7 @@ function app_config_db_bootstrap_required_tables(): array
         'dataclassfields',
         'project_db_access_function_source_output_targets',
         'database_sources',
+        'audit_events',
     ];
 }
 
@@ -344,6 +345,14 @@ function app_config_db_bootstrap_required_columns(): array
             'supports_live_schema_import',
             'supports_proxy_runtime_read',
             'proxy_runtime_priority',
+        ],
+        'project_db_access_functions' => [
+            'auth_policy_version',
+            'auth_policy_json',
+        ],
+        'project_custom_proxies' => [
+            'auth_policy_version',
+            'auth_policy_json',
         ],
     ];
 }

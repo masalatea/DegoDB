@@ -79,7 +79,10 @@ function app_project_table_import_preflight(array $app, string $projectKey, stri
  *         column_insert_count:int,
  *         column_update_count:int,
  *         column_delete_count:int,
- *         column_same_count:int
+ *         column_same_count:int,
+ *         review_required:bool,
+ *         destructive_change_count:int,
+ *         metadata_update_count:int
  *     },
  *     tables:list<array{
  *         name:string,
@@ -90,7 +93,13 @@ function app_project_table_import_preflight(array $app, string $projectKey, stri
  *         column_insert_count:int,
  *         column_update_count:int,
  *         column_delete_count:int,
- *         column_same_count:int
+ *         column_same_count:int,
+ *         review:array{
+ *             risk_level:string,
+ *             requires_review:bool,
+ *             reasons:list<string>,
+ *             column_changes:list<array<string,mixed>>
+ *         }
  *     }>,
  *     errors:list<string>,
  *     error:string
@@ -208,7 +217,10 @@ function app_project_table_import_preview(
  *         column_insert_count:int,
  *         column_update_count:int,
  *         column_delete_count:int,
- *         column_same_count:int
+ *         column_same_count:int,
+ *         review_required:bool,
+ *         destructive_change_count:int,
+ *         metadata_update_count:int
  *     },
  *     tables:list<array{
  *         name:string,
@@ -219,7 +231,13 @@ function app_project_table_import_preview(
  *         column_insert_count:int,
  *         column_update_count:int,
  *         column_delete_count:int,
- *         column_same_count:int
+ *         column_same_count:int,
+ *         review:array{
+ *             risk_level:string,
+ *             requires_review:bool,
+ *             reasons:list<string>,
+ *             column_changes:list<array<string,mixed>>
+ *         }
  *     }>,
  *     errors:list<string>,
  *     error:string
@@ -709,6 +727,7 @@ function app_project_table_import_build_plan(
         $columnSameCount = 0;
         $status = 'same';
         $existingColumnsByName = [];
+        $columnChanges = [];
 
         if ($existingTable !== null) {
             foreach ($existingTable['columns'] as $column) {
@@ -720,6 +739,7 @@ function app_project_table_import_build_plan(
             $existingColumn = $existingColumnsByName[$column['name']] ?? null;
             if ($existingColumn === null) {
                 $columnInsertCount++;
+                $columnChanges[] = app_project_table_import_column_change('insert', $column['name'], null, $column);
                 continue;
             }
 
@@ -727,6 +747,7 @@ function app_project_table_import_build_plan(
                 $columnSameCount++;
             } else {
                 $columnUpdateCount++;
+                $columnChanges[] = app_project_table_import_column_change('update', $column['name'], $existingColumn, $column);
             }
         }
 
@@ -734,6 +755,7 @@ function app_project_table_import_build_plan(
             foreach ($existingTable['columns'] as $existingColumn) {
                 if (!array_key_exists($existingColumn['name'], $sourceTable['columns_by_name'])) {
                     $columnDeleteCount++;
+                    $columnChanges[] = app_project_table_import_column_change('delete', $existingColumn['name'], $existingColumn, null);
                 }
             }
         }
@@ -763,6 +785,7 @@ function app_project_table_import_build_plan(
             'column_update_count' => $columnUpdateCount,
             'column_delete_count' => $columnDeleteCount,
             'column_same_count' => $columnSameCount,
+            'review' => app_project_table_import_table_review($status, $columnInsertCount, $columnUpdateCount, $columnDeleteCount, $columnChanges),
         ];
     }
 
@@ -773,6 +796,10 @@ function app_project_table_import_build_plan(
 
         $summary['table_delete_count']++;
         $summary['column_delete_count'] += count($existingTable['columns']);
+        $columnChanges = [];
+        foreach ($existingTable['columns'] as $existingColumn) {
+            $columnChanges[] = app_project_table_import_column_change('delete', $existingColumn['name'], $existingColumn, null);
+        }
         $tables[] = [
             'name' => $existingTable['name'],
             'status' => 'stale',
@@ -783,8 +810,16 @@ function app_project_table_import_build_plan(
             'column_update_count' => 0,
             'column_delete_count' => count($existingTable['columns']),
             'column_same_count' => 0,
+            'review' => app_project_table_import_table_review('stale', 0, 0, count($existingTable['columns']), $columnChanges),
         ];
     }
+
+    $summary['destructive_change_count'] = $summary['table_delete_count'] + $summary['column_delete_count'];
+    $summary['metadata_update_count'] = $summary['table_insert_count']
+        + $summary['table_changed_count']
+        + $summary['column_insert_count']
+        + $summary['column_update_count'];
+    $summary['review_required'] = $summary['destructive_change_count'] > 0 || $summary['column_update_count'] > 0;
 
     usort(
         $tables,
@@ -825,6 +860,83 @@ function app_project_table_import_empty_summary(
         'column_update_count' => 0,
         'column_delete_count' => 0,
         'column_same_count' => 0,
+        'review_required' => false,
+        'destructive_change_count' => 0,
+        'metadata_update_count' => 0,
+    ];
+}
+
+function app_project_table_import_table_review(
+    string $status,
+    int $columnInsertCount,
+    int $columnUpdateCount,
+    int $columnDeleteCount,
+    array $columnChanges,
+): array {
+    $reasons = [];
+    if ($status === 'new') {
+        $reasons[] = 'source table is new and will create canonical table metadata on apply.';
+    } elseif ($status === 'stale') {
+        $reasons[] = 'canonical table is not present in the import source and will be removed on apply.';
+    }
+
+    if ($columnInsertCount > 0) {
+        $reasons[] = $columnInsertCount . ' source column(s) will be added to canonical metadata.';
+    }
+    if ($columnUpdateCount > 0) {
+        $reasons[] = $columnUpdateCount . ' canonical column definition(s) will be updated from source metadata.';
+    }
+    if ($columnDeleteCount > 0) {
+        $reasons[] = $columnDeleteCount . ' canonical column(s) are not present in source metadata and will be removed on apply.';
+    }
+
+    $riskLevel = 'none';
+    if ($status === 'stale' || $columnDeleteCount > 0) {
+        $riskLevel = 'destructive';
+    } elseif ($columnUpdateCount > 0) {
+        $riskLevel = 'review';
+    } elseif ($status === 'new' || $columnInsertCount > 0) {
+        $riskLevel = 'additive';
+    }
+
+    return [
+        'risk_level' => $riskLevel,
+        'requires_review' => in_array($riskLevel, ['destructive', 'review'], true),
+        'reasons' => $reasons,
+        'column_changes' => $columnChanges,
+    ];
+}
+
+function app_project_table_import_column_change(
+    string $status,
+    string $columnName,
+    ?array $before,
+    ?array $after,
+): array {
+    $change = [
+        'name' => $columnName,
+        'status' => $status,
+    ];
+
+    if ($before !== null) {
+        $change['before'] = app_project_table_import_column_review_shape($before);
+    }
+    if ($after !== null) {
+        $change['after'] = app_project_table_import_column_review_shape($after);
+    }
+
+    return $change;
+}
+
+function app_project_table_import_column_review_shape(array $column): array
+{
+    return [
+        'datatype' => (string) ($column['datatype'] ?? ''),
+        'is_null' => (int) ($column['is_null'] ?? 0),
+        'is_key' => (int) ($column['is_key'] ?? 0),
+        'is_default' => (int) ($column['is_default'] ?? 0),
+        'extra' => (string) ($column['extra'] ?? ''),
+        'column_list_order' => (int) ($column['column_list_order'] ?? 0),
     ];
 }
 

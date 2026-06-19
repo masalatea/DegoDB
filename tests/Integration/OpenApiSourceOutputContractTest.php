@@ -365,6 +365,67 @@ final class OpenApiSourceOutputContractTest extends TestCase
         );
     }
 
+    public function testOpenApiDocumentEmitsStaticBearerSecurityScheme(): void
+    {
+        $document = app_project_output_openapi_document([
+            'project_key' => 'MTOOL',
+            'source_output_key' => 'OPENAPI-JSON',
+            'definition' => [
+                'source_output_key' => 'OPENAPI-JSON',
+                'name' => 'Mtool OpenAPI JSON',
+                'proxy_base_url' => 'http://127.0.0.1:8081',
+            ],
+            'plan' => [
+                'function_count' => 1,
+                'unresolved_function_count' => 0,
+                'unresolved_auth_count' => 0,
+                'items' => [],
+            ],
+            'source_entities' => [],
+            'proxy_items' => [
+                [
+                    'source_name' => 'Project',
+                    'function_name' => 'GetProjectList',
+                    'display_name' => 'Project.GetProjectList',
+                    'auth_policy' => [
+                        'strategy_key' => 'static-bearer',
+                        'summary' => 'static bearer 認証です。',
+                    ],
+                    'endpoint_filename' => 'proxyserver-Project-GetProjectList.php',
+                    'response_property_type' => 'ProjectDataList',
+                    'steps' => [
+                        [
+                            'action' => 'select-list',
+                            'input_kind' => 'scalar',
+                            'object_param_name' => '',
+                            'object_class' => '',
+                            'data_class' => 'ProjectData',
+                            'parameter_names' => [],
+                            'response_key' => 'Result',
+                            'response_mode' => 'direct-result',
+                        ],
+                    ],
+                ],
+            ],
+        ], []);
+
+        $operation = $document['paths']['/proxyserver-Project-GetProjectList.php']['post'] ?? null;
+        self::assertIsArray($operation);
+        self::assertSame([['StaticBearerAuth' => []]], $operation['security'] ?? null);
+        self::assertSame(
+            [
+                'type' => 'http',
+                'scheme' => 'bearer',
+                'bearerFormat' => 'opaque',
+            ],
+            $document['components']['securitySchemes']['StaticBearerAuth'] ?? null,
+        );
+        self::assertStringNotContainsString(
+            'TOKEN',
+            json_encode($operation['requestBody']['content']['application/json'] ?? [], JSON_THROW_ON_ERROR),
+        );
+    }
+
     public function testOpenApiScalarRequestSchemaPrefersProxyParameterMetadata(): void
     {
         $schema = app_project_output_openapi_request_schema([
@@ -600,13 +661,66 @@ final class OpenApiSourceOutputContractTest extends TestCase
             [
                 'auth_strategy' => 'login-cookie-token',
             ],
+            [
+                'auth_strategy' => 'static-bearer',
+            ],
         ]);
 
-        self::assertSame(3, $summary['auth_operation_count']);
+        self::assertSame(4, $summary['auth_operation_count']);
         self::assertSame(1, $summary['project_token_required_count']);
         self::assertSame(1, $summary['project_token_optional_count']);
         self::assertSame(1, $summary['login_cookie_token_required_count']);
+        self::assertSame(1, $summary['static_bearer_required_count']);
         self::assertTrue($summary['requires_auth_helper']);
+    }
+
+    public function testLabSwaggerOperationCatalogMarksStaticBearerHeaderAuth(): void
+    {
+        $operations = app_lab_swagger_operation_catalog([
+            'paths' => [
+                '/proxyserver-Project-GetProjectList.php' => [
+                    'post' => [
+                        'operationId' => 'Project.GetProjectList',
+                        'summary' => 'Project.GetProjectList',
+                        'requestBody' => [
+                            'content' => [
+                                'application/json' => [
+                                    'schema' => [
+                                        'type' => 'object',
+                                        'properties' => [],
+                                        'additionalProperties' => true,
+                                    ],
+                                    'example' => [],
+                                ],
+                            ],
+                        ],
+                        'responses' => [
+                            '200' => [
+                                'content' => [
+                                    'application/json' => [
+                                        'example' => [
+                                            '_status' => 'OK',
+                                        ],
+                                    ],
+                                ],
+                            ],
+                        ],
+                        'x-mtool' => [
+                            'source_name' => 'Project',
+                            'function_name' => 'GetProjectList',
+                            'auth_strategy' => 'static-bearer',
+                            'input_kind' => 'scalar',
+                            'response_mode' => 'direct-result',
+                        ],
+                    ],
+                ],
+            ],
+        ]);
+
+        self::assertCount(1, $operations);
+        self::assertSame(['Authorization: Bearer'], $operations[0]['auth_required_fields']);
+        self::assertStringContainsString('Authorization: Bearer', $operations[0]['auth_notice']);
+        self::assertSame("{}\n", $operations[0]['request_example_pretty']);
     }
 
     public function testGeneratedSingleProxyProjectTokenAuthFailsClosedWhenTokenEnvIsMissing(): void
@@ -659,6 +773,69 @@ final class OpenApiSourceOutputContractTest extends TestCase
             self::assertTrue(true);
         } finally {
             $this->restoreEnvValue('MTOOL_PROXY_PROJECT_TOKEN', $previousToken);
+        }
+    }
+
+    public function testGeneratedSingleProxyStaticBearerAuthValidatesAuthorizationHeader(): void
+    {
+        $baseClass = 'MtoolGeneratedSingleProxyEndpointBaseContract';
+        $subjectClass = 'MtoolGeneratedSingleProxyEndpointStaticBearerContractSubject';
+
+        $this->ensureGeneratedSingleProxyRuntimeClassExists($baseClass);
+        $this->ensureGeneratedSingleProxyContractSubjectExists($baseClass, $subjectClass, [
+            'auth_strategy' => 'static-bearer',
+        ]);
+
+        $previousBearerToken = getenv('DEGODB_PROXY_BEARER_TOKEN');
+        $previousLegacyBearerToken = getenv('MTOOL_PROXY_BEARER_TOKEN');
+        $previousAuthorization = $_SERVER['HTTP_AUTHORIZATION'] ?? null;
+        $previousRedirectAuthorization = $_SERVER['REDIRECT_HTTP_AUTHORIZATION'] ?? null;
+
+        try {
+            putenv('DEGODB_PROXY_BEARER_TOKEN');
+            putenv('MTOOL_PROXY_BEARER_TOKEN');
+            unset($_SERVER['HTTP_AUTHORIZATION'], $_SERVER['REDIRECT_HTTP_AUTHORIZATION']);
+
+            $subject = new $subjectClass();
+            $this->assertGeneratedProxyAuthorizeThrows(
+                $subject,
+                $baseClass,
+                [],
+                'Authorization bearer header が必要です。',
+            );
+
+            $_SERVER['HTTP_AUTHORIZATION'] = 'Token abc';
+            $this->assertGeneratedProxyAuthorizeThrows(
+                $subject,
+                $baseClass,
+                [],
+                'Authorization header は Bearer token 形式である必要があります。',
+            );
+
+            $_SERVER['HTTP_AUTHORIZATION'] = 'Bearer supplied-token';
+            $this->assertGeneratedProxyAuthorizeThrows(
+                $subject,
+                $baseClass,
+                [],
+                'DEGODB_PROXY_BEARER_TOKEN が未設定です。',
+            );
+
+            putenv('DEGODB_PROXY_BEARER_TOKEN=expected-token');
+            $this->assertGeneratedProxyAuthorizeThrows(
+                $subject,
+                $baseClass,
+                [],
+                'Bearer token が一致しません。',
+            );
+
+            $_SERVER['HTTP_AUTHORIZATION'] = 'Bearer expected-token';
+            $this->invokeGeneratedProxyAuthorizeRequest($subject, $baseClass, []);
+            self::assertTrue(true);
+        } finally {
+            $this->restoreEnvValue('DEGODB_PROXY_BEARER_TOKEN', $previousBearerToken);
+            $this->restoreEnvValue('MTOOL_PROXY_BEARER_TOKEN', $previousLegacyBearerToken);
+            $this->restoreServerValue('HTTP_AUTHORIZATION', $previousAuthorization);
+            $this->restoreServerValue('REDIRECT_HTTP_AUTHORIZATION', $previousRedirectAuthorization);
         }
     }
 
@@ -1149,5 +1326,29 @@ PHP);
         }
 
         putenv($name . '=' . $value);
+    }
+
+    private function restoreServerValue(string $name, ?string $value): void
+    {
+        if ($value === null) {
+            unset($_SERVER[$name]);
+            return;
+        }
+
+        $_SERVER[$name] = $value;
+    }
+
+    private function assertGeneratedProxyAuthorizeThrows(
+        object $subject,
+        string $baseClass,
+        array $payload,
+        string $expectedMessage,
+    ): void {
+        try {
+            $this->invokeGeneratedProxyAuthorizeRequest($subject, $baseClass, $payload);
+            self::fail('Expected generated proxy authorization to throw: ' . $expectedMessage);
+        } catch (RuntimeException $exception) {
+            self::assertSame($expectedMessage, $exception->getMessage());
+        }
     }
 }

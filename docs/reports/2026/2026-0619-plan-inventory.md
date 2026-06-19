@@ -72,40 +72,44 @@ None of the items below are remaining work for the completed `sample19-26` ebook
 
 ### Immediate
 
-1. Security foundation first slice is decided.
-   - Start with security regression checks for secret leakage / public exposure.
-   - Then add audit log schema and repository usable from MySQL / MariaDB and SQLite config store.
+1. Security foundation first slice is complete as of the current 2026-06-19 security/auth commit-in-progress.
+   - Added security regression checks for public raw OpenAPI/artifact exposure.
+   - Added audit log schema and repository usable from MySQL / MariaDB and SQLite config store.
+   - Added audit metadata secret/token/password redaction regression.
    - Minimal project permissions follow after the audit event shape is clear.
-   - Do not jump directly to SSO / OIDC before local role / audit boundaries exist.
+   - SSO / OIDC work resumes only after this local role / audit boundary is in place.
 
 ### Next
 
-1. API auth v2 `Phase 1. Policy Contract`.
+1. API auth v2 `Phase 1. Policy Contract` is complete as of `6765f79 Add security foundation and bearer auth contract`.
    - First storage shape: `auth_policy_version`, `auth_policy_json` beside existing proxy/function metadata.
    - Defer `project_auth_policies` table until reuse / inheritance is needed.
-   - Define validation: unknown policy invalid, blank new auth invalid, missing secret reference fail-closed.
-   - Keep legacy `ProjectToken` compatibility but do not make body `TOKEN` the new default.
+   - Validation is fixed for unknown policy invalid, blank new auth invalid, missing secret reference fail-closed, and populated secret/token/password fields invalid.
+   - Legacy `ProjectToken` compatibility remains, but body `TOKEN` is not the new default.
 
-2. `static-bearer` first implementation.
-   - Generate `Authorization: Bearer` verification.
-   - Emit OpenAPI `http` bearer security scheme.
-   - Add missing / malformed / wrong / env-missing / success tests.
+2. `static-bearer` first implementation is complete as of `6765f79 Add security foundation and bearer auth contract`.
+   - Generated proxy runtime verifies `Authorization: Bearer`.
+   - OpenAPI emits an `http` bearer security scheme.
+   - Swagger helper can send bearer auth as an HTTP header instead of a request-body token field.
+   - Missing / malformed / wrong / env-missing / success cases are covered by contract tests.
 
-3. Auth-required OpenAPI browser smoke.
-   - Extend sample25 or future bearer sample once auth representation is settled.
+3. Auth-required OpenAPI browser smoke is complete as of `6ddb61d Add auth Swagger browser smoke`.
+   - sample25 now has a headless Chrome Swagger Try It Out smoke for an auth-required proxy path.
+   - Auth proxy reference outputs for sample16 / sample25 / sample26 are refreshed for the API auth v2 runtime shape.
+   - Minimal project permission model / user control is intentionally externalized to the SSO / membership redesign topic, because current membership is legacy and should not be expanded in this security/browser-smoke commit.
 
-4. Import preview / apply review hardening.
-   - Improve destructive / stale / type-changed schema diff readability.
-   - Keep preview non-mutating and apply mutating.
+4. Import preview / apply review hardening is complete as of `03c5ec4 Add import review details`.
+   - Table import plans include `review_required`, destructive / metadata update counts, per-table risk level, reasons, and column-level before/after changes.
+   - Preview remains non-mutating; apply still uses the existing preview plan and then mutates canonical metadata.
 
 ### Parked
 
-- OIDC / Keycloak integration.
 - Approval workflow.
 - rollback / revision history.
 - local app packaging.
 - PostgreSQL / SQL Server user DB support.
 - production-grade ebook CMS features such as editor UI, full role management, upload, search, EPUB generation, payment, DRM.
+- Full Mtool namespace migration. Composer usage by itself does not require this because third-party classes are already namespaced; a repo-wide Mtool namespace migration should be a separate post-security plan if it is still valuable.
 
 ## Proposal Guardrails
 

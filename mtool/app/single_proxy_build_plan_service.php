@@ -251,6 +251,8 @@ function app_single_proxy_build_plan_for_source_output(
         $authPolicy = app_resolve_db_access_single_proxy_auth_policy(
             (string) ($item['single_proxy_auth_type'] ?? ''),
             (string) ($item['single_proxy_single_get_function_name'] ?? ''),
+            (int) ($item['auth_policy_version'] ?? 1),
+            (string) ($item['auth_policy_json'] ?? ''),
         );
         if (!$authPolicy['is_valid']) {
             $unresolvedAuthCount++;
