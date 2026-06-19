@@ -1,10 +1,10 @@
 # Authenticated Proxy
 
 English companion:
-This study note uses `sample16-authenticated-proxy` to show the smallest ProjectToken authenticated generated proxy flow.
+This study note uses `sample16-authenticated-proxy` to show the smallest static bearer authenticated generated proxy flow.
 
-`sample16-authenticated-proxy` は、generated single proxy server endpoint の `ProjectToken` auth と fail-closed behavior を確認する tutorial です。
-`TOKEN` が無い、空、間違い、または `MTOOL_PROXY_PROJECT_TOKEN` が未設定の場合に失敗し、正しい token だけが通ることを固定します。
+`sample16-authenticated-proxy` は、generated single proxy server endpoint の `static-bearer` auth と fail-closed behavior を確認する tutorial です。
+`Authorization: Bearer <token>` が無い、形式が違う、間違い、または `DEGODB_PROXY_BEARER_TOKEN` が未設定の場合に失敗し、正しい bearer token だけが通ることを固定します。
 
 ## 実行
 
@@ -22,9 +22,9 @@ make sample16-pack-runtime-test
 ## 見るポイント
 
 - `AUTH-PROXY-SERVER` は generated single proxy server artifact です。
-- test は missing `TOKEN`、empty `TOKEN`、wrong token、env missing を fail-closed として確認します。
+- test は missing `Authorization`、malformed `Authorization`、wrong token、env missing を fail-closed として確認します。
 - HTTP server ではなく、generated handler の auth 境界を直接検証します。
 
 ## Boundary
 
-`sample16` では `ProjectToken` だけを扱います。`GetFunc`、`ProjectTokenOrGetFunc`、`LoginCookieToken`、HTTP browser smoke は後続 sample に分けます。
+`sample16` では `static-bearer` だけを扱います。legacy `ProjectToken`、`GetFunc`、`ProjectTokenOrGetFunc`、`LoginCookieToken`、HTTP browser smoke は別 scope に分けます。

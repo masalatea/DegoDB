@@ -8,7 +8,7 @@ services:
   web-lab:
     environment:
       APP_WORK_ROOT: /var/www/work/sample-packs/sample16-authenticated-proxy
-      MTOOL_PROXY_PROJECT_TOKEN: sample16-token
+      DEGODB_PROXY_BEARER_TOKEN: sample16-token
 
   db-config:
     entrypoint:

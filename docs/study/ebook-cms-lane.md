@@ -33,7 +33,7 @@ make sample19-pack-runtime-test-sqlite
 | `sample22` | chapter workflow と public/editor API の分離 | `DATACLASS-PHP`, `DBACCESS-PHP`, `OPENAPI-JSON` | auth proxy、reader HTML、revision history | draft と published chapter の境界を見る |
 | `sample23` | EPUB / media delivery metadata | `DATACLASS-PHP`, `DBACCESS-PHP`, `OPENAPI-JSON` | EPUB build、upload、blob storage | file 本体ではなく delivery metadata を artifact 化する |
 | `sample24` | public reader site | `DATACLASS-PHP`, `DBACCESS-PHP`, `HTML-PAGE`, `OPENAPI-JSON` | editor auth API、purchase、search | public reader HTML と app API を同じ project から出す |
-| `sample25` | ProjectToken protected editor CMS API | `DATACLASS-PHP`, `DBACCESS-PHP`, `OPENAPI-JSON`, `AUTH-PROXY-SERVER` | full editor UI、user / role 管理、audit log | editor API を fail-closed auth proxy として見る |
+| `sample25` | legacy-compatible ProjectToken protected editor CMS API | `DATACLASS-PHP`, `DBACCESS-PHP`, `OPENAPI-JSON`, `AUTH-PROXY-SERVER` | current static bearer baseline、full editor UI、user / role 管理、audit log | editor API を fail-closed auth proxy として見る |
 | `sample26` | headless CMS capstone | `DATACLASS-PHP`, `DBACCESS-PHP`, `HTML-PAGE`, `OPENAPI-JSON`, `AUTH-PROXY-SERVER`, `PROJECT-METADATA-BUNDLE` | production CMS 全体 | public / app / editor / metadata bundle を 1 project でまとめて見る |
 
 ## まず見るファイル
@@ -59,7 +59,8 @@ make sample19-pack-runtime-test-sqlite
 - runtime は sample pack の isolated Docker stack で確認する
 - schema は sample が読める程度に小さく保つ
 - EPUB は fixture / URL / metadata として扱い、build pipeline は扱わない
-- editor API は ProjectToken の最小 auth に絞る
+- editor API は legacy-compatible ProjectToken の最小 auth に絞る
+- current generated runtime security baseline は `sample16` の static bearer authenticated proxy で扱い、この ebook lane は CMS 教材として ProjectToken compatibility を読む
 - UI は public reader の HTML artifact までに留める
 - production で必要な運用機能は README の out of scope に逃がす
 

@@ -11,7 +11,7 @@ INSERT INTO projects (
     'sample16-authenticated-proxy',
     'paused',
     'admin',
-    'ProjectToken authenticated single proxy server artifact と fail-closed auth behavior を確認する tutorial sample project。'
+    'Static bearer authenticated single proxy server artifact と fail-closed auth behavior を確認する tutorial sample project。'
 )
 ON DUPLICATE KEY UPDATE
     name = VALUES(name),

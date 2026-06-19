@@ -369,6 +369,90 @@ final class ProjectMetadataBundleContractTest extends TestCase
         self::assertSame('bundle-env-ref-password', $databaseSource['password'] ?? '');
     }
 
+    public function testProjectCoreBundlePreservesGeneratedAuthPolicyReferencesAndRejectsSecretValues(): void
+    {
+        $app = app_project_metadata_bundle_repository_app(app_bootstrap());
+        $projectKey = 'BNDL' . strtoupper(substr(bin2hex(random_bytes(4)), 0, 8));
+        $this->cleanupProjectKeys[] = $projectKey;
+
+        $this->seedProjectCoreFixture($app, $projectKey);
+        $this->setDbAccessFunctionAuthPolicy(
+            $app,
+            $projectKey,
+            'bundle_articles',
+            'Insertbundle_articles',
+            'StaticBearer',
+            2,
+            '{"type":"static-bearer","secret_env":"DEGODB_PROXY_BEARER_TOKEN"}',
+        );
+
+        $bundleRoot = sys_get_temp_dir() . '/mtool-project-metadata-auth-policy-bundle-' . bin2hex(random_bytes(6));
+        $this->cleanupPaths[] = $bundleRoot;
+
+        $exportResult = app_project_metadata_bundle_export($app, $projectKey, [
+            'output_dir' => $bundleRoot,
+            'requested_by' => 'phpunit',
+        ]);
+        self::assertTrue($exportResult['ok'], $exportResult['error']);
+
+        $insertFunction = $this->bundleFunctionByName($exportResult['sections'], 'bundle_articles', 'Insertbundle_articles');
+        self::assertSame('StaticBearer', $insertFunction['single_proxy_auth_type'] ?? '');
+        self::assertSame('2', $insertFunction['auth_policy_version'] ?? '');
+        self::assertSame(
+            '{"type":"static-bearer","secret_env":"DEGODB_PROXY_BEARER_TOKEN"}',
+            $insertFunction['auth_policy_json'] ?? '',
+        );
+        self::assertStringNotContainsString('sample-secret-value', app_project_metadata_bundle_json_encode($exportResult['sections']));
+
+        $this->setDbAccessFunctionAuthPolicy(
+            $app,
+            $projectKey,
+            'bundle_articles',
+            'Insertbundle_articles',
+            'ProjectToken',
+            1,
+            '',
+        );
+
+        $applyResult = app_project_metadata_bundle_import_apply($app, $bundleRoot, [
+            'requested_by' => 'phpunit',
+        ]);
+        self::assertTrue($applyResult['ok'], $applyResult['error']);
+
+        $importedFunction = app_fetch_db_access_function_metadata(
+            $app,
+            $projectKey,
+            'bundle_articles',
+            'Insertbundle_articles',
+        );
+        self::assertTrue($importedFunction['ok'], $importedFunction['error']);
+        self::assertSame('2', (string) ($importedFunction['item']['auth_policy_version'] ?? ''));
+        self::assertSame(
+            '{"type":"static-bearer","secret_env":"DEGODB_PROXY_BEARER_TOKEN"}',
+            (string) ($importedFunction['item']['auth_policy_json'] ?? ''),
+        );
+
+        $dbAccessPath = $bundleRoot . '/db-access.json';
+        $dbAccessJson = json_decode((string) file_get_contents($dbAccessPath), true);
+        self::assertIsArray($dbAccessJson);
+        $dbAccessJson['classes'][0]['functions'][1]['auth_policy_json'] =
+            '{"type":"static-bearer","secret_env":"DEGODB_PROXY_BEARER_TOKEN","token":"sample-secret-value"}';
+        $dbAccessContents = app_project_metadata_bundle_json_encode($dbAccessJson);
+        app_project_metadata_bundle_write_text($dbAccessPath, $dbAccessContents);
+        $manifestPath = $bundleRoot . '/manifest.json';
+        $manifestJson = json_decode((string) file_get_contents($manifestPath), true);
+        self::assertIsArray($manifestJson);
+        $manifestJson['files']['db_access']['sha256'] = hash('sha256', $dbAccessContents);
+        $manifestJson['files']['db_access']['bytes'] = strlen($dbAccessContents);
+        app_project_metadata_bundle_write_text($manifestPath, app_project_metadata_bundle_json_encode($manifestJson));
+
+        $previewResult = app_project_metadata_bundle_import_preview($app, $bundleRoot, [
+            'requested_by' => 'phpunit',
+        ]);
+        self::assertFalse($previewResult['ok']);
+        self::assertStringContainsString('secret 値を保存できません', $previewResult['error']);
+    }
+
     private function seedProjectCoreFixture(array $app, string $projectKey): void
     {
         $insertProject = app_insert_project($app, [
@@ -861,6 +945,76 @@ final class ProjectMetadataBundleContractTest extends TestCase
         }
 
         return null;
+    }
+
+    private function setDbAccessFunctionAuthPolicy(
+        array $app,
+        string $projectKey,
+        string $sourceName,
+        string $functionName,
+        string $authType,
+        int $authPolicyVersion,
+        string $authPolicyJson,
+    ): void {
+        $pdo = app_create_config_pdo($app);
+        $select = $pdo->prepare(
+            'SELECT f.id
+             FROM project_db_access_functions AS f
+             INNER JOIN project_db_access_classes AS c ON c.id = f.db_access_class_id
+             INNER JOIN projects AS p ON p.id = c.project_id
+             WHERE p.project_key = :project_key
+               AND c.source_name = :source_name
+               AND f.function_name = :function_name
+             LIMIT 1'
+        );
+        $select->execute([
+            ':project_key' => $projectKey,
+            ':source_name' => $sourceName,
+            ':function_name' => $functionName,
+        ]);
+        $row = $select->fetch(PDO::FETCH_ASSOC);
+        self::assertIsArray($row);
+
+        $update = $pdo->prepare(
+            'UPDATE project_db_access_functions
+             SET single_proxy_auth_type = :auth_type,
+                 auth_policy_version = :auth_policy_version,
+                 auth_policy_json = :auth_policy_json
+             WHERE id = :id'
+        );
+        $update->execute([
+            ':auth_type' => $authType,
+            ':auth_policy_version' => $authPolicyVersion,
+            ':auth_policy_json' => $authPolicyJson,
+            ':id' => (int) ($row['id'] ?? 0),
+        ]);
+
+        self::assertSame(1, $update->rowCount());
+    }
+
+    /**
+     * @param array<string,mixed> $sections
+     * @return array<string,mixed>
+     */
+    private function bundleFunctionByName(array $sections, string $sourceName, string $functionName): array
+    {
+        $classes = $sections['db_access']['classes'] ?? [];
+        self::assertIsArray($classes);
+        foreach ($classes as $class) {
+            if (!is_array($class) || (string) ($class['source_name'] ?? '') !== $sourceName) {
+                continue;
+            }
+
+            $functions = $class['functions'] ?? [];
+            self::assertIsArray($functions);
+            foreach ($functions as $function) {
+                if (is_array($function) && (string) ($function['function_name'] ?? '') === $functionName) {
+                    return $function;
+                }
+            }
+        }
+
+        self::fail('bundle function not found: ' . $sourceName . '.' . $functionName);
     }
 
     private function setEnv(string $key, string $value): void

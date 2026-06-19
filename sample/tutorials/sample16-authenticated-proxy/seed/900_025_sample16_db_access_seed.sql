@@ -51,7 +51,7 @@ INSERT INTO project_db_access_classes (
     'AuthTask',
     '',
     0,
-    'Single ProjectToken authenticated read function for the authenticated proxy tutorial sample.',
+    'Single static bearer authenticated read function for the authenticated proxy tutorial sample.',
     'manual',
     '',
     ''
@@ -91,11 +91,11 @@ INSERT INTO project_db_access_functions (
     '',
     0,
     '',
-    'Get one AuthTask row through a ProjectToken authenticated generated proxy.',
+    'Get one AuthTask row through a static bearer authenticated generated proxy.',
     '',
     '',
     '',
-    'ProjectToken',
+    'StaticBearer',
     '',
     0,
     'public function GetAuthTask($param_AuthTask_Id_where)',
@@ -104,6 +104,12 @@ INSERT INTO project_db_access_functions (
 );
 
 SET @sample16_get_auth_task_function_id = LAST_INSERT_ID();
+
+UPDATE project_db_access_functions
+SET
+    auth_policy_version = 2,
+    auth_policy_json = '{"type":"static-bearer","secret_env":"DEGODB_PROXY_BEARER_TOKEN"}'
+WHERE id = @sample16_get_auth_task_function_id;
 
 INSERT INTO project_db_access_function_select_target_fields (
     db_access_function_id,

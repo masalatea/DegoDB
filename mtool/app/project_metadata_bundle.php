@@ -5,6 +5,7 @@ declare(strict_types=1);
 require_once __DIR__ . '/database.php';
 require_once __DIR__ . '/database_source_repository.php';
 require_once __DIR__ . '/domain_validation.php';
+require_once __DIR__ . '/generated_runtime_auth_policy.php';
 require_once __DIR__ . '/project_repository.php';
 require_once __DIR__ . '/project_membership_repository.php';
 require_once __DIR__ . '/table_metadata_repository.php';
@@ -1064,6 +1065,17 @@ function app_project_metadata_bundle_validate_sections(
                 $errors[] = 'db_access ' . $sourceName . '.' . $functionName . ': ' . $blobConstraintError;
             }
 
+            $authPolicyVersion = (int) ((string) ($functionItem['auth_policy_version'] ?? '1'));
+            $authPolicyJson = (string) ($functionItem['auth_policy_json'] ?? '');
+            if ($authPolicyVersion > 1 || trim($authPolicyJson) !== '') {
+                $authPolicy = app_generated_runtime_auth_policy_validate_json($authPolicyVersion, $authPolicyJson);
+                if (!$authPolicy['is_valid']) {
+                    $errors[] = 'db_access auth_policy_json が不正です: '
+                        . $sourceName . '.' . $functionName . ' -> '
+                        . implode(' / ', $authPolicy['notes']);
+                }
+            }
+
             $targetKeys = is_array($functionItem['source_output_keys'] ?? null)
                 ? $functionItem['source_output_keys']
                 : [];
@@ -1918,6 +1930,8 @@ function app_project_metadata_bundle_export_db_access_function(
             'or_group_type' => (string) ($functionItem['or_group_type'] ?? ''),
             'single_proxy_auth_type' => (string) ($functionItem['single_proxy_auth_type'] ?? ''),
             'single_proxy_single_get_function_name' => (string) ($functionItem['single_proxy_single_get_function_name'] ?? ''),
+            'auth_policy_version' => (string) ((int) ($functionItem['auth_policy_version'] ?? 1)),
+            'auth_policy_json' => (string) ($functionItem['auth_policy_json'] ?? ''),
             'is_blob_target' => (string) ($functionItem['is_blob_target'] ?? '0'),
             'detected_signature' => (string) ($functionItem['detected_signature'] ?? ''),
             'detected_line' => (string) ($functionItem['detected_line'] ?? '0'),
@@ -2989,6 +3003,8 @@ function app_project_metadata_bundle_insert_db_access(
             or_group_type,
             single_proxy_auth_type,
             single_proxy_single_get_function_name,
+            auth_policy_version,
+            auth_policy_json,
             is_blob_target,
             detected_signature,
             detected_line,
@@ -3010,6 +3026,8 @@ function app_project_metadata_bundle_insert_db_access(
             :or_group_type,
             :single_proxy_auth_type,
             :single_proxy_single_get_function_name,
+            :auth_policy_version,
+            :auth_policy_json,
             :is_blob_target,
             :detected_signature,
             :detected_line,
@@ -3217,6 +3235,8 @@ function app_project_metadata_bundle_insert_db_access(
                 ':or_group_type' => (string) ($functionItem['or_group_type'] ?? ''),
                 ':single_proxy_auth_type' => (string) ($functionItem['single_proxy_auth_type'] ?? ''),
                 ':single_proxy_single_get_function_name' => (string) ($functionItem['single_proxy_single_get_function_name'] ?? ''),
+                ':auth_policy_version' => (int) ((string) ($functionItem['auth_policy_version'] ?? '1')),
+                ':auth_policy_json' => (string) ($functionItem['auth_policy_json'] ?? ''),
                 ':is_blob_target' => ((string) ($functionItem['is_blob_target'] ?? '0')) === '1' ? 1 : 0,
                 ':detected_signature' => (string) ($functionItem['detected_signature'] ?? ''),
                 ':detected_line' => (int) ((string) ($functionItem['detected_line'] ?? '0')),

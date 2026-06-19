@@ -250,9 +250,16 @@ function app_sample16_auth_proxy_capture_auth_case(
     array $payload,
     string|false $tokenEnv,
 ): array {
-    $previousToken = getenv('MTOOL_PROXY_PROJECT_TOKEN');
+    $previousToken = getenv('DEGODB_PROXY_BEARER_TOKEN');
+    $previousAuthorization = $_SERVER['HTTP_AUTHORIZATION'] ?? null;
     try {
-        app_sample16_auth_proxy_restore_env('MTOOL_PROXY_PROJECT_TOKEN', $tokenEnv);
+        app_sample16_auth_proxy_restore_env('DEGODB_PROXY_BEARER_TOKEN', $tokenEnv);
+        if (isset($payload['_authorization'])) {
+            $_SERVER['HTTP_AUTHORIZATION'] = (string) $payload['_authorization'];
+            unset($payload['_authorization']);
+        } else {
+            unset($_SERVER['HTTP_AUTHORIZATION']);
+        }
         app_sample16_auth_proxy_authorize_generated_handler($actualRoot, $payload);
 
         return [
@@ -267,25 +274,30 @@ function app_sample16_auth_proxy_capture_auth_case(
             'message' => $throwable->getMessage(),
         ];
     } finally {
-        app_sample16_auth_proxy_restore_env('MTOOL_PROXY_PROJECT_TOKEN', $previousToken);
+        app_sample16_auth_proxy_restore_env('DEGODB_PROXY_BEARER_TOKEN', $previousToken);
+        if ($previousAuthorization === null) {
+            unset($_SERVER['HTTP_AUTHORIZATION']);
+        } else {
+            $_SERVER['HTTP_AUTHORIZATION'] = $previousAuthorization;
+        }
     }
 }
 
 function app_sample16_auth_proxy_run_auth_cases(string $actualRoot, array &$errors): array
 {
     $cases = [
-        app_sample16_auth_proxy_capture_auth_case($actualRoot, 'missing_token', [], 'sample16-token'),
-        app_sample16_auth_proxy_capture_auth_case($actualRoot, 'empty_token', ['TOKEN' => ''], 'sample16-token'),
-        app_sample16_auth_proxy_capture_auth_case($actualRoot, 'missing_env', ['TOKEN' => 'sample16-token'], false),
-        app_sample16_auth_proxy_capture_auth_case($actualRoot, 'wrong_token', ['TOKEN' => 'wrong-token'], 'sample16-token'),
-        app_sample16_auth_proxy_capture_auth_case($actualRoot, 'matching_token', ['TOKEN' => 'sample16-token'], 'sample16-token'),
+        app_sample16_auth_proxy_capture_auth_case($actualRoot, 'missing_authorization', [], 'sample16-token'),
+        app_sample16_auth_proxy_capture_auth_case($actualRoot, 'malformed_authorization', ['_authorization' => 'Token sample16-token'], 'sample16-token'),
+        app_sample16_auth_proxy_capture_auth_case($actualRoot, 'missing_env', ['_authorization' => 'Bearer sample16-token'], false),
+        app_sample16_auth_proxy_capture_auth_case($actualRoot, 'wrong_token', ['_authorization' => 'Bearer wrong-token'], 'sample16-token'),
+        app_sample16_auth_proxy_capture_auth_case($actualRoot, 'matching_token', ['_authorization' => 'Bearer sample16-token'], 'sample16-token'),
     ];
 
     $expected = [
-        'missing_token' => ['ok' => false, 'message_contains' => 'TOKEN が必要です。'],
-        'empty_token' => ['ok' => false, 'message_contains' => 'TOKEN は空でない string'],
-        'missing_env' => ['ok' => false, 'message_contains' => 'MTOOL_PROXY_PROJECT_TOKEN が未設定です。'],
-        'wrong_token' => ['ok' => false, 'message_contains' => 'TOKEN が一致しません。'],
+        'missing_authorization' => ['ok' => false, 'message_contains' => 'Authorization bearer header が必要です。'],
+        'malformed_authorization' => ['ok' => false, 'message_contains' => 'Authorization header は Bearer token 形式'],
+        'missing_env' => ['ok' => false, 'message_contains' => 'DEGODB_PROXY_BEARER_TOKEN が未設定です。'],
+        'wrong_token' => ['ok' => false, 'message_contains' => 'Bearer token が一致しません。'],
         'matching_token' => ['ok' => true, 'message_contains' => ''],
     ];
 

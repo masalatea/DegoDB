@@ -35,7 +35,7 @@
 - `Sample15ProjectMetadataExportImportTest.php`
   - `sample/tutorials/sample15-project-metadata-export-import` を使い、project metadata bundle export / preview / apply までの tutorial lane を検証する
 - `Sample16AuthenticatedProxyTest.php`
-  - `sample/tutorials/sample16-authenticated-proxy` を使い、ProjectToken authenticated proxy と fail-closed behavior の tutorial lane を検証する
+  - `sample/tutorials/sample16-authenticated-proxy` を使い、static bearer authenticated proxy と fail-closed behavior の generated runtime security baseline を検証する
 - `Sample17MultiOutputProjectTest.php`
   - `sample/tutorials/sample17-multi-output-project` を使い、複数 Source Output を同じ project から publish する capstone tutorial lane を検証する
 - `Sample18MiniTaskBoardDemoTest.php`
@@ -53,9 +53,9 @@
 - `Sample24EbookPublicReaderSiteDemoTest.php`
   - `sample/tutorials/sample24-ebook-public-reader-site-demo` を使い、公開本 / 章 / EPUB download metadata の HTML-PAGE と OpenAPI surface を publish する MySQL canonical lane を検証する
 - `Sample25EbookEditorAuthCmsDemoTest.php`
-  - `sample/tutorials/sample25-ebook-editor-auth-cms-demo` を使い、編集者向け chapter preview / draft update / publish API を ProjectToken authenticated proxy として publish し、fail-closed behavior も検証する
+  - `sample/tutorials/sample25-ebook-editor-auth-cms-demo` を使い、編集者向け chapter preview / draft update / publish API を legacy-compatible ProjectToken authenticated proxy として publish し、fail-closed behavior も検証する
 - `Sample26EbookHeadlessCmsCapstoneTest.php`
-  - `sample/tutorials/sample26-ebook-headless-cms-capstone` を使い、public reader HTML / app OpenAPI / ProjectToken editor proxy / project metadata bundle を 1 project から publish する capstone lane を検証する
+  - `sample/tutorials/sample26-ebook-headless-cms-capstone` を使い、public reader HTML / app OpenAPI / legacy-compatible ProjectToken editor proxy / project metadata bundle を 1 project から publish する capstone lane を検証する
 - historical な `Sample9...OutputTest.php` から `Sample22...OutputTest.php`
   - `sample/internal-patterns/pattern01-default-property-split` から `pattern14-method-and-enum-heavy-multimethod` までの file-based migration sample を対象に、`tests/fixtures/legacy-dbclasses/` の curated fixture から wrapper/base 出力を再生成し、`reference/` と比較する
 - `LegacyTopLevelDeclarationMigrationTest.php`

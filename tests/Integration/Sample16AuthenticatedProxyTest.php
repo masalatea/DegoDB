@@ -6,7 +6,7 @@ use PHPUnit\Framework\TestCase;
 
 final class Sample16AuthenticatedProxyTest extends TestCase
 {
-    public function testAuthenticatedProxyFailsClosedAndAcceptsMatchingProjectToken(): void
+    public function testAuthenticatedProxyFailsClosedAndAcceptsMatchingBearerToken(): void
     {
         $result = app_sample16_auth_proxy_run(
             app_bootstrap(),
@@ -26,8 +26,8 @@ final class Sample16AuthenticatedProxyTest extends TestCase
             $authCases[(string) ($case['case'] ?? '')] = $case;
         }
 
-        self::assertFalse((bool) ($authCases['missing_token']['ok'] ?? true));
-        self::assertFalse((bool) ($authCases['empty_token']['ok'] ?? true));
+        self::assertFalse((bool) ($authCases['missing_authorization']['ok'] ?? true));
+        self::assertFalse((bool) ($authCases['malformed_authorization']['ok'] ?? true));
         self::assertFalse((bool) ($authCases['missing_env']['ok'] ?? true));
         self::assertFalse((bool) ($authCases['wrong_token']['ok'] ?? true));
         self::assertTrue((bool) ($authCases['matching_token']['ok'] ?? false));

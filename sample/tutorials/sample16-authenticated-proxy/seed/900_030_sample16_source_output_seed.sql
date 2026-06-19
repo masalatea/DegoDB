@@ -46,7 +46,7 @@ INSERT INTO project_source_outputs (
     'single-function-proxy',
     'tar.gz',
     40,
-    'Generate a ProjectToken authenticated single proxy server endpoint from AuthTask.GetAuthTask.',
+    'Generate a static bearer authenticated single proxy server endpoint from AuthTask.GetAuthTask.',
     'manual'
 )
 ON DUPLICATE KEY UPDATE

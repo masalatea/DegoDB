@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 require_once __DIR__ . '/domain_validation.php';
+require_once __DIR__ . '/generated_runtime_auth_policy.php';
 
 /**
  * @param array{
@@ -183,81 +184,20 @@ function app_resolve_proxy_auth_policy_with_contract(
         return $legacyPolicy;
     }
 
-    $trimmedJson = trim($authPolicyJson);
-    if ($trimmedJson === '') {
+    $contract = app_generated_runtime_auth_policy_validate_json($authPolicyVersion, $authPolicyJson, [
+        'allowed_policy_types' => ['static-bearer'],
+    ]);
+    if (!$contract['is_valid']) {
         return app_invalid_proxy_auth_policy_contract(
             $rawAuthType,
             $singleGetFunctionName,
             $authPolicyVersion,
             $authPolicyJson,
-            'auth_policy_json が空です。v2 auth policy は明示的な JSON contract が必要です。',
+            implode("\n", $contract['notes']),
         );
     }
 
-    try {
-        $decoded = json_decode($trimmedJson, true, 512, JSON_THROW_ON_ERROR);
-    } catch (JsonException $exception) {
-        return app_invalid_proxy_auth_policy_contract(
-            $rawAuthType,
-            $singleGetFunctionName,
-            $authPolicyVersion,
-            $authPolicyJson,
-            'auth_policy_json が JSON として解釈できません: ' . $exception->getMessage(),
-        );
-    }
-
-    if (!is_array($decoded)) {
-        return app_invalid_proxy_auth_policy_contract(
-            $rawAuthType,
-            $singleGetFunctionName,
-            $authPolicyVersion,
-            $authPolicyJson,
-            'auth_policy_json は object である必要があります。',
-        );
-    }
-
-    $secretValueField = app_proxy_auth_policy_secret_value_field($decoded);
-    if ($secretValueField !== '') {
-        return app_invalid_proxy_auth_policy_contract(
-            $rawAuthType,
-            $singleGetFunctionName,
-            $authPolicyVersion,
-            $authPolicyJson,
-            'auth_policy_json に secret 値を保存できません。参照名だけを保存してください: ' . $secretValueField,
-        );
-    }
-
-    $policyType = trim((string) ($decoded['type'] ?? ''));
-    if ($policyType === '') {
-        return app_invalid_proxy_auth_policy_contract(
-            $rawAuthType,
-            $singleGetFunctionName,
-            $authPolicyVersion,
-            $authPolicyJson,
-            'auth_policy_json.type が空です。',
-        );
-    }
-
-    if ($policyType !== 'static-bearer') {
-        return app_invalid_proxy_auth_policy_contract(
-            $rawAuthType,
-            $singleGetFunctionName,
-            $authPolicyVersion,
-            $authPolicyJson,
-            '未知の auth_policy_json.type です: ' . $policyType,
-        );
-    }
-
-    $secretEnv = trim((string) ($decoded['secret_env'] ?? ''));
-    if ($secretEnv === '') {
-        return app_invalid_proxy_auth_policy_contract(
-            $rawAuthType,
-            $singleGetFunctionName,
-            $authPolicyVersion,
-            $authPolicyJson,
-            'static-bearer policy には secret_env 参照が必要です。secret 値そのものは保存しません。',
-        );
-    }
+    $secretEnv = (string) ($contract['secret_refs']['secret_env'] ?? '');
 
     return [
         'raw_auth_type' => $rawAuthType,
@@ -270,42 +210,15 @@ function app_resolve_proxy_auth_policy_with_contract(
         'requires_get_function' => false,
         'single_get_function_name' => '',
         'security_mode' => 'static-bearer',
-        'summary' => 'auth policy v2 の static-bearer 認証です。',
+        'summary' => $contract['summary'],
         'notes' => $singleGetFunctionName === ''
             ? []
             : ['auth policy v2 では legacy get function 参照は使いません。'],
         'is_valid' => true,
         'auth_policy_version' => $authPolicyVersion,
-        'auth_policy_json' => $trimmedJson,
+        'auth_policy_json' => $contract['json'],
         'secret_env' => $secretEnv,
     ];
-}
-
-/**
- * @param array<string,mixed> $policy
- */
-function app_proxy_auth_policy_secret_value_field(array $policy, string $prefix = ''): string
-{
-    foreach ($policy as $key => $value) {
-        $stringKey = (string) $key;
-        $path = $prefix === '' ? $stringKey : $prefix . '.' . $stringKey;
-        $normalizedKey = strtolower(trim($stringKey));
-
-        if ($normalizedKey !== 'secret_env'
-            && preg_match('/(^|_)(password|passwd|secret|token|credential)($|_)/', $normalizedKey) === 1
-        ) {
-            return $path;
-        }
-
-        if (is_array($value)) {
-            $nested = app_proxy_auth_policy_secret_value_field($value, $path);
-            if ($nested !== '') {
-                return $nested;
-            }
-        }
-    }
-
-    return '';
 }
 
 /**

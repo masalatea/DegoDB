@@ -30,4 +30,4 @@ make sample17-pack-runtime-test
 
 ## Boundary
 
-`sample17` is about multi-output publish from one project. Project metadata bundle export / import remains in `sample15`, and ProjectToken auth remains in `sample16`.
+`sample17` is about multi-output publish from one project. Project metadata bundle export / import remains in `sample15`, and the current authenticated proxy security baseline remains in `sample16` as static bearer auth.

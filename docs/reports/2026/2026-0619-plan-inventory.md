@@ -127,13 +127,15 @@ None of the items below are remaining work for the completed `sample19-26` ebook
 - Legacy `project_memberships` remains compatibility fallback only and should not receive new SSO behavior.
 - Project permission roles are `viewer`, `editor`, `publisher`, and `admin`; source output publish/download requires `publisher` or stronger.
 
-### Authorization Hardening Next Status
+### Authorization Hardening Baseline Status
 
-- Current status: `NEXT`.
+- Current status: `I/F_BASELINE_DONE / PARKED_MINIMAL`.
 - Source of truth: `docs/internal/authorization-hardening-plan.md`.
-- This is the next phase after SSO, not more SSO implementation.
-- First task is a route capability inventory for authenticated project routes.
-- Then apply enforcement in small route clusters:
+- This is Mtool admin/lab route authorization after SSO, not more SSO implementation and not generated runtime security.
+- Route capability inventory is done.
+- First code I/F is `mtool/app/project_route_authorization.php`, which fixes route-name / method / capability requirements before broad enforcement.
+- Broad route enforcement is intentionally parked for now. The path is ready, but immediate enterprise-style admin UI hardening is not the priority.
+- Deferred route clusters remain identified:
   - read-only project routes with `project.read`;
   - write metadata routes with `project.edit`;
   - database source operations with `db_source.manage`;
@@ -141,6 +143,32 @@ None of the items below are remaining work for the completed `sample19-26` ebook
   - source output publish/download remains `publisher` or stronger.
 - Each enforced cluster should use audited permission decisions and include a small contract or smoke check.
 - Do not mix this phase with member management UI, IdP admin UI, SCIM, invitation flows, or legacy `ProjectUser` reconstruction.
+
+### Generated Runtime Security Focus Status
+
+- Current status: `GENERATED_RUNTIME_BASELINE_DONE`.
+- Source of truth: `docs/internal/generated-runtime-security-plan.md`.
+- This is the security lane for code emitted by Mtool: generated proxy handlers, OpenAPI output, generated runtime artifacts, and generated runtime smoke.
+- Already done:
+  - API auth v2 policy contract;
+  - `static-bearer` generated runtime verification;
+  - OpenAPI HTTP bearer security scheme;
+  - auth-required Swagger browser smoke;
+  - public raw OpenAPI / artifact route absence checks;
+  - legacy `ProjectToken` / body `TOKEN` marked compatibility-only;
+  - generated runtime auth policy I/F in `mtool/app/generated_runtime_auth_policy.php`;
+  - `oidc-jwt-bearer` policy shape for issuer / audience / discovery or JWKS / required claims;
+  - `sample16-authenticated-proxy` moved to static bearer as the baseline authenticated proxy sample;
+  - no additional security sample is needed for the current baseline; `sample25` / `sample26` remain ebook CMS samples with legacy ProjectToken compatibility;
+  - project metadata bundle preserves auth policy refs and rejects populated secret-like auth policy fields.
+- Bundle boundary note:
+  - project-core bundle coverage currently applies to DBAccess single-function proxy auth policy refs;
+  - custom proxy auth policy refs remain outside this bundle because `custom_proxies` is not part of the current project-core export/import scope.
+- Active generated-runtime work:
+  - none for the current baseline.
+- Later generated-runtime work:
+  - `oidc-jwt-bearer` runtime verification implementation for generated APIs.
+- Keep this separate from Mtool admin/lab authorization hardening.
 
 ## Proposal Guardrails
 
@@ -155,15 +183,16 @@ Production-like items such as editor UI, role management, revision history, uplo
 
 ## Recommended Next Order
 
-1. Start `security foundation` with security regression checks and audit log schema, not OIDC.
-   - This matches `2026-0617-enterprise-personal-feature-plan.md`.
-   - It also prepares API auth v2 and bundle/import review without coupling the first slice to an IdP.
+Current immediate follow-up: none. Security foundation, API auth v2, static bearer, SSO first slice, authorization I/F baseline, and generated runtime security baseline are complete for the current scope.
 
-2. Then implement API auth v2 policy contract.
-   - Once storage and validation are fixed, `static-bearer` is a contained follow-up.
+When choosing a future slice, prefer one of these explicit topics instead of continuing by inertia:
 
-3. Keep dialect work scoped to generated output/user DB side.
-   - Avoid reopening Mtool config store SQLite as if it were unfinished.
+1. Generated API `oidc-jwt-bearer` runtime verification, if external IdP-backed generated APIs become necessary.
+2. One narrow Mtool admin/lab route authorization cluster, if actual deployment needs broader in-tool enforcement.
+3. Custom proxy bundle/export auth policy coverage, only if `custom_proxies` becomes part of a project bundle scope.
+4. Mtool namespace migration, only as a separate post-security cleanup plan.
+
+Keep dialect work scoped to generated output/user DB side. Avoid reopening Mtool config store SQLite as if it were unfinished.
 
 ## Notes
 

@@ -46,7 +46,7 @@ This roadmap defines the user-facing tutorial lane under `sample/tutorials/`. It
 | `sample13-openapi-api-surface` | current | OpenAPI / API surface | single-function proxy target metadata から `openapi.json` を publish する最小 flow | `OPENAPI-JSON` | `make sample13-pack-runtime-test` |
 | `sample14-custom-proxy-runtime` | current | custom proxy runtime | custom proxy metadata から PHP proxy server artifact を publish する最小 flow | `CUSTOM-PROXY-SERVER` | `make sample14-pack-runtime-test` |
 | `sample15-project-metadata-export-import` | current | project metadata export / import | project-core metadata bundle を export し、preview / apply で復元する最小 flow | `PROJECT-METADATA-BUNDLE` | `make sample15-pack-runtime-test` |
-| `sample16-authenticated-proxy` | current | authenticated proxy | ProjectToken authenticated single proxy server と fail-closed behavior を確認する最小 flow | `AUTH-PROXY-SERVER` | `make sample16-pack-runtime-test` |
+| `sample16-authenticated-proxy` | current | authenticated proxy | static bearer authenticated single proxy server と fail-closed behavior を確認する最小 flow | `AUTH-PROXY-SERVER` | `make sample16-pack-runtime-test` |
 | `sample17-multi-output-project` | current | multi-output capstone | 1 project から DataClass / DBAccess / HTML / OpenAPI を publish する総合 flow | `DATACLASS-PHP`, `DBACCESS-PHP`, `HTML-PAGE`, `OPENAPI-JSON` | `make sample17-pack-runtime-test` |
 | `sample18-mini-task-board-demo` | current | instruction-driven task board demo | AI が整理した仮想 prompt から TaskCard demo を作り、CRUD DBAccess と HTML / OpenAPI を publish する。`web-lab` に sample page も持つ | `DATACLASS-PHP`, `DBACCESS-PHP`, `HTML-PAGE`, `OPENAPI-JSON` | `make sample18-pack-runtime-test` / `make sample18-http-runtime-smoke` |
 | `sample19-json-first-content-model-demo` | current | JSON-first content model demo | DB を知らないユーザーが書いた JSON を、AI が normalized DB / DBAccess metadata へ解釈する入口 sample。`sample20+` の ebook CMS lane に進む前の bridge として、MySQL / MariaDB と SQLite config store profile の両方を検証する | `DATACLASS-PHP`, `DBACCESS-PHP` | `make sample19-pack-runtime-test` / `make sample19-pack-runtime-test-sqlite` |
@@ -55,8 +55,8 @@ This roadmap defines the user-facing tutorial lane under `sample/tutorials/`. It
 | `sample22-ebook-chapter-workflow-demo` | current | ebook chapter workflow demo | ebook book に chapter workflow を足し、published chapter list/detail と editor create/update/reorder/publish API surface を publish する。EPUB は spine/nav metadata に留める | `DATACLASS-PHP`, `DBACCESS-PHP`, `OPENAPI-JSON` | `make sample22-pack-runtime-test` |
 | `sample23-ebook-media-metadata-demo` | current | ebook media metadata demo | 同梱 EPUB fixture の URL / MIME type / file size / checksum を media delivery metadata として publish する。EPUB 生成・解析・upload は扱わない | `DATACLASS-PHP`, `DBACCESS-PHP`, `OPENAPI-JSON` | `make sample23-pack-runtime-test` |
 | `sample24-ebook-public-reader-site-demo` | current | ebook public reader site demo | 公開本 / 章 / EPUB delivery metadata から HTML reader page と app 向け OpenAPI surface を publish する。EPUB は download link のみ扱う | `DATACLASS-PHP`, `DBACCESS-PHP`, `HTML-PAGE`, `OPENAPI-JSON` | `make sample24-pack-runtime-test` |
-| `sample25-ebook-editor-auth-cms-demo` | current | ebook editor auth CMS demo | 編集者向け chapter preview / draft update / publish API を ProjectToken protected proxy として publish する。full editor UI / user-role 管理 / revision history は扱わない | `DATACLASS-PHP`, `DBACCESS-PHP`, `OPENAPI-JSON`, `AUTH-PROXY-SERVER` | `make sample25-pack-runtime-test` |
-| `sample26-ebook-headless-cms-capstone` | current | ebook headless CMS capstone | public reader HTML、app OpenAPI、ProjectToken editor proxy、project metadata bundle を 1 project から publish する | `DATACLASS-PHP`, `DBACCESS-PHP`, `HTML-PAGE`, `OPENAPI-JSON`, `AUTH-PROXY-SERVER`, `PROJECT-METADATA-BUNDLE` | `make sample26-pack-runtime-test` |
+| `sample25-ebook-editor-auth-cms-demo` | current | ebook editor auth CMS demo | 編集者向け chapter preview / draft update / publish API を legacy-compatible ProjectToken protected proxy として publish する。current static bearer baseline / full editor UI / user-role 管理 / revision history は扱わない | `DATACLASS-PHP`, `DBACCESS-PHP`, `OPENAPI-JSON`, `AUTH-PROXY-SERVER` | `make sample25-pack-runtime-test` |
+| `sample26-ebook-headless-cms-capstone` | current | ebook headless CMS capstone | public reader HTML、app OpenAPI、legacy-compatible ProjectToken editor proxy、project metadata bundle を 1 project から publish する | `DATACLASS-PHP`, `DBACCESS-PHP`, `HTML-PAGE`, `OPENAPI-JSON`, `AUTH-PROXY-SERVER`, `PROJECT-METADATA-BUNDLE` | `make sample26-pack-runtime-test` |
 
 ## phase 分け
 
@@ -122,8 +122,8 @@ This roadmap defines the user-facing tutorial lane under `sample/tutorials/`. It
   - import は同じ project への preview / apply に絞り、bundle reference と runtime export の一致、復元後 metadata 件数を固定する。
   - `database_sources` sidecar / secret file と別 project key への rename import は後続 scope へ送る。
 - `sample16-authenticated-proxy`
-  - `AuthTask.GetAuthTask` を `ProjectToken` auth の `AUTH-PROXY-SERVER` に bind する current tutorial とした。
-  - generated single proxy server output の reference compare に加え、`TOKEN` missing / empty / wrong / env missing が fail-closed になり、matching token だけが通ることを検証する。
+  - `AuthTask.GetAuthTask` を `static-bearer` auth の `AUTH-PROXY-SERVER` に bind する current tutorial とした。
+  - generated single proxy server output の reference compare に加え、Authorization missing / malformed / wrong / env missing が fail-closed になり、matching bearer token だけが通ることを検証する。
   - `GetFunc` / `ProjectTokenOrGetFunc` / `LoginCookieToken` は後続 scope へ送る。
 
 ### Phase 4. Capstone
@@ -183,7 +183,8 @@ This roadmap defines the user-facing tutorial lane under `sample/tutorials/`. It
 - `sample25-ebook-editor-auth-cms-demo`
   - `sample24` の public reader surface と対になる、編集者向けの authenticated CMS API sample とした。
   - `EbookEditorBook` / `EbookEditorChapter` を使い、chapter preview、draft update、publish の最小 API に絞る。
-  - editor API は `ProjectToken` protected `AUTH-PROXY-SERVER` として publish し、missing / empty / wrong / env missing token が fail-closed になることも検証する。
+  - editor API は legacy-compatible `ProjectToken` protected `AUTH-PROXY-SERVER` として publish し、missing / empty / wrong / env missing token が fail-closed になることも検証する。
+  - current generated runtime security baseline は `sample16` の static bearer authenticated proxy に置き、`sample25` は ebook CMS lane の compatibility sample として維持する。
   - full editor UI、user / role 管理、audit log、revision history、approval workflow、EPUB generation は out of scope に送る。
 - `sample26-ebook-headless-cms-capstone`
   - `sample19-25` の到達点として、JSON-first ebook model から public site / app API / editor auth API / metadata bundle を 1 project で説明する capstone とした。

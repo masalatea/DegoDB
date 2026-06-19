@@ -68,4 +68,4 @@ make test
 
 `sample19` は JSON-first content model entrance として、MySQL / MariaDB と SQLite config store profile の両方を検証する。
 
-`sample20` からは ebook / content publishing lane に入り、runtime profile は MySQL / MariaDB canonical のみに絞る。`sample21` は ebook catalog API、`sample22` は chapter workflow、`sample23` は EPUB / media delivery metadata、`sample24` は public reader site、`sample25` は ProjectToken protected editor CMS API、`sample26` は headless CMS capstone に進める。
+`sample20` からは ebook / content publishing lane に入り、runtime profile は MySQL / MariaDB canonical のみに絞る。`sample21` は ebook catalog API、`sample22` は chapter workflow、`sample23` は EPUB / media delivery metadata、`sample24` は public reader site、`sample25` は legacy-compatible ProjectToken protected editor CMS API、`sample26` は headless CMS capstone に進める。current generated runtime security baseline は `sample16` の static bearer authenticated proxy で確認する。

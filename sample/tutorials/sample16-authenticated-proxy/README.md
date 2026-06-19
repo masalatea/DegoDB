@@ -2,7 +2,7 @@
 
 ## 役割
 
-- 役割: `ProjectToken` authenticated single proxy server artifact と fail-closed auth behavior を確認する tutorial sample pack
+- 役割: `static-bearer` authenticated single proxy server artifact と fail-closed auth behavior を確認する tutorial sample pack
 - project key: `SAMPLE16`
 - runtime root: `work/sample-packs/sample16-authenticated-proxy/`
 - reference output: `reference/AUTH-PROXY-SERVER/`
@@ -55,7 +55,8 @@ APP_CONFIG_STORE_DIR=work/config-store-sample16-sqlite \
   - `Id`, `Title`, `Status`, `OwnerName`, `UpdatedAt`
 - DBAccess metadata
   - `AuthTask.GetAuthTask`
-  - `single_proxy_auth_type=ProjectToken`
+  - `single_proxy_auth_type=StaticBearer`
+  - `auth_policy_json={"type":"static-bearer","secret_env":"DEGODB_PROXY_BEARER_TOKEN"}`
 - Source Output
   - `AUTH-PROXY-SERVER`
   - `artifact_strategy=single-proxy-server`
@@ -76,15 +77,16 @@ docker compose -f compose.yaml -f compose.local-db-config.yaml -f sample/tutoria
 
 ## Auth behavior
 
-- missing `TOKEN` fails.
-- empty `TOKEN` fails.
-- `MTOOL_PROXY_PROJECT_TOKEN` missing fails closed.
-- wrong `TOKEN` fails.
-- matching `TOKEN` passes.
+- missing `Authorization` fails.
+- malformed `Authorization` fails.
+- `DEGODB_PROXY_BEARER_TOKEN` missing fails closed.
+- wrong bearer token fails.
+- matching bearer token passes.
 
 ## Scope
 
-- `sample16` は `ProjectToken` auth の generated single proxy server に絞る。
+- `sample16` は `static-bearer` auth の generated single proxy server に絞る。
+- legacy `ProjectToken` / request body `TOKEN` は compatibility lane として残すが、この sample の主役にはしない。
 - `GetFunc` / `ProjectTokenOrGetFunc` / `LoginCookieToken` は後続 scope とする。
 - HTTP browser smoke ではなく、generated endpoint class の auth method を direct verification する。
 

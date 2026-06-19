@@ -49,6 +49,8 @@ top-level `docs/` の入口から個別 internal doc へ直接飛ぶのではな
   - 外部IdP接続、claims mapping、mock smoke、SSO完了境界
 - [Authorization Hardening Plan / 認可強化計画](authorization-hardening-plan.md)
   - SSO 完了後の route capability inventory、権限適用順、audit / smoke 方針
+- [Generated Runtime Security Plan / 生成runtimeセキュリティ計画](generated-runtime-security-plan.md)
+  - 生成proxy/API/OpenAPI/runtime artifact 側の auth policy、secret境界、smoke 方針
 - [Data Model / 最小データモデル](data-model.md)
   - canonical metadata と関連 entity の見取り図
 

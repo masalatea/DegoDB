@@ -21,7 +21,7 @@ class AuthTaskGetAuthTaskProxyHandlerBase extends MtoolGeneratedSingleProxyEndpo
 
     protected function authStrategy(): string
     {
-        return 'project-token';
+        return 'static-bearer';
     }
 
     protected function singleGetFunctionName(): string
