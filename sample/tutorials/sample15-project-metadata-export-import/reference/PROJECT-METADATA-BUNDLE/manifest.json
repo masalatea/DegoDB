@@ -3,8 +3,8 @@
     "schema_version": "2026-05-26.project-core.v2",
     "scope": "project-core",
     "source_project_key": "SAMPLE15",
-    "exported_at": "2026-06-16T13:48:58+00:00",
-    "requested_by": "sample15-reference",
+    "exported_at": "2026-06-19T21:18:19+00:00",
+    "requested_by": "phpunit",
     "target_policy": "replace-core-scope",
     "secrets_policy": "exclude-all",
     "included_sections": [
@@ -13,14 +13,14 @@
         "tables",
         "data_classes",
         "db_access",
-        "source_outputs"
+        "source_outputs",
+        "custom_proxies"
     ],
     "excluded_sections": [
         "page_security",
         "host_assignments",
         "compare_outputs",
         "compare_output_assets",
-        "custom_proxies",
         "project_html",
         "project_html_source_bindings",
         "html_templates",
@@ -44,7 +44,10 @@
         "db_access_update_delete_where_count": 0,
         "db_access_insert_target_field_count": 0,
         "db_access_update_target_field_count": 0,
-        "db_access_source_output_target_count": 0
+        "db_access_source_output_target_count": 0,
+        "custom_proxy_count": 0,
+        "custom_proxy_step_count": 0,
+        "custom_proxy_source_output_target_count": 0
     },
     "files": {
         "project": {
@@ -76,6 +79,11 @@
             "path": "source-outputs.json",
             "sha256": "e80e02b17e65fcd4e6aaeb4a9886174dc4ac346440c5285a4a40295d8a4f784d",
             "bytes": 1110
+        },
+        "custom_proxies": {
+            "path": "custom-proxies.json",
+            "sha256": "0257cb2e2bb6871ff7fd49a36b68ca65a3385683ced2003c826b44c24d2a12c1",
+            "bytes": 29
         }
     }
 }

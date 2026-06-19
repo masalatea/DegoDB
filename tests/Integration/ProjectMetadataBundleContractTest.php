@@ -385,6 +385,15 @@ final class ProjectMetadataBundleContractTest extends TestCase
             2,
             '{"type":"static-bearer","secret_env":"DEGODB_PROXY_BEARER_TOKEN"}',
         );
+        $this->seedCustomProxyFixture($app, $projectKey);
+        $this->setCustomProxyAuthPolicy(
+            $app,
+            $projectKey,
+            'BUNDLE-CUSTOM',
+            'StaticBearer',
+            2,
+            '{"type":"static-bearer","secret_env":"DEGODB_CUSTOM_PROXY_BEARER_TOKEN"}',
+        );
 
         $bundleRoot = sys_get_temp_dir() . '/mtool-project-metadata-auth-policy-bundle-' . bin2hex(random_bytes(6));
         $this->cleanupPaths[] = $bundleRoot;
@@ -402,6 +411,15 @@ final class ProjectMetadataBundleContractTest extends TestCase
             '{"type":"static-bearer","secret_env":"DEGODB_PROXY_BEARER_TOKEN"}',
             $insertFunction['auth_policy_json'] ?? '',
         );
+        $customProxy = $this->bundleCustomProxyByKey($exportResult['sections'], 'BUNDLE-CUSTOM');
+        self::assertSame('StaticBearer', $customProxy['auth_type'] ?? '');
+        self::assertSame('2', $customProxy['auth_policy_version'] ?? '');
+        self::assertSame(
+            '{"type":"static-bearer","secret_env":"DEGODB_CUSTOM_PROXY_BEARER_TOKEN"}',
+            $customProxy['auth_policy_json'] ?? '',
+        );
+        self::assertSame(['CUSTOM-PROXY-BUNDLE'], $customProxy['source_output_keys'] ?? []);
+        self::assertCount(1, $customProxy['steps'] ?? []);
         self::assertStringNotContainsString('sample-secret-value', app_project_metadata_bundle_json_encode($exportResult['sections']));
 
         $this->setDbAccessFunctionAuthPolicy(
@@ -413,6 +431,7 @@ final class ProjectMetadataBundleContractTest extends TestCase
             1,
             '',
         );
+        $this->setCustomProxyAuthPolicy($app, $projectKey, 'BUNDLE-CUSTOM', 'NoSecurity', 1, '');
 
         $applyResult = app_project_metadata_bundle_import_apply($app, $bundleRoot, [
             'requested_by' => 'phpunit',
@@ -431,6 +450,20 @@ final class ProjectMetadataBundleContractTest extends TestCase
             '{"type":"static-bearer","secret_env":"DEGODB_PROXY_BEARER_TOKEN"}',
             (string) ($importedFunction['item']['auth_policy_json'] ?? ''),
         );
+        $importedCustomProxy = app_pdo_fetch_project_custom_proxy_item($app, $projectKey, 'BUNDLE-CUSTOM');
+        self::assertTrue($importedCustomProxy['ok'], $importedCustomProxy['error']);
+        self::assertIsArray($importedCustomProxy['item']);
+        self::assertSame('2', (string) ($importedCustomProxy['item']['auth_policy_version'] ?? ''));
+        self::assertSame(
+            '{"type":"static-bearer","secret_env":"DEGODB_CUSTOM_PROXY_BEARER_TOKEN"}',
+            (string) ($importedCustomProxy['item']['auth_policy_json'] ?? ''),
+        );
+        $importedTargetKeys = app_pdo_fetch_project_custom_proxy_target_keys($app, $projectKey, 'BUNDLE-CUSTOM');
+        self::assertTrue($importedTargetKeys['ok'], $importedTargetKeys['error']);
+        self::assertSame(['CUSTOM-PROXY-BUNDLE'], $importedTargetKeys['items']);
+        $importedSteps = app_pdo_fetch_project_custom_proxy_step_catalog($app, $projectKey, 'BUNDLE-CUSTOM');
+        self::assertTrue($importedSteps['ok'], $importedSteps['error']);
+        self::assertCount(1, $importedSteps['items']);
 
         $dbAccessPath = $bundleRoot . '/db-access.json';
         $dbAccessJson = json_decode((string) file_get_contents($dbAccessPath), true);
@@ -451,6 +484,33 @@ final class ProjectMetadataBundleContractTest extends TestCase
         ]);
         self::assertFalse($previewResult['ok']);
         self::assertStringContainsString('secret 値を保存できません', $previewResult['error']);
+
+        $dbAccessJson['classes'][0]['functions'][1]['auth_policy_json'] =
+            '{"type":"static-bearer","secret_env":"DEGODB_PROXY_BEARER_TOKEN"}';
+        $dbAccessContents = app_project_metadata_bundle_json_encode($dbAccessJson);
+        app_project_metadata_bundle_write_text($dbAccessPath, $dbAccessContents);
+        $customProxyPath = $bundleRoot . '/custom-proxies.json';
+        $customProxyJson = json_decode((string) file_get_contents($customProxyPath), true);
+        self::assertIsArray($customProxyJson);
+        $customProxyJson['custom_proxies'][0]['auth_policy_json'] =
+            '{"type":"static-bearer","secret_env":"DEGODB_CUSTOM_PROXY_BEARER_TOKEN","token":"sample-secret-value"}';
+        $customProxyContents = app_project_metadata_bundle_json_encode($customProxyJson);
+        app_project_metadata_bundle_write_text($customProxyPath, $customProxyContents);
+
+        $manifestJson = json_decode((string) file_get_contents($manifestPath), true);
+        self::assertIsArray($manifestJson);
+        $manifestJson['files']['db_access']['sha256'] = hash('sha256', $dbAccessContents);
+        $manifestJson['files']['db_access']['bytes'] = strlen($dbAccessContents);
+        $manifestJson['files']['custom_proxies']['sha256'] = hash('sha256', $customProxyContents);
+        $manifestJson['files']['custom_proxies']['bytes'] = strlen($customProxyContents);
+        app_project_metadata_bundle_write_text($manifestPath, app_project_metadata_bundle_json_encode($manifestJson));
+
+        $customProxyPreviewResult = app_project_metadata_bundle_import_preview($app, $bundleRoot, [
+            'requested_by' => 'phpunit',
+        ]);
+        self::assertFalse($customProxyPreviewResult['ok']);
+        self::assertStringContainsString('custom_proxies auth_policy_json が不正です', $customProxyPreviewResult['error']);
+        self::assertStringContainsString('secret 値を保存できません', $customProxyPreviewResult['error']);
     }
 
     private function seedProjectCoreFixture(array $app, string $projectKey): void
@@ -867,7 +927,66 @@ final class ProjectMetadataBundleContractTest extends TestCase
                 'notes' => 'bundle fixture proxy',
                 'source_of_truth' => 'manual',
             ],
+            [
+                'project_key' => $projectKey,
+                'source_output_key' => 'CUSTOM-PROXY-BUNDLE',
+                'name' => 'Custom Proxy Bundle',
+                'program_language' => 'php',
+                'class_type' => 'CustomProxy',
+                'release_target_type' => 'Release',
+                'source_template_dir' => '',
+                'source_output_dir' => 'work/source-outputs/' . $projectKey . '/CUSTOM-PROXY-BUNDLE',
+                'source_temp_output_dir' => 'work/source-outputs/' . $projectKey . '/CUSTOM-PROXY-BUNDLE/tmp',
+                'proxy_base_url' => 'http://127.0.0.1:18092/runs/proxy/' . $projectKey . '/CUSTOM-PROXY-BUNDLE',
+                'autoload_filename_suffix' => '',
+                'source_text_char_code' => 'UTF-8',
+                'runtime_source_relative_path' => 'mtool/custom-proxy/' . $projectKey . '/CUSTOM-PROXY-BUNDLE',
+                'artifact_strategy' => 'custom-proxy-server',
+                'target_binding_type' => 'custom-proxy',
+                'spec_visibility' => 'internal-only',
+                'output_archive_format' => 'tar.gz',
+                'source_output_list_order' => '30',
+                'notes' => 'bundle fixture custom proxy',
+                'source_of_truth' => 'manual',
+            ],
         ];
+    }
+
+    private function seedCustomProxyFixture(array $app, string $projectKey): void
+    {
+        $createProxy = app_pdo_create_project_custom_proxy($app, [
+            'project_key' => $projectKey,
+            'custom_proxy_key' => 'BUNDLE-CUSTOM',
+            'basename' => 'Bundle',
+            'name' => 'Custom',
+            'in_transaction' => '0',
+            'auth_type' => 'NoSecurity',
+            'single_get_function_name' => '',
+            'continue_even_if_failed_to_insert' => '0',
+            'notes' => 'bundle fixture custom proxy',
+            'source_of_truth' => 'manual',
+        ]);
+        self::assertTrue($createProxy['ok'], $createProxy['error']);
+
+        $replaceTargets = app_pdo_replace_project_custom_proxy_target_keys(
+            $app,
+            $projectKey,
+            'BUNDLE-CUSTOM',
+            ['CUSTOM-PROXY-BUNDLE'],
+        );
+        self::assertTrue($replaceTargets['ok'], $replaceTargets['error']);
+
+        $createStep = app_pdo_create_project_custom_proxy_step($app, [
+            'project_key' => $projectKey,
+            'custom_proxy_key' => 'BUNDLE-CUSTOM',
+            'db_access_source_name' => 'bundle_articles',
+            'db_access_function_name' => 'Getbundle_articlesList',
+            'is_list' => '1',
+            'step_order' => '10',
+            'notes' => 'bundle fixture custom proxy step',
+            'source_of_truth' => 'manual',
+        ]);
+        self::assertTrue($createStep['ok'], $createStep['error']);
     }
 
     private function seedDatabaseSourceFixture(array $app, string $sourceKey, string $password): void
@@ -992,6 +1111,47 @@ final class ProjectMetadataBundleContractTest extends TestCase
         self::assertSame(1, $update->rowCount());
     }
 
+    private function setCustomProxyAuthPolicy(
+        array $app,
+        string $projectKey,
+        string $customProxyKey,
+        string $authType,
+        int $authPolicyVersion,
+        string $authPolicyJson,
+    ): void {
+        $pdo = app_create_config_pdo($app);
+        $select = $pdo->prepare(
+            'SELECT cp.id
+             FROM project_custom_proxies AS cp
+             INNER JOIN projects AS p ON p.id = cp.project_id
+             WHERE p.project_key = :project_key
+               AND cp.custom_proxy_key = :custom_proxy_key
+             LIMIT 1'
+        );
+        $select->execute([
+            ':project_key' => $projectKey,
+            ':custom_proxy_key' => $customProxyKey,
+        ]);
+        $row = $select->fetch(PDO::FETCH_ASSOC);
+        self::assertIsArray($row);
+
+        $update = $pdo->prepare(
+            'UPDATE project_custom_proxies
+             SET auth_type = :auth_type,
+                 auth_policy_version = :auth_policy_version,
+                 auth_policy_json = :auth_policy_json
+             WHERE id = :id'
+        );
+        $update->execute([
+            ':auth_type' => $authType,
+            ':auth_policy_version' => $authPolicyVersion,
+            ':auth_policy_json' => $authPolicyJson,
+            ':id' => (int) ($row['id'] ?? 0),
+        ]);
+
+        self::assertSame(1, $update->rowCount());
+    }
+
     /**
      * @param array<string,mixed> $sections
      * @return array<string,mixed>
@@ -1015,6 +1175,23 @@ final class ProjectMetadataBundleContractTest extends TestCase
         }
 
         self::fail('bundle function not found: ' . $sourceName . '.' . $functionName);
+    }
+
+    /**
+     * @param array<string,mixed> $sections
+     * @return array<string,mixed>
+     */
+    private function bundleCustomProxyByKey(array $sections, string $customProxyKey): array
+    {
+        $customProxies = $sections['custom_proxies']['custom_proxies'] ?? [];
+        self::assertIsArray($customProxies);
+        foreach ($customProxies as $customProxy) {
+            if (is_array($customProxy) && (string) ($customProxy['custom_proxy_key'] ?? '') === $customProxyKey) {
+                return $customProxy;
+            }
+        }
+
+        self::fail('bundle custom proxy not found: ' . $customProxyKey);
     }
 
     private function setEnv(string $key, string $value): void

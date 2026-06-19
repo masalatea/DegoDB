@@ -6,6 +6,7 @@ require_once __DIR__ . '/database.php';
 require_once __DIR__ . '/database_source_repository.php';
 require_once __DIR__ . '/domain_validation.php';
 require_once __DIR__ . '/generated_runtime_auth_policy.php';
+require_once __DIR__ . '/custom_proxy_repository_pdo.php';
 require_once __DIR__ . '/project_repository.php';
 require_once __DIR__ . '/project_membership_repository.php';
 require_once __DIR__ . '/table_metadata_repository.php';
@@ -59,6 +60,7 @@ function app_project_metadata_bundle_included_sections(string $scope = ''): arra
             'data_classes',
             'db_access',
             'source_outputs',
+            'custom_proxies',
         ],
         default => [],
     };
@@ -80,7 +82,6 @@ function app_project_metadata_bundle_excluded_sections(string $scope = ''): arra
             'host_assignments',
             'compare_outputs',
             'compare_output_assets',
-            'custom_proxies',
             'project_html',
             'project_html_source_bindings',
             'html_templates',
@@ -116,6 +117,7 @@ function app_project_metadata_bundle_section_filename_map(): array
         'data_classes' => 'data-classes.json',
         'db_access' => 'db-access.json',
         'source_outputs' => 'source-outputs.json',
+        'custom_proxies' => 'custom-proxies.json',
     ];
 }
 
@@ -1009,6 +1011,7 @@ function app_project_metadata_bundle_validate_sections(
     }
 
     $classNames = [];
+    $dbAccessFunctionKeys = [];
     foreach ($dbAccessClasses as $classItem) {
         if (!is_array($classItem)) {
             continue;
@@ -1050,6 +1053,7 @@ function app_project_metadata_bundle_validate_sections(
                 continue;
             }
             $functionNames[$functionKey] = true;
+            $dbAccessFunctionKeys[strtolower($sourceName) . "\n" . strtolower($functionName)] = true;
 
             $blobConstraintError = app_pdo_validate_db_access_function_blob_target_constraint(
                 $app,
@@ -1164,6 +1168,89 @@ function app_project_metadata_bundle_validate_sections(
                 if ($rightKey !== '' && !isset($targetFieldKeys[$rightKey])) {
                     $errors[] = 'select_having.right_target_field_key が見つかりません: '
                         . $sourceName . '.' . $functionName . ' -> ' . $rightKey;
+                }
+            }
+        }
+    }
+
+    if (array_key_exists('custom_proxies', $sections)) {
+        $customProxies = $sections['custom_proxies']['custom_proxies'] ?? null;
+        if (!is_array($customProxies)) {
+            $errors[] = 'custom_proxies section が不正です。';
+            $customProxies = [];
+        }
+
+        $customProxyKeys = [];
+        foreach ($customProxies as $customProxy) {
+            if (!is_array($customProxy)) {
+                continue;
+            }
+
+            $customProxyKey = app_normalize_custom_proxy_key((string) ($customProxy['custom_proxy_key'] ?? ''));
+            if ($customProxyKey === '' || !app_custom_proxy_key_is_valid($customProxyKey)) {
+                $errors[] = 'custom_proxies.custom_proxy_key が不正です。';
+                continue;
+            }
+            if (isset($customProxyKeys[$customProxyKey])) {
+                $errors[] = 'custom_proxies.custom_proxy_key が重複しています: ' . $customProxyKey;
+                continue;
+            }
+            $customProxyKeys[$customProxyKey] = true;
+
+            foreach (['basename', 'name'] as $fieldName) {
+                if (trim((string) ($customProxy[$fieldName] ?? '')) === '') {
+                    $errors[] = 'custom_proxies.' . $fieldName . ' が空です: ' . $customProxyKey;
+                }
+            }
+
+            $authPolicyVersion = (int) ((string) ($customProxy['auth_policy_version'] ?? '1'));
+            $authPolicyJson = (string) ($customProxy['auth_policy_json'] ?? '');
+            if ($authPolicyVersion > 1 || trim($authPolicyJson) !== '') {
+                $authPolicy = app_generated_runtime_auth_policy_validate_json($authPolicyVersion, $authPolicyJson);
+                if (!$authPolicy['is_valid']) {
+                    $errors[] = 'custom_proxies auth_policy_json が不正です: '
+                        . $customProxyKey . ' -> ' . implode(' / ', $authPolicy['notes']);
+                }
+            }
+
+            $targetKeys = is_array($customProxy['source_output_keys'] ?? null)
+                ? $customProxy['source_output_keys']
+                : [];
+            foreach ($targetKeys as $targetKey) {
+                if (!is_string($targetKey) || !isset($sourceOutputKeys[$targetKey])) {
+                    $errors[] = 'custom_proxies target source_output_key が bundle に存在しません: '
+                        . $customProxyKey . ' -> ' . (string) $targetKey;
+                }
+            }
+
+            $steps = is_array($customProxy['steps'] ?? null) ? $customProxy['steps'] : [];
+            if ($steps === []) {
+                $warnings[] = 'custom_proxies に step がありません: ' . $customProxyKey;
+            }
+
+            $stepKeys = [];
+            foreach ($steps as $step) {
+                if (!is_array($step)) {
+                    continue;
+                }
+
+                $sourceName = trim((string) ($step['db_access_source_name'] ?? ''));
+                $functionName = trim((string) ($step['db_access_function_name'] ?? ''));
+                $stepKey = strtolower($sourceName) . "\n" . strtolower($functionName);
+                if ($sourceName === '' || $functionName === '') {
+                    $errors[] = 'custom_proxy step の db_access_source_name/function_name が空です: '
+                        . $customProxyKey;
+                    continue;
+                }
+                if (isset($stepKeys[$stepKey])) {
+                    $warnings[] = 'custom_proxy step が同じ DBAccess function を複数回参照しています: '
+                        . $customProxyKey . ' -> ' . $sourceName . '.' . $functionName;
+                }
+                $stepKeys[$stepKey] = true;
+
+                if (!isset($dbAccessFunctionKeys[$stepKey])) {
+                    $errors[] = 'custom_proxy step の DBAccess function が bundle に存在しません: '
+                        . $customProxyKey . ' -> ' . $sourceName . '.' . $functionName;
                 }
             }
         }
@@ -1570,6 +1657,16 @@ function app_project_metadata_bundle_collect_core_snapshot(
         ];
     }
 
+    $customProxyResult = app_project_metadata_bundle_collect_custom_proxy_snapshot($app, $projectKey);
+    if (!$customProxyResult['ok']) {
+        return [
+            'ok' => false,
+            'sections' => [],
+            'summary' => [],
+            'error' => $customProxyResult['error'],
+        ];
+    }
+
     $projectItem = $projectResult['item'];
     $sections = [
         'project' => [
@@ -1600,6 +1697,7 @@ function app_project_metadata_bundle_collect_core_snapshot(
                 $sourceOutputResult['items'],
             ),
         ],
+        'custom_proxies' => $customProxyResult['snapshot'],
     ];
 
     $selectedDatabaseSourceKeysResult = app_project_metadata_bundle_parse_database_source_keys(
@@ -1649,6 +1747,93 @@ function app_project_metadata_bundle_collect_core_snapshot(
         'ok' => true,
         'sections' => $sections,
         'summary' => app_project_metadata_bundle_summary_from_sections($sections),
+        'error' => '',
+    ];
+}
+
+/**
+ * @return array{
+ *     ok:bool,
+ *     snapshot:array{custom_proxies:list<array<string,mixed>>},
+ *     error:string
+ * }
+ */
+function app_project_metadata_bundle_collect_custom_proxy_snapshot(array $app, string $projectKey): array
+{
+    $catalogResult = app_pdo_fetch_project_custom_proxy_catalog($app, $projectKey);
+    if (!$catalogResult['ok']) {
+        return [
+            'ok' => false,
+            'snapshot' => ['custom_proxies' => []],
+            'error' => $catalogResult['error'],
+        ];
+    }
+
+    $customProxies = [];
+    foreach ($catalogResult['items'] as $customProxy) {
+        if (!is_array($customProxy)) {
+            continue;
+        }
+
+        $customProxyKey = app_normalize_custom_proxy_key((string) ($customProxy['custom_proxy_key'] ?? ''));
+        if ($customProxyKey === '') {
+            continue;
+        }
+
+        $stepResult = app_pdo_fetch_project_custom_proxy_step_catalog($app, $projectKey, $customProxyKey);
+        if (!$stepResult['ok']) {
+            return [
+                'ok' => false,
+                'snapshot' => ['custom_proxies' => []],
+                'error' => $stepResult['error'],
+            ];
+        }
+
+        $targetResult = app_pdo_fetch_project_custom_proxy_target_keys($app, $projectKey, $customProxyKey);
+        if (!$targetResult['ok']) {
+            return [
+                'ok' => false,
+                'snapshot' => ['custom_proxies' => []],
+                'error' => $targetResult['error'],
+            ];
+        }
+
+        $steps = [];
+        foreach ($stepResult['items'] as $step) {
+            if (!is_array($step)) {
+                continue;
+            }
+
+            $steps[] = [
+                'db_access_source_name' => (string) ($step['db_access_source_name'] ?? ''),
+                'db_access_function_name' => (string) ($step['db_access_function_name'] ?? ''),
+                'is_list' => (string) ($step['is_list'] ?? '0'),
+                'step_order' => (string) ($step['step_order'] ?? '100'),
+                'notes' => (string) ($step['notes'] ?? ''),
+                'source_of_truth' => (string) ($step['source_of_truth'] ?? ''),
+            ];
+        }
+
+        $customProxies[] = [
+            'custom_proxy_key' => $customProxyKey,
+            'basename' => (string) ($customProxy['basename'] ?? ''),
+            'name' => (string) ($customProxy['name'] ?? ''),
+            'in_transaction' => (string) ($customProxy['in_transaction'] ?? '0'),
+            'auth_type' => (string) ($customProxy['auth_type'] ?? ''),
+            'single_get_function_name' => (string) ($customProxy['single_get_function_name'] ?? ''),
+            'auth_policy_version' => (string) ((int) ($customProxy['auth_policy_version'] ?? 1)),
+            'auth_policy_json' => (string) ($customProxy['auth_policy_json'] ?? ''),
+            'continue_even_if_failed_to_insert' => (string) ($customProxy['continue_even_if_failed_to_insert'] ?? '0'),
+            'notes' => (string) ($customProxy['notes'] ?? ''),
+            'source_of_truth' => (string) ($customProxy['source_of_truth'] ?? ''),
+            'source_output_keys' => array_values($targetResult['items']),
+            'steps' => $steps,
+        ];
+    }
+
+    return [
+        'ok' => true,
+        'snapshot' => ['custom_proxies' => $customProxies],
         'error' => '',
     ];
 }
@@ -2160,6 +2345,9 @@ function app_project_metadata_bundle_summary_from_sections(array $sections): arr
     $dbAccessClasses = is_array($sections['db_access']['classes'] ?? null)
         ? $sections['db_access']['classes']
         : [];
+    $customProxies = is_array($sections['custom_proxies']['custom_proxies'] ?? null)
+        ? $sections['custom_proxies']['custom_proxies']
+        : [];
 
     $tableColumnCount = 0;
     foreach ($tables as $table) {
@@ -2216,6 +2404,19 @@ function app_project_metadata_bundle_summary_from_sections(array $sections): arr
         }
     }
 
+    $customProxyStepCount = 0;
+    $customProxySourceOutputTargetCount = 0;
+    foreach ($customProxies as $customProxy) {
+        if (!is_array($customProxy)) {
+            continue;
+        }
+
+        $customProxyStepCount += count(is_array($customProxy['steps'] ?? null) ? $customProxy['steps'] : []);
+        $customProxySourceOutputTargetCount += count(
+            is_array($customProxy['source_output_keys'] ?? null) ? $customProxy['source_output_keys'] : []
+        );
+    }
+
     return [
         'project_count' => 1,
         'membership_user_count' => 1 + count($members),
@@ -2235,6 +2436,9 @@ function app_project_metadata_bundle_summary_from_sections(array $sections): arr
         'db_access_insert_target_field_count' => $insertTargetFieldCount,
         'db_access_update_target_field_count' => $updateTargetFieldCount,
         'db_access_source_output_target_count' => $sourceOutputTargetCount,
+        'custom_proxy_count' => count($customProxies),
+        'custom_proxy_step_count' => $customProxyStepCount,
+        'custom_proxy_source_output_target_count' => $customProxySourceOutputTargetCount,
     ];
 }
 
@@ -2281,9 +2485,6 @@ function app_project_metadata_bundle_empty_excluded_counts(string $scope): array
         'host_assignments' => 0,
         'compare_outputs' => 0,
         'compare_output_additional_paths' => 0,
-        'custom_proxies' => 0,
-        'custom_proxy_steps' => 0,
-        'custom_proxy_source_output_targets' => 0,
         'project_html_source_bindings' => 0,
         'project_html_definitions' => 0,
         'project_html_parameters' => 0,
@@ -2323,23 +2524,6 @@ function app_project_metadata_bundle_excluded_section_counts(PDO $pdo, int $proj
              INNER JOIN project_compare_outputs AS output
                  ON output.id = path.compare_output_id
              WHERE output.project_id = :project_id',
-        ],
-        'custom_proxies' => [
-            'SELECT COUNT(*) FROM project_custom_proxies WHERE project_id = :project_id',
-        ],
-        'custom_proxy_steps' => [
-            'SELECT COUNT(*)
-             FROM project_custom_proxy_steps AS step
-             INNER JOIN project_custom_proxies AS proxy
-                 ON proxy.id = step.custom_proxy_id
-             WHERE proxy.project_id = :project_id',
-        ],
-        'custom_proxy_source_output_targets' => [
-            'SELECT COUNT(*)
-             FROM project_custom_proxy_source_output_targets AS target
-             INNER JOIN project_custom_proxies AS proxy
-                 ON proxy.id = target.custom_proxy_id
-             WHERE proxy.project_id = :project_id',
         ],
         'project_html_source_bindings' => [
             'SELECT COUNT(*) FROM project_html_source_bindings WHERE project_id = :project_id',
@@ -2404,10 +2588,12 @@ function app_project_metadata_bundle_apply_core_sections(
     $dataClassesSection = is_array($sections['data_classes'] ?? null) ? $sections['data_classes'] : [];
     $sourceOutputsSection = is_array($sections['source_outputs'] ?? null) ? $sections['source_outputs'] : [];
     $dbAccessSection = is_array($sections['db_access'] ?? null) ? $sections['db_access'] : [];
+    $customProxiesSection = is_array($sections['custom_proxies'] ?? null) ? $sections['custom_proxies'] : [];
+    $hasCustomProxiesSection = array_key_exists('custom_proxies', $sections);
 
     $projectId = app_project_metadata_bundle_upsert_project($pdo, $projectSection, $targetProjectKey);
     app_project_metadata_bundle_replace_memberships($pdo, $projectId, $projectSection, $membershipsSection);
-    app_project_metadata_bundle_delete_core_scope_rows($pdo, $projectId);
+    app_project_metadata_bundle_delete_core_scope_rows($pdo, $projectId, $hasCustomProxiesSection);
 
     app_project_metadata_bundle_insert_tables(
         $pdo,
@@ -2430,6 +2616,14 @@ function app_project_metadata_bundle_apply_core_sections(
         is_array($dbAccessSection['classes'] ?? null) ? $dbAccessSection['classes'] : [],
         $sourceOutputKeys,
     );
+    if ($hasCustomProxiesSection) {
+        app_project_metadata_bundle_insert_custom_proxies(
+            $pdo,
+            $projectId,
+            is_array($customProxiesSection['custom_proxies'] ?? null) ? $customProxiesSection['custom_proxies'] : [],
+            $sourceOutputKeys,
+        );
+    }
     app_project_metadata_bundle_upsert_database_sources(
         $pdo,
         is_array($databaseSourcesSection['database_sources'] ?? null)
@@ -2706,16 +2900,19 @@ function app_project_metadata_bundle_upsert_database_sources(
     }
 }
 
-function app_project_metadata_bundle_delete_core_scope_rows(PDO $pdo, int $projectId): void
+function app_project_metadata_bundle_delete_core_scope_rows(PDO $pdo, int $projectId, bool $includeCustomProxies): void
 {
-    foreach (
-        [
-            'project_db_access_classes' => 'project_id',
-            'project_source_outputs' => 'project_id',
-            'dataclass' => 'ProjectPID',
-            'dbtable' => 'ProjectPID',
-        ] as $tableName => $projectColumn
-    ) {
+    $tables = [
+        'project_db_access_classes' => 'project_id',
+        'project_source_outputs' => 'project_id',
+        'dataclass' => 'ProjectPID',
+        'dbtable' => 'ProjectPID',
+    ];
+    if ($includeCustomProxies) {
+        $tables = ['project_custom_proxies' => 'project_id'] + $tables;
+    }
+
+    foreach ($tables as $tableName => $projectColumn) {
         $statement = $pdo->prepare(
             'DELETE FROM ' . $tableName . '
              WHERE ' . $projectColumn . ' = :project_id'
@@ -3389,6 +3586,132 @@ function app_project_metadata_bundle_insert_db_access(
                     ':source_of_truth' => (string) ($fieldItem['source_of_truth'] ?? 'manual'),
                 ]);
             }
+        }
+    }
+}
+
+/**
+ * @param list<array<string,mixed>> $customProxies
+ * @param array<string,bool> $sourceOutputKeys
+ */
+function app_project_metadata_bundle_insert_custom_proxies(
+    PDO $pdo,
+    int $projectId,
+    array $customProxies,
+    array $sourceOutputKeys,
+): void {
+    $customProxyStatement = $pdo->prepare(
+        'INSERT INTO project_custom_proxies (
+            project_id,
+            custom_proxy_key,
+            basename,
+            name,
+            in_transaction,
+            auth_type,
+            single_get_function_name,
+            auth_policy_version,
+            auth_policy_json,
+            continue_even_if_failed_to_insert,
+            notes,
+            source_of_truth
+        ) VALUES (
+            :project_id,
+            :custom_proxy_key,
+            :basename,
+            :name,
+            :in_transaction,
+            :auth_type,
+            :single_get_function_name,
+            :auth_policy_version,
+            :auth_policy_json,
+            :continue_even_if_failed_to_insert,
+            :notes,
+            :source_of_truth
+        )'
+    );
+    $targetStatement = $pdo->prepare(
+        'INSERT INTO project_custom_proxy_source_output_targets (
+            custom_proxy_id,
+            source_output_key
+        ) VALUES (
+            :custom_proxy_id,
+            :source_output_key
+        )'
+    );
+    $stepStatement = $pdo->prepare(
+        'INSERT INTO project_custom_proxy_steps (
+            custom_proxy_id,
+            db_access_source_name,
+            db_access_function_name,
+            is_list,
+            step_order,
+            notes,
+            source_of_truth
+        ) VALUES (
+            :custom_proxy_id,
+            :db_access_source_name,
+            :db_access_function_name,
+            :is_list,
+            :step_order,
+            :notes,
+            :source_of_truth
+        )'
+    );
+
+    foreach ($customProxies as $customProxy) {
+        if (!is_array($customProxy)) {
+            continue;
+        }
+
+        $customProxyKey = app_normalize_custom_proxy_key((string) ($customProxy['custom_proxy_key'] ?? ''));
+        if ($customProxyKey === '') {
+            continue;
+        }
+
+        $customProxyStatement->execute([
+            ':project_id' => $projectId,
+            ':custom_proxy_key' => $customProxyKey,
+            ':basename' => (string) ($customProxy['basename'] ?? ''),
+            ':name' => (string) ($customProxy['name'] ?? ''),
+            ':in_transaction' => ((string) ($customProxy['in_transaction'] ?? '0')) === '1' ? 1 : 0,
+            ':auth_type' => (string) ($customProxy['auth_type'] ?? ''),
+            ':single_get_function_name' => (string) ($customProxy['single_get_function_name'] ?? ''),
+            ':auth_policy_version' => (int) ((string) ($customProxy['auth_policy_version'] ?? '1')),
+            ':auth_policy_json' => (string) ($customProxy['auth_policy_json'] ?? ''),
+            ':continue_even_if_failed_to_insert' => ((string) ($customProxy['continue_even_if_failed_to_insert'] ?? '0')) === '1' ? 1 : 0,
+            ':notes' => (string) ($customProxy['notes'] ?? ''),
+            ':source_of_truth' => (string) ($customProxy['source_of_truth'] ?? 'manual'),
+        ]);
+        $customProxyId = (int) $pdo->lastInsertId();
+
+        foreach ($customProxy['source_output_keys'] ?? [] as $sourceOutputKey) {
+            if (!is_string($sourceOutputKey) || !isset($sourceOutputKeys[$sourceOutputKey])) {
+                throw new RuntimeException(
+                    'bundle 内に存在しない source_output_key を custom proxy target へ import できません: '
+                    . $customProxyKey . ' -> ' . (string) $sourceOutputKey
+                );
+            }
+
+            $targetStatement->execute([
+                ':custom_proxy_id' => $customProxyId,
+                ':source_output_key' => $sourceOutputKey,
+            ]);
+        }
+
+        foreach ($customProxy['steps'] ?? [] as $step) {
+            if (!is_array($step)) {
+                continue;
+            }
+
+            $stepStatement->execute([
+                ':custom_proxy_id' => $customProxyId,
+                ':db_access_source_name' => (string) ($step['db_access_source_name'] ?? ''),
+                ':db_access_function_name' => (string) ($step['db_access_function_name'] ?? ''),
+                ':is_list' => ((string) ($step['is_list'] ?? '0')) === '1' ? 1 : 0,
+                ':step_order' => (int) ((string) ($step['step_order'] ?? '100')),
+                ':notes' => (string) ($step['notes'] ?? ''),
+                ':source_of_truth' => (string) ($step['source_of_truth'] ?? 'manual'),
+            ]);
         }
     }
 }

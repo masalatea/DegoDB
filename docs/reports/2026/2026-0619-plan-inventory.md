@@ -185,12 +185,15 @@ Production-like items such as editor UI, role management, revision history, uplo
 
 Current immediate follow-up: none. Security foundation, API auth v2, static bearer, SSO first slice, authorization I/F baseline, and generated runtime security baseline are complete for the current scope.
 
-When choosing a future slice, prefer one of these explicit topics instead of continuing by inertia:
+2026-06-20 update: the current post-security priority order is now tracked in [2026-0620-post-security-feature-priority-plan.md](2026-0620-post-security-feature-priority-plan.md).
 
-1. Generated API `oidc-jwt-bearer` runtime verification, if external IdP-backed generated APIs become necessary.
-2. One narrow Mtool admin/lab route authorization cluster, if actual deployment needs broader in-tool enforcement.
-3. Custom proxy bundle/export auth policy coverage, only if `custom_proxies` becomes part of a project bundle scope.
-4. Mtool namespace migration, only as a separate post-security cleanup plan.
+Current order:
+
+1. Custom proxy metadata bundle coverage. Done in first slice on 2026-06-20.
+2. Generated API `oidc-jwt-bearer` runtime verification.
+3. PostgreSQL output support for user DB / generated output.
+4. Mtool namespace migration.
+5. Mtool admin/lab route authorization hardening re-planning gate. Do not proceed into implementation automatically after namespace migration; re-estimate and re-prioritize first.
 
 Keep dialect work scoped to generated output/user DB side. Avoid reopening Mtool config store SQLite as if it were unfinished.
 

@@ -3,7 +3,7 @@
     "schema_version": "2026-05-26.project-core.v2",
     "scope": "project-core",
     "source_project_key": "SAMPLE26",
-    "exported_at": "2026-06-19T07:51:34+00:00",
+    "exported_at": "2026-06-19T21:19:42+00:00",
     "requested_by": "phpunit-sample26",
     "target_policy": "replace-core-scope",
     "secrets_policy": "exclude-all",
@@ -13,14 +13,14 @@
         "tables",
         "data_classes",
         "db_access",
-        "source_outputs"
+        "source_outputs",
+        "custom_proxies"
     ],
     "excluded_sections": [
         "page_security",
         "host_assignments",
         "compare_outputs",
         "compare_output_assets",
-        "custom_proxies",
         "project_html",
         "project_html_source_bindings",
         "html_templates",
@@ -44,7 +44,10 @@
         "db_access_update_delete_where_count": 2,
         "db_access_insert_target_field_count": 0,
         "db_access_update_target_field_count": 8,
-        "db_access_source_output_target_count": 11
+        "db_access_source_output_target_count": 11,
+        "custom_proxy_count": 0,
+        "custom_proxy_step_count": 0,
+        "custom_proxy_source_output_target_count": 0
     },
     "files": {
         "project": {
@@ -69,13 +72,18 @@
         },
         "db_access": {
             "path": "db-access.json",
-            "sha256": "d7cd8d9802d46e535e7f07579b4a83dd1d1a2cd4dcb0add22a9a580469f2f8a0",
-            "bytes": 53561
+            "sha256": "716a2c95d392816c2b6690e3db02da83a2028d5d884cc4184938ec5569683f90",
+            "bytes": 54297
         },
         "source_outputs": {
             "path": "source-outputs.json",
             "sha256": "056398e0a53bf8e73a1be894e3346812abae927d6c277e49416439f89ec72906",
             "bytes": 5415
+        },
+        "custom_proxies": {
+            "path": "custom-proxies.json",
+            "sha256": "0257cb2e2bb6871ff7fd49a36b68ca65a3385683ced2003c826b44c24d2a12c1",
+            "bytes": 29
         }
     }
 }
