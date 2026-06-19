@@ -17,6 +17,7 @@ function app_route_match(array $request): array
         '/', '/index.php' => 'bootstrap',
         '/health', '/health.php' => 'health',
         '/login', '/login.php' => 'login',
+        '/auth/oidc/callback' => 'auth_oidc_callback',
         '/logout', '/logout.php' => 'logout',
         '/dashboard', '/dashboard.php' => 'dashboard',
         '/projects', '/projects.php' => 'projects',

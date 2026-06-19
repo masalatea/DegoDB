@@ -143,6 +143,7 @@ ROOT_TMP_DIR := tmp
 .PHONY: sample01-pack-runtime-test-sqlite sample1-output-test-sqlite sample1-output-check-sqlite sample02-pack-runtime-test-sqlite sample2-output-test-sqlite sample2-output-check-sqlite sample03-pack-runtime-test-sqlite sample3-output-test-sqlite sample3-output-check-sqlite sample04-pack-runtime-test-sqlite sample4-output-test-sqlite sample4-output-check-sqlite sample05-pack-runtime-test-sqlite sample5-output-test-sqlite sample5-output-check-sqlite sample06-pack-runtime-test-sqlite sample6-output-test-sqlite sample6-output-check-sqlite sample07-pack-runtime-test-sqlite sample7-output-test-sqlite sample7-output-check-sqlite sample08-pack-runtime-test-sqlite sample8-output-test-sqlite sample8-output-check-sqlite sample09-pack-runtime-test-sqlite sample09-runtime-output-test-sqlite sample10-pack-runtime-test-sqlite sample10-runtime-output-test-sqlite sample11-pack-runtime-test-sqlite sample11-runtime-output-test-sqlite sample12-pack-runtime-test-sqlite sample12-runtime-output-test-sqlite sample13-pack-runtime-test-sqlite sample13-runtime-output-test-sqlite sample13-http-runtime-smoke sample13-http-runtime-smoke-sqlite sample13-browser-try-it-out-smoke sample13-browser-try-it-out-smoke-sqlite sample14-pack-runtime-test-sqlite sample14-runtime-output-test-sqlite sample15-pack-runtime-test-sqlite sample15-runtime-output-test-sqlite sample16-pack-runtime-test-sqlite sample16-runtime-output-test-sqlite sample16-http-runtime-smoke sample16-http-runtime-smoke-sqlite sample17-pack-runtime-test-sqlite sample17-runtime-output-test-sqlite sample18-pack-runtime-test-sqlite sample18-runtime-output-test-sqlite sample18-http-runtime-smoke sample19-pack-runtime-test-sqlite sample19-runtime-output-test-sqlite sample25-browser-try-it-out-smoke
 .PHONY: artifact-parity-capture-mysql artifact-parity-capture-sqlite artifact-parity-compare artifact-parity-test
 .PHONY: user-db-contract-capture-mysql user-db-contract-capture-sqlite user-db-contract-compare user-db-contract-test
+.PHONY: mtool-oidc-login-smoke
 
 DOCKER_ENV_TARGETS := \
 	build \
@@ -305,6 +306,9 @@ mtool-external-source-lab-smoke: env ## admin UI の external source 作成か�
 
 mtool-external-source-lab-browser-smoke: env ## external source prepare 後に Lab Swagger Try It Out を headless Chrome で実行し、lab_experiments は CRUD cycle まで確認する
 	node mtool/scripts/check_external_database_source_lab_swagger_try_it_out.js
+
+mtool-oidc-login-smoke: ## mock OIDC provider で login/callback/session principal を HTTP smoke する
+	$(PHP) mtool/scripts/check_oidc_login_smoke.php --pretty
 
 test: ## 現在の自動テスト一式を実行する
 	bash mtool/scripts/run_sample_pack_phpunit_test.sh \

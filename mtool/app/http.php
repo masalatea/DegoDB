@@ -9,6 +9,7 @@ require_once __DIR__ . '/session.php';
 require_once __DIR__ . '/csrf.php';
 require_once __DIR__ . '/router.php';
 require_once __DIR__ . '/auth.php';
+require_once __DIR__ . '/auth_oidc.php';
 require_once __DIR__ . '/middleware.php';
 require_once __DIR__ . '/health.php';
 require_once __DIR__ . '/bootstrap_page.php';
@@ -127,6 +128,10 @@ function app_run_http_request(): void
 
             case 'login':
                 app_handle_login_request($app, $request);
+                return;
+
+            case 'auth_oidc_callback':
+                app_auth_oidc_handle_callback($app, $request);
                 return;
 
             case 'logout':

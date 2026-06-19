@@ -6,6 +6,7 @@ RUN apt-get update \
     && apt-get install -y --no-install-recommends \
         apache2 \
         ca-certificates \
+        composer \
         curl \
         default-mysql-client \
         git \
@@ -29,6 +30,10 @@ RUN apt-get update \
     && printf "ServerName localhost\n" > /etc/apache2/conf-available/servername.conf \
     && a2enconf servername \
     && rm -rf /var/lib/apt/lists/*
+
+COPY composer.json composer.lock /var/www/
+RUN cd /var/www \
+    && composer install --no-dev --prefer-dist --no-interaction --no-progress --optimize-autoloader
 
 WORKDIR /var/www/html
 

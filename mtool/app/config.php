@@ -19,6 +19,19 @@ require_once __DIR__ . '/runtime_storage_paths.php';
  *             password:string,
  *             display_name:string,
  *             roles:list<string>
+ *         },
+ *         oidc:array{
+ *             issuer:string,
+ *             client_id:string,
+ *             client_secret:string,
+ *             redirect_uri:string,
+ *             scopes:list<string>,
+ *             groups_claim:string,
+ *             admin_groups:list<string>,
+ *             config_groups:list<string>,
+ *             lab_groups:list<string>,
+ *             project_role_group_prefix:string,
+ *             default_roles:list<string>
  *         }
  *     },
  *     translation:array{
@@ -95,6 +108,17 @@ function app_load_config(): array
     $authStubPassword = app_config_env('APP_AUTH_STUB_PASSWORD', $defaults['auth_stub_password']);
     $authStubDisplayName = app_config_env('APP_AUTH_STUB_NAME', $defaults['auth_stub_name']);
     $authStubRoles = app_config_csv_env('APP_AUTH_STUB_ROLES', $defaults['auth_stub_roles']);
+    $authOidcIssuer = rtrim(app_config_env('APP_AUTH_OIDC_ISSUER', ''), '/');
+    $authOidcClientId = app_config_env('APP_AUTH_OIDC_CLIENT_ID', '');
+    $authOidcClientSecret = app_config_env('APP_AUTH_OIDC_CLIENT_SECRET', '');
+    $authOidcRedirectUri = app_config_env('APP_AUTH_OIDC_REDIRECT_URI', '');
+    $authOidcScopes = app_config_csv_env('APP_AUTH_OIDC_SCOPES', ['openid', 'profile', 'email']);
+    $authOidcGroupsClaim = app_config_env('APP_AUTH_OIDC_GROUPS_CLAIM', 'groups');
+    $authOidcAdminGroups = app_config_csv_env('APP_AUTH_OIDC_ADMIN_GROUPS', []);
+    $authOidcConfigGroups = app_config_csv_env('APP_AUTH_OIDC_CONFIG_GROUPS', []);
+    $authOidcLabGroups = app_config_csv_env('APP_AUTH_OIDC_LAB_GROUPS', []);
+    $authOidcProjectRoleGroupPrefix = app_config_env('APP_AUTH_OIDC_PROJECT_ROLE_GROUP_PREFIX', 'dego:project:');
+    $authOidcDefaultRoles = app_config_csv_env('APP_AUTH_OIDC_DEFAULT_ROLES', $defaults['auth_stub_roles']);
     $translationProvider = app_config_env('APP_TRANSLATION_PROVIDER', 'disabled');
     $translationGoogleApiKey = app_config_env('APP_TRANSLATION_GOOGLE_API_KEY', '');
     $translationTimeoutSeconds = max(1, (int) app_config_env('APP_TRANSLATION_TIMEOUT_SECONDS', '10'));
@@ -200,6 +224,19 @@ function app_load_config(): array
                 'password' => $authStubPassword,
                 'display_name' => $authStubDisplayName,
                 'roles' => $authStubRoles,
+            ],
+            'oidc' => [
+                'issuer' => $authOidcIssuer,
+                'client_id' => $authOidcClientId,
+                'client_secret' => $authOidcClientSecret,
+                'redirect_uri' => $authOidcRedirectUri,
+                'scopes' => $authOidcScopes,
+                'groups_claim' => $authOidcGroupsClaim,
+                'admin_groups' => $authOidcAdminGroups,
+                'config_groups' => $authOidcConfigGroups,
+                'lab_groups' => $authOidcLabGroups,
+                'project_role_group_prefix' => $authOidcProjectRoleGroupPrefix,
+                'default_roles' => $authOidcDefaultRoles,
             ],
         ],
         'translation' => [

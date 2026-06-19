@@ -9,6 +9,7 @@ require_once __DIR__ . '/request.php';
  *     id:string,
  *     display_name:string,
  *     roles:list<string>,
+ *     project_roles?:array<string,list<string>>,
  *     auth_source:string,
  *     site:string
  * }|null
@@ -27,6 +28,7 @@ function app_auth_principal(): ?array
     $id = $principal['id'] ?? null;
     $displayName = $principal['display_name'] ?? null;
     $roles = $principal['roles'] ?? null;
+    $projectRoles = $principal['project_roles'] ?? [];
     $authSource = $principal['auth_source'] ?? null;
     $site = $principal['site'] ?? null;
 
@@ -47,10 +49,30 @@ function app_auth_principal(): ?array
         }
     }
 
+    $normalizedProjectRoles = [];
+    if (is_array($projectRoles)) {
+        foreach ($projectRoles as $projectKey => $projectRoleList) {
+            if (!is_string($projectKey) || !is_array($projectRoleList)) {
+                continue;
+            }
+
+            $normalizedRoleList = [];
+            foreach ($projectRoleList as $projectRole) {
+                if (is_string($projectRole) && $projectRole !== '') {
+                    $normalizedRoleList[] = $projectRole;
+                }
+            }
+            if ($normalizedRoleList !== []) {
+                $normalizedProjectRoles[$projectKey] = array_values(array_unique($normalizedRoleList));
+            }
+        }
+    }
+
     return [
         'id' => $id,
         'display_name' => $displayName,
         'roles' => $normalizedRoles,
+        'project_roles' => $normalizedProjectRoles,
         'auth_source' => $authSource,
         'site' => $site,
     ];
@@ -66,6 +88,7 @@ function app_auth_is_authenticated(): bool
  *     id:string,
  *     display_name:string,
  *     roles:list<string>,
+ *     project_roles?:array<string,list<string>>,
  *     auth_source:string,
  *     site:string
  * }|null $principal
@@ -86,6 +109,7 @@ function app_auth_has_role(string $requiredRole, ?array $principal = null): bool
  *     id:string,
  *     display_name:string,
  *     roles:list<string>,
+ *     project_roles?:array<string,list<string>>,
  *     auth_source:string,
  *     site:string
  * }|null $principal
@@ -124,6 +148,7 @@ function app_auth_attempt_login(array $app, string $username, string $password):
 {
     return match ($app['auth']['mode']) {
         'stub' => app_auth_attempt_stub_login($app, $username, $password),
+        'oidc' => false,
         default => false,
     };
 }
@@ -174,6 +199,7 @@ function app_auth_attempt_stub_login(array $app, string $username, string $passw
  *     id:string,
  *     display_name:string,
  *     roles:list<string>,
+ *     project_roles?:array<string,list<string>>,
  *     auth_source:string,
  *     site:string
  * } $principal
@@ -205,6 +231,7 @@ function app_auth_mode_summary(array $app): string
 {
     return match ($app['auth']['mode']) {
         'stub' => 'ローカル Docker 用のスタブ認証',
+        'oidc' => 'OpenID Connect 認証',
         default => '未定義の認証モード',
     };
 }

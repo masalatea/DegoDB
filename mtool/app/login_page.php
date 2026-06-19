@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 require_once __DIR__ . '/auth.php';
+require_once __DIR__ . '/auth_oidc.php';
 require_once __DIR__ . '/csrf.php';
 require_once __DIR__ . '/response.php';
 
@@ -33,6 +34,16 @@ function app_handle_login_request(array $app, array $request): void
     $redirectPath = app_auth_requested_path($request, app_auth_dashboard_path());
     if (app_auth_is_authenticated()) {
         app_send_redirect_response($request, $redirectPath);
+        return;
+    }
+
+    if (($app['auth']['mode'] ?? '') === 'oidc') {
+        if (!app_request_method_is($request, 'GET')) {
+            app_render_method_not_allowed_page($app, $request, ['GET']);
+            return;
+        }
+
+        app_auth_oidc_begin($app, $request, $redirectPath);
         return;
     }
 

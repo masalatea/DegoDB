@@ -293,6 +293,7 @@ function app_config_db_bootstrap_required_tables(): array
     return [
         'projects',
         'project_memberships',
+        'project_identity_memberships',
         'project_page_security_policies',
         'project_page_security_policy_capabilities',
         'project_host_assignments',

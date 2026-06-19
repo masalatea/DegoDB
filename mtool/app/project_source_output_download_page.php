@@ -6,6 +6,7 @@ require_once __DIR__ . '/auth.php';
 require_once __DIR__ . '/domain_validation.php';
 require_once __DIR__ . '/error_page.php';
 require_once __DIR__ . '/project_output_service.php';
+require_once __DIR__ . '/project_permission.php';
 require_once __DIR__ . '/response.php';
 
 /**
@@ -51,6 +52,23 @@ function app_render_project_source_output_download_page(array $app, array $reque
     $artifactKey = trim(app_route_param($request, 'artifact_key'));
     if (!app_project_output_artifact_key_is_valid($artifactKey)) {
         app_render_bad_request_page($app, $request, 'artifact key の形式が不正です。');
+        return;
+    }
+
+    $permission = app_project_permission_can_with_audit(
+        $app,
+        $projectKey,
+        $principal,
+        'source_output.download',
+        'source_output_artifact',
+        $artifactKey,
+    );
+    if (!$permission['ok']) {
+        app_render_internal_error_page($app, $request);
+        return;
+    }
+    if (!$permission['allowed']) {
+        app_render_forbidden_page($app, $request, 'source output archive の取得には project publisher 以上の権限が必要です。');
         return;
     }
 

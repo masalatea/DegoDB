@@ -77,7 +77,7 @@ None of the items below are remaining work for the completed `sample19-26` ebook
    - Added audit log schema and repository usable from MySQL / MariaDB and SQLite config store.
    - Added audit metadata secret/token/password redaction regression.
    - Minimal project permissions follow after the audit event shape is clear.
-   - SSO / OIDC work resumes only after this local role / audit boundary is in place.
+   - SSO / OIDC work has moved to first-slice I/F after this local role / audit boundary was put in place.
 
 ### Next
 
@@ -110,6 +110,20 @@ None of the items below are remaining work for the completed `sample19-26` ebook
 - PostgreSQL / SQL Server user DB support.
 - production-grade ebook CMS features such as editor UI, full role management, upload, search, EPUB generation, payment, DRM.
 - Full Mtool namespace migration. Composer usage by itself does not require this because third-party classes are already namespaced; a repo-wide Mtool namespace migration should be a separate post-security plan if it is still valuable.
+
+### SSO / Membership Follow-up Status
+
+- Design source of truth: `docs/internal/auth-architecture.md`.
+- OIDC first slice uses env / compose / config / route / callback interfaces and stores the same session principal shape as stub auth.
+- Mock OIDC smoke is contract-level: verified claims can produce a session principal without depending on a real IdP.
+- OIDC login HTTP smoke is first-slice implemented with a mock IdP and verifies redirect / callback / session principal / project role claim storage.
+- SSO first completion boundary is documented in `docs/internal/sso-oidc-connection.md`; Keycloak setup, Mtool env mapping, mock smoke, and remaining authorization hardening boundary are explicit.
+- OIDC login and audited project permission decisions write audit events with actor source, capability, role source, and result.
+- Member / group lifecycle is externalized to an OIDC-compatible IdP or surrounding OSS, not built inside Mtool.
+- External IdP project roles are first-slice implemented through group claims such as `dego:project:<PROJECT_KEY>:publisher`, with configurable group claim and project-role prefix.
+- New project permission work may use `project_identity_memberships` for `principal_source + principal_subject + role_code`, but this table is local override / break-glass / test support rather than primary membership management.
+- Legacy `project_memberships` remains compatibility fallback only and should not receive new SSO behavior.
+- Project permission roles are `viewer`, `editor`, `publisher`, and `admin`; source output publish/download requires `publisher` or stronger.
 
 ## Proposal Guardrails
 

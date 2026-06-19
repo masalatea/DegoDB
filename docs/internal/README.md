@@ -45,6 +45,8 @@ top-level `docs/` の入口から個別 internal doc へ直接飛ぶのではな
   - `mtool/`、`mtool/extensions/`、`sample/`、`work/` の役割分担
 - [Auth Architecture / 認証構成](auth-architecture.md)
   - 認証まわりの current ルール
+- [SSO OIDC Connection / SSO OIDC 接続](sso-oidc-connection.md)
+  - 外部IdP接続、claims mapping、mock smoke、SSO完了境界
 - [Data Model / 最小データモデル](data-model.md)
   - canonical metadata と関連 entity の見取り図
 

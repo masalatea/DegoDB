@@ -103,6 +103,8 @@
   - representative runtime sample pack (`sample51-runtime-sql-server`) を `up -> apply-seed -> /health -> project row / source output row check` まで軽く検証する
 - `make mtool-external-source-lab-smoke`
   - admin UI の `/settings/database-sources` で一時 external named source を作成し、`named-live-schema:{source_key}` import、`OPENAPI-JSON` / `DBTABLE-PROXY-SERVER` publish、lab の Swagger page load と published proxy route を localhost で確認してから source を削除する
+- `make mtool-oidc-login-smoke`
+  - mock OIDC provider を起動し、`/login` から authorization redirect、callback、session principal 保存、project role claim 取り込みまでを HTTP 経由で軽く検証する
 
 基本実行:
 

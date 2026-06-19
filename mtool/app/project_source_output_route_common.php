@@ -6,6 +6,7 @@ require_once __DIR__ . '/auth.php';
 require_once __DIR__ . '/domain_validation.php';
 require_once __DIR__ . '/error_page.php';
 require_once __DIR__ . '/generated_runtime.php';
+require_once __DIR__ . '/project_permission.php';
 require_once __DIR__ . '/project_repository.php';
 require_once __DIR__ . '/response.php';
 require_once __DIR__ . '/source_output_repository.php';
@@ -438,6 +439,22 @@ function app_project_source_output_route_bootstrap(
 
     if ($project['item'] === null) {
         app_render_not_found_page($app, $request);
+        return null;
+    }
+
+    $permission = app_project_permission_can_with_audit(
+        $app,
+        $projectKey,
+        $principal,
+        'source_output.publish',
+        'source_output',
+    );
+    if (!$permission['ok']) {
+        app_render_internal_error_page($app, $request);
+        return null;
+    }
+    if (!$permission['allowed']) {
+        app_render_forbidden_page($app, $request, 'source output の参照には project publisher 以上の権限が必要です。');
         return null;
     }
 
