@@ -11,6 +11,8 @@
 
 ## Index
 
+- `2026-0619-plan-inventory.md`
+  - 2026-06-19 時点の plan / roadmap / resume prompt を棚卸しし、active mainline、done、waiting、next、parked を整理した記録。5 月 broad rewrite 計画は supporting / historical として読み、6 月後半の sample lane、SQLite lightweight profile、user DB dialect framework、security / auth foundation を現在の主線として整理する。Status: `CURRENT INVENTORY`。
 - `2026-0619-instruction-driven-demo-sample-plan.md`
   - AI 側で仮想ユーザー prompt や整理済み prompt を作り、その prompt から動く runtime demo sample を `sample18+` として固定していく計画。生の試行錯誤ログではなく、sample 向けに再構成する。first candidate `sample18-mini-task-board-demo` を追加済み。Status: `DONE`。
 - `2026-0617-ai-generation-review-sample13-sample16.md`

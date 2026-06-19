@@ -5,6 +5,7 @@
 - README / Make help / 今後の導線はここを優先する
 - tutorial backlog と段階設計の正本は `docs/sample-tutorial-roadmap.md` を参照する
 - sample を教材として読む hands-on guide は `docs/study/README.md` を参照する
+- `sample19-26` の ebook CMS lane をまとめて読む場合は `docs/study/ebook-cms-lane.md` を参照する
 
 current runtime tutorial packs:
 
@@ -26,6 +27,14 @@ current runtime tutorial packs:
 - `sample16-authenticated-proxy`
 - `sample17-multi-output-project`
 - `sample18-mini-task-board-demo`
+- `sample19-json-first-content-model-demo`
+- `sample20-content-publishing-demo`
+- `sample21-ebook-catalog-api-demo`
+- `sample22-ebook-chapter-workflow-demo`
+- `sample23-ebook-media-metadata-demo`
+- `sample24-ebook-public-reader-site-demo`
+- `sample25-ebook-editor-auth-cms-demo`
+- `sample26-ebook-headless-cms-capstone`
 
 上記は runtime pack であり、`compose.yaml` / `run.sh` / `seed/` を持つ。
 
@@ -43,10 +52,20 @@ make sample15-pack-runtime-test
 make sample16-pack-runtime-test
 make sample17-pack-runtime-test
 make sample18-pack-runtime-test
+make sample19-pack-runtime-test
+make sample20-pack-runtime-test
+make sample21-pack-runtime-test
+make sample22-pack-runtime-test
+make sample23-pack-runtime-test
+make sample24-pack-runtime-test
+make sample25-pack-runtime-test
+make sample26-pack-runtime-test
 make sample18-http-runtime-smoke
 make test
 ```
 
 `sample18-http-runtime-smoke` は `web-lab` の `/samples/sample18-task-board` に login し、画面から task を作成・編集できることまで確認する。
 
-今後の tutorial / demo sample は `sample19+` として上の順を延長して追加する。
+`sample19` は JSON-first content model entrance として、MySQL / MariaDB と SQLite config store profile の両方を検証する。
+
+`sample20` からは ebook / content publishing lane に入り、runtime profile は MySQL / MariaDB canonical のみに絞る。`sample21` は ebook catalog API、`sample22` は chapter workflow、`sample23` は EPUB / media delivery metadata、`sample24` は public reader site、`sample25` は ProjectToken protected editor CMS API、`sample26` は headless CMS capstone に進める。

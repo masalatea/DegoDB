@@ -2,15 +2,27 @@
 
 ## Status
 
-- status: `PLANNED / WAITING`
+- status: `POLICY CONTRACT READY / IMPLEMENTATION WAITING`
 - scope: API 認証棚卸しと modern auth 方針
 - primary target: generated proxy / OpenAPI / admin-lab session auth
 - legacy policy: 旧実装方式は参照に留め、新規 default にはしない
-- implementation gate: SQLite / config-store 対応が安定してから DB schema / repository / seed / tutorial 実装へ進む
+- implementation gate: storage / validation contract を先に固定し、runtime 実装は security foundation の audit boundary と合わせて進める
+
+## Current Status As Of 2026-06-19
+
+Phase 1 policy contract is ready to be the next auth task, but runtime auth behavior is not changed in this inventory commit. The first storage decision is:
+
+- keep legacy `single_proxy_auth_type` / `auth_type` as compatibility fields;
+- add v2 policy metadata beside existing proxy/function metadata rather than introducing a separate `project_auth_policies` table in the first slice;
+- use `auth_policy_version` and `auth_policy_json` as the first schema shape;
+- store policy references only, never token / password / populated secret values;
+- validate unknown policy types, blank new auth, and missing required secret reference as errors.
+
+The first implementation after this contract should be `static-bearer`. OIDC / Keycloak stays parked until local audit and role boundaries exist.
 
 ## Resume Link
 
-実装再開時はこの report を入口にする。まず SQLite / config-store 関連の未完了変更が落ち着いていることを確認し、その後 `Phase 1. Policy Contract` から再開する。
+実装再開時はこの report を入口にする。まず security foundation の audit boundary と、SQLite / config-store の保存先前提を確認し、その後 `Phase 1. Policy Contract` から再開する。
 
 Related SQLite / config-store reports:
 
@@ -303,12 +315,13 @@ admin/lab の SSO は `auth.mode=oidc` として stub auth と並べる。local 
 
 - Add internal design doc section for `proxy_auth_v2`.
 - Decide DB storage shape:
-  - columns such as `auth_policy_version`, `auth_policy_json`
-  - or a separate auth policy table
+  - first slice: `auth_policy_version`, `auth_policy_json` beside existing proxy/function metadata
+  - separate auth policy table is deferred until reuse / inheritance becomes a real requirement
 - Add validation rules:
   - missing secret fail-closed
   - unknown policy invalid
   - new blank auth invalid
+  - policy JSON may contain secret env names or deploy-secret references, but not secret values
 
 ### Phase 2. `static-bearer`
 

@@ -1,0 +1,64 @@
+{
+    "schema_version": 1,
+    "artifact_type": "openapi-build-plan",
+    "project_key": "SAMPLE25",
+    "source_output_key": "OPENAPI-JSON",
+    "source_output_name": "Sample25 OpenAPI JSON",
+    "proxy_base_url": "http://127.0.0.1:8082/runs/proxy/SAMPLE25/API-PROXY-SERVER",
+    "function_count": 3,
+    "unresolved_function_count": 0,
+    "unresolved_auth_count": 0,
+    "operations": [
+        {
+            "source_name": "EbookEditorChapter",
+            "function_name": "GetEditorEbookChapter",
+            "endpoint_filename": "proxyserver-EbookEditorChapter-GetEditorEbookChapter.php",
+            "auth_strategy": "project-token",
+            "input_kind": "scalar",
+            "response_mode": "direct-result",
+            "parameter_schemas": {
+                "param_EbookEditorChapter_Id_where": {
+                    "parameter_name": "param_EbookEditorChapter_Id_where",
+                    "datatype": "int",
+                    "source": "select-where-parameter-data-type",
+                    "target_table_name": "EbookEditorChapter",
+                    "target_table_column_name": "Id"
+                }
+            }
+        },
+        {
+            "source_name": "EbookEditorChapter",
+            "function_name": "UpdateEditorEbookChapterDraft",
+            "endpoint_filename": "proxyserver-EbookEditorChapter-UpdateEditorEbookChapterDraft.php",
+            "auth_strategy": "project-token",
+            "input_kind": "object",
+            "response_mode": "none",
+            "parameter_schemas": {
+                "EbookEditorChapterObj": {
+                    "parameter_name": "EbookEditorChapterObj",
+                    "datatype": "",
+                    "source": "name-inference",
+                    "target_table_name": "",
+                    "target_table_column_name": ""
+                }
+            }
+        },
+        {
+            "source_name": "EbookEditorChapter",
+            "function_name": "PublishEditorEbookChapter",
+            "endpoint_filename": "proxyserver-EbookEditorChapter-PublishEditorEbookChapter.php",
+            "auth_strategy": "project-token",
+            "input_kind": "object",
+            "response_mode": "none",
+            "parameter_schemas": {
+                "EbookEditorChapterObj": {
+                    "parameter_name": "EbookEditorChapterObj",
+                    "datatype": "",
+                    "source": "name-inference",
+                    "target_table_name": "",
+                    "target_table_column_name": ""
+                }
+            }
+        }
+    ]
+}

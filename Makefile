@@ -106,15 +106,41 @@ SAMPLE18_COMPOSE_FILE := $(SAMPLE18_PACK_DIR)/compose.yaml
 SAMPLE18_RUN := ./$(SAMPLE18_PACK_DIR)/run.sh
 SAMPLE18_SQLITE_COMPOSE_FILE := $(SAMPLE18_PACK_DIR)/compose.sqlite-config.yaml
 SAMPLE18_SQLITE_RUN := ./$(SAMPLE18_PACK_DIR)/run-sqlite-config.sh
+SAMPLE19_PACK_DIR := sample/tutorials/sample19-json-first-content-model-demo
+SAMPLE19_COMPOSE_FILE := $(SAMPLE19_PACK_DIR)/compose.yaml
+SAMPLE19_RUN := ./$(SAMPLE19_PACK_DIR)/run.sh
+SAMPLE19_SQLITE_COMPOSE_FILE := $(SAMPLE19_PACK_DIR)/compose.sqlite-config.yaml
+SAMPLE19_SQLITE_RUN := ./$(SAMPLE19_PACK_DIR)/run-sqlite-config.sh
+SAMPLE20_PACK_DIR := sample/tutorials/sample20-content-publishing-demo
+SAMPLE20_COMPOSE_FILE := $(SAMPLE20_PACK_DIR)/compose.yaml
+SAMPLE20_RUN := ./$(SAMPLE20_PACK_DIR)/run.sh
+SAMPLE21_PACK_DIR := sample/tutorials/sample21-ebook-catalog-api-demo
+SAMPLE21_COMPOSE_FILE := $(SAMPLE21_PACK_DIR)/compose.yaml
+SAMPLE21_RUN := ./$(SAMPLE21_PACK_DIR)/run.sh
+SAMPLE22_PACK_DIR := sample/tutorials/sample22-ebook-chapter-workflow-demo
+SAMPLE22_COMPOSE_FILE := $(SAMPLE22_PACK_DIR)/compose.yaml
+SAMPLE22_RUN := ./$(SAMPLE22_PACK_DIR)/run.sh
+SAMPLE23_PACK_DIR := sample/tutorials/sample23-ebook-media-metadata-demo
+SAMPLE23_COMPOSE_FILE := $(SAMPLE23_PACK_DIR)/compose.yaml
+SAMPLE23_RUN := ./$(SAMPLE23_PACK_DIR)/run.sh
+SAMPLE24_PACK_DIR := sample/tutorials/sample24-ebook-public-reader-site-demo
+SAMPLE24_COMPOSE_FILE := $(SAMPLE24_PACK_DIR)/compose.yaml
+SAMPLE24_RUN := ./$(SAMPLE24_PACK_DIR)/run.sh
+SAMPLE25_PACK_DIR := sample/tutorials/sample25-ebook-editor-auth-cms-demo
+SAMPLE25_COMPOSE_FILE := $(SAMPLE25_PACK_DIR)/compose.yaml
+SAMPLE25_RUN := ./$(SAMPLE25_PACK_DIR)/run.sh
+SAMPLE26_PACK_DIR := sample/tutorials/sample26-ebook-headless-cms-capstone
+SAMPLE26_COMPOSE_FILE := $(SAMPLE26_PACK_DIR)/compose.yaml
+SAMPLE26_RUN := ./$(SAMPLE26_PACK_DIR)/run.sh
 
 LEGACY_GENERATED_CLEAN_DIRS := \
 	generated \
 	work/legacy-generated
 ROOT_TMP_DIR := tmp
 
-.PHONY: help env env-force bootstrap-dbclasses bootstrap-dbclasses-runtime-reference promote-runtime-reference restore-runtime-reference-snapshot mtool-runtime-reference-status clean project-output db-access-sync mtool-canonical-sync mtool-self-loop-check mtool-proxy-output-check mtool-html-db-lang-res-wrapper-check mtool-lang-res-file-tree-export mtool-lang-res-file-tree-check mtool-external-source-lab-smoke mtool-external-source-lab-browser-smoke mtool-lite-smoke test sample-pack-compose-smoke sample-pack-runtime-smoke sample01-pack-runtime-test sample02-pack-runtime-test sample03-pack-runtime-test sample04-pack-runtime-test sample05-pack-runtime-test sample06-pack-runtime-test sample07-pack-runtime-test sample08-pack-runtime-test sample09-pack-runtime-test sample09-runtime-output-test sample10-pack-runtime-test sample10-runtime-output-test sample11-pack-runtime-test sample11-runtime-output-test sample12-pack-runtime-test sample12-runtime-output-test sample13-pack-runtime-test sample13-runtime-output-test sample14-pack-runtime-test sample14-runtime-output-test sample15-pack-runtime-test sample15-runtime-output-test sample16-pack-runtime-test sample16-runtime-output-test sample17-pack-runtime-test sample17-runtime-output-test sample18-pack-runtime-test sample18-runtime-output-test pattern01-output-test pattern02-output-test pattern03-output-test pattern04-output-test pattern05-output-test pattern06-output-test pattern07-output-test pattern08-output-test pattern09-output-test pattern10-output-test pattern11-output-test pattern12-output-test pattern13-output-test pattern14-output-test sample01-pack-output-test sample02-pack-output-test sample03-pack-output-test sample04-pack-output-test sample05-pack-output-test sample06-pack-output-test sample07-pack-output-test sample08-pack-output-test sample09-pack-output-test sample10-pack-output-test sample11-pack-output-test sample12-pack-output-test sample13-pack-output-test sample14-pack-output-test sample15-pack-output-test sample1-output-test sample1-output-check sample2-output-test sample2-output-check sample3-output-test sample3-output-check sample4-output-test sample4-output-check sample5-output-test sample5-output-check sample6-output-test sample6-output-check sample7-output-test sample7-output-check sample8-output-test sample8-output-check sample9-output-test sample9-output-check sample10-output-test sample10-output-check sample11-output-test sample11-output-check sample12-output-test sample12-output-check sample13-output-test sample13-output-check sample14-output-test sample14-output-check sample15-output-test sample15-output-check sample16-output-test sample16-output-check sample17-output-test sample17-output-check sample18-output-test sample18-output-check sample19-output-test sample19-output-check sample20-output-test sample20-output-check sample21-output-test sample21-output-check sample22-output-test sample22-output-check build up up-mtool start-mtool stop-mtool down-mtool reset-mtool ps-mtool logs-mtool health-mtool config-db-preflight-mtool db-config-migrate-mtool up-mtool-lite start-mtool-lite stop-mtool-lite down-mtool-lite reset-mtool-lite ps-mtool-lite logs-mtool-lite health-mtool-lite config-db-preflight-mtool-lite db-config-migrate-mtool-lite up-external-config-db down-external-config-db ps-external-config-db logs-external-config-db health-external-config-db config-db-preflight-external-config-db db-config-migrate-external-config-db start stop down reset ps logs health admin-shell lab-shell db-config-shell db-lab-shell config-db-preflight db-config-migrate db-lab-migrate
+.PHONY: help env env-force bootstrap-dbclasses bootstrap-dbclasses-runtime-reference promote-runtime-reference restore-runtime-reference-snapshot mtool-runtime-reference-status clean project-output db-access-sync mtool-canonical-sync mtool-self-loop-check mtool-proxy-output-check mtool-html-db-lang-res-wrapper-check mtool-lang-res-file-tree-export mtool-lang-res-file-tree-check mtool-external-source-lab-smoke mtool-external-source-lab-browser-smoke mtool-lite-smoke test sample-pack-compose-smoke sample-pack-runtime-smoke sample01-pack-runtime-test sample02-pack-runtime-test sample03-pack-runtime-test sample04-pack-runtime-test sample05-pack-runtime-test sample06-pack-runtime-test sample07-pack-runtime-test sample08-pack-runtime-test sample09-pack-runtime-test sample09-runtime-output-test sample10-pack-runtime-test sample10-runtime-output-test sample11-pack-runtime-test sample11-runtime-output-test sample12-pack-runtime-test sample12-runtime-output-test sample13-pack-runtime-test sample13-runtime-output-test sample14-pack-runtime-test sample14-runtime-output-test sample15-pack-runtime-test sample15-runtime-output-test sample16-pack-runtime-test sample16-runtime-output-test sample17-pack-runtime-test sample17-runtime-output-test sample18-pack-runtime-test sample18-runtime-output-test sample19-pack-runtime-test sample19-runtime-output-test sample20-pack-runtime-test sample20-runtime-output-test sample21-pack-runtime-test sample21-runtime-output-test sample22-pack-runtime-test sample22-runtime-output-test sample23-pack-runtime-test sample23-runtime-output-test sample24-pack-runtime-test sample24-runtime-output-test sample25-pack-runtime-test sample25-runtime-output-test sample26-pack-runtime-test sample26-runtime-output-test pattern01-output-test pattern02-output-test pattern03-output-test pattern04-output-test pattern05-output-test pattern06-output-test pattern07-output-test pattern08-output-test pattern09-output-test pattern10-output-test pattern11-output-test pattern12-output-test pattern13-output-test pattern14-output-test sample01-pack-output-test sample02-pack-output-test sample03-pack-output-test sample04-pack-output-test sample05-pack-output-test sample06-pack-output-test sample07-pack-output-test sample08-pack-output-test sample09-pack-output-test sample10-pack-output-test sample11-pack-output-test sample12-pack-output-test sample13-pack-output-test sample14-pack-output-test sample15-pack-output-test sample1-output-test sample1-output-check sample2-output-test sample2-output-check sample3-output-test sample3-output-check sample4-output-test sample4-output-check sample5-output-test sample5-output-check sample6-output-test sample6-output-check sample7-output-test sample7-output-check sample8-output-test sample8-output-check sample9-output-test sample9-output-check sample10-output-test sample10-output-check sample11-output-test sample11-output-check sample12-output-test sample12-output-check sample13-output-test sample13-output-check sample14-output-test sample14-output-check sample15-output-test sample15-output-check sample16-output-test sample16-output-check sample17-output-test sample17-output-check sample18-output-test sample18-output-check sample19-output-test sample19-output-check sample20-output-test sample20-output-check sample21-output-test sample21-output-check sample22-output-test sample22-output-check build up up-mtool start-mtool stop-mtool down-mtool reset-mtool ps-mtool logs-mtool health-mtool config-db-preflight-mtool db-config-migrate-mtool up-mtool-lite start-mtool-lite stop-mtool-lite down-mtool-lite reset-mtool-lite ps-mtool-lite logs-mtool-lite health-mtool-lite config-db-preflight-mtool-lite db-config-migrate-mtool-lite up-external-config-db down-external-config-db ps-external-config-db logs-external-config-db health-external-config-db config-db-preflight-external-config-db db-config-migrate-external-config-db start stop down reset ps logs health admin-shell lab-shell db-config-shell db-lab-shell config-db-preflight db-config-migrate db-lab-migrate
 .PHONY: backup-config-db backup-config-db-rotate restore-config-db backup-config-db-mtool backup-config-db-mtool-rotate restore-config-db-mtool backup-config-db-sqlite backup-config-db-sqlite-rotate restore-config-db-sqlite backup-config-db-mtool-lite backup-config-db-mtool-lite-rotate restore-config-db-mtool-lite up-durable-config-db ps-durable-config-db logs-durable-config-db health-durable-config-db config-db-preflight-durable-config-db db-config-migrate-durable-config-db down-durable-config-db
-.PHONY: sample01-pack-runtime-test-sqlite sample1-output-test-sqlite sample1-output-check-sqlite sample02-pack-runtime-test-sqlite sample2-output-test-sqlite sample2-output-check-sqlite sample03-pack-runtime-test-sqlite sample3-output-test-sqlite sample3-output-check-sqlite sample04-pack-runtime-test-sqlite sample4-output-test-sqlite sample4-output-check-sqlite sample05-pack-runtime-test-sqlite sample5-output-test-sqlite sample5-output-check-sqlite sample06-pack-runtime-test-sqlite sample6-output-test-sqlite sample6-output-check-sqlite sample07-pack-runtime-test-sqlite sample7-output-test-sqlite sample7-output-check-sqlite sample08-pack-runtime-test-sqlite sample8-output-test-sqlite sample8-output-check-sqlite sample09-pack-runtime-test-sqlite sample09-runtime-output-test-sqlite sample10-pack-runtime-test-sqlite sample10-runtime-output-test-sqlite sample11-pack-runtime-test-sqlite sample11-runtime-output-test-sqlite sample12-pack-runtime-test-sqlite sample12-runtime-output-test-sqlite sample13-pack-runtime-test-sqlite sample13-runtime-output-test-sqlite sample13-http-runtime-smoke sample13-http-runtime-smoke-sqlite sample13-browser-try-it-out-smoke sample13-browser-try-it-out-smoke-sqlite sample14-pack-runtime-test-sqlite sample14-runtime-output-test-sqlite sample15-pack-runtime-test-sqlite sample15-runtime-output-test-sqlite sample16-pack-runtime-test-sqlite sample16-runtime-output-test-sqlite sample16-http-runtime-smoke sample16-http-runtime-smoke-sqlite sample17-pack-runtime-test-sqlite sample17-runtime-output-test-sqlite sample18-pack-runtime-test-sqlite sample18-runtime-output-test-sqlite sample18-http-runtime-smoke
+.PHONY: sample01-pack-runtime-test-sqlite sample1-output-test-sqlite sample1-output-check-sqlite sample02-pack-runtime-test-sqlite sample2-output-test-sqlite sample2-output-check-sqlite sample03-pack-runtime-test-sqlite sample3-output-test-sqlite sample3-output-check-sqlite sample04-pack-runtime-test-sqlite sample4-output-test-sqlite sample4-output-check-sqlite sample05-pack-runtime-test-sqlite sample5-output-test-sqlite sample5-output-check-sqlite sample06-pack-runtime-test-sqlite sample6-output-test-sqlite sample6-output-check-sqlite sample07-pack-runtime-test-sqlite sample7-output-test-sqlite sample7-output-check-sqlite sample08-pack-runtime-test-sqlite sample8-output-test-sqlite sample8-output-check-sqlite sample09-pack-runtime-test-sqlite sample09-runtime-output-test-sqlite sample10-pack-runtime-test-sqlite sample10-runtime-output-test-sqlite sample11-pack-runtime-test-sqlite sample11-runtime-output-test-sqlite sample12-pack-runtime-test-sqlite sample12-runtime-output-test-sqlite sample13-pack-runtime-test-sqlite sample13-runtime-output-test-sqlite sample13-http-runtime-smoke sample13-http-runtime-smoke-sqlite sample13-browser-try-it-out-smoke sample13-browser-try-it-out-smoke-sqlite sample14-pack-runtime-test-sqlite sample14-runtime-output-test-sqlite sample15-pack-runtime-test-sqlite sample15-runtime-output-test-sqlite sample16-pack-runtime-test-sqlite sample16-runtime-output-test-sqlite sample16-http-runtime-smoke sample16-http-runtime-smoke-sqlite sample17-pack-runtime-test-sqlite sample17-runtime-output-test-sqlite sample18-pack-runtime-test-sqlite sample18-runtime-output-test-sqlite sample18-http-runtime-smoke sample19-pack-runtime-test-sqlite sample19-runtime-output-test-sqlite
 .PHONY: artifact-parity-capture-mysql artifact-parity-capture-sqlite artifact-parity-compare artifact-parity-test
 .PHONY: user-db-contract-capture-mysql user-db-contract-capture-sqlite user-db-contract-compare user-db-contract-test
 
@@ -183,6 +209,14 @@ DOCKER_ENV_TARGETS := \
 	sample16-runtime-output-test \
 	sample17-runtime-output-test \
 	sample18-runtime-output-test \
+	sample19-runtime-output-test \
+	sample20-runtime-output-test \
+	sample21-runtime-output-test \
+	sample22-runtime-output-test \
+	sample23-runtime-output-test \
+	sample24-runtime-output-test \
+	sample25-runtime-output-test \
+	sample26-runtime-output-test \
 	sample9-output-test \
 	sample10-output-test \
 	sample11-output-test \
@@ -293,6 +327,15 @@ test: ## 現在の自動テスト一式を実行する
 		--extra-seed=$(SAMPLE15_PACK_DIR)/seed \
 		--extra-seed=$(SAMPLE16_PACK_DIR)/seed \
 		--extra-seed=$(SAMPLE17_PACK_DIR)/seed \
+		--extra-seed=$(SAMPLE18_PACK_DIR)/seed \
+		--extra-seed=$(SAMPLE19_PACK_DIR)/seed \
+		--extra-seed=$(SAMPLE20_PACK_DIR)/seed \
+		--extra-seed=$(SAMPLE21_PACK_DIR)/seed \
+		--extra-seed=$(SAMPLE22_PACK_DIR)/seed \
+		--extra-seed=$(SAMPLE23_PACK_DIR)/seed \
+		--extra-seed=$(SAMPLE24_PACK_DIR)/seed \
+		--extra-seed=$(SAMPLE25_PACK_DIR)/seed \
+		--extra-seed=$(SAMPLE26_PACK_DIR)/seed \
 		--phpunit-target=/var/www/tests/Integration
 
 sample-pack-compose-smoke: ## active runtime sample pack の compose override merge を軽く検証する
@@ -336,6 +379,22 @@ sample16-pack-runtime-test: sample16-runtime-output-test ## sample16 tutorial ru
 sample17-pack-runtime-test: sample17-runtime-output-test ## sample17 tutorial runtime の multi-output capstone integration test を実行する
 
 sample18-pack-runtime-test: sample18-runtime-output-test ## sample18 tutorial runtime の instruction-driven demo integration test を実行する
+
+sample19-pack-runtime-test: sample19-runtime-output-test ## sample19 tutorial runtime の JSON-first content model integration test を実行する
+
+sample20-pack-runtime-test: sample20-runtime-output-test ## sample20 tutorial runtime の content publishing integration test を実行する
+
+sample21-pack-runtime-test: sample21-runtime-output-test ## sample21 tutorial runtime の ebook catalog API integration test を実行する
+
+sample22-pack-runtime-test: sample22-runtime-output-test ## sample22 tutorial runtime の ebook chapter workflow integration test を実行する
+
+sample23-pack-runtime-test: sample23-runtime-output-test ## sample23 tutorial runtime の ebook media metadata integration test を実行する
+
+sample24-pack-runtime-test: sample24-runtime-output-test ## sample24 tutorial runtime の ebook public reader site integration test を実行する
+
+sample25-pack-runtime-test: sample25-runtime-output-test ## sample25 tutorial runtime の ebook editor auth CMS integration test を実行する
+
+sample26-pack-runtime-test: sample26-runtime-output-test ## sample26 tutorial runtime の ebook headless CMS capstone integration test を実行する
 
 pattern01-output-test: sample9-output-test ## pattern01 default-property-split の wrapper/base migration test を実行する
 
@@ -822,6 +881,62 @@ sample18-runtime-output-test:
 		--apply-pack-seed \
 		--phpunit-target=/var/www/tests/Integration/Sample18MiniTaskBoardDemoTest.php
 
+sample19-runtime-output-test:
+	bash mtool/scripts/run_sample_pack_phpunit_test.sh \
+		--compose-file=$(SAMPLE19_COMPOSE_FILE) \
+		--run-script=$(SAMPLE19_RUN) \
+		--apply-pack-seed \
+		--phpunit-target=/var/www/tests/Integration/Sample19JsonFirstContentModelOutputTest.php
+
+sample20-runtime-output-test:
+	bash mtool/scripts/run_sample_pack_phpunit_test.sh \
+		--compose-file=$(SAMPLE20_COMPOSE_FILE) \
+		--run-script=$(SAMPLE20_RUN) \
+		--apply-pack-seed \
+		--phpunit-target=/var/www/tests/Integration/Sample20ContentPublishingDemoTest.php
+
+sample21-runtime-output-test:
+	bash mtool/scripts/run_sample_pack_phpunit_test.sh \
+		--compose-file=$(SAMPLE21_COMPOSE_FILE) \
+		--run-script=$(SAMPLE21_RUN) \
+		--apply-pack-seed \
+		--phpunit-target=/var/www/tests/Integration/Sample21EbookCatalogApiDemoTest.php
+
+sample22-runtime-output-test:
+	bash mtool/scripts/run_sample_pack_phpunit_test.sh \
+		--compose-file=$(SAMPLE22_COMPOSE_FILE) \
+		--run-script=$(SAMPLE22_RUN) \
+		--apply-pack-seed \
+		--phpunit-target=/var/www/tests/Integration/Sample22EbookChapterWorkflowDemoTest.php
+
+sample23-runtime-output-test:
+	bash mtool/scripts/run_sample_pack_phpunit_test.sh \
+		--compose-file=$(SAMPLE23_COMPOSE_FILE) \
+		--run-script=$(SAMPLE23_RUN) \
+		--apply-pack-seed \
+		--phpunit-target=/var/www/tests/Integration/Sample23EbookMediaMetadataDemoTest.php
+
+sample24-runtime-output-test:
+	bash mtool/scripts/run_sample_pack_phpunit_test.sh \
+		--compose-file=$(SAMPLE24_COMPOSE_FILE) \
+		--run-script=$(SAMPLE24_RUN) \
+		--apply-pack-seed \
+		--phpunit-target=/var/www/tests/Integration/Sample24EbookPublicReaderSiteDemoTest.php
+
+sample25-runtime-output-test:
+	bash mtool/scripts/run_sample_pack_phpunit_test.sh \
+		--compose-file=$(SAMPLE25_COMPOSE_FILE) \
+		--run-script=$(SAMPLE25_RUN) \
+		--apply-pack-seed \
+		--phpunit-target=/var/www/tests/Integration/Sample25EbookEditorAuthCmsDemoTest.php
+
+sample26-runtime-output-test:
+	bash mtool/scripts/run_sample_pack_phpunit_test.sh \
+		--compose-file=$(SAMPLE26_COMPOSE_FILE) \
+		--run-script=$(SAMPLE26_RUN) \
+		--apply-pack-seed \
+		--phpunit-target=/var/www/tests/Integration/Sample26EbookHeadlessCmsCapstoneTest.php
+
 sample18-pack-runtime-test-sqlite: sample18-runtime-output-test-sqlite ## sample18 tutorial runtime を SQLite config store profile で実行する
 
 sample18-runtime-output-test-sqlite:
@@ -830,6 +945,15 @@ sample18-runtime-output-test-sqlite:
 		--run-script=$(SAMPLE18_SQLITE_RUN) \
 		--apply-pack-seed \
 		--phpunit-target=/var/www/tests/Integration/Sample18MiniTaskBoardDemoTest.php
+
+sample19-pack-runtime-test-sqlite: sample19-runtime-output-test-sqlite ## sample19 tutorial runtime を SQLite config store profile で実行する
+
+sample19-runtime-output-test-sqlite:
+	APP_CONFIG_STORE_DIR="$${APP_CONFIG_STORE_DIR:-work/tmp/config-store-sample19-sqlite-$$(date +%Y%m%d%H%M%S)}" SAMPLE_PACK_COMPOSE_LANE=base SAMPLE_PACK_INCLUDE_LIFECYCLE=0 bash mtool/scripts/run_sample_pack_phpunit_test.sh \
+		--compose-file=$(SAMPLE19_SQLITE_COMPOSE_FILE) \
+		--run-script=$(SAMPLE19_SQLITE_RUN) \
+		--apply-pack-seed \
+		--phpunit-target=/var/www/tests/Integration/Sample19JsonFirstContentModelOutputTest.php
 
 sample18-http-runtime-smoke: ## sample18 task board demo page を HTTP route 経由で検証する
 	set -e; \

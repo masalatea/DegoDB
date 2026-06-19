@@ -69,6 +69,15 @@ This document explains the current authentication architecture for the rewrite. 
 
 上記の POST は token 一致を前提にする。
 
+### generated proxy API auth v2
+
+- generated proxy の API auth は、admin / lab の session auth とは別の contract として扱う。
+- 旧 `ProjectToken` / body `TOKEN` は compatibility lane として残すが、新規 default にはしない。
+- v2 policy は first slice では既存 proxy/function metadata の横に `auth_policy_version` と `auth_policy_json` を置く。
+- `auth_policy_json` には secret env 名や deploy secret reference だけを保存し、token / password / populated secret value は保存しない。
+- 最初の v2 runtime 実装候補は `static-bearer` とし、`Authorization: Bearer <token>`、missing env fail-closed、unknown policy invalid を contract にする。
+- OIDC / Keycloak は local audit log と minimal role boundary が固まるまで実装しない。
+
 ## 旧実装との関係
 
 旧実装は `original-codes/docs/auth-and-authorization.md` に整理した通り、次の要素を分離して持っていた。

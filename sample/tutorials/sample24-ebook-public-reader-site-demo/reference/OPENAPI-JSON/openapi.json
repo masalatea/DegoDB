@@ -1,0 +1,599 @@
+{
+    "openapi": "3.0.3",
+    "info": {
+        "title": "Sample24 OpenAPI JSON",
+        "version": "1.0.0",
+        "description": "Generated from current single-function proxy target metadata."
+    },
+    "servers": [
+        {
+            "url": "http://127.0.0.1:8082/runs/proxy/SAMPLE24/API-PROXY-SERVER"
+        }
+    ],
+    "tags": [
+        {
+            "name": "EbookReaderBook",
+            "description": "EbookReaderBook single-function proxy endpoints."
+        }
+    ],
+    "paths": {
+        "/proxyserver-EbookReaderBook-GetPublicEbookReaderBook.php": {
+            "post": {
+                "operationId": "EbookReaderBook_GetPublicEbookReaderBook",
+                "tags": [
+                    "EbookReaderBook"
+                ],
+                "summary": "EbookReaderBook.GetPublicEbookReaderBook",
+                "description": "Generated from single-function proxy target metadata.\n\nSource function: `EbookReaderBook.GetPublicEbookReaderBook`.\n\nAuth policy: 認証を掛けません。",
+                "x-mtool": {
+                    "source_name": "EbookReaderBook",
+                    "function_name": "GetPublicEbookReaderBook",
+                    "endpoint_filename": "proxyserver-EbookReaderBook-GetPublicEbookReaderBook.php",
+                    "auth_strategy": "no-security",
+                    "input_kind": "scalar",
+                    "response_mode": "direct-result"
+                },
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "param_EbookReaderBook_Slug_where": {
+                                        "type": "string",
+                                        "example": "string"
+                                    }
+                                },
+                                "required": [
+                                    "param_EbookReaderBook_Slug_where"
+                                ]
+                            },
+                            "example": {
+                                "param_EbookReaderBook_Slug_where": "string"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful proxy response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "_status": {
+                                            "type": "string",
+                                            "example": "OK"
+                                        },
+                                        "Message": {
+                                            "type": "string",
+                                            "example": ""
+                                        },
+                                        "Result": {
+                                            "$ref": "#/components/schemas/EbookReaderBookData"
+                                        }
+                                    }
+                                },
+                                "example": {
+                                    "_status": "OK",
+                                    "Message": "",
+                                    "Result": {
+                                        "Id": "string",
+                                        "Title": "string",
+                                        "Slug": "string",
+                                        "AuthorName": "string",
+                                        "GenreName": "string",
+                                        "Status": "string",
+                                        "Summary": "string",
+                                        "PublishedAt": "string"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Runtime or validation error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "_status": {
+                                            "type": "string",
+                                            "example": "NG"
+                                        },
+                                        "Message": {
+                                            "type": "string",
+                                            "example": "error"
+                                        }
+                                    }
+                                },
+                                "example": {
+                                    "_status": "NG",
+                                    "Message": "error"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/proxyserver-EbookReaderBook-GetPublicEbookReaderBookList.php": {
+            "post": {
+                "operationId": "EbookReaderBook_GetPublicEbookReaderBookList",
+                "tags": [
+                    "EbookReaderBook"
+                ],
+                "summary": "EbookReaderBook.GetPublicEbookReaderBookList",
+                "description": "Generated from single-function proxy target metadata.\n\nSource function: `EbookReaderBook.GetPublicEbookReaderBookList`.\n\nAuth policy: 認証を掛けません。",
+                "x-mtool": {
+                    "source_name": "EbookReaderBook",
+                    "function_name": "GetPublicEbookReaderBookList",
+                    "endpoint_filename": "proxyserver-EbookReaderBook-GetPublicEbookReaderBookList.php",
+                    "auth_strategy": "no-security",
+                    "input_kind": "scalar",
+                    "response_mode": "direct-result"
+                },
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "limit": {
+                                        "type": "integer",
+                                        "example": 0
+                                    }
+                                },
+                                "required": [
+                                    "limit"
+                                ]
+                            },
+                            "example": {
+                                "limit": 0
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful proxy response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "_status": {
+                                            "type": "string",
+                                            "example": "OK"
+                                        },
+                                        "Message": {
+                                            "type": "string",
+                                            "example": ""
+                                        },
+                                        "Result": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/components/schemas/EbookReaderBookData"
+                                            }
+                                        }
+                                    }
+                                },
+                                "example": {
+                                    "_status": "OK",
+                                    "Message": "",
+                                    "Result": [
+                                        {
+                                            "Id": "string",
+                                            "Title": "string",
+                                            "Slug": "string",
+                                            "AuthorName": "string",
+                                            "GenreName": "string",
+                                            "Status": "string",
+                                            "Summary": "string",
+                                            "PublishedAt": "string"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Runtime or validation error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "_status": {
+                                            "type": "string",
+                                            "example": "NG"
+                                        },
+                                        "Message": {
+                                            "type": "string",
+                                            "example": "error"
+                                        }
+                                    }
+                                },
+                                "example": {
+                                    "_status": "NG",
+                                    "Message": "error"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/proxyserver-EbookReaderBook-GetPublicEbookReaderChapter.php": {
+            "post": {
+                "operationId": "EbookReaderBook_GetPublicEbookReaderChapter",
+                "tags": [
+                    "EbookReaderBook"
+                ],
+                "summary": "EbookReaderBook.GetPublicEbookReaderChapter",
+                "description": "Generated from single-function proxy target metadata.\n\nSource function: `EbookReaderBook.GetPublicEbookReaderChapter`.\n\nAuth policy: 認証を掛けません。",
+                "x-mtool": {
+                    "source_name": "EbookReaderBook",
+                    "function_name": "GetPublicEbookReaderChapter",
+                    "endpoint_filename": "proxyserver-EbookReaderBook-GetPublicEbookReaderChapter.php",
+                    "auth_strategy": "no-security",
+                    "input_kind": "scalar",
+                    "response_mode": "direct-result"
+                },
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "param_EbookReaderChapter_BookSlug_where": {
+                                        "type": "string",
+                                        "example": "string"
+                                    },
+                                    "param_EbookReaderChapter_ChapterSlug_where": {
+                                        "type": "string",
+                                        "example": "string"
+                                    }
+                                },
+                                "required": [
+                                    "param_EbookReaderChapter_BookSlug_where",
+                                    "param_EbookReaderChapter_ChapterSlug_where"
+                                ]
+                            },
+                            "example": {
+                                "param_EbookReaderChapter_BookSlug_where": "string",
+                                "param_EbookReaderChapter_ChapterSlug_where": "string"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful proxy response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "_status": {
+                                            "type": "string",
+                                            "example": "OK"
+                                        },
+                                        "Message": {
+                                            "type": "string",
+                                            "example": ""
+                                        },
+                                        "Result": {
+                                            "$ref": "#/components/schemas/EbookReaderBookData"
+                                        }
+                                    }
+                                },
+                                "example": {
+                                    "_status": "OK",
+                                    "Message": "",
+                                    "Result": {
+                                        "Id": "string",
+                                        "Title": "string",
+                                        "Slug": "string",
+                                        "AuthorName": "string",
+                                        "GenreName": "string",
+                                        "Status": "string",
+                                        "Summary": "string",
+                                        "PublishedAt": "string"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Runtime or validation error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "_status": {
+                                            "type": "string",
+                                            "example": "NG"
+                                        },
+                                        "Message": {
+                                            "type": "string",
+                                            "example": "error"
+                                        }
+                                    }
+                                },
+                                "example": {
+                                    "_status": "NG",
+                                    "Message": "error"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/proxyserver-EbookReaderBook-GetPublicEbookReaderChapterList.php": {
+            "post": {
+                "operationId": "EbookReaderBook_GetPublicEbookReaderChapterList",
+                "tags": [
+                    "EbookReaderBook"
+                ],
+                "summary": "EbookReaderBook.GetPublicEbookReaderChapterList",
+                "description": "Generated from single-function proxy target metadata.\n\nSource function: `EbookReaderBook.GetPublicEbookReaderChapterList`.\n\nAuth policy: 認証を掛けません。",
+                "x-mtool": {
+                    "source_name": "EbookReaderBook",
+                    "function_name": "GetPublicEbookReaderChapterList",
+                    "endpoint_filename": "proxyserver-EbookReaderBook-GetPublicEbookReaderChapterList.php",
+                    "auth_strategy": "no-security",
+                    "input_kind": "scalar",
+                    "response_mode": "direct-result"
+                },
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "param_EbookReaderChapter_BookSlug_where": {
+                                        "type": "string",
+                                        "example": "string"
+                                    }
+                                },
+                                "required": [
+                                    "param_EbookReaderChapter_BookSlug_where"
+                                ]
+                            },
+                            "example": {
+                                "param_EbookReaderChapter_BookSlug_where": "string"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful proxy response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "_status": {
+                                            "type": "string",
+                                            "example": "OK"
+                                        },
+                                        "Message": {
+                                            "type": "string",
+                                            "example": ""
+                                        },
+                                        "Result": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/components/schemas/EbookReaderBookData"
+                                            }
+                                        }
+                                    }
+                                },
+                                "example": {
+                                    "_status": "OK",
+                                    "Message": "",
+                                    "Result": [
+                                        {
+                                            "Id": "string",
+                                            "Title": "string",
+                                            "Slug": "string",
+                                            "AuthorName": "string",
+                                            "GenreName": "string",
+                                            "Status": "string",
+                                            "Summary": "string",
+                                            "PublishedAt": "string"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Runtime or validation error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "_status": {
+                                            "type": "string",
+                                            "example": "NG"
+                                        },
+                                        "Message": {
+                                            "type": "string",
+                                            "example": "error"
+                                        }
+                                    }
+                                },
+                                "example": {
+                                    "_status": "NG",
+                                    "Message": "error"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/proxyserver-EbookReaderBook-GetPublicEbookReaderMediaDeliveryList.php": {
+            "post": {
+                "operationId": "EbookReaderBook_GetPublicEbookReaderMediaDeliveryList",
+                "tags": [
+                    "EbookReaderBook"
+                ],
+                "summary": "EbookReaderBook.GetPublicEbookReaderMediaDeliveryList",
+                "description": "Generated from single-function proxy target metadata.\n\nSource function: `EbookReaderBook.GetPublicEbookReaderMediaDeliveryList`.\n\nAuth policy: 認証を掛けません。",
+                "x-mtool": {
+                    "source_name": "EbookReaderBook",
+                    "function_name": "GetPublicEbookReaderMediaDeliveryList",
+                    "endpoint_filename": "proxyserver-EbookReaderBook-GetPublicEbookReaderMediaDeliveryList.php",
+                    "auth_strategy": "no-security",
+                    "input_kind": "scalar",
+                    "response_mode": "direct-result"
+                },
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "param_EbookReaderMediaDelivery_BookSlug_where": {
+                                        "type": "string",
+                                        "example": "string"
+                                    }
+                                },
+                                "required": [
+                                    "param_EbookReaderMediaDelivery_BookSlug_where"
+                                ]
+                            },
+                            "example": {
+                                "param_EbookReaderMediaDelivery_BookSlug_where": "string"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful proxy response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "_status": {
+                                            "type": "string",
+                                            "example": "OK"
+                                        },
+                                        "Message": {
+                                            "type": "string",
+                                            "example": ""
+                                        },
+                                        "Result": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/components/schemas/EbookReaderBookData"
+                                            }
+                                        }
+                                    }
+                                },
+                                "example": {
+                                    "_status": "OK",
+                                    "Message": "",
+                                    "Result": [
+                                        {
+                                            "Id": "string",
+                                            "Title": "string",
+                                            "Slug": "string",
+                                            "AuthorName": "string",
+                                            "GenreName": "string",
+                                            "Status": "string",
+                                            "Summary": "string",
+                                            "PublishedAt": "string"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Runtime or validation error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "_status": {
+                                            "type": "string",
+                                            "example": "NG"
+                                        },
+                                        "Message": {
+                                            "type": "string",
+                                            "example": "error"
+                                        }
+                                    }
+                                },
+                                "example": {
+                                    "_status": "NG",
+                                    "Message": "error"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "EbookReaderBookData": {
+                "type": "object",
+                "title": "EbookReaderBookData",
+                "properties": {
+                    "Id": {
+                        "type": "string",
+                        "example": "string"
+                    },
+                    "Title": {
+                        "type": "string",
+                        "example": "string"
+                    },
+                    "Slug": {
+                        "type": "string",
+                        "example": "string"
+                    },
+                    "AuthorName": {
+                        "type": "string",
+                        "example": "string"
+                    },
+                    "GenreName": {
+                        "type": "string",
+                        "example": "string"
+                    },
+                    "Status": {
+                        "type": "string",
+                        "example": "string"
+                    },
+                    "Summary": {
+                        "type": "string",
+                        "example": "string"
+                    },
+                    "PublishedAt": {
+                        "type": "string",
+                        "example": "string"
+                    }
+                }
+            }
+        }
+    }
+}

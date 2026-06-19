@@ -1,0 +1,105 @@
+{
+    "schema_version": 1,
+    "artifact_type": "openapi-build-plan",
+    "project_key": "SAMPLE24",
+    "source_output_key": "OPENAPI-JSON",
+    "source_output_name": "Sample24 OpenAPI JSON",
+    "proxy_base_url": "http://127.0.0.1:8082/runs/proxy/SAMPLE24/API-PROXY-SERVER",
+    "function_count": 5,
+    "unresolved_function_count": 0,
+    "unresolved_auth_count": 0,
+    "operations": [
+        {
+            "source_name": "EbookReaderBook",
+            "function_name": "GetPublicEbookReaderBookList",
+            "endpoint_filename": "proxyserver-EbookReaderBook-GetPublicEbookReaderBookList.php",
+            "auth_strategy": "no-security",
+            "input_kind": "scalar",
+            "response_mode": "direct-result",
+            "parameter_schemas": {
+                "limit": {
+                    "parameter_name": "limit",
+                    "datatype": "int",
+                    "source": "limit-parameter",
+                    "target_table_name": "",
+                    "target_table_column_name": ""
+                }
+            }
+        },
+        {
+            "source_name": "EbookReaderBook",
+            "function_name": "GetPublicEbookReaderBook",
+            "endpoint_filename": "proxyserver-EbookReaderBook-GetPublicEbookReaderBook.php",
+            "auth_strategy": "no-security",
+            "input_kind": "scalar",
+            "response_mode": "direct-result",
+            "parameter_schemas": {
+                "param_EbookReaderBook_Slug_where": {
+                    "parameter_name": "param_EbookReaderBook_Slug_where",
+                    "datatype": "varchar",
+                    "source": "select-where-parameter-data-type",
+                    "target_table_name": "EbookReaderBook",
+                    "target_table_column_name": "Slug"
+                }
+            }
+        },
+        {
+            "source_name": "EbookReaderBook",
+            "function_name": "GetPublicEbookReaderChapterList",
+            "endpoint_filename": "proxyserver-EbookReaderBook-GetPublicEbookReaderChapterList.php",
+            "auth_strategy": "no-security",
+            "input_kind": "scalar",
+            "response_mode": "direct-result",
+            "parameter_schemas": {
+                "param_EbookReaderChapter_BookSlug_where": {
+                    "parameter_name": "param_EbookReaderChapter_BookSlug_where",
+                    "datatype": "",
+                    "source": "select-where-column-name",
+                    "target_table_name": "EbookReaderChapter",
+                    "target_table_column_name": "Status"
+                }
+            }
+        },
+        {
+            "source_name": "EbookReaderBook",
+            "function_name": "GetPublicEbookReaderChapter",
+            "endpoint_filename": "proxyserver-EbookReaderBook-GetPublicEbookReaderChapter.php",
+            "auth_strategy": "no-security",
+            "input_kind": "scalar",
+            "response_mode": "direct-result",
+            "parameter_schemas": {
+                "param_EbookReaderChapter_BookSlug_where": {
+                    "parameter_name": "param_EbookReaderChapter_BookSlug_where",
+                    "datatype": "",
+                    "source": "select-where-column-name",
+                    "target_table_name": "EbookReaderChapter",
+                    "target_table_column_name": "Status"
+                },
+                "param_EbookReaderChapter_ChapterSlug_where": {
+                    "parameter_name": "param_EbookReaderChapter_ChapterSlug_where",
+                    "datatype": "varchar",
+                    "source": "select-where-parameter-data-type",
+                    "target_table_name": "EbookReaderChapter",
+                    "target_table_column_name": "BookSlug"
+                }
+            }
+        },
+        {
+            "source_name": "EbookReaderBook",
+            "function_name": "GetPublicEbookReaderMediaDeliveryList",
+            "endpoint_filename": "proxyserver-EbookReaderBook-GetPublicEbookReaderMediaDeliveryList.php",
+            "auth_strategy": "no-security",
+            "input_kind": "scalar",
+            "response_mode": "direct-result",
+            "parameter_schemas": {
+                "param_EbookReaderMediaDelivery_BookSlug_where": {
+                    "parameter_name": "param_EbookReaderMediaDelivery_BookSlug_where",
+                    "datatype": "",
+                    "source": "select-where-column-name",
+                    "target_table_name": "EbookReaderMediaDelivery",
+                    "target_table_column_name": "Status"
+                }
+            }
+        }
+    ]
+}

@@ -1,0 +1,181 @@
+{
+    "data_classes": [
+        {
+            "name": "EbookCmsBook",
+            "store_base_path": "",
+            "is_autoload": "1",
+            "inherit_parent_data_class_name": "",
+            "fields": [
+                {
+                    "name": "Id",
+                    "datatype": "int",
+                    "field_list_order": 1,
+                    "ref_data_class_name": "",
+                    "ref_data_class_field_name": ""
+                },
+                {
+                    "name": "Title",
+                    "datatype": "string",
+                    "field_list_order": 2,
+                    "ref_data_class_name": "",
+                    "ref_data_class_field_name": ""
+                },
+                {
+                    "name": "Slug",
+                    "datatype": "string",
+                    "field_list_order": 3,
+                    "ref_data_class_name": "",
+                    "ref_data_class_field_name": ""
+                },
+                {
+                    "name": "AuthorName",
+                    "datatype": "string",
+                    "field_list_order": 4,
+                    "ref_data_class_name": "",
+                    "ref_data_class_field_name": ""
+                },
+                {
+                    "name": "GenreName",
+                    "datatype": "string",
+                    "field_list_order": 5,
+                    "ref_data_class_name": "",
+                    "ref_data_class_field_name": ""
+                },
+                {
+                    "name": "Status",
+                    "datatype": "string",
+                    "field_list_order": 6,
+                    "ref_data_class_name": "",
+                    "ref_data_class_field_name": ""
+                },
+                {
+                    "name": "CoverImageUrl",
+                    "datatype": "string",
+                    "field_list_order": 7,
+                    "ref_data_class_name": "",
+                    "ref_data_class_field_name": ""
+                },
+                {
+                    "name": "Summary",
+                    "datatype": "string",
+                    "field_list_order": 8,
+                    "ref_data_class_name": "",
+                    "ref_data_class_field_name": ""
+                },
+                {
+                    "name": "EpubDownloadUrl",
+                    "datatype": "string",
+                    "field_list_order": 9,
+                    "ref_data_class_name": "",
+                    "ref_data_class_field_name": ""
+                },
+                {
+                    "name": "EpubMimeType",
+                    "datatype": "string",
+                    "field_list_order": 10,
+                    "ref_data_class_name": "",
+                    "ref_data_class_field_name": ""
+                },
+                {
+                    "name": "EpubSha256",
+                    "datatype": "string",
+                    "field_list_order": 11,
+                    "ref_data_class_name": "",
+                    "ref_data_class_field_name": ""
+                },
+                {
+                    "name": "PublishedAt",
+                    "datatype": "datetime",
+                    "field_list_order": 12,
+                    "ref_data_class_name": "",
+                    "ref_data_class_field_name": ""
+                },
+                {
+                    "name": "UpdatedAt",
+                    "datatype": "datetime",
+                    "field_list_order": 13,
+                    "ref_data_class_name": "",
+                    "ref_data_class_field_name": ""
+                }
+            ]
+        },
+        {
+            "name": "EbookCmsChapter",
+            "store_base_path": "",
+            "is_autoload": "1",
+            "inherit_parent_data_class_name": "",
+            "fields": [
+                {
+                    "name": "Id",
+                    "datatype": "int",
+                    "field_list_order": 1,
+                    "ref_data_class_name": "",
+                    "ref_data_class_field_name": ""
+                },
+                {
+                    "name": "EbookCmsBookId",
+                    "datatype": "int",
+                    "field_list_order": 2,
+                    "ref_data_class_name": "",
+                    "ref_data_class_field_name": ""
+                },
+                {
+                    "name": "BookSlug",
+                    "datatype": "string",
+                    "field_list_order": 3,
+                    "ref_data_class_name": "",
+                    "ref_data_class_field_name": ""
+                },
+                {
+                    "name": "ChapterTitle",
+                    "datatype": "string",
+                    "field_list_order": 4,
+                    "ref_data_class_name": "",
+                    "ref_data_class_field_name": ""
+                },
+                {
+                    "name": "ChapterSlug",
+                    "datatype": "string",
+                    "field_list_order": 5,
+                    "ref_data_class_name": "",
+                    "ref_data_class_field_name": ""
+                },
+                {
+                    "name": "Status",
+                    "datatype": "string",
+                    "field_list_order": 6,
+                    "ref_data_class_name": "",
+                    "ref_data_class_field_name": ""
+                },
+                {
+                    "name": "SpineOrder",
+                    "datatype": "int",
+                    "field_list_order": 7,
+                    "ref_data_class_name": "",
+                    "ref_data_class_field_name": ""
+                },
+                {
+                    "name": "BodyMarkdown",
+                    "datatype": "string",
+                    "field_list_order": 8,
+                    "ref_data_class_name": "",
+                    "ref_data_class_field_name": ""
+                },
+                {
+                    "name": "PublishedAt",
+                    "datatype": "datetime",
+                    "field_list_order": 9,
+                    "ref_data_class_name": "",
+                    "ref_data_class_field_name": ""
+                },
+                {
+                    "name": "UpdatedAt",
+                    "datatype": "datetime",
+                    "field_list_order": 10,
+                    "ref_data_class_name": "",
+                    "ref_data_class_field_name": ""
+                }
+            ]
+        }
+    ]
+}

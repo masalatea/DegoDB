@@ -1,0 +1,707 @@
+{
+    "openapi": "3.0.3",
+    "info": {
+        "title": "Sample22 OpenAPI JSON",
+        "version": "1.0.0",
+        "description": "Generated from current single-function proxy target metadata."
+    },
+    "servers": [
+        {
+            "url": "http://127.0.0.1:8082/runs/proxy/SAMPLE22/API-PROXY-SERVER"
+        }
+    ],
+    "tags": [
+        {
+            "name": "EbookWorkflowChapter",
+            "description": "EbookWorkflowChapter single-function proxy endpoints."
+        }
+    ],
+    "paths": {
+        "/proxyserver-EbookWorkflowChapter-GetPublishedEbookWorkflowChapter.php": {
+            "post": {
+                "operationId": "EbookWorkflowChapter_GetPublishedEbookWorkflowChapter",
+                "tags": [
+                    "EbookWorkflowChapter"
+                ],
+                "summary": "EbookWorkflowChapter.GetPublishedEbookWorkflowChapter",
+                "description": "Generated from single-function proxy target metadata.\n\nSource function: `EbookWorkflowChapter.GetPublishedEbookWorkflowChapter`.\n\nAuth policy: 認証を掛けません。",
+                "x-mtool": {
+                    "source_name": "EbookWorkflowChapter",
+                    "function_name": "GetPublishedEbookWorkflowChapter",
+                    "endpoint_filename": "proxyserver-EbookWorkflowChapter-GetPublishedEbookWorkflowChapter.php",
+                    "auth_strategy": "no-security",
+                    "input_kind": "scalar",
+                    "response_mode": "direct-result"
+                },
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "param_EbookWorkflowPublishedChapter_BookSlug_where": {
+                                        "type": "string",
+                                        "example": "string"
+                                    },
+                                    "param_EbookWorkflowPublishedChapter_ChapterSlug_where": {
+                                        "type": "string",
+                                        "example": "string"
+                                    }
+                                },
+                                "required": [
+                                    "param_EbookWorkflowPublishedChapter_BookSlug_where",
+                                    "param_EbookWorkflowPublishedChapter_ChapterSlug_where"
+                                ]
+                            },
+                            "example": {
+                                "param_EbookWorkflowPublishedChapter_BookSlug_where": "string",
+                                "param_EbookWorkflowPublishedChapter_ChapterSlug_where": "string"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful proxy response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "_status": {
+                                            "type": "string",
+                                            "example": "OK"
+                                        },
+                                        "Message": {
+                                            "type": "string",
+                                            "example": ""
+                                        },
+                                        "Result": {
+                                            "$ref": "#/components/schemas/EbookWorkflowChapterData"
+                                        }
+                                    }
+                                },
+                                "example": {
+                                    "_status": "OK",
+                                    "Message": "",
+                                    "Result": {
+                                        "Id": "string",
+                                        "EbookWorkflowBookId": "string",
+                                        "ChapterTitle": "string",
+                                        "ChapterSlug": "string",
+                                        "Status": "string",
+                                        "SpineOrder": "string",
+                                        "NavLabel": "string",
+                                        "EpubResourcePath": "string",
+                                        "BodyMarkdown": "string",
+                                        "PublishedAt": "string",
+                                        "UpdatedAt": "string"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Runtime or validation error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "_status": {
+                                            "type": "string",
+                                            "example": "NG"
+                                        },
+                                        "Message": {
+                                            "type": "string",
+                                            "example": "error"
+                                        }
+                                    }
+                                },
+                                "example": {
+                                    "_status": "NG",
+                                    "Message": "error"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/proxyserver-EbookWorkflowChapter-GetPublishedEbookWorkflowChapterList.php": {
+            "post": {
+                "operationId": "EbookWorkflowChapter_GetPublishedEbookWorkflowChapterList",
+                "tags": [
+                    "EbookWorkflowChapter"
+                ],
+                "summary": "EbookWorkflowChapter.GetPublishedEbookWorkflowChapterList",
+                "description": "Generated from single-function proxy target metadata.\n\nSource function: `EbookWorkflowChapter.GetPublishedEbookWorkflowChapterList`.\n\nAuth policy: 認証を掛けません。",
+                "x-mtool": {
+                    "source_name": "EbookWorkflowChapter",
+                    "function_name": "GetPublishedEbookWorkflowChapterList",
+                    "endpoint_filename": "proxyserver-EbookWorkflowChapter-GetPublishedEbookWorkflowChapterList.php",
+                    "auth_strategy": "no-security",
+                    "input_kind": "scalar",
+                    "response_mode": "direct-result"
+                },
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "param_EbookWorkflowPublishedChapter_BookSlug_where": {
+                                        "type": "string",
+                                        "example": "string"
+                                    }
+                                },
+                                "required": [
+                                    "param_EbookWorkflowPublishedChapter_BookSlug_where"
+                                ]
+                            },
+                            "example": {
+                                "param_EbookWorkflowPublishedChapter_BookSlug_where": "string"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful proxy response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "_status": {
+                                            "type": "string",
+                                            "example": "OK"
+                                        },
+                                        "Message": {
+                                            "type": "string",
+                                            "example": ""
+                                        },
+                                        "Result": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/components/schemas/EbookWorkflowChapterData"
+                                            }
+                                        }
+                                    }
+                                },
+                                "example": {
+                                    "_status": "OK",
+                                    "Message": "",
+                                    "Result": [
+                                        {
+                                            "Id": "string",
+                                            "EbookWorkflowBookId": "string",
+                                            "ChapterTitle": "string",
+                                            "ChapterSlug": "string",
+                                            "Status": "string",
+                                            "SpineOrder": "string",
+                                            "NavLabel": "string",
+                                            "EpubResourcePath": "string",
+                                            "BodyMarkdown": "string",
+                                            "PublishedAt": "string",
+                                            "UpdatedAt": "string"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Runtime or validation error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "_status": {
+                                            "type": "string",
+                                            "example": "NG"
+                                        },
+                                        "Message": {
+                                            "type": "string",
+                                            "example": "error"
+                                        }
+                                    }
+                                },
+                                "example": {
+                                    "_status": "NG",
+                                    "Message": "error"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/proxyserver-EbookWorkflowChapter-InsertEbookWorkflowChapter.php": {
+            "post": {
+                "operationId": "EbookWorkflowChapter_InsertEbookWorkflowChapter",
+                "tags": [
+                    "EbookWorkflowChapter"
+                ],
+                "summary": "EbookWorkflowChapter.InsertEbookWorkflowChapter",
+                "description": "Generated from single-function proxy target metadata.\n\nSource function: `EbookWorkflowChapter.InsertEbookWorkflowChapter`.\n\nAuth policy: 認証を掛けません。",
+                "x-mtool": {
+                    "source_name": "EbookWorkflowChapter",
+                    "function_name": "InsertEbookWorkflowChapter",
+                    "endpoint_filename": "proxyserver-EbookWorkflowChapter-InsertEbookWorkflowChapter.php",
+                    "auth_strategy": "no-security",
+                    "input_kind": "object",
+                    "response_mode": "insert-id-single"
+                },
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "EbookWorkflowChapterObj": {
+                                        "$ref": "#/components/schemas/EbookWorkflowChapterData"
+                                    }
+                                },
+                                "required": [
+                                    "EbookWorkflowChapterObj"
+                                ]
+                            },
+                            "example": {
+                                "EbookWorkflowChapterObj": {
+                                    "Id": "string",
+                                    "EbookWorkflowBookId": "string",
+                                    "ChapterTitle": "string",
+                                    "ChapterSlug": "string",
+                                    "Status": "string",
+                                    "SpineOrder": "string",
+                                    "NavLabel": "string",
+                                    "EpubResourcePath": "string",
+                                    "BodyMarkdown": "string",
+                                    "PublishedAt": "string",
+                                    "UpdatedAt": "string"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful proxy response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "_status": {
+                                            "type": "string",
+                                            "example": "OK"
+                                        },
+                                        "Message": {
+                                            "type": "string",
+                                            "example": ""
+                                        },
+                                        "InsertID": {
+                                            "type": "integer",
+                                            "example": 1
+                                        }
+                                    }
+                                },
+                                "example": {
+                                    "_status": "OK",
+                                    "Message": "",
+                                    "InsertID": 1
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Runtime or validation error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "_status": {
+                                            "type": "string",
+                                            "example": "NG"
+                                        },
+                                        "Message": {
+                                            "type": "string",
+                                            "example": "error"
+                                        }
+                                    }
+                                },
+                                "example": {
+                                    "_status": "NG",
+                                    "Message": "error"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/proxyserver-EbookWorkflowChapter-PublishEbookWorkflowChapter.php": {
+            "post": {
+                "operationId": "EbookWorkflowChapter_PublishEbookWorkflowChapter",
+                "tags": [
+                    "EbookWorkflowChapter"
+                ],
+                "summary": "EbookWorkflowChapter.PublishEbookWorkflowChapter",
+                "description": "Generated from single-function proxy target metadata.\n\nSource function: `EbookWorkflowChapter.PublishEbookWorkflowChapter`.\n\nAuth policy: 認証を掛けません。",
+                "x-mtool": {
+                    "source_name": "EbookWorkflowChapter",
+                    "function_name": "PublishEbookWorkflowChapter",
+                    "endpoint_filename": "proxyserver-EbookWorkflowChapter-PublishEbookWorkflowChapter.php",
+                    "auth_strategy": "no-security",
+                    "input_kind": "object",
+                    "response_mode": "none"
+                },
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "EbookWorkflowChapterObj": {
+                                        "$ref": "#/components/schemas/EbookWorkflowChapterData"
+                                    }
+                                },
+                                "required": [
+                                    "EbookWorkflowChapterObj"
+                                ]
+                            },
+                            "example": {
+                                "EbookWorkflowChapterObj": {
+                                    "Id": "string",
+                                    "EbookWorkflowBookId": "string",
+                                    "ChapterTitle": "string",
+                                    "ChapterSlug": "string",
+                                    "Status": "string",
+                                    "SpineOrder": "string",
+                                    "NavLabel": "string",
+                                    "EpubResourcePath": "string",
+                                    "BodyMarkdown": "string",
+                                    "PublishedAt": "string",
+                                    "UpdatedAt": "string"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful proxy response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "_status": {
+                                            "type": "string",
+                                            "example": "OK"
+                                        },
+                                        "Message": {
+                                            "type": "string",
+                                            "example": ""
+                                        }
+                                    }
+                                },
+                                "example": {
+                                    "_status": "OK",
+                                    "Message": ""
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Runtime or validation error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "_status": {
+                                            "type": "string",
+                                            "example": "NG"
+                                        },
+                                        "Message": {
+                                            "type": "string",
+                                            "example": "error"
+                                        }
+                                    }
+                                },
+                                "example": {
+                                    "_status": "NG",
+                                    "Message": "error"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/proxyserver-EbookWorkflowChapter-UpdateEbookWorkflowChapterDraft.php": {
+            "post": {
+                "operationId": "EbookWorkflowChapter_UpdateEbookWorkflowChapterDraft",
+                "tags": [
+                    "EbookWorkflowChapter"
+                ],
+                "summary": "EbookWorkflowChapter.UpdateEbookWorkflowChapterDraft",
+                "description": "Generated from single-function proxy target metadata.\n\nSource function: `EbookWorkflowChapter.UpdateEbookWorkflowChapterDraft`.\n\nAuth policy: 認証を掛けません。",
+                "x-mtool": {
+                    "source_name": "EbookWorkflowChapter",
+                    "function_name": "UpdateEbookWorkflowChapterDraft",
+                    "endpoint_filename": "proxyserver-EbookWorkflowChapter-UpdateEbookWorkflowChapterDraft.php",
+                    "auth_strategy": "no-security",
+                    "input_kind": "object",
+                    "response_mode": "none"
+                },
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "EbookWorkflowChapterObj": {
+                                        "$ref": "#/components/schemas/EbookWorkflowChapterData"
+                                    }
+                                },
+                                "required": [
+                                    "EbookWorkflowChapterObj"
+                                ]
+                            },
+                            "example": {
+                                "EbookWorkflowChapterObj": {
+                                    "Id": "string",
+                                    "EbookWorkflowBookId": "string",
+                                    "ChapterTitle": "string",
+                                    "ChapterSlug": "string",
+                                    "Status": "string",
+                                    "SpineOrder": "string",
+                                    "NavLabel": "string",
+                                    "EpubResourcePath": "string",
+                                    "BodyMarkdown": "string",
+                                    "PublishedAt": "string",
+                                    "UpdatedAt": "string"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful proxy response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "_status": {
+                                            "type": "string",
+                                            "example": "OK"
+                                        },
+                                        "Message": {
+                                            "type": "string",
+                                            "example": ""
+                                        }
+                                    }
+                                },
+                                "example": {
+                                    "_status": "OK",
+                                    "Message": ""
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Runtime or validation error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "_status": {
+                                            "type": "string",
+                                            "example": "NG"
+                                        },
+                                        "Message": {
+                                            "type": "string",
+                                            "example": "error"
+                                        }
+                                    }
+                                },
+                                "example": {
+                                    "_status": "NG",
+                                    "Message": "error"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/proxyserver-EbookWorkflowChapter-UpdateEbookWorkflowChapterOrder.php": {
+            "post": {
+                "operationId": "EbookWorkflowChapter_UpdateEbookWorkflowChapterOrder",
+                "tags": [
+                    "EbookWorkflowChapter"
+                ],
+                "summary": "EbookWorkflowChapter.UpdateEbookWorkflowChapterOrder",
+                "description": "Generated from single-function proxy target metadata.\n\nSource function: `EbookWorkflowChapter.UpdateEbookWorkflowChapterOrder`.\n\nAuth policy: 認証を掛けません。",
+                "x-mtool": {
+                    "source_name": "EbookWorkflowChapter",
+                    "function_name": "UpdateEbookWorkflowChapterOrder",
+                    "endpoint_filename": "proxyserver-EbookWorkflowChapter-UpdateEbookWorkflowChapterOrder.php",
+                    "auth_strategy": "no-security",
+                    "input_kind": "object",
+                    "response_mode": "none"
+                },
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "EbookWorkflowChapterObj": {
+                                        "$ref": "#/components/schemas/EbookWorkflowChapterData"
+                                    }
+                                },
+                                "required": [
+                                    "EbookWorkflowChapterObj"
+                                ]
+                            },
+                            "example": {
+                                "EbookWorkflowChapterObj": {
+                                    "Id": "string",
+                                    "EbookWorkflowBookId": "string",
+                                    "ChapterTitle": "string",
+                                    "ChapterSlug": "string",
+                                    "Status": "string",
+                                    "SpineOrder": "string",
+                                    "NavLabel": "string",
+                                    "EpubResourcePath": "string",
+                                    "BodyMarkdown": "string",
+                                    "PublishedAt": "string",
+                                    "UpdatedAt": "string"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful proxy response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "_status": {
+                                            "type": "string",
+                                            "example": "OK"
+                                        },
+                                        "Message": {
+                                            "type": "string",
+                                            "example": ""
+                                        }
+                                    }
+                                },
+                                "example": {
+                                    "_status": "OK",
+                                    "Message": ""
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Runtime or validation error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "_status": {
+                                            "type": "string",
+                                            "example": "NG"
+                                        },
+                                        "Message": {
+                                            "type": "string",
+                                            "example": "error"
+                                        }
+                                    }
+                                },
+                                "example": {
+                                    "_status": "NG",
+                                    "Message": "error"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "EbookWorkflowChapterData": {
+                "type": "object",
+                "title": "EbookWorkflowChapterData",
+                "properties": {
+                    "Id": {
+                        "type": "string",
+                        "example": "string"
+                    },
+                    "EbookWorkflowBookId": {
+                        "type": "string",
+                        "example": "string"
+                    },
+                    "ChapterTitle": {
+                        "type": "string",
+                        "example": "string"
+                    },
+                    "ChapterSlug": {
+                        "type": "string",
+                        "example": "string"
+                    },
+                    "Status": {
+                        "type": "string",
+                        "example": "string"
+                    },
+                    "SpineOrder": {
+                        "type": "string",
+                        "example": "string"
+                    },
+                    "NavLabel": {
+                        "type": "string",
+                        "example": "string"
+                    },
+                    "EpubResourcePath": {
+                        "type": "string",
+                        "example": "string"
+                    },
+                    "BodyMarkdown": {
+                        "type": "string",
+                        "example": "string"
+                    },
+                    "PublishedAt": {
+                        "type": "string",
+                        "example": "string"
+                    },
+                    "UpdatedAt": {
+                        "type": "string",
+                        "example": "string"
+                    }
+                }
+            }
+        }
+    }
+}

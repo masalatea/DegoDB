@@ -1,0 +1,8 @@
+{
+    "project_key": "SAMPLE26",
+    "name": "Sample 26 Ebook Headless CMS Capstone",
+    "slug": "sample26-ebook-headless-cms-capstone",
+    "lifecycle_status": "paused",
+    "owner_login_id": "admin",
+    "description": "電子書籍 site / app 向け public API、reader HTML、ProjectToken protected editor API、metadata bundle を 1 project から publish する tutorial capstone project。"
+}

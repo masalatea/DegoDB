@@ -1,0 +1,81 @@
+{
+    "schema_version": 1,
+    "artifact_type": "openapi-build-plan",
+    "project_key": "SAMPLE23",
+    "source_output_key": "OPENAPI-JSON",
+    "source_output_name": "Sample23 OpenAPI JSON",
+    "proxy_base_url": "http://127.0.0.1:8082/runs/proxy/SAMPLE23/API-PROXY-SERVER",
+    "function_count": 4,
+    "unresolved_function_count": 0,
+    "unresolved_auth_count": 0,
+    "operations": [
+        {
+            "source_name": "EbookMediaAsset",
+            "function_name": "GetPublicEbookMediaDeliveryList",
+            "endpoint_filename": "proxyserver-EbookMediaAsset-GetPublicEbookMediaDeliveryList.php",
+            "auth_strategy": "no-security",
+            "input_kind": "scalar",
+            "response_mode": "direct-result",
+            "parameter_schemas": {
+                "param_EbookMediaDelivery_BookSlug_where": {
+                    "parameter_name": "param_EbookMediaDelivery_BookSlug_where",
+                    "datatype": "",
+                    "source": "select-where-column-name",
+                    "target_table_name": "EbookMediaDelivery",
+                    "target_table_column_name": "Status"
+                }
+            }
+        },
+        {
+            "source_name": "EbookMediaAsset",
+            "function_name": "GetPublicEbookMediaAsset",
+            "endpoint_filename": "proxyserver-EbookMediaAsset-GetPublicEbookMediaAsset.php",
+            "auth_strategy": "no-security",
+            "input_kind": "scalar",
+            "response_mode": "direct-result",
+            "parameter_schemas": {
+                "param_EbookMediaDelivery_AssetSlug_where": {
+                    "parameter_name": "param_EbookMediaDelivery_AssetSlug_where",
+                    "datatype": "",
+                    "source": "select-where-column-name",
+                    "target_table_name": "EbookMediaDelivery",
+                    "target_table_column_name": "Status"
+                }
+            }
+        },
+        {
+            "source_name": "EbookMediaAsset",
+            "function_name": "InsertEbookMediaAsset",
+            "endpoint_filename": "proxyserver-EbookMediaAsset-InsertEbookMediaAsset.php",
+            "auth_strategy": "no-security",
+            "input_kind": "object",
+            "response_mode": "insert-id-single",
+            "parameter_schemas": {
+                "EbookMediaAssetObj": {
+                    "parameter_name": "EbookMediaAssetObj",
+                    "datatype": "",
+                    "source": "name-inference",
+                    "target_table_name": "",
+                    "target_table_column_name": ""
+                }
+            }
+        },
+        {
+            "source_name": "EbookMediaAsset",
+            "function_name": "UpdateEbookMediaAssetMetadata",
+            "endpoint_filename": "proxyserver-EbookMediaAsset-UpdateEbookMediaAssetMetadata.php",
+            "auth_strategy": "no-security",
+            "input_kind": "object",
+            "response_mode": "none",
+            "parameter_schemas": {
+                "EbookMediaAssetObj": {
+                    "parameter_name": "EbookMediaAssetObj",
+                    "datatype": "",
+                    "source": "name-inference",
+                    "target_table_name": "",
+                    "target_table_column_name": ""
+                }
+            }
+        }
+    ]
+}

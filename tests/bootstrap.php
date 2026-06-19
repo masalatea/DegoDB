@@ -20,6 +20,14 @@ require_once dirname(__DIR__) . '/mtool/scripts/lib/sample15_project_metadata_ex
 require_once dirname(__DIR__) . '/mtool/scripts/lib/sample16_authenticated_proxy_check.php';
 require_once dirname(__DIR__) . '/mtool/scripts/lib/sample17_multi_output_project_check.php';
 require_once dirname(__DIR__) . '/mtool/scripts/lib/sample18_mini_task_board_demo_check.php';
+require_once dirname(__DIR__) . '/mtool/scripts/lib/sample19_json_first_content_model_output_check.php';
+require_once dirname(__DIR__) . '/mtool/scripts/lib/sample20_content_publishing_demo_check.php';
+require_once dirname(__DIR__) . '/mtool/scripts/lib/sample21_ebook_catalog_api_demo_check.php';
+require_once dirname(__DIR__) . '/mtool/scripts/lib/sample22_ebook_chapter_workflow_demo_check.php';
+require_once dirname(__DIR__) . '/mtool/scripts/lib/sample23_ebook_media_metadata_demo_check.php';
+require_once dirname(__DIR__) . '/mtool/scripts/lib/sample24_ebook_public_reader_site_demo_check.php';
+require_once dirname(__DIR__) . '/mtool/scripts/lib/sample25_ebook_editor_auth_cms_demo_check.php';
+require_once dirname(__DIR__) . '/mtool/scripts/lib/sample26_ebook_headless_cms_capstone_check.php';
 require_once dirname(__DIR__) . '/mtool/scripts/lib/user_db_contract.php';
 require_once dirname(__DIR__) . '/mtool/scripts/lib/user_db_contract_runtime.php';
 require_once dirname(__DIR__) . '/mtool/scripts/lib/sample9_testpattern_default_property_output_check.php';

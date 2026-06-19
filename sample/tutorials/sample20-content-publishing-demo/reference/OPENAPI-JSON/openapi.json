@@ -1,0 +1,286 @@
+{
+    "openapi": "3.0.3",
+    "info": {
+        "title": "Sample20 OpenAPI JSON",
+        "version": "1.0.0",
+        "description": "Generated from current single-function proxy target metadata."
+    },
+    "servers": [
+        {
+            "url": "http://127.0.0.1:8082/runs/proxy/SAMPLE20/API-PROXY-SERVER"
+        }
+    ],
+    "tags": [
+        {
+            "name": "ContentArticle",
+            "description": "ContentArticle single-function proxy endpoints."
+        }
+    ],
+    "paths": {
+        "/proxyserver-ContentArticle-GetPublishedContentArticle.php": {
+            "post": {
+                "operationId": "ContentArticle_GetPublishedContentArticle",
+                "tags": [
+                    "ContentArticle"
+                ],
+                "summary": "ContentArticle.GetPublishedContentArticle",
+                "description": "Generated from single-function proxy target metadata.\n\nSource function: `ContentArticle.GetPublishedContentArticle`.\n\nAuth policy: 認証を掛けません。",
+                "x-mtool": {
+                    "source_name": "ContentArticle",
+                    "function_name": "GetPublishedContentArticle",
+                    "endpoint_filename": "proxyserver-ContentArticle-GetPublishedContentArticle.php",
+                    "auth_strategy": "no-security",
+                    "input_kind": "scalar",
+                    "response_mode": "direct-result"
+                },
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "param_ContentArticle_Slug_where": {
+                                        "type": "string",
+                                        "example": "string"
+                                    }
+                                },
+                                "required": [
+                                    "param_ContentArticle_Slug_where"
+                                ]
+                            },
+                            "example": {
+                                "param_ContentArticle_Slug_where": "string"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful proxy response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "_status": {
+                                            "type": "string",
+                                            "example": "OK"
+                                        },
+                                        "Message": {
+                                            "type": "string",
+                                            "example": ""
+                                        },
+                                        "Result": {
+                                            "$ref": "#/components/schemas/ContentArticleData"
+                                        }
+                                    }
+                                },
+                                "example": {
+                                    "_status": "OK",
+                                    "Message": "",
+                                    "Result": {
+                                        "Id": "string",
+                                        "Title": "string",
+                                        "Slug": "string",
+                                        "CategoryName": "string",
+                                        "AuthorName": "string",
+                                        "Status": "string",
+                                        "PublishedAt": "string",
+                                        "Summary": "string",
+                                        "Body": "string",
+                                        "UpdatedAt": "string"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Runtime or validation error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "_status": {
+                                            "type": "string",
+                                            "example": "NG"
+                                        },
+                                        "Message": {
+                                            "type": "string",
+                                            "example": "error"
+                                        }
+                                    }
+                                },
+                                "example": {
+                                    "_status": "NG",
+                                    "Message": "error"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/proxyserver-ContentArticle-GetPublishedContentArticleList.php": {
+            "post": {
+                "operationId": "ContentArticle_GetPublishedContentArticleList",
+                "tags": [
+                    "ContentArticle"
+                ],
+                "summary": "ContentArticle.GetPublishedContentArticleList",
+                "description": "Generated from single-function proxy target metadata.\n\nSource function: `ContentArticle.GetPublishedContentArticleList`.\n\nAuth policy: 認証を掛けません。",
+                "x-mtool": {
+                    "source_name": "ContentArticle",
+                    "function_name": "GetPublishedContentArticleList",
+                    "endpoint_filename": "proxyserver-ContentArticle-GetPublishedContentArticleList.php",
+                    "auth_strategy": "no-security",
+                    "input_kind": "scalar",
+                    "response_mode": "direct-result"
+                },
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "limit": {
+                                        "type": "integer",
+                                        "example": 0
+                                    }
+                                },
+                                "required": [
+                                    "limit"
+                                ]
+                            },
+                            "example": {
+                                "limit": 0
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful proxy response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "_status": {
+                                            "type": "string",
+                                            "example": "OK"
+                                        },
+                                        "Message": {
+                                            "type": "string",
+                                            "example": ""
+                                        },
+                                        "Result": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/components/schemas/ContentArticleData"
+                                            }
+                                        }
+                                    }
+                                },
+                                "example": {
+                                    "_status": "OK",
+                                    "Message": "",
+                                    "Result": [
+                                        {
+                                            "Id": "string",
+                                            "Title": "string",
+                                            "Slug": "string",
+                                            "CategoryName": "string",
+                                            "AuthorName": "string",
+                                            "Status": "string",
+                                            "PublishedAt": "string",
+                                            "Summary": "string",
+                                            "Body": "string",
+                                            "UpdatedAt": "string"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Runtime or validation error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "_status": {
+                                            "type": "string",
+                                            "example": "NG"
+                                        },
+                                        "Message": {
+                                            "type": "string",
+                                            "example": "error"
+                                        }
+                                    }
+                                },
+                                "example": {
+                                    "_status": "NG",
+                                    "Message": "error"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "ContentArticleData": {
+                "type": "object",
+                "title": "ContentArticleData",
+                "properties": {
+                    "Id": {
+                        "type": "string",
+                        "example": "string"
+                    },
+                    "Title": {
+                        "type": "string",
+                        "example": "string"
+                    },
+                    "Slug": {
+                        "type": "string",
+                        "example": "string"
+                    },
+                    "CategoryName": {
+                        "type": "string",
+                        "example": "string"
+                    },
+                    "AuthorName": {
+                        "type": "string",
+                        "example": "string"
+                    },
+                    "Status": {
+                        "type": "string",
+                        "example": "string"
+                    },
+                    "PublishedAt": {
+                        "type": "string",
+                        "example": "string"
+                    },
+                    "Summary": {
+                        "type": "string",
+                        "example": "string"
+                    },
+                    "Body": {
+                        "type": "string",
+                        "example": "string"
+                    },
+                    "UpdatedAt": {
+                        "type": "string",
+                        "example": "string"
+                    }
+                }
+            }
+        }
+    }
+}

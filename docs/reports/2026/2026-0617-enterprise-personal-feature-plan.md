@@ -42,6 +42,17 @@ DegoDB の価値は、生成された source file そのものよりも、再生
 
 Security は enterprise-only の追加機能ではなく、個人利用を含む全 mode の前提にする。
 
+## Current Status As Of 2026-06-19
+
+SQLite persistence prerequisite is treated as closed for the current Mtool config-store scope. The next security foundation slice should not start with SSO / OIDC or a broad permission UI. Start with the smallest foundation that protects later work:
+
+1. security regression checks for secret leakage and public exposure;
+2. public route / artifact visibility policy freeze;
+3. audit log schema boundary for MySQL / MariaDB and SQLite config store;
+4. minimal project role model only after the audit event shape is clear.
+
+This makes audit log foundation the first implementation-bearing slice, with security regression checks as the entry gate. Minimal project permissions follow it. API auth v2 remains a parallel policy-contract preparation, not the first security foundation implementation.
+
 | Area | Policy |
 | --- | --- |
 | Secrets | password / token / populated secret file は canonical metadata、bundle、log、generated output に含めない |

@@ -1,0 +1,979 @@
+{
+    "openapi": "3.0.3",
+    "info": {
+        "title": "Sample26 OpenAPI JSON",
+        "version": "1.0.0",
+        "description": "Generated from current single-function proxy target metadata."
+    },
+    "servers": [
+        {
+            "url": "http://127.0.0.1:8082/runs/proxy/SAMPLE26/API-PROXY-SERVER"
+        }
+    ],
+    "tags": [
+        {
+            "name": "EbookCmsBook",
+            "description": "EbookCmsBook single-function proxy endpoints."
+        }
+    ],
+    "paths": {
+        "/proxyserver-EbookCmsBook-GetEditorEbookCmsChapter.php": {
+            "post": {
+                "operationId": "EbookCmsBook_GetEditorEbookCmsChapter",
+                "tags": [
+                    "EbookCmsBook"
+                ],
+                "summary": "EbookCmsBook.GetEditorEbookCmsChapter",
+                "description": "Generated from single-function proxy target metadata.\n\nSource function: `EbookCmsBook.GetEditorEbookCmsChapter`.\n\nAuth policy: project token 認証です。",
+                "x-mtool": {
+                    "source_name": "EbookCmsBook",
+                    "function_name": "GetEditorEbookCmsChapter",
+                    "endpoint_filename": "proxyserver-EbookCmsBook-GetEditorEbookCmsChapter.php",
+                    "auth_strategy": "project-token",
+                    "input_kind": "scalar",
+                    "response_mode": "direct-result"
+                },
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "TOKEN": {
+                                        "type": "string",
+                                        "description": "Project token body field.",
+                                        "example": "project-token"
+                                    },
+                                    "param_EbookCmsChapter_Id_where": {
+                                        "type": "integer",
+                                        "example": 0
+                                    }
+                                },
+                                "required": [
+                                    "TOKEN",
+                                    "param_EbookCmsChapter_Id_where"
+                                ]
+                            },
+                            "example": {
+                                "TOKEN": "project-token",
+                                "param_EbookCmsChapter_Id_where": 0
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful proxy response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "_status": {
+                                            "type": "string",
+                                            "example": "OK"
+                                        },
+                                        "Message": {
+                                            "type": "string",
+                                            "example": ""
+                                        },
+                                        "Result": {
+                                            "$ref": "#/components/schemas/EbookCmsBookData"
+                                        }
+                                    }
+                                },
+                                "example": {
+                                    "_status": "OK",
+                                    "Message": "",
+                                    "Result": {
+                                        "Id": "string",
+                                        "Title": "string",
+                                        "Slug": "string",
+                                        "AuthorName": "string",
+                                        "GenreName": "string",
+                                        "Status": "string",
+                                        "CoverImageUrl": "string",
+                                        "Summary": "string",
+                                        "EpubDownloadUrl": "string",
+                                        "EpubMimeType": "string",
+                                        "EpubSha256": "string",
+                                        "PublishedAt": "string",
+                                        "UpdatedAt": "string"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Runtime or validation error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "_status": {
+                                            "type": "string",
+                                            "example": "NG"
+                                        },
+                                        "Message": {
+                                            "type": "string",
+                                            "example": "error"
+                                        }
+                                    }
+                                },
+                                "example": {
+                                    "_status": "NG",
+                                    "Message": "error"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/proxyserver-EbookCmsBook-GetPublicEbookCmsBook.php": {
+            "post": {
+                "operationId": "EbookCmsBook_GetPublicEbookCmsBook",
+                "tags": [
+                    "EbookCmsBook"
+                ],
+                "summary": "EbookCmsBook.GetPublicEbookCmsBook",
+                "description": "Generated from single-function proxy target metadata.\n\nSource function: `EbookCmsBook.GetPublicEbookCmsBook`.\n\nAuth policy: 認証を掛けません。",
+                "x-mtool": {
+                    "source_name": "EbookCmsBook",
+                    "function_name": "GetPublicEbookCmsBook",
+                    "endpoint_filename": "proxyserver-EbookCmsBook-GetPublicEbookCmsBook.php",
+                    "auth_strategy": "no-security",
+                    "input_kind": "scalar",
+                    "response_mode": "direct-result"
+                },
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "param_EbookCmsBook_Slug_where": {
+                                        "type": "string",
+                                        "example": "string"
+                                    }
+                                },
+                                "required": [
+                                    "param_EbookCmsBook_Slug_where"
+                                ]
+                            },
+                            "example": {
+                                "param_EbookCmsBook_Slug_where": "string"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful proxy response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "_status": {
+                                            "type": "string",
+                                            "example": "OK"
+                                        },
+                                        "Message": {
+                                            "type": "string",
+                                            "example": ""
+                                        },
+                                        "Result": {
+                                            "$ref": "#/components/schemas/EbookCmsBookData"
+                                        }
+                                    }
+                                },
+                                "example": {
+                                    "_status": "OK",
+                                    "Message": "",
+                                    "Result": {
+                                        "Id": "string",
+                                        "Title": "string",
+                                        "Slug": "string",
+                                        "AuthorName": "string",
+                                        "GenreName": "string",
+                                        "Status": "string",
+                                        "CoverImageUrl": "string",
+                                        "Summary": "string",
+                                        "EpubDownloadUrl": "string",
+                                        "EpubMimeType": "string",
+                                        "EpubSha256": "string",
+                                        "PublishedAt": "string",
+                                        "UpdatedAt": "string"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Runtime or validation error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "_status": {
+                                            "type": "string",
+                                            "example": "NG"
+                                        },
+                                        "Message": {
+                                            "type": "string",
+                                            "example": "error"
+                                        }
+                                    }
+                                },
+                                "example": {
+                                    "_status": "NG",
+                                    "Message": "error"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/proxyserver-EbookCmsBook-GetPublicEbookCmsBookList.php": {
+            "post": {
+                "operationId": "EbookCmsBook_GetPublicEbookCmsBookList",
+                "tags": [
+                    "EbookCmsBook"
+                ],
+                "summary": "EbookCmsBook.GetPublicEbookCmsBookList",
+                "description": "Generated from single-function proxy target metadata.\n\nSource function: `EbookCmsBook.GetPublicEbookCmsBookList`.\n\nAuth policy: 認証を掛けません。",
+                "x-mtool": {
+                    "source_name": "EbookCmsBook",
+                    "function_name": "GetPublicEbookCmsBookList",
+                    "endpoint_filename": "proxyserver-EbookCmsBook-GetPublicEbookCmsBookList.php",
+                    "auth_strategy": "no-security",
+                    "input_kind": "scalar",
+                    "response_mode": "direct-result"
+                },
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "limit": {
+                                        "type": "integer",
+                                        "example": 0
+                                    }
+                                },
+                                "required": [
+                                    "limit"
+                                ]
+                            },
+                            "example": {
+                                "limit": 0
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful proxy response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "_status": {
+                                            "type": "string",
+                                            "example": "OK"
+                                        },
+                                        "Message": {
+                                            "type": "string",
+                                            "example": ""
+                                        },
+                                        "Result": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/components/schemas/EbookCmsBookData"
+                                            }
+                                        }
+                                    }
+                                },
+                                "example": {
+                                    "_status": "OK",
+                                    "Message": "",
+                                    "Result": [
+                                        {
+                                            "Id": "string",
+                                            "Title": "string",
+                                            "Slug": "string",
+                                            "AuthorName": "string",
+                                            "GenreName": "string",
+                                            "Status": "string",
+                                            "CoverImageUrl": "string",
+                                            "Summary": "string",
+                                            "EpubDownloadUrl": "string",
+                                            "EpubMimeType": "string",
+                                            "EpubSha256": "string",
+                                            "PublishedAt": "string",
+                                            "UpdatedAt": "string"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Runtime or validation error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "_status": {
+                                            "type": "string",
+                                            "example": "NG"
+                                        },
+                                        "Message": {
+                                            "type": "string",
+                                            "example": "error"
+                                        }
+                                    }
+                                },
+                                "example": {
+                                    "_status": "NG",
+                                    "Message": "error"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/proxyserver-EbookCmsBook-GetPublicEbookCmsChapter.php": {
+            "post": {
+                "operationId": "EbookCmsBook_GetPublicEbookCmsChapter",
+                "tags": [
+                    "EbookCmsBook"
+                ],
+                "summary": "EbookCmsBook.GetPublicEbookCmsChapter",
+                "description": "Generated from single-function proxy target metadata.\n\nSource function: `EbookCmsBook.GetPublicEbookCmsChapter`.\n\nAuth policy: 認証を掛けません。",
+                "x-mtool": {
+                    "source_name": "EbookCmsBook",
+                    "function_name": "GetPublicEbookCmsChapter",
+                    "endpoint_filename": "proxyserver-EbookCmsBook-GetPublicEbookCmsChapter.php",
+                    "auth_strategy": "no-security",
+                    "input_kind": "scalar",
+                    "response_mode": "direct-result"
+                },
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "param_EbookCmsChapter_BookSlug_where": {
+                                        "type": "string",
+                                        "example": "string"
+                                    },
+                                    "param_EbookCmsChapter_ChapterSlug_where": {
+                                        "type": "string",
+                                        "example": "string"
+                                    }
+                                },
+                                "required": [
+                                    "param_EbookCmsChapter_BookSlug_where",
+                                    "param_EbookCmsChapter_ChapterSlug_where"
+                                ]
+                            },
+                            "example": {
+                                "param_EbookCmsChapter_BookSlug_where": "string",
+                                "param_EbookCmsChapter_ChapterSlug_where": "string"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful proxy response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "_status": {
+                                            "type": "string",
+                                            "example": "OK"
+                                        },
+                                        "Message": {
+                                            "type": "string",
+                                            "example": ""
+                                        },
+                                        "Result": {
+                                            "$ref": "#/components/schemas/EbookCmsBookData"
+                                        }
+                                    }
+                                },
+                                "example": {
+                                    "_status": "OK",
+                                    "Message": "",
+                                    "Result": {
+                                        "Id": "string",
+                                        "Title": "string",
+                                        "Slug": "string",
+                                        "AuthorName": "string",
+                                        "GenreName": "string",
+                                        "Status": "string",
+                                        "CoverImageUrl": "string",
+                                        "Summary": "string",
+                                        "EpubDownloadUrl": "string",
+                                        "EpubMimeType": "string",
+                                        "EpubSha256": "string",
+                                        "PublishedAt": "string",
+                                        "UpdatedAt": "string"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Runtime or validation error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "_status": {
+                                            "type": "string",
+                                            "example": "NG"
+                                        },
+                                        "Message": {
+                                            "type": "string",
+                                            "example": "error"
+                                        }
+                                    }
+                                },
+                                "example": {
+                                    "_status": "NG",
+                                    "Message": "error"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/proxyserver-EbookCmsBook-GetPublicEbookCmsChapterList.php": {
+            "post": {
+                "operationId": "EbookCmsBook_GetPublicEbookCmsChapterList",
+                "tags": [
+                    "EbookCmsBook"
+                ],
+                "summary": "EbookCmsBook.GetPublicEbookCmsChapterList",
+                "description": "Generated from single-function proxy target metadata.\n\nSource function: `EbookCmsBook.GetPublicEbookCmsChapterList`.\n\nAuth policy: 認証を掛けません。",
+                "x-mtool": {
+                    "source_name": "EbookCmsBook",
+                    "function_name": "GetPublicEbookCmsChapterList",
+                    "endpoint_filename": "proxyserver-EbookCmsBook-GetPublicEbookCmsChapterList.php",
+                    "auth_strategy": "no-security",
+                    "input_kind": "scalar",
+                    "response_mode": "direct-result"
+                },
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "param_EbookCmsChapter_BookSlug_where": {
+                                        "type": "string",
+                                        "example": "string"
+                                    }
+                                },
+                                "required": [
+                                    "param_EbookCmsChapter_BookSlug_where"
+                                ]
+                            },
+                            "example": {
+                                "param_EbookCmsChapter_BookSlug_where": "string"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful proxy response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "_status": {
+                                            "type": "string",
+                                            "example": "OK"
+                                        },
+                                        "Message": {
+                                            "type": "string",
+                                            "example": ""
+                                        },
+                                        "Result": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/components/schemas/EbookCmsBookData"
+                                            }
+                                        }
+                                    }
+                                },
+                                "example": {
+                                    "_status": "OK",
+                                    "Message": "",
+                                    "Result": [
+                                        {
+                                            "Id": "string",
+                                            "Title": "string",
+                                            "Slug": "string",
+                                            "AuthorName": "string",
+                                            "GenreName": "string",
+                                            "Status": "string",
+                                            "CoverImageUrl": "string",
+                                            "Summary": "string",
+                                            "EpubDownloadUrl": "string",
+                                            "EpubMimeType": "string",
+                                            "EpubSha256": "string",
+                                            "PublishedAt": "string",
+                                            "UpdatedAt": "string"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Runtime or validation error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "_status": {
+                                            "type": "string",
+                                            "example": "NG"
+                                        },
+                                        "Message": {
+                                            "type": "string",
+                                            "example": "error"
+                                        }
+                                    }
+                                },
+                                "example": {
+                                    "_status": "NG",
+                                    "Message": "error"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/proxyserver-EbookCmsBook-GetPublicEbookCmsEpubDeliveryList.php": {
+            "post": {
+                "operationId": "EbookCmsBook_GetPublicEbookCmsEpubDeliveryList",
+                "tags": [
+                    "EbookCmsBook"
+                ],
+                "summary": "EbookCmsBook.GetPublicEbookCmsEpubDeliveryList",
+                "description": "Generated from single-function proxy target metadata.\n\nSource function: `EbookCmsBook.GetPublicEbookCmsEpubDeliveryList`.\n\nAuth policy: 認証を掛けません。",
+                "x-mtool": {
+                    "source_name": "EbookCmsBook",
+                    "function_name": "GetPublicEbookCmsEpubDeliveryList",
+                    "endpoint_filename": "proxyserver-EbookCmsBook-GetPublicEbookCmsEpubDeliveryList.php",
+                    "auth_strategy": "no-security",
+                    "input_kind": "scalar",
+                    "response_mode": "direct-result"
+                },
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "param_EbookCmsBook_Slug_where": {
+                                        "type": "string",
+                                        "example": "string"
+                                    }
+                                },
+                                "required": [
+                                    "param_EbookCmsBook_Slug_where"
+                                ]
+                            },
+                            "example": {
+                                "param_EbookCmsBook_Slug_where": "string"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful proxy response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "_status": {
+                                            "type": "string",
+                                            "example": "OK"
+                                        },
+                                        "Message": {
+                                            "type": "string",
+                                            "example": ""
+                                        },
+                                        "Result": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/components/schemas/EbookCmsBookData"
+                                            }
+                                        }
+                                    }
+                                },
+                                "example": {
+                                    "_status": "OK",
+                                    "Message": "",
+                                    "Result": [
+                                        {
+                                            "Id": "string",
+                                            "Title": "string",
+                                            "Slug": "string",
+                                            "AuthorName": "string",
+                                            "GenreName": "string",
+                                            "Status": "string",
+                                            "CoverImageUrl": "string",
+                                            "Summary": "string",
+                                            "EpubDownloadUrl": "string",
+                                            "EpubMimeType": "string",
+                                            "EpubSha256": "string",
+                                            "PublishedAt": "string",
+                                            "UpdatedAt": "string"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Runtime or validation error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "_status": {
+                                            "type": "string",
+                                            "example": "NG"
+                                        },
+                                        "Message": {
+                                            "type": "string",
+                                            "example": "error"
+                                        }
+                                    }
+                                },
+                                "example": {
+                                    "_status": "NG",
+                                    "Message": "error"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/proxyserver-EbookCmsBook-PublishEditorEbookCmsChapter.php": {
+            "post": {
+                "operationId": "EbookCmsBook_PublishEditorEbookCmsChapter",
+                "tags": [
+                    "EbookCmsBook"
+                ],
+                "summary": "EbookCmsBook.PublishEditorEbookCmsChapter",
+                "description": "Generated from single-function proxy target metadata.\n\nSource function: `EbookCmsBook.PublishEditorEbookCmsChapter`.\n\nAuth policy: project token 認証です。",
+                "x-mtool": {
+                    "source_name": "EbookCmsBook",
+                    "function_name": "PublishEditorEbookCmsChapter",
+                    "endpoint_filename": "proxyserver-EbookCmsBook-PublishEditorEbookCmsChapter.php",
+                    "auth_strategy": "project-token",
+                    "input_kind": "object",
+                    "response_mode": "none"
+                },
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "TOKEN": {
+                                        "type": "string",
+                                        "description": "Project token body field.",
+                                        "example": "project-token"
+                                    },
+                                    "EbookCmsChapterObj": {
+                                        "$ref": "#/components/schemas/EbookCmsBookData"
+                                    }
+                                },
+                                "required": [
+                                    "TOKEN",
+                                    "EbookCmsChapterObj"
+                                ]
+                            },
+                            "example": {
+                                "TOKEN": "project-token",
+                                "EbookCmsChapterObj": {
+                                    "Id": "string",
+                                    "Title": "string",
+                                    "Slug": "string",
+                                    "AuthorName": "string",
+                                    "GenreName": "string",
+                                    "Status": "string",
+                                    "CoverImageUrl": "string",
+                                    "Summary": "string",
+                                    "EpubDownloadUrl": "string",
+                                    "EpubMimeType": "string",
+                                    "EpubSha256": "string",
+                                    "PublishedAt": "string",
+                                    "UpdatedAt": "string"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful proxy response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "_status": {
+                                            "type": "string",
+                                            "example": "OK"
+                                        },
+                                        "Message": {
+                                            "type": "string",
+                                            "example": ""
+                                        }
+                                    }
+                                },
+                                "example": {
+                                    "_status": "OK",
+                                    "Message": ""
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Runtime or validation error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "_status": {
+                                            "type": "string",
+                                            "example": "NG"
+                                        },
+                                        "Message": {
+                                            "type": "string",
+                                            "example": "error"
+                                        }
+                                    }
+                                },
+                                "example": {
+                                    "_status": "NG",
+                                    "Message": "error"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/proxyserver-EbookCmsBook-UpdateEditorEbookCmsChapterDraft.php": {
+            "post": {
+                "operationId": "EbookCmsBook_UpdateEditorEbookCmsChapterDraft",
+                "tags": [
+                    "EbookCmsBook"
+                ],
+                "summary": "EbookCmsBook.UpdateEditorEbookCmsChapterDraft",
+                "description": "Generated from single-function proxy target metadata.\n\nSource function: `EbookCmsBook.UpdateEditorEbookCmsChapterDraft`.\n\nAuth policy: project token 認証です。",
+                "x-mtool": {
+                    "source_name": "EbookCmsBook",
+                    "function_name": "UpdateEditorEbookCmsChapterDraft",
+                    "endpoint_filename": "proxyserver-EbookCmsBook-UpdateEditorEbookCmsChapterDraft.php",
+                    "auth_strategy": "project-token",
+                    "input_kind": "object",
+                    "response_mode": "none"
+                },
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "TOKEN": {
+                                        "type": "string",
+                                        "description": "Project token body field.",
+                                        "example": "project-token"
+                                    },
+                                    "EbookCmsChapterObj": {
+                                        "$ref": "#/components/schemas/EbookCmsBookData"
+                                    }
+                                },
+                                "required": [
+                                    "TOKEN",
+                                    "EbookCmsChapterObj"
+                                ]
+                            },
+                            "example": {
+                                "TOKEN": "project-token",
+                                "EbookCmsChapterObj": {
+                                    "Id": "string",
+                                    "Title": "string",
+                                    "Slug": "string",
+                                    "AuthorName": "string",
+                                    "GenreName": "string",
+                                    "Status": "string",
+                                    "CoverImageUrl": "string",
+                                    "Summary": "string",
+                                    "EpubDownloadUrl": "string",
+                                    "EpubMimeType": "string",
+                                    "EpubSha256": "string",
+                                    "PublishedAt": "string",
+                                    "UpdatedAt": "string"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful proxy response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "_status": {
+                                            "type": "string",
+                                            "example": "OK"
+                                        },
+                                        "Message": {
+                                            "type": "string",
+                                            "example": ""
+                                        }
+                                    }
+                                },
+                                "example": {
+                                    "_status": "OK",
+                                    "Message": ""
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Runtime or validation error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "_status": {
+                                            "type": "string",
+                                            "example": "NG"
+                                        },
+                                        "Message": {
+                                            "type": "string",
+                                            "example": "error"
+                                        }
+                                    }
+                                },
+                                "example": {
+                                    "_status": "NG",
+                                    "Message": "error"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "EbookCmsBookData": {
+                "type": "object",
+                "title": "EbookCmsBookData",
+                "properties": {
+                    "Id": {
+                        "type": "string",
+                        "example": "string"
+                    },
+                    "Title": {
+                        "type": "string",
+                        "example": "string"
+                    },
+                    "Slug": {
+                        "type": "string",
+                        "example": "string"
+                    },
+                    "AuthorName": {
+                        "type": "string",
+                        "example": "string"
+                    },
+                    "GenreName": {
+                        "type": "string",
+                        "example": "string"
+                    },
+                    "Status": {
+                        "type": "string",
+                        "example": "string"
+                    },
+                    "CoverImageUrl": {
+                        "type": "string",
+                        "example": "string"
+                    },
+                    "Summary": {
+                        "type": "string",
+                        "example": "string"
+                    },
+                    "EpubDownloadUrl": {
+                        "type": "string",
+                        "example": "string"
+                    },
+                    "EpubMimeType": {
+                        "type": "string",
+                        "example": "string"
+                    },
+                    "EpubSha256": {
+                        "type": "string",
+                        "example": "string"
+                    },
+                    "PublishedAt": {
+                        "type": "string",
+                        "example": "string"
+                    },
+                    "UpdatedAt": {
+                        "type": "string",
+                        "example": "string"
+                    }
+                }
+            }
+        }
+    }
+}

@@ -40,6 +40,22 @@
   - `sample/tutorials/sample17-multi-output-project` を使い、複数 Source Output を同じ project から publish する capstone tutorial lane を検証する
 - `Sample18MiniTaskBoardDemoTest.php`
   - `sample/tutorials/sample18-mini-task-board-demo` を使い、整理済み prompt から作る TaskCard demo lane を検証する
+- `Sample19JsonFirstContentModelOutputTest.php`
+  - `sample/tutorials/sample19-json-first-content-model-demo` を使い、ユーザー入力 JSON を AI が normalized DB / DBAccess metadata へ解釈する JSON-first entrance lane を検証する
+- `Sample20ContentPublishingDemoTest.php`
+  - `sample/tutorials/sample20-content-publishing-demo` を使い、JSON-first content model から public list/detail と HTML / OpenAPI artifact を publish する MySQL canonical lane を検証する
+- `Sample21EbookCatalogApiDemoTest.php`
+  - `sample/tutorials/sample21-ebook-catalog-api-demo` を使い、ebook catalog の public list/detail OpenAPI surface を publish する MySQL canonical lane を検証する
+- `Sample22EbookChapterWorkflowDemoTest.php`
+  - `sample/tutorials/sample22-ebook-chapter-workflow-demo` を使い、ebook chapter workflow の public read / editor write OpenAPI surface を publish する MySQL canonical lane を検証する
+- `Sample23EbookMediaMetadataDemoTest.php`
+  - `sample/tutorials/sample23-ebook-media-metadata-demo` を使い、同梱 EPUB fixture の URL / MIME type / file size / checksum を public delivery metadata として publish する MySQL canonical lane を検証する
+- `Sample24EbookPublicReaderSiteDemoTest.php`
+  - `sample/tutorials/sample24-ebook-public-reader-site-demo` を使い、公開本 / 章 / EPUB download metadata の HTML-PAGE と OpenAPI surface を publish する MySQL canonical lane を検証する
+- `Sample25EbookEditorAuthCmsDemoTest.php`
+  - `sample/tutorials/sample25-ebook-editor-auth-cms-demo` を使い、編集者向け chapter preview / draft update / publish API を ProjectToken authenticated proxy として publish し、fail-closed behavior も検証する
+- `Sample26EbookHeadlessCmsCapstoneTest.php`
+  - `sample/tutorials/sample26-ebook-headless-cms-capstone` を使い、public reader HTML / app OpenAPI / ProjectToken editor proxy / project metadata bundle を 1 project から publish する capstone lane を検証する
 - historical な `Sample9...OutputTest.php` から `Sample22...OutputTest.php`
   - `sample/internal-patterns/pattern01-default-property-split` から `pattern14-method-and-enum-heavy-multimethod` までの file-based migration sample を対象に、`tests/fixtures/legacy-dbclasses/` の curated fixture から wrapper/base 出力を再生成し、`reference/` と比較する
 - `LegacyTopLevelDeclarationMigrationTest.php`

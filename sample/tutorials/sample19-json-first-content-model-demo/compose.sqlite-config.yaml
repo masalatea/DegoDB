@@ -1,0 +1,10 @@
+name: mtool-sample-sample19-json-first-content-model-demo-sqlite
+
+services:
+  web-admin:
+    environment:
+      APP_WORK_ROOT: /var/www/work/sample-packs/sample19-json-first-content-model-demo-sqlite
+
+  web-lab:
+    environment:
+      APP_WORK_ROOT: /var/www/work/sample-packs/sample19-json-first-content-model-demo-sqlite

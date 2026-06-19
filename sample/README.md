@@ -13,6 +13,7 @@
 - `sample/legacy-projects/` は sanitized representative runtime pack を `sample51` / `sample53` / `sample56` に絞り、`50` 番台で category 境界を明示する
 - current catalog 外の historical leftover は `sample/archive/` へ退避する
 - sample pack 共通の運用 helper は `sample/_pack-support/` に置き、runner は `sample-pack-runner.sh` に揃える
+- sample lane で共有する小さな静的 fixture は `sample/_assets/` に置く。例: ebook CMS lane 用の自作 EPUB fixture
 - sample pack の disposable runtime state は `work/sample-packs/<pack>/` に出す
 - runtime pack の `db-config` は `docker/mariadb/config-initdb/` の共通 schema と、その pack の `seed/` だけで fresh initdb する
 - category ごとの入口は `sample/tutorials/README.md`、`sample/internal-patterns/README.md`、`sample/legacy-projects/README.md` を正本にし、archive 扱いは `sample/archive/README.md` で説明する
@@ -33,7 +34,7 @@ sample 配下には 2 種類あります。
 category と structure type は別軸です。
 
 - `sample/tutorials/`
-  - current は `sample01-simple-table-runtime`、`sample02-dataclass-nullable-default-status`、`sample03-dataclass-lookup-and-helper`、`sample04-dataclass-parent-child-basic`、`sample05-dbaccess-select-basic`、`sample06-dbaccess-filter-sort-page`、`sample07-dbaccess-crud-basic`、`sample08-dbaccess-join-read-model`、`sample09-dbaccess-aggregate-report`、`sample10-dbaccess-mini-crud-flow`、`sample11-html-template-output`、`sample12-external-db-source-import`、`sample13-openapi-api-surface`、`sample14-custom-proxy-runtime`、`sample15-project-metadata-export-import`、`sample16-authenticated-proxy`、`sample17-multi-output-project`、`sample18-mini-task-board-demo`
+  - current は `sample01-simple-table-runtime`、`sample02-dataclass-nullable-default-status`、`sample03-dataclass-lookup-and-helper`、`sample04-dataclass-parent-child-basic`、`sample05-dbaccess-select-basic`、`sample06-dbaccess-filter-sort-page`、`sample07-dbaccess-crud-basic`、`sample08-dbaccess-join-read-model`、`sample09-dbaccess-aggregate-report`、`sample10-dbaccess-mini-crud-flow`、`sample11-html-template-output`、`sample12-external-db-source-import`、`sample13-openapi-api-surface`、`sample14-custom-proxy-runtime`、`sample15-project-metadata-export-import`、`sample16-authenticated-proxy`、`sample17-multi-output-project`、`sample18-mini-task-board-demo`、`sample19-json-first-content-model-demo`、`sample20-content-publishing-demo`、`sample21-ebook-catalog-api-demo`、`sample22-ebook-chapter-workflow-demo`、`sample23-ebook-media-metadata-demo`、`sample24-ebook-public-reader-site-demo`、`sample25-ebook-editor-auth-cms-demo`、`sample26-ebook-headless-cms-capstone`
   - 今後の user-facing tutorial はここへ追加する
 - `sample/internal-patterns/`
   - `pattern01-default-property-split` から `pattern14-method-and-enum-heavy-multimethod` までの file-based migration sample
@@ -41,6 +42,9 @@ category と structure type は別軸です。
   - `sample51-runtime-sql-server`、`sample53-runtime-whiteboard`、`sample56-runtime-misc-proxy` は runtime pack
 - `sample/archive/`
   - current catalog 外の archive / historical leftover
+- `sample/_assets/`
+  - tutorial / demo lane で共有する小さな static fixture
+  - `epub/json-first-mini-book/` は、第三者著作物を含まない自作 EPUB fixture
 
 共通ルール:
 
@@ -71,6 +75,14 @@ category と structure type は別軸です。
   - `sample16-authenticated-proxy`
   - `sample17-multi-output-project`
   - `sample18-mini-task-board-demo`
+  - `sample19-json-first-content-model-demo`
+  - `sample20-content-publishing-demo`
+  - `sample21-ebook-catalog-api-demo`
+  - `sample22-ebook-chapter-workflow-demo`
+  - `sample23-ebook-media-metadata-demo`
+  - `sample24-ebook-public-reader-site-demo`
+  - `sample25-ebook-editor-auth-cms-demo`
+  - `sample26-ebook-headless-cms-capstone`
 - `sample/internal-patterns/`
   - `pattern01-default-property-split`
   - `pattern02-wrapper-property-helper`

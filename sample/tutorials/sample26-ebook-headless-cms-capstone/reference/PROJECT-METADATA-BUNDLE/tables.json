@@ -1,0 +1,244 @@
+{
+    "tables": [
+        {
+            "name": "EbookCmsBook",
+            "columns": [
+                {
+                    "name": "Id",
+                    "datatype": "int(11)",
+                    "is_null": "NO",
+                    "is_key": "PRI",
+                    "is_default": "",
+                    "extra": "auto_increment",
+                    "column_list_order": 1,
+                    "memo": ""
+                },
+                {
+                    "name": "Title",
+                    "datatype": "varchar(160)",
+                    "is_null": "NO",
+                    "is_key": "",
+                    "is_default": "",
+                    "extra": "",
+                    "column_list_order": 2,
+                    "memo": ""
+                },
+                {
+                    "name": "Slug",
+                    "datatype": "varchar(120)",
+                    "is_null": "NO",
+                    "is_key": "UNI",
+                    "is_default": "",
+                    "extra": "",
+                    "column_list_order": 3,
+                    "memo": ""
+                },
+                {
+                    "name": "AuthorName",
+                    "datatype": "varchar(120)",
+                    "is_null": "NO",
+                    "is_key": "",
+                    "is_default": "",
+                    "extra": "",
+                    "column_list_order": 4,
+                    "memo": ""
+                },
+                {
+                    "name": "GenreName",
+                    "datatype": "varchar(80)",
+                    "is_null": "NO",
+                    "is_key": "",
+                    "is_default": "",
+                    "extra": "",
+                    "column_list_order": 5,
+                    "memo": ""
+                },
+                {
+                    "name": "Status",
+                    "datatype": "varchar(40)",
+                    "is_null": "NO",
+                    "is_key": "",
+                    "is_default": "",
+                    "extra": "",
+                    "column_list_order": 6,
+                    "memo": ""
+                },
+                {
+                    "name": "CoverImageUrl",
+                    "datatype": "varchar(255)",
+                    "is_null": "NO",
+                    "is_key": "",
+                    "is_default": "",
+                    "extra": "",
+                    "column_list_order": 7,
+                    "memo": ""
+                },
+                {
+                    "name": "Summary",
+                    "datatype": "text",
+                    "is_null": "NO",
+                    "is_key": "",
+                    "is_default": "",
+                    "extra": "",
+                    "column_list_order": 8,
+                    "memo": ""
+                },
+                {
+                    "name": "EpubDownloadUrl",
+                    "datatype": "varchar(255)",
+                    "is_null": "NO",
+                    "is_key": "",
+                    "is_default": "",
+                    "extra": "",
+                    "column_list_order": 9,
+                    "memo": ""
+                },
+                {
+                    "name": "EpubMimeType",
+                    "datatype": "varchar(120)",
+                    "is_null": "NO",
+                    "is_key": "",
+                    "is_default": "",
+                    "extra": "",
+                    "column_list_order": 10,
+                    "memo": ""
+                },
+                {
+                    "name": "EpubSha256",
+                    "datatype": "varchar(64)",
+                    "is_null": "NO",
+                    "is_key": "",
+                    "is_default": "",
+                    "extra": "",
+                    "column_list_order": 11,
+                    "memo": ""
+                },
+                {
+                    "name": "PublishedAt",
+                    "datatype": "datetime",
+                    "is_null": "YES",
+                    "is_key": "",
+                    "is_default": "NULL",
+                    "extra": "",
+                    "column_list_order": 12,
+                    "memo": ""
+                },
+                {
+                    "name": "UpdatedAt",
+                    "datatype": "datetime",
+                    "is_null": "NO",
+                    "is_key": "",
+                    "is_default": "",
+                    "extra": "",
+                    "column_list_order": 13,
+                    "memo": ""
+                }
+            ]
+        },
+        {
+            "name": "EbookCmsChapter",
+            "columns": [
+                {
+                    "name": "Id",
+                    "datatype": "int(11)",
+                    "is_null": "NO",
+                    "is_key": "PRI",
+                    "is_default": "",
+                    "extra": "auto_increment",
+                    "column_list_order": 1,
+                    "memo": ""
+                },
+                {
+                    "name": "EbookCmsBookId",
+                    "datatype": "int(11)",
+                    "is_null": "NO",
+                    "is_key": "MUL",
+                    "is_default": "",
+                    "extra": "",
+                    "column_list_order": 2,
+                    "memo": ""
+                },
+                {
+                    "name": "BookSlug",
+                    "datatype": "varchar(120)",
+                    "is_null": "NO",
+                    "is_key": "MUL",
+                    "is_default": "",
+                    "extra": "",
+                    "column_list_order": 3,
+                    "memo": ""
+                },
+                {
+                    "name": "ChapterTitle",
+                    "datatype": "varchar(160)",
+                    "is_null": "NO",
+                    "is_key": "",
+                    "is_default": "",
+                    "extra": "",
+                    "column_list_order": 4,
+                    "memo": ""
+                },
+                {
+                    "name": "ChapterSlug",
+                    "datatype": "varchar(120)",
+                    "is_null": "NO",
+                    "is_key": "",
+                    "is_default": "",
+                    "extra": "",
+                    "column_list_order": 5,
+                    "memo": ""
+                },
+                {
+                    "name": "Status",
+                    "datatype": "varchar(40)",
+                    "is_null": "NO",
+                    "is_key": "",
+                    "is_default": "",
+                    "extra": "",
+                    "column_list_order": 6,
+                    "memo": ""
+                },
+                {
+                    "name": "SpineOrder",
+                    "datatype": "int(11)",
+                    "is_null": "NO",
+                    "is_key": "",
+                    "is_default": "",
+                    "extra": "",
+                    "column_list_order": 7,
+                    "memo": ""
+                },
+                {
+                    "name": "BodyMarkdown",
+                    "datatype": "text",
+                    "is_null": "NO",
+                    "is_key": "",
+                    "is_default": "",
+                    "extra": "",
+                    "column_list_order": 8,
+                    "memo": ""
+                },
+                {
+                    "name": "PublishedAt",
+                    "datatype": "datetime",
+                    "is_null": "YES",
+                    "is_key": "",
+                    "is_default": "NULL",
+                    "extra": "",
+                    "column_list_order": 9,
+                    "memo": ""
+                },
+                {
+                    "name": "UpdatedAt",
+                    "datatype": "datetime",
+                    "is_null": "NO",
+                    "is_key": "",
+                    "is_default": "",
+                    "extra": "",
+                    "column_list_order": 10,
+                    "memo": ""
+                }
+            ]
+        }
+    ]
+}

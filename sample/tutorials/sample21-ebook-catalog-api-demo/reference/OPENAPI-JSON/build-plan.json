@@ -1,0 +1,75 @@
+{
+    "schema_version": 1,
+    "artifact_type": "openapi-build-plan",
+    "project_key": "SAMPLE21",
+    "source_output_key": "OPENAPI-JSON",
+    "source_output_name": "Sample21 OpenAPI JSON",
+    "proxy_base_url": "http://127.0.0.1:8082/runs/proxy/SAMPLE21/API-PROXY-SERVER",
+    "function_count": 2,
+    "unresolved_function_count": 0,
+    "unresolved_auth_count": 0,
+    "operations": [
+        {
+            "source_name": "EbookCatalogItem",
+            "function_name": "GetPublicEbookCatalogList",
+            "endpoint_filename": "proxyserver-EbookCatalogItem-GetPublicEbookCatalogList.php",
+            "auth_strategy": "no-security",
+            "input_kind": "scalar",
+            "response_mode": "direct-result",
+            "parameter_schemas": {
+                "param_EbookCatalogItem_AuthorSlug_where": {
+                    "parameter_name": "param_EbookCatalogItem_AuthorSlug_where",
+                    "datatype": "varchar",
+                    "source": "select-where-parameter-data-type",
+                    "target_table_name": "EbookCatalogItem",
+                    "target_table_column_name": "AuthorSlug"
+                },
+                "param_EbookCatalogItem_GenreSlug_where": {
+                    "parameter_name": "param_EbookCatalogItem_GenreSlug_where",
+                    "datatype": "varchar",
+                    "source": "select-where-parameter-data-type",
+                    "target_table_name": "EbookCatalogItem",
+                    "target_table_column_name": "GenreSlug"
+                },
+                "param_EbookCatalogItem_SeriesSlug_where": {
+                    "parameter_name": "param_EbookCatalogItem_SeriesSlug_where",
+                    "datatype": "varchar",
+                    "source": "select-where-parameter-data-type",
+                    "target_table_name": "EbookCatalogItem",
+                    "target_table_column_name": "SeriesSlug"
+                },
+                "param_EbookCatalogItem_BookTitle_where": {
+                    "parameter_name": "param_EbookCatalogItem_BookTitle_where",
+                    "datatype": "varchar",
+                    "source": "select-where-parameter-data-type",
+                    "target_table_name": "EbookCatalogItem",
+                    "target_table_column_name": "BookTitle"
+                },
+                "limit": {
+                    "parameter_name": "limit",
+                    "datatype": "int",
+                    "source": "limit-parameter",
+                    "target_table_name": "",
+                    "target_table_column_name": ""
+                }
+            }
+        },
+        {
+            "source_name": "EbookCatalogItem",
+            "function_name": "GetPublicEbookBook",
+            "endpoint_filename": "proxyserver-EbookCatalogItem-GetPublicEbookBook.php",
+            "auth_strategy": "no-security",
+            "input_kind": "scalar",
+            "response_mode": "direct-result",
+            "parameter_schemas": {
+                "param_EbookCatalogItem_BookSlug_where": {
+                    "parameter_name": "param_EbookCatalogItem_BookSlug_where",
+                    "datatype": "varchar",
+                    "source": "select-where-parameter-data-type",
+                    "target_table_name": "EbookCatalogItem",
+                    "target_table_column_name": "BookSlug"
+                }
+            }
+        }
+    ]
+}

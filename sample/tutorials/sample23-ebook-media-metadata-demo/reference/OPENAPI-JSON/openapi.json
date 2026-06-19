@@ -1,0 +1,507 @@
+{
+    "openapi": "3.0.3",
+    "info": {
+        "title": "Sample23 OpenAPI JSON",
+        "version": "1.0.0",
+        "description": "Generated from current single-function proxy target metadata."
+    },
+    "servers": [
+        {
+            "url": "http://127.0.0.1:8082/runs/proxy/SAMPLE23/API-PROXY-SERVER"
+        }
+    ],
+    "tags": [
+        {
+            "name": "EbookMediaAsset",
+            "description": "EbookMediaAsset single-function proxy endpoints."
+        }
+    ],
+    "paths": {
+        "/proxyserver-EbookMediaAsset-GetPublicEbookMediaAsset.php": {
+            "post": {
+                "operationId": "EbookMediaAsset_GetPublicEbookMediaAsset",
+                "tags": [
+                    "EbookMediaAsset"
+                ],
+                "summary": "EbookMediaAsset.GetPublicEbookMediaAsset",
+                "description": "Generated from single-function proxy target metadata.\n\nSource function: `EbookMediaAsset.GetPublicEbookMediaAsset`.\n\nAuth policy: 認証を掛けません。",
+                "x-mtool": {
+                    "source_name": "EbookMediaAsset",
+                    "function_name": "GetPublicEbookMediaAsset",
+                    "endpoint_filename": "proxyserver-EbookMediaAsset-GetPublicEbookMediaAsset.php",
+                    "auth_strategy": "no-security",
+                    "input_kind": "scalar",
+                    "response_mode": "direct-result"
+                },
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "param_EbookMediaDelivery_AssetSlug_where": {
+                                        "type": "string",
+                                        "example": "string"
+                                    }
+                                },
+                                "required": [
+                                    "param_EbookMediaDelivery_AssetSlug_where"
+                                ]
+                            },
+                            "example": {
+                                "param_EbookMediaDelivery_AssetSlug_where": "string"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful proxy response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "_status": {
+                                            "type": "string",
+                                            "example": "OK"
+                                        },
+                                        "Message": {
+                                            "type": "string",
+                                            "example": ""
+                                        },
+                                        "Result": {
+                                            "$ref": "#/components/schemas/EbookMediaAssetData"
+                                        }
+                                    }
+                                },
+                                "example": {
+                                    "_status": "OK",
+                                    "Message": "",
+                                    "Result": {
+                                        "Id": "string",
+                                        "AssetSlug": "string",
+                                        "AssetKind": "string",
+                                        "DisplayName": "string",
+                                        "PublicUrl": "string",
+                                        "StoragePath": "string",
+                                        "MimeType": "string",
+                                        "FileSizeBytes": "string",
+                                        "Sha256": "string",
+                                        "VersionLabel": "string",
+                                        "Status": "string",
+                                        "UpdatedAt": "string"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Runtime or validation error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "_status": {
+                                            "type": "string",
+                                            "example": "NG"
+                                        },
+                                        "Message": {
+                                            "type": "string",
+                                            "example": "error"
+                                        }
+                                    }
+                                },
+                                "example": {
+                                    "_status": "NG",
+                                    "Message": "error"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/proxyserver-EbookMediaAsset-GetPublicEbookMediaDeliveryList.php": {
+            "post": {
+                "operationId": "EbookMediaAsset_GetPublicEbookMediaDeliveryList",
+                "tags": [
+                    "EbookMediaAsset"
+                ],
+                "summary": "EbookMediaAsset.GetPublicEbookMediaDeliveryList",
+                "description": "Generated from single-function proxy target metadata.\n\nSource function: `EbookMediaAsset.GetPublicEbookMediaDeliveryList`.\n\nAuth policy: 認証を掛けません。",
+                "x-mtool": {
+                    "source_name": "EbookMediaAsset",
+                    "function_name": "GetPublicEbookMediaDeliveryList",
+                    "endpoint_filename": "proxyserver-EbookMediaAsset-GetPublicEbookMediaDeliveryList.php",
+                    "auth_strategy": "no-security",
+                    "input_kind": "scalar",
+                    "response_mode": "direct-result"
+                },
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "param_EbookMediaDelivery_BookSlug_where": {
+                                        "type": "string",
+                                        "example": "string"
+                                    }
+                                },
+                                "required": [
+                                    "param_EbookMediaDelivery_BookSlug_where"
+                                ]
+                            },
+                            "example": {
+                                "param_EbookMediaDelivery_BookSlug_where": "string"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful proxy response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "_status": {
+                                            "type": "string",
+                                            "example": "OK"
+                                        },
+                                        "Message": {
+                                            "type": "string",
+                                            "example": ""
+                                        },
+                                        "Result": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/components/schemas/EbookMediaAssetData"
+                                            }
+                                        }
+                                    }
+                                },
+                                "example": {
+                                    "_status": "OK",
+                                    "Message": "",
+                                    "Result": [
+                                        {
+                                            "Id": "string",
+                                            "AssetSlug": "string",
+                                            "AssetKind": "string",
+                                            "DisplayName": "string",
+                                            "PublicUrl": "string",
+                                            "StoragePath": "string",
+                                            "MimeType": "string",
+                                            "FileSizeBytes": "string",
+                                            "Sha256": "string",
+                                            "VersionLabel": "string",
+                                            "Status": "string",
+                                            "UpdatedAt": "string"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Runtime or validation error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "_status": {
+                                            "type": "string",
+                                            "example": "NG"
+                                        },
+                                        "Message": {
+                                            "type": "string",
+                                            "example": "error"
+                                        }
+                                    }
+                                },
+                                "example": {
+                                    "_status": "NG",
+                                    "Message": "error"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/proxyserver-EbookMediaAsset-InsertEbookMediaAsset.php": {
+            "post": {
+                "operationId": "EbookMediaAsset_InsertEbookMediaAsset",
+                "tags": [
+                    "EbookMediaAsset"
+                ],
+                "summary": "EbookMediaAsset.InsertEbookMediaAsset",
+                "description": "Generated from single-function proxy target metadata.\n\nSource function: `EbookMediaAsset.InsertEbookMediaAsset`.\n\nAuth policy: 認証を掛けません。",
+                "x-mtool": {
+                    "source_name": "EbookMediaAsset",
+                    "function_name": "InsertEbookMediaAsset",
+                    "endpoint_filename": "proxyserver-EbookMediaAsset-InsertEbookMediaAsset.php",
+                    "auth_strategy": "no-security",
+                    "input_kind": "object",
+                    "response_mode": "insert-id-single"
+                },
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "EbookMediaAssetObj": {
+                                        "$ref": "#/components/schemas/EbookMediaAssetData"
+                                    }
+                                },
+                                "required": [
+                                    "EbookMediaAssetObj"
+                                ]
+                            },
+                            "example": {
+                                "EbookMediaAssetObj": {
+                                    "Id": "string",
+                                    "AssetSlug": "string",
+                                    "AssetKind": "string",
+                                    "DisplayName": "string",
+                                    "PublicUrl": "string",
+                                    "StoragePath": "string",
+                                    "MimeType": "string",
+                                    "FileSizeBytes": "string",
+                                    "Sha256": "string",
+                                    "VersionLabel": "string",
+                                    "Status": "string",
+                                    "UpdatedAt": "string"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful proxy response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "_status": {
+                                            "type": "string",
+                                            "example": "OK"
+                                        },
+                                        "Message": {
+                                            "type": "string",
+                                            "example": ""
+                                        },
+                                        "InsertID": {
+                                            "type": "integer",
+                                            "example": 1
+                                        }
+                                    }
+                                },
+                                "example": {
+                                    "_status": "OK",
+                                    "Message": "",
+                                    "InsertID": 1
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Runtime or validation error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "_status": {
+                                            "type": "string",
+                                            "example": "NG"
+                                        },
+                                        "Message": {
+                                            "type": "string",
+                                            "example": "error"
+                                        }
+                                    }
+                                },
+                                "example": {
+                                    "_status": "NG",
+                                    "Message": "error"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/proxyserver-EbookMediaAsset-UpdateEbookMediaAssetMetadata.php": {
+            "post": {
+                "operationId": "EbookMediaAsset_UpdateEbookMediaAssetMetadata",
+                "tags": [
+                    "EbookMediaAsset"
+                ],
+                "summary": "EbookMediaAsset.UpdateEbookMediaAssetMetadata",
+                "description": "Generated from single-function proxy target metadata.\n\nSource function: `EbookMediaAsset.UpdateEbookMediaAssetMetadata`.\n\nAuth policy: 認証を掛けません。",
+                "x-mtool": {
+                    "source_name": "EbookMediaAsset",
+                    "function_name": "UpdateEbookMediaAssetMetadata",
+                    "endpoint_filename": "proxyserver-EbookMediaAsset-UpdateEbookMediaAssetMetadata.php",
+                    "auth_strategy": "no-security",
+                    "input_kind": "object",
+                    "response_mode": "none"
+                },
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "EbookMediaAssetObj": {
+                                        "$ref": "#/components/schemas/EbookMediaAssetData"
+                                    }
+                                },
+                                "required": [
+                                    "EbookMediaAssetObj"
+                                ]
+                            },
+                            "example": {
+                                "EbookMediaAssetObj": {
+                                    "Id": "string",
+                                    "AssetSlug": "string",
+                                    "AssetKind": "string",
+                                    "DisplayName": "string",
+                                    "PublicUrl": "string",
+                                    "StoragePath": "string",
+                                    "MimeType": "string",
+                                    "FileSizeBytes": "string",
+                                    "Sha256": "string",
+                                    "VersionLabel": "string",
+                                    "Status": "string",
+                                    "UpdatedAt": "string"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful proxy response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "_status": {
+                                            "type": "string",
+                                            "example": "OK"
+                                        },
+                                        "Message": {
+                                            "type": "string",
+                                            "example": ""
+                                        }
+                                    }
+                                },
+                                "example": {
+                                    "_status": "OK",
+                                    "Message": ""
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Runtime or validation error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "_status": {
+                                            "type": "string",
+                                            "example": "NG"
+                                        },
+                                        "Message": {
+                                            "type": "string",
+                                            "example": "error"
+                                        }
+                                    }
+                                },
+                                "example": {
+                                    "_status": "NG",
+                                    "Message": "error"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "EbookMediaAssetData": {
+                "type": "object",
+                "title": "EbookMediaAssetData",
+                "properties": {
+                    "Id": {
+                        "type": "string",
+                        "example": "string"
+                    },
+                    "AssetSlug": {
+                        "type": "string",
+                        "example": "string"
+                    },
+                    "AssetKind": {
+                        "type": "string",
+                        "example": "string"
+                    },
+                    "DisplayName": {
+                        "type": "string",
+                        "example": "string"
+                    },
+                    "PublicUrl": {
+                        "type": "string",
+                        "example": "string"
+                    },
+                    "StoragePath": {
+                        "type": "string",
+                        "example": "string"
+                    },
+                    "MimeType": {
+                        "type": "string",
+                        "example": "string"
+                    },
+                    "FileSizeBytes": {
+                        "type": "string",
+                        "example": "string"
+                    },
+                    "Sha256": {
+                        "type": "string",
+                        "example": "string"
+                    },
+                    "VersionLabel": {
+                        "type": "string",
+                        "example": "string"
+                    },
+                    "Status": {
+                        "type": "string",
+                        "example": "string"
+                    },
+                    "UpdatedAt": {
+                        "type": "string",
+                        "example": "string"
+                    }
+                }
+            }
+        }
+    }
+}

@@ -8,6 +8,17 @@ PostgreSQL / SQL Server などの他 DB server 対応は、この計画では実
 
 ここで扱うのは DegoDB / Mtool 自身の config store ではない。対象は、ユーザーの業務 DB へ接続し、その schema から DBAccess class、runtime SQL、proxy / OpenAPI / custom runtime bundle を出力する層である。
 
+## Current Status As Of 2026-06-19
+
+The user DB dialect framework first stop-line is complete. The current covered contract set is:
+
+- `sample10-dbaccess-mini-crud-flow`: CRUD behavior.
+- `sample06-dbaccess-filter-sort-page`: filter / sort / pagination behavior.
+- `sample08-dbaccess-join-read-model`: join read model behavior.
+- `sample09-dbaccess-aggregate-report`: aggregate / group by / having behavior.
+
+There is no remaining immediate cleanup task in this lane before moving to the next foundation work. Future dialect work should resume from this document only when a new user DB contract slice is explicitly chosen. PostgreSQL / SQL Server remain parked.
+
 ## Boundary
 
 Mtool 側 config store:

@@ -90,6 +90,12 @@ This roadmap maps old admin functionality to the new implementation. It covers p
 
 ### Step 管理表
 
+#### 2026-06-19 時点の読み替え
+
+この表の `%` と「2026-05-15 時点」の記述は、5 月時点の broad rewrite / admin migration snapshot として読む。現在の active ordering は [2026-0619-plan-inventory.md](../reports/2026/2026-0619-plan-inventory.md) を正本にし、`sample01-26` tutorial lane、Mtool-side SQLite config store、user DB dialect first stop-line の完了状況を反映して判断する。
+
+この roadmap 自体は、旧 admin 機能を new admin / lab route へどう対応づけるかの living map として維持する。ただし、次の実装順を決める active parent plan ではない。今後ここを更新する場合は、古い進捗率を細かく再見積もりするより、current route が daily operation の source of truth になっているか、残っている legacy fallback がどの ownership に属するかを確認する。
+
 | Step | 意味 | 現在の目安 | 主な根拠 | 完了までの主な残り |
 | --- | --- | --- | --- | --- |
 | Step 1 / Phase 1 | 旧 Mtool の設定機能を current route / canonical metadata / file workflow へ移し、日常運用を current 側で回せる状態にする。 | 約 `80-82%` | `Project 1 = MTOOL` の `36/36 success`、admin/lab 主要 route、HTML canonical 化、LanguageResource の file-based source of truth 固定。 | page security の route policy 連携、host assignment の infra split、HTML/runtime reference dependency 圧縮、sample buildable output の選別。 |
@@ -123,16 +129,16 @@ This roadmap maps old admin functionality to the new implementation. It covers p
 
 現時点の `%` は file 数ではなく、この完了定義に対する機能マイルストーン重みで見た概算として読む。特に断りがない限り、現在の broad scope `%` は主に Phase 1 の進捗を指す。
 
-## 現時点の主系
+## 2026-05-15 snapshot の主系
 
-2026-05-15 時点でも、主系は Phase 1 に固定する。
+2026-05-15 時点では、主系は Phase 1 に固定していた。
 
 - まずは「旧設定画面でできたことを current route で完結できる」状態を優先する。
 - `LanguageResource` は旧 DB editor parity を追う slice ではなく、optional module + file-based source of truth + inspector-only current route を正本とする。
 - self-host / runtime 置換は重要だが、missing setting 機能が残っている段階では主系へ上げない。
 - Phase 1 の途中で self-host 側を触る場合も、目的は parity 維持、bridge debt 圧縮、または後段置換のための局所準備に限る。
 - legacy-only な情報は、Phase 1 の進行を止めてまで canonical schema へ昇格させない。必要な間は `notes` や bridge で保持してよい。
-- 最新の broad scope 読みは [2026-0515-progress-snapshot.md](<repo-root>/docs/reports/2026/2026-0515-progress-snapshot.md) を参照する。
+- 2026-05-15 snapshot の broad scope 読みは [2026-0515-progress-snapshot.md](<repo-root>/docs/reports/2026/2026-0515-progress-snapshot.md) を参照する。2026-06-19 以降の active ordering は [2026-0619-plan-inventory.md](../reports/2026/2026-0619-plan-inventory.md) を参照する。
 
 ### Phase 2 を主系へ上げるゲート
 

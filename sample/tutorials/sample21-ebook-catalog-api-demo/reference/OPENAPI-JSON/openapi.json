@@ -1,0 +1,334 @@
+{
+    "openapi": "3.0.3",
+    "info": {
+        "title": "Sample21 OpenAPI JSON",
+        "version": "1.0.0",
+        "description": "Generated from current single-function proxy target metadata."
+    },
+    "servers": [
+        {
+            "url": "http://127.0.0.1:8082/runs/proxy/SAMPLE21/API-PROXY-SERVER"
+        }
+    ],
+    "tags": [
+        {
+            "name": "EbookCatalogItem",
+            "description": "EbookCatalogItem single-function proxy endpoints."
+        }
+    ],
+    "paths": {
+        "/proxyserver-EbookCatalogItem-GetPublicEbookBook.php": {
+            "post": {
+                "operationId": "EbookCatalogItem_GetPublicEbookBook",
+                "tags": [
+                    "EbookCatalogItem"
+                ],
+                "summary": "EbookCatalogItem.GetPublicEbookBook",
+                "description": "Generated from single-function proxy target metadata.\n\nSource function: `EbookCatalogItem.GetPublicEbookBook`.\n\nAuth policy: 認証を掛けません。",
+                "x-mtool": {
+                    "source_name": "EbookCatalogItem",
+                    "function_name": "GetPublicEbookBook",
+                    "endpoint_filename": "proxyserver-EbookCatalogItem-GetPublicEbookBook.php",
+                    "auth_strategy": "no-security",
+                    "input_kind": "scalar",
+                    "response_mode": "direct-result"
+                },
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "param_EbookCatalogItem_BookSlug_where": {
+                                        "type": "string",
+                                        "example": "string"
+                                    }
+                                },
+                                "required": [
+                                    "param_EbookCatalogItem_BookSlug_where"
+                                ]
+                            },
+                            "example": {
+                                "param_EbookCatalogItem_BookSlug_where": "string"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful proxy response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "_status": {
+                                            "type": "string",
+                                            "example": "OK"
+                                        },
+                                        "Message": {
+                                            "type": "string",
+                                            "example": ""
+                                        },
+                                        "Result": {
+                                            "$ref": "#/components/schemas/EbookCatalogItemData"
+                                        }
+                                    }
+                                },
+                                "example": {
+                                    "_status": "OK",
+                                    "Message": "",
+                                    "Result": {
+                                        "BookId": "string",
+                                        "BookTitle": "string",
+                                        "BookSlug": "string",
+                                        "Status": "string",
+                                        "SeriesName": "string",
+                                        "SeriesSlug": "string",
+                                        "AuthorName": "string",
+                                        "AuthorSlug": "string",
+                                        "GenreName": "string",
+                                        "GenreSlug": "string",
+                                        "PublishedAt": "string",
+                                        "Summary": "string",
+                                        "EpubStatus": "string",
+                                        "PrimaryEpubUrl": "string"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Runtime or validation error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "_status": {
+                                            "type": "string",
+                                            "example": "NG"
+                                        },
+                                        "Message": {
+                                            "type": "string",
+                                            "example": "error"
+                                        }
+                                    }
+                                },
+                                "example": {
+                                    "_status": "NG",
+                                    "Message": "error"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/proxyserver-EbookCatalogItem-GetPublicEbookCatalogList.php": {
+            "post": {
+                "operationId": "EbookCatalogItem_GetPublicEbookCatalogList",
+                "tags": [
+                    "EbookCatalogItem"
+                ],
+                "summary": "EbookCatalogItem.GetPublicEbookCatalogList",
+                "description": "Generated from single-function proxy target metadata.\n\nSource function: `EbookCatalogItem.GetPublicEbookCatalogList`.\n\nAuth policy: 認証を掛けません。",
+                "x-mtool": {
+                    "source_name": "EbookCatalogItem",
+                    "function_name": "GetPublicEbookCatalogList",
+                    "endpoint_filename": "proxyserver-EbookCatalogItem-GetPublicEbookCatalogList.php",
+                    "auth_strategy": "no-security",
+                    "input_kind": "scalar",
+                    "response_mode": "direct-result"
+                },
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "param_EbookCatalogItem_AuthorSlug_where": {
+                                        "type": "string",
+                                        "example": "string"
+                                    },
+                                    "param_EbookCatalogItem_GenreSlug_where": {
+                                        "type": "string",
+                                        "example": "string"
+                                    },
+                                    "param_EbookCatalogItem_SeriesSlug_where": {
+                                        "type": "string",
+                                        "example": "string"
+                                    },
+                                    "param_EbookCatalogItem_BookTitle_where": {
+                                        "type": "string",
+                                        "example": "string"
+                                    },
+                                    "limit": {
+                                        "type": "integer",
+                                        "example": 0
+                                    }
+                                },
+                                "required": [
+                                    "param_EbookCatalogItem_AuthorSlug_where",
+                                    "param_EbookCatalogItem_GenreSlug_where",
+                                    "param_EbookCatalogItem_SeriesSlug_where",
+                                    "param_EbookCatalogItem_BookTitle_where",
+                                    "limit"
+                                ]
+                            },
+                            "example": {
+                                "param_EbookCatalogItem_AuthorSlug_where": "string",
+                                "param_EbookCatalogItem_GenreSlug_where": "string",
+                                "param_EbookCatalogItem_SeriesSlug_where": "string",
+                                "param_EbookCatalogItem_BookTitle_where": "string",
+                                "limit": 0
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful proxy response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "_status": {
+                                            "type": "string",
+                                            "example": "OK"
+                                        },
+                                        "Message": {
+                                            "type": "string",
+                                            "example": ""
+                                        },
+                                        "Result": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/components/schemas/EbookCatalogItemData"
+                                            }
+                                        }
+                                    }
+                                },
+                                "example": {
+                                    "_status": "OK",
+                                    "Message": "",
+                                    "Result": [
+                                        {
+                                            "BookId": "string",
+                                            "BookTitle": "string",
+                                            "BookSlug": "string",
+                                            "Status": "string",
+                                            "SeriesName": "string",
+                                            "SeriesSlug": "string",
+                                            "AuthorName": "string",
+                                            "AuthorSlug": "string",
+                                            "GenreName": "string",
+                                            "GenreSlug": "string",
+                                            "PublishedAt": "string",
+                                            "Summary": "string",
+                                            "EpubStatus": "string",
+                                            "PrimaryEpubUrl": "string"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Runtime or validation error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "_status": {
+                                            "type": "string",
+                                            "example": "NG"
+                                        },
+                                        "Message": {
+                                            "type": "string",
+                                            "example": "error"
+                                        }
+                                    }
+                                },
+                                "example": {
+                                    "_status": "NG",
+                                    "Message": "error"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "EbookCatalogItemData": {
+                "type": "object",
+                "title": "EbookCatalogItemData",
+                "properties": {
+                    "BookId": {
+                        "type": "string",
+                        "example": "string"
+                    },
+                    "BookTitle": {
+                        "type": "string",
+                        "example": "string"
+                    },
+                    "BookSlug": {
+                        "type": "string",
+                        "example": "string"
+                    },
+                    "Status": {
+                        "type": "string",
+                        "example": "string"
+                    },
+                    "SeriesName": {
+                        "type": "string",
+                        "example": "string"
+                    },
+                    "SeriesSlug": {
+                        "type": "string",
+                        "example": "string"
+                    },
+                    "AuthorName": {
+                        "type": "string",
+                        "example": "string"
+                    },
+                    "AuthorSlug": {
+                        "type": "string",
+                        "example": "string"
+                    },
+                    "GenreName": {
+                        "type": "string",
+                        "example": "string"
+                    },
+                    "GenreSlug": {
+                        "type": "string",
+                        "example": "string"
+                    },
+                    "PublishedAt": {
+                        "type": "string",
+                        "example": "string"
+                    },
+                    "Summary": {
+                        "type": "string",
+                        "example": "string"
+                    },
+                    "EpubStatus": {
+                        "type": "string",
+                        "example": "string"
+                    },
+                    "PrimaryEpubUrl": {
+                        "type": "string",
+                        "example": "string"
+                    }
+                }
+            }
+        }
+    }
+}

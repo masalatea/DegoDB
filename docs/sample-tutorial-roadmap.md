@@ -1,7 +1,7 @@
 # Sample Tutorial Roadmap
 
 English companion:
-This roadmap defines the user-facing tutorial lane under `sample/tutorials/`. It explains the learning order from `sample01` through `sample18`, the design principles behind the packs, and the acceptance criteria for each stage.
+This roadmap defines the user-facing tutorial lane under `sample/tutorials/`. It explains the learning order from `sample01` through `sample26`, the design principles behind the packs, and the acceptance criteria for each stage.
 
 ## 目的
 
@@ -49,6 +49,14 @@ This roadmap defines the user-facing tutorial lane under `sample/tutorials/`. It
 | `sample16-authenticated-proxy` | current | authenticated proxy | ProjectToken authenticated single proxy server と fail-closed behavior を確認する最小 flow | `AUTH-PROXY-SERVER` | `make sample16-pack-runtime-test` |
 | `sample17-multi-output-project` | current | multi-output capstone | 1 project から DataClass / DBAccess / HTML / OpenAPI を publish する総合 flow | `DATACLASS-PHP`, `DBACCESS-PHP`, `HTML-PAGE`, `OPENAPI-JSON` | `make sample17-pack-runtime-test` |
 | `sample18-mini-task-board-demo` | current | instruction-driven task board demo | AI が整理した仮想 prompt から TaskCard demo を作り、CRUD DBAccess と HTML / OpenAPI を publish する。`web-lab` に sample page も持つ | `DATACLASS-PHP`, `DBACCESS-PHP`, `HTML-PAGE`, `OPENAPI-JSON` | `make sample18-pack-runtime-test` / `make sample18-http-runtime-smoke` |
+| `sample19-json-first-content-model-demo` | current | JSON-first content model demo | DB を知らないユーザーが書いた JSON を、AI が normalized DB / DBAccess metadata へ解釈する入口 sample。`sample20+` の ebook CMS lane に進む前の bridge として、MySQL / MariaDB と SQLite config store profile の両方を検証する | `DATACLASS-PHP`, `DBACCESS-PHP` | `make sample19-pack-runtime-test` / `make sample19-pack-runtime-test-sqlite` |
+| `sample20-content-publishing-demo` | current | content publishing demo | `sample19` の JSON-first content model を土台に、public article list/detail、HTML page、OpenAPI artifact まで publish する最小 ebook/content lane。runtime profile は MySQL / MariaDB canonical のみに絞る | `DATACLASS-PHP`, `DBACCESS-PHP`, `HTML-PAGE`, `OPENAPI-JSON` | `make sample20-pack-runtime-test` |
+| `sample21-ebook-catalog-api-demo` | current | ebook catalog API demo | content publishing model を ebook catalog に置き換え、Book / Author / Series / Genre と public catalog list/detail OpenAPI surface を publish する。EPUB は status / URL metadata に留める | `DATACLASS-PHP`, `DBACCESS-PHP`, `OPENAPI-JSON` | `make sample21-pack-runtime-test` |
+| `sample22-ebook-chapter-workflow-demo` | current | ebook chapter workflow demo | ebook book に chapter workflow を足し、published chapter list/detail と editor create/update/reorder/publish API surface を publish する。EPUB は spine/nav metadata に留める | `DATACLASS-PHP`, `DBACCESS-PHP`, `OPENAPI-JSON` | `make sample22-pack-runtime-test` |
+| `sample23-ebook-media-metadata-demo` | current | ebook media metadata demo | 同梱 EPUB fixture の URL / MIME type / file size / checksum を media delivery metadata として publish する。EPUB 生成・解析・upload は扱わない | `DATACLASS-PHP`, `DBACCESS-PHP`, `OPENAPI-JSON` | `make sample23-pack-runtime-test` |
+| `sample24-ebook-public-reader-site-demo` | current | ebook public reader site demo | 公開本 / 章 / EPUB delivery metadata から HTML reader page と app 向け OpenAPI surface を publish する。EPUB は download link のみ扱う | `DATACLASS-PHP`, `DBACCESS-PHP`, `HTML-PAGE`, `OPENAPI-JSON` | `make sample24-pack-runtime-test` |
+| `sample25-ebook-editor-auth-cms-demo` | current | ebook editor auth CMS demo | 編集者向け chapter preview / draft update / publish API を ProjectToken protected proxy として publish する。full editor UI / user-role 管理 / revision history は扱わない | `DATACLASS-PHP`, `DBACCESS-PHP`, `OPENAPI-JSON`, `AUTH-PROXY-SERVER` | `make sample25-pack-runtime-test` |
+| `sample26-ebook-headless-cms-capstone` | current | ebook headless CMS capstone | public reader HTML、app OpenAPI、ProjectToken editor proxy、project metadata bundle を 1 project から publish する | `DATACLASS-PHP`, `DBACCESS-PHP`, `HTML-PAGE`, `OPENAPI-JSON`, `AUTH-PROXY-SERVER`, `PROJECT-METADATA-BUNDLE` | `make sample26-pack-runtime-test` |
 
 ## phase 分け
 
@@ -134,6 +142,54 @@ This roadmap defines the user-facing tutorial lane under `sample/tutorials/`. It
   - `web-lab` の `/samples/sample18-task-board` で、起動後に簡単な task board UI を触れるようにする。
   - checker は import / sync 後に 4 output を publish し、actual generated reference tree と一致することを検証する。
   - HTTP smoke は login、page 表示、task 作成、task 編集まで確認する。
+- `sample19-json-first-content-model-demo`
+  - DB 設計を知らないユーザーが JSON で content model を見立てる入口 sample とした。
+  - User JSON の nested `author` / `category` を、AI が `JsonAuthor` / `JsonCategory` / `ArticleJsonModel` / `ArticlePublicSummary` に解釈する story にする。
+  - `ArticleJsonModel.GetPublishedArticlePublicSummaryList` で published article の public summary を join read model として出す。
+  - outputs は `DATACLASS-PHP`、`DBACCESS-PHP` に絞り、OpenAPI / HTML / editor workflow は `sample20+` へ送る。
+  - checker は import / sync 後に 2 output を publish し、actual generated reference tree と一致することを検証する。
+  - `sample19` は ebook 本体ではなく JSON-first entrance なので、MySQL / MariaDB と SQLite config store profile の両方を維持する。
+- `sample20-content-publishing-demo`
+  - `sample19` の JSON-first entrance を受けて、public に出す content publishing 面だけを最小化して作る first ebook/content lane とした。
+  - `ContentArticle` 1 table と `GetPublishedContentArticleList` / `GetPublishedContentArticle` の 2 function だけを使う。
+  - draft article は seed するが public DBAccess / OpenAPI には出さず、publish surface から除外されることを sample story に含める。
+  - outputs は `DATACLASS-PHP`、`DBACCESS-PHP`、`HTML-PAGE`、`OPENAPI-JSON` とする。
+  - EPUB は sample assets として表示/download 側で扱う方針に留め、sample20 では EPUB 生成も EPUB import も扱わない。
+  - 本運用なら必要な editor workflow、権限、検索、versioning、asset lifecycle は Mtool sample の目的から外し、README で scope cut として説明する。
+  - `sample20+` は ebook / content lane なので、runtime profile は MySQL / MariaDB canonical のみに絞る。
+- `sample21-ebook-catalog-api-demo`
+  - `sample20` の generic content publishing model を ebook catalog domain へ置き換える first catalog sample とした。
+  - `EbookSeries` / `EbookAuthor` / `EbookGenre` / `EbookBook` / link table / `EbookCatalogItem` を使い、少し現実的な catalog schema を見せる。
+  - `EbookCatalogItem.GetPublicEbookCatalogList` / `GetPublicEbookBook` で public catalog list/detail の OpenAPI surface を作る。
+  - list は author slug、genre slug、series slug、title `LIKE`、limit を argument として持つ。optional filter UI はまだ扱わない。
+  - EPUB は `EpubStatus` / `PrimaryEpubUrl` の metadata だけを持たせ、生成・import・reader 表示は後続 sample へ送る。
+  - outputs は `DATACLASS-PHP`、`DBACCESS-PHP`、`OPENAPI-JSON` とする。
+- `sample22-ebook-chapter-workflow-demo`
+  - `sample21` の ebook catalog を受けて、book の子として chapter workflow を足す sample とした。
+  - `EbookWorkflowBook` / `EbookWorkflowChapter` / `EbookWorkflowPublishedChapter` を使い、draft chapter が public API に出ない境界を固定する。
+  - public read は `GetPublishedEbookWorkflowChapterList` / `GetPublishedEbookWorkflowChapter`、editor write は `InsertEbookWorkflowChapter` / `UpdateEbookWorkflowChapterDraft` / `UpdateEbookWorkflowChapterOrder` / `PublishEbookWorkflowChapter` に絞る。
+  - `SpineOrder` / `NavLabel` / `EpubResourcePath` は HTML reader と EPUB nav/spine の両方に使える metadata として扱う。
+  - editor UI、revision history、EPUB generation / parsing は後続または out of scope に送る。
+- `sample23-ebook-media-metadata-demo`
+  - `sample22` の EPUB-facing metadata を受けて、同梱 EPUB fixture の delivery metadata を DB / API に載せる sample とした。
+  - `EbookMediaBook` / `EbookMediaAsset` / `EbookMediaBookAsset` / `EbookMediaDelivery` を使い、asset 本体ではなく URL / MIME type / file size / sha256 / version を管理する。
+  - public read は `GetPublicEbookMediaDeliveryList` / `GetPublicEbookMediaAsset`、editor write は `InsertEbookMediaAsset` / `UpdateEbookMediaAssetMetadata` に絞る。
+  - EPUB generation / parsing / upload / blob storage / CDN lifecycle は out of scope に送る。
+- `sample24-ebook-public-reader-site-demo`
+  - `sample21-23` の読者向け概念をまとめ、公開本 / 章 / EPUB download metadata を reader site と app API の形で出す sample とした。
+  - `EbookReaderBook` / `EbookReaderChapter` / `EbookReaderMediaDelivery` を使い、draft book / chapter を public surface から除外する。
+  - public read は `GetPublicEbookReaderBookList` / `GetPublicEbookReaderBook` / `GetPublicEbookReaderChapterList` / `GetPublicEbookReaderChapter` / `GetPublicEbookReaderMediaDeliveryList` に絞る。
+  - HTML-PAGE は curated reader page artifact とし、production routing、EPUB renderer、search、purchase は out of scope に送る。
+- `sample25-ebook-editor-auth-cms-demo`
+  - `sample24` の public reader surface と対になる、編集者向けの authenticated CMS API sample とした。
+  - `EbookEditorBook` / `EbookEditorChapter` を使い、chapter preview、draft update、publish の最小 API に絞る。
+  - editor API は `ProjectToken` protected `AUTH-PROXY-SERVER` として publish し、missing / empty / wrong / env missing token が fail-closed になることも検証する。
+  - full editor UI、user / role 管理、audit log、revision history、approval workflow、EPUB generation は out of scope に送る。
+- `sample26-ebook-headless-cms-capstone`
+  - `sample19-25` の到達点として、JSON-first ebook model から public site / app API / editor auth API / metadata bundle を 1 project で説明する capstone とした。
+  - `EbookCmsBook` / `EbookCmsChapter` に author、cover、EPUB delivery metadata を寄せ、sample として読める compact schema に留める。
+  - outputs は `DATACLASS-PHP`、`DBACCESS-PHP`、`HTML-PAGE`、`OPENAPI-JSON`、`AUTH-PROXY-SERVER` とし、checker が `PROJECT-METADATA-BUNDLE` export も検証する。
+  - 本運用に必要な user / role 管理、audit log、revision history、approval workflow、upload、EPUB build、search、payment / DRM は Production Notes へ送る。
 
 ## 各 sample の受け入れ条件
 
@@ -163,5 +219,9 @@ This roadmap defines the user-facing tutorial lane under `sample/tutorials/`. It
 
 - `pattern01-14` は tutorial の代替ではなく、generator / migration contract を守る internal sample として扱う。
 - representative runtime project は引き続き `sample/legacy-projects/` に置き、tutorial numbering に混ぜない。
-- tutorial lane は `sample18` まで current とした。`sample19+` は必要になった時だけ user-facing tutorial / demo として追加する。
+- tutorial lane は `sample26` まで current とした。`sample20+` は ebook CMS tutorial / demo として、MySQL / MariaDB canonical profile に絞って追加する。
+- `sample19-26` は runtime pack、reference output、checker、study guide、比較表、tutorial 導線まで含めて、サンプル教材として完了扱いにする。今後この lane を触る場合は、製品機能追加ではなく、読みやすさ、README / study guide 導線、scope cut 表現、sample 粒度揃えを基準にする。
+- `sample19-26` は当初の保守的な実装見立てより早く作れた。ざっくり 70-85% 程度早く、当初見立ての 15-30% 程度の時間で到達できたという評価。理由は production CMS ではなく Mtool sample として scope を切り、generated artifact を Mtool に任せ、seed / checker / reference 固定へ作業を集中できたため。詳細は `docs/reports/2026/2026-0619-ebook-headless-cms-sample-plan.md` の Implementation Retrospective を参照する。
+- Mtool の基本方針は、複雑なものを core flow で全部扱うことではなく、正規化・単純化できる大部分のケースを最適化し、そこから外れるものを例外として扱うことに置く。`sample19-26` が早く作れたことは、この方針に沿った結果として記録する。
+- 一般的な ORM / OR mapper 類似ツールとの客観比較は、最新版を `docs/mtool-positioning.md` にまとめる。今回時点の履歴は同 report の `Mtool Compared With ORM-like Tools` に残す。Mtool は application code 内の ORM というより、metadata-driven output generator / tutorial sample builder として評価する。
 - `LanguageResource` / i18n tutorial は tool scope 外なので追加しない。

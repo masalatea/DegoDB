@@ -1,0 +1,122 @@
+{
+    "schema_version": 1,
+    "artifact_type": "openapi-build-plan",
+    "project_key": "SAMPLE22",
+    "source_output_key": "OPENAPI-JSON",
+    "source_output_name": "Sample22 OpenAPI JSON",
+    "proxy_base_url": "http://127.0.0.1:8082/runs/proxy/SAMPLE22/API-PROXY-SERVER",
+    "function_count": 6,
+    "unresolved_function_count": 0,
+    "unresolved_auth_count": 0,
+    "operations": [
+        {
+            "source_name": "EbookWorkflowChapter",
+            "function_name": "GetPublishedEbookWorkflowChapterList",
+            "endpoint_filename": "proxyserver-EbookWorkflowChapter-GetPublishedEbookWorkflowChapterList.php",
+            "auth_strategy": "no-security",
+            "input_kind": "scalar",
+            "response_mode": "direct-result",
+            "parameter_schemas": {
+                "param_EbookWorkflowPublishedChapter_BookSlug_where": {
+                    "parameter_name": "param_EbookWorkflowPublishedChapter_BookSlug_where",
+                    "datatype": "",
+                    "source": "select-where-column-name",
+                    "target_table_name": "EbookWorkflowPublishedChapter",
+                    "target_table_column_name": "Status"
+                }
+            }
+        },
+        {
+            "source_name": "EbookWorkflowChapter",
+            "function_name": "GetPublishedEbookWorkflowChapter",
+            "endpoint_filename": "proxyserver-EbookWorkflowChapter-GetPublishedEbookWorkflowChapter.php",
+            "auth_strategy": "no-security",
+            "input_kind": "scalar",
+            "response_mode": "direct-result",
+            "parameter_schemas": {
+                "param_EbookWorkflowPublishedChapter_BookSlug_where": {
+                    "parameter_name": "param_EbookWorkflowPublishedChapter_BookSlug_where",
+                    "datatype": "",
+                    "source": "select-where-column-name",
+                    "target_table_name": "EbookWorkflowPublishedChapter",
+                    "target_table_column_name": "Status"
+                },
+                "param_EbookWorkflowPublishedChapter_ChapterSlug_where": {
+                    "parameter_name": "param_EbookWorkflowPublishedChapter_ChapterSlug_where",
+                    "datatype": "varchar",
+                    "source": "select-where-parameter-data-type",
+                    "target_table_name": "EbookWorkflowPublishedChapter",
+                    "target_table_column_name": "BookSlug"
+                }
+            }
+        },
+        {
+            "source_name": "EbookWorkflowChapter",
+            "function_name": "InsertEbookWorkflowChapter",
+            "endpoint_filename": "proxyserver-EbookWorkflowChapter-InsertEbookWorkflowChapter.php",
+            "auth_strategy": "no-security",
+            "input_kind": "object",
+            "response_mode": "insert-id-single",
+            "parameter_schemas": {
+                "EbookWorkflowChapterObj": {
+                    "parameter_name": "EbookWorkflowChapterObj",
+                    "datatype": "",
+                    "source": "name-inference",
+                    "target_table_name": "",
+                    "target_table_column_name": ""
+                }
+            }
+        },
+        {
+            "source_name": "EbookWorkflowChapter",
+            "function_name": "UpdateEbookWorkflowChapterDraft",
+            "endpoint_filename": "proxyserver-EbookWorkflowChapter-UpdateEbookWorkflowChapterDraft.php",
+            "auth_strategy": "no-security",
+            "input_kind": "object",
+            "response_mode": "none",
+            "parameter_schemas": {
+                "EbookWorkflowChapterObj": {
+                    "parameter_name": "EbookWorkflowChapterObj",
+                    "datatype": "",
+                    "source": "name-inference",
+                    "target_table_name": "",
+                    "target_table_column_name": ""
+                }
+            }
+        },
+        {
+            "source_name": "EbookWorkflowChapter",
+            "function_name": "UpdateEbookWorkflowChapterOrder",
+            "endpoint_filename": "proxyserver-EbookWorkflowChapter-UpdateEbookWorkflowChapterOrder.php",
+            "auth_strategy": "no-security",
+            "input_kind": "object",
+            "response_mode": "none",
+            "parameter_schemas": {
+                "EbookWorkflowChapterObj": {
+                    "parameter_name": "EbookWorkflowChapterObj",
+                    "datatype": "",
+                    "source": "name-inference",
+                    "target_table_name": "",
+                    "target_table_column_name": ""
+                }
+            }
+        },
+        {
+            "source_name": "EbookWorkflowChapter",
+            "function_name": "PublishEbookWorkflowChapter",
+            "endpoint_filename": "proxyserver-EbookWorkflowChapter-PublishEbookWorkflowChapter.php",
+            "auth_strategy": "no-security",
+            "input_kind": "object",
+            "response_mode": "none",
+            "parameter_schemas": {
+                "EbookWorkflowChapterObj": {
+                    "parameter_name": "EbookWorkflowChapterObj",
+                    "datatype": "",
+                    "source": "name-inference",
+                    "target_table_name": "",
+                    "target_table_column_name": ""
+                }
+            }
+        }
+    ]
+}

@@ -1,0 +1,47 @@
+{
+    "schema_version": 1,
+    "artifact_type": "openapi-build-plan",
+    "project_key": "SAMPLE20",
+    "source_output_key": "OPENAPI-JSON",
+    "source_output_name": "Sample20 OpenAPI JSON",
+    "proxy_base_url": "http://127.0.0.1:8082/runs/proxy/SAMPLE20/API-PROXY-SERVER",
+    "function_count": 2,
+    "unresolved_function_count": 0,
+    "unresolved_auth_count": 0,
+    "operations": [
+        {
+            "source_name": "ContentArticle",
+            "function_name": "GetPublishedContentArticleList",
+            "endpoint_filename": "proxyserver-ContentArticle-GetPublishedContentArticleList.php",
+            "auth_strategy": "no-security",
+            "input_kind": "scalar",
+            "response_mode": "direct-result",
+            "parameter_schemas": {
+                "limit": {
+                    "parameter_name": "limit",
+                    "datatype": "int",
+                    "source": "limit-parameter",
+                    "target_table_name": "",
+                    "target_table_column_name": ""
+                }
+            }
+        },
+        {
+            "source_name": "ContentArticle",
+            "function_name": "GetPublishedContentArticle",
+            "endpoint_filename": "proxyserver-ContentArticle-GetPublishedContentArticle.php",
+            "auth_strategy": "no-security",
+            "input_kind": "scalar",
+            "response_mode": "direct-result",
+            "parameter_schemas": {
+                "param_ContentArticle_Slug_where": {
+                    "parameter_name": "param_ContentArticle_Slug_where",
+                    "datatype": "varchar",
+                    "source": "select-where-parameter-data-type",
+                    "target_table_name": "ContentArticle",
+                    "target_table_column_name": "Slug"
+                }
+            }
+        }
+    ]
+}
