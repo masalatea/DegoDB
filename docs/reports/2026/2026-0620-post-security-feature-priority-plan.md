@@ -22,7 +22,7 @@
 Recommended order:
 
 1. Custom proxy metadata bundle coverage. Done in first slice.
-2. Generated API `oidc-jwt-bearer` runtime verification.
+2. Generated API `oidc-jwt-bearer` runtime verification. Done in second slice.
 3. PostgreSQL output support for user DB / generated output.
 4. Mtool namespace migration.
 5. Mtool admin/lab route authorization hardening re-planning gate.
@@ -71,11 +71,11 @@ Out of scope:
 
 ### 2. Generated API `oidc-jwt-bearer` Runtime Verification
 
-Priority: `NEXT AFTER CUSTOM PROXY BUNDLE`
+Priority: `DONE_SECOND_SLICE`
 
 これは Mtool admin login の SSO ではなく、Mtool が生成した API / proxy runtime が OIDC provider の JWT bearer token を検証する作業である。
 
-Current reading:
+Current reading before implementation:
 
 - `oidc-jwt-bearer` policy JSON shape は `I/F_DONE`。
 - issuer / audience / discovery URL or JWKS URI / required claims の contract は用意済み。
@@ -94,6 +94,15 @@ First slice scope:
 - JWKS or discovery metadata 取得と key selection の最小実装を決める。
 - missing / malformed / invalid signature / wrong issuer / wrong audience / missing required claim / valid token の contract test を追加する。
 - OpenAPI security scheme と sample/reference output を必要最小限で更新する。
+
+Second slice result:
+
+- generated proxy resolver now accepts `oidc-jwt-bearer` auth policy v2.
+- generated single proxy runtime verifies JWT bearer tokens with `firebase/php-jwt`.
+- issuer / audience / required claims are checked after signature verification.
+- JWKS can be resolved from `jwks_json_env`, `jwks_uri`, or `discovery_url`.
+- Contract coverage verifies missing JWKS env, wrong issuer, wrong audience, required claim mismatch, and valid token.
+- Detailed completion note: `docs/reports/2026/2026-0620-generated-oidc-jwt-runtime-verification.md`.
 
 Out of scope:
 

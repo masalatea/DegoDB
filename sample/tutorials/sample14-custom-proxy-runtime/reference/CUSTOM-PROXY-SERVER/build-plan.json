@@ -31,7 +31,10 @@
                 "security_mode": "no-security",
                 "summary": "認証を掛けません。",
                 "notes": [],
-                "is_valid": true
+                "is_valid": true,
+                "auth_policy_version": 1,
+                "auth_policy_json": "",
+                "secret_env": ""
             },
             "target_source_output_keys": [
                 "CUSTOM-PROXY-SERVER"
@@ -39,7 +42,7 @@
             "step_count": 2,
             "unresolved_step_count": 0,
             "notes": "Sample14 custom proxy that bundles two read-only generated DBAccess functions into one proxy endpoint.",
-            "updated_at": "2026-06-16 13:34:40",
+            "updated_at": "2026-06-19 21:58:36",
             "steps": [
                 {
                     "id": "1",
@@ -49,7 +52,7 @@
                     "is_list": true,
                     "notes": "Read canonical table catalog rows for the requested project.",
                     "source_of_truth": "manual",
-                    "updated_at": "2026-06-16 13:34:40",
+                    "updated_at": "2026-06-19 21:58:36",
                     "resolved": true,
                     "signature": "public function GetdbtableList($param_dbtable_ProjectPID_where)",
                     "line": 21,
@@ -63,7 +66,7 @@
                     "is_list": true,
                     "notes": "Read source output definitions for the requested project.",
                     "source_of_truth": "manual",
-                    "updated_at": "2026-06-16 13:34:40",
+                    "updated_at": "2026-06-19 21:58:36",
                     "resolved": true,
                     "signature": "public function GetProjectSourceOutputList($param_ProjectSourceOutput_ProjectPID_where)",
                     "line": 21,

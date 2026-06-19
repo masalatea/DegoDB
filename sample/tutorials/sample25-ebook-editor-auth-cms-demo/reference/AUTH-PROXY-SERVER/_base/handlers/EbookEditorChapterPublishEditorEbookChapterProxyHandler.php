@@ -24,6 +24,12 @@ class EbookEditorChapterPublishEditorEbookChapterProxyHandlerBase extends MtoolG
         return 'project-token';
     }
 
+    protected function authPolicy(): array
+    {
+        return         [
+        ];
+    }
+
     protected function singleGetFunctionName(): string
     {
         return '';

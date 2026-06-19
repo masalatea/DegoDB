@@ -82,7 +82,7 @@ final class AuthPolicyContractTest extends TestCase
         self::assertStringContainsString('legacy get function', implode("\n", $policy['notes']));
     }
 
-    public function testGeneratedRuntimeOidcJwtBearerContractIsInterfaceOnly(): void
+    public function testGeneratedRuntimeOidcJwtBearerContractIsImplemented(): void
     {
         $policy = app_generated_runtime_auth_policy_validate_json(
             2,
@@ -99,11 +99,11 @@ final class AuthPolicyContractTest extends TestCase
 
         self::assertTrue($policy['is_valid']);
         self::assertSame('oidc-jwt-bearer', $policy['strategy_key']);
-        self::assertSame('interface-only', $policy['implementation_status']);
+        self::assertSame('implemented', $policy['implementation_status']);
         self::assertSame([], $policy['secret_refs']);
     }
 
-    public function testGeneratedProxyResolverDoesNotExecuteOidcJwtBearerYet(): void
+    public function testGeneratedProxyResolverAcceptsOidcJwtBearer(): void
     {
         $policy = app_resolve_db_access_single_proxy_auth_policy(
             'ProjectToken',
@@ -117,8 +117,9 @@ final class AuthPolicyContractTest extends TestCase
             ], JSON_THROW_ON_ERROR),
         );
 
-        self::assertFalse($policy['is_valid']);
-        self::assertSame('invalid', $policy['strategy_key']);
-        self::assertStringContainsString('未知の auth_policy_json.type', implode("\n", $policy['notes']));
+        self::assertTrue($policy['is_valid']);
+        self::assertSame('oidc-jwt-bearer', $policy['strategy_key']);
+        self::assertSame('jwt-bearer', $policy['security_mode']);
+        self::assertSame('auth-policy-v2', $policy['resolution_source']);
     }
 }

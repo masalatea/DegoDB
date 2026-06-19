@@ -24,6 +24,12 @@ class EbookEditorChapterUpdateEditorEbookChapterDraftProxyHandlerBase extends Mt
         return 'project-token';
     }
 
+    protected function authPolicy(): array
+    {
+        return         [
+        ];
+    }
+
     protected function singleGetFunctionName(): string
     {
         return '';

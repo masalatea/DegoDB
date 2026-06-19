@@ -15,6 +15,8 @@
   - security / auth / SSO first slice 後の次期優先順を見直した計画。custom proxy metadata bundle coverage、generated API `oidc-jwt-bearer` runtime verification、PostgreSQL output support、namespace migration、Mtool admin/lab route authorization hardening re-planning gate の順に整理する。5 番目は自動実装せず、再見積もりと再優先判断を必須にする。Status: `CURRENT PRIORITY UPDATE`。
 - `2026-0620-custom-proxy-metadata-bundle-coverage.md`
   - project-core metadata bundle に custom proxy section を追加し、custom proxy 本体、step、target source output binding、auth policy refs を export / preview / apply できるようにした first slice の記録。Status: `DONE`。
+- `2026-0620-generated-oidc-jwt-runtime-verification.md`
+  - generated single proxy runtime で `oidc-jwt-bearer` auth policy を実行可能にし、JWT signature、issuer、audience、required claims、JWKS env / URI / discovery 解決を contract test で固定した記録。Status: `DONE`。
 - `2026-0619-plan-inventory.md`
   - 2026-06-19 時点の plan / roadmap / resume prompt を棚卸しし、active mainline、done、waiting、next、parked を整理した記録。5 月 broad rewrite 計画は supporting / historical として読み、6 月後半の sample lane、SQLite lightweight profile、user DB dialect framework、security / auth foundation を現在の主線として整理する。Status: `CURRENT INVENTORY`。
 - `2026-0619-instruction-driven-demo-sample-plan.md`

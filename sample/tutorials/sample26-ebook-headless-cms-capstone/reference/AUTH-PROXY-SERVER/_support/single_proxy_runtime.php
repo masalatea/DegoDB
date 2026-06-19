@@ -60,6 +60,11 @@ abstract class MtoolGeneratedSingleProxyEndpointBase
         return 'manual';
     }
 
+    protected function authPolicy(): array
+    {
+        return [];
+    }
+
     protected function expectedProjectToken(): string
     {
         return getenv('MTOOL_PROXY_PROJECT_TOKEN') ?: '';
@@ -158,6 +163,11 @@ abstract class MtoolGeneratedSingleProxyEndpointBase
             return;
         }
 
+        if ($strategy === 'oidc-jwt-bearer') {
+            $this->authorizeOidcJwtBearer();
+            return;
+        }
+
         if ($strategy === 'project-token' || $strategy === 'project-token-or-get-function') {
             if (!array_key_exists('TOKEN', $payload)) {
                 if ($strategy === 'project-token') {
@@ -227,6 +237,164 @@ abstract class MtoolGeneratedSingleProxyEndpointBase
         }
 
         throw new RuntimeException('未対応の auth strategy です。');
+    }
+
+    private function authorizeOidcJwtBearer(): void
+    {
+        $header = trim($this->authorizationHeader());
+        if ($header === '') {
+            throw new RuntimeException('Authorization bearer header が必要です。');
+        }
+        if (!preg_match('/^Bearer\s+(.+)$/i', $header, $matches)) {
+            throw new RuntimeException('Authorization header は Bearer token 形式である必要があります。');
+        }
+
+        $jwt = trim((string) ($matches[1] ?? ''));
+        if ($jwt === '') {
+            throw new RuntimeException('Bearer token は空でない string である必要があります。');
+        }
+
+        $policy = $this->authPolicy();
+        $issuer = rtrim((string) ($policy['issuer'] ?? ''), '/');
+        $audience = (string) ($policy['audience'] ?? '');
+        if ($issuer === '' || $audience === '') {
+            throw new RuntimeException('oidc-jwt-bearer policy には issuer と audience が必要です。');
+        }
+
+        $this->requireJwtRuntime();
+        $jwks = $this->loadOidcJwks($policy);
+        $decoded = \Firebase\JWT\JWT::decode($jwt, \Firebase\JWT\JWK::parseKeySet($jwks));
+        $claims = json_decode(json_encode($decoded, JSON_THROW_ON_ERROR), true, 512, JSON_THROW_ON_ERROR);
+        if (!is_array($claims)) {
+            throw new RuntimeException('OIDC JWT claims が object ではありません。');
+        }
+
+        if (rtrim((string) ($claims['iss'] ?? ''), '/') !== $issuer) {
+            throw new RuntimeException('OIDC JWT issuer が一致しません。');
+        }
+
+        $tokenAudience = $claims['aud'] ?? null;
+        $audiences = is_array($tokenAudience) ? $tokenAudience : [$tokenAudience];
+        if (!in_array($audience, $audiences, true)) {
+            throw new RuntimeException('OIDC JWT audience が一致しません。');
+        }
+
+        $requiredClaims = $policy['required_claims'] ?? [];
+        if (!is_array($requiredClaims)) {
+            throw new RuntimeException('oidc-jwt-bearer required_claims は object である必要があります。');
+        }
+        foreach ($requiredClaims as $claimName => $expectedValue) {
+            $claimName = (string) $claimName;
+            if (!array_key_exists($claimName, $claims)) {
+                throw new RuntimeException('OIDC JWT required claim が不足しています: ' . $claimName);
+            }
+            if (!$this->oidcClaimMatches($claims[$claimName], $expectedValue)) {
+                throw new RuntimeException('OIDC JWT required claim が一致しません: ' . $claimName);
+            }
+        }
+    }
+
+    private function requireJwtRuntime(): void
+    {
+        if (class_exists(\Firebase\JWT\JWT::class) && class_exists(\Firebase\JWT\JWK::class)) {
+            return;
+        }
+
+        $candidates = [
+            getcwd() . '/vendor/autoload.php',
+            dirname(__DIR__, 2) . '/vendor/autoload.php',
+            dirname(__DIR__, 3) . '/vendor/autoload.php',
+            dirname(__DIR__, 4) . '/vendor/autoload.php',
+        ];
+        foreach ($candidates as $autoloadPath) {
+            if (is_file($autoloadPath)) {
+                require_once $autoloadPath;
+                break;
+            }
+        }
+
+        if (!class_exists(\Firebase\JWT\JWT::class) || !class_exists(\Firebase\JWT\JWK::class)) {
+            throw new RuntimeException('OIDC JWT 検証に必要な Composer dependencies が見つかりません。');
+        }
+    }
+
+    /**
+     * @param array<string,mixed> $policy
+     * @return array<string,mixed>
+     */
+    private function loadOidcJwks(array $policy): array
+    {
+        $jwksJsonEnv = trim((string) ($policy['jwks_json_env'] ?? ''));
+        if ($jwksJsonEnv !== '') {
+            $jwksJson = getenv($jwksJsonEnv);
+            if (!is_string($jwksJson) || trim($jwksJson) === '') {
+                throw new RuntimeException('OIDC JWKS env が未設定です: ' . $jwksJsonEnv);
+            }
+
+            return $this->decodeOidcJson($jwksJson, 'OIDC JWKS env');
+        }
+
+        $jwksUri = trim((string) ($policy['jwks_uri'] ?? ''));
+        if ($jwksUri === '') {
+            $discoveryUrl = trim((string) ($policy['discovery_url'] ?? ''));
+            if ($discoveryUrl === '') {
+                throw new RuntimeException('oidc-jwt-bearer policy には discovery_url、jwks_uri、jwks_json_env のいずれかが必要です。');
+            }
+            $discovery = $this->fetchOidcJson($discoveryUrl, 'OIDC discovery');
+            $jwksUri = trim((string) ($discovery['jwks_uri'] ?? ''));
+            if ($jwksUri === '') {
+                throw new RuntimeException('OIDC discovery に jwks_uri がありません。');
+            }
+        }
+
+        return $this->fetchOidcJson($jwksUri, 'OIDC JWKS');
+    }
+
+    /**
+     * @return array<string,mixed>
+     */
+    private function fetchOidcJson(string $url, string $label): array
+    {
+        $context = stream_context_create([
+            'http' => [
+                'timeout' => 5,
+                'ignore_errors' => true,
+            ],
+        ]);
+        $json = @file_get_contents($url, false, $context);
+        if (!is_string($json) || trim($json) === '') {
+            throw new RuntimeException($label . ' を取得できません。');
+        }
+
+        return $this->decodeOidcJson($json, $label);
+    }
+
+    /**
+     * @return array<string,mixed>
+     */
+    private function decodeOidcJson(string $json, string $label): array
+    {
+        $decoded = json_decode($json, true);
+        if (!is_array($decoded)) {
+            throw new RuntimeException($label . ' は JSON object である必要があります。');
+        }
+
+        return $decoded;
+    }
+
+    private function oidcClaimMatches(mixed $actualValue, mixed $expectedValue): bool
+    {
+        if (is_array($actualValue) && !is_array($expectedValue)) {
+            return in_array($expectedValue, $actualValue, true);
+        }
+        if (is_string($actualValue) && is_string($expectedValue)) {
+            $parts = preg_split('/\s+/', trim($actualValue));
+            if (is_array($parts) && in_array($expectedValue, $parts, true)) {
+                return true;
+            }
+        }
+
+        return $actualValue === $expectedValue;
     }
 
     private function withOptionalTransaction(callable $callback): void

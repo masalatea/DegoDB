@@ -839,6 +839,102 @@ final class OpenApiSourceOutputContractTest extends TestCase
         }
     }
 
+    public function testGeneratedSingleProxyOidcJwtBearerAuthValidatesJwtClaims(): void
+    {
+        $baseClass = 'MtoolGeneratedSingleProxyEndpointBaseContract';
+        $subjectClass = 'MtoolGeneratedSingleProxyEndpointOidcJwtBearerContractSubject';
+
+        $this->ensureGeneratedSingleProxyRuntimeClassExists($baseClass);
+        $oidcFixture = $this->createOidcJwtFixture();
+        $this->ensureGeneratedSingleProxyContractSubjectExists($baseClass, $subjectClass, [
+            'auth_strategy' => 'oidc-jwt-bearer',
+            'auth_policy' => [
+                'type' => 'oidc-jwt-bearer',
+                'issuer' => 'https://idp.example.test/realms/dego',
+                'audience' => 'dego-generated-api',
+                'jwks_json_env' => 'DEGODB_TEST_OIDC_JWKS_JSON',
+                'required_claims' => [
+                    'scope' => 'dego.read',
+                    'tenant' => 'dego',
+                ],
+            ],
+        ]);
+
+        $previousJwksJson = getenv('DEGODB_TEST_OIDC_JWKS_JSON');
+        $previousAuthorization = $_SERVER['HTTP_AUTHORIZATION'] ?? null;
+        $previousRedirectAuthorization = $_SERVER['REDIRECT_HTTP_AUTHORIZATION'] ?? null;
+
+        try {
+            putenv('DEGODB_TEST_OIDC_JWKS_JSON');
+            unset($_SERVER['HTTP_AUTHORIZATION'], $_SERVER['REDIRECT_HTTP_AUTHORIZATION']);
+            $subject = new $subjectClass();
+
+            $this->assertGeneratedProxyAuthorizeThrows(
+                $subject,
+                $baseClass,
+                [],
+                'Authorization bearer header が必要です。',
+            );
+
+            $_SERVER['HTTP_AUTHORIZATION'] = 'Token not-a-bearer-token';
+            $this->assertGeneratedProxyAuthorizeThrows(
+                $subject,
+                $baseClass,
+                [],
+                'Authorization header は Bearer token 形式である必要があります。',
+            );
+
+            $_SERVER['HTTP_AUTHORIZATION'] = 'Bearer ' . $oidcFixture['valid_token'];
+            $this->assertGeneratedProxyAuthorizeThrows(
+                $subject,
+                $baseClass,
+                [],
+                'OIDC JWKS env が未設定です: DEGODB_TEST_OIDC_JWKS_JSON',
+            );
+
+            putenv('DEGODB_TEST_OIDC_JWKS_JSON=' . $oidcFixture['jwks_json']);
+            $_SERVER['HTTP_AUTHORIZATION'] = 'Bearer ' . $oidcFixture['invalid_signature_token'];
+            $this->assertGeneratedProxyAuthorizeThrows(
+                $subject,
+                $baseClass,
+                [],
+                'Signature verification failed',
+            );
+
+            $_SERVER['HTTP_AUTHORIZATION'] = 'Bearer ' . $oidcFixture['wrong_issuer_token'];
+            $this->assertGeneratedProxyAuthorizeThrows(
+                $subject,
+                $baseClass,
+                [],
+                'OIDC JWT issuer が一致しません。',
+            );
+
+            $_SERVER['HTTP_AUTHORIZATION'] = 'Bearer ' . $oidcFixture['wrong_audience_token'];
+            $this->assertGeneratedProxyAuthorizeThrows(
+                $subject,
+                $baseClass,
+                [],
+                'OIDC JWT audience が一致しません。',
+            );
+
+            $_SERVER['HTTP_AUTHORIZATION'] = 'Bearer ' . $oidcFixture['missing_claim_token'];
+            $this->assertGeneratedProxyAuthorizeThrows(
+                $subject,
+                $baseClass,
+                [],
+                'OIDC JWT required claim が一致しません: scope',
+            );
+
+            $_SERVER['HTTP_AUTHORIZATION'] = 'Bearer ' . $oidcFixture['valid_token'];
+            $this->invokeGeneratedProxyAuthorizeRequest($subject, $baseClass, []);
+            self::assertTrue(true);
+        } finally {
+            $this->restoreEnvValue('DEGODB_TEST_OIDC_JWKS_JSON', $previousJwksJson);
+            $this->restoreServerValue('HTTP_AUTHORIZATION', $previousAuthorization);
+            $this->restoreServerValue('REDIRECT_HTTP_AUTHORIZATION', $previousRedirectAuthorization);
+        }
+    }
+
     public function testLabSwaggerRuntimeDatabaseSourceSelectionSupportsExplicitDbSourceKey(): void
     {
         $app = [
@@ -1256,6 +1352,7 @@ final class OpenApiSourceOutputContractTest extends TestCase
     /**
      * @param array{
      *     auth_strategy:string,
+     *     auth_policy?:array<string,mixed>,
      *     single_get_function_name?:string,
      *     authorize_by_get_function?:bool
      * } $options
@@ -1270,6 +1367,7 @@ final class OpenApiSourceOutputContractTest extends TestCase
         }
 
         $authStrategy = var_export($options['auth_strategy'], true);
+        $authPolicy = var_export($options['auth_policy'] ?? [], true);
         $singleGetFunctionName = var_export((string) ($options['single_get_function_name'] ?? ''), true);
         $authorizeByGetFunction = !empty($options['authorize_by_get_function']) ? 'true' : 'false';
 
@@ -1291,6 +1389,11 @@ class {$subjectClass} extends {$baseClass}
         return {$authStrategy};
     }
 
+    protected function authPolicy(): array
+    {
+        return {$authPolicy};
+    }
+
     protected function singleGetFunctionName(): string
     {
         return {$singleGetFunctionName};
@@ -1302,6 +1405,87 @@ class {$subjectClass} extends {$baseClass}
     }
 }
 PHP);
+    }
+
+    /**
+     * @return array{
+     *     jwks_json:string,
+     *     valid_token:string,
+     *     invalid_signature_token:string,
+     *     wrong_issuer_token:string,
+     *     wrong_audience_token:string,
+     *     missing_claim_token:string
+     * }
+     */
+    private function createOidcJwtFixture(): array
+    {
+        require_once dirname(__DIR__, 2) . '/vendor/autoload.php';
+
+        $key = openssl_pkey_new([
+            'private_key_bits' => 2048,
+            'private_key_type' => OPENSSL_KEYTYPE_RSA,
+        ]);
+        self::assertNotFalse($key);
+
+        $privateKey = '';
+        self::assertTrue(openssl_pkey_export($key, $privateKey));
+        $otherKey = openssl_pkey_new([
+            'private_key_bits' => 2048,
+            'private_key_type' => OPENSSL_KEYTYPE_RSA,
+        ]);
+        self::assertNotFalse($otherKey);
+        $otherPrivateKey = '';
+        self::assertTrue(openssl_pkey_export($otherKey, $otherPrivateKey));
+        $details = openssl_pkey_get_details($key);
+        self::assertIsArray($details);
+        self::assertIsArray($details['rsa'] ?? null);
+
+        $kid = 'dego-test-key';
+        $now = time();
+        $baseClaims = [
+            'iss' => 'https://idp.example.test/realms/dego',
+            'aud' => 'dego-generated-api',
+            'sub' => 'user-1',
+            'iat' => $now,
+            'nbf' => $now - 30,
+            'exp' => $now + 300,
+            'scope' => 'openid dego.read',
+            'tenant' => 'dego',
+        ];
+
+        $jwks = [
+            'keys' => [
+                [
+                    'kty' => 'RSA',
+                    'kid' => $kid,
+                    'use' => 'sig',
+                    'alg' => 'RS256',
+                    'n' => $this->base64UrlEncodeUnsignedInteger($details['rsa']['n']),
+                    'e' => $this->base64UrlEncodeUnsignedInteger($details['rsa']['e']),
+                ],
+            ],
+        ];
+
+        $wrongIssuerClaims = $baseClaims;
+        $wrongIssuerClaims['iss'] = 'https://idp.example.test/realms/other';
+        $wrongAudienceClaims = $baseClaims;
+        $wrongAudienceClaims['aud'] = 'other-api';
+        $missingClaimClaims = $baseClaims;
+        $missingClaimClaims['scope'] = 'openid profile';
+
+        return [
+            'jwks_json' => json_encode($jwks, JSON_UNESCAPED_SLASHES | JSON_THROW_ON_ERROR),
+            'valid_token' => \Firebase\JWT\JWT::encode($baseClaims, $privateKey, 'RS256', $kid),
+            'invalid_signature_token' => \Firebase\JWT\JWT::encode($baseClaims, $otherPrivateKey, 'RS256', $kid),
+            'wrong_issuer_token' => \Firebase\JWT\JWT::encode($wrongIssuerClaims, $privateKey, 'RS256', $kid),
+            'wrong_audience_token' => \Firebase\JWT\JWT::encode($wrongAudienceClaims, $privateKey, 'RS256', $kid),
+            'missing_claim_token' => \Firebase\JWT\JWT::encode($missingClaimClaims, $privateKey, 'RS256', $kid),
+        ];
+    }
+
+    private function base64UrlEncodeUnsignedInteger(string $value): string
+    {
+        return rtrim(strtr(base64_encode(ltrim($value, "\x00")), '+/', '-_'), '=');
     }
 
     private function invokeGeneratedProxyAuthorizeRequest(object $subject, string $baseClass, array $payload): void

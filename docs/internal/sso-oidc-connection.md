@@ -1,5 +1,8 @@
 # SSO OIDC Connection
 
+English companion:
+This document defines the current SSO OIDC connection boundary, external IdP contract, and generated session / role mapping expectations for Mtool.
+
 Status: `DONE`
 
 This document records the first complete SSO connection contract for Mtool. Mtool does not manage users, members, groups, invitations, passwords, MFA, or SCIM. Those remain in the external IdP. Mtool only consumes OIDC claims and maps them to site roles and project roles.

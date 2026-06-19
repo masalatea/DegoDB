@@ -146,7 +146,7 @@ None of the items below are remaining work for the completed `sample19-26` ebook
 
 ### Generated Runtime Security Focus Status
 
-- Current status: `GENERATED_RUNTIME_BASELINE_DONE`.
+- Current status: `GENERATED_RUNTIME_BASELINE_DONE / OIDC_JWT_RUNTIME_DONE`.
 - Source of truth: `docs/internal/generated-runtime-security-plan.md`.
 - This is the security lane for code emitted by Mtool: generated proxy handlers, OpenAPI output, generated runtime artifacts, and generated runtime smoke.
 - Already done:
@@ -158,6 +158,7 @@ None of the items below are remaining work for the completed `sample19-26` ebook
   - legacy `ProjectToken` / body `TOKEN` marked compatibility-only;
   - generated runtime auth policy I/F in `mtool/app/generated_runtime_auth_policy.php`;
   - `oidc-jwt-bearer` policy shape for issuer / audience / discovery or JWKS / required claims;
+  - `oidc-jwt-bearer` generated runtime verification with JWKS env / URI / discovery support;
   - `sample16-authenticated-proxy` moved to static bearer as the baseline authenticated proxy sample;
   - no additional security sample is needed for the current baseline; `sample25` / `sample26` remain ebook CMS samples with legacy ProjectToken compatibility;
   - project metadata bundle preserves auth policy refs and rejects populated secret-like auth policy fields.
@@ -167,7 +168,7 @@ None of the items below are remaining work for the completed `sample19-26` ebook
 - Active generated-runtime work:
   - none for the current baseline.
 - Later generated-runtime work:
-  - `oidc-jwt-bearer` runtime verification implementation for generated APIs.
+  - OpenAPI / Swagger OIDC-specific helper polish if needed.
 - Keep this separate from Mtool admin/lab authorization hardening.
 
 ## Proposal Guardrails
@@ -190,7 +191,7 @@ Current immediate follow-up: none. Security foundation, API auth v2, static bear
 Current order:
 
 1. Custom proxy metadata bundle coverage. Done in first slice on 2026-06-20.
-2. Generated API `oidc-jwt-bearer` runtime verification.
+2. Generated API `oidc-jwt-bearer` runtime verification. Done in second slice on 2026-06-20.
 3. PostgreSQL output support for user DB / generated output.
 4. Mtool namespace migration.
 5. Mtool admin/lab route authorization hardening re-planning gate. Do not proceed into implementation automatically after namespace migration; re-estimate and re-prioritize first.

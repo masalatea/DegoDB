@@ -14,7 +14,7 @@
 - `domain_validation.php` で `Project` / `Experiment` / DB Access metadata 入力の最小バリデーションを扱う。
 - proxy auth type の allowed values と、`GetFunc` 系での get function 必須条件もここで揃える。
 - `db_access_endpoint_policy.php` で shared proxy auth policy resolver を扱い、`db_access function` 用 `SingleProxy_*` と `custom proxy` 用 `AuthType` の両方を同じ規則で解釈する。
-- `generated_runtime_auth_policy.php` で生成 runtime 側の auth policy JSON contract を扱う。現行 generated proxy runtime が実行するのは `static-bearer` のみで、`oidc-jwt-bearer` は I/F 固定段階として検証形だけを置く。
+- `generated_runtime_auth_policy.php` で生成 runtime 側の auth policy JSON contract を扱う。現行 generated proxy runtime は `static-bearer` と `oidc-jwt-bearer` を実行可能な auth policy として扱う。
 - `project_route_authorization.php` で Mtool 本体 route 名と capability の I/F contract を扱う。ここは route enforcement 実装前の薄い契約層とする。
 - `db_access_repository.php` を DB Access metadata adapter とする。
 - `db_access_repository_pdo.php` で `project_db_access_classes` / `project_db_access_functions` / query designer sub-resource の fetch / upsert / CRUD を実装する。

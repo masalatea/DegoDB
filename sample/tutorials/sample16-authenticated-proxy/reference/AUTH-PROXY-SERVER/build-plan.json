@@ -53,11 +53,15 @@
                 "is_valid": true,
                 "auth_policy_version": 2,
                 "auth_policy_json": "{\"type\":\"static-bearer\",\"secret_env\":\"DEGODB_PROXY_BEARER_TOKEN\"}",
-                "secret_env": "DEGODB_PROXY_BEARER_TOKEN"
+                "secret_env": "DEGODB_PROXY_BEARER_TOKEN",
+                "policy": {
+                    "type": "static-bearer",
+                    "secret_env": "DEGODB_PROXY_BEARER_TOKEN"
+                }
             },
             "source_of_truth": "manual",
-            "function_updated_at": "2026-06-19 13:21:47",
-            "target_updated_at": "2026-06-19 13:21:47",
+            "function_updated_at": "2026-06-19 21:53:09",
+            "target_updated_at": "2026-06-19 21:53:09",
             "resolved": true,
             "signature": "public function GetAuthTask($param_AuthTask_Id_where)",
             "line": 10,

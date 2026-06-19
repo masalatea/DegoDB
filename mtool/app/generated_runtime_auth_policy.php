@@ -174,6 +174,7 @@ function app_generated_runtime_auth_policy_validate_oidc_jwt_bearer(string $json
     $audience = trim((string) ($policy['audience'] ?? ''));
     $discoveryUrl = trim((string) ($policy['discovery_url'] ?? ''));
     $jwksUri = trim((string) ($policy['jwks_uri'] ?? ''));
+    $jwksJsonEnv = trim((string) ($policy['jwks_json_env'] ?? ''));
 
     if ($issuer === '') {
         return app_generated_runtime_auth_policy_invalid($json, 'oidc-jwt-bearer policy には issuer が必要です。', $policy, 'oidc-jwt-bearer');
@@ -181,11 +182,14 @@ function app_generated_runtime_auth_policy_validate_oidc_jwt_bearer(string $json
     if ($audience === '') {
         return app_generated_runtime_auth_policy_invalid($json, 'oidc-jwt-bearer policy には audience が必要です。', $policy, 'oidc-jwt-bearer');
     }
-    if ($discoveryUrl === '' && $jwksUri === '') {
-        return app_generated_runtime_auth_policy_invalid($json, 'oidc-jwt-bearer policy には discovery_url または jwks_uri が必要です。', $policy, 'oidc-jwt-bearer');
+    if ($discoveryUrl === '' && $jwksUri === '' && $jwksJsonEnv === '') {
+        return app_generated_runtime_auth_policy_invalid($json, 'oidc-jwt-bearer policy には discovery_url、jwks_uri、jwks_json_env のいずれかが必要です。', $policy, 'oidc-jwt-bearer');
     }
     if (isset($policy['required_claims']) && !is_array($policy['required_claims'])) {
         return app_generated_runtime_auth_policy_invalid($json, 'oidc-jwt-bearer required_claims は object である必要があります。', $policy, 'oidc-jwt-bearer');
+    }
+    if ($jwksJsonEnv !== '' && preg_match('/^[A-Z_][A-Z0-9_]*$/', $jwksJsonEnv) !== 1) {
+        return app_generated_runtime_auth_policy_invalid($json, 'oidc-jwt-bearer jwks_json_env は env 名である必要があります。', $policy, 'oidc-jwt-bearer');
     }
 
     return [
@@ -194,9 +198,9 @@ function app_generated_runtime_auth_policy_validate_oidc_jwt_bearer(string $json
         'type' => 'oidc-jwt-bearer',
         'strategy_key' => 'oidc-jwt-bearer',
         'security_mode' => 'jwt-bearer',
-        'implementation_status' => 'interface-only',
-        'summary' => '生成 API 用 OIDC JWT bearer policy contract です。検証実装は後続 slice で追加します。',
-        'notes' => ['この policy は I/F 固定のみで、現行 generated proxy runtime ではまだ実行しません。'],
+        'implementation_status' => 'implemented',
+        'summary' => 'auth policy v2 の OIDC JWT bearer 認証です。',
+        'notes' => [],
         'secret_refs' => [],
         'policy' => $policy,
         'json' => $json,

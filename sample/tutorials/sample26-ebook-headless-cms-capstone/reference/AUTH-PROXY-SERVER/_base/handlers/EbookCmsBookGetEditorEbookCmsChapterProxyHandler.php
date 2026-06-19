@@ -24,6 +24,12 @@ class EbookCmsBookGetEditorEbookCmsChapterProxyHandlerBase extends MtoolGenerate
         return 'project-token';
     }
 
+    protected function authPolicy(): array
+    {
+        return         [
+        ];
+    }
+
     protected function singleGetFunctionName(): string
     {
         return '';

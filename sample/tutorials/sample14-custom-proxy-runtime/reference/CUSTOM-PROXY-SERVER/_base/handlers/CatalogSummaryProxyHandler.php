@@ -24,6 +24,12 @@ class CatalogSummaryProxyHandlerBase extends MtoolGeneratedCustomProxyEndpointBa
         return 'no-security';
     }
 
+    protected function authPolicy(): array
+    {
+        return         [
+        ];
+    }
+
     protected function singleGetFunctionName(): string
     {
         return '';

@@ -185,7 +185,7 @@ function app_resolve_proxy_auth_policy_with_contract(
     }
 
     $contract = app_generated_runtime_auth_policy_validate_json($authPolicyVersion, $authPolicyJson, [
-        'allowed_policy_types' => ['static-bearer'],
+        'allowed_policy_types' => ['static-bearer', 'oidc-jwt-bearer'],
     ]);
     if (!$contract['is_valid']) {
         return app_invalid_proxy_auth_policy_contract(
@@ -197,19 +197,23 @@ function app_resolve_proxy_auth_policy_with_contract(
         );
     }
 
+    $contractType = (string) ($contract['type'] ?? '');
     $secretEnv = (string) ($contract['secret_refs']['secret_env'] ?? '');
+    $resolvedAuthType = $contractType === 'oidc-jwt-bearer' ? 'Manual' : 'StaticBearer';
+    $strategyCaption = $contractType === 'oidc-jwt-bearer' ? 'OIDC JWT Bearer' : 'Static Bearer';
+    $securityMode = (string) ($contract['security_mode'] ?? $contract['strategy_key']);
 
     return [
         'raw_auth_type' => $rawAuthType,
         'raw_auth_type_caption' => app_proxy_auth_type_caption($rawAuthType),
-        'resolved_auth_type' => 'StaticBearer',
-        'resolved_auth_type_caption' => app_proxy_auth_type_caption('StaticBearer'),
-        'strategy_key' => 'static-bearer',
-        'strategy_caption' => 'Static Bearer',
+        'resolved_auth_type' => $resolvedAuthType,
+        'resolved_auth_type_caption' => app_proxy_auth_type_caption($resolvedAuthType),
+        'strategy_key' => (string) $contract['strategy_key'],
+        'strategy_caption' => $strategyCaption,
         'resolution_source' => 'auth-policy-v2',
         'requires_get_function' => false,
         'single_get_function_name' => '',
-        'security_mode' => 'static-bearer',
+        'security_mode' => $securityMode,
         'summary' => $contract['summary'],
         'notes' => $singleGetFunctionName === ''
             ? []
@@ -218,6 +222,7 @@ function app_resolve_proxy_auth_policy_with_contract(
         'auth_policy_version' => $authPolicyVersion,
         'auth_policy_json' => $contract['json'],
         'secret_env' => $secretEnv,
+        'policy' => $contract['policy'],
     ];
 }
 
