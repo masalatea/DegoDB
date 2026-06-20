@@ -7,10 +7,10 @@
 // Generated from canonical DB Access metadata.
 // Thin DTO generated from canonical select/write metadata.
 
-class htmlParameterDataBase
+class HtmlParameterDataBase
 {
     public $ProjectPID;
-    public $htmlPID;
+    public $HtmlPID;
     public $PID;
     public $ParameterName;
     public $ParameterValue;

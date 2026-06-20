@@ -9,7 +9,7 @@
 // Known helper-style methods regenerate canonical PHP bodies when SQL regeneration is not the right fit.
 // Current canonical runtime generation fully owns this class, so no legacy DBAccess parent is required.
 
-class chattopicAttachmentDBAccessBase
+class ChattopicAttachmentDBAccessBase
 {
     // source_of_truth=sync-bootstrap action_type=UNKNOWN order=11 generation=canonical-constructor
     // reason=bootstrap constructor is empty, so runtime owns the no-op constructor directly
@@ -18,22 +18,22 @@ class chattopicAttachmentDBAccessBase
     }
 
     // source_of_truth=sync-bootstrap action_type=SELECTSINGLE order=14 generation=canonical-sql
-    public function GetchattopicAttachment($param_chattopicAttachment_PID_where, $param_chattopicAttachment_ProjectPID_where)
+    public function GetChattopicAttachment($param_ChattopicAttachment_PID_where, $param_ChattopicAttachment_ProjectPID_where)
     {
         global $mtooldb, $last_sql_command_for_mtooldb;
         connect_mtooldb_if_not_yet();
         reconnect_mtooldb_if_necessary();
 
-        $last_sql_command_for_mtooldb = 'select chattopicAttachment.ProjectPID, chattopicAttachment.chattopicPID, chattopicAttachment.PID, chattopicAttachment.name from chattopicAttachment' . ' where ' . 'chattopicAttachment.PID = ' . '\'' . $mtooldb->real_escape_string($param_chattopicAttachment_PID_where) . '\'' . ' and ' . 'chattopicAttachment.ProjectPID = ' . '\'' . $mtooldb->real_escape_string($param_chattopicAttachment_ProjectPID_where) . '\'';
+        $last_sql_command_for_mtooldb = 'select ChattopicAttachment.ProjectPID, ChattopicAttachment.ChattopicPID, ChattopicAttachment.PID, ChattopicAttachment.name from ChattopicAttachment' . ' where ' . 'ChattopicAttachment.PID = ' . '\'' . $mtooldb->real_escape_string($param_ChattopicAttachment_PID_where) . '\'' . ' and ' . 'ChattopicAttachment.ProjectPID = ' . '\'' . $mtooldb->real_escape_string($param_ChattopicAttachment_ProjectPID_where) . '\'';
         $ret = $mtooldb->query($last_sql_command_for_mtooldb);
         if ($mtooldb->errno != 0) {
             error_log("Error occured while executing SQL: " . $mtooldb->error . " in " . __FILE__ . " on line " . __LINE__);
             return $ret;
         }
         while($thisline=$ret->fetch_row()) {
-            $thisresult = new chattopicAttachmentData();
+            $thisresult = new ChattopicAttachmentData();
             $thisresult->ProjectPID = $thisline[0];
-            $thisresult->chattopicPID = $thisline[1];
+            $thisresult->ChattopicPID = $thisline[1];
             $thisresult->PID = $thisline[2];
             $thisresult->name = $thisline[3];
             return $thisresult;
@@ -42,7 +42,7 @@ class chattopicAttachmentDBAccessBase
     }
 
     // source_of_truth=seed-legacy action_type=SELECTLIST order=39 generation=canonical-sql
-    public function GetchattopicAttachmentList($param_chattopicAttachment_ProjectPID_where, $param_chattopicAttachment_chattopicPID_where)
+    public function GetChattopicAttachmentList($param_ChattopicAttachment_ProjectPID_where, $param_ChattopicAttachment_ChattopicPID_where)
     {
         global $mtooldb, $last_sql_command_for_mtooldb;
         connect_mtooldb_if_not_yet();
@@ -50,16 +50,16 @@ class chattopicAttachmentDBAccessBase
 
         $result = array();
 
-        $last_sql_command_for_mtooldb = 'select chattopicAttachment.ProjectPID, chattopicAttachment.chattopicPID, chattopicAttachment.PID, chattopicAttachment.name from chattopicAttachment' . ' where ' . 'chattopicAttachment.ProjectPID = ' . '\'' . $mtooldb->real_escape_string($param_chattopicAttachment_ProjectPID_where) . '\'' . ' and ' . 'chattopicAttachment.chattopicPID = ' . '\'' . $mtooldb->real_escape_string($param_chattopicAttachment_chattopicPID_where) . '\'' . ' order by chattopicAttachment.PID';
+        $last_sql_command_for_mtooldb = 'select ChattopicAttachment.ProjectPID, ChattopicAttachment.ChattopicPID, ChattopicAttachment.PID, ChattopicAttachment.name from ChattopicAttachment' . ' where ' . 'ChattopicAttachment.ProjectPID = ' . '\'' . $mtooldb->real_escape_string($param_ChattopicAttachment_ProjectPID_where) . '\'' . ' and ' . 'ChattopicAttachment.ChattopicPID = ' . '\'' . $mtooldb->real_escape_string($param_ChattopicAttachment_ChattopicPID_where) . '\'' . ' order by ChattopicAttachment.PID';
         $ret = $mtooldb->query($last_sql_command_for_mtooldb);
         if ($mtooldb->errno != 0) {
             error_log("Error occured while executing SQL: " . $mtooldb->error . " in " . __FILE__ . " on line " . __LINE__);
             return $ret;
         }
         while($thisline=$ret->fetch_row()) {
-            $thisresult = new chattopicAttachmentData();
+            $thisresult = new ChattopicAttachmentData();
             $thisresult->ProjectPID = $thisline[0];
-            $thisresult->chattopicPID = $thisline[1];
+            $thisresult->ChattopicPID = $thisline[1];
             $thisresult->PID = $thisline[2];
             $thisresult->name = $thisline[3];
             array_push($result, $thisresult);
@@ -68,13 +68,13 @@ class chattopicAttachmentDBAccessBase
     }
 
     // source_of_truth=sync-bootstrap action_type=INSERT order=66 generation=canonical-sql
-    public function InsertchattopicAttachment($chattopicAttachmentObj)
+    public function InsertChattopicAttachment($ChattopicAttachmentObj)
     {
         global $mtooldb, $last_sql_command_for_mtooldb;
         connect_mtooldb_if_not_yet();
         reconnect_mtooldb_if_necessary();
 
-        $last_sql_command_for_mtooldb = 'insert into chattopicAttachment (ProjectPID, chattopicPID, PID, name) values(' . '\'' . $mtooldb->real_escape_string($chattopicAttachmentObj->ProjectPID) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($chattopicAttachmentObj->chattopicPID) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($chattopicAttachmentObj->PID) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($chattopicAttachmentObj->name) . '\'' . ')';
+        $last_sql_command_for_mtooldb = 'insert into ChattopicAttachment (ProjectPID, ChattopicPID, PID, name) values(' . '\'' . $mtooldb->real_escape_string($ChattopicAttachmentObj->ProjectPID) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($ChattopicAttachmentObj->ChattopicPID) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($ChattopicAttachmentObj->PID) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($ChattopicAttachmentObj->name) . '\'' . ')';
         $result = $mtooldb->query($last_sql_command_for_mtooldb);
         if ($mtooldb->errno != 0) {
             error_log("Error occured while executing SQL: " . $mtooldb->error . " in " . __FILE__ . " on line " . __LINE__);
@@ -83,13 +83,13 @@ class chattopicAttachmentDBAccessBase
     }
 
     // source_of_truth=sync-bootstrap action_type=UPDATE order=82 generation=canonical-sql
-    public function UpdatechattopicAttachment($chattopicAttachmentObj)
+    public function UpdateChattopicAttachment($ChattopicAttachmentObj)
     {
         global $mtooldb, $last_sql_command_for_mtooldb;
         connect_mtooldb_if_not_yet();
         reconnect_mtooldb_if_necessary();
 
-        $last_sql_command_for_mtooldb = 'update chattopicAttachment SET ' . 'name = ' . '\'' . $mtooldb->real_escape_string($chattopicAttachmentObj->name) . '\'' . ' where ' . 'chattopicAttachment.PID = ' . '\'' . $mtooldb->real_escape_string($chattopicAttachmentObj->PID) . '\'' . ' and ' . 'chattopicAttachment.ProjectPID = ' . '\'' . $mtooldb->real_escape_string($chattopicAttachmentObj->ProjectPID) . '\'';
+        $last_sql_command_for_mtooldb = 'update ChattopicAttachment SET ' . 'name = ' . '\'' . $mtooldb->real_escape_string($ChattopicAttachmentObj->name) . '\'' . ' where ' . 'ChattopicAttachment.PID = ' . '\'' . $mtooldb->real_escape_string($ChattopicAttachmentObj->PID) . '\'' . ' and ' . 'ChattopicAttachment.ProjectPID = ' . '\'' . $mtooldb->real_escape_string($ChattopicAttachmentObj->ProjectPID) . '\'';
         $result = $mtooldb->query($last_sql_command_for_mtooldb);
         if ($mtooldb->errno != 0) {
             error_log("Error occured while executing SQL: " . $mtooldb->error . " in " . __FILE__ . " on line " . __LINE__);
@@ -98,13 +98,13 @@ class chattopicAttachmentDBAccessBase
     }
 
     // source_of_truth=sync-bootstrap action_type=DELETE order=98 generation=canonical-sql
-    public function DeletechattopicAttachment($chattopicAttachmentObj)
+    public function DeleteChattopicAttachment($ChattopicAttachmentObj)
     {
         global $mtooldb, $last_sql_command_for_mtooldb;
         connect_mtooldb_if_not_yet();
         reconnect_mtooldb_if_necessary();
 
-        $last_sql_command_for_mtooldb = 'delete from chattopicAttachment where ' . 'chattopicAttachment.PID = ' . '\'' . $mtooldb->real_escape_string($chattopicAttachmentObj->PID) . '\'' . ' and ' . 'chattopicAttachment.ProjectPID = ' . '\'' . $mtooldb->real_escape_string($chattopicAttachmentObj->ProjectPID) . '\'';
+        $last_sql_command_for_mtooldb = 'delete from ChattopicAttachment where ' . 'ChattopicAttachment.PID = ' . '\'' . $mtooldb->real_escape_string($ChattopicAttachmentObj->PID) . '\'' . ' and ' . 'ChattopicAttachment.ProjectPID = ' . '\'' . $mtooldb->real_escape_string($ChattopicAttachmentObj->ProjectPID) . '\'';
         $result = $mtooldb->query($last_sql_command_for_mtooldb);
         if ($mtooldb->errno != 0) {
             error_log("Error occured while executing SQL: " . $mtooldb->error . " in " . __FILE__ . " on line " . __LINE__);

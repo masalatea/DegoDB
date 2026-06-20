@@ -45,9 +45,9 @@ if (!mtool_runtime_bundle_load_custom_wrapper('data-Project.php')) {
 	{
 		return ($this->option_user_can_change_da_func_order == 1);
 	}
-	public function Getoption_build_dataclass_for_proxy_client_only_if_proxy_exist()
+	public function Getoption_build_Dataclass_for_proxy_client_only_if_proxy_exist()
 	{
-		return ($this->option_build_dataclass_for_proxy_client_only_if_proxy_exist == 1);
+		return ($this->option_build_Dataclass_for_proxy_client_only_if_proxy_exist == 1);
 	}
 	public function IsMySQL()
 	{

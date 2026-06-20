@@ -26,7 +26,7 @@ class ProjectUserDBAccessBase
 
         $result = array();
 
-        $last_sql_command_for_mtooldb = 'select ProjectUser.ProjectPID, ProjectUser.PID, ProjectUser.username, ProjectUser.IsOwner, ProjectUser.dbtoolRead, ProjectUser.dbtoolWrite, ProjectUser.htmlRead, ProjectUser.htmlWrite, ProjectUser.testtoolRead, ProjectUser.testtoolWrite, ProjectUser.spectoolRead, ProjectUser.spectoolWrite, ProjectUser.ReqRead, ProjectUser.ReqWrite, ProjectUser.ChatRead, ProjectUser.ChatWrite, ProjectUser.MinutesRead, ProjectUser.MinutesWrite, ProjectUser.UploadRead, ProjectUser.UploadWrite from ProjectUser' . ' where ' . 'ProjectUser.ProjectPID = ' . '\'' . $mtooldb->real_escape_string($param_ProjectUser_ProjectPID_where) . '\'' . ' and ' . 'ProjectUser.IsOwner = ' . '\'' . $mtooldb->real_escape_string('t') . '\'';
+        $last_sql_command_for_mtooldb = 'select ProjectUser.ProjectPID, ProjectUser.PID, ProjectUser.username, ProjectUser.IsOwner, ProjectUser.dbtoolRead, ProjectUser.dbtoolWrite, ProjectUser.HtmlRead, ProjectUser.HtmlWrite, ProjectUser.testtoolRead, ProjectUser.testtoolWrite, ProjectUser.spectoolRead, ProjectUser.spectoolWrite, ProjectUser.ReqRead, ProjectUser.ReqWrite, ProjectUser.ChatRead, ProjectUser.ChatWrite, ProjectUser.MinutesRead, ProjectUser.MinutesWrite, ProjectUser.UploadRead, ProjectUser.UploadWrite from ProjectUser' . ' where ' . 'ProjectUser.ProjectPID = ' . '\'' . $mtooldb->real_escape_string($param_ProjectUser_ProjectPID_where) . '\'' . ' and ' . 'ProjectUser.IsOwner = ' . '\'' . $mtooldb->real_escape_string('t') . '\'';
         $ret = $mtooldb->query($last_sql_command_for_mtooldb);
         if ($mtooldb->errno != 0) {
             error_log("Error occured while executing SQL: " . $mtooldb->error . " in " . __FILE__ . " on line " . __LINE__);
@@ -40,8 +40,8 @@ class ProjectUserDBAccessBase
             $thisresult->IsOwner = $thisline[3];
             $thisresult->dbtoolRead = $thisline[4];
             $thisresult->dbtoolWrite = $thisline[5];
-            $thisresult->htmlRead = $thisline[6];
-            $thisresult->htmlWrite = $thisline[7];
+            $thisresult->HtmlRead = $thisline[6];
+            $thisresult->HtmlWrite = $thisline[7];
             $thisresult->testtoolRead = $thisline[8];
             $thisresult->testtoolWrite = $thisline[9];
             $thisresult->spectoolRead = $thisline[10];
@@ -68,7 +68,7 @@ class ProjectUserDBAccessBase
 
         $result = array();
 
-        $last_sql_command_for_mtooldb = 'select ProjectUser.ProjectPID, ProjectUser.PID, ProjectUser.username, ProjectUser.IsOwner, ProjectUser.dbtoolRead, ProjectUser.dbtoolWrite, ProjectUser.htmlRead, ProjectUser.htmlWrite, ProjectUser.testtoolRead, ProjectUser.testtoolWrite, ProjectUser.spectoolRead, ProjectUser.spectoolWrite, ProjectUser.ReqRead, ProjectUser.ReqWrite, ProjectUser.ChatRead, ProjectUser.ChatWrite, ProjectUser.MinutesRead, ProjectUser.MinutesWrite, ProjectUser.UploadRead, ProjectUser.UploadWrite from ProjectUser' . ' where ' . 'ProjectUser.ProjectPID = ' . '\'' . $mtooldb->real_escape_string($param_ProjectUser_ProjectPID_where) . '\'' . ' and ' . 'ProjectUser.IsOwner = ' . '\'' . $mtooldb->real_escape_string('f') . '\'' . ' order by ProjectUser.username';
+        $last_sql_command_for_mtooldb = 'select ProjectUser.ProjectPID, ProjectUser.PID, ProjectUser.username, ProjectUser.IsOwner, ProjectUser.dbtoolRead, ProjectUser.dbtoolWrite, ProjectUser.HtmlRead, ProjectUser.HtmlWrite, ProjectUser.testtoolRead, ProjectUser.testtoolWrite, ProjectUser.spectoolRead, ProjectUser.spectoolWrite, ProjectUser.ReqRead, ProjectUser.ReqWrite, ProjectUser.ChatRead, ProjectUser.ChatWrite, ProjectUser.MinutesRead, ProjectUser.MinutesWrite, ProjectUser.UploadRead, ProjectUser.UploadWrite from ProjectUser' . ' where ' . 'ProjectUser.ProjectPID = ' . '\'' . $mtooldb->real_escape_string($param_ProjectUser_ProjectPID_where) . '\'' . ' and ' . 'ProjectUser.IsOwner = ' . '\'' . $mtooldb->real_escape_string('f') . '\'' . ' order by ProjectUser.username';
         $ret = $mtooldb->query($last_sql_command_for_mtooldb);
         if ($mtooldb->errno != 0) {
             error_log("Error occured while executing SQL: " . $mtooldb->error . " in " . __FILE__ . " on line " . __LINE__);
@@ -82,8 +82,8 @@ class ProjectUserDBAccessBase
             $thisresult->IsOwner = $thisline[3];
             $thisresult->dbtoolRead = $thisline[4];
             $thisresult->dbtoolWrite = $thisline[5];
-            $thisresult->htmlRead = $thisline[6];
-            $thisresult->htmlWrite = $thisline[7];
+            $thisresult->HtmlRead = $thisline[6];
+            $thisresult->HtmlWrite = $thisline[7];
             $thisresult->testtoolRead = $thisline[8];
             $thisresult->testtoolWrite = $thisline[9];
             $thisresult->spectoolRead = $thisline[10];
@@ -110,7 +110,7 @@ class ProjectUserDBAccessBase
 
         $result = array();
 
-        $last_sql_command_for_mtooldb = 'select ProjectUser.ProjectPID, ProjectUser.PID, ProjectUser.username, ProjectUser.IsOwner, ProjectUser.dbtoolRead, ProjectUser.dbtoolWrite, ProjectUser.htmlRead, ProjectUser.htmlWrite, ProjectUser.testtoolRead, ProjectUser.testtoolWrite, ProjectUser.spectoolRead, ProjectUser.spectoolWrite, ProjectUser.ReqRead, ProjectUser.ReqWrite, ProjectUser.ChatRead, ProjectUser.ChatWrite, ProjectUser.MinutesRead, ProjectUser.MinutesWrite, ProjectUser.UploadRead, ProjectUser.UploadWrite from ProjectUser' . ' where ' . 'ProjectUser.ProjectPID = ' . '\'' . $mtooldb->real_escape_string($param_ProjectUser_ProjectPID_where) . '\'';
+        $last_sql_command_for_mtooldb = 'select ProjectUser.ProjectPID, ProjectUser.PID, ProjectUser.username, ProjectUser.IsOwner, ProjectUser.dbtoolRead, ProjectUser.dbtoolWrite, ProjectUser.HtmlRead, ProjectUser.HtmlWrite, ProjectUser.testtoolRead, ProjectUser.testtoolWrite, ProjectUser.spectoolRead, ProjectUser.spectoolWrite, ProjectUser.ReqRead, ProjectUser.ReqWrite, ProjectUser.ChatRead, ProjectUser.ChatWrite, ProjectUser.MinutesRead, ProjectUser.MinutesWrite, ProjectUser.UploadRead, ProjectUser.UploadWrite from ProjectUser' . ' where ' . 'ProjectUser.ProjectPID = ' . '\'' . $mtooldb->real_escape_string($param_ProjectUser_ProjectPID_where) . '\'';
         $ret = $mtooldb->query($last_sql_command_for_mtooldb);
         if ($mtooldb->errno != 0) {
             error_log("Error occured while executing SQL: " . $mtooldb->error . " in " . __FILE__ . " on line " . __LINE__);
@@ -124,8 +124,8 @@ class ProjectUserDBAccessBase
             $thisresult->IsOwner = $thisline[3];
             $thisresult->dbtoolRead = $thisline[4];
             $thisresult->dbtoolWrite = $thisline[5];
-            $thisresult->htmlRead = $thisline[6];
-            $thisresult->htmlWrite = $thisline[7];
+            $thisresult->HtmlRead = $thisline[6];
+            $thisresult->HtmlWrite = $thisline[7];
             $thisresult->testtoolRead = $thisline[8];
             $thisresult->testtoolWrite = $thisline[9];
             $thisresult->spectoolRead = $thisline[10];
@@ -150,7 +150,7 @@ class ProjectUserDBAccessBase
         connect_mtooldb_if_not_yet();
         reconnect_mtooldb_if_necessary();
 
-        $last_sql_command_for_mtooldb = 'select ProjectUser.ProjectPID, ProjectUser.PID, ProjectUser.username, ProjectUser.IsOwner, ProjectUser.dbtoolRead, ProjectUser.dbtoolWrite, ProjectUser.htmlRead, ProjectUser.htmlWrite, ProjectUser.testtoolRead, ProjectUser.testtoolWrite, ProjectUser.spectoolRead, ProjectUser.spectoolWrite, ProjectUser.ReqRead, ProjectUser.ReqWrite, ProjectUser.ChatRead, ProjectUser.ChatWrite, ProjectUser.MinutesRead, ProjectUser.MinutesWrite, ProjectUser.UploadRead, ProjectUser.UploadWrite from ProjectUser' . ' where ' . 'ProjectUser.ProjectPID = ' . '\'' . $mtooldb->real_escape_string($param_ProjectUser_ProjectPID_where) . '\'' . ' and ' . 'ProjectUser.username = ' . '\'' . $mtooldb->real_escape_string($param_ProjectUser_username_where) . '\'' . ' and ' . 'ProjectUser.IsOwner = ' . '\'' . $mtooldb->real_escape_string('t') . '\'';
+        $last_sql_command_for_mtooldb = 'select ProjectUser.ProjectPID, ProjectUser.PID, ProjectUser.username, ProjectUser.IsOwner, ProjectUser.dbtoolRead, ProjectUser.dbtoolWrite, ProjectUser.HtmlRead, ProjectUser.HtmlWrite, ProjectUser.testtoolRead, ProjectUser.testtoolWrite, ProjectUser.spectoolRead, ProjectUser.spectoolWrite, ProjectUser.ReqRead, ProjectUser.ReqWrite, ProjectUser.ChatRead, ProjectUser.ChatWrite, ProjectUser.MinutesRead, ProjectUser.MinutesWrite, ProjectUser.UploadRead, ProjectUser.UploadWrite from ProjectUser' . ' where ' . 'ProjectUser.ProjectPID = ' . '\'' . $mtooldb->real_escape_string($param_ProjectUser_ProjectPID_where) . '\'' . ' and ' . 'ProjectUser.username = ' . '\'' . $mtooldb->real_escape_string($param_ProjectUser_username_where) . '\'' . ' and ' . 'ProjectUser.IsOwner = ' . '\'' . $mtooldb->real_escape_string('t') . '\'';
         $ret = $mtooldb->query($last_sql_command_for_mtooldb);
         if ($mtooldb->errno != 0) {
             error_log("Error occured while executing SQL: " . $mtooldb->error . " in " . __FILE__ . " on line " . __LINE__);
@@ -164,8 +164,8 @@ class ProjectUserDBAccessBase
             $thisresult->IsOwner = $thisline[3];
             $thisresult->dbtoolRead = $thisline[4];
             $thisresult->dbtoolWrite = $thisline[5];
-            $thisresult->htmlRead = $thisline[6];
-            $thisresult->htmlWrite = $thisline[7];
+            $thisresult->HtmlRead = $thisline[6];
+            $thisresult->HtmlWrite = $thisline[7];
             $thisresult->testtoolRead = $thisline[8];
             $thisresult->testtoolWrite = $thisline[9];
             $thisresult->spectoolRead = $thisline[10];
@@ -192,7 +192,7 @@ class ProjectUserDBAccessBase
 
         $result = array();
 
-        $last_sql_command_for_mtooldb = 'select ProjectUser.ProjectPID, ProjectUser.PID, ProjectUser.username, ProjectUser.IsOwner, ProjectUser.dbtoolRead, ProjectUser.dbtoolWrite, ProjectUser.htmlRead, ProjectUser.htmlWrite, ProjectUser.testtoolRead, ProjectUser.testtoolWrite, ProjectUser.spectoolRead, ProjectUser.spectoolWrite, ProjectUser.ReqRead, ProjectUser.ReqWrite, ProjectUser.ChatRead, ProjectUser.ChatWrite, ProjectUser.MinutesRead, ProjectUser.MinutesWrite, ProjectUser.UploadRead, ProjectUser.UploadWrite from ProjectUser join Project on ProjectUser.ProjectPID = Project.PID' . ' where ' . 'ProjectUser.username = ' . '\'' . $mtooldb->real_escape_string($param_ProjectUser_username_where) . '\'' . ' and ' . 'ProjectUser.IsOwner = ' . '\'' . $mtooldb->real_escape_string('t') . '\'';
+        $last_sql_command_for_mtooldb = 'select ProjectUser.ProjectPID, ProjectUser.PID, ProjectUser.username, ProjectUser.IsOwner, ProjectUser.dbtoolRead, ProjectUser.dbtoolWrite, ProjectUser.HtmlRead, ProjectUser.HtmlWrite, ProjectUser.testtoolRead, ProjectUser.testtoolWrite, ProjectUser.spectoolRead, ProjectUser.spectoolWrite, ProjectUser.ReqRead, ProjectUser.ReqWrite, ProjectUser.ChatRead, ProjectUser.ChatWrite, ProjectUser.MinutesRead, ProjectUser.MinutesWrite, ProjectUser.UploadRead, ProjectUser.UploadWrite from ProjectUser join Project on ProjectUser.ProjectPID = Project.PID' . ' where ' . 'ProjectUser.username = ' . '\'' . $mtooldb->real_escape_string($param_ProjectUser_username_where) . '\'' . ' and ' . 'ProjectUser.IsOwner = ' . '\'' . $mtooldb->real_escape_string('t') . '\'';
         $ret = $mtooldb->query($last_sql_command_for_mtooldb);
         if ($mtooldb->errno != 0) {
             error_log("Error occured while executing SQL: " . $mtooldb->error . " in " . __FILE__ . " on line " . __LINE__);
@@ -206,8 +206,8 @@ class ProjectUserDBAccessBase
             $thisresult->IsOwner = $thisline[3];
             $thisresult->dbtoolRead = $thisline[4];
             $thisresult->dbtoolWrite = $thisline[5];
-            $thisresult->htmlRead = $thisline[6];
-            $thisresult->htmlWrite = $thisline[7];
+            $thisresult->HtmlRead = $thisline[6];
+            $thisresult->HtmlWrite = $thisline[7];
             $thisresult->testtoolRead = $thisline[8];
             $thisresult->testtoolWrite = $thisline[9];
             $thisresult->spectoolRead = $thisline[10];
@@ -232,7 +232,7 @@ class ProjectUserDBAccessBase
         connect_mtooldb_if_not_yet();
         reconnect_mtooldb_if_necessary();
 
-        $last_sql_command_for_mtooldb = 'select ProjectUser.ProjectPID, ProjectUser.PID, ProjectUser.username, ProjectUser.IsOwner, ProjectUser.dbtoolRead, ProjectUser.dbtoolWrite, ProjectUser.htmlRead, ProjectUser.htmlWrite, ProjectUser.testtoolRead, ProjectUser.testtoolWrite, ProjectUser.spectoolRead, ProjectUser.spectoolWrite, ProjectUser.ReqRead, ProjectUser.ReqWrite, ProjectUser.ChatRead, ProjectUser.ChatWrite, ProjectUser.MinutesRead, ProjectUser.MinutesWrite, ProjectUser.UploadRead, ProjectUser.UploadWrite from ProjectUser' . ' where ' . 'ProjectUser.ProjectPID = ' . '\'' . $mtooldb->real_escape_string($param_ProjectUser_ProjectPID_where) . '\'' . ' and ' . 'ProjectUser.username = ' . '\'' . $mtooldb->real_escape_string($param_ProjectUser_username_where) . '\'';
+        $last_sql_command_for_mtooldb = 'select ProjectUser.ProjectPID, ProjectUser.PID, ProjectUser.username, ProjectUser.IsOwner, ProjectUser.dbtoolRead, ProjectUser.dbtoolWrite, ProjectUser.HtmlRead, ProjectUser.HtmlWrite, ProjectUser.testtoolRead, ProjectUser.testtoolWrite, ProjectUser.spectoolRead, ProjectUser.spectoolWrite, ProjectUser.ReqRead, ProjectUser.ReqWrite, ProjectUser.ChatRead, ProjectUser.ChatWrite, ProjectUser.MinutesRead, ProjectUser.MinutesWrite, ProjectUser.UploadRead, ProjectUser.UploadWrite from ProjectUser' . ' where ' . 'ProjectUser.ProjectPID = ' . '\'' . $mtooldb->real_escape_string($param_ProjectUser_ProjectPID_where) . '\'' . ' and ' . 'ProjectUser.username = ' . '\'' . $mtooldb->real_escape_string($param_ProjectUser_username_where) . '\'';
         $ret = $mtooldb->query($last_sql_command_for_mtooldb);
         if ($mtooldb->errno != 0) {
             error_log("Error occured while executing SQL: " . $mtooldb->error . " in " . __FILE__ . " on line " . __LINE__);
@@ -246,8 +246,8 @@ class ProjectUserDBAccessBase
             $thisresult->IsOwner = $thisline[3];
             $thisresult->dbtoolRead = $thisline[4];
             $thisresult->dbtoolWrite = $thisline[5];
-            $thisresult->htmlRead = $thisline[6];
-            $thisresult->htmlWrite = $thisline[7];
+            $thisresult->HtmlRead = $thisline[6];
+            $thisresult->HtmlWrite = $thisline[7];
             $thisresult->testtoolRead = $thisline[8];
             $thisresult->testtoolWrite = $thisline[9];
             $thisresult->spectoolRead = $thisline[10];
@@ -272,7 +272,7 @@ class ProjectUserDBAccessBase
         connect_mtooldb_if_not_yet();
         reconnect_mtooldb_if_necessary();
 
-        $last_sql_command_for_mtooldb = 'insert into ProjectUser (ProjectPID, username, IsOwner, dbtoolRead, dbtoolWrite, htmlRead, htmlWrite, testtoolRead, testtoolWrite, spectoolRead, spectoolWrite, ReqRead, ReqWrite, ChatRead, ChatWrite, MinutesRead, MinutesWrite, UploadRead, UploadWrite) values(' . '\'' . $mtooldb->real_escape_string($ProjectUserObj->ProjectPID) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($ProjectUserObj->username) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($ProjectUserObj->IsOwner) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($ProjectUserObj->dbtoolRead) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($ProjectUserObj->dbtoolWrite) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($ProjectUserObj->htmlRead) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($ProjectUserObj->htmlWrite) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($ProjectUserObj->testtoolRead) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($ProjectUserObj->testtoolWrite) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($ProjectUserObj->spectoolRead) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($ProjectUserObj->spectoolWrite) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($ProjectUserObj->ReqRead) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($ProjectUserObj->ReqWrite) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($ProjectUserObj->ChatRead) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($ProjectUserObj->ChatWrite) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($ProjectUserObj->MinutesRead) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($ProjectUserObj->MinutesWrite) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($ProjectUserObj->UploadRead) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($ProjectUserObj->UploadWrite) . '\'' . ')';
+        $last_sql_command_for_mtooldb = 'insert into ProjectUser (ProjectPID, username, IsOwner, dbtoolRead, dbtoolWrite, HtmlRead, HtmlWrite, testtoolRead, testtoolWrite, spectoolRead, spectoolWrite, ReqRead, ReqWrite, ChatRead, ChatWrite, MinutesRead, MinutesWrite, UploadRead, UploadWrite) values(' . '\'' . $mtooldb->real_escape_string($ProjectUserObj->ProjectPID) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($ProjectUserObj->username) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($ProjectUserObj->IsOwner) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($ProjectUserObj->dbtoolRead) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($ProjectUserObj->dbtoolWrite) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($ProjectUserObj->HtmlRead) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($ProjectUserObj->HtmlWrite) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($ProjectUserObj->testtoolRead) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($ProjectUserObj->testtoolWrite) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($ProjectUserObj->spectoolRead) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($ProjectUserObj->spectoolWrite) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($ProjectUserObj->ReqRead) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($ProjectUserObj->ReqWrite) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($ProjectUserObj->ChatRead) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($ProjectUserObj->ChatWrite) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($ProjectUserObj->MinutesRead) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($ProjectUserObj->MinutesWrite) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($ProjectUserObj->UploadRead) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($ProjectUserObj->UploadWrite) . '\'' . ')';
         $result = $mtooldb->query($last_sql_command_for_mtooldb);
         if ($mtooldb->errno != 0) {
             error_log("Error occured while executing SQL: " . $mtooldb->error . " in " . __FILE__ . " on line " . __LINE__);
@@ -302,7 +302,7 @@ class ProjectUserDBAccessBase
         connect_mtooldb_if_not_yet();
         reconnect_mtooldb_if_necessary();
 
-        $last_sql_command_for_mtooldb = 'update ProjectUser SET ' . 'dbtoolRead = ' . '\'' . $mtooldb->real_escape_string($ProjectUserObj->dbtoolRead) . '\'' . ', ' . 'dbtoolWrite = ' . '\'' . $mtooldb->real_escape_string($ProjectUserObj->dbtoolWrite) . '\'' . ', ' . 'htmlRead = ' . '\'' . $mtooldb->real_escape_string($ProjectUserObj->htmlRead) . '\'' . ', ' . 'htmlWrite = ' . '\'' . $mtooldb->real_escape_string($ProjectUserObj->htmlWrite) . '\'' . ', ' . 'testtoolRead = ' . '\'' . $mtooldb->real_escape_string($ProjectUserObj->testtoolRead) . '\'' . ', ' . 'testtoolWrite = ' . '\'' . $mtooldb->real_escape_string($ProjectUserObj->testtoolWrite) . '\'' . ', ' . 'spectoolRead = ' . '\'' . $mtooldb->real_escape_string($ProjectUserObj->spectoolRead) . '\'' . ', ' . 'spectoolWrite = ' . '\'' . $mtooldb->real_escape_string($ProjectUserObj->spectoolWrite) . '\'' . ', ' . 'ReqRead = ' . '\'' . $mtooldb->real_escape_string($ProjectUserObj->ReqRead) . '\'' . ', ' . 'ReqWrite = ' . '\'' . $mtooldb->real_escape_string($ProjectUserObj->ReqWrite) . '\'' . ', ' . 'ChatRead = ' . '\'' . $mtooldb->real_escape_string($ProjectUserObj->ChatRead) . '\'' . ', ' . 'ChatWrite = ' . '\'' . $mtooldb->real_escape_string($ProjectUserObj->ChatWrite) . '\'' . ', ' . 'MinutesRead = ' . '\'' . $mtooldb->real_escape_string($ProjectUserObj->MinutesRead) . '\'' . ', ' . 'MinutesWrite = ' . '\'' . $mtooldb->real_escape_string($ProjectUserObj->MinutesWrite) . '\'' . ', ' . 'UploadRead = ' . '\'' . $mtooldb->real_escape_string($ProjectUserObj->UploadRead) . '\'' . ', ' . 'UploadWrite = ' . '\'' . $mtooldb->real_escape_string($ProjectUserObj->UploadWrite) . '\'' . ' where ' . 'ProjectUser.ProjectPID = ' . '\'' . $mtooldb->real_escape_string($ProjectUserObj->ProjectPID) . '\'' . ' and ' . 'ProjectUser.username = ' . '\'' . $mtooldb->real_escape_string($ProjectUserObj->username) . '\'';
+        $last_sql_command_for_mtooldb = 'update ProjectUser SET ' . 'dbtoolRead = ' . '\'' . $mtooldb->real_escape_string($ProjectUserObj->dbtoolRead) . '\'' . ', ' . 'dbtoolWrite = ' . '\'' . $mtooldb->real_escape_string($ProjectUserObj->dbtoolWrite) . '\'' . ', ' . 'HtmlRead = ' . '\'' . $mtooldb->real_escape_string($ProjectUserObj->HtmlRead) . '\'' . ', ' . 'HtmlWrite = ' . '\'' . $mtooldb->real_escape_string($ProjectUserObj->HtmlWrite) . '\'' . ', ' . 'testtoolRead = ' . '\'' . $mtooldb->real_escape_string($ProjectUserObj->testtoolRead) . '\'' . ', ' . 'testtoolWrite = ' . '\'' . $mtooldb->real_escape_string($ProjectUserObj->testtoolWrite) . '\'' . ', ' . 'spectoolRead = ' . '\'' . $mtooldb->real_escape_string($ProjectUserObj->spectoolRead) . '\'' . ', ' . 'spectoolWrite = ' . '\'' . $mtooldb->real_escape_string($ProjectUserObj->spectoolWrite) . '\'' . ', ' . 'ReqRead = ' . '\'' . $mtooldb->real_escape_string($ProjectUserObj->ReqRead) . '\'' . ', ' . 'ReqWrite = ' . '\'' . $mtooldb->real_escape_string($ProjectUserObj->ReqWrite) . '\'' . ', ' . 'ChatRead = ' . '\'' . $mtooldb->real_escape_string($ProjectUserObj->ChatRead) . '\'' . ', ' . 'ChatWrite = ' . '\'' . $mtooldb->real_escape_string($ProjectUserObj->ChatWrite) . '\'' . ', ' . 'MinutesRead = ' . '\'' . $mtooldb->real_escape_string($ProjectUserObj->MinutesRead) . '\'' . ', ' . 'MinutesWrite = ' . '\'' . $mtooldb->real_escape_string($ProjectUserObj->MinutesWrite) . '\'' . ', ' . 'UploadRead = ' . '\'' . $mtooldb->real_escape_string($ProjectUserObj->UploadRead) . '\'' . ', ' . 'UploadWrite = ' . '\'' . $mtooldb->real_escape_string($ProjectUserObj->UploadWrite) . '\'' . ' where ' . 'ProjectUser.ProjectPID = ' . '\'' . $mtooldb->real_escape_string($ProjectUserObj->ProjectPID) . '\'' . ' and ' . 'ProjectUser.username = ' . '\'' . $mtooldb->real_escape_string($ProjectUserObj->username) . '\'';
         $result = $mtooldb->query($last_sql_command_for_mtooldb);
         if ($mtooldb->errno != 0) {
             error_log("Error occured while executing SQL: " . $mtooldb->error . " in " . __FILE__ . " on line " . __LINE__);

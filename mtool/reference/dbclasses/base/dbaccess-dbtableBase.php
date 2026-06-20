@@ -9,7 +9,7 @@
 // Known helper-style methods regenerate canonical PHP bodies when SQL regeneration is not the right fit.
 // Current canonical runtime generation fully owns this class, so no legacy DBAccess parent is required.
 
-class dbtableDBAccessBase
+class DbtableDBAccessBase
 {
     // source_of_truth=sync-bootstrap action_type=UNKNOWN order=11 generation=canonical-constructor
     // reason=bootstrap constructor is empty, so runtime owns the no-op constructor directly
@@ -18,7 +18,7 @@ class dbtableDBAccessBase
     }
 
     // source_of_truth=seed-legacy action_type=SELECTLIST order=14 generation=canonical-sql
-    public function GetdbtableList($param_dbtable_ProjectPID_where)
+    public function GetDbtableList($param_Dbtable_ProjectPID_where)
     {
         global $mtooldb, $last_sql_command_for_mtooldb;
         connect_mtooldb_if_not_yet();
@@ -26,14 +26,14 @@ class dbtableDBAccessBase
 
         $result = array();
 
-        $last_sql_command_for_mtooldb = 'select dbtable.ProjectPID, dbtable.PID, dbtable.name from dbtable' . ' where ' . 'dbtable.ProjectPID = ' . '\'' . $mtooldb->real_escape_string($param_dbtable_ProjectPID_where) . '\'' . ' order by dbtable.name';
+        $last_sql_command_for_mtooldb = 'select Dbtable.ProjectPID, Dbtable.PID, Dbtable.name from Dbtable' . ' where ' . 'Dbtable.ProjectPID = ' . '\'' . $mtooldb->real_escape_string($param_Dbtable_ProjectPID_where) . '\'' . ' order by Dbtable.name';
         $ret = $mtooldb->query($last_sql_command_for_mtooldb);
         if ($mtooldb->errno != 0) {
             error_log("Error occured while executing SQL: " . $mtooldb->error . " in " . __FILE__ . " on line " . __LINE__);
             return $ret;
         }
         while($thisline=$ret->fetch_row()) {
-            $thisresult = new dbtableData();
+            $thisresult = new DbtableData();
             $thisresult->ProjectPID = $thisline[0];
             $thisresult->PID = $thisline[1];
             $thisresult->name = $thisline[2];
@@ -43,20 +43,20 @@ class dbtableDBAccessBase
     }
 
     // source_of_truth=sync-bootstrap action_type=SELECTSINGLE order=40 generation=canonical-sql
-    public function Getdbtable($param_dbtable_PID_where, $param_dbtable_ProjectPID_where)
+    public function GetDbtable($param_Dbtable_PID_where, $param_Dbtable_ProjectPID_where)
     {
         global $mtooldb, $last_sql_command_for_mtooldb;
         connect_mtooldb_if_not_yet();
         reconnect_mtooldb_if_necessary();
 
-        $last_sql_command_for_mtooldb = 'select dbtable.ProjectPID, dbtable.PID, dbtable.name from dbtable' . ' where ' . 'dbtable.PID = ' . '\'' . $mtooldb->real_escape_string($param_dbtable_PID_where) . '\'' . ' and ' . 'dbtable.ProjectPID = ' . '\'' . $mtooldb->real_escape_string($param_dbtable_ProjectPID_where) . '\'';
+        $last_sql_command_for_mtooldb = 'select Dbtable.ProjectPID, Dbtable.PID, Dbtable.name from Dbtable' . ' where ' . 'Dbtable.PID = ' . '\'' . $mtooldb->real_escape_string($param_Dbtable_PID_where) . '\'' . ' and ' . 'Dbtable.ProjectPID = ' . '\'' . $mtooldb->real_escape_string($param_Dbtable_ProjectPID_where) . '\'';
         $ret = $mtooldb->query($last_sql_command_for_mtooldb);
         if ($mtooldb->errno != 0) {
             error_log("Error occured while executing SQL: " . $mtooldb->error . " in " . __FILE__ . " on line " . __LINE__);
             return $ret;
         }
         while($thisline=$ret->fetch_row()) {
-            $thisresult = new dbtableData();
+            $thisresult = new DbtableData();
             $thisresult->ProjectPID = $thisline[0];
             $thisresult->PID = $thisline[1];
             $thisresult->name = $thisline[2];
@@ -66,20 +66,20 @@ class dbtableDBAccessBase
     }
 
     // source_of_truth=sync-bootstrap action_type=SELECTSINGLE order=64 generation=canonical-sql
-    public function GetdbtableByName($param_dbtable_ProjectPID_where, $param_dbtable_name_where)
+    public function GetDbtableByName($param_Dbtable_ProjectPID_where, $param_Dbtable_name_where)
     {
         global $mtooldb, $last_sql_command_for_mtooldb;
         connect_mtooldb_if_not_yet();
         reconnect_mtooldb_if_necessary();
 
-        $last_sql_command_for_mtooldb = 'select dbtable.ProjectPID, dbtable.PID, dbtable.name from dbtable' . ' where ' . 'dbtable.ProjectPID = ' . '\'' . $mtooldb->real_escape_string($param_dbtable_ProjectPID_where) . '\'' . ' and ' . 'dbtable.name = ' . '\'' . $mtooldb->real_escape_string($param_dbtable_name_where) . '\'';
+        $last_sql_command_for_mtooldb = 'select Dbtable.ProjectPID, Dbtable.PID, Dbtable.name from Dbtable' . ' where ' . 'Dbtable.ProjectPID = ' . '\'' . $mtooldb->real_escape_string($param_Dbtable_ProjectPID_where) . '\'' . ' and ' . 'Dbtable.name = ' . '\'' . $mtooldb->real_escape_string($param_Dbtable_name_where) . '\'';
         $ret = $mtooldb->query($last_sql_command_for_mtooldb);
         if ($mtooldb->errno != 0) {
             error_log("Error occured while executing SQL: " . $mtooldb->error . " in " . __FILE__ . " on line " . __LINE__);
             return $ret;
         }
         while($thisline=$ret->fetch_row()) {
-            $thisresult = new dbtableData();
+            $thisresult = new DbtableData();
             $thisresult->ProjectPID = $thisline[0];
             $thisresult->PID = $thisline[1];
             $thisresult->name = $thisline[2];
@@ -89,13 +89,13 @@ class dbtableDBAccessBase
     }
 
     // source_of_truth=sync-bootstrap action_type=INSERT order=88 generation=canonical-sql
-    public function Insertdbtable($dbtableObj)
+    public function InsertDbtable($DbtableObj)
     {
         global $mtooldb, $last_sql_command_for_mtooldb;
         connect_mtooldb_if_not_yet();
         reconnect_mtooldb_if_necessary();
 
-        $last_sql_command_for_mtooldb = 'insert into dbtable (ProjectPID, name) values(' . '\'' . $mtooldb->real_escape_string($dbtableObj->ProjectPID) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($dbtableObj->name) . '\'' . ')';
+        $last_sql_command_for_mtooldb = 'insert into Dbtable (ProjectPID, name) values(' . '\'' . $mtooldb->real_escape_string($DbtableObj->ProjectPID) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($DbtableObj->name) . '\'' . ')';
         $result = $mtooldb->query($last_sql_command_for_mtooldb);
         if ($mtooldb->errno != 0) {
             error_log("Error occured while executing SQL: " . $mtooldb->error . " in " . __FILE__ . " on line " . __LINE__);
@@ -104,13 +104,13 @@ class dbtableDBAccessBase
     }
 
     // source_of_truth=sync-bootstrap action_type=UPDATE order=104 generation=canonical-sql
-    public function Updatedbtable($dbtableObj)
+    public function UpdateDbtable($DbtableObj)
     {
         global $mtooldb, $last_sql_command_for_mtooldb;
         connect_mtooldb_if_not_yet();
         reconnect_mtooldb_if_necessary();
 
-        $last_sql_command_for_mtooldb = 'update dbtable SET ' . 'name = ' . '\'' . $mtooldb->real_escape_string($dbtableObj->name) . '\'' . ' where ' . 'dbtable.PID = ' . '\'' . $mtooldb->real_escape_string($dbtableObj->PID) . '\'' . ' and ' . 'dbtable.ProjectPID = ' . '\'' . $mtooldb->real_escape_string($dbtableObj->ProjectPID) . '\'';
+        $last_sql_command_for_mtooldb = 'update Dbtable SET ' . 'name = ' . '\'' . $mtooldb->real_escape_string($DbtableObj->name) . '\'' . ' where ' . 'Dbtable.PID = ' . '\'' . $mtooldb->real_escape_string($DbtableObj->PID) . '\'' . ' and ' . 'Dbtable.ProjectPID = ' . '\'' . $mtooldb->real_escape_string($DbtableObj->ProjectPID) . '\'';
         $result = $mtooldb->query($last_sql_command_for_mtooldb);
         if ($mtooldb->errno != 0) {
             error_log("Error occured while executing SQL: " . $mtooldb->error . " in " . __FILE__ . " on line " . __LINE__);
@@ -119,13 +119,13 @@ class dbtableDBAccessBase
     }
 
     // source_of_truth=sync-bootstrap action_type=DELETE order=120 generation=canonical-sql
-    public function Deletedbtable($param_dbtable_PID_where, $param_dbtable_ProjectPID_where)
+    public function DeleteDbtable($param_Dbtable_PID_where, $param_Dbtable_ProjectPID_where)
     {
         global $mtooldb, $last_sql_command_for_mtooldb;
         connect_mtooldb_if_not_yet();
         reconnect_mtooldb_if_necessary();
 
-        $last_sql_command_for_mtooldb = 'delete from dbtable where ' . 'dbtable.PID = ' . '\'' . $mtooldb->real_escape_string($param_dbtable_PID_where) . '\'' . ' and ' . 'dbtable.ProjectPID = ' . '\'' . $mtooldb->real_escape_string($param_dbtable_ProjectPID_where) . '\'';
+        $last_sql_command_for_mtooldb = 'delete from Dbtable where ' . 'Dbtable.PID = ' . '\'' . $mtooldb->real_escape_string($param_Dbtable_PID_where) . '\'' . ' and ' . 'Dbtable.ProjectPID = ' . '\'' . $mtooldb->real_escape_string($param_Dbtable_ProjectPID_where) . '\'';
         $result = $mtooldb->query($last_sql_command_for_mtooldb);
         if ($mtooldb->errno != 0) {
             error_log("Error occured while executing SQL: " . $mtooldb->error . " in " . __FILE__ . " on line " . __LINE__);

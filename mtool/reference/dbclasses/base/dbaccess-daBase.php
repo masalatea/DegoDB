@@ -9,7 +9,7 @@
 // Known helper-style methods regenerate canonical PHP bodies when SQL regeneration is not the right fit.
 // Current canonical runtime generation fully owns this class, so no legacy DBAccess parent is required.
 
-class daDBAccessBase
+class DaDBAccessBase
 {
     // source_of_truth=sync-bootstrap action_type=UNKNOWN order=11 generation=canonical-constructor
     // reason=bootstrap constructor is empty, so runtime owns the no-op constructor directly
@@ -26,14 +26,14 @@ class daDBAccessBase
 
         $result = array();
 
-        $last_sql_command_for_mtooldb = 'select da.ProjectPID, da.PID, da.name, da.StoreBasePath, da.IsAutoload, da.LastModifiedDT from da' . ' where ' . 'da.ProjectPID = ' . '\'' . $mtooldb->real_escape_string($param_da_ProjectPID_where) . '\'' . ' order by da.name,da.PID';
+        $last_sql_command_for_mtooldb = 'select Da.ProjectPID, Da.PID, Da.name, Da.StoreBasePath, Da.IsAutoload, Da.LastModifiedDT from Da' . ' where ' . 'Da.ProjectPID = ' . '\'' . $mtooldb->real_escape_string($param_da_ProjectPID_where) . '\'' . ' order by Da.name,Da.PID';
         $ret = $mtooldb->query($last_sql_command_for_mtooldb);
         if ($mtooldb->errno != 0) {
             error_log("Error occured while executing SQL: " . $mtooldb->error . " in " . __FILE__ . " on line " . __LINE__);
             return $ret;
         }
         while($thisline=$ret->fetch_row()) {
-            $thisresult = new daData();
+            $thisresult = new DaData();
             $thisresult->ProjectPID = $thisline[0];
             $thisresult->PID = $thisline[1];
             $thisresult->name = $thisline[2];
@@ -52,14 +52,14 @@ class daDBAccessBase
         connect_mtooldb_if_not_yet();
         reconnect_mtooldb_if_necessary();
 
-        $last_sql_command_for_mtooldb = 'select da.ProjectPID, da.PID, da.name, da.StoreBasePath, da.IsAutoload, da.LastModifiedDT from da' . ' where ' . 'da.PID = ' . '\'' . $mtooldb->real_escape_string($param_da_PID_where) . '\'' . ' and ' . 'da.ProjectPID = ' . '\'' . $mtooldb->real_escape_string($param_da_ProjectPID_where) . '\'';
+        $last_sql_command_for_mtooldb = 'select Da.ProjectPID, Da.PID, Da.name, Da.StoreBasePath, Da.IsAutoload, Da.LastModifiedDT from Da' . ' where ' . 'Da.PID = ' . '\'' . $mtooldb->real_escape_string($param_da_PID_where) . '\'' . ' and ' . 'Da.ProjectPID = ' . '\'' . $mtooldb->real_escape_string($param_da_ProjectPID_where) . '\'';
         $ret = $mtooldb->query($last_sql_command_for_mtooldb);
         if ($mtooldb->errno != 0) {
             error_log("Error occured while executing SQL: " . $mtooldb->error . " in " . __FILE__ . " on line " . __LINE__);
             return $ret;
         }
         while($thisline=$ret->fetch_row()) {
-            $thisresult = new daData();
+            $thisresult = new DaData();
             $thisresult->ProjectPID = $thisline[0];
             $thisresult->PID = $thisline[1];
             $thisresult->name = $thisline[2];
@@ -78,14 +78,14 @@ class daDBAccessBase
         connect_mtooldb_if_not_yet();
         reconnect_mtooldb_if_necessary();
 
-        $last_sql_command_for_mtooldb = 'select da.ProjectPID, da.PID, da.name, da.StoreBasePath, da.IsAutoload, da.LastModifiedDT from da' . ' where ' . 'da.ProjectPID = ' . '\'' . $mtooldb->real_escape_string($param_da_ProjectPID_where) . '\'' . ' and ' . 'da.name = ' . '\'' . $mtooldb->real_escape_string($param_da_name_where) . '\'';
+        $last_sql_command_for_mtooldb = 'select Da.ProjectPID, Da.PID, Da.name, Da.StoreBasePath, Da.IsAutoload, Da.LastModifiedDT from Da' . ' where ' . 'Da.ProjectPID = ' . '\'' . $mtooldb->real_escape_string($param_da_ProjectPID_where) . '\'' . ' and ' . 'Da.name = ' . '\'' . $mtooldb->real_escape_string($param_da_name_where) . '\'';
         $ret = $mtooldb->query($last_sql_command_for_mtooldb);
         if ($mtooldb->errno != 0) {
             error_log("Error occured while executing SQL: " . $mtooldb->error . " in " . __FILE__ . " on line " . __LINE__);
             return $ret;
         }
         while($thisline=$ret->fetch_row()) {
-            $thisresult = new daData();
+            $thisresult = new DaData();
             $thisresult->ProjectPID = $thisline[0];
             $thisresult->PID = $thisline[1];
             $thisresult->name = $thisline[2];
@@ -98,13 +98,13 @@ class daDBAccessBase
     }
 
     // source_of_truth=sync-bootstrap action_type=INSERT order=97 generation=canonical-sql
-    public function Insertda($daObj)
+    public function Insertda($DaObj)
     {
         global $mtooldb, $last_sql_command_for_mtooldb;
         connect_mtooldb_if_not_yet();
         reconnect_mtooldb_if_necessary();
 
-        $last_sql_command_for_mtooldb = 'insert into da (ProjectPID, name, StoreBasePath, IsAutoload) values(' . '\'' . $mtooldb->real_escape_string($daObj->ProjectPID) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($daObj->name) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($daObj->StoreBasePath) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($daObj->IsAutoload) . '\'' . ')';
+        $last_sql_command_for_mtooldb = 'insert into Da (ProjectPID, name, StoreBasePath, IsAutoload) values(' . '\'' . $mtooldb->real_escape_string($DaObj->ProjectPID) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($DaObj->name) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($DaObj->StoreBasePath) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($DaObj->IsAutoload) . '\'' . ')';
         $result = $mtooldb->query($last_sql_command_for_mtooldb);
         if ($mtooldb->errno != 0) {
             error_log("Error occured while executing SQL: " . $mtooldb->error . " in " . __FILE__ . " on line " . __LINE__);
@@ -113,13 +113,13 @@ class daDBAccessBase
     }
 
     // source_of_truth=sync-bootstrap action_type=UPDATE order=113 generation=canonical-sql
-    public function Updateda($daObj)
+    public function Updateda($DaObj)
     {
         global $mtooldb, $last_sql_command_for_mtooldb;
         connect_mtooldb_if_not_yet();
         reconnect_mtooldb_if_necessary();
 
-        $last_sql_command_for_mtooldb = 'update da SET ' . 'name = ' . '\'' . $mtooldb->real_escape_string($daObj->name) . '\'' . ', ' . 'StoreBasePath = ' . '\'' . $mtooldb->real_escape_string($daObj->StoreBasePath) . '\'' . ', ' . 'IsAutoload = ' . '\'' . $mtooldb->real_escape_string($daObj->IsAutoload) . '\'' . ', ' . 'LastModifiedDT = ' . 'now()' . ' where ' . 'da.PID = ' . '\'' . $mtooldb->real_escape_string($daObj->PID) . '\'' . ' and ' . 'da.ProjectPID = ' . '\'' . $mtooldb->real_escape_string($daObj->ProjectPID) . '\'';
+        $last_sql_command_for_mtooldb = 'update Da SET ' . 'name = ' . '\'' . $mtooldb->real_escape_string($DaObj->name) . '\'' . ', ' . 'StoreBasePath = ' . '\'' . $mtooldb->real_escape_string($DaObj->StoreBasePath) . '\'' . ', ' . 'IsAutoload = ' . '\'' . $mtooldb->real_escape_string($DaObj->IsAutoload) . '\'' . ', ' . 'LastModifiedDT = ' . 'now()' . ' where ' . 'Da.PID = ' . '\'' . $mtooldb->real_escape_string($DaObj->PID) . '\'' . ' and ' . 'Da.ProjectPID = ' . '\'' . $mtooldb->real_escape_string($DaObj->ProjectPID) . '\'';
         $result = $mtooldb->query($last_sql_command_for_mtooldb);
         if ($mtooldb->errno != 0) {
             error_log("Error occured while executing SQL: " . $mtooldb->error . " in " . __FILE__ . " on line " . __LINE__);
@@ -134,7 +134,7 @@ class daDBAccessBase
         connect_mtooldb_if_not_yet();
         reconnect_mtooldb_if_necessary();
 
-        $last_sql_command_for_mtooldb = 'update da SET ' . 'LastModifiedDT = ' . 'now()' . ' where ' . 'da.PID = ' . '\'' . $mtooldb->real_escape_string($param_da_PID_where) . '\'' . ' and ' . 'da.ProjectPID = ' . '\'' . $mtooldb->real_escape_string($param_da_ProjectPID_where) . '\'';
+        $last_sql_command_for_mtooldb = 'update Da SET ' . 'LastModifiedDT = ' . 'now()' . ' where ' . 'Da.PID = ' . '\'' . $mtooldb->real_escape_string($param_da_PID_where) . '\'' . ' and ' . 'Da.ProjectPID = ' . '\'' . $mtooldb->real_escape_string($param_da_ProjectPID_where) . '\'';
         $result = $mtooldb->query($last_sql_command_for_mtooldb);
         if ($mtooldb->errno != 0) {
             error_log("Error occured while executing SQL: " . $mtooldb->error . " in " . __FILE__ . " on line " . __LINE__);
@@ -149,7 +149,7 @@ class daDBAccessBase
         connect_mtooldb_if_not_yet();
         reconnect_mtooldb_if_necessary();
 
-        $last_sql_command_for_mtooldb = 'delete from da where ' . 'da.PID = ' . '\'' . $mtooldb->real_escape_string($param_da_PID_where) . '\'' . ' and ' . 'da.ProjectPID = ' . '\'' . $mtooldb->real_escape_string($param_da_ProjectPID_where) . '\'';
+        $last_sql_command_for_mtooldb = 'delete from Da where ' . 'Da.PID = ' . '\'' . $mtooldb->real_escape_string($param_da_PID_where) . '\'' . ' and ' . 'Da.ProjectPID = ' . '\'' . $mtooldb->real_escape_string($param_da_ProjectPID_where) . '\'';
         $result = $mtooldb->query($last_sql_command_for_mtooldb);
         if ($mtooldb->errno != 0) {
             error_log("Error occured while executing SQL: " . $mtooldb->error . " in " . __FILE__ . " on line " . __LINE__);

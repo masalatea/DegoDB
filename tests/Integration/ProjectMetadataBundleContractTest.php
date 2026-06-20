@@ -121,6 +121,22 @@ final class ProjectMetadataBundleContractTest extends TestCase
         self::assertSame(1, $exportResult['summary']['database_source_count'] ?? 0);
         self::assertSame(1, $exportResult['summary']['database_source_with_password_count'] ?? 0);
         self::assertSame(
+            'bundle_articles',
+            $exportResult['sections']['tables']['tables'][0]['physical_name'] ?? '',
+        );
+        self::assertSame(
+            'article_id',
+            $exportResult['sections']['tables']['tables'][0]['columns'][0]['physical_name'] ?? '',
+        );
+        self::assertSame(
+            'bundle_articles',
+            $exportResult['sections']['data_classes']['data_classes'][0]['physical_name'] ?? '',
+        );
+        self::assertSame(
+            'article_id',
+            $exportResult['sections']['data_classes']['data_classes'][0]['fields'][0]['physical_name'] ?? '',
+        );
+        self::assertSame(
             [
                 [
                     'source_key' => $databaseSourceKey,
@@ -580,6 +596,7 @@ final class ProjectMetadataBundleContractTest extends TestCase
 
         $dataClassResult = app_create_data_class_metadata_item($app, $projectKey, [
             'name' => 'BundleArticle',
+            'physical_name' => 'bundle_articles',
             'store_base_path' => 'mtool/dbclasses',
             'is_autoload' => '1',
             'inherit_parent_data_class_name' => '',
@@ -593,18 +610,21 @@ final class ProjectMetadataBundleContractTest extends TestCase
             [
                 [
                     'name' => 'article_id',
+                    'physical_name' => 'article_id',
                     'datatype' => 'int',
                     'ref_data_class_name' => '',
                     'ref_data_class_field_name' => '',
                 ],
                 [
                     'name' => 'title',
+                    'physical_name' => 'title',
                     'datatype' => 'varchar',
                     'ref_data_class_name' => '',
                     'ref_data_class_field_name' => '',
                 ],
                 [
                     'name' => 'score',
+                    'physical_name' => 'score',
                     'datatype' => 'int',
                     'ref_data_class_name' => '',
                     'ref_data_class_field_name' => '',

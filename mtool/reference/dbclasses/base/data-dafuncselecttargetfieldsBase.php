@@ -7,11 +7,11 @@
 // Generated from canonical DB Access metadata.
 // Thin DTO generated from canonical select/write metadata.
 
-class dafuncselecttargetfieldsDataBase
+class DafuncselecttargetfieldsDataBase
 {
     public $ProjectPID;
-    public $daPID;
-    public $dafuncPID;
+    public $DaPID;
+    public $DafuncPID;
     public $PID;
     public $targetTableName;
     public $targetTableAliasName;

@@ -1,17 +1,17 @@
 <?php
 
 require_once __DIR__ . '/_runtime_loader.php';
-require_once __DIR__ . '/base/data-dafuncupdatetargetfieldsBase.php';
+require_once __DIR__ . '/base/data-DafuncupdatetargetfieldsBase.php';
 
-if (!mtool_runtime_bundle_load_custom_wrapper('data-dafuncupdatetargetfields.php')) {
+if (!mtool_runtime_bundle_load_custom_wrapper('data-Dafuncupdatetargetfields.php')) {
     // Generated wrapper entry for runtime data class.
-    // Override `mtool/extensions/MTOOL/RUNTIME-DBCLASSES/data-dafuncupdatetargetfields.php` and extend `dafuncupdatetargetfieldsDataBase` for project-specific customizations.
+    // Override `mtool/extensions/MTOOL/RUNTIME-DBCLASSES/data-Dafuncupdatetargetfields.php` and extend `DafuncupdatetargetfieldsDataBase` for project-specific customizations.
 
-    class dafuncupdatetargetfieldsData extends dafuncupdatetargetfieldsDataBase
+    class DafuncupdatetargetfieldsData extends DafuncupdatetargetfieldsDataBase
     {
 	public function GetFixedParameterCaptionIfParameterTypeIsFixed()
 	{
-		if ($this->ParameterType == dafuncupdatetargetfieldsParameterTypeEnum::$FIXED) {
+		if ($this->ParameterType == DafuncupdatetargetfieldsParameterTypeEnum::$FIXED) {
 			return $this->FixedParameter;
 		}
 		return "";
@@ -22,7 +22,7 @@ if (!mtool_runtime_bundle_load_custom_wrapper('data-dafuncupdatetargetfields.php
 	}
 	public function IsFileDataType()
 	{
-		return ($this->ParameterDataType == dafuncupdatetargetfieldsParameterDataTypeEnum::$FILE);
+		return ($this->ParameterDataType == DafuncupdatetargetfieldsParameterDataTypeEnum::$FILE);
 	}
     }
 }

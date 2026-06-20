@@ -1,13 +1,13 @@
 <?php
 
 require_once __DIR__ . '/_runtime_loader.php';
-require_once __DIR__ . '/base/data-htmlTemplateBase.php';
+require_once __DIR__ . '/base/data-HtmlTemplateBase.php';
 
-if (!mtool_runtime_bundle_load_custom_wrapper('data-htmlTemplate.php')) {
+if (!mtool_runtime_bundle_load_custom_wrapper('data-HtmlTemplate.php')) {
     // Generated wrapper entry for runtime data class.
-    // Override `mtool/extensions/MTOOL/RUNTIME-DBCLASSES/data-htmlTemplate.php` and extend `htmlTemplateDataBase` for project-specific customizations.
+    // Override `mtool/extensions/MTOOL/RUNTIME-DBCLASSES/data-HtmlTemplate.php` and extend `HtmlTemplateDataBase` for project-specific customizations.
 
-    class htmlTemplateData extends htmlTemplateDataBase
+    class HtmlTemplateData extends HtmlTemplateDataBase
     {
     }
 }
@@ -15,15 +15,15 @@ function GethtmlTemplateDataLanguageCaption($lang)
 {
 	switch($lang)
 	{
-		case htmlTemplateProgramLanguageEnum::$PHP:
+		case HtmlTemplateProgramLanguageEnum::$PHP:
 			return "PHP";
-		case htmlTemplateProgramLanguageEnum::$CS:
+		case HtmlTemplateProgramLanguageEnum::$CS:
 			return "C#";
-		case htmlTemplateProgramLanguageEnum::$JAVA:
+		case HtmlTemplateProgramLanguageEnum::$JAVA:
 			return "Java";
-		case htmlTemplateProgramLanguageEnum::$OBJECTIVECH:
+		case HtmlTemplateProgramLanguageEnum::$OBJECTIVECH:
 			return "Objective-C Header";
-		case htmlTemplateProgramLanguageEnum::$OBJECTIVECM:
+		case HtmlTemplateProgramLanguageEnum::$OBJECTIVECM:
 			return "Objective-C Implementation";
 	}
 	return $lang;
@@ -31,79 +31,79 @@ function GethtmlTemplateDataLanguageCaption($lang)
 
 
 
-function MakehtmlTemplateTree($htmlTemplateList, $targetPID)
+function MakehtmlTemplateTree($HtmlTemplateList, $targetPID)
 {
-	$htmlTemplateTree = array();
+	$HtmlTemplateTree = array();
 	
-	for($i = 0 ; $i < count($htmlTemplateList); $i++) {
-		$htmlTemplate = $htmlTemplateList[$i];
+	for($i = 0 ; $i < count($HtmlTemplateList); $i++) {
+		$HtmlTemplate = $HtmlTemplateList[$i];
 		
-		if ($htmlTemplate->ParentHtmlTemplatePID == $targetPID) {
+		if ($HtmlTemplate->ParentHtmlTemplatePID == $targetPID) {
 			
 			$SortedhtmlTemplateDataContainerObj = new SortedhtmlTemplateDataContainer();
-			$SortedhtmlTemplateDataContainerObj->htmlTemplate = $htmlTemplate;
-			$SortedhtmlTemplateDataContainerObj->ChildList = MakehtmlTemplateTree($htmlTemplateList, $htmlTemplate->PID);
-			array_push($htmlTemplateTree, $SortedhtmlTemplateDataContainerObj);
+			$SortedhtmlTemplateDataContainerObj->HtmlTemplate = $HtmlTemplate;
+			$SortedhtmlTemplateDataContainerObj->ChildList = MakehtmlTemplateTree($HtmlTemplateList, $HtmlTemplate->PID);
+			array_push($HtmlTemplateTree, $SortedhtmlTemplateDataContainerObj);
 		}
 	}
-	return $htmlTemplateTree;
+	return $HtmlTemplateTree;
 }
-function MakehtmlTemplateListFromTree(&$htmlTemplateList, $htmlTemplateTree)
+function MakehtmlTemplateListFromTree(&$HtmlTemplateList, $HtmlTemplateTree)
 {
-	for($i = 0 ; $i < count($htmlTemplateTree); $i++) {
-		$SortedhtmlTemplate = $htmlTemplateTree[$i];
-		array_push($htmlTemplateList, $SortedhtmlTemplate->htmlTemplate);
-		MakehtmlTemplateListFromTree($htmlTemplateList, $SortedhtmlTemplate->ChildList);
+	for($i = 0 ; $i < count($HtmlTemplateTree); $i++) {
+		$SortedhtmlTemplate = $HtmlTemplateTree[$i];
+		array_push($HtmlTemplateList, $SortedhtmlTemplate->HtmlTemplate);
+		MakehtmlTemplateListFromTree($HtmlTemplateList, $SortedhtmlTemplate->ChildList);
 	}
 }
 
 function SorthtmlTemplateDataListByTree($originalhtmlTemplateList)
 {
-	$htmlTemplateTree = MakehtmlTemplateTree($originalhtmlTemplateList, 0);
-	$htmlTemplateList = array();
-	MakehtmlTemplateListFromTree($htmlTemplateList, $htmlTemplateTree);
+	$HtmlTemplateTree = MakehtmlTemplateTree($originalhtmlTemplateList, 0);
+	$HtmlTemplateList = array();
+	MakehtmlTemplateListFromTree($HtmlTemplateList, $HtmlTemplateTree);
 	
 	for($i = 0 ; $i < count($originalhtmlTemplateList) ; $i++) {
 		$originalhtmlTemplate = $originalhtmlTemplateList[$i];
 		
 		$found = false;
-		for($j = 0 ; $j < count($htmlTemplateList) ; $j++) {
-			$htmlTemplate = $htmlTemplateList[$j];
+		for($j = 0 ; $j < count($HtmlTemplateList) ; $j++) {
+			$HtmlTemplate = $HtmlTemplateList[$j];
 			
-			if ($originalhtmlTemplate->PID == $htmlTemplate->PID) {
+			if ($originalhtmlTemplate->PID == $HtmlTemplate->PID) {
 				$found = true;
 				break;
 			}
 		}
 		if (!$found) {
-			array_push($htmlTemplateList, $originalhtmlTemplate);
+			array_push($HtmlTemplateList, $originalhtmlTemplate);
 		}
 	}
 	
-	return $htmlTemplateList;
+	return $HtmlTemplateList;
 }
 
 function GethtmlTemplateTargetTypeCaption($targettype)
 {
 	switch($targettype)
 	{
-		case htmlTemplateTargetTypeEnum::$HTML:
+		case HtmlTemplateTargetTypeEnum::$HTML:
 			return "HTML (for each Project)";
-		case htmlTemplateTargetTypeEnum::$DB:
+		case HtmlTemplateTargetTypeEnum::$DB:
 			return "DB (common for all Project)";
-		case htmlTemplateTargetTypeEnum::$PROXYSERVER:
+		case HtmlTemplateTargetTypeEnum::$PROXYSERVER:
 			return "Proxy Server (common for all Project)";
-		case htmlTemplateTargetTypeEnum::$PROXYCLIENT:
+		case HtmlTemplateTargetTypeEnum::$PROXYCLIENT:
 			return "Proxy Client (common for all Project)";
-		case htmlTemplateTargetTypeEnum::$DBAASPROXYSERVER:
+		case HtmlTemplateTargetTypeEnum::$DBAASPROXYSERVER:
 			return "Proxy Server (common for all Project) for DBaaS";
-		case htmlTemplateTargetTypeEnum::$DBAASPROXYCLIENT:
+		case HtmlTemplateTargetTypeEnum::$DBAASPROXYCLIENT:
 			return "Proxy Client (common for all Project) for DBaaS";
-		case htmlTemplateTargetTypeEnum::$UNITTEST:
+		case HtmlTemplateTargetTypeEnum::$UNITTEST:
 			return "Unit Test (common for all Project)";
-		case htmlTemplateTargetTypeEnum::$UPLOADSETTING:
+		case HtmlTemplateTargetTypeEnum::$UPLOADSETTING:
 			return "Upload Setting";
-		case htmlTemplateTargetTypeEnum::$LANGUAGERESOURCE:
+		case HtmlTemplateTargetTypeEnum::$LANGUAGERESOURCE:
 			return "Language Resource";
 	}
 	return $targettype;
@@ -112,15 +112,15 @@ function GethtmlTemplateTargetTypeCaption($targettype)
 function GetAllhtmlTemplateTargetType()
 {
 	return array(
-		htmlTemplateTargetTypeEnum::$HTML,
-		htmlTemplateTargetTypeEnum::$DB,
-		htmlTemplateTargetTypeEnum::$PROXYSERVER,
-		htmlTemplateTargetTypeEnum::$PROXYCLIENT,
-		htmlTemplateTargetTypeEnum::$DBAASPROXYSERVER,
-		htmlTemplateTargetTypeEnum::$DBAASPROXYCLIENT,
-		htmlTemplateTargetTypeEnum::$UNITTEST,
-		htmlTemplateTargetTypeEnum::$UPLOADSETTING,
-		htmlTemplateTargetTypeEnum::$LANGUAGERESOURCE
+		HtmlTemplateTargetTypeEnum::$HTML,
+		HtmlTemplateTargetTypeEnum::$DB,
+		HtmlTemplateTargetTypeEnum::$PROXYSERVER,
+		HtmlTemplateTargetTypeEnum::$PROXYCLIENT,
+		HtmlTemplateTargetTypeEnum::$DBAASPROXYSERVER,
+		HtmlTemplateTargetTypeEnum::$DBAASPROXYCLIENT,
+		HtmlTemplateTargetTypeEnum::$UNITTEST,
+		HtmlTemplateTargetTypeEnum::$UPLOADSETTING,
+		HtmlTemplateTargetTypeEnum::$LANGUAGERESOURCE
 	);
 	// この順番で出力されることがあるので注意
 }

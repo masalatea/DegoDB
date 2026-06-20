@@ -1,13 +1,13 @@
 <?php
 
 require_once __DIR__ . '/_runtime_loader.php';
-require_once __DIR__ . '/base/data-dafuncselecthavingBase.php';
+require_once __DIR__ . '/base/data-DafuncselecthavingBase.php';
 
-if (!mtool_runtime_bundle_load_custom_wrapper('data-dafuncselecthaving.php')) {
+if (!mtool_runtime_bundle_load_custom_wrapper('data-Dafuncselecthaving.php')) {
     // Generated wrapper entry for runtime data class.
-    // Override `mtool/extensions/MTOOL/RUNTIME-DBCLASSES/data-dafuncselecthaving.php` and extend `dafuncselecthavingDataBase` for project-specific customizations.
+    // Override `mtool/extensions/MTOOL/RUNTIME-DBCLASSES/data-Dafuncselecthaving.php` and extend `DafuncselecthavingDataBase` for project-specific customizations.
 
-    class dafuncselecthavingData extends dafuncselecthavingDataBase
+    class DafuncselecthavingData extends DafuncselecthavingDataBase
     {
 	public function GetRelationalOperatorSQL()
 	{
@@ -15,26 +15,26 @@ if (!mtool_runtime_bundle_load_custom_wrapper('data-dafuncselecthaving.php')) {
 	}
     }
 }
-function GetdafuncselecthavingRightParameterTypeCaption($parametertype)
+function GetDafuncselecthavingRightParameterTypeCaption($parametertype)
 {
 	switch($parametertype)
 	{
-		case dafuncselecthavingRightParameterTypeEnum::$ARGUMENT:
+		case DafuncselecthavingRightParameterTypeEnum::$ARGUMENT:
 			return "Argument";
-		case dafuncselecthavingRightParameterTypeEnum::$FIXED:
+		case DafuncselecthavingRightParameterTypeEnum::$FIXED:
 			return "Fixed";
-		case dafuncselecthavingRightParameterTypeEnum::$FIELD:
+		case DafuncselecthavingRightParameterTypeEnum::$FIELD:
 			return "Field";
 	}
 	return $parametertype;
 }
-function GetdafuncselecthavingRightParameterDataTypeCaption($datatype)
+function GetDafuncselecthavingRightParameterDataTypeCaption($datatype)
 {
 	switch($datatype)
 	{
-		case dafuncselecthavingRightParameterDataTypeEnum::$DEFAULT:
+		case DafuncselecthavingRightParameterDataTypeEnum::$DEFAULT:
 			return "String";
-		case dafuncselecthavingRightParameterDataTypeEnum::$RAW;
+		case DafuncselecthavingRightParameterDataTypeEnum::$RAW;
 			return "Raw";
 	}
 	return $datatype;

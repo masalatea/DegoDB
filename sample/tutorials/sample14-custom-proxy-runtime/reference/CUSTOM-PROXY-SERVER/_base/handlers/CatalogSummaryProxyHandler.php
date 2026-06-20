@@ -43,7 +43,7 @@ class CatalogSummaryProxyHandlerBase extends MtoolGeneratedCustomProxyEndpointBa
                 'request_key' => 'step1',
                 'is_list' => true,
                 'source_name' => 'dbtable',
-                'dbaccess_class' => 'dbtableDBAccess',
+                'dbaccess_class' => 'DbtableDBAccess',
                 'function_name' => 'GetdbtableList',
                 'action' => 'select-list',
                 'input_kind' => 'scalar',
@@ -51,7 +51,7 @@ class CatalogSummaryProxyHandlerBase extends MtoolGeneratedCustomProxyEndpointBa
                 'object_class' => '',
                 'parameter_names' =>
                     [
-                        '0' => 'param_dbtable_ProjectPID_where',
+                        '0' => 'param_Dbtable_ProjectPID_where',
                     ],
                 'response_key' => 'Result1',
                 'response_mode' => 'step-result-list',

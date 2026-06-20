@@ -43,6 +43,7 @@ final class SchemaMetadataRepositoriesSqliteTest extends TestCase
 
         $columnUpdate = app_pdo_update_table_metadata_column($app, 'SQLITE_SCHEMA_TEST', (string) ($column['item']['pid'] ?? ''), [
             'name' => 'user_id',
+            'physical_name' => 'user_id',
             'datatype' => 'int',
             'is_null' => 'NO',
             'is_key' => 'PRI',
@@ -56,9 +57,16 @@ final class SchemaMetadataRepositoriesSqliteTest extends TestCase
         $tableSnapshot = app_pdo_fetch_table_metadata_snapshot($app, 'SQLITE_SCHEMA_TEST');
         self::assertTrue($tableSnapshot['ok'], $tableSnapshot['error']);
         self::assertSame(1, $tableSnapshot['items'][0]['column_count'] ?? 0);
+        self::assertSame('users', $tableSnapshot['items'][0]['physical_name'] ?? '');
+        self::assertSame('Users', $tableSnapshot['items'][0]['logical_name'] ?? '');
+        self::assertSame('Users', $tableSnapshot['items'][0]['generated_name'] ?? '');
+        self::assertSame('user_id', $tableSnapshot['items'][0]['columns'][0]['physical_name'] ?? '');
+        self::assertSame('UserId', $tableSnapshot['items'][0]['columns'][0]['logical_name'] ?? '');
+        self::assertSame('userId', $tableSnapshot['items'][0]['columns'][0]['generated_name'] ?? '');
 
         $dataClass = app_pdo_create_data_class_metadata_item($app, 'SQLITE_SCHEMA_TEST', [
             'name' => 'User',
+            'physical_name' => 'user',
             'store_base_path' => 'src/Data',
             'is_autoload' => '1',
             'inherit_parent_data_class_name' => '',
@@ -77,6 +85,7 @@ final class SchemaMetadataRepositoriesSqliteTest extends TestCase
 
         $fieldUpdate = app_pdo_update_data_class_metadata_field($app, 'SQLITE_SCHEMA_TEST', (string) ($field['item']['pid'] ?? ''), [
             'name' => 'userId',
+            'physical_name' => 'user_id',
             'datatype' => 'int',
             'ref_data_class_name' => '',
             'ref_data_class_field_name' => '',
@@ -87,6 +96,12 @@ final class SchemaMetadataRepositoriesSqliteTest extends TestCase
         $dataClassSnapshot = app_pdo_fetch_data_class_metadata_snapshot($app, 'SQLITE_SCHEMA_TEST');
         self::assertTrue($dataClassSnapshot['ok'], $dataClassSnapshot['error']);
         self::assertSame(1, $dataClassSnapshot['items'][0]['field_count'] ?? 0);
+        self::assertSame('user', $dataClassSnapshot['items'][0]['physical_name'] ?? '');
+        self::assertSame('User', $dataClassSnapshot['items'][0]['logical_name'] ?? '');
+        self::assertSame('User', $dataClassSnapshot['items'][0]['generated_name'] ?? '');
+        self::assertSame('user_id', $dataClassSnapshot['items'][0]['fields'][0]['physical_name'] ?? '');
+        self::assertSame('UserId', $dataClassSnapshot['items'][0]['fields'][0]['logical_name'] ?? '');
+        self::assertSame('userId', $dataClassSnapshot['items'][0]['fields'][0]['generated_name'] ?? '');
 
         self::assertTrue(app_pdo_delete_data_class_metadata_field($app, 'SQLITE_SCHEMA_TEST', (string) ($fieldUpdate['item']['pid'] ?? ''))['ok']);
         self::assertTrue(app_pdo_delete_data_class_metadata_item($app, 'SQLITE_SCHEMA_TEST', (string) ($dataClass['item']['pid'] ?? ''))['ok']);

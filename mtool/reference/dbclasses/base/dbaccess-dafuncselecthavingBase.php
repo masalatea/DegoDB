@@ -9,7 +9,7 @@
 // Known helper-style methods regenerate canonical PHP bodies when SQL regeneration is not the right fit.
 // Current canonical runtime generation fully owns this class, so no legacy DBAccess parent is required.
 
-class dafuncselecthavingDBAccessBase
+class DafuncselecthavingDBAccessBase
 {
     // source_of_truth=sync-bootstrap action_type=UNKNOWN order=11 generation=canonical-constructor
     // reason=bootstrap constructor is empty, so runtime owns the no-op constructor directly
@@ -18,23 +18,23 @@ class dafuncselecthavingDBAccessBase
     }
 
     // source_of_truth=sync-bootstrap action_type=SELECTSINGLE order=14 generation=canonical-sql
-    public function Getdafuncselecthaving($param_dafuncselecthaving_PID_where, $param_dafuncselecthaving_ProjectPID_where)
+    public function GetDafuncselecthaving($param_Dafuncselecthaving_PID_where, $param_Dafuncselecthaving_ProjectPID_where)
     {
         global $mtooldb, $last_sql_command_for_mtooldb;
         connect_mtooldb_if_not_yet();
         reconnect_mtooldb_if_necessary();
 
-        $last_sql_command_for_mtooldb = 'select dafuncselecthaving.ProjectPID, dafuncselecthaving.daPID, dafuncselecthaving.dafuncPID, dafuncselecthaving.PID, dafuncselecthaving.LeftTargetPrefix, dafuncselecthaving.LeftTargetFieldPID, dafuncselecthaving.LeftTargetSuffix, dafuncselecthaving.RelationalOperator, dafuncselecthaving.RightTargetPrefix, dafuncselecthaving.RightParameterType, dafuncselecthaving.RightParameterDataType, dafuncselecthaving.RightFixedParameter, dafuncselecthaving.RightTargetFieldPID, dafuncselecthaving.RightTargetSuffix, dafuncselecthaving.HavingListOrder from dafuncselecthaving' . ' where ' . 'dafuncselecthaving.PID = ' . '\'' . $mtooldb->real_escape_string($param_dafuncselecthaving_PID_where) . '\'' . ' and ' . 'dafuncselecthaving.ProjectPID = ' . '\'' . $mtooldb->real_escape_string($param_dafuncselecthaving_ProjectPID_where) . '\'';
+        $last_sql_command_for_mtooldb = 'select Dafuncselecthaving.ProjectPID, Dafuncselecthaving.DaPID, Dafuncselecthaving.DafuncPID, Dafuncselecthaving.PID, Dafuncselecthaving.LeftTargetPrefix, Dafuncselecthaving.LeftTargetFieldPID, Dafuncselecthaving.LeftTargetSuffix, Dafuncselecthaving.RelationalOperator, Dafuncselecthaving.RightTargetPrefix, Dafuncselecthaving.RightParameterType, Dafuncselecthaving.RightParameterDataType, Dafuncselecthaving.RightFixedParameter, Dafuncselecthaving.RightTargetFieldPID, Dafuncselecthaving.RightTargetSuffix, Dafuncselecthaving.HavingListOrder from Dafuncselecthaving' . ' where ' . 'Dafuncselecthaving.PID = ' . '\'' . $mtooldb->real_escape_string($param_Dafuncselecthaving_PID_where) . '\'' . ' and ' . 'Dafuncselecthaving.ProjectPID = ' . '\'' . $mtooldb->real_escape_string($param_Dafuncselecthaving_ProjectPID_where) . '\'';
         $ret = $mtooldb->query($last_sql_command_for_mtooldb);
         if ($mtooldb->errno != 0) {
             error_log("Error occured while executing SQL: " . $mtooldb->error . " in " . __FILE__ . " on line " . __LINE__);
             return $ret;
         }
         while($thisline=$ret->fetch_row()) {
-            $thisresult = new dafuncselecthavingData();
+            $thisresult = new DafuncselecthavingData();
             $thisresult->ProjectPID = $thisline[0];
-            $thisresult->daPID = $thisline[1];
-            $thisresult->dafuncPID = $thisline[2];
+            $thisresult->DaPID = $thisline[1];
+            $thisresult->DafuncPID = $thisline[2];
             $thisresult->PID = $thisline[3];
             $thisresult->LeftTargetPrefix = $thisline[4];
             $thisresult->LeftTargetFieldPID = $thisline[5];
@@ -53,13 +53,13 @@ class dafuncselecthavingDBAccessBase
     }
 
     // source_of_truth=sync-bootstrap action_type=INSERT order=50 generation=canonical-sql
-    public function Insertdafuncselecthaving($dafuncselecthavingObj)
+    public function InsertDafuncselecthaving($DafuncselecthavingObj)
     {
         global $mtooldb, $last_sql_command_for_mtooldb;
         connect_mtooldb_if_not_yet();
         reconnect_mtooldb_if_necessary();
 
-        $last_sql_command_for_mtooldb = 'insert into dafuncselecthaving (ProjectPID, daPID, dafuncPID, LeftTargetPrefix, LeftTargetFieldPID, LeftTargetSuffix, RelationalOperator, RightTargetPrefix, RightParameterType, RightParameterDataType, RightFixedParameter, RightTargetFieldPID, RightTargetSuffix) values(' . '\'' . $mtooldb->real_escape_string($dafuncselecthavingObj->ProjectPID) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($dafuncselecthavingObj->daPID) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($dafuncselecthavingObj->dafuncPID) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($dafuncselecthavingObj->LeftTargetPrefix) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($dafuncselecthavingObj->LeftTargetFieldPID) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($dafuncselecthavingObj->LeftTargetSuffix) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($dafuncselecthavingObj->RelationalOperator) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($dafuncselecthavingObj->RightTargetPrefix) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($dafuncselecthavingObj->RightParameterType) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($dafuncselecthavingObj->RightParameterDataType) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($dafuncselecthavingObj->RightFixedParameter) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($dafuncselecthavingObj->RightTargetFieldPID) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($dafuncselecthavingObj->RightTargetSuffix) . '\'' . ')';
+        $last_sql_command_for_mtooldb = 'insert into Dafuncselecthaving (ProjectPID, DaPID, DafuncPID, LeftTargetPrefix, LeftTargetFieldPID, LeftTargetSuffix, RelationalOperator, RightTargetPrefix, RightParameterType, RightParameterDataType, RightFixedParameter, RightTargetFieldPID, RightTargetSuffix) values(' . '\'' . $mtooldb->real_escape_string($DafuncselecthavingObj->ProjectPID) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($DafuncselecthavingObj->DaPID) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($DafuncselecthavingObj->DafuncPID) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($DafuncselecthavingObj->LeftTargetPrefix) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($DafuncselecthavingObj->LeftTargetFieldPID) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($DafuncselecthavingObj->LeftTargetSuffix) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($DafuncselecthavingObj->RelationalOperator) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($DafuncselecthavingObj->RightTargetPrefix) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($DafuncselecthavingObj->RightParameterType) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($DafuncselecthavingObj->RightParameterDataType) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($DafuncselecthavingObj->RightFixedParameter) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($DafuncselecthavingObj->RightTargetFieldPID) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($DafuncselecthavingObj->RightTargetSuffix) . '\'' . ')';
         $result = $mtooldb->query($last_sql_command_for_mtooldb);
         if ($mtooldb->errno != 0) {
             error_log("Error occured while executing SQL: " . $mtooldb->error . " in " . __FILE__ . " on line " . __LINE__);
@@ -68,13 +68,13 @@ class dafuncselecthavingDBAccessBase
     }
 
     // source_of_truth=sync-bootstrap action_type=UPDATE order=66 generation=canonical-sql
-    public function Updatedafuncselecthaving($dafuncselecthavingObj)
+    public function UpdateDafuncselecthaving($DafuncselecthavingObj)
     {
         global $mtooldb, $last_sql_command_for_mtooldb;
         connect_mtooldb_if_not_yet();
         reconnect_mtooldb_if_necessary();
 
-        $last_sql_command_for_mtooldb = 'update dafuncselecthaving SET ' . 'LeftTargetPrefix = ' . '\'' . $mtooldb->real_escape_string($dafuncselecthavingObj->LeftTargetPrefix) . '\'' . ', ' . 'LeftTargetFieldPID = ' . '\'' . $mtooldb->real_escape_string($dafuncselecthavingObj->LeftTargetFieldPID) . '\'' . ', ' . 'LeftTargetSuffix = ' . '\'' . $mtooldb->real_escape_string($dafuncselecthavingObj->LeftTargetSuffix) . '\'' . ', ' . 'RelationalOperator = ' . '\'' . $mtooldb->real_escape_string($dafuncselecthavingObj->RelationalOperator) . '\'' . ', ' . 'RightTargetPrefix = ' . '\'' . $mtooldb->real_escape_string($dafuncselecthavingObj->RightTargetPrefix) . '\'' . ', ' . 'RightParameterType = ' . '\'' . $mtooldb->real_escape_string($dafuncselecthavingObj->RightParameterType) . '\'' . ', ' . 'RightParameterDataType = ' . '\'' . $mtooldb->real_escape_string($dafuncselecthavingObj->RightParameterDataType) . '\'' . ', ' . 'RightFixedParameter = ' . '\'' . $mtooldb->real_escape_string($dafuncselecthavingObj->RightFixedParameter) . '\'' . ', ' . 'RightTargetFieldPID = ' . '\'' . $mtooldb->real_escape_string($dafuncselecthavingObj->RightTargetFieldPID) . '\'' . ', ' . 'RightTargetSuffix = ' . '\'' . $mtooldb->real_escape_string($dafuncselecthavingObj->RightTargetSuffix) . '\'' . ' where ' . 'dafuncselecthaving.PID = ' . '\'' . $mtooldb->real_escape_string($dafuncselecthavingObj->PID) . '\'' . ' and ' . 'dafuncselecthaving.ProjectPID = ' . '\'' . $mtooldb->real_escape_string($dafuncselecthavingObj->ProjectPID) . '\'';
+        $last_sql_command_for_mtooldb = 'update Dafuncselecthaving SET ' . 'LeftTargetPrefix = ' . '\'' . $mtooldb->real_escape_string($DafuncselecthavingObj->LeftTargetPrefix) . '\'' . ', ' . 'LeftTargetFieldPID = ' . '\'' . $mtooldb->real_escape_string($DafuncselecthavingObj->LeftTargetFieldPID) . '\'' . ', ' . 'LeftTargetSuffix = ' . '\'' . $mtooldb->real_escape_string($DafuncselecthavingObj->LeftTargetSuffix) . '\'' . ', ' . 'RelationalOperator = ' . '\'' . $mtooldb->real_escape_string($DafuncselecthavingObj->RelationalOperator) . '\'' . ', ' . 'RightTargetPrefix = ' . '\'' . $mtooldb->real_escape_string($DafuncselecthavingObj->RightTargetPrefix) . '\'' . ', ' . 'RightParameterType = ' . '\'' . $mtooldb->real_escape_string($DafuncselecthavingObj->RightParameterType) . '\'' . ', ' . 'RightParameterDataType = ' . '\'' . $mtooldb->real_escape_string($DafuncselecthavingObj->RightParameterDataType) . '\'' . ', ' . 'RightFixedParameter = ' . '\'' . $mtooldb->real_escape_string($DafuncselecthavingObj->RightFixedParameter) . '\'' . ', ' . 'RightTargetFieldPID = ' . '\'' . $mtooldb->real_escape_string($DafuncselecthavingObj->RightTargetFieldPID) . '\'' . ', ' . 'RightTargetSuffix = ' . '\'' . $mtooldb->real_escape_string($DafuncselecthavingObj->RightTargetSuffix) . '\'' . ' where ' . 'Dafuncselecthaving.PID = ' . '\'' . $mtooldb->real_escape_string($DafuncselecthavingObj->PID) . '\'' . ' and ' . 'Dafuncselecthaving.ProjectPID = ' . '\'' . $mtooldb->real_escape_string($DafuncselecthavingObj->ProjectPID) . '\'';
         $result = $mtooldb->query($last_sql_command_for_mtooldb);
         if ($mtooldb->errno != 0) {
             error_log("Error occured while executing SQL: " . $mtooldb->error . " in " . __FILE__ . " on line " . __LINE__);
@@ -83,13 +83,13 @@ class dafuncselecthavingDBAccessBase
     }
 
     // source_of_truth=sync-bootstrap action_type=DELETE order=82 generation=canonical-sql
-    public function Deletedafuncselecthaving($dafuncselecthavingObj)
+    public function DeleteDafuncselecthaving($DafuncselecthavingObj)
     {
         global $mtooldb, $last_sql_command_for_mtooldb;
         connect_mtooldb_if_not_yet();
         reconnect_mtooldb_if_necessary();
 
-        $last_sql_command_for_mtooldb = 'delete from dafuncselecthaving where ' . 'dafuncselecthaving.PID = ' . '\'' . $mtooldb->real_escape_string($dafuncselecthavingObj->PID) . '\'' . ' and ' . 'dafuncselecthaving.ProjectPID = ' . '\'' . $mtooldb->real_escape_string($dafuncselecthavingObj->ProjectPID) . '\'';
+        $last_sql_command_for_mtooldb = 'delete from Dafuncselecthaving where ' . 'Dafuncselecthaving.PID = ' . '\'' . $mtooldb->real_escape_string($DafuncselecthavingObj->PID) . '\'' . ' and ' . 'Dafuncselecthaving.ProjectPID = ' . '\'' . $mtooldb->real_escape_string($DafuncselecthavingObj->ProjectPID) . '\'';
         $result = $mtooldb->query($last_sql_command_for_mtooldb);
         if ($mtooldb->errno != 0) {
             error_log("Error occured while executing SQL: " . $mtooldb->error . " in " . __FILE__ . " on line " . __LINE__);
@@ -98,13 +98,13 @@ class dafuncselecthavingDBAccessBase
     }
 
     // source_of_truth=sync-bootstrap action_type=UPDATE order=98 generation=canonical-sql
-    public function UpdatedafuncselecthavingOrder($param_dafuncselecthaving_HavingListOrder_update, $param_dafuncselecthaving_PID_where, $param_dafuncselecthaving_ProjectPID_where)
+    public function UpdateDafuncselecthavingOrder($param_Dafuncselecthaving_HavingListOrder_update, $param_Dafuncselecthaving_PID_where, $param_Dafuncselecthaving_ProjectPID_where)
     {
         global $mtooldb, $last_sql_command_for_mtooldb;
         connect_mtooldb_if_not_yet();
         reconnect_mtooldb_if_necessary();
 
-        $last_sql_command_for_mtooldb = 'update dafuncselecthaving SET ' . 'HavingListOrder = ' . '\'' . $mtooldb->real_escape_string($param_dafuncselecthaving_HavingListOrder_update) . '\'' . ' where ' . 'dafuncselecthaving.PID = ' . '\'' . $mtooldb->real_escape_string($param_dafuncselecthaving_PID_where) . '\'' . ' and ' . 'dafuncselecthaving.ProjectPID = ' . '\'' . $mtooldb->real_escape_string($param_dafuncselecthaving_ProjectPID_where) . '\'';
+        $last_sql_command_for_mtooldb = 'update Dafuncselecthaving SET ' . 'HavingListOrder = ' . '\'' . $mtooldb->real_escape_string($param_Dafuncselecthaving_HavingListOrder_update) . '\'' . ' where ' . 'Dafuncselecthaving.PID = ' . '\'' . $mtooldb->real_escape_string($param_Dafuncselecthaving_PID_where) . '\'' . ' and ' . 'Dafuncselecthaving.ProjectPID = ' . '\'' . $mtooldb->real_escape_string($param_Dafuncselecthaving_ProjectPID_where) . '\'';
         $result = $mtooldb->query($last_sql_command_for_mtooldb);
         if ($mtooldb->errno != 0) {
             error_log("Error occured while executing SQL: " . $mtooldb->error . " in " . __FILE__ . " on line " . __LINE__);

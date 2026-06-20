@@ -34,7 +34,7 @@ class ProjectDataBase
     public $option_show_source_output_setting;
     public $option_restrict_proxy_server_to_single;
     public $option_show_language_resource;
-    public $option_build_dataclass_for_proxy_client_only_if_proxy_exist;
+    public $option_build_Dataclass_for_proxy_client_only_if_proxy_exist;
     public $option_show_output_temp_folder_on_build;
     public $option_default_output_temp_folder_on_build_is_true;
     public $option_IsCompareOutputTarget;

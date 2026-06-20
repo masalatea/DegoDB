@@ -1,13 +1,13 @@
 <?php
 
 require_once __DIR__ . '/_runtime_loader.php';
-require_once __DIR__ . '/base/data-dbtablecolumnsBase.php';
+require_once __DIR__ . '/base/data-DbtablecolumnsBase.php';
 
-if (!mtool_runtime_bundle_load_custom_wrapper('data-dbtablecolumns.php')) {
+if (!mtool_runtime_bundle_load_custom_wrapper('data-Dbtablecolumns.php')) {
     // Generated wrapper entry for runtime data class.
-    // Override `mtool/extensions/MTOOL/RUNTIME-DBCLASSES/data-dbtablecolumns.php` and extend `dbtablecolumnsDataBase` for project-specific customizations.
+    // Override `mtool/extensions/MTOOL/RUNTIME-DBCLASSES/data-Dbtablecolumns.php` and extend `DbtablecolumnsDataBase` for project-specific customizations.
 
-    class dbtablecolumnsData extends dbtablecolumnsDataBase
+    class DbtablecolumnsData extends DbtablecolumnsDataBase
     {
 	public $ColumnListOrderSupposedToBe;
 	

@@ -2,9 +2,11 @@
     "tables": [
         {
             "name": "BundleNote",
+            "physical_name": "BundleNote",
             "columns": [
                 {
                     "name": "Id",
+                    "physical_name": "Id",
                     "datatype": "bigint(20) unsigned",
                     "is_null": "NO",
                     "is_key": "PRI",
@@ -15,6 +17,7 @@
                 },
                 {
                     "name": "Title",
+                    "physical_name": "Title",
                     "datatype": "varchar(255)",
                     "is_null": "NO",
                     "is_key": "",
@@ -25,6 +28,7 @@
                 },
                 {
                     "name": "Body",
+                    "physical_name": "Body",
                     "datatype": "text",
                     "is_null": "NO",
                     "is_key": "",
@@ -35,6 +39,7 @@
                 },
                 {
                     "name": "UpdatedAt",
+                    "physical_name": "UpdatedAt",
                     "datatype": "datetime",
                     "is_null": "NO",
                     "is_key": "",

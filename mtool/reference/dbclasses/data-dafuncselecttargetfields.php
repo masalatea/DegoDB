@@ -1,13 +1,13 @@
 <?php
 
 require_once __DIR__ . '/_runtime_loader.php';
-require_once __DIR__ . '/base/data-dafuncselecttargetfieldsBase.php';
+require_once __DIR__ . '/base/data-DafuncselecttargetfieldsBase.php';
 
-if (!mtool_runtime_bundle_load_custom_wrapper('data-dafuncselecttargetfields.php')) {
+if (!mtool_runtime_bundle_load_custom_wrapper('data-Dafuncselecttargetfields.php')) {
     // Generated wrapper entry for runtime data class.
-    // Override `mtool/extensions/MTOOL/RUNTIME-DBCLASSES/data-dafuncselecttargetfields.php` and extend `dafuncselecttargetfieldsDataBase` for project-specific customizations.
+    // Override `mtool/extensions/MTOOL/RUNTIME-DBCLASSES/data-Dafuncselecttargetfields.php` and extend `DafuncselecttargetfieldsDataBase` for project-specific customizations.
 
-    class dafuncselecttargetfieldsData extends dafuncselecttargetfieldsDataBase
+    class DafuncselecttargetfieldsData extends DafuncselecttargetfieldsDataBase
     {
     }
 }

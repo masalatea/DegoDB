@@ -7,10 +7,10 @@
 // Generated from canonical DB Access metadata.
 // Thin DTO generated from canonical select/write metadata.
 
-class dataclassfieldsDataBase
+class DataclassfieldsDataBase
 {
     public $ProjectPID;
-    public $dataclassPID;
+    public $DataclassPID;
     public $PID;
     public $name;
     public $datatype;

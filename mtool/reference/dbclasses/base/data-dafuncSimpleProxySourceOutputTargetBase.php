@@ -7,15 +7,15 @@
 // Generated from canonical DB Access metadata.
 // Thin DTO generated from canonical select/write metadata.
 
-class dafuncSimpleProxySourceOutputTargetDataBase
+class DafuncSimpleProxySourceOutputTargetDataBase
 {
     public $ProjectPID;
-    public $daPID;
-    public $dafuncPID;
+    public $DaPID;
+    public $DafuncPID;
     public $PID;
     public $ProjectSourceOutputPID;
     public $daname;
-    public $dafuncname;
+    public $Dafuncname;
 
     public function __construct()
     {

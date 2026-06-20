@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 require_once __DIR__ . '/data_class_repository.php';
+require_once __DIR__ . '/generated_name.php';
 require_once __DIR__ . '/legacy_data_class_editable_area_migrator.php';
 require_once __DIR__ . '/project_output_template_renderer.php';
 require_once __DIR__ . '/runtime_storage_paths.php';
@@ -40,6 +41,28 @@ function app_project_output_data_class_base_relative_path(
         . 'base/data-'
         . $dataClassName
         . 'Base.php';
+}
+
+function app_project_output_data_class_output_class_name(array $item): string
+{
+    $name = trim((string) ($item['name'] ?? ''));
+    if (!app_generated_name_policy_uses_physical_logical_names()) {
+        return $name;
+    }
+
+    $physicalName = trim((string) ($item['physical_name'] ?? $name));
+    return app_generated_name_map_for_physical_name($physicalName, 'class')['generated_name'];
+}
+
+function app_project_output_data_class_output_field_name(array $field): string
+{
+    $name = trim((string) ($field['name'] ?? ''));
+    if (!app_generated_name_policy_uses_physical_logical_names()) {
+        return $name;
+    }
+
+    $physicalName = trim((string) ($field['physical_name'] ?? $name));
+    return app_generated_name_map_for_physical_name($physicalName, 'php-property')['generated_name'];
 }
 
 /**
@@ -106,7 +129,7 @@ function app_project_output_data_class_raw_field_names_by_class(array $items): a
                 continue;
             }
 
-            $fieldName = trim((string) ($field['name'] ?? ''));
+            $fieldName = app_project_output_data_class_output_field_name($field);
             if ($fieldName === '' || isset($seen[$fieldName])) {
                 continue;
             }
@@ -433,12 +456,14 @@ function app_project_output_prepare_data_class_source_tree(array $app, string $p
     $rawFieldNamesByClass = app_project_output_data_class_raw_field_names_by_class($snapshotResult['items']);
     $parentByClass = app_project_output_data_class_parent_by_class($snapshotResult['items']);
     $storeBasePathByClass = [];
+    $outputNameByClass = [];
     foreach ($snapshotResult['items'] as $item) {
         $dataClassName = trim((string) ($item['name'] ?? ''));
         if ($dataClassName === '') {
             continue;
         }
 
+        $outputNameByClass[$dataClassName] = app_project_output_data_class_output_class_name($item);
         $storeBasePathByClass[$dataClassName] = trim(
             str_replace('\\', '/', (string) ($item['store_base_path'] ?? '')),
             '/',
@@ -456,8 +481,12 @@ function app_project_output_prepare_data_class_source_tree(array $app, string $p
             if ($dataClassName === '') {
                 continue;
             }
+            $outputDataClassName = $outputNameByClass[$dataClassName] ?? $dataClassName;
 
             $parentClassName = trim((string) ($item['inherit_parent_data_class_name'] ?? ''));
+            $outputParentClassName = $parentClassName !== ''
+                ? (string) ($outputNameByClass[$parentClassName] ?? $parentClassName)
+                : '';
             $parentEffectiveFieldNames = [];
             if ($parentClassName !== '' && isset($rawFieldNamesByClass[$parentClassName])) {
                 $parentEffectiveFieldNames = app_project_output_data_class_effective_field_names(
@@ -489,30 +518,30 @@ function app_project_output_prepare_data_class_source_tree(array $app, string $p
                 );
             }
 
-            $wrapperRelativePath = app_project_output_data_class_wrapper_relative_path($storeBasePath, $dataClassName);
-            $baseRelativePath = app_project_output_data_class_base_relative_path($storeBasePath, $dataClassName);
+            $wrapperRelativePath = app_project_output_data_class_wrapper_relative_path($storeBasePath, $outputDataClassName);
+            $baseRelativePath = app_project_output_data_class_base_relative_path($storeBasePath, $outputDataClassName);
             $parentWrapperRelativePath = '';
             if ($parentClassName !== '') {
                 $parentWrapperRelativePath = app_project_output_data_class_wrapper_relative_path(
                     $storeBasePathByClass[$parentClassName] ?? '',
-                    $parentClassName,
+                    $outputParentClassName,
                 );
             }
 
             app_project_output_write_text_file(
                 $runtimeSourceRoot . '/' . $baseRelativePath,
                 app_project_output_generated_data_class_base_php_text(
-                    $dataClassName . 'DataBase',
-                    $parentClassName !== '' ? $parentClassName . 'Data' : '',
+                    $outputDataClassName . 'DataBase',
+                    $outputParentClassName !== '' ? $outputParentClassName . 'Data' : '',
                     $declaredFieldNames,
                 ),
             );
             app_project_output_write_text_file(
                 $runtimeSourceRoot . '/' . $wrapperRelativePath,
                 app_project_output_generated_data_class_wrapper_php_text(
-                    $dataClassName,
+                    $outputDataClassName,
                     $wrapperRelativePath,
-                    $parentClassName,
+                    $outputParentClassName,
                     $parentWrapperRelativePath,
                 ),
             );

@@ -9,7 +9,7 @@
 // Known helper-style methods regenerate canonical PHP bodies when SQL regeneration is not the right fit.
 // Current canonical runtime generation fully owns this class, so no legacy DBAccess parent is required.
 
-class dafuncSimpleProxySourceOutputTargetDBAccessBase
+class DafuncSimpleProxySourceOutputTargetDBAccessBase
 {
     // source_of_truth=sync-bootstrap action_type=UNKNOWN order=11 generation=canonical-constructor
     // reason=bootstrap constructor is empty, so runtime owns the no-op constructor directly
@@ -18,7 +18,7 @@ class dafuncSimpleProxySourceOutputTargetDBAccessBase
     }
 
     // source_of_truth=sync-bootstrap action_type=SELECTLIST order=14 generation=canonical-sql
-    public function GetAlldafuncSimpleProxySourceOutputTargetForProjectSourceOutputList($param_dafuncSimpleProxySourceOutputTarget_ProjectPID_where, $param_dafuncSimpleProxySourceOutputTarget_ProjectSourceOutputPID_where)
+    public function GetAllDafuncSimpleProxySourceOutputTargetForProjectSourceOutputList($param_DafuncSimpleProxySourceOutputTarget_ProjectPID_where, $param_DafuncSimpleProxySourceOutputTarget_ProjectSourceOutputPID_where)
     {
         global $mtooldb, $last_sql_command_for_mtooldb;
         connect_mtooldb_if_not_yet();
@@ -26,28 +26,28 @@ class dafuncSimpleProxySourceOutputTargetDBAccessBase
 
         $result = array();
 
-        $last_sql_command_for_mtooldb = 'select dafuncSimpleProxySourceOutputTarget.ProjectPID, dafuncSimpleProxySourceOutputTarget.daPID, dafuncSimpleProxySourceOutputTarget.dafuncPID, dafuncSimpleProxySourceOutputTarget.PID, dafuncSimpleProxySourceOutputTarget.ProjectSourceOutputPID, da.name, dafunc.name from dafuncSimpleProxySourceOutputTarget left outer join da on dafuncSimpleProxySourceOutputTarget.daPID = da.PID left outer join dafunc on dafuncSimpleProxySourceOutputTarget.dafuncPID = dafunc.PID' . ' where ' . 'dafuncSimpleProxySourceOutputTarget.ProjectPID = ' . '\'' . $mtooldb->real_escape_string($param_dafuncSimpleProxySourceOutputTarget_ProjectPID_where) . '\'' . ' and ' . 'dafuncSimpleProxySourceOutputTarget.ProjectSourceOutputPID = ' . '\'' . $mtooldb->real_escape_string($param_dafuncSimpleProxySourceOutputTarget_ProjectSourceOutputPID_where) . '\'';
+        $last_sql_command_for_mtooldb = 'select DafuncSimpleProxySourceOutputTarget.ProjectPID, DafuncSimpleProxySourceOutputTarget.DaPID, DafuncSimpleProxySourceOutputTarget.DafuncPID, DafuncSimpleProxySourceOutputTarget.PID, DafuncSimpleProxySourceOutputTarget.ProjectSourceOutputPID, Da.name, Dafunc.name from DafuncSimpleProxySourceOutputTarget left outer join Da on DafuncSimpleProxySourceOutputTarget.DaPID = Da.PID left outer join Dafunc on DafuncSimpleProxySourceOutputTarget.DafuncPID = Dafunc.PID' . ' where ' . 'DafuncSimpleProxySourceOutputTarget.ProjectPID = ' . '\'' . $mtooldb->real_escape_string($param_DafuncSimpleProxySourceOutputTarget_ProjectPID_where) . '\'' . ' and ' . 'DafuncSimpleProxySourceOutputTarget.ProjectSourceOutputPID = ' . '\'' . $mtooldb->real_escape_string($param_DafuncSimpleProxySourceOutputTarget_ProjectSourceOutputPID_where) . '\'';
         $ret = $mtooldb->query($last_sql_command_for_mtooldb);
         if ($mtooldb->errno != 0) {
             error_log("Error occured while executing SQL: " . $mtooldb->error . " in " . __FILE__ . " on line " . __LINE__);
             return $ret;
         }
         while($thisline=$ret->fetch_row()) {
-            $thisresult = new dafuncSimpleProxySourceOutputTargetData();
+            $thisresult = new DafuncSimpleProxySourceOutputTargetData();
             $thisresult->ProjectPID = $thisline[0];
-            $thisresult->daPID = $thisline[1];
-            $thisresult->dafuncPID = $thisline[2];
+            $thisresult->DaPID = $thisline[1];
+            $thisresult->DafuncPID = $thisline[2];
             $thisresult->PID = $thisline[3];
             $thisresult->ProjectSourceOutputPID = $thisline[4];
             $thisresult->daname = $thisline[5];
-            $thisresult->dafuncname = $thisline[6];
+            $thisresult->Dafuncname = $thisline[6];
             array_push($result, $thisresult);
         }
         return $result;
     }
 
     // source_of_truth=sync-bootstrap action_type=SELECTLIST order=44 generation=canonical-sql
-    public function GetdafuncSimpleProxySourceOutputTargetList($param_dafuncSimpleProxySourceOutputTarget_ProjectPID_where, $param_dafuncSimpleProxySourceOutputTarget_daPID_where, $param_dafuncSimpleProxySourceOutputTarget_dafuncPID_where)
+    public function GetDafuncSimpleProxySourceOutputTargetList($param_DafuncSimpleProxySourceOutputTarget_ProjectPID_where, $param_DafuncSimpleProxySourceOutputTarget_daPID_where, $param_DafuncSimpleProxySourceOutputTarget_DafuncPID_where)
     {
         global $mtooldb, $last_sql_command_for_mtooldb;
         connect_mtooldb_if_not_yet();
@@ -55,61 +55,61 @@ class dafuncSimpleProxySourceOutputTargetDBAccessBase
 
         $result = array();
 
-        $last_sql_command_for_mtooldb = 'select dafuncSimpleProxySourceOutputTarget.ProjectPID, dafuncSimpleProxySourceOutputTarget.daPID, dafuncSimpleProxySourceOutputTarget.dafuncPID, dafuncSimpleProxySourceOutputTarget.PID, dafuncSimpleProxySourceOutputTarget.ProjectSourceOutputPID, da.name, dafunc.name from dafuncSimpleProxySourceOutputTarget left outer join da on dafuncSimpleProxySourceOutputTarget.daPID = da.PID left outer join dafunc on dafuncSimpleProxySourceOutputTarget.dafuncPID = dafunc.PID' . ' where ' . 'dafuncSimpleProxySourceOutputTarget.ProjectPID = ' . '\'' . $mtooldb->real_escape_string($param_dafuncSimpleProxySourceOutputTarget_ProjectPID_where) . '\'' . ' and ' . 'dafuncSimpleProxySourceOutputTarget.daPID = ' . '\'' . $mtooldb->real_escape_string($param_dafuncSimpleProxySourceOutputTarget_daPID_where) . '\'' . ' and ' . 'dafuncSimpleProxySourceOutputTarget.dafuncPID = ' . '\'' . $mtooldb->real_escape_string($param_dafuncSimpleProxySourceOutputTarget_dafuncPID_where) . '\'';
+        $last_sql_command_for_mtooldb = 'select DafuncSimpleProxySourceOutputTarget.ProjectPID, DafuncSimpleProxySourceOutputTarget.DaPID, DafuncSimpleProxySourceOutputTarget.DafuncPID, DafuncSimpleProxySourceOutputTarget.PID, DafuncSimpleProxySourceOutputTarget.ProjectSourceOutputPID, Da.name, Dafunc.name from DafuncSimpleProxySourceOutputTarget left outer join Da on DafuncSimpleProxySourceOutputTarget.DaPID = Da.PID left outer join Dafunc on DafuncSimpleProxySourceOutputTarget.DafuncPID = Dafunc.PID' . ' where ' . 'DafuncSimpleProxySourceOutputTarget.ProjectPID = ' . '\'' . $mtooldb->real_escape_string($param_DafuncSimpleProxySourceOutputTarget_ProjectPID_where) . '\'' . ' and ' . 'DafuncSimpleProxySourceOutputTarget.DaPID = ' . '\'' . $mtooldb->real_escape_string($param_DafuncSimpleProxySourceOutputTarget_daPID_where) . '\'' . ' and ' . 'DafuncSimpleProxySourceOutputTarget.DafuncPID = ' . '\'' . $mtooldb->real_escape_string($param_DafuncSimpleProxySourceOutputTarget_DafuncPID_where) . '\'';
         $ret = $mtooldb->query($last_sql_command_for_mtooldb);
         if ($mtooldb->errno != 0) {
             error_log("Error occured while executing SQL: " . $mtooldb->error . " in " . __FILE__ . " on line " . __LINE__);
             return $ret;
         }
         while($thisline=$ret->fetch_row()) {
-            $thisresult = new dafuncSimpleProxySourceOutputTargetData();
+            $thisresult = new DafuncSimpleProxySourceOutputTargetData();
             $thisresult->ProjectPID = $thisline[0];
-            $thisresult->daPID = $thisline[1];
-            $thisresult->dafuncPID = $thisline[2];
+            $thisresult->DaPID = $thisline[1];
+            $thisresult->DafuncPID = $thisline[2];
             $thisresult->PID = $thisline[3];
             $thisresult->ProjectSourceOutputPID = $thisline[4];
             $thisresult->daname = $thisline[5];
-            $thisresult->dafuncname = $thisline[6];
+            $thisresult->Dafuncname = $thisline[6];
             array_push($result, $thisresult);
         }
         return $result;
     }
 
     // source_of_truth=sync-bootstrap action_type=SELECTSINGLE order=74 generation=canonical-sql
-    public function GetdafuncSimpleProxyForOneOutputSource($param_dafuncSimpleProxySourceOutputTarget_ProjectPID_where, $param_dafuncSimpleProxySourceOutputTarget_daPID_where, $param_dafuncSimpleProxySourceOutputTarget_dafuncPID_where, $param_dafuncSimpleProxySourceOutputTarget_ProjectSourceOutputPID_where)
+    public function GetDafuncSimpleProxyForOneOutputSource($param_DafuncSimpleProxySourceOutputTarget_ProjectPID_where, $param_DafuncSimpleProxySourceOutputTarget_daPID_where, $param_DafuncSimpleProxySourceOutputTarget_DafuncPID_where, $param_DafuncSimpleProxySourceOutputTarget_ProjectSourceOutputPID_where)
     {
         global $mtooldb, $last_sql_command_for_mtooldb;
         connect_mtooldb_if_not_yet();
         reconnect_mtooldb_if_necessary();
 
-        $last_sql_command_for_mtooldb = 'select dafuncSimpleProxySourceOutputTarget.ProjectPID, dafuncSimpleProxySourceOutputTarget.daPID, dafuncSimpleProxySourceOutputTarget.dafuncPID, dafuncSimpleProxySourceOutputTarget.PID, dafuncSimpleProxySourceOutputTarget.ProjectSourceOutputPID, da.name, dafunc.name from dafuncSimpleProxySourceOutputTarget left outer join da on dafuncSimpleProxySourceOutputTarget.daPID = da.PID left outer join dafunc on dafuncSimpleProxySourceOutputTarget.dafuncPID = dafunc.PID' . ' where ' . 'dafuncSimpleProxySourceOutputTarget.ProjectPID = ' . '\'' . $mtooldb->real_escape_string($param_dafuncSimpleProxySourceOutputTarget_ProjectPID_where) . '\'' . ' and ' . 'dafuncSimpleProxySourceOutputTarget.daPID = ' . '\'' . $mtooldb->real_escape_string($param_dafuncSimpleProxySourceOutputTarget_daPID_where) . '\'' . ' and ' . 'dafuncSimpleProxySourceOutputTarget.dafuncPID = ' . '\'' . $mtooldb->real_escape_string($param_dafuncSimpleProxySourceOutputTarget_dafuncPID_where) . '\'' . ' and ' . 'dafuncSimpleProxySourceOutputTarget.ProjectSourceOutputPID = ' . '\'' . $mtooldb->real_escape_string($param_dafuncSimpleProxySourceOutputTarget_ProjectSourceOutputPID_where) . '\'';
+        $last_sql_command_for_mtooldb = 'select DafuncSimpleProxySourceOutputTarget.ProjectPID, DafuncSimpleProxySourceOutputTarget.DaPID, DafuncSimpleProxySourceOutputTarget.DafuncPID, DafuncSimpleProxySourceOutputTarget.PID, DafuncSimpleProxySourceOutputTarget.ProjectSourceOutputPID, Da.name, Dafunc.name from DafuncSimpleProxySourceOutputTarget left outer join Da on DafuncSimpleProxySourceOutputTarget.DaPID = Da.PID left outer join Dafunc on DafuncSimpleProxySourceOutputTarget.DafuncPID = Dafunc.PID' . ' where ' . 'DafuncSimpleProxySourceOutputTarget.ProjectPID = ' . '\'' . $mtooldb->real_escape_string($param_DafuncSimpleProxySourceOutputTarget_ProjectPID_where) . '\'' . ' and ' . 'DafuncSimpleProxySourceOutputTarget.DaPID = ' . '\'' . $mtooldb->real_escape_string($param_DafuncSimpleProxySourceOutputTarget_daPID_where) . '\'' . ' and ' . 'DafuncSimpleProxySourceOutputTarget.DafuncPID = ' . '\'' . $mtooldb->real_escape_string($param_DafuncSimpleProxySourceOutputTarget_DafuncPID_where) . '\'' . ' and ' . 'DafuncSimpleProxySourceOutputTarget.ProjectSourceOutputPID = ' . '\'' . $mtooldb->real_escape_string($param_DafuncSimpleProxySourceOutputTarget_ProjectSourceOutputPID_where) . '\'';
         $ret = $mtooldb->query($last_sql_command_for_mtooldb);
         if ($mtooldb->errno != 0) {
             error_log("Error occured while executing SQL: " . $mtooldb->error . " in " . __FILE__ . " on line " . __LINE__);
             return $ret;
         }
         while($thisline=$ret->fetch_row()) {
-            $thisresult = new dafuncSimpleProxySourceOutputTargetData();
+            $thisresult = new DafuncSimpleProxySourceOutputTargetData();
             $thisresult->ProjectPID = $thisline[0];
-            $thisresult->daPID = $thisline[1];
-            $thisresult->dafuncPID = $thisline[2];
+            $thisresult->DaPID = $thisline[1];
+            $thisresult->DafuncPID = $thisline[2];
             $thisresult->PID = $thisline[3];
             $thisresult->ProjectSourceOutputPID = $thisline[4];
             $thisresult->daname = $thisline[5];
-            $thisresult->dafuncname = $thisline[6];
+            $thisresult->Dafuncname = $thisline[6];
             return $thisresult;
         }
         return NULL;
     }
 
     // source_of_truth=sync-bootstrap action_type=INSERT order=102 generation=canonical-sql
-    public function InsertdafuncSimpleProxySourceOutputTarget($dafuncSimpleProxySourceOutputTargetObj)
+    public function InsertDafuncSimpleProxySourceOutputTarget($DafuncSimpleProxySourceOutputTargetObj)
     {
         global $mtooldb, $last_sql_command_for_mtooldb;
         connect_mtooldb_if_not_yet();
         reconnect_mtooldb_if_necessary();
 
-        $last_sql_command_for_mtooldb = 'insert into dafuncSimpleProxySourceOutputTarget (ProjectPID, daPID, dafuncPID, ProjectSourceOutputPID) values(' . '\'' . $mtooldb->real_escape_string($dafuncSimpleProxySourceOutputTargetObj->ProjectPID) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($dafuncSimpleProxySourceOutputTargetObj->daPID) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($dafuncSimpleProxySourceOutputTargetObj->dafuncPID) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($dafuncSimpleProxySourceOutputTargetObj->ProjectSourceOutputPID) . '\'' . ')';
+        $last_sql_command_for_mtooldb = 'insert into DafuncSimpleProxySourceOutputTarget (ProjectPID, DaPID, DafuncPID, ProjectSourceOutputPID) values(' . '\'' . $mtooldb->real_escape_string($DafuncSimpleProxySourceOutputTargetObj->ProjectPID) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($DafuncSimpleProxySourceOutputTargetObj->DaPID) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($DafuncSimpleProxySourceOutputTargetObj->DafuncPID) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($DafuncSimpleProxySourceOutputTargetObj->ProjectSourceOutputPID) . '\'' . ')';
         $result = $mtooldb->query($last_sql_command_for_mtooldb);
         if ($mtooldb->errno != 0) {
             error_log("Error occured while executing SQL: " . $mtooldb->error . " in " . __FILE__ . " on line " . __LINE__);
@@ -118,13 +118,13 @@ class dafuncSimpleProxySourceOutputTargetDBAccessBase
     }
 
     // source_of_truth=sync-bootstrap action_type=DELETE order=118 generation=canonical-sql
-    public function DeletedafuncSimpleProxySourceOutputTarget($dafuncSimpleProxySourceOutputTargetObj)
+    public function DeleteDafuncSimpleProxySourceOutputTarget($DafuncSimpleProxySourceOutputTargetObj)
     {
         global $mtooldb, $last_sql_command_for_mtooldb;
         connect_mtooldb_if_not_yet();
         reconnect_mtooldb_if_necessary();
 
-        $last_sql_command_for_mtooldb = 'delete from dafuncSimpleProxySourceOutputTarget where ' . 'dafuncSimpleProxySourceOutputTarget.PID = ' . '\'' . $mtooldb->real_escape_string($dafuncSimpleProxySourceOutputTargetObj->PID) . '\'' . ' and ' . 'dafuncSimpleProxySourceOutputTarget.ProjectPID = ' . '\'' . $mtooldb->real_escape_string($dafuncSimpleProxySourceOutputTargetObj->ProjectPID) . '\'';
+        $last_sql_command_for_mtooldb = 'delete from DafuncSimpleProxySourceOutputTarget where ' . 'DafuncSimpleProxySourceOutputTarget.PID = ' . '\'' . $mtooldb->real_escape_string($DafuncSimpleProxySourceOutputTargetObj->PID) . '\'' . ' and ' . 'DafuncSimpleProxySourceOutputTarget.ProjectPID = ' . '\'' . $mtooldb->real_escape_string($DafuncSimpleProxySourceOutputTargetObj->ProjectPID) . '\'';
         $result = $mtooldb->query($last_sql_command_for_mtooldb);
         if ($mtooldb->errno != 0) {
             error_log("Error occured while executing SQL: " . $mtooldb->error . " in " . __FILE__ . " on line " . __LINE__);

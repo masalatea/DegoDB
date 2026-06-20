@@ -27,13 +27,13 @@ class LastBuildDataBase
 class LastBuildBuildClassTypeEnum
 {
 	static $UNKNOWN = "Unknown";
-	static $DATACLASS = "dataclass";
-	static $DA = "da";
+	static $DATACLASS = "Dataclass";
+	static $DA = "Da";
 	static $PROXYSERVER = "proxyserver";
 	static $PROXYCLIENT = "proxyclient";
 	static $CUSTOMPROXYSERVER = "customproxyserver";
 	static $CUSTOMPROXYCLIENT = "customproxyclient";
-	static $HTML = "html";
+	static $HTML = "Html";
 	static $LANGUAGERESOURCE = "LanguageResource";
 }
 

@@ -1,13 +1,13 @@
 <?php
 
 require_once __DIR__ . '/_runtime_loader.php';
-require_once __DIR__ . '/base/dbaccess-dbtableBase.php';
+require_once __DIR__ . '/base/dbaccess-DbtableBase.php';
 
-if (!mtool_runtime_bundle_load_custom_wrapper('dbaccess-dbtable.php')) {
+if (!mtool_runtime_bundle_load_custom_wrapper('dbaccess-Dbtable.php')) {
     // Generated wrapper entry for runtime DB Access.
-    // Override `mtool/extensions/MTOOL/RUNTIME-DBCLASSES/dbaccess-dbtable.php` and extend `dbtableDBAccessBase` for project-specific customizations.
+    // Override `mtool/extensions/MTOOL/RUNTIME-DBCLASSES/dbaccess-Dbtable.php` and extend `DbtableDBAccessBase` for project-specific customizations.
 
-    class dbtableDBAccess extends dbtableDBAccessBase
+    class DbtableDBAccess extends DbtableDBAccessBase
     {
     }
 }

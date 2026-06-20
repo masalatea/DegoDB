@@ -7,7 +7,7 @@
 // Generated from canonical DB Access metadata.
 // Thin DTO generated from canonical select/write metadata.
 
-class minutesDataBase
+class MinutesDataBase
 {
     public $ProjectPID;
     public $PID;
@@ -21,16 +21,16 @@ class minutesDataBase
     public $DecisionMaking;
     public $IsLearning;
     public $Learning;
-    public $chattopicPID;
+    public $ChattopicPID;
     public $ReqPID;
     public $SpecPID;
     public $SpecContentPID;
     public $TestGroupPID;
     public $TestPID;
-    public $daPID;
-    public $dafuncPID;
-    public $dataclassPID;
-    public $dbtablePID;
+    public $DaPID;
+    public $DafuncPID;
+    public $DataclassPID;
+    public $DbtablePID;
 
     public function __construct()
     {

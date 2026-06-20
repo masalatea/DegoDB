@@ -7,13 +7,13 @@
 // Generated from canonical DB Access metadata.
 // Thin DTO generated from canonical select/write metadata.
 
-class htmlDataBase
+class HtmlDataBase
 {
     public $ProjectPID;
     public $PID;
     public $name;
     public $ProjectSourceOutputPID;
-    public $htmlTemplatePID;
+    public $HtmlTemplatePID;
     public $LastModifiedDT;
 
     public function __construct()

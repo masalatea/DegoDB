@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 require_once __DIR__ . '/database.php';
+require_once __DIR__ . '/generated_name.php';
 
 /**
  * @param array{
@@ -48,10 +49,12 @@ function app_pdo_fetch_table_metadata_snapshot(array $app, string $projectKey): 
                 t.ProjectPID AS project_pid,
                 t.PID AS table_pid,
                 t.name AS table_name,
+                t.physical_name AS table_physical_name,
                 c.ProjectPID AS column_project_pid,
                 c.dbtablePID AS column_table_pid,
                 c.PID AS column_pid,
                 c.name AS column_name,
+                c.physical_name AS column_physical_name,
                 c.datatype AS column_datatype,
                 c.' . $isNullColumn . ' AS column_is_null,
                 c.IsKey AS column_is_key,
@@ -83,13 +86,21 @@ function app_pdo_fetch_table_metadata_snapshot(array $app, string $projectKey): 
             if ($tableName === '') {
                 continue;
             }
+            $tablePhysicalName = (string) ($row['table_physical_name'] ?? '');
+            if ($tablePhysicalName === '') {
+                $tablePhysicalName = $tableName;
+            }
 
             if (!array_key_exists($tableName, $indexByTableName)) {
+                $tableNameMap = app_generated_name_map_for_physical_name($tablePhysicalName, 'class');
                 $indexByTableName[$tableName] = count($items);
                 $items[] = [
                     'project_pid' => (string) ($row['project_pid'] ?? ''),
                     'pid' => (string) ($row['table_pid'] ?? ''),
                     'name' => $tableName,
+                    'physical_name' => $tableNameMap['physical_name'],
+                    'logical_name' => $tableNameMap['logical_name'],
+                    'generated_name' => $tableNameMap['generated_name'],
                     'column_count' => 0,
                     'columns' => [],
                 ];
@@ -101,11 +112,20 @@ function app_pdo_fetch_table_metadata_snapshot(array $app, string $projectKey): 
                 continue;
             }
 
+            $columnName = (string) ($row['column_name'] ?? '');
+            $columnPhysicalName = (string) ($row['column_physical_name'] ?? '');
+            if ($columnPhysicalName === '') {
+                $columnPhysicalName = $columnName;
+            }
+            $columnNameMap = app_generated_name_map_for_physical_name($columnPhysicalName, 'php-property');
             $items[$tableIndex]['columns'][] = [
                 'project_pid' => (string) ($row['column_project_pid'] ?? ''),
                 'dbtable_pid' => (string) ($row['column_table_pid'] ?? ''),
                 'pid' => $columnPid,
-                'name' => (string) ($row['column_name'] ?? ''),
+                'name' => $columnName,
+                'physical_name' => $columnNameMap['physical_name'],
+                'logical_name' => $columnNameMap['logical_name'],
+                'generated_name' => $columnNameMap['generated_name'],
                 'datatype' => (string) ($row['column_datatype'] ?? ''),
                 'is_null' => (string) ($row['column_is_null'] ?? ''),
                 'is_key' => (string) ($row['column_is_key'] ?? ''),
@@ -286,12 +306,13 @@ function app_pdo_create_table_metadata_item(array $app, string $projectKey, stri
         $pdo = app_create_config_pdo($app);
         $projectId = app_table_metadata_pdo_resolve_project_id($pdo, $projectKey);
         $statement = $pdo->prepare(
-            'INSERT INTO dbtable (ProjectPID, name)
-             VALUES (:project_id, :name)'
+            'INSERT INTO dbtable (ProjectPID, name, physical_name)
+             VALUES (:project_id, :name, :physical_name)'
         );
         $statement->execute([
             ':project_id' => $projectId,
             ':name' => $normalizedTableName,
+            ':physical_name' => $normalizedTableName,
         ]);
 
         return app_pdo_fetch_table_metadata_item($app, $projectKey, $normalizedTableName);
@@ -364,12 +385,15 @@ function app_pdo_update_table_metadata_item(
 
         $statement = $pdo->prepare(
             'UPDATE dbtable
-             SET name = :name
+             SET
+                name = :name,
+                physical_name = :physical_name
              WHERE PID = :pid
                AND ProjectPID = :project_id'
         );
         $statement->execute([
             ':name' => $normalizedTableName,
+            ':physical_name' => $normalizedTableName,
             ':pid' => $normalizedTablePid,
             ':project_id' => $projectId,
         ]);
@@ -496,6 +520,7 @@ function app_pdo_create_table_metadata_column(
                 ProjectPID,
                 dbtablePID,
                 name,
+                physical_name,
                 datatype,
                 ' . $isNullColumn . ',
                 IsKey,
@@ -507,6 +532,7 @@ function app_pdo_create_table_metadata_column(
                 :project_id,
                 :dbtable_pid,
                 :name,
+                :physical_name,
                 :datatype,
                 :is_null,
                 :is_key,
@@ -520,6 +546,7 @@ function app_pdo_create_table_metadata_column(
             ':project_id' => $projectId,
             ':dbtable_pid' => $normalizedTablePid,
             ':name' => trim((string) ($input['name'] ?? '')),
+            ':physical_name' => trim((string) ($input['physical_name'] ?? $input['name'] ?? '')),
             ':datatype' => trim((string) ($input['datatype'] ?? '')),
             ':is_null' => trim((string) ($input['is_null'] ?? '')),
             ':is_key' => trim((string) ($input['is_key'] ?? '')),
@@ -614,6 +641,7 @@ function app_pdo_update_table_metadata_column(
             'UPDATE dbtablecolumns
              SET
                 name = :name,
+                physical_name = :physical_name,
                 datatype = :datatype,
                 ' . $isNullColumn . ' = :is_null,
                 IsKey = :is_key,
@@ -625,6 +653,7 @@ function app_pdo_update_table_metadata_column(
         );
         $update->execute([
             ':name' => trim((string) ($input['name'] ?? '')),
+            ':physical_name' => trim((string) ($input['physical_name'] ?? $input['name'] ?? '')),
             ':datatype' => trim((string) ($input['datatype'] ?? '')),
             ':is_null' => trim((string) ($input['is_null'] ?? '')),
             ':is_key' => trim((string) ($input['is_key'] ?? '')),

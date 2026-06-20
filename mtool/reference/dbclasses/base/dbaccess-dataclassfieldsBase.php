@@ -9,7 +9,7 @@
 // Known helper-style methods regenerate canonical PHP bodies when SQL regeneration is not the right fit.
 // Current canonical runtime generation fully owns this class, so no legacy DBAccess parent is required.
 
-class dataclassfieldsDBAccessBase
+class DataclassfieldsDBAccessBase
 {
     // source_of_truth=sync-bootstrap action_type=UNKNOWN order=11 generation=canonical-constructor
     // reason=bootstrap constructor is empty, so runtime owns the no-op constructor directly
@@ -18,7 +18,7 @@ class dataclassfieldsDBAccessBase
     }
 
     // source_of_truth=seed-legacy action_type=SELECTLIST order=14 generation=canonical-sql
-    public function GetdataclassfieldsList($param_dataclassfields_ProjectPID_where, $param_dataclassfields_dataclassPID_where)
+    public function GetDataclassfieldsList($param_Dataclassfields_ProjectPID_where, $param_Dataclassfields_DataclassPID_where)
     {
         global $mtooldb, $last_sql_command_for_mtooldb;
         connect_mtooldb_if_not_yet();
@@ -26,16 +26,16 @@ class dataclassfieldsDBAccessBase
 
         $result = array();
 
-        $last_sql_command_for_mtooldb = 'select dataclassfields.ProjectPID, dataclassfields.dataclassPID, dataclassfields.PID, dataclassfields.name, dataclassfields.datatype, dataclassfields.FieldListOrder, dataclassfields.RefDataClassName, dataclassfields.RefDataClassFieldName from dataclassfields' . ' where ' . 'dataclassfields.ProjectPID = ' . '\'' . $mtooldb->real_escape_string($param_dataclassfields_ProjectPID_where) . '\'' . ' and ' . 'dataclassfields.dataclassPID = ' . '\'' . $mtooldb->real_escape_string($param_dataclassfields_dataclassPID_where) . '\'' . ' order by dataclassfields.FieldListOrder,dataclassfields.PID';
+        $last_sql_command_for_mtooldb = 'select Dataclassfields.ProjectPID, Dataclassfields.DataclassPID, Dataclassfields.PID, Dataclassfields.name, Dataclassfields.datatype, Dataclassfields.FieldListOrder, Dataclassfields.RefDataClassName, Dataclassfields.RefDataClassFieldName from Dataclassfields' . ' where ' . 'Dataclassfields.ProjectPID = ' . '\'' . $mtooldb->real_escape_string($param_Dataclassfields_ProjectPID_where) . '\'' . ' and ' . 'Dataclassfields.DataclassPID = ' . '\'' . $mtooldb->real_escape_string($param_Dataclassfields_DataclassPID_where) . '\'' . ' order by Dataclassfields.FieldListOrder,Dataclassfields.PID';
         $ret = $mtooldb->query($last_sql_command_for_mtooldb);
         if ($mtooldb->errno != 0) {
             error_log("Error occured while executing SQL: " . $mtooldb->error . " in " . __FILE__ . " on line " . __LINE__);
             return $ret;
         }
         while($thisline=$ret->fetch_row()) {
-            $thisresult = new dataclassfieldsData();
+            $thisresult = new DataclassfieldsData();
             $thisresult->ProjectPID = $thisline[0];
-            $thisresult->dataclassPID = $thisline[1];
+            $thisresult->DataclassPID = $thisline[1];
             $thisresult->PID = $thisline[2];
             $thisresult->name = $thisline[3];
             $thisresult->datatype = $thisline[4];
@@ -48,22 +48,22 @@ class dataclassfieldsDBAccessBase
     }
 
     // source_of_truth=sync-bootstrap action_type=SELECTSINGLE order=45 generation=canonical-sql
-    public function Getdataclassfields($param_dataclassfields_PID_where, $param_dataclassfields_ProjectPID_where)
+    public function GetDataclassfields($param_Dataclassfields_PID_where, $param_Dataclassfields_ProjectPID_where)
     {
         global $mtooldb, $last_sql_command_for_mtooldb;
         connect_mtooldb_if_not_yet();
         reconnect_mtooldb_if_necessary();
 
-        $last_sql_command_for_mtooldb = 'select dataclassfields.ProjectPID, dataclassfields.dataclassPID, dataclassfields.PID, dataclassfields.name, dataclassfields.datatype, dataclassfields.FieldListOrder, dataclassfields.RefDataClassName, dataclassfields.RefDataClassFieldName from dataclassfields' . ' where ' . 'dataclassfields.PID = ' . '\'' . $mtooldb->real_escape_string($param_dataclassfields_PID_where) . '\'' . ' and ' . 'dataclassfields.ProjectPID = ' . '\'' . $mtooldb->real_escape_string($param_dataclassfields_ProjectPID_where) . '\'';
+        $last_sql_command_for_mtooldb = 'select Dataclassfields.ProjectPID, Dataclassfields.DataclassPID, Dataclassfields.PID, Dataclassfields.name, Dataclassfields.datatype, Dataclassfields.FieldListOrder, Dataclassfields.RefDataClassName, Dataclassfields.RefDataClassFieldName from Dataclassfields' . ' where ' . 'Dataclassfields.PID = ' . '\'' . $mtooldb->real_escape_string($param_Dataclassfields_PID_where) . '\'' . ' and ' . 'Dataclassfields.ProjectPID = ' . '\'' . $mtooldb->real_escape_string($param_Dataclassfields_ProjectPID_where) . '\'';
         $ret = $mtooldb->query($last_sql_command_for_mtooldb);
         if ($mtooldb->errno != 0) {
             error_log("Error occured while executing SQL: " . $mtooldb->error . " in " . __FILE__ . " on line " . __LINE__);
             return $ret;
         }
         while($thisline=$ret->fetch_row()) {
-            $thisresult = new dataclassfieldsData();
+            $thisresult = new DataclassfieldsData();
             $thisresult->ProjectPID = $thisline[0];
-            $thisresult->dataclassPID = $thisline[1];
+            $thisresult->DataclassPID = $thisline[1];
             $thisresult->PID = $thisline[2];
             $thisresult->name = $thisline[3];
             $thisresult->datatype = $thisline[4];
@@ -76,13 +76,13 @@ class dataclassfieldsDBAccessBase
     }
 
     // source_of_truth=sync-bootstrap action_type=INSERT order=74 generation=canonical-sql
-    public function Insertdataclassfields($dataclassfieldsObj)
+    public function InsertDataclassfields($DataclassfieldsObj)
     {
         global $mtooldb, $last_sql_command_for_mtooldb;
         connect_mtooldb_if_not_yet();
         reconnect_mtooldb_if_necessary();
 
-        $last_sql_command_for_mtooldb = 'insert into dataclassfields (ProjectPID, dataclassPID, name, datatype, RefDataClassName, RefDataClassFieldName) values(' . '\'' . $mtooldb->real_escape_string($dataclassfieldsObj->ProjectPID) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($dataclassfieldsObj->dataclassPID) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($dataclassfieldsObj->name) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($dataclassfieldsObj->datatype) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($dataclassfieldsObj->RefDataClassName) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($dataclassfieldsObj->RefDataClassFieldName) . '\'' . ')';
+        $last_sql_command_for_mtooldb = 'insert into Dataclassfields (ProjectPID, DataclassPID, name, datatype, RefDataClassName, RefDataClassFieldName) values(' . '\'' . $mtooldb->real_escape_string($DataclassfieldsObj->ProjectPID) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($DataclassfieldsObj->DataclassPID) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($DataclassfieldsObj->name) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($DataclassfieldsObj->datatype) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($DataclassfieldsObj->RefDataClassName) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($DataclassfieldsObj->RefDataClassFieldName) . '\'' . ')';
         $result = $mtooldb->query($last_sql_command_for_mtooldb);
         if ($mtooldb->errno != 0) {
             error_log("Error occured while executing SQL: " . $mtooldb->error . " in " . __FILE__ . " on line " . __LINE__);
@@ -91,13 +91,13 @@ class dataclassfieldsDBAccessBase
     }
 
     // source_of_truth=sync-bootstrap action_type=UPDATE order=90 generation=canonical-sql
-    public function UpdatedataclassfieldsExcludeFieldListOrder($dataclassfieldsObj)
+    public function UpdateDataclassfieldsExcludeFieldListOrder($DataclassfieldsObj)
     {
         global $mtooldb, $last_sql_command_for_mtooldb;
         connect_mtooldb_if_not_yet();
         reconnect_mtooldb_if_necessary();
 
-        $last_sql_command_for_mtooldb = 'update dataclassfields SET ' . 'name = ' . '\'' . $mtooldb->real_escape_string($dataclassfieldsObj->name) . '\'' . ', ' . 'datatype = ' . '\'' . $mtooldb->real_escape_string($dataclassfieldsObj->datatype) . '\'' . ', ' . 'RefDataClassName = ' . '\'' . $mtooldb->real_escape_string($dataclassfieldsObj->RefDataClassName) . '\'' . ', ' . 'RefDataClassFieldName = ' . '\'' . $mtooldb->real_escape_string($dataclassfieldsObj->RefDataClassFieldName) . '\'' . ' where ' . 'dataclassfields.PID = ' . '\'' . $mtooldb->real_escape_string($dataclassfieldsObj->PID) . '\'' . ' and ' . 'dataclassfields.ProjectPID = ' . '\'' . $mtooldb->real_escape_string($dataclassfieldsObj->ProjectPID) . '\'';
+        $last_sql_command_for_mtooldb = 'update Dataclassfields SET ' . 'name = ' . '\'' . $mtooldb->real_escape_string($DataclassfieldsObj->name) . '\'' . ', ' . 'datatype = ' . '\'' . $mtooldb->real_escape_string($DataclassfieldsObj->datatype) . '\'' . ', ' . 'RefDataClassName = ' . '\'' . $mtooldb->real_escape_string($DataclassfieldsObj->RefDataClassName) . '\'' . ', ' . 'RefDataClassFieldName = ' . '\'' . $mtooldb->real_escape_string($DataclassfieldsObj->RefDataClassFieldName) . '\'' . ' where ' . 'Dataclassfields.PID = ' . '\'' . $mtooldb->real_escape_string($DataclassfieldsObj->PID) . '\'' . ' and ' . 'Dataclassfields.ProjectPID = ' . '\'' . $mtooldb->real_escape_string($DataclassfieldsObj->ProjectPID) . '\'';
         $result = $mtooldb->query($last_sql_command_for_mtooldb);
         if ($mtooldb->errno != 0) {
             error_log("Error occured while executing SQL: " . $mtooldb->error . " in " . __FILE__ . " on line " . __LINE__);
@@ -106,13 +106,13 @@ class dataclassfieldsDBAccessBase
     }
 
     // source_of_truth=sync-bootstrap action_type=UPDATE order=106 generation=canonical-sql
-    public function UpdatedataclassfieldsIncludeFieldListOrder($dataclassfieldsObj)
+    public function UpdateDataclassfieldsIncludeFieldListOrder($DataclassfieldsObj)
     {
         global $mtooldb, $last_sql_command_for_mtooldb;
         connect_mtooldb_if_not_yet();
         reconnect_mtooldb_if_necessary();
 
-        $last_sql_command_for_mtooldb = 'update dataclassfields SET ' . 'name = ' . '\'' . $mtooldb->real_escape_string($dataclassfieldsObj->name) . '\'' . ', ' . 'datatype = ' . '\'' . $mtooldb->real_escape_string($dataclassfieldsObj->datatype) . '\'' . ', ' . 'FieldListOrder = ' . '\'' . $mtooldb->real_escape_string($dataclassfieldsObj->FieldListOrder) . '\'' . ', ' . 'RefDataClassName = ' . '\'' . $mtooldb->real_escape_string($dataclassfieldsObj->RefDataClassName) . '\'' . ', ' . 'RefDataClassFieldName = ' . '\'' . $mtooldb->real_escape_string($dataclassfieldsObj->RefDataClassFieldName) . '\'' . ' where ' . 'dataclassfields.PID = ' . '\'' . $mtooldb->real_escape_string($dataclassfieldsObj->PID) . '\'' . ' and ' . 'dataclassfields.ProjectPID = ' . '\'' . $mtooldb->real_escape_string($dataclassfieldsObj->ProjectPID) . '\'';
+        $last_sql_command_for_mtooldb = 'update Dataclassfields SET ' . 'name = ' . '\'' . $mtooldb->real_escape_string($DataclassfieldsObj->name) . '\'' . ', ' . 'datatype = ' . '\'' . $mtooldb->real_escape_string($DataclassfieldsObj->datatype) . '\'' . ', ' . 'FieldListOrder = ' . '\'' . $mtooldb->real_escape_string($DataclassfieldsObj->FieldListOrder) . '\'' . ', ' . 'RefDataClassName = ' . '\'' . $mtooldb->real_escape_string($DataclassfieldsObj->RefDataClassName) . '\'' . ', ' . 'RefDataClassFieldName = ' . '\'' . $mtooldb->real_escape_string($DataclassfieldsObj->RefDataClassFieldName) . '\'' . ' where ' . 'Dataclassfields.PID = ' . '\'' . $mtooldb->real_escape_string($DataclassfieldsObj->PID) . '\'' . ' and ' . 'Dataclassfields.ProjectPID = ' . '\'' . $mtooldb->real_escape_string($DataclassfieldsObj->ProjectPID) . '\'';
         $result = $mtooldb->query($last_sql_command_for_mtooldb);
         if ($mtooldb->errno != 0) {
             error_log("Error occured while executing SQL: " . $mtooldb->error . " in " . __FILE__ . " on line " . __LINE__);
@@ -121,13 +121,13 @@ class dataclassfieldsDBAccessBase
     }
 
     // source_of_truth=sync-bootstrap action_type=UPDATE order=122 generation=canonical-sql
-    public function UpdatedataclassfieldsFieldListOrder($param_dataclassfields_FieldListOrder_update, $param_dataclassfields_PID_where, $param_dataclassfields_ProjectPID_where)
+    public function UpdateDataclassfieldsFieldListOrder($param_Dataclassfields_FieldListOrder_update, $param_Dataclassfields_PID_where, $param_Dataclassfields_ProjectPID_where)
     {
         global $mtooldb, $last_sql_command_for_mtooldb;
         connect_mtooldb_if_not_yet();
         reconnect_mtooldb_if_necessary();
 
-        $last_sql_command_for_mtooldb = 'update dataclassfields SET ' . 'FieldListOrder = ' . $param_dataclassfields_FieldListOrder_update . ' where ' . 'dataclassfields.PID = ' . '\'' . $mtooldb->real_escape_string($param_dataclassfields_PID_where) . '\'' . ' and ' . 'dataclassfields.ProjectPID = ' . '\'' . $mtooldb->real_escape_string($param_dataclassfields_ProjectPID_where) . '\'';
+        $last_sql_command_for_mtooldb = 'update Dataclassfields SET ' . 'FieldListOrder = ' . $param_Dataclassfields_FieldListOrder_update . ' where ' . 'Dataclassfields.PID = ' . '\'' . $mtooldb->real_escape_string($param_Dataclassfields_PID_where) . '\'' . ' and ' . 'Dataclassfields.ProjectPID = ' . '\'' . $mtooldb->real_escape_string($param_Dataclassfields_ProjectPID_where) . '\'';
         $result = $mtooldb->query($last_sql_command_for_mtooldb);
         if ($mtooldb->errno != 0) {
             error_log("Error occured while executing SQL: " . $mtooldb->error . " in " . __FILE__ . " on line " . __LINE__);
@@ -136,13 +136,13 @@ class dataclassfieldsDBAccessBase
     }
 
     // source_of_truth=sync-bootstrap action_type=DELETE order=138 generation=canonical-sql
-    public function Deletedataclassfields($param_dataclassfields_PID_where, $param_dataclassfields_ProjectPID_where)
+    public function DeleteDataclassfields($param_Dataclassfields_PID_where, $param_Dataclassfields_ProjectPID_where)
     {
         global $mtooldb, $last_sql_command_for_mtooldb;
         connect_mtooldb_if_not_yet();
         reconnect_mtooldb_if_necessary();
 
-        $last_sql_command_for_mtooldb = 'delete from dataclassfields where ' . 'dataclassfields.PID = ' . '\'' . $mtooldb->real_escape_string($param_dataclassfields_PID_where) . '\'' . ' and ' . 'dataclassfields.ProjectPID = ' . '\'' . $mtooldb->real_escape_string($param_dataclassfields_ProjectPID_where) . '\'';
+        $last_sql_command_for_mtooldb = 'delete from Dataclassfields where ' . 'Dataclassfields.PID = ' . '\'' . $mtooldb->real_escape_string($param_Dataclassfields_PID_where) . '\'' . ' and ' . 'Dataclassfields.ProjectPID = ' . '\'' . $mtooldb->real_escape_string($param_Dataclassfields_ProjectPID_where) . '\'';
         $result = $mtooldb->query($last_sql_command_for_mtooldb);
         if ($mtooldb->errno != 0) {
             error_log("Error occured while executing SQL: " . $mtooldb->error . " in " . __FILE__ . " on line " . __LINE__);

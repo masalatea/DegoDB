@@ -1,13 +1,13 @@
 <?php
 
 require_once __DIR__ . '/_runtime_loader.php';
-require_once __DIR__ . '/base/data-dafuncupdatedeletewhereBase.php';
+require_once __DIR__ . '/base/data-DafuncupdatedeletewhereBase.php';
 
-if (!mtool_runtime_bundle_load_custom_wrapper('data-dafuncupdatedeletewhere.php')) {
+if (!mtool_runtime_bundle_load_custom_wrapper('data-Dafuncupdatedeletewhere.php')) {
     // Generated wrapper entry for runtime data class.
-    // Override `mtool/extensions/MTOOL/RUNTIME-DBCLASSES/data-dafuncupdatedeletewhere.php` and extend `dafuncupdatedeletewhereDataBase` for project-specific customizations.
+    // Override `mtool/extensions/MTOOL/RUNTIME-DBCLASSES/data-Dafuncupdatedeletewhere.php` and extend `DafuncupdatedeletewhereDataBase` for project-specific customizations.
 
-    class dafuncupdatedeletewhereData extends dafuncupdatedeletewhereDataBase
+    class DafuncupdatedeletewhereData extends DafuncupdatedeletewhereDataBase
     {
 	public function GetFixedParameterCaptionIfParameterTypeIsFixed()
 	{

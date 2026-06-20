@@ -9,7 +9,7 @@
 // Known helper-style methods regenerate canonical PHP bodies when SQL regeneration is not the right fit.
 // Current canonical runtime generation fully owns this class, so no legacy DBAccess parent is required.
 
-class htmlTemplateDBAccessBase
+class HtmlTemplateDBAccessBase
 {
     // source_of_truth=sync-bootstrap action_type=UNKNOWN order=11 generation=canonical-constructor
     // reason=bootstrap constructor is empty, so runtime owns the no-op constructor directly
@@ -24,14 +24,14 @@ class htmlTemplateDBAccessBase
         connect_mtooldb_if_not_yet();
         reconnect_mtooldb_if_necessary();
 
-        $last_sql_command_for_mtooldb = 'select htmlTemplate.PID, htmlTemplate.TargetType, htmlTemplate.ParentHtmlTemplatePID, htmlTemplate.name, htmlTemplate.ProgramLanguage, htmlTemplate.FileName, htmlTemplate.Comment from htmlTemplate' . ' where ' . 'htmlTemplate.PID = ' . '\'' . $mtooldb->real_escape_string($param_htmlTemplate_PID_where) . '\'';
+        $last_sql_command_for_mtooldb = 'select HtmlTemplate.PID, HtmlTemplate.TargetType, HtmlTemplate.ParentHtmlTemplatePID, HtmlTemplate.name, HtmlTemplate.ProgramLanguage, HtmlTemplate.FileName, HtmlTemplate.Comment from HtmlTemplate' . ' where ' . 'HtmlTemplate.PID = ' . '\'' . $mtooldb->real_escape_string($param_htmlTemplate_PID_where) . '\'';
         $ret = $mtooldb->query($last_sql_command_for_mtooldb);
         if ($mtooldb->errno != 0) {
             error_log("Error occured while executing SQL: " . $mtooldb->error . " in " . __FILE__ . " on line " . __LINE__);
             return $ret;
         }
         while($thisline=$ret->fetch_row()) {
-            $thisresult = new htmlTemplateData();
+            $thisresult = new HtmlTemplateData();
             $thisresult->PID = $thisline[0];
             $thisresult->TargetType = $thisline[1];
             $thisresult->ParentHtmlTemplatePID = $thisline[2];
@@ -51,14 +51,14 @@ class htmlTemplateDBAccessBase
         connect_mtooldb_if_not_yet();
         reconnect_mtooldb_if_necessary();
 
-        $last_sql_command_for_mtooldb = 'select htmlTemplate.PID, htmlTemplate.TargetType, htmlTemplate.ParentHtmlTemplatePID, htmlTemplate.name, htmlTemplate.ProgramLanguage, htmlTemplate.FileName, htmlTemplate.Comment from htmlTemplate' . ' where ' . 'htmlTemplate.TargetType = ' . '\'' . $mtooldb->real_escape_string($param_htmlTemplate_TargetType_where) . '\'' . ' and ' . 'htmlTemplate.name = ' . '\'' . $mtooldb->real_escape_string($param_htmlTemplate_name_where) . '\'' . ' and ' . 'htmlTemplate.ProgramLanguage = ' . '\'' . $mtooldb->real_escape_string($param_htmlTemplate_ProgramLanguage_where) . '\'';
+        $last_sql_command_for_mtooldb = 'select HtmlTemplate.PID, HtmlTemplate.TargetType, HtmlTemplate.ParentHtmlTemplatePID, HtmlTemplate.name, HtmlTemplate.ProgramLanguage, HtmlTemplate.FileName, HtmlTemplate.Comment from HtmlTemplate' . ' where ' . 'HtmlTemplate.TargetType = ' . '\'' . $mtooldb->real_escape_string($param_htmlTemplate_TargetType_where) . '\'' . ' and ' . 'HtmlTemplate.name = ' . '\'' . $mtooldb->real_escape_string($param_htmlTemplate_name_where) . '\'' . ' and ' . 'HtmlTemplate.ProgramLanguage = ' . '\'' . $mtooldb->real_escape_string($param_htmlTemplate_ProgramLanguage_where) . '\'';
         $ret = $mtooldb->query($last_sql_command_for_mtooldb);
         if ($mtooldb->errno != 0) {
             error_log("Error occured while executing SQL: " . $mtooldb->error . " in " . __FILE__ . " on line " . __LINE__);
             return $ret;
         }
         while($thisline=$ret->fetch_row()) {
-            $thisresult = new htmlTemplateData();
+            $thisresult = new HtmlTemplateData();
             $thisresult->PID = $thisline[0];
             $thisresult->TargetType = $thisline[1];
             $thisresult->ParentHtmlTemplatePID = $thisline[2];
@@ -72,13 +72,13 @@ class htmlTemplateDBAccessBase
     }
 
     // source_of_truth=sync-bootstrap action_type=INSERT order=70 generation=canonical-sql
-    public function InserthtmlTemplate($htmlTemplateObj)
+    public function InserthtmlTemplate($HtmlTemplateObj)
     {
         global $mtooldb, $last_sql_command_for_mtooldb;
         connect_mtooldb_if_not_yet();
         reconnect_mtooldb_if_necessary();
 
-        $last_sql_command_for_mtooldb = 'insert into htmlTemplate (TargetType, ParentHtmlTemplatePID, name, ProgramLanguage, FileName, Comment) values(' . '\'' . $mtooldb->real_escape_string($htmlTemplateObj->TargetType) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($htmlTemplateObj->ParentHtmlTemplatePID) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($htmlTemplateObj->name) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($htmlTemplateObj->ProgramLanguage) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($htmlTemplateObj->FileName) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($htmlTemplateObj->Comment) . '\'' . ')';
+        $last_sql_command_for_mtooldb = 'insert into HtmlTemplate (TargetType, ParentHtmlTemplatePID, name, ProgramLanguage, FileName, Comment) values(' . '\'' . $mtooldb->real_escape_string($HtmlTemplateObj->TargetType) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($HtmlTemplateObj->ParentHtmlTemplatePID) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($HtmlTemplateObj->name) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($HtmlTemplateObj->ProgramLanguage) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($HtmlTemplateObj->FileName) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($HtmlTemplateObj->Comment) . '\'' . ')';
         $result = $mtooldb->query($last_sql_command_for_mtooldb);
         if ($mtooldb->errno != 0) {
             error_log("Error occured while executing SQL: " . $mtooldb->error . " in " . __FILE__ . " on line " . __LINE__);
@@ -87,13 +87,13 @@ class htmlTemplateDBAccessBase
     }
 
     // source_of_truth=sync-bootstrap action_type=UPDATE order=86 generation=canonical-sql
-    public function UpdatehtmlTemplate($htmlTemplateObj)
+    public function UpdatehtmlTemplate($HtmlTemplateObj)
     {
         global $mtooldb, $last_sql_command_for_mtooldb;
         connect_mtooldb_if_not_yet();
         reconnect_mtooldb_if_necessary();
 
-        $last_sql_command_for_mtooldb = 'update htmlTemplate SET ' . 'TargetType = ' . '\'' . $mtooldb->real_escape_string($htmlTemplateObj->TargetType) . '\'' . ', ' . 'ParentHtmlTemplatePID = ' . '\'' . $mtooldb->real_escape_string($htmlTemplateObj->ParentHtmlTemplatePID) . '\'' . ', ' . 'name = ' . '\'' . $mtooldb->real_escape_string($htmlTemplateObj->name) . '\'' . ', ' . 'ProgramLanguage = ' . '\'' . $mtooldb->real_escape_string($htmlTemplateObj->ProgramLanguage) . '\'' . ', ' . 'FileName = ' . '\'' . $mtooldb->real_escape_string($htmlTemplateObj->FileName) . '\'' . ', ' . 'Comment = ' . '\'' . $mtooldb->real_escape_string($htmlTemplateObj->Comment) . '\'' . ' where ' . 'htmlTemplate.PID = ' . '\'' . $mtooldb->real_escape_string($htmlTemplateObj->PID) . '\'';
+        $last_sql_command_for_mtooldb = 'update HtmlTemplate SET ' . 'TargetType = ' . '\'' . $mtooldb->real_escape_string($HtmlTemplateObj->TargetType) . '\'' . ', ' . 'ParentHtmlTemplatePID = ' . '\'' . $mtooldb->real_escape_string($HtmlTemplateObj->ParentHtmlTemplatePID) . '\'' . ', ' . 'name = ' . '\'' . $mtooldb->real_escape_string($HtmlTemplateObj->name) . '\'' . ', ' . 'ProgramLanguage = ' . '\'' . $mtooldb->real_escape_string($HtmlTemplateObj->ProgramLanguage) . '\'' . ', ' . 'FileName = ' . '\'' . $mtooldb->real_escape_string($HtmlTemplateObj->FileName) . '\'' . ', ' . 'Comment = ' . '\'' . $mtooldb->real_escape_string($HtmlTemplateObj->Comment) . '\'' . ' where ' . 'HtmlTemplate.PID = ' . '\'' . $mtooldb->real_escape_string($HtmlTemplateObj->PID) . '\'';
         $result = $mtooldb->query($last_sql_command_for_mtooldb);
         if ($mtooldb->errno != 0) {
             error_log("Error occured while executing SQL: " . $mtooldb->error . " in " . __FILE__ . " on line " . __LINE__);
@@ -102,13 +102,13 @@ class htmlTemplateDBAccessBase
     }
 
     // source_of_truth=sync-bootstrap action_type=DELETE order=102 generation=canonical-sql
-    public function DeletehtmlTemplate($htmlTemplateObj)
+    public function DeletehtmlTemplate($HtmlTemplateObj)
     {
         global $mtooldb, $last_sql_command_for_mtooldb;
         connect_mtooldb_if_not_yet();
         reconnect_mtooldb_if_necessary();
 
-        $last_sql_command_for_mtooldb = 'delete from htmlTemplate where ' . 'htmlTemplate.PID = ' . '\'' . $mtooldb->real_escape_string($htmlTemplateObj->PID) . '\'';
+        $last_sql_command_for_mtooldb = 'delete from HtmlTemplate where ' . 'HtmlTemplate.PID = ' . '\'' . $mtooldb->real_escape_string($HtmlTemplateObj->PID) . '\'';
         $result = $mtooldb->query($last_sql_command_for_mtooldb);
         if ($mtooldb->errno != 0) {
             error_log("Error occured while executing SQL: " . $mtooldb->error . " in " . __FILE__ . " on line " . __LINE__);

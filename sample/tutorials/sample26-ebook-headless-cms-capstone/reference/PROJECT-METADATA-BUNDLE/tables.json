@@ -2,9 +2,11 @@
     "tables": [
         {
             "name": "EbookCmsBook",
+            "physical_name": "EbookCmsBook",
             "columns": [
                 {
                     "name": "Id",
+                    "physical_name": "Id",
                     "datatype": "int(11)",
                     "is_null": "NO",
                     "is_key": "PRI",
@@ -15,6 +17,7 @@
                 },
                 {
                     "name": "Title",
+                    "physical_name": "Title",
                     "datatype": "varchar(160)",
                     "is_null": "NO",
                     "is_key": "",
@@ -25,6 +28,7 @@
                 },
                 {
                     "name": "Slug",
+                    "physical_name": "Slug",
                     "datatype": "varchar(120)",
                     "is_null": "NO",
                     "is_key": "UNI",
@@ -35,6 +39,7 @@
                 },
                 {
                     "name": "AuthorName",
+                    "physical_name": "AuthorName",
                     "datatype": "varchar(120)",
                     "is_null": "NO",
                     "is_key": "",
@@ -45,6 +50,7 @@
                 },
                 {
                     "name": "GenreName",
+                    "physical_name": "GenreName",
                     "datatype": "varchar(80)",
                     "is_null": "NO",
                     "is_key": "",
@@ -55,6 +61,7 @@
                 },
                 {
                     "name": "Status",
+                    "physical_name": "Status",
                     "datatype": "varchar(40)",
                     "is_null": "NO",
                     "is_key": "",
@@ -65,6 +72,7 @@
                 },
                 {
                     "name": "CoverImageUrl",
+                    "physical_name": "CoverImageUrl",
                     "datatype": "varchar(255)",
                     "is_null": "NO",
                     "is_key": "",
@@ -75,6 +83,7 @@
                 },
                 {
                     "name": "Summary",
+                    "physical_name": "Summary",
                     "datatype": "text",
                     "is_null": "NO",
                     "is_key": "",
@@ -85,6 +94,7 @@
                 },
                 {
                     "name": "EpubDownloadUrl",
+                    "physical_name": "EpubDownloadUrl",
                     "datatype": "varchar(255)",
                     "is_null": "NO",
                     "is_key": "",
@@ -95,6 +105,7 @@
                 },
                 {
                     "name": "EpubMimeType",
+                    "physical_name": "EpubMimeType",
                     "datatype": "varchar(120)",
                     "is_null": "NO",
                     "is_key": "",
@@ -105,6 +116,7 @@
                 },
                 {
                     "name": "EpubSha256",
+                    "physical_name": "EpubSha256",
                     "datatype": "varchar(64)",
                     "is_null": "NO",
                     "is_key": "",
@@ -115,6 +127,7 @@
                 },
                 {
                     "name": "PublishedAt",
+                    "physical_name": "PublishedAt",
                     "datatype": "datetime",
                     "is_null": "YES",
                     "is_key": "",
@@ -125,6 +138,7 @@
                 },
                 {
                     "name": "UpdatedAt",
+                    "physical_name": "UpdatedAt",
                     "datatype": "datetime",
                     "is_null": "NO",
                     "is_key": "",
@@ -137,9 +151,11 @@
         },
         {
             "name": "EbookCmsChapter",
+            "physical_name": "EbookCmsChapter",
             "columns": [
                 {
                     "name": "Id",
+                    "physical_name": "Id",
                     "datatype": "int(11)",
                     "is_null": "NO",
                     "is_key": "PRI",
@@ -150,6 +166,7 @@
                 },
                 {
                     "name": "EbookCmsBookId",
+                    "physical_name": "EbookCmsBookId",
                     "datatype": "int(11)",
                     "is_null": "NO",
                     "is_key": "MUL",
@@ -160,6 +177,7 @@
                 },
                 {
                     "name": "BookSlug",
+                    "physical_name": "BookSlug",
                     "datatype": "varchar(120)",
                     "is_null": "NO",
                     "is_key": "MUL",
@@ -170,6 +188,7 @@
                 },
                 {
                     "name": "ChapterTitle",
+                    "physical_name": "ChapterTitle",
                     "datatype": "varchar(160)",
                     "is_null": "NO",
                     "is_key": "",
@@ -180,6 +199,7 @@
                 },
                 {
                     "name": "ChapterSlug",
+                    "physical_name": "ChapterSlug",
                     "datatype": "varchar(120)",
                     "is_null": "NO",
                     "is_key": "",
@@ -190,6 +210,7 @@
                 },
                 {
                     "name": "Status",
+                    "physical_name": "Status",
                     "datatype": "varchar(40)",
                     "is_null": "NO",
                     "is_key": "",
@@ -200,6 +221,7 @@
                 },
                 {
                     "name": "SpineOrder",
+                    "physical_name": "SpineOrder",
                     "datatype": "int(11)",
                     "is_null": "NO",
                     "is_key": "",
@@ -210,6 +232,7 @@
                 },
                 {
                     "name": "BodyMarkdown",
+                    "physical_name": "BodyMarkdown",
                     "datatype": "text",
                     "is_null": "NO",
                     "is_key": "",
@@ -220,6 +243,7 @@
                 },
                 {
                     "name": "PublishedAt",
+                    "physical_name": "PublishedAt",
                     "datatype": "datetime",
                     "is_null": "YES",
                     "is_key": "",
@@ -230,6 +254,7 @@
                 },
                 {
                     "name": "UpdatedAt",
+                    "physical_name": "UpdatedAt",
                     "datatype": "datetime",
                     "is_null": "NO",
                     "is_key": "",

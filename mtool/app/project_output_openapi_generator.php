@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 require_once __DIR__ . '/data_class_repository.php';
+require_once __DIR__ . '/project_output_data_class_generator.php';
 require_once __DIR__ . '/project_output_proxy_generator.php';
 require_once __DIR__ . '/runtime_storage_paths.php';
 
@@ -59,6 +60,7 @@ function app_project_output_openapi_json_text(array $payload): string
  * }> $snapshotItems
  * @return array<string,array{
  *     name:string,
+ *     output_name:string,
  *     inherit_parent_data_class_name:string,
  *     fields:list<array{
  *         name:string,
@@ -80,6 +82,7 @@ function app_project_output_openapi_data_class_index(array $snapshotItems): arra
 
         $index[$className] = [
             'name' => $className,
+            'output_name' => app_project_output_data_class_output_class_name($item),
             'inherit_parent_data_class_name' => trim((string) ($item['inherit_parent_data_class_name'] ?? '')),
             'fields' => array_values(array_filter(
                 $item['fields'] ?? [],
@@ -246,6 +249,20 @@ function app_project_output_openapi_scalar_request_schema_from_parameter_name(st
 }
 
 /**
+ * @param array<string,array{name:string,output_name:string}> $snapshotIndex
+ */
+function app_project_output_openapi_output_schema_name(string $className, array $snapshotIndex): string
+{
+    $normalizedClassName = trim($className);
+    if ($normalizedClassName === '') {
+        return '';
+    }
+
+    $outputName = trim((string) ($snapshotIndex[$normalizedClassName]['output_name'] ?? ''));
+    return $outputName !== '' ? $outputName : $normalizedClassName;
+}
+
+/**
  * @param array<string,mixed> $step
  * @return array<string,mixed>
  */
@@ -277,6 +294,7 @@ function app_project_output_openapi_scalar_request_schema(string $parameterName,
  * } $field
  * @param array<string,array{
  *     name:string,
+ *     output_name:string,
  *     inherit_parent_data_class_name:string,
  *     fields:list<array{
  *         name:string,
@@ -306,9 +324,10 @@ function app_project_output_openapi_field_schema(
             $components,
             $stack,
         );
+        $refSchemaName = app_project_output_openapi_output_schema_name($refClassName, $snapshotIndex);
 
         return [
-            '$ref' => '#/components/schemas/' . $refClassName,
+            '$ref' => '#/components/schemas/' . $refSchemaName,
         ];
     }
 
@@ -318,6 +337,7 @@ function app_project_output_openapi_field_schema(
 /**
  * @param array<string,array{
  *     name:string,
+ *     output_name:string,
  *     inherit_parent_data_class_name:string,
  *     fields:list<array{
  *         name:string,
@@ -338,7 +358,8 @@ function app_project_output_openapi_register_data_class_schema(
     array &$stack,
 ): void {
     $normalizedClassName = trim($className);
-    if ($normalizedClassName === '' || isset($components[$normalizedClassName]) || isset($stack[$normalizedClassName])) {
+    $schemaName = app_project_output_openapi_output_schema_name($normalizedClassName, $snapshotIndex);
+    if ($normalizedClassName === '' || $schemaName === '' || isset($components[$schemaName]) || isset($stack[$normalizedClassName])) {
         return;
     }
 
@@ -357,7 +378,8 @@ function app_project_output_openapi_register_data_class_schema(
                 $stack,
             );
 
-            $parentSchema = $components[$parentClassName] ?? null;
+            $parentSchemaName = app_project_output_openapi_output_schema_name($parentClassName, $snapshotIndex);
+            $parentSchema = $components[$parentSchemaName] ?? null;
             if (is_array($parentSchema) && is_array($parentSchema['properties'] ?? null)) {
                 $properties = $parentSchema['properties'];
             }
@@ -373,7 +395,8 @@ function app_project_output_openapi_register_data_class_schema(
                 continue;
             }
 
-            $properties[$fieldName] = app_project_output_openapi_field_schema(
+            $outputFieldName = app_project_output_data_class_output_field_name($field);
+            $properties[$outputFieldName] = app_project_output_openapi_field_schema(
                 $field,
                 $snapshotIndex,
                 $fallbackPropertiesByClass,
@@ -394,14 +417,14 @@ function app_project_output_openapi_register_data_class_schema(
 
     $schema = [
         'type' => 'object',
-        'title' => $normalizedClassName,
+        'title' => $schemaName,
         'properties' => app_project_output_openapi_object_map($properties),
     ];
     if ($properties === []) {
         $schema['additionalProperties'] = true;
     }
 
-    $components[$normalizedClassName] = $schema;
+    $components[$schemaName] = $schema;
     unset($stack[$normalizedClassName]);
 }
 
@@ -537,9 +560,10 @@ function app_project_output_openapi_auth_uses_static_bearer(array $item): bool
  *         parameter_names:list<string>
  *     }>
  * } $item
+ * @param array<string,array{name:string,output_name:string}> $snapshotIndex
  * @return array<string,mixed>
  */
-function app_project_output_openapi_request_schema(array $item): array
+function app_project_output_openapi_request_schema(array $item, array $snapshotIndex = []): array
 {
     $properties = [];
     $required = [];
@@ -553,8 +577,9 @@ function app_project_output_openapi_request_schema(array $item): array
             $objectParamName = trim((string) ($step['object_param_name'] ?? ''));
             $objectClass = trim((string) ($step['object_class'] ?? ''));
             if ($objectParamName !== '') {
+                $objectSchemaName = app_project_output_openapi_output_schema_name($objectClass, $snapshotIndex);
                 $properties[$objectParamName] = $objectClass !== ''
-                    ? ['$ref' => '#/components/schemas/' . $objectClass]
+                    ? ['$ref' => '#/components/schemas/' . $objectSchemaName]
                     : [
                         'type' => 'object',
                         'properties' => (object) [],
@@ -607,9 +632,10 @@ function app_project_output_openapi_request_schema(array $item): array
  *         data_class:string
  *     }>
  * } $item
+ * @param array<string,array{name:string,output_name:string}> $snapshotIndex
  * @return array<string,mixed>
  */
-function app_project_output_openapi_success_response_schema(array $item): array
+function app_project_output_openapi_success_response_schema(array $item, array $snapshotIndex = []): array
 {
     $properties = [
         '_status' => [
@@ -635,15 +661,16 @@ function app_project_output_openapi_success_response_schema(array $item): array
                     'example' => 1,
                 ];
             } elseif ($responseMode === 'direct-result' && $dataClass !== '') {
+                $dataSchemaName = app_project_output_openapi_output_schema_name($dataClass, $snapshotIndex);
                 $properties[$responseKey] = ($step['action'] ?? '') === 'select-list'
                     ? [
                         'type' => 'array',
                         'items' => [
-                            '$ref' => '#/components/schemas/' . $dataClass,
+                            '$ref' => '#/components/schemas/' . $dataSchemaName,
                         ],
                     ]
                     : [
-                        '$ref' => '#/components/schemas/' . $dataClass,
+                        '$ref' => '#/components/schemas/' . $dataSchemaName,
                     ];
             }
         }
@@ -780,8 +807,8 @@ function app_project_output_openapi_document(array $context, array $snapshotItem
             continue;
         }
 
-        $requestSchema = app_project_output_openapi_request_schema($item);
-        $successSchema = app_project_output_openapi_success_response_schema($item);
+        $requestSchema = app_project_output_openapi_request_schema($item, $snapshotIndex);
+        $successSchema = app_project_output_openapi_success_response_schema($item, $snapshotIndex);
         $errorSchema = app_project_output_openapi_error_response_schema();
         $exampleStack = [];
         $requestExample = app_project_output_openapi_example_from_schema($requestSchema, $components, $exampleStack);

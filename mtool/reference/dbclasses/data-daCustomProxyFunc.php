@@ -1,13 +1,13 @@
 <?php
 
 require_once __DIR__ . '/_runtime_loader.php';
-require_once __DIR__ . '/base/data-daCustomProxyFuncBase.php';
+require_once __DIR__ . '/base/data-DaCustomProxyFuncBase.php';
 
-if (!mtool_runtime_bundle_load_custom_wrapper('data-daCustomProxyFunc.php')) {
+if (!mtool_runtime_bundle_load_custom_wrapper('data-DaCustomProxyFunc.php')) {
     // Generated wrapper entry for runtime data class.
-    // Override `mtool/extensions/MTOOL/RUNTIME-DBCLASSES/data-daCustomProxyFunc.php` and extend `daCustomProxyFuncDataBase` for project-specific customizations.
+    // Override `mtool/extensions/MTOOL/RUNTIME-DBCLASSES/data-DaCustomProxyFunc.php` and extend `DaCustomProxyFuncDataBase` for project-specific customizations.
 
-    class daCustomProxyFuncData extends daCustomProxyFuncDataBase
+    class DaCustomProxyFuncData extends DaCustomProxyFuncDataBase
     {
 	public function ForList()
 	{
@@ -19,13 +19,13 @@ function GetCustomProxyFuncAddIndentTypeEnumCaption($value)
 {
 	switch($value)
 	{
-		case daCustomProxyFuncAddIndentTypeEnum::$DEFAULT:
+		case DaCustomProxyFuncAddIndentTypeEnum::$DEFAULT:
 			return "Start Indent and End Indent";
-		case daCustomProxyFuncAddIndentTypeEnum::$START:
+		case DaCustomProxyFuncAddIndentTypeEnum::$START:
 			return "Start Indent";
-		case daCustomProxyFuncAddIndentTypeEnum::$END:
+		case DaCustomProxyFuncAddIndentTypeEnum::$END:
 			return "End Indent";
-		case daCustomProxyFuncAddIndentTypeEnum::$CONTINUE:
+		case DaCustomProxyFuncAddIndentTypeEnum::$CONTINUE:
 			return "Continue Indent";
 	}
 	return $value;

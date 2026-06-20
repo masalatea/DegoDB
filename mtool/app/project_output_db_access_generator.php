@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 require_once __DIR__ . '/db_access_repository.php';
+require_once __DIR__ . '/generated_name.php';
 require_once __DIR__ . '/project_output_template_renderer.php';
 require_once __DIR__ . '/project_output_runtime_sql_generator.php';
 require_once __DIR__ . '/runtime_storage_paths.php';
@@ -39,6 +40,17 @@ function app_project_output_db_access_identifier_fragment(string $value): string
     }
 
     return $normalized;
+}
+
+function app_project_output_db_access_output_source_name(array $classItem): string
+{
+    $sourceName = trim((string) ($classItem['source_name'] ?? ''));
+    if (!app_generated_name_policy_uses_physical_logical_names()) {
+        return $sourceName;
+    }
+
+    $physicalName = trim((string) ($classItem['physical_name'] ?? $sourceName));
+    return app_generated_name_map_for_physical_name($physicalName, 'class')['generated_name'];
 }
 
 function app_project_output_db_access_argument_name(
@@ -768,6 +780,7 @@ function app_project_output_prepare_db_access_source_tree(array $app, string $pr
             if ($sourceName === '') {
                 continue;
             }
+            $outputSourceName = app_project_output_db_access_output_source_name($classItem);
 
             $functionCatalogResult = app_fetch_db_access_function_metadata_catalog($app, $projectKey, $sourceName);
             if (!$functionCatalogResult['ok']) {
@@ -798,7 +811,7 @@ function app_project_output_prepare_db_access_source_tree(array $app, string $pr
                 }
 
                 $signature = app_project_output_db_access_generated_method_signature(
-                    $sourceName,
+                    $outputSourceName,
                     $functionItem,
                     $designer,
                 );
@@ -851,23 +864,26 @@ function app_project_output_prepare_db_access_source_tree(array $app, string $pr
                 );
             }
 
-            $wrapperRelativePath = app_project_output_db_access_wrapper_relative_path($storeBasePath, $sourceName);
-            $baseRelativePath = app_project_output_db_access_base_relative_path($storeBasePath, $sourceName);
+            $wrapperRelativePath = app_project_output_db_access_wrapper_relative_path($storeBasePath, $outputSourceName);
+            $baseRelativePath = app_project_output_db_access_base_relative_path($storeBasePath, $outputSourceName);
             $runtimeDbSupportRequirePath = app_project_output_db_access_runtime_support_require_path($storeBasePath);
             app_project_output_write_text_file(
                 $runtimeSourceRoot . '/' . $baseRelativePath,
                 app_project_output_generated_db_access_base_php_text(
-                    $classItem,
+                    [
+                        ...$classItem,
+                        'source_name' => $outputSourceName,
+                    ],
                     $functionCatalogResult['items'],
                     $generatedMethodResults,
                     $signaturesByFunction,
-                    app_project_output_runtime_sql_known_helper_class_lines($sourceName),
+                    app_project_output_runtime_sql_known_helper_class_lines($outputSourceName),
                     $runtimeDbSupportRequirePath,
                 ),
             );
             app_project_output_write_text_file(
                 $runtimeSourceRoot . '/' . $wrapperRelativePath,
-                app_project_output_generated_db_access_wrapper_php_text($sourceName),
+                app_project_output_generated_db_access_wrapper_php_text($outputSourceName),
             );
         }
     } catch (Throwable $throwable) {

@@ -3,24 +3,58 @@
     "source_output_key": "RUNTIME-DBCLASSES",
     "generation_summary": {
         "mode": "canonical-dbaccess-partial-sql-regenerated",
-        "generated_dbaccess_count": 99,
-        "fallback_dbaccess_count": 0,
-        "canonical_function_count": 611,
-        "sql_regenerated_dbaccess_count": 98,
-        "sql_regenerated_function_count": 505,
-        "canonical_helper_function_count": 7,
-        "canonical_data_class_count": 99,
+        "generated_dbaccess_count": 76,
+        "fallback_dbaccess_count": 23,
+        "canonical_function_count": 449,
+        "sql_regenerated_dbaccess_count": 65,
+        "sql_regenerated_function_count": 353,
+        "canonical_helper_function_count": 4,
+        "canonical_data_class_count": 78,
         "data_entity_count": 99,
         "plain_data_candidate_count": 63,
         "non_plain_data_candidate_count": 36,
-        "bootstrap_data_class_count": 0,
-        "legacy_delegate_function_count": 0,
-        "warnings": []
+        "bootstrap_data_class_count": 21,
+        "legacy_delegate_function_count": 16,
+        "warnings": [
+            "Chattopic: canonical data property が空のため runtime reference を維持します。",
+            "ChattopicAndProject: canonical data property が空のため runtime reference を維持します。",
+            "ChattopicAttachment: canonical data property が空のため runtime reference を維持します。",
+            "Da: non-plain source の rollout lane が未分類です。sample gate を追加してください。",
+            "DaCustomProxy: non-plain source の rollout lane が未分類です。sample gate を追加してください。",
+            "DaCustomProxyFunc: non-plain source の rollout lane が未分類です。sample gate を追加してください。",
+            "DaCustomProxyFuncLeftouterjoinDafuncAndDa: canonical data property が空のため runtime reference を維持します。",
+            "Dafunc: non-plain source の rollout lane が未分類です。sample gate を追加してください。",
+            "DafuncSimpleProxySourceOutputTarget: canonical data property が空のため runtime reference を維持します。",
+            "Dafuncinserttargetfields: non-plain source の rollout lane が未分類です。sample gate を追加してください。",
+            "Dafuncselecthaving: non-plain source の rollout lane が未分類です。sample gate を追加してください。",
+            "DafuncselecthavingLeftouterjoinTargetfields: canonical data property が空のため runtime reference を維持します。",
+            "Dafuncselectwhere: non-plain source の rollout lane が未分類です。sample gate を追加してください。",
+            "Dafuncupdatedeletewhere: non-plain source の rollout lane が未分類です。sample gate を追加してください。",
+            "Dafuncupdatetargetfields: non-plain source の rollout lane が未分類です。sample gate を追加してください。",
+            "Dataclass: non-plain source の rollout lane が未分類です。sample gate を追加してください。",
+            "Dbtablecolumns: non-plain source の rollout lane が未分類です。sample gate を追加してください。",
+            "HtmlLeftouterjoinHtmlTemplate: canonical data property が空のため runtime reference を維持します。",
+            "HtmlTemplate: non-plain source の rollout lane が未分類です。sample gate を追加してください。",
+            "HtmlTemplateLeftouterjoinParentHtmlTemplate: canonical data property が空のため runtime reference を維持します。",
+            "HtmlTemplateParameter: non-plain source の rollout lane が未分類です。sample gate を追加してください。",
+            "HtmlTemplateParameterLeftouterjoinAnotherHtmlTemplate: canonical data property が空のため runtime reference を維持します。",
+            "Minutes: canonical data property が空のため runtime reference を維持します。",
+            "MinutesAndRelatedTables: non-plain source の rollout lane が未分類です。sample gate を追加してください。",
+            "ReqAndProject: canonical data property が空のため runtime reference を維持します。",
+            "TestGroupLeftouterjoinProject: canonical data property が空のため runtime reference を維持します。",
+            "TestLeftouterjoinProject: canonical data property が空のため runtime reference を維持します。",
+            "DaCustomProxySourceOutputTarget: canonical property list が runtime reference plain DTO と一致しないため runtime reference を維持します。",
+            "Dafuncselecttargetfields: canonical property list が runtime reference plain DTO と一致しないため runtime reference を維持します。",
+            "Dataclassfields: canonical property list が runtime reference plain DTO と一致しないため runtime reference を維持します。",
+            "Dbtable: canonical property list が runtime reference plain DTO と一致しないため runtime reference を維持します。",
+            "Html: canonical property list が runtime reference plain DTO と一致しないため runtime reference を維持します。",
+            "HtmlParameter: canonical property list が runtime reference plain DTO と一致しないため runtime reference を維持します。"
+        ]
     },
     "db_access_sync_summary": {
-        "total_candidate_entities": 117,
-        "dbaccess_candidate_count": 117,
-        "method_candidate_count": 701
+        "total_candidate_entities": 120,
+        "dbaccess_candidate_count": 120,
+        "method_candidate_count": 726
     },
     "runtime_files": [
         {
@@ -33,23 +67,23 @@
         },
         {
             "relative_path": "base/dbaccess-ProjectBase.php",
-            "sha256": "3e5572e474a04891381243addf6a18377e80a251b2549d41cb51fda9186baf08"
+            "sha256": "8163dd3dd244352d8cba333c84c68037dee90a0bec660f7f4a3bc37d5dd7fc8e"
         },
         {
-            "relative_path": "dbaccess-dbtable.php",
-            "sha256": "504ced85c9b278802b94e34962e12716790956de5b1911fde85f6a376c50369d"
+            "relative_path": "dbaccess-Dbtable.php",
+            "sha256": "a02a918612b1a640820fc5b92ae669cd126ec03351a757e2dd2e5715f5159b3b"
         },
         {
-            "relative_path": "base/dbaccess-dbtableBase.php",
-            "sha256": "78136e08d6f9209c8caaf9281d19170db3167b7d3b19c414d453db8f51d668e7"
+            "relative_path": "base/dbaccess-DbtableBase.php",
+            "sha256": "a8b04cbe59dd045dbae9ef4be226adc4dab167167935216d557dd0b4dbf1d0d2"
         },
         {
-            "relative_path": "data-dbtablecolumns.php",
-            "sha256": "02b0618b06620b53f55530a19692c5546d5ba18852acb4cbfe444cd5cf9b5446"
+            "relative_path": "data-Dbtablecolumns.php",
+            "sha256": "d470d81aad2131983098390cc983faca871ff470045e48e5ce1e8d2cd3b6ca3a"
         },
         {
-            "relative_path": "base/data-dbtablecolumnsBase.php",
-            "sha256": "57d714523472ba4a1cf62a83a42a3a84c6c2085fc0123839961feb6f34282627"
+            "relative_path": "base/data-DbtablecolumnsBase.php",
+            "sha256": "2f5db6c5e1cde8468e2d6b38fd87ef8864fec0d7098dc7eee0f1b6006b190e41"
         },
         {
             "relative_path": "data-CompareOutputSearchCache.php",
@@ -116,20 +150,20 @@
             "sha256": "b367c08782dc369ea9c6327db65696c2cd25df18422fe423329023eb6ccf81a0"
         },
         {
-            "relative_path": "data-daCustomProxyFunc_leftouterjoin_dafunc_and_da.php",
-            "sha256": "75b2cdf68dff39d760f31912e72f6fc7b0d096be769b0bdd652296d244af1fbd"
+            "relative_path": "data-DaCustomProxyFuncLeftouterjoinDafuncAndDa.php",
+            "sha256": "094f7c40e4b60c4a89e8933bd3b0501b9ce5db4443c0a1d02e0ef0b7f852d38a"
         },
         {
-            "relative_path": "base/data-daCustomProxyFunc_leftouterjoin_dafunc_and_daBase.php",
-            "sha256": "7fab7dbfca6850054b2254cfb84558d387dae049adb6c9fba375bceed4c4a6fe"
+            "relative_path": "base/data-DaCustomProxyFuncLeftouterjoinDafuncAndDaBase.php",
+            "sha256": "fcd7723fdf1eb151b826f106cb4a01ed752ceca2bc1c81377b6c0358a45db579"
         },
         {
             "relative_path": "data-Project.php",
-            "sha256": "e98b8282ddeaf72f28e7509843f51bb49231f3b29e53c2eab20154f8c179048e"
+            "sha256": "804310cfd91b2080c72851510e183169cbbe4d813d749dcf6aad8c282720a84c"
         },
         {
             "relative_path": "base/data-ProjectBase.php",
-            "sha256": "6ee8a142a99e12b127c59c698bb5df15b677fff173154352cd4b0a2f68f11f39"
+            "sha256": "3fb16894b959fdee565fe7aa0c33f2ce1b8e767cc1f45ec4cbd39de08a3b2f48"
         },
         {
             "relative_path": "data-ProjectUser.php",
@@ -137,7 +171,7 @@
         },
         {
             "relative_path": "base/data-ProjectUserBase.php",
-            "sha256": "f865106a04ee903ca929c942287645ce53e080dd3a19d0e17b2d1493a7a4548c"
+            "sha256": "c7fbd5025585287a7bcc3724f99d86221ff8e24f09106b156bfeea2ca4f806c1"
         },
         {
             "relative_path": "data-SpecContent.php",
@@ -148,12 +182,12 @@
             "sha256": "ae8b3f690124dc619bd9b7e19add4903944dd14eadead4c3ac9daa07387b05db"
         },
         {
-            "relative_path": "data-htmlTemplate.php",
-            "sha256": "0c710239567c012ff8204996fc5280625f6e8867bffe4fe756134856c93a0bba"
+            "relative_path": "data-HtmlTemplate.php",
+            "sha256": "d21ae01398ea7ee4fa4be6ed93b92daa09b44d4164dffd9205edfdc7834e4a5c"
         },
         {
-            "relative_path": "base/data-htmlTemplateBase.php",
-            "sha256": "18b02039f8800f42be2f9439e118543d21beb89077862cd118cb93214abdc9eb"
+            "relative_path": "base/data-HtmlTemplateBase.php",
+            "sha256": "c0b0fbe354b6fb87f1abab3b0214f41770a9cfe2f4cb2497bac4f6760aa46fe2"
         }
     ]
 }

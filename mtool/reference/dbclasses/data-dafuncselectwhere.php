@@ -1,13 +1,13 @@
 <?php
 
 require_once __DIR__ . '/_runtime_loader.php';
-require_once __DIR__ . '/base/data-dafuncselectwhereBase.php';
+require_once __DIR__ . '/base/data-DafuncselectwhereBase.php';
 
-if (!mtool_runtime_bundle_load_custom_wrapper('data-dafuncselectwhere.php')) {
+if (!mtool_runtime_bundle_load_custom_wrapper('data-Dafuncselectwhere.php')) {
     // Generated wrapper entry for runtime data class.
-    // Override `mtool/extensions/MTOOL/RUNTIME-DBCLASSES/data-dafuncselectwhere.php` and extend `dafuncselectwhereDataBase` for project-specific customizations.
+    // Override `mtool/extensions/MTOOL/RUNTIME-DBCLASSES/data-Dafuncselectwhere.php` and extend `DafuncselectwhereDataBase` for project-specific customizations.
 
-    class dafuncselectwhereData extends dafuncselectwhereDataBase
+    class DafuncselectwhereData extends DafuncselectwhereDataBase
     {
 	public function GetFixedParameterCaptionIfParameterTypeIsFixed()
 	{
@@ -33,18 +33,18 @@ if (!mtool_runtime_bundle_load_custom_wrapper('data-dafuncselectwhere.php')) {
 	}
     }
 }
-function GetdafuncselectwhereJoinTypeCaption($jointype)
+function GetDafuncselectwhereJoinTypeCaption($jointype)
 {
 	switch($jointype) {
 		case "":
 			return "Where";
-		case dafuncselectwhereJoinTypeEnum::$INNER:
+		case DafuncselectwhereJoinTypeEnum::$INNER:
 			return "Inner Join";
-		case dafuncselectwhereJoinTypeEnum::$LEFT:
+		case DafuncselectwhereJoinTypeEnum::$LEFT:
 			return "Left Outer Join";
-		case dafuncselectwhereJoinTypeEnum::$RIGHT:
+		case DafuncselectwhereJoinTypeEnum::$RIGHT:
 			return "Right Outer Join";
-		case dafuncselectwhereJoinTypeEnum::$HAVING:
+		case DafuncselectwhereJoinTypeEnum::$HAVING:
 			return "Having";
 	}
 	return $jointype;

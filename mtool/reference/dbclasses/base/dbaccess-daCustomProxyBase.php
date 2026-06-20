@@ -9,7 +9,7 @@
 // Known helper-style methods regenerate canonical PHP bodies when SQL regeneration is not the right fit.
 // Current canonical runtime generation fully owns this class, so no legacy DBAccess parent is required.
 
-class daCustomProxyDBAccessBase
+class DaCustomProxyDBAccessBase
 {
     // source_of_truth=sync-bootstrap action_type=UNKNOWN order=11 generation=canonical-constructor
     // reason=bootstrap constructor is empty, so runtime owns the no-op constructor directly
@@ -26,14 +26,14 @@ class daCustomProxyDBAccessBase
 
         $result = array();
 
-        $last_sql_command_for_mtooldb = 'select daCustomProxy.ProjectPID, daCustomProxy.PID, daCustomProxy.basename, daCustomProxy.name, daCustomProxy.InTransaction, daCustomProxy.AuthType, daCustomProxy.SingleGetFuncPID, daCustomProxy.LastModifiedDT, daCustomProxy.ContinueEvenIfFailedToInsert from daCustomProxy' . ' where ' . 'daCustomProxy.ProjectPID = ' . '\'' . $mtooldb->real_escape_string($param_daCustomProxy_ProjectPID_where) . '\'';
+        $last_sql_command_for_mtooldb = 'select DaCustomProxy.ProjectPID, DaCustomProxy.PID, DaCustomProxy.basename, DaCustomProxy.name, DaCustomProxy.InTransaction, DaCustomProxy.AuthType, DaCustomProxy.SingleGetFuncPID, DaCustomProxy.LastModifiedDT, DaCustomProxy.ContinueEvenIfFailedToInsert from DaCustomProxy' . ' where ' . 'DaCustomProxy.ProjectPID = ' . '\'' . $mtooldb->real_escape_string($param_daCustomProxy_ProjectPID_where) . '\'';
         $ret = $mtooldb->query($last_sql_command_for_mtooldb);
         if ($mtooldb->errno != 0) {
             error_log("Error occured while executing SQL: " . $mtooldb->error . " in " . __FILE__ . " on line " . __LINE__);
             return $ret;
         }
         while($thisline=$ret->fetch_row()) {
-            $thisresult = new daCustomProxyData();
+            $thisresult = new DaCustomProxyData();
             $thisresult->ProjectPID = $thisline[0];
             $thisresult->PID = $thisline[1];
             $thisresult->basename = $thisline[2];
@@ -55,14 +55,14 @@ class daCustomProxyDBAccessBase
         connect_mtooldb_if_not_yet();
         reconnect_mtooldb_if_necessary();
 
-        $last_sql_command_for_mtooldb = 'select daCustomProxy.ProjectPID, daCustomProxy.PID, daCustomProxy.basename, daCustomProxy.name, daCustomProxy.InTransaction, daCustomProxy.AuthType, daCustomProxy.SingleGetFuncPID, daCustomProxy.LastModifiedDT, daCustomProxy.ContinueEvenIfFailedToInsert from daCustomProxy' . ' where ' . 'daCustomProxy.PID = ' . '\'' . $mtooldb->real_escape_string($param_daCustomProxy_PID_where) . '\'' . ' and ' . 'daCustomProxy.ProjectPID = ' . '\'' . $mtooldb->real_escape_string($param_daCustomProxy_ProjectPID_where) . '\'';
+        $last_sql_command_for_mtooldb = 'select DaCustomProxy.ProjectPID, DaCustomProxy.PID, DaCustomProxy.basename, DaCustomProxy.name, DaCustomProxy.InTransaction, DaCustomProxy.AuthType, DaCustomProxy.SingleGetFuncPID, DaCustomProxy.LastModifiedDT, DaCustomProxy.ContinueEvenIfFailedToInsert from DaCustomProxy' . ' where ' . 'DaCustomProxy.PID = ' . '\'' . $mtooldb->real_escape_string($param_daCustomProxy_PID_where) . '\'' . ' and ' . 'DaCustomProxy.ProjectPID = ' . '\'' . $mtooldb->real_escape_string($param_daCustomProxy_ProjectPID_where) . '\'';
         $ret = $mtooldb->query($last_sql_command_for_mtooldb);
         if ($mtooldb->errno != 0) {
             error_log("Error occured while executing SQL: " . $mtooldb->error . " in " . __FILE__ . " on line " . __LINE__);
             return $ret;
         }
         while($thisline=$ret->fetch_row()) {
-            $thisresult = new daCustomProxyData();
+            $thisresult = new DaCustomProxyData();
             $thisresult->ProjectPID = $thisline[0];
             $thisresult->PID = $thisline[1];
             $thisresult->basename = $thisline[2];
@@ -78,13 +78,13 @@ class daCustomProxyDBAccessBase
     }
 
     // source_of_truth=sync-bootstrap action_type=INSERT order=76 generation=canonical-sql
-    public function InsertdaCustomProxy($daCustomProxyObj)
+    public function InsertdaCustomProxy($DaCustomProxyObj)
     {
         global $mtooldb, $last_sql_command_for_mtooldb;
         connect_mtooldb_if_not_yet();
         reconnect_mtooldb_if_necessary();
 
-        $last_sql_command_for_mtooldb = 'insert into daCustomProxy (ProjectPID, basename, name, InTransaction, AuthType, SingleGetFuncPID, ContinueEvenIfFailedToInsert) values(' . '\'' . $mtooldb->real_escape_string($daCustomProxyObj->ProjectPID) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($daCustomProxyObj->basename) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($daCustomProxyObj->name) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($daCustomProxyObj->InTransaction) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($daCustomProxyObj->AuthType) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($daCustomProxyObj->SingleGetFuncPID) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($daCustomProxyObj->ContinueEvenIfFailedToInsert) . '\'' . ')';
+        $last_sql_command_for_mtooldb = 'insert into DaCustomProxy (ProjectPID, basename, name, InTransaction, AuthType, SingleGetFuncPID, ContinueEvenIfFailedToInsert) values(' . '\'' . $mtooldb->real_escape_string($DaCustomProxyObj->ProjectPID) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($DaCustomProxyObj->basename) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($DaCustomProxyObj->name) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($DaCustomProxyObj->InTransaction) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($DaCustomProxyObj->AuthType) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($DaCustomProxyObj->SingleGetFuncPID) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($DaCustomProxyObj->ContinueEvenIfFailedToInsert) . '\'' . ')';
         $result = $mtooldb->query($last_sql_command_for_mtooldb);
         if ($mtooldb->errno != 0) {
             error_log("Error occured while executing SQL: " . $mtooldb->error . " in " . __FILE__ . " on line " . __LINE__);
@@ -93,13 +93,13 @@ class daCustomProxyDBAccessBase
     }
 
     // source_of_truth=sync-bootstrap action_type=UPDATE order=92 generation=canonical-sql
-    public function UpdatedaCustomProxy($daCustomProxyObj)
+    public function UpdatedaCustomProxy($DaCustomProxyObj)
     {
         global $mtooldb, $last_sql_command_for_mtooldb;
         connect_mtooldb_if_not_yet();
         reconnect_mtooldb_if_necessary();
 
-        $last_sql_command_for_mtooldb = 'update daCustomProxy SET ' . 'basename = ' . '\'' . $mtooldb->real_escape_string($daCustomProxyObj->basename) . '\'' . ', ' . 'name = ' . '\'' . $mtooldb->real_escape_string($daCustomProxyObj->name) . '\'' . ', ' . 'InTransaction = ' . '\'' . $mtooldb->real_escape_string($daCustomProxyObj->InTransaction) . '\'' . ', ' . 'AuthType = ' . '\'' . $mtooldb->real_escape_string($daCustomProxyObj->AuthType) . '\'' . ', ' . 'SingleGetFuncPID = ' . '\'' . $mtooldb->real_escape_string($daCustomProxyObj->SingleGetFuncPID) . '\'' . ', ' . 'LastModifiedDT = ' . 'now()' . ', ' . 'ContinueEvenIfFailedToInsert = ' . '\'' . $mtooldb->real_escape_string($daCustomProxyObj->ContinueEvenIfFailedToInsert) . '\'' . ' where ' . 'daCustomProxy.PID = ' . '\'' . $mtooldb->real_escape_string($daCustomProxyObj->PID) . '\'' . ' and ' . 'daCustomProxy.ProjectPID = ' . '\'' . $mtooldb->real_escape_string($daCustomProxyObj->ProjectPID) . '\'';
+        $last_sql_command_for_mtooldb = 'update DaCustomProxy SET ' . 'basename = ' . '\'' . $mtooldb->real_escape_string($DaCustomProxyObj->basename) . '\'' . ', ' . 'name = ' . '\'' . $mtooldb->real_escape_string($DaCustomProxyObj->name) . '\'' . ', ' . 'InTransaction = ' . '\'' . $mtooldb->real_escape_string($DaCustomProxyObj->InTransaction) . '\'' . ', ' . 'AuthType = ' . '\'' . $mtooldb->real_escape_string($DaCustomProxyObj->AuthType) . '\'' . ', ' . 'SingleGetFuncPID = ' . '\'' . $mtooldb->real_escape_string($DaCustomProxyObj->SingleGetFuncPID) . '\'' . ', ' . 'LastModifiedDT = ' . 'now()' . ', ' . 'ContinueEvenIfFailedToInsert = ' . '\'' . $mtooldb->real_escape_string($DaCustomProxyObj->ContinueEvenIfFailedToInsert) . '\'' . ' where ' . 'DaCustomProxy.PID = ' . '\'' . $mtooldb->real_escape_string($DaCustomProxyObj->PID) . '\'' . ' and ' . 'DaCustomProxy.ProjectPID = ' . '\'' . $mtooldb->real_escape_string($DaCustomProxyObj->ProjectPID) . '\'';
         $result = $mtooldb->query($last_sql_command_for_mtooldb);
         if ($mtooldb->errno != 0) {
             error_log("Error occured while executing SQL: " . $mtooldb->error . " in " . __FILE__ . " on line " . __LINE__);
@@ -114,7 +114,7 @@ class daCustomProxyDBAccessBase
         connect_mtooldb_if_not_yet();
         reconnect_mtooldb_if_necessary();
 
-        $last_sql_command_for_mtooldb = 'update daCustomProxy SET ' . 'LastModifiedDT = ' . 'now()' . ' where ' . 'daCustomProxy.PID = ' . '\'' . $mtooldb->real_escape_string($param_daCustomProxy_PID_where) . '\'' . ' and ' . 'daCustomProxy.ProjectPID = ' . '\'' . $mtooldb->real_escape_string($param_daCustomProxy_ProjectPID_where) . '\'';
+        $last_sql_command_for_mtooldb = 'update DaCustomProxy SET ' . 'LastModifiedDT = ' . 'now()' . ' where ' . 'DaCustomProxy.PID = ' . '\'' . $mtooldb->real_escape_string($param_daCustomProxy_PID_where) . '\'' . ' and ' . 'DaCustomProxy.ProjectPID = ' . '\'' . $mtooldb->real_escape_string($param_daCustomProxy_ProjectPID_where) . '\'';
         $result = $mtooldb->query($last_sql_command_for_mtooldb);
         if ($mtooldb->errno != 0) {
             error_log("Error occured while executing SQL: " . $mtooldb->error . " in " . __FILE__ . " on line " . __LINE__);
@@ -123,13 +123,13 @@ class daCustomProxyDBAccessBase
     }
 
     // source_of_truth=sync-bootstrap action_type=DELETE order=124 generation=canonical-sql
-    public function DeletedaCustomProxy($daCustomProxyObj)
+    public function DeletedaCustomProxy($DaCustomProxyObj)
     {
         global $mtooldb, $last_sql_command_for_mtooldb;
         connect_mtooldb_if_not_yet();
         reconnect_mtooldb_if_necessary();
 
-        $last_sql_command_for_mtooldb = 'delete from daCustomProxy where ' . 'daCustomProxy.PID = ' . '\'' . $mtooldb->real_escape_string($daCustomProxyObj->PID) . '\'' . ' and ' . 'daCustomProxy.ProjectPID = ' . '\'' . $mtooldb->real_escape_string($daCustomProxyObj->ProjectPID) . '\'';
+        $last_sql_command_for_mtooldb = 'delete from DaCustomProxy where ' . 'DaCustomProxy.PID = ' . '\'' . $mtooldb->real_escape_string($DaCustomProxyObj->PID) . '\'' . ' and ' . 'DaCustomProxy.ProjectPID = ' . '\'' . $mtooldb->real_escape_string($DaCustomProxyObj->ProjectPID) . '\'';
         $result = $mtooldb->query($last_sql_command_for_mtooldb);
         if ($mtooldb->errno != 0) {
             error_log("Error occured while executing SQL: " . $mtooldb->error . " in " . __FILE__ . " on line " . __LINE__);

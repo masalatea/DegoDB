@@ -9,7 +9,7 @@
 // Known helper-style methods regenerate canonical PHP bodies when SQL regeneration is not the right fit.
 // Current canonical runtime generation fully owns this class, so no legacy DBAccess parent is required.
 
-class htmlTemplateParameterDBAccessBase
+class HtmlTemplateParameterDBAccessBase
 {
     // source_of_truth=sync-bootstrap action_type=UNKNOWN order=11 generation=canonical-constructor
     // reason=bootstrap constructor is empty, so runtime owns the no-op constructor directly
@@ -24,15 +24,15 @@ class htmlTemplateParameterDBAccessBase
         connect_mtooldb_if_not_yet();
         reconnect_mtooldb_if_necessary();
 
-        $last_sql_command_for_mtooldb = 'select htmlTemplateParameter.htmlTemplatePID, htmlTemplateParameter.PID, htmlTemplateParameter.ParameterName, htmlTemplateParameter.TargetValueType, htmlTemplateParameter.TargetVariableOrClassObject, htmlTemplateParameter.TargetPropertyOfClassObject, htmlTemplateParameter.AnotherTemplatePID, htmlTemplateParameter.TrimLastSpace, htmlTemplateParameter.TrimLastReturn, htmlTemplateParameter.DataType from htmlTemplateParameter' . ' where ' . 'htmlTemplateParameter.PID = ' . '\'' . $mtooldb->real_escape_string($param_htmlTemplateParameter_PID_where) . '\'' . ' and ' . 'htmlTemplateParameter.htmlTemplatePID = ' . '\'' . $mtooldb->real_escape_string($param_htmlTemplateParameter_htmlTemplatePID_where) . '\'';
+        $last_sql_command_for_mtooldb = 'select HtmlTemplateParameter.HtmlTemplatePID, HtmlTemplateParameter.PID, HtmlTemplateParameter.ParameterName, HtmlTemplateParameter.TargetValueType, HtmlTemplateParameter.TargetVariableOrClassObject, HtmlTemplateParameter.TargetPropertyOfClassObject, HtmlTemplateParameter.AnotherTemplatePID, HtmlTemplateParameter.TrimLastSpace, HtmlTemplateParameter.TrimLastReturn, HtmlTemplateParameter.DataType from HtmlTemplateParameter' . ' where ' . 'HtmlTemplateParameter.PID = ' . '\'' . $mtooldb->real_escape_string($param_htmlTemplateParameter_PID_where) . '\'' . ' and ' . 'HtmlTemplateParameter.HtmlTemplatePID = ' . '\'' . $mtooldb->real_escape_string($param_htmlTemplateParameter_htmlTemplatePID_where) . '\'';
         $ret = $mtooldb->query($last_sql_command_for_mtooldb);
         if ($mtooldb->errno != 0) {
             error_log("Error occured while executing SQL: " . $mtooldb->error . " in " . __FILE__ . " on line " . __LINE__);
             return $ret;
         }
         while($thisline=$ret->fetch_row()) {
-            $thisresult = new htmlTemplateParameterData();
-            $thisresult->htmlTemplatePID = $thisline[0];
+            $thisresult = new HtmlTemplateParameterData();
+            $thisresult->HtmlTemplatePID = $thisline[0];
             $thisresult->PID = $thisline[1];
             $thisresult->ParameterName = $thisline[2];
             $thisresult->TargetValueType = $thisline[3];
@@ -48,13 +48,13 @@ class htmlTemplateParameterDBAccessBase
     }
 
     // source_of_truth=sync-bootstrap action_type=INSERT order=45 generation=canonical-sql
-    public function InserthtmlTemplateParameter($htmlTemplateParameterObj)
+    public function InserthtmlTemplateParameter($HtmlTemplateParameterObj)
     {
         global $mtooldb, $last_sql_command_for_mtooldb;
         connect_mtooldb_if_not_yet();
         reconnect_mtooldb_if_necessary();
 
-        $last_sql_command_for_mtooldb = 'insert into htmlTemplateParameter (htmlTemplatePID, ParameterName, TargetValueType, TargetVariableOrClassObject, TargetPropertyOfClassObject, AnotherTemplatePID, TrimLastSpace, TrimLastReturn, DataType) values(' . '\'' . $mtooldb->real_escape_string($htmlTemplateParameterObj->htmlTemplatePID) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($htmlTemplateParameterObj->ParameterName) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($htmlTemplateParameterObj->TargetValueType) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($htmlTemplateParameterObj->TargetVariableOrClassObject) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($htmlTemplateParameterObj->TargetPropertyOfClassObject) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($htmlTemplateParameterObj->AnotherTemplatePID) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($htmlTemplateParameterObj->TrimLastSpace) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($htmlTemplateParameterObj->TrimLastReturn) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($htmlTemplateParameterObj->DataType) . '\'' . ')';
+        $last_sql_command_for_mtooldb = 'insert into HtmlTemplateParameter (HtmlTemplatePID, ParameterName, TargetValueType, TargetVariableOrClassObject, TargetPropertyOfClassObject, AnotherTemplatePID, TrimLastSpace, TrimLastReturn, DataType) values(' . '\'' . $mtooldb->real_escape_string($HtmlTemplateParameterObj->HtmlTemplatePID) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($HtmlTemplateParameterObj->ParameterName) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($HtmlTemplateParameterObj->TargetValueType) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($HtmlTemplateParameterObj->TargetVariableOrClassObject) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($HtmlTemplateParameterObj->TargetPropertyOfClassObject) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($HtmlTemplateParameterObj->AnotherTemplatePID) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($HtmlTemplateParameterObj->TrimLastSpace) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($HtmlTemplateParameterObj->TrimLastReturn) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($HtmlTemplateParameterObj->DataType) . '\'' . ')';
         $result = $mtooldb->query($last_sql_command_for_mtooldb);
         if ($mtooldb->errno != 0) {
             error_log("Error occured while executing SQL: " . $mtooldb->error . " in " . __FILE__ . " on line " . __LINE__);
@@ -63,13 +63,13 @@ class htmlTemplateParameterDBAccessBase
     }
 
     // source_of_truth=sync-bootstrap action_type=UPDATE order=61 generation=canonical-sql
-    public function UpdatehtmlTemplateParameter($htmlTemplateParameterObj)
+    public function UpdatehtmlTemplateParameter($HtmlTemplateParameterObj)
     {
         global $mtooldb, $last_sql_command_for_mtooldb;
         connect_mtooldb_if_not_yet();
         reconnect_mtooldb_if_necessary();
 
-        $last_sql_command_for_mtooldb = 'update htmlTemplateParameter SET ' . 'ParameterName = ' . '\'' . $mtooldb->real_escape_string($htmlTemplateParameterObj->ParameterName) . '\'' . ', ' . 'TargetValueType = ' . '\'' . $mtooldb->real_escape_string($htmlTemplateParameterObj->TargetValueType) . '\'' . ', ' . 'TargetVariableOrClassObject = ' . '\'' . $mtooldb->real_escape_string($htmlTemplateParameterObj->TargetVariableOrClassObject) . '\'' . ', ' . 'TargetPropertyOfClassObject = ' . '\'' . $mtooldb->real_escape_string($htmlTemplateParameterObj->TargetPropertyOfClassObject) . '\'' . ', ' . 'AnotherTemplatePID = ' . '\'' . $mtooldb->real_escape_string($htmlTemplateParameterObj->AnotherTemplatePID) . '\'' . ', ' . 'TrimLastSpace = ' . '\'' . $mtooldb->real_escape_string($htmlTemplateParameterObj->TrimLastSpace) . '\'' . ', ' . 'TrimLastReturn = ' . '\'' . $mtooldb->real_escape_string($htmlTemplateParameterObj->TrimLastReturn) . '\'' . ', ' . 'DataType = ' . '\'' . $mtooldb->real_escape_string($htmlTemplateParameterObj->DataType) . '\'' . ' where ' . 'htmlTemplateParameter.PID = ' . '\'' . $mtooldb->real_escape_string($htmlTemplateParameterObj->PID) . '\'' . ' and ' . 'htmlTemplateParameter.htmlTemplatePID = ' . '\'' . $mtooldb->real_escape_string($htmlTemplateParameterObj->htmlTemplatePID) . '\'';
+        $last_sql_command_for_mtooldb = 'update HtmlTemplateParameter SET ' . 'ParameterName = ' . '\'' . $mtooldb->real_escape_string($HtmlTemplateParameterObj->ParameterName) . '\'' . ', ' . 'TargetValueType = ' . '\'' . $mtooldb->real_escape_string($HtmlTemplateParameterObj->TargetValueType) . '\'' . ', ' . 'TargetVariableOrClassObject = ' . '\'' . $mtooldb->real_escape_string($HtmlTemplateParameterObj->TargetVariableOrClassObject) . '\'' . ', ' . 'TargetPropertyOfClassObject = ' . '\'' . $mtooldb->real_escape_string($HtmlTemplateParameterObj->TargetPropertyOfClassObject) . '\'' . ', ' . 'AnotherTemplatePID = ' . '\'' . $mtooldb->real_escape_string($HtmlTemplateParameterObj->AnotherTemplatePID) . '\'' . ', ' . 'TrimLastSpace = ' . '\'' . $mtooldb->real_escape_string($HtmlTemplateParameterObj->TrimLastSpace) . '\'' . ', ' . 'TrimLastReturn = ' . '\'' . $mtooldb->real_escape_string($HtmlTemplateParameterObj->TrimLastReturn) . '\'' . ', ' . 'DataType = ' . '\'' . $mtooldb->real_escape_string($HtmlTemplateParameterObj->DataType) . '\'' . ' where ' . 'HtmlTemplateParameter.PID = ' . '\'' . $mtooldb->real_escape_string($HtmlTemplateParameterObj->PID) . '\'' . ' and ' . 'HtmlTemplateParameter.HtmlTemplatePID = ' . '\'' . $mtooldb->real_escape_string($HtmlTemplateParameterObj->HtmlTemplatePID) . '\'';
         $result = $mtooldb->query($last_sql_command_for_mtooldb);
         if ($mtooldb->errno != 0) {
             error_log("Error occured while executing SQL: " . $mtooldb->error . " in " . __FILE__ . " on line " . __LINE__);
@@ -78,13 +78,13 @@ class htmlTemplateParameterDBAccessBase
     }
 
     // source_of_truth=sync-bootstrap action_type=DELETE order=77 generation=canonical-sql
-    public function DeletehtmlTemplateParameter($htmlTemplateParameterObj)
+    public function DeletehtmlTemplateParameter($HtmlTemplateParameterObj)
     {
         global $mtooldb, $last_sql_command_for_mtooldb;
         connect_mtooldb_if_not_yet();
         reconnect_mtooldb_if_necessary();
 
-        $last_sql_command_for_mtooldb = 'delete from htmlTemplateParameter where ' . 'htmlTemplateParameter.PID = ' . '\'' . $mtooldb->real_escape_string($htmlTemplateParameterObj->PID) . '\'' . ' and ' . 'htmlTemplateParameter.htmlTemplatePID = ' . '\'' . $mtooldb->real_escape_string($htmlTemplateParameterObj->htmlTemplatePID) . '\'';
+        $last_sql_command_for_mtooldb = 'delete from HtmlTemplateParameter where ' . 'HtmlTemplateParameter.PID = ' . '\'' . $mtooldb->real_escape_string($HtmlTemplateParameterObj->PID) . '\'' . ' and ' . 'HtmlTemplateParameter.HtmlTemplatePID = ' . '\'' . $mtooldb->real_escape_string($HtmlTemplateParameterObj->HtmlTemplatePID) . '\'';
         $result = $mtooldb->query($last_sql_command_for_mtooldb);
         if ($mtooldb->errno != 0) {
             error_log("Error occured while executing SQL: " . $mtooldb->error . " in " . __FILE__ . " on line " . __LINE__);

@@ -384,7 +384,7 @@
                 "source_of_truth": "sync-bootstrap"
             },
             {
-                "source_name": "Req_and_Project",
+                "source_name": "ReqAndProject",
                 "function_count": 2,
                 "sql_regenerated_function_count": 1,
                 "canonical_helper_function_count": 0,
@@ -472,7 +472,7 @@
                 "source_of_truth": "sync-bootstrap"
             },
             {
-                "source_name": "TestGroup_leftouterjoin_Project",
+                "source_name": "TestGroupLeftouterjoinProject",
                 "function_count": 2,
                 "sql_regenerated_function_count": 1,
                 "canonical_helper_function_count": 0,
@@ -504,7 +504,7 @@
                 "source_of_truth": "sync-bootstrap"
             },
             {
-                "source_name": "Test_leftouterjoin_Project",
+                "source_name": "TestLeftouterjoinProject",
                 "function_count": 2,
                 "sql_regenerated_function_count": 1,
                 "canonical_helper_function_count": 0,
@@ -568,7 +568,7 @@
                 "source_of_truth": "sync-bootstrap"
             },
             {
-                "source_name": "chattopic",
+                "source_name": "Chattopic",
                 "function_count": 6,
                 "sql_regenerated_function_count": 5,
                 "canonical_helper_function_count": 0,
@@ -576,7 +576,7 @@
                 "source_of_truth": "sync-bootstrap"
             },
             {
-                "source_name": "chattopicAttachment",
+                "source_name": "ChattopicAttachment",
                 "function_count": 6,
                 "sql_regenerated_function_count": 5,
                 "canonical_helper_function_count": 0,
@@ -584,7 +584,7 @@
                 "source_of_truth": "sync-bootstrap"
             },
             {
-                "source_name": "chattopic_and_Project",
+                "source_name": "ChattopicAndProject",
                 "function_count": 2,
                 "sql_regenerated_function_count": 1,
                 "canonical_helper_function_count": 0,
@@ -592,7 +592,7 @@
                 "source_of_truth": "sync-bootstrap"
             },
             {
-                "source_name": "da",
+                "source_name": "Da",
                 "function_count": 8,
                 "sql_regenerated_function_count": 7,
                 "canonical_helper_function_count": 0,
@@ -600,7 +600,7 @@
                 "source_of_truth": "sync-bootstrap"
             },
             {
-                "source_name": "daCustomProxy",
+                "source_name": "DaCustomProxy",
                 "function_count": 7,
                 "sql_regenerated_function_count": 6,
                 "canonical_helper_function_count": 0,
@@ -608,7 +608,7 @@
                 "source_of_truth": "sync-bootstrap"
             },
             {
-                "source_name": "daCustomProxyFunc",
+                "source_name": "DaCustomProxyFunc",
                 "function_count": 8,
                 "sql_regenerated_function_count": 7,
                 "canonical_helper_function_count": 0,
@@ -616,7 +616,7 @@
                 "source_of_truth": "sync-bootstrap"
             },
             {
-                "source_name": "daCustomProxyFunc_leftouterjoin_dafunc_and_da",
+                "source_name": "DaCustomProxyFuncLeftouterjoinDafuncAndDa",
                 "function_count": 4,
                 "sql_regenerated_function_count": 3,
                 "canonical_helper_function_count": 0,
@@ -624,7 +624,7 @@
                 "source_of_truth": "sync-bootstrap"
             },
             {
-                "source_name": "daCustomProxySourceOutputTarget",
+                "source_name": "DaCustomProxySourceOutputTarget",
                 "function_count": 5,
                 "sql_regenerated_function_count": 4,
                 "canonical_helper_function_count": 0,
@@ -632,7 +632,7 @@
                 "source_of_truth": "sync-bootstrap"
             },
             {
-                "source_name": "dafunc",
+                "source_name": "Dafunc",
                 "function_count": 10,
                 "sql_regenerated_function_count": 9,
                 "canonical_helper_function_count": 0,
@@ -640,7 +640,7 @@
                 "source_of_truth": "sync-bootstrap"
             },
             {
-                "source_name": "dafuncSimpleProxySourceOutputTarget",
+                "source_name": "DafuncSimpleProxySourceOutputTarget",
                 "function_count": 6,
                 "sql_regenerated_function_count": 5,
                 "canonical_helper_function_count": 0,
@@ -648,7 +648,7 @@
                 "source_of_truth": "sync-bootstrap"
             },
             {
-                "source_name": "dafuncinserttargetfields",
+                "source_name": "Dafuncinserttargetfields",
                 "function_count": 8,
                 "sql_regenerated_function_count": 7,
                 "canonical_helper_function_count": 0,
@@ -656,7 +656,7 @@
                 "source_of_truth": "sync-bootstrap"
             },
             {
-                "source_name": "dafuncselecthaving",
+                "source_name": "Dafuncselecthaving",
                 "function_count": 6,
                 "sql_regenerated_function_count": 5,
                 "canonical_helper_function_count": 0,
@@ -664,7 +664,7 @@
                 "source_of_truth": "sync-bootstrap"
             },
             {
-                "source_name": "dafuncselecthaving_leftouterjoin_targetfields",
+                "source_name": "DafuncselecthavingLeftouterjoinTargetfields",
                 "function_count": 2,
                 "sql_regenerated_function_count": 1,
                 "canonical_helper_function_count": 0,
@@ -672,7 +672,7 @@
                 "source_of_truth": "sync-bootstrap"
             },
             {
-                "source_name": "dafuncselecttargetfields",
+                "source_name": "Dafuncselecttargetfields",
                 "function_count": 9,
                 "sql_regenerated_function_count": 8,
                 "canonical_helper_function_count": 0,
@@ -680,7 +680,7 @@
                 "source_of_truth": "sync-bootstrap"
             },
             {
-                "source_name": "dafuncselectwhere",
+                "source_name": "Dafuncselectwhere",
                 "function_count": 8,
                 "sql_regenerated_function_count": 7,
                 "canonical_helper_function_count": 0,
@@ -688,7 +688,7 @@
                 "source_of_truth": "sync-bootstrap"
             },
             {
-                "source_name": "dafuncupdatedeletewhere",
+                "source_name": "Dafuncupdatedeletewhere",
                 "function_count": 8,
                 "sql_regenerated_function_count": 7,
                 "canonical_helper_function_count": 0,
@@ -696,7 +696,7 @@
                 "source_of_truth": "sync-bootstrap"
             },
             {
-                "source_name": "dafuncupdatetargetfields",
+                "source_name": "Dafuncupdatetargetfields",
                 "function_count": 8,
                 "sql_regenerated_function_count": 7,
                 "canonical_helper_function_count": 0,
@@ -704,7 +704,7 @@
                 "source_of_truth": "sync-bootstrap"
             },
             {
-                "source_name": "dataclass",
+                "source_name": "Dataclass",
                 "function_count": 8,
                 "sql_regenerated_function_count": 7,
                 "canonical_helper_function_count": 0,
@@ -712,7 +712,7 @@
                 "source_of_truth": "sync-bootstrap"
             },
             {
-                "source_name": "dataclassfields",
+                "source_name": "Dataclassfields",
                 "function_count": 8,
                 "sql_regenerated_function_count": 7,
                 "canonical_helper_function_count": 0,
@@ -720,7 +720,7 @@
                 "source_of_truth": "sync-bootstrap"
             },
             {
-                "source_name": "dbtable",
+                "source_name": "Dbtable",
                 "function_count": 7,
                 "sql_regenerated_function_count": 6,
                 "canonical_helper_function_count": 0,
@@ -728,7 +728,7 @@
                 "source_of_truth": "sync-bootstrap"
             },
             {
-                "source_name": "dbtablecolumns",
+                "source_name": "Dbtablecolumns",
                 "function_count": 7,
                 "sql_regenerated_function_count": 6,
                 "canonical_helper_function_count": 0,
@@ -736,7 +736,7 @@
                 "source_of_truth": "sync-bootstrap"
             },
             {
-                "source_name": "html",
+                "source_name": "Html",
                 "function_count": 6,
                 "sql_regenerated_function_count": 5,
                 "canonical_helper_function_count": 0,
@@ -744,7 +744,7 @@
                 "source_of_truth": "sync-bootstrap"
             },
             {
-                "source_name": "htmlParameter",
+                "source_name": "HtmlParameter",
                 "function_count": 6,
                 "sql_regenerated_function_count": 5,
                 "canonical_helper_function_count": 0,
@@ -752,7 +752,7 @@
                 "source_of_truth": "sync-bootstrap"
             },
             {
-                "source_name": "htmlTemplate",
+                "source_name": "HtmlTemplate",
                 "function_count": 6,
                 "sql_regenerated_function_count": 5,
                 "canonical_helper_function_count": 0,
@@ -760,7 +760,7 @@
                 "source_of_truth": "sync-bootstrap"
             },
             {
-                "source_name": "htmlTemplateParameter",
+                "source_name": "HtmlTemplateParameter",
                 "function_count": 5,
                 "sql_regenerated_function_count": 4,
                 "canonical_helper_function_count": 0,
@@ -768,7 +768,7 @@
                 "source_of_truth": "sync-bootstrap"
             },
             {
-                "source_name": "htmlTemplateParameter_leftouterjoin_AnotherHtmlTemplate",
+                "source_name": "HtmlTemplateParameterLeftouterjoinAnotherHtmlTemplate",
                 "function_count": 5,
                 "sql_regenerated_function_count": 1,
                 "canonical_helper_function_count": 3,
@@ -776,7 +776,7 @@
                 "source_of_truth": "sync-bootstrap"
             },
             {
-                "source_name": "htmlTemplate_leftouterjoin_ParentHtmlTemplate",
+                "source_name": "HtmlTemplateLeftouterjoinParentHtmlTemplate",
                 "function_count": 3,
                 "sql_regenerated_function_count": 2,
                 "canonical_helper_function_count": 0,
@@ -784,7 +784,7 @@
                 "source_of_truth": "sync-bootstrap"
             },
             {
-                "source_name": "html_leftouterjoin_htmlTemplate",
+                "source_name": "HtmlLeftouterjoinHtmlTemplate",
                 "function_count": 2,
                 "sql_regenerated_function_count": 1,
                 "canonical_helper_function_count": 0,
@@ -792,7 +792,7 @@
                 "source_of_truth": "sync-bootstrap"
             },
             {
-                "source_name": "minutes",
+                "source_name": "Minutes",
                 "function_count": 6,
                 "sql_regenerated_function_count": 5,
                 "canonical_helper_function_count": 0,
@@ -800,7 +800,7 @@
                 "source_of_truth": "sync-bootstrap"
             },
             {
-                "source_name": "minutes_and_RelatedTables",
+                "source_name": "MinutesAndRelatedTables",
                 "function_count": 2,
                 "sql_regenerated_function_count": 1,
                 "canonical_helper_function_count": 0,
@@ -936,8 +936,8 @@
                     "PID",
                     "SourceType",
                     "CreatedDateTime",
-                    "dataclassPID",
-                    "daPID",
+                    "DataclassPID",
+                    "DaPID",
                     "Filename",
                     "SourceCode"
                 ],
@@ -946,8 +946,8 @@
                     "PID",
                     "SourceType",
                     "CreatedDateTime",
-                    "dataclassPID",
-                    "daPID",
+                    "DataclassPID",
+                    "DaPID",
                     "Filename",
                     "SourceCode"
                 ],
@@ -976,9 +976,9 @@
                     "PID",
                     "ProjectPID",
                     "CreatedDateTime",
-                    "daPID",
-                    "dafuncPID",
-                    "daCustomProxyPID",
+                    "DaPID",
+                    "DafuncPID",
+                    "DaCustomProxyPID",
                     "BuildTargetType",
                     "ReleaseTargetType",
                     "FunctionName",
@@ -1007,9 +1007,9 @@
                     "PID",
                     "ProjectPID",
                     "CreatedDateTime",
-                    "daPID",
-                    "dafuncPID",
-                    "daCustomProxyPID",
+                    "DaPID",
+                    "DafuncPID",
+                    "DaCustomProxyPID",
                     "BuildTargetType",
                     "ReleaseTargetType",
                     "FunctionName",
@@ -2689,7 +2689,7 @@
                     "Getoption_show_recommended_column_warning",
                     "Getoption_all_source_include",
                     "Getoption_user_can_change_da_func_order",
-                    "Getoption_build_dataclass_for_proxy_client_only_if_proxy_exist",
+                    "Getoption_build_Dataclass_for_proxy_client_only_if_proxy_exist",
                     "IsMySQL"
                 ],
                 "has_top_level_function": true,
@@ -2719,7 +2719,7 @@
                     "option_show_source_output_setting",
                     "option_restrict_proxy_server_to_single",
                     "option_show_language_resource",
-                    "option_build_dataclass_for_proxy_client_only_if_proxy_exist",
+                    "option_build_Dataclass_for_proxy_client_only_if_proxy_exist",
                     "option_show_output_temp_folder_on_build",
                     "option_default_output_temp_folder_on_build_is_true",
                     "option_IsCompareOutputTarget",
@@ -2759,7 +2759,7 @@
                     "option_show_source_output_setting",
                     "option_restrict_proxy_server_to_single",
                     "option_show_language_resource",
-                    "option_build_dataclass_for_proxy_client_only_if_proxy_exist",
+                    "option_build_Dataclass_for_proxy_client_only_if_proxy_exist",
                     "option_show_output_temp_folder_on_build",
                     "option_default_output_temp_folder_on_build_is_true",
                     "option_IsCompareOutputTarget",
@@ -3283,8 +3283,8 @@
                     "IsOwner",
                     "dbtoolRead",
                     "dbtoolWrite",
-                    "htmlRead",
-                    "htmlWrite",
+                    "HtmlRead",
+                    "HtmlWrite",
                     "testtoolRead",
                     "testtoolWrite",
                     "spectoolRead",
@@ -3307,8 +3307,8 @@
                     "IsOwner",
                     "dbtoolRead",
                     "dbtoolWrite",
-                    "htmlRead",
-                    "htmlWrite",
+                    "HtmlRead",
+                    "HtmlWrite",
                     "testtoolRead",
                     "testtoolWrite",
                     "spectoolRead",
@@ -3402,8 +3402,8 @@
                 "expected_declared_property_names": []
             },
             {
-                "source_name": "Req_and_Project",
-                "data_file": "data-Req_and_Project.php",
+                "source_name": "ReqAndProject",
+                "data_file": "data-ReqAndProject.php",
                 "decision": "generated",
                 "reason_code": "generated-canonical-plain-dto",
                 "reason": "canonical metadata から plain DTO を再生成しました。",
@@ -3412,7 +3412,7 @@
                 "rollout_gate_reference": "",
                 "rollout_note": "plain DTO lane は manifest/self-loop が green なら direct replacement で進める。",
                 "is_plain_candidate": true,
-                "class_name": "Req_and_ProjectData",
+                "class_name": "ReqAndProjectData",
                 "bootstrap_parent_class": "ReqData",
                 "canonical_parent_class": "ReqData",
                 "class_count": 1,
@@ -3908,8 +3908,8 @@
                 ]
             },
             {
-                "source_name": "TestGroup_leftouterjoin_Project",
-                "data_file": "data-TestGroup_leftouterjoin_Project.php",
+                "source_name": "TestGroupLeftouterjoinProject",
+                "data_file": "data-TestGroupLeftouterjoinProject.php",
                 "decision": "generated",
                 "reason_code": "generated-canonical-plain-dto",
                 "reason": "canonical metadata から plain DTO を再生成しました。",
@@ -3918,7 +3918,7 @@
                 "rollout_gate_reference": "",
                 "rollout_note": "plain DTO lane は manifest/self-loop が green なら direct replacement で進める。",
                 "is_plain_candidate": true,
-                "class_name": "TestGroup_leftouterjoin_ProjectData",
+                "class_name": "TestGroupLeftouterjoinProjectData",
                 "bootstrap_parent_class": "TestGroupData",
                 "canonical_parent_class": "TestGroupData",
                 "class_count": 1,
@@ -4074,8 +4074,8 @@
                 ]
             },
             {
-                "source_name": "Test_leftouterjoin_Project",
-                "data_file": "data-Test_leftouterjoin_Project.php",
+                "source_name": "TestLeftouterjoinProject",
+                "data_file": "data-TestLeftouterjoinProject.php",
                 "decision": "generated",
                 "reason_code": "generated-canonical-plain-dto",
                 "reason": "canonical metadata から plain DTO を再生成しました。",
@@ -4084,7 +4084,7 @@
                 "rollout_gate_reference": "",
                 "rollout_note": "plain DTO lane は manifest/self-loop が green なら direct replacement で進める。",
                 "is_plain_candidate": true,
-                "class_name": "Test_leftouterjoin_ProjectData",
+                "class_name": "TestLeftouterjoinProjectData",
                 "bootstrap_parent_class": "TestData",
                 "canonical_parent_class": "TestData",
                 "class_count": 1,
@@ -4503,8 +4503,8 @@
                 ]
             },
             {
-                "source_name": "chattopic",
-                "data_file": "data-chattopic.php",
+                "source_name": "Chattopic",
+                "data_file": "data-Chattopic.php",
                 "decision": "generated",
                 "reason_code": "generated-canonical-plain-dto",
                 "reason": "canonical metadata から plain DTO を再生成しました。",
@@ -4513,7 +4513,7 @@
                 "rollout_gate_reference": "",
                 "rollout_note": "plain DTO lane は manifest/self-loop が green なら direct replacement で進める。",
                 "is_plain_candidate": true,
-                "class_name": "chattopicData",
+                "class_name": "ChattopicData",
                 "bootstrap_parent_class": "",
                 "canonical_parent_class": "",
                 "class_count": 1,
@@ -4546,8 +4546,8 @@
                 ]
             },
             {
-                "source_name": "chattopicAttachment",
-                "data_file": "data-chattopicAttachment.php",
+                "source_name": "ChattopicAttachment",
+                "data_file": "data-ChattopicAttachment.php",
                 "decision": "generated",
                 "reason_code": "generated-canonical-plain-dto",
                 "reason": "canonical metadata から plain DTO を再生成しました。",
@@ -4556,7 +4556,7 @@
                 "rollout_gate_reference": "",
                 "rollout_note": "plain DTO lane は manifest/self-loop が green なら direct replacement で進める。",
                 "is_plain_candidate": true,
-                "class_name": "chattopicAttachmentData",
+                "class_name": "ChattopicAttachmentData",
                 "bootstrap_parent_class": "",
                 "canonical_parent_class": "",
                 "class_count": 1,
@@ -4565,32 +4565,32 @@
                 "has_default_property_value": false,
                 "bootstrap_property_names": [
                     "ProjectPID",
-                    "chattopicPID",
+                    "ChattopicPID",
                     "PID",
                     "name"
                 ],
                 "canonical_raw_property_names": [
                     "ProjectPID",
-                    "chattopicPID",
+                    "ChattopicPID",
                     "PID",
                     "name"
                 ],
                 "generated_property_names": [
                     "ProjectPID",
-                    "chattopicPID",
+                    "ChattopicPID",
                     "PID",
                     "name"
                 ],
                 "expected_declared_property_names": [
                     "ProjectPID",
-                    "chattopicPID",
+                    "ChattopicPID",
                     "PID",
                     "name"
                 ]
             },
             {
-                "source_name": "chattopic_and_Project",
-                "data_file": "data-chattopic_and_Project.php",
+                "source_name": "ChattopicAndProject",
+                "data_file": "data-ChattopicAndProject.php",
                 "decision": "generated",
                 "reason_code": "generated-canonical-plain-dto",
                 "reason": "canonical metadata から plain DTO を再生成しました。",
@@ -4599,9 +4599,9 @@
                 "rollout_gate_reference": "",
                 "rollout_note": "plain DTO lane は manifest/self-loop が green なら direct replacement で進める。",
                 "is_plain_candidate": true,
-                "class_name": "chattopic_and_ProjectData",
-                "bootstrap_parent_class": "chattopicData",
-                "canonical_parent_class": "chattopicData",
+                "class_name": "ChattopicAndProjectData",
+                "bootstrap_parent_class": "ChattopicData",
+                "canonical_parent_class": "ChattopicData",
                 "class_count": 1,
                 "extra_method_names": [],
                 "has_top_level_function": false,
@@ -4624,8 +4624,8 @@
                 ]
             },
             {
-                "source_name": "da",
-                "data_file": "data-da.php",
+                "source_name": "Da",
+                "data_file": "data-Da.php",
                 "decision": "generated",
                 "reason_code": "generated-layered-runtime-wrapper-base",
                 "reason": "already-generated runtime wrapper/base data class をそのまま維持します。",
@@ -4634,7 +4634,7 @@
                 "rollout_gate_reference": "tests/Integration/Sample11DaDataclassMethodOnlyOutputTest.php",
                 "rollout_note": "complex/new form は sample gate を通してから promote する。",
                 "is_plain_candidate": false,
-                "class_name": "daData",
+                "class_name": "DaData",
                 "bootstrap_parent_class": "",
                 "canonical_parent_class": "",
                 "class_count": 1,
@@ -4665,8 +4665,8 @@
                 "expected_declared_property_names": []
             },
             {
-                "source_name": "daCustomProxy",
-                "data_file": "data-daCustomProxy.php",
+                "source_name": "DaCustomProxy",
+                "data_file": "data-DaCustomProxy.php",
                 "decision": "generated",
                 "reason_code": "generated-layered-runtime-wrapper-base",
                 "reason": "already-generated runtime wrapper/base data class をそのまま維持します。",
@@ -4675,7 +4675,7 @@
                 "rollout_gate_reference": "tests/Integration/Sample13ReqMethodAndEnumOutputTest.php",
                 "rollout_note": "complex/new form は sample gate を通してから promote する。",
                 "is_plain_candidate": false,
-                "class_name": "daCustomProxyData",
+                "class_name": "DaCustomProxyData",
                 "bootstrap_parent_class": "",
                 "canonical_parent_class": "",
                 "class_count": 1,
@@ -4710,8 +4710,8 @@
                 "expected_declared_property_names": []
             },
             {
-                "source_name": "daCustomProxyFunc",
-                "data_file": "data-daCustomProxyFunc.php",
+                "source_name": "DaCustomProxyFunc",
+                "data_file": "data-DaCustomProxyFunc.php",
                 "decision": "generated",
                 "reason_code": "generated-layered-runtime-wrapper-base",
                 "reason": "already-generated runtime wrapper/base data class をそのまま維持します。",
@@ -4720,7 +4720,7 @@
                 "rollout_gate_reference": "tests/Integration/Sample13ReqMethodAndEnumOutputTest.php",
                 "rollout_note": "complex/new form は sample gate を通してから promote する。",
                 "is_plain_candidate": false,
-                "class_name": "daCustomProxyFuncData",
+                "class_name": "DaCustomProxyFuncData",
                 "bootstrap_parent_class": "",
                 "canonical_parent_class": "",
                 "class_count": 1,
@@ -4731,9 +4731,9 @@
                 "has_default_property_value": false,
                 "bootstrap_property_names": [
                     "ProjectPID",
-                    "daCustomProxyPID",
+                    "DaCustomProxyPID",
                     "PID",
-                    "dafuncPID",
+                    "DafuncPID",
                     "IsList",
                     "FunctionListOrder",
                     "AddIndentCount",
@@ -4741,9 +4741,9 @@
                 ],
                 "canonical_raw_property_names": [
                     "ProjectPID",
-                    "daCustomProxyPID",
+                    "DaCustomProxyPID",
                     "PID",
-                    "dafuncPID",
+                    "DafuncPID",
                     "IsList",
                     "FunctionListOrder",
                     "AddIndentCount",
@@ -4753,8 +4753,8 @@
                 "expected_declared_property_names": []
             },
             {
-                "source_name": "daCustomProxyFunc_leftouterjoin_dafunc_and_da",
-                "data_file": "data-daCustomProxyFunc_leftouterjoin_dafunc_and_da.php",
+                "source_name": "DaCustomProxyFuncLeftouterjoinDafuncAndDa",
+                "data_file": "data-DaCustomProxyFuncLeftouterjoinDafuncAndDa.php",
                 "decision": "generated",
                 "reason_code": "generated-canonical-plain-dto",
                 "reason": "canonical metadata から plain DTO を再生成しました。",
@@ -4763,49 +4763,49 @@
                 "rollout_gate_reference": "",
                 "rollout_note": "plain DTO lane は manifest/self-loop が green なら direct replacement で進める。",
                 "is_plain_candidate": true,
-                "class_name": "daCustomProxyFunc_leftouterjoin_dafunc_and_daData",
-                "bootstrap_parent_class": "daCustomProxyFuncData",
-                "canonical_parent_class": "daCustomProxyFuncData",
+                "class_name": "DaCustomProxyFuncLeftouterjoinDafuncAndDaData",
+                "bootstrap_parent_class": "DaCustomProxyFuncData",
+                "canonical_parent_class": "DaCustomProxyFuncData",
                 "class_count": 1,
                 "extra_method_names": [],
                 "has_top_level_function": false,
                 "has_default_property_value": false,
                 "bootstrap_property_names": [
                     "daname",
-                    "dafuncname",
-                    "dafuncActionType",
-                    "daPID"
+                    "Dafuncname",
+                    "DafuncActionType",
+                    "DaPID"
                 ],
                 "canonical_raw_property_names": [
                     "ProjectPID",
-                    "daCustomProxyPID",
+                    "DaCustomProxyPID",
                     "PID",
-                    "dafuncPID",
+                    "DafuncPID",
                     "IsList",
                     "FunctionListOrder",
                     "AddIndentCount",
                     "AddIndentType",
-                    "dafuncname",
-                    "dafuncActionType",
+                    "Dafuncname",
+                    "DafuncActionType",
                     "daname",
-                    "daPID"
+                    "DaPID"
                 ],
                 "generated_property_names": [
                     "daname",
-                    "dafuncname",
-                    "dafuncActionType",
-                    "daPID"
+                    "Dafuncname",
+                    "DafuncActionType",
+                    "DaPID"
                 ],
                 "expected_declared_property_names": [
                     "daname",
-                    "dafuncname",
-                    "dafuncActionType",
-                    "daPID"
+                    "Dafuncname",
+                    "DafuncActionType",
+                    "DaPID"
                 ]
             },
             {
-                "source_name": "daCustomProxySourceOutputTarget",
-                "data_file": "data-daCustomProxySourceOutputTarget.php",
+                "source_name": "DaCustomProxySourceOutputTarget",
+                "data_file": "data-DaCustomProxySourceOutputTarget.php",
                 "decision": "generated",
                 "reason_code": "generated-canonical-plain-dto",
                 "reason": "canonical metadata から plain DTO を再生成しました。",
@@ -4814,7 +4814,7 @@
                 "rollout_gate_reference": "",
                 "rollout_note": "plain DTO lane は manifest/self-loop が green なら direct replacement で進める。",
                 "is_plain_candidate": true,
-                "class_name": "daCustomProxySourceOutputTargetData",
+                "class_name": "DaCustomProxySourceOutputTargetData",
                 "bootstrap_parent_class": "",
                 "canonical_parent_class": "",
                 "class_count": 1,
@@ -4823,32 +4823,32 @@
                 "has_default_property_value": false,
                 "bootstrap_property_names": [
                     "ProjectPID",
-                    "daCustomProxyPID",
+                    "DaCustomProxyPID",
                     "PID",
                     "ProjectSourceOutputPID"
                 ],
                 "canonical_raw_property_names": [
                     "ProjectPID",
-                    "daCustomProxyPID",
+                    "DaCustomProxyPID",
                     "PID",
                     "ProjectSourceOutputPID"
                 ],
                 "generated_property_names": [
                     "ProjectPID",
-                    "daCustomProxyPID",
+                    "DaCustomProxyPID",
                     "PID",
                     "ProjectSourceOutputPID"
                 ],
                 "expected_declared_property_names": [
                     "ProjectPID",
-                    "daCustomProxyPID",
+                    "DaCustomProxyPID",
                     "PID",
                     "ProjectSourceOutputPID"
                 ]
             },
             {
-                "source_name": "dafunc",
-                "data_file": "data-dafunc.php",
+                "source_name": "Dafunc",
+                "data_file": "data-Dafunc.php",
                 "decision": "generated",
                 "reason_code": "generated-layered-runtime-wrapper-base",
                 "reason": "already-generated runtime wrapper/base data class をそのまま維持します。",
@@ -4857,7 +4857,7 @@
                 "rollout_gate_reference": "tests/Integration/Sample13ReqMethodAndEnumOutputTest.php",
                 "rollout_note": "complex/new form は sample gate を通してから promote する。",
                 "is_plain_candidate": false,
-                "class_name": "dafuncData",
+                "class_name": "DafuncData",
                 "bootstrap_parent_class": "",
                 "canonical_parent_class": "",
                 "class_count": 1,
@@ -4874,7 +4874,7 @@
                 "has_default_property_value": false,
                 "bootstrap_property_names": [
                     "ProjectPID",
-                    "daPID",
+                    "DaPID",
                     "PID",
                     "name",
                     "ActionType",
@@ -4894,7 +4894,7 @@
                 ],
                 "canonical_raw_property_names": [
                     "ProjectPID",
-                    "daPID",
+                    "DaPID",
                     "PID",
                     "name",
                     "ActionType",
@@ -4916,8 +4916,8 @@
                 "expected_declared_property_names": []
             },
             {
-                "source_name": "dafuncSimpleProxySourceOutputTarget",
-                "data_file": "data-dafuncSimpleProxySourceOutputTarget.php",
+                "source_name": "DafuncSimpleProxySourceOutputTarget",
+                "data_file": "data-DafuncSimpleProxySourceOutputTarget.php",
                 "decision": "generated",
                 "reason_code": "generated-canonical-plain-dto",
                 "reason": "canonical metadata から plain DTO を再生成しました。",
@@ -4926,7 +4926,7 @@
                 "rollout_gate_reference": "",
                 "rollout_note": "plain DTO lane は manifest/self-loop が green なら direct replacement で進める。",
                 "is_plain_candidate": true,
-                "class_name": "dafuncSimpleProxySourceOutputTargetData",
+                "class_name": "DafuncSimpleProxySourceOutputTargetData",
                 "bootstrap_parent_class": "",
                 "canonical_parent_class": "",
                 "class_count": 1,
@@ -4935,44 +4935,44 @@
                 "has_default_property_value": false,
                 "bootstrap_property_names": [
                     "ProjectPID",
-                    "daPID",
-                    "dafuncPID",
+                    "DaPID",
+                    "DafuncPID",
                     "PID",
                     "ProjectSourceOutputPID",
                     "daname",
-                    "dafuncname"
+                    "Dafuncname"
                 ],
                 "canonical_raw_property_names": [
                     "ProjectPID",
-                    "daPID",
-                    "dafuncPID",
+                    "DaPID",
+                    "DafuncPID",
                     "PID",
                     "ProjectSourceOutputPID",
                     "daname",
-                    "dafuncname"
+                    "Dafuncname"
                 ],
                 "generated_property_names": [
                     "ProjectPID",
-                    "daPID",
-                    "dafuncPID",
+                    "DaPID",
+                    "DafuncPID",
                     "PID",
                     "ProjectSourceOutputPID",
                     "daname",
-                    "dafuncname"
+                    "Dafuncname"
                 ],
                 "expected_declared_property_names": [
                     "ProjectPID",
-                    "daPID",
-                    "dafuncPID",
+                    "DaPID",
+                    "DafuncPID",
                     "PID",
                     "ProjectSourceOutputPID",
                     "daname",
-                    "dafuncname"
+                    "Dafuncname"
                 ]
             },
             {
-                "source_name": "dafuncinserttargetfields",
-                "data_file": "data-dafuncinserttargetfields.php",
+                "source_name": "Dafuncinserttargetfields",
+                "data_file": "data-Dafuncinserttargetfields.php",
                 "decision": "generated",
                 "reason_code": "generated-layered-runtime-wrapper-base",
                 "reason": "already-generated runtime wrapper/base data class をそのまま維持します。",
@@ -4981,7 +4981,7 @@
                 "rollout_gate_reference": "tests/Integration/Sample13ReqMethodAndEnumOutputTest.php",
                 "rollout_note": "complex/new form は sample gate を通してから promote する。",
                 "is_plain_candidate": false,
-                "class_name": "dafuncinserttargetfieldsData",
+                "class_name": "DafuncinserttargetfieldsData",
                 "bootstrap_parent_class": "",
                 "canonical_parent_class": "",
                 "class_count": 1,
@@ -4994,8 +4994,8 @@
                 "has_default_property_value": false,
                 "bootstrap_property_names": [
                     "ProjectPID",
-                    "daPID",
-                    "dafuncPID",
+                    "DaPID",
+                    "DafuncPID",
                     "PID",
                     "targetTableColumnName",
                     "ParameterType",
@@ -5005,8 +5005,8 @@
                 ],
                 "canonical_raw_property_names": [
                     "ProjectPID",
-                    "daPID",
-                    "dafuncPID",
+                    "DaPID",
+                    "DafuncPID",
                     "PID",
                     "targetTableColumnName",
                     "ParameterType",
@@ -5018,8 +5018,8 @@
                 "expected_declared_property_names": []
             },
             {
-                "source_name": "dafuncselecthaving",
-                "data_file": "data-dafuncselecthaving.php",
+                "source_name": "Dafuncselecthaving",
+                "data_file": "data-Dafuncselecthaving.php",
                 "decision": "generated",
                 "reason_code": "generated-layered-runtime-wrapper-base",
                 "reason": "already-generated runtime wrapper/base data class をそのまま維持します。",
@@ -5028,7 +5028,7 @@
                 "rollout_gate_reference": "tests/Integration/Sample13ReqMethodAndEnumOutputTest.php",
                 "rollout_note": "complex/new form は sample gate を通してから promote する。",
                 "is_plain_candidate": false,
-                "class_name": "dafuncselecthavingData",
+                "class_name": "DafuncselecthavingData",
                 "bootstrap_parent_class": "",
                 "canonical_parent_class": "",
                 "class_count": 1,
@@ -5039,8 +5039,8 @@
                 "has_default_property_value": false,
                 "bootstrap_property_names": [
                     "ProjectPID",
-                    "daPID",
-                    "dafuncPID",
+                    "DaPID",
+                    "DafuncPID",
                     "PID",
                     "LeftTargetPrefix",
                     "LeftTargetFieldPID",
@@ -5056,8 +5056,8 @@
                 ],
                 "canonical_raw_property_names": [
                     "ProjectPID",
-                    "daPID",
-                    "dafuncPID",
+                    "DaPID",
+                    "DafuncPID",
                     "PID",
                     "LeftTargetPrefix",
                     "LeftTargetFieldPID",
@@ -5075,8 +5075,8 @@
                 "expected_declared_property_names": []
             },
             {
-                "source_name": "dafuncselecthaving_leftouterjoin_targetfields",
-                "data_file": "data-dafuncselecthaving_leftouterjoin_targetfields.php",
+                "source_name": "DafuncselecthavingLeftouterjoinTargetfields",
+                "data_file": "data-DafuncselecthavingLeftouterjoinTargetfields.php",
                 "decision": "generated",
                 "reason_code": "generated-canonical-plain-dto",
                 "reason": "canonical metadata から plain DTO を再生成しました。",
@@ -5085,9 +5085,9 @@
                 "rollout_gate_reference": "",
                 "rollout_note": "plain DTO lane は manifest/self-loop が green なら direct replacement で進める。",
                 "is_plain_candidate": true,
-                "class_name": "dafuncselecthaving_leftouterjoin_targetfieldsData",
-                "bootstrap_parent_class": "dafuncselecthavingData",
-                "canonical_parent_class": "dafuncselecthavingData",
+                "class_name": "DafuncselecthavingLeftouterjoinTargetfieldsData",
+                "bootstrap_parent_class": "DafuncselecthavingData",
+                "canonical_parent_class": "DafuncselecthavingData",
                 "class_count": 1,
                 "extra_method_names": [],
                 "has_top_level_function": false,
@@ -5110,8 +5110,8 @@
                 ],
                 "canonical_raw_property_names": [
                     "ProjectPID",
-                    "daPID",
-                    "dafuncPID",
+                    "DaPID",
+                    "DafuncPID",
                     "PID",
                     "LeftTargetPrefix",
                     "LeftTargetFieldPID",
@@ -5173,8 +5173,8 @@
                 ]
             },
             {
-                "source_name": "dafuncselecttargetfields",
-                "data_file": "data-dafuncselecttargetfields.php",
+                "source_name": "Dafuncselecttargetfields",
+                "data_file": "data-Dafuncselecttargetfields.php",
                 "decision": "generated",
                 "reason_code": "generated-canonical-plain-dto",
                 "reason": "canonical metadata から plain DTO を再生成しました。",
@@ -5183,7 +5183,7 @@
                 "rollout_gate_reference": "",
                 "rollout_note": "plain DTO lane は manifest/self-loop が green なら direct replacement で進める。",
                 "is_plain_candidate": true,
-                "class_name": "dafuncselecttargetfieldsData",
+                "class_name": "DafuncselecttargetfieldsData",
                 "bootstrap_parent_class": "",
                 "canonical_parent_class": "",
                 "class_count": 1,
@@ -5192,8 +5192,8 @@
                 "has_default_property_value": false,
                 "bootstrap_property_names": [
                     "ProjectPID",
-                    "daPID",
-                    "dafuncPID",
+                    "DaPID",
+                    "DafuncPID",
                     "PID",
                     "targetTableName",
                     "targetTableAliasName",
@@ -5206,8 +5206,8 @@
                 ],
                 "canonical_raw_property_names": [
                     "ProjectPID",
-                    "daPID",
-                    "dafuncPID",
+                    "DaPID",
+                    "DafuncPID",
                     "PID",
                     "targetTableName",
                     "targetTableAliasName",
@@ -5220,8 +5220,8 @@
                 ],
                 "generated_property_names": [
                     "ProjectPID",
-                    "daPID",
-                    "dafuncPID",
+                    "DaPID",
+                    "DafuncPID",
                     "PID",
                     "targetTableName",
                     "targetTableAliasName",
@@ -5234,8 +5234,8 @@
                 ],
                 "expected_declared_property_names": [
                     "ProjectPID",
-                    "daPID",
-                    "dafuncPID",
+                    "DaPID",
+                    "DafuncPID",
                     "PID",
                     "targetTableName",
                     "targetTableAliasName",
@@ -5248,8 +5248,8 @@
                 ]
             },
             {
-                "source_name": "dafuncselectwhere",
-                "data_file": "data-dafuncselectwhere.php",
+                "source_name": "Dafuncselectwhere",
+                "data_file": "data-Dafuncselectwhere.php",
                 "decision": "generated",
                 "reason_code": "generated-layered-runtime-wrapper-base",
                 "reason": "already-generated runtime wrapper/base data class をそのまま維持します。",
@@ -5258,7 +5258,7 @@
                 "rollout_gate_reference": "tests/Integration/Sample13ReqMethodAndEnumOutputTest.php",
                 "rollout_note": "complex/new form は sample gate を通してから promote する。",
                 "is_plain_candidate": false,
-                "class_name": "dafuncselectwhereData",
+                "class_name": "DafuncselectwhereData",
                 "bootstrap_parent_class": "",
                 "canonical_parent_class": "",
                 "class_count": 1,
@@ -5272,8 +5272,8 @@
                 "has_default_property_value": false,
                 "bootstrap_property_names": [
                     "ProjectPID",
-                    "daPID",
-                    "dafuncPID",
+                    "DaPID",
+                    "DafuncPID",
                     "PID",
                     "targetTableName",
                     "targetTableAliasName",
@@ -5291,8 +5291,8 @@
                 ],
                 "canonical_raw_property_names": [
                     "ProjectPID",
-                    "daPID",
-                    "dafuncPID",
+                    "DaPID",
+                    "DafuncPID",
                     "PID",
                     "targetTableName",
                     "targetTableAliasName",
@@ -5312,8 +5312,8 @@
                 "expected_declared_property_names": []
             },
             {
-                "source_name": "dafuncupdatedeletewhere",
-                "data_file": "data-dafuncupdatedeletewhere.php",
+                "source_name": "Dafuncupdatedeletewhere",
+                "data_file": "data-Dafuncupdatedeletewhere.php",
                 "decision": "generated",
                 "reason_code": "generated-layered-runtime-wrapper-base",
                 "reason": "already-generated runtime wrapper/base data class をそのまま維持します。",
@@ -5322,7 +5322,7 @@
                 "rollout_gate_reference": "tests/Integration/Sample13ReqMethodAndEnumOutputTest.php",
                 "rollout_note": "complex/new form は sample gate を通してから promote する。",
                 "is_plain_candidate": false,
-                "class_name": "dafuncupdatedeletewhereData",
+                "class_name": "DafuncupdatedeletewhereData",
                 "bootstrap_parent_class": "",
                 "canonical_parent_class": "",
                 "class_count": 1,
@@ -5336,8 +5336,8 @@
                 "has_default_property_value": false,
                 "bootstrap_property_names": [
                     "ProjectPID",
-                    "daPID",
-                    "dafuncPID",
+                    "DaPID",
+                    "DafuncPID",
                     "PID",
                     "targetTableColumnName",
                     "ParameterType",
@@ -5349,8 +5349,8 @@
                 ],
                 "canonical_raw_property_names": [
                     "ProjectPID",
-                    "daPID",
-                    "dafuncPID",
+                    "DaPID",
+                    "DafuncPID",
                     "PID",
                     "targetTableColumnName",
                     "ParameterType",
@@ -5364,8 +5364,8 @@
                 "expected_declared_property_names": []
             },
             {
-                "source_name": "dafuncupdatetargetfields",
-                "data_file": "data-dafuncupdatetargetfields.php",
+                "source_name": "Dafuncupdatetargetfields",
+                "data_file": "data-Dafuncupdatetargetfields.php",
                 "decision": "generated",
                 "reason_code": "generated-layered-runtime-wrapper-base",
                 "reason": "already-generated runtime wrapper/base data class をそのまま維持します。",
@@ -5374,7 +5374,7 @@
                 "rollout_gate_reference": "tests/Integration/Sample13ReqMethodAndEnumOutputTest.php",
                 "rollout_note": "complex/new form は sample gate を通してから promote する。",
                 "is_plain_candidate": false,
-                "class_name": "dafuncupdatetargetfieldsData",
+                "class_name": "DafuncupdatetargetfieldsData",
                 "bootstrap_parent_class": "",
                 "canonical_parent_class": "",
                 "class_count": 1,
@@ -5387,8 +5387,8 @@
                 "has_default_property_value": false,
                 "bootstrap_property_names": [
                     "ProjectPID",
-                    "daPID",
-                    "dafuncPID",
+                    "DaPID",
+                    "DafuncPID",
                     "PID",
                     "targetTableColumnName",
                     "ParameterType",
@@ -5398,8 +5398,8 @@
                 ],
                 "canonical_raw_property_names": [
                     "ProjectPID",
-                    "daPID",
-                    "dafuncPID",
+                    "DaPID",
+                    "DafuncPID",
                     "PID",
                     "targetTableColumnName",
                     "ParameterType",
@@ -5411,8 +5411,8 @@
                 "expected_declared_property_names": []
             },
             {
-                "source_name": "dataclass",
-                "data_file": "data-dataclass.php",
+                "source_name": "Dataclass",
+                "data_file": "data-Dataclass.php",
                 "decision": "generated",
                 "reason_code": "generated-layered-runtime-wrapper-base",
                 "reason": "already-generated runtime wrapper/base data class をそのまま維持します。",
@@ -5421,7 +5421,7 @@
                 "rollout_gate_reference": "tests/Integration/Sample11DaDataclassMethodOnlyOutputTest.php",
                 "rollout_note": "complex/new form は sample gate を通してから promote する。",
                 "is_plain_candidate": false,
-                "class_name": "dataclassData",
+                "class_name": "DataclassData",
                 "bootstrap_parent_class": "",
                 "canonical_parent_class": "",
                 "class_count": 1,
@@ -5454,8 +5454,8 @@
                 "expected_declared_property_names": []
             },
             {
-                "source_name": "dataclassfields",
-                "data_file": "data-dataclassfields.php",
+                "source_name": "Dataclassfields",
+                "data_file": "data-Dataclassfields.php",
                 "decision": "generated",
                 "reason_code": "generated-canonical-plain-dto",
                 "reason": "canonical metadata から plain DTO を再生成しました。",
@@ -5464,7 +5464,7 @@
                 "rollout_gate_reference": "",
                 "rollout_note": "plain DTO lane は manifest/self-loop が green なら direct replacement で進める。",
                 "is_plain_candidate": true,
-                "class_name": "dataclassfieldsData",
+                "class_name": "DataclassfieldsData",
                 "bootstrap_parent_class": "",
                 "canonical_parent_class": "",
                 "class_count": 1,
@@ -5473,7 +5473,7 @@
                 "has_default_property_value": false,
                 "bootstrap_property_names": [
                     "ProjectPID",
-                    "dataclassPID",
+                    "DataclassPID",
                     "PID",
                     "name",
                     "datatype",
@@ -5483,7 +5483,7 @@
                 ],
                 "canonical_raw_property_names": [
                     "ProjectPID",
-                    "dataclassPID",
+                    "DataclassPID",
                     "PID",
                     "name",
                     "datatype",
@@ -5493,7 +5493,7 @@
                 ],
                 "generated_property_names": [
                     "ProjectPID",
-                    "dataclassPID",
+                    "DataclassPID",
                     "PID",
                     "name",
                     "datatype",
@@ -5503,7 +5503,7 @@
                 ],
                 "expected_declared_property_names": [
                     "ProjectPID",
-                    "dataclassPID",
+                    "DataclassPID",
                     "PID",
                     "name",
                     "datatype",
@@ -5513,8 +5513,8 @@
                 ]
             },
             {
-                "source_name": "dbtable",
-                "data_file": "data-dbtable.php",
+                "source_name": "Dbtable",
+                "data_file": "data-Dbtable.php",
                 "decision": "generated",
                 "reason_code": "generated-canonical-plain-dto",
                 "reason": "canonical metadata から plain DTO を再生成しました。",
@@ -5523,7 +5523,7 @@
                 "rollout_gate_reference": "",
                 "rollout_note": "plain DTO lane は manifest/self-loop が green なら direct replacement で進める。",
                 "is_plain_candidate": true,
-                "class_name": "dbtableData",
+                "class_name": "DbtableData",
                 "bootstrap_parent_class": "",
                 "canonical_parent_class": "",
                 "class_count": 1,
@@ -5552,8 +5552,8 @@
                 ]
             },
             {
-                "source_name": "dbtablecolumns",
-                "data_file": "data-dbtablecolumns.php",
+                "source_name": "Dbtablecolumns",
+                "data_file": "data-Dbtablecolumns.php",
                 "decision": "generated",
                 "reason_code": "generated-layered-runtime-wrapper-base",
                 "reason": "already-generated runtime wrapper/base data class をそのまま維持します。",
@@ -5562,7 +5562,7 @@
                 "rollout_gate_reference": "tests/Integration/Sample12DbtablecolumnsWrapperPropertyOutputTest.php",
                 "rollout_note": "complex/new form は sample gate を通してから promote する。",
                 "is_plain_candidate": false,
-                "class_name": "dbtablecolumnsData",
+                "class_name": "DbtablecolumnsData",
                 "bootstrap_parent_class": "",
                 "canonical_parent_class": "",
                 "class_count": 1,
@@ -5574,7 +5574,7 @@
                 "has_default_property_value": false,
                 "bootstrap_property_names": [
                     "ProjectPID",
-                    "dbtablePID",
+                    "DbtablePID",
                     "PID",
                     "name",
                     "datatype",
@@ -5588,7 +5588,7 @@
                 ],
                 "canonical_raw_property_names": [
                     "ProjectPID",
-                    "dbtablePID",
+                    "DbtablePID",
                     "PID",
                     "name",
                     "datatype",
@@ -5603,8 +5603,8 @@
                 "expected_declared_property_names": []
             },
             {
-                "source_name": "html",
-                "data_file": "data-html.php",
+                "source_name": "Html",
+                "data_file": "data-Html.php",
                 "decision": "generated",
                 "reason_code": "generated-canonical-plain-dto",
                 "reason": "canonical metadata から plain DTO を再生成しました。",
@@ -5613,7 +5613,7 @@
                 "rollout_gate_reference": "",
                 "rollout_note": "plain DTO lane は manifest/self-loop が green なら direct replacement で進める。",
                 "is_plain_candidate": true,
-                "class_name": "htmlData",
+                "class_name": "HtmlData",
                 "bootstrap_parent_class": "",
                 "canonical_parent_class": "",
                 "class_count": 1,
@@ -5625,7 +5625,7 @@
                     "PID",
                     "name",
                     "ProjectSourceOutputPID",
-                    "htmlTemplatePID",
+                    "HtmlTemplatePID",
                     "LastModifiedDT"
                 ],
                 "canonical_raw_property_names": [
@@ -5633,7 +5633,7 @@
                     "PID",
                     "name",
                     "ProjectSourceOutputPID",
-                    "htmlTemplatePID",
+                    "HtmlTemplatePID",
                     "LastModifiedDT"
                 ],
                 "generated_property_names": [
@@ -5641,7 +5641,7 @@
                     "PID",
                     "name",
                     "ProjectSourceOutputPID",
-                    "htmlTemplatePID",
+                    "HtmlTemplatePID",
                     "LastModifiedDT"
                 ],
                 "expected_declared_property_names": [
@@ -5649,13 +5649,13 @@
                     "PID",
                     "name",
                     "ProjectSourceOutputPID",
-                    "htmlTemplatePID",
+                    "HtmlTemplatePID",
                     "LastModifiedDT"
                 ]
             },
             {
-                "source_name": "htmlParameter",
-                "data_file": "data-htmlParameter.php",
+                "source_name": "HtmlParameter",
+                "data_file": "data-HtmlParameter.php",
                 "decision": "generated",
                 "reason_code": "generated-canonical-plain-dto",
                 "reason": "canonical metadata から plain DTO を再生成しました。",
@@ -5664,7 +5664,7 @@
                 "rollout_gate_reference": "",
                 "rollout_note": "plain DTO lane は manifest/self-loop が green なら direct replacement で進める。",
                 "is_plain_candidate": true,
-                "class_name": "htmlParameterData",
+                "class_name": "HtmlParameterData",
                 "bootstrap_parent_class": "",
                 "canonical_parent_class": "",
                 "class_count": 1,
@@ -5673,36 +5673,36 @@
                 "has_default_property_value": false,
                 "bootstrap_property_names": [
                     "ProjectPID",
-                    "htmlPID",
+                    "HtmlPID",
                     "PID",
                     "ParameterName",
                     "ParameterValue"
                 ],
                 "canonical_raw_property_names": [
                     "ProjectPID",
-                    "htmlPID",
+                    "HtmlPID",
                     "PID",
                     "ParameterName",
                     "ParameterValue"
                 ],
                 "generated_property_names": [
                     "ProjectPID",
-                    "htmlPID",
+                    "HtmlPID",
                     "PID",
                     "ParameterName",
                     "ParameterValue"
                 ],
                 "expected_declared_property_names": [
                     "ProjectPID",
-                    "htmlPID",
+                    "HtmlPID",
                     "PID",
                     "ParameterName",
                     "ParameterValue"
                 ]
             },
             {
-                "source_name": "htmlTemplate",
-                "data_file": "data-htmlTemplate.php",
+                "source_name": "HtmlTemplate",
+                "data_file": "data-HtmlTemplate.php",
                 "decision": "generated",
                 "reason_code": "generated-layered-runtime-wrapper-base",
                 "reason": "already-generated runtime wrapper/base data class をそのまま維持します。",
@@ -5711,7 +5711,7 @@
                 "rollout_gate_reference": "tests/Integration/LegacyTopLevelDeclarationMigrationTest.php",
                 "rollout_note": "complex/new form は sample gate を通してから promote する。",
                 "is_plain_candidate": false,
-                "class_name": "htmlTemplateData",
+                "class_name": "HtmlTemplateData",
                 "bootstrap_parent_class": "",
                 "canonical_parent_class": "",
                 "class_count": 4,
@@ -5740,8 +5740,8 @@
                 "expected_declared_property_names": []
             },
             {
-                "source_name": "htmlTemplateParameter",
-                "data_file": "data-htmlTemplateParameter.php",
+                "source_name": "HtmlTemplateParameter",
+                "data_file": "data-HtmlTemplateParameter.php",
                 "decision": "generated",
                 "reason_code": "generated-layered-runtime-wrapper-base",
                 "reason": "already-generated runtime wrapper/base data class をそのまま維持します。",
@@ -5750,7 +5750,7 @@
                 "rollout_gate_reference": "tests/Integration/Sample13ReqMethodAndEnumOutputTest.php",
                 "rollout_note": "complex/new form は sample gate を通してから promote する。",
                 "is_plain_candidate": false,
-                "class_name": "htmlTemplateParameterData",
+                "class_name": "HtmlTemplateParameterData",
                 "bootstrap_parent_class": "",
                 "canonical_parent_class": "",
                 "class_count": 1,
@@ -5760,7 +5760,7 @@
                 "has_top_level_function": true,
                 "has_default_property_value": false,
                 "bootstrap_property_names": [
-                    "htmlTemplatePID",
+                    "HtmlTemplatePID",
                     "PID",
                     "ParameterName",
                     "TargetValueType",
@@ -5772,7 +5772,7 @@
                     "DataType"
                 ],
                 "canonical_raw_property_names": [
-                    "htmlTemplatePID",
+                    "HtmlTemplatePID",
                     "PID",
                     "ParameterName",
                     "TargetValueType",
@@ -5787,8 +5787,8 @@
                 "expected_declared_property_names": []
             },
             {
-                "source_name": "htmlTemplateParameter_leftouterjoin_AnotherHtmlTemplate",
-                "data_file": "data-htmlTemplateParameter_leftouterjoin_AnotherHtmlTemplate.php",
+                "source_name": "HtmlTemplateParameterLeftouterjoinAnotherHtmlTemplate",
+                "data_file": "data-HtmlTemplateParameterLeftouterjoinAnotherHtmlTemplate.php",
                 "decision": "generated",
                 "reason_code": "generated-canonical-plain-dto",
                 "reason": "canonical metadata から plain DTO を再生成しました。",
@@ -5797,18 +5797,18 @@
                 "rollout_gate_reference": "",
                 "rollout_note": "plain DTO lane は manifest/self-loop が green なら direct replacement で進める。",
                 "is_plain_candidate": true,
-                "class_name": "htmlTemplateParameter_leftouterjoin_AnotherHtmlTemplateData",
-                "bootstrap_parent_class": "htmlTemplateParameterData",
-                "canonical_parent_class": "htmlTemplateParameterData",
+                "class_name": "HtmlTemplateParameterLeftouterjoinAnotherHtmlTemplateData",
+                "bootstrap_parent_class": "HtmlTemplateParameterData",
+                "canonical_parent_class": "HtmlTemplateParameterData",
                 "class_count": 1,
                 "extra_method_names": [],
                 "has_top_level_function": false,
                 "has_default_property_value": false,
                 "bootstrap_property_names": [
-                    "htmlTemplatename"
+                    "HtmlTemplatename"
                 ],
                 "canonical_raw_property_names": [
-                    "htmlTemplatePID",
+                    "HtmlTemplatePID",
                     "PID",
                     "ParameterName",
                     "TargetValueType",
@@ -5818,18 +5818,18 @@
                     "TrimLastSpace",
                     "TrimLastReturn",
                     "DataType",
-                    "htmlTemplatename"
+                    "HtmlTemplatename"
                 ],
                 "generated_property_names": [
-                    "htmlTemplatename"
+                    "HtmlTemplatename"
                 ],
                 "expected_declared_property_names": [
-                    "htmlTemplatename"
+                    "HtmlTemplatename"
                 ]
             },
             {
-                "source_name": "htmlTemplate_leftouterjoin_ParentHtmlTemplate",
-                "data_file": "data-htmlTemplate_leftouterjoin_ParentHtmlTemplate.php",
+                "source_name": "HtmlTemplateLeftouterjoinParentHtmlTemplate",
+                "data_file": "data-HtmlTemplateLeftouterjoinParentHtmlTemplate.php",
                 "decision": "generated",
                 "reason_code": "generated-canonical-plain-dto",
                 "reason": "canonical metadata から plain DTO を再生成しました。",
@@ -5838,9 +5838,9 @@
                 "rollout_gate_reference": "",
                 "rollout_note": "plain DTO lane は manifest/self-loop が green なら direct replacement で進める。",
                 "is_plain_candidate": true,
-                "class_name": "htmlTemplate_leftouterjoin_ParentHtmlTemplateData",
-                "bootstrap_parent_class": "htmlTemplateData",
-                "canonical_parent_class": "htmlTemplateData",
+                "class_name": "HtmlTemplateLeftouterjoinParentHtmlTemplateData",
+                "bootstrap_parent_class": "HtmlTemplateData",
+                "canonical_parent_class": "HtmlTemplateData",
                 "class_count": 1,
                 "extra_method_names": [],
                 "has_top_level_function": false,
@@ -5866,8 +5866,8 @@
                 ]
             },
             {
-                "source_name": "html_leftouterjoin_htmlTemplate",
-                "data_file": "data-html_leftouterjoin_htmlTemplate.php",
+                "source_name": "HtmlLeftouterjoinHtmlTemplate",
+                "data_file": "data-HtmlLeftouterjoinHtmlTemplate.php",
                 "decision": "generated",
                 "reason_code": "generated-canonical-plain-dto",
                 "reason": "canonical metadata から plain DTO を再生成しました。",
@@ -5876,46 +5876,46 @@
                 "rollout_gate_reference": "",
                 "rollout_note": "plain DTO lane は manifest/self-loop が green なら direct replacement で進める。",
                 "is_plain_candidate": true,
-                "class_name": "html_leftouterjoin_htmlTemplateData",
-                "bootstrap_parent_class": "htmlData",
-                "canonical_parent_class": "htmlData",
+                "class_name": "HtmlLeftouterjoinHtmlTemplateData",
+                "bootstrap_parent_class": "HtmlData",
+                "canonical_parent_class": "HtmlData",
                 "class_count": 1,
                 "extra_method_names": [],
                 "has_top_level_function": false,
                 "has_default_property_value": false,
                 "bootstrap_property_names": [
-                    "htmlTemplatename",
-                    "htmlTemplateProgramLanguage",
-                    "htmlTemplateFileName",
-                    "htmlTemplateComment"
+                    "HtmlTemplatename",
+                    "HtmlTemplateProgramLanguage",
+                    "HtmlTemplateFileName",
+                    "HtmlTemplateComment"
                 ],
                 "canonical_raw_property_names": [
                     "ProjectPID",
                     "PID",
                     "name",
                     "ProjectSourceOutputPID",
-                    "htmlTemplatePID",
-                    "htmlTemplatename",
-                    "htmlTemplateProgramLanguage",
-                    "htmlTemplateFileName",
-                    "htmlTemplateComment"
+                    "HtmlTemplatePID",
+                    "HtmlTemplatename",
+                    "HtmlTemplateProgramLanguage",
+                    "HtmlTemplateFileName",
+                    "HtmlTemplateComment"
                 ],
                 "generated_property_names": [
-                    "htmlTemplatename",
-                    "htmlTemplateProgramLanguage",
-                    "htmlTemplateFileName",
-                    "htmlTemplateComment"
+                    "HtmlTemplatename",
+                    "HtmlTemplateProgramLanguage",
+                    "HtmlTemplateFileName",
+                    "HtmlTemplateComment"
                 ],
                 "expected_declared_property_names": [
-                    "htmlTemplatename",
-                    "htmlTemplateProgramLanguage",
-                    "htmlTemplateFileName",
-                    "htmlTemplateComment"
+                    "HtmlTemplatename",
+                    "HtmlTemplateProgramLanguage",
+                    "HtmlTemplateFileName",
+                    "HtmlTemplateComment"
                 ]
             },
             {
-                "source_name": "minutes",
-                "data_file": "data-minutes.php",
+                "source_name": "Minutes",
+                "data_file": "data-Minutes.php",
                 "decision": "generated",
                 "reason_code": "generated-canonical-plain-dto",
                 "reason": "canonical metadata から plain DTO を再生成しました。",
@@ -5924,7 +5924,7 @@
                 "rollout_gate_reference": "",
                 "rollout_note": "plain DTO lane は manifest/self-loop が green なら direct replacement で進める。",
                 "is_plain_candidate": true,
-                "class_name": "minutesData",
+                "class_name": "MinutesData",
                 "bootstrap_parent_class": "",
                 "canonical_parent_class": "",
                 "class_count": 1,
@@ -5944,16 +5944,16 @@
                     "DecisionMaking",
                     "IsLearning",
                     "Learning",
-                    "chattopicPID",
+                    "ChattopicPID",
                     "ReqPID",
                     "SpecPID",
                     "SpecContentPID",
                     "TestGroupPID",
                     "TestPID",
-                    "daPID",
-                    "dafuncPID",
-                    "dataclassPID",
-                    "dbtablePID"
+                    "DaPID",
+                    "DafuncPID",
+                    "DataclassPID",
+                    "DbtablePID"
                 ],
                 "canonical_raw_property_names": [
                     "ProjectPID",
@@ -5968,16 +5968,16 @@
                     "DecisionMaking",
                     "IsLearning",
                     "Learning",
-                    "chattopicPID",
+                    "ChattopicPID",
                     "ReqPID",
                     "SpecPID",
                     "SpecContentPID",
                     "TestGroupPID",
                     "TestPID",
-                    "daPID",
-                    "dafuncPID",
-                    "dataclassPID",
-                    "dbtablePID"
+                    "DaPID",
+                    "DafuncPID",
+                    "DataclassPID",
+                    "DbtablePID"
                 ],
                 "generated_property_names": [
                     "ProjectPID",
@@ -5992,16 +5992,16 @@
                     "DecisionMaking",
                     "IsLearning",
                     "Learning",
-                    "chattopicPID",
+                    "ChattopicPID",
                     "ReqPID",
                     "SpecPID",
                     "SpecContentPID",
                     "TestGroupPID",
                     "TestPID",
-                    "daPID",
-                    "dafuncPID",
-                    "dataclassPID",
-                    "dbtablePID"
+                    "DaPID",
+                    "DafuncPID",
+                    "DataclassPID",
+                    "DbtablePID"
                 ],
                 "expected_declared_property_names": [
                     "ProjectPID",
@@ -6016,21 +6016,21 @@
                     "DecisionMaking",
                     "IsLearning",
                     "Learning",
-                    "chattopicPID",
+                    "ChattopicPID",
                     "ReqPID",
                     "SpecPID",
                     "SpecContentPID",
                     "TestGroupPID",
                     "TestPID",
-                    "daPID",
-                    "dafuncPID",
-                    "dataclassPID",
-                    "dbtablePID"
+                    "DaPID",
+                    "DafuncPID",
+                    "DataclassPID",
+                    "DbtablePID"
                 ]
             },
             {
-                "source_name": "minutes_and_RelatedTables",
-                "data_file": "data-minutes_and_RelatedTables.php",
+                "source_name": "MinutesAndRelatedTables",
+                "data_file": "data-MinutesAndRelatedTables.php",
                 "decision": "generated",
                 "reason_code": "generated-layered-runtime-wrapper-base",
                 "reason": "already-generated runtime wrapper/base data class をそのまま維持します。",
@@ -6039,19 +6039,19 @@
                 "rollout_gate_reference": "tests/Integration/Sample11DaDataclassMethodOnlyOutputTest.php",
                 "rollout_note": "complex/new form は sample gate を通してから promote する。",
                 "is_plain_candidate": false,
-                "class_name": "minutes_and_RelatedTablesData",
-                "bootstrap_parent_class": "minutesData",
-                "canonical_parent_class": "minutesData",
+                "class_name": "MinutesAndRelatedTablesData",
+                "bootstrap_parent_class": "MinutesData",
+                "canonical_parent_class": "MinutesData",
                 "class_count": 1,
                 "extra_method_names": [
                     "GetRequirementTitle",
-                    "GetdafuncFunctionName"
+                    "GetDafuncFunctionName"
                 ],
                 "has_top_level_function": false,
                 "has_default_property_value": false,
                 "bootstrap_property_names": [
                     "Projectname",
-                    "chattopicname",
+                    "Chattopicname",
                     "ReqUserRequest",
                     "ReqSummary",
                     "Specname",
@@ -6060,10 +6060,10 @@
                     "TestGroupname",
                     "Testname",
                     "daname",
-                    "dafuncname",
-                    "dafuncActionType",
-                    "dataclassname",
-                    "dbtablename"
+                    "Dafuncname",
+                    "DafuncActionType",
+                    "Dataclassname",
+                    "Dbtablename"
                 ],
                 "canonical_raw_property_names": [
                     "Projectname",
@@ -6079,17 +6079,17 @@
                     "DecisionMaking",
                     "IsLearning",
                     "Learning",
-                    "chattopicPID",
+                    "ChattopicPID",
                     "ReqPID",
                     "SpecPID",
                     "SpecContentPID",
                     "TestGroupPID",
                     "TestPID",
-                    "daPID",
-                    "dafuncPID",
-                    "dataclassPID",
-                    "dbtablePID",
-                    "chattopicname",
+                    "DaPID",
+                    "DafuncPID",
+                    "DataclassPID",
+                    "DbtablePID",
+                    "Chattopicname",
                     "ReqUserRequest",
                     "ReqSummary",
                     "Specname",
@@ -6098,10 +6098,10 @@
                     "TestGroupname",
                     "Testname",
                     "daname",
-                    "dafuncname",
-                    "dafuncActionType",
-                    "dataclassname",
-                    "dbtablename"
+                    "Dafuncname",
+                    "DafuncActionType",
+                    "Dataclassname",
+                    "Dbtablename"
                 ],
                 "generated_property_names": [],
                 "expected_declared_property_names": []

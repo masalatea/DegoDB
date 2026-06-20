@@ -8,11 +8,11 @@
 // Generated members are kept in this base file. Former editable areas move to the wrapper file.
 // Generated trailing enum-type classes also stay in this base file when present.
 
-class dafuncselectwhereDataBase
+class DafuncselectwhereDataBase
 {
     public $ProjectPID;
-    public $daPID;
-    public $dafuncPID;
+    public $DaPID;
+    public $DafuncPID;
     public $PID;
     public $targetTableName;
     public $targetTableAliasName;

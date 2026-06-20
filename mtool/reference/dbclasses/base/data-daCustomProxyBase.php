@@ -8,7 +8,7 @@
 // Generated members are kept in this base file. Former editable areas move to the wrapper file.
 // Generated trailing enum-type classes also stay in this base file when present.
 
-class daCustomProxyDataBase
+class DaCustomProxyDataBase
 {
     public $ProjectPID;
     public $PID;

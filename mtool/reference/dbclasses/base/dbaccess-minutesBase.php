@@ -9,7 +9,7 @@
 // Known helper-style methods regenerate canonical PHP bodies when SQL regeneration is not the right fit.
 // Current canonical runtime generation fully owns this class, so no legacy DBAccess parent is required.
 
-class minutesDBAccessBase
+class MinutesDBAccessBase
 {
     // source_of_truth=sync-bootstrap action_type=UNKNOWN order=11 generation=canonical-constructor
     // reason=bootstrap constructor is empty, so runtime owns the no-op constructor directly
@@ -18,7 +18,7 @@ class minutesDBAccessBase
     }
 
     // source_of_truth=sync-bootstrap action_type=SELECTLIST order=14 generation=canonical-sql
-    public function GetminutesList($param_minutes_ProjectPID_where)
+    public function GetMinutesList($param_Minutes_ProjectPID_where)
     {
         global $mtooldb, $last_sql_command_for_mtooldb;
         connect_mtooldb_if_not_yet();
@@ -26,14 +26,14 @@ class minutesDBAccessBase
 
         $result = array();
 
-        $last_sql_command_for_mtooldb = 'select minutes.ProjectPID, minutes.PID, minutes.AddedDateTime, minutes.UpdatedDateTime, minutes.Title, minutes.Overview, minutes.IsBrainstorming, minutes.Brainstorming, minutes.IsDecisionMaking, minutes.DecisionMaking, minutes.IsLearning, minutes.Learning, minutes.chattopicPID, minutes.ReqPID, minutes.SpecPID, minutes.SpecContentPID, minutes.TestGroupPID, minutes.TestPID, minutes.daPID, minutes.dafuncPID, minutes.dataclassPID, minutes.dbtablePID from minutes' . ' where ' . 'minutes.ProjectPID = ' . '\'' . $mtooldb->real_escape_string($param_minutes_ProjectPID_where) . '\'';
+        $last_sql_command_for_mtooldb = 'select Minutes.ProjectPID, Minutes.PID, Minutes.AddedDateTime, Minutes.UpdatedDateTime, Minutes.Title, Minutes.Overview, Minutes.IsBrainstorming, Minutes.Brainstorming, Minutes.IsDecisionMaking, Minutes.DecisionMaking, Minutes.IsLearning, Minutes.Learning, Minutes.ChattopicPID, Minutes.ReqPID, Minutes.SpecPID, Minutes.SpecContentPID, Minutes.TestGroupPID, Minutes.TestPID, Minutes.DaPID, Minutes.DafuncPID, Minutes.DataclassPID, Minutes.DbtablePID from Minutes' . ' where ' . 'Minutes.ProjectPID = ' . '\'' . $mtooldb->real_escape_string($param_Minutes_ProjectPID_where) . '\'';
         $ret = $mtooldb->query($last_sql_command_for_mtooldb);
         if ($mtooldb->errno != 0) {
             error_log("Error occured while executing SQL: " . $mtooldb->error . " in " . __FILE__ . " on line " . __LINE__);
             return $ret;
         }
         while($thisline=$ret->fetch_row()) {
-            $thisresult = new minutesData();
+            $thisresult = new MinutesData();
             $thisresult->ProjectPID = $thisline[0];
             $thisresult->PID = $thisline[1];
             $thisresult->AddedDateTime = $thisline[2];
@@ -46,36 +46,36 @@ class minutesDBAccessBase
             $thisresult->DecisionMaking = $thisline[9];
             $thisresult->IsLearning = $thisline[10];
             $thisresult->Learning = $thisline[11];
-            $thisresult->chattopicPID = $thisline[12];
+            $thisresult->ChattopicPID = $thisline[12];
             $thisresult->ReqPID = $thisline[13];
             $thisresult->SpecPID = $thisline[14];
             $thisresult->SpecContentPID = $thisline[15];
             $thisresult->TestGroupPID = $thisline[16];
             $thisresult->TestPID = $thisline[17];
-            $thisresult->daPID = $thisline[18];
-            $thisresult->dafuncPID = $thisline[19];
-            $thisresult->dataclassPID = $thisline[20];
-            $thisresult->dbtablePID = $thisline[21];
+            $thisresult->DaPID = $thisline[18];
+            $thisresult->DafuncPID = $thisline[19];
+            $thisresult->DataclassPID = $thisline[20];
+            $thisresult->DbtablePID = $thisline[21];
             array_push($result, $thisresult);
         }
         return $result;
     }
 
     // source_of_truth=sync-bootstrap action_type=SELECTSINGLE order=59 generation=canonical-sql
-    public function Getminutes($param_minutes_PID_where, $param_minutes_ProjectPID_where)
+    public function GetMinutes($param_Minutes_PID_where, $param_Minutes_ProjectPID_where)
     {
         global $mtooldb, $last_sql_command_for_mtooldb;
         connect_mtooldb_if_not_yet();
         reconnect_mtooldb_if_necessary();
 
-        $last_sql_command_for_mtooldb = 'select minutes.ProjectPID, minutes.PID, minutes.AddedDateTime, minutes.UpdatedDateTime, minutes.Title, minutes.Overview, minutes.IsBrainstorming, minutes.Brainstorming, minutes.IsDecisionMaking, minutes.DecisionMaking, minutes.IsLearning, minutes.Learning, minutes.chattopicPID, minutes.ReqPID, minutes.SpecPID, minutes.SpecContentPID, minutes.TestGroupPID, minutes.TestPID, minutes.daPID, minutes.dafuncPID, minutes.dataclassPID, minutes.dbtablePID from minutes' . ' where ' . 'minutes.PID = ' . '\'' . $mtooldb->real_escape_string($param_minutes_PID_where) . '\'' . ' and ' . 'minutes.ProjectPID = ' . '\'' . $mtooldb->real_escape_string($param_minutes_ProjectPID_where) . '\'';
+        $last_sql_command_for_mtooldb = 'select Minutes.ProjectPID, Minutes.PID, Minutes.AddedDateTime, Minutes.UpdatedDateTime, Minutes.Title, Minutes.Overview, Minutes.IsBrainstorming, Minutes.Brainstorming, Minutes.IsDecisionMaking, Minutes.DecisionMaking, Minutes.IsLearning, Minutes.Learning, Minutes.ChattopicPID, Minutes.ReqPID, Minutes.SpecPID, Minutes.SpecContentPID, Minutes.TestGroupPID, Minutes.TestPID, Minutes.DaPID, Minutes.DafuncPID, Minutes.DataclassPID, Minutes.DbtablePID from Minutes' . ' where ' . 'Minutes.PID = ' . '\'' . $mtooldb->real_escape_string($param_Minutes_PID_where) . '\'' . ' and ' . 'Minutes.ProjectPID = ' . '\'' . $mtooldb->real_escape_string($param_Minutes_ProjectPID_where) . '\'';
         $ret = $mtooldb->query($last_sql_command_for_mtooldb);
         if ($mtooldb->errno != 0) {
             error_log("Error occured while executing SQL: " . $mtooldb->error . " in " . __FILE__ . " on line " . __LINE__);
             return $ret;
         }
         while($thisline=$ret->fetch_row()) {
-            $thisresult = new minutesData();
+            $thisresult = new MinutesData();
             $thisresult->ProjectPID = $thisline[0];
             $thisresult->PID = $thisline[1];
             $thisresult->AddedDateTime = $thisline[2];
@@ -88,29 +88,29 @@ class minutesDBAccessBase
             $thisresult->DecisionMaking = $thisline[9];
             $thisresult->IsLearning = $thisline[10];
             $thisresult->Learning = $thisline[11];
-            $thisresult->chattopicPID = $thisline[12];
+            $thisresult->ChattopicPID = $thisline[12];
             $thisresult->ReqPID = $thisline[13];
             $thisresult->SpecPID = $thisline[14];
             $thisresult->SpecContentPID = $thisline[15];
             $thisresult->TestGroupPID = $thisline[16];
             $thisresult->TestPID = $thisline[17];
-            $thisresult->daPID = $thisline[18];
-            $thisresult->dafuncPID = $thisline[19];
-            $thisresult->dataclassPID = $thisline[20];
-            $thisresult->dbtablePID = $thisline[21];
+            $thisresult->DaPID = $thisline[18];
+            $thisresult->DafuncPID = $thisline[19];
+            $thisresult->DataclassPID = $thisline[20];
+            $thisresult->DbtablePID = $thisline[21];
             return $thisresult;
         }
         return NULL;
     }
 
     // source_of_truth=sync-bootstrap action_type=INSERT order=102 generation=canonical-sql
-    public function Insertminutes($minutesObj)
+    public function InsertMinutes($MinutesObj)
     {
         global $mtooldb, $last_sql_command_for_mtooldb;
         connect_mtooldb_if_not_yet();
         reconnect_mtooldb_if_necessary();
 
-        $last_sql_command_for_mtooldb = 'insert into minutes (ProjectPID, AddedDateTime, UpdatedDateTime, Title, Overview, IsBrainstorming, Brainstorming, IsDecisionMaking, DecisionMaking, IsLearning, Learning, chattopicPID, ReqPID, SpecPID, SpecContentPID, TestGroupPID, TestPID, daPID, dafuncPID, dataclassPID, dbtablePID) values(' . '\'' . $mtooldb->real_escape_string($minutesObj->ProjectPID) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($minutesObj->AddedDateTime) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($minutesObj->UpdatedDateTime) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($minutesObj->Title) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($minutesObj->Overview) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($minutesObj->IsBrainstorming) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($minutesObj->Brainstorming) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($minutesObj->IsDecisionMaking) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($minutesObj->DecisionMaking) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($minutesObj->IsLearning) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($minutesObj->Learning) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($minutesObj->chattopicPID) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($minutesObj->ReqPID) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($minutesObj->SpecPID) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($minutesObj->SpecContentPID) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($minutesObj->TestGroupPID) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($minutesObj->TestPID) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($minutesObj->daPID) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($minutesObj->dafuncPID) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($minutesObj->dataclassPID) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($minutesObj->dbtablePID) . '\'' . ')';
+        $last_sql_command_for_mtooldb = 'insert into Minutes (ProjectPID, AddedDateTime, UpdatedDateTime, Title, Overview, IsBrainstorming, Brainstorming, IsDecisionMaking, DecisionMaking, IsLearning, Learning, ChattopicPID, ReqPID, SpecPID, SpecContentPID, TestGroupPID, TestPID, DaPID, DafuncPID, DataclassPID, DbtablePID) values(' . '\'' . $mtooldb->real_escape_string($MinutesObj->ProjectPID) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($MinutesObj->AddedDateTime) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($MinutesObj->UpdatedDateTime) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($MinutesObj->Title) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($MinutesObj->Overview) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($MinutesObj->IsBrainstorming) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($MinutesObj->Brainstorming) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($MinutesObj->IsDecisionMaking) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($MinutesObj->DecisionMaking) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($MinutesObj->IsLearning) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($MinutesObj->Learning) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($MinutesObj->ChattopicPID) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($MinutesObj->ReqPID) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($MinutesObj->SpecPID) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($MinutesObj->SpecContentPID) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($MinutesObj->TestGroupPID) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($MinutesObj->TestPID) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($MinutesObj->DaPID) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($MinutesObj->DafuncPID) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($MinutesObj->DataclassPID) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($MinutesObj->DbtablePID) . '\'' . ')';
         $result = $mtooldb->query($last_sql_command_for_mtooldb);
         if ($mtooldb->errno != 0) {
             error_log("Error occured while executing SQL: " . $mtooldb->error . " in " . __FILE__ . " on line " . __LINE__);
@@ -119,13 +119,13 @@ class minutesDBAccessBase
     }
 
     // source_of_truth=sync-bootstrap action_type=UPDATE order=118 generation=canonical-sql
-    public function Updateminutes($minutesObj)
+    public function UpdateMinutes($MinutesObj)
     {
         global $mtooldb, $last_sql_command_for_mtooldb;
         connect_mtooldb_if_not_yet();
         reconnect_mtooldb_if_necessary();
 
-        $last_sql_command_for_mtooldb = 'update minutes SET ' . 'UpdatedDateTime = ' . '\'' . $mtooldb->real_escape_string($minutesObj->UpdatedDateTime) . '\'' . ', ' . 'Title = ' . '\'' . $mtooldb->real_escape_string($minutesObj->Title) . '\'' . ', ' . 'Overview = ' . '\'' . $mtooldb->real_escape_string($minutesObj->Overview) . '\'' . ', ' . 'IsBrainstorming = ' . '\'' . $mtooldb->real_escape_string($minutesObj->IsBrainstorming) . '\'' . ', ' . 'Brainstorming = ' . '\'' . $mtooldb->real_escape_string($minutesObj->Brainstorming) . '\'' . ', ' . 'IsDecisionMaking = ' . '\'' . $mtooldb->real_escape_string($minutesObj->IsDecisionMaking) . '\'' . ', ' . 'DecisionMaking = ' . '\'' . $mtooldb->real_escape_string($minutesObj->DecisionMaking) . '\'' . ', ' . 'IsLearning = ' . '\'' . $mtooldb->real_escape_string($minutesObj->IsLearning) . '\'' . ', ' . 'Learning = ' . '\'' . $mtooldb->real_escape_string($minutesObj->Learning) . '\'' . ', ' . 'chattopicPID = ' . '\'' . $mtooldb->real_escape_string($minutesObj->chattopicPID) . '\'' . ', ' . 'ReqPID = ' . '\'' . $mtooldb->real_escape_string($minutesObj->ReqPID) . '\'' . ', ' . 'SpecPID = ' . '\'' . $mtooldb->real_escape_string($minutesObj->SpecPID) . '\'' . ', ' . 'SpecContentPID = ' . '\'' . $mtooldb->real_escape_string($minutesObj->SpecContentPID) . '\'' . ', ' . 'TestGroupPID = ' . '\'' . $mtooldb->real_escape_string($minutesObj->TestGroupPID) . '\'' . ', ' . 'TestPID = ' . '\'' . $mtooldb->real_escape_string($minutesObj->TestPID) . '\'' . ', ' . 'daPID = ' . '\'' . $mtooldb->real_escape_string($minutesObj->daPID) . '\'' . ', ' . 'dafuncPID = ' . '\'' . $mtooldb->real_escape_string($minutesObj->dafuncPID) . '\'' . ', ' . 'dataclassPID = ' . '\'' . $mtooldb->real_escape_string($minutesObj->dataclassPID) . '\'' . ', ' . 'dbtablePID = ' . '\'' . $mtooldb->real_escape_string($minutesObj->dbtablePID) . '\'' . ' where ' . 'minutes.PID = ' . '\'' . $mtooldb->real_escape_string($minutesObj->PID) . '\'' . ' and ' . 'minutes.ProjectPID = ' . '\'' . $mtooldb->real_escape_string($minutesObj->ProjectPID) . '\'';
+        $last_sql_command_for_mtooldb = 'update Minutes SET ' . 'UpdatedDateTime = ' . '\'' . $mtooldb->real_escape_string($MinutesObj->UpdatedDateTime) . '\'' . ', ' . 'Title = ' . '\'' . $mtooldb->real_escape_string($MinutesObj->Title) . '\'' . ', ' . 'Overview = ' . '\'' . $mtooldb->real_escape_string($MinutesObj->Overview) . '\'' . ', ' . 'IsBrainstorming = ' . '\'' . $mtooldb->real_escape_string($MinutesObj->IsBrainstorming) . '\'' . ', ' . 'Brainstorming = ' . '\'' . $mtooldb->real_escape_string($MinutesObj->Brainstorming) . '\'' . ', ' . 'IsDecisionMaking = ' . '\'' . $mtooldb->real_escape_string($MinutesObj->IsDecisionMaking) . '\'' . ', ' . 'DecisionMaking = ' . '\'' . $mtooldb->real_escape_string($MinutesObj->DecisionMaking) . '\'' . ', ' . 'IsLearning = ' . '\'' . $mtooldb->real_escape_string($MinutesObj->IsLearning) . '\'' . ', ' . 'Learning = ' . '\'' . $mtooldb->real_escape_string($MinutesObj->Learning) . '\'' . ', ' . 'ChattopicPID = ' . '\'' . $mtooldb->real_escape_string($MinutesObj->ChattopicPID) . '\'' . ', ' . 'ReqPID = ' . '\'' . $mtooldb->real_escape_string($MinutesObj->ReqPID) . '\'' . ', ' . 'SpecPID = ' . '\'' . $mtooldb->real_escape_string($MinutesObj->SpecPID) . '\'' . ', ' . 'SpecContentPID = ' . '\'' . $mtooldb->real_escape_string($MinutesObj->SpecContentPID) . '\'' . ', ' . 'TestGroupPID = ' . '\'' . $mtooldb->real_escape_string($MinutesObj->TestGroupPID) . '\'' . ', ' . 'TestPID = ' . '\'' . $mtooldb->real_escape_string($MinutesObj->TestPID) . '\'' . ', ' . 'DaPID = ' . '\'' . $mtooldb->real_escape_string($MinutesObj->DaPID) . '\'' . ', ' . 'DafuncPID = ' . '\'' . $mtooldb->real_escape_string($MinutesObj->DafuncPID) . '\'' . ', ' . 'DataclassPID = ' . '\'' . $mtooldb->real_escape_string($MinutesObj->DataclassPID) . '\'' . ', ' . 'DbtablePID = ' . '\'' . $mtooldb->real_escape_string($MinutesObj->DbtablePID) . '\'' . ' where ' . 'Minutes.PID = ' . '\'' . $mtooldb->real_escape_string($MinutesObj->PID) . '\'' . ' and ' . 'Minutes.ProjectPID = ' . '\'' . $mtooldb->real_escape_string($MinutesObj->ProjectPID) . '\'';
         $result = $mtooldb->query($last_sql_command_for_mtooldb);
         if ($mtooldb->errno != 0) {
             error_log("Error occured while executing SQL: " . $mtooldb->error . " in " . __FILE__ . " on line " . __LINE__);
@@ -134,13 +134,13 @@ class minutesDBAccessBase
     }
 
     // source_of_truth=sync-bootstrap action_type=DELETE order=134 generation=canonical-sql
-    public function Deleteminutes($minutesObj)
+    public function DeleteMinutes($MinutesObj)
     {
         global $mtooldb, $last_sql_command_for_mtooldb;
         connect_mtooldb_if_not_yet();
         reconnect_mtooldb_if_necessary();
 
-        $last_sql_command_for_mtooldb = 'delete from minutes where ' . 'minutes.PID = ' . '\'' . $mtooldb->real_escape_string($minutesObj->PID) . '\'' . ' and ' . 'minutes.ProjectPID = ' . '\'' . $mtooldb->real_escape_string($minutesObj->ProjectPID) . '\'';
+        $last_sql_command_for_mtooldb = 'delete from Minutes where ' . 'Minutes.PID = ' . '\'' . $mtooldb->real_escape_string($MinutesObj->PID) . '\'' . ' and ' . 'Minutes.ProjectPID = ' . '\'' . $mtooldb->real_escape_string($MinutesObj->ProjectPID) . '\'';
         $result = $mtooldb->query($last_sql_command_for_mtooldb);
         if ($mtooldb->errno != 0) {
             error_log("Error occured while executing SQL: " . $mtooldb->error . " in " . __FILE__ . " on line " . __LINE__);

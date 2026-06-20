@@ -9,7 +9,7 @@
 // Known helper-style methods regenerate canonical PHP bodies when SQL regeneration is not the right fit.
 // Current canonical runtime generation fully owns this class, so no legacy DBAccess parent is required.
 
-class chattopicDBAccessBase
+class ChattopicDBAccessBase
 {
     // source_of_truth=sync-bootstrap action_type=UNKNOWN order=11 generation=canonical-constructor
     // reason=bootstrap constructor is empty, so runtime owns the no-op constructor directly
@@ -18,7 +18,7 @@ class chattopicDBAccessBase
     }
 
     // source_of_truth=seed-legacy action_type=SELECTLIST order=14 generation=canonical-sql
-    public function GetchattopicList($param_chattopic_ProjectPID_where)
+    public function GetChattopicList($param_Chattopic_ProjectPID_where)
     {
         global $mtooldb, $last_sql_command_for_mtooldb;
         connect_mtooldb_if_not_yet();
@@ -26,14 +26,14 @@ class chattopicDBAccessBase
 
         $result = array();
 
-        $last_sql_command_for_mtooldb = 'select chattopic.ProjectPID, chattopic.PID, chattopic.name, chattopic.IsOld from chattopic' . ' where ' . 'chattopic.ProjectPID = ' . '\'' . $mtooldb->real_escape_string($param_chattopic_ProjectPID_where) . '\'' . ' order by chattopic.IsOld,chattopic.name,chattopic.PID';
+        $last_sql_command_for_mtooldb = 'select Chattopic.ProjectPID, Chattopic.PID, Chattopic.name, Chattopic.IsOld from Chattopic' . ' where ' . 'Chattopic.ProjectPID = ' . '\'' . $mtooldb->real_escape_string($param_Chattopic_ProjectPID_where) . '\'' . ' order by Chattopic.IsOld,Chattopic.name,Chattopic.PID';
         $ret = $mtooldb->query($last_sql_command_for_mtooldb);
         if ($mtooldb->errno != 0) {
             error_log("Error occured while executing SQL: " . $mtooldb->error . " in " . __FILE__ . " on line " . __LINE__);
             return $ret;
         }
         while($thisline=$ret->fetch_row()) {
-            $thisresult = new chattopicData();
+            $thisresult = new ChattopicData();
             $thisresult->ProjectPID = $thisline[0];
             $thisresult->PID = $thisline[1];
             $thisresult->name = $thisline[2];
@@ -44,20 +44,20 @@ class chattopicDBAccessBase
     }
 
     // source_of_truth=sync-bootstrap action_type=SELECTSINGLE order=41 generation=canonical-sql
-    public function Getchattopic($param_chattopic_PID_where, $param_chattopic_ProjectPID_where)
+    public function GetChattopic($param_Chattopic_PID_where, $param_Chattopic_ProjectPID_where)
     {
         global $mtooldb, $last_sql_command_for_mtooldb;
         connect_mtooldb_if_not_yet();
         reconnect_mtooldb_if_necessary();
 
-        $last_sql_command_for_mtooldb = 'select chattopic.ProjectPID, chattopic.PID, chattopic.name, chattopic.IsOld from chattopic' . ' where ' . 'chattopic.PID = ' . '\'' . $mtooldb->real_escape_string($param_chattopic_PID_where) . '\'' . ' and ' . 'chattopic.ProjectPID = ' . '\'' . $mtooldb->real_escape_string($param_chattopic_ProjectPID_where) . '\'';
+        $last_sql_command_for_mtooldb = 'select Chattopic.ProjectPID, Chattopic.PID, Chattopic.name, Chattopic.IsOld from Chattopic' . ' where ' . 'Chattopic.PID = ' . '\'' . $mtooldb->real_escape_string($param_Chattopic_PID_where) . '\'' . ' and ' . 'Chattopic.ProjectPID = ' . '\'' . $mtooldb->real_escape_string($param_Chattopic_ProjectPID_where) . '\'';
         $ret = $mtooldb->query($last_sql_command_for_mtooldb);
         if ($mtooldb->errno != 0) {
             error_log("Error occured while executing SQL: " . $mtooldb->error . " in " . __FILE__ . " on line " . __LINE__);
             return $ret;
         }
         while($thisline=$ret->fetch_row()) {
-            $thisresult = new chattopicData();
+            $thisresult = new ChattopicData();
             $thisresult->ProjectPID = $thisline[0];
             $thisresult->PID = $thisline[1];
             $thisresult->name = $thisline[2];
@@ -68,13 +68,13 @@ class chattopicDBAccessBase
     }
 
     // source_of_truth=sync-bootstrap action_type=INSERT order=66 generation=canonical-sql
-    public function Insertchattopic($chattopicObj)
+    public function InsertChattopic($ChattopicObj)
     {
         global $mtooldb, $last_sql_command_for_mtooldb;
         connect_mtooldb_if_not_yet();
         reconnect_mtooldb_if_necessary();
 
-        $last_sql_command_for_mtooldb = 'insert into chattopic (ProjectPID, name, IsOld) values(' . '\'' . $mtooldb->real_escape_string($chattopicObj->ProjectPID) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($chattopicObj->name) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($chattopicObj->IsOld) . '\'' . ')';
+        $last_sql_command_for_mtooldb = 'insert into Chattopic (ProjectPID, name, IsOld) values(' . '\'' . $mtooldb->real_escape_string($ChattopicObj->ProjectPID) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($ChattopicObj->name) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($ChattopicObj->IsOld) . '\'' . ')';
         $result = $mtooldb->query($last_sql_command_for_mtooldb);
         if ($mtooldb->errno != 0) {
             error_log("Error occured while executing SQL: " . $mtooldb->error . " in " . __FILE__ . " on line " . __LINE__);
@@ -83,13 +83,13 @@ class chattopicDBAccessBase
     }
 
     // source_of_truth=sync-bootstrap action_type=UPDATE order=82 generation=canonical-sql
-    public function Updatechattopic($chattopicObj)
+    public function UpdateChattopic($ChattopicObj)
     {
         global $mtooldb, $last_sql_command_for_mtooldb;
         connect_mtooldb_if_not_yet();
         reconnect_mtooldb_if_necessary();
 
-        $last_sql_command_for_mtooldb = 'update chattopic SET ' . 'name = ' . '\'' . $mtooldb->real_escape_string($chattopicObj->name) . '\'' . ', ' . 'IsOld = ' . '\'' . $mtooldb->real_escape_string($chattopicObj->IsOld) . '\'' . ' where ' . 'chattopic.PID = ' . '\'' . $mtooldb->real_escape_string($chattopicObj->PID) . '\'' . ' and ' . 'chattopic.ProjectPID = ' . '\'' . $mtooldb->real_escape_string($chattopicObj->ProjectPID) . '\'';
+        $last_sql_command_for_mtooldb = 'update Chattopic SET ' . 'name = ' . '\'' . $mtooldb->real_escape_string($ChattopicObj->name) . '\'' . ', ' . 'IsOld = ' . '\'' . $mtooldb->real_escape_string($ChattopicObj->IsOld) . '\'' . ' where ' . 'Chattopic.PID = ' . '\'' . $mtooldb->real_escape_string($ChattopicObj->PID) . '\'' . ' and ' . 'Chattopic.ProjectPID = ' . '\'' . $mtooldb->real_escape_string($ChattopicObj->ProjectPID) . '\'';
         $result = $mtooldb->query($last_sql_command_for_mtooldb);
         if ($mtooldb->errno != 0) {
             error_log("Error occured while executing SQL: " . $mtooldb->error . " in " . __FILE__ . " on line " . __LINE__);
@@ -98,13 +98,13 @@ class chattopicDBAccessBase
     }
 
     // source_of_truth=sync-bootstrap action_type=DELETE order=98 generation=canonical-sql
-    public function Deletechattopic($chattopicObj)
+    public function DeleteChattopic($ChattopicObj)
     {
         global $mtooldb, $last_sql_command_for_mtooldb;
         connect_mtooldb_if_not_yet();
         reconnect_mtooldb_if_necessary();
 
-        $last_sql_command_for_mtooldb = 'delete from chattopic where ' . 'chattopic.PID = ' . '\'' . $mtooldb->real_escape_string($chattopicObj->PID) . '\'' . ' and ' . 'chattopic.ProjectPID = ' . '\'' . $mtooldb->real_escape_string($chattopicObj->ProjectPID) . '\'';
+        $last_sql_command_for_mtooldb = 'delete from Chattopic where ' . 'Chattopic.PID = ' . '\'' . $mtooldb->real_escape_string($ChattopicObj->PID) . '\'' . ' and ' . 'Chattopic.ProjectPID = ' . '\'' . $mtooldb->real_escape_string($ChattopicObj->ProjectPID) . '\'';
         $result = $mtooldb->query($last_sql_command_for_mtooldb);
         if ($mtooldb->errno != 0) {
             error_log("Error occured while executing SQL: " . $mtooldb->error . " in " . __FILE__ . " on line " . __LINE__);

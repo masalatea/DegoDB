@@ -16,8 +16,8 @@ class ProjectUserDataBase
     public $IsOwner;
     public $dbtoolRead;
     public $dbtoolWrite;
-    public $htmlRead;
-    public $htmlWrite;
+    public $HtmlRead;
+    public $HtmlWrite;
     public $testtoolRead;
     public $testtoolWrite;
     public $spectoolRead;
@@ -42,8 +42,8 @@ class ProjectUserSerurityEnum
 {
 	static $DBTOOLREAD = "dbtoolRead";
 	static $DBTOOLWRITE = "dbtoolWrite";
-	static $HTMLREAD = "htmlRead";
-	static $HTMLWRITE = "htmlWrite";
+	static $HTMLREAD = "HtmlRead";
+	static $HTMLWRITE = "HtmlWrite";
 	static $TESTTOOLREAD = "testtoolRead";
 	static $TESTTOOLWRITE = "testtoolWrite";
 	static $SPECTOOLREAD = "spectoolRead";

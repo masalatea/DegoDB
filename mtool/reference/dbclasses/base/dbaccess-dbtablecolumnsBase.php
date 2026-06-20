@@ -9,7 +9,7 @@
 // Known helper-style methods regenerate canonical PHP bodies when SQL regeneration is not the right fit.
 // Current canonical runtime generation fully owns this class, so no legacy DBAccess parent is required.
 
-class dbtablecolumnsDBAccessBase
+class DbtablecolumnsDBAccessBase
 {
     // source_of_truth=sync-bootstrap action_type=UNKNOWN order=11 generation=canonical-constructor
     // reason=bootstrap constructor is empty, so runtime owns the no-op constructor directly
@@ -18,7 +18,7 @@ class dbtablecolumnsDBAccessBase
     }
 
     // source_of_truth=seed-legacy action_type=SELECTLIST order=14 generation=canonical-sql
-    public function GetdbtablecolumnsList($param_dbtablecolumns_ProjectPID_where, $param_dbtablecolumns_dbtablePID_where)
+    public function GetDbtablecolumnsList($param_Dbtablecolumns_ProjectPID_where, $param_Dbtablecolumns_DbtablePID_where)
     {
         global $mtooldb, $last_sql_command_for_mtooldb;
         connect_mtooldb_if_not_yet();
@@ -26,16 +26,16 @@ class dbtablecolumnsDBAccessBase
 
         $result = array();
 
-        $last_sql_command_for_mtooldb = 'select dbtablecolumns.ProjectPID, dbtablecolumns.dbtablePID, dbtablecolumns.PID, dbtablecolumns.name, dbtablecolumns.datatype, dbtablecolumns.IsNull, dbtablecolumns.IsKey, dbtablecolumns.IsDefault, dbtablecolumns.Extra, dbtablecolumns.ColumnListOrder, dbtablecolumns.memo from dbtablecolumns' . ' where ' . 'dbtablecolumns.ProjectPID = ' . '\'' . $mtooldb->real_escape_string($param_dbtablecolumns_ProjectPID_where) . '\'' . ' and ' . 'dbtablecolumns.dbtablePID = ' . '\'' . $mtooldb->real_escape_string($param_dbtablecolumns_dbtablePID_where) . '\'' . ' order by dbtablecolumns.ColumnListOrder,dbtablecolumns.PID';
+        $last_sql_command_for_mtooldb = 'select Dbtablecolumns.ProjectPID, Dbtablecolumns.DbtablePID, Dbtablecolumns.PID, Dbtablecolumns.name, Dbtablecolumns.datatype, Dbtablecolumns.IsNull, Dbtablecolumns.IsKey, Dbtablecolumns.IsDefault, Dbtablecolumns.Extra, Dbtablecolumns.ColumnListOrder, Dbtablecolumns.memo from Dbtablecolumns' . ' where ' . 'Dbtablecolumns.ProjectPID = ' . '\'' . $mtooldb->real_escape_string($param_Dbtablecolumns_ProjectPID_where) . '\'' . ' and ' . 'Dbtablecolumns.DbtablePID = ' . '\'' . $mtooldb->real_escape_string($param_Dbtablecolumns_DbtablePID_where) . '\'' . ' order by Dbtablecolumns.ColumnListOrder,Dbtablecolumns.PID';
         $ret = $mtooldb->query($last_sql_command_for_mtooldb);
         if ($mtooldb->errno != 0) {
             error_log("Error occured while executing SQL: " . $mtooldb->error . " in " . __FILE__ . " on line " . __LINE__);
             return $ret;
         }
         while($thisline=$ret->fetch_row()) {
-            $thisresult = new dbtablecolumnsData();
+            $thisresult = new DbtablecolumnsData();
             $thisresult->ProjectPID = $thisline[0];
-            $thisresult->dbtablePID = $thisline[1];
+            $thisresult->DbtablePID = $thisline[1];
             $thisresult->PID = $thisline[2];
             $thisresult->name = $thisline[3];
             $thisresult->datatype = $thisline[4];
@@ -51,22 +51,22 @@ class dbtablecolumnsDBAccessBase
     }
 
     // source_of_truth=sync-bootstrap action_type=SELECTSINGLE order=48 generation=canonical-sql
-    public function Getdbtablecolumns($param_dbtablecolumns_PID_where, $param_dbtablecolumns_ProjectPID_where)
+    public function GetDbtablecolumns($param_Dbtablecolumns_PID_where, $param_Dbtablecolumns_ProjectPID_where)
     {
         global $mtooldb, $last_sql_command_for_mtooldb;
         connect_mtooldb_if_not_yet();
         reconnect_mtooldb_if_necessary();
 
-        $last_sql_command_for_mtooldb = 'select dbtablecolumns.ProjectPID, dbtablecolumns.dbtablePID, dbtablecolumns.PID, dbtablecolumns.name, dbtablecolumns.datatype, dbtablecolumns.IsNull, dbtablecolumns.IsKey, dbtablecolumns.IsDefault, dbtablecolumns.Extra, dbtablecolumns.ColumnListOrder, dbtablecolumns.memo from dbtablecolumns' . ' where ' . 'dbtablecolumns.PID = ' . '\'' . $mtooldb->real_escape_string($param_dbtablecolumns_PID_where) . '\'' . ' and ' . 'dbtablecolumns.ProjectPID = ' . '\'' . $mtooldb->real_escape_string($param_dbtablecolumns_ProjectPID_where) . '\'';
+        $last_sql_command_for_mtooldb = 'select Dbtablecolumns.ProjectPID, Dbtablecolumns.DbtablePID, Dbtablecolumns.PID, Dbtablecolumns.name, Dbtablecolumns.datatype, Dbtablecolumns.IsNull, Dbtablecolumns.IsKey, Dbtablecolumns.IsDefault, Dbtablecolumns.Extra, Dbtablecolumns.ColumnListOrder, Dbtablecolumns.memo from Dbtablecolumns' . ' where ' . 'Dbtablecolumns.PID = ' . '\'' . $mtooldb->real_escape_string($param_Dbtablecolumns_PID_where) . '\'' . ' and ' . 'Dbtablecolumns.ProjectPID = ' . '\'' . $mtooldb->real_escape_string($param_Dbtablecolumns_ProjectPID_where) . '\'';
         $ret = $mtooldb->query($last_sql_command_for_mtooldb);
         if ($mtooldb->errno != 0) {
             error_log("Error occured while executing SQL: " . $mtooldb->error . " in " . __FILE__ . " on line " . __LINE__);
             return $ret;
         }
         while($thisline=$ret->fetch_row()) {
-            $thisresult = new dbtablecolumnsData();
+            $thisresult = new DbtablecolumnsData();
             $thisresult->ProjectPID = $thisline[0];
-            $thisresult->dbtablePID = $thisline[1];
+            $thisresult->DbtablePID = $thisline[1];
             $thisresult->PID = $thisline[2];
             $thisresult->name = $thisline[3];
             $thisresult->datatype = $thisline[4];
@@ -82,13 +82,13 @@ class dbtablecolumnsDBAccessBase
     }
 
     // source_of_truth=sync-bootstrap action_type=INSERT order=80 generation=canonical-sql
-    public function Insertdbtablecolumns($dbtablecolumnsObj)
+    public function InsertDbtablecolumns($DbtablecolumnsObj)
     {
         global $mtooldb, $last_sql_command_for_mtooldb;
         connect_mtooldb_if_not_yet();
         reconnect_mtooldb_if_necessary();
 
-        $last_sql_command_for_mtooldb = 'insert into dbtablecolumns (ProjectPID, dbtablePID, name, datatype, IsNull, IsKey, IsDefault, Extra, memo) values(' . '\'' . $mtooldb->real_escape_string($dbtablecolumnsObj->ProjectPID) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($dbtablecolumnsObj->dbtablePID) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($dbtablecolumnsObj->name) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($dbtablecolumnsObj->datatype) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($dbtablecolumnsObj->IsNull) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($dbtablecolumnsObj->IsKey) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($dbtablecolumnsObj->IsDefault) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($dbtablecolumnsObj->Extra) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($dbtablecolumnsObj->memo) . '\'' . ')';
+        $last_sql_command_for_mtooldb = 'insert into Dbtablecolumns (ProjectPID, DbtablePID, name, datatype, IsNull, IsKey, IsDefault, Extra, memo) values(' . '\'' . $mtooldb->real_escape_string($DbtablecolumnsObj->ProjectPID) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($DbtablecolumnsObj->DbtablePID) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($DbtablecolumnsObj->name) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($DbtablecolumnsObj->datatype) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($DbtablecolumnsObj->IsNull) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($DbtablecolumnsObj->IsKey) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($DbtablecolumnsObj->IsDefault) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($DbtablecolumnsObj->Extra) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($DbtablecolumnsObj->memo) . '\'' . ')';
         $result = $mtooldb->query($last_sql_command_for_mtooldb);
         if ($mtooldb->errno != 0) {
             error_log("Error occured while executing SQL: " . $mtooldb->error . " in " . __FILE__ . " on line " . __LINE__);
@@ -97,13 +97,13 @@ class dbtablecolumnsDBAccessBase
     }
 
     // source_of_truth=sync-bootstrap action_type=UPDATE order=96 generation=canonical-sql
-    public function UpdatedbtablecolumnsExcludeColumnListOrder($dbtablecolumnsObj)
+    public function UpdateDbtablecolumnsExcludeColumnListOrder($DbtablecolumnsObj)
     {
         global $mtooldb, $last_sql_command_for_mtooldb;
         connect_mtooldb_if_not_yet();
         reconnect_mtooldb_if_necessary();
 
-        $last_sql_command_for_mtooldb = 'update dbtablecolumns SET ' . 'name = ' . '\'' . $mtooldb->real_escape_string($dbtablecolumnsObj->name) . '\'' . ', ' . 'datatype = ' . '\'' . $mtooldb->real_escape_string($dbtablecolumnsObj->datatype) . '\'' . ', ' . 'IsNull = ' . '\'' . $mtooldb->real_escape_string($dbtablecolumnsObj->IsNull) . '\'' . ', ' . 'IsKey = ' . '\'' . $mtooldb->real_escape_string($dbtablecolumnsObj->IsKey) . '\'' . ', ' . 'IsDefault = ' . '\'' . $mtooldb->real_escape_string($dbtablecolumnsObj->IsDefault) . '\'' . ', ' . 'Extra = ' . '\'' . $mtooldb->real_escape_string($dbtablecolumnsObj->Extra) . '\'' . ', ' . 'memo = ' . '\'' . $mtooldb->real_escape_string($dbtablecolumnsObj->memo) . '\'' . ' where ' . 'dbtablecolumns.PID = ' . '\'' . $mtooldb->real_escape_string($dbtablecolumnsObj->PID) . '\'' . ' and ' . 'dbtablecolumns.ProjectPID = ' . '\'' . $mtooldb->real_escape_string($dbtablecolumnsObj->ProjectPID) . '\'';
+        $last_sql_command_for_mtooldb = 'update Dbtablecolumns SET ' . 'name = ' . '\'' . $mtooldb->real_escape_string($DbtablecolumnsObj->name) . '\'' . ', ' . 'datatype = ' . '\'' . $mtooldb->real_escape_string($DbtablecolumnsObj->datatype) . '\'' . ', ' . 'IsNull = ' . '\'' . $mtooldb->real_escape_string($DbtablecolumnsObj->IsNull) . '\'' . ', ' . 'IsKey = ' . '\'' . $mtooldb->real_escape_string($DbtablecolumnsObj->IsKey) . '\'' . ', ' . 'IsDefault = ' . '\'' . $mtooldb->real_escape_string($DbtablecolumnsObj->IsDefault) . '\'' . ', ' . 'Extra = ' . '\'' . $mtooldb->real_escape_string($DbtablecolumnsObj->Extra) . '\'' . ', ' . 'memo = ' . '\'' . $mtooldb->real_escape_string($DbtablecolumnsObj->memo) . '\'' . ' where ' . 'Dbtablecolumns.PID = ' . '\'' . $mtooldb->real_escape_string($DbtablecolumnsObj->PID) . '\'' . ' and ' . 'Dbtablecolumns.ProjectPID = ' . '\'' . $mtooldb->real_escape_string($DbtablecolumnsObj->ProjectPID) . '\'';
         $result = $mtooldb->query($last_sql_command_for_mtooldb);
         if ($mtooldb->errno != 0) {
             error_log("Error occured while executing SQL: " . $mtooldb->error . " in " . __FILE__ . " on line " . __LINE__);
@@ -112,13 +112,13 @@ class dbtablecolumnsDBAccessBase
     }
 
     // source_of_truth=sync-bootstrap action_type=DELETE order=112 generation=canonical-sql
-    public function Deletedbtablecolumns($param_dbtablecolumns_PID_where, $param_dbtablecolumns_ProjectPID_where)
+    public function DeleteDbtablecolumns($param_Dbtablecolumns_PID_where, $param_Dbtablecolumns_ProjectPID_where)
     {
         global $mtooldb, $last_sql_command_for_mtooldb;
         connect_mtooldb_if_not_yet();
         reconnect_mtooldb_if_necessary();
 
-        $last_sql_command_for_mtooldb = 'delete from dbtablecolumns where ' . 'dbtablecolumns.PID = ' . '\'' . $mtooldb->real_escape_string($param_dbtablecolumns_PID_where) . '\'' . ' and ' . 'dbtablecolumns.ProjectPID = ' . '\'' . $mtooldb->real_escape_string($param_dbtablecolumns_ProjectPID_where) . '\'';
+        $last_sql_command_for_mtooldb = 'delete from Dbtablecolumns where ' . 'Dbtablecolumns.PID = ' . '\'' . $mtooldb->real_escape_string($param_Dbtablecolumns_PID_where) . '\'' . ' and ' . 'Dbtablecolumns.ProjectPID = ' . '\'' . $mtooldb->real_escape_string($param_Dbtablecolumns_ProjectPID_where) . '\'';
         $result = $mtooldb->query($last_sql_command_for_mtooldb);
         if ($mtooldb->errno != 0) {
             error_log("Error occured while executing SQL: " . $mtooldb->error . " in " . __FILE__ . " on line " . __LINE__);
@@ -127,13 +127,13 @@ class dbtablecolumnsDBAccessBase
     }
 
     // source_of_truth=sync-bootstrap action_type=UPDATE order=128 generation=canonical-sql
-    public function UpdatedbtablecolumnsIncludeColumnListOrder($dbtablecolumnsObj)
+    public function UpdateDbtablecolumnsIncludeColumnListOrder($DbtablecolumnsObj)
     {
         global $mtooldb, $last_sql_command_for_mtooldb;
         connect_mtooldb_if_not_yet();
         reconnect_mtooldb_if_necessary();
 
-        $last_sql_command_for_mtooldb = 'update dbtablecolumns SET ' . 'name = ' . '\'' . $mtooldb->real_escape_string($dbtablecolumnsObj->name) . '\'' . ', ' . 'datatype = ' . '\'' . $mtooldb->real_escape_string($dbtablecolumnsObj->datatype) . '\'' . ', ' . 'IsNull = ' . '\'' . $mtooldb->real_escape_string($dbtablecolumnsObj->IsNull) . '\'' . ', ' . 'IsKey = ' . '\'' . $mtooldb->real_escape_string($dbtablecolumnsObj->IsKey) . '\'' . ', ' . 'IsDefault = ' . '\'' . $mtooldb->real_escape_string($dbtablecolumnsObj->IsDefault) . '\'' . ', ' . 'Extra = ' . '\'' . $mtooldb->real_escape_string($dbtablecolumnsObj->Extra) . '\'' . ', ' . 'ColumnListOrder = ' . '\'' . $mtooldb->real_escape_string($dbtablecolumnsObj->ColumnListOrder) . '\'' . ', ' . 'memo = ' . '\'' . $mtooldb->real_escape_string($dbtablecolumnsObj->memo) . '\'' . ' where ' . 'dbtablecolumns.PID = ' . '\'' . $mtooldb->real_escape_string($dbtablecolumnsObj->PID) . '\'' . ' and ' . 'dbtablecolumns.ProjectPID = ' . '\'' . $mtooldb->real_escape_string($dbtablecolumnsObj->ProjectPID) . '\'';
+        $last_sql_command_for_mtooldb = 'update Dbtablecolumns SET ' . 'name = ' . '\'' . $mtooldb->real_escape_string($DbtablecolumnsObj->name) . '\'' . ', ' . 'datatype = ' . '\'' . $mtooldb->real_escape_string($DbtablecolumnsObj->datatype) . '\'' . ', ' . 'IsNull = ' . '\'' . $mtooldb->real_escape_string($DbtablecolumnsObj->IsNull) . '\'' . ', ' . 'IsKey = ' . '\'' . $mtooldb->real_escape_string($DbtablecolumnsObj->IsKey) . '\'' . ', ' . 'IsDefault = ' . '\'' . $mtooldb->real_escape_string($DbtablecolumnsObj->IsDefault) . '\'' . ', ' . 'Extra = ' . '\'' . $mtooldb->real_escape_string($DbtablecolumnsObj->Extra) . '\'' . ', ' . 'ColumnListOrder = ' . '\'' . $mtooldb->real_escape_string($DbtablecolumnsObj->ColumnListOrder) . '\'' . ', ' . 'memo = ' . '\'' . $mtooldb->real_escape_string($DbtablecolumnsObj->memo) . '\'' . ' where ' . 'Dbtablecolumns.PID = ' . '\'' . $mtooldb->real_escape_string($DbtablecolumnsObj->PID) . '\'' . ' and ' . 'Dbtablecolumns.ProjectPID = ' . '\'' . $mtooldb->real_escape_string($DbtablecolumnsObj->ProjectPID) . '\'';
         $result = $mtooldb->query($last_sql_command_for_mtooldb);
         if ($mtooldb->errno != 0) {
             error_log("Error occured while executing SQL: " . $mtooldb->error . " in " . __FILE__ . " on line " . __LINE__);

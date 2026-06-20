@@ -2193,6 +2193,7 @@ function app_project_metadata_bundle_export_table_item(array $item): array
 
         $columns[] = [
             'name' => (string) ($column['name'] ?? ''),
+            'physical_name' => (string) ($column['physical_name'] ?? $column['name'] ?? ''),
             'datatype' => (string) ($column['datatype'] ?? ''),
             'is_null' => (string) ($column['is_null'] ?? ''),
             'is_key' => (string) ($column['is_key'] ?? ''),
@@ -2205,6 +2206,7 @@ function app_project_metadata_bundle_export_table_item(array $item): array
 
     return [
         'name' => (string) ($item['name'] ?? ''),
+        'physical_name' => (string) ($item['physical_name'] ?? $item['name'] ?? ''),
         'columns' => $columns,
     ];
 }
@@ -2239,6 +2241,7 @@ function app_project_metadata_bundle_export_data_class_item(array $item): array
 
         $fields[] = [
             'name' => (string) ($field['name'] ?? ''),
+            'physical_name' => (string) ($field['physical_name'] ?? $field['name'] ?? ''),
             'datatype' => (string) ($field['datatype'] ?? ''),
             'field_list_order' => (int) ($field['field_list_order'] ?? 0),
             'ref_data_class_name' => (string) ($field['ref_data_class_name'] ?? ''),
@@ -2248,6 +2251,7 @@ function app_project_metadata_bundle_export_data_class_item(array $item): array
 
     return [
         'name' => (string) ($item['name'] ?? ''),
+        'physical_name' => (string) ($item['physical_name'] ?? $item['name'] ?? ''),
         'store_base_path' => (string) ($item['store_base_path'] ?? ''),
         'is_autoload' => (string) ($item['is_autoload'] ?? '0'),
         'inherit_parent_data_class_name' => (string) ($item['inherit_parent_data_class_name'] ?? ''),
@@ -2931,14 +2935,15 @@ function app_project_metadata_bundle_insert_tables(PDO $pdo, int $projectId, arr
     $dialect = app_sql_dialect_from_pdo($pdo);
     $isNullIdentifier = app_sql_identifier($dialect, 'IsNull');
     $tableStatement = $pdo->prepare(
-        'INSERT INTO dbtable (ProjectPID, name)
-         VALUES (:project_id, :name)'
+        'INSERT INTO dbtable (ProjectPID, name, physical_name)
+         VALUES (:project_id, :name, :physical_name)'
     );
     $columnStatement = $pdo->prepare(
         'INSERT INTO dbtablecolumns (
             ProjectPID,
             dbtablePID,
             name,
+            physical_name,
             datatype,
             ' . $isNullIdentifier . ',
             IsKey,
@@ -2950,6 +2955,7 @@ function app_project_metadata_bundle_insert_tables(PDO $pdo, int $projectId, arr
             :project_id,
             :table_id,
             :name,
+            :physical_name,
             :datatype,
             :is_null,
             :is_key,
@@ -2968,6 +2974,7 @@ function app_project_metadata_bundle_insert_tables(PDO $pdo, int $projectId, arr
         $tableStatement->execute([
             ':project_id' => $projectId,
             ':name' => (string) ($table['name'] ?? ''),
+            ':physical_name' => (string) ($table['physical_name'] ?? $table['name'] ?? ''),
         ]);
         $tableId = (int) $pdo->lastInsertId();
 
@@ -2980,6 +2987,7 @@ function app_project_metadata_bundle_insert_tables(PDO $pdo, int $projectId, arr
                 ':project_id' => $projectId,
                 ':table_id' => $tableId,
                 ':name' => (string) ($column['name'] ?? ''),
+                ':physical_name' => (string) ($column['physical_name'] ?? $column['name'] ?? ''),
                 ':datatype' => (string) ($column['datatype'] ?? ''),
                 ':is_null' => (string) ($column['is_null'] ?? ''),
                 ':is_key' => (string) ($column['is_key'] ?? ''),
@@ -3001,12 +3009,14 @@ function app_project_metadata_bundle_insert_data_classes(PDO $pdo, int $projectI
         'INSERT INTO dataclass (
             ProjectPID,
             name,
+            physical_name,
             StoreBasePath,
             IsAutoload,
             InheritParentDataClassName
         ) VALUES (
             :project_id,
             :name,
+            :physical_name,
             :store_base_path,
             :is_autoload,
             :inherit_parent_data_class_name
@@ -3017,6 +3027,7 @@ function app_project_metadata_bundle_insert_data_classes(PDO $pdo, int $projectI
             ProjectPID,
             dataclassPID,
             name,
+            physical_name,
             datatype,
             FieldListOrder,
             RefDataClassName,
@@ -3025,6 +3036,7 @@ function app_project_metadata_bundle_insert_data_classes(PDO $pdo, int $projectI
             :project_id,
             :dataclass_id,
             :name,
+            :physical_name,
             :datatype,
             :field_list_order,
             :ref_data_class_name,
@@ -3040,6 +3052,7 @@ function app_project_metadata_bundle_insert_data_classes(PDO $pdo, int $projectI
         $dataClassStatement->execute([
             ':project_id' => $projectId,
             ':name' => (string) ($dataClass['name'] ?? ''),
+            ':physical_name' => (string) ($dataClass['physical_name'] ?? $dataClass['name'] ?? ''),
             ':store_base_path' => (string) ($dataClass['store_base_path'] ?? ''),
             ':is_autoload' => ((string) ($dataClass['is_autoload'] ?? '0')) === '1' ? 1 : 0,
             ':inherit_parent_data_class_name' => (string) ($dataClass['inherit_parent_data_class_name'] ?? ''),
@@ -3055,6 +3068,7 @@ function app_project_metadata_bundle_insert_data_classes(PDO $pdo, int $projectI
                 ':project_id' => $projectId,
                 ':dataclass_id' => $dataClassId,
                 ':name' => (string) ($field['name'] ?? ''),
+                ':physical_name' => (string) ($field['physical_name'] ?? $field['name'] ?? ''),
                 ':datatype' => (string) ($field['datatype'] ?? ''),
                 ':field_list_order' => (int) ($field['field_list_order'] ?? 0),
                 ':ref_data_class_name' => (string) ($field['ref_data_class_name'] ?? ''),

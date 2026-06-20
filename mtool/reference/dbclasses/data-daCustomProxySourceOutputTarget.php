@@ -1,13 +1,13 @@
 <?php
 
 require_once __DIR__ . '/_runtime_loader.php';
-require_once __DIR__ . '/base/data-daCustomProxySourceOutputTargetBase.php';
+require_once __DIR__ . '/base/data-DaCustomProxySourceOutputTargetBase.php';
 
-if (!mtool_runtime_bundle_load_custom_wrapper('data-daCustomProxySourceOutputTarget.php')) {
+if (!mtool_runtime_bundle_load_custom_wrapper('data-DaCustomProxySourceOutputTarget.php')) {
     // Generated wrapper entry for runtime data class.
-    // Override `mtool/extensions/MTOOL/RUNTIME-DBCLASSES/data-daCustomProxySourceOutputTarget.php` and extend `daCustomProxySourceOutputTargetDataBase` for project-specific customizations.
+    // Override `mtool/extensions/MTOOL/RUNTIME-DBCLASSES/data-DaCustomProxySourceOutputTarget.php` and extend `DaCustomProxySourceOutputTargetDataBase` for project-specific customizations.
 
-    class daCustomProxySourceOutputTargetData extends daCustomProxySourceOutputTargetDataBase
+    class DaCustomProxySourceOutputTargetData extends DaCustomProxySourceOutputTargetDataBase
     {
     }
 }

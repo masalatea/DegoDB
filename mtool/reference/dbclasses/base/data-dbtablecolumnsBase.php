@@ -8,10 +8,10 @@
 // Generated members are kept in this base file. Former editable areas move to the wrapper file.
 // Generated trailing enum-type classes also stay in this base file when present.
 
-class dbtablecolumnsDataBase
+class DbtablecolumnsDataBase
 {
     public $ProjectPID;
-    public $dbtablePID;
+    public $DbtablePID;
     public $PID;
     public $name;
     public $datatype;

@@ -9,7 +9,7 @@
 // Known helper-style methods regenerate canonical PHP bodies when SQL regeneration is not the right fit.
 // Current canonical runtime generation fully owns this class, so no legacy DBAccess parent is required.
 
-class dafuncupdatedeletewhereDBAccessBase
+class DafuncupdatedeletewhereDBAccessBase
 {
     // source_of_truth=sync-bootstrap action_type=UNKNOWN order=11 generation=canonical-constructor
     // reason=bootstrap constructor is empty, so runtime owns the no-op constructor directly
@@ -18,7 +18,7 @@ class dafuncupdatedeletewhereDBAccessBase
     }
 
     // source_of_truth=seed-legacy action_type=SELECTLIST order=14 generation=canonical-sql
-    public function GetdafuncupdatedeletewhereList($param_dafuncupdatedeletewhere_ProjectPID_where, $param_dafuncupdatedeletewhere_daPID_where, $param_dafuncupdatedeletewhere_dafuncPID_where)
+    public function GetDafuncupdatedeletewhereList($param_Dafuncupdatedeletewhere_ProjectPID_where, $param_Dafuncupdatedeletewhere_daPID_where, $param_Dafuncupdatedeletewhere_DafuncPID_where)
     {
         global $mtooldb, $last_sql_command_for_mtooldb;
         connect_mtooldb_if_not_yet();
@@ -26,17 +26,17 @@ class dafuncupdatedeletewhereDBAccessBase
 
         $result = array();
 
-        $last_sql_command_for_mtooldb = 'select dafuncupdatedeletewhere.ProjectPID, dafuncupdatedeletewhere.daPID, dafuncupdatedeletewhere.dafuncPID, dafuncupdatedeletewhere.PID, dafuncupdatedeletewhere.targetTableColumnName, dafuncupdatedeletewhere.ParameterType, dafuncupdatedeletewhere.ParameterDataType, dafuncupdatedeletewhere.FixedParameter, dafuncupdatedeletewhere.ORGroup, dafuncupdatedeletewhere.RelationalOperator, dafuncupdatedeletewhere.WhereOrder from dafuncupdatedeletewhere' . ' where ' . 'dafuncupdatedeletewhere.ProjectPID = ' . '\'' . $mtooldb->real_escape_string($param_dafuncupdatedeletewhere_ProjectPID_where) . '\'' . ' and ' . 'dafuncupdatedeletewhere.daPID = ' . '\'' . $mtooldb->real_escape_string($param_dafuncupdatedeletewhere_daPID_where) . '\'' . ' and ' . 'dafuncupdatedeletewhere.dafuncPID = ' . '\'' . $mtooldb->real_escape_string($param_dafuncupdatedeletewhere_dafuncPID_where) . '\'' . ' order by dafuncupdatedeletewhere.WhereOrder,dafuncupdatedeletewhere.PID';
+        $last_sql_command_for_mtooldb = 'select Dafuncupdatedeletewhere.ProjectPID, Dafuncupdatedeletewhere.DaPID, Dafuncupdatedeletewhere.DafuncPID, Dafuncupdatedeletewhere.PID, Dafuncupdatedeletewhere.targetTableColumnName, Dafuncupdatedeletewhere.ParameterType, Dafuncupdatedeletewhere.ParameterDataType, Dafuncupdatedeletewhere.FixedParameter, Dafuncupdatedeletewhere.ORGroup, Dafuncupdatedeletewhere.RelationalOperator, Dafuncupdatedeletewhere.WhereOrder from Dafuncupdatedeletewhere' . ' where ' . 'Dafuncupdatedeletewhere.ProjectPID = ' . '\'' . $mtooldb->real_escape_string($param_Dafuncupdatedeletewhere_ProjectPID_where) . '\'' . ' and ' . 'Dafuncupdatedeletewhere.DaPID = ' . '\'' . $mtooldb->real_escape_string($param_Dafuncupdatedeletewhere_daPID_where) . '\'' . ' and ' . 'Dafuncupdatedeletewhere.DafuncPID = ' . '\'' . $mtooldb->real_escape_string($param_Dafuncupdatedeletewhere_DafuncPID_where) . '\'' . ' order by Dafuncupdatedeletewhere.WhereOrder,Dafuncupdatedeletewhere.PID';
         $ret = $mtooldb->query($last_sql_command_for_mtooldb);
         if ($mtooldb->errno != 0) {
             error_log("Error occured while executing SQL: " . $mtooldb->error . " in " . __FILE__ . " on line " . __LINE__);
             return $ret;
         }
         while($thisline=$ret->fetch_row()) {
-            $thisresult = new dafuncupdatedeletewhereData();
+            $thisresult = new DafuncupdatedeletewhereData();
             $thisresult->ProjectPID = $thisline[0];
-            $thisresult->daPID = $thisline[1];
-            $thisresult->dafuncPID = $thisline[2];
+            $thisresult->DaPID = $thisline[1];
+            $thisresult->DafuncPID = $thisline[2];
             $thisresult->PID = $thisline[3];
             $thisresult->targetTableColumnName = $thisline[4];
             $thisresult->ParameterType = $thisline[5];
@@ -51,23 +51,23 @@ class dafuncupdatedeletewhereDBAccessBase
     }
 
     // source_of_truth=sync-bootstrap action_type=SELECTSINGLE order=48 generation=canonical-sql
-    public function Getdafuncupdatedeletewhere($param_dafuncupdatedeletewhere_PID_where, $param_dafuncupdatedeletewhere_ProjectPID_where)
+    public function GetDafuncupdatedeletewhere($param_Dafuncupdatedeletewhere_PID_where, $param_Dafuncupdatedeletewhere_ProjectPID_where)
     {
         global $mtooldb, $last_sql_command_for_mtooldb;
         connect_mtooldb_if_not_yet();
         reconnect_mtooldb_if_necessary();
 
-        $last_sql_command_for_mtooldb = 'select dafuncupdatedeletewhere.ProjectPID, dafuncupdatedeletewhere.daPID, dafuncupdatedeletewhere.dafuncPID, dafuncupdatedeletewhere.PID, dafuncupdatedeletewhere.targetTableColumnName, dafuncupdatedeletewhere.ParameterType, dafuncupdatedeletewhere.ParameterDataType, dafuncupdatedeletewhere.FixedParameter, dafuncupdatedeletewhere.ORGroup, dafuncupdatedeletewhere.RelationalOperator, dafuncupdatedeletewhere.WhereOrder from dafuncupdatedeletewhere' . ' where ' . 'dafuncupdatedeletewhere.PID = ' . '\'' . $mtooldb->real_escape_string($param_dafuncupdatedeletewhere_PID_where) . '\'' . ' and ' . 'dafuncupdatedeletewhere.ProjectPID = ' . '\'' . $mtooldb->real_escape_string($param_dafuncupdatedeletewhere_ProjectPID_where) . '\'';
+        $last_sql_command_for_mtooldb = 'select Dafuncupdatedeletewhere.ProjectPID, Dafuncupdatedeletewhere.DaPID, Dafuncupdatedeletewhere.DafuncPID, Dafuncupdatedeletewhere.PID, Dafuncupdatedeletewhere.targetTableColumnName, Dafuncupdatedeletewhere.ParameterType, Dafuncupdatedeletewhere.ParameterDataType, Dafuncupdatedeletewhere.FixedParameter, Dafuncupdatedeletewhere.ORGroup, Dafuncupdatedeletewhere.RelationalOperator, Dafuncupdatedeletewhere.WhereOrder from Dafuncupdatedeletewhere' . ' where ' . 'Dafuncupdatedeletewhere.PID = ' . '\'' . $mtooldb->real_escape_string($param_Dafuncupdatedeletewhere_PID_where) . '\'' . ' and ' . 'Dafuncupdatedeletewhere.ProjectPID = ' . '\'' . $mtooldb->real_escape_string($param_Dafuncupdatedeletewhere_ProjectPID_where) . '\'';
         $ret = $mtooldb->query($last_sql_command_for_mtooldb);
         if ($mtooldb->errno != 0) {
             error_log("Error occured while executing SQL: " . $mtooldb->error . " in " . __FILE__ . " on line " . __LINE__);
             return $ret;
         }
         while($thisline=$ret->fetch_row()) {
-            $thisresult = new dafuncupdatedeletewhereData();
+            $thisresult = new DafuncupdatedeletewhereData();
             $thisresult->ProjectPID = $thisline[0];
-            $thisresult->daPID = $thisline[1];
-            $thisresult->dafuncPID = $thisline[2];
+            $thisresult->DaPID = $thisline[1];
+            $thisresult->DafuncPID = $thisline[2];
             $thisresult->PID = $thisline[3];
             $thisresult->targetTableColumnName = $thisline[4];
             $thisresult->ParameterType = $thisline[5];
@@ -82,13 +82,13 @@ class dafuncupdatedeletewhereDBAccessBase
     }
 
     // source_of_truth=sync-bootstrap action_type=INSERT order=80 generation=canonical-sql
-    public function Insertdafuncupdatedeletewhere($dafuncupdatedeletewhereObj)
+    public function InsertDafuncupdatedeletewhere($DafuncupdatedeletewhereObj)
     {
         global $mtooldb, $last_sql_command_for_mtooldb;
         connect_mtooldb_if_not_yet();
         reconnect_mtooldb_if_necessary();
 
-        $last_sql_command_for_mtooldb = 'insert into dafuncupdatedeletewhere (ProjectPID, daPID, dafuncPID, targetTableColumnName, ParameterType, ParameterDataType, FixedParameter, ORGroup, RelationalOperator) values(' . '\'' . $mtooldb->real_escape_string($dafuncupdatedeletewhereObj->ProjectPID) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($dafuncupdatedeletewhereObj->daPID) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($dafuncupdatedeletewhereObj->dafuncPID) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($dafuncupdatedeletewhereObj->targetTableColumnName) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($dafuncupdatedeletewhereObj->ParameterType) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($dafuncupdatedeletewhereObj->ParameterDataType) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($dafuncupdatedeletewhereObj->FixedParameter) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($dafuncupdatedeletewhereObj->ORGroup) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($dafuncupdatedeletewhereObj->RelationalOperator) . '\'' . ')';
+        $last_sql_command_for_mtooldb = 'insert into Dafuncupdatedeletewhere (ProjectPID, DaPID, DafuncPID, targetTableColumnName, ParameterType, ParameterDataType, FixedParameter, ORGroup, RelationalOperator) values(' . '\'' . $mtooldb->real_escape_string($DafuncupdatedeletewhereObj->ProjectPID) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($DafuncupdatedeletewhereObj->DaPID) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($DafuncupdatedeletewhereObj->DafuncPID) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($DafuncupdatedeletewhereObj->targetTableColumnName) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($DafuncupdatedeletewhereObj->ParameterType) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($DafuncupdatedeletewhereObj->ParameterDataType) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($DafuncupdatedeletewhereObj->FixedParameter) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($DafuncupdatedeletewhereObj->ORGroup) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($DafuncupdatedeletewhereObj->RelationalOperator) . '\'' . ')';
         $result = $mtooldb->query($last_sql_command_for_mtooldb);
         if ($mtooldb->errno != 0) {
             error_log("Error occured while executing SQL: " . $mtooldb->error . " in " . __FILE__ . " on line " . __LINE__);
@@ -97,13 +97,13 @@ class dafuncupdatedeletewhereDBAccessBase
     }
 
     // source_of_truth=sync-bootstrap action_type=UPDATE order=96 generation=canonical-sql
-    public function Updatedafuncupdatedeletewhere($dafuncupdatedeletewhereObj)
+    public function UpdateDafuncupdatedeletewhere($DafuncupdatedeletewhereObj)
     {
         global $mtooldb, $last_sql_command_for_mtooldb;
         connect_mtooldb_if_not_yet();
         reconnect_mtooldb_if_necessary();
 
-        $last_sql_command_for_mtooldb = 'update dafuncupdatedeletewhere SET ' . 'targetTableColumnName = ' . '\'' . $mtooldb->real_escape_string($dafuncupdatedeletewhereObj->targetTableColumnName) . '\'' . ', ' . 'ParameterType = ' . '\'' . $mtooldb->real_escape_string($dafuncupdatedeletewhereObj->ParameterType) . '\'' . ', ' . 'ParameterDataType = ' . '\'' . $mtooldb->real_escape_string($dafuncupdatedeletewhereObj->ParameterDataType) . '\'' . ', ' . 'FixedParameter = ' . '\'' . $mtooldb->real_escape_string($dafuncupdatedeletewhereObj->FixedParameter) . '\'' . ', ' . 'ORGroup = ' . '\'' . $mtooldb->real_escape_string($dafuncupdatedeletewhereObj->ORGroup) . '\'' . ', ' . 'RelationalOperator = ' . '\'' . $mtooldb->real_escape_string($dafuncupdatedeletewhereObj->RelationalOperator) . '\'' . ' where ' . 'dafuncupdatedeletewhere.PID = ' . '\'' . $mtooldb->real_escape_string($dafuncupdatedeletewhereObj->PID) . '\'' . ' and ' . 'dafuncupdatedeletewhere.ProjectPID = ' . '\'' . $mtooldb->real_escape_string($dafuncupdatedeletewhereObj->ProjectPID) . '\'';
+        $last_sql_command_for_mtooldb = 'update Dafuncupdatedeletewhere SET ' . 'targetTableColumnName = ' . '\'' . $mtooldb->real_escape_string($DafuncupdatedeletewhereObj->targetTableColumnName) . '\'' . ', ' . 'ParameterType = ' . '\'' . $mtooldb->real_escape_string($DafuncupdatedeletewhereObj->ParameterType) . '\'' . ', ' . 'ParameterDataType = ' . '\'' . $mtooldb->real_escape_string($DafuncupdatedeletewhereObj->ParameterDataType) . '\'' . ', ' . 'FixedParameter = ' . '\'' . $mtooldb->real_escape_string($DafuncupdatedeletewhereObj->FixedParameter) . '\'' . ', ' . 'ORGroup = ' . '\'' . $mtooldb->real_escape_string($DafuncupdatedeletewhereObj->ORGroup) . '\'' . ', ' . 'RelationalOperator = ' . '\'' . $mtooldb->real_escape_string($DafuncupdatedeletewhereObj->RelationalOperator) . '\'' . ' where ' . 'Dafuncupdatedeletewhere.PID = ' . '\'' . $mtooldb->real_escape_string($DafuncupdatedeletewhereObj->PID) . '\'' . ' and ' . 'Dafuncupdatedeletewhere.ProjectPID = ' . '\'' . $mtooldb->real_escape_string($DafuncupdatedeletewhereObj->ProjectPID) . '\'';
         $result = $mtooldb->query($last_sql_command_for_mtooldb);
         if ($mtooldb->errno != 0) {
             error_log("Error occured while executing SQL: " . $mtooldb->error . " in " . __FILE__ . " on line " . __LINE__);
@@ -112,13 +112,13 @@ class dafuncupdatedeletewhereDBAccessBase
     }
 
     // source_of_truth=sync-bootstrap action_type=DELETE order=112 generation=canonical-sql
-    public function Deletedafuncupdatedeletewhere($param_dafuncupdatedeletewhere_PID_where, $param_dafuncupdatedeletewhere_ProjectPID_where)
+    public function DeleteDafuncupdatedeletewhere($param_Dafuncupdatedeletewhere_PID_where, $param_Dafuncupdatedeletewhere_ProjectPID_where)
     {
         global $mtooldb, $last_sql_command_for_mtooldb;
         connect_mtooldb_if_not_yet();
         reconnect_mtooldb_if_necessary();
 
-        $last_sql_command_for_mtooldb = 'delete from dafuncupdatedeletewhere where ' . 'dafuncupdatedeletewhere.PID = ' . '\'' . $mtooldb->real_escape_string($param_dafuncupdatedeletewhere_PID_where) . '\'' . ' and ' . 'dafuncupdatedeletewhere.ProjectPID = ' . '\'' . $mtooldb->real_escape_string($param_dafuncupdatedeletewhere_ProjectPID_where) . '\'';
+        $last_sql_command_for_mtooldb = 'delete from Dafuncupdatedeletewhere where ' . 'Dafuncupdatedeletewhere.PID = ' . '\'' . $mtooldb->real_escape_string($param_Dafuncupdatedeletewhere_PID_where) . '\'' . ' and ' . 'Dafuncupdatedeletewhere.ProjectPID = ' . '\'' . $mtooldb->real_escape_string($param_Dafuncupdatedeletewhere_ProjectPID_where) . '\'';
         $result = $mtooldb->query($last_sql_command_for_mtooldb);
         if ($mtooldb->errno != 0) {
             error_log("Error occured while executing SQL: " . $mtooldb->error . " in " . __FILE__ . " on line " . __LINE__);
@@ -127,13 +127,13 @@ class dafuncupdatedeletewhereDBAccessBase
     }
 
     // source_of_truth=sync-bootstrap action_type=UPDATE order=128 generation=canonical-sql
-    public function UpdatedafuncupdatedeletewhereOrder($param_dafuncupdatedeletewhere_WhereOrder_update, $param_dafuncupdatedeletewhere_PID_where, $param_dafuncupdatedeletewhere_ProjectPID_where)
+    public function UpdateDafuncupdatedeletewhereOrder($param_Dafuncupdatedeletewhere_WhereOrder_update, $param_Dafuncupdatedeletewhere_PID_where, $param_Dafuncupdatedeletewhere_ProjectPID_where)
     {
         global $mtooldb, $last_sql_command_for_mtooldb;
         connect_mtooldb_if_not_yet();
         reconnect_mtooldb_if_necessary();
 
-        $last_sql_command_for_mtooldb = 'update dafuncupdatedeletewhere SET ' . 'WhereOrder = ' . $param_dafuncupdatedeletewhere_WhereOrder_update . ' where ' . 'dafuncupdatedeletewhere.PID = ' . '\'' . $mtooldb->real_escape_string($param_dafuncupdatedeletewhere_PID_where) . '\'' . ' and ' . 'dafuncupdatedeletewhere.ProjectPID = ' . '\'' . $mtooldb->real_escape_string($param_dafuncupdatedeletewhere_ProjectPID_where) . '\'';
+        $last_sql_command_for_mtooldb = 'update Dafuncupdatedeletewhere SET ' . 'WhereOrder = ' . $param_Dafuncupdatedeletewhere_WhereOrder_update . ' where ' . 'Dafuncupdatedeletewhere.PID = ' . '\'' . $mtooldb->real_escape_string($param_Dafuncupdatedeletewhere_PID_where) . '\'' . ' and ' . 'Dafuncupdatedeletewhere.ProjectPID = ' . '\'' . $mtooldb->real_escape_string($param_Dafuncupdatedeletewhere_ProjectPID_where) . '\'';
         $result = $mtooldb->query($last_sql_command_for_mtooldb);
         if ($mtooldb->errno != 0) {
             error_log("Error occured while executing SQL: " . $mtooldb->error . " in " . __FILE__ . " on line " . __LINE__);
@@ -142,13 +142,13 @@ class dafuncupdatedeletewhereDBAccessBase
     }
 
     // source_of_truth=sync-bootstrap action_type=UPDATE order=144 generation=canonical-sql
-    public function UpdateDAPIDforMovingFunction($param_dafuncupdatedeletewhere_daPID_update, $param_dafuncupdatedeletewhere_ProjectPID_where, $param_dafuncupdatedeletewhere_dafuncPID_where)
+    public function UpdateDAPIDforMovingFunction($param_Dafuncupdatedeletewhere_daPID_update, $param_Dafuncupdatedeletewhere_ProjectPID_where, $param_Dafuncupdatedeletewhere_DafuncPID_where)
     {
         global $mtooldb, $last_sql_command_for_mtooldb;
         connect_mtooldb_if_not_yet();
         reconnect_mtooldb_if_necessary();
 
-        $last_sql_command_for_mtooldb = 'update dafuncupdatedeletewhere SET ' . 'daPID = ' . '\'' . $mtooldb->real_escape_string($param_dafuncupdatedeletewhere_daPID_update) . '\'' . ' where ' . 'dafuncupdatedeletewhere.ProjectPID = ' . '\'' . $mtooldb->real_escape_string($param_dafuncupdatedeletewhere_ProjectPID_where) . '\'' . ' and ' . 'dafuncupdatedeletewhere.dafuncPID = ' . '\'' . $mtooldb->real_escape_string($param_dafuncupdatedeletewhere_dafuncPID_where) . '\'';
+        $last_sql_command_for_mtooldb = 'update Dafuncupdatedeletewhere SET ' . 'DaPID = ' . '\'' . $mtooldb->real_escape_string($param_Dafuncupdatedeletewhere_daPID_update) . '\'' . ' where ' . 'Dafuncupdatedeletewhere.ProjectPID = ' . '\'' . $mtooldb->real_escape_string($param_Dafuncupdatedeletewhere_ProjectPID_where) . '\'' . ' and ' . 'Dafuncupdatedeletewhere.DafuncPID = ' . '\'' . $mtooldb->real_escape_string($param_Dafuncupdatedeletewhere_DafuncPID_where) . '\'';
         $result = $mtooldb->query($last_sql_command_for_mtooldb);
         if ($mtooldb->errno != 0) {
             error_log("Error occured while executing SQL: " . $mtooldb->error . " in " . __FILE__ . " on line " . __LINE__);

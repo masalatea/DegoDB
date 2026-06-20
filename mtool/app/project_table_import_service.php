@@ -320,18 +320,32 @@ function app_project_table_import_apply(
 
         foreach ($managedSourceTables as $table) {
             $tableName = $table['name'];
+            $tablePhysicalName = (string) ($table['physical_name'] ?? $tableName);
             $existingTable = $canonicalByName[$tableName] ?? null;
             $tablePid = $existingTable['pid'] ?? '';
             if ($tablePid === '') {
                 $statement = $pdo->prepare(
-                    'INSERT INTO dbtable (ProjectPID, name)
-                     VALUES (:project_id, :name)'
+                    'INSERT INTO dbtable (ProjectPID, name, physical_name)
+                     VALUES (:project_id, :name, :physical_name)'
                 );
                 $statement->execute([
                     ':project_id' => $projectId,
                     ':name' => $tableName,
+                    ':physical_name' => $tablePhysicalName,
                 ]);
                 $tablePid = (string) $pdo->lastInsertId();
+            } elseif ((string) ($existingTable['physical_name'] ?? $existingTable['name']) !== $tablePhysicalName) {
+                $updateTable = $pdo->prepare(
+                    'UPDATE dbtable
+                     SET physical_name = :physical_name
+                     WHERE PID = :pid
+                       AND ProjectPID = :project_id'
+                );
+                $updateTable->execute([
+                    ':physical_name' => $tablePhysicalName,
+                    ':pid' => (int) $tablePid,
+                    ':project_id' => $projectId,
+                ]);
             }
 
             $existingColumnsByName = [];
@@ -349,6 +363,7 @@ function app_project_table_import_apply(
                             ProjectPID,
                             dbtablePID,
                             name,
+                            physical_name,
                             datatype,
                             ' . $isNullIdentifier . ',
                             IsKey,
@@ -360,6 +375,7 @@ function app_project_table_import_apply(
                             :project_id,
                             :dbtable_pid,
                             :name,
+                            :physical_name,
                             :datatype,
                             :is_null,
                             :is_key,
@@ -373,6 +389,7 @@ function app_project_table_import_apply(
                         ':project_id' => $projectId,
                         ':dbtable_pid' => (int) $tablePid,
                         ':name' => $column['name'],
+                        ':physical_name' => (string) ($column['physical_name'] ?? $column['name']),
                         ':datatype' => $column['datatype'],
                         ':is_null' => $column['is_null'],
                         ':is_key' => $column['is_key'],
@@ -389,6 +406,7 @@ function app_project_table_import_apply(
                         'UPDATE dbtablecolumns
                          SET
                             datatype = :datatype,
+                            physical_name = :physical_name,
                             ' . $isNullIdentifier . ' = :is_null,
                             IsKey = :is_key,
                             IsDefault = :is_default,
@@ -400,6 +418,7 @@ function app_project_table_import_apply(
                     );
                     $update->execute([
                         ':datatype' => $column['datatype'],
+                        ':physical_name' => (string) ($column['physical_name'] ?? $column['name']),
                         ':is_null' => $column['is_null'],
                         ':is_key' => $column['is_key'],
                         ':is_default' => $column['is_default'],
@@ -694,6 +713,7 @@ function app_project_table_import_filter_tables_by_name(array $tables, string $t
 function app_project_table_import_column_matches(array $liveColumn, array $canonicalColumn): bool
 {
     return $liveColumn['name'] === $canonicalColumn['name']
+        && (string) ($liveColumn['physical_name'] ?? $liveColumn['name']) === (string) ($canonicalColumn['physical_name'] ?? $canonicalColumn['name'])
         && $liveColumn['datatype'] === $canonicalColumn['datatype']
         && $liveColumn['is_null'] === $canonicalColumn['is_null']
         && $liveColumn['is_key'] === $canonicalColumn['is_key']
@@ -728,6 +748,8 @@ function app_project_table_import_build_plan(
         $status = 'same';
         $existingColumnsByName = [];
         $columnChanges = [];
+        $namingWarnings = app_project_table_import_naming_warnings($sourceTable);
+        $summary['unsafe_physical_name_count'] += count($namingWarnings);
 
         if ($existingTable !== null) {
             foreach ($existingTable['columns'] as $column) {
@@ -785,7 +807,14 @@ function app_project_table_import_build_plan(
             'column_update_count' => $columnUpdateCount,
             'column_delete_count' => $columnDeleteCount,
             'column_same_count' => $columnSameCount,
-            'review' => app_project_table_import_table_review($status, $columnInsertCount, $columnUpdateCount, $columnDeleteCount, $columnChanges),
+            'review' => app_project_table_import_table_review(
+                $status,
+                $columnInsertCount,
+                $columnUpdateCount,
+                $columnDeleteCount,
+                $columnChanges,
+                $namingWarnings,
+            ),
         ];
     }
 
@@ -810,7 +839,7 @@ function app_project_table_import_build_plan(
             'column_update_count' => 0,
             'column_delete_count' => count($existingTable['columns']),
             'column_same_count' => 0,
-            'review' => app_project_table_import_table_review('stale', 0, 0, count($existingTable['columns']), $columnChanges),
+            'review' => app_project_table_import_table_review('stale', 0, 0, count($existingTable['columns']), $columnChanges, []),
         ];
     }
 
@@ -860,6 +889,7 @@ function app_project_table_import_empty_summary(
         'column_update_count' => 0,
         'column_delete_count' => 0,
         'column_same_count' => 0,
+        'unsafe_physical_name_count' => 0,
         'review_required' => false,
         'destructive_change_count' => 0,
         'metadata_update_count' => 0,
@@ -872,6 +902,7 @@ function app_project_table_import_table_review(
     int $columnUpdateCount,
     int $columnDeleteCount,
     array $columnChanges,
+    array $namingWarnings = [],
 ): array {
     $reasons = [];
     if ($status === 'new') {
@@ -903,8 +934,39 @@ function app_project_table_import_table_review(
         'risk_level' => $riskLevel,
         'requires_review' => in_array($riskLevel, ['destructive', 'review'], true),
         'reasons' => $reasons,
+        'naming_warnings' => $namingWarnings,
         'column_changes' => $columnChanges,
     ];
+}
+
+function app_project_table_import_naming_warnings(array $sourceTable): array
+{
+    $warnings = [];
+    $tablePhysicalName = (string) ($sourceTable['physical_name'] ?? $sourceTable['name'] ?? '');
+    if ($tablePhysicalName !== '' && !app_physical_name_is_safe_unquoted_sql_identifier($tablePhysicalName)) {
+        $warnings[] = [
+            'kind' => 'table',
+            'physical_name' => $tablePhysicalName,
+            'message' => 'physical table name is unsafe for unquoted SQL; prefer snake_case for new PostgreSQL-compatible metadata.',
+        ];
+    }
+
+    foreach (($sourceTable['columns'] ?? []) as $column) {
+        if (!is_array($column)) {
+            continue;
+        }
+        $columnPhysicalName = (string) ($column['physical_name'] ?? $column['name'] ?? '');
+        if ($columnPhysicalName === '' || app_physical_name_is_safe_unquoted_sql_identifier($columnPhysicalName)) {
+            continue;
+        }
+        $warnings[] = [
+            'kind' => 'column',
+            'physical_name' => $columnPhysicalName,
+            'message' => 'physical column name is unsafe for unquoted SQL; prefer snake_case for new PostgreSQL-compatible metadata.',
+        ];
+    }
+
+    return $warnings;
 }
 
 function app_project_table_import_column_change(

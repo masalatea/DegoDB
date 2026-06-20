@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 require_once __DIR__ . '/database.php';
+require_once __DIR__ . '/generated_name.php';
 
 /**
  * @param array{
@@ -49,6 +50,7 @@ function app_pdo_fetch_data_class_metadata_snapshot(array $app, string $projectK
                 d.ProjectPID AS project_pid,
                 d.PID AS dataclass_pid,
                 d.name AS dataclass_name,
+                d.physical_name AS dataclass_physical_name,
                 d.StoreBasePath AS store_base_path,
                 d.IsAutoload AS is_autoload,
                 d.InheritParentDataClassName AS inherit_parent_data_class_name,
@@ -57,6 +59,7 @@ function app_pdo_fetch_data_class_metadata_snapshot(array $app, string $projectK
                 f.dataclassPID AS field_dataclass_pid,
                 f.PID AS field_pid,
                 f.name AS field_name,
+                f.physical_name AS field_physical_name,
                 f.datatype AS field_datatype,
                 f.FieldListOrder AS field_list_order,
                 f.RefDataClassName AS ref_data_class_name,
@@ -85,13 +88,21 @@ function app_pdo_fetch_data_class_metadata_snapshot(array $app, string $projectK
             if ($dataClassName === '') {
                 continue;
             }
+            $dataClassPhysicalName = (string) ($row['dataclass_physical_name'] ?? '');
+            if ($dataClassPhysicalName === '') {
+                $dataClassPhysicalName = $dataClassName;
+            }
 
             if (!array_key_exists($dataClassName, $indexByDataClassName)) {
+                $dataClassNameMap = app_generated_name_map_for_physical_name($dataClassPhysicalName, 'class');
                 $indexByDataClassName[$dataClassName] = count($items);
                 $items[] = [
                     'project_pid' => (string) ($row['project_pid'] ?? ''),
                     'pid' => (string) ($row['dataclass_pid'] ?? ''),
                     'name' => $dataClassName,
+                    'physical_name' => $dataClassNameMap['physical_name'],
+                    'logical_name' => $dataClassNameMap['logical_name'],
+                    'generated_name' => $dataClassNameMap['generated_name'],
                     'store_base_path' => (string) ($row['store_base_path'] ?? ''),
                     'is_autoload' => ((int) ($row['is_autoload'] ?? 0)) === 1 ? '1' : '0',
                     'inherit_parent_data_class_name' => (string) ($row['inherit_parent_data_class_name'] ?? ''),
@@ -107,11 +118,20 @@ function app_pdo_fetch_data_class_metadata_snapshot(array $app, string $projectK
                 continue;
             }
 
+            $fieldName = (string) ($row['field_name'] ?? '');
+            $fieldPhysicalName = (string) ($row['field_physical_name'] ?? '');
+            if ($fieldPhysicalName === '') {
+                $fieldPhysicalName = $fieldName;
+            }
+            $fieldNameMap = app_generated_name_map_for_physical_name($fieldPhysicalName, 'php-property');
             $items[$dataClassIndex]['fields'][] = [
                 'project_pid' => (string) ($row['field_project_pid'] ?? ''),
                 'dataclass_pid' => (string) ($row['field_dataclass_pid'] ?? ''),
                 'pid' => $fieldPid,
-                'name' => (string) ($row['field_name'] ?? ''),
+                'name' => $fieldName,
+                'physical_name' => $fieldNameMap['physical_name'],
+                'logical_name' => $fieldNameMap['logical_name'],
+                'generated_name' => $fieldNameMap['generated_name'],
                 'datatype' => (string) ($row['field_datatype'] ?? ''),
                 'field_list_order' => (int) ($row['field_list_order'] ?? 0),
                 'ref_data_class_name' => (string) ($row['ref_data_class_name'] ?? ''),
@@ -297,12 +317,14 @@ function app_pdo_create_data_class_metadata_item(array $app, string $projectKey,
             'INSERT INTO dataclass (
                 ProjectPID,
                 name,
+                physical_name,
                 StoreBasePath,
                 IsAutoload,
                 InheritParentDataClassName
             ) VALUES (
                 :project_id,
                 :name,
+                :physical_name,
                 :store_base_path,
                 :is_autoload,
                 :inherit_parent_data_class_name
@@ -311,6 +333,7 @@ function app_pdo_create_data_class_metadata_item(array $app, string $projectKey,
         $statement->execute([
             ':project_id' => $projectId,
             ':name' => $name,
+            ':physical_name' => trim((string) ($input['physical_name'] ?? $name)),
             ':store_base_path' => trim((string) ($input['store_base_path'] ?? '')),
             ':is_autoload' => trim((string) ($input['is_autoload'] ?? '0')) === '1' ? 1 : 0,
             ':inherit_parent_data_class_name' => trim((string) ($input['inherit_parent_data_class_name'] ?? '')),
@@ -382,6 +405,7 @@ function app_pdo_update_data_class_metadata_item(
             'UPDATE dataclass
              SET
                 name = :name,
+                physical_name = :physical_name,
                 StoreBasePath = :store_base_path,
                 IsAutoload = :is_autoload,
                 InheritParentDataClassName = :inherit_parent_data_class_name,
@@ -391,6 +415,7 @@ function app_pdo_update_data_class_metadata_item(
         );
         $statement->execute([
             ':name' => $name,
+            ':physical_name' => trim((string) ($input['physical_name'] ?? $name)),
             ':store_base_path' => trim((string) ($input['store_base_path'] ?? '')),
             ':is_autoload' => trim((string) ($input['is_autoload'] ?? '0')) === '1' ? 1 : 0,
             ':inherit_parent_data_class_name' => trim((string) ($input['inherit_parent_data_class_name'] ?? '')),
@@ -501,6 +526,7 @@ function app_pdo_create_data_class_metadata_field(
                 ProjectPID,
                 dataclassPID,
                 name,
+                physical_name,
                 datatype,
                 FieldListOrder,
                 RefDataClassName,
@@ -509,6 +535,7 @@ function app_pdo_create_data_class_metadata_field(
                 :project_id,
                 :dataclass_pid,
                 :name,
+                :physical_name,
                 :datatype,
                 :field_list_order,
                 :ref_data_class_name,
@@ -519,6 +546,7 @@ function app_pdo_create_data_class_metadata_field(
             ':project_id' => $projectId,
             ':dataclass_pid' => $normalizedDataClassPid,
             ':name' => trim((string) ($input['name'] ?? '')),
+            ':physical_name' => trim((string) ($input['physical_name'] ?? $input['name'] ?? '')),
             ':datatype' => trim((string) ($input['datatype'] ?? '')),
             ':field_list_order' => $maxOrder + 1,
             ':ref_data_class_name' => trim((string) ($input['ref_data_class_name'] ?? '')),
@@ -587,6 +615,7 @@ function app_pdo_update_data_class_metadata_field(
             'UPDATE dataclassfields
              SET
                 name = :name,
+                physical_name = :physical_name,
                 datatype = :datatype,
                 RefDataClassName = :ref_data_class_name,
                 RefDataClassFieldName = :ref_data_class_field_name
@@ -595,6 +624,7 @@ function app_pdo_update_data_class_metadata_field(
         );
         $update->execute([
             ':name' => trim((string) ($input['name'] ?? '')),
+            ':physical_name' => trim((string) ($input['physical_name'] ?? $input['name'] ?? '')),
             ':datatype' => trim((string) ($input['datatype'] ?? '')),
             ':ref_data_class_name' => trim((string) ($input['ref_data_class_name'] ?? '')),
             ':ref_data_class_field_name' => trim((string) ($input['ref_data_class_field_name'] ?? '')),

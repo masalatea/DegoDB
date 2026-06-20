@@ -9,7 +9,7 @@
 // Known helper-style methods regenerate canonical PHP bodies when SQL regeneration is not the right fit.
 // Current canonical runtime generation fully owns this class, so no legacy DBAccess parent is required.
 
-class htmlDBAccessBase
+class HtmlDBAccessBase
 {
     // source_of_truth=sync-bootstrap action_type=UNKNOWN order=11 generation=canonical-constructor
     // reason=bootstrap constructor is empty, so runtime owns the no-op constructor directly
@@ -24,19 +24,19 @@ class htmlDBAccessBase
         connect_mtooldb_if_not_yet();
         reconnect_mtooldb_if_necessary();
 
-        $last_sql_command_for_mtooldb = 'select html.ProjectPID, html.PID, html.name, html.ProjectSourceOutputPID, html.htmlTemplatePID, html.LastModifiedDT from html' . ' where ' . 'html.PID = ' . '\'' . $mtooldb->real_escape_string($param_html_PID_where) . '\'' . ' and ' . 'html.ProjectPID = ' . '\'' . $mtooldb->real_escape_string($param_html_ProjectPID_where) . '\'';
+        $last_sql_command_for_mtooldb = 'select Html.ProjectPID, Html.PID, Html.name, Html.ProjectSourceOutputPID, Html.HtmlTemplatePID, Html.LastModifiedDT from Html' . ' where ' . 'Html.PID = ' . '\'' . $mtooldb->real_escape_string($param_html_PID_where) . '\'' . ' and ' . 'Html.ProjectPID = ' . '\'' . $mtooldb->real_escape_string($param_html_ProjectPID_where) . '\'';
         $ret = $mtooldb->query($last_sql_command_for_mtooldb);
         if ($mtooldb->errno != 0) {
             error_log("Error occured while executing SQL: " . $mtooldb->error . " in " . __FILE__ . " on line " . __LINE__);
             return $ret;
         }
         while($thisline=$ret->fetch_row()) {
-            $thisresult = new htmlData();
+            $thisresult = new HtmlData();
             $thisresult->ProjectPID = $thisline[0];
             $thisresult->PID = $thisline[1];
             $thisresult->name = $thisline[2];
             $thisresult->ProjectSourceOutputPID = $thisline[3];
-            $thisresult->htmlTemplatePID = $thisline[4];
+            $thisresult->HtmlTemplatePID = $thisline[4];
             $thisresult->LastModifiedDT = $thisline[5];
             return $thisresult;
         }
@@ -44,13 +44,13 @@ class htmlDBAccessBase
     }
 
     // source_of_truth=sync-bootstrap action_type=INSERT order=41 generation=canonical-sql
-    public function Inserthtml($htmlObj)
+    public function Inserthtml($HtmlObj)
     {
         global $mtooldb, $last_sql_command_for_mtooldb;
         connect_mtooldb_if_not_yet();
         reconnect_mtooldb_if_necessary();
 
-        $last_sql_command_for_mtooldb = 'insert into html (ProjectPID, name, ProjectSourceOutputPID, htmlTemplatePID, LastModifiedDT) values(' . '\'' . $mtooldb->real_escape_string($htmlObj->ProjectPID) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($htmlObj->name) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($htmlObj->ProjectSourceOutputPID) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($htmlObj->htmlTemplatePID) . '\'' . ', ' . 'now()' . ')';
+        $last_sql_command_for_mtooldb = 'insert into Html (ProjectPID, name, ProjectSourceOutputPID, HtmlTemplatePID, LastModifiedDT) values(' . '\'' . $mtooldb->real_escape_string($HtmlObj->ProjectPID) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($HtmlObj->name) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($HtmlObj->ProjectSourceOutputPID) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($HtmlObj->HtmlTemplatePID) . '\'' . ', ' . 'now()' . ')';
         $result = $mtooldb->query($last_sql_command_for_mtooldb);
         if ($mtooldb->errno != 0) {
             error_log("Error occured while executing SQL: " . $mtooldb->error . " in " . __FILE__ . " on line " . __LINE__);
@@ -59,13 +59,13 @@ class htmlDBAccessBase
     }
 
     // source_of_truth=sync-bootstrap action_type=UPDATE order=57 generation=canonical-sql
-    public function Updatehtml($htmlObj)
+    public function Updatehtml($HtmlObj)
     {
         global $mtooldb, $last_sql_command_for_mtooldb;
         connect_mtooldb_if_not_yet();
         reconnect_mtooldb_if_necessary();
 
-        $last_sql_command_for_mtooldb = 'update html SET ' . 'name = ' . '\'' . $mtooldb->real_escape_string($htmlObj->name) . '\'' . ', ' . 'ProjectSourceOutputPID = ' . '\'' . $mtooldb->real_escape_string($htmlObj->ProjectSourceOutputPID) . '\'' . ', ' . 'htmlTemplatePID = ' . '\'' . $mtooldb->real_escape_string($htmlObj->htmlTemplatePID) . '\'' . ', ' . 'LastModifiedDT = ' . 'now()' . ' where ' . 'html.PID = ' . '\'' . $mtooldb->real_escape_string($htmlObj->PID) . '\'' . ' and ' . 'html.ProjectPID = ' . '\'' . $mtooldb->real_escape_string($htmlObj->ProjectPID) . '\'';
+        $last_sql_command_for_mtooldb = 'update Html SET ' . 'name = ' . '\'' . $mtooldb->real_escape_string($HtmlObj->name) . '\'' . ', ' . 'ProjectSourceOutputPID = ' . '\'' . $mtooldb->real_escape_string($HtmlObj->ProjectSourceOutputPID) . '\'' . ', ' . 'HtmlTemplatePID = ' . '\'' . $mtooldb->real_escape_string($HtmlObj->HtmlTemplatePID) . '\'' . ', ' . 'LastModifiedDT = ' . 'now()' . ' where ' . 'Html.PID = ' . '\'' . $mtooldb->real_escape_string($HtmlObj->PID) . '\'' . ' and ' . 'Html.ProjectPID = ' . '\'' . $mtooldb->real_escape_string($HtmlObj->ProjectPID) . '\'';
         $result = $mtooldb->query($last_sql_command_for_mtooldb);
         if ($mtooldb->errno != 0) {
             error_log("Error occured while executing SQL: " . $mtooldb->error . " in " . __FILE__ . " on line " . __LINE__);
@@ -80,7 +80,7 @@ class htmlDBAccessBase
         connect_mtooldb_if_not_yet();
         reconnect_mtooldb_if_necessary();
 
-        $last_sql_command_for_mtooldb = 'update html SET ' . 'LastModifiedDT = ' . 'now()' . ' where ' . 'html.PID = ' . '\'' . $mtooldb->real_escape_string($param_html_PID_where) . '\'' . ' and ' . 'html.ProjectPID = ' . '\'' . $mtooldb->real_escape_string($param_html_ProjectPID_where) . '\'';
+        $last_sql_command_for_mtooldb = 'update Html SET ' . 'LastModifiedDT = ' . 'now()' . ' where ' . 'Html.PID = ' . '\'' . $mtooldb->real_escape_string($param_html_PID_where) . '\'' . ' and ' . 'Html.ProjectPID = ' . '\'' . $mtooldb->real_escape_string($param_html_ProjectPID_where) . '\'';
         $result = $mtooldb->query($last_sql_command_for_mtooldb);
         if ($mtooldb->errno != 0) {
             error_log("Error occured while executing SQL: " . $mtooldb->error . " in " . __FILE__ . " on line " . __LINE__);
@@ -89,13 +89,13 @@ class htmlDBAccessBase
     }
 
     // source_of_truth=sync-bootstrap action_type=DELETE order=89 generation=canonical-sql
-    public function Deletehtml($htmlObj)
+    public function Deletehtml($HtmlObj)
     {
         global $mtooldb, $last_sql_command_for_mtooldb;
         connect_mtooldb_if_not_yet();
         reconnect_mtooldb_if_necessary();
 
-        $last_sql_command_for_mtooldb = 'delete from html where ' . 'html.PID = ' . '\'' . $mtooldb->real_escape_string($htmlObj->PID) . '\'' . ' and ' . 'html.ProjectPID = ' . '\'' . $mtooldb->real_escape_string($htmlObj->ProjectPID) . '\'';
+        $last_sql_command_for_mtooldb = 'delete from Html where ' . 'Html.PID = ' . '\'' . $mtooldb->real_escape_string($HtmlObj->PID) . '\'' . ' and ' . 'Html.ProjectPID = ' . '\'' . $mtooldb->real_escape_string($HtmlObj->ProjectPID) . '\'';
         $result = $mtooldb->query($last_sql_command_for_mtooldb);
         if ($mtooldb->errno != 0) {
             error_log("Error occured while executing SQL: " . $mtooldb->error . " in " . __FILE__ . " on line " . __LINE__);

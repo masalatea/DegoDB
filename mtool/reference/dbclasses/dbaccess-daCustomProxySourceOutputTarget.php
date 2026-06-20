@@ -1,13 +1,13 @@
 <?php
 
 require_once __DIR__ . '/_runtime_loader.php';
-require_once __DIR__ . '/base/dbaccess-daCustomProxySourceOutputTargetBase.php';
+require_once __DIR__ . '/base/dbaccess-DaCustomProxySourceOutputTargetBase.php';
 
-if (!mtool_runtime_bundle_load_custom_wrapper('dbaccess-daCustomProxySourceOutputTarget.php')) {
+if (!mtool_runtime_bundle_load_custom_wrapper('dbaccess-DaCustomProxySourceOutputTarget.php')) {
     // Generated wrapper entry for runtime DB Access.
-    // Override `mtool/extensions/MTOOL/RUNTIME-DBCLASSES/dbaccess-daCustomProxySourceOutputTarget.php` and extend `daCustomProxySourceOutputTargetDBAccessBase` for project-specific customizations.
+    // Override `mtool/extensions/MTOOL/RUNTIME-DBCLASSES/dbaccess-DaCustomProxySourceOutputTarget.php` and extend `DaCustomProxySourceOutputTargetDBAccessBase` for project-specific customizations.
 
-    class daCustomProxySourceOutputTargetDBAccess extends daCustomProxySourceOutputTargetDBAccessBase
+    class DaCustomProxySourceOutputTargetDBAccess extends DaCustomProxySourceOutputTargetDBAccessBase
     {
     }
 }

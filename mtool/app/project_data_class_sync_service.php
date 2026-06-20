@@ -181,6 +181,7 @@ function app_project_data_class_sync_apply(array $app, string $projectKey): arra
         foreach ($tableSnapshot['items'] as $table) {
             $dataClass = $dataClassByName[$table['name']] ?? null;
             $dataClassPid = $dataClass['pid'] ?? '';
+            $dataClassPhysicalName = (string) ($table['physical_name'] ?? $table['name']);
             $touched = false;
 
             if ($dataClassPid === '') {
@@ -188,12 +189,14 @@ function app_project_data_class_sync_apply(array $app, string $projectKey): arra
                     'INSERT INTO dataclass (
                         ProjectPID,
                         name,
+                        physical_name,
                         StoreBasePath,
                         IsAutoload,
                         InheritParentDataClassName
                     ) VALUES (
                         :project_id,
                         :name,
+                        :physical_name,
                         :store_base_path,
                         :is_autoload,
                         :inherit_parent_data_class_name
@@ -202,6 +205,7 @@ function app_project_data_class_sync_apply(array $app, string $projectKey): arra
                 $insertClass->execute([
                     ':project_id' => $projectId,
                     ':name' => $table['name'],
+                    ':physical_name' => $dataClassPhysicalName,
                     ':store_base_path' => '',
                     ':is_autoload' => 1,
                     ':inherit_parent_data_class_name' => '',
@@ -212,6 +216,21 @@ function app_project_data_class_sync_apply(array $app, string $projectKey): arra
                     'pid' => $dataClassPid,
                     'fields' => [],
                 ];
+            } elseif ((string) ($dataClass['physical_name'] ?? $dataClass['name']) !== $dataClassPhysicalName) {
+                $updateClass = $pdo->prepare(
+                    'UPDATE dataclass
+                     SET
+                        physical_name = :physical_name,
+                        LastModifiedDT = CURRENT_TIMESTAMP
+                     WHERE PID = :pid
+                       AND ProjectPID = :project_id'
+                );
+                $updateClass->execute([
+                    ':physical_name' => $dataClassPhysicalName,
+                    ':pid' => (int) $dataClassPid,
+                    ':project_id' => $projectId,
+                ]);
+                $touched = true;
             }
 
             $existingFieldsByName = [];
@@ -229,6 +248,7 @@ function app_project_data_class_sync_apply(array $app, string $projectKey): arra
                             ProjectPID,
                             dataclassPID,
                             name,
+                            physical_name,
                             datatype,
                             FieldListOrder,
                             RefDataClassName,
@@ -237,6 +257,7 @@ function app_project_data_class_sync_apply(array $app, string $projectKey): arra
                             :project_id,
                             :dataclass_pid,
                             :name,
+                            :physical_name,
                             :datatype,
                             :field_list_order,
                             :ref_data_class_name,
@@ -247,6 +268,7 @@ function app_project_data_class_sync_apply(array $app, string $projectKey): arra
                         ':project_id' => $projectId,
                         ':dataclass_pid' => (int) $dataClassPid,
                         ':name' => $column['name'],
+                        ':physical_name' => (string) ($column['physical_name'] ?? $column['name']),
                         ':datatype' => $targetDatatype,
                         ':field_list_order' => $fieldOrder,
                         ':ref_data_class_name' => '',
@@ -259,10 +281,12 @@ function app_project_data_class_sync_apply(array $app, string $projectKey): arra
                 if (
                     $existingField['datatype'] !== $targetDatatype
                     || $existingField['field_list_order'] !== $fieldOrder
+                    || (string) ($existingField['physical_name'] ?? $existingField['name']) !== (string) ($column['physical_name'] ?? $column['name'])
                 ) {
                     $updateField = $pdo->prepare(
                         'UPDATE dataclassfields
                          SET
+                            physical_name = :physical_name,
                             datatype = :datatype,
                             FieldListOrder = :field_list_order,
                             RefDataClassName = :ref_data_class_name,
@@ -271,6 +295,7 @@ function app_project_data_class_sync_apply(array $app, string $projectKey): arra
                            AND ProjectPID = :project_id'
                     );
                     $updateField->execute([
+                        ':physical_name' => (string) ($column['physical_name'] ?? $column['name']),
                         ':datatype' => $targetDatatype,
                         ':field_list_order' => $fieldOrder,
                         ':ref_data_class_name' => $existingField['ref_data_class_name'],

@@ -8,12 +8,12 @@
 // Generated members are kept in this base file. Former editable areas move to the wrapper file.
 // Generated trailing enum-type classes also stay in this base file when present.
 
-class daCustomProxyFuncDataBase
+class DaCustomProxyFuncDataBase
 {
     public $ProjectPID;
-    public $daCustomProxyPID;
+    public $DaCustomProxyPID;
     public $PID;
-    public $dafuncPID;
+    public $DafuncPID;
     public $IsList;
     public $FunctionListOrder;
     public $AddIndentCount;

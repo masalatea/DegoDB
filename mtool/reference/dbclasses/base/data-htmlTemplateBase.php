@@ -8,7 +8,7 @@
 // Generated members are kept in this base file. Former editable areas move to the wrapper file.
 // Generated trailing enum-type classes also stay in this base file when present.
 
-class htmlTemplateDataBase
+class HtmlTemplateDataBase
 {
     public $PID;
     public $TargetType;
@@ -25,14 +25,14 @@ class htmlTemplateDataBase
 
 class SortedhtmlTemplateDataContainer
 {
-	public $htmlTemplate;
+	public $HtmlTemplate;
 	public $ChildList;
 }
 
-class htmlTemplateTargetTypeEnum
+class HtmlTemplateTargetTypeEnum
 {
 	static $UNKNOWN = "Unknown";
-	static $HTML = "html";
+	static $HTML = "Html";
 	static $DB = "db";
 	static $PROXYSERVER = "proxyserver";
 	static $PROXYCLIENT = "proxyclient";
@@ -43,7 +43,7 @@ class htmlTemplateTargetTypeEnum
 	static $LANGUAGERESOURCE = "LanguageResource";
 }
 
-class htmlTemplateProgramLanguageEnum
+class HtmlTemplateProgramLanguageEnum
 {
 	static $UNKNOWN = "Unknown";
 	static $PHP = "php";

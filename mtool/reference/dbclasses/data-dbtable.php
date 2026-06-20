@@ -1,13 +1,13 @@
 <?php
 
 require_once __DIR__ . '/_runtime_loader.php';
-require_once __DIR__ . '/base/data-dbtableBase.php';
+require_once __DIR__ . '/base/data-DbtableBase.php';
 
-if (!mtool_runtime_bundle_load_custom_wrapper('data-dbtable.php')) {
+if (!mtool_runtime_bundle_load_custom_wrapper('data-Dbtable.php')) {
     // Generated wrapper entry for runtime data class.
-    // Override `mtool/extensions/MTOOL/RUNTIME-DBCLASSES/data-dbtable.php` and extend `dbtableDataBase` for project-specific customizations.
+    // Override `mtool/extensions/MTOOL/RUNTIME-DBCLASSES/data-Dbtable.php` and extend `DbtableDataBase` for project-specific customizations.
 
-    class dbtableData extends dbtableDataBase
+    class DbtableData extends DbtableDataBase
     {
     }
 }

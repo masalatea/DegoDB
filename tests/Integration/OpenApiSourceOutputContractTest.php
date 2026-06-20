@@ -365,6 +365,132 @@ final class OpenApiSourceOutputContractTest extends TestCase
         );
     }
 
+    public function testOpenApiDocumentUsesGeneratedNamesForSchemasWhenPolicyIsEnabled(): void
+    {
+        $previousPolicy = getenv('MTOOL_GENERATED_NAME_POLICY');
+        putenv('MTOOL_GENERATED_NAME_POLICY=physical-logical-v1');
+
+        try {
+            $context = [
+                'project_key' => 'MTOOL',
+                'source_output_key' => 'OPENAPI-JSON',
+                'definition' => [
+                    'source_output_key' => 'OPENAPI-JSON',
+                    'name' => 'Mtool OpenAPI JSON',
+                    'proxy_base_url' => 'http://127.0.0.1:8081',
+                ],
+                'plan' => [
+                    'function_count' => 1,
+                    'unresolved_function_count' => 0,
+                    'unresolved_auth_count' => 0,
+                    'items' => [],
+                ],
+                'source_entities' => [],
+                'proxy_items' => [
+                    [
+                        'source_name' => 'support_ticket',
+                        'function_name' => 'GetSupportTicketList',
+                        'display_name' => 'support_ticket.GetSupportTicketList',
+                        'auth_policy' => [
+                            'strategy_key' => 'no-security',
+                            'summary' => '認証を掛けません。',
+                        ],
+                        'endpoint_filename' => 'proxyserver-support_ticket-GetSupportTicketList.php',
+                        'response_property_type' => 'support_ticketList',
+                        'steps' => [
+                            [
+                                'action' => 'select-list',
+                                'input_kind' => 'object',
+                                'object_param_name' => 'TicketObj',
+                                'object_class' => 'support_ticket',
+                                'data_class' => 'support_ticket',
+                                'parameter_names' => ['TicketObj'],
+                                'response_key' => 'Result',
+                                'response_mode' => 'direct-result',
+                            ],
+                        ],
+                    ],
+                ],
+            ];
+
+            $snapshotItems = [
+                [
+                    'name' => 'support_ticket',
+                    'physical_name' => 'support_ticket',
+                    'inherit_parent_data_class_name' => '',
+                    'fields' => [
+                        [
+                            'name' => 'updated_at',
+                            'physical_name' => 'updated_at',
+                            'datatype' => 'datetime',
+                            'ref_data_class_name' => '',
+                            'ref_data_class_field_name' => '',
+                        ],
+                        [
+                            'name' => 'assigned_user',
+                            'physical_name' => 'assigned_user',
+                            'datatype' => '',
+                            'ref_data_class_name' => 'project_user',
+                            'ref_data_class_field_name' => '',
+                        ],
+                    ],
+                ],
+                [
+                    'name' => 'project_user',
+                    'physical_name' => 'project_user',
+                    'inherit_parent_data_class_name' => '',
+                    'fields' => [
+                        [
+                            'name' => 'display_name',
+                            'physical_name' => 'display_name',
+                            'datatype' => 'varchar',
+                            'ref_data_class_name' => '',
+                            'ref_data_class_field_name' => '',
+                        ],
+                    ],
+                ],
+            ];
+
+            $document = app_project_output_openapi_document($context, $snapshotItems);
+
+            self::assertArrayHasKey('/proxyserver-support_ticket-GetSupportTicketList.php', $document['paths']);
+            self::assertArrayHasKey('SupportTicket', $document['components']['schemas']);
+            self::assertArrayHasKey('ProjectUser', $document['components']['schemas']);
+            self::assertArrayHasKey(
+                'updatedAt',
+                $document['components']['schemas']['SupportTicket']['properties'],
+            );
+            self::assertSame(
+                '#/components/schemas/ProjectUser',
+                $document['components']['schemas']['SupportTicket']['properties']['assignedUser']['$ref'] ?? '',
+            );
+
+            $operation = $document['paths']['/proxyserver-support_ticket-GetSupportTicketList.php']['post'] ?? null;
+            self::assertIsArray($operation);
+            self::assertSame(
+                '#/components/schemas/SupportTicket',
+                $operation['requestBody']['content']['application/json']['schema']['properties']['TicketObj']['$ref'] ?? '',
+            );
+            self::assertSame(
+                '#/components/schemas/SupportTicket',
+                $operation['responses']['200']['content']['application/json']['schema']['properties']['Result']['items']['$ref'] ?? '',
+            );
+            self::assertSame(
+                [
+                    'TicketObj' => [
+                        'updatedAt' => '2026-05-25T00:00:00+09:00',
+                        'assignedUser' => [
+                            'displayName' => 'string',
+                        ],
+                    ],
+                ],
+                $operation['requestBody']['content']['application/json']['example'] ?? null,
+            );
+        } finally {
+            $this->restoreEnvValue('MTOOL_GENERATED_NAME_POLICY', $previousPolicy);
+        }
+    }
+
     public function testOpenApiDocumentEmitsStaticBearerSecurityScheme(): void
     {
         $document = app_project_output_openapi_document([

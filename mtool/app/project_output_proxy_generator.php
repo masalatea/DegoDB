@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 require_once __DIR__ . '/custom_proxy_build_plan_service.php';
+require_once __DIR__ . '/generated_name.php';
 require_once __DIR__ . '/project_db_access_bootstrap_service.php';
 require_once __DIR__ . '/runtime_storage_paths.php';
 require_once __DIR__ . '/single_proxy_build_plan_service.php';
@@ -575,12 +576,53 @@ function app_project_output_single_proxy_action_type(string $actionType, string 
     return app_project_output_proxy_step_action($functionName);
 }
 
+function app_project_output_single_proxy_output_source_name(array $item): string
+{
+    $sourceName = trim((string) ($item['source_name'] ?? ''));
+    if (!app_generated_name_policy_uses_physical_logical_names()) {
+        return $sourceName;
+    }
+
+    $physicalName = trim((string) ($item['physical_name'] ?? $sourceName));
+    return app_generated_name_map_for_physical_name($physicalName, 'class')['generated_name'];
+}
+
+function app_project_output_single_proxy_output_function_name(array $item): string
+{
+    $functionName = trim((string) ($item['function_name'] ?? ''));
+    if ($functionName === '' || !app_generated_name_policy_uses_physical_logical_names()) {
+        return $functionName;
+    }
+
+    $sourceName = trim((string) ($item['source_name'] ?? ''));
+    $physicalName = trim((string) ($item['physical_name'] ?? $sourceName));
+    $generatedSourceName = app_generated_name_map_for_physical_name($physicalName, 'class')['generated_name'];
+    foreach (array_unique([$sourceName, $physicalName]) as $candidate) {
+        if ($candidate !== '' && str_contains($functionName, $candidate)) {
+            return str_replace($candidate, $generatedSourceName, $functionName);
+        }
+    }
+
+    return $functionName;
+}
+
+function app_project_output_single_proxy_output_endpoint_filename(array $item): string
+{
+    return 'proxyserver-'
+        . app_project_output_single_proxy_output_source_name($item)
+        . '-'
+        . app_project_output_single_proxy_output_function_name($item)
+        . '.php';
+}
+
 function app_project_output_single_proxy_enrich_item(array $item, array $entity): array
 {
+    $outputSourceName = app_project_output_single_proxy_output_source_name($item);
+    $outputFunctionName = app_project_output_single_proxy_output_function_name($item);
     $itemStem = preg_replace(
         '/[^A-Za-z0-9_]+/',
         '',
-        (string) ($item['source_name'] ?? '') . (string) ($item['function_name'] ?? ''),
+        $outputSourceName . $outputFunctionName,
     );
     if (!is_string($itemStem) || $itemStem === '') {
         $itemStem = 'GeneratedSingleProxy';
@@ -623,7 +665,7 @@ function app_project_output_single_proxy_enrich_item(array $item, array $entity)
         'auth_policy' => $item['auth_policy'],
         'in_transaction' => false,
         'continue_even_if_failed_to_insert' => false,
-        'endpoint_filename' => 'proxyserver-' . $item['source_name'] . '-' . $item['function_name'] . '.php',
+        'endpoint_filename' => app_project_output_single_proxy_output_endpoint_filename($item),
         'handler_class' => $itemStem . 'ProxyHandler',
         'base_handler_class' => $itemStem . 'ProxyHandlerBase',
         'request_class' => $itemStem . 'RequestParams',

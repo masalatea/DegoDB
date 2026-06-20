@@ -7,10 +7,10 @@
 // Generated from canonical DB Access metadata.
 // Thin DTO generated from canonical select/write metadata.
 
-class daCustomProxySourceOutputTargetDataBase
+class DaCustomProxySourceOutputTargetDataBase
 {
     public $ProjectPID;
-    public $daCustomProxyPID;
+    public $DaCustomProxyPID;
     public $PID;
     public $ProjectSourceOutputPID;
 

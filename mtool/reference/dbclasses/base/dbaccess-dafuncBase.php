@@ -9,7 +9,7 @@
 // Known helper-style methods regenerate canonical PHP bodies when SQL regeneration is not the right fit.
 // Current canonical runtime generation fully owns this class, so no legacy DBAccess parent is required.
 
-class dafuncDBAccessBase
+class DafuncDBAccessBase
 {
     // source_of_truth=sync-bootstrap action_type=UNKNOWN order=11 generation=canonical-constructor
     // reason=bootstrap constructor is empty, so runtime owns the no-op constructor directly
@@ -18,7 +18,7 @@ class dafuncDBAccessBase
     }
 
     // source_of_truth=seed-legacy action_type=SELECTLIST order=14 generation=canonical-sql
-    public function GetdafuncList($param_dafunc_ProjectPID_where, $param_dafunc_daPID_where)
+    public function GetDafuncList($param_Dafunc_ProjectPID_where, $param_Dafunc_daPID_where)
     {
         global $mtooldb, $last_sql_command_for_mtooldb;
         connect_mtooldb_if_not_yet();
@@ -26,16 +26,16 @@ class dafuncDBAccessBase
 
         $result = array();
 
-        $last_sql_command_for_mtooldb = 'select dafunc.ProjectPID, dafunc.daPID, dafunc.PID, dafunc.name, dafunc.ActionType, dafunc.InsertUpdateDeleteTargetTable, dafunc.InsertUpdateDeleteParamType, dafunc.SelectByDistinct, dafunc.SortOrderColumns, dafunc.DataClassBaseNameForSelectAction, dafunc.FunctionListOrder, dafunc.memo, dafunc.limitParameterType, dafunc.limitFixedParameter, dafunc.ORGroupType, dafunc.SingleProxy_AuthType, dafunc.SingleProxy_SingleGetFuncPID, dafunc.IsBlobTarget from dafunc' . ' where ' . 'dafunc.ProjectPID = ' . '\'' . $mtooldb->real_escape_string($param_dafunc_ProjectPID_where) . '\'' . ' and ' . 'dafunc.daPID = ' . '\'' . $mtooldb->real_escape_string($param_dafunc_daPID_where) . '\'' . ' order by dafunc.FunctionListOrder,dafunc.PID';
+        $last_sql_command_for_mtooldb = 'select Dafunc.ProjectPID, Dafunc.DaPID, Dafunc.PID, Dafunc.name, Dafunc.ActionType, Dafunc.InsertUpdateDeleteTargetTable, Dafunc.InsertUpdateDeleteParamType, Dafunc.SelectByDistinct, Dafunc.SortOrderColumns, Dafunc.DataClassBaseNameForSelectAction, Dafunc.FunctionListOrder, Dafunc.memo, Dafunc.limitParameterType, Dafunc.limitFixedParameter, Dafunc.ORGroupType, Dafunc.SingleProxy_AuthType, Dafunc.SingleProxy_SingleGetFuncPID, Dafunc.IsBlobTarget from Dafunc' . ' where ' . 'Dafunc.ProjectPID = ' . '\'' . $mtooldb->real_escape_string($param_Dafunc_ProjectPID_where) . '\'' . ' and ' . 'Dafunc.DaPID = ' . '\'' . $mtooldb->real_escape_string($param_Dafunc_daPID_where) . '\'' . ' order by Dafunc.FunctionListOrder,Dafunc.PID';
         $ret = $mtooldb->query($last_sql_command_for_mtooldb);
         if ($mtooldb->errno != 0) {
             error_log("Error occured while executing SQL: " . $mtooldb->error . " in " . __FILE__ . " on line " . __LINE__);
             return $ret;
         }
         while($thisline=$ret->fetch_row()) {
-            $thisresult = new dafuncData();
+            $thisresult = new DafuncData();
             $thisresult->ProjectPID = $thisline[0];
-            $thisresult->daPID = $thisline[1];
+            $thisresult->DaPID = $thisline[1];
             $thisresult->PID = $thisline[2];
             $thisresult->name = $thisline[3];
             $thisresult->ActionType = $thisline[4];
@@ -58,22 +58,22 @@ class dafuncDBAccessBase
     }
 
     // source_of_truth=sync-bootstrap action_type=SELECTSINGLE order=55 generation=canonical-sql
-    public function Getdafunc($param_dafunc_PID_where, $param_dafunc_ProjectPID_where)
+    public function GetDafunc($param_Dafunc_PID_where, $param_Dafunc_ProjectPID_where)
     {
         global $mtooldb, $last_sql_command_for_mtooldb;
         connect_mtooldb_if_not_yet();
         reconnect_mtooldb_if_necessary();
 
-        $last_sql_command_for_mtooldb = 'select dafunc.ProjectPID, dafunc.daPID, dafunc.PID, dafunc.name, dafunc.ActionType, dafunc.InsertUpdateDeleteTargetTable, dafunc.InsertUpdateDeleteParamType, dafunc.SelectByDistinct, dafunc.SortOrderColumns, dafunc.DataClassBaseNameForSelectAction, dafunc.FunctionListOrder, dafunc.memo, dafunc.limitParameterType, dafunc.limitFixedParameter, dafunc.ORGroupType, dafunc.SingleProxy_AuthType, dafunc.SingleProxy_SingleGetFuncPID, dafunc.IsBlobTarget from dafunc' . ' where ' . 'dafunc.PID = ' . '\'' . $mtooldb->real_escape_string($param_dafunc_PID_where) . '\'' . ' and ' . 'dafunc.ProjectPID = ' . '\'' . $mtooldb->real_escape_string($param_dafunc_ProjectPID_where) . '\'';
+        $last_sql_command_for_mtooldb = 'select Dafunc.ProjectPID, Dafunc.DaPID, Dafunc.PID, Dafunc.name, Dafunc.ActionType, Dafunc.InsertUpdateDeleteTargetTable, Dafunc.InsertUpdateDeleteParamType, Dafunc.SelectByDistinct, Dafunc.SortOrderColumns, Dafunc.DataClassBaseNameForSelectAction, Dafunc.FunctionListOrder, Dafunc.memo, Dafunc.limitParameterType, Dafunc.limitFixedParameter, Dafunc.ORGroupType, Dafunc.SingleProxy_AuthType, Dafunc.SingleProxy_SingleGetFuncPID, Dafunc.IsBlobTarget from Dafunc' . ' where ' . 'Dafunc.PID = ' . '\'' . $mtooldb->real_escape_string($param_Dafunc_PID_where) . '\'' . ' and ' . 'Dafunc.ProjectPID = ' . '\'' . $mtooldb->real_escape_string($param_Dafunc_ProjectPID_where) . '\'';
         $ret = $mtooldb->query($last_sql_command_for_mtooldb);
         if ($mtooldb->errno != 0) {
             error_log("Error occured while executing SQL: " . $mtooldb->error . " in " . __FILE__ . " on line " . __LINE__);
             return $ret;
         }
         while($thisline=$ret->fetch_row()) {
-            $thisresult = new dafuncData();
+            $thisresult = new DafuncData();
             $thisresult->ProjectPID = $thisline[0];
-            $thisresult->daPID = $thisline[1];
+            $thisresult->DaPID = $thisline[1];
             $thisresult->PID = $thisline[2];
             $thisresult->name = $thisline[3];
             $thisresult->ActionType = $thisline[4];
@@ -96,13 +96,13 @@ class dafuncDBAccessBase
     }
 
     // source_of_truth=sync-bootstrap action_type=INSERT order=94 generation=canonical-sql
-    public function Insertdafunc($dafuncObj)
+    public function InsertDafunc($DafuncObj)
     {
         global $mtooldb, $last_sql_command_for_mtooldb;
         connect_mtooldb_if_not_yet();
         reconnect_mtooldb_if_necessary();
 
-        $last_sql_command_for_mtooldb = 'insert into dafunc (ProjectPID, daPID, name, ActionType, InsertUpdateDeleteTargetTable, InsertUpdateDeleteParamType, SelectByDistinct, SortOrderColumns, DataClassBaseNameForSelectAction, memo, limitParameterType, limitFixedParameter, ORGroupType, IsBlobTarget) values(' . '\'' . $mtooldb->real_escape_string($dafuncObj->ProjectPID) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($dafuncObj->daPID) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($dafuncObj->name) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($dafuncObj->ActionType) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($dafuncObj->InsertUpdateDeleteTargetTable) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($dafuncObj->InsertUpdateDeleteParamType) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($dafuncObj->SelectByDistinct) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($dafuncObj->SortOrderColumns) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($dafuncObj->DataClassBaseNameForSelectAction) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($dafuncObj->memo) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($dafuncObj->limitParameterType) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($dafuncObj->limitFixedParameter) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($dafuncObj->ORGroupType) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($dafuncObj->IsBlobTarget) . '\'' . ')';
+        $last_sql_command_for_mtooldb = 'insert into Dafunc (ProjectPID, DaPID, name, ActionType, InsertUpdateDeleteTargetTable, InsertUpdateDeleteParamType, SelectByDistinct, SortOrderColumns, DataClassBaseNameForSelectAction, memo, limitParameterType, limitFixedParameter, ORGroupType, IsBlobTarget) values(' . '\'' . $mtooldb->real_escape_string($DafuncObj->ProjectPID) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($DafuncObj->DaPID) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($DafuncObj->name) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($DafuncObj->ActionType) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($DafuncObj->InsertUpdateDeleteTargetTable) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($DafuncObj->InsertUpdateDeleteParamType) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($DafuncObj->SelectByDistinct) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($DafuncObj->SortOrderColumns) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($DafuncObj->DataClassBaseNameForSelectAction) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($DafuncObj->memo) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($DafuncObj->limitParameterType) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($DafuncObj->limitFixedParameter) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($DafuncObj->ORGroupType) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($DafuncObj->IsBlobTarget) . '\'' . ')';
         $result = $mtooldb->query($last_sql_command_for_mtooldb);
         if ($mtooldb->errno != 0) {
             error_log("Error occured while executing SQL: " . $mtooldb->error . " in " . __FILE__ . " on line " . __LINE__);
@@ -111,13 +111,13 @@ class dafuncDBAccessBase
     }
 
     // source_of_truth=sync-bootstrap action_type=UPDATE order=110 generation=canonical-sql
-    public function Updatedafunc($dafuncObj)
+    public function UpdateDafunc($DafuncObj)
     {
         global $mtooldb, $last_sql_command_for_mtooldb;
         connect_mtooldb_if_not_yet();
         reconnect_mtooldb_if_necessary();
 
-        $last_sql_command_for_mtooldb = 'update dafunc SET ' . 'name = ' . '\'' . $mtooldb->real_escape_string($dafuncObj->name) . '\'' . ', ' . 'ActionType = ' . '\'' . $mtooldb->real_escape_string($dafuncObj->ActionType) . '\'' . ', ' . 'InsertUpdateDeleteTargetTable = ' . '\'' . $mtooldb->real_escape_string($dafuncObj->InsertUpdateDeleteTargetTable) . '\'' . ', ' . 'InsertUpdateDeleteParamType = ' . '\'' . $mtooldb->real_escape_string($dafuncObj->InsertUpdateDeleteParamType) . '\'' . ', ' . 'SelectByDistinct = ' . '\'' . $mtooldb->real_escape_string($dafuncObj->SelectByDistinct) . '\'' . ', ' . 'SortOrderColumns = ' . '\'' . $mtooldb->real_escape_string($dafuncObj->SortOrderColumns) . '\'' . ', ' . 'DataClassBaseNameForSelectAction = ' . '\'' . $mtooldb->real_escape_string($dafuncObj->DataClassBaseNameForSelectAction) . '\'' . ', ' . 'memo = ' . '\'' . $mtooldb->real_escape_string($dafuncObj->memo) . '\'' . ', ' . 'limitParameterType = ' . '\'' . $mtooldb->real_escape_string($dafuncObj->limitParameterType) . '\'' . ', ' . 'limitFixedParameter = ' . '\'' . $mtooldb->real_escape_string($dafuncObj->limitFixedParameter) . '\'' . ', ' . 'ORGroupType = ' . '\'' . $mtooldb->real_escape_string($dafuncObj->ORGroupType) . '\'' . ', ' . 'IsBlobTarget = ' . '\'' . $mtooldb->real_escape_string($dafuncObj->IsBlobTarget) . '\'' . ' where ' . 'dafunc.PID = ' . '\'' . $mtooldb->real_escape_string($dafuncObj->PID) . '\'' . ' and ' . 'dafunc.ProjectPID = ' . '\'' . $mtooldb->real_escape_string($dafuncObj->ProjectPID) . '\'';
+        $last_sql_command_for_mtooldb = 'update Dafunc SET ' . 'name = ' . '\'' . $mtooldb->real_escape_string($DafuncObj->name) . '\'' . ', ' . 'ActionType = ' . '\'' . $mtooldb->real_escape_string($DafuncObj->ActionType) . '\'' . ', ' . 'InsertUpdateDeleteTargetTable = ' . '\'' . $mtooldb->real_escape_string($DafuncObj->InsertUpdateDeleteTargetTable) . '\'' . ', ' . 'InsertUpdateDeleteParamType = ' . '\'' . $mtooldb->real_escape_string($DafuncObj->InsertUpdateDeleteParamType) . '\'' . ', ' . 'SelectByDistinct = ' . '\'' . $mtooldb->real_escape_string($DafuncObj->SelectByDistinct) . '\'' . ', ' . 'SortOrderColumns = ' . '\'' . $mtooldb->real_escape_string($DafuncObj->SortOrderColumns) . '\'' . ', ' . 'DataClassBaseNameForSelectAction = ' . '\'' . $mtooldb->real_escape_string($DafuncObj->DataClassBaseNameForSelectAction) . '\'' . ', ' . 'memo = ' . '\'' . $mtooldb->real_escape_string($DafuncObj->memo) . '\'' . ', ' . 'limitParameterType = ' . '\'' . $mtooldb->real_escape_string($DafuncObj->limitParameterType) . '\'' . ', ' . 'limitFixedParameter = ' . '\'' . $mtooldb->real_escape_string($DafuncObj->limitFixedParameter) . '\'' . ', ' . 'ORGroupType = ' . '\'' . $mtooldb->real_escape_string($DafuncObj->ORGroupType) . '\'' . ', ' . 'IsBlobTarget = ' . '\'' . $mtooldb->real_escape_string($DafuncObj->IsBlobTarget) . '\'' . ' where ' . 'Dafunc.PID = ' . '\'' . $mtooldb->real_escape_string($DafuncObj->PID) . '\'' . ' and ' . 'Dafunc.ProjectPID = ' . '\'' . $mtooldb->real_escape_string($DafuncObj->ProjectPID) . '\'';
         $result = $mtooldb->query($last_sql_command_for_mtooldb);
         if ($mtooldb->errno != 0) {
             error_log("Error occured while executing SQL: " . $mtooldb->error . " in " . __FILE__ . " on line " . __LINE__);
@@ -126,13 +126,13 @@ class dafuncDBAccessBase
     }
 
     // source_of_truth=sync-bootstrap action_type=UPDATE order=126 generation=canonical-sql
-    public function UpdateSingleProxySetting($dafuncObj)
+    public function UpdateSingleProxySetting($DafuncObj)
     {
         global $mtooldb, $last_sql_command_for_mtooldb;
         connect_mtooldb_if_not_yet();
         reconnect_mtooldb_if_necessary();
 
-        $last_sql_command_for_mtooldb = 'update dafunc SET ' . 'SingleProxy_AuthType = ' . '\'' . $mtooldb->real_escape_string($dafuncObj->SingleProxy_AuthType) . '\'' . ', ' . 'SingleProxy_SingleGetFuncPID = ' . '\'' . $mtooldb->real_escape_string($dafuncObj->SingleProxy_SingleGetFuncPID) . '\'' . ' where ' . 'dafunc.PID = ' . '\'' . $mtooldb->real_escape_string($dafuncObj->PID) . '\'' . ' and ' . 'dafunc.ProjectPID = ' . '\'' . $mtooldb->real_escape_string($dafuncObj->ProjectPID) . '\'';
+        $last_sql_command_for_mtooldb = 'update Dafunc SET ' . 'SingleProxy_AuthType = ' . '\'' . $mtooldb->real_escape_string($DafuncObj->SingleProxy_AuthType) . '\'' . ', ' . 'SingleProxy_SingleGetFuncPID = ' . '\'' . $mtooldb->real_escape_string($DafuncObj->SingleProxy_SingleGetFuncPID) . '\'' . ' where ' . 'Dafunc.PID = ' . '\'' . $mtooldb->real_escape_string($DafuncObj->PID) . '\'' . ' and ' . 'Dafunc.ProjectPID = ' . '\'' . $mtooldb->real_escape_string($DafuncObj->ProjectPID) . '\'';
         $result = $mtooldb->query($last_sql_command_for_mtooldb);
         if ($mtooldb->errno != 0) {
             error_log("Error occured while executing SQL: " . $mtooldb->error . " in " . __FILE__ . " on line " . __LINE__);
@@ -141,13 +141,13 @@ class dafuncDBAccessBase
     }
 
     // source_of_truth=sync-bootstrap action_type=DELETE order=142 generation=canonical-sql
-    public function Deletedafunc($param_dafunc_PID_where, $param_dafunc_ProjectPID_where)
+    public function DeleteDafunc($param_Dafunc_PID_where, $param_Dafunc_ProjectPID_where)
     {
         global $mtooldb, $last_sql_command_for_mtooldb;
         connect_mtooldb_if_not_yet();
         reconnect_mtooldb_if_necessary();
 
-        $last_sql_command_for_mtooldb = 'delete from dafunc where ' . 'dafunc.PID = ' . '\'' . $mtooldb->real_escape_string($param_dafunc_PID_where) . '\'' . ' and ' . 'dafunc.ProjectPID = ' . '\'' . $mtooldb->real_escape_string($param_dafunc_ProjectPID_where) . '\'';
+        $last_sql_command_for_mtooldb = 'delete from Dafunc where ' . 'Dafunc.PID = ' . '\'' . $mtooldb->real_escape_string($param_Dafunc_PID_where) . '\'' . ' and ' . 'Dafunc.ProjectPID = ' . '\'' . $mtooldb->real_escape_string($param_Dafunc_ProjectPID_where) . '\'';
         $result = $mtooldb->query($last_sql_command_for_mtooldb);
         if ($mtooldb->errno != 0) {
             error_log("Error occured while executing SQL: " . $mtooldb->error . " in " . __FILE__ . " on line " . __LINE__);
@@ -156,13 +156,13 @@ class dafuncDBAccessBase
     }
 
     // source_of_truth=sync-bootstrap action_type=UPDATE order=158 generation=canonical-sql
-    public function UpdatedafuncSortOrderColumns($dafuncObj)
+    public function UpdateDafuncSortOrderColumns($DafuncObj)
     {
         global $mtooldb, $last_sql_command_for_mtooldb;
         connect_mtooldb_if_not_yet();
         reconnect_mtooldb_if_necessary();
 
-        $last_sql_command_for_mtooldb = 'update dafunc SET ' . 'SortOrderColumns = ' . '\'' . $mtooldb->real_escape_string($dafuncObj->SortOrderColumns) . '\'' . ' where ' . 'dafunc.PID = ' . '\'' . $mtooldb->real_escape_string($dafuncObj->PID) . '\'' . ' and ' . 'dafunc.ProjectPID = ' . '\'' . $mtooldb->real_escape_string($dafuncObj->ProjectPID) . '\'';
+        $last_sql_command_for_mtooldb = 'update Dafunc SET ' . 'SortOrderColumns = ' . '\'' . $mtooldb->real_escape_string($DafuncObj->SortOrderColumns) . '\'' . ' where ' . 'Dafunc.PID = ' . '\'' . $mtooldb->real_escape_string($DafuncObj->PID) . '\'' . ' and ' . 'Dafunc.ProjectPID = ' . '\'' . $mtooldb->real_escape_string($DafuncObj->ProjectPID) . '\'';
         $result = $mtooldb->query($last_sql_command_for_mtooldb);
         if ($mtooldb->errno != 0) {
             error_log("Error occured while executing SQL: " . $mtooldb->error . " in " . __FILE__ . " on line " . __LINE__);
@@ -171,13 +171,13 @@ class dafuncDBAccessBase
     }
 
     // source_of_truth=sync-bootstrap action_type=UPDATE order=174 generation=canonical-sql
-    public function UpdatedafuncFunctionListOrder($param_dafunc_FunctionListOrder_update, $param_dafunc_PID_where, $param_dafunc_ProjectPID_where)
+    public function UpdateDafuncFunctionListOrder($param_Dafunc_FunctionListOrder_update, $param_Dafunc_PID_where, $param_Dafunc_ProjectPID_where)
     {
         global $mtooldb, $last_sql_command_for_mtooldb;
         connect_mtooldb_if_not_yet();
         reconnect_mtooldb_if_necessary();
 
-        $last_sql_command_for_mtooldb = 'update dafunc SET ' . 'FunctionListOrder = ' . $param_dafunc_FunctionListOrder_update . ' where ' . 'dafunc.PID = ' . '\'' . $mtooldb->real_escape_string($param_dafunc_PID_where) . '\'' . ' and ' . 'dafunc.ProjectPID = ' . '\'' . $mtooldb->real_escape_string($param_dafunc_ProjectPID_where) . '\'';
+        $last_sql_command_for_mtooldb = 'update Dafunc SET ' . 'FunctionListOrder = ' . $param_Dafunc_FunctionListOrder_update . ' where ' . 'Dafunc.PID = ' . '\'' . $mtooldb->real_escape_string($param_Dafunc_PID_where) . '\'' . ' and ' . 'Dafunc.ProjectPID = ' . '\'' . $mtooldb->real_escape_string($param_Dafunc_ProjectPID_where) . '\'';
         $result = $mtooldb->query($last_sql_command_for_mtooldb);
         if ($mtooldb->errno != 0) {
             error_log("Error occured while executing SQL: " . $mtooldb->error . " in " . __FILE__ . " on line " . __LINE__);
@@ -186,13 +186,13 @@ class dafuncDBAccessBase
     }
 
     // source_of_truth=sync-bootstrap action_type=UPDATE order=190 generation=canonical-sql
-    public function UpdateDAPIDforMovingFunction($param_dafunc_daPID_update, $param_dafunc_ProjectPID_where, $param_dafunc_PID_where)
+    public function UpdateDAPIDforMovingFunction($param_Dafunc_daPID_update, $param_Dafunc_ProjectPID_where, $param_Dafunc_PID_where)
     {
         global $mtooldb, $last_sql_command_for_mtooldb;
         connect_mtooldb_if_not_yet();
         reconnect_mtooldb_if_necessary();
 
-        $last_sql_command_for_mtooldb = 'update dafunc SET ' . 'daPID = ' . '\'' . $mtooldb->real_escape_string($param_dafunc_daPID_update) . '\'' . ' where ' . 'dafunc.ProjectPID = ' . '\'' . $mtooldb->real_escape_string($param_dafunc_ProjectPID_where) . '\'' . ' and ' . 'dafunc.PID = ' . '\'' . $mtooldb->real_escape_string($param_dafunc_PID_where) . '\'';
+        $last_sql_command_for_mtooldb = 'update Dafunc SET ' . 'DaPID = ' . '\'' . $mtooldb->real_escape_string($param_Dafunc_daPID_update) . '\'' . ' where ' . 'Dafunc.ProjectPID = ' . '\'' . $mtooldb->real_escape_string($param_Dafunc_ProjectPID_where) . '\'' . ' and ' . 'Dafunc.PID = ' . '\'' . $mtooldb->real_escape_string($param_Dafunc_PID_where) . '\'';
         $result = $mtooldb->query($last_sql_command_for_mtooldb);
         if ($mtooldb->errno != 0) {
             error_log("Error occured while executing SQL: " . $mtooldb->error . " in " . __FILE__ . " on line " . __LINE__);

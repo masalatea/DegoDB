@@ -31,13 +31,21 @@ final class RuntimeReferenceLayoutContractTest extends TestCase
             $contents = file_get_contents($dataFile);
             self::assertIsString($contents);
             $dataBasename = basename($dataFile);
+            self::assertMatchesRegularExpression(
+                '/class\s+[A-Za-z0-9_]+Data\s+extends\s+([A-Za-z0-9_]+DataBase)\b/',
+                $contents,
+                $dataBasename,
+            );
+            preg_match('/class\s+[A-Za-z0-9_]+Data\s+extends\s+([A-Za-z0-9_]+)DataBase\b/', $contents, $matches);
+            $baseStem = $matches[1] ?? preg_replace('/^data-|\.php$/', '', $dataBasename);
             $expectedBaseRequire = "require_once __DIR__ . '/base/"
-                . preg_replace('/\.php$/', 'Base.php', $dataBasename)
+                . 'data-' . $baseStem . 'Base.php'
                 . "';";
+            $expectedCustomWrapper = 'data-' . $baseStem . '.php';
             self::assertStringNotContainsString('mtool_runtime_bundle_load_layered_file(', $contents, $dataBasename);
             self::assertStringContainsString($expectedBaseRequire, $contents, $dataBasename);
             self::assertStringContainsString(
-                "mtool_runtime_bundle_load_custom_wrapper('{$dataBasename}')",
+                "mtool_runtime_bundle_load_custom_wrapper('{$expectedCustomWrapper}')",
                 $contents,
                 $dataBasename,
             );

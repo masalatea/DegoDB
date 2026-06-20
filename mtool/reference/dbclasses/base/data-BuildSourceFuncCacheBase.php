@@ -13,9 +13,9 @@ class BuildSourceFuncCacheDataBase
     public $PID;
     public $ProjectPID;
     public $CreatedDateTime;
-    public $daPID;
-    public $dafuncPID;
-    public $daCustomProxyPID;
+    public $DaPID;
+    public $DafuncPID;
+    public $DaCustomProxyPID;
     public $BuildTargetType;
     public $ReleaseTargetType;
     public $FunctionName;

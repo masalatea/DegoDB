@@ -347,6 +347,18 @@ function app_config_db_bootstrap_required_columns(): array
             'supports_proxy_runtime_read',
             'proxy_runtime_priority',
         ],
+        'dbtable' => [
+            'physical_name',
+        ],
+        'dbtablecolumns' => [
+            'physical_name',
+        ],
+        'dataclass' => [
+            'physical_name',
+        ],
+        'dataclassfields' => [
+            'physical_name',
+        ],
         'project_db_access_functions' => [
             'auth_policy_version',
             'auth_policy_json',

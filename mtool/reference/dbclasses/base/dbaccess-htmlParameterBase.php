@@ -9,7 +9,7 @@
 // Known helper-style methods regenerate canonical PHP bodies when SQL regeneration is not the right fit.
 // Current canonical runtime generation fully owns this class, so no legacy DBAccess parent is required.
 
-class htmlParameterDBAccessBase
+class HtmlParameterDBAccessBase
 {
     // source_of_truth=sync-bootstrap action_type=UNKNOWN order=11 generation=canonical-constructor
     // reason=bootstrap constructor is empty, so runtime owns the no-op constructor directly
@@ -26,16 +26,16 @@ class htmlParameterDBAccessBase
 
         $result = array();
 
-        $last_sql_command_for_mtooldb = 'select htmlParameter.ProjectPID, htmlParameter.htmlPID, htmlParameter.PID, htmlParameter.ParameterName, htmlParameter.ParameterValue from htmlParameter' . ' where ' . 'htmlParameter.ProjectPID = ' . '\'' . $mtooldb->real_escape_string($param_htmlParameter_ProjectPID_where) . '\'' . ' and ' . 'htmlParameter.htmlPID = ' . '\'' . $mtooldb->real_escape_string($param_htmlParameter_htmlPID_where) . '\'';
+        $last_sql_command_for_mtooldb = 'select HtmlParameter.ProjectPID, HtmlParameter.HtmlPID, HtmlParameter.PID, HtmlParameter.ParameterName, HtmlParameter.ParameterValue from HtmlParameter' . ' where ' . 'HtmlParameter.ProjectPID = ' . '\'' . $mtooldb->real_escape_string($param_htmlParameter_ProjectPID_where) . '\'' . ' and ' . 'HtmlParameter.HtmlPID = ' . '\'' . $mtooldb->real_escape_string($param_htmlParameter_htmlPID_where) . '\'';
         $ret = $mtooldb->query($last_sql_command_for_mtooldb);
         if ($mtooldb->errno != 0) {
             error_log("Error occured while executing SQL: " . $mtooldb->error . " in " . __FILE__ . " on line " . __LINE__);
             return $ret;
         }
         while($thisline=$ret->fetch_row()) {
-            $thisresult = new htmlParameterData();
+            $thisresult = new HtmlParameterData();
             $thisresult->ProjectPID = $thisline[0];
-            $thisresult->htmlPID = $thisline[1];
+            $thisresult->HtmlPID = $thisline[1];
             $thisresult->PID = $thisline[2];
             $thisresult->ParameterName = $thisline[3];
             $thisresult->ParameterValue = $thisline[4];
@@ -51,16 +51,16 @@ class htmlParameterDBAccessBase
         connect_mtooldb_if_not_yet();
         reconnect_mtooldb_if_necessary();
 
-        $last_sql_command_for_mtooldb = 'select htmlParameter.ProjectPID, htmlParameter.htmlPID, htmlParameter.PID, htmlParameter.ParameterName, htmlParameter.ParameterValue from htmlParameter' . ' where ' . 'htmlParameter.PID = ' . '\'' . $mtooldb->real_escape_string($param_htmlParameter_PID_where) . '\'' . ' and ' . 'htmlParameter.ProjectPID = ' . '\'' . $mtooldb->real_escape_string($param_htmlParameter_ProjectPID_where) . '\'';
+        $last_sql_command_for_mtooldb = 'select HtmlParameter.ProjectPID, HtmlParameter.HtmlPID, HtmlParameter.PID, HtmlParameter.ParameterName, HtmlParameter.ParameterValue from HtmlParameter' . ' where ' . 'HtmlParameter.PID = ' . '\'' . $mtooldb->real_escape_string($param_htmlParameter_PID_where) . '\'' . ' and ' . 'HtmlParameter.ProjectPID = ' . '\'' . $mtooldb->real_escape_string($param_htmlParameter_ProjectPID_where) . '\'';
         $ret = $mtooldb->query($last_sql_command_for_mtooldb);
         if ($mtooldb->errno != 0) {
             error_log("Error occured while executing SQL: " . $mtooldb->error . " in " . __FILE__ . " on line " . __LINE__);
             return $ret;
         }
         while($thisline=$ret->fetch_row()) {
-            $thisresult = new htmlParameterData();
+            $thisresult = new HtmlParameterData();
             $thisresult->ProjectPID = $thisline[0];
-            $thisresult->htmlPID = $thisline[1];
+            $thisresult->HtmlPID = $thisline[1];
             $thisresult->PID = $thisline[2];
             $thisresult->ParameterName = $thisline[3];
             $thisresult->ParameterValue = $thisline[4];
@@ -70,13 +70,13 @@ class htmlParameterDBAccessBase
     }
 
     // source_of_truth=sync-bootstrap action_type=INSERT order=68 generation=canonical-sql
-    public function InserthtmlParameter($htmlParameterObj)
+    public function InserthtmlParameter($HtmlParameterObj)
     {
         global $mtooldb, $last_sql_command_for_mtooldb;
         connect_mtooldb_if_not_yet();
         reconnect_mtooldb_if_necessary();
 
-        $last_sql_command_for_mtooldb = 'insert into htmlParameter (ProjectPID, htmlPID, ParameterName, ParameterValue) values(' . '\'' . $mtooldb->real_escape_string($htmlParameterObj->ProjectPID) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($htmlParameterObj->htmlPID) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($htmlParameterObj->ParameterName) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($htmlParameterObj->ParameterValue) . '\'' . ')';
+        $last_sql_command_for_mtooldb = 'insert into HtmlParameter (ProjectPID, HtmlPID, ParameterName, ParameterValue) values(' . '\'' . $mtooldb->real_escape_string($HtmlParameterObj->ProjectPID) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($HtmlParameterObj->HtmlPID) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($HtmlParameterObj->ParameterName) . '\'' . ', ' . '\'' . $mtooldb->real_escape_string($HtmlParameterObj->ParameterValue) . '\'' . ')';
         $result = $mtooldb->query($last_sql_command_for_mtooldb);
         if ($mtooldb->errno != 0) {
             error_log("Error occured while executing SQL: " . $mtooldb->error . " in " . __FILE__ . " on line " . __LINE__);
@@ -85,13 +85,13 @@ class htmlParameterDBAccessBase
     }
 
     // source_of_truth=sync-bootstrap action_type=UPDATE order=84 generation=canonical-sql
-    public function UpdatehtmlParameter($htmlParameterObj)
+    public function UpdatehtmlParameter($HtmlParameterObj)
     {
         global $mtooldb, $last_sql_command_for_mtooldb;
         connect_mtooldb_if_not_yet();
         reconnect_mtooldb_if_necessary();
 
-        $last_sql_command_for_mtooldb = 'update htmlParameter SET ' . 'ParameterName = ' . '\'' . $mtooldb->real_escape_string($htmlParameterObj->ParameterName) . '\'' . ', ' . 'ParameterValue = ' . '\'' . $mtooldb->real_escape_string($htmlParameterObj->ParameterValue) . '\'' . ' where ' . 'htmlParameter.PID = ' . '\'' . $mtooldb->real_escape_string($htmlParameterObj->PID) . '\'' . ' and ' . 'htmlParameter.ProjectPID = ' . '\'' . $mtooldb->real_escape_string($htmlParameterObj->ProjectPID) . '\'';
+        $last_sql_command_for_mtooldb = 'update HtmlParameter SET ' . 'ParameterName = ' . '\'' . $mtooldb->real_escape_string($HtmlParameterObj->ParameterName) . '\'' . ', ' . 'ParameterValue = ' . '\'' . $mtooldb->real_escape_string($HtmlParameterObj->ParameterValue) . '\'' . ' where ' . 'HtmlParameter.PID = ' . '\'' . $mtooldb->real_escape_string($HtmlParameterObj->PID) . '\'' . ' and ' . 'HtmlParameter.ProjectPID = ' . '\'' . $mtooldb->real_escape_string($HtmlParameterObj->ProjectPID) . '\'';
         $result = $mtooldb->query($last_sql_command_for_mtooldb);
         if ($mtooldb->errno != 0) {
             error_log("Error occured while executing SQL: " . $mtooldb->error . " in " . __FILE__ . " on line " . __LINE__);
@@ -100,13 +100,13 @@ class htmlParameterDBAccessBase
     }
 
     // source_of_truth=sync-bootstrap action_type=DELETE order=100 generation=canonical-sql
-    public function DeletehtmlParameter($htmlParameterObj)
+    public function DeletehtmlParameter($HtmlParameterObj)
     {
         global $mtooldb, $last_sql_command_for_mtooldb;
         connect_mtooldb_if_not_yet();
         reconnect_mtooldb_if_necessary();
 
-        $last_sql_command_for_mtooldb = 'delete from htmlParameter where ' . 'htmlParameter.PID = ' . '\'' . $mtooldb->real_escape_string($htmlParameterObj->PID) . '\'' . ' and ' . 'htmlParameter.ProjectPID = ' . '\'' . $mtooldb->real_escape_string($htmlParameterObj->ProjectPID) . '\'';
+        $last_sql_command_for_mtooldb = 'delete from HtmlParameter where ' . 'HtmlParameter.PID = ' . '\'' . $mtooldb->real_escape_string($HtmlParameterObj->PID) . '\'' . ' and ' . 'HtmlParameter.ProjectPID = ' . '\'' . $mtooldb->real_escape_string($HtmlParameterObj->ProjectPID) . '\'';
         $result = $mtooldb->query($last_sql_command_for_mtooldb);
         if ($mtooldb->errno != 0) {
             error_log("Error occured while executing SQL: " . $mtooldb->error . " in " . __FILE__ . " on line " . __LINE__);

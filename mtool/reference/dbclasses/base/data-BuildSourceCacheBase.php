@@ -14,8 +14,8 @@ class BuildSourceCacheDataBase
     public $PID;
     public $SourceType;
     public $CreatedDateTime;
-    public $dataclassPID;
-    public $daPID;
+    public $DataclassPID;
+    public $DaPID;
     public $Filename;
     public $SourceCode;
 
@@ -27,8 +27,8 @@ class BuildSourceCacheDataBase
 class BuildSourceCacheSourceTypeEnum
 {
 	static $UNKNOWN = "Unknown";
-	static $DATACLASS = "dataclass";
-	static $DA = "da";
+	static $DATACLASS = "Dataclass";
+	static $DA = "Da";
 }
 
 

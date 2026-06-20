@@ -1,41 +1,41 @@
 <?php
 
 require_once __DIR__ . '/_runtime_loader.php';
-require_once __DIR__ . '/base/data-dafuncBase.php';
+require_once __DIR__ . '/base/data-DafuncBase.php';
 
-if (!mtool_runtime_bundle_load_custom_wrapper('data-dafunc.php')) {
+if (!mtool_runtime_bundle_load_custom_wrapper('data-Dafunc.php')) {
     // Generated wrapper entry for runtime data class.
-    // Override `mtool/extensions/MTOOL/RUNTIME-DBCLASSES/data-dafunc.php` and extend `dafuncDataBase` for project-specific customizations.
+    // Override `mtool/extensions/MTOOL/RUNTIME-DBCLASSES/data-Dafunc.php` and extend `DafuncDataBase` for project-specific customizations.
 
-    class dafuncData extends dafuncDataBase
+    class DafuncData extends DafuncDataBase
     {
 	function IsInsertUpdateDeleteTargetVal()
 	{
-		return ($this->InsertUpdateDeleteParamType == dafuncInsertUpdateDeleteParamTypeEnum::$VAL);
+		return ($this->InsertUpdateDeleteParamType == DafuncInsertUpdateDeleteParamTypeEnum::$VAL);
 	}
 	function IsInsertUpdateDeleteTargetClassObject()
 	{
-		return ($this->InsertUpdateDeleteParamType == dafuncInsertUpdateDeleteParamTypeEnum::$CLASSOBJECT);
+		return ($this->InsertUpdateDeleteParamType == DafuncInsertUpdateDeleteParamTypeEnum::$CLASSOBJECT);
 	}
 	function IsInsertUpdateDeleteTargetSetByClassObjectAndWhereByValForUpdate()
 	{
-		return ($this->InsertUpdateDeleteParamType == dafuncInsertUpdateDeleteParamTypeEnum::$SETBYCLASSOBJECTANDWHEREBYVALFORUPDATE);
+		return ($this->InsertUpdateDeleteParamType == DafuncInsertUpdateDeleteParamTypeEnum::$SETBYCLASSOBJECTANDWHEREBYVALFORUPDATE);
 	}
 	
 	function GetBaseDataClassName()
 	{
 		switch($this->ActionType) {
-			case dafuncActionTypeEnum::$SELECTSINGLE:
-			case dafuncActionTypeEnum::$SELECTLIST:
+			case DafuncActionTypeEnum::$SELECTSINGLE:
+			case DafuncActionTypeEnum::$SELECTLIST:
 				if ($this->DataClassBaseNameForSelectAction != "") {
 					return $this->DataClassBaseNameForSelectAction;
 				} else if ($this->name != "") {
 					return $this->name;
 				}
 				break;
-			case dafuncActionTypeEnum::$INSERT:
-			case dafuncActionTypeEnum::$UPDATE:
-			case dafuncActionTypeEnum::$DELETE:
+			case DafuncActionTypeEnum::$INSERT:
+			case DafuncActionTypeEnum::$UPDATE:
+			case DafuncActionTypeEnum::$DELETE:
 				if ($this->InsertUpdateDeleteTargetTable != "") {
 					return $this->InsertUpdateDeleteTargetTable;
 				} else if ($this->name != "") {
@@ -52,12 +52,12 @@ if (!mtool_runtime_bundle_load_custom_wrapper('data-dafunc.php')) {
 	function GetInsertUpdateDeleteTargetTable()
 	{
 		switch($this->ActionType) {
-			case dafuncActionTypeEnum::$SELECTSINGLE:
-			case dafuncActionTypeEnum::$SELECTLIST:
+			case DafuncActionTypeEnum::$SELECTSINGLE:
+			case DafuncActionTypeEnum::$SELECTLIST:
 				break;
-			case dafuncActionTypeEnum::$INSERT:
-			case dafuncActionTypeEnum::$UPDATE:
-			case dafuncActionTypeEnum::$DELETE:
+			case DafuncActionTypeEnum::$INSERT:
+			case DafuncActionTypeEnum::$UPDATE:
+			case DafuncActionTypeEnum::$DELETE:
 				if ($this->InsertUpdateDeleteTargetTable != "") {
 					return $this->InsertUpdateDeleteTargetTable;
 				} else if ($this->name != "") {
@@ -75,12 +75,12 @@ if (!mtool_runtime_bundle_load_custom_wrapper('data-dafunc.php')) {
 	function IsInsertFunction()
 	{
 		switch($this->ActionType) {
-			case dafuncActionTypeEnum::$SELECTSINGLE:
-			case dafuncActionTypeEnum::$SELECTLIST:
-			case dafuncActionTypeEnum::$UPDATE:
-			case dafuncActionTypeEnum::$DELETE:
+			case DafuncActionTypeEnum::$SELECTSINGLE:
+			case DafuncActionTypeEnum::$SELECTLIST:
+			case DafuncActionTypeEnum::$UPDATE:
+			case DafuncActionTypeEnum::$DELETE:
 				break;
-			case dafuncActionTypeEnum::$INSERT:
+			case DafuncActionTypeEnum::$INSERT:
 				return true;
 			default:
 				print "INTERNAL ERROR! Unknown Action Type: " . $ActionType . "\n";
@@ -92,14 +92,14 @@ if (!mtool_runtime_bundle_load_custom_wrapper('data-dafunc.php')) {
 	function IsLoginByLoginCookieToken()
 	{
 		switch($this->SingleProxy_AuthType) {
-			case dafuncSingleProxy_AuthTypeEnum::$DEFAULT:
-			case dafuncSingleProxy_AuthTypeEnum::$PROJECTTOKEN:
-			case dafuncSingleProxy_AuthTypeEnum::$GETFUNC:
-			case dafuncSingleProxy_AuthTypeEnum::$PROJECTTOKENORGETFUNC:
-			case dafuncSingleProxy_AuthTypeEnum::$NOSECURITY:
-			case dafuncSingleProxy_AuthTypeEnum::$MANUAL:
+			case DafuncSingleProxy_AuthTypeEnum::$DEFAULT:
+			case DafuncSingleProxy_AuthTypeEnum::$PROJECTTOKEN:
+			case DafuncSingleProxy_AuthTypeEnum::$GETFUNC:
+			case DafuncSingleProxy_AuthTypeEnum::$PROJECTTOKENORGETFUNC:
+			case DafuncSingleProxy_AuthTypeEnum::$NOSECURITY:
+			case DafuncSingleProxy_AuthTypeEnum::$MANUAL:
 				break;
-			case dafuncSingleProxy_AuthTypeEnum::$LOGINCOOKIETOKEN:
+			case DafuncSingleProxy_AuthTypeEnum::$LOGINCOOKIETOKEN:
 				return true;
 			default:
 				print "INTERNAL ERROR! Unknown Auth Type: " . $this->SingleProxy_AuthType . "\n";
@@ -108,31 +108,31 @@ if (!mtool_runtime_bundle_load_custom_wrapper('data-dafunc.php')) {
 	}
     }
 }
-function GetdafuncInsertUpdateDeleteParamTypeCaption($paramType)
+function GetDafuncInsertUpdateDeleteParamTypeCaption($paramType)
 {
 	switch($paramType)
 	{
-		case dafuncInsertUpdateDeleteParamTypeEnum::$DEFAULT:
+		case DafuncInsertUpdateDeleteParamTypeEnum::$DEFAULT:
 			return "Not Selected";
-		case dafuncInsertUpdateDeleteParamTypeEnum::$VAL:
+		case DafuncInsertUpdateDeleteParamTypeEnum::$VAL:
 			return "Value";
-		case dafuncInsertUpdateDeleteParamTypeEnum::$CLASSOBJECT:
+		case DafuncInsertUpdateDeleteParamTypeEnum::$CLASSOBJECT:
 			return "Class Object";
-		case dafuncInsertUpdateDeleteParamTypeEnum::$SETBYCLASSOBJECTANDWHEREBYVALFORUPDATE:
+		case DafuncInsertUpdateDeleteParamTypeEnum::$SETBYCLASSOBJECTANDWHEREBYVALFORUPDATE:
 			return "Class Object for Set Target / Value for Where";
 	}
 	return $paramType;
 }
 
-function GetdafuncORGroupTypeCaption($paramType)
+function GetDafuncORGroupTypeCaption($paramType)
 {
 	switch($paramType)
 	{
-		case dafuncORGroupTypeEnum::$DEFAULT:
+		case DafuncORGroupTypeEnum::$DEFAULT:
 			return "Not Selected";
-		case dafuncORGroupTypeEnum::$ORANDOR:
+		case DafuncORGroupTypeEnum::$ORANDOR:
 			return "(.. or ..) and (.. or ..)";
-		case dafuncORGroupTypeEnum::$ANDORAND:
+		case DafuncORGroupTypeEnum::$ANDORAND:
 			return "(.. and ..) or (.. and ..)";
 	}
 	return $paramType;
@@ -141,11 +141,11 @@ function GetWorkingORGroupType($paramType)
 {
 	switch($paramType)
 	{
-		case dafuncORGroupTypeEnum::$DEFAULT:
-			return dafuncORGroupTypeEnum::$ORANDOR;
-		case dafuncORGroupTypeEnum::$ORANDOR:
+		case DafuncORGroupTypeEnum::$DEFAULT:
+			return DafuncORGroupTypeEnum::$ORANDOR;
+		case DafuncORGroupTypeEnum::$ORANDOR:
 			return $paramType;
-		case dafuncORGroupTypeEnum::$ANDORAND:
+		case DafuncORGroupTypeEnum::$ANDORAND:
 			return $paramType;
 	}
 	return $paramType;
@@ -154,15 +154,15 @@ function GetWorkingORGroupType($paramType)
 function GetDAFuncActionTypeCaption($ActionType)
 {
 	switch($ActionType) {
-		case dafuncActionTypeEnum::$SELECTSINGLE:
+		case DafuncActionTypeEnum::$SELECTSINGLE:
 			return "Select(Single)";
-		case dafuncActionTypeEnum::$SELECTLIST:
+		case DafuncActionTypeEnum::$SELECTLIST:
 			return "Select(List)";
-		case dafuncActionTypeEnum::$INSERT:
+		case DafuncActionTypeEnum::$INSERT:
 			return "Insert";
-		case dafuncActionTypeEnum::$UPDATE:
+		case DafuncActionTypeEnum::$UPDATE:
 			return "Update";
-		case dafuncActionTypeEnum::$DELETE:
+		case DafuncActionTypeEnum::$DELETE:
 			return "Delete";
 		default:
 			print "INTERNAL ERROR! Unknown Action Type: " . $ActionType . "\n";
@@ -173,19 +173,19 @@ function GetDAFuncActionTypeCaption($ActionType)
 function GetSingleProxyAuthTypeCaption($value)
 {
 	switch($value) {
-		case dafuncSingleProxy_AuthTypeEnum::$DEFAULT:
+		case DafuncSingleProxy_AuthTypeEnum::$DEFAULT:
 			return "Default";
-		case dafuncSingleProxy_AuthTypeEnum::$PROJECTTOKEN:
+		case DafuncSingleProxy_AuthTypeEnum::$PROJECTTOKEN:
 			return "Project's Token (default)";
-		case dafuncSingleProxy_AuthTypeEnum::$GETFUNC:
+		case DafuncSingleProxy_AuthTypeEnum::$GETFUNC:
 			return "Get Function";
-		case dafuncSingleProxy_AuthTypeEnum::$PROJECTTOKENORGETFUNC:
+		case DafuncSingleProxy_AuthTypeEnum::$PROJECTTOKENORGETFUNC:
 			return "Project's Token or Get Function";
-		case dafuncSingleProxy_AuthTypeEnum::$NOSECURITY:
+		case DafuncSingleProxy_AuthTypeEnum::$NOSECURITY:
 			return "No Security";
-		case dafuncSingleProxy_AuthTypeEnum::$MANUAL:
+		case DafuncSingleProxy_AuthTypeEnum::$MANUAL:
 			return "Manual";
-		case dafuncSingleProxy_AuthTypeEnum::$LOGINCOOKIETOKEN:
+		case DafuncSingleProxy_AuthTypeEnum::$LOGINCOOKIETOKEN:
 			return "Login Cookie Token";
 		default:
 			print "INTERNAL ERROR! Unknown Auth Type: " . $value . "\n";

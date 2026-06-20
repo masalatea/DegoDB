@@ -7,10 +7,10 @@
 // Generated from canonical DB Access metadata.
 // Thin DTO generated from canonical select/write metadata.
 
-class chattopicAttachmentDataBase
+class ChattopicAttachmentDataBase
 {
     public $ProjectPID;
-    public $chattopicPID;
+    public $ChattopicPID;
     public $PID;
     public $name;
 

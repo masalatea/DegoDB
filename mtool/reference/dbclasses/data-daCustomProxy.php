@@ -1,25 +1,25 @@
 <?php
 
 require_once __DIR__ . '/_runtime_loader.php';
-require_once __DIR__ . '/base/data-daCustomProxyBase.php';
+require_once __DIR__ . '/base/data-DaCustomProxyBase.php';
 
-if (!mtool_runtime_bundle_load_custom_wrapper('data-daCustomProxy.php')) {
+if (!mtool_runtime_bundle_load_custom_wrapper('data-DaCustomProxy.php')) {
     // Generated wrapper entry for runtime data class.
-    // Override `mtool/extensions/MTOOL/RUNTIME-DBCLASSES/data-daCustomProxy.php` and extend `daCustomProxyDataBase` for project-specific customizations.
+    // Override `mtool/extensions/MTOOL/RUNTIME-DBCLASSES/data-DaCustomProxy.php` and extend `DaCustomProxyDataBase` for project-specific customizations.
 
-    class daCustomProxyData extends daCustomProxyDataBase
+    class DaCustomProxyData extends DaCustomProxyDataBase
     {
 	function IsLoginByLoginCookieToken()
 	{
 		switch($this->AuthType) {
-			case daCustomProxyAuthTypeEnum::$DEFAULT:
-			case daCustomProxyAuthTypeEnum::$PROJECTTOKEN:
-			case daCustomProxyAuthTypeEnum::$GETFUNC:
-			case daCustomProxyAuthTypeEnum::$PROJECTTOKENORGETFUNC:
-			case daCustomProxyAuthTypeEnum::$NOSECURITY:
-			case daCustomProxyAuthTypeEnum::$MANUAL:
+			case DaCustomProxyAuthTypeEnum::$DEFAULT:
+			case DaCustomProxyAuthTypeEnum::$PROJECTTOKEN:
+			case DaCustomProxyAuthTypeEnum::$GETFUNC:
+			case DaCustomProxyAuthTypeEnum::$PROJECTTOKENORGETFUNC:
+			case DaCustomProxyAuthTypeEnum::$NOSECURITY:
+			case DaCustomProxyAuthTypeEnum::$MANUAL:
 				break;
-			case daCustomProxyAuthTypeEnum::$LOGINCOOKIETOKEN:
+			case DaCustomProxyAuthTypeEnum::$LOGINCOOKIETOKEN:
 				return true;
 			default:
 				print "INTERNAL ERROR! Unknown Auth Type: " . $this->SingleProxy_AuthType . "\n";
@@ -28,7 +28,7 @@ if (!mtool_runtime_bundle_load_custom_wrapper('data-daCustomProxy.php')) {
 	}
     }
 }
-// Memo: daCustomProxyAuthTypeEnum must be same as dafuncSingleProxy_AuthTypeEnum
+// Memo: DaCustomProxyAuthTypeEnum must be same as DafuncSingleProxy_AuthTypeEnum
 
 
 ?>

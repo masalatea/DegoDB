@@ -8,9 +8,9 @@
 // Generated members are kept in this base file. Former editable areas move to the wrapper file.
 // Generated trailing enum-type classes also stay in this base file when present.
 
-class htmlTemplateParameterDataBase
+class HtmlTemplateParameterDataBase
 {
-    public $htmlTemplatePID;
+    public $HtmlTemplatePID;
     public $PID;
     public $ParameterName;
     public $TargetValueType;

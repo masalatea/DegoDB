@@ -1,13 +1,13 @@
 <?php
 
 require_once __DIR__ . '/_runtime_loader.php';
-require_once __DIR__ . '/base/data-dataclassBase.php';
+require_once __DIR__ . '/base/data-DataclassBase.php';
 
-if (!mtool_runtime_bundle_load_custom_wrapper('data-dataclass.php')) {
+if (!mtool_runtime_bundle_load_custom_wrapper('data-Dataclass.php')) {
     // Generated wrapper entry for runtime data class.
-    // Override `mtool/extensions/MTOOL/RUNTIME-DBCLASSES/data-dataclass.php` and extend `dataclassDataBase` for project-specific customizations.
+    // Override `mtool/extensions/MTOOL/RUNTIME-DBCLASSES/data-Dataclass.php` and extend `DataclassDataBase` for project-specific customizations.
 
-    class dataclassData extends dataclassDataBase
+    class DataclassData extends DataclassDataBase
     {
 	public function NormalizeIsAutoloadProperty()
 	{

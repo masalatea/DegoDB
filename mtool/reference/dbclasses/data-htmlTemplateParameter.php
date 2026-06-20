@@ -1,13 +1,13 @@
 <?php
 
 require_once __DIR__ . '/_runtime_loader.php';
-require_once __DIR__ . '/base/data-htmlTemplateParameterBase.php';
+require_once __DIR__ . '/base/data-HtmlTemplateParameterBase.php';
 
-if (!mtool_runtime_bundle_load_custom_wrapper('data-htmlTemplateParameter.php')) {
+if (!mtool_runtime_bundle_load_custom_wrapper('data-HtmlTemplateParameter.php')) {
     // Generated wrapper entry for runtime data class.
-    // Override `mtool/extensions/MTOOL/RUNTIME-DBCLASSES/data-htmlTemplateParameter.php` and extend `htmlTemplateParameterDataBase` for project-specific customizations.
+    // Override `mtool/extensions/MTOOL/RUNTIME-DBCLASSES/data-HtmlTemplateParameter.php` and extend `HtmlTemplateParameterDataBase` for project-specific customizations.
 
-    class htmlTemplateParameterData extends htmlTemplateParameterDataBase
+    class HtmlTemplateParameterData extends HtmlTemplateParameterDataBase
     {
 	public function GetTargetVariable()
 	{
@@ -23,11 +23,11 @@ function GethtmlTemplateParameterTargetValueTypeCaption($targetvalue)
 {
 	switch($targetvalue)
 	{
-		case htmlTemplateParameterTargetValueTypeEnum::$EACHHTML:
+		case HtmlTemplateParameterTargetValueTypeEnum::$EACHHTML:
 			return "Each HTML (for each Project)";
-		case htmlTemplateParameterTargetValueTypeEnum::$CODE:
+		case HtmlTemplateParameterTargetValueTypeEnum::$CODE:
 			return "Code (common for all Project)";
-		case htmlTemplateParameterTargetValueTypeEnum::$ANOTHERTEMPLATE:
+		case HtmlTemplateParameterTargetValueTypeEnum::$ANOTHERTEMPLATE:
 			return "Another Template";
 	}
 	return $targetvalue;
@@ -37,11 +37,11 @@ function GethtmlTemplateParameterDataTypeCaption($datatype)
 {
 	switch($datatype)
 	{
-		case htmlTemplateParameterDataTypeEnum::$DEFAULT:
+		case HtmlTemplateParameterDataTypeEnum::$DEFAULT:
 			return "String";
-		case htmlTemplateParameterDataTypeEnum::$DATACLASSNAME:
+		case HtmlTemplateParameterDataTypeEnum::$DATACLASSNAME:
 			return "Data Class";
-		case htmlTemplateParameterDataTypeEnum::$DBACCESSCLASSNAME:
+		case HtmlTemplateParameterDataTypeEnum::$DBACCESSCLASSNAME:
 			return "DB Access Class";
 	}
 	return $datatype;
