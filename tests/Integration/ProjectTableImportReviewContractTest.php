@@ -76,6 +76,132 @@ final class ProjectTableImportReviewContractTest extends TestCase
         );
     }
 
+    public function testInformationSchemaRowsAcceptUppercaseInformationSchemaAliases(): void
+    {
+        $tables = app_project_table_import_source_tables_from_information_schema_rows([
+            [
+                'TABLE_NAME' => 'SupportTicket',
+                'COLUMN_NAME' => 'Id',
+                'COLUMN_TYPE' => 'bigint',
+                'IS_NULLABLE' => 'NO',
+                'COLUMN_KEY' => 'PRI',
+                'COLUMN_DEFAULT' => null,
+                'EXTRA' => 'auto_increment',
+                'ORDINAL_POSITION' => 1,
+            ],
+            [
+                'TABLE_NAME' => 'SupportTicket',
+                'COLUMN_NAME' => 'Title',
+                'COLUMN_TYPE' => 'character varying(255)',
+                'IS_NULLABLE' => 'NO',
+                'COLUMN_KEY' => '',
+                'COLUMN_DEFAULT' => null,
+                'EXTRA' => '',
+                'ORDINAL_POSITION' => 2,
+            ],
+        ]);
+
+        self::assertSame(['SupportTicket'], array_column($tables, 'name'));
+        self::assertSame('SupportTicket', $tables[0]['physical_name']);
+        self::assertSame('SupportTicket', $tables[0]['logical_name']);
+        self::assertSame('SupportTicket', $tables[0]['generated_name']);
+        self::assertSame(['Id', 'Title'], array_column($tables[0]['columns'], 'name'));
+        self::assertSame('Id', $tables[0]['columns_by_name']['Id']['physical_name']);
+        self::assertSame('Id', $tables[0]['columns_by_name']['Id']['logical_name']);
+        self::assertSame('id', $tables[0]['columns_by_name']['Id']['generated_name']);
+        self::assertSame('bigint', $tables[0]['columns_by_name']['Id']['datatype']);
+        self::assertSame('PRI', $tables[0]['columns_by_name']['Id']['is_key']);
+        self::assertSame('auto_increment', $tables[0]['columns_by_name']['Id']['extra']);
+        self::assertSame('character varying(255)', $tables[0]['columns_by_name']['Title']['datatype']);
+    }
+
+    public function testInformationSchemaRowsAcceptLowercasePostgresqlAliases(): void
+    {
+        $tables = app_project_table_import_source_tables_from_information_schema_rows([
+            [
+                'table_name' => 'support_ticket',
+                'column_name' => 'updated_at',
+                'column_type' => 'timestamp without time zone',
+                'is_nullable' => 'YES',
+                'column_key' => '',
+                'column_default' => null,
+                'extra' => '',
+                'ordinal_position' => 1,
+            ],
+        ]);
+
+        self::assertSame(['support_ticket'], array_column($tables, 'name'));
+        self::assertSame('support_ticket', $tables[0]['physical_name']);
+        self::assertSame('SupportTicket', $tables[0]['logical_name']);
+        self::assertSame('SupportTicket', $tables[0]['generated_name']);
+        self::assertSame('updated_at', $tables[0]['columns'][0]['physical_name']);
+        self::assertSame('UpdatedAt', $tables[0]['columns'][0]['logical_name']);
+        self::assertSame('updatedAt', $tables[0]['columns'][0]['generated_name']);
+        self::assertSame('timestamp without time zone', $tables[0]['columns'][0]['datatype']);
+        self::assertSame('YES', $tables[0]['columns'][0]['is_null']);
+        self::assertSame(1, $tables[0]['columns'][0]['column_list_order']);
+    }
+
+    public function testInformationSchemaRowsExposeSnakeCasePhysicalLogicalAndGeneratedNames(): void
+    {
+        $tables = app_project_table_import_source_tables_from_information_schema_rows([
+            [
+                'TABLE_NAME' => 'support_ticket',
+                'COLUMN_NAME' => 'updated_at',
+                'COLUMN_TYPE' => 'timestamp',
+                'IS_NULLABLE' => 'NO',
+                'COLUMN_KEY' => '',
+                'COLUMN_DEFAULT' => null,
+                'EXTRA' => '',
+                'ORDINAL_POSITION' => 1,
+            ],
+        ]);
+
+        self::assertSame('support_ticket', $tables[0]['physical_name']);
+        self::assertSame('SupportTicket', $tables[0]['logical_name']);
+        self::assertSame('SupportTicket', $tables[0]['generated_name']);
+        self::assertSame('updated_at', $tables[0]['columns'][0]['physical_name']);
+        self::assertSame('UpdatedAt', $tables[0]['columns'][0]['logical_name']);
+        self::assertSame('updatedAt', $tables[0]['columns'][0]['generated_name']);
+    }
+
+    public function testImportPlanWarnsAboutUnsafeUnquotedPhysicalNames(): void
+    {
+        $plan = app_project_table_import_build_plan(
+            'SAMPLE',
+            'app_schema',
+            'live-schema',
+            'live schema',
+            true,
+            [
+                $this->table('user', [
+                    $this->column('order', 'int', 0, 0, 0, '', 10),
+                ]),
+                $this->table('support_ticket', [
+                    $this->column('updated_at', 'datetime', 0, 0, 0, '', 10),
+                ]),
+            ],
+            [],
+        );
+
+        self::assertTrue($plan['ok'], $plan['error']);
+        self::assertSame(2, $plan['summary']['unsafe_physical_name_count']);
+
+        $tablesByName = [];
+        foreach ($plan['tables'] as $table) {
+            $tablesByName[$table['name']] = $table;
+        }
+
+        self::assertSame([], $tablesByName['support_ticket']['review']['naming_warnings']);
+        self::assertSame(
+            ['user', 'order'],
+            array_map(
+                static fn (array $warning): string => (string) $warning['physical_name'],
+                $tablesByName['user']['review']['naming_warnings'],
+            ),
+        );
+    }
+
     /**
      * @param list<array<string,mixed>> $columns
      * @return array<string,mixed>

@@ -10,6 +10,8 @@ COMPOSE_DURABLE := $(COMPOSE) --env-file $(DURABLE_ENV_FILE) -f compose.yaml
 CONFIG_DB_BACKUP_DIR ?= work/backups/config-db
 CONFIG_DB_BACKUP_KEEP_DAYS ?= 7
 CONFIG_DB_BACKUP_KEEP_COUNT ?= 7
+GENERATED_NAME_MIGRATION_RUN_ID ?= current
+GENERATED_NAME_MIGRATION_KEYWORD_MAP ?=
 
 .DEFAULT_GOAL := help
 
@@ -142,7 +144,8 @@ ROOT_TMP_DIR := tmp
 .PHONY: backup-config-db backup-config-db-rotate restore-config-db backup-config-db-mtool backup-config-db-mtool-rotate restore-config-db-mtool backup-config-db-sqlite backup-config-db-sqlite-rotate restore-config-db-sqlite backup-config-db-mtool-lite backup-config-db-mtool-lite-rotate restore-config-db-mtool-lite up-durable-config-db ps-durable-config-db logs-durable-config-db health-durable-config-db config-db-preflight-durable-config-db db-config-migrate-durable-config-db down-durable-config-db
 .PHONY: sample01-pack-runtime-test-sqlite sample1-output-test-sqlite sample1-output-check-sqlite sample02-pack-runtime-test-sqlite sample2-output-test-sqlite sample2-output-check-sqlite sample03-pack-runtime-test-sqlite sample3-output-test-sqlite sample3-output-check-sqlite sample04-pack-runtime-test-sqlite sample4-output-test-sqlite sample4-output-check-sqlite sample05-pack-runtime-test-sqlite sample5-output-test-sqlite sample5-output-check-sqlite sample06-pack-runtime-test-sqlite sample6-output-test-sqlite sample6-output-check-sqlite sample07-pack-runtime-test-sqlite sample7-output-test-sqlite sample7-output-check-sqlite sample08-pack-runtime-test-sqlite sample8-output-test-sqlite sample8-output-check-sqlite sample09-pack-runtime-test-sqlite sample09-runtime-output-test-sqlite sample10-pack-runtime-test-sqlite sample10-runtime-output-test-sqlite sample11-pack-runtime-test-sqlite sample11-runtime-output-test-sqlite sample12-pack-runtime-test-sqlite sample12-runtime-output-test-sqlite sample13-pack-runtime-test-sqlite sample13-runtime-output-test-sqlite sample13-http-runtime-smoke sample13-http-runtime-smoke-sqlite sample13-browser-try-it-out-smoke sample13-browser-try-it-out-smoke-sqlite sample14-pack-runtime-test-sqlite sample14-runtime-output-test-sqlite sample15-pack-runtime-test-sqlite sample15-runtime-output-test-sqlite sample16-pack-runtime-test-sqlite sample16-runtime-output-test-sqlite sample16-http-runtime-smoke sample16-http-runtime-smoke-sqlite sample17-pack-runtime-test-sqlite sample17-runtime-output-test-sqlite sample18-pack-runtime-test-sqlite sample18-runtime-output-test-sqlite sample18-http-runtime-smoke sample19-pack-runtime-test-sqlite sample19-runtime-output-test-sqlite sample25-browser-try-it-out-smoke
 .PHONY: artifact-parity-capture-mysql artifact-parity-capture-sqlite artifact-parity-compare artifact-parity-test
-.PHONY: user-db-contract-capture-mysql user-db-contract-capture-sqlite user-db-contract-compare user-db-contract-test
+.PHONY: user-db-contract-capture-mysql user-db-contract-capture-sqlite user-db-contract-capture-pgsql user-db-contract-compare user-db-contract-compare-pgsql user-db-contract-test user-db-contract-test-pgsql
+.PHONY: generated-name-migration-capture-samples-before generated-name-migration-capture-samples-after generated-name-migration-validate-sample-keyword-map generated-name-migration-transform-samples-after generated-name-migration-compare-samples generated-name-migration-derive-keyword-map generated-name-migration-derive-sample-keyword-map generated-name-migration-scan-sample-keywords
 .PHONY: mtool-oidc-login-smoke
 
 DOCKER_ENV_TARGETS := \
@@ -286,7 +289,7 @@ mtool-canonical-sync: ## MTOOL core seed stack で import / data class sync / DB
 	$(COMPOSE_MTOOL) exec -T web-admin php /var/www/mtool/scripts/sync_project_db_access.php --project-key=MTOOL
 
 mtool-self-loop-check: ## MTOOL の import/sync/generate self-loop を一括検証する
-	$(COMPOSE_LOCAL) exec -T web-admin php /var/www/mtool/scripts/check_mtool_self_loop.php --requested-by=make
+	$(COMPOSE_MTOOL) exec -T web-admin php /var/www/mtool/scripts/check_mtool_self_loop.php --requested-by=make
 
 mtool-proxy-output-check: ## MTOOL の proxy source output build/generate expected output を検証する
 	$(COMPOSE_LOCAL) exec -T web-admin php /var/www/mtool/scripts/check_mtool_proxy_outputs.php --requested-by=make
@@ -347,6 +350,76 @@ sample-pack-compose-smoke: ## active runtime sample pack の compose override me
 
 sample-pack-runtime-smoke: ## representative runtime sample pack を up/apply-seed/health まで軽く検証する
 	bash mtool/scripts/check_sample_pack_runtime_smoke.sh
+
+generated-name-migration-capture-samples-before: ## sample/tutorials/*/reference を命名移行 before snapshot として一括 capture/index する
+	python3 -B mtool/scripts/generated_name_migration_audit.py capture-samples \
+		--samples-root=sample/tutorials \
+		--output-root=work/generated-name-migration/$(GENERATED_NAME_MIGRATION_RUN_ID)/samples \
+		--phase=before \
+		--manifest-output=work/generated-name-migration/$(GENERATED_NAME_MIGRATION_RUN_ID)/samples-before.json \
+		--index \
+		--pretty
+
+generated-name-migration-capture-samples-after: ## sample/tutorials/*/reference を命名移行 after snapshot として一括 capture/index する
+	python3 -B mtool/scripts/generated_name_migration_audit.py capture-samples \
+		--samples-root=sample/tutorials \
+		--output-root=work/generated-name-migration/$(GENERATED_NAME_MIGRATION_RUN_ID)/samples \
+		--phase=after \
+		--manifest-output=work/generated-name-migration/$(GENERATED_NAME_MIGRATION_RUN_ID)/samples-after.json \
+		--index \
+		--pretty
+
+generated-name-migration-validate-sample-keyword-map: ## before snapshot に対して keyword map の衝突/連鎖を検査する
+	@test -n "$(GENERATED_NAME_MIGRATION_KEYWORD_MAP)" || (echo "GENERATED_NAME_MIGRATION_KEYWORD_MAP is required" >&2; exit 1)
+	python3 -B mtool/scripts/generated_name_migration_audit.py validate-keyword-map-samples \
+		--samples-snapshot-root=work/generated-name-migration/$(GENERATED_NAME_MIGRATION_RUN_ID)/samples \
+		--phase=before \
+		--keyword-map=$(GENERATED_NAME_MIGRATION_KEYWORD_MAP) \
+		--output=work/generated-name-migration/$(GENERATED_NAME_MIGRATION_RUN_ID)/sample-keyword-map-validation.json \
+		--pretty
+
+generated-name-migration-transform-samples-after: ## before snapshot に keyword map を適用して after snapshot を生成/index する
+	@test -n "$(GENERATED_NAME_MIGRATION_KEYWORD_MAP)" || (echo "GENERATED_NAME_MIGRATION_KEYWORD_MAP is required" >&2; exit 1)
+	python3 -B mtool/scripts/generated_name_migration_audit.py transform-samples \
+		--samples-snapshot-root=work/generated-name-migration/$(GENERATED_NAME_MIGRATION_RUN_ID)/samples \
+		--output-root=work/generated-name-migration/$(GENERATED_NAME_MIGRATION_RUN_ID)/samples \
+		--source-phase=before \
+		--output-phase=after \
+		--keyword-map=$(GENERATED_NAME_MIGRATION_KEYWORD_MAP) \
+		--manifest-output=work/generated-name-migration/$(GENERATED_NAME_MIGRATION_RUN_ID)/samples-after-transform.json \
+		--index \
+		--pretty
+
+generated-name-migration-compare-samples: ## 命名移行の before/after sample index を一括 compare する
+	python3 -B mtool/scripts/generated_name_migration_audit.py compare-samples \
+		--before-root=work/generated-name-migration/$(GENERATED_NAME_MIGRATION_RUN_ID)/samples \
+		--after-root=work/generated-name-migration/$(GENERATED_NAME_MIGRATION_RUN_ID)/samples \
+		$(if $(GENERATED_NAME_MIGRATION_KEYWORD_MAP),--keyword-map=$(GENERATED_NAME_MIGRATION_KEYWORD_MAP),) \
+		--output=work/generated-name-migration/$(GENERATED_NAME_MIGRATION_RUN_ID)/samples-compare.json \
+		--pretty
+
+generated-name-migration-derive-keyword-map: ## before/after index から keyword map 候補を生成する（SAMPLE=sample-dir-name が必要）
+	@test -n "$(SAMPLE)" || (echo "SAMPLE is required" >&2; exit 1)
+	python3 -B mtool/scripts/generated_name_migration_audit.py derive-keyword-map \
+		--before=work/generated-name-migration/$(GENERATED_NAME_MIGRATION_RUN_ID)/samples/$(SAMPLE)/before-index.json \
+		--after=work/generated-name-migration/$(GENERATED_NAME_MIGRATION_RUN_ID)/samples/$(SAMPLE)/after-index.json \
+		--output=work/generated-name-migration/$(GENERATED_NAME_MIGRATION_RUN_ID)/$(SAMPLE)-keyword-map-candidates.json \
+		--pretty
+
+generated-name-migration-derive-sample-keyword-map: ## 全sampleの before/after index から keyword map 候補を集約する
+	python3 -B mtool/scripts/generated_name_migration_audit.py derive-keyword-map-samples \
+		--before-root=work/generated-name-migration/$(GENERATED_NAME_MIGRATION_RUN_ID)/samples \
+		--after-root=work/generated-name-migration/$(GENERATED_NAME_MIGRATION_RUN_ID)/samples \
+		--output=work/generated-name-migration/$(GENERATED_NAME_MIGRATION_RUN_ID)/sample-keyword-map-candidates.json \
+		--pretty
+
+generated-name-migration-scan-sample-keywords: ## keyword map の old 名が sample reference 内に残る場所を一覧化する
+	@test -n "$(GENERATED_NAME_MIGRATION_KEYWORD_MAP)" || (echo "GENERATED_NAME_MIGRATION_KEYWORD_MAP is required" >&2; exit 1)
+	python3 -B mtool/scripts/generated_name_migration_audit.py scan-keywords \
+		--root=sample/tutorials \
+		--keyword-map=$(GENERATED_NAME_MIGRATION_KEYWORD_MAP) \
+		--output=work/generated-name-migration/$(GENERATED_NAME_MIGRATION_RUN_ID)/sample-keyword-scan.json \
+		--pretty
 
 sample01-pack-runtime-test: sample1-output-test ## sample01 tutorial runtime の import/sync/output integration test を実行する
 
@@ -1025,6 +1098,12 @@ user-db-contract-capture-sqlite: ## SQLite user DB contract 対象 output を ca
 		--run-id=$(USER_DB_CONTRACT_RUN_ID) \
 		--sample=$(USER_DB_CONTRACT_SAMPLE)
 
+user-db-contract-capture-pgsql: ## PostgreSQL user DB contract 対象 output を capture する（MTOOL_RUNTIME_PGSQL_* が必要）
+	bash mtool/scripts/run_user_db_contract_capture.sh \
+		--lane=pgsql \
+		--run-id=$(USER_DB_CONTRACT_RUN_ID) \
+		--sample=$(USER_DB_CONTRACT_SAMPLE)
+
 user-db-contract-compare: ## capture 済み MySQL/MariaDB lane と SQLite lane の user DB contract を比較する
 	$(PHP) mtool/scripts/user_db_contract.php compare \
 		--left=$(USER_DB_CONTRACT_ROOT)/mysql/manifest.json \
@@ -1032,7 +1111,16 @@ user-db-contract-compare: ## capture 済み MySQL/MariaDB lane と SQLite lane �
 		--output=$(USER_DB_CONTRACT_ROOT)/compare.json \
 		--pretty
 
+user-db-contract-compare-pgsql: ## capture 済み MySQL/MariaDB lane と PostgreSQL lane の user DB contract を比較する
+	$(PHP) mtool/scripts/user_db_contract.php compare \
+		--left=$(USER_DB_CONTRACT_ROOT)/mysql/manifest.json \
+		--right=$(USER_DB_CONTRACT_ROOT)/pgsql/manifest.json \
+		--output=$(USER_DB_CONTRACT_ROOT)/compare-pgsql.json \
+		--pretty
+
 user-db-contract-test: user-db-contract-capture-mysql user-db-contract-capture-sqlite user-db-contract-compare ## sample10 の user DB contract を capture + compare する
+
+user-db-contract-test-pgsql: user-db-contract-capture-mysql user-db-contract-capture-pgsql user-db-contract-compare-pgsql ## sample10 の PostgreSQL user DB contract を capture + compare する（MTOOL_RUNTIME_PGSQL_* が必要）
 
 sample9-output-test:
 	bash mtool/scripts/run_sample_pack_phpunit_test.sh \

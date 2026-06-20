@@ -17,6 +17,10 @@
   - project-core metadata bundle に custom proxy section を追加し、custom proxy 本体、step、target source output binding、auth policy refs を export / preview / apply できるようにした first slice の記録。Status: `DONE`。
 - `2026-0620-generated-oidc-jwt-runtime-verification.md`
   - generated single proxy runtime で `oidc-jwt-bearer` auth policy を実行可能にし、JWT signature、issuer、audience、required claims、JWKS env / URI / discovery 解決を contract test で固定した記録。Status: `DONE`。
+- `2026-0620-generated-name-migration-plan.md`
+  - PostgreSQL continuation より先に、Mtool self-host generated artifacts と sample 群を安全に一括命名移行するための before/after snapshot、file/symbol diff、docs keyword scan、rollback-and-rerun 方針を固定し、Mtool runtime reference の first slice を適用した計画。Status: `FIRST_SLICE_APPLIED / POSTGRESQL_CONTINUATION_RESUMED`。
+- `2026-0620-postgresql-user-db-output-first-slice.md`
+  - user DB / generated output 側の PostgreSQL support first slice として、PostgreSQL fixture SQL、runtime smoke CLI、opt-in `user-db-contract-test-pgsql` gate、schema introspection first slice、representative samples、ebook `sample21`-`sample26` coverage を追加した記録。Mtool config store PostgreSQL support は scope 外。Status: `REPRESENTATIVE_AND_EBOOK_SET_READY / OPT_IN_RUNTIME_GATE`。
 - `2026-0619-plan-inventory.md`
   - 2026-06-19 時点の plan / roadmap / resume prompt を棚卸しし、active mainline、done、waiting、next、parked を整理した記録。5 月 broad rewrite 計画は supporting / historical として読み、6 月後半の sample lane、SQLite lightweight profile、user DB dialect framework、security / auth foundation を現在の主線として整理する。Status: `CURRENT INVENTORY`。
 - `2026-0619-instruction-driven-demo-sample-plan.md`

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 require_once __DIR__ . '/database.php';
 require_once __DIR__ . '/domain_validation.php';
+require_once __DIR__ . '/generated_name.php';
 require_once __DIR__ . '/legacy_table_schema_reference.php';
 require_once __DIR__ . '/project_scope_policy.php';
 
@@ -408,9 +409,34 @@ function app_project_table_import_source_named_live_schema(
         }
 
         $pdo = app_create_pdo_from_db_config($dbConfig);
-        if (app_sql_dialect_from_db_config($dbConfig) === 'sqlite') {
+        $dialect = app_sql_dialect_from_db_config($dbConfig);
+        if ($dialect === 'sqlite') {
             $tables = app_project_table_import_source_tables_from_sqlite($pdo);
             $schemaName = app_sql_current_database_name($pdo);
+
+            return [
+                'ok' => true,
+                'source_key' => $sourceDefinition['key'],
+                'source_label' => $sourceDefinition['label'],
+                'source_description' => $sourceDefinition['description'],
+                'source_schema_name' => $schemaName,
+                'apply_supported' => $sourceDefinition['apply_supported'],
+                'managed_target_table_names' => app_project_table_import_live_schema_managed_target_table_names(
+                    $app,
+                    $normalizedProjectKey,
+                    $sourceDefinition['key'],
+                    $schemaName,
+                    $tables,
+                ),
+                'compare_against_all_canonical' => false,
+                'tables' => $tables,
+                'error' => '',
+            ];
+        }
+
+        if ($dialect === 'pgsql') {
+            $schemaName = app_project_table_import_source_pgsql_current_schema($pdo);
+            $tables = app_project_table_import_source_tables_from_pgsql($pdo);
 
             return [
                 'ok' => true,
@@ -572,6 +598,83 @@ function app_project_table_import_source_tables_from_sqlite(PDO $pdo): array
     }
 
     return $tables;
+}
+
+function app_project_table_import_source_pgsql_current_schema(PDO $pdo): string
+{
+    $schemaName = $pdo->query('SELECT current_schema()')->fetchColumn();
+
+    return is_string($schemaName) && trim($schemaName) !== '' ? trim($schemaName) : 'public';
+}
+
+/**
+ * @return list<array{
+ *     name:string,
+ *     columns:list<array{
+ *         name:string,
+ *         datatype:string,
+ *         is_null:string,
+ *         is_key:string,
+ *         is_default:string,
+ *         extra:string,
+ *         column_list_order:int
+ *     }>,
+ *     columns_by_name:array<string,array{
+ *         name:string,
+ *         datatype:string,
+ *         is_null:string,
+ *         is_key:string,
+ *         is_default:string,
+ *         extra:string,
+ *         column_list_order:int
+ *     }>
+ * }>
+ */
+function app_project_table_import_source_tables_from_pgsql(PDO $pdo): array
+{
+    $statement = $pdo->query(
+        "SELECT
+            c.relname AS table_name,
+            a.attname AS column_name,
+            format_type(a.atttypid, a.atttypmod) AS column_type,
+            CASE WHEN a.attnotnull THEN 'NO' ELSE 'YES' END AS is_nullable,
+            CASE WHEN pk.attname IS NOT NULL THEN 'PRI' ELSE '' END AS column_key,
+            pg_get_expr(ad.adbin, ad.adrelid) AS column_default,
+            CASE
+                WHEN a.attidentity <> '' THEN 'auto_increment'
+                WHEN pg_get_expr(ad.adbin, ad.adrelid) LIKE 'nextval(%' THEN 'auto_increment'
+                ELSE ''
+            END AS extra,
+            a.attnum AS ordinal_position
+        FROM pg_class AS c
+        INNER JOIN pg_namespace AS n
+            ON n.oid = c.relnamespace
+        INNER JOIN pg_attribute AS a
+            ON a.attrelid = c.oid
+        LEFT JOIN pg_attrdef AS ad
+            ON ad.adrelid = c.oid
+           AND ad.adnum = a.attnum
+        LEFT JOIN (
+            SELECT
+                i.indrelid,
+                unnest(i.indkey) AS attnum,
+                a2.attname
+            FROM pg_index AS i
+            INNER JOIN pg_attribute AS a2
+                ON a2.attrelid = i.indrelid
+               AND a2.attnum = ANY(i.indkey)
+            WHERE i.indisprimary
+        ) AS pk
+            ON pk.indrelid = c.oid
+           AND pk.attnum = a.attnum
+        WHERE n.nspname = current_schema()
+          AND c.relkind IN ('r', 'p')
+          AND a.attnum > 0
+          AND NOT a.attisdropped
+        ORDER BY c.relname, a.attnum",
+    );
+
+    return app_project_table_import_source_tables_from_information_schema_rows($statement->fetchAll());
 }
 
 /**
@@ -987,28 +1090,43 @@ function app_project_table_import_source_tables_from_information_schema_rows(arr
             continue;
         }
 
-        $tableName = (string) ($row['TABLE_NAME'] ?? '');
+        $tableName = app_project_table_import_source_row_value($row, 'TABLE_NAME', 'table_name');
         if ($tableName === '') {
             continue;
         }
 
         if (!array_key_exists($tableName, $indexByTableName)) {
+            $tableNameMap = app_generated_name_map_for_physical_name($tableName, 'class');
             $indexByTableName[$tableName] = count($tables);
             $tables[] = [
                 'name' => $tableName,
+                'physical_name' => $tableNameMap['physical_name'],
+                'logical_name' => $tableNameMap['logical_name'],
+                'generated_name' => $tableNameMap['generated_name'],
                 'columns' => [],
                 'columns_by_name' => [],
             ];
         }
 
+        $columnName = app_project_table_import_source_row_value($row, 'COLUMN_NAME', 'column_name');
+        $columnNameMap = app_generated_name_map_for_physical_name($columnName, 'php-property');
         $column = [
-            'name' => (string) ($row['COLUMN_NAME'] ?? ''),
-            'datatype' => (string) ($row['COLUMN_TYPE'] ?? ''),
-            'is_null' => (string) ($row['IS_NULLABLE'] ?? ''),
-            'is_key' => (string) ($row['COLUMN_KEY'] ?? ''),
-            'is_default' => app_project_table_import_source_default_string($row['COLUMN_DEFAULT'] ?? null),
-            'extra' => (string) ($row['EXTRA'] ?? ''),
-            'column_list_order' => (int) ($row['ORDINAL_POSITION'] ?? 0),
+            'name' => $columnName,
+            'physical_name' => $columnNameMap['physical_name'],
+            'logical_name' => $columnNameMap['logical_name'],
+            'generated_name' => $columnNameMap['generated_name'],
+            'datatype' => app_project_table_import_source_row_value($row, 'COLUMN_TYPE', 'column_type'),
+            'is_null' => app_project_table_import_source_row_value($row, 'IS_NULLABLE', 'is_nullable'),
+            'is_key' => app_project_table_import_source_row_value($row, 'COLUMN_KEY', 'column_key'),
+            'is_default' => app_project_table_import_source_default_string(
+                app_project_table_import_source_row_raw_value($row, 'COLUMN_DEFAULT', 'column_default'),
+            ),
+            'extra' => app_project_table_import_source_row_value($row, 'EXTRA', 'extra'),
+            'column_list_order' => (int) app_project_table_import_source_row_value(
+                $row,
+                'ORDINAL_POSITION',
+                'ordinal_position',
+            ),
         ];
 
         $tableIndex = $indexByTableName[$tableName];
@@ -1017,6 +1135,24 @@ function app_project_table_import_source_tables_from_information_schema_rows(arr
     }
 
     return $tables;
+}
+
+function app_project_table_import_source_row_raw_value(array $row, string $upperKey, string $lowerKey): mixed
+{
+    if (array_key_exists($upperKey, $row)) {
+        return $row[$upperKey];
+    }
+
+    if (array_key_exists($lowerKey, $row)) {
+        return $row[$lowerKey];
+    }
+
+    return null;
+}
+
+function app_project_table_import_source_row_value(array $row, string $upperKey, string $lowerKey): string
+{
+    return (string) app_project_table_import_source_row_raw_value($row, $upperKey, $lowerKey);
 }
 
 /**
@@ -1068,6 +1204,7 @@ function app_project_table_import_source_tables_from_reference(array $referenceT
         if ($tableName === '') {
             continue;
         }
+        $tableNameMap = app_generated_name_map_for_physical_name($tableName, 'class');
 
         $columns = [];
         $columnsByName = [];
@@ -1081,8 +1218,13 @@ function app_project_table_import_source_tables_from_reference(array $referenceT
                 continue;
             }
 
+            $columnName = (string) ($referenceColumn['name'] ?? '');
+            $columnNameMap = app_generated_name_map_for_physical_name($columnName, 'php-property');
             $column = [
-                'name' => (string) ($referenceColumn['name'] ?? ''),
+                'name' => $columnName,
+                'physical_name' => $columnNameMap['physical_name'],
+                'logical_name' => $columnNameMap['logical_name'],
+                'generated_name' => $columnNameMap['generated_name'],
                 'datatype' => (string) ($referenceColumn['datatype'] ?? ''),
                 'is_null' => (string) ($referenceColumn['is_null'] ?? ''),
                 'is_key' => (string) ($referenceColumn['is_key'] ?? ''),
@@ -1100,6 +1242,9 @@ function app_project_table_import_source_tables_from_reference(array $referenceT
 
         $tables[] = [
             'name' => $tableName,
+            'physical_name' => $tableNameMap['physical_name'],
+            'logical_name' => $tableNameMap['logical_name'],
+            'generated_name' => $tableNameMap['generated_name'],
             'columns' => $columns,
             'columns_by_name' => $columnsByName,
         ];

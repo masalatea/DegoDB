@@ -19,6 +19,42 @@ The user DB dialect framework first stop-line is complete. The current covered c
 
 There is no remaining immediate cleanup task in this lane before moving to the next foundation work. Future dialect work should resume from this document only when a new user DB contract slice is explicitly chosen. PostgreSQL / SQL Server remain parked.
 
+## Current Status As Of 2026-06-21
+
+PostgreSQL was explicitly chosen as the next post-security output capability slice. The representative and ebook set is complete as an opt-in PostgreSQL user DB contract lane for generated DBAccess runtime verification.
+
+Current live PostgreSQL contract coverage:
+
+- `sample10-dbaccess-mini-crud-flow`: CRUD behavior.
+- `sample06-dbaccess-filter-sort-page`: filter / sort / limit behavior.
+- `sample08-dbaccess-join-read-model`: join read model behavior.
+- `sample09-dbaccess-aggregate-report`: aggregate / group by / having behavior.
+- `sample12-external-db-source-import`: live PostgreSQL schema import.
+- `sample18-mini-task-board-demo`: task-board DataClass + DBAccess runtime contract.
+- `sample19-json-first-content-model-demo`: JSON-first public article summary DBAccess runtime contract.
+- `sample21` through `sample26`: accumulated ebook series runtime contract coverage.
+- schema introspection first slice: current PostgreSQL schema table / column import helper.
+
+Representative output coverage without a live PostgreSQL query path:
+
+- `sample13-openapi-api-surface`
+- `sample14-custom-proxy-runtime`
+- `sample16-authenticated-proxy`
+
+This does not change the Mtool config store support matrix. PostgreSQL support here means user DB / generated output support only.
+
+Naming decision:
+
+- Do not handle PostgreSQL naming as a dialect-only exception.
+- Introduce a cross-DB physical / logical naming layer.
+- `physical_name` is the exact table / column name observed in the source DB catalog.
+- `logical_name` is the Mtool canonical concept name.
+- `generated_name` is the language/API-facing name derived from the logical name.
+- Generated SQL must use physical names. Generated PHP / OpenAPI surfaces may use logical / generated names.
+- The conversion helper should be based on name shape, not DB dialect, so MySQL / MariaDB / SQLite snake_case schemas follow the same path as PostgreSQL.
+
+First slice report: [2026-0620-postgresql-user-db-output-first-slice.md](2026-0620-postgresql-user-db-output-first-slice.md).
+
 ## Boundary
 
 Mtool 側 config store:
@@ -50,7 +86,7 @@ Mtool 側 config store:
 | --- | --- | --- | --- |
 | MySQL / MariaDB | Mainline | 既存の user DB / generated output の基準 | regression gate として維持し、dialect helper へ段階的に寄せる。 |
 | SQLite | First expansion | source introspection と runtime output の first slice あり | local / file-backed app、prototype、generated DBAccess smoke の基準にする。 |
-| PostgreSQL | Parked candidate | 未着手 | must-have feature 完了後に再評価する。現時点では実装しない。 |
+| PostgreSQL | Active candidate | opt-in user DB contract first slice | generated output / runtime contract lane から段階的に進める。Mtool config store 対応ではない。 |
 | SQL Server | Parked candidate | 未着手 | must-have feature 完了後に再評価する。現時点では実装しない。 |
 
 ## Capability Matrix
@@ -59,17 +95,18 @@ Mtool 側 config store:
 
 | Capability | MySQL / MariaDB | SQLite | PostgreSQL | SQL Server |
 | --- | --- | --- | --- | --- |
-| Connection profile | mainline | first slice | parked | parked |
-| Schema introspection | mainline | first slice | parked | parked |
-| Type normalization | partial | partial | parked | parked |
-| SQL dialect helper | partial | partial | parked | parked |
-| DBAccess class output | mainline | first slice | parked | parked |
-| Runtime adapter | mainline | first slice | parked | parked |
-| CRUD / SELECT execution smoke | mainline | first slice | parked | parked |
-| Join / aggregate / pagination | mainline patterns | first slice / review needed | parked | parked |
+| Connection profile | mainline | first slice | opt-in first slice | parked |
+| Schema introspection | mainline | first slice | first slice | parked |
+| Type normalization | partial | partial | planned | parked |
+| Physical / logical naming | implicit | implicit | planned first slice | parked |
+| SQL dialect helper | partial | partial | first slice | parked |
+| DBAccess class output | mainline | first slice | contract first slice | parked |
+| Runtime adapter | mainline | first slice | PDO pgsql first slice | parked |
+| CRUD / SELECT execution smoke | mainline | first slice | sample10 done | parked |
+| Join / aggregate / pagination | mainline patterns | first slice / review needed | sample06/sample08/sample09 done | parked |
 | Blob / file / JSON | review needed | review needed | parked | parked |
 | Proxy / OpenAPI bundle smoke | mainline samples | first slice samples | parked | parked |
-| Dialect-aware contract compare | sample10/sample06/sample08/sample09 done | sample10/sample06/sample08/sample09 done | parked | parked |
+| Dialect-aware contract compare | sample10/sample06/sample08/sample09 done | sample10/sample06/sample08/sample09 done | sample10/sample06/sample08/sample09 done | parked |
 
 `parked` means the framework should not make future support impossible, but no implementation slice should be started before must-have product features are done.
 
@@ -266,6 +303,8 @@ Verification:
 ## Completion Handoff
 
 Status at close on 2026-06-18:
+
+This section is historical. PostgreSQL moved from parked to active first-slice work on 2026-06-20; see `Current Status As Of 2026-06-20` above.
 
 - Mtool-side SQLite support remains current-scope 100%.
 - User DB contract framework currently covers:

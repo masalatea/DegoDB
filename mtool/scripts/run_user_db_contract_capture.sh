@@ -13,7 +13,7 @@ fi
 
 usage() {
   cat <<'EOF'
-usage: run_user_db_contract_capture.sh --lane=mysql|sqlite --run-id=ID [--sample=sample10-dbaccess-mini-crud-flow]
+usage: run_user_db_contract_capture.sh --lane=mysql|sqlite|pgsql --run-id=ID [--sample=sample10-dbaccess-mini-crud-flow]
 
 Runs one user DB contract sample for one lane and captures DBAccess output
 under work/user-db-contract/<run-id>/<lane>/.
@@ -47,7 +47,7 @@ for argument in "$@"; do
   esac
 done
 
-if [ "$lane" != "mysql" ] && [ "$lane" != "sqlite" ]; then
+if [ "$lane" != "mysql" ] && [ "$lane" != "sqlite" ] && [ "$lane" != "pgsql" ]; then
   usage >&2
   exit 1
 fi
@@ -86,6 +86,62 @@ case "$sample" in
     compose_file="sample/tutorials/sample10-dbaccess-mini-crud-flow/compose.yaml"
     run_script="./sample/tutorials/sample10-dbaccess-mini-crud-flow/run.sh"
     ;;
+  sample18-mini-task-board-demo)
+    project_key="SAMPLE18"
+    mysql_target="sample18-pack-runtime-test"
+    sqlite_target="sample18-pack-runtime-test-sqlite"
+    compose_file="sample/tutorials/sample18-mini-task-board-demo/compose.yaml"
+    run_script="./sample/tutorials/sample18-mini-task-board-demo/run.sh"
+    ;;
+  sample19-json-first-content-model-demo)
+    project_key="SAMPLE19"
+    mysql_target="sample19-pack-runtime-test"
+    sqlite_target="sample19-pack-runtime-test-sqlite"
+    compose_file="sample/tutorials/sample19-json-first-content-model-demo/compose.yaml"
+    run_script="./sample/tutorials/sample19-json-first-content-model-demo/run.sh"
+    ;;
+  sample21-ebook-catalog-api-demo)
+    project_key="SAMPLE21"
+    mysql_target="sample21-pack-runtime-test"
+    sqlite_target=""
+    compose_file="sample/tutorials/sample21-ebook-catalog-api-demo/compose.yaml"
+    run_script="./sample/tutorials/sample21-ebook-catalog-api-demo/run.sh"
+    ;;
+  sample22-ebook-chapter-workflow-demo)
+    project_key="SAMPLE22"
+    mysql_target="sample22-pack-runtime-test"
+    sqlite_target=""
+    compose_file="sample/tutorials/sample22-ebook-chapter-workflow-demo/compose.yaml"
+    run_script="./sample/tutorials/sample22-ebook-chapter-workflow-demo/run.sh"
+    ;;
+  sample23-ebook-media-metadata-demo)
+    project_key="SAMPLE23"
+    mysql_target="sample23-pack-runtime-test"
+    sqlite_target=""
+    compose_file="sample/tutorials/sample23-ebook-media-metadata-demo/compose.yaml"
+    run_script="./sample/tutorials/sample23-ebook-media-metadata-demo/run.sh"
+    ;;
+  sample24-ebook-public-reader-site-demo)
+    project_key="SAMPLE24"
+    mysql_target="sample24-pack-runtime-test"
+    sqlite_target=""
+    compose_file="sample/tutorials/sample24-ebook-public-reader-site-demo/compose.yaml"
+    run_script="./sample/tutorials/sample24-ebook-public-reader-site-demo/run.sh"
+    ;;
+  sample25-ebook-editor-auth-cms-demo)
+    project_key="SAMPLE25"
+    mysql_target="sample25-pack-runtime-test"
+    sqlite_target=""
+    compose_file="sample/tutorials/sample25-ebook-editor-auth-cms-demo/compose.yaml"
+    run_script="./sample/tutorials/sample25-ebook-editor-auth-cms-demo/run.sh"
+    ;;
+  sample26-ebook-headless-cms-capstone)
+    project_key="SAMPLE26"
+    mysql_target="sample26-pack-runtime-test"
+    sqlite_target=""
+    compose_file="sample/tutorials/sample26-ebook-headless-cms-capstone/compose.yaml"
+    run_script="./sample/tutorials/sample26-ebook-headless-cms-capstone/run.sh"
+    ;;
   *)
     echo "unsupported user DB contract sample: $sample" >&2
     exit 1
@@ -108,6 +164,11 @@ run_target() {
     return
   fi
 
+  if [ "$lane" = "pgsql" ]; then
+    (cd "$REPO_ROOT" && make "$target")
+    return
+  fi
+
   (cd "$REPO_ROOT" && make "$target")
 }
 
@@ -119,9 +180,13 @@ cleanup_mysql_stack() {
 
 trap cleanup_mysql_stack EXIT
 
-if [ "$lane" = "mysql" ]; then
+if [ "$lane" = "mysql" ] || [ "$lane" = "pgsql" ]; then
   run_target "$mysql_target"
 else
+  if [ -z "$sqlite_target" ]; then
+    echo "sqlite user DB contract capture is not defined for sample: $sample" >&2
+    exit 1
+  fi
   run_target "$sqlite_target"
 fi
 
@@ -173,6 +238,14 @@ if [ "$lane" = "mysql" ]; then
       --sample="$sample" \
       --output="/var/www/$runtime_output" \
       --pretty
+elif [ "$lane" = "pgsql" ]; then
+  php "$REPO_ROOT/mtool/scripts/user_db_contract_runtime_smoke.php" \
+    --dbaccess-root="$runtime_dbaccess_root" \
+    --dataclass-root="$runtime_dataclass_root" \
+    --dialect=pgsql \
+    --sample="$sample" \
+    --output="$runtime_output" \
+    --pretty
 else
   php "$REPO_ROOT/mtool/scripts/user_db_contract_runtime_smoke.php" \
     --dbaccess-root="$runtime_dbaccess_root" \

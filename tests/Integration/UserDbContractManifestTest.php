@@ -91,6 +91,7 @@ final class UserDbContractManifestTest extends TestCase
         self::assertSame('app_user_db_contract_runtime_run_sample10', $definition['runner']);
         self::assertCount(3, app_user_db_contract_runtime_fixture_sql($definition, 'mysql'));
         self::assertCount(3, app_user_db_contract_runtime_fixture_sql($definition, 'sqlite'));
+        self::assertCount(4, app_user_db_contract_runtime_fixture_sql($definition, 'pgsql'));
     }
 
     public function testSample06RuntimeDefinitionIsAvailable(): void
@@ -103,6 +104,7 @@ final class UserDbContractManifestTest extends TestCase
         self::assertSame('app_user_db_contract_runtime_run_sample06', $definition['runner']);
         self::assertCount(3, app_user_db_contract_runtime_fixture_sql($definition, 'mysql'));
         self::assertCount(3, app_user_db_contract_runtime_fixture_sql($definition, 'sqlite'));
+        self::assertCount(4, app_user_db_contract_runtime_fixture_sql($definition, 'pgsql'));
     }
 
     public function testSample08RuntimeDefinitionIsAvailable(): void
@@ -118,6 +120,7 @@ final class UserDbContractManifestTest extends TestCase
         self::assertSame('app_user_db_contract_runtime_run_sample08', $definition['runner']);
         self::assertCount(8, app_user_db_contract_runtime_fixture_sql($definition, 'mysql'));
         self::assertCount(8, app_user_db_contract_runtime_fixture_sql($definition, 'sqlite'));
+        self::assertCount(10, app_user_db_contract_runtime_fixture_sql($definition, 'pgsql'));
     }
 
     public function testSample09RuntimeDefinitionIsAvailable(): void
@@ -133,6 +136,131 @@ final class UserDbContractManifestTest extends TestCase
         self::assertSame('app_user_db_contract_runtime_run_sample09', $definition['runner']);
         self::assertCount(8, app_user_db_contract_runtime_fixture_sql($definition, 'mysql'));
         self::assertCount(8, app_user_db_contract_runtime_fixture_sql($definition, 'sqlite'));
+        self::assertCount(10, app_user_db_contract_runtime_fixture_sql($definition, 'pgsql'));
+    }
+
+    public function testSample18RuntimeDefinitionIsAvailable(): void
+    {
+        $definition = app_user_db_contract_runtime_sample_definition('sample18-mini-task-board-demo');
+
+        self::assertSame('sample18-mini-task-board-demo', $definition['sample']);
+        self::assertSame(['data-TaskCard.php'], $definition['dataclass_files']);
+        self::assertSame(['dbaccess-TaskCard.php'], $definition['dbaccess_files']);
+        self::assertSame('app_user_db_contract_runtime_run_sample18', $definition['runner']);
+        self::assertCount(3, app_user_db_contract_runtime_fixture_sql($definition, 'mysql'));
+        self::assertCount(3, app_user_db_contract_runtime_fixture_sql($definition, 'sqlite'));
+        self::assertCount(4, app_user_db_contract_runtime_fixture_sql($definition, 'pgsql'));
+    }
+
+    public function testSample19RuntimeDefinitionIsAvailable(): void
+    {
+        $definition = app_user_db_contract_runtime_sample_definition('sample19-json-first-content-model-demo');
+
+        self::assertSame('sample19-json-first-content-model-demo', $definition['sample']);
+        self::assertSame(
+            [
+                'data-ArticleJsonModel.php',
+                'data-ArticlePublicSummary.php',
+                'data-JsonAuthor.php',
+                'data-JsonCategory.php',
+            ],
+            $definition['dataclass_files'],
+        );
+        self::assertSame(['dbaccess-ArticleJsonModel.php'], $definition['dbaccess_files']);
+        self::assertSame('app_user_db_contract_runtime_run_sample19', $definition['runner']);
+        self::assertCount(9, app_user_db_contract_runtime_fixture_sql($definition, 'mysql'));
+        self::assertCount(9, app_user_db_contract_runtime_fixture_sql($definition, 'sqlite'));
+        self::assertCount(9, app_user_db_contract_runtime_fixture_sql($definition, 'pgsql'));
+    }
+
+    public function testSample21RuntimeDefinitionIsAvailable(): void
+    {
+        $definition = app_user_db_contract_runtime_sample_definition('sample21-ebook-catalog-api-demo');
+
+        self::assertSame('sample21-ebook-catalog-api-demo', $definition['sample']);
+        self::assertSame(['data-EbookCatalogItem.php'], $definition['dataclass_files']);
+        self::assertSame(['dbaccess-EbookCatalogItem.php'], $definition['dbaccess_files']);
+        self::assertSame('app_user_db_contract_runtime_run_sample21', $definition['runner']);
+        self::assertCount(3, app_user_db_contract_runtime_fixture_sql($definition, 'mysql'));
+        self::assertCount(3, app_user_db_contract_runtime_fixture_sql($definition, 'sqlite'));
+        self::assertCount(3, app_user_db_contract_runtime_fixture_sql($definition, 'pgsql'));
+    }
+
+    public function testSample22RuntimeDefinitionIsAvailable(): void
+    {
+        $definition = app_user_db_contract_runtime_sample_definition('sample22-ebook-chapter-workflow-demo');
+
+        self::assertSame('sample22-ebook-chapter-workflow-demo', $definition['sample']);
+        self::assertSame(
+            ['data-EbookWorkflowChapter.php', 'data-EbookWorkflowPublishedChapter.php'],
+            $definition['dataclass_files'],
+        );
+        self::assertSame(['dbaccess-EbookWorkflowChapter.php'], $definition['dbaccess_files']);
+        self::assertSame('app_user_db_contract_runtime_run_sample22', $definition['runner']);
+        self::assertCount(6, app_user_db_contract_runtime_fixture_sql($definition, 'mysql'));
+        self::assertCount(6, app_user_db_contract_runtime_fixture_sql($definition, 'sqlite'));
+        self::assertCount(7, app_user_db_contract_runtime_fixture_sql($definition, 'pgsql'));
+    }
+
+    public function testSample23RuntimeDefinitionIsAvailable(): void
+    {
+        $definition = app_user_db_contract_runtime_sample_definition('sample23-ebook-media-metadata-demo');
+
+        self::assertSame('sample23-ebook-media-metadata-demo', $definition['sample']);
+        self::assertSame(
+            ['data-EbookMediaAsset.php', 'data-EbookMediaDelivery.php'],
+            $definition['dataclass_files'],
+        );
+        self::assertSame(['dbaccess-EbookMediaAsset.php'], $definition['dbaccess_files']);
+        self::assertSame('app_user_db_contract_runtime_run_sample23', $definition['runner']);
+        self::assertCount(6, app_user_db_contract_runtime_fixture_sql($definition, 'mysql'));
+        self::assertCount(6, app_user_db_contract_runtime_fixture_sql($definition, 'sqlite'));
+        self::assertCount(7, app_user_db_contract_runtime_fixture_sql($definition, 'pgsql'));
+    }
+
+    public function testSample24RuntimeDefinitionIsAvailable(): void
+    {
+        $definition = app_user_db_contract_runtime_sample_definition('sample24-ebook-public-reader-site-demo');
+
+        self::assertSame('sample24-ebook-public-reader-site-demo', $definition['sample']);
+        self::assertSame(
+            ['data-EbookReaderBook.php', 'data-EbookReaderChapter.php', 'data-EbookReaderMediaDelivery.php'],
+            $definition['dataclass_files'],
+        );
+        self::assertSame(['dbaccess-EbookReaderBook.php'], $definition['dbaccess_files']);
+        self::assertSame('app_user_db_contract_runtime_run_sample24', $definition['runner']);
+        self::assertCount(9, app_user_db_contract_runtime_fixture_sql($definition, 'mysql'));
+        self::assertCount(9, app_user_db_contract_runtime_fixture_sql($definition, 'sqlite'));
+        self::assertCount(9, app_user_db_contract_runtime_fixture_sql($definition, 'pgsql'));
+    }
+
+    public function testSample25RuntimeDefinitionIsAvailable(): void
+    {
+        $definition = app_user_db_contract_runtime_sample_definition('sample25-ebook-editor-auth-cms-demo');
+
+        self::assertSame('sample25-ebook-editor-auth-cms-demo', $definition['sample']);
+        self::assertSame(['data-EbookEditorChapter.php'], $definition['dataclass_files']);
+        self::assertSame(['dbaccess-EbookEditorChapter.php'], $definition['dbaccess_files']);
+        self::assertSame('app_user_db_contract_runtime_run_sample25', $definition['runner']);
+        self::assertCount(3, app_user_db_contract_runtime_fixture_sql($definition, 'mysql'));
+        self::assertCount(3, app_user_db_contract_runtime_fixture_sql($definition, 'sqlite'));
+        self::assertCount(3, app_user_db_contract_runtime_fixture_sql($definition, 'pgsql'));
+    }
+
+    public function testSample26RuntimeDefinitionIsAvailable(): void
+    {
+        $definition = app_user_db_contract_runtime_sample_definition('sample26-ebook-headless-cms-capstone');
+
+        self::assertSame('sample26-ebook-headless-cms-capstone', $definition['sample']);
+        self::assertSame(
+            ['data-EbookCmsBook.php', 'data-EbookCmsChapter.php'],
+            $definition['dataclass_files'],
+        );
+        self::assertSame(['dbaccess-EbookCmsBook.php'], $definition['dbaccess_files']);
+        self::assertSame('app_user_db_contract_runtime_run_sample26', $definition['runner']);
+        self::assertCount(6, app_user_db_contract_runtime_fixture_sql($definition, 'mysql'));
+        self::assertCount(6, app_user_db_contract_runtime_fixture_sql($definition, 'sqlite'));
+        self::assertCount(6, app_user_db_contract_runtime_fixture_sql($definition, 'pgsql'));
     }
 
     public function testRuntimeSummaryNormalizesDecimalStringValues(): void

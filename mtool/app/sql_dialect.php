@@ -9,6 +9,10 @@ function app_sql_dialect_from_dsn(string $dsn): string
         return 'sqlite';
     }
 
+    if (str_starts_with($normalizedDsn, 'pgsql:')) {
+        return 'pgsql';
+    }
+
     return 'mysql';
 }
 
@@ -27,6 +31,10 @@ function app_sql_dialect_from_pdo(PDO $pdo): string
     $driverName = strtolower(trim((string) $pdo->getAttribute(PDO::ATTR_DRIVER_NAME)));
     if ($driverName === 'sqlite') {
         return 'sqlite';
+    }
+
+    if ($driverName === 'pgsql') {
+        return 'pgsql';
     }
 
     return 'mysql';
@@ -48,6 +56,10 @@ function app_sql_datetime_select_expr(string $dialect, string $columnExpression,
 
     if ($normalizedDialect === 'sqlite') {
         return "strftime('%Y-%m-%d %H:%M:%S', {$trimmedColumnExpression}) AS {$trimmedAlias}";
+    }
+
+    if ($normalizedDialect === 'pgsql') {
+        return "to_char({$trimmedColumnExpression}, 'YYYY-MM-DD HH24:MI:SS') AS {$trimmedAlias}";
     }
 
     return "DATE_FORMAT({$trimmedColumnExpression}, \"%Y-%m-%d %H:%i:%s\") AS {$trimmedAlias}";
@@ -74,7 +86,8 @@ function app_sql_table_exists(PDO $pdo, string $tableName): bool
         return false;
     }
 
-    if (app_sql_dialect_from_pdo($pdo) === 'sqlite') {
+    $dialect = app_sql_dialect_from_pdo($pdo);
+    if ($dialect === 'sqlite') {
         $statement = $pdo->prepare(
             "SELECT 1
             FROM sqlite_master
@@ -84,6 +97,22 @@ function app_sql_table_exists(PDO $pdo, string $tableName): bool
         );
         $statement->execute([
             ':table_name' => $trimmedTableName,
+        ]);
+
+        return $statement->fetchColumn() !== false;
+    }
+
+    if ($dialect === 'pgsql') {
+        $statement = $pdo->prepare(
+            'SELECT 1
+            FROM information_schema.tables
+            WHERE table_schema = current_schema()
+              AND (table_name = :table_name OR table_name = :lower_table_name)
+            LIMIT 1'
+        );
+        $statement->execute([
+            ':table_name' => $trimmedTableName,
+            ':lower_table_name' => strtolower($trimmedTableName),
         ]);
 
         return $statement->fetchColumn() !== false;
@@ -111,7 +140,8 @@ function app_sql_column_exists(PDO $pdo, string $tableName, string $columnName):
         return false;
     }
 
-    if (app_sql_dialect_from_pdo($pdo) === 'sqlite') {
+    $dialect = app_sql_dialect_from_pdo($pdo);
+    if ($dialect === 'sqlite') {
         $statement = $pdo->prepare(
             'SELECT 1
             FROM pragma_table_info(:table_name)
@@ -121,6 +151,25 @@ function app_sql_column_exists(PDO $pdo, string $tableName, string $columnName):
         $statement->execute([
             ':table_name' => $trimmedTableName,
             ':column_name' => $trimmedColumnName,
+        ]);
+
+        return $statement->fetchColumn() !== false;
+    }
+
+    if ($dialect === 'pgsql') {
+        $statement = $pdo->prepare(
+            'SELECT 1
+            FROM information_schema.columns
+            WHERE table_schema = current_schema()
+              AND (table_name = :table_name OR table_name = :lower_table_name)
+              AND (column_name = :column_name OR column_name = :lower_column_name)
+            LIMIT 1'
+        );
+        $statement->execute([
+            ':table_name' => $trimmedTableName,
+            ':lower_table_name' => strtolower($trimmedTableName),
+            ':column_name' => $trimmedColumnName,
+            ':lower_column_name' => strtolower($trimmedColumnName),
         ]);
 
         return $statement->fetchColumn() !== false;
@@ -144,8 +193,15 @@ function app_sql_column_exists(PDO $pdo, string $tableName, string $columnName):
 
 function app_sql_server_version(PDO $pdo): string
 {
-    if (app_sql_dialect_from_pdo($pdo) === 'sqlite') {
+    $dialect = app_sql_dialect_from_pdo($pdo);
+    if ($dialect === 'sqlite') {
         $version = $pdo->query('SELECT sqlite_version()')->fetchColumn();
+
+        return is_string($version) ? $version : '';
+    }
+
+    if ($dialect === 'pgsql') {
+        $version = $pdo->query('SELECT version()')->fetchColumn();
 
         return is_string($version) ? $version : '';
     }
@@ -157,7 +213,8 @@ function app_sql_server_version(PDO $pdo): string
 
 function app_sql_current_database_name(PDO $pdo): string
 {
-    if (app_sql_dialect_from_pdo($pdo) === 'sqlite') {
+    $dialect = app_sql_dialect_from_pdo($pdo);
+    if ($dialect === 'sqlite') {
         $rows = $pdo->query('PRAGMA database_list')->fetchAll(PDO::FETCH_ASSOC);
         foreach ($rows as $row) {
             if (!is_array($row) || (string) ($row['name'] ?? '') !== 'main') {
@@ -169,6 +226,12 @@ function app_sql_current_database_name(PDO $pdo): string
         }
 
         return 'main';
+    }
+
+    if ($dialect === 'pgsql') {
+        $databaseName = $pdo->query('SELECT current_database()')->fetchColumn();
+
+        return is_string($databaseName) ? $databaseName : '';
     }
 
     $databaseName = $pdo->query('SELECT DATABASE()')->fetchColumn();

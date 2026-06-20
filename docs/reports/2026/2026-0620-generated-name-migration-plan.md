@@ -2,7 +2,7 @@
 
 ## Status
 
-- status: `FIRST_SLICE_APPLIED / READY_FOR_POSTGRESQL_CONTINUATION`
+- status: `FIRST_SLICE_APPLIED / POSTGRESQL_CONTINUATION_RESUMED`
 - created: `2026-06-20 JST`
 - purpose: Mtool self-hosting と sample 群を壊さずに、physical / logical / generated naming へ一括移行できるようにする
 
@@ -14,7 +14,7 @@ PostgreSQL output support の first slice で、未引用 identifier は lower-c
 
 ## Priority Decision
 
-PostgreSQL continuation was paused until this migration lane had a reproducible first slice. That first slice is now applied for the Mtool runtime reference and sample metadata fallout that is needed before resuming PostgreSQL output work.
+PostgreSQL continuation was paused until this migration lane had a reproducible first slice. That first slice is now applied for the Mtool runtime reference and sample metadata fallout that was needed before resuming PostgreSQL output work.
 
 先に作るもの:
 
@@ -409,7 +409,7 @@ The keyword map can be derived from before / after symbol differences, then revi
 5. Add conflict classification.
 6. Run representative dry run on `sample10-dbaccess-mini-crud-flow` and `sample08-dbaccess-join-read-model`.
 7. Expand to sample pack generated references where conflicts are zero.
-8. Only then resume PostgreSQL output support. Current status: ready to resume after the first slice.
+8. Only then resume PostgreSQL output support. Current status: resumed after the first slice.
 
 ## Representative Snapshot Status
 
@@ -538,7 +538,7 @@ Verification:
 - If a persisted log is needed, use one fixed command shape and path so the approval prompt is needed only once:
   - `make test > /tmp/dego-make-test.log 2>&1; rc=$?; echo test_status=$rc; tail -180 /tmp/dego-make-test.log; exit $rc`
 - Do not switch between ad hoc per-sample targets for overnight verification, because command-shape changes can trigger repeated approval prompts.
-- Latest plain `make test`: `OK (227 tests, 7928 assertions)`.
+- Latest plain `make test`: `OK, but incomplete, skipped, or risky tests! Tests: 245, Assertions: 8043, Skipped: 1`.
   - The skipped test is the opt-in live PostgreSQL sample12 contract when `MTOOL_RUNTIME_PGSQL_DSN` is not provided.
 - `git diff --check`: `ok`.
 - `make mtool-self-loop-check` now uses the MTOOL compose stack and passed after `make db-config-migrate-mtool`.

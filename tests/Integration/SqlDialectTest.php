@@ -19,6 +19,10 @@ final class SqlDialectTest extends TestCase
             app_sql_dialect_from_dsn('sqlite:/var/www/work/config-store/config.sqlite'),
         );
         self::assertSame(
+            'pgsql',
+            app_sql_dialect_from_dsn('pgsql:host=127.0.0.1;port=5432;dbname=lab_app'),
+        );
+        self::assertSame(
             'mysql',
             app_sql_dialect_from_dsn(''),
         );
@@ -55,6 +59,19 @@ final class SqlDialectTest extends TestCase
             "strftime('%Y-%m-%d %H:%M:%S', p.updated_at) AS updated_at",
             app_sql_datetime_select_expr('sqlite', 'p.updated_at', 'updated_at'),
         );
+    }
+
+    public function testDatetimeSelectExpressionSupportsPostgresqlShape(): void
+    {
+        self::assertSame(
+            "to_char(p.updated_at, 'YYYY-MM-DD HH24:MI:SS') AS updated_at",
+            app_sql_datetime_select_expr('pgsql', 'p.updated_at', 'updated_at'),
+        );
+    }
+
+    public function testPostgresqlIdentifierKeepsUnquotedShape(): void
+    {
+        self::assertSame('project_source_output', app_sql_identifier('pgsql', 'project_source_output'));
     }
 
     public function testSqliteTableExistsHelper(): void

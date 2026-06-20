@@ -31,6 +31,18 @@ try {
         putenv('MTOOL_RUNTIME_DB_DSN=sqlite:' . $sqlitePath);
         putenv('MTOOL_RUNTIME_DB_USER=');
         putenv('MTOOL_RUNTIME_DB_PASSWORD=');
+    } elseif ($dialect === 'pgsql') {
+        app_user_db_contract_runtime_prepare_pgsql_fixture($definition);
+        $dsn = trim((string) getenv('MTOOL_RUNTIME_PGSQL_DSN'));
+        if ($dsn === '') {
+            $host = (string) (getenv('MTOOL_RUNTIME_PGSQL_HOST') ?: getenv('MTOOL_RUNTIME_DB_HOST') ?: '127.0.0.1');
+            $port = (string) (getenv('MTOOL_RUNTIME_PGSQL_PORT') ?: getenv('MTOOL_RUNTIME_DB_PORT') ?: '5432');
+            $database = (string) (getenv('MTOOL_RUNTIME_PGSQL_DB') ?: getenv('MTOOL_RUNTIME_DB_NAME') ?: 'lab_app');
+            $dsn = 'pgsql:host=' . $host . ';port=' . $port . ';dbname=' . $database;
+        }
+        putenv('MTOOL_RUNTIME_DB_DSN=' . $dsn);
+        putenv('MTOOL_RUNTIME_DB_USER=' . (string) (getenv('MTOOL_RUNTIME_PGSQL_USER') ?: getenv('MTOOL_RUNTIME_DB_USER') ?: 'lab_app'));
+        putenv('MTOOL_RUNTIME_DB_PASSWORD=' . (string) (getenv('MTOOL_RUNTIME_PGSQL_PASSWORD') ?: getenv('MTOOL_RUNTIME_DB_PASSWORD')));
     } else {
         throw new InvalidArgumentException('unsupported dialect: ' . $dialect);
     }
