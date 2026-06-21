@@ -1,0 +1,1 @@
+$__DB_OBJECT__->real_escape_string(__VAL__)

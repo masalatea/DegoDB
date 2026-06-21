@@ -1,0 +1,14 @@
+
+// THIS CLASS WAS AUTOMATICALLY CREATED BY MTOOL. DON'T EDIT EXCEPT THE EDITABLE AREA.
+// [JP] このクラスは自動生成されています。編集可能領域以外は変更しないで下さい。
+
+// If you want to apply resource into Storyboard, use following commands
+// Export Example:
+// ibtool --export-strings-file __FILENAME__ __FILE_BASE_NAME__.storyboard
+// Import Example:
+// mv __FILE_BASE_NAME__.storyboard __FILE_BASE_NAME___backup.storyboard
+// ibtool --import-strings-file __FILENAME__ --write __FILE_BASE_NAME__.storyboard Main_backup.storyboard
+
+// == START OF EDITABLE AREA FOR ADDITIONAL MANUAL SETTINGS ==
+// == END OF EDITABLE AREA FOR ADDITIONAL MANUAL SETTINGS ==
+__LANGUAGE_RESOURCE_LIST__

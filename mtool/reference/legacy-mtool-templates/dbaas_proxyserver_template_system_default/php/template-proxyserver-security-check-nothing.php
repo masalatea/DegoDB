@@ -1,0 +1,1 @@
+$SecurityCheckResult = true;

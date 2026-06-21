@@ -1,0 +1,1 @@
+$SecurityCheckResult = CheckSecurityByGetFunc($data);

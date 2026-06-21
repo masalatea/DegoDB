@@ -1,0 +1,9 @@
+// Format:
+// Lang:[C#/Java] IfMatchedRegex:[Regex Pattern]
+Lang:C#	IfMatchedRegex:/binary/i
+Lang:C#	IfMatchedRegex:/varbinary/i
+Lang:C#	IfMatchedRegex:/timestamp/i
+Lang:C#	IfMatchedRegex:/image/i
+Lang:C#	IfMatchedRegex:/geometry/i
+Lang:C#	IfMatchedRegex:/hierarchyid/i
+Lang:C#	IfMatchedRegex:/uniqueidentifier/i

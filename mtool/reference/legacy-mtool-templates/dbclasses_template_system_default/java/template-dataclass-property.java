@@ -1,0 +1,1 @@
+	public __PROPERTY_DATA_TYPE__ __PROPERTY_NAME__;

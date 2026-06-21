@@ -1,0 +1,22 @@
+// Format:
+// ConvertType:DB2GeneralLang                                  IfMatchedRegex:[Regex Pattern] DataType:[Program Language(C# or something)'s Data Type]
+// ConvertType:GeneralLang2SpecificLang Lang:[General/C#/Java/Objective-C/Swift] IfMatchedRegex:[Regex Pattern] DataType:[Program Language(C# or something)'s Data Type]
+// Upper definition has a priority
+ConvertType:DB2GeneralLang							IfMatchedRegex:/bigint/i	DataType:long
+ConvertType:DB2GeneralLang							IfMatchedRegex:/int/i		DataType:int
+ConvertType:DB2GeneralLang							IfMatchedRegex:/char/i		DataType:string
+ConvertType:DB2GeneralLang							IfMatchedRegex:/text/i		DataType:string
+ConvertType:DB2GeneralLang							IfMatchedRegex:/^enum/i		DataType:enum
+ConvertType:DB2GeneralLang							IfMatchedRegex:/float/i		DataType:double
+ConvertType:DB2GeneralLang							IfMatchedRegex:/double/i	DataType:double
+ConvertType:DB2GeneralLang							IfMatchedRegex:/numeric/i	DataType:double
+ConvertType:DB2GeneralLang							IfMatchedRegex:/real/i		DataType:double
+ConvertType:DB2GeneralLang							IfMatchedRegex:/decimal/i	DataType:decimal
+ConvertType:GeneralLang2SpecificLang	Lang:Java	IfMatchedRegex:/string/i	DataType:String
+ConvertType:GeneralLang2SpecificLang	Lang:Java	IfMatchedRegex:/object/i	DataType:Object
+ConvertType:GeneralLang2SpecificLang	Lang:Java	IfMatchedRegex:/decimal/i	DataType:double
+ConvertType:GeneralLang2SpecificLang	Lang:Objective-C	IfMatchedRegex:/string/i	DataType:NSString*
+ConvertType:GeneralLang2SpecificLang	Lang:Objective-C	IfMatchedRegex:/object/i	DataType:NSString*
+ConvertType:GeneralLang2SpecificLang	Lang:Swift	IfMatchedRegex:/string/i	DataType:String
+ConvertType:GeneralLang2SpecificLang	Lang:Swift	IfMatchedRegex:/int/i		DataType:Int
+ConvertType:GeneralLang2SpecificLang	Lang:Swift	IfMatchedRegex:/object/i	DataType:String

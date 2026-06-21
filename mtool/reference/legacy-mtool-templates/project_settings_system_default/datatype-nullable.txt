@@ -1,0 +1,7 @@
+// Format:
+// Lang:[General/C#/Java] DataTypeRegex:[Regular Expression of Program Language(C# or something)'s Data Type]
+// Upper definition has a priority
+Lang:C#	DataTypeRegex:/int/i
+Lang:C#	DataTypeRegex:/long/i
+Lang:C#	DataTypeRegex:/double/i
+Lang:C#	DataTypeRegex:/decimal/i

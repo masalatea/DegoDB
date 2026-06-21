@@ -1,0 +1,1 @@
+                    thisItem.__CLASS_PROPERTY_NAME__ = __ENUM_TRANSLATION_FUNCTION_PREFIX__(__DATA_TYPE__)GetValueFromSQLDataReader(reader, __INDEX__, typeof(__DATA_TYPE__))__ENUM_TRANSLATION_FUNCTION_SUFFIX__;
