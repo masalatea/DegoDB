@@ -15,9 +15,13 @@ top-level は外部ユーザ向け導線を優先し、内部向け文書は [In
    - [Choose Your Path / 目的別の読み方](choose-your-path.md)
 2. golden path layer
    - [Current Plans / 現在の計画](current-plans.md)
+   - [Adoption Guide / 採用ガイド](adoption-guide.md)
    - [JSON To DB Entrance / JSON から DB 設計へ入る入口](json-to-db-entrance.md) optional pre-design entrance
    - [Existing DB To Output / 既存 DB から出力まで](existing-db-to-output.md)
    - [Use Cases / ユースケース](use-cases.md)
+   - [Consulting Intake / 相談前チェックリスト](consulting-intake.md)
+   - [Deliverables / 成果物 catalog](deliverables.md)
+   - [Proof Matrix / 根拠 matrix](proof-matrix.md)
    - [Common Tasks / よく使う作業](common-tasks.md)
    - [Current Supported Workflow / 現在サポートするワークフロー](current-supported-workflow.md)
    - [Troubleshooting / トラブルシューティング](troubleshooting.md)
@@ -26,6 +30,7 @@ top-level は外部ユーザ向け導線を優先し、内部向け文書は [In
    - [Storage And State Model / 保存先と状態モデル](storage-and-state-model.md)
    - [Project Metadata Bundle / プロジェクトメタデータ bundle](project-metadata-bundle.md)
    - [Config DB Externalization / config DB 外部化](config-db-externalization.md)
+   - [Security And Data Handling / security と data handling](security-and-data-handling.md)
    - [Glossary / 用語集](glossary.md)
    - [Sample Tutorial Roadmap / sample 学習導線](sample-tutorial-roadmap.md)
    - [Study Guide / sample で学ぶ](study/README.md)
@@ -46,10 +51,18 @@ detail doc だけを読んで mainline を再構成するのは current reading 
   - 目的別に current doc と最初のコマンドを逆引きする文書
 - [Current Plans / 現在の計画](current-plans.md)
   - 現在の計画、ステータス、次に進める作業をまとめた日付なし索引
+- [Adoption Guide / 採用ガイド](adoption-guide.md)
+  - OSS 利用、導入検討、コンサルティング、実装支援の入口として、現行対応と未対応範囲を整理する文書
 - [Existing DB To Output / 既存 DB から出力まで](existing-db-to-output.md)
   - existing DB 接続から canonical metadata 永続化、設計、output verify までの primary journey
 - [Use Cases / ユースケース](use-cases.md)
   - database-first、existing-database-first、legacy modernization の用途整理
+- [Consulting Intake / 相談前チェックリスト](consulting-intake.md)
+  - 導入支援やコンサルティング相談前に、DB、app、成果物、support boundary を確認する checklist
+- [Deliverables / 成果物 catalog](deliverables.md)
+  - OSS 評価、既存 DB 調査、導入引き継ぎで渡せる成果物の整理
+- [Proof Matrix / 根拠 matrix](proof-matrix.md)
+  - sample、test、contract gate が現在何を実証しているかを整理する matrix
 - [Compatibility And Output Support / 対応範囲と出力サポート](compatibility-and-output-support.md)
   - 現行対応、検証対象、旧実装参照、将来候補を分けた説明
 - [JSON To DB Entrance / JSON から DB 設計へ入る入口](json-to-db-entrance.md)
@@ -60,6 +73,8 @@ detail doc だけを読んで mainline を再構成するのは current reading 
   - current mainline と archived helper の境界
 - [Storage And State Model / 保存先と状態モデル](storage-and-state-model.md)
   - `config_db`、existing DB、artifact、`work/` の役割を 1 枚で見る companion
+- [Security And Data Handling / security と data handling](security-and-data-handling.md)
+  - OSS 評価、導入支援、顧客 schema 受付時の security / data handling 境界
 - [Sample Tutorial Roadmap / sample 学習導線](sample-tutorial-roadmap.md)
   - tutorial sample の学習順
 - [Study Guide / sample で学ぶ](study/README.md)
@@ -77,6 +92,14 @@ detail doc だけを読んで mainline を再構成するのは current reading 
   - existing DB 接続から output verify までの primary journey
 - [Use Cases / ユースケース](use-cases.md)
   - database-first / existing-database-first の実用シナリオと、現行対応・旧実装参照・将来対応候補の整理
+- [Adoption Guide / 採用ガイド](adoption-guide.md)
+  - 外部利用者が DegoDB を評価する時の safe support statement、採用モード、最初の読み順
+- [Consulting Intake / 相談前チェックリスト](consulting-intake.md)
+  - 相談前に確認する project context、DB intake、app / output target、scope boundary
+- [Deliverables / 成果物 catalog](deliverables.md)
+  - 現行成果物、計画中成果物、typical package、delivery rule の整理
+- [Proof Matrix / 根拠 matrix](proof-matrix.md)
+  - 現行 sample / test が実証している artifact、DB layer、tutorial coverage の一覧
 - [Current Plans / 現在の計画](current-plans.md)
   - active / TODO / parked の計画一覧。日付付き report を探す前にここを見る
 - [Compatibility And Output Support / 対応範囲と出力サポート](compatibility-and-output-support.md)
@@ -85,6 +108,8 @@ detail doc だけを読んで mainline を再構成するのは current reading 
   - DB をよく知らない利用者が、JSON sample と現在の処理説明から DB 設計案へ進むための、初期構想に含まれる optional pre-design entrance
 - [Storage And State Model / 保存先と状態モデル](storage-and-state-model.md)
   - `config_db`、artifact、`work/` の state map
+- [Security And Data Handling / security と data handling](security-and-data-handling.md)
+  - secret 分離、schema 受付、generated runtime security evidence、非 claim の境界
 - [Current Supported Workflow / 現在サポートするワークフロー](current-supported-workflow.md)
   - current mainline と archived 導線の切り分け
 - [Common Tasks / よく使う作業](common-tasks.md)
@@ -125,7 +150,9 @@ current supported workflow や stable rule を調べるときは、まず date-l
 ## Update Rules
 
 - 恒久文書は日付なしファイル名で更新する
-- 恒久文書は日本語本文を正本にしつつ、冒頭に英語 companion を添えて日英併記で維持する
+- 恒久文書は日本語本文を正本にしつつ、冒頭に英語 companion を添える
+- 外部ユーザ向けの top-level 恒久文書は、最終形では本文・表・重要な support boundary も日英併記で維持する
+- 既存文書が English companion + 日本語本文だけの場合は、触るタイミングで段階的に日英併記へ寄せる
 - top-level `docs/` は外部ユーザ向け導線を優先し、個別 internal doc は [Internal Documentation Index / 内部ドキュメント索引](internal/README.md) から辿る
 - 履歴として残す文書は `YYYY-MMDD-<slug>.md` を使う
 - `docs/reports/` 配下の progress / handoff / resume prompt / slice report は日本語のみ運用でよい

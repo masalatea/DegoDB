@@ -1,4 +1,4 @@
-# Project Metadata Bundle
+# Project Metadata Bundle / プロジェクトメタデータ bundle
 
 English companion:
 This document explains the current project-scoped export and import bundle format for canonical metadata. It defines which scope is included today, how database-source secrets are separated, and how preview versus apply should be used safely.

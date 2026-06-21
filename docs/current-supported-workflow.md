@@ -1,4 +1,4 @@
-# Current Supported Workflow
+# Current Supported Workflow / 現在サポートするワークフロー
 
 English companion:
 This is the current green path for the repo. Read it when you need the supported mainline for import, sync, output generation, tutorial checks, runtime reference inspection, and the boundary between current lanes and archived helpers.

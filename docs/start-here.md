@@ -1,4 +1,4 @@
-# Start Here
+# Start Here / 最初の入口
 
 English companion:
 This is the five-minute starting point for users and contributors who want to try building with Mtool. It fixes the reading order, the first commands to run, the repo map, and where to go next when you need deeper internal reference.

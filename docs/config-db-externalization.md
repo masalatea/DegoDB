@@ -1,4 +1,4 @@
-# Config DB Externalization
+# Config DB Externalization / config DB 外部化
 
 English companion:
 This document records the current rules for moving `config_db` away from the local compose service. It explains the supported local and external lanes, the `APP_CONFIG_DB_*` contract, and the preflight and migration commands that keep the metadata store consistent.

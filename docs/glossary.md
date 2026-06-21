@@ -1,4 +1,4 @@
-# Glossary
+# Glossary / 用語集
 
 English companion:
 This glossary gives fast definitions for the repo's common terms. Use it to align on the meaning of DB structure, Data Class, DB Access, runtime reference, sample lanes, and boundary language before diving into the deeper design documents.

@@ -1,4 +1,4 @@
-# Existing DB To Output
+# Existing DB To Output / 既存 DB から出力まで
 
 English companion:
 This is the end-to-end runbook for connecting an existing database, storing its canonical metadata, generating outputs, verifying them in lab, and capturing a rerun payload. Each stage keeps the purpose, UI lane, CLI lane, persistence point, success markers, and troubleshooting notes together.

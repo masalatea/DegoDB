@@ -1,4 +1,4 @@
-# Mtool Positioning
+# Mtool Positioning / Mtool の位置づけ
 
 English companion:
 This living reference explains Mtool's positioning, strengths, limitations, extension boundary, and comparison with ORM-like tools. It also records what the ebook CMS sample lane demonstrates about the intended metadata-driven generation workflow.

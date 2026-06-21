@@ -1,4 +1,4 @@
-# Storage And State Model
+# Storage And State Model / 保存先と状態モデル
 
 English companion:
 This document explains where state is stored across the existing-DB-to-output journey. It separates durable metadata, disposable runtime output, shared artifacts, and resume checkpoints so operators know what persists and what can be thrown away.

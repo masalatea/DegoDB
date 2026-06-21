@@ -1,4 +1,4 @@
-# Common Tasks
+# Common Tasks / よく使う作業
 
 English companion:
 This document is a command-first task catalog for day-to-day work in the current repo. It keeps reusable shortcuts, smoke checks, and verification commands in one place, while the full end-to-end narrative stays in `existing-db-to-output.md`.

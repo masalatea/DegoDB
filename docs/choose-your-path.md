@@ -1,4 +1,4 @@
-# Choose Your Path
+# Choose Your Path / 目的別の読み方
 
 English companion:
 This guide is a reverse index from goals to the right permanent docs and first commands. Use it when you know what you want to do but do not yet know which lane, document, or bootstrap step should be treated as current.

@@ -1,4 +1,4 @@
-# Troubleshooting
+# Troubleshooting / トラブルシューティング
 
 English companion:
 This guide explains the most common warnings, errors, and confused states on the current supported workflow. It is organized by symptom so you can quickly distinguish lane mixups, import issues, config DB problems, OpenAPI visibility assumptions, and reference-state mismatches.

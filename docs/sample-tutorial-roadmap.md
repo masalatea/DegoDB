@@ -1,4 +1,4 @@
-# Sample Tutorial Roadmap
+# Sample Tutorial Roadmap / sample 学習導線
 
 English companion:
 This roadmap defines the user-facing tutorial lane under `sample/tutorials/`. It explains the learning order from `sample01` through `sample26`, the design principles behind the packs, and the acceptance criteria for each stage.

@@ -11,6 +11,8 @@
 
 ## Index
 
+- `2026-0621-oss-consulting-readiness-inventory.md`
+  - US / overseas task intake、OSS adoption、consulting、implementation support を前提に、必要な資料 package、機能 package、first slice、guardrails を棚卸しした current inventory。Status: `CURRENT INVENTORY`。
 - `2026-0621-plan-inventory.md`
   - 2026-06-19 の棚卸し以後に進んだ custom proxy bundle coverage、generated OIDC JWT runtime verification、generated name migration first slice、PostgreSQL user DB output representative set、database-first sales asset lane を反映した current inventory。Status: `CURRENT INVENTORY`。
 - `2026-0621-database-first-sales-assets-plan.md`
