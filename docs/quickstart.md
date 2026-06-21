@@ -256,5 +256,6 @@ make reset-mtool
 
 ## legacy reference について
 
-旧実装全体を current runtime input として使う導線はありません。`original-codes/` は host-side reference only です。  
-現在の curated legacy reference は `mtool/reference/legacy-dbclasses/` など `mtool/reference/` 配下に限定して置きます。`original-codes/` という名前が docs や provenance metadata に出てくる場合も、current runtime / generator / Docker container が直接読む path ではありません。
+旧実装全体を current runtime input として使う導線はありません。
+現在の curated legacy reference は、旧生成 DB class を `mtool/reference/legacy-dbclasses/`、旧 build ロジックを `mtool/reference/legacy-mtool-build/`、旧テンプレートを `mtool/reference/legacy-mtool-templates/` に分けて置きます。
+current runtime / generator / Docker container は、これらの legacy reference directory を直接の実行入力として読みません。

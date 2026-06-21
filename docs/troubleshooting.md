@@ -11,7 +11,7 @@ existing DB から output までの stage 順は [existing-db-to-output.md](exis
 
 ## 先に確認すること
 
-- まず `original-codes/` を runtime input に戻していないか確認する
+- まず `mtool/reference/legacy-*` を runtime input に戻していないか確認する
 - local default なのか external config DB lane なのかをはっきりさせる
 - report の断片ではなく、まず date-less な恒久文書を source of truth として読む
 

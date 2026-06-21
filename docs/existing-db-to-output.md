@@ -609,7 +609,7 @@ bundle や secret sidecar がまだ無い段階なら、その行は省略して
 - 既存 DB を canonical store に置き換えること
 - import / sync / publish が既存 DB schema/data を直接書き換えること
 - raw `openapi.json` を public static file として配ること
-- `original-codes/` を runtime input に戻すこと
+- `mtool/reference/legacy-*` を runtime input に戻すこと
 
 ## 完了時に手元に残るもの
 

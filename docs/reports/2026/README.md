@@ -11,6 +11,10 @@
 
 ## Index
 
+- `2026-0621-plan-inventory.md`
+  - 2026-06-19 の棚卸し以後に進んだ custom proxy bundle coverage、generated OIDC JWT runtime verification、generated name migration first slice、PostgreSQL user DB output representative set、database-first sales asset lane を反映した current inventory。Status: `CURRENT INVENTORY`。
+- `2026-0621-database-first-sales-assets-plan.md`
+  - README 入口整理後に、DegoDB / mtool をデータベース起点開発、既存 DB / レガシー現代化、AI 向け文脈、診断、コンサルティング / 実装支援の営業資産として強化するための文書、サンプル、出力、CLI UX 計画。Status: `PLANNED`。
 - `2026-0620-post-security-feature-priority-plan.md`
   - security / auth / SSO first slice 後の次期優先順を見直した計画。custom proxy metadata bundle coverage、generated API `oidc-jwt-bearer` runtime verification、PostgreSQL output support、namespace migration、Mtool admin/lab route authorization hardening re-planning gate の順に整理する。5 番目は自動実装せず、再見積もりと再優先判断を必須にする。Status: `CURRENT PRIORITY UPDATE`。
 - `2026-0620-custom-proxy-metadata-bundle-coverage.md`

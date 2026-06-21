@@ -71,7 +71,7 @@ dated report は補助であり、まずはこの 3 か所で `project_key`、ch
 - DB 構造そのものの設計
 - JSON を magic import して DB 設計を自動確定すること
 - JSON-to-DB entrance を runtime / generator 機能として扱うこと
-- `original-codes/` を runtime input として直接使うこと
+- `mtool/reference/legacy-*` を runtime input として直接使うこと
 - historical report を current spec の代わりに読むこと
 
 ## repo map
@@ -85,14 +85,14 @@ dated report は補助であり、まずはこの 3 か所で `project_key`、ch
 | `tests/` | PHPUnit integration test と scenario | 現在の gate を確認するとき |
 | `docs/` | user-facing permanent docs と internal/reference index | まず date-less な正本を追うとき |
 | `work/` | disposable output、artifact history、compare workspace | runtime output や compare 作業を追うとき |
-| `mtool/reference/legacy-dbclasses/` | curated legacy DB class reference | 限定された比較・移行文脈を見るとき |
-| `original-codes/` | host-side reference only の旧実装 snapshot | full legacy source の差分確認が必要なとき |
+| `mtool/reference/legacy-dbclasses/` | curated legacy DB class reference | 旧生成 DB class の比較・移行文脈を見るとき |
+| `mtool/reference/legacy-mtool-build/` | curated legacy mtool build logic reference | 旧 build ロジックや生成経路を確認するとき |
+| `mtool/reference/legacy-mtool-templates/` | curated legacy template and project-setting reference | 旧テンプレートと出力対応範囲を確認するとき |
 
 ## 重要な boundary
 
-- `original-codes/` は host-side reference only
-- curated legacy reference は `mtool/reference/legacy-dbclasses/` など `mtool/reference/` 配下に限定して置く
-- 新実装の runtime / generator / Docker container は `original-codes/` を直接入力として使わない
+- 旧実装の参照は、文脈ごとに `mtool/reference/legacy-*` 配下へ整理して置く
+- 新実装の runtime / generator / Docker container は `mtool/reference/legacy-*` を直接の実行入力として使わない
 - tutorial lane は `sample/tutorials/` に固定し、simple-to-complex の順番を `sample01` から積む
 - internal pattern guard は `sample/internal-patterns/` に分離し、tutorial lane と混ぜない
 - internal architecture / migration map は [internal/README.md](internal/README.md) から 1 段内側で辿る

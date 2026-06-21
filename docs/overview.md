@@ -124,5 +124,9 @@ proxy 系の target design は次の分担にする。
   - 再構築環境の起動手順と現状の入口
 - `docs/internal/README.md`
   - 実装内部、architecture、migration map の索引
-- `original-codes/docs/overview.md`
-  - 旧システム全体の静的読解ベースの概要
+- `docs/reports/`
+  - 旧システム調査、移行判断、履歴記録
+- `mtool/reference/legacy-dbclasses/`
+  - 旧生成 DB class の curated reference
+- `mtool/reference/legacy-mtool-build/`
+  - 旧 mtool build ロジックの curated reference

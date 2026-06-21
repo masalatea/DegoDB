@@ -1,0 +1,85 @@
+# Compatibility And Output Support / 対応範囲と出力サポート
+
+DegoDB should be described with clear support boundaries. / DegoDB は、対応範囲を明確にした言葉で説明します。
+
+This page separates current refactored support, verified generated-output coverage, legacy reference evidence, and future compatibility candidates. / このページでは、現行リファクタ版の対応、検証済みの生成出力 coverage、旧実装参照、将来候補を分けます。
+
+## Summary / 要約
+
+Current DegoDB is strongest as a PHP-focused, database-first toolkit with MySQL / MariaDB, SQLite, and PostgreSQL coverage across different layers. / 現行 DegoDB は、PHP 主対象のデータベース起点ツールキットとして、MySQL / MariaDB、SQLite、PostgreSQL を複数 layer で扱うところが主な強みです。
+
+Do not claim that every database, every output language, or every legacy feature is currently supported. / すべての DB、すべての出力言語、すべての旧機能が現行対応済みであるとは書きません。
+
+## Support Terms / 用語
+
+| Term | Meaning / 意味 |
+| --- | --- |
+| `current support` | Implemented and maintained in the refactored repo / 現行リファクタ版で実装・維持している |
+| `verified target` | Covered by tests, samples, or contract gates / test、sample、contract gate で確認している |
+| `legacy reference` | Old implementation evidence kept for reference, not current support / 旧実装の参照。現行対応ではない |
+| `future candidate` | Useful target, but not yet current support / 有用な候補だが、まだ現行対応ではない |
+| `parked` | Intentionally deferred / 意図的に保留 |
+
+## Database Support / データベース対応
+
+| Area / 領域 | Current position / 現在の位置づけ |
+| --- | --- |
+| MySQL / MariaDB | Main default for Mtool config store and generated-output workflows. / Mtool config store と生成出力 workflow の主 default。 |
+| SQLite | Supported for lightweight Mtool config store profile and representative generated user DB contract coverage. / 軽量 Mtool config store profile と代表的な生成 user DB contract coverage で対応。 |
+| PostgreSQL | Supported as opt-in user DB / generated output contract lane. Not Mtool config store support. / user DB / generated output 側の opt-in contract lane として対応。Mtool config store 対応ではない。 |
+| SQL Server | Legacy metadata hooks existed, but current support is not claimed. / 旧実装には metadata 導線があったが、現行対応とは書かない。 |
+| Oracle | Future enterprise compatibility candidate only. / 将来の enterprise compatibility 候補に留める。 |
+
+## Layer Boundary / layer 境界
+
+Database support must name the layer. / DB 対応は、必ず layer を指定します。
+
+| Layer | Current reading / 現在の読み方 |
+| --- | --- |
+| Mtool config store | MySQL / MariaDB default, SQLite lightweight profile. PostgreSQL is not current config-store support. |
+| Imported user database | MySQL / MariaDB mainline. SQLite and PostgreSQL have representative coverage by sample / contract lane. |
+| Generated DBAccess runtime | PHP-focused generated runtime with MySQL / MariaDB, SQLite, and PostgreSQL representative contract coverage. |
+| Generated proxy / OpenAPI | PHP-focused runtime and OpenAPI artifacts. PostgreSQL-specific risk is mostly naming and DBAccess behavior, not a separate proxy language support claim. |
+| Examples / docs | Input drafts are allowed. Generated-looking output examples must be actual Mtool output. |
+
+## Output Support / 出力サポート
+
+| Output area / 出力領域 | Current support / 現行対応 | Legacy reference / 旧実装参照 | How to describe / 書き方 |
+| --- | --- | --- | --- |
+| DataClass | PHP-focused current output. / PHP 主対象の現行出力。 | PHP, C#, Java, Objective-C, Swift templates existed. | Current support is PHP-focused; other languages are legacy reference / future candidates. |
+| DBAccess | PHP-focused current output. / PHP 主対象の現行出力。 | PHP, C#, Java, Objective-C, Swift templates existed. | Do not claim current non-PHP DBAccess generation. |
+| Proxy server | PHP-focused current generated runtime. / PHP 主対象の現行生成 runtime。 | PHP-oriented legacy proxy server templates existed. | Describe current proxy runtime as PHP-focused. |
+| Proxy client | Not a current refactored primary output. / 現行リファクタ版の主出力ではない。 | Legacy templates include PHP, C#, Java, Objective-C, Swift proxy clients. | Mention only as legacy reference or future candidate. |
+| OpenAPI | Current generated artifact. / 現行生成成果物。 | Not the old center of gravity. | Safe to describe as current. |
+| HTML artifact | Current tutorial / sample output exists. / 現行 tutorial / sample 出力がある。 | Legacy HTML output existed. | Keep scope tied to current samples. |
+| Project metadata bundle | Current export / preview / apply support. / 現行の export / preview / apply 対応。 | Not a legacy claim. | Safe to describe as current. |
+| AI context | Not current generated output. / 現行生成出力ではない。 | Not a legacy feature. | Treat as plan only until `AI-CONTEXT-MD` exists. |
+| Modernization audit | Not current generated output. / 現行生成出力ではない。 | Not a legacy feature. | Treat as plan only until an audit generator exists. |
+
+## Safe Public Message / 安全な説明文
+
+Use this wording when a short support statement is needed. / 短い対応範囲説明が必要な時は、この文を使います。
+
+```text
+DegoDB currently focuses on PHP-oriented generated artifacts around database-backed metadata. MySQL / MariaDB are the default mainline, SQLite is supported for lightweight local configuration and representative user DB contracts, and PostgreSQL is covered as an opt-in user DB / generated-output contract lane. Older implementation references show broader language and database directions, but non-PHP outputs, SQL Server, Oracle, and AI-context generation are future compatibility tracks unless explicitly marked as current in this repository.
+```
+
+```text
+DegoDB は現在、データベース由来メタデータを中心にした PHP 主対象の生成成果物に注力しています。MySQL / MariaDB は主 default、SQLite は軽量 local 設定と代表的 user DB contract、PostgreSQL は user DB / generated-output 側の opt-in contract lane として扱います。旧実装参照にはより広い言語・DB 方向性が残っていますが、PHP 以外の出力、SQL Server、Oracle、AI 文脈の自動生成は、この repo で明示されるまでは将来対応候補です。
+```
+
+## What Not To Say / 言わないこと
+
+- Do not say DegoDB supports all SQL databases. / すべての SQL DB に対応しているとは言わない。
+- Do not say Mtool config store supports PostgreSQL. / Mtool config store が PostgreSQL 対応済みとは言わない。
+- Do not say current DegoDB generates C# / Java / Objective-C / Swift output. / 現行 DegoDB が C# / Java / Objective-C / Swift を生成できるとは言わない。
+- Do not say AI context is generated automatically until `AI-CONTEXT-MD` exists. / `AI-CONTEXT-MD` ができるまで、AI 文脈を自動生成できるとは言わない。
+- Do not present parked invoice / tax / compliance examples as domain expertise. / 保留中の請求・税務・コンプライアンス example を専門知識として見せない。
+
+## Current Evidence / 現在の根拠
+
+- PostgreSQL user DB output representative set: [2026-0620 PostgreSQL user DB output first slice](reports/2026/2026-0620-postgresql-user-db-output-first-slice.md)
+- Generated name migration and physical / logical naming policy: [2026-0620 generated name migration plan](reports/2026/2026-0620-generated-name-migration-plan.md)
+- AI context and audit plans: [2026-0621 database-first sales assets plan](reports/2026/2026-0621-database-first-sales-assets-plan.md)
+- Legacy template reference: `mtool/reference/legacy-mtool-templates/`
+- Legacy build reference: `mtool/reference/legacy-mtool-build/`

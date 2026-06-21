@@ -14,8 +14,10 @@ top-level は外部ユーザ向け導線を優先し、内部向け文書は [In
    - [Start Here / 最初の入口](start-here.md)
    - [Choose Your Path / 目的別の読み方](choose-your-path.md)
 2. golden path layer
+   - [Current Plans / 現在の計画](current-plans.md)
    - [JSON To DB Entrance / JSON から DB 設計へ入る入口](json-to-db-entrance.md) optional pre-design entrance
    - [Existing DB To Output / 既存 DB から出力まで](existing-db-to-output.md)
+   - [Use Cases / ユースケース](use-cases.md)
    - [Common Tasks / よく使う作業](common-tasks.md)
    - [Current Supported Workflow / 現在サポートするワークフロー](current-supported-workflow.md)
    - [Troubleshooting / トラブルシューティング](troubleshooting.md)
@@ -42,8 +44,14 @@ detail doc だけを読んで mainline を再構成するのは current reading 
   - 最初の 5 分で repo の current な読み方を掴む文書
 - [Choose Your Path / 目的別の読み方](choose-your-path.md)
   - 目的別に current doc と最初のコマンドを逆引きする文書
+- [Current Plans / 現在の計画](current-plans.md)
+  - 現在の計画、ステータス、次に進める作業をまとめた日付なし索引
 - [Existing DB To Output / 既存 DB から出力まで](existing-db-to-output.md)
   - existing DB 接続から canonical metadata 永続化、設計、output verify までの primary journey
+- [Use Cases / ユースケース](use-cases.md)
+  - database-first、existing-database-first、legacy modernization の用途整理
+- [Compatibility And Output Support / 対応範囲と出力サポート](compatibility-and-output-support.md)
+  - 現行対応、検証対象、旧実装参照、将来候補を分けた説明
 - [JSON To DB Entrance / JSON から DB 設計へ入る入口](json-to-db-entrance.md)
   - 初期構想に含まれる optional pre-design entrance。JSON file / JSON API cache / JSON config から AI-readable な DB design draft を作り、DB-first mainline へ入る。runtime / generator 機能ではない
 - [Common Tasks / よく使う作業](common-tasks.md)
@@ -67,6 +75,12 @@ detail doc だけを読んで mainline を再構成するのは current reading 
   - ツール本来の `DB 構造 -> import -> Data Class -> DB Access -> Source Output` の概念モデル
 - [Existing DB To Output / 既存 DB から出力まで](existing-db-to-output.md)
   - existing DB 接続から output verify までの primary journey
+- [Use Cases / ユースケース](use-cases.md)
+  - database-first / existing-database-first の実用シナリオと、現行対応・旧実装参照・将来対応候補の整理
+- [Current Plans / 現在の計画](current-plans.md)
+  - active / TODO / parked の計画一覧。日付付き report を探す前にここを見る
+- [Compatibility And Output Support / 対応範囲と出力サポート](compatibility-and-output-support.md)
+  - DB、config store、user DB、生成出力、旧実装参照、将来候補を安全に説明するための正本
 - [JSON To DB Entrance / JSON から DB 設計へ入る入口](json-to-db-entrance.md)
   - DB をよく知らない利用者が、JSON sample と現在の処理説明から DB 設計案へ進むための、初期構想に含まれる optional pre-design entrance
 - [Storage And State Model / 保存先と状態モデル](storage-and-state-model.md)
@@ -92,6 +106,8 @@ detail doc だけを読んで mainline を再構成するのは current reading 
   - `config_db` の local overlay / external lane / preflight / migrate の正本
 - [Sample Packs / sample pack 一覧](../sample/README.md)
   - sample pack 全体の案内
+- [Examples / 例の索引](../examples/README.md)
+  - 営業・提案・現代化説明向けのシナリオ型の例の計画
 - [Sample Tutorial Packs / tutorial sample 一覧](../sample/tutorials/README.md)
   - tutorial lane の pack 一覧
 - [Internal Documentation Index / 内部ドキュメント索引](internal/README.md)
@@ -104,6 +120,7 @@ detail doc だけを読んで mainline を再構成するのは current reading 
 
 report は履歴、判断経緯、handoff、resume prompt のために残します。  
 current supported workflow や stable rule を調べるときは、まず date-less な恒久文書を優先してください。
+現在の計画一覧は [Current Plans / 現在の計画](current-plans.md) を優先し、日付付き report だけを唯一の計画置き場にしないでください。
 
 ## Update Rules
 
@@ -113,4 +130,5 @@ current supported workflow や stable rule を調べるときは、まず date-l
 - 履歴として残す文書は `YYYY-MMDD-<slug>.md` を使う
 - `docs/reports/` 配下の progress / handoff / resume prompt / slice report は日本語のみ運用でよい
 - report で確定した stable rule は、必要に応じて日付なしの恒久文書へ移す
-- `original-codes/docs/` は旧実装の調査資料であり、新実装 docs の source of truth ではない
+- active plan は [Current Plans / 現在の計画](current-plans.md) へ昇格し、詳細 report だけに閉じ込めない
+- 旧実装の調査資料は `docs/reports/`、旧生成 DB class 参照は `mtool/reference/legacy-dbclasses/`、旧 build ロジック参照は `mtool/reference/legacy-mtool-build/` に分ける
