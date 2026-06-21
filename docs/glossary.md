@@ -126,10 +126,10 @@ This glossary gives fast definitions for the repo's common terms. Use it to alig
 - 今の repo で green path として信頼してよい mainline
 - archived helper や historical workaround は含めない
 
-### `host-side reference only`
+### `curated legacy reference only`
 
 - repo 内にあっても、runtime / generator / Docker container が直接入力として使わない参照資産
-- `original-codes/` の扱いを表す言葉
+- `mtool/reference/legacy-dbclasses/`、`mtool/reference/legacy-mtool-build/`、`mtool/reference/legacy-mtool-templates/` の扱いを表す言葉
 
 ### `durable`
 

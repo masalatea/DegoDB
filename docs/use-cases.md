@@ -1,5 +1,8 @@
 # Use Cases / ユースケース
 
+English companion:
+This page groups the practical use cases DegoDB can describe today and separates current support from future compatibility tracks.
+
 DegoDB is a database-first and existing-database-first development toolkit. / DegoDB は、データベース起点・既存データベース起点の開発ツールキットです。
 
 It turns database schemas into canonical metadata, generated code, API surfaces, and verified source output artifacts. / データベーススキーマから、正規化されたメタデータ、生成コード、API の外部仕様、検証済み Source Output 成果物を作ります。

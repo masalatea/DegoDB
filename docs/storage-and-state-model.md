@@ -32,7 +32,7 @@ existing DB / lab_db
 | `work/source-outputs/{project_key}/{source_output_key}` | current raw output | 最新 publish の materialized output | `create_project_output.php --publish` | 次回 publish で上書きされる |
 | bundle dir (`/tmp/...`) | transport package | export 済み metadata bundle | `export_project_metadata.php` | 配布用。live store ではない |
 | `database-source-secrets*.json` | secret sidecar | database source password または `password_env` | operator | commit しない |
-| `original-codes/` | host-side reference | 旧実装の調査資料と reference | 人の調査作業だけ | runtime input ではない |
+| `mtool/reference/legacy-*` | curated legacy reference | 旧生成 DB class、旧 build ロジック、旧テンプレートの参照 | 人の調査作業だけ | runtime input ではない |
 
 ## よくある質問
 
@@ -135,7 +135,7 @@ existing DB、`db-lab`、`work/source-outputs/...` は便利でも canonical sto
 - `config_db` は canonical store
 - existing DB / `db-lab` は import source または runtime source
 - `work/` は output materialization と artifact workspace
-- `original-codes/` は host-side reference only
+- `mtool/reference/legacy-*` は curated legacy reference only
 
 ## 関連文書
 

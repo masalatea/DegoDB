@@ -14,6 +14,10 @@
 
 Current plan index is promoted to the date-less document [Current Plans / 現在の計画](../../current-plans.md). Use that page for active / TODO / parked status before reading dated reports.
 
+2026-06-21 late update: completed items were moved out of `docs/current-plans.md` so that "plan list" answers show only unfinished or deferred plans. The completed documentation foundation, curated legacy references, PostgreSQL input/backing, and SQLite input/backing remain recorded in this dated inventory.
+
+2026-06-21 follow-up inventory: `docs/current-plans.md` now also carries the remaining generated name migration follow-up, conditional PostgreSQL follow-up, namespace migration, and explicit replan/parked items. This keeps active answers short while preserving known deferred work.
+
 ## Rough Work Estimates
 
 2026-06-21 時点の計画見積もり。期限ではなく、作業量の目安として残す。

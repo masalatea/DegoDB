@@ -54,7 +54,8 @@ final class DocsEntranceContractTest extends TestCase
                 'make mtool-canonical-sync',
                 'make sample01-pack-runtime-test',
                 'mtool/reference/legacy-dbclasses/',
-                '`original-codes/`',
+                'mtool/reference/legacy-mtool-build/',
+                'mtool/reference/legacy-mtool-templates/',
             ],
             $quickstart,
             'docs/quickstart.md',
@@ -247,8 +248,8 @@ final class DocsEntranceContractTest extends TestCase
             ] as $relativePath
         ) {
             $content = $this->readRepoFile($relativePath);
-            self::assertStringContainsString('`original-codes/`', $content, 'missing original-codes mention: ' . $relativePath);
-            self::assertStringContainsString('host-side reference only', $content, 'missing host-side reference wording: ' . $relativePath);
+            self::assertStringContainsString('`mtool/reference/legacy-', $content, 'missing curated legacy reference mention: ' . $relativePath);
+            self::assertStringContainsString('runtime input', $content, 'missing runtime input boundary wording: ' . $relativePath);
         }
     }
 
@@ -314,7 +315,7 @@ final class DocsEntranceContractTest extends TestCase
                 '## resume / handoff でどこを見るか',
                 '`config_db.database_sources`',
                 '`config_db.project_db_access_*`',
-                'host-side reference only',
+                'curated legacy reference only',
             ],
             $stateModel,
             'docs/storage-and-state-model.md',
@@ -324,7 +325,7 @@ final class DocsEntranceContractTest extends TestCase
             [
                 '[../existing-db-to-output.md](../existing-db-to-output.md)',
                 '[../storage-and-state-model.md](../storage-and-state-model.md)',
-                '`original-codes/`',
+                '`mtool/reference/legacy-*`',
                 '`/settings/database-sources`',
                 '`import_project_tables.php` は apply',
                 '<a id="a1-handoff-payload"></a>',
@@ -497,7 +498,7 @@ final class DocsEntranceContractTest extends TestCase
                 '`runtime reference`',
                 '`sampleNN-pack-runtime-test`',
                 '`patternNN-output-test`',
-                'host-side reference only',
+                'curated legacy reference only',
             ] as $needle
         ) {
             self::assertStringContainsString($needle, $glossary);

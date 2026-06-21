@@ -1,5 +1,8 @@
 # Compatibility And Output Support / 対応範囲と出力サポート
 
+English companion:
+This page states what DegoDB currently supports, what is only legacy reference evidence, and what remains future work.
+
 DegoDB should be described with clear support boundaries. / DegoDB は、対応範囲を明確にした言葉で説明します。
 
 This page separates current refactored support, verified generated-output coverage, legacy reference evidence, and future compatibility candidates. / このページでは、現行リファクタ版の対応、検証済みの生成出力 coverage、旧実装参照、将来候補を分けます。

@@ -115,7 +115,7 @@ Do not reconstruct the mainline by reading the detail docs first. Choose a readi
 - `tests/` contains integration, scenario, and fixture verification assets. / `tests/` には、結合テスト、シナリオ、検証用 fixture を置きます。
 - `work/` stores disposable outputs and compare workspaces. / `work/` は、一時的な出力や比較作業用の置き場です。
 - Curated legacy references live under `mtool/reference/`: generated DB class references under `mtool/reference/legacy-dbclasses/`, legacy mtool build logic under `mtool/reference/legacy-mtool-build/`, and legacy templates under `mtool/reference/legacy-mtool-templates/`. / 整理済みの旧実装参照は `mtool/reference/` 配下に置きます。旧生成 DB class は `mtool/reference/legacy-dbclasses/`、旧 mtool build ロジックは `mtool/reference/legacy-mtool-build/`、旧テンプレートは `mtool/reference/legacy-mtool-templates/` に分けます。
-- The current runtime, generator, and Docker containers must not use curated legacy reference directories directly as execution input. / 現行ランタイム、生成器、Docker コンテナは、整理済み legacy reference directory を直接の実行入力として使いません。
+- The current runtime, generator, and Docker containers must not use curated legacy reference directories directly as runtime input. / 現行ランタイム、生成器、Docker コンテナは、整理済み legacy reference directory を直接の runtime input として使いません。
 
 ## Shortest Entry Path / 最短の入口
 
