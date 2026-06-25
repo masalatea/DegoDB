@@ -35,6 +35,14 @@ final class SourceOutputRepositorySqliteTest extends TestCase
         self::assertTrue($item['ok'], $item['error']);
         self::assertSame('DB Access PHP', $item['item']['name'] ?? '');
 
+        $implicitAiContext = app_pdo_fetch_project_source_output_item($app, 'SQLITE_SO_TEST', 'AI-CONTEXT-MD');
+        self::assertTrue($implicitAiContext['ok'], $implicitAiContext['error']);
+        self::assertSame('implicit-default', $implicitAiContext['item']['source_of_truth'] ?? '');
+        self::assertSame(
+            'mtool/ai-context-source-outputs/SQLITE_SO_TEST/AI-CONTEXT-MD',
+            $implicitAiContext['item']['runtime_source_relative_path'] ?? '',
+        );
+
         $update = app_pdo_update_project_source_output($app, $this->sourceOutputInput([
             'project_key' => 'SQLITE_SO_TEST',
             'source_output_key' => 'DBACCESS-PHP',
@@ -45,14 +53,66 @@ final class SourceOutputRepositorySqliteTest extends TestCase
 
         $catalog = app_pdo_fetch_project_source_output_catalog($app, 'SQLITE_SO_TEST');
         self::assertTrue($catalog['ok'], $catalog['error']);
-        self::assertCount(1, $catalog['items']);
+        self::assertCount(2, $catalog['items']);
         self::assertSame('DB Access PHP Updated', $catalog['items'][0]['name']);
+        self::assertSame('AI-CONTEXT-MD', $catalog['items'][1]['source_output_key']);
 
         $delete = app_pdo_delete_project_source_output($app, [
             'project_key' => 'SQLITE_SO_TEST',
             'source_output_key' => 'DBACCESS-PHP',
         ]);
         self::assertTrue($delete['ok'], $delete['error']);
+
+        $catalogAfterDelete = app_pdo_fetch_project_source_output_catalog($app, 'SQLITE_SO_TEST');
+        self::assertTrue($catalogAfterDelete['ok'], $catalogAfterDelete['error']);
+        self::assertCount(1, $catalogAfterDelete['items']);
+        self::assertSame('AI-CONTEXT-MD', $catalogAfterDelete['items'][0]['source_output_key']);
+    }
+
+    public function testImplicitAiContextDefaultCanMaterializeOnUpdate(): void
+    {
+        $app = $this->createBootstrappedSqliteApp();
+        $project = app_pdo_insert_project($app, [
+            'project_key' => 'SQLITE_AI_CONTEXT_DEFAULT_TEST',
+            'name' => 'SQLite AI Context Default Test',
+            'slug' => 'sqlite-ai-context-default-test',
+            'lifecycle_status' => 'active',
+            'owner_login_id' => 'owner@example.test',
+            'description' => 'implicit AI context source output smoke',
+        ]);
+        self::assertTrue($project['ok'], $project['error']);
+
+        $implicit = app_pdo_fetch_project_source_output_item(
+            $app,
+            'SQLITE_AI_CONTEXT_DEFAULT_TEST',
+            'AI-CONTEXT-MD',
+        );
+        self::assertTrue($implicit['ok'], $implicit['error']);
+        self::assertSame('implicit-default', $implicit['item']['source_of_truth'] ?? '');
+
+        $input = $this->sourceOutputInput([
+            'project_key' => 'SQLITE_AI_CONTEXT_DEFAULT_TEST',
+            'source_output_key' => 'AI-CONTEXT-MD',
+            'name' => 'Materialized AI Context',
+            'program_language' => 'md',
+            'class_type' => 'AIContext',
+            'runtime_source_relative_path' => 'mtool/ai-context-source-outputs/SQLITE_AI_CONTEXT_DEFAULT_TEST/AI-CONTEXT-MD',
+            'artifact_strategy' => 'ai-context-md',
+            'target_binding_type' => 'runtime',
+            'source_output_list_order' => '90',
+            'source_of_truth' => 'manual',
+        ]);
+        $update = app_pdo_update_project_source_output($app, $input);
+        self::assertTrue($update['ok'], $update['error']);
+
+        $materialized = app_pdo_fetch_project_source_output_item(
+            $app,
+            'SQLITE_AI_CONTEXT_DEFAULT_TEST',
+            'AI-CONTEXT-MD',
+        );
+        self::assertTrue($materialized['ok'], $materialized['error']);
+        self::assertSame('Materialized AI Context', $materialized['item']['name'] ?? '');
+        self::assertSame('manual', $materialized['item']['source_of_truth'] ?? '');
     }
 
     /**

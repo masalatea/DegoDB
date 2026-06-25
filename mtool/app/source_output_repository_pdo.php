@@ -81,6 +81,11 @@ function app_pdo_fetch_project_source_output_catalog(array $app, string $project
 
             $items[] = app_pdo_project_source_output_item_from_row($row);
         }
+        $items = app_pdo_project_source_output_with_implicit_defaults(
+            $pdo,
+            $projectKey,
+            $items,
+        );
 
         return [
             'ok' => true,
@@ -166,6 +171,17 @@ function app_pdo_fetch_project_source_output_item(array $app, string $projectKey
 
         $row = $statement->fetch();
         if (!is_array($row)) {
+            if (
+                app_normalize_source_output_key($sourceOutputKey) === 'AI-CONTEXT-MD'
+                && app_pdo_project_source_output_project_exists($pdo, $projectKey)
+            ) {
+                return [
+                    'ok' => true,
+                    'item' => app_pdo_project_source_output_implicit_ai_context_item($projectKey),
+                    'error' => '',
+                ];
+            }
+
             return [
                 'ok' => true,
                 'item' => null,
@@ -256,6 +272,14 @@ function app_pdo_fetch_project_source_output_default_item(array $app, string $pr
 
         $row = $statement->fetch();
         if (!is_array($row)) {
+            if (app_pdo_project_source_output_project_exists($pdo, $projectKey)) {
+                return [
+                    'ok' => true,
+                    'item' => app_pdo_project_source_output_implicit_ai_context_item($projectKey),
+                    'error' => '',
+                ];
+            }
+
             return [
                 'ok' => true,
                 'item' => null,
@@ -426,7 +450,14 @@ function app_pdo_update_project_source_output(array $app, array $input): array
     try {
         $pdo = app_create_config_pdo($app);
         $projectId = app_source_output_pdo_resolve_project_id($pdo, $input['project_key']);
-        app_source_output_pdo_resolve_source_output_id($pdo, $projectId, $input['source_output_key']);
+        $sourceOutputId = app_source_output_pdo_fetch_source_output_id($pdo, $projectId, $input['source_output_key']);
+        if ($sourceOutputId === null) {
+            if (app_normalize_source_output_key($input['source_output_key']) === 'AI-CONTEXT-MD') {
+                return app_pdo_create_project_source_output($app, $input);
+            }
+
+            throw new RuntimeException('source output が見つかりません。');
+        }
 
         $statement = $pdo->prepare(
             'UPDATE project_source_outputs
@@ -567,6 +598,11 @@ function app_pdo_reorder_project_source_outputs(array $app, array $input): array
                 static fn (string $value): bool => $value !== '',
             ),
         );
+        $hasImplicitAiContextDefault = !in_array('AI-CONTEXT-MD', $expectedKeys, true)
+            && app_pdo_project_source_output_project_exists($pdo, $input['project_key']);
+        if ($hasImplicitAiContextDefault) {
+            $expectedKeys[] = 'AI-CONTEXT-MD';
+        }
 
         $submittedKeys = [];
         foreach ($input['orders'] as $order) {
@@ -596,6 +632,10 @@ function app_pdo_reorder_project_source_outputs(array $app, array $input): array
         );
 
         foreach ($input['orders'] as $order) {
+            if ($hasImplicitAiContextDefault && $order['source_output_key'] === 'AI-CONTEXT-MD') {
+                continue;
+            }
+
             $updateStatement->execute([
                 ':project_id' => $projectId,
                 ':source_output_key' => $order['source_output_key'],
@@ -674,6 +714,151 @@ function app_pdo_project_source_output_item_from_row(array $row): array
     ];
 }
 
+/**
+ * @param list<array{
+ *     source_output_key:string,
+ *     name:string,
+ *     program_language:string,
+ *     class_type:string,
+ *     release_target_type:string,
+ *     source_template_dir:string,
+ *     source_output_dir:string,
+ *     source_temp_output_dir:string,
+ *     proxy_base_url:string,
+ *     autoload_filename_suffix:string,
+ *     source_text_char_code:string,
+ *     runtime_source_relative_path:string,
+ *     artifact_strategy:string,
+ *     target_binding_type:string,
+ *     spec_visibility:string,
+ *     output_archive_format:string,
+ *     source_output_list_order:string,
+ *     notes:string,
+ *     source_of_truth:string,
+ *     updated_at:string
+ * }> $items
+ * @return list<array{
+ *     source_output_key:string,
+ *     name:string,
+ *     program_language:string,
+ *     class_type:string,
+ *     release_target_type:string,
+ *     source_template_dir:string,
+ *     source_output_dir:string,
+ *     source_temp_output_dir:string,
+ *     proxy_base_url:string,
+ *     autoload_filename_suffix:string,
+ *     source_text_char_code:string,
+ *     runtime_source_relative_path:string,
+ *     artifact_strategy:string,
+ *     target_binding_type:string,
+ *     spec_visibility:string,
+ *     output_archive_format:string,
+ *     source_output_list_order:string,
+ *     notes:string,
+ *     source_of_truth:string,
+ *     updated_at:string
+ * }>
+ */
+function app_pdo_project_source_output_with_implicit_defaults(PDO $pdo, string $projectKey, array $items): array
+{
+    foreach ($items as $item) {
+        if ($item['source_output_key'] === 'AI-CONTEXT-MD') {
+            return $items;
+        }
+    }
+
+    if ($items === [] && !app_pdo_project_source_output_project_exists($pdo, $projectKey)) {
+        return $items;
+    }
+
+    $items[] = app_pdo_project_source_output_implicit_ai_context_item($projectKey);
+    usort(
+        $items,
+        static function (array $left, array $right): int {
+            $orderCompare = ((int) $left['source_output_list_order']) <=> ((int) $right['source_output_list_order']);
+            if ($orderCompare !== 0) {
+                return $orderCompare;
+            }
+
+            return $left['source_output_key'] <=> $right['source_output_key'];
+        },
+    );
+
+    return $items;
+}
+
+/**
+ * @return array{
+ *     source_output_key:string,
+ *     name:string,
+ *     program_language:string,
+ *     class_type:string,
+ *     release_target_type:string,
+ *     source_template_dir:string,
+ *     source_output_dir:string,
+ *     source_temp_output_dir:string,
+ *     proxy_base_url:string,
+ *     autoload_filename_suffix:string,
+ *     source_text_char_code:string,
+ *     runtime_source_relative_path:string,
+ *     artifact_strategy:string,
+ *     target_binding_type:string,
+ *     spec_visibility:string,
+ *     output_archive_format:string,
+ *     source_output_list_order:string,
+ *     notes:string,
+ *     source_of_truth:string,
+ *     updated_at:string
+ * }
+ */
+function app_pdo_project_source_output_implicit_ai_context_item(string $projectKey): array
+{
+    $normalizedProjectKey = app_normalize_project_key($projectKey);
+
+    return [
+        'source_output_key' => 'AI-CONTEXT-MD',
+        'name' => $normalizedProjectKey . ' AI Context Markdown',
+        'program_language' => 'md',
+        'class_type' => 'AIContext',
+        'release_target_type' => 'Release',
+        'source_template_dir' => '',
+        'source_output_dir' => app_runtime_storage_work_repo_relative_path(
+            app_runtime_storage_work_source_outputs_relative_path($normalizedProjectKey, 'AI-CONTEXT-MD'),
+        ),
+        'source_temp_output_dir' => app_runtime_storage_work_repo_relative_path(
+            app_runtime_storage_source_output_temp_relative_path($normalizedProjectKey, 'AI-CONTEXT-MD'),
+        ),
+        'proxy_base_url' => '',
+        'autoload_filename_suffix' => '',
+        'source_text_char_code' => 'UTF-8',
+        'runtime_source_relative_path' => 'mtool/ai-context-source-outputs/' . $normalizedProjectKey . '/AI-CONTEXT-MD',
+        'artifact_strategy' => 'ai-context-md',
+        'target_binding_type' => 'runtime',
+        'spec_visibility' => 'internal-only',
+        'output_archive_format' => 'tar.gz',
+        'source_output_list_order' => '90',
+        'notes' => 'Implicit default companion documentation output. Generate AI-readable Markdown and JSON context from canonical project metadata. Authored by DegoDB/Mtool generator code; AI is reader/consumer only.',
+        'source_of_truth' => 'implicit-default',
+        'updated_at' => '',
+    ];
+}
+
+function app_pdo_project_source_output_project_exists(PDO $pdo, string $projectKey): bool
+{
+    $statement = $pdo->prepare(
+        'SELECT 1
+        FROM projects
+        WHERE project_key = :project_key
+        LIMIT 1'
+    );
+    $statement->execute([
+        ':project_key' => $projectKey,
+    ]);
+
+    return $statement->fetchColumn() !== false;
+}
+
 function app_source_output_pdo_resolve_project_id(PDO $pdo, string $projectKey): int
 {
     $statement = $pdo->prepare(
@@ -696,6 +881,16 @@ function app_source_output_pdo_resolve_project_id(PDO $pdo, string $projectKey):
 
 function app_source_output_pdo_resolve_source_output_id(PDO $pdo, int $projectId, string $sourceOutputKey): int
 {
+    $sourceOutputId = app_source_output_pdo_fetch_source_output_id($pdo, $projectId, $sourceOutputKey);
+    if ($sourceOutputId === null) {
+        throw new RuntimeException('source output が見つかりません。');
+    }
+
+    return $sourceOutputId;
+}
+
+function app_source_output_pdo_fetch_source_output_id(PDO $pdo, int $projectId, string $sourceOutputKey): ?int
+{
     $statement = $pdo->prepare(
         'SELECT id
         FROM project_source_outputs
@@ -710,7 +905,7 @@ function app_source_output_pdo_resolve_source_output_id(PDO $pdo, int $projectId
 
     $sourceOutputId = $statement->fetchColumn();
     if (!is_numeric($sourceOutputId)) {
-        throw new RuntimeException('source output が見つかりません。');
+        return null;
     }
 
     return (int) $sourceOutputId;

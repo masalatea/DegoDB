@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 require_once __DIR__ . '/domain_validation.php';
 require_once __DIR__ . '/runtime_storage_paths.php';
+require_once __DIR__ . '/project_output_ai_context_generator.php';
 require_once __DIR__ . '/project_output_db_access_generator.php';
 require_once __DIR__ . '/project_output_data_class_generator.php';
 require_once __DIR__ . '/project_output_html_module_generator.php';
@@ -51,7 +52,7 @@ function app_project_output_customization_model(string $artifactStrategy = ''): 
     return match ($artifactStrategy) {
         'canonical-dbaccess-php' => 'generated-wrapper-base-tree',
         'canonical-dataclass-php' => 'generated-wrapper-base-tree',
-        'openapi-json', 'html-module-catalog', 'legacy-directory-mirror' => 'mirrored-source-with-companion-notes',
+        'openapi-json', 'html-module-catalog', 'legacy-directory-mirror', 'ai-context-md' => 'mirrored-source-with-companion-notes',
         default => 'base-custom-wrapper-layer',
     };
 }
@@ -94,6 +95,9 @@ function app_project_output_custom_layer_entrypoints(array $definition): array
             'README.md',
         ],
         'openapi-json' => [
+            'README.md',
+        ],
+        'ai-context-md' => [
             'README.md',
         ],
         'html-module-catalog' => [
@@ -150,6 +154,7 @@ function app_project_output_custom_layer_scaffold_relative_paths(array $definiti
         'canonical-dbaccess-php',
         'canonical-dataclass-php',
         'openapi-json',
+        'ai-context-md',
         'html-module-catalog',
         'legacy-directory-mirror' => ['README.md'],
         'single-proxy-client', 'custom-proxy-client' => ['README.md', 'ClientExtensions.cs'],
@@ -1613,6 +1618,30 @@ Artifact generation convention:
 TEXT;
     }
 
+    if ($definition['artifact_strategy'] === 'ai-context-md') {
+        return <<<TEXT
+# Companion Notes
+
+This directory is an optional companion area for source output `{$normalizedProjectKey}/{$normalizedSourceOutputKey}`.
+
+- Generated AI context files are published under `{$runtimeSourceRelativePath}`.
+- `{$runtimeSourceRelativePath}/README.md` explains the generated context package.
+- `{$runtimeSourceRelativePath}/schema-context.json` is the machine-readable context companion.
+- AI is a reader / consumer of this output; the files are authored by DegoDB / Mtool generator code.
+- current raw output is disposable; durable review notes belong in docs or sample references.
+
+Companion files:
+
+{$entrypointSource}
+
+Artifact generation convention:
+
+- Workspace path: `{$customLayerRelativePath}`
+- If that workspace path exists, its files are bundled as companion notes.
+- If it does not exist yet, this scaffold `README.md` is bundled instead.
+TEXT;
+    }
+
     if (
         app_project_output_html_module_strategy_is_supported($definition['artifact_strategy'])
         || $definition['artifact_strategy'] === 'legacy-directory-mirror'
@@ -1792,6 +1821,7 @@ function app_project_output_custom_layer_scaffold_files(
 
     if (
         $definition['artifact_strategy'] === 'openapi-json'
+        || $definition['artifact_strategy'] === 'ai-context-md'
         || app_project_output_html_module_strategy_is_supported($definition['artifact_strategy'])
         || $definition['artifact_strategy'] === 'legacy-directory-mirror'
     ) {
@@ -1998,6 +2028,19 @@ function app_project_output_create_from_definition(
         $runtimeSourceRelativePath = $openApiTreeResult['runtime_source_relative_path'];
         $runtimeSourceRoot = $openApiTreeResult['runtime_source_root'];
         $scanResult = $openApiTreeResult['scan_result'];
+    } elseif (app_project_output_ai_context_strategy_is_supported($definition['artifact_strategy'])) {
+        $aiContextTreeResult = app_project_output_prepare_ai_context_source_tree($app, $normalizedProjectKey, $definition);
+        if (!$aiContextTreeResult['ok'] || !is_array($aiContextTreeResult['scan_result'])) {
+            return [
+                'ok' => false,
+                'artifact' => null,
+                'error' => $aiContextTreeResult['error'],
+            ];
+        }
+
+        $runtimeSourceRelativePath = $aiContextTreeResult['runtime_source_relative_path'];
+        $runtimeSourceRoot = $aiContextTreeResult['runtime_source_root'];
+        $scanResult = $aiContextTreeResult['scan_result'];
     } elseif (app_project_output_db_access_strategy_is_supported($definition['artifact_strategy'])) {
         $dbAccessTreeResult = app_project_output_prepare_db_access_source_tree(
             $app,

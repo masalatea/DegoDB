@@ -20,6 +20,27 @@
             "source_output_list_order": "10",
             "notes": "Source output metadata included in the project metadata bundle tutorial sample.",
             "source_of_truth": "manual"
+        },
+        {
+            "source_output_key": "AI-CONTEXT-MD",
+            "name": "Sample15 AI Context Markdown",
+            "program_language": "md",
+            "class_type": "AIContext",
+            "release_target_type": "Release",
+            "source_template_dir": "",
+            "source_output_dir": "work/source-outputs/SAMPLE15/AI-CONTEXT-MD",
+            "source_temp_output_dir": "work/staging/source-outputs/SAMPLE15/AI-CONTEXT-MD",
+            "proxy_base_url": "",
+            "autoload_filename_suffix": "",
+            "source_text_char_code": "UTF-8",
+            "runtime_source_relative_path": "mtool/ai-context-source-outputs/SAMPLE15/AI-CONTEXT-MD",
+            "artifact_strategy": "ai-context-md",
+            "target_binding_type": "runtime",
+            "spec_visibility": "internal-only",
+            "output_archive_format": "tar.gz",
+            "source_output_list_order": "90",
+            "notes": "Generate AI-readable Markdown and JSON context from canonical project metadata. Authored by DegoDB/Mtool generator code; AI is reader/consumer only.",
+            "source_of_truth": "manual"
         }
     ]
 }

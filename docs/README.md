@@ -150,7 +150,7 @@ current supported workflow や stable rule を調べるときは、まず date-l
 ## Update Rules
 
 - 恒久文書は日付なしファイル名で更新する
-- 恒久文書は日本語本文を正本にしつつ、冒頭に英語 companion を添える
+- 恒久文書は日本語本文を正本にしつつ、冒頭に英語 companion を添えて日英併記で維持する
 - 外部ユーザ向けの top-level 恒久文書は、最終形では本文・表・重要な support boundary も日英併記で維持する
 - 既存文書が English companion + 日本語本文だけの場合は、触るタイミングで段階的に日英併記へ寄せる
 - top-level `docs/` は外部ユーザ向け導線を優先し、個別 internal doc は [Internal Documentation Index / 内部ドキュメント索引](internal/README.md) から辿る

@@ -31,7 +31,7 @@ function app_allowed_runtime_targets(): array
  */
 function app_allowed_source_output_program_languages(): array
 {
-    return ['php', 'cs', 'java', 'objectivech', 'objectivecm', 'swift', 'json'];
+    return ['php', 'cs', 'java', 'objectivech', 'objectivecm', 'swift', 'json', 'md'];
 }
 
 /**
@@ -59,7 +59,7 @@ function app_allowed_html_template_program_languages(): array
 {
     return array_values(array_filter(
         app_allowed_source_output_program_languages(),
-        static fn (string $value): bool => $value !== 'json',
+        static fn (string $value): bool => !in_array($value, ['json', 'md'], true),
     ));
 }
 
@@ -84,7 +84,7 @@ function app_allowed_html_template_parameter_data_types(): array
  */
 function app_allowed_source_output_class_types(): array
 {
-    return ['DBAccess', 'DataClass', 'OpenAPI', 'ProxyServer', 'ProxyClient', 'DBaaSProxyServer', 'DBaaSProxyClient', 'html', 'LanguageResource'];
+    return ['DBAccess', 'DataClass', 'OpenAPI', 'AIContext', 'ProxyServer', 'ProxyClient', 'DBaaSProxyServer', 'DBaaSProxyClient', 'html', 'LanguageResource'];
 }
 
 /**
@@ -105,6 +105,7 @@ function app_allowed_source_output_artifact_strategies(): array
         'canonical-dbaccess-php',
         'canonical-dataclass-php',
         'openapi-json',
+        'ai-context-md',
         'html-module-catalog',
         'legacy-directory-mirror',
         'single-proxy-server',
@@ -364,6 +365,7 @@ function app_source_output_program_language_caption(string $value): string
         'objectivecm' => 'Objective-C Implementation',
         'swift' => 'SWIFT',
         'json' => 'JSON',
+        'md' => 'Markdown',
         default => $value,
     };
 }
@@ -415,6 +417,7 @@ function app_source_output_class_type_caption(string $value): string
         'DBAccess' => 'Database Access',
         'DataClass' => 'Data Class',
         'OpenAPI' => 'OpenAPI',
+        'AIContext' => 'AI Context',
         'ProxyServer' => 'Proxy Server',
         'ProxyClient' => 'Proxy Client',
         'DBaaSProxyServer' => 'Proxy Server for DBaaS',
@@ -441,6 +444,7 @@ function app_source_output_artifact_strategy_caption(string $value): string
         'canonical-dbaccess-php' => 'Canonical DB Access PHP',
         'canonical-dataclass-php' => 'Canonical Data Class PHP',
         'openapi-json' => 'OpenAPI JSON Artifact',
+        'ai-context-md' => 'AI Context Markdown Artifact',
         'html-module-catalog' => 'HTML Module Catalog Artifact',
         'legacy-directory-mirror' => 'Legacy Directory Mirror Artifact',
         'single-proxy-server' => 'Single Function Proxy Server Artifact',
@@ -499,6 +503,7 @@ function app_source_output_artifact_strategy_supports_generation(string $value):
         'canonical-dbaccess-php',
         'canonical-dataclass-php',
         'openapi-json',
+        'ai-context-md',
         'html-module-catalog',
         'legacy-directory-mirror',
         'single-proxy-server',
@@ -515,6 +520,7 @@ function app_source_output_artifact_strategy_requires_runtime_source(string $val
         'canonical-dbaccess-php',
         'canonical-dataclass-php',
         'openapi-json',
+        'ai-context-md',
         'html-module-catalog',
         'legacy-directory-mirror',
         'single-proxy-server',

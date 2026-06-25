@@ -1629,6 +1629,15 @@ function app_project_source_output_complete_new_defaults(
             }
             break;
 
+        case 'ai-context-md':
+            if ($sourceOutputKey !== '' && $input['runtime_source_relative_path'] === '') {
+                $input['runtime_source_relative_path'] = app_project_output_ai_context_default_runtime_source_relative_path(
+                    $projectKey,
+                    $sourceOutputKey,
+                );
+            }
+            break;
+
         case 'html-module-catalog':
             if (
                 $sourceOutputKey !== ''

@@ -1,7 +1,7 @@
 # Deliverables / 成果物 catalog
 
 English companion:
-This catalog describes which artifacts can be prepared for OSS evaluation, consulting, and implementation support. It separates current deliverables from planned AI-context or modernization-audit outputs.
+This catalog describes which artifacts can be prepared for OSS evaluation, consulting, and implementation support. It separates current deliverables from planned modernization-audit outputs.
 
 日本語:
 この文書は、OSS 評価、コンサルティング、導入支援で渡せる成果物を整理する catalog です。現行機能で作れるものと、計画中のものを分けます。
@@ -25,6 +25,7 @@ The deliverable catalog turns DegoDB's technical capabilities into concrete hand
 | DataClass output | Provides current PHP-focused `DATACLASS-PHP` output. | 現行 PHP 主対象の `DATACLASS-PHP` output。 |
 | DBAccess output | Provides current PHP-focused `DBACCESS-PHP` output. | 現行 PHP 主対象の `DBACCESS-PHP` output。 |
 | OpenAPI artifact | Provides `OPENAPI-JSON`, usually through authenticated viewer or artifact download. | `OPENAPI-JSON`。通常は authenticated viewer または artifact download で共有する。 |
+| AI context package | Provides standard generated `AI-CONTEXT-MD` Markdown and JSON context from canonical metadata, verified across tutorial samples and Mtool self-output. | canonical metadata から生成した標準 `AI-CONTEXT-MD` Markdown / JSON context。tutorial sample 全体と Mtool self-output で検証済み。 |
 | HTML artifact | Provides sample-backed HTML Source Output when applicable. | applicable な場合に sample-backed HTML Source Output を渡す。 |
 | Proxy server artifact | Provides generated PHP-focused proxy runtime artifacts. | PHP 主対象の generated proxy runtime artifact。 |
 | Project metadata bundle | Exports project metadata with secret separation. | secret 分離付きで project metadata を export する。 |
@@ -35,7 +36,6 @@ The deliverable catalog turns DegoDB's technical capabilities into concrete hand
 
 | Deliverable / 成果物 | English | 日本語 |
 | --- | --- | --- |
-| AI context package | Planned until `AI-CONTEXT-MD` exists as generated output. | `AI-CONTEXT-MD` が generated output としてできるまで計画扱い。 |
 | Modernization audit report | Planned until an audit generator exists. | audit generator ができるまで計画扱い。 |
 | Non-PHP generated output | Legacy reference or future candidate, not current support. | 旧実装参照または将来候補。現行対応ではない。 |
 | SQL Server / Oracle output | Future enterprise candidate requiring a support-scope decision. | support-scope decision が必要な将来 enterprise 候補。 |

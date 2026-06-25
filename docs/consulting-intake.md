@@ -71,7 +71,7 @@ Typical first package / 最初の典型 package:
 | PostgreSQL | Opt-in user DB / generated-output lane. Not Mtool config store support / opt-in user DB / generated-output lane。Mtool config store 対応ではない。 |
 | SQL Server / Oracle | Future candidate unless separate scope is decided / 別途 scope 決定があるまで将来候補。 |
 | Non-PHP generated output | Legacy reference / future candidate / 旧実装参照または将来候補。 |
-| AI context generation | Planned, not current generated output / 計画中。現行生成 output ではない。 |
+| AI context generation | Current `AI-CONTEXT-MD` generated output from canonical metadata / canonical metadata から生成する現行 `AI-CONTEXT-MD` output。 |
 | Modernization audit generation | Planned, not current generated output / 計画中。現行生成 output ではない。 |
 | Legal / tax / billing / compliance | Domain review required / 専門領域レビューが必要。 |
 

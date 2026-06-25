@@ -335,6 +335,18 @@ function app_runtime_storage_openapi_source_outputs_relative_path(
     );
 }
 
+function app_runtime_storage_ai_context_source_outputs_relative_path(
+    string $projectKey = '',
+    string $sourceOutputKey = '',
+): string {
+    return app_runtime_storage_relative_path(
+        'mtool',
+        'ai-context-source-outputs',
+        app_normalize_project_key($projectKey),
+        app_normalize_source_output_key($sourceOutputKey),
+    );
+}
+
 function app_runtime_storage_legacy_source_outputs_relative_path(
     string $projectKey = '',
     string $sourceOutputKey = '',
@@ -644,6 +656,8 @@ function app_runtime_storage_generated_relative_prefix_map(): array
         'mtool/html-source-outputs' => app_runtime_storage_relative_path('mtool', 'html-source-outputs'),
         'runtime-sources/mtool/proxy-source-outputs' => app_runtime_storage_relative_path('mtool', 'proxy-source-outputs'),
         'mtool/proxy-source-outputs' => app_runtime_storage_relative_path('mtool', 'proxy-source-outputs'),
+        'runtime-sources/mtool/ai-context-source-outputs' => app_runtime_storage_relative_path('mtool', 'ai-context-source-outputs'),
+        'mtool/ai-context-source-outputs' => app_runtime_storage_relative_path('mtool', 'ai-context-source-outputs'),
         'runtime-sources/mtool/legacy-source-outputs' => app_runtime_storage_relative_path('mtool', 'legacy-source-outputs'),
         'mtool/legacy-source-outputs' => app_runtime_storage_relative_path('mtool', 'legacy-source-outputs'),
         'runtime-sources/mtool/dataclass-source-outputs' => app_runtime_storage_relative_path('mtool', 'dataclass-source-outputs'),
@@ -672,6 +686,7 @@ function app_runtime_storage_runtime_source_repo_relative_path(string $relativeP
     foreach ([
         app_runtime_storage_relative_path('mtool', 'html-source-outputs'),
         app_runtime_storage_relative_path('mtool', 'proxy-source-outputs'),
+        app_runtime_storage_relative_path('mtool', 'ai-context-source-outputs'),
         app_runtime_storage_relative_path('mtool', 'legacy-source-outputs'),
         app_runtime_storage_relative_path('mtool', 'dataclass-source-outputs'),
         app_runtime_storage_relative_path('mtool', 'dbaccess-source-outputs'),

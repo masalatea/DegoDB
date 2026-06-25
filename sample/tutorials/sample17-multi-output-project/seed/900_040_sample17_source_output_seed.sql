@@ -10,7 +10,8 @@ WHERE project_id = @sample17_project_id
       'DATACLASS-PHP',
       'DBACCESS-PHP',
       'HTML-PAGE',
-      'OPENAPI-JSON'
+      'OPENAPI-JSON',
+      'AI-CONTEXT-MD'
   );
 
 INSERT INTO project_source_outputs (
@@ -121,6 +122,28 @@ INSERT INTO project_source_outputs (
     40,
     'internal-only',
     'Generate OpenAPI JSON from CapstoneTask read-function target metadata.',
+    'manual'
+),
+(
+    @sample17_project_id,
+    'AI-CONTEXT-MD',
+    'Sample17 AI Context Markdown',
+    'md',
+    'AIContext',
+    'Release',
+    '',
+    'work/source-outputs/SAMPLE17/AI-CONTEXT-MD',
+    'work/staging/source-outputs/SAMPLE17/AI-CONTEXT-MD',
+    '',
+    '',
+    'UTF-8',
+    'mtool/ai-context-source-outputs/SAMPLE17/AI-CONTEXT-MD',
+    'ai-context-md',
+    'runtime',
+    'tar.gz',
+    50,
+    'disabled',
+    'Generate AI-readable Markdown and JSON context from canonical project metadata. Authored by DegoDB/Mtool generator code; AI is reader/consumer only.',
     'manual'
 )
 ON DUPLICATE KEY UPDATE

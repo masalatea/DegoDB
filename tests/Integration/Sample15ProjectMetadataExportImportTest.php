@@ -21,7 +21,7 @@ final class Sample15ProjectMetadataExportImportTest extends TestCase
         self::assertSame('SAMPLE15', (string) ($result['steps']['target_summary']['project_key'] ?? ''));
         self::assertSame(1, (int) ($result['steps']['target_summary']['table_count'] ?? 0));
         self::assertSame(1, (int) ($result['steps']['target_summary']['data_class_count'] ?? 0));
-        self::assertSame(1, (int) ($result['steps']['target_summary']['source_output_count'] ?? 0));
+        self::assertSame(2, (int) ($result['steps']['target_summary']['source_output_count'] ?? 0));
     }
 
     private function failureMessageFromResult(array $result): string

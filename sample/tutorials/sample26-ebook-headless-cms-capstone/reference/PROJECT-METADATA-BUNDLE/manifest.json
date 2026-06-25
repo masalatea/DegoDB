@@ -3,7 +3,7 @@
     "schema_version": "2026-05-26.project-core.v2",
     "scope": "project-core",
     "source_project_key": "SAMPLE26",
-    "exported_at": "2026-06-20T15:14:28+00:00",
+    "exported_at": "2026-06-25T22:29:23+00:00",
     "requested_by": "phpunit-sample26",
     "target_policy": "replace-core-scope",
     "secrets_policy": "exclude-all",
@@ -35,7 +35,7 @@
         "table_column_count": 23,
         "data_class_count": 2,
         "data_class_field_count": 23,
-        "source_output_count": 5,
+        "source_output_count": 6,
         "db_access_class_count": 1,
         "db_access_function_count": 8,
         "db_access_select_where_count": 11,
@@ -77,8 +77,8 @@
         },
         "source_outputs": {
             "path": "source-outputs.json",
-            "sha256": "056398e0a53bf8e73a1be894e3346812abae927d6c277e49416439f89ec72906",
-            "bytes": 5415
+            "sha256": "2b61679d745b00ef0df19a4d824c163412390d4ea07c42c5c2463d001155c186",
+            "bytes": 6547
         },
         "custom_proxies": {
             "path": "custom-proxies.json",

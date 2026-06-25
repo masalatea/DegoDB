@@ -16,6 +16,7 @@ const APP_SAMPLE17_MULTI_OUTPUT_KEYS = [
     'DBACCESS-PHP',
     'HTML-PAGE',
     'OPENAPI-JSON',
+    'AI-CONTEXT-MD',
 ];
 const APP_SAMPLE17_MULTI_OUTPUT_OPENAPI_PATHS = [
     '/proxyserver-CapstoneTask-GetCapstoneTaskList.php',
@@ -270,6 +271,44 @@ function app_sample17_multi_output_publish_one(
         ];
     }
 
+    $aiContextSummary = [];
+    if ($sourceOutputKey === 'AI-CONTEXT-MD') {
+        $schemaContextResult = app_sample17_multi_output_read_json_file($publishedRoot . '/schema-context.json');
+        if (!$schemaContextResult['ok']) {
+            return [
+                'ok' => false,
+                'source_output_key' => $sourceOutputKey,
+                'error' => $schemaContextResult['error'],
+            ];
+        }
+
+        $context = $schemaContextResult['payload'];
+        app_sample17_multi_output_assert_same('ai-context-md', (string) ($context['artifact_type'] ?? ''), 'ai context artifact_type', $errors);
+        app_sample17_multi_output_assert_same('DegoDB/Mtool generator code', (string) ($context['generation_rule']['author'] ?? ''), 'ai context author rule', $errors);
+        app_sample17_multi_output_assert_same('reader-consumer', (string) ($context['generation_rule']['ai_role'] ?? ''), 'ai context ai role', $errors);
+        app_sample17_multi_output_assert_same(true, (bool) ($context['generation_rule']['deterministic'] ?? false), 'ai context deterministic rule', $errors);
+        app_sample17_multi_output_assert_same('SAMPLE17', (string) ($context['project']['project_key'] ?? ''), 'ai context project key', $errors);
+        app_sample17_multi_output_assert_same(1, count($context['tables'] ?? []), 'ai context table count', $errors);
+        app_sample17_multi_output_assert_same(1, count($context['data_classes'] ?? []), 'ai context data class count', $errors);
+        app_sample17_multi_output_assert_same(1, count($context['db_access_classes'] ?? []), 'ai context dbaccess class count', $errors);
+        app_sample17_multi_output_assert_same(
+            true,
+            is_file($publishedRoot . '/tables/CapstoneTask.md'),
+            'ai context table markdown exists',
+            $errors,
+        );
+        $aiContextSummary = [
+            'tables' => array_map(
+                static fn (array $table): string => (string) ($table['name'] ?? ''),
+                is_array($context['tables'] ?? null) ? $context['tables'] : [],
+            ),
+            'files' => array_map(
+                static fn (array $file): string => (string) ($file['relative_path'] ?? ''),
+                $actualSnapshot['files'],
+            ),
+        ];
+    }
+
     return [
         'ok' => true,
         'source_output_key' => $sourceOutputKey,
@@ -280,6 +319,7 @@ function app_sample17_multi_output_publish_one(
         'actual_snapshot' => $actualSnapshot,
         'file_checks' => $fileChecks,
         'openapi' => $openApiSummary,
+        'ai_context' => $aiContextSummary,
         'error' => '',
     ];
 }

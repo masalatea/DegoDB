@@ -29,10 +29,15 @@ final class Sample17MultiOutputProjectTest extends TestCase
                 : 'sample17 multi-output verification returned ok=false',
         );
         self::assertSame([], $result['assertion_errors']);
-        self::assertCount(4, $result['steps']['outputs']);
+        self::assertCount(5, $result['steps']['outputs']);
         self::assertArrayHasKey('DATACLASS-PHP', $result['steps']['outputs']);
         self::assertArrayHasKey('DBACCESS-PHP', $result['steps']['outputs']);
         self::assertArrayHasKey('HTML-PAGE', $result['steps']['outputs']);
         self::assertArrayHasKey('OPENAPI-JSON', $result['steps']['outputs']);
+        self::assertArrayHasKey('AI-CONTEXT-MD', $result['steps']['outputs']);
+        self::assertSame(
+            ['CapstoneTask'],
+            $result['steps']['outputs']['AI-CONTEXT-MD']['ai_context']['tables'] ?? [],
+        );
     }
 }

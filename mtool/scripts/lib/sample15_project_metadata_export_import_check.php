@@ -308,7 +308,7 @@ function app_sample15_bundle_run(array $app, string $requestedBy, string $refere
 
     app_sample15_bundle_assert_same(1, $targetSummary['table_count'], 'target table_count', $errors);
     app_sample15_bundle_assert_same(1, $targetSummary['data_class_count'], 'target data_class_count', $errors);
-    app_sample15_bundle_assert_same(1, $targetSummary['source_output_count'], 'target source_output_count', $errors);
+    app_sample15_bundle_assert_same(2, $targetSummary['source_output_count'], 'target source_output_count', $errors);
 
     return [
         'ok' => $errors === [],

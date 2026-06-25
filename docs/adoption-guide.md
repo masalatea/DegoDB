@@ -51,7 +51,6 @@ DegoDB を「すべての SQL DB」「すべての出力言語」「すべての
 | --- | --- |
 | Non-PHP generated output / PHP 以外の生成 output | Legacy reference or future candidate. / 旧実装参照または将来候補。 |
 | SQL Server / Oracle | Future enterprise candidates. / 将来の enterprise 候補。 |
-| AI context generation | Planned until `AI-CONTEXT-MD` exists. / `AI-CONTEXT-MD` ができるまで計画扱い。 |
 | Modernization audit generation | Planned until an audit generator exists. / audit generator ができるまで計画扱い。 |
 | Legal / tax / billing / compliance | Domain review required. / 専門領域レビューが必要。 |
 
@@ -60,13 +59,13 @@ DegoDB を「すべての SQL DB」「すべての出力言語」「すべての
 English:
 
 ```text
-DegoDB currently focuses on PHP-oriented generated artifacts around database-backed metadata. MySQL / MariaDB are the default mainline, SQLite is supported for lightweight local configuration and representative user DB contracts, and PostgreSQL is covered as an opt-in user DB / generated-output contract lane. Older implementation references show broader language and database directions, but non-PHP outputs, SQL Server, Oracle, and AI-context generation are future compatibility tracks unless explicitly marked as current in this repository.
+DegoDB currently focuses on PHP-oriented generated artifacts and deterministic AI-context handoff around database-backed metadata. MySQL / MariaDB are the default mainline, SQLite is supported for lightweight local configuration and representative user DB contracts, and PostgreSQL is covered as an opt-in user DB / generated-output contract lane. Older implementation references show broader language and database directions, but non-PHP outputs, SQL Server, Oracle, and modernization audit generation are future compatibility tracks unless explicitly marked as current in this repository.
 ```
 
 日本語:
 
 ```text
-DegoDB は現在、データベース由来メタデータを中心にした PHP 主対象の生成成果物に注力しています。MySQL / MariaDB は主 default、SQLite は軽量 local 設定と代表的 user DB contract、PostgreSQL は user DB / generated-output 側の opt-in contract lane として扱います。旧実装参照にはより広い言語・DB 方向性が残っていますが、PHP 以外の出力、SQL Server、Oracle、AI 文脈の自動生成は、この repo で明示されるまでは将来対応候補です。
+DegoDB は現在、データベース由来メタデータを中心にした PHP 主対象の生成成果物と、決定的に生成される AI context handoff に注力しています。MySQL / MariaDB は主 default、SQLite は軽量 local 設定と代表的 user DB contract、PostgreSQL は user DB / generated-output 側の opt-in contract lane として扱います。旧実装参照にはより広い言語・DB 方向性が残っていますが、PHP 以外の出力、SQL Server、Oracle、現代化診断生成は、この repo で明示されるまでは将来対応候補です。
 ```
 
 ## First Evaluation Path / 最初の評価手順
