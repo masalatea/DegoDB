@@ -9,6 +9,7 @@
 | HTML-PAGE | html-module-catalog | mtool/html-source-outputs/SAMPLE17/HTML-PAGE | html |
 | OPENAPI-JSON | openapi-json | mtool/openapi-source-outputs/SAMPLE17/OPENAPI-JSON | OpenAPI |
 | AI-CONTEXT-MD | ai-context-md | mtool/ai-context-source-outputs/SAMPLE17/AI-CONTEXT-MD | AIContext |
+| MODERNIZATION-AUDIT-MD | modernization-audit-md | work/source-outputs/SAMPLE17/MODERNIZATION-AUDIT-MD | ModernizationAudit |
 
 ## Table To Generated Artifacts
 

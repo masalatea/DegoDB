@@ -1,0 +1,58 @@
+{
+    "schema_version": 1,
+    "artifact_type": "modernization-audit-md",
+    "generation_rule": {
+        "author": "DegoDB/Mtool generator code",
+        "ai_role": "reader-consumer",
+        "deterministic": true,
+        "unknown_policy": "mark unknown instead of inventing intent",
+        "code_change_policy": "read-only audit output; generated runtime code is not modified"
+    },
+    "project": {
+        "project_key": "SAMPLE17",
+        "name": "Sample 17 Multi Output Project",
+        "slug": "sample17-multi-output-project",
+        "lifecycle_status": "paused",
+        "owner_login_id": "admin",
+        "member_count": 1,
+        "description": "同じ project から DataClass、DBAccess、HTML、OpenAPI の複数 Source Output を publish する tutorial capstone。"
+    },
+    "source_output": {
+        "source_output_key": "MODERNIZATION-AUDIT-MD",
+        "name": "Sample17 Modernization Audit Markdown",
+        "artifact_strategy": "modernization-audit-md",
+        "runtime_source_relative_path": "work/source-outputs/SAMPLE17/MODERNIZATION-AUDIT-MD"
+    },
+    "summary": {
+        "tables": 1,
+        "data_classes": 1,
+        "db_access_classes": 1,
+        "relationships": 0,
+        "source_outputs": 6,
+        "risk_summary": {
+            "high": 0,
+            "medium": 1,
+            "low": 0
+        }
+    },
+    "table_audits": [
+        {
+            "table": "CapstoneTask",
+            "physical_name": "CapstoneTask",
+            "column_count": 7,
+            "primary_key_columns": [
+                "Id"
+            ],
+            "nullable_column_count": 1,
+            "relationship_count": 0,
+            "dbaccess_function_count": 2,
+            "risk_level": "medium",
+            "signals": [
+                "no-relationship-metadata"
+            ]
+        }
+    ],
+    "recommended_review_order": [
+        "CapstoneTask"
+    ]
+}

@@ -55,20 +55,20 @@ Database support must name the layer. / DB 対応は、必ず layer を指定し
 | Proxy client | Not a current refactored primary output. / 現行リファクタ版の主出力ではない。 | Legacy templates include PHP, C#, Java, Objective-C, Swift proxy clients. | Mention only as legacy reference or future candidate. |
 | OpenAPI | Current generated artifact. / 現行生成成果物。 | Not the old center of gravity. | Safe to describe as current. |
 | AI context | Current generated `AI-CONTEXT-MD` artifact from canonical metadata. / canonical metadata から生成する現行 `AI-CONTEXT-MD` 成果物。 | Not a legacy feature. | Describe as deterministic generated context for AI / developer handoff, not AI-authored prose. |
+| Modernization audit | Current deterministic read-only `MODERNIZATION-AUDIT-MD` artifact from canonical metadata, verified by `sample17`. / canonical metadata から生成する現行の決定的・読み取り専用 `MODERNIZATION-AUDIT-MD` 成果物。`sample17` で検証済み。 | Not a legacy feature. | Describe as generated diagnostic output; it does not modify runtime code or schema. |
 | HTML artifact | Current tutorial / sample output exists. / 現行 tutorial / sample 出力がある。 | Legacy HTML output existed. | Keep scope tied to current samples. |
 | Project metadata bundle | Current export / preview / apply support. / 現行の export / preview / apply 対応。 | Not a legacy claim. | Safe to describe as current. |
-| Modernization audit | Not current generated output. / 現行生成出力ではない。 | Not a legacy feature. | Treat as plan only until an audit generator exists. |
 
 ## Safe Public Message / 安全な説明文
 
 Use this wording when a short support statement is needed. / 短い対応範囲説明が必要な時は、この文を使います。
 
 ```text
-DegoDB currently focuses on PHP-oriented generated artifacts and deterministic AI-context handoff around database-backed metadata. MySQL / MariaDB are the default mainline, SQLite is supported for lightweight local configuration and representative user DB contracts, and PostgreSQL is covered as an opt-in user DB / generated-output contract lane. Older implementation references show broader language and database directions, but non-PHP outputs, SQL Server, Oracle, and modernization audit generation are future compatibility tracks unless explicitly marked as current in this repository.
+DegoDB currently focuses on PHP-oriented generated artifacts, deterministic AI-context handoff, and read-only modernization audit output around database-backed metadata. MySQL / MariaDB are the default mainline, SQLite is supported for lightweight local configuration and representative user DB contracts, and PostgreSQL is covered as an opt-in user DB / generated-output contract lane. Older implementation references show broader language and database directions, but non-PHP outputs, SQL Server, and Oracle are future compatibility tracks unless explicitly marked as current in this repository.
 ```
 
 ```text
-DegoDB は現在、データベース由来メタデータを中心にした PHP 主対象の生成成果物と、決定的に生成される AI context handoff に注力しています。MySQL / MariaDB は主 default、SQLite は軽量 local 設定と代表的 user DB contract、PostgreSQL は user DB / generated-output 側の opt-in contract lane として扱います。旧実装参照にはより広い言語・DB 方向性が残っていますが、PHP 以外の出力、SQL Server、Oracle、現代化診断生成は、この repo で明示されるまでは将来対応候補です。
+DegoDB は現在、データベース由来メタデータを中心にした PHP 主対象の生成成果物、決定的に生成される AI context handoff、読み取り専用の現代化診断 output に注力しています。MySQL / MariaDB は主 default、SQLite は軽量 local 設定と代表的 user DB contract、PostgreSQL は user DB / generated-output 側の opt-in contract lane として扱います。旧実装参照にはより広い言語・DB 方向性が残っていますが、PHP 以外の出力、SQL Server、Oracle は、この repo で明示されるまでは将来対応候補です。
 ```
 
 ## What Not To Say / 言わないこと

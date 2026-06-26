@@ -408,6 +408,27 @@
             "source_output_list_order": "50",
             "notes": "Generate AI-readable Markdown and JSON context from canonical project metadata. Authored by DegoDB/Mtool generator code; AI is reader/consumer only.",
             "source_of_truth": "manual"
+        },
+        {
+            "source_output_key": "MODERNIZATION-AUDIT-MD",
+            "name": "Sample17 Modernization Audit Markdown",
+            "program_language": "md",
+            "class_type": "ModernizationAudit",
+            "release_target_type": "Release",
+            "source_template_dir": "",
+            "source_output_dir": "work/source-outputs/SAMPLE17/MODERNIZATION-AUDIT-MD",
+            "source_temp_output_dir": "work/staging/source-outputs/SAMPLE17/MODERNIZATION-AUDIT-MD",
+            "proxy_base_url": "",
+            "autoload_filename_suffix": "",
+            "source_text_char_code": "UTF-8",
+            "runtime_source_relative_path": "work/source-outputs/SAMPLE17/MODERNIZATION-AUDIT-MD",
+            "artifact_strategy": "modernization-audit-md",
+            "target_binding_type": "runtime",
+            "spec_visibility": "disabled",
+            "output_archive_format": "tar.gz",
+            "source_output_list_order": "60",
+            "notes": "Generate deterministic read-only modernization audit Markdown and JSON from canonical project metadata. Generated runtime code is not modified.",
+            "source_of_truth": "manual"
         }
     ]
 }

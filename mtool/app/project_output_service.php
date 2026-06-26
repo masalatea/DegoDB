@@ -52,7 +52,11 @@ function app_project_output_customization_model(string $artifactStrategy = ''): 
     return match ($artifactStrategy) {
         'canonical-dbaccess-php' => 'generated-wrapper-base-tree',
         'canonical-dataclass-php' => 'generated-wrapper-base-tree',
-        'openapi-json', 'html-module-catalog', 'legacy-directory-mirror', 'ai-context-md' => 'mirrored-source-with-companion-notes',
+        'openapi-json',
+        'html-module-catalog',
+        'legacy-directory-mirror',
+        'ai-context-md',
+        'modernization-audit-md' => 'mirrored-source-with-companion-notes',
         default => 'base-custom-wrapper-layer',
     };
 }
@@ -98,6 +102,9 @@ function app_project_output_custom_layer_entrypoints(array $definition): array
             'README.md',
         ],
         'ai-context-md' => [
+            'README.md',
+        ],
+        'modernization-audit-md' => [
             'README.md',
         ],
         'html-module-catalog' => [
@@ -155,6 +162,7 @@ function app_project_output_custom_layer_scaffold_relative_paths(array $definiti
         'canonical-dataclass-php',
         'openapi-json',
         'ai-context-md',
+        'modernization-audit-md',
         'html-module-catalog',
         'legacy-directory-mirror' => ['README.md'],
         'single-proxy-client', 'custom-proxy-client' => ['README.md', 'ClientExtensions.cs'],
@@ -1642,6 +1650,31 @@ Artifact generation convention:
 TEXT;
     }
 
+    if ($definition['artifact_strategy'] === 'modernization-audit-md') {
+        return <<<TEXT
+# Companion Notes
+
+This directory is an optional companion area for source output `{$normalizedProjectKey}/{$normalizedSourceOutputKey}`.
+
+- Generated modernization audit files are published under `{$runtimeSourceRelativePath}`.
+- `{$runtimeSourceRelativePath}/README.md` explains the generated diagnostic package.
+- `{$runtimeSourceRelativePath}/modernization-audit.md` is the deterministic human-readable audit.
+- `{$runtimeSourceRelativePath}/audit-summary.json` is the machine-readable audit companion.
+- This output is read-only and does not modify generated runtime code.
+- current raw output is disposable; durable review notes belong in docs or sample references.
+
+Companion files:
+
+{$entrypointSource}
+
+Artifact generation convention:
+
+- Workspace path: `{$customLayerRelativePath}`
+- If that workspace path exists, its files are bundled as companion notes.
+- If it does not exist yet, this scaffold `README.md` is bundled instead.
+TEXT;
+    }
+
     if (
         app_project_output_html_module_strategy_is_supported($definition['artifact_strategy'])
         || $definition['artifact_strategy'] === 'legacy-directory-mirror'
@@ -2041,6 +2074,19 @@ function app_project_output_create_from_definition(
         $runtimeSourceRelativePath = $aiContextTreeResult['runtime_source_relative_path'];
         $runtimeSourceRoot = $aiContextTreeResult['runtime_source_root'];
         $scanResult = $aiContextTreeResult['scan_result'];
+    } elseif (app_project_output_modernization_audit_strategy_is_supported($definition['artifact_strategy'])) {
+        $auditTreeResult = app_project_output_prepare_modernization_audit_source_tree($app, $normalizedProjectKey, $definition);
+        if (!$auditTreeResult['ok'] || !is_array($auditTreeResult['scan_result'])) {
+            return [
+                'ok' => false,
+                'artifact' => null,
+                'error' => $auditTreeResult['error'],
+            ];
+        }
+
+        $runtimeSourceRelativePath = $auditTreeResult['runtime_source_relative_path'];
+        $runtimeSourceRoot = $auditTreeResult['runtime_source_root'];
+        $scanResult = $auditTreeResult['scan_result'];
     } elseif (app_project_output_db_access_strategy_is_supported($definition['artifact_strategy'])) {
         $dbAccessTreeResult = app_project_output_prepare_db_access_source_tree(
             $app,

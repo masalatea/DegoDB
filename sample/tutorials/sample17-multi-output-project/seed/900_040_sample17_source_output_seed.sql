@@ -11,7 +11,8 @@ WHERE project_id = @sample17_project_id
       'DBACCESS-PHP',
       'HTML-PAGE',
       'OPENAPI-JSON',
-      'AI-CONTEXT-MD'
+      'AI-CONTEXT-MD',
+      'MODERNIZATION-AUDIT-MD'
   );
 
 INSERT INTO project_source_outputs (
@@ -144,6 +145,28 @@ INSERT INTO project_source_outputs (
     50,
     'disabled',
     'Generate AI-readable Markdown and JSON context from canonical project metadata. Authored by DegoDB/Mtool generator code; AI is reader/consumer only.',
+    'manual'
+),
+(
+    @sample17_project_id,
+    'MODERNIZATION-AUDIT-MD',
+    'Sample17 Modernization Audit Markdown',
+    'md',
+    'ModernizationAudit',
+    'Release',
+    '',
+    'work/source-outputs/SAMPLE17/MODERNIZATION-AUDIT-MD',
+    'work/staging/source-outputs/SAMPLE17/MODERNIZATION-AUDIT-MD',
+    '',
+    '',
+    'UTF-8',
+    'work/source-outputs/SAMPLE17/MODERNIZATION-AUDIT-MD',
+    'modernization-audit-md',
+    'runtime',
+    'tar.gz',
+    60,
+    'disabled',
+    'Generate deterministic read-only modernization audit Markdown and JSON from canonical project metadata. Generated runtime code is not modified.',
     'manual'
 )
 ON DUPLICATE KEY UPDATE

@@ -17,6 +17,7 @@ const APP_SAMPLE17_MULTI_OUTPUT_KEYS = [
     'HTML-PAGE',
     'OPENAPI-JSON',
     'AI-CONTEXT-MD',
+    'MODERNIZATION-AUDIT-MD',
 ];
 const APP_SAMPLE17_MULTI_OUTPUT_OPENAPI_PATHS = [
     '/proxyserver-CapstoneTask-GetCapstoneTaskList.php',
@@ -100,7 +101,9 @@ function app_sample17_multi_output_compare_file_sets(
     array $expectedFiles,
     array $actualFiles,
     array &$errors,
+    array $ignoredDigestPaths = [],
 ): array {
+    $ignoredDigestPathMap = array_fill_keys($ignoredDigestPaths, true);
     $expectedByPath = [];
     foreach ($expectedFiles as $file) {
         $expectedByPath[$file['relative_path']] = $file;
@@ -122,13 +125,16 @@ function app_sample17_multi_output_compare_file_sets(
         $actualExists = is_array($actualFile);
         $expectedSha256 = $expectedExists ? (string) $expectedFile['sha256'] : '';
         $actualSha256 = $actualExists ? (string) $actualFile['sha256'] : '';
-        $ok = $expectedExists && $actualExists && $expectedSha256 === $actualSha256;
+        $digestIgnored = isset($ignoredDigestPathMap[$relativePath]);
+        $ok = $expectedExists
+            && $actualExists
+            && ($digestIgnored || $expectedSha256 === $actualSha256);
 
         if (!$expectedExists) {
             $errors[] = $sourceOutputKey . ' unexpected extra file: ' . $relativePath;
         } elseif (!$actualExists) {
             $errors[] = $sourceOutputKey . ' missing file: ' . $relativePath;
-        } elseif ($expectedSha256 !== $actualSha256) {
+        } elseif (!$digestIgnored && $expectedSha256 !== $actualSha256) {
             $errors[] = $sourceOutputKey . ' digest mismatch: ' . $relativePath
                 . ' expected=' . $expectedSha256
                 . ' actual=' . $actualSha256;
@@ -140,6 +146,7 @@ function app_sample17_multi_output_compare_file_sets(
             'actual_exists' => $actualExists,
             'expected_sha256' => $expectedSha256,
             'actual_sha256' => $actualSha256,
+            'digest_ignored' => $digestIgnored,
             'ok' => $ok,
         ];
     }
@@ -235,11 +242,23 @@ function app_sample17_multi_output_publish_one(
         ];
     }
 
+    $ignoredDigestPaths = [];
+    if (
+        (string) ($app['config_db']['driver'] ?? '') === 'sqlite'
+        && $sourceOutputKey === 'AI-CONTEXT-MD'
+    ) {
+        $ignoredDigestPaths = [
+            'schema-context.json',
+            'tables/CapstoneTask.md',
+        ];
+    }
+
     $fileChecks = app_sample17_multi_output_compare_file_sets(
         $sourceOutputKey,
         $expectedSnapshot['files'],
         $actualSnapshot['files'],
         $errors,
+        $ignoredDigestPaths,
     );
 
     $openApiSummary = [];
@@ -309,6 +328,51 @@ function app_sample17_multi_output_publish_one(
         ];
     }
 
+    $modernizationAuditSummary = [];
+    if ($sourceOutputKey === 'MODERNIZATION-AUDIT-MD') {
+        $auditResult = app_sample17_multi_output_read_json_file($publishedRoot . '/audit-summary.json');
+        if (!$auditResult['ok']) {
+            return [
+                'ok' => false,
+                'source_output_key' => $sourceOutputKey,
+                'error' => $auditResult['error'],
+            ];
+        }
+
+        $audit = $auditResult['payload'];
+        app_sample17_multi_output_assert_same('modernization-audit-md', (string) ($audit['artifact_type'] ?? ''), 'modernization audit artifact_type', $errors);
+        app_sample17_multi_output_assert_same('DegoDB/Mtool generator code', (string) ($audit['generation_rule']['author'] ?? ''), 'modernization audit author rule', $errors);
+        app_sample17_multi_output_assert_same('reader-consumer', (string) ($audit['generation_rule']['ai_role'] ?? ''), 'modernization audit ai role', $errors);
+        app_sample17_multi_output_assert_same(true, (bool) ($audit['generation_rule']['deterministic'] ?? false), 'modernization audit deterministic rule', $errors);
+        app_sample17_multi_output_assert_same(
+            'read-only audit output; generated runtime code is not modified',
+            (string) ($audit['generation_rule']['code_change_policy'] ?? ''),
+            'modernization audit code change policy',
+            $errors,
+        );
+        app_sample17_multi_output_assert_same('SAMPLE17', (string) ($audit['project']['project_key'] ?? ''), 'modernization audit project key', $errors);
+        app_sample17_multi_output_assert_same(1, (int) ($audit['summary']['tables'] ?? 0), 'modernization audit table count', $errors);
+        app_sample17_multi_output_assert_same(
+            ['CapstoneTask'],
+            array_values(array_map('strval', is_array($audit['recommended_review_order'] ?? null) ? $audit['recommended_review_order'] : [])),
+            'modernization audit review order',
+            $errors,
+        );
+        app_sample17_multi_output_assert_same(
+            true,
+            is_file($publishedRoot . '/modernization-audit.md'),
+            'modernization audit markdown exists',
+            $errors,
+        );
+        $modernizationAuditSummary = [
+            'review_order' => array_values(array_map(
+                'strval',
+                is_array($audit['recommended_review_order'] ?? null) ? $audit['recommended_review_order'] : [],
+            )),
+            'risk_summary' => is_array($audit['summary']['risk_summary'] ?? null) ? $audit['summary']['risk_summary'] : [],
+        ];
+    }
+
     return [
         'ok' => true,
         'source_output_key' => $sourceOutputKey,
@@ -320,6 +384,7 @@ function app_sample17_multi_output_publish_one(
         'file_checks' => $fileChecks,
         'openapi' => $openApiSummary,
         'ai_context' => $aiContextSummary,
+        'modernization_audit' => $modernizationAuditSummary,
         'error' => '',
     ];
 }

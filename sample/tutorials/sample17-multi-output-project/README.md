@@ -5,7 +5,7 @@ This tutorial pack is the final capstone of the current tutorial lane. It keeps 
 
 - project key: `SAMPLE17`
 - runtime root: `work/sample-packs/sample17-multi-output-project/`
-- reference outputs: `DATACLASS-PHP`, `DBACCESS-PHP`, `HTML-PAGE`, `OPENAPI-JSON`, `AI-CONTEXT-MD`
+- reference outputs: `DATACLASS-PHP`, `DBACCESS-PHP`, `HTML-PAGE`, `OPENAPI-JSON`, `AI-CONTEXT-MD`, `MODERNIZATION-AUDIT-MD`
 
 `sample11` から `sample16` は Source Output の種類や auth 境界を個別に確認します。`sample17` はそれらを 1 project にまとめ、同じ canonical metadata から複数 artifact を publish する capstone です。
 
@@ -19,7 +19,7 @@ Quickstart と `sample01` から `sample10` を終えた後は、まず次だけ
 make sample17-pack-runtime-test
 ```
 
-この test は import / sync 後に `DATACLASS-PHP`、`DBACCESS-PHP`、`HTML-PAGE`、`OPENAPI-JSON`、`AI-CONTEXT-MD` の 5 output を publish し、actual reference と比較します。manual flow は、この 5 output publish を 1 command ずつ分解して追うための optional path です。
+この test は import / sync 後に `DATACLASS-PHP`、`DBACCESS-PHP`、`HTML-PAGE`、`OPENAPI-JSON`、`AI-CONTEXT-MD`、`MODERNIZATION-AUDIT-MD` の 6 output を publish し、actual reference と比較します。manual flow は、この 6 output publish を 1 command ずつ分解して追うための optional path です。
 
 ## 起動
 
@@ -62,6 +62,7 @@ make sample17-pack-runtime-test-sqlite
   - `HTML-PAGE`
   - `OPENAPI-JSON`
   - `AI-CONTEXT-MD`
+  - `MODERNIZATION-AUDIT-MD`
 - HTML module source:
   - `mtool/reference/html-modules/sample17/HTML-PAGE/current/`
 
@@ -88,6 +89,9 @@ docker compose -f compose.yaml -f compose.local-db-config.yaml -f sample/tutoria
 
 docker compose -f compose.yaml -f compose.local-db-config.yaml -f sample/tutorials/sample17-multi-output-project/compose.yaml exec -T web-admin \
   php /var/www/mtool/scripts/create_project_output.php --project-key=SAMPLE17 --source-output-key=AI-CONTEXT-MD --requested-by=sample17-manual --publish
+
+docker compose -f compose.yaml -f compose.local-db-config.yaml -f sample/tutorials/sample17-multi-output-project/compose.yaml exec -T web-admin \
+  php /var/www/mtool/scripts/create_project_output.php --project-key=SAMPLE17 --source-output-key=MODERNIZATION-AUDIT-MD --requested-by=sample17-manual --publish
 ```
 
 ## Scope
