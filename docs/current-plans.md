@@ -13,10 +13,9 @@ When someone asks for "the plan list", answer from this section first. / 「計�
 
 | Order | Work unit / 作業の塊 | Commit unit / コミット単位 | Status |
 | --- | --- | --- | --- |
-| 1 | Goal-based help and wrapper CLI roadmap / 目的別 help と wrapper CLI roadmap | `Document goal-based help and wrapper CLI roadmap` | `ACTIVE_NEXT` |
-| 2 | Generated name migration follow-up / generated name migration 後続 | `Continue generated name migration pipeline` | `LATER` |
-| 3 | PostgreSQL follow-up / PostgreSQL 後続 | Conditional contract/runbook or compose-profile commit / 条件付き contract・runbook・compose profile commit | `CONDITIONAL` |
-| 4 | Namespace migration / namespace migration | Separate cleanup commit after docs/examples settle / docs/examples が落ち着いた後の cleanup commit | `LATER` |
+| 1 | Generated name migration follow-up / generated name migration 後続 | `Continue generated name migration pipeline` | `ACTIVE_NEXT` |
+| 2 | PostgreSQL follow-up / PostgreSQL 後続 | Conditional contract/runbook or compose-profile commit / 条件付き contract・runbook・compose profile commit | `CONDITIONAL` |
+| 3 | Namespace migration / namespace migration | Separate cleanup commit after docs/examples settle / docs/examples が落ち着いた後の cleanup commit | `LATER` |
 
 ## Priority Rationale / 優先理由
 
@@ -24,7 +23,7 @@ The OSS / consulting readiness docs package has been completed as the documentat
 
 AI context source output is implemented, verified across all tutorial samples, and available as an implicit default companion documentation output for current/new projects. Mtool self-output verification publishes AI context documentation for Mtool itself. / AI 文脈 Source Output は全 tutorial sample に展開済みで、現在・新規 project へ暗黙 default companion documentation output として提供します。Mtool 自身についても AI 文脈ドキュメントを self-output して検証しています。
 
-The next active planning lane is goal-based help and wrapper CLI roadmap documentation. / 次の active planning lane は、目的別 help と wrapper CLI roadmap 文書化です。
+The next active implementation lane is generated name migration follow-up. / 次の active implementation lane は、generated name migration 後続です。
 
 ## Rough Effort Notes / 作業量メモ
 
@@ -36,7 +35,7 @@ These are planning estimates, not deadlines. / これは計画用の目安であ
 | 2 | AI context default-output transition / AI 文脈出力の default 化 | Completed / 完了 | `AI-CONTEXT-MD` remains the compatibility key, and missing project rows are supplied as an implicit default companion documentation output. |
 | 3 | Mtool self-output verification / Mtool 自身の self-output 検証 | Completed / 完了 | Mtool outputs AI context documentation for Mtool itself; the generated documentation is reviewed by test contract as AI-reader context. |
 | 4 | Modernization audit MVP generator / 現代化診断 MVP generator | Completed / 完了 | Added deterministic `modernization-audit-md` generation and sample17 `MODERNIZATION-AUDIT-MD` reference coverage. |
-| 5 | Goal-based help and wrapper CLI roadmap / 目的別 help と wrapper CLI roadmap | 30-60 min | Design doc first: goal-based help groups and wrapper CLI command roadmap. |
+| 5 | Goal-based help and wrapper CLI roadmap / 目的別 help と wrapper CLI roadmap | Completed / 完了 | Added `goal-based-help-and-wrapper-cli-roadmap.md` as the design doc for goal help groups and future wrapper CLI command shape. |
 | 6 | Generated name migration follow-up / generated name migration 後続 | 60-120 min for next representative after-snapshot slice; half-day+ if sample-wide migration starts / 次の代表 after snapshot なら 60-120 分。sample 全体移行なら半日以上 | Generate corresponding `after` snapshots with new naming rules, then compare with an explicit keyword map. Do not hand-patch generated artifacts. |
 | 7 | PostgreSQL follow-up / PostgreSQL 後続 | 30-90 min for runbook/compose-profile decision; half-day+ for new behavior coverage / runbook・compose profile 判断は 30-90 分。新しい挙動 coverage は半日以上 | Add only when a new DBAccess behavior surface or local PostgreSQL runbook need is explicit. Do not treat this as Mtool config store PostgreSQL support. |
 | 8 | Namespace migration / namespace migration | 30-90 min for first mechanical cleanup; half-day+ if runtime/autoload/tests broaden / 最初の機械的 cleanup は 30-90 分。runtime / autoload / tests まで広げるなら半日以上 | Start by classifying `rg` results and keep docs/comment/generated-reference wording separate from runtime class or autoload changes. |
@@ -105,6 +104,7 @@ Completed work was moved out of this active list. / 完了済み作業は、こ�
 | --- | --- |
 | AI context source output rollout, default-output transition, and self-output / AI 文脈 Source Output 展開・default 化・self-output | `AI-CONTEXT-MD` generator, all tutorial sample seed definitions, implicit default companion output for current/new projects, `sample17-multi-output-project` reference output, Mtool self-output verification, [Proof Matrix](proof-matrix.md). |
 | Modernization audit MVP generator / 現代化診断 MVP generator | `modernization-audit-md` deterministic read-only audit generator, `sample17-multi-output-project` `MODERNIZATION-AUDIT-MD` seed/reference output, `Sample17MultiOutputProjectTest` coverage. |
+| Goal-based help and wrapper CLI roadmap / 目的別 help と wrapper CLI roadmap | [Goal-Based Help And Wrapper CLI Roadmap](goal-based-help-and-wrapper-cli-roadmap.md) defining goal help groups, current command mapping, wrapper CLI command shape, and phased implementation order. |
 | OSS / consulting readiness docs package | [Adoption Guide](adoption-guide.md), [Consulting Intake](consulting-intake.md), [Deliverables](deliverables.md), [Proof Matrix](proof-matrix.md), [Security And Data Handling](security-and-data-handling.md), [2026-0621 OSS / consulting readiness inventory](reports/2026/2026-0621-oss-consulting-readiness-inventory.md) |
 | OSS / consulting readiness inventory | [2026-0621 OSS / consulting readiness inventory](reports/2026/2026-0621-oss-consulting-readiness-inventory.md) |
 | Documentation foundation, curated legacy references, Laravel baseline, PostgreSQL input/backing, SQLite input/backing | [2026-0621 plan inventory](reports/2026/2026-0621-plan-inventory.md) |

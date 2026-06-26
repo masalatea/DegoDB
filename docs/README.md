@@ -23,6 +23,7 @@ top-level は外部ユーザ向け導線を優先し、内部向け文書は [In
    - [Deliverables / 成果物 catalog](deliverables.md)
    - [Proof Matrix / 根拠 matrix](proof-matrix.md)
    - [Common Tasks / よく使う作業](common-tasks.md)
+   - [Goal-Based Help And Wrapper CLI Roadmap / 目的別 help と wrapper CLI roadmap](goal-based-help-and-wrapper-cli-roadmap.md)
    - [Current Supported Workflow / 現在サポートするワークフロー](current-supported-workflow.md)
    - [Troubleshooting / トラブルシューティング](troubleshooting.md)
 3. detail layer
@@ -69,6 +70,8 @@ detail doc だけを読んで mainline を再構成するのは current reading 
   - 初期構想に含まれる optional pre-design entrance。JSON file / JSON API cache / JSON config から AI-readable な DB design draft を作り、DB-first mainline へ入る。runtime / generator 機能ではない
 - [Common Tasks / よく使う作業](common-tasks.md)
   - 起動、sample、test、bundle、config DB backup / durable env、runtime reference 確認の最短手順
+- [Goal-Based Help And Wrapper CLI Roadmap / 目的別 help と wrapper CLI roadmap](goal-based-help-and-wrapper-cli-roadmap.md)
+  - 目的別 help group と将来 wrapper CLI の command model を整理する文書
 - [Current Supported Workflow / 現在サポートするワークフロー](current-supported-workflow.md)
   - current mainline と archived helper の境界
 - [Storage And State Model / 保存先と状態モデル](storage-and-state-model.md)
@@ -114,6 +117,8 @@ detail doc だけを読んで mainline を再構成するのは current reading 
   - current mainline と archived 導線の切り分け
 - [Common Tasks / よく使う作業](common-tasks.md)
   - 起動、sample、test、config DB backup / durable env、runtime reference 操作の最短手順
+- [Goal-Based Help And Wrapper CLI Roadmap / 目的別 help と wrapper CLI roadmap](goal-based-help-and-wrapper-cli-roadmap.md)
+  - `make` target、sample script、PHP script の上に置く目的別 help / wrapper CLI 構想
 - [Troubleshooting / トラブルシューティング](troubleshooting.md)
   - current supported lane で踏みやすい warning / error の切り分け
 - [Glossary / 用語集](glossary.md)
