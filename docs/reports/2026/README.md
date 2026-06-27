@@ -11,6 +11,8 @@
 
 ## Index
 
+- `2026-0627-postgresql-user-db-lane-completion.md`
+  - PostgreSQL Input / Output support を、再利用可能な local compose-backed completion gate と runbook まで含めて閉じた記録。Input は sample12 live schema import、Output は sample10 MySQL/PostgreSQL generated DBAccess contract compare で確認する。Mtool config store PostgreSQL support は scope 外。Status: `POSTGRESQL_INPUT_OUTPUT_SUPPORT_COMPLETED`。
 - `2026-0627-generated-physical-logical-sample-naming-plan.md`
   - generated name migration の次 slice として、tracked tutorial samples の mixed-case physical DB/source names を snake_case physical names へ移行し、generated PHP/OpenAPI/proxy surface を `physical-logical-v1` で安定させた記録。`sample14` custom proxy boundary と sample-wide regression guards まで含む。Status: `TRACKED_AND_CUSTOM_PROXY_SAMPLE_NAMING_MIGRATION_COMPLETED`。
 - `2026-0626-generated-name-migration-sample-follow-up.md`

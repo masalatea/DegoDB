@@ -182,6 +182,19 @@ if [ -n "${MTOOL_GENERATED_NAME_POLICY:-}" ]; then
   phpunit_exec_env+=(-e "MTOOL_GENERATED_NAME_POLICY=$MTOOL_GENERATED_NAME_POLICY")
 fi
 
+for passthrough_env_name in \
+  MTOOL_RUNTIME_PGSQL_DSN \
+  MTOOL_RUNTIME_PGSQL_HOST \
+  MTOOL_RUNTIME_PGSQL_PORT \
+  MTOOL_RUNTIME_PGSQL_DB \
+  MTOOL_RUNTIME_PGSQL_USER \
+  MTOOL_RUNTIME_PGSQL_PASSWORD
+do
+  if [ -n "${!passthrough_env_name:-}" ]; then
+    phpunit_exec_env+=(-e "$passthrough_env_name=${!passthrough_env_name}")
+  fi
+done
+
 if [ "${#phpunit_exec_env[@]}" -gt 0 ]; then
   "${compose_cmd[@]}" exec -T "${phpunit_exec_env[@]}" web-admin phpunit --configuration /var/www/tests/phpunit.xml "$phpunit_target"
 else

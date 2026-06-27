@@ -29,7 +29,7 @@ Do not claim that every database, every output language, or every legacy feature
 | --- | --- |
 | MySQL / MariaDB | Main default for Mtool config store and generated-output workflows. / Mtool config store と生成出力 workflow の主 default。 |
 | SQLite | Supported for lightweight Mtool config store profile and representative generated user DB contract coverage. / 軽量 Mtool config store profile と代表的な生成 user DB contract coverage で対応。 |
-| PostgreSQL | Supported as opt-in user DB / generated output contract lane. Not Mtool config store support. / user DB / generated output 側の opt-in contract lane として対応。Mtool config store 対応ではない。 |
+| PostgreSQL | Supported for opt-in input and output: live schema import for input, generated DBAccess contract comparison for output, with a local compose-backed completion gate. Not Mtool config store support. / opt-in の Input・Output として対応。Input は live schema import、Output は generated DBAccess contract comparison で確認し、local compose-backed completion gate を持つ。Mtool config store 対応ではない。 |
 | SQL Server | Legacy metadata hooks existed, but current support is not claimed. / 旧実装には metadata 導線があったが、現行対応とは書かない。 |
 | Oracle | Future enterprise compatibility candidate only. / 将来の enterprise compatibility 候補に留める。 |
 

@@ -5,6 +5,7 @@ COMPOSE_BASE := $(COMPOSE) -f compose.yaml
 COMPOSE_LOCAL := $(COMPOSE_BASE) -f compose.local-db-config.yaml
 COMPOSE_MTOOL := $(COMPOSE_LOCAL) -f mtool/docker/compose/01_mtool.compose.yaml
 COMPOSE_MTOOL_LITE := $(COMPOSE_BASE) -f mtool/docker/compose/01_mtool-lite.compose.yaml
+COMPOSE_USER_DB_PGSQL := $(COMPOSE) -f compose.user-db-pgsql.yaml
 DURABLE_ENV_FILE ?= .env.durable
 COMPOSE_DURABLE := $(COMPOSE) --env-file $(DURABLE_ENV_FILE) -f compose.yaml
 CONFIG_DB_BACKUP_DIR ?= work/backups/config-db
@@ -12,6 +13,11 @@ CONFIG_DB_BACKUP_KEEP_DAYS ?= 7
 CONFIG_DB_BACKUP_KEEP_COUNT ?= 7
 GENERATED_NAME_MIGRATION_RUN_ID ?= current
 GENERATED_NAME_MIGRATION_KEYWORD_MAP ?=
+USER_DB_PGSQL_HOST_PORT ?= 15432
+USER_DB_PGSQL_CONTAINER_HOST ?= host.docker.internal
+USER_DB_PGSQL_DB ?= lab_app
+USER_DB_PGSQL_USER ?= lab_app
+USER_DB_PGSQL_PASSWORD ?= lab_app_password
 
 .DEFAULT_GOAL := help
 
@@ -144,7 +150,7 @@ ROOT_TMP_DIR := tmp
 .PHONY: backup-config-db backup-config-db-rotate restore-config-db backup-config-db-mtool backup-config-db-mtool-rotate restore-config-db-mtool backup-config-db-sqlite backup-config-db-sqlite-rotate restore-config-db-sqlite backup-config-db-mtool-lite backup-config-db-mtool-lite-rotate restore-config-db-mtool-lite up-durable-config-db ps-durable-config-db logs-durable-config-db health-durable-config-db config-db-preflight-durable-config-db db-config-migrate-durable-config-db down-durable-config-db
 .PHONY: sample01-pack-runtime-test-sqlite sample1-output-test-sqlite sample1-output-check-sqlite sample02-pack-runtime-test-sqlite sample2-output-test-sqlite sample2-output-check-sqlite sample03-pack-runtime-test-sqlite sample3-output-test-sqlite sample3-output-check-sqlite sample04-pack-runtime-test-sqlite sample4-output-test-sqlite sample4-output-check-sqlite sample05-pack-runtime-test-sqlite sample5-output-test-sqlite sample5-output-check-sqlite sample06-pack-runtime-test-sqlite sample6-output-test-sqlite sample6-output-check-sqlite sample07-pack-runtime-test-sqlite sample7-output-test-sqlite sample7-output-check-sqlite sample08-pack-runtime-test-sqlite sample8-output-test-sqlite sample8-output-check-sqlite sample09-pack-runtime-test-sqlite sample09-runtime-output-test-sqlite sample10-pack-runtime-test-sqlite sample10-runtime-output-test-sqlite sample11-pack-runtime-test-sqlite sample11-runtime-output-test-sqlite sample12-pack-runtime-test-sqlite sample12-runtime-output-test-sqlite sample13-pack-runtime-test-sqlite sample13-runtime-output-test-sqlite sample13-http-runtime-smoke sample13-http-runtime-smoke-sqlite sample13-browser-try-it-out-smoke sample13-browser-try-it-out-smoke-sqlite sample14-pack-runtime-test-sqlite sample14-runtime-output-test-sqlite sample15-pack-runtime-test-sqlite sample15-runtime-output-test-sqlite sample16-pack-runtime-test-sqlite sample16-runtime-output-test-sqlite sample16-http-runtime-smoke sample16-http-runtime-smoke-sqlite sample17-pack-runtime-test-sqlite sample17-runtime-output-test-sqlite sample18-pack-runtime-test-sqlite sample18-runtime-output-test-sqlite sample18-http-runtime-smoke sample19-pack-runtime-test-sqlite sample19-runtime-output-test-sqlite sample25-browser-try-it-out-smoke
 .PHONY: artifact-parity-capture-mysql artifact-parity-capture-sqlite artifact-parity-compare artifact-parity-test
-.PHONY: user-db-contract-capture-mysql user-db-contract-capture-sqlite user-db-contract-capture-pgsql user-db-contract-compare user-db-contract-compare-pgsql user-db-contract-test user-db-contract-test-pgsql
+.PHONY: up-user-db-pgsql down-user-db-pgsql reset-user-db-pgsql ps-user-db-pgsql logs-user-db-pgsql health-user-db-pgsql user-db-contract-capture-mysql user-db-contract-capture-sqlite user-db-contract-capture-pgsql user-db-contract-compare user-db-contract-compare-pgsql user-db-contract-test user-db-contract-test-pgsql postgresql-user-db-test-local
 .PHONY: generated-name-migration-capture-samples-before generated-name-migration-capture-samples-after generated-name-migration-validate-sample-keyword-map generated-name-migration-transform-samples-after generated-name-migration-compare-samples generated-name-migration-derive-keyword-map generated-name-migration-derive-sample-keyword-map generated-name-migration-scan-sample-keywords
 .PHONY: mtool-oidc-login-smoke
 
@@ -1067,6 +1073,28 @@ USER_DB_CONTRACT_RUN_ID ?= latest
 USER_DB_CONTRACT_ROOT := work/user-db-contract/$(USER_DB_CONTRACT_RUN_ID)
 USER_DB_CONTRACT_SAMPLE ?= sample10-dbaccess-mini-crud-flow
 
+up-user-db-pgsql: ## PostgreSQL user DB contract 用の local PostgreSQL を起動する
+	USER_DB_PGSQL_HOST_PORT=$(USER_DB_PGSQL_HOST_PORT) \
+	USER_DB_PGSQL_DB=$(USER_DB_PGSQL_DB) \
+	USER_DB_PGSQL_USER=$(USER_DB_PGSQL_USER) \
+	USER_DB_PGSQL_PASSWORD=$(USER_DB_PGSQL_PASSWORD) \
+	$(COMPOSE_USER_DB_PGSQL) up -d --wait
+
+down-user-db-pgsql: ## PostgreSQL user DB contract 用の local PostgreSQL を停止する
+	$(COMPOSE_USER_DB_PGSQL) down
+
+reset-user-db-pgsql: ## PostgreSQL user DB contract 用の local PostgreSQL volume を削除して停止する
+	$(COMPOSE_USER_DB_PGSQL) down -v
+
+ps-user-db-pgsql: ## PostgreSQL user DB contract 用 compose stack の状態を見る
+	$(COMPOSE_USER_DB_PGSQL) ps
+
+logs-user-db-pgsql: ## PostgreSQL user DB contract 用 compose stack のログを見る
+	$(COMPOSE_USER_DB_PGSQL) logs --tail=120 user-db-pgsql
+
+health-user-db-pgsql: ## PostgreSQL user DB contract 用 database の readiness を確認する
+	$(COMPOSE_USER_DB_PGSQL) exec -T user-db-pgsql pg_isready -U $(USER_DB_PGSQL_USER) -d $(USER_DB_PGSQL_DB)
+
 artifact-parity-capture-mysql: ## MySQL/MariaDB config store lane の parity 対象 artifact を capture する
 	bash mtool/scripts/run_artifact_parity_capture.sh \
 		--lane=mysql \
@@ -1121,6 +1149,22 @@ user-db-contract-compare-pgsql: ## capture 済み MySQL/MariaDB lane と Postgre
 user-db-contract-test: user-db-contract-capture-mysql user-db-contract-capture-sqlite user-db-contract-compare ## sample10 の user DB contract を capture + compare する
 
 user-db-contract-test-pgsql: user-db-contract-capture-mysql user-db-contract-capture-pgsql user-db-contract-compare-pgsql ## sample10 の PostgreSQL user DB contract を capture + compare する（MTOOL_RUNTIME_PGSQL_* が必要）
+
+postgresql-user-db-test-local: up-user-db-pgsql ## local PostgreSQL compose stack で user DB contract と sample12 live import を検証する
+	MTOOL_RUNTIME_PGSQL_DSN='pgsql:host=127.0.0.1;port=$(USER_DB_PGSQL_HOST_PORT);dbname=$(USER_DB_PGSQL_DB)' \
+	MTOOL_RUNTIME_PGSQL_USER='$(USER_DB_PGSQL_USER)' \
+	MTOOL_RUNTIME_PGSQL_PASSWORD='$(USER_DB_PGSQL_PASSWORD)' \
+	$(MAKE) user-db-contract-test-pgsql USER_DB_CONTRACT_RUN_ID=$(USER_DB_CONTRACT_RUN_ID) USER_DB_CONTRACT_SAMPLE=$(USER_DB_CONTRACT_SAMPLE)
+	MTOOL_RUNTIME_PGSQL_DSN='pgsql:host=$(USER_DB_PGSQL_CONTAINER_HOST);port=$(USER_DB_PGSQL_HOST_PORT);dbname=$(USER_DB_PGSQL_DB)' \
+	MTOOL_RUNTIME_PGSQL_HOST='$(USER_DB_PGSQL_CONTAINER_HOST)' \
+	MTOOL_RUNTIME_PGSQL_PORT='$(USER_DB_PGSQL_HOST_PORT)' \
+	MTOOL_RUNTIME_PGSQL_DB='$(USER_DB_PGSQL_DB)' \
+	MTOOL_RUNTIME_PGSQL_USER='$(USER_DB_PGSQL_USER)' \
+	MTOOL_RUNTIME_PGSQL_PASSWORD='$(USER_DB_PGSQL_PASSWORD)' \
+	bash mtool/scripts/run_sample_pack_phpunit_test.sh \
+		--compose-file=$(SAMPLE12_COMPOSE_FILE) \
+		--run-script=$(SAMPLE12_RUN) \
+		--phpunit-target=/var/www/tests/Integration/Sample12PostgresqlLiveSchemaImportTest.php
 
 sample9-output-test:
 	bash mtool/scripts/run_sample_pack_phpunit_test.sh \
