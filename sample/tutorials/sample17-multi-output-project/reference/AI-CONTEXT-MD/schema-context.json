@@ -13,6 +13,7 @@
         "slug": "sample17-multi-output-project",
         "lifecycle_status": "paused",
         "owner_login_id": "admin",
+        "php_namespace": "",
         "member_count": 1,
         "description": "同じ project から DataClass、DBAccess、HTML、OpenAPI の複数 Source Output を publish する tutorial capstone。"
     },

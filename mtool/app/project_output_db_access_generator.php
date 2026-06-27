@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 require_once __DIR__ . '/db_access_repository.php';
 require_once __DIR__ . '/generated_name.php';
+require_once __DIR__ . '/project_output_php_namespace.php';
 require_once __DIR__ . '/project_output_template_renderer.php';
 require_once __DIR__ . '/project_output_runtime_sql_generator.php';
 require_once __DIR__ . '/runtime_storage_paths.php';
@@ -593,6 +594,7 @@ function app_project_output_generated_db_access_base_php_text(
     array $signaturesByFunction,
     array $extraClassLines,
     string $runtimeDbSupportRequirePath,
+    string $phpNamespace = '',
 ): string {
     $sourceName = trim((string) ($classItem['source_name'] ?? ''));
     $className = $sourceName . 'DBAccessBase';
@@ -649,6 +651,7 @@ function app_project_output_generated_db_access_base_php_text(
         app_project_output_render_reference_template(
             'canonical-dbaccess-php/base.php.tpl',
             [
+                'PHP_NAMESPACE_SECTION' => app_project_output_php_namespace_section($phpNamespace),
                 'CLASS_NAME' => $className,
                 'RUNTIME_DB_SUPPORT_REQUIRE_SECTION' => $runtimeDbSupportRequirePath !== ''
                     ? "require_once __DIR__ . '/" . $runtimeDbSupportRequirePath . "';\n\n"
@@ -660,7 +663,7 @@ function app_project_output_generated_db_access_base_php_text(
     );
 }
 
-function app_project_output_generated_db_access_wrapper_php_text(string $sourceName): string
+function app_project_output_generated_db_access_wrapper_php_text(string $sourceName, string $phpNamespace = ''): string
 {
     $className = $sourceName . 'DBAccess';
     $baseClassName = $className . 'Base';
@@ -670,6 +673,7 @@ function app_project_output_generated_db_access_wrapper_php_text(string $sourceN
         app_project_output_render_reference_template(
             'canonical-dbaccess-php/wrapper.php.tpl',
             [
+                'PHP_NAMESPACE_SECTION' => app_project_output_php_namespace_section($phpNamespace),
                 'BASE_REQUIRE_PATH' => $baseRequirePath,
                 'CLASS_NAME' => $className,
                 'BASE_CLASS_NAME' => $baseClassName,
@@ -766,6 +770,7 @@ function app_project_output_prepare_db_access_source_tree(array $app, string $pr
     }
 
     $runtimeSourceRoot = app_runtime_storage_runtime_source_root($app, $runtimeSourceRelativePath);
+    $phpNamespace = app_project_output_php_namespace_from_project($app, $projectKey);
 
     try {
         app_project_output_delete_tree($runtimeSourceRoot);
@@ -879,11 +884,12 @@ function app_project_output_prepare_db_access_source_tree(array $app, string $pr
                     $signaturesByFunction,
                     app_project_output_runtime_sql_known_helper_class_lines($outputSourceName),
                     $runtimeDbSupportRequirePath,
+                    $phpNamespace,
                 ),
             );
             app_project_output_write_text_file(
                 $runtimeSourceRoot . '/' . $wrapperRelativePath,
-                app_project_output_generated_db_access_wrapper_php_text($outputSourceName),
+                app_project_output_generated_db_access_wrapper_php_text($outputSourceName, $phpNamespace),
             );
         }
     } catch (Throwable $throwable) {

@@ -287,6 +287,21 @@ function app_project_key_is_valid(string $value): bool
     return preg_match('/^[A-Z][A-Z0-9-]{2,63}$/', $value) === 1;
 }
 
+function app_normalize_php_namespace(string $value): string
+{
+    return trim($value, " \t\n\r\0\x0B\\");
+}
+
+function app_php_namespace_is_valid(string $value): bool
+{
+    $normalized = app_normalize_php_namespace($value);
+    if ($normalized === '') {
+        return true;
+    }
+
+    return preg_match('/^[A-Za-z_][A-Za-z0-9_]*(\\\\[A-Za-z_][A-Za-z0-9_]*)*$/', $normalized) === 1;
+}
+
 function app_normalize_source_output_key(string $value): string
 {
     return strtoupper(trim($value));
@@ -1082,6 +1097,7 @@ function app_db_access_function_insert_update_target_field_form_defaults(): arra
  *     name:string,
  *     slug:string,
  *     lifecycle_status:string,
+ *     php_namespace:string,
  *     description:string
  * } $input
  * @return array{
@@ -1090,6 +1106,7 @@ function app_db_access_function_insert_update_target_field_form_defaults(): arra
  *         name:string,
  *         slug:string,
  *         lifecycle_status:string,
+ *         php_namespace:string,
  *         description:string
  *     },
  *     errors:list<string>
@@ -1102,6 +1119,7 @@ function app_validate_project_form(array $input): array
         'name' => trim($input['name']),
         'slug' => strtolower(trim($input['slug'])),
         'lifecycle_status' => trim($input['lifecycle_status']),
+        'php_namespace' => app_normalize_php_namespace((string) ($input['php_namespace'] ?? '')),
         'description' => trim($input['description']),
     ];
 
@@ -1129,6 +1147,12 @@ function app_validate_project_form(array $input): array
 
     if (!in_array($normalized['lifecycle_status'], app_allowed_project_lifecycle_statuses(), true)) {
         $errors[] = 'lifecycle status が不正です。';
+    }
+
+    if (!app_php_namespace_is_valid($normalized['php_namespace'])) {
+        $errors[] = 'PHP namespace は Foo\\Bar 形式で入力してください。';
+    } elseif (mb_strlen($normalized['php_namespace']) > 191) {
+        $errors[] = 'PHP namespace は 191 文字以内にしてください。';
     }
 
     if ($normalized['description'] === '') {

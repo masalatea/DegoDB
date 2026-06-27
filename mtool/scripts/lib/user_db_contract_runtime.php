@@ -1318,6 +1318,7 @@ function app_user_db_contract_runtime_sample10_definition(): array
 {
     return [
         'sample' => 'sample10-dbaccess-mini-crud-flow',
+        'php_namespace' => 'DegoDB\\Sample\\Sample10',
         'dataclass_files' => [
             'data-SupportTicket.php',
         ],
@@ -1474,6 +1475,7 @@ function app_user_db_contract_runtime_run_sample(
     string $dataclassRoot,
 ): array {
     app_user_db_contract_runtime_require_sample_files($definition, $dbaccessRoot, $dataclassRoot);
+    $GLOBALS['app_user_db_contract_runtime_current_definition'] = $definition;
 
     $runner = (string) ($definition['runner'] ?? '');
     if ($runner === '' || !function_exists($runner)) {
@@ -1481,6 +1483,28 @@ function app_user_db_contract_runtime_run_sample(
     }
 
     return $runner();
+}
+
+function app_user_db_contract_runtime_current_definition(): array
+{
+    $definition = $GLOBALS['app_user_db_contract_runtime_current_definition'] ?? [];
+
+    return is_array($definition) ? $definition : [];
+}
+
+function app_user_db_contract_runtime_class_name(string $shortClassName): string
+{
+    $definition = app_user_db_contract_runtime_current_definition();
+    $namespace = trim((string) ($definition['php_namespace'] ?? ''), '\\');
+
+    return $namespace !== '' ? $namespace . '\\' . $shortClassName : $shortClassName;
+}
+
+function app_user_db_contract_runtime_new(string $shortClassName): object
+{
+    $className = app_user_db_contract_runtime_class_name($shortClassName);
+
+    return new $className();
 }
 
 /**
@@ -1545,12 +1569,12 @@ function app_user_db_contract_runtime_run_sample09(): array
  */
 function app_user_db_contract_runtime_run_sample10(): array
 {
-    $access = new SupportTicketDBAccess();
+    $access = app_user_db_contract_runtime_new('SupportTicketDBAccess');
 
     $listBefore = $access->GetSupportTicketList('open', 10);
     $detailBefore = $access->GetSupportTicket(1);
 
-    $newTicket = new SupportTicketData();
+    $newTicket = app_user_db_contract_runtime_new('SupportTicketData');
     $newTicket->title = 'New runtime ticket';
     $newTicket->status = 'open';
     $newTicket->assignedTo = 'dana';
@@ -1558,7 +1582,7 @@ function app_user_db_contract_runtime_run_sample10(): array
     $newTicket->updatedAt = '2026-06-17 12:00:00';
     $insertResult = $access->InsertSupportTicket($newTicket);
 
-    $updateTicket = new SupportTicketData();
+    $updateTicket = app_user_db_contract_runtime_new('SupportTicketData');
     $updateTicket->id = 2;
     $updateTicket->title = 'Second ticket updated';
     $updateTicket->status = 'closed';
@@ -1568,7 +1592,7 @@ function app_user_db_contract_runtime_run_sample10(): array
     $updateResult = $access->UpdateSupportTicket($updateTicket);
     $detailAfterUpdate = $access->GetSupportTicket(2);
 
-    $deleteTicket = new SupportTicketData();
+    $deleteTicket = app_user_db_contract_runtime_new('SupportTicketData');
     $deleteTicket->id = 3;
     $deleteResult = $access->DeleteSupportTicket($deleteTicket);
     $detailAfterDelete = $access->GetSupportTicket(3);

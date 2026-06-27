@@ -5,6 +5,7 @@ declare(strict_types=1);
 require_once __DIR__ . '/data_class_repository.php';
 require_once __DIR__ . '/generated_name.php';
 require_once __DIR__ . '/legacy_data_class_editable_area_migrator.php';
+require_once __DIR__ . '/project_output_php_namespace.php';
 require_once __DIR__ . '/project_output_template_renderer.php';
 require_once __DIR__ . '/runtime_storage_paths.php';
 
@@ -244,11 +245,13 @@ function app_project_output_generated_data_class_base_php_text(
     string $className,
     string $parentClassName,
     array $declaredProperties,
+    string $phpNamespace = '',
 ): string {
     return rtrim(
         app_project_output_render_reference_template(
             'canonical-dataclass-php/base.php.tpl',
             [
+                'PHP_NAMESPACE_SECTION' => app_project_output_php_namespace_section($phpNamespace),
                 'CLASS_SIGNATURE' => $className . ($parentClassName !== '' ? ' extends ' . $parentClassName : ''),
                 'DECLARED_PROPERTIES_SECTION' => app_project_output_data_class_declared_properties_section(
                     $declaredProperties,
@@ -264,6 +267,7 @@ function app_project_output_generated_data_class_wrapper_php_text(
     string $wrapperRelativePath,
     string $parentClassName,
     string $parentWrapperRelativePath,
+    string $phpNamespace = '',
 ): string {
     $className = $dataClassName . 'Data';
     $baseClassName = $className . 'Base';
@@ -285,6 +289,7 @@ function app_project_output_generated_data_class_wrapper_php_text(
         app_project_output_render_reference_template(
             'canonical-dataclass-php/wrapper.php.tpl',
             [
+                'PHP_NAMESPACE_SECTION' => app_project_output_php_namespace_section($phpNamespace),
                 'PARENT_REQUIRE_SECTION' => $parentRequireSection,
                 'BASE_REQUIRE_PATH' => $baseRequirePath,
                 'CLASS_NAME' => $className,
@@ -453,6 +458,7 @@ function app_project_output_prepare_data_class_source_tree(array $app, string $p
     }
 
     $runtimeSourceRoot = app_runtime_storage_runtime_source_root($app, $runtimeSourceRelativePath);
+    $phpNamespace = app_project_output_php_namespace_from_project($app, $projectKey);
     $rawFieldNamesByClass = app_project_output_data_class_raw_field_names_by_class($snapshotResult['items']);
     $parentByClass = app_project_output_data_class_parent_by_class($snapshotResult['items']);
     $storeBasePathByClass = [];
@@ -534,6 +540,7 @@ function app_project_output_prepare_data_class_source_tree(array $app, string $p
                     $outputDataClassName . 'DataBase',
                     $outputParentClassName !== '' ? $outputParentClassName . 'Data' : '',
                     $declaredFieldNames,
+                    $phpNamespace,
                 ),
             );
             app_project_output_write_text_file(
@@ -543,6 +550,7 @@ function app_project_output_prepare_data_class_source_tree(array $app, string $p
                     $wrapperRelativePath,
                     $outputParentClassName,
                     $parentWrapperRelativePath,
+                    $phpNamespace,
                 ),
             );
         }

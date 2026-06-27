@@ -950,6 +950,10 @@ function app_project_metadata_bundle_validate_sections(
     if ($projectKey !== trim((string) ($manifest['source_project_key'] ?? ''))) {
         $errors[] = 'manifest.source_project_key と project.project_key が一致しません。';
     }
+    $phpNamespace = app_normalize_php_namespace((string) ($projectSection['php_namespace'] ?? ''));
+    if (!app_php_namespace_is_valid($phpNamespace)) {
+        $errors[] = 'project.php_namespace が不正です。';
+    }
 
     if (array_key_exists('database_sources', $sections)) {
         $databaseSourceItems = $sections['database_sources']['database_sources'] ?? null;
@@ -1675,6 +1679,7 @@ function app_project_metadata_bundle_collect_core_snapshot(
             'slug' => (string) ($projectItem['slug'] ?? ''),
             'lifecycle_status' => (string) ($projectItem['lifecycle_status'] ?? ''),
             'owner_login_id' => (string) ($projectItem['owner_login_id'] ?? ''),
+            'php_namespace' => (string) ($projectItem['php_namespace'] ?? ''),
             'description' => (string) ($projectItem['description'] ?? ''),
         ],
         'memberships' => app_project_metadata_bundle_export_memberships($membershipResult['item']),
@@ -2648,6 +2653,7 @@ function app_project_metadata_bundle_upsert_project(PDO $pdo, array $projectSect
                  slug = :slug,
                  lifecycle_status = :lifecycle_status,
                  owner_login_id = :owner_login_id,
+                 php_namespace = :php_namespace,
                  description = :description,
                  updated_at = CURRENT_TIMESTAMP
              WHERE id = :id'
@@ -2658,6 +2664,7 @@ function app_project_metadata_bundle_upsert_project(PDO $pdo, array $projectSect
             ':slug' => (string) ($projectSection['slug'] ?? ''),
             ':lifecycle_status' => (string) ($projectSection['lifecycle_status'] ?? 'draft'),
             ':owner_login_id' => (string) ($projectSection['owner_login_id'] ?? ''),
+            ':php_namespace' => app_normalize_php_namespace((string) ($projectSection['php_namespace'] ?? '')),
             ':description' => (string) ($projectSection['description'] ?? ''),
         ]);
 
@@ -2671,6 +2678,7 @@ function app_project_metadata_bundle_upsert_project(PDO $pdo, array $projectSect
             slug,
             lifecycle_status,
             owner_login_id,
+            php_namespace,
             description
         ) VALUES (
             :project_key,
@@ -2678,6 +2686,7 @@ function app_project_metadata_bundle_upsert_project(PDO $pdo, array $projectSect
             :slug,
             :lifecycle_status,
             :owner_login_id,
+            :php_namespace,
             :description
         )'
     );
@@ -2687,6 +2696,7 @@ function app_project_metadata_bundle_upsert_project(PDO $pdo, array $projectSect
         ':slug' => (string) ($projectSection['slug'] ?? ''),
         ':lifecycle_status' => (string) ($projectSection['lifecycle_status'] ?? 'draft'),
         ':owner_login_id' => (string) ($projectSection['owner_login_id'] ?? ''),
+        ':php_namespace' => app_normalize_php_namespace((string) ($projectSection['php_namespace'] ?? '')),
         ':description' => (string) ($projectSection['description'] ?? ''),
     ]);
 

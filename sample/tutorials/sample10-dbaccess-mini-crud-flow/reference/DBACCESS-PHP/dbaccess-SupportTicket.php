@@ -1,5 +1,7 @@
 <?php
 
+namespace DegoDB\Sample\Sample10;
+
 // Generated wrapper entry for canonical DB Access.
 // Add project-specific helpers or overrides here by extending the generated base class.
 

@@ -335,6 +335,7 @@ function app_config_db_bootstrap_required_columns(): array
         'projects' => [
             'lifecycle_status',
             'owner_login_id',
+            'php_namespace',
         ],
         'project_source_outputs' => [
             'artifact_strategy',

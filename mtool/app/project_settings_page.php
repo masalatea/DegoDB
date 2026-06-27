@@ -16,6 +16,7 @@ require_once __DIR__ . '/response.php';
  *     slug:string,
  *     lifecycle_status:string,
  *     owner_login_id:string,
+ *     php_namespace:string,
  *     member_count:int,
  *     updated_at:string,
  *     description:string
@@ -25,6 +26,7 @@ require_once __DIR__ . '/response.php';
  *     name:string,
  *     slug:string,
  *     lifecycle_status:string,
+ *     php_namespace:string,
  *     description:string
  * }
  */
@@ -35,6 +37,7 @@ function app_project_settings_form_from_item(array $item): array
         'name' => $item['name'],
         'slug' => $item['slug'],
         'lifecycle_status' => $item['lifecycle_status'],
+        'php_namespace' => (string) ($item['php_namespace'] ?? ''),
         'description' => $item['description'],
     ];
 }
@@ -167,6 +170,7 @@ function app_render_project_settings_page(array $app, array $request): void
                 'name' => app_post_param('name'),
                 'slug' => app_post_param('slug'),
                 'lifecycle_status' => app_post_param('lifecycle_status'),
+                'php_namespace' => app_post_param('php_namespace'),
                 'description' => app_post_param('description'),
             ]);
 
@@ -179,6 +183,7 @@ function app_render_project_settings_page(array $app, array $request): void
                     'name' => $input['name'],
                     'slug' => $input['slug'],
                     'lifecycle_status' => $input['lifecycle_status'],
+                    'php_namespace' => $input['php_namespace'],
                     'description' => $input['description'],
                 ]);
 
@@ -330,6 +335,7 @@ function app_render_project_settings_page(array $app, array $request): void
                 <li>project key: <code><?php echo app_h($item['project_key']); ?></code></li>
                 <li>slug: <code><?php echo app_h($item['slug']); ?></code></li>
                 <li>status: <code><?php echo app_h($item['lifecycle_status']); ?></code></li>
+                <li>PHP namespace: <code><?php echo app_h($item['php_namespace'] !== '' ? $item['php_namespace'] : '(none)'); ?></code></li>
                 <li>owner: <code><?php echo app_h($item['owner_login_id']); ?></code></li>
                 <li>members: <code><?php echo app_h((string) $item['member_count']); ?></code></li>
                 <li>updated: <code><?php echo app_h($item['updated_at']); ?></code></li>
@@ -402,6 +408,14 @@ function app_render_project_settings_page(array $app, array $request): void
                 </option>
             <?php endforeach; ?>
         </select>
+
+        <label for="php_namespace">PHP namespace</label>
+        <input
+            id="php_namespace"
+            name="php_namespace"
+            value="<?php echo app_h($input['php_namespace']); ?>"
+            placeholder="App\\Generated"
+        >
 
         <label for="description">description</label>
         <textarea

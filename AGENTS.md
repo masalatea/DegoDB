@@ -35,6 +35,13 @@
 - report 内で active になった計画は、必要に応じて `docs/current-plans.md` へ昇格する。
 - 「計画がない」と答える前に、`docs/current-plans.md` と `docs/README.md` の current plan 導線を確認する。
 
+## ブランチ運用
+
+- 通常の開発・Codex 作業は `develop` を統合先にする。
+- 作業ブランチは原則として `develop` から切り、PR で `develop` に入れる。
+- `master` は安定版の受け口として扱い、`develop` から `master` への PR で反映する。
+- `master` への直接 commit / push は、利用者が明示した場合だけ行う。
+
 ## コミット方針
 
 - 作業の進行単位ではなく、後から読む意味単位でコミットする。

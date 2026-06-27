@@ -4,6 +4,7 @@ INSERT INTO projects (
     slug,
     lifecycle_status,
     owner_login_id,
+    php_namespace,
     description
 ) VALUES (
     'SAMPLE04',
@@ -11,6 +12,7 @@ INSERT INTO projects (
     'sample04-dataclass-parent-child-basic',
     'paused',
     'admin',
+    'DegoDB\\Sample\\Sample04',
     'parent / child の 2 table schema から canonical DataClass PHP output を確認する tutorial sample project。'
 )
 ON DUPLICATE KEY UPDATE
@@ -18,6 +20,7 @@ ON DUPLICATE KEY UPDATE
     slug = VALUES(slug),
     lifecycle_status = VALUES(lifecycle_status),
     owner_login_id = VALUES(owner_login_id),
+    php_namespace = VALUES(php_namespace),
     description = VALUES(description);
 
 INSERT INTO project_memberships (

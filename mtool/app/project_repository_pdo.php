@@ -23,6 +23,7 @@ require_once __DIR__ . '/database.php';
  *         slug:string,
  *         lifecycle_status:string,
  *         owner_login_id:string,
+ *         php_namespace:string,
  *         member_count:int,
  *         updated_at:string,
  *         description:string
@@ -43,6 +44,7 @@ function app_pdo_fetch_project_catalog(array $app): array
                 p.slug,
                 p.lifecycle_status,
                 p.owner_login_id,
+                p.php_namespace,
                 COUNT(DISTINCT pm.login_id) AS member_count,
                 ' . $updatedAtSelect . ',
                 p.description
@@ -56,6 +58,7 @@ function app_pdo_fetch_project_catalog(array $app): array
                 p.slug,
                 p.lifecycle_status,
                 p.owner_login_id,
+                p.php_namespace,
                 p.updated_at,
                 p.description
             ORDER BY p.updated_at DESC, p.id DESC'
@@ -75,6 +78,7 @@ function app_pdo_fetch_project_catalog(array $app): array
                 'slug' => (string) ($row['slug'] ?? ''),
                 'lifecycle_status' => (string) ($row['lifecycle_status'] ?? ''),
                 'owner_login_id' => (string) ($row['owner_login_id'] ?? ''),
+                'php_namespace' => (string) ($row['php_namespace'] ?? ''),
                 'member_count' => (int) ($row['member_count'] ?? 0),
                 'updated_at' => (string) ($row['updated_at'] ?? ''),
                 'description' => (string) ($row['description'] ?? ''),
@@ -114,6 +118,7 @@ function app_pdo_fetch_project_catalog(array $app): array
  *         slug:string,
  *         lifecycle_status:string,
  *         owner_login_id:string,
+ *         php_namespace:string,
  *         member_count:int,
  *         updated_at:string,
  *         description:string
@@ -134,6 +139,7 @@ function app_pdo_fetch_project_by_key(array $app, string $projectKey): array
                 p.slug,
                 p.lifecycle_status,
                 p.owner_login_id,
+                p.php_namespace,
                 COUNT(DISTINCT pm.login_id) AS member_count,
                 ' . $updatedAtSelect . ',
                 p.description
@@ -148,6 +154,7 @@ function app_pdo_fetch_project_by_key(array $app, string $projectKey): array
                 p.slug,
                 p.lifecycle_status,
                 p.owner_login_id,
+                p.php_namespace,
                 p.updated_at,
                 p.description
             LIMIT 1'
@@ -174,6 +181,7 @@ function app_pdo_fetch_project_by_key(array $app, string $projectKey): array
                 'slug' => (string) ($row['slug'] ?? ''),
                 'lifecycle_status' => (string) ($row['lifecycle_status'] ?? ''),
                 'owner_login_id' => (string) ($row['owner_login_id'] ?? ''),
+                'php_namespace' => (string) ($row['php_namespace'] ?? ''),
                 'member_count' => (int) ($row['member_count'] ?? 0),
                 'updated_at' => (string) ($row['updated_at'] ?? ''),
                 'description' => (string) ($row['description'] ?? ''),
@@ -206,6 +214,7 @@ function app_pdo_fetch_project_by_key(array $app, string $projectKey): array
  *     slug:string,
  *     lifecycle_status:string,
  *     owner_login_id:string,
+ *     php_namespace:string,
  *     description:string
  * } $input
  * @return array{
@@ -228,6 +237,7 @@ function app_pdo_insert_project(array $app, array $input): array
                 slug,
                 lifecycle_status,
                 owner_login_id,
+                php_namespace,
                 description
             ) VALUES (
                 :project_key,
@@ -235,6 +245,7 @@ function app_pdo_insert_project(array $app, array $input): array
                 :slug,
                 :lifecycle_status,
                 :owner_login_id,
+                :php_namespace,
                 :description
             )'
         );
@@ -245,6 +256,7 @@ function app_pdo_insert_project(array $app, array $input): array
             ':slug' => $input['slug'],
             ':lifecycle_status' => $input['lifecycle_status'],
             ':owner_login_id' => $input['owner_login_id'],
+            ':php_namespace' => (string) ($input['php_namespace'] ?? ''),
             ':description' => $input['description'],
         ]);
 
@@ -314,6 +326,7 @@ function app_pdo_insert_project(array $app, array $input): array
  *     name:string,
  *     slug:string,
  *     lifecycle_status:string,
+ *     php_namespace:string,
  *     description:string
  * } $input
  * @return array{
@@ -331,6 +344,7 @@ function app_pdo_update_project(array $app, array $input): array
                 name = :name,
                 slug = :slug,
                 lifecycle_status = :lifecycle_status,
+                php_namespace = :php_namespace,
                 description = :description,
                 updated_at = CURRENT_TIMESTAMP
             WHERE project_key = :project_key'
@@ -341,6 +355,7 @@ function app_pdo_update_project(array $app, array $input): array
             ':name' => $input['name'],
             ':slug' => $input['slug'],
             ':lifecycle_status' => $input['lifecycle_status'],
+            ':php_namespace' => (string) ($input['php_namespace'] ?? ''),
             ':description' => $input['description'],
         ]);
 

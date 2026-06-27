@@ -94,6 +94,19 @@ function app_sqlite_seed_convert_common_functions(string $statement): string
     return preg_replace('/\bCHAR_LENGTH\s*\(/i', 'LENGTH(', $statement) ?? $statement;
 }
 
+function app_sqlite_seed_convert_mysql_string_escapes(string $statement): string
+{
+    return preg_replace_callback(
+        "/'([^']*)'/s",
+        static function (array $matches): string {
+            $value = str_replace('\\\\', '\\', (string) ($matches[1] ?? ''));
+
+            return "'" . str_replace("'", "''", $value) . "'";
+        },
+        $statement,
+    ) ?? $statement;
+}
+
 function app_sqlite_seed_convert_temporary_table_drop(string $statement): string
 {
     return preg_replace('/\bDROP\s+TEMPORARY\s+TABLE\s+/i', 'DROP TABLE ', $statement) ?? $statement;
@@ -232,6 +245,7 @@ function app_sqlite_seed_apply_statement(PDO $pdo, string $statement, array &$va
     $prepared = app_sqlite_seed_convert_insert_ignore($prepared);
     $prepared = app_sqlite_seed_convert_if_function($prepared);
     $prepared = app_sqlite_seed_convert_common_functions($prepared);
+    $prepared = app_sqlite_seed_convert_mysql_string_escapes($prepared);
     $prepared = app_sqlite_seed_convert_temporary_table_drop($prepared);
     $prepared = app_sqlite_seed_convert_temporary_table_create($prepared);
     $prepared = app_sqlite_seed_convert_update_join($prepared);

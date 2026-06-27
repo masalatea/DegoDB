@@ -3,7 +3,7 @@
     "schema_version": "2026-05-26.project-core.v2",
     "scope": "project-core",
     "source_project_key": "SAMPLE26",
-    "exported_at": "2026-06-27T00:57:42+00:00",
+    "exported_at": "2026-06-27T10:28:34+00:00",
     "requested_by": "phpunit-sample26",
     "target_policy": "replace-core-scope",
     "secrets_policy": "exclude-all",
@@ -52,8 +52,8 @@
     "files": {
         "project": {
             "path": "project.json",
-            "sha256": "5364bda5c66f0554851d58800fbec0f3665326f54fa3014c818c7d9555a9f19b",
-            "bytes": 401
+            "sha256": "b1e96bed2eb56af81b584f5fa7f940f7ebecab698c1652178f621cf0e4dbc7fe",
+            "bytes": 426
         },
         "memberships": {
             "path": "memberships.json",

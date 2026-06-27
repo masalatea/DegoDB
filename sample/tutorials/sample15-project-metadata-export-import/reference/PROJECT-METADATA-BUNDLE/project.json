@@ -4,5 +4,6 @@
     "slug": "sample15-project-metadata-export-import",
     "lifecycle_status": "paused",
     "owner_login_id": "admin",
+    "php_namespace": "",
     "description": "Project-scoped canonical metadata bundle export / preview / apply を確認する tutorial sample project。"
 }

@@ -1,6 +1,6 @@
 <?php
 
-// Generated wrapper entry for canonical data class.
+{{PHP_NAMESPACE_SECTION}}// Generated wrapper entry for canonical data class.
 // Add extra properties or helper methods in the wrapper/custom layer when needed.
 
 {{PARENT_REQUIRE_SECTION}}require_once __DIR__ . {{BASE_REQUIRE_PATH}};
