@@ -31,7 +31,7 @@ This roadmap defines the user-facing tutorial lane under `sample/tutorials/`. It
 
 | pack | status | 主テーマ | schema / metadata の範囲 | 主な output | canonical test |
 | --- | --- | --- | --- | --- | --- |
-| `sample01-simple-table-runtime` | current | 最初の end-to-end | 1 table (`Article`) | `DATACLASS-PHP`, `DBACCESS-PHP` | `make sample01-pack-runtime-test` |
+| `sample01-simple-table-runtime` | current | 最初の end-to-end | physical `article` / generated `Article` 1 table | `DATACLASS-PHP`, `DBACCESS-PHP` | `make sample01-pack-runtime-test` |
 | `sample02-dataclass-nullable-default-status` | current | nullable / default / status 付き Data Class | 1 table | `DATACLASS-PHP` | `make sample02-pack-runtime-test` |
 | `sample03-dataclass-lookup-and-helper` | current | lookup / caption 向き Data Class | 2 tables | `DATACLASS-PHP` | `make sample03-pack-runtime-test` |
 | `sample04-dataclass-parent-child-basic` | current | 親子 2 table の Data Class | 2 tables + FK | `DATACLASS-PHP` | `make sample04-pack-runtime-test` |
@@ -72,34 +72,34 @@ This roadmap defines the user-facing tutorial lane under `sample/tutorials/`. It
   - nullable / default / bool / status-like column を含む 1 table tutorial として current 化した。
   - DB Access には進まず、Data Class output の読み方を覚えることを優先する。
 - `sample03-dataclass-lookup-and-helper`
-  - `TaskStatus` / `TaskPriority` の 2 lookup table で、複数 Data Class の sync と naming を確認する current tutorial とした。
+  - physical `task_status` / `task_priority` と generated `TaskStatus` / `TaskPriority` の 2 lookup table で、複数 Data Class の sync と naming を確認する current tutorial とした。
   - この sample でいう `helper` は generated Data Class 内の独自メソッドではなく、lookup/caption を後段の formatter / service / custom layer へ逃がす前提を指す。
 - `sample04-dataclass-parent-child-basic`
-  - `Post` / `PostComment` の 2 table と FK を import し、親子 schema を持つ複数 Data Class の sync と output を確認する current tutorial とした。
-  - current の Data Class sync は FK から relation metadata を自動補完しないため、`PostComment.PostId` は scalar field として同期される。
+  - physical `post` / `post_comment` と generated `Post` / `PostComment` の 2 table と FK を import し、親子 schema を持つ複数 Data Class の sync と output を確認する current tutorial とした。
+  - current の Data Class sync は FK から relation metadata を自動補完しないため、physical `post_comment.post_id` は generated `PostComment.postId` scalar field として同期される。
   - 「1 table ではないが、まだ DB Access 設計には入らない」境界をここに置く。
 
 ### Phase 2. DB Access lane
 
 - `sample05-dbaccess-select-basic`
-  - `Notice` 1 table と `GetNoticeList` 1 function だけを使い、`da` / `dafunc` と generated `DBACCESS-PHP` の最小対応を見る current tutorial とする。
+  - physical `notice` / generated `Notice` 1 table と `GetNoticeList` 1 function だけを使い、`da` / `dafunc` と generated `DBACCESS-PHP` の最小対応を見る current tutorial とする。
   - where / paging / user-supplied sort はまだ入れず、manual `project_db_access_function_select_target_fields` と fixed `sort_order_columns` だけで DB Access 出力の入口を固定する。
 - `sample06-dbaccess-filter-sort-page`
-  - `Announcement` 1 table に `Status` filter 1 本と `limit` argument を足し、一覧画面で最初に必要になる where / order / page size を current tutorial として固定する。
-  - sort は `Announcement.PublishedAt desc, Announcement.Id desc` の fixed metadata とし、user-supplied order や複合条件は次段へ送る。
+  - physical `announcement` / generated `Announcement` 1 table に `Status` filter 1 本と `limit` argument を足し、一覧画面で最初に必要になる where / order / page size を current tutorial として固定する。
+  - sort は physical `announcement.published_at desc, announcement.id desc` の fixed metadata とし、user-supplied order や複合条件は次段へ送る。
 - `sample07-dbaccess-crud-basic`
-  - `TodoItem` 1 table と `InsertTodoItem` / `UpdateTodoItem` / `DeleteTodoItem` 3 function だけを使い、write metadata の最小構成を current tutorial として固定する。
-  - `project_db_access_function_insert_target_fields` と `project_db_access_function_update_target_fields` は `Title` / `Status` / `Body` に限定し、`project_db_access_function_update_delete_wheres` は `Id = argument` 1 本だけに絞る。
+  - physical `todo_item` / generated `TodoItem` 1 table と `InsertTodoItem` / `UpdateTodoItem` / `DeleteTodoItem` 3 function だけを使い、write metadata の最小構成を current tutorial として固定する。
+  - `project_db_access_function_insert_target_fields` と `project_db_access_function_update_target_fields` は physical `title` / `status` / `body` に限定し、`project_db_access_function_update_delete_wheres` は physical `id = argument` 1 本だけに絞る。
 - `sample08-dbaccess-join-read-model`
-  - `BlogPost` / `BlogAuthor` / `BlogPostAuthorSummary` の 3 table を import し、join した row を read model DTO へ詰める最小 tutorial を current 化した。
-  - `project_db_access_function_select_wheres` では `BlogPost.BlogAuthorId = BlogAuthor.Id` の `anotherfield` join 1 本と、`BlogPost.Status = 'published'`、`BlogAuthor.IsActive = 1` の fixed condition 2 本だけに絞る。
+  - physical `blog_post` / `blog_author` / `blog_post_author_summary` と generated `BlogPost` / `BlogAuthor` / `BlogPostAuthorSummary` の 3 table を import し、join した row を read model DTO へ詰める最小 tutorial を current 化した。
+  - `project_db_access_function_select_wheres` では physical `blog_post.blog_author_id = blog_author.id` の `anotherfield` join 1 本と、physical `blog_post.status = 'published'`、`blog_author.is_active = 1` の fixed condition 2 本だけに絞る。
 - `sample09-dbaccess-aggregate-report`
-  - `SalesRecord` / `SalesCategory` / `SalesCategoryReport` の 3 table を import し、join + group by + count + sum + having を 1 function にまとめた current tutorial とした。
-  - `project_db_access_function_select_target_fields` では `SalesRecord.SalesCategoryId` と `SalesCategory.Name` を `group_by_target=1` にし、`count(SalesRecord.Id)` と `sum(SalesRecord.Amount)` を report field として出す。
+  - physical `sales_record` / `sales_category` / `sales_category_report` と generated `SalesRecord` / `SalesCategory` / `SalesCategoryReport` の 3 table を import し、join + group by + count + sum + having を 1 function にまとめた current tutorial とした。
+  - `project_db_access_function_select_target_fields` では physical `sales_record.sales_category_id` と `sales_category.name` を `group_by_target=1` にし、`count(sales_record.id)` と `sum(sales_record.amount)` を report field として出す。
   - `project_db_access_function_select_havings` は `count >= 2` と `sum >= 100` の fixed raw 条件 2 本だけに絞り、aggregate report の最小構成に固定する。
 - `sample10-dbaccess-mini-crud-flow`
-  - `SupportTicket` 1 table と `GetSupportTicketList` / `GetSupportTicket` / `InsertSupportTicket` / `UpdateSupportTicket` / `DeleteSupportTicket` の 5 function を 1 class にまとめ、small but real な CRUD flow を current tutorial として固定した。
-  - list は `Status` argument filter + `limit`、detail は `Id` where 1 本、write は `Title` / `Status` / `AssignedTo` / `Body` / `UpdatedAt` を対象にする。
+  - physical `support_ticket` / generated `SupportTicket` 1 table と `GetSupportTicketList` / `GetSupportTicket` / `InsertSupportTicket` / `UpdateSupportTicket` / `DeleteSupportTicket` の 5 function を 1 class にまとめ、small but real な CRUD flow を current tutorial として固定した。
+  - list は physical `status` argument filter + `limit`、detail は physical `id` where 1 本、write は physical `title` / `status` / `assigned_to` / `body` / `updated_at` を対象にする。
 
 ### Phase 3. Source Output lane
 
@@ -108,17 +108,17 @@ This roadmap defines the user-facing tutorial lane under `sample/tutorials/`. It
   - `project_html_definitions` / `project_html_parameters` と `html_templates` / `html_template_parameters` の最小 metadata を seed し、HTML template 系 Source Output の入口を DBAccess lane と分けて固定する。
   - `LanguageResource` / i18n は tool scope から外れたため tutorial lane へ追加しない。
 - `sample12-external-db-source-import`
-  - `database_sources.source_key=sample12_lab` を seed し、`db-lab` 側の `ExternalArticle` table を `named-live-schema:sample12_lab` から import する current tutorial とした。
+  - `database_sources.source_key=sample12_lab` を seed し、`db-lab` 側の physical `external_article` / generated `ExternalArticle` table を `named-live-schema:sample12_lab` から import する current tutorial とした。
   - canonical table / DataClass metadata は seed せず、external source import と sync で作る。
   - first slice は `DATACLASS-PHP` publish までに絞り、OpenAPI / proxy runtime は後続 sample へ送る。
 - `sample13-openapi-api-surface`
   - `ApiTask.GetApiTaskList` / `GetApiTask` を `OPENAPI-JSON` の single-function proxy target にし、`openapi-json` strategy で `openapi.json` を publish する current tutorial とした。
   - actual proxy runtime execution は扱わず、OpenAPI artifact と authenticated Swagger viewer の入口に絞る。
 - `sample14-custom-proxy-runtime`
-  - `CATALOG-SUMMARY` custom proxy を seed し、`dbtable.GetdbtableList` / `ProjectSourceOutput.GetProjectSourceOutputList` の 2 step を `CUSTOM-PROXY-SERVER` に bind する current tutorial とした。
+  - `CATALOG-SUMMARY` custom proxy を seed し、`dbtable.GetdbtableList` / `project_source_output.GetProjectSourceOutputList` の 2 step を `CUSTOM-PROXY-SERVER` に bind する current tutorial とした。
   - full generated bundle は大きいため、reference は actual output から主要 entrypoint / handler / build plan を選抜して固定する。
 - `sample15-project-metadata-export-import`
-  - `BundleNote` table を import / sync した project-core metadata を `PROJECT-METADATA-BUNDLE` として export する current tutorial とした。
+  - physical `bundle_note` / generated `BundleNote` table を import / sync した project-core metadata を `PROJECT-METADATA-BUNDLE` として export する current tutorial とした。
   - import は同じ project への preview / apply に絞り、bundle reference と runtime export の一致、復元後 metadata 件数を固定する。
   - `database_sources` sidecar / secret file と別 project key への rename import は後続 scope へ送る。
 - `sample16-authenticated-proxy`
@@ -129,7 +129,7 @@ This roadmap defines the user-facing tutorial lane under `sample/tutorials/`. It
 ### Phase 4. Capstone
 
 - `sample17-multi-output-project`
-  - `CapstoneTask` 1 table と `GetCapstoneTaskList` / `GetCapstoneTask` 2 function を使い、同じ `SAMPLE17` project から複数 Source Output を publish する final capstone とした。
+  - physical `capstone_task` / generated `CapstoneTask` 1 table と `GetCapstoneTaskList` / `GetCapstoneTask` 2 function を使い、同じ `SAMPLE17` project から複数 Source Output を publish する final capstone とした。
   - outputs は `DATACLASS-PHP`、`DBACCESS-PHP`、`HTML-PAGE`、`OPENAPI-JSON` に絞り、project metadata bundle / auth / HTTP browser smoke は既存 sample へ分ける。
   - checker は import / sync 後に 4 output を publish し、actual generated reference tree と一致することを検証する。
 
@@ -137,21 +137,21 @@ This roadmap defines the user-facing tutorial lane under `sample/tutorials/`. It
 
 - `sample18-mini-task-board-demo`
   - 生の会話ログではなく、AI が sample 向けに整理した仮想 prompt から作る first demo とした。
-  - `TaskCard` 1 table と `GetTaskCardList` / `GetTaskCard` / `InsertTaskCard` / `UpdateTaskCard` / `CompleteTaskCard` の 5 function を使う。
+  - physical `task_card` / generated `TaskCard` 1 table と `GetTaskCardList` / `GetTaskCard` / `InsertTaskCard` / `UpdateTaskCard` / `CompleteTaskCard` の 5 function を使う。
   - outputs は `DATACLASS-PHP`、`DBACCESS-PHP`、`HTML-PAGE`、`OPENAPI-JSON` とし、OpenAPI は read / write の 5 proxy path を含める。
   - `web-lab` の `/samples/sample18-task-board` で、起動後に簡単な task board UI を触れるようにする。
   - checker は import / sync 後に 4 output を publish し、actual generated reference tree と一致することを検証する。
   - HTTP smoke は login、page 表示、task 作成、task 編集まで確認する。
 - `sample19-json-first-content-model-demo`
   - DB 設計を知らないユーザーが JSON で content model を見立てる入口 sample とした。
-  - User JSON の nested `author` / `category` を、AI が `JsonAuthor` / `JsonCategory` / `ArticleJsonModel` / `ArticlePublicSummary` に解釈する story にする。
+  - User JSON の nested `author` / `category` を、AI が physical `json_author` / `json_category` / `article_json_model` / `article_public_summary` と generated `JsonAuthor` / `JsonCategory` / `ArticleJsonModel` / `ArticlePublicSummary` に解釈する story にする。
   - `ArticleJsonModel.GetPublishedArticlePublicSummaryList` で published article の public summary を join read model として出す。
   - outputs は `DATACLASS-PHP`、`DBACCESS-PHP` に絞り、OpenAPI / HTML / editor workflow は `sample20+` へ送る。
   - checker は import / sync 後に 2 output を publish し、actual generated reference tree と一致することを検証する。
   - `sample19` は ebook 本体ではなく JSON-first entrance なので、MySQL / MariaDB と SQLite config store profile の両方を維持する。
 - `sample20-content-publishing-demo`
   - `sample19` の JSON-first entrance を受けて、public に出す content publishing 面だけを最小化して作る first ebook/content lane とした。
-  - `ContentArticle` 1 table と `GetPublishedContentArticleList` / `GetPublishedContentArticle` の 2 function だけを使う。
+  - physical `content_article` / generated `ContentArticle` 1 table と `GetPublishedContentArticleList` / `GetPublishedContentArticle` の 2 function だけを使う。
   - draft article は seed するが public DBAccess / OpenAPI には出さず、publish surface から除外されることを sample story に含める。
   - outputs は `DATACLASS-PHP`、`DBACCESS-PHP`、`HTML-PAGE`、`OPENAPI-JSON` とする。
   - EPUB は sample assets として表示/download 側で扱う方針に留め、sample20 では EPUB 生成も EPUB import も扱わない。
@@ -159,36 +159,36 @@ This roadmap defines the user-facing tutorial lane under `sample/tutorials/`. It
   - `sample20+` は ebook / content lane なので、runtime profile は MySQL / MariaDB canonical のみに絞る。
 - `sample21-ebook-catalog-api-demo`
   - `sample20` の generic content publishing model を ebook catalog domain へ置き換える first catalog sample とした。
-  - `EbookSeries` / `EbookAuthor` / `EbookGenre` / `EbookBook` / link table / `EbookCatalogItem` を使い、少し現実的な catalog schema を見せる。
+  - physical `ebook_series` / `ebook_author` / `ebook_genre` / `ebook_book` / link tables / `ebook_catalog_item` と generated `EbookSeries` / `EbookAuthor` / `EbookGenre` / `EbookBook` / `EbookCatalogItem` を使い、少し現実的な catalog schema を見せる。
   - `EbookCatalogItem.GetPublicEbookCatalogList` / `GetPublicEbookBook` で public catalog list/detail の OpenAPI surface を作る。
   - list は author slug、genre slug、series slug、title `LIKE`、limit を argument として持つ。optional filter UI はまだ扱わない。
   - EPUB は `EpubStatus` / `PrimaryEpubUrl` の metadata だけを持たせ、生成・import・reader 表示は後続 sample へ送る。
   - outputs は `DATACLASS-PHP`、`DBACCESS-PHP`、`OPENAPI-JSON` とする。
 - `sample22-ebook-chapter-workflow-demo`
   - `sample21` の ebook catalog を受けて、book の子として chapter workflow を足す sample とした。
-  - `EbookWorkflowBook` / `EbookWorkflowChapter` / `EbookWorkflowPublishedChapter` を使い、draft chapter が public API に出ない境界を固定する。
+  - physical `ebook_workflow_book` / `ebook_workflow_chapter` / `ebook_workflow_published_chapter` と generated `EbookWorkflowBook` / `EbookWorkflowChapter` / `EbookWorkflowPublishedChapter` を使い、draft chapter が public API に出ない境界を固定する。
   - public read は `GetPublishedEbookWorkflowChapterList` / `GetPublishedEbookWorkflowChapter`、editor write は `InsertEbookWorkflowChapter` / `UpdateEbookWorkflowChapterDraft` / `UpdateEbookWorkflowChapterOrder` / `PublishEbookWorkflowChapter` に絞る。
   - `SpineOrder` / `NavLabel` / `EpubResourcePath` は HTML reader と EPUB nav/spine の両方に使える metadata として扱う。
   - editor UI、revision history、EPUB generation / parsing は後続または out of scope に送る。
 - `sample23-ebook-media-metadata-demo`
   - `sample22` の EPUB-facing metadata を受けて、同梱 EPUB fixture の delivery metadata を DB / API に載せる sample とした。
-  - `EbookMediaBook` / `EbookMediaAsset` / `EbookMediaBookAsset` / `EbookMediaDelivery` を使い、asset 本体ではなく URL / MIME type / file size / sha256 / version を管理する。
+  - physical `ebook_media_book` / `ebook_media_asset` / `ebook_media_book_asset` / `ebook_media_delivery` と generated `EbookMediaBook` / `EbookMediaAsset` / `EbookMediaBookAsset` / `EbookMediaDelivery` を使い、asset 本体ではなく URL / MIME type / file size / sha256 / version を管理する。
   - public read は `GetPublicEbookMediaDeliveryList` / `GetPublicEbookMediaAsset`、editor write は `InsertEbookMediaAsset` / `UpdateEbookMediaAssetMetadata` に絞る。
   - EPUB generation / parsing / upload / blob storage / CDN lifecycle は out of scope に送る。
 - `sample24-ebook-public-reader-site-demo`
   - `sample21-23` の読者向け概念をまとめ、公開本 / 章 / EPUB download metadata を reader site と app API の形で出す sample とした。
-  - `EbookReaderBook` / `EbookReaderChapter` / `EbookReaderMediaDelivery` を使い、draft book / chapter を public surface から除外する。
+  - physical `ebook_reader_book` / `ebook_reader_chapter` / `ebook_reader_media_delivery` と generated `EbookReaderBook` / `EbookReaderChapter` / `EbookReaderMediaDelivery` を使い、draft book / chapter を public surface から除外する。
   - public read は `GetPublicEbookReaderBookList` / `GetPublicEbookReaderBook` / `GetPublicEbookReaderChapterList` / `GetPublicEbookReaderChapter` / `GetPublicEbookReaderMediaDeliveryList` に絞る。
   - HTML-PAGE は curated reader page artifact とし、production routing、EPUB renderer、search、purchase は out of scope に送る。
 - `sample25-ebook-editor-auth-cms-demo`
   - `sample24` の public reader surface と対になる、編集者向けの authenticated CMS API sample とした。
-  - `EbookEditorBook` / `EbookEditorChapter` を使い、chapter preview、draft update、publish の最小 API に絞る。
+  - physical `ebook_editor_book` / `ebook_editor_chapter` と generated `EbookEditorBook` / `EbookEditorChapter` を使い、chapter preview、draft update、publish の最小 API に絞る。
   - editor API は legacy-compatible `ProjectToken` protected `AUTH-PROXY-SERVER` として publish し、missing / empty / wrong / env missing token が fail-closed になることも検証する。
   - current generated runtime security baseline は `sample16` の static bearer authenticated proxy に置き、`sample25` は ebook CMS lane の compatibility sample として維持する。
   - full editor UI、user / role 管理、audit log、revision history、approval workflow、EPUB generation は out of scope に送る。
 - `sample26-ebook-headless-cms-capstone`
   - `sample19-25` の到達点として、JSON-first ebook model から public site / app API / editor auth API / metadata bundle を 1 project で説明する capstone とした。
-  - `EbookCmsBook` / `EbookCmsChapter` に author、cover、EPUB delivery metadata を寄せ、sample として読める compact schema に留める。
+  - physical `ebook_cms_book` / `ebook_cms_chapter` と generated `EbookCmsBook` / `EbookCmsChapter` に author、cover、EPUB delivery metadata を寄せ、sample として読める compact schema に留める。
   - outputs は `DATACLASS-PHP`、`DBACCESS-PHP`、`HTML-PAGE`、`OPENAPI-JSON`、`AUTH-PROXY-SERVER` とし、checker が `PROJECT-METADATA-BUNDLE` export も検証する。
   - 本運用に必要な user / role 管理、audit log、revision history、approval workflow、upload、EPUB build、search、payment / DRM は Production Notes へ送る。
 

@@ -11,6 +11,10 @@
 
 ## Index
 
+- `2026-0627-generated-physical-logical-sample-naming-plan.md`
+  - generated name migration の次 slice として、tracked tutorial samples の mixed-case physical DB/source names を snake_case physical names へ移行し、generated PHP/OpenAPI/proxy surface を `physical-logical-v1` で安定させた記録。`sample14` custom proxy boundary と sample-wide regression guards まで含む。Status: `TRACKED_AND_CUSTOM_PROXY_SAMPLE_NAMING_MIGRATION_COMPLETED`。
+- `2026-0626-generated-name-migration-sample-follow-up.md`
+  - canonical DataClass base template、tutorial sample generated references、sample seed descriptions、current docs wording を `DataClass` 表記へ揃えた generated name migration follow-up slice。Status: `SAMPLE_WIDE_COMMENT_AND_SEED_DOCS_SLICE_APPLIED`。
 - `2026-0621-oss-consulting-readiness-inventory.md`
   - US / overseas task intake、OSS adoption、consulting、implementation support を前提に、必要な資料 package、機能 package、first slice、guardrails を棚卸しした current inventory。Status: `CURRENT INVENTORY`。
 - `2026-0621-plan-inventory.md`

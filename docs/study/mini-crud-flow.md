@@ -4,7 +4,7 @@ English companion:
 This study note uses `sample10-dbaccess-mini-crud-flow` as the capstone tutorial. It brings together list, detail, create, update, and delete functions around one small table.
 
 `sample10-dbaccess-mini-crud-flow` は tutorial lane の capstone です。  
-`SupportTicket` 1 table を使って、list / detail / create / update / delete を 1 つの小さな CRUD flow として見ます。
+physical `support_ticket` / generated `SupportTicket` 1 table を使って、list / detail / create / update / delete を 1 つの小さな CRUD flow として見ます。
 
 ## まず実行する
 

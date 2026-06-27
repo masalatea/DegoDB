@@ -23,7 +23,8 @@ make sample12-pack-runtime-test
 
 - `database_sources.source_key = sample12_lab`
 - import source: `named-live-schema:sample12_lab`
-- external physical table: `ExternalArticle`
+- external physical table: `external_article`
+- generated Data Class surface: `ExternalArticle`
 - generated output: `DATACLASS-PHP`
 
 `sample12` では OpenAPI / proxy runtime は扱いません。外から API surface を確認する flow は `sample13` に分けています。

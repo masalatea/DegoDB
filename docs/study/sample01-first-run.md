@@ -8,7 +8,7 @@ This study note uses `sample01-simple-table-runtime` as the smallest end-to-end 
 
 ## 目的
 
-- `Article` table を import する流れを見る
+- physical `article` / generated `Article` table を import する流れを見る
 - Data Class と DB Access の output がどこに出るか確認する
 - seed / reference / actual output の役割を分けて理解する
 
@@ -34,11 +34,11 @@ make sample01-pack-runtime-test
 1. `seed/900_010_sample1_project_seed.sql`
    - `SAMPLE1` project と source output 定義の入口を見る
 2. `seed/900_020_sample1_table_and_data_class_seed.sql`
-   - source schema 側の `Article` table を見る
+   - source schema 側の physical `article` table を見る
 3. `seed/900_025_sample1_db_access_seed.sql`
    - DB Access class / function の最小 metadata を見る
 4. `reference/DATACLASS-PHP/`
-   - `Article` table が Data Class としてどう出るか見る
+   - generated `Article` Data Class がどう出るか見る
 5. `reference/DBACCESS-PHP/`
    - CRUD 入口の DB Access class がどう出るか見る
 

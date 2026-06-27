@@ -48,7 +48,7 @@ make sample03-pack-runtime-test
 
 見る点:
 
-- `TaskStatus` / `TaskPriority` のような lookup table を Data Class として読む
+- physical `task_status` / `task_priority` から generated `TaskStatus` / `TaskPriority` Data Class がどう出るか読む
 - generated Data Class に application-specific caption logic を詰め込まない
 - lookup 表現は後段の formatter / service / custom layer に逃がす前提を理解する
 
@@ -68,7 +68,7 @@ make sample04-pack-runtime-test
 
 - 1 table ではなく、複数 table を import / sync する
 - current Data Class sync では FK から relation object を自動生成しない
-- `PostComment.PostId` は scalar field として同期される
+- physical `post_comment.post_id` は generated `PostComment.postId` scalar field として同期される
 
 ## 終了条件
 
