@@ -13,11 +13,11 @@ require_once dirname(__DIR__, 2) . '/app/source_output_repository.php';
 
 const APP_SAMPLE8_DBACCESS_JOIN_READ_MODEL_PROJECT_KEY = 'SAMPLE08';
 const APP_SAMPLE8_DBACCESS_JOIN_READ_MODEL_TABLE_NAMES = [
-    'BlogAuthor',
-    'BlogPost',
-    'BlogPostAuthorSummary',
+    'blog_author',
+    'blog_post',
+    'blog_post_author_summary',
 ];
-const APP_SAMPLE8_DBACCESS_JOIN_READ_MODEL_SOURCE_NAME = 'BlogPost';
+const APP_SAMPLE8_DBACCESS_JOIN_READ_MODEL_SOURCE_NAME = 'blog_post';
 const APP_SAMPLE8_DBACCESS_JOIN_READ_MODEL_FUNCTION_NAME = 'GetPublishedBlogPostAuthorSummaryList';
 const APP_SAMPLE8_DBACCESS_JOIN_READ_MODEL_DATA_CLASS_BASE_NAME = 'BlogPostAuthorSummary';
 const APP_SAMPLE8_DBACCESS_JOIN_READ_MODEL_REFERENCE_SOURCE_OUTPUT_KEYS = [
@@ -25,10 +25,10 @@ const APP_SAMPLE8_DBACCESS_JOIN_READ_MODEL_REFERENCE_SOURCE_OUTPUT_KEYS = [
     'DBACCESS-PHP',
 ];
 const APP_SAMPLE8_DBACCESS_JOIN_READ_MODEL_SELECT_TARGET_LABELS = [
-    'BlogPost.Id->BlogPostId',
-    'BlogPost.Title->BlogPostTitle',
-    'BlogAuthor.Id->BlogAuthorId',
-    'BlogAuthor.Name->BlogAuthorName',
+    'blog_post.id->blogPostId',
+    'blog_post.title->blogPostTitle',
+    'blog_author.id->blogAuthorId',
+    'blog_author.name->blogAuthorName',
 ];
 
 function app_sample8_dbaccess_join_read_model_default_reference_root(): string
@@ -464,11 +464,11 @@ function app_sample8_dbaccess_join_read_model_run(array $app, string $requestedB
         'db_access function data_class_base_name',
         $assertionErrors,
     );
-    app_sample8_dbaccess_join_read_model_assert_same('BlogPost', $functionResult['item']['target_table_name'] ?? '', 'db_access function target_table_name', $assertionErrors);
-    app_sample8_dbaccess_join_read_model_assert_same('BlogPost.Id asc', $functionResult['item']['sort_order_columns'] ?? '', 'db_access function sort_order_columns', $assertionErrors);
+    app_sample8_dbaccess_join_read_model_assert_same('blog_post', $functionResult['item']['target_table_name'] ?? '', 'db_access function target_table_name', $assertionErrors);
+    app_sample8_dbaccess_join_read_model_assert_same('blog_post.id asc', $functionResult['item']['sort_order_columns'] ?? '', 'db_access function sort_order_columns', $assertionErrors);
     app_sample8_dbaccess_join_read_model_assert_same('', $functionResult['item']['limit_parameter_type'] ?? '', 'db_access function limit_parameter_type', $assertionErrors);
     app_sample8_dbaccess_join_read_model_assert_same(
-        'public function GetPublishedBlogPostAuthorSummaryList()',
+        '',
         $functionResult['item']['detected_signature'] ?? '',
         'db_access function detected_signature',
         $assertionErrors,
@@ -521,22 +521,22 @@ function app_sample8_dbaccess_join_read_model_run(array $app, string $requestedB
     }
 
     app_sample8_dbaccess_join_read_model_assert_same(3, count($selectWhereResult['items']), 'db_access select where count', $assertionErrors);
-    app_sample8_dbaccess_join_read_model_assert_same('BlogPost', $selectWhereResult['items'][0]['target_table_name'] ?? '', 'db_access join where target table', $assertionErrors);
-    app_sample8_dbaccess_join_read_model_assert_same('BlogAuthorId', $selectWhereResult['items'][0]['target_table_column_name'] ?? '', 'db_access join where target column', $assertionErrors);
+    app_sample8_dbaccess_join_read_model_assert_same('blog_post', $selectWhereResult['items'][0]['target_table_name'] ?? '', 'db_access join where target table', $assertionErrors);
+    app_sample8_dbaccess_join_read_model_assert_same('blog_author_id', $selectWhereResult['items'][0]['target_table_column_name'] ?? '', 'db_access join where target column', $assertionErrors);
     app_sample8_dbaccess_join_read_model_assert_same('anotherfield', $selectWhereResult['items'][0]['parameter_type'] ?? '', 'db_access join where parameter_type', $assertionErrors);
-    app_sample8_dbaccess_join_read_model_assert_same('BlogAuthor', $selectWhereResult['items'][0]['another_table_name'] ?? '', 'db_access join where another_table_name', $assertionErrors);
-    app_sample8_dbaccess_join_read_model_assert_same('Id', $selectWhereResult['items'][0]['another_field_name'] ?? '', 'db_access join where another_field_name', $assertionErrors);
+    app_sample8_dbaccess_join_read_model_assert_same('blog_author', $selectWhereResult['items'][0]['another_table_name'] ?? '', 'db_access join where another_table_name', $assertionErrors);
+    app_sample8_dbaccess_join_read_model_assert_same('id', $selectWhereResult['items'][0]['another_field_name'] ?? '', 'db_access join where another_field_name', $assertionErrors);
     app_sample8_dbaccess_join_read_model_assert_same('inner', $selectWhereResult['items'][0]['join_type'] ?? '', 'db_access join where join_type', $assertionErrors);
     app_sample8_dbaccess_join_read_model_assert_same('10', $selectWhereResult['items'][0]['where_order'] ?? '', 'db_access join where order', $assertionErrors);
 
-    app_sample8_dbaccess_join_read_model_assert_same('BlogPost', $selectWhereResult['items'][1]['target_table_name'] ?? '', 'db_access fixed post where target table', $assertionErrors);
-    app_sample8_dbaccess_join_read_model_assert_same('Status', $selectWhereResult['items'][1]['target_table_column_name'] ?? '', 'db_access fixed post where target column', $assertionErrors);
+    app_sample8_dbaccess_join_read_model_assert_same('blog_post', $selectWhereResult['items'][1]['target_table_name'] ?? '', 'db_access fixed post where target table', $assertionErrors);
+    app_sample8_dbaccess_join_read_model_assert_same('status', $selectWhereResult['items'][1]['target_table_column_name'] ?? '', 'db_access fixed post where target column', $assertionErrors);
     app_sample8_dbaccess_join_read_model_assert_same('fixed', $selectWhereResult['items'][1]['parameter_type'] ?? '', 'db_access fixed post where parameter_type', $assertionErrors);
     app_sample8_dbaccess_join_read_model_assert_same('published', $selectWhereResult['items'][1]['fixed_parameter'] ?? '', 'db_access fixed post where fixed_parameter', $assertionErrors);
     app_sample8_dbaccess_join_read_model_assert_same('20', $selectWhereResult['items'][1]['where_order'] ?? '', 'db_access fixed post where order', $assertionErrors);
 
-    app_sample8_dbaccess_join_read_model_assert_same('BlogAuthor', $selectWhereResult['items'][2]['target_table_name'] ?? '', 'db_access fixed author where target table', $assertionErrors);
-    app_sample8_dbaccess_join_read_model_assert_same('IsActive', $selectWhereResult['items'][2]['target_table_column_name'] ?? '', 'db_access fixed author where target column', $assertionErrors);
+    app_sample8_dbaccess_join_read_model_assert_same('blog_author', $selectWhereResult['items'][2]['target_table_name'] ?? '', 'db_access fixed author where target table', $assertionErrors);
+    app_sample8_dbaccess_join_read_model_assert_same('is_active', $selectWhereResult['items'][2]['target_table_column_name'] ?? '', 'db_access fixed author where target column', $assertionErrors);
     app_sample8_dbaccess_join_read_model_assert_same('fixed', $selectWhereResult['items'][2]['parameter_type'] ?? '', 'db_access fixed author where parameter_type', $assertionErrors);
     app_sample8_dbaccess_join_read_model_assert_same('raw', $selectWhereResult['items'][2]['parameter_data_type'] ?? '', 'db_access fixed author where parameter_data_type', $assertionErrors);
     app_sample8_dbaccess_join_read_model_assert_same('1', $selectWhereResult['items'][2]['fixed_parameter'] ?? '', 'db_access fixed author where fixed_parameter', $assertionErrors);

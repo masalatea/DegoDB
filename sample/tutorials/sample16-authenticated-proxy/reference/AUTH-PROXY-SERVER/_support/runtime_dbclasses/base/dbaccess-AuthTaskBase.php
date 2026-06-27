@@ -24,7 +24,7 @@ class AuthTaskDBAccessBase
         connect_mtooldb_if_not_yet();
         reconnect_mtooldb_if_necessary();
 
-        $last_sql_command_for_mtooldb = 'select `AuthTask`.`Id`, `AuthTask`.`Title`, `AuthTask`.`Status`, `AuthTask`.`OwnerName`, `AuthTask`.`UpdatedAt` from `AuthTask` where `AuthTask`.`Id` = ?';
+        $last_sql_command_for_mtooldb = 'select `auth_task`.`id`, `auth_task`.`title`, `auth_task`.`status`, `auth_task`.`owner_name`, `auth_task`.`updated_at` from `auth_task` where `auth_task`.`id` = ?';
         $ret = $mtooldb->execute($last_sql_command_for_mtooldb, [
             $param_AuthTask_Id_where,
         ]);
@@ -34,11 +34,11 @@ class AuthTaskDBAccessBase
         }
         while($thisline=$ret->fetch_row()) {
             $thisresult = new AuthTaskData();
-            $thisresult->Id = $thisline[0];
-            $thisresult->Title = $thisline[1];
-            $thisresult->Status = $thisline[2];
-            $thisresult->OwnerName = $thisline[3];
-            $thisresult->UpdatedAt = $thisline[4];
+            $thisresult->id = $thisline[0];
+            $thisresult->title = $thisline[1];
+            $thisresult->status = $thisline[2];
+            $thisresult->ownerName = $thisline[3];
+            $thisresult->updatedAt = $thisline[4];
             return $thisresult;
         }
         return NULL;

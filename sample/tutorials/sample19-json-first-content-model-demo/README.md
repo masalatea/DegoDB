@@ -39,13 +39,13 @@ DB のことはよく分かりません。
 
 The sample story treats the JSON as the user's input. AI then interprets the nested shape into normalized tables:
 
-- `JsonAuthor`
+- physical table `json_author`, generated surface `JsonAuthor`
   - stores author values from `article.author`
-- `JsonCategory`
+- physical table `json_category`, generated surface `JsonCategory`
   - stores category values from `article.category`
-- `ArticleJsonModel`
+- physical table `article_json_model`, generated surface `ArticleJsonModel`
   - stores the article body and foreign keys to author / category
-- `ArticlePublicSummary`
+- physical table `article_public_summary`, generated surface `ArticlePublicSummary`
   - a read model DTO for public published article lists
 
 Implementation note: the seed SQL already contains the interpreted schema. That is intentional for a sample pack. The user-facing story is still JSON first, then AI-interpreted DB / API metadata.
@@ -53,17 +53,17 @@ Implementation note: the seed SQL already contains the interpreted schema. That 
 ## Generated DB / API Scope
 
 - tables:
-  - `JsonAuthor`
-  - `JsonCategory`
-  - `ArticleJsonModel`
-  - `ArticlePublicSummary`
+  - physical `json_author`, generated `JsonAuthor`
+  - physical `json_category`, generated `JsonCategory`
+  - physical `article_json_model`, generated `ArticleJsonModel`
+  - physical `article_public_summary`, generated `ArticlePublicSummary`
 - DBAccess:
   - `ArticleJsonModel.GetPublishedArticlePublicSummaryList`
 - source outputs:
   - `DATACLASS-PHP`
   - `DBACCESS-PHP`
 
-`GetPublishedArticlePublicSummaryList` joins `ArticleJsonModel`, `JsonAuthor`, and `JsonCategory`, then returns only `Status = published` rows.
+`GetPublishedArticlePublicSummaryList` joins `article_json_model`, `json_author`, and `json_category`, then returns only `status = published` rows.
 
 ## 起動
 
@@ -95,16 +95,16 @@ make sample19-pack-runtime-test-sqlite
 
 ```bash
 docker compose -f compose.yaml -f compose.local-db-config.yaml -f sample/tutorials/sample19-json-first-content-model-demo/compose.yaml exec -T web-admin \
-  php /var/www/mtool/scripts/import_project_tables.php --project-key=SAMPLE19 --source=live-schema --table=JsonAuthor
+  php /var/www/mtool/scripts/import_project_tables.php --project-key=SAMPLE19 --source=live-schema --table=json_author
 
 docker compose -f compose.yaml -f compose.local-db-config.yaml -f sample/tutorials/sample19-json-first-content-model-demo/compose.yaml exec -T web-admin \
-  php /var/www/mtool/scripts/import_project_tables.php --project-key=SAMPLE19 --source=live-schema --table=JsonCategory
+  php /var/www/mtool/scripts/import_project_tables.php --project-key=SAMPLE19 --source=live-schema --table=json_category
 
 docker compose -f compose.yaml -f compose.local-db-config.yaml -f sample/tutorials/sample19-json-first-content-model-demo/compose.yaml exec -T web-admin \
-  php /var/www/mtool/scripts/import_project_tables.php --project-key=SAMPLE19 --source=live-schema --table=ArticleJsonModel
+  php /var/www/mtool/scripts/import_project_tables.php --project-key=SAMPLE19 --source=live-schema --table=article_json_model
 
 docker compose -f compose.yaml -f compose.local-db-config.yaml -f sample/tutorials/sample19-json-first-content-model-demo/compose.yaml exec -T web-admin \
-  php /var/www/mtool/scripts/import_project_tables.php --project-key=SAMPLE19 --source=live-schema --table=ArticlePublicSummary
+  php /var/www/mtool/scripts/import_project_tables.php --project-key=SAMPLE19 --source=live-schema --table=article_public_summary
 
 docker compose -f compose.yaml -f compose.local-db-config.yaml -f sample/tutorials/sample19-json-first-content-model-demo/compose.yaml exec -T web-admin \
   php /var/www/mtool/scripts/sync_project_data_classes.php --project-key=SAMPLE19

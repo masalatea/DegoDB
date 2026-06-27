@@ -8,11 +8,22 @@ final class Sample10DbAccessMiniCrudFlowOutputTest extends TestCase
 {
     public function testReferenceOutputsStayInSync(): void
     {
-        $result = app_sample10_dbaccess_mini_crud_flow_run(
-            app_bootstrap(),
-            'phpunit',
-            app_sample10_dbaccess_mini_crud_flow_default_reference_root(),
-        );
+        $previousPolicy = getenv('MTOOL_GENERATED_NAME_POLICY');
+        putenv('MTOOL_GENERATED_NAME_POLICY=physical-logical-v1');
+
+        try {
+            $result = app_sample10_dbaccess_mini_crud_flow_run(
+                app_bootstrap(),
+                'phpunit',
+                app_sample10_dbaccess_mini_crud_flow_default_reference_root(),
+            );
+        } finally {
+            if ($previousPolicy === false) {
+                putenv('MTOOL_GENERATED_NAME_POLICY');
+            } else {
+                putenv('MTOOL_GENERATED_NAME_POLICY=' . $previousPolicy);
+            }
+        }
 
         self::assertTrue(
             $result['ok'],

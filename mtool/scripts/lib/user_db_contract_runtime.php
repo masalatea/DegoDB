@@ -175,8 +175,8 @@ function app_user_db_contract_runtime_sample18_definition(): array
  */
 function app_user_db_contract_runtime_sample21_definition(): array
 {
-    $commonRows = "INSERT INTO EbookCatalogItem
-        (BookId, BookTitle, BookSlug, SeriesName, AuthorName, AuthorSlug, GenreName, GenreSlug, SeriesSlug, PublishedAt, Summary, EpubStatus, PrimaryEpubUrl, Status)
+    $commonRows = "INSERT INTO ebook_catalog_item
+        (book_id, book_title, book_slug, series_name, author_name, author_slug, genre_name, genre_slug, series_slug, published_at, summary, epub_status, primary_epub_url, status)
         VALUES
         (1, 'First Ebook', 'first-ebook', 'Starter Series', 'Aki Author', 'aki-author', 'Guides', 'guides', 'starter-series', '2026-06-20 09:00:00', 'First summary', 'ready', '/ebooks/first.epub', 'published'),
         (2, 'Second Ebook', 'second-ebook', 'Starter Series', 'Aki Author', 'aki-author', 'Guides', 'guides', 'starter-series', '2026-06-21 09:00:00', 'Second summary', 'ready', '/ebooks/second.epub', 'published'),
@@ -192,62 +192,62 @@ function app_user_db_contract_runtime_sample21_definition(): array
         ],
         'fixture_sql' => [
             'mysql' => [
-                'DROP TABLE IF EXISTS EbookCatalogItem',
-                "CREATE TABLE EbookCatalogItem (
-                    BookId BIGINT NOT NULL PRIMARY KEY,
-                    BookTitle VARCHAR(255) NOT NULL,
-                    BookSlug VARCHAR(191) NOT NULL,
-                    SeriesName VARCHAR(255) NOT NULL,
-                    AuthorName VARCHAR(255) NOT NULL,
-                    AuthorSlug VARCHAR(191) NOT NULL,
-                    GenreName VARCHAR(255) NOT NULL,
-                    GenreSlug VARCHAR(191) NOT NULL,
-                    SeriesSlug VARCHAR(191) NOT NULL,
-                    PublishedAt DATETIME NULL,
-                    Summary TEXT NOT NULL,
-                    EpubStatus VARCHAR(32) NOT NULL,
-                    PrimaryEpubUrl VARCHAR(255) NULL,
-                    Status VARCHAR(32) NOT NULL
+                'DROP TABLE IF EXISTS ebook_catalog_item',
+                "CREATE TABLE ebook_catalog_item (
+                    book_id BIGINT NOT NULL PRIMARY KEY,
+                    book_title VARCHAR(255) NOT NULL,
+                    book_slug VARCHAR(191) NOT NULL,
+                    series_name VARCHAR(255) NOT NULL,
+                    author_name VARCHAR(255) NOT NULL,
+                    author_slug VARCHAR(191) NOT NULL,
+                    genre_name VARCHAR(255) NOT NULL,
+                    genre_slug VARCHAR(191) NOT NULL,
+                    series_slug VARCHAR(191) NOT NULL,
+                    published_at DATETIME NULL,
+                    summary TEXT NOT NULL,
+                    epub_status VARCHAR(32) NOT NULL,
+                    primary_epub_url VARCHAR(255) NULL,
+                    status VARCHAR(32) NOT NULL
                 )",
                 $commonRows,
             ],
             'pgsql' => [
-                'DROP TABLE IF EXISTS EbookCatalogItem',
-                "CREATE TABLE EbookCatalogItem (
-                    BookId BIGINT NOT NULL PRIMARY KEY,
-                    BookTitle VARCHAR(255) NOT NULL,
-                    BookSlug VARCHAR(191) NOT NULL,
-                    SeriesName VARCHAR(255) NOT NULL,
-                    AuthorName VARCHAR(255) NOT NULL,
-                    AuthorSlug VARCHAR(191) NOT NULL,
-                    GenreName VARCHAR(255) NOT NULL,
-                    GenreSlug VARCHAR(191) NOT NULL,
-                    SeriesSlug VARCHAR(191) NOT NULL,
-                    PublishedAt TIMESTAMP NULL,
-                    Summary TEXT NOT NULL,
-                    EpubStatus VARCHAR(32) NOT NULL,
-                    PrimaryEpubUrl VARCHAR(255) NULL,
-                    Status VARCHAR(32) NOT NULL
+                'DROP TABLE IF EXISTS ebook_catalog_item',
+                "CREATE TABLE ebook_catalog_item (
+                    book_id BIGINT NOT NULL PRIMARY KEY,
+                    book_title VARCHAR(255) NOT NULL,
+                    book_slug VARCHAR(191) NOT NULL,
+                    series_name VARCHAR(255) NOT NULL,
+                    author_name VARCHAR(255) NOT NULL,
+                    author_slug VARCHAR(191) NOT NULL,
+                    genre_name VARCHAR(255) NOT NULL,
+                    genre_slug VARCHAR(191) NOT NULL,
+                    series_slug VARCHAR(191) NOT NULL,
+                    published_at TIMESTAMP NULL,
+                    summary TEXT NOT NULL,
+                    epub_status VARCHAR(32) NOT NULL,
+                    primary_epub_url VARCHAR(255) NULL,
+                    status VARCHAR(32) NOT NULL
                 )",
                 $commonRows,
             ],
             'sqlite' => [
-                'DROP TABLE IF EXISTS EbookCatalogItem',
-                "CREATE TABLE EbookCatalogItem (
-                    BookId INTEGER NOT NULL PRIMARY KEY,
-                    BookTitle TEXT NOT NULL,
-                    BookSlug TEXT NOT NULL,
-                    SeriesName TEXT NOT NULL,
-                    AuthorName TEXT NOT NULL,
-                    AuthorSlug TEXT NOT NULL,
-                    GenreName TEXT NOT NULL,
-                    GenreSlug TEXT NOT NULL,
-                    SeriesSlug TEXT NOT NULL,
-                    PublishedAt TEXT NULL,
-                    Summary TEXT NOT NULL,
-                    EpubStatus TEXT NOT NULL,
-                    PrimaryEpubUrl TEXT NULL,
-                    Status TEXT NOT NULL
+                'DROP TABLE IF EXISTS ebook_catalog_item',
+                "CREATE TABLE ebook_catalog_item (
+                    book_id INTEGER NOT NULL PRIMARY KEY,
+                    book_title TEXT NOT NULL,
+                    book_slug TEXT NOT NULL,
+                    series_name TEXT NOT NULL,
+                    author_name TEXT NOT NULL,
+                    author_slug TEXT NOT NULL,
+                    genre_name TEXT NOT NULL,
+                    genre_slug TEXT NOT NULL,
+                    series_slug TEXT NOT NULL,
+                    published_at TEXT NULL,
+                    summary TEXT NOT NULL,
+                    epub_status TEXT NOT NULL,
+                    primary_epub_url TEXT NULL,
+                    status TEXT NOT NULL
                 )",
                 $commonRows,
             ],
@@ -261,14 +261,14 @@ function app_user_db_contract_runtime_sample21_definition(): array
  */
 function app_user_db_contract_runtime_sample22_definition(): array
 {
-    $publishedRows = "INSERT INTO EbookWorkflowPublishedChapter
-        (ChapterId, BookId, BookSlug, ChapterTitle, ChapterSlug, SpineOrder, NavLabel, EpubResourcePath, BodyMarkdown, Status)
+    $publishedRows = "INSERT INTO ebook_workflow_published_chapter
+        (chapter_id, book_id, book_slug, chapter_title, chapter_slug, spine_order, nav_label, epub_resource_path, body_markdown, status)
         VALUES
         (1, 1, 'workflow-book', 'Opening', 'opening', 1, 'Opening', 'chapters/opening.xhtml', '# Opening', 'published'),
         (2, 1, 'workflow-book', 'Middle', 'middle', 2, 'Middle', 'chapters/middle.xhtml', '# Middle', 'published'),
         (3, 1, 'workflow-book', 'Draft Hidden', 'draft-hidden', 3, 'Draft', 'chapters/draft.xhtml', '# Draft', 'draft')";
-    $chapterRows = "INSERT INTO EbookWorkflowChapter
-        (Id, EbookWorkflowBookId, ChapterTitle, ChapterSlug, Status, SpineOrder, NavLabel, EpubResourcePath, BodyMarkdown, PublishedAt, UpdatedAt)
+    $chapterRows = "INSERT INTO ebook_workflow_chapter
+        (id, ebook_workflow_book_id, chapter_title, chapter_slug, status, spine_order, nav_label, epub_resource_path, body_markdown, published_at, updated_at)
         VALUES
         (1, 1, 'Opening', 'opening', 'published', 1, 'Opening', 'chapters/opening.xhtml', '# Opening', '2026-06-20 09:00:00', '2026-06-20 09:00:00'),
         (2, 1, 'Draft Chapter', 'draft-chapter', 'draft', 2, 'Draft', 'chapters/draft.xhtml', '# Draft', NULL, '2026-06-20 10:00:00')";
@@ -284,95 +284,95 @@ function app_user_db_contract_runtime_sample22_definition(): array
         ],
         'fixture_sql' => [
             'mysql' => [
-                'DROP TABLE IF EXISTS EbookWorkflowPublishedChapter',
-                'DROP TABLE IF EXISTS EbookWorkflowChapter',
-                "CREATE TABLE EbookWorkflowPublishedChapter (
-                    ChapterId BIGINT NOT NULL PRIMARY KEY,
-                    BookId BIGINT NOT NULL,
-                    BookSlug VARCHAR(191) NOT NULL,
-                    ChapterTitle VARCHAR(255) NOT NULL,
-                    ChapterSlug VARCHAR(191) NOT NULL,
-                    SpineOrder INT NOT NULL,
-                    NavLabel VARCHAR(255) NOT NULL,
-                    EpubResourcePath VARCHAR(255) NOT NULL,
-                    BodyMarkdown TEXT NOT NULL,
-                    Status VARCHAR(32) NOT NULL
+                'DROP TABLE IF EXISTS ebook_workflow_published_chapter',
+                'DROP TABLE IF EXISTS ebook_workflow_chapter',
+                "CREATE TABLE ebook_workflow_published_chapter (
+                    chapter_id BIGINT NOT NULL PRIMARY KEY,
+                    book_id BIGINT NOT NULL,
+                    book_slug VARCHAR(191) NOT NULL,
+                    chapter_title VARCHAR(255) NOT NULL,
+                    chapter_slug VARCHAR(191) NOT NULL,
+                    spine_order INT NOT NULL,
+                    nav_label VARCHAR(255) NOT NULL,
+                    epub_resource_path VARCHAR(255) NOT NULL,
+                    body_markdown TEXT NOT NULL,
+                    status VARCHAR(32) NOT NULL
                 )",
-                "CREATE TABLE EbookWorkflowChapter (
-                    Id BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-                    EbookWorkflowBookId BIGINT NOT NULL,
-                    ChapterTitle VARCHAR(255) NOT NULL,
-                    ChapterSlug VARCHAR(191) NOT NULL,
-                    Status VARCHAR(32) NOT NULL,
-                    SpineOrder INT NOT NULL,
-                    NavLabel VARCHAR(255) NOT NULL,
-                    EpubResourcePath VARCHAR(255) NOT NULL,
-                    BodyMarkdown TEXT NOT NULL,
-                    PublishedAt DATETIME NULL,
-                    UpdatedAt DATETIME NOT NULL
+                "CREATE TABLE ebook_workflow_chapter (
+                    id BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+                    ebook_workflow_book_id BIGINT NOT NULL,
+                    chapter_title VARCHAR(255) NOT NULL,
+                    chapter_slug VARCHAR(191) NOT NULL,
+                    status VARCHAR(32) NOT NULL,
+                    spine_order INT NOT NULL,
+                    nav_label VARCHAR(255) NOT NULL,
+                    epub_resource_path VARCHAR(255) NOT NULL,
+                    body_markdown TEXT NOT NULL,
+                    published_at DATETIME NULL,
+                    updated_at DATETIME NOT NULL
                 )",
                 $publishedRows,
                 $chapterRows,
             ],
             'pgsql' => [
-                'DROP TABLE IF EXISTS EbookWorkflowPublishedChapter',
-                'DROP TABLE IF EXISTS EbookWorkflowChapter',
-                "CREATE TABLE EbookWorkflowPublishedChapter (
-                    ChapterId BIGINT NOT NULL PRIMARY KEY,
-                    BookId BIGINT NOT NULL,
-                    BookSlug VARCHAR(191) NOT NULL,
-                    ChapterTitle VARCHAR(255) NOT NULL,
-                    ChapterSlug VARCHAR(191) NOT NULL,
-                    SpineOrder INTEGER NOT NULL,
-                    NavLabel VARCHAR(255) NOT NULL,
-                    EpubResourcePath VARCHAR(255) NOT NULL,
-                    BodyMarkdown TEXT NOT NULL,
-                    Status VARCHAR(32) NOT NULL
+                'DROP TABLE IF EXISTS ebook_workflow_published_chapter',
+                'DROP TABLE IF EXISTS ebook_workflow_chapter',
+                "CREATE TABLE ebook_workflow_published_chapter (
+                    chapter_id BIGINT NOT NULL PRIMARY KEY,
+                    book_id BIGINT NOT NULL,
+                    book_slug VARCHAR(191) NOT NULL,
+                    chapter_title VARCHAR(255) NOT NULL,
+                    chapter_slug VARCHAR(191) NOT NULL,
+                    spine_order INTEGER NOT NULL,
+                    nav_label VARCHAR(255) NOT NULL,
+                    epub_resource_path VARCHAR(255) NOT NULL,
+                    body_markdown TEXT NOT NULL,
+                    status VARCHAR(32) NOT NULL
                 )",
-                "CREATE TABLE EbookWorkflowChapter (
-                    Id BIGINT GENERATED BY DEFAULT AS IDENTITY PRIMARY KEY,
-                    EbookWorkflowBookId BIGINT NOT NULL,
-                    ChapterTitle VARCHAR(255) NOT NULL,
-                    ChapterSlug VARCHAR(191) NOT NULL,
-                    Status VARCHAR(32) NOT NULL,
-                    SpineOrder INTEGER NOT NULL,
-                    NavLabel VARCHAR(255) NOT NULL,
-                    EpubResourcePath VARCHAR(255) NOT NULL,
-                    BodyMarkdown TEXT NOT NULL,
-                    PublishedAt TIMESTAMP NULL,
-                    UpdatedAt TIMESTAMP NOT NULL
+                "CREATE TABLE ebook_workflow_chapter (
+                    id BIGINT GENERATED BY DEFAULT AS IDENTITY PRIMARY KEY,
+                    ebook_workflow_book_id BIGINT NOT NULL,
+                    chapter_title VARCHAR(255) NOT NULL,
+                    chapter_slug VARCHAR(191) NOT NULL,
+                    status VARCHAR(32) NOT NULL,
+                    spine_order INTEGER NOT NULL,
+                    nav_label VARCHAR(255) NOT NULL,
+                    epub_resource_path VARCHAR(255) NOT NULL,
+                    body_markdown TEXT NOT NULL,
+                    published_at TIMESTAMP NULL,
+                    updated_at TIMESTAMP NOT NULL
                 )",
                 $publishedRows,
                 $chapterRows,
-                'ALTER TABLE EbookWorkflowChapter ALTER COLUMN Id RESTART WITH 3',
+                'ALTER TABLE ebook_workflow_chapter ALTER COLUMN id RESTART WITH 3',
             ],
             'sqlite' => [
-                'DROP TABLE IF EXISTS EbookWorkflowPublishedChapter',
-                'DROP TABLE IF EXISTS EbookWorkflowChapter',
-                "CREATE TABLE EbookWorkflowPublishedChapter (
-                    ChapterId INTEGER NOT NULL PRIMARY KEY,
-                    BookId INTEGER NOT NULL,
-                    BookSlug TEXT NOT NULL,
-                    ChapterTitle TEXT NOT NULL,
-                    ChapterSlug TEXT NOT NULL,
-                    SpineOrder INTEGER NOT NULL,
-                    NavLabel TEXT NOT NULL,
-                    EpubResourcePath TEXT NOT NULL,
-                    BodyMarkdown TEXT NOT NULL,
-                    Status TEXT NOT NULL
+                'DROP TABLE IF EXISTS ebook_workflow_published_chapter',
+                'DROP TABLE IF EXISTS ebook_workflow_chapter',
+                "CREATE TABLE ebook_workflow_published_chapter (
+                    chapter_id INTEGER NOT NULL PRIMARY KEY,
+                    book_id INTEGER NOT NULL,
+                    book_slug TEXT NOT NULL,
+                    chapter_title TEXT NOT NULL,
+                    chapter_slug TEXT NOT NULL,
+                    spine_order INTEGER NOT NULL,
+                    nav_label TEXT NOT NULL,
+                    epub_resource_path TEXT NOT NULL,
+                    body_markdown TEXT NOT NULL,
+                    status TEXT NOT NULL
                 )",
-                "CREATE TABLE EbookWorkflowChapter (
-                    Id INTEGER PRIMARY KEY AUTOINCREMENT,
-                    EbookWorkflowBookId INTEGER NOT NULL,
-                    ChapterTitle TEXT NOT NULL,
-                    ChapterSlug TEXT NOT NULL,
-                    Status TEXT NOT NULL,
-                    SpineOrder INTEGER NOT NULL,
-                    NavLabel TEXT NOT NULL,
-                    EpubResourcePath TEXT NOT NULL,
-                    BodyMarkdown TEXT NOT NULL,
-                    PublishedAt TEXT NULL,
-                    UpdatedAt TEXT NOT NULL
+                "CREATE TABLE ebook_workflow_chapter (
+                    id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    ebook_workflow_book_id INTEGER NOT NULL,
+                    chapter_title TEXT NOT NULL,
+                    chapter_slug TEXT NOT NULL,
+                    status TEXT NOT NULL,
+                    spine_order INTEGER NOT NULL,
+                    nav_label TEXT NOT NULL,
+                    epub_resource_path TEXT NOT NULL,
+                    body_markdown TEXT NOT NULL,
+                    published_at TEXT NULL,
+                    updated_at TEXT NOT NULL
                 )",
                 $publishedRows,
                 $chapterRows,
@@ -387,13 +387,13 @@ function app_user_db_contract_runtime_sample22_definition(): array
  */
 function app_user_db_contract_runtime_sample23_definition(): array
 {
-    $deliveryRows = "INSERT INTO EbookMediaDelivery
-        (DeliveryId, BookId, BookSlug, AssetId, AssetSlug, AssetKind, DisplayRole, DisplayName, PublicUrl, MimeType, FileSizeBytes, Sha256, VersionLabel, SortOrder, IsPrimaryAsset, Status)
+    $deliveryRows = "INSERT INTO ebook_media_delivery
+        (delivery_id, book_id, book_slug, asset_id, asset_slug, asset_kind, display_role, display_name, public_url, mime_type, file_size_bytes, sha256, version_label, sort_order, is_primary_asset, status)
         VALUES
         (1, 1, 'media-book', 1, 'cover-image', 'image', 'cover', 'Cover Image', '/media/cover.jpg', 'image/jpeg', 1200, 'sha-cover', 'v1', 1, 1, 'published'),
         (2, 1, 'media-book', 2, 'epub-file', 'epub', 'download', 'EPUB File', '/media/book.epub', 'application/epub+zip', 3400, 'sha-epub', 'v1', 2, 0, 'published')";
-    $assetRows = "INSERT INTO EbookMediaAsset
-        (Id, AssetSlug, AssetKind, DisplayName, PublicUrl, StoragePath, MimeType, FileSizeBytes, Sha256, VersionLabel, Status, UpdatedAt)
+    $assetRows = "INSERT INTO ebook_media_asset
+        (id, asset_slug, asset_kind, display_name, public_url, storage_path, mime_type, file_size_bytes, sha256, version_label, status, updated_at)
         VALUES
         (1, 'cover-image', 'image', 'Cover Image', '/media/cover.jpg', '/storage/cover.jpg', 'image/jpeg', 1200, 'sha-cover', 'v1', 'published', '2026-06-20 09:00:00')";
 
@@ -408,116 +408,116 @@ function app_user_db_contract_runtime_sample23_definition(): array
         ],
         'fixture_sql' => [
             'mysql' => [
-                'DROP TABLE IF EXISTS EbookMediaDelivery',
-                'DROP TABLE IF EXISTS EbookMediaAsset',
-                "CREATE TABLE EbookMediaDelivery (
-                    DeliveryId BIGINT NOT NULL PRIMARY KEY,
-                    BookId BIGINT NOT NULL,
-                    BookSlug VARCHAR(191) NOT NULL,
-                    AssetId BIGINT NOT NULL,
-                    AssetSlug VARCHAR(191) NOT NULL,
-                    AssetKind VARCHAR(32) NOT NULL,
-                    DisplayRole VARCHAR(64) NOT NULL,
-                    DisplayName VARCHAR(255) NOT NULL,
-                    PublicUrl VARCHAR(255) NOT NULL,
-                    MimeType VARCHAR(128) NOT NULL,
-                    FileSizeBytes BIGINT NOT NULL,
-                    Sha256 VARCHAR(128) NOT NULL,
-                    VersionLabel VARCHAR(64) NOT NULL,
-                    SortOrder INT NOT NULL,
-                    IsPrimaryAsset INT NOT NULL,
-                    Status VARCHAR(32) NOT NULL
+                'DROP TABLE IF EXISTS ebook_media_delivery',
+                'DROP TABLE IF EXISTS ebook_media_asset',
+                "CREATE TABLE ebook_media_delivery (
+                    delivery_id BIGINT NOT NULL PRIMARY KEY,
+                    book_id BIGINT NOT NULL,
+                    book_slug VARCHAR(191) NOT NULL,
+                    asset_id BIGINT NOT NULL,
+                    asset_slug VARCHAR(191) NOT NULL,
+                    asset_kind VARCHAR(32) NOT NULL,
+                    display_role VARCHAR(64) NOT NULL,
+                    display_name VARCHAR(255) NOT NULL,
+                    public_url VARCHAR(255) NOT NULL,
+                    mime_type VARCHAR(128) NOT NULL,
+                    file_size_bytes BIGINT NOT NULL,
+                    sha256 VARCHAR(128) NOT NULL,
+                    version_label VARCHAR(64) NOT NULL,
+                    sort_order INT NOT NULL,
+                    is_primary_asset INT NOT NULL,
+                    status VARCHAR(32) NOT NULL
                 )",
-                "CREATE TABLE EbookMediaAsset (
-                    Id BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-                    AssetSlug VARCHAR(191) NOT NULL,
-                    AssetKind VARCHAR(32) NOT NULL,
-                    DisplayName VARCHAR(255) NOT NULL,
-                    PublicUrl VARCHAR(255) NOT NULL,
-                    StoragePath VARCHAR(255) NOT NULL,
-                    MimeType VARCHAR(128) NOT NULL,
-                    FileSizeBytes BIGINT NOT NULL,
-                    Sha256 VARCHAR(128) NOT NULL,
-                    VersionLabel VARCHAR(64) NOT NULL,
-                    Status VARCHAR(32) NOT NULL,
-                    UpdatedAt DATETIME NOT NULL
+                "CREATE TABLE ebook_media_asset (
+                    id BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+                    asset_slug VARCHAR(191) NOT NULL,
+                    asset_kind VARCHAR(32) NOT NULL,
+                    display_name VARCHAR(255) NOT NULL,
+                    public_url VARCHAR(255) NOT NULL,
+                    storage_path VARCHAR(255) NOT NULL,
+                    mime_type VARCHAR(128) NOT NULL,
+                    file_size_bytes BIGINT NOT NULL,
+                    sha256 VARCHAR(128) NOT NULL,
+                    version_label VARCHAR(64) NOT NULL,
+                    status VARCHAR(32) NOT NULL,
+                    updated_at DATETIME NOT NULL
                 )",
                 $deliveryRows,
                 $assetRows,
             ],
             'pgsql' => [
-                'DROP TABLE IF EXISTS EbookMediaDelivery',
-                'DROP TABLE IF EXISTS EbookMediaAsset',
-                "CREATE TABLE EbookMediaDelivery (
-                    DeliveryId BIGINT NOT NULL PRIMARY KEY,
-                    BookId BIGINT NOT NULL,
-                    BookSlug VARCHAR(191) NOT NULL,
-                    AssetId BIGINT NOT NULL,
-                    AssetSlug VARCHAR(191) NOT NULL,
-                    AssetKind VARCHAR(32) NOT NULL,
-                    DisplayRole VARCHAR(64) NOT NULL,
-                    DisplayName VARCHAR(255) NOT NULL,
-                    PublicUrl VARCHAR(255) NOT NULL,
-                    MimeType VARCHAR(128) NOT NULL,
-                    FileSizeBytes BIGINT NOT NULL,
-                    Sha256 VARCHAR(128) NOT NULL,
-                    VersionLabel VARCHAR(64) NOT NULL,
-                    SortOrder INTEGER NOT NULL,
-                    IsPrimaryAsset INTEGER NOT NULL,
-                    Status VARCHAR(32) NOT NULL
+                'DROP TABLE IF EXISTS ebook_media_delivery',
+                'DROP TABLE IF EXISTS ebook_media_asset',
+                "CREATE TABLE ebook_media_delivery (
+                    delivery_id BIGINT NOT NULL PRIMARY KEY,
+                    book_id BIGINT NOT NULL,
+                    book_slug VARCHAR(191) NOT NULL,
+                    asset_id BIGINT NOT NULL,
+                    asset_slug VARCHAR(191) NOT NULL,
+                    asset_kind VARCHAR(32) NOT NULL,
+                    display_role VARCHAR(64) NOT NULL,
+                    display_name VARCHAR(255) NOT NULL,
+                    public_url VARCHAR(255) NOT NULL,
+                    mime_type VARCHAR(128) NOT NULL,
+                    file_size_bytes BIGINT NOT NULL,
+                    sha256 VARCHAR(128) NOT NULL,
+                    version_label VARCHAR(64) NOT NULL,
+                    sort_order INTEGER NOT NULL,
+                    is_primary_asset INTEGER NOT NULL,
+                    status VARCHAR(32) NOT NULL
                 )",
-                "CREATE TABLE EbookMediaAsset (
-                    Id BIGINT GENERATED BY DEFAULT AS IDENTITY PRIMARY KEY,
-                    AssetSlug VARCHAR(191) NOT NULL,
-                    AssetKind VARCHAR(32) NOT NULL,
-                    DisplayName VARCHAR(255) NOT NULL,
-                    PublicUrl VARCHAR(255) NOT NULL,
-                    StoragePath VARCHAR(255) NOT NULL,
-                    MimeType VARCHAR(128) NOT NULL,
-                    FileSizeBytes BIGINT NOT NULL,
-                    Sha256 VARCHAR(128) NOT NULL,
-                    VersionLabel VARCHAR(64) NOT NULL,
-                    Status VARCHAR(32) NOT NULL,
-                    UpdatedAt TIMESTAMP NOT NULL
+                "CREATE TABLE ebook_media_asset (
+                    id BIGINT GENERATED BY DEFAULT AS IDENTITY PRIMARY KEY,
+                    asset_slug VARCHAR(191) NOT NULL,
+                    asset_kind VARCHAR(32) NOT NULL,
+                    display_name VARCHAR(255) NOT NULL,
+                    public_url VARCHAR(255) NOT NULL,
+                    storage_path VARCHAR(255) NOT NULL,
+                    mime_type VARCHAR(128) NOT NULL,
+                    file_size_bytes BIGINT NOT NULL,
+                    sha256 VARCHAR(128) NOT NULL,
+                    version_label VARCHAR(64) NOT NULL,
+                    status VARCHAR(32) NOT NULL,
+                    updated_at TIMESTAMP NOT NULL
                 )",
                 $deliveryRows,
                 $assetRows,
-                'ALTER TABLE EbookMediaAsset ALTER COLUMN Id RESTART WITH 2',
+                'ALTER TABLE ebook_media_asset ALTER COLUMN id RESTART WITH 2',
             ],
             'sqlite' => [
-                'DROP TABLE IF EXISTS EbookMediaDelivery',
-                'DROP TABLE IF EXISTS EbookMediaAsset',
-                "CREATE TABLE EbookMediaDelivery (
-                    DeliveryId INTEGER NOT NULL PRIMARY KEY,
-                    BookId INTEGER NOT NULL,
-                    BookSlug TEXT NOT NULL,
-                    AssetId INTEGER NOT NULL,
-                    AssetSlug TEXT NOT NULL,
-                    AssetKind TEXT NOT NULL,
-                    DisplayRole TEXT NOT NULL,
-                    DisplayName TEXT NOT NULL,
-                    PublicUrl TEXT NOT NULL,
-                    MimeType TEXT NOT NULL,
-                    FileSizeBytes INTEGER NOT NULL,
-                    Sha256 TEXT NOT NULL,
-                    VersionLabel TEXT NOT NULL,
-                    SortOrder INTEGER NOT NULL,
-                    IsPrimaryAsset INTEGER NOT NULL,
-                    Status TEXT NOT NULL
+                'DROP TABLE IF EXISTS ebook_media_delivery',
+                'DROP TABLE IF EXISTS ebook_media_asset',
+                "CREATE TABLE ebook_media_delivery (
+                    delivery_id INTEGER NOT NULL PRIMARY KEY,
+                    book_id INTEGER NOT NULL,
+                    book_slug TEXT NOT NULL,
+                    asset_id INTEGER NOT NULL,
+                    asset_slug TEXT NOT NULL,
+                    asset_kind TEXT NOT NULL,
+                    display_role TEXT NOT NULL,
+                    display_name TEXT NOT NULL,
+                    public_url TEXT NOT NULL,
+                    mime_type TEXT NOT NULL,
+                    file_size_bytes INTEGER NOT NULL,
+                    sha256 TEXT NOT NULL,
+                    version_label TEXT NOT NULL,
+                    sort_order INTEGER NOT NULL,
+                    is_primary_asset INTEGER NOT NULL,
+                    status TEXT NOT NULL
                 )",
-                "CREATE TABLE EbookMediaAsset (
-                    Id INTEGER PRIMARY KEY AUTOINCREMENT,
-                    AssetSlug TEXT NOT NULL,
-                    AssetKind TEXT NOT NULL,
-                    DisplayName TEXT NOT NULL,
-                    PublicUrl TEXT NOT NULL,
-                    StoragePath TEXT NOT NULL,
-                    MimeType TEXT NOT NULL,
-                    FileSizeBytes INTEGER NOT NULL,
-                    Sha256 TEXT NOT NULL,
-                    VersionLabel TEXT NOT NULL,
-                    Status TEXT NOT NULL,
-                    UpdatedAt TEXT NOT NULL
+                "CREATE TABLE ebook_media_asset (
+                    id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    asset_slug TEXT NOT NULL,
+                    asset_kind TEXT NOT NULL,
+                    display_name TEXT NOT NULL,
+                    public_url TEXT NOT NULL,
+                    storage_path TEXT NOT NULL,
+                    mime_type TEXT NOT NULL,
+                    file_size_bytes INTEGER NOT NULL,
+                    sha256 TEXT NOT NULL,
+                    version_label TEXT NOT NULL,
+                    status TEXT NOT NULL,
+                    updated_at TEXT NOT NULL
                 )",
                 $deliveryRows,
                 $assetRows,
@@ -532,13 +532,13 @@ function app_user_db_contract_runtime_sample23_definition(): array
  */
 function app_user_db_contract_runtime_sample24_definition(): array
 {
-    $bookRows = "INSERT INTO EbookReaderBook (Id, Title, Slug, AuthorName, GenreName, Summary, Status, PublishedAt) VALUES
+    $bookRows = "INSERT INTO ebook_reader_book (id, title, slug, author_name, genre_name, summary, status, published_at) VALUES
         (1, 'Reader Book', 'reader-book', 'Aki Reader', 'Guides', 'Reader summary', 'published', '2026-06-20 09:00:00'),
         (2, 'Draft Reader Book', 'draft-reader-book', 'Mika Draft', 'Drafts', 'Draft summary', 'draft', NULL)";
-    $chapterRows = "INSERT INTO EbookReaderChapter (Id, BookSlug, ChapterTitle, ChapterSlug, SpineOrder, BodyMarkdown, Status) VALUES
+    $chapterRows = "INSERT INTO ebook_reader_chapter (id, book_slug, chapter_title, chapter_slug, spine_order, body_markdown, status) VALUES
         (1, 'reader-book', 'Opening', 'opening', 1, '# Opening', 'published'),
         (2, 'reader-book', 'Second', 'second', 2, '# Second', 'published')";
-    $deliveryRows = "INSERT INTO EbookReaderMediaDelivery (Id, BookSlug, AssetSlug, AssetKind, DisplayName, PublicUrl, MimeType, FileSizeBytes, Sha256, VersionLabel, Status) VALUES
+    $deliveryRows = "INSERT INTO ebook_reader_media_delivery (id, book_slug, asset_slug, asset_kind, display_name, public_url, mime_type, file_size_bytes, sha256, version_label, status) VALUES
         (1, 'reader-book', 'reader-epub', 'epub', 'Reader EPUB', '/reader/book.epub', 'application/epub+zip', 4500, 'sha-reader', 'v1', 'published')";
 
     return [
@@ -553,120 +553,120 @@ function app_user_db_contract_runtime_sample24_definition(): array
         ],
         'fixture_sql' => [
             'mysql' => [
-                'DROP TABLE IF EXISTS EbookReaderMediaDelivery',
-                'DROP TABLE IF EXISTS EbookReaderChapter',
-                'DROP TABLE IF EXISTS EbookReaderBook',
-                "CREATE TABLE EbookReaderBook (
-                    Id BIGINT NOT NULL PRIMARY KEY,
-                    Title VARCHAR(255) NOT NULL,
-                    Slug VARCHAR(191) NOT NULL,
-                    AuthorName VARCHAR(255) NOT NULL,
-                    GenreName VARCHAR(255) NOT NULL,
-                    Summary TEXT NOT NULL,
-                    Status VARCHAR(32) NOT NULL,
-                    PublishedAt DATETIME NULL
+                'DROP TABLE IF EXISTS ebook_reader_media_delivery',
+                'DROP TABLE IF EXISTS ebook_reader_chapter',
+                'DROP TABLE IF EXISTS ebook_reader_book',
+                "CREATE TABLE ebook_reader_book (
+                    id BIGINT NOT NULL PRIMARY KEY,
+                    title VARCHAR(255) NOT NULL,
+                    slug VARCHAR(191) NOT NULL,
+                    author_name VARCHAR(255) NOT NULL,
+                    genre_name VARCHAR(255) NOT NULL,
+                    summary TEXT NOT NULL,
+                    status VARCHAR(32) NOT NULL,
+                    published_at DATETIME NULL
                 )",
-                "CREATE TABLE EbookReaderChapter (
-                    Id BIGINT NOT NULL PRIMARY KEY,
-                    BookSlug VARCHAR(191) NOT NULL,
-                    ChapterTitle VARCHAR(255) NOT NULL,
-                    ChapterSlug VARCHAR(191) NOT NULL,
-                    SpineOrder INT NOT NULL,
-                    BodyMarkdown TEXT NOT NULL,
-                    Status VARCHAR(32) NOT NULL
+                "CREATE TABLE ebook_reader_chapter (
+                    id BIGINT NOT NULL PRIMARY KEY,
+                    book_slug VARCHAR(191) NOT NULL,
+                    chapter_title VARCHAR(255) NOT NULL,
+                    chapter_slug VARCHAR(191) NOT NULL,
+                    spine_order INT NOT NULL,
+                    body_markdown TEXT NOT NULL,
+                    status VARCHAR(32) NOT NULL
                 )",
-                "CREATE TABLE EbookReaderMediaDelivery (
-                    Id BIGINT NOT NULL PRIMARY KEY,
-                    BookSlug VARCHAR(191) NOT NULL,
-                    AssetSlug VARCHAR(191) NOT NULL,
-                    AssetKind VARCHAR(32) NOT NULL,
-                    DisplayName VARCHAR(255) NOT NULL,
-                    PublicUrl VARCHAR(255) NOT NULL,
-                    MimeType VARCHAR(128) NOT NULL,
-                    FileSizeBytes BIGINT NOT NULL,
-                    Sha256 VARCHAR(128) NOT NULL,
-                    VersionLabel VARCHAR(64) NOT NULL,
-                    Status VARCHAR(32) NOT NULL
+                "CREATE TABLE ebook_reader_media_delivery (
+                    id BIGINT NOT NULL PRIMARY KEY,
+                    book_slug VARCHAR(191) NOT NULL,
+                    asset_slug VARCHAR(191) NOT NULL,
+                    asset_kind VARCHAR(32) NOT NULL,
+                    display_name VARCHAR(255) NOT NULL,
+                    public_url VARCHAR(255) NOT NULL,
+                    mime_type VARCHAR(128) NOT NULL,
+                    file_size_bytes BIGINT NOT NULL,
+                    sha256 VARCHAR(128) NOT NULL,
+                    version_label VARCHAR(64) NOT NULL,
+                    status VARCHAR(32) NOT NULL
                 )",
                 $bookRows,
                 $chapterRows,
                 $deliveryRows,
             ],
             'pgsql' => [
-                'DROP TABLE IF EXISTS EbookReaderMediaDelivery',
-                'DROP TABLE IF EXISTS EbookReaderChapter',
-                'DROP TABLE IF EXISTS EbookReaderBook',
-                "CREATE TABLE EbookReaderBook (
-                    Id BIGINT NOT NULL PRIMARY KEY,
-                    Title VARCHAR(255) NOT NULL,
-                    Slug VARCHAR(191) NOT NULL,
-                    AuthorName VARCHAR(255) NOT NULL,
-                    GenreName VARCHAR(255) NOT NULL,
-                    Summary TEXT NOT NULL,
-                    Status VARCHAR(32) NOT NULL,
-                    PublishedAt TIMESTAMP NULL
+                'DROP TABLE IF EXISTS ebook_reader_media_delivery',
+                'DROP TABLE IF EXISTS ebook_reader_chapter',
+                'DROP TABLE IF EXISTS ebook_reader_book',
+                "CREATE TABLE ebook_reader_book (
+                    id BIGINT NOT NULL PRIMARY KEY,
+                    title VARCHAR(255) NOT NULL,
+                    slug VARCHAR(191) NOT NULL,
+                    author_name VARCHAR(255) NOT NULL,
+                    genre_name VARCHAR(255) NOT NULL,
+                    summary TEXT NOT NULL,
+                    status VARCHAR(32) NOT NULL,
+                    published_at TIMESTAMP NULL
                 )",
-                "CREATE TABLE EbookReaderChapter (
-                    Id BIGINT NOT NULL PRIMARY KEY,
-                    BookSlug VARCHAR(191) NOT NULL,
-                    ChapterTitle VARCHAR(255) NOT NULL,
-                    ChapterSlug VARCHAR(191) NOT NULL,
-                    SpineOrder INTEGER NOT NULL,
-                    BodyMarkdown TEXT NOT NULL,
-                    Status VARCHAR(32) NOT NULL
+                "CREATE TABLE ebook_reader_chapter (
+                    id BIGINT NOT NULL PRIMARY KEY,
+                    book_slug VARCHAR(191) NOT NULL,
+                    chapter_title VARCHAR(255) NOT NULL,
+                    chapter_slug VARCHAR(191) NOT NULL,
+                    spine_order INTEGER NOT NULL,
+                    body_markdown TEXT NOT NULL,
+                    status VARCHAR(32) NOT NULL
                 )",
-                "CREATE TABLE EbookReaderMediaDelivery (
-                    Id BIGINT NOT NULL PRIMARY KEY,
-                    BookSlug VARCHAR(191) NOT NULL,
-                    AssetSlug VARCHAR(191) NOT NULL,
-                    AssetKind VARCHAR(32) NOT NULL,
-                    DisplayName VARCHAR(255) NOT NULL,
-                    PublicUrl VARCHAR(255) NOT NULL,
-                    MimeType VARCHAR(128) NOT NULL,
-                    FileSizeBytes BIGINT NOT NULL,
-                    Sha256 VARCHAR(128) NOT NULL,
-                    VersionLabel VARCHAR(64) NOT NULL,
-                    Status VARCHAR(32) NOT NULL
+                "CREATE TABLE ebook_reader_media_delivery (
+                    id BIGINT NOT NULL PRIMARY KEY,
+                    book_slug VARCHAR(191) NOT NULL,
+                    asset_slug VARCHAR(191) NOT NULL,
+                    asset_kind VARCHAR(32) NOT NULL,
+                    display_name VARCHAR(255) NOT NULL,
+                    public_url VARCHAR(255) NOT NULL,
+                    mime_type VARCHAR(128) NOT NULL,
+                    file_size_bytes BIGINT NOT NULL,
+                    sha256 VARCHAR(128) NOT NULL,
+                    version_label VARCHAR(64) NOT NULL,
+                    status VARCHAR(32) NOT NULL
                 )",
                 $bookRows,
                 $chapterRows,
                 $deliveryRows,
             ],
             'sqlite' => [
-                'DROP TABLE IF EXISTS EbookReaderMediaDelivery',
-                'DROP TABLE IF EXISTS EbookReaderChapter',
-                'DROP TABLE IF EXISTS EbookReaderBook',
-                "CREATE TABLE EbookReaderBook (
-                    Id INTEGER NOT NULL PRIMARY KEY,
-                    Title TEXT NOT NULL,
-                    Slug TEXT NOT NULL,
-                    AuthorName TEXT NOT NULL,
-                    GenreName TEXT NOT NULL,
-                    Summary TEXT NOT NULL,
-                    Status TEXT NOT NULL,
-                    PublishedAt TEXT NULL
+                'DROP TABLE IF EXISTS ebook_reader_media_delivery',
+                'DROP TABLE IF EXISTS ebook_reader_chapter',
+                'DROP TABLE IF EXISTS ebook_reader_book',
+                "CREATE TABLE ebook_reader_book (
+                    id INTEGER NOT NULL PRIMARY KEY,
+                    title TEXT NOT NULL,
+                    slug TEXT NOT NULL,
+                    author_name TEXT NOT NULL,
+                    genre_name TEXT NOT NULL,
+                    summary TEXT NOT NULL,
+                    status TEXT NOT NULL,
+                    published_at TEXT NULL
                 )",
-                "CREATE TABLE EbookReaderChapter (
-                    Id INTEGER NOT NULL PRIMARY KEY,
-                    BookSlug TEXT NOT NULL,
-                    ChapterTitle TEXT NOT NULL,
-                    ChapterSlug TEXT NOT NULL,
-                    SpineOrder INTEGER NOT NULL,
-                    BodyMarkdown TEXT NOT NULL,
-                    Status TEXT NOT NULL
+                "CREATE TABLE ebook_reader_chapter (
+                    id INTEGER NOT NULL PRIMARY KEY,
+                    book_slug TEXT NOT NULL,
+                    chapter_title TEXT NOT NULL,
+                    chapter_slug TEXT NOT NULL,
+                    spine_order INTEGER NOT NULL,
+                    body_markdown TEXT NOT NULL,
+                    status TEXT NOT NULL
                 )",
-                "CREATE TABLE EbookReaderMediaDelivery (
-                    Id INTEGER NOT NULL PRIMARY KEY,
-                    BookSlug TEXT NOT NULL,
-                    AssetSlug TEXT NOT NULL,
-                    AssetKind TEXT NOT NULL,
-                    DisplayName TEXT NOT NULL,
-                    PublicUrl TEXT NOT NULL,
-                    MimeType TEXT NOT NULL,
-                    FileSizeBytes INTEGER NOT NULL,
-                    Sha256 TEXT NOT NULL,
-                    VersionLabel TEXT NOT NULL,
-                    Status TEXT NOT NULL
+                "CREATE TABLE ebook_reader_media_delivery (
+                    id INTEGER NOT NULL PRIMARY KEY,
+                    book_slug TEXT NOT NULL,
+                    asset_slug TEXT NOT NULL,
+                    asset_kind TEXT NOT NULL,
+                    display_name TEXT NOT NULL,
+                    public_url TEXT NOT NULL,
+                    mime_type TEXT NOT NULL,
+                    file_size_bytes INTEGER NOT NULL,
+                    sha256 TEXT NOT NULL,
+                    version_label TEXT NOT NULL,
+                    status TEXT NOT NULL
                 )",
                 $bookRows,
                 $chapterRows,
@@ -682,8 +682,8 @@ function app_user_db_contract_runtime_sample24_definition(): array
  */
 function app_user_db_contract_runtime_sample25_definition(): array
 {
-    $chapterRows = "INSERT INTO EbookEditorChapter
-        (Id, EbookEditorBookId, ChapterTitle, ChapterSlug, Status, SpineOrder, BodyMarkdown, PublishedAt, UpdatedAt)
+    $chapterRows = "INSERT INTO ebook_editor_chapter
+        (id, ebook_editor_book_id, chapter_title, chapter_slug, status, spine_order, body_markdown, published_at, updated_at)
         VALUES
         (1, 1, 'Editor Opening', 'editor-opening', 'draft', 1, '# Draft editor opening', NULL, '2026-06-20 09:00:00'),
         (2, 1, 'Published Editor', 'published-editor', 'published', 2, '# Published editor', '2026-06-20 10:00:00', '2026-06-20 10:00:00')";
@@ -698,47 +698,47 @@ function app_user_db_contract_runtime_sample25_definition(): array
         ],
         'fixture_sql' => [
             'mysql' => [
-                'DROP TABLE IF EXISTS EbookEditorChapter',
-                "CREATE TABLE EbookEditorChapter (
-                    Id BIGINT NOT NULL PRIMARY KEY,
-                    EbookEditorBookId BIGINT NOT NULL,
-                    ChapterTitle VARCHAR(255) NOT NULL,
-                    ChapterSlug VARCHAR(191) NOT NULL,
-                    Status VARCHAR(32) NOT NULL,
-                    SpineOrder INT NOT NULL,
-                    BodyMarkdown TEXT NOT NULL,
-                    PublishedAt DATETIME NULL,
-                    UpdatedAt DATETIME NOT NULL
+                'DROP TABLE IF EXISTS ebook_editor_chapter',
+                "CREATE TABLE ebook_editor_chapter (
+                    id BIGINT NOT NULL PRIMARY KEY,
+                    ebook_editor_book_id BIGINT NOT NULL,
+                    chapter_title VARCHAR(255) NOT NULL,
+                    chapter_slug VARCHAR(191) NOT NULL,
+                    status VARCHAR(32) NOT NULL,
+                    spine_order INT NOT NULL,
+                    body_markdown TEXT NOT NULL,
+                    published_at DATETIME NULL,
+                    updated_at DATETIME NOT NULL
                 )",
                 $chapterRows,
             ],
             'pgsql' => [
-                'DROP TABLE IF EXISTS EbookEditorChapter',
-                "CREATE TABLE EbookEditorChapter (
-                    Id BIGINT NOT NULL PRIMARY KEY,
-                    EbookEditorBookId BIGINT NOT NULL,
-                    ChapterTitle VARCHAR(255) NOT NULL,
-                    ChapterSlug VARCHAR(191) NOT NULL,
-                    Status VARCHAR(32) NOT NULL,
-                    SpineOrder INTEGER NOT NULL,
-                    BodyMarkdown TEXT NOT NULL,
-                    PublishedAt TIMESTAMP NULL,
-                    UpdatedAt TIMESTAMP NOT NULL
+                'DROP TABLE IF EXISTS ebook_editor_chapter',
+                "CREATE TABLE ebook_editor_chapter (
+                    id BIGINT NOT NULL PRIMARY KEY,
+                    ebook_editor_book_id BIGINT NOT NULL,
+                    chapter_title VARCHAR(255) NOT NULL,
+                    chapter_slug VARCHAR(191) NOT NULL,
+                    status VARCHAR(32) NOT NULL,
+                    spine_order INTEGER NOT NULL,
+                    body_markdown TEXT NOT NULL,
+                    published_at TIMESTAMP NULL,
+                    updated_at TIMESTAMP NOT NULL
                 )",
                 $chapterRows,
             ],
             'sqlite' => [
-                'DROP TABLE IF EXISTS EbookEditorChapter',
-                "CREATE TABLE EbookEditorChapter (
-                    Id INTEGER NOT NULL PRIMARY KEY,
-                    EbookEditorBookId INTEGER NOT NULL,
-                    ChapterTitle TEXT NOT NULL,
-                    ChapterSlug TEXT NOT NULL,
-                    Status TEXT NOT NULL,
-                    SpineOrder INTEGER NOT NULL,
-                    BodyMarkdown TEXT NOT NULL,
-                    PublishedAt TEXT NULL,
-                    UpdatedAt TEXT NOT NULL
+                'DROP TABLE IF EXISTS ebook_editor_chapter',
+                "CREATE TABLE ebook_editor_chapter (
+                    id INTEGER NOT NULL PRIMARY KEY,
+                    ebook_editor_book_id INTEGER NOT NULL,
+                    chapter_title TEXT NOT NULL,
+                    chapter_slug TEXT NOT NULL,
+                    status TEXT NOT NULL,
+                    spine_order INTEGER NOT NULL,
+                    body_markdown TEXT NOT NULL,
+                    published_at TEXT NULL,
+                    updated_at TEXT NOT NULL
                 )",
                 $chapterRows,
             ],
@@ -752,13 +752,13 @@ function app_user_db_contract_runtime_sample25_definition(): array
  */
 function app_user_db_contract_runtime_sample26_definition(): array
 {
-    $bookRows = "INSERT INTO EbookCmsBook
-        (Id, Title, Slug, AuthorName, GenreName, CoverImageUrl, Summary, EpubDownloadUrl, EpubMimeType, EpubSha256, Status, PublishedAt)
+    $bookRows = "INSERT INTO ebook_cms_book
+        (id, title, slug, author_name, genre_name, cover_image_url, summary, epub_download_url, epub_mime_type, epub_sha256, status, published_at)
         VALUES
         (1, 'CMS Book', 'cms-book', 'Aki CMS', 'Guides', '/covers/cms.jpg', 'CMS summary', '/cms/book.epub', 'application/epub+zip', 'sha-cms', 'published', '2026-06-20 09:00:00'),
         (2, 'Draft CMS Book', 'draft-cms-book', 'Mika Draft', 'Drafts', '/covers/draft.jpg', 'Draft summary', NULL, NULL, NULL, 'draft', NULL)";
-    $chapterRows = "INSERT INTO EbookCmsChapter
-        (Id, EbookCmsBookId, BookSlug, ChapterTitle, ChapterSlug, Status, SpineOrder, BodyMarkdown, PublishedAt, UpdatedAt)
+    $chapterRows = "INSERT INTO ebook_cms_chapter
+        (id, ebook_cms_book_id, book_slug, chapter_title, chapter_slug, status, spine_order, body_markdown, published_at, updated_at)
         VALUES
         (1, 1, 'cms-book', 'Opening', 'opening', 'published', 1, '# Opening', '2026-06-20 10:00:00', '2026-06-20 10:00:00'),
         (2, 1, 'cms-book', 'Draft Chapter', 'draft-chapter', 'draft', 2, '# Draft', NULL, '2026-06-20 11:00:00')";
@@ -774,97 +774,97 @@ function app_user_db_contract_runtime_sample26_definition(): array
         ],
         'fixture_sql' => [
             'mysql' => [
-                'DROP TABLE IF EXISTS EbookCmsChapter',
-                'DROP TABLE IF EXISTS EbookCmsBook',
-                "CREATE TABLE EbookCmsBook (
-                    Id BIGINT NOT NULL PRIMARY KEY,
-                    Title VARCHAR(255) NOT NULL,
-                    Slug VARCHAR(191) NOT NULL,
-                    AuthorName VARCHAR(255) NOT NULL,
-                    GenreName VARCHAR(255) NOT NULL,
-                    CoverImageUrl VARCHAR(255) NOT NULL,
-                    Summary TEXT NOT NULL,
-                    EpubDownloadUrl VARCHAR(255) NULL,
-                    EpubMimeType VARCHAR(128) NULL,
-                    EpubSha256 VARCHAR(128) NULL,
-                    Status VARCHAR(32) NOT NULL,
-                    PublishedAt DATETIME NULL
+                'DROP TABLE IF EXISTS ebook_cms_chapter',
+                'DROP TABLE IF EXISTS ebook_cms_book',
+                "CREATE TABLE ebook_cms_book (
+                    id BIGINT NOT NULL PRIMARY KEY,
+                    title VARCHAR(255) NOT NULL,
+                    slug VARCHAR(191) NOT NULL,
+                    author_name VARCHAR(255) NOT NULL,
+                    genre_name VARCHAR(255) NOT NULL,
+                    cover_image_url VARCHAR(255) NOT NULL,
+                    summary TEXT NOT NULL,
+                    epub_download_url VARCHAR(255) NULL,
+                    epub_mime_type VARCHAR(128) NULL,
+                    epub_sha256 VARCHAR(128) NULL,
+                    status VARCHAR(32) NOT NULL,
+                    published_at DATETIME NULL
                 )",
-                "CREATE TABLE EbookCmsChapter (
-                    Id BIGINT NOT NULL PRIMARY KEY,
-                    EbookCmsBookId BIGINT NOT NULL,
-                    BookSlug VARCHAR(191) NOT NULL,
-                    ChapterTitle VARCHAR(255) NOT NULL,
-                    ChapterSlug VARCHAR(191) NOT NULL,
-                    Status VARCHAR(32) NOT NULL,
-                    SpineOrder INT NOT NULL,
-                    BodyMarkdown TEXT NOT NULL,
-                    PublishedAt DATETIME NULL,
-                    UpdatedAt DATETIME NOT NULL
+                "CREATE TABLE ebook_cms_chapter (
+                    id BIGINT NOT NULL PRIMARY KEY,
+                    ebook_cms_book_id BIGINT NOT NULL,
+                    book_slug VARCHAR(191) NOT NULL,
+                    chapter_title VARCHAR(255) NOT NULL,
+                    chapter_slug VARCHAR(191) NOT NULL,
+                    status VARCHAR(32) NOT NULL,
+                    spine_order INT NOT NULL,
+                    body_markdown TEXT NOT NULL,
+                    published_at DATETIME NULL,
+                    updated_at DATETIME NOT NULL
                 )",
                 $bookRows,
                 $chapterRows,
             ],
             'pgsql' => [
-                'DROP TABLE IF EXISTS EbookCmsChapter',
-                'DROP TABLE IF EXISTS EbookCmsBook',
-                "CREATE TABLE EbookCmsBook (
-                    Id BIGINT NOT NULL PRIMARY KEY,
-                    Title VARCHAR(255) NOT NULL,
-                    Slug VARCHAR(191) NOT NULL,
-                    AuthorName VARCHAR(255) NOT NULL,
-                    GenreName VARCHAR(255) NOT NULL,
-                    CoverImageUrl VARCHAR(255) NOT NULL,
-                    Summary TEXT NOT NULL,
-                    EpubDownloadUrl VARCHAR(255) NULL,
-                    EpubMimeType VARCHAR(128) NULL,
-                    EpubSha256 VARCHAR(128) NULL,
-                    Status VARCHAR(32) NOT NULL,
-                    PublishedAt TIMESTAMP NULL
+                'DROP TABLE IF EXISTS ebook_cms_chapter',
+                'DROP TABLE IF EXISTS ebook_cms_book',
+                "CREATE TABLE ebook_cms_book (
+                    id BIGINT NOT NULL PRIMARY KEY,
+                    title VARCHAR(255) NOT NULL,
+                    slug VARCHAR(191) NOT NULL,
+                    author_name VARCHAR(255) NOT NULL,
+                    genre_name VARCHAR(255) NOT NULL,
+                    cover_image_url VARCHAR(255) NOT NULL,
+                    summary TEXT NOT NULL,
+                    epub_download_url VARCHAR(255) NULL,
+                    epub_mime_type VARCHAR(128) NULL,
+                    epub_sha256 VARCHAR(128) NULL,
+                    status VARCHAR(32) NOT NULL,
+                    published_at TIMESTAMP NULL
                 )",
-                "CREATE TABLE EbookCmsChapter (
-                    Id BIGINT NOT NULL PRIMARY KEY,
-                    EbookCmsBookId BIGINT NOT NULL,
-                    BookSlug VARCHAR(191) NOT NULL,
-                    ChapterTitle VARCHAR(255) NOT NULL,
-                    ChapterSlug VARCHAR(191) NOT NULL,
-                    Status VARCHAR(32) NOT NULL,
-                    SpineOrder INTEGER NOT NULL,
-                    BodyMarkdown TEXT NOT NULL,
-                    PublishedAt TIMESTAMP NULL,
-                    UpdatedAt TIMESTAMP NOT NULL
+                "CREATE TABLE ebook_cms_chapter (
+                    id BIGINT NOT NULL PRIMARY KEY,
+                    ebook_cms_book_id BIGINT NOT NULL,
+                    book_slug VARCHAR(191) NOT NULL,
+                    chapter_title VARCHAR(255) NOT NULL,
+                    chapter_slug VARCHAR(191) NOT NULL,
+                    status VARCHAR(32) NOT NULL,
+                    spine_order INTEGER NOT NULL,
+                    body_markdown TEXT NOT NULL,
+                    published_at TIMESTAMP NULL,
+                    updated_at TIMESTAMP NOT NULL
                 )",
                 $bookRows,
                 $chapterRows,
             ],
             'sqlite' => [
-                'DROP TABLE IF EXISTS EbookCmsChapter',
-                'DROP TABLE IF EXISTS EbookCmsBook',
-                "CREATE TABLE EbookCmsBook (
-                    Id INTEGER NOT NULL PRIMARY KEY,
-                    Title TEXT NOT NULL,
-                    Slug TEXT NOT NULL,
-                    AuthorName TEXT NOT NULL,
-                    GenreName TEXT NOT NULL,
-                    CoverImageUrl TEXT NOT NULL,
-                    Summary TEXT NOT NULL,
-                    EpubDownloadUrl TEXT NULL,
-                    EpubMimeType TEXT NULL,
-                    EpubSha256 TEXT NULL,
-                    Status TEXT NOT NULL,
-                    PublishedAt TEXT NULL
+                'DROP TABLE IF EXISTS ebook_cms_chapter',
+                'DROP TABLE IF EXISTS ebook_cms_book',
+                "CREATE TABLE ebook_cms_book (
+                    id INTEGER NOT NULL PRIMARY KEY,
+                    title TEXT NOT NULL,
+                    slug TEXT NOT NULL,
+                    author_name TEXT NOT NULL,
+                    genre_name TEXT NOT NULL,
+                    cover_image_url TEXT NOT NULL,
+                    summary TEXT NOT NULL,
+                    epub_download_url TEXT NULL,
+                    epub_mime_type TEXT NULL,
+                    epub_sha256 TEXT NULL,
+                    status TEXT NOT NULL,
+                    published_at TEXT NULL
                 )",
-                "CREATE TABLE EbookCmsChapter (
-                    Id INTEGER NOT NULL PRIMARY KEY,
-                    EbookCmsBookId INTEGER NOT NULL,
-                    BookSlug TEXT NOT NULL,
-                    ChapterTitle TEXT NOT NULL,
-                    ChapterSlug TEXT NOT NULL,
-                    Status TEXT NOT NULL,
-                    SpineOrder INTEGER NOT NULL,
-                    BodyMarkdown TEXT NOT NULL,
-                    PublishedAt TEXT NULL,
-                    UpdatedAt TEXT NOT NULL
+                "CREATE TABLE ebook_cms_chapter (
+                    id INTEGER NOT NULL PRIMARY KEY,
+                    ebook_cms_book_id INTEGER NOT NULL,
+                    book_slug TEXT NOT NULL,
+                    chapter_title TEXT NOT NULL,
+                    chapter_slug TEXT NOT NULL,
+                    status TEXT NOT NULL,
+                    spine_order INTEGER NOT NULL,
+                    body_markdown TEXT NOT NULL,
+                    published_at TEXT NULL,
+                    updated_at TEXT NOT NULL
                 )",
                 $bookRows,
                 $chapterRows,
@@ -1074,103 +1074,103 @@ function app_user_db_contract_runtime_sample08_definition(): array
         ],
         'fixture_sql' => [
             'mysql' => [
-                'DROP TABLE IF EXISTS BlogPostAuthorSummary',
-                'DROP TABLE IF EXISTS BlogPost',
-                'DROP TABLE IF EXISTS BlogAuthor',
-                "CREATE TABLE BlogAuthor (
-                    Id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
-                    Name VARCHAR(255) NOT NULL,
-                    IsActive TINYINT(1) NOT NULL DEFAULT 1,
-                    PRIMARY KEY (Id)
+                'DROP TABLE IF EXISTS blog_post_author_summary',
+                'DROP TABLE IF EXISTS blog_post',
+                'DROP TABLE IF EXISTS blog_author',
+                "CREATE TABLE blog_author (
+                    id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+                    name VARCHAR(255) NOT NULL,
+                    is_active TINYINT(1) NOT NULL DEFAULT 1,
+                    PRIMARY KEY (id)
                 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci",
-                "CREATE TABLE BlogPost (
-                    Id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
-                    BlogAuthorId BIGINT UNSIGNED NOT NULL,
-                    Title VARCHAR(255) NOT NULL,
-                    Status VARCHAR(20) NOT NULL DEFAULT 'draft',
-                    PRIMARY KEY (Id),
-                    KEY idx_blog_post_author_id (BlogAuthorId),
+                "CREATE TABLE blog_post (
+                    id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+                    blog_author_id BIGINT UNSIGNED NOT NULL,
+                    title VARCHAR(255) NOT NULL,
+                    status VARCHAR(20) NOT NULL DEFAULT 'draft',
+                    PRIMARY KEY (id),
+                    KEY idx_blog_post_author_id (blog_author_id),
                     CONSTRAINT fk_blog_post_author
-                        FOREIGN KEY (BlogAuthorId)
-                        REFERENCES BlogAuthor (Id)
+                        FOREIGN KEY (blog_author_id)
+                        REFERENCES blog_author (id)
                 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci",
-                "CREATE TABLE BlogPostAuthorSummary (
-                    BlogPostId BIGINT UNSIGNED NOT NULL,
-                    BlogPostTitle VARCHAR(255) NOT NULL,
-                    BlogAuthorId BIGINT UNSIGNED NOT NULL,
-                    BlogAuthorName VARCHAR(255) NOT NULL,
-                    PRIMARY KEY (BlogPostId)
+                "CREATE TABLE blog_post_author_summary (
+                    blog_post_id BIGINT UNSIGNED NOT NULL,
+                    blog_post_title VARCHAR(255) NOT NULL,
+                    blog_author_id BIGINT UNSIGNED NOT NULL,
+                    blog_author_name VARCHAR(255) NOT NULL,
+                    PRIMARY KEY (blog_post_id)
                 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci",
-                "INSERT INTO BlogAuthor (Id, Name, IsActive) VALUES
+                "INSERT INTO blog_author (id, name, is_active) VALUES
                     (1, 'Alice Editor', 1),
                     (2, 'Bob Archived', 0),
                     (3, 'Carol Writer', 1)",
-                "INSERT INTO BlogPost (Id, BlogAuthorId, Title, Status) VALUES
+                "INSERT INTO blog_post (id, blog_author_id, title, status) VALUES
                     (1, 1, 'Canonical Join Tutorial', 'published'),
                     (2, 2, 'Inactive Author Should Not Appear', 'published'),
                     (3, 3, 'Draft Posts Stay Hidden', 'draft'),
                     (4, 3, 'Roadmap Checkpoint', 'published')",
             ],
             'pgsql' => [
-                'DROP TABLE IF EXISTS BlogPostAuthorSummary',
-                'DROP TABLE IF EXISTS BlogPost',
-                'DROP TABLE IF EXISTS BlogAuthor',
-                "CREATE TABLE BlogAuthor (
-                    Id BIGINT GENERATED BY DEFAULT AS IDENTITY PRIMARY KEY,
-                    Name VARCHAR(255) NOT NULL,
-                    IsActive SMALLINT NOT NULL DEFAULT 1
+                'DROP TABLE IF EXISTS blog_post_author_summary',
+                'DROP TABLE IF EXISTS blog_post',
+                'DROP TABLE IF EXISTS blog_author',
+                "CREATE TABLE blog_author (
+                    id BIGINT GENERATED BY DEFAULT AS IDENTITY PRIMARY KEY,
+                    name VARCHAR(255) NOT NULL,
+                    is_active SMALLINT NOT NULL DEFAULT 1
                 )",
-                "CREATE TABLE BlogPost (
-                    Id BIGINT GENERATED BY DEFAULT AS IDENTITY PRIMARY KEY,
-                    BlogAuthorId BIGINT NOT NULL REFERENCES BlogAuthor (Id),
-                    Title VARCHAR(255) NOT NULL,
-                    Status VARCHAR(20) NOT NULL DEFAULT 'draft'
+                "CREATE TABLE blog_post (
+                    id BIGINT GENERATED BY DEFAULT AS IDENTITY PRIMARY KEY,
+                    blog_author_id BIGINT NOT NULL REFERENCES blog_author (id),
+                    title VARCHAR(255) NOT NULL,
+                    status VARCHAR(20) NOT NULL DEFAULT 'draft'
                 )",
-                "CREATE TABLE BlogPostAuthorSummary (
-                    BlogPostId BIGINT NOT NULL PRIMARY KEY,
-                    BlogPostTitle VARCHAR(255) NOT NULL,
-                    BlogAuthorId BIGINT NOT NULL,
-                    BlogAuthorName VARCHAR(255) NOT NULL
+                "CREATE TABLE blog_post_author_summary (
+                    blog_post_id BIGINT NOT NULL PRIMARY KEY,
+                    blog_post_title VARCHAR(255) NOT NULL,
+                    blog_author_id BIGINT NOT NULL,
+                    blog_author_name VARCHAR(255) NOT NULL
                 )",
-                "INSERT INTO BlogAuthor (Id, Name, IsActive) VALUES
+                "INSERT INTO blog_author (id, name, is_active) VALUES
                     (1, 'Alice Editor', 1),
                     (2, 'Bob Archived', 0),
                     (3, 'Carol Writer', 1)",
-                "INSERT INTO BlogPost (Id, BlogAuthorId, Title, Status) VALUES
+                "INSERT INTO blog_post (id, blog_author_id, title, status) VALUES
                     (1, 1, 'Canonical Join Tutorial', 'published'),
                     (2, 2, 'Inactive Author Should Not Appear', 'published'),
                     (3, 3, 'Draft Posts Stay Hidden', 'draft'),
                     (4, 3, 'Roadmap Checkpoint', 'published')",
-                'ALTER TABLE BlogAuthor ALTER COLUMN Id RESTART WITH 4',
-                'ALTER TABLE BlogPost ALTER COLUMN Id RESTART WITH 5',
+                'ALTER TABLE blog_author ALTER COLUMN id RESTART WITH 4',
+                'ALTER TABLE blog_post ALTER COLUMN id RESTART WITH 5',
             ],
             'sqlite' => [
-                'DROP TABLE IF EXISTS BlogPostAuthorSummary',
-                'DROP TABLE IF EXISTS BlogPost',
-                'DROP TABLE IF EXISTS BlogAuthor',
-                "CREATE TABLE BlogAuthor (
-                    Id INTEGER PRIMARY KEY AUTOINCREMENT,
-                    Name TEXT NOT NULL,
-                    IsActive INTEGER NOT NULL DEFAULT 1
+                'DROP TABLE IF EXISTS blog_post_author_summary',
+                'DROP TABLE IF EXISTS blog_post',
+                'DROP TABLE IF EXISTS blog_author',
+                "CREATE TABLE blog_author (
+                    id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    name TEXT NOT NULL,
+                    is_active INTEGER NOT NULL DEFAULT 1
                 )",
-                "CREATE TABLE BlogPost (
-                    Id INTEGER PRIMARY KEY AUTOINCREMENT,
-                    BlogAuthorId INTEGER NOT NULL,
-                    Title TEXT NOT NULL,
-                    Status TEXT NOT NULL DEFAULT 'draft',
-                    FOREIGN KEY (BlogAuthorId) REFERENCES BlogAuthor (Id)
+                "CREATE TABLE blog_post (
+                    id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    blog_author_id INTEGER NOT NULL,
+                    title TEXT NOT NULL,
+                    status TEXT NOT NULL DEFAULT 'draft',
+                    FOREIGN KEY (blog_author_id) REFERENCES blog_author (id)
                 )",
-                "CREATE TABLE BlogPostAuthorSummary (
-                    BlogPostId INTEGER NOT NULL PRIMARY KEY,
-                    BlogPostTitle TEXT NOT NULL,
-                    BlogAuthorId INTEGER NOT NULL,
-                    BlogAuthorName TEXT NOT NULL
+                "CREATE TABLE blog_post_author_summary (
+                    blog_post_id INTEGER NOT NULL PRIMARY KEY,
+                    blog_post_title TEXT NOT NULL,
+                    blog_author_id INTEGER NOT NULL,
+                    blog_author_name TEXT NOT NULL
                 )",
-                "INSERT INTO BlogAuthor (Id, Name, IsActive) VALUES
+                "INSERT INTO blog_author (id, name, is_active) VALUES
                     (1, 'Alice Editor', 1),
                     (2, 'Bob Archived', 0),
                     (3, 'Carol Writer', 1)",
-                "INSERT INTO BlogPost (Id, BlogAuthorId, Title, Status) VALUES
+                "INSERT INTO blog_post (id, blog_author_id, title, status) VALUES
                     (1, 1, 'Canonical Join Tutorial', 'published'),
                     (2, 2, 'Inactive Author Should Not Appear', 'published'),
                     (3, 3, 'Draft Posts Stay Hidden', 'draft'),
@@ -1198,39 +1198,39 @@ function app_user_db_contract_runtime_sample09_definition(): array
         ],
         'fixture_sql' => [
             'mysql' => [
-                'DROP TABLE IF EXISTS SalesCategoryReport',
-                'DROP TABLE IF EXISTS SalesRecord',
-                'DROP TABLE IF EXISTS SalesCategory',
-                "CREATE TABLE SalesCategory (
-                    Id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
-                    Name VARCHAR(255) NOT NULL,
-                    IsActive TINYINT(1) NOT NULL DEFAULT 1,
-                    PRIMARY KEY (Id)
+                'DROP TABLE IF EXISTS sales_category_report',
+                'DROP TABLE IF EXISTS sales_record',
+                'DROP TABLE IF EXISTS sales_category',
+                "CREATE TABLE sales_category (
+                    id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+                    name VARCHAR(255) NOT NULL,
+                    is_active TINYINT(1) NOT NULL DEFAULT 1,
+                    PRIMARY KEY (id)
                 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci",
-                "CREATE TABLE SalesRecord (
-                    Id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
-                    SalesCategoryId BIGINT UNSIGNED NOT NULL,
-                    Title VARCHAR(255) NOT NULL,
-                    Status VARCHAR(20) NOT NULL DEFAULT 'open',
-                    Amount DECIMAL(10,2) NOT NULL DEFAULT 0.00,
-                    PRIMARY KEY (Id),
-                    KEY idx_sales_record_category_id (SalesCategoryId),
+                "CREATE TABLE sales_record (
+                    id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+                    sales_category_id BIGINT UNSIGNED NOT NULL,
+                    title VARCHAR(255) NOT NULL,
+                    status VARCHAR(20) NOT NULL DEFAULT 'open',
+                    amount DECIMAL(10,2) NOT NULL DEFAULT 0.00,
+                    PRIMARY KEY (id),
+                    KEY idx_sales_record_category_id (sales_category_id),
                     CONSTRAINT fk_sales_record_category
-                        FOREIGN KEY (SalesCategoryId)
-                        REFERENCES SalesCategory (Id)
+                        FOREIGN KEY (sales_category_id)
+                        REFERENCES sales_category (id)
                 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci",
-                "CREATE TABLE SalesCategoryReport (
-                    SalesCategoryId BIGINT UNSIGNED NOT NULL,
-                    SalesCategoryName VARCHAR(255) NOT NULL,
-                    ClosedSaleCount INT UNSIGNED NOT NULL,
-                    ClosedSaleTotalAmount DECIMAL(10,2) NOT NULL,
-                    PRIMARY KEY (SalesCategoryId)
+                "CREATE TABLE sales_category_report (
+                    sales_category_id BIGINT UNSIGNED NOT NULL,
+                    sales_category_name VARCHAR(255) NOT NULL,
+                    closed_sale_count INT UNSIGNED NOT NULL,
+                    closed_sale_total_amount DECIMAL(10,2) NOT NULL,
+                    PRIMARY KEY (sales_category_id)
                 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci",
-                "INSERT INTO SalesCategory (Id, Name, IsActive) VALUES
+                "INSERT INTO sales_category (id, name, is_active) VALUES
                     (1, 'Hardware', 1),
                     (2, 'Software', 1),
                     (3, 'Legacy', 0)",
-                "INSERT INTO SalesRecord (Id, SalesCategoryId, Title, Status, Amount) VALUES
+                "INSERT INTO sales_record (id, sales_category_id, title, status, amount) VALUES
                     (1, 1, 'Keyboard refresh', 'closed', 120.00),
                     (2, 1, 'Mouse replacement', 'closed', 80.00),
                     (3, 2, 'License renewal', 'closed', 40.00),
@@ -1238,68 +1238,68 @@ function app_user_db_contract_runtime_sample09_definition(): array
                     (5, 3, 'Unsupported backlog', 'closed', 999.00)",
             ],
             'pgsql' => [
-                'DROP TABLE IF EXISTS SalesCategoryReport',
-                'DROP TABLE IF EXISTS SalesRecord',
-                'DROP TABLE IF EXISTS SalesCategory',
-                "CREATE TABLE SalesCategory (
-                    Id BIGINT GENERATED BY DEFAULT AS IDENTITY PRIMARY KEY,
-                    Name VARCHAR(255) NOT NULL,
-                    IsActive SMALLINT NOT NULL DEFAULT 1
+                'DROP TABLE IF EXISTS sales_category_report',
+                'DROP TABLE IF EXISTS sales_record',
+                'DROP TABLE IF EXISTS sales_category',
+                "CREATE TABLE sales_category (
+                    id BIGINT GENERATED BY DEFAULT AS IDENTITY PRIMARY KEY,
+                    name VARCHAR(255) NOT NULL,
+                    is_active SMALLINT NOT NULL DEFAULT 1
                 )",
-                "CREATE TABLE SalesRecord (
-                    Id BIGINT GENERATED BY DEFAULT AS IDENTITY PRIMARY KEY,
-                    SalesCategoryId BIGINT NOT NULL REFERENCES SalesCategory (Id),
-                    Title VARCHAR(255) NOT NULL,
-                    Status VARCHAR(20) NOT NULL DEFAULT 'open',
-                    Amount DECIMAL(10,2) NOT NULL DEFAULT 0.00
+                "CREATE TABLE sales_record (
+                    id BIGINT GENERATED BY DEFAULT AS IDENTITY PRIMARY KEY,
+                    sales_category_id BIGINT NOT NULL REFERENCES sales_category (id),
+                    title VARCHAR(255) NOT NULL,
+                    status VARCHAR(20) NOT NULL DEFAULT 'open',
+                    amount DECIMAL(10,2) NOT NULL DEFAULT 0.00
                 )",
-                "CREATE TABLE SalesCategoryReport (
-                    SalesCategoryId BIGINT NOT NULL PRIMARY KEY,
-                    SalesCategoryName VARCHAR(255) NOT NULL,
-                    ClosedSaleCount INTEGER NOT NULL,
-                    ClosedSaleTotalAmount DECIMAL(10,2) NOT NULL
+                "CREATE TABLE sales_category_report (
+                    sales_category_id BIGINT NOT NULL PRIMARY KEY,
+                    sales_category_name VARCHAR(255) NOT NULL,
+                    closed_sale_count INTEGER NOT NULL,
+                    closed_sale_total_amount DECIMAL(10,2) NOT NULL
                 )",
-                "INSERT INTO SalesCategory (Id, Name, IsActive) VALUES
+                "INSERT INTO sales_category (id, name, is_active) VALUES
                     (1, 'Hardware', 1),
                     (2, 'Software', 1),
                     (3, 'Legacy', 0)",
-                "INSERT INTO SalesRecord (Id, SalesCategoryId, Title, Status, Amount) VALUES
+                "INSERT INTO sales_record (id, sales_category_id, title, status, amount) VALUES
                     (1, 1, 'Keyboard refresh', 'closed', 120.00),
                     (2, 1, 'Mouse replacement', 'closed', 80.00),
                     (3, 2, 'License renewal', 'closed', 40.00),
                     (4, 2, 'Future subscription', 'open', 500.00),
                     (5, 3, 'Unsupported backlog', 'closed', 999.00)",
-                'ALTER TABLE SalesCategory ALTER COLUMN Id RESTART WITH 4',
-                'ALTER TABLE SalesRecord ALTER COLUMN Id RESTART WITH 6',
+                'ALTER TABLE sales_category ALTER COLUMN id RESTART WITH 4',
+                'ALTER TABLE sales_record ALTER COLUMN id RESTART WITH 6',
             ],
             'sqlite' => [
-                'DROP TABLE IF EXISTS SalesCategoryReport',
-                'DROP TABLE IF EXISTS SalesRecord',
-                'DROP TABLE IF EXISTS SalesCategory',
-                "CREATE TABLE SalesCategory (
-                    Id INTEGER PRIMARY KEY AUTOINCREMENT,
-                    Name TEXT NOT NULL,
-                    IsActive INTEGER NOT NULL DEFAULT 1
+                'DROP TABLE IF EXISTS sales_category_report',
+                'DROP TABLE IF EXISTS sales_record',
+                'DROP TABLE IF EXISTS sales_category',
+                "CREATE TABLE sales_category (
+                    id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    name TEXT NOT NULL,
+                    is_active INTEGER NOT NULL DEFAULT 1
                 )",
-                "CREATE TABLE SalesRecord (
-                    Id INTEGER PRIMARY KEY AUTOINCREMENT,
-                    SalesCategoryId INTEGER NOT NULL,
-                    Title TEXT NOT NULL,
-                    Status TEXT NOT NULL DEFAULT 'open',
-                    Amount NUMERIC NOT NULL DEFAULT 0.00,
-                    FOREIGN KEY (SalesCategoryId) REFERENCES SalesCategory (Id)
+                "CREATE TABLE sales_record (
+                    id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    sales_category_id INTEGER NOT NULL,
+                    title TEXT NOT NULL,
+                    status TEXT NOT NULL DEFAULT 'open',
+                    amount NUMERIC NOT NULL DEFAULT 0.00,
+                    FOREIGN KEY (sales_category_id) REFERENCES sales_category (id)
                 )",
-                "CREATE TABLE SalesCategoryReport (
-                    SalesCategoryId INTEGER NOT NULL PRIMARY KEY,
-                    SalesCategoryName TEXT NOT NULL,
-                    ClosedSaleCount INTEGER NOT NULL,
-                    ClosedSaleTotalAmount NUMERIC NOT NULL
+                "CREATE TABLE sales_category_report (
+                    sales_category_id INTEGER NOT NULL PRIMARY KEY,
+                    sales_category_name TEXT NOT NULL,
+                    closed_sale_count INTEGER NOT NULL,
+                    closed_sale_total_amount NUMERIC NOT NULL
                 )",
-                "INSERT INTO SalesCategory (Id, Name, IsActive) VALUES
+                "INSERT INTO sales_category (id, name, is_active) VALUES
                     (1, 'Hardware', 1),
                     (2, 'Software', 1),
                     (3, 'Legacy', 0)",
-                "INSERT INTO SalesRecord (Id, SalesCategoryId, Title, Status, Amount) VALUES
+                "INSERT INTO sales_record (id, sales_category_id, title, status, amount) VALUES
                     (1, 1, 'Keyboard refresh', 'closed', 120.00),
                     (2, 1, 'Mouse replacement', 'closed', 80.00),
                     (3, 2, 'License renewal', 'closed', 40.00),
@@ -1326,47 +1326,47 @@ function app_user_db_contract_runtime_sample10_definition(): array
         ],
         'fixture_sql' => [
             'mysql' => [
-                'DROP TABLE IF EXISTS SupportTicket',
-                "CREATE TABLE SupportTicket (
-                    Id BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-                    Title VARCHAR(255) NOT NULL,
-                    Status VARCHAR(32) NOT NULL,
-                    AssignedTo VARCHAR(255) NULL,
-                    Body TEXT NULL,
-                    UpdatedAt DATETIME NOT NULL
+                'DROP TABLE IF EXISTS support_ticket',
+                "CREATE TABLE support_ticket (
+                    id BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+                    title VARCHAR(255) NOT NULL,
+                    status VARCHAR(32) NOT NULL,
+                    assigned_to VARCHAR(255) NULL,
+                    body TEXT NULL,
+                    updated_at DATETIME NOT NULL
                 )",
-                "INSERT INTO SupportTicket (Id, Title, Status, AssignedTo, Body, UpdatedAt) VALUES
+                "INSERT INTO support_ticket (id, title, status, assigned_to, body, updated_at) VALUES
                     (1, 'First open ticket', 'open', 'alice', 'First body', '2026-06-17 09:00:00'),
                     (2, 'Second open ticket', 'open', 'bob', 'Second body', '2026-06-17 10:00:00'),
                     (3, 'Closed ticket', 'closed', 'carol', 'Closed body', '2026-06-16 09:00:00')",
             ],
             'pgsql' => [
-                'DROP TABLE IF EXISTS SupportTicket',
-                "CREATE TABLE SupportTicket (
-                    Id BIGINT GENERATED BY DEFAULT AS IDENTITY PRIMARY KEY,
-                    Title VARCHAR(255) NOT NULL,
-                    Status VARCHAR(32) NOT NULL,
-                    AssignedTo VARCHAR(255) NULL,
-                    Body TEXT NULL,
-                    UpdatedAt TIMESTAMP NOT NULL
+                'DROP TABLE IF EXISTS support_ticket',
+                "CREATE TABLE support_ticket (
+                    id BIGINT GENERATED BY DEFAULT AS IDENTITY PRIMARY KEY,
+                    title VARCHAR(255) NOT NULL,
+                    status VARCHAR(32) NOT NULL,
+                    assigned_to VARCHAR(255) NULL,
+                    body TEXT NULL,
+                    updated_at TIMESTAMP NOT NULL
                 )",
-                "INSERT INTO SupportTicket (Id, Title, Status, AssignedTo, Body, UpdatedAt) VALUES
+                "INSERT INTO support_ticket (id, title, status, assigned_to, body, updated_at) VALUES
                     (1, 'First open ticket', 'open', 'alice', 'First body', '2026-06-17 09:00:00'),
                     (2, 'Second open ticket', 'open', 'bob', 'Second body', '2026-06-17 10:00:00'),
                     (3, 'Closed ticket', 'closed', 'carol', 'Closed body', '2026-06-16 09:00:00')",
-                'ALTER TABLE SupportTicket ALTER COLUMN Id RESTART WITH 4',
+                'ALTER TABLE support_ticket ALTER COLUMN id RESTART WITH 4',
             ],
             'sqlite' => [
-                'DROP TABLE IF EXISTS SupportTicket',
-                "CREATE TABLE SupportTicket (
-                    Id INTEGER PRIMARY KEY AUTOINCREMENT,
-                    Title TEXT NOT NULL,
-                    Status TEXT NOT NULL,
-                    AssignedTo TEXT NULL,
-                    Body TEXT NULL,
-                    UpdatedAt TEXT NOT NULL
+                'DROP TABLE IF EXISTS support_ticket',
+                "CREATE TABLE support_ticket (
+                    id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    title TEXT NOT NULL,
+                    status TEXT NOT NULL,
+                    assigned_to TEXT NULL,
+                    body TEXT NULL,
+                    updated_at TEXT NOT NULL
                 )",
-                "INSERT INTO SupportTicket (Id, Title, Status, AssignedTo, Body, UpdatedAt) VALUES
+                "INSERT INTO support_ticket (id, title, status, assigned_to, body, updated_at) VALUES
                     (1, 'First open ticket', 'open', 'alice', 'First body', '2026-06-17 09:00:00'),
                     (2, 'Second open ticket', 'open', 'bob', 'Second body', '2026-06-17 10:00:00'),
                     (3, 'Closed ticket', 'closed', 'carol', 'Closed body', '2026-06-16 09:00:00')",
@@ -1551,25 +1551,25 @@ function app_user_db_contract_runtime_run_sample10(): array
     $detailBefore = $access->GetSupportTicket(1);
 
     $newTicket = new SupportTicketData();
-    $newTicket->Title = 'New runtime ticket';
-    $newTicket->Status = 'open';
-    $newTicket->AssignedTo = 'dana';
-    $newTicket->Body = 'New body';
-    $newTicket->UpdatedAt = '2026-06-17 12:00:00';
+    $newTicket->title = 'New runtime ticket';
+    $newTicket->status = 'open';
+    $newTicket->assignedTo = 'dana';
+    $newTicket->body = 'New body';
+    $newTicket->updatedAt = '2026-06-17 12:00:00';
     $insertResult = $access->InsertSupportTicket($newTicket);
 
     $updateTicket = new SupportTicketData();
-    $updateTicket->Id = 2;
-    $updateTicket->Title = 'Second ticket updated';
-    $updateTicket->Status = 'closed';
-    $updateTicket->AssignedTo = 'erin';
-    $updateTicket->Body = 'Updated body';
-    $updateTicket->UpdatedAt = '2026-06-17 13:00:00';
+    $updateTicket->id = 2;
+    $updateTicket->title = 'Second ticket updated';
+    $updateTicket->status = 'closed';
+    $updateTicket->assignedTo = 'erin';
+    $updateTicket->body = 'Updated body';
+    $updateTicket->updatedAt = '2026-06-17 13:00:00';
     $updateResult = $access->UpdateSupportTicket($updateTicket);
     $detailAfterUpdate = $access->GetSupportTicket(2);
 
     $deleteTicket = new SupportTicketData();
-    $deleteTicket->Id = 3;
+    $deleteTicket->id = 3;
     $deleteResult = $access->DeleteSupportTicket($deleteTicket);
     $detailAfterDelete = $access->GetSupportTicket(3);
 
@@ -1689,32 +1689,32 @@ function app_user_db_contract_runtime_run_sample22(): array
     $access = new EbookWorkflowChapterDBAccess();
 
     $newChapter = new EbookWorkflowChapterData();
-    $newChapter->EbookWorkflowBookId = 1;
-    $newChapter->ChapterTitle = 'Inserted Workflow Chapter';
-    $newChapter->ChapterSlug = 'inserted-workflow-chapter';
-    $newChapter->SpineOrder = 4;
-    $newChapter->NavLabel = 'Inserted';
-    $newChapter->EpubResourcePath = 'chapters/inserted.xhtml';
-    $newChapter->BodyMarkdown = '# Inserted';
+    $newChapter->ebookWorkflowBookId = 1;
+    $newChapter->chapterTitle = 'Inserted Workflow Chapter';
+    $newChapter->chapterSlug = 'inserted-workflow-chapter';
+    $newChapter->spineOrder = 4;
+    $newChapter->navLabel = 'Inserted';
+    $newChapter->epubResourcePath = 'chapters/inserted.xhtml';
+    $newChapter->bodyMarkdown = '# Inserted';
     $insertResult = $access->InsertEbookWorkflowChapter($newChapter);
 
     $updateChapter = new EbookWorkflowChapterData();
-    $updateChapter->Id = 2;
-    $updateChapter->ChapterTitle = 'Draft Chapter Updated';
-    $updateChapter->NavLabel = 'Draft Updated';
-    $updateChapter->EpubResourcePath = 'chapters/draft-updated.xhtml';
-    $updateChapter->BodyMarkdown = '# Draft Updated';
+    $updateChapter->id = 2;
+    $updateChapter->chapterTitle = 'Draft Chapter Updated';
+    $updateChapter->navLabel = 'Draft Updated';
+    $updateChapter->epubResourcePath = 'chapters/draft-updated.xhtml';
+    $updateChapter->bodyMarkdown = '# Draft Updated';
     $updateResult = $access->UpdateEbookWorkflowChapterDraft($updateChapter);
 
     $orderChapter = new EbookWorkflowChapterData();
-    $orderChapter->Id = 2;
-    $orderChapter->SpineOrder = 5;
-    $orderChapter->NavLabel = 'Draft Ordered';
-    $orderChapter->EpubResourcePath = 'chapters/draft-ordered.xhtml';
+    $orderChapter->id = 2;
+    $orderChapter->spineOrder = 5;
+    $orderChapter->navLabel = 'Draft Ordered';
+    $orderChapter->epubResourcePath = 'chapters/draft-ordered.xhtml';
     $orderResult = $access->UpdateEbookWorkflowChapterOrder($orderChapter);
 
     $publishChapter = new EbookWorkflowChapterData();
-    $publishChapter->Id = 2;
+    $publishChapter->id = 2;
     $publishResult = $access->PublishEbookWorkflowChapter($publishChapter);
 
     return [
@@ -1741,27 +1741,27 @@ function app_user_db_contract_runtime_run_sample23(): array
     $access = new EbookMediaAssetDBAccess();
 
     $newAsset = new EbookMediaAssetData();
-    $newAsset->AssetSlug = 'new-asset';
-    $newAsset->AssetKind = 'image';
-    $newAsset->DisplayName = 'New Asset';
-    $newAsset->PublicUrl = '/media/new.jpg';
-    $newAsset->StoragePath = '/storage/new.jpg';
-    $newAsset->MimeType = 'image/jpeg';
-    $newAsset->FileSizeBytes = 2222;
-    $newAsset->Sha256 = 'sha-new';
-    $newAsset->VersionLabel = 'v1';
+    $newAsset->assetSlug = 'new-asset';
+    $newAsset->assetKind = 'image';
+    $newAsset->displayName = 'New Asset';
+    $newAsset->publicUrl = '/media/new.jpg';
+    $newAsset->storagePath = '/storage/new.jpg';
+    $newAsset->mimeType = 'image/jpeg';
+    $newAsset->fileSizeBytes = 2222;
+    $newAsset->sha256 = 'sha-new';
+    $newAsset->versionLabel = 'v1';
     $insertResult = $access->InsertEbookMediaAsset($newAsset);
 
     $updateAsset = new EbookMediaAssetData();
-    $updateAsset->Id = 1;
-    $updateAsset->DisplayName = 'Cover Image Updated';
-    $updateAsset->PublicUrl = '/media/cover-updated.jpg';
-    $updateAsset->StoragePath = '/storage/cover-updated.jpg';
-    $updateAsset->MimeType = 'image/jpeg';
-    $updateAsset->FileSizeBytes = 1300;
-    $updateAsset->Sha256 = 'sha-cover-updated';
-    $updateAsset->VersionLabel = 'v2';
-    $updateAsset->Status = 'published';
+    $updateAsset->id = 1;
+    $updateAsset->displayName = 'Cover Image Updated';
+    $updateAsset->publicUrl = '/media/cover-updated.jpg';
+    $updateAsset->storagePath = '/storage/cover-updated.jpg';
+    $updateAsset->mimeType = 'image/jpeg';
+    $updateAsset->fileSizeBytes = 1300;
+    $updateAsset->sha256 = 'sha-cover-updated';
+    $updateAsset->versionLabel = 'v2';
+    $updateAsset->status = 'published';
     $updateResult = $access->UpdateEbookMediaAssetMetadata($updateAsset);
 
     return [
@@ -1815,15 +1815,15 @@ function app_user_db_contract_runtime_run_sample25(): array
     $detailBefore = $access->GetEditorEbookChapter(1);
 
     $updateChapter = new EbookEditorChapterData();
-    $updateChapter->Id = 1;
-    $updateChapter->ChapterTitle = 'Editor Opening Updated';
-    $updateChapter->ChapterSlug = 'editor-opening-updated';
-    $updateChapter->SpineOrder = 3;
-    $updateChapter->BodyMarkdown = '# Editor Opening Updated';
+    $updateChapter->id = 1;
+    $updateChapter->chapterTitle = 'Editor Opening Updated';
+    $updateChapter->chapterSlug = 'editor-opening-updated';
+    $updateChapter->spineOrder = 3;
+    $updateChapter->bodyMarkdown = '# Editor Opening Updated';
     $updateResult = $access->UpdateEditorEbookChapterDraft($updateChapter);
 
     $publishChapter = new EbookEditorChapterData();
-    $publishChapter->Id = 1;
+    $publishChapter->id = 1;
     $publishResult = $access->PublishEditorEbookChapter($publishChapter);
 
     return [
@@ -1833,7 +1833,7 @@ function app_user_db_contract_runtime_run_sample25(): array
             'publish' => app_user_db_contract_runtime_write_summary($publishResult),
             'detail_after_publish' => app_user_db_contract_runtime_record_summary_without_fields(
                 $access->GetEditorEbookChapter(1),
-                ['PublishedAt', 'UpdatedAt'],
+                ['publishedAt', 'updatedAt'],
             ),
         ],
     ];
@@ -1848,15 +1848,15 @@ function app_user_db_contract_runtime_run_sample26(): array
     $editorDetailBefore = $access->GetEditorEbookCmsChapter(2);
 
     $updateChapter = new EbookCmsChapterData();
-    $updateChapter->Id = 2;
-    $updateChapter->ChapterTitle = 'Draft Chapter Updated';
-    $updateChapter->ChapterSlug = 'draft-chapter-updated';
-    $updateChapter->SpineOrder = 4;
-    $updateChapter->BodyMarkdown = '# Draft Updated';
+    $updateChapter->id = 2;
+    $updateChapter->chapterTitle = 'Draft Chapter Updated';
+    $updateChapter->chapterSlug = 'draft-chapter-updated';
+    $updateChapter->spineOrder = 4;
+    $updateChapter->bodyMarkdown = '# Draft Updated';
     $updateResult = $access->UpdateEditorEbookCmsChapterDraft($updateChapter);
 
     $publishChapter = new EbookCmsChapterData();
-    $publishChapter->Id = 2;
+    $publishChapter->id = 2;
     $publishResult = $access->PublishEditorEbookCmsChapter($publishChapter);
 
     return [
@@ -1881,7 +1881,7 @@ function app_user_db_contract_runtime_run_sample26(): array
             'publish' => app_user_db_contract_runtime_write_summary($publishResult),
             'editor_detail_after_publish' => app_user_db_contract_runtime_record_summary_without_fields(
                 $access->GetEditorEbookCmsChapter(2),
-                ['PublishedAt', 'UpdatedAt'],
+                ['publishedAt', 'updatedAt'],
             ),
         ],
     ];

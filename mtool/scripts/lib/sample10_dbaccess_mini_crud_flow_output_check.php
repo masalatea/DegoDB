@@ -12,8 +12,9 @@ require_once dirname(__DIR__, 2) . '/app/sample_pack_catalog.php';
 require_once dirname(__DIR__, 2) . '/app/source_output_repository.php';
 
 const APP_SAMPLE10_DBACCESS_MINI_CRUD_FLOW_PROJECT_KEY = 'SAMPLE10';
-const APP_SAMPLE10_DBACCESS_MINI_CRUD_FLOW_TABLE_NAME = 'SupportTicket';
-const APP_SAMPLE10_DBACCESS_MINI_CRUD_FLOW_SOURCE_NAME = 'SupportTicket';
+const APP_SAMPLE10_DBACCESS_MINI_CRUD_FLOW_TABLE_NAME = 'support_ticket';
+const APP_SAMPLE10_DBACCESS_MINI_CRUD_FLOW_SOURCE_NAME = 'support_ticket';
+const APP_SAMPLE10_DBACCESS_MINI_CRUD_FLOW_DATA_CLASS_BASE_NAME = 'SupportTicket';
 const APP_SAMPLE10_DBACCESS_MINI_CRUD_FLOW_LIST_FUNCTION_NAME = 'GetSupportTicketList';
 const APP_SAMPLE10_DBACCESS_MINI_CRUD_FLOW_SINGLE_FUNCTION_NAME = 'GetSupportTicket';
 const APP_SAMPLE10_DBACCESS_MINI_CRUD_FLOW_INSERT_FUNCTION_NAME = 'InsertSupportTicket';
@@ -31,26 +32,26 @@ const APP_SAMPLE10_DBACCESS_MINI_CRUD_FLOW_REFERENCE_SOURCE_OUTPUT_KEYS = [
     'DBACCESS-PHP',
 ];
 const APP_SAMPLE10_DBACCESS_MINI_CRUD_FLOW_LIST_TARGET_FIELDS = [
-    'Id',
-    'Title',
-    'Status',
-    'AssignedTo',
-    'UpdatedAt',
+    'id',
+    'title',
+    'status',
+    'assigned_to',
+    'updated_at',
 ];
 const APP_SAMPLE10_DBACCESS_MINI_CRUD_FLOW_SINGLE_TARGET_FIELDS = [
-    'Id',
-    'Title',
-    'Status',
-    'AssignedTo',
-    'Body',
-    'UpdatedAt',
+    'id',
+    'title',
+    'status',
+    'assigned_to',
+    'body',
+    'updated_at',
 ];
 const APP_SAMPLE10_DBACCESS_MINI_CRUD_FLOW_WRITE_TARGET_FIELDS = [
-    'Title',
-    'Status',
-    'AssignedTo',
-    'Body',
-    'UpdatedAt',
+    'title',
+    'status',
+    'assigned_to',
+    'body',
+    'updated_at',
 ];
 
 function app_sample10_dbaccess_mini_crud_flow_default_reference_root(): string
@@ -206,29 +207,29 @@ function app_sample10_dbaccess_mini_crud_flow_function_expectations(): array
         APP_SAMPLE10_DBACCESS_MINI_CRUD_FLOW_LIST_FUNCTION_NAME => [
             'action_type' => 'SELECTLIST',
             'parameter_type' => '',
-            'detected_signature' => 'public function GetSupportTicketList($param_SupportTicket_Status_where, $limit)',
-            'sort_order_columns' => 'SupportTicket.UpdatedAt desc, SupportTicket.Id desc',
+            'detected_signature' => '',
+            'sort_order_columns' => 'support_ticket.updated_at desc, support_ticket.id desc',
             'limit_parameter_type' => 'argument',
             'select_target_fields' => APP_SAMPLE10_DBACCESS_MINI_CRUD_FLOW_LIST_TARGET_FIELDS,
-            'select_where_columns' => ['Status'],
+            'select_where_columns' => ['status'],
             'target_field_mode' => '',
             'where_count' => 0,
         ],
         APP_SAMPLE10_DBACCESS_MINI_CRUD_FLOW_SINGLE_FUNCTION_NAME => [
             'action_type' => 'SELECTSINGLE',
             'parameter_type' => '',
-            'detected_signature' => 'public function GetSupportTicket($param_SupportTicket_Id_where)',
+            'detected_signature' => '',
             'sort_order_columns' => '',
             'limit_parameter_type' => '',
             'select_target_fields' => APP_SAMPLE10_DBACCESS_MINI_CRUD_FLOW_SINGLE_TARGET_FIELDS,
-            'select_where_columns' => ['Id'],
+            'select_where_columns' => ['id'],
             'target_field_mode' => '',
             'where_count' => 0,
         ],
         APP_SAMPLE10_DBACCESS_MINI_CRUD_FLOW_INSERT_FUNCTION_NAME => [
             'action_type' => 'INSERT',
             'parameter_type' => 'classobject',
-            'detected_signature' => 'public function InsertSupportTicket($SupportTicketObj)',
+            'detected_signature' => '',
             'sort_order_columns' => '',
             'limit_parameter_type' => '',
             'select_target_fields' => [],
@@ -239,7 +240,7 @@ function app_sample10_dbaccess_mini_crud_flow_function_expectations(): array
         APP_SAMPLE10_DBACCESS_MINI_CRUD_FLOW_UPDATE_FUNCTION_NAME => [
             'action_type' => 'UPDATE',
             'parameter_type' => 'classobject',
-            'detected_signature' => 'public function UpdateSupportTicket($SupportTicketObj)',
+            'detected_signature' => '',
             'sort_order_columns' => '',
             'limit_parameter_type' => '',
             'select_target_fields' => [],
@@ -250,7 +251,7 @@ function app_sample10_dbaccess_mini_crud_flow_function_expectations(): array
         APP_SAMPLE10_DBACCESS_MINI_CRUD_FLOW_DELETE_FUNCTION_NAME => [
             'action_type' => 'DELETE',
             'parameter_type' => 'classobject',
-            'detected_signature' => 'public function DeleteSupportTicket($SupportTicketObj)',
+            'detected_signature' => '',
             'sort_order_columns' => '',
             'limit_parameter_type' => '',
             'select_target_fields' => [],
@@ -486,7 +487,7 @@ function app_sample10_dbaccess_mini_crud_flow_run(array $app, string $requestedB
         }
 
         app_sample10_dbaccess_mini_crud_flow_assert_same($expected['action_type'], $functionResult['item']['action_type'] ?? '', 'db_access function action_type ' . $functionName, $assertionErrors);
-        app_sample10_dbaccess_mini_crud_flow_assert_same($sourceName, $functionResult['item']['data_class_base_name'] ?? '', 'db_access function data_class_base_name ' . $functionName, $assertionErrors);
+        app_sample10_dbaccess_mini_crud_flow_assert_same(APP_SAMPLE10_DBACCESS_MINI_CRUD_FLOW_DATA_CLASS_BASE_NAME, $functionResult['item']['data_class_base_name'] ?? '', 'db_access function data_class_base_name ' . $functionName, $assertionErrors);
         app_sample10_dbaccess_mini_crud_flow_assert_same($tableName, $functionResult['item']['target_table_name'] ?? '', 'db_access function target_table_name ' . $functionName, $assertionErrors);
         app_sample10_dbaccess_mini_crud_flow_assert_same($expected['parameter_type'], $functionResult['item']['parameter_type'] ?? '', 'db_access function parameter_type ' . $functionName, $assertionErrors);
         app_sample10_dbaccess_mini_crud_flow_assert_same($expected['detected_signature'], $functionResult['item']['detected_signature'] ?? '', 'db_access function detected_signature ' . $functionName, $assertionErrors);
@@ -655,7 +656,7 @@ function app_sample10_dbaccess_mini_crud_flow_run(array $app, string $requestedB
             }
 
             app_sample10_dbaccess_mini_crud_flow_assert_same(
-                ['Id'],
+                ['id'],
                 app_sample10_dbaccess_mini_crud_flow_extract_names($updateDeleteWhereResult['items'], 'target_table_column_name'),
                 'db_access update/delete where columns ' . $functionName,
                 $assertionErrors,

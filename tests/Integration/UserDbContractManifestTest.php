@@ -44,15 +44,15 @@ final class UserDbContractManifestTest extends TestCase
         self::assertSame('SELECTLIST', $methods['GetSupportTicketList']['action_type']);
         self::assertSame('list', $methods['GetSupportTicketList']['cardinality']);
         self::assertSame(
-            ['param_SupportTicket_Status_where', 'limit'],
+            ['param_SupportTicket_status_where', 'limit'],
             array_column($methods['GetSupportTicketList']['parameters'], 'name'),
         );
         self::assertSame(
-            ['$param_SupportTicket_Status_where', '$limit'],
+            ['$param_SupportTicket_status_where', '$limit'],
             $methods['GetSupportTicketList']['binds'],
         );
         self::assertSame(
-            ['Id', 'Title', 'Status', 'AssignedTo', 'UpdatedAt'],
+            ['id', 'title', 'status', 'assignedTo', 'updatedAt'],
             array_column($methods['GetSupportTicketList']['result_fields'], 'name'),
         );
 

@@ -11,7 +11,7 @@ INSERT INTO projects (
     'sample01-simple-table-runtime',
     'paused',
     'admin',
-    '1 table の live schema import から canonical dataclass PHP output までを通す最小 sample project。'
+    '1 table の live schema import から canonical DataClass PHP output までを通す最小 sample project。'
 )
 ON DUPLICATE KEY UPDATE
     name = VALUES(name),

@@ -8,11 +8,22 @@ final class Sample15ProjectMetadataExportImportTest extends TestCase
 {
     public function testProjectMetadataBundleExportImportStaysInSync(): void
     {
-        $result = app_sample15_bundle_run(
-            app_bootstrap(),
-            'phpunit',
-            app_sample15_bundle_default_reference_root(),
-        );
+        $previousPolicy = getenv('MTOOL_GENERATED_NAME_POLICY');
+        putenv('MTOOL_GENERATED_NAME_POLICY=physical-logical-v1');
+
+        try {
+            $result = app_sample15_bundle_run(
+                app_bootstrap(),
+                'phpunit',
+                app_sample15_bundle_default_reference_root(),
+            );
+        } finally {
+            if ($previousPolicy === false) {
+                putenv('MTOOL_GENERATED_NAME_POLICY');
+            } else {
+                putenv('MTOOL_GENERATED_NAME_POLICY=' . $previousPolicy);
+            }
+        }
 
         self::assertTrue($result['ok'], $this->failureMessageFromResult($result));
         self::assertSame('project-core', (string) ($result['steps']['export']['manifest']['scope'] ?? ''));

@@ -72,7 +72,7 @@ INSERT INTO project_db_access_classes (
     last_detected_data_file
 ) VALUES (
     @sample18_project_id,
-    'TaskCard',
+    'task_card',
     '',
     0,
     'Instruction-driven mini task board demo DBAccess class.',
@@ -112,10 +112,10 @@ INSERT INTO project_db_access_functions (
     '',
     'SELECTLIST',
     'TaskCard',
-    'TaskCard',
+    'task_card',
     '',
     0,
-    'TaskCard.DueDate asc, TaskCard.Priority desc, TaskCard.Id asc',
+    'task_card.due_date asc, task_card.priority desc, task_card.id asc',
     'List task cards by status for the mini task board demo.',
     'argument',
     '',
@@ -134,7 +134,7 @@ INSERT INTO project_db_access_functions (
     '',
     'SELECTSINGLE',
     'TaskCard',
-    'TaskCard',
+    'task_card',
     '',
     0,
     '',
@@ -156,7 +156,7 @@ INSERT INTO project_db_access_functions (
     '',
     'INSERT',
     'TaskCard',
-    'TaskCard',
+    'task_card',
     'classobject',
     0,
     '',
@@ -178,7 +178,7 @@ INSERT INTO project_db_access_functions (
     '',
     'UPDATE',
     'TaskCard',
-    'TaskCard',
+    'task_card',
     'classobject',
     0,
     '',
@@ -200,7 +200,7 @@ INSERT INTO project_db_access_functions (
     '',
     'UPDATE',
     'TaskCard',
-    'TaskCard',
+    'task_card',
     'classobject',
     0,
     '',
@@ -263,21 +263,21 @@ INSERT INTO project_db_access_function_select_target_fields (
     field_list_order,
     source_of_truth
 ) VALUES
-(@sample18_get_task_card_list_function_id, 'TaskCard', '', 'Id', '', '', 'Id', 0, 10, 'manual'),
-(@sample18_get_task_card_list_function_id, 'TaskCard', '', 'Title', '', '', 'Title', 0, 20, 'manual'),
-(@sample18_get_task_card_list_function_id, 'TaskCard', '', 'Status', '', '', 'Status', 0, 30, 'manual'),
-(@sample18_get_task_card_list_function_id, 'TaskCard', '', 'AssignedTo', '', '', 'AssignedTo', 0, 40, 'manual'),
-(@sample18_get_task_card_list_function_id, 'TaskCard', '', 'Priority', '', '', 'Priority', 0, 50, 'manual'),
-(@sample18_get_task_card_list_function_id, 'TaskCard', '', 'DueDate', '', '', 'DueDate', 0, 60, 'manual'),
-(@sample18_get_task_card_function_id, 'TaskCard', '', 'Id', '', '', 'Id', 0, 10, 'manual'),
-(@sample18_get_task_card_function_id, 'TaskCard', '', 'Title', '', '', 'Title', 0, 20, 'manual'),
-(@sample18_get_task_card_function_id, 'TaskCard', '', 'Body', '', '', 'Body', 0, 30, 'manual'),
-(@sample18_get_task_card_function_id, 'TaskCard', '', 'Status', '', '', 'Status', 0, 40, 'manual'),
-(@sample18_get_task_card_function_id, 'TaskCard', '', 'AssignedTo', '', '', 'AssignedTo', 0, 50, 'manual'),
-(@sample18_get_task_card_function_id, 'TaskCard', '', 'Priority', '', '', 'Priority', 0, 60, 'manual'),
-(@sample18_get_task_card_function_id, 'TaskCard', '', 'DueDate', '', '', 'DueDate', 0, 70, 'manual'),
-(@sample18_get_task_card_function_id, 'TaskCard', '', 'CompletedAt', '', '', 'CompletedAt', 0, 80, 'manual'),
-(@sample18_get_task_card_function_id, 'TaskCard', '', 'UpdatedAt', '', '', 'UpdatedAt', 0, 90, 'manual');
+(@sample18_get_task_card_list_function_id, 'task_card', '', 'id', '', '', 'id', 0, 10, 'manual'),
+(@sample18_get_task_card_list_function_id, 'task_card', '', 'title', '', '', 'title', 0, 20, 'manual'),
+(@sample18_get_task_card_list_function_id, 'task_card', '', 'status', '', '', 'status', 0, 30, 'manual'),
+(@sample18_get_task_card_list_function_id, 'task_card', '', 'assigned_to', '', '', 'assignedTo', 0, 40, 'manual'),
+(@sample18_get_task_card_list_function_id, 'task_card', '', 'priority', '', '', 'priority', 0, 50, 'manual'),
+(@sample18_get_task_card_list_function_id, 'task_card', '', 'due_date', '', '', 'dueDate', 0, 60, 'manual'),
+(@sample18_get_task_card_function_id, 'task_card', '', 'id', '', '', 'id', 0, 10, 'manual'),
+(@sample18_get_task_card_function_id, 'task_card', '', 'title', '', '', 'title', 0, 20, 'manual'),
+(@sample18_get_task_card_function_id, 'task_card', '', 'body', '', '', 'body', 0, 30, 'manual'),
+(@sample18_get_task_card_function_id, 'task_card', '', 'status', '', '', 'status', 0, 40, 'manual'),
+(@sample18_get_task_card_function_id, 'task_card', '', 'assigned_to', '', '', 'assignedTo', 0, 50, 'manual'),
+(@sample18_get_task_card_function_id, 'task_card', '', 'priority', '', '', 'priority', 0, 60, 'manual'),
+(@sample18_get_task_card_function_id, 'task_card', '', 'due_date', '', '', 'dueDate', 0, 70, 'manual'),
+(@sample18_get_task_card_function_id, 'task_card', '', 'completed_at', '', '', 'completedAt', 0, 80, 'manual'),
+(@sample18_get_task_card_function_id, 'task_card', '', 'updated_at', '', '', 'updatedAt', 0, 90, 'manual');
 
 INSERT INTO project_db_access_function_select_wheres (
     db_access_function_id,
@@ -296,8 +296,8 @@ INSERT INTO project_db_access_function_select_wheres (
     where_order,
     source_of_truth
 ) VALUES
-(@sample18_get_task_card_list_function_id, 'TaskCard', '', 'Status', 'argument', 'varchar', '', '', '', '', '', '', '=', 10, 'manual'),
-(@sample18_get_task_card_function_id, 'TaskCard', '', 'Id', 'argument', 'int', '', '', '', '', '', '', '=', 10, 'manual');
+(@sample18_get_task_card_list_function_id, 'task_card', '', 'status', 'argument', 'varchar', '', '', '', '', '', '', '=', 10, 'manual'),
+(@sample18_get_task_card_function_id, 'task_card', '', 'id', 'argument', 'int', '', '', '', '', '', '', '=', 10, 'manual');
 
 INSERT INTO project_db_access_function_insert_target_fields (
     db_access_function_id,
@@ -308,13 +308,13 @@ INSERT INTO project_db_access_function_insert_target_fields (
     field_list_order,
     source_of_truth
 ) VALUES
-(@sample18_insert_task_card_function_id, 'Title', 'argument', '', '', 10, 'manual'),
-(@sample18_insert_task_card_function_id, 'Body', 'argument', '', '', 20, 'manual'),
-(@sample18_insert_task_card_function_id, 'Status', 'argument', '', '', 30, 'manual'),
-(@sample18_insert_task_card_function_id, 'AssignedTo', 'argument', '', '', 40, 'manual'),
-(@sample18_insert_task_card_function_id, 'Priority', 'argument', '', '', 50, 'manual'),
-(@sample18_insert_task_card_function_id, 'DueDate', 'argument', '', '', 60, 'manual'),
-(@sample18_insert_task_card_function_id, 'UpdatedAt', 'argument', '', '', 70, 'manual');
+(@sample18_insert_task_card_function_id, 'title', 'argument', '', '', 10, 'manual'),
+(@sample18_insert_task_card_function_id, 'body', 'argument', '', '', 20, 'manual'),
+(@sample18_insert_task_card_function_id, 'status', 'argument', '', '', 30, 'manual'),
+(@sample18_insert_task_card_function_id, 'assigned_to', 'argument', '', '', 40, 'manual'),
+(@sample18_insert_task_card_function_id, 'priority', 'argument', '', '', 50, 'manual'),
+(@sample18_insert_task_card_function_id, 'due_date', 'argument', '', '', 60, 'manual'),
+(@sample18_insert_task_card_function_id, 'updated_at', 'argument', '', '', 70, 'manual');
 
 INSERT INTO project_db_access_function_update_target_fields (
     db_access_function_id,
@@ -325,17 +325,17 @@ INSERT INTO project_db_access_function_update_target_fields (
     field_list_order,
     source_of_truth
 ) VALUES
-(@sample18_update_task_card_function_id, 'Title', 'argument', '', '', 10, 'manual'),
-(@sample18_update_task_card_function_id, 'Body', 'argument', '', '', 20, 'manual'),
-(@sample18_update_task_card_function_id, 'Status', 'argument', '', '', 30, 'manual'),
-(@sample18_update_task_card_function_id, 'AssignedTo', 'argument', '', '', 40, 'manual'),
-(@sample18_update_task_card_function_id, 'Priority', 'argument', '', '', 50, 'manual'),
-(@sample18_update_task_card_function_id, 'DueDate', 'argument', '', '', 60, 'manual'),
-(@sample18_update_task_card_function_id, 'CompletedAt', 'argument', '', '', 70, 'manual'),
-(@sample18_update_task_card_function_id, 'UpdatedAt', 'argument', '', '', 80, 'manual'),
-(@sample18_complete_task_card_function_id, 'Status', 'fixed', '', 'done', 10, 'manual'),
-(@sample18_complete_task_card_function_id, 'CompletedAt', 'argument', '', '', 20, 'manual'),
-(@sample18_complete_task_card_function_id, 'UpdatedAt', 'argument', '', '', 30, 'manual');
+(@sample18_update_task_card_function_id, 'title', 'argument', '', '', 10, 'manual'),
+(@sample18_update_task_card_function_id, 'body', 'argument', '', '', 20, 'manual'),
+(@sample18_update_task_card_function_id, 'status', 'argument', '', '', 30, 'manual'),
+(@sample18_update_task_card_function_id, 'assigned_to', 'argument', '', '', 40, 'manual'),
+(@sample18_update_task_card_function_id, 'priority', 'argument', '', '', 50, 'manual'),
+(@sample18_update_task_card_function_id, 'due_date', 'argument', '', '', 60, 'manual'),
+(@sample18_update_task_card_function_id, 'completed_at', 'argument', '', '', 70, 'manual'),
+(@sample18_update_task_card_function_id, 'updated_at', 'argument', '', '', 80, 'manual'),
+(@sample18_complete_task_card_function_id, 'status', 'fixed', '', 'done', 10, 'manual'),
+(@sample18_complete_task_card_function_id, 'completed_at', 'argument', '', '', 20, 'manual'),
+(@sample18_complete_task_card_function_id, 'updated_at', 'argument', '', '', 30, 'manual');
 
 INSERT INTO project_db_access_function_update_delete_wheres (
     db_access_function_id,
@@ -348,8 +348,8 @@ INSERT INTO project_db_access_function_update_delete_wheres (
     where_order,
     source_of_truth
 ) VALUES
-(@sample18_update_task_card_function_id, 'Id', 'argument', '', '', '', '=', 10, 'manual'),
-(@sample18_complete_task_card_function_id, 'Id', 'argument', '', '', '', '=', 10, 'manual');
+(@sample18_update_task_card_function_id, 'id', 'argument', '', '', '', '=', 10, 'manual'),
+(@sample18_complete_task_card_function_id, 'id', 'argument', '', '', '', '=', 10, 'manual');
 
 SET @sample18_project_id = NULL;
 SET @sample18_db_access_class_id = NULL;
@@ -358,4 +358,3 @@ SET @sample18_get_task_card_function_id = NULL;
 SET @sample18_insert_task_card_function_id = NULL;
 SET @sample18_update_task_card_function_id = NULL;
 SET @sample18_complete_task_card_function_id = NULL;
-

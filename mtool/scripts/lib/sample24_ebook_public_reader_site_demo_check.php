@@ -11,9 +11,9 @@ require_once dirname(__DIR__, 2) . '/app/source_output_repository.php';
 
 const APP_SAMPLE24_EBOOK_PUBLIC_READER_SITE_PROJECT_KEY = 'SAMPLE24';
 const APP_SAMPLE24_EBOOK_PUBLIC_READER_SITE_TABLE_NAMES = [
-    'EbookReaderBook',
-    'EbookReaderChapter',
-    'EbookReaderMediaDelivery',
+    'ebook_reader_book',
+    'ebook_reader_chapter',
+    'ebook_reader_media_delivery',
 ];
 const APP_SAMPLE24_EBOOK_PUBLIC_READER_SITE_KEYS = [
     'DATACLASS-PHP',

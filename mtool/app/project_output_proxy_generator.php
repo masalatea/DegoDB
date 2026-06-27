@@ -388,6 +388,12 @@ function app_project_output_proxy_load_source_entity(array $app, string $sourceN
 {
     $generatedCatalog = app_generated_entity_catalog($app);
     $entity = app_generated_catalog_find_entity($generatedCatalog, $sourceName);
+    if ($entity === null && app_generated_name_policy_uses_physical_logical_names()) {
+        $outputSourceName = app_generated_name_map_for_physical_name($sourceName, 'class')['generated_name'];
+        if ($outputSourceName !== $sourceName) {
+            $entity = app_generated_catalog_find_entity($generatedCatalog, $outputSourceName);
+        }
+    }
     if ($entity !== null) {
         $dataPath = (string) ($entity['data_path'] ?? '');
         $dbaccessPath = (string) ($entity['dbaccess_path'] ?? '');
@@ -722,7 +728,19 @@ function app_project_output_proxy_parameter_schemas_from_single_proxy_item(array
             continue;
         }
 
-        $whereByParameterName['param_' . $sourceName . '_' . $columnName . '_where'] = $where;
+        $sourceCandidates = [$sourceName];
+        $sourceNameMap = app_generated_name_map_for_physical_name($sourceName, 'class');
+        $sourceCandidates[] = $sourceNameMap['generated_name'];
+
+        $columnCandidates = [$columnName];
+        $columnNameMap = app_generated_name_map_for_physical_name($columnName, 'class');
+        $columnCandidates[] = $columnNameMap['generated_name'];
+
+        foreach (array_unique($sourceCandidates) as $sourceCandidate) {
+            foreach (array_unique($columnCandidates) as $columnCandidate) {
+                $whereByParameterName['param_' . $sourceCandidate . '_' . $columnCandidate . '_where'] = $where;
+            }
+        }
     }
 
     foreach ($parameterNames as $index => $parameterName) {

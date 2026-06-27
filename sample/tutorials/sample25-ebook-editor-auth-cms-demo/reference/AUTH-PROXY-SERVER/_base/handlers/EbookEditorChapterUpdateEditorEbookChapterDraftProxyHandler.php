@@ -6,7 +6,7 @@ class EbookEditorChapterUpdateEditorEbookChapterDraftProxyHandlerBase extends Mt
 {
     protected function proxyDisplayName(): string
     {
-        return 'EbookEditorChapter.UpdateEditorEbookChapterDraft';
+        return 'ebook_editor_chapter.UpdateEditorEbookChapterDraft';
     }
 
     protected function usesTransaction(): bool
@@ -42,7 +42,7 @@ class EbookEditorChapterUpdateEditorEbookChapterDraftProxyHandlerBase extends Mt
                 'step_no' => 1,
                 'request_key' => '',
                 'is_list' => false,
-                'source_name' => 'EbookEditorChapter',
+                'source_name' => 'ebook_editor_chapter',
                 'dbaccess_class' => 'EbookEditorChapterDBAccess',
                 'function_name' => 'UpdateEditorEbookChapterDraft',
                 'action' => 'update',

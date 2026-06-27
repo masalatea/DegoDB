@@ -80,10 +80,10 @@ INSERT INTO project_db_access_classes (
     last_detected_data_file
 ) VALUES (
     @sample10_project_id,
-    'SupportTicket',
+    'support_ticket',
     '',
     0,
-    'Mini CRUD flow DBAccess sample for a single imported SupportTicket table.',
+    'Mini CRUD flow DBAccess sample for a single imported support_ticket table.',
     'manual',
     '',
     ''
@@ -120,10 +120,10 @@ INSERT INTO project_db_access_functions (
     '',
     'SELECTLIST',
     'SupportTicket',
-    'SupportTicket',
+    'support_ticket',
     '',
     0,
-    'SupportTicket.UpdatedAt desc, SupportTicket.Id desc',
+    'support_ticket.updated_at desc, support_ticket.id desc',
     'List support tickets by status with newest updates first.',
     'argument',
     '',
@@ -131,7 +131,7 @@ INSERT INTO project_db_access_functions (
     '',
     '',
     0,
-    'public function GetSupportTicketList($param_SupportTicket_Status_where, $limit)',
+    '',
     10,
     'manual'
 ),
@@ -142,7 +142,7 @@ INSERT INTO project_db_access_functions (
     '',
     'SELECTSINGLE',
     'SupportTicket',
-    'SupportTicket',
+    'support_ticket',
     '',
     0,
     '',
@@ -153,7 +153,7 @@ INSERT INTO project_db_access_functions (
     '',
     '',
     0,
-    'public function GetSupportTicket($param_SupportTicket_Id_where)',
+    '',
     20,
     'manual'
 ),
@@ -164,7 +164,7 @@ INSERT INTO project_db_access_functions (
     '',
     'INSERT',
     'SupportTicket',
-    'SupportTicket',
+    'support_ticket',
     'classobject',
     0,
     '',
@@ -175,7 +175,7 @@ INSERT INTO project_db_access_functions (
     '',
     '',
     0,
-    'public function InsertSupportTicket($SupportTicketObj)',
+    '',
     30,
     'manual'
 ),
@@ -186,7 +186,7 @@ INSERT INTO project_db_access_functions (
     '',
     'UPDATE',
     'SupportTicket',
-    'SupportTicket',
+    'support_ticket',
     'classobject',
     0,
     '',
@@ -197,7 +197,7 @@ INSERT INTO project_db_access_functions (
     '',
     '',
     0,
-    'public function UpdateSupportTicket($SupportTicketObj)',
+    '',
     40,
     'manual'
 ),
@@ -208,7 +208,7 @@ INSERT INTO project_db_access_functions (
     '',
     'DELETE',
     'SupportTicket',
-    'SupportTicket',
+    'support_ticket',
     'classobject',
     0,
     '',
@@ -219,7 +219,7 @@ INSERT INTO project_db_access_functions (
     '',
     '',
     0,
-    'public function DeleteSupportTicket($SupportTicketObj)',
+    '',
     50,
     'manual'
 );
@@ -271,17 +271,17 @@ INSERT INTO project_db_access_function_select_target_fields (
     field_list_order,
     source_of_truth
 ) VALUES
-(@sample10_get_support_ticket_list_function_id, 'SupportTicket', '', 'Id', '', '', 'Id', 0, 10, 'manual'),
-(@sample10_get_support_ticket_list_function_id, 'SupportTicket', '', 'Title', '', '', 'Title', 0, 20, 'manual'),
-(@sample10_get_support_ticket_list_function_id, 'SupportTicket', '', 'Status', '', '', 'Status', 0, 30, 'manual'),
-(@sample10_get_support_ticket_list_function_id, 'SupportTicket', '', 'AssignedTo', '', '', 'AssignedTo', 0, 40, 'manual'),
-(@sample10_get_support_ticket_list_function_id, 'SupportTicket', '', 'UpdatedAt', '', '', 'UpdatedAt', 0, 50, 'manual'),
-(@sample10_get_support_ticket_function_id, 'SupportTicket', '', 'Id', '', '', 'Id', 0, 10, 'manual'),
-(@sample10_get_support_ticket_function_id, 'SupportTicket', '', 'Title', '', '', 'Title', 0, 20, 'manual'),
-(@sample10_get_support_ticket_function_id, 'SupportTicket', '', 'Status', '', '', 'Status', 0, 30, 'manual'),
-(@sample10_get_support_ticket_function_id, 'SupportTicket', '', 'AssignedTo', '', '', 'AssignedTo', 0, 40, 'manual'),
-(@sample10_get_support_ticket_function_id, 'SupportTicket', '', 'Body', '', '', 'Body', 0, 50, 'manual'),
-(@sample10_get_support_ticket_function_id, 'SupportTicket', '', 'UpdatedAt', '', '', 'UpdatedAt', 0, 60, 'manual');
+(@sample10_get_support_ticket_list_function_id, 'support_ticket', '', 'id', '', '', 'id', 0, 10, 'manual'),
+(@sample10_get_support_ticket_list_function_id, 'support_ticket', '', 'title', '', '', 'title', 0, 20, 'manual'),
+(@sample10_get_support_ticket_list_function_id, 'support_ticket', '', 'status', '', '', 'status', 0, 30, 'manual'),
+(@sample10_get_support_ticket_list_function_id, 'support_ticket', '', 'assigned_to', '', '', 'assignedTo', 0, 40, 'manual'),
+(@sample10_get_support_ticket_list_function_id, 'support_ticket', '', 'updated_at', '', '', 'updatedAt', 0, 50, 'manual'),
+(@sample10_get_support_ticket_function_id, 'support_ticket', '', 'id', '', '', 'id', 0, 10, 'manual'),
+(@sample10_get_support_ticket_function_id, 'support_ticket', '', 'title', '', '', 'title', 0, 20, 'manual'),
+(@sample10_get_support_ticket_function_id, 'support_ticket', '', 'status', '', '', 'status', 0, 30, 'manual'),
+(@sample10_get_support_ticket_function_id, 'support_ticket', '', 'assigned_to', '', '', 'assignedTo', 0, 40, 'manual'),
+(@sample10_get_support_ticket_function_id, 'support_ticket', '', 'body', '', '', 'body', 0, 50, 'manual'),
+(@sample10_get_support_ticket_function_id, 'support_ticket', '', 'updated_at', '', '', 'updatedAt', 0, 60, 'manual');
 
 INSERT INTO project_db_access_function_select_wheres (
     db_access_function_id,
@@ -300,8 +300,8 @@ INSERT INTO project_db_access_function_select_wheres (
     where_order,
     source_of_truth
 ) VALUES
-(@sample10_get_support_ticket_list_function_id, 'SupportTicket', '', 'Status', 'argument', '', '', '', '', '', '', '', '=', 10, 'manual'),
-(@sample10_get_support_ticket_function_id, 'SupportTicket', '', 'Id', 'argument', '', '', '', '', '', '', '', '=', 10, 'manual');
+(@sample10_get_support_ticket_list_function_id, 'support_ticket', '', 'status', 'argument', '', '', '', '', '', '', '', '=', 10, 'manual'),
+(@sample10_get_support_ticket_function_id, 'support_ticket', '', 'id', 'argument', '', '', '', '', '', '', '', '=', 10, 'manual');
 
 INSERT INTO project_db_access_function_insert_target_fields (
     db_access_function_id,
@@ -312,11 +312,11 @@ INSERT INTO project_db_access_function_insert_target_fields (
     field_list_order,
     source_of_truth
 ) VALUES
-(@sample10_insert_support_ticket_function_id, 'Title', 'argument', '', '', 10, 'manual'),
-(@sample10_insert_support_ticket_function_id, 'Status', 'argument', '', '', 20, 'manual'),
-(@sample10_insert_support_ticket_function_id, 'AssignedTo', 'argument', '', '', 30, 'manual'),
-(@sample10_insert_support_ticket_function_id, 'Body', 'argument', '', '', 40, 'manual'),
-(@sample10_insert_support_ticket_function_id, 'UpdatedAt', 'argument', '', '', 50, 'manual');
+(@sample10_insert_support_ticket_function_id, 'title', 'argument', '', '', 10, 'manual'),
+(@sample10_insert_support_ticket_function_id, 'status', 'argument', '', '', 20, 'manual'),
+(@sample10_insert_support_ticket_function_id, 'assigned_to', 'argument', '', '', 30, 'manual'),
+(@sample10_insert_support_ticket_function_id, 'body', 'argument', '', '', 40, 'manual'),
+(@sample10_insert_support_ticket_function_id, 'updated_at', 'argument', '', '', 50, 'manual');
 
 INSERT INTO project_db_access_function_update_target_fields (
     db_access_function_id,
@@ -327,11 +327,11 @@ INSERT INTO project_db_access_function_update_target_fields (
     field_list_order,
     source_of_truth
 ) VALUES
-(@sample10_update_support_ticket_function_id, 'Title', 'argument', '', '', 10, 'manual'),
-(@sample10_update_support_ticket_function_id, 'Status', 'argument', '', '', 20, 'manual'),
-(@sample10_update_support_ticket_function_id, 'AssignedTo', 'argument', '', '', 30, 'manual'),
-(@sample10_update_support_ticket_function_id, 'Body', 'argument', '', '', 40, 'manual'),
-(@sample10_update_support_ticket_function_id, 'UpdatedAt', 'argument', '', '', 50, 'manual');
+(@sample10_update_support_ticket_function_id, 'title', 'argument', '', '', 10, 'manual'),
+(@sample10_update_support_ticket_function_id, 'status', 'argument', '', '', 20, 'manual'),
+(@sample10_update_support_ticket_function_id, 'assigned_to', 'argument', '', '', 30, 'manual'),
+(@sample10_update_support_ticket_function_id, 'body', 'argument', '', '', 40, 'manual'),
+(@sample10_update_support_ticket_function_id, 'updated_at', 'argument', '', '', 50, 'manual');
 
 INSERT INTO project_db_access_function_update_delete_wheres (
     db_access_function_id,
@@ -344,8 +344,8 @@ INSERT INTO project_db_access_function_update_delete_wheres (
     where_order,
     source_of_truth
 ) VALUES
-(@sample10_update_support_ticket_function_id, 'Id', 'argument', '', '', '', '=', 10, 'manual'),
-(@sample10_delete_support_ticket_function_id, 'Id', 'argument', '', '', '', '=', 10, 'manual');
+(@sample10_update_support_ticket_function_id, 'id', 'argument', '', '', '', '=', 10, 'manual'),
+(@sample10_delete_support_ticket_function_id, 'id', 'argument', '', '', '', '=', 10, 'manual');
 
 SET @sample10_project_id = NULL;
 SET @sample10_db_access_class_id = NULL;

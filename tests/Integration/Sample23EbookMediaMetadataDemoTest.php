@@ -8,12 +8,23 @@ final class Sample23EbookMediaMetadataDemoTest extends TestCase
 {
     public function testEbookMediaMetadataReferenceOutputs(): void
     {
+        $previousPolicy = getenv('MTOOL_GENERATED_NAME_POLICY');
+        putenv('MTOOL_GENERATED_NAME_POLICY=physical-logical-v1');
+
         $app = app_bootstrap();
-        $result = app_sample23_ebook_media_metadata_run(
-            $app,
-            'phpunit-sample23',
-            app_sample23_ebook_media_metadata_default_reference_root(),
-        );
+        try {
+            $result = app_sample23_ebook_media_metadata_run(
+                $app,
+                'phpunit-sample23',
+                app_sample23_ebook_media_metadata_default_reference_root(),
+            );
+        } finally {
+            if ($previousPolicy === false) {
+                putenv('MTOOL_GENERATED_NAME_POLICY');
+            } else {
+                putenv('MTOOL_GENERATED_NAME_POLICY=' . $previousPolicy);
+            }
+        }
 
         if (!$result['ok']) {
             fwrite(

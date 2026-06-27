@@ -1,23 +1,23 @@
-DROP TABLE IF EXISTS ExternalArticle;
+DROP TABLE IF EXISTS external_article;
 
-CREATE TABLE ExternalArticle (
-    Id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
-    Title VARCHAR(255) NOT NULL,
-    Slug VARCHAR(191) NOT NULL,
-    Status VARCHAR(32) NOT NULL DEFAULT 'draft',
-    PublishedAt DATETIME DEFAULT NULL,
-    Body TEXT NOT NULL,
-    PRIMARY KEY (Id),
-    UNIQUE KEY uq_external_article_slug (Slug),
-    KEY idx_external_article_status_published (Status, PublishedAt)
+CREATE TABLE external_article (
+    id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+    title VARCHAR(255) NOT NULL,
+    slug VARCHAR(191) NOT NULL,
+    status VARCHAR(32) NOT NULL DEFAULT 'draft',
+    published_at DATETIME DEFAULT NULL,
+    body TEXT NOT NULL,
+    PRIMARY KEY (id),
+    UNIQUE KEY uq_external_article_slug (slug),
+    KEY idx_external_article_status_published (status, published_at)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
-INSERT INTO ExternalArticle (
-    Title,
-    Slug,
-    Status,
-    PublishedAt,
-    Body
+INSERT INTO external_article (
+    title,
+    slug,
+    status,
+    published_at,
+    body
 ) VALUES
     (
         'External source first row',

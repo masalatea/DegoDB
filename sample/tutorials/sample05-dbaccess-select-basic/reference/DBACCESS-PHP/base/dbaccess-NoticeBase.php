@@ -25,7 +25,7 @@ class NoticeDBAccessBase
 
         $result = array();
 
-        $last_sql_command_for_mtooldb = 'select Notice.Id, Notice.Title, Notice.Body, Notice.SortOrder from Notice order by Notice.SortOrder, Notice.Id';
+        $last_sql_command_for_mtooldb = 'select notice.id, notice.title, notice.body, notice.sort_order from notice order by notice.sort_order, notice.id';
         $ret = $mtooldb->execute($last_sql_command_for_mtooldb, [
         ]);
         if ($mtooldb->errno != 0) {
@@ -34,10 +34,10 @@ class NoticeDBAccessBase
         }
         while($thisline=$ret->fetch_row()) {
             $thisresult = new NoticeData();
-            $thisresult->Id = $thisline[0];
-            $thisresult->Title = $thisline[1];
-            $thisresult->Body = $thisline[2];
-            $thisresult->SortOrder = $thisline[3];
+            $thisresult->id = $thisline[0];
+            $thisresult->title = $thisline[1];
+            $thisresult->body = $thisline[2];
+            $thisresult->sortOrder = $thisline[3];
             array_push($result, $thisresult);
         }
         return $result;

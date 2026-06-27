@@ -12,18 +12,25 @@ require_once dirname(__DIR__, 2) . '/app/sample_pack_catalog.php';
 require_once dirname(__DIR__, 2) . '/app/source_output_repository.php';
 
 const APP_SAMPLE6_DBACCESS_FILTER_SORT_PAGE_PROJECT_KEY = 'SAMPLE06';
-const APP_SAMPLE6_DBACCESS_FILTER_SORT_PAGE_TABLE_NAME = 'Announcement';
-const APP_SAMPLE6_DBACCESS_FILTER_SORT_PAGE_SOURCE_NAME = 'Announcement';
+const APP_SAMPLE6_DBACCESS_FILTER_SORT_PAGE_TABLE_NAME = 'announcement';
+const APP_SAMPLE6_DBACCESS_FILTER_SORT_PAGE_SOURCE_NAME = 'announcement';
+const APP_SAMPLE6_DBACCESS_FILTER_SORT_PAGE_DATA_CLASS_BASE_NAME = 'Announcement';
 const APP_SAMPLE6_DBACCESS_FILTER_SORT_PAGE_FUNCTION_NAME = 'GetAnnouncementList';
 const APP_SAMPLE6_DBACCESS_FILTER_SORT_PAGE_REFERENCE_SOURCE_OUTPUT_KEYS = [
     'DATACLASS-PHP',
     'DBACCESS-PHP',
 ];
 const APP_SAMPLE6_DBACCESS_FILTER_SORT_PAGE_TARGET_FIELDS = [
-    'Id',
-    'Title',
-    'Status',
-    'PublishedAt',
+    'id',
+    'title',
+    'status',
+    'published_at',
+];
+const APP_SAMPLE6_DBACCESS_FILTER_SORT_PAGE_STORE_FIELDS = [
+    'id',
+    'title',
+    'status',
+    'publishedAt',
 ];
 
 function app_sample6_dbaccess_filter_sort_page_default_reference_root(): string
@@ -379,9 +386,9 @@ function app_sample6_dbaccess_filter_sort_page_run(array $app, string $requested
     }
 
     app_sample6_dbaccess_filter_sort_page_assert_same('SELECTLIST', $functionResult['item']['action_type'] ?? '', 'db_access function action_type', $assertionErrors);
-    app_sample6_dbaccess_filter_sort_page_assert_same($sourceName, $functionResult['item']['data_class_base_name'] ?? '', 'db_access function data_class_base_name', $assertionErrors);
+    app_sample6_dbaccess_filter_sort_page_assert_same(APP_SAMPLE6_DBACCESS_FILTER_SORT_PAGE_DATA_CLASS_BASE_NAME, $functionResult['item']['data_class_base_name'] ?? '', 'db_access function data_class_base_name', $assertionErrors);
     app_sample6_dbaccess_filter_sort_page_assert_same($tableName, $functionResult['item']['target_table_name'] ?? '', 'db_access function target_table_name', $assertionErrors);
-    app_sample6_dbaccess_filter_sort_page_assert_same('Announcement.PublishedAt desc, Announcement.Id desc', $functionResult['item']['sort_order_columns'] ?? '', 'db_access function sort_order_columns', $assertionErrors);
+    app_sample6_dbaccess_filter_sort_page_assert_same('announcement.published_at desc, announcement.id desc', $functionResult['item']['sort_order_columns'] ?? '', 'db_access function sort_order_columns', $assertionErrors);
     app_sample6_dbaccess_filter_sort_page_assert_same('argument', $functionResult['item']['limit_parameter_type'] ?? '', 'db_access function limit_parameter_type', $assertionErrors);
     app_sample6_dbaccess_filter_sort_page_assert_same('', $functionResult['item']['limit_fixed_parameter'] ?? '', 'db_access function limit_fixed_parameter', $assertionErrors);
     app_sample6_dbaccess_filter_sort_page_assert_same(
@@ -418,7 +425,7 @@ function app_sample6_dbaccess_filter_sort_page_run(array $app, string $requested
         $assertionErrors,
     );
     app_sample6_dbaccess_filter_sort_page_assert_same(
-        APP_SAMPLE6_DBACCESS_FILTER_SORT_PAGE_TARGET_FIELDS,
+        APP_SAMPLE6_DBACCESS_FILTER_SORT_PAGE_STORE_FIELDS,
         app_sample6_dbaccess_filter_sort_page_extract_names($selectTargetFieldResult['items'], 'store_class_field_name'),
         'db_access select store fields',
         $assertionErrors,
@@ -444,7 +451,7 @@ function app_sample6_dbaccess_filter_sort_page_run(array $app, string $requested
     }
 
     app_sample6_dbaccess_filter_sort_page_assert_same(1, count($selectWhereResult['items']), 'db_access select where count', $assertionErrors);
-    app_sample6_dbaccess_filter_sort_page_assert_same('Status', $selectWhereResult['items'][0]['target_table_column_name'] ?? '', 'db_access select where column', $assertionErrors);
+    app_sample6_dbaccess_filter_sort_page_assert_same('status', $selectWhereResult['items'][0]['target_table_column_name'] ?? '', 'db_access select where column', $assertionErrors);
     app_sample6_dbaccess_filter_sort_page_assert_same('argument', $selectWhereResult['items'][0]['parameter_type'] ?? '', 'db_access select where parameter_type', $assertionErrors);
     app_sample6_dbaccess_filter_sort_page_assert_same('=', $selectWhereResult['items'][0]['relational_operator'] ?? '', 'db_access select where relational_operator', $assertionErrors);
     app_sample6_dbaccess_filter_sort_page_assert_same('10', $selectWhereResult['items'][0]['where_order'] ?? '', 'db_access select where order', $assertionErrors);

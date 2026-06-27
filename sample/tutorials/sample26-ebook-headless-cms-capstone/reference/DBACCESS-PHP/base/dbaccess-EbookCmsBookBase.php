@@ -25,7 +25,7 @@ class EbookCmsBookDBAccessBase
 
         $result = array();
 
-        $last_sql_command_for_mtooldb = 'select EbookCmsBook.Id, EbookCmsBook.Title, EbookCmsBook.Slug, EbookCmsBook.AuthorName, EbookCmsBook.GenreName, EbookCmsBook.CoverImageUrl, EbookCmsBook.Summary from EbookCmsBook where EbookCmsBook.Status = ? order by EbookCmsBook.PublishedAt desc, EbookCmsBook.Id desc limit ?';
+        $last_sql_command_for_mtooldb = 'select ebook_cms_book.id, ebook_cms_book.title, ebook_cms_book.slug, ebook_cms_book.author_name, ebook_cms_book.genre_name, ebook_cms_book.cover_image_url, ebook_cms_book.summary from ebook_cms_book where ebook_cms_book.status = ? order by ebook_cms_book.published_at desc, ebook_cms_book.id desc limit ?';
         $ret = $mtooldb->execute($last_sql_command_for_mtooldb, [
             'published',
             $limit,
@@ -36,13 +36,13 @@ class EbookCmsBookDBAccessBase
         }
         while($thisline=$ret->fetch_row()) {
             $thisresult = new EbookCmsBookData();
-            $thisresult->Id = $thisline[0];
-            $thisresult->Title = $thisline[1];
-            $thisresult->Slug = $thisline[2];
-            $thisresult->AuthorName = $thisline[3];
-            $thisresult->GenreName = $thisline[4];
-            $thisresult->CoverImageUrl = $thisline[5];
-            $thisresult->Summary = $thisline[6];
+            $thisresult->id = $thisline[0];
+            $thisresult->title = $thisline[1];
+            $thisresult->slug = $thisline[2];
+            $thisresult->authorName = $thisline[3];
+            $thisresult->genreName = $thisline[4];
+            $thisresult->coverImageUrl = $thisline[5];
+            $thisresult->summary = $thisline[6];
             array_push($result, $thisresult);
         }
         return $result;
@@ -55,7 +55,7 @@ class EbookCmsBookDBAccessBase
         connect_mtooldb_if_not_yet();
         reconnect_mtooldb_if_necessary();
 
-        $last_sql_command_for_mtooldb = 'select EbookCmsBook.Id, EbookCmsBook.Title, EbookCmsBook.Slug, EbookCmsBook.AuthorName, EbookCmsBook.GenreName, EbookCmsBook.CoverImageUrl, EbookCmsBook.Summary from EbookCmsBook where EbookCmsBook.Status = ? and EbookCmsBook.Slug = ?';
+        $last_sql_command_for_mtooldb = 'select ebook_cms_book.id, ebook_cms_book.title, ebook_cms_book.slug, ebook_cms_book.author_name, ebook_cms_book.genre_name, ebook_cms_book.cover_image_url, ebook_cms_book.summary from ebook_cms_book where ebook_cms_book.status = ? and ebook_cms_book.slug = ?';
         $ret = $mtooldb->execute($last_sql_command_for_mtooldb, [
             'published',
             $param_EbookCmsBook_Slug_where,
@@ -66,13 +66,13 @@ class EbookCmsBookDBAccessBase
         }
         while($thisline=$ret->fetch_row()) {
             $thisresult = new EbookCmsBookData();
-            $thisresult->Id = $thisline[0];
-            $thisresult->Title = $thisline[1];
-            $thisresult->Slug = $thisline[2];
-            $thisresult->AuthorName = $thisline[3];
-            $thisresult->GenreName = $thisline[4];
-            $thisresult->CoverImageUrl = $thisline[5];
-            $thisresult->Summary = $thisline[6];
+            $thisresult->id = $thisline[0];
+            $thisresult->title = $thisline[1];
+            $thisresult->slug = $thisline[2];
+            $thisresult->authorName = $thisline[3];
+            $thisresult->genreName = $thisline[4];
+            $thisresult->coverImageUrl = $thisline[5];
+            $thisresult->summary = $thisline[6];
             return $thisresult;
         }
         return NULL;
@@ -87,7 +87,7 @@ class EbookCmsBookDBAccessBase
 
         $result = array();
 
-        $last_sql_command_for_mtooldb = 'select EbookCmsChapter.Id, EbookCmsChapter.BookSlug, EbookCmsChapter.ChapterTitle, EbookCmsChapter.ChapterSlug, EbookCmsChapter.SpineOrder from EbookCmsChapter where EbookCmsChapter.Status = ? and EbookCmsChapter.BookSlug = ? order by EbookCmsChapter.SpineOrder asc, EbookCmsChapter.Id asc';
+        $last_sql_command_for_mtooldb = 'select ebook_cms_chapter.id, ebook_cms_chapter.book_slug, ebook_cms_chapter.chapter_title, ebook_cms_chapter.chapter_slug, ebook_cms_chapter.spine_order from ebook_cms_chapter where ebook_cms_chapter.status = ? and ebook_cms_chapter.book_slug = ? order by ebook_cms_chapter.spine_order asc, ebook_cms_chapter.id asc';
         $ret = $mtooldb->execute($last_sql_command_for_mtooldb, [
             'published',
             $param_EbookCmsChapter_BookSlug_where,
@@ -98,11 +98,11 @@ class EbookCmsBookDBAccessBase
         }
         while($thisline=$ret->fetch_row()) {
             $thisresult = new EbookCmsChapterData();
-            $thisresult->Id = $thisline[0];
-            $thisresult->BookSlug = $thisline[1];
-            $thisresult->ChapterTitle = $thisline[2];
-            $thisresult->ChapterSlug = $thisline[3];
-            $thisresult->SpineOrder = $thisline[4];
+            $thisresult->id = $thisline[0];
+            $thisresult->bookSlug = $thisline[1];
+            $thisresult->chapterTitle = $thisline[2];
+            $thisresult->chapterSlug = $thisline[3];
+            $thisresult->spineOrder = $thisline[4];
             array_push($result, $thisresult);
         }
         return $result;
@@ -115,7 +115,7 @@ class EbookCmsBookDBAccessBase
         connect_mtooldb_if_not_yet();
         reconnect_mtooldb_if_necessary();
 
-        $last_sql_command_for_mtooldb = 'select EbookCmsChapter.Id, EbookCmsChapter.BookSlug, EbookCmsChapter.ChapterTitle, EbookCmsChapter.ChapterSlug, EbookCmsChapter.SpineOrder, EbookCmsChapter.BodyMarkdown from EbookCmsChapter where EbookCmsChapter.Status = ? and EbookCmsChapter.BookSlug = ? and EbookCmsChapter.ChapterSlug = ?';
+        $last_sql_command_for_mtooldb = 'select ebook_cms_chapter.id, ebook_cms_chapter.book_slug, ebook_cms_chapter.chapter_title, ebook_cms_chapter.chapter_slug, ebook_cms_chapter.spine_order, ebook_cms_chapter.body_markdown from ebook_cms_chapter where ebook_cms_chapter.status = ? and ebook_cms_chapter.book_slug = ? and ebook_cms_chapter.chapter_slug = ?';
         $ret = $mtooldb->execute($last_sql_command_for_mtooldb, [
             'published',
             $param_EbookCmsChapter_BookSlug_where,
@@ -127,12 +127,12 @@ class EbookCmsBookDBAccessBase
         }
         while($thisline=$ret->fetch_row()) {
             $thisresult = new EbookCmsChapterData();
-            $thisresult->Id = $thisline[0];
-            $thisresult->BookSlug = $thisline[1];
-            $thisresult->ChapterTitle = $thisline[2];
-            $thisresult->ChapterSlug = $thisline[3];
-            $thisresult->SpineOrder = $thisline[4];
-            $thisresult->BodyMarkdown = $thisline[5];
+            $thisresult->id = $thisline[0];
+            $thisresult->bookSlug = $thisline[1];
+            $thisresult->chapterTitle = $thisline[2];
+            $thisresult->chapterSlug = $thisline[3];
+            $thisresult->spineOrder = $thisline[4];
+            $thisresult->bodyMarkdown = $thisline[5];
             return $thisresult;
         }
         return NULL;
@@ -147,7 +147,7 @@ class EbookCmsBookDBAccessBase
 
         $result = array();
 
-        $last_sql_command_for_mtooldb = 'select EbookCmsBook.Id, EbookCmsBook.Slug, EbookCmsBook.Title, EbookCmsBook.EpubDownloadUrl, EbookCmsBook.EpubMimeType, EbookCmsBook.EpubSha256 from EbookCmsBook where EbookCmsBook.Status = ? and EbookCmsBook.Slug = ? order by EbookCmsBook.Id asc';
+        $last_sql_command_for_mtooldb = 'select ebook_cms_book.id, ebook_cms_book.slug, ebook_cms_book.title, ebook_cms_book.epub_download_url, ebook_cms_book.epub_mime_type, ebook_cms_book.epub_sha256 from ebook_cms_book where ebook_cms_book.status = ? and ebook_cms_book.slug = ? order by ebook_cms_book.id asc';
         $ret = $mtooldb->execute($last_sql_command_for_mtooldb, [
             'published',
             $param_EbookCmsBook_Slug_where,
@@ -158,12 +158,12 @@ class EbookCmsBookDBAccessBase
         }
         while($thisline=$ret->fetch_row()) {
             $thisresult = new EbookCmsBookData();
-            $thisresult->Id = $thisline[0];
-            $thisresult->Slug = $thisline[1];
-            $thisresult->Title = $thisline[2];
-            $thisresult->EpubDownloadUrl = $thisline[3];
-            $thisresult->EpubMimeType = $thisline[4];
-            $thisresult->EpubSha256 = $thisline[5];
+            $thisresult->id = $thisline[0];
+            $thisresult->slug = $thisline[1];
+            $thisresult->title = $thisline[2];
+            $thisresult->epubDownloadUrl = $thisline[3];
+            $thisresult->epubMimeType = $thisline[4];
+            $thisresult->epubSha256 = $thisline[5];
             array_push($result, $thisresult);
         }
         return $result;
@@ -176,7 +176,7 @@ class EbookCmsBookDBAccessBase
         connect_mtooldb_if_not_yet();
         reconnect_mtooldb_if_necessary();
 
-        $last_sql_command_for_mtooldb = 'select EbookCmsChapter.Id, EbookCmsChapter.EbookCmsBookId, EbookCmsChapter.BookSlug, EbookCmsChapter.ChapterTitle, EbookCmsChapter.ChapterSlug, EbookCmsChapter.Status, EbookCmsChapter.SpineOrder, EbookCmsChapter.BodyMarkdown, EbookCmsChapter.PublishedAt, EbookCmsChapter.UpdatedAt from EbookCmsChapter where EbookCmsChapter.Id = ?';
+        $last_sql_command_for_mtooldb = 'select ebook_cms_chapter.id, ebook_cms_chapter.ebook_cms_book_id, ebook_cms_chapter.book_slug, ebook_cms_chapter.chapter_title, ebook_cms_chapter.chapter_slug, ebook_cms_chapter.status, ebook_cms_chapter.spine_order, ebook_cms_chapter.body_markdown, ebook_cms_chapter.published_at, ebook_cms_chapter.updated_at from ebook_cms_chapter where ebook_cms_chapter.id = ?';
         $ret = $mtooldb->execute($last_sql_command_for_mtooldb, [
             $param_EbookCmsChapter_Id_where,
         ]);
@@ -186,16 +186,16 @@ class EbookCmsBookDBAccessBase
         }
         while($thisline=$ret->fetch_row()) {
             $thisresult = new EbookCmsChapterData();
-            $thisresult->Id = $thisline[0];
-            $thisresult->EbookCmsBookId = $thisline[1];
-            $thisresult->BookSlug = $thisline[2];
-            $thisresult->ChapterTitle = $thisline[3];
-            $thisresult->ChapterSlug = $thisline[4];
-            $thisresult->Status = $thisline[5];
-            $thisresult->SpineOrder = $thisline[6];
-            $thisresult->BodyMarkdown = $thisline[7];
-            $thisresult->PublishedAt = $thisline[8];
-            $thisresult->UpdatedAt = $thisline[9];
+            $thisresult->id = $thisline[0];
+            $thisresult->ebookCmsBookId = $thisline[1];
+            $thisresult->bookSlug = $thisline[2];
+            $thisresult->chapterTitle = $thisline[3];
+            $thisresult->chapterSlug = $thisline[4];
+            $thisresult->status = $thisline[5];
+            $thisresult->spineOrder = $thisline[6];
+            $thisresult->bodyMarkdown = $thisline[7];
+            $thisresult->publishedAt = $thisline[8];
+            $thisresult->updatedAt = $thisline[9];
             return $thisresult;
         }
         return NULL;
@@ -208,13 +208,13 @@ class EbookCmsBookDBAccessBase
         connect_mtooldb_if_not_yet();
         reconnect_mtooldb_if_necessary();
 
-        $last_sql_command_for_mtooldb = 'update EbookCmsChapter SET ChapterTitle = ?, ChapterSlug = ?, SpineOrder = ?, BodyMarkdown = ?, UpdatedAt = NOW() where EbookCmsChapter.Id = ?';
+        $last_sql_command_for_mtooldb = 'update ebook_cms_chapter SET chapter_title = ?, chapter_slug = ?, spine_order = ?, body_markdown = ?, updated_at = NOW() where ebook_cms_chapter.id = ?';
         $result = $mtooldb->execute($last_sql_command_for_mtooldb, [
-            $EbookCmsChapterObj->ChapterTitle,
-            $EbookCmsChapterObj->ChapterSlug,
-            $EbookCmsChapterObj->SpineOrder,
-            $EbookCmsChapterObj->BodyMarkdown,
-            $EbookCmsChapterObj->Id,
+            $EbookCmsChapterObj->chapterTitle,
+            $EbookCmsChapterObj->chapterSlug,
+            $EbookCmsChapterObj->spineOrder,
+            $EbookCmsChapterObj->bodyMarkdown,
+            $EbookCmsChapterObj->id,
         ]);
         if ($mtooldb->errno != 0) {
             error_log("Error occured while executing SQL: " . $mtooldb->error . " in " . __FILE__ . " on line " . __LINE__);
@@ -229,10 +229,10 @@ class EbookCmsBookDBAccessBase
         connect_mtooldb_if_not_yet();
         reconnect_mtooldb_if_necessary();
 
-        $last_sql_command_for_mtooldb = 'update EbookCmsChapter SET Status = ?, PublishedAt = NOW(), UpdatedAt = NOW() where EbookCmsChapter.Id = ?';
+        $last_sql_command_for_mtooldb = 'update ebook_cms_chapter SET status = ?, published_at = NOW(), updated_at = NOW() where ebook_cms_chapter.id = ?';
         $result = $mtooldb->execute($last_sql_command_for_mtooldb, [
             'published',
-            $EbookCmsChapterObj->Id,
+            $EbookCmsChapterObj->id,
         ]);
         if ($mtooldb->errno != 0) {
             error_log("Error occured while executing SQL: " . $mtooldb->error . " in " . __FILE__ . " on line " . __LINE__);

@@ -10,7 +10,7 @@ require_once dirname(__DIR__, 2) . '/app/sample_pack_catalog.php';
 require_once dirname(__DIR__, 2) . '/app/source_output_repository.php';
 
 const APP_SAMPLE18_MINI_TASK_BOARD_DEMO_PROJECT_KEY = 'SAMPLE18';
-const APP_SAMPLE18_MINI_TASK_BOARD_DEMO_TABLE_NAME = 'TaskCard';
+const APP_SAMPLE18_MINI_TASK_BOARD_DEMO_TABLE_NAME = 'task_card';
 const APP_SAMPLE18_MINI_TASK_BOARD_DEMO_KEYS = [
     'DATACLASS-PHP',
     'DBACCESS-PHP',

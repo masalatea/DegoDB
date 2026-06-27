@@ -18,9 +18,9 @@ This capstone pack shows the ebook lane as a small headless CMS shape. A JSON-fi
 
 `sample26` は production CMS ではなく、Mtool sample として JSON-first ebook model から複数 artifact を publish する到達点を見せる。
 
-- tables:
-  - `EbookCmsBook`
-  - `EbookCmsChapter`
+- physical tables:
+  - `ebook_cms_book` -> generated data class `EbookCmsBook`
+  - `ebook_cms_chapter` -> generated data class `EbookCmsChapter`
 - public DBAccess:
   - `EbookCmsBook.GetPublicEbookCmsBookList`
   - `EbookCmsBook.GetPublicEbookCmsBook`

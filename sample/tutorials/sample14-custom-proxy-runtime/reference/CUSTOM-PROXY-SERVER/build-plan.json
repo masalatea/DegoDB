@@ -42,7 +42,7 @@
             "step_count": 2,
             "unresolved_step_count": 0,
             "notes": "Sample14 custom proxy that bundles two read-only generated DBAccess functions into one proxy endpoint.",
-            "updated_at": "2026-06-20 21:02:07",
+            "updated_at": "2026-06-27 06:11:31",
             "steps": [
                 {
                     "id": "1",
@@ -52,7 +52,7 @@
                     "is_list": true,
                     "notes": "Read canonical table catalog rows for the requested project.",
                     "source_of_truth": "manual",
-                    "updated_at": "2026-06-20 21:02:07",
+                    "updated_at": "2026-06-27 06:11:31",
                     "resolved": true,
                     "signature": "public function GetDbtableList($param_Dbtable_ProjectPID_where)",
                     "line": 21,
@@ -61,12 +61,12 @@
                 {
                     "id": "2",
                     "step_order": "20",
-                    "db_access_source_name": "ProjectSourceOutput",
+                    "db_access_source_name": "project_source_output",
                     "db_access_function_name": "GetProjectSourceOutputList",
                     "is_list": true,
                     "notes": "Read source output definitions for the requested project.",
                     "source_of_truth": "manual",
-                    "updated_at": "2026-06-20 21:02:07",
+                    "updated_at": "2026-06-27 06:11:31",
                     "resolved": true,
                     "signature": "public function GetProjectSourceOutputList($param_ProjectSourceOutput_ProjectPID_where)",
                     "line": 21,

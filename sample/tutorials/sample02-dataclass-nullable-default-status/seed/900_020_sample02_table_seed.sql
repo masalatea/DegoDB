@@ -25,17 +25,17 @@ WHERE ProjectPID = @sample02_project_id;
 DELETE FROM dbtable
 WHERE ProjectPID = @sample02_project_id;
 
-DROP TABLE IF EXISTS Task;
+DROP TABLE IF EXISTS task;
 
-CREATE TABLE Task (
-    Id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
-    Title VARCHAR(255) NOT NULL,
-    Status VARCHAR(20) NOT NULL DEFAULT 'draft',
-    SortOrder INT NOT NULL DEFAULT 0,
-    IsPinned TINYINT(1) NOT NULL DEFAULT 0,
-    PublishedAt DATETIME NULL,
-    Note TEXT NULL,
-    PRIMARY KEY (Id)
+CREATE TABLE task (
+    id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+    title VARCHAR(255) NOT NULL,
+    status VARCHAR(20) NOT NULL DEFAULT 'draft',
+    sort_order INT NOT NULL DEFAULT 0,
+    is_pinned TINYINT(1) NOT NULL DEFAULT 0,
+    published_at DATETIME NULL,
+    note TEXT NULL,
+    PRIMARY KEY (id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 SET @sample02_project_id = NULL;

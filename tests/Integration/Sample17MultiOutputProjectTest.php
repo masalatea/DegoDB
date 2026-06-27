@@ -9,11 +9,21 @@ final class Sample17MultiOutputProjectTest extends TestCase
     public function testMultiOutputProjectReferenceOutputs(): void
     {
         $app = app_bootstrap();
-        $result = app_sample17_multi_output_run(
-            $app,
-            'phpunit-sample17',
-            app_sample17_multi_output_default_reference_root(),
-        );
+        $previousPolicy = getenv('MTOOL_GENERATED_NAME_POLICY');
+        putenv('MTOOL_GENERATED_NAME_POLICY=physical-logical-v1');
+        try {
+            $result = app_sample17_multi_output_run(
+                $app,
+                'phpunit-sample17',
+                app_sample17_multi_output_default_reference_root(),
+            );
+        } finally {
+            if ($previousPolicy === false) {
+                putenv('MTOOL_GENERATED_NAME_POLICY');
+            } else {
+                putenv('MTOOL_GENERATED_NAME_POLICY=' . $previousPolicy);
+            }
+        }
 
         if (!$result['ok']) {
             fwrite(
@@ -37,11 +47,11 @@ final class Sample17MultiOutputProjectTest extends TestCase
         self::assertArrayHasKey('AI-CONTEXT-MD', $result['steps']['outputs']);
         self::assertArrayHasKey('MODERNIZATION-AUDIT-MD', $result['steps']['outputs']);
         self::assertSame(
-            ['CapstoneTask'],
+            APP_SAMPLE17_MULTI_OUTPUT_AI_CONTEXT_TABLES,
             $result['steps']['outputs']['AI-CONTEXT-MD']['ai_context']['tables'] ?? [],
         );
         self::assertSame(
-            ['CapstoneTask'],
+            APP_SAMPLE17_MULTI_OUTPUT_AI_CONTEXT_TABLES,
             $result['steps']['outputs']['MODERNIZATION-AUDIT-MD']['modernization_audit']['review_order'] ?? [],
         );
     }

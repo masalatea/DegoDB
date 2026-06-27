@@ -25,7 +25,7 @@ class ArticleJsonModelDBAccessBase
 
         $result = array();
 
-        $last_sql_command_for_mtooldb = 'select ArticleJsonModel.Id, ArticleJsonModel.Title, ArticleJsonModel.Slug, ArticleJsonModel.PublishedAt, JsonAuthor.Name, JsonCategory.Name from ArticleJsonModel join JsonAuthor on ArticleJsonModel.JsonAuthorId = JsonAuthor.Id join JsonCategory on ArticleJsonModel.JsonCategoryId = JsonCategory.Id where ArticleJsonModel.Status = ? order by ArticleJsonModel.PublishedAt desc, ArticleJsonModel.Id desc';
+        $last_sql_command_for_mtooldb = 'select article_json_model.id, article_json_model.title, article_json_model.slug, article_json_model.published_at, json_author.name, json_category.name from article_json_model join json_author on article_json_model.json_author_id = json_author.id join json_category on article_json_model.json_category_id = json_category.id where article_json_model.status = ? order by article_json_model.published_at desc, article_json_model.id desc';
         $ret = $mtooldb->execute($last_sql_command_for_mtooldb, [
             'published',
         ]);
@@ -35,12 +35,12 @@ class ArticleJsonModelDBAccessBase
         }
         while($thisline=$ret->fetch_row()) {
             $thisresult = new ArticlePublicSummaryData();
-            $thisresult->ArticleId = $thisline[0];
-            $thisresult->ArticleTitle = $thisline[1];
-            $thisresult->ArticleSlug = $thisline[2];
-            $thisresult->PublishedAt = $thisline[3];
-            $thisresult->AuthorName = $thisline[4];
-            $thisresult->CategoryName = $thisline[5];
+            $thisresult->articleId = $thisline[0];
+            $thisresult->articleTitle = $thisline[1];
+            $thisresult->articleSlug = $thisline[2];
+            $thisresult->publishedAt = $thisline[3];
+            $thisresult->authorName = $thisline[4];
+            $thisresult->categoryName = $thisline[5];
             array_push($result, $thisresult);
         }
         return $result;

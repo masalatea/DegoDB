@@ -81,49 +81,49 @@ WHERE ProjectPID = @sample08_project_id;
 DELETE FROM dbtable
 WHERE ProjectPID = @sample08_project_id;
 
-DROP TABLE IF EXISTS BlogPostAuthorSummary;
-DROP TABLE IF EXISTS BlogPost;
-DROP TABLE IF EXISTS BlogAuthor;
+DROP TABLE IF EXISTS blog_post_author_summary;
+DROP TABLE IF EXISTS blog_post;
+DROP TABLE IF EXISTS blog_author;
 
-CREATE TABLE BlogAuthor (
-    Id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
-    Name VARCHAR(255) NOT NULL,
-    IsActive TINYINT(1) NOT NULL DEFAULT 1,
-    PRIMARY KEY (Id)
+CREATE TABLE blog_author (
+    id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+    name VARCHAR(255) NOT NULL,
+    is_active TINYINT(1) NOT NULL DEFAULT 1,
+    PRIMARY KEY (id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
-CREATE TABLE BlogPost (
-    Id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
-    BlogAuthorId BIGINT UNSIGNED NOT NULL,
-    Title VARCHAR(255) NOT NULL,
-    Status VARCHAR(20) NOT NULL DEFAULT 'draft',
-    PRIMARY KEY (Id),
-    KEY idx_blog_post_author_id (BlogAuthorId),
+CREATE TABLE blog_post (
+    id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+    blog_author_id BIGINT UNSIGNED NOT NULL,
+    title VARCHAR(255) NOT NULL,
+    status VARCHAR(20) NOT NULL DEFAULT 'draft',
+    PRIMARY KEY (id),
+    KEY idx_blog_post_author_id (blog_author_id),
     CONSTRAINT fk_blog_post_author
-        FOREIGN KEY (BlogAuthorId)
-        REFERENCES BlogAuthor (Id)
+        FOREIGN KEY (blog_author_id)
+        REFERENCES blog_author (id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
-CREATE TABLE BlogPostAuthorSummary (
-    BlogPostId BIGINT UNSIGNED NOT NULL,
-    BlogPostTitle VARCHAR(255) NOT NULL,
-    BlogAuthorId BIGINT UNSIGNED NOT NULL,
-    BlogAuthorName VARCHAR(255) NOT NULL,
-    PRIMARY KEY (BlogPostId)
+CREATE TABLE blog_post_author_summary (
+    blog_post_id BIGINT UNSIGNED NOT NULL,
+    blog_post_title VARCHAR(255) NOT NULL,
+    blog_author_id BIGINT UNSIGNED NOT NULL,
+    blog_author_name VARCHAR(255) NOT NULL,
+    PRIMARY KEY (blog_post_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
-INSERT INTO BlogAuthor (
-    Name,
-    IsActive
+INSERT INTO blog_author (
+    name,
+    is_active
 ) VALUES
     ('Alice Editor', 1),
     ('Bob Archived', 0),
     ('Carol Writer', 1);
 
-INSERT INTO BlogPost (
-    BlogAuthorId,
-    Title,
-    Status
+INSERT INTO blog_post (
+    blog_author_id,
+    title,
+    status
 ) VALUES
     (1, 'Canonical Join Tutorial', 'published'),
     (2, 'Inactive Author Should Not Appear', 'published'),

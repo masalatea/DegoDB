@@ -25,7 +25,7 @@ class AnnouncementDBAccessBase
 
         $result = array();
 
-        $last_sql_command_for_mtooldb = 'select Announcement.Id, Announcement.Title, Announcement.Status, Announcement.PublishedAt from Announcement where Announcement.Status = ? order by Announcement.PublishedAt desc, Announcement.Id desc limit ?';
+        $last_sql_command_for_mtooldb = 'select announcement.id, announcement.title, announcement.status, announcement.published_at from announcement where announcement.status = ? order by announcement.published_at desc, announcement.id desc limit ?';
         $ret = $mtooldb->execute($last_sql_command_for_mtooldb, [
             $param_Announcement_Status_where,
             $limit,
@@ -36,10 +36,10 @@ class AnnouncementDBAccessBase
         }
         while($thisline=$ret->fetch_row()) {
             $thisresult = new AnnouncementData();
-            $thisresult->Id = $thisline[0];
-            $thisresult->Title = $thisline[1];
-            $thisresult->Status = $thisline[2];
-            $thisresult->PublishedAt = $thisline[3];
+            $thisresult->id = $thisline[0];
+            $thisresult->title = $thisline[1];
+            $thisresult->status = $thisline[2];
+            $thisresult->publishedAt = $thisline[3];
             array_push($result, $thisresult);
         }
         return $result;

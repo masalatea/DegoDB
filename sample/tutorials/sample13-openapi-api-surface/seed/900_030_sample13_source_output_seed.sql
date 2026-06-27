@@ -52,7 +52,7 @@ INSERT INTO project_source_outputs (
     'tar.gz',
     30,
     'internal-only',
-    'Generate OpenAPI JSON from ApiTask single-function proxy target metadata.',
+    'Generate OpenAPI JSON from api_task single-function proxy target metadata.',
     'manual'
 ),
 (
@@ -74,7 +74,7 @@ INSERT INTO project_source_outputs (
     'tar.gz',
     40,
     'disabled',
-    'Generate a NoSecurity single proxy server endpoint from ApiTask read functions.',
+    'Generate a NoSecurity single proxy server endpoint from api_task read functions.',
     'manual'
 )
 ON DUPLICATE KEY UPDATE
@@ -108,7 +108,7 @@ FROM project_db_access_functions AS functions
 INNER JOIN project_db_access_classes AS classes
     ON classes.id = functions.db_access_class_id
 WHERE classes.project_id = @sample13_project_id
-  AND classes.source_name = 'ApiTask'
+  AND classes.source_name = 'api_task'
   AND functions.function_name IN (
       'GetApiTaskList',
       'GetApiTask'
@@ -127,7 +127,7 @@ FROM project_db_access_functions AS functions
 INNER JOIN project_db_access_classes AS classes
     ON classes.id = functions.db_access_class_id
 WHERE classes.project_id = @sample13_project_id
-  AND classes.source_name = 'ApiTask'
+  AND classes.source_name = 'api_task'
   AND functions.function_name IN (
       'GetApiTaskList',
       'GetApiTask'

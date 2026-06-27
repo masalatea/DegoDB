@@ -1,12 +1,12 @@
 {
     "tables": [
         {
-            "name": "EbookCmsBook",
-            "physical_name": "EbookCmsBook",
+            "name": "ebook_cms_book",
+            "physical_name": "ebook_cms_book",
             "columns": [
                 {
-                    "name": "Id",
-                    "physical_name": "Id",
+                    "name": "id",
+                    "physical_name": "id",
                     "datatype": "int(11)",
                     "is_null": "NO",
                     "is_key": "PRI",
@@ -16,8 +16,8 @@
                     "memo": ""
                 },
                 {
-                    "name": "Title",
-                    "physical_name": "Title",
+                    "name": "title",
+                    "physical_name": "title",
                     "datatype": "varchar(160)",
                     "is_null": "NO",
                     "is_key": "",
@@ -27,8 +27,8 @@
                     "memo": ""
                 },
                 {
-                    "name": "Slug",
-                    "physical_name": "Slug",
+                    "name": "slug",
+                    "physical_name": "slug",
                     "datatype": "varchar(120)",
                     "is_null": "NO",
                     "is_key": "UNI",
@@ -38,8 +38,8 @@
                     "memo": ""
                 },
                 {
-                    "name": "AuthorName",
-                    "physical_name": "AuthorName",
+                    "name": "author_name",
+                    "physical_name": "author_name",
                     "datatype": "varchar(120)",
                     "is_null": "NO",
                     "is_key": "",
@@ -49,8 +49,8 @@
                     "memo": ""
                 },
                 {
-                    "name": "GenreName",
-                    "physical_name": "GenreName",
+                    "name": "genre_name",
+                    "physical_name": "genre_name",
                     "datatype": "varchar(80)",
                     "is_null": "NO",
                     "is_key": "",
@@ -60,8 +60,8 @@
                     "memo": ""
                 },
                 {
-                    "name": "Status",
-                    "physical_name": "Status",
+                    "name": "status",
+                    "physical_name": "status",
                     "datatype": "varchar(40)",
                     "is_null": "NO",
                     "is_key": "",
@@ -71,8 +71,8 @@
                     "memo": ""
                 },
                 {
-                    "name": "CoverImageUrl",
-                    "physical_name": "CoverImageUrl",
+                    "name": "cover_image_url",
+                    "physical_name": "cover_image_url",
                     "datatype": "varchar(255)",
                     "is_null": "NO",
                     "is_key": "",
@@ -82,8 +82,8 @@
                     "memo": ""
                 },
                 {
-                    "name": "Summary",
-                    "physical_name": "Summary",
+                    "name": "summary",
+                    "physical_name": "summary",
                     "datatype": "text",
                     "is_null": "NO",
                     "is_key": "",
@@ -93,8 +93,8 @@
                     "memo": ""
                 },
                 {
-                    "name": "EpubDownloadUrl",
-                    "physical_name": "EpubDownloadUrl",
+                    "name": "epub_download_url",
+                    "physical_name": "epub_download_url",
                     "datatype": "varchar(255)",
                     "is_null": "NO",
                     "is_key": "",
@@ -104,8 +104,8 @@
                     "memo": ""
                 },
                 {
-                    "name": "EpubMimeType",
-                    "physical_name": "EpubMimeType",
+                    "name": "epub_mime_type",
+                    "physical_name": "epub_mime_type",
                     "datatype": "varchar(120)",
                     "is_null": "NO",
                     "is_key": "",
@@ -115,8 +115,8 @@
                     "memo": ""
                 },
                 {
-                    "name": "EpubSha256",
-                    "physical_name": "EpubSha256",
+                    "name": "epub_sha256",
+                    "physical_name": "epub_sha256",
                     "datatype": "varchar(64)",
                     "is_null": "NO",
                     "is_key": "",
@@ -126,8 +126,8 @@
                     "memo": ""
                 },
                 {
-                    "name": "PublishedAt",
-                    "physical_name": "PublishedAt",
+                    "name": "published_at",
+                    "physical_name": "published_at",
                     "datatype": "datetime",
                     "is_null": "YES",
                     "is_key": "",
@@ -137,8 +137,8 @@
                     "memo": ""
                 },
                 {
-                    "name": "UpdatedAt",
-                    "physical_name": "UpdatedAt",
+                    "name": "updated_at",
+                    "physical_name": "updated_at",
                     "datatype": "datetime",
                     "is_null": "NO",
                     "is_key": "",
@@ -150,12 +150,12 @@
             ]
         },
         {
-            "name": "EbookCmsChapter",
-            "physical_name": "EbookCmsChapter",
+            "name": "ebook_cms_chapter",
+            "physical_name": "ebook_cms_chapter",
             "columns": [
                 {
-                    "name": "Id",
-                    "physical_name": "Id",
+                    "name": "id",
+                    "physical_name": "id",
                     "datatype": "int(11)",
                     "is_null": "NO",
                     "is_key": "PRI",
@@ -165,8 +165,8 @@
                     "memo": ""
                 },
                 {
-                    "name": "EbookCmsBookId",
-                    "physical_name": "EbookCmsBookId",
+                    "name": "ebook_cms_book_id",
+                    "physical_name": "ebook_cms_book_id",
                     "datatype": "int(11)",
                     "is_null": "NO",
                     "is_key": "MUL",
@@ -176,8 +176,8 @@
                     "memo": ""
                 },
                 {
-                    "name": "BookSlug",
-                    "physical_name": "BookSlug",
+                    "name": "book_slug",
+                    "physical_name": "book_slug",
                     "datatype": "varchar(120)",
                     "is_null": "NO",
                     "is_key": "MUL",
@@ -187,8 +187,8 @@
                     "memo": ""
                 },
                 {
-                    "name": "ChapterTitle",
-                    "physical_name": "ChapterTitle",
+                    "name": "chapter_title",
+                    "physical_name": "chapter_title",
                     "datatype": "varchar(160)",
                     "is_null": "NO",
                     "is_key": "",
@@ -198,8 +198,8 @@
                     "memo": ""
                 },
                 {
-                    "name": "ChapterSlug",
-                    "physical_name": "ChapterSlug",
+                    "name": "chapter_slug",
+                    "physical_name": "chapter_slug",
                     "datatype": "varchar(120)",
                     "is_null": "NO",
                     "is_key": "",
@@ -209,8 +209,8 @@
                     "memo": ""
                 },
                 {
-                    "name": "Status",
-                    "physical_name": "Status",
+                    "name": "status",
+                    "physical_name": "status",
                     "datatype": "varchar(40)",
                     "is_null": "NO",
                     "is_key": "",
@@ -220,8 +220,8 @@
                     "memo": ""
                 },
                 {
-                    "name": "SpineOrder",
-                    "physical_name": "SpineOrder",
+                    "name": "spine_order",
+                    "physical_name": "spine_order",
                     "datatype": "int(11)",
                     "is_null": "NO",
                     "is_key": "",
@@ -231,8 +231,8 @@
                     "memo": ""
                 },
                 {
-                    "name": "BodyMarkdown",
-                    "physical_name": "BodyMarkdown",
+                    "name": "body_markdown",
+                    "physical_name": "body_markdown",
                     "datatype": "text",
                     "is_null": "NO",
                     "is_key": "",
@@ -242,8 +242,8 @@
                     "memo": ""
                 },
                 {
-                    "name": "PublishedAt",
-                    "physical_name": "PublishedAt",
+                    "name": "published_at",
+                    "physical_name": "published_at",
                     "datatype": "datetime",
                     "is_null": "YES",
                     "is_key": "",
@@ -253,8 +253,8 @@
                     "memo": ""
                 },
                 {
-                    "name": "UpdatedAt",
-                    "physical_name": "UpdatedAt",
+                    "name": "updated_at",
+                    "physical_name": "updated_at",
                     "datatype": "datetime",
                     "is_null": "NO",
                     "is_key": "",

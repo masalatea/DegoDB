@@ -11,7 +11,7 @@
 
 ## 読み方
 
-まず `make sample16-pack-runtime-test` を実行します。manual flow は `AUTH-PROXY-SERVER` artifact を publish する部分だけを取り出したものです。auth の成功 / 失敗 case は PHPUnit checker が generated handler を直接ロードして検証します。
+まず `make sample16-pack-runtime-test` を実行します。manual flow は physical table `auth_task` から generated surface `AuthTask` の `AUTH-PROXY-SERVER` artifact を publish する部分だけを取り出したものです。auth の成功 / 失敗 case は PHPUnit checker が generated handler を直接ロードして検証します。
 
 ## 起動
 
@@ -51,10 +51,11 @@ APP_CONFIG_STORE_DIR=work/config-store-sample16-sqlite \
 - `projects`
   - `project_key=SAMPLE16`
 - physical table
-  - `AuthTask`
-  - `Id`, `Title`, `Status`, `OwnerName`, `UpdatedAt`
+  - `auth_task`
+  - `id`, `title`, `status`, `owner_name`, `updated_at`
 - DBAccess metadata
-  - `AuthTask.GetAuthTask`
+  - `auth_task.GetAuthTask`
+  - generated proxy path/class surface remains `AuthTask` under `physical-logical-v1`
   - `single_proxy_auth_type=StaticBearer`
   - `auth_policy_json={"type":"static-bearer","secret_env":"DEGODB_PROXY_BEARER_TOKEN"}`
 - Source Output
@@ -66,7 +67,7 @@ APP_CONFIG_STORE_DIR=work/config-store-sample16-sqlite \
 
 ```sh
 docker compose -f compose.yaml -f compose.local-db-config.yaml -f sample/tutorials/sample16-authenticated-proxy/compose.yaml exec -T web-admin \
-  php /var/www/mtool/scripts/import_project_tables.php --project-key=SAMPLE16 --source=live-schema --table=AuthTask
+  php /var/www/mtool/scripts/import_project_tables.php --project-key=SAMPLE16 --source=live-schema --table=auth_task
 
 docker compose -f compose.yaml -f compose.local-db-config.yaml -f sample/tutorials/sample16-authenticated-proxy/compose.yaml exec -T web-admin \
   php /var/www/mtool/scripts/sync_project_data_classes.php --project-key=SAMPLE16

@@ -127,7 +127,7 @@ docker compose exec -T web-admin php /var/www/mtool/scripts/create_project_outpu
 | [Stage 3](#e3-register-source) | existing DB を source 登録する | `config_db.database_sources` | UI | `named-live-schema:{source_key}` が候補に出る | [T2](troubleshooting.md#t2-source-missing-from-import-options) |
 | [Stage 4](#e4-review-import-preview) | import preview を読む | なし | UI | insert / change / stale count を説明できる | [T3](troubleshooting.md#t3-import-preview-apply-confusion) |
 | [Stage 5](#e5-apply-import) | canonical table metadata を apply する | `config_db.dbtable*` | UI or CLI | apply summary が期待どおり | [T3](troubleshooting.md#t3-import-preview-apply-confusion), [T4](troubleshooting.md#t4-config-db-preflight) |
-| [Stage 6](#e6-sync-data-classes) | Data Class metadata を sync する | `config_db.dataclass*` | CLI | imported table に対応する data class metadata が揃う | [T4](troubleshooting.md#t4-config-db-preflight) |
+| [Stage 6](#e6-sync-data-classes) | DataClass metadata を sync する | `config_db.dataclass*` | CLI | imported table に対応する DataClass metadata が揃う | [T4](troubleshooting.md#t4-config-db-preflight) |
 | [Stage 7](#e7-sync-db-access) | DB Access metadata を sync する | `config_db.project_db_access_*` | CLI | imported function と target assignment が揃う | [T4](troubleshooting.md#t4-config-db-preflight) |
 | [Stage 8](#e8-publish-output) | output を create / publish する | `work/artifacts/...`, `work/source-outputs/...` | CLI | `artifact_key` と `published` が返る | [T7](troubleshooting.md#t7-openapi-visibility-and-raw-route-assumptions) |
 | [Stage 9](#e9-verify-output) | lab / artifact lane で verify する | なし | UI or CLI smoke | viewer / artifact download が確認できる | [T6](troubleshooting.md#t6-runtime-source-selection-in-swagger-and-proxy), [T7](troubleshooting.md#t7-openapi-visibility-and-raw-route-assumptions) |
@@ -369,11 +369,11 @@ docker compose exec -T web-admin php /var/www/mtool/scripts/import_project_table
 - [T4. Config DB Preflight](troubleshooting.md#t4-config-db-preflight)
 
 <a id="e6-sync-data-classes"></a>
-## Stage 6. Sync Data Class Metadata
+## Stage 6. Sync DataClass Metadata
 
 ### Purpose
 
-- imported table metadata から data class metadata を current canonical shape に揃える
+- imported table metadata から DataClass metadata を current canonical shape に揃える
 
 ### UI
 
@@ -394,7 +394,7 @@ docker compose exec -T web-admin php /var/www/mtool/scripts/sync_project_data_cl
 
 ### Success Markers
 
-- imported table に対応する data class metadata が生成 / 更新される
+- imported table に対応する DataClass metadata が生成 / 更新される
 - canonical metadata の source of truth は引き続き `config_db`
 
 ### Troubleshooting

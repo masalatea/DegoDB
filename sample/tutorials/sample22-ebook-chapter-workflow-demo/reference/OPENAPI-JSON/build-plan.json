@@ -10,7 +10,7 @@
     "unresolved_auth_count": 0,
     "operations": [
         {
-            "source_name": "EbookWorkflowChapter",
+            "source_name": "ebook_workflow_chapter",
             "function_name": "GetPublishedEbookWorkflowChapterList",
             "endpoint_filename": "proxyserver-EbookWorkflowChapter-GetPublishedEbookWorkflowChapterList.php",
             "auth_strategy": "no-security",
@@ -21,13 +21,13 @@
                     "parameter_name": "param_EbookWorkflowPublishedChapter_BookSlug_where",
                     "datatype": "",
                     "source": "select-where-column-name",
-                    "target_table_name": "EbookWorkflowPublishedChapter",
-                    "target_table_column_name": "Status"
+                    "target_table_name": "ebook_workflow_published_chapter",
+                    "target_table_column_name": "status"
                 }
             }
         },
         {
-            "source_name": "EbookWorkflowChapter",
+            "source_name": "ebook_workflow_chapter",
             "function_name": "GetPublishedEbookWorkflowChapter",
             "endpoint_filename": "proxyserver-EbookWorkflowChapter-GetPublishedEbookWorkflowChapter.php",
             "auth_strategy": "no-security",
@@ -38,20 +38,20 @@
                     "parameter_name": "param_EbookWorkflowPublishedChapter_BookSlug_where",
                     "datatype": "",
                     "source": "select-where-column-name",
-                    "target_table_name": "EbookWorkflowPublishedChapter",
-                    "target_table_column_name": "Status"
+                    "target_table_name": "ebook_workflow_published_chapter",
+                    "target_table_column_name": "status"
                 },
                 "param_EbookWorkflowPublishedChapter_ChapterSlug_where": {
                     "parameter_name": "param_EbookWorkflowPublishedChapter_ChapterSlug_where",
                     "datatype": "varchar",
                     "source": "select-where-parameter-data-type",
-                    "target_table_name": "EbookWorkflowPublishedChapter",
-                    "target_table_column_name": "BookSlug"
+                    "target_table_name": "ebook_workflow_published_chapter",
+                    "target_table_column_name": "book_slug"
                 }
             }
         },
         {
-            "source_name": "EbookWorkflowChapter",
+            "source_name": "ebook_workflow_chapter",
             "function_name": "InsertEbookWorkflowChapter",
             "endpoint_filename": "proxyserver-EbookWorkflowChapter-InsertEbookWorkflowChapter.php",
             "auth_strategy": "no-security",
@@ -68,7 +68,7 @@
             }
         },
         {
-            "source_name": "EbookWorkflowChapter",
+            "source_name": "ebook_workflow_chapter",
             "function_name": "UpdateEbookWorkflowChapterDraft",
             "endpoint_filename": "proxyserver-EbookWorkflowChapter-UpdateEbookWorkflowChapterDraft.php",
             "auth_strategy": "no-security",
@@ -85,7 +85,7 @@
             }
         },
         {
-            "source_name": "EbookWorkflowChapter",
+            "source_name": "ebook_workflow_chapter",
             "function_name": "UpdateEbookWorkflowChapterOrder",
             "endpoint_filename": "proxyserver-EbookWorkflowChapter-UpdateEbookWorkflowChapterOrder.php",
             "auth_strategy": "no-security",
@@ -102,7 +102,7 @@
             }
         },
         {
-            "source_name": "EbookWorkflowChapter",
+            "source_name": "ebook_workflow_chapter",
             "function_name": "PublishEbookWorkflowChapter",
             "endpoint_filename": "proxyserver-EbookWorkflowChapter-PublishEbookWorkflowChapter.php",
             "auth_strategy": "no-security",

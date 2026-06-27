@@ -5,6 +5,7 @@ declare(strict_types=1);
 require_once __DIR__ . '/db_access_endpoint_policy.php';
 require_once __DIR__ . '/db_access_repository.php';
 require_once __DIR__ . '/generated_catalog.php';
+require_once __DIR__ . '/generated_name.php';
 require_once __DIR__ . '/project_db_access_bootstrap_service.php';
 require_once __DIR__ . '/project_db_access_metadata_helper.php';
 
@@ -36,6 +37,12 @@ function app_single_proxy_build_plan_resolve_function_reference(
     }
 
     $entity = app_generated_catalog_find_entity($generatedCatalog, $normalizedSourceName);
+    if ($entity === null && app_generated_name_policy_uses_physical_logical_names()) {
+        $outputSourceName = app_generated_name_map_for_physical_name($normalizedSourceName, 'class')['generated_name'];
+        if ($outputSourceName !== $normalizedSourceName) {
+            $entity = app_generated_catalog_find_entity($generatedCatalog, $outputSourceName);
+        }
+    }
     if ($entity === null) {
         $canonicalFunctionResult = app_fetch_db_access_function_metadata(
             $app,

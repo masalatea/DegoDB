@@ -25,7 +25,7 @@ class TaskCardDBAccessBase
 
         $result = array();
 
-        $last_sql_command_for_mtooldb = 'select TaskCard.Id, TaskCard.Title, TaskCard.Status, TaskCard.AssignedTo, TaskCard.Priority, TaskCard.DueDate from TaskCard where TaskCard.Status = ? order by TaskCard.DueDate asc, TaskCard.Priority desc, TaskCard.Id asc limit ?';
+        $last_sql_command_for_mtooldb = 'select task_card.id, task_card.title, task_card.status, task_card.assigned_to, task_card.priority, task_card.due_date from task_card where task_card.status = ? order by task_card.due_date asc, task_card.priority desc, task_card.id asc limit ?';
         $ret = $mtooldb->execute($last_sql_command_for_mtooldb, [
             $param_TaskCard_Status_where,
             $limit,
@@ -36,12 +36,12 @@ class TaskCardDBAccessBase
         }
         while($thisline=$ret->fetch_row()) {
             $thisresult = new TaskCardData();
-            $thisresult->Id = $thisline[0];
-            $thisresult->Title = $thisline[1];
-            $thisresult->Status = $thisline[2];
-            $thisresult->AssignedTo = $thisline[3];
-            $thisresult->Priority = $thisline[4];
-            $thisresult->DueDate = $thisline[5];
+            $thisresult->id = $thisline[0];
+            $thisresult->title = $thisline[1];
+            $thisresult->status = $thisline[2];
+            $thisresult->assignedTo = $thisline[3];
+            $thisresult->priority = $thisline[4];
+            $thisresult->dueDate = $thisline[5];
             array_push($result, $thisresult);
         }
         return $result;
@@ -54,7 +54,7 @@ class TaskCardDBAccessBase
         connect_mtooldb_if_not_yet();
         reconnect_mtooldb_if_necessary();
 
-        $last_sql_command_for_mtooldb = 'select TaskCard.Id, TaskCard.Title, TaskCard.Body, TaskCard.Status, TaskCard.AssignedTo, TaskCard.Priority, TaskCard.DueDate, TaskCard.CompletedAt, TaskCard.UpdatedAt from TaskCard where TaskCard.Id = ?';
+        $last_sql_command_for_mtooldb = 'select task_card.id, task_card.title, task_card.body, task_card.status, task_card.assigned_to, task_card.priority, task_card.due_date, task_card.completed_at, task_card.updated_at from task_card where task_card.id = ?';
         $ret = $mtooldb->execute($last_sql_command_for_mtooldb, [
             $param_TaskCard_Id_where,
         ]);
@@ -64,15 +64,15 @@ class TaskCardDBAccessBase
         }
         while($thisline=$ret->fetch_row()) {
             $thisresult = new TaskCardData();
-            $thisresult->Id = $thisline[0];
-            $thisresult->Title = $thisline[1];
-            $thisresult->Body = $thisline[2];
-            $thisresult->Status = $thisline[3];
-            $thisresult->AssignedTo = $thisline[4];
-            $thisresult->Priority = $thisline[5];
-            $thisresult->DueDate = $thisline[6];
-            $thisresult->CompletedAt = $thisline[7];
-            $thisresult->UpdatedAt = $thisline[8];
+            $thisresult->id = $thisline[0];
+            $thisresult->title = $thisline[1];
+            $thisresult->body = $thisline[2];
+            $thisresult->status = $thisline[3];
+            $thisresult->assignedTo = $thisline[4];
+            $thisresult->priority = $thisline[5];
+            $thisresult->dueDate = $thisline[6];
+            $thisresult->completedAt = $thisline[7];
+            $thisresult->updatedAt = $thisline[8];
             return $thisresult;
         }
         return NULL;
@@ -85,15 +85,15 @@ class TaskCardDBAccessBase
         connect_mtooldb_if_not_yet();
         reconnect_mtooldb_if_necessary();
 
-        $last_sql_command_for_mtooldb = 'insert into TaskCard (Title, Body, Status, AssignedTo, Priority, DueDate, UpdatedAt) values(?, ?, ?, ?, ?, ?, ?)';
+        $last_sql_command_for_mtooldb = 'insert into task_card (title, body, status, assigned_to, priority, due_date, updated_at) values(?, ?, ?, ?, ?, ?, ?)';
         $result = $mtooldb->execute($last_sql_command_for_mtooldb, [
-            $TaskCardObj->Title,
-            $TaskCardObj->Body,
-            $TaskCardObj->Status,
-            $TaskCardObj->AssignedTo,
-            $TaskCardObj->Priority,
-            $TaskCardObj->DueDate,
-            $TaskCardObj->UpdatedAt,
+            $TaskCardObj->title,
+            $TaskCardObj->body,
+            $TaskCardObj->status,
+            $TaskCardObj->assignedTo,
+            $TaskCardObj->priority,
+            $TaskCardObj->dueDate,
+            $TaskCardObj->updatedAt,
         ]);
         if ($mtooldb->errno != 0) {
             error_log("Error occured while executing SQL: " . $mtooldb->error . " in " . __FILE__ . " on line " . __LINE__);
@@ -108,17 +108,17 @@ class TaskCardDBAccessBase
         connect_mtooldb_if_not_yet();
         reconnect_mtooldb_if_necessary();
 
-        $last_sql_command_for_mtooldb = 'update TaskCard SET Title = ?, Body = ?, Status = ?, AssignedTo = ?, Priority = ?, DueDate = ?, CompletedAt = ?, UpdatedAt = ? where TaskCard.Id = ?';
+        $last_sql_command_for_mtooldb = 'update task_card SET title = ?, body = ?, status = ?, assigned_to = ?, priority = ?, due_date = ?, completed_at = ?, updated_at = ? where task_card.id = ?';
         $result = $mtooldb->execute($last_sql_command_for_mtooldb, [
-            $TaskCardObj->Title,
-            $TaskCardObj->Body,
-            $TaskCardObj->Status,
-            $TaskCardObj->AssignedTo,
-            $TaskCardObj->Priority,
-            $TaskCardObj->DueDate,
-            $TaskCardObj->CompletedAt,
-            $TaskCardObj->UpdatedAt,
-            $TaskCardObj->Id,
+            $TaskCardObj->title,
+            $TaskCardObj->body,
+            $TaskCardObj->status,
+            $TaskCardObj->assignedTo,
+            $TaskCardObj->priority,
+            $TaskCardObj->dueDate,
+            $TaskCardObj->completedAt,
+            $TaskCardObj->updatedAt,
+            $TaskCardObj->id,
         ]);
         if ($mtooldb->errno != 0) {
             error_log("Error occured while executing SQL: " . $mtooldb->error . " in " . __FILE__ . " on line " . __LINE__);
@@ -133,12 +133,12 @@ class TaskCardDBAccessBase
         connect_mtooldb_if_not_yet();
         reconnect_mtooldb_if_necessary();
 
-        $last_sql_command_for_mtooldb = 'update TaskCard SET Status = ?, CompletedAt = ?, UpdatedAt = ? where TaskCard.Id = ?';
+        $last_sql_command_for_mtooldb = 'update task_card SET status = ?, completed_at = ?, updated_at = ? where task_card.id = ?';
         $result = $mtooldb->execute($last_sql_command_for_mtooldb, [
             'done',
-            $TaskCardObj->CompletedAt,
-            $TaskCardObj->UpdatedAt,
-            $TaskCardObj->Id,
+            $TaskCardObj->completedAt,
+            $TaskCardObj->updatedAt,
+            $TaskCardObj->id,
         ]);
         if ($mtooldb->errno != 0) {
             error_log("Error occured while executing SQL: " . $mtooldb->error . " in " . __FILE__ . " on line " . __LINE__);

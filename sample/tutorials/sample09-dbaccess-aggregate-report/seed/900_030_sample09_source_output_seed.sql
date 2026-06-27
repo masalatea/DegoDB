@@ -110,7 +110,7 @@ INSERT INTO project_source_outputs (
     'runtime',
     'tar.gz',
     10,
-    'Generate PHP data classes from canonical dataclass / dataclassfields metadata for the aggregate report tutorial sample.',
+    'Generate PHP data classes from canonical DataClass / DataClass fields metadata for the aggregate report tutorial sample.',
     'manual'
 )
 ON DUPLICATE KEY UPDATE

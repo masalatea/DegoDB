@@ -86,7 +86,7 @@ Broad route-by-route enforcement is intentionally parked. This keeps the path op
 | Capability | Minimum role | Intended use |
 | --- | --- | --- |
 | `project.read` | `viewer` | Project detail and read-only project metadata views. |
-| `project.edit` | `editor` | Project metadata, table metadata, data class metadata, DB access metadata, custom proxy metadata, and HTML metadata writes. |
+| `project.edit` | `editor` | Project metadata, table metadata, DataClass metadata, DB access metadata, custom proxy metadata, and HTML metadata writes. |
 | `source_output.publish` | `publisher` | Generating or publishing source output artifacts. |
 | `source_output.download` | `publisher` | Downloading source output archives. |
 | `db_source.manage` | `admin` | Creating, updating, or deleting database source configuration. |
@@ -130,7 +130,7 @@ The first code I/F for this inventory is `mtool/app/project_route_authorization.
 | --- | --- | --- | --- | --- |
 | project settings | `project_settings` | `project.edit` | `NEXT` | GET can be read, POST should require edit. |
 | table metadata writes | `project_tables_import`, `project_table_edit`, `project_table_column_edit` | `project.edit` | `NEXT` | Import apply / table / column mutations. Preview-only GET should preserve current behavior. |
-| data class metadata writes | `project_data_classes_sync`, `project_data_class_edit`, `project_data_class_field_edit` | `project.edit` | `NEXT` | Sync and metadata edits. |
+| DataClass metadata writes | `project_data_classes_sync`, `project_data_class_edit`, `project_data_class_field_edit` | `project.edit` | `NEXT` | Sync and metadata edits. |
 | DB access metadata writes | `project_db_access_sync`, `project_db_access_edit`, `project_db_access_function_change_order`, `project_db_access_function_move`, `project_db_access_function_select_where_edit`, `project_db_access_function_select_where_change_order`, `project_db_access_function_select_target_field_edit`, `project_db_access_function_select_having_edit`, `project_db_access_function_update_delete_where_edit`, `project_db_access_function_update_delete_where_change_order`, `project_db_access_function_insert_target_field_edit`, `project_db_access_function_update_target_field_edit` | `project.edit` | `NEXT` | Large cluster; split into smaller commits by function sub-area. |
 | custom proxy metadata writes | `project_custom_proxies`, `project_custom_proxy_detail`, `project_custom_proxy_functions` | `project.edit` | `NEXT` | Apply on POST only; GET remains read. |
 | HTML metadata writes | `project_htmls`, `project_html_detail`, `project_html_parameters` | `project.edit` | `NEXT` | Apply on POST only; GET remains read. |

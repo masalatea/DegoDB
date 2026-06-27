@@ -48,7 +48,7 @@ INSERT INTO project_db_access_classes (
     last_detected_data_file
 ) VALUES (
     @sample20_project_id,
-    'ContentArticle',
+    'content_article',
     '',
     0,
     'Content publishing sample with public list/detail functions for published articles.',
@@ -88,10 +88,10 @@ INSERT INTO project_db_access_functions (
     '',
     'SELECTLIST',
     'ContentArticle',
-    'ContentArticle',
+    'content_article',
     '',
     0,
-    'ContentArticle.PublishedAt desc, ContentArticle.Id desc',
+    'content_article.published_at desc, content_article.id desc',
     'List published articles for the public content site.',
     'argument',
     '',
@@ -110,7 +110,7 @@ INSERT INTO project_db_access_functions (
     '',
     'SELECTSINGLE',
     'ContentArticle',
-    'ContentArticle',
+    'content_article',
     '',
     0,
     '',
@@ -152,21 +152,21 @@ INSERT INTO project_db_access_function_select_target_fields (
     field_list_order,
     source_of_truth
 ) VALUES
-(@sample20_get_article_list_function_id, 'ContentArticle', '', 'Id', '', '', 'Id', 0, 10, 'manual'),
-(@sample20_get_article_list_function_id, 'ContentArticle', '', 'Title', '', '', 'Title', 0, 20, 'manual'),
-(@sample20_get_article_list_function_id, 'ContentArticle', '', 'Slug', '', '', 'Slug', 0, 30, 'manual'),
-(@sample20_get_article_list_function_id, 'ContentArticle', '', 'CategoryName', '', '', 'CategoryName', 0, 40, 'manual'),
-(@sample20_get_article_list_function_id, 'ContentArticle', '', 'AuthorName', '', '', 'AuthorName', 0, 50, 'manual'),
-(@sample20_get_article_list_function_id, 'ContentArticle', '', 'PublishedAt', '', '', 'PublishedAt', 0, 60, 'manual'),
-(@sample20_get_article_list_function_id, 'ContentArticle', '', 'Summary', '', '', 'Summary', 0, 70, 'manual'),
-(@sample20_get_article_function_id, 'ContentArticle', '', 'Id', '', '', 'Id', 0, 10, 'manual'),
-(@sample20_get_article_function_id, 'ContentArticle', '', 'Title', '', '', 'Title', 0, 20, 'manual'),
-(@sample20_get_article_function_id, 'ContentArticle', '', 'Slug', '', '', 'Slug', 0, 30, 'manual'),
-(@sample20_get_article_function_id, 'ContentArticle', '', 'CategoryName', '', '', 'CategoryName', 0, 40, 'manual'),
-(@sample20_get_article_function_id, 'ContentArticle', '', 'AuthorName', '', '', 'AuthorName', 0, 50, 'manual'),
-(@sample20_get_article_function_id, 'ContentArticle', '', 'PublishedAt', '', '', 'PublishedAt', 0, 60, 'manual'),
-(@sample20_get_article_function_id, 'ContentArticle', '', 'Summary', '', '', 'Summary', 0, 70, 'manual'),
-(@sample20_get_article_function_id, 'ContentArticle', '', 'Body', '', '', 'Body', 0, 80, 'manual');
+(@sample20_get_article_list_function_id, 'content_article', '', 'id', '', '', 'id', 0, 10, 'manual'),
+(@sample20_get_article_list_function_id, 'content_article', '', 'title', '', '', 'title', 0, 20, 'manual'),
+(@sample20_get_article_list_function_id, 'content_article', '', 'slug', '', '', 'slug', 0, 30, 'manual'),
+(@sample20_get_article_list_function_id, 'content_article', '', 'category_name', '', '', 'categoryName', 0, 40, 'manual'),
+(@sample20_get_article_list_function_id, 'content_article', '', 'author_name', '', '', 'authorName', 0, 50, 'manual'),
+(@sample20_get_article_list_function_id, 'content_article', '', 'published_at', '', '', 'publishedAt', 0, 60, 'manual'),
+(@sample20_get_article_list_function_id, 'content_article', '', 'summary', '', '', 'summary', 0, 70, 'manual'),
+(@sample20_get_article_function_id, 'content_article', '', 'id', '', '', 'id', 0, 10, 'manual'),
+(@sample20_get_article_function_id, 'content_article', '', 'title', '', '', 'title', 0, 20, 'manual'),
+(@sample20_get_article_function_id, 'content_article', '', 'slug', '', '', 'slug', 0, 30, 'manual'),
+(@sample20_get_article_function_id, 'content_article', '', 'category_name', '', '', 'categoryName', 0, 40, 'manual'),
+(@sample20_get_article_function_id, 'content_article', '', 'author_name', '', '', 'authorName', 0, 50, 'manual'),
+(@sample20_get_article_function_id, 'content_article', '', 'published_at', '', '', 'publishedAt', 0, 60, 'manual'),
+(@sample20_get_article_function_id, 'content_article', '', 'summary', '', '', 'summary', 0, 70, 'manual'),
+(@sample20_get_article_function_id, 'content_article', '', 'body', '', '', 'body', 0, 80, 'manual');
 
 INSERT INTO project_db_access_function_select_wheres (
     db_access_function_id,
@@ -185,9 +185,9 @@ INSERT INTO project_db_access_function_select_wheres (
     where_order,
     source_of_truth
 ) VALUES
-(@sample20_get_article_list_function_id, 'ContentArticle', '', 'Status', 'fixed', '', 'published', '', '', '', '', '', '=', 10, 'manual'),
-(@sample20_get_article_function_id, 'ContentArticle', '', 'Status', 'fixed', '', 'published', '', '', '', '', '', '=', 10, 'manual'),
-(@sample20_get_article_function_id, 'ContentArticle', '', 'Slug', 'argument', 'varchar', '', '', '', '', '', '', '=', 20, 'manual');
+(@sample20_get_article_list_function_id, 'content_article', '', 'status', 'fixed', '', 'published', '', '', '', '', '', '=', 10, 'manual'),
+(@sample20_get_article_function_id, 'content_article', '', 'status', 'fixed', '', 'published', '', '', '', '', '', '=', 10, 'manual'),
+(@sample20_get_article_function_id, 'content_article', '', 'slug', 'argument', 'varchar', '', '', '', '', '', '', '=', 20, 'manual');
 
 SET @sample20_project_id = NULL;
 SET @sample20_db_access_class_id = NULL;

@@ -12,18 +12,25 @@ require_once dirname(__DIR__, 2) . '/app/sample_pack_catalog.php';
 require_once dirname(__DIR__, 2) . '/app/source_output_repository.php';
 
 const APP_SAMPLE5_DBACCESS_SELECT_BASIC_PROJECT_KEY = 'SAMPLE05';
-const APP_SAMPLE5_DBACCESS_SELECT_BASIC_TABLE_NAME = 'Notice';
-const APP_SAMPLE5_DBACCESS_SELECT_BASIC_SOURCE_NAME = 'Notice';
+const APP_SAMPLE5_DBACCESS_SELECT_BASIC_TABLE_NAME = 'notice';
+const APP_SAMPLE5_DBACCESS_SELECT_BASIC_SOURCE_NAME = 'notice';
+const APP_SAMPLE5_DBACCESS_SELECT_BASIC_DATA_CLASS_BASE_NAME = 'Notice';
 const APP_SAMPLE5_DBACCESS_SELECT_BASIC_FUNCTION_NAME = 'GetNoticeList';
 const APP_SAMPLE5_DBACCESS_SELECT_BASIC_REFERENCE_SOURCE_OUTPUT_KEYS = [
     'DATACLASS-PHP',
     'DBACCESS-PHP',
 ];
 const APP_SAMPLE5_DBACCESS_SELECT_BASIC_TARGET_FIELDS = [
-    'Id',
-    'Title',
-    'Body',
-    'SortOrder',
+    'id',
+    'title',
+    'body',
+    'sort_order',
+];
+const APP_SAMPLE5_DBACCESS_SELECT_BASIC_STORE_FIELDS = [
+    'id',
+    'title',
+    'body',
+    'sortOrder',
 ];
 
 function app_sample5_dbaccess_select_basic_default_reference_root(): string
@@ -379,10 +386,10 @@ function app_sample5_dbaccess_select_basic_run(array $app, string $requestedBy, 
     }
 
     app_sample5_dbaccess_select_basic_assert_same('SELECTLIST', $functionResult['item']['action_type'] ?? '', 'db_access function action_type', $assertionErrors);
-    app_sample5_dbaccess_select_basic_assert_same($sourceName, $functionResult['item']['data_class_base_name'] ?? '', 'db_access function data_class_base_name', $assertionErrors);
+    app_sample5_dbaccess_select_basic_assert_same(APP_SAMPLE5_DBACCESS_SELECT_BASIC_DATA_CLASS_BASE_NAME, $functionResult['item']['data_class_base_name'] ?? '', 'db_access function data_class_base_name', $assertionErrors);
     app_sample5_dbaccess_select_basic_assert_same($tableName, $functionResult['item']['target_table_name'] ?? '', 'db_access function target_table_name', $assertionErrors);
     app_sample5_dbaccess_select_basic_assert_same('', $functionResult['item']['parameter_type'] ?? '', 'db_access function parameter_type', $assertionErrors);
-    app_sample5_dbaccess_select_basic_assert_same('Notice.SortOrder, Notice.Id', $functionResult['item']['sort_order_columns'] ?? '', 'db_access function sort_order_columns', $assertionErrors);
+    app_sample5_dbaccess_select_basic_assert_same('notice.sort_order, notice.id', $functionResult['item']['sort_order_columns'] ?? '', 'db_access function sort_order_columns', $assertionErrors);
     app_sample5_dbaccess_select_basic_assert_same('manual', $functionResult['item']['source_of_truth'] ?? '', 'db_access function source_of_truth', $assertionErrors);
 
     $selectTargetFieldResult = app_fetch_db_access_function_select_target_field_catalog($app, $projectKey, $sourceName, $functionName);
@@ -411,7 +418,7 @@ function app_sample5_dbaccess_select_basic_run(array $app, string $requestedBy, 
         $assertionErrors,
     );
     app_sample5_dbaccess_select_basic_assert_same(
-        APP_SAMPLE5_DBACCESS_SELECT_BASIC_TARGET_FIELDS,
+        APP_SAMPLE5_DBACCESS_SELECT_BASIC_STORE_FIELDS,
         app_sample5_dbaccess_select_basic_extract_names($selectTargetFieldResult['items'], 'store_class_field_name'),
         'db_access select store fields',
         $assertionErrors,

@@ -60,7 +60,7 @@ class CatalogSummaryProxyHandlerBase extends MtoolGeneratedCustomProxyEndpointBa
                 'step_no' => 2,
                 'request_key' => 'step2',
                 'is_list' => true,
-                'source_name' => 'ProjectSourceOutput',
+                'source_name' => 'project_source_output',
                 'dbaccess_class' => 'ProjectSourceOutputDBAccess',
                 'function_name' => 'GetProjectSourceOutputList',
                 'action' => 'select-list',

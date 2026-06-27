@@ -10,7 +10,7 @@ require_once dirname(__DIR__, 2) . '/app/sample_pack_catalog.php';
 require_once dirname(__DIR__, 2) . '/app/source_output_repository.php';
 
 const APP_SAMPLE16_AUTH_PROXY_PROJECT_KEY = 'SAMPLE16';
-const APP_SAMPLE16_AUTH_PROXY_TABLE_NAME = 'AuthTask';
+const APP_SAMPLE16_AUTH_PROXY_TABLE_NAME = 'auth_task';
 const APP_SAMPLE16_AUTH_PROXY_SOURCE_OUTPUT_KEY = 'AUTH-PROXY-SERVER';
 const APP_SAMPLE16_AUTH_PROXY_HANDLER_CLASS = 'AuthTaskGetAuthTaskProxyHandlerBase';
 const APP_SAMPLE16_AUTH_PROXY_REFERENCE_FILES = [

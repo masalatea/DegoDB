@@ -2,9 +2,9 @@
 
 - canonical project key: `SAMPLE06`
 - 役割: `project -> live schema import -> data class sync -> db access output` を、1 table + 1 DB Access class + 1 selectlist function で `filter + fixed sort + page size limit` まで確認する tutorial sample pack
-- seed は `SAMPLE06` project と、source schema 側の物理 `Announcement` table、canonical `project_db_access_*` metadata 1 class / 1 function / 4 target fields / 1 select where、`DATACLASS-PHP` / `DBACCESS-PHP` source output definition を作る
+- seed は `SAMPLE06` project と、source schema 側の物理 `announcement` table、canonical `project_db_access_*` metadata 1 class / 1 function / 4 target fields / 1 select where、`DATACLASS-PHP` / `DBACCESS-PHP` source output definition を作る
 - canonical `dbtable` / `dataclass` metadata は seed しない。table import と data class sync で current metadata を作る前提
-- `project_db_access_functions` は `GetAnnouncementList` 1 本だけに絞る。`Status` filter、`PublishedAt desc, Id desc` の fixed sort、`limit` argument を組み合わせて、一覧画面の最小 list query を確認する
+- `project_db_access_functions` は `GetAnnouncementList` 1 本だけに絞る。`status` filter、`published_at desc, id desc` の fixed sort、`limit` argument を組み合わせて、一覧画面の最小 list query を確認する
 - durable input: `seed/`
 - durable actual output sample: `reference/DATACLASS-PHP/data-Announcement.php`, `reference/DATACLASS-PHP/base/data-AnnouncementBase.php`, `reference/DBACCESS-PHP/dbaccess-Announcement.php`, `reference/DBACCESS-PHP/base/dbaccess-AnnouncementBase.php`
 - disposable runtime root: `work/sample-packs/sample06-dbaccess-filter-sort-page/`
@@ -31,16 +31,16 @@ make sample06-pack-runtime-test
 
 seed される代表 row:
 
-- `Announcement`
-  - `Status=published`, `Title=Welcome Release`, `PublishedAt=2026-05-20 09:00:00`
-  - `Status=draft`, `Title=Planned Maintenance`, `PublishedAt=NULL`
-  - `Status=published`, `Title=May Newsletter`, `PublishedAt=2026-05-22 08:30:00`
+- `announcement`
+  - `status=published`, `title=Welcome Release`, `published_at=2026-05-20 09:00:00`
+  - `status=draft`, `title=Planned Maintenance`, `published_at=NULL`
+  - `status=published`, `title=May Newsletter`, `published_at=2026-05-22 08:30:00`
 
 最小フロー:
 
 ```bash
 docker compose -f compose.yaml -f compose.local-db-config.yaml -f sample/tutorials/sample06-dbaccess-filter-sort-page/compose.yaml exec -T web-admin \
-  php /var/www/mtool/scripts/import_project_tables.php --project-key=SAMPLE06 --source=live-schema --table=Announcement
+  php /var/www/mtool/scripts/import_project_tables.php --project-key=SAMPLE06 --source=live-schema --table=announcement
 
 docker compose -f compose.yaml -f compose.local-db-config.yaml -f sample/tutorials/sample06-dbaccess-filter-sort-page/compose.yaml exec -T web-admin \
   php /var/www/mtool/scripts/sync_project_data_classes.php --project-key=SAMPLE06

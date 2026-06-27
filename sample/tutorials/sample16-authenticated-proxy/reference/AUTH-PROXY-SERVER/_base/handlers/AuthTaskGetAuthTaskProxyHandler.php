@@ -6,7 +6,7 @@ class AuthTaskGetAuthTaskProxyHandlerBase extends MtoolGeneratedSingleProxyEndpo
 {
     protected function proxyDisplayName(): string
     {
-        return 'AuthTask.GetAuthTask';
+        return 'auth_task.GetAuthTask';
     }
 
     protected function usesTransaction(): bool
@@ -44,7 +44,7 @@ class AuthTaskGetAuthTaskProxyHandlerBase extends MtoolGeneratedSingleProxyEndpo
                 'step_no' => 1,
                 'request_key' => '',
                 'is_list' => false,
-                'source_name' => 'AuthTask',
+                'source_name' => 'auth_task',
                 'dbaccess_class' => 'AuthTaskDBAccess',
                 'function_name' => 'GetAuthTask',
                 'action' => 'select-single',

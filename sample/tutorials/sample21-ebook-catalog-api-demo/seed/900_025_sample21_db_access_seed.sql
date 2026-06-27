@@ -48,7 +48,7 @@ INSERT INTO project_db_access_classes (
     last_detected_data_file
 ) VALUES (
     @sample21_project_id,
-    'EbookCatalogItem',
+    'ebook_catalog_item',
     '',
     0,
     'Ebook catalog API sample with public list/detail functions over the catalog read model.',
@@ -88,10 +88,10 @@ INSERT INTO project_db_access_functions (
     '',
     'SELECTLIST',
     'EbookCatalogItem',
-    'EbookCatalogItem',
+    'ebook_catalog_item',
     '',
     1,
-    'EbookCatalogItem.PublishedAt desc, EbookCatalogItem.BookId desc',
+    'ebook_catalog_item.published_at desc, ebook_catalog_item.book_id desc',
     'List public ebook catalog items by author, genre, series, and title pattern.',
     'argument',
     '',
@@ -110,7 +110,7 @@ INSERT INTO project_db_access_functions (
     '',
     'SELECTSINGLE',
     'EbookCatalogItem',
-    'EbookCatalogItem',
+    'ebook_catalog_item',
     '',
     1,
     '',
@@ -152,26 +152,26 @@ INSERT INTO project_db_access_function_select_target_fields (
     field_list_order,
     source_of_truth
 ) VALUES
-(@sample21_catalog_list_function_id, 'EbookCatalogItem', '', 'BookId', '', '', 'BookId', 0, 10, 'manual'),
-(@sample21_catalog_list_function_id, 'EbookCatalogItem', '', 'BookTitle', '', '', 'BookTitle', 0, 20, 'manual'),
-(@sample21_catalog_list_function_id, 'EbookCatalogItem', '', 'BookSlug', '', '', 'BookSlug', 0, 30, 'manual'),
-(@sample21_catalog_list_function_id, 'EbookCatalogItem', '', 'SeriesName', '', '', 'SeriesName', 0, 40, 'manual'),
-(@sample21_catalog_list_function_id, 'EbookCatalogItem', '', 'AuthorName', '', '', 'AuthorName', 0, 50, 'manual'),
-(@sample21_catalog_list_function_id, 'EbookCatalogItem', '', 'GenreName', '', '', 'GenreName', 0, 60, 'manual'),
-(@sample21_catalog_list_function_id, 'EbookCatalogItem', '', 'PublishedAt', '', '', 'PublishedAt', 0, 70, 'manual'),
-(@sample21_catalog_list_function_id, 'EbookCatalogItem', '', 'Summary', '', '', 'Summary', 0, 80, 'manual'),
-(@sample21_catalog_list_function_id, 'EbookCatalogItem', '', 'EpubStatus', '', '', 'EpubStatus', 0, 90, 'manual'),
-(@sample21_catalog_list_function_id, 'EbookCatalogItem', '', 'PrimaryEpubUrl', '', '', 'PrimaryEpubUrl', 0, 100, 'manual'),
-(@sample21_book_detail_function_id, 'EbookCatalogItem', '', 'BookId', '', '', 'BookId', 0, 10, 'manual'),
-(@sample21_book_detail_function_id, 'EbookCatalogItem', '', 'BookTitle', '', '', 'BookTitle', 0, 20, 'manual'),
-(@sample21_book_detail_function_id, 'EbookCatalogItem', '', 'BookSlug', '', '', 'BookSlug', 0, 30, 'manual'),
-(@sample21_book_detail_function_id, 'EbookCatalogItem', '', 'SeriesName', '', '', 'SeriesName', 0, 40, 'manual'),
-(@sample21_book_detail_function_id, 'EbookCatalogItem', '', 'AuthorName', '', '', 'AuthorName', 0, 50, 'manual'),
-(@sample21_book_detail_function_id, 'EbookCatalogItem', '', 'GenreName', '', '', 'GenreName', 0, 60, 'manual'),
-(@sample21_book_detail_function_id, 'EbookCatalogItem', '', 'PublishedAt', '', '', 'PublishedAt', 0, 70, 'manual'),
-(@sample21_book_detail_function_id, 'EbookCatalogItem', '', 'Summary', '', '', 'Summary', 0, 80, 'manual'),
-(@sample21_book_detail_function_id, 'EbookCatalogItem', '', 'EpubStatus', '', '', 'EpubStatus', 0, 90, 'manual'),
-(@sample21_book_detail_function_id, 'EbookCatalogItem', '', 'PrimaryEpubUrl', '', '', 'PrimaryEpubUrl', 0, 100, 'manual');
+(@sample21_catalog_list_function_id, 'ebook_catalog_item', '', 'book_id', '', '', 'bookId', 0, 10, 'manual'),
+(@sample21_catalog_list_function_id, 'ebook_catalog_item', '', 'book_title', '', '', 'bookTitle', 0, 20, 'manual'),
+(@sample21_catalog_list_function_id, 'ebook_catalog_item', '', 'book_slug', '', '', 'bookSlug', 0, 30, 'manual'),
+(@sample21_catalog_list_function_id, 'ebook_catalog_item', '', 'series_name', '', '', 'seriesName', 0, 40, 'manual'),
+(@sample21_catalog_list_function_id, 'ebook_catalog_item', '', 'author_name', '', '', 'authorName', 0, 50, 'manual'),
+(@sample21_catalog_list_function_id, 'ebook_catalog_item', '', 'genre_name', '', '', 'genreName', 0, 60, 'manual'),
+(@sample21_catalog_list_function_id, 'ebook_catalog_item', '', 'published_at', '', '', 'publishedAt', 0, 70, 'manual'),
+(@sample21_catalog_list_function_id, 'ebook_catalog_item', '', 'summary', '', '', 'summary', 0, 80, 'manual'),
+(@sample21_catalog_list_function_id, 'ebook_catalog_item', '', 'epub_status', '', '', 'epubStatus', 0, 90, 'manual'),
+(@sample21_catalog_list_function_id, 'ebook_catalog_item', '', 'primary_epub_url', '', '', 'primaryEpubUrl', 0, 100, 'manual'),
+(@sample21_book_detail_function_id, 'ebook_catalog_item', '', 'book_id', '', '', 'bookId', 0, 10, 'manual'),
+(@sample21_book_detail_function_id, 'ebook_catalog_item', '', 'book_title', '', '', 'bookTitle', 0, 20, 'manual'),
+(@sample21_book_detail_function_id, 'ebook_catalog_item', '', 'book_slug', '', '', 'bookSlug', 0, 30, 'manual'),
+(@sample21_book_detail_function_id, 'ebook_catalog_item', '', 'series_name', '', '', 'seriesName', 0, 40, 'manual'),
+(@sample21_book_detail_function_id, 'ebook_catalog_item', '', 'author_name', '', '', 'authorName', 0, 50, 'manual'),
+(@sample21_book_detail_function_id, 'ebook_catalog_item', '', 'genre_name', '', '', 'genreName', 0, 60, 'manual'),
+(@sample21_book_detail_function_id, 'ebook_catalog_item', '', 'published_at', '', '', 'publishedAt', 0, 70, 'manual'),
+(@sample21_book_detail_function_id, 'ebook_catalog_item', '', 'summary', '', '', 'summary', 0, 80, 'manual'),
+(@sample21_book_detail_function_id, 'ebook_catalog_item', '', 'epub_status', '', '', 'epubStatus', 0, 90, 'manual'),
+(@sample21_book_detail_function_id, 'ebook_catalog_item', '', 'primary_epub_url', '', '', 'primaryEpubUrl', 0, 100, 'manual');
 
 INSERT INTO project_db_access_function_select_wheres (
     db_access_function_id,
@@ -190,13 +190,13 @@ INSERT INTO project_db_access_function_select_wheres (
     where_order,
     source_of_truth
 ) VALUES
-(@sample21_catalog_list_function_id, 'EbookCatalogItem', '', 'Status', 'fixed', '', 'published', '', '', '', '', '', '=', 10, 'manual'),
-(@sample21_catalog_list_function_id, 'EbookCatalogItem', '', 'AuthorSlug', 'argument', 'varchar', '', '', '', '', '', '', '=', 20, 'manual'),
-(@sample21_catalog_list_function_id, 'EbookCatalogItem', '', 'GenreSlug', 'argument', 'varchar', '', '', '', '', '', '', '=', 30, 'manual'),
-(@sample21_catalog_list_function_id, 'EbookCatalogItem', '', 'SeriesSlug', 'argument', 'varchar', '', '', '', '', '', '', '=', 40, 'manual'),
-(@sample21_catalog_list_function_id, 'EbookCatalogItem', '', 'BookTitle', 'argument', 'varchar', '', '', '', '', '', '', 'LIKE', 50, 'manual'),
-(@sample21_book_detail_function_id, 'EbookCatalogItem', '', 'Status', 'fixed', '', 'published', '', '', '', '', '', '=', 10, 'manual'),
-(@sample21_book_detail_function_id, 'EbookCatalogItem', '', 'BookSlug', 'argument', 'varchar', '', '', '', '', '', '', '=', 20, 'manual');
+(@sample21_catalog_list_function_id, 'ebook_catalog_item', '', 'status', 'fixed', '', 'published', '', '', '', '', '', '=', 10, 'manual'),
+(@sample21_catalog_list_function_id, 'ebook_catalog_item', '', 'author_slug', 'argument', 'varchar', '', '', '', '', '', '', '=', 20, 'manual'),
+(@sample21_catalog_list_function_id, 'ebook_catalog_item', '', 'genre_slug', 'argument', 'varchar', '', '', '', '', '', '', '=', 30, 'manual'),
+(@sample21_catalog_list_function_id, 'ebook_catalog_item', '', 'series_slug', 'argument', 'varchar', '', '', '', '', '', '', '=', 40, 'manual'),
+(@sample21_catalog_list_function_id, 'ebook_catalog_item', '', 'book_title', 'argument', 'varchar', '', '', '', '', '', '', 'LIKE', 50, 'manual'),
+(@sample21_book_detail_function_id, 'ebook_catalog_item', '', 'status', 'fixed', '', 'published', '', '', '', '', '', '=', 10, 'manual'),
+(@sample21_book_detail_function_id, 'ebook_catalog_item', '', 'book_slug', 'argument', 'varchar', '', '', '', '', '', '', '=', 20, 'manual');
 
 SET @sample21_project_id = NULL;
 SET @sample21_db_access_class_id = NULL;

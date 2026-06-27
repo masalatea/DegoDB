@@ -25,7 +25,7 @@ class EbookReaderBookDBAccessBase
 
         $result = array();
 
-        $last_sql_command_for_mtooldb = 'select EbookReaderBook.Id, EbookReaderBook.Title, EbookReaderBook.Slug, EbookReaderBook.AuthorName, EbookReaderBook.GenreName, EbookReaderBook.Summary from EbookReaderBook where EbookReaderBook.Status = ? order by EbookReaderBook.PublishedAt desc, EbookReaderBook.Id desc limit ?';
+        $last_sql_command_for_mtooldb = 'select ebook_reader_book.id, ebook_reader_book.title, ebook_reader_book.slug, ebook_reader_book.author_name, ebook_reader_book.genre_name, ebook_reader_book.summary from ebook_reader_book where ebook_reader_book.status = ? order by ebook_reader_book.published_at desc, ebook_reader_book.id desc limit ?';
         $ret = $mtooldb->execute($last_sql_command_for_mtooldb, [
             'published',
             $limit,
@@ -36,12 +36,12 @@ class EbookReaderBookDBAccessBase
         }
         while($thisline=$ret->fetch_row()) {
             $thisresult = new EbookReaderBookData();
-            $thisresult->Id = $thisline[0];
-            $thisresult->Title = $thisline[1];
-            $thisresult->Slug = $thisline[2];
-            $thisresult->AuthorName = $thisline[3];
-            $thisresult->GenreName = $thisline[4];
-            $thisresult->Summary = $thisline[5];
+            $thisresult->id = $thisline[0];
+            $thisresult->title = $thisline[1];
+            $thisresult->slug = $thisline[2];
+            $thisresult->authorName = $thisline[3];
+            $thisresult->genreName = $thisline[4];
+            $thisresult->summary = $thisline[5];
             array_push($result, $thisresult);
         }
         return $result;
@@ -54,7 +54,7 @@ class EbookReaderBookDBAccessBase
         connect_mtooldb_if_not_yet();
         reconnect_mtooldb_if_necessary();
 
-        $last_sql_command_for_mtooldb = 'select EbookReaderBook.Id, EbookReaderBook.Title, EbookReaderBook.Slug, EbookReaderBook.AuthorName, EbookReaderBook.GenreName, EbookReaderBook.Summary from EbookReaderBook where EbookReaderBook.Status = ? and EbookReaderBook.Slug = ?';
+        $last_sql_command_for_mtooldb = 'select ebook_reader_book.id, ebook_reader_book.title, ebook_reader_book.slug, ebook_reader_book.author_name, ebook_reader_book.genre_name, ebook_reader_book.summary from ebook_reader_book where ebook_reader_book.status = ? and ebook_reader_book.slug = ?';
         $ret = $mtooldb->execute($last_sql_command_for_mtooldb, [
             'published',
             $param_EbookReaderBook_Slug_where,
@@ -65,12 +65,12 @@ class EbookReaderBookDBAccessBase
         }
         while($thisline=$ret->fetch_row()) {
             $thisresult = new EbookReaderBookData();
-            $thisresult->Id = $thisline[0];
-            $thisresult->Title = $thisline[1];
-            $thisresult->Slug = $thisline[2];
-            $thisresult->AuthorName = $thisline[3];
-            $thisresult->GenreName = $thisline[4];
-            $thisresult->Summary = $thisline[5];
+            $thisresult->id = $thisline[0];
+            $thisresult->title = $thisline[1];
+            $thisresult->slug = $thisline[2];
+            $thisresult->authorName = $thisline[3];
+            $thisresult->genreName = $thisline[4];
+            $thisresult->summary = $thisline[5];
             return $thisresult;
         }
         return NULL;
@@ -85,7 +85,7 @@ class EbookReaderBookDBAccessBase
 
         $result = array();
 
-        $last_sql_command_for_mtooldb = 'select EbookReaderChapter.Id, EbookReaderChapter.BookSlug, EbookReaderChapter.ChapterTitle, EbookReaderChapter.ChapterSlug, EbookReaderChapter.SpineOrder from EbookReaderChapter where EbookReaderChapter.Status = ? and EbookReaderChapter.BookSlug = ? order by EbookReaderChapter.SpineOrder asc, EbookReaderChapter.Id asc';
+        $last_sql_command_for_mtooldb = 'select ebook_reader_chapter.id, ebook_reader_chapter.book_slug, ebook_reader_chapter.chapter_title, ebook_reader_chapter.chapter_slug, ebook_reader_chapter.spine_order from ebook_reader_chapter where ebook_reader_chapter.status = ? and ebook_reader_chapter.book_slug = ? order by ebook_reader_chapter.spine_order asc, ebook_reader_chapter.id asc';
         $ret = $mtooldb->execute($last_sql_command_for_mtooldb, [
             'published',
             $param_EbookReaderChapter_BookSlug_where,
@@ -96,11 +96,11 @@ class EbookReaderBookDBAccessBase
         }
         while($thisline=$ret->fetch_row()) {
             $thisresult = new EbookReaderChapterData();
-            $thisresult->Id = $thisline[0];
-            $thisresult->BookSlug = $thisline[1];
-            $thisresult->ChapterTitle = $thisline[2];
-            $thisresult->ChapterSlug = $thisline[3];
-            $thisresult->SpineOrder = $thisline[4];
+            $thisresult->id = $thisline[0];
+            $thisresult->bookSlug = $thisline[1];
+            $thisresult->chapterTitle = $thisline[2];
+            $thisresult->chapterSlug = $thisline[3];
+            $thisresult->spineOrder = $thisline[4];
             array_push($result, $thisresult);
         }
         return $result;
@@ -113,7 +113,7 @@ class EbookReaderBookDBAccessBase
         connect_mtooldb_if_not_yet();
         reconnect_mtooldb_if_necessary();
 
-        $last_sql_command_for_mtooldb = 'select EbookReaderChapter.Id, EbookReaderChapter.BookSlug, EbookReaderChapter.ChapterTitle, EbookReaderChapter.ChapterSlug, EbookReaderChapter.SpineOrder, EbookReaderChapter.BodyMarkdown from EbookReaderChapter where EbookReaderChapter.Status = ? and EbookReaderChapter.BookSlug = ? and EbookReaderChapter.ChapterSlug = ?';
+        $last_sql_command_for_mtooldb = 'select ebook_reader_chapter.id, ebook_reader_chapter.book_slug, ebook_reader_chapter.chapter_title, ebook_reader_chapter.chapter_slug, ebook_reader_chapter.spine_order, ebook_reader_chapter.body_markdown from ebook_reader_chapter where ebook_reader_chapter.status = ? and ebook_reader_chapter.book_slug = ? and ebook_reader_chapter.chapter_slug = ?';
         $ret = $mtooldb->execute($last_sql_command_for_mtooldb, [
             'published',
             $param_EbookReaderChapter_BookSlug_where,
@@ -125,12 +125,12 @@ class EbookReaderBookDBAccessBase
         }
         while($thisline=$ret->fetch_row()) {
             $thisresult = new EbookReaderChapterData();
-            $thisresult->Id = $thisline[0];
-            $thisresult->BookSlug = $thisline[1];
-            $thisresult->ChapterTitle = $thisline[2];
-            $thisresult->ChapterSlug = $thisline[3];
-            $thisresult->SpineOrder = $thisline[4];
-            $thisresult->BodyMarkdown = $thisline[5];
+            $thisresult->id = $thisline[0];
+            $thisresult->bookSlug = $thisline[1];
+            $thisresult->chapterTitle = $thisline[2];
+            $thisresult->chapterSlug = $thisline[3];
+            $thisresult->spineOrder = $thisline[4];
+            $thisresult->bodyMarkdown = $thisline[5];
             return $thisresult;
         }
         return NULL;
@@ -145,7 +145,7 @@ class EbookReaderBookDBAccessBase
 
         $result = array();
 
-        $last_sql_command_for_mtooldb = 'select EbookReaderMediaDelivery.Id, EbookReaderMediaDelivery.BookSlug, EbookReaderMediaDelivery.AssetSlug, EbookReaderMediaDelivery.AssetKind, EbookReaderMediaDelivery.DisplayName, EbookReaderMediaDelivery.PublicUrl, EbookReaderMediaDelivery.MimeType, EbookReaderMediaDelivery.FileSizeBytes, EbookReaderMediaDelivery.Sha256, EbookReaderMediaDelivery.VersionLabel from EbookReaderMediaDelivery where EbookReaderMediaDelivery.Status = ? and EbookReaderMediaDelivery.BookSlug = ? order by EbookReaderMediaDelivery.Id asc';
+        $last_sql_command_for_mtooldb = 'select ebook_reader_media_delivery.id, ebook_reader_media_delivery.book_slug, ebook_reader_media_delivery.asset_slug, ebook_reader_media_delivery.asset_kind, ebook_reader_media_delivery.display_name, ebook_reader_media_delivery.public_url, ebook_reader_media_delivery.mime_type, ebook_reader_media_delivery.file_size_bytes, ebook_reader_media_delivery.sha256, ebook_reader_media_delivery.version_label from ebook_reader_media_delivery where ebook_reader_media_delivery.status = ? and ebook_reader_media_delivery.book_slug = ? order by ebook_reader_media_delivery.id asc';
         $ret = $mtooldb->execute($last_sql_command_for_mtooldb, [
             'published',
             $param_EbookReaderMediaDelivery_BookSlug_where,
@@ -156,16 +156,16 @@ class EbookReaderBookDBAccessBase
         }
         while($thisline=$ret->fetch_row()) {
             $thisresult = new EbookReaderMediaDeliveryData();
-            $thisresult->Id = $thisline[0];
-            $thisresult->BookSlug = $thisline[1];
-            $thisresult->AssetSlug = $thisline[2];
-            $thisresult->AssetKind = $thisline[3];
-            $thisresult->DisplayName = $thisline[4];
-            $thisresult->PublicUrl = $thisline[5];
-            $thisresult->MimeType = $thisline[6];
-            $thisresult->FileSizeBytes = $thisline[7];
-            $thisresult->Sha256 = $thisline[8];
-            $thisresult->VersionLabel = $thisline[9];
+            $thisresult->id = $thisline[0];
+            $thisresult->bookSlug = $thisline[1];
+            $thisresult->assetSlug = $thisline[2];
+            $thisresult->assetKind = $thisline[3];
+            $thisresult->displayName = $thisline[4];
+            $thisresult->publicUrl = $thisline[5];
+            $thisresult->mimeType = $thisline[6];
+            $thisresult->fileSizeBytes = $thisline[7];
+            $thisresult->sha256 = $thisline[8];
+            $thisresult->versionLabel = $thisline[9];
             array_push($result, $thisresult);
         }
         return $result;

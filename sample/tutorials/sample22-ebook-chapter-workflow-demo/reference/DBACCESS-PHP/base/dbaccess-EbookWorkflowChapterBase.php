@@ -25,7 +25,7 @@ class EbookWorkflowChapterDBAccessBase
 
         $result = array();
 
-        $last_sql_command_for_mtooldb = 'select EbookWorkflowPublishedChapter.ChapterId, EbookWorkflowPublishedChapter.BookId, EbookWorkflowPublishedChapter.BookSlug, EbookWorkflowPublishedChapter.ChapterTitle, EbookWorkflowPublishedChapter.ChapterSlug, EbookWorkflowPublishedChapter.SpineOrder, EbookWorkflowPublishedChapter.NavLabel, EbookWorkflowPublishedChapter.EpubResourcePath from EbookWorkflowPublishedChapter where EbookWorkflowPublishedChapter.Status = ? and EbookWorkflowPublishedChapter.BookSlug = ? order by EbookWorkflowPublishedChapter.SpineOrder asc, EbookWorkflowPublishedChapter.ChapterId asc';
+        $last_sql_command_for_mtooldb = 'select ebook_workflow_published_chapter.chapter_id, ebook_workflow_published_chapter.book_id, ebook_workflow_published_chapter.book_slug, ebook_workflow_published_chapter.chapter_title, ebook_workflow_published_chapter.chapter_slug, ebook_workflow_published_chapter.spine_order, ebook_workflow_published_chapter.nav_label, ebook_workflow_published_chapter.epub_resource_path from ebook_workflow_published_chapter where ebook_workflow_published_chapter.status = ? and ebook_workflow_published_chapter.book_slug = ? order by ebook_workflow_published_chapter.spine_order asc, ebook_workflow_published_chapter.chapter_id asc';
         $ret = $mtooldb->execute($last_sql_command_for_mtooldb, [
             'published',
             $param_EbookWorkflowPublishedChapter_BookSlug_where,
@@ -36,14 +36,14 @@ class EbookWorkflowChapterDBAccessBase
         }
         while($thisline=$ret->fetch_row()) {
             $thisresult = new EbookWorkflowPublishedChapterData();
-            $thisresult->ChapterId = $thisline[0];
-            $thisresult->BookId = $thisline[1];
-            $thisresult->BookSlug = $thisline[2];
-            $thisresult->ChapterTitle = $thisline[3];
-            $thisresult->ChapterSlug = $thisline[4];
-            $thisresult->SpineOrder = $thisline[5];
-            $thisresult->NavLabel = $thisline[6];
-            $thisresult->EpubResourcePath = $thisline[7];
+            $thisresult->chapterId = $thisline[0];
+            $thisresult->bookId = $thisline[1];
+            $thisresult->bookSlug = $thisline[2];
+            $thisresult->chapterTitle = $thisline[3];
+            $thisresult->chapterSlug = $thisline[4];
+            $thisresult->spineOrder = $thisline[5];
+            $thisresult->navLabel = $thisline[6];
+            $thisresult->epubResourcePath = $thisline[7];
             array_push($result, $thisresult);
         }
         return $result;
@@ -56,7 +56,7 @@ class EbookWorkflowChapterDBAccessBase
         connect_mtooldb_if_not_yet();
         reconnect_mtooldb_if_necessary();
 
-        $last_sql_command_for_mtooldb = 'select EbookWorkflowPublishedChapter.ChapterId, EbookWorkflowPublishedChapter.BookId, EbookWorkflowPublishedChapter.BookSlug, EbookWorkflowPublishedChapter.ChapterTitle, EbookWorkflowPublishedChapter.ChapterSlug, EbookWorkflowPublishedChapter.SpineOrder, EbookWorkflowPublishedChapter.NavLabel, EbookWorkflowPublishedChapter.EpubResourcePath, EbookWorkflowPublishedChapter.BodyMarkdown from EbookWorkflowPublishedChapter where EbookWorkflowPublishedChapter.Status = ? and EbookWorkflowPublishedChapter.BookSlug = ? and EbookWorkflowPublishedChapter.ChapterSlug = ?';
+        $last_sql_command_for_mtooldb = 'select ebook_workflow_published_chapter.chapter_id, ebook_workflow_published_chapter.book_id, ebook_workflow_published_chapter.book_slug, ebook_workflow_published_chapter.chapter_title, ebook_workflow_published_chapter.chapter_slug, ebook_workflow_published_chapter.spine_order, ebook_workflow_published_chapter.nav_label, ebook_workflow_published_chapter.epub_resource_path, ebook_workflow_published_chapter.body_markdown from ebook_workflow_published_chapter where ebook_workflow_published_chapter.status = ? and ebook_workflow_published_chapter.book_slug = ? and ebook_workflow_published_chapter.chapter_slug = ?';
         $ret = $mtooldb->execute($last_sql_command_for_mtooldb, [
             'published',
             $param_EbookWorkflowPublishedChapter_BookSlug_where,
@@ -68,15 +68,15 @@ class EbookWorkflowChapterDBAccessBase
         }
         while($thisline=$ret->fetch_row()) {
             $thisresult = new EbookWorkflowPublishedChapterData();
-            $thisresult->ChapterId = $thisline[0];
-            $thisresult->BookId = $thisline[1];
-            $thisresult->BookSlug = $thisline[2];
-            $thisresult->ChapterTitle = $thisline[3];
-            $thisresult->ChapterSlug = $thisline[4];
-            $thisresult->SpineOrder = $thisline[5];
-            $thisresult->NavLabel = $thisline[6];
-            $thisresult->EpubResourcePath = $thisline[7];
-            $thisresult->BodyMarkdown = $thisline[8];
+            $thisresult->chapterId = $thisline[0];
+            $thisresult->bookId = $thisline[1];
+            $thisresult->bookSlug = $thisline[2];
+            $thisresult->chapterTitle = $thisline[3];
+            $thisresult->chapterSlug = $thisline[4];
+            $thisresult->spineOrder = $thisline[5];
+            $thisresult->navLabel = $thisline[6];
+            $thisresult->epubResourcePath = $thisline[7];
+            $thisresult->bodyMarkdown = $thisline[8];
             return $thisresult;
         }
         return NULL;
@@ -89,16 +89,16 @@ class EbookWorkflowChapterDBAccessBase
         connect_mtooldb_if_not_yet();
         reconnect_mtooldb_if_necessary();
 
-        $last_sql_command_for_mtooldb = 'insert into EbookWorkflowChapter (EbookWorkflowBookId, ChapterTitle, ChapterSlug, Status, SpineOrder, NavLabel, EpubResourcePath, BodyMarkdown, UpdatedAt) values(?, ?, ?, ?, ?, ?, ?, ?, NOW())';
+        $last_sql_command_for_mtooldb = 'insert into ebook_workflow_chapter (ebook_workflow_book_id, chapter_title, chapter_slug, status, spine_order, nav_label, epub_resource_path, body_markdown, updated_at) values(?, ?, ?, ?, ?, ?, ?, ?, NOW())';
         $result = $mtooldb->execute($last_sql_command_for_mtooldb, [
-            $EbookWorkflowChapterObj->EbookWorkflowBookId,
-            $EbookWorkflowChapterObj->ChapterTitle,
-            $EbookWorkflowChapterObj->ChapterSlug,
+            $EbookWorkflowChapterObj->ebookWorkflowBookId,
+            $EbookWorkflowChapterObj->chapterTitle,
+            $EbookWorkflowChapterObj->chapterSlug,
             'draft',
-            $EbookWorkflowChapterObj->SpineOrder,
-            $EbookWorkflowChapterObj->NavLabel,
-            $EbookWorkflowChapterObj->EpubResourcePath,
-            $EbookWorkflowChapterObj->BodyMarkdown,
+            $EbookWorkflowChapterObj->spineOrder,
+            $EbookWorkflowChapterObj->navLabel,
+            $EbookWorkflowChapterObj->epubResourcePath,
+            $EbookWorkflowChapterObj->bodyMarkdown,
         ]);
         if ($mtooldb->errno != 0) {
             error_log("Error occured while executing SQL: " . $mtooldb->error . " in " . __FILE__ . " on line " . __LINE__);
@@ -113,13 +113,13 @@ class EbookWorkflowChapterDBAccessBase
         connect_mtooldb_if_not_yet();
         reconnect_mtooldb_if_necessary();
 
-        $last_sql_command_for_mtooldb = 'update EbookWorkflowChapter SET ChapterTitle = ?, NavLabel = ?, EpubResourcePath = ?, BodyMarkdown = ?, UpdatedAt = NOW() where EbookWorkflowChapter.Id = ?';
+        $last_sql_command_for_mtooldb = 'update ebook_workflow_chapter SET chapter_title = ?, nav_label = ?, epub_resource_path = ?, body_markdown = ?, updated_at = NOW() where ebook_workflow_chapter.id = ?';
         $result = $mtooldb->execute($last_sql_command_for_mtooldb, [
-            $EbookWorkflowChapterObj->ChapterTitle,
-            $EbookWorkflowChapterObj->NavLabel,
-            $EbookWorkflowChapterObj->EpubResourcePath,
-            $EbookWorkflowChapterObj->BodyMarkdown,
-            $EbookWorkflowChapterObj->Id,
+            $EbookWorkflowChapterObj->chapterTitle,
+            $EbookWorkflowChapterObj->navLabel,
+            $EbookWorkflowChapterObj->epubResourcePath,
+            $EbookWorkflowChapterObj->bodyMarkdown,
+            $EbookWorkflowChapterObj->id,
         ]);
         if ($mtooldb->errno != 0) {
             error_log("Error occured while executing SQL: " . $mtooldb->error . " in " . __FILE__ . " on line " . __LINE__);
@@ -134,12 +134,12 @@ class EbookWorkflowChapterDBAccessBase
         connect_mtooldb_if_not_yet();
         reconnect_mtooldb_if_necessary();
 
-        $last_sql_command_for_mtooldb = 'update EbookWorkflowChapter SET SpineOrder = ?, NavLabel = ?, EpubResourcePath = ?, UpdatedAt = NOW() where EbookWorkflowChapter.Id = ?';
+        $last_sql_command_for_mtooldb = 'update ebook_workflow_chapter SET spine_order = ?, nav_label = ?, epub_resource_path = ?, updated_at = NOW() where ebook_workflow_chapter.id = ?';
         $result = $mtooldb->execute($last_sql_command_for_mtooldb, [
-            $EbookWorkflowChapterObj->SpineOrder,
-            $EbookWorkflowChapterObj->NavLabel,
-            $EbookWorkflowChapterObj->EpubResourcePath,
-            $EbookWorkflowChapterObj->Id,
+            $EbookWorkflowChapterObj->spineOrder,
+            $EbookWorkflowChapterObj->navLabel,
+            $EbookWorkflowChapterObj->epubResourcePath,
+            $EbookWorkflowChapterObj->id,
         ]);
         if ($mtooldb->errno != 0) {
             error_log("Error occured while executing SQL: " . $mtooldb->error . " in " . __FILE__ . " on line " . __LINE__);
@@ -154,10 +154,10 @@ class EbookWorkflowChapterDBAccessBase
         connect_mtooldb_if_not_yet();
         reconnect_mtooldb_if_necessary();
 
-        $last_sql_command_for_mtooldb = 'update EbookWorkflowChapter SET Status = ?, PublishedAt = NOW(), UpdatedAt = NOW() where EbookWorkflowChapter.Id = ?';
+        $last_sql_command_for_mtooldb = 'update ebook_workflow_chapter SET status = ?, published_at = NOW(), updated_at = NOW() where ebook_workflow_chapter.id = ?';
         $result = $mtooldb->execute($last_sql_command_for_mtooldb, [
             'published',
-            $EbookWorkflowChapterObj->Id,
+            $EbookWorkflowChapterObj->id,
         ]);
         if ($mtooldb->errno != 0) {
             error_log("Error occured while executing SQL: " . $mtooldb->error . " in " . __FILE__ . " on line " . __LINE__);

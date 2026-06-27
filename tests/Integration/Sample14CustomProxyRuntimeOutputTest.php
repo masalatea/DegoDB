@@ -8,11 +8,22 @@ final class Sample14CustomProxyRuntimeOutputTest extends TestCase
 {
     public function testCustomProxyRuntimeOutputStaysInSync(): void
     {
-        $result = app_sample14_custom_proxy_run(
-            app_bootstrap(),
-            'phpunit',
-            app_sample14_custom_proxy_default_reference_root(),
-        );
+        $previousPolicy = getenv('MTOOL_GENERATED_NAME_POLICY');
+        putenv('MTOOL_GENERATED_NAME_POLICY=physical-logical-v1');
+
+        try {
+            $result = app_sample14_custom_proxy_run(
+                app_bootstrap(),
+                'phpunit',
+                app_sample14_custom_proxy_default_reference_root(),
+            );
+        } finally {
+            if ($previousPolicy === false) {
+                putenv('MTOOL_GENERATED_NAME_POLICY');
+            } else {
+                putenv('MTOOL_GENERATED_NAME_POLICY=' . $previousPolicy);
+            }
+        }
 
         self::assertTrue($result['ok'], $this->failureMessageFromResult($result));
         self::assertSame('NoSecurity', (string) ($result['steps']['custom_proxy']['item']['auth_type'] ?? ''));

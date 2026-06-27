@@ -1,51 +1,51 @@
-DROP TABLE IF EXISTS EbookCmsChapter;
-DROP TABLE IF EXISTS EbookCmsBook;
+DROP TABLE IF EXISTS ebook_cms_chapter;
+DROP TABLE IF EXISTS ebook_cms_book;
 
-CREATE TABLE EbookCmsBook (
-    Id INT AUTO_INCREMENT PRIMARY KEY,
-    Title VARCHAR(160) NOT NULL,
-    Slug VARCHAR(120) NOT NULL,
-    AuthorName VARCHAR(120) NOT NULL,
-    GenreName VARCHAR(80) NOT NULL,
-    Status VARCHAR(40) NOT NULL,
-    CoverImageUrl VARCHAR(255) NOT NULL,
-    Summary TEXT NOT NULL,
-    EpubDownloadUrl VARCHAR(255) NOT NULL,
-    EpubMimeType VARCHAR(120) NOT NULL,
-    EpubSha256 VARCHAR(64) NOT NULL,
-    PublishedAt DATETIME NULL,
-    UpdatedAt DATETIME NOT NULL,
-    UNIQUE KEY uq_ebook_cms_book_slug (Slug)
+CREATE TABLE ebook_cms_book (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    title VARCHAR(160) NOT NULL,
+    slug VARCHAR(120) NOT NULL,
+    author_name VARCHAR(120) NOT NULL,
+    genre_name VARCHAR(80) NOT NULL,
+    status VARCHAR(40) NOT NULL,
+    cover_image_url VARCHAR(255) NOT NULL,
+    summary TEXT NOT NULL,
+    epub_download_url VARCHAR(255) NOT NULL,
+    epub_mime_type VARCHAR(120) NOT NULL,
+    epub_sha256 VARCHAR(64) NOT NULL,
+    published_at DATETIME NULL,
+    updated_at DATETIME NOT NULL,
+    UNIQUE KEY uq_ebook_cms_book_slug (slug)
 );
 
-CREATE TABLE EbookCmsChapter (
-    Id INT AUTO_INCREMENT PRIMARY KEY,
-    EbookCmsBookId INT NOT NULL,
-    BookSlug VARCHAR(120) NOT NULL,
-    ChapterTitle VARCHAR(160) NOT NULL,
-    ChapterSlug VARCHAR(120) NOT NULL,
-    Status VARCHAR(40) NOT NULL,
-    SpineOrder INT NOT NULL,
-    BodyMarkdown TEXT NOT NULL,
-    PublishedAt DATETIME NULL,
-    UpdatedAt DATETIME NOT NULL,
-    UNIQUE KEY uq_ebook_cms_chapter_slug (BookSlug, ChapterSlug),
-    KEY idx_ebook_cms_chapter_book_id (EbookCmsBookId)
+CREATE TABLE ebook_cms_chapter (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    ebook_cms_book_id INT NOT NULL,
+    book_slug VARCHAR(120) NOT NULL,
+    chapter_title VARCHAR(160) NOT NULL,
+    chapter_slug VARCHAR(120) NOT NULL,
+    status VARCHAR(40) NOT NULL,
+    spine_order INT NOT NULL,
+    body_markdown TEXT NOT NULL,
+    published_at DATETIME NULL,
+    updated_at DATETIME NOT NULL,
+    UNIQUE KEY uq_ebook_cms_chapter_slug (book_slug, chapter_slug),
+    KEY idx_ebook_cms_chapter_book_id (ebook_cms_book_id)
 );
 
-INSERT INTO EbookCmsBook (
-    Title,
-    Slug,
-    AuthorName,
-    GenreName,
-    Status,
-    CoverImageUrl,
-    Summary,
-    EpubDownloadUrl,
-    EpubMimeType,
-    EpubSha256,
-    PublishedAt,
-    UpdatedAt
+INSERT INTO ebook_cms_book (
+    title,
+    slug,
+    author_name,
+    genre_name,
+    status,
+    cover_image_url,
+    summary,
+    epub_download_url,
+    epub_mime_type,
+    epub_sha256,
+    published_at,
+    updated_at
 ) VALUES
 (
     'JSONから始める電子書籍CMS',
@@ -76,16 +76,16 @@ INSERT INTO EbookCmsBook (
     '2026-06-19 10:00:00'
 );
 
-INSERT INTO EbookCmsChapter (
-    EbookCmsBookId,
-    BookSlug,
-    ChapterTitle,
-    ChapterSlug,
-    Status,
-    SpineOrder,
-    BodyMarkdown,
-    PublishedAt,
-    UpdatedAt
+INSERT INTO ebook_cms_chapter (
+    ebook_cms_book_id,
+    book_slug,
+    chapter_title,
+    chapter_slug,
+    status,
+    spine_order,
+    body_markdown,
+    published_at,
+    updated_at
 ) VALUES
 (
     1,

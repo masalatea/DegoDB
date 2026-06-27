@@ -52,7 +52,8 @@ make sample17-pack-runtime-test-sqlite
 - project:
   - `project_key=SAMPLE17`
 - live table:
-  - `CapstoneTask`
+  - physical table: `capstone_task`
+  - generated class/API surface: `CapstoneTask`
 - DBAccess:
   - `CapstoneTask.GetCapstoneTaskList`
   - `CapstoneTask.GetCapstoneTask`
@@ -70,7 +71,7 @@ make sample17-pack-runtime-test-sqlite
 
 ```bash
 docker compose -f compose.yaml -f compose.local-db-config.yaml -f sample/tutorials/sample17-multi-output-project/compose.yaml exec -T web-admin \
-  php /var/www/mtool/scripts/import_project_tables.php --project-key=SAMPLE17 --source=live-schema --table=CapstoneTask
+  php /var/www/mtool/scripts/import_project_tables.php --project-key=SAMPLE17 --source=live-schema --table=capstone_task
 
 docker compose -f compose.yaml -f compose.local-db-config.yaml -f sample/tutorials/sample17-multi-output-project/compose.yaml exec -T web-admin \
   php /var/www/mtool/scripts/sync_project_data_classes.php --project-key=SAMPLE17

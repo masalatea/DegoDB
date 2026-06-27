@@ -48,7 +48,7 @@ INSERT INTO project_db_access_classes (
     last_detected_data_file
 ) VALUES (
     @sample16_project_id,
-    'AuthTask',
+    'auth_task',
     '',
     0,
     'Single static bearer authenticated read function for the authenticated proxy tutorial sample.',
@@ -87,7 +87,7 @@ INSERT INTO project_db_access_functions (
     '',
     'SELECTSINGLE',
     'AuthTask',
-    'AuthTask',
+    'auth_task',
     '',
     0,
     '',
@@ -123,11 +123,11 @@ INSERT INTO project_db_access_function_select_target_fields (
     field_list_order,
     source_of_truth
 ) VALUES
-(@sample16_get_auth_task_function_id, 'AuthTask', '', 'Id', '', '', 'Id', 0, 10, 'manual'),
-(@sample16_get_auth_task_function_id, 'AuthTask', '', 'Title', '', '', 'Title', 0, 20, 'manual'),
-(@sample16_get_auth_task_function_id, 'AuthTask', '', 'Status', '', '', 'Status', 0, 30, 'manual'),
-(@sample16_get_auth_task_function_id, 'AuthTask', '', 'OwnerName', '', '', 'OwnerName', 0, 40, 'manual'),
-(@sample16_get_auth_task_function_id, 'AuthTask', '', 'UpdatedAt', '', '', 'UpdatedAt', 0, 50, 'manual');
+(@sample16_get_auth_task_function_id, 'auth_task', '', 'id', '', '', 'id', 0, 10, 'manual'),
+(@sample16_get_auth_task_function_id, 'auth_task', '', 'title', '', '', 'title', 0, 20, 'manual'),
+(@sample16_get_auth_task_function_id, 'auth_task', '', 'status', '', '', 'status', 0, 30, 'manual'),
+(@sample16_get_auth_task_function_id, 'auth_task', '', 'owner_name', '', '', 'ownerName', 0, 40, 'manual'),
+(@sample16_get_auth_task_function_id, 'auth_task', '', 'updated_at', '', '', 'updatedAt', 0, 50, 'manual');
 
 INSERT INTO project_db_access_function_select_wheres (
     db_access_function_id,
@@ -146,7 +146,7 @@ INSERT INTO project_db_access_function_select_wheres (
     where_order,
     source_of_truth
 ) VALUES
-(@sample16_get_auth_task_function_id, 'AuthTask', '', 'Id', 'argument', 'int', '', '', '', '', '', '', '=', 10, 'manual');
+(@sample16_get_auth_task_function_id, 'auth_task', '', 'id', 'argument', 'int', '', '', '', '', '', '', '=', 10, 'manual');
 
 SET @sample16_project_id = NULL;
 SET @sample16_db_access_class_id = NULL;

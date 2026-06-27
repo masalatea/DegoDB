@@ -3,7 +3,7 @@
 - canonical project key: `SAMPLE12`
 - 役割: external named DB source を登録し、`named-live-schema:sample12_lab` から table import -> DataClass sync -> Source Output publish まで確認する tutorial sample pack
 - config seed は `SAMPLE12` project、`database_sources` row、`DATACLASS-PHP` source output definition を作る
-- lab seed は external DB 相当の物理 `ExternalArticle` table と seed row を `db-lab` に作る
+- lab seed は external DB 相当の物理 `external_article` table と seed row を `db-lab` に作る
 - canonical `dbtable` / `dataclass` metadata は seed しない。external source import と data class sync で current metadata を作る前提
 - durable actual output sample: `reference/DATACLASS-PHP/data-ExternalArticle.php`, `reference/DATACLASS-PHP/base/data-ExternalArticleBase.php`
 - disposable runtime root: `work/sample-packs/sample12-external-db-source-import/`
@@ -59,15 +59,15 @@ APP_CONFIG_STORE_DIR=work/config-store-sample12-sqlite \
   - `database_name=lab_app`
   - `supports_live_schema_import=1`
   - `supports_proxy_runtime_read=0`
-- `ExternalArticle`
-  - `Status=published`, `Title=External source first row`
-  - `Status=draft`, `Title=Draft from external DB`
+- `external_article`
+  - `status=published`, `title=External source first row`
+  - `status=draft`, `title=Draft from external DB`
 
 ## 手動 flow
 
 ```bash
 docker compose -f compose.yaml -f compose.local-db-config.yaml -f sample/tutorials/sample12-external-db-source-import/compose.yaml exec -T web-admin \
-  php /var/www/mtool/scripts/import_project_tables.php --project-key=SAMPLE12 --source=named-live-schema:sample12_lab --table=ExternalArticle
+  php /var/www/mtool/scripts/import_project_tables.php --project-key=SAMPLE12 --source=named-live-schema:sample12_lab --table=external_article
 
 docker compose -f compose.yaml -f compose.local-db-config.yaml -f sample/tutorials/sample12-external-db-source-import/compose.yaml exec -T web-admin \
   php /var/www/mtool/scripts/sync_project_data_classes.php --project-key=SAMPLE12

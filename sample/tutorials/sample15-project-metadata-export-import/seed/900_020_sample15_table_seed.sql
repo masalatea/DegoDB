@@ -57,20 +57,20 @@ WHERE ProjectPID = @sample15_project_id;
 DELETE FROM dbtable
 WHERE ProjectPID = @sample15_project_id;
 
-DROP TABLE IF EXISTS BundleNote;
+DROP TABLE IF EXISTS bundle_note;
 
-CREATE TABLE BundleNote (
-    Id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
-    Title VARCHAR(255) NOT NULL,
-    Body TEXT NOT NULL,
-    UpdatedAt DATETIME NOT NULL,
-    PRIMARY KEY (Id)
+CREATE TABLE bundle_note (
+    id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+    title VARCHAR(255) NOT NULL,
+    body TEXT NOT NULL,
+    updated_at DATETIME NOT NULL,
+    PRIMARY KEY (id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
-INSERT INTO BundleNote (
-    Title,
-    Body,
-    UpdatedAt
+INSERT INTO bundle_note (
+    title,
+    body,
+    updated_at
 ) VALUES
     ('Bundle Export', 'Capture project-core metadata as a transportable bundle.', '2026-06-16 09:00:00'),
     ('Bundle Import', 'Preview before applying the bundle to a target project.', '2026-06-16 09:10:00');

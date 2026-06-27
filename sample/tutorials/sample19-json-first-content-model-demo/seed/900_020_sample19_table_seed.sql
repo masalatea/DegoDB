@@ -81,77 +81,77 @@ WHERE ProjectPID = @sample19_project_id;
 DELETE FROM dbtable
 WHERE ProjectPID = @sample19_project_id;
 
-DROP TABLE IF EXISTS ArticlePublicSummary;
-DROP TABLE IF EXISTS ArticleJsonModel;
-DROP TABLE IF EXISTS JsonCategory;
-DROP TABLE IF EXISTS JsonAuthor;
+DROP TABLE IF EXISTS article_public_summary;
+DROP TABLE IF EXISTS article_json_model;
+DROP TABLE IF EXISTS json_category;
+DROP TABLE IF EXISTS json_author;
 
-CREATE TABLE JsonAuthor (
-    Id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
-    Name VARCHAR(255) NOT NULL,
-    PRIMARY KEY (Id),
-    UNIQUE KEY uq_json_author_name (Name)
+CREATE TABLE json_author (
+    id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+    name VARCHAR(255) NOT NULL,
+    PRIMARY KEY (id),
+    UNIQUE KEY uq_json_author_name (name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
-CREATE TABLE JsonCategory (
-    Id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
-    Name VARCHAR(255) NOT NULL,
-    PRIMARY KEY (Id),
-    UNIQUE KEY uq_json_category_name (Name)
+CREATE TABLE json_category (
+    id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+    name VARCHAR(255) NOT NULL,
+    PRIMARY KEY (id),
+    UNIQUE KEY uq_json_category_name (name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
-CREATE TABLE ArticleJsonModel (
-    Id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
-    JsonAuthorId BIGINT UNSIGNED NOT NULL,
-    JsonCategoryId BIGINT UNSIGNED NOT NULL,
-    Title VARCHAR(255) NOT NULL,
-    Slug VARCHAR(160) NOT NULL,
-    Status VARCHAR(20) NOT NULL DEFAULT 'draft',
-    PublishedAt DATETIME NULL,
-    Body TEXT NOT NULL,
-    PRIMARY KEY (Id),
-    UNIQUE KEY uq_article_json_model_slug (Slug),
-    KEY idx_article_json_model_author_id (JsonAuthorId),
-    KEY idx_article_json_model_category_id (JsonCategoryId),
-    KEY idx_article_json_model_status_published_at (Status, PublishedAt),
+CREATE TABLE article_json_model (
+    id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+    json_author_id BIGINT UNSIGNED NOT NULL,
+    json_category_id BIGINT UNSIGNED NOT NULL,
+    title VARCHAR(255) NOT NULL,
+    slug VARCHAR(160) NOT NULL,
+    status VARCHAR(20) NOT NULL DEFAULT 'draft',
+    published_at DATETIME NULL,
+    body TEXT NOT NULL,
+    PRIMARY KEY (id),
+    UNIQUE KEY uq_article_json_model_slug (slug),
+    KEY idx_article_json_model_author_id (json_author_id),
+    KEY idx_article_json_model_category_id (json_category_id),
+    KEY idx_article_json_model_status_published_at (status, published_at),
     CONSTRAINT fk_article_json_model_author
-        FOREIGN KEY (JsonAuthorId)
-        REFERENCES JsonAuthor (Id),
+        FOREIGN KEY (json_author_id)
+        REFERENCES json_author (id),
     CONSTRAINT fk_article_json_model_category
-        FOREIGN KEY (JsonCategoryId)
-        REFERENCES JsonCategory (Id)
+        FOREIGN KEY (json_category_id)
+        REFERENCES json_category (id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
-CREATE TABLE ArticlePublicSummary (
-    ArticleId BIGINT UNSIGNED NOT NULL,
-    ArticleTitle VARCHAR(255) NOT NULL,
-    ArticleSlug VARCHAR(160) NOT NULL,
-    PublishedAt DATETIME NULL,
-    AuthorName VARCHAR(255) NOT NULL,
-    CategoryName VARCHAR(255) NOT NULL,
-    PRIMARY KEY (ArticleId)
+CREATE TABLE article_public_summary (
+    article_id BIGINT UNSIGNED NOT NULL,
+    article_title VARCHAR(255) NOT NULL,
+    article_slug VARCHAR(160) NOT NULL,
+    published_at DATETIME NULL,
+    author_name VARCHAR(255) NOT NULL,
+    category_name VARCHAR(255) NOT NULL,
+    PRIMARY KEY (article_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
-INSERT INTO JsonAuthor (
-    Name
+INSERT INTO json_author (
+    name
 ) VALUES
     ('Sample Editor'),
     ('Draft Writer');
 
-INSERT INTO JsonCategory (
-    Name
+INSERT INTO json_category (
+    name
 ) VALUES
     ('Guide'),
     ('Internal Note');
 
-INSERT INTO ArticleJsonModel (
-    JsonAuthorId,
-    JsonCategoryId,
-    Title,
-    Slug,
-    Status,
-    PublishedAt,
-    Body
+INSERT INTO article_json_model (
+    json_author_id,
+    json_category_id,
+    title,
+    slug,
+    status,
+    published_at,
+    body
 ) VALUES
     (1, 1, 'はじめての電子書籍CMS', 'first-ebook-cms', 'published', '2026-06-19 09:00:00', 'JSONから始めるCMSの例です。'),
     (2, 2, '公開前の設計メモ', 'draft-content-model-note', 'draft', NULL, '下書きは public API へ出さない。');

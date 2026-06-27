@@ -11,7 +11,7 @@ require_once dirname(__DIR__, 2) . '/app/sample_pack_catalog.php';
 require_once dirname(__DIR__, 2) . '/app/source_output_repository.php';
 
 const APP_SAMPLE13_OPENAPI_PROJECT_KEY = 'SAMPLE13';
-const APP_SAMPLE13_OPENAPI_TABLE_NAME = 'ApiTask';
+const APP_SAMPLE13_OPENAPI_TABLE_NAME = 'api_task';
 const APP_SAMPLE13_OPENAPI_SOURCE_OUTPUT_KEY = 'OPENAPI-JSON';
 const APP_SAMPLE13_OPENAPI_EXPECTED_PATHS = [
     '/proxyserver-ApiTask-GetApiTaskList.php',

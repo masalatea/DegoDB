@@ -20,9 +20,9 @@ EPUB がある本はダウンロード導線も出してください。
 `sample24` は production reader ではなく、Mtool sample として public reader の read surface を見せる。
 
 - tables:
-  - `EbookReaderBook`
-  - `EbookReaderChapter`
-  - `EbookReaderMediaDelivery`
+  - `ebook_reader_book` -> `EbookReaderBookData`
+  - `ebook_reader_chapter` -> `EbookReaderChapterData`
+  - `ebook_reader_media_delivery` -> `EbookReaderMediaDeliveryData`
 - DBAccess:
   - `EbookReaderBook.GetPublicEbookReaderBookList`
   - `EbookReaderBook.GetPublicEbookReaderBook`
@@ -35,7 +35,7 @@ EPUB がある本はダウンロード導線も出してください。
   - `HTML-PAGE`
   - `OPENAPI-JSON`
 
-The HTML page is a curated generated artifact that shows top/detail/chapter/download affordances in one page. The API surface is the app-friendly side of the same public reader model.
+The physical tables use `ebook_reader_*` snake_case names while generated PHP, OpenAPI, and proxy names stay on the `EbookReader*` logical surface. The HTML page is a curated generated artifact that shows top/detail/chapter/download affordances in one page. The API surface is the app-friendly side of the same public reader model.
 
 ## 起動
 

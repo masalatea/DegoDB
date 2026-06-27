@@ -12,21 +12,21 @@
     ],
     "tags": [
         {
-            "name": "ApiTask",
-            "description": "ApiTask single-function proxy endpoints."
+            "name": "api_task",
+            "description": "api_task single-function proxy endpoints."
         }
     ],
     "paths": {
         "/proxyserver-ApiTask-GetApiTask.php": {
             "post": {
-                "operationId": "ApiTask_GetApiTask",
+                "operationId": "api_task_GetApiTask",
                 "tags": [
-                    "ApiTask"
+                    "api_task"
                 ],
-                "summary": "ApiTask.GetApiTask",
-                "description": "Generated from single-function proxy target metadata.\n\nSource function: `ApiTask.GetApiTask`.\n\nAuth policy: 認証を掛けません。",
+                "summary": "api_task.GetApiTask",
+                "description": "Generated from single-function proxy target metadata.\n\nSource function: `api_task.GetApiTask`.\n\nAuth policy: 認証を掛けません。",
                 "x-mtool": {
-                    "source_name": "ApiTask",
+                    "source_name": "api_task",
                     "function_name": "GetApiTask",
                     "endpoint_filename": "proxyserver-ApiTask-GetApiTask.php",
                     "auth_strategy": "no-security",
@@ -80,12 +80,12 @@
                                     "_status": "OK",
                                     "Message": "",
                                     "Result": {
-                                        "Id": "string",
-                                        "Title": "string",
-                                        "Status": "string",
-                                        "OwnerName": "string",
-                                        "DueDate": "string",
-                                        "UpdatedAt": "string"
+                                        "id": "string",
+                                        "title": "string",
+                                        "status": "string",
+                                        "ownerName": "string",
+                                        "dueDate": "string",
+                                        "updatedAt": "string"
                                     }
                                 }
                             }
@@ -120,14 +120,14 @@
         },
         "/proxyserver-ApiTask-GetApiTaskList.php": {
             "post": {
-                "operationId": "ApiTask_GetApiTaskList",
+                "operationId": "api_task_GetApiTaskList",
                 "tags": [
-                    "ApiTask"
+                    "api_task"
                 ],
-                "summary": "ApiTask.GetApiTaskList",
-                "description": "Generated from single-function proxy target metadata.\n\nSource function: `ApiTask.GetApiTaskList`.\n\nAuth policy: 認証を掛けません。",
+                "summary": "api_task.GetApiTaskList",
+                "description": "Generated from single-function proxy target metadata.\n\nSource function: `api_task.GetApiTaskList`.\n\nAuth policy: 認証を掛けません。",
                 "x-mtool": {
-                    "source_name": "ApiTask",
+                    "source_name": "api_task",
                     "function_name": "GetApiTaskList",
                     "endpoint_filename": "proxyserver-ApiTask-GetApiTaskList.php",
                     "auth_strategy": "no-security",
@@ -191,12 +191,12 @@
                                     "Message": "",
                                     "Result": [
                                         {
-                                            "Id": "string",
-                                            "Title": "string",
-                                            "Status": "string",
-                                            "OwnerName": "string",
-                                            "DueDate": "string",
-                                            "UpdatedAt": "string"
+                                            "id": "string",
+                                            "title": "string",
+                                            "status": "string",
+                                            "ownerName": "string",
+                                            "dueDate": "string",
+                                            "updatedAt": "string"
                                         }
                                     ]
                                 }
@@ -237,27 +237,27 @@
                 "type": "object",
                 "title": "ApiTaskData",
                 "properties": {
-                    "Id": {
+                    "id": {
                         "type": "string",
                         "example": "string"
                     },
-                    "Title": {
+                    "title": {
                         "type": "string",
                         "example": "string"
                     },
-                    "Status": {
+                    "status": {
                         "type": "string",
                         "example": "string"
                     },
-                    "OwnerName": {
+                    "ownerName": {
                         "type": "string",
                         "example": "string"
                     },
-                    "DueDate": {
+                    "dueDate": {
                         "type": "string",
                         "example": "string"
                     },
-                    "UpdatedAt": {
+                    "updatedAt": {
                         "type": "string",
                         "example": "string"
                     }

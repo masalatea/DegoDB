@@ -11,7 +11,7 @@
 
 ## 読み方
 
-まず `make sample13-pack-runtime-test` を実行します。HTTP route まで含めて見る場合は `make sample13-http-runtime-smoke`、実ブラウザの Try It Out まで含めて見る場合は `make sample13-browser-try-it-out-smoke` を実行します。manual flow は、`ApiTask` の import / sync 後に `OPENAPI-JSON` と `API-PROXY-SERVER` を publish する流れを分解して確認するためのものです。
+まず `make sample13-pack-runtime-test` を実行します。HTTP route まで含めて見る場合は `make sample13-http-runtime-smoke`、実ブラウザの Try It Out まで含めて見る場合は `make sample13-browser-try-it-out-smoke` を実行します。manual flow は、physical table `api_task` の import / sync 後に、generated API surface として `ApiTask` を保った `OPENAPI-JSON` と `API-PROXY-SERVER` を publish する流れを分解して確認するためのものです。
 
 ## 起動
 
@@ -65,11 +65,12 @@ APP_CONFIG_STORE_DIR=work/config-store-sample13-sqlite \
 - `projects`
   - `project_key=SAMPLE13`
 - physical table
-  - `ApiTask`
-  - `Id`, `Title`, `Status`, `OwnerName`, `DueDate`, `UpdatedAt`
+  - `api_task`
+  - `id`, `title`, `status`, `owner_name`, `due_date`, `updated_at`
 - DBAccess metadata
-  - `ApiTask.GetApiTaskList`
-  - `ApiTask.GetApiTask`
+  - `api_task.GetApiTaskList`
+  - `api_task.GetApiTask`
+  - generated API path/schema surface remains `ApiTask` / `ApiTaskData` under `physical-logical-v1`
 - Source Output
   - `OPENAPI-JSON`
   - `artifact_strategy=openapi-json`
@@ -82,7 +83,7 @@ APP_CONFIG_STORE_DIR=work/config-store-sample13-sqlite \
 
 ```sh
 docker compose -f compose.yaml -f compose.local-db-config.yaml -f sample/tutorials/sample13-openapi-api-surface/compose.yaml exec -T web-admin \
-  php /var/www/mtool/scripts/import_project_tables.php --project-key=SAMPLE13 --source=live-schema --table=ApiTask
+  php /var/www/mtool/scripts/import_project_tables.php --project-key=SAMPLE13 --source=live-schema --table=api_task
 
 docker compose -f compose.yaml -f compose.local-db-config.yaml -f sample/tutorials/sample13-openapi-api-surface/compose.yaml exec -T web-admin \
   php /var/www/mtool/scripts/sync_project_data_classes.php --project-key=SAMPLE13

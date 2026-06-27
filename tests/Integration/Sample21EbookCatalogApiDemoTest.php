@@ -9,11 +9,21 @@ final class Sample21EbookCatalogApiDemoTest extends TestCase
     public function testEbookCatalogApiReferenceOutputs(): void
     {
         $app = app_bootstrap();
-        $result = app_sample21_ebook_catalog_api_run(
-            $app,
-            'phpunit-sample21',
-            app_sample21_ebook_catalog_api_default_reference_root(),
-        );
+        $previousPolicy = getenv('MTOOL_GENERATED_NAME_POLICY');
+        putenv('MTOOL_GENERATED_NAME_POLICY=physical-logical-v1');
+        try {
+            $result = app_sample21_ebook_catalog_api_run(
+                $app,
+                'phpunit-sample21',
+                app_sample21_ebook_catalog_api_default_reference_root(),
+            );
+        } finally {
+            if ($previousPolicy === false) {
+                putenv('MTOOL_GENERATED_NAME_POLICY');
+            } else {
+                putenv('MTOOL_GENERATED_NAME_POLICY=' . $previousPolicy);
+            }
+        }
 
         if (!$result['ok']) {
             fwrite(

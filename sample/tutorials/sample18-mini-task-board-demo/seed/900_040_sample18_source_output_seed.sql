@@ -120,7 +120,7 @@ INSERT INTO project_source_outputs (
     'tar.gz',
     40,
     'internal-only',
-    'Generate OpenAPI JSON from TaskCard single-function proxy target metadata.',
+    'Generate OpenAPI JSON from task_card single-function proxy target metadata while preserving TaskCard generated API names.',
     'manual'
 )
 ON DUPLICATE KEY UPDATE
@@ -154,7 +154,7 @@ FROM project_db_access_functions AS functions
 INNER JOIN project_db_access_classes AS classes
     ON classes.id = functions.db_access_class_id
 WHERE classes.project_id = @sample18_project_id
-  AND classes.source_name = 'TaskCard'
+  AND classes.source_name = 'task_card'
   AND functions.function_name IN (
       'GetTaskCardList',
       'GetTaskCard',

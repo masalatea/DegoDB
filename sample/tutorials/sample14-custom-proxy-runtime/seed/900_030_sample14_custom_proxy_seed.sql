@@ -65,7 +65,7 @@ INSERT INTO project_custom_proxy_steps (
 ),
 (
     @sample14_custom_proxy_id,
-    'ProjectSourceOutput',
+    'project_source_output',
     'GetProjectSourceOutputList',
     1,
     20,

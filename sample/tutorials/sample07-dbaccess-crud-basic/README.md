@@ -2,7 +2,7 @@
 
 - canonical project key: `SAMPLE07`
 - 役割: `project -> live schema import -> data class sync -> db access output` を、1 table + 1 DB Access class + 3 write function で `insert + update + delete` まで確認する tutorial sample pack
-- seed は `SAMPLE07` project と、source schema 側の物理 `TodoItem` table、canonical `project_db_access_*` metadata 1 class / 3 function / insert target fields / update target fields / update-delete where、`DATACLASS-PHP` / `DBACCESS-PHP` source output definition を作る
+- seed は `SAMPLE07` project と、source schema 側の物理 `todo_item` table、canonical `project_db_access_*` metadata 1 class / 3 function / insert target fields / update target fields / update-delete where、`DATACLASS-PHP` / `DBACCESS-PHP` source output definition を作る
 - canonical `dbtable` / `dataclass` metadata は seed しない。table import と data class sync で current metadata を作る前提
 - `project_db_access_functions` は `InsertTodoItem` / `UpdateTodoItem` / `DeleteTodoItem` だけに絞る。write metadata に必要な `project_db_access_function_insert_target_fields`、`project_db_access_function_update_target_fields`、`project_db_access_function_update_delete_wheres` の最小構成を固定する
 - durable input: `seed/`
@@ -31,15 +31,15 @@ make sample07-pack-runtime-test
 
 seed される代表 row:
 
-- `TodoItem`
-  - `Status=open`, `Title=Prepare onboarding checklist`, `Body=Create the first generated CRUD sample.`
-  - `Status=done`, `Title=Verify generated DB access output`, `Body=Compare runtime output against durable reference files.`
+- `todo_item`
+  - `status=open`, `title=Prepare onboarding checklist`, `body=Create the first generated CRUD sample.`
+  - `status=done`, `title=Verify generated DB access output`, `body=Compare runtime output against durable reference files.`
 
 最小フロー:
 
 ```bash
 docker compose -f compose.yaml -f compose.local-db-config.yaml -f sample/tutorials/sample07-dbaccess-crud-basic/compose.yaml exec -T web-admin \
-  php /var/www/mtool/scripts/import_project_tables.php --project-key=SAMPLE07 --source=live-schema --table=TodoItem
+  php /var/www/mtool/scripts/import_project_tables.php --project-key=SAMPLE07 --source=live-schema --table=todo_item
 
 docker compose -f compose.yaml -f compose.local-db-config.yaml -f sample/tutorials/sample07-dbaccess-crud-basic/compose.yaml exec -T web-admin \
   php /var/www/mtool/scripts/sync_project_data_classes.php --project-key=SAMPLE07

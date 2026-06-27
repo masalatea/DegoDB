@@ -11,7 +11,7 @@ INSERT INTO projects (
     'sample03-dataclass-lookup-and-helper',
     'paused',
     'admin',
-    'lookup / caption 向きの 2 table から canonical dataclass PHP output を確認し、helper は custom layer へ逃がす前提を共有する tutorial sample project。'
+    'lookup / caption 向きの 2 table から canonical DataClass PHP output を確認し、helper は custom layer へ逃がす前提を共有する tutorial sample project。'
 )
 ON DUPLICATE KEY UPDATE
     name = VALUES(name),

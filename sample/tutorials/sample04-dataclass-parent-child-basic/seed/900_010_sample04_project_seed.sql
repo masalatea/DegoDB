@@ -11,7 +11,7 @@ INSERT INTO projects (
     'sample04-dataclass-parent-child-basic',
     'paused',
     'admin',
-    'parent / child の 2 table schema から canonical dataclass PHP output を確認する tutorial sample project。'
+    'parent / child の 2 table schema から canonical DataClass PHP output を確認する tutorial sample project。'
 )
 ON DUPLICATE KEY UPDATE
     name = VALUES(name),

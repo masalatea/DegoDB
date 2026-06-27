@@ -64,7 +64,7 @@ INSERT INTO project_db_access_classes (
     last_detected_data_file
 ) VALUES (
     @sample26_project_id,
-    'EbookCmsBook',
+    'ebook_cms_book',
     '',
     0,
     'Capstone DBAccess class that exposes public reader/app APIs and ProjectToken editor chapter APIs.',
@@ -97,14 +97,14 @@ INSERT INTO project_db_access_functions (
     detected_line,
     source_of_truth
 ) VALUES
-(@sample26_db_access_class_id, 'GetPublicEbookCmsBookList', 10, '', 'SELECTLIST', 'EbookCmsBook', 'EbookCmsBook', '', 0, 'EbookCmsBook.PublishedAt desc, EbookCmsBook.Id desc', 'List published books for site and app clients.', 'argument', '', '', 'NoSecurity', '', 0, 'public function GetPublicEbookCmsBookList($limit)', 10, 'manual'),
-(@sample26_db_access_class_id, 'GetPublicEbookCmsBook', 20, '', 'SELECTSINGLE', 'EbookCmsBook', 'EbookCmsBook', '', 0, '', 'Get one published book detail by slug.', '', '', '', 'NoSecurity', '', 0, 'public function GetPublicEbookCmsBook($param_EbookCmsBook_Slug_where)', 20, 'manual'),
-(@sample26_db_access_class_id, 'GetPublicEbookCmsChapterList', 30, '', 'SELECTLIST', 'EbookCmsChapter', 'EbookCmsChapter', '', 0, 'EbookCmsChapter.SpineOrder asc, EbookCmsChapter.Id asc', 'List published chapters for one book.', '', '', '', 'NoSecurity', '', 0, 'public function GetPublicEbookCmsChapterList($param_EbookCmsChapter_BookSlug_where)', 30, 'manual'),
-(@sample26_db_access_class_id, 'GetPublicEbookCmsChapter', 40, '', 'SELECTSINGLE', 'EbookCmsChapter', 'EbookCmsChapter', '', 0, '', 'Get one published chapter by book slug and chapter slug.', '', '', '', 'NoSecurity', '', 0, 'public function GetPublicEbookCmsChapter($param_EbookCmsChapter_BookSlug_where, $param_EbookCmsChapter_ChapterSlug_where)', 40, 'manual'),
-(@sample26_db_access_class_id, 'GetPublicEbookCmsEpubDeliveryList', 50, '', 'SELECTLIST', 'EbookCmsBook', 'EbookCmsBook', '', 0, 'EbookCmsBook.Id asc', 'List EPUB delivery metadata for one published book.', '', '', '', 'NoSecurity', '', 0, 'public function GetPublicEbookCmsEpubDeliveryList($param_EbookCmsBook_Slug_where)', 50, 'manual'),
-(@sample26_db_access_class_id, 'GetEditorEbookCmsChapter', 60, '', 'SELECTSINGLE', 'EbookCmsChapter', 'EbookCmsChapter', '', 0, '', 'Get one chapter for editor preview.', '', '', '', 'ProjectToken', '', 0, 'public function GetEditorEbookCmsChapter($param_EbookCmsChapter_Id_where)', 60, 'manual'),
-(@sample26_db_access_class_id, 'UpdateEditorEbookCmsChapterDraft', 70, '', 'UPDATE', 'EbookCmsChapter', 'EbookCmsChapter', 'classobject', 0, '', 'Update editable draft fields for one chapter.', '', '', '', 'ProjectToken', '', 0, 'public function UpdateEditorEbookCmsChapterDraft($EbookCmsChapterObj)', 70, 'manual'),
-(@sample26_db_access_class_id, 'PublishEditorEbookCmsChapter', 80, '', 'UPDATE', 'EbookCmsChapter', 'EbookCmsChapter', 'classobject', 0, '', 'Mark one chapter as published.', '', '', '', 'ProjectToken', '', 0, 'public function PublishEditorEbookCmsChapter($EbookCmsChapterObj)', 80, 'manual');
+(@sample26_db_access_class_id, 'GetPublicEbookCmsBookList', 10, '', 'SELECTLIST', 'EbookCmsBook', 'ebook_cms_book', '', 0, 'ebook_cms_book.published_at desc, ebook_cms_book.id desc', 'List published books for site and app clients.', 'argument', '', '', 'NoSecurity', '', 0, 'public function GetPublicEbookCmsBookList($limit)', 10, 'manual'),
+(@sample26_db_access_class_id, 'GetPublicEbookCmsBook', 20, '', 'SELECTSINGLE', 'EbookCmsBook', 'ebook_cms_book', '', 0, '', 'Get one published book detail by slug.', '', '', '', 'NoSecurity', '', 0, 'public function GetPublicEbookCmsBook($param_EbookCmsBook_Slug_where)', 20, 'manual'),
+(@sample26_db_access_class_id, 'GetPublicEbookCmsChapterList', 30, '', 'SELECTLIST', 'EbookCmsChapter', 'ebook_cms_chapter', '', 0, 'ebook_cms_chapter.spine_order asc, ebook_cms_chapter.id asc', 'List published chapters for one book.', '', '', '', 'NoSecurity', '', 0, 'public function GetPublicEbookCmsChapterList($param_EbookCmsChapter_BookSlug_where)', 30, 'manual'),
+(@sample26_db_access_class_id, 'GetPublicEbookCmsChapter', 40, '', 'SELECTSINGLE', 'EbookCmsChapter', 'ebook_cms_chapter', '', 0, '', 'Get one published chapter by book slug and chapter slug.', '', '', '', 'NoSecurity', '', 0, 'public function GetPublicEbookCmsChapter($param_EbookCmsChapter_BookSlug_where, $param_EbookCmsChapter_ChapterSlug_where)', 40, 'manual'),
+(@sample26_db_access_class_id, 'GetPublicEbookCmsEpubDeliveryList', 50, '', 'SELECTLIST', 'EbookCmsBook', 'ebook_cms_book', '', 0, 'ebook_cms_book.id asc', 'List EPUB delivery metadata for one published book.', '', '', '', 'NoSecurity', '', 0, 'public function GetPublicEbookCmsEpubDeliveryList($param_EbookCmsBook_Slug_where)', 50, 'manual'),
+(@sample26_db_access_class_id, 'GetEditorEbookCmsChapter', 60, '', 'SELECTSINGLE', 'EbookCmsChapter', 'ebook_cms_chapter', '', 0, '', 'Get one chapter for editor preview.', '', '', '', 'ProjectToken', '', 0, 'public function GetEditorEbookCmsChapter($param_EbookCmsChapter_Id_where)', 60, 'manual'),
+(@sample26_db_access_class_id, 'UpdateEditorEbookCmsChapterDraft', 70, '', 'UPDATE', 'EbookCmsChapter', 'ebook_cms_chapter', 'classobject', 0, '', 'Update editable draft fields for one chapter.', '', '', '', 'ProjectToken', '', 0, 'public function UpdateEditorEbookCmsChapterDraft($EbookCmsChapterObj)', 70, 'manual'),
+(@sample26_db_access_class_id, 'PublishEditorEbookCmsChapter', 80, '', 'UPDATE', 'EbookCmsChapter', 'ebook_cms_chapter', 'classobject', 0, '', 'Mark one chapter as published.', '', '', '', 'ProjectToken', '', 0, 'public function PublishEditorEbookCmsChapter($EbookCmsChapterObj)', 80, 'manual');
 
 SET @sample26_book_list_id = (SELECT id FROM project_db_access_functions WHERE db_access_class_id = @sample26_db_access_class_id AND function_name = 'GetPublicEbookCmsBookList');
 SET @sample26_book_detail_id = (SELECT id FROM project_db_access_functions WHERE db_access_class_id = @sample26_db_access_class_id AND function_name = 'GetPublicEbookCmsBook');
@@ -127,47 +127,47 @@ INSERT INTO project_db_access_function_select_target_fields (
     field_list_order,
     source_of_truth
 ) VALUES
-(@sample26_book_list_id, 'EbookCmsBook', '', 'Id', '', '', 'Id', 0, 10, 'manual'),
-(@sample26_book_list_id, 'EbookCmsBook', '', 'Title', '', '', 'Title', 0, 20, 'manual'),
-(@sample26_book_list_id, 'EbookCmsBook', '', 'Slug', '', '', 'Slug', 0, 30, 'manual'),
-(@sample26_book_list_id, 'EbookCmsBook', '', 'AuthorName', '', '', 'AuthorName', 0, 40, 'manual'),
-(@sample26_book_list_id, 'EbookCmsBook', '', 'GenreName', '', '', 'GenreName', 0, 50, 'manual'),
-(@sample26_book_list_id, 'EbookCmsBook', '', 'CoverImageUrl', '', '', 'CoverImageUrl', 0, 60, 'manual'),
-(@sample26_book_list_id, 'EbookCmsBook', '', 'Summary', '', '', 'Summary', 0, 70, 'manual'),
-(@sample26_book_detail_id, 'EbookCmsBook', '', 'Id', '', '', 'Id', 0, 10, 'manual'),
-(@sample26_book_detail_id, 'EbookCmsBook', '', 'Title', '', '', 'Title', 0, 20, 'manual'),
-(@sample26_book_detail_id, 'EbookCmsBook', '', 'Slug', '', '', 'Slug', 0, 30, 'manual'),
-(@sample26_book_detail_id, 'EbookCmsBook', '', 'AuthorName', '', '', 'AuthorName', 0, 40, 'manual'),
-(@sample26_book_detail_id, 'EbookCmsBook', '', 'GenreName', '', '', 'GenreName', 0, 50, 'manual'),
-(@sample26_book_detail_id, 'EbookCmsBook', '', 'CoverImageUrl', '', '', 'CoverImageUrl', 0, 60, 'manual'),
-(@sample26_book_detail_id, 'EbookCmsBook', '', 'Summary', '', '', 'Summary', 0, 70, 'manual'),
-(@sample26_chapter_list_id, 'EbookCmsChapter', '', 'Id', '', '', 'Id', 0, 10, 'manual'),
-(@sample26_chapter_list_id, 'EbookCmsChapter', '', 'BookSlug', '', '', 'BookSlug', 0, 20, 'manual'),
-(@sample26_chapter_list_id, 'EbookCmsChapter', '', 'ChapterTitle', '', '', 'ChapterTitle', 0, 30, 'manual'),
-(@sample26_chapter_list_id, 'EbookCmsChapter', '', 'ChapterSlug', '', '', 'ChapterSlug', 0, 40, 'manual'),
-(@sample26_chapter_list_id, 'EbookCmsChapter', '', 'SpineOrder', '', '', 'SpineOrder', 0, 50, 'manual'),
-(@sample26_chapter_detail_id, 'EbookCmsChapter', '', 'Id', '', '', 'Id', 0, 10, 'manual'),
-(@sample26_chapter_detail_id, 'EbookCmsChapter', '', 'BookSlug', '', '', 'BookSlug', 0, 20, 'manual'),
-(@sample26_chapter_detail_id, 'EbookCmsChapter', '', 'ChapterTitle', '', '', 'ChapterTitle', 0, 30, 'manual'),
-(@sample26_chapter_detail_id, 'EbookCmsChapter', '', 'ChapterSlug', '', '', 'ChapterSlug', 0, 40, 'manual'),
-(@sample26_chapter_detail_id, 'EbookCmsChapter', '', 'SpineOrder', '', '', 'SpineOrder', 0, 50, 'manual'),
-(@sample26_chapter_detail_id, 'EbookCmsChapter', '', 'BodyMarkdown', '', '', 'BodyMarkdown', 0, 60, 'manual'),
-(@sample26_epub_list_id, 'EbookCmsBook', '', 'Id', '', '', 'Id', 0, 10, 'manual'),
-(@sample26_epub_list_id, 'EbookCmsBook', '', 'Slug', '', '', 'Slug', 0, 20, 'manual'),
-(@sample26_epub_list_id, 'EbookCmsBook', '', 'Title', '', '', 'Title', 0, 30, 'manual'),
-(@sample26_epub_list_id, 'EbookCmsBook', '', 'EpubDownloadUrl', '', '', 'EpubDownloadUrl', 0, 40, 'manual'),
-(@sample26_epub_list_id, 'EbookCmsBook', '', 'EpubMimeType', '', '', 'EpubMimeType', 0, 50, 'manual'),
-(@sample26_epub_list_id, 'EbookCmsBook', '', 'EpubSha256', '', '', 'EpubSha256', 0, 60, 'manual'),
-(@sample26_editor_get_id, 'EbookCmsChapter', '', 'Id', '', '', 'Id', 0, 10, 'manual'),
-(@sample26_editor_get_id, 'EbookCmsChapter', '', 'EbookCmsBookId', '', '', 'EbookCmsBookId', 0, 20, 'manual'),
-(@sample26_editor_get_id, 'EbookCmsChapter', '', 'BookSlug', '', '', 'BookSlug', 0, 30, 'manual'),
-(@sample26_editor_get_id, 'EbookCmsChapter', '', 'ChapterTitle', '', '', 'ChapterTitle', 0, 40, 'manual'),
-(@sample26_editor_get_id, 'EbookCmsChapter', '', 'ChapterSlug', '', '', 'ChapterSlug', 0, 50, 'manual'),
-(@sample26_editor_get_id, 'EbookCmsChapter', '', 'Status', '', '', 'Status', 0, 60, 'manual'),
-(@sample26_editor_get_id, 'EbookCmsChapter', '', 'SpineOrder', '', '', 'SpineOrder', 0, 70, 'manual'),
-(@sample26_editor_get_id, 'EbookCmsChapter', '', 'BodyMarkdown', '', '', 'BodyMarkdown', 0, 80, 'manual'),
-(@sample26_editor_get_id, 'EbookCmsChapter', '', 'PublishedAt', '', '', 'PublishedAt', 0, 90, 'manual'),
-(@sample26_editor_get_id, 'EbookCmsChapter', '', 'UpdatedAt', '', '', 'UpdatedAt', 0, 100, 'manual');
+(@sample26_book_list_id, 'ebook_cms_book', '', 'id', '', '', 'id', 0, 10, 'manual'),
+(@sample26_book_list_id, 'ebook_cms_book', '', 'title', '', '', 'title', 0, 20, 'manual'),
+(@sample26_book_list_id, 'ebook_cms_book', '', 'slug', '', '', 'slug', 0, 30, 'manual'),
+(@sample26_book_list_id, 'ebook_cms_book', '', 'author_name', '', '', 'authorName', 0, 40, 'manual'),
+(@sample26_book_list_id, 'ebook_cms_book', '', 'genre_name', '', '', 'genreName', 0, 50, 'manual'),
+(@sample26_book_list_id, 'ebook_cms_book', '', 'cover_image_url', '', '', 'coverImageUrl', 0, 60, 'manual'),
+(@sample26_book_list_id, 'ebook_cms_book', '', 'summary', '', '', 'summary', 0, 70, 'manual'),
+(@sample26_book_detail_id, 'ebook_cms_book', '', 'id', '', '', 'id', 0, 10, 'manual'),
+(@sample26_book_detail_id, 'ebook_cms_book', '', 'title', '', '', 'title', 0, 20, 'manual'),
+(@sample26_book_detail_id, 'ebook_cms_book', '', 'slug', '', '', 'slug', 0, 30, 'manual'),
+(@sample26_book_detail_id, 'ebook_cms_book', '', 'author_name', '', '', 'authorName', 0, 40, 'manual'),
+(@sample26_book_detail_id, 'ebook_cms_book', '', 'genre_name', '', '', 'genreName', 0, 50, 'manual'),
+(@sample26_book_detail_id, 'ebook_cms_book', '', 'cover_image_url', '', '', 'coverImageUrl', 0, 60, 'manual'),
+(@sample26_book_detail_id, 'ebook_cms_book', '', 'summary', '', '', 'summary', 0, 70, 'manual'),
+(@sample26_chapter_list_id, 'ebook_cms_chapter', '', 'id', '', '', 'id', 0, 10, 'manual'),
+(@sample26_chapter_list_id, 'ebook_cms_chapter', '', 'book_slug', '', '', 'bookSlug', 0, 20, 'manual'),
+(@sample26_chapter_list_id, 'ebook_cms_chapter', '', 'chapter_title', '', '', 'chapterTitle', 0, 30, 'manual'),
+(@sample26_chapter_list_id, 'ebook_cms_chapter', '', 'chapter_slug', '', '', 'chapterSlug', 0, 40, 'manual'),
+(@sample26_chapter_list_id, 'ebook_cms_chapter', '', 'spine_order', '', '', 'spineOrder', 0, 50, 'manual'),
+(@sample26_chapter_detail_id, 'ebook_cms_chapter', '', 'id', '', '', 'id', 0, 10, 'manual'),
+(@sample26_chapter_detail_id, 'ebook_cms_chapter', '', 'book_slug', '', '', 'bookSlug', 0, 20, 'manual'),
+(@sample26_chapter_detail_id, 'ebook_cms_chapter', '', 'chapter_title', '', '', 'chapterTitle', 0, 30, 'manual'),
+(@sample26_chapter_detail_id, 'ebook_cms_chapter', '', 'chapter_slug', '', '', 'chapterSlug', 0, 40, 'manual'),
+(@sample26_chapter_detail_id, 'ebook_cms_chapter', '', 'spine_order', '', '', 'spineOrder', 0, 50, 'manual'),
+(@sample26_chapter_detail_id, 'ebook_cms_chapter', '', 'body_markdown', '', '', 'bodyMarkdown', 0, 60, 'manual'),
+(@sample26_epub_list_id, 'ebook_cms_book', '', 'id', '', '', 'id', 0, 10, 'manual'),
+(@sample26_epub_list_id, 'ebook_cms_book', '', 'slug', '', '', 'slug', 0, 20, 'manual'),
+(@sample26_epub_list_id, 'ebook_cms_book', '', 'title', '', '', 'title', 0, 30, 'manual'),
+(@sample26_epub_list_id, 'ebook_cms_book', '', 'epub_download_url', '', '', 'epubDownloadUrl', 0, 40, 'manual'),
+(@sample26_epub_list_id, 'ebook_cms_book', '', 'epub_mime_type', '', '', 'epubMimeType', 0, 50, 'manual'),
+(@sample26_epub_list_id, 'ebook_cms_book', '', 'epub_sha256', '', '', 'epubSha256', 0, 60, 'manual'),
+(@sample26_editor_get_id, 'ebook_cms_chapter', '', 'id', '', '', 'id', 0, 10, 'manual'),
+(@sample26_editor_get_id, 'ebook_cms_chapter', '', 'ebook_cms_book_id', '', '', 'ebookCmsBookId', 0, 20, 'manual'),
+(@sample26_editor_get_id, 'ebook_cms_chapter', '', 'book_slug', '', '', 'bookSlug', 0, 30, 'manual'),
+(@sample26_editor_get_id, 'ebook_cms_chapter', '', 'chapter_title', '', '', 'chapterTitle', 0, 40, 'manual'),
+(@sample26_editor_get_id, 'ebook_cms_chapter', '', 'chapter_slug', '', '', 'chapterSlug', 0, 50, 'manual'),
+(@sample26_editor_get_id, 'ebook_cms_chapter', '', 'status', '', '', 'status', 0, 60, 'manual'),
+(@sample26_editor_get_id, 'ebook_cms_chapter', '', 'spine_order', '', '', 'spineOrder', 0, 70, 'manual'),
+(@sample26_editor_get_id, 'ebook_cms_chapter', '', 'body_markdown', '', '', 'bodyMarkdown', 0, 80, 'manual'),
+(@sample26_editor_get_id, 'ebook_cms_chapter', '', 'published_at', '', '', 'publishedAt', 0, 90, 'manual'),
+(@sample26_editor_get_id, 'ebook_cms_chapter', '', 'updated_at', '', '', 'updatedAt', 0, 100, 'manual');
 
 INSERT INTO project_db_access_function_select_wheres (
     db_access_function_id,
@@ -186,17 +186,17 @@ INSERT INTO project_db_access_function_select_wheres (
     where_order,
     source_of_truth
 ) VALUES
-(@sample26_book_list_id, 'EbookCmsBook', '', 'Status', 'fixed', '', 'published', '', '', '', '', '', '=', 10, 'manual'),
-(@sample26_book_detail_id, 'EbookCmsBook', '', 'Status', 'fixed', '', 'published', '', '', '', '', '', '=', 10, 'manual'),
-(@sample26_book_detail_id, 'EbookCmsBook', '', 'Slug', 'argument', 'varchar', '', '', '', '', '', '', '=', 20, 'manual'),
-(@sample26_chapter_list_id, 'EbookCmsChapter', '', 'Status', 'fixed', '', 'published', '', '', '', '', '', '=', 10, 'manual'),
-(@sample26_chapter_list_id, 'EbookCmsChapter', '', 'BookSlug', 'argument', 'varchar', '', '', '', '', '', '', '=', 20, 'manual'),
-(@sample26_chapter_detail_id, 'EbookCmsChapter', '', 'Status', 'fixed', '', 'published', '', '', '', '', '', '=', 10, 'manual'),
-(@sample26_chapter_detail_id, 'EbookCmsChapter', '', 'BookSlug', 'argument', 'varchar', '', '', '', '', '', '', '=', 20, 'manual'),
-(@sample26_chapter_detail_id, 'EbookCmsChapter', '', 'ChapterSlug', 'argument', 'varchar', '', '', '', '', '', '', '=', 30, 'manual'),
-(@sample26_epub_list_id, 'EbookCmsBook', '', 'Status', 'fixed', '', 'published', '', '', '', '', '', '=', 10, 'manual'),
-(@sample26_epub_list_id, 'EbookCmsBook', '', 'Slug', 'argument', 'varchar', '', '', '', '', '', '', '=', 20, 'manual'),
-(@sample26_editor_get_id, 'EbookCmsChapter', '', 'Id', 'argument', 'int', '', '', '', '', '', '', '=', 10, 'manual');
+(@sample26_book_list_id, 'ebook_cms_book', '', 'status', 'fixed', '', 'published', '', '', '', '', '', '=', 10, 'manual'),
+(@sample26_book_detail_id, 'ebook_cms_book', '', 'status', 'fixed', '', 'published', '', '', '', '', '', '=', 10, 'manual'),
+(@sample26_book_detail_id, 'ebook_cms_book', '', 'slug', 'argument', 'varchar', '', '', '', '', '', '', '=', 20, 'manual'),
+(@sample26_chapter_list_id, 'ebook_cms_chapter', '', 'status', 'fixed', '', 'published', '', '', '', '', '', '=', 10, 'manual'),
+(@sample26_chapter_list_id, 'ebook_cms_chapter', '', 'book_slug', 'argument', 'varchar', '', '', '', '', '', '', '=', 20, 'manual'),
+(@sample26_chapter_detail_id, 'ebook_cms_chapter', '', 'status', 'fixed', '', 'published', '', '', '', '', '', '=', 10, 'manual'),
+(@sample26_chapter_detail_id, 'ebook_cms_chapter', '', 'book_slug', 'argument', 'varchar', '', '', '', '', '', '', '=', 20, 'manual'),
+(@sample26_chapter_detail_id, 'ebook_cms_chapter', '', 'chapter_slug', 'argument', 'varchar', '', '', '', '', '', '', '=', 30, 'manual'),
+(@sample26_epub_list_id, 'ebook_cms_book', '', 'status', 'fixed', '', 'published', '', '', '', '', '', '=', 10, 'manual'),
+(@sample26_epub_list_id, 'ebook_cms_book', '', 'slug', 'argument', 'varchar', '', '', '', '', '', '', '=', 20, 'manual'),
+(@sample26_editor_get_id, 'ebook_cms_chapter', '', 'id', 'argument', 'int', '', '', '', '', '', '', '=', 10, 'manual');
 
 INSERT INTO project_db_access_function_update_target_fields (
     db_access_function_id,
@@ -207,14 +207,14 @@ INSERT INTO project_db_access_function_update_target_fields (
     field_list_order,
     source_of_truth
 ) VALUES
-(@sample26_editor_update_id, 'ChapterTitle', 'argument', '', '', 10, 'manual'),
-(@sample26_editor_update_id, 'ChapterSlug', 'argument', '', '', 20, 'manual'),
-(@sample26_editor_update_id, 'SpineOrder', 'argument', '', '', 30, 'manual'),
-(@sample26_editor_update_id, 'BodyMarkdown', 'argument', '', '', 40, 'manual'),
-(@sample26_editor_update_id, 'UpdatedAt', 'fixed', 'raw', 'NOW()', 50, 'manual'),
-(@sample26_editor_publish_id, 'Status', 'fixed', 'varchar', 'published', 10, 'manual'),
-(@sample26_editor_publish_id, 'PublishedAt', 'fixed', 'raw', 'NOW()', 20, 'manual'),
-(@sample26_editor_publish_id, 'UpdatedAt', 'fixed', 'raw', 'NOW()', 30, 'manual');
+(@sample26_editor_update_id, 'chapter_title', 'argument', '', '', 10, 'manual'),
+(@sample26_editor_update_id, 'chapter_slug', 'argument', '', '', 20, 'manual'),
+(@sample26_editor_update_id, 'spine_order', 'argument', '', '', 30, 'manual'),
+(@sample26_editor_update_id, 'body_markdown', 'argument', '', '', 40, 'manual'),
+(@sample26_editor_update_id, 'updated_at', 'fixed', 'raw', 'NOW()', 50, 'manual'),
+(@sample26_editor_publish_id, 'status', 'fixed', 'varchar', 'published', 10, 'manual'),
+(@sample26_editor_publish_id, 'published_at', 'fixed', 'raw', 'NOW()', 20, 'manual'),
+(@sample26_editor_publish_id, 'updated_at', 'fixed', 'raw', 'NOW()', 30, 'manual');
 
 INSERT INTO project_db_access_function_update_delete_wheres (
     db_access_function_id,
@@ -227,8 +227,8 @@ INSERT INTO project_db_access_function_update_delete_wheres (
     where_order,
     source_of_truth
 ) VALUES
-(@sample26_editor_update_id, 'Id', 'argument', '', '', '', '=', 10, 'manual'),
-(@sample26_editor_publish_id, 'Id', 'argument', '', '', '', '=', 10, 'manual');
+(@sample26_editor_update_id, 'id', 'argument', '', '', '', '=', 10, 'manual'),
+(@sample26_editor_publish_id, 'id', 'argument', '', '', '', '=', 10, 'manual');
 
 SET @sample26_project_id = NULL;
 SET @sample26_db_access_class_id = NULL;

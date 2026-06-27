@@ -262,7 +262,7 @@ function app_sample14_custom_proxy_run(array $app, string $requestedBy, string $
         ];
     }
     app_sample14_custom_proxy_assert_same(
-        ['dbtable', 'ProjectSourceOutput'],
+        ['dbtable', 'project_source_output'],
         array_column($stepCatalogResult['items'], 'db_access_source_name'),
         'custom proxy step sources',
         $errors,

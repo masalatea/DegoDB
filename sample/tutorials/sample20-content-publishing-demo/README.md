@@ -20,7 +20,8 @@ This tutorial pack turns the JSON-first entrance from `sample19` into a small co
 `sample20` は production CMS ではなく、Mtool sample として content publishing の最小公開面を見せる。
 
 - table:
-  - `ContentArticle`
+  - physical table: `content_article`
+  - generated class/API surface: `ContentArticle`
 - DBAccess:
   - `ContentArticle.GetPublishedContentArticleList`
   - `ContentArticle.GetPublishedContentArticle`
@@ -63,7 +64,7 @@ make sample20-pack-runtime-test
 
 ```bash
 docker compose -f compose.yaml -f compose.local-db-config.yaml -f sample/tutorials/sample20-content-publishing-demo/compose.yaml exec -T web-admin \
-  php /var/www/mtool/scripts/import_project_tables.php --project-key=SAMPLE20 --source=live-schema --table=ContentArticle
+  php /var/www/mtool/scripts/import_project_tables.php --project-key=SAMPLE20 --source=live-schema --table=content_article
 
 docker compose -f compose.yaml -f compose.local-db-config.yaml -f sample/tutorials/sample20-content-publishing-demo/compose.yaml exec -T web-admin \
   php /var/www/mtool/scripts/sync_project_data_classes.php --project-key=SAMPLE20

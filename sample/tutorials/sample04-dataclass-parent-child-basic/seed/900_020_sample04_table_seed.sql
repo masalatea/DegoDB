@@ -25,46 +25,46 @@ WHERE ProjectPID = @sample04_project_id;
 DELETE FROM dbtable
 WHERE ProjectPID = @sample04_project_id;
 
-DROP TABLE IF EXISTS PostComment;
-DROP TABLE IF EXISTS Post;
+DROP TABLE IF EXISTS post_comment;
+DROP TABLE IF EXISTS post;
 
-CREATE TABLE Post (
-    Id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
-    Title VARCHAR(255) NOT NULL,
-    Status VARCHAR(20) NOT NULL DEFAULT 'draft',
-    PublishedAt DATETIME NULL,
-    PRIMARY KEY (Id)
+CREATE TABLE post (
+    id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+    title VARCHAR(255) NOT NULL,
+    status VARCHAR(20) NOT NULL DEFAULT 'draft',
+    published_at DATETIME NULL,
+    PRIMARY KEY (id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
-CREATE TABLE PostComment (
-    Id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
-    PostId BIGINT UNSIGNED NOT NULL,
-    AuthorName VARCHAR(100) NOT NULL,
-    Body TEXT NOT NULL,
-    SortOrder INT NOT NULL DEFAULT 0,
-    PRIMARY KEY (Id),
-    KEY idx_postcomment_postid (PostId),
-    CONSTRAINT fk_postcomment_post
-        FOREIGN KEY (PostId)
-        REFERENCES Post (Id)
+CREATE TABLE post_comment (
+    id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+    post_id BIGINT UNSIGNED NOT NULL,
+    author_name VARCHAR(100) NOT NULL,
+    body TEXT NOT NULL,
+    sort_order INT NOT NULL DEFAULT 0,
+    PRIMARY KEY (id),
+    KEY idx_post_comment_post_id (post_id),
+    CONSTRAINT fk_post_comment_post
+        FOREIGN KEY (post_id)
+        REFERENCES post (id)
         ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
-INSERT INTO Post (
-    Title,
-    Status,
-    PublishedAt
+INSERT INTO post (
+    title,
+    status,
+    published_at
 ) VALUES (
     'Welcome',
     'published',
     '2026-05-22 09:00:00'
 );
 
-INSERT INTO PostComment (
-    PostId,
-    AuthorName,
-    Body,
-    SortOrder
+INSERT INTO post_comment (
+    post_id,
+    author_name,
+    body,
+    sort_order
 ) VALUES
     (1, 'Alice', 'First comment', 10),
     (1, 'Bob', 'Follow-up comment', 20);

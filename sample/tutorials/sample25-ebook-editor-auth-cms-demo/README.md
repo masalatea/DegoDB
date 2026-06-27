@@ -19,8 +19,8 @@ This tutorial pack adds the editor side of the ebook CMS lane. It keeps the samp
 `sample25` は production editor CMS ではなく、Mtool sample として editor write API の認証境界を見せる。
 
 - tables:
-  - `EbookEditorBook`
-  - `EbookEditorChapter`
+  - `ebook_editor_book` -> `EbookEditorBookData`
+  - `ebook_editor_chapter` -> `EbookEditorChapterData`
 - DBAccess:
   - `EbookEditorChapter.GetEditorEbookChapter`
   - `EbookEditorChapter.UpdateEditorEbookChapterDraft`
@@ -31,7 +31,7 @@ This tutorial pack adds the editor side of the ebook CMS lane. It keeps the samp
   - `OPENAPI-JSON`
   - `AUTH-PROXY-SERVER`
 
-All three editor functions use `ProjectToken`. The generated auth proxy is expected to fail closed when `TOKEN` is missing, empty, wrong, or when `MTOOL_PROXY_PROJECT_TOKEN` is not configured.
+The physical tables use `ebook_editor_*` snake_case names while generated PHP, OpenAPI, and proxy names stay on the `EbookEditor*` logical surface. All three editor functions use `ProjectToken`. The generated auth proxy is expected to fail closed when `TOKEN` is missing, empty, wrong, or when `MTOOL_PROXY_PROJECT_TOKEN` is not configured.
 
 ## 起動
 

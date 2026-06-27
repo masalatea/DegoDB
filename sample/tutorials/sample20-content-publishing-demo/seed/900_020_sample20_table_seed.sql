@@ -16,35 +16,35 @@ WHERE ProjectPID = @sample20_project_id;
 DELETE FROM dbtable
 WHERE ProjectPID = @sample20_project_id;
 
-DROP TABLE IF EXISTS ContentArticle;
+DROP TABLE IF EXISTS content_article;
 
-CREATE TABLE ContentArticle (
-    Id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
-    Title VARCHAR(255) NOT NULL,
-    Slug VARCHAR(160) NOT NULL,
-    CategoryName VARCHAR(120) NOT NULL DEFAULT '',
-    AuthorName VARCHAR(120) NOT NULL DEFAULT '',
-    Status VARCHAR(32) NOT NULL DEFAULT 'draft',
-    PublishedAt DATETIME DEFAULT NULL,
-    Summary VARCHAR(500) NOT NULL DEFAULT '',
-    Body TEXT NOT NULL,
-    UpdatedAt DATETIME NOT NULL,
-    PRIMARY KEY (Id),
-    UNIQUE KEY uq_content_article_slug (Slug),
-    KEY idx_content_article_status_published_at (Status, PublishedAt),
-    KEY idx_content_article_category (CategoryName)
+CREATE TABLE content_article (
+    id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+    title VARCHAR(255) NOT NULL,
+    slug VARCHAR(160) NOT NULL,
+    category_name VARCHAR(120) NOT NULL DEFAULT '',
+    author_name VARCHAR(120) NOT NULL DEFAULT '',
+    status VARCHAR(32) NOT NULL DEFAULT 'draft',
+    published_at DATETIME DEFAULT NULL,
+    summary VARCHAR(500) NOT NULL DEFAULT '',
+    body TEXT NOT NULL,
+    updated_at DATETIME NOT NULL,
+    PRIMARY KEY (id),
+    UNIQUE KEY uq_content_article_slug (slug),
+    KEY idx_content_article_status_published_at (status, published_at),
+    KEY idx_content_article_category (category_name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
-INSERT INTO ContentArticle (
-    Title,
-    Slug,
-    CategoryName,
-    AuthorName,
-    Status,
-    PublishedAt,
-    Summary,
-    Body,
-    UpdatedAt
+INSERT INTO content_article (
+    title,
+    slug,
+    category_name,
+    author_name,
+    status,
+    published_at,
+    summary,
+    body,
+    updated_at
 ) VALUES
     (
         'JSONから始めるCMS',

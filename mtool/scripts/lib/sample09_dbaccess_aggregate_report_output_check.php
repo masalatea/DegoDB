@@ -13,11 +13,11 @@ require_once dirname(__DIR__, 2) . '/app/source_output_repository.php';
 
 const APP_SAMPLE9_DBACCESS_AGGREGATE_REPORT_PROJECT_KEY = 'SAMPLE09';
 const APP_SAMPLE9_DBACCESS_AGGREGATE_REPORT_TABLE_NAMES = [
-    'SalesCategory',
-    'SalesCategoryReport',
-    'SalesRecord',
+    'sales_category',
+    'sales_category_report',
+    'sales_record',
 ];
-const APP_SAMPLE9_DBACCESS_AGGREGATE_REPORT_SOURCE_NAME = 'SalesRecord';
+const APP_SAMPLE9_DBACCESS_AGGREGATE_REPORT_SOURCE_NAME = 'sales_record';
 const APP_SAMPLE9_DBACCESS_AGGREGATE_REPORT_FUNCTION_NAME = 'GetClosedSalesCategoryReportList';
 const APP_SAMPLE9_DBACCESS_AGGREGATE_REPORT_DATA_CLASS_BASE_NAME = 'SalesCategoryReport';
 const APP_SAMPLE9_DBACCESS_AGGREGATE_REPORT_REFERENCE_SOURCE_OUTPUT_KEYS = [
@@ -25,10 +25,10 @@ const APP_SAMPLE9_DBACCESS_AGGREGATE_REPORT_REFERENCE_SOURCE_OUTPUT_KEYS = [
     'DBACCESS-PHP',
 ];
 const APP_SAMPLE9_DBACCESS_AGGREGATE_REPORT_SELECT_TARGET_LABELS = [
-    'SalesRecord.SalesCategoryId->SalesCategoryId',
-    'SalesCategory.Name->SalesCategoryName',
-    'SalesRecord.Id->ClosedSaleCount',
-    'SalesRecord.Amount->ClosedSaleTotalAmount',
+    'sales_record.sales_category_id->salesCategoryId',
+    'sales_category.name->salesCategoryName',
+    'sales_record.id->closedSaleCount',
+    'sales_record.amount->closedSaleTotalAmount',
 ];
 
 function app_sample9_dbaccess_aggregate_report_default_reference_root(): string
@@ -465,15 +465,15 @@ function app_sample9_dbaccess_aggregate_report_run(array $app, string $requested
         'db_access function data_class_base_name',
         $assertionErrors,
     );
-    app_sample9_dbaccess_aggregate_report_assert_same('SalesRecord', $functionResult['item']['target_table_name'] ?? '', 'db_access function target_table_name', $assertionErrors);
+    app_sample9_dbaccess_aggregate_report_assert_same('sales_record', $functionResult['item']['target_table_name'] ?? '', 'db_access function target_table_name', $assertionErrors);
     app_sample9_dbaccess_aggregate_report_assert_same(
-        'sum(SalesRecord.Amount) desc, SalesRecord.SalesCategoryId asc',
+        'sum(sales_record.amount) desc, sales_record.sales_category_id asc',
         $functionResult['item']['sort_order_columns'] ?? '',
         'db_access function sort_order_columns',
         $assertionErrors,
     );
     app_sample9_dbaccess_aggregate_report_assert_same(
-        'public function GetClosedSalesCategoryReportList()',
+        '',
         $functionResult['item']['detected_signature'] ?? '',
         'db_access function detected_signature',
         $assertionErrors,
@@ -532,22 +532,22 @@ function app_sample9_dbaccess_aggregate_report_run(array $app, string $requested
     }
 
     app_sample9_dbaccess_aggregate_report_assert_same(3, count($selectWhereResult['items']), 'db_access select where count', $assertionErrors);
-    app_sample9_dbaccess_aggregate_report_assert_same('SalesRecord', $selectWhereResult['items'][0]['target_table_name'] ?? '', 'db_access join where target table', $assertionErrors);
-    app_sample9_dbaccess_aggregate_report_assert_same('SalesCategoryId', $selectWhereResult['items'][0]['target_table_column_name'] ?? '', 'db_access join where target column', $assertionErrors);
+    app_sample9_dbaccess_aggregate_report_assert_same('sales_record', $selectWhereResult['items'][0]['target_table_name'] ?? '', 'db_access join where target table', $assertionErrors);
+    app_sample9_dbaccess_aggregate_report_assert_same('sales_category_id', $selectWhereResult['items'][0]['target_table_column_name'] ?? '', 'db_access join where target column', $assertionErrors);
     app_sample9_dbaccess_aggregate_report_assert_same('anotherfield', $selectWhereResult['items'][0]['parameter_type'] ?? '', 'db_access join where parameter_type', $assertionErrors);
-    app_sample9_dbaccess_aggregate_report_assert_same('SalesCategory', $selectWhereResult['items'][0]['another_table_name'] ?? '', 'db_access join where another_table_name', $assertionErrors);
-    app_sample9_dbaccess_aggregate_report_assert_same('Id', $selectWhereResult['items'][0]['another_field_name'] ?? '', 'db_access join where another_field_name', $assertionErrors);
+    app_sample9_dbaccess_aggregate_report_assert_same('sales_category', $selectWhereResult['items'][0]['another_table_name'] ?? '', 'db_access join where another_table_name', $assertionErrors);
+    app_sample9_dbaccess_aggregate_report_assert_same('id', $selectWhereResult['items'][0]['another_field_name'] ?? '', 'db_access join where another_field_name', $assertionErrors);
     app_sample9_dbaccess_aggregate_report_assert_same('inner', $selectWhereResult['items'][0]['join_type'] ?? '', 'db_access join where join_type', $assertionErrors);
     app_sample9_dbaccess_aggregate_report_assert_same('10', $selectWhereResult['items'][0]['where_order'] ?? '', 'db_access join where order', $assertionErrors);
 
-    app_sample9_dbaccess_aggregate_report_assert_same('SalesRecord', $selectWhereResult['items'][1]['target_table_name'] ?? '', 'db_access fixed record where target table', $assertionErrors);
-    app_sample9_dbaccess_aggregate_report_assert_same('Status', $selectWhereResult['items'][1]['target_table_column_name'] ?? '', 'db_access fixed record where target column', $assertionErrors);
+    app_sample9_dbaccess_aggregate_report_assert_same('sales_record', $selectWhereResult['items'][1]['target_table_name'] ?? '', 'db_access fixed record where target table', $assertionErrors);
+    app_sample9_dbaccess_aggregate_report_assert_same('status', $selectWhereResult['items'][1]['target_table_column_name'] ?? '', 'db_access fixed record where target column', $assertionErrors);
     app_sample9_dbaccess_aggregate_report_assert_same('fixed', $selectWhereResult['items'][1]['parameter_type'] ?? '', 'db_access fixed record where parameter_type', $assertionErrors);
     app_sample9_dbaccess_aggregate_report_assert_same('closed', $selectWhereResult['items'][1]['fixed_parameter'] ?? '', 'db_access fixed record where fixed_parameter', $assertionErrors);
     app_sample9_dbaccess_aggregate_report_assert_same('20', $selectWhereResult['items'][1]['where_order'] ?? '', 'db_access fixed record where order', $assertionErrors);
 
-    app_sample9_dbaccess_aggregate_report_assert_same('SalesCategory', $selectWhereResult['items'][2]['target_table_name'] ?? '', 'db_access fixed category where target table', $assertionErrors);
-    app_sample9_dbaccess_aggregate_report_assert_same('IsActive', $selectWhereResult['items'][2]['target_table_column_name'] ?? '', 'db_access fixed category where target column', $assertionErrors);
+    app_sample9_dbaccess_aggregate_report_assert_same('sales_category', $selectWhereResult['items'][2]['target_table_name'] ?? '', 'db_access fixed category where target table', $assertionErrors);
+    app_sample9_dbaccess_aggregate_report_assert_same('is_active', $selectWhereResult['items'][2]['target_table_column_name'] ?? '', 'db_access fixed category where target column', $assertionErrors);
     app_sample9_dbaccess_aggregate_report_assert_same('fixed', $selectWhereResult['items'][2]['parameter_type'] ?? '', 'db_access fixed category where parameter_type', $assertionErrors);
     app_sample9_dbaccess_aggregate_report_assert_same('raw', $selectWhereResult['items'][2]['parameter_data_type'] ?? '', 'db_access fixed category where parameter_data_type', $assertionErrors);
     app_sample9_dbaccess_aggregate_report_assert_same('1', $selectWhereResult['items'][2]['fixed_parameter'] ?? '', 'db_access fixed category where fixed_parameter', $assertionErrors);

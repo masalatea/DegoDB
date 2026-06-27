@@ -16,13 +16,13 @@ WHERE ProjectPID = @sample1_project_id;
 DELETE FROM dbtable
 WHERE ProjectPID = @sample1_project_id;
 
-DROP TABLE IF EXISTS Article;
+DROP TABLE IF EXISTS article;
 
-CREATE TABLE Article (
-    Id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
-    Title VARCHAR(255) NOT NULL,
-    Body TEXT NOT NULL,
-    PRIMARY KEY (Id)
+CREATE TABLE article (
+    id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+    title VARCHAR(255) NOT NULL,
+    body TEXT NOT NULL,
+    PRIMARY KEY (id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 SET @sample1_project_id = NULL;

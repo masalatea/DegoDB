@@ -25,7 +25,7 @@ class EbookCatalogItemDBAccessBase
 
         $result = array();
 
-        $last_sql_command_for_mtooldb = 'select distinct EbookCatalogItem.BookId, EbookCatalogItem.BookTitle, EbookCatalogItem.BookSlug, EbookCatalogItem.SeriesName, EbookCatalogItem.AuthorName, EbookCatalogItem.GenreName, EbookCatalogItem.PublishedAt, EbookCatalogItem.Summary, EbookCatalogItem.EpubStatus, EbookCatalogItem.PrimaryEpubUrl from EbookCatalogItem where EbookCatalogItem.Status = ? and EbookCatalogItem.AuthorSlug = ? and EbookCatalogItem.GenreSlug = ? and EbookCatalogItem.SeriesSlug = ? and EbookCatalogItem.BookTitle LIKE ? order by EbookCatalogItem.PublishedAt desc, EbookCatalogItem.BookId desc limit ?';
+        $last_sql_command_for_mtooldb = 'select distinct ebook_catalog_item.book_id, ebook_catalog_item.book_title, ebook_catalog_item.book_slug, ebook_catalog_item.series_name, ebook_catalog_item.author_name, ebook_catalog_item.genre_name, ebook_catalog_item.published_at, ebook_catalog_item.summary, ebook_catalog_item.epub_status, ebook_catalog_item.primary_epub_url from ebook_catalog_item where ebook_catalog_item.status = ? and ebook_catalog_item.author_slug = ? and ebook_catalog_item.genre_slug = ? and ebook_catalog_item.series_slug = ? and ebook_catalog_item.book_title LIKE ? order by ebook_catalog_item.published_at desc, ebook_catalog_item.book_id desc limit ?';
         $ret = $mtooldb->execute($last_sql_command_for_mtooldb, [
             'published',
             $param_EbookCatalogItem_AuthorSlug_where,
@@ -40,16 +40,16 @@ class EbookCatalogItemDBAccessBase
         }
         while($thisline=$ret->fetch_row()) {
             $thisresult = new EbookCatalogItemData();
-            $thisresult->BookId = $thisline[0];
-            $thisresult->BookTitle = $thisline[1];
-            $thisresult->BookSlug = $thisline[2];
-            $thisresult->SeriesName = $thisline[3];
-            $thisresult->AuthorName = $thisline[4];
-            $thisresult->GenreName = $thisline[5];
-            $thisresult->PublishedAt = $thisline[6];
-            $thisresult->Summary = $thisline[7];
-            $thisresult->EpubStatus = $thisline[8];
-            $thisresult->PrimaryEpubUrl = $thisline[9];
+            $thisresult->bookId = $thisline[0];
+            $thisresult->bookTitle = $thisline[1];
+            $thisresult->bookSlug = $thisline[2];
+            $thisresult->seriesName = $thisline[3];
+            $thisresult->authorName = $thisline[4];
+            $thisresult->genreName = $thisline[5];
+            $thisresult->publishedAt = $thisline[6];
+            $thisresult->summary = $thisline[7];
+            $thisresult->epubStatus = $thisline[8];
+            $thisresult->primaryEpubUrl = $thisline[9];
             array_push($result, $thisresult);
         }
         return $result;
@@ -62,7 +62,7 @@ class EbookCatalogItemDBAccessBase
         connect_mtooldb_if_not_yet();
         reconnect_mtooldb_if_necessary();
 
-        $last_sql_command_for_mtooldb = 'select distinct EbookCatalogItem.BookId, EbookCatalogItem.BookTitle, EbookCatalogItem.BookSlug, EbookCatalogItem.SeriesName, EbookCatalogItem.AuthorName, EbookCatalogItem.GenreName, EbookCatalogItem.PublishedAt, EbookCatalogItem.Summary, EbookCatalogItem.EpubStatus, EbookCatalogItem.PrimaryEpubUrl from EbookCatalogItem where EbookCatalogItem.Status = ? and EbookCatalogItem.BookSlug = ?';
+        $last_sql_command_for_mtooldb = 'select distinct ebook_catalog_item.book_id, ebook_catalog_item.book_title, ebook_catalog_item.book_slug, ebook_catalog_item.series_name, ebook_catalog_item.author_name, ebook_catalog_item.genre_name, ebook_catalog_item.published_at, ebook_catalog_item.summary, ebook_catalog_item.epub_status, ebook_catalog_item.primary_epub_url from ebook_catalog_item where ebook_catalog_item.status = ? and ebook_catalog_item.book_slug = ?';
         $ret = $mtooldb->execute($last_sql_command_for_mtooldb, [
             'published',
             $param_EbookCatalogItem_BookSlug_where,
@@ -73,16 +73,16 @@ class EbookCatalogItemDBAccessBase
         }
         while($thisline=$ret->fetch_row()) {
             $thisresult = new EbookCatalogItemData();
-            $thisresult->BookId = $thisline[0];
-            $thisresult->BookTitle = $thisline[1];
-            $thisresult->BookSlug = $thisline[2];
-            $thisresult->SeriesName = $thisline[3];
-            $thisresult->AuthorName = $thisline[4];
-            $thisresult->GenreName = $thisline[5];
-            $thisresult->PublishedAt = $thisline[6];
-            $thisresult->Summary = $thisline[7];
-            $thisresult->EpubStatus = $thisline[8];
-            $thisresult->PrimaryEpubUrl = $thisline[9];
+            $thisresult->bookId = $thisline[0];
+            $thisresult->bookTitle = $thisline[1];
+            $thisresult->bookSlug = $thisline[2];
+            $thisresult->seriesName = $thisline[3];
+            $thisresult->authorName = $thisline[4];
+            $thisresult->genreName = $thisline[5];
+            $thisresult->publishedAt = $thisline[6];
+            $thisresult->summary = $thisline[7];
+            $thisresult->epubStatus = $thisline[8];
+            $thisresult->primaryEpubUrl = $thisline[9];
             return $thisresult;
         }
         return NULL;

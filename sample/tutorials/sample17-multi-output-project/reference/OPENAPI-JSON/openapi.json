@@ -12,21 +12,21 @@
     ],
     "tags": [
         {
-            "name": "CapstoneTask",
-            "description": "CapstoneTask single-function proxy endpoints."
+            "name": "capstone_task",
+            "description": "capstone_task single-function proxy endpoints."
         }
     ],
     "paths": {
         "/proxyserver-CapstoneTask-GetCapstoneTask.php": {
             "post": {
-                "operationId": "CapstoneTask_GetCapstoneTask",
+                "operationId": "capstone_task_GetCapstoneTask",
                 "tags": [
-                    "CapstoneTask"
+                    "capstone_task"
                 ],
-                "summary": "CapstoneTask.GetCapstoneTask",
-                "description": "Generated from single-function proxy target metadata.\n\nSource function: `CapstoneTask.GetCapstoneTask`.\n\nAuth policy: 認証を掛けません。",
+                "summary": "capstone_task.GetCapstoneTask",
+                "description": "Generated from single-function proxy target metadata.\n\nSource function: `capstone_task.GetCapstoneTask`.\n\nAuth policy: 認証を掛けません。",
                 "x-mtool": {
-                    "source_name": "CapstoneTask",
+                    "source_name": "capstone_task",
                     "function_name": "GetCapstoneTask",
                     "endpoint_filename": "proxyserver-CapstoneTask-GetCapstoneTask.php",
                     "auth_strategy": "no-security",
@@ -80,13 +80,13 @@
                                     "_status": "OK",
                                     "Message": "",
                                     "Result": {
-                                        "Id": "string",
-                                        "Title": "string",
-                                        "Status": "string",
-                                        "OwnerName": "string",
-                                        "Priority": "string",
-                                        "DueDate": "string",
-                                        "UpdatedAt": "string"
+                                        "id": "string",
+                                        "title": "string",
+                                        "status": "string",
+                                        "ownerName": "string",
+                                        "priority": "string",
+                                        "dueDate": "string",
+                                        "updatedAt": "string"
                                     }
                                 }
                             }
@@ -121,14 +121,14 @@
         },
         "/proxyserver-CapstoneTask-GetCapstoneTaskList.php": {
             "post": {
-                "operationId": "CapstoneTask_GetCapstoneTaskList",
+                "operationId": "capstone_task_GetCapstoneTaskList",
                 "tags": [
-                    "CapstoneTask"
+                    "capstone_task"
                 ],
-                "summary": "CapstoneTask.GetCapstoneTaskList",
-                "description": "Generated from single-function proxy target metadata.\n\nSource function: `CapstoneTask.GetCapstoneTaskList`.\n\nAuth policy: 認証を掛けません。",
+                "summary": "capstone_task.GetCapstoneTaskList",
+                "description": "Generated from single-function proxy target metadata.\n\nSource function: `capstone_task.GetCapstoneTaskList`.\n\nAuth policy: 認証を掛けません。",
                 "x-mtool": {
-                    "source_name": "CapstoneTask",
+                    "source_name": "capstone_task",
                     "function_name": "GetCapstoneTaskList",
                     "endpoint_filename": "proxyserver-CapstoneTask-GetCapstoneTaskList.php",
                     "auth_strategy": "no-security",
@@ -192,13 +192,13 @@
                                     "Message": "",
                                     "Result": [
                                         {
-                                            "Id": "string",
-                                            "Title": "string",
-                                            "Status": "string",
-                                            "OwnerName": "string",
-                                            "Priority": "string",
-                                            "DueDate": "string",
-                                            "UpdatedAt": "string"
+                                            "id": "string",
+                                            "title": "string",
+                                            "status": "string",
+                                            "ownerName": "string",
+                                            "priority": "string",
+                                            "dueDate": "string",
+                                            "updatedAt": "string"
                                         }
                                     ]
                                 }
@@ -239,31 +239,31 @@
                 "type": "object",
                 "title": "CapstoneTaskData",
                 "properties": {
-                    "Id": {
+                    "id": {
                         "type": "string",
                         "example": "string"
                     },
-                    "Title": {
+                    "title": {
                         "type": "string",
                         "example": "string"
                     },
-                    "Status": {
+                    "status": {
                         "type": "string",
                         "example": "string"
                     },
-                    "OwnerName": {
+                    "ownerName": {
                         "type": "string",
                         "example": "string"
                     },
-                    "Priority": {
+                    "priority": {
                         "type": "string",
                         "example": "string"
                     },
-                    "DueDate": {
+                    "dueDate": {
                         "type": "string",
                         "example": "string"
                     },
-                    "UpdatedAt": {
+                    "updatedAt": {
                         "type": "string",
                         "example": "string"
                     }

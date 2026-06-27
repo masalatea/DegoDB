@@ -10,7 +10,7 @@
     "unresolved_auth_count": 0,
     "operations": [
         {
-            "source_name": "EbookMediaAsset",
+            "source_name": "ebook_media_asset",
             "function_name": "GetPublicEbookMediaDeliveryList",
             "endpoint_filename": "proxyserver-EbookMediaAsset-GetPublicEbookMediaDeliveryList.php",
             "auth_strategy": "no-security",
@@ -21,13 +21,13 @@
                     "parameter_name": "param_EbookMediaDelivery_BookSlug_where",
                     "datatype": "",
                     "source": "select-where-column-name",
-                    "target_table_name": "EbookMediaDelivery",
-                    "target_table_column_name": "Status"
+                    "target_table_name": "ebook_media_delivery",
+                    "target_table_column_name": "status"
                 }
             }
         },
         {
-            "source_name": "EbookMediaAsset",
+            "source_name": "ebook_media_asset",
             "function_name": "GetPublicEbookMediaAsset",
             "endpoint_filename": "proxyserver-EbookMediaAsset-GetPublicEbookMediaAsset.php",
             "auth_strategy": "no-security",
@@ -38,13 +38,13 @@
                     "parameter_name": "param_EbookMediaDelivery_AssetSlug_where",
                     "datatype": "",
                     "source": "select-where-column-name",
-                    "target_table_name": "EbookMediaDelivery",
-                    "target_table_column_name": "Status"
+                    "target_table_name": "ebook_media_delivery",
+                    "target_table_column_name": "status"
                 }
             }
         },
         {
-            "source_name": "EbookMediaAsset",
+            "source_name": "ebook_media_asset",
             "function_name": "InsertEbookMediaAsset",
             "endpoint_filename": "proxyserver-EbookMediaAsset-InsertEbookMediaAsset.php",
             "auth_strategy": "no-security",
@@ -61,7 +61,7 @@
             }
         },
         {
-            "source_name": "EbookMediaAsset",
+            "source_name": "ebook_media_asset",
             "function_name": "UpdateEbookMediaAssetMetadata",
             "endpoint_filename": "proxyserver-EbookMediaAsset-UpdateEbookMediaAssetMetadata.php",
             "auth_strategy": "no-security",

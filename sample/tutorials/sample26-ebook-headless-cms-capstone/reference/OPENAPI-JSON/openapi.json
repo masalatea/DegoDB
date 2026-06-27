@@ -12,21 +12,21 @@
     ],
     "tags": [
         {
-            "name": "EbookCmsBook",
-            "description": "EbookCmsBook single-function proxy endpoints."
+            "name": "ebook_cms_book",
+            "description": "ebook_cms_book single-function proxy endpoints."
         }
     ],
     "paths": {
         "/proxyserver-EbookCmsBook-GetEditorEbookCmsChapter.php": {
             "post": {
-                "operationId": "EbookCmsBook_GetEditorEbookCmsChapter",
+                "operationId": "ebook_cms_book_GetEditorEbookCmsChapter",
                 "tags": [
-                    "EbookCmsBook"
+                    "ebook_cms_book"
                 ],
-                "summary": "EbookCmsBook.GetEditorEbookCmsChapter",
-                "description": "Generated from single-function proxy target metadata.\n\nSource function: `EbookCmsBook.GetEditorEbookCmsChapter`.\n\nAuth policy: project token 認証です。",
+                "summary": "ebook_cms_book.GetEditorEbookCmsChapter",
+                "description": "Generated from single-function proxy target metadata.\n\nSource function: `ebook_cms_book.GetEditorEbookCmsChapter`.\n\nAuth policy: project token 認証です。",
                 "x-mtool": {
-                    "source_name": "EbookCmsBook",
+                    "source_name": "ebook_cms_book",
                     "function_name": "GetEditorEbookCmsChapter",
                     "endpoint_filename": "proxyserver-EbookCmsBook-GetEditorEbookCmsChapter.php",
                     "auth_strategy": "project-token",
@@ -87,19 +87,19 @@
                                     "_status": "OK",
                                     "Message": "",
                                     "Result": {
-                                        "Id": "string",
-                                        "Title": "string",
-                                        "Slug": "string",
-                                        "AuthorName": "string",
-                                        "GenreName": "string",
-                                        "Status": "string",
-                                        "CoverImageUrl": "string",
-                                        "Summary": "string",
-                                        "EpubDownloadUrl": "string",
-                                        "EpubMimeType": "string",
-                                        "EpubSha256": "string",
-                                        "PublishedAt": "string",
-                                        "UpdatedAt": "string"
+                                        "id": "string",
+                                        "title": "string",
+                                        "slug": "string",
+                                        "authorName": "string",
+                                        "genreName": "string",
+                                        "status": "string",
+                                        "coverImageUrl": "string",
+                                        "summary": "string",
+                                        "epubDownloadUrl": "string",
+                                        "epubMimeType": "string",
+                                        "epubSha256": "string",
+                                        "publishedAt": "string",
+                                        "updatedAt": "string"
                                     }
                                 }
                             }
@@ -134,14 +134,14 @@
         },
         "/proxyserver-EbookCmsBook-GetPublicEbookCmsBook.php": {
             "post": {
-                "operationId": "EbookCmsBook_GetPublicEbookCmsBook",
+                "operationId": "ebook_cms_book_GetPublicEbookCmsBook",
                 "tags": [
-                    "EbookCmsBook"
+                    "ebook_cms_book"
                 ],
-                "summary": "EbookCmsBook.GetPublicEbookCmsBook",
-                "description": "Generated from single-function proxy target metadata.\n\nSource function: `EbookCmsBook.GetPublicEbookCmsBook`.\n\nAuth policy: 認証を掛けません。",
+                "summary": "ebook_cms_book.GetPublicEbookCmsBook",
+                "description": "Generated from single-function proxy target metadata.\n\nSource function: `ebook_cms_book.GetPublicEbookCmsBook`.\n\nAuth policy: 認証を掛けません。",
                 "x-mtool": {
-                    "source_name": "EbookCmsBook",
+                    "source_name": "ebook_cms_book",
                     "function_name": "GetPublicEbookCmsBook",
                     "endpoint_filename": "proxyserver-EbookCmsBook-GetPublicEbookCmsBook.php",
                     "auth_strategy": "no-security",
@@ -195,19 +195,19 @@
                                     "_status": "OK",
                                     "Message": "",
                                     "Result": {
-                                        "Id": "string",
-                                        "Title": "string",
-                                        "Slug": "string",
-                                        "AuthorName": "string",
-                                        "GenreName": "string",
-                                        "Status": "string",
-                                        "CoverImageUrl": "string",
-                                        "Summary": "string",
-                                        "EpubDownloadUrl": "string",
-                                        "EpubMimeType": "string",
-                                        "EpubSha256": "string",
-                                        "PublishedAt": "string",
-                                        "UpdatedAt": "string"
+                                        "id": "string",
+                                        "title": "string",
+                                        "slug": "string",
+                                        "authorName": "string",
+                                        "genreName": "string",
+                                        "status": "string",
+                                        "coverImageUrl": "string",
+                                        "summary": "string",
+                                        "epubDownloadUrl": "string",
+                                        "epubMimeType": "string",
+                                        "epubSha256": "string",
+                                        "publishedAt": "string",
+                                        "updatedAt": "string"
                                     }
                                 }
                             }
@@ -242,14 +242,14 @@
         },
         "/proxyserver-EbookCmsBook-GetPublicEbookCmsBookList.php": {
             "post": {
-                "operationId": "EbookCmsBook_GetPublicEbookCmsBookList",
+                "operationId": "ebook_cms_book_GetPublicEbookCmsBookList",
                 "tags": [
-                    "EbookCmsBook"
+                    "ebook_cms_book"
                 ],
-                "summary": "EbookCmsBook.GetPublicEbookCmsBookList",
-                "description": "Generated from single-function proxy target metadata.\n\nSource function: `EbookCmsBook.GetPublicEbookCmsBookList`.\n\nAuth policy: 認証を掛けません。",
+                "summary": "ebook_cms_book.GetPublicEbookCmsBookList",
+                "description": "Generated from single-function proxy target metadata.\n\nSource function: `ebook_cms_book.GetPublicEbookCmsBookList`.\n\nAuth policy: 認証を掛けません。",
                 "x-mtool": {
-                    "source_name": "EbookCmsBook",
+                    "source_name": "ebook_cms_book",
                     "function_name": "GetPublicEbookCmsBookList",
                     "endpoint_filename": "proxyserver-EbookCmsBook-GetPublicEbookCmsBookList.php",
                     "auth_strategy": "no-security",
@@ -307,19 +307,19 @@
                                     "Message": "",
                                     "Result": [
                                         {
-                                            "Id": "string",
-                                            "Title": "string",
-                                            "Slug": "string",
-                                            "AuthorName": "string",
-                                            "GenreName": "string",
-                                            "Status": "string",
-                                            "CoverImageUrl": "string",
-                                            "Summary": "string",
-                                            "EpubDownloadUrl": "string",
-                                            "EpubMimeType": "string",
-                                            "EpubSha256": "string",
-                                            "PublishedAt": "string",
-                                            "UpdatedAt": "string"
+                                            "id": "string",
+                                            "title": "string",
+                                            "slug": "string",
+                                            "authorName": "string",
+                                            "genreName": "string",
+                                            "status": "string",
+                                            "coverImageUrl": "string",
+                                            "summary": "string",
+                                            "epubDownloadUrl": "string",
+                                            "epubMimeType": "string",
+                                            "epubSha256": "string",
+                                            "publishedAt": "string",
+                                            "updatedAt": "string"
                                         }
                                     ]
                                 }
@@ -355,14 +355,14 @@
         },
         "/proxyserver-EbookCmsBook-GetPublicEbookCmsChapter.php": {
             "post": {
-                "operationId": "EbookCmsBook_GetPublicEbookCmsChapter",
+                "operationId": "ebook_cms_book_GetPublicEbookCmsChapter",
                 "tags": [
-                    "EbookCmsBook"
+                    "ebook_cms_book"
                 ],
-                "summary": "EbookCmsBook.GetPublicEbookCmsChapter",
-                "description": "Generated from single-function proxy target metadata.\n\nSource function: `EbookCmsBook.GetPublicEbookCmsChapter`.\n\nAuth policy: 認証を掛けません。",
+                "summary": "ebook_cms_book.GetPublicEbookCmsChapter",
+                "description": "Generated from single-function proxy target metadata.\n\nSource function: `ebook_cms_book.GetPublicEbookCmsChapter`.\n\nAuth policy: 認証を掛けません。",
                 "x-mtool": {
-                    "source_name": "EbookCmsBook",
+                    "source_name": "ebook_cms_book",
                     "function_name": "GetPublicEbookCmsChapter",
                     "endpoint_filename": "proxyserver-EbookCmsBook-GetPublicEbookCmsChapter.php",
                     "auth_strategy": "no-security",
@@ -422,19 +422,19 @@
                                     "_status": "OK",
                                     "Message": "",
                                     "Result": {
-                                        "Id": "string",
-                                        "Title": "string",
-                                        "Slug": "string",
-                                        "AuthorName": "string",
-                                        "GenreName": "string",
-                                        "Status": "string",
-                                        "CoverImageUrl": "string",
-                                        "Summary": "string",
-                                        "EpubDownloadUrl": "string",
-                                        "EpubMimeType": "string",
-                                        "EpubSha256": "string",
-                                        "PublishedAt": "string",
-                                        "UpdatedAt": "string"
+                                        "id": "string",
+                                        "title": "string",
+                                        "slug": "string",
+                                        "authorName": "string",
+                                        "genreName": "string",
+                                        "status": "string",
+                                        "coverImageUrl": "string",
+                                        "summary": "string",
+                                        "epubDownloadUrl": "string",
+                                        "epubMimeType": "string",
+                                        "epubSha256": "string",
+                                        "publishedAt": "string",
+                                        "updatedAt": "string"
                                     }
                                 }
                             }
@@ -469,14 +469,14 @@
         },
         "/proxyserver-EbookCmsBook-GetPublicEbookCmsChapterList.php": {
             "post": {
-                "operationId": "EbookCmsBook_GetPublicEbookCmsChapterList",
+                "operationId": "ebook_cms_book_GetPublicEbookCmsChapterList",
                 "tags": [
-                    "EbookCmsBook"
+                    "ebook_cms_book"
                 ],
-                "summary": "EbookCmsBook.GetPublicEbookCmsChapterList",
-                "description": "Generated from single-function proxy target metadata.\n\nSource function: `EbookCmsBook.GetPublicEbookCmsChapterList`.\n\nAuth policy: 認証を掛けません。",
+                "summary": "ebook_cms_book.GetPublicEbookCmsChapterList",
+                "description": "Generated from single-function proxy target metadata.\n\nSource function: `ebook_cms_book.GetPublicEbookCmsChapterList`.\n\nAuth policy: 認証を掛けません。",
                 "x-mtool": {
-                    "source_name": "EbookCmsBook",
+                    "source_name": "ebook_cms_book",
                     "function_name": "GetPublicEbookCmsChapterList",
                     "endpoint_filename": "proxyserver-EbookCmsBook-GetPublicEbookCmsChapterList.php",
                     "auth_strategy": "no-security",
@@ -534,19 +534,19 @@
                                     "Message": "",
                                     "Result": [
                                         {
-                                            "Id": "string",
-                                            "Title": "string",
-                                            "Slug": "string",
-                                            "AuthorName": "string",
-                                            "GenreName": "string",
-                                            "Status": "string",
-                                            "CoverImageUrl": "string",
-                                            "Summary": "string",
-                                            "EpubDownloadUrl": "string",
-                                            "EpubMimeType": "string",
-                                            "EpubSha256": "string",
-                                            "PublishedAt": "string",
-                                            "UpdatedAt": "string"
+                                            "id": "string",
+                                            "title": "string",
+                                            "slug": "string",
+                                            "authorName": "string",
+                                            "genreName": "string",
+                                            "status": "string",
+                                            "coverImageUrl": "string",
+                                            "summary": "string",
+                                            "epubDownloadUrl": "string",
+                                            "epubMimeType": "string",
+                                            "epubSha256": "string",
+                                            "publishedAt": "string",
+                                            "updatedAt": "string"
                                         }
                                     ]
                                 }
@@ -582,14 +582,14 @@
         },
         "/proxyserver-EbookCmsBook-GetPublicEbookCmsEpubDeliveryList.php": {
             "post": {
-                "operationId": "EbookCmsBook_GetPublicEbookCmsEpubDeliveryList",
+                "operationId": "ebook_cms_book_GetPublicEbookCmsEpubDeliveryList",
                 "tags": [
-                    "EbookCmsBook"
+                    "ebook_cms_book"
                 ],
-                "summary": "EbookCmsBook.GetPublicEbookCmsEpubDeliveryList",
-                "description": "Generated from single-function proxy target metadata.\n\nSource function: `EbookCmsBook.GetPublicEbookCmsEpubDeliveryList`.\n\nAuth policy: 認証を掛けません。",
+                "summary": "ebook_cms_book.GetPublicEbookCmsEpubDeliveryList",
+                "description": "Generated from single-function proxy target metadata.\n\nSource function: `ebook_cms_book.GetPublicEbookCmsEpubDeliveryList`.\n\nAuth policy: 認証を掛けません。",
                 "x-mtool": {
-                    "source_name": "EbookCmsBook",
+                    "source_name": "ebook_cms_book",
                     "function_name": "GetPublicEbookCmsEpubDeliveryList",
                     "endpoint_filename": "proxyserver-EbookCmsBook-GetPublicEbookCmsEpubDeliveryList.php",
                     "auth_strategy": "no-security",
@@ -647,19 +647,19 @@
                                     "Message": "",
                                     "Result": [
                                         {
-                                            "Id": "string",
-                                            "Title": "string",
-                                            "Slug": "string",
-                                            "AuthorName": "string",
-                                            "GenreName": "string",
-                                            "Status": "string",
-                                            "CoverImageUrl": "string",
-                                            "Summary": "string",
-                                            "EpubDownloadUrl": "string",
-                                            "EpubMimeType": "string",
-                                            "EpubSha256": "string",
-                                            "PublishedAt": "string",
-                                            "UpdatedAt": "string"
+                                            "id": "string",
+                                            "title": "string",
+                                            "slug": "string",
+                                            "authorName": "string",
+                                            "genreName": "string",
+                                            "status": "string",
+                                            "coverImageUrl": "string",
+                                            "summary": "string",
+                                            "epubDownloadUrl": "string",
+                                            "epubMimeType": "string",
+                                            "epubSha256": "string",
+                                            "publishedAt": "string",
+                                            "updatedAt": "string"
                                         }
                                     ]
                                 }
@@ -695,14 +695,14 @@
         },
         "/proxyserver-EbookCmsBook-PublishEditorEbookCmsChapter.php": {
             "post": {
-                "operationId": "EbookCmsBook_PublishEditorEbookCmsChapter",
+                "operationId": "ebook_cms_book_PublishEditorEbookCmsChapter",
                 "tags": [
-                    "EbookCmsBook"
+                    "ebook_cms_book"
                 ],
-                "summary": "EbookCmsBook.PublishEditorEbookCmsChapter",
-                "description": "Generated from single-function proxy target metadata.\n\nSource function: `EbookCmsBook.PublishEditorEbookCmsChapter`.\n\nAuth policy: project token 認証です。",
+                "summary": "ebook_cms_book.PublishEditorEbookCmsChapter",
+                "description": "Generated from single-function proxy target metadata.\n\nSource function: `ebook_cms_book.PublishEditorEbookCmsChapter`.\n\nAuth policy: project token 認証です。",
                 "x-mtool": {
-                    "source_name": "EbookCmsBook",
+                    "source_name": "ebook_cms_book",
                     "function_name": "PublishEditorEbookCmsChapter",
                     "endpoint_filename": "proxyserver-EbookCmsBook-PublishEditorEbookCmsChapter.php",
                     "auth_strategy": "project-token",
@@ -733,19 +733,19 @@
                             "example": {
                                 "TOKEN": "project-token",
                                 "EbookCmsChapterObj": {
-                                    "Id": "string",
-                                    "Title": "string",
-                                    "Slug": "string",
-                                    "AuthorName": "string",
-                                    "GenreName": "string",
-                                    "Status": "string",
-                                    "CoverImageUrl": "string",
-                                    "Summary": "string",
-                                    "EpubDownloadUrl": "string",
-                                    "EpubMimeType": "string",
-                                    "EpubSha256": "string",
-                                    "PublishedAt": "string",
-                                    "UpdatedAt": "string"
+                                    "id": "string",
+                                    "title": "string",
+                                    "slug": "string",
+                                    "authorName": "string",
+                                    "genreName": "string",
+                                    "status": "string",
+                                    "coverImageUrl": "string",
+                                    "summary": "string",
+                                    "epubDownloadUrl": "string",
+                                    "epubMimeType": "string",
+                                    "epubSha256": "string",
+                                    "publishedAt": "string",
+                                    "updatedAt": "string"
                                 }
                             }
                         }
@@ -805,14 +805,14 @@
         },
         "/proxyserver-EbookCmsBook-UpdateEditorEbookCmsChapterDraft.php": {
             "post": {
-                "operationId": "EbookCmsBook_UpdateEditorEbookCmsChapterDraft",
+                "operationId": "ebook_cms_book_UpdateEditorEbookCmsChapterDraft",
                 "tags": [
-                    "EbookCmsBook"
+                    "ebook_cms_book"
                 ],
-                "summary": "EbookCmsBook.UpdateEditorEbookCmsChapterDraft",
-                "description": "Generated from single-function proxy target metadata.\n\nSource function: `EbookCmsBook.UpdateEditorEbookCmsChapterDraft`.\n\nAuth policy: project token 認証です。",
+                "summary": "ebook_cms_book.UpdateEditorEbookCmsChapterDraft",
+                "description": "Generated from single-function proxy target metadata.\n\nSource function: `ebook_cms_book.UpdateEditorEbookCmsChapterDraft`.\n\nAuth policy: project token 認証です。",
                 "x-mtool": {
-                    "source_name": "EbookCmsBook",
+                    "source_name": "ebook_cms_book",
                     "function_name": "UpdateEditorEbookCmsChapterDraft",
                     "endpoint_filename": "proxyserver-EbookCmsBook-UpdateEditorEbookCmsChapterDraft.php",
                     "auth_strategy": "project-token",
@@ -843,19 +843,19 @@
                             "example": {
                                 "TOKEN": "project-token",
                                 "EbookCmsChapterObj": {
-                                    "Id": "string",
-                                    "Title": "string",
-                                    "Slug": "string",
-                                    "AuthorName": "string",
-                                    "GenreName": "string",
-                                    "Status": "string",
-                                    "CoverImageUrl": "string",
-                                    "Summary": "string",
-                                    "EpubDownloadUrl": "string",
-                                    "EpubMimeType": "string",
-                                    "EpubSha256": "string",
-                                    "PublishedAt": "string",
-                                    "UpdatedAt": "string"
+                                    "id": "string",
+                                    "title": "string",
+                                    "slug": "string",
+                                    "authorName": "string",
+                                    "genreName": "string",
+                                    "status": "string",
+                                    "coverImageUrl": "string",
+                                    "summary": "string",
+                                    "epubDownloadUrl": "string",
+                                    "epubMimeType": "string",
+                                    "epubSha256": "string",
+                                    "publishedAt": "string",
+                                    "updatedAt": "string"
                                 }
                             }
                         }
@@ -920,55 +920,55 @@
                 "type": "object",
                 "title": "EbookCmsBookData",
                 "properties": {
-                    "Id": {
+                    "id": {
                         "type": "string",
                         "example": "string"
                     },
-                    "Title": {
+                    "title": {
                         "type": "string",
                         "example": "string"
                     },
-                    "Slug": {
+                    "slug": {
                         "type": "string",
                         "example": "string"
                     },
-                    "AuthorName": {
+                    "authorName": {
                         "type": "string",
                         "example": "string"
                     },
-                    "GenreName": {
+                    "genreName": {
                         "type": "string",
                         "example": "string"
                     },
-                    "Status": {
+                    "status": {
                         "type": "string",
                         "example": "string"
                     },
-                    "CoverImageUrl": {
+                    "coverImageUrl": {
                         "type": "string",
                         "example": "string"
                     },
-                    "Summary": {
+                    "summary": {
                         "type": "string",
                         "example": "string"
                     },
-                    "EpubDownloadUrl": {
+                    "epubDownloadUrl": {
                         "type": "string",
                         "example": "string"
                     },
-                    "EpubMimeType": {
+                    "epubMimeType": {
                         "type": "string",
                         "example": "string"
                     },
-                    "EpubSha256": {
+                    "epubSha256": {
                         "type": "string",
                         "example": "string"
                     },
-                    "PublishedAt": {
+                    "publishedAt": {
                         "type": "string",
                         "example": "string"
                     },
-                    "UpdatedAt": {
+                    "updatedAt": {
                         "type": "string",
                         "example": "string"
                     }

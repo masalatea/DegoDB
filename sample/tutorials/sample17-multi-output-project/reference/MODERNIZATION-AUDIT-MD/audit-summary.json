@@ -37,11 +37,11 @@
     },
     "table_audits": [
         {
-            "table": "CapstoneTask",
-            "physical_name": "CapstoneTask",
+            "table": "capstone_task",
+            "physical_name": "capstone_task",
             "column_count": 7,
             "primary_key_columns": [
-                "Id"
+                "id"
             ],
             "nullable_column_count": 1,
             "relationship_count": 0,
@@ -53,6 +53,6 @@
         }
     ],
     "recommended_review_order": [
-        "CapstoneTask"
+        "capstone_task"
     ]
 }

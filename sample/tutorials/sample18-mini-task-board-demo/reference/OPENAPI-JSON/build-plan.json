@@ -10,7 +10,7 @@
     "unresolved_auth_count": 0,
     "operations": [
         {
-            "source_name": "TaskCard",
+            "source_name": "task_card",
             "function_name": "GetTaskCardList",
             "endpoint_filename": "proxyserver-TaskCard-GetTaskCardList.php",
             "auth_strategy": "no-security",
@@ -21,8 +21,8 @@
                     "parameter_name": "param_TaskCard_Status_where",
                     "datatype": "varchar",
                     "source": "select-where-parameter-data-type",
-                    "target_table_name": "TaskCard",
-                    "target_table_column_name": "Status"
+                    "target_table_name": "task_card",
+                    "target_table_column_name": "status"
                 },
                 "limit": {
                     "parameter_name": "limit",
@@ -34,7 +34,7 @@
             }
         },
         {
-            "source_name": "TaskCard",
+            "source_name": "task_card",
             "function_name": "GetTaskCard",
             "endpoint_filename": "proxyserver-TaskCard-GetTaskCard.php",
             "auth_strategy": "no-security",
@@ -45,13 +45,13 @@
                     "parameter_name": "param_TaskCard_Id_where",
                     "datatype": "int",
                     "source": "select-where-parameter-data-type",
-                    "target_table_name": "TaskCard",
-                    "target_table_column_name": "Id"
+                    "target_table_name": "task_card",
+                    "target_table_column_name": "id"
                 }
             }
         },
         {
-            "source_name": "TaskCard",
+            "source_name": "task_card",
             "function_name": "InsertTaskCard",
             "endpoint_filename": "proxyserver-TaskCard-InsertTaskCard.php",
             "auth_strategy": "no-security",
@@ -68,7 +68,7 @@
             }
         },
         {
-            "source_name": "TaskCard",
+            "source_name": "task_card",
             "function_name": "UpdateTaskCard",
             "endpoint_filename": "proxyserver-TaskCard-UpdateTaskCard.php",
             "auth_strategy": "no-security",
@@ -85,7 +85,7 @@
             }
         },
         {
-            "source_name": "TaskCard",
+            "source_name": "task_card",
             "function_name": "CompleteTaskCard",
             "endpoint_filename": "proxyserver-TaskCard-CompleteTaskCard.php",
             "auth_strategy": "no-security",

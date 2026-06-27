@@ -56,10 +56,10 @@ INSERT INTO project_db_access_classes (
     last_detected_data_file
 ) VALUES (
     @sample08_project_id,
-    'BlogPost',
+    'blog_post',
     '',
     0,
-    'Join read model DBAccess sample for BlogPost + BlogAuthor tables.',
+    'Join read model DBAccess sample for blog_post + blog_author tables.',
     'manual',
     '',
     ''
@@ -95,10 +95,10 @@ INSERT INTO project_db_access_functions (
     '',
     'SELECTLIST',
     'BlogPostAuthorSummary',
-    'BlogPost',
+    'blog_post',
     '',
     0,
-    'BlogPost.Id asc',
+    'blog_post.id asc',
     'Join BlogPost and BlogAuthor rows into a read model DTO for published posts written by active authors.',
     '',
     '',
@@ -106,7 +106,7 @@ INSERT INTO project_db_access_functions (
     '',
     '',
     0,
-    'public function GetPublishedBlogPostAuthorSummaryList()',
+    '',
     10,
     'manual'
 );
@@ -125,10 +125,10 @@ INSERT INTO project_db_access_function_select_target_fields (
     field_list_order,
     source_of_truth
 ) VALUES
-(@sample08_get_summary_list_function_id, 'BlogPost', '', 'Id', '', '', 'BlogPostId', 0, 10, 'manual'),
-(@sample08_get_summary_list_function_id, 'BlogPost', '', 'Title', '', '', 'BlogPostTitle', 0, 20, 'manual'),
-(@sample08_get_summary_list_function_id, 'BlogAuthor', '', 'Id', '', '', 'BlogAuthorId', 0, 30, 'manual'),
-(@sample08_get_summary_list_function_id, 'BlogAuthor', '', 'Name', '', '', 'BlogAuthorName', 0, 40, 'manual');
+(@sample08_get_summary_list_function_id, 'blog_post', '', 'id', '', '', 'blogPostId', 0, 10, 'manual'),
+(@sample08_get_summary_list_function_id, 'blog_post', '', 'title', '', '', 'blogPostTitle', 0, 20, 'manual'),
+(@sample08_get_summary_list_function_id, 'blog_author', '', 'id', '', '', 'blogAuthorId', 0, 30, 'manual'),
+(@sample08_get_summary_list_function_id, 'blog_author', '', 'name', '', '', 'blogAuthorName', 0, 40, 'manual');
 
 INSERT INTO project_db_access_function_select_wheres (
     db_access_function_id,
@@ -147,9 +147,9 @@ INSERT INTO project_db_access_function_select_wheres (
     where_order,
     source_of_truth
 ) VALUES
-(@sample08_get_summary_list_function_id, 'BlogPost', '', 'BlogAuthorId', 'anotherfield', '', '', 'BlogAuthor', '', 'Id', 'inner', '', '=', 10, 'manual'),
-(@sample08_get_summary_list_function_id, 'BlogPost', '', 'Status', 'fixed', '', 'published', '', '', '', '', '', '=', 20, 'manual'),
-(@sample08_get_summary_list_function_id, 'BlogAuthor', '', 'IsActive', 'fixed', 'raw', '1', '', '', '', '', '', '=', 30, 'manual');
+(@sample08_get_summary_list_function_id, 'blog_post', '', 'blog_author_id', 'anotherfield', '', '', 'blog_author', '', 'id', 'inner', '', '=', 10, 'manual'),
+(@sample08_get_summary_list_function_id, 'blog_post', '', 'status', 'fixed', '', 'published', '', '', '', '', '', '=', 20, 'manual'),
+(@sample08_get_summary_list_function_id, 'blog_author', '', 'is_active', 'fixed', 'raw', '1', '', '', '', '', '', '=', 30, 'manual');
 
 SET @sample08_project_id = NULL;
 SET @sample08_db_access_class_id = NULL;

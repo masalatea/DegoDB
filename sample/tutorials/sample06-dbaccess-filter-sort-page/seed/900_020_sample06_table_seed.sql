@@ -81,20 +81,20 @@ WHERE ProjectPID = @sample06_project_id;
 DELETE FROM dbtable
 WHERE ProjectPID = @sample06_project_id;
 
-DROP TABLE IF EXISTS Announcement;
+DROP TABLE IF EXISTS announcement;
 
-CREATE TABLE Announcement (
-    Id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
-    Title VARCHAR(255) NOT NULL,
-    Status VARCHAR(20) NOT NULL DEFAULT 'draft',
-    PublishedAt DATETIME NULL,
-    PRIMARY KEY (Id)
+CREATE TABLE announcement (
+    id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+    title VARCHAR(255) NOT NULL,
+    status VARCHAR(20) NOT NULL DEFAULT 'draft',
+    published_at DATETIME NULL,
+    PRIMARY KEY (id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
-INSERT INTO Announcement (
-    Title,
-    Status,
-    PublishedAt
+INSERT INTO announcement (
+    title,
+    status,
+    published_at
 ) VALUES
     ('Welcome Release', 'published', '2026-05-20 09:00:00'),
     ('Planned Maintenance', 'draft', NULL),

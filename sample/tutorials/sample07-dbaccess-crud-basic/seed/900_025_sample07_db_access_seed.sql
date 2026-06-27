@@ -80,7 +80,7 @@ INSERT INTO project_db_access_classes (
     last_detected_data_file
 ) VALUES (
     @sample07_project_id,
-    'TodoItem',
+    'todo_item',
     '',
     0,
     'Basic CRUD DBAccess sample for a single imported TodoItem table.',
@@ -120,7 +120,7 @@ INSERT INTO project_db_access_functions (
     '',
     'INSERT',
     'TodoItem',
-    'TodoItem',
+    'todo_item',
     'classobject',
     0,
     '',
@@ -142,7 +142,7 @@ INSERT INTO project_db_access_functions (
     '',
     'UPDATE',
     'TodoItem',
-    'TodoItem',
+    'todo_item',
     'classobject',
     0,
     '',
@@ -164,7 +164,7 @@ INSERT INTO project_db_access_functions (
     '',
     'DELETE',
     'TodoItem',
-    'TodoItem',
+    'todo_item',
     'classobject',
     0,
     '',
@@ -210,9 +210,9 @@ INSERT INTO project_db_access_function_insert_target_fields (
     field_list_order,
     source_of_truth
 ) VALUES
-(@sample07_insert_todo_item_function_id, 'Title', 'argument', '', '', 10, 'manual'),
-(@sample07_insert_todo_item_function_id, 'Status', 'argument', '', '', 20, 'manual'),
-(@sample07_insert_todo_item_function_id, 'Body', 'argument', '', '', 30, 'manual');
+(@sample07_insert_todo_item_function_id, 'title', 'argument', '', '', 10, 'manual'),
+(@sample07_insert_todo_item_function_id, 'status', 'argument', '', '', 20, 'manual'),
+(@sample07_insert_todo_item_function_id, 'body', 'argument', '', '', 30, 'manual');
 
 INSERT INTO project_db_access_function_update_target_fields (
     db_access_function_id,
@@ -223,9 +223,9 @@ INSERT INTO project_db_access_function_update_target_fields (
     field_list_order,
     source_of_truth
 ) VALUES
-(@sample07_update_todo_item_function_id, 'Title', 'argument', '', '', 10, 'manual'),
-(@sample07_update_todo_item_function_id, 'Status', 'argument', '', '', 20, 'manual'),
-(@sample07_update_todo_item_function_id, 'Body', 'argument', '', '', 30, 'manual');
+(@sample07_update_todo_item_function_id, 'title', 'argument', '', '', 10, 'manual'),
+(@sample07_update_todo_item_function_id, 'status', 'argument', '', '', 20, 'manual'),
+(@sample07_update_todo_item_function_id, 'body', 'argument', '', '', 30, 'manual');
 
 INSERT INTO project_db_access_function_update_delete_wheres (
     db_access_function_id,
@@ -238,8 +238,8 @@ INSERT INTO project_db_access_function_update_delete_wheres (
     where_order,
     source_of_truth
 ) VALUES
-(@sample07_update_todo_item_function_id, 'Id', 'argument', '', '', '', '=', 10, 'manual'),
-(@sample07_delete_todo_item_function_id, 'Id', 'argument', '', '', '', '=', 10, 'manual');
+(@sample07_update_todo_item_function_id, 'id', 'argument', '', '', '', '=', 10, 'manual'),
+(@sample07_delete_todo_item_function_id, 'id', 'argument', '', '', '', '=', 10, 'manual');
 
 SET @sample07_project_id = NULL;
 SET @sample07_db_access_class_id = NULL;

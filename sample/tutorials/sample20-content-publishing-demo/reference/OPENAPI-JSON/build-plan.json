@@ -10,7 +10,7 @@
     "unresolved_auth_count": 0,
     "operations": [
         {
-            "source_name": "ContentArticle",
+            "source_name": "content_article",
             "function_name": "GetPublishedContentArticleList",
             "endpoint_filename": "proxyserver-ContentArticle-GetPublishedContentArticleList.php",
             "auth_strategy": "no-security",
@@ -27,7 +27,7 @@
             }
         },
         {
-            "source_name": "ContentArticle",
+            "source_name": "content_article",
             "function_name": "GetPublishedContentArticle",
             "endpoint_filename": "proxyserver-ContentArticle-GetPublishedContentArticle.php",
             "auth_strategy": "no-security",
@@ -38,8 +38,8 @@
                     "parameter_name": "param_ContentArticle_Slug_where",
                     "datatype": "varchar",
                     "source": "select-where-parameter-data-type",
-                    "target_table_name": "ContentArticle",
-                    "target_table_column_name": "Slug"
+                    "target_table_name": "content_article",
+                    "target_table_column_name": "slug"
                 }
             }
         }

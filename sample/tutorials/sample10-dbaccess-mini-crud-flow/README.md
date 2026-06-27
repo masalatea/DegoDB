@@ -2,9 +2,10 @@
 
 - canonical project key: `SAMPLE10`
 - 役割: `project -> live schema import -> data class sync -> db access output` を、1 table + 1 DB Access class + `list + detail + create + update + delete` 5 function で確認する tutorial sample pack
-- seed は `SAMPLE10` project と、source schema 側の物理 `SupportTicket` table、canonical `project_db_access_*` metadata 1 class / 5 function / select target fields / select wheres / insert target fields / update target fields / update-delete where、`DATACLASS-PHP` / `DBACCESS-PHP` source output definition を作る
+- seed は `SAMPLE10` project と、source schema 側の物理 `support_ticket` table、canonical `project_db_access_*` metadata 1 class / 5 function / select target fields / select wheres / insert target fields / update target fields / update-delete where、`DATACLASS-PHP` / `DBACCESS-PHP` source output definition を作る
 - canonical `dbtable` / `dataclass` metadata は seed しない。table import と data class sync で current metadata を作る前提
-- `GetSupportTicketList` は `Status` argument filter + `limit` を持つ list function、`GetSupportTicket` は `Id` 1 本の detail function、`InsertSupportTicket` / `UpdateSupportTicket` / `DeleteSupportTicket` は write flow を担当する
+- `GetSupportTicketList` は `status` argument filter + `limit` を持つ list function、`GetSupportTicket` は `id` 1 本の detail function、`InsertSupportTicket` / `UpdateSupportTicket` / `DeleteSupportTicket` は write flow を担当する
+- この sample は physical DB name を `snake_case`、generated PHP class/file surface を `SupportTicket` 系に分ける first migrated sample として `physical-logical-v1` generated-name policy で検証する
 - durable input: `seed/`
 - durable actual output sample: `reference/DATACLASS-PHP/data-SupportTicket.php`, `reference/DATACLASS-PHP/base/data-SupportTicketBase.php`, `reference/DBACCESS-PHP/dbaccess-SupportTicket.php`, `reference/DBACCESS-PHP/base/dbaccess-SupportTicketBase.php`
 - disposable runtime root: `work/sample-packs/sample10-dbaccess-mini-crud-flow/`
@@ -44,16 +45,16 @@ APP_CONFIG_STORE_DIR=work/config-store-sample10-sqlite \
 
 seed される代表 row:
 
-- `SupportTicket`
-  - `Status=open`, `Title=Seed runtime sample`, `AssignedTo=Alice`, `UpdatedAt=2026-05-22 09:00:00`
-  - `Status=in_progress`, `Title=Verify tutorial output`, `AssignedTo=Bob`, `UpdatedAt=2026-05-22 11:30:00`
-  - `Status=done`, `Title=Archive stale sample docs`, `AssignedTo=''`, `UpdatedAt=2026-05-21 18:15:00`
+- `support_ticket`
+  - `status=open`, `title=Seed runtime sample`, `assigned_to=Alice`, `updated_at=2026-05-22 09:00:00`
+  - `status=in_progress`, `title=Verify tutorial output`, `assigned_to=Bob`, `updated_at=2026-05-22 11:30:00`
+  - `status=done`, `title=Archive stale sample docs`, `assigned_to=''`, `updated_at=2026-05-21 18:15:00`
 
 最小フロー:
 
 ```bash
 docker compose -f compose.yaml -f compose.local-db-config.yaml -f sample/tutorials/sample10-dbaccess-mini-crud-flow/compose.yaml exec -T web-admin \
-  php /var/www/mtool/scripts/import_project_tables.php --project-key=SAMPLE10 --source=live-schema --table=SupportTicket
+  php /var/www/mtool/scripts/import_project_tables.php --project-key=SAMPLE10 --source=live-schema --table=support_ticket
 
 docker compose -f compose.yaml -f compose.local-db-config.yaml -f sample/tutorials/sample10-dbaccess-mini-crud-flow/compose.yaml exec -T web-admin \
   php /var/www/mtool/scripts/sync_project_data_classes.php --project-key=SAMPLE10

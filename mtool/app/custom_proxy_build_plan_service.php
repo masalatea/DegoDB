@@ -33,6 +33,12 @@ function app_custom_proxy_build_plan_resolve_step_reference(
     }
 
     $entity = app_generated_catalog_find_entity($generatedCatalog, $normalizedSourceName);
+    if ($entity === null && app_generated_name_policy_uses_physical_logical_names()) {
+        $outputSourceName = app_generated_name_map_for_physical_name($normalizedSourceName, 'class')['generated_name'];
+        if ($outputSourceName !== $normalizedSourceName) {
+            $entity = app_generated_catalog_find_entity($generatedCatalog, $outputSourceName);
+        }
+    }
     if ($entity === null) {
         return [
             'resolved' => false,

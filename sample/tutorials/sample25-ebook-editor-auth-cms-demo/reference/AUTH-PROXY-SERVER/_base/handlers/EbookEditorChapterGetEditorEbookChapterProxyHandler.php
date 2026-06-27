@@ -6,7 +6,7 @@ class EbookEditorChapterGetEditorEbookChapterProxyHandlerBase extends MtoolGener
 {
     protected function proxyDisplayName(): string
     {
-        return 'EbookEditorChapter.GetEditorEbookChapter';
+        return 'ebook_editor_chapter.GetEditorEbookChapter';
     }
 
     protected function usesTransaction(): bool
@@ -42,7 +42,7 @@ class EbookEditorChapterGetEditorEbookChapterProxyHandlerBase extends MtoolGener
                 'step_no' => 1,
                 'request_key' => '',
                 'is_list' => false,
-                'source_name' => 'EbookEditorChapter',
+                'source_name' => 'ebook_editor_chapter',
                 'dbaccess_class' => 'EbookEditorChapterDBAccess',
                 'function_name' => 'GetEditorEbookChapter',
                 'action' => 'select-single',

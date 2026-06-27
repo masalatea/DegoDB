@@ -16,102 +16,102 @@ WHERE ProjectPID = @sample23_project_id;
 DELETE FROM dbtable
 WHERE ProjectPID = @sample23_project_id;
 
-DROP TABLE IF EXISTS EbookMediaDelivery;
-DROP TABLE IF EXISTS EbookMediaBookAsset;
-DROP TABLE IF EXISTS EbookMediaAsset;
-DROP TABLE IF EXISTS EbookMediaBook;
+DROP TABLE IF EXISTS ebook_media_delivery;
+DROP TABLE IF EXISTS ebook_media_book_asset;
+DROP TABLE IF EXISTS ebook_media_asset;
+DROP TABLE IF EXISTS ebook_media_book;
 
-CREATE TABLE EbookMediaBook (
-    Id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
-    Title VARCHAR(255) NOT NULL,
-    Slug VARCHAR(180) NOT NULL,
-    Status VARCHAR(32) NOT NULL DEFAULT 'draft',
-    PublishedAt DATETIME DEFAULT NULL,
-    PRIMARY KEY (Id),
-    UNIQUE KEY uq_ebook_media_book_slug (Slug),
-    KEY idx_ebook_media_book_status_published_at (Status, PublishedAt)
+CREATE TABLE ebook_media_book (
+    id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+    title VARCHAR(255) NOT NULL,
+    slug VARCHAR(180) NOT NULL,
+    status VARCHAR(32) NOT NULL DEFAULT 'draft',
+    published_at DATETIME DEFAULT NULL,
+    PRIMARY KEY (id),
+    UNIQUE KEY uq_ebook_media_book_slug (slug),
+    KEY idx_ebook_media_book_status_published_at (status, published_at)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
-CREATE TABLE EbookMediaAsset (
-    Id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
-    AssetSlug VARCHAR(180) NOT NULL,
-    AssetKind VARCHAR(32) NOT NULL,
-    DisplayName VARCHAR(255) NOT NULL,
-    PublicUrl VARCHAR(500) NOT NULL,
-    StoragePath VARCHAR(500) NOT NULL,
-    MimeType VARCHAR(120) NOT NULL,
-    FileSizeBytes BIGINT UNSIGNED NOT NULL DEFAULT 0,
-    Sha256 VARCHAR(64) NOT NULL,
-    VersionLabel VARCHAR(80) NOT NULL DEFAULT '',
-    Status VARCHAR(32) NOT NULL DEFAULT 'draft',
-    UpdatedAt DATETIME NOT NULL,
-    PRIMARY KEY (Id),
-    UNIQUE KEY uq_ebook_media_asset_slug (AssetSlug),
-    KEY idx_ebook_media_asset_kind_status (AssetKind, Status)
+CREATE TABLE ebook_media_asset (
+    id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+    asset_slug VARCHAR(180) NOT NULL,
+    asset_kind VARCHAR(32) NOT NULL,
+    display_name VARCHAR(255) NOT NULL,
+    public_url VARCHAR(500) NOT NULL,
+    storage_path VARCHAR(500) NOT NULL,
+    mime_type VARCHAR(120) NOT NULL,
+    file_size_bytes BIGINT UNSIGNED NOT NULL DEFAULT 0,
+    sha256 VARCHAR(64) NOT NULL,
+    version_label VARCHAR(80) NOT NULL DEFAULT '',
+    status VARCHAR(32) NOT NULL DEFAULT 'draft',
+    updated_at DATETIME NOT NULL,
+    PRIMARY KEY (id),
+    UNIQUE KEY uq_ebook_media_asset_slug (asset_slug),
+    KEY idx_ebook_media_asset_kind_status (asset_kind, status)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
-CREATE TABLE EbookMediaBookAsset (
-    Id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
-    EbookMediaBookId BIGINT UNSIGNED NOT NULL,
-    EbookMediaAssetId BIGINT UNSIGNED NOT NULL,
-    DisplayRole VARCHAR(32) NOT NULL,
-    SortOrder INT NOT NULL DEFAULT 1,
-    IsPrimaryAsset TINYINT(1) NOT NULL DEFAULT 0,
-    PRIMARY KEY (Id),
-    UNIQUE KEY uq_ebook_media_book_asset_role (EbookMediaBookId, DisplayRole, EbookMediaAssetId),
-    KEY idx_ebook_media_book_asset_book_sort (EbookMediaBookId, SortOrder),
+CREATE TABLE ebook_media_book_asset (
+    id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+    ebook_media_book_id BIGINT UNSIGNED NOT NULL,
+    ebook_media_asset_id BIGINT UNSIGNED NOT NULL,
+    display_role VARCHAR(32) NOT NULL,
+    sort_order INT NOT NULL DEFAULT 1,
+    is_primary_asset TINYINT(1) NOT NULL DEFAULT 0,
+    PRIMARY KEY (id),
+    UNIQUE KEY uq_ebook_media_book_asset_role (ebook_media_book_id, display_role, ebook_media_asset_id),
+    KEY idx_ebook_media_book_asset_book_sort (ebook_media_book_id, sort_order),
     CONSTRAINT fk_ebook_media_book_asset_book
-        FOREIGN KEY (EbookMediaBookId)
-        REFERENCES EbookMediaBook (Id),
+        FOREIGN KEY (ebook_media_book_id)
+        REFERENCES ebook_media_book (id),
     CONSTRAINT fk_ebook_media_book_asset_asset
-        FOREIGN KEY (EbookMediaAssetId)
-        REFERENCES EbookMediaAsset (Id)
+        FOREIGN KEY (ebook_media_asset_id)
+        REFERENCES ebook_media_asset (id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
-CREATE TABLE EbookMediaDelivery (
-    DeliveryId BIGINT UNSIGNED NOT NULL,
-    BookId BIGINT UNSIGNED NOT NULL,
-    BookSlug VARCHAR(180) NOT NULL,
-    AssetId BIGINT UNSIGNED NOT NULL,
-    AssetSlug VARCHAR(180) NOT NULL,
-    AssetKind VARCHAR(32) NOT NULL,
-    DisplayRole VARCHAR(32) NOT NULL,
-    DisplayName VARCHAR(255) NOT NULL,
-    PublicUrl VARCHAR(500) NOT NULL,
-    MimeType VARCHAR(120) NOT NULL,
-    FileSizeBytes BIGINT UNSIGNED NOT NULL DEFAULT 0,
-    Sha256 VARCHAR(64) NOT NULL,
-    VersionLabel VARCHAR(80) NOT NULL DEFAULT '',
-    SortOrder INT NOT NULL DEFAULT 1,
-    IsPrimaryAsset TINYINT(1) NOT NULL DEFAULT 0,
-    Status VARCHAR(32) NOT NULL DEFAULT 'published',
-    UpdatedAt DATETIME NOT NULL,
-    PRIMARY KEY (DeliveryId),
-    KEY idx_ebook_media_delivery_book_role (BookSlug, DisplayRole, SortOrder),
-    KEY idx_ebook_media_delivery_asset_slug (AssetSlug)
+CREATE TABLE ebook_media_delivery (
+    delivery_id BIGINT UNSIGNED NOT NULL,
+    book_id BIGINT UNSIGNED NOT NULL,
+    book_slug VARCHAR(180) NOT NULL,
+    asset_id BIGINT UNSIGNED NOT NULL,
+    asset_slug VARCHAR(180) NOT NULL,
+    asset_kind VARCHAR(32) NOT NULL,
+    display_role VARCHAR(32) NOT NULL,
+    display_name VARCHAR(255) NOT NULL,
+    public_url VARCHAR(500) NOT NULL,
+    mime_type VARCHAR(120) NOT NULL,
+    file_size_bytes BIGINT UNSIGNED NOT NULL DEFAULT 0,
+    sha256 VARCHAR(64) NOT NULL,
+    version_label VARCHAR(80) NOT NULL DEFAULT '',
+    sort_order INT NOT NULL DEFAULT 1,
+    is_primary_asset TINYINT(1) NOT NULL DEFAULT 0,
+    status VARCHAR(32) NOT NULL DEFAULT 'published',
+    updated_at DATETIME NOT NULL,
+    PRIMARY KEY (delivery_id),
+    KEY idx_ebook_media_delivery_book_role (book_slug, display_role, sort_order),
+    KEY idx_ebook_media_delivery_asset_slug (asset_slug)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
-INSERT INTO EbookMediaBook (
-    Title,
-    Slug,
-    Status,
-    PublishedAt
+INSERT INTO ebook_media_book (
+    title,
+    slug,
+    status,
+    published_at
 ) VALUES
     ('JSONから始める電子書籍CMS', 'json-first-ebook-cms', 'published', '2026-06-21 09:00:00'),
     ('未公開の販売メモ', 'draft-sales-note', 'draft', NULL);
 
-INSERT INTO EbookMediaAsset (
-    AssetSlug,
-    AssetKind,
-    DisplayName,
-    PublicUrl,
-    StoragePath,
-    MimeType,
-    FileSizeBytes,
-    Sha256,
-    VersionLabel,
-    Status,
-    UpdatedAt
+INSERT INTO ebook_media_asset (
+    asset_slug,
+    asset_kind,
+    display_name,
+    public_url,
+    storage_path,
+    mime_type,
+    file_size_bytes,
+    sha256,
+    version_label,
+    status,
+    updated_at
 ) VALUES
     (
         'json-first-mini-book-epub',
@@ -140,34 +140,34 @@ INSERT INTO EbookMediaAsset (
         '2026-06-19 09:05:00'
     );
 
-INSERT INTO EbookMediaBookAsset (
-    EbookMediaBookId,
-    EbookMediaAssetId,
-    DisplayRole,
-    SortOrder,
-    IsPrimaryAsset
+INSERT INTO ebook_media_book_asset (
+    ebook_media_book_id,
+    ebook_media_asset_id,
+    display_role,
+    sort_order,
+    is_primary_asset
 ) VALUES
     (1, 1, 'download', 1, 1),
     (1, 2, 'cover', 2, 0);
 
-INSERT INTO EbookMediaDelivery (
-    DeliveryId,
-    BookId,
-    BookSlug,
-    AssetId,
-    AssetSlug,
-    AssetKind,
-    DisplayRole,
-    DisplayName,
-    PublicUrl,
-    MimeType,
-    FileSizeBytes,
-    Sha256,
-    VersionLabel,
-    SortOrder,
-    IsPrimaryAsset,
-    Status,
-    UpdatedAt
+INSERT INTO ebook_media_delivery (
+    delivery_id,
+    book_id,
+    book_slug,
+    asset_id,
+    asset_slug,
+    asset_kind,
+    display_role,
+    display_name,
+    public_url,
+    mime_type,
+    file_size_bytes,
+    sha256,
+    version_label,
+    sort_order,
+    is_primary_asset,
+    status,
+    updated_at
 ) VALUES
     (
         1,

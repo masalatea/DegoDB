@@ -12,8 +12,9 @@ require_once dirname(__DIR__, 2) . '/app/sample_pack_catalog.php';
 require_once dirname(__DIR__, 2) . '/app/source_output_repository.php';
 
 const APP_SAMPLE7_DBACCESS_CRUD_BASIC_PROJECT_KEY = 'SAMPLE07';
-const APP_SAMPLE7_DBACCESS_CRUD_BASIC_TABLE_NAME = 'TodoItem';
-const APP_SAMPLE7_DBACCESS_CRUD_BASIC_SOURCE_NAME = 'TodoItem';
+const APP_SAMPLE7_DBACCESS_CRUD_BASIC_TABLE_NAME = 'todo_item';
+const APP_SAMPLE7_DBACCESS_CRUD_BASIC_SOURCE_NAME = 'todo_item';
+const APP_SAMPLE7_DBACCESS_CRUD_BASIC_DATA_CLASS_BASE_NAME = 'TodoItem';
 const APP_SAMPLE7_DBACCESS_CRUD_BASIC_INSERT_FUNCTION_NAME = 'InsertTodoItem';
 const APP_SAMPLE7_DBACCESS_CRUD_BASIC_UPDATE_FUNCTION_NAME = 'UpdateTodoItem';
 const APP_SAMPLE7_DBACCESS_CRUD_BASIC_DELETE_FUNCTION_NAME = 'DeleteTodoItem';
@@ -27,9 +28,9 @@ const APP_SAMPLE7_DBACCESS_CRUD_BASIC_REFERENCE_SOURCE_OUTPUT_KEYS = [
     'DBACCESS-PHP',
 ];
 const APP_SAMPLE7_DBACCESS_CRUD_BASIC_WRITE_TARGET_FIELDS = [
-    'Title',
-    'Status',
-    'Body',
+    'title',
+    'status',
+    'body',
 ];
 
 function app_sample7_dbaccess_crud_basic_default_reference_root(): string
@@ -424,7 +425,7 @@ function app_sample7_dbaccess_crud_basic_run(array $app, string $requestedBy, st
         }
 
         app_sample7_dbaccess_crud_basic_assert_same($expected['action_type'], $functionResult['item']['action_type'] ?? '', 'db_access function action_type ' . $functionName, $assertionErrors);
-        app_sample7_dbaccess_crud_basic_assert_same($sourceName, $functionResult['item']['data_class_base_name'] ?? '', 'db_access function data_class_base_name ' . $functionName, $assertionErrors);
+        app_sample7_dbaccess_crud_basic_assert_same(APP_SAMPLE7_DBACCESS_CRUD_BASIC_DATA_CLASS_BASE_NAME, $functionResult['item']['data_class_base_name'] ?? '', 'db_access function data_class_base_name ' . $functionName, $assertionErrors);
         app_sample7_dbaccess_crud_basic_assert_same($tableName, $functionResult['item']['target_table_name'] ?? '', 'db_access function target_table_name ' . $functionName, $assertionErrors);
         app_sample7_dbaccess_crud_basic_assert_same($expected['parameter_type'], $functionResult['item']['parameter_type'] ?? '', 'db_access function parameter_type ' . $functionName, $assertionErrors);
         app_sample7_dbaccess_crud_basic_assert_same($expected['detected_signature'], $functionResult['item']['detected_signature'] ?? '', 'db_access function detected_signature ' . $functionName, $assertionErrors);
@@ -525,7 +526,7 @@ function app_sample7_dbaccess_crud_basic_run(array $app, string $requestedBy, st
             }
 
             app_sample7_dbaccess_crud_basic_assert_same($expected['where_count'], count($updateDeleteWhereResult['items']), 'db_access where count ' . $functionName, $assertionErrors);
-            app_sample7_dbaccess_crud_basic_assert_same('Id', $updateDeleteWhereResult['items'][0]['target_table_column_name'] ?? '', 'db_access where column ' . $functionName, $assertionErrors);
+            app_sample7_dbaccess_crud_basic_assert_same('id', $updateDeleteWhereResult['items'][0]['target_table_column_name'] ?? '', 'db_access where column ' . $functionName, $assertionErrors);
             app_sample7_dbaccess_crud_basic_assert_same('argument', $updateDeleteWhereResult['items'][0]['parameter_type'] ?? '', 'db_access where parameter_type ' . $functionName, $assertionErrors);
             app_sample7_dbaccess_crud_basic_assert_same('=', $updateDeleteWhereResult['items'][0]['relational_operator'] ?? '', 'db_access where relational_operator ' . $functionName, $assertionErrors);
             app_sample7_dbaccess_crud_basic_assert_same('10', $updateDeleteWhereResult['items'][0]['where_order'] ?? '', 'db_access where order ' . $functionName, $assertionErrors);

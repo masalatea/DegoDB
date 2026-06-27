@@ -25,7 +25,7 @@ class BlogPostDBAccessBase
 
         $result = array();
 
-        $last_sql_command_for_mtooldb = 'select BlogPost.Id, BlogPost.Title, BlogAuthor.Id, BlogAuthor.Name from BlogPost join BlogAuthor on BlogPost.BlogAuthorId = BlogAuthor.Id where BlogPost.Status = ? and BlogAuthor.IsActive = 1 order by BlogPost.Id asc';
+        $last_sql_command_for_mtooldb = 'select blog_post.id, blog_post.title, blog_author.id, blog_author.name from blog_post join blog_author on blog_post.blog_author_id = blog_author.id where blog_post.status = ? and blog_author.is_active = 1 order by blog_post.id asc';
         $ret = $mtooldb->execute($last_sql_command_for_mtooldb, [
             'published',
         ]);
@@ -35,10 +35,10 @@ class BlogPostDBAccessBase
         }
         while($thisline=$ret->fetch_row()) {
             $thisresult = new BlogPostAuthorSummaryData();
-            $thisresult->BlogPostId = $thisline[0];
-            $thisresult->BlogPostTitle = $thisline[1];
-            $thisresult->BlogAuthorId = $thisline[2];
-            $thisresult->BlogAuthorName = $thisline[3];
+            $thisresult->blogPostId = $thisline[0];
+            $thisresult->blogPostTitle = $thisline[1];
+            $thisresult->blogAuthorId = $thisline[2];
+            $thisresult->blogAuthorName = $thisline[3];
             array_push($result, $thisresult);
         }
         return $result;

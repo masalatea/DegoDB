@@ -25,7 +25,7 @@ class ArticleDBAccessBase
 
         $result = array();
 
-        $last_sql_command_for_mtooldb = 'select Article.Id, Article.Title, Article.Body from Article order by Article.Id';
+        $last_sql_command_for_mtooldb = 'select article.id, article.title, article.body from article order by article.id';
         $ret = $mtooldb->execute($last_sql_command_for_mtooldb, [
         ]);
         if ($mtooldb->errno != 0) {
@@ -34,9 +34,9 @@ class ArticleDBAccessBase
         }
         while($thisline=$ret->fetch_row()) {
             $thisresult = new ArticleData();
-            $thisresult->Id = $thisline[0];
-            $thisresult->Title = $thisline[1];
-            $thisresult->Body = $thisline[2];
+            $thisresult->id = $thisline[0];
+            $thisresult->title = $thisline[1];
+            $thisresult->body = $thisline[2];
             array_push($result, $thisresult);
         }
         return $result;
@@ -49,7 +49,7 @@ class ArticleDBAccessBase
         connect_mtooldb_if_not_yet();
         reconnect_mtooldb_if_necessary();
 
-        $last_sql_command_for_mtooldb = 'select Article.Id, Article.Title, Article.Body from Article where Article.Id = ?';
+        $last_sql_command_for_mtooldb = 'select article.id, article.title, article.body from article where article.id = ?';
         $ret = $mtooldb->execute($last_sql_command_for_mtooldb, [
             $param_Article_Id_where,
         ]);
@@ -59,9 +59,9 @@ class ArticleDBAccessBase
         }
         while($thisline=$ret->fetch_row()) {
             $thisresult = new ArticleData();
-            $thisresult->Id = $thisline[0];
-            $thisresult->Title = $thisline[1];
-            $thisresult->Body = $thisline[2];
+            $thisresult->id = $thisline[0];
+            $thisresult->title = $thisline[1];
+            $thisresult->body = $thisline[2];
             return $thisresult;
         }
         return NULL;
@@ -74,10 +74,10 @@ class ArticleDBAccessBase
         connect_mtooldb_if_not_yet();
         reconnect_mtooldb_if_necessary();
 
-        $last_sql_command_for_mtooldb = 'insert into Article (Title, Body) values(?, ?)';
+        $last_sql_command_for_mtooldb = 'insert into article (title, body) values(?, ?)';
         $result = $mtooldb->execute($last_sql_command_for_mtooldb, [
-            $ArticleObj->Title,
-            $ArticleObj->Body,
+            $ArticleObj->title,
+            $ArticleObj->body,
         ]);
         if ($mtooldb->errno != 0) {
             error_log("Error occured while executing SQL: " . $mtooldb->error . " in " . __FILE__ . " on line " . __LINE__);
@@ -92,11 +92,11 @@ class ArticleDBAccessBase
         connect_mtooldb_if_not_yet();
         reconnect_mtooldb_if_necessary();
 
-        $last_sql_command_for_mtooldb = 'update Article SET Title = ?, Body = ? where Article.Id = ?';
+        $last_sql_command_for_mtooldb = 'update article SET title = ?, body = ? where article.id = ?';
         $result = $mtooldb->execute($last_sql_command_for_mtooldb, [
-            $ArticleObj->Title,
-            $ArticleObj->Body,
-            $ArticleObj->Id,
+            $ArticleObj->title,
+            $ArticleObj->body,
+            $ArticleObj->id,
         ]);
         if ($mtooldb->errno != 0) {
             error_log("Error occured while executing SQL: " . $mtooldb->error . " in " . __FILE__ . " on line " . __LINE__);
@@ -111,9 +111,9 @@ class ArticleDBAccessBase
         connect_mtooldb_if_not_yet();
         reconnect_mtooldb_if_necessary();
 
-        $last_sql_command_for_mtooldb = 'delete from Article where Article.Id = ?';
+        $last_sql_command_for_mtooldb = 'delete from article where article.id = ?';
         $result = $mtooldb->execute($last_sql_command_for_mtooldb, [
-            $ArticleObj->Id,
+            $ArticleObj->id,
         ]);
         if ($mtooldb->errno != 0) {
             error_log("Error occured while executing SQL: " . $mtooldb->error . " in " . __FILE__ . " on line " . __LINE__);

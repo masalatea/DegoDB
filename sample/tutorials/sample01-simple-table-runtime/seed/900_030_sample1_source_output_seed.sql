@@ -110,7 +110,7 @@ INSERT INTO project_source_outputs (
     'runtime',
     'tar.gz',
     10,
-    'Generate plain PHP data classes from canonical dataclass / dataclassfields metadata after live schema import and sync.',
+    'Generate plain PHP data classes from canonical DataClass / DataClass fields metadata after live schema import and sync.',
     'manual'
 )
 ON DUPLICATE KEY UPDATE

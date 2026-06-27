@@ -25,7 +25,7 @@ class SalesRecordDBAccessBase
 
         $result = array();
 
-        $last_sql_command_for_mtooldb = 'select SalesRecord.SalesCategoryId, SalesCategory.Name, count(SalesRecord.Id), sum(SalesRecord.Amount) from SalesRecord join SalesCategory on SalesRecord.SalesCategoryId = SalesCategory.Id where SalesRecord.Status = ? and SalesCategory.IsActive = 1 group by SalesRecord.SalesCategoryId, SalesCategory.Name having count(SalesRecord.Id) >= 2 and sum(SalesRecord.Amount) >= 100 order by sum(SalesRecord.Amount) desc, SalesRecord.SalesCategoryId asc';
+        $last_sql_command_for_mtooldb = 'select sales_record.sales_category_id, sales_category.name, count(sales_record.id), sum(sales_record.amount) from sales_record join sales_category on sales_record.sales_category_id = sales_category.id where sales_record.status = ? and sales_category.is_active = 1 group by sales_record.sales_category_id, sales_category.name having count(sales_record.id) >= 2 and sum(sales_record.amount) >= 100 order by sum(sales_record.amount) desc, sales_record.sales_category_id asc';
         $ret = $mtooldb->execute($last_sql_command_for_mtooldb, [
             'closed',
         ]);
@@ -35,10 +35,10 @@ class SalesRecordDBAccessBase
         }
         while($thisline=$ret->fetch_row()) {
             $thisresult = new SalesCategoryReportData();
-            $thisresult->SalesCategoryId = $thisline[0];
-            $thisresult->SalesCategoryName = $thisline[1];
-            $thisresult->ClosedSaleCount = $thisline[2];
-            $thisresult->ClosedSaleTotalAmount = $thisline[3];
+            $thisresult->salesCategoryId = $thisline[0];
+            $thisresult->salesCategoryName = $thisline[1];
+            $thisresult->closedSaleCount = $thisline[2];
+            $thisresult->closedSaleTotalAmount = $thisline[3];
             array_push($result, $thisresult);
         }
         return $result;

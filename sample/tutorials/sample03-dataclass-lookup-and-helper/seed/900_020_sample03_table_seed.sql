@@ -25,48 +25,48 @@ WHERE ProjectPID = @sample03_project_id;
 DELETE FROM dbtable
 WHERE ProjectPID = @sample03_project_id;
 
-DROP TABLE IF EXISTS TaskPriority;
-DROP TABLE IF EXISTS TaskStatus;
+DROP TABLE IF EXISTS task_priority;
+DROP TABLE IF EXISTS task_status;
 
-CREATE TABLE TaskStatus (
-    Id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
-    StatusKey VARCHAR(40) NOT NULL,
-    Name VARCHAR(100) NOT NULL,
-    Caption VARCHAR(100) NOT NULL,
-    SortOrder INT NOT NULL DEFAULT 0,
-    IsClosed TINYINT(1) NOT NULL DEFAULT 0,
-    PRIMARY KEY (Id),
-    UNIQUE KEY uq_taskstatus_statuskey (StatusKey)
+CREATE TABLE task_status (
+    id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+    status_key VARCHAR(40) NOT NULL,
+    name VARCHAR(100) NOT NULL,
+    caption VARCHAR(100) NOT NULL,
+    sort_order INT NOT NULL DEFAULT 0,
+    is_closed TINYINT(1) NOT NULL DEFAULT 0,
+    PRIMARY KEY (id),
+    UNIQUE KEY uq_task_status_status_key (status_key)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
-CREATE TABLE TaskPriority (
-    Id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
-    PriorityKey VARCHAR(40) NOT NULL,
-    Name VARCHAR(100) NOT NULL,
-    Caption VARCHAR(100) NOT NULL,
-    SortOrder INT NOT NULL DEFAULT 0,
-    Weight INT NOT NULL DEFAULT 0,
-    PRIMARY KEY (Id),
-    UNIQUE KEY uq_taskpriority_prioritykey (PriorityKey)
+CREATE TABLE task_priority (
+    id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+    priority_key VARCHAR(40) NOT NULL,
+    name VARCHAR(100) NOT NULL,
+    caption VARCHAR(100) NOT NULL,
+    sort_order INT NOT NULL DEFAULT 0,
+    weight INT NOT NULL DEFAULT 0,
+    PRIMARY KEY (id),
+    UNIQUE KEY uq_task_priority_priority_key (priority_key)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
-INSERT INTO TaskStatus (
-    StatusKey,
-    Name,
-    Caption,
-    SortOrder,
-    IsClosed
+INSERT INTO task_status (
+    status_key,
+    name,
+    caption,
+    sort_order,
+    is_closed
 ) VALUES
     ('draft', 'Draft', 'Draft', 10, 0),
     ('ready', 'Ready', 'Ready', 20, 0),
     ('done', 'Done', 'Done', 30, 1);
 
-INSERT INTO TaskPriority (
-    PriorityKey,
-    Name,
-    Caption,
-    SortOrder,
-    Weight
+INSERT INTO task_priority (
+    priority_key,
+    name,
+    caption,
+    sort_order,
+    weight
 ) VALUES
     ('low', 'Low', 'Low', 10, 10),
     ('normal', 'Normal', 'Normal', 20, 20),

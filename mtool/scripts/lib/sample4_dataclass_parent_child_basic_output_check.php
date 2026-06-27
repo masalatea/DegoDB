@@ -12,8 +12,8 @@ require_once dirname(__DIR__, 2) . '/app/source_output_repository.php';
 
 const APP_SAMPLE4_DATACLASS_PROJECT_KEY = 'SAMPLE04';
 const APP_SAMPLE4_DATACLASS_TABLE_NAMES = [
-    'Post',
-    'PostComment',
+    'post',
+    'post_comment',
 ];
 const APP_SAMPLE4_DATACLASS_REFERENCE_SOURCE_OUTPUT_KEYS = [
     'DATACLASS-PHP',

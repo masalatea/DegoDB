@@ -12,9 +12,9 @@
     },
     "items": [
         {
-            "source_name": "EbookEditorChapter",
+            "source_name": "ebook_editor_chapter",
             "function_name": "GetEditorEbookChapter",
-            "display_name": "EbookEditorChapter.GetEditorEbookChapter",
+            "display_name": "ebook_editor_chapter.GetEditorEbookChapter",
             "endpoint_slug": "geteditorebookchapter",
             "function_list_order": "10",
             "action_type": "SELECTSINGLE",
@@ -22,9 +22,9 @@
             "limit_fixed_parameter": "",
             "select_wheres": [
                 {
-                    "target_table_name": "EbookEditorChapter",
+                    "target_table_name": "ebook_editor_chapter",
                     "target_table_alias_name": "",
-                    "target_table_column_name": "Id",
+                    "target_table_column_name": "id",
                     "parameter_type": "argument",
                     "parameter_data_type": "int",
                     "fixed_parameter": "",
@@ -56,17 +56,17 @@
                 "secret_env": ""
             },
             "source_of_truth": "manual",
-            "function_updated_at": "2026-06-19 21:53:24",
-            "target_updated_at": "2026-06-19 21:53:25",
+            "function_updated_at": "2026-06-27 00:41:30",
+            "target_updated_at": "2026-06-27 00:41:31",
             "resolved": true,
             "signature": "public function GetEditorEbookChapter($param_EbookEditorChapter_Id_where)",
             "line": 10,
             "resolution_error": ""
         },
         {
-            "source_name": "EbookEditorChapter",
+            "source_name": "ebook_editor_chapter",
             "function_name": "UpdateEditorEbookChapterDraft",
-            "display_name": "EbookEditorChapter.UpdateEditorEbookChapterDraft",
+            "display_name": "ebook_editor_chapter.UpdateEditorEbookChapterDraft",
             "endpoint_slug": "updateeditorebookchapterdraft",
             "function_list_order": "20",
             "action_type": "UPDATE",
@@ -92,17 +92,17 @@
                 "secret_env": ""
             },
             "source_of_truth": "manual",
-            "function_updated_at": "2026-06-19 21:53:24",
-            "target_updated_at": "2026-06-19 21:53:25",
+            "function_updated_at": "2026-06-27 00:41:30",
+            "target_updated_at": "2026-06-27 00:41:31",
             "resolved": true,
             "signature": "public function UpdateEditorEbookChapterDraft($EbookEditorChapterObj)",
             "line": 20,
             "resolution_error": ""
         },
         {
-            "source_name": "EbookEditorChapter",
+            "source_name": "ebook_editor_chapter",
             "function_name": "PublishEditorEbookChapter",
-            "display_name": "EbookEditorChapter.PublishEditorEbookChapter",
+            "display_name": "ebook_editor_chapter.PublishEditorEbookChapter",
             "endpoint_slug": "publisheditorebookchapter",
             "function_list_order": "30",
             "action_type": "UPDATE",
@@ -128,8 +128,8 @@
                 "secret_env": ""
             },
             "source_of_truth": "manual",
-            "function_updated_at": "2026-06-19 21:53:24",
-            "target_updated_at": "2026-06-19 21:53:25",
+            "function_updated_at": "2026-06-27 00:41:30",
+            "target_updated_at": "2026-06-27 00:41:31",
             "resolved": true,
             "signature": "public function PublishEditorEbookChapter($EbookEditorChapterObj)",
             "line": 30,

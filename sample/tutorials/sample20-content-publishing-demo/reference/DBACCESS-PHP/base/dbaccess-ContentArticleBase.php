@@ -25,7 +25,7 @@ class ContentArticleDBAccessBase
 
         $result = array();
 
-        $last_sql_command_for_mtooldb = 'select ContentArticle.Id, ContentArticle.Title, ContentArticle.Slug, ContentArticle.CategoryName, ContentArticle.AuthorName, ContentArticle.PublishedAt, ContentArticle.Summary from ContentArticle where ContentArticle.Status = ? order by ContentArticle.PublishedAt desc, ContentArticle.Id desc limit ?';
+        $last_sql_command_for_mtooldb = 'select content_article.id, content_article.title, content_article.slug, content_article.category_name, content_article.author_name, content_article.published_at, content_article.summary from content_article where content_article.status = ? order by content_article.published_at desc, content_article.id desc limit ?';
         $ret = $mtooldb->execute($last_sql_command_for_mtooldb, [
             'published',
             $limit,
@@ -36,13 +36,13 @@ class ContentArticleDBAccessBase
         }
         while($thisline=$ret->fetch_row()) {
             $thisresult = new ContentArticleData();
-            $thisresult->Id = $thisline[0];
-            $thisresult->Title = $thisline[1];
-            $thisresult->Slug = $thisline[2];
-            $thisresult->CategoryName = $thisline[3];
-            $thisresult->AuthorName = $thisline[4];
-            $thisresult->PublishedAt = $thisline[5];
-            $thisresult->Summary = $thisline[6];
+            $thisresult->id = $thisline[0];
+            $thisresult->title = $thisline[1];
+            $thisresult->slug = $thisline[2];
+            $thisresult->categoryName = $thisline[3];
+            $thisresult->authorName = $thisline[4];
+            $thisresult->publishedAt = $thisline[5];
+            $thisresult->summary = $thisline[6];
             array_push($result, $thisresult);
         }
         return $result;
@@ -55,7 +55,7 @@ class ContentArticleDBAccessBase
         connect_mtooldb_if_not_yet();
         reconnect_mtooldb_if_necessary();
 
-        $last_sql_command_for_mtooldb = 'select ContentArticle.Id, ContentArticle.Title, ContentArticle.Slug, ContentArticle.CategoryName, ContentArticle.AuthorName, ContentArticle.PublishedAt, ContentArticle.Summary, ContentArticle.Body from ContentArticle where ContentArticle.Status = ? and ContentArticle.Slug = ?';
+        $last_sql_command_for_mtooldb = 'select content_article.id, content_article.title, content_article.slug, content_article.category_name, content_article.author_name, content_article.published_at, content_article.summary, content_article.body from content_article where content_article.status = ? and content_article.slug = ?';
         $ret = $mtooldb->execute($last_sql_command_for_mtooldb, [
             'published',
             $param_ContentArticle_Slug_where,
@@ -66,14 +66,14 @@ class ContentArticleDBAccessBase
         }
         while($thisline=$ret->fetch_row()) {
             $thisresult = new ContentArticleData();
-            $thisresult->Id = $thisline[0];
-            $thisresult->Title = $thisline[1];
-            $thisresult->Slug = $thisline[2];
-            $thisresult->CategoryName = $thisline[3];
-            $thisresult->AuthorName = $thisline[4];
-            $thisresult->PublishedAt = $thisline[5];
-            $thisresult->Summary = $thisline[6];
-            $thisresult->Body = $thisline[7];
+            $thisresult->id = $thisline[0];
+            $thisresult->title = $thisline[1];
+            $thisresult->slug = $thisline[2];
+            $thisresult->categoryName = $thisline[3];
+            $thisresult->authorName = $thisline[4];
+            $thisresult->publishedAt = $thisline[5];
+            $thisresult->summary = $thisline[6];
+            $thisresult->body = $thisline[7];
             return $thisresult;
         }
         return NULL;

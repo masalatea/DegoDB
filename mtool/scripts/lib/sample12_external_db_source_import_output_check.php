@@ -14,7 +14,7 @@ require_once dirname(__DIR__, 2) . '/app/source_output_repository.php';
 
 const APP_SAMPLE12_EXTERNAL_DB_PROJECT_KEY = 'SAMPLE12';
 const APP_SAMPLE12_EXTERNAL_DB_SOURCE_KEY = 'sample12_lab';
-const APP_SAMPLE12_EXTERNAL_DB_TABLE_NAME = 'ExternalArticle';
+const APP_SAMPLE12_EXTERNAL_DB_TABLE_NAME = 'external_article';
 const APP_SAMPLE12_EXTERNAL_DB_SOURCE_OUTPUT_KEY = 'DATACLASS-PHP';
 
 function app_sample12_external_db_default_reference_root(): string
@@ -203,27 +203,27 @@ function app_sample12_external_db_prepare_fixture(array $app): array
 
         $labPdo = app_create_pdo_from_db_config(app_database_config($app, 'lab_db'));
         $labPdo->exec(
-            'CREATE TABLE IF NOT EXISTS ExternalArticle (
-                Id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
-                Title VARCHAR(255) NOT NULL,
-                Slug VARCHAR(191) NOT NULL,
-                Status VARCHAR(32) NOT NULL DEFAULT \'draft\',
-                PublishedAt DATETIME DEFAULT NULL,
-                Body TEXT NOT NULL,
-                PRIMARY KEY (Id),
-                UNIQUE KEY uq_external_article_slug (Slug),
-                KEY idx_external_article_status_published (Status, PublishedAt)
+            'CREATE TABLE IF NOT EXISTS external_article (
+                id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+                title VARCHAR(255) NOT NULL,
+                slug VARCHAR(191) NOT NULL,
+                status VARCHAR(32) NOT NULL DEFAULT \'draft\',
+                published_at DATETIME DEFAULT NULL,
+                body TEXT NOT NULL,
+                PRIMARY KEY (id),
+                UNIQUE KEY uq_external_article_slug (slug),
+                KEY idx_external_article_status_published (status, published_at)
             ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci'
         );
 
         $insertStatement = $labPdo->prepare(
-            'INSERT INTO ExternalArticle (Title, Slug, Status, PublishedAt, Body)
+            'INSERT INTO external_article (title, slug, status, published_at, body)
             VALUES (:title, :slug, :status, :published_at, :body)
             ON DUPLICATE KEY UPDATE
-                Title = VALUES(Title),
-                Status = VALUES(Status),
-                PublishedAt = VALUES(PublishedAt),
-                Body = VALUES(Body)'
+                title = VALUES(title),
+                status = VALUES(status),
+                published_at = VALUES(published_at),
+                body = VALUES(body)'
         );
         foreach (
             [

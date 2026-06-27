@@ -10,7 +10,7 @@ require_once dirname(__DIR__, 2) . '/app/sample_pack_catalog.php';
 require_once dirname(__DIR__, 2) . '/app/source_output_repository.php';
 
 const APP_SAMPLE20_CONTENT_PUBLISHING_PROJECT_KEY = 'SAMPLE20';
-const APP_SAMPLE20_CONTENT_PUBLISHING_TABLE_NAME = 'ContentArticle';
+const APP_SAMPLE20_CONTENT_PUBLISHING_TABLE_NAME = 'content_article';
 const APP_SAMPLE20_CONTENT_PUBLISHING_KEYS = [
     'DATACLASS-PHP',
     'DBACCESS-PHP',

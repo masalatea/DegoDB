@@ -8,12 +8,23 @@ final class Sample24EbookPublicReaderSiteDemoTest extends TestCase
 {
     public function testEbookPublicReaderSiteReferenceOutputs(): void
     {
+        $previousPolicy = getenv('MTOOL_GENERATED_NAME_POLICY');
+        putenv('MTOOL_GENERATED_NAME_POLICY=physical-logical-v1');
+
         $app = app_bootstrap();
-        $result = app_sample24_ebook_public_reader_site_run(
-            $app,
-            'phpunit-sample24',
-            app_sample24_ebook_public_reader_site_default_reference_root(),
-        );
+        try {
+            $result = app_sample24_ebook_public_reader_site_run(
+                $app,
+                'phpunit-sample24',
+                app_sample24_ebook_public_reader_site_default_reference_root(),
+            );
+        } finally {
+            if ($previousPolicy === false) {
+                putenv('MTOOL_GENERATED_NAME_POLICY');
+            } else {
+                putenv('MTOOL_GENERATED_NAME_POLICY=' . $previousPolicy);
+            }
+        }
 
         if (!$result['ok']) {
             fwrite(

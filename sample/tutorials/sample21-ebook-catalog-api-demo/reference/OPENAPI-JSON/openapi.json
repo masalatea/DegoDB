@@ -12,21 +12,21 @@
     ],
     "tags": [
         {
-            "name": "EbookCatalogItem",
-            "description": "EbookCatalogItem single-function proxy endpoints."
+            "name": "ebook_catalog_item",
+            "description": "ebook_catalog_item single-function proxy endpoints."
         }
     ],
     "paths": {
         "/proxyserver-EbookCatalogItem-GetPublicEbookBook.php": {
             "post": {
-                "operationId": "EbookCatalogItem_GetPublicEbookBook",
+                "operationId": "ebook_catalog_item_GetPublicEbookBook",
                 "tags": [
-                    "EbookCatalogItem"
+                    "ebook_catalog_item"
                 ],
-                "summary": "EbookCatalogItem.GetPublicEbookBook",
-                "description": "Generated from single-function proxy target metadata.\n\nSource function: `EbookCatalogItem.GetPublicEbookBook`.\n\nAuth policy: 認証を掛けません。",
+                "summary": "ebook_catalog_item.GetPublicEbookBook",
+                "description": "Generated from single-function proxy target metadata.\n\nSource function: `ebook_catalog_item.GetPublicEbookBook`.\n\nAuth policy: 認証を掛けません。",
                 "x-mtool": {
-                    "source_name": "EbookCatalogItem",
+                    "source_name": "ebook_catalog_item",
                     "function_name": "GetPublicEbookBook",
                     "endpoint_filename": "proxyserver-EbookCatalogItem-GetPublicEbookBook.php",
                     "auth_strategy": "no-security",
@@ -80,20 +80,20 @@
                                     "_status": "OK",
                                     "Message": "",
                                     "Result": {
-                                        "BookId": "string",
-                                        "BookTitle": "string",
-                                        "BookSlug": "string",
-                                        "Status": "string",
-                                        "SeriesName": "string",
-                                        "SeriesSlug": "string",
-                                        "AuthorName": "string",
-                                        "AuthorSlug": "string",
-                                        "GenreName": "string",
-                                        "GenreSlug": "string",
-                                        "PublishedAt": "string",
-                                        "Summary": "string",
-                                        "EpubStatus": "string",
-                                        "PrimaryEpubUrl": "string"
+                                        "bookId": "string",
+                                        "bookTitle": "string",
+                                        "bookSlug": "string",
+                                        "status": "string",
+                                        "seriesName": "string",
+                                        "seriesSlug": "string",
+                                        "authorName": "string",
+                                        "authorSlug": "string",
+                                        "genreName": "string",
+                                        "genreSlug": "string",
+                                        "publishedAt": "string",
+                                        "summary": "string",
+                                        "epubStatus": "string",
+                                        "primaryEpubUrl": "string"
                                     }
                                 }
                             }
@@ -128,14 +128,14 @@
         },
         "/proxyserver-EbookCatalogItem-GetPublicEbookCatalogList.php": {
             "post": {
-                "operationId": "EbookCatalogItem_GetPublicEbookCatalogList",
+                "operationId": "ebook_catalog_item_GetPublicEbookCatalogList",
                 "tags": [
-                    "EbookCatalogItem"
+                    "ebook_catalog_item"
                 ],
-                "summary": "EbookCatalogItem.GetPublicEbookCatalogList",
-                "description": "Generated from single-function proxy target metadata.\n\nSource function: `EbookCatalogItem.GetPublicEbookCatalogList`.\n\nAuth policy: 認証を掛けません。",
+                "summary": "ebook_catalog_item.GetPublicEbookCatalogList",
+                "description": "Generated from single-function proxy target metadata.\n\nSource function: `ebook_catalog_item.GetPublicEbookCatalogList`.\n\nAuth policy: 認証を掛けません。",
                 "x-mtool": {
-                    "source_name": "EbookCatalogItem",
+                    "source_name": "ebook_catalog_item",
                     "function_name": "GetPublicEbookCatalogList",
                     "endpoint_filename": "proxyserver-EbookCatalogItem-GetPublicEbookCatalogList.php",
                     "auth_strategy": "no-security",
@@ -217,20 +217,20 @@
                                     "Message": "",
                                     "Result": [
                                         {
-                                            "BookId": "string",
-                                            "BookTitle": "string",
-                                            "BookSlug": "string",
-                                            "Status": "string",
-                                            "SeriesName": "string",
-                                            "SeriesSlug": "string",
-                                            "AuthorName": "string",
-                                            "AuthorSlug": "string",
-                                            "GenreName": "string",
-                                            "GenreSlug": "string",
-                                            "PublishedAt": "string",
-                                            "Summary": "string",
-                                            "EpubStatus": "string",
-                                            "PrimaryEpubUrl": "string"
+                                            "bookId": "string",
+                                            "bookTitle": "string",
+                                            "bookSlug": "string",
+                                            "status": "string",
+                                            "seriesName": "string",
+                                            "seriesSlug": "string",
+                                            "authorName": "string",
+                                            "authorSlug": "string",
+                                            "genreName": "string",
+                                            "genreSlug": "string",
+                                            "publishedAt": "string",
+                                            "summary": "string",
+                                            "epubStatus": "string",
+                                            "primaryEpubUrl": "string"
                                         }
                                     ]
                                 }
@@ -271,59 +271,59 @@
                 "type": "object",
                 "title": "EbookCatalogItemData",
                 "properties": {
-                    "BookId": {
+                    "bookId": {
                         "type": "string",
                         "example": "string"
                     },
-                    "BookTitle": {
+                    "bookTitle": {
                         "type": "string",
                         "example": "string"
                     },
-                    "BookSlug": {
+                    "bookSlug": {
                         "type": "string",
                         "example": "string"
                     },
-                    "Status": {
+                    "status": {
                         "type": "string",
                         "example": "string"
                     },
-                    "SeriesName": {
+                    "seriesName": {
                         "type": "string",
                         "example": "string"
                     },
-                    "SeriesSlug": {
+                    "seriesSlug": {
                         "type": "string",
                         "example": "string"
                     },
-                    "AuthorName": {
+                    "authorName": {
                         "type": "string",
                         "example": "string"
                     },
-                    "AuthorSlug": {
+                    "authorSlug": {
                         "type": "string",
                         "example": "string"
                     },
-                    "GenreName": {
+                    "genreName": {
                         "type": "string",
                         "example": "string"
                     },
-                    "GenreSlug": {
+                    "genreSlug": {
                         "type": "string",
                         "example": "string"
                     },
-                    "PublishedAt": {
+                    "publishedAt": {
                         "type": "string",
                         "example": "string"
                     },
-                    "Summary": {
+                    "summary": {
                         "type": "string",
                         "example": "string"
                     },
-                    "EpubStatus": {
+                    "epubStatus": {
                         "type": "string",
                         "example": "string"
                     },
-                    "PrimaryEpubUrl": {
+                    "primaryEpubUrl": {
                         "type": "string",
                         "example": "string"
                     }

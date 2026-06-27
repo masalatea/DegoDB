@@ -64,7 +64,7 @@ INSERT INTO project_db_access_classes (
     last_detected_data_file
 ) VALUES (
     @sample25_project_id,
-    'EbookEditorChapter',
+    'ebook_editor_chapter',
     '',
     0,
     'Editor CMS API sample with ProjectToken protected chapter update and publish functions.',
@@ -97,9 +97,9 @@ INSERT INTO project_db_access_functions (
     detected_line,
     source_of_truth
 ) VALUES
-(@sample25_db_access_class_id, 'GetEditorEbookChapter', 10, '', 'SELECTSINGLE', 'EbookEditorChapter', 'EbookEditorChapter', '', 0, '', 'Get one chapter for editor preview.', '', '', '', 'ProjectToken', '', 0, 'public function GetEditorEbookChapter($param_EbookEditorChapter_Id_where)', 10, 'manual'),
-(@sample25_db_access_class_id, 'UpdateEditorEbookChapterDraft', 20, '', 'UPDATE', 'EbookEditorChapter', 'EbookEditorChapter', 'classobject', 0, '', 'Update editable draft fields for one chapter.', '', '', '', 'ProjectToken', '', 0, 'public function UpdateEditorEbookChapterDraft($EbookEditorChapterObj)', 20, 'manual'),
-(@sample25_db_access_class_id, 'PublishEditorEbookChapter', 30, '', 'UPDATE', 'EbookEditorChapter', 'EbookEditorChapter', 'classobject', 0, '', 'Mark one chapter as published.', '', '', '', 'ProjectToken', '', 0, 'public function PublishEditorEbookChapter($EbookEditorChapterObj)', 30, 'manual');
+(@sample25_db_access_class_id, 'GetEditorEbookChapter', 10, '', 'SELECTSINGLE', 'EbookEditorChapter', 'ebook_editor_chapter', '', 0, '', 'Get one chapter for editor preview.', '', '', '', 'ProjectToken', '', 0, 'public function GetEditorEbookChapter($param_EbookEditorChapter_Id_where)', 10, 'manual'),
+(@sample25_db_access_class_id, 'UpdateEditorEbookChapterDraft', 20, '', 'UPDATE', 'EbookEditorChapter', 'ebook_editor_chapter', 'classobject', 0, '', 'Update editable draft fields for one chapter.', '', '', '', 'ProjectToken', '', 0, 'public function UpdateEditorEbookChapterDraft($EbookEditorChapterObj)', 20, 'manual'),
+(@sample25_db_access_class_id, 'PublishEditorEbookChapter', 30, '', 'UPDATE', 'EbookEditorChapter', 'ebook_editor_chapter', 'classobject', 0, '', 'Mark one chapter as published.', '', '', '', 'ProjectToken', '', 0, 'public function PublishEditorEbookChapter($EbookEditorChapterObj)', 30, 'manual');
 
 SET @sample25_get_chapter_id = (SELECT id FROM project_db_access_functions WHERE db_access_class_id = @sample25_db_access_class_id AND function_name = 'GetEditorEbookChapter');
 SET @sample25_update_chapter_id = (SELECT id FROM project_db_access_functions WHERE db_access_class_id = @sample25_db_access_class_id AND function_name = 'UpdateEditorEbookChapterDraft');
@@ -117,15 +117,15 @@ INSERT INTO project_db_access_function_select_target_fields (
     field_list_order,
     source_of_truth
 ) VALUES
-(@sample25_get_chapter_id, 'EbookEditorChapter', '', 'Id', '', '', 'Id', 0, 10, 'manual'),
-(@sample25_get_chapter_id, 'EbookEditorChapter', '', 'EbookEditorBookId', '', '', 'EbookEditorBookId', 0, 20, 'manual'),
-(@sample25_get_chapter_id, 'EbookEditorChapter', '', 'ChapterTitle', '', '', 'ChapterTitle', 0, 30, 'manual'),
-(@sample25_get_chapter_id, 'EbookEditorChapter', '', 'ChapterSlug', '', '', 'ChapterSlug', 0, 40, 'manual'),
-(@sample25_get_chapter_id, 'EbookEditorChapter', '', 'Status', '', '', 'Status', 0, 50, 'manual'),
-(@sample25_get_chapter_id, 'EbookEditorChapter', '', 'SpineOrder', '', '', 'SpineOrder', 0, 60, 'manual'),
-(@sample25_get_chapter_id, 'EbookEditorChapter', '', 'BodyMarkdown', '', '', 'BodyMarkdown', 0, 70, 'manual'),
-(@sample25_get_chapter_id, 'EbookEditorChapter', '', 'PublishedAt', '', '', 'PublishedAt', 0, 80, 'manual'),
-(@sample25_get_chapter_id, 'EbookEditorChapter', '', 'UpdatedAt', '', '', 'UpdatedAt', 0, 90, 'manual');
+(@sample25_get_chapter_id, 'ebook_editor_chapter', '', 'id', '', '', 'id', 0, 10, 'manual'),
+(@sample25_get_chapter_id, 'ebook_editor_chapter', '', 'ebook_editor_book_id', '', '', 'ebookEditorBookId', 0, 20, 'manual'),
+(@sample25_get_chapter_id, 'ebook_editor_chapter', '', 'chapter_title', '', '', 'chapterTitle', 0, 30, 'manual'),
+(@sample25_get_chapter_id, 'ebook_editor_chapter', '', 'chapter_slug', '', '', 'chapterSlug', 0, 40, 'manual'),
+(@sample25_get_chapter_id, 'ebook_editor_chapter', '', 'status', '', '', 'status', 0, 50, 'manual'),
+(@sample25_get_chapter_id, 'ebook_editor_chapter', '', 'spine_order', '', '', 'spineOrder', 0, 60, 'manual'),
+(@sample25_get_chapter_id, 'ebook_editor_chapter', '', 'body_markdown', '', '', 'bodyMarkdown', 0, 70, 'manual'),
+(@sample25_get_chapter_id, 'ebook_editor_chapter', '', 'published_at', '', '', 'publishedAt', 0, 80, 'manual'),
+(@sample25_get_chapter_id, 'ebook_editor_chapter', '', 'updated_at', '', '', 'updatedAt', 0, 90, 'manual');
 
 INSERT INTO project_db_access_function_select_wheres (
     db_access_function_id,
@@ -144,7 +144,7 @@ INSERT INTO project_db_access_function_select_wheres (
     where_order,
     source_of_truth
 ) VALUES
-(@sample25_get_chapter_id, 'EbookEditorChapter', '', 'Id', 'argument', 'int', '', '', '', '', '', '', '=', 10, 'manual');
+(@sample25_get_chapter_id, 'ebook_editor_chapter', '', 'id', 'argument', 'int', '', '', '', '', '', '', '=', 10, 'manual');
 
 INSERT INTO project_db_access_function_update_target_fields (
     db_access_function_id,
@@ -155,14 +155,14 @@ INSERT INTO project_db_access_function_update_target_fields (
     field_list_order,
     source_of_truth
 ) VALUES
-(@sample25_update_chapter_id, 'ChapterTitle', 'argument', '', '', 10, 'manual'),
-(@sample25_update_chapter_id, 'ChapterSlug', 'argument', '', '', 20, 'manual'),
-(@sample25_update_chapter_id, 'SpineOrder', 'argument', '', '', 30, 'manual'),
-(@sample25_update_chapter_id, 'BodyMarkdown', 'argument', '', '', 40, 'manual'),
-(@sample25_update_chapter_id, 'UpdatedAt', 'fixed', 'raw', 'NOW()', 50, 'manual'),
-(@sample25_publish_chapter_id, 'Status', 'fixed', 'varchar', 'published', 10, 'manual'),
-(@sample25_publish_chapter_id, 'PublishedAt', 'fixed', 'raw', 'NOW()', 20, 'manual'),
-(@sample25_publish_chapter_id, 'UpdatedAt', 'fixed', 'raw', 'NOW()', 30, 'manual');
+(@sample25_update_chapter_id, 'chapter_title', 'argument', '', '', 10, 'manual'),
+(@sample25_update_chapter_id, 'chapter_slug', 'argument', '', '', 20, 'manual'),
+(@sample25_update_chapter_id, 'spine_order', 'argument', '', '', 30, 'manual'),
+(@sample25_update_chapter_id, 'body_markdown', 'argument', '', '', 40, 'manual'),
+(@sample25_update_chapter_id, 'updated_at', 'fixed', 'raw', 'NOW()', 50, 'manual'),
+(@sample25_publish_chapter_id, 'status', 'fixed', 'varchar', 'published', 10, 'manual'),
+(@sample25_publish_chapter_id, 'published_at', 'fixed', 'raw', 'NOW()', 20, 'manual'),
+(@sample25_publish_chapter_id, 'updated_at', 'fixed', 'raw', 'NOW()', 30, 'manual');
 
 INSERT INTO project_db_access_function_update_delete_wheres (
     db_access_function_id,
@@ -175,8 +175,8 @@ INSERT INTO project_db_access_function_update_delete_wheres (
     where_order,
     source_of_truth
 ) VALUES
-(@sample25_update_chapter_id, 'Id', 'argument', '', '', '', '=', 10, 'manual'),
-(@sample25_publish_chapter_id, 'Id', 'argument', '', '', '', '=', 10, 'manual');
+(@sample25_update_chapter_id, 'id', 'argument', '', '', '', '=', 10, 'manual'),
+(@sample25_publish_chapter_id, 'id', 'argument', '', '', '', '=', 10, 'manual');
 
 SET @sample25_project_id = NULL;
 SET @sample25_db_access_class_id = NULL;

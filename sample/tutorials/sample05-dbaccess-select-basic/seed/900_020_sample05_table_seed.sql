@@ -81,20 +81,20 @@ WHERE ProjectPID = @sample05_project_id;
 DELETE FROM dbtable
 WHERE ProjectPID = @sample05_project_id;
 
-DROP TABLE IF EXISTS Notice;
+DROP TABLE IF EXISTS notice;
 
-CREATE TABLE Notice (
-    Id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
-    Title VARCHAR(255) NOT NULL,
-    Body TEXT NOT NULL,
-    SortOrder INT NOT NULL DEFAULT 0,
-    PRIMARY KEY (Id)
+CREATE TABLE notice (
+    id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+    title VARCHAR(255) NOT NULL,
+    body TEXT NOT NULL,
+    sort_order INT NOT NULL DEFAULT 0,
+    PRIMARY KEY (id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
-INSERT INTO Notice (
-    Title,
-    Body,
-    SortOrder
+INSERT INTO notice (
+    title,
+    body,
+    sort_order
 ) VALUES
     ('Maintenance Window', 'The service will be offline on Saturday night.', 10),
     ('Release Notes', 'Version 1.2 is now available for all users.', 20);

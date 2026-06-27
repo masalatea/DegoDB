@@ -8,11 +8,22 @@ final class Sample12ExternalDbSourceImportOutputTest extends TestCase
 {
     public function testExternalSourceImportOutputStaysInSync(): void
     {
-        $result = app_sample12_external_db_run(
-            app_bootstrap(),
-            'phpunit',
-            app_sample12_external_db_default_reference_root(),
-        );
+        $previousPolicy = getenv('MTOOL_GENERATED_NAME_POLICY');
+        putenv('MTOOL_GENERATED_NAME_POLICY=physical-logical-v1');
+
+        try {
+            $result = app_sample12_external_db_run(
+                app_bootstrap(),
+                'phpunit',
+                app_sample12_external_db_default_reference_root(),
+            );
+        } finally {
+            if ($previousPolicy === false) {
+                putenv('MTOOL_GENERATED_NAME_POLICY');
+            } else {
+                putenv('MTOOL_GENERATED_NAME_POLICY=' . $previousPolicy);
+            }
+        }
 
         self::assertTrue($result['ok'], $this->failureMessageFromResult($result));
         self::assertSame('sample12_lab', (string) ($result['steps']['database_source']['source_key'] ?? ''));

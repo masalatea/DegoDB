@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 require_once __DIR__ . '/generated_catalog.php';
+require_once __DIR__ . '/generated_name.php';
 require_once __DIR__ . '/domain_validation.php';
 
 function app_custom_proxy_display_name(string $basename, string $name): string
@@ -83,6 +84,12 @@ function app_custom_proxy_find_generated_function(
     }
 
     $entity = app_generated_catalog_find_entity($generatedCatalog, $sourceName);
+    if ($entity === null && app_generated_name_policy_uses_physical_logical_names()) {
+        $outputSourceName = app_generated_name_map_for_physical_name($sourceName, 'class')['generated_name'];
+        if ($outputSourceName !== $sourceName) {
+            $entity = app_generated_catalog_find_entity($generatedCatalog, $outputSourceName);
+        }
+    }
     if ($entity === null) {
         return null;
     }

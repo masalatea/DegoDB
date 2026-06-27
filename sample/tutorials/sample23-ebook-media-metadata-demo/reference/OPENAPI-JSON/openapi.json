@@ -12,21 +12,21 @@
     ],
     "tags": [
         {
-            "name": "EbookMediaAsset",
-            "description": "EbookMediaAsset single-function proxy endpoints."
+            "name": "ebook_media_asset",
+            "description": "ebook_media_asset single-function proxy endpoints."
         }
     ],
     "paths": {
         "/proxyserver-EbookMediaAsset-GetPublicEbookMediaAsset.php": {
             "post": {
-                "operationId": "EbookMediaAsset_GetPublicEbookMediaAsset",
+                "operationId": "ebook_media_asset_GetPublicEbookMediaAsset",
                 "tags": [
-                    "EbookMediaAsset"
+                    "ebook_media_asset"
                 ],
-                "summary": "EbookMediaAsset.GetPublicEbookMediaAsset",
-                "description": "Generated from single-function proxy target metadata.\n\nSource function: `EbookMediaAsset.GetPublicEbookMediaAsset`.\n\nAuth policy: 認証を掛けません。",
+                "summary": "ebook_media_asset.GetPublicEbookMediaAsset",
+                "description": "Generated from single-function proxy target metadata.\n\nSource function: `ebook_media_asset.GetPublicEbookMediaAsset`.\n\nAuth policy: 認証を掛けません。",
                 "x-mtool": {
-                    "source_name": "EbookMediaAsset",
+                    "source_name": "ebook_media_asset",
                     "function_name": "GetPublicEbookMediaAsset",
                     "endpoint_filename": "proxyserver-EbookMediaAsset-GetPublicEbookMediaAsset.php",
                     "auth_strategy": "no-security",
@@ -80,18 +80,18 @@
                                     "_status": "OK",
                                     "Message": "",
                                     "Result": {
-                                        "Id": "string",
-                                        "AssetSlug": "string",
-                                        "AssetKind": "string",
-                                        "DisplayName": "string",
-                                        "PublicUrl": "string",
-                                        "StoragePath": "string",
-                                        "MimeType": "string",
-                                        "FileSizeBytes": "string",
-                                        "Sha256": "string",
-                                        "VersionLabel": "string",
-                                        "Status": "string",
-                                        "UpdatedAt": "string"
+                                        "id": "string",
+                                        "assetSlug": "string",
+                                        "assetKind": "string",
+                                        "displayName": "string",
+                                        "publicUrl": "string",
+                                        "storagePath": "string",
+                                        "mimeType": "string",
+                                        "fileSizeBytes": "string",
+                                        "sha256": "string",
+                                        "versionLabel": "string",
+                                        "status": "string",
+                                        "updatedAt": "string"
                                     }
                                 }
                             }
@@ -126,14 +126,14 @@
         },
         "/proxyserver-EbookMediaAsset-GetPublicEbookMediaDeliveryList.php": {
             "post": {
-                "operationId": "EbookMediaAsset_GetPublicEbookMediaDeliveryList",
+                "operationId": "ebook_media_asset_GetPublicEbookMediaDeliveryList",
                 "tags": [
-                    "EbookMediaAsset"
+                    "ebook_media_asset"
                 ],
-                "summary": "EbookMediaAsset.GetPublicEbookMediaDeliveryList",
-                "description": "Generated from single-function proxy target metadata.\n\nSource function: `EbookMediaAsset.GetPublicEbookMediaDeliveryList`.\n\nAuth policy: 認証を掛けません。",
+                "summary": "ebook_media_asset.GetPublicEbookMediaDeliveryList",
+                "description": "Generated from single-function proxy target metadata.\n\nSource function: `ebook_media_asset.GetPublicEbookMediaDeliveryList`.\n\nAuth policy: 認証を掛けません。",
                 "x-mtool": {
-                    "source_name": "EbookMediaAsset",
+                    "source_name": "ebook_media_asset",
                     "function_name": "GetPublicEbookMediaDeliveryList",
                     "endpoint_filename": "proxyserver-EbookMediaAsset-GetPublicEbookMediaDeliveryList.php",
                     "auth_strategy": "no-security",
@@ -191,18 +191,18 @@
                                     "Message": "",
                                     "Result": [
                                         {
-                                            "Id": "string",
-                                            "AssetSlug": "string",
-                                            "AssetKind": "string",
-                                            "DisplayName": "string",
-                                            "PublicUrl": "string",
-                                            "StoragePath": "string",
-                                            "MimeType": "string",
-                                            "FileSizeBytes": "string",
-                                            "Sha256": "string",
-                                            "VersionLabel": "string",
-                                            "Status": "string",
-                                            "UpdatedAt": "string"
+                                            "id": "string",
+                                            "assetSlug": "string",
+                                            "assetKind": "string",
+                                            "displayName": "string",
+                                            "publicUrl": "string",
+                                            "storagePath": "string",
+                                            "mimeType": "string",
+                                            "fileSizeBytes": "string",
+                                            "sha256": "string",
+                                            "versionLabel": "string",
+                                            "status": "string",
+                                            "updatedAt": "string"
                                         }
                                     ]
                                 }
@@ -238,14 +238,14 @@
         },
         "/proxyserver-EbookMediaAsset-InsertEbookMediaAsset.php": {
             "post": {
-                "operationId": "EbookMediaAsset_InsertEbookMediaAsset",
+                "operationId": "ebook_media_asset_InsertEbookMediaAsset",
                 "tags": [
-                    "EbookMediaAsset"
+                    "ebook_media_asset"
                 ],
-                "summary": "EbookMediaAsset.InsertEbookMediaAsset",
-                "description": "Generated from single-function proxy target metadata.\n\nSource function: `EbookMediaAsset.InsertEbookMediaAsset`.\n\nAuth policy: 認証を掛けません。",
+                "summary": "ebook_media_asset.InsertEbookMediaAsset",
+                "description": "Generated from single-function proxy target metadata.\n\nSource function: `ebook_media_asset.InsertEbookMediaAsset`.\n\nAuth policy: 認証を掛けません。",
                 "x-mtool": {
-                    "source_name": "EbookMediaAsset",
+                    "source_name": "ebook_media_asset",
                     "function_name": "InsertEbookMediaAsset",
                     "endpoint_filename": "proxyserver-EbookMediaAsset-InsertEbookMediaAsset.php",
                     "auth_strategy": "no-security",
@@ -269,18 +269,18 @@
                             },
                             "example": {
                                 "EbookMediaAssetObj": {
-                                    "Id": "string",
-                                    "AssetSlug": "string",
-                                    "AssetKind": "string",
-                                    "DisplayName": "string",
-                                    "PublicUrl": "string",
-                                    "StoragePath": "string",
-                                    "MimeType": "string",
-                                    "FileSizeBytes": "string",
-                                    "Sha256": "string",
-                                    "VersionLabel": "string",
-                                    "Status": "string",
-                                    "UpdatedAt": "string"
+                                    "id": "string",
+                                    "assetSlug": "string",
+                                    "assetKind": "string",
+                                    "displayName": "string",
+                                    "publicUrl": "string",
+                                    "storagePath": "string",
+                                    "mimeType": "string",
+                                    "fileSizeBytes": "string",
+                                    "sha256": "string",
+                                    "versionLabel": "string",
+                                    "status": "string",
+                                    "updatedAt": "string"
                                 }
                             }
                         }
@@ -345,14 +345,14 @@
         },
         "/proxyserver-EbookMediaAsset-UpdateEbookMediaAssetMetadata.php": {
             "post": {
-                "operationId": "EbookMediaAsset_UpdateEbookMediaAssetMetadata",
+                "operationId": "ebook_media_asset_UpdateEbookMediaAssetMetadata",
                 "tags": [
-                    "EbookMediaAsset"
+                    "ebook_media_asset"
                 ],
-                "summary": "EbookMediaAsset.UpdateEbookMediaAssetMetadata",
-                "description": "Generated from single-function proxy target metadata.\n\nSource function: `EbookMediaAsset.UpdateEbookMediaAssetMetadata`.\n\nAuth policy: 認証を掛けません。",
+                "summary": "ebook_media_asset.UpdateEbookMediaAssetMetadata",
+                "description": "Generated from single-function proxy target metadata.\n\nSource function: `ebook_media_asset.UpdateEbookMediaAssetMetadata`.\n\nAuth policy: 認証を掛けません。",
                 "x-mtool": {
-                    "source_name": "EbookMediaAsset",
+                    "source_name": "ebook_media_asset",
                     "function_name": "UpdateEbookMediaAssetMetadata",
                     "endpoint_filename": "proxyserver-EbookMediaAsset-UpdateEbookMediaAssetMetadata.php",
                     "auth_strategy": "no-security",
@@ -376,18 +376,18 @@
                             },
                             "example": {
                                 "EbookMediaAssetObj": {
-                                    "Id": "string",
-                                    "AssetSlug": "string",
-                                    "AssetKind": "string",
-                                    "DisplayName": "string",
-                                    "PublicUrl": "string",
-                                    "StoragePath": "string",
-                                    "MimeType": "string",
-                                    "FileSizeBytes": "string",
-                                    "Sha256": "string",
-                                    "VersionLabel": "string",
-                                    "Status": "string",
-                                    "UpdatedAt": "string"
+                                    "id": "string",
+                                    "assetSlug": "string",
+                                    "assetKind": "string",
+                                    "displayName": "string",
+                                    "publicUrl": "string",
+                                    "storagePath": "string",
+                                    "mimeType": "string",
+                                    "fileSizeBytes": "string",
+                                    "sha256": "string",
+                                    "versionLabel": "string",
+                                    "status": "string",
+                                    "updatedAt": "string"
                                 }
                             }
                         }
@@ -452,51 +452,51 @@
                 "type": "object",
                 "title": "EbookMediaAssetData",
                 "properties": {
-                    "Id": {
+                    "id": {
                         "type": "string",
                         "example": "string"
                     },
-                    "AssetSlug": {
+                    "assetSlug": {
                         "type": "string",
                         "example": "string"
                     },
-                    "AssetKind": {
+                    "assetKind": {
                         "type": "string",
                         "example": "string"
                     },
-                    "DisplayName": {
+                    "displayName": {
                         "type": "string",
                         "example": "string"
                     },
-                    "PublicUrl": {
+                    "publicUrl": {
                         "type": "string",
                         "example": "string"
                     },
-                    "StoragePath": {
+                    "storagePath": {
                         "type": "string",
                         "example": "string"
                     },
-                    "MimeType": {
+                    "mimeType": {
                         "type": "string",
                         "example": "string"
                     },
-                    "FileSizeBytes": {
+                    "fileSizeBytes": {
                         "type": "string",
                         "example": "string"
                     },
-                    "Sha256": {
+                    "sha256": {
                         "type": "string",
                         "example": "string"
                     },
-                    "VersionLabel": {
+                    "versionLabel": {
                         "type": "string",
                         "example": "string"
                     },
-                    "Status": {
+                    "status": {
                         "type": "string",
                         "example": "string"
                     },
-                    "UpdatedAt": {
+                    "updatedAt": {
                         "type": "string",
                         "example": "string"
                     }

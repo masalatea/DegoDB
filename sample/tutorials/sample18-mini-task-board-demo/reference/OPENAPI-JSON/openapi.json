@@ -12,21 +12,21 @@
     ],
     "tags": [
         {
-            "name": "TaskCard",
-            "description": "TaskCard single-function proxy endpoints."
+            "name": "task_card",
+            "description": "task_card single-function proxy endpoints."
         }
     ],
     "paths": {
         "/proxyserver-TaskCard-CompleteTaskCard.php": {
             "post": {
-                "operationId": "TaskCard_CompleteTaskCard",
+                "operationId": "task_card_CompleteTaskCard",
                 "tags": [
-                    "TaskCard"
+                    "task_card"
                 ],
-                "summary": "TaskCard.CompleteTaskCard",
-                "description": "Generated from single-function proxy target metadata.\n\nSource function: `TaskCard.CompleteTaskCard`.\n\nAuth policy: 認証を掛けません。",
+                "summary": "task_card.CompleteTaskCard",
+                "description": "Generated from single-function proxy target metadata.\n\nSource function: `task_card.CompleteTaskCard`.\n\nAuth policy: 認証を掛けません。",
                 "x-mtool": {
-                    "source_name": "TaskCard",
+                    "source_name": "task_card",
                     "function_name": "CompleteTaskCard",
                     "endpoint_filename": "proxyserver-TaskCard-CompleteTaskCard.php",
                     "auth_strategy": "no-security",
@@ -50,15 +50,15 @@
                             },
                             "example": {
                                 "TaskCardObj": {
-                                    "Id": "string",
-                                    "Title": "string",
-                                    "Body": "string",
-                                    "Status": "string",
-                                    "AssignedTo": "string",
-                                    "Priority": "string",
-                                    "DueDate": "string",
-                                    "CompletedAt": "string",
-                                    "UpdatedAt": "string"
+                                    "id": "string",
+                                    "title": "string",
+                                    "body": "string",
+                                    "status": "string",
+                                    "assignedTo": "string",
+                                    "priority": "string",
+                                    "dueDate": "string",
+                                    "completedAt": "string",
+                                    "updatedAt": "string"
                                 }
                             }
                         }
@@ -118,14 +118,14 @@
         },
         "/proxyserver-TaskCard-GetTaskCard.php": {
             "post": {
-                "operationId": "TaskCard_GetTaskCard",
+                "operationId": "task_card_GetTaskCard",
                 "tags": [
-                    "TaskCard"
+                    "task_card"
                 ],
-                "summary": "TaskCard.GetTaskCard",
-                "description": "Generated from single-function proxy target metadata.\n\nSource function: `TaskCard.GetTaskCard`.\n\nAuth policy: 認証を掛けません。",
+                "summary": "task_card.GetTaskCard",
+                "description": "Generated from single-function proxy target metadata.\n\nSource function: `task_card.GetTaskCard`.\n\nAuth policy: 認証を掛けません。",
                 "x-mtool": {
-                    "source_name": "TaskCard",
+                    "source_name": "task_card",
                     "function_name": "GetTaskCard",
                     "endpoint_filename": "proxyserver-TaskCard-GetTaskCard.php",
                     "auth_strategy": "no-security",
@@ -179,15 +179,15 @@
                                     "_status": "OK",
                                     "Message": "",
                                     "Result": {
-                                        "Id": "string",
-                                        "Title": "string",
-                                        "Body": "string",
-                                        "Status": "string",
-                                        "AssignedTo": "string",
-                                        "Priority": "string",
-                                        "DueDate": "string",
-                                        "CompletedAt": "string",
-                                        "UpdatedAt": "string"
+                                        "id": "string",
+                                        "title": "string",
+                                        "body": "string",
+                                        "status": "string",
+                                        "assignedTo": "string",
+                                        "priority": "string",
+                                        "dueDate": "string",
+                                        "completedAt": "string",
+                                        "updatedAt": "string"
                                     }
                                 }
                             }
@@ -222,14 +222,14 @@
         },
         "/proxyserver-TaskCard-GetTaskCardList.php": {
             "post": {
-                "operationId": "TaskCard_GetTaskCardList",
+                "operationId": "task_card_GetTaskCardList",
                 "tags": [
-                    "TaskCard"
+                    "task_card"
                 ],
-                "summary": "TaskCard.GetTaskCardList",
-                "description": "Generated from single-function proxy target metadata.\n\nSource function: `TaskCard.GetTaskCardList`.\n\nAuth policy: 認証を掛けません。",
+                "summary": "task_card.GetTaskCardList",
+                "description": "Generated from single-function proxy target metadata.\n\nSource function: `task_card.GetTaskCardList`.\n\nAuth policy: 認証を掛けません。",
                 "x-mtool": {
-                    "source_name": "TaskCard",
+                    "source_name": "task_card",
                     "function_name": "GetTaskCardList",
                     "endpoint_filename": "proxyserver-TaskCard-GetTaskCardList.php",
                     "auth_strategy": "no-security",
@@ -293,15 +293,15 @@
                                     "Message": "",
                                     "Result": [
                                         {
-                                            "Id": "string",
-                                            "Title": "string",
-                                            "Body": "string",
-                                            "Status": "string",
-                                            "AssignedTo": "string",
-                                            "Priority": "string",
-                                            "DueDate": "string",
-                                            "CompletedAt": "string",
-                                            "UpdatedAt": "string"
+                                            "id": "string",
+                                            "title": "string",
+                                            "body": "string",
+                                            "status": "string",
+                                            "assignedTo": "string",
+                                            "priority": "string",
+                                            "dueDate": "string",
+                                            "completedAt": "string",
+                                            "updatedAt": "string"
                                         }
                                     ]
                                 }
@@ -337,14 +337,14 @@
         },
         "/proxyserver-TaskCard-InsertTaskCard.php": {
             "post": {
-                "operationId": "TaskCard_InsertTaskCard",
+                "operationId": "task_card_InsertTaskCard",
                 "tags": [
-                    "TaskCard"
+                    "task_card"
                 ],
-                "summary": "TaskCard.InsertTaskCard",
-                "description": "Generated from single-function proxy target metadata.\n\nSource function: `TaskCard.InsertTaskCard`.\n\nAuth policy: 認証を掛けません。",
+                "summary": "task_card.InsertTaskCard",
+                "description": "Generated from single-function proxy target metadata.\n\nSource function: `task_card.InsertTaskCard`.\n\nAuth policy: 認証を掛けません。",
                 "x-mtool": {
-                    "source_name": "TaskCard",
+                    "source_name": "task_card",
                     "function_name": "InsertTaskCard",
                     "endpoint_filename": "proxyserver-TaskCard-InsertTaskCard.php",
                     "auth_strategy": "no-security",
@@ -368,15 +368,15 @@
                             },
                             "example": {
                                 "TaskCardObj": {
-                                    "Id": "string",
-                                    "Title": "string",
-                                    "Body": "string",
-                                    "Status": "string",
-                                    "AssignedTo": "string",
-                                    "Priority": "string",
-                                    "DueDate": "string",
-                                    "CompletedAt": "string",
-                                    "UpdatedAt": "string"
+                                    "id": "string",
+                                    "title": "string",
+                                    "body": "string",
+                                    "status": "string",
+                                    "assignedTo": "string",
+                                    "priority": "string",
+                                    "dueDate": "string",
+                                    "completedAt": "string",
+                                    "updatedAt": "string"
                                 }
                             }
                         }
@@ -441,14 +441,14 @@
         },
         "/proxyserver-TaskCard-UpdateTaskCard.php": {
             "post": {
-                "operationId": "TaskCard_UpdateTaskCard",
+                "operationId": "task_card_UpdateTaskCard",
                 "tags": [
-                    "TaskCard"
+                    "task_card"
                 ],
-                "summary": "TaskCard.UpdateTaskCard",
-                "description": "Generated from single-function proxy target metadata.\n\nSource function: `TaskCard.UpdateTaskCard`.\n\nAuth policy: 認証を掛けません。",
+                "summary": "task_card.UpdateTaskCard",
+                "description": "Generated from single-function proxy target metadata.\n\nSource function: `task_card.UpdateTaskCard`.\n\nAuth policy: 認証を掛けません。",
                 "x-mtool": {
-                    "source_name": "TaskCard",
+                    "source_name": "task_card",
                     "function_name": "UpdateTaskCard",
                     "endpoint_filename": "proxyserver-TaskCard-UpdateTaskCard.php",
                     "auth_strategy": "no-security",
@@ -472,15 +472,15 @@
                             },
                             "example": {
                                 "TaskCardObj": {
-                                    "Id": "string",
-                                    "Title": "string",
-                                    "Body": "string",
-                                    "Status": "string",
-                                    "AssignedTo": "string",
-                                    "Priority": "string",
-                                    "DueDate": "string",
-                                    "CompletedAt": "string",
-                                    "UpdatedAt": "string"
+                                    "id": "string",
+                                    "title": "string",
+                                    "body": "string",
+                                    "status": "string",
+                                    "assignedTo": "string",
+                                    "priority": "string",
+                                    "dueDate": "string",
+                                    "completedAt": "string",
+                                    "updatedAt": "string"
                                 }
                             }
                         }
@@ -545,39 +545,39 @@
                 "type": "object",
                 "title": "TaskCardData",
                 "properties": {
-                    "Id": {
+                    "id": {
                         "type": "string",
                         "example": "string"
                     },
-                    "Title": {
+                    "title": {
                         "type": "string",
                         "example": "string"
                     },
-                    "Body": {
+                    "body": {
                         "type": "string",
                         "example": "string"
                     },
-                    "Status": {
+                    "status": {
                         "type": "string",
                         "example": "string"
                     },
-                    "AssignedTo": {
+                    "assignedTo": {
                         "type": "string",
                         "example": "string"
                     },
-                    "Priority": {
+                    "priority": {
                         "type": "string",
                         "example": "string"
                     },
-                    "DueDate": {
+                    "dueDate": {
                         "type": "string",
                         "example": "string"
                     },
-                    "CompletedAt": {
+                    "completedAt": {
                         "type": "string",
                         "example": "string"
                     },
-                    "UpdatedAt": {
+                    "updatedAt": {
                         "type": "string",
                         "example": "string"
                     }

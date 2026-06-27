@@ -48,7 +48,7 @@ INSERT INTO project_db_access_classes (
     last_detected_data_file
 ) VALUES (
     @sample24_project_id,
-    'EbookReaderBook',
+    'ebook_reader_book',
     '',
     0,
     'Public ebook reader site sample with read-only book, chapter, and EPUB delivery endpoints.',
@@ -81,11 +81,11 @@ INSERT INTO project_db_access_functions (
     detected_line,
     source_of_truth
 ) VALUES
-(@sample24_db_access_class_id, 'GetPublicEbookReaderBookList', 10, '', 'SELECTLIST', 'EbookReaderBook', 'EbookReaderBook', '', 0, 'EbookReaderBook.PublishedAt desc, EbookReaderBook.Id desc', 'List published books for the reader top/list page.', 'argument', '', '', 'NoSecurity', '', 0, 'public function GetPublicEbookReaderBookList($limit)', 10, 'manual'),
-(@sample24_db_access_class_id, 'GetPublicEbookReaderBook', 20, '', 'SELECTSINGLE', 'EbookReaderBook', 'EbookReaderBook', '', 0, '', 'Get one published book detail by slug.', '', '', '', 'NoSecurity', '', 0, 'public function GetPublicEbookReaderBook($param_EbookReaderBook_Slug_where)', 20, 'manual'),
-(@sample24_db_access_class_id, 'GetPublicEbookReaderChapterList', 30, '', 'SELECTLIST', 'EbookReaderChapter', 'EbookReaderChapter', '', 0, 'EbookReaderChapter.SpineOrder asc, EbookReaderChapter.Id asc', 'List published chapters for a book.', '', '', '', 'NoSecurity', '', 0, 'public function GetPublicEbookReaderChapterList($param_EbookReaderChapter_BookSlug_where)', 30, 'manual'),
-(@sample24_db_access_class_id, 'GetPublicEbookReaderChapter', 40, '', 'SELECTSINGLE', 'EbookReaderChapter', 'EbookReaderChapter', '', 0, '', 'Get one published chapter by book slug and chapter slug.', '', '', '', 'NoSecurity', '', 0, 'public function GetPublicEbookReaderChapter($param_EbookReaderChapter_BookSlug_where, $param_EbookReaderChapter_ChapterSlug_where)', 40, 'manual'),
-(@sample24_db_access_class_id, 'GetPublicEbookReaderMediaDeliveryList', 50, '', 'SELECTLIST', 'EbookReaderMediaDelivery', 'EbookReaderMediaDelivery', '', 0, 'EbookReaderMediaDelivery.Id asc', 'List published EPUB delivery metadata for a book.', '', '', '', 'NoSecurity', '', 0, 'public function GetPublicEbookReaderMediaDeliveryList($param_EbookReaderMediaDelivery_BookSlug_where)', 50, 'manual');
+(@sample24_db_access_class_id, 'GetPublicEbookReaderBookList', 10, '', 'SELECTLIST', 'EbookReaderBook', 'ebook_reader_book', '', 0, 'ebook_reader_book.published_at desc, ebook_reader_book.id desc', 'List published books for the reader top/list page.', 'argument', '', '', 'NoSecurity', '', 0, 'public function GetPublicEbookReaderBookList($limit)', 10, 'manual'),
+(@sample24_db_access_class_id, 'GetPublicEbookReaderBook', 20, '', 'SELECTSINGLE', 'EbookReaderBook', 'ebook_reader_book', '', 0, '', 'Get one published book detail by slug.', '', '', '', 'NoSecurity', '', 0, 'public function GetPublicEbookReaderBook($param_EbookReaderBook_Slug_where)', 20, 'manual'),
+(@sample24_db_access_class_id, 'GetPublicEbookReaderChapterList', 30, '', 'SELECTLIST', 'EbookReaderChapter', 'ebook_reader_chapter', '', 0, 'ebook_reader_chapter.spine_order asc, ebook_reader_chapter.id asc', 'List published chapters for a book.', '', '', '', 'NoSecurity', '', 0, 'public function GetPublicEbookReaderChapterList($param_EbookReaderChapter_BookSlug_where)', 30, 'manual'),
+(@sample24_db_access_class_id, 'GetPublicEbookReaderChapter', 40, '', 'SELECTSINGLE', 'EbookReaderChapter', 'ebook_reader_chapter', '', 0, '', 'Get one published chapter by book slug and chapter slug.', '', '', '', 'NoSecurity', '', 0, 'public function GetPublicEbookReaderChapter($param_EbookReaderChapter_BookSlug_where, $param_EbookReaderChapter_ChapterSlug_where)', 40, 'manual'),
+(@sample24_db_access_class_id, 'GetPublicEbookReaderMediaDeliveryList', 50, '', 'SELECTLIST', 'EbookReaderMediaDelivery', 'ebook_reader_media_delivery', '', 0, 'ebook_reader_media_delivery.id asc', 'List published EPUB delivery metadata for a book.', '', '', '', 'NoSecurity', '', 0, 'public function GetPublicEbookReaderMediaDeliveryList($param_EbookReaderMediaDelivery_BookSlug_where)', 50, 'manual');
 
 SET @sample24_book_list_id = (SELECT id FROM project_db_access_functions WHERE db_access_class_id = @sample24_db_access_class_id AND function_name = 'GetPublicEbookReaderBookList');
 SET @sample24_book_detail_id = (SELECT id FROM project_db_access_functions WHERE db_access_class_id = @sample24_db_access_class_id AND function_name = 'GetPublicEbookReaderBook');
@@ -105,39 +105,39 @@ INSERT INTO project_db_access_function_select_target_fields (
     field_list_order,
     source_of_truth
 ) VALUES
-(@sample24_book_list_id, 'EbookReaderBook', '', 'Id', '', '', 'Id', 0, 10, 'manual'),
-(@sample24_book_list_id, 'EbookReaderBook', '', 'Title', '', '', 'Title', 0, 20, 'manual'),
-(@sample24_book_list_id, 'EbookReaderBook', '', 'Slug', '', '', 'Slug', 0, 30, 'manual'),
-(@sample24_book_list_id, 'EbookReaderBook', '', 'AuthorName', '', '', 'AuthorName', 0, 40, 'manual'),
-(@sample24_book_list_id, 'EbookReaderBook', '', 'GenreName', '', '', 'GenreName', 0, 50, 'manual'),
-(@sample24_book_list_id, 'EbookReaderBook', '', 'Summary', '', '', 'Summary', 0, 60, 'manual'),
-(@sample24_book_detail_id, 'EbookReaderBook', '', 'Id', '', '', 'Id', 0, 10, 'manual'),
-(@sample24_book_detail_id, 'EbookReaderBook', '', 'Title', '', '', 'Title', 0, 20, 'manual'),
-(@sample24_book_detail_id, 'EbookReaderBook', '', 'Slug', '', '', 'Slug', 0, 30, 'manual'),
-(@sample24_book_detail_id, 'EbookReaderBook', '', 'AuthorName', '', '', 'AuthorName', 0, 40, 'manual'),
-(@sample24_book_detail_id, 'EbookReaderBook', '', 'GenreName', '', '', 'GenreName', 0, 50, 'manual'),
-(@sample24_book_detail_id, 'EbookReaderBook', '', 'Summary', '', '', 'Summary', 0, 60, 'manual'),
-(@sample24_chapter_list_id, 'EbookReaderChapter', '', 'Id', '', '', 'Id', 0, 10, 'manual'),
-(@sample24_chapter_list_id, 'EbookReaderChapter', '', 'BookSlug', '', '', 'BookSlug', 0, 20, 'manual'),
-(@sample24_chapter_list_id, 'EbookReaderChapter', '', 'ChapterTitle', '', '', 'ChapterTitle', 0, 30, 'manual'),
-(@sample24_chapter_list_id, 'EbookReaderChapter', '', 'ChapterSlug', '', '', 'ChapterSlug', 0, 40, 'manual'),
-(@sample24_chapter_list_id, 'EbookReaderChapter', '', 'SpineOrder', '', '', 'SpineOrder', 0, 50, 'manual'),
-(@sample24_chapter_detail_id, 'EbookReaderChapter', '', 'Id', '', '', 'Id', 0, 10, 'manual'),
-(@sample24_chapter_detail_id, 'EbookReaderChapter', '', 'BookSlug', '', '', 'BookSlug', 0, 20, 'manual'),
-(@sample24_chapter_detail_id, 'EbookReaderChapter', '', 'ChapterTitle', '', '', 'ChapterTitle', 0, 30, 'manual'),
-(@sample24_chapter_detail_id, 'EbookReaderChapter', '', 'ChapterSlug', '', '', 'ChapterSlug', 0, 40, 'manual'),
-(@sample24_chapter_detail_id, 'EbookReaderChapter', '', 'SpineOrder', '', '', 'SpineOrder', 0, 50, 'manual'),
-(@sample24_chapter_detail_id, 'EbookReaderChapter', '', 'BodyMarkdown', '', '', 'BodyMarkdown', 0, 60, 'manual'),
-(@sample24_media_list_id, 'EbookReaderMediaDelivery', '', 'Id', '', '', 'Id', 0, 10, 'manual'),
-(@sample24_media_list_id, 'EbookReaderMediaDelivery', '', 'BookSlug', '', '', 'BookSlug', 0, 20, 'manual'),
-(@sample24_media_list_id, 'EbookReaderMediaDelivery', '', 'AssetSlug', '', '', 'AssetSlug', 0, 30, 'manual'),
-(@sample24_media_list_id, 'EbookReaderMediaDelivery', '', 'AssetKind', '', '', 'AssetKind', 0, 40, 'manual'),
-(@sample24_media_list_id, 'EbookReaderMediaDelivery', '', 'DisplayName', '', '', 'DisplayName', 0, 50, 'manual'),
-(@sample24_media_list_id, 'EbookReaderMediaDelivery', '', 'PublicUrl', '', '', 'PublicUrl', 0, 60, 'manual'),
-(@sample24_media_list_id, 'EbookReaderMediaDelivery', '', 'MimeType', '', '', 'MimeType', 0, 70, 'manual'),
-(@sample24_media_list_id, 'EbookReaderMediaDelivery', '', 'FileSizeBytes', '', '', 'FileSizeBytes', 0, 80, 'manual'),
-(@sample24_media_list_id, 'EbookReaderMediaDelivery', '', 'Sha256', '', '', 'Sha256', 0, 90, 'manual'),
-(@sample24_media_list_id, 'EbookReaderMediaDelivery', '', 'VersionLabel', '', '', 'VersionLabel', 0, 100, 'manual');
+(@sample24_book_list_id, 'ebook_reader_book', '', 'id', '', '', 'id', 0, 10, 'manual'),
+(@sample24_book_list_id, 'ebook_reader_book', '', 'title', '', '', 'title', 0, 20, 'manual'),
+(@sample24_book_list_id, 'ebook_reader_book', '', 'slug', '', '', 'slug', 0, 30, 'manual'),
+(@sample24_book_list_id, 'ebook_reader_book', '', 'author_name', '', '', 'authorName', 0, 40, 'manual'),
+(@sample24_book_list_id, 'ebook_reader_book', '', 'genre_name', '', '', 'genreName', 0, 50, 'manual'),
+(@sample24_book_list_id, 'ebook_reader_book', '', 'summary', '', '', 'summary', 0, 60, 'manual'),
+(@sample24_book_detail_id, 'ebook_reader_book', '', 'id', '', '', 'id', 0, 10, 'manual'),
+(@sample24_book_detail_id, 'ebook_reader_book', '', 'title', '', '', 'title', 0, 20, 'manual'),
+(@sample24_book_detail_id, 'ebook_reader_book', '', 'slug', '', '', 'slug', 0, 30, 'manual'),
+(@sample24_book_detail_id, 'ebook_reader_book', '', 'author_name', '', '', 'authorName', 0, 40, 'manual'),
+(@sample24_book_detail_id, 'ebook_reader_book', '', 'genre_name', '', '', 'genreName', 0, 50, 'manual'),
+(@sample24_book_detail_id, 'ebook_reader_book', '', 'summary', '', '', 'summary', 0, 60, 'manual'),
+(@sample24_chapter_list_id, 'ebook_reader_chapter', '', 'id', '', '', 'id', 0, 10, 'manual'),
+(@sample24_chapter_list_id, 'ebook_reader_chapter', '', 'book_slug', '', '', 'bookSlug', 0, 20, 'manual'),
+(@sample24_chapter_list_id, 'ebook_reader_chapter', '', 'chapter_title', '', '', 'chapterTitle', 0, 30, 'manual'),
+(@sample24_chapter_list_id, 'ebook_reader_chapter', '', 'chapter_slug', '', '', 'chapterSlug', 0, 40, 'manual'),
+(@sample24_chapter_list_id, 'ebook_reader_chapter', '', 'spine_order', '', '', 'spineOrder', 0, 50, 'manual'),
+(@sample24_chapter_detail_id, 'ebook_reader_chapter', '', 'id', '', '', 'id', 0, 10, 'manual'),
+(@sample24_chapter_detail_id, 'ebook_reader_chapter', '', 'book_slug', '', '', 'bookSlug', 0, 20, 'manual'),
+(@sample24_chapter_detail_id, 'ebook_reader_chapter', '', 'chapter_title', '', '', 'chapterTitle', 0, 30, 'manual'),
+(@sample24_chapter_detail_id, 'ebook_reader_chapter', '', 'chapter_slug', '', '', 'chapterSlug', 0, 40, 'manual'),
+(@sample24_chapter_detail_id, 'ebook_reader_chapter', '', 'spine_order', '', '', 'spineOrder', 0, 50, 'manual'),
+(@sample24_chapter_detail_id, 'ebook_reader_chapter', '', 'body_markdown', '', '', 'bodyMarkdown', 0, 60, 'manual'),
+(@sample24_media_list_id, 'ebook_reader_media_delivery', '', 'id', '', '', 'id', 0, 10, 'manual'),
+(@sample24_media_list_id, 'ebook_reader_media_delivery', '', 'book_slug', '', '', 'bookSlug', 0, 20, 'manual'),
+(@sample24_media_list_id, 'ebook_reader_media_delivery', '', 'asset_slug', '', '', 'assetSlug', 0, 30, 'manual'),
+(@sample24_media_list_id, 'ebook_reader_media_delivery', '', 'asset_kind', '', '', 'assetKind', 0, 40, 'manual'),
+(@sample24_media_list_id, 'ebook_reader_media_delivery', '', 'display_name', '', '', 'displayName', 0, 50, 'manual'),
+(@sample24_media_list_id, 'ebook_reader_media_delivery', '', 'public_url', '', '', 'publicUrl', 0, 60, 'manual'),
+(@sample24_media_list_id, 'ebook_reader_media_delivery', '', 'mime_type', '', '', 'mimeType', 0, 70, 'manual'),
+(@sample24_media_list_id, 'ebook_reader_media_delivery', '', 'file_size_bytes', '', '', 'fileSizeBytes', 0, 80, 'manual'),
+(@sample24_media_list_id, 'ebook_reader_media_delivery', '', 'sha256', '', '', 'sha256', 0, 90, 'manual'),
+(@sample24_media_list_id, 'ebook_reader_media_delivery', '', 'version_label', '', '', 'versionLabel', 0, 100, 'manual');
 
 INSERT INTO project_db_access_function_select_wheres (
     db_access_function_id,
@@ -156,16 +156,16 @@ INSERT INTO project_db_access_function_select_wheres (
     where_order,
     source_of_truth
 ) VALUES
-(@sample24_book_list_id, 'EbookReaderBook', '', 'Status', 'fixed', '', 'published', '', '', '', '', '', '=', 10, 'manual'),
-(@sample24_book_detail_id, 'EbookReaderBook', '', 'Status', 'fixed', '', 'published', '', '', '', '', '', '=', 10, 'manual'),
-(@sample24_book_detail_id, 'EbookReaderBook', '', 'Slug', 'argument', 'varchar', '', '', '', '', '', '', '=', 20, 'manual'),
-(@sample24_chapter_list_id, 'EbookReaderChapter', '', 'Status', 'fixed', '', 'published', '', '', '', '', '', '=', 10, 'manual'),
-(@sample24_chapter_list_id, 'EbookReaderChapter', '', 'BookSlug', 'argument', 'varchar', '', '', '', '', '', '', '=', 20, 'manual'),
-(@sample24_chapter_detail_id, 'EbookReaderChapter', '', 'Status', 'fixed', '', 'published', '', '', '', '', '', '=', 10, 'manual'),
-(@sample24_chapter_detail_id, 'EbookReaderChapter', '', 'BookSlug', 'argument', 'varchar', '', '', '', '', '', '', '=', 20, 'manual'),
-(@sample24_chapter_detail_id, 'EbookReaderChapter', '', 'ChapterSlug', 'argument', 'varchar', '', '', '', '', '', '', '=', 30, 'manual'),
-(@sample24_media_list_id, 'EbookReaderMediaDelivery', '', 'Status', 'fixed', '', 'published', '', '', '', '', '', '=', 10, 'manual'),
-(@sample24_media_list_id, 'EbookReaderMediaDelivery', '', 'BookSlug', 'argument', 'varchar', '', '', '', '', '', '', '=', 20, 'manual');
+(@sample24_book_list_id, 'ebook_reader_book', '', 'status', 'fixed', '', 'published', '', '', '', '', '', '=', 10, 'manual'),
+(@sample24_book_detail_id, 'ebook_reader_book', '', 'status', 'fixed', '', 'published', '', '', '', '', '', '=', 10, 'manual'),
+(@sample24_book_detail_id, 'ebook_reader_book', '', 'slug', 'argument', 'varchar', '', '', '', '', '', '', '=', 20, 'manual'),
+(@sample24_chapter_list_id, 'ebook_reader_chapter', '', 'status', 'fixed', '', 'published', '', '', '', '', '', '=', 10, 'manual'),
+(@sample24_chapter_list_id, 'ebook_reader_chapter', '', 'book_slug', 'argument', 'varchar', '', '', '', '', '', '', '=', 20, 'manual'),
+(@sample24_chapter_detail_id, 'ebook_reader_chapter', '', 'status', 'fixed', '', 'published', '', '', '', '', '', '=', 10, 'manual'),
+(@sample24_chapter_detail_id, 'ebook_reader_chapter', '', 'book_slug', 'argument', 'varchar', '', '', '', '', '', '', '=', 20, 'manual'),
+(@sample24_chapter_detail_id, 'ebook_reader_chapter', '', 'chapter_slug', 'argument', 'varchar', '', '', '', '', '', '', '=', 30, 'manual'),
+(@sample24_media_list_id, 'ebook_reader_media_delivery', '', 'status', 'fixed', '', 'published', '', '', '', '', '', '=', 10, 'manual'),
+(@sample24_media_list_id, 'ebook_reader_media_delivery', '', 'book_slug', 'argument', 'varchar', '', '', '', '', '', '', '=', 20, 'manual');
 
 SET @sample24_project_id = NULL;
 SET @sample24_db_access_class_id = NULL;

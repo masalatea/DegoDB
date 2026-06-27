@@ -24,15 +24,15 @@
     },
     "tables": [
         {
-            "name": "CapstoneTask",
-            "physical_name": "CapstoneTask",
+            "name": "capstone_task",
+            "physical_name": "capstone_task",
             "logical_name": "CapstoneTask",
             "generated_name": "CapstoneTask",
             "column_count": 7,
             "columns": [
                 {
-                    "name": "Id",
-                    "physical_name": "Id",
+                    "name": "id",
+                    "physical_name": "id",
                     "logical_name": "Id",
                     "generated_name": "id",
                     "datatype": "bigint(20) unsigned",
@@ -44,8 +44,8 @@
                     "memo": ""
                 },
                 {
-                    "name": "Title",
-                    "physical_name": "Title",
+                    "name": "title",
+                    "physical_name": "title",
                     "logical_name": "Title",
                     "generated_name": "title",
                     "datatype": "varchar(255)",
@@ -57,8 +57,8 @@
                     "memo": ""
                 },
                 {
-                    "name": "Status",
-                    "physical_name": "Status",
+                    "name": "status",
+                    "physical_name": "status",
                     "logical_name": "Status",
                     "generated_name": "status",
                     "datatype": "varchar(32)",
@@ -70,8 +70,8 @@
                     "memo": ""
                 },
                 {
-                    "name": "OwnerName",
-                    "physical_name": "OwnerName",
+                    "name": "owner_name",
+                    "physical_name": "owner_name",
                     "logical_name": "OwnerName",
                     "generated_name": "ownerName",
                     "datatype": "varchar(100)",
@@ -83,8 +83,8 @@
                     "memo": ""
                 },
                 {
-                    "name": "Priority",
-                    "physical_name": "Priority",
+                    "name": "priority",
+                    "physical_name": "priority",
                     "logical_name": "Priority",
                     "generated_name": "priority",
                     "datatype": "int(11)",
@@ -96,8 +96,8 @@
                     "memo": ""
                 },
                 {
-                    "name": "DueDate",
-                    "physical_name": "DueDate",
+                    "name": "due_date",
+                    "physical_name": "due_date",
                     "logical_name": "DueDate",
                     "generated_name": "dueDate",
                     "datatype": "date",
@@ -109,8 +109,8 @@
                     "memo": ""
                 },
                 {
-                    "name": "UpdatedAt",
-                    "physical_name": "UpdatedAt",
+                    "name": "updated_at",
+                    "physical_name": "updated_at",
                     "logical_name": "UpdatedAt",
                     "generated_name": "updatedAt",
                     "datatype": "datetime",
@@ -126,8 +126,8 @@
     ],
     "data_classes": [
         {
-            "name": "CapstoneTask",
-            "physical_name": "CapstoneTask",
+            "name": "capstone_task",
+            "physical_name": "capstone_task",
             "logical_name": "CapstoneTask",
             "generated_name": "CapstoneTask",
             "store_base_path": "",
@@ -136,8 +136,8 @@
             "field_count": 7,
             "fields": [
                 {
-                    "name": "Id",
-                    "physical_name": "Id",
+                    "name": "id",
+                    "physical_name": "id",
                     "logical_name": "Id",
                     "generated_name": "id",
                     "datatype": "int",
@@ -146,8 +146,8 @@
                     "ref_data_class_field_name": ""
                 },
                 {
-                    "name": "Title",
-                    "physical_name": "Title",
+                    "name": "title",
+                    "physical_name": "title",
                     "logical_name": "Title",
                     "generated_name": "title",
                     "datatype": "string",
@@ -156,8 +156,8 @@
                     "ref_data_class_field_name": ""
                 },
                 {
-                    "name": "Status",
-                    "physical_name": "Status",
+                    "name": "status",
+                    "physical_name": "status",
                     "logical_name": "Status",
                     "generated_name": "status",
                     "datatype": "string",
@@ -166,8 +166,8 @@
                     "ref_data_class_field_name": ""
                 },
                 {
-                    "name": "OwnerName",
-                    "physical_name": "OwnerName",
+                    "name": "owner_name",
+                    "physical_name": "owner_name",
                     "logical_name": "OwnerName",
                     "generated_name": "ownerName",
                     "datatype": "string",
@@ -176,8 +176,8 @@
                     "ref_data_class_field_name": ""
                 },
                 {
-                    "name": "Priority",
-                    "physical_name": "Priority",
+                    "name": "priority",
+                    "physical_name": "priority",
                     "logical_name": "Priority",
                     "generated_name": "priority",
                     "datatype": "int",
@@ -186,8 +186,8 @@
                     "ref_data_class_field_name": ""
                 },
                 {
-                    "name": "DueDate",
-                    "physical_name": "DueDate",
+                    "name": "due_date",
+                    "physical_name": "due_date",
                     "logical_name": "DueDate",
                     "generated_name": "dueDate",
                     "datatype": "date",
@@ -196,8 +196,8 @@
                     "ref_data_class_field_name": ""
                 },
                 {
-                    "name": "UpdatedAt",
-                    "physical_name": "UpdatedAt",
+                    "name": "updated_at",
+                    "physical_name": "updated_at",
                     "logical_name": "UpdatedAt",
                     "generated_name": "updatedAt",
                     "datatype": "datetime",
@@ -210,7 +210,7 @@
     ],
     "db_access_classes": [
         {
-            "source_name": "CapstoneTask",
+            "source_name": "capstone_task",
             "store_base_path": "",
             "is_autoload": "0",
             "notes": "Multi-output capstone sample using two read functions for one CapstoneTask table.",
@@ -223,10 +223,10 @@
                     "function_suffix": "",
                     "action_type": "SELECTLIST",
                     "data_class_base_name": "CapstoneTask",
-                    "target_table_name": "CapstoneTask",
+                    "target_table_name": "capstone_task",
                     "parameter_type": "",
                     "select_by_distinct": "0",
-                    "sort_order_columns": "CapstoneTask.Priority desc, CapstoneTask.Id asc",
+                    "sort_order_columns": "capstone_task.priority desc, capstone_task.id asc",
                     "memo": "List capstone tasks by status for multi-output tutorial.",
                     "limit_parameter_type": "argument",
                     "limit_fixed_parameter": "",
@@ -241,9 +241,9 @@
                     "source_of_truth": "manual",
                     "select_wheres": [
                         {
-                            "target_table_name": "CapstoneTask",
+                            "target_table_name": "capstone_task",
                             "target_table_alias_name": "",
-                            "target_table_column_name": "Status",
+                            "target_table_column_name": "status",
                             "parameter_type": "argument",
                             "parameter_data_type": "varchar",
                             "fixed_parameter": "",
@@ -264,7 +264,7 @@
                     "function_suffix": "",
                     "action_type": "SELECTSINGLE",
                     "data_class_base_name": "CapstoneTask",
-                    "target_table_name": "CapstoneTask",
+                    "target_table_name": "capstone_task",
                     "parameter_type": "",
                     "select_by_distinct": "0",
                     "sort_order_columns": "",
@@ -282,9 +282,9 @@
                     "source_of_truth": "manual",
                     "select_wheres": [
                         {
-                            "target_table_name": "CapstoneTask",
+                            "target_table_name": "capstone_task",
                             "target_table_alias_name": "",
-                            "target_table_column_name": "Id",
+                            "target_table_column_name": "id",
                             "parameter_type": "argument",
                             "parameter_data_type": "int",
                             "fixed_parameter": "",
@@ -385,7 +385,7 @@
             "spec_visibility": "internal-only",
             "output_archive_format": "tar.gz",
             "source_output_list_order": "40",
-            "notes": "Generate OpenAPI JSON from CapstoneTask read-function target metadata.",
+            "notes": "Generate OpenAPI JSON from capstone_task read-function target metadata while preserving CapstoneTask generated API names.",
             "source_of_truth": "manual"
         },
         {

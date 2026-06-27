@@ -81,51 +81,51 @@ WHERE ProjectPID = @sample09_project_id;
 DELETE FROM dbtable
 WHERE ProjectPID = @sample09_project_id;
 
-DROP TABLE IF EXISTS SalesCategoryReport;
-DROP TABLE IF EXISTS SalesRecord;
-DROP TABLE IF EXISTS SalesCategory;
+DROP TABLE IF EXISTS sales_category_report;
+DROP TABLE IF EXISTS sales_record;
+DROP TABLE IF EXISTS sales_category;
 
-CREATE TABLE SalesCategory (
-    Id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
-    Name VARCHAR(255) NOT NULL,
-    IsActive TINYINT(1) NOT NULL DEFAULT 1,
-    PRIMARY KEY (Id)
+CREATE TABLE sales_category (
+    id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+    name VARCHAR(255) NOT NULL,
+    is_active TINYINT(1) NOT NULL DEFAULT 1,
+    PRIMARY KEY (id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
-CREATE TABLE SalesRecord (
-    Id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
-    SalesCategoryId BIGINT UNSIGNED NOT NULL,
-    Title VARCHAR(255) NOT NULL,
-    Status VARCHAR(20) NOT NULL DEFAULT 'open',
-    Amount DECIMAL(10,2) NOT NULL DEFAULT 0.00,
-    PRIMARY KEY (Id),
-    KEY idx_sales_record_category_id (SalesCategoryId),
+CREATE TABLE sales_record (
+    id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+    sales_category_id BIGINT UNSIGNED NOT NULL,
+    title VARCHAR(255) NOT NULL,
+    status VARCHAR(20) NOT NULL DEFAULT 'open',
+    amount DECIMAL(10,2) NOT NULL DEFAULT 0.00,
+    PRIMARY KEY (id),
+    KEY idx_sales_record_category_id (sales_category_id),
     CONSTRAINT fk_sales_record_category
-        FOREIGN KEY (SalesCategoryId)
-        REFERENCES SalesCategory (Id)
+        FOREIGN KEY (sales_category_id)
+        REFERENCES sales_category (id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
-CREATE TABLE SalesCategoryReport (
-    SalesCategoryId BIGINT UNSIGNED NOT NULL,
-    SalesCategoryName VARCHAR(255) NOT NULL,
-    ClosedSaleCount INT UNSIGNED NOT NULL,
-    ClosedSaleTotalAmount DECIMAL(10,2) NOT NULL,
-    PRIMARY KEY (SalesCategoryId)
+CREATE TABLE sales_category_report (
+    sales_category_id BIGINT UNSIGNED NOT NULL,
+    sales_category_name VARCHAR(255) NOT NULL,
+    closed_sale_count INT UNSIGNED NOT NULL,
+    closed_sale_total_amount DECIMAL(10,2) NOT NULL,
+    PRIMARY KEY (sales_category_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
-INSERT INTO SalesCategory (
-    Name,
-    IsActive
+INSERT INTO sales_category (
+    name,
+    is_active
 ) VALUES
     ('Hardware', 1),
     ('Software', 1),
     ('Legacy', 0);
 
-INSERT INTO SalesRecord (
-    SalesCategoryId,
-    Title,
-    Status,
-    Amount
+INSERT INTO sales_record (
+    sales_category_id,
+    title,
+    status,
+    amount
 ) VALUES
     (1, 'Keyboard refresh', 'closed', 120.00),
     (1, 'Mouse replacement', 'closed', 80.00),

@@ -12,21 +12,21 @@
     ],
     "tags": [
         {
-            "name": "EbookReaderBook",
-            "description": "EbookReaderBook single-function proxy endpoints."
+            "name": "ebook_reader_book",
+            "description": "ebook_reader_book single-function proxy endpoints."
         }
     ],
     "paths": {
         "/proxyserver-EbookReaderBook-GetPublicEbookReaderBook.php": {
             "post": {
-                "operationId": "EbookReaderBook_GetPublicEbookReaderBook",
+                "operationId": "ebook_reader_book_GetPublicEbookReaderBook",
                 "tags": [
-                    "EbookReaderBook"
+                    "ebook_reader_book"
                 ],
-                "summary": "EbookReaderBook.GetPublicEbookReaderBook",
-                "description": "Generated from single-function proxy target metadata.\n\nSource function: `EbookReaderBook.GetPublicEbookReaderBook`.\n\nAuth policy: 認証を掛けません。",
+                "summary": "ebook_reader_book.GetPublicEbookReaderBook",
+                "description": "Generated from single-function proxy target metadata.\n\nSource function: `ebook_reader_book.GetPublicEbookReaderBook`.\n\nAuth policy: 認証を掛けません。",
                 "x-mtool": {
-                    "source_name": "EbookReaderBook",
+                    "source_name": "ebook_reader_book",
                     "function_name": "GetPublicEbookReaderBook",
                     "endpoint_filename": "proxyserver-EbookReaderBook-GetPublicEbookReaderBook.php",
                     "auth_strategy": "no-security",
@@ -80,14 +80,14 @@
                                     "_status": "OK",
                                     "Message": "",
                                     "Result": {
-                                        "Id": "string",
-                                        "Title": "string",
-                                        "Slug": "string",
-                                        "AuthorName": "string",
-                                        "GenreName": "string",
-                                        "Status": "string",
-                                        "Summary": "string",
-                                        "PublishedAt": "string"
+                                        "id": "string",
+                                        "title": "string",
+                                        "slug": "string",
+                                        "authorName": "string",
+                                        "genreName": "string",
+                                        "status": "string",
+                                        "summary": "string",
+                                        "publishedAt": "string"
                                     }
                                 }
                             }
@@ -122,14 +122,14 @@
         },
         "/proxyserver-EbookReaderBook-GetPublicEbookReaderBookList.php": {
             "post": {
-                "operationId": "EbookReaderBook_GetPublicEbookReaderBookList",
+                "operationId": "ebook_reader_book_GetPublicEbookReaderBookList",
                 "tags": [
-                    "EbookReaderBook"
+                    "ebook_reader_book"
                 ],
-                "summary": "EbookReaderBook.GetPublicEbookReaderBookList",
-                "description": "Generated from single-function proxy target metadata.\n\nSource function: `EbookReaderBook.GetPublicEbookReaderBookList`.\n\nAuth policy: 認証を掛けません。",
+                "summary": "ebook_reader_book.GetPublicEbookReaderBookList",
+                "description": "Generated from single-function proxy target metadata.\n\nSource function: `ebook_reader_book.GetPublicEbookReaderBookList`.\n\nAuth policy: 認証を掛けません。",
                 "x-mtool": {
-                    "source_name": "EbookReaderBook",
+                    "source_name": "ebook_reader_book",
                     "function_name": "GetPublicEbookReaderBookList",
                     "endpoint_filename": "proxyserver-EbookReaderBook-GetPublicEbookReaderBookList.php",
                     "auth_strategy": "no-security",
@@ -187,14 +187,14 @@
                                     "Message": "",
                                     "Result": [
                                         {
-                                            "Id": "string",
-                                            "Title": "string",
-                                            "Slug": "string",
-                                            "AuthorName": "string",
-                                            "GenreName": "string",
-                                            "Status": "string",
-                                            "Summary": "string",
-                                            "PublishedAt": "string"
+                                            "id": "string",
+                                            "title": "string",
+                                            "slug": "string",
+                                            "authorName": "string",
+                                            "genreName": "string",
+                                            "status": "string",
+                                            "summary": "string",
+                                            "publishedAt": "string"
                                         }
                                     ]
                                 }
@@ -230,14 +230,14 @@
         },
         "/proxyserver-EbookReaderBook-GetPublicEbookReaderChapter.php": {
             "post": {
-                "operationId": "EbookReaderBook_GetPublicEbookReaderChapter",
+                "operationId": "ebook_reader_book_GetPublicEbookReaderChapter",
                 "tags": [
-                    "EbookReaderBook"
+                    "ebook_reader_book"
                 ],
-                "summary": "EbookReaderBook.GetPublicEbookReaderChapter",
-                "description": "Generated from single-function proxy target metadata.\n\nSource function: `EbookReaderBook.GetPublicEbookReaderChapter`.\n\nAuth policy: 認証を掛けません。",
+                "summary": "ebook_reader_book.GetPublicEbookReaderChapter",
+                "description": "Generated from single-function proxy target metadata.\n\nSource function: `ebook_reader_book.GetPublicEbookReaderChapter`.\n\nAuth policy: 認証を掛けません。",
                 "x-mtool": {
-                    "source_name": "EbookReaderBook",
+                    "source_name": "ebook_reader_book",
                     "function_name": "GetPublicEbookReaderChapter",
                     "endpoint_filename": "proxyserver-EbookReaderBook-GetPublicEbookReaderChapter.php",
                     "auth_strategy": "no-security",
@@ -297,14 +297,14 @@
                                     "_status": "OK",
                                     "Message": "",
                                     "Result": {
-                                        "Id": "string",
-                                        "Title": "string",
-                                        "Slug": "string",
-                                        "AuthorName": "string",
-                                        "GenreName": "string",
-                                        "Status": "string",
-                                        "Summary": "string",
-                                        "PublishedAt": "string"
+                                        "id": "string",
+                                        "title": "string",
+                                        "slug": "string",
+                                        "authorName": "string",
+                                        "genreName": "string",
+                                        "status": "string",
+                                        "summary": "string",
+                                        "publishedAt": "string"
                                     }
                                 }
                             }
@@ -339,14 +339,14 @@
         },
         "/proxyserver-EbookReaderBook-GetPublicEbookReaderChapterList.php": {
             "post": {
-                "operationId": "EbookReaderBook_GetPublicEbookReaderChapterList",
+                "operationId": "ebook_reader_book_GetPublicEbookReaderChapterList",
                 "tags": [
-                    "EbookReaderBook"
+                    "ebook_reader_book"
                 ],
-                "summary": "EbookReaderBook.GetPublicEbookReaderChapterList",
-                "description": "Generated from single-function proxy target metadata.\n\nSource function: `EbookReaderBook.GetPublicEbookReaderChapterList`.\n\nAuth policy: 認証を掛けません。",
+                "summary": "ebook_reader_book.GetPublicEbookReaderChapterList",
+                "description": "Generated from single-function proxy target metadata.\n\nSource function: `ebook_reader_book.GetPublicEbookReaderChapterList`.\n\nAuth policy: 認証を掛けません。",
                 "x-mtool": {
-                    "source_name": "EbookReaderBook",
+                    "source_name": "ebook_reader_book",
                     "function_name": "GetPublicEbookReaderChapterList",
                     "endpoint_filename": "proxyserver-EbookReaderBook-GetPublicEbookReaderChapterList.php",
                     "auth_strategy": "no-security",
@@ -404,14 +404,14 @@
                                     "Message": "",
                                     "Result": [
                                         {
-                                            "Id": "string",
-                                            "Title": "string",
-                                            "Slug": "string",
-                                            "AuthorName": "string",
-                                            "GenreName": "string",
-                                            "Status": "string",
-                                            "Summary": "string",
-                                            "PublishedAt": "string"
+                                            "id": "string",
+                                            "title": "string",
+                                            "slug": "string",
+                                            "authorName": "string",
+                                            "genreName": "string",
+                                            "status": "string",
+                                            "summary": "string",
+                                            "publishedAt": "string"
                                         }
                                     ]
                                 }
@@ -447,14 +447,14 @@
         },
         "/proxyserver-EbookReaderBook-GetPublicEbookReaderMediaDeliveryList.php": {
             "post": {
-                "operationId": "EbookReaderBook_GetPublicEbookReaderMediaDeliveryList",
+                "operationId": "ebook_reader_book_GetPublicEbookReaderMediaDeliveryList",
                 "tags": [
-                    "EbookReaderBook"
+                    "ebook_reader_book"
                 ],
-                "summary": "EbookReaderBook.GetPublicEbookReaderMediaDeliveryList",
-                "description": "Generated from single-function proxy target metadata.\n\nSource function: `EbookReaderBook.GetPublicEbookReaderMediaDeliveryList`.\n\nAuth policy: 認証を掛けません。",
+                "summary": "ebook_reader_book.GetPublicEbookReaderMediaDeliveryList",
+                "description": "Generated from single-function proxy target metadata.\n\nSource function: `ebook_reader_book.GetPublicEbookReaderMediaDeliveryList`.\n\nAuth policy: 認証を掛けません。",
                 "x-mtool": {
-                    "source_name": "EbookReaderBook",
+                    "source_name": "ebook_reader_book",
                     "function_name": "GetPublicEbookReaderMediaDeliveryList",
                     "endpoint_filename": "proxyserver-EbookReaderBook-GetPublicEbookReaderMediaDeliveryList.php",
                     "auth_strategy": "no-security",
@@ -512,14 +512,14 @@
                                     "Message": "",
                                     "Result": [
                                         {
-                                            "Id": "string",
-                                            "Title": "string",
-                                            "Slug": "string",
-                                            "AuthorName": "string",
-                                            "GenreName": "string",
-                                            "Status": "string",
-                                            "Summary": "string",
-                                            "PublishedAt": "string"
+                                            "id": "string",
+                                            "title": "string",
+                                            "slug": "string",
+                                            "authorName": "string",
+                                            "genreName": "string",
+                                            "status": "string",
+                                            "summary": "string",
+                                            "publishedAt": "string"
                                         }
                                     ]
                                 }
@@ -560,35 +560,35 @@
                 "type": "object",
                 "title": "EbookReaderBookData",
                 "properties": {
-                    "Id": {
+                    "id": {
                         "type": "string",
                         "example": "string"
                     },
-                    "Title": {
+                    "title": {
                         "type": "string",
                         "example": "string"
                     },
-                    "Slug": {
+                    "slug": {
                         "type": "string",
                         "example": "string"
                     },
-                    "AuthorName": {
+                    "authorName": {
                         "type": "string",
                         "example": "string"
                     },
-                    "GenreName": {
+                    "genreName": {
                         "type": "string",
                         "example": "string"
                     },
-                    "Status": {
+                    "status": {
                         "type": "string",
                         "example": "string"
                     },
-                    "Summary": {
+                    "summary": {
                         "type": "string",
                         "example": "string"
                     },
-                    "PublishedAt": {
+                    "publishedAt": {
                         "type": "string",
                         "example": "string"
                     }

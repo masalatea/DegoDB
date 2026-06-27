@@ -10,7 +10,7 @@
     "unresolved_auth_count": 0,
     "operations": [
         {
-            "source_name": "EbookReaderBook",
+            "source_name": "ebook_reader_book",
             "function_name": "GetPublicEbookReaderBookList",
             "endpoint_filename": "proxyserver-EbookReaderBook-GetPublicEbookReaderBookList.php",
             "auth_strategy": "no-security",
@@ -27,7 +27,7 @@
             }
         },
         {
-            "source_name": "EbookReaderBook",
+            "source_name": "ebook_reader_book",
             "function_name": "GetPublicEbookReaderBook",
             "endpoint_filename": "proxyserver-EbookReaderBook-GetPublicEbookReaderBook.php",
             "auth_strategy": "no-security",
@@ -38,13 +38,13 @@
                     "parameter_name": "param_EbookReaderBook_Slug_where",
                     "datatype": "varchar",
                     "source": "select-where-parameter-data-type",
-                    "target_table_name": "EbookReaderBook",
-                    "target_table_column_name": "Slug"
+                    "target_table_name": "ebook_reader_book",
+                    "target_table_column_name": "slug"
                 }
             }
         },
         {
-            "source_name": "EbookReaderBook",
+            "source_name": "ebook_reader_book",
             "function_name": "GetPublicEbookReaderChapterList",
             "endpoint_filename": "proxyserver-EbookReaderBook-GetPublicEbookReaderChapterList.php",
             "auth_strategy": "no-security",
@@ -55,13 +55,13 @@
                     "parameter_name": "param_EbookReaderChapter_BookSlug_where",
                     "datatype": "",
                     "source": "select-where-column-name",
-                    "target_table_name": "EbookReaderChapter",
-                    "target_table_column_name": "Status"
+                    "target_table_name": "ebook_reader_chapter",
+                    "target_table_column_name": "status"
                 }
             }
         },
         {
-            "source_name": "EbookReaderBook",
+            "source_name": "ebook_reader_book",
             "function_name": "GetPublicEbookReaderChapter",
             "endpoint_filename": "proxyserver-EbookReaderBook-GetPublicEbookReaderChapter.php",
             "auth_strategy": "no-security",
@@ -72,20 +72,20 @@
                     "parameter_name": "param_EbookReaderChapter_BookSlug_where",
                     "datatype": "",
                     "source": "select-where-column-name",
-                    "target_table_name": "EbookReaderChapter",
-                    "target_table_column_name": "Status"
+                    "target_table_name": "ebook_reader_chapter",
+                    "target_table_column_name": "status"
                 },
                 "param_EbookReaderChapter_ChapterSlug_where": {
                     "parameter_name": "param_EbookReaderChapter_ChapterSlug_where",
                     "datatype": "varchar",
                     "source": "select-where-parameter-data-type",
-                    "target_table_name": "EbookReaderChapter",
-                    "target_table_column_name": "BookSlug"
+                    "target_table_name": "ebook_reader_chapter",
+                    "target_table_column_name": "book_slug"
                 }
             }
         },
         {
-            "source_name": "EbookReaderBook",
+            "source_name": "ebook_reader_book",
             "function_name": "GetPublicEbookReaderMediaDeliveryList",
             "endpoint_filename": "proxyserver-EbookReaderBook-GetPublicEbookReaderMediaDeliveryList.php",
             "auth_strategy": "no-security",
@@ -96,8 +96,8 @@
                     "parameter_name": "param_EbookReaderMediaDelivery_BookSlug_where",
                     "datatype": "",
                     "source": "select-where-column-name",
-                    "target_table_name": "EbookReaderMediaDelivery",
-                    "target_table_column_name": "Status"
+                    "target_table_name": "ebook_reader_media_delivery",
+                    "target_table_column_name": "status"
                 }
             }
         }

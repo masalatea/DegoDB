@@ -48,7 +48,7 @@ INSERT INTO project_db_access_classes (
     last_detected_data_file
 ) VALUES (
     @sample17_project_id,
-    'CapstoneTask',
+    'capstone_task',
     '',
     0,
     'Multi-output capstone sample using two read functions for one CapstoneTask table.',
@@ -88,10 +88,10 @@ INSERT INTO project_db_access_functions (
     '',
     'SELECTLIST',
     'CapstoneTask',
-    'CapstoneTask',
+    'capstone_task',
     '',
     0,
-    'CapstoneTask.Priority desc, CapstoneTask.Id asc',
+    'capstone_task.priority desc, capstone_task.id asc',
     'List capstone tasks by status for multi-output tutorial.',
     'argument',
     '',
@@ -110,7 +110,7 @@ INSERT INTO project_db_access_functions (
     '',
     'SELECTSINGLE',
     'CapstoneTask',
-    'CapstoneTask',
+    'capstone_task',
     '',
     0,
     '',
@@ -152,19 +152,19 @@ INSERT INTO project_db_access_function_select_target_fields (
     field_list_order,
     source_of_truth
 ) VALUES
-(@sample17_get_task_list_function_id, 'CapstoneTask', '', 'Id', '', '', 'Id', 0, 10, 'manual'),
-(@sample17_get_task_list_function_id, 'CapstoneTask', '', 'Title', '', '', 'Title', 0, 20, 'manual'),
-(@sample17_get_task_list_function_id, 'CapstoneTask', '', 'Status', '', '', 'Status', 0, 30, 'manual'),
-(@sample17_get_task_list_function_id, 'CapstoneTask', '', 'OwnerName', '', '', 'OwnerName', 0, 40, 'manual'),
-(@sample17_get_task_list_function_id, 'CapstoneTask', '', 'Priority', '', '', 'Priority', 0, 50, 'manual'),
-(@sample17_get_task_list_function_id, 'CapstoneTask', '', 'DueDate', '', '', 'DueDate', 0, 60, 'manual'),
-(@sample17_get_task_function_id, 'CapstoneTask', '', 'Id', '', '', 'Id', 0, 10, 'manual'),
-(@sample17_get_task_function_id, 'CapstoneTask', '', 'Title', '', '', 'Title', 0, 20, 'manual'),
-(@sample17_get_task_function_id, 'CapstoneTask', '', 'Status', '', '', 'Status', 0, 30, 'manual'),
-(@sample17_get_task_function_id, 'CapstoneTask', '', 'OwnerName', '', '', 'OwnerName', 0, 40, 'manual'),
-(@sample17_get_task_function_id, 'CapstoneTask', '', 'Priority', '', '', 'Priority', 0, 50, 'manual'),
-(@sample17_get_task_function_id, 'CapstoneTask', '', 'DueDate', '', '', 'DueDate', 0, 60, 'manual'),
-(@sample17_get_task_function_id, 'CapstoneTask', '', 'UpdatedAt', '', '', 'UpdatedAt', 0, 70, 'manual');
+(@sample17_get_task_list_function_id, 'capstone_task', '', 'id', '', '', 'id', 0, 10, 'manual'),
+(@sample17_get_task_list_function_id, 'capstone_task', '', 'title', '', '', 'title', 0, 20, 'manual'),
+(@sample17_get_task_list_function_id, 'capstone_task', '', 'status', '', '', 'status', 0, 30, 'manual'),
+(@sample17_get_task_list_function_id, 'capstone_task', '', 'owner_name', '', '', 'ownerName', 0, 40, 'manual'),
+(@sample17_get_task_list_function_id, 'capstone_task', '', 'priority', '', '', 'priority', 0, 50, 'manual'),
+(@sample17_get_task_list_function_id, 'capstone_task', '', 'due_date', '', '', 'dueDate', 0, 60, 'manual'),
+(@sample17_get_task_function_id, 'capstone_task', '', 'id', '', '', 'id', 0, 10, 'manual'),
+(@sample17_get_task_function_id, 'capstone_task', '', 'title', '', '', 'title', 0, 20, 'manual'),
+(@sample17_get_task_function_id, 'capstone_task', '', 'status', '', '', 'status', 0, 30, 'manual'),
+(@sample17_get_task_function_id, 'capstone_task', '', 'owner_name', '', '', 'ownerName', 0, 40, 'manual'),
+(@sample17_get_task_function_id, 'capstone_task', '', 'priority', '', '', 'priority', 0, 50, 'manual'),
+(@sample17_get_task_function_id, 'capstone_task', '', 'due_date', '', '', 'dueDate', 0, 60, 'manual'),
+(@sample17_get_task_function_id, 'capstone_task', '', 'updated_at', '', '', 'updatedAt', 0, 70, 'manual');
 
 INSERT INTO project_db_access_function_select_wheres (
     db_access_function_id,
@@ -183,8 +183,8 @@ INSERT INTO project_db_access_function_select_wheres (
     where_order,
     source_of_truth
 ) VALUES
-(@sample17_get_task_list_function_id, 'CapstoneTask', '', 'Status', 'argument', 'varchar', '', '', '', '', '', '', '=', 10, 'manual'),
-(@sample17_get_task_function_id, 'CapstoneTask', '', 'Id', 'argument', 'int', '', '', '', '', '', '', '=', 10, 'manual');
+(@sample17_get_task_list_function_id, 'capstone_task', '', 'status', 'argument', 'varchar', '', '', '', '', '', '', '=', 10, 'manual'),
+(@sample17_get_task_function_id, 'capstone_task', '', 'id', 'argument', 'int', '', '', '', '', '', '', '=', 10, 'manual');
 
 SET @sample17_project_id = NULL;
 SET @sample17_db_access_class_id = NULL;

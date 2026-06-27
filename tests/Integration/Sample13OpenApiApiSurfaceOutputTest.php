@@ -8,11 +8,22 @@ final class Sample13OpenApiApiSurfaceOutputTest extends TestCase
 {
     public function testOpenApiApiSurfaceOutputStaysInSync(): void
     {
-        $result = app_sample13_openapi_run(
-            app_bootstrap(),
-            'phpunit',
-            app_sample13_openapi_default_reference_root(),
-        );
+        $previousPolicy = getenv('MTOOL_GENERATED_NAME_POLICY');
+        putenv('MTOOL_GENERATED_NAME_POLICY=physical-logical-v1');
+
+        try {
+            $result = app_sample13_openapi_run(
+                app_bootstrap(),
+                'phpunit',
+                app_sample13_openapi_default_reference_root(),
+            );
+        } finally {
+            if ($previousPolicy === false) {
+                putenv('MTOOL_GENERATED_NAME_POLICY');
+            } else {
+                putenv('MTOOL_GENERATED_NAME_POLICY=' . $previousPolicy);
+            }
+        }
 
         self::assertTrue($result['ok'], $this->failureMessageFromResult($result));
         self::assertSame(1, (int) ($result['steps']['table_preview_after_import']['summary']['source_table_count'] ?? 0));

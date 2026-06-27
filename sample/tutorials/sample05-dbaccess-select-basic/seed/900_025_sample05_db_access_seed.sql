@@ -56,7 +56,7 @@ INSERT INTO project_db_access_classes (
     last_detected_data_file
 ) VALUES (
     @sample05_project_id,
-    'Notice',
+    'notice',
     '',
     0,
     'Minimal select-only DBAccess sample for a single imported Notice table.',
@@ -95,10 +95,10 @@ INSERT INTO project_db_access_functions (
     '',
     'SELECTLIST',
     'Notice',
-    'Notice',
+    'notice',
     '',
     0,
-    'Notice.SortOrder, Notice.Id',
+    'notice.sort_order, notice.id',
     'List notices in configured display order.',
     '',
     '',
@@ -125,10 +125,10 @@ INSERT INTO project_db_access_function_select_target_fields (
     field_list_order,
     source_of_truth
 ) VALUES
-(@sample05_get_notice_list_function_id, 'Notice', '', 'Id', '', '', 'Id', 0, 10, 'manual'),
-(@sample05_get_notice_list_function_id, 'Notice', '', 'Title', '', '', 'Title', 0, 20, 'manual'),
-(@sample05_get_notice_list_function_id, 'Notice', '', 'Body', '', '', 'Body', 0, 30, 'manual'),
-(@sample05_get_notice_list_function_id, 'Notice', '', 'SortOrder', '', '', 'SortOrder', 0, 40, 'manual');
+(@sample05_get_notice_list_function_id, 'notice', '', 'id', '', '', 'id', 0, 10, 'manual'),
+(@sample05_get_notice_list_function_id, 'notice', '', 'title', '', '', 'title', 0, 20, 'manual'),
+(@sample05_get_notice_list_function_id, 'notice', '', 'body', '', '', 'body', 0, 30, 'manual'),
+(@sample05_get_notice_list_function_id, 'notice', '', 'sort_order', '', '', 'sortOrder', 0, 40, 'manual');
 
 SET @sample05_project_id = NULL;
 SET @sample05_db_access_class_id = NULL;

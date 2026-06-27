@@ -10,7 +10,7 @@ require_once dirname(__DIR__, 2) . '/app/project_table_import_service.php';
 require_once dirname(__DIR__, 2) . '/app/sample_pack_catalog.php';
 
 const APP_SAMPLE15_BUNDLE_SOURCE_PROJECT_KEY = 'SAMPLE15';
-const APP_SAMPLE15_BUNDLE_TABLE_NAME = 'BundleNote';
+const APP_SAMPLE15_BUNDLE_TABLE_NAME = 'bundle_note';
 const APP_SAMPLE15_BUNDLE_SOURCE_OUTPUT_KEY = 'DATACLASS-PHP';
 
 function app_sample15_bundle_default_reference_root(): string

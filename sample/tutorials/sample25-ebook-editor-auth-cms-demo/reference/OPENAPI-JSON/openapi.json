@@ -12,21 +12,21 @@
     ],
     "tags": [
         {
-            "name": "EbookEditorChapter",
-            "description": "EbookEditorChapter single-function proxy endpoints."
+            "name": "ebook_editor_chapter",
+            "description": "ebook_editor_chapter single-function proxy endpoints."
         }
     ],
     "paths": {
         "/proxyserver-EbookEditorChapter-GetEditorEbookChapter.php": {
             "post": {
-                "operationId": "EbookEditorChapter_GetEditorEbookChapter",
+                "operationId": "ebook_editor_chapter_GetEditorEbookChapter",
                 "tags": [
-                    "EbookEditorChapter"
+                    "ebook_editor_chapter"
                 ],
-                "summary": "EbookEditorChapter.GetEditorEbookChapter",
-                "description": "Generated from single-function proxy target metadata.\n\nSource function: `EbookEditorChapter.GetEditorEbookChapter`.\n\nAuth policy: project token 認証です。",
+                "summary": "ebook_editor_chapter.GetEditorEbookChapter",
+                "description": "Generated from single-function proxy target metadata.\n\nSource function: `ebook_editor_chapter.GetEditorEbookChapter`.\n\nAuth policy: project token 認証です。",
                 "x-mtool": {
-                    "source_name": "EbookEditorChapter",
+                    "source_name": "ebook_editor_chapter",
                     "function_name": "GetEditorEbookChapter",
                     "endpoint_filename": "proxyserver-EbookEditorChapter-GetEditorEbookChapter.php",
                     "auth_strategy": "project-token",
@@ -87,15 +87,15 @@
                                     "_status": "OK",
                                     "Message": "",
                                     "Result": {
-                                        "Id": "string",
-                                        "EbookEditorBookId": "string",
-                                        "ChapterTitle": "string",
-                                        "ChapterSlug": "string",
-                                        "Status": "string",
-                                        "SpineOrder": "string",
-                                        "BodyMarkdown": "string",
-                                        "PublishedAt": "string",
-                                        "UpdatedAt": "string"
+                                        "id": "string",
+                                        "ebookEditorBookId": "string",
+                                        "chapterTitle": "string",
+                                        "chapterSlug": "string",
+                                        "status": "string",
+                                        "spineOrder": "string",
+                                        "bodyMarkdown": "string",
+                                        "publishedAt": "string",
+                                        "updatedAt": "string"
                                     }
                                 }
                             }
@@ -130,14 +130,14 @@
         },
         "/proxyserver-EbookEditorChapter-PublishEditorEbookChapter.php": {
             "post": {
-                "operationId": "EbookEditorChapter_PublishEditorEbookChapter",
+                "operationId": "ebook_editor_chapter_PublishEditorEbookChapter",
                 "tags": [
-                    "EbookEditorChapter"
+                    "ebook_editor_chapter"
                 ],
-                "summary": "EbookEditorChapter.PublishEditorEbookChapter",
-                "description": "Generated from single-function proxy target metadata.\n\nSource function: `EbookEditorChapter.PublishEditorEbookChapter`.\n\nAuth policy: project token 認証です。",
+                "summary": "ebook_editor_chapter.PublishEditorEbookChapter",
+                "description": "Generated from single-function proxy target metadata.\n\nSource function: `ebook_editor_chapter.PublishEditorEbookChapter`.\n\nAuth policy: project token 認証です。",
                 "x-mtool": {
-                    "source_name": "EbookEditorChapter",
+                    "source_name": "ebook_editor_chapter",
                     "function_name": "PublishEditorEbookChapter",
                     "endpoint_filename": "proxyserver-EbookEditorChapter-PublishEditorEbookChapter.php",
                     "auth_strategy": "project-token",
@@ -168,15 +168,15 @@
                             "example": {
                                 "TOKEN": "project-token",
                                 "EbookEditorChapterObj": {
-                                    "Id": "string",
-                                    "EbookEditorBookId": "string",
-                                    "ChapterTitle": "string",
-                                    "ChapterSlug": "string",
-                                    "Status": "string",
-                                    "SpineOrder": "string",
-                                    "BodyMarkdown": "string",
-                                    "PublishedAt": "string",
-                                    "UpdatedAt": "string"
+                                    "id": "string",
+                                    "ebookEditorBookId": "string",
+                                    "chapterTitle": "string",
+                                    "chapterSlug": "string",
+                                    "status": "string",
+                                    "spineOrder": "string",
+                                    "bodyMarkdown": "string",
+                                    "publishedAt": "string",
+                                    "updatedAt": "string"
                                 }
                             }
                         }
@@ -236,14 +236,14 @@
         },
         "/proxyserver-EbookEditorChapter-UpdateEditorEbookChapterDraft.php": {
             "post": {
-                "operationId": "EbookEditorChapter_UpdateEditorEbookChapterDraft",
+                "operationId": "ebook_editor_chapter_UpdateEditorEbookChapterDraft",
                 "tags": [
-                    "EbookEditorChapter"
+                    "ebook_editor_chapter"
                 ],
-                "summary": "EbookEditorChapter.UpdateEditorEbookChapterDraft",
-                "description": "Generated from single-function proxy target metadata.\n\nSource function: `EbookEditorChapter.UpdateEditorEbookChapterDraft`.\n\nAuth policy: project token 認証です。",
+                "summary": "ebook_editor_chapter.UpdateEditorEbookChapterDraft",
+                "description": "Generated from single-function proxy target metadata.\n\nSource function: `ebook_editor_chapter.UpdateEditorEbookChapterDraft`.\n\nAuth policy: project token 認証です。",
                 "x-mtool": {
-                    "source_name": "EbookEditorChapter",
+                    "source_name": "ebook_editor_chapter",
                     "function_name": "UpdateEditorEbookChapterDraft",
                     "endpoint_filename": "proxyserver-EbookEditorChapter-UpdateEditorEbookChapterDraft.php",
                     "auth_strategy": "project-token",
@@ -274,15 +274,15 @@
                             "example": {
                                 "TOKEN": "project-token",
                                 "EbookEditorChapterObj": {
-                                    "Id": "string",
-                                    "EbookEditorBookId": "string",
-                                    "ChapterTitle": "string",
-                                    "ChapterSlug": "string",
-                                    "Status": "string",
-                                    "SpineOrder": "string",
-                                    "BodyMarkdown": "string",
-                                    "PublishedAt": "string",
-                                    "UpdatedAt": "string"
+                                    "id": "string",
+                                    "ebookEditorBookId": "string",
+                                    "chapterTitle": "string",
+                                    "chapterSlug": "string",
+                                    "status": "string",
+                                    "spineOrder": "string",
+                                    "bodyMarkdown": "string",
+                                    "publishedAt": "string",
+                                    "updatedAt": "string"
                                 }
                             }
                         }
@@ -347,39 +347,39 @@
                 "type": "object",
                 "title": "EbookEditorChapterData",
                 "properties": {
-                    "Id": {
+                    "id": {
                         "type": "string",
                         "example": "string"
                     },
-                    "EbookEditorBookId": {
+                    "ebookEditorBookId": {
                         "type": "string",
                         "example": "string"
                     },
-                    "ChapterTitle": {
+                    "chapterTitle": {
                         "type": "string",
                         "example": "string"
                     },
-                    "ChapterSlug": {
+                    "chapterSlug": {
                         "type": "string",
                         "example": "string"
                     },
-                    "Status": {
+                    "status": {
                         "type": "string",
                         "example": "string"
                     },
-                    "SpineOrder": {
+                    "spineOrder": {
                         "type": "string",
                         "example": "string"
                     },
-                    "BodyMarkdown": {
+                    "bodyMarkdown": {
                         "type": "string",
                         "example": "string"
                     },
-                    "PublishedAt": {
+                    "publishedAt": {
                         "type": "string",
                         "example": "string"
                     },
-                    "UpdatedAt": {
+                    "updatedAt": {
                         "type": "string",
                         "example": "string"
                     }

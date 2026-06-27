@@ -6,7 +6,7 @@ class EbookCmsBookPublishEditorEbookCmsChapterProxyHandlerBase extends MtoolGene
 {
     protected function proxyDisplayName(): string
     {
-        return 'EbookCmsBook.PublishEditorEbookCmsChapter';
+        return 'ebook_cms_book.PublishEditorEbookCmsChapter';
     }
 
     protected function usesTransaction(): bool
@@ -42,7 +42,7 @@ class EbookCmsBookPublishEditorEbookCmsChapterProxyHandlerBase extends MtoolGene
                 'step_no' => 1,
                 'request_key' => '',
                 'is_list' => false,
-                'source_name' => 'EbookCmsBook',
+                'source_name' => 'ebook_cms_book',
                 'dbaccess_class' => 'EbookCmsBookDBAccess',
                 'function_name' => 'PublishEditorEbookCmsChapter',
                 'action' => 'update',

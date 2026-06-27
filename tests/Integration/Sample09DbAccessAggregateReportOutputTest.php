@@ -8,11 +8,22 @@ final class Sample09DbAccessAggregateReportOutputTest extends TestCase
 {
     public function testReferenceOutputsStayInSync(): void
     {
-        $result = app_sample9_dbaccess_aggregate_report_run(
-            app_bootstrap(),
-            'phpunit',
-            app_sample9_dbaccess_aggregate_report_default_reference_root(),
-        );
+        $previousPolicy = getenv('MTOOL_GENERATED_NAME_POLICY');
+        putenv('MTOOL_GENERATED_NAME_POLICY=physical-logical-v1');
+
+        try {
+            $result = app_sample9_dbaccess_aggregate_report_run(
+                app_bootstrap(),
+                'phpunit',
+                app_sample9_dbaccess_aggregate_report_default_reference_root(),
+            );
+        } finally {
+            if ($previousPolicy === false) {
+                putenv('MTOOL_GENERATED_NAME_POLICY');
+            } else {
+                putenv('MTOOL_GENERATED_NAME_POLICY=' . $previousPolicy);
+            }
+        }
 
         self::assertTrue(
             $result['ok'],

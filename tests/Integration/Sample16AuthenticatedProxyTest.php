@@ -8,11 +8,21 @@ final class Sample16AuthenticatedProxyTest extends TestCase
 {
     public function testAuthenticatedProxyFailsClosedAndAcceptsMatchingBearerToken(): void
     {
-        $result = app_sample16_auth_proxy_run(
-            app_bootstrap(),
-            'phpunit',
-            app_sample16_auth_proxy_default_reference_root(),
-        );
+        $previousPolicy = getenv('MTOOL_GENERATED_NAME_POLICY');
+        putenv('MTOOL_GENERATED_NAME_POLICY=physical-logical-v1');
+        try {
+            $result = app_sample16_auth_proxy_run(
+                app_bootstrap(),
+                'phpunit',
+                app_sample16_auth_proxy_default_reference_root(),
+            );
+        } finally {
+            if ($previousPolicy === false) {
+                putenv('MTOOL_GENERATED_NAME_POLICY');
+            } else {
+                putenv('MTOOL_GENERATED_NAME_POLICY=' . $previousPolicy);
+            }
+        }
 
         self::assertTrue($result['ok'], $this->failureMessageFromResult($result));
         self::assertSame(
@@ -47,7 +57,7 @@ final class Sample16AuthenticatedProxyTest extends TestCase
         $dbAccessBase = file_get_contents($dbAccessBasePath);
         self::assertIsString($dbAccessBase);
         self::assertStringContainsString('$mtooldb->execute($last_sql_command_for_mtooldb, [', $dbAccessBase);
-        self::assertStringContainsString('where `AuthTask`.`Id` = ?', $dbAccessBase);
+        self::assertStringContainsString('where `auth_task`.`id` = ?', $dbAccessBase);
 
         $autoloadPath = (string) ($result['steps']['output']['published']['published_root'] ?? '')
             . '/_support/runtime_dbclasses/autoload_proxy_runtime.php';

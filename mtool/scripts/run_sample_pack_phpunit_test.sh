@@ -177,4 +177,13 @@ for extra_seed_path in "${extra_seed_paths[@]}"; do
 done
 set -u
 
-"${compose_cmd[@]}" exec -T web-admin phpunit --configuration /var/www/tests/phpunit.xml "$phpunit_target"
+phpunit_exec_env=()
+if [ -n "${MTOOL_GENERATED_NAME_POLICY:-}" ]; then
+  phpunit_exec_env+=(-e "MTOOL_GENERATED_NAME_POLICY=$MTOOL_GENERATED_NAME_POLICY")
+fi
+
+if [ "${#phpunit_exec_env[@]}" -gt 0 ]; then
+  "${compose_cmd[@]}" exec -T "${phpunit_exec_env[@]}" web-admin phpunit --configuration /var/www/tests/phpunit.xml "$phpunit_target"
+else
+  "${compose_cmd[@]}" exec -T web-admin phpunit --configuration /var/www/tests/phpunit.xml "$phpunit_target"
+fi

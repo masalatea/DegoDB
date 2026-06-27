@@ -63,7 +63,7 @@ APP_CONFIG_STORE_DIR=work/config-store-sample14-sqlite \
   - `auth_type=NoSecurity`
 - `project_custom_proxy_steps`
   - `dbtable.GetdbtableList`
-  - `ProjectSourceOutput.GetProjectSourceOutputList`
+  - `project_source_output.GetProjectSourceOutputList`
 
 ## 手動 flow
 

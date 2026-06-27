@@ -6,7 +6,7 @@ class EbookEditorChapterPublishEditorEbookChapterProxyHandlerBase extends MtoolG
 {
     protected function proxyDisplayName(): string
     {
-        return 'EbookEditorChapter.PublishEditorEbookChapter';
+        return 'ebook_editor_chapter.PublishEditorEbookChapter';
     }
 
     protected function usesTransaction(): bool
@@ -42,7 +42,7 @@ class EbookEditorChapterPublishEditorEbookChapterProxyHandlerBase extends MtoolG
                 'step_no' => 1,
                 'request_key' => '',
                 'is_list' => false,
-                'source_name' => 'EbookEditorChapter',
+                'source_name' => 'ebook_editor_chapter',
                 'dbaccess_class' => 'EbookEditorChapterDBAccess',
                 'function_name' => 'PublishEditorEbookChapter',
                 'action' => 'update',

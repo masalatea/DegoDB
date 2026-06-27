@@ -12,9 +12,9 @@
     },
     "items": [
         {
-            "source_name": "AuthTask",
+            "source_name": "auth_task",
             "function_name": "GetAuthTask",
-            "display_name": "AuthTask.GetAuthTask",
+            "display_name": "auth_task.GetAuthTask",
             "endpoint_slug": "getauthtask",
             "function_list_order": "10",
             "action_type": "SELECTSINGLE",
@@ -22,9 +22,9 @@
             "limit_fixed_parameter": "",
             "select_wheres": [
                 {
-                    "target_table_name": "AuthTask",
+                    "target_table_name": "auth_task",
                     "target_table_alias_name": "",
-                    "target_table_column_name": "Id",
+                    "target_table_column_name": "id",
                     "parameter_type": "argument",
                     "parameter_data_type": "int",
                     "fixed_parameter": "",
@@ -60,8 +60,8 @@
                 }
             },
             "source_of_truth": "manual",
-            "function_updated_at": "2026-06-19 21:53:09",
-            "target_updated_at": "2026-06-19 21:53:09",
+            "function_updated_at": "2026-06-26 22:15:06",
+            "target_updated_at": "2026-06-26 22:15:07",
             "resolved": true,
             "signature": "public function GetAuthTask($param_AuthTask_Id_where)",
             "line": 10,

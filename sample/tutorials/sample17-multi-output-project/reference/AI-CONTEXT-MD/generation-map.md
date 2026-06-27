@@ -15,4 +15,4 @@
 
 | Table | DataClass | DBAccess Functions |
 | --- | --- | --- |
-| CapstoneTask | CapstoneTask | GetCapstoneTaskList, GetCapstoneTask |
+| capstone_task | capstone_task | GetCapstoneTaskList, GetCapstoneTask |

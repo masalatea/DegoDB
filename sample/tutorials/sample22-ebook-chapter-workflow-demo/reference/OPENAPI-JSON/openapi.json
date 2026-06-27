@@ -12,21 +12,21 @@
     ],
     "tags": [
         {
-            "name": "EbookWorkflowChapter",
-            "description": "EbookWorkflowChapter single-function proxy endpoints."
+            "name": "ebook_workflow_chapter",
+            "description": "ebook_workflow_chapter single-function proxy endpoints."
         }
     ],
     "paths": {
         "/proxyserver-EbookWorkflowChapter-GetPublishedEbookWorkflowChapter.php": {
             "post": {
-                "operationId": "EbookWorkflowChapter_GetPublishedEbookWorkflowChapter",
+                "operationId": "ebook_workflow_chapter_GetPublishedEbookWorkflowChapter",
                 "tags": [
-                    "EbookWorkflowChapter"
+                    "ebook_workflow_chapter"
                 ],
-                "summary": "EbookWorkflowChapter.GetPublishedEbookWorkflowChapter",
-                "description": "Generated from single-function proxy target metadata.\n\nSource function: `EbookWorkflowChapter.GetPublishedEbookWorkflowChapter`.\n\nAuth policy: 認証を掛けません。",
+                "summary": "ebook_workflow_chapter.GetPublishedEbookWorkflowChapter",
+                "description": "Generated from single-function proxy target metadata.\n\nSource function: `ebook_workflow_chapter.GetPublishedEbookWorkflowChapter`.\n\nAuth policy: 認証を掛けません。",
                 "x-mtool": {
-                    "source_name": "EbookWorkflowChapter",
+                    "source_name": "ebook_workflow_chapter",
                     "function_name": "GetPublishedEbookWorkflowChapter",
                     "endpoint_filename": "proxyserver-EbookWorkflowChapter-GetPublishedEbookWorkflowChapter.php",
                     "auth_strategy": "no-security",
@@ -86,17 +86,17 @@
                                     "_status": "OK",
                                     "Message": "",
                                     "Result": {
-                                        "Id": "string",
-                                        "EbookWorkflowBookId": "string",
-                                        "ChapterTitle": "string",
-                                        "ChapterSlug": "string",
-                                        "Status": "string",
-                                        "SpineOrder": "string",
-                                        "NavLabel": "string",
-                                        "EpubResourcePath": "string",
-                                        "BodyMarkdown": "string",
-                                        "PublishedAt": "string",
-                                        "UpdatedAt": "string"
+                                        "id": "string",
+                                        "ebookWorkflowBookId": "string",
+                                        "chapterTitle": "string",
+                                        "chapterSlug": "string",
+                                        "status": "string",
+                                        "spineOrder": "string",
+                                        "navLabel": "string",
+                                        "epubResourcePath": "string",
+                                        "bodyMarkdown": "string",
+                                        "publishedAt": "string",
+                                        "updatedAt": "string"
                                     }
                                 }
                             }
@@ -131,14 +131,14 @@
         },
         "/proxyserver-EbookWorkflowChapter-GetPublishedEbookWorkflowChapterList.php": {
             "post": {
-                "operationId": "EbookWorkflowChapter_GetPublishedEbookWorkflowChapterList",
+                "operationId": "ebook_workflow_chapter_GetPublishedEbookWorkflowChapterList",
                 "tags": [
-                    "EbookWorkflowChapter"
+                    "ebook_workflow_chapter"
                 ],
-                "summary": "EbookWorkflowChapter.GetPublishedEbookWorkflowChapterList",
-                "description": "Generated from single-function proxy target metadata.\n\nSource function: `EbookWorkflowChapter.GetPublishedEbookWorkflowChapterList`.\n\nAuth policy: 認証を掛けません。",
+                "summary": "ebook_workflow_chapter.GetPublishedEbookWorkflowChapterList",
+                "description": "Generated from single-function proxy target metadata.\n\nSource function: `ebook_workflow_chapter.GetPublishedEbookWorkflowChapterList`.\n\nAuth policy: 認証を掛けません。",
                 "x-mtool": {
-                    "source_name": "EbookWorkflowChapter",
+                    "source_name": "ebook_workflow_chapter",
                     "function_name": "GetPublishedEbookWorkflowChapterList",
                     "endpoint_filename": "proxyserver-EbookWorkflowChapter-GetPublishedEbookWorkflowChapterList.php",
                     "auth_strategy": "no-security",
@@ -196,17 +196,17 @@
                                     "Message": "",
                                     "Result": [
                                         {
-                                            "Id": "string",
-                                            "EbookWorkflowBookId": "string",
-                                            "ChapterTitle": "string",
-                                            "ChapterSlug": "string",
-                                            "Status": "string",
-                                            "SpineOrder": "string",
-                                            "NavLabel": "string",
-                                            "EpubResourcePath": "string",
-                                            "BodyMarkdown": "string",
-                                            "PublishedAt": "string",
-                                            "UpdatedAt": "string"
+                                            "id": "string",
+                                            "ebookWorkflowBookId": "string",
+                                            "chapterTitle": "string",
+                                            "chapterSlug": "string",
+                                            "status": "string",
+                                            "spineOrder": "string",
+                                            "navLabel": "string",
+                                            "epubResourcePath": "string",
+                                            "bodyMarkdown": "string",
+                                            "publishedAt": "string",
+                                            "updatedAt": "string"
                                         }
                                     ]
                                 }
@@ -242,14 +242,14 @@
         },
         "/proxyserver-EbookWorkflowChapter-InsertEbookWorkflowChapter.php": {
             "post": {
-                "operationId": "EbookWorkflowChapter_InsertEbookWorkflowChapter",
+                "operationId": "ebook_workflow_chapter_InsertEbookWorkflowChapter",
                 "tags": [
-                    "EbookWorkflowChapter"
+                    "ebook_workflow_chapter"
                 ],
-                "summary": "EbookWorkflowChapter.InsertEbookWorkflowChapter",
-                "description": "Generated from single-function proxy target metadata.\n\nSource function: `EbookWorkflowChapter.InsertEbookWorkflowChapter`.\n\nAuth policy: 認証を掛けません。",
+                "summary": "ebook_workflow_chapter.InsertEbookWorkflowChapter",
+                "description": "Generated from single-function proxy target metadata.\n\nSource function: `ebook_workflow_chapter.InsertEbookWorkflowChapter`.\n\nAuth policy: 認証を掛けません。",
                 "x-mtool": {
-                    "source_name": "EbookWorkflowChapter",
+                    "source_name": "ebook_workflow_chapter",
                     "function_name": "InsertEbookWorkflowChapter",
                     "endpoint_filename": "proxyserver-EbookWorkflowChapter-InsertEbookWorkflowChapter.php",
                     "auth_strategy": "no-security",
@@ -273,17 +273,17 @@
                             },
                             "example": {
                                 "EbookWorkflowChapterObj": {
-                                    "Id": "string",
-                                    "EbookWorkflowBookId": "string",
-                                    "ChapterTitle": "string",
-                                    "ChapterSlug": "string",
-                                    "Status": "string",
-                                    "SpineOrder": "string",
-                                    "NavLabel": "string",
-                                    "EpubResourcePath": "string",
-                                    "BodyMarkdown": "string",
-                                    "PublishedAt": "string",
-                                    "UpdatedAt": "string"
+                                    "id": "string",
+                                    "ebookWorkflowBookId": "string",
+                                    "chapterTitle": "string",
+                                    "chapterSlug": "string",
+                                    "status": "string",
+                                    "spineOrder": "string",
+                                    "navLabel": "string",
+                                    "epubResourcePath": "string",
+                                    "bodyMarkdown": "string",
+                                    "publishedAt": "string",
+                                    "updatedAt": "string"
                                 }
                             }
                         }
@@ -348,14 +348,14 @@
         },
         "/proxyserver-EbookWorkflowChapter-PublishEbookWorkflowChapter.php": {
             "post": {
-                "operationId": "EbookWorkflowChapter_PublishEbookWorkflowChapter",
+                "operationId": "ebook_workflow_chapter_PublishEbookWorkflowChapter",
                 "tags": [
-                    "EbookWorkflowChapter"
+                    "ebook_workflow_chapter"
                 ],
-                "summary": "EbookWorkflowChapter.PublishEbookWorkflowChapter",
-                "description": "Generated from single-function proxy target metadata.\n\nSource function: `EbookWorkflowChapter.PublishEbookWorkflowChapter`.\n\nAuth policy: 認証を掛けません。",
+                "summary": "ebook_workflow_chapter.PublishEbookWorkflowChapter",
+                "description": "Generated from single-function proxy target metadata.\n\nSource function: `ebook_workflow_chapter.PublishEbookWorkflowChapter`.\n\nAuth policy: 認証を掛けません。",
                 "x-mtool": {
-                    "source_name": "EbookWorkflowChapter",
+                    "source_name": "ebook_workflow_chapter",
                     "function_name": "PublishEbookWorkflowChapter",
                     "endpoint_filename": "proxyserver-EbookWorkflowChapter-PublishEbookWorkflowChapter.php",
                     "auth_strategy": "no-security",
@@ -379,17 +379,17 @@
                             },
                             "example": {
                                 "EbookWorkflowChapterObj": {
-                                    "Id": "string",
-                                    "EbookWorkflowBookId": "string",
-                                    "ChapterTitle": "string",
-                                    "ChapterSlug": "string",
-                                    "Status": "string",
-                                    "SpineOrder": "string",
-                                    "NavLabel": "string",
-                                    "EpubResourcePath": "string",
-                                    "BodyMarkdown": "string",
-                                    "PublishedAt": "string",
-                                    "UpdatedAt": "string"
+                                    "id": "string",
+                                    "ebookWorkflowBookId": "string",
+                                    "chapterTitle": "string",
+                                    "chapterSlug": "string",
+                                    "status": "string",
+                                    "spineOrder": "string",
+                                    "navLabel": "string",
+                                    "epubResourcePath": "string",
+                                    "bodyMarkdown": "string",
+                                    "publishedAt": "string",
+                                    "updatedAt": "string"
                                 }
                             }
                         }
@@ -449,14 +449,14 @@
         },
         "/proxyserver-EbookWorkflowChapter-UpdateEbookWorkflowChapterDraft.php": {
             "post": {
-                "operationId": "EbookWorkflowChapter_UpdateEbookWorkflowChapterDraft",
+                "operationId": "ebook_workflow_chapter_UpdateEbookWorkflowChapterDraft",
                 "tags": [
-                    "EbookWorkflowChapter"
+                    "ebook_workflow_chapter"
                 ],
-                "summary": "EbookWorkflowChapter.UpdateEbookWorkflowChapterDraft",
-                "description": "Generated from single-function proxy target metadata.\n\nSource function: `EbookWorkflowChapter.UpdateEbookWorkflowChapterDraft`.\n\nAuth policy: 認証を掛けません。",
+                "summary": "ebook_workflow_chapter.UpdateEbookWorkflowChapterDraft",
+                "description": "Generated from single-function proxy target metadata.\n\nSource function: `ebook_workflow_chapter.UpdateEbookWorkflowChapterDraft`.\n\nAuth policy: 認証を掛けません。",
                 "x-mtool": {
-                    "source_name": "EbookWorkflowChapter",
+                    "source_name": "ebook_workflow_chapter",
                     "function_name": "UpdateEbookWorkflowChapterDraft",
                     "endpoint_filename": "proxyserver-EbookWorkflowChapter-UpdateEbookWorkflowChapterDraft.php",
                     "auth_strategy": "no-security",
@@ -480,17 +480,17 @@
                             },
                             "example": {
                                 "EbookWorkflowChapterObj": {
-                                    "Id": "string",
-                                    "EbookWorkflowBookId": "string",
-                                    "ChapterTitle": "string",
-                                    "ChapterSlug": "string",
-                                    "Status": "string",
-                                    "SpineOrder": "string",
-                                    "NavLabel": "string",
-                                    "EpubResourcePath": "string",
-                                    "BodyMarkdown": "string",
-                                    "PublishedAt": "string",
-                                    "UpdatedAt": "string"
+                                    "id": "string",
+                                    "ebookWorkflowBookId": "string",
+                                    "chapterTitle": "string",
+                                    "chapterSlug": "string",
+                                    "status": "string",
+                                    "spineOrder": "string",
+                                    "navLabel": "string",
+                                    "epubResourcePath": "string",
+                                    "bodyMarkdown": "string",
+                                    "publishedAt": "string",
+                                    "updatedAt": "string"
                                 }
                             }
                         }
@@ -550,14 +550,14 @@
         },
         "/proxyserver-EbookWorkflowChapter-UpdateEbookWorkflowChapterOrder.php": {
             "post": {
-                "operationId": "EbookWorkflowChapter_UpdateEbookWorkflowChapterOrder",
+                "operationId": "ebook_workflow_chapter_UpdateEbookWorkflowChapterOrder",
                 "tags": [
-                    "EbookWorkflowChapter"
+                    "ebook_workflow_chapter"
                 ],
-                "summary": "EbookWorkflowChapter.UpdateEbookWorkflowChapterOrder",
-                "description": "Generated from single-function proxy target metadata.\n\nSource function: `EbookWorkflowChapter.UpdateEbookWorkflowChapterOrder`.\n\nAuth policy: 認証を掛けません。",
+                "summary": "ebook_workflow_chapter.UpdateEbookWorkflowChapterOrder",
+                "description": "Generated from single-function proxy target metadata.\n\nSource function: `ebook_workflow_chapter.UpdateEbookWorkflowChapterOrder`.\n\nAuth policy: 認証を掛けません。",
                 "x-mtool": {
-                    "source_name": "EbookWorkflowChapter",
+                    "source_name": "ebook_workflow_chapter",
                     "function_name": "UpdateEbookWorkflowChapterOrder",
                     "endpoint_filename": "proxyserver-EbookWorkflowChapter-UpdateEbookWorkflowChapterOrder.php",
                     "auth_strategy": "no-security",
@@ -581,17 +581,17 @@
                             },
                             "example": {
                                 "EbookWorkflowChapterObj": {
-                                    "Id": "string",
-                                    "EbookWorkflowBookId": "string",
-                                    "ChapterTitle": "string",
-                                    "ChapterSlug": "string",
-                                    "Status": "string",
-                                    "SpineOrder": "string",
-                                    "NavLabel": "string",
-                                    "EpubResourcePath": "string",
-                                    "BodyMarkdown": "string",
-                                    "PublishedAt": "string",
-                                    "UpdatedAt": "string"
+                                    "id": "string",
+                                    "ebookWorkflowBookId": "string",
+                                    "chapterTitle": "string",
+                                    "chapterSlug": "string",
+                                    "status": "string",
+                                    "spineOrder": "string",
+                                    "navLabel": "string",
+                                    "epubResourcePath": "string",
+                                    "bodyMarkdown": "string",
+                                    "publishedAt": "string",
+                                    "updatedAt": "string"
                                 }
                             }
                         }
@@ -656,47 +656,47 @@
                 "type": "object",
                 "title": "EbookWorkflowChapterData",
                 "properties": {
-                    "Id": {
+                    "id": {
                         "type": "string",
                         "example": "string"
                     },
-                    "EbookWorkflowBookId": {
+                    "ebookWorkflowBookId": {
                         "type": "string",
                         "example": "string"
                     },
-                    "ChapterTitle": {
+                    "chapterTitle": {
                         "type": "string",
                         "example": "string"
                     },
-                    "ChapterSlug": {
+                    "chapterSlug": {
                         "type": "string",
                         "example": "string"
                     },
-                    "Status": {
+                    "status": {
                         "type": "string",
                         "example": "string"
                     },
-                    "SpineOrder": {
+                    "spineOrder": {
                         "type": "string",
                         "example": "string"
                     },
-                    "NavLabel": {
+                    "navLabel": {
                         "type": "string",
                         "example": "string"
                     },
-                    "EpubResourcePath": {
+                    "epubResourcePath": {
                         "type": "string",
                         "example": "string"
                     },
-                    "BodyMarkdown": {
+                    "bodyMarkdown": {
                         "type": "string",
                         "example": "string"
                     },
-                    "PublishedAt": {
+                    "publishedAt": {
                         "type": "string",
                         "example": "string"
                     },
-                    "UpdatedAt": {
+                    "updatedAt": {
                         "type": "string",
                         "example": "string"
                     }

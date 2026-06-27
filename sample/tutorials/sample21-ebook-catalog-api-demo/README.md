@@ -18,14 +18,14 @@ This tutorial pack moves the JSON-first ebook lane from generic content publishi
 
 `sample21` は production ebook store ではなく、Mtool sample として ebook catalog API の最小公開面を見せる。
 
-- tables:
-  - `EbookSeries`
-  - `EbookAuthor`
-  - `EbookGenre`
-  - `EbookBook`
-  - `EbookBookAuthor`
-  - `EbookBookGenre`
-  - `EbookCatalogItem`
+- physical tables / generated data classes:
+  - `ebook_series` / `EbookSeries`
+  - `ebook_author` / `EbookAuthor`
+  - `ebook_genre` / `EbookGenre`
+  - `ebook_book` / `EbookBook`
+  - `ebook_book_author` / `EbookBookAuthor`
+  - `ebook_book_genre` / `EbookBookGenre`
+  - `ebook_catalog_item` / `EbookCatalogItem`
 - DBAccess:
   - `EbookCatalogItem.GetPublicEbookCatalogList`
   - `EbookCatalogItem.GetPublicEbookBook`
@@ -34,7 +34,7 @@ This tutorial pack moves the JSON-first ebook lane from generic content publishi
   - `DBACCESS-PHP`
   - `OPENAPI-JSON`
 
-`EbookCatalogItem` is a materialized public read model for the sample. `draft` books are kept in the fixture data but excluded from public DBAccess functions by the `Status = published` condition. `EpubStatus` and `PrimaryEpubUrl` are metadata fields only; this sample does not generate, import, or validate EPUB files.
+`ebook_catalog_item` / `EbookCatalogItem` is a materialized public read model for the sample. `draft` books are kept in the fixture data but excluded from public DBAccess functions by the `status = published` condition. `epub_status` / `EpubStatus` and `primary_epub_url` / `PrimaryEpubUrl` are metadata fields only; this sample does not generate, import, or validate EPUB files.
 
 ## Generated / Curated Boundary
 
@@ -66,25 +66,25 @@ make sample21-pack-runtime-test
 
 ```bash
 docker compose -f compose.yaml -f compose.local-db-config.yaml -f sample/tutorials/sample21-ebook-catalog-api-demo/compose.yaml exec -T web-admin \
-  php /var/www/mtool/scripts/import_project_tables.php --project-key=SAMPLE21 --source=live-schema --table=EbookSeries
+  php /var/www/mtool/scripts/import_project_tables.php --project-key=SAMPLE21 --source=live-schema --table=ebook_series
 
 docker compose -f compose.yaml -f compose.local-db-config.yaml -f sample/tutorials/sample21-ebook-catalog-api-demo/compose.yaml exec -T web-admin \
-  php /var/www/mtool/scripts/import_project_tables.php --project-key=SAMPLE21 --source=live-schema --table=EbookAuthor
+  php /var/www/mtool/scripts/import_project_tables.php --project-key=SAMPLE21 --source=live-schema --table=ebook_author
 
 docker compose -f compose.yaml -f compose.local-db-config.yaml -f sample/tutorials/sample21-ebook-catalog-api-demo/compose.yaml exec -T web-admin \
-  php /var/www/mtool/scripts/import_project_tables.php --project-key=SAMPLE21 --source=live-schema --table=EbookGenre
+  php /var/www/mtool/scripts/import_project_tables.php --project-key=SAMPLE21 --source=live-schema --table=ebook_genre
 
 docker compose -f compose.yaml -f compose.local-db-config.yaml -f sample/tutorials/sample21-ebook-catalog-api-demo/compose.yaml exec -T web-admin \
-  php /var/www/mtool/scripts/import_project_tables.php --project-key=SAMPLE21 --source=live-schema --table=EbookBook
+  php /var/www/mtool/scripts/import_project_tables.php --project-key=SAMPLE21 --source=live-schema --table=ebook_book
 
 docker compose -f compose.yaml -f compose.local-db-config.yaml -f sample/tutorials/sample21-ebook-catalog-api-demo/compose.yaml exec -T web-admin \
-  php /var/www/mtool/scripts/import_project_tables.php --project-key=SAMPLE21 --source=live-schema --table=EbookBookAuthor
+  php /var/www/mtool/scripts/import_project_tables.php --project-key=SAMPLE21 --source=live-schema --table=ebook_book_author
 
 docker compose -f compose.yaml -f compose.local-db-config.yaml -f sample/tutorials/sample21-ebook-catalog-api-demo/compose.yaml exec -T web-admin \
-  php /var/www/mtool/scripts/import_project_tables.php --project-key=SAMPLE21 --source=live-schema --table=EbookBookGenre
+  php /var/www/mtool/scripts/import_project_tables.php --project-key=SAMPLE21 --source=live-schema --table=ebook_book_genre
 
 docker compose -f compose.yaml -f compose.local-db-config.yaml -f sample/tutorials/sample21-ebook-catalog-api-demo/compose.yaml exec -T web-admin \
-  php /var/www/mtool/scripts/import_project_tables.php --project-key=SAMPLE21 --source=live-schema --table=EbookCatalogItem
+  php /var/www/mtool/scripts/import_project_tables.php --project-key=SAMPLE21 --source=live-schema --table=ebook_catalog_item
 
 docker compose -f compose.yaml -f compose.local-db-config.yaml -f sample/tutorials/sample21-ebook-catalog-api-demo/compose.yaml exec -T web-admin \
   php /var/www/mtool/scripts/sync_project_data_classes.php --project-key=SAMPLE21

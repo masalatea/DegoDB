@@ -75,7 +75,7 @@ INNER JOIN (
     SELECT 'AUTH-PROXY-SERVER' AS source_output_key
 ) AS targets
 WHERE classes.project_id = @sample25_project_id
-  AND classes.source_name = 'EbookEditorChapter'
+  AND classes.source_name = 'ebook_editor_chapter'
   AND functions.function_name IN (
       'GetEditorEbookChapter',
       'UpdateEditorEbookChapterDraft',

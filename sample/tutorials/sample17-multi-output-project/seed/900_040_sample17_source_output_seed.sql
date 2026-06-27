@@ -122,7 +122,7 @@ INSERT INTO project_source_outputs (
     'tar.gz',
     40,
     'internal-only',
-    'Generate OpenAPI JSON from CapstoneTask read-function target metadata.',
+    'Generate OpenAPI JSON from capstone_task read-function target metadata while preserving CapstoneTask generated API names.',
     'manual'
 ),
 (
@@ -200,7 +200,7 @@ FROM project_db_access_functions AS functions
 INNER JOIN project_db_access_classes AS classes
     ON classes.id = functions.db_access_class_id
 WHERE classes.project_id = @sample17_project_id
-  AND classes.source_name = 'CapstoneTask'
+  AND classes.source_name = 'capstone_task'
   AND functions.function_name IN (
       'GetCapstoneTaskList',
       'GetCapstoneTask'

@@ -11,9 +11,9 @@ require_once dirname(__DIR__, 2) . '/app/source_output_repository.php';
 
 const APP_SAMPLE22_EBOOK_CHAPTER_WORKFLOW_PROJECT_KEY = 'SAMPLE22';
 const APP_SAMPLE22_EBOOK_CHAPTER_WORKFLOW_TABLE_NAMES = [
-    'EbookWorkflowBook',
-    'EbookWorkflowChapter',
-    'EbookWorkflowPublishedChapter',
+    'ebook_workflow_book',
+    'ebook_workflow_chapter',
+    'ebook_workflow_published_chapter',
 ];
 const APP_SAMPLE22_EBOOK_CHAPTER_WORKFLOW_KEYS = [
     'DATACLASS-PHP',

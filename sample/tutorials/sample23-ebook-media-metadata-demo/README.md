@@ -20,10 +20,10 @@ This tutorial pack adds ebook media metadata to the ebook lane. It keeps EPUB ha
 `sample23` は production asset manager ではなく、Mtool sample として EPUB-facing metadata を DB / API に落とす例に絞る。
 
 - tables:
-  - `EbookMediaBook`
-  - `EbookMediaAsset`
-  - `EbookMediaBookAsset`
-  - `EbookMediaDelivery`
+  - `ebook_media_book` -> `EbookMediaBookData`
+  - `ebook_media_asset` -> `EbookMediaAssetData`
+  - `ebook_media_book_asset` -> `EbookMediaBookAssetData`
+  - `ebook_media_delivery` -> `EbookMediaDeliveryData`
 - DBAccess:
   - `EbookMediaAsset.GetPublicEbookMediaDeliveryList`
   - `EbookMediaAsset.GetPublicEbookMediaAsset`
@@ -42,7 +42,7 @@ The EPUB row points at the bundled fixture:
 - size: `3125`
 - sha256: `6b52e37129d9f01097da7e9b598b0e06d60a5b8e3b4126870c799cdc6c1dd5ea`
 
-`EbookMediaAsset` is the editable metadata table. `EbookMediaBookAsset` links a book to one or more assets. `EbookMediaDelivery` is a materialized public read model so the public API can return only published delivery metadata. The sample includes a draft cover placeholder to show that unpublished assets stay out of public delivery rows.
+`ebook_media_asset` is the editable physical metadata table. `ebook_media_book_asset` links a book to one or more assets. `ebook_media_delivery` is a materialized public read model so the public API can return only published delivery metadata while generated PHP and OpenAPI names stay in the `EbookMedia*` logical form. The sample includes a draft cover placeholder to show that unpublished assets stay out of public delivery rows.
 
 OpenAPI schema generation follows the DBAccess class source and exposes `EbookMediaAssetData`. The generated PHP DBAccess still uses `EbookMediaDeliveryData` for public read rows.
 

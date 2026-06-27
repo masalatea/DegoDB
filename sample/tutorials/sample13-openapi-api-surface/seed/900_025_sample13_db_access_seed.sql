@@ -48,10 +48,10 @@ INSERT INTO project_db_access_classes (
     last_detected_data_file
 ) VALUES (
     @sample13_project_id,
-    'ApiTask',
+    'api_task',
     '',
     0,
-    'OpenAPI API surface sample using two read functions for one ApiTask table.',
+    'OpenAPI API surface sample using two read functions for one api_task table.',
     'manual',
     '',
     ''
@@ -88,10 +88,10 @@ INSERT INTO project_db_access_functions (
     '',
     'SELECTLIST',
     'ApiTask',
-    'ApiTask',
+    'api_task',
     '',
     0,
-    'ApiTask.DueDate asc, ApiTask.Id asc',
+    'api_task.due_date asc, api_task.id asc',
     'List API tasks by status for OpenAPI surface tutorial.',
     'argument',
     '',
@@ -110,7 +110,7 @@ INSERT INTO project_db_access_functions (
     '',
     'SELECTSINGLE',
     'ApiTask',
-    'ApiTask',
+    'api_task',
     '',
     0,
     '',
@@ -152,17 +152,17 @@ INSERT INTO project_db_access_function_select_target_fields (
     field_list_order,
     source_of_truth
 ) VALUES
-(@sample13_get_api_task_list_function_id, 'ApiTask', '', 'Id', '', '', 'Id', 0, 10, 'manual'),
-(@sample13_get_api_task_list_function_id, 'ApiTask', '', 'Title', '', '', 'Title', 0, 20, 'manual'),
-(@sample13_get_api_task_list_function_id, 'ApiTask', '', 'Status', '', '', 'Status', 0, 30, 'manual'),
-(@sample13_get_api_task_list_function_id, 'ApiTask', '', 'OwnerName', '', '', 'OwnerName', 0, 40, 'manual'),
-(@sample13_get_api_task_list_function_id, 'ApiTask', '', 'DueDate', '', '', 'DueDate', 0, 50, 'manual'),
-(@sample13_get_api_task_function_id, 'ApiTask', '', 'Id', '', '', 'Id', 0, 10, 'manual'),
-(@sample13_get_api_task_function_id, 'ApiTask', '', 'Title', '', '', 'Title', 0, 20, 'manual'),
-(@sample13_get_api_task_function_id, 'ApiTask', '', 'Status', '', '', 'Status', 0, 30, 'manual'),
-(@sample13_get_api_task_function_id, 'ApiTask', '', 'OwnerName', '', '', 'OwnerName', 0, 40, 'manual'),
-(@sample13_get_api_task_function_id, 'ApiTask', '', 'DueDate', '', '', 'DueDate', 0, 50, 'manual'),
-(@sample13_get_api_task_function_id, 'ApiTask', '', 'UpdatedAt', '', '', 'UpdatedAt', 0, 60, 'manual');
+(@sample13_get_api_task_list_function_id, 'api_task', '', 'id', '', '', 'id', 0, 10, 'manual'),
+(@sample13_get_api_task_list_function_id, 'api_task', '', 'title', '', '', 'title', 0, 20, 'manual'),
+(@sample13_get_api_task_list_function_id, 'api_task', '', 'status', '', '', 'status', 0, 30, 'manual'),
+(@sample13_get_api_task_list_function_id, 'api_task', '', 'owner_name', '', '', 'ownerName', 0, 40, 'manual'),
+(@sample13_get_api_task_list_function_id, 'api_task', '', 'due_date', '', '', 'dueDate', 0, 50, 'manual'),
+(@sample13_get_api_task_function_id, 'api_task', '', 'id', '', '', 'id', 0, 10, 'manual'),
+(@sample13_get_api_task_function_id, 'api_task', '', 'title', '', '', 'title', 0, 20, 'manual'),
+(@sample13_get_api_task_function_id, 'api_task', '', 'status', '', '', 'status', 0, 30, 'manual'),
+(@sample13_get_api_task_function_id, 'api_task', '', 'owner_name', '', '', 'ownerName', 0, 40, 'manual'),
+(@sample13_get_api_task_function_id, 'api_task', '', 'due_date', '', '', 'dueDate', 0, 50, 'manual'),
+(@sample13_get_api_task_function_id, 'api_task', '', 'updated_at', '', '', 'updatedAt', 0, 60, 'manual');
 
 INSERT INTO project_db_access_function_select_wheres (
     db_access_function_id,
@@ -181,8 +181,8 @@ INSERT INTO project_db_access_function_select_wheres (
     where_order,
     source_of_truth
 ) VALUES
-(@sample13_get_api_task_list_function_id, 'ApiTask', '', 'Status', 'argument', 'varchar', '', '', '', '', '', '', '=', 10, 'manual'),
-(@sample13_get_api_task_function_id, 'ApiTask', '', 'Id', 'argument', 'int', '', '', '', '', '', '', '=', 10, 'manual');
+(@sample13_get_api_task_list_function_id, 'api_task', '', 'status', 'argument', 'varchar', '', '', '', '', '', '', '=', 10, 'manual'),
+(@sample13_get_api_task_function_id, 'api_task', '', 'id', 'argument', 'int', '', '', '', '', '', '', '=', 10, 'manual');
 
 SET @sample13_project_id = NULL;
 SET @sample13_db_access_class_id = NULL;

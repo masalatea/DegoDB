@@ -12,8 +12,8 @@ require_once dirname(__DIR__, 2) . '/app/source_output_repository.php';
 
 const APP_SAMPLE26_EBOOK_HEADLESS_CMS_CAPSTONE_PROJECT_KEY = 'SAMPLE26';
 const APP_SAMPLE26_EBOOK_HEADLESS_CMS_CAPSTONE_TABLE_NAMES = [
-    'EbookCmsBook',
-    'EbookCmsChapter',
+    'ebook_cms_book',
+    'ebook_cms_chapter',
 ];
 const APP_SAMPLE26_EBOOK_HEADLESS_CMS_CAPSTONE_KEYS = [
     'DATACLASS-PHP',

@@ -17,7 +17,7 @@ class SupportTicketDBAccessBase
     }
 
     // source_of_truth=manual class_source=manual action_type=SELECTLIST order=10 generation=canonical-sql
-    public function GetSupportTicketList($param_SupportTicket_Status_where, $limit)
+    public function GetSupportTicketList($param_SupportTicket_status_where, $limit)
     {
         global $mtooldb, $last_sql_command_for_mtooldb;
         connect_mtooldb_if_not_yet();
@@ -25,9 +25,9 @@ class SupportTicketDBAccessBase
 
         $result = array();
 
-        $last_sql_command_for_mtooldb = 'select SupportTicket.Id, SupportTicket.Title, SupportTicket.Status, SupportTicket.AssignedTo, SupportTicket.UpdatedAt from SupportTicket where SupportTicket.Status = ? order by SupportTicket.UpdatedAt desc, SupportTicket.Id desc limit ?';
+        $last_sql_command_for_mtooldb = 'select support_ticket.id, support_ticket.title, support_ticket.status, support_ticket.assigned_to, support_ticket.updated_at from support_ticket where support_ticket.status = ? order by support_ticket.updated_at desc, support_ticket.id desc limit ?';
         $ret = $mtooldb->execute($last_sql_command_for_mtooldb, [
-            $param_SupportTicket_Status_where,
+            $param_SupportTicket_status_where,
             $limit,
         ]);
         if ($mtooldb->errno != 0) {
@@ -36,26 +36,26 @@ class SupportTicketDBAccessBase
         }
         while($thisline=$ret->fetch_row()) {
             $thisresult = new SupportTicketData();
-            $thisresult->Id = $thisline[0];
-            $thisresult->Title = $thisline[1];
-            $thisresult->Status = $thisline[2];
-            $thisresult->AssignedTo = $thisline[3];
-            $thisresult->UpdatedAt = $thisline[4];
+            $thisresult->id = $thisline[0];
+            $thisresult->title = $thisline[1];
+            $thisresult->status = $thisline[2];
+            $thisresult->assignedTo = $thisline[3];
+            $thisresult->updatedAt = $thisline[4];
             array_push($result, $thisresult);
         }
         return $result;
     }
 
     // source_of_truth=manual class_source=manual action_type=SELECTSINGLE order=20 generation=canonical-sql
-    public function GetSupportTicket($param_SupportTicket_Id_where)
+    public function GetSupportTicket($param_SupportTicket_id_where)
     {
         global $mtooldb, $last_sql_command_for_mtooldb;
         connect_mtooldb_if_not_yet();
         reconnect_mtooldb_if_necessary();
 
-        $last_sql_command_for_mtooldb = 'select SupportTicket.Id, SupportTicket.Title, SupportTicket.Status, SupportTicket.AssignedTo, SupportTicket.Body, SupportTicket.UpdatedAt from SupportTicket where SupportTicket.Id = ?';
+        $last_sql_command_for_mtooldb = 'select support_ticket.id, support_ticket.title, support_ticket.status, support_ticket.assigned_to, support_ticket.body, support_ticket.updated_at from support_ticket where support_ticket.id = ?';
         $ret = $mtooldb->execute($last_sql_command_for_mtooldb, [
-            $param_SupportTicket_Id_where,
+            $param_SupportTicket_id_where,
         ]);
         if ($mtooldb->errno != 0) {
             error_log("Error occured while executing SQL: " . $mtooldb->error . " in " . __FILE__ . " on line " . __LINE__);
@@ -63,12 +63,12 @@ class SupportTicketDBAccessBase
         }
         while($thisline=$ret->fetch_row()) {
             $thisresult = new SupportTicketData();
-            $thisresult->Id = $thisline[0];
-            $thisresult->Title = $thisline[1];
-            $thisresult->Status = $thisline[2];
-            $thisresult->AssignedTo = $thisline[3];
-            $thisresult->Body = $thisline[4];
-            $thisresult->UpdatedAt = $thisline[5];
+            $thisresult->id = $thisline[0];
+            $thisresult->title = $thisline[1];
+            $thisresult->status = $thisline[2];
+            $thisresult->assignedTo = $thisline[3];
+            $thisresult->body = $thisline[4];
+            $thisresult->updatedAt = $thisline[5];
             return $thisresult;
         }
         return NULL;
@@ -81,13 +81,13 @@ class SupportTicketDBAccessBase
         connect_mtooldb_if_not_yet();
         reconnect_mtooldb_if_necessary();
 
-        $last_sql_command_for_mtooldb = 'insert into SupportTicket (Title, Status, AssignedTo, Body, UpdatedAt) values(?, ?, ?, ?, ?)';
+        $last_sql_command_for_mtooldb = 'insert into support_ticket (title, status, assigned_to, body, updated_at) values(?, ?, ?, ?, ?)';
         $result = $mtooldb->execute($last_sql_command_for_mtooldb, [
-            $SupportTicketObj->Title,
-            $SupportTicketObj->Status,
-            $SupportTicketObj->AssignedTo,
-            $SupportTicketObj->Body,
-            $SupportTicketObj->UpdatedAt,
+            $SupportTicketObj->title,
+            $SupportTicketObj->status,
+            $SupportTicketObj->assignedTo,
+            $SupportTicketObj->body,
+            $SupportTicketObj->updatedAt,
         ]);
         if ($mtooldb->errno != 0) {
             error_log("Error occured while executing SQL: " . $mtooldb->error . " in " . __FILE__ . " on line " . __LINE__);
@@ -102,14 +102,14 @@ class SupportTicketDBAccessBase
         connect_mtooldb_if_not_yet();
         reconnect_mtooldb_if_necessary();
 
-        $last_sql_command_for_mtooldb = 'update SupportTicket SET Title = ?, Status = ?, AssignedTo = ?, Body = ?, UpdatedAt = ? where SupportTicket.Id = ?';
+        $last_sql_command_for_mtooldb = 'update support_ticket SET title = ?, status = ?, assigned_to = ?, body = ?, updated_at = ? where support_ticket.id = ?';
         $result = $mtooldb->execute($last_sql_command_for_mtooldb, [
-            $SupportTicketObj->Title,
-            $SupportTicketObj->Status,
-            $SupportTicketObj->AssignedTo,
-            $SupportTicketObj->Body,
-            $SupportTicketObj->UpdatedAt,
-            $SupportTicketObj->Id,
+            $SupportTicketObj->title,
+            $SupportTicketObj->status,
+            $SupportTicketObj->assignedTo,
+            $SupportTicketObj->body,
+            $SupportTicketObj->updatedAt,
+            $SupportTicketObj->id,
         ]);
         if ($mtooldb->errno != 0) {
             error_log("Error occured while executing SQL: " . $mtooldb->error . " in " . __FILE__ . " on line " . __LINE__);
@@ -124,9 +124,9 @@ class SupportTicketDBAccessBase
         connect_mtooldb_if_not_yet();
         reconnect_mtooldb_if_necessary();
 
-        $last_sql_command_for_mtooldb = 'delete from SupportTicket where SupportTicket.Id = ?';
+        $last_sql_command_for_mtooldb = 'delete from support_ticket where support_ticket.id = ?';
         $result = $mtooldb->execute($last_sql_command_for_mtooldb, [
-            $SupportTicketObj->Id,
+            $SupportTicketObj->id,
         ]);
         if ($mtooldb->errno != 0) {
             error_log("Error occured while executing SQL: " . $mtooldb->error . " in " . __FILE__ . " on line " . __LINE__);

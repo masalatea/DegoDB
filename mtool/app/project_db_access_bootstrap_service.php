@@ -227,6 +227,48 @@ function app_project_db_access_bootstrap_php_scalar_expression(string $parameter
     return '$' . ltrim(trim($parameterName), '$');
 }
 
+/**
+ * @return list<string>
+ */
+function app_project_db_access_bootstrap_method_parameter_names(string $signature): array
+{
+    if (preg_match('/\(([^)]*)\)/', $signature, $matches) !== 1) {
+        return [];
+    }
+
+    $parameterList = trim((string) ($matches[1] ?? ''));
+    if ($parameterList === '') {
+        return [];
+    }
+
+    $names = [];
+    foreach (explode(',', $parameterList) as $parameter) {
+        if (preg_match('/\$([A-Za-z_][A-Za-z0-9_]*)/', $parameter, $parameterMatches) === 1) {
+            $names[] = (string) ($parameterMatches[1] ?? '');
+        }
+    }
+
+    return array_values(array_filter($names, static fn (string $name): bool => $name !== ''));
+}
+
+function app_project_db_access_bootstrap_output_source_name(string $physicalName): string
+{
+    if (!app_generated_name_policy_uses_physical_logical_names()) {
+        return $physicalName;
+    }
+
+    return app_generated_name_map_for_physical_name($physicalName, 'class')['generated_name'];
+}
+
+function app_project_db_access_bootstrap_output_field_name(string $physicalName): string
+{
+    if (!app_generated_name_policy_uses_physical_logical_names()) {
+        return $physicalName;
+    }
+
+    return app_generated_name_map_for_physical_name($physicalName, 'php-property')['generated_name'];
+}
+
 function app_project_db_access_bootstrap_php_string_literal_expression(string $value): string
 {
     return "'" . app_project_db_access_bootstrap_escape_php_string_literal($value) . "'";
@@ -385,12 +427,21 @@ function app_project_db_access_bootstrap_select_sql(array $table, array $columns
  * }> $columns
  * @return list<string>
  */
-function app_project_db_access_bootstrap_select_body_lines(array $table, array $columns, array $whereColumns, bool $returnsList): array
-{
+function app_project_db_access_bootstrap_select_body_lines(
+    array $table,
+    array $columns,
+    array $whereColumns,
+    bool $returnsList,
+    array $functionItem = [],
+): array {
     $tableName = trim((string) ($table['name'] ?? ''));
-    $dataClassName = $tableName . 'Data';
+    $dataClassName = app_project_db_access_bootstrap_output_source_name($tableName) . 'Data';
     $sql = app_project_db_access_bootstrap_select_base_sql($table, $columns);
     $paramExpressions = [];
+    $signatureParameterNames = app_generated_name_policy_uses_physical_logical_names()
+        ? app_project_db_access_bootstrap_method_parameter_names((string) ($functionItem['detected_signature'] ?? ''))
+        : [];
+    $signatureParameterIndex = 0;
 
     if ($whereColumns !== []) {
         $conditions = [];
@@ -405,7 +456,11 @@ function app_project_db_access_bootstrap_select_body_lines(array $table, array $
                 . '.'
                 . app_project_db_access_bootstrap_sql_identifier($columnName)
                 . ' = ?';
-            $paramExpressions[] = app_project_db_access_bootstrap_php_scalar_expression($parameterName);
+            $signatureParameterName = $signatureParameterNames[$signatureParameterIndex] ?? '';
+            $paramExpressions[] = app_project_db_access_bootstrap_php_scalar_expression(
+                $signatureParameterName !== '' ? $signatureParameterName : $parameterName,
+            );
+            $signatureParameterIndex++;
         }
 
         if ($conditions !== []) {
@@ -464,7 +519,8 @@ function app_project_db_access_bootstrap_select_body_lines(array $table, array $
             continue;
         }
 
-        $lines[] = '            $thisresult->' . $columnName . ' = $thisline[' . $columnIndex . '];';
+        $lines[] = '            $thisresult->' . app_project_db_access_bootstrap_output_field_name($columnName)
+            . ' = $thisline[' . $columnIndex . '];';
         $columnIndex++;
     }
 
@@ -658,8 +714,8 @@ function app_project_db_access_bootstrap_generated_method_result(array $function
     ));
 
     $bodyLines = match ($actionType) {
-        'SELECTLIST' => app_project_db_access_bootstrap_select_body_lines($table, $allColumns, [], true),
-        'SELECTSINGLE' => app_project_db_access_bootstrap_select_body_lines($table, $allColumns, $keyColumns, false),
+        'SELECTLIST' => app_project_db_access_bootstrap_select_body_lines($table, $allColumns, [], true, $functionItem),
+        'SELECTSINGLE' => app_project_db_access_bootstrap_select_body_lines($table, $allColumns, $keyColumns, false, $functionItem),
         'INSERT' => app_project_db_access_bootstrap_insert_body_lines($table, $insertColumns),
         'UPDATE' => app_project_db_access_bootstrap_update_body_lines($table, $updateColumns, $keyColumns),
         'DELETE' => app_project_db_access_bootstrap_delete_body_lines($table, $keyColumns),
@@ -1123,6 +1179,7 @@ function app_project_db_access_bootstrap_generate_data_class_files(
     string $runtimeRoot,
     string $sourceName,
     array $dataClassByName,
+    array $outputNameByClass,
     array $storeBasePathByClass,
     array $rawFieldNamesByClass,
     array $parentByClass,
@@ -1140,6 +1197,7 @@ function app_project_db_access_bootstrap_generate_data_class_files(
             $runtimeRoot,
             $parentClassName,
             $dataClassByName,
+            $outputNameByClass,
             $storeBasePathByClass,
             $rawFieldNamesByClass,
             $parentByClass,
@@ -1149,8 +1207,9 @@ function app_project_db_access_bootstrap_generate_data_class_files(
     }
 
     $storeBasePath = $storeBasePathByClass[$sourceName] ?? '';
-    $wrapperRelativePath = app_project_output_data_class_wrapper_relative_path($storeBasePath, $sourceName);
-    $baseRelativePath = app_project_output_data_class_base_relative_path($storeBasePath, $sourceName);
+    $outputSourceName = (string) ($outputNameByClass[$sourceName] ?? $sourceName);
+    $wrapperRelativePath = app_project_output_data_class_wrapper_relative_path($storeBasePath, $outputSourceName);
+    $baseRelativePath = app_project_output_data_class_base_relative_path($storeBasePath, $outputSourceName);
 
     $parentEffectiveFieldNames = [];
     if ($parentClassName !== '' && isset($rawFieldNamesByClass[$parentClassName])) {
@@ -1172,27 +1231,29 @@ function app_project_db_access_bootstrap_generate_data_class_files(
     }
 
     $parentWrapperRelativePath = '';
+    $outputParentClassName = '';
     if ($parentClassName !== '') {
+        $outputParentClassName = (string) ($outputNameByClass[$parentClassName] ?? $parentClassName);
         $parentWrapperRelativePath = app_project_output_data_class_wrapper_relative_path(
             $storeBasePathByClass[$parentClassName] ?? '',
-            $parentClassName,
+            $outputParentClassName,
         );
     }
 
     app_project_db_access_bootstrap_write_text_file(
         $runtimeRoot . '/' . $baseRelativePath,
         app_project_output_generated_data_class_base_php_text(
-            $sourceName . 'DataBase',
-            $parentClassName !== '' ? ($parentClassName . 'Data') : '',
+            $outputSourceName . 'DataBase',
+            $outputParentClassName !== '' ? ($outputParentClassName . 'Data') : '',
             $declaredFieldNames,
         ),
     );
     app_project_db_access_bootstrap_write_text_file(
         $runtimeRoot . '/' . $wrapperRelativePath,
         app_project_output_generated_data_class_wrapper_php_text(
-            $sourceName,
+            $outputSourceName,
             $wrapperRelativePath,
-            $parentClassName,
+            $outputParentClassName,
             $parentWrapperRelativePath,
         ),
     );
@@ -1215,9 +1276,10 @@ function app_project_db_access_bootstrap_generate_dbaccess_files(
     array $functionItems,
 ): void {
     $sourceName = trim((string) ($table['name'] ?? ''));
+    $outputSourceName = app_project_output_db_access_output_source_name($classItem);
     $storeBasePath = trim(str_replace('\\', '/', (string) ($classItem['store_base_path'] ?? '')), '/');
-    $wrapperRelativePath = app_project_output_db_access_wrapper_relative_path($storeBasePath, $sourceName);
-    $baseRelativePath = app_project_output_db_access_base_relative_path($storeBasePath, $sourceName);
+    $wrapperRelativePath = app_project_output_db_access_wrapper_relative_path($storeBasePath, $outputSourceName);
+    $baseRelativePath = app_project_output_db_access_base_relative_path($storeBasePath, $outputSourceName);
     $runtimeDbSupportRequirePath = app_project_output_db_access_runtime_support_require_path($storeBasePath);
 
     $generatedMethodResults = [];
@@ -1242,7 +1304,7 @@ function app_project_db_access_bootstrap_generate_dbaccess_files(
     app_project_db_access_bootstrap_write_text_file(
         $runtimeRoot . '/' . $baseRelativePath,
         app_project_output_generated_db_access_base_php_text(
-            $classItem,
+            array_merge($classItem, ['source_name' => $outputSourceName]),
             $functionItems,
             $generatedMethodResults,
             $signaturesByFunction,
@@ -1252,7 +1314,7 @@ function app_project_db_access_bootstrap_generate_dbaccess_files(
     );
     app_project_db_access_bootstrap_write_text_file(
         $runtimeRoot . '/' . $wrapperRelativePath,
-        app_project_output_generated_db_access_wrapper_php_text($sourceName),
+        app_project_output_generated_db_access_wrapper_php_text($outputSourceName),
     );
 }
 
@@ -1310,6 +1372,7 @@ function app_project_db_access_bootstrap_materialize_runtime_entity(
     }
 
     $dataClassByName = [];
+    $outputNameByClass = [];
     $storeBasePathByClass = [];
     foreach ($dataClassSnapshot['items'] as $item) {
         $className = trim((string) ($item['name'] ?? ''));
@@ -1318,6 +1381,7 @@ function app_project_db_access_bootstrap_materialize_runtime_entity(
         }
 
         $dataClassByName[$className] = $item;
+        $outputNameByClass[$className] = app_project_output_data_class_output_class_name($item);
         $storeBasePathByClass[$className] = trim(str_replace('\\', '/', (string) ($item['store_base_path'] ?? '')), '/');
     }
 
@@ -1408,6 +1472,7 @@ function app_project_db_access_bootstrap_materialize_runtime_entity(
             $runtimeRoot,
             $normalizedSourceName,
             $dataClassByName,
+            $outputNameByClass,
             $storeBasePathByClass,
             $rawFieldNamesByClass,
             $parentByClass,
@@ -1429,8 +1494,22 @@ function app_project_db_access_bootstrap_materialize_runtime_entity(
     }
 
     $storeBasePath = trim(str_replace('\\', '/', (string) ($classItem['store_base_path'] ?? '')), '/');
-    $dataWrapperRelativePath = app_project_output_data_class_wrapper_relative_path($storeBasePathByClass[$normalizedSourceName] ?? '', $normalizedSourceName);
-    $dbAccessWrapperRelativePath = app_project_output_db_access_wrapper_relative_path($storeBasePath, $normalizedSourceName);
+    $outputSourceName = (string) ($outputNameByClass[$normalizedSourceName] ?? $normalizedSourceName);
+    $dataWrapperRelativePath = app_project_output_data_class_wrapper_relative_path($storeBasePathByClass[$normalizedSourceName] ?? '', $outputSourceName);
+    $dbAccessWrapperRelativePath = app_project_output_db_access_wrapper_relative_path($storeBasePath, $outputSourceName);
+    $dataProperties = app_generated_file_property_names($runtimeRoot . '/' . $dataWrapperRelativePath);
+    if ($dataProperties === []) {
+        $dataProperties = array_values(array_unique(array_filter(
+            array_map(
+                static fn (array $field): string => app_project_output_data_class_output_field_name($field),
+                array_values(array_filter(
+                    $dataClassByName[$normalizedSourceName]['fields'] ?? [],
+                    static fn (mixed $field): bool => is_array($field),
+                )),
+            ),
+            static fn (string $fieldName): bool => $fieldName !== '',
+        )));
+    }
 
     return [
         'ok' => true,
@@ -1443,19 +1522,10 @@ function app_project_db_access_bootstrap_materialize_runtime_entity(
             'has_data_file' => true,
             'has_dbaccess_file' => true,
             'source_kind' => 'canonical-bootstrap',
-            'data_class' => $normalizedSourceName . 'Data',
-            'data_list_class' => $normalizedSourceName . 'DataList',
-            'dbaccess_class' => $normalizedSourceName . 'DBAccess',
-            'data_properties' => array_values(array_unique(array_filter(
-                array_map(
-                    static fn (array $field): string => trim((string) ($field['name'] ?? '')),
-                    array_values(array_filter(
-                        $dataClassByName[$normalizedSourceName]['fields'] ?? [],
-                        static fn (mixed $field): bool => is_array($field),
-                    )),
-                ),
-                static fn (string $fieldName): bool => $fieldName !== '',
-            ))),
+            'data_class' => $outputSourceName . 'Data',
+            'data_list_class' => $outputSourceName . 'DataList',
+            'dbaccess_class' => $outputSourceName . 'DBAccess',
+            'data_properties' => $dataProperties,
         ],
         'error' => '',
     ];

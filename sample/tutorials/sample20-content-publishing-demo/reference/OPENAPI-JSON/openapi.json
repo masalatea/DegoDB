@@ -12,21 +12,21 @@
     ],
     "tags": [
         {
-            "name": "ContentArticle",
-            "description": "ContentArticle single-function proxy endpoints."
+            "name": "content_article",
+            "description": "content_article single-function proxy endpoints."
         }
     ],
     "paths": {
         "/proxyserver-ContentArticle-GetPublishedContentArticle.php": {
             "post": {
-                "operationId": "ContentArticle_GetPublishedContentArticle",
+                "operationId": "content_article_GetPublishedContentArticle",
                 "tags": [
-                    "ContentArticle"
+                    "content_article"
                 ],
-                "summary": "ContentArticle.GetPublishedContentArticle",
-                "description": "Generated from single-function proxy target metadata.\n\nSource function: `ContentArticle.GetPublishedContentArticle`.\n\nAuth policy: 認証を掛けません。",
+                "summary": "content_article.GetPublishedContentArticle",
+                "description": "Generated from single-function proxy target metadata.\n\nSource function: `content_article.GetPublishedContentArticle`.\n\nAuth policy: 認証を掛けません。",
                 "x-mtool": {
-                    "source_name": "ContentArticle",
+                    "source_name": "content_article",
                     "function_name": "GetPublishedContentArticle",
                     "endpoint_filename": "proxyserver-ContentArticle-GetPublishedContentArticle.php",
                     "auth_strategy": "no-security",
@@ -80,16 +80,16 @@
                                     "_status": "OK",
                                     "Message": "",
                                     "Result": {
-                                        "Id": "string",
-                                        "Title": "string",
-                                        "Slug": "string",
-                                        "CategoryName": "string",
-                                        "AuthorName": "string",
-                                        "Status": "string",
-                                        "PublishedAt": "string",
-                                        "Summary": "string",
-                                        "Body": "string",
-                                        "UpdatedAt": "string"
+                                        "id": "string",
+                                        "title": "string",
+                                        "slug": "string",
+                                        "categoryName": "string",
+                                        "authorName": "string",
+                                        "status": "string",
+                                        "publishedAt": "string",
+                                        "summary": "string",
+                                        "body": "string",
+                                        "updatedAt": "string"
                                     }
                                 }
                             }
@@ -124,14 +124,14 @@
         },
         "/proxyserver-ContentArticle-GetPublishedContentArticleList.php": {
             "post": {
-                "operationId": "ContentArticle_GetPublishedContentArticleList",
+                "operationId": "content_article_GetPublishedContentArticleList",
                 "tags": [
-                    "ContentArticle"
+                    "content_article"
                 ],
-                "summary": "ContentArticle.GetPublishedContentArticleList",
-                "description": "Generated from single-function proxy target metadata.\n\nSource function: `ContentArticle.GetPublishedContentArticleList`.\n\nAuth policy: 認証を掛けません。",
+                "summary": "content_article.GetPublishedContentArticleList",
+                "description": "Generated from single-function proxy target metadata.\n\nSource function: `content_article.GetPublishedContentArticleList`.\n\nAuth policy: 認証を掛けません。",
                 "x-mtool": {
-                    "source_name": "ContentArticle",
+                    "source_name": "content_article",
                     "function_name": "GetPublishedContentArticleList",
                     "endpoint_filename": "proxyserver-ContentArticle-GetPublishedContentArticleList.php",
                     "auth_strategy": "no-security",
@@ -189,16 +189,16 @@
                                     "Message": "",
                                     "Result": [
                                         {
-                                            "Id": "string",
-                                            "Title": "string",
-                                            "Slug": "string",
-                                            "CategoryName": "string",
-                                            "AuthorName": "string",
-                                            "Status": "string",
-                                            "PublishedAt": "string",
-                                            "Summary": "string",
-                                            "Body": "string",
-                                            "UpdatedAt": "string"
+                                            "id": "string",
+                                            "title": "string",
+                                            "slug": "string",
+                                            "categoryName": "string",
+                                            "authorName": "string",
+                                            "status": "string",
+                                            "publishedAt": "string",
+                                            "summary": "string",
+                                            "body": "string",
+                                            "updatedAt": "string"
                                         }
                                     ]
                                 }
@@ -239,43 +239,43 @@
                 "type": "object",
                 "title": "ContentArticleData",
                 "properties": {
-                    "Id": {
+                    "id": {
                         "type": "string",
                         "example": "string"
                     },
-                    "Title": {
+                    "title": {
                         "type": "string",
                         "example": "string"
                     },
-                    "Slug": {
+                    "slug": {
                         "type": "string",
                         "example": "string"
                     },
-                    "CategoryName": {
+                    "categoryName": {
                         "type": "string",
                         "example": "string"
                     },
-                    "AuthorName": {
+                    "authorName": {
                         "type": "string",
                         "example": "string"
                     },
-                    "Status": {
+                    "status": {
                         "type": "string",
                         "example": "string"
                     },
-                    "PublishedAt": {
+                    "publishedAt": {
                         "type": "string",
                         "example": "string"
                     },
-                    "Summary": {
+                    "summary": {
                         "type": "string",
                         "example": "string"
                     },
-                    "Body": {
+                    "body": {
                         "type": "string",
                         "example": "string"
                     },
-                    "UpdatedAt": {
+                    "updatedAt": {
                         "type": "string",
                         "example": "string"
                     }

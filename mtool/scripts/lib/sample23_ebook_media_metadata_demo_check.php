@@ -11,10 +11,10 @@ require_once dirname(__DIR__, 2) . '/app/source_output_repository.php';
 
 const APP_SAMPLE23_EBOOK_MEDIA_METADATA_PROJECT_KEY = 'SAMPLE23';
 const APP_SAMPLE23_EBOOK_MEDIA_METADATA_TABLE_NAMES = [
-    'EbookMediaBook',
-    'EbookMediaAsset',
-    'EbookMediaBookAsset',
-    'EbookMediaDelivery',
+    'ebook_media_book',
+    'ebook_media_asset',
+    'ebook_media_book_asset',
+    'ebook_media_delivery',
 ];
 const APP_SAMPLE23_EBOOK_MEDIA_METADATA_KEYS = [
     'DATACLASS-PHP',

@@ -12,9 +12,9 @@
     },
     "items": [
         {
-            "source_name": "EbookCmsBook",
+            "source_name": "ebook_cms_book",
             "function_name": "GetEditorEbookCmsChapter",
-            "display_name": "EbookCmsBook.GetEditorEbookCmsChapter",
+            "display_name": "ebook_cms_book.GetEditorEbookCmsChapter",
             "endpoint_slug": "geteditorebookcmschapter",
             "function_list_order": "60",
             "action_type": "SELECTSINGLE",
@@ -22,9 +22,9 @@
             "limit_fixed_parameter": "",
             "select_wheres": [
                 {
-                    "target_table_name": "EbookCmsChapter",
+                    "target_table_name": "ebook_cms_chapter",
                     "target_table_alias_name": "",
-                    "target_table_column_name": "Id",
+                    "target_table_column_name": "id",
                     "parameter_type": "argument",
                     "parameter_data_type": "int",
                     "fixed_parameter": "",
@@ -56,17 +56,17 @@
                 "secret_env": ""
             },
             "source_of_truth": "manual",
-            "function_updated_at": "2026-06-19 21:53:40",
-            "target_updated_at": "2026-06-19 21:53:40",
+            "function_updated_at": "2026-06-27 00:57:41",
+            "target_updated_at": "2026-06-27 00:57:41",
             "resolved": true,
             "signature": "public function GetEditorEbookCmsChapter($param_EbookCmsChapter_Id_where)",
             "line": 60,
             "resolution_error": ""
         },
         {
-            "source_name": "EbookCmsBook",
+            "source_name": "ebook_cms_book",
             "function_name": "UpdateEditorEbookCmsChapterDraft",
-            "display_name": "EbookCmsBook.UpdateEditorEbookCmsChapterDraft",
+            "display_name": "ebook_cms_book.UpdateEditorEbookCmsChapterDraft",
             "endpoint_slug": "updateeditorebookcmschapterdraft",
             "function_list_order": "70",
             "action_type": "UPDATE",
@@ -92,17 +92,17 @@
                 "secret_env": ""
             },
             "source_of_truth": "manual",
-            "function_updated_at": "2026-06-19 21:53:40",
-            "target_updated_at": "2026-06-19 21:53:40",
+            "function_updated_at": "2026-06-27 00:57:41",
+            "target_updated_at": "2026-06-27 00:57:41",
             "resolved": true,
             "signature": "public function UpdateEditorEbookCmsChapterDraft($EbookCmsChapterObj)",
             "line": 70,
             "resolution_error": ""
         },
         {
-            "source_name": "EbookCmsBook",
+            "source_name": "ebook_cms_book",
             "function_name": "PublishEditorEbookCmsChapter",
-            "display_name": "EbookCmsBook.PublishEditorEbookCmsChapter",
+            "display_name": "ebook_cms_book.PublishEditorEbookCmsChapter",
             "endpoint_slug": "publisheditorebookcmschapter",
             "function_list_order": "80",
             "action_type": "UPDATE",
@@ -128,8 +128,8 @@
                 "secret_env": ""
             },
             "source_of_truth": "manual",
-            "function_updated_at": "2026-06-19 21:53:40",
-            "target_updated_at": "2026-06-19 21:53:40",
+            "function_updated_at": "2026-06-27 00:57:41",
+            "target_updated_at": "2026-06-27 00:57:41",
             "resolved": true,
             "signature": "public function PublishEditorEbookCmsChapter($EbookCmsChapterObj)",
             "line": 80,

@@ -19,10 +19,10 @@ This tutorial pack adds chapter workflow to the ebook lane. It keeps the sample 
 
 `sample22` は production editor ではなく、Mtool sample として chapter workflow metadata の最小公開面と編集入口を見せる。
 
-- tables:
-  - `EbookWorkflowBook`
-  - `EbookWorkflowChapter`
-  - `EbookWorkflowPublishedChapter`
+- physical tables / generated data classes:
+  - `ebook_workflow_book` / `EbookWorkflowBook`
+  - `ebook_workflow_chapter` / `EbookWorkflowChapter`
+  - `ebook_workflow_published_chapter` / `EbookWorkflowPublishedChapter`
 - DBAccess:
   - `EbookWorkflowChapter.GetPublishedEbookWorkflowChapterList`
   - `EbookWorkflowChapter.GetPublishedEbookWorkflowChapter`
@@ -35,7 +35,7 @@ This tutorial pack adds chapter workflow to the ebook lane. It keeps the sample 
   - `DBACCESS-PHP`
   - `OPENAPI-JSON`
 
-`draft` chapters are kept in the fixture data but excluded from public DBAccess functions by the `Status = published` condition. `SpineOrder`, `NavLabel`, and `EpubResourcePath` are EPUB-facing metadata only; this sample does not generate or parse EPUB files.
+`draft` chapters are kept in the fixture data but excluded from public DBAccess functions by the `status = published` condition. `spine_order` / `SpineOrder`, `nav_label` / `NavLabel`, and `epub_resource_path` / `EpubResourcePath` are EPUB-facing metadata only; this sample does not generate or parse EPUB files.
 
 OpenAPI schema generation follows the DBAccess class source and exposes `EbookWorkflowChapterData` for this sample. The generated PHP DBAccess still uses `EbookWorkflowPublishedChapterData` for public read rows.
 

@@ -16,24 +16,24 @@ WHERE ProjectPID = @sample10_project_id;
 DELETE FROM dbtable
 WHERE ProjectPID = @sample10_project_id;
 
-DROP TABLE IF EXISTS SupportTicket;
+DROP TABLE IF EXISTS support_ticket;
 
-CREATE TABLE SupportTicket (
-    Id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
-    Title VARCHAR(255) NOT NULL,
-    Status VARCHAR(20) NOT NULL DEFAULT 'open',
-    AssignedTo VARCHAR(100) NOT NULL DEFAULT '',
-    Body TEXT NOT NULL,
-    UpdatedAt DATETIME NOT NULL,
-    PRIMARY KEY (Id)
+CREATE TABLE support_ticket (
+    id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+    title VARCHAR(255) NOT NULL,
+    status VARCHAR(20) NOT NULL DEFAULT 'open',
+    assigned_to VARCHAR(100) NOT NULL DEFAULT '',
+    body TEXT NOT NULL,
+    updated_at DATETIME NOT NULL,
+    PRIMARY KEY (id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
-INSERT INTO SupportTicket (
-    Title,
-    Status,
-    AssignedTo,
-    Body,
-    UpdatedAt
+INSERT INTO support_ticket (
+    title,
+    status,
+    assigned_to,
+    body,
+    updated_at
 ) VALUES
     ('Seed runtime sample', 'open', 'Alice', 'Prepare the sample10 tutorial pack and verify the minimal CRUD flow.', '2026-05-22 09:00:00'),
     ('Verify tutorial output', 'in_progress', 'Bob', 'Diff runtime output against the durable reference files after publish.', '2026-05-22 11:30:00'),

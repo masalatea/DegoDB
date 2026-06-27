@@ -92,12 +92,23 @@ if (!$parsed['ok']) {
     exit(64);
 }
 
-$app = app_bootstrap();
-$result = app_sample8_dbaccess_join_read_model_run(
-    $app,
-    $parsed['requested_by'],
-    $parsed['reference_root'],
-);
+$previousPolicy = getenv('MTOOL_GENERATED_NAME_POLICY');
+putenv('MTOOL_GENERATED_NAME_POLICY=physical-logical-v1');
+
+try {
+    $app = app_bootstrap();
+    $result = app_sample8_dbaccess_join_read_model_run(
+        $app,
+        $parsed['requested_by'],
+        $parsed['reference_root'],
+    );
+} finally {
+    if ($previousPolicy === false) {
+        putenv('MTOOL_GENERATED_NAME_POLICY');
+    } else {
+        putenv('MTOOL_GENERATED_NAME_POLICY=' . $previousPolicy);
+    }
+}
 
 app_cli_sample8_write_json($result, $result['ok']);
 

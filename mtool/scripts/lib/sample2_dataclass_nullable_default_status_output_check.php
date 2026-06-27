@@ -11,7 +11,7 @@ require_once dirname(__DIR__, 2) . '/app/sample_pack_catalog.php';
 require_once dirname(__DIR__, 2) . '/app/source_output_repository.php';
 
 const APP_SAMPLE2_DATACLASS_PROJECT_KEY = 'SAMPLE02';
-const APP_SAMPLE2_DATACLASS_TABLE_NAME = 'Task';
+const APP_SAMPLE2_DATACLASS_TABLE_NAME = 'task';
 const APP_SAMPLE2_DATACLASS_REFERENCE_SOURCE_OUTPUT_KEYS = [
     'DATACLASS-PHP',
 ];

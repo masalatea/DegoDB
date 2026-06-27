@@ -56,10 +56,10 @@ INSERT INTO project_db_access_classes (
     last_detected_data_file
 ) VALUES (
     @sample09_project_id,
-    'SalesRecord',
+    'sales_record',
     '',
     0,
-    'Aggregate report DBAccess sample for SalesRecord + SalesCategory tables.',
+    'Aggregate report DBAccess sample for sales_record + sales_category tables.',
     'manual',
     '',
     ''
@@ -95,10 +95,10 @@ INSERT INTO project_db_access_functions (
     '',
     'SELECTLIST',
     'SalesCategoryReport',
-    'SalesRecord',
+    'sales_record',
     '',
     0,
-    'sum(SalesRecord.Amount) desc, SalesRecord.SalesCategoryId asc',
+    'sum(sales_record.amount) desc, sales_record.sales_category_id asc',
     'Join SalesRecord and SalesCategory rows into a grouped sales report DTO with count, sum, and having filters.',
     '',
     '',
@@ -106,7 +106,7 @@ INSERT INTO project_db_access_functions (
     '',
     '',
     0,
-    'public function GetClosedSalesCategoryReportList()',
+    '',
     10,
     'manual'
 );
@@ -125,37 +125,37 @@ INSERT INTO project_db_access_function_select_target_fields (
     field_list_order,
     source_of_truth
 ) VALUES
-(@sample09_get_report_list_function_id, 'SalesRecord', '', 'SalesCategoryId', '', '', 'SalesCategoryId', 1, 10, 'manual'),
-(@sample09_get_report_list_function_id, 'SalesCategory', '', 'Name', '', '', 'SalesCategoryName', 1, 20, 'manual'),
-(@sample09_get_report_list_function_id, 'SalesRecord', '', 'Id', 'count(', ')', 'ClosedSaleCount', 0, 30, 'manual'),
-(@sample09_get_report_list_function_id, 'SalesRecord', '', 'Amount', 'sum(', ')', 'ClosedSaleTotalAmount', 0, 40, 'manual');
+(@sample09_get_report_list_function_id, 'sales_record', '', 'sales_category_id', '', '', 'salesCategoryId', 1, 10, 'manual'),
+(@sample09_get_report_list_function_id, 'sales_category', '', 'name', '', '', 'salesCategoryName', 1, 20, 'manual'),
+(@sample09_get_report_list_function_id, 'sales_record', '', 'id', 'count(', ')', 'closedSaleCount', 0, 30, 'manual'),
+(@sample09_get_report_list_function_id, 'sales_record', '', 'amount', 'sum(', ')', 'closedSaleTotalAmount', 0, 40, 'manual');
 
 SET @sample09_sales_category_id_field_id = (
     SELECT id
     FROM project_db_access_function_select_target_fields
     WHERE db_access_function_id = @sample09_get_report_list_function_id
-      AND store_class_field_name = 'SalesCategoryId'
+      AND store_class_field_name = 'salesCategoryId'
 );
 
 SET @sample09_sales_category_name_field_id = (
     SELECT id
     FROM project_db_access_function_select_target_fields
     WHERE db_access_function_id = @sample09_get_report_list_function_id
-      AND store_class_field_name = 'SalesCategoryName'
+      AND store_class_field_name = 'salesCategoryName'
 );
 
 SET @sample09_closed_sale_count_field_id = (
     SELECT id
     FROM project_db_access_function_select_target_fields
     WHERE db_access_function_id = @sample09_get_report_list_function_id
-      AND store_class_field_name = 'ClosedSaleCount'
+      AND store_class_field_name = 'closedSaleCount'
 );
 
 SET @sample09_closed_sale_total_amount_field_id = (
     SELECT id
     FROM project_db_access_function_select_target_fields
     WHERE db_access_function_id = @sample09_get_report_list_function_id
-      AND store_class_field_name = 'ClosedSaleTotalAmount'
+      AND store_class_field_name = 'closedSaleTotalAmount'
 );
 
 INSERT INTO project_db_access_function_select_wheres (
@@ -175,9 +175,9 @@ INSERT INTO project_db_access_function_select_wheres (
     where_order,
     source_of_truth
 ) VALUES
-(@sample09_get_report_list_function_id, 'SalesRecord', '', 'SalesCategoryId', 'anotherfield', '', '', 'SalesCategory', '', 'Id', 'inner', '', '=', 10, 'manual'),
-(@sample09_get_report_list_function_id, 'SalesRecord', '', 'Status', 'fixed', '', 'closed', '', '', '', '', '', '=', 20, 'manual'),
-(@sample09_get_report_list_function_id, 'SalesCategory', '', 'IsActive', 'fixed', 'raw', '1', '', '', '', '', '', '=', 30, 'manual');
+(@sample09_get_report_list_function_id, 'sales_record', '', 'sales_category_id', 'anotherfield', '', '', 'sales_category', '', 'id', 'inner', '', '=', 10, 'manual'),
+(@sample09_get_report_list_function_id, 'sales_record', '', 'status', 'fixed', '', 'closed', '', '', '', '', '', '=', 20, 'manual'),
+(@sample09_get_report_list_function_id, 'sales_category', '', 'is_active', 'fixed', 'raw', '1', '', '', '', '', '', '=', 30, 'manual');
 
 INSERT INTO project_db_access_function_select_havings (
     db_access_function_id,

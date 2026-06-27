@@ -10,7 +10,7 @@
     "unresolved_auth_count": 0,
     "operations": [
         {
-            "source_name": "EbookEditorChapter",
+            "source_name": "ebook_editor_chapter",
             "function_name": "GetEditorEbookChapter",
             "endpoint_filename": "proxyserver-EbookEditorChapter-GetEditorEbookChapter.php",
             "auth_strategy": "project-token",
@@ -21,13 +21,13 @@
                     "parameter_name": "param_EbookEditorChapter_Id_where",
                     "datatype": "int",
                     "source": "select-where-parameter-data-type",
-                    "target_table_name": "EbookEditorChapter",
-                    "target_table_column_name": "Id"
+                    "target_table_name": "ebook_editor_chapter",
+                    "target_table_column_name": "id"
                 }
             }
         },
         {
-            "source_name": "EbookEditorChapter",
+            "source_name": "ebook_editor_chapter",
             "function_name": "UpdateEditorEbookChapterDraft",
             "endpoint_filename": "proxyserver-EbookEditorChapter-UpdateEditorEbookChapterDraft.php",
             "auth_strategy": "project-token",
@@ -44,7 +44,7 @@
             }
         },
         {
-            "source_name": "EbookEditorChapter",
+            "source_name": "ebook_editor_chapter",
             "function_name": "PublishEditorEbookChapter",
             "endpoint_filename": "proxyserver-EbookEditorChapter-PublishEditorEbookChapter.php",
             "auth_strategy": "project-token",

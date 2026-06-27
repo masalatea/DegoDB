@@ -11,13 +11,13 @@ require_once dirname(__DIR__, 2) . '/app/source_output_repository.php';
 
 const APP_SAMPLE21_EBOOK_CATALOG_API_PROJECT_KEY = 'SAMPLE21';
 const APP_SAMPLE21_EBOOK_CATALOG_API_TABLE_NAMES = [
-    'EbookSeries',
-    'EbookAuthor',
-    'EbookGenre',
-    'EbookBook',
-    'EbookBookAuthor',
-    'EbookBookGenre',
-    'EbookCatalogItem',
+    'ebook_series',
+    'ebook_author',
+    'ebook_genre',
+    'ebook_book',
+    'ebook_book_author',
+    'ebook_book_genre',
+    'ebook_catalog_item',
 ];
 const APP_SAMPLE21_EBOOK_CATALOG_API_KEYS = [
     'DATACLASS-PHP',

@@ -13,12 +13,12 @@ require_once dirname(__DIR__, 2) . '/app/source_output_repository.php';
 
 const APP_SAMPLE19_JSON_FIRST_CONTENT_MODEL_PROJECT_KEY = 'SAMPLE19';
 const APP_SAMPLE19_JSON_FIRST_CONTENT_MODEL_TABLE_NAMES = [
-    'ArticleJsonModel',
-    'ArticlePublicSummary',
-    'JsonAuthor',
-    'JsonCategory',
+    'article_json_model',
+    'article_public_summary',
+    'json_author',
+    'json_category',
 ];
-const APP_SAMPLE19_JSON_FIRST_CONTENT_MODEL_SOURCE_NAME = 'ArticleJsonModel';
+const APP_SAMPLE19_JSON_FIRST_CONTENT_MODEL_SOURCE_NAME = 'article_json_model';
 const APP_SAMPLE19_JSON_FIRST_CONTENT_MODEL_FUNCTION_NAME = 'GetPublishedArticlePublicSummaryList';
 const APP_SAMPLE19_JSON_FIRST_CONTENT_MODEL_DATA_CLASS_BASE_NAME = 'ArticlePublicSummary';
 const APP_SAMPLE19_JSON_FIRST_CONTENT_MODEL_REFERENCE_SOURCE_OUTPUT_KEYS = [
@@ -26,12 +26,12 @@ const APP_SAMPLE19_JSON_FIRST_CONTENT_MODEL_REFERENCE_SOURCE_OUTPUT_KEYS = [
     'DBACCESS-PHP',
 ];
 const APP_SAMPLE19_JSON_FIRST_CONTENT_MODEL_SELECT_TARGET_LABELS = [
-    'ArticleJsonModel.Id->ArticleId',
-    'ArticleJsonModel.Title->ArticleTitle',
-    'ArticleJsonModel.Slug->ArticleSlug',
-    'ArticleJsonModel.PublishedAt->PublishedAt',
-    'JsonAuthor.Name->AuthorName',
-    'JsonCategory.Name->CategoryName',
+    'article_json_model.id->articleId',
+    'article_json_model.title->articleTitle',
+    'article_json_model.slug->articleSlug',
+    'article_json_model.published_at->publishedAt',
+    'json_author.name->authorName',
+    'json_category.name->categoryName',
 ];
 
 function app_sample19_json_first_content_model_default_reference_root(): string
@@ -467,8 +467,8 @@ function app_sample19_json_first_content_model_run(array $app, string $requested
         'db_access function data_class_base_name',
         $assertionErrors,
     );
-    app_sample19_json_first_content_model_assert_same('ArticleJsonModel', $functionResult['item']['target_table_name'] ?? '', 'db_access function target_table_name', $assertionErrors);
-    app_sample19_json_first_content_model_assert_same('ArticleJsonModel.PublishedAt desc, ArticleJsonModel.Id desc', $functionResult['item']['sort_order_columns'] ?? '', 'db_access function sort_order_columns', $assertionErrors);
+    app_sample19_json_first_content_model_assert_same('article_json_model', $functionResult['item']['target_table_name'] ?? '', 'db_access function target_table_name', $assertionErrors);
+    app_sample19_json_first_content_model_assert_same('article_json_model.published_at desc, article_json_model.id desc', $functionResult['item']['sort_order_columns'] ?? '', 'db_access function sort_order_columns', $assertionErrors);
     app_sample19_json_first_content_model_assert_same('', $functionResult['item']['limit_parameter_type'] ?? '', 'db_access function limit_parameter_type', $assertionErrors);
     app_sample19_json_first_content_model_assert_same(
         'public function GetPublishedArticlePublicSummaryList()',
@@ -524,24 +524,24 @@ function app_sample19_json_first_content_model_run(array $app, string $requested
     }
 
     app_sample19_json_first_content_model_assert_same(3, count($selectWhereResult['items']), 'db_access select where count', $assertionErrors);
-    app_sample19_json_first_content_model_assert_same('ArticleJsonModel', $selectWhereResult['items'][0]['target_table_name'] ?? '', 'db_access author join where target table', $assertionErrors);
-    app_sample19_json_first_content_model_assert_same('JsonAuthorId', $selectWhereResult['items'][0]['target_table_column_name'] ?? '', 'db_access author join where target column', $assertionErrors);
+    app_sample19_json_first_content_model_assert_same('article_json_model', $selectWhereResult['items'][0]['target_table_name'] ?? '', 'db_access author join where target table', $assertionErrors);
+    app_sample19_json_first_content_model_assert_same('json_author_id', $selectWhereResult['items'][0]['target_table_column_name'] ?? '', 'db_access author join where target column', $assertionErrors);
     app_sample19_json_first_content_model_assert_same('anotherfield', $selectWhereResult['items'][0]['parameter_type'] ?? '', 'db_access join where parameter_type', $assertionErrors);
-    app_sample19_json_first_content_model_assert_same('JsonAuthor', $selectWhereResult['items'][0]['another_table_name'] ?? '', 'db_access author join where another_table_name', $assertionErrors);
-    app_sample19_json_first_content_model_assert_same('Id', $selectWhereResult['items'][0]['another_field_name'] ?? '', 'db_access join where another_field_name', $assertionErrors);
+    app_sample19_json_first_content_model_assert_same('json_author', $selectWhereResult['items'][0]['another_table_name'] ?? '', 'db_access author join where another_table_name', $assertionErrors);
+    app_sample19_json_first_content_model_assert_same('id', $selectWhereResult['items'][0]['another_field_name'] ?? '', 'db_access join where another_field_name', $assertionErrors);
     app_sample19_json_first_content_model_assert_same('inner', $selectWhereResult['items'][0]['join_type'] ?? '', 'db_access join where join_type', $assertionErrors);
     app_sample19_json_first_content_model_assert_same('10', $selectWhereResult['items'][0]['where_order'] ?? '', 'db_access join where order', $assertionErrors);
 
-    app_sample19_json_first_content_model_assert_same('ArticleJsonModel', $selectWhereResult['items'][1]['target_table_name'] ?? '', 'db_access category join where target table', $assertionErrors);
-    app_sample19_json_first_content_model_assert_same('JsonCategoryId', $selectWhereResult['items'][1]['target_table_column_name'] ?? '', 'db_access category join where target column', $assertionErrors);
+    app_sample19_json_first_content_model_assert_same('article_json_model', $selectWhereResult['items'][1]['target_table_name'] ?? '', 'db_access category join where target table', $assertionErrors);
+    app_sample19_json_first_content_model_assert_same('json_category_id', $selectWhereResult['items'][1]['target_table_column_name'] ?? '', 'db_access category join where target column', $assertionErrors);
     app_sample19_json_first_content_model_assert_same('anotherfield', $selectWhereResult['items'][1]['parameter_type'] ?? '', 'db_access category join where parameter_type', $assertionErrors);
-    app_sample19_json_first_content_model_assert_same('JsonCategory', $selectWhereResult['items'][1]['another_table_name'] ?? '', 'db_access category join where another_table_name', $assertionErrors);
-    app_sample19_json_first_content_model_assert_same('Id', $selectWhereResult['items'][1]['another_field_name'] ?? '', 'db_access category join where another_field_name', $assertionErrors);
+    app_sample19_json_first_content_model_assert_same('json_category', $selectWhereResult['items'][1]['another_table_name'] ?? '', 'db_access category join where another_table_name', $assertionErrors);
+    app_sample19_json_first_content_model_assert_same('id', $selectWhereResult['items'][1]['another_field_name'] ?? '', 'db_access category join where another_field_name', $assertionErrors);
     app_sample19_json_first_content_model_assert_same('inner', $selectWhereResult['items'][1]['join_type'] ?? '', 'db_access category join where join_type', $assertionErrors);
     app_sample19_json_first_content_model_assert_same('20', $selectWhereResult['items'][1]['where_order'] ?? '', 'db_access category join where order', $assertionErrors);
 
-    app_sample19_json_first_content_model_assert_same('ArticleJsonModel', $selectWhereResult['items'][2]['target_table_name'] ?? '', 'db_access fixed article where target table', $assertionErrors);
-    app_sample19_json_first_content_model_assert_same('Status', $selectWhereResult['items'][2]['target_table_column_name'] ?? '', 'db_access fixed article where target column', $assertionErrors);
+    app_sample19_json_first_content_model_assert_same('article_json_model', $selectWhereResult['items'][2]['target_table_name'] ?? '', 'db_access fixed article where target table', $assertionErrors);
+    app_sample19_json_first_content_model_assert_same('status', $selectWhereResult['items'][2]['target_table_column_name'] ?? '', 'db_access fixed article where target column', $assertionErrors);
     app_sample19_json_first_content_model_assert_same('fixed', $selectWhereResult['items'][2]['parameter_type'] ?? '', 'db_access fixed article where parameter_type', $assertionErrors);
     app_sample19_json_first_content_model_assert_same('published', $selectWhereResult['items'][2]['fixed_parameter'] ?? '', 'db_access fixed article where fixed_parameter', $assertionErrors);
     app_sample19_json_first_content_model_assert_same('30', $selectWhereResult['items'][2]['where_order'] ?? '', 'db_access fixed article where order', $assertionErrors);

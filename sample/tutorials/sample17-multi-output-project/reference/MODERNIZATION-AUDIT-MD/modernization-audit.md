@@ -25,13 +25,13 @@ The report is read-only and does not modify runtime code, DBAccess classes, Data
 
 ## Recommended Review Order
 
-- `CapstoneTask`
+- `capstone_task`
 
 ## Table Audit
 
 | Table | Physical Name | Risk | Columns | Primary Keys | Nullable Columns | Relationships | DBAccess Functions | Signals |
 | --- | --- | --- | ---: | --- | ---: | ---: | ---: | --- |
-| CapstoneTask | CapstoneTask | medium | 7 | Id | 1 | 0 | 2 | no-relationship-metadata |
+| capstone_task | capstone_task | medium | 7 | id | 1 | 0 | 2 | no-relationship-metadata |
 
 ## Use Rules
 

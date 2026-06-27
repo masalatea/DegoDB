@@ -72,7 +72,7 @@ INSERT INTO project_db_access_classes (
     last_detected_data_file
 ) VALUES (
     @sample22_project_id,
-    'EbookWorkflowChapter',
+    'ebook_workflow_chapter',
     '',
     0,
     'Ebook chapter workflow sample with public read and minimal editor write functions.',
@@ -105,12 +105,12 @@ INSERT INTO project_db_access_functions (
     detected_line,
     source_of_truth
 ) VALUES
-(@sample22_db_access_class_id, 'GetPublishedEbookWorkflowChapterList', 10, '', 'SELECTLIST', 'EbookWorkflowPublishedChapter', 'EbookWorkflowPublishedChapter', '', 0, 'EbookWorkflowPublishedChapter.SpineOrder asc, EbookWorkflowPublishedChapter.ChapterId asc', 'List published chapters for a book in EPUB spine order.', '', '', '', 'NoSecurity', '', 0, 'public function GetPublishedEbookWorkflowChapterList($param_EbookWorkflowPublishedChapter_BookSlug_where)', 10, 'manual'),
-(@sample22_db_access_class_id, 'GetPublishedEbookWorkflowChapter', 20, '', 'SELECTSINGLE', 'EbookWorkflowPublishedChapter', 'EbookWorkflowPublishedChapter', '', 0, '', 'Get one published chapter by book slug and chapter slug.', '', '', '', 'NoSecurity', '', 0, 'public function GetPublishedEbookWorkflowChapter($param_EbookWorkflowPublishedChapter_BookSlug_where, $param_EbookWorkflowPublishedChapter_ChapterSlug_where)', 20, 'manual'),
-(@sample22_db_access_class_id, 'InsertEbookWorkflowChapter', 30, '', 'INSERT', 'EbookWorkflowChapter', 'EbookWorkflowChapter', 'classobject', 0, '', 'Create a chapter draft.', '', '', '', 'NoSecurity', '', 0, 'public function InsertEbookWorkflowChapter($EbookWorkflowChapterObj)', 30, 'manual'),
-(@sample22_db_access_class_id, 'UpdateEbookWorkflowChapterDraft', 40, '', 'UPDATE', 'EbookWorkflowChapter', 'EbookWorkflowChapter', 'classobject', 0, '', 'Update editable chapter draft fields.', '', '', '', 'NoSecurity', '', 0, 'public function UpdateEbookWorkflowChapterDraft($EbookWorkflowChapterObj)', 40, 'manual'),
-(@sample22_db_access_class_id, 'UpdateEbookWorkflowChapterOrder', 50, '', 'UPDATE', 'EbookWorkflowChapter', 'EbookWorkflowChapter', 'classobject', 0, '', 'Update spine/nav order metadata.', '', '', '', 'NoSecurity', '', 0, 'public function UpdateEbookWorkflowChapterOrder($EbookWorkflowChapterObj)', 50, 'manual'),
-(@sample22_db_access_class_id, 'PublishEbookWorkflowChapter', 60, '', 'UPDATE', 'EbookWorkflowChapter', 'EbookWorkflowChapter', 'classobject', 0, '', 'Mark a chapter as published.', '', '', '', 'NoSecurity', '', 0, 'public function PublishEbookWorkflowChapter($EbookWorkflowChapterObj)', 60, 'manual');
+(@sample22_db_access_class_id, 'GetPublishedEbookWorkflowChapterList', 10, '', 'SELECTLIST', 'EbookWorkflowPublishedChapter', 'ebook_workflow_published_chapter', '', 0, 'ebook_workflow_published_chapter.spine_order asc, ebook_workflow_published_chapter.chapter_id asc', 'List published chapters for a book in EPUB spine order.', '', '', '', 'NoSecurity', '', 0, 'public function GetPublishedEbookWorkflowChapterList($param_EbookWorkflowPublishedChapter_BookSlug_where)', 10, 'manual'),
+(@sample22_db_access_class_id, 'GetPublishedEbookWorkflowChapter', 20, '', 'SELECTSINGLE', 'EbookWorkflowPublishedChapter', 'ebook_workflow_published_chapter', '', 0, '', 'Get one published chapter by book slug and chapter slug.', '', '', '', 'NoSecurity', '', 0, 'public function GetPublishedEbookWorkflowChapter($param_EbookWorkflowPublishedChapter_BookSlug_where, $param_EbookWorkflowPublishedChapter_ChapterSlug_where)', 20, 'manual'),
+(@sample22_db_access_class_id, 'InsertEbookWorkflowChapter', 30, '', 'INSERT', 'EbookWorkflowChapter', 'ebook_workflow_chapter', 'classobject', 0, '', 'Create a chapter draft.', '', '', '', 'NoSecurity', '', 0, 'public function InsertEbookWorkflowChapter($EbookWorkflowChapterObj)', 30, 'manual'),
+(@sample22_db_access_class_id, 'UpdateEbookWorkflowChapterDraft', 40, '', 'UPDATE', 'EbookWorkflowChapter', 'ebook_workflow_chapter', 'classobject', 0, '', 'Update editable chapter draft fields.', '', '', '', 'NoSecurity', '', 0, 'public function UpdateEbookWorkflowChapterDraft($EbookWorkflowChapterObj)', 40, 'manual'),
+(@sample22_db_access_class_id, 'UpdateEbookWorkflowChapterOrder', 50, '', 'UPDATE', 'EbookWorkflowChapter', 'ebook_workflow_chapter', 'classobject', 0, '', 'Update spine/nav order metadata.', '', '', '', 'NoSecurity', '', 0, 'public function UpdateEbookWorkflowChapterOrder($EbookWorkflowChapterObj)', 50, 'manual'),
+(@sample22_db_access_class_id, 'PublishEbookWorkflowChapter', 60, '', 'UPDATE', 'EbookWorkflowChapter', 'ebook_workflow_chapter', 'classobject', 0, '', 'Mark a chapter as published.', '', '', '', 'NoSecurity', '', 0, 'public function PublishEbookWorkflowChapter($EbookWorkflowChapterObj)', 60, 'manual');
 
 SET @sample22_list_function_id = (SELECT id FROM project_db_access_functions WHERE db_access_class_id = @sample22_db_access_class_id AND function_name = 'GetPublishedEbookWorkflowChapterList');
 SET @sample22_detail_function_id = (SELECT id FROM project_db_access_functions WHERE db_access_class_id = @sample22_db_access_class_id AND function_name = 'GetPublishedEbookWorkflowChapter');
@@ -131,23 +131,23 @@ INSERT INTO project_db_access_function_select_target_fields (
     field_list_order,
     source_of_truth
 ) VALUES
-(@sample22_list_function_id, 'EbookWorkflowPublishedChapter', '', 'ChapterId', '', '', 'ChapterId', 0, 10, 'manual'),
-(@sample22_list_function_id, 'EbookWorkflowPublishedChapter', '', 'BookId', '', '', 'BookId', 0, 20, 'manual'),
-(@sample22_list_function_id, 'EbookWorkflowPublishedChapter', '', 'BookSlug', '', '', 'BookSlug', 0, 30, 'manual'),
-(@sample22_list_function_id, 'EbookWorkflowPublishedChapter', '', 'ChapterTitle', '', '', 'ChapterTitle', 0, 40, 'manual'),
-(@sample22_list_function_id, 'EbookWorkflowPublishedChapter', '', 'ChapterSlug', '', '', 'ChapterSlug', 0, 50, 'manual'),
-(@sample22_list_function_id, 'EbookWorkflowPublishedChapter', '', 'SpineOrder', '', '', 'SpineOrder', 0, 60, 'manual'),
-(@sample22_list_function_id, 'EbookWorkflowPublishedChapter', '', 'NavLabel', '', '', 'NavLabel', 0, 70, 'manual'),
-(@sample22_list_function_id, 'EbookWorkflowPublishedChapter', '', 'EpubResourcePath', '', '', 'EpubResourcePath', 0, 80, 'manual'),
-(@sample22_detail_function_id, 'EbookWorkflowPublishedChapter', '', 'ChapterId', '', '', 'ChapterId', 0, 10, 'manual'),
-(@sample22_detail_function_id, 'EbookWorkflowPublishedChapter', '', 'BookId', '', '', 'BookId', 0, 20, 'manual'),
-(@sample22_detail_function_id, 'EbookWorkflowPublishedChapter', '', 'BookSlug', '', '', 'BookSlug', 0, 30, 'manual'),
-(@sample22_detail_function_id, 'EbookWorkflowPublishedChapter', '', 'ChapterTitle', '', '', 'ChapterTitle', 0, 40, 'manual'),
-(@sample22_detail_function_id, 'EbookWorkflowPublishedChapter', '', 'ChapterSlug', '', '', 'ChapterSlug', 0, 50, 'manual'),
-(@sample22_detail_function_id, 'EbookWorkflowPublishedChapter', '', 'SpineOrder', '', '', 'SpineOrder', 0, 60, 'manual'),
-(@sample22_detail_function_id, 'EbookWorkflowPublishedChapter', '', 'NavLabel', '', '', 'NavLabel', 0, 70, 'manual'),
-(@sample22_detail_function_id, 'EbookWorkflowPublishedChapter', '', 'EpubResourcePath', '', '', 'EpubResourcePath', 0, 80, 'manual'),
-(@sample22_detail_function_id, 'EbookWorkflowPublishedChapter', '', 'BodyMarkdown', '', '', 'BodyMarkdown', 0, 90, 'manual');
+(@sample22_list_function_id, 'ebook_workflow_published_chapter', '', 'chapter_id', '', '', 'chapterId', 0, 10, 'manual'),
+(@sample22_list_function_id, 'ebook_workflow_published_chapter', '', 'book_id', '', '', 'bookId', 0, 20, 'manual'),
+(@sample22_list_function_id, 'ebook_workflow_published_chapter', '', 'book_slug', '', '', 'bookSlug', 0, 30, 'manual'),
+(@sample22_list_function_id, 'ebook_workflow_published_chapter', '', 'chapter_title', '', '', 'chapterTitle', 0, 40, 'manual'),
+(@sample22_list_function_id, 'ebook_workflow_published_chapter', '', 'chapter_slug', '', '', 'chapterSlug', 0, 50, 'manual'),
+(@sample22_list_function_id, 'ebook_workflow_published_chapter', '', 'spine_order', '', '', 'spineOrder', 0, 60, 'manual'),
+(@sample22_list_function_id, 'ebook_workflow_published_chapter', '', 'nav_label', '', '', 'navLabel', 0, 70, 'manual'),
+(@sample22_list_function_id, 'ebook_workflow_published_chapter', '', 'epub_resource_path', '', '', 'epubResourcePath', 0, 80, 'manual'),
+(@sample22_detail_function_id, 'ebook_workflow_published_chapter', '', 'chapter_id', '', '', 'chapterId', 0, 10, 'manual'),
+(@sample22_detail_function_id, 'ebook_workflow_published_chapter', '', 'book_id', '', '', 'bookId', 0, 20, 'manual'),
+(@sample22_detail_function_id, 'ebook_workflow_published_chapter', '', 'book_slug', '', '', 'bookSlug', 0, 30, 'manual'),
+(@sample22_detail_function_id, 'ebook_workflow_published_chapter', '', 'chapter_title', '', '', 'chapterTitle', 0, 40, 'manual'),
+(@sample22_detail_function_id, 'ebook_workflow_published_chapter', '', 'chapter_slug', '', '', 'chapterSlug', 0, 50, 'manual'),
+(@sample22_detail_function_id, 'ebook_workflow_published_chapter', '', 'spine_order', '', '', 'spineOrder', 0, 60, 'manual'),
+(@sample22_detail_function_id, 'ebook_workflow_published_chapter', '', 'nav_label', '', '', 'navLabel', 0, 70, 'manual'),
+(@sample22_detail_function_id, 'ebook_workflow_published_chapter', '', 'epub_resource_path', '', '', 'epubResourcePath', 0, 80, 'manual'),
+(@sample22_detail_function_id, 'ebook_workflow_published_chapter', '', 'body_markdown', '', '', 'bodyMarkdown', 0, 90, 'manual');
 
 INSERT INTO project_db_access_function_select_wheres (
     db_access_function_id,
@@ -166,11 +166,11 @@ INSERT INTO project_db_access_function_select_wheres (
     where_order,
     source_of_truth
 ) VALUES
-(@sample22_list_function_id, 'EbookWorkflowPublishedChapter', '', 'Status', 'fixed', '', 'published', '', '', '', '', '', '=', 10, 'manual'),
-(@sample22_list_function_id, 'EbookWorkflowPublishedChapter', '', 'BookSlug', 'argument', 'varchar', '', '', '', '', '', '', '=', 20, 'manual'),
-(@sample22_detail_function_id, 'EbookWorkflowPublishedChapter', '', 'Status', 'fixed', '', 'published', '', '', '', '', '', '=', 10, 'manual'),
-(@sample22_detail_function_id, 'EbookWorkflowPublishedChapter', '', 'BookSlug', 'argument', 'varchar', '', '', '', '', '', '', '=', 20, 'manual'),
-(@sample22_detail_function_id, 'EbookWorkflowPublishedChapter', '', 'ChapterSlug', 'argument', 'varchar', '', '', '', '', '', '', '=', 30, 'manual');
+(@sample22_list_function_id, 'ebook_workflow_published_chapter', '', 'status', 'fixed', '', 'published', '', '', '', '', '', '=', 10, 'manual'),
+(@sample22_list_function_id, 'ebook_workflow_published_chapter', '', 'book_slug', 'argument', 'varchar', '', '', '', '', '', '', '=', 20, 'manual'),
+(@sample22_detail_function_id, 'ebook_workflow_published_chapter', '', 'status', 'fixed', '', 'published', '', '', '', '', '', '=', 10, 'manual'),
+(@sample22_detail_function_id, 'ebook_workflow_published_chapter', '', 'book_slug', 'argument', 'varchar', '', '', '', '', '', '', '=', 20, 'manual'),
+(@sample22_detail_function_id, 'ebook_workflow_published_chapter', '', 'chapter_slug', 'argument', 'varchar', '', '', '', '', '', '', '=', 30, 'manual');
 
 INSERT INTO project_db_access_function_insert_target_fields (
     db_access_function_id,
@@ -181,15 +181,15 @@ INSERT INTO project_db_access_function_insert_target_fields (
     field_list_order,
     source_of_truth
 ) VALUES
-(@sample22_insert_function_id, 'EbookWorkflowBookId', 'argument', '', '', 10, 'manual'),
-(@sample22_insert_function_id, 'ChapterTitle', 'argument', '', '', 20, 'manual'),
-(@sample22_insert_function_id, 'ChapterSlug', 'argument', '', '', 30, 'manual'),
-(@sample22_insert_function_id, 'Status', 'fixed', 'varchar', 'draft', 40, 'manual'),
-(@sample22_insert_function_id, 'SpineOrder', 'argument', '', '', 50, 'manual'),
-(@sample22_insert_function_id, 'NavLabel', 'argument', '', '', 60, 'manual'),
-(@sample22_insert_function_id, 'EpubResourcePath', 'argument', '', '', 70, 'manual'),
-(@sample22_insert_function_id, 'BodyMarkdown', 'argument', '', '', 80, 'manual'),
-(@sample22_insert_function_id, 'UpdatedAt', 'fixed', 'raw', 'NOW()', 90, 'manual');
+(@sample22_insert_function_id, 'ebook_workflow_book_id', 'argument', '', '', 10, 'manual'),
+(@sample22_insert_function_id, 'chapter_title', 'argument', '', '', 20, 'manual'),
+(@sample22_insert_function_id, 'chapter_slug', 'argument', '', '', 30, 'manual'),
+(@sample22_insert_function_id, 'status', 'fixed', 'varchar', 'draft', 40, 'manual'),
+(@sample22_insert_function_id, 'spine_order', 'argument', '', '', 50, 'manual'),
+(@sample22_insert_function_id, 'nav_label', 'argument', '', '', 60, 'manual'),
+(@sample22_insert_function_id, 'epub_resource_path', 'argument', '', '', 70, 'manual'),
+(@sample22_insert_function_id, 'body_markdown', 'argument', '', '', 80, 'manual'),
+(@sample22_insert_function_id, 'updated_at', 'fixed', 'raw', 'NOW()', 90, 'manual');
 
 INSERT INTO project_db_access_function_update_target_fields (
     db_access_function_id,
@@ -200,18 +200,18 @@ INSERT INTO project_db_access_function_update_target_fields (
     field_list_order,
     source_of_truth
 ) VALUES
-(@sample22_update_draft_function_id, 'ChapterTitle', 'argument', '', '', 10, 'manual'),
-(@sample22_update_draft_function_id, 'NavLabel', 'argument', '', '', 20, 'manual'),
-(@sample22_update_draft_function_id, 'EpubResourcePath', 'argument', '', '', 30, 'manual'),
-(@sample22_update_draft_function_id, 'BodyMarkdown', 'argument', '', '', 40, 'manual'),
-(@sample22_update_draft_function_id, 'UpdatedAt', 'fixed', 'raw', 'NOW()', 50, 'manual'),
-(@sample22_update_order_function_id, 'SpineOrder', 'argument', '', '', 10, 'manual'),
-(@sample22_update_order_function_id, 'NavLabel', 'argument', '', '', 20, 'manual'),
-(@sample22_update_order_function_id, 'EpubResourcePath', 'argument', '', '', 30, 'manual'),
-(@sample22_update_order_function_id, 'UpdatedAt', 'fixed', 'raw', 'NOW()', 40, 'manual'),
-(@sample22_publish_function_id, 'Status', 'fixed', 'varchar', 'published', 10, 'manual'),
-(@sample22_publish_function_id, 'PublishedAt', 'fixed', 'raw', 'NOW()', 20, 'manual'),
-(@sample22_publish_function_id, 'UpdatedAt', 'fixed', 'raw', 'NOW()', 30, 'manual');
+(@sample22_update_draft_function_id, 'chapter_title', 'argument', '', '', 10, 'manual'),
+(@sample22_update_draft_function_id, 'nav_label', 'argument', '', '', 20, 'manual'),
+(@sample22_update_draft_function_id, 'epub_resource_path', 'argument', '', '', 30, 'manual'),
+(@sample22_update_draft_function_id, 'body_markdown', 'argument', '', '', 40, 'manual'),
+(@sample22_update_draft_function_id, 'updated_at', 'fixed', 'raw', 'NOW()', 50, 'manual'),
+(@sample22_update_order_function_id, 'spine_order', 'argument', '', '', 10, 'manual'),
+(@sample22_update_order_function_id, 'nav_label', 'argument', '', '', 20, 'manual'),
+(@sample22_update_order_function_id, 'epub_resource_path', 'argument', '', '', 30, 'manual'),
+(@sample22_update_order_function_id, 'updated_at', 'fixed', 'raw', 'NOW()', 40, 'manual'),
+(@sample22_publish_function_id, 'status', 'fixed', 'varchar', 'published', 10, 'manual'),
+(@sample22_publish_function_id, 'published_at', 'fixed', 'raw', 'NOW()', 20, 'manual'),
+(@sample22_publish_function_id, 'updated_at', 'fixed', 'raw', 'NOW()', 30, 'manual');
 
 INSERT INTO project_db_access_function_update_delete_wheres (
     db_access_function_id,
@@ -224,9 +224,9 @@ INSERT INTO project_db_access_function_update_delete_wheres (
     where_order,
     source_of_truth
 ) VALUES
-(@sample22_update_draft_function_id, 'Id', 'argument', '', '', '', '=', 10, 'manual'),
-(@sample22_update_order_function_id, 'Id', 'argument', '', '', '', '=', 10, 'manual'),
-(@sample22_publish_function_id, 'Id', 'argument', '', '', '', '=', 10, 'manual');
+(@sample22_update_draft_function_id, 'id', 'argument', '', '', '', '=', 10, 'manual'),
+(@sample22_update_order_function_id, 'id', 'argument', '', '', '', '=', 10, 'manual'),
+(@sample22_publish_function_id, 'id', 'argument', '', '', '', '=', 10, 'manual');
 
 SET @sample22_project_id = NULL;
 SET @sample22_db_access_class_id = NULL;

@@ -11,8 +11,8 @@ require_once dirname(__DIR__, 2) . '/app/source_output_repository.php';
 
 const APP_SAMPLE25_EBOOK_EDITOR_AUTH_CMS_PROJECT_KEY = 'SAMPLE25';
 const APP_SAMPLE25_EBOOK_EDITOR_AUTH_CMS_TABLE_NAMES = [
-    'EbookEditorBook',
-    'EbookEditorChapter',
+    'ebook_editor_book',
+    'ebook_editor_chapter',
 ];
 const APP_SAMPLE25_EBOOK_EDITOR_AUTH_CMS_KEYS = [
     'DATACLASS-PHP',

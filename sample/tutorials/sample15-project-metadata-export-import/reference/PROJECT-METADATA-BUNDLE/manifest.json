@@ -3,7 +3,7 @@
     "schema_version": "2026-05-26.project-core.v2",
     "scope": "project-core",
     "source_project_key": "SAMPLE15",
-    "exported_at": "2026-06-25T22:40:58+00:00",
+    "exported_at": "2026-06-27T05:13:23+00:00",
     "requested_by": "phpunit",
     "target_policy": "replace-core-scope",
     "secrets_policy": "exclude-all",
@@ -62,13 +62,13 @@
         },
         "tables": {
             "path": "tables.json",
-            "sha256": "f585e2acb9fb2b27df897a4806bfc88f4112fa852dad1a7a17225ab5eac3200f",
-            "bytes": 1713
+            "sha256": "fcaa72b0c0eb6b0f9d509e533f6ab12639e613a7245d3683f59ed029297796b2",
+            "bytes": 1717
         },
         "data_classes": {
             "path": "data-classes.json",
-            "sha256": "384747f7dcf777ea0abd9736aa234b90b205eca76dbe7ecf3c72ab29c7030604",
-            "bytes": 1498
+            "sha256": "87e141bfab0912edbfdee6ab2b433bee9bbf982799989afe591f6a8fc4c0738c",
+            "bytes": 1502
         },
         "db_access": {
             "path": "db-access.json",

@@ -10,7 +10,7 @@
     "unresolved_auth_count": 0,
     "operations": [
         {
-            "source_name": "EbookCmsBook",
+            "source_name": "ebook_cms_book",
             "function_name": "GetPublicEbookCmsBookList",
             "endpoint_filename": "proxyserver-EbookCmsBook-GetPublicEbookCmsBookList.php",
             "auth_strategy": "no-security",
@@ -27,7 +27,7 @@
             }
         },
         {
-            "source_name": "EbookCmsBook",
+            "source_name": "ebook_cms_book",
             "function_name": "GetPublicEbookCmsBook",
             "endpoint_filename": "proxyserver-EbookCmsBook-GetPublicEbookCmsBook.php",
             "auth_strategy": "no-security",
@@ -38,13 +38,13 @@
                     "parameter_name": "param_EbookCmsBook_Slug_where",
                     "datatype": "varchar",
                     "source": "select-where-parameter-data-type",
-                    "target_table_name": "EbookCmsBook",
-                    "target_table_column_name": "Slug"
+                    "target_table_name": "ebook_cms_book",
+                    "target_table_column_name": "slug"
                 }
             }
         },
         {
-            "source_name": "EbookCmsBook",
+            "source_name": "ebook_cms_book",
             "function_name": "GetPublicEbookCmsChapterList",
             "endpoint_filename": "proxyserver-EbookCmsBook-GetPublicEbookCmsChapterList.php",
             "auth_strategy": "no-security",
@@ -55,13 +55,13 @@
                     "parameter_name": "param_EbookCmsChapter_BookSlug_where",
                     "datatype": "",
                     "source": "select-where-column-name",
-                    "target_table_name": "EbookCmsChapter",
-                    "target_table_column_name": "Status"
+                    "target_table_name": "ebook_cms_chapter",
+                    "target_table_column_name": "status"
                 }
             }
         },
         {
-            "source_name": "EbookCmsBook",
+            "source_name": "ebook_cms_book",
             "function_name": "GetPublicEbookCmsChapter",
             "endpoint_filename": "proxyserver-EbookCmsBook-GetPublicEbookCmsChapter.php",
             "auth_strategy": "no-security",
@@ -72,20 +72,20 @@
                     "parameter_name": "param_EbookCmsChapter_BookSlug_where",
                     "datatype": "",
                     "source": "select-where-column-name",
-                    "target_table_name": "EbookCmsChapter",
-                    "target_table_column_name": "Status"
+                    "target_table_name": "ebook_cms_chapter",
+                    "target_table_column_name": "status"
                 },
                 "param_EbookCmsChapter_ChapterSlug_where": {
                     "parameter_name": "param_EbookCmsChapter_ChapterSlug_where",
                     "datatype": "varchar",
                     "source": "select-where-parameter-data-type",
-                    "target_table_name": "EbookCmsChapter",
-                    "target_table_column_name": "BookSlug"
+                    "target_table_name": "ebook_cms_chapter",
+                    "target_table_column_name": "book_slug"
                 }
             }
         },
         {
-            "source_name": "EbookCmsBook",
+            "source_name": "ebook_cms_book",
             "function_name": "GetPublicEbookCmsEpubDeliveryList",
             "endpoint_filename": "proxyserver-EbookCmsBook-GetPublicEbookCmsEpubDeliveryList.php",
             "auth_strategy": "no-security",
@@ -96,13 +96,13 @@
                     "parameter_name": "param_EbookCmsBook_Slug_where",
                     "datatype": "varchar",
                     "source": "select-where-parameter-data-type",
-                    "target_table_name": "EbookCmsBook",
-                    "target_table_column_name": "Slug"
+                    "target_table_name": "ebook_cms_book",
+                    "target_table_column_name": "slug"
                 }
             }
         },
         {
-            "source_name": "EbookCmsBook",
+            "source_name": "ebook_cms_book",
             "function_name": "GetEditorEbookCmsChapter",
             "endpoint_filename": "proxyserver-EbookCmsBook-GetEditorEbookCmsChapter.php",
             "auth_strategy": "project-token",
@@ -113,13 +113,13 @@
                     "parameter_name": "param_EbookCmsChapter_Id_where",
                     "datatype": "int",
                     "source": "select-where-parameter-data-type",
-                    "target_table_name": "EbookCmsChapter",
-                    "target_table_column_name": "Id"
+                    "target_table_name": "ebook_cms_chapter",
+                    "target_table_column_name": "id"
                 }
             }
         },
         {
-            "source_name": "EbookCmsBook",
+            "source_name": "ebook_cms_book",
             "function_name": "UpdateEditorEbookCmsChapterDraft",
             "endpoint_filename": "proxyserver-EbookCmsBook-UpdateEditorEbookCmsChapterDraft.php",
             "auth_strategy": "project-token",
@@ -136,7 +136,7 @@
             }
         },
         {
-            "source_name": "EbookCmsBook",
+            "source_name": "ebook_cms_book",
             "function_name": "PublishEditorEbookCmsChapter",
             "endpoint_filename": "proxyserver-EbookCmsBook-PublishEditorEbookCmsChapter.php",
             "auth_strategy": "project-token",

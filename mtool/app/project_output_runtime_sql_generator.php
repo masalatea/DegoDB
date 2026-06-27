@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 require_once __DIR__ . '/db_access_repository.php';
+require_once __DIR__ . '/generated_name.php';
 
 /**
  * @return list<string>
@@ -39,7 +40,40 @@ function app_project_output_runtime_sql_parameter_name_matches_column(string $pa
         return true;
     }
 
-    return str_contains($normalizedParameterName, $normalizedColumnName);
+    $columnNameMap = app_generated_name_map_for_physical_name($columnName, 'class');
+    $columnPropertyNameMap = app_generated_name_map_for_physical_name($columnName, 'php-property');
+    foreach (array_unique([
+        $normalizedColumnName,
+        str_replace('_', '', $normalizedColumnName),
+        strtolower($columnNameMap['generated_name']),
+        strtolower($columnPropertyNameMap['generated_name']),
+    ]) as $candidate) {
+        if ($candidate !== '' && str_contains($normalizedParameterName, $candidate)) {
+            return true;
+        }
+    }
+
+    return false;
+}
+
+function app_project_output_runtime_sql_output_property_name(string $physicalColumnName): string
+{
+    $columnName = trim($physicalColumnName);
+    if ($columnName === '' || !app_generated_name_policy_uses_physical_logical_names()) {
+        return $columnName;
+    }
+
+    return app_generated_name_map_for_physical_name($columnName, 'php-property')['generated_name'];
+}
+
+function app_project_output_runtime_sql_output_data_class_base_name(string $physicalOrLogicalName): string
+{
+    $name = trim($physicalOrLogicalName);
+    if ($name === '' || !app_generated_name_policy_uses_physical_logical_names()) {
+        return $name;
+    }
+
+    return app_generated_name_map_for_physical_name($name, 'class')['generated_name'];
 }
 
 /**
@@ -605,7 +639,9 @@ function app_project_output_runtime_sql_prepared_select_method_body_lines(
     foreach (array_values($selectTargetFields) as $index => $field) {
         $storeClassFieldName = trim((string) ($field['store_class_field_name'] ?? ''));
         if ($storeClassFieldName === '') {
-            $storeClassFieldName = trim((string) ($field['target_table_column_name'] ?? ''));
+            $storeClassFieldName = app_project_output_runtime_sql_output_property_name(
+                trim((string) ($field['target_table_column_name'] ?? '')),
+            );
         }
 
         $bodyLines[] = '            $thisresult->' . $storeClassFieldName . ' = $thisline[' . $index . '];';
@@ -681,7 +717,7 @@ function app_project_output_runtime_sql_resolve_write_argument_expression(
             'ok' => true,
             'mode' => $bindingMode,
             'next_scalar_index' => $scalarIndex,
-            'value_expression' => $parameterNames[0] . '->' . $columnName,
+            'value_expression' => $parameterNames[0] . '->' . app_project_output_runtime_sql_output_property_name($columnName),
             'reason' => '',
         ];
     }
@@ -701,7 +737,7 @@ function app_project_output_runtime_sql_resolve_write_argument_expression(
             'ok' => true,
             'mode' => $bindingMode,
             'next_scalar_index' => $scalarIndex,
-            'value_expression' => $parameterNames[0] . '->' . $columnName,
+            'value_expression' => $parameterNames[0] . '->' . app_project_output_runtime_sql_output_property_name($columnName),
             'reason' => '',
         ];
     }
@@ -2538,6 +2574,7 @@ function app_project_output_runtime_sql_try_generate_select_method(
     if ($dataClassBaseName === '') {
         $dataClassBaseName = $sourceName;
     }
+    $dataClassBaseName = app_project_output_runtime_sql_output_data_class_base_name($dataClassBaseName);
     $dataClassName = $dataClassBaseName . 'Data';
     $bodyLines = app_project_output_runtime_sql_prepared_select_method_body_lines(
         $staticSqlResult['sql'],

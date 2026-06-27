@@ -12,7 +12,7 @@ This page organizes practical use cases for product positioning, examples, and c
 ## Core Capabilities / 基本機能
 
 - Import database schemas into canonical metadata / データベーススキーマを正規化されたメタデータへ取り込む
-- Generate Data Classes / Data Class を生成する
+- Generate DataClass code / DataClass を生成する
 - Generate DB Access layers / DB Access 層を生成する
 - Generate Source Output artifacts / Source Output 成果物を生成する
 - Generate OpenAPI / API surfaces / OpenAPI や API の外部仕様を生成する

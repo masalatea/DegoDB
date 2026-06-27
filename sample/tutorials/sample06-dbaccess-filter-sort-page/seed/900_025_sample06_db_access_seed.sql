@@ -56,7 +56,7 @@ INSERT INTO project_db_access_classes (
     last_detected_data_file
 ) VALUES (
     @sample06_project_id,
-    'Announcement',
+    'announcement',
     '',
     0,
     'Filtered list DBAccess sample for a single imported Announcement table.',
@@ -95,10 +95,10 @@ INSERT INTO project_db_access_functions (
     '',
     'SELECTLIST',
     'Announcement',
-    'Announcement',
+    'announcement',
     '',
     0,
-    'Announcement.PublishedAt desc, Announcement.Id desc',
+    'announcement.published_at desc, announcement.id desc',
     'Filter announcements by status, newest first, and limit the result size.',
     'argument',
     '',
@@ -125,10 +125,10 @@ INSERT INTO project_db_access_function_select_target_fields (
     field_list_order,
     source_of_truth
 ) VALUES
-(@sample06_get_announcement_list_function_id, 'Announcement', '', 'Id', '', '', 'Id', 0, 10, 'manual'),
-(@sample06_get_announcement_list_function_id, 'Announcement', '', 'Title', '', '', 'Title', 0, 20, 'manual'),
-(@sample06_get_announcement_list_function_id, 'Announcement', '', 'Status', '', '', 'Status', 0, 30, 'manual'),
-(@sample06_get_announcement_list_function_id, 'Announcement', '', 'PublishedAt', '', '', 'PublishedAt', 0, 40, 'manual');
+(@sample06_get_announcement_list_function_id, 'announcement', '', 'id', '', '', 'id', 0, 10, 'manual'),
+(@sample06_get_announcement_list_function_id, 'announcement', '', 'title', '', '', 'title', 0, 20, 'manual'),
+(@sample06_get_announcement_list_function_id, 'announcement', '', 'status', '', '', 'status', 0, 30, 'manual'),
+(@sample06_get_announcement_list_function_id, 'announcement', '', 'published_at', '', '', 'publishedAt', 0, 40, 'manual');
 
 INSERT INTO project_db_access_function_select_wheres (
     db_access_function_id,
@@ -147,7 +147,7 @@ INSERT INTO project_db_access_function_select_wheres (
     where_order,
     source_of_truth
 ) VALUES
-(@sample06_get_announcement_list_function_id, 'Announcement', '', 'Status', 'argument', '', '', '', '', '', '', '', '=', 10, 'manual');
+(@sample06_get_announcement_list_function_id, 'announcement', '', 'status', 'argument', '', '', '', '', '', '', '', '=', 10, 'manual');
 
 SET @sample06_project_id = NULL;
 SET @sample06_db_access_class_id = NULL;

@@ -24,7 +24,7 @@ class EbookEditorChapterDBAccessBase
         connect_mtooldb_if_not_yet();
         reconnect_mtooldb_if_necessary();
 
-        $last_sql_command_for_mtooldb = 'select `EbookEditorChapter`.`Id`, `EbookEditorChapter`.`EbookEditorBookId`, `EbookEditorChapter`.`ChapterTitle`, `EbookEditorChapter`.`ChapterSlug`, `EbookEditorChapter`.`Status`, `EbookEditorChapter`.`SpineOrder`, `EbookEditorChapter`.`BodyMarkdown`, `EbookEditorChapter`.`PublishedAt`, `EbookEditorChapter`.`UpdatedAt` from `EbookEditorChapter` where `EbookEditorChapter`.`Id` = ?';
+        $last_sql_command_for_mtooldb = 'select `ebook_editor_chapter`.`id`, `ebook_editor_chapter`.`ebook_editor_book_id`, `ebook_editor_chapter`.`chapter_title`, `ebook_editor_chapter`.`chapter_slug`, `ebook_editor_chapter`.`status`, `ebook_editor_chapter`.`spine_order`, `ebook_editor_chapter`.`body_markdown`, `ebook_editor_chapter`.`published_at`, `ebook_editor_chapter`.`updated_at` from `ebook_editor_chapter` where `ebook_editor_chapter`.`id` = ?';
         $ret = $mtooldb->execute($last_sql_command_for_mtooldb, [
             $param_EbookEditorChapter_Id_where,
         ]);
@@ -34,15 +34,15 @@ class EbookEditorChapterDBAccessBase
         }
         while($thisline=$ret->fetch_row()) {
             $thisresult = new EbookEditorChapterData();
-            $thisresult->Id = $thisline[0];
-            $thisresult->EbookEditorBookId = $thisline[1];
-            $thisresult->ChapterTitle = $thisline[2];
-            $thisresult->ChapterSlug = $thisline[3];
-            $thisresult->Status = $thisline[4];
-            $thisresult->SpineOrder = $thisline[5];
-            $thisresult->BodyMarkdown = $thisline[6];
-            $thisresult->PublishedAt = $thisline[7];
-            $thisresult->UpdatedAt = $thisline[8];
+            $thisresult->id = $thisline[0];
+            $thisresult->ebookEditorBookId = $thisline[1];
+            $thisresult->chapterTitle = $thisline[2];
+            $thisresult->chapterSlug = $thisline[3];
+            $thisresult->status = $thisline[4];
+            $thisresult->spineOrder = $thisline[5];
+            $thisresult->bodyMarkdown = $thisline[6];
+            $thisresult->publishedAt = $thisline[7];
+            $thisresult->updatedAt = $thisline[8];
             return $thisresult;
         }
         return NULL;
@@ -56,17 +56,17 @@ class EbookEditorChapterDBAccessBase
         connect_mtooldb_if_not_yet();
         reconnect_mtooldb_if_necessary();
 
-        $last_sql_command_for_mtooldb = 'update `EbookEditorChapter` SET `EbookEditorBookId` = ?, `ChapterTitle` = ?, `ChapterSlug` = ?, `Status` = ?, `SpineOrder` = ?, `BodyMarkdown` = ?, `PublishedAt` = ?, `UpdatedAt` = ? where `EbookEditorChapter`.`Id` = ?';
+        $last_sql_command_for_mtooldb = 'update `ebook_editor_chapter` SET `ebook_editor_book_id` = ?, `chapter_title` = ?, `chapter_slug` = ?, `status` = ?, `spine_order` = ?, `body_markdown` = ?, `published_at` = ?, `updated_at` = ? where `ebook_editor_chapter`.`id` = ?';
         $result = $mtooldb->execute($last_sql_command_for_mtooldb, [
-            $EbookEditorChapterObj->EbookEditorBookId,
-            $EbookEditorChapterObj->ChapterTitle,
-            $EbookEditorChapterObj->ChapterSlug,
-            $EbookEditorChapterObj->Status,
-            $EbookEditorChapterObj->SpineOrder,
-            $EbookEditorChapterObj->BodyMarkdown,
-            $EbookEditorChapterObj->PublishedAt,
-            $EbookEditorChapterObj->UpdatedAt,
-            $EbookEditorChapterObj->Id,
+            $ebook_editor_chapterObj->ebook_editor_book_id,
+            $ebook_editor_chapterObj->chapter_title,
+            $ebook_editor_chapterObj->chapter_slug,
+            $ebook_editor_chapterObj->status,
+            $ebook_editor_chapterObj->spine_order,
+            $ebook_editor_chapterObj->body_markdown,
+            $ebook_editor_chapterObj->published_at,
+            $ebook_editor_chapterObj->updated_at,
+            $ebook_editor_chapterObj->id,
         ]);
         if ($mtooldb->errno != 0) {
             error_log("Error occured while executing SQL: " . $mtooldb->error . " in " . __FILE__ . " on line " . __LINE__);
@@ -82,17 +82,17 @@ class EbookEditorChapterDBAccessBase
         connect_mtooldb_if_not_yet();
         reconnect_mtooldb_if_necessary();
 
-        $last_sql_command_for_mtooldb = 'update `EbookEditorChapter` SET `EbookEditorBookId` = ?, `ChapterTitle` = ?, `ChapterSlug` = ?, `Status` = ?, `SpineOrder` = ?, `BodyMarkdown` = ?, `PublishedAt` = ?, `UpdatedAt` = ? where `EbookEditorChapter`.`Id` = ?';
+        $last_sql_command_for_mtooldb = 'update `ebook_editor_chapter` SET `ebook_editor_book_id` = ?, `chapter_title` = ?, `chapter_slug` = ?, `status` = ?, `spine_order` = ?, `body_markdown` = ?, `published_at` = ?, `updated_at` = ? where `ebook_editor_chapter`.`id` = ?';
         $result = $mtooldb->execute($last_sql_command_for_mtooldb, [
-            $EbookEditorChapterObj->EbookEditorBookId,
-            $EbookEditorChapterObj->ChapterTitle,
-            $EbookEditorChapterObj->ChapterSlug,
-            $EbookEditorChapterObj->Status,
-            $EbookEditorChapterObj->SpineOrder,
-            $EbookEditorChapterObj->BodyMarkdown,
-            $EbookEditorChapterObj->PublishedAt,
-            $EbookEditorChapterObj->UpdatedAt,
-            $EbookEditorChapterObj->Id,
+            $ebook_editor_chapterObj->ebook_editor_book_id,
+            $ebook_editor_chapterObj->chapter_title,
+            $ebook_editor_chapterObj->chapter_slug,
+            $ebook_editor_chapterObj->status,
+            $ebook_editor_chapterObj->spine_order,
+            $ebook_editor_chapterObj->body_markdown,
+            $ebook_editor_chapterObj->published_at,
+            $ebook_editor_chapterObj->updated_at,
+            $ebook_editor_chapterObj->id,
         ]);
         if ($mtooldb->errno != 0) {
             error_log("Error occured while executing SQL: " . $mtooldb->error . " in " . __FILE__ . " on line " . __LINE__);

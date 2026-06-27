@@ -3,7 +3,7 @@
     "schema_version": "2026-05-26.project-core.v2",
     "scope": "project-core",
     "source_project_key": "SAMPLE26",
-    "exported_at": "2026-06-25T22:29:23+00:00",
+    "exported_at": "2026-06-27T00:57:42+00:00",
     "requested_by": "phpunit-sample26",
     "target_policy": "replace-core-scope",
     "secrets_policy": "exclude-all",
@@ -62,18 +62,18 @@
         },
         "tables": {
             "path": "tables.json",
-            "sha256": "44ad28620743e2b952ce4b15345409305ec5be67f8dfe1863b3809b932092ac3",
-            "bytes": 9354
+            "sha256": "57a4ca32538e69ed39734e32bd8e88ba14f4374525ed4e510ab4f25bd8e3e985",
+            "bytes": 9404
         },
         "data_classes": {
             "path": "data-classes.json",
-            "sha256": "552b3ee02bcbd38fe68aa096aca9ca678508ccb1e7fc57245fd2818737c8059d",
-            "bytes": 7728
+            "sha256": "94ec4382a273554939d14e45c2099524eb7a7cc10496f2e99d5aa904f9fdd785",
+            "bytes": 7778
         },
         "db_access": {
             "path": "db-access.json",
-            "sha256": "716a2c95d392816c2b6690e3db02da83a2028d5d884cc4184938ec5569683f90",
-            "bytes": 54297
+            "sha256": "808a00a9223d1ba7fe66624d3b0f4383abbbe3fddf5f5f2c25991c00691ff751",
+            "bytes": 54473
         },
         "source_outputs": {
             "path": "source-outputs.json",

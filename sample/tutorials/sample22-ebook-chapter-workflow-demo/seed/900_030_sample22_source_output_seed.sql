@@ -68,7 +68,7 @@ FROM project_db_access_functions AS functions
 INNER JOIN project_db_access_classes AS classes
     ON classes.id = functions.db_access_class_id
 WHERE classes.project_id = @sample22_project_id
-  AND classes.source_name = 'EbookWorkflowChapter'
+  AND classes.source_name = 'ebook_workflow_chapter'
   AND functions.function_name IN (
       'GetPublishedEbookWorkflowChapterList',
       'GetPublishedEbookWorkflowChapter',

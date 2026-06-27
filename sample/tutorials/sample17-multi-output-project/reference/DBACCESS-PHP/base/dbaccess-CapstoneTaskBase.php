@@ -25,7 +25,7 @@ class CapstoneTaskDBAccessBase
 
         $result = array();
 
-        $last_sql_command_for_mtooldb = 'select CapstoneTask.Id, CapstoneTask.Title, CapstoneTask.Status, CapstoneTask.OwnerName, CapstoneTask.Priority, CapstoneTask.DueDate from CapstoneTask where CapstoneTask.Status = ? order by CapstoneTask.Priority desc, CapstoneTask.Id asc limit ?';
+        $last_sql_command_for_mtooldb = 'select capstone_task.id, capstone_task.title, capstone_task.status, capstone_task.owner_name, capstone_task.priority, capstone_task.due_date from capstone_task where capstone_task.status = ? order by capstone_task.priority desc, capstone_task.id asc limit ?';
         $ret = $mtooldb->execute($last_sql_command_for_mtooldb, [
             $param_CapstoneTask_Status_where,
             $limit,
@@ -36,12 +36,12 @@ class CapstoneTaskDBAccessBase
         }
         while($thisline=$ret->fetch_row()) {
             $thisresult = new CapstoneTaskData();
-            $thisresult->Id = $thisline[0];
-            $thisresult->Title = $thisline[1];
-            $thisresult->Status = $thisline[2];
-            $thisresult->OwnerName = $thisline[3];
-            $thisresult->Priority = $thisline[4];
-            $thisresult->DueDate = $thisline[5];
+            $thisresult->id = $thisline[0];
+            $thisresult->title = $thisline[1];
+            $thisresult->status = $thisline[2];
+            $thisresult->ownerName = $thisline[3];
+            $thisresult->priority = $thisline[4];
+            $thisresult->dueDate = $thisline[5];
             array_push($result, $thisresult);
         }
         return $result;
@@ -54,7 +54,7 @@ class CapstoneTaskDBAccessBase
         connect_mtooldb_if_not_yet();
         reconnect_mtooldb_if_necessary();
 
-        $last_sql_command_for_mtooldb = 'select CapstoneTask.Id, CapstoneTask.Title, CapstoneTask.Status, CapstoneTask.OwnerName, CapstoneTask.Priority, CapstoneTask.DueDate, CapstoneTask.UpdatedAt from CapstoneTask where CapstoneTask.Id = ?';
+        $last_sql_command_for_mtooldb = 'select capstone_task.id, capstone_task.title, capstone_task.status, capstone_task.owner_name, capstone_task.priority, capstone_task.due_date, capstone_task.updated_at from capstone_task where capstone_task.id = ?';
         $ret = $mtooldb->execute($last_sql_command_for_mtooldb, [
             $param_CapstoneTask_Id_where,
         ]);
@@ -64,13 +64,13 @@ class CapstoneTaskDBAccessBase
         }
         while($thisline=$ret->fetch_row()) {
             $thisresult = new CapstoneTaskData();
-            $thisresult->Id = $thisline[0];
-            $thisresult->Title = $thisline[1];
-            $thisresult->Status = $thisline[2];
-            $thisresult->OwnerName = $thisline[3];
-            $thisresult->Priority = $thisline[4];
-            $thisresult->DueDate = $thisline[5];
-            $thisresult->UpdatedAt = $thisline[6];
+            $thisresult->id = $thisline[0];
+            $thisresult->title = $thisline[1];
+            $thisresult->status = $thisline[2];
+            $thisresult->ownerName = $thisline[3];
+            $thisresult->priority = $thisline[4];
+            $thisresult->dueDate = $thisline[5];
+            $thisresult->updatedAt = $thisline[6];
             return $thisresult;
         }
         return NULL;

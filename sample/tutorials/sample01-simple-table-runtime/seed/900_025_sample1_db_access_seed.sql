@@ -7,7 +7,7 @@ SET @sample1_project_id = (
 DELETE classes
 FROM project_db_access_classes AS classes
 WHERE classes.project_id = @sample1_project_id
-  AND classes.source_name = 'Article';
+  AND classes.source_name = 'article';
 
 INSERT INTO project_db_access_classes (
     project_id,
@@ -20,7 +20,7 @@ INSERT INTO project_db_access_classes (
     last_detected_data_file
 ) VALUES (
     @sample1_project_id,
-    'Article',
+    'article',
     '',
     0,
     'Minimal CRUD DBAccess sample for a single imported Article table.',
@@ -40,7 +40,7 @@ SET @sample1_db_access_class_id = (
     SELECT id
     FROM project_db_access_classes
     WHERE project_id = @sample1_project_id
-      AND source_name = 'Article'
+      AND source_name = 'article'
 );
 
 INSERT INTO project_db_access_functions (
@@ -72,10 +72,10 @@ INSERT INTO project_db_access_functions (
     '',
     'SELECTLIST',
     'Article',
-    'Article',
+    'article',
     '',
     0,
-    'Article.Id',
+    'article.id',
     'List all articles.',
     '',
     '',
@@ -94,7 +94,7 @@ INSERT INTO project_db_access_functions (
     '',
     'SELECTSINGLE',
     'Article',
-    'Article',
+    'article',
     '',
     0,
     '',
@@ -116,7 +116,7 @@ INSERT INTO project_db_access_functions (
     '',
     'INSERT',
     'Article',
-    'Article',
+    'article',
     'classobject',
     0,
     '',
@@ -138,7 +138,7 @@ INSERT INTO project_db_access_functions (
     '',
     'UPDATE',
     'Article',
-    'Article',
+    'article',
     'classobject',
     0,
     '',
@@ -160,7 +160,7 @@ INSERT INTO project_db_access_functions (
     '',
     'DELETE',
     'Article',
-    'Article',
+    'article',
     'classobject',
     0,
     '',
@@ -242,12 +242,12 @@ INSERT INTO project_db_access_function_select_target_fields (
     field_list_order,
     source_of_truth
 ) VALUES
-(@sample1_get_article_list_function_id, 'Article', '', 'Id', '', '', 'Id', 0, 10, 'manual'),
-(@sample1_get_article_list_function_id, 'Article', '', 'Title', '', '', 'Title', 0, 20, 'manual'),
-(@sample1_get_article_list_function_id, 'Article', '', 'Body', '', '', 'Body', 0, 30, 'manual'),
-(@sample1_get_article_function_id, 'Article', '', 'Id', '', '', 'Id', 0, 10, 'manual'),
-(@sample1_get_article_function_id, 'Article', '', 'Title', '', '', 'Title', 0, 20, 'manual'),
-(@sample1_get_article_function_id, 'Article', '', 'Body', '', '', 'Body', 0, 30, 'manual')
+(@sample1_get_article_list_function_id, 'article', '', 'id', '', '', 'id', 0, 10, 'manual'),
+(@sample1_get_article_list_function_id, 'article', '', 'title', '', '', 'title', 0, 20, 'manual'),
+(@sample1_get_article_list_function_id, 'article', '', 'body', '', '', 'body', 0, 30, 'manual'),
+(@sample1_get_article_function_id, 'article', '', 'id', '', '', 'id', 0, 10, 'manual'),
+(@sample1_get_article_function_id, 'article', '', 'title', '', '', 'title', 0, 20, 'manual'),
+(@sample1_get_article_function_id, 'article', '', 'body', '', '', 'body', 0, 30, 'manual')
 ON DUPLICATE KEY UPDATE
     target_table_name = VALUES(target_table_name),
     target_table_alias_name = VALUES(target_table_alias_name),
@@ -276,7 +276,7 @@ INSERT INTO project_db_access_function_select_wheres (
     where_order,
     source_of_truth
 ) VALUES
-(@sample1_get_article_function_id, 'Article', '', 'Id', 'argument', '', '', '', '', '', '', '', '=', 10, 'manual')
+(@sample1_get_article_function_id, 'article', '', 'id', 'argument', '', '', '', '', '', '', '', '=', 10, 'manual')
 ON DUPLICATE KEY UPDATE
     target_table_name = VALUES(target_table_name),
     target_table_alias_name = VALUES(target_table_alias_name),
@@ -302,8 +302,8 @@ INSERT INTO project_db_access_function_insert_target_fields (
     field_list_order,
     source_of_truth
 ) VALUES
-(@sample1_insert_article_function_id, 'Title', 'argument', '', '', 10, 'manual'),
-(@sample1_insert_article_function_id, 'Body', 'argument', '', '', 20, 'manual')
+(@sample1_insert_article_function_id, 'title', 'argument', '', '', 10, 'manual'),
+(@sample1_insert_article_function_id, 'body', 'argument', '', '', 20, 'manual')
 ON DUPLICATE KEY UPDATE
     target_table_column_name = VALUES(target_table_column_name),
     parameter_type = VALUES(parameter_type),
@@ -321,8 +321,8 @@ INSERT INTO project_db_access_function_update_target_fields (
     field_list_order,
     source_of_truth
 ) VALUES
-(@sample1_update_article_function_id, 'Title', 'argument', '', '', 10, 'manual'),
-(@sample1_update_article_function_id, 'Body', 'argument', '', '', 20, 'manual')
+(@sample1_update_article_function_id, 'title', 'argument', '', '', 10, 'manual'),
+(@sample1_update_article_function_id, 'body', 'argument', '', '', 20, 'manual')
 ON DUPLICATE KEY UPDATE
     target_table_column_name = VALUES(target_table_column_name),
     parameter_type = VALUES(parameter_type),
@@ -342,8 +342,8 @@ INSERT INTO project_db_access_function_update_delete_wheres (
     where_order,
     source_of_truth
 ) VALUES
-(@sample1_update_article_function_id, 'Id', 'argument', '', '', '', '=', 10, 'manual'),
-(@sample1_delete_article_function_id, 'Id', 'argument', '', '', '', '=', 10, 'manual')
+(@sample1_update_article_function_id, 'id', 'argument', '', '', '', '=', 10, 'manual'),
+(@sample1_delete_article_function_id, 'id', 'argument', '', '', '', '=', 10, 'manual')
 ON DUPLICATE KEY UPDATE
     target_table_column_name = VALUES(target_table_column_name),
     parameter_type = VALUES(parameter_type),

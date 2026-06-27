@@ -27,9 +27,9 @@ This is the concept-level overview of the tool. It explains the core flow from D
 2. DB 設計情報を import する。
    - 取り込み先は `dbtable` / `dbtablecolumns` である。
    - ここで初めてツールが設計情報を扱える状態になる。
-3. Data Class metadata を整える。
+3. DataClass metadata を整える。
    - `dbtable` / `dbtablecolumns` をもとに `dataclass` / `dataclassfields` へ同期する。
-   - その metadata から Data Class を生成する。
+   - その metadata から DataClass を生成する。
 4. DB Access metadata を整える。
    - `da` / `dafunc` と周辺 designer metadata を管理する。
    - select / insert / update / delete の条件と target field を設計する。

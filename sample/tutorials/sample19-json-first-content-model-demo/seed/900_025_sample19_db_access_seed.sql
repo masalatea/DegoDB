@@ -56,7 +56,7 @@ INSERT INTO project_db_access_classes (
     last_detected_data_file
 ) VALUES (
     @sample19_project_id,
-    'ArticleJsonModel',
+    'article_json_model',
     '',
     0,
     'JSON-first content model sample. Nested JSON author/category is normalized and joined into a public summary DTO.',
@@ -95,10 +95,10 @@ INSERT INTO project_db_access_functions (
     '',
     'SELECTLIST',
     'ArticlePublicSummary',
-    'ArticleJsonModel',
+    'article_json_model',
     '',
     0,
-    'ArticleJsonModel.PublishedAt desc, ArticleJsonModel.Id desc',
+    'article_json_model.published_at desc, article_json_model.id desc',
     'Public read model derived from the user JSON: published article rows joined with normalized author and category rows.',
     '',
     '',
@@ -125,12 +125,12 @@ INSERT INTO project_db_access_function_select_target_fields (
     field_list_order,
     source_of_truth
 ) VALUES
-(@sample19_get_summary_list_function_id, 'ArticleJsonModel', '', 'Id', '', '', 'ArticleId', 0, 10, 'manual'),
-(@sample19_get_summary_list_function_id, 'ArticleJsonModel', '', 'Title', '', '', 'ArticleTitle', 0, 20, 'manual'),
-(@sample19_get_summary_list_function_id, 'ArticleJsonModel', '', 'Slug', '', '', 'ArticleSlug', 0, 30, 'manual'),
-(@sample19_get_summary_list_function_id, 'ArticleJsonModel', '', 'PublishedAt', '', '', 'PublishedAt', 0, 40, 'manual'),
-(@sample19_get_summary_list_function_id, 'JsonAuthor', '', 'Name', '', '', 'AuthorName', 0, 50, 'manual'),
-(@sample19_get_summary_list_function_id, 'JsonCategory', '', 'Name', '', '', 'CategoryName', 0, 60, 'manual');
+(@sample19_get_summary_list_function_id, 'article_json_model', '', 'id', '', '', 'articleId', 0, 10, 'manual'),
+(@sample19_get_summary_list_function_id, 'article_json_model', '', 'title', '', '', 'articleTitle', 0, 20, 'manual'),
+(@sample19_get_summary_list_function_id, 'article_json_model', '', 'slug', '', '', 'articleSlug', 0, 30, 'manual'),
+(@sample19_get_summary_list_function_id, 'article_json_model', '', 'published_at', '', '', 'publishedAt', 0, 40, 'manual'),
+(@sample19_get_summary_list_function_id, 'json_author', '', 'name', '', '', 'authorName', 0, 50, 'manual'),
+(@sample19_get_summary_list_function_id, 'json_category', '', 'name', '', '', 'categoryName', 0, 60, 'manual');
 
 INSERT INTO project_db_access_function_select_wheres (
     db_access_function_id,
@@ -149,9 +149,9 @@ INSERT INTO project_db_access_function_select_wheres (
     where_order,
     source_of_truth
 ) VALUES
-(@sample19_get_summary_list_function_id, 'ArticleJsonModel', '', 'JsonAuthorId', 'anotherfield', '', '', 'JsonAuthor', '', 'Id', 'inner', '', '=', 10, 'manual'),
-(@sample19_get_summary_list_function_id, 'ArticleJsonModel', '', 'JsonCategoryId', 'anotherfield', '', '', 'JsonCategory', '', 'Id', 'inner', '', '=', 20, 'manual'),
-(@sample19_get_summary_list_function_id, 'ArticleJsonModel', '', 'Status', 'fixed', '', 'published', '', '', '', '', '', '=', 30, 'manual');
+(@sample19_get_summary_list_function_id, 'article_json_model', '', 'json_author_id', 'anotherfield', '', '', 'json_author', '', 'id', 'inner', '', '=', 10, 'manual'),
+(@sample19_get_summary_list_function_id, 'article_json_model', '', 'json_category_id', 'anotherfield', '', '', 'json_category', '', 'id', 'inner', '', '=', 20, 'manual'),
+(@sample19_get_summary_list_function_id, 'article_json_model', '', 'status', 'fixed', '', 'published', '', '', '', '', '', '=', 30, 'manual');
 
 SET @sample19_project_id = NULL;
 SET @sample19_db_access_class_id = NULL;

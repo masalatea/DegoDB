@@ -16,20 +16,20 @@ WHERE ProjectPID = @sample07_project_id;
 DELETE FROM dbtable
 WHERE ProjectPID = @sample07_project_id;
 
-DROP TABLE IF EXISTS TodoItem;
+DROP TABLE IF EXISTS todo_item;
 
-CREATE TABLE TodoItem (
-    Id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
-    Title VARCHAR(255) NOT NULL,
-    Status VARCHAR(20) NOT NULL DEFAULT 'open',
-    Body TEXT NOT NULL,
-    PRIMARY KEY (Id)
+CREATE TABLE todo_item (
+    id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+    title VARCHAR(255) NOT NULL,
+    status VARCHAR(20) NOT NULL DEFAULT 'open',
+    body TEXT NOT NULL,
+    PRIMARY KEY (id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
-INSERT INTO TodoItem (
-    Title,
-    Status,
-    Body
+INSERT INTO todo_item (
+    title,
+    status,
+    body
 ) VALUES
     ('Prepare onboarding checklist', 'open', 'Create the first generated CRUD sample.'),
     ('Verify generated DB access output', 'done', 'Compare runtime output against durable reference files.');

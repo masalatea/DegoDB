@@ -25,7 +25,7 @@ class EbookMediaAssetDBAccessBase
 
         $result = array();
 
-        $last_sql_command_for_mtooldb = 'select EbookMediaDelivery.DeliveryId, EbookMediaDelivery.BookId, EbookMediaDelivery.BookSlug, EbookMediaDelivery.AssetId, EbookMediaDelivery.AssetSlug, EbookMediaDelivery.AssetKind, EbookMediaDelivery.DisplayRole, EbookMediaDelivery.DisplayName, EbookMediaDelivery.PublicUrl, EbookMediaDelivery.MimeType, EbookMediaDelivery.FileSizeBytes, EbookMediaDelivery.Sha256, EbookMediaDelivery.VersionLabel, EbookMediaDelivery.SortOrder, EbookMediaDelivery.IsPrimaryAsset from EbookMediaDelivery where EbookMediaDelivery.Status = ? and EbookMediaDelivery.BookSlug = ? order by EbookMediaDelivery.SortOrder asc, EbookMediaDelivery.DeliveryId asc';
+        $last_sql_command_for_mtooldb = 'select ebook_media_delivery.delivery_id, ebook_media_delivery.book_id, ebook_media_delivery.book_slug, ebook_media_delivery.asset_id, ebook_media_delivery.asset_slug, ebook_media_delivery.asset_kind, ebook_media_delivery.display_role, ebook_media_delivery.display_name, ebook_media_delivery.public_url, ebook_media_delivery.mime_type, ebook_media_delivery.file_size_bytes, ebook_media_delivery.sha256, ebook_media_delivery.version_label, ebook_media_delivery.sort_order, ebook_media_delivery.is_primary_asset from ebook_media_delivery where ebook_media_delivery.status = ? and ebook_media_delivery.book_slug = ? order by ebook_media_delivery.sort_order asc, ebook_media_delivery.delivery_id asc';
         $ret = $mtooldb->execute($last_sql_command_for_mtooldb, [
             'published',
             $param_EbookMediaDelivery_BookSlug_where,
@@ -36,21 +36,21 @@ class EbookMediaAssetDBAccessBase
         }
         while($thisline=$ret->fetch_row()) {
             $thisresult = new EbookMediaDeliveryData();
-            $thisresult->DeliveryId = $thisline[0];
-            $thisresult->BookId = $thisline[1];
-            $thisresult->BookSlug = $thisline[2];
-            $thisresult->AssetId = $thisline[3];
-            $thisresult->AssetSlug = $thisline[4];
-            $thisresult->AssetKind = $thisline[5];
-            $thisresult->DisplayRole = $thisline[6];
-            $thisresult->DisplayName = $thisline[7];
-            $thisresult->PublicUrl = $thisline[8];
-            $thisresult->MimeType = $thisline[9];
-            $thisresult->FileSizeBytes = $thisline[10];
-            $thisresult->Sha256 = $thisline[11];
-            $thisresult->VersionLabel = $thisline[12];
-            $thisresult->SortOrder = $thisline[13];
-            $thisresult->IsPrimaryAsset = $thisline[14];
+            $thisresult->deliveryId = $thisline[0];
+            $thisresult->bookId = $thisline[1];
+            $thisresult->bookSlug = $thisline[2];
+            $thisresult->assetId = $thisline[3];
+            $thisresult->assetSlug = $thisline[4];
+            $thisresult->assetKind = $thisline[5];
+            $thisresult->displayRole = $thisline[6];
+            $thisresult->displayName = $thisline[7];
+            $thisresult->publicUrl = $thisline[8];
+            $thisresult->mimeType = $thisline[9];
+            $thisresult->fileSizeBytes = $thisline[10];
+            $thisresult->sha256 = $thisline[11];
+            $thisresult->versionLabel = $thisline[12];
+            $thisresult->sortOrder = $thisline[13];
+            $thisresult->isPrimaryAsset = $thisline[14];
             array_push($result, $thisresult);
         }
         return $result;
@@ -63,7 +63,7 @@ class EbookMediaAssetDBAccessBase
         connect_mtooldb_if_not_yet();
         reconnect_mtooldb_if_necessary();
 
-        $last_sql_command_for_mtooldb = 'select EbookMediaDelivery.DeliveryId, EbookMediaDelivery.BookId, EbookMediaDelivery.BookSlug, EbookMediaDelivery.AssetId, EbookMediaDelivery.AssetSlug, EbookMediaDelivery.AssetKind, EbookMediaDelivery.DisplayRole, EbookMediaDelivery.DisplayName, EbookMediaDelivery.PublicUrl, EbookMediaDelivery.MimeType, EbookMediaDelivery.FileSizeBytes, EbookMediaDelivery.Sha256, EbookMediaDelivery.VersionLabel, EbookMediaDelivery.SortOrder, EbookMediaDelivery.IsPrimaryAsset from EbookMediaDelivery where EbookMediaDelivery.Status = ? and EbookMediaDelivery.AssetSlug = ?';
+        $last_sql_command_for_mtooldb = 'select ebook_media_delivery.delivery_id, ebook_media_delivery.book_id, ebook_media_delivery.book_slug, ebook_media_delivery.asset_id, ebook_media_delivery.asset_slug, ebook_media_delivery.asset_kind, ebook_media_delivery.display_role, ebook_media_delivery.display_name, ebook_media_delivery.public_url, ebook_media_delivery.mime_type, ebook_media_delivery.file_size_bytes, ebook_media_delivery.sha256, ebook_media_delivery.version_label, ebook_media_delivery.sort_order, ebook_media_delivery.is_primary_asset from ebook_media_delivery where ebook_media_delivery.status = ? and ebook_media_delivery.asset_slug = ?';
         $ret = $mtooldb->execute($last_sql_command_for_mtooldb, [
             'published',
             $param_EbookMediaDelivery_AssetSlug_where,
@@ -74,21 +74,21 @@ class EbookMediaAssetDBAccessBase
         }
         while($thisline=$ret->fetch_row()) {
             $thisresult = new EbookMediaDeliveryData();
-            $thisresult->DeliveryId = $thisline[0];
-            $thisresult->BookId = $thisline[1];
-            $thisresult->BookSlug = $thisline[2];
-            $thisresult->AssetId = $thisline[3];
-            $thisresult->AssetSlug = $thisline[4];
-            $thisresult->AssetKind = $thisline[5];
-            $thisresult->DisplayRole = $thisline[6];
-            $thisresult->DisplayName = $thisline[7];
-            $thisresult->PublicUrl = $thisline[8];
-            $thisresult->MimeType = $thisline[9];
-            $thisresult->FileSizeBytes = $thisline[10];
-            $thisresult->Sha256 = $thisline[11];
-            $thisresult->VersionLabel = $thisline[12];
-            $thisresult->SortOrder = $thisline[13];
-            $thisresult->IsPrimaryAsset = $thisline[14];
+            $thisresult->deliveryId = $thisline[0];
+            $thisresult->bookId = $thisline[1];
+            $thisresult->bookSlug = $thisline[2];
+            $thisresult->assetId = $thisline[3];
+            $thisresult->assetSlug = $thisline[4];
+            $thisresult->assetKind = $thisline[5];
+            $thisresult->displayRole = $thisline[6];
+            $thisresult->displayName = $thisline[7];
+            $thisresult->publicUrl = $thisline[8];
+            $thisresult->mimeType = $thisline[9];
+            $thisresult->fileSizeBytes = $thisline[10];
+            $thisresult->sha256 = $thisline[11];
+            $thisresult->versionLabel = $thisline[12];
+            $thisresult->sortOrder = $thisline[13];
+            $thisresult->isPrimaryAsset = $thisline[14];
             return $thisresult;
         }
         return NULL;
@@ -101,17 +101,17 @@ class EbookMediaAssetDBAccessBase
         connect_mtooldb_if_not_yet();
         reconnect_mtooldb_if_necessary();
 
-        $last_sql_command_for_mtooldb = 'insert into EbookMediaAsset (AssetSlug, AssetKind, DisplayName, PublicUrl, StoragePath, MimeType, FileSizeBytes, Sha256, VersionLabel, Status, UpdatedAt) values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, NOW())';
+        $last_sql_command_for_mtooldb = 'insert into ebook_media_asset (asset_slug, asset_kind, display_name, public_url, storage_path, mime_type, file_size_bytes, sha256, version_label, status, updated_at) values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, NOW())';
         $result = $mtooldb->execute($last_sql_command_for_mtooldb, [
-            $EbookMediaAssetObj->AssetSlug,
-            $EbookMediaAssetObj->AssetKind,
-            $EbookMediaAssetObj->DisplayName,
-            $EbookMediaAssetObj->PublicUrl,
-            $EbookMediaAssetObj->StoragePath,
-            $EbookMediaAssetObj->MimeType,
-            $EbookMediaAssetObj->FileSizeBytes,
-            $EbookMediaAssetObj->Sha256,
-            $EbookMediaAssetObj->VersionLabel,
+            $EbookMediaAssetObj->assetSlug,
+            $EbookMediaAssetObj->assetKind,
+            $EbookMediaAssetObj->displayName,
+            $EbookMediaAssetObj->publicUrl,
+            $EbookMediaAssetObj->storagePath,
+            $EbookMediaAssetObj->mimeType,
+            $EbookMediaAssetObj->fileSizeBytes,
+            $EbookMediaAssetObj->sha256,
+            $EbookMediaAssetObj->versionLabel,
             'draft',
         ]);
         if ($mtooldb->errno != 0) {
@@ -127,17 +127,17 @@ class EbookMediaAssetDBAccessBase
         connect_mtooldb_if_not_yet();
         reconnect_mtooldb_if_necessary();
 
-        $last_sql_command_for_mtooldb = 'update EbookMediaAsset SET DisplayName = ?, PublicUrl = ?, StoragePath = ?, MimeType = ?, FileSizeBytes = ?, Sha256 = ?, VersionLabel = ?, Status = ?, UpdatedAt = NOW() where EbookMediaAsset.Id = ?';
+        $last_sql_command_for_mtooldb = 'update ebook_media_asset SET display_name = ?, public_url = ?, storage_path = ?, mime_type = ?, file_size_bytes = ?, sha256 = ?, version_label = ?, status = ?, updated_at = NOW() where ebook_media_asset.id = ?';
         $result = $mtooldb->execute($last_sql_command_for_mtooldb, [
-            $EbookMediaAssetObj->DisplayName,
-            $EbookMediaAssetObj->PublicUrl,
-            $EbookMediaAssetObj->StoragePath,
-            $EbookMediaAssetObj->MimeType,
-            $EbookMediaAssetObj->FileSizeBytes,
-            $EbookMediaAssetObj->Sha256,
-            $EbookMediaAssetObj->VersionLabel,
-            $EbookMediaAssetObj->Status,
-            $EbookMediaAssetObj->Id,
+            $EbookMediaAssetObj->displayName,
+            $EbookMediaAssetObj->publicUrl,
+            $EbookMediaAssetObj->storagePath,
+            $EbookMediaAssetObj->mimeType,
+            $EbookMediaAssetObj->fileSizeBytes,
+            $EbookMediaAssetObj->sha256,
+            $EbookMediaAssetObj->versionLabel,
+            $EbookMediaAssetObj->status,
+            $EbookMediaAssetObj->id,
         ]);
         if ($mtooldb->errno != 0) {
             error_log("Error occured while executing SQL: " . $mtooldb->error . " in " . __FILE__ . " on line " . __LINE__);

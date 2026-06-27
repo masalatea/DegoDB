@@ -10,7 +10,7 @@ require_once dirname(__DIR__, 2) . '/app/sample_pack_catalog.php';
 require_once dirname(__DIR__, 2) . '/app/source_output_repository.php';
 
 const APP_SAMPLE17_MULTI_OUTPUT_PROJECT_KEY = 'SAMPLE17';
-const APP_SAMPLE17_MULTI_OUTPUT_TABLE_NAME = 'CapstoneTask';
+const APP_SAMPLE17_MULTI_OUTPUT_TABLE_NAME = 'capstone_task';
 const APP_SAMPLE17_MULTI_OUTPUT_KEYS = [
     'DATACLASS-PHP',
     'DBACCESS-PHP',
@@ -22,6 +22,9 @@ const APP_SAMPLE17_MULTI_OUTPUT_KEYS = [
 const APP_SAMPLE17_MULTI_OUTPUT_OPENAPI_PATHS = [
     '/proxyserver-CapstoneTask-GetCapstoneTaskList.php',
     '/proxyserver-CapstoneTask-GetCapstoneTask.php',
+];
+const APP_SAMPLE17_MULTI_OUTPUT_AI_CONTEXT_TABLES = [
+    'capstone_task',
 ];
 
 function app_sample17_multi_output_default_reference_root(): string
@@ -312,7 +315,7 @@ function app_sample17_multi_output_publish_one(
         app_sample17_multi_output_assert_same(1, count($context['db_access_classes'] ?? []), 'ai context dbaccess class count', $errors);
         app_sample17_multi_output_assert_same(
             true,
-            is_file($publishedRoot . '/tables/CapstoneTask.md'),
+            is_file($publishedRoot . '/tables/capstone_task.md'),
             'ai context table markdown exists',
             $errors,
         );
@@ -353,7 +356,7 @@ function app_sample17_multi_output_publish_one(
         app_sample17_multi_output_assert_same('SAMPLE17', (string) ($audit['project']['project_key'] ?? ''), 'modernization audit project key', $errors);
         app_sample17_multi_output_assert_same(1, (int) ($audit['summary']['tables'] ?? 0), 'modernization audit table count', $errors);
         app_sample17_multi_output_assert_same(
-            ['CapstoneTask'],
+            APP_SAMPLE17_MULTI_OUTPUT_AI_CONTEXT_TABLES,
             array_values(array_map('strval', is_array($audit['recommended_review_order'] ?? null) ? $audit['recommended_review_order'] : [])),
             'modernization audit review order',
             $errors,

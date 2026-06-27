@@ -2,7 +2,7 @@
 
 - canonical project key: `SAMPLE05`
 - 役割: `project -> live schema import -> data class sync -> db access output` を、1 table + 1 DB Access class + 1 selectlist function で確認する最小 DB Access tutorial sample pack
-- seed は `SAMPLE05` project と、source schema 側の物理 `Notice` table、canonical `project_db_access_*` metadata 1 class / 1 function / 4 target fields、`DATACLASS-PHP` / `DBACCESS-PHP` source output definition を作る
+- seed は `SAMPLE05` project と、source schema 側の物理 `notice` table、canonical `project_db_access_*` metadata 1 class / 1 function / 4 target fields、`DATACLASS-PHP` / `DBACCESS-PHP` source output definition を作る
 - canonical `dbtable` / `dataclass` metadata は seed しない。table import と data class sync で current metadata を作る前提
 - `project_db_access_functions` は `GetNoticeList` 1 本だけに絞る。`where` / paging / user-supplied sort はまだ入れず、`sample06` の filter / sort / page lane へ送る
 - durable input: `seed/`
@@ -31,15 +31,15 @@ make sample05-pack-runtime-test
 
 seed される代表 row:
 
-- `Notice`
-  - `SortOrder=10`, `Title=Maintenance Window`
-  - `SortOrder=20`, `Title=Release Notes`
+- `notice`
+  - `sort_order=10`, `title=Maintenance Window`
+  - `sort_order=20`, `title=Release Notes`
 
 最小フロー:
 
 ```bash
 docker compose -f compose.yaml -f compose.local-db-config.yaml -f sample/tutorials/sample05-dbaccess-select-basic/compose.yaml exec -T web-admin \
-  php /var/www/mtool/scripts/import_project_tables.php --project-key=SAMPLE05 --source=live-schema --table=Notice
+  php /var/www/mtool/scripts/import_project_tables.php --project-key=SAMPLE05 --source=live-schema --table=notice
 
 docker compose -f compose.yaml -f compose.local-db-config.yaml -f sample/tutorials/sample05-dbaccess-select-basic/compose.yaml exec -T web-admin \
   php /var/www/mtool/scripts/sync_project_data_classes.php --project-key=SAMPLE05

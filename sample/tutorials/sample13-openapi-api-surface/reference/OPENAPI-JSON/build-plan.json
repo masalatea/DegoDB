@@ -10,7 +10,7 @@
     "unresolved_auth_count": 0,
     "operations": [
         {
-            "source_name": "ApiTask",
+            "source_name": "api_task",
             "function_name": "GetApiTaskList",
             "endpoint_filename": "proxyserver-ApiTask-GetApiTaskList.php",
             "auth_strategy": "no-security",
@@ -21,8 +21,8 @@
                     "parameter_name": "param_ApiTask_Status_where",
                     "datatype": "varchar",
                     "source": "select-where-parameter-data-type",
-                    "target_table_name": "ApiTask",
-                    "target_table_column_name": "Status"
+                    "target_table_name": "api_task",
+                    "target_table_column_name": "status"
                 },
                 "limit": {
                     "parameter_name": "limit",
@@ -34,7 +34,7 @@
             }
         },
         {
-            "source_name": "ApiTask",
+            "source_name": "api_task",
             "function_name": "GetApiTask",
             "endpoint_filename": "proxyserver-ApiTask-GetApiTask.php",
             "auth_strategy": "no-security",
@@ -45,8 +45,8 @@
                     "parameter_name": "param_ApiTask_Id_where",
                     "datatype": "int",
                     "source": "select-where-parameter-data-type",
-                    "target_table_name": "ApiTask",
-                    "target_table_column_name": "Id"
+                    "target_table_name": "api_task",
+                    "target_table_column_name": "id"
                 }
             }
         }

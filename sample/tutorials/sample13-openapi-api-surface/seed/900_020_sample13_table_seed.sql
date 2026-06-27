@@ -16,25 +16,25 @@ WHERE ProjectPID = @sample13_project_id;
 DELETE FROM dbtable
 WHERE ProjectPID = @sample13_project_id;
 
-DROP TABLE IF EXISTS ApiTask;
+DROP TABLE IF EXISTS api_task;
 
-CREATE TABLE ApiTask (
-    Id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
-    Title VARCHAR(255) NOT NULL,
-    Status VARCHAR(32) NOT NULL DEFAULT 'open',
-    OwnerName VARCHAR(100) NOT NULL DEFAULT '',
-    DueDate DATE DEFAULT NULL,
-    UpdatedAt DATETIME NOT NULL,
-    PRIMARY KEY (Id),
-    KEY idx_api_task_status_due_date (Status, DueDate)
+CREATE TABLE api_task (
+    id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+    title VARCHAR(255) NOT NULL,
+    status VARCHAR(32) NOT NULL DEFAULT 'open',
+    owner_name VARCHAR(100) NOT NULL DEFAULT '',
+    due_date DATE DEFAULT NULL,
+    updated_at DATETIME NOT NULL,
+    PRIMARY KEY (id),
+    KEY idx_api_task_status_due_date (status, due_date)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
-INSERT INTO ApiTask (
-    Title,
-    Status,
-    OwnerName,
-    DueDate,
-    UpdatedAt
+INSERT INTO api_task (
+    title,
+    status,
+    owner_name,
+    due_date,
+    updated_at
 ) VALUES
     ('Expose list endpoint', 'open', 'Alice', '2026-06-20', '2026-06-16 10:00:00'),
     ('Review OpenAPI artifact', 'review', 'Bob', '2026-06-21', '2026-06-16 11:30:00'),

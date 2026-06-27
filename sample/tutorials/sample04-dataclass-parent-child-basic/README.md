@@ -2,8 +2,8 @@
 
 - canonical project key: `SAMPLE04`
 - 役割: `project -> live schema import -> data class sync -> data class output` を、親 table と child table を持つ 2 table schema で確認する tutorial sample pack
-- seed は `SAMPLE04` project と、source schema 側の物理 `Post` / `PostComment` table、`DATACLASS-PHP` source output definition を作る
-- `PostComment.PostId` には foreign key を張るが、current の Data Class sync は relation metadata (`RefDataClassName` / `RefDataClassFieldName`) を自動補完しない。この sample の主題は parent/child schema の import / sync / output であり、relation wiring 自体はまだ手動領域である
+- seed は `SAMPLE04` project と、source schema 側の物理 `post` / `post_comment` table、`DATACLASS-PHP` source output definition を作る
+- `post_comment.post_id` には foreign key を張るが、current の Data Class sync は relation metadata (`RefDataClassName` / `RefDataClassFieldName`) を自動補完しない。この sample の主題は parent/child schema の import / sync / output であり、relation wiring 自体はまだ手動領域である
 - `project_db_access_*` metadata は seed しない。`sample05` の DB Access へ進む前に、child table が親 table id を持つ schema を current Data Class lane でどう見るかを固定する
 - durable input: `seed/`
 - durable actual output sample: `reference/DATACLASS-PHP/data-Post.php`, `reference/DATACLASS-PHP/base/data-PostBase.php`, `reference/DATACLASS-PHP/data-PostComment.php`, `reference/DATACLASS-PHP/base/data-PostCommentBase.php`
@@ -31,20 +31,20 @@ make sample04-pack-runtime-test
 
 seed される代表 row:
 
-- `Post`
+- `post`
   - `Welcome`
-- `PostComment`
-  - `PostId=1`, `AuthorName=Alice`
-  - `PostId=1`, `AuthorName=Bob`
+- `post_comment`
+  - `post_id=1`, `author_name=Alice`
+  - `post_id=1`, `author_name=Bob`
 
 最小フロー:
 
 ```bash
 docker compose -f compose.yaml -f compose.local-db-config.yaml -f sample/tutorials/sample04-dataclass-parent-child-basic/compose.yaml exec -T web-admin \
-  php /var/www/mtool/scripts/import_project_tables.php --project-key=SAMPLE04 --source=live-schema --table=Post
+  php /var/www/mtool/scripts/import_project_tables.php --project-key=SAMPLE04 --source=live-schema --table=post
 
 docker compose -f compose.yaml -f compose.local-db-config.yaml -f sample/tutorials/sample04-dataclass-parent-child-basic/compose.yaml exec -T web-admin \
-  php /var/www/mtool/scripts/import_project_tables.php --project-key=SAMPLE04 --source=live-schema --table=PostComment
+  php /var/www/mtool/scripts/import_project_tables.php --project-key=SAMPLE04 --source=live-schema --table=post_comment
 
 docker compose -f compose.yaml -f compose.local-db-config.yaml -f sample/tutorials/sample04-dataclass-parent-child-basic/compose.yaml exec -T web-admin \
   php /var/www/mtool/scripts/sync_project_data_classes.php --project-key=SAMPLE04

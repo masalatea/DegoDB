@@ -46,7 +46,7 @@ INSERT INTO project_source_outputs (
     'single-function-proxy',
     'tar.gz',
     40,
-    'Generate a static bearer authenticated single proxy server endpoint from AuthTask.GetAuthTask.',
+    'Generate a static bearer authenticated single proxy server endpoint from auth_task.GetAuthTask.',
     'manual'
 )
 ON DUPLICATE KEY UPDATE
@@ -79,7 +79,7 @@ FROM project_db_access_functions AS functions
 INNER JOIN project_db_access_classes AS classes
     ON classes.id = functions.db_access_class_id
 WHERE classes.project_id = @sample16_project_id
-  AND classes.source_name = 'AuthTask'
+  AND classes.source_name = 'auth_task'
   AND functions.function_name = 'GetAuthTask'
 ON DUPLICATE KEY UPDATE
     source_output_key = VALUES(source_output_key);

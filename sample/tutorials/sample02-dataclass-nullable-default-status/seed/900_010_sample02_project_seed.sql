@@ -11,7 +11,7 @@ INSERT INTO projects (
     'sample02-dataclass-nullable-default-status',
     'paused',
     'admin',
-    'nullable / default / status-like column を含む 1 table から canonical dataclass PHP output を確認する tutorial sample project。'
+    'nullable / default / status-like column を含む 1 table から canonical DataClass PHP output を確認する tutorial sample project。'
 )
 ON DUPLICATE KEY UPDATE
     name = VALUES(name),

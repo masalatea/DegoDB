@@ -23,11 +23,11 @@ class TodoItemDBAccessBase
         connect_mtooldb_if_not_yet();
         reconnect_mtooldb_if_necessary();
 
-        $last_sql_command_for_mtooldb = 'insert into TodoItem (Title, Status, Body) values(?, ?, ?)';
+        $last_sql_command_for_mtooldb = 'insert into todo_item (title, status, body) values(?, ?, ?)';
         $result = $mtooldb->execute($last_sql_command_for_mtooldb, [
-            $TodoItemObj->Title,
-            $TodoItemObj->Status,
-            $TodoItemObj->Body,
+            $TodoItemObj->title,
+            $TodoItemObj->status,
+            $TodoItemObj->body,
         ]);
         if ($mtooldb->errno != 0) {
             error_log("Error occured while executing SQL: " . $mtooldb->error . " in " . __FILE__ . " on line " . __LINE__);
@@ -42,12 +42,12 @@ class TodoItemDBAccessBase
         connect_mtooldb_if_not_yet();
         reconnect_mtooldb_if_necessary();
 
-        $last_sql_command_for_mtooldb = 'update TodoItem SET Title = ?, Status = ?, Body = ? where TodoItem.Id = ?';
+        $last_sql_command_for_mtooldb = 'update todo_item SET title = ?, status = ?, body = ? where todo_item.id = ?';
         $result = $mtooldb->execute($last_sql_command_for_mtooldb, [
-            $TodoItemObj->Title,
-            $TodoItemObj->Status,
-            $TodoItemObj->Body,
-            $TodoItemObj->Id,
+            $TodoItemObj->title,
+            $TodoItemObj->status,
+            $TodoItemObj->body,
+            $TodoItemObj->id,
         ]);
         if ($mtooldb->errno != 0) {
             error_log("Error occured while executing SQL: " . $mtooldb->error . " in " . __FILE__ . " on line " . __LINE__);
@@ -62,9 +62,9 @@ class TodoItemDBAccessBase
         connect_mtooldb_if_not_yet();
         reconnect_mtooldb_if_necessary();
 
-        $last_sql_command_for_mtooldb = 'delete from TodoItem where TodoItem.Id = ?';
+        $last_sql_command_for_mtooldb = 'delete from todo_item where todo_item.id = ?';
         $result = $mtooldb->execute($last_sql_command_for_mtooldb, [
-            $TodoItemObj->Id,
+            $TodoItemObj->id,
         ]);
         if ($mtooldb->errno != 0) {
             error_log("Error occured while executing SQL: " . $mtooldb->error . " in " . __FILE__ . " on line " . __LINE__);

@@ -1,12 +1,12 @@
 {
     "tables": [
         {
-            "name": "BundleNote",
-            "physical_name": "BundleNote",
+            "name": "bundle_note",
+            "physical_name": "bundle_note",
             "columns": [
                 {
-                    "name": "Id",
-                    "physical_name": "Id",
+                    "name": "id",
+                    "physical_name": "id",
                     "datatype": "bigint(20) unsigned",
                     "is_null": "NO",
                     "is_key": "PRI",
@@ -16,8 +16,8 @@
                     "memo": ""
                 },
                 {
-                    "name": "Title",
-                    "physical_name": "Title",
+                    "name": "title",
+                    "physical_name": "title",
                     "datatype": "varchar(255)",
                     "is_null": "NO",
                     "is_key": "",
@@ -27,8 +27,8 @@
                     "memo": ""
                 },
                 {
-                    "name": "Body",
-                    "physical_name": "Body",
+                    "name": "body",
+                    "physical_name": "body",
                     "datatype": "text",
                     "is_null": "NO",
                     "is_key": "",
@@ -38,8 +38,8 @@
                     "memo": ""
                 },
                 {
-                    "name": "UpdatedAt",
-                    "physical_name": "UpdatedAt",
+                    "name": "updated_at",
+                    "physical_name": "updated_at",
                     "datatype": "datetime",
                     "is_null": "NO",
                     "is_key": "",

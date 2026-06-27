@@ -49,22 +49,22 @@ WHERE ProjectPID = @sample16_project_id;
 DELETE FROM dbtable
 WHERE ProjectPID = @sample16_project_id;
 
-DROP TABLE IF EXISTS AuthTask;
+DROP TABLE IF EXISTS auth_task;
 
-CREATE TABLE AuthTask (
-    Id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
-    Title VARCHAR(255) NOT NULL,
-    Status VARCHAR(32) NOT NULL,
-    OwnerName VARCHAR(128) NOT NULL,
-    UpdatedAt DATETIME NOT NULL,
-    PRIMARY KEY (Id)
+CREATE TABLE auth_task (
+    id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+    title VARCHAR(255) NOT NULL,
+    status VARCHAR(32) NOT NULL,
+    owner_name VARCHAR(128) NOT NULL,
+    updated_at DATETIME NOT NULL,
+    PRIMARY KEY (id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
-INSERT INTO AuthTask (
-    Title,
-    Status,
-    OwnerName,
-    UpdatedAt
+INSERT INTO auth_task (
+    title,
+    status,
+    owner_name,
+    updated_at
 ) VALUES
     ('Token protected task', 'open', 'Admin', '2026-06-16 10:00:00'),
     ('Closed token task', 'closed', 'Admin', '2026-06-16 10:05:00');

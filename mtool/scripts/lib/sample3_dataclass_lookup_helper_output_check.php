@@ -12,8 +12,8 @@ require_once dirname(__DIR__, 2) . '/app/source_output_repository.php';
 
 const APP_SAMPLE3_DATACLASS_PROJECT_KEY = 'SAMPLE03';
 const APP_SAMPLE3_DATACLASS_TABLE_NAMES = [
-    'TaskStatus',
-    'TaskPriority',
+    'task_status',
+    'task_priority',
 ];
 const APP_SAMPLE3_DATACLASS_REFERENCE_SOURCE_OUTPUT_KEYS = [
     'DATACLASS-PHP',

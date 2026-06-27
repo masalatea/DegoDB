@@ -51,8 +51,8 @@ APP_CONFIG_STORE_DIR=work/config-store-sample15-sqlite \
 - `projects`
   - `project_key=SAMPLE15`
 - physical table
-  - `BundleNote`
-  - `Id`, `Title`, `Body`, `UpdatedAt`
+  - `bundle_note`
+  - `id`, `title`, `body`, `updated_at`
 - Source Output
   - `DATACLASS-PHP`
   - `artifact_strategy=canonical-dataclass-php`
@@ -62,7 +62,7 @@ APP_CONFIG_STORE_DIR=work/config-store-sample15-sqlite \
 
 ```sh
 docker compose -f compose.yaml -f compose.local-db-config.yaml -f sample/tutorials/sample15-project-metadata-export-import/compose.yaml exec -T web-admin \
-  php /var/www/mtool/scripts/import_project_tables.php --project-key=SAMPLE15 --source=live-schema --table=BundleNote
+  php /var/www/mtool/scripts/import_project_tables.php --project-key=SAMPLE15 --source=live-schema --table=bundle_note
 
 docker compose -f compose.yaml -f compose.local-db-config.yaml -f sample/tutorials/sample15-project-metadata-export-import/compose.yaml exec -T web-admin \
   php /var/www/mtool/scripts/sync_project_data_classes.php --project-key=SAMPLE15

@@ -9,11 +9,21 @@ final class Sample18MiniTaskBoardDemoTest extends TestCase
     public function testMiniTaskBoardDemoReferenceOutputs(): void
     {
         $app = app_bootstrap();
-        $result = app_sample18_mini_task_board_demo_run(
-            $app,
-            'phpunit-sample18',
-            app_sample18_mini_task_board_demo_default_reference_root(),
-        );
+        $previousPolicy = getenv('MTOOL_GENERATED_NAME_POLICY');
+        putenv('MTOOL_GENERATED_NAME_POLICY=physical-logical-v1');
+        try {
+            $result = app_sample18_mini_task_board_demo_run(
+                $app,
+                'phpunit-sample18',
+                app_sample18_mini_task_board_demo_default_reference_root(),
+            );
+        } finally {
+            if ($previousPolicy === false) {
+                putenv('MTOOL_GENERATED_NAME_POLICY');
+            } else {
+                putenv('MTOOL_GENERATED_NAME_POLICY=' . $previousPolicy);
+            }
+        }
 
         if (!$result['ok']) {
             fwrite(
