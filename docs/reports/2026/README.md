@@ -11,6 +11,12 @@
 
 ## Index
 
+- `2026-0629-mtool-auth-foundation-first-slice.md`
+  - Mtool auth 基盤 first slice の完了記録。旧 `ProjectUser` read/write bit 群を user-specific permission として復活させず、16 個の legacy permission unit を棚卸しして role-based permission key へ畳み込み、normalized principal shape と all-pass / fail-closed authorization evaluator を `mtool/app/auth_foundation.php` に追加。`AuthFoundationContractTest`、`ProjectIdentityMembershipPermissionTest`、`ProjectRouteAuthorizationContractTest` で確認。次の主線は Gate 0 FS。Status: `COMPLETED`。
+- `2026-0628-app-local-db-feasibility-studies.md`
+  - App local DB / sync / no-code app roadmap 本体とは別に、独立して実施できる feasibility study を整理した spike catalog。Auth 関連の Legacy Permission Unit Inventory / Operation Policy Evaluator / Principal Mapping は通常機能としての Mtool auth foundation first slice へ格上げし、残る App-local 側 FS として Shared Contract Manifest、App Local SQLite Schema、DTO Save/Read などの spike を記録。Legacy Permission Unit Inventory では旧 user-specific read/write bit 群を直接復活させず、RBAC の role -> permission key 設計素材にする方針を記録。Status: `FEASIBILITY_STUDY_CATALOG`。
+- `2026-0628-app-local-db-and-sync-roadmap.md`
+  - 元々の 10 年前の構想に含まれていた App 内 DB と server DB の同期型ユースケースを、`one canonical design, multiple outputs` の current Mtool roadmap 候補として再整理したメモ。server RDB から import した設計を master とし、server DBAccess / App local DBAccess / sync role documentation へ分けて出す方向、App-only data と server copy data の分類、単体 SQLite / 単体 RDB workflow を損なわない compatibility principle、DataClass contract を flag ではなく別 metadata として持つ設計判断、データ操作の framework 化と no-code app への接続、operation permission を SSO / OIDC claims / roles / scopes へ map し optional standard SSO profile と限定的な simple-local profile を使い分ける方針、principal provider は択一・authorization は全通し・endpoint auth は個別選択とする auth composition、deployment auth mode / provider details / principal mapping / operation policy の auth selection model、Mtool auth foundation first slice から App-local FS、shared contract、App-local persistence、managed operation、screen definition、no-code runtime MVP、no-code app sample まで進む end-to-end spine、required capabilities、phase draft、detailed implementation draft、first slice 候補を記録。Status: `ROADMAP_CANDIDATE`。
 - `2026-0627-postgresql-user-db-lane-completion.md`
   - PostgreSQL Input / Output support を、再利用可能な local compose-backed completion gate と runbook まで含めて閉じた記録。Input は sample12 live schema import、Output は sample10 MySQL/PostgreSQL generated DBAccess contract compare で確認する。Mtool config store PostgreSQL support は scope 外。Status: `POSTGRESQL_INPUT_OUTPUT_SUPPORT_COMPLETED`。
 - `2026-0627-generated-physical-logical-sample-naming-plan.md`
