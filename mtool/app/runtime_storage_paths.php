@@ -383,6 +383,18 @@ function app_runtime_storage_managed_operation_source_outputs_relative_path(
     );
 }
 
+function app_runtime_storage_no_code_runtime_source_outputs_relative_path(
+    string $projectKey = '',
+    string $sourceOutputKey = '',
+): string {
+    return app_runtime_storage_relative_path(
+        'mtool',
+        'no-code-runtime-source-outputs',
+        app_normalize_project_key($projectKey),
+        app_normalize_source_output_key($sourceOutputKey),
+    );
+}
+
 function app_runtime_storage_ai_context_source_outputs_relative_path(
     string $projectKey = '',
     string $sourceOutputKey = '',

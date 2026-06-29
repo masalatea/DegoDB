@@ -11,6 +11,14 @@
 
 ## Index
 
+- `2026-0629-no-code-runtime-html-renderer.md`
+  - `no-code-runtime-v0` render model から list/detail/form の最小 HTML preview を生成し、`NO-CODE-RUNTIME` artifact に `runtime-preview.html` を同梱。sample07 pack check でも HTML preview を確認。次は basic UI smoke。Status: `FIRST_SLICE_DONE`。
+- `2026-0629-no-code-runtime-persisted-operation-flow.md`
+  - no-code runtime action dispatch を managed operation sync intent に橋渡しし、sample07 generated `TodoItemDBAccess::UpdateTodoItem()` で SQLite row を更新する persisted operation flow first slice。次は最小 HTML/runtime renderer。Status: `FIRST_SLICE_DONE`。
+- `2026-0629-no-code-runtime-sample07-artifact.md`
+  - `sample07-dbaccess-crud-basic` に `NO-CODE-RUNTIME` Source Output を接続し、shared contract metadata の `managed-screen` と managed operation metadata から `screen-definition.json` / `runtime-preview.json` が生成・publish できることを sample pack test で確認。次は 1 操作の persisted flow。Status: `IMPLEMENTED`。
+- `2026-0629-no-code-runtime-source-output-artifact.md`
+  - No-code runtime を `no-code-runtime-json` Source Output artifact として出力する slice。`screen-definition.json`、`runtime-preview.json`、`README.md` を生成し、artifact create / publish path を確認。次は sample source output 接続。Status: `IMPLEMENTED`。
 - `2026-0629-managed-operation-sample07-coverage.md`
   - Managed data operation layer の sample coverage first slice。`sample07-dbaccess-crud-basic` に managed operation metadata seed を追加し、sample pack で `todo_item` operation が generated `TodoItemDBAccess::UpdateTodoItem()` binding に解決されることを確認。Status: `FIRST_SLICE_SCOPE_COMPLETED`。
 - `2026-0629-managed-operation-server-dbaccess-real-coverage.md`

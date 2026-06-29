@@ -478,6 +478,130 @@ final class SharedDataClassContractFoundationTest extends TestCase
         self::assertFileExists($publishedRoot . '/managed-operations.md');
     }
 
+    public function testNoCodeRuntimeSourceOutputBuildsScreenAndPreviewArtifact(): void
+    {
+        self::assertContains('NoCodeRuntime', app_allowed_source_output_class_types());
+        self::assertContains('no-code-runtime-json', app_allowed_source_output_artifact_strategies());
+        self::assertTrue(app_source_output_artifact_strategy_supports_generation('no-code-runtime-json'));
+        self::assertTrue(app_source_output_artifact_strategy_requires_runtime_source('no-code-runtime-json'));
+        self::assertSame(
+            'No-Code Runtime JSON Artifact',
+            app_source_output_artifact_strategy_caption('no-code-runtime-json'),
+        );
+
+        $app = $this->createBootstrappedSqliteApp();
+        $this->seedTaskProject($app);
+
+        $contract = app_pdo_upsert_shared_contract_metadata($app, 'CONTRACT-FOUNDATION-TEST', [
+            'contract_key' => 'task',
+            'data_class_physical_name' => 'task',
+            'status' => 'active',
+            'sync_role' => 'server-copy',
+            'no_code_role' => 'managed-screen',
+            'app_persistence_role' => 'local-copy',
+            'source_of_truth' => 'test',
+        ]);
+        self::assertTrue($contract['ok'], $contract['error']);
+        $field = app_pdo_upsert_shared_contract_field_metadata($app, 'CONTRACT-FOUNDATION-TEST', 'task', [
+            'field_physical_name' => 'note',
+            'operation_role' => 'editable',
+            'source_of_truth' => 'test',
+        ]);
+        self::assertTrue($field['ok'], $field['error']);
+
+        $operation = app_pdo_upsert_managed_operation($app, 'CONTRACT-FOUNDATION-TEST', [
+            'operation_key' => 'update_note',
+            'contract_key' => 'task',
+            'name' => 'Update Note',
+            'operation_type' => 'update',
+            'status' => 'active',
+            'storage_policy' => 'business-only',
+            'permission_key' => 'project.edit',
+            'required_roles' => ['editor'],
+            'required_scopes' => ['task:write'],
+            'required_claims' => [],
+            'source_of_truth' => 'test',
+        ]);
+        self::assertTrue($operation['ok'], $operation['error']);
+        $operationField = app_pdo_upsert_managed_operation_field($app, 'CONTRACT-FOUNDATION-TEST', 'update_note', [
+            'field_physical_name' => 'note',
+            'field_role' => 'input',
+            'is_required' => true,
+            'allow_client_write' => true,
+            'source_of_truth' => 'test',
+        ]);
+        self::assertTrue($operationField['ok'], $operationField['error']);
+
+        $definition = app_project_output_merge_source_output_definition('CONTRACT-FOUNDATION-TEST', [
+            'source_output_key' => 'NO-CODE-RUNTIME',
+            'name' => 'Contract Foundation No-Code Runtime',
+            'program_language' => 'json',
+            'class_type' => 'NoCodeRuntime',
+            'artifact_strategy' => 'no-code-runtime-json',
+            'target_binding_type' => 'runtime',
+            'runtime_source_relative_path' => '',
+        ]);
+
+        $treeResult = app_project_output_prepare_no_code_runtime_source_tree(
+            $app,
+            'CONTRACT-FOUNDATION-TEST',
+            $definition,
+        );
+
+        self::assertTrue($treeResult['ok'], $treeResult['error']);
+        self::assertSame(
+            'mtool/no-code-runtime-source-outputs/CONTRACT-FOUNDATION-TEST/NO-CODE-RUNTIME',
+            $treeResult['runtime_source_relative_path'],
+        );
+        self::assertSame(
+            ['README.md', 'runtime-preview.html', 'runtime-preview.json', 'screen-definition.json'],
+            array_column($treeResult['scan_result']['files'] ?? [], 'relative_path'),
+        );
+
+        $screenDefinition = json_decode((string) file_get_contents($treeResult['runtime_source_root'] . '/screen-definition.json'), true);
+        self::assertIsArray($screenDefinition);
+        self::assertSame('no-code-screen-definition-v0', $screenDefinition['definition_version'] ?? '');
+        self::assertSame('task', $screenDefinition['contracts'][0]['contract_key'] ?? '');
+        self::assertSame(['list', 'detail', 'form'], array_column($screenDefinition['contracts'][0]['screens'] ?? [], 'screen_type'));
+
+        $runtimePreview = json_decode((string) file_get_contents($treeResult['runtime_source_root'] . '/runtime-preview.json'), true);
+        self::assertIsArray($runtimePreview);
+        self::assertTrue($runtimePreview['ok']);
+        self::assertSame('no-code-runtime-v0', $runtimePreview['runtime_version'] ?? '');
+        self::assertSame(3, count($runtimePreview['screens'] ?? []));
+        self::assertSame('task_list', $runtimePreview['screens'][0]['screen_key'] ?? '');
+        self::assertFalse($runtimePreview['screens'][2]['actions'][0]['enabled'] ?? true);
+
+        $runtimePreviewHtml = (string) file_get_contents($treeResult['runtime_source_root'] . '/runtime-preview.html');
+        self::assertStringContainsString('<!doctype html>', $runtimePreviewHtml);
+        self::assertStringContainsString('task_list', $runtimePreviewHtml);
+        self::assertStringContainsString('task_form', $runtimePreviewHtml);
+
+        $artifactResult = app_project_output_create_from_definition(
+            $app,
+            'CONTRACT-FOUNDATION-TEST',
+            $definition,
+            'phpunit',
+        );
+        self::assertTrue($artifactResult['ok'], $artifactResult['error']);
+        self::assertSame(4, $artifactResult['artifact']['source_file_count'] ?? null);
+        self::assertSame(
+            'no-code-runtime-json',
+            $artifactResult['artifact']['artifact_strategy'] ?? '',
+        );
+
+        $publishResult = app_project_output_publish_artifact(
+            $app,
+            $artifactResult['artifact'],
+            $definition,
+        );
+        self::assertTrue($publishResult['ok'], $publishResult['error']);
+        $publishedRoot = (string) ($publishResult['published']['published_root'] ?? '');
+        self::assertFileExists($publishedRoot . '/screen-definition.json');
+        self::assertFileExists($publishedRoot . '/runtime-preview.json');
+        self::assertFileExists($publishedRoot . '/runtime-preview.html');
+    }
+
     public function testCompareDetectsDataClassShapeMismatch(): void
     {
         $app = $this->createBootstrappedSqliteApp();

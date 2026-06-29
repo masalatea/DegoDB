@@ -30,6 +30,7 @@ const APP_SAMPLE7_DBACCESS_CRUD_BASIC_REFERENCE_SOURCE_OUTPUT_KEYS = [
     'DATACLASS-PHP',
     'DBACCESS-PHP',
 ];
+const APP_SAMPLE7_DBACCESS_CRUD_BASIC_NO_CODE_RUNTIME_SOURCE_OUTPUT_KEY = 'NO-CODE-RUNTIME';
 const APP_SAMPLE7_DBACCESS_CRUD_BASIC_WRITE_TARGET_FIELDS = [
     'title',
     'status',
@@ -183,6 +184,41 @@ function app_sample7_dbaccess_crud_basic_extract_names(array $items, string $key
     return $names;
 }
 
+function app_sample7_dbaccess_crud_basic_read_json_file(string $path): array
+{
+    if (!is_file($path)) {
+        return [
+            'ok' => false,
+            'data' => null,
+            'error' => 'JSON file が見つかりません: ' . $path,
+        ];
+    }
+
+    $text = file_get_contents($path);
+    if (!is_string($text)) {
+        return [
+            'ok' => false,
+            'data' => null,
+            'error' => 'JSON file の読み込みに失敗しました: ' . $path,
+        ];
+    }
+
+    $data = json_decode($text, true);
+    if (!is_array($data)) {
+        return [
+            'ok' => false,
+            'data' => null,
+            'error' => 'JSON decode に失敗しました: ' . $path,
+        ];
+    }
+
+    return [
+        'ok' => true,
+        'data' => $data,
+        'error' => '',
+    ];
+}
+
 function app_sample7_dbaccess_crud_basic_function_expectations(): array
 {
     return [
@@ -226,6 +262,7 @@ function app_sample7_dbaccess_crud_basic_run(array $app, string $requestedBy, st
         'managed_operation_snapshot' => null,
         'managed_operation_server_dbaccess_binding' => null,
         'outputs' => [],
+        'no_code_runtime_output' => null,
     ];
     $assertionErrors = [];
 
@@ -719,6 +756,183 @@ function app_sample7_dbaccess_crud_basic_run(array $app, string $requestedBy, st
             'file_checks' => $fileChecks,
         ];
     }
+
+    $noCodeSourceOutputResult = app_fetch_project_source_output_item(
+        $app,
+        $projectKey,
+        APP_SAMPLE7_DBACCESS_CRUD_BASIC_NO_CODE_RUNTIME_SOURCE_OUTPUT_KEY,
+    );
+    if (!$noCodeSourceOutputResult['ok'] || $noCodeSourceOutputResult['item'] === null) {
+        return [
+            'ok' => false,
+            'project_key' => $projectKey,
+            'table_name' => $tableName,
+            'requested_by' => $requestedBy,
+            'reference_root' => $referenceRoot,
+            'steps' => $steps,
+            'assertion_errors' => $assertionErrors,
+            'error' => $noCodeSourceOutputResult['error'] !== ''
+                ? $noCodeSourceOutputResult['error']
+                : 'source output definition が見つかりません: ' . APP_SAMPLE7_DBACCESS_CRUD_BASIC_NO_CODE_RUNTIME_SOURCE_OUTPUT_KEY,
+        ];
+    }
+
+    $noCodeArtifactResult = app_project_output_create_from_definition(
+        $app,
+        $projectKey,
+        $noCodeSourceOutputResult['item'],
+        $requestedBy,
+    );
+    if (!$noCodeArtifactResult['ok'] || $noCodeArtifactResult['artifact'] === null) {
+        return [
+            'ok' => false,
+            'project_key' => $projectKey,
+            'table_name' => $tableName,
+            'requested_by' => $requestedBy,
+            'reference_root' => $referenceRoot,
+            'steps' => $steps,
+            'assertion_errors' => $assertionErrors,
+            'error' => $noCodeArtifactResult['error'] !== ''
+                ? $noCodeArtifactResult['error']
+                : 'no-code runtime source output 生成に失敗しました。',
+        ];
+    }
+
+    $noCodePublishResult = app_project_output_publish_artifact(
+        $app,
+        $noCodeArtifactResult['artifact'],
+        $noCodeSourceOutputResult['item'],
+    );
+    if (!$noCodePublishResult['ok'] || $noCodePublishResult['published'] === null) {
+        return [
+            'ok' => false,
+            'project_key' => $projectKey,
+            'table_name' => $tableName,
+            'requested_by' => $requestedBy,
+            'reference_root' => $referenceRoot,
+            'steps' => $steps,
+            'assertion_errors' => $assertionErrors,
+            'error' => $noCodePublishResult['error'] !== ''
+                ? $noCodePublishResult['error']
+                : 'no-code runtime source output publish に失敗しました。',
+        ];
+    }
+
+    $noCodePublishedRoot = (string) $noCodePublishResult['published']['published_root'];
+    $noCodeSnapshot = app_sample7_dbaccess_crud_basic_tree_snapshot($noCodePublishedRoot);
+    if (!$noCodeSnapshot['ok']) {
+        return [
+            'ok' => false,
+            'project_key' => $projectKey,
+            'table_name' => $tableName,
+            'requested_by' => $requestedBy,
+            'reference_root' => $referenceRoot,
+            'steps' => $steps,
+            'assertion_errors' => $assertionErrors,
+            'error' => $noCodeSnapshot['error'],
+        ];
+    }
+
+    $noCodeFiles = app_sample7_dbaccess_crud_basic_extract_names($noCodeSnapshot['files'], 'relative_path');
+    app_sample7_dbaccess_crud_basic_assert_same(
+        ['README.md', 'runtime-preview.html', 'runtime-preview.json', 'screen-definition.json'],
+        $noCodeFiles,
+        'no-code runtime files',
+        $assertionErrors,
+    );
+
+    $screenDefinitionJson = app_sample7_dbaccess_crud_basic_read_json_file(
+        $noCodePublishedRoot . '/screen-definition.json',
+    );
+    $runtimePreviewJson = app_sample7_dbaccess_crud_basic_read_json_file(
+        $noCodePublishedRoot . '/runtime-preview.json',
+    );
+    if (!$screenDefinitionJson['ok'] || !$runtimePreviewJson['ok']) {
+        return [
+            'ok' => false,
+            'project_key' => $projectKey,
+            'table_name' => $tableName,
+            'requested_by' => $requestedBy,
+            'reference_root' => $referenceRoot,
+            'steps' => $steps,
+            'assertion_errors' => $assertionErrors,
+            'error' => !$screenDefinitionJson['ok']
+                ? $screenDefinitionJson['error']
+                : $runtimePreviewJson['error'],
+        ];
+    }
+
+    $screenDefinition = $screenDefinitionJson['data'];
+    $runtimePreview = $runtimePreviewJson['data'];
+    $contracts = is_array($screenDefinition['contracts'] ?? null) ? $screenDefinition['contracts'] : [];
+    $contract = is_array($contracts[0] ?? null) ? $contracts[0] : [];
+    $screens = is_array($contract['screens'] ?? null) ? $contract['screens'] : [];
+    $actions = is_array($contract['actions'] ?? null) ? $contract['actions'] : [];
+    $listScreen = is_array($screens[0] ?? null) ? $screens[0] : [];
+    $fields = is_array($listScreen['fields'] ?? null) ? $listScreen['fields'] : [];
+    $screensRendered = is_array($runtimePreview['screens'] ?? null) ? $runtimePreview['screens'] : [];
+
+    app_sample7_dbaccess_crud_basic_assert_same(
+        'no-code-screen-definition-v0',
+        $screenDefinition['definition_version'] ?? '',
+        'no-code definition_version',
+        $assertionErrors,
+    );
+    app_sample7_dbaccess_crud_basic_assert_same($projectKey, $screenDefinition['project_key'] ?? '', 'no-code project_key', $assertionErrors);
+    app_sample7_dbaccess_crud_basic_assert_same(1, count($contracts), 'no-code contract count', $assertionErrors);
+    app_sample7_dbaccess_crud_basic_assert_same($sourceName, $contract['contract_key'] ?? '', 'no-code contract_key', $assertionErrors);
+    app_sample7_dbaccess_crud_basic_assert_same(
+        ['list', 'detail', 'form'],
+        app_sample7_dbaccess_crud_basic_extract_names($screens, 'screen_type'),
+        'no-code screen types',
+        $assertionErrors,
+    );
+    app_sample7_dbaccess_crud_basic_assert_same(
+        ['id', 'title', 'status', 'body'],
+        app_sample7_dbaccess_crud_basic_extract_names($fields, 'field_key'),
+        'no-code field keys',
+        $assertionErrors,
+    );
+    app_sample7_dbaccess_crud_basic_assert_same(true, $fields[0]['readonly'] ?? null, 'no-code id readonly', $assertionErrors);
+    app_sample7_dbaccess_crud_basic_assert_same(false, $fields[1]['readonly'] ?? null, 'no-code title editable', $assertionErrors);
+    app_sample7_dbaccess_crud_basic_assert_same(1, count($actions), 'no-code action count', $assertionErrors);
+    app_sample7_dbaccess_crud_basic_assert_same(
+        APP_SAMPLE7_DBACCESS_CRUD_BASIC_MANAGED_OPERATION_KEY,
+        $actions[0]['action_key'] ?? '',
+        'no-code action key',
+        $assertionErrors,
+    );
+    app_sample7_dbaccess_crud_basic_assert_same('update', $actions[0]['operation_type'] ?? '', 'no-code action operation_type', $assertionErrors);
+    app_sample7_dbaccess_crud_basic_assert_same('disabled', $actions[0]['availability'] ?? '', 'no-code action availability', $assertionErrors);
+    app_sample7_dbaccess_crud_basic_assert_same(
+        ['principal.missing'],
+        $actions[0]['policy']['failed_checks'] ?? [],
+        'no-code action failed checks',
+        $assertionErrors,
+    );
+    app_sample7_dbaccess_crud_basic_assert_same('no-code-runtime-v0', $runtimePreview['runtime_version'] ?? '', 'no-code runtime_version', $assertionErrors);
+    app_sample7_dbaccess_crud_basic_assert_same(3, count($screensRendered), 'no-code rendered screen count', $assertionErrors);
+
+    $runtimePreviewHtml = is_file($noCodePublishedRoot . '/runtime-preview.html')
+        ? (string) file_get_contents($noCodePublishedRoot . '/runtime-preview.html')
+        : '';
+    app_sample7_dbaccess_crud_basic_assert_same(
+        true,
+        str_contains($runtimePreviewHtml, 'todo_item_list') && str_contains($runtimePreviewHtml, 'todo_item_form'),
+        'no-code runtime html preview',
+        $assertionErrors,
+    );
+
+    $steps['no_code_runtime_output'] = [
+        'source_output_key' => APP_SAMPLE7_DBACCESS_CRUD_BASIC_NO_CODE_RUNTIME_SOURCE_OUTPUT_KEY,
+        'artifact_key' => $noCodeArtifactResult['artifact']['artifact_key'] ?? '',
+        'published_root' => $noCodePublishedRoot,
+        'snapshot' => $noCodeSnapshot,
+        'definition_version' => $screenDefinition['definition_version'] ?? '',
+        'runtime_version' => $runtimePreview['runtime_version'] ?? '',
+        'contract_key' => $contract['contract_key'] ?? '',
+        'action_key' => $actions[0]['action_key'] ?? '',
+    ];
 
     return [
         'ok' => $assertionErrors === [],
