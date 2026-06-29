@@ -117,6 +117,8 @@ final class Sample7DbAccessCrudBasicOutputTest extends TestCase
             'db_access_class_catalog' => $result['steps']['db_access_class_catalog'] ?? null,
             'db_access_function_catalog' => $result['steps']['db_access_function_catalog'] ?? null,
             'db_access_functions' => $result['steps']['db_access_functions'] ?? null,
+            'managed_operation_snapshot' => $result['steps']['managed_operation_snapshot'] ?? null,
+            'managed_operation_server_dbaccess_binding' => $result['steps']['managed_operation_server_dbaccess_binding'] ?? null,
             'outputs' => array_map(
                 static function ($output): array {
                     if (!is_array($output)) {

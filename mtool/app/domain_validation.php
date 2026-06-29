@@ -84,7 +84,7 @@ function app_allowed_html_template_parameter_data_types(): array
  */
 function app_allowed_source_output_class_types(): array
 {
-    return ['DBAccess', 'DataClass', 'SharedContract', 'TypeScriptDTO', 'AppLocalPersistence', 'OpenAPI', 'AIContext', 'ProxyServer', 'ProxyClient', 'DBaaSProxyServer', 'DBaaSProxyClient', 'html', 'LanguageResource'];
+    return ['DBAccess', 'DataClass', 'SharedContract', 'TypeScriptDTO', 'AppLocalPersistence', 'ManagedOperation', 'OpenAPI', 'AIContext', 'ProxyServer', 'ProxyClient', 'DBaaSProxyServer', 'DBaaSProxyClient', 'html', 'LanguageResource'];
 }
 
 /**
@@ -107,6 +107,7 @@ function app_allowed_source_output_artifact_strategies(): array
         'shared-contract-json',
         'shared-contract-typescript',
         'app-local-persistence-php',
+        'managed-operation-docs-md',
         'openapi-json',
         'ai-context-md',
         'modernization-audit-md',
@@ -465,6 +466,7 @@ function app_source_output_artifact_strategy_caption(string $value): string
         'shared-contract-json' => 'Shared Contract JSON Artifact',
         'shared-contract-typescript' => 'Shared Contract TypeScript DTO Artifact',
         'app-local-persistence-php' => 'App-local Persistence PHP Artifact',
+        'managed-operation-docs-md' => 'Managed Operation Markdown Artifact',
         'openapi-json' => 'OpenAPI JSON Artifact',
         'ai-context-md' => 'AI Context Markdown Artifact',
         'modernization-audit-md' => 'Modernization Audit Markdown Artifact',
@@ -528,6 +530,7 @@ function app_source_output_artifact_strategy_supports_generation(string $value):
         'shared-contract-json',
         'shared-contract-typescript',
         'app-local-persistence-php',
+        'managed-operation-docs-md',
         'openapi-json',
         'ai-context-md',
         'modernization-audit-md',
@@ -549,6 +552,7 @@ function app_source_output_artifact_strategy_requires_runtime_source(string $val
         'shared-contract-json',
         'shared-contract-typescript',
         'app-local-persistence-php',
+        'managed-operation-docs-md',
         'openapi-json',
         'ai-context-md',
         'modernization-audit-md',

@@ -11,6 +11,42 @@
 
 ## Index
 
+- `2026-0629-managed-operation-sample07-coverage.md`
+  - Managed data operation layer の sample coverage first slice。`sample07-dbaccess-crud-basic` に managed operation metadata seed を追加し、sample pack で `todo_item` operation が generated `TodoItemDBAccess::UpdateTodoItem()` binding に解決されることを確認。Status: `FIRST_SLICE_SCOPE_COMPLETED`。
+- `2026-0629-managed-operation-server-dbaccess-real-coverage.md`
+  - Managed operation server DBAccess executor が generated sample07 `TodoItemDBAccess` / `TodoItemData` を通じて real SQLite row を更新できることを確認する first slice。project catalog selection / sample-facing managed operation wiring は次 slice。Status: `FIRST_SLICE_DONE`。
+- `2026-0629-managed-operation-server-dbaccess-project-catalog-wiring.md`
+  - Managed operation server DBAccess executor 用に、project DBAccess bootstrap candidate catalog から operation binding を作る first slice。実 project metadata の generated / canonical-bootstrap candidate list を managed operation binding selection へ接続。real server DB connection / sample-facing runtime wiring は次 slice。Status: `FIRST_SLICE_DONE`。
+- `2026-0629-managed-operation-server-dbaccess-candidate-selection.md`
+  - Managed operation server DBAccess executor 用に、project-level candidate list から operation に合う DBAccess binding を選ぶ first slice。`contract_key` / `source_name` / `generated_name` を正規化照合し、単一 candidate binding へ委譲する。real server DB connection / sample-facing runtime wiring は次 slice。Status: `FIRST_SLICE_DONE`。
+- `2026-0629-managed-operation-server-dbaccess-binding-discovery.md`
+  - Managed operation server DBAccess executor 用に、generated / canonical DBAccess candidate catalog item から execution binding を作る first slice。`data_class` / `dbaccess_class` / `method_catalog` から operation type 対応 method map を作成。project-wide candidate selection / real server DB execution は次 slice。Status: `FIRST_SLICE_DONE`。
+- `2026-0629-managed-operation-server-dbaccess-outbox-handler.md`
+  - Managed operation outbox processor から server DBAccess executor を呼び出す handler boundary。outbox item の persisted sync intent を server DBAccess executor に委譲し、processor が `done` にする最小接続を確認。generated artifact binding discovery / real server DB connection は次 slice。Status: `FIRST_SLICE_DONE`。
+- `2026-0629-managed-operation-server-dbaccess-executor-first-slice.md`
+  - Managed operation sync intent を generated server DBAccess class / method に渡す execution adapter first slice。method map 解決、DataClass object hydrate、DBAccess method 呼び出し境界を固定。real server DB 接続 / generated artifact wiring は次 slice。Status: `FIRST_SLICE_DONE`。
+- `2026-0629-managed-operation-app-local-outbox-handler.md`
+  - Managed operation outbox processor から App-local executor を呼び出す handler boundary。outbox item の persisted sync intent を App-local executor に委譲し、processor が `done` にする最小接続を確認。server DBAccess / transport は次 slice。Status: `FIRST_SLICE_DONE`。
+- `2026-0629-managed-operation-app-local-executor-first-slice.md`
+  - Managed operation sync intent を App-local SQLite persistence helper に接続する first slice。`read` / `create` / `update` を App-local DTO helper へ委譲し、partial update は既存 DTO へ merge、local metadata は dirty にする。server DBAccess / transport は次 slice。Status: `FIRST_SLICE_DONE`。
+- `2026-0629-managed-operation-outbox-processor-contract.md`
+  - Managed operation sync outbox の concrete processor first slice。next pending selection -> claim -> handler -> done / failed の lifecycle contract を固定。generated DBAccess / App-local helper execution は次 slice。Status: `FIRST_SLICE_DONE`。
+- `2026-0629-managed-operation-outbox-claim-contract.md`
+  - Managed operation sync outbox の processor contract first slice。pending outbox record を `running` に claim し、attempts increment / last_error clear / double-claim no-op を固定。DBAccess execution は次 slice。Status: `FIRST_SLICE_DONE`。
+- `2026-0629-managed-operation-next-pending-outbox-selection.md`
+  - Managed operation sync outbox の processor entry first slice。project-scoped に `pending` outbox record を `attempts ASC, id ASC` で 1 件選択する repository API を追加。lock / claim / execution は次 slice。Status: `FIRST_SLICE_DONE`。
+- `2026-0629-managed-operation-outbox-status-transitions.md`
+  - Managed operation sync outbox record を `running` / `done` / `failed` に遷移する processing first slice。attempts increment、last_error 記録・クリア、retry 時の attempts 保持を固定。実 processor / DBAccess execution は次 slice。Status: `FIRST_SLICE_DONE`。
+- `2026-0629-managed-operation-sync-outbox-first-slice.md`
+  - Managed operation sync intent を config DB の `project_managed_operation_sync_outbox` に idempotent enqueue する first slice。`managed-operation-sync-intent-v0` の永続化境界、dedupe key による重複抑止、catalog fetch を追加。transport / conflict resolution は次 slice。Status: `FIRST_SLICE_DONE`。
+- `2026-0629-managed-operation-sync-intent-skeleton.md`
+  - Managed operation execution plan から `managed-operation-sync-intent-v0` を作る sync skeleton first slice。`local-copy` / `server-copy`、`app-local` / `server` endpoint、key / input / filter payload、output field policy、deterministic dedupe key を固定。outbox persistence と transport は次 slice。Status: `FIRST_SLICE_DONE`。
+- `2026-0629-managed-operation-execution-plan-adapter.md`
+  - Managed operation metadata と shared contract と principal から副作用なしの `plan-only` execution plan を作る first slice。policy evaluation 後に key / input / filter / output field を generated DTO name へ正規化し、未知 input と必須 input 欠落を fail-closed に扱う。DBAccess 実行と sync queue は次 slice。Status: `FIRST_SLICE_DONE`。
+- `2026-0629-managed-operation-docs-source-output.md`
+  - Managed operation metadata を `managed-operation-docs-md` Source Output artifact として出力。shared contract manifest と managed operation snapshot から `managed-operations.json`、`managed-operations.md`、`README.md` を生成し、create / publish path を確認。Status: `COMPLETED`。
+- `2026-0629-managed-operation-metadata-first-slice.md`
+  - Managed data operation layer の first slice。`project_managed_operations` / `project_managed_operation_fields`、PDO repository、permission key / roles / scopes / claims / shared contract storage-role を見る fail-closed evaluator を追加。DBAccess 実行、sync runtime、no-code binding は次 slice。Status: `FIRST_SLICE_DONE`。
 - `2026-0629-app-local-persistence-source-output-artifacts.md`
   - App-local persistence を `app-local-persistence-php` Source Output artifact として正式化。shared contract manifest v0 から `schema.sql`、`app-local-contract.json`、`app-local-summary.json`、`AppLocalPersistence.php`、`README.md` を出力し、generated PHP wrapper の SQLite apply / save / read round trip と sample27 artifact generation を確認。sample27 に標準 companion `AI-CONTEXT-MD` も追加。次は managed data operation layer。Status: `COMPLETED`。
 - `2026-0629-app-local-persistence-sample27-demo.md`

@@ -362,6 +362,122 @@ final class SharedDataClassContractFoundationTest extends TestCase
         self::assertFileExists($publishedRoot . '/schema.sql');
     }
 
+    public function testManagedOperationDocsSourceOutputBuildsOperationArtifact(): void
+    {
+        self::assertContains('ManagedOperation', app_allowed_source_output_class_types());
+        self::assertContains('managed-operation-docs-md', app_allowed_source_output_artifact_strategies());
+        self::assertTrue(app_source_output_artifact_strategy_supports_generation('managed-operation-docs-md'));
+        self::assertTrue(app_source_output_artifact_strategy_requires_runtime_source('managed-operation-docs-md'));
+        self::assertSame(
+            'Managed Operation Markdown Artifact',
+            app_source_output_artifact_strategy_caption('managed-operation-docs-md'),
+        );
+
+        $app = $this->createBootstrappedSqliteApp();
+        $this->seedTaskProject($app);
+
+        $contract = app_pdo_upsert_shared_contract_metadata($app, 'CONTRACT-FOUNDATION-TEST', [
+            'contract_key' => 'task',
+            'data_class_physical_name' => 'task',
+            'status' => 'active',
+            'sync_role' => 'server-copy',
+            'no_code_role' => 'managed-screen',
+            'app_persistence_role' => 'local-copy',
+            'source_of_truth' => 'test',
+        ]);
+        self::assertTrue($contract['ok'], $contract['error']);
+        $field = app_pdo_upsert_shared_contract_field_metadata($app, 'CONTRACT-FOUNDATION-TEST', 'task', [
+            'field_physical_name' => 'note',
+            'operation_role' => 'editable',
+            'source_of_truth' => 'test',
+        ]);
+        self::assertTrue($field['ok'], $field['error']);
+
+        $operation = app_pdo_upsert_managed_operation($app, 'CONTRACT-FOUNDATION-TEST', [
+            'operation_key' => 'update_note',
+            'contract_key' => 'task',
+            'name' => 'Update Note',
+            'operation_type' => 'update',
+            'status' => 'active',
+            'storage_policy' => 'business-only',
+            'permission_key' => 'project.edit',
+            'required_roles' => ['editor'],
+            'required_scopes' => ['task:write'],
+            'required_claims' => ['department' => 'sales'],
+            'source_of_truth' => 'test',
+        ]);
+        self::assertTrue($operation['ok'], $operation['error']);
+        $operationField = app_pdo_upsert_managed_operation_field($app, 'CONTRACT-FOUNDATION-TEST', 'update_note', [
+            'field_physical_name' => 'note',
+            'field_role' => 'input',
+            'is_required' => true,
+            'allow_client_write' => true,
+            'source_of_truth' => 'test',
+        ]);
+        self::assertTrue($operationField['ok'], $operationField['error']);
+
+        $definition = app_project_output_merge_source_output_definition('CONTRACT-FOUNDATION-TEST', [
+            'source_output_key' => 'MANAGED-OPERATION-DOCS',
+            'name' => 'Contract Foundation Managed Operations',
+            'program_language' => 'md',
+            'class_type' => 'ManagedOperation',
+            'artifact_strategy' => 'managed-operation-docs-md',
+            'target_binding_type' => 'runtime',
+            'runtime_source_relative_path' => '',
+        ]);
+
+        $treeResult = app_project_output_prepare_managed_operation_source_tree(
+            $app,
+            'CONTRACT-FOUNDATION-TEST',
+            $definition,
+        );
+
+        self::assertTrue($treeResult['ok'], $treeResult['error']);
+        self::assertSame(
+            'mtool/managed-operation-source-outputs/CONTRACT-FOUNDATION-TEST/MANAGED-OPERATION-DOCS',
+            $treeResult['runtime_source_relative_path'],
+        );
+        self::assertSame(
+            ['README.md', 'managed-operations.json', 'managed-operations.md'],
+            array_column($treeResult['scan_result']['files'] ?? [], 'relative_path'),
+        );
+
+        $payload = json_decode((string) file_get_contents($treeResult['runtime_source_root'] . '/managed-operations.json'), true);
+        self::assertIsArray($payload);
+        self::assertTrue($payload['ok']);
+        self::assertSame('managed-operation-docs-md', $payload['artifact_type'] ?? '');
+        self::assertSame(1, $payload['summary']['operation_count'] ?? null);
+        self::assertSame('update_note', $payload['operations'][0]['operation_key'] ?? '');
+        self::assertSame('task', $payload['contracts'][0]['contract_key'] ?? '');
+
+        $markdown = (string) file_get_contents($treeResult['runtime_source_root'] . '/managed-operations.md');
+        self::assertStringContainsString('| `update_note` | `task` | `update` | `project.edit` | editor | task:write | 1 | `active` |', $markdown);
+        self::assertStringContainsString('| `note` | `input` | `true` | `true` |', $markdown);
+
+        $artifactResult = app_project_output_create_from_definition(
+            $app,
+            'CONTRACT-FOUNDATION-TEST',
+            $definition,
+            'phpunit',
+        );
+        self::assertTrue($artifactResult['ok'], $artifactResult['error']);
+        self::assertSame(3, $artifactResult['artifact']['source_file_count'] ?? null);
+        self::assertSame(
+            'managed-operation-docs-md',
+            $artifactResult['artifact']['artifact_strategy'] ?? '',
+        );
+
+        $publishResult = app_project_output_publish_artifact(
+            $app,
+            $artifactResult['artifact'],
+            $definition,
+        );
+        self::assertTrue($publishResult['ok'], $publishResult['error']);
+        $publishedRoot = (string) ($publishResult['published']['published_root'] ?? '');
+        self::assertFileExists($publishedRoot . '/managed-operations.json');
+        self::assertFileExists($publishedRoot . '/managed-operations.md');
+    }
+
     public function testCompareDetectsDataClassShapeMismatch(): void
     {
         $app = $this->createBootstrappedSqliteApp();

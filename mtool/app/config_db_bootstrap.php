@@ -321,6 +321,11 @@ function app_config_db_bootstrap_required_tables(): array
         'dataclass',
         'dataclassfields',
         'project_db_access_function_source_output_targets',
+        'project_shared_contracts',
+        'project_shared_contract_fields',
+        'project_managed_operations',
+        'project_managed_operation_fields',
+        'project_managed_operation_sync_outbox',
         'database_sources',
         'audit_events',
     ];

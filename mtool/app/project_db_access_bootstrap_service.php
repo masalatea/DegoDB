@@ -889,6 +889,7 @@ function app_project_db_access_bootstrap_method_catalog_from_function_items(arra
  *     ok:bool,
  *     items:list<array{
  *         source_name:string,
+ *         generated_name:string,
  *         data_file:string,
  *         dbaccess_file:string,
  *         data_path:string,
@@ -1001,6 +1002,7 @@ function app_project_db_access_bootstrap_candidate_catalog(array $app, string $p
 
         $items[] = [
             'source_name' => $sourceName,
+            'generated_name' => $sourceName,
             'data_file' => $dataFile !== '' ? $dataFile : ('data-' . $sourceName . '.php'),
             'dbaccess_file' => $dbaccessFile !== '' ? $dbaccessFile : ('dbaccess-' . $sourceName . '.php'),
             'data_path' => $dataPath,
@@ -1035,6 +1037,8 @@ function app_project_db_access_bootstrap_candidate_catalog(array $app, string $p
             ];
         }
 
+        $generatedName = app_project_db_access_bootstrap_candidate_generated_name($sourceName, $functionCatalogResult['items']);
+
         $dataProperties = [];
         foreach (($dataClassByName[$sourceName]['fields'] ?? []) as $field) {
             if (!is_array($field)) {
@@ -1049,16 +1053,17 @@ function app_project_db_access_bootstrap_candidate_catalog(array $app, string $p
 
         $items[] = [
             'source_name' => $sourceName,
-            'data_file' => 'data-' . $sourceName . '.php',
-            'dbaccess_file' => 'dbaccess-' . $sourceName . '.php',
+            'generated_name' => $generatedName,
+            'data_file' => 'data-' . $generatedName . '.php',
+            'dbaccess_file' => 'dbaccess-' . $generatedName . '.php',
             'data_path' => '',
             'dbaccess_path' => '',
             'has_data_file' => false,
             'has_dbaccess_file' => false,
             'source_kind' => 'canonical-bootstrap',
-            'data_class' => $sourceName . 'Data',
-            'data_list_class' => $sourceName . 'DataList',
-            'dbaccess_class' => $sourceName . 'DBAccess',
+            'data_class' => $generatedName . 'Data',
+            'data_list_class' => $generatedName . 'DataList',
+            'dbaccess_class' => $generatedName . 'DBAccess',
             'data_properties' => array_values(array_unique($dataProperties)),
             'method_catalog' => $functionCatalogResult['items'] !== []
                 ? app_project_db_access_bootstrap_method_catalog_from_function_items($functionCatalogResult['items'])
@@ -1082,10 +1087,26 @@ function app_project_db_access_bootstrap_candidate_catalog(array $app, string $p
 }
 
 /**
+ * @param list<array<string,mixed>> $functionItems
+ */
+function app_project_db_access_bootstrap_candidate_generated_name(string $sourceName, array $functionItems): string
+{
+    foreach ($functionItems as $functionItem) {
+        $dataClassBaseName = trim((string) ($functionItem['data_class_base_name'] ?? ''));
+        if ($dataClassBaseName !== '') {
+            return $dataClassBaseName;
+        }
+    }
+
+    return app_project_db_access_bootstrap_output_source_name($sourceName);
+}
+
+/**
  * @return array{
  *     ok:bool,
  *     entity:array{
  *         source_name:string,
+ *         generated_name:string,
  *         data_file:string,
  *         dbaccess_file:string,
  *         data_path:string,
@@ -1323,6 +1344,7 @@ function app_project_db_access_bootstrap_generate_dbaccess_files(
  *     ok:bool,
  *     entity:array{
  *         source_name:string,
+ *         generated_name:string,
  *         data_file:string,
  *         dbaccess_file:string,
  *         data_path:string,

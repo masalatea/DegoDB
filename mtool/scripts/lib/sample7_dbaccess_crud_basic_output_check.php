@@ -5,6 +5,8 @@ declare(strict_types=1);
 require_once dirname(__DIR__, 2) . '/app/bootstrap.php';
 require_once dirname(__DIR__, 2) . '/app/db_access_repository.php';
 require_once dirname(__DIR__, 2) . '/app/domain_validation.php';
+require_once dirname(__DIR__, 2) . '/app/managed_operation_repository_pdo.php';
+require_once dirname(__DIR__, 2) . '/app/managed_operation_server_dbaccess_executor.php';
 require_once dirname(__DIR__, 2) . '/app/project_data_class_sync_service.php';
 require_once dirname(__DIR__, 2) . '/app/project_output_service.php';
 require_once dirname(__DIR__, 2) . '/app/project_table_import_service.php';
@@ -18,6 +20,7 @@ const APP_SAMPLE7_DBACCESS_CRUD_BASIC_DATA_CLASS_BASE_NAME = 'TodoItem';
 const APP_SAMPLE7_DBACCESS_CRUD_BASIC_INSERT_FUNCTION_NAME = 'InsertTodoItem';
 const APP_SAMPLE7_DBACCESS_CRUD_BASIC_UPDATE_FUNCTION_NAME = 'UpdateTodoItem';
 const APP_SAMPLE7_DBACCESS_CRUD_BASIC_DELETE_FUNCTION_NAME = 'DeleteTodoItem';
+const APP_SAMPLE7_DBACCESS_CRUD_BASIC_MANAGED_OPERATION_KEY = 'update_todo_item';
 const APP_SAMPLE7_DBACCESS_CRUD_BASIC_FUNCTION_NAMES = [
     APP_SAMPLE7_DBACCESS_CRUD_BASIC_INSERT_FUNCTION_NAME,
     APP_SAMPLE7_DBACCESS_CRUD_BASIC_UPDATE_FUNCTION_NAME,
@@ -220,6 +223,8 @@ function app_sample7_dbaccess_crud_basic_run(array $app, string $requestedBy, st
         'db_access_class_catalog' => null,
         'db_access_function_catalog' => null,
         'db_access_functions' => [],
+        'managed_operation_snapshot' => null,
+        'managed_operation_server_dbaccess_binding' => null,
         'outputs' => [],
     ];
     $assertionErrors = [];
@@ -534,6 +539,77 @@ function app_sample7_dbaccess_crud_basic_run(array $app, string $requestedBy, st
 
         $steps['db_access_functions'][$functionName] = $functionStep;
     }
+
+    $managedOperationSnapshot = app_pdo_fetch_managed_operation_snapshot($app, $projectKey);
+    $steps['managed_operation_snapshot'] = [
+        'ok' => $managedOperationSnapshot['ok'],
+        'items' => $managedOperationSnapshot['items'],
+        'error' => $managedOperationSnapshot['error'],
+    ];
+    if (!$managedOperationSnapshot['ok']) {
+        return [
+            'ok' => false,
+            'project_key' => $projectKey,
+            'table_name' => $tableName,
+            'requested_by' => $requestedBy,
+            'reference_root' => $referenceRoot,
+            'steps' => $steps,
+            'assertion_errors' => $assertionErrors,
+            'error' => 'managed operation snapshot の取得に失敗しました。',
+        ];
+    }
+
+    app_sample7_dbaccess_crud_basic_assert_same(1, count($managedOperationSnapshot['items']), 'managed operation count', $assertionErrors);
+    $operation = is_array($managedOperationSnapshot['items'][0] ?? null) ? $managedOperationSnapshot['items'][0] : [];
+    app_sample7_dbaccess_crud_basic_assert_same(
+        APP_SAMPLE7_DBACCESS_CRUD_BASIC_MANAGED_OPERATION_KEY,
+        $operation['operation_key'] ?? '',
+        'managed operation key',
+        $assertionErrors,
+    );
+    app_sample7_dbaccess_crud_basic_assert_same($sourceName, $operation['contract_key'] ?? '', 'managed operation contract_key', $assertionErrors);
+    app_sample7_dbaccess_crud_basic_assert_same('update', $operation['operation_type'] ?? '', 'managed operation operation_type', $assertionErrors);
+    app_sample7_dbaccess_crud_basic_assert_same(4, count(is_array($operation['fields'] ?? null) ? $operation['fields'] : []), 'managed operation field count', $assertionErrors);
+
+    $serverBinding = app_managed_operation_server_dbaccess_binding_from_project_catalog($app, $projectKey, $operation);
+    $steps['managed_operation_server_dbaccess_binding'] = $serverBinding;
+    if (!$serverBinding['ok']) {
+        return [
+            'ok' => false,
+            'project_key' => $projectKey,
+            'table_name' => $tableName,
+            'requested_by' => $requestedBy,
+            'reference_root' => $referenceRoot,
+            'steps' => $steps,
+            'assertion_errors' => $assertionErrors,
+            'error' => 'managed operation server DBAccess binding の生成に失敗しました: ' . $serverBinding['error'],
+        ];
+    }
+
+    app_sample7_dbaccess_crud_basic_assert_same(
+        APP_SAMPLE7_DBACCESS_CRUD_BASIC_DATA_CLASS_BASE_NAME,
+        $serverBinding['binding']['source_name'] ?? '',
+        'managed operation server binding source_name',
+        $assertionErrors,
+    );
+    app_sample7_dbaccess_crud_basic_assert_same(
+        APP_SAMPLE7_DBACCESS_CRUD_BASIC_DATA_CLASS_BASE_NAME . 'Data',
+        $serverBinding['binding']['data_class'] ?? '',
+        'managed operation server binding data_class',
+        $assertionErrors,
+    );
+    app_sample7_dbaccess_crud_basic_assert_same(
+        APP_SAMPLE7_DBACCESS_CRUD_BASIC_DATA_CLASS_BASE_NAME . 'DBAccess',
+        $serverBinding['binding']['dbaccess_class'] ?? '',
+        'managed operation server binding dbaccess_class',
+        $assertionErrors,
+    );
+    app_sample7_dbaccess_crud_basic_assert_same(
+        ['update' => APP_SAMPLE7_DBACCESS_CRUD_BASIC_UPDATE_FUNCTION_NAME],
+        $serverBinding['binding']['method_map'] ?? [],
+        'managed operation server binding method_map',
+        $assertionErrors,
+    );
 
     foreach (APP_SAMPLE7_DBACCESS_CRUD_BASIC_REFERENCE_SOURCE_OUTPUT_KEYS as $sourceOutputKey) {
         $sourceOutputResult = app_fetch_project_source_output_item($app, $projectKey, $sourceOutputKey);
