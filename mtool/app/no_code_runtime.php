@@ -141,6 +141,7 @@ function app_no_code_runtime_render_actions(array $screenActions, array $contrac
             'operation_type' => (string) ($screenAction['operation_type'] ?? $contractAction['operation_type'] ?? ''),
             'enabled' => $availability === 'enabled',
             'availability' => $availability,
+            'fields' => is_array($contractAction['fields'] ?? null) ? array_values($contractAction['fields']) : [],
             'failed_checks' => is_array($contractAction['policy']['failed_checks'] ?? null)
                 ? $contractAction['policy']['failed_checks']
                 : [],
@@ -281,6 +282,10 @@ function app_no_code_runtime_render_preview_html(array $runtimePreview): string
         '</header>',
         implode("\n", $sections),
         '</main>',
+        '<script type="application/json" id="no-code-runtime-preview-data">' . app_no_code_runtime_json_script_text($runtimePreview) . '</script>',
+        '<script>',
+        app_no_code_runtime_preview_js(),
+        '</script>',
         '</body>',
         '</html>',
         '',
@@ -439,6 +444,9 @@ function app_no_code_runtime_render_actions_html(array $actions): string
 
         $enabled = (bool) ($action['enabled'] ?? false);
         $buttons[] = '<button type="button" data-action-key="' . app_no_code_runtime_html_escape((string) ($action['action_key'] ?? '')) . '"'
+            . ' data-operation-key="' . app_no_code_runtime_html_escape((string) ($action['operation_key'] ?? '')) . '"'
+            . ' data-operation-type="' . app_no_code_runtime_html_escape((string) ($action['operation_type'] ?? '')) . '"'
+            . ' data-action-enabled="' . ($enabled ? 'true' : 'false') . '"'
             . ($enabled ? '' : ' disabled')
             . '>' . app_no_code_runtime_html_escape((string) ($action['label'] ?? $action['action_key'] ?? '')) . '</button>';
     }
@@ -479,6 +487,153 @@ function app_no_code_runtime_preview_css(): string
         '.no-code-form textarea { min-height: 96px; resize: vertical; }',
         '@media (max-width: 680px) { .no-code-preview { padding: 14px; } .no-code-screen-header { display: grid; } .no-code-detail { grid-template-columns: 1fr; } .no-code-detail dt { border-bottom: 0; } }',
     ]);
+}
+
+/**
+ * @param array<string,mixed> $value
+ */
+function app_no_code_runtime_json_script_text(array $value): string
+{
+    $json = json_encode($value, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+    if (!is_string($json)) {
+        return '{}';
+    }
+
+    return str_replace('</script', '<\/script', $json);
+}
+
+function app_no_code_runtime_preview_js(): string
+{
+    return <<<'JS'
+(function () {
+  var dataElement = document.getElementById('no-code-runtime-preview-data');
+  var preview = {};
+  try {
+    preview = dataElement ? JSON.parse(dataElement.textContent || '{}') : {};
+  } catch (error) {
+    preview = {};
+  }
+
+  function findAction(actionKey) {
+    var screens = Array.isArray(preview.screens) ? preview.screens : [];
+    for (var screenIndex = 0; screenIndex < screens.length; screenIndex += 1) {
+      var actions = Array.isArray(screens[screenIndex].actions) ? screens[screenIndex].actions : [];
+      for (var actionIndex = 0; actionIndex < actions.length; actionIndex += 1) {
+        if (actions[actionIndex] && actions[actionIndex].action_key === actionKey) {
+          return actions[actionIndex];
+        }
+      }
+    }
+
+    return null;
+  }
+
+  function actionError(error, intent) {
+    return {
+      ok: false,
+      executed: false,
+      intent: intent || null,
+      error: error
+    };
+  }
+
+  function buildActionIntent(action, input) {
+    var intent = {
+      intent_version: 'no-code-runtime-action-intent-v0',
+      runtime_version: preview.runtime_version || '',
+      project_key: preview.project_key || '',
+      operation_key: action.operation_key || '',
+      operation_type: action.operation_type || '',
+      payload: {
+        key: {},
+        input: {},
+        filter: {}
+      }
+    };
+    var failed = [];
+    var fields = Array.isArray(action.fields) ? action.fields : [];
+
+    fields.forEach(function (field) {
+      var fieldKey = field && field.field_key ? field.field_key : '';
+      if (!fieldKey) {
+        return;
+      }
+
+      var present = Object.prototype.hasOwnProperty.call(input, fieldKey);
+      if (!present && field.required) {
+        failed.push('input.missing:' + fieldKey);
+        return;
+      }
+      if (!present) {
+        return;
+      }
+
+      if (field.role === 'key') {
+        intent.payload.key[fieldKey] = input[fieldKey];
+      } else if (field.role === 'filter') {
+        intent.payload.filter[fieldKey] = input[fieldKey];
+      } else if (field.role === 'input') {
+        if (!field.client_write) {
+          failed.push('input.readonly:' + fieldKey);
+          return;
+        }
+        intent.payload.input[fieldKey] = input[fieldKey];
+      }
+    });
+
+    if (failed.length > 0) {
+      return actionError(Array.from(new Set(failed)).join(', '), intent);
+    }
+
+    return {
+      ok: true,
+      executed: true,
+      intent: intent,
+      error: ''
+    };
+  }
+
+  function collectScreenInput(button) {
+    var screen = button.closest('.no-code-screen');
+    var input = {};
+    if (!screen) {
+      return input;
+    }
+
+    screen.querySelectorAll('input[name], textarea[name], select[name]').forEach(function (control) {
+      if (control.type === 'checkbox') {
+        input[control.name] = control.checked;
+      } else {
+        input[control.name] = control.value;
+      }
+    });
+
+    return input;
+  }
+
+  window.__noCodeRuntimePreview = preview;
+  window.__noCodeRuntimeDispatches = [];
+  window.noCodeRuntimeDispatchAction = function (actionKey, input) {
+    var action = findAction(actionKey);
+    var result;
+    if (!action) {
+      result = actionError('action was not found: ' + actionKey);
+    } else if (!action.enabled) {
+      result = actionError('action is not enabled: ' + actionKey);
+    } else {
+      result = buildActionIntent(action, input || {});
+    }
+    window.__noCodeRuntimeDispatches.push(result);
+    return result;
+  };
+
+  document.querySelectorAll('.no-code-actions button[data-action-key]').forEach(function (button) {
+    button.addEventListener('click', function () {
+      window.noCodeRuntimeDispatchAction(button.getAttribute('data-action-key') || '', collectScreenInput(button));
+    });
+  });
+}());
+JS;
 }
 
 /**

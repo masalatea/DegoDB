@@ -37,6 +37,14 @@ final class NoCodeRuntimeTest extends TestCase
         $listActions = $this->indexBy($list['render']['actions'] ?? [], 'action_key');
         self::assertTrue($listActions['read_task']['enabled'] ?? false);
         self::assertTrue($listActions['update_note']['enabled'] ?? false);
+        self::assertSame('update', $listActions['update_note']['operation_type'] ?? '');
+        self::assertSame(
+            [
+                ['field_key' => 'id', 'role' => 'key', 'required' => true, 'client_write' => false],
+                ['field_key' => 'note', 'role' => 'input', 'required' => true, 'client_write' => true],
+            ],
+            $listActions['update_note']['fields'] ?? [],
+        );
 
         $detail = app_no_code_runtime_render_screen($definition, 'task_detail', [], [
             'id' => 1,
@@ -102,6 +110,9 @@ final class NoCodeRuntimeTest extends TestCase
 
         self::assertStringContainsString('<!doctype html>', $html);
         self::assertStringContainsString('data-runtime-version="no-code-runtime-v0"', $html);
+        self::assertStringContainsString('id="no-code-runtime-preview-data"', $html);
+        self::assertStringContainsString('window.noCodeRuntimeDispatchAction', $html);
+        self::assertStringContainsString('data-operation-key="update_note"', $html);
         self::assertStringContainsString('Write runtime HTML', $html);
         self::assertStringContainsString('Visible in table', $html);
         self::assertStringContainsString('Visible in detail', $html);

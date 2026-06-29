@@ -156,6 +156,7 @@ ROOT_TMP_DIR := tmp
 .PHONY: up-user-db-pgsql down-user-db-pgsql reset-user-db-pgsql ps-user-db-pgsql logs-user-db-pgsql health-user-db-pgsql user-db-contract-capture-mysql user-db-contract-capture-sqlite user-db-contract-capture-pgsql user-db-contract-compare user-db-contract-compare-pgsql user-db-contract-test user-db-contract-test-pgsql postgresql-user-db-test-local
 .PHONY: generated-name-migration-capture-samples-before generated-name-migration-capture-samples-after generated-name-migration-validate-sample-keyword-map generated-name-migration-transform-samples-after generated-name-migration-compare-samples generated-name-migration-derive-keyword-map generated-name-migration-derive-sample-keyword-map generated-name-migration-scan-sample-keywords
 .PHONY: mtool-oidc-login-smoke
+.PHONY: sample07-no-code-runtime-ui-smoke
 
 DOCKER_ENV_TARGETS := \
 	build \
@@ -445,6 +446,10 @@ sample05-pack-runtime-test: sample5-output-test ## sample05 tutorial runtime の
 sample06-pack-runtime-test: sample6-output-test ## sample06 tutorial runtime の import/sync/output integration test を実行する
 
 sample07-pack-runtime-test: sample7-output-test ## sample07 tutorial runtime の import/sync/output integration test を実行する
+
+sample07-no-code-runtime-ui-smoke: sample07-pack-runtime-test ## sample07 NO-CODE-RUNTIME HTML preview を headless Chrome で検証する
+	node mtool/scripts/check_no_code_runtime_preview_ui_smoke.js \
+		--html=work/source-outputs/SAMPLE07/NO-CODE-RUNTIME/runtime-preview.html
 
 sample08-pack-runtime-test: sample8-output-test ## sample08 tutorial runtime の import/sync/output integration test を実行する
 

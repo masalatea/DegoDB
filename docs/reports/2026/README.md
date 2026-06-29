@@ -11,6 +11,10 @@
 
 ## Index
 
+- `2026-0630-no-code-runtime-browser-dispatch-smoke.md`
+  - generated `runtime-preview.html` に action metadata と browser-side dispatch helper を埋め込み、sample07 の fail-closed disabled dispatch と authorized update intent probe を headless Chromium で確認。Status: `FIRST_SLICE_DONE`。
+- `2026-0630-no-code-runtime-ui-smoke.md`
+  - sample07 generated `runtime-preview.html` を headless Chromium で開く basic UI smoke。list/detail/form DOM と screenshot capture を確認し、次は create/update browser または headless smoke。Status: `FIRST_SLICE_DONE`。
 - `2026-0629-no-code-runtime-html-renderer.md`
   - `no-code-runtime-v0` render model から list/detail/form の最小 HTML preview を生成し、`NO-CODE-RUNTIME` artifact に `runtime-preview.html` を同梱。sample07 pack check でも HTML preview を確認。次は basic UI smoke。Status: `FIRST_SLICE_DONE`。
 - `2026-0629-no-code-runtime-persisted-operation-flow.md`
