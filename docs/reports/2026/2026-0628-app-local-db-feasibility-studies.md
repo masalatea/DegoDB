@@ -13,17 +13,34 @@ Parent roadmap:
 ## Status
 
 - catalog status: `DONE`
-- individual study status: `PENDING`
+- core App-local study status: `COMPLETED`
+- remaining optional study status: `PENDING`
 - auth-related study status: `PROMOTED_TO_AUTH_FOUNDATION_PLAN`
-- next recommended App-local study after auth foundation: `Shared Contract Manifest Spike`
+- completed App-local studies: `Shared Contract Manifest Spike`, `App Local SQLite Schema Spike`, `DTO Save/Read Spike`
+- next recommended App-local implementation work: `Shared Contract Core Vocabulary`
 - current-plan link: this study catalog is not the active implementation itself; auth foundation has been promoted to a normal first-slice plan in `docs/current-plans.md`, and the remaining App-local / no-code studies stay as Gate 0 FS.
 
 Status reading:
 
 - This document being done means the FS catalog / placement policy / study definitions are drafted.
-- It does not mean the listed feasibility studies have been executed.
+- The catalog itself is done, and the core App-local feasibility chain has now been executed as dated result reports.
 - Auth-related studies remain documented here for traceability, but the current decision is to implement the Mtool auth foundation as normal feature/foundation work before returning to App-local / no-code FS.
-- Each executed study should produce its own dated result report or appendix before promotion to implementation.
+- Each executed study produced its own dated result report before promotion to implementation.
+
+Executed core FS reports:
+
+- [2026-0629 Shared Contract Manifest Spike](2026-0629-shared-contract-manifest-spike.md)
+- [2026-0629 App Local SQLite Schema Spike](2026-0629-app-local-sqlite-schema-spike.md)
+- [2026-0629 DTO Save/Read Spike](2026-0629-dto-save-read-spike.md)
+
+Core FS conclusion:
+
+- DataClass metadata can describe generated DTO shape and match generated PHP fields.
+- DataClass metadata alone is not enough as the shared persistence / sync contract.
+- A separate shared contract metadata layer should carry nullable / default / key / persistence / sync semantics.
+- Explicit shared contract semantics can generate App-local SQLite schema.
+- DTO-shaped rows can round trip through that schema without shape loss in the minimal spike.
+- Before the larger Shared DataClass contract foundation, first fix the shared contract manifest v0 vocabulary and validator as a small common work unit.
 
 ## Positioning
 
