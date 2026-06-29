@@ -31,7 +31,7 @@ function app_allowed_runtime_targets(): array
  */
 function app_allowed_source_output_program_languages(): array
 {
-    return ['php', 'cs', 'java', 'objectivech', 'objectivecm', 'swift', 'json', 'md'];
+    return ['php', 'cs', 'java', 'objectivech', 'objectivecm', 'swift', 'json', 'md', 'ts'];
 }
 
 /**
@@ -59,7 +59,7 @@ function app_allowed_html_template_program_languages(): array
 {
     return array_values(array_filter(
         app_allowed_source_output_program_languages(),
-        static fn (string $value): bool => !in_array($value, ['json', 'md'], true),
+        static fn (string $value): bool => !in_array($value, ['json', 'md', 'ts'], true),
     ));
 }
 
@@ -84,7 +84,7 @@ function app_allowed_html_template_parameter_data_types(): array
  */
 function app_allowed_source_output_class_types(): array
 {
-    return ['DBAccess', 'DataClass', 'OpenAPI', 'AIContext', 'ProxyServer', 'ProxyClient', 'DBaaSProxyServer', 'DBaaSProxyClient', 'html', 'LanguageResource'];
+    return ['DBAccess', 'DataClass', 'SharedContract', 'TypeScriptDTO', 'OpenAPI', 'AIContext', 'ProxyServer', 'ProxyClient', 'DBaaSProxyServer', 'DBaaSProxyClient', 'html', 'LanguageResource'];
 }
 
 /**
@@ -104,6 +104,8 @@ function app_allowed_source_output_artifact_strategies(): array
         'generated-bootstrap-dbclasses',
         'canonical-dbaccess-php',
         'canonical-dataclass-php',
+        'shared-contract-json',
+        'shared-contract-typescript',
         'openapi-json',
         'ai-context-md',
         'modernization-audit-md',
@@ -459,6 +461,8 @@ function app_source_output_artifact_strategy_caption(string $value): string
         'generated-bootstrap-dbclasses' => 'Runtime DBClasses Reference',
         'canonical-dbaccess-php' => 'Canonical DB Access PHP',
         'canonical-dataclass-php' => 'Canonical Data Class PHP',
+        'shared-contract-json' => 'Shared Contract JSON Artifact',
+        'shared-contract-typescript' => 'Shared Contract TypeScript DTO Artifact',
         'openapi-json' => 'OpenAPI JSON Artifact',
         'ai-context-md' => 'AI Context Markdown Artifact',
         'modernization-audit-md' => 'Modernization Audit Markdown Artifact',
@@ -519,6 +523,8 @@ function app_source_output_artifact_strategy_supports_generation(string $value):
         'generated-bootstrap-dbclasses',
         'canonical-dbaccess-php',
         'canonical-dataclass-php',
+        'shared-contract-json',
+        'shared-contract-typescript',
         'openapi-json',
         'ai-context-md',
         'modernization-audit-md',
@@ -537,6 +543,8 @@ function app_source_output_artifact_strategy_requires_runtime_source(string $val
         'generated-bootstrap-dbclasses',
         'canonical-dbaccess-php',
         'canonical-dataclass-php',
+        'shared-contract-json',
+        'shared-contract-typescript',
         'openapi-json',
         'ai-context-md',
         'modernization-audit-md',

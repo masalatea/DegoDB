@@ -17,7 +17,7 @@ Parent roadmap:
 - remaining optional study status: `PENDING`
 - auth-related study status: `PROMOTED_TO_AUTH_FOUNDATION_PLAN`
 - completed App-local studies: `Shared Contract Manifest Spike`, `App Local SQLite Schema Spike`, `DTO Save/Read Spike`
-- next recommended App-local implementation work: `Shared Contract Core Vocabulary`
+- next recommended App-local implementation work: `Shared DataClass contract foundation`
 - current-plan link: this study catalog is not the active implementation itself; auth foundation has been promoted to a normal first-slice plan in `docs/current-plans.md`, and the remaining App-local / no-code studies stay as Gate 0 FS.
 
 Status reading:
@@ -40,7 +40,7 @@ Core FS conclusion:
 - A separate shared contract metadata layer should carry nullable / default / key / persistence / sync semantics.
 - Explicit shared contract semantics can generate App-local SQLite schema.
 - DTO-shaped rows can round trip through that schema without shape loss in the minimal spike.
-- Before the larger Shared DataClass contract foundation, first fix the shared contract manifest v0 vocabulary and validator as a small common work unit.
+- Shared Contract Core Vocabulary is complete; the larger Shared DataClass contract foundation can now build on the manifest v0 vocabulary and validator.
 
 ## Positioning
 

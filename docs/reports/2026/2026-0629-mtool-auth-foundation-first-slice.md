@@ -52,7 +52,11 @@ This slice is the foundation that the App-local DB / sync / no-code roadmap need
 
 ## Next
 
-Gate 0 feasibility studies are now the active next work. Start with either:
+Gate 0 feasibility studies are complete, and Shared Contract Core Vocabulary has fixed the shared contract manifest v0 shape and validator.
 
-- Shared Contract Manifest Spike
-- App Local SQLite Schema Spike
+The active next work is Shared DataClass contract foundation:
+
+- separate contract metadata
+- language-neutral contract manifest generator
+- TypeScript DTO first output
+- contract compare
