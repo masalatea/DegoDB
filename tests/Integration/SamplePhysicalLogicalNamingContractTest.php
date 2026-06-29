@@ -233,6 +233,7 @@ final class SamplePhysicalLogicalNamingContractTest extends TestCase
             'tests/Integration/Sample24EbookPublicReaderSiteDemoTest.php',
             'tests/Integration/Sample25EbookEditorAuthCmsDemoTest.php',
             'tests/Integration/Sample26EbookHeadlessCmsCapstoneTest.php',
+            'tests/Integration/Sample27AppLocalPersistenceDemoTest.php',
         ];
     }
 

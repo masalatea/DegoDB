@@ -11,6 +11,14 @@
 
 ## Index
 
+- `2026-0629-app-local-persistence-source-output-artifacts.md`
+  - App-local persistence を `app-local-persistence-php` Source Output artifact として正式化。shared contract manifest v0 から `schema.sql`、`app-local-contract.json`、`app-local-summary.json`、`AppLocalPersistence.php`、`README.md` を出力し、generated PHP wrapper の SQLite apply / save / read round trip と sample27 artifact generation を確認。sample27 に標準 companion `AI-CONTEXT-MD` も追加。次は managed data operation layer。Status: `COMPLETED`。
+- `2026-0629-app-local-persistence-sample27-demo.md`
+  - App-local persistence first demo の round trip proof。`sample27-app-local-persistence-demo` を追加し、server fixture row -> shared contract DTO -> App-local SQLite schema apply -> App-local DBAccess save/read -> DTO compare を PDO harness で確認。local metadata は DTO shape から分離。次は App-local schema / DBAccess の Source Output artifact 化。Status: `COMPLETED`。
+- `2026-0629-app-local-dbaccess-first-slice.md`
+  - App-local persistence first demo の DBAccess first slice。formal shared contract manifest v0 を使い、DTO `generated_name` と SQLite `physical_name` を対応づけて save/read する generic app-layer helper を追加。local metadata は DTO shape の外に分離し、missing field は fail-closed。sample27 と generated App-local DBAccess Source Output は残件。Status: `FIRST_SLICE_DONE`。
+- `2026-0629-app-local-persistence-first-slice.md`
+  - App-local persistence first demo の first slice。formal `shared-contract-manifest-v0` から App-local SQLite DDL を生成し、PDO SQLite に apply して table / index を検査する app-layer API を追加。business fields と local metadata columns を分離し、DTO-shaped business row の保存・読み戻しで local metadata が DTO shape の外に保てることを確認。App-local DBAccess、runtime/harness、sample27 round trip は残件。Status: `FIRST_SLICE_DONE`。
 - `2026-0629-shared-dataclass-contract-foundation-first-slice.md`
   - Shared DataClass contract foundation の完了記録。DataClass metadata と table metadata を join して shared contract manifest v0 を作る app-layer builder、manifest validator、DataClass field shape compare、`shared-contract-json` source output、`shared-contract-typescript` DTO output、明示 shared contract metadata table / repository を追加。generated DataClass と shared contract を別 artifact として扱う方針を実装へ反映。`make test` で確認。Status: `COMPLETED`。
 - `2026-0629-shared-contract-core-vocabulary.md`

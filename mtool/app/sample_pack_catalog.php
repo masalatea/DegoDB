@@ -37,6 +37,7 @@ function app_sample_pack_category_map(): array
             'sample24-ebook-public-reader-site-demo',
             'sample25-ebook-editor-auth-cms-demo',
             'sample26-ebook-headless-cms-capstone',
+            'sample27-app-local-persistence-demo',
         ],
         'internal-patterns' => [
             'pattern01-default-property-split',
@@ -119,6 +120,7 @@ function app_sample_pack_runtime_pack_names(): array
         'sample24-ebook-public-reader-site-demo',
         'sample25-ebook-editor-auth-cms-demo',
         'sample26-ebook-headless-cms-capstone',
+        'sample27-app-local-persistence-demo',
         'sample51-runtime-sql-server',
         'sample53-runtime-whiteboard',
         'sample56-runtime-misc-proxy',
@@ -157,6 +159,7 @@ function app_sample_pack_project_key_map(): array
         'sample24-ebook-public-reader-site-demo' => 'SAMPLE24',
         'sample25-ebook-editor-auth-cms-demo' => 'SAMPLE25',
         'sample26-ebook-headless-cms-capstone' => 'SAMPLE26',
+        'sample27-app-local-persistence-demo' => 'SAMPLE27',
         'sample51-runtime-sql-server' => 'SAMPLE2',
         'sample53-runtime-whiteboard' => 'SAMPLE4',
         'sample56-runtime-misc-proxy' => 'SAMPLE8',

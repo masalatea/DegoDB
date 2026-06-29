@@ -12,6 +12,7 @@ require_once __DIR__ . '/project_output_legacy_source_generator.php';
 require_once __DIR__ . '/project_output_openapi_generator.php';
 require_once __DIR__ . '/project_output_proxy_generator.php';
 require_once __DIR__ . '/project_output_runtime_generator.php';
+require_once __DIR__ . '/project_output_app_local_persistence_generator.php';
 require_once __DIR__ . '/project_output_shared_contract_generator.php';
 require_once __DIR__ . '/project_output_typescript_dto_generator.php';
 
@@ -55,6 +56,7 @@ function app_project_output_customization_model(string $artifactStrategy = ''): 
         'canonical-dbaccess-php' => 'generated-wrapper-base-tree',
         'canonical-dataclass-php' => 'generated-wrapper-base-tree',
         'shared-contract-json',
+        'app-local-persistence-php',
         'shared-contract-typescript',
         'openapi-json',
         'html-module-catalog',
@@ -106,6 +108,9 @@ function app_project_output_custom_layer_entrypoints(array $definition): array
             'README.md',
         ],
         'shared-contract-typescript' => [
+            'README.md',
+        ],
+        'app-local-persistence-php' => [
             'README.md',
         ],
         'openapi-json' => [
@@ -172,6 +177,7 @@ function app_project_output_custom_layer_scaffold_relative_paths(array $definiti
         'canonical-dataclass-php',
         'shared-contract-json',
         'shared-contract-typescript',
+        'app-local-persistence-php',
         'openapi-json',
         'ai-context-md',
         'modernization-audit-md',
@@ -2107,6 +2113,23 @@ function app_project_output_create_from_definition(
         $runtimeSourceRelativePath = $typescriptDtoTreeResult['runtime_source_relative_path'];
         $runtimeSourceRoot = $typescriptDtoTreeResult['runtime_source_root'];
         $scanResult = $typescriptDtoTreeResult['scan_result'];
+    } elseif (app_project_output_app_local_persistence_strategy_is_supported($definition['artifact_strategy'])) {
+        $appLocalTreeResult = app_project_output_prepare_app_local_persistence_source_tree(
+            $app,
+            $normalizedProjectKey,
+            $definition,
+        );
+        if (!$appLocalTreeResult['ok'] || !is_array($appLocalTreeResult['scan_result'])) {
+            return [
+                'ok' => false,
+                'artifact' => null,
+                'error' => $appLocalTreeResult['error'],
+            ];
+        }
+
+        $runtimeSourceRelativePath = $appLocalTreeResult['runtime_source_relative_path'];
+        $runtimeSourceRoot = $appLocalTreeResult['runtime_source_root'];
+        $scanResult = $appLocalTreeResult['scan_result'];
     } elseif (app_project_output_ai_context_strategy_is_supported($definition['artifact_strategy'])) {
         $aiContextTreeResult = app_project_output_prepare_ai_context_source_tree($app, $normalizedProjectKey, $definition);
         if (!$aiContextTreeResult['ok'] || !is_array($aiContextTreeResult['scan_result'])) {
