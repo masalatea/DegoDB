@@ -43,5 +43,9 @@ final class Sample30NoCodeAppLocalSyncDemoTest extends TestCase
         self::assertSame('managed-operation-sync-intent-v0', $result['steps']['dispatch']['result']['sync_intent']['intent_version'] ?? '');
         self::assertSame('done', $result['steps']['outbox_process']['outcome'] ?? '');
         self::assertSame('ready_for_sync', $result['steps']['local_read_after_sync']['dto']['status'] ?? '');
+        self::assertSame('SyncTaskDBAccess', $result['steps']['server_binding']['binding']['dbaccess_class'] ?? '');
+        self::assertSame('done', $result['steps']['server_outbox_process']['outcome'] ?? '');
+        self::assertSame('Updatesync_task', $result['steps']['server_outbox_process']['handler_result']['method_name'] ?? '');
+        self::assertSame('synced_to_server', $result['steps']['server_read_after_sync']['row']['status'] ?? '');
     }
 }

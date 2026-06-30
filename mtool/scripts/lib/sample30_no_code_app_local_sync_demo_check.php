@@ -7,10 +7,13 @@ require_once dirname(__DIR__, 2) . '/app/app_local_sqlite_schema.php';
 require_once dirname(__DIR__, 2) . '/app/bootstrap.php';
 require_once dirname(__DIR__, 2) . '/app/database.php';
 require_once dirname(__DIR__, 2) . '/app/managed_operation_app_local_executor.php';
+require_once dirname(__DIR__, 2) . '/app/managed_operation_repository_pdo.php';
+require_once dirname(__DIR__, 2) . '/app/managed_operation_server_dbaccess_executor.php';
 require_once dirname(__DIR__, 2) . '/app/managed_operation_sync_outbox_processor.php';
 require_once dirname(__DIR__, 2) . '/app/managed_operation_sync_outbox_repository_pdo.php';
 require_once dirname(__DIR__, 2) . '/app/no_code_managed_operation_bridge.php';
 require_once dirname(__DIR__, 2) . '/app/no_code_runtime.php';
+require_once dirname(__DIR__, 2) . '/app/project_db_access_bootstrap_service.php';
 require_once dirname(__DIR__, 2) . '/app/project_data_class_sync_service.php';
 require_once dirname(__DIR__, 2) . '/app/project_output_service.php';
 require_once dirname(__DIR__, 2) . '/app/project_table_import_service.php';
@@ -129,6 +132,12 @@ function app_sample30_no_code_app_local_sync_demo_run(array $app, string $reques
         'dispatch' => null,
         'outbox_process' => null,
         'local_read_after_sync' => null,
+        'server_runtime_entity' => null,
+        'server_binding' => null,
+        'server_seed' => null,
+        'server_dispatch' => null,
+        'server_outbox_process' => null,
+        'server_read_after_sync' => null,
     ];
     $assertionErrors = [];
 
@@ -354,6 +363,155 @@ function app_sample30_no_code_app_local_sync_demo_run(array $app, string $reques
             throw new RuntimeException('sample30 local read after sync failed: ' . $localRead['error']);
         }
 
+        $serverRuntimeEntity = app_project_db_access_bootstrap_materialize_runtime_entity(
+            $app,
+            $projectKey,
+            $tableName,
+        );
+        $steps['server_runtime_entity'] = $serverRuntimeEntity;
+        if (!$serverRuntimeEntity['ok'] || $serverRuntimeEntity['entity'] === null) {
+            throw new RuntimeException('sample30 server runtime entity materialize failed: ' . $serverRuntimeEntity['error']);
+        }
+        $serverEntity = $serverRuntimeEntity['entity'];
+        require_once (string) ($serverEntity['data_path'] ?? '');
+        require_once (string) ($serverEntity['dbaccess_path'] ?? '');
+
+        $operationSnapshot = app_pdo_fetch_managed_operation_snapshot($app, $projectKey);
+        if (!$operationSnapshot['ok']) {
+            throw new RuntimeException('sample30 managed operation snapshot failed: ' . $operationSnapshot['error']);
+        }
+        $operation = is_array($operationSnapshot['items'][0] ?? null) ? $operationSnapshot['items'][0] : [];
+        $serverBinding = app_managed_operation_server_dbaccess_binding_from_project_catalog(
+            $app,
+            $projectKey,
+            $operation,
+        );
+        if (!$serverBinding['ok']) {
+            $serverBinding = app_managed_operation_server_dbaccess_binding_from_candidate(
+                [
+                    'source_name' => (string) ($serverEntity['source_name'] ?? ''),
+                    'generated_name' => (string) ($serverEntity['data_class'] ?? '') !== ''
+                        ? preg_replace('/Data$/', '', (string) ($serverEntity['data_class'] ?? ''))
+                        : '',
+                    'data_class' => (string) ($serverEntity['data_class'] ?? ''),
+                    'dbaccess_class' => (string) ($serverEntity['dbaccess_class'] ?? ''),
+                    'method_catalog' => app_generated_file_method_catalog((string) ($serverEntity['dbaccess_path'] ?? '')),
+                ],
+                $operation,
+                [
+                    'source_name' => (string) ($serverEntity['source_name'] ?? ''),
+                ],
+            );
+        }
+        $steps['server_binding'] = $serverBinding;
+        if (!$serverBinding['ok'] || $serverBinding['binding'] === null) {
+            throw new RuntimeException('sample30 server DBAccess binding failed: ' . $serverBinding['error']);
+        }
+
+        $serverSqlitePath = sys_get_temp_dir()
+            . '/dego-sample30-server-sync-'
+            . getmypid()
+            . '-'
+            . bin2hex(random_bytes(4))
+            . '.sqlite';
+        $serverPdo = new PDO('sqlite:' . $serverSqlitePath);
+        $serverPdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $serverPdo->exec(
+            'CREATE TABLE sync_task (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                title TEXT NOT NULL,
+                status TEXT NOT NULL,
+                note TEXT NOT NULL
+            )',
+        );
+        $serverPdo->prepare('INSERT INTO sync_task (id, title, status, note) VALUES (?, ?, ?, ?)')->execute([
+            3001,
+            'App-local sync no-code task',
+            'draft',
+            'Before server sync processing.',
+        ]);
+        $steps['server_seed'] = [
+            'sqlite_path' => $serverSqlitePath,
+            'table_name' => $tableName,
+            'id' => 3001,
+        ];
+
+        global $mtooldb;
+        $mtooldb = null;
+        $previousRuntimeSqlitePath = getenv('MTOOL_RUNTIME_SQLITE_PATH');
+        putenv('MTOOL_RUNTIME_SQLITE_PATH=' . $serverSqlitePath);
+
+        try {
+            $serverDispatch = app_no_code_runtime_dispatch_action(
+                $authorizedDefinition,
+                'update_sync_task',
+                [
+                    'id' => 3001,
+                    'status' => 'synced_to_server',
+                    'note' => 'Processed by generated server DBAccess handler.',
+                ],
+                app_no_code_managed_operation_dispatcher(
+                    [
+                        'contract_key' => $tableName,
+                        'storage_mode' => 'local-copy',
+                        'origin' => 'app-local',
+                        'target' => 'server',
+                    ],
+                    static function (array $syncIntent) use ($app): array {
+                        $syncIntent['payload']['input']['title'] = 'App-local sync no-code task';
+                        $enqueue = app_pdo_enqueue_managed_operation_sync_intent($app, $syncIntent);
+
+                        return [
+                            'ok' => $enqueue['ok'],
+                            'executed' => $enqueue['ok'],
+                            'enqueue' => $enqueue['item'],
+                            'error' => $enqueue['error'],
+                        ];
+                    },
+                ),
+            );
+            $steps['server_dispatch'] = $serverDispatch;
+            if (!$serverDispatch['ok']) {
+                throw new RuntimeException('sample30 server no-code dispatch failed: ' . $serverDispatch['error']);
+            }
+            if (!((bool) ($serverDispatch['result']['ok'] ?? false))) {
+                throw new RuntimeException('sample30 server sync intent enqueue failed: ' . (string) ($serverDispatch['result']['error'] ?? ''));
+            }
+
+            $serverOutboxProcess = app_managed_operation_sync_outbox_process_next(
+                $app,
+                $projectKey,
+                app_managed_operation_server_dbaccess_outbox_handler($serverBinding['binding']),
+            );
+            $steps['server_outbox_process'] = $serverOutboxProcess;
+            if (!$serverOutboxProcess['ok']) {
+                throw new RuntimeException('sample30 server outbox process failed: ' . $serverOutboxProcess['error']);
+            }
+
+            $serverReadStatement = $serverPdo->prepare('SELECT status, note FROM sync_task WHERE id = ?');
+            if ($serverReadStatement === false) {
+                throw new RuntimeException('sample30 server read prepare failed.');
+            }
+            $serverReadStatement->execute([3001]);
+            $serverRow = $serverReadStatement->fetch(PDO::FETCH_ASSOC);
+            $steps['server_read_after_sync'] = [
+                'ok' => is_array($serverRow),
+                'row' => is_array($serverRow) ? $serverRow : [],
+            ];
+            if (!is_array($serverRow)) {
+                throw new RuntimeException('sample30 server row was not found after sync.');
+            }
+        } finally {
+            if ($previousRuntimeSqlitePath === false) {
+                putenv('MTOOL_RUNTIME_SQLITE_PATH');
+            } else {
+                putenv('MTOOL_RUNTIME_SQLITE_PATH=' . $previousRuntimeSqlitePath);
+            }
+            $mtooldb = null;
+            $serverPdo = null;
+            @unlink($serverSqlitePath);
+        }
+
         app_sample30_no_code_app_local_sync_assert_same('no-code-screen-definition-v0', $steps['screen_definition']['definition_version'] ?? '', 'definition_version', $assertionErrors);
         app_sample30_no_code_app_local_sync_assert_same($projectKey, $steps['screen_definition']['project_key'] ?? '', 'project_key', $assertionErrors);
         app_sample30_no_code_app_local_sync_assert_same($tableName, $steps['screen_definition']['contract_key'] ?? '', 'contract_key', $assertionErrors);
@@ -375,6 +533,15 @@ function app_sample30_no_code_app_local_sync_demo_run(array $app, string $reques
         app_sample30_no_code_app_local_sync_assert_same('Updated through no-code App-local sync handoff.', $localRead['dto']['note'] ?? '', 'local note after sync', $assertionErrors);
         app_sample30_no_code_app_local_sync_assert_same(1, $localRead['local_metadata']['dirty'] ?? 0, 'local dirty after sync', $assertionErrors);
         app_sample30_no_code_app_local_sync_assert_same('dirty', $localRead['local_metadata']['sync_status'] ?? '', 'local sync status after sync', $assertionErrors);
+        app_sample30_no_code_app_local_sync_assert_same('canonical-bootstrap', $steps['server_runtime_entity']['entity']['source_kind'] ?? '', 'server runtime entity source kind', $assertionErrors);
+        app_sample30_no_code_app_local_sync_assert_same('SyncTaskData', $steps['server_binding']['binding']['data_class'] ?? '', 'server binding data class', $assertionErrors);
+        app_sample30_no_code_app_local_sync_assert_same('SyncTaskDBAccess', $steps['server_binding']['binding']['dbaccess_class'] ?? '', 'server binding DBAccess class', $assertionErrors);
+        app_sample30_no_code_app_local_sync_assert_same(['update' => 'Updatesync_task'], $steps['server_binding']['binding']['method_map'] ?? [], 'server binding method map', $assertionErrors);
+        app_sample30_no_code_app_local_sync_assert_same('managed-operation-sync-intent-v0', $steps['server_dispatch']['result']['sync_intent']['intent_version'] ?? '', 'server sync intent version', $assertionErrors);
+        app_sample30_no_code_app_local_sync_assert_same('done', $steps['server_outbox_process']['outcome'] ?? '', 'server outbox outcome', $assertionErrors);
+        app_sample30_no_code_app_local_sync_assert_same('Updatesync_task', $steps['server_outbox_process']['handler_result']['method_name'] ?? '', 'server handler method name', $assertionErrors);
+        app_sample30_no_code_app_local_sync_assert_same('synced_to_server', $steps['server_read_after_sync']['row']['status'] ?? '', 'server status after sync', $assertionErrors);
+        app_sample30_no_code_app_local_sync_assert_same('Processed by generated server DBAccess handler.', $steps['server_read_after_sync']['row']['note'] ?? '', 'server note after sync', $assertionErrors);
     } catch (Throwable $throwable) {
         return [
             'ok' => false,

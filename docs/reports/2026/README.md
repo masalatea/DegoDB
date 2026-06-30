@@ -11,6 +11,10 @@
 
 ## Index
 
+- `2026-0630-server-side-sync-processing-follow-up-first-slice.md`
+  - sample30 を延長し、2 件目の managed operation sync outbox item を generated server DBAccess handler で処理して server SQLite row を更新する path を確認。transport / conflict resolution / reusable merge policy は対象外。Status: `FIRST_SLICE_DONE`。
+- `2026-0630-post-sample30-no-code-product-goal-replan.md`
+  - sample30 後の no-code product-goal replan。generated no-code action intent -> sync outbox -> App-local SQLite handler が通ったため、次の active implementation として server-side sync processing follow-up first slice を選択。Status: `DONE`。
 - `2026-0630-sample30-no-code-app-local-sync-first-slice.md`
   - `sample30-no-code-app-local-sync-demo` を追加し、generated no-code action intent -> managed operation sync intent -> sync outbox -> App-local SQLite handler の sample-visible path を確認。Status: `FIRST_SLICE_DONE`。
 - `2026-0630-post-sample29-no-code-product-goal-replan.md`
