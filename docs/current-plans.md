@@ -13,10 +13,10 @@ When someone asks for "the plan list", answer from this section first. / 「計�
 
 | Order | Work unit / 作業の塊 | Commit unit / コミット単位 | Status |
 | --- | --- | --- | --- |
-| 1 | Post-server-side sync no-code product goal replan / server-side sync 後の no-code product goal 再計画 | Choose the next product-facing no-code slice after sample30 now proves both App-local and generated server DBAccess processing | `ACTIVE_NEXT` |
+| 1 | Post-partial-update merge no-code product goal replan / partial-update merge 後の no-code product goal 再計画 | Choose the next product-facing no-code slice after server DBAccess update can merge partial no-code input with an existing row | `ACTIVE_NEXT` |
 | 2 | Mtool implementation namespace cleanup / Mtool 実装 namespace cleanup | Boundary inventory is recorded; no implementation is recommended until a specific helper cluster or maintenance goal is chosen | `PARKED_REPLAN` |
 
-The first sync-backed no-code demonstration is complete as `sample30-no-code-app-local-sync-demo`, and the narrow server-side sync processing follow-up first slice is also complete inside sample30. The active next step is to replan before selecting another product-facing no-code slice. / 最初の sync-backed no-code demonstration は `sample30-no-code-app-local-sync-demo` として完了し、narrow な server-side sync processing follow-up first slice も sample30 内で完了しました。次の active step は、別の product-facing no-code slice を選ぶ前の replan です。
+The first sync-backed no-code demonstration is complete as `sample30-no-code-app-local-sync-demo`, the narrow server-side sync processing follow-up first slice is complete inside sample30, and reusable partial-update server merge policy is complete for the first slice. The active next step is to replan before selecting another product-facing no-code slice. / 最初の sync-backed no-code demonstration は `sample30-no-code-app-local-sync-demo` として完了し、narrow な server-side sync processing follow-up first slice も sample30 内で完了、reusable partial-update server merge policy も first slice として完了しました。次の active step は、別の product-facing no-code slice を選ぶ前の replan です。
 
 ## Priority Rationale / 優先理由
 
@@ -61,7 +61,9 @@ These are planning estimates, not deadlines. / これは計画用の目安であ
 | 25 | App-local sync no-code demonstration first slice / App-local sync no-code demonstration first slice | Completed / 完了 | Added `sample30-no-code-app-local-sync-demo` connecting generated no-code action intent to managed operation sync outbox and App-local SQLite handler. Report: [2026-0630 Sample30 No-Code App-local Sync First Slice](reports/2026/2026-0630-sample30-no-code-app-local-sync-first-slice.md). |
 | 26 | Post-sample30 no-code product goal replan / sample30 後の no-code product goal 再計画 | Completed / 完了 | Chose Server-side sync processing follow-up as the next product-facing implementation. Decision report: [2026-0630 Post-Sample30 No-Code Product Goal Replan](reports/2026/2026-0630-post-sample30-no-code-product-goal-replan.md). |
 | 27 | Server-side sync processing follow-up first slice / server-side sync processing follow-up first slice | Completed / 完了 | Extended sample30 with generated server DBAccess materialization, binding fallback from the generated method catalog, server outbox handler processing, and server SQLite row verification. Report: [2026-0630 Server-Side Sync Processing Follow-Up First Slice](reports/2026/2026-0630-server-side-sync-processing-follow-up-first-slice.md). |
-| 28 | Post-server-side sync no-code product goal replan / server-side sync 後の no-code product goal 再計画 | 0.5 day / 半日 | Active docs/planning step. Choose the next product-facing no-code slice after sample30 now proves both App-local and generated server DBAccess processing. |
+| 28 | Post-server-side sync no-code product goal replan / server-side sync 後の no-code product goal 再計画 | Completed / 完了 | Chose Reusable partial-update server merge policy as the next product-facing implementation. Decision report: [2026-0630 Post-Server-Side Sync No-Code Product Goal Replan](reports/2026/2026-0630-post-server-side-sync-no-code-product-goal-replan.md). |
+| 29 | Reusable partial-update server merge policy first slice / reusable partial-update server merge policy first slice | Completed / 完了 | Added generated server DBAccess partial update merge in the shared executor, removed sample30's sample-specific full-row payload completion, and verified sample30 plus direct server DBAccess coverage. Report: [2026-0630 Reusable Partial-Update Server Merge Policy First Slice](reports/2026/2026-0630-reusable-partial-update-server-merge-policy-first-slice.md). |
+| 30 | Post-partial-update merge no-code product goal replan / partial-update merge 後の no-code product goal 再計画 | 0.5 day / 半日 | Active docs/planning step. Choose the next product-facing no-code slice after partial no-code update input can be merged into generated server DBAccess updates. |
 
 ## Data-First No-Code Domain Sample 2 First Slice / data-first no-code domain sample 2 first slice
 
@@ -151,15 +153,48 @@ Boundary / 境界:
 
 ## Post-Server-Side Sync No-Code Product Goal Replan / server-side sync 後の no-code product goal 再計画
 
+Status: `DONE`. Decision report: [2026-0630 Post-Server-Side Sync No-Code Product Goal Replan](reports/2026/2026-0630-post-server-side-sync-no-code-product-goal-replan.md). / Status: `DONE`。判断 report: [2026-0630 Post-Server-Side Sync No-Code Product Goal Replan](reports/2026/2026-0630-post-server-side-sync-no-code-product-goal-replan.md)。
+
+This planning item selected Reusable partial-update server merge policy as the next active implementation item. / この planning item では Reusable partial-update server merge policy を次の active implementation item として選びました。
+
+| Candidate / 候補 | Why / 目的 | First slice estimate / first slice 目安 | Decision |
+| --- | --- | --- | --- |
+| Reusable partial-update / server merge policy | Replace the sample-specific full-row payload completion with a reusable read/merge/write policy for generated server DBAccess updates. | 1 - 3 days / 1 - 3 日 | Selected. sample30 exposed this as the most concrete product-path gap after server-side processing. Keep conflict resolution out of scope. |
+| Sync handoff visibility polish | Make generated/runtime artifacts show App-local/server processing state more clearly. | 0.5 - 2 days / 半日 - 2 日 | Deferred. The data behavior gap is more foundational than presentation polish. |
+| Operator/admin no-code workflow | Show how an operator chooses, publishes, or inspects no-code runtime artifacts. | 1 - 3 days / 1 - 3 日 | Deferred. Operator surface still needs clearer scope. |
+| Mtool implementation namespace cleanup | Revisit the parked namespace cleanup with a concrete helper cluster. | 1 - 3 days / 1 - 3 日 | Remains parked until a narrow helper cluster is selected. |
+
+## Reusable Partial-Update Server Merge Policy First Slice / reusable partial-update server merge policy first slice
+
+Status: `FIRST_SLICE_DONE`. Report: [2026-0630 Reusable Partial-Update Server Merge Policy First Slice](reports/2026/2026-0630-reusable-partial-update-server-merge-policy-first-slice.md). / Status: `FIRST_SLICE_DONE`。Report: [2026-0630 Reusable Partial-Update Server Merge Policy First Slice](reports/2026/2026-0630-reusable-partial-update-server-merge-policy-first-slice.md)。
+
+This implementation work was selected after the server-side sync processing follow-up and is complete for the first slice. / これは server-side sync processing follow-up 後に選んだ implementation work で、first slice は完了です。
+
+| Step | Work / 作業 | Status | Rough effort / 目安 | Output / 成果物 |
+| --- | --- | --- | --- | --- |
+| PU1 | Boundary and server read target / 境界と server read target | `DONE` | 0.5 day / 半日 | Scoped the reusable merge path to update intents that carry partial input and key fields. |
+| PU2 | Existing row read adapter / existing row read adapter | `DONE` | 0.5 - 1 day / 半日 - 1 日 | The server DBAccess executor derives and calls the generated read method when a full DataClass payload is missing. |
+| PU3 | Merge policy helper / merge policy helper | `DONE` | 0.5 day / 半日 | Existing row values are merged with key + partial input into a full generated DataClass payload without conflict resolution. |
+| PU4 | Server handler integration / server handler integration | `DONE` | 0.5 - 1 day / 半日 - 1 日 | The reusable merge path runs inside `app_managed_operation_server_dbaccess_execute_intent` for update operations. |
+| PU5 | Sample30 smoke and docs / sample30 smoke・docs | `DONE` | 0.5 day / 半日 | Removed sample30's sample-specific payload completion, verified sample30 server update, and updated report/current plan. |
+
+Boundary / 境界:
+
+- In scope: update operation only, existing generated server DBAccess read/update methods, one row keyed by the sync intent, deterministic merge of partial input over existing row, sample30 smoke. / 対象: update operation のみ、既存 generated server DBAccess read/update method、sync intent の key による 1 row、partial input を existing row に deterministic merge、sample30 smoke。
+- Out of scope: conflict resolution, remote transport, retry scheduling, multi-row merge, delete/create semantics, visual builder, native/Flutter target. / 対象外: conflict resolution、remote transport、retry scheduling、multi-row merge、delete / create semantics、visual builder、native / Flutter target。
+- Verification: focused PHPUnit / `make sample30-pack-runtime-test` first; run `make test` because shared server DBAccess executor behavior is likely to change. / 検証: まず focused PHPUnit / `make sample30-pack-runtime-test`。shared server DBAccess executor behavior を触る可能性が高いため `make test` も実行する。
+
+## Post-Partial-Update Merge No-Code Product Goal Replan / partial-update merge 後の no-code product goal 再計画
+
 Status: `ACTIVE_NEXT`. / Status: `ACTIVE_NEXT`。
 
-This is the current active planning item after the sample30 server-side sync processing follow-up. / これは sample30 server-side sync processing follow-up 後の現在の active planning item です。
+This is the current active planning item after reusable partial-update server merge policy. / これは reusable partial-update server merge policy 後の現在の active planning item です。
 
 | Candidate / 候補 | Why / 目的 | First slice estimate / first slice 目安 | Notes |
 | --- | --- | --- | --- |
-| Reusable partial-update / server merge policy | Replace the sample-specific full-row payload completion with a reusable read/merge/write policy for generated server DBAccess updates. | 1 - 3 days / 1 - 3 日 | Useful because sample30 exposed the partial no-code input vs full-row generated update boundary. Keep conflict resolution out of scope unless explicitly selected. |
-| Sync handoff visibility polish | Make generated/runtime artifacts show App-local/server processing state more clearly. | 0.5 - 2 days / 半日 - 2 日 | Choose only if product presentation is the next priority. |
-| Operator/admin no-code workflow | Show how an operator chooses, publishes, or inspects no-code runtime artifacts. | 1 - 3 days / 1 - 3 日 | Still needs a clearer operator surface before implementation. |
+| Sync handoff visibility polish | Make generated/runtime artifacts show App-local/server processing state more clearly now that both processing paths work. | 0.5 - 2 days / 半日 - 2 日 | Candidate if product presentation is the next priority. |
+| Operator/admin no-code workflow | Show how an operator chooses, publishes, or inspects no-code runtime artifacts. | 1 - 3 days / 1 - 3 日 | Needs clearer operator surface before implementation. |
+| Additional sync behavior pressure | Add a small retry/error-state or merge edge proof after partial update merge. | 1 - 3 days / 1 - 3 日 | Keep conflict resolution and transport out of scope unless explicitly selected. |
 | Mtool implementation namespace cleanup | Revisit the parked namespace cleanup with a concrete helper cluster. | 1 - 3 days / 1 - 3 日 | Remains parked until a narrow helper cluster is selected. |
 
 ## Next No-Code Product Goal After Runtime Polish Decision / runtime polish 後の次 no-code product goal decision

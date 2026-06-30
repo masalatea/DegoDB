@@ -2,7 +2,7 @@
 
 - Role: first sync-backed no-code demonstration plus server-side processing follow-up.
 - Path: canonical table metadata -> shared contract -> managed operation -> `NO-CODE-RUNTIME` action intent -> managed operation sync outbox -> App-local SQLite handler / generated server DBAccess handler.
-- Current first-slice scope: one generated no-code update action becomes a managed operation sync intent, is enqueued, and is processed by the App-local handler to update a local SQLite row. The follow-up slice processes a second outbox item with generated `SyncTaskDBAccess` and verifies a server SQLite row update.
+- Current first-slice scope: one generated no-code update action becomes a managed operation sync intent, is enqueued, and is processed by the App-local handler to update a local SQLite row. The follow-up slice processes a second outbox item with generated `SyncTaskDBAccess`, merges partial no-code input with the existing server row, and verifies a server SQLite row update.
 
 Run:
 
@@ -33,4 +33,4 @@ The pack checker verifies:
 - the sync intent is enqueued in the managed operation outbox
 - the App-local outbox handler processes the intent and updates the local SQLite DTO
 - generated server DBAccess is materialized for `sync_task`
-- the server DBAccess outbox handler processes a second sync intent and updates the server SQLite row
+- the server DBAccess outbox handler processes a second sync intent, merges partial update input, and updates the server SQLite row

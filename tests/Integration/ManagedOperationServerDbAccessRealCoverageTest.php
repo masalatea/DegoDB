@@ -82,6 +82,76 @@ final class ManagedOperationServerDbAccessRealCoverageTest extends TestCase
         @unlink($sqlitePath);
     }
 
+    public function testManagedOperationServerDbAccessExecutorMergesPartialUpdateInput(): void
+    {
+        $sqlitePath = sys_get_temp_dir() . '/dego-managed-ops-server-dbaccess-partial-' . getmypid() . '-' . bin2hex(random_bytes(4)) . '.sqlite';
+        $pdo = new PDO('sqlite:' . $sqlitePath);
+        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $pdo->exec(
+            'CREATE TABLE todo_item (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                title TEXT NOT NULL,
+                status TEXT NOT NULL,
+                body TEXT NOT NULL
+            )',
+        );
+        $pdo->prepare('INSERT INTO todo_item (title, status, body) VALUES (?, ?, ?)')->execute([
+            'Partial update task',
+            'open',
+            'Keep this body.',
+        ]);
+
+        global $mtooldb;
+        $mtooldb = null;
+        PartialMergeTaskDBAccess::$pdo = $pdo;
+        putenv('MTOOL_RUNTIME_SQLITE_PATH=' . $sqlitePath);
+
+        try {
+            $execute = app_managed_operation_server_dbaccess_execute_intent(
+                [
+                    'intent_version' => 'managed-operation-sync-intent-v0',
+                    'origin' => 'app-local',
+                    'target' => 'server',
+                    'operation_type' => 'update',
+                    'payload' => [
+                        'key' => [
+                            'id' => 1,
+                        ],
+                        'input' => [
+                            'status' => 'done',
+                        ],
+                    ],
+                ],
+                [
+                    'endpoint' => 'server',
+                    'data_class' => PartialMergeTaskData::class,
+                    'dbaccess_class' => PartialMergeTaskDBAccess::class,
+                    'method_map' => [
+                        'update' => 'UpdatePartialMergeTask',
+                    ],
+                ],
+            );
+        } finally {
+            PartialMergeTaskDBAccess::$pdo = null;
+            putenv('MTOOL_RUNTIME_SQLITE_PATH');
+            $mtooldb = null;
+        }
+
+        self::assertTrue($execute['ok'], $execute['error']);
+        self::assertTrue($execute['executed']);
+        self::assertSame('UpdatePartialMergeTask', $execute['method_name']);
+
+        $row = $pdo->query('SELECT title, status, body FROM todo_item WHERE id = 1')->fetch(PDO::FETCH_ASSOC);
+        self::assertSame([
+            'title' => 'Partial update task',
+            'status' => 'done',
+            'body' => 'Keep this body.',
+        ], $row);
+
+        $pdo = null;
+        @unlink($sqlitePath);
+    }
+
     public function testNoCodeRuntimeDispatchUpdatesGeneratedSqliteRuntimeRow(): void
     {
         $sqlitePath = sys_get_temp_dir() . '/dego-no-code-managed-ops-' . getmypid() . '-' . bin2hex(random_bytes(4)) . '.sqlite';
@@ -205,5 +275,55 @@ final class ManagedOperationServerDbAccessRealCoverageTest extends TestCase
                 ],
             ],
         ];
+    }
+}
+
+final class PartialMergeTaskData
+{
+    public $id;
+    public $title;
+    public $status;
+    public $body;
+}
+
+final class PartialMergeTaskDBAccess
+{
+    public static ?PDO $pdo = null;
+
+    public function GetPartialMergeTask($id): ?PartialMergeTaskData
+    {
+        $statement = self::$pdo?->prepare('SELECT id, title, status, body FROM todo_item WHERE id = ?');
+        if ($statement === null) {
+            return null;
+        }
+
+        $statement->execute([$id]);
+        $row = $statement->fetch(PDO::FETCH_ASSOC);
+        if (!is_array($row)) {
+            return null;
+        }
+
+        $data = new PartialMergeTaskData();
+        $data->id = (int) $row['id'];
+        $data->title = (string) $row['title'];
+        $data->status = (string) $row['status'];
+        $data->body = (string) $row['body'];
+
+        return $data;
+    }
+
+    public function UpdatePartialMergeTask(PartialMergeTaskData $data): bool
+    {
+        $statement = self::$pdo?->prepare('UPDATE todo_item SET title = ?, status = ?, body = ? WHERE id = ?');
+        if ($statement === null) {
+            return false;
+        }
+
+        return $statement->execute([
+            $data->title,
+            $data->status,
+            $data->body,
+            $data->id,
+        ]);
     }
 }

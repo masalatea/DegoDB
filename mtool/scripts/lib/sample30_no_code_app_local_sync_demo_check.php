@@ -458,7 +458,6 @@ function app_sample30_no_code_app_local_sync_demo_run(array $app, string $reques
                         'target' => 'server',
                     ],
                     static function (array $syncIntent) use ($app): array {
-                        $syncIntent['payload']['input']['title'] = 'App-local sync no-code task';
                         $enqueue = app_pdo_enqueue_managed_operation_sync_intent($app, $syncIntent);
 
                         return [
@@ -488,7 +487,7 @@ function app_sample30_no_code_app_local_sync_demo_run(array $app, string $reques
                 throw new RuntimeException('sample30 server outbox process failed: ' . $serverOutboxProcess['error']);
             }
 
-            $serverReadStatement = $serverPdo->prepare('SELECT status, note FROM sync_task WHERE id = ?');
+            $serverReadStatement = $serverPdo->prepare('SELECT title, status, note FROM sync_task WHERE id = ?');
             if ($serverReadStatement === false) {
                 throw new RuntimeException('sample30 server read prepare failed.');
             }
@@ -540,6 +539,7 @@ function app_sample30_no_code_app_local_sync_demo_run(array $app, string $reques
         app_sample30_no_code_app_local_sync_assert_same('managed-operation-sync-intent-v0', $steps['server_dispatch']['result']['sync_intent']['intent_version'] ?? '', 'server sync intent version', $assertionErrors);
         app_sample30_no_code_app_local_sync_assert_same('done', $steps['server_outbox_process']['outcome'] ?? '', 'server outbox outcome', $assertionErrors);
         app_sample30_no_code_app_local_sync_assert_same('Updatesync_task', $steps['server_outbox_process']['handler_result']['method_name'] ?? '', 'server handler method name', $assertionErrors);
+        app_sample30_no_code_app_local_sync_assert_same('App-local sync no-code task', $steps['server_read_after_sync']['row']['title'] ?? '', 'server title after sync', $assertionErrors);
         app_sample30_no_code_app_local_sync_assert_same('synced_to_server', $steps['server_read_after_sync']['row']['status'] ?? '', 'server status after sync', $assertionErrors);
         app_sample30_no_code_app_local_sync_assert_same('Processed by generated server DBAccess handler.', $steps['server_read_after_sync']['row']['note'] ?? '', 'server note after sync', $assertionErrors);
     } catch (Throwable $throwable) {

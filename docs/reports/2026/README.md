@@ -11,6 +11,10 @@
 
 ## Index
 
+- `2026-0630-reusable-partial-update-server-merge-policy-first-slice.md`
+  - generated server DBAccess update execution に reusable partial-update merge を追加。partial no-code input から existing row を read/merge/write し、sample30 の sample-specific full-row payload completion を削除。Status: `FIRST_SLICE_DONE`。
+- `2026-0630-post-server-side-sync-no-code-product-goal-replan.md`
+  - sample30 server-side sync processing follow-up 後の no-code product-goal replan。partial no-code input と generated server DBAccess full-row update の gap を次の concrete behavior gap として、reusable partial-update server merge policy first slice を選択。Status: `DONE`。
 - `2026-0630-server-side-sync-processing-follow-up-first-slice.md`
   - sample30 を延長し、2 件目の managed operation sync outbox item を generated server DBAccess handler で処理して server SQLite row を更新する path を確認。transport / conflict resolution / reusable merge policy は対象外。Status: `FIRST_SLICE_DONE`。
 - `2026-0630-post-sample30-no-code-product-goal-replan.md`

@@ -173,6 +173,9 @@ function app_managed_operation_server_dbaccess_execute_intent(array $intent, arr
         $payload = is_array($intent['payload'] ?? null) ? $intent['payload'] : [];
         $key = is_array($payload['key'] ?? null) ? $payload['key'] : [];
         $input = is_array($payload['input'] ?? null) ? $payload['input'] : [];
+        if ($operationType === 'update') {
+            $input = app_managed_operation_server_dbaccess_merge_update_input($dbAccess, $binding, $methodMap, $key, $input);
+        }
         $arguments = app_managed_operation_server_dbaccess_arguments($operationType, $binding, $key, $input);
         $result = $dbAccess->$methodName(...$arguments);
         if ($result === false) {
@@ -190,6 +193,97 @@ function app_managed_operation_server_dbaccess_execute_intent(array $intent, arr
             $throwable->getMessage(),
         );
     }
+}
+
+/**
+ * @param array<string,mixed> $binding
+ * @param array<string,mixed> $methodMap
+ * @param array<string,mixed> $key
+ * @param array<string,mixed> $input
+ * @return array<string,mixed>
+ */
+function app_managed_operation_server_dbaccess_merge_update_input(
+    object $dbAccess,
+    array $binding,
+    array $methodMap,
+    array $key,
+    array $input,
+): array {
+    $payload = $key + $input;
+    $properties = app_managed_operation_server_dbaccess_data_properties((string) ($binding['data_class'] ?? ''));
+    if ($properties === [] || app_managed_operation_server_dbaccess_payload_has_properties($payload, $properties)) {
+        return $input;
+    }
+
+    $readMethod = app_managed_operation_server_dbaccess_read_method_name($binding, $methodMap);
+    if ($readMethod === '' || !method_exists($dbAccess, $readMethod)) {
+        return $input;
+    }
+
+    $existing = $dbAccess->$readMethod(...array_values($key));
+    if (!is_object($existing)) {
+        throw new RuntimeException('managed operation server DBAccess update merge target was not found.');
+    }
+
+    $merged = [];
+    foreach ($properties as $property) {
+        if (property_exists($existing, $property)) {
+            $merged[$property] = $existing->$property;
+        }
+    }
+
+    return array_merge($merged, $key, $input);
+}
+
+/**
+ * @return list<string>
+ */
+function app_managed_operation_server_dbaccess_data_properties(string $className): array
+{
+    if ($className === '' || !class_exists($className)) {
+        return [];
+    }
+
+    return array_keys(get_object_vars(new $className()));
+}
+
+/**
+ * @param array<string,mixed> $payload
+ * @param list<string> $properties
+ */
+function app_managed_operation_server_dbaccess_payload_has_properties(array $payload, array $properties): bool
+{
+    foreach ($properties as $property) {
+        if (!array_key_exists($property, $payload)) {
+            return false;
+        }
+    }
+
+    return true;
+}
+
+/**
+ * @param array<string,mixed> $binding
+ * @param array<string,mixed> $methodMap
+ */
+function app_managed_operation_server_dbaccess_read_method_name(array $binding, array $methodMap): string
+{
+    $mappedRead = (string) ($methodMap['read'] ?? '');
+    if ($mappedRead !== '') {
+        return $mappedRead;
+    }
+
+    $sourceName = (string) ($binding['source_name'] ?? '');
+    if ($sourceName !== '') {
+        return app_managed_operation_server_dbaccess_expected_method_name('read', $sourceName);
+    }
+
+    $updateMethod = (string) ($methodMap['update'] ?? '');
+    if (str_starts_with($updateMethod, 'Update')) {
+        return 'Get' . substr($updateMethod, strlen('Update'));
+    }
+
+    return '';
 }
 
 /**
