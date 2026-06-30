@@ -11,6 +11,7 @@ function usage() {
 
 Options:
   --html=PATH                    runtime-preview.html path
+  --profile=sample07|sample28    expected no-code runtime shape (default: sample07)
   --output-dir=PATH              artifact directory root (default: output/playwright/no-code-runtime-preview)
   --headed                       launch Chrome headed
   --headless                     launch Chrome headless
@@ -27,6 +28,7 @@ function parseArgs(argv) {
     outputDir: path.join(repoRoot(), 'output', 'playwright', 'no-code-runtime-preview'),
     headless: true,
     help: false,
+    expected: expectedProfile('sample07'),
   };
 
   for (const argument of argv.slice(2)) {
@@ -52,6 +54,8 @@ function parseArgs(argv) {
     const value = body.slice(separatorIndex + 1).trim();
     if (name === 'html') {
       config.htmlPath = path.resolve(value);
+    } else if (name === 'profile') {
+      config.expected = expectedProfile(value);
     } else if (name === 'output-dir') {
       config.outputDir = path.resolve(value);
     } else {
@@ -60,6 +64,57 @@ function parseArgs(argv) {
   }
 
   return config;
+}
+
+function expectedProfile(name) {
+  if (name === 'sample07') {
+    return {
+      profile: name,
+      listScreenKey: 'todo_item_list',
+      detailScreenKey: 'todo_item_detail',
+      formScreenKey: 'todo_item_form',
+      actionKey: 'update_todo_item',
+      operationKey: 'update_todo_item',
+      operationType: 'update',
+      keyField: 'id',
+      keyValue: 1,
+      inputFields: ['title', 'status', 'body'],
+      requiredInputField: 'body',
+      requiredInputValue: 'Generated browser smoke payload',
+      payload: {
+        id: 1,
+        title: 'Browser smoke update',
+        status: 'done',
+        body: 'Generated browser smoke payload',
+      },
+    };
+  }
+
+  if (name === 'sample28') {
+    return {
+      profile: name,
+      listScreenKey: 'no_code_ticket_list',
+      detailScreenKey: 'no_code_ticket_detail',
+      formScreenKey: 'no_code_ticket_form',
+      actionKey: 'update_no_code_ticket',
+      operationKey: 'update_no_code_ticket',
+      operationType: 'update',
+      keyField: 'id',
+      keyValue: 1001,
+      inputFields: ['title', 'status', 'priority', 'body'],
+      requiredInputField: 'body',
+      requiredInputValue: 'Generated sample28 browser smoke payload',
+      payload: {
+        id: 1001,
+        title: 'Sample28 browser smoke update',
+        status: 'active',
+        priority: 'high',
+        body: 'Generated sample28 browser smoke payload',
+      },
+    };
+  }
+
+  throw new Error(`Unknown profile: ${name}`);
 }
 
 function findPlaywrightPackageRoot() {
@@ -151,42 +206,32 @@ async function runSmoke(config) {
     await page.goto(`file://${config.htmlPath}`, { waitUntil: 'load' });
 
     await requireVisible(page.locator('.no-code-preview'), 'preview root');
-    await requireVisible(page.locator('.no-code-screen[data-screen-key="todo_item_list"]'), 'list screen');
-    await requireVisible(page.locator('.no-code-screen[data-screen-key="todo_item_detail"]'), 'detail screen');
-    await requireVisible(page.locator('.no-code-screen[data-screen-key="todo_item_form"]'), 'form screen');
-    await requireVisible(page.locator('.no-code-screen[data-screen-key="todo_item_list"] table'), 'list table');
-    await requireVisible(page.locator('.no-code-screen[data-screen-key="todo_item_detail"] dl.no-code-detail'), 'detail layout');
-    await requireVisible(page.locator('.no-code-screen[data-screen-key="todo_item_form"] form.no-code-form'), 'form layout');
+    await requireVisible(page.locator(`.no-code-screen[data-screen-key="${config.expected.listScreenKey}"]`), 'list screen');
+    await requireVisible(page.locator(`.no-code-screen[data-screen-key="${config.expected.detailScreenKey}"]`), 'detail screen');
+    await requireVisible(page.locator(`.no-code-screen[data-screen-key="${config.expected.formScreenKey}"]`), 'form screen');
+    await requireVisible(page.locator(`.no-code-screen[data-screen-key="${config.expected.listScreenKey}"] table`), 'list table');
+    await requireVisible(page.locator(`.no-code-screen[data-screen-key="${config.expected.detailScreenKey}"] dl.no-code-detail`), 'detail layout');
+    await requireVisible(page.locator(`.no-code-screen[data-screen-key="${config.expected.formScreenKey}"] form.no-code-form`), 'form layout');
 
-    const metrics = await page.evaluate(() => {
+    const metrics = await page.evaluate((expected) => {
       const sections = Array.from(document.querySelectorAll('.no-code-screen'));
       const actions = Array.from(document.querySelectorAll('.no-code-actions button'));
       const preview = window.__noCodeRuntimePreview || {};
       const previewScreens = Array.isArray(preview.screens) ? preview.screens : [];
       const previewActions = previewScreens.flatMap((screen) => Array.isArray(screen.actions) ? screen.actions : []);
-      const updateAction = previewActions.find((action) => action.action_key === 'update_todo_item') || {};
+      const updateAction = previewActions.find((action) => action.action_key === expected.actionKey) || {};
       const disabledDispatch = typeof window.noCodeRuntimeDispatchAction === 'function'
-        ? window.noCodeRuntimeDispatchAction('update_todo_item', {
-          id: 1,
-          title: 'Browser smoke update',
-          status: 'done',
-          body: 'Generated browser smoke payload',
-        })
+        ? window.noCodeRuntimeDispatchAction(expected.actionKey, expected.payload)
         : { ok: false, executed: false, error: 'missing noCodeRuntimeDispatchAction' };
 
       previewActions.forEach((action) => {
-        if (action.action_key === 'update_todo_item') {
+        if (action.action_key === expected.actionKey) {
           action.enabled = true;
           action.availability = 'enabled';
         }
       });
       const authorizedDispatch = typeof window.noCodeRuntimeDispatchAction === 'function'
-        ? window.noCodeRuntimeDispatchAction('update_todo_item', {
-          id: 1,
-          title: 'Browser smoke update',
-          status: 'done',
-          body: 'Generated browser smoke payload',
-        })
+        ? window.noCodeRuntimeDispatchAction(expected.actionKey, expected.payload)
         : { ok: false, executed: false, error: 'missing noCodeRuntimeDispatchAction' };
 
       return {
@@ -205,7 +250,7 @@ async function runSmoke(config) {
         authorizedDispatch,
         bodyText: document.body.innerText,
       };
-    });
+    }, config.expected);
 
     if (metrics.runtimeVersion !== 'no-code-runtime-v0') {
       throw new Error(`runtime version mismatch: ${metrics.runtimeVersion}`);
@@ -213,15 +258,20 @@ async function runSmoke(config) {
     if (metrics.sectionCount !== 3) {
       throw new Error(`screen count mismatch: ${metrics.sectionCount}`);
     }
-    if (!metrics.bodyText.includes('todo_item_list') || !metrics.bodyText.includes('todo_item_form')) {
+    if (!metrics.bodyText.includes(config.expected.listScreenKey) || !metrics.bodyText.includes(config.expected.formScreenKey)) {
       throw new Error('generated screen labels were not found in body text.');
     }
-    if (metrics.actionMetadata.operationKey !== 'update_todo_item' || metrics.actionMetadata.operationType !== 'update') {
+    if (metrics.actionMetadata.operationKey !== config.expected.operationKey || metrics.actionMetadata.operationType !== config.expected.operationType) {
       throw new Error('generated update action metadata was not found.');
     }
     const fieldRoles = Object.fromEntries(metrics.actionMetadata.fields.map((field) => [field.field_key, field.role]));
-    if (fieldRoles.id !== 'key' || fieldRoles.title !== 'input' || fieldRoles.body !== 'input') {
+    if (fieldRoles[config.expected.keyField] !== 'key') {
       throw new Error('generated update action fields do not describe the operation boundary.');
+    }
+    for (const inputField of config.expected.inputFields) {
+      if (fieldRoles[inputField] !== 'input') {
+        throw new Error(`generated update action field is not an input: ${inputField}`);
+      }
     }
     if (metrics.disabledDispatch.ok || metrics.disabledDispatch.executed) {
       throw new Error('disabled generated action should fail closed in browser dispatch.');
@@ -236,13 +286,13 @@ async function runSmoke(config) {
     if (authorizedIntent.intent_version !== 'no-code-runtime-action-intent-v0') {
       throw new Error('authorized browser dispatch did not build a runtime action intent.');
     }
-    if (authorizedIntent.operation_key !== 'update_todo_item' || authorizedIntent.operation_type !== 'update') {
+    if (authorizedIntent.operation_key !== config.expected.operationKey || authorizedIntent.operation_type !== config.expected.operationType) {
       throw new Error('authorized browser dispatch did not use generated update operation metadata.');
     }
-    if ((authorizedIntent.payload?.key || {}).id !== 1) {
+    if ((authorizedIntent.payload?.key || {})[config.expected.keyField] !== config.expected.keyValue) {
       throw new Error('authorized browser dispatch did not map the generated key field.');
     }
-    if ((authorizedIntent.payload?.input || {}).body !== 'Generated browser smoke payload') {
+    if ((authorizedIntent.payload?.input || {})[config.expected.requiredInputField] !== config.expected.requiredInputValue) {
       throw new Error('authorized browser dispatch did not map generated input fields.');
     }
 

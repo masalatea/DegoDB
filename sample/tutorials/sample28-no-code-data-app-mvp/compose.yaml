@@ -1,0 +1,29 @@
+name: mtool-sample-sample28-no-code-data-app-mvp
+
+services:
+  web-admin:
+    environment:
+      APP_WORK_ROOT: /var/www/work/sample-packs/sample28-no-code-data-app-mvp
+
+  web-lab:
+    environment:
+      APP_WORK_ROOT: /var/www/work/sample-packs/sample28-no-code-data-app-mvp
+
+  db-config:
+    entrypoint:
+      - /bin/sh
+      - -lc
+      - |
+        set -eu
+        rm -rf /docker-entrypoint-initdb.d/*
+        cp -R /docker-entrypoint-initdb-core/. /docker-entrypoint-initdb.d/
+        cp -R /docker-entrypoint-initdb-sample/. /docker-entrypoint-initdb.d/
+        exec docker-entrypoint.sh mariadbd
+    volumes:
+      - db-config-data:/var/lib/mysql
+      - db-config-initdb:/docker-entrypoint-initdb.d
+      - ./docker/mariadb/config-initdb:/docker-entrypoint-initdb-core:ro
+      - ./sample/tutorials/sample28-no-code-data-app-mvp/seed:/docker-entrypoint-initdb-sample:ro
+
+volumes:
+  db-config-initdb:
