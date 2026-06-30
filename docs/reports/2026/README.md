@@ -11,6 +11,14 @@
 
 ## Index
 
+- `2026-0630-mtool-implementation-namespace-cleanup-boundary.md`
+  - Mtool implementation namespace cleanup の対象境界を記録。generated PHP output namespace support とは分離し、365 PHP files / 約3152 function declarations / 約1238 include lines の広い surface を確認。repo-wide migration は開始せず、具体的な helper cluster が決まるまで parked。Status: `BOUNDARY_RECORDED`。
+- `2026-0630-sample28-no-code-data-app-mvp-polish.md`
+  - sample28 MVP の README / plan / report 表記を仕上げ、compose smoke・runtime smoke・pack runtime test・browser UI smoke・full test で pack verification を確認。Status: `MVP_DONE`。
+- `2026-0630-sample28-no-code-runtime-ui-smoke.md`
+  - `check_no_code_runtime_preview_ui_smoke.js` に sample28 profile を追加し、`sample28-no-code-runtime-ui-smoke` で generated list/detail/form DOM、disabled fail-closed dispatch、authorized update intent mapping を headless Chromium で確認。Status: `FIRST_SLICE_DONE`。
+- `2026-0630-sample28-no-code-data-app-first-slice.md`
+  - `sample28-no-code-data-app-mvp` の scaffold / catalog 登録、minimal data model seed、no-code shared contract / managed operation metadata、`NO-CODE-RUNTIME` artifact generation を追加。Follow-up smoke / polish は後続 report に記録。Status: `FIRST_SLICE_DONE`。
 - `2026-0630-no-code-runtime-browser-dispatch-smoke.md`
   - generated `runtime-preview.html` に action metadata と browser-side dispatch helper を埋め込み、sample07 の fail-closed disabled dispatch と authorized update intent probe を headless Chromium で確認。Status: `FIRST_SLICE_DONE`。
 - `2026-0630-no-code-runtime-ui-smoke.md`
