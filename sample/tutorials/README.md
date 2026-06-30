@@ -38,6 +38,7 @@ current runtime tutorial packs:
 - `sample27-app-local-persistence-demo`
 - `sample28-no-code-data-app-mvp`
 - `sample29-no-code-support-case-demo`
+- `sample30-no-code-app-local-sync-demo`
 
 上記は runtime pack であり、`compose.yaml` / `run.sh` / `seed/` を持つ。
 
@@ -66,6 +67,7 @@ make sample26-pack-runtime-test
 make sample27-pack-runtime-test
 make sample28-pack-runtime-test
 make sample29-pack-runtime-test
+make sample30-pack-runtime-test
 make sample28-no-code-runtime-ui-smoke
 make sample29-no-code-runtime-ui-smoke
 make sample18-http-runtime-smoke
@@ -76,4 +78,4 @@ make test
 
 `sample19` は JSON-first content model entrance として、MySQL / MariaDB と SQLite config store profile の両方を検証する。
 
-`sample20` からは ebook / content publishing lane に入り、runtime profile は MySQL / MariaDB canonical のみに絞る。`sample21` は ebook catalog API、`sample22` は chapter workflow、`sample23` は EPUB / media delivery metadata、`sample24` は public reader site、`sample25` は legacy-compatible ProjectToken protected editor CMS API、`sample26` は headless CMS capstone に進める。`sample27` は shared contract から App-local SQLite schema / DBAccess helper へ接続する App-local persistence demo。`sample28` は data-first no-code app MVP として、shared contract / managed operation metadata から `NO-CODE-RUNTIME` artifact を生成し、generated list/detail/form と browser dispatch intent を `sample28-no-code-runtime-ui-smoke` で確認する。`sample29` は support case read-model fields を使う 2 つ目の data-first no-code sample として、polished generated runtime を `sample29-no-code-runtime-ui-smoke` で確認する。current generated runtime security baseline は `sample16` の static bearer authenticated proxy で確認する。
+`sample20` からは ebook / content publishing lane に入り、runtime profile は MySQL / MariaDB canonical のみに絞る。`sample21` は ebook catalog API、`sample22` は chapter workflow、`sample23` は EPUB / media delivery metadata、`sample24` は public reader site、`sample25` は legacy-compatible ProjectToken protected editor CMS API、`sample26` は headless CMS capstone に進める。`sample27` は shared contract から App-local SQLite schema / DBAccess helper へ接続する App-local persistence demo。`sample28` は data-first no-code app MVP として、shared contract / managed operation metadata から `NO-CODE-RUNTIME` artifact を生成し、generated list/detail/form と browser dispatch intent を `sample28-no-code-runtime-ui-smoke` で確認する。`sample29` は support case read-model fields を使う 2 つ目の data-first no-code sample として、polished generated runtime を `sample29-no-code-runtime-ui-smoke` で確認する。`sample30` は no-code action intent を managed operation sync outbox と App-local SQLite handler へ接続する sync-backed no-code demo。current generated runtime security baseline は `sample16` の static bearer authenticated proxy で確認する。

@@ -40,6 +40,7 @@ function app_sample_pack_category_map(): array
             'sample27-app-local-persistence-demo',
             'sample28-no-code-data-app-mvp',
             'sample29-no-code-support-case-demo',
+            'sample30-no-code-app-local-sync-demo',
         ],
         'internal-patterns' => [
             'pattern01-default-property-split',
@@ -125,6 +126,7 @@ function app_sample_pack_runtime_pack_names(): array
         'sample27-app-local-persistence-demo',
         'sample28-no-code-data-app-mvp',
         'sample29-no-code-support-case-demo',
+        'sample30-no-code-app-local-sync-demo',
         'sample51-runtime-sql-server',
         'sample53-runtime-whiteboard',
         'sample56-runtime-misc-proxy',
@@ -166,6 +168,7 @@ function app_sample_pack_project_key_map(): array
         'sample27-app-local-persistence-demo' => 'SAMPLE27',
         'sample28-no-code-data-app-mvp' => 'SAMPLE28',
         'sample29-no-code-support-case-demo' => 'SAMPLE29',
+        'sample30-no-code-app-local-sync-demo' => 'SAMPLE30',
         'sample51-runtime-sql-server' => 'SAMPLE2',
         'sample53-runtime-whiteboard' => 'SAMPLE4',
         'sample56-runtime-misc-proxy' => 'SAMPLE8',

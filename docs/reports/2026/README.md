@@ -11,6 +11,10 @@
 
 ## Index
 
+- `2026-0630-sample30-no-code-app-local-sync-first-slice.md`
+  - `sample30-no-code-app-local-sync-demo` を追加し、generated no-code action intent -> managed operation sync intent -> sync outbox -> App-local SQLite handler の sample-visible path を確認。Status: `FIRST_SLICE_DONE`。
+- `2026-0630-post-sample29-no-code-product-goal-replan.md`
+  - sample29 後の no-code product-goal replan。2 つ目の generated Web/runtime domain proof で blocking gap が出なかったため、次の active implementation として App-local sync no-code demonstration first slice を選択。Status: `DONE`。
 - `2026-0630-sample29-no-code-support-case-first-slice.md`
   - 2 つ目の data-first no-code domain sample として `sample29-no-code-support-case-demo` を追加。support-case domain、read-model context fields、shared contract / managed operation / `NO-CODE-RUNTIME` metadata、pack/runtime smoke、browser UI smoke を確認。Status: `FIRST_SLICE_DONE`。
 - `2026-0630-next-no-code-product-goal-after-runtime-polish.md`
