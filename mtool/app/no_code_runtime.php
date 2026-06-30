@@ -36,12 +36,18 @@ function app_no_code_runtime_render_screen(
             'contract_key' => (string) ($contract['contract_key'] ?? ''),
             'screen_key' => $screenKey,
             'screen_type' => $screenType,
+            'screen_title' => app_no_code_runtime_screen_title($screenKey, $screenType),
+            'screen_subtitle' => app_no_code_runtime_screen_subtitle(
+                (string) ($contract['contract_key'] ?? ''),
+                $screenType,
+            ),
             'fields' => app_no_code_runtime_render_fields($fields),
             'actions' => app_no_code_runtime_render_actions(
                 is_array($screen['actions'] ?? null) ? $screen['actions'] : [],
                 is_array($contract['actions'] ?? null) ? $contract['actions'] : [],
             ),
             'data' => app_no_code_runtime_render_data($screenType, $fields, $rows, $currentItem),
+            'empty_state_message' => app_no_code_runtime_empty_state_message($screenType),
             'sync_status_hint' => (bool) ($screen['sync_status_hint'] ?? false),
         ],
         'error' => '',
@@ -51,6 +57,56 @@ function app_no_code_runtime_render_screen(
 function app_no_code_runtime_version(): string
 {
     return 'no-code-runtime-v0';
+}
+
+function app_no_code_runtime_screen_title(string $screenKey, string $screenType): string
+{
+    $base = $screenKey;
+    foreach (['_list', '_detail', '_form'] as $suffix) {
+        if (str_ends_with($base, $suffix)) {
+            $base = substr($base, 0, -strlen($suffix));
+            break;
+        }
+    }
+
+    $label = app_no_code_runtime_human_label($base !== '' ? $base : $screenKey);
+    return match ($screenType) {
+        'list' => $label . ' List',
+        'detail' => $label . ' Detail',
+        'form' => $label . ' Form',
+        default => $label,
+    };
+}
+
+function app_no_code_runtime_screen_subtitle(string $contractKey, string $screenType): string
+{
+    $contractLabel = app_no_code_runtime_human_label($contractKey);
+    $typeLabel = app_no_code_runtime_human_label($screenType);
+    if ($contractLabel === '') {
+        return $typeLabel;
+    }
+
+    return $contractLabel . ' / ' . $typeLabel;
+}
+
+function app_no_code_runtime_empty_state_message(string $screenType): string
+{
+    return match ($screenType) {
+        'list' => 'No records to show yet.',
+        'detail' => 'No detail data is available yet.',
+        'form' => 'No editable data is available yet.',
+        default => 'No preview data is available yet.',
+    };
+}
+
+function app_no_code_runtime_human_label(string $value): string
+{
+    $normalized = trim(str_replace(['_', '-'], ' ', $value));
+    if ($normalized === '') {
+        return '';
+    }
+
+    return ucwords($normalized);
 }
 
 /**
@@ -263,6 +319,11 @@ function app_no_code_runtime_render_preview_html(array $runtimePreview): string
         $sections[] = app_no_code_runtime_render_screen_html($screenRender);
     }
 
+    $previewOk = (bool) ($runtimePreview['ok'] ?? true);
+    $previewState = $previewOk ? 'ready' : 'error';
+    $previewError = (string) ($runtimePreview['error'] ?? '');
+    $statusText = $previewOk ? 'Preview ready' : ($previewError !== '' ? $previewError : 'Preview could not be prepared.');
+
     return implode("\n", [
         '<!doctype html>',
         '<html lang="en">',
@@ -275,10 +336,13 @@ function app_no_code_runtime_render_preview_html(array $runtimePreview): string
         '</style>',
         '</head>',
         '<body>',
-        '<main class="no-code-preview" data-runtime-version="' . app_no_code_runtime_html_escape((string) ($runtimePreview['runtime_version'] ?? '')) . '">',
+        '<main class="no-code-preview" data-runtime-version="' . app_no_code_runtime_html_escape((string) ($runtimePreview['runtime_version'] ?? '')) . '" data-runtime-state="' . app_no_code_runtime_html_escape($previewState) . '">',
         '<header class="no-code-preview-header">',
+        '<div>',
         '<h1>' . app_no_code_runtime_html_escape((string) ($runtimePreview['project_key'] ?? 'No-code runtime')) . '</h1>',
         '<p>' . app_no_code_runtime_html_escape((string) ($runtimePreview['definition_version'] ?? '')) . '</p>',
+        '</div>',
+        '<span class="no-code-state-badge" data-state="' . app_no_code_runtime_html_escape($previewState) . '">' . app_no_code_runtime_html_escape($statusText) . '</span>',
         '</header>',
         implode("\n", $sections),
         '</main>',
@@ -299,38 +363,73 @@ function app_no_code_runtime_render_screen_html(array $render): string
 {
     $screenType = (string) ($render['screen_type'] ?? '');
     $screenKey = (string) ($render['screen_key'] ?? '');
-    $contractKey = (string) ($render['contract_key'] ?? '');
+    $screenTitle = (string) ($render['screen_title'] ?? app_no_code_runtime_screen_title($screenKey, $screenType));
+    $screenSubtitle = (string) ($render['screen_subtitle'] ?? '');
     $fields = is_array($render['fields'] ?? null) ? $render['fields'] : [];
     $actions = is_array($render['actions'] ?? null) ? $render['actions'] : [];
     $data = is_array($render['data'] ?? null) ? $render['data'] : [];
+    $emptyStateMessage = (string) ($render['empty_state_message'] ?? app_no_code_runtime_empty_state_message($screenType));
+    $screenState = app_no_code_runtime_screen_state($screenType, $data);
+    $screenStatusMessage = app_no_code_runtime_screen_status_message($screenState, $screenType);
 
     $body = $screenType === 'list'
-        ? app_no_code_runtime_render_list_html($fields, is_array($data['rows'] ?? null) ? $data['rows'] : [])
+        ? app_no_code_runtime_render_list_html($fields, is_array($data['rows'] ?? null) ? $data['rows'] : [], $emptyStateMessage)
         : app_no_code_runtime_render_item_screen_html(
             $screenType,
             $fields,
             is_array($data['item'] ?? null) ? $data['item'] : [],
-        );
+            $emptyStateMessage,
+    );
 
     return implode("\n", [
-        '<section class="no-code-screen no-code-screen-' . app_no_code_runtime_html_escape($screenType) . '" data-screen-key="' . app_no_code_runtime_html_escape($screenKey) . '">',
+        '<section class="no-code-screen no-code-screen-' . app_no_code_runtime_html_escape($screenType) . '" data-screen-key="' . app_no_code_runtime_html_escape($screenKey) . '" data-screen-state="' . app_no_code_runtime_html_escape($screenState) . '">',
         '<header class="no-code-screen-header">',
         '<div>',
-        '<h2>' . app_no_code_runtime_html_escape($screenKey) . '</h2>',
-        '<p>' . app_no_code_runtime_html_escape($contractKey . ' / ' . $screenType) . '</p>',
+        '<h2>' . app_no_code_runtime_html_escape($screenTitle) . '</h2>',
+        '<p>' . app_no_code_runtime_html_escape($screenSubtitle) . '</p>',
         '</div>',
+        '<span class="no-code-state-badge" data-state="' . app_no_code_runtime_html_escape($screenState) . '">' . app_no_code_runtime_html_escape($screenStatusMessage) . '</span>',
         app_no_code_runtime_render_actions_html($actions),
         '</header>',
+        '<div class="no-code-action-feedback" role="status" aria-live="polite" data-state="idle">Select an enabled action to preview its intent.</div>',
         $body,
         '</section>',
     ]);
 }
 
 /**
+ * @param array<string,mixed> $data
+ */
+function app_no_code_runtime_screen_state(string $screenType, array $data): string
+{
+    if ($screenType === 'list') {
+        $rows = is_array($data['rows'] ?? null) ? $data['rows'] : [];
+        return $rows === [] ? 'empty' : 'ready';
+    }
+
+    $item = is_array($data['item'] ?? null) ? $data['item'] : [];
+    return $item === [] ? 'empty' : 'ready';
+}
+
+function app_no_code_runtime_screen_status_message(string $screenState, string $screenType): string
+{
+    if ($screenState === 'empty') {
+        return match ($screenType) {
+            'list' => 'Empty',
+            'detail' => 'No detail',
+            'form' => 'No data',
+            default => 'Empty',
+        };
+    }
+
+    return 'Ready';
+}
+
+/**
  * @param list<array<string,mixed>> $fields
  * @param list<array<string,mixed>> $rows
  */
-function app_no_code_runtime_render_list_html(array $fields, array $rows): string
+function app_no_code_runtime_render_list_html(array $fields, array $rows, string $emptyStateMessage = 'No records to show yet.'): string
 {
     $headerCells = [];
     foreach ($fields as $field) {
@@ -354,7 +453,9 @@ function app_no_code_runtime_render_list_html(array $fields, array $rows): strin
     }
 
     if ($bodyRows === []) {
-        $bodyRows[] = '<tr><td colspan="' . max(1, count($fields)) . '"></td></tr>';
+        $bodyRows[] = '<tr class="no-code-empty-row"><td colspan="' . max(1, count($fields)) . '">'
+            . '<span class="no-code-empty-state">' . app_no_code_runtime_html_escape($emptyStateMessage) . '</span>'
+            . '</td></tr>';
     }
 
     return implode("\n", [
@@ -373,10 +474,10 @@ function app_no_code_runtime_render_list_html(array $fields, array $rows): strin
  * @param list<array<string,mixed>> $fields
  * @param array<string,mixed> $item
  */
-function app_no_code_runtime_render_item_screen_html(string $screenType, array $fields, array $item): string
+function app_no_code_runtime_render_item_screen_html(string $screenType, array $fields, array $item, string $emptyStateMessage = 'No preview data is available yet.'): string
 {
     if ($screenType === 'form') {
-        return app_no_code_runtime_render_form_html($fields, $item);
+        return app_no_code_runtime_render_form_html($fields, $item, $emptyStateMessage);
     }
 
     $pairs = [];
@@ -387,6 +488,10 @@ function app_no_code_runtime_render_item_screen_html(string $screenType, array $
             . '<dd>' . app_no_code_runtime_html_escape((string) ($value['display_value'] ?? '')) . '</dd>';
     }
 
+    if ($pairs === []) {
+        return '<p class="no-code-empty-state">' . app_no_code_runtime_html_escape($emptyStateMessage) . '</p>';
+    }
+
     return '<dl class="no-code-detail">' . implode('', $pairs) . '</dl>';
 }
 
@@ -394,7 +499,7 @@ function app_no_code_runtime_render_item_screen_html(string $screenType, array $
  * @param list<array<string,mixed>> $fields
  * @param array<string,mixed> $item
  */
-function app_no_code_runtime_render_form_html(array $fields, array $item): string
+function app_no_code_runtime_render_form_html(array $fields, array $item, string $emptyStateMessage = 'No editable data is available yet.'): string
 {
     $controls = [];
     foreach ($fields as $field) {
@@ -428,6 +533,10 @@ function app_no_code_runtime_render_form_html(array $fields, array $item): strin
         $controls[] = '<label for="field-' . app_no_code_runtime_html_escape($fieldKey) . '"><span>' . $label . '</span>' . $control . '</label>';
     }
 
+    if ($controls === []) {
+        return '<p class="no-code-empty-state">' . app_no_code_runtime_html_escape($emptyStateMessage) . '</p>';
+    }
+
     return '<form class="no-code-form" method="post">' . implode("\n", $controls) . '</form>';
 }
 
@@ -443,10 +552,12 @@ function app_no_code_runtime_render_actions_html(array $actions): string
         }
 
         $enabled = (bool) ($action['enabled'] ?? false);
+        $actionState = $enabled ? 'ready' : 'disabled';
         $buttons[] = '<button type="button" data-action-key="' . app_no_code_runtime_html_escape((string) ($action['action_key'] ?? '')) . '"'
             . ' data-operation-key="' . app_no_code_runtime_html_escape((string) ($action['operation_key'] ?? '')) . '"'
             . ' data-operation-type="' . app_no_code_runtime_html_escape((string) ($action['operation_type'] ?? '')) . '"'
             . ' data-action-enabled="' . ($enabled ? 'true' : 'false') . '"'
+            . ' data-action-state="' . $actionState . '"'
             . ($enabled ? '' : ' disabled')
             . '>' . app_no_code_runtime_html_escape((string) ($action['label'] ?? $action['action_key'] ?? '')) . '</button>';
     }
@@ -465,7 +576,7 @@ function app_no_code_runtime_preview_css(): string
         ':root { color-scheme: light; font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; color: #1f2933; background: #f7f8fa; }',
         'body { margin: 0; }',
         '.no-code-preview { max-width: 1120px; margin: 0 auto; padding: 24px; }',
-        '.no-code-preview-header { margin-bottom: 24px; }',
+        '.no-code-preview-header { display: flex; justify-content: space-between; gap: 16px; align-items: flex-start; margin-bottom: 24px; }',
         '.no-code-preview-header h1 { margin: 0; font-size: 28px; line-height: 1.2; }',
         '.no-code-preview-header p, .no-code-screen-header p { margin: 6px 0 0; color: #5f6b7a; font-size: 13px; }',
         '.no-code-screen { background: #ffffff; border: 1px solid #d8dee8; border-radius: 8px; padding: 18px; margin-bottom: 18px; }',
@@ -474,6 +585,15 @@ function app_no_code_runtime_preview_css(): string
         '.no-code-actions { display: flex; flex-wrap: wrap; gap: 8px; }',
         '.no-code-actions button { min-height: 34px; border: 1px solid #9fb3c8; background: #eef4fb; color: #102a43; border-radius: 6px; padding: 0 12px; font: inherit; }',
         '.no-code-actions button:disabled { border-color: #c8d1dc; background: #eef1f4; color: #7b8794; }',
+        '.no-code-action-feedback { min-height: 20px; margin: -4px 0 12px; color: #486581; font-size: 13px; }',
+        '.no-code-action-feedback[data-state="idle"] { color: #62748a; }',
+        '.no-code-action-feedback[data-state="working"] { color: #334e68; }',
+        '.no-code-action-feedback[data-state="success"] { color: #0f5132; }',
+        '.no-code-action-feedback[data-state="error"] { color: #842029; }',
+        '.no-code-state-badge { align-self: flex-start; border: 1px solid #c8d1dc; border-radius: 999px; padding: 4px 9px; color: #486581; background: #f4f6f8; font-size: 12px; white-space: nowrap; }',
+        '.no-code-state-badge[data-state="ready"], .no-code-state-badge[data-state="success"] { border-color: #badbcc; color: #0f5132; background: #f0f9f4; }',
+        '.no-code-state-badge[data-state="empty"], .no-code-state-badge[data-state="idle"] { border-color: #c8d1dc; color: #52606d; background: #f4f6f8; }',
+        '.no-code-state-badge[data-state="error"] { border-color: #f5c2c7; color: #842029; background: #fff5f5; }',
         '.no-code-table-wrap { overflow-x: auto; }',
         'table { width: 100%; border-collapse: collapse; table-layout: fixed; }',
         'th, td { border-bottom: 1px solid #e4e8ef; padding: 10px; text-align: left; vertical-align: top; overflow-wrap: anywhere; }',
@@ -485,7 +605,8 @@ function app_no_code_runtime_preview_css(): string
         '.no-code-form label { display: grid; gap: 6px; font-size: 13px; color: #52606d; }',
         '.no-code-form input, .no-code-form textarea { box-sizing: border-box; width: 100%; min-height: 36px; border: 1px solid #bcccdc; border-radius: 6px; padding: 8px 10px; font: inherit; color: #1f2933; background: #ffffff; }',
         '.no-code-form textarea { min-height: 96px; resize: vertical; }',
-        '@media (max-width: 680px) { .no-code-preview { padding: 14px; } .no-code-screen-header { display: grid; } .no-code-detail { grid-template-columns: 1fr; } .no-code-detail dt { border-bottom: 0; } }',
+        '.no-code-empty-state { display: block; padding: 12px 10px; color: #62748a; font-size: 14px; }',
+        '@media (max-width: 680px) { .no-code-preview { padding: 14px; } .no-code-preview-header, .no-code-screen-header { display: grid; } .no-code-detail { grid-template-columns: 1fr; } .no-code-detail dt { border-bottom: 0; } }',
     ]);
 }
 
@@ -611,6 +732,23 @@ function app_no_code_runtime_preview_js(): string
     return input;
   }
 
+  function writeActionFeedback(button, result) {
+    var screen = button.closest('.no-code-screen');
+    var feedback = screen ? screen.querySelector('.no-code-action-feedback') : null;
+    if (!feedback) {
+      return;
+    }
+
+    if (result && result.ok) {
+      feedback.textContent = 'Action intent is ready: ' + (result.intent && result.intent.operation_key ? result.intent.operation_key : 'operation');
+      feedback.setAttribute('data-state', 'success');
+      return;
+    }
+
+    feedback.textContent = result && result.error ? result.error : 'Action intent could not be prepared.';
+    feedback.setAttribute('data-state', 'error');
+  }
+
   window.__noCodeRuntimePreview = preview;
   window.__noCodeRuntimeDispatches = [];
   window.noCodeRuntimeDispatchAction = function (actionKey, input) {
@@ -629,7 +767,16 @@ function app_no_code_runtime_preview_js(): string
 
   document.querySelectorAll('.no-code-actions button[data-action-key]').forEach(function (button) {
     button.addEventListener('click', function () {
-      window.noCodeRuntimeDispatchAction(button.getAttribute('data-action-key') || '', collectScreenInput(button));
+      button.setAttribute('data-action-state', 'working');
+      var screen = button.closest('.no-code-screen');
+      var feedback = screen ? screen.querySelector('.no-code-action-feedback') : null;
+      if (feedback) {
+        feedback.textContent = 'Preparing action intent...';
+        feedback.setAttribute('data-state', 'working');
+      }
+      var result = window.noCodeRuntimeDispatchAction(button.getAttribute('data-action-key') || '', collectScreenInput(button));
+      button.setAttribute('data-action-state', result && result.ok ? 'success' : 'error');
+      writeActionFeedback(button, result);
     });
   });
 }());

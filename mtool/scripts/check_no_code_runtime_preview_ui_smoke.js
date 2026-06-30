@@ -71,8 +71,11 @@ function expectedProfile(name) {
     return {
       profile: name,
       listScreenKey: 'todo_item_list',
+      listScreenTitle: 'Todo Item List',
       detailScreenKey: 'todo_item_detail',
+      detailScreenTitle: 'Todo Item Detail',
       formScreenKey: 'todo_item_form',
+      formScreenTitle: 'Todo Item Form',
       actionKey: 'update_todo_item',
       operationKey: 'update_todo_item',
       operationType: 'update',
@@ -94,8 +97,11 @@ function expectedProfile(name) {
     return {
       profile: name,
       listScreenKey: 'no_code_ticket_list',
+      listScreenTitle: 'No Code Ticket List',
       detailScreenKey: 'no_code_ticket_detail',
+      detailScreenTitle: 'No Code Ticket Detail',
       formScreenKey: 'no_code_ticket_form',
+      formScreenTitle: 'No Code Ticket Form',
       actionKey: 'update_no_code_ticket',
       operationKey: 'update_no_code_ticket',
       operationType: 'update',
@@ -237,9 +243,13 @@ async function runSmoke(config) {
       return {
         title: document.title,
         runtimeVersion: document.querySelector('.no-code-preview')?.getAttribute('data-runtime-version') || '',
+        runtimeState: document.querySelector('.no-code-preview')?.getAttribute('data-runtime-state') || '',
         sectionCount: sections.length,
+        emptyScreenCount: sections.filter((section) => section.getAttribute('data-screen-state') === 'empty').length,
+        readyScreenCount: sections.filter((section) => section.getAttribute('data-screen-state') === 'ready').length,
         actionCount: actions.length,
         disabledActionCount: actions.filter((button) => button.disabled).length,
+        idleFeedbackCount: Array.from(document.querySelectorAll('.no-code-action-feedback')).filter((element) => element.getAttribute('data-state') === 'idle').length,
         actionMetadata: {
           actionKey: updateAction.action_key || '',
           operationKey: updateAction.operation_key || '',
@@ -255,11 +265,20 @@ async function runSmoke(config) {
     if (metrics.runtimeVersion !== 'no-code-runtime-v0') {
       throw new Error(`runtime version mismatch: ${metrics.runtimeVersion}`);
     }
+    if (metrics.runtimeState !== 'ready') {
+      throw new Error(`runtime state mismatch: ${metrics.runtimeState}`);
+    }
     if (metrics.sectionCount !== 3) {
       throw new Error(`screen count mismatch: ${metrics.sectionCount}`);
     }
-    if (!metrics.bodyText.includes(config.expected.listScreenKey) || !metrics.bodyText.includes(config.expected.formScreenKey)) {
-      throw new Error('generated screen labels were not found in body text.');
+    if (metrics.emptyScreenCount < 1) {
+      throw new Error('generated empty screen state was not found.');
+    }
+    if (metrics.idleFeedbackCount !== 3) {
+      throw new Error(`initial action feedback state mismatch: ${metrics.idleFeedbackCount}`);
+    }
+    if (!metrics.bodyText.includes(config.expected.listScreenTitle) || !metrics.bodyText.includes(config.expected.formScreenTitle)) {
+      throw new Error('generated human-readable screen labels were not found in body text.');
     }
     if (metrics.actionMetadata.operationKey !== config.expected.operationKey || metrics.actionMetadata.operationType !== config.expected.operationType) {
       throw new Error('generated update action metadata was not found.');

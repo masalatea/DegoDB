@@ -30,6 +30,9 @@ final class NoCodeRuntimeTest extends TestCase
         self::assertSame('no-code-runtime-v0', $list['render']['runtime_version'] ?? '');
         self::assertSame('task_list', $list['render']['screen_key'] ?? '');
         self::assertSame('list', $list['render']['screen_type'] ?? '');
+        self::assertSame('Task List', $list['render']['screen_title'] ?? '');
+        self::assertSame('Task / List', $list['render']['screen_subtitle'] ?? '');
+        self::assertSame('No records to show yet.', $list['render']['empty_state_message'] ?? '');
         self::assertTrue($list['render']['sync_status_hint'] ?? false);
         self::assertSame('Write runtime test', $list['render']['data']['rows'][0]['title']['display_value'] ?? '');
         self::assertSame('true', $list['render']['data']['rows'][0]['is_pinned']['display_value'] ?? '');
@@ -110,14 +113,46 @@ final class NoCodeRuntimeTest extends TestCase
 
         self::assertStringContainsString('<!doctype html>', $html);
         self::assertStringContainsString('data-runtime-version="no-code-runtime-v0"', $html);
+        self::assertStringContainsString('data-runtime-state="ready"', $html);
         self::assertStringContainsString('id="no-code-runtime-preview-data"', $html);
         self::assertStringContainsString('window.noCodeRuntimeDispatchAction', $html);
+        self::assertStringContainsString('Preview ready', $html);
+        self::assertStringContainsString('data-screen-state="ready"', $html);
+        self::assertStringContainsString('Task List', $html);
+        self::assertStringContainsString('Task Detail', $html);
+        self::assertStringContainsString('Task Form', $html);
+        self::assertStringContainsString('class="no-code-action-feedback" role="status" aria-live="polite" data-state="idle"', $html);
+        self::assertStringContainsString('Select an enabled action to preview its intent.', $html);
+        self::assertStringContainsString('data-action-state="ready"', $html);
         self::assertStringContainsString('data-operation-key="update_note"', $html);
         self::assertStringContainsString('Write runtime HTML', $html);
         self::assertStringContainsString('Visible in table', $html);
         self::assertStringContainsString('Visible in detail', $html);
         self::assertStringContainsString('<form class="no-code-form" method="post">', $html);
         self::assertStringContainsString('Editable in form', $html);
+    }
+
+    public function testRendersRuntimePreviewEmptyStateCopy(): void
+    {
+        $definition = $this->screenDefinition();
+        $list = app_no_code_runtime_render_screen($definition, 'task_list');
+
+        self::assertTrue($list['ok'], $list['error']);
+
+        $html = app_no_code_runtime_render_preview_html([
+            'runtime_version' => app_no_code_runtime_version(),
+            'definition_version' => $definition['definition_version'] ?? '',
+            'project_key' => $definition['project_key'] ?? '',
+            'screens' => [
+                $list['render'],
+            ],
+        ]);
+
+        self::assertStringContainsString('No records to show yet.', $html);
+        self::assertStringContainsString('data-screen-state="empty"', $html);
+        self::assertStringContainsString('data-state="empty">Empty</span>', $html);
+        self::assertStringContainsString('class="no-code-empty-row"', $html);
+        self::assertStringContainsString('class="no-code-empty-state"', $html);
     }
 
     public function testDispatchesEnabledActionThroughRuntimeDispatcherIntent(): void

@@ -11,6 +11,12 @@
 
 ## Index
 
+- `2026-0630-generated-no-code-runtime-state-polish-follow-up.md`
+  - generated no-code runtime preview の state polish follow-up。runtime ready/error、screen ready/empty、action idle/working/success/error feedback state を generated HTML / smoke / PHPUnit に追加。`make test` まで確認。Status: `FOLLOW_UP_DONE`。
+- `2026-0630-generated-no-code-runtime-ux-polish-first-slice.md`
+  - generated no-code runtime preview の UX polish first slice。human-readable title/subtitle、empty-state copy、browser action feedback、sample07/sample28 smoke expectation 更新を追加。`make test` まで確認。Status: `FIRST_SLICE_DONE`。
+- `2026-0630-next-no-code-product-goal-replan.md`
+  - sample28 後の no-code product-goal replan。次の active implementation として generated runtime UX polish first slice を選び、labels / states / action feedback / screenshot smoke の小さな first slice に昇格。Status: `DONE`。
 - `2026-0630-mtool-implementation-namespace-cleanup-boundary.md`
   - Mtool implementation namespace cleanup の対象境界を記録。generated PHP output namespace support とは分離し、365 PHP files / 約3152 function declarations / 約1238 include lines の広い surface を確認。repo-wide migration は開始せず、具体的な helper cluster が決まるまで parked。Status: `BOUNDARY_RECORDED`。
 - `2026-0630-sample28-no-code-data-app-mvp-polish.md`
