@@ -11,7 +11,8 @@ function usage() {
 
 Options:
   --html=PATH                    runtime-preview.html path
-  --profile=sample07|sample28    expected no-code runtime shape (default: sample07)
+  --profile=sample07|sample28|sample29
+                                 expected no-code runtime shape (default: sample07)
   --output-dir=PATH              artifact directory root (default: output/playwright/no-code-runtime-preview)
   --headed                       launch Chrome headed
   --headless                     launch Chrome headless
@@ -116,6 +117,33 @@ function expectedProfile(name) {
         status: 'active',
         priority: 'high',
         body: 'Generated sample28 browser smoke payload',
+      },
+    };
+  }
+
+  if (name === 'sample29') {
+    return {
+      profile: name,
+      listScreenKey: 'support_case_list',
+      listScreenTitle: 'Support Case List',
+      detailScreenKey: 'support_case_detail',
+      detailScreenTitle: 'Support Case Detail',
+      formScreenKey: 'support_case_form',
+      formScreenTitle: 'Support Case Form',
+      actionKey: 'update_support_case',
+      operationKey: 'update_support_case',
+      operationType: 'update',
+      keyField: 'id',
+      keyValue: 2001,
+      inputFields: ['subject', 'status', 'severity', 'next_action'],
+      requiredInputField: 'next_action',
+      requiredInputValue: 'Generated sample29 browser smoke next action',
+      payload: {
+        id: 2001,
+        subject: 'Sample29 browser smoke update',
+        status: 'active',
+        severity: 'medium',
+        next_action: 'Generated sample29 browser smoke next action',
       },
     };
   }

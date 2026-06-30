@@ -11,6 +11,10 @@
 
 ## Index
 
+- `2026-0630-sample29-no-code-support-case-first-slice.md`
+  - 2 つ目の data-first no-code domain sample として `sample29-no-code-support-case-demo` を追加。support-case domain、read-model context fields、shared contract / managed operation / `NO-CODE-RUNTIME` metadata、pack/runtime smoke、browser UI smoke を確認。Status: `FIRST_SLICE_DONE`。
+- `2026-0630-next-no-code-product-goal-after-runtime-polish.md`
+  - generated runtime UX/state polish 後の no-code product-goal replan。次の active implementation として Data-first no-code domain sample 2 first slice を選び、少し豊かな domain/read-model pressure を sample 境界で検証する方針に昇格。Status: `DONE`。
 - `2026-0630-generated-no-code-runtime-state-polish-follow-up.md`
   - generated no-code runtime preview の state polish follow-up。runtime ready/error、screen ready/empty、action idle/working/success/error feedback state を generated HTML / smoke / PHPUnit に追加。`make test` まで確認。Status: `FOLLOW_UP_DONE`。
 - `2026-0630-generated-no-code-runtime-ux-polish-first-slice.md`

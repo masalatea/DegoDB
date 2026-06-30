@@ -30,6 +30,7 @@ require_once dirname(__DIR__) . '/mtool/scripts/lib/sample25_ebook_editor_auth_c
 require_once dirname(__DIR__) . '/mtool/scripts/lib/sample26_ebook_headless_cms_capstone_check.php';
 require_once dirname(__DIR__) . '/mtool/scripts/lib/sample27_app_local_persistence_demo_check.php';
 require_once dirname(__DIR__) . '/mtool/scripts/lib/sample28_no_code_data_app_mvp_check.php';
+require_once dirname(__DIR__) . '/mtool/scripts/lib/sample29_no_code_support_case_demo_check.php';
 require_once dirname(__DIR__) . '/mtool/scripts/lib/user_db_contract.php';
 require_once dirname(__DIR__) . '/mtool/scripts/lib/user_db_contract_runtime.php';
 require_once dirname(__DIR__) . '/mtool/scripts/lib/sample9_testpattern_default_property_output_check.php';

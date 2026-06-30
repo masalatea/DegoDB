@@ -235,6 +235,7 @@ final class SamplePhysicalLogicalNamingContractTest extends TestCase
             'tests/Integration/Sample26EbookHeadlessCmsCapstoneTest.php',
             'tests/Integration/Sample27AppLocalPersistenceDemoTest.php',
             'tests/Integration/Sample28NoCodeDataAppMvpTest.php',
+            'tests/Integration/Sample29NoCodeSupportCaseDemoTest.php',
         ];
     }
 

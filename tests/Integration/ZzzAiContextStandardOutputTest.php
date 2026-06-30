@@ -20,7 +20,7 @@ final class ZzzAiContextStandardOutputTest extends TestCase
     {
         $projects = $this->tutorialSeedProjectKeys();
 
-        self::assertCount(28, $projects);
+        self::assertCount(29, $projects);
 
         foreach ($projects as $projectKey => $seedPath) {
             $seed = file_get_contents($seedPath);
@@ -105,7 +105,7 @@ final class ZzzAiContextStandardOutputTest extends TestCase
         }
 
         self::assertSame([], $errors);
-        self::assertCount(28, $summaries);
+        self::assertCount(29, $summaries);
     }
 
     public function testMtoolPublishesSelfAiContextOutputForAiReview(): void
