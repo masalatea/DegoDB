@@ -76,6 +76,7 @@ services:
       - ./mtool/extensions:/var/www/mtool/extensions
       - ./mtool/reference:/var/www/mtool/reference:ro
       - ./mtool/resources:/var/www/mtool/resources:ro
+      - ./mtool/shared:/var/www/mtool/shared:ro
       - ./mtool/scripts:/var/www/mtool/scripts:ro
       - ./tests:/var/www/tests:ro
       - ./work:/var/www/work
@@ -156,6 +157,7 @@ services:
       - ./mtool/extensions:/var/www/mtool/extensions
       - ./mtool/reference:/var/www/mtool/reference:ro
       - ./mtool/resources:/var/www/mtool/resources:ro
+      - ./mtool/shared:/var/www/mtool/shared:ro
       - ./mtool/scripts:/var/www/mtool/scripts:ro
       - ./tests:/var/www/tests:ro
       - ./work:/var/www/work

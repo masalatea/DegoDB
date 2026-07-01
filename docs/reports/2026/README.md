@@ -11,6 +11,108 @@
 
 ## Index
 
+- `2026-0630-reusable-partial-update-server-merge-policy-first-slice.md`
+  - generated server DBAccess update execution に reusable partial-update merge を追加。partial no-code input から existing row を read/merge/write し、sample30 の sample-specific full-row payload completion を削除。Status: `FIRST_SLICE_DONE`。
+- `2026-0630-post-server-side-sync-no-code-product-goal-replan.md`
+  - sample30 server-side sync processing follow-up 後の no-code product-goal replan。partial no-code input と generated server DBAccess full-row update の gap を次の concrete behavior gap として、reusable partial-update server merge policy first slice を選択。Status: `DONE`。
+- `2026-0630-server-side-sync-processing-follow-up-first-slice.md`
+  - sample30 を延長し、2 件目の managed operation sync outbox item を generated server DBAccess handler で処理して server SQLite row を更新する path を確認。transport / conflict resolution / reusable merge policy は対象外。Status: `FIRST_SLICE_DONE`。
+- `2026-0630-post-sample30-no-code-product-goal-replan.md`
+  - sample30 後の no-code product-goal replan。generated no-code action intent -> sync outbox -> App-local SQLite handler が通ったため、次の active implementation として server-side sync processing follow-up first slice を選択。Status: `DONE`。
+- `2026-0630-sample30-no-code-app-local-sync-first-slice.md`
+  - `sample30-no-code-app-local-sync-demo` を追加し、generated no-code action intent -> managed operation sync intent -> sync outbox -> App-local SQLite handler の sample-visible path を確認。Status: `FIRST_SLICE_DONE`。
+- `2026-0630-post-sample29-no-code-product-goal-replan.md`
+  - sample29 後の no-code product-goal replan。2 つ目の generated Web/runtime domain proof で blocking gap が出なかったため、次の active implementation として App-local sync no-code demonstration first slice を選択。Status: `DONE`。
+- `2026-0630-sample29-no-code-support-case-first-slice.md`
+  - 2 つ目の data-first no-code domain sample として `sample29-no-code-support-case-demo` を追加。support-case domain、read-model context fields、shared contract / managed operation / `NO-CODE-RUNTIME` metadata、pack/runtime smoke、browser UI smoke を確認。Status: `FIRST_SLICE_DONE`。
+- `2026-0630-next-no-code-product-goal-after-runtime-polish.md`
+  - generated runtime UX/state polish 後の no-code product-goal replan。次の active implementation として Data-first no-code domain sample 2 first slice を選び、少し豊かな domain/read-model pressure を sample 境界で検証する方針に昇格。Status: `DONE`。
+- `2026-0630-generated-no-code-runtime-state-polish-follow-up.md`
+  - generated no-code runtime preview の state polish follow-up。runtime ready/error、screen ready/empty、action idle/working/success/error feedback state を generated HTML / smoke / PHPUnit に追加。`make test` まで確認。Status: `FOLLOW_UP_DONE`。
+- `2026-0630-generated-no-code-runtime-ux-polish-first-slice.md`
+  - generated no-code runtime preview の UX polish first slice。human-readable title/subtitle、empty-state copy、browser action feedback、sample07/sample28 smoke expectation 更新を追加。`make test` まで確認。Status: `FIRST_SLICE_DONE`。
+- `2026-0630-next-no-code-product-goal-replan.md`
+  - sample28 後の no-code product-goal replan。次の active implementation として generated runtime UX polish first slice を選び、labels / states / action feedback / screenshot smoke の小さな first slice に昇格。Status: `DONE`。
+- `2026-0630-mtool-implementation-namespace-cleanup-boundary.md`
+  - Mtool implementation namespace cleanup の対象境界を記録。generated PHP output namespace support とは分離し、365 PHP files / 約3152 function declarations / 約1238 include lines の広い surface を確認。repo-wide migration は開始せず、具体的な helper cluster が決まるまで parked。Status: `BOUNDARY_RECORDED`。
+- `2026-0630-sample28-no-code-data-app-mvp-polish.md`
+  - sample28 MVP の README / plan / report 表記を仕上げ、compose smoke・runtime smoke・pack runtime test・browser UI smoke・full test で pack verification を確認。Status: `MVP_DONE`。
+- `2026-0630-sample28-no-code-runtime-ui-smoke.md`
+  - `check_no_code_runtime_preview_ui_smoke.js` に sample28 profile を追加し、`sample28-no-code-runtime-ui-smoke` で generated list/detail/form DOM、disabled fail-closed dispatch、authorized update intent mapping を headless Chromium で確認。Status: `FIRST_SLICE_DONE`。
+- `2026-0630-sample28-no-code-data-app-first-slice.md`
+  - `sample28-no-code-data-app-mvp` の scaffold / catalog 登録、minimal data model seed、no-code shared contract / managed operation metadata、`NO-CODE-RUNTIME` artifact generation を追加。Follow-up smoke / polish は後続 report に記録。Status: `FIRST_SLICE_DONE`。
+- `2026-0630-no-code-runtime-browser-dispatch-smoke.md`
+  - generated `runtime-preview.html` に action metadata と browser-side dispatch helper を埋め込み、sample07 の fail-closed disabled dispatch と authorized update intent probe を headless Chromium で確認。Status: `FIRST_SLICE_DONE`。
+- `2026-0630-no-code-runtime-ui-smoke.md`
+  - sample07 generated `runtime-preview.html` を headless Chromium で開く basic UI smoke。list/detail/form DOM と screenshot capture を確認し、次は create/update browser または headless smoke。Status: `FIRST_SLICE_DONE`。
+- `2026-0629-no-code-runtime-html-renderer.md`
+  - `no-code-runtime-v0` render model から list/detail/form の最小 HTML preview を生成し、`NO-CODE-RUNTIME` artifact に `runtime-preview.html` を同梱。sample07 pack check でも HTML preview を確認。次は basic UI smoke。Status: `FIRST_SLICE_DONE`。
+- `2026-0629-no-code-runtime-persisted-operation-flow.md`
+  - no-code runtime action dispatch を managed operation sync intent に橋渡しし、sample07 generated `TodoItemDBAccess::UpdateTodoItem()` で SQLite row を更新する persisted operation flow first slice。次は最小 HTML/runtime renderer。Status: `FIRST_SLICE_DONE`。
+- `2026-0629-no-code-runtime-sample07-artifact.md`
+  - `sample07-dbaccess-crud-basic` に `NO-CODE-RUNTIME` Source Output を接続し、shared contract metadata の `managed-screen` と managed operation metadata から `screen-definition.json` / `runtime-preview.json` が生成・publish できることを sample pack test で確認。次は 1 操作の persisted flow。Status: `IMPLEMENTED`。
+- `2026-0629-no-code-runtime-source-output-artifact.md`
+  - No-code runtime を `no-code-runtime-json` Source Output artifact として出力する slice。`screen-definition.json`、`runtime-preview.json`、`README.md` を生成し、artifact create / publish path を確認。次は sample source output 接続。Status: `IMPLEMENTED`。
+- `2026-0629-managed-operation-sample07-coverage.md`
+  - Managed data operation layer の sample coverage first slice。`sample07-dbaccess-crud-basic` に managed operation metadata seed を追加し、sample pack で `todo_item` operation が generated `TodoItemDBAccess::UpdateTodoItem()` binding に解決されることを確認。Status: `FIRST_SLICE_SCOPE_COMPLETED`。
+- `2026-0629-managed-operation-server-dbaccess-real-coverage.md`
+  - Managed operation server DBAccess executor が generated sample07 `TodoItemDBAccess` / `TodoItemData` を通じて real SQLite row を更新できることを確認する first slice。project catalog selection / sample-facing managed operation wiring は次 slice。Status: `FIRST_SLICE_DONE`。
+- `2026-0629-managed-operation-server-dbaccess-project-catalog-wiring.md`
+  - Managed operation server DBAccess executor 用に、project DBAccess bootstrap candidate catalog から operation binding を作る first slice。実 project metadata の generated / canonical-bootstrap candidate list を managed operation binding selection へ接続。real server DB connection / sample-facing runtime wiring は次 slice。Status: `FIRST_SLICE_DONE`。
+- `2026-0629-managed-operation-server-dbaccess-candidate-selection.md`
+  - Managed operation server DBAccess executor 用に、project-level candidate list から operation に合う DBAccess binding を選ぶ first slice。`contract_key` / `source_name` / `generated_name` を正規化照合し、単一 candidate binding へ委譲する。real server DB connection / sample-facing runtime wiring は次 slice。Status: `FIRST_SLICE_DONE`。
+- `2026-0629-managed-operation-server-dbaccess-binding-discovery.md`
+  - Managed operation server DBAccess executor 用に、generated / canonical DBAccess candidate catalog item から execution binding を作る first slice。`data_class` / `dbaccess_class` / `method_catalog` から operation type 対応 method map を作成。project-wide candidate selection / real server DB execution は次 slice。Status: `FIRST_SLICE_DONE`。
+- `2026-0629-managed-operation-server-dbaccess-outbox-handler.md`
+  - Managed operation outbox processor から server DBAccess executor を呼び出す handler boundary。outbox item の persisted sync intent を server DBAccess executor に委譲し、processor が `done` にする最小接続を確認。generated artifact binding discovery / real server DB connection は次 slice。Status: `FIRST_SLICE_DONE`。
+- `2026-0629-managed-operation-server-dbaccess-executor-first-slice.md`
+  - Managed operation sync intent を generated server DBAccess class / method に渡す execution adapter first slice。method map 解決、DataClass object hydrate、DBAccess method 呼び出し境界を固定。real server DB 接続 / generated artifact wiring は次 slice。Status: `FIRST_SLICE_DONE`。
+- `2026-0629-managed-operation-app-local-outbox-handler.md`
+  - Managed operation outbox processor から App-local executor を呼び出す handler boundary。outbox item の persisted sync intent を App-local executor に委譲し、processor が `done` にする最小接続を確認。server DBAccess / transport は次 slice。Status: `FIRST_SLICE_DONE`。
+- `2026-0629-managed-operation-app-local-executor-first-slice.md`
+  - Managed operation sync intent を App-local SQLite persistence helper に接続する first slice。`read` / `create` / `update` を App-local DTO helper へ委譲し、partial update は既存 DTO へ merge、local metadata は dirty にする。server DBAccess / transport は次 slice。Status: `FIRST_SLICE_DONE`。
+- `2026-0629-managed-operation-outbox-processor-contract.md`
+  - Managed operation sync outbox の concrete processor first slice。next pending selection -> claim -> handler -> done / failed の lifecycle contract を固定。generated DBAccess / App-local helper execution は次 slice。Status: `FIRST_SLICE_DONE`。
+- `2026-0629-managed-operation-outbox-claim-contract.md`
+  - Managed operation sync outbox の processor contract first slice。pending outbox record を `running` に claim し、attempts increment / last_error clear / double-claim no-op を固定。DBAccess execution は次 slice。Status: `FIRST_SLICE_DONE`。
+- `2026-0629-managed-operation-next-pending-outbox-selection.md`
+  - Managed operation sync outbox の processor entry first slice。project-scoped に `pending` outbox record を `attempts ASC, id ASC` で 1 件選択する repository API を追加。lock / claim / execution は次 slice。Status: `FIRST_SLICE_DONE`。
+- `2026-0629-managed-operation-outbox-status-transitions.md`
+  - Managed operation sync outbox record を `running` / `done` / `failed` に遷移する processing first slice。attempts increment、last_error 記録・クリア、retry 時の attempts 保持を固定。実 processor / DBAccess execution は次 slice。Status: `FIRST_SLICE_DONE`。
+- `2026-0629-managed-operation-sync-outbox-first-slice.md`
+  - Managed operation sync intent を config DB の `project_managed_operation_sync_outbox` に idempotent enqueue する first slice。`managed-operation-sync-intent-v0` の永続化境界、dedupe key による重複抑止、catalog fetch を追加。transport / conflict resolution は次 slice。Status: `FIRST_SLICE_DONE`。
+- `2026-0629-managed-operation-sync-intent-skeleton.md`
+  - Managed operation execution plan から `managed-operation-sync-intent-v0` を作る sync skeleton first slice。`local-copy` / `server-copy`、`app-local` / `server` endpoint、key / input / filter payload、output field policy、deterministic dedupe key を固定。outbox persistence と transport は次 slice。Status: `FIRST_SLICE_DONE`。
+- `2026-0629-managed-operation-execution-plan-adapter.md`
+  - Managed operation metadata と shared contract と principal から副作用なしの `plan-only` execution plan を作る first slice。policy evaluation 後に key / input / filter / output field を generated DTO name へ正規化し、未知 input と必須 input 欠落を fail-closed に扱う。DBAccess 実行と sync queue は次 slice。Status: `FIRST_SLICE_DONE`。
+- `2026-0629-managed-operation-docs-source-output.md`
+  - Managed operation metadata を `managed-operation-docs-md` Source Output artifact として出力。shared contract manifest と managed operation snapshot から `managed-operations.json`、`managed-operations.md`、`README.md` を生成し、create / publish path を確認。Status: `COMPLETED`。
+- `2026-0629-managed-operation-metadata-first-slice.md`
+  - Managed data operation layer の first slice。`project_managed_operations` / `project_managed_operation_fields`、PDO repository、permission key / roles / scopes / claims / shared contract storage-role を見る fail-closed evaluator を追加。DBAccess 実行、sync runtime、no-code binding は次 slice。Status: `FIRST_SLICE_DONE`。
+- `2026-0629-app-local-persistence-source-output-artifacts.md`
+  - App-local persistence を `app-local-persistence-php` Source Output artifact として正式化。shared contract manifest v0 から `schema.sql`、`app-local-contract.json`、`app-local-summary.json`、`AppLocalPersistence.php`、`README.md` を出力し、generated PHP wrapper の SQLite apply / save / read round trip と sample27 artifact generation を確認。sample27 に標準 companion `AI-CONTEXT-MD` も追加。次は managed data operation layer。Status: `COMPLETED`。
+- `2026-0629-app-local-persistence-sample27-demo.md`
+  - App-local persistence first demo の round trip proof。`sample27-app-local-persistence-demo` を追加し、server fixture row -> shared contract DTO -> App-local SQLite schema apply -> App-local DBAccess save/read -> DTO compare を PDO harness で確認。local metadata は DTO shape から分離。次は App-local schema / DBAccess の Source Output artifact 化。Status: `COMPLETED`。
+- `2026-0629-app-local-dbaccess-first-slice.md`
+  - App-local persistence first demo の DBAccess first slice。formal shared contract manifest v0 を使い、DTO `generated_name` と SQLite `physical_name` を対応づけて save/read する generic app-layer helper を追加。local metadata は DTO shape の外に分離し、missing field は fail-closed。sample27 と generated App-local DBAccess Source Output は残件。Status: `FIRST_SLICE_DONE`。
+- `2026-0629-app-local-persistence-first-slice.md`
+  - App-local persistence first demo の first slice。formal `shared-contract-manifest-v0` から App-local SQLite DDL を生成し、PDO SQLite に apply して table / index を検査する app-layer API を追加。business fields と local metadata columns を分離し、DTO-shaped business row の保存・読み戻しで local metadata が DTO shape の外に保てることを確認。App-local DBAccess、runtime/harness、sample27 round trip は残件。Status: `FIRST_SLICE_DONE`。
+- `2026-0629-shared-dataclass-contract-foundation-first-slice.md`
+  - Shared DataClass contract foundation の完了記録。DataClass metadata と table metadata を join して shared contract manifest v0 を作る app-layer builder、manifest validator、DataClass field shape compare、`shared-contract-json` source output、`shared-contract-typescript` DTO output、明示 shared contract metadata table / repository を追加。generated DataClass と shared contract を別 artifact として扱う方針を実装へ反映。`make test` で確認。Status: `COMPLETED`。
+- `2026-0629-shared-contract-core-vocabulary.md`
+  - Shared DataClass contract foundation の前提として、shared contract manifest v0 の最小語彙、validator、reserved local metadata columns、sample02/task fixture test を追加。`mtool/shared/shared_contract_core.php` を新設し、`compose.yaml` で `mtool/shared` を web-admin / web-lab に mount。`make test` で確認。次の主線は Shared DataClass contract foundation。Status: `COMPLETED`。
+- `2026-0629-dto-save-read-spike.md`
+  - Gate 0 の DTO Save/Read Spike 結果。App Local SQLite Schema Spike の disposable SQLite DB に 2 件の DTO-shaped row を保存し、同じ DTO shape で読み戻せることを確認。key / default-like / nullable fields が round trip し、dirty / sync_status / tombstone などの local metadata は DTO shape の外に保てることを確認。これにより shared contract -> App-local schema -> DTO save/read の最小核が成立。Status: `GATE0_FS_COMPLETED`。
+- `2026-0629-app-local-sqlite-schema-spike.md`
+  - Gate 0 の App Local SQLite Schema Spike 結果。明示的な nullable / default / key を含む minimal `task-default` contract から SQLite DDL を生成し、`work/feasibility/app-local-sqlite-schema-sample02/app-local.sqlite` へ apply 成功。core fields と local metadata columns を分離し、metadata column collision を拒否する方針を確認。Shared Contract Manifest Spike と合わせて、DataClass は implementation-facing DTO/class surface、shared contract は persistence / sync / no-code semantics の language-neutral source として別管理すべき、という元の見立てを支持。次は DTO Save/Read Spike。Status: `GATE0_FS_COMPLETED`。
+- `2026-0629-shared-contract-manifest-spike.md`
+  - Gate 0 の Shared Contract Manifest Spike 結果。`mtool/scripts/experimental/shared_contract_manifest_spike.php` で既存 DataClass metadata から language-neutral manifest skeleton を生成し、`SAMPLE02` の generated PHP DataClass properties と 7 field すべて一致することを確認。ただし nullable / default / key / enum-like status は DataClass metadata 単体では欠落するため、正式化前に table metadata join または separate contract metadata が必要。DataClass と shared contract を同じ canonical artifact にしない判断を支持。Status: `GATE0_FS_COMPLETED_WITH_GAP`。
+- `2026-0629-mtool-auth-foundation-first-slice.md`
+  - Mtool auth 基盤 first slice の完了記録。旧 `ProjectUser` read/write bit 群を user-specific permission として復活させず、16 個の legacy permission unit を棚卸しして role-based permission key へ畳み込み、normalized principal shape と all-pass / fail-closed authorization evaluator を `mtool/app/auth_foundation.php` に追加。`AuthFoundationContractTest`、`ProjectIdentityMembershipPermissionTest`、`ProjectRouteAuthorizationContractTest` で確認。Gate 0 FS と Shared Contract Core Vocabulary は完了済みで、次の主線は Shared DataClass contract foundation。Status: `COMPLETED`。
+- `2026-0628-app-local-db-feasibility-studies.md`
+  - App local DB / sync / no-code app roadmap 本体とは別に、独立して実施できる feasibility study を整理した spike catalog。Auth 関連の Legacy Permission Unit Inventory / Operation Policy Evaluator / Principal Mapping は通常機能としての Mtool auth foundation first slice へ格上げ済み。App-local 側の core FS として Shared Contract Manifest、App Local SQLite Schema、DTO Save/Read を実行し、DataClass と shared contract を別 artifact として管理すべき判断を確認。Shared Contract Core Vocabulary で shared contract manifest v0 語彙と validator を固定済み。次の実装単位は Shared DataClass contract foundation。Legacy Permission Unit Inventory では旧 user-specific read/write bit 群を直接復活させず、RBAC の role -> permission key 設計素材にする方針を記録。Status: `FEASIBILITY_STUDY_CATALOG_CORE_FS_COMPLETED`。
+- `2026-0628-app-local-db-and-sync-roadmap.md`
+  - 元々の 10 年前の構想に含まれていた App 内 DB と server DB の同期型ユースケースを、`one canonical design, multiple outputs` の current Mtool roadmap 候補として再整理したメモ。server RDB から import した設計を master とし、server DBAccess / App local DBAccess / sync role documentation へ分けて出す方向、App-only data と server copy data の分類、単体 SQLite / 単体 RDB workflow を損なわない compatibility principle、DataClass contract を flag ではなく別 metadata として持つ設計判断、データ操作の framework 化と no-code app への接続、operation permission を SSO / OIDC claims / roles / scopes へ map し optional standard SSO profile と限定的な simple-local profile を使い分ける方針、principal provider は択一・authorization は全通し・endpoint auth は個別選択とする auth composition、deployment auth mode / provider details / principal mapping / operation policy の auth selection model、Mtool auth foundation first slice から App-local FS、shared contract、App-local persistence、managed operation、screen definition、no-code runtime MVP、no-code app sample まで進む end-to-end spine、required capabilities、phase draft、detailed implementation draft、first slice 候補を記録。Status: `ROADMAP_CANDIDATE`。
 - `2026-0627-postgresql-user-db-lane-completion.md`
   - PostgreSQL Input / Output support を、再利用可能な local compose-backed completion gate と runbook まで含めて閉じた記録。Input は sample12 live schema import、Output は sample10 MySQL/PostgreSQL generated DBAccess contract compare で確認する。Mtool config store PostgreSQL support は scope 外。Status: `POSTGRESQL_INPUT_OUTPUT_SUPPORT_COMPLETED`。
 - `2026-0627-generated-physical-logical-sample-naming-plan.md`
