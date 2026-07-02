@@ -30,7 +30,9 @@ require_once __DIR__ . '/project_source_output_change_order_page.php';
 require_once __DIR__ . '/project_source_output_new_page.php';
 require_once __DIR__ . '/project_source_output_detail_page.php';
 require_once __DIR__ . '/project_source_output_edit_page.php';
+require_once __DIR__ . '/project_source_output_artifact_detail_page.php';
 require_once __DIR__ . '/project_source_output_download_page.php';
+require_once __DIR__ . '/project_sync_outbox_detail_page.php';
 require_once __DIR__ . '/project_compare_output_settings_page.php';
 require_once __DIR__ . '/project_compare_output_additional_paths_page.php';
 require_once __DIR__ . '/project_custom_proxies_page.php';
@@ -202,8 +204,16 @@ function app_run_http_request(): void
                 app_render_project_source_output_edit_page($app, $request);
                 return;
 
+            case 'project_source_output_artifact_detail':
+                app_render_project_source_output_artifact_detail_page($app, $request);
+                return;
+
             case 'project_source_output_download':
                 app_render_project_source_output_download_page($app, $request);
+                return;
+
+            case 'project_sync_outbox_detail':
+                app_render_project_sync_outbox_detail_page($app, $request);
                 return;
 
             case 'project_compare_output_settings':

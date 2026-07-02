@@ -13,10 +13,10 @@ When someone asks for "the plan list", answer from this section first. / 「計�
 
 | Order | Work unit / 作業の塊 | Commit unit / コミット単位 | Status |
 | --- | --- | --- | --- |
-| 1 | Post-partial-update merge no-code product goal replan / partial-update merge 後の no-code product goal 再計画 | Choose the next product-facing no-code slice after server DBAccess update can merge partial no-code input with an existing row | `ACTIVE_NEXT` |
+| 1 | Post-runtime error/retry visibility no-code product goal replan / runtime error/retry visibility 後の product goal 再計画 | Choose the next small no-code product-facing implementation after runtime error/retry visibility | `ACTIVE_NEXT` |
 | 2 | Mtool implementation namespace cleanup / Mtool 実装 namespace cleanup | Boundary inventory is recorded; no implementation is recommended until a specific helper cluster or maintenance goal is chosen | `PARKED_REPLAN` |
 
-The first sync-backed no-code demonstration is complete as `sample30-no-code-app-local-sync-demo`, the narrow server-side sync processing follow-up first slice is complete inside sample30, and reusable partial-update server merge policy is complete for the first slice. The active next step is to replan before selecting another product-facing no-code slice. / 最初の sync-backed no-code demonstration は `sample30-no-code-app-local-sync-demo` として完了し、narrow な server-side sync processing follow-up first slice も sample30 内で完了、reusable partial-update server merge policy も first slice として完了しました。次の active step は、別の product-facing no-code slice を選ぶ前の replan です。
+The first sync-backed no-code demonstration is complete as `sample30-no-code-app-local-sync-demo`, the narrow server-side sync processing follow-up first slice is complete inside sample30, reusable partial-update server merge policy is complete for the first slice, sync handoff visibility polish is complete for the first slice, the first operator/admin no-code workflow slice is complete as an inspection-only source-output summary, operator preview health/detail links are complete for the first slice, read-only source-output artifact detail is complete for the first slice, sync error-state visibility is complete for the first slice, operator failed-sync inspection is complete for the first slice, operator sync outbox detail is complete for the first slice, sync retry eligibility guard is complete for the first slice, operator sync retry action is complete for the first slice, retry processing smoke is complete for the first slice, operator retry feedback polish is complete for the first slice, and no-code runtime error/retry visibility is complete for the first slice. The next active step is a short post-runtime-error/retry-visibility product goal replan. / 最初の sync-backed no-code demonstration は `sample30-no-code-app-local-sync-demo` として完了し、narrow な server-side sync processing follow-up first slice も sample30 内で完了、reusable partial-update server merge policy も first slice として完了、sync handoff visibility polish も first slice として完了、operator/admin no-code workflow first slice も inspection-only な source-output summary として完了、operator preview health/detail links も first slice として完了、read-only source-output artifact detail も first slice として完了し、sync error-state visibility も first slice として完了、operator failed-sync inspection も first slice として完了、operator sync outbox detail も first slice として完了、sync retry eligibility guard も first slice として完了、operator sync retry action も first slice として完了、retry processing smoke も first slice として完了、operator retry feedback polish も first slice として完了、no-code runtime error/retry visibility も first slice として完了しました。次の active step は runtime error/retry visibility 後の短い product goal replan です。
 
 ## Priority Rationale / 優先理由
 
@@ -63,7 +63,31 @@ These are planning estimates, not deadlines. / これは計画用の目安であ
 | 27 | Server-side sync processing follow-up first slice / server-side sync processing follow-up first slice | Completed / 完了 | Extended sample30 with generated server DBAccess materialization, binding fallback from the generated method catalog, server outbox handler processing, and server SQLite row verification. Report: [2026-0630 Server-Side Sync Processing Follow-Up First Slice](reports/2026/2026-0630-server-side-sync-processing-follow-up-first-slice.md). |
 | 28 | Post-server-side sync no-code product goal replan / server-side sync 後の no-code product goal 再計画 | Completed / 完了 | Chose Reusable partial-update server merge policy as the next product-facing implementation. Decision report: [2026-0630 Post-Server-Side Sync No-Code Product Goal Replan](reports/2026/2026-0630-post-server-side-sync-no-code-product-goal-replan.md). |
 | 29 | Reusable partial-update server merge policy first slice / reusable partial-update server merge policy first slice | Completed / 完了 | Added generated server DBAccess partial update merge in the shared executor, removed sample30's sample-specific full-row payload completion, and verified sample30 plus direct server DBAccess coverage. Report: [2026-0630 Reusable Partial-Update Server Merge Policy First Slice](reports/2026/2026-0630-reusable-partial-update-server-merge-policy-first-slice.md). |
-| 30 | Post-partial-update merge no-code product goal replan / partial-update merge 後の no-code product goal 再計画 | 0.5 day / 半日 | Active docs/planning step. Choose the next product-facing no-code slice after partial no-code update input can be merged into generated server DBAccess updates. |
+| 30 | Post-partial-update merge no-code product goal replan / partial-update merge 後の no-code product goal 再計画 | Completed / 完了 | Chose Sync handoff visibility polish as the next product-facing implementation. Decision report: [2026-0630 Post-Partial-Update Merge No-Code Product Goal Replan](reports/2026/2026-0630-post-partial-update-merge-no-code-product-goal-replan.md). |
+| 31 | Sync handoff visibility polish first slice / sync handoff visibility polish first slice | Completed / 完了 | Added generated runtime sync-status hint badges, sample30 App-local/server handoff visibility summary, and focused/full verification. Report: [2026-0630 Sync Handoff Visibility Polish First Slice](reports/2026/2026-0630-sync-handoff-visibility-polish-first-slice.md). |
+| 32 | Post-sync handoff visibility no-code product goal replan / sync handoff visibility 後の no-code product goal 再計画 | Completed / 完了 | Chose Operator/admin no-code workflow as the next product-facing implementation. Decision report: [2026-0630 Post-Sync Handoff Visibility No-Code Product Goal Replan](reports/2026/2026-0630-post-sync-handoff-visibility-no-code-product-goal-replan.md). |
+| 33 | Operator/admin no-code workflow first slice / operator/admin no-code workflow first slice | Completed / 完了 | Added an inspection-only `NO-CODE-RUNTIME` summary to the existing Source Outputs admin page, backed by a reusable inspection helper and focused PHPUnit coverage. Report: [2026-0630 Operator/Admin No-Code Workflow First Slice](reports/2026/2026-0630-operator-admin-no-code-workflow-first-slice.md). |
+| 34 | Post-operator/admin no-code product goal replan / operator/admin no-code 後の product goal 再計画 | Completed / 完了 | Chose Operator preview health/detail links as the next product-facing implementation. Decision report: [2026-0630 Post-Operator/Admin No-Code Product Goal Replan](reports/2026/2026-0630-post-operator-admin-no-code-product-goal-replan.md). |
+| 35 | Operator preview health/detail links first slice / operator preview health・detail link first slice | Completed / 完了 | Added health summary and direct definition/detail/download/preview path affordances around existing generated no-code runtime artifacts. Report: [2026-0630 Operator Preview Health Detail Links First Slice](reports/2026/2026-0630-operator-preview-health-detail-links-first-slice.md). |
+| 36 | Post-operator preview health no-code product goal replan / operator preview health 後の product goal 再計画 | Completed / 完了 | Chose Operator source-output artifact detail as the next product-facing implementation. Decision report: [2026-0630 Post-Operator Preview Health No-Code Product Goal Replan](reports/2026/2026-0630-post-operator-preview-health-no-code-product-goal-replan.md). |
+| 37 | Operator source-output artifact detail first slice / operator source-output artifact detail first slice | Completed / 完了 | Added a read-only artifact detail route/page that summarizes manifest, archive, bundle, runtime source, and download affordance. Report: [2026-0630 Operator Source-Output Artifact Detail First Slice](reports/2026/2026-0630-operator-source-output-artifact-detail-first-slice.md). |
+| 38 | Post-operator artifact detail no-code product goal replan / operator artifact detail 後の product goal 再計画 | Completed / 完了 | Chose Sync error-state visibility as the next product-facing implementation. Decision report: [2026-0630 Post-Operator Artifact Detail No-Code Product Goal Replan](reports/2026/2026-0630-post-operator-artifact-detail-no-code-product-goal-replan.md). |
+| 39 | Sync error-state visibility first slice / sync error-state visibility first slice | Completed / 完了 | Added one deterministic sample30 failed outbox path using existing status, attempts, and last_error fields. Report: [2026-0630 Sync Error-State Visibility First Slice](reports/2026/2026-0630-sync-error-state-visibility-first-slice.md). |
+| 40 | Post-sync error-state visibility no-code product goal replan / sync error-state visibility 後の product goal 再計画 | Completed / 完了 | Chose Operator failed-sync inspection as the next product-facing implementation. Decision report: [2026-0630 Post-Sync Error-State Visibility No-Code Product Goal Replan](reports/2026/2026-0630-post-sync-error-state-visibility-no-code-product-goal-replan.md). |
+| 41 | Operator failed-sync inspection first slice / operator failed-sync inspection first slice | Completed / 完了 | Added read-only failed sync outbox inspection to Source Outputs admin using existing status, attempts, and last_error fields. Report: [2026-0630 Operator Failed-Sync Inspection First Slice](reports/2026/2026-0630-operator-failed-sync-inspection-first-slice.md). |
+| 42 | Post-operator failed-sync inspection no-code product goal replan / operator failed-sync inspection 後の product goal 再計画 | Completed / 完了 | Chose Operator sync outbox detail as the next product-facing implementation. Decision report: [2026-0630 Post-Operator Failed-Sync Inspection No-Code Product Goal Replan](reports/2026/2026-0630-post-operator-failed-sync-inspection-no-code-product-goal-replan.md). |
+| 43 | Operator sync outbox detail first slice / operator sync outbox detail first slice | Completed / 完了 | Added a read-only project-scoped sync outbox item detail page with intent payload and list links. Report: [2026-0630 Operator Sync Outbox Detail First Slice](reports/2026/2026-0630-operator-sync-outbox-detail-first-slice.md). |
+| 44 | Post-operator sync outbox detail no-code product goal replan / operator sync outbox detail 後の product goal 再計画 | Completed / 完了 | Chose Sync retry eligibility guard as the next product-facing implementation. Decision report: [2026-0630 Post-Operator Sync Outbox Detail No-Code Product Goal Replan](reports/2026/2026-0630-post-operator-sync-outbox-detail-no-code-product-goal-replan.md). |
+| 45 | Sync retry eligibility guard first slice / sync retry eligibility guard first slice | Completed / 完了 | Added a fail-closed retry eligibility helper and exposed its read-only decision in operator detail. Report: [2026-0630 Sync Retry Eligibility Guard First Slice](reports/2026/2026-0630-sync-retry-eligibility-guard-first-slice.md). |
+| 46 | Post-sync retry eligibility guard no-code product goal replan / sync retry eligibility guard 後の product goal 再計画 | Completed / 完了 | Chose Operator sync retry action as the next product-facing implementation. Decision report: [2026-0630 Post-Sync Retry Eligibility Guard No-Code Product Goal Replan](reports/2026/2026-0630-post-sync-retry-eligibility-guard-no-code-product-goal-replan.md). |
+| 47 | Operator sync retry action first slice / operator sync retry action first slice | Completed / 完了 | Added a narrow operator POST action that requeues eligible failed sync outbox items to pending without processing them inline. Report: [2026-0630 Operator Sync Retry Action First Slice](reports/2026/2026-0630-operator-sync-retry-action-first-slice.md). |
+| 48 | Post-operator sync retry action no-code product goal replan / operator sync retry action 後の product goal 再計画 | Completed / 完了 | Chose Retry processing smoke as the next product-facing confidence step. Decision report: [2026-0630 Post-Operator Sync Retry Action No-Code Product Goal Replan](reports/2026/2026-0630-post-operator-sync-retry-action-no-code-product-goal-replan.md). |
+| 49 | Retry processing smoke first slice / retry processing smoke first slice | Completed / 完了 | Proved a requeued pending item is picked up by the existing processor path without adding scheduler, transport, or conflict resolution. Report: [2026-0630 Retry Processing Smoke First Slice](reports/2026/2026-0630-retry-processing-smoke-first-slice.md). |
+| 50 | Post-retry processing smoke no-code product goal replan / retry processing smoke 後の product goal 再計画 | Completed / 完了 | Chose Operator retry feedback polish as the next small product-facing implementation. Decision report: [2026-0630 Post-Retry Processing Smoke No-Code Product Goal Replan](reports/2026/2026-0630-post-retry-processing-smoke-no-code-product-goal-replan.md). |
+| 51 | Operator retry feedback polish first slice / operator retry feedback polish first slice | Completed / 完了 | Made the post-requeue operator result and next processor step clearer without adding scheduler, transport, or audit tables. Report: [2026-0630 Operator Retry Feedback Polish First Slice](reports/2026/2026-0630-operator-retry-feedback-polish-first-slice.md). |
+| 52 | Post-operator retry feedback polish no-code product goal replan / operator retry feedback polish 後の product goal 再計画 | Completed / 完了 | Chose No-code runtime error/retry visibility as the next product-facing implementation. Decision report: [2026-0630 Post-Operator Retry Feedback Polish No-Code Product Goal Replan](reports/2026/2026-0630-post-operator-retry-feedback-polish-no-code-product-goal-replan.md). |
+| 53 | No-code runtime error/retry visibility first slice / no-code runtime error/retry visibility first slice | Completed / 完了 | Surfaced failed/retryable sync state in generated runtime artifacts without adding retry mutation there. Report: [2026-0630 No-Code Runtime Error/Retry Visibility First Slice](reports/2026/2026-0630-no-code-runtime-error-retry-visibility-first-slice.md). |
+| 54 | Post-runtime error/retry visibility no-code product goal replan / runtime error/retry visibility 後の product goal 再計画 | 0.5 day / 半日 | Active planning step. Choose the next small no-code product-facing implementation after runtime error/retry visibility. |
 
 ## Data-First No-Code Domain Sample 2 First Slice / data-first no-code domain sample 2 first slice
 
@@ -186,16 +210,465 @@ Boundary / 境界:
 
 ## Post-Partial-Update Merge No-Code Product Goal Replan / partial-update merge 後の no-code product goal 再計画
 
+Status: `DONE`. Decision report: [2026-0630 Post-Partial-Update Merge No-Code Product Goal Replan](reports/2026/2026-0630-post-partial-update-merge-no-code-product-goal-replan.md). / Status: `DONE`。判断 report: [2026-0630 Post-Partial-Update Merge No-Code Product Goal Replan](reports/2026/2026-0630-post-partial-update-merge-no-code-product-goal-replan.md)。
+
+This planning item selected Sync handoff visibility polish as the next active implementation item. / この planning item では Sync handoff visibility polish を次の active implementation item として選びました。
+
+| Candidate / 候補 | Why / 目的 | First slice estimate / first slice 目安 | Decision |
+| --- | --- | --- | --- |
+| Sync handoff visibility polish | Make generated/runtime artifacts show App-local/server processing state more clearly now that both processing paths work. | 0.5 - 2 days / 半日 - 2 日 | Selected. This is the smallest product-facing continuation after both App-local and server-side sync processing paths work. |
+| Operator/admin no-code workflow | Show how an operator chooses, publishes, or inspects no-code runtime artifacts. | 1 - 3 days / 1 - 3 日 | Deferred. Operator surface still needs clearer scope. |
+| Additional sync behavior pressure | Add a small retry/error-state or merge edge proof after partial update merge. | 1 - 3 days / 1 - 3 日 | Deferred. Data behavior is good enough for now; make the existing handoff visible first. |
+| Mtool implementation namespace cleanup | Revisit the parked namespace cleanup with a concrete helper cluster. | 1 - 3 days / 1 - 3 日 | Remains parked until a narrow helper cluster is selected. |
+
+## Sync Handoff Visibility Polish First Slice / sync handoff visibility polish first slice
+
+Status: `FIRST_SLICE_DONE`. Report: [2026-0630 Sync Handoff Visibility Polish First Slice](reports/2026/2026-0630-sync-handoff-visibility-polish-first-slice.md). / Status: `FIRST_SLICE_DONE`。Report: [2026-0630 Sync Handoff Visibility Polish First Slice](reports/2026/2026-0630-sync-handoff-visibility-polish-first-slice.md)。
+
+This implementation work was selected after reusable partial-update server merge policy and is complete for the first slice. / これは reusable partial-update server merge policy 後に選んだ implementation work で、first slice は完了です。
+
+| Step | Work / 作業 | Status | Rough effort / 目安 | Output / 成果物 |
+| --- | --- | --- | --- | --- |
+| SH1 | Visibility boundary / visibility 境界 | `DONE` | 0.5 day / 半日 | Chose generated sync-status hint badges plus sample30 checker-visible App-local/server handoff summary. |
+| SH2 | Runtime/artifact state model / runtime・artifact state model | `DONE` | 0.5 day / 半日 | `local-copy` contracts now expose sync status hints, and generated runtime HTML renders a sync status badge for list/detail screens. |
+| SH3 | Generated preview/checker polish / generated preview・checker polish | `DONE` | 0.5 - 1 day / 半日 - 1 日 | sample30 checker now reports App-local processed and server processed handoff states. |
+| SH4 | Smoke and docs / smoke・docs | `DONE` | 0.5 day / 半日 | Verified sample30/full test and updated README/report/current plan. |
+
+Boundary / 境界:
+
+- In scope: sample30-visible sync handoff status, existing managed operation outbox lifecycle, existing App-local and server-side handlers, generated/runtime artifact presentation or checker-visible state, focused smoke. / 対象: sample30 で見える sync handoff status、既存 managed operation outbox lifecycle、既存 App-local / server-side handler、generated/runtime artifact presentation または checker-visible state、focused smoke。
+- Out of scope: remote transport, conflict resolution, retry scheduling changes, new operator/admin workflow, visual builder, native/Flutter target. / 対象外: remote transport、conflict resolution、retry scheduling 変更、新 operator/admin workflow、visual builder、native / Flutter target。
+- Verification: focused sample30 smoke first; run `make test` if shared runtime/foundation behavior changes. / 検証: まず focused sample30 smoke。shared runtime / foundation behavior を触る場合は `make test`。
+
+## Post-Sync Handoff Visibility No-Code Product Goal Replan / sync handoff visibility 後の no-code product goal 再計画
+
+Status: `DONE`. Decision report: [2026-0630 Post-Sync Handoff Visibility No-Code Product Goal Replan](reports/2026/2026-0630-post-sync-handoff-visibility-no-code-product-goal-replan.md). / Status: `DONE`。判断 report: [2026-0630 Post-Sync Handoff Visibility No-Code Product Goal Replan](reports/2026/2026-0630-post-sync-handoff-visibility-no-code-product-goal-replan.md)。
+
+This planning item selected Operator/admin no-code workflow as the next active implementation item. / この planning item では Operator/admin no-code workflow を次の active implementation item として選びました。
+
+| Candidate / 候補 | Why / 目的 | First slice estimate / first slice 目安 | Decision |
+| --- | --- | --- | --- |
+| Operator/admin no-code workflow | Show how an operator chooses, publishes, or inspects generated no-code runtime artifacts. | 1 - 3 days / 1 - 3 日 | Selected. The data path and handoff state are now visible enough to expose an operator-facing inspection workflow. |
+| Additional sync behavior pressure | Add a small retry/error-state or merge edge proof after handoff visibility. | 1 - 3 days / 1 - 3 日 | Deferred. Useful, but less product-facing than an operator/admin inspection path. |
+| Another product-facing no-code sample/polish slice | Add another sample or polish only if sample30 visibility exposes a concrete gap. | 0.5 - 3 days / 半日 - 3 日 | Deferred. No concrete new domain/presentation blocker is identified. |
+| Mtool implementation namespace cleanup | Revisit the parked namespace cleanup with a concrete helper cluster. | 1 - 3 days / 1 - 3 日 | Remains parked until a narrow helper cluster is selected. |
+
+## Operator/Admin No-Code Workflow First Slice / operator/admin no-code workflow first slice
+
+Status: `FIRST_SLICE_DONE`. Report: [2026-0630 Operator/Admin No-Code Workflow First Slice](reports/2026/2026-0630-operator-admin-no-code-workflow-first-slice.md). / Status: `FIRST_SLICE_DONE`。Report: [2026-0630 Operator/Admin No-Code Workflow First Slice](reports/2026/2026-0630-operator-admin-no-code-workflow-first-slice.md)。
+
+This implementation work was selected after sync handoff visibility polish and is complete for the first slice. / これは sync handoff visibility polish 後に選んだ implementation work で、first slice は完了です。
+
+| Step | Work / 作業 | Status | Rough effort / 目安 | Output / 成果物 |
+| --- | --- | --- | --- | --- |
+| OA1 | Operator surface boundary / operator surface 境界 | `DONE` | 0.5 day / 半日 | Chose the existing Source Outputs admin page as the smallest operator/admin inspection surface. |
+| OA2 | No-code artifact inspection model / no-code artifact inspection model | `DONE` | 0.5 - 1 day / 半日 - 1 日 | Added a reusable inspection helper that summarizes `NO-CODE-RUNTIME`, latest artifact, preview paths, screen/action counts, and sync hints. |
+| OA3 | Admin/operator view integration / admin/operator view integration | `DONE` | 0.5 - 1 day / 半日 - 1 日 | Added an inspection-only summary section to `/projects/{project}/source-outputs` without editing metadata or expanding publish workflow. |
+| OA4 | Sample coverage and docs / sample coverage・docs | `DONE` | 0.5 day / 半日 | Added focused PHPUnit coverage and updated report/current plan. |
+
+Boundary / 境界:
+
+- In scope: inspection-only operator/admin surface, existing `NO-CODE-RUNTIME` Source Output artifacts, latest artifact/published preview metadata, generated screen/action summary, sync hint visibility. / 対象: inspection-only の operator/admin surface、既存 `NO-CODE-RUNTIME` Source Output artifact、latest artifact / published preview metadata、generated screen/action summary、sync hint visibility。
+- Out of scope: visual builder, metadata editing workflow, publish approval workflow, remote transport, conflict resolution, native/Flutter target. / 対象外: visual builder、metadata 編集 workflow、publish approval workflow、remote transport、conflict resolution、native / Flutter target。
+- Verification: focused PHPUnit for the inspection model first; run `make test` if shared source-output behavior changes. / 検証: まず inspection model の focused PHPUnit。shared source-output behavior を触る場合は `make test`。
+
+## Post-Operator/Admin No-Code Product Goal Replan / operator/admin no-code 後の product goal 再計画
+
+Status: `DONE`. Decision report: [2026-0630 Post-Operator/Admin No-Code Product Goal Replan](reports/2026/2026-0630-post-operator-admin-no-code-product-goal-replan.md). / Status: `DONE`。判断 report: [2026-0630 Post-Operator/Admin No-Code Product Goal Replan](reports/2026/2026-0630-post-operator-admin-no-code-product-goal-replan.md)。
+
+This planning item selected Operator preview health/detail links as the next active implementation item. / この planning item では Operator preview health/detail links を次の active implementation item として選びました。
+
+| Candidate / 候補 | Why / 目的 | First slice estimate / first slice 目安 | Decision |
+| --- | --- | --- | --- |
+| Operator inspection follow-up | Add the smallest missing operator affordance discovered from the first inspection surface, such as artifact detail linking or preview health. | 0.5 - 2 days / 半日 - 2 日 | Selected. The first surface shows counts, but operators still need a compact health signal and direct routes into the generated artifact. |
+| No-code runtime product polish | Improve generated runtime behavior only if the operator inspection makes a concrete preview gap visible. | 0.5 - 2 days / 半日 - 2 日 | Deferred. No new generated runtime behavior gap is confirmed yet. |
+| Sync/error-state pressure | Add a narrow retry/error/conflict visibility proof after the handoff and inspection path. | 1 - 3 days / 1 - 3 日 | Deferred. Useful, but the operator workflow should first make current artifact health clearer. |
+| Mtool implementation namespace cleanup | Revisit the parked namespace cleanup with a concrete helper cluster. | 1 - 3 days / 1 - 3 日 | Remains parked until a narrow helper cluster is selected. |
+
+Boundary / 境界:
+
+- In scope: choose the next small no-code product-facing implementation after generated artifact inspection became visible. / 対象: generated artifact inspection が見えるようになった後の次の小さな no-code product-facing implementation を選ぶ。
+- Out of scope: broad visual builder, metadata editing workflow, publish approval workflow, native/Flutter target. / 対象外: 広い visual builder、metadata 編集 workflow、publish approval workflow、native / Flutter target。
+- Verification: planning/report update only unless a concrete implementation is selected. / 検証: 具体実装を選ぶまでは planning/report 更新のみ。
+
+## Operator Preview Health/Detail Links First Slice / operator preview health・detail link first slice
+
+Status: `FIRST_SLICE_DONE`. Report: [2026-0630 Operator Preview Health Detail Links First Slice](reports/2026/2026-0630-operator-preview-health-detail-links-first-slice.md). / Status: `FIRST_SLICE_DONE`。Report: [2026-0630 Operator Preview Health Detail Links First Slice](reports/2026/2026-0630-operator-preview-health-detail-links-first-slice.md)。
+
+This implementation work was selected after the post-operator/admin no-code product-goal replan and is complete for the first slice. / これは operator/admin 後の no-code product-goal replan で選んだ implementation work で、first slice は完了です。
+
+| Step | Work / 作業 | Status | Rough effort / 目安 | Output / 成果物 |
+| --- | --- | --- | --- | --- |
+| OH1 | Health model boundary / health model 境界 | `DONE` | 0.5 day / 半日 | Added `ready` / `warning` / `missing` health states from existing `NO-CODE-RUNTIME` definition/artifact/preview metadata. |
+| OH2 | Detail-link affordances / detail link 導線 | `DONE` | 0.5 day / 半日 | Surfaced definition detail, latest artifact download when archive is available, and preview file paths without adding publish workflow. |
+| OH3 | Operator page integration / operator page integration | `DONE` | 0.5 day / 半日 | Added compact health/detail affordances to the existing Source Outputs admin page. |
+| OH4 | Focused coverage and docs / focused coverage・docs | `DONE` | 0.5 day / 半日 | Added focused PHPUnit coverage and updated report/current plan. |
+
+Boundary / 境界:
+
+- In scope: existing Source Outputs admin page, existing `NO-CODE-RUNTIME` Source Output artifacts, health derived from available definition/latest artifact/preview JSON/HTML, direct detail/download/path affordances. / 対象: 既存 Source Outputs admin page、既存 `NO-CODE-RUNTIME` Source Output artifact、definition / latest artifact / preview JSON / HTML から導く health、direct detail / download / path affordance。
+- Out of scope: visual builder, metadata editing workflow, publish approval workflow, remote transport, conflict resolution, new generated runtime behavior. / 対象外: visual builder、metadata 編集 workflow、publish approval workflow、remote transport、conflict resolution、新しい generated runtime behavior。
+- Verification: focused PHPUnit for health model first; run `make test` if shared source-output/operator page behavior changes. / 検証: まず health model の focused PHPUnit。shared source-output / operator page behavior を触る場合は `make test`。
+
+## Post-Operator Preview Health No-Code Product Goal Replan / operator preview health 後の product goal 再計画
+
+Status: `DONE`. Decision report: [2026-0630 Post-Operator Preview Health No-Code Product Goal Replan](reports/2026/2026-0630-post-operator-preview-health-no-code-product-goal-replan.md). / Status: `DONE`。判断 report: [2026-0630 Post-Operator Preview Health No-Code Product Goal Replan](reports/2026/2026-0630-post-operator-preview-health-no-code-product-goal-replan.md)。
+
+This planning item selected Operator source-output artifact detail as the next active implementation item. / この planning item では Operator source-output artifact detail を次の active implementation item として選びました。
+
+| Candidate / 候補 | Why / 目的 | First slice estimate / first slice 目安 | Decision |
+| --- | --- | --- | --- |
+| Operator artifact detail follow-up | Add the smallest artifact detail or preview accessibility improvement if health/linking exposes a concrete operator gap. | 0.5 - 2 days / 半日 - 2 日 | Selected. Health/detail links now point at artifact identity, but there is no read-only artifact detail page between list summary and archive download. |
+| No-code runtime product polish | Improve generated runtime behavior only if operator health highlights a concrete preview/runtime issue. | 0.5 - 2 days / 半日 - 2 日 | Deferred. No generated runtime behavior gap is confirmed by the health surface. |
+| Sync/error-state pressure | Add a narrow retry/error/conflict visibility proof after the handoff and operator inspection path. | 1 - 3 days / 1 - 3 日 | Deferred. Useful, but less directly tied to the current operator artifact inspection gap. |
+| Mtool implementation namespace cleanup | Revisit the parked namespace cleanup with a concrete helper cluster. | 1 - 3 days / 1 - 3 日 | Remains parked until a narrow helper cluster is selected. |
+
+Boundary / 境界:
+
+- In scope: choose the next small no-code product-facing implementation after operator artifact health became visible. / 対象: operator artifact health が見えるようになった後の次の小さな no-code product-facing implementation を選ぶ。
+- Out of scope: broad visual builder, metadata editing workflow, publish approval workflow, native/Flutter target. / 対象外: 広い visual builder、metadata 編集 workflow、publish approval workflow、native / Flutter target。
+- Verification: planning/report update only unless a concrete implementation is selected. / 検証: 具体実装を選ぶまでは planning/report 更新のみ。
+
+## Operator Source-Output Artifact Detail First Slice / operator source-output artifact detail first slice
+
+Status: `FIRST_SLICE_DONE`. Report: [2026-0630 Operator Source-Output Artifact Detail First Slice](reports/2026/2026-0630-operator-source-output-artifact-detail-first-slice.md). / Status: `FIRST_SLICE_DONE`。Report: [2026-0630 Operator Source-Output Artifact Detail First Slice](reports/2026/2026-0630-operator-source-output-artifact-detail-first-slice.md)。
+
+This implementation work was selected after the post-operator preview health no-code product-goal replan and is complete for the first slice. / これは operator preview health 後の no-code product-goal replan で選んだ implementation work で、first slice は完了です。
+
+| Step | Work / 作業 | Status | Rough effort / 目安 | Output / 成果物 |
+| --- | --- | --- | --- | --- |
+| OD1 | Route and auth boundary / route・auth 境界 | `DONE` | 0.5 day / 半日 | Added a read-only artifact detail route using the existing project/source-output artifact authorization boundary. |
+| OD2 | Artifact detail page / artifact detail page | `DONE` | 0.5 - 1 day / 半日 - 1 日 | Rendered manifest, archive, bundle, runtime source, file counts, source output identity, and download affordance. |
+| OD3 | Operator links / operator link | `DONE` | 0.5 day / 半日 | Linked latest/listed artifacts to the detail page from existing Source Outputs surfaces. |
+| OD4 | Focused coverage and docs / focused coverage・docs | `DONE` | 0.5 day / 半日 | Added route/auth-focused coverage and updated report/current plan. |
+
+Boundary / 境界:
+
+- In scope: read-only artifact detail route/page, existing source-output artifact manifests, archive/download affordance, route/auth contract, existing Source Outputs surfaces. / 対象: read-only artifact detail route/page、既存 source-output artifact manifest、archive/download affordance、route/auth contract、既存 Source Outputs surface。
+- Out of scope: artifact editing, publish approval workflow, visual builder, generated runtime behavior changes, remote transport, conflict resolution. / 対象外: artifact 編集、publish approval workflow、visual builder、generated runtime behavior 変更、remote transport、conflict resolution。
+- Verification: route/auth focused PHPUnit first; run `make test` because routing/shared admin surface changes. / 検証: まず route/auth focused PHPUnit。routing / shared admin surface を触るため `make test` を実行。
+
+## Post-Operator Artifact Detail No-Code Product Goal Replan / operator artifact detail 後の product goal 再計画
+
+Status: `DONE`. Decision report: [2026-0630 Post-Operator Artifact Detail No-Code Product Goal Replan](reports/2026/2026-0630-post-operator-artifact-detail-no-code-product-goal-replan.md). / Status: `DONE`。判断 report: [2026-0630 Post-Operator Artifact Detail No-Code Product Goal Replan](reports/2026/2026-0630-post-operator-artifact-detail-no-code-product-goal-replan.md)。
+
+This planning item selected Sync error-state visibility as the next active implementation item. / この planning item では Sync error-state visibility を次の active implementation item として選びました。
+
+| Candidate / 候補 | Why / 目的 | First slice estimate / first slice 目安 | Decision |
+| --- | --- | --- | --- |
+| Operator artifact detail follow-up | Improve artifact detail only if this first page exposes a concrete missing inspection field. | 0.5 - 2 days / 半日 - 2 日 | Deferred. The first detail page closes the inspection gap without exposing an immediate missing field. |
+| No-code runtime product polish | Improve generated runtime behavior only if artifact detail highlights a concrete preview/runtime issue. | 0.5 - 2 days / 半日 - 2 日 | Deferred. No runtime behavior gap is confirmed by artifact detail inspection. |
+| Sync/error-state pressure | Add a narrow retry/error/conflict visibility proof after the handoff and operator inspection path. | 1 - 3 days / 1 - 3 日 | Selected. Success paths are now visible; the next product-facing gap is showing a failed sync/outbox state without adding transport or conflict resolution. |
+| Mtool implementation namespace cleanup | Revisit the parked namespace cleanup with a concrete helper cluster. | 1 - 3 days / 1 - 3 日 | Remains parked until a narrow helper cluster is selected. |
+
+Boundary / 境界:
+
+- In scope: choose the next small no-code product-facing implementation after artifact detail inspection became available. / 対象: artifact detail inspection が使えるようになった後の次の小さな no-code product-facing implementation を選ぶ。
+- Out of scope: broad visual builder, metadata editing workflow, publish approval workflow, native/Flutter target. / 対象外: 広い visual builder、metadata 編集 workflow、publish approval workflow、native / Flutter target。
+- Verification: planning/report update only unless a concrete implementation is selected. / 検証: 具体実装を選ぶまでは planning/report 更新のみ。
+
+## Sync Error-State Visibility First Slice / sync error-state visibility first slice
+
+Status: `FIRST_SLICE_DONE`. Report: [2026-0630 Sync Error-State Visibility First Slice](reports/2026/2026-0630-sync-error-state-visibility-first-slice.md). / Status: `FIRST_SLICE_DONE`。Report: [2026-0630 Sync Error-State Visibility First Slice](reports/2026/2026-0630-sync-error-state-visibility-first-slice.md)。
+
+This implementation work was selected after the post-operator artifact detail no-code product-goal replan and is complete for the first slice. / これは operator artifact detail 後の no-code product-goal replan で選んだ implementation work で、first slice は完了です。
+
+| Step | Work / 作業 | Status | Rough effort / 目安 | Output / 成果物 |
+| --- | --- | --- | --- | --- |
+| SE1 | Error-state boundary / error-state 境界 | `DONE` | 0.5 day / 半日 | Chose a minimal failed sync/outbox state using existing outbox `failed` / `last_error` fields. |
+| SE2 | Sample-visible failed state / sample-visible failed state | `DONE` | 0.5 - 1 day / 半日 - 1 日 | Extended sample30 checker/result with one deterministic failed outbox processing path. |
+| SE3 | Assertion coverage / assertion coverage | `DONE` | 0.5 day / 半日 | Asserted failed status, attempts, and last_error without changing success-path behavior. |
+| SE4 | Docs and verification / docs・verification | `DONE` | 0.5 day / 半日 | Updated README/report/current plan and verified with sample30 plus full test. |
+
+Boundary / 境界:
+
+- In scope: sample30-visible failed sync/outbox status, existing outbox lifecycle fields, deterministic local/server handler failure, focused assertions. / 対象: sample30 で見える failed sync/outbox status、既存 outbox lifecycle field、deterministic な local/server handler failure、focused assertion。
+- Out of scope: retry scheduler, remote transport, conflict resolution, broad operator dashboard, generated runtime behavior changes. / 対象外: retry scheduler、remote transport、conflict resolution、広い operator dashboard、generated runtime behavior 変更。
+- Verification: sample30 pack runtime test first; run `make test` because sample checker behavior changes. / 検証: まず sample30 pack runtime test。sample checker behavior を触るため `make test` を実行。
+
+## Post-Sync Error-State Visibility No-Code Product Goal Replan / sync error-state visibility 後の no-code product goal 再計画
+
+Status: `DONE`. Decision report: [2026-0630 Post-Sync Error-State Visibility No-Code Product Goal Replan](reports/2026/2026-0630-post-sync-error-state-visibility-no-code-product-goal-replan.md). / Status: `DONE`。判断 report: [2026-0630 Post-Sync Error-State Visibility No-Code Product Goal Replan](reports/2026/2026-0630-post-sync-error-state-visibility-no-code-product-goal-replan.md)。
+
+This planning item chose Operator failed-sync inspection as the next active implementation item. / この planning item では Operator failed-sync inspection を次の active implementation item として選びました。
+
+| Candidate / 候補 | Why / 目的 | First slice estimate / first slice 目安 | Decision |
+| --- | --- | --- | --- |
+| Sync retry visibility | Add a narrow retry/requeue proof on top of the existing failed outbox state. | 1 - 3 days / 1 - 3 日 | Deferred. First make the failed state visible to an operator before adding behavior for retrying it. |
+| Operator failed-sync inspection | Surface failed outbox state in an operator/admin page using existing status and last_error fields. | 1 - 3 days / 1 - 3 日 | Selected. This is the smallest product-facing continuation after sample30 made failed outbox state deterministic. |
+| No-code runtime error feedback | Improve generated runtime feedback only if the failed outbox path exposes a concrete user-facing runtime gap. | 0.5 - 2 days / 半日 - 2 日 | Deferred. The confirmed gap is operator inspection, not generated runtime behavior. |
+| Mtool implementation namespace cleanup | Revisit the parked namespace cleanup with a concrete helper cluster. | 1 - 3 days / 1 - 3 日 | Remains parked until a narrow helper cluster is selected. |
+
+Boundary / 境界:
+
+- In scope: choose the next small no-code product-facing implementation after failed outbox visibility. / 対象: failed outbox visibility 後の次の小さな no-code product-facing implementation を選ぶ。
+- Out of scope: broad visual builder, remote transport, full retry scheduler, conflict resolution, native/Flutter target. / 対象外: 広い visual builder、remote transport、full retry scheduler、conflict resolution、native / Flutter target。
+- Verification: planning/report update only unless a concrete implementation is selected. / 検証: 具体実装を選ぶまでは planning/report 更新のみ。
+
+## Operator Failed-Sync Inspection First Slice / operator failed-sync inspection first slice
+
+Status: `FIRST_SLICE_DONE`. Report: [2026-0630 Operator Failed-Sync Inspection First Slice](reports/2026/2026-0630-operator-failed-sync-inspection-first-slice.md). / Status: `FIRST_SLICE_DONE`。Report: [2026-0630 Operator Failed-Sync Inspection First Slice](reports/2026/2026-0630-operator-failed-sync-inspection-first-slice.md)。
+
+This implementation work was selected after failed sync/outbox state became sample-visible and is complete for the first slice. / これは failed sync/outbox state が sample-visible になった後に選んだ implementation work で、first slice は完了です。
+
+| Step | Work / 作業 | Status | Rough effort / 目安 | Output / 成果物 |
+| --- | --- | --- | --- | --- |
+| OF1 | Inspection boundary / inspection 境界 | `DONE` | 0.5 day / 半日 | Chose the existing Source Outputs admin page as the smallest read-only operator/admin surface. |
+| OF2 | Outbox summary helper / outbox summary helper | `DONE` | 0.5 - 1 day / 半日 - 1 日 | Reused existing outbox repository/status/last_error fields to produce a failed-item summary. |
+| OF3 | Admin/operator view integration / admin/operator view integration | `DONE` | 0.5 - 1 day / 半日 - 1 日 | Showed failed sync items without adding retry/edit behavior. |
+| OF4 | Assertion coverage / assertion coverage | `DONE` | 0.5 day / 半日 | Added focused helper tests for failed item visibility and empty-state behavior. |
+| OF5 | Docs and verification / docs・verification | `DONE` | 0.5 day / 半日 | Updated report/current plan and verified with PHP lint plus full `make test`. |
+
+Boundary / 境界:
+
+- In scope: read-only operator/admin failed sync inspection, existing outbox status / attempts / last_error fields, focused tests. / 対象: read-only の operator/admin failed sync inspection、既存 outbox status / attempts / last_error field、focused test。
+- Out of scope: retry/requeue action, remote transport, conflict resolution, generated runtime behavior changes, broad dashboard. / 対象外: retry / requeue action、remote transport、conflict resolution、generated runtime behavior 変更、広い dashboard。
+- Verification: focused PHP/PHPUnit first; run `make test` because the operator/admin surface changes. / 検証: まず focused PHP / PHPUnit。operator/admin surface を触るため `make test` を実行。
+
+## Post-Operator Failed-Sync Inspection No-Code Product Goal Replan / operator failed-sync inspection 後の no-code product goal 再計画
+
+Status: `DONE`. Decision report: [2026-0630 Post-Operator Failed-Sync Inspection No-Code Product Goal Replan](reports/2026/2026-0630-post-operator-failed-sync-inspection-no-code-product-goal-replan.md). / Status: `DONE`。判断 report: [2026-0630 Post-Operator Failed-Sync Inspection No-Code Product Goal Replan](reports/2026/2026-0630-post-operator-failed-sync-inspection-no-code-product-goal-replan.md)。
+
+This planning item chose Operator sync outbox detail as the next active implementation item. / この planning item では Operator sync outbox detail を次の active implementation item として選びました。
+
+| Candidate / 候補 | Why / 目的 | First slice estimate / first slice 目安 | Decision |
+| --- | --- | --- | --- |
+| Sync retry/requeue action | Add a narrow operator action for retrying failed outbox items. | 1 - 3 days / 1 - 3 日 | Deferred. Retry needs a safe read-only item detail surface first. |
+| Operator sync outbox detail page | Add a read-only detail page for one outbox item before adding retry behavior. | 0.5 - 2 days / 半日 - 2 日 | Selected. This is the smallest operator-facing continuation after list-level failed sync inspection. |
+| No-code runtime error feedback | Improve generated runtime feedback only if operator inspection exposes a runtime-facing gap. | 0.5 - 2 days / 半日 - 2 日 | Deferred. The confirmed gap remains operator diagnosis, not runtime behavior. |
+| Mtool implementation namespace cleanup | Revisit the parked namespace cleanup with a concrete helper cluster. | 1 - 3 days / 1 - 3 日 | Remains parked until a narrow helper cluster is selected. |
+
+Boundary / 境界:
+
+- In scope: choose the next small no-code product-facing implementation after read-only failed sync inspection. / 対象: read-only failed sync inspection 後の次の小さな no-code product-facing implementation を選ぶ。
+- Out of scope: broad visual builder, remote transport, full conflict resolution, native/Flutter target. / 対象外: 広い visual builder、remote transport、full conflict resolution、native / Flutter target。
+- Verification: planning/report update only unless a concrete implementation is selected. / 検証: 具体実装を選ぶまでは planning/report 更新のみ。
+
+## Operator Sync Outbox Detail First Slice / operator sync outbox detail first slice
+
+Status: `FIRST_SLICE_DONE`. Report: [2026-0630 Operator Sync Outbox Detail First Slice](reports/2026/2026-0630-operator-sync-outbox-detail-first-slice.md). / Status: `FIRST_SLICE_DONE`。Report: [2026-0630 Operator Sync Outbox Detail First Slice](reports/2026/2026-0630-operator-sync-outbox-detail-first-slice.md)。
+
+This implementation work was selected after read-only failed sync list inspection and is complete for the first slice. / これは read-only failed sync list inspection 後に選んだ implementation work で、first slice は完了です。
+
+| Step | Work / 作業 | Status | Rough effort / 目安 | Output / 成果物 |
+| --- | --- | --- | --- | --- |
+| OD1 | Detail boundary / detail 境界 | `DONE` | 0.5 day / 半日 | Added read-only detail before retry/requeue actions. |
+| OD2 | Route and lookup / route・lookup | `DONE` | 0.5 day / 半日 | Added a project-scoped outbox detail route using existing dedupe_key lookup. |
+| OD3 | Detail page / detail page | `DONE` | 0.5 - 1 day / 半日 - 1 日 | Shows status, attempts, last_error, endpoints, operation metadata, dedupe key, timestamps, and intent payload. |
+| OD4 | Admin list link / admin list link | `DONE` | 0.5 day / 半日 | Linked failed items from Source Outputs sync inspection to the detail page. |
+| OD5 | Tests and docs / tests・docs | `DONE` | 0.5 day / 半日 | Added route/auth coverage, updated report/current plan, and verified with full `make test`. |
+
+Boundary / 境界:
+
+- In scope: read-only operator/admin outbox item detail, existing outbox fields, project-scoped routing, focused tests. / 対象: read-only operator/admin outbox item detail、既存 outbox field、project-scoped route、focused test。
+- Out of scope: retry/requeue action, status mutation, remote transport, conflict resolution, broad dashboard. / 対象外: retry / requeue action、status mutation、remote transport、conflict resolution、広い dashboard。
+- Verification: focused PHP/PHPUnit first; run `make test` if route/auth or shared surface changes. / 検証: まず focused PHP / PHPUnit。route / auth または shared surface を触る場合は `make test` を実行。
+
+## Post-Operator Sync Outbox Detail No-Code Product Goal Replan / operator sync outbox detail 後の no-code product goal 再計画
+
+Status: `DONE`. Decision report: [2026-0630 Post-Operator Sync Outbox Detail No-Code Product Goal Replan](reports/2026/2026-0630-post-operator-sync-outbox-detail-no-code-product-goal-replan.md). / Status: `DONE`。判断 report: [2026-0630 Post-Operator Sync Outbox Detail No-Code Product Goal Replan](reports/2026/2026-0630-post-operator-sync-outbox-detail-no-code-product-goal-replan.md)。
+
+This planning item chose Sync retry eligibility guard as the next active implementation item. / この planning item では Sync retry eligibility guard を次の active implementation item として選びました。
+
+| Candidate / 候補 | Why / 目的 | First slice estimate / first slice 目安 | Decision |
+| --- | --- | --- | --- |
+| Sync retry/requeue action | Add a narrow operator action for retrying failed outbox items. | 1 - 3 days / 1 - 3 日 | Deferred. Add a fail-closed eligibility decision first, then wire an action. |
+| Retry eligibility guard | Add a small fail-closed eligibility helper before exposing an action button. | 0.5 - 2 days / 半日 - 2 日 | Selected. This is the smallest safe continuation before mutating failed outbox state. |
+| No-code runtime error feedback | Improve generated runtime feedback only if operator detail exposes a runtime-facing gap. | 0.5 - 2 days / 半日 - 2 日 | Deferred. The confirmed gap remains operator retry readiness, not runtime behavior. |
+| Mtool implementation namespace cleanup | Revisit the parked namespace cleanup with a concrete helper cluster. | 1 - 3 days / 1 - 3 日 | Remains parked until a narrow helper cluster is selected. |
+
+Boundary / 境界:
+
+- In scope: choose the next small no-code product-facing implementation after read-only sync outbox detail. / 対象: read-only sync outbox detail 後の次の小さな no-code product-facing implementation を選ぶ。
+- Out of scope: broad visual builder, remote transport, full conflict resolution, native/Flutter target. / 対象外: 広い visual builder、remote transport、full conflict resolution、native / Flutter target。
+- Verification: planning/report update only unless a concrete implementation is selected. / 検証: 具体実装を選ぶまでは planning/report 更新のみ。
+
+## Sync Retry Eligibility Guard First Slice / sync retry eligibility guard first slice
+
+Status: `FIRST_SLICE_DONE`. Report: [2026-0630 Sync Retry Eligibility Guard First Slice](reports/2026/2026-0630-sync-retry-eligibility-guard-first-slice.md). / Status: `FIRST_SLICE_DONE`。Report: [2026-0630 Sync Retry Eligibility Guard First Slice](reports/2026/2026-0630-sync-retry-eligibility-guard-first-slice.md)。
+
+This implementation work was selected before adding retry/requeue actions and is complete for the first slice. / これは retry / requeue action を追加する前に選んだ implementation work で、first slice は完了です。
+
+| Step | Work / 作業 | Status | Rough effort / 目安 | Output / 成果物 |
+| --- | --- | --- | --- | --- |
+| RG1 | Eligibility boundary / eligibility 境界 | `DONE` | 0.5 day / 半日 | Defined a fail-closed retry eligibility decision for sync outbox items. |
+| RG2 | Helper contract / helper contract | `DONE` | 0.5 - 1 day / 半日 - 1 日 | Added a pure helper that returns allowed, reasons, and action label without mutating state. |
+| RG3 | Operator detail visibility / operator detail visibility | `DONE` | 0.5 day / 半日 | Shows the read-only eligibility decision on the sync outbox detail page. |
+| RG4 | Tests and docs / tests・docs | `DONE` | 0.5 day / 半日 | Added focused eligibility tests, updated report/current plan, and verified with full `make test`. |
+
+Boundary / 境界:
+
+- In scope: pure retry eligibility decision, failed outbox items, existing status / attempts / last_error fields, read-only operator visibility. / 対象: pure な retry eligibility decision、failed outbox item、既存 status / attempts / last_error field、read-only operator visibility。
+- Out of scope: retry/requeue mutation, background scheduler, remote transport, conflict resolution, broad dashboard. / 対象外: retry / requeue mutation、background scheduler、remote transport、conflict resolution、広い dashboard。
+- Verification: focused PHP/PHPUnit first; run `make test` if shared route/operator detail behavior changes. / 検証: まず focused PHP / PHPUnit。shared route / operator detail behavior を触る場合は `make test`。
+
+## Post-Sync Retry Eligibility Guard No-Code Product Goal Replan / sync retry eligibility guard 後の no-code product goal 再計画
+
+Status: `DONE`. Decision report: [2026-0630 Post-Sync Retry Eligibility Guard No-Code Product Goal Replan](reports/2026/2026-0630-post-sync-retry-eligibility-guard-no-code-product-goal-replan.md). / Status: `DONE`。判断 report: [2026-0630 Post-Sync Retry Eligibility Guard No-Code Product Goal Replan](reports/2026/2026-0630-post-sync-retry-eligibility-guard-no-code-product-goal-replan.md)。
+
+This planning item chose Operator sync retry action as the next active implementation item. / この planning item では Operator sync retry action を次の active implementation item として選びました。
+
+| Candidate / 候補 | Why / 目的 | First slice estimate / first slice 目安 | Decision |
+| --- | --- | --- | --- |
+| Sync retry/requeue action | Add a narrow operator action for retrying eligible failed outbox items. | 1 - 3 days / 1 - 3 日 | Selected. Eligibility guard is now in place, so the smallest product-facing mutation is requeue-to-pending. |
+| Retry audit trail | Add a small audit note for retry attempts before or with mutation. | 0.5 - 2 days / 半日 - 2 日 | Deferred. Existing permission audit and updated_at are sufficient for this first mutation slice. |
+| No-code runtime error feedback | Improve generated runtime feedback only if retry readiness exposes a runtime-facing gap. | 0.5 - 2 days / 半日 - 2 日 | Deferred. The confirmed gap remains operator retry action, not runtime behavior. |
+| Mtool implementation namespace cleanup | Revisit the parked namespace cleanup with a concrete helper cluster. | 1 - 3 days / 1 - 3 日 | Remains parked until a narrow helper cluster is selected. |
+
+Boundary / 境界:
+
+- In scope: choose the next small no-code product-facing implementation after retry eligibility guard. / 対象: retry eligibility guard 後の次の小さな no-code product-facing implementation を選ぶ。
+- Out of scope: broad visual builder, remote transport, full conflict resolution, native/Flutter target. / 対象外: 広い visual builder、remote transport、full conflict resolution、native / Flutter target。
+- Verification: planning/report update only unless a concrete implementation is selected. / 検証: 具体実装を選ぶまでは planning/report 更新のみ。
+
+## Operator Sync Retry Action First Slice / operator sync retry action first slice
+
+Status: `FIRST_SLICE_DONE`. Report: [2026-0630 Operator Sync Retry Action First Slice](reports/2026/2026-0630-operator-sync-retry-action-first-slice.md). / Status: `FIRST_SLICE_DONE`。Report: [2026-0630 Operator Sync Retry Action First Slice](reports/2026/2026-0630-operator-sync-retry-action-first-slice.md)。
+
+This implementation work was selected after the retry eligibility guard and is complete for the first slice. / これは retry eligibility guard 後に選んだ implementation work で、first slice は完了です。
+
+| Step | Work / 作業 | Status | Rough effort / 目安 | Output / 成果物 |
+| --- | --- | --- | --- | --- |
+| RA1 | Mutation boundary / mutation 境界 | `DONE` | 0.5 day / 半日 | Requeues eligible failed items to pending and does not process inline. |
+| RA2 | Repository wrapper / repository wrapper | `DONE` | 0.5 day / 半日 | Added a small retry/requeue wrapper around existing status update behavior. |
+| RA3 | Operator action / operator action | `DONE` | 0.5 - 1 day / 半日 - 1 日 | Added CSRF-protected POST action on sync outbox detail. |
+| RA4 | Tests and docs / tests・docs | `DONE` | 0.5 day / 半日 | Added focused repository/operator contract tests, updated report/current plan, and verified. |
+
+Boundary / 境界:
+
+- In scope: eligible failed item -> pending, clear last_error, keep attempts unchanged until processor claims it, project-scoped POST action, CSRF, focused tests. / 対象: eligible failed item -> pending、last_error clear、processor が claim するまでは attempts は増やさない、project-scoped POST action、CSRF、focused test。
+- Out of scope: immediate processing, background scheduler, remote transport, conflict resolution, broad dashboard, retry audit table. / 対象外: immediate processing、background scheduler、remote transport、conflict resolution、広い dashboard、retry audit table。
+- Verification: focused PHP/PHPUnit first; run `make test` because repository/operator mutation behavior changes. / 検証: まず focused PHP / PHPUnit。repository / operator mutation behavior を触るため `make test`。
+
+## Post-Operator Sync Retry Action No-Code Product Goal Replan / operator sync retry action 後の no-code product goal 再計画
+
+Status: `DONE`. Decision report: [2026-0630 Post-Operator Sync Retry Action No-Code Product Goal Replan](reports/2026/2026-0630-post-operator-sync-retry-action-no-code-product-goal-replan.md). / Status: `DONE`。判断 report: [2026-0630 Post-Operator Sync Retry Action No-Code Product Goal Replan](reports/2026/2026-0630-post-operator-sync-retry-action-no-code-product-goal-replan.md)。
+
+This planning item selected Retry processing smoke as the next active implementation item. / この planning item では Retry processing smoke を次の active implementation item として選びました。
+
+| Candidate / 候補 | Why / 目的 | First slice estimate / first slice 目安 | Decision |
+| --- | --- | --- | --- |
+| Operator retry feedback polish | Make the existing operator retry flow easier to understand after requeue. | 0.5 - 2 days / 半日 - 2 日 | Deferred. The operator action already has a narrow success message; product confidence needs processor proof first. |
+| Retry processing smoke / retry processing smoke | Prove requeued items are picked up by the existing processor path in a focused sample or repository flow. | 0.5 - 2 days / 半日 - 2 日 | Selected. This closes the behavior loop after requeue without broadening retry UI or scheduling. |
+| No-code runtime error/retry visibility | Surface retry-related state in generated/runtime artifacts. | 1 - 3 days / 1 - 3 日 | Deferred. Runtime-facing retry visibility should follow processor confidence. |
+| Mtool implementation namespace cleanup | Revisit the parked namespace cleanup with a concrete helper cluster. | 1 - 3 days / 1 - 3 日 | Remains parked until a narrow helper cluster is selected. |
+
+Boundary / 境界:
+
+- In scope: choose one next small product-facing implementation after retry action, based on visible gap and risk. / 対象: retry action 後の visible gap と risk に基づいて、次の小さな product-facing implementation を 1 つ選ぶ。
+- Out of scope: broad visual builder, remote transport, full conflict resolution, native/Flutter target. / 対象外: 広い visual builder、remote transport、full conflict resolution、native / Flutter target。
+- Verification: planning/report update only unless a concrete implementation is selected. / 検証: 具体実装を選ぶまでは planning/report 更新のみ。
+
+## Retry Processing Smoke First Slice / retry processing smoke first slice
+
+Status: `FIRST_SLICE_DONE`. Report: [2026-0630 Retry Processing Smoke First Slice](reports/2026/2026-0630-retry-processing-smoke-first-slice.md). / Status: `FIRST_SLICE_DONE`。Report: [2026-0630 Retry Processing Smoke First Slice](reports/2026/2026-0630-retry-processing-smoke-first-slice.md)。
+
+This implementation work was selected after operator sync retry action and is complete for the first slice. / これは operator sync retry action 後に選んだ implementation work で、first slice は完了です。
+
+| Step | Work / 作業 | Status | Rough effort / 目安 | Output / 成果物 |
+| --- | --- | --- | --- | --- |
+| RS1 | Smoke boundary / smoke 境界 | `DONE` | 0.5 day / 半日 | Proved requeued `pending` item processing only; did not add scheduler, transport, or conflict resolution. |
+| RS2 | Focused processor fixture / focused processor fixture | `DONE` | 0.5 - 1 day / 半日 - 1 日 | Extended a focused repository/processor flow from failed -> requeued pending -> existing processor claim/handler. |
+| RS3 | Assertions and docs / assertions・docs | `DONE` | 0.5 day / 半日 | Asserted final status, attempts behavior, cleared error, and existing processor result; updated report/current plan. |
+
+Boundary / 境界:
+
+- In scope: one deterministic retry processing smoke, existing outbox processor, existing handlers, existing requeue action semantics. / 対象: deterministic な retry processing smoke 1 つ、既存 outbox processor、既存 handler、既存 requeue action semantics。
+- Out of scope: background scheduler, new retry UI, remote transport, conflict resolution, retry audit table, broad dashboard. / 対象外: background scheduler、新 retry UI、remote transport、conflict resolution、retry audit table、広い dashboard。
+- Verification: focused PHPUnit/sample smoke first; run `make test` if shared processor or sample behavior changes. / 検証: まず focused PHPUnit / sample smoke。shared processor または sample behavior を触る場合は `make test`。
+
+## Post-Retry Processing Smoke No-Code Product Goal Replan / retry processing smoke 後の no-code product goal 再計画
+
+Status: `DONE`. Decision report: [2026-0630 Post-Retry Processing Smoke No-Code Product Goal Replan](reports/2026/2026-0630-post-retry-processing-smoke-no-code-product-goal-replan.md). / Status: `DONE`。判断 report: [2026-0630 Post-Retry Processing Smoke No-Code Product Goal Replan](reports/2026/2026-0630-post-retry-processing-smoke-no-code-product-goal-replan.md)。
+
+This planning item selected Operator retry feedback polish as the next active implementation item. / この planning item では Operator retry feedback polish を次の active implementation item として選びました。
+
+| Candidate / 候補 | Why / 目的 | First slice estimate / first slice 目安 | Decision |
+| --- | --- | --- | --- |
+| Operator retry feedback polish | Make the retry flow easier for operators to understand after the behavior loop is proven. | 0.5 - 2 days / 半日 - 2 日 | Selected. The behavior loop is proven, so the next smallest product gap is clarity after requeue. |
+| No-code runtime error/retry visibility | Surface failed/retryable/requeued state in generated/runtime artifacts. | 1 - 3 days / 1 - 3 日 | Deferred. Runtime-facing state should wait until the operator flow is understandable. |
+| Retry audit trail | Add a narrow audit note for operator retry mutation. | 0.5 - 2 days / 半日 - 2 日 | Deferred. Existing updated_at/status/attempts plus clear operator feedback are enough for the next slice. |
+| Mtool implementation namespace cleanup | Revisit the parked namespace cleanup with a concrete helper cluster. | 1 - 3 days / 1 - 3 日 | Remains parked until a narrow helper cluster is selected. |
+
+Boundary / 境界:
+
+- In scope: choose one next small product-facing implementation after retry processing smoke. / 対象: retry processing smoke 後の次の小さな product-facing implementation を 1 つ選ぶ。
+- Out of scope: broad visual builder, remote transport, full conflict resolution, native/Flutter target. / 対象外: 広い visual builder、remote transport、full conflict resolution、native / Flutter target。
+- Verification: planning/report update only unless a concrete implementation is selected. / 検証: 具体実装を選ぶまでは planning/report 更新のみ。
+
+## Operator Retry Feedback Polish First Slice / operator retry feedback polish first slice
+
+Status: `FIRST_SLICE_DONE`. Report: [2026-0630 Operator Retry Feedback Polish First Slice](reports/2026/2026-0630-operator-retry-feedback-polish-first-slice.md). / Status: `FIRST_SLICE_DONE`。Report: [2026-0630 Operator Retry Feedback Polish First Slice](reports/2026/2026-0630-operator-retry-feedback-polish-first-slice.md)。
+
+This implementation work was selected after retry processing smoke and is complete for the first slice. / これは retry processing smoke 後に選んだ implementation work で、first slice は完了です。
+
+| Step | Work / 作業 | Status | Rough effort / 目安 | Output / 成果物 |
+| --- | --- | --- | --- | --- |
+| RF1 | Feedback boundary / feedback 境界 | `DONE` | 0.5 day / 半日 | Improved post-requeue operator clarity only; did not add scheduler, transport, conflict resolution, or audit tables. |
+| RF2 | Detail page result copy/state / detail page result copy・state | `DONE` | 0.5 - 1 day / 半日 - 1 日 | Success state explains that the item is pending and can be picked up by the existing processor. |
+| RF3 | Contract and docs / contract・docs | `DONE` | 0.5 day / 半日 | Added focused page/source contract coverage, updated report/current plan, and verified. |
+
+Boundary / 境界:
+
+- In scope: operator detail feedback after retry, current status/attempts/last_error clarity, existing processor next-step wording. / 対象: retry 後の operator detail feedback、現在 status / attempts / last_error の分かりやすさ、既存 processor next-step wording。
+- Out of scope: scheduler, transport, conflict resolution, retry audit table, broad dashboard, generated runtime UI. / 対象外: scheduler、transport、conflict resolution、retry audit table、広い dashboard、generated runtime UI。
+- Verification: focused PHP/source contract first; run `make test` if shared route/operator behavior changes. / 検証: まず focused PHP / source contract。shared route / operator behavior を触る場合は `make test`。
+
+## Post-Operator Retry Feedback Polish No-Code Product Goal Replan / operator retry feedback polish 後の no-code product goal 再計画
+
+Status: `DONE`. Decision report: [2026-0630 Post-Operator Retry Feedback Polish No-Code Product Goal Replan](reports/2026/2026-0630-post-operator-retry-feedback-polish-no-code-product-goal-replan.md). / Status: `DONE`。判断 report: [2026-0630 Post-Operator Retry Feedback Polish No-Code Product Goal Replan](reports/2026/2026-0630-post-operator-retry-feedback-polish-no-code-product-goal-replan.md)。
+
+This planning item selected No-code runtime error/retry visibility as the next active implementation item. / この planning item では No-code runtime error/retry visibility を次の active implementation item として選びました。
+
+| Candidate / 候補 | Why / 目的 | First slice estimate / first slice 目安 | Decision |
+| --- | --- | --- | --- |
+| No-code runtime error/retry visibility | Surface failed/retryable/requeued state in generated/runtime artifacts. | 1 - 3 days / 1 - 3 日 | Selected. Operator retry is understandable now; runtime-visible error/retry state is the next product gap. |
+| Retry audit trail | Add a narrow audit note for operator retry mutation. | 0.5 - 2 days / 半日 - 2 日 | Deferred. Accountability is less visible to the product path than runtime error/retry state. |
+| Another operator workflow polish slice | Polish the Source Outputs / sync outbox navigation only if review exposes a concrete operator workflow gap. | 0.5 - 2 days / 半日 - 2 日 | Deferred. No concrete new operator navigation gap is identified. |
+| Mtool implementation namespace cleanup | Revisit the parked namespace cleanup with a concrete helper cluster. | 1 - 3 days / 1 - 3 日 | Remains parked until a narrow helper cluster is selected. |
+
+Boundary / 境界:
+
+- In scope: choose one next small product-facing implementation after operator retry feedback polish. / 対象: operator retry feedback polish 後の次の小さな product-facing implementation を 1 つ選ぶ。
+- Out of scope: broad visual builder, remote transport, full conflict resolution, native/Flutter target. / 対象外: 広い visual builder、remote transport、full conflict resolution、native / Flutter target。
+- Verification: planning/report update only unless a concrete implementation is selected. / 検証: 具体実装を選ぶまでは planning/report 更新のみ。
+
+## No-Code Runtime Error/Retry Visibility First Slice / no-code runtime error/retry visibility first slice
+
+Status: `FIRST_SLICE_DONE`. Report: [2026-0630 No-Code Runtime Error/Retry Visibility First Slice](reports/2026/2026-0630-no-code-runtime-error-retry-visibility-first-slice.md). / Status: `FIRST_SLICE_DONE`。Report: [2026-0630 No-Code Runtime Error/Retry Visibility First Slice](reports/2026/2026-0630-no-code-runtime-error-retry-visibility-first-slice.md)。
+
+This implementation work was selected after operator retry feedback polish and is complete for the first slice. / これは operator retry feedback polish 後に選んだ implementation work で、first slice は完了です。
+
+| Step | Work / 作業 | Status | Rough effort / 目安 | Output / 成果物 |
+| --- | --- | --- | --- | --- |
+| RV1 | Runtime visibility boundary / runtime visibility 境界 | `DONE` | 0.5 day / 半日 | Surfaced failed/retryable sync state only; retry mutation remains in operator/admin pages. |
+| RV2 | Generated runtime state model / generated runtime state model | `DONE` | 0.5 - 1 day / 半日 - 1 日 | Added deterministic runtime artifact data and HTML hints for failed/retryable state. |
+| RV3 | Sample smoke and docs / sample smoke・docs | `DONE` | 0.5 - 1 day / 半日 - 1 日 | Updated focused runtime/sample smoke, report/current plan, and verification record. |
+
+Boundary / 境界:
+
+- In scope: generated/runtime-visible sync error or retryable state, read-only hints, existing sample/runtime smoke. / 対象: generated / runtime-visible な sync error または retryable state、read-only hint、既存 sample / runtime smoke。
+- Out of scope: retry mutation in generated runtime, scheduler, transport, conflict resolution, retry audit table, broad dashboard. / 対象外: generated runtime 内の retry mutation、scheduler、transport、conflict resolution、retry audit table、広い dashboard。
+- Verification: focused runtime/sample smoke first; run `make test` if shared generator/runtime behavior changes. / 検証: まず focused runtime / sample smoke。shared generator / runtime behavior を触る場合は `make test`。
+
+## Post-Runtime Error/Retry Visibility No-Code Product Goal Replan / runtime error/retry visibility 後の no-code product goal 再計画
+
 Status: `ACTIVE_NEXT`. / Status: `ACTIVE_NEXT`。
 
-This is the current active planning item after reusable partial-update server merge policy. / これは reusable partial-update server merge policy 後の現在の active planning item です。
+This planning item should choose the next small no-code product-facing implementation after runtime error/retry visibility. / この planning item では runtime error/retry visibility 後の次の小さな no-code product-facing implementation を選びます。
 
-| Candidate / 候補 | Why / 目的 | First slice estimate / first slice 目安 | Notes |
+| Candidate / 候補 | Why / 目的 | First slice estimate / first slice 目安 | Decision |
 | --- | --- | --- | --- |
-| Sync handoff visibility polish | Make generated/runtime artifacts show App-local/server processing state more clearly now that both processing paths work. | 0.5 - 2 days / 半日 - 2 日 | Candidate if product presentation is the next priority. |
-| Operator/admin no-code workflow | Show how an operator chooses, publishes, or inspects no-code runtime artifacts. | 1 - 3 days / 1 - 3 日 | Needs clearer operator surface before implementation. |
-| Additional sync behavior pressure | Add a small retry/error-state or merge edge proof after partial update merge. | 1 - 3 days / 1 - 3 日 | Keep conflict resolution and transport out of scope unless explicitly selected. |
+| Retry audit trail | Add a narrow audit note for operator retry mutation now that visibility exists in both operator and runtime surfaces. | 0.5 - 2 days / 半日 - 2 日 | Candidate. Choose only if accountability is the next concrete product gap. |
+| Another operator/runtime workflow polish slice | Polish navigation between runtime hints and operator sync outbox only if review exposes a concrete gap. | 0.5 - 2 days / 半日 - 2 日 | Candidate. Keep evidence-driven. |
+| New no-code product sample or domain pressure | Add another sample only if the current sync/operator path needs broader domain pressure. | 1 - 4 days / 1 - 4 日 | Candidate. Defer unless there is a clear product story. |
 | Mtool implementation namespace cleanup | Revisit the parked namespace cleanup with a concrete helper cluster. | 1 - 3 days / 1 - 3 日 | Remains parked until a narrow helper cluster is selected. |
+
+Boundary / 境界:
+
+- In scope: choose one next small product-facing implementation after runtime error/retry visibility. / 対象: runtime error/retry visibility 後の次の小さな product-facing implementation を 1 つ選ぶ。
+- Out of scope: broad visual builder, remote transport, full conflict resolution, native/Flutter target. / 対象外: 広い visual builder、remote transport、full conflict resolution、native / Flutter target。
+- Verification: planning/report update only unless a concrete implementation is selected. / 検証: 具体実装を選ぶまでは planning/report 更新のみ。
 
 ## Next No-Code Product Goal After Runtime Polish Decision / runtime polish 後の次 no-code product goal decision
 

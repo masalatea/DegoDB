@@ -43,9 +43,24 @@ final class Sample30NoCodeAppLocalSyncDemoTest extends TestCase
         self::assertSame('managed-operation-sync-intent-v0', $result['steps']['dispatch']['result']['sync_intent']['intent_version'] ?? '');
         self::assertSame('done', $result['steps']['outbox_process']['outcome'] ?? '');
         self::assertSame('ready_for_sync', $result['steps']['local_read_after_sync']['dto']['status'] ?? '');
+        self::assertSame('processed', $result['steps']['sync_handoff_visibility']['app_local']['handoff_state'] ?? '');
+        self::assertSame('dirty', $result['steps']['sync_handoff_visibility']['app_local']['row_sync_status'] ?? '');
         self::assertSame('SyncTaskDBAccess', $result['steps']['server_binding']['binding']['dbaccess_class'] ?? '');
         self::assertSame('done', $result['steps']['server_outbox_process']['outcome'] ?? '');
         self::assertSame('Updatesync_task', $result['steps']['server_outbox_process']['handler_result']['method_name'] ?? '');
         self::assertSame('synced_to_server', $result['steps']['server_read_after_sync']['row']['status'] ?? '');
+        self::assertSame('processed', $result['steps']['sync_handoff_visibility']['server']['handoff_state'] ?? '');
+        self::assertTrue($result['steps']['sync_handoff_visibility']['server']['title_preserved'] ?? false);
+        self::assertTrue($result['steps']['sync_handoff_visibility']['runtime_artifact']['list_sync_status_hint'] ?? false);
+        self::assertTrue($result['steps']['sync_handoff_visibility']['runtime_artifact']['detail_sync_status_hint'] ?? false);
+        self::assertFalse($result['steps']['sync_handoff_visibility']['runtime_artifact']['form_sync_status_hint'] ?? true);
+        self::assertSame('failed', $result['steps']['sync_error_state_process']['outcome'] ?? '');
+        self::assertSame('failed', $result['steps']['sync_error_state_process']['item']['status'] ?? '');
+        self::assertSame(1, $result['steps']['sync_error_state_process']['item']['attempts'] ?? 0);
+        self::assertSame(
+            'sample30 deterministic sync failure for visibility.',
+            $result['steps']['sync_error_state_process']['item']['last_error'] ?? '',
+        );
+        self::assertSame('failed', $result['steps']['sync_handoff_visibility']['error_state']['handoff_state'] ?? '');
     }
 }

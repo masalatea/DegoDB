@@ -49,6 +49,7 @@ function app_no_code_runtime_render_screen(
             'data' => app_no_code_runtime_render_data($screenType, $fields, $rows, $currentItem),
             'empty_state_message' => app_no_code_runtime_empty_state_message($screenType),
             'sync_status_hint' => (bool) ($screen['sync_status_hint'] ?? false),
+            'sync_error_retry_hint' => app_no_code_runtime_sync_error_retry_hint((bool) ($screen['sync_status_hint'] ?? false)),
         ],
         'error' => '',
     ];
@@ -107,6 +108,15 @@ function app_no_code_runtime_human_label(string $value): string
     }
 
     return ucwords($normalized);
+}
+
+function app_no_code_runtime_sync_error_retry_hint(bool $syncStatusHint): string
+{
+    if (!$syncStatusHint) {
+        return '';
+    }
+
+    return 'Failed or retryable sync items are reviewed from the operator sync outbox.';
 }
 
 /**
@@ -371,6 +381,8 @@ function app_no_code_runtime_render_screen_html(array $render): string
     $emptyStateMessage = (string) ($render['empty_state_message'] ?? app_no_code_runtime_empty_state_message($screenType));
     $screenState = app_no_code_runtime_screen_state($screenType, $data);
     $screenStatusMessage = app_no_code_runtime_screen_status_message($screenState, $screenType);
+    $syncStatusHint = (bool) ($render['sync_status_hint'] ?? false);
+    $syncErrorRetryHint = (string) ($render['sync_error_retry_hint'] ?? app_no_code_runtime_sync_error_retry_hint($syncStatusHint));
 
     $body = $screenType === 'list'
         ? app_no_code_runtime_render_list_html($fields, is_array($data['rows'] ?? null) ? $data['rows'] : [], $emptyStateMessage)
@@ -389,12 +401,33 @@ function app_no_code_runtime_render_screen_html(array $render): string
         '<p>' . app_no_code_runtime_html_escape($screenSubtitle) . '</p>',
         '</div>',
         '<span class="no-code-state-badge" data-state="' . app_no_code_runtime_html_escape($screenState) . '">' . app_no_code_runtime_html_escape($screenStatusMessage) . '</span>',
+        app_no_code_runtime_render_sync_status_hint_html($syncStatusHint),
+        app_no_code_runtime_render_sync_error_retry_hint_html($syncErrorRetryHint),
         app_no_code_runtime_render_actions_html($actions),
         '</header>',
         '<div class="no-code-action-feedback" role="status" aria-live="polite" data-state="idle">Select an enabled action to preview its intent.</div>',
         $body,
         '</section>',
     ]);
+}
+
+function app_no_code_runtime_render_sync_status_hint_html(bool $syncStatusHint): string
+{
+    if (!$syncStatusHint) {
+        return '';
+    }
+
+    return '<span class="no-code-sync-status-hint" data-sync-status-hint="visible">Sync status tracked</span>';
+}
+
+function app_no_code_runtime_render_sync_error_retry_hint_html(string $hint): string
+{
+    $hint = trim($hint);
+    if ($hint === '') {
+        return '';
+    }
+
+    return '<span class="no-code-sync-retry-hint" data-sync-retry-hint="operator-outbox">' . app_no_code_runtime_html_escape($hint) . '</span>';
 }
 
 /**
@@ -594,6 +627,8 @@ function app_no_code_runtime_preview_css(): string
         '.no-code-state-badge[data-state="ready"], .no-code-state-badge[data-state="success"] { border-color: #badbcc; color: #0f5132; background: #f0f9f4; }',
         '.no-code-state-badge[data-state="empty"], .no-code-state-badge[data-state="idle"] { border-color: #c8d1dc; color: #52606d; background: #f4f6f8; }',
         '.no-code-state-badge[data-state="error"] { border-color: #f5c2c7; color: #842029; background: #fff5f5; }',
+        '.no-code-sync-status-hint { align-self: flex-start; border: 1px solid #b6d4fe; border-radius: 999px; padding: 4px 9px; color: #084298; background: #eef6ff; font-size: 12px; white-space: nowrap; }',
+        '.no-code-sync-retry-hint { align-self: flex-start; border: 1px solid #f0d58c; border-radius: 999px; padding: 4px 9px; color: #7a4d00; background: #fff8e5; font-size: 12px; white-space: nowrap; }',
         '.no-code-table-wrap { overflow-x: auto; }',
         'table { width: 100%; border-collapse: collapse; table-layout: fixed; }',
         'th, td { border-bottom: 1px solid #e4e8ef; padding: 10px; text-align: left; vertical-align: top; overflow-wrap: anywhere; }',

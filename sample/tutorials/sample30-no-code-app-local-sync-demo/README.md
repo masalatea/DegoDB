@@ -2,7 +2,7 @@
 
 - Role: first sync-backed no-code demonstration plus server-side processing follow-up.
 - Path: canonical table metadata -> shared contract -> managed operation -> `NO-CODE-RUNTIME` action intent -> managed operation sync outbox -> App-local SQLite handler / generated server DBAccess handler.
-- Current first-slice scope: one generated no-code update action becomes a managed operation sync intent, is enqueued, and is processed by the App-local handler to update a local SQLite row. The follow-up slice processes a second outbox item with generated `SyncTaskDBAccess`, merges partial no-code input with the existing server row, and verifies a server SQLite row update.
+- Current first-slice scope: one generated no-code update action becomes a managed operation sync intent, is enqueued, and is processed by the App-local handler to update a local SQLite row. The follow-up slices process a second outbox item with generated `SyncTaskDBAccess`, merge partial no-code input with the existing server row, verify a server SQLite row update, expose sync handoff visibility in generated/runtime output, and show one deterministic failed outbox state through existing `failed` / `last_error` fields.
 
 Run:
 
@@ -34,3 +34,7 @@ The pack checker verifies:
 - the App-local outbox handler processes the intent and updates the local SQLite DTO
 - generated server DBAccess is materialized for `sync_task`
 - the server DBAccess outbox handler processes a second sync intent, merges partial update input, and updates the server SQLite row
+- generated runtime preview marks sync-aware screens with a sync-status badge
+- generated runtime preview shows a read-only operator outbox hint for failed or retryable sync items
+- the checker reports App-local and server handoff states in `sync_handoff_visibility`
+- the checker reports one deterministic failed outbox state with `status=failed`, `attempts=1`, and `last_error`

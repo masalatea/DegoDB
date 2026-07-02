@@ -105,18 +105,38 @@ final class OpenApiSourceOutputContractTest extends TestCase
         self::assertSame('project_source_output_download', $downloadRoute['name']);
         self::assertSame('MTOOL', $downloadRoute['params']['project_key'] ?? '');
         self::assertSame('20260521-023351-d52e8c8b', $downloadRoute['params']['artifact_key'] ?? '');
+
+        $artifactDetailRoute = app_route_match([
+            'path' => '/projects/MTOOL/source-outputs/artifacts/20260521-023351-d52e8c8b',
+        ]);
+
+        self::assertSame('project_source_output_artifact_detail', $artifactDetailRoute['name']);
+        self::assertSame('MTOOL', $artifactDetailRoute['params']['project_key'] ?? '');
+        self::assertSame('20260521-023351-d52e8c8b', $artifactDetailRoute['params']['artifact_key'] ?? '');
+
+        $syncOutboxDetailRoute = app_route_match([
+            'path' => '/projects/MTOOL/sync-outbox/abcdef123456',
+        ]);
+
+        self::assertSame('project_sync_outbox_detail', $syncOutboxDetailRoute['name']);
+        self::assertSame('MTOOL', $syncOutboxDetailRoute['params']['project_key'] ?? '');
+        self::assertSame('abcdef123456', $syncOutboxDetailRoute['params']['dedupe_key'] ?? '');
     }
 
     public function testOpenApiPublicRawRouteRemainsDeferredAndInternalRoutesRequireAuth(): void
     {
         $labSwaggerPage = $this->readRepoFile('mtool/app/lab_swagger_page.php');
         $downloadPage = $this->readRepoFile('mtool/app/project_source_output_download_page.php');
+        $artifactDetailPage = $this->readRepoFile('mtool/app/project_source_output_artifact_detail_page.php');
+        $syncOutboxDetailPage = $this->readRepoFile('mtool/app/project_sync_outbox_detail_page.php');
         $newPage = $this->readRepoFile('mtool/app/project_source_output_new_page.php');
         $detailPage = $this->readRepoFile('mtool/app/project_source_output_detail_page.php');
 
         self::assertTrue(app_route_requires_auth('lab_swagger'));
         self::assertTrue(app_route_requires_auth('lab_published_single_proxy'));
+        self::assertTrue(app_route_requires_auth('project_source_output_artifact_detail'));
         self::assertTrue(app_route_requires_auth('project_source_output_download'));
+        self::assertTrue(app_route_requires_auth('project_sync_outbox_detail'));
         self::assertSame(
             'not_found',
             app_route_name([
@@ -131,6 +151,25 @@ final class OpenApiSourceOutputContractTest extends TestCase
             '/app_auth_has_any_role\(\[\'admin\', \'config\'\], \$principal\)/',
             $downloadPage,
         );
+        self::assertMatchesRegularExpression(
+            '/app_auth_has_any_role\(\[\'admin\', \'config\'\], \$principal\)/',
+            $artifactDetailPage,
+        );
+        self::assertStringContainsString("'source_output.download'", $artifactDetailPage);
+        self::assertMatchesRegularExpression(
+            '/app_auth_has_any_role\(\[\'admin\', \'config\'\], \$principal\)/',
+            $syncOutboxDetailPage,
+        );
+        self::assertStringContainsString("'source_output.download'", $syncOutboxDetailPage);
+        self::assertStringContainsString('app_verify_csrf_token', $syncOutboxDetailPage);
+        self::assertStringContainsString('retry-sync-outbox', $syncOutboxDetailPage);
+        self::assertStringContainsString(
+            'app_pdo_requeue_failed_managed_operation_sync_outbox_item',
+            $syncOutboxDetailPage,
+        );
+        self::assertStringContainsString('Retry Queued', $syncOutboxDetailPage);
+        self::assertStringContainsString('It was not processed inline by this page.', $syncOutboxDetailPage);
+        self::assertStringContainsString('existing processor can claim this item', $syncOutboxDetailPage);
         self::assertStringContainsString('public raw route や public alias key route はまだ持ちません', $newPage);
         self::assertStringContainsString('public raw route や public alias key route は持ちません', $detailPage);
     }

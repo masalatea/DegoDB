@@ -34,6 +34,10 @@ final class NoCodeRuntimeTest extends TestCase
         self::assertSame('Task / List', $list['render']['screen_subtitle'] ?? '');
         self::assertSame('No records to show yet.', $list['render']['empty_state_message'] ?? '');
         self::assertTrue($list['render']['sync_status_hint'] ?? false);
+        self::assertSame(
+            'Failed or retryable sync items are reviewed from the operator sync outbox.',
+            $list['render']['sync_error_retry_hint'] ?? '',
+        );
         self::assertSame('Write runtime test', $list['render']['data']['rows'][0]['title']['display_value'] ?? '');
         self::assertSame('true', $list['render']['data']['rows'][0]['is_pinned']['display_value'] ?? '');
 
@@ -70,6 +74,7 @@ final class NoCodeRuntimeTest extends TestCase
         self::assertTrue($form['ok'], $form['error']);
         self::assertSame('form', $form['render']['screen_type'] ?? '');
         self::assertFalse($form['render']['sync_status_hint'] ?? true);
+        self::assertSame('', $form['render']['sync_error_retry_hint'] ?? 'unexpected');
         self::assertArrayNotHasKey('id', $form['render']['data']['item'] ?? []);
         self::assertSame('Editable note', $form['render']['data']['item']['note']['display_value'] ?? '');
     }
@@ -118,6 +123,9 @@ final class NoCodeRuntimeTest extends TestCase
         self::assertStringContainsString('window.noCodeRuntimeDispatchAction', $html);
         self::assertStringContainsString('Preview ready', $html);
         self::assertStringContainsString('data-screen-state="ready"', $html);
+        self::assertStringContainsString('data-sync-status-hint="visible">Sync status tracked</span>', $html);
+        self::assertStringContainsString('data-sync-retry-hint="operator-outbox"', $html);
+        self::assertStringContainsString('Failed or retryable sync items are reviewed from the operator sync outbox.', $html);
         self::assertStringContainsString('Task List', $html);
         self::assertStringContainsString('Task Detail', $html);
         self::assertStringContainsString('Task Form', $html);

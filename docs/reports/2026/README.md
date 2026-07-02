@@ -11,6 +11,54 @@
 
 ## Index
 
+- `2026-0630-no-code-runtime-error-retry-visibility-first-slice.md`
+  - generated no-code runtime artifact に read-only の failed / retryable sync hint を追加し、`runtime-preview.json` と `runtime-preview.html` から operator sync outbox への handoff を示すようにした。generated runtime 内 retry mutation は対象外。Status: `FIRST_SLICE_DONE`。
+- `2026-0630-post-operator-retry-feedback-polish-no-code-product-goal-replan.md`
+  - operator retry feedback polish first slice 後の no-code product-goal replan。operator/admin 側の retry path が読めるようになったため、generated runtime artifact に failed / retryable state を read-only hint として出す No-code runtime error/retry visibility first slice を選択。Status: `DONE`。
+- `2026-0630-operator-retry-feedback-polish-first-slice.md`
+  - operator sync outbox detail page の retry 後 feedback を polish し、`Retry Queued` state block で current status、attempts、last_error cleared、existing processor handoff を表示。scheduler / transport / conflict resolution / audit table は対象外。Status: `FIRST_SLICE_DONE`。
+- `2026-0630-post-retry-processing-smoke-no-code-product-goal-replan.md`
+  - retry processing smoke first slice 後の no-code product-goal replan。既存 processor path の proof 後、operator が requeue 結果と processor handoff を理解しやすくする Operator retry feedback polish first slice を選択。Status: `DONE`。
+- `2026-0630-retry-processing-smoke-first-slice.md`
+  - requeue された `pending` item が既存 processor path に拾われ、claim で attempts が増え、handler success 後に `done` になる focused smoke を追加。scheduler / transport / conflict resolution / retry UI は対象外。Status: `FIRST_SLICE_DONE`。
+- `2026-0630-post-operator-sync-retry-action-no-code-product-goal-replan.md`
+  - operator sync retry action first slice 後の no-code product-goal replan。requeue 後に既存 processor path が拾うことを証明する Retry processing smoke first slice を選択。Status: `DONE`。
+- `2026-0630-operator-sync-retry-action-first-slice.md`
+  - operator sync outbox detail page に CSRF-protected POST retry action を追加し、eligible failed item を `pending` に戻せるようにした。inline processing / scheduler / transport / conflict resolution / retry audit table は対象外。Status: `FIRST_SLICE_DONE`。
+- `2026-0630-post-sync-retry-eligibility-guard-no-code-product-goal-replan.md`
+  - sync retry eligibility guard first slice 後の no-code product-goal replan。eligible failed outbox item を `pending` に戻す Operator sync retry action first slice を選択。Status: `DONE`。
+- `2026-0630-sync-retry-eligibility-guard-first-slice.md`
+  - retry / requeue mutation の前段として、fail-closed な `app_no_code_operator_sync_retry_eligibility()` を追加し、operator sync outbox detail page に read-only decision を表示。Status: `FIRST_SLICE_DONE`。
+- `2026-0630-post-operator-sync-outbox-detail-no-code-product-goal-replan.md`
+  - operator sync outbox detail first slice 後の no-code product-goal replan。retry / requeue mutation の前に、fail-closed な Sync retry eligibility guard first slice を選択。Status: `DONE`。
+- `2026-0630-operator-sync-outbox-detail-first-slice.md`
+  - `/projects/{project}/sync-outbox/{dedupe_key}` の read-only detail page を追加し、Source Outputs の Sync Outbox Inspection failed-item list から既存 outbox field と decoded intent payload を確認できるようにした。retry / requeue / status mutation は対象外。Status: `FIRST_SLICE_DONE`。
+- `2026-0630-post-operator-failed-sync-inspection-no-code-product-goal-replan.md`
+  - operator failed-sync inspection first slice 後の no-code product-goal replan。retry / requeue action の前に、既存 outbox field と decoded intent payload を見る read-only Operator sync outbox detail first slice を選択。Status: `DONE`。
+- `2026-0630-operator-failed-sync-inspection-first-slice.md`
+  - Source Outputs admin page に read-only な Sync Outbox Inspection summary を追加し、既存 outbox status / attempts / last_error で failed sync item を operator が確認できるようにした。retry / requeue / transport / conflict resolution は対象外。Status: `FIRST_SLICE_DONE`。
+- `2026-0630-post-sync-error-state-visibility-no-code-product-goal-replan.md`
+  - sync error-state visibility first slice 後の no-code product-goal replan。次の active implementation として、既存 outbox status / attempts / last_error を read-only operator/admin surface で見せる Operator failed-sync inspection first slice を選択。Status: `DONE`。
+- `2026-0630-sync-error-state-visibility-first-slice.md`
+  - sample30 に deterministic failed outbox path を追加し、既存 outbox lifecycle field の `status=failed`、`attempts=1`、`last_error` を checker/test で確認。retry scheduler / transport / conflict resolution は対象外。Status: `FIRST_SLICE_DONE`。
+- `2026-0630-post-operator-artifact-detail-no-code-product-goal-replan.md`
+  - read-only Source Output artifact detail 後の no-code product-goal replan。次の active implementation として、既存 outbox `failed` / `last_error` を sample30 で見せる Sync error-state visibility first slice を選択。Status: `DONE`。
+- `2026-0630-operator-source-output-artifact-detail-first-slice.md`
+  - Source Output artifact の read-only detail route/page を追加。manifest identity、archive state、runtime source、file count、bundle path、download affordance を operator/admin が確認できるようにした。Status: `FIRST_SLICE_DONE`。
+- `2026-0630-post-operator-preview-health-no-code-product-goal-replan.md`
+  - operator preview health/detail links 後の no-code product-goal replan。次の active implementation として、summary と archive download の間を埋める read-only Source Output artifact detail page を選択。Status: `DONE`。
+- `2026-0630-operator-preview-health-detail-links-first-slice.md`
+  - Source Outputs admin page の `NO-CODE-RUNTIME` inspection に `ready` / `warning` / `missing` health、health reason、definition detail link、latest artifact download link、preview file path を追加。Status: `FIRST_SLICE_DONE`。
+- `2026-0630-post-operator-admin-no-code-product-goal-replan.md`
+  - operator/admin inspection-only surface 後の no-code product-goal replan。次の active implementation として、generated artifact の health signal と detail/download/path affordance を足す Operator preview health/detail links first slice を選択。Status: `DONE`。
+- `2026-0630-operator-admin-no-code-workflow-first-slice.md`
+  - 既存 Source Outputs admin page に inspection-only な `NO-CODE-RUNTIME` summary を追加。latest artifact、generated preview file availability、screen/action count、sync hint visibility を operator/admin が確認できるようにした。Status: `FIRST_SLICE_DONE`。
+- `2026-0630-post-sync-handoff-visibility-no-code-product-goal-replan.md`
+  - sync handoff visibility polish 後の no-code product-goal replan。生成済み no-code runtime artifact を operator/admin が選択・確認する inspection workflow first slice を次の active implementation として選択。Status: `DONE`。
+- `2026-0630-sync-handoff-visibility-polish-first-slice.md`
+  - generated runtime preview HTML に sync-status hint badge を追加し、sample30 checker に App-local / server handoff visibility summary を追加。transport / conflict resolution / retry scheduling は対象外。Status: `FIRST_SLICE_DONE`。
+- `2026-0630-post-partial-update-merge-no-code-product-goal-replan.md`
+  - reusable partial-update server merge policy 後の no-code product-goal replan。App-local / server-side sync processing の両方が通ったため、次の active implementation として sync handoff visibility polish first slice を選択。Status: `DONE`。
 - `2026-0630-reusable-partial-update-server-merge-policy-first-slice.md`
   - generated server DBAccess update execution に reusable partial-update merge を追加。partial no-code input から existing row を read/merge/write し、sample30 の sample-specific full-row payload completion を削除。Status: `FIRST_SLICE_DONE`。
 - `2026-0630-post-server-side-sync-no-code-product-goal-replan.md`

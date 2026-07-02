@@ -783,7 +783,7 @@ function app_render_project_source_output_detail_page(array $app, array $request
                 <?php foreach ($artifacts as $artifact): ?>
                     <tr>
                         <td>
-                            <strong><code><?php echo app_h($artifact['artifact_key']); ?></code></strong><br>
+                            <strong><a href="<?php echo app_h(app_project_source_output_artifact_detail_path($projectKey, $artifact['artifact_key'])); ?>"><code><?php echo app_h($artifact['artifact_key']); ?></code></a></strong><br>
                             <span class="muted"><?php echo app_h($artifact['created_at']); ?></span><br>
                             <span class="muted">requested by: <?php echo app_h($artifact['requested_by']); ?></span>
                         </td>
