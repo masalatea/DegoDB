@@ -59,8 +59,11 @@ function app_project_output_customization_model(string $artifactStrategy = ''): 
         'canonical-dataclass-php' => 'generated-wrapper-base-tree',
         'shared-contract-json',
         'app-local-persistence-php',
+        'app-local-package-manifest',
         'managed-operation-docs-md',
         'no-code-runtime-json',
+        'no-code-react-bridge',
+        'no-code-json-forms-probe',
         'shared-contract-typescript',
         'openapi-json',
         'html-module-catalog',
@@ -117,10 +120,19 @@ function app_project_output_custom_layer_entrypoints(array $definition): array
         'app-local-persistence-php' => [
             'README.md',
         ],
+        'app-local-package-manifest' => [
+            'README.md',
+        ],
         'managed-operation-docs-md' => [
             'README.md',
         ],
         'no-code-runtime-json' => [
+            'README.md',
+        ],
+        'no-code-react-bridge' => [
+            'README.md',
+        ],
+        'no-code-json-forms-probe' => [
             'README.md',
         ],
         'openapi-json' => [
@@ -188,8 +200,11 @@ function app_project_output_custom_layer_scaffold_relative_paths(array $definiti
         'shared-contract-json',
         'shared-contract-typescript',
         'app-local-persistence-php',
+        'app-local-package-manifest',
         'managed-operation-docs-md',
         'no-code-runtime-json',
+        'no-code-react-bridge',
+        'no-code-json-forms-probe',
         'openapi-json',
         'ai-context-md',
         'modernization-audit-md',
@@ -2142,6 +2157,23 @@ function app_project_output_create_from_definition(
         $runtimeSourceRelativePath = $appLocalTreeResult['runtime_source_relative_path'];
         $runtimeSourceRoot = $appLocalTreeResult['runtime_source_root'];
         $scanResult = $appLocalTreeResult['scan_result'];
+    } elseif (app_project_output_app_local_package_strategy_is_supported($definition['artifact_strategy'])) {
+        $appLocalPackageTreeResult = app_project_output_prepare_app_local_package_source_tree(
+            $app,
+            $normalizedProjectKey,
+            $definition,
+        );
+        if (!$appLocalPackageTreeResult['ok'] || !is_array($appLocalPackageTreeResult['scan_result'])) {
+            return [
+                'ok' => false,
+                'artifact' => null,
+                'error' => $appLocalPackageTreeResult['error'],
+            ];
+        }
+
+        $runtimeSourceRelativePath = $appLocalPackageTreeResult['runtime_source_relative_path'];
+        $runtimeSourceRoot = $appLocalPackageTreeResult['runtime_source_root'];
+        $scanResult = $appLocalPackageTreeResult['scan_result'];
     } elseif (app_project_output_managed_operation_strategy_is_supported($definition['artifact_strategy'])) {
         $managedOperationTreeResult = app_project_output_prepare_managed_operation_source_tree(
             $app,

@@ -97,6 +97,35 @@ function app_route_match(array $request): array
         ];
     }
 
+    if (preg_match('#^/runs/no-code/([^/]+)/current/runtime-preview\.html$#', $request['path'], $matches) === 1) {
+        return [
+            'name' => 'no_code_public_runtime_current_preview',
+            'params' => [
+                'project_key' => strtoupper(trim($matches[1])),
+            ],
+        ];
+    }
+
+    if (preg_match('#^/runs/no-code/([^/]+)/alias/([^/]+)/runtime-preview\.html$#', $request['path'], $matches) === 1) {
+        return [
+            'name' => 'no_code_public_runtime_alias_preview',
+            'params' => [
+                'project_key' => strtoupper(trim($matches[1])),
+                'alias_key' => rawurldecode(trim($matches[2])),
+            ],
+        ];
+    }
+
+    if (preg_match('#^/runs/no-code/([^/]+)/([^/]+)/runtime-preview\.html$#', $request['path'], $matches) === 1) {
+        return [
+            'name' => 'no_code_public_runtime_preview',
+            'params' => [
+                'project_key' => strtoupper(trim($matches[1])),
+                'artifact_key' => rawurldecode(trim($matches[2])),
+            ],
+        ];
+    }
+
     if (preg_match('#^/samples/sample18-task-board/?$#', $request['path']) === 1) {
         return [
             'name' => 'lab_sample18_task_board',
@@ -246,11 +275,31 @@ function app_route_match(array $request): array
         ];
     }
 
+    if (preg_match('#^/projects/([^/]+)/source-outputs/artifacts/([^/]+)/?$#', $request['path'], $matches) === 1) {
+        return [
+            'name' => 'project_source_output_artifact_detail',
+            'params' => [
+                'project_key' => strtoupper(trim($matches[1])),
+                'artifact_key' => rawurldecode(trim($matches[2])),
+            ],
+        ];
+    }
+
     if (preg_match('#^/projects/([^/]+)/source-outputs/?$#', $request['path'], $matches) === 1) {
         return [
             'name' => 'project_source_outputs',
             'params' => [
                 'project_key' => strtoupper(trim($matches[1])),
+            ],
+        ];
+    }
+
+    if (preg_match('#^/projects/([^/]+)/sync-outbox/([^/]+)/?$#', $request['path'], $matches) === 1) {
+        return [
+            'name' => 'project_sync_outbox_detail',
+            'params' => [
+                'project_key' => strtoupper(trim($matches[1])),
+                'dedupe_key' => rawurldecode(trim($matches[2])),
             ],
         ];
     }
@@ -951,5 +1000,5 @@ function app_route_param(array $request, string $name, string $default = ''): st
 
 function app_route_requires_auth(string $routeName): bool
 {
-    return in_array($routeName, ['dashboard', 'projects', 'project_detail', 'project_settings', 'project_security', 'project_security_users', 'project_security_pages', 'project_host_assignments', 'project_source_outputs', 'project_source_output_change_order', 'project_source_output_new', 'project_source_output_detail', 'project_source_output_edit', 'project_source_output_download', 'project_compare_output_settings', 'project_compare_output_additional_paths', 'project_custom_proxies', 'project_custom_proxy_detail', 'project_custom_proxy_endpoint', 'project_custom_proxy_functions', 'project_single_proxy', 'project_htmls', 'project_html_detail', 'project_html_parameters', 'html_templates', 'html_template_detail', 'html_template_parameters', 'project_tables', 'project_tables_import', 'project_table_detail', 'project_table_edit', 'project_table_columns', 'project_table_column_edit', 'project_data_classes', 'project_data_classes_sync', 'project_data_class_detail', 'project_data_class_edit', 'project_data_class_fields', 'project_data_class_field_edit', 'project_data_class_source', 'project_db_access', 'project_db_access_sync', 'project_db_access_detail', 'project_db_access_edit', 'project_db_access_functions', 'project_db_access_source', 'project_db_access_function_detail', 'project_db_access_function_source', 'project_db_access_function_endpoint', 'experiments', 'lab_build', 'lab_compare_output', 'lab_endpoint', 'lab_published_single_proxy', 'lab_swagger', 'lab_sample18_task_board'], true);
+    return in_array($routeName, ['dashboard', 'projects', 'project_detail', 'project_settings', 'project_security', 'project_security_users', 'project_security_pages', 'project_host_assignments', 'project_source_outputs', 'project_source_output_change_order', 'project_source_output_new', 'project_source_output_detail', 'project_source_output_edit', 'project_source_output_artifact_detail', 'project_source_output_download', 'project_sync_outbox_detail', 'project_compare_output_settings', 'project_compare_output_additional_paths', 'project_custom_proxies', 'project_custom_proxy_detail', 'project_custom_proxy_endpoint', 'project_custom_proxy_functions', 'project_single_proxy', 'project_htmls', 'project_html_detail', 'project_html_parameters', 'html_templates', 'html_template_detail', 'html_template_parameters', 'project_tables', 'project_tables_import', 'project_table_detail', 'project_table_edit', 'project_table_columns', 'project_table_column_edit', 'project_data_classes', 'project_data_classes_sync', 'project_data_class_detail', 'project_data_class_edit', 'project_data_class_fields', 'project_data_class_field_edit', 'project_data_class_source', 'project_db_access', 'project_db_access_sync', 'project_db_access_detail', 'project_db_access_edit', 'project_db_access_functions', 'project_db_access_source', 'project_db_access_function_detail', 'project_db_access_function_source', 'project_db_access_function_endpoint', 'experiments', 'lab_build', 'lab_compare_output', 'lab_endpoint', 'lab_published_single_proxy', 'lab_swagger', 'lab_sample18_task_board'], true);
 }

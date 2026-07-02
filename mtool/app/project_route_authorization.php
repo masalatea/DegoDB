@@ -39,6 +39,18 @@ function app_project_route_authorization_contract(): array
             'audit_required' => true,
             'notes' => 'already enforced with audited permission decision',
         ],
+        'project_source_output_artifact_detail' => [
+            'capability' => 'source_output.download',
+            'enforcement_status' => 'done',
+            'audit_required' => true,
+            'notes' => 'read-only artifact detail uses the same audited boundary as archive download',
+        ],
+        'project_sync_outbox_detail' => [
+            'capability' => 'source_output.download',
+            'enforcement_status' => 'done',
+            'audit_required' => true,
+            'notes' => 'read-only sync outbox item detail uses the same audited boundary as source output inspection',
+        ],
         'project_source_output_new:GET' => [
             'capability' => 'project.read',
             'enforcement_status' => 'next',

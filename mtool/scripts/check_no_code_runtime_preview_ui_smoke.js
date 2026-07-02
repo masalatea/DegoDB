@@ -11,6 +11,7 @@ function usage() {
 
 Options:
   --html=PATH                    runtime-preview.html path
+  --url=URL                      runtime-preview.html URL
   --profile=sample07|sample28|sample29
                                  expected no-code runtime shape (default: sample07)
   --output-dir=PATH              artifact directory root (default: output/playwright/no-code-runtime-preview)
@@ -26,6 +27,7 @@ function repoRoot() {
 function parseArgs(argv) {
   const config = {
     htmlPath: path.join(repoRoot(), 'work', 'source-outputs', 'SAMPLE07', 'NO-CODE-RUNTIME', 'runtime-preview.html'),
+    url: '',
     outputDir: path.join(repoRoot(), 'output', 'playwright', 'no-code-runtime-preview'),
     headless: true,
     help: false,
@@ -55,6 +57,8 @@ function parseArgs(argv) {
     const value = body.slice(separatorIndex + 1).trim();
     if (name === 'html') {
       config.htmlPath = path.resolve(value);
+    } else if (name === 'url') {
+      config.url = value;
     } else if (name === 'profile') {
       config.expected = expectedProfile(value);
     } else if (name === 'output-dir') {
@@ -221,7 +225,7 @@ async function requireVisible(locator, label) {
 }
 
 async function runSmoke(config) {
-  if (!fs.existsSync(config.htmlPath)) {
+  if (config.url === '' && !fs.existsSync(config.htmlPath)) {
     throw new Error(`HTML preview was not found: ${config.htmlPath}`);
   }
 
@@ -237,7 +241,8 @@ async function runSmoke(config) {
   const screenshotPath = path.join(config.outputDir, `no-code-runtime-preview-${timestamp()}.png`);
   try {
     const page = await browser.newPage({ viewport: { width: 1280, height: 900 } });
-    await page.goto(`file://${config.htmlPath}`, { waitUntil: 'load' });
+    const targetUrl = config.url !== '' ? config.url : `file://${config.htmlPath}`;
+    await page.goto(targetUrl, { waitUntil: 'load' });
 
     await requireVisible(page.locator('.no-code-preview'), 'preview root');
     await requireVisible(page.locator(`.no-code-screen[data-screen-key="${config.expected.listScreenKey}"]`), 'list screen');
@@ -267,16 +272,37 @@ async function runSmoke(config) {
       const authorizedDispatch = typeof window.noCodeRuntimeDispatchAction === 'function'
         ? window.noCodeRuntimeDispatchAction(expected.actionKey, expected.payload)
         : { ok: false, executed: false, error: 'missing noCodeRuntimeDispatchAction' };
+      const blankRequiredPayload = { ...expected.payload, [expected.requiredInputField]: '   ' };
+      const blankRequiredDispatch = typeof window.noCodeRuntimeDispatchAction === 'function'
+        ? window.noCodeRuntimeDispatchAction(expected.actionKey, blankRequiredPayload)
+        : { ok: false, executed: false, error: 'missing noCodeRuntimeDispatchAction' };
 
       return {
         title: document.title,
         runtimeVersion: document.querySelector('.no-code-preview')?.getAttribute('data-runtime-version') || '',
         runtimeState: document.querySelector('.no-code-preview')?.getAttribute('data-runtime-state') || '',
+        previewLabelledBy: document.querySelector('.no-code-preview')?.getAttribute('aria-labelledby') || '',
         sectionCount: sections.length,
+        regionCount: sections.filter((section) => section.getAttribute('role') === 'region' && section.getAttribute('aria-labelledby')).length,
+        tableCaptionText: document.querySelector(`.no-code-screen[data-screen-key="${expected.listScreenKey}"] caption`)?.textContent?.trim() || '',
+        actionNavLabels: Array.from(document.querySelectorAll('.no-code-actions')).map((element) => element.getAttribute('aria-label') || ''),
+        summaryCount: document.querySelectorAll('.no-code-screen-summary').length,
+        formSummary: {
+          fieldCount: document.querySelector(`.no-code-screen-summary[data-screen-summary="${expected.formScreenKey}"]`)?.getAttribute('data-field-count') || '',
+          actionCount: document.querySelector(`.no-code-screen-summary[data-screen-summary="${expected.formScreenKey}"]`)?.getAttribute('data-action-count') || '',
+        },
         emptyScreenCount: sections.filter((section) => section.getAttribute('data-screen-state') === 'empty').length,
         readyScreenCount: sections.filter((section) => section.getAttribute('data-screen-state') === 'ready').length,
         actionCount: actions.length,
         disabledActionCount: actions.filter((button) => button.disabled).length,
+        keyboardActionCount: actions.filter((button) => button.getAttribute('data-keyboard-activation') === 'enter-space').length,
+        actionAffordanceCount: actions.filter((button) => button.getAttribute('data-action-affordance') === 'keyboard-intent-preview').length,
+        actionHintCount: document.querySelectorAll('.no-code-action-hint[data-action-hint]').length,
+        actionHintText: Array.from(document.querySelectorAll('.no-code-action-hint')).map((element) => element.textContent?.trim() || ''),
+        describedActionCount: actions.filter((button) => {
+          const hintId = button.getAttribute('aria-describedby') || '';
+          return hintId !== '' && document.getElementById(hintId);
+        }).length,
         idleFeedbackCount: Array.from(document.querySelectorAll('.no-code-action-feedback')).filter((element) => element.getAttribute('data-state') === 'idle').length,
         actionMetadata: {
           actionKey: updateAction.action_key || '',
@@ -286,6 +312,7 @@ async function runSmoke(config) {
         },
         disabledDispatch,
         authorizedDispatch,
+        blankRequiredDispatch,
         bodyText: document.body.innerText,
       };
     }, config.expected);
@@ -296,11 +323,38 @@ async function runSmoke(config) {
     if (metrics.runtimeState !== 'ready') {
       throw new Error(`runtime state mismatch: ${metrics.runtimeState}`);
     }
+    if (metrics.previewLabelledBy !== 'no-code-preview-title') {
+      throw new Error(`preview aria-labelledby mismatch: ${metrics.previewLabelledBy}`);
+    }
     if (metrics.sectionCount !== 3) {
       throw new Error(`screen count mismatch: ${metrics.sectionCount}`);
     }
+    if (metrics.regionCount !== 3) {
+      throw new Error(`screen region count mismatch: ${metrics.regionCount}`);
+    }
+    if (!metrics.tableCaptionText.endsWith('List records')) {
+      throw new Error(`list table caption mismatch: ${metrics.tableCaptionText}`);
+    }
+    if (!metrics.actionNavLabels.some((label) => label.endsWith('Form actions'))) {
+      throw new Error(`form action nav label missing: ${metrics.actionNavLabels.join(', ')}`);
+    }
+    if (metrics.summaryCount !== 3) {
+      throw new Error(`screen summary count mismatch: ${metrics.summaryCount}`);
+    }
+    if (metrics.formSummary.fieldCount !== String(config.expected.inputFields.length) || metrics.formSummary.actionCount !== '1') {
+      throw new Error(`form screen summary mismatch: ${JSON.stringify(metrics.formSummary)}`);
+    }
     if (metrics.emptyScreenCount < 1) {
       throw new Error('generated empty screen state was not found.');
+    }
+    if (metrics.keyboardActionCount !== metrics.actionCount || metrics.actionAffordanceCount !== metrics.actionCount) {
+      throw new Error(`generated action keyboard affordance markers mismatch: ${metrics.keyboardActionCount}/${metrics.actionAffordanceCount}/${metrics.actionCount}`);
+    }
+    if (metrics.actionHintCount !== metrics.actionCount || metrics.describedActionCount !== metrics.actionCount) {
+      throw new Error(`generated action hints mismatch: ${metrics.actionHintCount}/${metrics.describedActionCount}/${metrics.actionCount}`);
+    }
+    if (!metrics.actionHintText.some((text) => text.includes('press Enter or Space') || text.includes('Disabled in this preview'))) {
+      throw new Error('generated action keyboard hint was not found.');
     }
     if (metrics.idleFeedbackCount !== 3) {
       throw new Error(`initial action feedback state mismatch: ${metrics.idleFeedbackCount}`);
@@ -342,12 +396,22 @@ async function runSmoke(config) {
     if ((authorizedIntent.payload?.input || {})[config.expected.requiredInputField] !== config.expected.requiredInputValue) {
       throw new Error('authorized browser dispatch did not map generated input fields.');
     }
+    if (metrics.blankRequiredDispatch.ok || metrics.blankRequiredDispatch.executed) {
+      throw new Error('blank required generated action input should fail closed in browser dispatch.');
+    }
+    if (!metrics.blankRequiredDispatch.error.includes(`input.missing:${config.expected.requiredInputField}`)) {
+      throw new Error(`unexpected blank required browser dispatch error: ${metrics.blankRequiredDispatch.error}`);
+    }
+    if (metrics.blankRequiredDispatch.message !== `Required input is missing: ${config.expected.requiredInputField}`) {
+      throw new Error(`unexpected blank required browser dispatch message: ${metrics.blankRequiredDispatch.message}`);
+    }
 
     await page.screenshot({ path: screenshotPath, fullPage: true });
 
     return {
       ok: true,
       html: config.htmlPath,
+      url: config.url,
       screenshot: screenshotPath,
       metrics,
     };

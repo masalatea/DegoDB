@@ -6,6 +6,7 @@ require_once dirname(__DIR__, 2) . '/mtool/app/domain_validation.php';
 require_once dirname(__DIR__, 2) . '/mtool/app/bootstrap.php';
 require_once dirname(__DIR__, 2) . '/mtool/app/lab_published_single_proxy_page.php';
 require_once dirname(__DIR__, 2) . '/mtool/app/lab_swagger_service.php';
+require_once dirname(__DIR__, 2) . '/mtool/app/no_code_public_runtime_page.php';
 require_once dirname(__DIR__, 2) . '/mtool/app/project_output_openapi_generator.php';
 require_once dirname(__DIR__, 2) . '/mtool/app/router.php';
 
@@ -105,18 +106,64 @@ final class OpenApiSourceOutputContractTest extends TestCase
         self::assertSame('project_source_output_download', $downloadRoute['name']);
         self::assertSame('MTOOL', $downloadRoute['params']['project_key'] ?? '');
         self::assertSame('20260521-023351-d52e8c8b', $downloadRoute['params']['artifact_key'] ?? '');
+
+        $artifactDetailRoute = app_route_match([
+            'path' => '/projects/MTOOL/source-outputs/artifacts/20260521-023351-d52e8c8b',
+        ]);
+
+        self::assertSame('project_source_output_artifact_detail', $artifactDetailRoute['name']);
+        self::assertSame('MTOOL', $artifactDetailRoute['params']['project_key'] ?? '');
+        self::assertSame('20260521-023351-d52e8c8b', $artifactDetailRoute['params']['artifact_key'] ?? '');
+
+        $syncOutboxDetailRoute = app_route_match([
+            'path' => '/projects/MTOOL/sync-outbox/abcdef123456',
+        ]);
+
+        self::assertSame('project_sync_outbox_detail', $syncOutboxDetailRoute['name']);
+        self::assertSame('MTOOL', $syncOutboxDetailRoute['params']['project_key'] ?? '');
+        self::assertSame('abcdef123456', $syncOutboxDetailRoute['params']['dedupe_key'] ?? '');
+
+        $noCodeRuntimePreviewRoute = app_route_match([
+            'path' => '/runs/no-code/SAMPLE28/20260702-010203-abcdef12/runtime-preview.html',
+        ]);
+
+        self::assertSame('no_code_public_runtime_preview', $noCodeRuntimePreviewRoute['name']);
+        self::assertSame('SAMPLE28', $noCodeRuntimePreviewRoute['params']['project_key'] ?? '');
+        self::assertSame('20260702-010203-abcdef12', $noCodeRuntimePreviewRoute['params']['artifact_key'] ?? '');
+
+        $noCodeRuntimeCurrentPreviewRoute = app_route_match([
+            'path' => '/runs/no-code/SAMPLE28/current/runtime-preview.html',
+        ]);
+
+        self::assertSame('no_code_public_runtime_current_preview', $noCodeRuntimeCurrentPreviewRoute['name']);
+        self::assertSame('SAMPLE28', $noCodeRuntimeCurrentPreviewRoute['params']['project_key'] ?? '');
+        self::assertArrayNotHasKey('artifact_key', $noCodeRuntimeCurrentPreviewRoute['params']);
+
+        self::assertSame(
+            'public, max-age=31536000, immutable',
+            app_no_code_public_runtime_artifact_cache_control(),
+        );
+        self::assertSame('no-store', app_no_code_public_runtime_current_cache_control());
     }
 
     public function testOpenApiPublicRawRouteRemainsDeferredAndInternalRoutesRequireAuth(): void
     {
         $labSwaggerPage = $this->readRepoFile('mtool/app/lab_swagger_page.php');
         $downloadPage = $this->readRepoFile('mtool/app/project_source_output_download_page.php');
+        $artifactDetailPage = $this->readRepoFile('mtool/app/project_source_output_artifact_detail_page.php');
+        $sourceOutputsPage = $this->readRepoFile('mtool/app/project_source_outputs_page.php');
+        $syncOutboxDetailPage = $this->readRepoFile('mtool/app/project_sync_outbox_detail_page.php');
+        $publicRuntimePage = $this->readRepoFile('mtool/app/no_code_public_runtime_page.php');
         $newPage = $this->readRepoFile('mtool/app/project_source_output_new_page.php');
         $detailPage = $this->readRepoFile('mtool/app/project_source_output_detail_page.php');
 
         self::assertTrue(app_route_requires_auth('lab_swagger'));
         self::assertTrue(app_route_requires_auth('lab_published_single_proxy'));
+        self::assertTrue(app_route_requires_auth('project_source_output_artifact_detail'));
         self::assertTrue(app_route_requires_auth('project_source_output_download'));
+        self::assertTrue(app_route_requires_auth('project_sync_outbox_detail'));
+        self::assertFalse(app_route_requires_auth('no_code_public_runtime_preview'));
+        self::assertFalse(app_route_requires_auth('no_code_public_runtime_current_preview'));
         self::assertSame(
             'not_found',
             app_route_name([
@@ -131,8 +178,92 @@ final class OpenApiSourceOutputContractTest extends TestCase
             '/app_auth_has_any_role\(\[\'admin\', \'config\'\], \$principal\)/',
             $downloadPage,
         );
+        self::assertMatchesRegularExpression(
+            '/app_auth_has_any_role\(\[\'admin\', \'config\'\], \$principal\)/',
+            $artifactDetailPage,
+        );
+        self::assertStringContainsString("'source_output.download'", $artifactDetailPage);
+        self::assertStringContainsString('Operator Workflow Checklist', $sourceOutputsPage);
+        self::assertStringContainsString('workflow_steps', $sourceOutputsPage);
+        self::assertStringContainsString('$workflowStep', $sourceOutputsPage);
+        self::assertStringContainsString('Delivery Overview', $sourceOutputsPage);
+        self::assertStringContainsString('delivery_overview', $sourceOutputsPage);
+        self::assertStringContainsString('public runtime:', $sourceOutputsPage);
+        self::assertStringContainsString('app-local package:', $sourceOutputsPage);
+        self::assertStringContainsString('Inspect App-local package definition', $sourceOutputsPage);
+        self::assertMatchesRegularExpression(
+            '/app_auth_has_any_role\(\[\'admin\', \'config\'\], \$principal\)/',
+            $syncOutboxDetailPage,
+        );
+        self::assertStringContainsString("'source_output.download'", $syncOutboxDetailPage);
+        self::assertStringContainsString('app_verify_csrf_token', $syncOutboxDetailPage);
+        self::assertStringContainsString('retry-sync-outbox', $syncOutboxDetailPage);
+        self::assertStringContainsString(
+            'app_pdo_requeue_failed_managed_operation_sync_outbox_item',
+            $syncOutboxDetailPage,
+        );
+        self::assertStringContainsString('Retry Queued', $syncOutboxDetailPage);
+        self::assertStringContainsString('It was not processed inline by this page.', $syncOutboxDetailPage);
+        self::assertStringContainsString('sync_outbox.retry_requeued', $syncOutboxDetailPage);
+        self::assertStringContainsString('audit trail:', $syncOutboxDetailPage);
+        self::assertStringContainsString('Recent Retry Audit', $syncOutboxDetailPage);
+        self::assertStringContainsString('No retry audit event has been recorded for this sync outbox item yet.', $syncOutboxDetailPage);
+        self::assertStringContainsString("'target_key' => \$dedupeKey", $syncOutboxDetailPage);
+        self::assertStringContainsString('existing processor can claim this item', $syncOutboxDetailPage);
         self::assertStringContainsString('public raw route や public alias key route はまだ持ちません', $newPage);
         self::assertStringContainsString('public raw route や public alias key route は持ちません', $detailPage);
+        self::assertStringContainsString('Publish Candidates', $detailPage);
+        self::assertStringContainsString('create-publish-candidate', $detailPage);
+        self::assertStringContainsString('transition-publish-candidate', $detailPage);
+        self::assertStringContainsString('select-current-public-revision', $detailPage);
+        self::assertStringContainsString('set-public-runtime-alias', $detailPage);
+        self::assertStringContainsString('delete-public-runtime-alias', $detailPage);
+        self::assertStringContainsString('app_pdo_create_no_code_publish_candidate_from_readiness_snapshot', $detailPage);
+        self::assertStringContainsString('app_pdo_transition_no_code_publish_candidate', $detailPage);
+        self::assertStringContainsString('app_pdo_find_current_approved_no_code_publish_candidate', $detailPage);
+        self::assertStringContainsString('app_pdo_select_current_no_code_publish_candidate', $detailPage);
+        self::assertStringContainsString('app_pdo_set_no_code_public_runtime_alias', $detailPage);
+        self::assertStringContainsString('app_pdo_delete_no_code_public_runtime_alias', $detailPage);
+        self::assertStringContainsString('app_pdo_list_no_code_public_runtime_aliases_for_source_output', $detailPage);
+        self::assertStringContainsString('app_pdo_list_no_code_public_runtime_alias_events_for_source_output', $detailPage);
+        self::assertStringContainsString('app_pdo_list_no_code_publish_candidate_transition_events', $detailPage);
+        self::assertStringContainsString('公開 URL や package exposure はまだ行いません', $detailPage);
+        self::assertStringContainsString('Approved package exposure', $detailPage);
+        self::assertStringContainsString('Current public revision', $detailPage);
+        self::assertStringContainsString('Approved non-current revision', $detailPage);
+        self::assertStringContainsString('Set Current Public Revision', $detailPage);
+        self::assertStringContainsString('Current Public Revision Selected', $detailPage);
+        self::assertStringContainsString('Set Public Alias', $detailPage);
+        self::assertStringContainsString('Public Runtime Alias Selected', $detailPage);
+        self::assertStringContainsString('Public Runtime Aliases', $detailPage);
+        self::assertStringContainsString('Alias lifecycle events', $detailPage);
+        self::assertStringContainsString('No public runtime alias lifecycle event has been recorded yet.', $detailPage);
+        self::assertStringContainsString('app_project_source_output_app_local_package_readiness', $detailPage);
+        self::assertStringContainsString('App-local Package Readiness', $detailPage);
+        self::assertStringContainsString('Package readiness blockers:', $detailPage);
+        self::assertStringContainsString('app-local-package-manifest.json is missing from the output root.', $detailPage);
+        self::assertStringContainsString('Delete Public Alias', $detailPage);
+        self::assertStringContainsString('Public Runtime Alias Deleted', $detailPage);
+        self::assertStringContainsString('Rollback target: current', $detailPage);
+        self::assertStringContainsString('Rollback Current To This Revision', $detailPage);
+        self::assertStringContainsString('Alias routes do not automatically follow current public revision rollback', $detailPage);
+        self::assertStringContainsString('explicitly resolves to this approved candidate when selected', $detailPage);
+        self::assertStringContainsString('Transition events', $detailPage);
+        self::assertStringContainsString('No transition event has been recorded for this candidate yet.', $detailPage);
+        self::assertStringContainsString('download package', $detailPage);
+        self::assertStringContainsString('public runtime preview', $detailPage);
+        self::assertStringContainsString('Package exposure is guarded until this candidate is approved.', $detailPage);
+        self::assertStringContainsString('artifact-key, current, and custom alias public runtime preview routes', $detailPage);
+        self::assertStringContainsString('current public runtime preview', $detailPage);
+        self::assertStringContainsString('custom alias public runtime preview routes', $detailPage);
+        self::assertStringContainsString('/alias/', $publicRuntimePage);
+        self::assertStringContainsString('app_no_code_public_runtime_alias_preview_path', $publicRuntimePage);
+        self::assertStringContainsString('app_render_no_code_public_runtime_alias_preview_page', $publicRuntimePage);
+        self::assertStringContainsString('app_pdo_find_approved_no_code_publish_candidate_for_alias', $publicRuntimePage);
+        self::assertStringContainsString('app_no_code_public_runtime_artifact_cache_control()', $publicRuntimePage);
+        self::assertStringContainsString('app_no_code_public_runtime_current_cache_control()', $publicRuntimePage);
+        self::assertStringContainsString("'public, max-age=31536000, immutable'", $publicRuntimePage);
+        self::assertStringContainsString("'no-store'", $publicRuntimePage);
     }
 
     public function testSourceOutputValidationAcceptsKnownSpecVisibilityValuesOnly(): void

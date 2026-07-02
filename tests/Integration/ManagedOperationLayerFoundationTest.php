@@ -220,6 +220,16 @@ final class ManagedOperationLayerFoundationTest extends TestCase
         self::assertSame(1, $failed['item']['attempts'] ?? 0);
         self::assertSame('temporary server unavailable', $failed['item']['last_error'] ?? '');
 
+        $requeued = app_pdo_requeue_failed_managed_operation_sync_outbox_item(
+            $app,
+            'MANAGED-OPS-TEST',
+            (string) ($syncIntent['intent']['dedupe_key'] ?? ''),
+        );
+        self::assertTrue($requeued['ok'], $requeued['error']);
+        self::assertSame('pending', $requeued['item']['status'] ?? '');
+        self::assertSame(1, $requeued['item']['attempts'] ?? 0);
+        self::assertSame('', $requeued['item']['last_error'] ?? '');
+
         $retry = app_pdo_mark_managed_operation_sync_outbox_running(
             $app,
             'MANAGED-OPS-TEST',
@@ -345,6 +355,41 @@ final class ManagedOperationLayerFoundationTest extends TestCase
         self::assertSame('failed', $failedProcess['item']['status'] ?? '');
         self::assertSame(1, $failedProcess['item']['attempts'] ?? 0);
         self::assertSame('server write rejected', $failedProcess['item']['last_error'] ?? '');
+
+        $requeuedForProcessing = app_pdo_requeue_failed_managed_operation_sync_outbox_item(
+            $app,
+            'MANAGED-OPS-TEST',
+            (string) ($fourthIntent['dedupe_key'] ?? ''),
+        );
+        self::assertTrue($requeuedForProcessing['ok'], $requeuedForProcessing['error']);
+        self::assertSame('pending', $requeuedForProcessing['item']['status'] ?? '');
+        self::assertSame(1, $requeuedForProcessing['item']['attempts'] ?? 0);
+        self::assertSame('', $requeuedForProcessing['item']['last_error'] ?? '');
+
+        $requeuedHandledItems = [];
+        $requeuedProcess = app_managed_operation_sync_outbox_process_next(
+            $app,
+            'MANAGED-OPS-TEST',
+            static function (array $item) use (&$requeuedHandledItems): array {
+                $requeuedHandledItems[] = $item;
+
+                return [
+                    'ok' => true,
+                    'processed_by' => 'phpunit-retry-smoke',
+                ];
+            },
+        );
+        self::assertTrue($requeuedProcess['ok'], $requeuedProcess['error']);
+        self::assertTrue($requeuedProcess['processed']);
+        self::assertSame('done', $requeuedProcess['outcome']);
+        self::assertSame('done', $requeuedProcess['item']['status'] ?? '');
+        self::assertSame(2, $requeuedProcess['item']['attempts'] ?? 0);
+        self::assertSame('', $requeuedProcess['item']['last_error'] ?? '');
+        self::assertSame($fourthEnqueue['item']['dedupe_key'] ?? '', $requeuedHandledItems[0]['dedupe_key'] ?? '');
+        self::assertSame('running', $requeuedHandledItems[0]['status'] ?? '');
+        self::assertSame(2, $requeuedHandledItems[0]['attempts'] ?? 0);
+        self::assertSame('', $requeuedHandledItems[0]['last_error'] ?? '');
+        self::assertSame('phpunit-retry-smoke', $requeuedProcess['handler_result']['processed_by'] ?? '');
 
         $fifthIntent = $syncIntent['intent'];
         $fifthIntent['payload']['input']['note'] = 'processed through App-local outbox handler';

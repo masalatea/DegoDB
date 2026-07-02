@@ -41,6 +41,16 @@ function app_project_source_output_download_path(string $projectKey, string $art
     return app_project_source_outputs_path($projectKey) . '/artifacts/' . rawurlencode($artifactKey) . '/download';
 }
 
+function app_project_source_output_artifact_detail_path(string $projectKey, string $artifactKey): string
+{
+    return app_project_source_outputs_path($projectKey) . '/artifacts/' . rawurlencode($artifactKey);
+}
+
+function app_project_sync_outbox_detail_path(string $projectKey, string $dedupeKey): string
+{
+    return '/projects/' . rawurlencode($projectKey) . '/sync-outbox/' . rawurlencode($dedupeKey);
+}
+
 /**
  * @return list<string>
  */

@@ -236,7 +236,7 @@ function app_no_code_screen_definition_storage_hint(array $contract): array
         'app_persistence_role' => (string) ($metadata['app_persistence_role'] ?? 'unknown'),
         'sync_status_display' => in_array(
             (string) ($metadata['sync_role'] ?? ''),
-            ['server-copy', 'app-source', 'bidirectional-sync'],
+            ['local-copy', 'server-copy', 'app-source', 'bidirectional-sync'],
             true,
         ),
     ];

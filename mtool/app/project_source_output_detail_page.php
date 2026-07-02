@@ -7,10 +7,88 @@ require_once __DIR__ . '/custom_proxy_build_plan_service.php';
 require_once __DIR__ . '/db_access_endpoint_policy.php';
 require_once __DIR__ . '/db_access_repository.php';
 require_once __DIR__ . '/lab_swagger_service.php';
+require_once __DIR__ . '/no_code_public_runtime_page.php';
+require_once __DIR__ . '/no_code_operator_inspection.php';
+require_once __DIR__ . '/no_code_publish_candidate_repository_pdo.php';
 require_once __DIR__ . '/project_output_service.php';
 require_once __DIR__ . '/project_source_output_route_common.php';
 require_once __DIR__ . '/request.php';
 require_once __DIR__ . '/runtime_reference_status.php';
+
+/**
+ * @param array<string,mixed> $sourceOutput
+ * @param array<string,mixed>|null $latestArtifact
+ * @param array<string,mixed> $outputRootStatus
+ * @return array{
+ *     applies:bool,
+ *     state:string,
+ *     artifact_key:string,
+ *     archive_available:bool,
+ *     output_root_available:bool,
+ *     manifest_available:bool,
+ *     summary_available:bool,
+ *     blockers:list<string>
+ * }
+ */
+function app_project_source_output_app_local_package_readiness(
+    array $sourceOutput,
+    ?array $latestArtifact,
+    array $outputRootStatus,
+): array {
+    $applies = app_project_output_app_local_package_strategy_is_supported(
+        (string) ($sourceOutput['artifact_strategy'] ?? ''),
+    );
+    if (!$applies) {
+        return [
+            'applies' => false,
+            'state' => 'not_applicable',
+            'artifact_key' => '',
+            'archive_available' => false,
+            'output_root_available' => false,
+            'manifest_available' => false,
+            'summary_available' => false,
+            'blockers' => [],
+        ];
+    }
+
+    $artifactKey = $latestArtifact !== null ? (string) ($latestArtifact['artifact_key'] ?? '') : '';
+    $archiveAvailable = $latestArtifact !== null && ($latestArtifact['archive_exists'] ?? false) === true;
+    $outputRootAvailable = ($outputRootStatus['ok'] ?? false) === true
+        && ($outputRootStatus['exists'] ?? false) === true
+        && is_dir((string) ($outputRootStatus['root_path'] ?? ''));
+    $outputRootPath = $outputRootAvailable ? rtrim((string) $outputRootStatus['root_path'], '/') : '';
+    $manifestAvailable = $outputRootPath !== '' && is_file($outputRootPath . '/app-local-package-manifest.json');
+    $summaryAvailable = $outputRootPath !== '' && is_file($outputRootPath . '/app-local-package-summary.json');
+    $blockers = [];
+
+    if ($latestArtifact === null) {
+        $blockers[] = 'Latest App-local package artifact is missing.';
+    } elseif (!$archiveAvailable) {
+        $blockers[] = 'Latest App-local package archive is missing.';
+    }
+
+    if (!$outputRootAvailable) {
+        $blockers[] = 'Package output root is not written yet.';
+    } else {
+        if (!$manifestAvailable) {
+            $blockers[] = 'app-local-package-manifest.json is missing from the output root.';
+        }
+        if (!$summaryAvailable) {
+            $blockers[] = 'app-local-package-summary.json is missing from the output root.';
+        }
+    }
+
+    return [
+        'applies' => true,
+        'state' => $blockers === [] ? 'ready' : 'blocked',
+        'artifact_key' => $artifactKey,
+        'archive_available' => $archiveAvailable,
+        'output_root_available' => $outputRootAvailable,
+        'manifest_available' => $manifestAvailable,
+        'summary_available' => $summaryAvailable,
+        'blockers' => $blockers,
+    ];
+}
 
 /**
  * @param array{
@@ -61,6 +139,12 @@ function app_render_project_source_output_detail_page(array $app, array $request
     $errors = [];
     $createdArtifactKey = '';
     $publishedArtifactKey = '';
+    $createdCandidateRevisionId = '';
+    $transitionedCandidateRevisionId = '';
+    $transitionedCandidateStatus = '';
+    $selectedCurrentRevisionId = '';
+    $selectedPublicAliasKey = '';
+    $deletedPublicAliasKey = '';
     $queryCreatedArtifactKey = trim(app_query_param('created'));
     if ($queryCreatedArtifactKey !== '' && app_project_output_artifact_key_is_valid($queryCreatedArtifactKey)) {
         $createdArtifactKey = $queryCreatedArtifactKey;
@@ -69,6 +153,40 @@ function app_render_project_source_output_detail_page(array $app, array $request
     if ($queryPublishedArtifactKey !== '' && app_project_output_artifact_key_is_valid($queryPublishedArtifactKey)) {
         $publishedArtifactKey = $queryPublishedArtifactKey;
     }
+    $queryCreatedCandidateRevisionId = trim(app_query_param('candidate_created'));
+    if ($queryCreatedCandidateRevisionId !== '') {
+        $createdCandidateRevisionId = $queryCreatedCandidateRevisionId;
+    }
+    $queryTransitionedCandidateRevisionId = trim(app_query_param('candidate_transitioned'));
+    if ($queryTransitionedCandidateRevisionId !== '') {
+        $transitionedCandidateRevisionId = $queryTransitionedCandidateRevisionId;
+        $transitionedCandidateStatus = trim(app_query_param('status'));
+    }
+    $querySelectedCurrentRevisionId = trim(app_query_param('current_selected'));
+    if ($querySelectedCurrentRevisionId !== '') {
+        $selectedCurrentRevisionId = $querySelectedCurrentRevisionId;
+    }
+    $querySelectedPublicAliasKey = app_no_code_public_runtime_normalize_alias_key(app_query_param('alias_selected'));
+    if ($querySelectedPublicAliasKey !== '' && app_no_code_public_runtime_alias_key_is_valid($querySelectedPublicAliasKey)) {
+        $selectedPublicAliasKey = $querySelectedPublicAliasKey;
+    }
+    $queryDeletedPublicAliasKey = app_no_code_public_runtime_normalize_alias_key(app_query_param('alias_deleted'));
+    if ($queryDeletedPublicAliasKey !== '' && app_no_code_public_runtime_alias_key_is_valid($queryDeletedPublicAliasKey)) {
+        $deletedPublicAliasKey = $queryDeletedPublicAliasKey;
+    }
+
+    $artifactResult = app_project_output_list($app, $projectKey, $sourceOutputKey);
+    if (!$artifactResult['ok']) {
+        $errors[] = $artifactResult['error'];
+    }
+    $artifacts = $artifactResult['items'];
+    $noCodeInspection = app_no_code_operator_inspection_from_catalog(
+        [$sourceOutput],
+        $artifacts,
+        $projectKey,
+        app_project_output_workspace_root(),
+    );
+    $noCodePublishReadiness = $noCodeInspection['publish_readiness'] ?? [];
 
     if (app_request_method_is($request, 'POST')) {
         if (!app_verify_csrf_token(app_post_param('_csrf'))) {
@@ -144,18 +262,188 @@ function app_render_project_source_output_detail_page(array $app, array $request
                         $errors[] = $publishResult['error'];
                     }
                 }
+            } elseif ($action === 'create-publish-candidate') {
+                if ($sourceOutputKey !== APP_NO_CODE_OPERATOR_SOURCE_OUTPUT_KEY) {
+                    $errors[] = 'publish candidate は NO-CODE-RUNTIME source output だけで作成できます。';
+                } elseif (($noCodePublishReadiness['state'] ?? '') !== 'publishable') {
+                    $errors[] = 'publish candidate を作成するには publishable readiness が必要です。';
+                } else {
+                    $candidateResult = app_pdo_create_no_code_publish_candidate_from_readiness_snapshot($app, [
+                        'project_key' => $projectKey,
+                        'source_output_key' => $sourceOutputKey,
+                        'artifact_key' => (string) ($noCodePublishReadiness['artifact_key'] ?? ''),
+                        'artifact_archive_path' => (string) ($noCodePublishReadiness['artifact_archive_path'] ?? ''),
+                        'artifact_checksum' => (string) ($noCodePublishReadiness['artifact_checksum'] ?? ''),
+                        'actor' => $principal,
+                        'readiness_snapshot' => $noCodePublishReadiness,
+                    ]);
+                    if ($candidateResult['ok'] && $candidateResult['item'] !== null) {
+                        app_send_redirect_response(
+                            $request,
+                            app_project_source_output_detail_path($projectKey, $sourceOutputKey)
+                            . '?candidate_created=' . rawurlencode((string) $candidateResult['item']['revision_id']),
+                        );
+                        return;
+                    }
+
+                    $errors[] = $candidateResult['error'];
+                }
+            } elseif ($action === 'transition-publish-candidate') {
+                $revisionId = trim(app_post_param('revision_id'));
+                $transition = trim(app_post_param('transition'));
+                $expectedStatus = trim(app_post_param('expected_status'));
+                $reason = trim(app_post_param('reason'));
+                $transitionResult = app_pdo_transition_no_code_publish_candidate($app, [
+                    'project_key' => $projectKey,
+                    'source_output_key' => $sourceOutputKey,
+                    'revision_id' => $revisionId,
+                    'transition' => $transition,
+                    'expected_status' => $expectedStatus,
+                    'reason' => $reason,
+                    'actor' => $principal,
+                    'metadata' => [
+                        'ui_source' => 'project-source-output-detail',
+                    ],
+                ]);
+                if ($transitionResult['ok'] && $transitionResult['item'] !== null) {
+                    app_send_redirect_response(
+                        $request,
+                        app_project_source_output_detail_path($projectKey, $sourceOutputKey)
+                        . '?candidate_transitioned=' . rawurlencode((string) $transitionResult['item']['revision_id'])
+                        . '&status=' . rawurlencode((string) $transitionResult['item']['status']),
+                    );
+                    return;
+                }
+
+                $errors[] = $transitionResult['error'];
+            } elseif ($action === 'select-current-public-revision') {
+                $revisionId = trim(app_post_param('revision_id'));
+                $selectionResult = app_pdo_select_current_no_code_publish_candidate($app, [
+                    'project_key' => $projectKey,
+                    'source_output_key' => $sourceOutputKey,
+                    'revision_id' => $revisionId,
+                    'actor' => $principal,
+                ]);
+                if ($selectionResult['ok'] && $selectionResult['item'] !== null) {
+                    app_send_redirect_response(
+                        $request,
+                        app_project_source_output_detail_path($projectKey, $sourceOutputKey)
+                        . '?current_selected=' . rawurlencode((string) $selectionResult['item']['revision_id']),
+                    );
+                    return;
+                }
+
+                $errors[] = $selectionResult['error'];
+            } elseif ($action === 'set-public-runtime-alias') {
+                $revisionId = trim(app_post_param('revision_id'));
+                $aliasKey = app_no_code_public_runtime_normalize_alias_key(app_post_param('alias_key'));
+                $aliasResult = app_pdo_set_no_code_public_runtime_alias($app, [
+                    'project_key' => $projectKey,
+                    'source_output_key' => $sourceOutputKey,
+                    'revision_id' => $revisionId,
+                    'alias_key' => $aliasKey,
+                    'actor' => $principal,
+                ]);
+                if ($aliasResult['ok'] && $aliasResult['item'] !== null) {
+                    app_send_redirect_response(
+                        $request,
+                        app_project_source_output_detail_path($projectKey, $sourceOutputKey)
+                        . '?alias_selected=' . rawurlencode($aliasKey),
+                    );
+                    return;
+                }
+
+                $errors[] = $aliasResult['error'];
+            } elseif ($action === 'delete-public-runtime-alias') {
+                $aliasKey = app_no_code_public_runtime_normalize_alias_key(app_post_param('alias_key'));
+                $deleteAliasResult = app_pdo_delete_no_code_public_runtime_alias($app, [
+                    'project_key' => $projectKey,
+                    'source_output_key' => $sourceOutputKey,
+                    'alias_key' => $aliasKey,
+                    'actor' => $principal,
+                ]);
+                if ($deleteAliasResult['ok']) {
+                    app_send_redirect_response(
+                        $request,
+                        app_project_source_output_detail_path($projectKey, $sourceOutputKey)
+                        . '?alias_deleted=' . rawurlencode($deleteAliasResult['alias_key']),
+                    );
+                    return;
+                }
+
+                $errors[] = $deleteAliasResult['error'];
             } else {
                 $errors[] = '未対応の操作です。';
             }
         }
     }
 
-    $artifactResult = app_project_output_list($app, $projectKey, $sourceOutputKey);
-    if (!$artifactResult['ok']) {
-        $errors[] = $artifactResult['error'];
-    }
-    $artifacts = $artifactResult['items'];
     $latestArtifact = $artifacts[0] ?? null;
+    $publishCandidateResult = ['ok' => true, 'items' => [], 'error' => ''];
+    if ($sourceOutputKey === APP_NO_CODE_OPERATOR_SOURCE_OUTPUT_KEY) {
+        $publishCandidateResult = app_pdo_list_no_code_publish_candidates_for_source_output(
+            $app,
+            $projectKey,
+            $sourceOutputKey,
+        );
+        if (!$publishCandidateResult['ok']) {
+            $errors[] = $publishCandidateResult['error'];
+        }
+    }
+    $publishCandidates = $publishCandidateResult['items'];
+    $publicRuntimeAliasesResult = ['ok' => true, 'items' => [], 'error' => ''];
+    if ($sourceOutputKey === APP_NO_CODE_OPERATOR_SOURCE_OUTPUT_KEY) {
+        $publicRuntimeAliasesResult = app_pdo_list_no_code_public_runtime_aliases_for_source_output(
+            $app,
+            $projectKey,
+            $sourceOutputKey,
+        );
+        if (!$publicRuntimeAliasesResult['ok']) {
+            $errors[] = $publicRuntimeAliasesResult['error'];
+        }
+    }
+    $publicRuntimeAliases = $publicRuntimeAliasesResult['items'];
+    $publicRuntimeAliasEventsResult = ['ok' => true, 'items' => [], 'error' => ''];
+    if ($sourceOutputKey === APP_NO_CODE_OPERATOR_SOURCE_OUTPUT_KEY) {
+        $publicRuntimeAliasEventsResult = app_pdo_list_no_code_public_runtime_alias_events_for_source_output(
+            $app,
+            $projectKey,
+            $sourceOutputKey,
+        );
+        if (!$publicRuntimeAliasEventsResult['ok']) {
+            $errors[] = $publicRuntimeAliasEventsResult['error'];
+        }
+    }
+    $publicRuntimeAliasEvents = $publicRuntimeAliasEventsResult['items'];
+    $currentApprovedCandidate = null;
+    if ($sourceOutputKey === APP_NO_CODE_OPERATOR_SOURCE_OUTPUT_KEY) {
+        $currentApprovedCandidateResult = app_pdo_find_current_approved_no_code_publish_candidate($app, $projectKey);
+        if (!$currentApprovedCandidateResult['ok']) {
+            $errors[] = $currentApprovedCandidateResult['error'];
+        } else {
+            $currentApprovedCandidate = $currentApprovedCandidateResult['item'];
+        }
+    }
+    $publishCandidateTransitionEventsByRevisionId = [];
+    foreach ($publishCandidates as $publishCandidate) {
+        $revisionId = (string) ($publishCandidate['revision_id'] ?? '');
+        if ($revisionId === '') {
+            continue;
+        }
+
+        $eventResult = app_pdo_list_no_code_publish_candidate_transition_events(
+            $app,
+            $projectKey,
+            $sourceOutputKey,
+            $revisionId,
+        );
+        if (!$eventResult['ok']) {
+            $errors[] = $eventResult['error'];
+            continue;
+        }
+
+        $publishCandidateTransitionEventsByRevisionId[$revisionId] = $eventResult['items'];
+    }
 
     $customProxyBuildPlanResult = app_custom_proxy_build_plan_for_source_output($app, $projectKey, $sourceOutputKey);
     if (!$customProxyBuildPlanResult['ok'] || $customProxyBuildPlanResult['plan'] === null) {
@@ -214,6 +502,11 @@ function app_render_project_source_output_detail_page(array $app, array $request
     $isProxyArtifactStrategy = app_project_output_proxy_strategy_is_supported($sourceOutput['artifact_strategy']);
     $isOpenApiArtifactStrategy = app_project_output_openapi_strategy_is_supported($sourceOutput['artifact_strategy']);
     $isLegacyMirrorArtifactStrategy = app_project_output_legacy_source_strategy_is_supported($sourceOutput['artifact_strategy']);
+    $appLocalPackageReadiness = app_project_source_output_app_local_package_readiness(
+        $sourceOutput,
+        $latestArtifact,
+        $outputRootStatus,
+    );
     $legacyTemplateSource = null;
     if ($isLegacyMirrorArtifactStrategy) {
         $legacyTemplateSource = app_project_output_legacy_source_resolve_root($sourceOutput['source_template_dir']);
@@ -480,6 +773,42 @@ function app_render_project_source_output_detail_page(array $app, array $request
         </section>
     <?php endif; ?>
 
+    <?php if ($createdCandidateRevisionId !== ''): ?>
+        <section class="success-card">
+            <h2>Publish Candidate Created</h2>
+            <p><code><?php echo app_h($createdCandidateRevisionId); ?></code> を draft candidate として保存しました。</p>
+        </section>
+    <?php endif; ?>
+
+    <?php if ($transitionedCandidateRevisionId !== ''): ?>
+        <section class="success-card">
+            <h2>Publish Candidate Updated</h2>
+            <p><code><?php echo app_h($transitionedCandidateRevisionId); ?></code> を <code><?php echo app_h($transitionedCandidateStatus !== '' ? $transitionedCandidateStatus : 'updated'); ?></code> に更新しました。</p>
+        </section>
+    <?php endif; ?>
+
+    <?php if ($selectedCurrentRevisionId !== ''): ?>
+        <section class="success-card">
+            <h2>Current Public Revision Selected</h2>
+            <p><code><?php echo app_h($selectedCurrentRevisionId); ?></code> を current public runtime preview の明示 revision として選択しました。</p>
+        </section>
+    <?php endif; ?>
+
+    <?php if ($selectedPublicAliasKey !== ''): ?>
+        <section class="success-card">
+            <h2>Public Runtime Alias Selected</h2>
+            <p><code><?php echo app_h($selectedPublicAliasKey); ?></code> を public runtime preview alias として設定しました。</p>
+            <p><a href="<?php echo app_h(app_no_code_public_runtime_alias_preview_path($projectKey, $selectedPublicAliasKey)); ?>">alias public runtime preview</a></p>
+        </section>
+    <?php endif; ?>
+
+    <?php if ($deletedPublicAliasKey !== ''): ?>
+        <section class="success-card">
+            <h2>Public Runtime Alias Deleted</h2>
+            <p><code><?php echo app_h($deletedPublicAliasKey); ?></code> public runtime preview alias を削除しました。</p>
+        </section>
+    <?php endif; ?>
+
     <?php if ($errors !== []): ?>
         <section class="error-card">
             <h2>エラー</h2>
@@ -576,6 +905,30 @@ function app_render_project_source_output_detail_page(array $app, array $request
                 <li>size: <code><?php echo app_h(app_project_source_outputs_format_bytes($outputRootStatus['total_bytes'])); ?></code></li>
             </ul>
         </section>
+
+        <?php if ($appLocalPackageReadiness['applies']): ?>
+            <section class="summary-card">
+                <h2>App-local Package Readiness</h2>
+                <ul>
+                    <li>state: <code><?php echo app_h($appLocalPackageReadiness['state']); ?></code></li>
+                    <li>latest artifact: <code><?php echo app_h($appLocalPackageReadiness['artifact_key'] !== '' ? $appLocalPackageReadiness['artifact_key'] : 'none'); ?></code></li>
+                    <li>archive available: <code><?php echo app_h($appLocalPackageReadiness['archive_available'] ? 'yes' : 'no'); ?></code></li>
+                    <li>output root written: <code><?php echo app_h($appLocalPackageReadiness['output_root_available'] ? 'yes' : 'no'); ?></code></li>
+                    <li>manifest file: <code><?php echo app_h($appLocalPackageReadiness['manifest_available'] ? 'yes' : 'no'); ?></code></li>
+                    <li>summary file: <code><?php echo app_h($appLocalPackageReadiness['summary_available'] ? 'yes' : 'no'); ?></code></li>
+                </ul>
+                <?php if ($appLocalPackageReadiness['blockers'] === []): ?>
+                    <p class="muted">App-local package manifest, summary, output root, and archive are ready for operator review.</p>
+                <?php else: ?>
+                    <p class="muted">Package readiness blockers:</p>
+                    <ul>
+                        <?php foreach ($appLocalPackageReadiness['blockers'] as $blocker): ?>
+                            <li><?php echo app_h($blocker); ?></li>
+                        <?php endforeach; ?>
+                    </ul>
+                <?php endif; ?>
+            </section>
+        <?php endif; ?>
 
         <section class="summary-card">
             <h2>Custom Proxy Plan</h2>
@@ -712,6 +1065,253 @@ function app_render_project_source_output_detail_page(array $app, array $request
         </section>
     <?php endif; ?>
 
+    <?php if ($sourceOutputKey === APP_NO_CODE_OPERATOR_SOURCE_OUTPUT_KEY): ?>
+        <section class="action-box">
+            <h2>Publish Candidates</h2>
+            <p class="muted">NO-CODE-RUNTIME artifact を公開候補として保存し、review request / approval / rejection の状態を repository に記録します。公開 URL や package exposure はまだ行いません。</p>
+            <ul>
+                <li>readiness: <code><?php echo app_h((string) ($noCodePublishReadiness['state'] ?? 'unknown')); ?></code></li>
+                <li>artifact key: <code><?php echo app_h((string) (($noCodePublishReadiness['artifact_key'] ?? '') !== '' ? $noCodePublishReadiness['artifact_key'] : 'none')); ?></code></li>
+                <li>preview files ready: <code><?php echo app_h(!empty($noCodePublishReadiness['preview_files_ready']) ? 'yes' : 'no'); ?></code></li>
+                <li>archive available: <code><?php echo app_h(!empty($noCodePublishReadiness['artifact_archive_exists']) ? 'yes' : 'no'); ?></code></li>
+            </ul>
+            <?php if (($noCodePublishReadiness['state'] ?? '') === 'publishable'): ?>
+                <form method="post">
+                    <input type="hidden" name="_csrf" value="<?php echo app_h($csrfToken); ?>">
+                    <input type="hidden" name="action" value="create-publish-candidate">
+                    <button class="button" type="submit">Create Publish Candidate</button>
+                </form>
+            <?php else: ?>
+                <p class="muted">publishable readiness ではないため、candidate は作成できません。</p>
+                <?php if (($noCodePublishReadiness['blocking_reasons'] ?? []) !== []): ?>
+                    <ul>
+                        <?php foreach ($noCodePublishReadiness['blocking_reasons'] as $blockingReason): ?>
+                            <li><?php echo app_h((string) $blockingReason); ?></li>
+                        <?php endforeach; ?>
+                    </ul>
+                <?php endif; ?>
+            <?php endif; ?>
+        </section>
+
+        <section class="action-box">
+            <h2>Public Runtime Aliases</h2>
+            <?php if ($publicRuntimeAliases === []): ?>
+                <p class="muted">Public runtime alias はまだありません。approved candidate の <code>Set Public Alias</code> から追加できます。</p>
+            <?php else: ?>
+                <p class="muted">Alias routes do not automatically follow current public revision rollback. Update or delete each alias when it should move with rollback.</p>
+                <table>
+                    <thead>
+                    <tr>
+                        <th>alias</th>
+                        <th>candidate</th>
+                        <th>artifact</th>
+                        <th>action</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <?php foreach ($publicRuntimeAliases as $publicRuntimeAlias): ?>
+                        <tr>
+                            <td>
+                                <strong><code><?php echo app_h((string) $publicRuntimeAlias['alias_key']); ?></code></strong><br>
+                                <a href="<?php echo app_h(app_no_code_public_runtime_alias_preview_path($projectKey, (string) $publicRuntimeAlias['alias_key'])); ?>">alias public runtime preview</a><br>
+                                <span class="muted">updated: <?php echo app_h((string) $publicRuntimeAlias['updated_at']); ?></span>
+                            </td>
+                            <td>
+                                <code><?php echo app_h((string) $publicRuntimeAlias['revision_id']); ?></code><br>
+                                <span class="muted">status: <code><?php echo app_h((string) $publicRuntimeAlias['candidate_status']); ?></code></span>
+                            </td>
+                            <td>
+                                <code><?php echo app_h((string) $publicRuntimeAlias['artifact_key']); ?></code><br>
+                                <span class="muted">selected by: <?php echo app_h((string) $publicRuntimeAlias['selected_by']); ?></span>
+                            </td>
+                            <td>
+                                <form method="post">
+                                    <input type="hidden" name="_csrf" value="<?php echo app_h($csrfToken); ?>">
+                                    <input type="hidden" name="action" value="delete-public-runtime-alias">
+                                    <input type="hidden" name="alias_key" value="<?php echo app_h((string) $publicRuntimeAlias['alias_key']); ?>">
+                                    <button class="button button-secondary" type="submit">Delete Public Alias</button>
+                                </form>
+                            </td>
+                        </tr>
+                    <?php endforeach; ?>
+                    </tbody>
+                </table>
+            <?php endif; ?>
+            <div style="margin-top: 1rem;">
+                <strong>Alias lifecycle events</strong><br>
+                <?php if ($publicRuntimeAliasEvents === []): ?>
+                    <span class="muted">No public runtime alias lifecycle event has been recorded yet.</span>
+                <?php else: ?>
+                    <ul>
+                        <?php foreach (array_slice($publicRuntimeAliasEvents, 0, 10) as $publicRuntimeAliasEvent): ?>
+                            <li>
+                                <code><?php echo app_h((string) ($publicRuntimeAliasEvent['event_type'] ?? '')); ?></code>
+                                <code><?php echo app_h((string) ($publicRuntimeAliasEvent['alias_key'] ?? '')); ?></code>
+                                ->
+                                <code><?php echo app_h((string) ($publicRuntimeAliasEvent['revision_id'] ?? '')); ?></code>
+                                <span class="muted">
+                                    artifact <code><?php echo app_h((string) ($publicRuntimeAliasEvent['artifact_key'] ?? '')); ?></code>,
+                                    by <?php echo app_h((string) ($publicRuntimeAliasEvent['created_by'] ?? '')); ?>
+                                    at <?php echo app_h((string) ($publicRuntimeAliasEvent['created_at'] ?? '')); ?>
+                                </span>
+                            </li>
+                        <?php endforeach; ?>
+                    </ul>
+                <?php endif; ?>
+            </div>
+        </section>
+
+        <section>
+            <h2 class="section-heading">Publish Candidate History</h2>
+            <?php if ($publishCandidates === []): ?>
+                <p class="muted">保存済み publish candidate はまだありません。</p>
+            <?php else: ?>
+                <table>
+                    <thead>
+                    <tr>
+                        <th>candidate</th>
+                        <th>artifact</th>
+                        <th>readiness</th>
+                        <th>transition</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <?php foreach ($publishCandidates as $candidate): ?>
+                        <?php $candidateStatus = (string) ($candidate['status'] ?? ''); ?>
+                        <?php $candidateIsCurrentPublicRevision = $currentApprovedCandidate !== null && (string) ($currentApprovedCandidate['revision_id'] ?? '') === (string) ($candidate['revision_id'] ?? ''); ?>
+                        <?php $candidateTransitionEvents = $publishCandidateTransitionEventsByRevisionId[(string) ($candidate['revision_id'] ?? '')] ?? []; ?>
+                        <tr>
+                            <td>
+                                <strong><code><?php echo app_h((string) $candidate['revision_id']); ?></code></strong><br>
+                                <span class="muted">status: <code><?php echo app_h($candidateStatus); ?></code></span><br>
+                                <span class="muted">created: <?php echo app_h((string) $candidate['created_at']); ?></span><br>
+                                <span class="muted">created by: <?php echo app_h((string) $candidate['created_by']); ?></span>
+                                <?php if ($candidateStatus === 'approved'): ?>
+                                    <div style="margin-top: 0.5rem;">
+                                        <?php if ($candidateIsCurrentPublicRevision): ?>
+                                            <strong>Current public revision</strong><br>
+                                            <span class="muted">The current public runtime preview explicitly resolves to this approved candidate when selected, otherwise it falls back to the latest approved candidate.</span><br>
+                                            <span class="muted">Rollback target: current. Older approved candidates below can move current back without changing artifact-key URLs or alias rows.</span>
+                                        <?php else: ?>
+                                            <strong>Approved non-current revision</strong><br>
+                                            <span class="muted">This approved candidate can be selected as the current public runtime preview revision.</span><br>
+                                            <?php if ($currentApprovedCandidate !== null): ?>
+                                                <span class="muted">Rollback Current To This Revision: selecting this candidate moves current public runtime preview away from <code><?php echo app_h((string) ($currentApprovedCandidate['revision_id'] ?? '')); ?></code>.</span>
+                                            <?php else: ?>
+                                                <span class="muted">Rollback Current To This Revision: no current approved candidate is selected yet, so this candidate becomes the first explicit current revision.</span>
+                                            <?php endif; ?>
+                                            <form method="post" style="margin-top: 0.5rem;">
+                                                <input type="hidden" name="_csrf" value="<?php echo app_h($csrfToken); ?>">
+                                                <input type="hidden" name="action" value="select-current-public-revision">
+                                                <input type="hidden" name="revision_id" value="<?php echo app_h((string) $candidate['revision_id']); ?>">
+                                                <button class="button button-secondary" type="submit">Set Current Public Revision</button>
+                                            </form>
+                                        <?php endif; ?>
+                                    </div>
+                                <?php endif; ?>
+                                <div style="margin-top: 0.5rem;">
+                                    <strong>Transition events</strong><br>
+                                    <?php if ($candidateTransitionEvents === []): ?>
+                                        <span class="muted">No transition event has been recorded for this candidate yet.</span>
+                                    <?php else: ?>
+                                        <ul>
+                                            <?php foreach ($candidateTransitionEvents as $candidateTransitionEvent): ?>
+                                                <li>
+                                                    <code><?php echo app_h((string) ($candidateTransitionEvent['transition'] ?? '')); ?></code>:
+                                                    <code><?php echo app_h((string) ($candidateTransitionEvent['from_status'] ?? '')); ?></code>
+                                                    ->
+                                                    <code><?php echo app_h((string) ($candidateTransitionEvent['to_status'] ?? '')); ?></code>
+                                                    <span class="muted">
+                                                        by <?php echo app_h((string) ($candidateTransitionEvent['created_by'] ?? '')); ?>
+                                                        at <?php echo app_h((string) ($candidateTransitionEvent['created_at'] ?? '')); ?>
+                                                    </span>
+                                                    <?php if ((string) ($candidateTransitionEvent['reason'] ?? '') !== ''): ?>
+                                                        <br><span class="muted">reason: <?php echo app_h((string) $candidateTransitionEvent['reason']); ?></span>
+                                                    <?php endif; ?>
+                                                </li>
+                                            <?php endforeach; ?>
+                                        </ul>
+                                    <?php endif; ?>
+                                </div>
+                            </td>
+                            <td>
+                                <code><?php echo app_h((string) $candidate['artifact_key']); ?></code><br>
+                                <span class="muted"><?php echo app_h((string) $candidate['artifact_checksum']); ?></span>
+                            </td>
+                            <td>
+                                <code><?php echo app_h((string) $candidate['readiness_state']); ?></code><br>
+                                <span class="muted"><?php echo app_h((string) $candidate['readiness_label']); ?></span><br>
+                                <span class="muted">screens: <?php echo app_h((string) $candidate['screen_count']); ?> / actions: <?php echo app_h((string) $candidate['action_count']); ?></span>
+                            </td>
+                            <td>
+                                <?php if ($candidateStatus === 'draft_candidate'): ?>
+                                    <form method="post">
+                                        <input type="hidden" name="_csrf" value="<?php echo app_h($csrfToken); ?>">
+                                        <input type="hidden" name="action" value="transition-publish-candidate">
+                                        <input type="hidden" name="revision_id" value="<?php echo app_h((string) $candidate['revision_id']); ?>">
+                                        <input type="hidden" name="expected_status" value="draft_candidate">
+                                        <input type="hidden" name="transition" value="request_review">
+                                        <button class="button button-secondary" type="submit">Request Review</button>
+                                    </form>
+                                <?php elseif ($candidateStatus === 'review_requested'): ?>
+                                    <form method="post">
+                                        <input type="hidden" name="_csrf" value="<?php echo app_h($csrfToken); ?>">
+                                        <input type="hidden" name="action" value="transition-publish-candidate">
+                                        <input type="hidden" name="revision_id" value="<?php echo app_h((string) $candidate['revision_id']); ?>">
+                                        <input type="hidden" name="expected_status" value="review_requested">
+                                        <input type="hidden" name="transition" value="approve">
+                                        <button class="button" type="submit">Approve</button>
+                                    </form>
+                                    <form method="post" style="margin-top: 0.5rem;">
+                                        <input type="hidden" name="_csrf" value="<?php echo app_h($csrfToken); ?>">
+                                        <input type="hidden" name="action" value="transition-publish-candidate">
+                                        <input type="hidden" name="revision_id" value="<?php echo app_h((string) $candidate['revision_id']); ?>">
+                                        <input type="hidden" name="expected_status" value="review_requested">
+                                        <input type="hidden" name="transition" value="reject">
+                                        <label>
+                                            <span class="muted">reject reason</span><br>
+                                            <input type="text" name="reason" required>
+                                        </label>
+                                        <button class="button button-secondary" type="submit">Reject</button>
+                                    </form>
+                                <?php else: ?>
+                                    <span class="muted">No transition action for this status.</span>
+                                <?php endif; ?>
+                                <?php if ($candidateStatus === 'approved'): ?>
+                                    <div style="margin-top: 0.75rem;">
+                                        <strong>Approved package exposure</strong><br>
+                                        <a href="<?php echo app_h(app_project_source_output_artifact_detail_path($projectKey, (string) $candidate['artifact_key'])); ?>">artifact detail</a>
+                                        /
+                                        <a href="<?php echo app_h(app_project_source_output_download_path($projectKey, (string) $candidate['artifact_key'])); ?>">download package</a><br>
+                                        <a href="<?php echo app_h(app_no_code_public_runtime_preview_path($projectKey, (string) $candidate['artifact_key'])); ?>">public runtime preview</a><br>
+                                        <a href="<?php echo app_h(app_no_code_public_runtime_current_preview_path($projectKey)); ?>">current public runtime preview</a><br>
+                                        <a href="<?php echo app_h(app_no_code_public_runtime_alias_preview_path($projectKey, 'stable')); ?>">example alias public runtime preview</a><br>
+                                        <span class="muted">Approved candidate package exposure now includes artifact-key, current, and custom alias public runtime preview routes.</span>
+                                        <form method="post" style="margin-top: 0.5rem;">
+                                            <input type="hidden" name="_csrf" value="<?php echo app_h($csrfToken); ?>">
+                                            <input type="hidden" name="action" value="set-public-runtime-alias">
+                                            <input type="hidden" name="revision_id" value="<?php echo app_h((string) $candidate['revision_id']); ?>">
+                                            <label>
+                                                <span class="muted">public alias key</span><br>
+                                                <input type="text" name="alias_key" value="stable" pattern="[a-z0-9][a-z0-9-]{1,62}[a-z0-9]" required>
+                                            </label>
+                                            <button class="button button-secondary" type="submit">Set Public Alias</button>
+                                        </form>
+                                    </div>
+                                <?php else: ?>
+                                    <div style="margin-top: 0.75rem;">
+                                        <span class="muted">Package exposure is guarded until this candidate is approved.</span>
+                                    </div>
+                                <?php endif; ?>
+                            </td>
+                        </tr>
+                    <?php endforeach; ?>
+                    </tbody>
+                </table>
+            <?php endif; ?>
+        </section>
+    <?php endif; ?>
+
     <?php if ($userNotes !== ''): ?>
         <section>
             <h2 class="section-heading">Notes</h2>
@@ -783,7 +1383,7 @@ function app_render_project_source_output_detail_page(array $app, array $request
                 <?php foreach ($artifacts as $artifact): ?>
                     <tr>
                         <td>
-                            <strong><code><?php echo app_h($artifact['artifact_key']); ?></code></strong><br>
+                            <strong><a href="<?php echo app_h(app_project_source_output_artifact_detail_path($projectKey, $artifact['artifact_key'])); ?>"><code><?php echo app_h($artifact['artifact_key']); ?></code></a></strong><br>
                             <span class="muted"><?php echo app_h($artifact['created_at']); ?></span><br>
                             <span class="muted">requested by: <?php echo app_h($artifact['requested_by']); ?></span>
                         </td>

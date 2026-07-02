@@ -138,6 +138,9 @@ function app_sample30_no_code_app_local_sync_demo_run(array $app, string $reques
         'server_dispatch' => null,
         'server_outbox_process' => null,
         'server_read_after_sync' => null,
+        'sync_error_state_dispatch' => null,
+        'sync_error_state_process' => null,
+        'sync_handoff_visibility' => null,
     ];
     $assertionErrors = [];
 
@@ -266,6 +269,16 @@ function app_sample30_no_code_app_local_sync_demo_run(array $app, string $reques
         $actions = is_array($contract['actions'] ?? null) ? $contract['actions'] : [];
         $listScreen = is_array($screens[0] ?? null) ? $screens[0] : [];
         $fields = is_array($listScreen['fields'] ?? null) ? $listScreen['fields'] : [];
+        $runtimePreviewJson = app_sample30_no_code_app_local_sync_read_json_file($publishedRoot . '/runtime-preview.json');
+        if (!$runtimePreviewJson['ok']) {
+            throw new RuntimeException($runtimePreviewJson['error']);
+        }
+        $runtimePreview = $runtimePreviewJson['data'];
+        $runtimeScreens = is_array($runtimePreview['screens'] ?? null) ? $runtimePreview['screens'] : [];
+        $runtimeListScreen = is_array($runtimeScreens[0] ?? null) ? $runtimeScreens[0] : [];
+        $runtimePreviewHtml = is_file($publishedRoot . '/runtime-preview.html')
+            ? (string) file_get_contents($publishedRoot . '/runtime-preview.html')
+            : '';
         $steps['screen_definition'] = [
             'definition_version' => $screenDefinition['definition_version'] ?? '',
             'project_key' => $screenDefinition['project_key'] ?? '',
@@ -500,6 +513,55 @@ function app_sample30_no_code_app_local_sync_demo_run(array $app, string $reques
             if (!is_array($serverRow)) {
                 throw new RuntimeException('sample30 server row was not found after sync.');
             }
+
+            $syncErrorStateDispatch = app_no_code_runtime_dispatch_action(
+                $authorizedDefinition,
+                'update_sync_task',
+                [
+                    'id' => 3002,
+                    'status' => 'queued_for_failed_sync',
+                    'note' => 'Exercise deterministic failed sync visibility.',
+                ],
+                app_no_code_managed_operation_dispatcher(
+                    [
+                        'contract_key' => $tableName,
+                        'storage_mode' => 'local-copy',
+                        'origin' => 'app-local',
+                        'target' => 'server',
+                    ],
+                    static function (array $syncIntent) use ($app): array {
+                        $enqueue = app_pdo_enqueue_managed_operation_sync_intent($app, $syncIntent);
+
+                        return [
+                            'ok' => $enqueue['ok'],
+                            'executed' => $enqueue['ok'],
+                            'enqueue' => $enqueue['item'],
+                            'error' => $enqueue['error'],
+                        ];
+                    },
+                ),
+            );
+            $steps['sync_error_state_dispatch'] = $syncErrorStateDispatch;
+            if (!$syncErrorStateDispatch['ok']) {
+                throw new RuntimeException('sample30 sync error-state dispatch failed: ' . $syncErrorStateDispatch['error']);
+            }
+            if (!((bool) ($syncErrorStateDispatch['result']['ok'] ?? false))) {
+                throw new RuntimeException('sample30 sync error-state intent enqueue failed: ' . (string) ($syncErrorStateDispatch['result']['error'] ?? ''));
+            }
+
+            $syncErrorStateProcess = app_managed_operation_sync_outbox_process_next(
+                $app,
+                $projectKey,
+                static fn (array $item): array => [
+                    'ok' => false,
+                    'error' => 'sample30 deterministic sync failure for visibility.',
+                    'dedupe_key' => (string) ($item['dedupe_key'] ?? ''),
+                ],
+            );
+            $steps['sync_error_state_process'] = $syncErrorStateProcess;
+            if (!$syncErrorStateProcess['ok']) {
+                throw new RuntimeException('sample30 sync error-state process failed: ' . $syncErrorStateProcess['error']);
+            }
         } finally {
             if ($previousRuntimeSqlitePath === false) {
                 putenv('MTOOL_RUNTIME_SQLITE_PATH');
@@ -510,6 +572,37 @@ function app_sample30_no_code_app_local_sync_demo_run(array $app, string $reques
             $serverPdo = null;
             @unlink($serverSqlitePath);
         }
+
+        $steps['sync_handoff_visibility'] = [
+            'ok' => true,
+            'app_local' => [
+                'handoff_state' => ($outboxProcess['outcome'] ?? '') === 'done' ? 'processed' : 'not_processed',
+                'outbox_status' => (string) ($outboxProcess['item']['status'] ?? ''),
+                'row_status' => (string) ($localRead['dto']['status'] ?? ''),
+                'row_sync_status' => (string) ($localRead['local_metadata']['sync_status'] ?? ''),
+                'dirty' => (int) ($localRead['local_metadata']['dirty'] ?? 0),
+            ],
+            'server' => [
+                'handoff_state' => ($steps['server_outbox_process']['outcome'] ?? '') === 'done' ? 'processed' : 'not_processed',
+                'outbox_status' => (string) ($steps['server_outbox_process']['item']['status'] ?? ''),
+                'handler_method' => (string) ($steps['server_outbox_process']['handler_result']['method_name'] ?? ''),
+                'row_status' => (string) ($steps['server_read_after_sync']['row']['status'] ?? ''),
+                'title_preserved' => (string) ($steps['server_read_after_sync']['row']['title'] ?? '') === 'App-local sync no-code task',
+            ],
+            'runtime_artifact' => [
+                'list_sync_status_hint' => (bool) ($listScreen['sync_status_hint'] ?? false),
+                'detail_sync_status_hint' => (bool) ($screens[1]['sync_status_hint'] ?? false),
+                'form_sync_status_hint' => (bool) ($screens[2]['sync_status_hint'] ?? false),
+                'list_sync_error_retry_hint' => (string) ($runtimeListScreen['sync_error_retry_hint'] ?? ''),
+                'html_sync_retry_hint_visible' => str_contains($runtimePreviewHtml, 'data-sync-retry-hint="operator-outbox"'),
+            ],
+            'error_state' => [
+                'handoff_state' => ($steps['sync_error_state_process']['outcome'] ?? '') === 'failed' ? 'failed' : 'not_failed',
+                'outbox_status' => (string) ($steps['sync_error_state_process']['item']['status'] ?? ''),
+                'attempts' => (int) ($steps['sync_error_state_process']['item']['attempts'] ?? 0),
+                'last_error' => (string) ($steps['sync_error_state_process']['item']['last_error'] ?? ''),
+            ],
+        ];
 
         app_sample30_no_code_app_local_sync_assert_same('no-code-screen-definition-v0', $steps['screen_definition']['definition_version'] ?? '', 'definition_version', $assertionErrors);
         app_sample30_no_code_app_local_sync_assert_same($projectKey, $steps['screen_definition']['project_key'] ?? '', 'project_key', $assertionErrors);
@@ -542,6 +635,18 @@ function app_sample30_no_code_app_local_sync_demo_run(array $app, string $reques
         app_sample30_no_code_app_local_sync_assert_same('App-local sync no-code task', $steps['server_read_after_sync']['row']['title'] ?? '', 'server title after sync', $assertionErrors);
         app_sample30_no_code_app_local_sync_assert_same('synced_to_server', $steps['server_read_after_sync']['row']['status'] ?? '', 'server status after sync', $assertionErrors);
         app_sample30_no_code_app_local_sync_assert_same('Processed by generated server DBAccess handler.', $steps['server_read_after_sync']['row']['note'] ?? '', 'server note after sync', $assertionErrors);
+        app_sample30_no_code_app_local_sync_assert_same('processed', $steps['sync_handoff_visibility']['app_local']['handoff_state'] ?? '', 'App-local handoff visibility state', $assertionErrors);
+        app_sample30_no_code_app_local_sync_assert_same('processed', $steps['sync_handoff_visibility']['server']['handoff_state'] ?? '', 'server handoff visibility state', $assertionErrors);
+        app_sample30_no_code_app_local_sync_assert_same(true, $steps['sync_handoff_visibility']['runtime_artifact']['list_sync_status_hint'] ?? false, 'runtime list sync status hint', $assertionErrors);
+        app_sample30_no_code_app_local_sync_assert_same(true, $steps['sync_handoff_visibility']['runtime_artifact']['detail_sync_status_hint'] ?? false, 'runtime detail sync status hint', $assertionErrors);
+        app_sample30_no_code_app_local_sync_assert_same(false, $steps['sync_handoff_visibility']['runtime_artifact']['form_sync_status_hint'] ?? true, 'runtime form sync status hint', $assertionErrors);
+        app_sample30_no_code_app_local_sync_assert_same('Failed or retryable sync items are reviewed from the operator sync outbox.', $steps['sync_handoff_visibility']['runtime_artifact']['list_sync_error_retry_hint'] ?? '', 'runtime list sync error/retry hint', $assertionErrors);
+        app_sample30_no_code_app_local_sync_assert_same(true, $steps['sync_handoff_visibility']['runtime_artifact']['html_sync_retry_hint_visible'] ?? false, 'runtime html sync retry hint', $assertionErrors);
+        app_sample30_no_code_app_local_sync_assert_same('failed', $steps['sync_error_state_process']['outcome'] ?? '', 'sync error-state process outcome', $assertionErrors);
+        app_sample30_no_code_app_local_sync_assert_same('failed', $steps['sync_error_state_process']['item']['status'] ?? '', 'sync error-state outbox status', $assertionErrors);
+        app_sample30_no_code_app_local_sync_assert_same(1, $steps['sync_error_state_process']['item']['attempts'] ?? 0, 'sync error-state attempts', $assertionErrors);
+        app_sample30_no_code_app_local_sync_assert_same('sample30 deterministic sync failure for visibility.', $steps['sync_error_state_process']['item']['last_error'] ?? '', 'sync error-state last error', $assertionErrors);
+        app_sample30_no_code_app_local_sync_assert_same('failed', $steps['sync_handoff_visibility']['error_state']['handoff_state'] ?? '', 'sync error-state visibility state', $assertionErrors);
     } catch (Throwable $throwable) {
         return [
             'ok' => false,

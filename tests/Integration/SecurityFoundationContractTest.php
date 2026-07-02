@@ -26,7 +26,9 @@ final class SecurityFoundationContractTest extends TestCase
         foreach ([
             '/runs/swagger/PROJECT1' => 'lab_swagger',
             '/runs/proxy/PROJECT1/source-output/proxy.php' => 'lab_published_single_proxy',
+            '/projects/PROJECT1/source-outputs/artifacts/20260619-test' => 'project_source_output_artifact_detail',
             '/projects/PROJECT1/source-outputs/artifacts/20260619-test/download' => 'project_source_output_download',
+            '/projects/PROJECT1/sync-outbox/abcdef123456' => 'project_sync_outbox_detail',
         ] as $path => $expectedRoute) {
             $match = app_route_match(['path' => $path]);
             self::assertSame($expectedRoute, $match['name'], $path);

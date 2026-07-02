@@ -371,6 +371,18 @@ function app_runtime_storage_app_local_persistence_source_outputs_relative_path(
     );
 }
 
+function app_runtime_storage_app_local_package_source_outputs_relative_path(
+    string $projectKey = '',
+    string $sourceOutputKey = '',
+): string {
+    return app_runtime_storage_relative_path(
+        'mtool',
+        'app-local-package-source-outputs',
+        app_normalize_project_key($projectKey),
+        app_normalize_source_output_key($sourceOutputKey),
+    );
+}
+
 function app_runtime_storage_managed_operation_source_outputs_relative_path(
     string $projectKey = '',
     string $sourceOutputKey = '',
@@ -390,6 +402,30 @@ function app_runtime_storage_no_code_runtime_source_outputs_relative_path(
     return app_runtime_storage_relative_path(
         'mtool',
         'no-code-runtime-source-outputs',
+        app_normalize_project_key($projectKey),
+        app_normalize_source_output_key($sourceOutputKey),
+    );
+}
+
+function app_runtime_storage_no_code_react_bridge_source_outputs_relative_path(
+    string $projectKey = '',
+    string $sourceOutputKey = '',
+): string {
+    return app_runtime_storage_relative_path(
+        'mtool',
+        'no-code-react-bridge-source-outputs',
+        app_normalize_project_key($projectKey),
+        app_normalize_source_output_key($sourceOutputKey),
+    );
+}
+
+function app_runtime_storage_no_code_json_forms_probe_source_outputs_relative_path(
+    string $projectKey = '',
+    string $sourceOutputKey = '',
+): string {
+    return app_runtime_storage_relative_path(
+        'mtool',
+        'no-code-json-forms-probe-source-outputs',
         app_normalize_project_key($projectKey),
         app_normalize_source_output_key($sourceOutputKey),
     );

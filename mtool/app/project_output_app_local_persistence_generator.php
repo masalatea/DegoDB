@@ -11,11 +11,26 @@ function app_project_output_app_local_persistence_strategy_is_supported(string $
     return $strategy === 'app-local-persistence-php';
 }
 
+function app_project_output_app_local_package_strategy_is_supported(string $strategy): bool
+{
+    return $strategy === 'app-local-package-manifest';
+}
+
 function app_project_output_app_local_persistence_default_runtime_source_relative_path(
     string $projectKey,
     string $sourceOutputKey,
 ): string {
     return app_runtime_storage_app_local_persistence_source_outputs_relative_path(
+        $projectKey,
+        $sourceOutputKey,
+    );
+}
+
+function app_project_output_app_local_package_default_runtime_source_relative_path(
+    string $projectKey,
+    string $sourceOutputKey,
+): string {
+    return app_runtime_storage_app_local_package_source_outputs_relative_path(
         $projectKey,
         $sourceOutputKey,
     );
@@ -45,6 +60,75 @@ function app_project_output_app_local_persistence_build_emitted_files(array $man
         'schema.sql' => $schema['schema_sql'],
         'AppLocalPersistence.php' => app_project_output_app_local_persistence_php_text($manifest),
         'README.md' => app_project_output_app_local_persistence_readme_text($manifestResult),
+    ];
+}
+
+/**
+ * @param array<string,mixed> $manifestResult
+ * @param array<string,mixed> $definition
+ * @return array<string,string>
+ */
+function app_project_output_app_local_package_build_emitted_files(
+    array $manifestResult,
+    array $definition,
+    string $projectKey,
+): array {
+    $manifest = is_array($manifestResult['manifest'] ?? null) ? $manifestResult['manifest'] : [];
+    $contracts = is_array($manifest['contracts'] ?? null) ? $manifest['contracts'] : [];
+    $persistenceFiles = app_project_output_app_local_persistence_build_emitted_files($manifestResult);
+    $includedFiles = [];
+
+    foreach (array_keys($persistenceFiles) as $relativePath) {
+        $includedFiles[] = [
+            'relative_path' => $relativePath,
+            'source_output_role' => 'app-local-persistence',
+            'required' => true,
+        ];
+    }
+
+    $packageManifest = [
+        'package_manifest_version' => 'app-local-package-manifest-v0',
+        'package_runtime' => 'app-local-package-v0',
+        'project_key' => app_normalize_project_key($projectKey),
+        'source_output_key' => app_normalize_source_output_key((string) ($definition['source_output_key'] ?? '')),
+        'artifact_strategy' => 'app-local-package-manifest',
+        'contract_manifest_version' => (string) ($manifest['manifest_version'] ?? ''),
+        'contract_count' => count($contracts),
+        'included_file_count' => count($includedFiles),
+        'included_files' => $includedFiles,
+        'dependencies' => [
+            [
+                'source_output_role' => 'app-local-persistence',
+                'artifact_strategy' => 'app-local-persistence-php',
+                'required' => true,
+            ],
+        ],
+        'deferred_scope' => [
+            'native_ios_android_packaging',
+            'flutter_output',
+            'installer_signing',
+            'remote_sync_transport',
+            'conflict_resolution',
+            'background_scheduler',
+            'visual_builder',
+        ],
+    ];
+
+    $summary = [
+        'ok' => (bool) ($manifestResult['ok'] ?? false),
+        'package_manifest_version' => $packageManifest['package_manifest_version'],
+        'project_key' => $packageManifest['project_key'],
+        'source_output_key' => $packageManifest['source_output_key'],
+        'contract_count' => $packageManifest['contract_count'],
+        'included_file_count' => $packageManifest['included_file_count'],
+        'blockers' => [],
+        'error' => (string) ($manifestResult['error'] ?? ''),
+    ];
+
+    return [
+        'app-local-package-manifest.json' => app_project_output_app_local_persistence_json_text($packageManifest),
+        'app-local-package-summary.json' => app_project_output_app_local_persistence_json_text($summary),
+        'README.md' => app_project_output_app_local_package_readme_text($packageManifest),
     ];
 }
 
@@ -176,6 +260,27 @@ function app_project_output_app_local_persistence_readme_text(array $manifestRes
 }
 
 /**
+ * @param array<string,mixed> $packageManifest
+ */
+function app_project_output_app_local_package_readme_text(array $packageManifest): string
+{
+    return implode("\n", [
+        '# App-local Package Manifest',
+        '',
+        'Generated package manifest for the App-local runtime boundary.',
+        '',
+        '- `app-local-package-manifest.json` records package metadata and included generated files.',
+        '- `app-local-package-summary.json` records the package readiness summary.',
+        '- This first slice does not generate native installers, remote transport, or conflict resolution behavior.',
+        '- Do not hand-edit generated files; update canonical Mtool metadata instead.',
+        '',
+        'Project: ' . (string) ($packageManifest['project_key'] ?? ''),
+        'Included files: ' . (string) ($packageManifest['included_file_count'] ?? 0),
+        '',
+    ]);
+}
+
+/**
  * @param array{
  *     source_output_key:string,
  *     program_language:string,
@@ -264,6 +369,118 @@ function app_project_output_prepare_app_local_persistence_source_tree(array $app
             'runtime_source_root' => '',
             'scan_result' => null,
             'error' => 'Failed to create App-local persistence staging tree: ' . $throwable->getMessage(),
+        ];
+    }
+
+    $scanResult = app_project_output_scan_tree($runtimeSourceRoot);
+    if (!$scanResult['ok']) {
+        return [
+            'ok' => false,
+            'runtime_source_relative_path' => '',
+            'runtime_source_root' => '',
+            'scan_result' => null,
+            'error' => $scanResult['error'],
+        ];
+    }
+
+    return [
+        'ok' => true,
+        'runtime_source_relative_path' => $runtimeSourceRelativePath,
+        'runtime_source_root' => $runtimeSourceRoot,
+        'scan_result' => $scanResult,
+        'error' => '',
+    ];
+}
+
+/**
+ * @param array{
+ *     source_output_key:string,
+ *     program_language:string,
+ *     artifact_strategy:string,
+ *     runtime_source_relative_path:string
+ * } $definition
+ * @return array{
+ *     ok:bool,
+ *     runtime_source_relative_path:string,
+ *     runtime_source_root:string,
+ *     scan_result:array{
+ *         ok:bool,
+ *         files:list<array{relative_path:string,size:int}>,
+ *         total_bytes:int,
+ *         error:string
+ *     }|null,
+ *     error:string
+ * }
+ */
+function app_project_output_prepare_app_local_package_source_tree(array $app, string $projectKey, array $definition): array
+{
+    $strategy = (string) ($definition['artifact_strategy'] ?? '');
+    if (!app_project_output_app_local_package_strategy_is_supported($strategy)) {
+        return [
+            'ok' => false,
+            'runtime_source_relative_path' => '',
+            'runtime_source_root' => '',
+            'scan_result' => null,
+            'error' => 'Unsupported App-local package artifact strategy.',
+        ];
+    }
+
+    $programLanguage = trim((string) ($definition['program_language'] ?? ''));
+    if ($programLanguage !== '' && $programLanguage !== 'json') {
+        return [
+            'ok' => false,
+            'runtime_source_relative_path' => '',
+            'runtime_source_root' => '',
+            'scan_result' => null,
+            'error' => 'App-local package artifact currently supports json only.',
+        ];
+    }
+
+    $runtimeSourceRelativePath = trim((string) ($definition['runtime_source_relative_path'] ?? ''));
+    if ($runtimeSourceRelativePath === '') {
+        $runtimeSourceRelativePath = app_project_output_app_local_package_default_runtime_source_relative_path(
+            $projectKey,
+            (string) ($definition['source_output_key'] ?? ''),
+        );
+    }
+    if (!app_project_output_relative_path_is_safe($runtimeSourceRelativePath)) {
+        return [
+            'ok' => false,
+            'runtime_source_relative_path' => '',
+            'runtime_source_root' => '',
+            'scan_result' => null,
+            'error' => 'runtime source relative path is invalid.',
+        ];
+    }
+
+    $manifestResult = app_shared_contract_manifest_from_project($app, $projectKey);
+    if (!$manifestResult['ok']) {
+        return [
+            'ok' => false,
+            'runtime_source_relative_path' => '',
+            'runtime_source_root' => '',
+            'scan_result' => null,
+            'error' => $manifestResult['error'],
+        ];
+    }
+
+    $runtimeSourceRoot = app_runtime_storage_runtime_source_root($app, $runtimeSourceRelativePath);
+
+    try {
+        $files = app_project_output_app_local_package_build_emitted_files($manifestResult, $definition, $projectKey);
+        app_project_output_delete_tree($runtimeSourceRoot);
+        app_project_output_ensure_directory($runtimeSourceRoot);
+
+        foreach ($files as $relativePath => $contents) {
+            app_project_output_write_text_file($runtimeSourceRoot . '/' . $relativePath, $contents);
+        }
+    } catch (Throwable $throwable) {
+        return [
+            'ok' => false,
+            'runtime_source_relative_path' => '',
+            'runtime_source_root' => '',
+            'scan_result' => null,
+            'error' => 'Failed to create App-local package staging tree: ' . $throwable->getMessage(),
         ];
     }
 

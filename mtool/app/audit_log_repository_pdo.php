@@ -80,7 +80,7 @@ function app_pdo_audit_log_fetch_latest(array $app, array $filters = []): array
         $where = [];
         $params = [];
 
-        foreach (['project_key', 'actor_login_id', 'event_type', 'target_type', 'result'] as $field) {
+        foreach (['project_key', 'actor_login_id', 'event_type', 'target_type', 'target_key', 'result'] as $field) {
             $value = trim((string) ($filters[$field] ?? ''));
             if ($value === '') {
                 continue;

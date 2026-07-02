@@ -3,6 +3,9 @@
 declare(strict_types=1);
 
 require_once __DIR__ . '/csrf.php';
+require_once __DIR__ . '/no_code_operator_inspection.php';
+require_once __DIR__ . '/no_code_operator_sync_inspection.php';
+require_once __DIR__ . '/managed_operation_sync_outbox_repository_pdo.php';
 require_once __DIR__ . '/project_output_service.php';
 require_once __DIR__ . '/project_source_output_route_common.php';
 require_once __DIR__ . '/request.php';
@@ -188,6 +191,18 @@ function app_render_project_source_outputs_page(array $app, array $request): voi
             $latestArtifactBySourceOutput[$sourceOutputKey] = $artifact;
         }
     }
+    $noCodeInspection = app_no_code_operator_inspection_from_catalog(
+        $sourceOutputs,
+        $artifacts,
+        $projectKey,
+        app_project_output_workspace_root(),
+    );
+
+    $syncOutboxResult = app_pdo_fetch_managed_operation_sync_outbox_catalog($app, $projectKey);
+    if (!$syncOutboxResult['ok']) {
+        $errors[] = $syncOutboxResult['error'];
+    }
+    $syncInspection = app_no_code_operator_sync_inspection_from_outbox_catalog($syncOutboxResult['items']);
 
     $statusCode = $errors === [] ? 200 : 422;
     $csrfToken = app_csrf_token();
@@ -378,6 +393,138 @@ function app_render_project_source_outputs_page(array $app, array $request): voi
             </ul>
         </section>
 
+        <section class="summary-card">
+            <h2>No-Code Runtime Inspection</h2>
+            <?php $noCodePreview = $noCodeInspection['preview']; ?>
+            <?php $noCodeHealth = $noCodeInspection['health']; ?>
+            <?php $noCodeLatestArtifact = $noCodeInspection['latest_artifact']; ?>
+            <?php $noCodePublishReadiness = $noCodeInspection['publish_readiness']; ?>
+            <?php $noCodeDeliveryOverview = $noCodeInspection['delivery_overview']; ?>
+            <?php $appLocalPackageDelivery = $noCodeDeliveryOverview['app_local_package']; ?>
+            <ul>
+                <li>health: <code><?php echo app_h($noCodeHealth['state']); ?></code> <?php echo app_h($noCodeHealth['label']); ?></li>
+                <li>publish readiness: <code><?php echo app_h($noCodePublishReadiness['state']); ?></code> <?php echo app_h($noCodePublishReadiness['label']); ?></li>
+                <li>delivery overview: <code><?php echo app_h($noCodeDeliveryOverview['state']); ?></code> <?php echo app_h($noCodeDeliveryOverview['label']); ?></li>
+                <li>definition: <code><?php echo app_h($noCodeInspection['available'] ? 'available' : 'missing'); ?></code></li>
+                <li>source output: <code><?php echo app_h($noCodeInspection['source_output_key']); ?></code></li>
+                <li>artifact count: <code><?php echo app_h((string) $noCodeInspection['artifact_count']); ?></code></li>
+                <li>latest artifact:
+                    <?php if ($noCodeLatestArtifact !== null): ?>
+                        <a href="<?php echo app_h(app_project_source_output_artifact_detail_path($projectKey, (string) $noCodeLatestArtifact['artifact_key'])); ?>"><code><?php echo app_h((string) $noCodeLatestArtifact['artifact_key']); ?></code></a>
+                    <?php else: ?>
+                        <code>none</code>
+                    <?php endif; ?>
+                </li>
+                <li>preview html: <code><?php echo app_h($noCodePreview['runtime_preview_html_exists'] ? 'available' : 'missing'); ?></code></li>
+                <li>screens/actions: <code><?php echo app_h((string) $noCodePreview['screen_count']); ?></code> / <code><?php echo app_h((string) $noCodePreview['action_count']); ?></code></li>
+                <li>sync hints: <code><?php echo app_h((string) $noCodePreview['sync_hint_screen_count']); ?></code></li>
+            </ul>
+            <h3>Publish Readiness</h3>
+            <ul>
+                <li>state: <code><?php echo app_h($noCodePublishReadiness['state']); ?></code></li>
+                <li>artifact key: <code><?php echo app_h($noCodePublishReadiness['artifact_key'] !== '' ? $noCodePublishReadiness['artifact_key'] : 'none'); ?></code></li>
+                <li>archive: <code><?php echo app_h($noCodePublishReadiness['artifact_archive_exists'] ? 'available' : 'missing'); ?></code></li>
+                <li>preview files: <code><?php echo app_h($noCodePublishReadiness['preview_files_ready'] ? 'ready' : 'blocked'); ?></code></li>
+                <li>screens/actions: <code><?php echo app_h((string) $noCodePublishReadiness['screen_count']); ?></code> / <code><?php echo app_h((string) $noCodePublishReadiness['action_count']); ?></code></li>
+            </ul>
+            <?php if (($noCodePublishReadiness['blocking_reasons'] ?? []) !== []): ?>
+                <p class="muted">publish blockers: <code><?php echo app_h(implode(' ', $noCodePublishReadiness['blocking_reasons'])); ?></code></p>
+            <?php endif; ?>
+            <h3>Delivery Overview</h3>
+            <ul>
+                <li>public runtime: <code><?php echo app_h($noCodeDeliveryOverview['public_runtime']['state']); ?></code> <?php echo app_h($noCodeDeliveryOverview['public_runtime']['label']); ?></li>
+                <li>public artifact: <code><?php echo app_h($noCodeDeliveryOverview['public_runtime']['artifact_key'] !== '' ? $noCodeDeliveryOverview['public_runtime']['artifact_key'] : 'none'); ?></code></li>
+                <li>app-local package: <code><?php echo app_h($appLocalPackageDelivery['state']); ?></code> <?php echo app_h($appLocalPackageDelivery['label']); ?></li>
+                <li>package artifact: <code><?php echo app_h($appLocalPackageDelivery['artifact_key'] !== '' ? $appLocalPackageDelivery['artifact_key'] : 'none'); ?></code></li>
+                <li>package manifest/summary: <code><?php echo app_h($appLocalPackageDelivery['manifest_available'] ? 'ready' : 'missing'); ?></code> / <code><?php echo app_h($appLocalPackageDelivery['summary_available'] ? 'ready' : 'missing'); ?></code></li>
+            </ul>
+            <?php if (($noCodeDeliveryOverview['blockers'] ?? []) !== []): ?>
+                <p class="muted">delivery blockers: <code><?php echo app_h(implode(' ', $noCodeDeliveryOverview['blockers'])); ?></code></p>
+            <?php endif; ?>
+            <?php if ($appLocalPackageDelivery['source_output_key'] !== ''): ?>
+                <p><a href="<?php echo app_h(app_project_source_output_detail_path($projectKey, $appLocalPackageDelivery['source_output_key'])); ?>">Inspect App-local package definition</a></p>
+            <?php endif; ?>
+            <p class="muted">current output: <code><?php echo app_h($noCodeInspection['source_output_dir']); ?></code></p>
+            <p class="muted">preview files: <code><?php echo app_h($noCodeInspection['source_output_dir'] . '/screen-definition.json'); ?></code>, <code><?php echo app_h($noCodeInspection['source_output_dir'] . '/runtime-preview.json'); ?></code>, <code><?php echo app_h($noCodeInspection['source_output_dir'] . '/runtime-preview.html'); ?></code></p>
+            <?php if ($noCodeHealth['reasons'] !== []): ?>
+                <p class="muted">health detail: <code><?php echo app_h(implode(' ', $noCodeHealth['reasons'])); ?></code></p>
+            <?php endif; ?>
+            <?php if (($noCodeInspection['workflow_steps'] ?? []) !== []): ?>
+                <h3>Operator Workflow Checklist</h3>
+                <ol>
+                    <?php foreach ($noCodeInspection['workflow_steps'] as $workflowStep): ?>
+                        <li>
+                            <code><?php echo app_h((string) ($workflowStep['state'] ?? '')); ?></code>
+                            <?php echo app_h((string) ($workflowStep['label'] ?? '')); ?>
+                            <span class="muted"><?php echo app_h((string) ($workflowStep['detail'] ?? '')); ?></span>
+                        </li>
+                    <?php endforeach; ?>
+                </ol>
+            <?php endif; ?>
+            <?php if ($noCodeInspection['available']): ?>
+                <p><a href="<?php echo app_h(app_project_source_output_detail_path($projectKey, $noCodeInspection['source_output_key'])); ?>">Inspect NO-CODE-RUNTIME definition</a></p>
+            <?php endif; ?>
+            <?php if ($noCodeLatestArtifact !== null && ($noCodeLatestArtifact['archive_exists'] ?? false)): ?>
+                <p><a href="<?php echo app_h(app_project_source_output_download_path($projectKey, (string) $noCodeLatestArtifact['artifact_key'])); ?>">Download latest NO-CODE-RUNTIME artifact</a></p>
+            <?php endif; ?>
+            <?php if ($noCodePreview['screen_keys'] !== []): ?>
+                <p class="muted">screens: <code><?php echo app_h(implode(', ', array_slice($noCodePreview['screen_keys'], 0, 6))); ?></code></p>
+            <?php endif; ?>
+            <?php if ($noCodePreview['action_keys'] !== []): ?>
+                <p class="muted">actions: <code><?php echo app_h(implode(', ', array_slice($noCodePreview['action_keys'], 0, 6))); ?></code></p>
+            <?php endif; ?>
+            <?php if ($noCodePreview['errors'] !== []): ?>
+                <p class="muted">preview metadata: <code><?php echo app_h(implode(' ', $noCodePreview['errors'])); ?></code></p>
+            <?php endif; ?>
+        </section>
+
+        <section class="summary-card">
+            <h2>Sync Outbox Inspection</h2>
+            <?php $syncHealth = $syncInspection['health']; ?>
+            <?php $latestFailedSync = $syncInspection['latest_failed_item']; ?>
+            <ul>
+                <li>health: <code><?php echo app_h($syncHealth['state']); ?></code> <?php echo app_h($syncHealth['label']); ?></li>
+                <li>total: <code><?php echo app_h((string) $syncInspection['total_count']); ?></code></li>
+                <li>failed: <code><?php echo app_h((string) $syncInspection['failed_count']); ?></code></li>
+                <li>pending/running/done: <code><?php echo app_h((string) $syncInspection['pending_count']); ?></code> / <code><?php echo app_h((string) $syncInspection['running_count']); ?></code> / <code><?php echo app_h((string) $syncInspection['done_count']); ?></code></li>
+                <li>latest failed:
+                    <?php if ($latestFailedSync !== null): ?>
+                        <code><?php echo app_h((string) $latestFailedSync['operation_key']); ?></code>
+                        <span class="muted">attempts <?php echo app_h((string) $latestFailedSync['attempts']); ?></span>
+                    <?php else: ?>
+                        <code>none</code>
+                    <?php endif; ?>
+                </li>
+            </ul>
+            <?php if ($syncHealth['reasons'] !== []): ?>
+                <p class="muted">health detail: <code><?php echo app_h(implode(' ', $syncHealth['reasons'])); ?></code></p>
+            <?php endif; ?>
+            <?php if ($syncInspection['failed_items'] !== []): ?>
+                <table>
+                    <thead>
+                    <tr>
+                        <th>operation</th>
+                        <th>attempts</th>
+                        <th>last error</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <?php foreach ($syncInspection['failed_items'] as $failedSyncItem): ?>
+                        <tr>
+                            <td>
+                                <a href="<?php echo app_h(app_project_sync_outbox_detail_path($projectKey, (string) $failedSyncItem['dedupe_key'])); ?>"><code><?php echo app_h((string) $failedSyncItem['operation_key']); ?></code></a><br>
+                                <span class="muted"><?php echo app_h((string) $failedSyncItem['contract_key']); ?> / <?php echo app_h((string) $failedSyncItem['origin']); ?> -> <?php echo app_h((string) $failedSyncItem['target']); ?></span><br>
+                                <span class="muted">updated: <?php echo app_h((string) $failedSyncItem['updated_at']); ?></span>
+                            </td>
+                            <td><code><?php echo app_h((string) $failedSyncItem['attempts']); ?></code></td>
+                            <td><code><?php echo app_h((string) $failedSyncItem['last_error']); ?></code></td>
+                        </tr>
+                    <?php endforeach; ?>
+                    </tbody>
+                </table>
+            <?php endif; ?>
+        </section>
+
         <section class="note-card">
             <h2>現段階の責務</h2>
             <p class="muted"><code>ProgramLanguage</code> や <code>ClassType</code> などの canonical field はここで保持します。現時点では <code>generated-bootstrap-dbclasses</code>、<code>html-module-catalog</code>、<code>legacy-directory-mirror</code>、<code>single-proxy-server</code> / <code>single-proxy-client</code> / <code>custom-proxy-server</code> / <code>custom-proxy-client</code> が artifact 生成対象です。</p>
@@ -533,7 +680,7 @@ function app_render_project_source_outputs_page(array $app, array $request): voi
                 <?php foreach ($artifacts as $artifact): ?>
                     <tr>
                         <td>
-                            <strong><code><?php echo app_h($artifact['artifact_key']); ?></code></strong><br>
+                            <strong><a href="<?php echo app_h(app_project_source_output_artifact_detail_path($projectKey, $artifact['artifact_key'])); ?>"><code><?php echo app_h($artifact['artifact_key']); ?></code></a></strong><br>
                             <span class="muted"><?php echo app_h($artifact['created_at']); ?></span><br>
                             <span class="muted">requested by: <?php echo app_h($artifact['requested_by']); ?></span>
                         </td>

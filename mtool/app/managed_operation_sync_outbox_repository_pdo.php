@@ -347,6 +347,43 @@ function app_pdo_mark_managed_operation_sync_outbox_failed(
 /**
  * @return array{ok:bool,item:array<string,mixed>|null,error:string}
  */
+function app_pdo_requeue_failed_managed_operation_sync_outbox_item(
+    array $app,
+    string $projectKey,
+    string $dedupeKey,
+): array {
+    try {
+        $current = app_pdo_fetch_managed_operation_sync_outbox_item($app, $projectKey, $dedupeKey);
+        if (!$current['ok']) {
+            throw new RuntimeException($current['error']);
+        }
+        if ($current['item'] === null) {
+            throw new RuntimeException('managed operation sync outbox item was not found.');
+        }
+        if ((string) ($current['item']['status'] ?? '') !== 'failed') {
+            throw new RuntimeException('only failed managed operation sync outbox items can be requeued.');
+        }
+
+        return app_pdo_update_managed_operation_sync_outbox_status(
+            $app,
+            $projectKey,
+            $dedupeKey,
+            'pending',
+            '',
+            false,
+        );
+    } catch (Throwable $throwable) {
+        return [
+            'ok' => false,
+            'item' => null,
+            'error' => $throwable->getMessage(),
+        ];
+    }
+}
+
+/**
+ * @return array{ok:bool,item:array<string,mixed>|null,error:string}
+ */
 function app_pdo_update_managed_operation_sync_outbox_status(
     array $app,
     string $projectKey,

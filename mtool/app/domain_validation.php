@@ -84,7 +84,7 @@ function app_allowed_html_template_parameter_data_types(): array
  */
 function app_allowed_source_output_class_types(): array
 {
-    return ['DBAccess', 'DataClass', 'SharedContract', 'TypeScriptDTO', 'AppLocalPersistence', 'ManagedOperation', 'NoCodeRuntime', 'OpenAPI', 'AIContext', 'ProxyServer', 'ProxyClient', 'DBaaSProxyServer', 'DBaaSProxyClient', 'html', 'LanguageResource'];
+    return ['DBAccess', 'DataClass', 'SharedContract', 'TypeScriptDTO', 'AppLocalPersistence', 'AppLocalPackage', 'ManagedOperation', 'NoCodeRuntime', 'NoCodeReactBridge', 'NoCodeJsonFormsProbe', 'OpenAPI', 'AIContext', 'ProxyServer', 'ProxyClient', 'DBaaSProxyServer', 'DBaaSProxyClient', 'html', 'LanguageResource'];
 }
 
 /**
@@ -107,8 +107,11 @@ function app_allowed_source_output_artifact_strategies(): array
         'shared-contract-json',
         'shared-contract-typescript',
         'app-local-persistence-php',
+        'app-local-package-manifest',
         'managed-operation-docs-md',
         'no-code-runtime-json',
+        'no-code-react-bridge',
+        'no-code-json-forms-probe',
         'openapi-json',
         'ai-context-md',
         'modernization-audit-md',
@@ -467,8 +470,11 @@ function app_source_output_artifact_strategy_caption(string $value): string
         'shared-contract-json' => 'Shared Contract JSON Artifact',
         'shared-contract-typescript' => 'Shared Contract TypeScript DTO Artifact',
         'app-local-persistence-php' => 'App-local Persistence PHP Artifact',
+        'app-local-package-manifest' => 'App-local Package Manifest Artifact',
         'managed-operation-docs-md' => 'Managed Operation Markdown Artifact',
         'no-code-runtime-json' => 'No-Code Runtime JSON Artifact',
+        'no-code-react-bridge' => 'No-Code React Bridge Artifact',
+        'no-code-json-forms-probe' => 'No-Code JSON Forms Probe Artifact',
         'openapi-json' => 'OpenAPI JSON Artifact',
         'ai-context-md' => 'AI Context Markdown Artifact',
         'modernization-audit-md' => 'Modernization Audit Markdown Artifact',
@@ -532,8 +538,11 @@ function app_source_output_artifact_strategy_supports_generation(string $value):
         'shared-contract-json',
         'shared-contract-typescript',
         'app-local-persistence-php',
+        'app-local-package-manifest',
         'managed-operation-docs-md',
         'no-code-runtime-json',
+        'no-code-react-bridge',
+        'no-code-json-forms-probe',
         'openapi-json',
         'ai-context-md',
         'modernization-audit-md',
@@ -555,8 +564,11 @@ function app_source_output_artifact_strategy_requires_runtime_source(string $val
         'shared-contract-json',
         'shared-contract-typescript',
         'app-local-persistence-php',
+        'app-local-package-manifest',
         'managed-operation-docs-md',
         'no-code-runtime-json',
+        'no-code-react-bridge',
+        'no-code-json-forms-probe',
         'openapi-json',
         'ai-context-md',
         'modernization-audit-md',
