@@ -408,8 +408,27 @@ function app_no_code_runtime_render_screen_html(array $render): string
         '</header>',
         app_no_code_runtime_render_screen_summary_html($screenKey, $fields, $actions),
         '<div class="no-code-action-feedback" role="status" aria-live="polite" data-state="idle">Select an enabled action to preview its intent.</div>',
+        app_no_code_runtime_render_action_intent_draft_html($actions),
         $body,
         '</section>',
+    ]);
+}
+
+/**
+ * @param list<array<string,mixed>> $actions
+ */
+function app_no_code_runtime_render_action_intent_draft_html(array $actions): string
+{
+    if ($actions === []) {
+        return '';
+    }
+
+    return implode("\n", [
+        '<div class="no-code-intent-draft" data-intent-draft-state="idle">',
+        '<strong>Action Intent Draft</strong>',
+        '<p>Editing this screen updates a local action-intent preview. It does not execute a server update.</p>',
+        '<pre data-intent-draft-output>Change editable fields to preview the generated action intent draft.</pre>',
+        '</div>',
     ]);
 }
 
@@ -688,6 +707,10 @@ function app_no_code_runtime_preview_css(): string
         '.no-code-action-feedback[data-state="working"] { color: #334e68; }',
         '.no-code-action-feedback[data-state="success"] { color: #0f5132; }',
         '.no-code-action-feedback[data-state="error"] { color: #842029; }',
+        '.no-code-intent-draft { border: 1px solid #d8dee8; border-radius: 6px; background: #f7f9fb; padding: 10px 12px; margin: -4px 0 14px; }',
+        '.no-code-intent-draft strong { display: block; font-size: 13px; color: #334e68; margin-bottom: 4px; }',
+        '.no-code-intent-draft p { margin: 0 0 8px; color: #62748a; font-size: 12px; }',
+        '.no-code-intent-draft pre { margin: 0; max-height: 220px; overflow: auto; border: 1px solid #e4e8ef; border-radius: 4px; background: #ffffff; padding: 8px; color: #243b53; font: 12px/1.45 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; white-space: pre-wrap; overflow-wrap: anywhere; }',
         '.no-code-state-badge { align-self: flex-start; border: 1px solid #c8d1dc; border-radius: 999px; padding: 4px 9px; color: #486581; background: #f4f6f8; font-size: 12px; white-space: nowrap; }',
         '.no-code-state-badge[data-state="ready"], .no-code-state-badge[data-state="success"] { border-color: #badbcc; color: #0f5132; background: #f0f9f4; }',
         '.no-code-state-badge[data-state="empty"], .no-code-state-badge[data-state="idle"] { border-color: #c8d1dc; color: #52606d; background: #f4f6f8; }',
@@ -848,6 +871,10 @@ function app_no_code_runtime_preview_js(): string
 
   function collectScreenInput(button) {
     var screen = button.closest('.no-code-screen');
+    return collectScreenInputFromScreen(screen);
+  }
+
+  function collectScreenInputFromScreen(screen) {
     var input = {};
     if (!screen) {
       return input;
@@ -862,6 +889,72 @@ function app_no_code_runtime_preview_js(): string
     });
 
     return input;
+  }
+
+  function firstScreenAction(screen) {
+    if (!screen) {
+      return null;
+    }
+    var actionButton = screen.querySelector('.no-code-actions button[data-action-key]');
+    if (!actionButton) {
+      return null;
+    }
+
+    return findAction(actionButton.getAttribute('data-action-key') || '');
+  }
+
+  function buildActionIntentDraft(action, input) {
+    var draft = {
+      intent_version: 'no-code-runtime-action-intent-v0',
+      runtime_version: preview.runtime_version || '',
+      project_key: preview.project_key || '',
+      action_key: action.action_key || '',
+      operation_key: action.operation_key || '',
+      operation_type: action.operation_type || '',
+      availability: action.availability || (action.enabled ? 'enabled' : 'disabled'),
+      executable: !!action.enabled,
+      payload: {
+        key: {},
+        input: {},
+        filter: {}
+      }
+    };
+    var fields = Array.isArray(action.fields) ? action.fields : [];
+    fields.forEach(function (field) {
+      var fieldKey = field && field.field_key ? field.field_key : '';
+      if (!fieldKey || !Object.prototype.hasOwnProperty.call(input, fieldKey)) {
+        return;
+      }
+
+      if (field.role === 'key') {
+        draft.payload.key[fieldKey] = input[fieldKey];
+      } else if (field.role === 'filter') {
+        draft.payload.filter[fieldKey] = input[fieldKey];
+      } else if (field.role === 'input') {
+        draft.payload.input[fieldKey] = input[fieldKey];
+      }
+    });
+
+    return draft;
+  }
+
+  function writeIntentDraft(screen) {
+    var draftOutput = screen ? screen.querySelector('[data-intent-draft-output]') : null;
+    var draftRoot = screen ? screen.querySelector('.no-code-intent-draft') : null;
+    if (!draftOutput || !draftRoot) {
+      return;
+    }
+
+    var action = firstScreenAction(screen);
+    if (!action) {
+      draftOutput.textContent = 'No action metadata is available for this screen.';
+      draftRoot.setAttribute('data-intent-draft-state', 'empty');
+      return;
+    }
+
+    var draft = buildActionIntentDraft(action, collectScreenInputFromScreen(screen));
+    draftOutput.textContent = JSON.stringify(draft, null, 2);
+    draftRoot.setAttribute('data-intent-draft-state', action.enabled ? 'ready' : 'disabled');
   }
 
   function writeActionFeedback(button, result) {
@@ -909,6 +1002,21 @@ function app_no_code_runtime_preview_js(): string
       var result = window.noCodeRuntimeDispatchAction(button.getAttribute('data-action-key') || '', collectScreenInput(button));
       button.setAttribute('data-action-state', result && result.ok ? 'success' : 'error');
       writeActionFeedback(button, result);
+      if (screen) {
+        writeIntentDraft(screen);
+      }
+    });
+  });
+
+  document.querySelectorAll('.no-code-screen').forEach(function (screen) {
+    writeIntentDraft(screen);
+    screen.querySelectorAll('input[name], textarea[name], select[name]').forEach(function (control) {
+      control.addEventListener('input', function () {
+        writeIntentDraft(screen);
+      });
+      control.addEventListener('change', function () {
+        writeIntentDraft(screen);
+      });
     });
   });
 }());

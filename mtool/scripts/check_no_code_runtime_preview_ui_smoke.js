@@ -264,6 +264,14 @@ async function runSmoke(config) {
       const disabledDispatch = typeof window.noCodeRuntimeDispatchAction === 'function'
         ? window.noCodeRuntimeDispatchAction(expected.actionKey, expected.payload)
         : { ok: false, executed: false, error: 'missing noCodeRuntimeDispatchAction' };
+      const formScreen = document.querySelector(`.no-code-screen[data-screen-key="${expected.formScreenKey}"]`);
+      const draftBeforeEdit = formScreen?.querySelector('[data-intent-draft-output]')?.textContent || '';
+      const requiredInput = formScreen?.querySelector(`[name="${expected.requiredInputField}"]`);
+      if (requiredInput) {
+        requiredInput.value = expected.requiredInputValue;
+        requiredInput.dispatchEvent(new Event('input', { bubbles: true }));
+      }
+      const draftAfterEdit = formScreen?.querySelector('[data-intent-draft-output]')?.textContent || '';
 
       previewActions.forEach((action) => {
         if (action.action_key === expected.actionKey) {
@@ -307,6 +315,10 @@ async function runSmoke(config) {
           return hintId !== '' && document.getElementById(hintId);
         }).length,
         idleFeedbackCount: Array.from(document.querySelectorAll('.no-code-action-feedback')).filter((element) => element.getAttribute('data-state') === 'idle').length,
+        intentDraftCount: document.querySelectorAll('.no-code-intent-draft').length,
+        intentDraftStates: Array.from(document.querySelectorAll('.no-code-intent-draft')).map((element) => element.getAttribute('data-intent-draft-state') || ''),
+        draftBeforeEdit,
+        draftAfterEdit,
         actionMetadata: {
           actionKey: updateAction.action_key || '',
           operationKey: updateAction.operation_key || '',
@@ -371,6 +383,18 @@ async function runSmoke(config) {
     }
     if (metrics.idleFeedbackCount !== 3) {
       throw new Error(`initial action feedback state mismatch: ${metrics.idleFeedbackCount}`);
+    }
+    if (metrics.intentDraftCount !== 3) {
+      throw new Error(`intent draft panel count mismatch: ${metrics.intentDraftCount}`);
+    }
+    if (!metrics.intentDraftStates.includes('disabled')) {
+      throw new Error(`disabled intent draft state was not found: ${metrics.intentDraftStates.join(', ')}`);
+    }
+    if (!metrics.draftAfterEdit.includes(config.expected.requiredInputValue)) {
+      throw new Error(`intent draft did not update after editing ${config.expected.requiredInputField}: ${metrics.draftAfterEdit}`);
+    }
+    if (metrics.draftBeforeEdit === metrics.draftAfterEdit) {
+      throw new Error('intent draft did not change after editable form input changed.');
     }
     if (!metrics.bodyText.includes(config.expected.listScreenTitle) || !metrics.bodyText.includes(config.expected.formScreenTitle)) {
       throw new Error('generated human-readable screen labels were not found in body text.');

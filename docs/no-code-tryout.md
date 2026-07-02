@@ -88,6 +88,8 @@ The list screen should include sample tickets such as `First no-code app ticket`
 
 Some actions may be disabled in this preview when policy checks do not enable them. That is expected for the guarded preview path.
 
+When you edit fields in the generated form, the `Action Intent Draft` panel updates locally. This shows the no-code action-intent shape that would be handed to the managed operation layer. It is only a preview: disabled actions stay disabled and no server update is executed from this static page.
+
 ## If You Get Lost / 迷った場合
 
 - If you only see artifact download or manifest information, go back to `NO-CODE-RUNTIME` detail. The artifact detail page is read-only.

@@ -11,6 +11,8 @@
 
 ## Index
 
+- `2026-0702-runtime-action-intent-draft-first-slice.md`
+  - generated no-code runtime preview に `Action Intent Draft` panel を追加。form field を編集すると browser-side の no-code action-intent draft JSON が更新される。server update は実行せず、disabled policy guard も緩めない。Focused `NoCodeRuntimeTest`、`make sample28-no-code-runtime-ui-smoke`、full `make test` が通過。Status: `FIRST_SLICE_DONE`。
 - `2026-0702-tryout-ux-polish-2.md`
   - no-code tryout-ready 後の初回ユーザー向け polish。`NO-CODE-RUNTIME` detail に `Tryout Next Steps` を追加し、Web preview と App-local package readiness が別 delivery track であることを Source Outputs / detail / tryout guide に明記。Focused static contract は `22 tests, 1821 assertions` で通過。Status: `FIRST_SLICE_DONE`。
 - `2026-0702-pre-next-push-verification.md`

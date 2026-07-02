@@ -26,6 +26,8 @@ http://127.0.0.1:18291/runs/no-code/SAMPLE28/current/runtime-preview.html
 
 For the fuller first-time tryout guide, see [No-Code Tryout](../../../docs/no-code-tryout.md).
 
+In the generated runtime preview, editing form fields updates the local `Action Intent Draft` panel. This is a browser-side intent preview only; it does not execute a server update or bypass disabled policy checks.
+
 Run:
 
 ```bash

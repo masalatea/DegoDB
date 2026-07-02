@@ -137,6 +137,12 @@ final class NoCodeRuntimeTest extends TestCase
         self::assertStringContainsString('class="no-code-screen-summary" data-screen-summary="task_list" data-field-count="7" data-action-count="2"', $html);
         self::assertStringContainsString('<span>7 fields</span><span>2 actions</span><code>task_list</code>', $html);
         self::assertStringContainsString('class="no-code-action-feedback" role="status" aria-live="polite" data-state="idle"', $html);
+        self::assertStringContainsString('class="no-code-intent-draft" data-intent-draft-state="idle"', $html);
+        self::assertStringContainsString('Action Intent Draft', $html);
+        self::assertStringContainsString('Editing this screen updates a local action-intent preview.', $html);
+        self::assertStringContainsString('data-intent-draft-output', $html);
+        self::assertStringContainsString('window.__noCodeRuntimeDispatches = [];', $html);
+        self::assertStringContainsString('function buildActionIntentDraft(action, input)', $html);
         self::assertStringContainsString('<nav class="no-code-actions" aria-label="Task List actions">', $html);
         self::assertStringContainsString('Select an enabled action to preview its intent.', $html);
         self::assertStringContainsString('data-action-state="ready"', $html);
