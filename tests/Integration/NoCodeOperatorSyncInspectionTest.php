@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 require_once dirname(__DIR__, 2) . '/mtool/app/no_code_operator_sync_inspection.php';
+require_once dirname(__DIR__, 2) . '/mtool/app/project_sync_outbox_detail_page.php';
 
 use PHPUnit\Framework\TestCase;
 
@@ -120,5 +121,48 @@ final class NoCodeOperatorSyncInspectionTest extends TestCase
         self::assertContains('Retry requires a dedupe key.', $blocked['reasons']);
         self::assertContains('Retry requires an operation key.', $blocked['reasons']);
         self::assertContains('Retry requires a recorded last_error.', $blocked['reasons']);
+    }
+
+    public function testBuildsRetryRequeueAuditEventInput(): void
+    {
+        $event = app_project_sync_outbox_retry_audit_event_input(
+            [
+                'id' => 'operator@example.test',
+                'auth_source' => 'oidc',
+            ],
+            'SYNC-PROJECT',
+            'retry-dedupe',
+            [
+                'status' => 'failed',
+                'attempts' => 2,
+                'last_error' => 'server write rejected',
+                'operation_key' => 'update_sync_task',
+                'operation_type' => 'update',
+                'contract_key' => 'sync_task',
+            ],
+            [
+                'status' => 'pending',
+                'attempts' => 2,
+                'last_error' => '',
+                'operation_key' => 'update_sync_task',
+                'operation_type' => 'update',
+                'contract_key' => 'sync_task',
+            ],
+        );
+
+        self::assertSame('operator@example.test', $event['actor_login_id']);
+        self::assertSame('oidc', $event['actor_source']);
+        self::assertSame('SYNC-PROJECT', $event['project_key']);
+        self::assertSame('sync_outbox.retry_requeued', $event['event_type']);
+        self::assertSame('sync_outbox', $event['target_type']);
+        self::assertSame('retry-dedupe', $event['target_key']);
+        self::assertSame('success', $event['result']);
+        self::assertSame('failed', $event['metadata']['status_before'] ?? '');
+        self::assertSame('pending', $event['metadata']['status_after'] ?? '');
+        self::assertSame(2, $event['metadata']['attempts_before'] ?? 0);
+        self::assertSame(2, $event['metadata']['attempts_after'] ?? 0);
+        self::assertSame('server write rejected', $event['metadata']['last_error_before'] ?? '');
+        self::assertSame('', $event['metadata']['last_error_after'] ?? 'unexpected');
+        self::assertSame('update_sync_task', $event['metadata']['operation_key'] ?? '');
     }
 }

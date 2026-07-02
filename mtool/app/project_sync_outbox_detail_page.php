@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 require_once __DIR__ . '/auth.php';
+require_once __DIR__ . '/audit_log_repository_pdo.php';
 require_once __DIR__ . '/csrf.php';
 require_once __DIR__ . '/domain_validation.php';
 require_once __DIR__ . '/error_page.php';
@@ -123,9 +124,20 @@ function app_render_project_sync_outbox_detail_page(array $app, array $request):
         } else {
             $retryResult = app_pdo_requeue_failed_managed_operation_sync_outbox_item($app, $projectKey, $dedupeKey);
             if ($retryResult['ok'] && $retryResult['item'] !== null) {
+                $auditResult = app_pdo_audit_log_append(
+                    $app,
+                    app_project_sync_outbox_retry_audit_event_input(
+                        $principal,
+                        $projectKey,
+                        $dedupeKey,
+                        $item,
+                        $retryResult['item'],
+                    ),
+                );
                 app_send_redirect_response(
                     $request,
-                    app_project_sync_outbox_detail_path($projectKey, $dedupeKey) . '?retried=1',
+                    app_project_sync_outbox_detail_path($projectKey, $dedupeKey)
+                        . '?retried=1&audit=' . ($auditResult['ok'] ? 'recorded' : 'failed'),
                 );
                 return;
             }
@@ -135,6 +147,15 @@ function app_render_project_sync_outbox_detail_page(array $app, array $request):
     }
 
     $retried = trim((string) ($_GET['retried'] ?? '')) === '1';
+    $retryAuditState = trim((string) ($_GET['audit'] ?? ''));
+    $retryAuditResult = app_pdo_audit_log_fetch_latest($app, [
+        'project_key' => $projectKey,
+        'event_type' => 'sync_outbox.retry_requeued',
+        'target_type' => 'sync_outbox',
+        'target_key' => $dedupeKey,
+        'limit' => 3,
+    ]);
+    $retryAuditItems = $retryAuditResult['ok'] ? $retryAuditResult['items'] : [];
     $csrfToken = app_csrf_token();
     $intentJson = json_encode($item['intent'], JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
     if (!is_string($intentJson)) {
@@ -213,6 +234,7 @@ function app_render_project_sync_outbox_detail_page(array $app, array $request):
                 <li>current status: <code><?php echo app_h((string) ($item['status'] ?? '')); ?></code></li>
                 <li>attempts before next processor claim: <code><?php echo app_h((string) ($item['attempts'] ?? '')); ?></code></li>
                 <li>last error cleared: <code><?php echo app_h(trim((string) ($item['last_error'] ?? '')) === '' ? 'yes' : 'no'); ?></code></li>
+                <li>audit trail: <code><?php echo app_h($retryAuditState === 'recorded' ? 'recorded' : ($retryAuditState === 'failed' ? 'failed' : 'not reported')); ?></code></li>
                 <li>next step: existing processor can claim this item when it scans pending sync outbox work.</li>
             </ul>
         </section>
@@ -245,6 +267,39 @@ function app_render_project_sync_outbox_detail_page(array $app, array $request):
         </form>
     <?php endif; ?>
 
+    <h2>Recent Retry Audit</h2>
+    <?php if (!$retryAuditResult['ok']): ?>
+        <p class="muted">retry audit events could not be loaded: <code><?php echo app_h($retryAuditResult['error']); ?></code></p>
+    <?php elseif ($retryAuditItems === []): ?>
+        <p class="muted">No retry audit event has been recorded for this sync outbox item yet.</p>
+    <?php else: ?>
+        <table>
+            <thead>
+            <tr>
+                <th>created_at</th>
+                <th>actor</th>
+                <th>result</th>
+                <th>status</th>
+                <th>attempts</th>
+                <th>message</th>
+            </tr>
+            </thead>
+            <tbody>
+            <?php foreach ($retryAuditItems as $auditItem): ?>
+                <?php $metadata = is_array($auditItem['metadata'] ?? null) ? $auditItem['metadata'] : []; ?>
+                <tr>
+                    <td><code><?php echo app_h((string) ($auditItem['created_at'] ?? '')); ?></code></td>
+                    <td><code><?php echo app_h((string) ($auditItem['actor_login_id'] ?? '')); ?></code></td>
+                    <td><code><?php echo app_h((string) ($auditItem['result'] ?? '')); ?></code></td>
+                    <td><code><?php echo app_h((string) ($metadata['status_before'] ?? '')); ?> -&gt; <?php echo app_h((string) ($metadata['status_after'] ?? '')); ?></code></td>
+                    <td><code><?php echo app_h((string) ($metadata['attempts_before'] ?? '')); ?> -&gt; <?php echo app_h((string) ($metadata['attempts_after'] ?? '')); ?></code></td>
+                    <td><?php echo app_h((string) ($auditItem['message'] ?? '')); ?></td>
+                </tr>
+            <?php endforeach; ?>
+            </tbody>
+        </table>
+    <?php endif; ?>
+
     <table>
         <tbody>
         <?php foreach ([
@@ -275,4 +330,40 @@ function app_render_project_sync_outbox_detail_page(array $app, array $request):
 </body>
 </html>
     <?php
+}
+
+/**
+ * @param array{id?:string,auth_source?:string} $principal
+ * @param array<string,mixed> $before
+ * @param array<string,mixed> $after
+ * @return array<string,mixed>
+ */
+function app_project_sync_outbox_retry_audit_event_input(
+    array $principal,
+    string $projectKey,
+    string $dedupeKey,
+    array $before,
+    array $after,
+): array {
+    return [
+        'actor_login_id' => (string) ($principal['id'] ?? ''),
+        'actor_source' => (string) ($principal['auth_source'] ?? 'unknown'),
+        'project_key' => $projectKey,
+        'event_type' => 'sync_outbox.retry_requeued',
+        'target_type' => 'sync_outbox',
+        'target_key' => $dedupeKey,
+        'result' => 'success',
+        'message' => 'Failed sync outbox item was requeued for the existing processor.',
+        'metadata' => [
+            'status_before' => (string) ($before['status'] ?? ''),
+            'status_after' => (string) ($after['status'] ?? ''),
+            'attempts_before' => (int) ($before['attempts'] ?? 0),
+            'attempts_after' => (int) ($after['attempts'] ?? 0),
+            'last_error_before' => (string) ($before['last_error'] ?? ''),
+            'last_error_after' => (string) ($after['last_error'] ?? ''),
+            'operation_key' => (string) ($after['operation_key'] ?? $before['operation_key'] ?? ''),
+            'operation_type' => (string) ($after['operation_type'] ?? $before['operation_type'] ?? ''),
+            'contract_key' => (string) ($after['contract_key'] ?? $before['contract_key'] ?? ''),
+        ],
+    ];
 }

@@ -128,6 +128,7 @@ final class OpenApiSourceOutputContractTest extends TestCase
         $labSwaggerPage = $this->readRepoFile('mtool/app/lab_swagger_page.php');
         $downloadPage = $this->readRepoFile('mtool/app/project_source_output_download_page.php');
         $artifactDetailPage = $this->readRepoFile('mtool/app/project_source_output_artifact_detail_page.php');
+        $sourceOutputsPage = $this->readRepoFile('mtool/app/project_source_outputs_page.php');
         $syncOutboxDetailPage = $this->readRepoFile('mtool/app/project_sync_outbox_detail_page.php');
         $newPage = $this->readRepoFile('mtool/app/project_source_output_new_page.php');
         $detailPage = $this->readRepoFile('mtool/app/project_source_output_detail_page.php');
@@ -156,6 +157,9 @@ final class OpenApiSourceOutputContractTest extends TestCase
             $artifactDetailPage,
         );
         self::assertStringContainsString("'source_output.download'", $artifactDetailPage);
+        self::assertStringContainsString('Operator Workflow Checklist', $sourceOutputsPage);
+        self::assertStringContainsString('workflow_steps', $sourceOutputsPage);
+        self::assertStringContainsString('$workflowStep', $sourceOutputsPage);
         self::assertMatchesRegularExpression(
             '/app_auth_has_any_role\(\[\'admin\', \'config\'\], \$principal\)/',
             $syncOutboxDetailPage,
@@ -169,6 +173,11 @@ final class OpenApiSourceOutputContractTest extends TestCase
         );
         self::assertStringContainsString('Retry Queued', $syncOutboxDetailPage);
         self::assertStringContainsString('It was not processed inline by this page.', $syncOutboxDetailPage);
+        self::assertStringContainsString('sync_outbox.retry_requeued', $syncOutboxDetailPage);
+        self::assertStringContainsString('audit trail:', $syncOutboxDetailPage);
+        self::assertStringContainsString('Recent Retry Audit', $syncOutboxDetailPage);
+        self::assertStringContainsString('No retry audit event has been recorded for this sync outbox item yet.', $syncOutboxDetailPage);
+        self::assertStringContainsString("'target_key' => \$dedupeKey", $syncOutboxDetailPage);
         self::assertStringContainsString('existing processor can claim this item', $syncOutboxDetailPage);
         self::assertStringContainsString('public raw route や public alias key route はまだ持ちません', $newPage);
         self::assertStringContainsString('public raw route や public alias key route は持ちません', $detailPage);

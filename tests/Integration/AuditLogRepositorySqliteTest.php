@@ -44,11 +44,21 @@ final class AuditLogRepositorySqliteTest extends TestCase
         $latest = app_audit_log_fetch_latest($app, [
             'project_key' => 'AUDIT_TEST',
             'event_type' => 'project_metadata_bundle.export',
+            'target_key' => 'AUDIT_TEST',
             'limit' => 10,
         ]);
         self::assertTrue($latest['ok'], $latest['error']);
         self::assertCount(1, $latest['items']);
         self::assertSame('project', $latest['items'][0]['target_type'] ?? '');
+
+        $miss = app_audit_log_fetch_latest($app, [
+            'project_key' => 'AUDIT_TEST',
+            'event_type' => 'project_metadata_bundle.export',
+            'target_key' => 'OTHER_TARGET',
+            'limit' => 10,
+        ]);
+        self::assertTrue($miss['ok'], $miss['error']);
+        self::assertSame([], $miss['items']);
     }
 
     private function sqliteApp(): array

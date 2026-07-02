@@ -61,6 +61,8 @@ function app_project_output_customization_model(string $artifactStrategy = ''): 
         'app-local-persistence-php',
         'managed-operation-docs-md',
         'no-code-runtime-json',
+        'no-code-react-bridge',
+        'no-code-json-forms-probe',
         'shared-contract-typescript',
         'openapi-json',
         'html-module-catalog',
@@ -121,6 +123,12 @@ function app_project_output_custom_layer_entrypoints(array $definition): array
             'README.md',
         ],
         'no-code-runtime-json' => [
+            'README.md',
+        ],
+        'no-code-react-bridge' => [
+            'README.md',
+        ],
+        'no-code-json-forms-probe' => [
             'README.md',
         ],
         'openapi-json' => [
@@ -190,6 +198,8 @@ function app_project_output_custom_layer_scaffold_relative_paths(array $definiti
         'app-local-persistence-php',
         'managed-operation-docs-md',
         'no-code-runtime-json',
+        'no-code-react-bridge',
+        'no-code-json-forms-probe',
         'openapi-json',
         'ai-context-md',
         'modernization-audit-md',

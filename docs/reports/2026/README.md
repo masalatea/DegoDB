@@ -11,6 +11,152 @@
 
 ## Index
 
+- `2026-0702-docker-backed-verification-rerun-closure.md`
+  - Docker restart 後に `make sample28-no-code-schema-form-runtime-smoke` と full `make test` を再実行して通過。これまでの Docker daemon unavailable blocker を current blocker から外す。Status: `DONE`。
+- `2026-0702-publish-candidate-repository-api-contract-test-matrix-first-slice.md`
+  - publish candidate persistence 実装前の repository/API contract test matrix。create/list/find、fail-closed cases、Source Outputs integration gate、fixtures、verification gate を docs-only で固定。Docker restart 後の verification closure で smoke/full test は通過。Status: `FIRST_SLICE_DONE`。
+- `2026-0702-post-candidate-migration-checklist-no-code-product-goal-replan.md`
+  - candidate migration checklist 後の product-goal replan。判断時点では Docker-backed verification が blocked のため、次 slice として repository/API contract test matrix を選択。後続の verification closure で Docker-backed tests は通過。Status: `DONE`。
+- `2026-0702-publish-candidate-migration-source-contract-checklist-first-slice.md`
+  - publish candidate persistence 実装前の migration / source-contract checklist。table columns、index、helper contract、route/source-contract checks、verification gate を定義。Docker daemon unavailable のため docs-only。Status: `FIRST_SLICE_DONE`。
+- `2026-0702-post-candidate-persistence-checklist-no-code-product-goal-replan.md`
+  - candidate persistence checklist 後の product-goal replan。Docker-backed verification が引き続き blocked のため、次 slice として docs-only migration/source-contract checklist を選択。Status: `DONE`。
+- `2026-0701-publish-candidate-persistence-implementation-checklist-first-slice.md`
+  - no-code publish candidate persistence の実装 checklist を docs-only で定義。helper signature、storage fields、focused repository tests、route/source-contract tests、verification gate を固定。Status: `FIRST_SLICE_DONE`。
+- `2026-0701-post-approval-route-test-plan-no-code-product-goal-replan.md`
+  - approval route/test implementation plan 後の product-goal replan。Docker daemon unavailable のため minimal persistence は deferred し、publish candidate persistence implementation checklist を docs-only で選択。Status: `DONE`。
+- `2026-0701-approval-route-test-implementation-plan-first-slice.md`
+  - no-code publish candidate persistence と approval transition routes の実装順、route request shape、repository boundary、focused / route-source contract test plan、verification gate を docs-only で定義。Status: `FIRST_SLICE_DONE`。
+- `2026-0701-post-approval-action-ui-contract-no-code-product-goal-replan.md`
+  - approval action UI contract 後の product-goal replan。Docker daemon unavailable のため minimal persistence は deferred し、approval route/test implementation plan を docs-only で選択。Status: `DONE`。
+- `2026-0701-approval-action-ui-contract-first-slice.md`
+  - no-code publish candidate approval actions の operator/admin UI contract を docs-only で定義。Request review / Approve / Reject / Supersede の表示条件、blocked reasons、POST request contract、verification boundary を固定。Status: `FIRST_SLICE_DONE`。
+- `2026-0701-post-approval-transition-state-model-no-code-product-goal-replan.md`
+  - approval transition state model 後の product-goal replan。Docker daemon unavailable のため minimal persistence は deferred し、approval action UI contract を docs-only で選択。Status: `DONE`。
+- `2026-0701-approval-transition-state-model-first-slice.md`
+  - publish candidate revision の approval transition state model を docs-only で定義。`draft_candidate` / `blocked_candidate` から review / approved / rejected / superseded への境界を整理し、published / rollback は後続へ deferred。Status: `FIRST_SLICE_DONE`。
+- `2026-0701-post-publish-candidate-revision-schema-no-code-product-goal-replan.md`
+  - publish candidate revision schema 後の product-goal replan。Docker daemon unavailable のため minimal persistence は deferred し、approval transition planning を docs-only で選択。Status: `DONE`。
+- `2026-0701-publish-candidate-revision-record-schema-contract-first-slice.md`
+  - publish candidate revision record の schema/repository/UI contract を docs-only で定義。Docker-backed verification が unavailable のため code mutation は追加せず、後続実装の境界を固定。Status: `FIRST_SLICE_DONE`。
+- `2026-0701-publish-candidate-revision-record-replan.md`
+  - publish candidate revision record 実装前の replan。Docker-backed verification rerun は daemon unavailable で blocked、次 step として revision record schema/docs only を選択。Status: `DONE`。
+- `2026-0701-approval-revision-history-boundary-inventory-first-slice.md`
+  - read-only publish readiness 後の mutation-capable product surface を棚卸し。次の実装境界を publish candidate revision record に絞り、public URL / approval action / packaging は後続へ deferred。Status: `FIRST_SLICE_DONE`。
+- `2026-0701-post-published-no-code-runtime-artifact-selection-no-code-product-goal-replan.md`
+  - published no-code runtime artifact selection 後の product-goal replan。Docker-backed verification rerun は daemon unavailable で再度 blocked、次の docs-only slice として Approval / revision history boundary inventory を選択。Status: `DONE`。
+- `2026-0701-published-no-code-runtime-artifact-selection-first-slice.md`
+  - Source Outputs の no-code inspection に read-only `publish_readiness` を追加。latest `NO-CODE-RUNTIME` artifact が publish candidate か blocked か、artifact key / archive / preview files / screen-action counts / blockers で確認可能にした。Docker unavailable のため Docker-backed focused/full verification は未完了。Status: `FIRST_SLICE_DONE_WITH_VERIFICATION_GAP`。
+- `2026-0701-no-code-product-surface-boundary-inventory-first-slice.md`
+  - larger product-surface lane を棚卸しし、次の実装候補を Published no-code runtime artifact selection first slice に絞る。Docker-backed verification gap は維持。Status: `FIRST_SLICE_DONE`。
+- `2026-0701-post-schema-form-validation-parity-no-code-product-goal-replan.md`
+  - schema-form validation parity 後の product-goal replan。Docker unavailable のためコード実装ではなく、docs-only の No-code product surface boundary inventory を選択。Status: `DONE`。
+- `2026-0701-schema-form-validation-parity-check-first-slice.md`
+  - schema-form comparison artifact の required string field に `minLength: 1`、`pattern: "\\S"`、`x-mtool-blank-is-missing` を追加し、rjsf smoke で whitespace-only required value が validation error になることを確認。Docker unavailable のため Docker-backed sample smoke/full test は未完了。Status: `FIRST_SLICE_DONE`。
+- `2026-0701-post-validation-feedback-no-code-product-goal-replan.md`
+  - validation feedback polish 後の product-goal replan。次の実装 slice として Schema-form validation parity check を選択。Status: `DONE`。
+- `2026-0701-validation-feedback-polish-first-slice.md`
+  - generated runtime / React bridge validation failure に表示用 `message` を追加。raw `error` は `input.missing:*` のまま残し、UI feedback は `Required input is missing: ...` を使うように更新。Status: `FIRST_SLICE_DONE`。
+- `2026-0701-post-react-bridge-required-enforcement-no-code-product-goal-replan.md`
+  - React bridge required enforcement parity 後の product-goal replan。次の実装 slice として Validation feedback polish を選択。Status: `DONE`。
+- `2026-0701-react-bridge-required-enforcement-parity-first-slice.md`
+  - generated React bridge の action-intent helper に required blank-value fail-close を追加。`createActionIntentResult()`、feedback error state、sample28 React bridge browser smoke で runtime validation behavior との parity を確認。Status: `FIRST_SLICE_DONE`。
+- `2026-0701-post-required-validation-no-code-product-goal-replan.md`
+  - required validation enforcement 後の product-goal replan。次の実装 slice として React bridge required enforcement parity を選択。Status: `DONE`。
+- `2026-0701-generated-required-validation-enforcement-first-slice.md`
+  - generated runtime action-intent path で required field の blank string を missing として fail-close。PHP runtime、browser preview dispatch helper、NoCodeRuntimeTest、sample28 runtime UI smoke で確認。Status: `FIRST_SLICE_DONE`。
+- `2026-0701-post-commit-no-code-product-goal-replan.md`
+  - local commit cleanup 後の product-goal replan。次の mainline として Deeper runtime capability を選び、first slice は generated required validation enforcement に絞る判断を記録。Status: `DONE`。
+- `2026-0701-commit-group-execution-decision.md`
+  - full `make test` 後、prepared commit groups を実行。shared generator/runtime file に複数 lane が重なっているため、実装・テスト・smoke・sample 更新と planning/report 群の 2 commit に整理。Push は未実行。Status: `DONE`。
+- `2026-0701-worktree-closure-commit-hygiene-first-slice.md`
+  - no-code minimum closure 後の dirty worktree を file group 単位で整理し、React bridge、schema-form probe、runtime/sample28、sync retry/operator、planning/docs の推奨 commit group を記録。stage / commit / push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0701-post-no-code-minimum-closure-product-goal-replan.md`
+  - no-code minimum closure 後の product-goal replan。次の大きな実装に入る前に accumulated worktree を reviewable にするため、Commit hygiene / worktree closure を選択。Status: `DONE`。
+- `2026-0701-no-code-minimum-closure-report-first-slice.md`
+  - generated runtime preview、React/schema-form adapter artifacts、sync/retry visibility、operator/admin inspection checklist を current no-code minimum milestone として整理。残境界と次の product-goal replan 候補を記録。Status: `FIRST_SLICE_DONE`。
+- `2026-0701-post-operator-admin-workflow-no-code-product-goal-replan.md`
+  - operator/admin workflow checklist 後の product-goal replan。追加実装より current minimum milestone の closure が先と判断し、No-code minimum closure report を選択。Status: `DONE`。
+- `2026-0701-operator-admin-no-code-workflow-polish-first-slice.md`
+  - Project Source Outputs の `NO-CODE-RUNTIME` inspection summary に Operator Workflow Checklist を追加。definition / latest artifact / preview files / action surface の ready・blocked state を表示し、focused tests と full `make test` で確認。Status: `FIRST_SLICE_DONE`。
+- `2026-0701-retry-audit-display-follow-up-first-slice.md`
+  - sync outbox detail に Recent Retry Audit section を追加し、直近の `sync_outbox.retry_requeued` audit event を表示。latest audit fetch に `target_key` filter を追加し、focused tests で確認。Status: `FIRST_SLICE_DONE`。
+- `2026-0701-post-retry-audit-trail-no-code-product-goal-replan.md`
+  - retry audit trail 後の product-goal replan。audit recording 後の最小 visibility gap として Retry audit display follow-up を選択。Status: `DONE`。
+- `2026-0701-retry-audit-trail-first-slice.md`
+  - operator retry requeue mutation に `sync_outbox.retry_requeued` audit event を追加。既存 `audit_events` に before/after status、attempts、last_error、operation metadata を記録し、sync outbox detail の retry notice に audit trail state を表示。Status: `FIRST_SLICE_DONE`。
+- `2026-0701-post-runtime-preview-keyboard-action-affordance-polish-no-code-product-goal-replan.md`
+  - runtime preview keyboard/action affordance polish 後の product-goal replan。runtime/operator action visibility が強くなったため、次の小さな accountability slice として Retry audit trail を選択。Status: `DONE`。
+- `2026-0701-runtime-preview-keyboard-action-affordance-polish-first-slice.md`
+  - generated `runtime-preview.html` の action control に keyboard intent preview marker、screen-scoped action hint、disabled action reason を追加。NoCodeRuntimeTest / sample28 checker / sample28 runtime UI smoke で確認。Status: `FIRST_SLICE_DONE`。
+- `2026-0701-adapter-docs-completion-report-first-slice.md`
+  - adapter handoff docs package の completion report。parity / checklist / troubleshooting / documentation index を first adapter handoff docs package として閉じ、残境界と次の runtime preview affordance polish への遷移を記録。Status: `FIRST_SLICE_DONE`。
+- `2026-0701-post-adapter-doc-index-notes-no-code-product-goal-replan.md`
+  - adapter consumer doc index notes 後の product-goal replan。adapter docs lane を短く閉じるため、次の小さな continuation として Adapter docs completion report を選択。Status: `DONE`。
+- `2026-0701-adapter-consumer-doc-index-notes-first-slice.md`
+  - React bridge と JSON Forms / rjsf probe の generated consumer notes / structured contract に adapter documentation index を追加。parity / checklist / troubleshooting / stable marker / contract section の読み順を artifact 内に明記し、sample28 checker / shared foundation coverage で確認。Status: `FIRST_SLICE_DONE`。
+- `2026-0701-post-adapter-troubleshooting-notes-no-code-product-goal-replan.md`
+  - adapter artifact troubleshooting notes 後の product-goal replan。adapter handoff docs を一つの読みやすい package として閉じるため、次の小さな slice として adapter consumer doc index note を選択。Status: `DONE`。
+- `2026-0701-adapter-artifact-troubleshooting-notes-first-slice.md`
+  - React bridge と JSON Forms / rjsf probe の generated consumer notes / structured contract に adapter troubleshooting notes を追加。build / display / action-intent / schema-form smoke / field mapping / action role の確認先を artifact 内に明記し、sample28 checker / shared foundation coverage で確認。Status: `FIRST_SLICE_DONE`。
+- `2026-0701-post-adapter-checklist-notes-no-code-product-goal-replan.md`
+  - adapter artifact checklist notes 後の product-goal replan。required files / stable markers / smoke commands の checklist に続けて、次の小さな handoff clarity slice として adapter artifact troubleshooting notes を選択。Status: `DONE`。
+- `2026-0701-adapter-artifact-checklist-notes-first-slice.md`
+  - React bridge と JSON Forms / rjsf probe の generated consumer notes / structured contract に adapter handoff checklist を追加。required files、stable markers、smoke commands を artifact 内に明記し、sample28 checker / shared foundation coverage で確認。Status: `FIRST_SLICE_DONE`。
+- `2026-0701-post-artifact-parity-notes-no-code-product-goal-replan.md`
+  - artifact parity notes 後の product-goal replan。どの artifact を見るべきかの guidance に続けて、次の小さな handoff clarity slice として adapter artifact checklist note を選択。Status: `DONE`。
+- `2026-0701-react-bridge-schema-form-artifact-parity-notes-first-slice.md`
+  - React bridge と JSON Forms / rjsf probe の generated consumer notes / structured contract に artifact parity notes を追加。どちらの artifact をどの目的で見るかを明示し、sample28 checker / shared foundation coverage で確認。Status: `FIRST_SLICE_DONE`。
+- `2026-0701-post-runtime-preview-accessibility-polish-no-code-product-goal-replan.md`
+  - runtime preview accessibility polish 後の product-goal replan。runtime preview の semantic polish が一段落したため、次の小さな product-facing slice として React bridge / schema-form artifact parity notes を選択。Status: `DONE`。
+- `2026-0701-runtime-preview-accessibility-polish-first-slice.md`
+  - generated `runtime-preview.html` に preview root label、labelled screen regions、list table caption、action nav label を追加。runtime behavior は変えず、NoCodeRuntimeTest / sample28 checker / runtime UI smoke で DOM を確認。Status: `FIRST_SLICE_DONE`。
+- `2026-0701-post-generated-runtime-visual-polish-follow-up-no-code-product-goal-replan.md`
+  - generated runtime visual polish follow-up 後の product-goal replan。visible runtime scanability が改善された流れを受けて、次の小さな product-facing slice として runtime preview accessibility polish を選択。Status: `DONE`。
+- `2026-0701-generated-runtime-visual-polish-follow-up-first-slice.md`
+  - generated `runtime-preview.html` の各 screen header 直下に field count / action count / screen key の compact summary を追加。runtime behavior は変えず、NoCodeRuntimeTest / sample28 checker / runtime UI smoke で DOM を確認。Status: `FIRST_SLICE_DONE`。
+- `2026-0701-post-schema-form-consumer-notes-no-code-product-goal-replan.md`
+  - schema-form consumer notes 後の product-goal replan。adapter confidence と handoff docs が一段落したため、次の小さな product-facing slice として generated runtime visual polish follow-up を選択。Status: `DONE`。
+- `2026-0701-schema-form-consumer-notes-first-slice.md`
+  - `NO-CODE-JSON-FORMS-PROBE` に generated `CONSUMER-NOTES.md` と structured `consumer_notes` を追加。schema-form probe の comparison-only boundary、Mtool / consumer ownership split、runtime smoke boundary、stable markers を artifact 内に明記し、sample28 checker / foundation coverage を更新。Status: `FIRST_SLICE_DONE`。
+- `2026-0701-post-schema-form-runtime-smoke-no-code-product-goal-replan.md`
+  - schema-form runtime smoke 後の product-goal replan。rjsf runtime smoke で consumer viability を確認できたため、次の小さな handoff slice として schema-form consumer notes first slice を選択。Status: `DONE`。
+- `2026-0701-schema-form-runtime-smoke-first-slice.md`
+  - sample28 `NO-CODE-JSON-FORMS-PROBE` の `schema-form-contract.json` / `json-schema.json` / `ui-schema.json` を対象に、一時 rjsf runtime を `work/tmp` へ install して React SSR render まで確認する focused smoke を追加。Status: `FIRST_SLICE_DONE`。
+- `2026-0701-schema-form-probe-hardening-first-slice.md`
+  - schema-form comparison artifact に Mtool-aware metadata を追加。JSON Schema property の `x-mtool-*`、UI Schema options、field mapping、extension invariant を生成し、sample28 checker / foundation coverage で action role、client-write、validation hint を確認。Status: `FIRST_SLICE_DONE`。
+- `2026-0701-post-schema-form-probe-hardening-no-code-product-goal-replan.md`
+  - schema-form probe hardening 後の product-goal replan。静的 artifact の metadata coverage が固まったため、次の小さな confidence slice として schema-form runtime smoke first slice を選択。Status: `DONE`。
+- `2026-0701-react-bridge-contract-documentation-polish-first-slice.md`
+  - Generated React bridge artifact に `CONSUMER-NOTES.md` と structured `consumer_notes` を追加。Mtool / frontend / schema-form probe の所有境界、generated scaffold status、form state boundary、action intent boundary を generated artifact 内に明記し、sample28 checker / foundation / smoke required-file coverage を更新。Status: `FIRST_SLICE_DONE`。
+- `2026-0701-estimate-vs-actual-ai-notes.md`
+  - 2026-06-30 から 2026-07-01 の React bridge / JSON Forms probe 系作業について、rough estimate と実作業感の差分、早く終わった理由、AI 実装時の感触、今後の見積もり調整方針を記録。Status: `RECORDED`。
+- `2026-0701-json-forms-rjsf-transform-probe-first-slice.md`
+  - `no-code-json-forms-probe` Source Output strategy と sample28 `NO-CODE-JSON-FORMS-PROBE` を追加。既存 no-code form metadata から `schema-form-contract.json`、`json-schema.json`、`ui-schema.json` を生成し、JSON Forms / rjsf 向け comparison artifact として required fields / UI scopes を検証。Status: `FIRST_SLICE_DONE`。
+- `2026-0701-post-react-bridge-action-feedback-display-no-code-product-goal-replan.md`
+  - React bridge action feedback display 後の product-goal replan。custom React bridge が display / edit / metadata hint / action feedback まで一周したため、次の小さな product-facing 比較 probe として JSON Forms / rjsf transform probe first slice を選択。Status: `DONE`。
+- `2026-0701-react-bridge-action-feedback-display-first-slice.md`
+  - Generated React bridge が local action / intent feedback を表示。browser smoke helper で作成した `no-code-runtime-action-intent-v0` を React state に反映し、feedback section の `success` state / action key / screen text を確認。Status: `FIRST_SLICE_DONE`。
+- `2026-0701-react-bridge-validation-hint-display-first-slice.md`
+  - Generated React bridge form fields が既存 `required` / `readonly` metadata を lightweight hint と input attributes として表示。validation engine は追加せず、sample28 browser smoke で required metadata / hint と editable action intent を確認。Status: `FIRST_SLICE_DONE`。
+- `2026-0701-post-editable-react-bridge-form-state-no-code-product-goal-replan.md`
+  - Editable React bridge form state 後の product-goal replan。次の小さな product-facing slice として、既存 field metadata の `required` / `readonly` を generated React bridge に表示・属性化する React bridge validation hint display first slice を選択。Status: `DONE`。
+- `2026-0701-editable-react-bridge-form-state-first-slice.md`
+  - Generated React bridge form inputs が local editable state を持ち、sample28 browser smoke で編集後の scalar `body` value が `no-code-runtime-action-intent-v0` に入ることを確認。Status: `FIRST_SLICE_DONE`。
+- `2026-0701-post-react-bridge-artifact-contract-hardening-no-code-product-goal-replan.md`
+  - React bridge artifact contract hardening 後の product-goal replan。次の小さな product-facing slice として、generated React bridge form inputs が local edit state を持ち、変更後の scalar value を action intent に渡す Editable React bridge form state first slice を選択。Status: `DONE`。
+- `2026-0701-react-bridge-artifact-contract-hardening-first-slice.md`
+  - React bridge の `bridge-contract.json` に `contract_schema_version` と `contract_invariants` を追加し、build smoke / browser smoke / sample28 checker / shared foundation test で schema・invariant・required files を固定。Status: `FIRST_SLICE_DONE`。
+- `2026-0701-react-bridge-display-form-state-shaping-first-slice.md`
+  - React bridge browser smoke で見えた `[object Object]` 表示を解消。generated React scaffold に `displayRuntimeValue` / `runtimeInputValue` helper を追加し、表示は `display_value` 優先、action intent input は scalar / null に正規化する。Status: `FIRST_SLICE_DONE`。
+- `2026-0630-react-bridge-browser-smoke-first-slice.md`
+  - `no-code-react-bridge` が生成する React + TypeScript scaffold について、sample28 artifact を一時 browser smoke directory にコピーし、`npm install` / `npm run build` 後に Vite + headless Chrome で render / action-intent helper を確認する smoke を追加。Status: `FIRST_SLICE_DONE`。
+- `2026-0630-react-bridge-build-smoke-first-slice.md`
+  - `no-code-react-bridge` が生成する React + TypeScript scaffold について、sample28 artifact を一時 build directory にコピーして `npm install` / `npm run build` できることを確認する smoke を追加。React type package と runtime preview 実 shape に合わせた TypeScript type も修正。Status: `FIRST_SLICE_DONE`。
+- `2026-0630-react-first-no-code-web-framework-bridge-first-slice.md`
+  - React + TypeScript を no-code Web bridge の first adapter 基本方向として、`no-code-react-bridge` Source Output strategy と `NO-CODE-REACT-BRIDGE` sample28 artifact を追加。`bridge-contract.json`、React scaffold、`no-code-runtime-action-intent-v0` helper を生成し、sample28 pack smoke で確認。Status: `FIRST_SLICE_DONE`。
+- `2026-0630-react-first-no-code-web-framework-bridge-fs-plan.md`
+  - no-code Web framework bridge の FS 計画。React + TypeScript を first adapter の基本方向とし、既存 `screen-definition.json` / `runtime-preview.json` から list/detail/form、form state、`no-code-runtime-action-intent-v0` への bridge が自然に成立するかを確認する。Vue / Svelte は contract を React 専用に閉じないための比較参照。Status: `DONE`。
 - `2026-0630-no-code-runtime-error-retry-visibility-first-slice.md`
   - generated no-code runtime artifact に read-only の failed / retryable sync hint を追加し、`runtime-preview.json` と `runtime-preview.html` から operator sync outbox への handoff を示すようにした。generated runtime 内 retry mutation は対象外。Status: `FIRST_SLICE_DONE`。
 - `2026-0630-post-operator-retry-feedback-polish-no-code-product-goal-replan.md`

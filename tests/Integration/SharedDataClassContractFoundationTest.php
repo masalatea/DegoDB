@@ -602,6 +602,386 @@ final class SharedDataClassContractFoundationTest extends TestCase
         self::assertFileExists($publishedRoot . '/runtime-preview.html');
     }
 
+    public function testNoCodeReactBridgeSourceOutputBuildsFrameworkFacingArtifact(): void
+    {
+        self::assertContains('NoCodeReactBridge', app_allowed_source_output_class_types());
+        self::assertContains('no-code-react-bridge', app_allowed_source_output_artifact_strategies());
+        self::assertTrue(app_source_output_artifact_strategy_supports_generation('no-code-react-bridge'));
+        self::assertTrue(app_source_output_artifact_strategy_requires_runtime_source('no-code-react-bridge'));
+        self::assertSame(
+            'No-Code React Bridge Artifact',
+            app_source_output_artifact_strategy_caption('no-code-react-bridge'),
+        );
+
+        $app = $this->createBootstrappedSqliteApp();
+        $this->seedTaskProject($app);
+
+        $contract = app_pdo_upsert_shared_contract_metadata($app, 'CONTRACT-FOUNDATION-TEST', [
+            'contract_key' => 'task',
+            'data_class_physical_name' => 'task',
+            'status' => 'active',
+            'sync_role' => 'server-copy',
+            'no_code_role' => 'managed-screen',
+            'app_persistence_role' => 'local-copy',
+            'source_of_truth' => 'test',
+        ]);
+        self::assertTrue($contract['ok'], $contract['error']);
+        $field = app_pdo_upsert_shared_contract_field_metadata($app, 'CONTRACT-FOUNDATION-TEST', 'task', [
+            'field_physical_name' => 'note',
+            'operation_role' => 'editable',
+            'source_of_truth' => 'test',
+        ]);
+        self::assertTrue($field['ok'], $field['error']);
+
+        $operation = app_pdo_upsert_managed_operation($app, 'CONTRACT-FOUNDATION-TEST', [
+            'operation_key' => 'update_note',
+            'contract_key' => 'task',
+            'name' => 'Update Note',
+            'operation_type' => 'update',
+            'status' => 'active',
+            'storage_policy' => 'business-only',
+            'permission_key' => 'project.edit',
+            'required_roles' => ['editor'],
+            'required_scopes' => ['task:write'],
+            'required_claims' => [],
+            'source_of_truth' => 'test',
+        ]);
+        self::assertTrue($operation['ok'], $operation['error']);
+        $operationField = app_pdo_upsert_managed_operation_field($app, 'CONTRACT-FOUNDATION-TEST', 'update_note', [
+            'field_physical_name' => 'note',
+            'field_role' => 'input',
+            'is_required' => true,
+            'allow_client_write' => true,
+            'source_of_truth' => 'test',
+        ]);
+        self::assertTrue($operationField['ok'], $operationField['error']);
+
+        $definition = app_project_output_merge_source_output_definition('CONTRACT-FOUNDATION-TEST', [
+            'source_output_key' => 'NO-CODE-REACT-BRIDGE',
+            'name' => 'Contract Foundation No-Code React Bridge',
+            'program_language' => 'typescript',
+            'class_type' => 'NoCodeReactBridge',
+            'artifact_strategy' => 'no-code-react-bridge',
+            'target_binding_type' => 'runtime',
+            'runtime_source_relative_path' => '',
+        ]);
+
+        $treeResult = app_project_output_prepare_no_code_runtime_source_tree(
+            $app,
+            'CONTRACT-FOUNDATION-TEST',
+            $definition,
+        );
+
+        self::assertTrue($treeResult['ok'], $treeResult['error']);
+        self::assertSame(
+            'mtool/no-code-react-bridge-source-outputs/CONTRACT-FOUNDATION-TEST/NO-CODE-REACT-BRIDGE',
+            $treeResult['runtime_source_relative_path'],
+        );
+        $filePaths = array_column($treeResult['scan_result']['files'] ?? [], 'relative_path');
+        self::assertContains('bridge-contract.json', $filePaths);
+        self::assertContains('package.json', $filePaths);
+        self::assertContains('src/mtoolNoCodeBridge.ts', $filePaths);
+        self::assertContains('src/MtoolNoCodeRuntime.tsx', $filePaths);
+        self::assertContains('CONSUMER-NOTES.md', $filePaths);
+
+        $bridgeContract = json_decode((string) file_get_contents($treeResult['runtime_source_root'] . '/bridge-contract.json'), true);
+        self::assertIsArray($bridgeContract);
+        self::assertSame('no-code-react-bridge-contract-v0', $bridgeContract['contract_schema_version'] ?? '');
+        self::assertSame('no-code-react-bridge-v0', $bridgeContract['bridge_version'] ?? '');
+        self::assertSame('react', $bridgeContract['framework']['name'] ?? '');
+        self::assertSame('typescript', $bridgeContract['framework']['language'] ?? '');
+        self::assertSame('no-code-runtime-action-intent-v0', $bridgeContract['action_intent_version'] ?? '');
+        self::assertSame('no-code-screen-definition-v0', $bridgeContract['contract_invariants']['screen_definition_version'] ?? '');
+        self::assertSame('no-code-runtime-v0', $bridgeContract['contract_invariants']['runtime_preview_version'] ?? '');
+        self::assertSame(
+            'no-code-runtime-action-intent-v0',
+            $bridgeContract['contract_invariants']['action_intent_version'] ?? '',
+        );
+        self::assertContains(
+            'src/mtoolNoCodeBridge.ts',
+            $bridgeContract['contract_invariants']['required_files'] ?? [],
+        );
+        self::assertContains(
+            'CONSUMER-NOTES.md',
+            $bridgeContract['contract_invariants']['required_files'] ?? [],
+        );
+        self::assertStringContainsString(
+            'Mtool owns metadata',
+            (string) ($bridgeContract['consumer_notes']['contract_boundary'] ?? ''),
+        );
+        self::assertSame(
+            'The React scaffold is a verification and adapter proof. It is not a durable Mtool-owned component library.',
+            $bridgeContract['consumer_notes']['generated_scaffold_status'] ?? '',
+        );
+        self::assertStringContainsString(
+            'NO-CODE-JSON-FORMS-PROBE',
+            (string) (($bridgeContract['consumer_notes']['artifact_parity_notes'][1] ?? '')),
+        );
+        self::assertStringContainsString(
+            'make sample28-no-code-react-bridge-build-smoke',
+            (string) (($bridgeContract['consumer_notes']['adapter_handoff_checklist'][2] ?? '')),
+        );
+        self::assertStringContainsString(
+            'displayRuntimeValue',
+            (string) (($bridgeContract['consumer_notes']['adapter_troubleshooting_notes'][1] ?? '')),
+        );
+        self::assertStringContainsString(
+            'Artifact Parity Notes',
+            (string) (($bridgeContract['consumer_notes']['adapter_doc_index'][0] ?? '')),
+        );
+        self::assertContains(
+            'display_value',
+            $bridgeContract['contract_invariants']['runtime_cell_shape'] ?? [],
+        );
+        self::assertSame('task', $bridgeContract['screen_definition']['contracts'][0]['contract_key'] ?? '');
+        self::assertSame('task_list', $bridgeContract['runtime_preview']['screens'][0]['screen_key'] ?? '');
+
+        $bridgeTypescript = (string) file_get_contents($treeResult['runtime_source_root'] . '/src/mtoolNoCodeBridge.ts');
+        self::assertStringContainsString('export type MtoolBridgeContract', $bridgeTypescript);
+        self::assertStringContainsString('createActionIntent', $bridgeTypescript);
+        self::assertStringContainsString('createActionIntentResult', $bridgeTypescript);
+        self::assertStringContainsString('validationMessage', $bridgeTypescript);
+        self::assertStringContainsString('displayRuntimeValue', $bridgeTypescript);
+        self::assertStringContainsString('editableInputFromItem', $bridgeTypescript);
+        self::assertStringContainsString("intent_version: 'no-code-runtime-action-intent-v0'", $bridgeTypescript);
+        self::assertStringContainsString('setActionError(result.message)', (string) file_get_contents($treeResult['runtime_source_root'] . '/src/App.tsx'));
+
+        $consumerNotes = (string) file_get_contents($treeResult['runtime_source_root'] . '/CONSUMER-NOTES.md');
+        self::assertStringContainsString('# No-Code React Bridge Consumer Notes', $consumerNotes);
+        self::assertStringContainsString('## Adapter Documentation Index', $consumerNotes);
+        self::assertStringContainsString('Use Adapter Handoff Checklist', $consumerNotes);
+        self::assertStringContainsString('## Contract Boundary', $consumerNotes);
+        self::assertStringContainsString('## Schema-Form Probe Boundary', $consumerNotes);
+        self::assertStringContainsString('## Artifact Parity Notes', $consumerNotes);
+        self::assertStringContainsString('Inspect NO-CODE-REACT-BRIDGE', $consumerNotes);
+        self::assertStringContainsString('Inspect NO-CODE-JSON-FORMS-PROBE', $consumerNotes);
+        self::assertStringContainsString('## Adapter Handoff Checklist', $consumerNotes);
+        self::assertStringContainsString('make sample28-no-code-react-bridge-browser-smoke', $consumerNotes);
+        self::assertStringContainsString('## Adapter Troubleshooting Notes', $consumerNotes);
+        self::assertStringContainsString('displayRuntimeValue helper', $consumerNotes);
+
+        $artifactResult = app_project_output_create_from_definition(
+            $app,
+            'CONTRACT-FOUNDATION-TEST',
+            $definition,
+            'phpunit',
+        );
+        self::assertTrue($artifactResult['ok'], $artifactResult['error']);
+        self::assertSame(
+            'no-code-react-bridge',
+            $artifactResult['artifact']['artifact_strategy'] ?? '',
+        );
+
+        $publishResult = app_project_output_publish_artifact(
+            $app,
+            $artifactResult['artifact'],
+            $definition,
+        );
+        self::assertTrue($publishResult['ok'], $publishResult['error']);
+        $publishedRoot = (string) ($publishResult['published']['published_root'] ?? '');
+        self::assertFileExists($publishedRoot . '/bridge-contract.json');
+        self::assertFileExists($publishedRoot . '/CONSUMER-NOTES.md');
+        self::assertFileExists($publishedRoot . '/src/mtoolNoCodeBridge.ts');
+        self::assertFileExists($publishedRoot . '/src/MtoolNoCodeRuntime.tsx');
+    }
+
+    public function testNoCodeJsonFormsProbeSourceOutputBuildsSchemaFormComparisonArtifact(): void
+    {
+        self::assertContains('NoCodeJsonFormsProbe', app_allowed_source_output_class_types());
+        self::assertContains('no-code-json-forms-probe', app_allowed_source_output_artifact_strategies());
+        self::assertTrue(app_source_output_artifact_strategy_supports_generation('no-code-json-forms-probe'));
+        self::assertTrue(app_source_output_artifact_strategy_requires_runtime_source('no-code-json-forms-probe'));
+        self::assertSame(
+            'No-Code JSON Forms Probe Artifact',
+            app_source_output_artifact_strategy_caption('no-code-json-forms-probe'),
+        );
+
+        $app = $this->createBootstrappedSqliteApp();
+        $this->seedTaskProject($app);
+
+        $contract = app_pdo_upsert_shared_contract_metadata($app, 'CONTRACT-FOUNDATION-TEST', [
+            'contract_key' => 'task',
+            'data_class_physical_name' => 'task',
+            'status' => 'active',
+            'sync_role' => 'server-copy',
+            'no_code_role' => 'managed-screen',
+            'app_persistence_role' => 'local-copy',
+            'source_of_truth' => 'test',
+        ]);
+        self::assertTrue($contract['ok'], $contract['error']);
+        $field = app_pdo_upsert_shared_contract_field_metadata($app, 'CONTRACT-FOUNDATION-TEST', 'task', [
+            'field_physical_name' => 'title',
+            'operation_role' => 'editable',
+            'source_of_truth' => 'test',
+        ]);
+        self::assertTrue($field['ok'], $field['error']);
+
+        $operation = app_pdo_upsert_managed_operation($app, 'CONTRACT-FOUNDATION-TEST', [
+            'operation_key' => 'update_note',
+            'contract_key' => 'task',
+            'name' => 'Update Note',
+            'operation_type' => 'update',
+            'status' => 'active',
+            'storage_policy' => 'business-only',
+            'permission_key' => 'project.edit',
+            'required_roles' => ['editor'],
+            'required_scopes' => ['task:write'],
+            'required_claims' => [],
+            'source_of_truth' => 'test',
+        ]);
+        self::assertTrue($operation['ok'], $operation['error']);
+        $operationField = app_pdo_upsert_managed_operation_field($app, 'CONTRACT-FOUNDATION-TEST', 'update_note', [
+            'field_physical_name' => 'title',
+            'field_role' => 'input',
+            'is_required' => true,
+            'allow_client_write' => true,
+            'source_of_truth' => 'test',
+        ]);
+        self::assertTrue($operationField['ok'], $operationField['error']);
+
+        $definition = app_project_output_merge_source_output_definition('CONTRACT-FOUNDATION-TEST', [
+            'source_output_key' => 'NO-CODE-JSON-FORMS-PROBE',
+            'name' => 'Contract Foundation No-Code JSON Forms Probe',
+            'program_language' => 'json',
+            'class_type' => 'NoCodeJsonFormsProbe',
+            'artifact_strategy' => 'no-code-json-forms-probe',
+            'target_binding_type' => 'runtime',
+            'runtime_source_relative_path' => '',
+        ]);
+
+        $treeResult = app_project_output_prepare_no_code_runtime_source_tree(
+            $app,
+            'CONTRACT-FOUNDATION-TEST',
+            $definition,
+        );
+
+        self::assertTrue($treeResult['ok'], $treeResult['error']);
+        self::assertSame(
+            'mtool/no-code-json-forms-probe-source-outputs/CONTRACT-FOUNDATION-TEST/NO-CODE-JSON-FORMS-PROBE',
+            $treeResult['runtime_source_relative_path'],
+        );
+        $filePaths = array_column($treeResult['scan_result']['files'] ?? [], 'relative_path');
+        self::assertContains('schema-form-contract.json', $filePaths);
+        self::assertContains('json-schema.json', $filePaths);
+        self::assertContains('ui-schema.json', $filePaths);
+        self::assertContains('CONSUMER-NOTES.md', $filePaths);
+
+        $schemaFormContract = json_decode((string) file_get_contents($treeResult['runtime_source_root'] . '/schema-form-contract.json'), true);
+        self::assertIsArray($schemaFormContract);
+        self::assertSame('no-code-json-forms-probe-contract-v0', $schemaFormContract['schema_form_contract_version'] ?? '');
+        self::assertSame('no-code-json-forms-probe-v0', $schemaFormContract['probe_version'] ?? '');
+        self::assertSame('task_form', $schemaFormContract['form_screen_key'] ?? '');
+        self::assertSame('update_note', $schemaFormContract['action_key'] ?? '');
+        self::assertContains('json-forms', $schemaFormContract['schema_form_targets'] ?? []);
+        self::assertContains('rjsf', $schemaFormContract['schema_form_targets'] ?? []);
+
+        $jsonSchema = json_decode((string) file_get_contents($treeResult['runtime_source_root'] . '/json-schema.json'), true);
+        self::assertIsArray($jsonSchema);
+        self::assertSame('https://json-schema.org/draft/2020-12/schema', $jsonSchema['$schema'] ?? '');
+        self::assertSame('object', $jsonSchema['type'] ?? '');
+        self::assertSame(['title'], $jsonSchema['required'] ?? []);
+        self::assertSame('string', $jsonSchema['properties']['title']['type'] ?? '');
+        self::assertSame('title', $jsonSchema['properties']['title']['x-mtool-field-key'] ?? '');
+        self::assertTrue($jsonSchema['properties']['title']['x-mtool-required'] ?? false);
+        self::assertSame(1, $jsonSchema['properties']['title']['minLength'] ?? null);
+        self::assertSame('\\S', $jsonSchema['properties']['title']['pattern'] ?? '');
+        self::assertTrue($jsonSchema['properties']['title']['x-mtool-blank-is-missing'] ?? false);
+        self::assertSame('input', $jsonSchema['properties']['title']['x-mtool-action-field-role'] ?? '');
+        self::assertTrue($jsonSchema['properties']['title']['x-mtool-client-write'] ?? false);
+        self::assertContains(
+            'x-mtool-field-key',
+            $schemaFormContract['contract_invariants']['mtool_extension_keys'] ?? [],
+        );
+        self::assertContains(
+            'x-mtool-blank-is-missing',
+            $schemaFormContract['contract_invariants']['mtool_extension_keys'] ?? [],
+        );
+        self::assertContains(
+            'CONSUMER-NOTES.md',
+            $schemaFormContract['contract_invariants']['required_files'] ?? [],
+        );
+        self::assertStringContainsString(
+            'pattern \\S',
+            (string) ($schemaFormContract['validation_parity']['required_blank_string_policy'] ?? ''),
+        );
+        self::assertStringContainsString(
+            'comparison probe',
+            (string) ($schemaFormContract['consumer_notes']['probe_boundary'] ?? ''),
+        );
+        self::assertStringContainsString(
+            'NO-CODE-REACT-BRIDGE',
+            (string) (($schemaFormContract['consumer_notes']['artifact_parity_notes'][1] ?? '')),
+        );
+        self::assertStringContainsString(
+            'make sample28-no-code-schema-form-runtime-smoke',
+            (string) (($schemaFormContract['consumer_notes']['adapter_handoff_checklist'][2] ?? '')),
+        );
+        self::assertStringContainsString(
+            'field_mappings',
+            (string) (($schemaFormContract['consumer_notes']['adapter_troubleshooting_notes'][1] ?? '')),
+        );
+        self::assertStringContainsString(
+            'blank required values',
+            implode(' ', array_map('strval', $schemaFormContract['consumer_notes']['adapter_troubleshooting_notes'] ?? [])),
+        );
+        self::assertStringContainsString(
+            'Generated Files',
+            (string) (($schemaFormContract['consumer_notes']['adapter_doc_index'][3] ?? '')),
+        );
+        self::assertSame(
+            ['type', 'title', 'description', 'minLength', 'pattern', 'x-mtool-blank-is-missing'],
+            $schemaFormContract['field_mappings'][0]['json_schema_keywords'] ?? [],
+        );
+
+        $uiSchema = json_decode((string) file_get_contents($treeResult['runtime_source_root'] . '/ui-schema.json'), true);
+        self::assertIsArray($uiSchema);
+        self::assertSame('VerticalLayout', $uiSchema['type'] ?? '');
+        self::assertSame('#/properties/title', $uiSchema['elements'][0]['scope'] ?? '');
+        self::assertSame('title', $uiSchema['elements'][0]['options']['mtoolFieldKey'] ?? '');
+        self::assertSame('required', $uiSchema['elements'][0]['options']['mtoolValidationHint'] ?? '');
+
+        $consumerNotes = (string) file_get_contents($treeResult['runtime_source_root'] . '/CONSUMER-NOTES.md');
+        self::assertStringContainsString('# No-Code JSON Forms Probe Consumer Notes', $consumerNotes);
+        self::assertStringContainsString('## Adapter Documentation Index', $consumerNotes);
+        self::assertStringContainsString('Use Adapter Troubleshooting Notes', $consumerNotes);
+        self::assertStringContainsString('## Probe Boundary', $consumerNotes);
+        self::assertStringContainsString('## Runtime Smoke Boundary', $consumerNotes);
+        self::assertStringContainsString('## Validation Parity Boundary', $consumerNotes);
+        self::assertStringContainsString('Required string fields include JSON Schema minLength 1 and pattern \\S', $consumerNotes);
+        self::assertStringContainsString('## Artifact Parity Notes', $consumerNotes);
+        self::assertStringContainsString('Inspect NO-CODE-JSON-FORMS-PROBE', $consumerNotes);
+        self::assertStringContainsString('Inspect NO-CODE-REACT-BRIDGE', $consumerNotes);
+        self::assertStringContainsString('## Adapter Handoff Checklist', $consumerNotes);
+        self::assertStringContainsString('make sample28-no-code-schema-form-runtime-smoke', $consumerNotes);
+        self::assertStringContainsString('## Adapter Troubleshooting Notes', $consumerNotes);
+        self::assertStringContainsString('field_mappings', $consumerNotes);
+        self::assertStringContainsString('x-mtool-blank-is-missing', $consumerNotes);
+
+        $artifactResult = app_project_output_create_from_definition(
+            $app,
+            'CONTRACT-FOUNDATION-TEST',
+            $definition,
+            'phpunit',
+        );
+        self::assertTrue($artifactResult['ok'], $artifactResult['error']);
+        self::assertSame(
+            'no-code-json-forms-probe',
+            $artifactResult['artifact']['artifact_strategy'] ?? '',
+        );
+
+        $publishResult = app_project_output_publish_artifact(
+            $app,
+            $artifactResult['artifact'],
+            $definition,
+        );
+        self::assertTrue($publishResult['ok'], $publishResult['error']);
+        $publishedRoot = (string) ($publishResult['published']['published_root'] ?? '');
+        self::assertFileExists($publishedRoot . '/schema-form-contract.json');
+        self::assertFileExists($publishedRoot . '/json-schema.json');
+        self::assertFileExists($publishedRoot . '/ui-schema.json');
+        self::assertFileExists($publishedRoot . '/CONSUMER-NOTES.md');
+    }
+
     public function testCompareDetectsDataClassShapeMismatch(): void
     {
         $app = $this->createBootstrappedSqliteApp();

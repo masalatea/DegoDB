@@ -346,10 +346,10 @@ function app_no_code_runtime_render_preview_html(array $runtimePreview): string
         '</style>',
         '</head>',
         '<body>',
-        '<main class="no-code-preview" data-runtime-version="' . app_no_code_runtime_html_escape((string) ($runtimePreview['runtime_version'] ?? '')) . '" data-runtime-state="' . app_no_code_runtime_html_escape($previewState) . '">',
+        '<main class="no-code-preview" aria-labelledby="no-code-preview-title" data-runtime-version="' . app_no_code_runtime_html_escape((string) ($runtimePreview['runtime_version'] ?? '')) . '" data-runtime-state="' . app_no_code_runtime_html_escape($previewState) . '">',
         '<header class="no-code-preview-header">',
         '<div>',
-        '<h1>' . app_no_code_runtime_html_escape((string) ($runtimePreview['project_key'] ?? 'No-code runtime')) . '</h1>',
+        '<h1 id="no-code-preview-title">' . app_no_code_runtime_html_escape((string) ($runtimePreview['project_key'] ?? 'No-code runtime')) . '</h1>',
         '<p>' . app_no_code_runtime_html_escape((string) ($runtimePreview['definition_version'] ?? '')) . '</p>',
         '</div>',
         '<span class="no-code-state-badge" data-state="' . app_no_code_runtime_html_escape($previewState) . '">' . app_no_code_runtime_html_escape($statusText) . '</span>',
@@ -384,8 +384,9 @@ function app_no_code_runtime_render_screen_html(array $render): string
     $syncStatusHint = (bool) ($render['sync_status_hint'] ?? false);
     $syncErrorRetryHint = (string) ($render['sync_error_retry_hint'] ?? app_no_code_runtime_sync_error_retry_hint($syncStatusHint));
 
+    $screenTitleId = app_no_code_runtime_dom_id('no-code-screen-title-' . $screenKey);
     $body = $screenType === 'list'
-        ? app_no_code_runtime_render_list_html($fields, is_array($data['rows'] ?? null) ? $data['rows'] : [], $emptyStateMessage)
+        ? app_no_code_runtime_render_list_html($fields, is_array($data['rows'] ?? null) ? $data['rows'] : [], $emptyStateMessage, $screenTitle . ' records')
         : app_no_code_runtime_render_item_screen_html(
             $screenType,
             $fields,
@@ -394,20 +395,43 @@ function app_no_code_runtime_render_screen_html(array $render): string
     );
 
     return implode("\n", [
-        '<section class="no-code-screen no-code-screen-' . app_no_code_runtime_html_escape($screenType) . '" data-screen-key="' . app_no_code_runtime_html_escape($screenKey) . '" data-screen-state="' . app_no_code_runtime_html_escape($screenState) . '">',
+        '<section class="no-code-screen no-code-screen-' . app_no_code_runtime_html_escape($screenType) . '" role="region" aria-labelledby="' . app_no_code_runtime_html_escape($screenTitleId) . '" data-screen-key="' . app_no_code_runtime_html_escape($screenKey) . '" data-screen-state="' . app_no_code_runtime_html_escape($screenState) . '">',
         '<header class="no-code-screen-header">',
         '<div>',
-        '<h2>' . app_no_code_runtime_html_escape($screenTitle) . '</h2>',
+        '<h2 id="' . app_no_code_runtime_html_escape($screenTitleId) . '">' . app_no_code_runtime_html_escape($screenTitle) . '</h2>',
         '<p>' . app_no_code_runtime_html_escape($screenSubtitle) . '</p>',
         '</div>',
         '<span class="no-code-state-badge" data-state="' . app_no_code_runtime_html_escape($screenState) . '">' . app_no_code_runtime_html_escape($screenStatusMessage) . '</span>',
         app_no_code_runtime_render_sync_status_hint_html($syncStatusHint),
         app_no_code_runtime_render_sync_error_retry_hint_html($syncErrorRetryHint),
-        app_no_code_runtime_render_actions_html($actions),
+        app_no_code_runtime_render_actions_html($actions, $screenTitle, $screenKey),
         '</header>',
+        app_no_code_runtime_render_screen_summary_html($screenKey, $fields, $actions),
         '<div class="no-code-action-feedback" role="status" aria-live="polite" data-state="idle">Select an enabled action to preview its intent.</div>',
         $body,
         '</section>',
+    ]);
+}
+
+/**
+ * @param list<array<string,mixed>> $fields
+ * @param list<array<string,mixed>> $actions
+ */
+function app_no_code_runtime_render_screen_summary_html(string $screenKey, array $fields, array $actions): string
+{
+    $fieldCount = count($fields);
+    $actionCount = count($actions);
+    $fieldLabel = $fieldCount === 1 ? '1 field' : $fieldCount . ' fields';
+    $actionLabel = $actionCount === 1 ? '1 action' : $actionCount . ' actions';
+
+    return implode('', [
+        '<div class="no-code-screen-summary" data-screen-summary="' . app_no_code_runtime_html_escape($screenKey) . '"',
+        ' data-field-count="' . $fieldCount . '"',
+        ' data-action-count="' . $actionCount . '">',
+        '<span>' . app_no_code_runtime_html_escape($fieldLabel) . '</span>',
+        '<span>' . app_no_code_runtime_html_escape($actionLabel) . '</span>',
+        '<code>' . app_no_code_runtime_html_escape($screenKey) . '</code>',
+        '</div>',
     ]);
 }
 
@@ -462,7 +486,7 @@ function app_no_code_runtime_screen_status_message(string $screenState, string $
  * @param list<array<string,mixed>> $fields
  * @param list<array<string,mixed>> $rows
  */
-function app_no_code_runtime_render_list_html(array $fields, array $rows, string $emptyStateMessage = 'No records to show yet.'): string
+function app_no_code_runtime_render_list_html(array $fields, array $rows, string $emptyStateMessage = 'No records to show yet.', string $caption = 'Records'): string
 {
     $headerCells = [];
     foreach ($fields as $field) {
@@ -494,6 +518,7 @@ function app_no_code_runtime_render_list_html(array $fields, array $rows, string
     return implode("\n", [
         '<div class="no-code-table-wrap">',
         '<table>',
+        '<caption class="no-code-table-caption">' . app_no_code_runtime_html_escape($caption) . '</caption>',
         '<thead><tr>' . implode('', $headerCells) . '</tr></thead>',
         '<tbody>',
         implode("\n", $bodyRows),
@@ -576,7 +601,7 @@ function app_no_code_runtime_render_form_html(array $fields, array $item, string
 /**
  * @param list<array<string,mixed>> $actions
  */
-function app_no_code_runtime_render_actions_html(array $actions): string
+function app_no_code_runtime_render_actions_html(array $actions, string $screenTitle = '', string $screenKey = ''): string
 {
     $buttons = [];
     foreach ($actions as $action) {
@@ -586,16 +611,49 @@ function app_no_code_runtime_render_actions_html(array $actions): string
 
         $enabled = (bool) ($action['enabled'] ?? false);
         $actionState = $enabled ? 'ready' : 'disabled';
-        $buttons[] = '<button type="button" data-action-key="' . app_no_code_runtime_html_escape((string) ($action['action_key'] ?? '')) . '"'
+        $actionKey = (string) ($action['action_key'] ?? '');
+        $operationType = (string) ($action['operation_type'] ?? '');
+        $hintId = app_no_code_runtime_dom_id('no-code-action-hint-' . $screenKey . '-' . $actionKey);
+        $disabledReason = $enabled ? '' : 'policy-not-enabled';
+        $buttons[] = '<span class="no-code-action-control" data-action-control="' . app_no_code_runtime_html_escape($actionKey) . '">'
+            . '<button type="button" data-action-key="' . app_no_code_runtime_html_escape($actionKey) . '"'
             . ' data-operation-key="' . app_no_code_runtime_html_escape((string) ($action['operation_key'] ?? '')) . '"'
-            . ' data-operation-type="' . app_no_code_runtime_html_escape((string) ($action['operation_type'] ?? '')) . '"'
+            . ' data-operation-type="' . app_no_code_runtime_html_escape($operationType) . '"'
             . ' data-action-enabled="' . ($enabled ? 'true' : 'false') . '"'
             . ' data-action-state="' . $actionState . '"'
+            . ' data-action-affordance="keyboard-intent-preview"'
+            . ' data-keyboard-activation="enter-space"'
+            . ($disabledReason !== '' ? ' data-action-disabled-reason="' . app_no_code_runtime_html_escape($disabledReason) . '"' : '')
+            . ' aria-describedby="' . app_no_code_runtime_html_escape($hintId) . '"'
+            . ' aria-disabled="' . ($enabled ? 'false' : 'true') . '"'
             . ($enabled ? '' : ' disabled')
-            . '>' . app_no_code_runtime_html_escape((string) ($action['label'] ?? $action['action_key'] ?? '')) . '</button>';
+            . '>' . app_no_code_runtime_html_escape((string) ($action['label'] ?? $actionKey)) . '</button>'
+            . '<span id="' . app_no_code_runtime_html_escape($hintId) . '" class="no-code-action-hint" data-action-hint="' . app_no_code_runtime_html_escape($actionKey) . '" data-action-state-hint="' . app_no_code_runtime_html_escape($actionState) . '">'
+            . app_no_code_runtime_html_escape(app_no_code_runtime_action_affordance_hint($enabled, $operationType))
+            . '</span>'
+            . '</span>';
     }
 
-    return '<nav class="no-code-actions">' . implode('', $buttons) . '</nav>';
+    $label = trim($screenTitle) !== '' ? $screenTitle . ' actions' : 'Screen actions';
+    return '<nav class="no-code-actions" aria-label="' . app_no_code_runtime_html_escape($label) . '">' . implode('', $buttons) . '</nav>';
+}
+
+function app_no_code_runtime_action_affordance_hint(bool $enabled, string $operationType): string
+{
+    if (!$enabled) {
+        return 'Disabled in this preview: policy checks did not enable this action.';
+    }
+
+    $operationLabel = app_no_code_runtime_human_label($operationType);
+    $intentLabel = $operationLabel !== '' ? strtolower($operationLabel) . ' intent' : 'action intent';
+    return 'Keyboard: Tab to this action, then press Enter or Space to preview the ' . $intentLabel . '.';
+}
+
+function app_no_code_runtime_dom_id(string $value): string
+{
+    $id = preg_replace('/[^A-Za-z0-9_-]+/', '-', trim($value));
+    $id = is_string($id) ? trim($id, '-') : '';
+    return $id !== '' ? $id : 'no-code-runtime-section';
 }
 
 function app_no_code_runtime_html_escape(string $value): string
@@ -615,9 +673,16 @@ function app_no_code_runtime_preview_css(): string
         '.no-code-screen { background: #ffffff; border: 1px solid #d8dee8; border-radius: 8px; padding: 18px; margin-bottom: 18px; }',
         '.no-code-screen-header { display: flex; justify-content: space-between; gap: 16px; align-items: flex-start; margin-bottom: 16px; }',
         '.no-code-screen h2 { margin: 0; font-size: 18px; line-height: 1.25; }',
+        '.no-code-screen-summary { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin: -6px 0 14px; color: #52606d; font-size: 12px; }',
+        '.no-code-screen-summary span, .no-code-screen-summary code { border: 1px solid #d8dee8; border-radius: 999px; padding: 3px 8px; background: #f7f9fb; }',
+        '.no-code-screen-summary code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }',
         '.no-code-actions { display: flex; flex-wrap: wrap; gap: 8px; }',
+        '.no-code-action-control { display: inline-flex; flex-direction: column; gap: 4px; align-items: flex-start; max-width: 260px; }',
         '.no-code-actions button { min-height: 34px; border: 1px solid #9fb3c8; background: #eef4fb; color: #102a43; border-radius: 6px; padding: 0 12px; font: inherit; }',
+        '.no-code-actions button:focus-visible { outline: 3px solid #b6d4fe; outline-offset: 2px; }',
         '.no-code-actions button:disabled { border-color: #c8d1dc; background: #eef1f4; color: #7b8794; }',
+        '.no-code-action-hint { color: #62748a; font-size: 11px; line-height: 1.3; }',
+        '.no-code-action-hint[data-action-state-hint="disabled"] { color: #7b8794; }',
         '.no-code-action-feedback { min-height: 20px; margin: -4px 0 12px; color: #486581; font-size: 13px; }',
         '.no-code-action-feedback[data-state="idle"] { color: #62748a; }',
         '.no-code-action-feedback[data-state="working"] { color: #334e68; }',
@@ -630,6 +695,7 @@ function app_no_code_runtime_preview_css(): string
         '.no-code-sync-status-hint { align-self: flex-start; border: 1px solid #b6d4fe; border-radius: 999px; padding: 4px 9px; color: #084298; background: #eef6ff; font-size: 12px; white-space: nowrap; }',
         '.no-code-sync-retry-hint { align-self: flex-start; border: 1px solid #f0d58c; border-radius: 999px; padding: 4px 9px; color: #7a4d00; background: #fff8e5; font-size: 12px; white-space: nowrap; }',
         '.no-code-table-wrap { overflow-x: auto; }',
+        '.no-code-table-caption { color: #52606d; font-size: 12px; margin-bottom: 6px; text-align: left; }',
         'table { width: 100%; border-collapse: collapse; table-layout: fixed; }',
         'th, td { border-bottom: 1px solid #e4e8ef; padding: 10px; text-align: left; vertical-align: top; overflow-wrap: anywhere; }',
         'th { font-size: 12px; text-transform: uppercase; color: #52606d; background: #f4f6f8; }',
@@ -684,13 +750,43 @@ function app_no_code_runtime_preview_js(): string
     return null;
   }
 
+  function validationMessage(error) {
+    var parts = String(error || '').split(',').map(function (part) {
+      return part.trim();
+    }).filter(Boolean);
+
+    if (parts.length === 0) {
+      return 'Action intent could not be prepared.';
+    }
+
+    var messages = parts.map(function (part) {
+      var missingPrefix = 'input.missing:';
+      var readonlyPrefix = 'input.readonly:';
+      if (part.indexOf(missingPrefix) === 0) {
+        return 'Required input is missing: ' + part.slice(missingPrefix.length);
+      }
+      if (part.indexOf(readonlyPrefix) === 0) {
+        return 'Input is read-only: ' + part.slice(readonlyPrefix.length);
+      }
+
+      return part;
+    });
+
+    return Array.from(new Set(messages)).join(', ');
+  }
+
   function actionError(error, intent) {
     return {
       ok: false,
       executed: false,
       intent: intent || null,
-      error: error
+      error: error,
+      message: validationMessage(error)
     };
+  }
+
+  function isEmptyRequiredValue(value) {
+    return value === null || (typeof value === 'string' && value.trim() === '');
   }
 
   function buildActionIntent(action, input) {
@@ -716,7 +812,7 @@ function app_no_code_runtime_preview_js(): string
       }
 
       var present = Object.prototype.hasOwnProperty.call(input, fieldKey);
-      if (!present && field.required) {
+      if ((!present || isEmptyRequiredValue(input[fieldKey])) && field.required) {
         failed.push('input.missing:' + fieldKey);
         return;
       }
@@ -745,7 +841,8 @@ function app_no_code_runtime_preview_js(): string
       ok: true,
       executed: true,
       intent: intent,
-      error: ''
+      error: '',
+      message: ''
     };
   }
 
@@ -780,7 +877,7 @@ function app_no_code_runtime_preview_js(): string
       return;
     }
 
-    feedback.textContent = result && result.error ? result.error : 'Action intent could not be prepared.';
+    feedback.textContent = result && result.message ? result.message : 'Action intent could not be prepared.';
     feedback.setAttribute('data-state', 'error');
   }
 
@@ -822,7 +919,7 @@ JS;
  * @param array<string,mixed> $definition
  * @param array<string,mixed> $input
  * @param callable(array<string,mixed>):array<string,mixed> $dispatcher
- * @return array{ok:bool,executed:bool,intent:array<string,mixed>,result:array<string,mixed>|null,error:string}
+ * @return array{ok:bool,executed:bool,intent:array<string,mixed>,result:array<string,mixed>|null,error:string,message:string}
  */
 function app_no_code_runtime_dispatch_action(
     array $definition,
@@ -854,11 +951,12 @@ function app_no_code_runtime_dispatch_action(
         'intent' => $intentResult['intent'],
         'result' => $result,
         'error' => '',
+        'message' => '',
     ];
 }
 
 /**
- * @return array{ok:bool,executed:bool,intent:array<string,mixed>,result:array<string,mixed>|null,error:string}
+ * @return array{ok:bool,executed:bool,intent:array<string,mixed>,result:array<string,mixed>|null,error:string,message:string}
  */
 function app_no_code_runtime_dispatch_error(string $error, array $intent = []): array
 {
@@ -868,7 +966,32 @@ function app_no_code_runtime_dispatch_error(string $error, array $intent = []): 
         'intent' => $intent,
         'result' => null,
         'error' => $error,
+        'message' => app_no_code_runtime_validation_message($error),
     ];
+}
+
+function app_no_code_runtime_validation_message(string $error): string
+{
+    $parts = array_values(array_filter(array_map('trim', explode(',', $error)), static fn (string $part): bool => $part !== ''));
+    if ($parts === []) {
+        return 'Action intent could not be prepared.';
+    }
+
+    $messages = [];
+    foreach ($parts as $part) {
+        if (str_starts_with($part, 'input.missing:')) {
+            $messages[] = 'Required input is missing: ' . substr($part, strlen('input.missing:'));
+            continue;
+        }
+        if (str_starts_with($part, 'input.readonly:')) {
+            $messages[] = 'Input is read-only: ' . substr($part, strlen('input.readonly:'));
+            continue;
+        }
+
+        $messages[] = $part;
+    }
+
+    return implode(', ', array_values(array_unique($messages)));
 }
 
 /**
@@ -907,6 +1030,14 @@ function app_no_code_runtime_find_action(array $definition, string $actionKey): 
 }
 
 /**
+ * @param mixed $value
+ */
+function app_no_code_runtime_required_value_is_empty($value): bool
+{
+    return $value === null || (is_string($value) && trim($value) === '');
+}
+
+/**
  * @param array<string,mixed> $definition
  * @param array<string,mixed> $action
  * @param array<string,mixed> $input
@@ -939,7 +1070,7 @@ function app_no_code_runtime_action_intent(array $definition, array $action, arr
         }
 
         $present = array_key_exists($fieldKey, $input);
-        if (!$present && (bool) ($field['required'] ?? false)) {
+        if ((!$present || app_no_code_runtime_required_value_is_empty($input[$fieldKey] ?? null)) && (bool) ($field['required'] ?? false)) {
             $failed[] = 'input.missing:' . $fieldKey;
             continue;
         }

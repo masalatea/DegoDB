@@ -84,7 +84,7 @@ function app_allowed_html_template_parameter_data_types(): array
  */
 function app_allowed_source_output_class_types(): array
 {
-    return ['DBAccess', 'DataClass', 'SharedContract', 'TypeScriptDTO', 'AppLocalPersistence', 'ManagedOperation', 'NoCodeRuntime', 'OpenAPI', 'AIContext', 'ProxyServer', 'ProxyClient', 'DBaaSProxyServer', 'DBaaSProxyClient', 'html', 'LanguageResource'];
+    return ['DBAccess', 'DataClass', 'SharedContract', 'TypeScriptDTO', 'AppLocalPersistence', 'ManagedOperation', 'NoCodeRuntime', 'NoCodeReactBridge', 'NoCodeJsonFormsProbe', 'OpenAPI', 'AIContext', 'ProxyServer', 'ProxyClient', 'DBaaSProxyServer', 'DBaaSProxyClient', 'html', 'LanguageResource'];
 }
 
 /**
@@ -109,6 +109,8 @@ function app_allowed_source_output_artifact_strategies(): array
         'app-local-persistence-php',
         'managed-operation-docs-md',
         'no-code-runtime-json',
+        'no-code-react-bridge',
+        'no-code-json-forms-probe',
         'openapi-json',
         'ai-context-md',
         'modernization-audit-md',
@@ -469,6 +471,8 @@ function app_source_output_artifact_strategy_caption(string $value): string
         'app-local-persistence-php' => 'App-local Persistence PHP Artifact',
         'managed-operation-docs-md' => 'Managed Operation Markdown Artifact',
         'no-code-runtime-json' => 'No-Code Runtime JSON Artifact',
+        'no-code-react-bridge' => 'No-Code React Bridge Artifact',
+        'no-code-json-forms-probe' => 'No-Code JSON Forms Probe Artifact',
         'openapi-json' => 'OpenAPI JSON Artifact',
         'ai-context-md' => 'AI Context Markdown Artifact',
         'modernization-audit-md' => 'Modernization Audit Markdown Artifact',
@@ -534,6 +538,8 @@ function app_source_output_artifact_strategy_supports_generation(string $value):
         'app-local-persistence-php',
         'managed-operation-docs-md',
         'no-code-runtime-json',
+        'no-code-react-bridge',
+        'no-code-json-forms-probe',
         'openapi-json',
         'ai-context-md',
         'modernization-audit-md',
@@ -557,6 +563,8 @@ function app_source_output_artifact_strategy_requires_runtime_source(string $val
         'app-local-persistence-php',
         'managed-operation-docs-md',
         'no-code-runtime-json',
+        'no-code-react-bridge',
+        'no-code-json-forms-probe',
         'openapi-json',
         'ai-context-md',
         'modernization-audit-md',

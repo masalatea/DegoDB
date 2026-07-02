@@ -117,6 +117,8 @@ final class NoCodeRuntimeTest extends TestCase
         ]);
 
         self::assertStringContainsString('<!doctype html>', $html);
+        self::assertStringContainsString('<main class="no-code-preview" aria-labelledby="no-code-preview-title"', $html);
+        self::assertStringContainsString('<h1 id="no-code-preview-title">RUNTIME-TEST</h1>', $html);
         self::assertStringContainsString('data-runtime-version="no-code-runtime-v0"', $html);
         self::assertStringContainsString('data-runtime-state="ready"', $html);
         self::assertStringContainsString('id="no-code-runtime-preview-data"', $html);
@@ -129,9 +131,19 @@ final class NoCodeRuntimeTest extends TestCase
         self::assertStringContainsString('Task List', $html);
         self::assertStringContainsString('Task Detail', $html);
         self::assertStringContainsString('Task Form', $html);
+        self::assertStringContainsString('role="region" aria-labelledby="no-code-screen-title-task_list"', $html);
+        self::assertStringContainsString('<h2 id="no-code-screen-title-task_list">Task List</h2>', $html);
+        self::assertStringContainsString('<caption class="no-code-table-caption">Task List records</caption>', $html);
+        self::assertStringContainsString('class="no-code-screen-summary" data-screen-summary="task_list" data-field-count="7" data-action-count="2"', $html);
+        self::assertStringContainsString('<span>7 fields</span><span>2 actions</span><code>task_list</code>', $html);
         self::assertStringContainsString('class="no-code-action-feedback" role="status" aria-live="polite" data-state="idle"', $html);
+        self::assertStringContainsString('<nav class="no-code-actions" aria-label="Task List actions">', $html);
         self::assertStringContainsString('Select an enabled action to preview its intent.', $html);
         self::assertStringContainsString('data-action-state="ready"', $html);
+        self::assertStringContainsString('data-action-affordance="keyboard-intent-preview"', $html);
+        self::assertStringContainsString('data-keyboard-activation="enter-space"', $html);
+        self::assertStringContainsString('aria-describedby="no-code-action-hint-task_list-update_note"', $html);
+        self::assertStringContainsString('Keyboard: Tab to this action, then press Enter or Space to preview the update intent.', $html);
         self::assertStringContainsString('data-operation-key="update_note"', $html);
         self::assertStringContainsString('Write runtime HTML', $html);
         self::assertStringContainsString('Visible in table', $html);
@@ -286,6 +298,31 @@ final class NoCodeRuntimeTest extends TestCase
         self::assertFalse($result['executed']);
         self::assertFalse($called);
         self::assertStringContainsString('input.missing:note', $result['error']);
+        self::assertSame('Required input is missing: note', $result['message']);
+    }
+
+    public function testDispatchFailsClosedWhenRequiredActionInputIsBlank(): void
+    {
+        $called = false;
+        $result = app_no_code_runtime_dispatch_action(
+            $this->screenDefinition(),
+            'update_note',
+            [
+                'id' => 1,
+                'note' => '   ',
+            ],
+            static function (array $_intent) use (&$called): array {
+                $called = true;
+
+                return ['ok' => true];
+            },
+        );
+
+        self::assertFalse($result['ok']);
+        self::assertFalse($result['executed']);
+        self::assertFalse($called);
+        self::assertStringContainsString('input.missing:note', $result['error']);
+        self::assertSame('Required input is missing: note', $result['message']);
     }
 
     /**

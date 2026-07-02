@@ -86,6 +86,22 @@ final class NoCodeOperatorInspectionTest extends TestCase
         self::assertSame('work/source-outputs/SAMPLE30/NO-CODE-RUNTIME', $summary['source_output_dir']);
         self::assertSame('ready', $summary['health']['state']);
         self::assertSame('Preview ready', $summary['health']['label']);
+        self::assertSame(
+            ['inspect-definition', 'inspect-artifact', 'review-preview', 'check-actions'],
+            array_column($summary['workflow_steps'], 'key'),
+        );
+        self::assertSame(['ready', 'ready', 'ready', 'ready'], array_column($summary['workflow_steps'], 'state'));
+        self::assertSame('Latest artifact archive is available.', $summary['workflow_steps'][1]['detail'] ?? '');
+        self::assertSame('Preview JSON and HTML are available with generated screens.', $summary['workflow_steps'][2]['detail'] ?? '');
+        self::assertSame('publishable', $summary['publish_readiness']['state'] ?? '');
+        self::assertSame('Publish candidate ready', $summary['publish_readiness']['label'] ?? '');
+        self::assertSame('NO-CODE-RUNTIME', $summary['publish_readiness']['source_output_key'] ?? '');
+        self::assertSame('20260630020202-bbbb', $summary['publish_readiness']['artifact_key'] ?? '');
+        self::assertTrue($summary['publish_readiness']['artifact_archive_exists'] ?? false);
+        self::assertTrue($summary['publish_readiness']['preview_files_ready'] ?? false);
+        self::assertSame(3, $summary['publish_readiness']['screen_count'] ?? 0);
+        self::assertSame(2, $summary['publish_readiness']['action_count'] ?? 0);
+        self::assertSame([], $summary['publish_readiness']['blocking_reasons'] ?? []);
 
         $preview = $summary['preview'];
         self::assertTrue($preview['screen_definition_exists']);
@@ -126,6 +142,15 @@ final class NoCodeOperatorInspectionTest extends TestCase
         self::assertSame('missing', $summary['health']['state']);
         self::assertContains('NO-CODE-RUNTIME definition is missing.', $summary['health']['reasons']);
         self::assertContains('screen-definition.json is missing.', $summary['health']['reasons']);
+        self::assertSame(['blocked', 'blocked', 'blocked', 'blocked'], array_column($summary['workflow_steps'], 'state'));
+        self::assertSame('NO-CODE-RUNTIME definition is missing.', $summary['workflow_steps'][0]['detail'] ?? '');
+        self::assertSame('Latest artifact archive is missing or not generated yet.', $summary['workflow_steps'][1]['detail'] ?? '');
+        self::assertSame('blocked', $summary['publish_readiness']['state'] ?? '');
+        self::assertSame('Publish candidate blocked', $summary['publish_readiness']['label'] ?? '');
+        self::assertContains('NO-CODE-RUNTIME definition is missing.', $summary['publish_readiness']['blocking_reasons'] ?? []);
+        self::assertContains('Latest generated artifact is missing.', $summary['publish_readiness']['blocking_reasons'] ?? []);
+        self::assertContains('Generated preview files are incomplete.', $summary['publish_readiness']['blocking_reasons'] ?? []);
+        self::assertContains('Generated action surface is empty.', $summary['publish_readiness']['blocking_reasons'] ?? []);
     }
 
     public function testReportsWarningHealthWhenLatestArtifactArchiveIsMissing(): void
@@ -175,5 +200,9 @@ final class NoCodeOperatorInspectionTest extends TestCase
         self::assertSame('warning', $summary['health']['state']);
         self::assertSame('Needs operator review', $summary['health']['label']);
         self::assertContains('Latest artifact archive is missing.', $summary['health']['reasons']);
+        self::assertSame('blocked', $summary['workflow_steps'][1]['state'] ?? '');
+        self::assertSame('ready', $summary['workflow_steps'][2]['state'] ?? '');
+        self::assertSame('blocked', $summary['publish_readiness']['state'] ?? '');
+        self::assertContains('Latest generated artifact archive is missing.', $summary['publish_readiness']['blocking_reasons'] ?? []);
     }
 }
