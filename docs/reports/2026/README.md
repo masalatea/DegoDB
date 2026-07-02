@@ -11,6 +11,16 @@
 
 ## Index
 
+- `2026-0702-no-code-tryout-ready-milestone-closure.md`
+  - #62-#67 を no-code tryout-ready milestone として closure。sample28 seeded preview data、preview data smoke、operator wording polish、sample28 demo tryout shortcut、README/docs の二層構造整理を完了。`make sample28-pack-runtime-test`、`make sample28-no-code-runtime-ui-smoke`、full `make test`、manual Docker demo shortcut check が通過。Status: `FIRST_SLICE_DONE`。
+- `2026-0702-docs-information-architecture-split-plan.md`
+  - README/docs の情報設計を database-first toolkit の芯と、その上に載る no-code layer に分け直す計画。元のデータベースツール用途を残しつつ no-code 導線を強くする。#67 として追加。Status: `DONE`。
+- `2026-0702-no-code-onboarding-polish-plan.md`
+  - no-code Docker trial と tryout guide 後の onboarding polish 計画。次は sample28 seeded preview data と preview data smoke を MUST とし、その後 operator wording polish、one-click tryout action design、one-click tryout implementation を段階化。Status: `DONE`。
+- `2026-0702-user-facing-no-code-tryout-guide-first-slice.md`
+  - Docker-backed sample28 browser trial 後に、`docs/no-code-tryout.md` を追加し、repository README と sample28 README からリンク。初回ユーザーが Docker 起動、login、`NO-CODE-RUNTIME` publish candidate 承認、current public runtime preview 表示まで辿る道筋を短く記録。Status: `FIRST_SLICE_DONE`。
+- `2026-0702-no-code-docker-trial-scenario-first-pass.md`
+  - sample28 Docker stack を起動し、初回ユーザー目線で no-code runtime の publish candidate 作成、review request、approve、current selection、stable alias 設定、public preview 表示まで試行。artifact-key/current/alias preview はすべて `200`。Source Output Artifact detail から preview へ直行できない点、sample28 の app-local package readiness は Source Output 未定義で blocked になる点を onboarding gap として記録。Status: `DONE`。
 - `2026-0702-commit-cleanup-execution-result.md`
   - local commit stack を 6 grouped commits へ rewrite。backup branch `codex/backup-develop-pre-squash-20260702-ea60c8c` を作成し、rewrite 前後の tree parity を確認。`git diff --check` と full `make test` は通過。Push は未実行。Status: `DONE`。
 - `2026-0702-commit-cleanup-review-grouping-after-delivery-milestone.md`

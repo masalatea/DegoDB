@@ -4,6 +4,28 @@
 - Path: canonical table metadata -> shared contract -> managed operation -> `NO-CODE-RUNTIME` artifact -> generated list/detail/form preview -> `NO-CODE-REACT-BRIDGE` artifact -> `NO-CODE-JSON-FORMS-PROBE` comparison artifact.
 - Current MVP scope: sample scaffold, catalog entry, minimal `no_code_ticket` model, no-code runtime artifact generation, React-first bridge scaffold generation, JSON Forms / rjsf comparison artifact generation, and headless browser smoke for generated action dispatch.
 
+Try it in the browser:
+
+```bash
+./sample/tutorials/sample28-no-code-data-app-mvp/run.sh up
+./sample/tutorials/sample28-no-code-data-app-mvp/run.sh apply-seed
+```
+
+Then open `http://127.0.0.1:18291` and log in with:
+
+```text
+user: admin-local
+password: change-this-admin-password
+```
+
+Open `projects` -> `SAMPLE28` -> `source-outputs` -> `NO-CODE-RUNTIME`, then either use `Run Sample28 Tryout Approval` for the demo path or create/review/approve a publish candidate manually. After approval, open the current public runtime preview:
+
+```text
+http://127.0.0.1:18291/runs/no-code/SAMPLE28/current/runtime-preview.html
+```
+
+For the fuller first-time tryout guide, see [No-Code Tryout](../../../docs/no-code-tryout.md).
+
 Run:
 
 ```bash

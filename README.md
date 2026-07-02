@@ -24,6 +24,20 @@ This repository currently focuses on the workflow:
 Database Schema -> Import -> Data Class -> DB Access -> Source Output  
 DB 構造 -> Import -> Data Class -> DB Access -> Source Output
 
+## Two-Layer Model / 二層モデル
+
+DegoDB's no-code layer is built on the database-first foundation. It does not replace the core tooling. Database schemas are imported into canonical metadata first, then generated artifacts, shared contracts, managed operations, Source Output review, and approval workflow provide the base for no-code previews and delivery.
+
+DegoDB の no-code layer は database-first の基盤の上に載ります。core tooling を置き換えるものではありません。まず DB schema を正本 metadata に取り込み、その上で generated artifacts、shared contract、managed operation、Source Output review、approval workflow が no-code preview と delivery の土台になります。
+
+Foundation / 基盤:
+
+Database Schema -> Canonical Metadata -> Data Class / DB Access -> Source Output
+
+No-code layer / no-code 層:
+
+Canonical Metadata -> Managed Operation -> No-Code Runtime -> Publish Candidate -> Public Preview
+
 Original concept note: users who only have JSON files, JSON API cache, or JSON config can use [JSON To DB Entrance](docs/json-to-db-entrance.md) as an AI-assisted preparation layer. This is documentation and design guidance, not a JSON auto-import feature.
 初期構想の補足: JSON ファイル、JSON API キャッシュ、JSON 設定しかまだ持っていない利用者は、AI 支援の準備レイヤーとして [JSON から DB 設計へ入る入口](docs/json-to-db-entrance.md) を使えます。これはドキュメントと設計指針であり、JSON 自動取り込み機能ではありません。
 
@@ -59,6 +73,13 @@ Original concept note: users who only have JSON files, JSON API cache, or JSON c
 - Prepare technical handoff material for consulting or implementation projects / コンサルティングや実装支援向けの技術引き継ぎ資料を準備する
 - Create repeatable schema documentation for client systems / 顧客システム向けに再現可能なスキーマドキュメントを作る
 
+### No-code on database metadata / DB metadata の上に載る no-code
+
+- Generate no-code list/detail/form previews from canonical metadata / 正本 metadata から no-code の list/detail/form preview を生成する
+- Review generated runtime artifacts before public preview / public preview の前に生成 runtime artifact を review する
+- Approve publish candidates and expose current/alias preview URLs / publish candidate を承認し、current / alias preview URL を公開する
+- Keep no-code output inspectable and regeneratable through Source Output artifacts / no-code output を Source Output artifact として inspect / regenerate 可能に保つ
+
 ## How to Read This / 文書の読み方
 
 The documentation in this repository is intended to be read in the following three layers.  
@@ -66,6 +87,7 @@ The documentation in this repository is intended to be read in the following thr
 
 1. Entry layer / 入口 layer
    - [Quickstart / まず動かしてみる](docs/quickstart.md)
+   - [No-Code Tryout / no-code をまず試す](docs/no-code-tryout.md)
    - [Start Here / 最初の入口](docs/start-here.md)
    - [Choose Your Path / 目的別の読み方](docs/choose-your-path.md)
 2. Golden path layer / ゴールデンパス layer

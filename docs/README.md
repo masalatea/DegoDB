@@ -11,6 +11,7 @@ top-level は外部ユーザ向け導線を優先し、内部向け文書は [In
 
 1. 入口 layer
    - [Quickstart / まず動かしてみる](quickstart.md)
+   - [No-Code Tryout / no-code をまず試す](no-code-tryout.md)
    - [Start Here / 最初の入口](start-here.md)
    - [Choose Your Path / 目的別の読み方](choose-your-path.md)
 2. golden path layer
@@ -46,6 +47,8 @@ detail doc だけを読んで mainline を再構成するのは current reading 
   - public / repo top の入口
 - [Quickstart / まず動かしてみる](quickstart.md)
   - clone 直後に local stack と sample01 を 1 周だけ動かす文書
+- [No-Code Tryout / no-code をまず試す](no-code-tryout.md)
+  - sample28 で no-code runtime preview を触る文書。database-first metadata / Source Output / approval workflow の上に載る no-code layer として読む
 - [Start Here / 最初の入口](start-here.md)
   - 最初の 5 分で repo の current な読み方を掴む文書
 - [Choose Your Path / 目的別の読み方](choose-your-path.md)
@@ -109,6 +112,8 @@ detail doc だけを読んで mainline を再構成するのは current reading 
   - DB、config store、user DB、生成出力、旧実装参照、将来候補を安全に説明するための正本
 - [JSON To DB Entrance / JSON から DB 設計へ入る入口](json-to-db-entrance.md)
   - DB をよく知らない利用者が、JSON sample と現在の処理説明から DB 設計案へ進むための、初期構想に含まれる optional pre-design entrance
+- [No-Code Tryout / no-code をまず試す](no-code-tryout.md)
+  - sample28 の generated no-code Web preview、publish candidate approval、current/alias preview URL を触る入口
 - [Storage And State Model / 保存先と状態モデル](storage-and-state-model.md)
   - `config_db`、artifact、`work/` の state map
 - [Security And Data Handling / security と data handling](security-and-data-handling.md)
