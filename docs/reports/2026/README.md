@@ -11,6 +11,18 @@
 
 ## Index
 
+- `2026-0702-no-code-commit-stack-consolidation-plan.md`
+  - local `develop` が `origin/develop` より 50 commits ahead の状態を、5 つの review group に整理。push / rewrite は行わず、後で明示的に squash する場合の group guidance を記録。Status: `FIRST_SLICE_DONE`。
+- `2026-0702-fresh-priority-decision-after-no-code-commit-stack-review.md`
+  - no-code commit stack review 後の fresh priority decision。新規 implementation lane より先に No-code commit stack consolidation plan を選択。Push と history rewrite は対象外。Status: `DONE`。
+- `2026-0702-local-commit-stack-review-after-no-code-milestone.md`
+  - no-code product milestone 後の local commit stack review。`develop` は `origin/develop` より 49 commits ahead、push は未実行。直近 milestone commits と verification baseline を記録。Status: `FIRST_SLICE_DONE`。
+- `2026-0702-fresh-no-code-product-goal-replan-after-milestone-update.md`
+  - milestone update 後の fresh product-goal replan。新規 implementation lane の前に、local commit stack review before next product lane を選択。Status: `DONE`。
+- `2026-0702-no-code-product-milestone-update-after-public-delivery-and-local-packaging.md`
+  - public runtime delivery と local app packaging の current milestone を完了状態として整理。accepted capability、latest verification baseline、parked candidates、次の fresh product-goal replan 境界を記録。Status: `FIRST_SLICE_DONE`。
+- `2026-0702-post-local-app-packaging-closure-no-code-product-goal-replan.md`
+  - local app packaging closure 後の product-goal replan。次の implementation lane に入る前に、public delivery と local packaging 後の no-code product milestone update を選択。Status: `DONE`。
 - `2026-0702-local-app-packaging-closure-report.md`
   - local app packaging lane を current minimum boundary として完了扱いにし、package manifest generation、archive smoke、operator/admin readiness display を accepted capability として記録。native/Flutter、signing、app shell packaging、remote transport、conflict resolution、scheduler、visual builder は parked。Status: `FIRST_SLICE_DONE`。
 - `2026-0702-post-app-local-package-operator-readiness-display-no-code-product-goal-replan.md`
