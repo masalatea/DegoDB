@@ -32,6 +32,7 @@ require_once __DIR__ . '/project_source_output_detail_page.php';
 require_once __DIR__ . '/project_source_output_edit_page.php';
 require_once __DIR__ . '/project_source_output_artifact_detail_page.php';
 require_once __DIR__ . '/project_source_output_download_page.php';
+require_once __DIR__ . '/no_code_public_runtime_page.php';
 require_once __DIR__ . '/project_sync_outbox_detail_page.php';
 require_once __DIR__ . '/project_compare_output_settings_page.php';
 require_once __DIR__ . '/project_compare_output_additional_paths_page.php';
@@ -210,6 +211,18 @@ function app_run_http_request(): void
 
             case 'project_source_output_download':
                 app_render_project_source_output_download_page($app, $request);
+                return;
+
+            case 'no_code_public_runtime_preview':
+                app_render_no_code_public_runtime_preview_page($app, $request);
+                return;
+
+            case 'no_code_public_runtime_current_preview':
+                app_render_no_code_public_runtime_current_preview_page($app, $request);
+                return;
+
+            case 'no_code_public_runtime_alias_preview':
+                app_render_no_code_public_runtime_alias_preview_page($app, $request);
                 return;
 
             case 'project_sync_outbox_detail':

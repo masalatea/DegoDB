@@ -17,11 +17,47 @@ Answer the main plan first, then mention auxiliary later-review items only when 
 
 This is the mainline for reaching the next minimum product-facing no-code milestone. / これは次の minimum な product-facing no-code milestone へ到達するための主線です。
 
-Current baseline: the first-slice no-code Web interface already exists as generated `runtime-preview.html` / `runtime-preview.json` plus operator/admin inspection surfaces. React + TypeScript is now the default first adapter direction, the first React bridge artifact slice is complete as `no-code-react-bridge`, the generated React bridge build/browser smokes are complete for sample28, React bridge display/form state shaping is complete for the first slice, React bridge artifact contract hardening is complete for the first slice, editable React bridge form state is complete for the first slice, React bridge validation hint display is complete for the first slice, React bridge action feedback display is complete for the first slice, JSON Forms / rjsf transform probe is complete for the first slice, schema-form runtime smoke and consumer notes are complete for the first slice, generated runtime visual/accessibility/keyboard-action polish is complete for the first slice, adapter handoff docs are complete for the first slice, retry audit trail/display is complete for the first slice, operator/admin no-code workflow polish is complete for the first slice, the no-code minimum closure report is complete for the first slice, worktree closure commit-hygiene notes are complete for the first slice, commit group execution is complete without pushing, validation parity/polish is complete for the first slice, no-code product surface boundary inventory is complete for the first slice, published no-code runtime artifact selection is complete for the first slice, approval/revision history boundary inventory is complete for the first slice, publish candidate revision record schema contract is complete for the first slice, approval transition state model is complete for the first slice, approval action UI contract is complete for the first slice, approval route/test implementation planning is complete for the first slice, publish candidate persistence implementation checklist is complete for the first slice, publish candidate migration/source-contract checklist is complete for the first slice, publish candidate repository/API contract test matrix is complete for the first slice, and Docker-backed verification rerun is complete. The next minimum step is a post-verification-closure product-goal replan. / 現在の baseline として、first-slice の no-code Web interface は generated `runtime-preview.html` / `runtime-preview.json` と operator / admin inspection surface として既にあります。React + TypeScript は first adapter の基本方向になり、最初の React bridge artifact slice は `no-code-react-bridge` として完了し、sample28 の generated React bridge build / browser smoke も完了し、React bridge display / form state shaping も first slice として完了し、React bridge artifact contract hardening も first slice として完了し、editable React bridge form state も first slice として完了し、React bridge validation hint display も first slice として完了し、React bridge action feedback display も first slice として完了し、JSON Forms / rjsf transform probe も first slice として完了し、schema-form runtime smoke と consumer notes も first slice として完了し、generated runtime visual / accessibility / keyboard-action polish も first slice として完了し、adapter handoff docs も first slice として完了し、retry audit trail / display も first slice として完了し、operator / admin no-code workflow polish も first slice として完了し、no-code minimum closure report も first slice として完了し、worktree closure commit-hygiene notes も first slice として完了し、commit group execution も push なしで完了し、validation parity / polish、no-code product surface boundary inventory、published no-code runtime artifact selection、approval / revision history boundary inventory、publish candidate revision record schema contract、approval transition state model、approval action UI contract、approval route / test implementation planning、publish candidate persistence implementation checklist、publish candidate migration / source-contract checklist、publish candidate repository / API contract test matrix、Docker-backed verification rerun も完了しました。次の minimum step は verification closure 後の product-goal replan です。
+Current baseline: the first-slice no-code Web interface already exists as generated `runtime-preview.html` / `runtime-preview.json` plus operator/admin inspection surfaces. React + TypeScript is now the default first adapter direction, the first React bridge artifact slice is complete as `no-code-react-bridge`, the generated React bridge build/browser smokes are complete for sample28, React bridge display/form state shaping is complete for the first slice, React bridge artifact contract hardening is complete for the first slice, editable React bridge form state is complete for the first slice, React bridge validation hint display is complete for the first slice, React bridge action feedback display is complete for the first slice, JSON Forms / rjsf transform probe is complete for the first slice, schema-form runtime smoke and consumer notes are complete for the first slice, generated runtime visual/accessibility/keyboard-action polish is complete for the first slice, adapter handoff docs are complete for the first slice, retry audit trail/display is complete for the first slice, operator/admin no-code workflow polish is complete for the first slice, the no-code minimum closure report is complete for the first slice, worktree closure commit-hygiene notes are complete for the first slice, commit group execution is complete without pushing, validation parity/polish is complete for the first slice, no-code product surface boundary inventory is complete for the first slice, published no-code runtime artifact selection is complete for the first slice, approval/revision history boundary inventory is complete for the first slice, publish candidate revision record schema contract is complete for the first slice, approval transition state model is complete for the first slice, approval action UI contract is complete for the first slice, approval route/test implementation planning is complete for the first slice, publish candidate persistence implementation checklist is complete for the first slice, publish candidate migration/source-contract checklist is complete for the first slice, publish candidate repository/API contract test matrix is complete for the first slice, Docker-backed verification rerun is complete, minimal publish candidate persistence is complete for the first slice, approval transition persistence is complete for the first slice, guarded publish candidate detail UI is complete for the first slice, approved candidate package exposure is complete for the first slice, public runtime preview artifact-key route is complete for the first slice, public runtime current alias route is complete for the first slice, candidate event display polish is complete for the first slice, public runtime cache/version policy is complete for the first slice, current public revision visibility is complete for the first slice, explicit current public revision selection is complete for the first slice, custom public alias key storage is complete for the first slice, public alias delete workflow is complete for the first slice, rollback workflow polish is complete for the first slice, public delivery browser smoke is complete for the first slice, alias lifecycle audit trail is complete for the first slice, public delivery hardening closure is complete, and public delivery commit cleanup is complete without pushing. The next step is a post-public-delivery-commit product-goal replan. / 現在の baseline として、first-slice の no-code Web interface は generated `runtime-preview.html` / `runtime-preview.json` と operator / admin inspection surface として既にあります。React + TypeScript は first adapter の基本方向になり、最初の React bridge artifact slice は `no-code-react-bridge` として完了し、sample28 の generated React bridge build / browser smoke も完了し、React bridge display / form state shaping も first slice として完了し、React bridge artifact contract hardening も first slice として完了し、editable React bridge form state も first slice として完了し、React bridge validation hint display も first slice として完了し、React bridge action feedback display も first slice として完了し、JSON Forms / rjsf transform probe も first slice として完了し、schema-form runtime smoke と consumer notes も first slice として完了し、generated runtime visual / accessibility / keyboard-action polish も first slice として完了し、adapter handoff docs も first slice として完了し、retry audit trail / display も first slice として完了し、operator / admin no-code workflow polish も first slice として完了し、no-code minimum closure report も first slice として完了し、worktree closure commit-hygiene notes も first slice として完了し、commit group execution も push なしで完了し、validation parity / polish、no-code product surface boundary inventory、published no-code runtime artifact selection、approval / revision history boundary inventory、publish candidate revision record schema contract、approval transition state model、approval action UI contract、approval route / test implementation planning、publish candidate persistence implementation checklist、publish candidate migration / source-contract checklist、publish candidate repository / API contract test matrix、Docker-backed verification rerun、minimal publish candidate persistence first slice、approval transition persistence first slice、guarded publish candidate detail UI first slice、approved candidate package exposure first slice、public runtime preview artifact-key route first slice、public runtime current alias route first slice、candidate event display polish first slice、public runtime cache/version policy first slice、current public revision visibility first slice、explicit current public revision selection first slice、custom public alias key storage first slice、public alias delete workflow first slice、rollback workflow polish first slice、public delivery browser smoke first slice、alias lifecycle audit trail first slice、public delivery hardening closure、public delivery commit cleanup まで push なしで完了しました。次は public delivery commit 後の product-goal replan です。
+
+Latest update: public delivery commit cleanup is complete as local commit `e2c5d7e`; push was not performed. The next step is a post-public-delivery-commit product-goal replan. / 最新更新: public delivery commit cleanup は local commit `e2c5d7e` として完了し、push は未実行です。次は public delivery commit 後の product-goal replan です。
 
 | Order | Work unit / 作業の塊 | Commit unit / コミット単位 | Status | Rough effort / 目安 |
 | --- | --- | --- | --- | --- |
-| 1 | Post-verification-closure no-code product goal replan / verification closure 後の no-code product goal 再計画 | Choose the minimal candidate persistence implementation slice or another product-surface continuation now that Docker-backed verification passed | `ACTIVE_NEXT` | 0.25 - 0.5 day / 0.25 - 0.5 日 |
+| 1 | Post-verification-closure no-code product goal replan / verification closure 後の no-code product goal 再計画 | Chose minimal candidate persistence as the smallest code slice after Docker-backed verification passed | `DONE` | 0.25 - 0.5 day / 0.25 - 0.5 日 |
+| 2 | Post-minimal-candidate-persistence no-code product goal replan / minimal candidate persistence 後の no-code product goal 再計画 | Chose approval transition persistence after durable draft candidate revisions landed | `DONE` | 0.25 - 0.5 day / 0.25 - 0.5 日 |
+| 3 | Approval transition persistence first slice / approval transition persistence first slice | Added append-only transition events and repository helper for request-review / approve / reject | `DONE` | 1 - 2 days / 1 - 2 日 |
+| 4 | Post-approval-transition-persistence no-code product goal replan / approval transition persistence 後の no-code product goal 再計画 | Chose guarded publish candidate detail UI after repository transition persistence landed | `DONE` | 0.25 - 0.5 day / 0.25 - 0.5 日 |
+| 5 | Guarded publish candidate detail UI first slice / guarded publish candidate detail UI first slice | Added NO-CODE-RUNTIME detail-page candidate creation, candidate history, and guarded transition actions | `DONE` | 1 - 2 days / 1 - 2 日 |
+| 6 | Post-guarded-candidate-UI no-code product goal replan / guarded candidate UI 後の no-code product goal 再計画 | Chose approved candidate package exposure after candidate UI controls landed | `DONE` | 0.25 - 0.5 day / 0.25 - 0.5 日 |
+| 7 | Approved candidate package exposure first slice / approved candidate package exposure first slice | Exposed existing artifact detail/download links only for approved candidates while keeping public URL deferred | `DONE` | 0.5 - 1 day / 半日 - 1 日 |
+| 8 | Post-approved-candidate-package-exposure no-code product goal replan / approved candidate package exposure 後の no-code product goal 再計画 | Chose public runtime preview artifact-key route as the first public delivery continuation | `DONE` | 0.25 - 0.5 day / 0.25 - 0.5 日 |
+| 9 | Public runtime preview artifact-key route first slice / public runtime preview artifact-key route first slice | Expose approved `NO-CODE-RUNTIME` `runtime-preview.html` through an artifact-key public route without alias semantics | `DONE` | 0.5 - 1 day / 半日 - 1 日 |
+| 10 | Post-public-runtime-preview no-code product goal replan / public runtime preview 後の no-code product goal 再計画 | Chose public runtime current alias route after artifact-key public serving landed | `DONE` | 0.25 - 0.5 day / 0.25 - 0.5 日 |
+| 11 | Public runtime current alias route first slice / public runtime current alias route first slice | Expose latest approved `NO-CODE-RUNTIME` `runtime-preview.html` through `/runs/no-code/{project_key}/current/runtime-preview.html` | `DONE` | 0.5 - 1 day / 半日 - 1 日 |
+| 12 | Post-current-alias no-code product goal replan / current alias 後の no-code product goal 再計画 | Chose candidate event display polish after current alias landed | `DONE` | 0.25 - 0.5 day / 0.25 - 0.5 日 |
+| 13 | Candidate event display polish first slice / candidate event display polish first slice | Shows existing publish candidate transition events on the NO-CODE-RUNTIME detail page | `DONE` | 0.5 - 1 day / 半日 - 1 日 |
+| 14 | Post-candidate-event-display no-code product goal replan / candidate event display 後の no-code product goal 再計画 | Chose public runtime cache/version policy after candidate event display landed | `DONE` | 0.25 - 0.5 day / 0.25 - 0.5 日 |
+| 15 | Public runtime cache/version policy first slice / public runtime cache/version policy first slice | Artifact-key preview uses immutable public caching while current alias keeps no-store | `DONE` | 0.5 - 1 day / 半日 - 1 日 |
+| 16 | Post-cache-version-policy no-code product goal replan / cache/version policy 後の no-code product goal 再計画 | Chose current public revision visibility before explicit rollback/selection storage | `DONE` | 0.25 - 0.5 day / 0.25 - 0.5 日 |
+| 17 | Current public revision visibility first slice / current public revision visibility first slice | Shows which approved candidate backs the project-level current public runtime preview | `DONE` | 0.5 - 1 day / 半日 - 1 日 |
+| 18 | Post-current-public-revision-visibility no-code product goal replan / current public revision visibility 後の no-code product goal 再計画 | Chose explicit current public revision selection before custom alias storage | `DONE` | 0.25 - 0.5 day / 0.25 - 0.5 日 |
+| 19 | Explicit current public revision selection first slice / explicit current public revision selection first slice | Stores selected current approved candidate and lets operator/admin set current revision | `DONE` | 1 - 2 days / 1 - 2 日 |
+| 20 | Post-explicit-current-public-revision-selection no-code product goal replan / explicit current public revision selection 後の no-code product goal 再計画 | Chose custom public alias key storage before rollback workflow polish | `DONE` | 0.25 - 0.5 day / 0.25 - 0.5 日 |
+| 21 | Custom public alias key storage first slice / custom public alias key storage first slice | Stores stable public alias keys and serves approved candidates through alias runtime preview routes | `DONE` | 1 - 2 days / 1 - 2 日 |
+| 22 | Post-custom-public-alias no-code product goal replan / custom public alias 後の no-code product goal 再計画 | Chose public alias delete workflow before broader rollback polish | `DONE` | 0.25 - 0.5 day / 0.25 - 0.5 日 |
+| 23 | Public alias delete workflow first slice / public alias delete workflow first slice | Lists configured public aliases and lets operator/admin delete an alias | `DONE` | 0.5 - 1 day / 半日 - 1 日 |
+| 24 | Post-public-alias-delete no-code product goal replan / public alias delete 後の no-code product goal 再計画 | Chose public delivery closure before broader rollback workflow polish | `DONE` | 0.25 - 0.5 day / 0.25 - 0.5 日 |
+| 25 | Public delivery closure first slice / public delivery closure first slice | Records the completed public runtime delivery capability boundary and remaining follow-up candidates | `DONE` | 0.5 day / 半日 |
+| 26 | Post-public-delivery-closure no-code product goal replan / public delivery closure 後の no-code product goal 再計画 | Chose rollback workflow polish before alias lifecycle audit trail or browser smoke | `DONE` | 0.25 - 0.5 day / 0.25 - 0.5 日 |
+| 27 | Rollback workflow polish first slice / rollback workflow polish first slice | Clarifies current rollback semantics and alias non-follow behavior in the operator/admin UI | `DONE` | 0.5 - 1 day / 半日 - 1 日 |
+| 28 | Post-rollback-workflow-polish no-code product goal replan / rollback workflow polish 後の no-code product goal 再計画 | Chose public delivery browser smoke before alias lifecycle audit trail | `DONE` | 0.25 - 0.5 day / 0.25 - 0.5 日 |
+| 29 | Public delivery browser smoke first slice / public delivery browser smoke first slice | Verifies artifact-key/current/alias public runtime preview URLs in headless Chrome | `DONE` | 0.5 - 1 day / 半日 - 1 日 |
+| 30 | Post-public-delivery-browser-smoke no-code product goal replan / public delivery browser smoke 後の no-code product goal 再計画 | Chose alias lifecycle audit trail before leaving public delivery | `DONE` | 0.25 - 0.5 day / 0.25 - 0.5 日 |
+| 31 | Alias lifecycle audit trail first slice / alias lifecycle audit trail first slice | Records alias create/update/delete events and displays recent lifecycle events in operator/admin UI | `DONE` | 0.5 - 1 day / 半日 - 1 日 |
+| 32 | Post-alias-lifecycle-audit-trail no-code product goal replan / alias lifecycle audit trail 後の no-code product goal 再計画 | Chose public delivery hardening closure before leaving this lane | `DONE` | 0.25 - 0.5 day / 0.25 - 0.5 日 |
+| 33 | Public delivery hardening closure report / public delivery hardening closure report | Records the completed post-hardening public delivery boundary and remaining parked candidates | `DONE` | 0.25 - 0.5 day / 0.25 - 0.5 日 |
+| 34 | Commit cleanup / review grouping / commit cleanup・review grouping | Organized accumulated public delivery worktree into local commit `e2c5d7e`, still without push | `DONE` | 0.25 - 0.5 day / 0.25 - 0.5 日 |
+| 35 | Post-public-delivery-commit no-code product goal replan / public delivery commit 後の no-code product goal 再計画 | Choose the next implementation lane after public delivery is committed locally | `ACTIVE_NEXT` | 0.25 - 0.5 day / 0.25 - 0.5 日 |
 
 ### Auxiliary Later Review / 補助・後日検討
 
@@ -36,7 +72,9 @@ These are useful candidates, but they are not part of the main minimum path unle
 | A5 | Japanese invoice / billing / compliance sample / 日本向け請求・インボイス sample | Domain review is required first | `PARKED` | Re-estimate after domain review / domain review 後に再見積もり |
 | A6 | Approval workflow, rollback / revision history, local app packaging / 承認 workflow、rollback・revision、local app packaging | Reopen as separate product/foundation plans after current generated-output and docs lanes settle | `PARKED` | Re-estimate as separate plans when promoted / 昇格時に個別 plan として再見積もり |
 
-The first sync-backed no-code demonstration is complete as `sample30-no-code-app-local-sync-demo`, the narrow server-side sync processing follow-up first slice is complete inside sample30, reusable partial-update server merge policy is complete for the first slice, sync handoff visibility polish is complete for the first slice, operator/admin inspection and retry visibility slices are complete through retry audit display, the adapter handoff docs package is complete through adapter docs completion report, runtime preview keyboard/action affordance polish is complete for the first slice, the operator/admin no-code workflow polish checklist is complete for the first slice, the no-code minimum closure report is complete for the first slice, worktree closure commit-hygiene notes are complete for the first slice, local commit group execution is complete, validation parity/polish is complete for the first slice, no-code product surface boundary inventory is complete for the first slice, published no-code runtime artifact selection is complete for the first slice, approval/revision history boundary inventory is complete for the first slice, publish candidate revision record schema contract is complete for the first slice, approval transition state model is complete for the first slice, approval action UI contract is complete for the first slice, approval route/test implementation planning is complete for the first slice, publish candidate persistence implementation checklist is complete for the first slice, publish candidate migration/source-contract checklist is complete for the first slice, publish candidate repository/API contract test matrix is complete for the first slice, and Docker-backed verification rerun is complete. The next active step is a post-verification-closure no-code product goal replan. / 最初の sync-backed no-code demonstration は `sample30-no-code-app-local-sync-demo` として完了し、narrow な server-side sync processing follow-up first slice も sample30 内で完了、reusable partial-update server merge policy も first slice として完了、sync handoff visibility polish も first slice として完了、operator / admin inspection と retry visibility slice は retry audit display まで完了、adapter handoff docs package は adapter docs completion report まで完了、runtime preview keyboard / action affordance polish も first slice として完了し、operator / admin no-code workflow polish checklist も first slice として完了し、no-code minimum closure report も first slice として完了し、worktree closure commit-hygiene notes も first slice として完了し、local commit group execution も完了し、validation parity / polish、no-code product surface boundary inventory、published no-code runtime artifact selection、approval / revision history boundary inventory、publish candidate revision record schema contract、approval transition state model、approval action UI contract、approval route / test implementation planning、publish candidate persistence implementation checklist、publish candidate migration / source-contract checklist、publish candidate repository / API contract test matrix、Docker-backed verification rerun も完了しました。次の active step は verification closure 後の no-code product goal replan です。
+Public delivery now covers approved candidate package exposure, artifact-key preview, current preview, explicit current selection, custom alias storage, alias deletion, cache/version policy, rollback wording for the operator/admin surface, browser smoke coverage for artifact/current/alias preview URLs, alias lifecycle audit visibility, a hardening closure report, and local commit cleanup. The next active step is a post-public-delivery-commit no-code product goal replan. / public delivery は approved candidate package exposure、artifact-key preview、current preview、explicit current selection、custom alias storage、alias deletion、cache / version policy、operator / admin surface の rollback wording、artifact / current / alias preview URL の browser smoke coverage、alias lifecycle audit visibility、hardening closure report、local commit cleanup まで到達しました。次の active step は public delivery commit 後の no-code product goal replan です。
+
+Latest update: public delivery commit cleanup is complete as local commit `e2c5d7e`; push was not performed. / 最新更新: public delivery commit cleanup は local commit `e2c5d7e` として完了し、push は未実行です。
 
 ## Priority Rationale / 優先理由
 
@@ -185,7 +223,532 @@ These are planning estimates, not deadlines. / これは計画用の目安であ
 | 129 | Post-candidate-migration-checklist no-code product goal replan / candidate migration checklist 後の no-code product goal 再計画 | Completed / 完了 | Chose repository/API contract test matrix as the final docs-only pre-implementation slice while Docker verification was still blocked. Report: [2026-0702 Post-Candidate-Migration-Checklist No-Code Product Goal Replan](reports/2026/2026-0702-post-candidate-migration-checklist-no-code-product-goal-replan.md). |
 | 130 | Publish candidate repository/API contract test matrix first slice / publish candidate repository・API contract test matrix first slice | Completed / 完了 | Defined repository create/list/find tests, fail-closed cases, Source Outputs gates, fixtures, and verification gate. Report: [2026-0702 Publish Candidate Repository API Contract Test Matrix First Slice](reports/2026/2026-0702-publish-candidate-repository-api-contract-test-matrix-first-slice.md). |
 | 131 | Docker-backed verification rerun closure / Docker-backed verification rerun closure | Completed / 完了 | Reran schema-form sample smoke and full `make test` after Docker restart. Report: [2026-0702 Docker-Backed Verification Rerun Closure](reports/2026/2026-0702-docker-backed-verification-rerun-closure.md). |
-| 132 | Post-verification-closure no-code product goal replan / verification closure 後の no-code product goal 再計画 | 0.25 - 0.5 day / 0.25 - 0.5 日 | Active planning step. Choose the minimal candidate persistence implementation slice or another product-surface continuation now that Docker-backed verification passed. |
+| 132 | Post-verification-closure no-code product goal replan / verification closure 後の no-code product goal 再計画 | Completed / 完了 | Chose minimal candidate persistence as the smallest code slice after Docker-backed verification passed. |
+| 133 | Minimal publish candidate persistence first slice / minimal publish candidate persistence first slice | Completed / 完了 | Added durable draft candidate revisions from publishable `NO-CODE-RUNTIME` readiness snapshots with scoped list/find repository tests. Report: [2026-0702 Minimal Publish Candidate Persistence First Slice](reports/2026/2026-0702-minimal-publish-candidate-persistence-first-slice.md). |
+| 134 | Post-minimal-candidate-persistence no-code product goal replan / minimal candidate persistence 後の no-code product goal 再計画 | Completed / 完了 | Chose approval transition persistence as the next repository-tested product-surface continuation. Report: [2026-0702 Post-Minimal-Candidate-Persistence No-Code Product Goal Replan](reports/2026/2026-0702-post-minimal-candidate-persistence-no-code-product-goal-replan.md). |
+| 135 | Approval transition persistence first slice / approval transition persistence first slice | Completed / 完了 | Added append-only transition events and repository helper for `request_review`, `approve`, and `reject`, with Docker-backed SQLite coverage. Report: [2026-0702 Approval Transition Persistence First Slice](reports/2026/2026-0702-approval-transition-persistence-first-slice.md). |
+| 136 | Post-approval-transition-persistence no-code product goal replan / approval transition persistence 後の no-code product goal 再計画 | Completed / 完了 | Chose guarded publish candidate detail UI as the next product-surface continuation. Report: [2026-0702 Post-Approval-Transition-Persistence No-Code Product Goal Replan](reports/2026/2026-0702-post-approval-transition-persistence-no-code-product-goal-replan.md). |
+| 137 | Guarded publish candidate detail UI first slice / guarded publish candidate detail UI first slice | Completed / 完了 | Added NO-CODE-RUNTIME detail-page candidate creation, candidate history, and guarded transition actions. Report: [2026-0702 Guarded Publish Candidate Detail UI First Slice](reports/2026/2026-0702-guarded-publish-candidate-detail-ui-first-slice.md). |
+| 138 | Post-guarded-candidate-UI no-code product goal replan / guarded candidate UI 後の no-code product goal 再計画 | Completed / 完了 | Chose approved candidate package exposure as the next narrow product-surface continuation. Report: [2026-0702 Post-Guarded-Candidate-UI No-Code Product Goal Replan](reports/2026/2026-0702-post-guarded-candidate-ui-no-code-product-goal-replan.md). |
+| 139 | Approved candidate package exposure first slice / approved candidate package exposure first slice | Completed / 完了 | Exposed existing artifact detail/download links only for approved candidates and kept public runtime URL deferred. Report: [2026-0702 Approved Candidate Package Exposure First Slice](reports/2026/2026-0702-approved-candidate-package-exposure-first-slice.md). |
+| 140 | Post-approved-candidate-package-exposure no-code product goal replan / approved candidate package exposure 後の no-code product goal 再計画 | Completed / 完了 | Chose public runtime preview artifact-key route as the first public delivery continuation. Report: [2026-0702 Post-Approved-Candidate-Package-Exposure No-Code Product Goal Replan](reports/2026/2026-0702-post-approved-candidate-package-exposure-no-code-product-goal-replan.md). |
+| 141 | Public runtime preview artifact-key route first slice / public runtime preview artifact-key route first slice | Completed / 完了 | Exposed approved `NO-CODE-RUNTIME` `runtime-preview.html` through an artifact-key public route while keeping public alias semantics deferred. Report: [2026-0702 Public Runtime Preview Artifact-Key Route First Slice](reports/2026/2026-0702-public-runtime-preview-artifact-key-route-first-slice.md). |
+| 142 | Post-public-runtime-preview no-code product goal replan / public runtime preview 後の no-code product goal 再計画 | Completed / 完了 | Chose public runtime current alias route as the next public delivery continuation. Report: [2026-0702 Post-Public-Runtime-Preview No-Code Product Goal Replan](reports/2026/2026-0702-post-public-runtime-preview-no-code-product-goal-replan.md). |
+| 143 | Public runtime current alias route first slice / public runtime current alias route first slice | Completed / 完了 | Added `/runs/no-code/{project_key}/current/runtime-preview.html`, resolving to the latest approved `NO-CODE-RUNTIME` publish candidate. Report: [2026-0702 Public Runtime Current Alias Route First Slice](reports/2026/2026-0702-public-runtime-current-alias-route-first-slice.md). |
+| 144 | Post-current-alias no-code product goal replan / current alias 後の no-code product goal 再計画 | 0.25 - 0.5 day / 0.25 - 0.5 日 | Active planning step. Choose cache/version policy, revision selection/rollback boundary, custom alias key storage, or candidate event display polish. |
+
+## Post-Minimal-Candidate-Persistence No-Code Product Goal Replan / minimal candidate persistence 後の no-code product goal 再計画
+
+Status: `DONE`. Report: [2026-0702 Post-Minimal-Candidate-Persistence No-Code Product Goal Replan](reports/2026/2026-0702-post-minimal-candidate-persistence-no-code-product-goal-replan.md). / Status: `DONE`。Report: [2026-0702 Post-Minimal-Candidate-Persistence No-Code Product Goal Replan](reports/2026/2026-0702-post-minimal-candidate-persistence-no-code-product-goal-replan.md)。
+
+This planning item selected Approval transition persistence first slice as the next small no-code product-facing implementation after durable draft candidate revisions landed. / この planning item では durable draft candidate revision 実装後の次の小さな no-code product-facing implementation として Approval transition persistence first slice を選びました。
+
+| Candidate / 候補 | Why / 目的 | First slice estimate / first slice 目安 | Decision |
+| --- | --- | --- | --- |
+| Approval transition persistence first slice | Persist candidate approval transitions after draft candidate storage exists. | 1 - 2 days / 1 - 2 日 | Selected. This turns the prior approval state-model planning into repository-tested behavior. |
+| Candidate create/list/detail route surface | Add operator/admin route controls around candidate records. | 1 - 3 days / 1 - 3 日 | Deferred until transition helper behavior is proven. |
+| Public runtime URL/package exposure | Expose approved runtime artifacts publicly. | 2 - 5 days / 2 - 5 日 | Deferred. Approval state should exist before delivery semantics. |
+| Rollback/revision history public selection | Select/restore published revisions. | 2 - 5 days / 2 - 5 日 | Deferred until published revision semantics exist. |
+
+## Approval Transition Persistence First Slice / approval transition persistence first slice
+
+Status: `FIRST_SLICE_DONE`. Report: [2026-0702 Approval Transition Persistence First Slice](reports/2026/2026-0702-approval-transition-persistence-first-slice.md). / Status: `FIRST_SLICE_DONE`。Report: [2026-0702 Approval Transition Persistence First Slice](reports/2026/2026-0702-approval-transition-persistence-first-slice.md)。
+
+This implementation work was selected by the post-minimal-candidate-persistence replan and is complete for the first slice. / これは minimal candidate persistence 後の replan で選んだ implementation work で、first slice は完了です。
+
+| Step | Work / 作業 | Status | Rough effort / 目安 | Output / 成果物 |
+| --- | --- | --- | --- | --- |
+| ATP1 | Transition event schema / transition event schema | `DONE` | 0.5 day / 半日 | Added append-only `no_code_publish_candidate_transition_events` and bootstrap preflight coverage. |
+| ATP2 | Repository transition helper / repository transition helper | `DONE` | 0.5 - 1 day / 半日 - 1 日 | Added `app_pdo_transition_no_code_publish_candidate(...)` for request-review, approve, and reject. |
+| ATP3 | Fail-closed guards / fail-closed guard | `DONE` | 0.5 day / 半日 | Added source-output, actor, expected-status, invalid-transition, and reject-reason guards. |
+| ATP4 | Focused verification / focused verification | `DONE` | 0.5 day / 半日 | Extended Docker-backed SQLite integration coverage to 7 tests / 92 assertions. |
+
+Boundary / 境界:
+
+- In scope: repository-level transition persistence, append-only event records, `request_review`, `approve`, `reject`, expected status and actor guards. / 対象: repository-level transition persistence、append-only event record、`request_review`、`approve`、`reject`、expected status と actor guard。
+- Out of scope: candidate route actions, approval UI buttons, public runtime URL, artifact packaging, rollback, published revision selection. / 対象外: candidate route action、approval UI button、public runtime URL、artifact packaging、rollback、published revision selection。
+- Verification: focused Docker-backed PHPUnit for `NoCodePublishCandidateRepositorySqliteTest`. / 検証: `NoCodePublishCandidateRepositorySqliteTest` の focused Docker-backed PHPUnit。
+
+## Post-Approval-Transition-Persistence No-Code Product Goal Replan / approval transition persistence 後の no-code product goal 再計画
+
+Status: `DONE`. Report: [2026-0702 Post-Approval-Transition-Persistence No-Code Product Goal Replan](reports/2026/2026-0702-post-approval-transition-persistence-no-code-product-goal-replan.md). / Status: `DONE`。Report: [2026-0702 Post-Approval-Transition-Persistence No-Code Product Goal Replan](reports/2026/2026-0702-post-approval-transition-persistence-no-code-product-goal-replan.md)。
+
+This planning item selected Guarded publish candidate detail UI first slice as the next small no-code product-facing implementation after repository transition persistence landed. / この planning item では repository transition persistence 実装後の次の小さな no-code product-facing implementation として Guarded publish candidate detail UI first slice を選びました。
+
+| Candidate / 候補 | Why / 目的 | First slice estimate / first slice 目安 | Decision |
+| --- | --- | --- | --- |
+| Guarded publish candidate detail UI | Surface candidate creation, history, and transition controls on the existing NO-CODE-RUNTIME detail page. | 1 - 2 days / 1 - 2 日 | Selected and completed. Reuses the repository helpers without adding public delivery semantics. |
+| Separate candidate list/detail routes | Add dedicated candidate routes. | 1 - 3 days / 1 - 3 日 | Deferred. Existing source-output detail is enough for the first operator surface. |
+| Public runtime URL/package exposure | Expose approved runtime artifacts publicly. | 2 - 5 days / 2 - 5 日 | Deferred until approval UI controls are visible. |
+| Rollback/revision history public selection | Select/restore published revisions. | 2 - 5 days / 2 - 5 日 | Deferred until published revision semantics exist. |
+
+## Guarded Publish Candidate Detail UI First Slice / guarded publish candidate detail UI first slice
+
+Status: `FIRST_SLICE_DONE`. Report: [2026-0702 Guarded Publish Candidate Detail UI First Slice](reports/2026/2026-0702-guarded-publish-candidate-detail-ui-first-slice.md). / Status: `FIRST_SLICE_DONE`。Report: [2026-0702 Guarded Publish Candidate Detail UI First Slice](reports/2026/2026-0702-guarded-publish-candidate-detail-ui-first-slice.md)。
+
+This implementation work was selected by the post-approval-transition-persistence replan and is complete for the first slice. / これは approval transition persistence 後の replan で選んだ implementation work で、first slice は完了です。
+
+| Step | Work / 作業 | Status | Rough effort / 目安 | Output / 成果物 |
+| --- | --- | --- | --- | --- |
+| GUI1 | Candidate readiness action / candidate readiness action | `DONE` | 0.5 day / 半日 | NO-CODE-RUNTIME detail page can create a draft publish candidate from publishable readiness. |
+| GUI2 | Candidate history / candidate history | `DONE` | 0.5 day / 半日 | Detail page lists saved candidate revisions with artifact, readiness, status, and creator context. |
+| GUI3 | Guarded transitions / guarded transitions | `DONE` | 0.5 - 1 day / 半日 - 1 日 | Detail page exposes request-review, approve, and reject actions through the repository transition helper. |
+| GUI4 | Contract coverage and docs / contract coverage・docs | `DONE` | 0.5 day / 半日 | Added static contract assertions, report, and current-plan updates. |
+
+Boundary / 境界:
+
+- In scope: existing Source Output detail route for `NO-CODE-RUNTIME`, create/list/history display, request-review / approve / reject actions, CSRF-protected POSTs, repository guard reuse. / 対象: 既存 Source Output detail route の `NO-CODE-RUNTIME`、create / list / history 表示、request-review / approve / reject action、CSRF 付き POST、repository guard 再利用。
+- Out of scope: public runtime URL, artifact package exposure, rollback, dedicated candidate route set, new approval workflow tables. / 対象外: public runtime URL、artifact package exposure、rollback、専用 candidate route set、新しい approval workflow table。
+- Verification: PHP lint, static route/UI contract assertions, focused Docker-backed repository tests, and full `make test`. / 検証: PHP lint、static route / UI contract assertion、focused Docker-backed repository test、full `make test`。
+
+## Post-Guarded-Candidate-UI No-Code Product Goal Replan / guarded candidate UI 後の no-code product goal 再計画
+
+Status: `DONE`. Report: [2026-0702 Post-Guarded-Candidate-UI No-Code Product Goal Replan](reports/2026/2026-0702-post-guarded-candidate-ui-no-code-product-goal-replan.md). / Status: `DONE`。Report: [2026-0702 Post-Guarded-Candidate-UI No-Code Product Goal Replan](reports/2026/2026-0702-post-guarded-candidate-ui-no-code-product-goal-replan.md)。
+
+This planning item selected Approved candidate package exposure first slice as the next small no-code product-facing implementation after guarded candidate controls landed. / この planning item では guarded candidate control 実装後の次の小さな no-code product-facing implementation として Approved candidate package exposure first slice を選びました。
+
+| Candidate / 候補 | Why / 目的 | First slice estimate / first slice 目安 | Decision |
+| --- | --- | --- | --- |
+| Approved candidate package exposure | Expose package handoff links only after candidate approval. | 0.5 - 1 day / 半日 - 1 日 | Selected. Reuses existing artifact detail/download routes and does not create public delivery semantics. |
+| Public runtime URL route | Add public runtime URL / alias route for approved candidates. | 2 - 5 days / 2 - 5 日 | Deferred. Needs separate public alias and security semantics. |
+| Dedicated candidate list/detail routes | Add dedicated candidate route set. | 1 - 3 days / 1 - 3 日 | Deferred. Existing Source Output detail page remains sufficient for first workflow. |
+| Rollback/revision history public selection | Select/restore published revisions. | 2 - 5 days / 2 - 5 日 | Deferred until published revision semantics exist. |
+
+## Approved Candidate Package Exposure First Slice / approved candidate package exposure first slice
+
+Status: `FIRST_SLICE_DONE`. Report: [2026-0702 Approved Candidate Package Exposure First Slice](reports/2026/2026-0702-approved-candidate-package-exposure-first-slice.md). / Status: `FIRST_SLICE_DONE`。Report: [2026-0702 Approved Candidate Package Exposure First Slice](reports/2026/2026-0702-approved-candidate-package-exposure-first-slice.md)。
+
+This implementation work was selected by the post-guarded-candidate-UI replan and is complete for the first slice. / これは guarded candidate UI 後の replan で選んだ implementation work で、first slice は完了です。
+
+| Step | Work / 作業 | Status | Rough effort / 目安 | Output / 成果物 |
+| --- | --- | --- | --- | --- |
+| ACPE1 | Approved-only package affordance / approved-only package affordance | `DONE` | 0.25 - 0.5 day / 0.25 - 0.5 日 | Candidate history shows artifact detail/download links only for approved candidates. |
+| ACPE2 | Non-approved guard copy / 未承認 guard copy | `DONE` | 0.25 day / 0.25 日 | Draft/review/rejected candidates show that package exposure is guarded until approval. |
+| ACPE3 | Contract coverage and docs / contract coverage・docs | `DONE` | 0.25 day / 0.25 日 | Added static contract assertions, completion report, and full verification. |
+
+Boundary / 境界:
+
+- In scope: existing Source Output detail route for `NO-CODE-RUNTIME`, approved candidate artifact detail/download links, non-approved guard text, static contract coverage. / 対象: 既存 Source Output detail route の `NO-CODE-RUNTIME`、approved candidate の artifact detail / download link、未承認 guard text、static contract coverage。
+- Out of scope: public runtime URL, public alias route, package copying, new storage table, rollback, dedicated candidate route set. / 対象外: public runtime URL、public alias route、package copy、新 storage table、rollback、専用 candidate route set。
+- Verification: PHP lint, focused Docker-backed contract/repository tests, and full `make test` passed. / 検証: PHP lint、focused Docker-backed contract / repository test、full `make test` は通過。
+
+## Post-Approved-Candidate-Package-Exposure No-Code Product Goal Replan / approved candidate package exposure 後の no-code product goal 再計画
+
+Status: `DONE`. Report: [2026-0702 Post-Approved-Candidate-Package-Exposure No-Code Product Goal Replan](reports/2026/2026-0702-post-approved-candidate-package-exposure-no-code-product-goal-replan.md). / Status: `DONE`。Report: [2026-0702 Post-Approved-Candidate-Package-Exposure No-Code Product Goal Replan](reports/2026/2026-0702-post-approved-candidate-package-exposure-no-code-product-goal-replan.md)。
+
+This planning step selected Public runtime preview artifact-key route first slice as the next small public delivery continuation. / この planning step では次の小さな public delivery continuation として Public runtime preview artifact-key route first slice を選びました。
+
+| Candidate / 候補 | Why / 目的 | First slice estimate / first slice 目安 | Decision |
+| --- | --- | --- | --- |
+| Public runtime preview artifact-key route first slice | Expose approved runtime preview through a guarded public artifact-key route. | 0.5 - 1 day / 半日 - 1 日 | Selected and completed. Keeps alias semantics deferred. |
+| Public alias route planning | Define stable alias, cache, and revision semantics after artifact-key serving lands. | 0.5 - 1 day / 半日 - 1 日 | Deferred. |
+| Candidate event display polish | Show transition event history alongside candidate rows. | 0.5 - 1 day / 半日 - 1 日 | Candidate. Useful accountability polish before public delivery. |
+| Rollback/revision history public selection | Select/restore published revisions. | 2 - 5 days / 2 - 5 日 | Deferred until public published revision semantics are defined. |
+
+## Public Runtime Preview Artifact-Key Route First Slice / public runtime preview artifact-key route first slice
+
+Status: `FIRST_SLICE_DONE`. Report: [2026-0702 Public Runtime Preview Artifact-Key Route First Slice](reports/2026/2026-0702-public-runtime-preview-artifact-key-route-first-slice.md). / Status: `FIRST_SLICE_DONE`。Report: [2026-0702 Public Runtime Preview Artifact-Key Route First Slice](reports/2026/2026-0702-public-runtime-preview-artifact-key-route-first-slice.md)。
+
+This implementation work was selected by the post-approved-candidate-package-exposure replan and is complete for the first slice. / これは approved candidate package exposure 後の replan で選んだ implementation work で、first slice は完了です。
+
+| Step | Work / 作業 | Status | Rough effort / 目安 | Output / 成果物 |
+| --- | --- | --- | --- | --- |
+| PRP1 | Approved artifact lookup / approved artifact lookup | `DONE` | 0.25 day / 0.25 日 | Repository can find an approved `NO-CODE-RUNTIME` candidate by project/artifact key and rejects draft/non-matching artifacts. |
+| PRP2 | Public runtime preview route / public runtime preview route | `DONE` | 0.25 - 0.5 day / 0.25 - 0.5 日 | Added `/runs/no-code/{project_key}/{artifact_key}/runtime-preview.html`, serving only the generated preview file from the existing artifact bundle. |
+| PRP3 | Approved UI link and contracts / approved UI link・contract | `DONE` | 0.25 day / 0.25 日 | Approved candidates show the public preview link; route/auth and repository tests cover the boundary. |
+
+Boundary / 境界:
+
+- In scope: approved candidate gate, artifact-key public preview route, existing artifact manifest/bundle storage, route/auth contract coverage, repository lookup coverage. / 対象: approved candidate gate、artifact-key public preview route、既存 artifact manifest / bundle storage、route / auth contract coverage、repository lookup coverage。
+- Out of scope: public alias, stable published slug, new storage table, rollback/revision selection, package copy, broad static file serving. / 対象外: public alias、stable published slug、新 storage table、rollback / revision selection、package copy、広い static file serving。
+- Verification: PHP lint, focused Docker-backed contract/repository tests, and full `make test`. / 検証: PHP lint、focused Docker-backed contract / repository test、full `make test`。
+
+## Post-Public-Runtime-Preview No-Code Product Goal Replan / public runtime preview 後の no-code product goal 再計画
+
+Status: `DONE`. Report: [2026-0702 Post-Public-Runtime-Preview No-Code Product Goal Replan](reports/2026/2026-0702-post-public-runtime-preview-no-code-product-goal-replan.md). / Status: `DONE`。Report: [2026-0702 Post-Public-Runtime-Preview No-Code Product Goal Replan](reports/2026/2026-0702-post-public-runtime-preview-no-code-product-goal-replan.md)。
+
+This planning step selected Public runtime current alias route first slice as the next public delivery continuation after artifact-key serving landed. / この planning step では artifact-key serving 実装後の次の public delivery continuation として Public runtime current alias route first slice を選びました。
+
+| Candidate / 候補 | Why / 目的 | First slice estimate / first slice 目安 | Decision |
+| --- | --- | --- | --- |
+| Public runtime current alias route first slice | Add a stable project-level current preview URL on top of approved artifact-key serving. | 0.5 - 1 day / 半日 - 1 日 | Selected and completed. Keeps custom alias storage deferred. |
+| Cache/version policy | Decide cache headers and immutable/current URL behavior. | 0.5 - 1 day / 半日 - 1 日 | Deferred. Existing `no-store` remains for this first alias slice. |
+| Revision selection / rollback boundary | Define how an approved candidate becomes the current public revision and how rollback works. | 1 - 3 days / 1 - 3 日 | Deferred until current alias behavior is visible. |
+| Candidate event display polish | Show transition event history in admin UI. | 0.5 - 1 day / 半日 - 1 日 | Deferred. Useful auditability polish but less public-delivery-facing than the alias route. |
+
+## Public Runtime Current Alias Route First Slice / public runtime current alias route first slice
+
+Status: `FIRST_SLICE_DONE`. Report: [2026-0702 Public Runtime Current Alias Route First Slice](reports/2026/2026-0702-public-runtime-current-alias-route-first-slice.md). / Status: `FIRST_SLICE_DONE`。Report: [2026-0702 Public Runtime Current Alias Route First Slice](reports/2026/2026-0702-public-runtime-current-alias-route-first-slice.md)。
+
+This implementation work was selected by the post-public-runtime-preview replan and is complete for the first slice. / これは public runtime preview 後の replan で選んだ implementation work で、first slice は完了です。
+
+| Step | Work / 作業 | Status | Rough effort / 目安 | Output / 成果物 |
+| --- | --- | --- | --- | --- |
+| PCA1 | Current approved candidate lookup / current approved candidate lookup | `DONE` | 0.25 day / 0.25 日 | Repository resolves the latest approved `NO-CODE-RUNTIME` publish candidate for a project. |
+| PCA2 | Current public preview route / current public preview route | `DONE` | 0.25 - 0.5 day / 0.25 - 0.5 日 | Added `/runs/no-code/{project_key}/current/runtime-preview.html` and dispatches it before artifact-key matching. |
+| PCA3 | Approved UI link and contracts / approved UI link・contract | `DONE` | 0.25 day / 0.25 日 | Approved candidates show the current preview link; route/auth and repository tests cover the boundary. |
+
+Boundary / 境界:
+
+- In scope: latest approved candidate gate, project-level current alias route, existing artifact manifest/bundle storage, route/auth contract coverage, repository lookup coverage. / 対象: latest approved candidate gate、project-level current alias route、既存 artifact manifest / bundle storage、route / auth contract coverage、repository lookup coverage。
+- Out of scope: custom alias key route, stable slug storage, explicit published revision table, rollback/revision selection, package copy, broad static file serving. / 対象外: custom alias key route、stable slug storage、explicit published revision table、rollback / revision selection、package copy、広い static file serving。
+- Verification: PHP lint, focused Docker-backed contract/repository tests, `git diff --check`, and full `make test`. / 検証: PHP lint、focused Docker-backed contract / repository test、`git diff --check`、full `make test`。
+
+## Post-Current-Alias No-Code Product Goal Replan / current alias 後の no-code product goal 再計画
+
+Status: `DONE`. Report: [2026-0702 Post-Current-Alias No-Code Product Goal Replan](reports/2026/2026-0702-post-current-alias-no-code-product-goal-replan.md). / Status: `DONE`。Report: [2026-0702 Post-Current-Alias No-Code Product Goal Replan](reports/2026/2026-0702-post-current-alias-no-code-product-goal-replan.md)。
+
+This planning item selected Candidate event display polish first slice as the next small no-code product-facing implementation after the current public runtime alias landed. / この planning item では current public runtime alias 実装後の次の小さな no-code product-facing implementation として Candidate event display polish first slice を選びました。
+
+| Candidate / 候補 | Why / 目的 | First slice estimate / first slice 目安 | Decision |
+| --- | --- | --- | --- |
+| Candidate event display polish | Show transition event history in admin UI. | 0.5 - 1 day / 半日 - 1 日 | Selected and completed. Reuses existing transition events and improves operator auditability without changing public URL semantics. |
+| Cache/version policy | Decide no-store/current and future immutable artifact URL behavior. | 0.5 - 1 day / 半日 - 1 日 | Deferred. Useful before long-lived public use. |
+| Revision selection / rollback boundary | Define explicit current published revision semantics and rollback behavior. | 1 - 3 days / 1 - 3 日 | Deferred. Needed before current alias becomes operationally authoritative. |
+| Custom public alias key storage | Let a project expose a configured public slug beyond `current`. | 1 - 3 days / 1 - 3 日 | Deferred until current/cache/revision semantics are clear. |
+
+## Candidate Event Display Polish First Slice / candidate event display polish first slice
+
+Status: `FIRST_SLICE_DONE`. Report: [2026-0702 Candidate Event Display Polish First Slice](reports/2026/2026-0702-candidate-event-display-polish-first-slice.md). / Status: `FIRST_SLICE_DONE`。Report: [2026-0702 Candidate Event Display Polish First Slice](reports/2026/2026-0702-candidate-event-display-polish-first-slice.md)。
+
+This implementation work was selected by the post-current-alias replan and is complete for the first slice. / これは current alias 後の replan で選んだ implementation work で、first slice は完了です。
+
+| Step | Work / 作業 | Status | Rough effort / 目安 | Output / 成果物 |
+| --- | --- | --- | --- | --- |
+| CED1 | Transition event read helper / transition event read helper | `DONE` | 0.25 day / 0.25 日 | Repository reads existing append-only transition events by project/source output/revision. |
+| CED2 | Candidate history event display / candidate history event display | `DONE` | 0.25 - 0.5 day / 0.25 - 0.5 日 | NO-CODE-RUNTIME detail page shows transition, from/to status, actor, timestamp, and reject reason when present. |
+| CED3 | Contract coverage and docs / contract coverage・docs | `DONE` | 0.25 day / 0.25 日 | Added focused repository/static UI contract coverage, report, and current-plan updates. |
+
+Boundary / 境界:
+
+- In scope: existing transition event read path, existing Source Output detail page display, focused repository/static contract coverage. / 対象: 既存 transition event read path、既存 Source Output detail page display、focused repository / static contract coverage。
+- Out of scope: new transition storage, new approval workflow states, public cache/version policy, revision rollback/selection, custom alias storage. / 対象外: 新 transition storage、新 approval workflow state、public cache / version policy、revision rollback / selection、custom alias storage。
+- Verification: PHP lint, focused Docker-backed contract/repository tests, `git diff --check`, and full `make test`. / 検証: PHP lint、focused Docker-backed contract / repository test、`git diff --check`、full `make test`。
+
+## Post-Candidate-Event-Display No-Code Product Goal Replan / candidate event display 後の no-code product goal 再計画
+
+Status: `DONE`. Report: [2026-0702 Post-Candidate-Event-Display No-Code Product Goal Replan](reports/2026/2026-0702-post-candidate-event-display-no-code-product-goal-replan.md). / Status: `DONE`。Report: [2026-0702 Post-Candidate-Event-Display No-Code Product Goal Replan](reports/2026/2026-0702-post-candidate-event-display-no-code-product-goal-replan.md)。
+
+This planning item selected Public runtime cache/version policy first slice as the next small no-code product-facing implementation after candidate transition event visibility landed. / この planning item では candidate transition event visibility 実装後の次の小さな no-code product-facing implementation として Public runtime cache/version policy first slice を選びました。
+
+| Candidate / 候補 | Why / 目的 | First slice estimate / first slice 目安 | Decision |
+| --- | --- | --- | --- |
+| Public runtime cache/version policy | Clarify cache semantics for artifact-key and current public runtime preview routes. | 0.5 - 1 day / 半日 - 1 日 | Selected and completed. |
+| Revision selection / rollback boundary | Define explicit current published revision semantics and rollback behavior. | 1 - 3 days / 1 - 3 日 | Deferred until cache semantics are explicit. |
+| Custom public alias key storage | Let a project expose a configured public slug beyond `current`. | 1 - 3 days / 1 - 3 日 | Deferred until current/cache/revision semantics are clear. |
+
+## Public Runtime Cache/Version Policy First Slice / public runtime cache/version policy first slice
+
+Status: `FIRST_SLICE_DONE`. Report: [2026-0702 Public Runtime Cache/Version Policy First Slice](reports/2026/2026-0702-public-runtime-cache-version-policy-first-slice.md). / Status: `FIRST_SLICE_DONE`。Report: [2026-0702 Public Runtime Cache/Version Policy First Slice](reports/2026/2026-0702-public-runtime-cache-version-policy-first-slice.md)。
+
+This implementation work was selected by the post-candidate-event-display replan and is complete for the first slice. / これは candidate event display 後の replan で選んだ implementation work で、first slice は完了です。
+
+| Step | Work / 作業 | Status | Rough effort / 目安 | Output / 成果物 |
+| --- | --- | --- | --- | --- |
+| PCV1 | Cache policy helpers / cache policy helpers | `DONE` | 0.25 day / 0.25 日 | Added route-specific helpers for artifact-key and current public runtime preview cache policy. |
+| PCV2 | Route-specific response headers / route-specific response headers | `DONE` | 0.25 day / 0.25 日 | Artifact-key preview uses `public, max-age=31536000, immutable`; current alias keeps `no-store`. |
+| PCV3 | Contract coverage and docs / contract coverage・docs | `DONE` | 0.25 day / 0.25 日 | Added cache helper/static contract coverage, report, and current-plan updates. |
+
+Boundary / 境界:
+
+- In scope: response cache semantics for existing public runtime preview routes and contract coverage. / 対象: 既存 public runtime preview route の response cache semantics と contract coverage。
+- Out of scope: explicit published revision selection, rollback, custom alias storage, new public URL shapes, package copy/static hosting. / 対象外: explicit published revision selection、rollback、custom alias storage、新 public URL shape、package copy / static hosting。
+- Verification: PHP lint, focused Docker-backed contract test, `git diff --check`, and full `make test`. / 検証: PHP lint、focused Docker-backed contract test、`git diff --check`、full `make test`。
+
+## Post-Cache-Version-Policy No-Code Product Goal Replan / cache/version policy 後の no-code product goal 再計画
+
+Status: `DONE`. Report: [2026-0702 Post-Cache-Version-Policy No-Code Product Goal Replan](reports/2026/2026-0702-post-cache-version-policy-no-code-product-goal-replan.md). / Status: `DONE`。Report: [2026-0702 Post-Cache-Version-Policy No-Code Product Goal Replan](reports/2026/2026-0702-post-cache-version-policy-no-code-product-goal-replan.md)。
+
+This planning item selected Current public revision visibility first slice as the next small no-code product-facing implementation after public runtime cache/version policy landed. / この planning item では public runtime cache/version policy 実装後の次の小さな no-code product-facing implementation として Current public revision visibility first slice を選びました。
+
+| Candidate / 候補 | Why / 目的 | First slice estimate / first slice 目安 | Decision |
+| --- | --- | --- | --- |
+| Current public revision visibility | Show which approved candidate backs the current public runtime preview. | 0.5 - 1 day / 半日 - 1 日 | Selected and completed. |
+| Explicit revision selection / rollback implementation | Store and mutate the selected current public revision. | 1 - 3 days / 1 - 3 日 | Deferred until current visibility is explicit. |
+| Custom public alias key storage | Let a project expose a configured public slug beyond `current`. | 1 - 3 days / 1 - 3 日 | Deferred until current/revision semantics are clearer. |
+
+## Current Public Revision Visibility First Slice / current public revision visibility first slice
+
+Status: `FIRST_SLICE_DONE`. Report: [2026-0702 Current Public Revision Visibility First Slice](reports/2026/2026-0702-current-public-revision-visibility-first-slice.md). / Status: `FIRST_SLICE_DONE`。Report: [2026-0702 Current Public Revision Visibility First Slice](reports/2026/2026-0702-current-public-revision-visibility-first-slice.md)。
+
+This implementation work was selected by the post-cache-version-policy replan and is complete for the first slice. / これは cache/version policy 後の replan で選んだ implementation work で、first slice は完了です。
+
+| Step | Work / 作業 | Status | Rough effort / 目安 | Output / 成果物 |
+| --- | --- | --- | --- | --- |
+| CPR1 | Current candidate lookup reuse / current candidate lookup reuse | `DONE` | 0.25 day / 0.25 日 | Existing current approved candidate lookup is reused on the NO-CODE-RUNTIME detail page. |
+| CPR2 | Current/non-current UI marker / current・non-current UI marker | `DONE` | 0.25 - 0.5 day / 0.25 - 0.5 日 | Approved candidates show whether they currently back `/runs/no-code/{project_key}/current/runtime-preview.html`. |
+| CPR3 | Boundary copy and contracts / boundary copy・contract | `DONE` | 0.25 day / 0.25 日 | UI explains current/non-current behavior, with static contract coverage and docs. |
+
+Boundary / 境界:
+
+- In scope: current alias visibility on the existing operator/admin candidate history surface and static contract coverage. / 対象: 既存 operator / admin candidate history surface 上の current alias visibility と static contract coverage。
+- Out of scope: rollback action, explicit current selection storage, custom alias storage, new public URL shapes, package copy/static hosting. / 対象外: rollback action、explicit current selection storage、custom alias storage、新 public URL shape、package copy / static hosting。
+- Verification: PHP lint, focused Docker-backed contract test, `git diff --check`, and full `make test`. / 検証: PHP lint、focused Docker-backed contract test、`git diff --check`、full `make test`。
+
+## Post-Current-Public-Revision-Visibility No-Code Product Goal Replan / current public revision visibility 後の no-code product goal 再計画
+
+Status: `DONE`. Report: [2026-0702 Post-Current-Public-Revision-Visibility No-Code Product Goal Replan](reports/2026/2026-0702-post-current-public-revision-visibility-no-code-product-goal-replan.md). / Status: `DONE`。Report: [2026-0702 Post-Current-Public-Revision-Visibility No-Code Product Goal Replan](reports/2026/2026-0702-post-current-public-revision-visibility-no-code-product-goal-replan.md)。
+
+This planning item selected Explicit current public revision selection first slice as the next small no-code product-facing implementation after current public revision visibility landed. / この planning item では current public revision visibility 実装後の次の小さな no-code product-facing implementation として Explicit current public revision selection first slice を選びました。
+
+| Candidate / 候補 | Why / 目的 | First slice estimate / first slice 目安 | Decision |
+| --- | --- | --- | --- |
+| Explicit current public revision selection first slice | Store and mutate the selected current public runtime revision. | 1 - 2 days / 1 - 2 日 | Selected and completed. |
+| Custom public alias key storage | Let a project expose a configured public slug beyond `current`. | 1 - 3 days / 1 - 3 日 | Deferred until current selection is durable. |
+| Broader rollback workflow polish | Add richer rollback copy/history around current selection. | 2 - 5 days / 2 - 5 日 | Deferred. The first slice treats rollback as selecting an older approved candidate. |
+
+## Explicit Current Public Revision Selection First Slice / explicit current public revision selection first slice
+
+Status: `FIRST_SLICE_DONE`. Report: [2026-0702 Explicit Current Public Revision Selection First Slice](reports/2026/2026-0702-explicit-current-public-revision-selection-first-slice.md). / Status: `FIRST_SLICE_DONE`。Report: [2026-0702 Explicit Current Public Revision Selection First Slice](reports/2026/2026-0702-explicit-current-public-revision-selection-first-slice.md)。
+
+This implementation work was selected by the post-current-public-revision-visibility replan and is complete for the first slice. / これは current public revision visibility 後の replan で選んだ implementation work で、first slice は完了です。
+
+| Step | Work / 作業 | Status | Rough effort / 目安 | Output / 成果物 |
+| --- | --- | --- | --- | --- |
+| ECR1 | Current selection storage / current selection storage | `DONE` | 0.5 day / 半日 | Added `no_code_public_runtime_current_revisions` and bootstrap preflight coverage. |
+| ECR2 | Repository and current lookup / repository・current lookup | `DONE` | 0.5 - 1 day / 半日 - 1 日 | Added `app_pdo_select_current_no_code_publish_candidate(...)`; current lookup prefers explicit selection before latest-approved fallback. |
+| ECR3 | UI action, contracts, and docs / UI action・contract・docs | `DONE` | 0.5 day / 半日 | Added guarded `Set Current Public Revision` action, static contract checks, reports, and plan updates. |
+
+Boundary / 境界:
+
+- In scope: explicit current selection storage, operator/admin selection action, current route lookup behavior, focused/static coverage. / 対象: explicit current selection storage、operator / admin selection action、current route lookup behavior、focused / static coverage。
+- Out of scope: custom alias key storage, separate rollback event stream, package copy/static hosting, new public URL shapes. / 対象外: custom alias key storage、separate rollback event stream、package copy / static hosting、新 public URL shape。
+- Verification: PHP lint, focused Docker-backed repository and static contract tests, `git diff --check`, and full `make test`. / 検証: PHP lint、focused Docker-backed repository / static contract test、`git diff --check`、full `make test`。
+
+## Post-Explicit-Current-Public-Revision-Selection No-Code Product Goal Replan / explicit current public revision selection 後の no-code product goal 再計画
+
+Status: `DONE`. Report: [2026-0702 Post-Explicit-Current-Public-Revision-Selection No-Code Product Goal Replan](reports/2026/2026-0702-post-explicit-current-public-revision-selection-no-code-product-goal-replan.md). / Status: `DONE`。Report: [2026-0702 Post-Explicit-Current-Public-Revision-Selection No-Code Product Goal Replan](reports/2026/2026-0702-post-explicit-current-public-revision-selection-no-code-product-goal-replan.md)。
+
+This planning item selected Custom public alias key storage first slice as the next small no-code product-facing implementation after explicit current public revision selection landed. / この planning item では explicit current public revision selection 実装後の次の小さな no-code product-facing implementation として Custom public alias key storage first slice を選びました。
+
+| Candidate / 候補 | Why / 目的 | First slice estimate / first slice 目安 | Decision |
+| --- | --- | --- | --- |
+| Custom public alias key storage first slice | Store stable public alias keys for approved runtime candidates. | 1 - 2 days / 1 - 2 日 | Selected and completed. |
+| Broader rollback workflow polish | Add richer rollback copy/history around current/alias selection. | 1 - 3 days / 1 - 3 日 | Deferred until alias semantics are durable. |
+| Public delivery closure report | Close the narrow public delivery lane with docs/status. | 0.5 - 1 day / 半日 - 1 日 | Deferred until alias route first slice lands. |
+
+## Custom Public Alias Key Storage First Slice / custom public alias key storage first slice
+
+Status: `FIRST_SLICE_DONE`. Report: [2026-0702 Custom Public Alias Key Storage First Slice](reports/2026/2026-0702-custom-public-alias-key-storage-first-slice.md). / Status: `FIRST_SLICE_DONE`。Report: [2026-0702 Custom Public Alias Key Storage First Slice](reports/2026/2026-0702-custom-public-alias-key-storage-first-slice.md)。
+
+This implementation work was selected by the post-explicit-current-public-revision-selection replan and is complete for the first slice. / これは explicit current public revision selection 後の replan で選んだ implementation work で、first slice は完了です。
+
+| Step | Work / 作業 | Status | Rough effort / 目安 | Output / 成果物 |
+| --- | --- | --- | --- | --- |
+| CPA1 | Alias storage / alias storage | `DONE` | 0.5 day / 半日 | Added `no_code_public_runtime_aliases` and bootstrap preflight coverage. |
+| CPA2 | Repository and alias route lookup / repository・alias route lookup | `DONE` | 0.5 - 1 day / 半日 - 1 日 | Added alias normalization/validation, set/lookup helpers, and `/alias/{alias_key}` runtime preview route. |
+| CPA3 | UI action, contracts, and docs / UI action・contract・docs | `DONE` | 0.5 day / 半日 | Added guarded `Set Public Alias` action, static contract checks, reports, and plan updates. |
+
+Boundary / 境界:
+
+- In scope: alias storage, operator/admin alias assignment, alias route lookup behavior, focused/static coverage. / 対象: alias storage、operator / admin alias assignment、alias route lookup behavior、focused / static coverage。
+- Out of scope: alias deletion/disable workflow, custom domain or CDN configuration, separate rollback event stream, package copy/static hosting. / 対象外: alias deletion / disable workflow、custom domain / CDN configuration、separate rollback event stream、package copy / static hosting。
+- Verification: PHP lint, focused Docker-backed repository and static contract tests, `git diff --check`, and full `make test`. / 検証: PHP lint、focused Docker-backed repository / static contract test、`git diff --check`、full `make test`。
+
+## Post-Custom-Public-Alias No-Code Product Goal Replan / custom public alias 後の no-code product goal 再計画
+
+Status: `DONE`. Report: [2026-0702 Post-Custom-Public-Alias No-Code Product Goal Replan](reports/2026/2026-0702-post-custom-public-alias-no-code-product-goal-replan.md). / Status: `DONE`。Report: [2026-0702 Post-Custom-Public-Alias No-Code Product Goal Replan](reports/2026/2026-0702-post-custom-public-alias-no-code-product-goal-replan.md)。
+
+This planning item selected Public alias delete workflow first slice as the next small no-code product-facing implementation after custom public alias key storage landed. / この planning item では custom public alias key storage 実装後の次の小さな no-code product-facing implementation として Public alias delete workflow first slice を選びました。
+
+| Candidate / 候補 | Why / 目的 | First slice estimate / first slice 目安 | Decision |
+| --- | --- | --- | --- |
+| Public alias delete workflow first slice | Let operator/admin withdraw stale or accidental public aliases. | 0.5 - 1 day / 半日 - 1 日 | Selected and completed. |
+| Broader rollback workflow polish | Add richer rollback copy/history around current/alias selection. | 1 - 3 days / 1 - 3 日 | Deferred until alias lifecycle has a minimal removal path. |
+| Public delivery closure report | Close the narrow public delivery lane with docs/status. | 0.5 - 1 day / 半日 - 1 日 | Deferred until alias deletion lands. |
+
+## Public Alias Delete Workflow First Slice / public alias delete workflow first slice
+
+Status: `FIRST_SLICE_DONE`. Report: [2026-0702 Public Alias Delete Workflow First Slice](reports/2026/2026-0702-public-alias-delete-workflow-first-slice.md). / Status: `FIRST_SLICE_DONE`。Report: [2026-0702 Public Alias Delete Workflow First Slice](reports/2026/2026-0702-public-alias-delete-workflow-first-slice.md)。
+
+This implementation work was selected by the post-custom-public-alias replan and is complete for the first slice. / これは custom public alias 後の replan で選んだ implementation work で、first slice は完了です。
+
+| Step | Work / 作業 | Status | Rough effort / 目安 | Output / 成果物 |
+| --- | --- | --- | --- | --- |
+| PAD1 | Alias list helper / alias list helper | `DONE` | 0.25 day / 0.25 日 | Added repository list helper for configured public runtime aliases. |
+| PAD2 | Alias delete helper / alias delete helper | `DONE` | 0.25 - 0.5 day / 0.25 - 0.5 日 | Added guarded operator/admin deletion helper that removes the alias row. |
+| PAD3 | UI action, contracts, and docs / UI action・contract・docs | `DONE` | 0.25 - 0.5 day / 0.25 - 0.5 日 | Added `Public Runtime Aliases` list, `Delete Public Alias`, static contract checks, reports, and plan updates. |
+
+Boundary / 境界:
+
+- In scope: alias listing, operator/admin alias deletion, route deactivation via row deletion, focused/static coverage. / 対象: alias listing、operator / admin alias deletion、row deletion による route deactivation、focused / static coverage。
+- Out of scope: soft-delete history, alias deletion event stream, custom domain or CDN configuration, package copy/static hosting. / 対象外: soft-delete history、alias deletion event stream、custom domain / CDN configuration、package copy / static hosting。
+- Verification: PHP lint, focused Docker-backed repository and static contract tests, `git diff --check`, and full `make test`. / 検証: PHP lint、focused Docker-backed repository / static contract test、`git diff --check`、full `make test`。
+
+## Post-Public-Alias-Delete No-Code Product Goal Replan / public alias delete 後の no-code product goal 再計画
+
+Status: `DONE`. Report: [2026-0702 Post-Public-Alias-Delete No-Code Product Goal Replan](reports/2026/2026-0702-post-public-alias-delete-no-code-product-goal-replan.md). / Status: `DONE`。Report: [2026-0702 Post-Public-Alias-Delete No-Code Product Goal Replan](reports/2026/2026-0702-post-public-alias-delete-no-code-product-goal-replan.md)。
+
+This planning item selected Public delivery closure first slice as the next small no-code product-facing step after public alias delete workflow landed. / この planning item では public alias delete workflow 実装後の次の小さな no-code product-facing step として Public delivery closure first slice を選びました。
+
+| Candidate / 候補 | Why / 目的 | First slice estimate / first slice 目安 | Decision |
+| --- | --- | --- | --- |
+| Public delivery closure first slice | Record the completed public runtime delivery lane and remaining follow-up candidates. | 0.5 day / 半日 | Selected and completed. |
+| Broader rollback workflow polish | Add richer rollback copy/history around current and alias selection. | 1 - 3 days / 1 - 3 日 | Deferred until public delivery closure is recorded. |
+
+## Public Delivery Closure First Slice / public delivery closure first slice
+
+Status: `FIRST_SLICE_DONE`. Report: [2026-0702 Public Delivery Closure First Slice](reports/2026/2026-0702-public-delivery-closure-first-slice.md). / Status: `FIRST_SLICE_DONE`。Report: [2026-0702 Public Delivery Closure First Slice](reports/2026/2026-0702-public-delivery-closure-first-slice.md)。
+
+This docs-only closure was selected by the post-public-alias-delete replan and is complete for the first slice. / これは public alias delete 後の replan で選んだ docs-only closure で、first slice は完了です。
+
+| Step | Work / 作業 | Status | Rough effort / 目安 | Output / 成果物 |
+| --- | --- | --- | --- | --- |
+| PDC1 | Capability boundary / capability boundary | `DONE` | 0.25 day / 0.25 日 | Recorded approved candidate, artifact-key, current, explicit current, alias, and alias deletion capabilities. |
+| PDC2 | Remaining candidates / remaining candidates | `DONE` | 0.25 day / 0.25 日 | Recorded rollback polish, alias audit trail, public hardening, and browser smoke as follow-up candidates. |
+| PDC3 | Plan index and report updates / plan index・report updates | `DONE` | 0.25 day / 0.25 日 | Added closure report and moved the active plan to post-public-delivery-closure replan. |
+
+Boundary / 境界:
+
+- In scope: docs closure, acceptance boundary, remaining follow-up candidates. / 対象: docs closure、acceptance boundary、remaining follow-up candidates。
+- Out of scope: new code, new routes, custom domain/CDN configuration, package copy/static hosting, push. / 対象外: new code、新 route、custom domain / CDN configuration、package copy / static hosting、push。
+- Verification: `git diff --check`. / 検証: `git diff --check`。
+
+## Post-Public-Delivery-Closure No-Code Product Goal Replan / public delivery closure 後の no-code product goal 再計画
+
+Status: `DONE`. Report: [2026-0702 Post-Public-Delivery-Closure No-Code Product Goal Replan](reports/2026/2026-0702-post-public-delivery-closure-no-code-product-goal-replan.md). / Status: `DONE`。Report: [2026-0702 Post-Public-Delivery-Closure No-Code Product Goal Replan](reports/2026/2026-0702-post-public-delivery-closure-no-code-product-goal-replan.md)。
+
+This planning item selected Rollback workflow polish first slice as the next no-code product-facing step after public delivery closure landed. / この planning item では public delivery closure 実施後の次の no-code product-facing step として Rollback workflow polish first slice を選びました。
+
+| Candidate / 候補 | Why / 目的 | First slice estimate / first slice 目安 | Decision |
+| --- | --- | --- | --- |
+| Rollback workflow polish first slice | Clarify the existing current revision rollback path and alias behavior in operator/admin UI. | 0.5 - 1 day / 半日 - 1 日 | Selected and completed. |
+| Alias lifecycle audit trail | Record alias create/update/delete lifecycle as explicit history. | 1 - 2 days / 1 - 2 日 | Deferred until auditability is promoted. |
+| Public delivery browser smoke | Exercise public artifact/current/alias routes in a browser-level smoke. | 0.5 - 1 day / 半日 - 1 日 | Deferred until public route fixtures are stable smoke targets. |
+
+## Rollback Workflow Polish First Slice / rollback workflow polish first slice
+
+Status: `FIRST_SLICE_DONE`. Report: [2026-0702 Rollback Workflow Polish First Slice](reports/2026/2026-0702-rollback-workflow-polish-first-slice.md). / Status: `FIRST_SLICE_DONE`。Report: [2026-0702 Rollback Workflow Polish First Slice](reports/2026/2026-0702-rollback-workflow-polish-first-slice.md)。
+
+This first slice names the already-supported rollback behavior in the operator/admin `NO-CODE-RUNTIME` detail UI. Selecting an older approved candidate moves `current` back to that revision, while artifact-key URLs and alias rows remain stable unless explicitly updated. / この first slice では、operator / admin の `NO-CODE-RUNTIME` detail UI 上で既に可能な rollback behavior を明示しました。古い approved candidate を選ぶと `current` はその revision に戻り、artifact-key URL と alias row は明示更新しない限り固定です。
+
+| Step | Work / 作業 | Status | Rough effort / 目安 | Output / 成果物 |
+| --- | --- | --- | --- | --- |
+| RWP1 | Current/non-current rollback copy / current・non-current rollback 表示 | `DONE` | 0.25 day / 0.25 日 | Added current rollback target and older approved candidate rollback wording. |
+| RWP2 | Alias follow-current warning / alias follow-current warning | `DONE` | 0.25 day / 0.25 日 | Added copy explaining alias routes do not automatically follow current rollback. |
+| RWP3 | Static contract and docs / static contract・docs | `DONE` | 0.25 - 0.5 day / 0.25 - 0.5 日 | Added Source Output contract assertions, report, and plan index updates. |
+
+Boundary / 境界:
+
+- In scope: UI wording, rollback semantics clarity, static coverage, docs. / 対象: UI wording、rollback semantics clarity、static coverage、docs。
+- Out of scope: new rollback storage, rollback event stream, alias automatic follow-current mode, new public routes, push. / 対象外: new rollback storage、rollback event stream、alias automatic follow-current mode、新 public route、push。
+- Verification: PHP lint, focused Docker-backed Source Output contract test, `git diff --check`, and full `make test`. / 検証: PHP lint、focused Docker-backed Source Output contract test、`git diff --check`、full `make test`。
+
+## Post-Rollback-Workflow-Polish No-Code Product Goal Replan / rollback workflow polish 後の no-code product goal 再計画
+
+Status: `DONE`. Report: [2026-0702 Post-Rollback-Workflow-Polish No-Code Product Goal Replan](reports/2026/2026-0702-post-rollback-workflow-polish-no-code-product-goal-replan.md). / Status: `DONE`。Report: [2026-0702 Post-Rollback-Workflow-Polish No-Code Product Goal Replan](reports/2026/2026-0702-post-rollback-workflow-polish-no-code-product-goal-replan.md)。
+
+This planning item selected Public delivery browser smoke first slice as the next no-code product-facing step after rollback workflow polish landed. / この planning item では rollback workflow polish 実施後の次の no-code product-facing step として Public delivery browser smoke first slice を選びました。
+
+| Candidate / 候補 | Why / 目的 | First slice estimate / first slice 目安 | Decision |
+| --- | --- | --- | --- |
+| Public delivery browser smoke first slice | Exercise artifact/current/alias public preview URLs as browser-visible runtime pages. | 0.5 - 1 day / 半日 - 1 日 | Selected and completed. |
+| Alias lifecycle audit trail | Record alias create/update/delete lifecycle as explicit history. | 1 - 2 days / 1 - 2 日 | Deferred until auditability is promoted. |
+| New product-facing continuation outside public delivery | Move back to a broader no-code product surface after public delivery verification. | Replan first / まず再計画 | Deferred until public route browser coverage is closed. |
+
+## Public Delivery Browser Smoke First Slice / public delivery browser smoke first slice
+
+Status: `FIRST_SLICE_DONE`. Report: [2026-0702 Public Delivery Browser Smoke First Slice](reports/2026/2026-0702-public-delivery-browser-smoke-first-slice.md). / Status: `FIRST_SLICE_DONE`。Report: [2026-0702 Public Delivery Browser Smoke First Slice](reports/2026/2026-0702-public-delivery-browser-smoke-first-slice.md)。
+
+This first slice adds a sample28 browser smoke for public runtime delivery URLs. It generates and publishes a `NO-CODE-RUNTIME` artifact, seeds approved/current/alias public runtime rows, verifies cache headers, and runs the generated runtime browser smoke against artifact-key, current, and alias URLs. / この first slice では sample28 の public runtime delivery URL 向け browser smoke を追加しました。`NO-CODE-RUNTIME` artifact を生成・publish し、approved / current / alias の public runtime row を seed し、cache header を確認し、artifact-key / current / alias URL に対して generated runtime browser smoke を実行します。
+
+| Step | Work / 作業 | Status | Rough effort / 目安 | Output / 成果物 |
+| --- | --- | --- | --- | --- |
+| PDB1 | Browser smoke URL support / browser smoke URL support | `DONE` | 0.25 day / 0.25 日 | Added `--url=...` support to the existing no-code runtime browser smoke. |
+| PDB2 | Public runtime smoke fixture / public runtime smoke fixture | `DONE` | 0.25 - 0.5 day / 0.25 - 0.5 日 | Added CLI seed for approved/current/alias public runtime rows from a generated artifact. |
+| PDB3 | sample28 public route smoke / sample28 public route smoke | `DONE` | 0.25 - 0.5 day / 0.25 - 0.5 日 | Added `make sample28-no-code-public-runtime-browser-smoke` for artifact/current/alias URL and cache checks. |
+| PDB4 | MySQL PDO route lookup hardening / MySQL PDO route lookup hardening | `DONE` | 0.25 day / 0.25 日 | Fixed duplicate named placeholders in current/alias approved candidate lookup queries uncovered by the MySQL-backed smoke. |
+
+Boundary / 境界:
+
+- In scope: sample28 smoke fixture, existing public runtime route behavior, cache header checks, browser checks for generated runtime semantics. / 対象: sample28 smoke fixture、既存 public runtime route behavior、cache header checks、generated runtime semantics の browser checks。
+- Out of scope: new public route behavior, alias audit trail, new generated runtime UI behavior, push. / 対象外: new public route behavior、alias audit trail、新 generated runtime UI behavior、push。
+- Verification: `make sample28-no-code-public-runtime-browser-smoke`, PHP lint, focused repository/static PHPUnit, `git diff --check`, and full `make test`. / 検証: `make sample28-no-code-public-runtime-browser-smoke`、PHP lint、focused repository / static PHPUnit、`git diff --check`、full `make test`。
+
+## Post-Public-Delivery-Browser-Smoke No-Code Product Goal Replan / public delivery browser smoke 後の no-code product goal 再計画
+
+Status: `DONE`. Report: [2026-0702 Post-Public-Delivery-Browser-Smoke No-Code Product Goal Replan](reports/2026/2026-0702-post-public-delivery-browser-smoke-no-code-product-goal-replan.md). / Status: `DONE`。Report: [2026-0702 Post-Public-Delivery-Browser-Smoke No-Code Product Goal Replan](reports/2026/2026-0702-post-public-delivery-browser-smoke-no-code-product-goal-replan.md)。
+
+This planning item selected Alias lifecycle audit trail first slice as the next no-code product-facing step after public delivery browser smoke landed. / この planning item では public delivery browser smoke 実施後の次の no-code product-facing step として Alias lifecycle audit trail first slice を選びました。
+
+| Candidate / 候補 | Why / 目的 | First slice estimate / first slice 目安 | Decision |
+| --- | --- | --- | --- |
+| Alias lifecycle audit trail first slice | Make alias create/update/delete operations visible after the fact. | 0.5 - 1 day / 半日 - 1 日 | Selected and completed. |
+| New product-facing continuation outside public delivery | Move back to a broader no-code product surface after public delivery auditability. | Replan first / まず再計画 | Deferred until alias lifecycle auditability is closed. |
+| Broader public hardening | Add broader public delivery deployment hardening. | 1 - 3 days / 1 - 3 日 | Deferred. Browser smoke and cache policy are covered for the current lane. |
+
+## Alias Lifecycle Audit Trail First Slice / alias lifecycle audit trail first slice
+
+Status: `FIRST_SLICE_DONE`. Report: [2026-0702 Alias Lifecycle Audit Trail First Slice](reports/2026/2026-0702-alias-lifecycle-audit-trail-first-slice.md). / Status: `FIRST_SLICE_DONE`。Report: [2026-0702 Alias Lifecycle Audit Trail First Slice](reports/2026/2026-0702-alias-lifecycle-audit-trail-first-slice.md)。
+
+This first slice adds append-only events for public runtime alias create, update, and delete operations, then shows recent events in the operator/admin `NO-CODE-RUNTIME` detail UI. / この first slice では public runtime alias の create / update / delete 操作に append-only event を追加し、operator / admin の `NO-CODE-RUNTIME` detail UI に最近の event を表示します。
+
+| Step | Work / 作業 | Status | Rough effort / 目安 | Output / 成果物 |
+| --- | --- | --- | --- | --- |
+| ALT1 | Alias event schema / alias event schema | `DONE` | 0.25 day / 0.25 日 | Added `no_code_public_runtime_alias_events` and bootstrap preflight coverage. |
+| ALT2 | Repository event recording / repository event recording | `DONE` | 0.25 - 0.5 day / 0.25 - 0.5 日 | Recorded `alias_created`, `alias_updated`, and `alias_deleted` events. |
+| ALT3 | Operator/admin event display / operator/admin event display | `DONE` | 0.25 day / 0.25 日 | Added recent alias lifecycle events to the `Public Runtime Aliases` section. |
+| ALT4 | Focused coverage and docs / focused coverage・docs | `DONE` | 0.25 day / 0.25 日 | Added repository/static assertions, reports, and plan index updates. |
+
+Boundary / 境界:
+
+- In scope: append-only alias lifecycle storage, create/update/delete event recording, recent UI display, focused coverage. / 対象: append-only alias lifecycle storage、create / update / delete event recording、recent UI display、focused coverage。
+- Out of scope: broad audit search/export, automatic alias follow-current behavior, new public routes, push. / 対象外: broad audit search / export、automatic alias follow-current behavior、新 public route、push。
+- Verification: public runtime browser smoke, PHP lint, focused repository/static PHPUnit, `git diff --check`, and full `make test`. / 検証: public runtime browser smoke、PHP lint、focused repository / static PHPUnit、`git diff --check`、full `make test`。
+
+## Post-Alias-Lifecycle-Audit-Trail No-Code Product Goal Replan / alias lifecycle audit trail 後の no-code product goal 再計画
+
+Status: `DONE`. Report: [2026-0702 Post-Alias-Lifecycle-Audit-Trail No-Code Product Goal Replan](reports/2026/2026-0702-post-alias-lifecycle-audit-trail-no-code-product-goal-replan.md). / Status: `DONE`。Report: [2026-0702 Post-Alias-Lifecycle-Audit-Trail No-Code Product Goal Replan](reports/2026/2026-0702-post-alias-lifecycle-audit-trail-no-code-product-goal-replan.md)。
+
+This planning item selected Public delivery hardening closure report as the final no-code public delivery lane step after alias lifecycle audit trail landed. / この planning item では alias lifecycle audit trail 実施後の最後の no-code public delivery lane step として Public delivery hardening closure report を選びました。
+
+| Candidate / 候補 | Why / 目的 | First slice estimate / first slice 目安 | Decision |
+| --- | --- | --- | --- |
+| Public delivery hardening closure report | Record the final public delivery boundary and remaining parked deployment hardening candidates. | 0.25 - 0.5 day / 0.25 - 0.5 日 | Selected and completed. |
+| Another public delivery hardening implementation | Add more public delivery behavior before leaving the lane. | 1 - 3 days / 1 - 3 日 | Deferred. No concrete minimum blocker remains after route/browser/audit coverage. |
+| New product-facing continuation outside public delivery | Move to a broader no-code product surface. | Replan first / まず再計画 | Deferred until accumulated public delivery worktree is organized into reviewable commits. |
+
+## Public Delivery Hardening Closure Report / public delivery hardening closure report
+
+Status: `FIRST_SLICE_DONE`. Report: [2026-0702 Public Delivery Hardening Closure Report](reports/2026/2026-0702-public-delivery-hardening-closure-report.md). / Status: `FIRST_SLICE_DONE`。Report: [2026-0702 Public Delivery Hardening Closure Report](reports/2026/2026-0702-public-delivery-hardening-closure-report.md)。
+
+This closure report records public delivery as complete for the current minimum after post-closure hardening. / この closure report では post-closure hardening 後の public delivery を current minimum として完了扱いにしました。
+
+| Step | Work / 作業 | Status | Rough effort / 目安 | Output / 成果物 |
+| --- | --- | --- | --- | --- |
+| PDHC1 | Capability boundary / capability boundary | `DONE` | 0.25 day / 0.25 日 | Recorded approved exposure, artifact/current/alias routes, cache policy, rollback/current selection, alias delete, browser smoke, and alias lifecycle audit. |
+| PDHC2 | Remaining parked candidates / remaining parked candidates | `DONE` | 0.25 day / 0.25 日 | Parked custom domain/CDN/static copy, broad audit export, and automatic alias-follow-current mode until concrete requirements exist. |
+| PDHC3 | Next work boundary / next work boundary | `DONE` | 0.25 day / 0.25 日 | Set commit cleanup / review grouping as next active step without push. |
+
+Boundary / 境界:
+
+- In scope: docs closure, accepted public delivery boundary, remaining parked candidates, next-step boundary. / 対象: docs closure、accepted public delivery boundary、remaining parked candidates、next-step boundary。
+- Out of scope: new behavior, deployment infrastructure, commit, push. / 対象外: new behavior、deployment infrastructure、commit、push。
+- Verification: no new code; previous alias lifecycle slice passed browser smoke, `git diff --check`, and full `make test`. / 検証: 新 code はなし。直前の alias lifecycle slice は browser smoke、`git diff --check`、full `make test` に通過。
+
+## Public Delivery Commit Cleanup / public delivery commit cleanup
+
+Status: `DONE`. Report: [2026-0702 Public Delivery Commit Cleanup](reports/2026/2026-0702-public-delivery-commit-cleanup.md). / Status: `DONE`。Report: [2026-0702 Public Delivery Commit Cleanup](reports/2026/2026-0702-public-delivery-commit-cleanup.md)。
+
+This cleanup grouped the accumulated no-code public runtime delivery worktree into local commit `e2c5d7e` without pushing. / この cleanup では no-code public runtime delivery の累積 worktree を local commit `e2c5d7e` にまとめ、push はしていません。
+
+| Step | Work / 作業 | Status | Rough effort / 目安 | Output / 成果物 |
+| --- | --- | --- | --- | --- |
+| PDCC1 | Review diff / 差分確認 | `DONE` | 0.25 day / 0.25 日 | Confirmed the dirty worktree belonged to the public delivery lane. |
+| PDCC2 | Local commit / local commit | `DONE` | 0.25 day / 0.25 日 | Created `e2c5d7e Add no-code public runtime delivery workflow`. |
+| PDCC3 | Commit record / commit record | `DONE` | 0.25 day / 0.25 日 | Recorded commit scope and verification in the dated report and plan index. |
+
+Boundary / 境界:
+
+- In scope: local commit grouping, report/current-plan record. / 対象: local commit grouping、report / current-plan record。
+- Out of scope: push, history rewrite, additional implementation. / 対象外: push、history rewrite、追加実装。
+- Verification: reused the pre-commit browser smoke, focused PHPUnit, full `make test`, and `git diff --check` record. / 検証: commit 前の browser smoke、focused PHPUnit、full `make test`、`git diff --check` 記録を使用。
+
+## Post-Public-Delivery-Commit No-Code Product Goal Replan / public delivery commit 後の no-code product goal 再計画
+
+Status: `ACTIVE_NEXT`. / Status: `ACTIVE_NEXT`。
+
+This is the next active planning step after public delivery was committed locally. It should choose the next implementation lane without pushing. / これは public delivery を local commit にまとめた後の次の active planning step です。push せず、次の implementation lane を選びます。
 
 ## Data-First No-Code Domain Sample 2 First Slice / data-first no-code domain sample 2 first slice
 
@@ -2172,13 +2735,13 @@ Verification / 検証:
 
 ## Post-Verification-Closure No-Code Product Goal Replan / verification closure 後の no-code product goal 再計画
 
-Status: `ACTIVE_NEXT`. / Status: `ACTIVE_NEXT`。
+Status: `DONE`. / Status: `DONE`。
 
-This is the active planning step after Docker-backed verification closure. It should choose the smallest code slice for publish candidate persistence, or explicitly select another product-surface continuation. / これは Docker-backed verification closure 後の active planning step です。publish candidate persistence の最小 code slice を選ぶか、別の product-surface continuation を明示的に選びます。
+This planning step chose minimal candidate persistence as the smallest code slice after Docker-backed verification closure. / この planning step では、Docker-backed verification closure 後の最小 code slice として minimal candidate persistence を選びました。
 
 | Candidate / 候補 | Why / 目的 | First slice estimate / first slice 目安 | Decision |
 | --- | --- | --- | --- |
-| Minimal candidate persistence | Implement stored candidate snapshots and focused repository tests using the completed checklist/matrix. | 1 - 2 days / 1 - 2 日 | Candidate. Now viable because Docker-backed verification passed. |
+| Minimal candidate persistence | Implement stored candidate snapshots and focused repository tests using the completed checklist/matrix. | 1 - 2 days / 1 - 2 日 | Selected and completed as the first slice. |
 | Migration/bootstrap only | Add only table/bootstrap coverage first, then replan before repository create/list/find. | 0.5 - 1 day / 半日 - 1 日 | Candidate. Lower-risk first code slice if the persistence lane should stay very narrow. |
 | Approval transition persistence | Start transition event storage. | Replan after candidate persistence / candidate persistence 後に再計画 | Deferred. Candidate records should exist first. |
 | Public runtime URL / packaging | Expose or package a published artifact. | Replan after candidate persistence and approval transitions / candidate persistence と approval transition 後に再計画 | Deferred. |
@@ -2188,6 +2751,51 @@ Boundary / 境界:
 - In scope: choose one next step after Docker-backed verification closure. / 対象: Docker-backed verification closure 後の次 step を 1 つ選ぶ。
 - Out of scope: push, public runtime URL, packaging, approval mutation without candidate persistence. / 対象外: push、public runtime URL、packaging、candidate persistence なしの approval mutation。
 - Verification: planning/report update only unless code is selected. / 検証: code を選ぶまでは planning / report 更新のみ。
+
+## Minimal Publish Candidate Persistence First Slice / minimal publish candidate persistence first slice
+
+Status: `FIRST_SLICE_DONE`. Report: [2026-0702 Minimal Publish Candidate Persistence First Slice](reports/2026/2026-0702-minimal-publish-candidate-persistence-first-slice.md). / Status: `FIRST_SLICE_DONE`。Report: [2026-0702 Minimal Publish Candidate Persistence First Slice](reports/2026/2026-0702-minimal-publish-candidate-persistence-first-slice.md)。
+
+This implementation slice added durable draft candidate revisions from publishable `NO-CODE-RUNTIME` readiness snapshots. / この implementation slice では、publishable な `NO-CODE-RUNTIME` readiness snapshot から durable draft candidate revision を保存できるようにしました。
+
+Implemented / 実装:
+
+- `no_code_publish_candidate_revisions` config-store table migration. / config-store table migration。
+- Bootstrap required table/column checks. / bootstrap required table / column check。
+- `app_pdo_create_no_code_publish_candidate_from_readiness_snapshot(...)`. / 作成 helper。
+- `app_pdo_list_no_code_publish_candidates_for_source_output(...)`. / 一覧 helper。
+- `app_pdo_find_no_code_publish_candidate(...)`. / 取得 helper。
+- SQLite integration tests for bootstrap, create/list/find, fail-closed rejection, and scoped lookup. / bootstrap、create / list / find、fail-closed reject、scoped lookup の SQLite integration test。
+
+Verification / 検証:
+
+- `php -l mtool/app/no_code_publish_candidate_repository_pdo.php`: passed. / 通過。
+- `php -l tests/Integration/NoCodePublishCandidateRepositorySqliteTest.php`: passed. / 通過。
+- `php -l mtool/app/config_db_bootstrap.php`: passed. / 通過。
+- Focused Docker-backed PHPUnit for `NoCodePublishCandidateRepositorySqliteTest`: passed (`4 tests, 52 assertions`). / focused Docker-backed PHPUnit は通過（`4 tests, 52 assertions`）。
+- Full `make test`: passed (`315 tests, 10437 assertions, skipped 1`). / full `make test` は通過（`315 tests, 10437 assertions, skipped 1`）。
+
+Boundary / 境界:
+
+- In scope: draft candidate persistence and read repository only. / 対象: draft candidate persistence と read repository のみ。
+- Out of scope: approval transitions, public URL, packaging, rollback, and route/UI mutation controls. / 対象外: approval transition、public URL、packaging、rollback、route / UI mutation controls。
+
+## Post-Minimal-Candidate-Persistence No-Code Product Goal Replan / minimal candidate persistence 後の no-code product goal 再計画
+
+Status: `DONE`. / Status: `DONE`。
+
+This planning step selected approval transition persistence after durable draft candidate revisions landed. / この planning step では durable draft candidate revision 実装後に approval transition persistence を選びました。
+
+| Candidate / 候補 | Why / 目的 | First slice estimate / first slice 目安 | Decision |
+| --- | --- | --- | --- |
+| Approval transition persistence | Add request-review / approve / reject / supersede transition storage on top of draft candidates. | 1 - 2 days / 1 - 2 日 | Selected and completed. Candidate records now exist. |
+| Source Outputs read-only candidate list | Surface existing candidate revisions without mutation controls. | 0.5 - 1 day / 半日 - 1 日 | Candidate. Useful if visibility should precede transition mutation. |
+| Public runtime URL / packaging | Expose or package an approved artifact. | Replan after approval transitions / approval transition 後に再計画 | Deferred. Approval state should exist first. |
+
+Boundary / 境界:
+
+- In scope: choose the next small product slice after candidate persistence. / 対象: candidate persistence 後の次の小さな product slice を選ぶ。
+- Out of scope: push, broad publishing workflow, rollback, public packaging before approval state. / 対象外: push、広い publishing workflow、rollback、approval state 前の public packaging。
 
 ## Next No-Code Product Goal After Runtime Polish Decision / runtime polish 後の次 no-code product goal decision
 

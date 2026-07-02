@@ -11,6 +11,38 @@
 
 ## Index
 
+- `2026-0702-public-delivery-commit-cleanup.md`
+  - no-code public runtime delivery の累積 worktree を local commit `e2c5d7e Add no-code public runtime delivery workflow` に整理。Push は未実行。pre-commit verification は public runtime browser smoke、focused PHPUnit、full `make test`、`git diff --check`。Status: `DONE`。
+- `2026-0702-public-delivery-hardening-closure-report.md`
+  - post-closure hardening 後の no-code public runtime delivery lane を current minimum として完了扱いにし、custom domain/CDN/static copy、broader audit export、automatic alias-follow-current mode を parked candidate として記録。次は push なしの commit cleanup / review grouping。Status: `FIRST_SLICE_DONE`。
+- `2026-0702-post-alias-lifecycle-audit-trail-no-code-product-goal-replan.md`
+  - alias lifecycle audit trail 後の product-goal replan。public delivery lane に concrete minimum blocker は残っていないと判断し、final step として Public delivery hardening closure report を選択。Status: `DONE`。
+- `2026-0702-alias-lifecycle-audit-trail-first-slice.md`
+  - public runtime alias の create / update / delete に append-only lifecycle event を追加し、operator/admin の `NO-CODE-RUNTIME` detail UI に最近の alias lifecycle events を表示。Focused PHPUnit は repository が `15 tests, 254 assertions`、static contract が `22 tests, 1798 assertions`、`make sample28-no-code-public-runtime-browser-smoke` と full `make test` は `326 tests, 10699 assertions, skipped 1` で通過。Status: `FIRST_SLICE_DONE`。
+- `2026-0702-post-public-delivery-browser-smoke-no-code-product-goal-replan.md`
+  - public delivery browser smoke 後の product-goal replan。次の product-facing continuation として Alias lifecycle audit trail first slice を選択。public delivery 外の新 continuation は後続へ延期。Status: `DONE`。
+- `2026-0702-public-delivery-browser-smoke-first-slice.md`
+  - sample28 の public `NO-CODE-RUNTIME` delivery browser smoke を追加。artifact-key / current / alias public preview URL を headless Chrome で検証し、artifact URL は immutable cache、current / alias URL は `no-store` を確認。MySQL-backed smoke で露出した current / alias lookup の duplicate named placeholder も修正。`make sample28-no-code-public-runtime-browser-smoke`、focused PHPUnit、full `make test` は `325 tests, 10665 assertions, skipped 1` で通過。Status: `FIRST_SLICE_DONE`。
+- `2026-0702-post-rollback-workflow-polish-no-code-product-goal-replan.md`
+  - rollback workflow polish 後の product-goal replan。次の product-facing continuation として Public delivery browser smoke first slice を選択。alias lifecycle audit trail は後続候補。Status: `DONE`。
+- `2026-0702-rollback-workflow-polish-first-slice.md`
+  - operator/admin の `NO-CODE-RUNTIME` detail UI に current rollback semantics を明示。current / non-current approved candidate の表示で rollback target を説明し、alias route は current public revision rollback に自動追従しないことを表示。Focused PHPUnit は `OpenApiSourceOutputContractTest` が `22 tests, 1795 assertions`、full `make test` は `325 tests, 10665 assertions, skipped 1` で通過。Status: `FIRST_SLICE_DONE`。
+- `2026-0702-post-public-delivery-closure-no-code-product-goal-replan.md`
+  - public delivery closure 後の product-goal replan。次の product-facing continuation として Rollback workflow polish first slice を選択。alias lifecycle audit trail と public delivery browser smoke は後続候補。Status: `DONE`。
+- `2026-0702-public-runtime-current-alias-route-first-slice.md`
+  - approved `NO-CODE-RUNTIME` candidate の最新 approved revision を指す `/runs/no-code/{project_key}/current/runtime-preview.html` を追加。artifact-key route より先に current alias route を解決し、approved candidate package exposure に current preview link を追加。Focused PHPUnit は `NoCodePublishCandidateRepositorySqliteTest` が `9 tests, 120 assertions`、`OpenApiSourceOutputContractTest` が `22 tests, 1759 assertions`、full `make test` は `320 tests, 10526 assertions, skipped 1` で通過。Status: `FIRST_SLICE_DONE`。
+- `2026-0702-post-public-runtime-preview-no-code-product-goal-replan.md`
+  - public runtime preview artifact-key route 後の product-goal replan。次の小さな public delivery slice として Public runtime current alias route first slice を選択。custom alias key / rollback / cache policy は対象外。Status: `DONE`。
+- `2026-0702-approved-candidate-package-exposure-first-slice.md`
+  - approved candidate package exposure first slice。`NO-CODE-RUNTIME` Source Output detail page の candidate history に、approved candidate のみ既存 artifact detail/download link を表示し、未承認 candidate には package exposure guard text を表示。Focused PHPUnit は `OpenApiSourceOutputContractTest` が `22 tests, 1748 assertions`、`NoCodePublishCandidateRepositorySqliteTest` が `7 tests, 92 assertions`、full `make test` は `318 tests, 10487 assertions, skipped 1` で通過。Status: `FIRST_SLICE_DONE`。
+- `2026-0702-post-guarded-candidate-ui-no-code-product-goal-replan.md`
+  - guarded candidate UI 後の product-goal replan。次の小さな product-facing slice として approved candidate package exposure first slice を選択。public runtime URL / public alias route / rollback は対象外。Status: `DONE`。
+- `2026-0702-approval-transition-persistence-first-slice.md`
+  - no-code publish candidate の approval transition persistence first slice。`no_code_publish_candidate_transition_events` table、bootstrap preflight、`request_review` / `approve` / `reject` repository helper、fail-closed guards、focused Docker-backed SQLite coverage を追加。Focused PHPUnit は `7 tests, 92 assertions`、full `make test` は `318 tests, 10477 assertions, skipped 1` で通過。Status: `FIRST_SLICE_DONE`。
+- `2026-0702-post-minimal-candidate-persistence-no-code-product-goal-replan.md`
+  - minimal candidate persistence 後の product-goal replan。durable draft candidate revision の次の最小 product-facing code slice として Approval transition persistence first slice を選択。Status: `DONE`。
+- `2026-0702-minimal-publish-candidate-persistence-first-slice.md`
+  - `no_code_publish_candidate_revisions` table、bootstrap preflight、publishable readiness snapshot からの draft candidate 作成、scoped list/find repository、fail-closed tests を追加。Focused Docker-backed PHPUnit は `4 tests, 52 assertions`、full `make test` は `315 tests, 10437 assertions, skipped 1` で通過。Status: `FIRST_SLICE_DONE`。
 - `2026-0702-docker-backed-verification-rerun-closure.md`
   - Docker restart 後に `make sample28-no-code-schema-form-runtime-smoke` と full `make test` を再実行して通過。これまでの Docker daemon unavailable blocker を current blocker から外す。Status: `DONE`。
 - `2026-0702-publish-candidate-repository-api-contract-test-matrix-first-slice.md`
@@ -113,6 +145,10 @@
   - generated `runtime-preview.html` に preview root label、labelled screen regions、list table caption、action nav label を追加。runtime behavior は変えず、NoCodeRuntimeTest / sample28 checker / runtime UI smoke で DOM を確認。Status: `FIRST_SLICE_DONE`。
 - `2026-0701-post-generated-runtime-visual-polish-follow-up-no-code-product-goal-replan.md`
   - generated runtime visual polish follow-up 後の product-goal replan。visible runtime scanability が改善された流れを受けて、次の小さな product-facing slice として runtime preview accessibility polish を選択。Status: `DONE`。
+- `2026-0702-guarded-publish-candidate-detail-ui-first-slice.md`
+  - `NO-CODE-RUNTIME` Source Output detail page に publish candidate 作成、candidate history、request-review / approve / reject の guarded transition controls を追加。public runtime URL / packaging は対象外。Status: `FIRST_SLICE_DONE`。
+- `2026-0702-post-approval-transition-persistence-no-code-product-goal-replan.md`
+  - approval transition persistence 後の product-goal replan。次の小さな product-facing slice として guarded publish candidate detail UI first slice を選択。Status: `DONE`。
 - `2026-0701-generated-runtime-visual-polish-follow-up-first-slice.md`
   - generated `runtime-preview.html` の各 screen header 直下に field count / action count / screen key の compact summary を追加。runtime behavior は変えず、NoCodeRuntimeTest / sample28 checker / runtime UI smoke で DOM を確認。Status: `FIRST_SLICE_DONE`。
 - `2026-0701-post-schema-form-consumer-notes-no-code-product-goal-replan.md`
@@ -697,3 +733,37 @@
   - 2026-05-15 終了時点の handoff。次回再開の基準。
 - `2026-0515-resume-prompt.md`
   - `2026-0515-end-of-day-handoff.md` 由来の copy/paste 用 resume prompt。
+# 2026-07-02
+
+- [2026-0702 Public Delivery Closure First Slice](2026-0702-public-delivery-closure-first-slice.md)
+  - no-code public runtime delivery lane の current minimum を closure。approved candidate exposure、artifact-key URL、`current` URL、explicit current selection、custom alias URL、alias deletion を完了済み capability として整理。`git diff --check` で通過。Status: `FIRST_SLICE_DONE`。
+- [2026-0702 Post-Public-Alias-Delete No-Code Product Goal Replan](2026-0702-post-public-alias-delete-no-code-product-goal-replan.md)
+  - public alias delete 後の replan。次の docs-only closure として Public delivery closure first slice を選択。Status: `DONE`。
+- [2026-0702 Public Alias Delete Workflow First Slice](2026-0702-public-alias-delete-workflow-first-slice.md)
+  - `NO-CODE-RUNTIME` の public runtime alias を一覧表示し、operator/admin が削除できるようにした。削除後は alias route が candidate を解決しなくなる。Focused PHPUnit は `NoCodePublishCandidateRepositorySqliteTest` が `14 tests, 223 assertions`、`OpenApiSourceOutputContractTest` が `22 tests, 1792 assertions`、full `make test` は `325 tests, 10662 assertions, skipped 1` で通過。Status: `FIRST_SLICE_DONE`。
+- [2026-0702 Post-Custom-Public-Alias No-Code Product Goal Replan](2026-0702-post-custom-public-alias-no-code-product-goal-replan.md)
+  - custom public alias 後の replan。次の alias lifecycle continuation として Public alias delete workflow first slice を選択。Status: `DONE`。
+- [2026-0702 Custom Public Alias Key Storage First Slice](2026-0702-custom-public-alias-key-storage-first-slice.md)
+  - approved `NO-CODE-RUNTIME` publish candidate に stable public alias key を割り当て、`/runs/no-code/{project_key}/alias/{alias_key}/runtime-preview.html` で配信できるようにした。Focused PHPUnit は `NoCodePublishCandidateRepositorySqliteTest` が `13 tests, 202 assertions`、`OpenApiSourceOutputContractTest` が `22 tests, 1786 assertions`、full `make test` は `324 tests, 10635 assertions, skipped 1` で通過。Status: `FIRST_SLICE_DONE`。
+- [2026-0702 Post-Explicit-Current-Public-Revision-Selection No-Code Product Goal Replan](2026-0702-post-explicit-current-public-revision-selection-no-code-product-goal-replan.md)
+  - explicit current public revision selection 後の replan。次の public-delivery continuation として Custom public alias key storage first slice を選択。Status: `DONE`。
+- [2026-0702 Explicit Current Public Revision Selection First Slice](2026-0702-explicit-current-public-revision-selection-first-slice.md)
+  - project-level `current` public runtime preview が参照する approved `NO-CODE-RUNTIME` publish candidate を operator/admin が明示選択できるようにした。明示選択がない場合は latest-approved fallback を維持。Focused PHPUnit は `NoCodePublishCandidateRepositorySqliteTest` が `11 tests, 160 assertions`、`OpenApiSourceOutputContractTest` が `22 tests, 1778 assertions`、full `make test` は `322 tests, 10585 assertions, skipped 1` で通過。Status: `FIRST_SLICE_DONE`。
+- [2026-0702 Post-Current-Public-Revision-Visibility No-Code Product Goal Replan](2026-0702-post-current-public-revision-visibility-no-code-product-goal-replan.md)
+  - current public revision visibility 後の replan。次の public-delivery continuation として Explicit current public revision selection first slice を選択。Status: `DONE`。
+- [2026-0702 Current Public Revision Visibility First Slice](2026-0702-current-public-revision-visibility-first-slice.md)
+  - NO-CODE-RUNTIME detail page で、project-level `current` public runtime preview がどの approved publish candidate を指しているかを表示。古い approved candidate は non-current として表示し、rollback selection は deferred と明示。Focused PHPUnit は `OpenApiSourceOutputContractTest` が `22 tests, 1774 assertions`、full `make test` は `321 tests, 10559 assertions, skipped 1` で通過。Status: `FIRST_SLICE_DONE`。
+- [2026-0702 Post-Cache-Version-Policy No-Code Product Goal Replan](2026-0702-post-cache-version-policy-no-code-product-goal-replan.md)
+  - cache/version policy 後の replan。次の public-delivery continuation として Current public revision visibility first slice を選択。Status: `DONE`。
+- [2026-0702 Public Runtime Cache/Version Policy First Slice](2026-0702-public-runtime-cache-version-policy-first-slice.md)
+  - public no-code runtime preview response の cache semantics を明示。artifact-key route は `public, max-age=31536000, immutable`、`current` alias は `no-store` を維持。Focused PHPUnit は `OpenApiSourceOutputContractTest` が `22 tests, 1770 assertions`、full `make test` は `321 tests, 10555 assertions, skipped 1` で通過。Status: `FIRST_SLICE_DONE`。
+- [2026-0702 Post-Candidate-Event-Display No-Code Product Goal Replan](2026-0702-post-candidate-event-display-no-code-product-goal-replan.md)
+  - candidate event display 後の replan。次の public-delivery continuation として Public runtime cache/version policy first slice を選択。Status: `DONE`。
+- [2026-0702 Candidate Event Display Polish First Slice](2026-0702-candidate-event-display-polish-first-slice.md)
+  - NO-CODE-RUNTIME detail page で publish candidate ごとの transition event を表示。既存 append-only event を読む helper と focused/static coverage を追加。Focused PHPUnit は `NoCodePublishCandidateRepositorySqliteTest` が `10 tests, 138 assertions`、`OpenApiSourceOutputContractTest` が `22 tests, 1762 assertions`、full `make test` は `321 tests, 10547 assertions, skipped 1` で通過。Status: `FIRST_SLICE_DONE`。
+- [2026-0702 Post-Current-Alias No-Code Product Goal Replan](2026-0702-post-current-alias-no-code-product-goal-replan.md)
+  - current alias 後の replan。次の小さな product-facing slice として Candidate event display polish first slice を選択。Status: `DONE`。
+- [2026-0702 Public Runtime Preview Artifact-Key Route First Slice](2026-0702-public-runtime-preview-artifact-key-route-first-slice.md)
+  - Approved `NO-CODE-RUNTIME` candidate の `runtime-preview.html` を artifact-key public route で公開。public alias / rollback / package copy は deferred。Status: `FIRST_SLICE_DONE`。
+- [2026-0702 Post-Approved-Candidate-Package-Exposure No-Code Product Goal Replan](2026-0702-post-approved-candidate-package-exposure-no-code-product-goal-replan.md)
+  - approved package exposure 後の replan。次の public delivery continuation として Public runtime preview artifact-key route first slice を選択。Status: `DONE`。

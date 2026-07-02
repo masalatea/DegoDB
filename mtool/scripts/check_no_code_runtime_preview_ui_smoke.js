@@ -11,6 +11,7 @@ function usage() {
 
 Options:
   --html=PATH                    runtime-preview.html path
+  --url=URL                      runtime-preview.html URL
   --profile=sample07|sample28|sample29
                                  expected no-code runtime shape (default: sample07)
   --output-dir=PATH              artifact directory root (default: output/playwright/no-code-runtime-preview)
@@ -26,6 +27,7 @@ function repoRoot() {
 function parseArgs(argv) {
   const config = {
     htmlPath: path.join(repoRoot(), 'work', 'source-outputs', 'SAMPLE07', 'NO-CODE-RUNTIME', 'runtime-preview.html'),
+    url: '',
     outputDir: path.join(repoRoot(), 'output', 'playwright', 'no-code-runtime-preview'),
     headless: true,
     help: false,
@@ -55,6 +57,8 @@ function parseArgs(argv) {
     const value = body.slice(separatorIndex + 1).trim();
     if (name === 'html') {
       config.htmlPath = path.resolve(value);
+    } else if (name === 'url') {
+      config.url = value;
     } else if (name === 'profile') {
       config.expected = expectedProfile(value);
     } else if (name === 'output-dir') {
@@ -221,7 +225,7 @@ async function requireVisible(locator, label) {
 }
 
 async function runSmoke(config) {
-  if (!fs.existsSync(config.htmlPath)) {
+  if (config.url === '' && !fs.existsSync(config.htmlPath)) {
     throw new Error(`HTML preview was not found: ${config.htmlPath}`);
   }
 
@@ -237,7 +241,8 @@ async function runSmoke(config) {
   const screenshotPath = path.join(config.outputDir, `no-code-runtime-preview-${timestamp()}.png`);
   try {
     const page = await browser.newPage({ viewport: { width: 1280, height: 900 } });
-    await page.goto(`file://${config.htmlPath}`, { waitUntil: 'load' });
+    const targetUrl = config.url !== '' ? config.url : `file://${config.htmlPath}`;
+    await page.goto(targetUrl, { waitUntil: 'load' });
 
     await requireVisible(page.locator('.no-code-preview'), 'preview root');
     await requireVisible(page.locator(`.no-code-screen[data-screen-key="${config.expected.listScreenKey}"]`), 'list screen');
@@ -406,6 +411,7 @@ async function runSmoke(config) {
     return {
       ok: true,
       html: config.htmlPath,
+      url: config.url,
       screenshot: screenshotPath,
       metrics,
     };

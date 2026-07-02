@@ -97,6 +97,35 @@ function app_route_match(array $request): array
         ];
     }
 
+    if (preg_match('#^/runs/no-code/([^/]+)/current/runtime-preview\.html$#', $request['path'], $matches) === 1) {
+        return [
+            'name' => 'no_code_public_runtime_current_preview',
+            'params' => [
+                'project_key' => strtoupper(trim($matches[1])),
+            ],
+        ];
+    }
+
+    if (preg_match('#^/runs/no-code/([^/]+)/alias/([^/]+)/runtime-preview\.html$#', $request['path'], $matches) === 1) {
+        return [
+            'name' => 'no_code_public_runtime_alias_preview',
+            'params' => [
+                'project_key' => strtoupper(trim($matches[1])),
+                'alias_key' => rawurldecode(trim($matches[2])),
+            ],
+        ];
+    }
+
+    if (preg_match('#^/runs/no-code/([^/]+)/([^/]+)/runtime-preview\.html$#', $request['path'], $matches) === 1) {
+        return [
+            'name' => 'no_code_public_runtime_preview',
+            'params' => [
+                'project_key' => strtoupper(trim($matches[1])),
+                'artifact_key' => rawurldecode(trim($matches[2])),
+            ],
+        ];
+    }
+
     if (preg_match('#^/samples/sample18-task-board/?$#', $request['path']) === 1) {
         return [
             'name' => 'lab_sample18_task_board',
