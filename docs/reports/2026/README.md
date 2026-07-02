@@ -12,7 +12,7 @@
 ## Index
 
 - `2026-0702-no-code-tryout-ready-milestone-closure.md`
-  - #62-#67 を no-code tryout-ready milestone として closure。sample28 seeded preview data、preview data smoke、operator wording polish、sample28 demo tryout shortcut、README/docs の二層構造整理を完了。`make sample28-pack-runtime-test`、`make sample28-no-code-runtime-ui-smoke`、full `make test`、manual Docker demo shortcut check が通過。Status: `FIRST_SLICE_DONE`。
+  - #62-#67 を no-code tryout-ready milestone として closure。sample28 seeded preview data、preview data smoke、operator wording polish、sample28 demo tryout shortcut、README/docs の二層構造整理を完了。最終 status pass は実装ではなく完了状態の検証。未 push の local tryout-ready stack は `31b2ed4 Add sample28 no-code tryout readiness` と `bcf2448 Document no-code tryout positioning` の 2 commits に整理済み。`make sample28-pack-runtime-test`、`make sample28-no-code-runtime-ui-smoke`、full `make test`、manual Docker demo shortcut check が通過。Push は未実行。Status: `FIRST_SLICE_DONE`。
 - `2026-0702-docs-information-architecture-split-plan.md`
   - README/docs の情報設計を database-first toolkit の芯と、その上に載る no-code layer に分け直す計画。元のデータベースツール用途を残しつつ no-code 導線を強くする。#67 として追加。Status: `DONE`。
 - `2026-0702-no-code-onboarding-polish-plan.md`

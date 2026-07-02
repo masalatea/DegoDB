@@ -8,6 +8,8 @@ Closed the no-code tryout-ready milestone through items 62-67.
 
 The result is not "all no-code is finished." It is the first cohesive Web no-code tryout milestone: sample28 can show meaningful seeded data, the preview is covered by smoke, the operator approval path has clearer wording, a sample-scoped demo shortcut can reach current/alias preview quickly, and the README/docs explain that no-code runs on top of the database-first foundation.
 
+The final status pass did not implement #67 from scratch. It confirmed that #62-#67 had already landed, reran focused checks, and clarified the local commit history before any push.
+
 ## Completed Plan Items
 
 | Order | Work unit | Result |
@@ -40,3 +42,12 @@ The two-layer message is now reflected in the entry docs:
   - seeded row text present: `yes`
 
 No push was performed.
+
+## Commit / Remote Status
+
+After the closure check, the unpushed local six-commit tryout-ready stack was regrouped into two local commits:
+
+- `31b2ed4 Add sample28 no-code tryout readiness`
+- `bcf2448 Document no-code tryout positioning`
+
+At regrouping time, the local branch was `develop...origin/develop [ahead 2]`. The regrouping only touched local unpushed commits; it did not rewrite remote history and did not push.
