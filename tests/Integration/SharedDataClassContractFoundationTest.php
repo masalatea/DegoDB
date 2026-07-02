@@ -362,6 +362,142 @@ final class SharedDataClassContractFoundationTest extends TestCase
         self::assertFileExists($publishedRoot . '/schema.sql');
     }
 
+    public function testAppLocalPackageManifestSourceOutputBuildsPackageManifestArtifact(): void
+    {
+        self::assertContains('AppLocalPackage', app_allowed_source_output_class_types());
+        self::assertContains('app-local-package-manifest', app_allowed_source_output_artifact_strategies());
+        self::assertTrue(app_source_output_artifact_strategy_supports_generation('app-local-package-manifest'));
+        self::assertTrue(app_source_output_artifact_strategy_requires_runtime_source('app-local-package-manifest'));
+        self::assertSame(
+            'App-local Package Manifest Artifact',
+            app_source_output_artifact_strategy_caption('app-local-package-manifest'),
+        );
+
+        $app = $this->createBootstrappedSqliteApp();
+        $this->seedTaskProject($app);
+
+        $definition = app_project_output_merge_source_output_definition('CONTRACT-FOUNDATION-TEST', [
+            'source_output_key' => 'APP-LOCAL-PACKAGE',
+            'name' => 'Contract Foundation App-local Package',
+            'program_language' => 'json',
+            'class_type' => 'AppLocalPackage',
+            'artifact_strategy' => 'app-local-package-manifest',
+            'target_binding_type' => 'runtime',
+            'runtime_source_relative_path' => '',
+        ]);
+
+        $treeResult = app_project_output_prepare_app_local_package_source_tree(
+            $app,
+            'CONTRACT-FOUNDATION-TEST',
+            $definition,
+        );
+
+        self::assertTrue($treeResult['ok'], $treeResult['error']);
+        self::assertSame(
+            'mtool/app-local-package-source-outputs/CONTRACT-FOUNDATION-TEST/APP-LOCAL-PACKAGE',
+            $treeResult['runtime_source_relative_path'],
+        );
+        self::assertSame(
+            [
+                'README.md',
+                'app-local-package-manifest.json',
+                'app-local-package-summary.json',
+            ],
+            array_column($treeResult['scan_result']['files'] ?? [], 'relative_path'),
+        );
+
+        $manifestPath = $treeResult['runtime_source_root'] . '/app-local-package-manifest.json';
+        $packageManifest = json_decode((string) file_get_contents($manifestPath), true);
+        self::assertIsArray($packageManifest);
+        self::assertSame('app-local-package-manifest-v0', $packageManifest['package_manifest_version'] ?? '');
+        self::assertSame('app-local-package-v0', $packageManifest['package_runtime'] ?? '');
+        self::assertSame('CONTRACT-FOUNDATION-TEST', $packageManifest['project_key'] ?? '');
+        self::assertSame('APP-LOCAL-PACKAGE', $packageManifest['source_output_key'] ?? '');
+        self::assertSame('shared-contract-manifest-v0', $packageManifest['contract_manifest_version'] ?? '');
+        self::assertSame(1, $packageManifest['contract_count'] ?? null);
+        self::assertSame(5, $packageManifest['included_file_count'] ?? null);
+        self::assertSame(
+            [
+                'app-local-contract.json',
+                'app-local-summary.json',
+                'schema.sql',
+                'AppLocalPersistence.php',
+                'README.md',
+            ],
+            array_column($packageManifest['included_files'] ?? [], 'relative_path'),
+        );
+        self::assertContains('remote_sync_transport', $packageManifest['deferred_scope'] ?? []);
+
+        $summaryPath = $treeResult['runtime_source_root'] . '/app-local-package-summary.json';
+        $summary = json_decode((string) file_get_contents($summaryPath), true);
+        self::assertIsArray($summary);
+        self::assertTrue($summary['ok']);
+        self::assertSame(5, $summary['included_file_count'] ?? null);
+        self::assertSame([], $summary['blockers'] ?? null);
+
+        $artifactResult = app_project_output_create_from_definition(
+            $app,
+            'CONTRACT-FOUNDATION-TEST',
+            $definition,
+            'phpunit',
+        );
+        self::assertTrue($artifactResult['ok'], $artifactResult['error']);
+        self::assertSame(3, $artifactResult['artifact']['source_file_count'] ?? null);
+        self::assertSame(
+            'app-local-package-manifest',
+            $artifactResult['artifact']['artifact_strategy'] ?? '',
+        );
+        self::assertTrue($artifactResult['artifact']['archive_exists'] ?? false);
+
+        $archivePath = (string) ($artifactResult['artifact']['archive_path'] ?? '');
+        $bundleEntryRoot = (string) ($artifactResult['artifact']['bundle_entry_root'] ?? '');
+        self::assertFileExists($archivePath);
+        self::assertNotSame('', $bundleEntryRoot);
+
+        $archiveEntries = $this->listTarGzArchive($archivePath);
+        self::assertContains($bundleEntryRoot . '/manifest.json', $archiveEntries);
+        self::assertContains(
+            $bundleEntryRoot
+                . '/mtool/app-local-package-source-outputs/CONTRACT-FOUNDATION-TEST/APP-LOCAL-PACKAGE'
+                . '/app-local-package-manifest.json',
+            $archiveEntries,
+        );
+        self::assertContains(
+            $bundleEntryRoot
+                . '/mtool/app-local-package-source-outputs/CONTRACT-FOUNDATION-TEST/APP-LOCAL-PACKAGE'
+                . '/app-local-package-summary.json',
+            $archiveEntries,
+        );
+
+        $extractRoot = sys_get_temp_dir() . '/dego-app-local-package-archive-smoke-' . getmypid() . '-' . bin2hex(random_bytes(4));
+        try {
+            mkdir($extractRoot, 0777, true);
+            $this->extractTarGzArchive($archivePath, $extractRoot);
+            $extractedManifestPath = $extractRoot
+                . '/'
+                . $bundleEntryRoot
+                . '/mtool/app-local-package-source-outputs/CONTRACT-FOUNDATION-TEST/APP-LOCAL-PACKAGE'
+                . '/app-local-package-manifest.json';
+            self::assertFileExists($extractedManifestPath);
+            $extractedManifest = json_decode((string) file_get_contents($extractedManifestPath), true);
+            self::assertIsArray($extractedManifest);
+            self::assertSame('app-local-package-manifest-v0', $extractedManifest['package_manifest_version'] ?? '');
+            self::assertSame(5, $extractedManifest['included_file_count'] ?? null);
+        } finally {
+            app_project_output_delete_tree($extractRoot);
+        }
+
+        $publishResult = app_project_output_publish_artifact(
+            $app,
+            $artifactResult['artifact'],
+            $definition,
+        );
+        self::assertTrue($publishResult['ok'], $publishResult['error']);
+        $publishedRoot = (string) ($publishResult['published']['published_root'] ?? '');
+        self::assertFileExists($publishedRoot . '/app-local-package-manifest.json');
+        self::assertFileExists($publishedRoot . '/app-local-package-summary.json');
+    }
+
     public function testManagedOperationDocsSourceOutputBuildsOperationArtifact(): void
     {
         self::assertContains('ManagedOperation', app_allowed_source_output_class_types());
@@ -1074,6 +1210,58 @@ final class SharedDataClassContractFoundationTest extends TestCase
             );
             self::assertTrue($result['ok'], $result['error']);
         }
+    }
+
+    /**
+     * @return list<string>
+     */
+    private function listTarGzArchive(string $archivePath): array
+    {
+        $result = $this->runTarCommand(['tar', '-tzf', $archivePath]);
+        $entries = array_values(array_filter(
+            array_map('trim', explode("\n", $result['stdout'])),
+            static fn (string $entry): bool => $entry !== '',
+        ));
+        sort($entries);
+
+        return $entries;
+    }
+
+    private function extractTarGzArchive(string $archivePath, string $targetRoot): void
+    {
+        $this->runTarCommand(['tar', '-xzf', $archivePath, '-C', $targetRoot]);
+    }
+
+    /**
+     * @param list<string> $command
+     * @return array{stdout:string,stderr:string}
+     */
+    private function runTarCommand(array $command): array
+    {
+        self::assertTrue(function_exists('proc_open'), 'proc_open is required for archive smoke.');
+
+        $descriptorSpec = [
+            0 => ['pipe', 'r'],
+            1 => ['pipe', 'w'],
+            2 => ['pipe', 'w'],
+        ];
+        $pipes = [];
+        $process = proc_open($command, $descriptorSpec, $pipes);
+        self::assertIsResource($process, 'failed to start tar process');
+
+        fclose($pipes[0]);
+        $stdout = stream_get_contents($pipes[1]);
+        fclose($pipes[1]);
+        $stderr = stream_get_contents($pipes[2]);
+        fclose($pipes[2]);
+
+        $exitCode = proc_close($process);
+        self::assertSame(0, $exitCode, trim((string) $stderr));
+
+        return [
+            'stdout' => (string) $stdout,
+            'stderr' => (string) $stderr,
+        ];
     }
 
     /**

@@ -233,6 +233,10 @@ final class OpenApiSourceOutputContractTest extends TestCase
         self::assertStringContainsString('Public Runtime Aliases', $detailPage);
         self::assertStringContainsString('Alias lifecycle events', $detailPage);
         self::assertStringContainsString('No public runtime alias lifecycle event has been recorded yet.', $detailPage);
+        self::assertStringContainsString('app_project_source_output_app_local_package_readiness', $detailPage);
+        self::assertStringContainsString('App-local Package Readiness', $detailPage);
+        self::assertStringContainsString('Package readiness blockers:', $detailPage);
+        self::assertStringContainsString('app-local-package-manifest.json is missing from the output root.', $detailPage);
         self::assertStringContainsString('Delete Public Alias', $detailPage);
         self::assertStringContainsString('Public Runtime Alias Deleted', $detailPage);
         self::assertStringContainsString('Rollback target: current', $detailPage);

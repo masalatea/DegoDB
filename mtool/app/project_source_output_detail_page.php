@@ -16,6 +16,81 @@ require_once __DIR__ . '/request.php';
 require_once __DIR__ . '/runtime_reference_status.php';
 
 /**
+ * @param array<string,mixed> $sourceOutput
+ * @param array<string,mixed>|null $latestArtifact
+ * @param array<string,mixed> $outputRootStatus
+ * @return array{
+ *     applies:bool,
+ *     state:string,
+ *     artifact_key:string,
+ *     archive_available:bool,
+ *     output_root_available:bool,
+ *     manifest_available:bool,
+ *     summary_available:bool,
+ *     blockers:list<string>
+ * }
+ */
+function app_project_source_output_app_local_package_readiness(
+    array $sourceOutput,
+    ?array $latestArtifact,
+    array $outputRootStatus,
+): array {
+    $applies = app_project_output_app_local_package_strategy_is_supported(
+        (string) ($sourceOutput['artifact_strategy'] ?? ''),
+    );
+    if (!$applies) {
+        return [
+            'applies' => false,
+            'state' => 'not_applicable',
+            'artifact_key' => '',
+            'archive_available' => false,
+            'output_root_available' => false,
+            'manifest_available' => false,
+            'summary_available' => false,
+            'blockers' => [],
+        ];
+    }
+
+    $artifactKey = $latestArtifact !== null ? (string) ($latestArtifact['artifact_key'] ?? '') : '';
+    $archiveAvailable = $latestArtifact !== null && ($latestArtifact['archive_exists'] ?? false) === true;
+    $outputRootAvailable = ($outputRootStatus['ok'] ?? false) === true
+        && ($outputRootStatus['exists'] ?? false) === true
+        && is_dir((string) ($outputRootStatus['root_path'] ?? ''));
+    $outputRootPath = $outputRootAvailable ? rtrim((string) $outputRootStatus['root_path'], '/') : '';
+    $manifestAvailable = $outputRootPath !== '' && is_file($outputRootPath . '/app-local-package-manifest.json');
+    $summaryAvailable = $outputRootPath !== '' && is_file($outputRootPath . '/app-local-package-summary.json');
+    $blockers = [];
+
+    if ($latestArtifact === null) {
+        $blockers[] = 'Latest App-local package artifact is missing.';
+    } elseif (!$archiveAvailable) {
+        $blockers[] = 'Latest App-local package archive is missing.';
+    }
+
+    if (!$outputRootAvailable) {
+        $blockers[] = 'Package output root is not written yet.';
+    } else {
+        if (!$manifestAvailable) {
+            $blockers[] = 'app-local-package-manifest.json is missing from the output root.';
+        }
+        if (!$summaryAvailable) {
+            $blockers[] = 'app-local-package-summary.json is missing from the output root.';
+        }
+    }
+
+    return [
+        'applies' => true,
+        'state' => $blockers === [] ? 'ready' : 'blocked',
+        'artifact_key' => $artifactKey,
+        'archive_available' => $archiveAvailable,
+        'output_root_available' => $outputRootAvailable,
+        'manifest_available' => $manifestAvailable,
+        'summary_available' => $summaryAvailable,
+        'blockers' => $blockers,
+    ];
+}
+
+/**
  * @param array{
  *     site:string,
  *     site_name:string,
@@ -427,6 +502,11 @@ function app_render_project_source_output_detail_page(array $app, array $request
     $isProxyArtifactStrategy = app_project_output_proxy_strategy_is_supported($sourceOutput['artifact_strategy']);
     $isOpenApiArtifactStrategy = app_project_output_openapi_strategy_is_supported($sourceOutput['artifact_strategy']);
     $isLegacyMirrorArtifactStrategy = app_project_output_legacy_source_strategy_is_supported($sourceOutput['artifact_strategy']);
+    $appLocalPackageReadiness = app_project_source_output_app_local_package_readiness(
+        $sourceOutput,
+        $latestArtifact,
+        $outputRootStatus,
+    );
     $legacyTemplateSource = null;
     if ($isLegacyMirrorArtifactStrategy) {
         $legacyTemplateSource = app_project_output_legacy_source_resolve_root($sourceOutput['source_template_dir']);
@@ -825,6 +905,30 @@ function app_render_project_source_output_detail_page(array $app, array $request
                 <li>size: <code><?php echo app_h(app_project_source_outputs_format_bytes($outputRootStatus['total_bytes'])); ?></code></li>
             </ul>
         </section>
+
+        <?php if ($appLocalPackageReadiness['applies']): ?>
+            <section class="summary-card">
+                <h2>App-local Package Readiness</h2>
+                <ul>
+                    <li>state: <code><?php echo app_h($appLocalPackageReadiness['state']); ?></code></li>
+                    <li>latest artifact: <code><?php echo app_h($appLocalPackageReadiness['artifact_key'] !== '' ? $appLocalPackageReadiness['artifact_key'] : 'none'); ?></code></li>
+                    <li>archive available: <code><?php echo app_h($appLocalPackageReadiness['archive_available'] ? 'yes' : 'no'); ?></code></li>
+                    <li>output root written: <code><?php echo app_h($appLocalPackageReadiness['output_root_available'] ? 'yes' : 'no'); ?></code></li>
+                    <li>manifest file: <code><?php echo app_h($appLocalPackageReadiness['manifest_available'] ? 'yes' : 'no'); ?></code></li>
+                    <li>summary file: <code><?php echo app_h($appLocalPackageReadiness['summary_available'] ? 'yes' : 'no'); ?></code></li>
+                </ul>
+                <?php if ($appLocalPackageReadiness['blockers'] === []): ?>
+                    <p class="muted">App-local package manifest, summary, output root, and archive are ready for operator review.</p>
+                <?php else: ?>
+                    <p class="muted">Package readiness blockers:</p>
+                    <ul>
+                        <?php foreach ($appLocalPackageReadiness['blockers'] as $blocker): ?>
+                            <li><?php echo app_h($blocker); ?></li>
+                        <?php endforeach; ?>
+                    </ul>
+                <?php endif; ?>
+            </section>
+        <?php endif; ?>
 
         <section class="summary-card">
             <h2>Custom Proxy Plan</h2>

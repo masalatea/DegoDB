@@ -17,9 +17,9 @@ Answer the main plan first, then mention auxiliary later-review items only when 
 
 This is the mainline for reaching the next minimum product-facing no-code milestone. / これは次の minimum な product-facing no-code milestone へ到達するための主線です。
 
-Current baseline: the first-slice no-code Web interface already exists as generated `runtime-preview.html` / `runtime-preview.json` plus operator/admin inspection surfaces. React + TypeScript is now the default first adapter direction, the first React bridge artifact slice is complete as `no-code-react-bridge`, the generated React bridge build/browser smokes are complete for sample28, React bridge display/form state shaping is complete for the first slice, React bridge artifact contract hardening is complete for the first slice, editable React bridge form state is complete for the first slice, React bridge validation hint display is complete for the first slice, React bridge action feedback display is complete for the first slice, JSON Forms / rjsf transform probe is complete for the first slice, schema-form runtime smoke and consumer notes are complete for the first slice, generated runtime visual/accessibility/keyboard-action polish is complete for the first slice, adapter handoff docs are complete for the first slice, retry audit trail/display is complete for the first slice, operator/admin no-code workflow polish is complete for the first slice, the no-code minimum closure report is complete for the first slice, worktree closure commit-hygiene notes are complete for the first slice, commit group execution is complete without pushing, validation parity/polish is complete for the first slice, no-code product surface boundary inventory is complete for the first slice, published no-code runtime artifact selection is complete for the first slice, approval/revision history boundary inventory is complete for the first slice, publish candidate revision record schema contract is complete for the first slice, approval transition state model is complete for the first slice, approval action UI contract is complete for the first slice, approval route/test implementation planning is complete for the first slice, publish candidate persistence implementation checklist is complete for the first slice, publish candidate migration/source-contract checklist is complete for the first slice, publish candidate repository/API contract test matrix is complete for the first slice, Docker-backed verification rerun is complete, minimal publish candidate persistence is complete for the first slice, approval transition persistence is complete for the first slice, guarded publish candidate detail UI is complete for the first slice, approved candidate package exposure is complete for the first slice, public runtime preview artifact-key route is complete for the first slice, public runtime current alias route is complete for the first slice, candidate event display polish is complete for the first slice, public runtime cache/version policy is complete for the first slice, current public revision visibility is complete for the first slice, explicit current public revision selection is complete for the first slice, custom public alias key storage is complete for the first slice, public alias delete workflow is complete for the first slice, rollback workflow polish is complete for the first slice, public delivery browser smoke is complete for the first slice, alias lifecycle audit trail is complete for the first slice, public delivery hardening closure is complete, and public delivery commit cleanup is complete without pushing. The next step is a post-public-delivery-commit product-goal replan. / 現在の baseline として、first-slice の no-code Web interface は generated `runtime-preview.html` / `runtime-preview.json` と operator / admin inspection surface として既にあります。React + TypeScript は first adapter の基本方向になり、最初の React bridge artifact slice は `no-code-react-bridge` として完了し、sample28 の generated React bridge build / browser smoke も完了し、React bridge display / form state shaping も first slice として完了し、React bridge artifact contract hardening も first slice として完了し、editable React bridge form state も first slice として完了し、React bridge validation hint display も first slice として完了し、React bridge action feedback display も first slice として完了し、JSON Forms / rjsf transform probe も first slice として完了し、schema-form runtime smoke と consumer notes も first slice として完了し、generated runtime visual / accessibility / keyboard-action polish も first slice として完了し、adapter handoff docs も first slice として完了し、retry audit trail / display も first slice として完了し、operator / admin no-code workflow polish も first slice として完了し、no-code minimum closure report も first slice として完了し、worktree closure commit-hygiene notes も first slice として完了し、commit group execution も push なしで完了し、validation parity / polish、no-code product surface boundary inventory、published no-code runtime artifact selection、approval / revision history boundary inventory、publish candidate revision record schema contract、approval transition state model、approval action UI contract、approval route / test implementation planning、publish candidate persistence implementation checklist、publish candidate migration / source-contract checklist、publish candidate repository / API contract test matrix、Docker-backed verification rerun、minimal publish candidate persistence first slice、approval transition persistence first slice、guarded publish candidate detail UI first slice、approved candidate package exposure first slice、public runtime preview artifact-key route first slice、public runtime current alias route first slice、candidate event display polish first slice、public runtime cache/version policy first slice、current public revision visibility first slice、explicit current public revision selection first slice、custom public alias key storage first slice、public alias delete workflow first slice、rollback workflow polish first slice、public delivery browser smoke first slice、alias lifecycle audit trail first slice、public delivery hardening closure、public delivery commit cleanup まで push なしで完了しました。次は public delivery commit 後の product-goal replan です。
+Current baseline: the first-slice no-code Web interface already exists as generated `runtime-preview.html` / `runtime-preview.json` plus operator/admin inspection surfaces. React + TypeScript is now the default first adapter direction, the first React bridge artifact slice is complete as `no-code-react-bridge`, the generated React bridge build/browser smokes are complete for sample28, React bridge display/form state shaping is complete for the first slice, React bridge artifact contract hardening is complete for the first slice, editable React bridge form state is complete for the first slice, React bridge validation hint display is complete for the first slice, React bridge action feedback display is complete for the first slice, JSON Forms / rjsf transform probe is complete for the first slice, schema-form runtime smoke and consumer notes are complete for the first slice, generated runtime visual/accessibility/keyboard-action polish is complete for the first slice, adapter handoff docs are complete for the first slice, retry audit trail/display is complete for the first slice, operator/admin no-code workflow polish is complete for the first slice, the no-code minimum closure report is complete for the first slice, worktree closure commit-hygiene notes are complete for the first slice, commit group execution is complete without pushing, validation parity/polish is complete for the first slice, no-code product surface boundary inventory is complete for the first slice, published no-code runtime artifact selection is complete for the first slice, approval/revision history boundary inventory is complete for the first slice, publish candidate revision record schema contract is complete for the first slice, approval transition state model is complete for the first slice, approval action UI contract is complete for the first slice, approval route/test implementation planning is complete for the first slice, publish candidate persistence implementation checklist is complete for the first slice, publish candidate migration/source-contract checklist is complete for the first slice, publish candidate repository/API contract test matrix is complete for the first slice, Docker-backed verification rerun is complete, minimal publish candidate persistence is complete for the first slice, approval transition persistence is complete for the first slice, guarded publish candidate detail UI is complete for the first slice, approved candidate package exposure is complete for the first slice, public runtime preview artifact-key route is complete for the first slice, public runtime current alias route is complete for the first slice, candidate event display polish is complete for the first slice, public runtime cache/version policy is complete for the first slice, current public revision visibility is complete for the first slice, explicit current public revision selection is complete for the first slice, custom public alias key storage is complete for the first slice, public alias delete workflow is complete for the first slice, rollback workflow polish is complete for the first slice, public delivery browser smoke is complete for the first slice, alias lifecycle audit trail is complete for the first slice, public delivery hardening closure is complete, public delivery commit cleanup is complete without pushing, post-public-delivery-commit replan is complete, local app packaging boundary inventory is complete for the first slice, post-local-app-packaging-boundary-inventory replan is complete, App-local package manifest is complete for the first slice, post-App-local-package-manifest replan is complete, App-local package archive smoke is complete for the first slice, post-App-local-package-archive-smoke replan is complete, App-local package operator readiness display is complete for the first slice, post-App-local-package-operator-readiness-display replan is complete, and local app packaging closure is complete. The next step is a broader no-code product-goal replan after local app packaging closure. / 現在の baseline として、first-slice の no-code Web interface は generated `runtime-preview.html` / `runtime-preview.json` と operator / admin inspection surface として既にあります。React + TypeScript は first adapter の基本方向になり、最初の React bridge artifact slice は `no-code-react-bridge` として完了し、sample28 の generated React bridge build / browser smoke も完了し、React bridge display / form state shaping も first slice として完了し、React bridge artifact contract hardening も first slice として完了し、editable React bridge form state も first slice として完了し、React bridge validation hint display も first slice として完了し、React bridge action feedback display も first slice として完了し、JSON Forms / rjsf transform probe も first slice として完了し、schema-form runtime smoke と consumer notes も first slice として完了し、generated runtime visual / accessibility / keyboard-action polish も first slice として完了し、adapter handoff docs も first slice として完了し、retry audit trail / display も first slice として完了し、operator / admin no-code workflow polish も first slice として完了し、no-code minimum closure report も first slice として完了し、worktree closure commit-hygiene notes も first slice として完了し、commit group execution も push なしで完了し、validation parity / polish、no-code product surface boundary inventory、published no-code runtime artifact selection、approval / revision history boundary inventory、publish candidate revision record schema contract、approval transition state model、approval action UI contract、approval route / test implementation planning、publish candidate persistence implementation checklist、publish candidate migration / source-contract checklist、publish candidate repository / API contract test matrix、Docker-backed verification rerun、minimal publish candidate persistence first slice、approval transition persistence first slice、guarded publish candidate detail UI first slice、approved candidate package exposure first slice、public runtime preview artifact-key route first slice、public runtime current alias route first slice、candidate event display polish first slice、public runtime cache/version policy first slice、current public revision visibility first slice、explicit current public revision selection first slice、custom public alias key storage first slice、public alias delete workflow first slice、rollback workflow polish first slice、public delivery browser smoke first slice、alias lifecycle audit trail first slice、public delivery hardening closure、public delivery commit cleanup、post-public-delivery-commit replan、local app packaging boundary inventory first slice、post-local-app-packaging-boundary-inventory replan、App-local package manifest first slice、post-App-local-package-manifest replan、App-local package archive smoke first slice、post-App-local-package-archive-smoke replan、App-local package operator readiness display first slice、post-App-local-package-operator-readiness-display replan、local app packaging closure まで完了しました。次は local app packaging closure 後の broader no-code product-goal replan です。
 
-Latest update: public delivery commit cleanup is complete as local commit `e2c5d7e`; push was not performed. The next step is a post-public-delivery-commit product-goal replan. / 最新更新: public delivery commit cleanup は local commit `e2c5d7e` として完了し、push は未実行です。次は public delivery commit 後の product-goal replan です。
+Latest update: local app packaging closure is complete. The next step is a broader no-code product-goal replan after local app packaging closure. / 最新更新: local app packaging closure は完了しました。次は local app packaging closure 後の broader no-code product-goal replan です。
 
 | Order | Work unit / 作業の塊 | Commit unit / コミット単位 | Status | Rough effort / 目安 |
 | --- | --- | --- | --- | --- |
@@ -57,7 +57,17 @@ Latest update: public delivery commit cleanup is complete as local commit `e2c5d
 | 32 | Post-alias-lifecycle-audit-trail no-code product goal replan / alias lifecycle audit trail 後の no-code product goal 再計画 | Chose public delivery hardening closure before leaving this lane | `DONE` | 0.25 - 0.5 day / 0.25 - 0.5 日 |
 | 33 | Public delivery hardening closure report / public delivery hardening closure report | Records the completed post-hardening public delivery boundary and remaining parked candidates | `DONE` | 0.25 - 0.5 day / 0.25 - 0.5 日 |
 | 34 | Commit cleanup / review grouping / commit cleanup・review grouping | Organized accumulated public delivery worktree into local commit `e2c5d7e`, still without push | `DONE` | 0.25 - 0.5 day / 0.25 - 0.5 日 |
-| 35 | Post-public-delivery-commit no-code product goal replan / public delivery commit 後の no-code product goal 再計画 | Choose the next implementation lane after public delivery is committed locally | `ACTIVE_NEXT` | 0.25 - 0.5 day / 0.25 - 0.5 日 |
+| 35 | Post-public-delivery-commit no-code product goal replan / public delivery commit 後の no-code product goal 再計画 | Chose local app packaging boundary inventory as the next product-facing lane | `DONE` | 0.25 - 0.5 day / 0.25 - 0.5 日 |
+| 36 | Local app packaging boundary inventory first slice / local app packaging boundary inventory first slice | Defines the first app-local packaging boundary before implementation | `DONE` | 0.5 - 1 day / 半日 - 1 日 |
+| 37 | Post-local-app-packaging-boundary-inventory no-code product goal replan / local app packaging boundary inventory 後の no-code product goal 再計画 | Chose App-local package manifest first slice | `DONE` | 0.25 - 0.5 day / 0.25 - 0.5 日 |
+| 38 | App-local package manifest first slice / App-local package manifest first slice | Adds `app-local-package-manifest` Source Output strategy and focused manifest coverage | `DONE` | 0.5 - 1.5 days / 半日 - 1.5 日 |
+| 39 | Post-App-local-package-manifest no-code product goal replan / App-local package manifest 後の no-code product goal 再計画 | Chose package archive smoke after manifest shape landed | `DONE` | 0.25 - 0.5 day / 0.25 - 0.5 日 |
+| 40 | App-local package archive smoke first slice / App-local package archive smoke first slice | Verifies generated package archive list/extract behavior and expected manifest files | `DONE` | 0.5 - 1 day / 半日 - 1 日 |
+| 41 | Post-App-local-package-archive-smoke no-code product goal replan / App-local package archive smoke 後の no-code product goal 再計画 | Chose operator readiness display after archive confidence landed | `DONE` | 0.25 - 0.5 day / 0.25 - 0.5 日 |
+| 42 | App-local package operator readiness display first slice / App-local package operator readiness display first slice | Shows latest package artifact/archive/output-root/manifest/summary readiness and blockers in Source Output detail UI | `DONE` | 0.5 - 1 day / 半日 - 1 日 |
+| 43 | Post-App-local-package-operator-readiness-display no-code product goal replan / App-local package operator readiness display 後の no-code product goal 再計画 | Chose local app packaging closure after readiness display landed | `DONE` | 0.25 - 0.5 day / 0.25 - 0.5 日 |
+| 44 | Local app packaging closure report / local app packaging closure report | Records the completed local package boundary and remaining parked packaging candidates | `DONE` | 0.25 - 0.5 day / 0.25 - 0.5 日 |
+| 45 | Post-local-app-packaging-closure no-code product goal replan / local app packaging closure 後の no-code product goal 再計画 | Choose the next broader no-code product-facing lane | `ACTIVE_NEXT` | 0.25 - 0.5 day / 0.25 - 0.5 日 |
 
 ### Auxiliary Later Review / 補助・後日検討
 
@@ -72,7 +82,7 @@ These are useful candidates, but they are not part of the main minimum path unle
 | A5 | Japanese invoice / billing / compliance sample / 日本向け請求・インボイス sample | Domain review is required first | `PARKED` | Re-estimate after domain review / domain review 後に再見積もり |
 | A6 | Approval workflow, rollback / revision history, local app packaging / 承認 workflow、rollback・revision、local app packaging | Reopen as separate product/foundation plans after current generated-output and docs lanes settle | `PARKED` | Re-estimate as separate plans when promoted / 昇格時に個別 plan として再見積もり |
 
-Public delivery now covers approved candidate package exposure, artifact-key preview, current preview, explicit current selection, custom alias storage, alias deletion, cache/version policy, rollback wording for the operator/admin surface, browser smoke coverage for artifact/current/alias preview URLs, alias lifecycle audit visibility, a hardening closure report, and local commit cleanup. The next active step is a post-public-delivery-commit no-code product goal replan. / public delivery は approved candidate package exposure、artifact-key preview、current preview、explicit current selection、custom alias storage、alias deletion、cache / version policy、operator / admin surface の rollback wording、artifact / current / alias preview URL の browser smoke coverage、alias lifecycle audit visibility、hardening closure report、local commit cleanup まで到達しました。次の active step は public delivery commit 後の no-code product goal replan です。
+Public delivery now covers approved candidate package exposure, artifact-key preview, current preview, explicit current selection, custom alias storage, alias deletion, cache/version policy, rollback wording for the operator/admin surface, browser smoke coverage for artifact/current/alias preview URLs, alias lifecycle audit visibility, a hardening closure report, and local commit cleanup. The next lane is local app packaging; its boundary inventory and first package manifest slice are complete. / public delivery は approved candidate package exposure、artifact-key preview、current preview、explicit current selection、custom public alias storage、alias deletion、cache / version policy、operator / admin surface の rollback wording、artifact / current / alias preview URL の browser smoke coverage、alias lifecycle audit visibility、hardening closure report、local commit cleanup まで到達しました。次の lane は local app packaging で、boundary inventory と最初の package manifest slice は完了済みです。
 
 Latest update: public delivery commit cleanup is complete as local commit `e2c5d7e`; push was not performed. / 最新更新: public delivery commit cleanup は local commit `e2c5d7e` として完了し、push は未実行です。
 
@@ -746,9 +756,162 @@ Boundary / 境界:
 
 ## Post-Public-Delivery-Commit No-Code Product Goal Replan / public delivery commit 後の no-code product goal 再計画
 
+Status: `DONE`. Report: [2026-0702 Post-Public-Delivery-Commit No-Code Product Goal Replan](reports/2026/2026-0702-post-public-delivery-commit-no-code-product-goal-replan.md). / Status: `DONE`。Report: [2026-0702 Post-Public-Delivery-Commit No-Code Product Goal Replan](reports/2026/2026-0702-post-public-delivery-commit-no-code-product-goal-replan.md)。
+
+This planning item selected Local app packaging boundary inventory first slice as the next no-code product-facing lane after public Web delivery was committed locally. / この planning item では public Web delivery を local commit にまとめた後の次の no-code product-facing lane として Local app packaging boundary inventory first slice を選びました。
+
+| Candidate / 候補 | Why / 目的 | First slice estimate / first slice 目安 | Decision |
+| --- | --- | --- | --- |
+| Local app packaging boundary inventory first slice | Define package/runtime/artifact boundaries before implementation. | 0.5 - 1 day / 半日 - 1 日 | Selected and completed. |
+| Local app packaging implementation | Start package manifest/archive behavior immediately. | 2 - 5 days / 2 - 5 日 | Deferred until boundary inventory exists. |
+| Remote sync transport | Prove transport after app-local sync foundations. | 2 - 5 days / 2 - 5 日 | Deferred. Packaging boundary should clarify whether transport is required for the first milestone. |
+| Visual builder / full generated app shell | Broader generated app product. | 1 - 3 weeks or more / 1 - 3 週間以上 | Deferred. Current path still generates from canonical metadata and artifacts. |
+
+## Local App Packaging Boundary Inventory First Slice / local app packaging boundary inventory first slice
+
+Status: `FIRST_SLICE_DONE`. Report: [2026-0702 Local App Packaging Boundary Inventory First Slice](reports/2026/2026-0702-local-app-packaging-boundary-inventory-first-slice.md). / Status: `FIRST_SLICE_DONE`。Report: [2026-0702 Local App Packaging Boundary Inventory First Slice](reports/2026/2026-0702-local-app-packaging-boundary-inventory-first-slice.md)。
+
+This first slice defines the boundary for the next local app packaging lane. It recommends App-local package manifest first slice as the next implementation candidate. / この first slice では次の local app packaging lane の境界を定義しました。次の実装候補として App-local package manifest first slice を推奨します。
+
+| Step | Work / 作業 | Status | Rough effort / 目安 | Output / 成果物 |
+| --- | --- | --- | --- | --- |
+| LAPB1 | Current asset inventory / current asset inventory | `DONE` | 0.25 day / 0.25 日 | Recorded existing no-code runtime, React/schema-form, app-local persistence, sync, and public delivery assets. |
+| LAPB2 | Minimum package boundary / minimum package boundary | `DONE` | 0.25 - 0.5 day / 0.25 - 0.5 日 | Defined deterministic package artifact, metadata, readiness display, and focused smoke boundaries. |
+| LAPB3 | Out-of-scope boundary / out-of-scope boundary | `DONE` | 0.25 day / 0.25 日 | Deferred native, Flutter, signing, remote transport, conflict resolution, scheduler, and visual builder scope. |
+| LAPB4 | Next implementation recommendation / next implementation recommendation | `DONE` | 0.25 day / 0.25 日 | Recommended App-local package manifest first slice as the next candidate. |
+
+Boundary / 境界:
+
+- In scope: inventory, minimum package boundary, next first-slice recommendation. / 対象: inventory、minimum package boundary、next first-slice recommendation。
+- Out of scope: code changes, native target implementation, remote transport, push. / 対象外: code changes、native target implementation、remote transport、push。
+- Verification: docs-only; run `git diff --check` before commit. / 検証: docs-only。commit 前に `git diff --check` を実行する。
+
+## Post-Local-App-Packaging-Boundary-Inventory No-Code Product Goal Replan / local app packaging boundary inventory 後の no-code product goal 再計画
+
+Status: `DONE`. Report: [2026-0702 Post-Local-App-Packaging-Boundary-Inventory No-Code Product Goal Replan](reports/2026/2026-0702-post-local-app-packaging-boundary-inventory-no-code-product-goal-replan.md). / Status: `DONE`。Report: [2026-0702 Post-Local-App-Packaging-Boundary-Inventory No-Code Product Goal Replan](reports/2026/2026-0702-post-local-app-packaging-boundary-inventory-no-code-product-goal-replan.md)。
+
+This planning item selected App-local package manifest first slice as the next no-code product-facing implementation after local app packaging boundary inventory. / この planning item では local app packaging boundary inventory 後の次の no-code product-facing implementation として App-local package manifest first slice を選びました。
+
+| Candidate / 候補 | Why / 目的 | First slice estimate / first slice 目安 | Decision |
+| --- | --- | --- | --- |
+| App-local package manifest first slice | Add a generated manifest/summary artifact around existing App-local persistence package boundaries. | 0.5 - 1.5 days / 半日 - 1.5 日 | Selected and completed. |
+| Operator package readiness display | Show package readiness/blockers in operator/admin UI. | 0.5 - 1 day / 半日 - 1 日 | Deferred until manifest shape exists. |
+| Package archive smoke | Verify a narrow package archive/unpack path. | 1 - 2 days / 1 - 2 日 | Deferred until manifest/readiness exists. |
+| Remote sync transport smoke | Add a narrow transport proof. | 2 - 5 days / 2 - 5 日 | Deferred. Transport is not required for the first package boundary. |
+
+## App-local Package Manifest First Slice / App-local package manifest first slice
+
+Status: `FIRST_SLICE_DONE`. Report: [2026-0702 App-local Package Manifest First Slice](reports/2026/2026-0702-app-local-package-manifest-first-slice.md). / Status: `FIRST_SLICE_DONE`。Report: [2026-0702 App-local Package Manifest First Slice](reports/2026/2026-0702-app-local-package-manifest-first-slice.md)。
+
+This first slice adds a generated `app-local-package-manifest` Source Output strategy for package metadata/readiness summary files. / この first slice では package metadata / readiness summary files 用の generated `app-local-package-manifest` Source Output strategy を追加しました。
+
+| Step | Work / 作業 | Status | Rough effort / 目安 | Output / 成果物 |
+| --- | --- | --- | --- | --- |
+| ALPM1 | Strategy registry / strategy registry | `DONE` | 0.25 day / 0.25 日 | Added `AppLocalPackage` and `app-local-package-manifest` as generated Source Output options. |
+| ALPM2 | Manifest generator / manifest generator | `DONE` | 0.25 - 0.5 day / 0.25 - 0.5 日 | Emits `app-local-package-manifest.json`, `app-local-package-summary.json`, and `README.md`. |
+| ALPM3 | Focused coverage / focused coverage | `DONE` | 0.25 - 0.5 day / 0.25 - 0.5 日 | Verifies strategy registration, emitted files, manifest shape, artifact creation, and publish. |
+
+Boundary / 境界:
+
+- In scope: manifest/summary generation from existing shared contract and App-local persistence file boundary, focused tests. / 対象: existing shared contract と App-local persistence file boundary からの manifest / summary generation、focused tests。
+- Out of scope: native installers, archive packaging beyond normal artifact publication, remote transport, conflict resolution, background scheduler, visual builder, push. / 対象外: native installer、normal artifact publication を超える archive packaging、remote transport、conflict resolution、background scheduler、visual builder、push。
+- Verification: PHP lint and focused `SharedDataClassContractFoundationTest`; `git diff --check` and full `make test` before commit. / 検証: PHP lint と focused `SharedDataClassContractFoundationTest`。commit 前に `git diff --check` と full `make test`。
+
+## Post-App-Local-Package-Manifest No-Code Product Goal Replan / App-local package manifest 後の no-code product goal 再計画
+
+Status: `DONE`. Report: [2026-0702 Post-App-Local-Package-Manifest No-Code Product Goal Replan](reports/2026/2026-0702-post-app-local-package-manifest-no-code-product-goal-replan.md). / Status: `DONE`。Report: [2026-0702 Post-App-Local-Package-Manifest No-Code Product Goal Replan](reports/2026/2026-0702-post-app-local-package-manifest-no-code-product-goal-replan.md)。
+
+This planning item selected App-local package archive smoke first slice after the package manifest shape landed. / この planning item では package manifest shape ができた後の次の step として App-local package archive smoke first slice を選びました。
+
+| Candidate / 候補 | Why / 目的 | First slice estimate / first slice 目安 | Decision |
+| --- | --- | --- | --- |
+| App-local package archive smoke first slice | Verify the generated package archive can be listed and extracted with expected manifest files. | 0.5 - 1 day / 半日 - 1 日 | Selected and completed. |
+| Operator package readiness display | Show package readiness/blockers in operator/admin UI. | 0.5 - 1 day / 半日 - 1 日 | Deferred until archive confidence exists. |
+| Defer packaging lane | Leave local app packaging after the manifest slice. | Replan first / まず再計画 | Deferred because archive smoke is small and directly validates the just-added manifest boundary. |
+
+## App-local Package Archive Smoke First Slice / App-local package archive smoke first slice
+
+Status: `FIRST_SLICE_DONE`. Report: [2026-0702 App-local Package Archive Smoke First Slice](reports/2026/2026-0702-app-local-package-archive-smoke-first-slice.md). / Status: `FIRST_SLICE_DONE`。Report: [2026-0702 App-local Package Archive Smoke First Slice](reports/2026/2026-0702-app-local-package-archive-smoke-first-slice.md)。
+
+This first slice adds focused archive smoke coverage for the generated `app-local-package-manifest` artifact. / この first slice では generated `app-local-package-manifest` artifact 向けの focused archive smoke coverage を追加しました。
+
+| Step | Work / 作業 | Status | Rough effort / 目安 | Output / 成果物 |
+| --- | --- | --- | --- | --- |
+| ALPAS1 | Archive existence/listing / archive existence・listing | `DONE` | 0.25 day / 0.25 日 | Asserted the generated `.tar.gz` exists and contains expected manifest/summary entries. |
+| ALPAS2 | Archive extraction / archive extraction | `DONE` | 0.25 day / 0.25 日 | Extracted the archive into a temporary directory and read the package manifest. |
+| ALPAS3 | Focused verification and docs / focused verification・docs | `DONE` | 0.25 day / 0.25 日 | Updated focused PHPUnit coverage, report, and plan index. |
+
+Boundary / 境界:
+
+- In scope: focused archive list/extract smoke for the existing package manifest artifact path. / 対象: 既存 package manifest artifact path の focused archive list / extract smoke。
+- Out of scope: native installers, new archive format, app shell packaging, operator/admin readiness UI, remote sync transport, push. / 対象外: native installer、新 archive format、app shell packaging、operator / admin readiness UI、remote sync transport、push。
+- Verification: PHP lint and focused `SharedDataClassContractFoundationTest`. / 検証: PHP lint と focused `SharedDataClassContractFoundationTest`。
+
+## Post-App-Local-Package-Archive-Smoke No-Code Product Goal Replan / App-local package archive smoke 後の no-code product goal 再計画
+
+Status: `DONE`. Report: [2026-0702 Post-App-Local-Package-Archive-Smoke No-Code Product Goal Replan](reports/2026/2026-0702-post-app-local-package-archive-smoke-no-code-product-goal-replan.md). / Status: `DONE`。Report: [2026-0702 Post-App-Local-Package-Archive-Smoke No-Code Product Goal Replan](reports/2026/2026-0702-post-app-local-package-archive-smoke-no-code-product-goal-replan.md)。
+
+This planning item selected App-local package operator readiness display first slice after archive confidence landed. / この planning item では archive confidence ができた後の次の step として App-local package operator readiness display first slice を選びました。
+
+| Candidate / 候補 | Why / 目的 | First slice estimate / first slice 目安 | Decision |
+| --- | --- | --- | --- |
+| App-local package operator readiness display first slice | Make package readiness/blockers visible in the existing operator/admin Source Output detail UI. | 0.5 - 1 day / 半日 - 1 日 | Selected and completed. |
+| Packaging closure report | Close the local packaging lane after manifest/archive confidence. | 0.25 - 0.5 day / 0.25 - 0.5 日 | Deferred until readiness is visible. |
+| Broader next no-code product goal | Move away from local packaging. | Replan first / まず再計画 | Deferred until the local packaging lane has an operator-visible readiness boundary. |
+
+## App-local Package Operator Readiness Display First Slice / App-local package operator readiness display first slice
+
+Status: `FIRST_SLICE_DONE`. Report: [2026-0702 App-local Package Operator Readiness Display First Slice](reports/2026/2026-0702-app-local-package-operator-readiness-display-first-slice.md). / Status: `FIRST_SLICE_DONE`。Report: [2026-0702 App-local Package Operator Readiness Display First Slice](reports/2026/2026-0702-app-local-package-operator-readiness-display-first-slice.md)。
+
+This first slice adds read-only readiness visibility for `app-local-package-manifest` Source Outputs. / この first slice では `app-local-package-manifest` Source Output 向けの read-only readiness visibility を追加しました。
+
+| Step | Work / 作業 | Status | Rough effort / 目安 | Output / 成果物 |
+| --- | --- | --- | --- | --- |
+| ALPORD1 | Readiness helper / readiness helper | `DONE` | 0.25 day / 0.25 日 | Computes latest artifact, archive, output root, manifest, summary, and blockers. |
+| ALPORD2 | Operator/admin display / operator/admin display | `DONE` | 0.25 - 0.5 day / 0.25 - 0.5 日 | Added `App-local Package Readiness` to Source Output detail for package manifest strategies. |
+| ALPORD3 | Static contract coverage and docs / static contract coverage・docs | `DONE` | 0.25 day / 0.25 日 | Added static route/source assertions, report, and plan index updates. |
+
+Boundary / 境界:
+
+- In scope: operator/admin read-only readiness display for existing App-local package artifacts. / 対象: 既存 App-local package artifact の operator / admin read-only readiness display。
+- Out of scope: new package generation behavior, native installers, new archive format, app shell packaging, remote sync transport, push. / 対象外: new package generation behavior、native installer、新 archive format、app shell packaging、remote sync transport、push。
+- Verification: PHP lint and focused `OpenApiSourceOutputContractTest`; run `git diff --check` and full `make test` before commit. / 検証: PHP lint と focused `OpenApiSourceOutputContractTest`。commit 前に `git diff --check` と full `make test` を実行する。
+
+## Post-App-Local-Package-Operator-Readiness-Display No-Code Product Goal Replan / App-local package operator readiness display 後の no-code product goal 再計画
+
+Status: `DONE`. Report: [2026-0702 Post-App-Local-Package-Operator-Readiness-Display No-Code Product Goal Replan](reports/2026/2026-0702-post-app-local-package-operator-readiness-display-no-code-product-goal-replan.md). / Status: `DONE`。Report: [2026-0702 Post-App-Local-Package-Operator-Readiness-Display No-Code Product Goal Replan](reports/2026/2026-0702-post-app-local-package-operator-readiness-display-no-code-product-goal-replan.md)。
+
+This planning item selected Local app packaging closure report after operator readiness display landed. / この planning item では operator readiness display 実施後の次の step として Local app packaging closure report を選びました。
+
+| Candidate / 候補 | Why / 目的 | First slice estimate / first slice 目安 | Decision |
+| --- | --- | --- | --- |
+| Local app packaging closure report | Close the current package boundary and park larger packaging candidates. | 0.25 - 0.5 day / 0.25 - 0.5 日 | Selected and completed. |
+| Focused UI/browser smoke for readiness display | Add browser-visible confidence for the new readiness section. | 0.5 - 1 day / 半日 - 1 日 | Deferred. Static contract and full integration test passed; browser smoke can wait until the UI is more interactive. |
+| Broader next no-code product goal | Move away from local packaging. | Replan first / まず再計画 | Deferred until the packaging lane is closed cleanly. |
+
+## Local App Packaging Closure Report / local app packaging closure report
+
+Status: `FIRST_SLICE_DONE`. Report: [2026-0702 Local App Packaging Closure Report](reports/2026/2026-0702-local-app-packaging-closure-report.md). / Status: `FIRST_SLICE_DONE`。Report: [2026-0702 Local App Packaging Closure Report](reports/2026/2026-0702-local-app-packaging-closure-report.md)。
+
+This closure report records the current local app packaging boundary as complete for the minimum lane. / この closure report では current local app packaging boundary を minimum lane として完了扱いにしました。
+
+| Step | Work / 作業 | Status | Rough effort / 目安 | Output / 成果物 |
+| --- | --- | --- | --- | --- |
+| LAPC1 | Completed capability boundary / completed capability boundary | `DONE` | 0.25 day / 0.25 日 | Recorded manifest generation, archive smoke, and operator readiness display as the accepted minimum package boundary. |
+| LAPC2 | Parked candidates / parked candidates | `DONE` | 0.25 day / 0.25 日 | Parked native packaging, Flutter, signing, app shell packaging, remote transport, conflict resolution, scheduler, and visual builder. |
+| LAPC3 | Next-step boundary / next-step boundary | `DONE` | 0.25 day / 0.25 日 | Set broader no-code product-goal replan as the next active step. |
+
+Boundary / 境界:
+
+- In scope: docs closure, accepted local app package boundary, remaining parked candidates, next-step boundary. / 対象: docs closure、accepted local app package boundary、remaining parked candidates、next-step boundary。
+- Out of scope: new behavior, native installers, signing, app shell packaging, remote sync transport, push. / 対象外: new behavior、native installer、signing、app shell packaging、remote sync transport、push。
+- Verification: no new code; previous package readiness slice passed focused static contract, `git diff --check`, and full `make test`. / 検証: 新 code はなし。直前の package readiness slice は focused static contract、`git diff --check`、full `make test` に通過。
+
+## Post-Local-App-Packaging-Closure No-Code Product Goal Replan / local app packaging closure 後の no-code product goal 再計画
+
 Status: `ACTIVE_NEXT`. / Status: `ACTIVE_NEXT`。
 
-This is the next active planning step after public delivery was committed locally. It should choose the next implementation lane without pushing. / これは public delivery を local commit にまとめた後の次の active planning step です。push せず、次の implementation lane を選びます。
+This is the next active planning step after local app packaging closure. It should choose the next broader no-code product-facing lane. / これは local app packaging closure 後の次の active planning step です。次の broader no-code product-facing lane を選びます。
 
 ## Data-First No-Code Domain Sample 2 First Slice / data-first no-code domain sample 2 first slice
 

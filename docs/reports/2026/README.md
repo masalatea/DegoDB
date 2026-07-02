@@ -11,6 +11,26 @@
 
 ## Index
 
+- `2026-0702-local-app-packaging-closure-report.md`
+  - local app packaging lane を current minimum boundary として完了扱いにし、package manifest generation、archive smoke、operator/admin readiness display を accepted capability として記録。native/Flutter、signing、app shell packaging、remote transport、conflict resolution、scheduler、visual builder は parked。Status: `FIRST_SLICE_DONE`。
+- `2026-0702-post-app-local-package-operator-readiness-display-no-code-product-goal-replan.md`
+  - App-local package operator readiness display 後の product-goal replan。local packaging lane は current minimum に到達したと判断し、Local app packaging closure report を選択。Status: `DONE`。
+- `2026-0702-app-local-package-operator-readiness-display-first-slice.md`
+  - `app-local-package-manifest` Source Output の operator/admin readiness visibility を追加。Source Output detail page で latest package artifact、archive、output root、manifest file、summary file と blocker を表示。Focused `OpenApiSourceOutputContractTest` は `22 tests, 1802 assertions`、full `make test` は `327 tests, 10765 assertions, skipped 1` で通過。Status: `FIRST_SLICE_DONE`。
+- `2026-0702-post-app-local-package-archive-smoke-no-code-product-goal-replan.md`
+  - App-local package archive smoke 後の product-goal replan。archive confidence ができたため、既存 Source Output detail UI に readiness/blockers を表示する App-local package operator readiness display first slice を選択。Status: `DONE`。
+- `2026-0702-app-local-package-archive-smoke-first-slice.md`
+  - generated `app-local-package-manifest` artifact の `.tar.gz` archive が存在し、list / extract でき、期待する package manifest / summary files を含むことを focused PHPUnit で検証。`SharedDataClassContractFoundationTest` は `11 tests, 550 assertions`、full `make test` は `327 tests, 10761 assertions, skipped 1` で通過。Status: `FIRST_SLICE_DONE`。
+- `2026-0702-post-app-local-package-manifest-no-code-product-goal-replan.md`
+  - App-local package manifest 後の product-goal replan。manifest shape が安定したため、次の confidence step として App-local package archive smoke first slice を選択。Status: `DONE`。
+- `2026-0702-app-local-package-manifest-first-slice.md`
+  - `AppLocalPackage` class type と `app-local-package-manifest` artifact strategy を追加し、`app-local-package-manifest.json` / `app-local-package-summary.json` / `README.md` を生成。Focused PHPUnit は `SharedDataClassContractFoundationTest` が `11 tests, 534 assertions`、full `make test` は `327 tests, 10745 assertions, skipped 1` で通過。Status: `FIRST_SLICE_DONE`。
+- `2026-0702-post-local-app-packaging-boundary-inventory-no-code-product-goal-replan.md`
+  - local app packaging boundary inventory 後の product-goal replan。既存 App-local persistence 境界を包む manifest/summary artifact として App-local package manifest first slice を選択。Status: `DONE`。
+- `2026-0702-local-app-packaging-boundary-inventory-first-slice.md`
+  - public Web delivery commit 後の次 lane として local app packaging の境界を定義。最小 package artifact、metadata、readiness display、focused smoke を first implementation boundary とし、native/Flutter、signing、remote transport、conflict resolution、scheduler、visual builder は対象外に整理。次の推奨候補は App-local package manifest first slice。Status: `FIRST_SLICE_DONE`。
+- `2026-0702-post-public-delivery-commit-no-code-product-goal-replan.md`
+  - public delivery commit 後の product-goal replan。local app packaging を次 lane として選び、いきなり実装せず boundary inventory first slice から開始する判断を記録。Status: `DONE`。
 - `2026-0702-public-delivery-commit-cleanup.md`
   - no-code public runtime delivery の累積 worktree を local commit `e2c5d7e Add no-code public runtime delivery workflow` に整理。Push は未実行。pre-commit verification は public runtime browser smoke、focused PHPUnit、full `make test`、`git diff --check`。Status: `DONE`。
 - `2026-0702-public-delivery-hardening-closure-report.md`
