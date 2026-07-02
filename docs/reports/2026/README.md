@@ -11,8 +11,12 @@
 
 ## Index
 
+- `2026-0702-pre-next-push-verification.md`
+  - no-code tryout-ready push 後、#69/#70 の planning / verification record を次に push する前の verification 記録。`make sample28-no-code-runtime-ui-smoke` は seeded 3 rows を確認して通過、full `make test` は `327 tests, 10798 assertions, skipped 1` で通過、`git diff --check` も通過。Status: `DONE`。
+- `2026-0702-post-tryout-ready-no-code-product-goal-replan.md`
+  - #67 no-code tryout-ready 完了と `origin/develop` push 後の product-goal replan。次の feature lane へ入る前に #70 Pre-next-push verification を選択。次候補は tryout UX polish 2、runtime real interaction、docs chapter hardening、next scenario/sample。Status: `DONE`。
 - `2026-0702-no-code-tryout-ready-milestone-closure.md`
-  - #62-#67 を no-code tryout-ready milestone として closure。sample28 seeded preview data、preview data smoke、operator wording polish、sample28 demo tryout shortcut、README/docs の二層構造整理を完了。最終 status pass は実装ではなく完了状態の検証。未 push の local tryout-ready stack は `31b2ed4 Add sample28 no-code tryout readiness` と `bcf2448 Document no-code tryout positioning` の 2 commits に整理済み。`make sample28-pack-runtime-test`、`make sample28-no-code-runtime-ui-smoke`、full `make test`、manual Docker demo shortcut check が通過。Push は未実行。Status: `FIRST_SLICE_DONE`。
+  - #62-#67 を no-code tryout-ready milestone として closure。sample28 seeded preview data、preview data smoke、operator wording polish、sample28 demo tryout shortcut、README/docs の二層構造整理を完了。最終 status pass は実装ではなく完了状態の検証。local tryout-ready stack は `31b2ed4 Add sample28 no-code tryout readiness` と `bcf2448 Document no-code tryout positioning` の 2 commits に整理され、status clarification `1821a6b` と合わせて `origin/develop` へ push 済み。`make sample28-pack-runtime-test`、`make sample28-no-code-runtime-ui-smoke`、full `make test`、manual Docker demo shortcut check が通過。Status: `FIRST_SLICE_DONE`。
 - `2026-0702-docs-information-architecture-split-plan.md`
   - README/docs の情報設計を database-first toolkit の芯と、その上に載る no-code layer に分け直す計画。元のデータベースツール用途を残しつつ no-code 導線を強くする。#67 として追加。Status: `DONE`。
 - `2026-0702-no-code-onboarding-polish-plan.md`
