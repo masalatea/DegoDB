@@ -12,7 +12,9 @@ final class NoCodeOperatorInspectionTest extends TestCase
     {
         $workspaceRoot = sys_get_temp_dir() . '/dego-no-code-operator-inspection-' . getmypid() . '-' . bin2hex(random_bytes(4));
         $sourceRoot = $workspaceRoot . '/work/source-outputs/SAMPLE30/NO-CODE-RUNTIME';
+        $packageRoot = $workspaceRoot . '/work/source-outputs/SAMPLE30/APP-LOCAL-PACKAGE';
         mkdir($sourceRoot, 0777, true);
+        mkdir($packageRoot, 0777, true);
 
         file_put_contents($sourceRoot . '/screen-definition.json', json_encode([
             'definition_version' => 'no-code-screen-definition-v0',
@@ -51,6 +53,8 @@ final class NoCodeOperatorInspectionTest extends TestCase
             'runtime_version' => 'no-code-runtime-v0',
         ], JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES));
         file_put_contents($sourceRoot . '/runtime-preview.html', '<!doctype html>');
+        file_put_contents($packageRoot . '/app-local-package-manifest.json', '{}');
+        file_put_contents($packageRoot . '/app-local-package-summary.json', '{}');
 
         $summary = app_no_code_operator_inspection_from_catalog(
             [
@@ -59,6 +63,12 @@ final class NoCodeOperatorInspectionTest extends TestCase
                     'name' => 'No-Code Runtime',
                     'source_output_dir' => 'work/source-outputs/SAMPLE30/NO-CODE-RUNTIME',
                     'artifact_strategy' => 'no-code-runtime-json',
+                ],
+                [
+                    'source_output_key' => 'APP-LOCAL-PACKAGE',
+                    'name' => 'App-local Package',
+                    'source_output_dir' => 'work/source-outputs/SAMPLE30/APP-LOCAL-PACKAGE',
+                    'artifact_strategy' => 'app-local-package-manifest',
                 ],
             ],
             [
@@ -72,6 +82,12 @@ final class NoCodeOperatorInspectionTest extends TestCase
                     'source_output_key' => 'NO-CODE-RUNTIME',
                     'artifact_key' => '20260630020202-bbbb',
                     'created_at' => '2026-06-30T02:02:02+00:00',
+                    'archive_exists' => true,
+                ],
+                [
+                    'source_output_key' => 'APP-LOCAL-PACKAGE',
+                    'artifact_key' => '20260630030303-cccc',
+                    'created_at' => '2026-06-30T03:03:03+00:00',
                     'archive_exists' => true,
                 ],
             ],
@@ -102,6 +118,29 @@ final class NoCodeOperatorInspectionTest extends TestCase
         self::assertSame(3, $summary['publish_readiness']['screen_count'] ?? 0);
         self::assertSame(2, $summary['publish_readiness']['action_count'] ?? 0);
         self::assertSame([], $summary['publish_readiness']['blocking_reasons'] ?? []);
+        self::assertSame('ready', $summary['delivery_overview']['state'] ?? '');
+        self::assertSame(
+            'Public runtime and app-local package ready',
+            $summary['delivery_overview']['label'] ?? '',
+        );
+        self::assertSame('ready', $summary['delivery_overview']['public_runtime']['state'] ?? '');
+        self::assertSame(
+            '20260630020202-bbbb',
+            $summary['delivery_overview']['public_runtime']['artifact_key'] ?? '',
+        );
+        self::assertSame('ready', $summary['delivery_overview']['app_local_package']['state'] ?? '');
+        self::assertSame(
+            'APP-LOCAL-PACKAGE',
+            $summary['delivery_overview']['app_local_package']['source_output_key'] ?? '',
+        );
+        self::assertSame(
+            '20260630030303-cccc',
+            $summary['delivery_overview']['app_local_package']['artifact_key'] ?? '',
+        );
+        self::assertTrue($summary['delivery_overview']['app_local_package']['archive_available'] ?? false);
+        self::assertTrue($summary['delivery_overview']['app_local_package']['manifest_available'] ?? false);
+        self::assertTrue($summary['delivery_overview']['app_local_package']['summary_available'] ?? false);
+        self::assertSame([], $summary['delivery_overview']['blockers'] ?? []);
 
         $preview = $summary['preview'];
         self::assertTrue($preview['screen_definition_exists']);
@@ -151,6 +190,17 @@ final class NoCodeOperatorInspectionTest extends TestCase
         self::assertContains('Latest generated artifact is missing.', $summary['publish_readiness']['blocking_reasons'] ?? []);
         self::assertContains('Generated preview files are incomplete.', $summary['publish_readiness']['blocking_reasons'] ?? []);
         self::assertContains('Generated action surface is empty.', $summary['publish_readiness']['blocking_reasons'] ?? []);
+        self::assertSame('blocked', $summary['delivery_overview']['state'] ?? '');
+        self::assertSame('blocked', $summary['delivery_overview']['public_runtime']['state'] ?? '');
+        self::assertSame('blocked', $summary['delivery_overview']['app_local_package']['state'] ?? '');
+        self::assertContains(
+            'App-local package Source Output definition is missing.',
+            $summary['delivery_overview']['app_local_package']['blockers'] ?? [],
+        );
+        self::assertContains(
+            'app-local package: App-local package Source Output definition is missing.',
+            $summary['delivery_overview']['blockers'] ?? [],
+        );
     }
 
     public function testReportsWarningHealthWhenLatestArtifactArchiveIsMissing(): void

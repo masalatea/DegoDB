@@ -11,6 +11,16 @@
 
 ## Index
 
+- `2026-0702-commit-cleanup-review-grouping-after-delivery-milestone.md`
+  - local `develop` が `origin/develop` より 53 commits ahead の状態を、6 つの review group に整理。push / squash / rebase / reset / PR creation は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0702-no-code-delivery-milestone-closure-report.md`
+  - public runtime delivery、local app packaging、operator delivery overview を current product-facing milestone boundary として closure。local `develop` は `origin/develop` より 52 commits ahead、push / rewrite は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0702-post-operator-delivery-overview-no-code-product-goal-replan.md`
+  - operator delivery overview 後の product-goal replan。追加実装の前に No-code delivery milestone closure を選び、その後 push なしの commit cleanup / review grouping へ進む判断を記録。Status: `DONE`。
+- `2026-0702-operator-delivery-overview-first-slice.md`
+  - no-code Source Outputs inspection card に Delivery Overview を追加し、public runtime readiness と app-local package readiness を一緒に表示。Focused PHPUnit は `3 tests, 77 assertions` で通過。Status: `FIRST_SLICE_DONE`。
+- `2026-0702-explicit-next-action-decision-after-commit-stack-consolidation.md`
+  - commit stack consolidation 後の次 action として local history rewrite / PR summary ではなく Operator delivery overview first slice を選択。Push は対象外。Status: `DONE`。
 - `2026-0702-no-code-commit-stack-consolidation-plan.md`
   - local `develop` が `origin/develop` より 50 commits ahead の状態を、5 つの review group に整理。push / rewrite は行わず、後で明示的に squash する場合の group guidance を記録。Status: `FIRST_SLICE_DONE`。
 - `2026-0702-fresh-priority-decision-after-no-code-commit-stack-review.md`

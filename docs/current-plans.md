@@ -19,7 +19,7 @@ This is the mainline for reaching the next minimum product-facing no-code milest
 
 Current baseline: the first-slice no-code Web interface already exists as generated `runtime-preview.html` / `runtime-preview.json` plus operator/admin inspection surfaces. React + TypeScript is now the default first adapter direction, the first React bridge artifact slice is complete as `no-code-react-bridge`, the generated React bridge build/browser smokes are complete for sample28, React bridge display/form state shaping is complete for the first slice, React bridge artifact contract hardening is complete for the first slice, editable React bridge form state is complete for the first slice, React bridge validation hint display is complete for the first slice, React bridge action feedback display is complete for the first slice, JSON Forms / rjsf transform probe is complete for the first slice, schema-form runtime smoke and consumer notes are complete for the first slice, generated runtime visual/accessibility/keyboard-action polish is complete for the first slice, adapter handoff docs are complete for the first slice, retry audit trail/display is complete for the first slice, operator/admin no-code workflow polish is complete for the first slice, the no-code minimum closure report is complete for the first slice, worktree closure commit-hygiene notes are complete for the first slice, commit group execution is complete without pushing, validation parity/polish is complete for the first slice, no-code product surface boundary inventory is complete for the first slice, published no-code runtime artifact selection is complete for the first slice, approval/revision history boundary inventory is complete for the first slice, publish candidate revision record schema contract is complete for the first slice, approval transition state model is complete for the first slice, approval action UI contract is complete for the first slice, approval route/test implementation planning is complete for the first slice, publish candidate persistence implementation checklist is complete for the first slice, publish candidate migration/source-contract checklist is complete for the first slice, publish candidate repository/API contract test matrix is complete for the first slice, Docker-backed verification rerun is complete, minimal publish candidate persistence is complete for the first slice, approval transition persistence is complete for the first slice, guarded publish candidate detail UI is complete for the first slice, approved candidate package exposure is complete for the first slice, public runtime preview artifact-key route is complete for the first slice, public runtime current alias route is complete for the first slice, candidate event display polish is complete for the first slice, public runtime cache/version policy is complete for the first slice, current public revision visibility is complete for the first slice, explicit current public revision selection is complete for the first slice, custom public alias key storage is complete for the first slice, public alias delete workflow is complete for the first slice, rollback workflow polish is complete for the first slice, public delivery browser smoke is complete for the first slice, alias lifecycle audit trail is complete for the first slice, public delivery hardening closure is complete, public delivery commit cleanup is complete without pushing, post-public-delivery-commit replan is complete, local app packaging boundary inventory is complete for the first slice, post-local-app-packaging-boundary-inventory replan is complete, App-local package manifest is complete for the first slice, post-App-local-package-manifest replan is complete, App-local package archive smoke is complete for the first slice, post-App-local-package-archive-smoke replan is complete, App-local package operator readiness display is complete for the first slice, post-App-local-package-operator-readiness-display replan is complete, local app packaging closure is complete, post-local-app-packaging-closure replan is complete, and the no-code product milestone update after public delivery and local packaging is complete. The next step is a fresh no-code product-goal replan. / 現在の baseline として、first-slice の no-code Web interface は generated `runtime-preview.html` / `runtime-preview.json` と operator / admin inspection surface として既にあります。React + TypeScript は first adapter の基本方向になり、最初の React bridge artifact slice は `no-code-react-bridge` として完了し、sample28 の generated React bridge build / browser smoke も完了し、React bridge display / form state shaping も first slice として完了し、React bridge artifact contract hardening も first slice として完了し、editable React bridge form state も first slice として完了し、React bridge validation hint display も first slice として完了し、React bridge action feedback display も first slice として完了し、JSON Forms / rjsf transform probe も first slice として完了し、schema-form runtime smoke と consumer notes も first slice として完了し、generated runtime visual / accessibility / keyboard-action polish も first slice として完了し、adapter handoff docs も first slice として完了し、retry audit trail / display も first slice として完了し、operator / admin no-code workflow polish も first slice として完了し、no-code minimum closure report も first slice として完了し、worktree closure commit-hygiene notes も first slice として完了し、commit group execution も push なしで完了し、validation parity / polish、no-code product surface boundary inventory、published no-code runtime artifact selection、approval / revision history boundary inventory、publish candidate revision record schema contract、approval transition state model、approval action UI contract、approval route / test implementation planning、publish candidate persistence implementation checklist、publish candidate migration / source-contract checklist、publish candidate repository / API contract test matrix、Docker-backed verification rerun、minimal publish candidate persistence first slice、approval transition persistence first slice、guarded publish candidate detail UI first slice、approved candidate package exposure first slice、public runtime preview artifact-key route first slice、public runtime current alias route first slice、candidate event display polish first slice、public runtime cache/version policy first slice、current public revision visibility first slice、explicit current public revision selection first slice、custom public alias key storage first slice、public alias delete workflow first slice、rollback workflow polish first slice、public delivery browser smoke first slice、alias lifecycle audit trail first slice、public delivery hardening closure、public delivery commit cleanup、post-public-delivery-commit replan、local app packaging boundary inventory first slice、post-local-app-packaging-boundary-inventory replan、App-local package manifest first slice、post-App-local-package-manifest replan、App-local package archive smoke first slice、post-App-local-package-archive-smoke replan、App-local package operator readiness display first slice、post-App-local-package-operator-readiness-display replan、local app packaging closure、post-local-app-packaging-closure replan、public delivery と local packaging 後の no-code product milestone update まで完了しました。次は fresh no-code product-goal replan です。
 
-Latest update: no-code commit stack consolidation plan is complete. The next step is an explicit choice: local history cleanup, PR/review summary without push, or the next product-facing implementation lane. / 最新更新: no-code commit stack consolidation plan は完了しました。次は local history cleanup、push なしの PR / review summary、または次の product-facing implementation lane の明示判断です。
+Latest update: commit cleanup / review grouping after delivery milestone is complete without push or history rewrite. The next step is an explicit commit cleanup execution decision. / 最新更新: delivery milestone 後の commit cleanup / review grouping は push なし・history rewrite なしで完了しました。次は commit cleanup execution の明示判断です。
 
 | Order | Work unit / 作業の塊 | Commit unit / コミット単位 | Status | Rough effort / 目安 |
 | --- | --- | --- | --- | --- |
@@ -73,7 +73,12 @@ Latest update: no-code commit stack consolidation plan is complete. The next ste
 | 48 | Local commit stack review after no-code milestone / no-code milestone 後の local commit stack review | Records ahead-count, recent milestone commits, verification baseline, and no-push boundary | `DONE` | 0.25 - 0.5 day / 0.25 - 0.5 日 |
 | 49 | Fresh priority decision for next product-facing lane / 次の product-facing lane の fresh priority decision | Chose commit stack consolidation plan before another implementation lane | `DONE` | 0.25 - 0.5 day / 0.25 - 0.5 日 |
 | 50 | No-code commit stack consolidation plan / no-code commit stack consolidation plan | Groups the 50 ahead commits into reviewable meaning units without rewrite or push | `DONE` | 0.25 - 0.5 day / 0.25 - 0.5 日 |
-| 51 | Explicit next action decision / 次 action の明示判断 | Choose local history cleanup, PR/review summary without push, or next implementation lane | `ACTIVE_NEXT` | Replan first / まず再計画 |
+| 51 | Explicit next action decision / 次 action の明示判断 | Chose next implementation lane without local history rewrite or push | `DONE` | 0.25 - 0.5 day / 0.25 - 0.5 日 |
+| 52 | Operator delivery overview first slice / operator delivery overview first slice | Shows public runtime and app-local package readiness together in the no-code Source Outputs inspection card | `DONE` | 0.5 - 1 day / 半日 - 1 日 |
+| 53 | Post-operator-delivery-overview no-code product goal replan / operator delivery overview 後の no-code product goal 再計画 | Chose no-code delivery milestone closure before additional implementation | `DONE` | 0.25 - 0.5 day / 0.25 - 0.5 日 |
+| 54 | No-code delivery milestone closure report / no-code delivery milestone closure report | Records public delivery, local packaging, and operator delivery overview as the current product-facing milestone boundary | `DONE` | 0.25 - 0.5 day / 0.25 - 0.5 日 |
+| 55 | Commit cleanup / review grouping after delivery milestone / delivery milestone 後の commit cleanup・review grouping | Grouped the 53 local ahead commits into reviewable meaning units without push or history rewrite | `DONE` | 0.25 - 0.5 day / 0.25 - 0.5 日 |
+| 56 | Commit cleanup execution decision / commit cleanup execution 判断 | Choose keep-as-is, PR/review summary without push, or explicit local history cleanup | `ACTIVE_NEXT` | 0.25 - 0.5 day / 0.25 - 0.5 日 |
 
 ### Auxiliary Later Review / 補助・後日検討
 
@@ -983,9 +988,85 @@ This plan groups the 50 local ahead commits into reviewable meaning units and pr
 
 ## Explicit Next Action Decision / 次 action の明示判断
 
+Status: `DONE`. Report: [2026-0702 Explicit Next Action Decision After Commit Stack Consolidation](reports/2026/2026-0702-explicit-next-action-decision-after-commit-stack-consolidation.md). / Status: `DONE`。Report: [2026-0702 Explicit Next Action Decision After Commit Stack Consolidation](reports/2026/2026-0702-explicit-next-action-decision-after-commit-stack-consolidation.md)。
+
+This planning item selected Operator delivery overview first slice as the next implementation lane, while keeping push and local history rewrite out of scope. / この planning item では push と local history rewrite を対象外のまま、次の implementation lane として Operator delivery overview first slice を選びました。
+
+| Candidate / 候補 | Why / 目的 | First slice estimate / first slice 目安 | Decision |
+| --- | --- | --- | --- |
+| Operator delivery overview | Public runtime delivery and app-local packaging are both complete but visible in separate places; show both states together for operators. | 0.5 - 1 day / 半日 - 1 日 | Selected and completed. |
+| Local history cleanup | Squash or rewrite the 51 local commits before any more product work. | Approval required / 承認必須 | Deferred. User has not requested rewrite, and push remains out of scope. |
+| PR/review summary without push | Prepare a review-facing summary from the local stack. | 0.25 - 0.5 day / 0.25 - 0.5 日 | Deferred until the user asks for commit/PR organization. |
+
+## Operator Delivery Overview First Slice / operator delivery overview first slice
+
+Status: `FIRST_SLICE_DONE`. Report: [2026-0702 Operator Delivery Overview First Slice](reports/2026/2026-0702-operator-delivery-overview-first-slice.md). / Status: `FIRST_SLICE_DONE`。Report: [2026-0702 Operator Delivery Overview First Slice](reports/2026/2026-0702-operator-delivery-overview-first-slice.md)。
+
+This implementation adds a combined delivery overview to the no-code Source Outputs inspection card, showing public runtime readiness and app-local package readiness together. / この implementation では no-code Source Outputs inspection card に combined delivery overview を追加し、public runtime readiness と app-local package readiness を一緒に表示しました。
+
+| Step | Work / 作業 | Status | Rough effort / 目安 | Output / 成果物 |
+| --- | --- | --- | --- | --- |
+| ODO1 | Delivery summary model / delivery summary model | `DONE` | 0.25 - 0.5 day / 0.25 - 0.5 日 | Added `delivery_overview` to `app_no_code_operator_inspection_from_catalog()`. |
+| ODO2 | App-local package readiness rollup / App-local package readiness rollup | `DONE` | 0.25 day / 0.25 日 | Summarizes package definition, latest artifact/archive, manifest, summary, and blockers. |
+| ODO3 | Operator UI display / operator UI display | `DONE` | 0.25 day / 0.25 日 | Shows Delivery Overview on the Source Outputs page with a link to the App-local package definition. |
+| ODO4 | Focused coverage / focused coverage | `DONE` | 0.25 day / 0.25 日 | Added inspection and static contract assertions. |
+
+Boundary / 境界:
+
+- In scope: read-only operator visibility for public runtime and app-local package delivery paths. / 対象: public runtime と app-local package delivery path の read-only operator visibility。
+- Out of scope: new publish actions, native packaging, remote transport, commit history rewrite, push. / 対象外: new publish action、native packaging、remote transport、commit history rewrite、push。
+- Verification: `php -l`, focused PHPUnit, `git diff --check`, and full `make test` before commit. / 検証: `php -l`、focused PHPUnit、`git diff --check`、commit 前の full `make test`。
+
+## Post-Operator-Delivery-Overview No-Code Product Goal Replan / operator delivery overview 後の no-code product goal 再計画
+
+Status: `DONE`. Report: [2026-0702 Post-Operator-Delivery-Overview No-Code Product Goal Replan](reports/2026/2026-0702-post-operator-delivery-overview-no-code-product-goal-replan.md). / Status: `DONE`。Report: [2026-0702 Post-Operator-Delivery-Overview No-Code Product Goal Replan](reports/2026/2026-0702-post-operator-delivery-overview-no-code-product-goal-replan.md)。
+
+This planning item selected no-code delivery milestone closure before additional implementation, then commit cleanup / review grouping without push. / この planning item では追加実装の前に no-code delivery milestone closure を選び、その後 push なしの commit cleanup / review grouping へ進める判断にしました。
+
+| Candidate / 候補 | Why / 目的 | First slice estimate / first slice 目安 | Decision |
+| --- | --- | --- | --- |
+| No-code delivery milestone closure | Public delivery, local packaging, and operator delivery overview now form a coherent product-facing boundary. | 0.25 - 0.5 day / 0.25 - 0.5 日 | Selected and completed. |
+| Continue implementation immediately | Add another operator action or runtime surface. | Replan first / まず再計画 | Deferred until the milestone and commit stack are easier to review. |
+| Commit cleanup immediately | Start review grouping without a closure note. | 0.25 - 0.5 day / 0.25 - 0.5 日 | Deferred until closure is recorded. |
+
+## No-Code Delivery Milestone Closure Report / no-code delivery milestone closure report
+
+Status: `FIRST_SLICE_DONE`. Report: [2026-0702 No-Code Delivery Milestone Closure Report](reports/2026/2026-0702-no-code-delivery-milestone-closure-report.md). / Status: `FIRST_SLICE_DONE`。Report: [2026-0702 No-Code Delivery Milestone Closure Report](reports/2026/2026-0702-no-code-delivery-milestone-closure-report.md)。
+
+This closure records public delivery, local app packaging, and operator delivery overview as the current product-facing milestone boundary. / この closure では public delivery、local app packaging、operator delivery overview を current product-facing milestone boundary として記録しました。
+
+Boundary / 境界:
+
+- In scope: closure record, accepted capabilities, parked follow-ups, next commit-review boundary. / 対象: closure record、accepted capabilities、parked follow-up、次の commit-review boundary。
+- Out of scope: new implementation, local history rewrite, squash, push. / 対象外: new implementation、local history rewrite、squash、push。
+- Verification: docs-only; the latest implementation slice passed focused PHPUnit, `git diff --check`, and full `make test`. / 検証: docs-only。直近 implementation slice は focused PHPUnit、`git diff --check`、full `make test` に通過。
+
+## Commit Cleanup / Review Grouping After Delivery Milestone / delivery milestone 後の commit cleanup・review grouping
+
+Status: `FIRST_SLICE_DONE`. Report: [2026-0702 Commit Cleanup Review Grouping After Delivery Milestone](reports/2026/2026-0702-commit-cleanup-review-grouping-after-delivery-milestone.md). / Status: `FIRST_SLICE_DONE`。Report: [2026-0702 Commit Cleanup Review Grouping After Delivery Milestone](reports/2026/2026-0702-commit-cleanup-review-grouping-after-delivery-milestone.md)。
+
+This review grouped the 53 local ahead commits into reviewable meaning units without push or history rewrite. / この review では 53 件の local ahead commit を、push や history rewrite なしで review しやすい意味単位へ整理しました。
+
+| Group | Commit range / commits | Meaning |
+| --- | --- | --- |
+| 1 | `2c66774` through `1e48bd7` | Sync/operator visibility foundation and runtime retry visibility. |
+| 2 | `afe9f01` through `297fd85` | No-code runtime adapter milestone, validation parity, product-surface planning, approval/revision planning, and verification closure. |
+| 3 | `e699869`, `e2c5d7e`, `c86d70b` | Publish candidate persistence and public runtime delivery implementation. |
+| 4 | `8d5172c` through `bf4fe6d` | Local app packaging lane. |
+| 5 | `c39c7f9`, `04138c9`, `fe8f036` | Milestone update, stack review, and consolidation plan. |
+| 6 | `0332438`, `e1b4eee` | Operator delivery overview and no-code delivery milestone closure. |
+
+Boundary / 境界:
+
+- In scope: commit stack review grouping, docs update, next execution decision boundary. / 対象: commit stack review grouping、docs update、次の execution decision boundary。
+- Out of scope: push, squash, rebase, reset, force-push, PR creation. / 対象外: push、squash、rebase、reset、force-push、PR creation。
+- Verification: docs-only; `git diff --check`. / 検証: docs-only。`git diff --check`。
+
+## Commit Cleanup Execution Decision / commit cleanup execution 判断
+
 Status: `ACTIVE_NEXT`. / Status: `ACTIVE_NEXT`。
 
-This is the next active decision point. Choose local history cleanup, PR/review summary without push, or the next implementation lane. / これは次の active decision point です。local history cleanup、push なしの PR / review summary、または次の implementation lane を選びます。
+Choose one of the following: keep the local commits as-is and prepare a review summary, perform explicit local history cleanup, or return to the next product-facing lane. Push remains out of scope unless explicitly requested. / 次に、local commit をそのまま維持して review summary を作るか、明示的な local history cleanup を行うか、次の product-facing lane へ戻るかを選びます。明示依頼がない限り push は対象外です。
 
 ## Data-First No-Code Domain Sample 2 First Slice / data-first no-code domain sample 2 first slice
 

@@ -399,9 +399,12 @@ function app_render_project_source_outputs_page(array $app, array $request): voi
             <?php $noCodeHealth = $noCodeInspection['health']; ?>
             <?php $noCodeLatestArtifact = $noCodeInspection['latest_artifact']; ?>
             <?php $noCodePublishReadiness = $noCodeInspection['publish_readiness']; ?>
+            <?php $noCodeDeliveryOverview = $noCodeInspection['delivery_overview']; ?>
+            <?php $appLocalPackageDelivery = $noCodeDeliveryOverview['app_local_package']; ?>
             <ul>
                 <li>health: <code><?php echo app_h($noCodeHealth['state']); ?></code> <?php echo app_h($noCodeHealth['label']); ?></li>
                 <li>publish readiness: <code><?php echo app_h($noCodePublishReadiness['state']); ?></code> <?php echo app_h($noCodePublishReadiness['label']); ?></li>
+                <li>delivery overview: <code><?php echo app_h($noCodeDeliveryOverview['state']); ?></code> <?php echo app_h($noCodeDeliveryOverview['label']); ?></li>
                 <li>definition: <code><?php echo app_h($noCodeInspection['available'] ? 'available' : 'missing'); ?></code></li>
                 <li>source output: <code><?php echo app_h($noCodeInspection['source_output_key']); ?></code></li>
                 <li>artifact count: <code><?php echo app_h((string) $noCodeInspection['artifact_count']); ?></code></li>
@@ -426,6 +429,20 @@ function app_render_project_source_outputs_page(array $app, array $request): voi
             </ul>
             <?php if (($noCodePublishReadiness['blocking_reasons'] ?? []) !== []): ?>
                 <p class="muted">publish blockers: <code><?php echo app_h(implode(' ', $noCodePublishReadiness['blocking_reasons'])); ?></code></p>
+            <?php endif; ?>
+            <h3>Delivery Overview</h3>
+            <ul>
+                <li>public runtime: <code><?php echo app_h($noCodeDeliveryOverview['public_runtime']['state']); ?></code> <?php echo app_h($noCodeDeliveryOverview['public_runtime']['label']); ?></li>
+                <li>public artifact: <code><?php echo app_h($noCodeDeliveryOverview['public_runtime']['artifact_key'] !== '' ? $noCodeDeliveryOverview['public_runtime']['artifact_key'] : 'none'); ?></code></li>
+                <li>app-local package: <code><?php echo app_h($appLocalPackageDelivery['state']); ?></code> <?php echo app_h($appLocalPackageDelivery['label']); ?></li>
+                <li>package artifact: <code><?php echo app_h($appLocalPackageDelivery['artifact_key'] !== '' ? $appLocalPackageDelivery['artifact_key'] : 'none'); ?></code></li>
+                <li>package manifest/summary: <code><?php echo app_h($appLocalPackageDelivery['manifest_available'] ? 'ready' : 'missing'); ?></code> / <code><?php echo app_h($appLocalPackageDelivery['summary_available'] ? 'ready' : 'missing'); ?></code></li>
+            </ul>
+            <?php if (($noCodeDeliveryOverview['blockers'] ?? []) !== []): ?>
+                <p class="muted">delivery blockers: <code><?php echo app_h(implode(' ', $noCodeDeliveryOverview['blockers'])); ?></code></p>
+            <?php endif; ?>
+            <?php if ($appLocalPackageDelivery['source_output_key'] !== ''): ?>
+                <p><a href="<?php echo app_h(app_project_source_output_detail_path($projectKey, $appLocalPackageDelivery['source_output_key'])); ?>">Inspect App-local package definition</a></p>
             <?php endif; ?>
             <p class="muted">current output: <code><?php echo app_h($noCodeInspection['source_output_dir']); ?></code></p>
             <p class="muted">preview files: <code><?php echo app_h($noCodeInspection['source_output_dir'] . '/screen-definition.json'); ?></code>, <code><?php echo app_h($noCodeInspection['source_output_dir'] . '/runtime-preview.json'); ?></code>, <code><?php echo app_h($noCodeInspection['source_output_dir'] . '/runtime-preview.html'); ?></code></p>

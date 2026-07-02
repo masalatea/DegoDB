@@ -186,6 +186,11 @@ final class OpenApiSourceOutputContractTest extends TestCase
         self::assertStringContainsString('Operator Workflow Checklist', $sourceOutputsPage);
         self::assertStringContainsString('workflow_steps', $sourceOutputsPage);
         self::assertStringContainsString('$workflowStep', $sourceOutputsPage);
+        self::assertStringContainsString('Delivery Overview', $sourceOutputsPage);
+        self::assertStringContainsString('delivery_overview', $sourceOutputsPage);
+        self::assertStringContainsString('public runtime:', $sourceOutputsPage);
+        self::assertStringContainsString('app-local package:', $sourceOutputsPage);
+        self::assertStringContainsString('Inspect App-local package definition', $sourceOutputsPage);
         self::assertMatchesRegularExpression(
             '/app_auth_has_any_role\(\[\'admin\', \'config\'\], \$principal\)/',
             $syncOutboxDetailPage,

@@ -32,6 +32,27 @@ const APP_NO_CODE_OPERATOR_SOURCE_OUTPUT_KEY = 'NO-CODE-RUNTIME';
  *         action_count:int,
  *         blocking_reasons:list<string>
  *     },
+ *     delivery_overview:array{
+ *         state:string,
+ *         label:string,
+ *         public_runtime:array{
+ *             state:string,
+ *             label:string,
+ *             artifact_key:string,
+ *             blockers:list<string>
+ *         },
+ *         app_local_package:array{
+ *             state:string,
+ *             label:string,
+ *             source_output_key:string,
+ *             artifact_key:string,
+ *             archive_available:bool,
+ *             manifest_available:bool,
+ *             summary_available:bool,
+ *             blockers:list<string>
+ *         },
+ *         blockers:list<string>
+ *     },
  *     preview:array{
  *         source_root:string,
  *         screen_definition_path:string,
@@ -72,6 +93,21 @@ function app_no_code_operator_inspection_from_catalog(
 
     $preview = app_no_code_operator_preview_summary($sourceRoot);
 
+    $publishReadiness = app_no_code_operator_publish_readiness(
+        $normalizedSourceOutputKey,
+        $sourceOutputDir,
+        $sourceOutput,
+        $latestArtifact,
+        $preview,
+    );
+    $deliveryOverview = app_no_code_operator_delivery_overview(
+        $sourceOutputs,
+        $artifacts,
+        $normalizedProjectKey,
+        $workspaceRoot,
+        $publishReadiness,
+    );
+
     return [
         'source_output_key' => $normalizedSourceOutputKey,
         'available' => $sourceOutput !== null,
@@ -81,13 +117,8 @@ function app_no_code_operator_inspection_from_catalog(
         'artifact_count' => count($matchingArtifacts),
         'health' => app_no_code_operator_health_summary($sourceOutput, $latestArtifact, $preview),
         'workflow_steps' => app_no_code_operator_workflow_steps($sourceOutput, $latestArtifact, $preview),
-        'publish_readiness' => app_no_code_operator_publish_readiness(
-            $normalizedSourceOutputKey,
-            $sourceOutputDir,
-            $sourceOutput,
-            $latestArtifact,
-            $preview,
-        ),
+        'publish_readiness' => $publishReadiness,
+        'delivery_overview' => $deliveryOverview,
         'preview' => $preview,
     ];
 }
@@ -352,6 +383,162 @@ function app_no_code_operator_publish_readiness(
         'screen_count' => (int) ($preview['screen_count'] ?? 0),
         'action_count' => $actionCount,
         'blocking_reasons' => array_values(array_unique($blockingReasons)),
+    ];
+}
+
+/**
+ * @param list<array<string,mixed>> $sourceOutputs
+ * @param list<array<string,mixed>> $artifacts
+ * @param array{
+ *     state:string,
+ *     label:string,
+ *     artifact_key:string,
+ *     blocking_reasons:list<string>
+ * } $publishReadiness
+ * @return array{
+ *     state:string,
+ *     label:string,
+ *     public_runtime:array{state:string,label:string,artifact_key:string,blockers:list<string>},
+ *     app_local_package:array{
+ *         state:string,
+ *         label:string,
+ *         source_output_key:string,
+ *         artifact_key:string,
+ *         archive_available:bool,
+ *         manifest_available:bool,
+ *         summary_available:bool,
+ *         blockers:list<string>
+ *     },
+ *     blockers:list<string>
+ * }
+ */
+function app_no_code_operator_delivery_overview(
+    array $sourceOutputs,
+    array $artifacts,
+    string $projectKey,
+    string $workspaceRoot,
+    array $publishReadiness,
+): array {
+    $publicBlockers = $publishReadiness['blocking_reasons'] ?? [];
+    $publicRuntime = [
+        'state' => ($publishReadiness['state'] ?? '') === 'publishable' ? 'ready' : 'blocked',
+        'label' => ($publishReadiness['state'] ?? '') === 'publishable'
+            ? 'Public runtime candidate ready'
+            : 'Public runtime candidate blocked',
+        'artifact_key' => (string) ($publishReadiness['artifact_key'] ?? ''),
+        'blockers' => array_values(array_unique($publicBlockers)),
+    ];
+
+    $appLocalPackage = app_no_code_operator_app_local_package_delivery_summary(
+        $sourceOutputs,
+        $artifacts,
+        $projectKey,
+        $workspaceRoot,
+    );
+
+    $blockers = [];
+    foreach ($publicRuntime['blockers'] as $blocker) {
+        $blockers[] = 'public runtime: ' . $blocker;
+    }
+    foreach ($appLocalPackage['blockers'] as $blocker) {
+        $blockers[] = 'app-local package: ' . $blocker;
+    }
+
+    $state = $publicRuntime['state'] === 'ready' && $appLocalPackage['state'] === 'ready'
+        ? 'ready'
+        : 'blocked';
+
+    return [
+        'state' => $state,
+        'label' => $state === 'ready'
+            ? 'Public runtime and app-local package ready'
+            : 'Delivery paths need operator review',
+        'public_runtime' => $publicRuntime,
+        'app_local_package' => $appLocalPackage,
+        'blockers' => array_values(array_unique($blockers)),
+    ];
+}
+
+/**
+ * @param list<array<string,mixed>> $sourceOutputs
+ * @param list<array<string,mixed>> $artifacts
+ * @return array{
+ *     state:string,
+ *     label:string,
+ *     source_output_key:string,
+ *     artifact_key:string,
+ *     archive_available:bool,
+ *     manifest_available:bool,
+ *     summary_available:bool,
+ *     blockers:list<string>
+ * }
+ */
+function app_no_code_operator_app_local_package_delivery_summary(
+    array $sourceOutputs,
+    array $artifacts,
+    string $projectKey,
+    string $workspaceRoot,
+): array {
+    $sourceOutput = null;
+    foreach ($sourceOutputs as $candidate) {
+        if (($candidate['artifact_strategy'] ?? '') === 'app-local-package-manifest') {
+            $sourceOutput = $candidate;
+            break;
+        }
+    }
+
+    if ($sourceOutput === null) {
+        return [
+            'state' => 'blocked',
+            'label' => 'App-local package definition missing',
+            'source_output_key' => '',
+            'artifact_key' => '',
+            'archive_available' => false,
+            'manifest_available' => false,
+            'summary_available' => false,
+            'blockers' => ['App-local package Source Output definition is missing.'],
+        ];
+    }
+
+    $sourceOutputKey = (string) ($sourceOutput['source_output_key'] ?? '');
+    $matchingArtifacts = app_no_code_operator_filter_artifacts($artifacts, $sourceOutputKey);
+    $latestArtifact = $matchingArtifacts[0] ?? null;
+    $archiveAvailable = $latestArtifact !== null && ($latestArtifact['archive_exists'] ?? false) === true;
+    $sourceOutputDir = app_no_code_operator_source_output_dir(
+        $sourceOutput,
+        app_normalize_no_code_operator_project_key($projectKey),
+        app_normalize_no_code_operator_source_output_key($sourceOutputKey),
+    );
+    $sourceRoot = rtrim(str_replace('\\', '/', $workspaceRoot), '/') . '/' . $sourceOutputDir;
+    $manifestAvailable = is_file($sourceRoot . '/app-local-package-manifest.json');
+    $summaryAvailable = is_file($sourceRoot . '/app-local-package-summary.json');
+    $blockers = [];
+
+    if ($latestArtifact === null) {
+        $blockers[] = 'Latest App-local package artifact is missing.';
+    } elseif (!$archiveAvailable) {
+        $blockers[] = 'Latest App-local package archive is missing.';
+    }
+    if (!$manifestAvailable) {
+        $blockers[] = 'app-local-package-manifest.json is missing.';
+    }
+    if (!$summaryAvailable) {
+        $blockers[] = 'app-local-package-summary.json is missing.';
+    }
+
+    $state = $blockers === [] ? 'ready' : 'blocked';
+
+    return [
+        'state' => $state,
+        'label' => $state === 'ready'
+            ? 'App-local package ready'
+            : 'App-local package blocked',
+        'source_output_key' => $sourceOutputKey,
+        'artifact_key' => $latestArtifact !== null ? (string) ($latestArtifact['artifact_key'] ?? '') : '',
+        'archive_available' => $archiveAvailable,
+        'manifest_available' => $manifestAvailable,
+        'summary_available' => $summaryAvailable,
+        'blockers' => array_values(array_unique($blockers)),
     ];
 }
 
