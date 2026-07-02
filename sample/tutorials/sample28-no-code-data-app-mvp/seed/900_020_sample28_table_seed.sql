@@ -60,6 +60,18 @@ INSERT INTO no_code_ticket (
     'open',
     10,
     'This row is the first sample28 data-first no-code app fixture.'
+), (
+    1002,
+    'Review generated customer fields',
+    'triage',
+    20,
+    'Confirm imported fields before exposing the generated no-code preview to operators.'
+), (
+    1003,
+    'Prepare approval handoff',
+    'ready',
+    30,
+    'Use the publish candidate workflow to review and approve the generated runtime.'
 )
 ON DUPLICATE KEY UPDATE
     title = VALUES(title),

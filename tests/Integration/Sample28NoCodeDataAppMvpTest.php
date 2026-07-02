@@ -43,5 +43,6 @@ final class Sample28NoCodeDataAppMvpTest extends TestCase
         self::assertSame('no_code_ticket', $result['steps']['screen_definition']['contract_key'] ?? '');
         self::assertSame('update_no_code_ticket', $result['steps']['screen_definition']['action_key'] ?? '');
         self::assertSame(3, $result['steps']['runtime_preview']['screen_count'] ?? null);
+        self::assertSame(3, $result['steps']['runtime_preview']['seeded_preview_row_count'] ?? null);
     }
 }

@@ -1303,7 +1303,7 @@ function app_project_output_no_code_runtime_payload(string $projectKey, array $d
     $screenDefinition = is_array($definitionResult['definition'] ?? null)
         ? $definitionResult['definition']
         : [];
-    $preview = app_project_output_no_code_runtime_preview($screenDefinition);
+    $preview = app_project_output_no_code_runtime_preview($screenDefinition, $projectKey);
     $screenCount = 0;
     foreach (($screenDefinition['contracts'] ?? []) as $contract) {
         if (is_array($contract) && is_array($contract['screens'] ?? null)) {
@@ -1334,14 +1334,20 @@ function app_project_output_no_code_runtime_payload(string $projectKey, array $d
  * @param array<string,mixed> $screenDefinition
  * @return array<string,mixed>
  */
-function app_project_output_no_code_runtime_preview(array $screenDefinition): array
+function app_project_output_no_code_runtime_preview(array $screenDefinition, string $projectKey = ''): array
 {
     $screens = [];
     $errors = [];
+    $normalizedProjectKey = app_normalize_project_key($projectKey !== '' ? $projectKey : (string) ($screenDefinition['project_key'] ?? ''));
     foreach (($screenDefinition['contracts'] ?? []) as $contract) {
         if (!is_array($contract)) {
             continue;
         }
+
+        $previewData = app_project_output_no_code_runtime_preview_data(
+            $normalizedProjectKey,
+            (string) ($contract['contract_key'] ?? ''),
+        );
 
         foreach (($contract['screens'] ?? []) as $screen) {
             if (!is_array($screen)) {
@@ -1353,7 +1359,12 @@ function app_project_output_no_code_runtime_preview(array $screenDefinition): ar
                 continue;
             }
 
-            $renderResult = app_no_code_runtime_render_screen($screenDefinition, $screenKey);
+            $renderResult = app_no_code_runtime_render_screen(
+                $screenDefinition,
+                $screenKey,
+                $previewData['rows'],
+                $previewData['current_item'],
+            );
             if (!$renderResult['ok']) {
                 $errors[] = $renderResult['error'];
                 continue;
@@ -1370,6 +1381,48 @@ function app_project_output_no_code_runtime_preview(array $screenDefinition): ar
         'project_key' => (string) ($screenDefinition['project_key'] ?? ''),
         'screens' => $screens,
         'error' => implode('; ', $errors),
+    ];
+}
+
+/**
+ * @return array{rows:list<array<string,mixed>>,current_item:array<string,mixed>}
+ */
+function app_project_output_no_code_runtime_preview_data(string $projectKey, string $contractKey): array
+{
+    if ($projectKey === 'SAMPLE28' && $contractKey === 'no_code_ticket') {
+        $rows = [
+            [
+                'id' => 1001,
+                'title' => 'First no-code app ticket',
+                'status' => 'open',
+                'priority' => 10,
+                'body' => 'This row is the first sample28 data-first no-code app fixture.',
+            ],
+            [
+                'id' => 1002,
+                'title' => 'Review generated customer fields',
+                'status' => 'triage',
+                'priority' => 20,
+                'body' => 'Confirm imported fields before exposing the generated no-code preview to operators.',
+            ],
+            [
+                'id' => 1003,
+                'title' => 'Prepare approval handoff',
+                'status' => 'ready',
+                'priority' => 30,
+                'body' => 'Use the publish candidate workflow to review and approve the generated runtime.',
+            ],
+        ];
+
+        return [
+            'rows' => $rows,
+            'current_item' => $rows[0],
+        ];
+    }
+
+    return [
+        'rows' => [],
+        'current_item' => [],
     ];
 }
 

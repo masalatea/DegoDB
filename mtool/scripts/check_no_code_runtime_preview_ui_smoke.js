@@ -115,6 +115,8 @@ function expectedProfile(name) {
       inputFields: ['title', 'status', 'priority', 'body'],
       requiredInputField: 'body',
       requiredInputValue: 'Generated sample28 browser smoke payload',
+      seededPreview: true,
+      seededText: 'Review generated customer fields',
       payload: {
         id: 1001,
         title: 'Sample28 browser smoke update',
@@ -291,6 +293,7 @@ async function runSmoke(config) {
           fieldCount: document.querySelector(`.no-code-screen-summary[data-screen-summary="${expected.formScreenKey}"]`)?.getAttribute('data-field-count') || '',
           actionCount: document.querySelector(`.no-code-screen-summary[data-screen-summary="${expected.formScreenKey}"]`)?.getAttribute('data-action-count') || '',
         },
+        listRowCount: document.querySelectorAll(`.no-code-screen[data-screen-key="${expected.listScreenKey}"] tbody tr:not(.no-code-empty-row)`).length,
         emptyScreenCount: sections.filter((section) => section.getAttribute('data-screen-state') === 'empty').length,
         readyScreenCount: sections.filter((section) => section.getAttribute('data-screen-state') === 'ready').length,
         actionCount: actions.length,
@@ -344,7 +347,17 @@ async function runSmoke(config) {
     if (metrics.formSummary.fieldCount !== String(config.expected.inputFields.length) || metrics.formSummary.actionCount !== '1') {
       throw new Error(`form screen summary mismatch: ${JSON.stringify(metrics.formSummary)}`);
     }
-    if (metrics.emptyScreenCount < 1) {
+    if (config.expected.seededPreview) {
+      if (metrics.listRowCount < 3) {
+        throw new Error(`seeded preview row count mismatch: ${metrics.listRowCount}`);
+      }
+      if (metrics.emptyScreenCount !== 0 || metrics.readyScreenCount !== 3) {
+        throw new Error(`seeded preview screen states mismatch: empty=${metrics.emptyScreenCount} ready=${metrics.readyScreenCount}`);
+      }
+      if (!metrics.bodyText.includes(config.expected.seededText)) {
+        throw new Error(`seeded preview text was not found: ${config.expected.seededText}`);
+      }
+    } else if (metrics.emptyScreenCount < 1) {
       throw new Error('generated empty screen state was not found.');
     }
     if (metrics.keyboardActionCount !== metrics.actionCount || metrics.actionAffordanceCount !== metrics.actionCount) {

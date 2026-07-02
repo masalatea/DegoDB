@@ -214,6 +214,7 @@ final class OpenApiSourceOutputContractTest extends TestCase
         self::assertStringContainsString('public raw route や public alias key route は持ちません', $detailPage);
         self::assertStringContainsString('Publish Candidates', $detailPage);
         self::assertStringContainsString('create-publish-candidate', $detailPage);
+        self::assertStringContainsString('sample28-demo-tryout-approval', $detailPage);
         self::assertStringContainsString('transition-publish-candidate', $detailPage);
         self::assertStringContainsString('select-current-public-revision', $detailPage);
         self::assertStringContainsString('set-public-runtime-alias', $detailPage);
@@ -227,7 +228,13 @@ final class OpenApiSourceOutputContractTest extends TestCase
         self::assertStringContainsString('app_pdo_list_no_code_public_runtime_aliases_for_source_output', $detailPage);
         self::assertStringContainsString('app_pdo_list_no_code_public_runtime_alias_events_for_source_output', $detailPage);
         self::assertStringContainsString('app_pdo_list_no_code_publish_candidate_transition_events', $detailPage);
-        self::assertStringContainsString('公開 URL や package exposure はまだ行いません', $detailPage);
+        self::assertStringContainsString('No-Code Runtime Workflow', $detailPage);
+        self::assertStringContainsString('database metadata から生成した no-code runtime', $detailPage);
+        self::assertStringContainsString('DB 基盤から切り離された別物ではなく', $detailPage);
+        self::assertStringContainsString('candidate を作成して review request の後に approve', $detailPage);
+        self::assertStringContainsString('Run Sample28 Tryout Approval', $detailPage);
+        self::assertStringContainsString('Demo shortcut: creates a candidate, requests review, approves it, selects current public revision', $detailPage);
+        self::assertStringContainsString('Sample28 Tryout Ready', $detailPage);
         self::assertStringContainsString('Approved package exposure', $detailPage);
         self::assertStringContainsString('Current public revision', $detailPage);
         self::assertStringContainsString('Approved non-current revision', $detailPage);
@@ -247,6 +254,7 @@ final class OpenApiSourceOutputContractTest extends TestCase
         self::assertStringContainsString('Rollback target: current', $detailPage);
         self::assertStringContainsString('Rollback Current To This Revision', $detailPage);
         self::assertStringContainsString('Alias routes do not automatically follow current public revision rollback', $detailPage);
+        self::assertStringContainsString('opened by the current public runtime preview URL', $detailPage);
         self::assertStringContainsString('explicitly resolves to this approved candidate when selected', $detailPage);
         self::assertStringContainsString('Transition events', $detailPage);
         self::assertStringContainsString('No transition event has been recorded for this candidate yet.', $detailPage);
