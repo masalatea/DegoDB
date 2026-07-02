@@ -11,6 +11,8 @@
 
 ## Index
 
+- `2026-0702-tryout-ux-polish-2.md`
+  - no-code tryout-ready 後の初回ユーザー向け polish。`NO-CODE-RUNTIME` detail に `Tryout Next Steps` を追加し、Web preview と App-local package readiness が別 delivery track であることを Source Outputs / detail / tryout guide に明記。Focused static contract は `22 tests, 1821 assertions` で通過。Status: `FIRST_SLICE_DONE`。
 - `2026-0702-pre-next-push-verification.md`
   - no-code tryout-ready push 後、#69/#70 の planning / verification record を次に push する前の verification 記録。`make sample28-no-code-runtime-ui-smoke` は seeded 3 rows を確認して通過、full `make test` は `327 tests, 10798 assertions, skipped 1` で通過、`git diff --check` も通過。Status: `DONE`。
 - `2026-0702-post-tryout-ready-no-code-product-goal-replan.md`

@@ -47,8 +47,9 @@ password: change-this-admin-password
 4. Open `source-outputs`.
 5. Open `NO-CODE-RUNTIME`.
 6. Confirm the publish readiness is `publishable`.
-7. For the guided demo path, click `Run Sample28 Tryout Approval`.
-8. Open `current public runtime preview`.
+7. Read `Tryout Next Steps` on the detail page.
+8. For the guided demo path, click `Run Sample28 Tryout Approval`.
+9. Open `current public runtime preview`.
 
 The normal operator path is still available:
 
@@ -91,4 +92,4 @@ Some actions may be disabled in this preview when policy checks do not enable th
 
 - If you only see artifact download or manifest information, go back to `NO-CODE-RUNTIME` detail. The artifact detail page is read-only.
 - If the public preview returns `404`, the runtime probably has not been approved yet, or no current public revision has been selected.
-- If `app-local package` readiness is blocked on the Source Outputs page, continue with the Web preview path. App-local packaging is a different scenario.
+- If `app-local package` readiness is blocked on the Source Outputs page, continue with the Web preview path. App-local packaging is a different scenario, and the `Tryout Next Steps` card on `NO-CODE-RUNTIME` points back to the Web preview route.

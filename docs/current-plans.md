@@ -93,6 +93,7 @@ Latest update: no-code tryout-ready milestone is complete through #67. sample28 
 | 68 | Local tryout-ready commit regrouping / tryout-ready local commit 整理 | Replaced the unpushed six-commit local stack with two local commits: implementation/tryout readiness and documentation/positioning. No remote history rewrite and no push. | `DONE` | 0.25 day / 0.25 日 |
 | 69 | Post-tryout-ready product goal replan / tryout-ready 後の product goal 再計画 | Choose pre-next-push verification before opening another implementation lane. Next product candidates are tryout UX polish 2, runtime real interaction, docs chapter hardening, and next scenario/sample. | `DONE` | 0.25 - 0.5 day / 0.25 - 0.5 日 |
 | 70 | Pre-next-push verification / 次 push 前 verification | Reran focused sample28 no-code runtime smoke and full `make test` before pushing the #69/#70 planning/verification record | `DONE` | 0.25 - 0.5 day / 0.25 - 0.5 日 |
+| 71 | Tryout UX polish 2 / tryout UX polish 2 | Added first-time `Tryout Next Steps` guidance on `NO-CODE-RUNTIME`, clarified Web preview vs App-local package delivery tracks, and guarded the wording with focused contract coverage | `DONE` | 0.5 day / 半日 |
 
 ### Auxiliary Later Review / 補助・後日検討
 

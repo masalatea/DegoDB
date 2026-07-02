@@ -431,6 +431,7 @@ function app_render_project_source_outputs_page(array $app, array $request): voi
                 <p class="muted">publish blockers: <code><?php echo app_h(implode(' ', $noCodePublishReadiness['blocking_reasons'])); ?></code></p>
             <?php endif; ?>
             <h3>Delivery Overview</h3>
+            <p class="muted">Web no-code preview and App-local package readiness are separate delivery tracks. Continue the Web preview tryout through <code>NO-CODE-RUNTIME</code> even when the App-local package lane is blocked or not configured for this sample.</p>
             <ul>
                 <li>public runtime: <code><?php echo app_h($noCodeDeliveryOverview['public_runtime']['state']); ?></code> <?php echo app_h($noCodeDeliveryOverview['public_runtime']['label']); ?></li>
                 <li>public artifact: <code><?php echo app_h($noCodeDeliveryOverview['public_runtime']['artifact_key'] !== '' ? $noCodeDeliveryOverview['public_runtime']['artifact_key'] : 'none'); ?></code></li>

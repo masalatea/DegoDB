@@ -851,6 +851,15 @@ function app_render_project_source_output_detail_page(array $app, array $request
             <h2>No-Code Runtime Workflow</h2>
             <p>この画面では、database metadata から生成した no-code runtime を artifact として確認し、公開候補として review / approval へ進めます。no-code preview は DB 基盤から切り離された別物ではなく、Source Output と承認 workflow の上で公開します。</p>
         </section>
+        <section class="note-card">
+            <h2>Tryout Next Steps</h2>
+            <ol>
+                <li>For the fastest local demo, run <code>Run Sample28 Tryout Approval</code> when this is <code>SAMPLE28</code>.</li>
+                <li>Open <a href="<?php echo app_h(app_no_code_public_runtime_current_preview_path($projectKey)); ?>">current public runtime preview</a> after approval.</li>
+                <li>Use <a href="<?php echo app_h(app_project_source_outputs_path($projectKey)); ?>">Source Outputs</a> to review delivery status, including Web preview and App-local package readiness.</li>
+            </ol>
+            <p class="muted">App-local package readiness is a separate scenario from this Web preview. A blocked app-local package does not block the no-code runtime tryout when publish readiness is <code>publishable</code>.</p>
+        </section>
     <?php endif; ?>
 
     <?php if ($createdArtifactKey !== ''): ?>
@@ -1011,6 +1020,7 @@ function app_render_project_source_output_detail_page(array $app, array $request
         <?php if ($appLocalPackageReadiness['applies']): ?>
             <section class="summary-card">
                 <h2>App-local Package Readiness</h2>
+                <p class="muted">This card is for the App-local package lane. It is separate from the Web no-code runtime preview and publish candidate flow.</p>
                 <ul>
                     <li>state: <code><?php echo app_h($appLocalPackageReadiness['state']); ?></code></li>
                     <li>latest artifact: <code><?php echo app_h($appLocalPackageReadiness['artifact_key'] !== '' ? $appLocalPackageReadiness['artifact_key'] : 'none'); ?></code></li>

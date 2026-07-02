@@ -188,6 +188,8 @@ final class OpenApiSourceOutputContractTest extends TestCase
         self::assertStringContainsString('$workflowStep', $sourceOutputsPage);
         self::assertStringContainsString('Delivery Overview', $sourceOutputsPage);
         self::assertStringContainsString('delivery_overview', $sourceOutputsPage);
+        self::assertStringContainsString('Web no-code preview and App-local package readiness are separate delivery tracks.', $sourceOutputsPage);
+        self::assertStringContainsString('Continue the Web preview tryout through <code>NO-CODE-RUNTIME</code>', $sourceOutputsPage);
         self::assertStringContainsString('public runtime:', $sourceOutputsPage);
         self::assertStringContainsString('app-local package:', $sourceOutputsPage);
         self::assertStringContainsString('Inspect App-local package definition', $sourceOutputsPage);
@@ -231,6 +233,9 @@ final class OpenApiSourceOutputContractTest extends TestCase
         self::assertStringContainsString('No-Code Runtime Workflow', $detailPage);
         self::assertStringContainsString('database metadata から生成した no-code runtime', $detailPage);
         self::assertStringContainsString('DB 基盤から切り離された別物ではなく', $detailPage);
+        self::assertStringContainsString('Tryout Next Steps', $detailPage);
+        self::assertStringContainsString('For the fastest local demo, run <code>Run Sample28 Tryout Approval</code>', $detailPage);
+        self::assertStringContainsString('App-local package readiness is a separate scenario from this Web preview.', $detailPage);
         self::assertStringContainsString('candidate を作成して review request の後に approve', $detailPage);
         self::assertStringContainsString('Run Sample28 Tryout Approval', $detailPage);
         self::assertStringContainsString('Demo shortcut: creates a candidate, requests review, approves it, selects current public revision', $detailPage);
@@ -247,6 +252,7 @@ final class OpenApiSourceOutputContractTest extends TestCase
         self::assertStringContainsString('No public runtime alias lifecycle event has been recorded yet.', $detailPage);
         self::assertStringContainsString('app_project_source_output_app_local_package_readiness', $detailPage);
         self::assertStringContainsString('App-local Package Readiness', $detailPage);
+        self::assertStringContainsString('This card is for the App-local package lane.', $detailPage);
         self::assertStringContainsString('Package readiness blockers:', $detailPage);
         self::assertStringContainsString('app-local-package-manifest.json is missing from the output root.', $detailPage);
         self::assertStringContainsString('Delete Public Alias', $detailPage);
