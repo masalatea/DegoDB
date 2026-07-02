@@ -11,6 +11,8 @@
 
 ## Index
 
+- `2026-0702-commit-cleanup-execution-result.md`
+  - local commit stack を 6 grouped commits へ rewrite。backup branch `codex/backup-develop-pre-squash-20260702-ea60c8c` を作成し、rewrite 前後の tree parity を確認。`git diff --check` と full `make test` は通過。Push は未実行。Status: `DONE`。
 - `2026-0702-commit-cleanup-review-grouping-after-delivery-milestone.md`
   - local `develop` が `origin/develop` より 53 commits ahead の状態を、6 つの review group に整理。push / squash / rebase / reset / PR creation は未実行。Status: `FIRST_SLICE_DONE`。
 - `2026-0702-no-code-delivery-milestone-closure-report.md`
