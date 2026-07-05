@@ -154,12 +154,22 @@ final class NoCodeRuntimeTest extends TestCase
         self::assertStringContainsString('Copy draft JSON', $html);
         self::assertStringContainsString('data-intent-draft-copy-status', $html);
         self::assertStringContainsString('Draft JSON copy will be available when this screen is ready.', $html);
+        self::assertStringContainsString('data-runtime-execute disabled data-runtime-execute-state="unavailable"', $html);
+        self::assertStringContainsString('Submit to server', $html);
+        self::assertStringContainsString('data-runtime-execute-status', $html);
+        self::assertStringContainsString('Server execution is available from an authenticated current or alias preview.', $html);
         self::assertStringContainsString('class="no-code-intent-draft-json" data-intent-draft-json-details', $html);
         self::assertStringContainsString('<summary>Draft JSON</summary>', $html);
         self::assertStringContainsString('data-intent-draft-output', $html);
+        self::assertStringContainsString('no-code-runtime-execution-binding', $html);
         self::assertStringContainsString('window.__noCodeRuntimeDispatches = [];', $html);
+        self::assertStringContainsString('window.__noCodeRuntimeExecutionBinding = executionBinding;', $html);
         self::assertStringContainsString('function buildActionIntentDraft(action, input)', $html);
         self::assertStringContainsString('function copyIntentDraft(button)', $html);
+        self::assertStringContainsString('function submitRuntimeAction(button)', $html);
+        self::assertStringContainsString("formData.append('_csrf', executionBinding.csrf_token || '');", $html);
+        self::assertStringContainsString("fetch(executionBinding.execution_url", $html);
+        self::assertStringContainsString('Server execution endpoint is ready: ', $html);
         self::assertStringContainsString("'Action: ' + (draft.action_key || '(unknown)')", $html);
         self::assertStringContainsString("function actionFieldSummary(action)", $html);
         self::assertStringContainsString("'Fields: key=' + list(buckets.key)", $html);
@@ -296,6 +306,265 @@ final class NoCodeRuntimeTest extends TestCase
         );
     }
 
+    public function testBuildsServerBackedExecutionRequestContractFromPost(): void
+    {
+        $request = app_no_code_runtime_execution_request_from_post(
+            'POST',
+            [
+                '_csrf' => 'known-token',
+                'project_key' => 'RUNTIME-TEST',
+                'artifact_key' => 'NO-CODE-RUNTIME-abc123',
+                'action_key' => 'update_note',
+                'input' => [
+                    'id' => '1',
+                    'note' => 'Submitted through runtime endpoint',
+                    'ignored_nested' => ['unsafe'],
+                    '' => 'ignored blank key',
+                ],
+            ],
+            [
+                'csrf_token' => 'known-token',
+                'project_key' => 'RUNTIME-TEST',
+                'artifact_key' => 'NO-CODE-RUNTIME-abc123',
+                'source_output_key' => 'NO-CODE-RUNTIME',
+                'revision_id' => 'rev-runtime-1',
+            ],
+        );
+
+        self::assertTrue($request['ok'], $request['error']);
+        self::assertSame('update_note', $request['action_key']);
+        self::assertSame(
+            [
+                'id' => '1',
+                'note' => 'Submitted through runtime endpoint',
+            ],
+            $request['input'],
+        );
+        self::assertSame(
+            [
+                'project_key' => 'RUNTIME-TEST',
+                'artifact_key' => 'NO-CODE-RUNTIME-abc123',
+                'source_output_key' => 'NO-CODE-RUNTIME',
+                'revision_id' => 'rev-runtime-1',
+            ],
+            $request['binding'],
+        );
+    }
+
+    public function testServerBackedExecutionRequestFailsClosedBeforeDispatch(): void
+    {
+        $expectedBinding = [
+            'csrf_token' => 'known-token',
+            'project_key' => 'RUNTIME-TEST',
+            'artifact_key' => 'NO-CODE-RUNTIME-abc123',
+        ];
+
+        $notPost = app_no_code_runtime_execution_request_from_post('GET', [], $expectedBinding);
+        self::assertFalse($notPost['ok']);
+        self::assertSame('runtime execution requires POST', $notPost['error']);
+
+        $badCsrf = app_no_code_runtime_execution_request_from_post('POST', [
+            '_csrf' => 'wrong-token',
+            'project_key' => 'RUNTIME-TEST',
+            'artifact_key' => 'NO-CODE-RUNTIME-abc123',
+            'action_key' => 'update_note',
+        ], $expectedBinding);
+        self::assertFalse($badCsrf['ok']);
+        self::assertSame('runtime execution csrf token is invalid', $badCsrf['error']);
+
+        $badBinding = app_no_code_runtime_execution_request_from_post('POST', [
+            '_csrf' => 'known-token',
+            'project_key' => 'OTHER',
+            'artifact_key' => 'NO-CODE-RUNTIME-abc123',
+            'action_key' => 'update_note',
+        ], $expectedBinding);
+        self::assertFalse($badBinding['ok']);
+        self::assertSame('runtime execution project binding does not match', $badBinding['error']);
+
+        $missingAction = app_no_code_runtime_execution_request_from_post('POST', [
+            '_csrf' => 'known-token',
+            'project_key' => 'RUNTIME-TEST',
+            'artifact_key' => 'NO-CODE-RUNTIME-abc123',
+        ], $expectedBinding);
+        self::assertFalse($missingAction['ok']);
+        self::assertSame('runtime execution action key is missing', $missingAction['error']);
+    }
+
+    public function testExecutesServerBackedRequestOnlyAfterRequestContractPasses(): void
+    {
+        $dispatchIntents = [];
+        $dispatcher = static function (array $intent) use (&$dispatchIntents): array {
+            $dispatchIntents[] = $intent;
+            return [
+                'status' => 'ok',
+                'updated' => true,
+            ];
+        };
+
+        $badRequest = app_no_code_runtime_execute_request_from_post(
+            $this->screenDefinition(),
+            'POST',
+            [
+                '_csrf' => 'wrong-token',
+                'project_key' => 'RUNTIME-TEST',
+                'artifact_key' => 'NO-CODE-RUNTIME-abc123',
+                'action_key' => 'update_note',
+                'input' => [
+                    'id' => '1',
+                    'note' => 'Should not dispatch',
+                ],
+            ],
+            [
+                'csrf_token' => 'known-token',
+                'project_key' => 'RUNTIME-TEST',
+                'artifact_key' => 'NO-CODE-RUNTIME-abc123',
+            ],
+            $dispatcher,
+        );
+
+        self::assertFalse($badRequest['ok']);
+        self::assertFalse($badRequest['executed']);
+        self::assertSame('runtime execution csrf token is invalid', $badRequest['error']);
+        self::assertSame([], $dispatchIntents);
+
+        $result = app_no_code_runtime_execute_request_from_post(
+            $this->screenDefinition(),
+            'POST',
+            [
+                '_csrf' => 'known-token',
+                'project_key' => 'RUNTIME-TEST',
+                'artifact_key' => 'NO-CODE-RUNTIME-abc123',
+                'action_key' => 'update_note',
+                'input' => [
+                    'id' => '1',
+                    'note' => 'Dispatch through endpoint helper',
+                ],
+            ],
+            [
+                'csrf_token' => 'known-token',
+                'project_key' => 'RUNTIME-TEST',
+                'artifact_key' => 'NO-CODE-RUNTIME-abc123',
+                'source_output_key' => 'NO-CODE-RUNTIME',
+                'revision_id' => 'rev-runtime-1',
+            ],
+            $dispatcher,
+        );
+
+        self::assertTrue($result['ok'], $result['error']);
+        self::assertTrue($result['executed']);
+        self::assertSame('update_note', $result['request']['action_key'] ?? '');
+        self::assertSame('rev-runtime-1', $result['request']['binding']['revision_id'] ?? '');
+        self::assertSame(['status' => 'ok', 'updated' => true], $result['result']);
+        self::assertCount(1, $dispatchIntents);
+        self::assertSame(
+            [
+                'id' => '1',
+            ],
+            $dispatchIntents[0]['payload']['key'] ?? [],
+        );
+        self::assertSame(
+            [
+                'note' => 'Dispatch through endpoint helper',
+            ],
+            $dispatchIntents[0]['payload']['input'] ?? [],
+        );
+    }
+
+    public function testBuildsEndpointResponseForServerBackedExecution(): void
+    {
+        $dispatcher = static function (array $intent): array {
+            return [
+                'status' => 'ok',
+                'operation_key' => $intent['operation_key'] ?? '',
+            ];
+        };
+
+        $result = app_no_code_runtime_execute_request_from_post(
+            $this->screenDefinition(),
+            'POST',
+            [
+                '_csrf' => 'known-token',
+                'project_key' => 'RUNTIME-TEST',
+                'artifact_key' => 'NO-CODE-RUNTIME-abc123',
+                'action_key' => 'update_note',
+                'input' => [
+                    'id' => '1',
+                    'note' => 'Endpoint response payload',
+                ],
+            ],
+            [
+                'csrf_token' => 'known-token',
+                'project_key' => 'RUNTIME-TEST',
+                'artifact_key' => 'NO-CODE-RUNTIME-abc123',
+                'source_output_key' => 'NO-CODE-RUNTIME',
+                'revision_id' => 'rev-runtime-1',
+            ],
+            $dispatcher,
+        );
+
+        $response = app_no_code_runtime_execution_endpoint_response($result);
+
+        self::assertSame(200, $response['status_code']);
+        self::assertTrue($response['payload']['ok']);
+        self::assertTrue($response['payload']['executed']);
+        self::assertSame('', $response['payload']['error']);
+        self::assertSame('update_note', $response['payload']['request']['action_key'] ?? '');
+        self::assertSame('rev-runtime-1', $response['payload']['request']['binding']['revision_id'] ?? '');
+        self::assertSame('update_note', $response['payload']['intent']['operation_key'] ?? '');
+        self::assertSame('ok', $response['payload']['result']['status'] ?? '');
+
+        $badCsrf = app_no_code_runtime_execute_request_from_post(
+            $this->screenDefinition(),
+            'POST',
+            [
+                '_csrf' => 'wrong-token',
+                'project_key' => 'RUNTIME-TEST',
+                'artifact_key' => 'NO-CODE-RUNTIME-abc123',
+                'action_key' => 'update_note',
+            ],
+            [
+                'csrf_token' => 'known-token',
+                'project_key' => 'RUNTIME-TEST',
+                'artifact_key' => 'NO-CODE-RUNTIME-abc123',
+            ],
+            $dispatcher,
+        );
+        $badCsrfResponse = app_no_code_runtime_execution_endpoint_response($badCsrf);
+
+        self::assertSame(403, $badCsrfResponse['status_code']);
+        self::assertFalse($badCsrfResponse['payload']['ok']);
+        self::assertFalse($badCsrfResponse['payload']['executed']);
+        self::assertSame('runtime execution csrf token is invalid', $badCsrfResponse['payload']['error']);
+
+        $missingRequired = app_no_code_runtime_execute_request_from_post(
+            $this->screenDefinition(),
+            'POST',
+            [
+                '_csrf' => 'known-token',
+                'project_key' => 'RUNTIME-TEST',
+                'artifact_key' => 'NO-CODE-RUNTIME-abc123',
+                'action_key' => 'update_note',
+                'input' => [
+                    'id' => '1',
+                ],
+            ],
+            [
+                'csrf_token' => 'known-token',
+                'project_key' => 'RUNTIME-TEST',
+                'artifact_key' => 'NO-CODE-RUNTIME-abc123',
+            ],
+            $dispatcher,
+        );
+        $missingRequiredResponse = app_no_code_runtime_execution_endpoint_response($missingRequired);
+
+        self::assertSame(422, $missingRequiredResponse['status_code']);
+        self::assertFalse($missingRequiredResponse['payload']['ok']);
+        self::assertFalse($missingRequiredResponse['payload']['executed']);
+        self::assertStringContainsString('input.missing:note', $missingRequiredResponse['payload']['error']);
+        self::assertSame('Required input is missing: note', $missingRequiredResponse['payload']['message']);
+        self::assertSame('update_note', $missingRequiredResponse['payload']['intent']['operation_key'] ?? '');
+    }
+
     public function testDoesNotDispatchDisabledAction(): void
     {
         $called = false;
@@ -317,6 +586,39 @@ final class NoCodeRuntimeTest extends TestCase
         self::assertFalse($result['executed']);
         self::assertFalse($called);
         self::assertSame('action is not enabled: update_note', $result['error']);
+    }
+
+    public function testActionPolicyOverlayCanEnableStoredDisabledRuntimeDefinition(): void
+    {
+        $storedDefinition = $this->screenDefinition(false);
+        $policyDefinition = $this->screenDefinition(true);
+        $overlaidDefinition = app_no_code_runtime_definition_with_action_policy_overlay($storedDefinition, $policyDefinition);
+
+        $render = app_no_code_runtime_render_screen($overlaidDefinition, 'task_form');
+        self::assertTrue($render['ok'], $render['error']);
+        $actionsByKey = $this->indexBy($render['render']['actions'] ?? [], 'action_key');
+        self::assertTrue($actionsByKey['update_note']['enabled'] ?? false);
+        self::assertSame('enabled', $actionsByKey['update_note']['availability'] ?? '');
+        self::assertSame([], $actionsByKey['update_note']['failed_checks'] ?? ['missing']);
+
+        $called = false;
+        $result = app_no_code_runtime_dispatch_action(
+            $overlaidDefinition,
+            'update_note',
+            [
+                'id' => 1,
+                'note' => 'Policy overlay dispatch payload',
+            ],
+            static function (array $_intent) use (&$called): array {
+                $called = true;
+
+                return ['ok' => true];
+            },
+        );
+
+        self::assertTrue($result['ok'], $result['error']);
+        self::assertTrue($result['executed']);
+        self::assertTrue($called);
     }
 
     public function testDispatchFailsClosedWhenRequiredActionInputIsMissing(): void

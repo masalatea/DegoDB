@@ -11,6 +11,54 @@
 
 ## Index
 
+- `2026-0704-runtime-execution-route-principal-policy-overlay-wiring.md`
+  - authenticated no-code runtime execution route が current principal で action policy を再評価し、approved stored runtime definition へ overlay してから dispatch するように接続。sample28 direct endpoint smoke は現行 stub admin principal が editor / write-scope policy を満たさないため 422 fail-closed のまま通過。Push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0704-post-principal-policy-overlay-contract-no-code-product-goal-replan.md`
+  - principal policy overlay contract 後の次判断。sample policy 変更や successful mutation の前に route-level principal action policy overlay wiring を選択。Push は未実行。Status: `DONE`。
+- `2026-0704-runtime-principal-action-policy-overlay-contract.md`
+  - stored runtime definition を保ったまま、principal-aware definition から action availability / policy だけを overlay する pure runtime helper を追加。render と dispatch が overlay 後の enabled policy を使うことを focused `NoCodeRuntimeTest` で確認。Push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0704-post-endpoint-disabled-policy-smoke-no-code-product-goal-replan.md`
+  - endpoint disabled-policy smoke 後の次判断。real endpoint mutation wiring の前に、principal-aware action policy overlay contract を選択。Push は未実行。Status: `DONE`。
+- `2026-0704-runtime-execution-endpoint-disabled-policy-smoke.md`
+  - sample28 public runtime smoke に authenticated direct endpoint check を追加。stub admin auth でログインし、current / alias preview の execution binding から valid request を POST し、request binding は通るが generated disabled action は 422 JSON で fail-closed することを確認。`make sample28-no-code-public-runtime-browser-smoke` が通過。Push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0704-post-enabled-submit-payload-smoke-no-code-product-goal-replan.md`
+  - enabled submit payload smoke 後の次判断。real generated preview mutation behavior の前に、authenticated direct endpoint disabled-policy smoke を選択。Push は未実行。Status: `DONE`。
+- `2026-0704-runtime-preview-enabled-submit-payload-smoke.md`
+  - sample28 public runtime browser smoke に fetch-stub submit probe を追加。current / alias preview で generated action を browser 内だけ ready にし、`Submit to server` の POST URL、same-origin credentials、CSRF、action binding、key/input payload shape を server mutation なしで確認する。`make sample28-no-code-public-runtime-browser-smoke` が通過。Push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0704-post-execution-binding-smoke-hardening-no-code-product-goal-replan.md`
+  - execution binding smoke hardening 後の次判断。実 server mutation behavior や別 sample の前に、browser-side enabled submit payload smoke を選択。Push は未実行。Status: `DONE`。
+- `2026-0704-public-runtime-execution-binding-smoke-hardening.md`
+  - public runtime browser smoke に execution binding expectation を追加。artifact preview は binding なし、current / alias preview はそれぞれ matching execution endpoint binding ありを確認する。`make sample28-no-code-public-runtime-browser-smoke` が通過。Push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0704-post-preview-submit-wiring-no-code-product-goal-replan.md`
+  - preview submit wiring 後の次判断。enabled-action execution や別 sample の前に、public runtime execution binding smoke hardening を選択。Push は未実行。Status: `DONE`。
+- `2026-0704-runtime-execution-preview-submit-wiring-first-slice.md`
+  - generated no-code runtime preview に `Submit to server` control を追加し、current / alias preview response へ execution binding を注入。artifact-key immutable preview は session-specific data を入れず static のまま維持し、blocked draft は submit しない。Focused runtime/public-route PHPUnit、sample28 smoke、direct current/alias browser smoke が通過。Push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0704-post-runtime-execution-current-alias-routes-no-code-product-goal-replan.md`
+  - artifact/current/alias execution route が揃った後の次判断。generated preview submission wiring を次の work unit として選択。Push は未実行。Status: `DONE`。
+- `2026-0704-runtime-execution-current-alias-routes-first-slice.md`
+  - authenticated current / custom-alias no-code runtime execution JSON route を追加。preview HTML は public のまま、mutation endpoint は auth required。既存 current / alias preview route と同じ approved candidate を解決し、既存 runtime execution helper と managed-operation dispatch path を再利用。PHP lint、focused `OpenApiSourceOutputContractTest`、sample28 runtime UI smoke、`git diff --check`、full `make test` が通過。Push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0704-post-runtime-execution-artifact-route-no-code-product-goal-replan.md`
+  - artifact-key execution route 後の次判断。generated preview submission wiring の前に、公開 preview URL と同じ stable addressability を揃える current / alias execution route variants を選択。Push は未実行。Status: `DONE`。
+- `2026-0704-runtime-execution-artifact-route-first-slice.md`
+  - artifact-key scoped no-code runtime execution JSON route を追加。preview HTML は public のまま、mutation endpoint は auth required。approved candidate の `screen-definition.json` を読み、既存 request / dispatch / endpoint response helper と managed-operation outbox enqueue に接続。PHP lint、focused route/runtime PHPUnit、sample28 runtime UI smoke、`git diff --check`、full `make test` が通過。Push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0704-post-runtime-execution-endpoint-response-no-code-product-goal-replan.md`
+  - endpoint response contract 後の次判断。current/alias route variants や generated preview submission wiring の前に、authenticated artifact-key execution route を選択。Push は未実行。Status: `DONE`。
+- `2026-0703-runtime-execution-endpoint-response-contract-first-slice.md`
+  - server-backed runtime execution result を endpoint-ready な HTTP status と JSON payload に写す internal helper を追加。header 送信、public route 登録、generated preview submission wiring は未実施。PHP lint、focused `NoCodeRuntimeTest`、sample28 runtime UI smoke、`git diff --check`、full `make test` が通過。Push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0703-post-runtime-execution-dispatch-entrypoint-no-code-product-goal-replan.md`
+  - runtime execution dispatch entrypoint 後の次判断。public mutation route や generated preview submission wiring の前に endpoint response contract helper を選択。Push は未実行。Status: `DONE`。
+- `2026-0703-runtime-execution-dispatch-entrypoint-first-slice.md`
+  - request contract helper と existing no-code action dispatcher を合成する server-backed entrypoint helper。invalid request は dispatcher に届かず、valid request は `request` / `intent` / `result` の response shape を返す。PHP lint、focused `NoCodeRuntimeTest`、sample28 runtime UI smoke、`git diff --check`、full `make test` が通過。Push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0703-post-runtime-execution-request-contract-no-code-product-goal-replan.md`
+  - runtime execution request contract 後の次判断。public mutation route や generated preview submission wiring の前に server-backed dispatch entrypoint helper を選択。Push は未実行。Status: `DONE`。
+- `2026-0703-runtime-execution-request-contract-first-slice.md`
+  - server-backed runtime execution endpoint 前の request contract helper。POST、CSRF、project binding、artifact binding、action key、input normalization を fail-closed に固定。PHP lint、focused `NoCodeRuntimeTest`、sample28 runtime UI smoke、`git diff --check`、full `make test` が通過。Push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0703-post-runtime-execution-boundary-no-code-product-goal-replan.md`
+  - server-backed runtime execution boundary inventory 後の次判断。full endpoint の前に request contract hardening を選択。Push は未実行。Status: `DONE`。
+- `2026-0703-server-backed-runtime-execution-boundary-inventory.md`
+  - server-backed runtime execution の boundary inventory。backend dispatch helper / managed operation bridge / generated DBAccess execution coverage は既にある一方、generated runtime preview を mutation path にする前の auth、policy、CSRF、target binding、result refresh、error surface、audit trail 境界を記録。Push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0703-post-local-stack-review-no-code-product-goal-replan.md`
+  - local stack review 後の次判断。user-facing mutation path 実装の前に server-backed runtime execution boundary inventory を選択。Push は未実行。Status: `DONE`。
 - `2026-0703-local-commit-stack-review-after-required-field-validation-wording.md`
   - required-field validation wording 後の local commit stack review。`develop` は `origin/develop` より 17 commits ahead、worktree は clean、push は未実行。review grouping、verification baseline、push / rewrite options を記録。Status: `FIRST_SLICE_DONE`。
 - `2026-0703-post-required-field-validation-wording-closure-no-code-product-goal-replan.md`

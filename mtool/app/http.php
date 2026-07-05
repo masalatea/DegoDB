@@ -225,6 +225,18 @@ function app_run_http_request(): void
                 app_render_no_code_public_runtime_alias_preview_page($app, $request);
                 return;
 
+            case 'no_code_public_runtime_execution':
+                app_render_no_code_public_runtime_execution_page($app, $request);
+                return;
+
+            case 'no_code_public_runtime_current_execution':
+                app_render_no_code_public_runtime_current_execution_page($app, $request);
+                return;
+
+            case 'no_code_public_runtime_alias_execution':
+                app_render_no_code_public_runtime_alias_execution_page($app, $request);
+                return;
+
             case 'project_sync_outbox_detail':
                 app_render_project_sync_outbox_detail_page($app, $request);
                 return;

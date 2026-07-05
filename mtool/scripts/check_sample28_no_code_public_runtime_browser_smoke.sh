@@ -129,16 +129,29 @@ assert_cache_control "$alias_path" "no-store"
 node mtool/scripts/check_no_code_runtime_preview_ui_smoke.js \
   --profile=sample28 \
   "--url=${BASE_URL}${artifact_path}" \
+  --execution-binding=none \
   --output-dir=output/playwright/no-code-public-runtime
 
 node mtool/scripts/check_no_code_runtime_preview_ui_smoke.js \
   --profile=sample28 \
   "--url=${BASE_URL}${current_path}" \
+  --execution-binding=required \
+  --execution-url-contains=/current/execute.json \
+  --submit-probe=enabled-fetch-stub \
   --output-dir=output/playwright/no-code-public-runtime
 
 node mtool/scripts/check_no_code_runtime_preview_ui_smoke.js \
   --profile=sample28 \
   "--url=${BASE_URL}${alias_path}" \
+  --execution-binding=required \
+  "--execution-url-contains=/alias/${ALIAS_KEY}/execute.json" \
+  --submit-probe=enabled-fetch-stub \
   --output-dir=output/playwright/no-code-public-runtime
+
+php mtool/scripts/check_no_code_runtime_execution_endpoint_smoke.php \
+  "--base-url=${BASE_URL}" \
+  "--current-path=${current_path}" \
+  "--alias-path=${alias_path}" \
+  --pretty
 
 printf '%s\n' "$public_json"

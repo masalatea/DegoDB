@@ -139,6 +139,42 @@ final class OpenApiSourceOutputContractTest extends TestCase
         self::assertSame('SAMPLE28', $noCodeRuntimeCurrentPreviewRoute['params']['project_key'] ?? '');
         self::assertArrayNotHasKey('artifact_key', $noCodeRuntimeCurrentPreviewRoute['params']);
 
+        $noCodeRuntimeCurrentExecutionRoute = app_route_match([
+            'path' => '/runs/no-code/SAMPLE28/current/execute.json',
+        ]);
+
+        self::assertSame('no_code_public_runtime_current_execution', $noCodeRuntimeCurrentExecutionRoute['name']);
+        self::assertSame('SAMPLE28', $noCodeRuntimeCurrentExecutionRoute['params']['project_key'] ?? '');
+        self::assertArrayNotHasKey('artifact_key', $noCodeRuntimeCurrentExecutionRoute['params']);
+        self::assertSame(
+            '/runs/no-code/SAMPLE28/current/execute.json',
+            app_no_code_public_runtime_current_execution_path('SAMPLE28'),
+        );
+
+        $noCodeRuntimeAliasExecutionRoute = app_route_match([
+            'path' => '/runs/no-code/SAMPLE28/alias/stable-demo/execute.json',
+        ]);
+
+        self::assertSame('no_code_public_runtime_alias_execution', $noCodeRuntimeAliasExecutionRoute['name']);
+        self::assertSame('SAMPLE28', $noCodeRuntimeAliasExecutionRoute['params']['project_key'] ?? '');
+        self::assertSame('stable-demo', $noCodeRuntimeAliasExecutionRoute['params']['alias_key'] ?? '');
+        self::assertSame(
+            '/runs/no-code/SAMPLE28/alias/stable-demo/execute.json',
+            app_no_code_public_runtime_alias_execution_path('SAMPLE28', 'Stable-Demo'),
+        );
+
+        $noCodeRuntimeExecutionRoute = app_route_match([
+            'path' => '/runs/no-code/SAMPLE28/20260702-010203-abcdef12/execute.json',
+        ]);
+
+        self::assertSame('no_code_public_runtime_execution', $noCodeRuntimeExecutionRoute['name']);
+        self::assertSame('SAMPLE28', $noCodeRuntimeExecutionRoute['params']['project_key'] ?? '');
+        self::assertSame('20260702-010203-abcdef12', $noCodeRuntimeExecutionRoute['params']['artifact_key'] ?? '');
+        self::assertSame(
+            '/runs/no-code/SAMPLE28/20260702-010203-abcdef12/execute.json',
+            app_no_code_public_runtime_execution_path('SAMPLE28', '20260702-010203-abcdef12'),
+        );
+
         self::assertSame(
             'public, max-age=31536000, immutable',
             app_no_code_public_runtime_artifact_cache_control(),
@@ -164,6 +200,9 @@ final class OpenApiSourceOutputContractTest extends TestCase
         self::assertTrue(app_route_requires_auth('project_sync_outbox_detail'));
         self::assertFalse(app_route_requires_auth('no_code_public_runtime_preview'));
         self::assertFalse(app_route_requires_auth('no_code_public_runtime_current_preview'));
+        self::assertTrue(app_route_requires_auth('no_code_public_runtime_execution'));
+        self::assertTrue(app_route_requires_auth('no_code_public_runtime_current_execution'));
+        self::assertTrue(app_route_requires_auth('no_code_public_runtime_alias_execution'));
         self::assertSame(
             'not_found',
             app_route_name([
@@ -274,6 +313,20 @@ final class OpenApiSourceOutputContractTest extends TestCase
         self::assertStringContainsString('app_no_code_public_runtime_alias_preview_path', $publicRuntimePage);
         self::assertStringContainsString('app_render_no_code_public_runtime_alias_preview_page', $publicRuntimePage);
         self::assertStringContainsString('app_pdo_find_approved_no_code_publish_candidate_for_alias', $publicRuntimePage);
+        self::assertStringContainsString('app_no_code_public_runtime_execution_path', $publicRuntimePage);
+        self::assertStringContainsString('app_no_code_public_runtime_current_execution_path', $publicRuntimePage);
+        self::assertStringContainsString('app_no_code_public_runtime_alias_execution_path', $publicRuntimePage);
+        self::assertStringContainsString('app_no_code_public_runtime_preview_html_with_execution_binding', $publicRuntimePage);
+        self::assertStringContainsString('id="no-code-runtime-execution-binding"', $publicRuntimePage);
+        self::assertStringContainsString('app_no_code_public_runtime_preview_execution_binding', $publicRuntimePage);
+        self::assertStringContainsString('app_no_code_public_runtime_current_execution_path($projectKey)', $publicRuntimePage);
+        self::assertStringContainsString('app_no_code_public_runtime_alias_execution_path($projectKey, $aliasKey)', $publicRuntimePage);
+        self::assertStringContainsString('app_render_no_code_public_runtime_execution_page', $publicRuntimePage);
+        self::assertStringContainsString('app_render_no_code_public_runtime_current_execution_page', $publicRuntimePage);
+        self::assertStringContainsString('app_render_no_code_public_runtime_alias_execution_page', $publicRuntimePage);
+        self::assertStringContainsString('app_no_code_public_runtime_execution_response_for_candidate', $publicRuntimePage);
+        self::assertStringContainsString('app_auth_principal()', $publicRuntimePage);
+        self::assertStringContainsString('app_no_code_runtime_definition_with_action_policy_overlay', $publicRuntimePage);
         self::assertStringContainsString('app_no_code_public_runtime_artifact_cache_control()', $publicRuntimePage);
         self::assertStringContainsString('app_no_code_public_runtime_current_cache_control()', $publicRuntimePage);
         self::assertStringContainsString("'public, max-age=31536000, immutable'", $publicRuntimePage);

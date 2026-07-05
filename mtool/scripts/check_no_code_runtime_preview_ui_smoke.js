@@ -14,6 +14,11 @@ Options:
   --url=URL                      runtime-preview.html URL
   --profile=sample07|sample28|sample29
                                  expected no-code runtime shape (default: sample07)
+  --execution-binding=ignore|none|required
+                                 expected execution binding state (default: ignore)
+  --execution-url-contains=TEXT  required substring when execution binding is required
+  --submit-probe=none|enabled-fetch-stub
+                                 probe server submit payload with a stubbed fetch (default: none)
   --output-dir=PATH              artifact directory root (default: output/playwright/no-code-runtime-preview)
   --headed                       launch Chrome headed
   --headless                     launch Chrome headless
@@ -31,6 +36,9 @@ function parseArgs(argv) {
     outputDir: path.join(repoRoot(), 'output', 'playwright', 'no-code-runtime-preview'),
     headless: true,
     help: false,
+    executionBinding: 'ignore',
+    executionUrlContains: '',
+    submitProbe: 'none',
     expected: expectedProfile('sample07'),
   };
 
@@ -61,6 +69,18 @@ function parseArgs(argv) {
       config.url = value;
     } else if (name === 'profile') {
       config.expected = expectedProfile(value);
+    } else if (name === 'execution-binding') {
+      if (!['ignore', 'none', 'required'].includes(value)) {
+        throw new Error(`Unknown execution binding expectation: ${value}`);
+      }
+      config.executionBinding = value;
+    } else if (name === 'execution-url-contains') {
+      config.executionUrlContains = value;
+    } else if (name === 'submit-probe') {
+      if (!['none', 'enabled-fetch-stub'].includes(value)) {
+        throw new Error(`Unknown submit probe: ${value}`);
+      }
+      config.submitProbe = value;
     } else if (name === 'output-dir') {
       config.outputDir = path.resolve(value);
     } else {
@@ -75,6 +95,7 @@ function expectedProfile(name) {
   if (name === 'sample07') {
     return {
       profile: name,
+      projectKey: 'SAMPLE07',
       listScreenKey: 'todo_item_list',
       listScreenTitle: 'Todo Item List',
       detailScreenKey: 'todo_item_detail',
@@ -101,6 +122,7 @@ function expectedProfile(name) {
   if (name === 'sample28') {
     return {
       profile: name,
+      projectKey: 'SAMPLE28',
       listScreenKey: 'no_code_ticket_list',
       listScreenTitle: 'No Code Ticket List',
       detailScreenKey: 'no_code_ticket_detail',
@@ -130,6 +152,7 @@ function expectedProfile(name) {
   if (name === 'sample29') {
     return {
       profile: name,
+      projectKey: 'SAMPLE29',
       listScreenKey: 'support_case_list',
       listScreenTitle: 'Support Case List',
       detailScreenKey: 'support_case_detail',
@@ -254,10 +277,15 @@ async function runSmoke(config) {
     await requireVisible(page.locator(`.no-code-screen[data-screen-key="${config.expected.detailScreenKey}"] dl.no-code-detail`), 'detail layout');
     await requireVisible(page.locator(`.no-code-screen[data-screen-key="${config.expected.formScreenKey}"] form.no-code-form`), 'form layout');
 
+    const evaluateExpected = {
+      ...config.expected,
+      submitProbe: config.submitProbe,
+    };
     const metrics = await page.evaluate(async (expected) => {
       const sections = Array.from(document.querySelectorAll('.no-code-screen'));
       const actions = Array.from(document.querySelectorAll('.no-code-actions button'));
       const preview = window.__noCodeRuntimePreview || {};
+      const executionBinding = window.__noCodeRuntimeExecutionBinding || {};
       const previewScreens = Array.isArray(preview.screens) ? preview.screens : [];
       const previewActions = previewScreens.flatMap((screen) => Array.isArray(screen.actions) ? screen.actions : []);
       const updateAction = previewActions.find((action) => action.action_key === expected.actionKey) || {};
@@ -324,6 +352,94 @@ async function runSmoke(config) {
       }
       const requiredHintStateAfterBlank = requiredHint?.getAttribute('data-required-state') || '';
       const requiredHintTextAfterBlank = requiredHint?.textContent?.trim() || '';
+      const idleFeedbackCountBeforeSubmit = Array.from(document.querySelectorAll('.no-code-action-feedback')).filter((element) => element.getAttribute('data-state') === 'idle').length;
+      const intentDraftStateBadgeStatesBeforeSubmit = Array.from(document.querySelectorAll('[data-intent-draft-state-badge]')).map((element) => element.getAttribute('data-state') || '');
+      const intentDraftStateBadgeTextBeforeSubmit = Array.from(document.querySelectorAll('[data-intent-draft-state-badge]')).map((element) => element.textContent?.trim() || '');
+      const runtimeExecuteStatesBeforeSubmit = Array.from(document.querySelectorAll('[data-runtime-execute]')).map((element) => element.getAttribute('data-runtime-execute-state') || '');
+      const runtimeExecuteStatusTextBeforeSubmit = Array.from(document.querySelectorAll('[data-runtime-execute-status]')).map((element) => element.textContent?.trim() || '');
+      const intentDraftStatesBeforeSubmit = Array.from(document.querySelectorAll('.no-code-intent-draft')).map((element) => element.getAttribute('data-intent-draft-state') || '');
+      let submitProbe = { skipped: true };
+      if (expected.submitProbe === 'enabled-fetch-stub') {
+        const form = formScreen?.querySelector('form.no-code-form');
+        const action = previewActions.find((candidate) => candidate.action_key === expected.actionKey) || {};
+        action.enabled = true;
+        action.availability = 'enabled';
+        action.failed_checks = [];
+        let keyInput = formScreen?.querySelector(`[name="${expected.keyField}"]`);
+        if (!keyInput && form) {
+          keyInput = document.createElement('input');
+          keyInput.type = 'hidden';
+          keyInput.name = expected.keyField;
+          form.appendChild(keyInput);
+        }
+        if (keyInput) {
+          keyInput.value = String(expected.keyValue);
+        }
+        if (requiredInput) {
+          requiredInput.value = expected.requiredInputValue;
+          requiredInput.dispatchEvent(new Event('input', { bubbles: true }));
+        }
+        await new Promise((resolve) => setTimeout(resolve, 0));
+
+        const executeButton = formScreen?.querySelector('[data-runtime-execute]');
+        const stateBeforeClick = executeButton?.getAttribute('data-runtime-execute-state') || '';
+        const disabledBeforeClick = !!executeButton?.disabled;
+        window.__noCodeRuntimeSubmitProbe = {
+          fetchCalled: false,
+          url: '',
+          method: '',
+          credentials: '',
+          entries: [],
+        };
+        window.fetch = async (url, options = {}) => {
+          const entries = [];
+          if (options.body && typeof options.body.entries === 'function') {
+            for (const [key, value] of options.body.entries()) {
+              entries.push([key, String(value)]);
+            }
+          }
+          window.__noCodeRuntimeSubmitProbe = {
+            fetchCalled: true,
+            url: String(url),
+            method: String(options.method || ''),
+            credentials: String(options.credentials || ''),
+            entries,
+          };
+          return {
+            json: async () => ({
+              ok: true,
+              executed: true,
+              error: '',
+              message: '',
+              intent: {
+                operation_key: expected.operationKey,
+              },
+              result: {
+                status: 'stubbed',
+              },
+            }),
+          };
+        };
+        if (executeButton) {
+          executeButton.click();
+          await new Promise((resolve) => setTimeout(resolve, 0));
+          await new Promise((resolve) => setTimeout(resolve, 0));
+        }
+        const probeResult = window.__noCodeRuntimeSubmitProbe || {};
+        submitProbe = {
+          skipped: false,
+          stateBeforeClick,
+          disabledBeforeClick,
+          stateAfterClick: executeButton?.getAttribute('data-runtime-execute-state') || '',
+          statusAfterClick: formScreen?.querySelector('[data-runtime-execute-status]')?.textContent?.trim() || '',
+          feedbackAfterClick: formScreen?.querySelector('.no-code-action-feedback')?.textContent?.trim() || '',
+          fetchCalled: !!probeResult.fetchCalled,
+          url: probeResult.url || '',
+          method: probeResult.method || '',
+          credentials: probeResult.credentials || '',
+          entries: Array.isArray(probeResult.entries) ? probeResult.entries : [],
+        };
+      }
 
       return {
         title: document.title,
@@ -364,19 +480,26 @@ async function runSmoke(config) {
           const hintId = control.getAttribute('aria-describedby') || '';
           return hintId !== '' && document.getElementById(hintId);
         }).length,
-        idleFeedbackCount: Array.from(document.querySelectorAll('.no-code-action-feedback')).filter((element) => element.getAttribute('data-state') === 'idle').length,
+        idleFeedbackCount: idleFeedbackCountBeforeSubmit,
         intentDraftCount: document.querySelectorAll('.no-code-intent-draft').length,
         intentDraftStateBadgeCount: document.querySelectorAll('[data-intent-draft-state-badge]').length,
-        intentDraftStateBadgeStates: Array.from(document.querySelectorAll('[data-intent-draft-state-badge]')).map((element) => element.getAttribute('data-state') || ''),
-        intentDraftStateBadgeText: Array.from(document.querySelectorAll('[data-intent-draft-state-badge]')).map((element) => element.textContent?.trim() || ''),
+        intentDraftStateBadgeStates: intentDraftStateBadgeStatesBeforeSubmit,
+        intentDraftStateBadgeText: intentDraftStateBadgeTextBeforeSubmit,
         intentDraftMetaCount: document.querySelectorAll('[data-intent-draft-meta]').length,
         intentDraftFieldsCount: document.querySelectorAll('[data-intent-draft-fields]').length,
         intentDraftPayloadCount: document.querySelectorAll('[data-intent-draft-payload]').length,
         intentDraftCopyButtonCount: document.querySelectorAll('[data-intent-draft-copy]').length,
         intentDraftCopyStatusCount: document.querySelectorAll('[data-intent-draft-copy-status]').length,
+        runtimeExecuteButtonCount: document.querySelectorAll('[data-runtime-execute]').length,
+        runtimeExecuteStatusCount: document.querySelectorAll('[data-runtime-execute-status]').length,
+        runtimeExecuteStates: runtimeExecuteStatesBeforeSubmit,
+        runtimeExecuteStatusText: runtimeExecuteStatusTextBeforeSubmit,
+        executionBindingUrl: executionBinding.execution_url || '',
+        executionBindingProjectKey: executionBinding.project_key || '',
+        submitProbe,
         intentDraftJsonDetailsCount: document.querySelectorAll('[data-intent-draft-json-details]').length,
         intentDraftJsonSummaryText: Array.from(document.querySelectorAll('[data-intent-draft-json-details] summary')).map((element) => element.textContent?.trim() || ''),
-        intentDraftStates: Array.from(document.querySelectorAll('.no-code-intent-draft')).map((element) => element.getAttribute('data-intent-draft-state') || ''),
+        intentDraftStates: intentDraftStatesBeforeSubmit,
         draftBeforeEdit,
         draftAfterEdit,
         draftSummaryBeforeEdit,
@@ -399,7 +522,7 @@ async function runSmoke(config) {
         blankRequiredDispatch,
         bodyText: document.body.innerText,
       };
-    }, config.expected);
+    }, evaluateExpected);
 
     if (metrics.runtimeVersion !== 'no-code-runtime-v0') {
       throw new Error(`runtime version mismatch: ${metrics.runtimeVersion}`);
@@ -482,6 +605,51 @@ async function runSmoke(config) {
     }
     if (metrics.intentDraftCopyButtonCount !== 3 || metrics.intentDraftCopyStatusCount !== 3) {
       throw new Error(`intent draft copy controls mismatch: ${metrics.intentDraftCopyButtonCount}/${metrics.intentDraftCopyStatusCount}`);
+    }
+    if (metrics.runtimeExecuteButtonCount !== 3 || metrics.runtimeExecuteStatusCount !== 3) {
+      throw new Error(`runtime execute controls mismatch: ${metrics.runtimeExecuteButtonCount}/${metrics.runtimeExecuteStatusCount}`);
+    }
+    if (!metrics.runtimeExecuteStates.every((state) => ['unavailable', 'blocked', 'ready'].includes(state))) {
+      throw new Error(`runtime execute state mismatch: ${metrics.runtimeExecuteStates.join(', ')}`);
+    }
+    if (!metrics.runtimeExecuteStatusText.some((text) => text.includes('Server execution') || text.includes('Resolve draft blockers'))) {
+      throw new Error(`runtime execute status text missing: ${metrics.runtimeExecuteStatusText.join(' | ')}`);
+    }
+    if (config.executionBinding === 'none' && metrics.executionBindingUrl !== '') {
+      throw new Error(`execution binding should not be injected for this preview: ${metrics.executionBindingUrl}`);
+    }
+    if (config.executionBinding === 'required') {
+      if (metrics.executionBindingUrl === '' || metrics.executionBindingProjectKey !== config.expected.projectKey) {
+        throw new Error(`execution binding missing or project mismatch: url=${metrics.executionBindingUrl} project=${metrics.executionBindingProjectKey}`);
+      }
+      if (config.executionUrlContains !== '' && !metrics.executionBindingUrl.includes(config.executionUrlContains)) {
+        throw new Error(`execution binding URL mismatch: ${metrics.executionBindingUrl} does not include ${config.executionUrlContains}`);
+      }
+    }
+    if (config.submitProbe === 'enabled-fetch-stub') {
+      const probe = metrics.submitProbe || {};
+      const entries = Object.fromEntries(Array.isArray(probe.entries) ? probe.entries : []);
+      if (probe.skipped || probe.stateBeforeClick !== 'ready' || probe.disabledBeforeClick) {
+        throw new Error(`submit probe did not reach ready state: ${JSON.stringify(probe)}`);
+      }
+      if (!probe.fetchCalled || probe.method !== 'POST' || probe.credentials !== 'same-origin') {
+        throw new Error(`submit probe did not POST through fetch: ${JSON.stringify(probe)}`);
+      }
+      if (config.executionUrlContains !== '' && !probe.url.includes(config.executionUrlContains)) {
+        throw new Error(`submit probe URL mismatch: ${probe.url}`);
+      }
+      if (!entries._csrf || entries.project_key !== config.expected.projectKey || !entries.artifact_key || entries.action_key !== config.expected.actionKey) {
+        throw new Error(`submit probe binding entries mismatch: ${JSON.stringify(entries)}`);
+      }
+      if (entries[`input[${config.expected.keyField}]`] !== String(config.expected.keyValue)) {
+        throw new Error(`submit probe key input mismatch: ${JSON.stringify(entries)}`);
+      }
+      if (entries[`input[${config.expected.requiredInputField}]`] !== config.expected.requiredInputValue) {
+        throw new Error(`submit probe required input mismatch: ${JSON.stringify(entries)}`);
+      }
+      if (probe.stateAfterClick !== 'success' || !probe.statusAfterClick.includes('Server execution accepted')) {
+        throw new Error(`submit probe did not show accepted state: ${JSON.stringify(probe)}`);
+      }
     }
     if (metrics.intentDraftJsonDetailsCount !== 3 || !metrics.intentDraftJsonSummaryText.every((text) => text === 'Draft JSON')) {
       throw new Error(`intent draft JSON details mismatch: ${metrics.intentDraftJsonDetailsCount}/${metrics.intentDraftJsonSummaryText.join(', ')}`);

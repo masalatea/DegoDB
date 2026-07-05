@@ -235,6 +235,78 @@ function app_no_code_runtime_actions_by_key(array $actions): array
 }
 
 /**
+ * @param array<string,mixed> $definition
+ * @param array<string,mixed> $policyDefinition
+ * @return array<string,mixed>
+ */
+function app_no_code_runtime_definition_with_action_policy_overlay(array $definition, array $policyDefinition): array
+{
+    $policyActionsByKey = [];
+    foreach (($policyDefinition['contracts'] ?? []) as $policyContract) {
+        if (!is_array($policyContract)) {
+            continue;
+        }
+
+        foreach (($policyContract['actions'] ?? []) as $policyAction) {
+            if (!is_array($policyAction)) {
+                continue;
+            }
+            $actionKey = (string) ($policyAction['action_key'] ?? '');
+            if ($actionKey !== '') {
+                $policyActionsByKey[$actionKey] = $policyAction;
+            }
+        }
+    }
+
+    if ($policyActionsByKey === []) {
+        return $definition;
+    }
+
+    $overlaid = $definition;
+    foreach (($overlaid['contracts'] ?? []) as $contractIndex => $contract) {
+        if (!is_array($contract)) {
+            continue;
+        }
+
+        foreach (($contract['actions'] ?? []) as $actionIndex => $action) {
+            if (!is_array($action)) {
+                continue;
+            }
+            $actionKey = (string) ($action['action_key'] ?? '');
+            $policyAction = $policyActionsByKey[$actionKey] ?? null;
+            if (!is_array($policyAction)) {
+                continue;
+            }
+
+            $overlaid['contracts'][$contractIndex]['actions'][$actionIndex]['availability'] = (string) ($policyAction['availability'] ?? 'disabled');
+            $overlaid['contracts'][$contractIndex]['actions'][$actionIndex]['policy'] = is_array($policyAction['policy'] ?? null)
+                ? $policyAction['policy']
+                : [];
+        }
+
+        foreach (($contract['screens'] ?? []) as $screenIndex => $screen) {
+            if (!is_array($screen)) {
+                continue;
+            }
+            foreach (($screen['actions'] ?? []) as $actionIndex => $action) {
+                if (!is_array($action)) {
+                    continue;
+                }
+                $actionKey = (string) ($action['action_key'] ?? '');
+                $policyAction = $policyActionsByKey[$actionKey] ?? null;
+                if (!is_array($policyAction)) {
+                    continue;
+                }
+
+                $overlaid['contracts'][$contractIndex]['screens'][$screenIndex]['actions'][$actionIndex]['availability'] = (string) ($policyAction['availability'] ?? 'disabled');
+            }
+        }
+    }
+
+    return $overlaid;
+}
+
+/**
  * @param list<array<string,mixed>> $fields
  * @param list<array<string,mixed>> $rows
  * @param array<string,mixed> $currentItem
@@ -437,6 +509,8 @@ function app_no_code_runtime_render_action_intent_draft_html(array $actions): st
         '<div class="no-code-intent-draft-toolbar">',
         '<button type="button" data-intent-draft-copy>Copy draft JSON</button>',
         '<span class="no-code-intent-draft-copy-status" role="status" aria-live="polite" data-intent-draft-copy-status>Draft JSON copy will be available when this screen is ready.</span>',
+        '<button type="button" data-runtime-execute disabled data-runtime-execute-state="unavailable">Submit to server</button>',
+        '<span class="no-code-runtime-execute-status" role="status" aria-live="polite" data-runtime-execute-status>Server execution is available from an authenticated current or alias preview.</span>',
         '</div>',
         '<details class="no-code-intent-draft-json" data-intent-draft-json-details>',
         '<summary>Draft JSON</summary>',
@@ -744,8 +818,12 @@ function app_no_code_runtime_preview_css(): string
         '.no-code-intent-draft[data-intent-draft-state="blocked"] .no-code-intent-draft-summary { color: #842029; }',
         '.no-code-intent-draft-toolbar { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin: 0 0 8px; }',
         '.no-code-intent-draft-toolbar button { min-height: 30px; border: 1px solid #9fb3c8; border-radius: 6px; background: #ffffff; color: #102a43; padding: 0 10px; font: inherit; font-size: 12px; }',
+        '.no-code-intent-draft-toolbar button:disabled { border-color: #c8d1dc; background: #eef1f4; color: #7b8794; }',
         '.no-code-intent-draft-toolbar button:focus-visible { outline: 3px solid #b6d4fe; outline-offset: 2px; }',
         '.no-code-intent-draft-copy-status { color: #62748a; font-size: 12px; }',
+        '.no-code-runtime-execute-status { color: #62748a; font-size: 12px; }',
+        '.no-code-runtime-execute-status[data-state="ready"], .no-code-runtime-execute-status[data-state="success"] { color: #0f5132; }',
+        '.no-code-runtime-execute-status[data-state="blocked"], .no-code-runtime-execute-status[data-state="error"] { color: #842029; }',
         '.no-code-intent-draft-json { margin: 0; }',
         '.no-code-intent-draft-json summary { cursor: pointer; color: #334e68; font-size: 12px; font-weight: 600; margin-bottom: 6px; }',
         '.no-code-intent-draft-json summary:focus-visible { outline: 3px solid #b6d4fe; outline-offset: 2px; }',
@@ -801,6 +879,17 @@ function app_no_code_runtime_preview_js(): string
     preview = dataElement ? JSON.parse(dataElement.textContent || '{}') : {};
   } catch (error) {
     preview = {};
+  }
+  var executionBindingElement = document.getElementById('no-code-runtime-execution-binding');
+  var executionBinding = {};
+  try {
+    executionBinding = executionBindingElement ? JSON.parse(executionBindingElement.textContent || '{}') : {};
+  } catch (error) {
+    executionBinding = {};
+  }
+
+  function hasExecutionBinding() {
+    return !!(executionBinding && executionBinding.execution_url && executionBinding.csrf_token);
   }
 
   function findAction(actionKey) {
@@ -1139,6 +1228,7 @@ function app_no_code_runtime_preview_js(): string
     var policyChecks = Array.isArray(draft.policy_failed_checks) ? draft.policy_failed_checks : [];
     var hasBlockingChecks = draftChecks.length > 0 || policyChecks.length > 0;
     writeRequiredFieldHints(screen, draft, action);
+    writeRuntimeExecuteAvailability(screen, draft, hasBlockingChecks);
     draftOutput.textContent = JSON.stringify(draft, null, 2);
     if (draftSummary) {
       var summaryChecks = [];
@@ -1208,6 +1298,38 @@ function app_no_code_runtime_preview_js(): string
     });
   }
 
+  function setRuntimeExecuteStatus(screen, state, message) {
+    var status = screen ? screen.querySelector('[data-runtime-execute-status]') : null;
+    if (!status) {
+      return;
+    }
+    status.textContent = message;
+    status.setAttribute('data-state', state);
+  }
+
+  function writeRuntimeExecuteAvailability(screen, draft, hasBlockingChecks) {
+    var executeButton = screen ? screen.querySelector('[data-runtime-execute]') : null;
+    if (!executeButton) {
+      return;
+    }
+    if (!hasExecutionBinding()) {
+      executeButton.disabled = true;
+      executeButton.setAttribute('data-runtime-execute-state', 'unavailable');
+      setRuntimeExecuteStatus(screen, 'unavailable', 'Server execution is available from an authenticated current or alias preview.');
+      return;
+    }
+    if (hasBlockingChecks) {
+      executeButton.disabled = true;
+      executeButton.setAttribute('data-runtime-execute-state', 'blocked');
+      setRuntimeExecuteStatus(screen, 'blocked', 'Resolve draft blockers before server submission.');
+      return;
+    }
+    executeButton.disabled = false;
+    executeButton.setAttribute('data-runtime-execute-state', 'ready');
+    executeButton.setAttribute('data-runtime-execute-action', draft.action_key || '');
+    setRuntimeExecuteStatus(screen, 'ready', 'Server execution endpoint is ready: ' + executionBinding.execution_url);
+  }
+
   function writeActionFeedback(button, result) {
     var screen = button.closest('.no-code-screen');
     var feedback = screen ? screen.querySelector('.no-code-action-feedback') : null;
@@ -1225,7 +1347,91 @@ function app_no_code_runtime_preview_js(): string
     feedback.setAttribute('data-state', 'error');
   }
 
+  function submitRuntimeAction(button) {
+    var screen = button.closest('.no-code-screen');
+    var feedback = screen ? screen.querySelector('.no-code-action-feedback') : null;
+    if (!hasExecutionBinding()) {
+      setRuntimeExecuteStatus(screen, 'error', 'Server execution binding is not available for this preview.');
+      return;
+    }
+
+    var action = firstScreenAction(screen);
+    if (!action) {
+      setRuntimeExecuteStatus(screen, 'error', 'No action metadata is available for server execution.');
+      return;
+    }
+
+    var input = collectScreenInputFromScreen(screen);
+    var localResult = buildActionIntent(action, input);
+    if (!localResult.ok) {
+      setRuntimeExecuteStatus(screen, 'error', localResult.message || 'Action intent could not be prepared.');
+      return;
+    }
+
+    var formData = new FormData();
+    formData.append('_csrf', executionBinding.csrf_token || '');
+    formData.append('project_key', executionBinding.project_key || preview.project_key || '');
+    formData.append('artifact_key', executionBinding.artifact_key || '');
+    formData.append('action_key', action.action_key || '');
+    Object.keys(input).forEach(function (fieldKey) {
+      formData.append('input[' + fieldKey + ']', input[fieldKey]);
+    });
+
+    button.disabled = true;
+    button.setAttribute('data-runtime-execute-state', 'working');
+    setRuntimeExecuteStatus(screen, 'working', 'Submitting action to server...');
+    if (feedback) {
+      feedback.textContent = 'Submitting action to server...';
+      feedback.setAttribute('data-state', 'working');
+    }
+
+    fetch(executionBinding.execution_url, {
+      method: 'POST',
+      body: formData,
+      credentials: 'same-origin',
+      headers: {
+        Accept: 'application/json'
+      }
+    }).then(function (response) {
+      return response.json().catch(function () {
+        return {
+          ok: false,
+          message: 'Server execution response was not JSON.',
+          error: 'invalid_json_response'
+        };
+      });
+    }).then(function (payload) {
+      if (payload && payload.ok) {
+        button.setAttribute('data-runtime-execute-state', 'success');
+        setRuntimeExecuteStatus(screen, 'success', 'Server execution accepted.');
+        if (feedback) {
+          feedback.textContent = 'Server execution accepted: ' + (payload.intent && payload.intent.operation_key ? payload.intent.operation_key : 'operation');
+          feedback.setAttribute('data-state', 'success');
+        }
+        return;
+      }
+
+      button.disabled = false;
+      button.setAttribute('data-runtime-execute-state', 'error');
+      var message = payload && (payload.message || payload.error) ? (payload.message || payload.error) : 'Server execution failed.';
+      setRuntimeExecuteStatus(screen, 'error', message);
+      if (feedback) {
+        feedback.textContent = message;
+        feedback.setAttribute('data-state', 'error');
+      }
+    }).catch(function () {
+      button.disabled = false;
+      button.setAttribute('data-runtime-execute-state', 'error');
+      setRuntimeExecuteStatus(screen, 'error', 'Server execution request failed.');
+      if (feedback) {
+        feedback.textContent = 'Server execution request failed.';
+        feedback.setAttribute('data-state', 'error');
+      }
+    });
+  }
+
   window.__noCodeRuntimePreview = preview;
+  window.__noCodeRuntimeExecutionBinding = executionBinding;
   window.__noCodeRuntimeDispatches = [];
   window.noCodeRuntimeDispatchAction = function (actionKey, input) {
     var action = findAction(actionKey);
@@ -1262,6 +1468,12 @@ function app_no_code_runtime_preview_js(): string
   document.querySelectorAll('[data-intent-draft-copy]').forEach(function (button) {
     button.addEventListener('click', function () {
       copyIntentDraft(button);
+    });
+  });
+
+  document.querySelectorAll('[data-runtime-execute]').forEach(function (button) {
+    button.addEventListener('click', function () {
+      submitRuntimeAction(button);
     });
   });
 
@@ -1333,6 +1545,208 @@ function app_no_code_runtime_dispatch_error(string $error, array $intent = []): 
         'error' => $error,
         'message' => app_no_code_runtime_validation_message($error),
     ];
+}
+
+/**
+ * @param array<string,mixed> $definition
+ * @param array<string,mixed> $post
+ * @param array<string,mixed> $expectedBinding
+ * @param callable(array<string,mixed>):array<string,mixed> $dispatcher
+ * @return array{ok:bool,executed:bool,request:array<string,mixed>,intent:array<string,mixed>,result:array<string,mixed>|null,error:string,message:string}
+ */
+function app_no_code_runtime_execute_request_from_post(
+    array $definition,
+    string $requestMethod,
+    array $post,
+    array $expectedBinding,
+    callable $dispatcher,
+): array
+{
+    $request = app_no_code_runtime_execution_request_from_post($requestMethod, $post, $expectedBinding);
+    if (!$request['ok']) {
+        return app_no_code_runtime_execution_response_error($request['error'], $request);
+    }
+
+    $dispatch = app_no_code_runtime_dispatch_action(
+        $definition,
+        $request['action_key'],
+        $request['input'],
+        $dispatcher,
+    );
+
+    return [
+        'ok' => $dispatch['ok'],
+        'executed' => $dispatch['executed'],
+        'request' => $request,
+        'intent' => $dispatch['intent'],
+        'result' => $dispatch['result'],
+        'error' => $dispatch['error'],
+        'message' => $dispatch['message'],
+    ];
+}
+
+/**
+ * @param array<string,mixed> $request
+ * @return array{ok:bool,executed:bool,request:array<string,mixed>,intent:array<string,mixed>,result:array<string,mixed>|null,error:string,message:string}
+ */
+function app_no_code_runtime_execution_response_error(string $error, array $request = []): array
+{
+    return [
+        'ok' => false,
+        'executed' => false,
+        'request' => $request,
+        'intent' => [],
+        'result' => null,
+        'error' => $error,
+        'message' => app_no_code_runtime_validation_message($error),
+    ];
+}
+
+/**
+ * @param array<string,mixed> $execution
+ * @return array{status_code:int,payload:array<string,mixed>}
+ */
+function app_no_code_runtime_execution_endpoint_response(array $execution): array
+{
+    $ok = (bool) ($execution['ok'] ?? false);
+    $error = app_no_code_runtime_string_value($execution['error'] ?? '');
+    $message = app_no_code_runtime_string_value($execution['message'] ?? '');
+    $payload = [
+        'ok' => $ok,
+        'executed' => (bool) ($execution['executed'] ?? false),
+        'error' => $error,
+        'message' => $message,
+        'request' => is_array($execution['request'] ?? null) ? $execution['request'] : [],
+        'intent' => is_array($execution['intent'] ?? null) ? $execution['intent'] : [],
+        'result' => is_array($execution['result'] ?? null) ? $execution['result'] : null,
+    ];
+
+    return [
+        'status_code' => app_no_code_runtime_execution_status_code($ok, $error),
+        'payload' => $payload,
+    ];
+}
+
+function app_no_code_runtime_execution_status_code(bool $ok, string $error): int
+{
+    if ($ok) {
+        return 200;
+    }
+
+    if ($error === 'runtime execution requires POST' || $error === 'runtime execution action key is missing' || $error === 'runtime execution input must be an object') {
+        return 400;
+    }
+
+    if ($error === 'runtime execution csrf token is invalid') {
+        return 403;
+    }
+
+    if ($error === 'runtime execution project binding does not match' || $error === 'runtime execution artifact binding does not match') {
+        return 409;
+    }
+
+    return 422;
+}
+
+/**
+ * @param array<string,mixed> $post
+ * @param array<string,mixed> $expectedBinding
+ * @return array{ok:bool,action_key:string,input:array<string,mixed>,binding:array<string,string>,error:string,message:string}
+ */
+function app_no_code_runtime_execution_request_from_post(
+    string $requestMethod,
+    array $post,
+    array $expectedBinding,
+): array
+{
+    if (strtoupper($requestMethod) !== 'POST') {
+        return app_no_code_runtime_execution_request_error('runtime execution requires POST');
+    }
+
+    $expectedCsrfToken = app_no_code_runtime_string_value($expectedBinding['csrf_token'] ?? '');
+    $submittedCsrfToken = app_no_code_runtime_string_value($post['_csrf'] ?? $post['csrf_token'] ?? '');
+    if ($expectedCsrfToken === '' || !hash_equals($expectedCsrfToken, $submittedCsrfToken)) {
+        return app_no_code_runtime_execution_request_error('runtime execution csrf token is invalid');
+    }
+
+    $projectKey = app_no_code_runtime_string_value($expectedBinding['project_key'] ?? '');
+    $submittedProjectKey = app_no_code_runtime_string_value($post['project_key'] ?? '');
+    if ($projectKey === '' || $submittedProjectKey !== $projectKey) {
+        return app_no_code_runtime_execution_request_error('runtime execution project binding does not match');
+    }
+
+    $artifactKey = app_no_code_runtime_string_value($expectedBinding['artifact_key'] ?? '');
+    $submittedArtifactKey = app_no_code_runtime_string_value($post['artifact_key'] ?? '');
+    if ($artifactKey === '' || $submittedArtifactKey !== $artifactKey) {
+        return app_no_code_runtime_execution_request_error('runtime execution artifact binding does not match');
+    }
+
+    $actionKey = app_no_code_runtime_string_value($post['action_key'] ?? '');
+    if ($actionKey === '') {
+        return app_no_code_runtime_execution_request_error('runtime execution action key is missing');
+    }
+
+    $rawInput = $post['input'] ?? [];
+    if (!is_array($rawInput)) {
+        return app_no_code_runtime_execution_request_error('runtime execution input must be an object');
+    }
+
+    $input = [];
+    foreach ($rawInput as $fieldKey => $value) {
+        $normalizedFieldKey = app_no_code_runtime_string_value($fieldKey);
+        if ($normalizedFieldKey === '' || is_array($value) || is_object($value)) {
+            continue;
+        }
+        $input[$normalizedFieldKey] = $value;
+    }
+
+    $binding = [
+        'project_key' => $projectKey,
+        'artifact_key' => $artifactKey,
+    ];
+
+    foreach (['source_output_key', 'revision_id'] as $optionalKey) {
+        $value = app_no_code_runtime_string_value($expectedBinding[$optionalKey] ?? '');
+        if ($value !== '') {
+            $binding[$optionalKey] = $value;
+        }
+    }
+
+    return [
+        'ok' => true,
+        'action_key' => $actionKey,
+        'input' => $input,
+        'binding' => $binding,
+        'error' => '',
+        'message' => '',
+    ];
+}
+
+/**
+ * @return array{ok:bool,action_key:string,input:array<string,mixed>,binding:array<string,string>,error:string,message:string}
+ */
+function app_no_code_runtime_execution_request_error(string $error): array
+{
+    return [
+        'ok' => false,
+        'action_key' => '',
+        'input' => [],
+        'binding' => [],
+        'error' => $error,
+        'message' => app_no_code_runtime_validation_message($error),
+    ];
+}
+
+/**
+ * @param mixed $value
+ */
+function app_no_code_runtime_string_value($value): string
+{
+    if (is_string($value) || is_int($value) || is_float($value)) {
+        return trim((string) $value);
+    }
+
+    return '';
 }
 
 function app_no_code_runtime_validation_message(string $error): string
