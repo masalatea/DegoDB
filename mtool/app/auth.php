@@ -9,6 +9,7 @@ require_once __DIR__ . '/request.php';
  *     id:string,
  *     display_name:string,
  *     roles:list<string>,
+ *     scopes?:list<string>,
  *     project_roles?:array<string,list<string>>,
  *     auth_source:string,
  *     site:string
@@ -28,6 +29,7 @@ function app_auth_principal(): ?array
     $id = $principal['id'] ?? null;
     $displayName = $principal['display_name'] ?? null;
     $roles = $principal['roles'] ?? null;
+    $scopes = $principal['scopes'] ?? [];
     $projectRoles = $principal['project_roles'] ?? [];
     $authSource = $principal['auth_source'] ?? null;
     $site = $principal['site'] ?? null;
@@ -46,6 +48,15 @@ function app_auth_principal(): ?array
     foreach ($roles as $role) {
         if (is_string($role) && $role !== '') {
             $normalizedRoles[] = $role;
+        }
+    }
+
+    $normalizedScopes = [];
+    if (is_array($scopes)) {
+        foreach ($scopes as $scope) {
+            if (is_string($scope) && $scope !== '') {
+                $normalizedScopes[] = $scope;
+            }
         }
     }
 
@@ -72,6 +83,7 @@ function app_auth_principal(): ?array
         'id' => $id,
         'display_name' => $displayName,
         'roles' => $normalizedRoles,
+        'scopes' => array_values(array_unique($normalizedScopes)),
         'project_roles' => $normalizedProjectRoles,
         'auth_source' => $authSource,
         'site' => $site,
@@ -88,6 +100,7 @@ function app_auth_is_authenticated(): bool
  *     id:string,
  *     display_name:string,
  *     roles:list<string>,
+ *     scopes?:list<string>,
  *     project_roles?:array<string,list<string>>,
  *     auth_source:string,
  *     site:string
@@ -109,6 +122,7 @@ function app_auth_has_role(string $requiredRole, ?array $principal = null): bool
  *     id:string,
  *     display_name:string,
  *     roles:list<string>,
+ *     scopes?:list<string>,
  *     project_roles?:array<string,list<string>>,
  *     auth_source:string,
  *     site:string
@@ -139,7 +153,8 @@ function app_auth_has_any_role(array $requiredRoles, ?array $principal = null): 
  *             username:string,
  *             password:string,
  *             display_name:string,
- *             roles:list<string>
+ *             roles:list<string>,
+ *             scopes?:list<string>
  *         }
  *     }
  * } $app
@@ -161,7 +176,8 @@ function app_auth_attempt_login(array $app, string $username, string $password):
  *             username:string,
  *             password:string,
  *             display_name:string,
- *             roles:list<string>
+ *             roles:list<string>,
+ *             scopes?:list<string>
  *         }
  *     }
  * } $app
@@ -187,6 +203,7 @@ function app_auth_attempt_stub_login(array $app, string $username, string $passw
         'id' => $expectedUsername,
         'display_name' => $app['auth']['stub']['display_name'],
         'roles' => $app['auth']['stub']['roles'],
+        'scopes' => is_array($app['auth']['stub']['scopes'] ?? null) ? $app['auth']['stub']['scopes'] : [],
         'auth_source' => 'stub',
         'site' => $app['site'],
     ]);
@@ -199,6 +216,7 @@ function app_auth_attempt_stub_login(array $app, string $username, string $passw
  *     id:string,
  *     display_name:string,
  *     roles:list<string>,
+ *     scopes?:list<string>,
  *     project_roles?:array<string,list<string>>,
  *     auth_source:string,
  *     site:string

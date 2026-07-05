@@ -10,6 +10,7 @@ usage: php mtool/scripts/check_no_code_runtime_execution_endpoint_smoke.php [opt
 
 Options:
   --base-url=URL          Admin base URL (default: http://127.0.0.1:${ADMIN_HTTP_PORT:-18291})
+  --profile=PROFILE       Smoke payload profile: sample28 or sample29 (default: sample28)
   --current-path=PATH     Current runtime preview path
   --alias-path=PATH       Alias runtime preview path
   --admin-user=USER       Admin login user (default: ADMIN_AUTH_STUB_USER or admin-local)
@@ -25,6 +26,7 @@ function parse_args(array $argv): array
 {
     $args = [
         'base_url' => '',
+        'profile' => 'sample28',
         'current_path' => '',
         'alias_path' => '',
         'admin_user' => getenv('ADMIN_AUTH_STUB_USER') ?: 'admin-local',
@@ -49,6 +51,7 @@ function parse_args(array $argv): array
         [$name, $value] = explode('=', substr($arg, 2), 2);
         match ($name) {
             'base-url' => $args['base_url'] = rtrim($value, '/'),
+            'profile' => $args['profile'] = $value,
             'current-path' => $args['current_path'] = $value,
             'alias-path' => $args['alias_path'] = $value,
             'admin-user' => $args['admin_user'] = $value,
@@ -64,6 +67,9 @@ function parse_args(array $argv): array
     }
     if ($args['current_path'] === '' || $args['alias_path'] === '') {
         throw new InvalidArgumentException('--current-path and --alias-path are required');
+    }
+    if (!in_array($args['profile'], ['sample28', 'sample29'], true)) {
+        throw new InvalidArgumentException('unsupported --profile: ' . $args['profile']);
     }
 
     return $args;
@@ -222,6 +228,42 @@ function runtime_execution_binding(string $html): array
     return $binding;
 }
 
+function smoke_profile(string $profile): array
+{
+    $profiles = [
+        'sample28' => [
+            'project_key' => 'SAMPLE28',
+            'action_key' => 'update_no_code_ticket',
+            'operation_key' => 'update_no_code_ticket',
+            'key_field' => 'id',
+            'key_value' => '1001',
+            'input' => [
+                'id' => '1001',
+                'title' => 'First no-code app ticket',
+                'status' => 'open',
+                'priority' => '10',
+                'body' => 'Generated sample28 direct endpoint smoke payload',
+            ],
+        ],
+        'sample29' => [
+            'project_key' => 'SAMPLE29',
+            'action_key' => 'update_support_case',
+            'operation_key' => 'update_support_case',
+            'key_field' => 'id',
+            'key_value' => '2001',
+            'input' => [
+                'id' => '2001',
+                'subject' => 'Billing export follow-up',
+                'status' => 'open',
+                'severity' => 'medium',
+                'next_action' => 'Generated sample29 direct endpoint smoke payload',
+            ],
+        ],
+    ];
+
+    return $profiles[$profile];
+}
+
 function login_admin(array &$client, string $username, string $password): void
 {
     $login = request_once($client, 'GET', '/login?redirect=%2Fdashboard');
@@ -243,7 +285,7 @@ function login_admin(array &$client, string $username, string $password): void
     ensure($dashboard['status'] === 200, 'dashboard did not return 200 after login');
 }
 
-function endpoint_smoke(array &$client, string $label, string $previewPath, string $expectedUrlFragment): array
+function endpoint_smoke(array &$client, array $profile, string $label, string $previewPath, string $expectedUrlFragment): array
 {
     $preview = request_once($client, 'GET', $previewPath);
     ensure($preview['status'] === 200, $label . ' preview did not return 200');
@@ -259,14 +301,8 @@ function endpoint_smoke(array &$client, string $label, string $previewPath, stri
             '_csrf' => (string) $binding['csrf_token'],
             'project_key' => (string) $binding['project_key'],
             'artifact_key' => (string) $binding['artifact_key'],
-            'action_key' => 'update_no_code_ticket',
-            'input' => [
-                'id' => '1001',
-                'title' => 'First no-code app ticket',
-                'status' => 'open',
-                'priority' => '10',
-                'body' => 'Generated sample28 direct endpoint smoke payload',
-            ],
+            'action_key' => $profile['action_key'],
+            'input' => $profile['input'],
         ],
     ]);
 
@@ -277,11 +313,12 @@ function endpoint_smoke(array &$client, string $label, string $previewPath, stri
     ensure(($payload['executed'] ?? null) === true, $label . ' execution executed flag mismatch');
     ensure(($payload['error'] ?? '') === '', $label . ' execution error mismatch');
     ensure(is_array($payload['request'] ?? null) && ($payload['request']['ok'] ?? null) === true, $label . ' request contract did not pass');
-    ensure(($payload['request']['action_key'] ?? '') === 'update_no_code_ticket', $label . ' request action key mismatch');
-    ensure(($payload['request']['binding']['project_key'] ?? '') === 'SAMPLE28', $label . ' request project binding mismatch');
+    ensure(($payload['request']['action_key'] ?? '') === $profile['action_key'], $label . ' request action key mismatch');
+    ensure(($payload['request']['binding']['project_key'] ?? '') === $profile['project_key'], $label . ' request project binding mismatch');
     ensure(($payload['request']['binding']['artifact_key'] ?? '') === (string) $binding['artifact_key'], $label . ' request artifact binding mismatch');
-    ensure(($payload['intent']['operation_key'] ?? '') === 'update_no_code_ticket', $label . ' intent operation key mismatch');
-    ensure((string) ($payload['intent']['payload']['key']['id'] ?? '') === '1001', $label . ' intent key mismatch');
+    ensure(($payload['intent']['operation_key'] ?? '') === $profile['operation_key'], $label . ' intent operation key mismatch');
+    $keyField = (string) $profile['key_field'];
+    ensure((string) ($payload['intent']['payload']['key'][$keyField] ?? '') === $profile['key_value'], $label . ' intent key mismatch');
     ensure(($payload['result']['sync_intent']['intent_version'] ?? '') === 'managed-operation-sync-intent-v0', $label . ' sync intent version mismatch');
     ensure(($payload['result']['sync_intent']['origin'] ?? '') === 'public-runtime', $label . ' sync intent origin mismatch');
     ensure(($payload['result']['sync_intent']['target'] ?? '') === 'server', $label . ' sync intent target mismatch');
@@ -289,7 +326,7 @@ function endpoint_smoke(array &$client, string $label, string $previewPath, stri
     ensure(($payload['result']['executor_result']['item']['status'] ?? '') === 'pending', $label . ' outbox status mismatch');
     ensure((string) ($payload['result']['executor_result']['item']['id'] ?? '') !== '', $label . ' outbox item id missing');
     ensure((string) ($payload['result']['executor_result']['item']['dedupe_key'] ?? '') !== '', $label . ' outbox item dedupe key missing');
-    ensure(($payload['result']['executor_result']['item']['operation_key'] ?? '') === 'update_no_code_ticket', $label . ' outbox item operation key mismatch');
+    ensure(($payload['result']['executor_result']['item']['operation_key'] ?? '') === $profile['operation_key'], $label . ' outbox item operation key mismatch');
 
     return [
         'label' => $label,
@@ -319,9 +356,10 @@ try {
     ];
 
     login_admin($client, $args['admin_user'], $args['admin_password']);
+    $profile = smoke_profile($args['profile']);
     $results = [
-        endpoint_smoke($client, 'current', $args['current_path'], '/current/execute.json'),
-        endpoint_smoke($client, 'alias', $args['alias_path'], '/alias/'),
+        endpoint_smoke($client, $profile, 'current', $args['current_path'], '/current/execute.json'),
+        endpoint_smoke($client, $profile, 'alias', $args['alias_path'], '/alias/'),
     ];
 
     $jsonFlags = JSON_UNESCAPED_SLASHES | ($args['pretty'] ? JSON_PRETTY_PRINT : 0);

@@ -17,6 +17,7 @@ function usage(): string
 usage: php mtool/scripts/check_sample28_no_code_runtime_outbox_process_smoke.php [options]
 
 Options:
+  --profile=PROFILE       Smoke payload profile: sample28 or sample29 (default: sample28)
   --pretty                Pretty-print JSON result
   --help                  Show this help
 
@@ -26,6 +27,7 @@ TEXT;
 function parse_args(array $argv): array
 {
     $args = [
+        'profile' => 'sample28',
         'pretty' => false,
     ];
 
@@ -38,8 +40,15 @@ function parse_args(array $argv): array
             $args['pretty'] = true;
             continue;
         }
+        if (str_starts_with($arg, '--profile=')) {
+            $args['profile'] = substr($arg, strlen('--profile='));
+            continue;
+        }
 
         throw new InvalidArgumentException('unsupported argument: ' . $arg);
+    }
+    if (!in_array($args['profile'], ['sample28', 'sample29'], true)) {
+        throw new InvalidArgumentException('unsupported --profile: ' . $args['profile']);
     }
 
     return $args;
@@ -52,30 +61,102 @@ function ensure(bool $condition, string $message): void
     }
 }
 
-function sample28_operation(array $app): array
+function smoke_profile(string $profile): array
 {
-    $snapshot = app_pdo_fetch_managed_operation_snapshot($app, 'SAMPLE28');
+    $profiles = [
+        'sample28' => [
+            'project_key' => 'SAMPLE28',
+            'table_name' => 'no_code_ticket',
+            'operation_key' => 'update_no_code_ticket',
+            'sqlite_schema' => 'CREATE TABLE no_code_ticket (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                title TEXT NOT NULL,
+                status TEXT NOT NULL DEFAULT "open",
+                priority INTEGER NOT NULL DEFAULT 0,
+                body TEXT NOT NULL
+            )',
+            'sqlite_insert' => 'INSERT INTO no_code_ticket (id, title, status, priority, body)
+                VALUES (?, ?, ?, ?, ?)',
+            'sqlite_insert_values' => [
+                1001,
+                'First no-code app ticket',
+                'open',
+                10,
+                'This row is the first sample28 data-first no-code app fixture.',
+            ],
+            'sqlite_select' => 'SELECT id, title, status, priority, body FROM no_code_ticket WHERE id = ?',
+            'sqlite_select_values' => [1001],
+            'expected_field' => 'body',
+            'expected_value' => 'Generated sample28 direct endpoint smoke payload',
+        ],
+        'sample29' => [
+            'project_key' => 'SAMPLE29',
+            'table_name' => 'support_case',
+            'operation_key' => 'update_support_case',
+            'sqlite_schema' => 'CREATE TABLE support_case (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                case_number TEXT NOT NULL,
+                customer_name TEXT NOT NULL,
+                customer_tier TEXT NOT NULL DEFAULT "standard",
+                subject TEXT NOT NULL,
+                status TEXT NOT NULL DEFAULT "open",
+                severity TEXT NOT NULL DEFAULT "medium",
+                next_action TEXT NOT NULL
+            )',
+            'sqlite_insert' => 'INSERT INTO support_case (
+                id,
+                case_number,
+                customer_name,
+                customer_tier,
+                subject,
+                status,
+                severity,
+                next_action
+            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?)',
+            'sqlite_insert_values' => [
+                2001,
+                'CASE-2026-0001',
+                'Northwind Field Team',
+                'enterprise',
+                'Onboarding data import review',
+                'triage',
+                'high',
+                'Confirm imported customer fields and prepare a generated follow-up workflow.',
+            ],
+            'sqlite_select' => 'SELECT id, case_number, customer_name, customer_tier, subject, status, severity, next_action FROM support_case WHERE id = ?',
+            'sqlite_select_values' => [2001],
+            'expected_field' => 'next_action',
+            'expected_value' => 'Generated sample29 direct endpoint smoke payload',
+        ],
+    ];
+
+    return $profiles[$profile];
+}
+
+function profile_operation(array $app, array $profile): array
+{
+    $snapshot = app_pdo_fetch_managed_operation_snapshot($app, $profile['project_key']);
     ensure($snapshot['ok'], 'managed operation snapshot failed: ' . $snapshot['error']);
 
     foreach ($snapshot['items'] as $item) {
-        if ((string) ($item['operation_key'] ?? '') === 'update_no_code_ticket') {
+        if ((string) ($item['operation_key'] ?? '') === $profile['operation_key']) {
             return $item;
         }
     }
 
-    throw new RuntimeException('sample28 update_no_code_ticket operation was not found.');
+    throw new RuntimeException($profile['project_key'] . ' ' . $profile['operation_key'] . ' operation was not found.');
 }
 
-function sample28_server_binding(array $app, array $operation): array
+function profile_server_binding(array $app, array $profile, array $operation): array
 {
     $runtimeEntity = app_project_db_access_bootstrap_materialize_runtime_entity(
         $app,
-        'SAMPLE28',
-        'no_code_ticket',
+        $profile['project_key'],
+        $profile['table_name'],
     );
     ensure(
         $runtimeEntity['ok'] && is_array($runtimeEntity['entity'] ?? null),
-        'sample28 runtime entity materialize failed: ' . $runtimeEntity['error'],
+        $profile['project_key'] . ' runtime entity materialize failed: ' . $runtimeEntity['error'],
     );
 
     $entity = $runtimeEntity['entity'];
@@ -84,7 +165,7 @@ function sample28_server_binding(array $app, array $operation): array
 
     $binding = app_managed_operation_server_dbaccess_binding_from_project_catalog(
         $app,
-        'SAMPLE28',
+        $profile['project_key'],
         $operation,
     );
     if ($binding['ok'] && is_array($binding['binding'] ?? null)) {
@@ -111,7 +192,7 @@ function sample28_server_binding(array $app, array $operation): array
     );
     ensure(
         $fallback['ok'] && is_array($fallback['binding'] ?? null),
-        'sample28 server DBAccess binding failed: ' . $fallback['error'],
+        $profile['project_key'] . ' server DBAccess binding failed: ' . $fallback['error'],
     );
 
     return [
@@ -120,83 +201,68 @@ function sample28_server_binding(array $app, array $operation): array
     ];
 }
 
-function sample28_seed_sqlite(string $sqlitePath): PDO
+function profile_seed_sqlite(string $sqlitePath, array $profile): PDO
 {
     $pdo = new PDO('sqlite:' . $sqlitePath);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    $pdo->exec(
-        'CREATE TABLE no_code_ticket (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
-            title TEXT NOT NULL,
-            status TEXT NOT NULL DEFAULT "open",
-            priority INTEGER NOT NULL DEFAULT 0,
-            body TEXT NOT NULL
-        )',
-    );
-    $statement = $pdo->prepare(
-        'INSERT INTO no_code_ticket (id, title, status, priority, body)
-         VALUES (?, ?, ?, ?, ?)',
-    );
-    $statement->execute([
-        1001,
-        'First no-code app ticket',
-        'open',
-        10,
-        'This row is the first sample28 data-first no-code app fixture.',
-    ]);
+    $pdo->exec((string) $profile['sqlite_schema']);
+    $statement = $pdo->prepare((string) $profile['sqlite_insert']);
+    ensure($statement !== false, $profile['project_key'] . ' SQLite insert prepare failed.');
+    $statement->execute($profile['sqlite_insert_values']);
 
     return $pdo;
 }
 
-function sample28_read_row(PDO $pdo): array
+function profile_read_row(PDO $pdo, array $profile): array
 {
-    $statement = $pdo->prepare('SELECT id, title, status, priority, body FROM no_code_ticket WHERE id = ?');
-    ensure($statement !== false, 'sample28 SQLite read prepare failed.');
-    $statement->execute([1001]);
+    $statement = $pdo->prepare((string) $profile['sqlite_select']);
+    ensure($statement !== false, $profile['project_key'] . ' SQLite read prepare failed.');
+    $statement->execute($profile['sqlite_select_values']);
     $row = $statement->fetch(PDO::FETCH_ASSOC);
-    ensure(is_array($row), 'sample28 SQLite row was not found after processing.');
+    ensure(is_array($row), $profile['project_key'] . ' SQLite row was not found after processing.');
 
     return $row;
 }
 
-function sample28_process_pending_outbox(array $app, array $binding): array
+function profile_process_pending_outbox(array $app, array $profile, array $binding): array
 {
     $processed = [];
     for ($index = 0; $index < 10; $index++) {
         $result = app_managed_operation_sync_outbox_process_next(
             $app,
-            'SAMPLE28',
+            $profile['project_key'],
             app_managed_operation_server_dbaccess_outbox_handler($binding),
         );
         if (!$result['ok']) {
-            throw new RuntimeException('sample28 outbox process failed: ' . $result['error']);
+            throw new RuntimeException($profile['project_key'] . ' outbox process failed: ' . $result['error']);
         }
         if (!$result['processed']) {
-            ensure($result['outcome'] === 'no_pending', 'sample28 outbox process stopped unexpectedly: ' . $result['outcome']);
+            ensure($result['outcome'] === 'no_pending', $profile['project_key'] . ' outbox process stopped unexpectedly: ' . $result['outcome']);
             break;
         }
-        ensure($result['outcome'] === 'done', 'sample28 outbox process produced unexpected outcome: ' . $result['outcome']);
+        ensure($result['outcome'] === 'done', $profile['project_key'] . ' outbox process produced unexpected outcome: ' . $result['outcome']);
         $processed[] = $result;
     }
 
-    ensure($processed !== [], 'sample28 outbox process found no pending items.');
+    ensure($processed !== [], $profile['project_key'] . ' outbox process found no pending items.');
 
     return $processed;
 }
 
 try {
     $args = parse_args($argv);
+    $profile = smoke_profile($args['profile']);
     $app = app_bootstrap();
-    $operation = sample28_operation($app);
-    $bindingResult = sample28_server_binding($app, $operation);
+    $operation = profile_operation($app, $profile);
+    $bindingResult = profile_server_binding($app, $profile, $operation);
 
     $sqlitePath = sys_get_temp_dir()
-        . '/dego-sample28-runtime-outbox-'
+        . '/dego-' . strtolower((string) $profile['project_key']) . '-runtime-outbox-'
         . getmypid()
         . '-'
         . bin2hex(random_bytes(4))
         . '.sqlite';
-    $pdo = sample28_seed_sqlite($sqlitePath);
+    $pdo = profile_seed_sqlite($sqlitePath, $profile);
 
     global $mtooldb;
     $mtooldb = null;
@@ -204,8 +270,8 @@ try {
     putenv('MTOOL_RUNTIME_SQLITE_PATH=' . $sqlitePath);
 
     try {
-        $processed = sample28_process_pending_outbox($app, $bindingResult['binding']);
-        $row = sample28_read_row($pdo);
+        $processed = profile_process_pending_outbox($app, $profile, $bindingResult['binding']);
+        $row = profile_read_row($pdo, $profile);
     } finally {
         $mtooldb = null;
         if ($previousRuntimeSqlitePath === false) {
@@ -216,13 +282,13 @@ try {
     }
 
     ensure(
-        (string) ($row['body'] ?? '') === 'Generated sample28 direct endpoint smoke payload',
-        'sample28 SQLite row body was not updated from direct endpoint payload.',
+        (string) ($row[$profile['expected_field']] ?? '') === $profile['expected_value'],
+        $profile['project_key'] . ' SQLite row was not updated from direct endpoint payload.',
     );
 
     $summary = [
         'ok' => true,
-        'project_key' => 'SAMPLE28',
+        'project_key' => $profile['project_key'],
         'sqlite_path' => $sqlitePath,
         'processed_count' => count($processed),
         'processed_outcomes' => array_map(

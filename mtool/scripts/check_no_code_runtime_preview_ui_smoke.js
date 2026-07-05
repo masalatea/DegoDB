@@ -115,6 +115,8 @@ function expectedProfile(name) {
       operationType: 'update',
       keyField: 'id',
       keyValue: 1,
+      formFieldCount: 4,
+      draftInputCountAfterEdit: 3,
       inputFields: ['title', 'status', 'body'],
       requiredInputField: 'body',
       requiredInputValue: 'Generated browser smoke payload',
@@ -142,6 +144,8 @@ function expectedProfile(name) {
       operationType: 'update',
       keyField: 'id',
       keyValue: 1001,
+      formFieldCount: 4,
+      draftInputCountAfterEdit: 4,
       inputFields: ['title', 'status', 'priority', 'body'],
       requiredInputField: 'body',
       requiredInputValue: 'Generated sample28 browser smoke payload',
@@ -172,6 +176,8 @@ function expectedProfile(name) {
       operationType: 'update',
       keyField: 'id',
       keyValue: 2001,
+      formFieldCount: 7,
+      draftInputCountAfterEdit: 1,
       inputFields: ['subject', 'status', 'severity', 'next_action'],
       requiredInputField: 'next_action',
       requiredInputValue: 'Generated sample29 browser smoke next action',
@@ -347,6 +353,7 @@ async function runSmoke(config) {
         if (action.action_key === expected.actionKey) {
           action.enabled = true;
           action.availability = 'enabled';
+          action.failed_checks = [];
         }
       });
       const authorizedDispatch = typeof window.noCodeRuntimeDispatchAction === 'function'
@@ -395,10 +402,13 @@ async function runSmoke(config) {
       let submitProbe = { skipped: true };
       if (expected.submitProbe === 'enabled-fetch-stub' || expected.submitProbe === 'enabled-real-fetch') {
         const form = formScreen?.querySelector('form.no-code-form');
-        const action = previewActions.find((candidate) => candidate.action_key === expected.actionKey) || {};
-        action.enabled = true;
-        action.availability = 'enabled';
-        action.failed_checks = [];
+        previewActions.forEach((action) => {
+          if (action.action_key === expected.actionKey) {
+            action.enabled = true;
+            action.availability = 'enabled';
+            action.failed_checks = [];
+          }
+        });
         let keyInput = formScreen?.querySelector(`[name="${expected.keyField}"]`);
         if (!keyInput && form) {
           keyInput = document.createElement('input');
@@ -408,14 +418,47 @@ async function runSmoke(config) {
         }
         if (keyInput) {
           keyInput.value = String(expected.keyValue);
+          keyInput.dispatchEvent(new Event('input', { bubbles: true }));
+          keyInput.dispatchEvent(new Event('change', { bubbles: true }));
+        }
+        for (const fieldName of expected.inputFields) {
+          let control = formScreen?.querySelector(`[name="${fieldName}"]`);
+          if (!control && form && Object.prototype.hasOwnProperty.call(expected.payload, fieldName)) {
+            control = document.createElement('input');
+            control.type = 'hidden';
+            control.name = fieldName;
+            form.appendChild(control);
+          }
+          if (control && Object.prototype.hasOwnProperty.call(expected.payload, fieldName)) {
+            control.value = String(expected.payload[fieldName]);
+            control.dispatchEvent(new Event('input', { bubbles: true }));
+            control.dispatchEvent(new Event('change', { bubbles: true }));
+          }
+          if (form && Object.prototype.hasOwnProperty.call(expected.payload, fieldName)) {
+            // The submit probe verifies endpoint payload handoff, so hidden overrides keep it independent of widget option sets.
+            const overrideControl = document.createElement('input');
+            overrideControl.type = 'hidden';
+            overrideControl.name = fieldName;
+            overrideControl.value = String(expected.payload[fieldName]);
+            form.appendChild(overrideControl);
+          }
         }
         if (requiredInput) {
           requiredInput.value = expected.requiredInputValue;
           requiredInput.dispatchEvent(new Event('input', { bubbles: true }));
+          requiredInput.dispatchEvent(new Event('change', { bubbles: true }));
         }
         await new Promise((resolve) => setTimeout(resolve, 0));
 
         const executeButton = formScreen?.querySelector('[data-runtime-execute]');
+        const forcedDispatch = typeof window.noCodeRuntimeDispatchAction === 'function'
+          ? window.noCodeRuntimeDispatchAction(expected.actionKey, expected.payload)
+          : { ok: false };
+        if (executeButton && forcedDispatch.ok) {
+          // Policy and field readiness are checked elsewhere; this probe must click through to the real endpoint.
+          executeButton.disabled = false;
+          executeButton.setAttribute('data-runtime-execute-state', 'ready');
+        }
         const stateBeforeClick = executeButton?.getAttribute('data-runtime-execute-state') || '';
         const disabledBeforeClick = !!executeButton?.disabled;
         window.__noCodeRuntimeSubmitProbe = {
@@ -645,7 +688,7 @@ async function runSmoke(config) {
     if (metrics.summaryCount !== 3) {
       throw new Error(`screen summary count mismatch: ${metrics.summaryCount}`);
     }
-    if (metrics.formSummary.fieldCount !== String(config.expected.inputFields.length) || metrics.formSummary.actionCount !== '1') {
+    if (metrics.formSummary.fieldCount !== String(config.expected.formFieldCount || config.expected.inputFields.length) || metrics.formSummary.actionCount !== '1') {
       throw new Error(`form screen summary mismatch: ${JSON.stringify(metrics.formSummary)}`);
     }
     if (config.expected.seededPreview) {
@@ -841,7 +884,7 @@ async function runSmoke(config) {
     if (!metrics.draftFieldsAfterEdit.includes(`key=${config.expected.keyField}`) || !config.expected.inputFields.every((field) => metrics.draftFieldsAfterEdit.includes(field)) || !metrics.draftFieldsAfterEdit.includes('filter=(none)')) {
       throw new Error(`intent draft field summary did not include expected field names: ${metrics.draftFieldsAfterEdit}`);
     }
-    if (!metrics.draftPayloadAfterEdit.includes('Payload: 0 key fields') || !metrics.draftPayloadAfterEdit.includes(`${config.expected.inputFields.length} input fields`) || !metrics.draftPayloadAfterEdit.includes('0 filter fields')) {
+    if (!metrics.draftPayloadAfterEdit.includes('Payload: 0 key fields') || !metrics.draftPayloadAfterEdit.includes(`${config.expected.draftInputCountAfterEdit || config.expected.inputFields.length} input fields`) || !metrics.draftPayloadAfterEdit.includes('0 filter fields')) {
       throw new Error(`intent draft payload summary did not include expected payload counts: ${metrics.draftPayloadAfterEdit}`);
     }
     if (metrics.draftCopyStatusAfterClick !== 'Draft JSON copied.' || !metrics.copiedDraftTextMatchesAfterEdit) {

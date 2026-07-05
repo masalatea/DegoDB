@@ -152,6 +152,18 @@ final class ConfigStoreProfileTest extends TestCase
         self::assertNotSame($app['config_db']['dsn'], $app['db']['dsn']);
     }
 
+    public function testStubAuthScopesCanBeConfiguredForLocalManagedOperationTryouts(): void
+    {
+        $this->setEnv('APP_SITE', 'admin');
+        $this->setEnv('APP_AUTH_STUB_ROLES', 'admin,config,editor');
+        $this->setEnv('APP_AUTH_STUB_SCOPES', 'support_case:write, task:write');
+
+        $app = app_load_config();
+
+        self::assertSame(['admin', 'config', 'editor'], $app['auth']['stub']['roles']);
+        self::assertSame(['support_case:write', 'task:write'], $app['auth']['stub']['scopes']);
+    }
+
     private function setEnv(string $key, string $value): void
     {
         if (!array_key_exists($key, $this->savedEnv)) {

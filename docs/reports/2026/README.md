@@ -11,6 +11,30 @@
 
 ## Index
 
+- `2026-0705-second-domain-runtime-submit-processing-confidence-closure.md`
+  - sample28 / sample29 の public runtime submit、direct endpoint enqueue、operator outbox handoff、generated server DBAccess outbox processing proof を current async boundary として closure。Push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0705-post-sample29-processing-no-code-product-goal-replan.md`
+  - sample29 outbox processing proof 後の次判断。live polling / synchronous demo processing / runtime retry mutation / push cleanup の前に closure report を選択。Push は未実行。Status: `DONE`。
+- `2026-0705-sample29-runtime-outbox-processing-smoke.md`
+  - sample29 public runtime smoke で outbox processing proof を有効化。direct endpoint の `update_support_case` payload が既存 managed-operation sync outbox processor と generated server DBAccess handler を通り、isolated SQLite `support_case.next_action` を更新できることを確認。Push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0705-post-multi-profile-endpoint-smoke-no-code-product-goal-replan.md`
+  - multi-profile endpoint smoke 後の次判断。live polling / synchronous demo processing / runtime retry mutation / push cleanup の前に sample29 outbox processing smoke を選択。Push は未実行。Status: `DONE`。
+- `2026-0705-multi-profile-runtime-execution-endpoint-smoke.md`
+  - direct no-code runtime execution endpoint smoke を sample28/sample29 profile 対応にし、sample29 public runtime smoke で current / alias direct endpoint enqueue proof を有効化。sample29 outbox processing は未着手として明記。Push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0705-post-sample29-stack-review-no-code-product-goal-replan.md`
+  - sample29 stack review 後の次判断。sample29 outbox processing / live polling / synchronous demo processing / retry mutation / push cleanup の前に generic multi-profile endpoint smoke extraction を選択。Push は未実行。Status: `DONE`。
+- `2026-0705-local-commit-stack-review-after-sample29-handoff.md`
+  - sample29 handoff 後の local commit stack review。`develop` は `origin/develop` より 51 commits ahead、worktree clean、push / history rewrite は未実行。sample29 second-domain submit handoff proof を含めた review grouping と verification baseline を記録。Status: `FIRST_SLICE_DONE`。
+- `2026-0705-post-sample29-handoff-closure-no-code-product-goal-replan.md`
+  - sample29 handoff closure 後の次判断。live polling / synchronous demo processing / retry mutation / generic smoke extraction / push cleanup の前に local commit stack review を選択。Push は未実行。Status: `DONE`。
+- `2026-0705-sample29-public-runtime-submit-handoff-closure.md`
+  - sample29 public runtime submit handoff lane を closure。sample28 full baseline と sample29 second-domain browser proof、scoped stub-auth tryout path、pending outbox copy / open / manual-refresh handoff を accepted capability として整理。Push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0705-post-sample29-public-runtime-submit-handoff-replan.md`
+  - sample29 public runtime submit handoff smoke 後の次判断。live polling / synchronous demo processing / retry mutation / generic smoke extraction / push cleanup の前に closure report を選択。Push は未実行。Status: `DONE`。
+- `2026-0705-sample29-public-runtime-submit-handoff-smoke.md`
+  - sample29 public runtime browser smoke を追加。artifact preview は execution binding なし、current / alias preview は scoped stub-auth principal の real submit で pending outbox copy / open / manual-refresh handoff を検証。Push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0705-post-stack-review-no-code-product-goal-replan.md`
+  - stack review 後の次判断。live polling / synchronous demo processing / retry mutation / push cleanup の前に、sample29 public runtime submit handoff smoke を選択。Push は未実行。Status: `DONE`。
 - `2026-0705-local-commit-stack-review-after-manual-refresh.md`
   - manual refresh 後の local commit stack review。`develop` は `origin/develop` より 48 commits ahead、worktree clean、push / history rewrite は未実行。review grouping と verification baseline を記録。Status: `FIRST_SLICE_DONE`。
 - `2026-0705-post-manual-refresh-closure-no-code-product-goal-replan.md`
