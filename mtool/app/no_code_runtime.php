@@ -601,10 +601,11 @@ function app_no_code_runtime_render_form_html(array $fields, array $item, string
         $readonly = (bool) ($field['readonly'] ?? false);
         $required = (bool) ($field['required'] ?? false);
         $label = app_no_code_runtime_html_escape((string) ($field['label'] ?? $fieldKey));
+        $fieldHintId = 'field-hint-' . app_no_code_runtime_html_escape($fieldKey);
         $attrs = ' name="' . app_no_code_runtime_html_escape($fieldKey) . '"'
             . ' id="field-' . app_no_code_runtime_html_escape($fieldKey) . '"'
             . ($readonly ? ' readonly' : '')
-            . ($required ? ' required' : '');
+            . ($required ? ' required aria-describedby="' . $fieldHintId . '"' : '');
 
         if ($type === 'text') {
             $control = '<textarea' . $attrs . '>' . app_no_code_runtime_html_escape($displayValue) . '</textarea>';
@@ -621,7 +622,13 @@ function app_no_code_runtime_render_form_html(array $fields, array $item, string
             $control = '<input type="' . $inputType . '"' . $attrs . $valueAttr . '>';
         }
 
-        $controls[] = '<label for="field-' . app_no_code_runtime_html_escape($fieldKey) . '"><span>' . $label . '</span>' . $control . '</label>';
+        $labelText = '<span class="no-code-form-label-text">' . $label
+            . ($required ? '<span class="no-code-required-badge">Required</span>' : '')
+            . '</span>';
+        $hint = $required
+            ? '<span id="' . $fieldHintId . '" class="no-code-required-hint" data-required-field="' . app_no_code_runtime_html_escape($fieldKey) . '" data-required-label="' . $label . '" data-required-state="pending">Required for the generated action intent.</span>'
+            : '';
+        $controls[] = '<label for="field-' . app_no_code_runtime_html_escape($fieldKey) . '">' . $labelText . $control . $hint . '</label>';
     }
 
     if ($controls === []) {
@@ -759,6 +766,11 @@ function app_no_code_runtime_preview_css(): string
         '.no-code-detail dt { color: #52606d; background: #f4f6f8; }',
         '.no-code-form { display: grid; gap: 12px; max-width: 720px; }',
         '.no-code-form label { display: grid; gap: 6px; font-size: 13px; color: #52606d; }',
+        '.no-code-form-label-text { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; }',
+        '.no-code-required-badge { border: 1px solid #f0d58c; border-radius: 999px; padding: 1px 6px; color: #7a4d00; background: #fff8e5; font-size: 11px; line-height: 1.4; }',
+        '.no-code-required-hint { color: #62748a; font-size: 12px; }',
+        '.no-code-required-hint[data-required-state="missing"] { color: #842029; }',
+        '.no-code-required-hint[data-required-state="ok"] { color: #0f5132; }',
         '.no-code-form input, .no-code-form textarea { box-sizing: border-box; width: 100%; min-height: 36px; border: 1px solid #bcccdc; border-radius: 6px; padding: 8px 10px; font: inherit; color: #1f2933; background: #ffffff; }',
         '.no-code-form textarea { min-height: 96px; resize: vertical; }',
         '.no-code-empty-state { display: block; padding: 12px 10px; color: #62748a; font-size: 14px; }',
@@ -935,6 +947,77 @@ function app_no_code_runtime_preview_js(): string
     return findAction(actionButton.getAttribute('data-action-key') || '');
   }
 
+  function findNamedControl(screen, fieldKey) {
+    if (!screen) {
+      return null;
+    }
+    var controls = screen.querySelectorAll('input[name], textarea[name], select[name]');
+    for (var index = 0; index < controls.length; index += 1) {
+      if (controls[index].name === fieldKey) {
+        return controls[index];
+      }
+    }
+    return null;
+  }
+
+  function findActionField(action, fieldKey) {
+    var fields = action && Array.isArray(action.fields) ? action.fields : [];
+    for (var index = 0; index < fields.length; index += 1) {
+      if (fields[index] && fields[index].field_key === fieldKey) {
+        return fields[index];
+      }
+    }
+    return null;
+  }
+
+  function requiredFieldRoleLabel(field) {
+    var role = field && field.role ? field.role : 'field';
+    if (role === 'key') {
+      return 'key value';
+    }
+    if (role === 'filter') {
+      return 'filter value';
+    }
+    if (role === 'input') {
+      return 'input value';
+    }
+    return 'field value';
+  }
+
+  function requiredFieldDisplayLabel(hint, fieldKey) {
+    var label = hint.getAttribute('data-required-label') || '';
+    return label || fieldKey || 'field';
+  }
+
+  function writeRequiredFieldHints(screen, draft, action) {
+    if (!screen) {
+      return;
+    }
+    var checks = draft && Array.isArray(draft.draft_checks) ? draft.draft_checks : [];
+    screen.querySelectorAll('[data-required-field]').forEach(function (hint) {
+      var fieldKey = hint.getAttribute('data-required-field') || '';
+      var actionField = findActionField(action, fieldKey);
+      var roleLabel = requiredFieldRoleLabel(actionField);
+      var displayLabel = requiredFieldDisplayLabel(hint, fieldKey);
+      var control = findNamedControl(screen, fieldKey);
+      var missing = checks.indexOf('key.missing:' + fieldKey) !== -1
+        || checks.indexOf('input.missing:' + fieldKey) !== -1
+        || checks.indexOf('filter.missing:' + fieldKey) !== -1;
+      if (missing) {
+        hint.textContent = 'Missing required ' + roleLabel + ' for generated action intent: ' + displayLabel + '.';
+        hint.setAttribute('data-required-state', 'missing');
+        return;
+      }
+      if (control && !isEmptyRequiredValue(control.type === 'checkbox' ? control.checked : control.value)) {
+        hint.textContent = 'Required ' + roleLabel + ' is present for generated action intent: ' + displayLabel + '.';
+        hint.setAttribute('data-required-state', 'ok');
+        return;
+      }
+      hint.textContent = 'Required ' + roleLabel + ' for generated action intent: ' + displayLabel + '.';
+      hint.setAttribute('data-required-state', 'pending');
+    });
+  }
+
   function buildActionIntentDraft(action, input) {
     var draft = {
       intent_version: 'no-code-runtime-action-intent-v0',
@@ -1055,6 +1138,7 @@ function app_no_code_runtime_preview_js(): string
     var draftChecks = Array.isArray(draft.draft_checks) ? draft.draft_checks : [];
     var policyChecks = Array.isArray(draft.policy_failed_checks) ? draft.policy_failed_checks : [];
     var hasBlockingChecks = draftChecks.length > 0 || policyChecks.length > 0;
+    writeRequiredFieldHints(screen, draft, action);
     draftOutput.textContent = JSON.stringify(draft, null, 2);
     if (draftSummary) {
       var summaryChecks = [];

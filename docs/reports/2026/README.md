@@ -11,6 +11,34 @@
 
 ## Index
 
+- `2026-0703-local-commit-stack-review-after-required-field-validation-wording.md`
+  - required-field validation wording 後の local commit stack review。`develop` は `origin/develop` より 17 commits ahead、worktree は clean、push は未実行。review grouping、verification baseline、push / rewrite options を記録。Status: `FIRST_SLICE_DONE`。
+- `2026-0703-post-required-field-validation-wording-closure-no-code-product-goal-replan.md`
+  - required-field validation wording closure 後の次判断。server-backed execution や next sample の前に local commit stack review を選択。Push は未実行。Status: `DONE`。
+- `2026-0703-runtime-required-field-validation-wording-closure.md`
+  - runtime required-field validation wording lane の closure。required hint の present/missing message が action field role と rendered field label を含むことを accepted capability として固定し、latest verification baseline と remaining candidates を記録。Push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0703-post-required-field-validation-wording-no-code-product-goal-replan.md`
+  - runtime required-field validation wording first slice 後の次判断。server-backed execution、next sample、commit/push cleanup の前に closure report を選択。Push は未実行。Status: `DONE`。
+- `2026-0703-runtime-required-field-validation-wording-first-slice.md`
+  - generated runtime required hint の live present / missing feedback に action field role と rendered field label を追加。Focused `NoCodeRuntimeTest`、sample28 runtime UI smoke、full `make test` が通過。Push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0703-post-required-field-live-hints-no-code-product-goal-replan.md`
+  - runtime required-field live hints closure 後の次判断。server-backed execution や next sample の前に、required-field validation wording first slice を選択。Push は未実行。Status: `DONE`。
+- `2026-0703-runtime-required-field-live-hints-closure.md`
+  - runtime required-field live hints lane の closure。required hint の static guidance と browser-local present/missing feedback、最新 verification baseline、remaining candidates を記録。Push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0703-post-runtime-required-field-live-hints-no-code-product-goal-replan.md`
+  - runtime required-field live hints first slice 後の次判断。server-backed execution、richer validation wording、next sample、commit/push cleanup の前に closure report を選択。Push は未実行。Status: `DONE`。
+- `2026-0703-runtime-required-field-live-hints-first-slice.md`
+  - generated runtime form の required hint を local action-intent draft checks に追従させ、入力済みなら present、blank required なら missing として表示する first slice。Focused `NoCodeRuntimeTest`、sample28 runtime UI smoke、sample01 reset 後の full `make test` が通過。Push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0703-post-required-field-guidance-closure-no-code-product-goal-replan.md`
+  - required-field guidance closure 後の次判断。server-backed execution や next sample の前に、既存 draft checks を使う runtime required-field live hints を選択。Push は未実行。Status: `DONE`。
+- `2026-0703-runtime-required-field-guidance-closure.md`
+  - runtime required-field guidance lane の closure。generated runtime form の required badge、required-field hint、`aria-describedby` linkage を accepted capability として固定し、focused/sample/full verification baseline と remaining candidates を記録。Push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0703-post-runtime-required-field-guidance-no-code-product-goal-replan.md`
+  - runtime required-field guidance first slice 後の次判断。live validation、server-backed execution、next sample、commit/push cleanup の前に closure report を選択。Push は未実行。Status: `DONE`。
+- `2026-0703-runtime-required-field-guidance-first-slice.md`
+  - generated no-code runtime form に required badge と required-field hint を追加し、draft summary / JSON を読む前に required input contract を確認できるようにする follow-up。Focused `NoCodeRuntimeTest`、sample28 runtime UI smoke、clean buildless sample01 stack 上の full Integration PHPUnit が通過。Push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0703-post-commit-stack-review-no-code-product-goal-replan.md`
+  - local commit stack review 後の次判断。push / history rewrite は明示されていないため行わず、次の小さな implementation lane として runtime required field guidance を選択。Status: `DONE`。
 - `2026-0703-local-commit-stack-review-after-intent-draft-polish.md`
   - runtime action intent draft polish 後の local commit stack review。`develop` は `origin/develop` より 10 commits ahead、push は未実行。commit group、最新 verification baseline、push / squash 前の選択肢を記録。Status: `FIRST_SLICE_DONE`。
 - `2026-0703-post-intent-draft-polish-no-code-product-goal-replan.md`

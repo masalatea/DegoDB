@@ -177,6 +177,12 @@ final class NoCodeRuntimeTest extends TestCase
         self::assertStringContainsString('data-action-state="ready"', $html);
         self::assertStringContainsString('data-action-affordance="keyboard-intent-preview"', $html);
         self::assertStringContainsString('data-keyboard-activation="enter-space"', $html);
+        self::assertStringContainsString('class="no-code-required-badge">Required</span>', $html);
+        self::assertStringContainsString('class="no-code-required-hint" data-required-field="title" data-required-label="Title" data-required-state="pending">Required for the generated action intent.</span>', $html);
+        self::assertStringContainsString('required aria-describedby="field-hint-title"', $html);
+        self::assertStringContainsString('function writeRequiredFieldHints(screen, draft, action)', $html);
+        self::assertStringContainsString('Missing required \' + roleLabel + \' for generated action intent: \' + displayLabel + \'.', $html);
+        self::assertStringContainsString('Required \' + roleLabel + \' is present for generated action intent: \' + displayLabel + \'.', $html);
         self::assertStringContainsString('aria-describedby="no-code-action-hint-task_list-update_note"', $html);
         self::assertStringContainsString('Keyboard: Tab to this action, then press Enter or Space to preview the update intent.', $html);
         self::assertStringContainsString('data-operation-key="update_note"', $html);

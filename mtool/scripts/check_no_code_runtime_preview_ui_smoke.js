@@ -272,6 +272,9 @@ async function runSmoke(config) {
         requiredInput.value = expected.requiredInputValue;
         requiredInput.dispatchEvent(new Event('input', { bubbles: true }));
       }
+      const requiredHint = formScreen?.querySelector(`[data-required-field="${expected.requiredInputField}"]`);
+      const requiredHintStateAfterEdit = requiredHint?.getAttribute('data-required-state') || '';
+      const requiredHintTextAfterEdit = requiredHint?.textContent?.trim() || '';
       const draftAfterEdit = formScreen?.querySelector('[data-intent-draft-output]')?.textContent || '';
       const draftSummaryAfterEdit = formScreen?.querySelector('[data-intent-draft-summary]')?.textContent || '';
       const draftMetaAfterEdit = formScreen?.querySelector('[data-intent-draft-meta]')?.textContent || '';
@@ -315,6 +318,12 @@ async function runSmoke(config) {
       }
       const draftCopyStatusAfterClick = formScreen?.querySelector('[data-intent-draft-copy-status]')?.textContent || '';
       const copiedDraftText = window.__noCodeRuntimeCopiedDraftText || '';
+      if (requiredInput) {
+        requiredInput.value = '   ';
+        requiredInput.dispatchEvent(new Event('input', { bubbles: true }));
+      }
+      const requiredHintStateAfterBlank = requiredHint?.getAttribute('data-required-state') || '';
+      const requiredHintTextAfterBlank = requiredHint?.textContent?.trim() || '';
 
       return {
         title: document.title,
@@ -341,6 +350,18 @@ async function runSmoke(config) {
         actionHintText: Array.from(document.querySelectorAll('.no-code-action-hint')).map((element) => element.textContent?.trim() || ''),
         describedActionCount: actions.filter((button) => {
           const hintId = button.getAttribute('aria-describedby') || '';
+          return hintId !== '' && document.getElementById(hintId);
+        }).length,
+        requiredBadgeCount: document.querySelectorAll('.no-code-required-badge').length,
+        requiredHintCount: document.querySelectorAll('[data-required-field]').length,
+        requiredHintFields: Array.from(document.querySelectorAll('[data-required-field]')).map((element) => element.getAttribute('data-required-field') || ''),
+        requiredHintStates: Array.from(document.querySelectorAll('[data-required-field]')).map((element) => element.getAttribute('data-required-state') || ''),
+        requiredHintStateAfterEdit,
+        requiredHintTextAfterEdit,
+        requiredHintStateAfterBlank,
+        requiredHintTextAfterBlank,
+        requiredControlsWithDescriptions: Array.from(document.querySelectorAll('.no-code-form [required]')).filter((control) => {
+          const hintId = control.getAttribute('aria-describedby') || '';
           return hintId !== '' && document.getElementById(hintId);
         }).length,
         idleFeedbackCount: Array.from(document.querySelectorAll('.no-code-action-feedback')).filter((element) => element.getAttribute('data-state') === 'idle').length,
@@ -428,6 +449,18 @@ async function runSmoke(config) {
     }
     if (!metrics.actionHintText.some((text) => text.includes('press Enter or Space') || text.includes('Disabled in this preview'))) {
       throw new Error('generated action keyboard hint was not found.');
+    }
+    if (metrics.requiredBadgeCount === 0 || metrics.requiredBadgeCount !== metrics.requiredHintCount || metrics.requiredHintCount !== metrics.requiredControlsWithDescriptions) {
+      throw new Error(`required field guidance mismatch: badges=${metrics.requiredBadgeCount} hints=${metrics.requiredHintCount} described=${metrics.requiredControlsWithDescriptions}`);
+    }
+    if (!metrics.requiredHintFields.includes(config.expected.requiredInputField)) {
+      throw new Error(`required field hint missing for ${config.expected.requiredInputField}: ${metrics.requiredHintFields.join(', ')}`);
+    }
+    if (metrics.requiredHintStateAfterEdit !== 'ok' || !metrics.requiredHintTextAfterEdit.includes('Required input value is present')) {
+      throw new Error(`required field live hint did not show ok state after edit: ${metrics.requiredHintStateAfterEdit} / ${metrics.requiredHintTextAfterEdit}`);
+    }
+    if (metrics.requiredHintStateAfterBlank !== 'missing' || !metrics.requiredHintTextAfterBlank.includes('Missing required input value')) {
+      throw new Error(`required field live hint did not show missing state after blank input: ${metrics.requiredHintStateAfterBlank} / ${metrics.requiredHintTextAfterBlank}`);
     }
     if (metrics.idleFeedbackCount !== 3) {
       throw new Error(`initial action feedback state mismatch: ${metrics.idleFeedbackCount}`);
