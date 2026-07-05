@@ -11,6 +11,8 @@
 
 ## Index
 
+- `2026-0705-pre-push-commit-stack-cleanup-result.md`
+  - second-domain runtime confidence closure 後の push 前 commit stack 整理結果。backup branch `codex/backup-develop-pre-push-cleanup-20260705-517756b` を作成し、local unpushed functional stack を 55 commits から 6 grouped commits に整理した後、docs-only cleanup record を追加。docs-only record 前に backup branch との tree parity を確認。Push は未実行。Status: `DONE`。
 - `2026-0705-second-domain-runtime-submit-processing-confidence-closure.md`
   - sample28 / sample29 の public runtime submit、direct endpoint enqueue、operator outbox handoff、generated server DBAccess outbox processing proof を current async boundary として closure。Push は未実行。Status: `FIRST_SLICE_DONE`。
 - `2026-0705-post-sample29-processing-no-code-product-goal-replan.md`
