@@ -254,7 +254,7 @@ async function runSmoke(config) {
     await requireVisible(page.locator(`.no-code-screen[data-screen-key="${config.expected.detailScreenKey}"] dl.no-code-detail`), 'detail layout');
     await requireVisible(page.locator(`.no-code-screen[data-screen-key="${config.expected.formScreenKey}"] form.no-code-form`), 'form layout');
 
-    const metrics = await page.evaluate((expected) => {
+    const metrics = await page.evaluate(async (expected) => {
       const sections = Array.from(document.querySelectorAll('.no-code-screen'));
       const actions = Array.from(document.querySelectorAll('.no-code-actions button'));
       const preview = window.__noCodeRuntimePreview || {};
@@ -266,12 +266,22 @@ async function runSmoke(config) {
         : { ok: false, executed: false, error: 'missing noCodeRuntimeDispatchAction' };
       const formScreen = document.querySelector(`.no-code-screen[data-screen-key="${expected.formScreenKey}"]`);
       const draftBeforeEdit = formScreen?.querySelector('[data-intent-draft-output]')?.textContent || '';
+      const draftSummaryBeforeEdit = formScreen?.querySelector('[data-intent-draft-summary]')?.textContent || '';
       const requiredInput = formScreen?.querySelector(`[name="${expected.requiredInputField}"]`);
       if (requiredInput) {
         requiredInput.value = expected.requiredInputValue;
         requiredInput.dispatchEvent(new Event('input', { bubbles: true }));
       }
       const draftAfterEdit = formScreen?.querySelector('[data-intent-draft-output]')?.textContent || '';
+      const draftSummaryAfterEdit = formScreen?.querySelector('[data-intent-draft-summary]')?.textContent || '';
+      const draftMetaAfterEdit = formScreen?.querySelector('[data-intent-draft-meta]')?.textContent || '';
+      const draftPayloadAfterEdit = formScreen?.querySelector('[data-intent-draft-payload]')?.textContent || '';
+      let parsedDraftAfterEdit = {};
+      try {
+        parsedDraftAfterEdit = draftAfterEdit ? JSON.parse(draftAfterEdit) : {};
+      } catch (error) {
+        parsedDraftAfterEdit = { parse_error: String(error && error.message ? error.message : error) };
+      }
 
       previewActions.forEach((action) => {
         if (action.action_key === expected.actionKey) {
@@ -286,6 +296,25 @@ async function runSmoke(config) {
       const blankRequiredDispatch = typeof window.noCodeRuntimeDispatchAction === 'function'
         ? window.noCodeRuntimeDispatchAction(expected.actionKey, blankRequiredPayload)
         : { ok: false, executed: false, error: 'missing noCodeRuntimeDispatchAction' };
+      try {
+        Object.defineProperty(navigator, 'clipboard', {
+          configurable: true,
+          value: {
+            writeText: async (text) => {
+              window.__noCodeRuntimeCopiedDraftText = text;
+            },
+          },
+        });
+      } catch (error) {
+        window.__noCodeRuntimeClipboardStubError = String(error && error.message ? error.message : error);
+      }
+      const draftCopyButton = formScreen?.querySelector('[data-intent-draft-copy]');
+      if (draftCopyButton) {
+        draftCopyButton.click();
+        await new Promise((resolve) => setTimeout(resolve, 0));
+      }
+      const draftCopyStatusAfterClick = formScreen?.querySelector('[data-intent-draft-copy-status]')?.textContent || '';
+      const copiedDraftText = window.__noCodeRuntimeCopiedDraftText || '';
 
       return {
         title: document.title,
@@ -316,9 +345,28 @@ async function runSmoke(config) {
         }).length,
         idleFeedbackCount: Array.from(document.querySelectorAll('.no-code-action-feedback')).filter((element) => element.getAttribute('data-state') === 'idle').length,
         intentDraftCount: document.querySelectorAll('.no-code-intent-draft').length,
+        intentDraftStateBadgeCount: document.querySelectorAll('[data-intent-draft-state-badge]').length,
+        intentDraftStateBadgeStates: Array.from(document.querySelectorAll('[data-intent-draft-state-badge]')).map((element) => element.getAttribute('data-state') || ''),
+        intentDraftStateBadgeText: Array.from(document.querySelectorAll('[data-intent-draft-state-badge]')).map((element) => element.textContent?.trim() || ''),
+        intentDraftMetaCount: document.querySelectorAll('[data-intent-draft-meta]').length,
+        intentDraftFieldsCount: document.querySelectorAll('[data-intent-draft-fields]').length,
+        intentDraftPayloadCount: document.querySelectorAll('[data-intent-draft-payload]').length,
+        intentDraftCopyButtonCount: document.querySelectorAll('[data-intent-draft-copy]').length,
+        intentDraftCopyStatusCount: document.querySelectorAll('[data-intent-draft-copy-status]').length,
+        intentDraftJsonDetailsCount: document.querySelectorAll('[data-intent-draft-json-details]').length,
+        intentDraftJsonSummaryText: Array.from(document.querySelectorAll('[data-intent-draft-json-details] summary')).map((element) => element.textContent?.trim() || ''),
         intentDraftStates: Array.from(document.querySelectorAll('.no-code-intent-draft')).map((element) => element.getAttribute('data-intent-draft-state') || ''),
         draftBeforeEdit,
         draftAfterEdit,
+        draftSummaryBeforeEdit,
+        draftSummaryAfterEdit,
+        draftMetaAfterEdit,
+        draftFieldsAfterEdit: formScreen?.querySelector('[data-intent-draft-fields]')?.textContent?.trim() || '',
+        draftPayloadAfterEdit,
+        draftCopyStatusAfterClick,
+        copiedDraftTextMatchesAfterEdit: copiedDraftText === draftAfterEdit,
+        draftAfterEditChecks: Array.isArray(parsedDraftAfterEdit.draft_checks) ? parsedDraftAfterEdit.draft_checks : [],
+        draftAfterEditPolicyChecks: Array.isArray(parsedDraftAfterEdit.policy_failed_checks) ? parsedDraftAfterEdit.policy_failed_checks : [],
         actionMetadata: {
           actionKey: updateAction.action_key || '',
           operationKey: updateAction.operation_key || '',
@@ -387,14 +435,59 @@ async function runSmoke(config) {
     if (metrics.intentDraftCount !== 3) {
       throw new Error(`intent draft panel count mismatch: ${metrics.intentDraftCount}`);
     }
-    if (!metrics.intentDraftStates.includes('disabled')) {
-      throw new Error(`disabled intent draft state was not found: ${metrics.intentDraftStates.join(', ')}`);
+    if (metrics.intentDraftStateBadgeCount !== 3 || !metrics.intentDraftStateBadgeStates.every((state) => state === 'blocked') || !metrics.intentDraftStateBadgeText.every((text) => text === 'Blocked')) {
+      throw new Error(`intent draft state badge mismatch: ${metrics.intentDraftStateBadgeStates.join(', ')} / ${metrics.intentDraftStateBadgeText.join(', ')}`);
+    }
+    if (metrics.intentDraftMetaCount !== 3) {
+      throw new Error(`intent draft meta count mismatch: ${metrics.intentDraftMetaCount}`);
+    }
+    if (metrics.intentDraftFieldsCount !== 3) {
+      throw new Error(`intent draft field summary count mismatch: ${metrics.intentDraftFieldsCount}`);
+    }
+    if (metrics.intentDraftPayloadCount !== 3) {
+      throw new Error(`intent draft payload summary count mismatch: ${metrics.intentDraftPayloadCount}`);
+    }
+    if (metrics.intentDraftCopyButtonCount !== 3 || metrics.intentDraftCopyStatusCount !== 3) {
+      throw new Error(`intent draft copy controls mismatch: ${metrics.intentDraftCopyButtonCount}/${metrics.intentDraftCopyStatusCount}`);
+    }
+    if (metrics.intentDraftJsonDetailsCount !== 3 || !metrics.intentDraftJsonSummaryText.every((text) => text === 'Draft JSON')) {
+      throw new Error(`intent draft JSON details mismatch: ${metrics.intentDraftJsonDetailsCount}/${metrics.intentDraftJsonSummaryText.join(', ')}`);
+    }
+    if (!metrics.intentDraftStates.includes('blocked')) {
+      throw new Error(`blocked intent draft state was not found: ${metrics.intentDraftStates.join(', ')}`);
     }
     if (!metrics.draftAfterEdit.includes(config.expected.requiredInputValue)) {
       throw new Error(`intent draft did not update after editing ${config.expected.requiredInputField}: ${metrics.draftAfterEdit}`);
     }
     if (metrics.draftBeforeEdit === metrics.draftAfterEdit) {
       throw new Error('intent draft did not change after editable form input changed.');
+    }
+    if (!metrics.draftAfterEditChecks.includes('action.disabled')) {
+      throw new Error(`intent draft did not explain disabled action: ${metrics.draftAfterEditChecks.join(', ')}`);
+    }
+    if (!metrics.draftAfterEditChecks.includes(`key.missing:${config.expected.keyField}`)) {
+      throw new Error(`intent draft did not explain missing key field: ${metrics.draftAfterEditChecks.join(', ')}`);
+    }
+    if (!metrics.draftSummaryAfterEdit.includes('Blocked draft:')) {
+      throw new Error(`intent draft summary did not describe blocked state: ${metrics.draftSummaryAfterEdit}`);
+    }
+    if (!metrics.draftSummaryAfterEdit.includes('action.disabled') || !metrics.draftSummaryAfterEdit.includes(`key.missing:${config.expected.keyField}`)) {
+      throw new Error(`intent draft summary did not include expected checks: ${metrics.draftSummaryAfterEdit}`);
+    }
+    if (!metrics.draftSummaryAfterEdit.includes('policy:') || !metrics.draftSummaryAfterEdit.includes('principal.missing')) {
+      throw new Error(`intent draft summary did not include expected policy checks: ${metrics.draftSummaryAfterEdit}`);
+    }
+    if (!metrics.draftMetaAfterEdit.includes(`Action: ${config.expected.actionKey}`) || !metrics.draftMetaAfterEdit.includes(`Operation: ${config.expected.operationKey}`) || !metrics.draftMetaAfterEdit.includes(`Type: ${config.expected.operationType}`)) {
+      throw new Error(`intent draft metadata did not include expected action boundary: ${metrics.draftMetaAfterEdit}`);
+    }
+    if (!metrics.draftFieldsAfterEdit.includes(`key=${config.expected.keyField}`) || !config.expected.inputFields.every((field) => metrics.draftFieldsAfterEdit.includes(field)) || !metrics.draftFieldsAfterEdit.includes('filter=(none)')) {
+      throw new Error(`intent draft field summary did not include expected field names: ${metrics.draftFieldsAfterEdit}`);
+    }
+    if (!metrics.draftPayloadAfterEdit.includes('Payload: 0 key fields') || !metrics.draftPayloadAfterEdit.includes(`${config.expected.inputFields.length} input fields`) || !metrics.draftPayloadAfterEdit.includes('0 filter fields')) {
+      throw new Error(`intent draft payload summary did not include expected payload counts: ${metrics.draftPayloadAfterEdit}`);
+    }
+    if (metrics.draftCopyStatusAfterClick !== 'Draft JSON copied.' || !metrics.copiedDraftTextMatchesAfterEdit) {
+      throw new Error(`intent draft copy did not copy the current draft JSON: ${metrics.draftCopyStatusAfterClick}`);
     }
     if (!metrics.bodyText.includes(config.expected.listScreenTitle) || !metrics.bodyText.includes(config.expected.formScreenTitle)) {
       throw new Error('generated human-readable screen labels were not found in body text.');

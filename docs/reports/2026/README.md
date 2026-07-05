@@ -11,6 +11,36 @@
 
 ## Index
 
+- `2026-0703-local-commit-stack-review-after-intent-draft-polish.md`
+  - runtime action intent draft polish 後の local commit stack review。`develop` は `origin/develop` より 10 commits ahead、push は未実行。commit group、最新 verification baseline、push / squash 前の選択肢を記録。Status: `FIRST_SLICE_DONE`。
+- `2026-0703-post-intent-draft-polish-no-code-product-goal-replan.md`
+  - runtime action intent draft polish closure 後の次判断。次の product implementation に入る前に local commit stack review を選択。Push は未実行。Status: `DONE`。
+- `2026-0703-runtime-action-intent-draft-polish-closure.md`
+  - runtime action intent draft polish lane の closure。local non-mutating draft、readiness/policy summary、metadata、field summary、payload count、copy、JSON disclosure を accepted capability として固定。Push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0703-post-runtime-action-intent-json-disclosure-no-code-product-goal-replan.md`
+  - runtime action intent JSON disclosure 後の次判断。readability lane が coherent boundary に達したため、追加実装ではなく runtime action intent draft polish closure を選択。Push は未実行。Status: `DONE`。
+- `2026-0703-runtime-action-intent-json-disclosure.md`
+  - generated no-code runtime preview の `Action Intent Draft` detailed JSON を `Draft JSON` disclosure に包み、summary row が揃った後の通常 scan を軽くする follow-up。Focused `NoCodeRuntimeTest`、sample28 runtime UI smoke、clean buildless sample01 stack 上の full Integration PHPUnit が通過。Push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0703-post-runtime-action-intent-field-summary-no-code-product-goal-replan.md`
+  - runtime action intent field summary 後の次判断。summary row が通常 scan に十分になったため、full JSON を常時展開せず `Draft JSON` disclosure にする slice を選択。Push は未実行。Status: `DONE`。
+- `2026-0703-runtime-action-intent-field-summary.md`
+  - generated no-code runtime preview の `Action Intent Draft` に key / input / filter field name の compact field row を追加し、JSON を開かなくても action field boundary を確認できるようにする follow-up。Focused `NoCodeRuntimeTest`、sample28 runtime UI smoke、clean buildless sample01 stack 上の full Integration PHPUnit が通過。Push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0703-post-runtime-action-intent-state-badge-no-code-product-goal-replan.md`
+  - `Action Intent Draft` の visible state badge 後の次判断。大きな real interaction work の前に、JSON を開かず field name を確認できる runtime action intent field summary を選択。Push は未実行。Status: `DONE`。
+- `2026-0703-runtime-action-intent-state-badge.md`
+  - generated no-code runtime preview の `Action Intent Draft` に visible state badge を追加し、ready / blocked / empty state を安定した UI marker として表示する follow-up。Focused `NoCodeRuntimeTest`、sample28 runtime UI smoke、clean buildless sample01 stack 上の full Integration PHPUnit が通過。Push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0703-runtime-action-intent-payload-summary.md`
+  - generated no-code runtime preview の `Action Intent Draft` に key / input / filter field count の compact payload row を追加し、JSON を開かなくても payload shape を確認できるようにする follow-up。Focused `NoCodeRuntimeTest`、sample28 runtime UI smoke、clean buildless sample01 stack 上の full Integration PHPUnit が通過。Push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0703-runtime-action-intent-metadata-summary.md`
+  - generated no-code runtime preview の `Action Intent Draft` に action key / operation key / operation type の compact metadata row を追加し、JSON を開かなくても draft の操作境界を確認できるようにする follow-up。Focused `NoCodeRuntimeTest`、sample28 runtime UI smoke、buildless sample01 stack 上の full Integration PHPUnit が通過。通常の `make test` は Docker registry metadata timeout のため直接 rerun できず。Push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0703-runtime-action-intent-draft-copy-affordance.md`
+  - generated no-code runtime preview の `Action Intent Draft` に `Copy draft JSON` control と live status を追加し、編集中の local draft JSON を tryout notes / debugging に持ち出しやすくする follow-up。Focused `NoCodeRuntimeTest`、`make sample28-no-code-runtime-ui-smoke`、full `make test` が通過。Push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0703-runtime-action-intent-policy-summary.md`
+  - generated no-code runtime preview の `Action Intent Draft` summary に `policy_failed_checks` を追加し、`policy: principal.missing` などの disabled policy reason を JSON parsing なしで確認できるようにする follow-up。Focused `NoCodeRuntimeTest`、`make sample28-no-code-runtime-ui-smoke`、full `make test` が通過。Push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0703-runtime-action-intent-draft-summary.md`
+  - generated no-code runtime preview の `Action Intent Draft` に短い summary line を追加し、JSON を読まなくても ready / blocked と checks の概要を確認できるようにする follow-up。Focused `NoCodeRuntimeTest`、`make sample28-no-code-runtime-ui-smoke`、full `make test` が通過。Push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0703-runtime-action-intent-draft-readiness-checks.md`
+  - generated no-code runtime preview の `Action Intent Draft` に `draft_checks` と `policy_failed_checks` を追加し、disabled action policy や required key/input field 不足など blocked reason を表示する follow-up。Focused `NoCodeRuntimeTest`、`make sample28-no-code-runtime-ui-smoke`、full `make test` が通過。Push は未実行。Status: `FIRST_SLICE_DONE`。
 - `2026-0702-runtime-action-intent-draft-first-slice.md`
   - generated no-code runtime preview に `Action Intent Draft` panel を追加。form field を編集すると browser-side の no-code action-intent draft JSON が更新される。server update は実行せず、disabled policy guard も緩めない。Focused `NoCodeRuntimeTest`、`make sample28-no-code-runtime-ui-smoke`、full `make test` が通過。Status: `FIRST_SLICE_DONE`。
 - `2026-0702-tryout-ux-polish-2.md`

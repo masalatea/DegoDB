@@ -425,9 +425,23 @@ function app_no_code_runtime_render_action_intent_draft_html(array $actions): st
 
     return implode("\n", [
         '<div class="no-code-intent-draft" data-intent-draft-state="idle">',
+        '<div class="no-code-intent-draft-heading">',
         '<strong>Action Intent Draft</strong>',
+        '<span class="no-code-intent-draft-state-badge" data-intent-draft-state-badge>Idle</span>',
+        '</div>',
         '<p>Editing this screen updates a local action-intent preview. It does not execute a server update.</p>',
+        '<p class="no-code-intent-draft-summary" data-intent-draft-summary>Draft summary will update when this screen is ready.</p>',
+        '<p class="no-code-intent-draft-meta" data-intent-draft-meta>Action metadata will update with the draft.</p>',
+        '<p class="no-code-intent-draft-fields" data-intent-draft-fields>Field summary will update with the draft.</p>',
+        '<p class="no-code-intent-draft-payload" data-intent-draft-payload>Payload summary will update with the draft.</p>',
+        '<div class="no-code-intent-draft-toolbar">',
+        '<button type="button" data-intent-draft-copy>Copy draft JSON</button>',
+        '<span class="no-code-intent-draft-copy-status" role="status" aria-live="polite" data-intent-draft-copy-status>Draft JSON copy will be available when this screen is ready.</span>',
+        '</div>',
+        '<details class="no-code-intent-draft-json" data-intent-draft-json-details>',
+        '<summary>Draft JSON</summary>',
         '<pre data-intent-draft-output>Change editable fields to preview the generated action intent draft.</pre>',
+        '</details>',
         '</div>',
     ]);
 }
@@ -708,8 +722,26 @@ function app_no_code_runtime_preview_css(): string
         '.no-code-action-feedback[data-state="success"] { color: #0f5132; }',
         '.no-code-action-feedback[data-state="error"] { color: #842029; }',
         '.no-code-intent-draft { border: 1px solid #d8dee8; border-radius: 6px; background: #f7f9fb; padding: 10px 12px; margin: -4px 0 14px; }',
-        '.no-code-intent-draft strong { display: block; font-size: 13px; color: #334e68; margin-bottom: 4px; }',
+        '.no-code-intent-draft-heading { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-bottom: 4px; }',
+        '.no-code-intent-draft strong { display: block; font-size: 13px; color: #334e68; }',
+        '.no-code-intent-draft-state-badge { border: 1px solid #c8d1dc; border-radius: 999px; padding: 2px 8px; color: #52606d; background: #f4f6f8; font-size: 11px; line-height: 1.4; }',
+        '.no-code-intent-draft-state-badge[data-state="ready"] { border-color: #badbcc; color: #0f5132; background: #f0f9f4; }',
+        '.no-code-intent-draft-state-badge[data-state="blocked"] { border-color: #f1b0b7; color: #842029; background: #fff5f5; }',
+        '.no-code-intent-draft-state-badge[data-state="empty"] { border-color: #c8d1dc; color: #52606d; background: #f4f6f8; }',
         '.no-code-intent-draft p { margin: 0 0 8px; color: #62748a; font-size: 12px; }',
+        '.no-code-intent-draft-summary { font-weight: 600; }',
+        '.no-code-intent-draft-meta { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }',
+        '.no-code-intent-draft-fields { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }',
+        '.no-code-intent-draft-payload { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }',
+        '.no-code-intent-draft[data-intent-draft-state="ready"] .no-code-intent-draft-summary { color: #0f5132; }',
+        '.no-code-intent-draft[data-intent-draft-state="blocked"] .no-code-intent-draft-summary { color: #842029; }',
+        '.no-code-intent-draft-toolbar { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin: 0 0 8px; }',
+        '.no-code-intent-draft-toolbar button { min-height: 30px; border: 1px solid #9fb3c8; border-radius: 6px; background: #ffffff; color: #102a43; padding: 0 10px; font: inherit; font-size: 12px; }',
+        '.no-code-intent-draft-toolbar button:focus-visible { outline: 3px solid #b6d4fe; outline-offset: 2px; }',
+        '.no-code-intent-draft-copy-status { color: #62748a; font-size: 12px; }',
+        '.no-code-intent-draft-json { margin: 0; }',
+        '.no-code-intent-draft-json summary { cursor: pointer; color: #334e68; font-size: 12px; font-weight: 600; margin-bottom: 6px; }',
+        '.no-code-intent-draft-json summary:focus-visible { outline: 3px solid #b6d4fe; outline-offset: 2px; }',
         '.no-code-intent-draft pre { margin: 0; max-height: 220px; overflow: auto; border: 1px solid #e4e8ef; border-radius: 4px; background: #ffffff; padding: 8px; color: #243b53; font: 12px/1.45 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; white-space: pre-wrap; overflow-wrap: anywhere; }',
         '.no-code-state-badge { align-self: flex-start; border: 1px solid #c8d1dc; border-radius: 999px; padding: 4px 9px; color: #486581; background: #f4f6f8; font-size: 12px; white-space: nowrap; }',
         '.no-code-state-badge[data-state="ready"], .no-code-state-badge[data-state="success"] { border-color: #badbcc; color: #0f5132; background: #f0f9f4; }',
@@ -913,16 +945,30 @@ function app_no_code_runtime_preview_js(): string
       operation_type: action.operation_type || '',
       availability: action.availability || (action.enabled ? 'enabled' : 'disabled'),
       executable: !!action.enabled,
+      draft_checks: [],
+      policy_failed_checks: Array.isArray(action.failed_checks) ? action.failed_checks : [],
       payload: {
         key: {},
         input: {},
         filter: {}
       }
     };
+    if (!action.enabled) {
+      draft.draft_checks.push('action.disabled');
+    }
     var fields = Array.isArray(action.fields) ? action.fields : [];
     fields.forEach(function (field) {
       var fieldKey = field && field.field_key ? field.field_key : '';
-      if (!fieldKey || !Object.prototype.hasOwnProperty.call(input, fieldKey)) {
+      if (!fieldKey) {
+        return;
+      }
+
+      var present = Object.prototype.hasOwnProperty.call(input, fieldKey);
+      if ((!present || isEmptyRequiredValue(input[fieldKey])) && field.required) {
+        draft.draft_checks.push((field.role || 'input') + '.missing:' + fieldKey);
+        return;
+      }
+      if (!present) {
         return;
       }
 
@@ -931,15 +977,49 @@ function app_no_code_runtime_preview_js(): string
       } else if (field.role === 'filter') {
         draft.payload.filter[fieldKey] = input[fieldKey];
       } else if (field.role === 'input') {
+        if (!field.client_write) {
+          draft.draft_checks.push('input.readonly:' + fieldKey);
+          return;
+        }
         draft.payload.input[fieldKey] = input[fieldKey];
       }
     });
+    draft.draft_checks = Array.from(new Set(draft.draft_checks));
 
     return draft;
   }
 
+  function actionFieldSummary(action) {
+    var fields = Array.isArray(action.fields) ? action.fields : [];
+    var buckets = {
+      key: [],
+      input: [],
+      filter: []
+    };
+    fields.forEach(function (field) {
+      var fieldKey = field && field.field_key ? field.field_key : '';
+      if (!fieldKey) {
+        return;
+      }
+      var role = field.role === 'key' || field.role === 'filter' ? field.role : 'input';
+      buckets[role].push(fieldKey);
+    });
+    function list(values) {
+      return values.length > 0 ? values.join(', ') : '(none)';
+    }
+    return 'Fields: key=' + list(buckets.key)
+      + ' | input=' + list(buckets.input)
+      + ' | filter=' + list(buckets.filter);
+  }
+
   function writeIntentDraft(screen) {
     var draftOutput = screen ? screen.querySelector('[data-intent-draft-output]') : null;
+    var draftSummary = screen ? screen.querySelector('[data-intent-draft-summary]') : null;
+    var draftMeta = screen ? screen.querySelector('[data-intent-draft-meta]') : null;
+    var draftFields = screen ? screen.querySelector('[data-intent-draft-fields]') : null;
+    var draftPayload = screen ? screen.querySelector('[data-intent-draft-payload]') : null;
+    var copyStatus = screen ? screen.querySelector('[data-intent-draft-copy-status]') : null;
+    var stateBadge = screen ? screen.querySelector('[data-intent-draft-state-badge]') : null;
     var draftRoot = screen ? screen.querySelector('.no-code-intent-draft') : null;
     if (!draftOutput || !draftRoot) {
       return;
@@ -948,13 +1028,100 @@ function app_no_code_runtime_preview_js(): string
     var action = firstScreenAction(screen);
     if (!action) {
       draftOutput.textContent = 'No action metadata is available for this screen.';
+      if (draftSummary) {
+        draftSummary.textContent = 'No action metadata is available for this screen.';
+      }
+      if (draftMeta) {
+        draftMeta.textContent = 'No action metadata is available for this screen.';
+      }
+      if (draftFields) {
+        draftFields.textContent = 'No action fields are available for this screen.';
+      }
+      if (draftPayload) {
+        draftPayload.textContent = 'No payload is available for this screen.';
+      }
+      if (copyStatus) {
+        copyStatus.textContent = 'No draft JSON is available to copy.';
+      }
+      if (stateBadge) {
+        stateBadge.textContent = 'Empty';
+        stateBadge.setAttribute('data-state', 'empty');
+      }
       draftRoot.setAttribute('data-intent-draft-state', 'empty');
       return;
     }
 
     var draft = buildActionIntentDraft(action, collectScreenInputFromScreen(screen));
+    var draftChecks = Array.isArray(draft.draft_checks) ? draft.draft_checks : [];
+    var policyChecks = Array.isArray(draft.policy_failed_checks) ? draft.policy_failed_checks : [];
+    var hasBlockingChecks = draftChecks.length > 0 || policyChecks.length > 0;
     draftOutput.textContent = JSON.stringify(draft, null, 2);
-    draftRoot.setAttribute('data-intent-draft-state', action.enabled ? 'ready' : 'disabled');
+    if (draftSummary) {
+      var summaryChecks = [];
+      if (draftChecks.length > 0) {
+        summaryChecks.push(draftChecks.join(', '));
+      }
+      if (policyChecks.length > 0) {
+        summaryChecks.push('policy: ' + policyChecks.join(', '));
+      }
+      draftSummary.textContent = !hasBlockingChecks
+        ? 'Ready draft: no blocking checks found.'
+        : 'Blocked draft: ' + summaryChecks.join('; ');
+    }
+    if (draftMeta) {
+      draftMeta.textContent = 'Action: ' + (draft.action_key || '(unknown)')
+        + ' | Operation: ' + (draft.operation_key || '(unknown)')
+        + ' | Type: ' + (draft.operation_type || '(unknown)');
+    }
+    if (draftFields) {
+      draftFields.textContent = actionFieldSummary(action);
+    }
+    if (draftPayload) {
+      var payload = draft.payload || {};
+      var keyCount = Object.keys(payload.key || {}).length;
+      var inputCount = Object.keys(payload.input || {}).length;
+      var filterCount = Object.keys(payload.filter || {}).length;
+      draftPayload.textContent = 'Payload: ' + keyCount + ' key fields'
+        + ' | ' + inputCount + ' input fields'
+        + ' | ' + filterCount + ' filter fields';
+    }
+    if (copyStatus) {
+      copyStatus.textContent = 'Draft JSON is ready to copy.';
+    }
+    var draftState = hasBlockingChecks ? 'blocked' : 'ready';
+    if (stateBadge) {
+      stateBadge.textContent = draftState.charAt(0).toUpperCase() + draftState.slice(1);
+      stateBadge.setAttribute('data-state', draftState);
+    }
+    draftRoot.setAttribute('data-intent-draft-state', draftState);
+  }
+
+  function copyIntentDraft(button) {
+    var draftRoot = button.closest('.no-code-intent-draft');
+    var draftOutput = draftRoot ? draftRoot.querySelector('[data-intent-draft-output]') : null;
+    var copyStatus = draftRoot ? draftRoot.querySelector('[data-intent-draft-copy-status]') : null;
+    var draftText = draftOutput ? draftOutput.textContent || '' : '';
+    if (!draftText) {
+      if (copyStatus) {
+        copyStatus.textContent = 'No draft JSON is available to copy.';
+      }
+      return;
+    }
+    if (!navigator.clipboard || typeof navigator.clipboard.writeText !== 'function') {
+      if (copyStatus) {
+        copyStatus.textContent = 'Clipboard is unavailable; select the JSON manually.';
+      }
+      return;
+    }
+    navigator.clipboard.writeText(draftText).then(function () {
+      if (copyStatus) {
+        copyStatus.textContent = 'Draft JSON copied.';
+      }
+    }).catch(function () {
+      if (copyStatus) {
+        copyStatus.textContent = 'Copy failed; select the JSON manually.';
+      }
+    });
   }
 
   function writeActionFeedback(button, result) {
@@ -1005,6 +1172,12 @@ function app_no_code_runtime_preview_js(): string
       if (screen) {
         writeIntentDraft(screen);
       }
+    });
+  });
+
+  document.querySelectorAll('[data-intent-draft-copy]').forEach(function (button) {
+    button.addEventListener('click', function () {
+      copyIntentDraft(button);
     });
   });
 

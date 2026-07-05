@@ -26,7 +26,7 @@ http://127.0.0.1:18291/runs/no-code/SAMPLE28/current/runtime-preview.html
 
 For the fuller first-time tryout guide, see [No-Code Tryout](../../../docs/no-code-tryout.md).
 
-In the generated runtime preview, editing form fields updates the local `Action Intent Draft` panel. This is a browser-side intent preview only; it does not execute a server update or bypass disabled policy checks.
+In the generated runtime preview, editing form fields updates the local `Action Intent Draft` panel. The state badge and summary line call out ready or blocked state, including policy reasons such as `principal.missing`; the metadata row shows the action key, operation key, and operation type; the field row shows key/input/filter field names; the payload row shows key/input/filter field counts; and the `Draft JSON` disclosure includes readiness checks for disabled action policy and missing required key/input fields. Use `Copy draft JSON` to keep the current local draft while trying the preview. This is a browser-side intent preview only; it does not execute a server update or bypass disabled policy checks.
 
 Run:
 
