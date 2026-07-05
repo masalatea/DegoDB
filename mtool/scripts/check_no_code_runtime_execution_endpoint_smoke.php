@@ -272,14 +272,24 @@ function endpoint_smoke(array &$client, string $label, string $previewPath, stri
 
     $payload = json_decode($response['body'], true);
     ensure(is_array($payload), $label . ' execution response was not JSON');
-    ensure($response['status'] === 422, $label . ' execution did not fail closed with 422');
-    ensure(($payload['ok'] ?? null) === false, $label . ' execution ok flag mismatch');
-    ensure(($payload['executed'] ?? null) === false, $label . ' execution executed flag mismatch');
-    ensure(($payload['error'] ?? '') === 'action is not enabled: update_no_code_ticket', $label . ' execution error mismatch');
+    ensure($response['status'] === 200, $label . ' execution did not return 200');
+    ensure(($payload['ok'] ?? null) === true, $label . ' execution ok flag mismatch');
+    ensure(($payload['executed'] ?? null) === true, $label . ' execution executed flag mismatch');
+    ensure(($payload['error'] ?? '') === '', $label . ' execution error mismatch');
     ensure(is_array($payload['request'] ?? null) && ($payload['request']['ok'] ?? null) === true, $label . ' request contract did not pass');
     ensure(($payload['request']['action_key'] ?? '') === 'update_no_code_ticket', $label . ' request action key mismatch');
     ensure(($payload['request']['binding']['project_key'] ?? '') === 'SAMPLE28', $label . ' request project binding mismatch');
     ensure(($payload['request']['binding']['artifact_key'] ?? '') === (string) $binding['artifact_key'], $label . ' request artifact binding mismatch');
+    ensure(($payload['intent']['operation_key'] ?? '') === 'update_no_code_ticket', $label . ' intent operation key mismatch');
+    ensure((string) ($payload['intent']['payload']['key']['id'] ?? '') === '1001', $label . ' intent key mismatch');
+    ensure(($payload['result']['sync_intent']['intent_version'] ?? '') === 'managed-operation-sync-intent-v0', $label . ' sync intent version mismatch');
+    ensure(($payload['result']['sync_intent']['origin'] ?? '') === 'public-runtime', $label . ' sync intent origin mismatch');
+    ensure(($payload['result']['sync_intent']['target'] ?? '') === 'server', $label . ' sync intent target mismatch');
+    ensure(($payload['result']['executor_result']['ok'] ?? null) === true, $label . ' executor result ok flag mismatch');
+    ensure(($payload['result']['executor_result']['item']['status'] ?? '') === 'pending', $label . ' outbox status mismatch');
+    ensure((string) ($payload['result']['executor_result']['item']['id'] ?? '') !== '', $label . ' outbox item id missing');
+    ensure((string) ($payload['result']['executor_result']['item']['dedupe_key'] ?? '') !== '', $label . ' outbox item dedupe key missing');
+    ensure(($payload['result']['executor_result']['item']['operation_key'] ?? '') === 'update_no_code_ticket', $label . ' outbox item operation key mismatch');
 
     return [
         'label' => $label,
@@ -290,6 +300,13 @@ function endpoint_smoke(array &$client, string $label, string $previewPath, stri
         'executed' => $payload['executed'],
         'error' => $payload['error'],
         'request_ok' => $payload['request']['ok'],
+        'dispatcher_ok' => $payload['result']['ok'] ?? null,
+        'dispatcher_executed' => $payload['result']['executed'] ?? null,
+        'sync_intent' => $payload['result']['sync_intent']['intent_version'] ?? '',
+        'outbox_status' => $payload['result']['executor_result']['item']['status'] ?? '',
+        'outbox_id' => $payload['result']['executor_result']['item']['id'] ?? '',
+        'outbox_dedupe_key' => $payload['result']['executor_result']['item']['dedupe_key'] ?? '',
+        'outbox_operation_key' => $payload['result']['executor_result']['item']['operation_key'] ?? '',
     ];
 }
 

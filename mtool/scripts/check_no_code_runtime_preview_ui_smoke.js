@@ -17,8 +17,10 @@ Options:
   --execution-binding=ignore|none|required
                                  expected execution binding state (default: ignore)
   --execution-url-contains=TEXT  required substring when execution binding is required
-  --submit-probe=none|enabled-fetch-stub
-                                 probe server submit payload with a stubbed fetch (default: none)
+  --submit-probe=none|enabled-fetch-stub|enabled-real-fetch
+                                 probe server submit payload with stubbed or real fetch (default: none)
+  --admin-user=USER              admin login user for enabled-real-fetch
+  --admin-password=PASS          admin login password for enabled-real-fetch
   --output-dir=PATH              artifact directory root (default: output/playwright/no-code-runtime-preview)
   --headed                       launch Chrome headed
   --headless                     launch Chrome headless
@@ -39,6 +41,8 @@ function parseArgs(argv) {
     executionBinding: 'ignore',
     executionUrlContains: '',
     submitProbe: 'none',
+    adminUser: process.env.ADMIN_AUTH_STUB_USER || 'admin-local',
+    adminPassword: process.env.ADMIN_AUTH_STUB_PASSWORD || 'change-this-admin-password',
     expected: expectedProfile('sample07'),
   };
 
@@ -77,10 +81,14 @@ function parseArgs(argv) {
     } else if (name === 'execution-url-contains') {
       config.executionUrlContains = value;
     } else if (name === 'submit-probe') {
-      if (!['none', 'enabled-fetch-stub'].includes(value)) {
+      if (!['none', 'enabled-fetch-stub', 'enabled-real-fetch'].includes(value)) {
         throw new Error(`Unknown submit probe: ${value}`);
       }
       config.submitProbe = value;
+    } else if (name === 'admin-user') {
+      config.adminUser = value;
+    } else if (name === 'admin-password') {
+      config.adminPassword = value;
     } else if (name === 'output-dir') {
       config.outputDir = path.resolve(value);
     } else {
@@ -249,6 +257,20 @@ async function requireVisible(locator, label) {
   }
 }
 
+async function loginAdmin(page, baseUrl, username, password) {
+  await page.goto(`${baseUrl}/login?redirect=%2Fdashboard`, { waitUntil: 'load' });
+  await page.fill('input[name="username"]', username);
+  await page.fill('input[name="password"]', password);
+  await Promise.all([
+    page.waitForNavigation({ waitUntil: 'load' }),
+    page.click('button[type="submit"], input[type="submit"]'),
+  ]);
+  const dashboardResponse = await page.goto(`${baseUrl}/dashboard`, { waitUntil: 'load' });
+  if (!dashboardResponse || dashboardResponse.status() !== 200) {
+    throw new Error('admin login did not reach dashboard.');
+  }
+}
+
 async function runSmoke(config) {
   if (config.url === '' && !fs.existsSync(config.htmlPath)) {
     throw new Error(`HTML preview was not found: ${config.htmlPath}`);
@@ -267,6 +289,13 @@ async function runSmoke(config) {
   try {
     const page = await browser.newPage({ viewport: { width: 1280, height: 900 } });
     const targetUrl = config.url !== '' ? config.url : `file://${config.htmlPath}`;
+    if (config.submitProbe === 'enabled-real-fetch') {
+      if (!targetUrl.startsWith('http://') && !targetUrl.startsWith('https://')) {
+        throw new Error('enabled-real-fetch requires an HTTP URL.');
+      }
+      const parsedUrl = new URL(targetUrl);
+      await loginAdmin(page, parsedUrl.origin, config.adminUser, config.adminPassword);
+    }
     await page.goto(targetUrl, { waitUntil: 'load' });
 
     await requireVisible(page.locator('.no-code-preview'), 'preview root');
@@ -359,7 +388,7 @@ async function runSmoke(config) {
       const runtimeExecuteStatusTextBeforeSubmit = Array.from(document.querySelectorAll('[data-runtime-execute-status]')).map((element) => element.textContent?.trim() || '');
       const intentDraftStatesBeforeSubmit = Array.from(document.querySelectorAll('.no-code-intent-draft')).map((element) => element.getAttribute('data-intent-draft-state') || '');
       let submitProbe = { skipped: true };
-      if (expected.submitProbe === 'enabled-fetch-stub') {
+      if (expected.submitProbe === 'enabled-fetch-stub' || expected.submitProbe === 'enabled-real-fetch') {
         const form = formScreen?.querySelector('form.no-code-form');
         const action = previewActions.find((candidate) => candidate.action_key === expected.actionKey) || {};
         action.enabled = true;
@@ -390,7 +419,12 @@ async function runSmoke(config) {
           method: '',
           credentials: '',
           entries: [],
+          responseStatus: 0,
+          responseOk: null,
+          responseSyncIntent: '',
+          responseOutboxStatus: '',
         };
+        const nativeFetch = window.fetch.bind(window);
         window.fetch = async (url, options = {}) => {
           const entries = [];
           if (options.body && typeof options.body.entries === 'function') {
@@ -398,13 +432,34 @@ async function runSmoke(config) {
               entries.push([key, String(value)]);
             }
           }
-          window.__noCodeRuntimeSubmitProbe = {
+          const probe = {
             fetchCalled: true,
             url: String(url),
             method: String(options.method || ''),
             credentials: String(options.credentials || ''),
             entries,
+            responseStatus: 0,
+            responseOk: null,
+            responseSyncIntent: '',
+            responseOutboxStatus: '',
+            responseOutboxId: '',
+            responseOutboxDedupeKey: '',
+            responseOutboxOperationKey: '',
           };
+          window.__noCodeRuntimeSubmitProbe = probe;
+          if (expected.submitProbe === 'enabled-real-fetch') {
+            const response = await nativeFetch(url, options);
+            probe.responseStatus = response.status;
+            const payload = await response.clone().json().catch(() => null);
+            probe.responseOk = payload && typeof payload.ok === 'boolean' ? payload.ok : null;
+            probe.responseSyncIntent = payload?.result?.sync_intent?.intent_version || '';
+            probe.responseOutboxStatus = payload?.result?.executor_result?.item?.status || '';
+            probe.responseOutboxId = payload?.result?.executor_result?.item?.id || '';
+            probe.responseOutboxDedupeKey = payload?.result?.executor_result?.item?.dedupe_key || '';
+            probe.responseOutboxOperationKey = payload?.result?.executor_result?.item?.operation_key || '';
+            window.__noCodeRuntimeSubmitProbe = probe;
+            return response;
+          }
           return {
             json: async () => ({
               ok: true,
@@ -422,8 +477,13 @@ async function runSmoke(config) {
         };
         if (executeButton) {
           executeButton.click();
-          await new Promise((resolve) => setTimeout(resolve, 0));
-          await new Promise((resolve) => setTimeout(resolve, 0));
+          for (let attempt = 0; attempt < 30; attempt += 1) {
+            await new Promise((resolve) => setTimeout(resolve, 100));
+            const state = executeButton.getAttribute('data-runtime-execute-state') || '';
+            if (state !== 'working') {
+              break;
+            }
+          }
         }
         const probeResult = window.__noCodeRuntimeSubmitProbe || {};
         submitProbe = {
@@ -438,6 +498,13 @@ async function runSmoke(config) {
           method: probeResult.method || '',
           credentials: probeResult.credentials || '',
           entries: Array.isArray(probeResult.entries) ? probeResult.entries : [],
+          responseStatus: probeResult.responseStatus || 0,
+          responseOk: probeResult.responseOk,
+          responseSyncIntent: probeResult.responseSyncIntent || '',
+          responseOutboxStatus: probeResult.responseOutboxStatus || '',
+          responseOutboxId: probeResult.responseOutboxId || '',
+          responseOutboxDedupeKey: probeResult.responseOutboxDedupeKey || '',
+          responseOutboxOperationKey: probeResult.responseOutboxOperationKey || '',
         };
       }
 
@@ -626,7 +693,7 @@ async function runSmoke(config) {
         throw new Error(`execution binding URL mismatch: ${metrics.executionBindingUrl} does not include ${config.executionUrlContains}`);
       }
     }
-    if (config.submitProbe === 'enabled-fetch-stub') {
+    if (config.submitProbe === 'enabled-fetch-stub' || config.submitProbe === 'enabled-real-fetch') {
       const probe = metrics.submitProbe || {};
       const entries = Object.fromEntries(Array.isArray(probe.entries) ? probe.entries : []);
       if (probe.skipped || probe.stateBeforeClick !== 'ready' || probe.disabledBeforeClick) {
@@ -649,6 +716,27 @@ async function runSmoke(config) {
       }
       if (probe.stateAfterClick !== 'success' || !probe.statusAfterClick.includes('Server execution accepted')) {
         throw new Error(`submit probe did not show accepted state: ${JSON.stringify(probe)}`);
+      }
+      if (config.submitProbe === 'enabled-real-fetch') {
+        if (probe.responseStatus !== 200 || probe.responseOk !== true) {
+          throw new Error(`real submit probe response mismatch: ${JSON.stringify(probe)}`);
+        }
+        if (probe.responseSyncIntent !== 'managed-operation-sync-intent-v0' || probe.responseOutboxStatus !== 'pending') {
+          throw new Error(`real submit probe sync result mismatch: ${JSON.stringify(probe)}`);
+        }
+        if (!probe.responseOutboxId || !probe.responseOutboxDedupeKey || probe.responseOutboxOperationKey !== config.expected.operationKey) {
+          throw new Error(`real submit probe outbox trace mismatch: ${JSON.stringify(probe)}`);
+        }
+        if (!probe.statusAfterClick.includes('Sync outbox status: pending') || !probe.feedbackAfterClick.includes('Sync outbox status: pending')) {
+          throw new Error(`real submit probe did not show pending sync status: ${JSON.stringify(probe)}`);
+        }
+        if (!probe.statusAfterClick.includes(`Sync outbox item: #${probe.responseOutboxId}`) || !probe.feedbackAfterClick.includes(`Operation: ${config.expected.operationKey}`)) {
+          throw new Error(`real submit probe did not show outbox trace: ${JSON.stringify(probe)}`);
+        }
+        const expectedOutboxPath = `/projects/${encodeURIComponent(config.expected.projectKey)}/sync-outbox/${encodeURIComponent(probe.responseOutboxDedupeKey)}`;
+        if (!probe.statusAfterClick.includes(expectedOutboxPath) || !probe.feedbackAfterClick.includes(expectedOutboxPath)) {
+          throw new Error(`real submit probe did not show outbox detail path: ${JSON.stringify(probe)}`);
+        }
       }
     }
     if (metrics.intentDraftJsonDetailsCount !== 3 || !metrics.intentDraftJsonSummaryText.every((text) => text === 'Draft JSON')) {

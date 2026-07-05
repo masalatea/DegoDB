@@ -1347,6 +1347,56 @@ function app_no_code_runtime_preview_js(): string
     feedback.setAttribute('data-state', 'error');
   }
 
+  function runtimeExecutionSyncStatus(payload) {
+    var status = payload
+      && payload.result
+      && payload.result.executor_result
+      && payload.result.executor_result.item
+      ? payload.result.executor_result.item.status
+      : '';
+    return typeof status === 'string' && status ? status : '';
+  }
+
+  function runtimeExecutionOutboxItem(payload) {
+    return payload
+      && payload.result
+      && payload.result.executor_result
+      && payload.result.executor_result.item
+      ? payload.result.executor_result.item
+      : null;
+  }
+
+  function runtimeExecutionOutboxDetailPath(item) {
+    if (!item || !item.dedupe_key) {
+      return '';
+    }
+    var projectKey = item.project_key || executionBinding.project_key || preview.project_key || '';
+    if (!projectKey) {
+      return '';
+    }
+    return '/projects/' + encodeURIComponent(projectKey) + '/sync-outbox/' + encodeURIComponent(item.dedupe_key);
+  }
+
+  function runtimeExecutionAcceptedMessage(payload) {
+    var message = 'Server execution accepted.';
+    var item = runtimeExecutionOutboxItem(payload);
+    var syncStatus = item && typeof item.status === 'string' ? item.status : runtimeExecutionSyncStatus(payload);
+    var detailPath = runtimeExecutionOutboxDetailPath(item);
+    if (syncStatus) {
+      message += ' Sync outbox status: ' + syncStatus + '.';
+    }
+    if (item && item.id) {
+      message += ' Sync outbox item: #' + item.id + '.';
+    }
+    if (item && item.operation_key) {
+      message += ' Operation: ' + item.operation_key + '.';
+    }
+    if (detailPath) {
+      message += ' Review sync outbox: ' + detailPath + '.';
+    }
+    return message;
+  }
+
   function submitRuntimeAction(button) {
     var screen = button.closest('.no-code-screen');
     var feedback = screen ? screen.querySelector('.no-code-action-feedback') : null;
@@ -1402,10 +1452,11 @@ function app_no_code_runtime_preview_js(): string
       });
     }).then(function (payload) {
       if (payload && payload.ok) {
+        var acceptedMessage = runtimeExecutionAcceptedMessage(payload);
         button.setAttribute('data-runtime-execute-state', 'success');
-        setRuntimeExecuteStatus(screen, 'success', 'Server execution accepted.');
+        setRuntimeExecuteStatus(screen, 'success', acceptedMessage);
         if (feedback) {
-          feedback.textContent = 'Server execution accepted: ' + (payload.intent && payload.intent.operation_key ? payload.intent.operation_key : 'operation');
+          feedback.textContent = acceptedMessage;
           feedback.setAttribute('data-state', 'success');
         }
         return;

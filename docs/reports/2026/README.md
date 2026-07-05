@@ -11,6 +11,36 @@
 
 ## Index
 
+- `2026-0704-runtime-submit-outbox-handoff-closure.md`
+  - server-backed runtime submit / sync outbox handoff lane を closure。runtime submit、pending outbox feedback、operator detail path、sample28 generated DBAccess processing smoke、operator Processing Handoff までを accepted capability として固定。Push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0704-operator-sync-outbox-detail-processing-handoff.md`
+  - operator sync outbox detail page に read-only の Processing Handoff section を追加。runtime submit から辿った pending item が existing processor 待ちであることを説明。Push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0704-post-runtime-submit-detail-path-no-code-product-goal-replan.md`
+  - runtime submit detail path 後の次判断。live UI result refresh / synchronous endpoint processing / runtime retry mutation の前に、operator sync outbox detail processing handoff を選択。Push は未実行。Status: `DONE`。
+- `2026-0704-runtime-submit-operator-outbox-detail-path-feedback.md`
+  - generated runtime submit success messaging に operator sync outbox detail path を表示。endpoint の `dedupe_key` を使って `/projects/{project_key}/sync-outbox/{dedupe_key}` を確認。Push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0704-post-runtime-submit-outbox-trace-no-code-product-goal-replan.md`
+  - runtime submit outbox trace 後の次判断。live UI result refresh / synchronous endpoint processing / retry mutation の前に、operator outbox detail path feedback を選択。Push は未実行。Status: `DONE`。
+- `2026-0704-runtime-submit-outbox-trace-feedback.md`
+  - generated runtime submit success messaging に accepted sync outbox item id と operation key を表示。sample28 real-submit browser / endpoint smoke で追跡情報を確認。Push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0704-post-outbox-processing-smoke-no-code-product-goal-replan.md`
+  - sample28 outbox processing smoke 後の次判断。live UI result refresh や synchronous endpoint processing の前に、runtime submit outbox trace feedback を選択。Push は未実行。Status: `DONE`。
+- `2026-0704-sample28-runtime-outbox-processing-smoke.md`
+  - sample28 runtime execution で pending になった outbox item を、既存 processor と generated server DBAccess handler で isolated SQLite row に処理する smoke を追加。`done` outcome と direct endpoint payload による row update を確認。Push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0704-post-runtime-submit-sync-status-feedback-no-code-product-goal-replan.md`
+  - runtime submit sync-status feedback 後の次判断。live UI result refresh や synchronous endpoint processing の前に、sample28 outbox processing smoke を選択。Push は未実行。Status: `DONE`。
+- `2026-0704-runtime-submit-sync-status-feedback.md`
+  - generated runtime submit success messaging に sync outbox status を表示。sample28 current / alias real-submit smoke で `Sync outbox status: pending` が runtime execute status と action feedback に出ることを確認。Push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0704-post-browser-real-submit-no-code-product-goal-replan.md`
+  - browser real-submit 後の次判断。outbox processing や direct business-row mutation の前に、最小の runtime submit result feedback を選択。Push は未実行。Status: `DONE`。
+- `2026-0704-sample28-authenticated-browser-real-submit-smoke.md`
+  - sample28 public runtime browser smoke を authenticated real-submit に拡張。Playwright が local stub admin でログインし、generated `Submit to server` control から current / alias real endpoint へ POST し、200 と pending sync intent response を確認。Push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0704-post-sample28-endpoint-success-no-code-product-goal-replan.md`
+  - sample28 endpoint success 後の次判断。UI result refresh、direct business-row mutation、outbox processing の前に authenticated browser real-submit smoke を選択。Push は未実行。Status: `DONE`。
+- `2026-0704-sample28-runtime-execution-success-smoke.md`
+  - sample28 current / alias public runtime execution endpoints now accept authenticated tryout POSTs, produce `managed-operation-sync-intent-v0`, and enqueue pending outbox items. `public-runtime` is accepted as a managed-operation sync origin. Push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0704-post-route-principal-policy-overlay-no-code-product-goal-replan.md`
+  - route-level principal policy overlay 後の次判断。UI result refresh や direct business-row mutation の前に、sample28 successful endpoint tryout を選択。Push は未実行。Status: `DONE`。
 - `2026-0704-runtime-execution-route-principal-policy-overlay-wiring.md`
   - authenticated no-code runtime execution route が current principal で action policy を再評価し、approved stored runtime definition へ overlay してから dispatch するように接続。sample28 direct endpoint smoke は現行 stub admin principal が editor / write-scope policy を満たさないため 422 fail-closed のまま通過。Push は未実行。Status: `FIRST_SLICE_DONE`。
 - `2026-0704-post-principal-policy-overlay-contract-no-code-product-goal-replan.md`

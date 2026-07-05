@@ -251,6 +251,9 @@ final class OpenApiSourceOutputContractTest extends TestCase
         self::assertStringContainsString('No retry audit event has been recorded for this sync outbox item yet.', $syncOutboxDetailPage);
         self::assertStringContainsString("'target_key' => \$dedupeKey", $syncOutboxDetailPage);
         self::assertStringContainsString('existing processor can claim this item', $syncOutboxDetailPage);
+        self::assertStringContainsString('Processing Handoff', $syncOutboxDetailPage);
+        self::assertStringContainsString('not performed by this page', $syncOutboxDetailPage);
+        self::assertStringContainsString('This sync outbox item is queued for the existing processor.', $syncOutboxDetailPage);
         self::assertStringContainsString('public raw route や public alias key route はまだ持ちません', $newPage);
         self::assertStringContainsString('public raw route や public alias key route は持ちません', $detailPage);
         self::assertStringContainsString('Publish Candidates', $detailPage);

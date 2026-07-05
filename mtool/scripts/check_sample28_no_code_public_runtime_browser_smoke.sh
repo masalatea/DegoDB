@@ -137,7 +137,7 @@ node mtool/scripts/check_no_code_runtime_preview_ui_smoke.js \
   "--url=${BASE_URL}${current_path}" \
   --execution-binding=required \
   --execution-url-contains=/current/execute.json \
-  --submit-probe=enabled-fetch-stub \
+  --submit-probe=enabled-real-fetch \
   --output-dir=output/playwright/no-code-public-runtime
 
 node mtool/scripts/check_no_code_runtime_preview_ui_smoke.js \
@@ -145,13 +145,16 @@ node mtool/scripts/check_no_code_runtime_preview_ui_smoke.js \
   "--url=${BASE_URL}${alias_path}" \
   --execution-binding=required \
   "--execution-url-contains=/alias/${ALIAS_KEY}/execute.json" \
-  --submit-probe=enabled-fetch-stub \
+  --submit-probe=enabled-real-fetch \
   --output-dir=output/playwright/no-code-public-runtime
 
 php mtool/scripts/check_no_code_runtime_execution_endpoint_smoke.php \
   "--base-url=${BASE_URL}" \
   "--current-path=${current_path}" \
   "--alias-path=${alias_path}" \
+  --pretty
+
+"${compose_cmd[@]}" exec -T web-admin php /var/www/mtool/scripts/check_sample28_no_code_runtime_outbox_process_smoke.php \
   --pretty
 
 printf '%s\n' "$public_json"

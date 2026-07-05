@@ -113,6 +113,7 @@ function app_render_project_sync_outbox_detail_page(array $app, array $request):
     }
 
     $retryEligibility = app_no_code_operator_sync_retry_eligibility($item);
+    $processingHandoff = app_project_sync_outbox_processing_handoff($item);
     $errors = [];
     if (app_request_method_is($request, 'POST')) {
         if (!app_verify_csrf_token(app_post_param('_csrf'))) {
@@ -226,6 +227,19 @@ function app_render_project_sync_outbox_detail_page(array $app, array $request):
     <h1>Sync Outbox Detail</h1>
     <p class="muted">This page can requeue eligible failed items to <code>pending</code>. Inline processing, background scheduling, transport, and conflict resolution are intentionally out of scope for this slice.</p>
 
+    <section class="notice">
+        <h2>Processing Handoff</h2>
+        <p><?php echo app_h($processingHandoff['label']); ?></p>
+        <ul>
+            <li>state: <code><?php echo app_h($processingHandoff['state']); ?></code></li>
+            <li>next step: <?php echo app_h($processingHandoff['next_step']); ?></li>
+            <li>inline processing: <code>not performed by this page</code></li>
+        </ul>
+        <?php if ($processingHandoff['reasons'] !== []): ?>
+            <p class="muted">context: <code><?php echo app_h(implode(' ', $processingHandoff['reasons'])); ?></code></p>
+        <?php endif; ?>
+    </section>
+
     <?php if ($retried): ?>
         <section class="notice">
             <h2>Retry Queued</h2>
@@ -330,6 +344,72 @@ function app_render_project_sync_outbox_detail_page(array $app, array $request):
 </body>
 </html>
     <?php
+}
+
+/**
+ * @param array<string,mixed> $item
+ * @return array{state:string,label:string,next_step:string,reasons:list<string>}
+ */
+function app_project_sync_outbox_processing_handoff(array $item): array
+{
+    $status = strtolower(trim((string) ($item['status'] ?? '')));
+    $origin = trim((string) ($item['origin'] ?? ''));
+    $target = trim((string) ($item['target'] ?? ''));
+    $operationKey = trim((string) ($item['operation_key'] ?? ''));
+    $reasons = [];
+
+    if ($origin !== '') {
+        $reasons[] = 'origin=' . $origin . '.';
+    }
+    if ($target !== '') {
+        $reasons[] = 'target=' . $target . '.';
+    }
+    if ($operationKey !== '') {
+        $reasons[] = 'operation=' . $operationKey . '.';
+    }
+
+    if ($status === 'pending') {
+        return [
+            'state' => 'queued',
+            'label' => 'This sync outbox item is queued for the existing processor.',
+            'next_step' => 'The existing processor can claim this item when it scans pending sync outbox work.',
+            'reasons' => $reasons,
+        ];
+    }
+
+    if ($status === 'running') {
+        return [
+            'state' => 'processing',
+            'label' => 'This sync outbox item has been claimed for processing.',
+            'next_step' => 'Refresh this page after the processor records a done or failed result.',
+            'reasons' => $reasons,
+        ];
+    }
+
+    if ($status === 'done') {
+        return [
+            'state' => 'complete',
+            'label' => 'This sync outbox item has completed processing.',
+            'next_step' => 'Inspect the intent payload and downstream data if a business-row verification is needed.',
+            'reasons' => $reasons,
+        ];
+    }
+
+    if ($status === 'failed') {
+        return [
+            'state' => 'needs_review',
+            'label' => 'This sync outbox item failed and needs operator review.',
+            'next_step' => 'Use retry eligibility below to decide whether it can be requeued.',
+            'reasons' => $reasons,
+        ];
+    }
+
+    return [
+        'state' => 'unknown',
+        'label' => 'This sync outbox item has an unrecognized processing state.',
+        'next_step' => 'Review the stored status and intent payload before taking action.',
+        'reasons' => $reasons,
+    ];
 }
 
 /**
