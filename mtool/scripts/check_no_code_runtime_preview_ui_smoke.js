@@ -362,6 +362,9 @@ async function runSmoke(config) {
           value: {
             writeText: async (text) => {
               window.__noCodeRuntimeCopiedDraftText = text;
+              if (String(text).includes('/sync-outbox/')) {
+                window.__noCodeRuntimeCopiedOutboxDetailPath = text;
+              }
             },
           },
         });
@@ -386,6 +389,8 @@ async function runSmoke(config) {
       const intentDraftStateBadgeTextBeforeSubmit = Array.from(document.querySelectorAll('[data-intent-draft-state-badge]')).map((element) => element.textContent?.trim() || '');
       const runtimeExecuteStatesBeforeSubmit = Array.from(document.querySelectorAll('[data-runtime-execute]')).map((element) => element.getAttribute('data-runtime-execute-state') || '');
       const runtimeExecuteStatusTextBeforeSubmit = Array.from(document.querySelectorAll('[data-runtime-execute-status]')).map((element) => element.textContent?.trim() || '');
+      const runtimeResultRefreshStatesBeforeSubmit = Array.from(document.querySelectorAll('[data-runtime-result-refresh]')).map((element) => element.getAttribute('data-runtime-result-refresh-state') || '');
+      const runtimeResultRefreshStatusTextBeforeSubmit = Array.from(document.querySelectorAll('[data-runtime-result-refresh-status]')).map((element) => element.textContent?.trim() || '');
       const intentDraftStatesBeforeSubmit = Array.from(document.querySelectorAll('.no-code-intent-draft')).map((element) => element.getAttribute('data-intent-draft-state') || '');
       let submitProbe = { skipped: true };
       if (expected.submitProbe === 'enabled-fetch-stub' || expected.submitProbe === 'enabled-real-fetch') {
@@ -485,6 +490,12 @@ async function runSmoke(config) {
             }
           }
         }
+        const outboxCopyButton = formScreen?.querySelector('[data-runtime-outbox-detail-copy]');
+        const resultRefreshButton = formScreen?.querySelector('[data-runtime-result-refresh]');
+        if (outboxCopyButton && !outboxCopyButton.disabled) {
+          outboxCopyButton.click();
+          await new Promise((resolve) => setTimeout(resolve, 0));
+        }
         const probeResult = window.__noCodeRuntimeSubmitProbe || {};
         submitProbe = {
           skipped: false,
@@ -493,6 +504,18 @@ async function runSmoke(config) {
           stateAfterClick: executeButton?.getAttribute('data-runtime-execute-state') || '',
           statusAfterClick: formScreen?.querySelector('[data-runtime-execute-status]')?.textContent?.trim() || '',
           feedbackAfterClick: formScreen?.querySelector('.no-code-action-feedback')?.textContent?.trim() || '',
+          statusOutboxDetailPath: formScreen?.querySelector('[data-runtime-execute-status]')?.getAttribute('data-runtime-outbox-detail-path') || '',
+          feedbackOutboxDetailPath: formScreen?.querySelector('.no-code-action-feedback')?.getAttribute('data-runtime-outbox-detail-path') || '',
+          resultRefreshDisabledAfterClick: !!resultRefreshButton?.disabled,
+          resultRefreshStateAfterClick: resultRefreshButton?.getAttribute('data-runtime-result-refresh-state') || '',
+          resultRefreshStatusAfterClick: formScreen?.querySelector('[data-runtime-result-refresh-status]')?.textContent?.trim() || '',
+          outboxCopyDisabledAfterClick: !!outboxCopyButton?.disabled,
+          outboxCopyPathAfterClick: outboxCopyButton?.getAttribute('data-runtime-outbox-detail-path') || '',
+          outboxDetailLinkHiddenAfterClick: !!formScreen?.querySelector('[data-runtime-outbox-detail-link]')?.hidden,
+          outboxDetailLinkHrefAfterClick: formScreen?.querySelector('[data-runtime-outbox-detail-link]')?.getAttribute('href') || '',
+          outboxDetailLinkPathAfterClick: formScreen?.querySelector('[data-runtime-outbox-detail-link]')?.getAttribute('data-runtime-outbox-detail-path') || '',
+          outboxCopyStatusAfterClick: formScreen?.querySelector('[data-runtime-outbox-detail-copy-status]')?.textContent?.trim() || '',
+          copiedOutboxDetailPath: window.__noCodeRuntimeCopiedOutboxDetailPath || '',
           fetchCalled: !!probeResult.fetchCalled,
           url: probeResult.url || '',
           method: probeResult.method || '',
@@ -559,6 +582,13 @@ async function runSmoke(config) {
         intentDraftCopyStatusCount: document.querySelectorAll('[data-intent-draft-copy-status]').length,
         runtimeExecuteButtonCount: document.querySelectorAll('[data-runtime-execute]').length,
         runtimeExecuteStatusCount: document.querySelectorAll('[data-runtime-execute-status]').length,
+        runtimeResultRefreshButtonCount: document.querySelectorAll('[data-runtime-result-refresh]').length,
+        runtimeResultRefreshStatusCount: document.querySelectorAll('[data-runtime-result-refresh-status]').length,
+        runtimeResultRefreshStates: runtimeResultRefreshStatesBeforeSubmit,
+        runtimeResultRefreshStatusText: runtimeResultRefreshStatusTextBeforeSubmit,
+        runtimeOutboxCopyButtonCount: document.querySelectorAll('[data-runtime-outbox-detail-copy]').length,
+        runtimeOutboxCopyStatusCount: document.querySelectorAll('[data-runtime-outbox-detail-copy-status]').length,
+        runtimeOutboxDetailLinkCount: document.querySelectorAll('[data-runtime-outbox-detail-link]').length,
         runtimeExecuteStates: runtimeExecuteStatesBeforeSubmit,
         runtimeExecuteStatusText: runtimeExecuteStatusTextBeforeSubmit,
         executionBindingUrl: executionBinding.execution_url || '',
@@ -676,6 +706,24 @@ async function runSmoke(config) {
     if (metrics.runtimeExecuteButtonCount !== 3 || metrics.runtimeExecuteStatusCount !== 3) {
       throw new Error(`runtime execute controls mismatch: ${metrics.runtimeExecuteButtonCount}/${metrics.runtimeExecuteStatusCount}`);
     }
+    if (metrics.runtimeResultRefreshButtonCount !== 3) {
+      throw new Error(`runtime result refresh button count mismatch: ${metrics.runtimeResultRefreshButtonCount}`);
+    }
+    if (metrics.runtimeResultRefreshStatusCount !== 3) {
+      throw new Error(`runtime result refresh status count mismatch: ${metrics.runtimeResultRefreshStatusCount}`);
+    }
+    if (!metrics.runtimeResultRefreshStates.every((state) => state === 'waiting')) {
+      throw new Error(`runtime result refresh initial state mismatch: ${metrics.runtimeResultRefreshStates.join(', ')}`);
+    }
+    if (!metrics.runtimeResultRefreshStatusText.every((text) => text.includes('Refresh preview is available after server submit.'))) {
+      throw new Error(`runtime result refresh initial status mismatch: ${metrics.runtimeResultRefreshStatusText.join(' | ')}`);
+    }
+    if (metrics.runtimeOutboxCopyButtonCount !== 3 || metrics.runtimeOutboxCopyStatusCount !== 3) {
+      throw new Error(`runtime outbox copy controls mismatch: ${metrics.runtimeOutboxCopyButtonCount}/${metrics.runtimeOutboxCopyStatusCount}`);
+    }
+    if (metrics.runtimeOutboxDetailLinkCount !== 3) {
+      throw new Error(`runtime outbox detail link count mismatch: ${metrics.runtimeOutboxDetailLinkCount}`);
+    }
     if (!metrics.runtimeExecuteStates.every((state) => ['unavailable', 'blocked', 'ready'].includes(state))) {
       throw new Error(`runtime execute state mismatch: ${metrics.runtimeExecuteStates.join(', ')}`);
     }
@@ -736,6 +784,27 @@ async function runSmoke(config) {
         const expectedOutboxPath = `/projects/${encodeURIComponent(config.expected.projectKey)}/sync-outbox/${encodeURIComponent(probe.responseOutboxDedupeKey)}`;
         if (!probe.statusAfterClick.includes(expectedOutboxPath) || !probe.feedbackAfterClick.includes(expectedOutboxPath)) {
           throw new Error(`real submit probe did not show outbox detail path: ${JSON.stringify(probe)}`);
+        }
+        if (probe.statusOutboxDetailPath !== expectedOutboxPath || probe.feedbackOutboxDetailPath !== expectedOutboxPath) {
+          throw new Error(`real submit probe did not expose outbox detail path attribute: ${JSON.stringify(probe)}`);
+        }
+        if (probe.resultRefreshDisabledAfterClick || probe.resultRefreshStateAfterClick !== 'ready') {
+          throw new Error(`real submit probe did not enable result refresh: ${JSON.stringify(probe)}`);
+        }
+        if (!probe.resultRefreshStatusAfterClick.includes('Process the sync outbox item, then use Refresh preview to reload this screen.')) {
+          throw new Error(`real submit probe did not show result refresh status: ${JSON.stringify(probe)}`);
+        }
+        if (probe.outboxCopyDisabledAfterClick || probe.outboxCopyPathAfterClick !== expectedOutboxPath || probe.copiedOutboxDetailPath !== expectedOutboxPath) {
+          throw new Error(`real submit probe did not copy outbox detail path: ${JSON.stringify(probe)}`);
+        }
+        if (probe.outboxDetailLinkHiddenAfterClick || probe.outboxDetailLinkHrefAfterClick !== expectedOutboxPath || probe.outboxDetailLinkPathAfterClick !== expectedOutboxPath) {
+          throw new Error(`real submit probe did not expose outbox detail link: ${JSON.stringify(probe)}`);
+        }
+        if (!probe.outboxCopyStatusAfterClick.includes('Outbox detail path copied.')) {
+          throw new Error(`real submit probe did not show outbox copy status: ${JSON.stringify(probe)}`);
+        }
+        if (!probe.statusAfterClick.includes('Next result check: process the sync outbox item, then use Refresh preview to reload this screen.') || !probe.feedbackAfterClick.includes('Next result check: process the sync outbox item, then use Refresh preview to reload this screen.')) {
+          throw new Error(`real submit probe did not show result follow-up guidance: ${JSON.stringify(probe)}`);
         }
       }
     }

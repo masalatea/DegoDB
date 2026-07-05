@@ -11,6 +11,50 @@
 
 ## Index
 
+- `2026-0705-local-commit-stack-review-after-manual-refresh.md`
+  - manual refresh 後の local commit stack review。`develop` は `origin/develop` より 48 commits ahead、worktree clean、push / history rewrite は未実行。review grouping と verification baseline を記録。Status: `FIRST_SLICE_DONE`。
+- `2026-0705-post-manual-refresh-closure-no-code-product-goal-replan.md`
+  - manual refresh closure 後の次判断。live polling / 別 sample / synchronous demo processing / retry mutation / push cleanup の前に、local commit stack review を選択。Push は未実行。Status: `DONE`。
+- `2026-0705-runtime-manual-result-refresh-closure.md`
+  - generated runtime の manual result refresh lane を closure。submit / sync outbox / operator detail path / copy-open / `Refresh preview` / process-then-refresh guidance を accepted capability として固定。Push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0705-post-result-refresh-guidance-no-code-product-goal-replan.md`
+  - result refresh guidance 後の次判断。live polling / 別 sample / synchronous demo processing / retry mutation の前に、manual result refresh closure を選択。Push は未実行。Status: `DONE`。
+- `2026-0705-runtime-result-refresh-guidance-wording-first-slice.md`
+  - generated runtime preview の `Refresh preview` status と submit success guidance を揃え、sync outbox item を処理してから `Refresh preview` で current screen を reload する二段階 handoff を明示。Push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0705-post-result-refresh-button-no-code-product-goal-replan.md`
+  - result refresh button 後の次判断。live polling / synchronous processing / retry mutation / 別 sample の前に、runtime result refresh guidance wording を選択。Push は未実行。Status: `DONE`。
+- `2026-0705-runtime-result-refresh-button-first-slice.md`
+  - generated runtime preview に `Refresh preview` control を追加。submit 成功後だけ有効化し、reload 前後で current screen form values を sessionStorage により保持する。Push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0705-post-outbox-detail-open-link-no-code-product-goal-replan.md`
+  - outbox detail open link 後の次判断。live polling / synchronous processing / retry mutation / 別 sample の前に、manual runtime result refresh button を選択。Push は未実行。Status: `DONE`。
+- `2026-0705-runtime-outbox-detail-open-link-affordance.md`
+  - generated runtime preview に `Open outbox detail` link を追加。submit 成功後に operator sync outbox detail path がある場合だけ表示し、その path を開ける。Push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0705-post-local-stack-review-no-code-product-goal-replan.md`
+  - local stack review 後の次判断。live polling / synchronous processing / retry mutation / 別 sample の前に、runtime outbox detail open link affordance を選択。Push は未実行。Status: `DONE`。
+- `2026-0704-local-commit-stack-review-after-runtime-submit-affordances.md`
+  - runtime submit affordance 後の local commit stack review。`develop` は `origin/develop` より 43 commits ahead、worktree clean、push / history rewrite は未実行。review grouping と verification baseline を記録。Status: `FIRST_SLICE_DONE`。
+- `2026-0704-post-outbox-path-copy-closure-no-code-product-goal-replan.md`
+  - outbox path copy closure 後の次判断。full link rendering / polling / synchronous processing / 別 sample の前に local commit stack review を選択。Push は未実行。Status: `DONE`。
+- `2026-0704-runtime-outbox-detail-path-copy-closure.md`
+  - runtime outbox detail path copy affordance lane を closure。submit は outbox-based のまま、成功後に operator sync outbox detail path を copy できる behavior を accepted capability として固定。Push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0704-post-runtime-outbox-path-copy-no-code-product-goal-replan.md`
+  - runtime outbox path copy 後の次判断。full link rendering / polling / synchronous processing の前に closure report を選択。Push は未実行。Status: `DONE`。
+- `2026-0704-runtime-outbox-detail-path-copy-affordance.md`
+  - generated runtime preview に `Copy outbox path` control を追加。submit 成功後に operator sync outbox detail path がある場合だけ有効になり、その path を copy できる。Push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0704-post-outbox-detail-path-groundwork-no-code-product-goal-replan.md`
+  - outbox detail path groundwork 後の次判断。full link rendering / polling / synchronous processing の前に、runtime outbox detail path copy affordance を選択。Push は未実行。Status: `DONE`。
+- `2026-0704-runtime-outbox-detail-path-affordance-groundwork.md`
+  - runtime submit success 後の status / feedback に `data-runtime-outbox-detail-path` を追加し、operator sync outbox detail path を structured DOM state として公開。Push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0704-post-result-follow-up-closure-no-code-product-goal-replan.md`
+  - result follow-up closure 後の次判断。full link rendering / polling / synchronous processing の前に、runtime outbox detail path affordance groundwork を選択。Push は未実行。Status: `DONE`。
+- `2026-0704-runtime-submit-result-follow-up-closure.md`
+  - runtime submit result follow-up guidance lane を closure。submit は outbox-based のまま、処理後に runtime preview を refresh して結果確認する manual result-check behavior を accepted capability として固定。Push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0704-post-runtime-submit-result-follow-up-no-code-product-goal-replan.md`
+  - runtime submit result follow-up 後の次判断。polling / link affordance polish / synchronous processing / retry mutation / 別 sample の前に closure report を選択。Push は未実行。Status: `DONE`。
+- `2026-0704-runtime-submit-result-follow-up-guidance.md`
+  - generated runtime submit success feedback に、pending/running outbox work の処理後に runtime preview を refresh して結果確認する follow-up guidance を追加。Push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0704-post-runtime-submit-outbox-handoff-closure-no-code-product-goal-replan.md`
+  - runtime submit / outbox handoff closure 後の次判断。polling / synchronous processing / retry mutation / 別 sample の前に、runtime submit result follow-up guidance を選択。Push は未実行。Status: `DONE`。
 - `2026-0704-runtime-submit-outbox-handoff-closure.md`
   - server-backed runtime submit / sync outbox handoff lane を closure。runtime submit、pending outbox feedback、operator detail path、sample28 generated DBAccess processing smoke、operator Processing Handoff までを accepted capability として固定。Push は未実行。Status: `FIRST_SLICE_DONE`。
 - `2026-0704-operator-sync-outbox-detail-processing-handoff.md`

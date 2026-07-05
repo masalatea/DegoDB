@@ -511,6 +511,11 @@ function app_no_code_runtime_render_action_intent_draft_html(array $actions): st
         '<span class="no-code-intent-draft-copy-status" role="status" aria-live="polite" data-intent-draft-copy-status>Draft JSON copy will be available when this screen is ready.</span>',
         '<button type="button" data-runtime-execute disabled data-runtime-execute-state="unavailable">Submit to server</button>',
         '<span class="no-code-runtime-execute-status" role="status" aria-live="polite" data-runtime-execute-status>Server execution is available from an authenticated current or alias preview.</span>',
+        '<button type="button" data-runtime-result-refresh disabled>Refresh preview</button>',
+        '<span class="no-code-runtime-result-refresh-status" role="status" aria-live="polite" data-runtime-result-refresh-status>Refresh preview is available after server submit.</span>',
+        '<button type="button" data-runtime-outbox-detail-copy disabled>Copy outbox path</button>',
+        '<a class="no-code-runtime-outbox-detail-link" data-runtime-outbox-detail-link hidden href="">Open outbox detail</a>',
+        '<span class="no-code-runtime-outbox-detail-copy-status" role="status" aria-live="polite" data-runtime-outbox-detail-copy-status>Outbox detail path will be available after server submit.</span>',
         '</div>',
         '<details class="no-code-intent-draft-json" data-intent-draft-json-details>',
         '<summary>Draft JSON</summary>',
@@ -818,12 +823,16 @@ function app_no_code_runtime_preview_css(): string
         '.no-code-intent-draft[data-intent-draft-state="blocked"] .no-code-intent-draft-summary { color: #842029; }',
         '.no-code-intent-draft-toolbar { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin: 0 0 8px; }',
         '.no-code-intent-draft-toolbar button { min-height: 30px; border: 1px solid #9fb3c8; border-radius: 6px; background: #ffffff; color: #102a43; padding: 0 10px; font: inherit; font-size: 12px; }',
+        '.no-code-intent-draft-toolbar a { min-height: 28px; display: inline-flex; align-items: center; border: 1px solid #9fb3c8; border-radius: 6px; background: #ffffff; color: #102a43; padding: 0 10px; font: inherit; font-size: 12px; text-decoration: none; }',
+        '.no-code-intent-draft-toolbar a[hidden] { display: none; }',
         '.no-code-intent-draft-toolbar button:disabled { border-color: #c8d1dc; background: #eef1f4; color: #7b8794; }',
-        '.no-code-intent-draft-toolbar button:focus-visible { outline: 3px solid #b6d4fe; outline-offset: 2px; }',
+        '.no-code-intent-draft-toolbar button:focus-visible, .no-code-intent-draft-toolbar a:focus-visible { outline: 3px solid #b6d4fe; outline-offset: 2px; }',
         '.no-code-intent-draft-copy-status { color: #62748a; font-size: 12px; }',
         '.no-code-runtime-execute-status { color: #62748a; font-size: 12px; }',
         '.no-code-runtime-execute-status[data-state="ready"], .no-code-runtime-execute-status[data-state="success"] { color: #0f5132; }',
         '.no-code-runtime-execute-status[data-state="blocked"], .no-code-runtime-execute-status[data-state="error"] { color: #842029; }',
+        '.no-code-runtime-result-refresh-status { color: #62748a; font-size: 12px; }',
+        '.no-code-runtime-outbox-detail-copy-status { color: #62748a; font-size: 12px; }',
         '.no-code-intent-draft-json { margin: 0; }',
         '.no-code-intent-draft-json summary { cursor: pointer; color: #334e68; font-size: 12px; font-weight: 600; margin-bottom: 6px; }',
         '.no-code-intent-draft-json summary:focus-visible { outline: 3px solid #b6d4fe; outline-offset: 2px; }',
@@ -1298,13 +1307,161 @@ function app_no_code_runtime_preview_js(): string
     });
   }
 
-  function setRuntimeExecuteStatus(screen, state, message) {
+  function writeRuntimeOutboxDetailCopy(screen, detailPath) {
+    var copyButton = screen ? screen.querySelector('[data-runtime-outbox-detail-copy]') : null;
+    var detailLink = screen ? screen.querySelector('[data-runtime-outbox-detail-link]') : null;
+    var copyStatus = screen ? screen.querySelector('[data-runtime-outbox-detail-copy-status]') : null;
+    if (copyButton) {
+      copyButton.disabled = !detailPath;
+      if (detailPath) {
+        copyButton.setAttribute('data-runtime-outbox-detail-path', detailPath);
+      } else {
+        copyButton.removeAttribute('data-runtime-outbox-detail-path');
+      }
+    }
+    if (detailLink) {
+      if (detailPath) {
+        detailLink.hidden = false;
+        detailLink.setAttribute('href', detailPath);
+        detailLink.setAttribute('data-runtime-outbox-detail-path', detailPath);
+      } else {
+        detailLink.hidden = true;
+        detailLink.setAttribute('href', '');
+        detailLink.removeAttribute('data-runtime-outbox-detail-path');
+      }
+    }
+    if (copyStatus) {
+      copyStatus.textContent = detailPath
+        ? 'Outbox detail path is ready to copy.'
+        : 'Outbox detail path will be available after server submit.';
+    }
+  }
+
+  function writeRuntimeResultRefresh(screen, enabled) {
+    var refreshButton = screen ? screen.querySelector('[data-runtime-result-refresh]') : null;
+    var refreshStatus = screen ? screen.querySelector('[data-runtime-result-refresh-status]') : null;
+    if (!refreshButton) {
+      return;
+    }
+    refreshButton.disabled = !enabled;
+    refreshButton.setAttribute('data-runtime-result-refresh-state', enabled ? 'ready' : 'waiting');
+    if (refreshStatus) {
+      refreshStatus.textContent = enabled
+        ? 'Process the sync outbox item, then use Refresh preview to reload this screen.'
+        : 'Refresh preview is available after server submit.';
+    }
+  }
+
+  function runtimeRefreshStorageKey(screen) {
+    var screenKey = screen ? screen.getAttribute('data-screen-key') || 'screen' : 'screen';
+    return 'no-code-runtime-refresh:' + window.location.pathname + ':' + screenKey;
+  }
+
+  function runtimeSessionStorage() {
+    try {
+      return window.sessionStorage || null;
+    } catch (_error) {
+      return null;
+    }
+  }
+
+  function saveRuntimeRefreshState(screen) {
+    var storage = runtimeSessionStorage();
+    if (!storage || !screen) {
+      return;
+    }
+    var values = {};
+    screen.querySelectorAll('input[name], textarea[name], select[name]').forEach(function (control) {
+      if (control.type === 'checkbox') {
+        values[control.name] = control.checked ? '1' : '0';
+        return;
+      }
+      values[control.name] = control.value;
+    });
+    try {
+      storage.setItem(runtimeRefreshStorageKey(screen), JSON.stringify(values));
+    } catch (_error) {
+      // Ignore storage failures; the refresh action should still work.
+    }
+  }
+
+  function restoreRuntimeRefreshState(screen) {
+    var storage = runtimeSessionStorage();
+    if (!storage || !screen) {
+      return;
+    }
+    var storageKey = runtimeRefreshStorageKey(screen);
+    var raw = storage.getItem(storageKey);
+    if (!raw) {
+      return;
+    }
+    storage.removeItem(storageKey);
+    var values;
+    try {
+      values = JSON.parse(raw);
+    } catch (_error) {
+      return;
+    }
+    if (!values || typeof values !== 'object') {
+      return;
+    }
+    screen.querySelectorAll('input[name], textarea[name], select[name]').forEach(function (control) {
+      if (!Object.prototype.hasOwnProperty.call(values, control.name)) {
+        return;
+      }
+      if (control.type === 'checkbox') {
+        control.checked = values[control.name] === '1';
+        return;
+      }
+      control.value = values[control.name];
+    });
+  }
+
+  function refreshRuntimePreview(button) {
+    var screen = button.closest('.no-code-screen');
+    saveRuntimeRefreshState(screen);
+    window.location.reload();
+  }
+
+  function copyRuntimeOutboxDetailPath(button) {
+    var draftRoot = button.closest('.no-code-intent-draft');
+    var copyStatus = draftRoot ? draftRoot.querySelector('[data-runtime-outbox-detail-copy-status]') : null;
+    var detailPath = button.getAttribute('data-runtime-outbox-detail-path') || '';
+    if (!detailPath) {
+      if (copyStatus) {
+        copyStatus.textContent = 'No outbox detail path is available to copy.';
+      }
+      return;
+    }
+    if (!navigator.clipboard || typeof navigator.clipboard.writeText !== 'function') {
+      if (copyStatus) {
+        copyStatus.textContent = 'Clipboard is unavailable; select the outbox path manually.';
+      }
+      return;
+    }
+    navigator.clipboard.writeText(detailPath).then(function () {
+      if (copyStatus) {
+        copyStatus.textContent = 'Outbox detail path copied.';
+      }
+    }).catch(function () {
+      if (copyStatus) {
+        copyStatus.textContent = 'Copy failed; select the outbox path manually.';
+      }
+    });
+  }
+
+  function setRuntimeExecuteStatus(screen, state, message, outboxDetailPath) {
     var status = screen ? screen.querySelector('[data-runtime-execute-status]') : null;
     if (!status) {
       return;
     }
     status.textContent = message;
     status.setAttribute('data-state', state);
+    if (outboxDetailPath) {
+      status.setAttribute('data-runtime-outbox-detail-path', outboxDetailPath);
+    } else {
+      status.removeAttribute('data-runtime-outbox-detail-path');
+    }
   }
 
   function writeRuntimeExecuteAvailability(screen, draft, hasBlockingChecks) {
@@ -1312,6 +1469,8 @@ function app_no_code_runtime_preview_js(): string
     if (!executeButton) {
       return;
     }
+    writeRuntimeOutboxDetailCopy(screen, '');
+    writeRuntimeResultRefresh(screen, false);
     if (!hasExecutionBinding()) {
       executeButton.disabled = true;
       executeButton.setAttribute('data-runtime-execute-state', 'unavailable');
@@ -1336,15 +1495,19 @@ function app_no_code_runtime_preview_js(): string
     if (!feedback) {
       return;
     }
+    writeRuntimeOutboxDetailCopy(screen, '');
+    writeRuntimeResultRefresh(screen, false);
 
     if (result && result.ok) {
       feedback.textContent = 'Action intent is ready: ' + (result.intent && result.intent.operation_key ? result.intent.operation_key : 'operation');
       feedback.setAttribute('data-state', 'success');
+      feedback.removeAttribute('data-runtime-outbox-detail-path');
       return;
     }
 
     feedback.textContent = result && result.message ? result.message : 'Action intent could not be prepared.';
     feedback.setAttribute('data-state', 'error');
+    feedback.removeAttribute('data-runtime-outbox-detail-path');
   }
 
   function runtimeExecutionSyncStatus(payload) {
@@ -1381,7 +1544,7 @@ function app_no_code_runtime_preview_js(): string
     var message = 'Server execution accepted.';
     var item = runtimeExecutionOutboxItem(payload);
     var syncStatus = item && typeof item.status === 'string' ? item.status : runtimeExecutionSyncStatus(payload);
-    var detailPath = runtimeExecutionOutboxDetailPath(item);
+    var detailPath = runtimeExecutionAcceptedDetailPath(payload);
     if (syncStatus) {
       message += ' Sync outbox status: ' + syncStatus + '.';
     }
@@ -1394,7 +1557,14 @@ function app_no_code_runtime_preview_js(): string
     if (detailPath) {
       message += ' Review sync outbox: ' + detailPath + '.';
     }
+    if (syncStatus === 'pending' || syncStatus === 'running') {
+      message += ' Next result check: process the sync outbox item, then use Refresh preview to reload this screen.';
+    }
     return message;
+  }
+
+  function runtimeExecutionAcceptedDetailPath(payload) {
+    return runtimeExecutionOutboxDetailPath(runtimeExecutionOutboxItem(payload));
   }
 
   function submitRuntimeAction(button) {
@@ -1430,9 +1600,12 @@ function app_no_code_runtime_preview_js(): string
     button.disabled = true;
     button.setAttribute('data-runtime-execute-state', 'working');
     setRuntimeExecuteStatus(screen, 'working', 'Submitting action to server...');
+    writeRuntimeOutboxDetailCopy(screen, '');
+    writeRuntimeResultRefresh(screen, false);
     if (feedback) {
       feedback.textContent = 'Submitting action to server...';
       feedback.setAttribute('data-state', 'working');
+      feedback.removeAttribute('data-runtime-outbox-detail-path');
     }
 
     fetch(executionBinding.execution_url, {
@@ -1453,12 +1626,20 @@ function app_no_code_runtime_preview_js(): string
     }).then(function (payload) {
       if (payload && payload.ok) {
         var acceptedMessage = runtimeExecutionAcceptedMessage(payload);
+        var acceptedDetailPath = runtimeExecutionAcceptedDetailPath(payload);
         button.setAttribute('data-runtime-execute-state', 'success');
-        setRuntimeExecuteStatus(screen, 'success', acceptedMessage);
+        setRuntimeExecuteStatus(screen, 'success', acceptedMessage, acceptedDetailPath);
         if (feedback) {
           feedback.textContent = acceptedMessage;
           feedback.setAttribute('data-state', 'success');
+          if (acceptedDetailPath) {
+            feedback.setAttribute('data-runtime-outbox-detail-path', acceptedDetailPath);
+          } else {
+            feedback.removeAttribute('data-runtime-outbox-detail-path');
+          }
         }
+        writeRuntimeOutboxDetailCopy(screen, acceptedDetailPath);
+        writeRuntimeResultRefresh(screen, true);
         return;
       }
 
@@ -1466,17 +1647,23 @@ function app_no_code_runtime_preview_js(): string
       button.setAttribute('data-runtime-execute-state', 'error');
       var message = payload && (payload.message || payload.error) ? (payload.message || payload.error) : 'Server execution failed.';
       setRuntimeExecuteStatus(screen, 'error', message);
+      writeRuntimeOutboxDetailCopy(screen, '');
+      writeRuntimeResultRefresh(screen, false);
       if (feedback) {
         feedback.textContent = message;
         feedback.setAttribute('data-state', 'error');
+        feedback.removeAttribute('data-runtime-outbox-detail-path');
       }
     }).catch(function () {
       button.disabled = false;
       button.setAttribute('data-runtime-execute-state', 'error');
       setRuntimeExecuteStatus(screen, 'error', 'Server execution request failed.');
+      writeRuntimeOutboxDetailCopy(screen, '');
+      writeRuntimeResultRefresh(screen, false);
       if (feedback) {
         feedback.textContent = 'Server execution request failed.';
         feedback.setAttribute('data-state', 'error');
+        feedback.removeAttribute('data-runtime-outbox-detail-path');
       }
     });
   }
@@ -1528,7 +1715,20 @@ function app_no_code_runtime_preview_js(): string
     });
   });
 
+  document.querySelectorAll('[data-runtime-outbox-detail-copy]').forEach(function (button) {
+    button.addEventListener('click', function () {
+      copyRuntimeOutboxDetailPath(button);
+    });
+  });
+
+  document.querySelectorAll('[data-runtime-result-refresh]').forEach(function (button) {
+    button.addEventListener('click', function () {
+      refreshRuntimePreview(button);
+    });
+  });
+
   document.querySelectorAll('.no-code-screen').forEach(function (screen) {
+    restoreRuntimeRefreshState(screen);
     writeIntentDraft(screen);
     screen.querySelectorAll('input[name], textarea[name], select[name]').forEach(function (control) {
       control.addEventListener('input', function () {
