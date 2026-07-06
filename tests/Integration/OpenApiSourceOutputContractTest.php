@@ -330,6 +330,15 @@ final class OpenApiSourceOutputContractTest extends TestCase
         self::assertStringContainsString('app_no_code_public_runtime_execution_response_for_candidate', $publicRuntimePage);
         self::assertStringContainsString('app_auth_principal()', $publicRuntimePage);
         self::assertStringContainsString('app_no_code_runtime_definition_with_action_policy_overlay', $publicRuntimePage);
+        self::assertStringContainsString('app_no_code_public_runtime_demo_processing_enabled()', $publicRuntimePage);
+        self::assertStringContainsString("getenv('MTOOL_NO_CODE_RUNTIME_SYNC_DEMO')", $publicRuntimePage);
+        self::assertStringContainsString("getenv('MTOOL_RUNTIME_SQLITE_PATH')", $publicRuntimePage);
+        self::assertStringContainsString('app_no_code_public_runtime_demo_processing_requested($post)', $publicRuntimePage);
+        self::assertStringContainsString("'runtime_demo_process'", $publicRuntimePage);
+        self::assertStringContainsString("'demo_processing_disabled'", $publicRuntimePage);
+        self::assertStringContainsString("'runtime_entity_failed'", $publicRuntimePage);
+        self::assertStringContainsString('app_no_code_public_runtime_demo_process_execution_outbox', $publicRuntimePage);
+        self::assertStringContainsString('app_managed_operation_sync_outbox_process_next', $publicRuntimePage);
         self::assertStringContainsString('app_no_code_public_runtime_artifact_cache_control()', $publicRuntimePage);
         self::assertStringContainsString('app_no_code_public_runtime_current_cache_control()', $publicRuntimePage);
         self::assertStringContainsString("'public, max-age=31536000, immutable'", $publicRuntimePage);

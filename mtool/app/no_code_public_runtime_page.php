@@ -6,10 +6,15 @@ require_once __DIR__ . '/domain_validation.php';
 require_once __DIR__ . '/error_page.php';
 require_once __DIR__ . '/auth.php';
 require_once __DIR__ . '/csrf.php';
+require_once __DIR__ . '/generated_catalog.php';
+require_once __DIR__ . '/managed_operation_repository_pdo.php';
+require_once __DIR__ . '/managed_operation_server_dbaccess_executor.php';
 require_once __DIR__ . '/managed_operation_sync_outbox_repository_pdo.php';
+require_once __DIR__ . '/managed_operation_sync_outbox_processor.php';
 require_once __DIR__ . '/no_code_managed_operation_bridge.php';
 require_once __DIR__ . '/no_code_publish_candidate_repository_pdo.php';
 require_once __DIR__ . '/no_code_runtime.php';
+require_once __DIR__ . '/project_db_access_bootstrap_service.php';
 require_once __DIR__ . '/project_output_service.php';
 require_once __DIR__ . '/response.php';
 
@@ -90,8 +95,31 @@ function app_no_code_public_runtime_execution_binding(string $projectKey, array 
     if ($revisionId !== '') {
         $binding['revision_id'] = $revisionId;
     }
+    if (app_no_code_public_runtime_demo_processing_enabled()) {
+        $binding['demo_processing'] = 'available';
+    }
 
     return $binding;
+}
+
+function app_no_code_public_runtime_demo_processing_enabled(): bool
+{
+    $enabled = strtolower(trim((string) getenv('MTOOL_NO_CODE_RUNTIME_SYNC_DEMO')));
+    if (!in_array($enabled, ['1', 'true', 'yes', 'on'], true)) {
+        return false;
+    }
+
+    $sqlitePath = trim((string) getenv('MTOOL_RUNTIME_SQLITE_PATH'));
+    return $sqlitePath !== '';
+}
+
+/**
+ * @param array<string,mixed> $post
+ */
+function app_no_code_public_runtime_demo_processing_requested(array $post): bool
+{
+    $value = strtolower(trim((string) ($post['runtime_demo_process'] ?? '')));
+    return in_array($value, ['1', 'true', 'yes', 'on'], true);
 }
 
 /**
@@ -180,6 +208,116 @@ function app_no_code_public_runtime_dispatcher(array $app): callable
 }
 
 /**
+ * @param array<string,mixed> $payload
+ * @return array{ok:bool,processed:bool,outcome:string,item:array<string,mixed>|null,handler_result:array<string,mixed>|null,error:string}
+ */
+function app_no_code_public_runtime_demo_process_execution_outbox(array $app, string $projectKey, array $payload): array
+{
+    if (!app_no_code_public_runtime_demo_processing_enabled()) {
+        return [
+            'ok' => false,
+            'processed' => false,
+            'outcome' => 'demo_processing_disabled',
+            'item' => null,
+            'handler_result' => null,
+            'error' => 'no-code runtime synchronous demo processing is disabled',
+        ];
+    }
+
+    $operationKey = (string) ($payload['result']['sync_intent']['operation_key'] ?? $payload['intent']['operation_key'] ?? '');
+    if ($operationKey === '') {
+        return [
+            'ok' => false,
+            'processed' => false,
+            'outcome' => 'operation_missing',
+            'item' => null,
+            'handler_result' => null,
+            'error' => 'no-code runtime synchronous demo processing requires an operation key',
+        ];
+    }
+
+    $snapshot = app_pdo_fetch_managed_operation_snapshot($app, $projectKey);
+    if (!$snapshot['ok']) {
+        return [
+            'ok' => false,
+            'processed' => false,
+            'outcome' => 'operation_snapshot_failed',
+            'item' => null,
+            'handler_result' => null,
+            'error' => $snapshot['error'],
+        ];
+    }
+
+    $operation = null;
+    foreach ($snapshot['items'] as $item) {
+        if ((string) ($item['operation_key'] ?? '') === $operationKey) {
+            $operation = $item;
+            break;
+        }
+    }
+    if (!is_array($operation)) {
+        return [
+            'ok' => false,
+            'processed' => false,
+            'outcome' => 'operation_not_found',
+            'item' => null,
+            'handler_result' => null,
+            'error' => 'managed operation was not found for synchronous demo processing: ' . $operationKey,
+        ];
+    }
+
+    $contractKey = (string) ($operation['contract_key'] ?? '');
+    if ($contractKey !== '') {
+        $runtimeEntity = app_project_db_access_bootstrap_materialize_runtime_entity($app, $projectKey, $contractKey);
+        if (!$runtimeEntity['ok'] || !is_array($runtimeEntity['entity'] ?? null)) {
+            return [
+                'ok' => false,
+                'processed' => false,
+                'outcome' => 'runtime_entity_failed',
+                'item' => null,
+                'handler_result' => null,
+                'error' => $runtimeEntity['error'],
+            ];
+        }
+
+        $entity = $runtimeEntity['entity'];
+        $dataPath = (string) ($entity['data_path'] ?? '');
+        $dbaccessPath = (string) ($entity['dbaccess_path'] ?? '');
+        if ($dataPath === '' || $dbaccessPath === '' || !is_file($dataPath) || !is_file($dbaccessPath)) {
+            return [
+                'ok' => false,
+                'processed' => false,
+                'outcome' => 'runtime_entity_failed',
+                'item' => null,
+                'handler_result' => null,
+                'error' => 'runtime DBAccess files were not materialized for synchronous demo processing',
+            ];
+        }
+
+        require_once $dataPath;
+        require_once $dbaccessPath;
+    }
+
+    $binding = app_managed_operation_server_dbaccess_binding_from_project_catalog($app, $projectKey, $operation);
+    if (!$binding['ok'] || !is_array($binding['binding'] ?? null)) {
+        return [
+            'ok' => false,
+            'processed' => false,
+            'outcome' => 'binding_failed',
+            'item' => null,
+            'handler_result' => null,
+            'error' => $binding['error'],
+        ];
+    }
+
+    return app_managed_operation_sync_outbox_process_next(
+        $app,
+        $projectKey,
+        app_managed_operation_server_dbaccess_outbox_handler($binding['binding']),
+    );
+}
+
+/**
  * @param array<string,mixed> $candidate
  * @param array<string,mixed> $post
  * @param array<string,mixed>|null $principal
@@ -224,7 +362,16 @@ function app_no_code_public_runtime_execution_response_for_candidate(
         $dispatcher,
     );
 
-    return app_no_code_runtime_execution_endpoint_response($execution);
+    $response = app_no_code_runtime_execution_endpoint_response($execution);
+    if (($response['payload']['ok'] ?? false) && app_no_code_public_runtime_demo_processing_requested($post)) {
+        $response['payload']['demo_processing'] = app_no_code_public_runtime_demo_process_execution_outbox(
+            $app,
+            $projectKey,
+            $response['payload'],
+        );
+    }
+
+    return $response;
 }
 
 /**

@@ -17,6 +17,13 @@ This is a Web preview flow. App-local package readiness is a separate lane and m
 
 This no-code path sits on top of DegoDB's database-first foundation. The preview is generated from canonical metadata and Source Output artifacts, then exposed through publish candidate approval. It is not a separate screen builder detached from the database model.
 
+Why the foundation matters / なぜ基盤が重要か:
+
+- The list/detail/form screens come from canonical table, Data Class, DB Access, and no-code metadata. / list / detail / form screen は canonical table、Data Class、DB Access、no-code metadata から生成されます。
+- Submit uses a managed-operation intent and sync outbox boundary instead of a hidden browser-only mutation model. / submit は hidden な browser-only mutation model ではなく、managed-operation intent と sync outbox boundary を使います。
+- Public preview URLs are tied to reviewed publish candidates, current revision selection, and optional aliases. / public preview URL は review 済み publish candidate、current revision selection、optional alias に紐づきます。
+- Demo-only synchronous processing can be enabled for tryout environments, but the default product path remains async outbox handoff. / tryout environment では demo-only synchronous processing を有効化できますが、default product path は async outbox handoff のままです。
+
 ## Start Docker / Docker を起動する
 
 From the repository root:
@@ -74,6 +81,16 @@ The stable alias preview URL is:
 http://127.0.0.1:18291/runs/no-code/SAMPLE28/alias/stable/runtime-preview.html
 ```
 
+Second-domain reference / 2 つ目の domain reference:
+
+`sample29-no-code-support-case-demo` is the current second-domain proof for the same runtime submit and outbox processing shape. Use it when you want to confirm that the no-code flow is not hard-coded to sample28 tickets.
+
+`sample29-no-code-support-case-demo` は、同じ runtime submit と outbox processing の形を確認するための 2 つ目の domain proof です。no-code flow が sample28 ticket 専用ではないことを確認したい時に使います。
+
+`sample31-no-code-inventory-request-demo` is the current third-domain generated runtime proof. It uses an inventory request domain with warehouse, item, quantity, status, and fulfillment note fields to confirm that the database-first no-code runtime repeats beyond ticket/support workflows. Its public runtime smoke also verifies current/alias submit, endpoint enqueue, and generated server DBAccess outbox processing against an isolated SQLite row.
+
+`sample31-no-code-inventory-request-demo` は、現在の 3 つ目の domain generated runtime proof です。warehouse、item、quantity、status、fulfillment note を持つ inventory request domain を使い、database-first no-code runtime が ticket / support workflow 以外にも反復できることを確認します。public runtime smoke では current / alias submit、endpoint enqueue、generated server DBAccess outbox processing による isolated SQLite row 更新も確認します。
+
 ## Expected Preview / 期待される preview
 
 The page title should be `No-Code Runtime Preview`.
@@ -86,9 +103,11 @@ The preview should show `SAMPLE28` with three generated screens:
 
 The list screen should include sample tickets such as `First no-code app ticket`, `Review generated customer fields`, and `Prepare approval handoff`.
 
-Some actions may be disabled in this preview when policy checks do not enable them. That is expected for the guarded preview path.
+Some actions may be disabled in artifact previews when policy checks do not enable them. That is expected for the guarded preview path. Authenticated current and alias previews can expose `Submit to server` when the action draft is ready.
 
-When you edit fields in the generated form, the `Action Intent Draft` panel updates locally. Required generated form fields are marked inline, and the required hint follows the local draft state so a filled value is shown as present and a blank required value is shown as missing. The panel shows the no-code action-intent shape that would be handed to the managed operation layer. The state badge and summary line call out whether the draft is ready or blocked, including policy reasons such as `principal.missing`; the metadata row shows the action key, operation key, and operation type; the field row shows key/input/filter field names; the payload row shows key/input/filter field counts; and the `Draft JSON` disclosure includes the full draft and policy check lists. Use `Copy draft JSON` if you want to keep the current draft in notes while trying the preview. It is only a preview: disabled actions stay disabled and no server update is executed from this static page.
+When you edit fields in the generated form, the `Action Intent Draft` panel updates locally. Required generated form fields are marked inline, and the required hint follows the local draft state so a filled value is shown as present and a blank required value is shown as missing. The panel shows the no-code action-intent shape that would be handed to the managed operation layer. The state badge and summary line call out whether the draft is ready or blocked, including policy reasons such as `principal.missing`; the metadata row shows the action key, operation key, and operation type; the field row shows key/input/filter field names; the payload row shows key/input/filter field counts; and the `Draft JSON` disclosure includes the full draft and policy check lists. Use `Copy draft JSON` if you want to keep the current draft in notes while trying the preview.
+
+After a server submit is accepted, the runtime shows the sync outbox status, the outbox detail path, copy/open affordances, and a Submit / Outbox tracking / Refresh flow indicator. In the default path, processing remains async: process the outbox item, then use `Refresh preview` to reload the public runtime page. Demo-only synchronous processing is an opt-in environment mode; do not expect it in the normal sample stack unless it was explicitly enabled.
 
 ## If You Get Lost / 迷った場合
 

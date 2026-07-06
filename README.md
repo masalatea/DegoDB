@@ -30,6 +30,10 @@ DegoDB's no-code layer is built on the database-first foundation. It does not re
 
 DegoDB の no-code layer は database-first の基盤の上に載ります。core tooling を置き換えるものではありません。まず DB schema を正本 metadata に取り込み、その上で generated artifacts、shared contract、managed operation、Source Output review、approval workflow が no-code preview と delivery の土台になります。
 
+This two-layer shape is intentional: the no-code preview is useful because it inherits the reviewed database metadata, generated Data Class / DB Access boundary, managed-operation intent shape, and publish candidate approval record. It is not a standalone visual builder with a hidden data model.
+
+この二層構造は意図的です。no-code preview は、review 済みの database metadata、生成された Data Class / DB Access 境界、managed-operation intent、publish candidate approval record を引き継ぐからこそ有用です。隠れた data model を持つ単独の画面ビルダーではありません。
+
 Foundation / 基盤:
 
 Database Schema -> Canonical Metadata -> Data Class / DB Access -> Source Output
@@ -37,6 +41,13 @@ Database Schema -> Canonical Metadata -> Data Class / DB Access -> Source Output
 No-code layer / no-code 層:
 
 Canonical Metadata -> Managed Operation -> No-Code Runtime -> Publish Candidate -> Public Preview
+
+Current no-code capability boundary / 現在の no-code 対応範囲:
+
+- Generated Web runtime previews can show list/detail/form screens from canonical metadata. / 生成 Web runtime preview は canonical metadata から list / detail / form screen を表示できます。
+- Public runtime delivery uses reviewed `NO-CODE-RUNTIME` Source Output artifacts, publish candidates, approval, current revision selection, and custom aliases. / public runtime delivery は review 済み `NO-CODE-RUNTIME` Source Output artifact、publish candidate、approval、current revision selection、custom alias を使います。
+- Runtime submit uses the managed-operation sync outbox as the production-oriented default. / runtime submit は production-oriented default として managed-operation sync outbox を使います。
+- Synchronous processing is demo-only and opt-in; it requires the runtime demo env gate and an explicit request flag. / synchronous processing は demo 専用の opt-in であり、runtime demo env gate と explicit request flag が必要です。
 
 Original concept note: users who only have JSON files, JSON API cache, or JSON config can use [JSON To DB Entrance](docs/json-to-db-entrance.md) as an AI-assisted preparation layer. This is documentation and design guidance, not a JSON auto-import feature.
 初期構想の補足: JSON ファイル、JSON API キャッシュ、JSON 設定しかまだ持っていない利用者は、AI 支援の準備レイヤーとして [JSON から DB 設計へ入る入口](docs/json-to-db-entrance.md) を使えます。これはドキュメントと設計指針であり、JSON 自動取り込み機能ではありません。

@@ -32,6 +32,7 @@ require_once dirname(__DIR__) . '/mtool/scripts/lib/sample27_app_local_persisten
 require_once dirname(__DIR__) . '/mtool/scripts/lib/sample28_no_code_data_app_mvp_check.php';
 require_once dirname(__DIR__) . '/mtool/scripts/lib/sample29_no_code_support_case_demo_check.php';
 require_once dirname(__DIR__) . '/mtool/scripts/lib/sample30_no_code_app_local_sync_demo_check.php';
+require_once dirname(__DIR__) . '/mtool/scripts/lib/sample31_no_code_inventory_request_demo_check.php';
 require_once dirname(__DIR__) . '/mtool/scripts/lib/user_db_contract.php';
 require_once dirname(__DIR__) . '/mtool/scripts/lib/user_db_contract_runtime.php';
 require_once dirname(__DIR__) . '/mtool/scripts/lib/sample9_testpattern_default_property_output_check.php';

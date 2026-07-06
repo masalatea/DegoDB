@@ -11,6 +11,30 @@
 
 ## Index
 
+- `2026-0705-local-commit-stack-review-after-third-domain-confidence.md`
+  - #188 third-domain confidence 後の local commit stack review。`develop` は `origin/develop` より 8 commits ahead、現 stack は product meaning ごとに読めるため squash / history rewrite は不要と判断。Push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0705-post-third-domain-confidence-no-code-product-goal-replan.md`
+  - #187 third-domain confidence closure 後の次判断。live polling / runtime retry mutation / visual builder / fourth domain sample の前に、local commit stack review を選択。Push は未実行。Status: `DONE`。
+- `2026-0705-third-domain-runtime-submit-processing-confidence-closure.md`
+  - #186 third-domain runtime submit / processing confidence closure。sample28 / sample29 / sample31 の no-code runtime submit、endpoint enqueue、generated server DBAccess processing proof を、現在の async runtime confidence boundary として整理。Push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0705-sample31-public-runtime-submit-processing-smoke.md`
+  - #185 sample31 public runtime submit / processing smoke。sample31 の current / alias public runtime submit、direct endpoint enqueue、generated server DBAccess outbox processing を inventory request domain で確認する smoke を追加。Push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0705-post-sample31-stack-review-no-code-product-goal-replan.md`
+  - #184 sample31 stack review 後の次判断。sample31 を artifact / browser-local proof から public runtime submit / processing confidence へ進めることを選択。Push は未実行。Status: `DONE`。
+- `2026-0705-pre-push-stack-review-after-sample31.md`
+  - #183 sample31 後の push 前 stack review。`develop` は `origin/develop` より 5 commits ahead、#179-#182 は自然な 5 件の review unit としてまとまっているため history rewrite / squash は不要と判断。Push は未実行。Status: `DONE`。
+- `2026-0705-sample31-no-code-inventory-request-first-slice.md`
+  - #182 next domain/sample expansion first slice。`sample31-no-code-inventory-request-demo` を追加し、inventory request domain で `NO-CODE-RUNTIME` artifact generation と generated runtime browser smoke を確認。Push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0705-database-first-no-code-product-narrative-docs.md`
+  - #181 database-first + no-code product narrative docs。README / no-code tryout / overview / use cases / docs index を更新し、no-code が database-first metadata、generated artifacts、managed operations、Source Output review、approval records の上に載る二層構造であることを恒久文書へ反映。Push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0705-synchronous-demo-processing-first-slice.md`
+  - #180 synchronous demo processing first slice。production default は async outbox のまま、`MTOOL_NO_CODE_RUNTIME_SYNC_DEMO` と `MTOOL_RUNTIME_SQLITE_PATH` が揃った時だけ runtime binding が demo processing を advertise し、explicit `runtime_demo_process=1` で既存 server DBAccess outbox processor による 1 件処理を試す。sample28/sample29 public runtime browser smoke と full `make test` が通過。Push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0705-runtime-flow-indicator-polish-first-slice.md`
+  - #179 no-code practical runtime flow polish first slice。generated runtime panel に Submit / Outbox tracking / Refresh の visible flow indicator を追加し、sample28/sample29 public runtime browser smoke で real submit 後の accepted flow を確認。Push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0705-no-code-next-phase-detailed-plan.md`
+  - no-code 次 phase の詳細計画。#179 practical runtime flow polish、#180 synchronous demo processing、#181 database-first + no-code product narrative docs、#182 next domain/sample expansion の goal、deliverables、out-of-scope、verification、見積もりを整理し、全項目完了済み。Status: `DONE`。
+- `2026-0705-next-no-code-direction-after-push.md`
+  - grouped no-code runtime submit / outbox / second-domain confidence stack push 後の次方向。主要候補を排他選択ではなく、practical runtime flow polish、synchronous demo processing、database-first + no-code product narrative docs、next domain/sample expansion の順に主線化。Status: `DONE`。
 - `2026-0705-pre-push-commit-stack-cleanup-result.md`
   - second-domain runtime confidence closure 後の push 前 commit stack 整理結果。backup branch `codex/backup-develop-pre-push-cleanup-20260705-517756b` を作成し、local unpushed functional stack を 55 commits から 6 grouped commits に整理した後、docs-only cleanup record を追加。docs-only record 前に backup branch との tree parity を確認。Push は未実行。Status: `DONE`。
 - `2026-0705-second-domain-runtime-submit-processing-confidence-closure.md`

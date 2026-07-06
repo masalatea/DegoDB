@@ -10,7 +10,7 @@ usage: php mtool/scripts/check_no_code_runtime_execution_endpoint_smoke.php [opt
 
 Options:
   --base-url=URL          Admin base URL (default: http://127.0.0.1:${ADMIN_HTTP_PORT:-18291})
-  --profile=PROFILE       Smoke payload profile: sample28 or sample29 (default: sample28)
+  --profile=PROFILE       Smoke payload profile: sample28, sample29, or sample31 (default: sample28)
   --current-path=PATH     Current runtime preview path
   --alias-path=PATH       Alias runtime preview path
   --admin-user=USER       Admin login user (default: ADMIN_AUTH_STUB_USER or admin-local)
@@ -68,7 +68,7 @@ function parse_args(array $argv): array
     if ($args['current_path'] === '' || $args['alias_path'] === '') {
         throw new InvalidArgumentException('--current-path and --alias-path are required');
     }
-    if (!in_array($args['profile'], ['sample28', 'sample29'], true)) {
+    if (!in_array($args['profile'], ['sample28', 'sample29', 'sample31'], true)) {
         throw new InvalidArgumentException('unsupported --profile: ' . $args['profile']);
     }
 
@@ -257,6 +257,20 @@ function smoke_profile(string $profile): array
                 'status' => 'open',
                 'severity' => 'medium',
                 'next_action' => 'Generated sample29 direct endpoint smoke payload',
+            ],
+        ],
+        'sample31' => [
+            'project_key' => 'SAMPLE31',
+            'action_key' => 'update_inventory_request',
+            'operation_key' => 'update_inventory_request',
+            'key_field' => 'id',
+            'key_value' => '3101',
+            'input' => [
+                'id' => '3101',
+                'item_sku' => 'SKU-BOARD-84',
+                'quantity_needed' => '18',
+                'status' => 'allocated',
+                'fulfillment_note' => 'Generated sample31 direct endpoint smoke payload',
             ],
         ],
     ];

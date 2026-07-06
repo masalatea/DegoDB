@@ -517,6 +517,12 @@ function app_no_code_runtime_render_action_intent_draft_html(array $actions): st
         '<a class="no-code-runtime-outbox-detail-link" data-runtime-outbox-detail-link hidden href="">Open outbox detail</a>',
         '<span class="no-code-runtime-outbox-detail-copy-status" role="status" aria-live="polite" data-runtime-outbox-detail-copy-status>Outbox detail path will be available after server submit.</span>',
         '</div>',
+        '<div class="no-code-runtime-flow" data-runtime-flow-state="waiting">',
+        '<strong>Runtime flow</strong>',
+        '<span data-runtime-flow-step="submit" data-state="waiting">Submit waits for a ready draft.</span>',
+        '<span data-runtime-flow-step="track" data-state="waiting">Outbox tracking appears after submit.</span>',
+        '<span data-runtime-flow-step="refresh" data-state="waiting">Refresh appears after submit.</span>',
+        '</div>',
         '<details class="no-code-intent-draft-json" data-intent-draft-json-details>',
         '<summary>Draft JSON</summary>',
         '<pre data-intent-draft-output>Change editable fields to preview the generated action intent draft.</pre>',
@@ -833,6 +839,13 @@ function app_no_code_runtime_preview_css(): string
         '.no-code-runtime-execute-status[data-state="blocked"], .no-code-runtime-execute-status[data-state="error"] { color: #842029; }',
         '.no-code-runtime-result-refresh-status { color: #62748a; font-size: 12px; }',
         '.no-code-runtime-outbox-detail-copy-status { color: #62748a; font-size: 12px; }',
+        '.no-code-runtime-flow { display: grid; grid-template-columns: minmax(120px, 0.7fr) repeat(3, minmax(0, 1fr)); gap: 6px; align-items: stretch; margin: 0 0 8px; }',
+        '.no-code-runtime-flow strong, .no-code-runtime-flow span { border: 1px solid #d8dee8; border-radius: 6px; background: #ffffff; color: #52606d; padding: 7px 8px; font-size: 12px; line-height: 1.35; }',
+        '.no-code-runtime-flow strong { color: #334e68; background: #f4f6f8; }',
+        '.no-code-runtime-flow span[data-state="ready"], .no-code-runtime-flow span[data-state="done"] { border-color: #badbcc; color: #0f5132; background: #f0f9f4; }',
+        '.no-code-runtime-flow span[data-state="working"] { border-color: #b6d4fe; color: #084298; background: #eef6ff; }',
+        '.no-code-runtime-flow span[data-state="blocked"], .no-code-runtime-flow span[data-state="error"] { border-color: #f1b0b7; color: #842029; background: #fff5f5; }',
+        '@media (max-width: 720px) { .no-code-runtime-flow { grid-template-columns: 1fr; } }',
         '.no-code-intent-draft-json { margin: 0; }',
         '.no-code-intent-draft-json summary { cursor: pointer; color: #334e68; font-size: 12px; font-weight: 600; margin-bottom: 6px; }',
         '.no-code-intent-draft-json summary:focus-visible { outline: 3px solid #b6d4fe; outline-offset: 2px; }',
@@ -1337,6 +1350,57 @@ function app_no_code_runtime_preview_js(): string
     }
   }
 
+  function writeRuntimeFlow(screen, state, detailPath) {
+    var flow = screen ? screen.querySelector('[data-runtime-flow-state]') : null;
+    if (!flow) {
+      return;
+    }
+    var submit = flow.querySelector('[data-runtime-flow-step="submit"]');
+    var track = flow.querySelector('[data-runtime-flow-step="track"]');
+    var refresh = flow.querySelector('[data-runtime-flow-step="refresh"]');
+    flow.setAttribute('data-runtime-flow-state', state);
+    var setStep = function (element, stepState, text) {
+      if (!element) {
+        return;
+      }
+      element.setAttribute('data-state', stepState);
+      element.textContent = text;
+    };
+    if (state === 'ready') {
+      setStep(submit, 'ready', 'Submit is ready for this draft.');
+      setStep(track, 'waiting', 'Outbox tracking appears after submit.');
+      setStep(refresh, 'waiting', 'Refresh appears after submit.');
+      return;
+    }
+    if (state === 'working') {
+      setStep(submit, 'working', 'Submitting this draft to the server.');
+      setStep(track, 'waiting', 'Waiting for outbox acceptance.');
+      setStep(refresh, 'waiting', 'Refresh appears after submit.');
+      return;
+    }
+    if (state === 'accepted') {
+      setStep(submit, 'done', 'Submit accepted.');
+      setStep(track, detailPath ? 'ready' : 'waiting', detailPath ? 'Open or copy the outbox detail.' : 'Outbox item accepted; detail path unavailable.');
+      setStep(refresh, 'ready', 'Process the item, then refresh this screen.');
+      return;
+    }
+    if (state === 'blocked') {
+      setStep(submit, 'blocked', 'Resolve draft blockers before submit.');
+      setStep(track, 'waiting', 'Outbox tracking appears after submit.');
+      setStep(refresh, 'waiting', 'Refresh appears after submit.');
+      return;
+    }
+    if (state === 'error') {
+      setStep(submit, 'error', 'Submit did not complete.');
+      setStep(track, 'waiting', 'Outbox tracking is unavailable.');
+      setStep(refresh, 'waiting', 'Refresh appears after a successful submit.');
+      return;
+    }
+    setStep(submit, 'waiting', 'Submit waits for a ready draft.');
+    setStep(track, 'waiting', 'Outbox tracking appears after submit.');
+    setStep(refresh, 'waiting', 'Refresh appears after submit.');
+  }
+
   function writeRuntimeResultRefresh(screen, enabled) {
     var refreshButton = screen ? screen.querySelector('[data-runtime-result-refresh]') : null;
     var refreshStatus = screen ? screen.querySelector('[data-runtime-result-refresh-status]') : null;
@@ -1475,18 +1539,21 @@ function app_no_code_runtime_preview_js(): string
       executeButton.disabled = true;
       executeButton.setAttribute('data-runtime-execute-state', 'unavailable');
       setRuntimeExecuteStatus(screen, 'unavailable', 'Server execution is available from an authenticated current or alias preview.');
+      writeRuntimeFlow(screen, 'waiting', '');
       return;
     }
     if (hasBlockingChecks) {
       executeButton.disabled = true;
       executeButton.setAttribute('data-runtime-execute-state', 'blocked');
       setRuntimeExecuteStatus(screen, 'blocked', 'Resolve draft blockers before server submission.');
+      writeRuntimeFlow(screen, 'blocked', '');
       return;
     }
     executeButton.disabled = false;
     executeButton.setAttribute('data-runtime-execute-state', 'ready');
     executeButton.setAttribute('data-runtime-execute-action', draft.action_key || '');
     setRuntimeExecuteStatus(screen, 'ready', 'Server execution endpoint is ready: ' + executionBinding.execution_url);
+    writeRuntimeFlow(screen, 'ready', '');
   }
 
   function writeActionFeedback(button, result) {
@@ -1497,6 +1564,7 @@ function app_no_code_runtime_preview_js(): string
     }
     writeRuntimeOutboxDetailCopy(screen, '');
     writeRuntimeResultRefresh(screen, false);
+    writeRuntimeFlow(screen, 'waiting', '');
 
     if (result && result.ok) {
       feedback.textContent = 'Action intent is ready: ' + (result.intent && result.intent.operation_key ? result.intent.operation_key : 'operation');
@@ -1545,6 +1613,7 @@ function app_no_code_runtime_preview_js(): string
     var item = runtimeExecutionOutboxItem(payload);
     var syncStatus = item && typeof item.status === 'string' ? item.status : runtimeExecutionSyncStatus(payload);
     var detailPath = runtimeExecutionAcceptedDetailPath(payload);
+    var demoProcessing = payload && payload.demo_processing ? payload.demo_processing : null;
     if (syncStatus) {
       message += ' Sync outbox status: ' + syncStatus + '.';
     }
@@ -1559,6 +1628,11 @@ function app_no_code_runtime_preview_js(): string
     }
     if (syncStatus === 'pending' || syncStatus === 'running') {
       message += ' Next result check: process the sync outbox item, then use Refresh preview to reload this screen.';
+    }
+    if (demoProcessing && demoProcessing.processed && demoProcessing.outcome === 'done') {
+      message += ' Demo processing completed this item; use Refresh preview to reload the result.';
+    } else if (demoProcessing && demoProcessing.error) {
+      message += ' Demo processing did not run: ' + demoProcessing.error + '.';
     }
     return message;
   }
@@ -1593,6 +1667,9 @@ function app_no_code_runtime_preview_js(): string
     formData.append('project_key', executionBinding.project_key || preview.project_key || '');
     formData.append('artifact_key', executionBinding.artifact_key || '');
     formData.append('action_key', action.action_key || '');
+    if (executionBinding.demo_processing === 'available') {
+      formData.append('runtime_demo_process', '1');
+    }
     Object.keys(input).forEach(function (fieldKey) {
       formData.append('input[' + fieldKey + ']', input[fieldKey]);
     });
@@ -1602,6 +1679,7 @@ function app_no_code_runtime_preview_js(): string
     setRuntimeExecuteStatus(screen, 'working', 'Submitting action to server...');
     writeRuntimeOutboxDetailCopy(screen, '');
     writeRuntimeResultRefresh(screen, false);
+    writeRuntimeFlow(screen, 'working', '');
     if (feedback) {
       feedback.textContent = 'Submitting action to server...';
       feedback.setAttribute('data-state', 'working');
@@ -1640,6 +1718,7 @@ function app_no_code_runtime_preview_js(): string
         }
         writeRuntimeOutboxDetailCopy(screen, acceptedDetailPath);
         writeRuntimeResultRefresh(screen, true);
+        writeRuntimeFlow(screen, 'accepted', acceptedDetailPath);
         return;
       }
 
@@ -1649,6 +1728,7 @@ function app_no_code_runtime_preview_js(): string
       setRuntimeExecuteStatus(screen, 'error', message);
       writeRuntimeOutboxDetailCopy(screen, '');
       writeRuntimeResultRefresh(screen, false);
+      writeRuntimeFlow(screen, 'error', '');
       if (feedback) {
         feedback.textContent = message;
         feedback.setAttribute('data-state', 'error');
@@ -1660,6 +1740,7 @@ function app_no_code_runtime_preview_js(): string
       setRuntimeExecuteStatus(screen, 'error', 'Server execution request failed.');
       writeRuntimeOutboxDetailCopy(screen, '');
       writeRuntimeResultRefresh(screen, false);
+      writeRuntimeFlow(screen, 'error', '');
       if (feedback) {
         feedback.textContent = 'Server execution request failed.';
         feedback.setAttribute('data-state', 'error');

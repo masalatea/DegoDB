@@ -41,6 +41,24 @@ This is the concept-level overview of the tool. It explains the core flow from D
 
 つまり、このツールの主線は `DB 構造` -> `import` -> `Data Class` -> `DB Access` -> `Source Output` である。
 
+## no-code layer の位置づけ
+
+no-code は、この主線の外にある別プロダクトではなく、`Source Output` と managed operation の上に載る上位 layer である。
+
+現在の no-code runtime は、canonical metadata から生成された screen definition と、DB Access / managed operation metadata から作られた action intent を使う。public preview は `NO-CODE-RUNTIME` Source Output artifact を publish candidate として review し、approve し、current revision または alias として公開する。
+
+この構造により、no-code preview は次を共有できる。
+
+- DB schema から取り込まれた canonical table / column metadata
+- Data Class / DB Access の生成境界
+- managed operation の operation key / operation type / input contract
+- Source Output artifact の review / approval record
+- public runtime URL の current / alias resolution
+
+そのため、no-code は database-first の基盤を隠すものではなく、その基盤を利用者向けの list / detail / form / submit 体験として露出する layer として扱う。
+
+submit の production-oriented default は managed-operation sync outbox である。synchronous processing は demo / tryout 用の opt-in であり、環境 gate と explicit request flag が揃った場合だけ 1 件の outbox item を即時処理する。これは async foundation を置き換えるものではない。
+
 ## API 公開モデル
 
 `DB Access` を設計した後、どの `dafunc` をどう外へ公開するかを決める。

@@ -17,7 +17,7 @@ function usage(): string
 usage: php mtool/scripts/check_sample28_no_code_runtime_outbox_process_smoke.php [options]
 
 Options:
-  --profile=PROFILE       Smoke payload profile: sample28 or sample29 (default: sample28)
+  --profile=PROFILE       Smoke payload profile: sample28, sample29, or sample31 (default: sample28)
   --pretty                Pretty-print JSON result
   --help                  Show this help
 
@@ -47,7 +47,7 @@ function parse_args(array $argv): array
 
         throw new InvalidArgumentException('unsupported argument: ' . $arg);
     }
-    if (!in_array($args['profile'], ['sample28', 'sample29'], true)) {
+    if (!in_array($args['profile'], ['sample28', 'sample29', 'sample31'], true)) {
         throw new InvalidArgumentException('unsupported --profile: ' . $args['profile']);
     }
 
@@ -127,6 +127,45 @@ function smoke_profile(string $profile): array
             'sqlite_select_values' => [2001],
             'expected_field' => 'next_action',
             'expected_value' => 'Generated sample29 direct endpoint smoke payload',
+        ],
+        'sample31' => [
+            'project_key' => 'SAMPLE31',
+            'table_name' => 'inventory_request',
+            'operation_key' => 'update_inventory_request',
+            'sqlite_schema' => 'CREATE TABLE inventory_request (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                request_number TEXT NOT NULL,
+                requester_name TEXT NOT NULL,
+                warehouse_code TEXT NOT NULL,
+                item_sku TEXT NOT NULL,
+                quantity_needed INTEGER NOT NULL DEFAULT 1,
+                status TEXT NOT NULL DEFAULT "open",
+                fulfillment_note TEXT NOT NULL
+            )',
+            'sqlite_insert' => 'INSERT INTO inventory_request (
+                id,
+                request_number,
+                requester_name,
+                warehouse_code,
+                item_sku,
+                quantity_needed,
+                status,
+                fulfillment_note
+            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?)',
+            'sqlite_insert_values' => [
+                3101,
+                'INV-REQ-2026-0001',
+                'Northwind Warehouse Ops',
+                'WH-TOKYO-01',
+                'SKU-BOARD-42',
+                12,
+                'requested',
+                'Prepare inventory pick review before approving replenishment.',
+            ],
+            'sqlite_select' => 'SELECT id, request_number, requester_name, warehouse_code, item_sku, quantity_needed, status, fulfillment_note FROM inventory_request WHERE id = ?',
+            'sqlite_select_values' => [3101],
+            'expected_field' => 'fulfillment_note',
+            'expected_value' => 'Generated sample31 direct endpoint smoke payload',
         ],
     ];
 

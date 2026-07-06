@@ -12,11 +12,13 @@ function usage() {
 Options:
   --html=PATH                    runtime-preview.html path
   --url=URL                      runtime-preview.html URL
-  --profile=sample07|sample28|sample29
+  --profile=sample07|sample28|sample29|sample31
                                  expected no-code runtime shape (default: sample07)
   --execution-binding=ignore|none|required
                                  expected execution binding state (default: ignore)
   --execution-url-contains=TEXT  required substring when execution binding is required
+  --demo-processing=ignore|none|available
+                                 expected demo processing binding; available forces the submit probe flag (default: ignore)
   --submit-probe=none|enabled-fetch-stub|enabled-real-fetch
                                  probe server submit payload with stubbed or real fetch (default: none)
   --admin-user=USER              admin login user for enabled-real-fetch
@@ -40,6 +42,7 @@ function parseArgs(argv) {
     help: false,
     executionBinding: 'ignore',
     executionUrlContains: '',
+    demoProcessing: 'ignore',
     submitProbe: 'none',
     adminUser: process.env.ADMIN_AUTH_STUB_USER || 'admin-local',
     adminPassword: process.env.ADMIN_AUTH_STUB_PASSWORD || 'change-this-admin-password',
@@ -80,6 +83,11 @@ function parseArgs(argv) {
       config.executionBinding = value;
     } else if (name === 'execution-url-contains') {
       config.executionUrlContains = value;
+    } else if (name === 'demo-processing') {
+      if (!['ignore', 'none', 'available'].includes(value)) {
+        throw new Error(`Unknown demo processing expectation: ${value}`);
+      }
+      config.demoProcessing = value;
     } else if (name === 'submit-probe') {
       if (!['none', 'enabled-fetch-stub', 'enabled-real-fetch'].includes(value)) {
         throw new Error(`Unknown submit probe: ${value}`);
@@ -187,6 +195,36 @@ function expectedProfile(name) {
         status: 'active',
         severity: 'medium',
         next_action: 'Generated sample29 browser smoke next action',
+      },
+    };
+  }
+
+  if (name === 'sample31') {
+    return {
+      profile: name,
+      projectKey: 'SAMPLE31',
+      listScreenKey: 'inventory_request_list',
+      listScreenTitle: 'Inventory Request List',
+      detailScreenKey: 'inventory_request_detail',
+      detailScreenTitle: 'Inventory Request Detail',
+      formScreenKey: 'inventory_request_form',
+      formScreenTitle: 'Inventory Request Form',
+      actionKey: 'update_inventory_request',
+      operationKey: 'update_inventory_request',
+      operationType: 'update',
+      keyField: 'id',
+      keyValue: 3101,
+      formFieldCount: 7,
+      draftInputCountAfterEdit: 1,
+      inputFields: ['item_sku', 'quantity_needed', 'status', 'fulfillment_note'],
+      requiredInputField: 'fulfillment_note',
+      requiredInputValue: 'Generated sample31 browser smoke fulfillment note',
+      payload: {
+        id: 3101,
+        item_sku: 'SKU-BOARD-84',
+        quantity_needed: 18,
+        status: 'allocated',
+        fulfillment_note: 'Generated sample31 browser smoke fulfillment note',
       },
     };
   }
@@ -315,12 +353,16 @@ async function runSmoke(config) {
     const evaluateExpected = {
       ...config.expected,
       submitProbe: config.submitProbe,
+      demoProcessing: config.demoProcessing,
     };
     const metrics = await page.evaluate(async (expected) => {
       const sections = Array.from(document.querySelectorAll('.no-code-screen'));
       const actions = Array.from(document.querySelectorAll('.no-code-actions button'));
       const preview = window.__noCodeRuntimePreview || {};
       const executionBinding = window.__noCodeRuntimeExecutionBinding || {};
+      if (expected.demoProcessing === 'available') {
+        executionBinding.demo_processing = 'available';
+      }
       const previewScreens = Array.isArray(preview.screens) ? preview.screens : [];
       const previewActions = previewScreens.flatMap((screen) => Array.isArray(screen.actions) ? screen.actions : []);
       const updateAction = previewActions.find((action) => action.action_key === expected.actionKey) || {};
@@ -398,6 +440,10 @@ async function runSmoke(config) {
       const runtimeExecuteStatusTextBeforeSubmit = Array.from(document.querySelectorAll('[data-runtime-execute-status]')).map((element) => element.textContent?.trim() || '');
       const runtimeResultRefreshStatesBeforeSubmit = Array.from(document.querySelectorAll('[data-runtime-result-refresh]')).map((element) => element.getAttribute('data-runtime-result-refresh-state') || '');
       const runtimeResultRefreshStatusTextBeforeSubmit = Array.from(document.querySelectorAll('[data-runtime-result-refresh-status]')).map((element) => element.textContent?.trim() || '');
+      const runtimeFlowStatesBeforeSubmit = Array.from(document.querySelectorAll('[data-runtime-flow-state]')).map((element) => element.getAttribute('data-runtime-flow-state') || '');
+      const runtimeFlowSubmitStatesBeforeSubmit = Array.from(document.querySelectorAll('[data-runtime-flow-step="submit"]')).map((element) => element.getAttribute('data-state') || '');
+      const runtimeFlowTrackStatesBeforeSubmit = Array.from(document.querySelectorAll('[data-runtime-flow-step="track"]')).map((element) => element.getAttribute('data-state') || '');
+      const runtimeFlowRefreshStatesBeforeSubmit = Array.from(document.querySelectorAll('[data-runtime-flow-step="refresh"]')).map((element) => element.getAttribute('data-state') || '');
       const intentDraftStatesBeforeSubmit = Array.from(document.querySelectorAll('.no-code-intent-draft')).map((element) => element.getAttribute('data-intent-draft-state') || '');
       let submitProbe = { skipped: true };
       if (expected.submitProbe === 'enabled-fetch-stub' || expected.submitProbe === 'enabled-real-fetch') {
@@ -471,6 +517,8 @@ async function runSmoke(config) {
           responseOk: null,
           responseSyncIntent: '',
           responseOutboxStatus: '',
+          responseDemoProcessingOutcome: '',
+          responseDemoProcessingProcessed: null,
         };
         const nativeFetch = window.fetch.bind(window);
         window.fetch = async (url, options = {}) => {
@@ -493,6 +541,9 @@ async function runSmoke(config) {
             responseOutboxId: '',
             responseOutboxDedupeKey: '',
             responseOutboxOperationKey: '',
+            responseDemoProcessingOutcome: '',
+            responseDemoProcessingProcessed: null,
+            responseDemoProcessingError: '',
           };
           window.__noCodeRuntimeSubmitProbe = probe;
           if (expected.submitProbe === 'enabled-real-fetch') {
@@ -505,6 +556,9 @@ async function runSmoke(config) {
             probe.responseOutboxId = payload?.result?.executor_result?.item?.id || '';
             probe.responseOutboxDedupeKey = payload?.result?.executor_result?.item?.dedupe_key || '';
             probe.responseOutboxOperationKey = payload?.result?.executor_result?.item?.operation_key || '';
+            probe.responseDemoProcessingOutcome = payload?.demo_processing?.outcome || '';
+            probe.responseDemoProcessingProcessed = typeof payload?.demo_processing?.processed === 'boolean' ? payload.demo_processing.processed : null;
+            probe.responseDemoProcessingError = payload?.demo_processing?.error || '';
             window.__noCodeRuntimeSubmitProbe = probe;
             return response;
           }
@@ -552,6 +606,11 @@ async function runSmoke(config) {
           resultRefreshDisabledAfterClick: !!resultRefreshButton?.disabled,
           resultRefreshStateAfterClick: resultRefreshButton?.getAttribute('data-runtime-result-refresh-state') || '',
           resultRefreshStatusAfterClick: formScreen?.querySelector('[data-runtime-result-refresh-status]')?.textContent?.trim() || '',
+          runtimeFlowStateAfterClick: formScreen?.querySelector('[data-runtime-flow-state]')?.getAttribute('data-runtime-flow-state') || '',
+          runtimeFlowSubmitStateAfterClick: formScreen?.querySelector('[data-runtime-flow-step="submit"]')?.getAttribute('data-state') || '',
+          runtimeFlowTrackStateAfterClick: formScreen?.querySelector('[data-runtime-flow-step="track"]')?.getAttribute('data-state') || '',
+          runtimeFlowRefreshStateAfterClick: formScreen?.querySelector('[data-runtime-flow-step="refresh"]')?.getAttribute('data-state') || '',
+          runtimeFlowTextAfterClick: formScreen?.querySelector('[data-runtime-flow-state]')?.textContent?.trim() || '',
           outboxCopyDisabledAfterClick: !!outboxCopyButton?.disabled,
           outboxCopyPathAfterClick: outboxCopyButton?.getAttribute('data-runtime-outbox-detail-path') || '',
           outboxDetailLinkHiddenAfterClick: !!formScreen?.querySelector('[data-runtime-outbox-detail-link]')?.hidden,
@@ -571,6 +630,9 @@ async function runSmoke(config) {
           responseOutboxId: probeResult.responseOutboxId || '',
           responseOutboxDedupeKey: probeResult.responseOutboxDedupeKey || '',
           responseOutboxOperationKey: probeResult.responseOutboxOperationKey || '',
+          responseDemoProcessingOutcome: probeResult.responseDemoProcessingOutcome || '',
+          responseDemoProcessingProcessed: probeResult.responseDemoProcessingProcessed,
+          responseDemoProcessingError: probeResult.responseDemoProcessingError || '',
         };
       }
 
@@ -629,6 +691,14 @@ async function runSmoke(config) {
         runtimeResultRefreshStatusCount: document.querySelectorAll('[data-runtime-result-refresh-status]').length,
         runtimeResultRefreshStates: runtimeResultRefreshStatesBeforeSubmit,
         runtimeResultRefreshStatusText: runtimeResultRefreshStatusTextBeforeSubmit,
+        runtimeFlowCount: document.querySelectorAll('[data-runtime-flow-state]').length,
+        runtimeFlowSubmitCount: document.querySelectorAll('[data-runtime-flow-step="submit"]').length,
+        runtimeFlowTrackCount: document.querySelectorAll('[data-runtime-flow-step="track"]').length,
+        runtimeFlowRefreshCount: document.querySelectorAll('[data-runtime-flow-step="refresh"]').length,
+        runtimeFlowStates: runtimeFlowStatesBeforeSubmit,
+        runtimeFlowSubmitStates: runtimeFlowSubmitStatesBeforeSubmit,
+        runtimeFlowTrackStates: runtimeFlowTrackStatesBeforeSubmit,
+        runtimeFlowRefreshStates: runtimeFlowRefreshStatesBeforeSubmit,
         runtimeOutboxCopyButtonCount: document.querySelectorAll('[data-runtime-outbox-detail-copy]').length,
         runtimeOutboxCopyStatusCount: document.querySelectorAll('[data-runtime-outbox-detail-copy-status]').length,
         runtimeOutboxDetailLinkCount: document.querySelectorAll('[data-runtime-outbox-detail-link]').length,
@@ -636,6 +706,7 @@ async function runSmoke(config) {
         runtimeExecuteStatusText: runtimeExecuteStatusTextBeforeSubmit,
         executionBindingUrl: executionBinding.execution_url || '',
         executionBindingProjectKey: executionBinding.project_key || '',
+        executionBindingDemoProcessing: executionBinding.demo_processing || '',
         submitProbe,
         intentDraftJsonDetailsCount: document.querySelectorAll('[data-intent-draft-json-details]').length,
         intentDraftJsonSummaryText: Array.from(document.querySelectorAll('[data-intent-draft-json-details] summary')).map((element) => element.textContent?.trim() || ''),
@@ -761,6 +832,18 @@ async function runSmoke(config) {
     if (!metrics.runtimeResultRefreshStatusText.every((text) => text.includes('Refresh preview is available after server submit.'))) {
       throw new Error(`runtime result refresh initial status mismatch: ${metrics.runtimeResultRefreshStatusText.join(' | ')}`);
     }
+    if (metrics.runtimeFlowCount !== 3 || metrics.runtimeFlowSubmitCount !== 3 || metrics.runtimeFlowTrackCount !== 3 || metrics.runtimeFlowRefreshCount !== 3) {
+      throw new Error(`runtime flow indicator count mismatch: ${metrics.runtimeFlowCount}/${metrics.runtimeFlowSubmitCount}/${metrics.runtimeFlowTrackCount}/${metrics.runtimeFlowRefreshCount}`);
+    }
+    if (!metrics.runtimeFlowStates.every((state) => ['waiting', 'ready', 'blocked'].includes(state))) {
+      throw new Error(`runtime flow initial state mismatch: ${metrics.runtimeFlowStates.join(', ')}`);
+    }
+    if (!metrics.runtimeFlowSubmitStates.every((state) => ['waiting', 'ready', 'blocked'].includes(state))) {
+      throw new Error(`runtime flow submit state mismatch: ${metrics.runtimeFlowSubmitStates.join(', ')}`);
+    }
+    if (!metrics.runtimeFlowTrackStates.every((state) => state === 'waiting') || !metrics.runtimeFlowRefreshStates.every((state) => state === 'waiting')) {
+      throw new Error(`runtime flow track/refresh initial state mismatch: ${metrics.runtimeFlowTrackStates.join(', ')} / ${metrics.runtimeFlowRefreshStates.join(', ')}`);
+    }
     if (metrics.runtimeOutboxCopyButtonCount !== 3 || metrics.runtimeOutboxCopyStatusCount !== 3) {
       throw new Error(`runtime outbox copy controls mismatch: ${metrics.runtimeOutboxCopyButtonCount}/${metrics.runtimeOutboxCopyStatusCount}`);
     }
@@ -784,6 +867,12 @@ async function runSmoke(config) {
         throw new Error(`execution binding URL mismatch: ${metrics.executionBindingUrl} does not include ${config.executionUrlContains}`);
       }
     }
+    if (config.demoProcessing === 'none' && metrics.executionBindingDemoProcessing !== '') {
+      throw new Error(`demo processing binding should not be injected: ${metrics.executionBindingDemoProcessing}`);
+    }
+    if (config.demoProcessing === 'available' && metrics.executionBindingDemoProcessing !== 'available') {
+      throw new Error(`demo processing binding should be available: ${metrics.executionBindingDemoProcessing}`);
+    }
     if (config.submitProbe === 'enabled-fetch-stub' || config.submitProbe === 'enabled-real-fetch') {
       const probe = metrics.submitProbe || {};
       const entries = Object.fromEntries(Array.isArray(probe.entries) ? probe.entries : []);
@@ -798,6 +887,12 @@ async function runSmoke(config) {
       }
       if (!entries._csrf || entries.project_key !== config.expected.projectKey || !entries.artifact_key || entries.action_key !== config.expected.actionKey) {
         throw new Error(`submit probe binding entries mismatch: ${JSON.stringify(entries)}`);
+      }
+      if (config.demoProcessing === 'available' && entries.runtime_demo_process !== '1') {
+        throw new Error(`submit probe did not request demo processing: ${JSON.stringify(entries)}`);
+      }
+      if (config.demoProcessing === 'none' && Object.prototype.hasOwnProperty.call(entries, 'runtime_demo_process')) {
+        throw new Error(`submit probe unexpectedly requested demo processing: ${JSON.stringify(entries)}`);
       }
       if (entries[`input[${config.expected.keyField}]`] !== String(config.expected.keyValue)) {
         throw new Error(`submit probe key input mismatch: ${JSON.stringify(entries)}`);
@@ -833,6 +928,12 @@ async function runSmoke(config) {
         }
         if (probe.resultRefreshDisabledAfterClick || probe.resultRefreshStateAfterClick !== 'ready') {
           throw new Error(`real submit probe did not enable result refresh: ${JSON.stringify(probe)}`);
+        }
+        if (probe.runtimeFlowStateAfterClick !== 'accepted' || probe.runtimeFlowSubmitStateAfterClick !== 'done' || probe.runtimeFlowTrackStateAfterClick !== 'ready' || probe.runtimeFlowRefreshStateAfterClick !== 'ready') {
+          throw new Error(`real submit probe did not show accepted runtime flow: ${JSON.stringify(probe)}`);
+        }
+        if (!probe.runtimeFlowTextAfterClick.includes('Submit accepted.') || !probe.runtimeFlowTextAfterClick.includes('Open or copy the outbox detail.') || !probe.runtimeFlowTextAfterClick.includes('Process the item, then refresh this screen.')) {
+          throw new Error(`real submit probe runtime flow text mismatch: ${JSON.stringify(probe)}`);
         }
         if (!probe.resultRefreshStatusAfterClick.includes('Process the sync outbox item, then use Refresh preview to reload this screen.')) {
           throw new Error(`real submit probe did not show result refresh status: ${JSON.stringify(probe)}`);
