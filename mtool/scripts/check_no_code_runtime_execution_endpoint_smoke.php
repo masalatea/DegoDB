@@ -193,6 +193,7 @@ function request_once(array &$client, string $method, string $path, array $optio
         'ok' => $error === '' || http_status($headerLines) !== 0,
         'status' => http_status($headerLines),
         'path' => $path,
+        'headers' => $headerMap,
         'body' => is_string($responseBody) ? $responseBody : '',
         'location' => (string) ($headerMap['location'][0] ?? ''),
         'error' => $error,
@@ -226,6 +227,15 @@ function runtime_execution_binding(string $html): array
     }
 
     return $binding;
+}
+
+function runtime_data_path(string $previewPath): string
+{
+    if (!str_ends_with($previewPath, '/runtime-preview.html')) {
+        throw new RuntimeException('preview path cannot be converted to runtime data path: ' . $previewPath);
+    }
+
+    return substr($previewPath, 0, -strlen('/runtime-preview.html')) . '/runtime-data.json';
 }
 
 function smoke_profile(string $profile): array
@@ -361,6 +371,81 @@ function endpoint_smoke(array &$client, array $profile, string $label, string $p
     ];
 }
 
+function runtime_data_smoke(array &$client, array $profile, string $label, string $previewPath, string $selectionKind): array
+{
+    $path = runtime_data_path($previewPath);
+    $response = request_once($client, 'GET', $path);
+    $payload = json_decode($response['body'], true);
+    ensure(is_array($payload), $label . ' runtime data response was not JSON');
+    ensure(($payload['contract_version'] ?? '') === 'no-code-runtime-data-v0', $label . ' runtime data contract mismatch');
+    ensure(($payload['runtime_preview_version'] ?? '') === 'no-code-runtime-v0', $label . ' runtime data runtime version mismatch');
+    ensure(strtolower((string) ($response['headers']['cache-control'][0] ?? '')) === 'no-store', $label . ' runtime data cache-control mismatch');
+
+    if ($response['status'] !== 200) {
+        ensure(($payload['ok'] ?? null) === false, $label . ' runtime data fail-closed ok flag mismatch');
+        ensure((string) ($payload['error'] ?? '') !== '', $label . ' runtime data fail-closed error missing');
+
+        return [
+            'label' => $label,
+            'status' => $response['status'],
+            'data_url' => $path,
+            'contract_version' => (string) ($payload['contract_version'] ?? ''),
+            'fail_closed' => true,
+            'error' => (string) ($payload['error'] ?? ''),
+        ];
+    }
+
+    ensure(($payload['ok'] ?? null) === true, $label . ' runtime data ok flag mismatch');
+    ensure(($payload['project_key'] ?? '') === $profile['project_key'], $label . ' runtime data project mismatch');
+    ensure(($payload['selection']['kind'] ?? '') === $selectionKind, $label . ' runtime data selection kind mismatch');
+    ensure((string) ($payload['selection']['artifact_key'] ?? '') !== '', $label . ' runtime data artifact key missing');
+    ensure(($payload['screen_definition_version'] ?? '') === 'no-code-screen-definition-v0', $label . ' runtime data screen definition version mismatch');
+    ensure(($payload['error'] ?? '') === '', $label . ' runtime data error mismatch');
+
+    $screens = is_array($payload['screens'] ?? null) ? $payload['screens'] : [];
+    ensure(count($screens) >= 3, $label . ' runtime data screen count mismatch');
+    $listScreen = null;
+    $detailScreen = null;
+    foreach ($screens as $screen) {
+        if (is_array($screen) && (string) ($screen['screen_type'] ?? '') === 'list') {
+            $listScreen = $screen;
+        }
+        if (is_array($screen) && (string) ($screen['screen_type'] ?? '') === 'detail') {
+            $detailScreen = $screen;
+        }
+    }
+    ensure(is_array($listScreen), $label . ' runtime data list screen missing');
+    ensure(is_array($detailScreen), $label . ' runtime data detail screen missing');
+    $rows = is_array($listScreen['data']['rows'] ?? null) ? $listScreen['data']['rows'] : [];
+    ensure($rows !== [], $label . ' runtime data list rows missing');
+    $keyField = (string) $profile['key_field'];
+    $firstRowKey = (string) ($rows[0][$keyField]['display_value'] ?? '');
+    ensure($firstRowKey !== '', $label . ' runtime data first row key missing');
+
+    $listMetadata = is_array($listScreen['metadata'] ?? null) ? $listScreen['metadata'] : [];
+    ensure(($listMetadata['row_count'] ?? null) === count($rows), $label . ' runtime data list row count metadata mismatch');
+    ensure(($listMetadata['freshness'] ?? '') === 'live-read', $label . ' runtime data freshness metadata mismatch');
+    $detailMetadata = is_array($detailScreen['metadata'] ?? null) ? $detailScreen['metadata'] : [];
+    ensure(
+        ($detailMetadata['selected_key']['field_key'] ?? '') === $keyField
+            && (string) ($detailMetadata['selected_key']['display_value'] ?? '') === $firstRowKey,
+        $label . ' runtime data selected key metadata mismatch',
+    );
+
+    return [
+        'label' => $label,
+        'status' => $response['status'],
+        'data_url' => $path,
+        'contract_version' => (string) ($payload['contract_version'] ?? ''),
+        'selection_kind' => (string) ($payload['selection']['kind'] ?? ''),
+        'artifact_key' => (string) ($payload['selection']['artifact_key'] ?? ''),
+        'screen_count' => count($screens),
+        'first_row_key' => $firstRowKey,
+        'row_count_metadata' => (int) ($listMetadata['row_count'] ?? 0),
+        'selected_key' => (string) ($detailMetadata['selected_key']['display_value'] ?? ''),
+    ];
+}
+
 try {
     $args = parse_args($argv);
     $client = [
@@ -372,6 +457,8 @@ try {
     login_admin($client, $args['admin_user'], $args['admin_password']);
     $profile = smoke_profile($args['profile']);
     $results = [
+        runtime_data_smoke($client, $profile, 'current', $args['current_path'], 'current'),
+        runtime_data_smoke($client, $profile, 'alias', $args['alias_path'], 'alias'),
         endpoint_smoke($client, $profile, 'current', $args['current_path'], '/current/execute.json'),
         endpoint_smoke($client, $profile, 'alias', $args['alias_path'], '/alias/'),
     ];

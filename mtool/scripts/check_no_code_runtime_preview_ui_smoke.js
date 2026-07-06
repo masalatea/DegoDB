@@ -540,9 +540,97 @@ async function runSmoke(config) {
           responseHandoffState: '',
           fetchCount: 0,
         };
+        window.__noCodeRuntimeDataProbe = {
+          fetchCalled: false,
+          url: '',
+          method: '',
+          credentials: '',
+          responseStatus: 0,
+          responseOk: null,
+          contractVersion: '',
+          screenCount: 0,
+          firstRowKey: '',
+        };
         const nativeFetch = window.fetch.bind(window);
         window.fetch = async (url, options = {}) => {
           const method = String(options.method || 'GET');
+          if (method.toUpperCase() === 'GET' && String(url).endsWith('/runtime-data.json')) {
+            const dataProbe = {
+              fetchCalled: true,
+              url: String(url),
+              method,
+              credentials: String(options.credentials || ''),
+              responseStatus: 0,
+              responseOk: null,
+              contractVersion: '',
+              screenCount: 0,
+              firstRowKey: '',
+            };
+            window.__noCodeRuntimeDataProbe = dataProbe;
+            if (expected.statusProbe !== 'real') {
+              const row = {};
+              row[expected.keyField] = { value: expected.keyValue, display_value: String(expected.keyValue) };
+              for (const [fieldKey, fieldValue] of Object.entries(expected.payload || {})) {
+                row[fieldKey] = { value: fieldValue, display_value: String(fieldValue) };
+              }
+              const rows = [row, row, row].map((item) => ({ ...item }));
+              if (expected.seededText && rows[1]) {
+                rows[1].title = { value: expected.seededText, display_value: expected.seededText };
+              }
+              const payload = {
+                ok: true,
+                contract_version: 'no-code-runtime-data-v0',
+                project_key: expected.projectKey,
+                selection: {
+                  kind: 'stub',
+                  artifact_key: 'stub-runtime-data-artifact',
+                },
+                screen_definition_version: 'stub-runtime-data-screen-definition',
+                runtime_preview_version: 'no-code-runtime-v0',
+                screens: [
+                  {
+                    screen_key: expected.listScreenKey,
+                    screen_type: 'list',
+                    contract_key: expected.contractKey,
+                    data: { rows },
+                  },
+                  {
+                    screen_key: expected.detailScreenKey,
+                    screen_type: 'detail',
+                    contract_key: expected.contractKey,
+                    data: { item: row },
+                  },
+                  {
+                    screen_key: expected.formScreenKey,
+                    screen_type: 'form',
+                    contract_key: expected.contractKey,
+                    data: { item: row },
+                  },
+                ],
+                error: '',
+              };
+              dataProbe.responseStatus = 200;
+              dataProbe.responseOk = true;
+              dataProbe.contractVersion = payload.contract_version;
+              dataProbe.screenCount = payload.screens.length;
+              dataProbe.firstRowKey = String(expected.keyValue);
+              window.__noCodeRuntimeDataProbe = dataProbe;
+              return {
+                json: async () => payload,
+              };
+            }
+            const response = await nativeFetch(url, options);
+            dataProbe.responseStatus = response.status;
+            const payload = await response.clone().json().catch(() => null);
+            dataProbe.responseOk = payload && typeof payload.ok === 'boolean' ? payload.ok : null;
+            dataProbe.contractVersion = payload?.contract_version || '';
+            dataProbe.screenCount = Array.isArray(payload?.screens) ? payload.screens.length : 0;
+            const firstScreen = Array.isArray(payload?.screens) ? payload.screens[0] : null;
+            const firstRow = Array.isArray(firstScreen?.data?.rows) ? firstScreen.data.rows[0] : null;
+            dataProbe.firstRowKey = firstRow?.[expected.keyField]?.display_value || '';
+            window.__noCodeRuntimeDataProbe = dataProbe;
+            return response;
+          }
           if (method.toUpperCase() === 'GET' && String(url).endsWith('.json')) {
             const previousStatusProbe = window.__noCodeRuntimeStatusProbe || {};
             const stubStatus = expected.statusProbe === 'stub-failed' ? 'failed' : 'done';
@@ -705,12 +793,7 @@ async function runSmoke(config) {
           outboxCopyButton.click();
           await new Promise((resolve) => setTimeout(resolve, 0));
         }
-        const probeResult = window.__noCodeRuntimeSubmitProbe || {};
-        const statusProbeResult = window.__noCodeRuntimeStatusProbe || {};
-        submitProbe = {
-          skipped: false,
-          stateBeforeClick,
-          disabledBeforeClick,
+        const submitSnapshot = {
           stateAfterClick: executeButton?.getAttribute('data-runtime-execute-state') || '',
           statusAfterClick: formScreen?.querySelector('[data-runtime-execute-status]')?.textContent?.trim() || '',
           feedbackAfterClick: formScreen?.querySelector('.no-code-action-feedback')?.textContent?.trim() || '',
@@ -719,9 +802,6 @@ async function runSmoke(config) {
           statusOutboxPollState: formScreen?.querySelector('[data-runtime-execute-status]')?.getAttribute('data-runtime-outbox-status-poll-state') || '',
           statusOutboxPollCount: formScreen?.querySelector('[data-runtime-execute-status]')?.getAttribute('data-runtime-outbox-status-poll-count') || '',
           feedbackOutboxDetailPath: formScreen?.querySelector('.no-code-action-feedback')?.getAttribute('data-runtime-outbox-detail-path') || '',
-          resultRefreshDisabledAfterClick: !!resultRefreshButton?.disabled,
-          resultRefreshStateAfterClick: resultRefreshButton?.getAttribute('data-runtime-result-refresh-state') || '',
-          resultRefreshStatusAfterClick: formScreen?.querySelector('[data-runtime-result-refresh-status]')?.textContent?.trim() || '',
           runtimeFlowStateAfterClick: formScreen?.querySelector('[data-runtime-flow-state]')?.getAttribute('data-runtime-flow-state') || '',
           runtimeFlowSubmitStateAfterClick: formScreen?.querySelector('[data-runtime-flow-step="submit"]')?.getAttribute('data-state') || '',
           runtimeFlowTrackStateAfterClick: formScreen?.querySelector('[data-runtime-flow-step="track"]')?.getAttribute('data-state') || '',
@@ -733,6 +813,74 @@ async function runSmoke(config) {
           outboxDetailLinkHrefAfterClick: formScreen?.querySelector('[data-runtime-outbox-detail-link]')?.getAttribute('href') || '',
           outboxDetailLinkPathAfterClick: formScreen?.querySelector('[data-runtime-outbox-detail-link]')?.getAttribute('data-runtime-outbox-detail-path') || '',
           outboxCopyStatusAfterClick: formScreen?.querySelector('[data-runtime-outbox-detail-copy-status]')?.textContent?.trim() || '',
+        };
+        if (expected.statusProbe === 'stub-done') {
+          for (let attempt = 0; attempt < 30; attempt += 1) {
+            await new Promise((resolve) => setTimeout(resolve, 100));
+            const refreshState = formScreen?.querySelector('[data-runtime-result-refresh]')?.getAttribute('data-runtime-result-refresh-state') || '';
+            if (refreshState === 'success' || refreshState === 'error') {
+              break;
+            }
+          }
+        }
+        if (expected.statusProbe === 'real' && resultRefreshButton && !resultRefreshButton.disabled) {
+          resultRefreshButton.click();
+          for (let attempt = 0; attempt < 30; attempt += 1) {
+            await new Promise((resolve) => setTimeout(resolve, 100));
+            const refreshState = resultRefreshButton.getAttribute('data-runtime-result-refresh-state') || '';
+            if (refreshState === 'success' || refreshState === 'error') {
+              break;
+            }
+          }
+        }
+        const runtimeDataHiddenKeyAfterRefresh = formScreen?.querySelector(`[data-runtime-hidden-action-key="${expected.keyField}"]`);
+        const runtimeDataDraftAfterRefresh = formScreen?.querySelector('[data-intent-draft-output]')?.textContent || '';
+        let parsedRuntimeDataDraftAfterRefresh = {};
+        try {
+          parsedRuntimeDataDraftAfterRefresh = runtimeDataDraftAfterRefresh ? JSON.parse(runtimeDataDraftAfterRefresh) : {};
+        } catch (error) {
+          parsedRuntimeDataDraftAfterRefresh = { parse_error: String(error && error.message ? error.message : error) };
+        }
+        const probeResult = window.__noCodeRuntimeSubmitProbe || {};
+        const statusProbeResult = window.__noCodeRuntimeStatusProbe || {};
+        const dataProbeResult = window.__noCodeRuntimeDataProbe || {};
+        submitProbe = {
+          skipped: false,
+          stateBeforeClick,
+          disabledBeforeClick,
+          stateAfterClick: submitSnapshot.stateAfterClick,
+          statusAfterClick: submitSnapshot.statusAfterClick,
+          feedbackAfterClick: submitSnapshot.feedbackAfterClick,
+          statusOutboxDetailPath: submitSnapshot.statusOutboxDetailPath,
+          statusOutboxStatusPath: submitSnapshot.statusOutboxStatusPath,
+          statusOutboxPollState: submitSnapshot.statusOutboxPollState,
+          statusOutboxPollCount: submitSnapshot.statusOutboxPollCount,
+          feedbackOutboxDetailPath: submitSnapshot.feedbackOutboxDetailPath,
+          resultRefreshDisabledAfterClick: !!resultRefreshButton?.disabled,
+          resultRefreshStateAfterClick: resultRefreshButton?.getAttribute('data-runtime-result-refresh-state') || '',
+          resultRefreshStatusAfterClick: formScreen?.querySelector('[data-runtime-result-refresh-status]')?.textContent?.trim() || '',
+          runtimeDataFetchCalled: !!dataProbeResult.fetchCalled,
+          runtimeDataFetchUrl: dataProbeResult.url || '',
+          runtimeDataFetchResponseStatus: dataProbeResult.responseStatus || 0,
+          runtimeDataFetchResponseOk: dataProbeResult.responseOk,
+          runtimeDataFetchContractVersion: dataProbeResult.contractVersion || '',
+          runtimeDataFetchScreenCount: Number(dataProbeResult.screenCount || 0),
+          runtimeDataFetchFirstRowKey: dataProbeResult.firstRowKey || '',
+          runtimeDataListRowCountAfterRefresh: document.querySelectorAll(`.no-code-screen[data-screen-key="${expected.listScreenKey}"] tbody tr:not(.no-code-empty-row)`).length,
+          runtimeDataHiddenKeyValueAfterRefresh: runtimeDataHiddenKeyAfterRefresh?.getAttribute('value') || '',
+          runtimeDataDraftSummaryAfterRefresh: formScreen?.querySelector('[data-intent-draft-summary]')?.textContent?.trim() || '',
+          runtimeDataDraftChecksAfterRefresh: Array.isArray(parsedRuntimeDataDraftAfterRefresh.draft_checks) ? parsedRuntimeDataDraftAfterRefresh.draft_checks : [],
+          runtimeFlowStateAfterClick: submitSnapshot.runtimeFlowStateAfterClick,
+          runtimeFlowSubmitStateAfterClick: submitSnapshot.runtimeFlowSubmitStateAfterClick,
+          runtimeFlowTrackStateAfterClick: submitSnapshot.runtimeFlowTrackStateAfterClick,
+          runtimeFlowRefreshStateAfterClick: submitSnapshot.runtimeFlowRefreshStateAfterClick,
+          runtimeFlowTextAfterClick: submitSnapshot.runtimeFlowTextAfterClick,
+          outboxCopyDisabledAfterClick: submitSnapshot.outboxCopyDisabledAfterClick,
+          outboxCopyPathAfterClick: submitSnapshot.outboxCopyPathAfterClick,
+          outboxDetailLinkHiddenAfterClick: submitSnapshot.outboxDetailLinkHiddenAfterClick,
+          outboxDetailLinkHrefAfterClick: submitSnapshot.outboxDetailLinkHrefAfterClick,
+          outboxDetailLinkPathAfterClick: submitSnapshot.outboxDetailLinkPathAfterClick,
+          outboxCopyStatusAfterClick: submitSnapshot.outboxCopyStatusAfterClick,
           copiedOutboxDetailPath: window.__noCodeRuntimeCopiedOutboxDetailPath || '',
           fetchCalled: !!probeResult.fetchCalled,
           url: probeResult.url || '',
@@ -897,7 +1045,7 @@ async function runSmoke(config) {
       if (!metrics.bodyText.includes(config.expected.seededText)) {
         throw new Error(`seeded preview text was not found: ${config.expected.seededText}`);
       }
-    } else if (metrics.emptyScreenCount < 1) {
+    } else if (!(metrics.submitProbe && metrics.submitProbe.runtimeDataFetchCalled && metrics.submitProbe.runtimeDataListRowCountAfterRefresh >= 1) && metrics.emptyScreenCount < 1) {
       throw new Error('generated empty screen state was not found.');
     }
     if (metrics.keyboardActionCount !== metrics.actionCount || metrics.actionAffordanceCount !== metrics.actionCount) {
@@ -954,7 +1102,7 @@ async function runSmoke(config) {
     if (!metrics.runtimeResultRefreshStates.every((state) => state === 'waiting')) {
       throw new Error(`runtime result refresh initial state mismatch: ${metrics.runtimeResultRefreshStates.join(', ')}`);
     }
-    if (!metrics.runtimeResultRefreshStatusText.every((text) => text.includes('Refresh preview is available after server submit.'))) {
+    if (!metrics.runtimeResultRefreshStatusText.every((text) => text.includes('Artifact-key previews stay static; current or alias previews can fetch live runtime data when available.'))) {
       throw new Error(`runtime result refresh initial status mismatch: ${metrics.runtimeResultRefreshStatusText.join(' | ')}`);
     }
     if (metrics.runtimeFlowCount !== 3 || metrics.runtimeFlowSubmitCount !== 3 || metrics.runtimeFlowTrackCount !== 3 || metrics.runtimeFlowRefreshCount !== 3) {
@@ -1052,6 +1200,15 @@ async function runSmoke(config) {
         if (!probe.statusAfterClick.includes('Live outbox check: done.') || !probe.feedbackAfterClick.includes('This sync outbox item has completed processing.')) {
           throw new Error(`stub submit probe did not show terminal done guidance: ${JSON.stringify(probe)}`);
         }
+        if (!probe.runtimeDataFetchCalled || probe.runtimeDataFetchResponseStatus !== 200 || probe.runtimeDataFetchResponseOk !== true) {
+          throw new Error(`stub submit probe terminal done did not auto-refresh runtime data: ${JSON.stringify(probe)}`);
+        }
+        if (probe.runtimeDataFetchContractVersion !== 'no-code-runtime-data-v0' || probe.runtimeDataFetchFirstRowKey !== String(config.expected.keyValue)) {
+          throw new Error(`stub submit probe terminal done runtime data mismatch: ${JSON.stringify(probe)}`);
+        }
+        if (!probe.resultRefreshStatusAfterClick.includes('Fresh runtime data loaded from')) {
+          throw new Error(`stub submit probe terminal done did not show auto-refresh status: ${JSON.stringify(probe)}`);
+        }
       }
       if (config.submitProbe === 'enabled-fetch-stub' && config.statusProbe === 'stub-failed') {
         const expectedOutboxPath = `/projects/${encodeURIComponent(config.expected.projectKey)}/sync-outbox/stub-runtime-status-dedupe`;
@@ -1114,7 +1271,7 @@ async function runSmoke(config) {
         if (probe.statusFetchCount !== 3) {
           throw new Error(`real submit probe did not run bounded status polling: ${JSON.stringify(probe)}`);
         }
-        if (probe.resultRefreshDisabledAfterClick || probe.resultRefreshStateAfterClick !== 'ready') {
+        if (probe.resultRefreshDisabledAfterClick || probe.resultRefreshStateAfterClick !== 'success') {
           throw new Error(`real submit probe did not enable result refresh: ${JSON.stringify(probe)}`);
         }
         if (probe.runtimeFlowStateAfterClick !== 'timeout' || probe.runtimeFlowSubmitStateAfterClick !== 'done' || probe.runtimeFlowTrackStateAfterClick !== 'waiting' || probe.runtimeFlowRefreshStateAfterClick !== 'ready') {
@@ -1129,8 +1286,30 @@ async function runSmoke(config) {
         if (!probe.statusAfterClick.includes('Live outbox check stopped after 3 attempts.') || !probe.feedbackAfterClick.includes('Live outbox check stopped after 3 attempts.')) {
           throw new Error(`real submit probe did not show bounded polling timeout guidance: ${JSON.stringify(probe)}`);
         }
-        if (!probe.resultRefreshStatusAfterClick.includes('Process the sync outbox item, then use Refresh preview to reload this screen.')) {
+        const expectsRuntimeDataRefresh = config.statusProbe === 'real';
+        if (expectsRuntimeDataRefresh && !probe.resultRefreshStatusAfterClick.includes('Fresh runtime data loaded from')) {
           throw new Error(`real submit probe did not show result refresh status: ${JSON.stringify(probe)}`);
+        }
+        if (!expectsRuntimeDataRefresh && !probe.resultRefreshStatusAfterClick.includes('Refresh preview fetches read-only live runtime data for this current or alias selection.')) {
+          throw new Error(`real submit probe did not show runtime data refresh readiness: ${JSON.stringify(probe)}`);
+        }
+        if (expectsRuntimeDataRefresh && (!probe.runtimeDataFetchCalled || probe.runtimeDataFetchResponseStatus !== 200 || probe.runtimeDataFetchResponseOk !== true)) {
+          throw new Error(`real submit probe did not fetch runtime data: ${JSON.stringify(probe)}`);
+        }
+        if (expectsRuntimeDataRefresh && (probe.runtimeDataFetchContractVersion !== 'no-code-runtime-data-v0' || probe.runtimeDataFetchScreenCount !== 3 || probe.runtimeDataFetchFirstRowKey !== String(config.expected.keyValue))) {
+          throw new Error(`real submit probe runtime data contract mismatch: ${JSON.stringify(probe)}`);
+        }
+        if (expectsRuntimeDataRefresh && probe.runtimeDataListRowCountAfterRefresh < 1) {
+          throw new Error(`real submit probe did not render fresh runtime rows: ${JSON.stringify(probe)}`);
+        }
+        if (expectsRuntimeDataRefresh && probe.runtimeDataHiddenKeyValueAfterRefresh !== String(config.expected.keyValue)) {
+          throw new Error(`real submit probe did not preserve refreshed form key: ${JSON.stringify(probe)}`);
+        }
+        if (expectsRuntimeDataRefresh && probe.runtimeDataDraftChecksAfterRefresh.includes(`key.missing:${config.expected.keyField}`)) {
+          throw new Error(`real submit probe refreshed draft lost the form key: ${JSON.stringify(probe)}`);
+        }
+        if (expectsRuntimeDataRefresh && !probe.runtimeDataDraftSummaryAfterRefresh.includes('Ready draft:')) {
+          throw new Error(`real submit probe refreshed draft was not ready after key preservation: ${JSON.stringify(probe)}`);
         }
         if (probe.outboxCopyDisabledAfterClick || probe.outboxCopyPathAfterClick !== expectedOutboxPath || probe.copiedOutboxDetailPath !== expectedOutboxPath) {
           throw new Error(`real submit probe did not copy outbox detail path: ${JSON.stringify(probe)}`);
@@ -1141,7 +1320,7 @@ async function runSmoke(config) {
         if (!probe.outboxCopyStatusAfterClick.includes('Outbox detail path copied.')) {
           throw new Error(`real submit probe did not show outbox copy status: ${JSON.stringify(probe)}`);
         }
-        if (!probe.statusAfterClick.includes('Next result check: process the sync outbox item, then use Refresh preview to reload this screen.') || !probe.feedbackAfterClick.includes('Next result check: process the sync outbox item, then use Refresh preview to reload this screen.')) {
+        if (!probe.statusAfterClick.includes('Next result check: process the sync outbox item, then reload this generated preview artifact or open the outbox detail.') || !probe.feedbackAfterClick.includes('Next result check: process the sync outbox item, then reload this generated preview artifact or open the outbox detail.')) {
           throw new Error(`real submit probe did not show result follow-up guidance: ${JSON.stringify(probe)}`);
         }
       }

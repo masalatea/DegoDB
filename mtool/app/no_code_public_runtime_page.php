@@ -6,6 +6,7 @@ require_once __DIR__ . '/domain_validation.php';
 require_once __DIR__ . '/error_page.php';
 require_once __DIR__ . '/auth.php';
 require_once __DIR__ . '/csrf.php';
+require_once __DIR__ . '/database.php';
 require_once __DIR__ . '/generated_catalog.php';
 require_once __DIR__ . '/managed_operation_repository_pdo.php';
 require_once __DIR__ . '/managed_operation_server_dbaccess_executor.php';
@@ -17,6 +18,7 @@ require_once __DIR__ . '/no_code_runtime.php';
 require_once __DIR__ . '/project_db_access_bootstrap_service.php';
 require_once __DIR__ . '/project_output_service.php';
 require_once __DIR__ . '/response.php';
+require_once __DIR__ . '/sql_dialect.php';
 
 function app_no_code_public_runtime_preview_path(string $projectKey, string $artifactKey): string
 {
@@ -50,6 +52,13 @@ function app_no_code_public_runtime_current_execution_path(string $projectKey): 
         . '/current/execute.json';
 }
 
+function app_no_code_public_runtime_current_data_path(string $projectKey): string
+{
+    return '/runs/no-code/'
+        . rawurlencode(app_normalize_project_key($projectKey))
+        . '/current/runtime-data.json';
+}
+
 function app_no_code_public_runtime_alias_preview_path(string $projectKey, string $aliasKey): string
 {
     return '/runs/no-code/'
@@ -66,6 +75,15 @@ function app_no_code_public_runtime_alias_execution_path(string $projectKey, str
         . '/alias/'
         . rawurlencode(app_no_code_public_runtime_normalize_alias_key($aliasKey))
         . '/execute.json';
+}
+
+function app_no_code_public_runtime_alias_data_path(string $projectKey, string $aliasKey): string
+{
+    return '/runs/no-code/'
+        . rawurlencode(app_normalize_project_key($projectKey))
+        . '/alias/'
+        . rawurlencode(app_no_code_public_runtime_normalize_alias_key($aliasKey))
+        . '/runtime-data.json';
 }
 
 function app_no_code_public_runtime_artifact_cache_control(): string
@@ -120,6 +138,325 @@ function app_no_code_public_runtime_demo_processing_requested(array $post): bool
 {
     $value = strtolower(trim((string) ($post['runtime_demo_process'] ?? '')));
     return in_array($value, ['1', 'true', 'yes', 'on'], true);
+}
+
+function app_no_code_public_runtime_data_contract_version(): string
+{
+    return 'no-code-runtime-data-v0';
+}
+
+/**
+ * @return array{status_code:int,payload:array<string,mixed>}
+ */
+function app_no_code_public_runtime_data_error_response(string $error, int $statusCode = 422): array
+{
+    return [
+        'status_code' => $statusCode,
+        'payload' => [
+            'ok' => false,
+            'contract_version' => app_no_code_public_runtime_data_contract_version(),
+            'project_key' => '',
+            'selection' => [],
+            'screen_definition_version' => '',
+            'runtime_preview_version' => app_no_code_runtime_version(),
+            'screens' => [],
+            'error' => $error,
+        ],
+    ];
+}
+
+function app_no_code_public_runtime_data_row_from_value(mixed $value): array
+{
+    if (is_array($value)) {
+        return $value;
+    }
+
+    if (is_object($value)) {
+        return get_object_vars($value);
+    }
+
+    return [];
+}
+
+/**
+ * @return array<string,string|false>
+ */
+function app_no_code_public_runtime_capture_runtime_db_env(): array
+{
+    $keys = [
+        'MTOOL_RUNTIME_DB_DSN',
+        'MTOOL_RUNTIME_DB_USER',
+        'MTOOL_RUNTIME_DB_PASSWORD',
+        'MTOOL_RUNTIME_DB_HOST',
+        'MTOOL_RUNTIME_DB_PORT',
+        'MTOOL_RUNTIME_DB_NAME',
+        'MTOOL_RUNTIME_SQLITE_PATH',
+    ];
+    $previous = [];
+    foreach ($keys as $key) {
+        $previous[$key] = getenv($key);
+    }
+
+    return $previous;
+}
+
+/**
+ * @param array<string,string|false> $previous
+ */
+function app_no_code_public_runtime_restore_runtime_db_env(array $previous): void
+{
+    foreach ($previous as $key => $value) {
+        if ($value === false) {
+            putenv($key);
+            continue;
+        }
+
+        putenv($key . '=' . $value);
+    }
+
+    $GLOBALS['mtooldb'] = null;
+}
+
+function app_no_code_public_runtime_apply_runtime_db_env(array $app, string $dbConfigKey = 'config_db'): void
+{
+    $configDb = app_database_config($app, $dbConfigKey);
+    $dialect = app_sql_dialect_from_db_config($configDb);
+
+    $GLOBALS['mtooldb'] = null;
+    if ($dialect === 'sqlite') {
+        putenv('MTOOL_RUNTIME_DB_DSN=' . (string) ($configDb['dsn'] ?? ''));
+        putenv('MTOOL_RUNTIME_DB_USER=');
+        putenv('MTOOL_RUNTIME_DB_PASSWORD=');
+        putenv('MTOOL_RUNTIME_DB_HOST=');
+        putenv('MTOOL_RUNTIME_DB_PORT=');
+        putenv('MTOOL_RUNTIME_DB_NAME=');
+        putenv('MTOOL_RUNTIME_SQLITE_PATH=' . (string) ($configDb['name'] ?? ''));
+        return;
+    }
+
+    putenv('MTOOL_RUNTIME_DB_DSN');
+    putenv('MTOOL_RUNTIME_SQLITE_PATH');
+    putenv('MTOOL_RUNTIME_DB_HOST=' . (string) ($configDb['host'] ?? ''));
+    putenv('MTOOL_RUNTIME_DB_PORT=' . (string) ($configDb['port'] ?? ''));
+    putenv('MTOOL_RUNTIME_DB_USER=' . (string) ($configDb['user'] ?? ''));
+    putenv('MTOOL_RUNTIME_DB_PASSWORD=' . (string) ($configDb['password'] ?? ''));
+    putenv('MTOOL_RUNTIME_DB_NAME=' . (string) ($configDb['name'] ?? ''));
+}
+
+/**
+ * @template T
+ * @param callable():T $callback
+ * @return T
+ */
+function app_no_code_public_runtime_with_runtime_db_env(array $app, callable $callback): mixed
+{
+    $previous = app_no_code_public_runtime_capture_runtime_db_env();
+    app_no_code_public_runtime_apply_runtime_db_env($app);
+    try {
+        return $callback();
+    } finally {
+        app_no_code_public_runtime_restore_runtime_db_env($previous);
+    }
+}
+
+/**
+ * @return list<array<string,mixed>>
+ */
+function app_no_code_public_runtime_data_rows_for_contract(array $app, string $projectKey, string $contractKey): array
+{
+    $runtimeEntity = app_project_db_access_bootstrap_materialize_runtime_entity($app, $projectKey, $contractKey);
+    if (!$runtimeEntity['ok'] || !is_array($runtimeEntity['entity'] ?? null)) {
+        throw new RuntimeException($runtimeEntity['error']);
+    }
+
+    $entity = $runtimeEntity['entity'];
+    $dataPath = (string) ($entity['data_path'] ?? '');
+    $dbaccessPath = (string) ($entity['dbaccess_path'] ?? '');
+    if ($dataPath === '' || $dbaccessPath === '' || !is_file($dataPath) || !is_file($dbaccessPath)) {
+        throw new RuntimeException('runtime DBAccess files were not materialized for fresh runtime data.');
+    }
+
+    require_once $dataPath;
+    require_once $dbaccessPath;
+
+    $dbAccessClass = (string) ($entity['dbaccess_class'] ?? '');
+    if ($dbAccessClass === '' || !class_exists($dbAccessClass)) {
+        throw new RuntimeException('runtime DBAccess class was not found for fresh runtime data: ' . $dbAccessClass);
+    }
+
+    $sourceName = (string) ($entity['source_name'] ?? $contractKey);
+    $generatedSourceName = preg_replace('/DBAccess$/', '', $dbAccessClass);
+    $methodCandidates = array_values(array_unique(array_filter([
+        'Get' . $sourceName . 'List',
+        is_string($generatedSourceName) ? 'Get' . $generatedSourceName . 'List' : '',
+    ])));
+
+    $dbAccess = new $dbAccessClass();
+    $listMethod = '';
+    foreach ($methodCandidates as $methodCandidate) {
+        if (method_exists($dbAccess, $methodCandidate)) {
+            $listMethod = $methodCandidate;
+            break;
+        }
+    }
+    if ($listMethod === '') {
+        throw new RuntimeException('runtime DBAccess list method was not found for fresh runtime data: ' . $contractKey);
+    }
+
+    $result = $dbAccess->$listMethod();
+    if (!is_array($result)) {
+        throw new RuntimeException('runtime DBAccess list method did not return rows: ' . $listMethod);
+    }
+
+    return array_values(array_map(
+        static fn (mixed $item): array => app_no_code_public_runtime_data_row_from_value($item),
+        $result,
+    ));
+}
+
+/**
+ * @param array<string,mixed> $render
+ * @param array<string,mixed> $currentItem
+ * @return array{field_key:string,value:mixed,display_value:string}|array{}
+ */
+function app_no_code_public_runtime_data_selected_key(array $render, array $currentItem): array
+{
+    foreach (($render['actions'] ?? []) as $action) {
+        if (!is_array($action)) {
+            continue;
+        }
+        foreach (($action['fields'] ?? []) as $field) {
+            if (!is_array($field) || (string) ($field['role'] ?? '') !== 'key') {
+                continue;
+            }
+
+            $fieldKey = (string) ($field['field_key'] ?? '');
+            if ($fieldKey === '' || !array_key_exists($fieldKey, $currentItem)) {
+                continue;
+            }
+
+            $value = $currentItem[$fieldKey];
+            return [
+                'field_key' => $fieldKey,
+                'value' => $value,
+                'display_value' => app_no_code_runtime_display_value($value),
+            ];
+        }
+    }
+
+    return [];
+}
+
+/**
+ * @param array<string,mixed> $render
+ * @param list<array<string,mixed>> $rows
+ * @param array<string,mixed> $currentItem
+ * @return array<string,mixed>
+ */
+function app_no_code_public_runtime_data_screen_metadata(array $render, array $rows, array $currentItem): array
+{
+    return [
+        'row_count' => count($rows),
+        'selected_key' => app_no_code_public_runtime_data_selected_key($render, $currentItem),
+        'freshness' => 'live-read',
+    ];
+}
+
+/**
+ * @param array<string,mixed> $definition
+ * @return list<array<string,mixed>>
+ */
+function app_no_code_public_runtime_data_screens(array $app, string $projectKey, array $definition): array
+{
+    $screens = [];
+    foreach (($definition['contracts'] ?? []) as $contract) {
+        if (!is_array($contract)) {
+            continue;
+        }
+
+        $contractKey = (string) ($contract['contract_key'] ?? '');
+        if ($contractKey === '') {
+            continue;
+        }
+
+        $rows = app_no_code_public_runtime_data_rows_for_contract($app, $projectKey, $contractKey);
+        $currentItem = $rows[0] ?? [];
+        foreach (($contract['screens'] ?? []) as $screen) {
+            if (!is_array($screen)) {
+                continue;
+            }
+            $screenKey = (string) ($screen['screen_key'] ?? '');
+            if ($screenKey === '') {
+                continue;
+            }
+
+            $renderResult = app_no_code_runtime_render_screen($definition, $screenKey, $rows, $currentItem);
+            if (!$renderResult['ok']) {
+                throw new RuntimeException($renderResult['error']);
+            }
+
+            $render = $renderResult['render'];
+            $screens[] = [
+                'screen_key' => (string) ($render['screen_key'] ?? ''),
+                'screen_type' => (string) ($render['screen_type'] ?? ''),
+                'contract_key' => (string) ($render['contract_key'] ?? ''),
+                'data' => is_array($render['data'] ?? null) ? $render['data'] : [],
+                'metadata' => app_no_code_public_runtime_data_screen_metadata($render, $rows, $currentItem),
+                'source' => [
+                    'kind' => 'generated-dbaccess',
+                    'contract_key' => $contractKey,
+                ],
+            ];
+        }
+    }
+
+    return $screens;
+}
+
+/**
+ * @param array<string,mixed> $candidate
+ * @return array{status_code:int,payload:array<string,mixed>}
+ */
+function app_no_code_public_runtime_data_response_for_candidate(
+    array $app,
+    string $projectKey,
+    array $candidate,
+    string $selectionKind,
+    string $aliasKey = '',
+): array {
+    $definitionResult = app_no_code_public_runtime_candidate_screen_definition($app, $projectKey, $candidate);
+    if (!$definitionResult['ok']) {
+        return app_no_code_public_runtime_data_error_response($definitionResult['error']);
+    }
+
+    try {
+        $definition = $definitionResult['definition'];
+        $screens = app_no_code_public_runtime_with_runtime_db_env(
+            $app,
+            static fn (): array => app_no_code_public_runtime_data_screens($app, $projectKey, $definition),
+        );
+    } catch (Throwable $throwable) {
+        return app_no_code_public_runtime_data_error_response($throwable->getMessage());
+    }
+
+    return [
+        'status_code' => 200,
+        'payload' => [
+            'ok' => true,
+            'contract_version' => app_no_code_public_runtime_data_contract_version(),
+            'project_key' => app_normalize_project_key($projectKey),
+            'selection' => [
+                'kind' => $selectionKind,
+                'alias_key' => $aliasKey,
+                'artifact_key' => (string) ($candidate['artifact_key'] ?? ''),
+                'revision_id' => (string) ($candidate['revision_id'] ?? ''),
+            ],
+            'screen_definition_version' => (string) ($definition['definition_version'] ?? ''),
+            'runtime_preview_version' => app_no_code_runtime_version(),
+            'screens' => $screens,
+            'error' => '',
+        ],
+    ];
 }
 
 /**
@@ -440,9 +777,13 @@ function app_no_code_public_runtime_preview_execution_binding(
     string $projectKey,
     array $candidate,
     string $executionPath,
+    ?string $dataPath = null,
 ): array {
     $binding = app_no_code_public_runtime_execution_binding($projectKey, $candidate);
     $binding['execution_url'] = $executionPath;
+    if ($dataPath !== null && $dataPath !== '') {
+        $binding['runtime_data_url'] = $dataPath;
+    }
     return $binding;
 }
 
@@ -462,6 +803,7 @@ function app_send_no_code_public_runtime_candidate_preview_response(
     array $candidate,
     string $cacheControl,
     ?string $executionPath = null,
+    ?string $dataPath = null,
 ): bool {
     $artifactKey = (string) ($candidate['artifact_key'] ?? '');
     if (!app_project_output_artifact_key_is_valid($artifactKey)) {
@@ -490,7 +832,7 @@ function app_send_no_code_public_runtime_candidate_preview_response(
     }
 
     $executionBinding = $executionPath !== null
-        ? app_no_code_public_runtime_preview_execution_binding($projectKey, $candidate, $executionPath)
+        ? app_no_code_public_runtime_preview_execution_binding($projectKey, $candidate, $executionPath, $dataPath)
         : null;
     app_send_no_code_public_runtime_file_response($request, $previewPath, $cacheControl, $executionBinding);
     return true;
@@ -672,6 +1014,57 @@ function app_render_no_code_public_runtime_current_execution_page(array $app, ar
  *     route_params?:array<string,string>
  * } $request
  */
+function app_render_no_code_public_runtime_current_data_page(array $app, array $request): void
+{
+    if (!app_request_method_is($request, 'GET')) {
+        app_send_json_response(
+            $request,
+            app_no_code_public_runtime_data_error_response('runtime data endpoint requires GET.', 405)['payload'],
+            405,
+        );
+        return;
+    }
+
+    $projectKey = app_normalize_project_key(app_route_param($request, 'project_key'));
+    if ($projectKey === '' || !app_project_key_is_valid($projectKey)) {
+        app_send_json_response(
+            $request,
+            app_no_code_public_runtime_data_error_response('runtime data project binding does not match.', 409)['payload'],
+            409,
+        );
+        return;
+    }
+
+    $candidateResult = app_pdo_find_current_approved_no_code_publish_candidate($app, $projectKey);
+    if (!$candidateResult['ok'] || $candidateResult['item'] === null) {
+        app_send_json_response(
+            $request,
+            app_no_code_public_runtime_data_error_response('runtime data artifact was not found.', 422)['payload'],
+            422,
+        );
+        return;
+    }
+
+    $response = app_no_code_public_runtime_data_response_for_candidate(
+        $app,
+        $projectKey,
+        $candidateResult['item'],
+        'current',
+    );
+    app_send_json_response($request, $response['payload'], $response['status_code']);
+}
+
+/**
+ * @param array{
+ *     site_name:string
+ * } $app
+ * @param array{
+ *     request_id:string,
+ *     method:string,
+ *     path:string,
+ *     route_params?:array<string,string>
+ * } $request
+ */
 function app_render_no_code_public_runtime_alias_execution_page(array $app, array $request): void
 {
     $projectKey = app_normalize_project_key(app_route_param($request, 'project_key'));
@@ -734,6 +1127,68 @@ function app_render_no_code_public_runtime_alias_execution_page(array $app, arra
  *     route_params?:array<string,string>
  * } $request
  */
+function app_render_no_code_public_runtime_alias_data_page(array $app, array $request): void
+{
+    if (!app_request_method_is($request, 'GET')) {
+        app_send_json_response(
+            $request,
+            app_no_code_public_runtime_data_error_response('runtime data endpoint requires GET.', 405)['payload'],
+            405,
+        );
+        return;
+    }
+
+    $projectKey = app_normalize_project_key(app_route_param($request, 'project_key'));
+    if ($projectKey === '' || !app_project_key_is_valid($projectKey)) {
+        app_send_json_response(
+            $request,
+            app_no_code_public_runtime_data_error_response('runtime data project binding does not match.', 409)['payload'],
+            409,
+        );
+        return;
+    }
+
+    $aliasKey = app_no_code_public_runtime_normalize_alias_key(app_route_param($request, 'alias_key'));
+    if (!app_no_code_public_runtime_alias_key_is_valid($aliasKey)) {
+        app_send_json_response(
+            $request,
+            app_no_code_public_runtime_data_error_response('runtime data alias binding does not match.', 409)['payload'],
+            409,
+        );
+        return;
+    }
+
+    $candidateResult = app_pdo_find_approved_no_code_publish_candidate_for_alias($app, $projectKey, $aliasKey);
+    if (!$candidateResult['ok'] || $candidateResult['item'] === null) {
+        app_send_json_response(
+            $request,
+            app_no_code_public_runtime_data_error_response('runtime data artifact was not found.', 422)['payload'],
+            422,
+        );
+        return;
+    }
+
+    $response = app_no_code_public_runtime_data_response_for_candidate(
+        $app,
+        $projectKey,
+        $candidateResult['item'],
+        'alias',
+        $aliasKey,
+    );
+    app_send_json_response($request, $response['payload'], $response['status_code']);
+}
+
+/**
+ * @param array{
+ *     site_name:string
+ * } $app
+ * @param array{
+ *     request_id:string,
+ *     method:string,
+ *     path:string,
+ *     route_params?:array<string,string>
+ * } $request
+ */
 function app_render_no_code_public_runtime_current_preview_page(array $app, array $request): void
 {
     if (!app_request_method_is($request, 'GET')) {
@@ -760,6 +1215,7 @@ function app_render_no_code_public_runtime_current_preview_page(array $app, arra
         $candidateResult['item'],
         app_no_code_public_runtime_current_cache_control(),
         app_no_code_public_runtime_current_execution_path($projectKey),
+        app_no_code_public_runtime_current_data_path($projectKey),
     )) {
         app_render_not_found_page($app, $request);
         return;
@@ -809,6 +1265,7 @@ function app_render_no_code_public_runtime_alias_preview_page(array $app, array 
         $candidateResult['item'],
         app_no_code_public_runtime_current_cache_control(),
         app_no_code_public_runtime_alias_execution_path($projectKey, $aliasKey),
+        app_no_code_public_runtime_alias_data_path($projectKey, $aliasKey),
     )) {
         app_render_not_found_page($app, $request);
         return;

@@ -9,6 +9,7 @@ require_once dirname(__DIR__) . '/app/generated_catalog.php';
 require_once dirname(__DIR__) . '/app/managed_operation_repository_pdo.php';
 require_once dirname(__DIR__) . '/app/managed_operation_server_dbaccess_executor.php';
 require_once dirname(__DIR__) . '/app/managed_operation_sync_outbox_processor.php';
+require_once dirname(__DIR__) . '/app/no_code_public_runtime_page.php';
 require_once dirname(__DIR__) . '/app/project_db_access_bootstrap_service.php';
 
 function usage(): string
@@ -86,6 +87,10 @@ function smoke_profile(string $profile): array
             ],
             'sqlite_select' => 'SELECT id, title, status, priority, body FROM no_code_ticket WHERE id = ?',
             'sqlite_select_values' => [1001],
+            'list_screen_key' => 'no_code_ticket_list',
+            'detail_screen_key' => 'no_code_ticket_detail',
+            'form_screen_key' => 'no_code_ticket_form',
+            'key_field' => 'id',
             'expected_field' => 'body',
             'expected_value' => 'Generated sample28 direct endpoint smoke payload',
         ],
@@ -125,6 +130,10 @@ function smoke_profile(string $profile): array
             ],
             'sqlite_select' => 'SELECT id, case_number, customer_name, customer_tier, subject, status, severity, next_action FROM support_case WHERE id = ?',
             'sqlite_select_values' => [2001],
+            'list_screen_key' => 'support_case_list',
+            'detail_screen_key' => 'support_case_detail',
+            'form_screen_key' => 'support_case_form',
+            'key_field' => 'id',
             'expected_field' => 'next_action',
             'expected_value' => 'Generated sample29 direct endpoint smoke payload',
         ],
@@ -164,6 +173,10 @@ function smoke_profile(string $profile): array
             ],
             'sqlite_select' => 'SELECT id, request_number, requester_name, warehouse_code, item_sku, quantity_needed, status, fulfillment_note FROM inventory_request WHERE id = ?',
             'sqlite_select_values' => [3101],
+            'list_screen_key' => 'inventory_request_list',
+            'detail_screen_key' => 'inventory_request_detail',
+            'form_screen_key' => 'inventory_request_form',
+            'key_field' => 'id',
             'expected_field' => 'fulfillment_note',
             'expected_value' => 'Generated sample31 direct endpoint smoke payload',
         ],
@@ -288,6 +301,130 @@ function profile_process_pending_outbox(array $app, array $profile, array $bindi
     return $processed;
 }
 
+function runtime_data_display_value(mixed $field): string
+{
+    if (is_array($field)) {
+        if (array_key_exists('display_value', $field)) {
+            return (string) $field['display_value'];
+        }
+        if (array_key_exists('value', $field)) {
+            return (string) $field['value'];
+        }
+    }
+
+    return (string) $field;
+}
+
+function profile_latest_runtime_candidate(array $app, array $profile): array
+{
+    $result = app_project_output_list(
+        $app,
+        (string) $profile['project_key'],
+        APP_NO_CODE_OPERATOR_SOURCE_OUTPUT_KEY,
+    );
+    ensure(($result['ok'] ?? false) === true, $profile['project_key'] . ' runtime output list failed.');
+    $items = is_array($result['items'] ?? null) ? $result['items'] : [];
+    ensure($items !== [], $profile['project_key'] . ' runtime output artifact was not found.');
+
+    return [
+        'artifact_key' => (string) ($items[0]['artifact_key'] ?? ''),
+    ];
+}
+
+function profile_runtime_data_screen(array $screens, string $screenKey): array
+{
+    foreach ($screens as $screen) {
+        if (is_array($screen) && (string) ($screen['screen_key'] ?? '') === $screenKey) {
+            return $screen;
+        }
+    }
+
+    return [];
+}
+
+function profile_runtime_data_row_by_key(array $rows, string $keyField, string $keyValue): array
+{
+    foreach ($rows as $row) {
+        if (!is_array($row)) {
+            continue;
+        }
+        if (runtime_data_display_value($row[$keyField] ?? '') === $keyValue) {
+            return $row;
+        }
+    }
+
+    return [];
+}
+
+function profile_runtime_data_after_processing(array $app, array $profile): array
+{
+    $candidate = profile_latest_runtime_candidate($app, $profile);
+    $definition = app_no_code_public_runtime_candidate_screen_definition(
+        $app,
+        (string) $profile['project_key'],
+        $candidate,
+    );
+    ensure($definition['ok'], $profile['project_key'] . ' runtime screen definition failed: ' . $definition['error']);
+
+    $screens = app_no_code_public_runtime_data_screens(
+        $app,
+        (string) $profile['project_key'],
+        $definition['definition'],
+    );
+    ensure(count($screens) === 3, $profile['project_key'] . ' runtime data screen count mismatch.');
+
+    $keyField = (string) $profile['key_field'];
+    $keyValue = (string) $profile['sqlite_select_values'][0];
+    $expectedField = (string) $profile['expected_field'];
+    $expectedValue = (string) $profile['expected_value'];
+
+    $listScreen = profile_runtime_data_screen($screens, (string) $profile['list_screen_key']);
+    $listRows = is_array($listScreen['data']['rows'] ?? null) ? $listScreen['data']['rows'] : [];
+    $listMetadata = is_array($listScreen['metadata'] ?? null) ? $listScreen['metadata'] : [];
+    $listRow = profile_runtime_data_row_by_key($listRows, $keyField, $keyValue);
+    ensure($listRow !== [], $profile['project_key'] . ' runtime data list row was not found after processing.');
+    ensure(
+        ($listMetadata['row_count'] ?? null) === count($listRows),
+        $profile['project_key'] . ' runtime data list row count metadata mismatch.',
+    );
+    ensure(
+        runtime_data_display_value($listRow[$expectedField] ?? '') === $expectedValue,
+        $profile['project_key'] . ' runtime data list row did not include processed value.',
+    );
+
+    $detailScreen = profile_runtime_data_screen($screens, (string) $profile['detail_screen_key']);
+    $detailItem = is_array($detailScreen['data']['item'] ?? null) ? $detailScreen['data']['item'] : [];
+    $detailMetadata = is_array($detailScreen['metadata'] ?? null) ? $detailScreen['metadata'] : [];
+    ensure(
+        ($detailMetadata['selected_key']['field_key'] ?? '') === $keyField
+            && (string) ($detailMetadata['selected_key']['display_value'] ?? '') === $keyValue,
+        $profile['project_key'] . ' runtime data detail selected key metadata mismatch.',
+    );
+    ensure(
+        runtime_data_display_value($detailItem[$expectedField] ?? '') === $expectedValue,
+        $profile['project_key'] . ' runtime data detail item did not include processed value.',
+    );
+
+    $formScreen = profile_runtime_data_screen($screens, (string) $profile['form_screen_key']);
+    $formItem = is_array($formScreen['data']['item'] ?? null) ? $formScreen['data']['item'] : [];
+    ensure(
+        runtime_data_display_value($formItem[$expectedField] ?? '') === $expectedValue,
+        $profile['project_key'] . ' runtime data form item did not include processed value.',
+    );
+
+    return [
+        'screen_count' => count($screens),
+        'list_row_count' => count($listRows),
+        'first_row_key' => runtime_data_display_value($listRow[$keyField] ?? ''),
+        'row_count_metadata' => (int) ($listMetadata['row_count'] ?? 0),
+        'selected_key' => (string) ($detailMetadata['selected_key']['display_value'] ?? ''),
+        'expected_field' => $expectedField,
+        'expected_value' => runtime_data_display_value($listRow[$expectedField] ?? ''),
+        'detail_expected_value' => runtime_data_display_value($detailItem[$expectedField] ?? ''),
+        'form_expected_value' => runtime_data_display_value($formItem[$expectedField] ?? ''),
+    ];
+}
+
 try {
     $args = parse_args($argv);
     $profile = smoke_profile($args['profile']);
@@ -311,6 +448,7 @@ try {
     try {
         $processed = profile_process_pending_outbox($app, $profile, $bindingResult['binding']);
         $row = profile_read_row($pdo, $profile);
+        $runtimeData = profile_runtime_data_after_processing($app, $profile);
     } finally {
         $mtooldb = null;
         if ($previousRuntimeSqlitePath === false) {
@@ -337,6 +475,7 @@ try {
         'last_status' => (string) ($processed[count($processed) - 1]['item']['status'] ?? ''),
         'method_name' => (string) ($processed[count($processed) - 1]['handler_result']['method_name'] ?? ''),
         'row' => $row,
+        'runtime_data' => $runtimeData,
     ];
 
     $jsonFlags = JSON_UNESCAPED_SLASHES | ($args['pretty'] ? JSON_PRETTY_PRINT : 0);

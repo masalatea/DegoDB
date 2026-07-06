@@ -467,7 +467,7 @@ function app_no_code_runtime_render_screen_html(array $render): string
     );
 
     return implode("\n", [
-        '<section class="no-code-screen no-code-screen-' . app_no_code_runtime_html_escape($screenType) . '" role="region" aria-labelledby="' . app_no_code_runtime_html_escape($screenTitleId) . '" data-screen-key="' . app_no_code_runtime_html_escape($screenKey) . '" data-screen-state="' . app_no_code_runtime_html_escape($screenState) . '">',
+        '<section class="no-code-screen no-code-screen-' . app_no_code_runtime_html_escape($screenType) . '" role="region" aria-labelledby="' . app_no_code_runtime_html_escape($screenTitleId) . '" data-screen-key="' . app_no_code_runtime_html_escape($screenKey) . '" data-screen-type="' . app_no_code_runtime_html_escape($screenType) . '" data-screen-state="' . app_no_code_runtime_html_escape($screenState) . '">',
         '<header class="no-code-screen-header">',
         '<div>',
         '<h2 id="' . app_no_code_runtime_html_escape($screenTitleId) . '">' . app_no_code_runtime_html_escape($screenTitle) . '</h2>',
@@ -481,7 +481,9 @@ function app_no_code_runtime_render_screen_html(array $render): string
         app_no_code_runtime_render_screen_summary_html($screenKey, $fields, $actions),
         '<div class="no-code-action-feedback" role="status" aria-live="polite" data-state="idle">Select an enabled action to preview its intent.</div>',
         app_no_code_runtime_render_action_intent_draft_html($actions),
+        '<div class="no-code-screen-body" data-screen-body="' . app_no_code_runtime_html_escape($screenKey) . '">',
         $body,
+        '</div>',
         '</section>',
     ]);
 }
@@ -512,7 +514,7 @@ function app_no_code_runtime_render_action_intent_draft_html(array $actions): st
         '<button type="button" data-runtime-execute disabled data-runtime-execute-state="unavailable">Submit to server</button>',
         '<span class="no-code-runtime-execute-status" role="status" aria-live="polite" data-runtime-execute-status>Server execution is available from an authenticated current or alias preview.</span>',
         '<button type="button" data-runtime-result-refresh disabled>Refresh preview</button>',
-        '<span class="no-code-runtime-result-refresh-status" role="status" aria-live="polite" data-runtime-result-refresh-status>Refresh preview is available after server submit.</span>',
+        '<span class="no-code-runtime-result-refresh-status" role="status" aria-live="polite" data-runtime-result-refresh-status>Refresh preview is available after server submit. Artifact-key previews stay static; current or alias previews can fetch live runtime data when available.</span>',
         '<button type="button" data-runtime-outbox-detail-copy disabled>Copy outbox path</button>',
         '<a class="no-code-runtime-outbox-detail-link" data-runtime-outbox-detail-link hidden href="">Open outbox detail</a>',
         '<span class="no-code-runtime-outbox-detail-copy-status" role="status" aria-live="polite" data-runtime-outbox-detail-copy-status>Outbox detail path will be available after server submit.</span>',
@@ -912,6 +914,69 @@ function app_no_code_runtime_preview_js(): string
 
   function hasExecutionBinding() {
     return !!(executionBinding && executionBinding.execution_url && executionBinding.csrf_token);
+  }
+
+  function runtimeDataBindingUrl() {
+    return executionBinding && executionBinding.runtime_data_url ? String(executionBinding.runtime_data_url) : '';
+  }
+
+  function hasRuntimeDataBinding() {
+    return runtimeDataBindingUrl() !== '';
+  }
+
+  function htmlEscape(value) {
+    return String(value === null || value === undefined ? '' : value)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#039;');
+  }
+
+  function displayCellValue(cell) {
+    if (cell && typeof cell === 'object' && Object.prototype.hasOwnProperty.call(cell, 'display_value')) {
+      return cell.display_value;
+    }
+    if (cell === null || cell === undefined || typeof cell === 'object') {
+      return '';
+    }
+    return cell;
+  }
+
+  function firstRuntimeFieldValue(render, item, fieldKey) {
+    if (item && Object.prototype.hasOwnProperty.call(item, fieldKey)) {
+      var itemValue = displayCellValue(item[fieldKey]);
+      if (itemValue !== '') {
+        return itemValue;
+      }
+    }
+    var contractKey = render && render.contract_key ? String(render.contract_key) : '';
+    var screens = Array.isArray(preview.screens) ? preview.screens : [];
+    for (var screenIndex = 0; screenIndex < screens.length; screenIndex += 1) {
+      var screen = screens[screenIndex] || {};
+      if (contractKey && screen.contract_key && String(screen.contract_key) !== contractKey) {
+        continue;
+      }
+      var data = screen.data && typeof screen.data === 'object' ? screen.data : {};
+      var candidateItem = data.item && typeof data.item === 'object' ? data.item : {};
+      if (Object.prototype.hasOwnProperty.call(candidateItem, fieldKey)) {
+        var candidateItemValue = displayCellValue(candidateItem[fieldKey]);
+        if (candidateItemValue !== '') {
+          return candidateItemValue;
+        }
+      }
+      var rows = Array.isArray(data.rows) ? data.rows : [];
+      for (var rowIndex = 0; rowIndex < rows.length; rowIndex += 1) {
+        var row = rows[rowIndex] && typeof rows[rowIndex] === 'object' ? rows[rowIndex] : {};
+        if (Object.prototype.hasOwnProperty.call(row, fieldKey)) {
+          var rowValue = displayCellValue(row[fieldKey]);
+          if (rowValue !== '') {
+            return rowValue;
+          }
+        }
+      }
+    }
+    return '';
   }
 
   function findAction(actionKey) {
@@ -1434,9 +1499,130 @@ function app_no_code_runtime_preview_js(): string
     refreshButton.disabled = !enabled;
     refreshButton.setAttribute('data-runtime-result-refresh-state', enabled ? 'ready' : 'waiting');
     if (refreshStatus) {
-      refreshStatus.textContent = enabled
-        ? 'Process the sync outbox item, then use Refresh preview to reload this screen.'
-        : 'Refresh preview is available after server submit.';
+      if (enabled && hasRuntimeDataBinding()) {
+        refreshStatus.textContent = 'Refresh preview fetches read-only live runtime data for this current or alias selection.';
+      } else {
+        refreshStatus.textContent = enabled
+          ? 'Refresh preview reloads this generated preview artifact; artifact-key previews do not fetch live runtime data.'
+          : 'Refresh preview is available after server submit. Artifact-key previews stay static; current or alias previews can fetch live runtime data when available.';
+      }
+    }
+  }
+
+  function captureRuntimeSubmitState(screen) {
+    if (!screen) {
+      return null;
+    }
+    var executeButton = screen.querySelector('[data-runtime-execute]');
+    var executeStatus = screen.querySelector('[data-runtime-execute-status]');
+    var feedback = screen.querySelector('.no-code-action-feedback');
+    var copyButton = screen.querySelector('[data-runtime-outbox-detail-copy]');
+    var detailLink = screen.querySelector('[data-runtime-outbox-detail-link]');
+    var copyStatus = screen.querySelector('[data-runtime-outbox-detail-copy-status]');
+    var flow = screen.querySelector('[data-runtime-flow-state]');
+    var state = {
+      executeState: executeButton ? executeButton.getAttribute('data-runtime-execute-state') || '' : '',
+      executeDisabled: executeButton ? executeButton.disabled : true,
+      statusText: executeStatus ? executeStatus.textContent || '' : '',
+      statusState: executeStatus ? executeStatus.getAttribute('data-state') || '' : '',
+      statusOutboxDetailPath: executeStatus ? executeStatus.getAttribute('data-runtime-outbox-detail-path') || '' : '',
+      statusOutboxPath: executeStatus ? executeStatus.getAttribute('data-runtime-outbox-status-path') || '' : '',
+      statusPollState: executeStatus ? executeStatus.getAttribute('data-runtime-outbox-status-poll-state') || '' : '',
+      statusPollCount: executeStatus ? executeStatus.getAttribute('data-runtime-outbox-status-poll-count') || '' : '',
+      feedbackText: feedback ? feedback.textContent || '' : '',
+      feedbackState: feedback ? feedback.getAttribute('data-state') || '' : '',
+      feedbackOutboxDetailPath: feedback ? feedback.getAttribute('data-runtime-outbox-detail-path') || '' : '',
+      copyDisabled: copyButton ? copyButton.disabled : true,
+      copyPath: copyButton ? copyButton.getAttribute('data-runtime-outbox-detail-path') || '' : '',
+      detailLinkHidden: detailLink ? detailLink.hidden : true,
+      detailLinkHref: detailLink ? detailLink.getAttribute('href') || '' : '',
+      detailLinkPath: detailLink ? detailLink.getAttribute('data-runtime-outbox-detail-path') || '' : '',
+      copyStatusText: copyStatus ? copyStatus.textContent || '' : '',
+      flowState: flow ? flow.getAttribute('data-runtime-flow-state') || '' : '',
+      flowSteps: []
+    };
+    if (flow) {
+      flow.querySelectorAll('[data-runtime-flow-step]').forEach(function (step) {
+        state.flowSteps.push({
+          key: step.getAttribute('data-runtime-flow-step') || '',
+          state: step.getAttribute('data-state') || '',
+          text: step.textContent || ''
+        });
+      });
+    }
+    return state.statusPollState || state.statusOutboxDetailPath || state.feedbackOutboxDetailPath || state.executeState === 'success'
+      ? state
+      : null;
+  }
+
+  function restoreRuntimeSubmitState(screen, state) {
+    if (!screen || !state) {
+      return;
+    }
+    var executeButton = screen.querySelector('[data-runtime-execute]');
+    var executeStatus = screen.querySelector('[data-runtime-execute-status]');
+    var feedback = screen.querySelector('.no-code-action-feedback');
+    var copyButton = screen.querySelector('[data-runtime-outbox-detail-copy]');
+    var detailLink = screen.querySelector('[data-runtime-outbox-detail-link]');
+    var copyStatus = screen.querySelector('[data-runtime-outbox-detail-copy-status]');
+    var flow = screen.querySelector('[data-runtime-flow-state]');
+    if (executeButton && state.executeState) {
+      executeButton.disabled = state.executeDisabled;
+      executeButton.setAttribute('data-runtime-execute-state', state.executeState);
+    }
+    if (executeStatus && state.statusText) {
+      executeStatus.textContent = state.statusText;
+      if (state.statusState) {
+        executeStatus.setAttribute('data-state', state.statusState);
+      }
+      if (state.statusOutboxDetailPath) {
+        executeStatus.setAttribute('data-runtime-outbox-detail-path', state.statusOutboxDetailPath);
+      }
+      if (state.statusOutboxPath) {
+        executeStatus.setAttribute('data-runtime-outbox-status-path', state.statusOutboxPath);
+      }
+      if (state.statusPollState) {
+        executeStatus.setAttribute('data-runtime-outbox-status-poll-state', state.statusPollState);
+      }
+      if (state.statusPollCount) {
+        executeStatus.setAttribute('data-runtime-outbox-status-poll-count', state.statusPollCount);
+      }
+    }
+    if (feedback && state.feedbackText) {
+      feedback.textContent = state.feedbackText;
+      if (state.feedbackState) {
+        feedback.setAttribute('data-state', state.feedbackState);
+      }
+      if (state.feedbackOutboxDetailPath) {
+        feedback.setAttribute('data-runtime-outbox-detail-path', state.feedbackOutboxDetailPath);
+      }
+    }
+    if (copyButton) {
+      copyButton.disabled = state.copyDisabled;
+      if (state.copyPath) {
+        copyButton.setAttribute('data-runtime-outbox-detail-path', state.copyPath);
+      }
+    }
+    if (detailLink) {
+      detailLink.hidden = state.detailLinkHidden;
+      detailLink.setAttribute('href', state.detailLinkHref || '');
+      if (state.detailLinkPath) {
+        detailLink.setAttribute('data-runtime-outbox-detail-path', state.detailLinkPath);
+      }
+    }
+    if (copyStatus && state.copyStatusText) {
+      copyStatus.textContent = state.copyStatusText;
+    }
+    if (flow && state.flowState) {
+      flow.setAttribute('data-runtime-flow-state', state.flowState);
+      state.flowSteps.forEach(function (snapshot) {
+        var step = flow.querySelector('[data-runtime-flow-step="' + snapshot.key + '"]');
+        if (!step) {
+          return;
+        }
+        step.setAttribute('data-state', snapshot.state);
+        step.textContent = snapshot.text;
+      });
     }
   }
 
@@ -1505,8 +1691,267 @@ function app_no_code_runtime_preview_js(): string
     });
   }
 
+  function screenStateFromRender(render) {
+    var screenType = render && render.screen_type ? String(render.screen_type) : '';
+    var data = render && render.data && typeof render.data === 'object' ? render.data : {};
+    if (screenType === 'list') {
+      return Array.isArray(data.rows) && data.rows.length > 0 ? 'ready' : 'empty';
+    }
+    return data.item && typeof data.item === 'object' && Object.keys(data.item).length > 0 ? 'ready' : 'empty';
+  }
+
+  function screenStatusMessage(state, screenType) {
+    if (state !== 'empty') {
+      return 'Ready';
+    }
+    if (screenType === 'detail') {
+      return 'No detail';
+    }
+    if (screenType === 'form') {
+      return 'No data';
+    }
+    return 'Empty';
+  }
+
+  function renderRuntimeListBody(render) {
+    var fields = Array.isArray(render.fields) ? render.fields : [];
+    var data = render.data && typeof render.data === 'object' ? render.data : {};
+    var rows = Array.isArray(data.rows) ? data.rows : [];
+    var caption = (render.screen_title || 'Records') + ' records';
+    var header = fields.map(function (field) {
+      return '<th scope="col">' + htmlEscape(field.label || field.field_key || '') + '</th>';
+    }).join('');
+    var bodyRows = rows.map(function (row) {
+      return '<tr>' + fields.map(function (field) {
+        var fieldKey = field.field_key || '';
+        return '<td>' + htmlEscape(displayCellValue(row ? row[fieldKey] : null)) + '</td>';
+      }).join('') + '</tr>';
+    });
+    if (bodyRows.length === 0) {
+      bodyRows.push('<tr class="no-code-empty-row"><td colspan="' + Math.max(1, fields.length) + '"><span class="no-code-empty-state">' + htmlEscape(render.empty_state_message || 'No records to show yet.') + '</span></td></tr>');
+    }
+    return '<div class="no-code-table-wrap"><table><caption class="no-code-table-caption">' + htmlEscape(caption) + '</caption><thead><tr>' + header + '</tr></thead><tbody>' + bodyRows.join('') + '</tbody></table></div>';
+  }
+
+  function renderRuntimeDetailBody(render) {
+    var fields = Array.isArray(render.fields) ? render.fields : [];
+    var data = render.data && typeof render.data === 'object' ? render.data : {};
+    var item = data.item && typeof data.item === 'object' ? data.item : {};
+    var pairs = fields.map(function (field) {
+      var fieldKey = field.field_key || '';
+      return '<dt>' + htmlEscape(field.label || fieldKey) + '</dt><dd>' + htmlEscape(displayCellValue(item[fieldKey])) + '</dd>';
+    });
+    if (pairs.length === 0) {
+      return '<p class="no-code-empty-state">' + htmlEscape(render.empty_state_message || 'No preview data is available yet.') + '</p>';
+    }
+    return '<dl class="no-code-detail">' + pairs.join('') + '</dl>';
+  }
+
+  function renderRuntimeFormBody(render) {
+    var fields = Array.isArray(render.fields) ? render.fields : [];
+    var data = render.data && typeof render.data === 'object' ? render.data : {};
+    var item = data.item && typeof data.item === 'object' ? data.item : {};
+    var visibleFieldKeys = {};
+    var controls = fields.map(function (field) {
+      var fieldKey = field.field_key || '';
+      if (fieldKey) {
+        visibleFieldKeys[fieldKey] = true;
+      }
+      var type = field.type || 'string';
+      var value = item[fieldKey] && typeof item[fieldKey] === 'object' ? item[fieldKey] : {};
+      var displayValue = displayCellValue(value);
+      var readonly = !!field.readonly;
+      var required = !!field.required;
+      var label = field.label || fieldKey;
+      var fieldHintId = 'field-hint-' + fieldKey;
+      var attrs = ' name="' + htmlEscape(fieldKey) + '" id="field-' + htmlEscape(fieldKey) + '"' + (readonly ? ' readonly' : '') + (required ? ' required aria-describedby="' + htmlEscape(fieldHintId) + '"' : '');
+      var control;
+      if (type === 'text') {
+        control = '<textarea' + attrs + '>' + htmlEscape(displayValue) + '</textarea>';
+      } else {
+        var inputType = type === 'integer' || type === 'decimal' ? 'number' : (type === 'boolean' ? 'checkbox' : (type === 'datetime' ? 'datetime-local' : 'text'));
+        var valueAttr = inputType === 'checkbox' ? (value.value ? ' checked' : '') : ' value="' + htmlEscape(displayValue) + '"';
+        control = '<input type="' + inputType + '"' + attrs + valueAttr + '>';
+      }
+      var labelText = '<span class="no-code-form-label-text">' + htmlEscape(label) + (required ? '<span class="no-code-required-badge">Required</span>' : '') + '</span>';
+      var hint = required ? '<span id="' + htmlEscape(fieldHintId) + '" class="no-code-required-hint" data-required-field="' + htmlEscape(fieldKey) + '" data-required-label="' + htmlEscape(label) + '" data-required-state="pending">Required for the generated action intent.</span>' : '';
+      return '<label for="field-' + htmlEscape(fieldKey) + '">' + labelText + control + hint + '</label>';
+    });
+    var hiddenKeyControls = hiddenActionKeyControls(render, item, visibleFieldKeys);
+    controls = controls.concat(hiddenKeyControls);
+    if (controls.length === 0) {
+      return '<p class="no-code-empty-state">' + htmlEscape(render.empty_state_message || 'No editable data is available yet.') + '</p>';
+    }
+    return '<form class="no-code-form" method="post">' + controls.join('\n') + '</form>';
+  }
+
+  function hiddenActionKeyControls(render, item, visibleFieldKeys) {
+    var actions = Array.isArray(render.actions) ? render.actions : [];
+    var hidden = [];
+    var seen = {};
+    actions.forEach(function (action) {
+      var actionFields = Array.isArray(action && action.fields) ? action.fields : [];
+      actionFields.forEach(function (field) {
+        var fieldKey = field && field.field_key ? String(field.field_key) : '';
+        if (!fieldKey || field.role !== 'key' || visibleFieldKeys[fieldKey] || seen[fieldKey]) {
+          return;
+        }
+        var value = firstRuntimeFieldValue(render, item, fieldKey);
+        if (value === '') {
+          return;
+        }
+        seen[fieldKey] = true;
+        hidden.push('<input type="hidden" name="' + htmlEscape(fieldKey) + '" value="' + htmlEscape(value) + '" data-runtime-hidden-action-key="' + htmlEscape(fieldKey) + '">');
+      });
+    });
+    return hidden;
+  }
+
+  function renderRuntimeScreenBody(render) {
+    if (!render || render.screen_type === 'list') {
+      return renderRuntimeListBody(render || {});
+    }
+    if (render.screen_type === 'form') {
+      return renderRuntimeFormBody(render);
+    }
+    return renderRuntimeDetailBody(render);
+  }
+
+  function replacePreviewScreenRender(render) {
+    var screenKey = render && render.screen_key ? String(render.screen_key) : '';
+    if (!screenKey || !Array.isArray(preview.screens)) {
+      return;
+    }
+    for (var index = 0; index < preview.screens.length; index += 1) {
+      if (preview.screens[index] && preview.screens[index].screen_key === screenKey) {
+        preview.screens[index] = render;
+        return;
+      }
+    }
+  }
+
+  function existingPreviewScreenRender(screenKey) {
+    if (!screenKey || !Array.isArray(preview.screens)) {
+      return null;
+    }
+    for (var index = 0; index < preview.screens.length; index += 1) {
+      if (preview.screens[index] && preview.screens[index].screen_key === screenKey) {
+        return preview.screens[index];
+      }
+    }
+    return null;
+  }
+
+  function runtimeRenderFromDataScreen(dataScreen) {
+    var screenKey = dataScreen && dataScreen.screen_key ? String(dataScreen.screen_key) : '';
+    var existing = existingPreviewScreenRender(screenKey) || {};
+    var render = {};
+    Object.keys(existing).forEach(function (key) {
+      render[key] = existing[key];
+    });
+    Object.keys(dataScreen || {}).forEach(function (key) {
+      render[key] = dataScreen[key];
+    });
+    render.fields = Array.isArray(existing.fields) ? existing.fields : [];
+    render.actions = Array.isArray(existing.actions) ? existing.actions : [];
+    render.screen_title = existing.screen_title || render.screen_title || screenKey;
+    render.screen_subtitle = existing.screen_subtitle || render.screen_subtitle || '';
+    render.empty_state_message = existing.empty_state_message || render.empty_state_message || '';
+    return render;
+  }
+
+  function applyRuntimeDataScreen(render) {
+    var screenKey = render && render.screen_key ? String(render.screen_key) : '';
+    if (!screenKey) {
+      return;
+    }
+    var screen = null;
+    document.querySelectorAll('.no-code-screen[data-screen-key]').forEach(function (candidate) {
+      if (!screen && candidate.getAttribute('data-screen-key') === screenKey) {
+        screen = candidate;
+      }
+    });
+    var body = screen ? screen.querySelector('[data-screen-body]') : null;
+    if (!screen || !body) {
+      return;
+    }
+    var screenType = render.screen_type || screen.getAttribute('data-screen-type') || '';
+    var state = screenStateFromRender(render);
+    var badge = screen.querySelector('.no-code-screen-header .no-code-state-badge');
+    screen.setAttribute('data-screen-state', state);
+    screen.setAttribute('data-screen-type', screenType);
+    if (badge) {
+      badge.setAttribute('data-state', state);
+      badge.textContent = screenStatusMessage(state, screenType);
+    }
+    body.innerHTML = renderRuntimeScreenBody(render);
+    replacePreviewScreenRender(render);
+    bindScreenControls(screen);
+    writeIntentDraft(screen);
+  }
+
+  function applyRuntimeDataPayload(payload) {
+    if (!payload || payload.contract_version !== 'no-code-runtime-data-v0') {
+      throw new Error('runtime data contract mismatch');
+    }
+    var screens = Array.isArray(payload.screens) ? payload.screens : [];
+    screens.forEach(function (dataScreen) {
+      applyRuntimeDataScreen(runtimeRenderFromDataScreen(dataScreen));
+    });
+    window.__noCodeRuntimeLastDataPayload = payload;
+  }
+
+  function setRuntimeRefreshStatus(button, state, message) {
+    var screen = button.closest('.no-code-screen');
+    var status = screen ? screen.querySelector('[data-runtime-result-refresh-status]') : null;
+    button.setAttribute('data-runtime-result-refresh-state', state);
+    if (status) {
+      status.textContent = message;
+      status.setAttribute('data-state', state);
+    }
+  }
+
+  function refreshRuntimeDataForScreen(screen, button, workingMessage) {
+    if (!button || !hasRuntimeDataBinding()) {
+      return;
+    }
+    var submitState = captureRuntimeSubmitState(screen);
+    button.disabled = true;
+    setRuntimeRefreshStatus(button, 'working', workingMessage || 'Fetching read-only live runtime data...');
+    fetch(runtimeDataBindingUrl(), {
+      method: 'GET',
+      credentials: 'same-origin',
+      headers: {
+        Accept: 'application/json'
+      }
+    }).then(function (response) {
+      return response.json().catch(function () {
+        return {
+          ok: false,
+          error: 'invalid_json_response'
+        };
+      });
+    }).then(function (payload) {
+      if (!payload || payload.ok === false) {
+        throw new Error(payload && payload.error ? payload.error : 'runtime data fetch failed');
+      }
+      applyRuntimeDataPayload(payload);
+      restoreRuntimeSubmitState(screen, submitState);
+      button = screen ? screen.querySelector('[data-runtime-result-refresh]') || button : button;
+      button.disabled = false;
+      setRuntimeRefreshStatus(button, 'success', 'Fresh runtime data loaded from ' + runtimeDataBindingUrl() + ' (read-only current/alias data).');
+    }).catch(function (error) {
+      button.disabled = false;
+      setRuntimeRefreshStatus(button, 'error', 'Fresh runtime data could not be loaded from the read-only runtime-data endpoint: ' + (error && error.message ? error.message : 'request failed') + '. Current preview data was left unchanged.');
+    });
+  }
+
   function refreshRuntimePreview(button) {
     var screen = button.closest('.no-code-screen');
+    if (hasRuntimeDataBinding()) {
+      refreshRuntimeDataForScreen(screen, button, 'Fetching read-only live runtime data...');
+      return;
+    }
     saveRuntimeRefreshState(screen);
     window.location.reload();
   }
@@ -1744,6 +2189,13 @@ function app_no_code_runtime_preview_js(): string
         }
         writeRuntimeFlow(screen, 'timeout', detailPath);
       }
+      if (payload && payload.ok && flowState === 'complete' && hasRuntimeDataBinding()) {
+        refreshRuntimeDataForScreen(
+          screen,
+          screen ? screen.querySelector('[data-runtime-result-refresh]') : null,
+          'Sync outbox is done. Fetching read-only live runtime data...'
+        );
+      }
     }).catch(function () {
       if (status) {
         status.setAttribute('data-runtime-outbox-status-poll-state', 'error');
@@ -1770,10 +2222,10 @@ function app_no_code_runtime_preview_js(): string
       message += ' Review sync outbox: ' + detailPath + '.';
     }
     if (syncStatus === 'pending' || syncStatus === 'running') {
-      message += ' Next result check: process the sync outbox item, then use Refresh preview to reload this screen.';
+      message += ' Next result check: process the sync outbox item, then reload this generated preview artifact or open the outbox detail.';
     }
     if (demoProcessing && demoProcessing.processed && demoProcessing.outcome === 'done') {
-      message += ' Demo processing completed this item; use Refresh preview to reload the result.';
+      message += ' Demo processing completed this item; reload this generated preview artifact to re-read the current preview.';
     } else if (demoProcessing && demoProcessing.error) {
       message += ' Demo processing did not run: ' + demoProcessing.error + '.';
     }
@@ -1910,6 +2362,24 @@ function app_no_code_runtime_preview_js(): string
     return result;
   };
 
+  function bindScreenControls(screen) {
+    if (!screen) {
+      return;
+    }
+    screen.querySelectorAll('input[name], textarea[name], select[name]').forEach(function (control) {
+      if (control.getAttribute('data-runtime-input-bound') === 'true') {
+        return;
+      }
+      control.setAttribute('data-runtime-input-bound', 'true');
+      control.addEventListener('input', function () {
+        writeIntentDraft(screen);
+      });
+      control.addEventListener('change', function () {
+        writeIntentDraft(screen);
+      });
+    });
+  }
+
   document.querySelectorAll('.no-code-actions button[data-action-key]').forEach(function (button) {
     button.addEventListener('click', function () {
       button.setAttribute('data-action-state', 'working');
@@ -1955,14 +2425,7 @@ function app_no_code_runtime_preview_js(): string
   document.querySelectorAll('.no-code-screen').forEach(function (screen) {
     restoreRuntimeRefreshState(screen);
     writeIntentDraft(screen);
-    screen.querySelectorAll('input[name], textarea[name], select[name]').forEach(function (control) {
-      control.addEventListener('input', function () {
-        writeIntentDraft(screen);
-      });
-      control.addEventListener('change', function () {
-        writeIntentDraft(screen);
-      });
-    });
+    bindScreenControls(screen);
   });
 }());
 JS;
