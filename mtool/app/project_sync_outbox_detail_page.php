@@ -347,6 +347,160 @@ function app_render_project_sync_outbox_detail_page(array $app, array $request):
 }
 
 /**
+ * @param array{
+ *     site:string,
+ *     site_name:string
+ * } $app
+ * @param array{
+ *     request_id:string,
+ *     method:string,
+ *     path:string,
+ *     route_params?:array<string,string>
+ * } $request
+ */
+function app_render_project_sync_outbox_status_json_page(array $app, array $request): void
+{
+    if ($app['site'] !== 'admin') {
+        app_send_json_response($request, [
+            'ok' => false,
+            'error' => 'admin site required',
+            'request_id' => $request['request_id'],
+        ], 403);
+        return;
+    }
+
+    $principal = app_auth_principal();
+    if ($principal === null) {
+        app_send_json_response($request, [
+            'ok' => false,
+            'error' => 'auth required',
+            'login_path' => app_auth_login_path(),
+            'request_id' => $request['request_id'],
+        ], 401);
+        return;
+    }
+
+    if (!app_auth_has_any_role(['admin', 'config'], $principal)) {
+        app_send_json_response($request, [
+            'ok' => false,
+            'error' => 'admin or config role required',
+            'request_id' => $request['request_id'],
+        ], 403);
+        return;
+    }
+
+    if (!app_request_method_is($request, 'GET')) {
+        app_send_json_response($request, [
+            'ok' => false,
+            'error' => 'method not allowed',
+            'allowed_methods' => ['GET'],
+            'request_id' => $request['request_id'],
+        ], 405);
+        return;
+    }
+
+    $projectKey = app_normalize_project_key(app_route_param($request, 'project_key'));
+    if ($projectKey === '' || !app_project_key_is_valid($projectKey)) {
+        app_send_json_response($request, [
+            'ok' => false,
+            'error' => 'invalid project key',
+            'request_id' => $request['request_id'],
+        ], 400);
+        return;
+    }
+
+    $dedupeKey = trim(app_route_param($request, 'dedupe_key'));
+    if ($dedupeKey === '' || strlen($dedupeKey) > 128) {
+        app_send_json_response($request, [
+            'ok' => false,
+            'error' => 'invalid sync outbox dedupe key',
+            'request_id' => $request['request_id'],
+        ], 400);
+        return;
+    }
+
+    $permission = app_project_permission_can_with_audit(
+        $app,
+        $projectKey,
+        $principal,
+        'source_output.download',
+        'sync_outbox_status',
+        $dedupeKey,
+    );
+    if (!$permission['ok']) {
+        app_send_json_response($request, [
+            'ok' => false,
+            'error' => 'permission check failed',
+            'request_id' => $request['request_id'],
+        ], 500);
+        return;
+    }
+    if (!$permission['allowed']) {
+        app_send_json_response($request, [
+            'ok' => false,
+            'error' => 'project publisher permission required',
+            'request_id' => $request['request_id'],
+        ], 403);
+        return;
+    }
+
+    $itemResult = app_pdo_fetch_managed_operation_sync_outbox_item($app, $projectKey, $dedupeKey);
+    if (!$itemResult['ok']) {
+        app_send_json_response($request, [
+            'ok' => false,
+            'error' => $itemResult['error'],
+            'request_id' => $request['request_id'],
+        ], 500);
+        return;
+    }
+
+    $item = $itemResult['item'];
+    if ($item === null) {
+        app_send_json_response($request, [
+            'ok' => false,
+            'error' => 'sync outbox item not found',
+            'request_id' => $request['request_id'],
+        ], 404);
+        return;
+    }
+
+    app_send_json_response($request, app_project_sync_outbox_status_payload($projectKey, $item));
+}
+
+/**
+ * @param array<string,mixed> $item
+ * @return array<string,mixed>
+ */
+function app_project_sync_outbox_status_payload(string $projectKey, array $item): array
+{
+    $dedupeKey = (string) ($item['dedupe_key'] ?? '');
+    $status = strtolower(trim((string) ($item['status'] ?? '')));
+    $handoff = app_project_sync_outbox_processing_handoff($item);
+    $retryEligibility = app_no_code_operator_sync_retry_eligibility($item);
+
+    return [
+        'ok' => true,
+        'project_key' => app_normalize_project_key($projectKey),
+        'dedupe_key' => $dedupeKey,
+        'status' => $status,
+        'handoff' => $handoff,
+        'retry_eligibility' => [
+            'state' => $retryEligibility['state'],
+            'label' => $retryEligibility['label'],
+            'action_label' => $retryEligibility['action_label'],
+            'allowed' => $retryEligibility['allowed'],
+            'reasons' => $retryEligibility['reasons'],
+        ],
+        'attempts' => (int) ($item['attempts'] ?? 0),
+        'last_error' => (string) ($item['last_error'] ?? ''),
+        'operation_key' => (string) ($item['operation_key'] ?? ''),
+        'operation_type' => (string) ($item['operation_type'] ?? ''),
+        'detail_path' => $dedupeKey === '' ? '' : app_project_sync_outbox_detail_path($projectKey, $dedupeKey),
+        'updated_at' => (string) ($item['updated_at'] ?? ''),
+    ];
+}
+
+/**
  * @param array<string,mixed> $item
  * @return array{state:string,label:string,next_step:string,reasons:list<string>}
  */

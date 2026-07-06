@@ -57,6 +57,17 @@ final class ProjectRouteAuthorizationContractTest extends TestCase
         self::assertTrue($requirement['audit_required']);
     }
 
+    public function testAlreadyEnforcedSyncOutboxStatusJsonRequirementIsRepresented(): void
+    {
+        $requirement = app_project_route_authorization_requirement('project_sync_outbox_status_json', 'GET');
+
+        self::assertTrue($requirement['ok'], $requirement['error']);
+        self::assertSame('source_output.download', $requirement['capability']);
+        self::assertSame('publisher', $requirement['required_role']);
+        self::assertSame('done', $requirement['enforcement_status']);
+        self::assertTrue($requirement['audit_required']);
+    }
+
     public function testUnknownRouteFailsClosedAtContractLayer(): void
     {
         $requirement = app_project_route_authorization_requirement('not_a_real_route', 'POST');

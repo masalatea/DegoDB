@@ -21,6 +21,8 @@ Options:
                                  expected demo processing binding; available forces the submit probe flag (default: ignore)
   --submit-probe=none|enabled-fetch-stub|enabled-real-fetch
                                  probe server submit payload with stubbed or real fetch (default: none)
+  --status-probe=real|stub-done|stub-failed
+                                 status JSON behavior after submit probe (default: real)
   --admin-user=USER              admin login user for enabled-real-fetch
   --admin-password=PASS          admin login password for enabled-real-fetch
   --output-dir=PATH              artifact directory root (default: output/playwright/no-code-runtime-preview)
@@ -44,6 +46,7 @@ function parseArgs(argv) {
     executionUrlContains: '',
     demoProcessing: 'ignore',
     submitProbe: 'none',
+    statusProbe: 'real',
     adminUser: process.env.ADMIN_AUTH_STUB_USER || 'admin-local',
     adminPassword: process.env.ADMIN_AUTH_STUB_PASSWORD || 'change-this-admin-password',
     expected: expectedProfile('sample07'),
@@ -93,6 +96,11 @@ function parseArgs(argv) {
         throw new Error(`Unknown submit probe: ${value}`);
       }
       config.submitProbe = value;
+    } else if (name === 'status-probe') {
+      if (!['real', 'stub-done', 'stub-failed'].includes(value)) {
+        throw new Error(`Unknown status probe: ${value}`);
+      }
+      config.statusProbe = value;
     } else if (name === 'admin-user') {
       config.adminUser = value;
     } else if (name === 'admin-password') {
@@ -353,6 +361,7 @@ async function runSmoke(config) {
     const evaluateExpected = {
       ...config.expected,
       submitProbe: config.submitProbe,
+      statusProbe: config.statusProbe,
       demoProcessing: config.demoProcessing,
     };
     const metrics = await page.evaluate(async (expected) => {
@@ -520,8 +529,84 @@ async function runSmoke(config) {
           responseDemoProcessingOutcome: '',
           responseDemoProcessingProcessed: null,
         };
+        window.__noCodeRuntimeStatusProbe = {
+          fetchCalled: false,
+          url: '',
+          method: '',
+          credentials: '',
+          responseStatus: 0,
+          responseOk: null,
+          responseOutboxStatus: '',
+          responseHandoffState: '',
+          fetchCount: 0,
+        };
         const nativeFetch = window.fetch.bind(window);
         window.fetch = async (url, options = {}) => {
+          const method = String(options.method || 'GET');
+          if (method.toUpperCase() === 'GET' && String(url).endsWith('.json')) {
+            const previousStatusProbe = window.__noCodeRuntimeStatusProbe || {};
+            const stubStatus = expected.statusProbe === 'stub-failed' ? 'failed' : 'done';
+            const stubHandoffState = expected.statusProbe === 'stub-failed' ? 'needs_review' : 'complete';
+            const statusProbe = {
+              fetchCalled: true,
+              url: String(url),
+              method,
+              credentials: String(options.credentials || ''),
+              responseStatus: 0,
+              responseOk: null,
+              responseOutboxStatus: '',
+              responseHandoffState: '',
+              fetchCount: Number(previousStatusProbe.fetchCount || 0) + 1,
+            };
+            window.__noCodeRuntimeStatusProbe = statusProbe;
+            if (expected.statusProbe !== 'real') {
+              const payload = {
+                ok: true,
+                project_key: expected.projectKey,
+                dedupe_key: 'stub-runtime-status-dedupe',
+                status: stubStatus,
+                handoff: {
+                  state: stubHandoffState,
+                  label: expected.statusProbe === 'stub-failed'
+                    ? 'This sync outbox item failed and needs operator review.'
+                    : 'This sync outbox item has completed processing.',
+                  next_step: expected.statusProbe === 'stub-failed'
+                    ? 'Use retry eligibility below to decide whether it can be requeued.'
+                    : 'Inspect the intent payload and downstream data if a business-row verification is needed.',
+                  reasons: [],
+                },
+                retry_eligibility: {
+                  state: expected.statusProbe === 'stub-failed' ? 'available' : 'not_needed',
+                  label: '',
+                  action_label: '',
+                  allowed: expected.statusProbe === 'stub-failed',
+                  reasons: [],
+                },
+                attempts: 1,
+                last_error: expected.statusProbe === 'stub-failed' ? 'stubbed terminal failure' : '',
+                operation_key: expected.operationKey,
+                operation_type: expected.operationType,
+                detail_path: `/projects/${encodeURIComponent(expected.projectKey)}/sync-outbox/stub-runtime-status-dedupe`,
+                updated_at: '2026-07-05T00:00:00+00:00',
+              };
+              statusProbe.responseStatus = 200;
+              statusProbe.responseOk = true;
+              statusProbe.responseOutboxStatus = payload.status;
+              statusProbe.responseHandoffState = payload.handoff.state;
+              window.__noCodeRuntimeStatusProbe = statusProbe;
+              return {
+                json: async () => payload,
+              };
+            }
+            const response = await nativeFetch(url, options);
+            statusProbe.responseStatus = response.status;
+            const payload = await response.clone().json().catch(() => null);
+            statusProbe.responseOk = payload && typeof payload.ok === 'boolean' ? payload.ok : null;
+            statusProbe.responseOutboxStatus = payload?.status || '';
+            statusProbe.responseHandoffState = payload?.handoff?.state || '';
+            window.__noCodeRuntimeStatusProbe = statusProbe;
+            return response;
+          }
           const entries = [];
           if (options.body && typeof options.body.entries === 'function') {
             for (const [key, value] of options.body.entries()) {
@@ -562,6 +647,14 @@ async function runSmoke(config) {
             window.__noCodeRuntimeSubmitProbe = probe;
             return response;
           }
+          probe.responseStatus = 200;
+          probe.responseOk = true;
+          probe.responseSyncIntent = 'managed-operation-sync-intent-v0';
+          probe.responseOutboxStatus = 'pending';
+          probe.responseOutboxId = '999';
+          probe.responseOutboxDedupeKey = 'stub-runtime-status-dedupe';
+          probe.responseOutboxOperationKey = expected.operationKey;
+          window.__noCodeRuntimeSubmitProbe = probe;
           return {
             json: async () => ({
               ok: true,
@@ -572,7 +665,19 @@ async function runSmoke(config) {
                 operation_key: expected.operationKey,
               },
               result: {
-                status: 'stubbed',
+                sync_intent: {
+                  intent_version: 'managed-operation-sync-intent-v0',
+                  operation_key: expected.operationKey,
+                },
+                executor_result: {
+                  item: {
+                    id: 999,
+                    project_key: expected.projectKey,
+                    status: 'pending',
+                    dedupe_key: 'stub-runtime-status-dedupe',
+                    operation_key: expected.operationKey,
+                  },
+                },
               },
             }),
           };
@@ -586,6 +691,13 @@ async function runSmoke(config) {
               break;
             }
           }
+          for (let attempt = 0; attempt < 30; attempt += 1) {
+            await new Promise((resolve) => setTimeout(resolve, 100));
+            const pollState = formScreen?.querySelector('[data-runtime-execute-status]')?.getAttribute('data-runtime-outbox-status-poll-state') || '';
+            if (pollState === '' || pollState === 'checked' || pollState === 'error' || pollState === 'timeout') {
+              break;
+            }
+          }
         }
         const outboxCopyButton = formScreen?.querySelector('[data-runtime-outbox-detail-copy]');
         const resultRefreshButton = formScreen?.querySelector('[data-runtime-result-refresh]');
@@ -594,6 +706,7 @@ async function runSmoke(config) {
           await new Promise((resolve) => setTimeout(resolve, 0));
         }
         const probeResult = window.__noCodeRuntimeSubmitProbe || {};
+        const statusProbeResult = window.__noCodeRuntimeStatusProbe || {};
         submitProbe = {
           skipped: false,
           stateBeforeClick,
@@ -602,6 +715,9 @@ async function runSmoke(config) {
           statusAfterClick: formScreen?.querySelector('[data-runtime-execute-status]')?.textContent?.trim() || '',
           feedbackAfterClick: formScreen?.querySelector('.no-code-action-feedback')?.textContent?.trim() || '',
           statusOutboxDetailPath: formScreen?.querySelector('[data-runtime-execute-status]')?.getAttribute('data-runtime-outbox-detail-path') || '',
+          statusOutboxStatusPath: formScreen?.querySelector('[data-runtime-execute-status]')?.getAttribute('data-runtime-outbox-status-path') || '',
+          statusOutboxPollState: formScreen?.querySelector('[data-runtime-execute-status]')?.getAttribute('data-runtime-outbox-status-poll-state') || '',
+          statusOutboxPollCount: formScreen?.querySelector('[data-runtime-execute-status]')?.getAttribute('data-runtime-outbox-status-poll-count') || '',
           feedbackOutboxDetailPath: formScreen?.querySelector('.no-code-action-feedback')?.getAttribute('data-runtime-outbox-detail-path') || '',
           resultRefreshDisabledAfterClick: !!resultRefreshButton?.disabled,
           resultRefreshStateAfterClick: resultRefreshButton?.getAttribute('data-runtime-result-refresh-state') || '',
@@ -633,6 +749,15 @@ async function runSmoke(config) {
           responseDemoProcessingOutcome: probeResult.responseDemoProcessingOutcome || '',
           responseDemoProcessingProcessed: probeResult.responseDemoProcessingProcessed,
           responseDemoProcessingError: probeResult.responseDemoProcessingError || '',
+          statusFetchCalled: !!statusProbeResult.fetchCalled,
+          statusFetchUrl: statusProbeResult.url || '',
+          statusFetchMethod: statusProbeResult.method || '',
+          statusFetchCredentials: statusProbeResult.credentials || '',
+          statusFetchResponseStatus: statusProbeResult.responseStatus || 0,
+          statusFetchResponseOk: statusProbeResult.responseOk,
+          statusFetchOutboxStatus: statusProbeResult.responseOutboxStatus || '',
+          statusFetchHandoffState: statusProbeResult.responseHandoffState || '',
+          statusFetchCount: Number(statusProbeResult.fetchCount || 0),
         };
       }
 
@@ -903,6 +1028,56 @@ async function runSmoke(config) {
       if (probe.stateAfterClick !== 'success' || !probe.statusAfterClick.includes('Server execution accepted')) {
         throw new Error(`submit probe did not show accepted state: ${JSON.stringify(probe)}`);
       }
+      if (config.submitProbe === 'enabled-fetch-stub' && config.statusProbe === 'stub-done') {
+        const expectedOutboxPath = `/projects/${encodeURIComponent(config.expected.projectKey)}/sync-outbox/stub-runtime-status-dedupe`;
+        const expectedOutboxStatusPath = `${expectedOutboxPath}.json`;
+        if (probe.statusOutboxDetailPath !== expectedOutboxPath || probe.feedbackOutboxDetailPath !== expectedOutboxPath) {
+          throw new Error(`stub submit probe did not expose outbox detail path: ${JSON.stringify(probe)}`);
+        }
+        if (!probe.statusFetchCalled || probe.statusFetchMethod !== 'GET' || probe.statusFetchCredentials !== 'same-origin' || probe.statusFetchUrl !== expectedOutboxStatusPath) {
+          throw new Error(`stub submit probe did not poll outbox status JSON: ${JSON.stringify(probe)}`);
+        }
+        if (probe.statusFetchResponseStatus !== 200 || probe.statusFetchResponseOk !== true || probe.statusFetchOutboxStatus !== 'done' || probe.statusFetchHandoffState !== 'complete') {
+          throw new Error(`stub submit probe terminal done status mismatch: ${JSON.stringify(probe)}`);
+        }
+        if (probe.statusOutboxPollState !== 'checked' || probe.statusOutboxPollCount !== '1' || probe.statusFetchCount !== 1) {
+          throw new Error(`stub submit probe did not stop after terminal status: ${JSON.stringify(probe)}`);
+        }
+        if (probe.runtimeFlowStateAfterClick !== 'complete' || probe.runtimeFlowSubmitStateAfterClick !== 'done' || probe.runtimeFlowTrackStateAfterClick !== 'done' || probe.runtimeFlowRefreshStateAfterClick !== 'ready') {
+          throw new Error(`stub submit probe did not show complete runtime flow: ${JSON.stringify(probe)}`);
+        }
+        if (!probe.runtimeFlowTextAfterClick.includes('Sync outbox item is done.') || !probe.runtimeFlowTextAfterClick.includes('Refresh this screen to load the latest data.')) {
+          throw new Error(`stub submit probe complete flow text mismatch: ${JSON.stringify(probe)}`);
+        }
+        if (!probe.statusAfterClick.includes('Live outbox check: done.') || !probe.feedbackAfterClick.includes('This sync outbox item has completed processing.')) {
+          throw new Error(`stub submit probe did not show terminal done guidance: ${JSON.stringify(probe)}`);
+        }
+      }
+      if (config.submitProbe === 'enabled-fetch-stub' && config.statusProbe === 'stub-failed') {
+        const expectedOutboxPath = `/projects/${encodeURIComponent(config.expected.projectKey)}/sync-outbox/stub-runtime-status-dedupe`;
+        const expectedOutboxStatusPath = `${expectedOutboxPath}.json`;
+        if (probe.statusOutboxDetailPath !== expectedOutboxPath || probe.feedbackOutboxDetailPath !== expectedOutboxPath) {
+          throw new Error(`stub failed submit probe did not expose outbox detail path: ${JSON.stringify(probe)}`);
+        }
+        if (!probe.statusFetchCalled || probe.statusFetchMethod !== 'GET' || probe.statusFetchCredentials !== 'same-origin' || probe.statusFetchUrl !== expectedOutboxStatusPath) {
+          throw new Error(`stub failed submit probe did not poll outbox status JSON: ${JSON.stringify(probe)}`);
+        }
+        if (probe.statusFetchResponseStatus !== 200 || probe.statusFetchResponseOk !== true || probe.statusFetchOutboxStatus !== 'failed' || probe.statusFetchHandoffState !== 'needs_review') {
+          throw new Error(`stub failed submit probe terminal status mismatch: ${JSON.stringify(probe)}`);
+        }
+        if (probe.statusOutboxPollState !== 'checked' || probe.statusOutboxPollCount !== '1' || probe.statusFetchCount !== 1) {
+          throw new Error(`stub failed submit probe did not stop after terminal status: ${JSON.stringify(probe)}`);
+        }
+        if (probe.runtimeFlowStateAfterClick !== 'needs_review' || probe.runtimeFlowSubmitStateAfterClick !== 'done' || probe.runtimeFlowTrackStateAfterClick !== 'error' || probe.runtimeFlowRefreshStateAfterClick !== 'ready') {
+          throw new Error(`stub failed submit probe did not show needs-review runtime flow: ${JSON.stringify(probe)}`);
+        }
+        if (!probe.runtimeFlowTextAfterClick.includes('Sync outbox item needs operator review.') || !probe.runtimeFlowTextAfterClick.includes('Refresh remains available after review.')) {
+          throw new Error(`stub failed submit probe needs-review flow text mismatch: ${JSON.stringify(probe)}`);
+        }
+        if (!probe.statusAfterClick.includes('Live outbox check: failed.') || !probe.feedbackAfterClick.includes('This sync outbox item failed and needs operator review.')) {
+          throw new Error(`stub failed submit probe did not show terminal failure guidance: ${JSON.stringify(probe)}`);
+        }
+      }
       if (config.submitProbe === 'enabled-real-fetch') {
         if (probe.responseStatus !== 200 || probe.responseOk !== true) {
           throw new Error(`real submit probe response mismatch: ${JSON.stringify(probe)}`);
@@ -926,14 +1101,33 @@ async function runSmoke(config) {
         if (probe.statusOutboxDetailPath !== expectedOutboxPath || probe.feedbackOutboxDetailPath !== expectedOutboxPath) {
           throw new Error(`real submit probe did not expose outbox detail path attribute: ${JSON.stringify(probe)}`);
         }
+        const expectedOutboxStatusPath = `${expectedOutboxPath}.json`;
+        if (!probe.statusFetchCalled || probe.statusFetchMethod !== 'GET' || probe.statusFetchCredentials !== 'same-origin' || probe.statusFetchUrl !== expectedOutboxStatusPath) {
+          throw new Error(`real submit probe did not poll outbox status JSON: ${JSON.stringify(probe)}`);
+        }
+        if (probe.statusFetchResponseStatus !== 200 || probe.statusFetchResponseOk !== true || probe.statusFetchOutboxStatus !== 'pending' || probe.statusFetchHandoffState !== 'queued') {
+          throw new Error(`real submit probe outbox status JSON response mismatch: ${JSON.stringify(probe)}`);
+        }
+        if (probe.statusOutboxStatusPath !== expectedOutboxStatusPath || probe.statusOutboxPollState !== 'timeout' || probe.statusOutboxPollCount !== '3') {
+          throw new Error(`real submit probe did not expose status polling attributes: ${JSON.stringify(probe)}`);
+        }
+        if (probe.statusFetchCount !== 3) {
+          throw new Error(`real submit probe did not run bounded status polling: ${JSON.stringify(probe)}`);
+        }
         if (probe.resultRefreshDisabledAfterClick || probe.resultRefreshStateAfterClick !== 'ready') {
           throw new Error(`real submit probe did not enable result refresh: ${JSON.stringify(probe)}`);
         }
-        if (probe.runtimeFlowStateAfterClick !== 'accepted' || probe.runtimeFlowSubmitStateAfterClick !== 'done' || probe.runtimeFlowTrackStateAfterClick !== 'ready' || probe.runtimeFlowRefreshStateAfterClick !== 'ready') {
-          throw new Error(`real submit probe did not show accepted runtime flow: ${JSON.stringify(probe)}`);
+        if (probe.runtimeFlowStateAfterClick !== 'timeout' || probe.runtimeFlowSubmitStateAfterClick !== 'done' || probe.runtimeFlowTrackStateAfterClick !== 'waiting' || probe.runtimeFlowRefreshStateAfterClick !== 'ready') {
+          throw new Error(`real submit probe did not show bounded timeout runtime flow: ${JSON.stringify(probe)}`);
         }
-        if (!probe.runtimeFlowTextAfterClick.includes('Submit accepted.') || !probe.runtimeFlowTextAfterClick.includes('Open or copy the outbox detail.') || !probe.runtimeFlowTextAfterClick.includes('Process the item, then refresh this screen.')) {
+        if (!probe.runtimeFlowTextAfterClick.includes('Submit accepted.') || !probe.runtimeFlowTextAfterClick.includes('Status is still queued after bounded checks.') || !probe.runtimeFlowTextAfterClick.includes('Refresh this screen or open the outbox detail.')) {
           throw new Error(`real submit probe runtime flow text mismatch: ${JSON.stringify(probe)}`);
+        }
+        if (!probe.statusAfterClick.includes('Live outbox check: pending.') || !probe.feedbackAfterClick.includes('Live outbox check: pending.')) {
+          throw new Error(`real submit probe did not show live outbox status: ${JSON.stringify(probe)}`);
+        }
+        if (!probe.statusAfterClick.includes('Live outbox check stopped after 3 attempts.') || !probe.feedbackAfterClick.includes('Live outbox check stopped after 3 attempts.')) {
+          throw new Error(`real submit probe did not show bounded polling timeout guidance: ${JSON.stringify(probe)}`);
         }
         if (!probe.resultRefreshStatusAfterClick.includes('Process the sync outbox item, then use Refresh preview to reload this screen.')) {
           throw new Error(`real submit probe did not show result refresh status: ${JSON.stringify(probe)}`);

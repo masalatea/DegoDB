@@ -160,6 +160,24 @@ node mtool/scripts/check_no_code_runtime_preview_ui_smoke.js \
 
 node mtool/scripts/check_no_code_runtime_preview_ui_smoke.js \
   "--profile=${SAMPLE_PROFILE}" \
+  "--url=${BASE_URL}${current_path}" \
+  --execution-binding=required \
+  --execution-url-contains=/current/execute.json \
+  --submit-probe=enabled-fetch-stub \
+  --status-probe=stub-done \
+  "--output-dir=${SMOKE_OUTPUT_DIR}"
+
+node mtool/scripts/check_no_code_runtime_preview_ui_smoke.js \
+  "--profile=${SAMPLE_PROFILE}" \
+  "--url=${BASE_URL}${current_path}" \
+  --execution-binding=required \
+  --execution-url-contains=/current/execute.json \
+  --submit-probe=enabled-fetch-stub \
+  --status-probe=stub-failed \
+  "--output-dir=${SMOKE_OUTPUT_DIR}"
+
+node mtool/scripts/check_no_code_runtime_preview_ui_smoke.js \
+  "--profile=${SAMPLE_PROFILE}" \
   "--url=${BASE_URL}${alias_path}" \
   --execution-binding=required \
   "--execution-url-contains=/alias/${ALIAS_KEY}/execute.json" \

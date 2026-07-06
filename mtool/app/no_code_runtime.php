@@ -1384,6 +1384,30 @@ function app_no_code_runtime_preview_js(): string
       setStep(refresh, 'ready', 'Process the item, then refresh this screen.');
       return;
     }
+    if (state === 'tracking') {
+      setStep(submit, 'done', 'Submit accepted.');
+      setStep(track, 'working', 'Checking sync outbox status.');
+      setStep(refresh, 'ready', 'Refresh remains available after status checks.');
+      return;
+    }
+    if (state === 'timeout') {
+      setStep(submit, 'done', 'Submit accepted.');
+      setStep(track, 'waiting', 'Status is still queued after bounded checks.');
+      setStep(refresh, 'ready', 'Refresh this screen or open the outbox detail.');
+      return;
+    }
+    if (state === 'complete') {
+      setStep(submit, 'done', 'Submit accepted.');
+      setStep(track, 'done', 'Sync outbox item is done.');
+      setStep(refresh, 'ready', 'Refresh this screen to load the latest data.');
+      return;
+    }
+    if (state === 'needs_review') {
+      setStep(submit, 'done', 'Submit accepted.');
+      setStep(track, 'error', 'Sync outbox item needs operator review.');
+      setStep(refresh, 'ready', 'Refresh remains available after review.');
+      return;
+    }
     if (state === 'blocked') {
       setStep(submit, 'blocked', 'Resolve draft blockers before submit.');
       setStep(track, 'waiting', 'Outbox tracking appears after submit.');
@@ -1608,6 +1632,125 @@ function app_no_code_runtime_preview_js(): string
     return '/projects/' + encodeURIComponent(projectKey) + '/sync-outbox/' + encodeURIComponent(item.dedupe_key);
   }
 
+  function runtimeExecutionOutboxStatusPath(detailPath) {
+    return detailPath ? detailPath + '.json' : '';
+  }
+
+  function runtimeOutboxStatusMessage(payload) {
+    if (!payload || !payload.ok) {
+      return 'Live outbox check did not return a usable status.';
+    }
+    var status = payload.status || '';
+    var handoff = payload.handoff && payload.handoff.label ? payload.handoff.label : '';
+    var nextStep = payload.handoff && payload.handoff.next_step ? payload.handoff.next_step : '';
+    var message = status ? 'Live outbox check: ' + status + '.' : 'Live outbox check completed.';
+    if (handoff) {
+      message += ' ' + handoff;
+    }
+    if (nextStep) {
+      message += ' Next step: ' + nextStep;
+    }
+    return message;
+  }
+
+  function runtimeOutboxTimeoutMessage(maxAttempts) {
+    return 'Live outbox check stopped after ' + maxAttempts + ' attempts. The item is still queued or processing; use Refresh preview later or open the outbox detail.';
+  }
+
+  function runtimeOutboxFlowState(payload) {
+    var handoffState = payload && payload.handoff && payload.handoff.state ? payload.handoff.state : '';
+    if (handoffState === 'complete') {
+      return 'complete';
+    }
+    if (handoffState === 'needs_review') {
+      return 'needs_review';
+    }
+    return 'tracking';
+  }
+
+  function runtimeOutboxStatusShouldContinue(payload) {
+    var handoffState = payload && payload.handoff && payload.handoff.state ? payload.handoff.state : '';
+    return handoffState === 'queued' || handoffState === 'processing';
+  }
+
+  function runtimeTextBase(element, attributeName) {
+    if (!element) {
+      return '';
+    }
+    var existing = element.getAttribute(attributeName) || '';
+    if (existing) {
+      return existing;
+    }
+    existing = element.textContent || '';
+    element.setAttribute(attributeName, existing);
+    return existing;
+  }
+
+  function pollRuntimeOutboxStatus(screen, detailPath, feedback, attempt) {
+    var statusPath = runtimeExecutionOutboxStatusPath(detailPath);
+    if (!statusPath) {
+      return;
+    }
+    var currentAttempt = attempt || 1;
+    var maxAttempts = 3;
+    var status = screen ? screen.querySelector('[data-runtime-execute-status]') : null;
+    var statusBaseText = runtimeTextBase(status, 'data-runtime-outbox-status-base-text');
+    var feedbackBaseText = runtimeTextBase(feedback, 'data-runtime-outbox-feedback-base-text');
+    if (status) {
+      status.setAttribute('data-runtime-outbox-status-path', statusPath);
+      status.setAttribute('data-runtime-outbox-status-poll-state', 'checking');
+      status.setAttribute('data-runtime-outbox-status-poll-count', String(currentAttempt));
+    }
+    writeRuntimeFlow(screen, 'tracking', detailPath);
+    fetch(statusPath, {
+      method: 'GET',
+      credentials: 'same-origin',
+      headers: {
+        Accept: 'application/json'
+      }
+    }).then(function (response) {
+      return response.json().catch(function () {
+        return {
+          ok: false,
+          error: 'invalid_json_response'
+        };
+      });
+    }).then(function (payload) {
+      var message = runtimeOutboxStatusMessage(payload);
+      var flowState = runtimeOutboxFlowState(payload);
+      if (status) {
+        status.textContent = statusBaseText + ' ' + message;
+        status.setAttribute('data-runtime-outbox-status-poll-state', payload && payload.ok ? 'checked' : 'error');
+      }
+      if (feedback) {
+        feedback.textContent = feedbackBaseText + ' ' + message;
+      }
+      writeRuntimeFlow(screen, flowState, detailPath);
+      if (payload && payload.ok && runtimeOutboxStatusShouldContinue(payload) && currentAttempt < maxAttempts) {
+        if (status) {
+          status.setAttribute('data-runtime-outbox-status-poll-state', 'waiting');
+        }
+        window.setTimeout(function () {
+          pollRuntimeOutboxStatus(screen, detailPath, feedback, currentAttempt + 1);
+        }, 250);
+        return;
+      }
+      if (payload && payload.ok && runtimeOutboxStatusShouldContinue(payload) && currentAttempt >= maxAttempts && status) {
+        var timeoutMessage = runtimeOutboxTimeoutMessage(maxAttempts);
+        status.setAttribute('data-runtime-outbox-status-poll-state', 'timeout');
+        status.textContent = statusBaseText + ' ' + message + ' ' + timeoutMessage;
+        if (feedback) {
+          feedback.textContent = feedbackBaseText + ' ' + message + ' ' + timeoutMessage;
+        }
+        writeRuntimeFlow(screen, 'timeout', detailPath);
+      }
+    }).catch(function () {
+      if (status) {
+        status.setAttribute('data-runtime-outbox-status-poll-state', 'error');
+      }
+    });
+  }
+
   function runtimeExecutionAcceptedMessage(payload) {
     var message = 'Server execution accepted.';
     var item = runtimeExecutionOutboxItem(payload);
@@ -1719,6 +1862,7 @@ function app_no_code_runtime_preview_js(): string
         writeRuntimeOutboxDetailCopy(screen, acceptedDetailPath);
         writeRuntimeResultRefresh(screen, true);
         writeRuntimeFlow(screen, 'accepted', acceptedDetailPath);
+        pollRuntimeOutboxStatus(screen, acceptedDetailPath, feedback);
         return;
       }
 

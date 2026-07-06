@@ -241,6 +241,10 @@ function app_run_http_request(): void
                 app_render_project_sync_outbox_detail_page($app, $request);
                 return;
 
+            case 'project_sync_outbox_status_json':
+                app_render_project_sync_outbox_status_json_page($app, $request);
+                return;
+
             case 'project_compare_output_settings':
                 app_render_project_compare_output_settings_page($app, $request);
                 return;

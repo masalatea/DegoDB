@@ -123,6 +123,14 @@ final class OpenApiSourceOutputContractTest extends TestCase
         self::assertSame('MTOOL', $syncOutboxDetailRoute['params']['project_key'] ?? '');
         self::assertSame('abcdef123456', $syncOutboxDetailRoute['params']['dedupe_key'] ?? '');
 
+        $syncOutboxStatusJsonRoute = app_route_match([
+            'path' => '/projects/MTOOL/sync-outbox/abcdef123456.json',
+        ]);
+
+        self::assertSame('project_sync_outbox_status_json', $syncOutboxStatusJsonRoute['name']);
+        self::assertSame('MTOOL', $syncOutboxStatusJsonRoute['params']['project_key'] ?? '');
+        self::assertSame('abcdef123456', $syncOutboxStatusJsonRoute['params']['dedupe_key'] ?? '');
+
         $noCodeRuntimePreviewRoute = app_route_match([
             'path' => '/runs/no-code/SAMPLE28/20260702-010203-abcdef12/runtime-preview.html',
         ]);
@@ -198,6 +206,7 @@ final class OpenApiSourceOutputContractTest extends TestCase
         self::assertTrue(app_route_requires_auth('project_source_output_artifact_detail'));
         self::assertTrue(app_route_requires_auth('project_source_output_download'));
         self::assertTrue(app_route_requires_auth('project_sync_outbox_detail'));
+        self::assertTrue(app_route_requires_auth('project_sync_outbox_status_json'));
         self::assertFalse(app_route_requires_auth('no_code_public_runtime_preview'));
         self::assertFalse(app_route_requires_auth('no_code_public_runtime_current_preview'));
         self::assertTrue(app_route_requires_auth('no_code_public_runtime_execution'));
