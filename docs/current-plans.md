@@ -535,6 +535,8 @@ Latest continuation after #279: #280 chooses generated browser two-filter contro
 
 Latest continuation after #281: #282 chooses local commit stack cleanup before entering another implementation lane or pushing. #283 creates backup branch `codex/backup-before-281-commit-cleanup`, rewrites only local unpushed history, and consolidates the 76-commit ahead stack into five reviewable lane commits with the final tree matching the backup. Push was not performed for #282/#283. / #281 後の続き: #282 では次の implementation lane や push の前に local commit stack cleanup を選びました。#283 では backup branch `codex/backup-before-281-commit-cleanup` を作成し、未 push の local history だけを書き換え、76 commits の ahead stack を 5 つの reviewable lane commit に整理しました。最終 tree は backup と一致しています。#282/#283 は push していません。
 
+Latest continuation after #283: #284 chooses post-cleanup verification before push or another implementation lane. #285 verifies the cleaned six-commit local stack with PHP lint, runtime preview smoke syntax check, `git diff --check`, and full `make test` (`337 tests`, `11126 assertions`, `1 skipped`). Push was not performed for #284/#285. / #283 後の続き: #284 では push または次の implementation lane の前に post-cleanup verification を選びました。#285 では整理後の 6-commit local stack を PHP lint、runtime preview smoke syntax check、`git diff --check`、full `make test` (`337 tests`, `11126 assertions`, `1 skipped`) で検証しました。#284/#285 は push していません。
+
 ### Auxiliary Later Review / 補助・後日検討
 
 These are useful candidates, but they are not part of the main minimum path unless a fresh priority decision promotes them. / これらは有用な候補ですが、新しい優先判断で昇格するまでは minimum までの主計画には含めません。
