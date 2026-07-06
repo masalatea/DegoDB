@@ -169,6 +169,8 @@ function expectedProfile(name) {
       searchQuery: 'Review generated customer fields',
       filterField: 'status',
       filterValue: 'triage',
+      secondFilterField: 'priority',
+      secondFilterValue: '20',
       sortField: 'status',
       sortDirection: 'desc',
       sortFirstKeyValue: 1002,
@@ -208,6 +210,8 @@ function expectedProfile(name) {
       searchQuery: 'Generated workflow',
       filterField: 'status',
       filterValue: 'open',
+      secondFilterField: 'severity',
+      secondFilterValue: 'medium',
       sortField: 'status',
       sortDirection: 'asc',
       sortFirstKeyValue: 2002,
@@ -245,6 +249,8 @@ function expectedProfile(name) {
       searchQuery: 'SKU-CABLE-99',
       filterField: 'status',
       filterValue: 'review',
+      secondFilterField: 'quantity_needed',
+      secondFilterValue: '24',
       sortField: 'status',
       sortDirection: 'desc',
       sortFirstKeyValue: 3102,
@@ -342,6 +348,82 @@ async function loginAdmin(page, baseUrl, username, password) {
   if (!dashboardResponse || dashboardResponse.status() !== 200) {
     throw new Error('admin login did not reach dashboard.');
   }
+}
+
+async function probeRuntimeDataInitialUrlReplay(page, targetUrl, config) {
+  if (
+    config.statusProbe !== 'real'
+    || config.executionBinding !== 'required'
+    || !config.expected.searchQuery
+    || !config.expected.filterField
+    || !config.expected.filterValue
+    || !config.expected.sortField
+    || !config.expected.sortDirection
+  ) {
+    return { skipped: true };
+  }
+
+  const replayUrl = new URL(targetUrl);
+  replayUrl.searchParams.set('q', String(config.expected.searchQuery));
+  replayUrl.searchParams.set(`filter[${config.expected.filterField}]`, String(config.expected.filterValue));
+  replayUrl.searchParams.set(`sort[${config.expected.sortField}]`, String(config.expected.sortDirection));
+  replayUrl.searchParams.set('page', '1');
+  replayUrl.searchParams.set('page_size', '1');
+
+  await page.goto(replayUrl.toString(), { waitUntil: 'load' });
+  await page.waitForFunction(
+    (expected) => {
+      const list = document.querySelector(`.no-code-screen[data-screen-key="${expected.listScreenKey}"]`);
+      const statusText = list?.querySelector('[data-runtime-result-refresh-status]')?.textContent || '';
+      const firstRow = list?.querySelector('tbody tr:not(.no-code-empty-row)');
+      return statusText.includes('Fresh runtime data loaded from') && firstRow;
+    },
+    config.expected,
+    { timeout: 5000 },
+  );
+
+  const result = await page.evaluate((expected) => {
+    const list = document.querySelector(`.no-code-screen[data-screen-key="${expected.listScreenKey}"]`);
+    const firstRow = list?.querySelector('tbody tr:not(.no-code-empty-row)');
+    return {
+      skipped: false,
+      locationSearch: window.location.search || '',
+      statusText: list?.querySelector('[data-runtime-result-refresh-status]')?.textContent?.trim() || '',
+      retainedSearchValue: list?.querySelector('[data-runtime-search-input]')?.value || '',
+      retainedFilterField: list?.querySelector('[data-runtime-filter-field]')?.value || '',
+      retainedFilterValue: list?.querySelector('[data-runtime-filter-value]')?.value || '',
+      retainedSortField: list?.querySelector('[data-runtime-sort-field]')?.value || '',
+      retainedSortDirection: list?.querySelector('[data-runtime-sort-direction]')?.value || '',
+      retainedPageSize: list?.querySelector('[data-runtime-page-size-input]')?.value || '',
+      firstRowKey: firstRow?.getAttribute('data-runtime-row-key') || '',
+      renderedRowCount: list?.querySelectorAll('tbody tr:not(.no-code-empty-row)').length || 0,
+    };
+  }, config.expected);
+
+  if (
+    !result.locationSearch.includes('q=')
+    || !result.locationSearch.includes('filter%5B')
+    || !result.locationSearch.includes('sort%5B')
+    || !result.locationSearch.includes('page=1')
+    || !result.locationSearch.includes('page_size=1')
+  ) {
+    throw new Error(`runtime data initial URL replay did not preserve browser query: ${JSON.stringify(result)}`);
+  }
+  if (
+    result.retainedSearchValue !== String(config.expected.searchQuery || '')
+    || result.retainedFilterField !== String(config.expected.filterField || '')
+    || result.retainedFilterValue !== String(config.expected.filterValue || '')
+    || result.retainedSortField !== String(config.expected.sortField || '')
+    || result.retainedSortDirection !== String(config.expected.sortDirection || '')
+    || result.retainedPageSize !== '1'
+  ) {
+    throw new Error(`runtime data initial URL replay did not retain controls: ${JSON.stringify(result)}`);
+  }
+  if (result.renderedRowCount !== 1 || result.firstRowKey !== String(config.expected.selectedKeyValue || config.expected.keyValue)) {
+    throw new Error(`runtime data initial URL replay row mismatch: ${JSON.stringify(result)}`);
+  }
+
+  return result;
 }
 
 async function runSmoke(config) {
@@ -589,6 +671,8 @@ async function runSmoke(config) {
           let runtimeDataSearchQuery = '';
           let runtimeDataFilterField = '';
           let runtimeDataFilterValue = '';
+          let runtimeDataSecondFilterField = '';
+          let runtimeDataSecondFilterValue = '';
           let runtimeDataSortField = '';
           let runtimeDataSortDirection = '';
           try {
@@ -603,6 +687,9 @@ async function runSmoke(config) {
               if (filterMatch && !runtimeDataFilterField) {
                 runtimeDataFilterField = filterMatch[1] || '';
                 runtimeDataFilterValue = paramValue || '';
+              } else if (filterMatch && !runtimeDataSecondFilterField) {
+                runtimeDataSecondFilterField = filterMatch[1] || '';
+                runtimeDataSecondFilterValue = paramValue || '';
               }
               const sortMatch = /^sort\[(.+)\]$/.exec(paramKey);
               if (sortMatch && !runtimeDataSortField) {
@@ -625,6 +712,8 @@ async function runSmoke(config) {
               requestSearchQuery: runtimeDataSearchQuery,
               requestFilterField: runtimeDataFilterField,
               requestFilterValue: runtimeDataFilterValue,
+              requestSecondFilterField: runtimeDataSecondFilterField,
+              requestSecondFilterValue: runtimeDataSecondFilterValue,
               requestSortField: runtimeDataSortField,
               requestSortDirection: runtimeDataSortDirection,
               responseStatus: 0,
@@ -646,6 +735,10 @@ async function runSmoke(config) {
               if (expected.seededText && rows[1]) {
                 rows[1].title = { value: expected.seededText, display_value: expected.seededText };
               }
+              const queryFilter = runtimeDataFilterField ? { [runtimeDataFilterField]: runtimeDataFilterValue } : {};
+              if (runtimeDataSecondFilterField) {
+                queryFilter[runtimeDataSecondFilterField] = runtimeDataSecondFilterValue;
+              }
               const payload = {
                 ok: true,
                 contract_version: 'no-code-runtime-data-v0',
@@ -659,7 +752,7 @@ async function runSmoke(config) {
                 query: {
                   selected_key: runtimeDataSelectedKey,
                   q: runtimeDataSearchQuery,
-                  filter: runtimeDataFilterField ? { [runtimeDataFilterField]: runtimeDataFilterValue } : {},
+                  filter: queryFilter,
                   sort: runtimeDataSortField ? { [runtimeDataSortField]: runtimeDataSortDirection } : {},
                   page: runtimeDataPage,
                   page_size: runtimeDataPageSize,
@@ -990,14 +1083,18 @@ async function runSmoke(config) {
         }
         let runtimeDataFilter = {
           skipped: true,
-          fieldControlCount: document.querySelectorAll('[data-runtime-filter-field]').length,
-          valueInputCount: document.querySelectorAll('[data-runtime-filter-value]').length,
+          fieldControlCount: document.querySelectorAll('[data-runtime-filter-field], [data-runtime-filter-field-secondary]').length,
+          valueInputCount: document.querySelectorAll('[data-runtime-filter-value], [data-runtime-filter-value-secondary]').length,
           buttonCount: document.querySelectorAll('[data-runtime-filter-submit]').length,
           url: '',
           requestFilterField: '',
           requestFilterValue: '',
+          requestSecondFilterField: '',
+          requestSecondFilterValue: '',
           requestPage: '',
           requestPageSize: '',
+          retainedSecondFilterField: '',
+          retainedSecondFilterValue: '',
           responseStatus: 0,
           responseOk: null,
           firstRowKey: '',
@@ -1007,6 +1104,8 @@ async function runSmoke(config) {
         if (expected.statusProbe === 'real' && expected.filterField && expected.filterValue) {
           const filterField = document.querySelector(`.no-code-screen[data-screen-key="${expected.listScreenKey}"] [data-runtime-filter-field]`);
           const filterValue = document.querySelector(`.no-code-screen[data-screen-key="${expected.listScreenKey}"] [data-runtime-filter-value]`);
+          const secondFilterField = document.querySelector(`.no-code-screen[data-screen-key="${expected.listScreenKey}"] [data-runtime-filter-field-secondary]`);
+          const secondFilterValue = document.querySelector(`.no-code-screen[data-screen-key="${expected.listScreenKey}"] [data-runtime-filter-value-secondary]`);
           const filterButton = document.querySelector(`.no-code-screen[data-screen-key="${expected.listScreenKey}"] [data-runtime-filter-submit]`);
           if (filterField && filterValue && filterButton) {
             runtimeDataFilter.skipped = false;
@@ -1014,6 +1113,12 @@ async function runSmoke(config) {
             filterField.dispatchEvent(new Event('change', { bubbles: true }));
             filterValue.value = expected.filterValue;
             filterValue.dispatchEvent(new Event('input', { bubbles: true }));
+            if (secondFilterField && secondFilterValue && expected.secondFilterField && expected.secondFilterValue) {
+              secondFilterField.value = expected.secondFilterField;
+              secondFilterField.dispatchEvent(new Event('change', { bubbles: true }));
+              secondFilterValue.value = expected.secondFilterValue;
+              secondFilterValue.dispatchEvent(new Event('input', { bubbles: true }));
+            }
             filterButton.click();
             for (let attempt = 0; attempt < 30; attempt += 1) {
               await new Promise((resolve) => setTimeout(resolve, 100));
@@ -1022,6 +1127,8 @@ async function runSmoke(config) {
               if (
                 latestDataProbe.requestFilterField === expected.filterField
                 && latestDataProbe.requestFilterValue === expected.filterValue
+                && (!expected.secondFilterField || latestDataProbe.requestSecondFilterField === expected.secondFilterField)
+                && (!expected.secondFilterValue || latestDataProbe.requestSecondFilterValue === expected.secondFilterValue)
                 && firstFilteredRow?.getAttribute('data-runtime-row-key') === String(expected.selectedKeyValue || expected.keyValue)
               ) {
                 break;
@@ -1030,16 +1137,22 @@ async function runSmoke(config) {
             const filterProbe = { ...(window.__noCodeRuntimeDataProbe || {}) };
             const retainedFilterField = document.querySelector(`.no-code-screen[data-screen-key="${expected.listScreenKey}"] [data-runtime-filter-field]`);
             const retainedFilterValue = document.querySelector(`.no-code-screen[data-screen-key="${expected.listScreenKey}"] [data-runtime-filter-value]`);
+            const retainedSecondFilterField = document.querySelector(`.no-code-screen[data-screen-key="${expected.listScreenKey}"] [data-runtime-filter-field-secondary]`);
+            const retainedSecondFilterValue = document.querySelector(`.no-code-screen[data-screen-key="${expected.listScreenKey}"] [data-runtime-filter-value-secondary]`);
             runtimeDataFilter = {
               ...runtimeDataFilter,
-              fieldControlCount: document.querySelectorAll('[data-runtime-filter-field]').length,
-              valueInputCount: document.querySelectorAll('[data-runtime-filter-value]').length,
+              fieldControlCount: document.querySelectorAll('[data-runtime-filter-field], [data-runtime-filter-field-secondary]').length,
+              valueInputCount: document.querySelectorAll('[data-runtime-filter-value], [data-runtime-filter-value-secondary]').length,
               buttonCount: document.querySelectorAll('[data-runtime-filter-submit]').length,
               retainedFilterField: retainedFilterField?.value || '',
               retainedFilterValue: retainedFilterValue?.value || '',
+              retainedSecondFilterField: retainedSecondFilterField?.value || '',
+              retainedSecondFilterValue: retainedSecondFilterValue?.value || '',
               url: filterProbe.url || '',
               requestFilterField: filterProbe.requestFilterField || '',
               requestFilterValue: filterProbe.requestFilterValue || '',
+              requestSecondFilterField: filterProbe.requestSecondFilterField || '',
+              requestSecondFilterValue: filterProbe.requestSecondFilterValue || '',
               requestPage: filterProbe.requestPage || '',
               requestPageSize: filterProbe.requestPageSize || '',
               responseStatus: filterProbe.responseStatus || 0,
@@ -1152,6 +1265,7 @@ async function runSmoke(config) {
           retainedSortField: '',
           retainedSortDirection: '',
           retainedPageSize: '',
+          locationSearch: '',
           responseStatus: 0,
           responseOk: null,
           firstRowKey: '',
@@ -1173,6 +1287,7 @@ async function runSmoke(config) {
           retainedSortField: '',
           retainedSortDirection: '',
           retainedPageSize: '',
+          locationSearch: '',
           responseStatus: 0,
           responseOk: null,
           renderedRowCount: 0,
@@ -1240,6 +1355,7 @@ async function runSmoke(config) {
               retainedSortField: retainedCombinedSortField?.value || '',
               retainedSortDirection: retainedCombinedSortDirection?.value || '',
               retainedPageSize: retainedCombinedPageSize?.value || '',
+              locationSearch: window.location.search || '',
               responseStatus: combinedProbe.responseStatus || 0,
               responseOk: combinedProbe.responseOk,
               firstRowKey: combinedProbe.firstRowKey || '',
@@ -1280,6 +1396,7 @@ async function runSmoke(config) {
                 retainedSortField: resetSortField?.value || '',
                 retainedSortDirection: resetSortDirection?.value || '',
                 retainedPageSize: resetPageSize?.value || '',
+                locationSearch: window.location.search || '',
                 responseStatus: resetProbe.responseStatus || 0,
                 responseOk: resetProbe.responseOk,
                 renderedRowCount: document.querySelectorAll(`.no-code-screen[data-screen-key="${expected.listScreenKey}"] tbody tr:not(.no-code-empty-row)`).length,
@@ -1951,13 +2068,25 @@ async function runSmoke(config) {
             throw new Error(`real submit probe searched runtime data row mismatch: ${JSON.stringify(probe)}`);
           }
           const filter = probe.runtimeDataFilter || {};
-          if (filter.skipped || filter.fieldControlCount < 1 || filter.valueInputCount < 1 || filter.buttonCount < 1) {
+          const expectedFilterControlCount = config.expected.secondFilterField ? 2 : 1;
+          if (filter.skipped || filter.fieldControlCount < expectedFilterControlCount || filter.valueInputCount < expectedFilterControlCount || filter.buttonCount < 1) {
             throw new Error(`real submit probe did not expose runtime data filter controls: ${JSON.stringify(probe)}`);
           }
-          if (!String(filter.url || '').includes('filter%5B') || filter.requestFilterField !== String(config.expected.filterField || '') || filter.requestFilterValue !== String(config.expected.filterValue || '')) {
+          if (
+            !String(filter.url || '').includes('filter%5B')
+            || filter.requestFilterField !== String(config.expected.filterField || '')
+            || filter.requestFilterValue !== String(config.expected.filterValue || '')
+            || (config.expected.secondFilterField && filter.requestSecondFilterField !== String(config.expected.secondFilterField || ''))
+            || (config.expected.secondFilterValue && filter.requestSecondFilterValue !== String(config.expected.secondFilterValue || ''))
+          ) {
             throw new Error(`real submit probe did not request filtered runtime data: ${JSON.stringify(probe)}`);
           }
-          if (filter.retainedFilterField !== String(config.expected.filterField || '') || filter.retainedFilterValue !== String(config.expected.filterValue || '')) {
+          if (
+            filter.retainedFilterField !== String(config.expected.filterField || '')
+            || filter.retainedFilterValue !== String(config.expected.filterValue || '')
+            || (config.expected.secondFilterField && filter.retainedSecondFilterField !== String(config.expected.secondFilterField || ''))
+            || (config.expected.secondFilterValue && filter.retainedSecondFilterValue !== String(config.expected.secondFilterValue || ''))
+          ) {
             throw new Error(`real submit probe did not retain filtered runtime data controls: ${JSON.stringify(probe)}`);
           }
           if (filter.responseStatus !== 200 || filter.responseOk !== true || filter.renderedRowCount !== 1 || filter.firstRowKey !== String(config.expected.selectedKeyValue || config.expected.keyValue)) {
@@ -1997,6 +2126,15 @@ async function runSmoke(config) {
             throw new Error(`real submit probe did not request combined runtime data query: ${JSON.stringify(probe)}`);
           }
           if (
+            !String(combined.locationSearch || '').includes('q=')
+            || !String(combined.locationSearch || '').includes('filter%5B')
+            || !String(combined.locationSearch || '').includes('sort%5B')
+            || !String(combined.locationSearch || '').includes('page=1')
+            || !String(combined.locationSearch || '').includes('page_size=1')
+          ) {
+            throw new Error(`real submit probe did not mirror combined runtime data query into browser URL: ${JSON.stringify(probe)}`);
+          }
+          if (
             combined.retainedSearchValue !== String(config.expected.searchQuery || '')
             || combined.retainedFilterField !== String(config.expected.filterField || '')
             || combined.retainedFilterValue !== String(config.expected.filterValue || '')
@@ -2015,6 +2153,7 @@ async function runSmoke(config) {
           }
           if (
             String(queryReset.url || '').includes('?')
+            || queryReset.locationSearch
             || queryReset.requestSearchQuery
             || queryReset.requestFilterField
             || queryReset.requestFilterValue
@@ -2181,6 +2320,8 @@ async function runSmoke(config) {
       throw new Error(`unexpected blank required browser dispatch message: ${metrics.blankRequiredDispatch.message}`);
     }
 
+    const runtimeDataInitialUrlReplay = await probeRuntimeDataInitialUrlReplay(page, targetUrl, config);
+
     await page.screenshot({ path: screenshotPath, fullPage: true });
 
     return {
@@ -2189,6 +2330,7 @@ async function runSmoke(config) {
       url: config.url,
       screenshot: screenshotPath,
       metrics,
+      runtimeDataInitialUrlReplay,
     };
   } finally {
     await browser.close();

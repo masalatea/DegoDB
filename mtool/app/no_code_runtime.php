@@ -989,6 +989,13 @@ function app_no_code_runtime_preview_js(): string
       page: query && query.page ? query.page : '',
       page_size: query && query.pageSize ? query.pageSize : ''
     };
+    if (query && Array.isArray(query.filters)) {
+      query.filters.forEach(function (filter) {
+        if (filter && filter.field && filter.value) {
+          params['filter[' + filter.field + ']'] = filter.value;
+        }
+      });
+    }
     if (query && query.filterField && query.filterValue) {
       params['filter[' + query.filterField + ']'] = query.filterValue;
     }
@@ -1020,6 +1027,72 @@ function app_no_code_runtime_preview_js(): string
       }).join('&');
       return query ? baseUrl + (baseUrl.indexOf('?') === -1 ? '?' : '&') + query : baseUrl;
     }
+  }
+
+  function mirrorRuntimeDataQueryInBrowserUrl(requestUrl) {
+    if (!window.history || typeof window.history.replaceState !== 'function') {
+      return;
+    }
+    try {
+      var dataUrl = new URL(requestUrl, window.location.href);
+      var pageUrl = new URL(window.location.href);
+      var keysToDelete = [];
+      pageUrl.searchParams.forEach(function (_value, key) {
+        if (key === 'selected_key' || key === 'q' || key === 'page' || key === 'page_size' || key.indexOf('filter[') === 0 || key.indexOf('sort[') === 0) {
+          keysToDelete.push(key);
+        }
+      });
+      keysToDelete.forEach(function (key) {
+        pageUrl.searchParams.delete(key);
+      });
+      dataUrl.searchParams.forEach(function (value, key) {
+        if (key === 'selected_key' || key === 'q' || key === 'page' || key === 'page_size' || key.indexOf('filter[') === 0 || key.indexOf('sort[') === 0) {
+          pageUrl.searchParams.set(key, value);
+        }
+      });
+      window.history.replaceState(window.history.state, '', pageUrl.pathname + pageUrl.search + pageUrl.hash);
+    } catch (error) {
+      return;
+    }
+  }
+
+  function runtimeDataQueryFromBrowserUrl() {
+    var query = {
+      selectedKey: '',
+      q: '',
+      filterField: '',
+      filterValue: '',
+      sortField: '',
+      sortDirection: '',
+      page: '',
+      pageSize: ''
+    };
+    try {
+      var pageUrl = new URL(window.location.href);
+      query.selectedKey = pageUrl.searchParams.get('selected_key') || '';
+      query.q = pageUrl.searchParams.get('q') || '';
+      query.page = pageUrl.searchParams.get('page') || '';
+      query.pageSize = pageUrl.searchParams.get('page_size') || '';
+      pageUrl.searchParams.forEach(function (value, key) {
+        var filterMatch = /^filter\[(.+)\]$/.exec(key);
+        if (filterMatch && !query.filterField) {
+          query.filterField = filterMatch[1] || '';
+          query.filterValue = value || '';
+        }
+        var sortMatch = /^sort\[(.+)\]$/.exec(key);
+        if (sortMatch && !query.sortField) {
+          query.sortField = sortMatch[1] || '';
+          query.sortDirection = value || '';
+        }
+      });
+    } catch (error) {
+      return query;
+    }
+    return query;
+  }
+
+  function runtimeDataBrowserUrlQueryIsPresent(query) {
+    return !!(query && (query.selectedKey || query.q || (query.filterField && query.filterValue) || (query.sortField && query.sortDirection) || query.page || query.pageSize));
   }
 
   function htmlEscape(value) {
@@ -1894,7 +1967,7 @@ function app_no_code_runtime_preview_js(): string
     if (!fieldOptions) {
       return '';
     }
-    return '<label>Filter <select data-runtime-filter-field>' + fieldOptions + '</select></label><label>Value <input type="text" maxlength="128" data-runtime-filter-value></label><button type="button" data-runtime-filter-submit>Filter</button>';
+    return '<label>Filter <select data-runtime-filter-field>' + fieldOptions + '</select></label><label>Value <input type="text" maxlength="128" data-runtime-filter-value></label><label>Filter 2 <select data-runtime-filter-field-secondary><option value="">None</option>' + fieldOptions + '</select></label><label>Value 2 <input type="text" maxlength="128" data-runtime-filter-value-secondary></label><button type="button" data-runtime-filter-submit>Filter</button>';
   }
 
   function renderRuntimeSortControls(fields) {
@@ -2111,18 +2184,23 @@ function app_no_code_runtime_preview_js(): string
   }
 
   function firstRuntimeQueryEntry(values) {
-    if (!values || typeof values !== 'object') {
-      return {
-        key: '',
-        value: ''
-      };
-    }
-    var keys = Object.keys(values);
-    var key = keys.length > 0 ? keys[0] : '';
-    return {
-      key: key,
-      value: key ? String(values[key] || '') : ''
+    var entries = runtimeQueryEntries(values);
+    return entries.length > 0 ? entries[0] : {
+      key: '',
+      value: ''
     };
+  }
+
+  function runtimeQueryEntries(values) {
+    if (!values || typeof values !== 'object') {
+      return [];
+    }
+    return Object.keys(values).map(function (key) {
+      return {
+        key: key,
+        value: String(values[key] || '')
+      };
+    });
   }
 
   function runtimeDataPayloadPagination(payload) {
@@ -2158,13 +2236,17 @@ function app_no_code_runtime_preview_js(): string
   function syncRuntimeDataControlsFromPayload(payload) {
     var query = payload && payload.query && typeof payload.query === 'object' ? payload.query : {};
     var pagination = runtimeDataPayloadPagination(payload);
-    var filter = firstRuntimeQueryEntry(query.filter);
+    var filters = runtimeQueryEntries(query.filter);
+    var filter = filters.length > 0 ? filters[0] : { key: '', value: '' };
+    var secondFilter = filters.length > 1 ? filters[1] : { key: '', value: '' };
     var sort = firstRuntimeQueryEntry(query.sort);
     var pageSize = pagination.page_size || query.page_size || '';
     document.querySelectorAll('[data-runtime-data-controls]').forEach(function (controls) {
       var searchInput = controls.querySelector('[data-runtime-search-input]');
       var filterField = controls.querySelector('[data-runtime-filter-field]');
       var filterValue = controls.querySelector('[data-runtime-filter-value]');
+      var secondFilterField = controls.querySelector('[data-runtime-filter-field-secondary]');
+      var secondFilterValue = controls.querySelector('[data-runtime-filter-value-secondary]');
       var sortField = controls.querySelector('[data-runtime-sort-field]');
       var sortDirection = controls.querySelector('[data-runtime-sort-direction]');
       var pageSizeInput = controls.querySelector('[data-runtime-page-size-input]');
@@ -2174,6 +2256,10 @@ function app_no_code_runtime_preview_js(): string
       setRuntimeSelectValue(filterField, filter.key);
       if (filterValue) {
         filterValue.value = filter.value;
+      }
+      setRuntimeSelectValue(secondFilterField, secondFilter.key);
+      if (secondFilterValue) {
+        secondFilterValue.value = secondFilter.value;
       }
       setRuntimeSelectValue(sortField, sort.key);
       setRuntimeSelectValue(sortDirection, sort.value);
@@ -2193,7 +2279,7 @@ function app_no_code_runtime_preview_js(): string
     }
   }
 
-  function refreshRuntimeDataForScreen(screen, button, workingMessage, selectedKey, page, pageSize, searchQuery, filterField, filterValue, sortField, sortDirection) {
+  function refreshRuntimeDataForScreen(screen, button, workingMessage, selectedKey, page, pageSize, searchQuery, filterField, filterValue, sortField, sortDirection, filters) {
     if (!button || !hasRuntimeDataBinding()) {
       return;
     }
@@ -2202,6 +2288,7 @@ function app_no_code_runtime_preview_js(): string
       ? runtimeDataUrlWithSelectedKey(selectedKey)
       : runtimeDataUrlWithCombinedQuery({
         q: searchQuery || '',
+        filters: Array.isArray(filters) ? filters : [],
         filterField: filterField || '',
         filterValue: filterValue || '',
         sortField: sortField || '',
@@ -2232,6 +2319,7 @@ function app_no_code_runtime_preview_js(): string
       restoreRuntimeSubmitState(screen, submitState);
       button = screen ? screen.querySelector('[data-runtime-result-refresh]') || button : button;
       button.disabled = false;
+      mirrorRuntimeDataQueryInBrowserUrl(requestUrl);
       setRuntimeRefreshStatus(button, 'success', 'Fresh runtime data loaded from ' + requestUrl + ' (read-only current/alias data).');
     }).catch(function (error) {
       button.disabled = false;
@@ -2256,13 +2344,29 @@ function app_no_code_runtime_preview_js(): string
     var searchInput = paginationRoot ? paginationRoot.querySelector('[data-runtime-search-input]') : null;
     var filterFieldInput = paginationRoot ? paginationRoot.querySelector('[data-runtime-filter-field]') : null;
     var filterValueInput = paginationRoot ? paginationRoot.querySelector('[data-runtime-filter-value]') : null;
+    var secondFilterFieldInput = paginationRoot ? paginationRoot.querySelector('[data-runtime-filter-field-secondary]') : null;
+    var secondFilterValueInput = paginationRoot ? paginationRoot.querySelector('[data-runtime-filter-value-secondary]') : null;
     var sortFieldInput = paginationRoot ? paginationRoot.querySelector('[data-runtime-sort-field]') : null;
     var sortDirectionInput = paginationRoot ? paginationRoot.querySelector('[data-runtime-sort-direction]') : null;
     var pageSizeInput = paginationRoot ? paginationRoot.querySelector('[data-runtime-page-size-input]') : null;
+    var filterField = filterFieldInput ? String(filterFieldInput.value || '').trim() : '';
+    var filterValue = filterValueInput ? String(filterValueInput.value || '').trim() : '';
+    var secondFilterField = secondFilterFieldInput ? String(secondFilterFieldInput.value || '').trim() : '';
+    var secondFilterValue = secondFilterValueInput ? String(secondFilterValueInput.value || '').trim() : '';
+    var filters = [];
+    if (filterField && filterValue) {
+      filters.push({ field: filterField, value: filterValue });
+    }
+    if (secondFilterField && secondFilterValue && secondFilterField !== filterField) {
+      filters.push({ field: secondFilterField, value: secondFilterValue });
+    }
     return {
       q: searchInput ? String(searchInput.value || '').trim() : '',
-      filterField: filterFieldInput ? String(filterFieldInput.value || '').trim() : '',
-      filterValue: filterValueInput ? String(filterValueInput.value || '').trim() : '',
+      filterField: filterField,
+      filterValue: filterValue,
+      secondFilterField: secondFilterField,
+      secondFilterValue: secondFilterValue,
+      filters: filters,
       sortField: sortFieldInput ? String(sortFieldInput.value || '').trim() : '',
       sortDirection: sortDirectionInput ? String(sortDirectionInput.value || '').trim().toLowerCase() : '',
       pageSize: pageSizeInput ? String(Math.min(100, Math.max(1, Number(pageSizeInput.value || 1) || 1))) : ''
@@ -2292,7 +2396,7 @@ function app_no_code_runtime_preview_js(): string
     if (!refreshButton) {
       return;
     }
-    refreshRuntimeDataForScreen(screen, refreshButton, 'Fetching paginated read-only live runtime data...', '', page, pageSize, query.q, query.filterField, query.filterValue, query.sortField, query.sortDirection);
+    refreshRuntimeDataForScreen(screen, refreshButton, 'Fetching paginated read-only live runtime data...', '', page, pageSize, query.q, query.filterField, query.filterValue, query.sortField, query.sortDirection, query.filters);
   }
 
   function refreshRuntimeDataForSearch(button) {
@@ -2306,13 +2410,13 @@ function app_no_code_runtime_preview_js(): string
     if (!refreshButton) {
       return;
     }
-    refreshRuntimeDataForScreen(screen, refreshButton, 'Searching read-only live runtime data...', '', query.pageSize ? '1' : '', query.pageSize, query.q, query.filterField, query.filterValue, query.sortField, query.sortDirection);
+    refreshRuntimeDataForScreen(screen, refreshButton, 'Searching read-only live runtime data...', '', query.pageSize ? '1' : '', query.pageSize, query.q, query.filterField, query.filterValue, query.sortField, query.sortDirection, query.filters);
   }
 
   function refreshRuntimeDataForFieldFilter(button) {
     var paginationRoot = button.closest('.no-code-pagination');
     var query = runtimeDataQueryFromControls(paginationRoot);
-    if (!query.filterField || !query.filterValue || !hasRuntimeDataBinding()) {
+    if (query.filters.length < 1 || !hasRuntimeDataBinding()) {
       return;
     }
     var screen = button.closest('.no-code-screen');
@@ -2320,7 +2424,7 @@ function app_no_code_runtime_preview_js(): string
     if (!refreshButton) {
       return;
     }
-    refreshRuntimeDataForScreen(screen, refreshButton, 'Filtering read-only live runtime data...', '', query.pageSize ? '1' : '', query.pageSize, query.q, query.filterField, query.filterValue, query.sortField, query.sortDirection);
+    refreshRuntimeDataForScreen(screen, refreshButton, 'Filtering read-only live runtime data...', '', query.pageSize ? '1' : '', query.pageSize, query.q, query.filterField, query.filterValue, query.sortField, query.sortDirection, query.filters);
   }
 
   function refreshRuntimeDataForSort(button) {
@@ -2334,7 +2438,7 @@ function app_no_code_runtime_preview_js(): string
     if (!refreshButton) {
       return;
     }
-    refreshRuntimeDataForScreen(screen, refreshButton, 'Sorting read-only live runtime data...', '', query.pageSize ? '1' : '', query.pageSize, query.q, query.filterField, query.filterValue, query.sortField, query.sortDirection);
+    refreshRuntimeDataForScreen(screen, refreshButton, 'Sorting read-only live runtime data...', '', query.pageSize ? '1' : '', query.pageSize, query.q, query.filterField, query.filterValue, query.sortField, query.sortDirection, query.filters);
   }
 
   function refreshRuntimeDataForQueryReset(button) {
@@ -2347,6 +2451,34 @@ function app_no_code_runtime_preview_js(): string
       return;
     }
     refreshRuntimeDataForScreen(screen, refreshButton, 'Clearing read-only runtime data query controls...');
+  }
+
+  function refreshRuntimeDataFromBrowserUrl() {
+    if (!hasRuntimeDataBinding()) {
+      return;
+    }
+    var query = runtimeDataQueryFromBrowserUrl();
+    if (!runtimeDataBrowserUrlQueryIsPresent(query)) {
+      return;
+    }
+    var screen = document.querySelector('.no-code-screen[data-screen-type="list"]') || document.querySelector('.no-code-screen');
+    var refreshButton = screen ? screen.querySelector('[data-runtime-result-refresh]') : null;
+    if (!screen || !refreshButton) {
+      return;
+    }
+    refreshRuntimeDataForScreen(
+      screen,
+      refreshButton,
+      'Loading read-only live runtime data from the browser URL...',
+      query.selectedKey,
+      query.page,
+      query.pageSize,
+      query.q,
+      query.filterField,
+      query.filterValue,
+      query.sortField,
+      query.sortDirection
+    );
   }
 
   function refreshRuntimePreview(button) {
@@ -2884,6 +3016,7 @@ function app_no_code_runtime_preview_js(): string
       }
     }
   });
+  refreshRuntimeDataFromBrowserUrl();
 }());
 JS;
 }

@@ -251,6 +251,8 @@ function smoke_profile(string $profile): array
             'search_query' => 'Review generated customer fields',
             'filter_field' => 'status',
             'filter_value' => 'triage',
+            'second_filter_field' => 'priority',
+            'second_filter_value' => '20',
             'sort_field' => 'status',
             'sort_direction' => 'desc',
             'sort_first_key' => '1002',
@@ -272,6 +274,8 @@ function smoke_profile(string $profile): array
             'search_query' => 'Generated workflow',
             'filter_field' => 'status',
             'filter_value' => 'open',
+            'second_filter_field' => 'severity',
+            'second_filter_value' => 'medium',
             'sort_field' => 'status',
             'sort_direction' => 'asc',
             'sort_first_key' => '2002',
@@ -293,6 +297,8 @@ function smoke_profile(string $profile): array
             'search_query' => 'SKU-CABLE-99',
             'filter_field' => 'status',
             'filter_value' => 'review',
+            'second_filter_field' => 'quantity_needed',
+            'second_filter_value' => '24',
             'sort_field' => 'status',
             'sort_direction' => 'desc',
             'sort_first_key' => '3102',
@@ -675,6 +681,97 @@ function runtime_data_filter_smoke(array &$client, array $profile, string $label
     ];
 }
 
+function runtime_data_multi_filter_smoke(array &$client, array $profile, string $label, string $previewPath): array
+{
+    $filterField = (string) $profile['filter_field'];
+    $filterValue = (string) $profile['filter_value'];
+    $secondFilterField = (string) $profile['second_filter_field'];
+    $secondFilterValue = (string) $profile['second_filter_value'];
+    $path = runtime_data_path($previewPath)
+        . '?filter[' . rawurlencode($filterField) . ']=' . rawurlencode($filterValue)
+        . '&filter[' . rawurlencode($secondFilterField) . ']=' . rawurlencode($secondFilterValue);
+    $response = request_once($client, 'GET', $path);
+    $payload = json_decode($response['body'], true);
+    ensure(is_array($payload), $label . ' multi-filter runtime data response was not JSON');
+    ensure($response['status'] === 200, $label . ' multi-filter runtime data did not succeed');
+    ensure(($payload['ok'] ?? null) === true, $label . ' multi-filter runtime data ok flag mismatch');
+    ensure(($payload['query']['filter'][$filterField] ?? '') === $filterValue, $label . ' multi-filter runtime data first query mismatch');
+    ensure(($payload['query']['filter'][$secondFilterField] ?? '') === $secondFilterValue, $label . ' multi-filter runtime data second query mismatch');
+
+    $screens = is_array($payload['screens'] ?? null) ? $payload['screens'] : [];
+    $listScreen = null;
+    $detailScreen = null;
+    foreach ($screens as $screen) {
+        if (is_array($screen) && (string) ($screen['screen_type'] ?? '') === 'list') {
+            $listScreen = $screen;
+        }
+        if (is_array($screen) && (string) ($screen['screen_type'] ?? '') === 'detail') {
+            $detailScreen = $screen;
+        }
+    }
+    ensure(is_array($listScreen), $label . ' multi-filter runtime data list screen missing');
+    ensure(is_array($detailScreen), $label . ' multi-filter runtime data detail screen missing');
+
+    $rows = is_array($listScreen['data']['rows'] ?? null) ? $listScreen['data']['rows'] : [];
+    ensure(count($rows) === 1, $label . ' multi-filter runtime data row count mismatch');
+    $keyField = (string) $profile['key_field'];
+    $filterRowKey = (string) ($rows[0][$keyField]['display_value'] ?? '');
+    ensure($filterRowKey === (string) $profile['selected_key_value'], $label . ' multi-filter runtime data list row key mismatch');
+    ensure((string) ($rows[0][$filterField]['display_value'] ?? '') === $filterValue, $label . ' multi-filter first field value mismatch');
+    ensure((string) ($rows[0][$secondFilterField]['display_value'] ?? '') === $secondFilterValue, $label . ' multi-filter second field value mismatch');
+
+    $listMetadata = is_array($listScreen['metadata'] ?? null) ? $listScreen['metadata'] : [];
+    ensure(($listMetadata['row_count'] ?? null) === 1, $label . ' multi-filter runtime data row_count metadata mismatch');
+
+    $detailItem = is_array($detailScreen['data']['item'] ?? null) ? $detailScreen['data']['item'] : [];
+    $detailMetadata = is_array($detailScreen['metadata'] ?? null) ? $detailScreen['metadata'] : [];
+    $selectionBasis = is_array($detailMetadata['selection_basis'] ?? null) ? $detailMetadata['selection_basis'] : [];
+    ensure(($selectionBasis['kind'] ?? '') === 'query-result-first-row', $label . ' multi-filter runtime data selection basis mismatch');
+    ensure(
+        (string) ($detailItem[$keyField]['display_value'] ?? '') === (string) $profile['selected_key_value'],
+        $label . ' multi-filter runtime data detail selection mismatch',
+    );
+
+    return [
+        'label' => $label,
+        'status' => $response['status'],
+        'data_url' => $path,
+        'filter_field' => $filterField,
+        'filter_value' => $filterValue,
+        'second_filter_field' => $secondFilterField,
+        'second_filter_value' => $secondFilterValue,
+        'row_key' => $filterRowKey,
+        'detail_selected_key' => (string) ($detailItem[$keyField]['display_value'] ?? ''),
+        'selection_basis' => (string) ($selectionBasis['kind'] ?? ''),
+    ];
+}
+
+function runtime_data_too_many_filters_smoke(array &$client, string $label, string $previewPath): array
+{
+    $filters = [];
+    for ($index = 1; $index <= 9; $index++) {
+        $filters[] = 'filter[f' . $index . ']=value' . $index;
+    }
+    $path = runtime_data_path($previewPath) . '?' . implode('&', $filters);
+    $response = request_once($client, 'GET', $path);
+    $payload = json_decode($response['body'], true);
+    ensure(is_array($payload), $label . ' too-many-filters runtime data response was not JSON');
+    ensure($response['status'] === 422, $label . ' too-many-filters runtime data did not fail closed');
+    ensure(($payload['ok'] ?? null) === false, $label . ' too-many-filters runtime data ok flag mismatch');
+    ensure(
+        (string) ($payload['error'] ?? '') === 'runtime data filter query accepts 8 fields or less.',
+        $label . ' too-many-filters runtime data error mismatch',
+    );
+
+    return [
+        'label' => $label,
+        'status' => $response['status'],
+        'data_url' => $path,
+        'fail_closed' => true,
+        'error' => (string) ($payload['error'] ?? ''),
+    ];
+}
+
 function runtime_data_sort_smoke(array &$client, array $profile, string $label, string $previewPath): array
 {
     $sortField = (string) $profile['sort_field'];
@@ -785,6 +882,8 @@ try {
         runtime_data_paginated_smoke($client, $profile, 'current-paginated', $args['current_path']),
         runtime_data_search_smoke($client, $profile, 'current-search', $args['current_path']),
         runtime_data_filter_smoke($client, $profile, 'current-filter', $args['current_path']),
+        runtime_data_multi_filter_smoke($client, $profile, 'current-multi-filter', $args['current_path']),
+        runtime_data_too_many_filters_smoke($client, 'current-too-many-filters', $args['current_path']),
         runtime_data_sort_smoke($client, $profile, 'current-sort', $args['current_path']),
         runtime_data_invalid_sort_smoke($client, 'current-sort-invalid', $args['current_path']),
         runtime_data_invalid_pagination_smoke($client, 'current-pagination-invalid', $args['current_path']),

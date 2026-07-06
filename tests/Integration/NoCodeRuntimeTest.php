@@ -189,13 +189,16 @@ final class NoCodeRuntimeTest extends TestCase
         self::assertStringContainsString('function copyRuntimeOutboxDetailPath(button)', $html);
         self::assertStringContainsString('function writeRuntimeFlow(screen, state, detailPath)', $html);
         self::assertStringContainsString('function refreshRuntimePreview(button)', $html);
-        self::assertStringContainsString('function refreshRuntimeDataForScreen(screen, button, workingMessage, selectedKey, page, pageSize, searchQuery, filterField, filterValue, sortField, sortDirection)', $html);
+        self::assertStringContainsString('function refreshRuntimeDataForScreen(screen, button, workingMessage, selectedKey, page, pageSize, searchQuery, filterField, filterValue, sortField, sortDirection, filters)', $html);
         self::assertStringContainsString('function runtimeDataUrlWithSelectedKey(selectedKey)', $html);
         self::assertStringContainsString('function runtimeDataUrlWithPagination(page, pageSize)', $html);
         self::assertStringContainsString('function runtimeDataUrlWithSearch(searchQuery, page, pageSize)', $html);
         self::assertStringContainsString('function runtimeDataUrlWithFieldFilter(fieldKey, fieldValue, page, pageSize)', $html);
         self::assertStringContainsString('function runtimeDataUrlWithSort(fieldKey, direction, page, pageSize)', $html);
         self::assertStringContainsString('function runtimeDataUrlWithCombinedQuery(query)', $html);
+        self::assertStringContainsString('function mirrorRuntimeDataQueryInBrowserUrl(requestUrl)', $html);
+        self::assertStringContainsString('function runtimeDataQueryFromBrowserUrl()', $html);
+        self::assertStringContainsString('function refreshRuntimeDataFromBrowserUrl()', $html);
         self::assertStringContainsString('function syncRuntimeDataControlsFromPayload(payload)', $html);
         self::assertStringContainsString('function refreshRuntimeDataForQueryReset(button)', $html);
         self::assertStringContainsString('function bindRuntimeListSelection(root)', $html);
@@ -207,6 +210,8 @@ final class NoCodeRuntimeTest extends TestCase
         self::assertStringContainsString('class="no-code-runtime-data-label"', $html);
         self::assertStringContainsString('data-runtime-filter-field', $html);
         self::assertStringContainsString('data-runtime-filter-value', $html);
+        self::assertStringContainsString('data-runtime-filter-field-secondary', $html);
+        self::assertStringContainsString('data-runtime-filter-value-secondary', $html);
         self::assertStringContainsString('data-runtime-filter-submit', $html);
         self::assertStringContainsString('data-runtime-sort-field', $html);
         self::assertStringContainsString('data-runtime-sort-direction', $html);
