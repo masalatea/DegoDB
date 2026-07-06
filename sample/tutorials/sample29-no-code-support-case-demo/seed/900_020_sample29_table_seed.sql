@@ -70,6 +70,15 @@ INSERT INTO support_case (
     'triage',
     'high',
     'Confirm imported customer fields and prepare a generated follow-up workflow.'
+), (
+    2002,
+    'CASE-2026-0002',
+    'Contoso Support Desk',
+    'standard',
+    'Generated workflow handoff check',
+    'open',
+    'medium',
+    'Review selected support case details before handing the workflow to operations.'
 )
 ON DUPLICATE KEY UPDATE
     case_number = VALUES(case_number),

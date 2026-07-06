@@ -70,6 +70,15 @@ INSERT INTO inventory_request (
     12,
     'requested',
     'Prepare inventory pick review before approving replenishment.'
+), (
+    3102,
+    'INV-REQ-2026-0002',
+    'Contoso Storefront',
+    'WH-OSAKA-02',
+    'SKU-CABLE-99',
+    24,
+    'review',
+    'Check alternate warehouse stock before confirming fulfillment.'
 )
 ON DUPLICATE KEY UPDATE
     request_number = VALUES(request_number),

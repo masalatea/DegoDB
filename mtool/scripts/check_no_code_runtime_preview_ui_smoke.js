@@ -165,6 +165,13 @@ function expectedProfile(name) {
       inputFields: ['title', 'status', 'priority', 'body'],
       requiredInputField: 'body',
       requiredInputValue: 'Generated sample28 browser smoke payload',
+      selectedKeyValue: 1002,
+      searchQuery: 'Review generated customer fields',
+      filterField: 'status',
+      filterValue: 'triage',
+      sortField: 'status',
+      sortDirection: 'desc',
+      sortFirstKeyValue: 1002,
       seededPreview: true,
       seededText: 'Review generated customer fields',
       payload: {
@@ -197,6 +204,13 @@ function expectedProfile(name) {
       inputFields: ['subject', 'status', 'severity', 'next_action'],
       requiredInputField: 'next_action',
       requiredInputValue: 'Generated sample29 browser smoke next action',
+      selectedKeyValue: 2002,
+      searchQuery: 'Generated workflow',
+      filterField: 'status',
+      filterValue: 'open',
+      sortField: 'status',
+      sortDirection: 'asc',
+      sortFirstKeyValue: 2002,
       payload: {
         id: 2001,
         subject: 'Sample29 browser smoke update',
@@ -227,6 +241,13 @@ function expectedProfile(name) {
       inputFields: ['item_sku', 'quantity_needed', 'status', 'fulfillment_note'],
       requiredInputField: 'fulfillment_note',
       requiredInputValue: 'Generated sample31 browser smoke fulfillment note',
+      selectedKeyValue: 3102,
+      searchQuery: 'SKU-CABLE-99',
+      filterField: 'status',
+      filterValue: 'review',
+      sortField: 'status',
+      sortDirection: 'desc',
+      sortFirstKeyValue: 3102,
       payload: {
         id: 3101,
         item_sku: 'SKU-BOARD-84',
@@ -545,26 +566,74 @@ async function runSmoke(config) {
           url: '',
           method: '',
           credentials: '',
+          requestSelectedKey: '',
+          requestSearchQuery: '',
+          requestFilterField: '',
+          requestFilterValue: '',
+          requestSortField: '',
+          requestSortDirection: '',
           responseStatus: 0,
           responseOk: null,
           contractVersion: '',
           screenCount: 0,
           firstRowKey: '',
+          selectedKey: '',
         };
         const nativeFetch = window.fetch.bind(window);
         window.fetch = async (url, options = {}) => {
           const method = String(options.method || 'GET');
-          if (method.toUpperCase() === 'GET' && String(url).endsWith('/runtime-data.json')) {
+          let runtimeDataPathname = '';
+          let runtimeDataSelectedKey = '';
+          let runtimeDataPage = '';
+          let runtimeDataPageSize = '';
+          let runtimeDataSearchQuery = '';
+          let runtimeDataFilterField = '';
+          let runtimeDataFilterValue = '';
+          let runtimeDataSortField = '';
+          let runtimeDataSortDirection = '';
+          try {
+            const parsedRuntimeDataUrl = new URL(String(url), window.location.href);
+            runtimeDataPathname = parsedRuntimeDataUrl.pathname;
+            runtimeDataSelectedKey = parsedRuntimeDataUrl.searchParams.get('selected_key') || '';
+            runtimeDataPage = parsedRuntimeDataUrl.searchParams.get('page') || '';
+            runtimeDataPageSize = parsedRuntimeDataUrl.searchParams.get('page_size') || '';
+            runtimeDataSearchQuery = parsedRuntimeDataUrl.searchParams.get('q') || '';
+            for (const [paramKey, paramValue] of parsedRuntimeDataUrl.searchParams.entries()) {
+              const filterMatch = /^filter\[(.+)\]$/.exec(paramKey);
+              if (filterMatch && !runtimeDataFilterField) {
+                runtimeDataFilterField = filterMatch[1] || '';
+                runtimeDataFilterValue = paramValue || '';
+              }
+              const sortMatch = /^sort\[(.+)\]$/.exec(paramKey);
+              if (sortMatch && !runtimeDataSortField) {
+                runtimeDataSortField = sortMatch[1] || '';
+                runtimeDataSortDirection = paramValue || '';
+              }
+            }
+          } catch (_error) {
+            runtimeDataPathname = String(url).split('?')[0];
+          }
+          if (method.toUpperCase() === 'GET' && runtimeDataPathname.endsWith('/runtime-data.json')) {
             const dataProbe = {
               fetchCalled: true,
               url: String(url),
               method,
               credentials: String(options.credentials || ''),
+              requestSelectedKey: runtimeDataSelectedKey,
+              requestPage: runtimeDataPage,
+              requestPageSize: runtimeDataPageSize,
+              requestSearchQuery: runtimeDataSearchQuery,
+              requestFilterField: runtimeDataFilterField,
+              requestFilterValue: runtimeDataFilterValue,
+              requestSortField: runtimeDataSortField,
+              requestSortDirection: runtimeDataSortDirection,
               responseStatus: 0,
               responseOk: null,
               contractVersion: '',
               screenCount: 0,
               firstRowKey: '',
+              selectedKey: '',
+              pagination: {},
             };
             window.__noCodeRuntimeDataProbe = dataProbe;
             if (expected.statusProbe !== 'real') {
@@ -587,6 +656,14 @@ async function runSmoke(config) {
                 },
                 screen_definition_version: 'stub-runtime-data-screen-definition',
                 runtime_preview_version: 'no-code-runtime-v0',
+                query: {
+                  selected_key: runtimeDataSelectedKey,
+                  q: runtimeDataSearchQuery,
+                  filter: runtimeDataFilterField ? { [runtimeDataFilterField]: runtimeDataFilterValue } : {},
+                  sort: runtimeDataSortField ? { [runtimeDataSortField]: runtimeDataSortDirection } : {},
+                  page: runtimeDataPage,
+                  page_size: runtimeDataPageSize,
+                },
                 screens: [
                   {
                     screen_key: expected.listScreenKey,
@@ -614,6 +691,7 @@ async function runSmoke(config) {
               dataProbe.contractVersion = payload.contract_version;
               dataProbe.screenCount = payload.screens.length;
               dataProbe.firstRowKey = String(expected.keyValue);
+              dataProbe.selectedKey = String(runtimeDataSelectedKey || expected.keyValue);
               window.__noCodeRuntimeDataProbe = dataProbe;
               return {
                 json: async () => payload,
@@ -628,6 +706,10 @@ async function runSmoke(config) {
             const firstScreen = Array.isArray(payload?.screens) ? payload.screens[0] : null;
             const firstRow = Array.isArray(firstScreen?.data?.rows) ? firstScreen.data.rows[0] : null;
             dataProbe.firstRowKey = firstRow?.[expected.keyField]?.display_value || '';
+            const detailScreen = Array.isArray(payload?.screens) ? payload.screens.find((screen) => screen?.screen_key === expected.detailScreenKey) : null;
+            dataProbe.selectedKey = detailScreen?.metadata?.selected_key?.display_value || payload?.query?.selected_key || '';
+            const listScreen = Array.isArray(payload?.screens) ? payload.screens.find((screen) => screen?.screen_key === expected.listScreenKey) : null;
+            dataProbe.pagination = listScreen?.metadata?.pagination || {};
             window.__noCodeRuntimeDataProbe = dataProbe;
             return response;
           }
@@ -841,9 +923,543 @@ async function runSmoke(config) {
         } catch (error) {
           parsedRuntimeDataDraftAfterRefresh = { parse_error: String(error && error.message ? error.message : error) };
         }
+        const dataProbeResult = { ...(window.__noCodeRuntimeDataProbe || {}) };
+        const resultRefreshDisabledAfterDataRefresh = !!resultRefreshButton?.disabled;
+        const resultRefreshStateAfterDataRefresh = resultRefreshButton?.getAttribute('data-runtime-result-refresh-state') || '';
+        const resultRefreshStatusAfterDataRefresh = formScreen?.querySelector('[data-runtime-result-refresh-status]')?.textContent?.trim() || '';
+        let runtimeDataSearch = {
+          skipped: true,
+          inputCount: document.querySelectorAll('[data-runtime-search-input]').length,
+          buttonCount: document.querySelectorAll('[data-runtime-search-submit]').length,
+          url: '',
+          requestSearchQuery: '',
+          requestPage: '',
+          requestPageSize: '',
+          responseStatus: 0,
+          responseOk: null,
+          firstRowKey: '',
+          selectedKey: '',
+          renderedRowCount: 0,
+        };
+        if (expected.statusProbe === 'real' && expected.searchQuery) {
+          const searchInput = document.querySelector(`.no-code-screen[data-screen-key="${expected.listScreenKey}"] [data-runtime-search-input]`);
+          const searchButton = document.querySelector(`.no-code-screen[data-screen-key="${expected.listScreenKey}"] [data-runtime-search-submit]`);
+          if (searchInput && searchButton) {
+            runtimeDataSearch.skipped = false;
+            searchInput.value = expected.searchQuery;
+            searchInput.dispatchEvent(new Event('input', { bubbles: true }));
+            searchButton.click();
+            for (let attempt = 0; attempt < 30; attempt += 1) {
+              await new Promise((resolve) => setTimeout(resolve, 100));
+              const latestDataProbe = window.__noCodeRuntimeDataProbe || {};
+              const firstSearchedRow = document.querySelector(`.no-code-screen[data-screen-key="${expected.listScreenKey}"] tbody tr:not(.no-code-empty-row)`);
+              if (latestDataProbe.requestSearchQuery === expected.searchQuery && firstSearchedRow?.getAttribute('data-runtime-row-key') === String(expected.selectedKeyValue || expected.keyValue)) {
+                break;
+              }
+            }
+            const searchProbe = { ...(window.__noCodeRuntimeDataProbe || {}) };
+            const retainedSearchInput = document.querySelector(`.no-code-screen[data-screen-key="${expected.listScreenKey}"] [data-runtime-search-input]`);
+            runtimeDataSearch = {
+              ...runtimeDataSearch,
+              inputCount: document.querySelectorAll('[data-runtime-search-input]').length,
+              buttonCount: document.querySelectorAll('[data-runtime-search-submit]').length,
+              retainedSearchValue: retainedSearchInput?.value || '',
+              url: searchProbe.url || '',
+              requestSearchQuery: searchProbe.requestSearchQuery || '',
+              requestPage: searchProbe.requestPage || '',
+              requestPageSize: searchProbe.requestPageSize || '',
+              responseStatus: searchProbe.responseStatus || 0,
+              responseOk: searchProbe.responseOk,
+              firstRowKey: searchProbe.firstRowKey || '',
+              selectedKey: searchProbe.selectedKey || '',
+              renderedRowCount: document.querySelectorAll(`.no-code-screen[data-screen-key="${expected.listScreenKey}"] tbody tr:not(.no-code-empty-row)`).length,
+            };
+            const searchResetButton = document.querySelector(`.no-code-screen[data-screen-key="${expected.listScreenKey}"] [data-runtime-result-refresh]`) || resultRefreshButton;
+            if (searchResetButton && !searchResetButton.disabled) {
+              searchResetButton.click();
+              for (let attempt = 0; attempt < 30; attempt += 1) {
+                await new Promise((resolve) => setTimeout(resolve, 100));
+                const latestDataProbe = window.__noCodeRuntimeDataProbe || {};
+                const rowCount = document.querySelectorAll(`.no-code-screen[data-screen-key="${expected.listScreenKey}"] tbody tr:not(.no-code-empty-row)`).length;
+                if (!latestDataProbe.requestSearchQuery && rowCount >= 2) {
+                  break;
+                }
+              }
+            }
+          }
+        }
+        let runtimeDataFilter = {
+          skipped: true,
+          fieldControlCount: document.querySelectorAll('[data-runtime-filter-field]').length,
+          valueInputCount: document.querySelectorAll('[data-runtime-filter-value]').length,
+          buttonCount: document.querySelectorAll('[data-runtime-filter-submit]').length,
+          url: '',
+          requestFilterField: '',
+          requestFilterValue: '',
+          requestPage: '',
+          requestPageSize: '',
+          responseStatus: 0,
+          responseOk: null,
+          firstRowKey: '',
+          selectedKey: '',
+          renderedRowCount: 0,
+        };
+        if (expected.statusProbe === 'real' && expected.filterField && expected.filterValue) {
+          const filterField = document.querySelector(`.no-code-screen[data-screen-key="${expected.listScreenKey}"] [data-runtime-filter-field]`);
+          const filterValue = document.querySelector(`.no-code-screen[data-screen-key="${expected.listScreenKey}"] [data-runtime-filter-value]`);
+          const filterButton = document.querySelector(`.no-code-screen[data-screen-key="${expected.listScreenKey}"] [data-runtime-filter-submit]`);
+          if (filterField && filterValue && filterButton) {
+            runtimeDataFilter.skipped = false;
+            filterField.value = expected.filterField;
+            filterField.dispatchEvent(new Event('change', { bubbles: true }));
+            filterValue.value = expected.filterValue;
+            filterValue.dispatchEvent(new Event('input', { bubbles: true }));
+            filterButton.click();
+            for (let attempt = 0; attempt < 30; attempt += 1) {
+              await new Promise((resolve) => setTimeout(resolve, 100));
+              const latestDataProbe = window.__noCodeRuntimeDataProbe || {};
+              const firstFilteredRow = document.querySelector(`.no-code-screen[data-screen-key="${expected.listScreenKey}"] tbody tr:not(.no-code-empty-row)`);
+              if (
+                latestDataProbe.requestFilterField === expected.filterField
+                && latestDataProbe.requestFilterValue === expected.filterValue
+                && firstFilteredRow?.getAttribute('data-runtime-row-key') === String(expected.selectedKeyValue || expected.keyValue)
+              ) {
+                break;
+              }
+            }
+            const filterProbe = { ...(window.__noCodeRuntimeDataProbe || {}) };
+            const retainedFilterField = document.querySelector(`.no-code-screen[data-screen-key="${expected.listScreenKey}"] [data-runtime-filter-field]`);
+            const retainedFilterValue = document.querySelector(`.no-code-screen[data-screen-key="${expected.listScreenKey}"] [data-runtime-filter-value]`);
+            runtimeDataFilter = {
+              ...runtimeDataFilter,
+              fieldControlCount: document.querySelectorAll('[data-runtime-filter-field]').length,
+              valueInputCount: document.querySelectorAll('[data-runtime-filter-value]').length,
+              buttonCount: document.querySelectorAll('[data-runtime-filter-submit]').length,
+              retainedFilterField: retainedFilterField?.value || '',
+              retainedFilterValue: retainedFilterValue?.value || '',
+              url: filterProbe.url || '',
+              requestFilterField: filterProbe.requestFilterField || '',
+              requestFilterValue: filterProbe.requestFilterValue || '',
+              requestPage: filterProbe.requestPage || '',
+              requestPageSize: filterProbe.requestPageSize || '',
+              responseStatus: filterProbe.responseStatus || 0,
+              responseOk: filterProbe.responseOk,
+              firstRowKey: filterProbe.firstRowKey || '',
+              selectedKey: filterProbe.selectedKey || '',
+              renderedRowCount: document.querySelectorAll(`.no-code-screen[data-screen-key="${expected.listScreenKey}"] tbody tr:not(.no-code-empty-row)`).length,
+            };
+            const filterResetButton = document.querySelector(`.no-code-screen[data-screen-key="${expected.listScreenKey}"] [data-runtime-result-refresh]`) || resultRefreshButton;
+            if (filterResetButton && !filterResetButton.disabled) {
+              filterResetButton.click();
+              for (let attempt = 0; attempt < 30; attempt += 1) {
+                await new Promise((resolve) => setTimeout(resolve, 100));
+                const latestDataProbe = window.__noCodeRuntimeDataProbe || {};
+                const rowCount = document.querySelectorAll(`.no-code-screen[data-screen-key="${expected.listScreenKey}"] tbody tr:not(.no-code-empty-row)`).length;
+                if (!latestDataProbe.requestFilterField && rowCount >= 2) {
+                  break;
+                }
+              }
+            }
+          }
+        }
+        let runtimeDataSort = {
+          skipped: true,
+          fieldControlCount: document.querySelectorAll('[data-runtime-sort-field]').length,
+          directionControlCount: document.querySelectorAll('[data-runtime-sort-direction]').length,
+          buttonCount: document.querySelectorAll('[data-runtime-sort-submit]').length,
+          url: '',
+          requestSortField: '',
+          requestSortDirection: '',
+          requestPage: '',
+          requestPageSize: '',
+          responseStatus: 0,
+          responseOk: null,
+          firstRowKey: '',
+          selectedKey: '',
+          renderedRowCount: 0,
+        };
+        if (expected.statusProbe === 'real' && expected.sortField && expected.sortDirection) {
+          const sortField = document.querySelector(`.no-code-screen[data-screen-key="${expected.listScreenKey}"] [data-runtime-sort-field]`);
+          const sortDirection = document.querySelector(`.no-code-screen[data-screen-key="${expected.listScreenKey}"] [data-runtime-sort-direction]`);
+          const sortButton = document.querySelector(`.no-code-screen[data-screen-key="${expected.listScreenKey}"] [data-runtime-sort-submit]`);
+          if (sortField && sortDirection && sortButton) {
+            runtimeDataSort.skipped = false;
+            sortField.value = expected.sortField;
+            sortField.dispatchEvent(new Event('change', { bubbles: true }));
+            sortDirection.value = expected.sortDirection;
+            sortDirection.dispatchEvent(new Event('change', { bubbles: true }));
+            sortButton.click();
+            for (let attempt = 0; attempt < 30; attempt += 1) {
+              await new Promise((resolve) => setTimeout(resolve, 100));
+              const latestDataProbe = window.__noCodeRuntimeDataProbe || {};
+              const firstSortedRow = document.querySelector(`.no-code-screen[data-screen-key="${expected.listScreenKey}"] tbody tr:not(.no-code-empty-row)`);
+              if (
+                latestDataProbe.requestSortField === expected.sortField
+                && latestDataProbe.requestSortDirection === expected.sortDirection
+                && firstSortedRow?.getAttribute('data-runtime-row-key') === String(expected.sortFirstKeyValue || expected.selectedKeyValue || expected.keyValue)
+              ) {
+                break;
+              }
+            }
+            const sortProbe = { ...(window.__noCodeRuntimeDataProbe || {}) };
+            const retainedSortField = document.querySelector(`.no-code-screen[data-screen-key="${expected.listScreenKey}"] [data-runtime-sort-field]`);
+            const retainedSortDirection = document.querySelector(`.no-code-screen[data-screen-key="${expected.listScreenKey}"] [data-runtime-sort-direction]`);
+            runtimeDataSort = {
+              ...runtimeDataSort,
+              fieldControlCount: document.querySelectorAll('[data-runtime-sort-field]').length,
+              directionControlCount: document.querySelectorAll('[data-runtime-sort-direction]').length,
+              buttonCount: document.querySelectorAll('[data-runtime-sort-submit]').length,
+              retainedSortField: retainedSortField?.value || '',
+              retainedSortDirection: retainedSortDirection?.value || '',
+              url: sortProbe.url || '',
+              requestSortField: sortProbe.requestSortField || '',
+              requestSortDirection: sortProbe.requestSortDirection || '',
+              requestPage: sortProbe.requestPage || '',
+              requestPageSize: sortProbe.requestPageSize || '',
+              responseStatus: sortProbe.responseStatus || 0,
+              responseOk: sortProbe.responseOk,
+              firstRowKey: sortProbe.firstRowKey || '',
+              selectedKey: sortProbe.selectedKey || '',
+              renderedRowCount: document.querySelectorAll(`.no-code-screen[data-screen-key="${expected.listScreenKey}"] tbody tr:not(.no-code-empty-row)`).length,
+            };
+            const sortResetButton = document.querySelector(`.no-code-screen[data-screen-key="${expected.listScreenKey}"] [data-runtime-result-refresh]`) || resultRefreshButton;
+            if (sortResetButton && !sortResetButton.disabled) {
+              sortResetButton.click();
+              for (let attempt = 0; attempt < 30; attempt += 1) {
+                await new Promise((resolve) => setTimeout(resolve, 100));
+                const latestDataProbe = window.__noCodeRuntimeDataProbe || {};
+                const rowCount = document.querySelectorAll(`.no-code-screen[data-screen-key="${expected.listScreenKey}"] tbody tr:not(.no-code-empty-row)`).length;
+                if (!latestDataProbe.requestSortField && rowCount >= 2) {
+                  break;
+                }
+              }
+            }
+          }
+        }
+        let runtimeDataCombined = {
+          skipped: true,
+          url: '',
+          requestSearchQuery: '',
+          requestFilterField: '',
+          requestFilterValue: '',
+          requestSortField: '',
+          requestSortDirection: '',
+          requestPage: '',
+          requestPageSize: '',
+          retainedSearchValue: '',
+          retainedFilterField: '',
+          retainedFilterValue: '',
+          retainedSortField: '',
+          retainedSortDirection: '',
+          retainedPageSize: '',
+          responseStatus: 0,
+          responseOk: null,
+          firstRowKey: '',
+          renderedRowCount: 0,
+        };
+        let runtimeDataQueryReset = {
+          skipped: true,
+          url: '',
+          requestSearchQuery: '',
+          requestFilterField: '',
+          requestFilterValue: '',
+          requestSortField: '',
+          requestSortDirection: '',
+          requestPage: '',
+          requestPageSize: '',
+          retainedSearchValue: '',
+          retainedFilterField: '',
+          retainedFilterValue: '',
+          retainedSortField: '',
+          retainedSortDirection: '',
+          retainedPageSize: '',
+          responseStatus: 0,
+          responseOk: null,
+          renderedRowCount: 0,
+        };
+        if (expected.statusProbe === 'real' && expected.searchQuery && expected.filterField && expected.filterValue && expected.sortField && expected.sortDirection) {
+          const combinedSearchInput = document.querySelector(`.no-code-screen[data-screen-key="${expected.listScreenKey}"] [data-runtime-search-input]`);
+          const combinedFilterField = document.querySelector(`.no-code-screen[data-screen-key="${expected.listScreenKey}"] [data-runtime-filter-field]`);
+          const combinedFilterValue = document.querySelector(`.no-code-screen[data-screen-key="${expected.listScreenKey}"] [data-runtime-filter-value]`);
+          const combinedSortField = document.querySelector(`.no-code-screen[data-screen-key="${expected.listScreenKey}"] [data-runtime-sort-field]`);
+          const combinedSortDirection = document.querySelector(`.no-code-screen[data-screen-key="${expected.listScreenKey}"] [data-runtime-sort-direction]`);
+          const combinedPageSize = document.querySelector(`.no-code-screen[data-screen-key="${expected.listScreenKey}"] [data-runtime-page-size-input]`);
+          const combinedSortButton = document.querySelector(`.no-code-screen[data-screen-key="${expected.listScreenKey}"] [data-runtime-sort-submit]`);
+          if (combinedSearchInput && combinedFilterField && combinedFilterValue && combinedSortField && combinedSortDirection && combinedPageSize && combinedSortButton) {
+            runtimeDataCombined.skipped = false;
+            combinedSearchInput.value = expected.searchQuery;
+            combinedSearchInput.dispatchEvent(new Event('input', { bubbles: true }));
+            combinedFilterField.value = expected.filterField;
+            combinedFilterField.dispatchEvent(new Event('change', { bubbles: true }));
+            combinedFilterValue.value = expected.filterValue;
+            combinedFilterValue.dispatchEvent(new Event('input', { bubbles: true }));
+            combinedSortField.value = expected.sortField;
+            combinedSortField.dispatchEvent(new Event('change', { bubbles: true }));
+            combinedSortDirection.value = expected.sortDirection;
+            combinedSortDirection.dispatchEvent(new Event('change', { bubbles: true }));
+            combinedPageSize.value = '1';
+            combinedPageSize.dispatchEvent(new Event('input', { bubbles: true }));
+            combinedSortButton.click();
+            for (let attempt = 0; attempt < 30; attempt += 1) {
+              await new Promise((resolve) => setTimeout(resolve, 100));
+              const latestDataProbe = window.__noCodeRuntimeDataProbe || {};
+              const firstCombinedRow = document.querySelector(`.no-code-screen[data-screen-key="${expected.listScreenKey}"] tbody tr:not(.no-code-empty-row)`);
+              if (
+                latestDataProbe.requestSearchQuery === expected.searchQuery
+                && latestDataProbe.requestFilterField === expected.filterField
+                && latestDataProbe.requestFilterValue === expected.filterValue
+                && latestDataProbe.requestSortField === expected.sortField
+                && latestDataProbe.requestSortDirection === expected.sortDirection
+                && latestDataProbe.requestPage === '1'
+                && latestDataProbe.requestPageSize === '1'
+                && firstCombinedRow?.getAttribute('data-runtime-row-key') === String(expected.selectedKeyValue || expected.keyValue)
+              ) {
+                break;
+              }
+            }
+            const combinedProbe = { ...(window.__noCodeRuntimeDataProbe || {}) };
+            const retainedCombinedSearch = document.querySelector(`.no-code-screen[data-screen-key="${expected.listScreenKey}"] [data-runtime-search-input]`);
+            const retainedCombinedFilterField = document.querySelector(`.no-code-screen[data-screen-key="${expected.listScreenKey}"] [data-runtime-filter-field]`);
+            const retainedCombinedFilterValue = document.querySelector(`.no-code-screen[data-screen-key="${expected.listScreenKey}"] [data-runtime-filter-value]`);
+            const retainedCombinedSortField = document.querySelector(`.no-code-screen[data-screen-key="${expected.listScreenKey}"] [data-runtime-sort-field]`);
+            const retainedCombinedSortDirection = document.querySelector(`.no-code-screen[data-screen-key="${expected.listScreenKey}"] [data-runtime-sort-direction]`);
+            const retainedCombinedPageSize = document.querySelector(`.no-code-screen[data-screen-key="${expected.listScreenKey}"] [data-runtime-page-size-input]`);
+            runtimeDataCombined = {
+              ...runtimeDataCombined,
+              url: combinedProbe.url || '',
+              requestSearchQuery: combinedProbe.requestSearchQuery || '',
+              requestFilterField: combinedProbe.requestFilterField || '',
+              requestFilterValue: combinedProbe.requestFilterValue || '',
+              requestSortField: combinedProbe.requestSortField || '',
+              requestSortDirection: combinedProbe.requestSortDirection || '',
+              requestPage: combinedProbe.requestPage || '',
+              requestPageSize: combinedProbe.requestPageSize || '',
+              retainedSearchValue: retainedCombinedSearch?.value || '',
+              retainedFilterField: retainedCombinedFilterField?.value || '',
+              retainedFilterValue: retainedCombinedFilterValue?.value || '',
+              retainedSortField: retainedCombinedSortField?.value || '',
+              retainedSortDirection: retainedCombinedSortDirection?.value || '',
+              retainedPageSize: retainedCombinedPageSize?.value || '',
+              responseStatus: combinedProbe.responseStatus || 0,
+              responseOk: combinedProbe.responseOk,
+              firstRowKey: combinedProbe.firstRowKey || '',
+              renderedRowCount: document.querySelectorAll(`.no-code-screen[data-screen-key="${expected.listScreenKey}"] tbody tr:not(.no-code-empty-row)`).length,
+            };
+            const combinedResetButton = document.querySelector(`.no-code-screen[data-screen-key="${expected.listScreenKey}"] [data-runtime-query-reset]`);
+            if (combinedResetButton && !combinedResetButton.disabled) {
+              runtimeDataQueryReset.skipped = false;
+              combinedResetButton.click();
+              for (let attempt = 0; attempt < 30; attempt += 1) {
+                await new Promise((resolve) => setTimeout(resolve, 100));
+                const latestDataProbe = window.__noCodeRuntimeDataProbe || {};
+                const rowCount = document.querySelectorAll(`.no-code-screen[data-screen-key="${expected.listScreenKey}"] tbody tr:not(.no-code-empty-row)`).length;
+                if (!latestDataProbe.requestSearchQuery && !latestDataProbe.requestFilterField && !latestDataProbe.requestSortField && !latestDataProbe.requestPage && !latestDataProbe.requestPageSize && rowCount >= 2) {
+                  break;
+                }
+              }
+              const resetProbe = { ...(window.__noCodeRuntimeDataProbe || {}) };
+              const resetSearch = document.querySelector(`.no-code-screen[data-screen-key="${expected.listScreenKey}"] [data-runtime-search-input]`);
+              const resetFilterField = document.querySelector(`.no-code-screen[data-screen-key="${expected.listScreenKey}"] [data-runtime-filter-field]`);
+              const resetFilterValue = document.querySelector(`.no-code-screen[data-screen-key="${expected.listScreenKey}"] [data-runtime-filter-value]`);
+              const resetSortField = document.querySelector(`.no-code-screen[data-screen-key="${expected.listScreenKey}"] [data-runtime-sort-field]`);
+              const resetSortDirection = document.querySelector(`.no-code-screen[data-screen-key="${expected.listScreenKey}"] [data-runtime-sort-direction]`);
+              const resetPageSize = document.querySelector(`.no-code-screen[data-screen-key="${expected.listScreenKey}"] [data-runtime-page-size-input]`);
+              runtimeDataQueryReset = {
+                ...runtimeDataQueryReset,
+                url: resetProbe.url || '',
+                requestSearchQuery: resetProbe.requestSearchQuery || '',
+                requestFilterField: resetProbe.requestFilterField || '',
+                requestFilterValue: resetProbe.requestFilterValue || '',
+                requestSortField: resetProbe.requestSortField || '',
+                requestSortDirection: resetProbe.requestSortDirection || '',
+                requestPage: resetProbe.requestPage || '',
+                requestPageSize: resetProbe.requestPageSize || '',
+                retainedSearchValue: resetSearch?.value || '',
+                retainedFilterField: resetFilterField?.value || '',
+                retainedFilterValue: resetFilterValue?.value || '',
+                retainedSortField: resetSortField?.value || '',
+                retainedSortDirection: resetSortDirection?.value || '',
+                retainedPageSize: resetPageSize?.value || '',
+                responseStatus: resetProbe.responseStatus || 0,
+                responseOk: resetProbe.responseOk,
+                renderedRowCount: document.querySelectorAll(`.no-code-screen[data-screen-key="${expected.listScreenKey}"] tbody tr:not(.no-code-empty-row)`).length,
+              };
+            }
+          }
+        }
+        let runtimeDataPagination = {
+          skipped: true,
+          controlGroupCount: document.querySelectorAll('[data-runtime-data-controls]').length,
+          labelledGroupCount: Array.from(document.querySelectorAll('[data-runtime-data-controls]')).filter((element) => element.getAttribute('role') === 'group' && element.getAttribute('aria-label') === 'Runtime data controls').length,
+          pageSizeButtonCount: document.querySelectorAll('[data-runtime-page-size-submit]').length,
+          pageSizeInputCount: document.querySelectorAll('[data-runtime-page-size-input]').length,
+          pageSubmitButtonCount: document.querySelectorAll('[data-runtime-page-submit]').length,
+          pageInputCount: document.querySelectorAll('[data-runtime-page-input]').length,
+          queryResetButtonCount: document.querySelectorAll('[data-runtime-query-reset]').length,
+          pageButtonCount: document.querySelectorAll('[data-runtime-page]').length,
+          entryUrl: '',
+          entryPage: '',
+          entryPageSize: '',
+          nextUrl: '',
+          nextPage: '',
+          nextPageSize: '',
+          directUrl: '',
+          directPage: '',
+          directPageSize: '',
+          renderedRowCount: 0,
+          firstRowKey: '',
+          pageText: '',
+          totalRowsAttribute: '',
+          pagination: {},
+        };
+        if (expected.statusProbe === 'real') {
+          const pageSizeInput = document.querySelector(`.no-code-screen[data-screen-key="${expected.listScreenKey}"] [data-runtime-page-size-input]`);
+          const pageSizeButton = document.querySelector(`.no-code-screen[data-screen-key="${expected.listScreenKey}"] [data-runtime-page-size-submit]`);
+          if (pageSizeButton) {
+            runtimeDataPagination.skipped = false;
+            if (pageSizeInput) {
+              pageSizeInput.value = '1';
+              pageSizeInput.dispatchEvent(new Event('input', { bubbles: true }));
+            }
+            pageSizeButton.click();
+            for (let attempt = 0; attempt < 30; attempt += 1) {
+              await new Promise((resolve) => setTimeout(resolve, 100));
+              const latestDataProbe = window.__noCodeRuntimeDataProbe || {};
+              const latestNextButton = document.querySelector(`.no-code-screen[data-screen-key="${expected.listScreenKey}"] [data-runtime-page="2"][data-runtime-page-size="1"]`);
+              if (latestDataProbe.requestPage === '1' && latestDataProbe.requestPageSize === '1' && latestNextButton) {
+                break;
+              }
+            }
+            const entryProbe = { ...(window.__noCodeRuntimeDataProbe || {}) };
+            const nextButton = document.querySelector(`.no-code-screen[data-screen-key="${expected.listScreenKey}"] [data-runtime-page="2"][data-runtime-page-size="1"]`);
+            if (nextButton) {
+              nextButton.click();
+              for (let attempt = 0; attempt < 30; attempt += 1) {
+                await new Promise((resolve) => setTimeout(resolve, 100));
+                const latestDataProbe = window.__noCodeRuntimeDataProbe || {};
+                const latestPagination = latestDataProbe.pagination || {};
+                const activePagination = document.querySelector(`.no-code-screen[data-screen-key="${expected.listScreenKey}"] .no-code-pagination[data-runtime-pagination-page="2"]`);
+                if (latestDataProbe.requestPage === '2' && latestDataProbe.requestPageSize === '1' && Number(latestPagination.page || 0) === 2 && activePagination) {
+                  break;
+                }
+              }
+            }
+            const nextProbe = { ...(window.__noCodeRuntimeDataProbe || {}) };
+            const firstPaginatedRow = document.querySelector(`.no-code-screen[data-screen-key="${expected.listScreenKey}"] tbody tr:not(.no-code-empty-row)`);
+            const paginationElement = document.querySelector(`.no-code-screen[data-screen-key="${expected.listScreenKey}"] .no-code-pagination`);
+            runtimeDataPagination = {
+              ...runtimeDataPagination,
+              controlGroupCount: document.querySelectorAll('[data-runtime-data-controls]').length,
+              labelledGroupCount: Array.from(document.querySelectorAll('[data-runtime-data-controls]')).filter((element) => element.getAttribute('role') === 'group' && element.getAttribute('aria-label') === 'Runtime data controls').length,
+              pageSizeButtonCount: document.querySelectorAll('[data-runtime-page-size-submit]').length,
+              pageSizeInputCount: document.querySelectorAll('[data-runtime-page-size-input]').length,
+              pageSubmitButtonCount: document.querySelectorAll('[data-runtime-page-submit]').length,
+              pageInputCount: document.querySelectorAll('[data-runtime-page-input]').length,
+              queryResetButtonCount: document.querySelectorAll('[data-runtime-query-reset]').length,
+              pageButtonCount: document.querySelectorAll('[data-runtime-page]').length,
+              entryUrl: entryProbe.url || '',
+              entryPage: entryProbe.requestPage || '',
+              entryPageSize: entryProbe.requestPageSize || '',
+              nextUrl: nextProbe.url || '',
+              nextPage: nextProbe.requestPage || '',
+              nextPageSize: nextProbe.requestPageSize || '',
+              renderedRowCount: document.querySelectorAll(`.no-code-screen[data-screen-key="${expected.listScreenKey}"] tbody tr:not(.no-code-empty-row)`).length,
+              firstRowKey: firstPaginatedRow?.getAttribute('data-runtime-row-key') || '',
+              pageText: paginationElement?.textContent?.trim() || '',
+              totalRowsAttribute: paginationElement?.getAttribute('data-runtime-pagination-total-rows') || '',
+              pagination: nextProbe.pagination || {},
+            };
+            const directPageInput = document.querySelector(`.no-code-screen[data-screen-key="${expected.listScreenKey}"] [data-runtime-page-input]`);
+            const directPageButton = document.querySelector(`.no-code-screen[data-screen-key="${expected.listScreenKey}"] [data-runtime-page-submit]`);
+            if (directPageInput && directPageButton) {
+              directPageInput.value = '1';
+              directPageInput.dispatchEvent(new Event('input', { bubbles: true }));
+              directPageButton.click();
+              for (let attempt = 0; attempt < 30; attempt += 1) {
+                await new Promise((resolve) => setTimeout(resolve, 100));
+                const latestDataProbe = window.__noCodeRuntimeDataProbe || {};
+                const latestPagination = latestDataProbe.pagination || {};
+                const activePagination = document.querySelector(`.no-code-screen[data-screen-key="${expected.listScreenKey}"] .no-code-pagination[data-runtime-pagination-page="1"]`);
+                if (latestDataProbe.requestPage === '1' && latestDataProbe.requestPageSize === '1' && Number(latestPagination.page || 0) === 1 && activePagination) {
+                  break;
+                }
+              }
+              const directProbe = { ...(window.__noCodeRuntimeDataProbe || {}) };
+              runtimeDataPagination = {
+                ...runtimeDataPagination,
+                pageSubmitButtonCount: document.querySelectorAll('[data-runtime-page-submit]').length,
+                pageInputCount: document.querySelectorAll('[data-runtime-page-input]').length,
+                directUrl: directProbe.url || '',
+                directPage: directProbe.requestPage || '',
+                directPageSize: directProbe.requestPageSize || '',
+              };
+              if (expected.selectedKeyValue && String(expected.selectedKeyValue) !== String(expected.keyValue)) {
+                const runtimeFullRefreshButton = document.querySelector(`.no-code-screen[data-screen-key="${expected.listScreenKey}"] [data-runtime-result-refresh]`) || resultRefreshButton;
+                runtimeFullRefreshButton?.click();
+                for (let attempt = 0; attempt < 30; attempt += 1) {
+                  await new Promise((resolve) => setTimeout(resolve, 100));
+                  const latestDataProbe = window.__noCodeRuntimeDataProbe || {};
+                  const selectableRows = document.querySelectorAll(`.no-code-screen[data-screen-key="${expected.listScreenKey}"] [data-runtime-row-select]`);
+                  if (!latestDataProbe.requestPage && selectableRows.length >= 2) {
+                    break;
+                  }
+                }
+              }
+            }
+          }
+        }
+        let runtimeDataRowSelection = {
+          skipped: true,
+          selectedKey: '',
+          buttonCount: document.querySelectorAll('[data-runtime-row-select]').length,
+          url: '',
+          requestSelectedKey: '',
+          responseStatus: 0,
+          responseOk: null,
+          responseSelectedKey: '',
+          hiddenKeyValue: '',
+          draftChecks: [],
+          statusText: '',
+        };
+        const expectedSelectedKey = expected.selectedKeyValue ? String(expected.selectedKeyValue) : '';
+        if (expectedSelectedKey && expectedSelectedKey !== String(expected.keyValue)) {
+          const selectedButton = document.querySelector(`[data-runtime-row-select][data-runtime-selected-key="${expectedSelectedKey}"]`);
+          if (selectedButton) {
+            runtimeDataRowSelection.skipped = false;
+            runtimeDataRowSelection.selectedKey = expectedSelectedKey;
+            selectedButton.click();
+            for (let attempt = 0; attempt < 30; attempt += 1) {
+              await new Promise((resolve) => setTimeout(resolve, 100));
+              const refreshState = formScreen?.querySelector('[data-runtime-result-refresh]')?.getAttribute('data-runtime-result-refresh-state') || '';
+              const latestDataProbe = window.__noCodeRuntimeDataProbe || {};
+              if ((refreshState === 'success' || refreshState === 'error') && latestDataProbe.requestSelectedKey === expectedSelectedKey) {
+                break;
+              }
+            }
+            const selectedDraftText = formScreen?.querySelector('[data-intent-draft-output]')?.textContent || '';
+            let selectedDraft = {};
+            try {
+              selectedDraft = selectedDraftText ? JSON.parse(selectedDraftText) : {};
+            } catch (error) {
+              selectedDraft = { parse_error: String(error && error.message ? error.message : error) };
+            }
+            const selectedDataProbe = window.__noCodeRuntimeDataProbe || {};
+            runtimeDataRowSelection = {
+              ...runtimeDataRowSelection,
+              buttonCount: document.querySelectorAll('[data-runtime-row-select]').length,
+              url: selectedDataProbe.url || '',
+              requestSelectedKey: selectedDataProbe.requestSelectedKey || '',
+              responseStatus: selectedDataProbe.responseStatus || 0,
+              responseOk: selectedDataProbe.responseOk,
+              responseSelectedKey: selectedDataProbe.selectedKey || '',
+              hiddenKeyValue: formScreen?.querySelector(`[data-runtime-hidden-action-key="${expected.keyField}"]`)?.getAttribute('value') || '',
+              draftChecks: Array.isArray(selectedDraft.draft_checks) ? selectedDraft.draft_checks : [],
+              statusText: document.querySelector(`.no-code-screen[data-screen-key="${expected.listScreenKey}"] [data-runtime-result-refresh-status]`)?.textContent?.trim() || '',
+            };
+          }
+        }
         const probeResult = window.__noCodeRuntimeSubmitProbe || {};
         const statusProbeResult = window.__noCodeRuntimeStatusProbe || {};
-        const dataProbeResult = window.__noCodeRuntimeDataProbe || {};
         submitProbe = {
           skipped: false,
           stateBeforeClick,
@@ -856,9 +1472,9 @@ async function runSmoke(config) {
           statusOutboxPollState: submitSnapshot.statusOutboxPollState,
           statusOutboxPollCount: submitSnapshot.statusOutboxPollCount,
           feedbackOutboxDetailPath: submitSnapshot.feedbackOutboxDetailPath,
-          resultRefreshDisabledAfterClick: !!resultRefreshButton?.disabled,
-          resultRefreshStateAfterClick: resultRefreshButton?.getAttribute('data-runtime-result-refresh-state') || '',
-          resultRefreshStatusAfterClick: formScreen?.querySelector('[data-runtime-result-refresh-status]')?.textContent?.trim() || '',
+          resultRefreshDisabledAfterClick: resultRefreshDisabledAfterDataRefresh,
+          resultRefreshStateAfterClick: resultRefreshStateAfterDataRefresh,
+          resultRefreshStatusAfterClick: resultRefreshStatusAfterDataRefresh,
           runtimeDataFetchCalled: !!dataProbeResult.fetchCalled,
           runtimeDataFetchUrl: dataProbeResult.url || '',
           runtimeDataFetchResponseStatus: dataProbeResult.responseStatus || 0,
@@ -866,10 +1482,18 @@ async function runSmoke(config) {
           runtimeDataFetchContractVersion: dataProbeResult.contractVersion || '',
           runtimeDataFetchScreenCount: Number(dataProbeResult.screenCount || 0),
           runtimeDataFetchFirstRowKey: dataProbeResult.firstRowKey || '',
+          runtimeDataFetchSelectedKey: dataProbeResult.selectedKey || '',
           runtimeDataListRowCountAfterRefresh: document.querySelectorAll(`.no-code-screen[data-screen-key="${expected.listScreenKey}"] tbody tr:not(.no-code-empty-row)`).length,
           runtimeDataHiddenKeyValueAfterRefresh: runtimeDataHiddenKeyAfterRefresh?.getAttribute('value') || '',
           runtimeDataDraftSummaryAfterRefresh: formScreen?.querySelector('[data-intent-draft-summary]')?.textContent?.trim() || '',
           runtimeDataDraftChecksAfterRefresh: Array.isArray(parsedRuntimeDataDraftAfterRefresh.draft_checks) ? parsedRuntimeDataDraftAfterRefresh.draft_checks : [],
+          runtimeDataPagination,
+          runtimeDataSearch,
+          runtimeDataFilter,
+          runtimeDataSort,
+          runtimeDataCombined,
+          runtimeDataQueryReset,
+          runtimeDataRowSelection,
           runtimeFlowStateAfterClick: submitSnapshot.runtimeFlowStateAfterClick,
           runtimeFlowSubmitStateAfterClick: submitSnapshot.runtimeFlowSubmitStateAfterClick,
           runtimeFlowTrackStateAfterClick: submitSnapshot.runtimeFlowTrackStateAfterClick,
@@ -1036,7 +1660,8 @@ async function runSmoke(config) {
       throw new Error(`form screen summary mismatch: ${JSON.stringify(metrics.formSummary)}`);
     }
     if (config.expected.seededPreview) {
-      if (metrics.listRowCount < 3) {
+      const runtimeDataRefreshApplied = !!(metrics.submitProbe && metrics.submitProbe.runtimeDataFetchCalled);
+      if (metrics.listRowCount < 3 && !runtimeDataRefreshApplied) {
         throw new Error(`seeded preview row count mismatch: ${metrics.listRowCount}`);
       }
       if (metrics.emptyScreenCount !== 0 || metrics.readyScreenCount !== 3) {
@@ -1310,6 +1935,151 @@ async function runSmoke(config) {
         }
         if (expectsRuntimeDataRefresh && !probe.runtimeDataDraftSummaryAfterRefresh.includes('Ready draft:')) {
           throw new Error(`real submit probe refreshed draft was not ready after key preservation: ${JSON.stringify(probe)}`);
+        }
+        if (expectsRuntimeDataRefresh) {
+          const search = probe.runtimeDataSearch || {};
+          if (search.skipped || search.inputCount < 1 || search.buttonCount < 1) {
+            throw new Error(`real submit probe did not expose runtime data search controls: ${JSON.stringify(probe)}`);
+          }
+          if (!String(search.url || '').includes('q=') || search.requestSearchQuery !== String(config.expected.searchQuery || '')) {
+            throw new Error(`real submit probe did not request searched runtime data: ${JSON.stringify(probe)}`);
+          }
+          if (search.retainedSearchValue !== String(config.expected.searchQuery || '')) {
+            throw new Error(`real submit probe did not retain searched runtime data controls: ${JSON.stringify(probe)}`);
+          }
+          if (search.responseStatus !== 200 || search.responseOk !== true || search.renderedRowCount !== 1 || search.firstRowKey !== String(config.expected.selectedKeyValue || config.expected.keyValue)) {
+            throw new Error(`real submit probe searched runtime data row mismatch: ${JSON.stringify(probe)}`);
+          }
+          const filter = probe.runtimeDataFilter || {};
+          if (filter.skipped || filter.fieldControlCount < 1 || filter.valueInputCount < 1 || filter.buttonCount < 1) {
+            throw new Error(`real submit probe did not expose runtime data filter controls: ${JSON.stringify(probe)}`);
+          }
+          if (!String(filter.url || '').includes('filter%5B') || filter.requestFilterField !== String(config.expected.filterField || '') || filter.requestFilterValue !== String(config.expected.filterValue || '')) {
+            throw new Error(`real submit probe did not request filtered runtime data: ${JSON.stringify(probe)}`);
+          }
+          if (filter.retainedFilterField !== String(config.expected.filterField || '') || filter.retainedFilterValue !== String(config.expected.filterValue || '')) {
+            throw new Error(`real submit probe did not retain filtered runtime data controls: ${JSON.stringify(probe)}`);
+          }
+          if (filter.responseStatus !== 200 || filter.responseOk !== true || filter.renderedRowCount !== 1 || filter.firstRowKey !== String(config.expected.selectedKeyValue || config.expected.keyValue)) {
+            throw new Error(`real submit probe filtered runtime data row mismatch: ${JSON.stringify(probe)}`);
+          }
+          const sort = probe.runtimeDataSort || {};
+          if (sort.skipped || sort.fieldControlCount < 1 || sort.directionControlCount < 1 || sort.buttonCount < 1) {
+            throw new Error(`real submit probe did not expose runtime data sort controls: ${JSON.stringify(probe)}`);
+          }
+          if (!String(sort.url || '').includes('sort%5B') || sort.requestSortField !== String(config.expected.sortField || '') || sort.requestSortDirection !== String(config.expected.sortDirection || '')) {
+            throw new Error(`real submit probe did not request sorted runtime data: ${JSON.stringify(probe)}`);
+          }
+          if (sort.retainedSortField !== String(config.expected.sortField || '') || sort.retainedSortDirection !== String(config.expected.sortDirection || '')) {
+            throw new Error(`real submit probe did not retain sorted runtime data controls: ${JSON.stringify(probe)}`);
+          }
+          if (sort.responseStatus !== 200 || sort.responseOk !== true || sort.renderedRowCount < 1 || sort.firstRowKey !== String(config.expected.sortFirstKeyValue || config.expected.selectedKeyValue || config.expected.keyValue)) {
+            throw new Error(`real submit probe sorted runtime data row mismatch: ${JSON.stringify(probe)}`);
+          }
+          const combined = probe.runtimeDataCombined || {};
+          if (combined.skipped) {
+            throw new Error(`real submit probe did not exercise combined runtime data controls: ${JSON.stringify(probe)}`);
+          }
+          if (
+            !String(combined.url || '').includes('q=')
+            || !String(combined.url || '').includes('filter%5B')
+            || !String(combined.url || '').includes('sort%5B')
+            || !String(combined.url || '').includes('page=1')
+            || !String(combined.url || '').includes('page_size=1')
+            || combined.requestSearchQuery !== String(config.expected.searchQuery || '')
+            || combined.requestFilterField !== String(config.expected.filterField || '')
+            || combined.requestFilterValue !== String(config.expected.filterValue || '')
+            || combined.requestSortField !== String(config.expected.sortField || '')
+            || combined.requestSortDirection !== String(config.expected.sortDirection || '')
+            || combined.requestPage !== '1'
+            || combined.requestPageSize !== '1'
+          ) {
+            throw new Error(`real submit probe did not request combined runtime data query: ${JSON.stringify(probe)}`);
+          }
+          if (
+            combined.retainedSearchValue !== String(config.expected.searchQuery || '')
+            || combined.retainedFilterField !== String(config.expected.filterField || '')
+            || combined.retainedFilterValue !== String(config.expected.filterValue || '')
+            || combined.retainedSortField !== String(config.expected.sortField || '')
+            || combined.retainedSortDirection !== String(config.expected.sortDirection || '')
+            || combined.retainedPageSize !== '1'
+          ) {
+            throw new Error(`real submit probe did not retain combined runtime data controls: ${JSON.stringify(probe)}`);
+          }
+          if (combined.responseStatus !== 200 || combined.responseOk !== true || combined.renderedRowCount !== 1 || combined.firstRowKey !== String(config.expected.selectedKeyValue || config.expected.keyValue)) {
+            throw new Error(`real submit probe combined runtime data row mismatch: ${JSON.stringify(probe)}`);
+          }
+          const queryReset = probe.runtimeDataQueryReset || {};
+          if (queryReset.skipped) {
+            throw new Error(`real submit probe did not exercise runtime data query reset control: ${JSON.stringify(probe)}`);
+          }
+          if (
+            String(queryReset.url || '').includes('?')
+            || queryReset.requestSearchQuery
+            || queryReset.requestFilterField
+            || queryReset.requestFilterValue
+            || queryReset.requestSortField
+            || queryReset.requestSortDirection
+            || queryReset.requestPage
+            || queryReset.requestPageSize
+          ) {
+            throw new Error(`real submit probe query reset did not request no-query runtime data: ${JSON.stringify(probe)}`);
+          }
+          if (
+            queryReset.retainedSearchValue
+            || queryReset.retainedFilterValue
+            || queryReset.retainedSortField !== String(config.expected.defaultSortFieldAfterReset || '')
+            || queryReset.retainedSortDirection !== String(config.expected.defaultSortDirectionAfterReset || '')
+          ) {
+            throw new Error(`real submit probe query reset did not clear runtime data controls: ${JSON.stringify(probe)}`);
+          }
+          if (queryReset.responseStatus !== 200 || queryReset.responseOk !== true || queryReset.renderedRowCount < 2) {
+            throw new Error(`real submit probe query reset runtime row mismatch: ${JSON.stringify(probe)}`);
+          }
+          const pagination = probe.runtimeDataPagination || {};
+          if (pagination.skipped || pagination.controlGroupCount < 1 || pagination.labelledGroupCount < 1 || pagination.pageSizeButtonCount < 1 || pagination.pageSizeInputCount < 1 || pagination.pageSubmitButtonCount < 1 || pagination.pageInputCount < 1 || pagination.queryResetButtonCount < 1 || pagination.pageButtonCount < 2) {
+            throw new Error(`real submit probe did not expose runtime data pagination controls: ${JSON.stringify(probe)}`);
+          }
+          if (!String(pagination.entryUrl || '').includes('page=1') || !String(pagination.entryUrl || '').includes('page_size=1') || pagination.entryPage !== '1' || pagination.entryPageSize !== '1') {
+            throw new Error(`real submit probe did not request first paginated runtime data page: ${JSON.stringify(probe)}`);
+          }
+          if (!String(pagination.nextUrl || '').includes('page=2') || !String(pagination.nextUrl || '').includes('page_size=1') || pagination.nextPage !== '2' || pagination.nextPageSize !== '1') {
+            throw new Error(`real submit probe did not request next paginated runtime data page: ${JSON.stringify(probe)}`);
+          }
+          if (!String(pagination.directUrl || '').includes('page=1') || !String(pagination.directUrl || '').includes('page_size=1') || pagination.directPage !== '1' || pagination.directPageSize !== '1') {
+            throw new Error(`real submit probe did not request direct paginated runtime data page: ${JSON.stringify(probe)}`);
+          }
+          if (pagination.renderedRowCount !== 1 || pagination.firstRowKey !== String(config.expected.selectedKeyValue || config.expected.keyValue)) {
+            throw new Error(`real submit probe paginated runtime row mismatch: ${JSON.stringify(probe)}`);
+          }
+          if (Number((pagination.pagination || {}).page || 0) !== 2 || Number((pagination.pagination || {}).page_size || 0) !== 1) {
+            throw new Error(`real submit probe pagination metadata mismatch: ${JSON.stringify(probe)}`);
+          }
+          const totalRows = Number((pagination.pagination || {}).total_rows || 0);
+          if (totalRows < 1 || pagination.totalRowsAttribute !== String(totalRows) || !String(pagination.pageText || '').includes(`${totalRows} total rows`)) {
+            throw new Error(`real submit probe pagination total row label mismatch: ${JSON.stringify(probe)}`);
+          }
+        }
+        if (expectsRuntimeDataRefresh && config.expected.selectedKeyValue && String(config.expected.selectedKeyValue) !== String(config.expected.keyValue)) {
+          const rowSelection = probe.runtimeDataRowSelection || {};
+          if (rowSelection.skipped || rowSelection.buttonCount < 2) {
+            throw new Error(`real submit probe did not expose selectable runtime data rows: ${JSON.stringify(probe)}`);
+          }
+          if (!rowSelection.url.includes(`selected_key=${encodeURIComponent(String(config.expected.selectedKeyValue))}`) || rowSelection.requestSelectedKey !== String(config.expected.selectedKeyValue)) {
+            throw new Error(`real submit probe did not request selected runtime data row: ${JSON.stringify(probe)}`);
+          }
+          if (rowSelection.responseStatus !== 200 || rowSelection.responseOk !== true || rowSelection.responseSelectedKey !== String(config.expected.selectedKeyValue)) {
+            throw new Error(`real submit probe selected runtime data response mismatch: ${JSON.stringify(probe)}`);
+          }
+          if (rowSelection.hiddenKeyValue !== String(config.expected.selectedKeyValue)) {
+            throw new Error(`real submit probe selected runtime data did not update hidden form key: ${JSON.stringify(probe)}`);
+          }
+          if (Array.isArray(rowSelection.draftChecks) && rowSelection.draftChecks.includes(`key.missing:${config.expected.keyField}`)) {
+            throw new Error(`real submit probe selected runtime data lost the form key: ${JSON.stringify(probe)}`);
+          }
+          if (!String(rowSelection.statusText || '').includes('Fresh runtime data loaded from')) {
+            throw new Error(`real submit probe selected runtime data did not update refresh status: ${JSON.stringify(probe)}`);
+          }
         }
         if (probe.outboxCopyDisabledAfterClick || probe.outboxCopyPathAfterClick !== expectedOutboxPath || probe.copiedOutboxDetailPath !== expectedOutboxPath) {
           throw new Error(`real submit probe did not copy outbox detail path: ${JSON.stringify(probe)}`);

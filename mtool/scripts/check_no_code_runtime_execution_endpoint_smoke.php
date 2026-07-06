@@ -247,6 +247,13 @@ function smoke_profile(string $profile): array
             'operation_key' => 'update_no_code_ticket',
             'key_field' => 'id',
             'key_value' => '1001',
+            'selected_key_value' => '1002',
+            'search_query' => 'Review generated customer fields',
+            'filter_field' => 'status',
+            'filter_value' => 'triage',
+            'sort_field' => 'status',
+            'sort_direction' => 'desc',
+            'sort_first_key' => '1002',
             'input' => [
                 'id' => '1001',
                 'title' => 'First no-code app ticket',
@@ -261,6 +268,13 @@ function smoke_profile(string $profile): array
             'operation_key' => 'update_support_case',
             'key_field' => 'id',
             'key_value' => '2001',
+            'selected_key_value' => '2002',
+            'search_query' => 'Generated workflow',
+            'filter_field' => 'status',
+            'filter_value' => 'open',
+            'sort_field' => 'status',
+            'sort_direction' => 'asc',
+            'sort_first_key' => '2002',
             'input' => [
                 'id' => '2001',
                 'subject' => 'Billing export follow-up',
@@ -275,6 +289,13 @@ function smoke_profile(string $profile): array
             'operation_key' => 'update_inventory_request',
             'key_field' => 'id',
             'key_value' => '3101',
+            'selected_key_value' => '3102',
+            'search_query' => 'SKU-CABLE-99',
+            'filter_field' => 'status',
+            'filter_value' => 'review',
+            'sort_field' => 'status',
+            'sort_direction' => 'desc',
+            'sort_first_key' => '3102',
             'input' => [
                 'id' => '3101',
                 'item_sku' => 'SKU-BOARD-84',
@@ -371,9 +392,12 @@ function endpoint_smoke(array &$client, array $profile, string $label, string $p
     ];
 }
 
-function runtime_data_smoke(array &$client, array $profile, string $label, string $previewPath, string $selectionKind): array
+function runtime_data_smoke(array &$client, array $profile, string $label, string $previewPath, string $selectionKind, string $selectedKey = ''): array
 {
     $path = runtime_data_path($previewPath);
+    if ($selectedKey !== '') {
+        $path .= '?selected_key=' . rawurlencode($selectedKey);
+    }
     $response = request_once($client, 'GET', $path);
     $payload = json_decode($response['body'], true);
     ensure(is_array($payload), $label . ' runtime data response was not JSON');
@@ -399,6 +423,7 @@ function runtime_data_smoke(array &$client, array $profile, string $label, strin
     ensure(($payload['project_key'] ?? '') === $profile['project_key'], $label . ' runtime data project mismatch');
     ensure(($payload['selection']['kind'] ?? '') === $selectionKind, $label . ' runtime data selection kind mismatch');
     ensure((string) ($payload['selection']['artifact_key'] ?? '') !== '', $label . ' runtime data artifact key missing');
+    ensure(($payload['query']['selected_key'] ?? '') === $selectedKey, $label . ' runtime data selected key query mismatch');
     ensure(($payload['screen_definition_version'] ?? '') === 'no-code-screen-definition-v0', $label . ' runtime data screen definition version mismatch');
     ensure(($payload['error'] ?? '') === '', $label . ' runtime data error mismatch');
 
@@ -421,15 +446,27 @@ function runtime_data_smoke(array &$client, array $profile, string $label, strin
     $keyField = (string) $profile['key_field'];
     $firstRowKey = (string) ($rows[0][$keyField]['display_value'] ?? '');
     ensure($firstRowKey !== '', $label . ' runtime data first row key missing');
+    $expectedSelectedKey = $selectedKey !== '' ? $selectedKey : $firstRowKey;
 
     $listMetadata = is_array($listScreen['metadata'] ?? null) ? $listScreen['metadata'] : [];
     ensure(($listMetadata['row_count'] ?? null) === count($rows), $label . ' runtime data list row count metadata mismatch');
     ensure(($listMetadata['freshness'] ?? '') === 'live-read', $label . ' runtime data freshness metadata mismatch');
     $detailMetadata = is_array($detailScreen['metadata'] ?? null) ? $detailScreen['metadata'] : [];
+    $selectionBasis = is_array($detailMetadata['selection_basis'] ?? null) ? $detailMetadata['selection_basis'] : [];
+    $expectedSelectionBasis = $selectedKey !== '' ? 'explicit-selected-key' : 'default-first-row';
+    ensure(
+        ($selectionBasis['kind'] ?? '') === $expectedSelectionBasis,
+        $label . ' runtime data selection basis metadata mismatch',
+    );
     ensure(
         ($detailMetadata['selected_key']['field_key'] ?? '') === $keyField
-            && (string) ($detailMetadata['selected_key']['display_value'] ?? '') === $firstRowKey,
+            && (string) ($detailMetadata['selected_key']['display_value'] ?? '') === $expectedSelectedKey,
         $label . ' runtime data selected key metadata mismatch',
+    );
+    $detailItem = is_array($detailScreen['data']['item'] ?? null) ? $detailScreen['data']['item'] : [];
+    ensure(
+        (string) ($detailItem[$keyField]['display_value'] ?? '') === $expectedSelectedKey,
+        $label . ' runtime data detail selected item mismatch',
     );
 
     return [
@@ -443,6 +480,290 @@ function runtime_data_smoke(array &$client, array $profile, string $label, strin
         'first_row_key' => $firstRowKey,
         'row_count_metadata' => (int) ($listMetadata['row_count'] ?? 0),
         'selected_key' => (string) ($detailMetadata['selected_key']['display_value'] ?? ''),
+        'selection_basis' => (string) ($selectionBasis['kind'] ?? ''),
+        'query_selected_key' => (string) ($payload['query']['selected_key'] ?? ''),
+    ];
+}
+
+function runtime_data_missing_selected_key_smoke(array &$client, string $label, string $previewPath): array
+{
+    $path = runtime_data_path($previewPath) . '?selected_key=missing-runtime-data-key';
+    $response = request_once($client, 'GET', $path);
+    $payload = json_decode($response['body'], true);
+    ensure(is_array($payload), $label . ' missing selected key response was not JSON');
+    ensure($response['status'] === 422, $label . ' missing selected key did not fail closed');
+    ensure(($payload['ok'] ?? null) === false, $label . ' missing selected key ok flag mismatch');
+    ensure(str_contains((string) ($payload['error'] ?? ''), 'selected key'), $label . ' missing selected key error mismatch');
+
+    return [
+        'label' => $label,
+        'status' => $response['status'],
+        'data_url' => $path,
+        'fail_closed' => true,
+        'error' => (string) ($payload['error'] ?? ''),
+    ];
+}
+
+function runtime_data_paginated_smoke(array &$client, array $profile, string $label, string $previewPath): array
+{
+    $path = runtime_data_path($previewPath) . '?page=2&page_size=1';
+    $response = request_once($client, 'GET', $path);
+    $payload = json_decode($response['body'], true);
+    ensure(is_array($payload), $label . ' paginated runtime data response was not JSON');
+    ensure($response['status'] === 200, $label . ' paginated runtime data did not succeed');
+    ensure(($payload['ok'] ?? null) === true, $label . ' paginated runtime data ok flag mismatch');
+    ensure(($payload['query']['page'] ?? '') === '2', $label . ' paginated runtime data page query mismatch');
+    ensure(($payload['query']['page_size'] ?? '') === '1', $label . ' paginated runtime data page_size query mismatch');
+
+    $screens = is_array($payload['screens'] ?? null) ? $payload['screens'] : [];
+    $listScreen = null;
+    $detailScreen = null;
+    foreach ($screens as $screen) {
+        if (is_array($screen) && (string) ($screen['screen_type'] ?? '') === 'list') {
+            $listScreen = $screen;
+        }
+        if (is_array($screen) && (string) ($screen['screen_type'] ?? '') === 'detail') {
+            $detailScreen = $screen;
+        }
+    }
+    ensure(is_array($listScreen), $label . ' paginated runtime data list screen missing');
+    ensure(is_array($detailScreen), $label . ' paginated runtime data detail screen missing');
+
+    $rows = is_array($listScreen['data']['rows'] ?? null) ? $listScreen['data']['rows'] : [];
+    ensure(count($rows) === 1, $label . ' paginated runtime data row count mismatch');
+    $keyField = (string) $profile['key_field'];
+    $pageRowKey = (string) ($rows[0][$keyField]['display_value'] ?? '');
+    ensure($pageRowKey === (string) $profile['selected_key_value'], $label . ' paginated runtime data list row key mismatch');
+
+    $listMetadata = is_array($listScreen['metadata'] ?? null) ? $listScreen['metadata'] : [];
+    $pagination = is_array($listMetadata['pagination'] ?? null) ? $listMetadata['pagination'] : [];
+    ensure(($listMetadata['row_count'] ?? null) === 1, $label . ' paginated runtime data row_count metadata mismatch');
+    ensure(($pagination['page'] ?? null) === 2, $label . ' paginated runtime data page metadata mismatch');
+    ensure(($pagination['page_size'] ?? null) === 1, $label . ' paginated runtime data page_size metadata mismatch');
+    ensure(($pagination['total_rows'] ?? null) >= 2, $label . ' paginated runtime data total_rows metadata mismatch');
+    ensure(($pagination['page_count'] ?? null) >= 2, $label . ' paginated runtime data page_count metadata mismatch');
+    ensure(($pagination['has_previous_page'] ?? null) === true, $label . ' paginated runtime data previous metadata mismatch');
+
+    $detailItem = is_array($detailScreen['data']['item'] ?? null) ? $detailScreen['data']['item'] : [];
+    $detailMetadata = is_array($detailScreen['metadata'] ?? null) ? $detailScreen['metadata'] : [];
+    $selectionBasis = is_array($detailMetadata['selection_basis'] ?? null) ? $detailMetadata['selection_basis'] : [];
+    ensure(($selectionBasis['kind'] ?? '') === 'default-first-row', $label . ' paginated runtime data selection basis mismatch');
+    ensure(
+        (string) ($detailItem[$keyField]['display_value'] ?? '') === (string) $profile['key_value'],
+        $label . ' paginated runtime data detail default selection mismatch',
+    );
+
+    return [
+        'label' => $label,
+        'status' => $response['status'],
+        'data_url' => $path,
+        'page_row_key' => $pageRowKey,
+        'detail_selected_key' => (string) ($detailItem[$keyField]['display_value'] ?? ''),
+        'selection_basis' => (string) ($selectionBasis['kind'] ?? ''),
+        'pagination' => $pagination,
+    ];
+}
+
+function runtime_data_search_smoke(array &$client, array $profile, string $label, string $previewPath): array
+{
+    $searchQuery = (string) $profile['search_query'];
+    $path = runtime_data_path($previewPath) . '?q=' . rawurlencode($searchQuery);
+    $response = request_once($client, 'GET', $path);
+    $payload = json_decode($response['body'], true);
+    ensure(is_array($payload), $label . ' searched runtime data response was not JSON');
+    ensure($response['status'] === 200, $label . ' searched runtime data did not succeed');
+    ensure(($payload['ok'] ?? null) === true, $label . ' searched runtime data ok flag mismatch');
+    ensure(($payload['query']['q'] ?? '') === $searchQuery, $label . ' searched runtime data query mismatch');
+
+    $screens = is_array($payload['screens'] ?? null) ? $payload['screens'] : [];
+    $listScreen = null;
+    $detailScreen = null;
+    foreach ($screens as $screen) {
+        if (is_array($screen) && (string) ($screen['screen_type'] ?? '') === 'list') {
+            $listScreen = $screen;
+        }
+        if (is_array($screen) && (string) ($screen['screen_type'] ?? '') === 'detail') {
+            $detailScreen = $screen;
+        }
+    }
+    ensure(is_array($listScreen), $label . ' searched runtime data list screen missing');
+    ensure(is_array($detailScreen), $label . ' searched runtime data detail screen missing');
+
+    $rows = is_array($listScreen['data']['rows'] ?? null) ? $listScreen['data']['rows'] : [];
+    ensure(count($rows) === 1, $label . ' searched runtime data row count mismatch');
+    $keyField = (string) $profile['key_field'];
+    $searchRowKey = (string) ($rows[0][$keyField]['display_value'] ?? '');
+    ensure($searchRowKey === (string) $profile['selected_key_value'], $label . ' searched runtime data list row key mismatch');
+
+    $listMetadata = is_array($listScreen['metadata'] ?? null) ? $listScreen['metadata'] : [];
+    ensure(($listMetadata['row_count'] ?? null) === 1, $label . ' searched runtime data row_count metadata mismatch');
+
+    $detailItem = is_array($detailScreen['data']['item'] ?? null) ? $detailScreen['data']['item'] : [];
+    $detailMetadata = is_array($detailScreen['metadata'] ?? null) ? $detailScreen['metadata'] : [];
+    $selectionBasis = is_array($detailMetadata['selection_basis'] ?? null) ? $detailMetadata['selection_basis'] : [];
+    ensure(($selectionBasis['kind'] ?? '') === 'query-result-first-row', $label . ' searched runtime data selection basis mismatch');
+    ensure(
+        (string) ($detailItem[$keyField]['display_value'] ?? '') === (string) $profile['selected_key_value'],
+        $label . ' searched runtime data detail selection mismatch',
+    );
+
+    return [
+        'label' => $label,
+        'status' => $response['status'],
+        'data_url' => $path,
+        'query' => $searchQuery,
+        'row_key' => $searchRowKey,
+        'detail_selected_key' => (string) ($detailItem[$keyField]['display_value'] ?? ''),
+        'selection_basis' => (string) ($selectionBasis['kind'] ?? ''),
+    ];
+}
+
+function runtime_data_filter_smoke(array &$client, array $profile, string $label, string $previewPath): array
+{
+    $filterField = (string) $profile['filter_field'];
+    $filterValue = (string) $profile['filter_value'];
+    $path = runtime_data_path($previewPath) . '?filter[' . rawurlencode($filterField) . ']=' . rawurlencode($filterValue);
+    $response = request_once($client, 'GET', $path);
+    $payload = json_decode($response['body'], true);
+    ensure(is_array($payload), $label . ' filtered runtime data response was not JSON');
+    ensure($response['status'] === 200, $label . ' filtered runtime data did not succeed');
+    ensure(($payload['ok'] ?? null) === true, $label . ' filtered runtime data ok flag mismatch');
+    ensure(($payload['query']['filter'][$filterField] ?? '') === $filterValue, $label . ' filtered runtime data query mismatch');
+
+    $screens = is_array($payload['screens'] ?? null) ? $payload['screens'] : [];
+    $listScreen = null;
+    $detailScreen = null;
+    foreach ($screens as $screen) {
+        if (is_array($screen) && (string) ($screen['screen_type'] ?? '') === 'list') {
+            $listScreen = $screen;
+        }
+        if (is_array($screen) && (string) ($screen['screen_type'] ?? '') === 'detail') {
+            $detailScreen = $screen;
+        }
+    }
+    ensure(is_array($listScreen), $label . ' filtered runtime data list screen missing');
+    ensure(is_array($detailScreen), $label . ' filtered runtime data detail screen missing');
+
+    $rows = is_array($listScreen['data']['rows'] ?? null) ? $listScreen['data']['rows'] : [];
+    ensure(count($rows) === 1, $label . ' filtered runtime data row count mismatch');
+    $keyField = (string) $profile['key_field'];
+    $filterRowKey = (string) ($rows[0][$keyField]['display_value'] ?? '');
+    ensure($filterRowKey === (string) $profile['selected_key_value'], $label . ' filtered runtime data list row key mismatch');
+    ensure((string) ($rows[0][$filterField]['display_value'] ?? '') === $filterValue, $label . ' filtered runtime data field value mismatch');
+
+    $listMetadata = is_array($listScreen['metadata'] ?? null) ? $listScreen['metadata'] : [];
+    ensure(($listMetadata['row_count'] ?? null) === 1, $label . ' filtered runtime data row_count metadata mismatch');
+
+    $detailItem = is_array($detailScreen['data']['item'] ?? null) ? $detailScreen['data']['item'] : [];
+    $detailMetadata = is_array($detailScreen['metadata'] ?? null) ? $detailScreen['metadata'] : [];
+    $selectionBasis = is_array($detailMetadata['selection_basis'] ?? null) ? $detailMetadata['selection_basis'] : [];
+    ensure(($selectionBasis['kind'] ?? '') === 'query-result-first-row', $label . ' filtered runtime data selection basis mismatch');
+    ensure(
+        (string) ($detailItem[$keyField]['display_value'] ?? '') === (string) $profile['selected_key_value'],
+        $label . ' filtered runtime data detail selection mismatch',
+    );
+
+    return [
+        'label' => $label,
+        'status' => $response['status'],
+        'data_url' => $path,
+        'filter_field' => $filterField,
+        'filter_value' => $filterValue,
+        'row_key' => $filterRowKey,
+        'detail_selected_key' => (string) ($detailItem[$keyField]['display_value'] ?? ''),
+        'selection_basis' => (string) ($selectionBasis['kind'] ?? ''),
+    ];
+}
+
+function runtime_data_sort_smoke(array &$client, array $profile, string $label, string $previewPath): array
+{
+    $sortField = (string) $profile['sort_field'];
+    $sortDirection = (string) $profile['sort_direction'];
+    $expectedFirstKey = (string) $profile['sort_first_key'];
+    $path = runtime_data_path($previewPath) . '?sort[' . rawurlencode($sortField) . ']=' . rawurlencode($sortDirection);
+    $response = request_once($client, 'GET', $path);
+    $payload = json_decode($response['body'], true);
+    ensure(is_array($payload), $label . ' sorted runtime data response was not JSON');
+    ensure($response['status'] === 200, $label . ' sorted runtime data did not succeed');
+    ensure(($payload['ok'] ?? null) === true, $label . ' sorted runtime data ok flag mismatch');
+    ensure(($payload['query']['sort'][$sortField] ?? '') === $sortDirection, $label . ' sorted runtime data query mismatch');
+
+    $screens = is_array($payload['screens'] ?? null) ? $payload['screens'] : [];
+    $listScreen = null;
+    $detailScreen = null;
+    foreach ($screens as $screen) {
+        if (is_array($screen) && (string) ($screen['screen_type'] ?? '') === 'list') {
+            $listScreen = $screen;
+        }
+        if (is_array($screen) && (string) ($screen['screen_type'] ?? '') === 'detail') {
+            $detailScreen = $screen;
+        }
+    }
+    ensure(is_array($listScreen), $label . ' sorted runtime data list screen missing');
+    ensure(is_array($detailScreen), $label . ' sorted runtime data detail screen missing');
+
+    $rows = is_array($listScreen['data']['rows'] ?? null) ? $listScreen['data']['rows'] : [];
+    ensure(count($rows) >= 2, $label . ' sorted runtime data row count mismatch');
+    $keyField = (string) $profile['key_field'];
+    $sortRowKey = (string) ($rows[0][$keyField]['display_value'] ?? '');
+    ensure($sortRowKey === $expectedFirstKey, $label . ' sorted runtime data first row key mismatch');
+
+    $detailItem = is_array($detailScreen['data']['item'] ?? null) ? $detailScreen['data']['item'] : [];
+    $detailMetadata = is_array($detailScreen['metadata'] ?? null) ? $detailScreen['metadata'] : [];
+    $selectionBasis = is_array($detailMetadata['selection_basis'] ?? null) ? $detailMetadata['selection_basis'] : [];
+    ensure(($selectionBasis['kind'] ?? '') === 'query-result-first-row', $label . ' sorted runtime data selection basis mismatch');
+    ensure(
+        (string) ($detailItem[$keyField]['display_value'] ?? '') === $expectedFirstKey,
+        $label . ' sorted runtime data detail default selection mismatch',
+    );
+
+    return [
+        'label' => $label,
+        'status' => $response['status'],
+        'data_url' => $path,
+        'sort_field' => $sortField,
+        'sort_direction' => $sortDirection,
+        'first_row_key' => $sortRowKey,
+        'detail_selected_key' => (string) ($detailItem[$keyField]['display_value'] ?? ''),
+        'selection_basis' => (string) ($selectionBasis['kind'] ?? ''),
+    ];
+}
+
+function runtime_data_invalid_sort_smoke(array &$client, string $label, string $previewPath): array
+{
+    $path = runtime_data_path($previewPath) . '?sort[status]=sideways';
+    $response = request_once($client, 'GET', $path);
+    $payload = json_decode($response['body'], true);
+    ensure(is_array($payload), $label . ' invalid sort response was not JSON');
+    ensure($response['status'] === 422, $label . ' invalid sort did not fail closed');
+    ensure(($payload['ok'] ?? null) === false, $label . ' invalid sort ok flag mismatch');
+    ensure(str_contains((string) ($payload['error'] ?? ''), 'sort'), $label . ' invalid sort error mismatch');
+
+    return [
+        'label' => $label,
+        'status' => $response['status'],
+        'data_url' => $path,
+        'fail_closed' => true,
+        'error' => (string) ($payload['error'] ?? ''),
+    ];
+}
+
+function runtime_data_invalid_pagination_smoke(array &$client, string $label, string $previewPath): array
+{
+    $path = runtime_data_path($previewPath) . '?page=0&page_size=1';
+    $response = request_once($client, 'GET', $path);
+    $payload = json_decode($response['body'], true);
+    ensure(is_array($payload), $label . ' invalid pagination response was not JSON');
+    ensure($response['status'] === 422, $label . ' invalid pagination did not fail closed');
+    ensure(($payload['ok'] ?? null) === false, $label . ' invalid pagination ok flag mismatch');
+    ensure(str_contains((string) ($payload['error'] ?? ''), 'page'), $label . ' invalid pagination error mismatch');
+
+    return [
+        'label' => $label,
+        'status' => $response['status'],
+        'data_url' => $path,
+        'fail_closed' => true,
+        'error' => (string) ($payload['error'] ?? ''),
     ];
 }
 
@@ -459,6 +780,14 @@ try {
     $results = [
         runtime_data_smoke($client, $profile, 'current', $args['current_path'], 'current'),
         runtime_data_smoke($client, $profile, 'alias', $args['alias_path'], 'alias'),
+        runtime_data_smoke($client, $profile, 'current-selected', $args['current_path'], 'current', $profile['selected_key_value']),
+        runtime_data_missing_selected_key_smoke($client, 'current-selected-missing', $args['current_path']),
+        runtime_data_paginated_smoke($client, $profile, 'current-paginated', $args['current_path']),
+        runtime_data_search_smoke($client, $profile, 'current-search', $args['current_path']),
+        runtime_data_filter_smoke($client, $profile, 'current-filter', $args['current_path']),
+        runtime_data_sort_smoke($client, $profile, 'current-sort', $args['current_path']),
+        runtime_data_invalid_sort_smoke($client, 'current-sort-invalid', $args['current_path']),
+        runtime_data_invalid_pagination_smoke($client, 'current-pagination-invalid', $args['current_path']),
         endpoint_smoke($client, $profile, 'current', $args['current_path'], '/current/execute.json'),
         endpoint_smoke($client, $profile, 'alias', $args['alias_path'], '/alias/'),
     ];

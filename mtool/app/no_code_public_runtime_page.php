@@ -347,26 +347,413 @@ function app_no_code_public_runtime_data_selected_key(array $render, array $curr
     return [];
 }
 
-/**
- * @param array<string,mixed> $render
- * @param list<array<string,mixed>> $rows
- * @param array<string,mixed> $currentItem
- * @return array<string,mixed>
- */
-function app_no_code_public_runtime_data_screen_metadata(array $render, array $rows, array $currentItem): array
+function app_no_code_public_runtime_data_selected_key_query(): string
 {
+    $selectedKey = trim(app_query_param('selected_key'));
+    if ($selectedKey === '') {
+        return '';
+    }
+    if (strlen($selectedKey) > 128 || preg_match('/[\x00-\x1F\x7F]/', $selectedKey) === 1) {
+        throw new InvalidArgumentException('runtime data selected key is invalid.');
+    }
+
+    return $selectedKey;
+}
+
+function app_no_code_public_runtime_data_search_query(): string
+{
+    $query = trim(app_query_param('q'));
+    if ($query === '') {
+        return '';
+    }
+    if (strlen($query) > 128 || preg_match('/[\x00-\x1F\x7F]/', $query) === 1) {
+        throw new InvalidArgumentException('runtime data search query is invalid.');
+    }
+
+    return $query;
+}
+
+/**
+ * @return array<string,string>
+ */
+function app_no_code_public_runtime_data_filter_query(): array
+{
+    $rawFilters = $_GET['filter'] ?? [];
+    if ($rawFilters === '' || $rawFilters === []) {
+        return [];
+    }
+    if (!is_array($rawFilters)) {
+        throw new InvalidArgumentException('runtime data filter query is invalid.');
+    }
+    if (count($rawFilters) > 8) {
+        throw new InvalidArgumentException('runtime data filter query accepts 8 fields or less.');
+    }
+
+    $filters = [];
+    foreach ($rawFilters as $fieldKey => $rawValue) {
+        if (!is_string($fieldKey) || preg_match('/^[A-Za-z0-9_]{1,64}$/', $fieldKey) !== 1) {
+            throw new InvalidArgumentException('runtime data filter field is invalid.');
+        }
+        if (!is_string($rawValue)) {
+            throw new InvalidArgumentException('runtime data filter value is invalid.');
+        }
+
+        $value = trim($rawValue);
+        if ($value === '') {
+            continue;
+        }
+        if (strlen($value) > 128 || preg_match('/[\x00-\x1F\x7F]/', $value) === 1) {
+            throw new InvalidArgumentException('runtime data filter value is invalid.');
+        }
+        $filters[$fieldKey] = $value;
+    }
+
+    return $filters;
+}
+
+/**
+ * @return array{field:string,direction:string}
+ */
+function app_no_code_public_runtime_data_sort_query(): array
+{
+    $rawSort = $_GET['sort'] ?? [];
+    if ($rawSort === '' || $rawSort === []) {
+        return [
+            'field' => '',
+            'direction' => '',
+        ];
+    }
+    if (!is_array($rawSort)) {
+        throw new InvalidArgumentException('runtime data sort query is invalid.');
+    }
+    if (count($rawSort) !== 1) {
+        throw new InvalidArgumentException('runtime data sort query accepts one field.');
+    }
+
+    $fieldKey = array_key_first($rawSort);
+    $rawDirection = $fieldKey !== null ? $rawSort[$fieldKey] : null;
+    if (!is_string($fieldKey) || preg_match('/^[A-Za-z0-9_]{1,64}$/', $fieldKey) !== 1) {
+        throw new InvalidArgumentException('runtime data sort field is invalid.');
+    }
+    if (!is_string($rawDirection)) {
+        throw new InvalidArgumentException('runtime data sort direction is invalid.');
+    }
+
+    $direction = strtolower(trim($rawDirection));
+    if (!in_array($direction, ['asc', 'desc'], true)) {
+        throw new InvalidArgumentException('runtime data sort direction must be asc or desc.');
+    }
+
     return [
-        'row_count' => count($rows),
-        'selected_key' => app_no_code_public_runtime_data_selected_key($render, $currentItem),
-        'freshness' => 'live-read',
+        'field' => $fieldKey,
+        'direction' => $direction,
     ];
 }
 
 /**
- * @param array<string,mixed> $definition
+ * @return array{enabled:bool,page:int,page_size:int}
+ */
+function app_no_code_public_runtime_data_pagination_query(): array
+{
+    $pageRequested = array_key_exists('page', $_GET);
+    $pageSizeRequested = array_key_exists('page_size', $_GET);
+    if (!$pageRequested && !$pageSizeRequested) {
+        return [
+            'enabled' => false,
+            'page' => 1,
+            'page_size' => 0,
+        ];
+    }
+
+    $page = app_no_code_public_runtime_data_positive_query_int('page', $pageRequested ? null : '1');
+    $pageSize = app_no_code_public_runtime_data_positive_query_int('page_size', $pageSizeRequested ? null : '50');
+    if ($pageSize > 100) {
+        throw new InvalidArgumentException('runtime data page_size must be 100 or less.');
+    }
+
+    return [
+        'enabled' => true,
+        'page' => $page,
+        'page_size' => $pageSize,
+    ];
+}
+
+function app_no_code_public_runtime_data_positive_query_int(string $name, ?string $default): int
+{
+    $rawValue = $_GET[$name] ?? $default;
+    if (!is_string($rawValue) || $rawValue === '' || preg_match('/^[1-9][0-9]*$/', $rawValue) !== 1) {
+        throw new InvalidArgumentException('runtime data ' . $name . ' must be a positive integer.');
+    }
+
+    return (int) $rawValue;
+}
+
+/**
+ * @param list<array<string,mixed>> $rows
  * @return list<array<string,mixed>>
  */
-function app_no_code_public_runtime_data_screens(array $app, string $projectKey, array $definition): array
+function app_no_code_public_runtime_data_search_rows(array $rows, string $query): array
+{
+    if ($query === '') {
+        return $rows;
+    }
+
+    return array_values(array_filter($rows, static function (array $row) use ($query): bool {
+        foreach ($row as $value) {
+            if (stripos(app_no_code_runtime_display_value($value), $query) !== false) {
+                return true;
+            }
+        }
+
+        return false;
+    }));
+}
+
+/**
+ * @param list<array<string,mixed>> $rows
+ * @param array<string,string> $filters
+ * @return list<array<string,mixed>>
+ */
+function app_no_code_public_runtime_data_filter_rows(array $rows, array $filters): array
+{
+    if ($filters === []) {
+        return $rows;
+    }
+
+    foreach (array_keys($filters) as $fieldKey) {
+        $fieldExists = false;
+        foreach ($rows as $row) {
+            if (array_key_exists($fieldKey, $row)) {
+                $fieldExists = true;
+                break;
+            }
+        }
+        if (!$fieldExists) {
+            throw new RuntimeException('runtime data filter field was not found.');
+        }
+    }
+
+    return array_values(array_filter($rows, static function (array $row) use ($filters): bool {
+        foreach ($filters as $fieldKey => $filterValue) {
+            if (stripos(app_no_code_runtime_display_value($row[$fieldKey] ?? null), $filterValue) === false) {
+                return false;
+            }
+        }
+
+        return true;
+    }));
+}
+
+/**
+ * @param list<array<string,mixed>> $rows
+ * @param array{field:string,direction:string} $sort
+ * @return list<array<string,mixed>>
+ */
+function app_no_code_public_runtime_data_sort_rows(array $rows, array $sort): array
+{
+    $fieldKey = $sort['field'];
+    if ($fieldKey === '') {
+        return $rows;
+    }
+
+    $fieldExists = false;
+    foreach ($rows as $row) {
+        if (array_key_exists($fieldKey, $row)) {
+            $fieldExists = true;
+            break;
+        }
+    }
+    if (!$fieldExists) {
+        throw new RuntimeException('runtime data sort field was not found.');
+    }
+
+    $indexedRows = [];
+    foreach ($rows as $index => $row) {
+        $indexedRows[] = [
+            'index' => $index,
+            'row' => $row,
+        ];
+    }
+
+    usort($indexedRows, static function (array $left, array $right) use ($fieldKey, $sort): int {
+        $leftValue = app_no_code_runtime_display_value($left['row'][$fieldKey] ?? null);
+        $rightValue = app_no_code_runtime_display_value($right['row'][$fieldKey] ?? null);
+        $comparison = strnatcasecmp($leftValue, $rightValue);
+        if ($comparison !== 0 && $sort['direction'] === 'desc') {
+            $comparison = -$comparison;
+        }
+        if ($comparison === 0) {
+            $comparison = $left['index'] <=> $right['index'];
+        }
+        return $comparison;
+    });
+
+    return array_values(array_map(static fn (array $entry): array => $entry['row'], $indexedRows));
+}
+
+/**
+ * @param array<string,mixed> $contract
+ */
+function app_no_code_public_runtime_data_contract_key_field(array $contract): string
+{
+    foreach (($contract['actions'] ?? []) as $action) {
+        if (!is_array($action)) {
+            continue;
+        }
+        foreach (($action['fields'] ?? []) as $field) {
+            if (!is_array($field) || (string) ($field['role'] ?? '') !== 'key') {
+                continue;
+            }
+
+            $fieldKey = (string) ($field['field_key'] ?? '');
+            if ($fieldKey !== '') {
+                return $fieldKey;
+            }
+        }
+    }
+
+    return '';
+}
+
+/**
+ * @param list<array<string,mixed>> $rows
+ * @return array<string,mixed>
+ */
+function app_no_code_public_runtime_data_current_item(array $contract, array $rows, string $selectedKey): array
+{
+    if ($selectedKey === '') {
+        return $rows[0] ?? [];
+    }
+
+    $keyField = app_no_code_public_runtime_data_contract_key_field($contract);
+    if ($keyField === '') {
+        throw new RuntimeException('runtime data selected key field was not found.');
+    }
+
+    foreach ($rows as $row) {
+        if (app_no_code_runtime_display_value($row[$keyField] ?? null) === $selectedKey) {
+            return $row;
+        }
+    }
+
+    throw new RuntimeException('runtime data selected key was not found.');
+}
+
+/**
+ * @param array<string,string> $filters
+ * @param array{field:string,direction:string} $sort
+ * @return array<string,mixed>
+ */
+function app_no_code_public_runtime_data_selection_basis(
+    array $currentItem,
+    string $selectedKey,
+    string $searchQuery,
+    array $filters,
+    array $sort,
+): array {
+    if ($currentItem === []) {
+        return [
+            'kind' => 'empty-result',
+            'source' => 'none',
+        ];
+    }
+
+    if ($selectedKey !== '') {
+        return [
+            'kind' => 'explicit-selected-key',
+            'source' => 'selected_key',
+        ];
+    }
+
+    if ($searchQuery !== '' || $filters !== [] || (string) ($sort['field'] ?? '') !== '') {
+        return [
+            'kind' => 'query-result-first-row',
+            'source' => 'query',
+        ];
+    }
+
+    return [
+        'kind' => 'default-first-row',
+        'source' => 'default',
+    ];
+}
+
+/**
+ * @param array<string,mixed> $render
+ * @param list<array<string,mixed>> $renderRows
+ * @param list<array<string,mixed>> $allRows
+ * @param array<string,mixed> $currentItem
+ * @param array{enabled:bool,page:int,page_size:int} $pagination
+ * @param array<string,mixed> $selectionBasis
+ * @return array<string,mixed>
+ */
+function app_no_code_public_runtime_data_screen_metadata(
+    array $render,
+    array $renderRows,
+    array $allRows,
+    array $currentItem,
+    array $pagination,
+    array $selectionBasis,
+): array
+{
+    $metadata = [
+        'row_count' => count($renderRows),
+        'selected_key' => app_no_code_public_runtime_data_selected_key($render, $currentItem),
+        'selection_basis' => $selectionBasis,
+        'freshness' => 'live-read',
+    ];
+
+    if ((string) ($render['screen_type'] ?? '') === 'list' && $pagination['enabled']) {
+        $totalRows = count($allRows);
+        $pageSize = $pagination['page_size'];
+        $pageCount = max(1, (int) ceil($totalRows / max(1, $pageSize)));
+        $metadata['pagination'] = [
+            'page' => $pagination['page'],
+            'page_size' => $pageSize,
+            'total_rows' => $totalRows,
+            'page_count' => $pageCount,
+            'has_previous_page' => $pagination['page'] > 1,
+            'has_next_page' => $pagination['page'] < $pageCount,
+        ];
+    }
+
+    return $metadata;
+}
+
+/**
+ * @param list<array<string,mixed>> $rows
+ * @param array{enabled:bool,page:int,page_size:int} $pagination
+ * @return list<array<string,mixed>>
+ */
+function app_no_code_public_runtime_data_paginated_rows(array $rows, array $pagination): array
+{
+    if (!$pagination['enabled']) {
+        return $rows;
+    }
+
+    return array_values(array_slice(
+        $rows,
+        ($pagination['page'] - 1) * $pagination['page_size'],
+        $pagination['page_size'],
+    ));
+}
+
+/**
+ * @param array<string,mixed> $definition
+ * @param array<string,string> $filters
+ * @param array{field:string,direction:string} $sort
+ * @return list<array<string,mixed>>
+ */
+function app_no_code_public_runtime_data_screens(
+    array $app,
+    string $projectKey,
+    array $definition,
+    string $selectedKey = '',
+    array $pagination = ['enabled' => false, 'page' => 1, 'page_size' => 0],
+    string $searchQuery = '',
+    array $filters = [],
+    array $sort = ['field' => '', 'direction' => ''],
+): array
 {
     $screens = [];
     foreach (($definition['contracts'] ?? []) as $contract) {
@@ -380,7 +767,11 @@ function app_no_code_public_runtime_data_screens(array $app, string $projectKey,
         }
 
         $rows = app_no_code_public_runtime_data_rows_for_contract($app, $projectKey, $contractKey);
-        $currentItem = $rows[0] ?? [];
+        $rows = app_no_code_public_runtime_data_search_rows($rows, $searchQuery);
+        $rows = app_no_code_public_runtime_data_filter_rows($rows, $filters);
+        $rows = app_no_code_public_runtime_data_sort_rows($rows, $sort);
+        $currentItem = app_no_code_public_runtime_data_current_item($contract, $rows, $selectedKey);
+        $selectionBasis = app_no_code_public_runtime_data_selection_basis($currentItem, $selectedKey, $searchQuery, $filters, $sort);
         foreach (($contract['screens'] ?? []) as $screen) {
             if (!is_array($screen)) {
                 continue;
@@ -390,7 +781,10 @@ function app_no_code_public_runtime_data_screens(array $app, string $projectKey,
                 continue;
             }
 
-            $renderResult = app_no_code_runtime_render_screen($definition, $screenKey, $rows, $currentItem);
+            $screenRows = (string) ($screen['screen_type'] ?? '') === 'list'
+                ? app_no_code_public_runtime_data_paginated_rows($rows, $pagination)
+                : $rows;
+            $renderResult = app_no_code_runtime_render_screen($definition, $screenKey, $screenRows, $currentItem);
             if (!$renderResult['ok']) {
                 throw new RuntimeException($renderResult['error']);
             }
@@ -401,7 +795,7 @@ function app_no_code_public_runtime_data_screens(array $app, string $projectKey,
                 'screen_type' => (string) ($render['screen_type'] ?? ''),
                 'contract_key' => (string) ($render['contract_key'] ?? ''),
                 'data' => is_array($render['data'] ?? null) ? $render['data'] : [],
-                'metadata' => app_no_code_public_runtime_data_screen_metadata($render, $rows, $currentItem),
+                'metadata' => app_no_code_public_runtime_data_screen_metadata($render, $screenRows, $rows, $currentItem, $pagination, $selectionBasis),
                 'source' => [
                     'kind' => 'generated-dbaccess',
                     'contract_key' => $contractKey,
@@ -430,10 +824,15 @@ function app_no_code_public_runtime_data_response_for_candidate(
     }
 
     try {
+        $selectedKey = app_no_code_public_runtime_data_selected_key_query();
+        $searchQuery = app_no_code_public_runtime_data_search_query();
+        $filters = app_no_code_public_runtime_data_filter_query();
+        $sort = app_no_code_public_runtime_data_sort_query();
+        $pagination = app_no_code_public_runtime_data_pagination_query();
         $definition = $definitionResult['definition'];
         $screens = app_no_code_public_runtime_with_runtime_db_env(
             $app,
-            static fn (): array => app_no_code_public_runtime_data_screens($app, $projectKey, $definition),
+            static fn (): array => app_no_code_public_runtime_data_screens($app, $projectKey, $definition, $selectedKey, $pagination, $searchQuery, $filters, $sort),
         );
     } catch (Throwable $throwable) {
         return app_no_code_public_runtime_data_error_response($throwable->getMessage());
@@ -453,6 +852,14 @@ function app_no_code_public_runtime_data_response_for_candidate(
             ],
             'screen_definition_version' => (string) ($definition['definition_version'] ?? ''),
             'runtime_preview_version' => app_no_code_runtime_version(),
+            'query' => [
+                'selected_key' => $selectedKey,
+                'q' => $searchQuery,
+                'filter' => $filters,
+                'sort' => $sort['field'] !== '' ? [$sort['field'] => $sort['direction']] : [],
+                'page' => $pagination['enabled'] ? (string) $pagination['page'] : '',
+                'page_size' => $pagination['enabled'] ? (string) $pagination['page_size'] : '',
+            ],
             'screens' => $screens,
             'error' => '',
         ],
