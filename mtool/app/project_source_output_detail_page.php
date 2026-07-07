@@ -850,6 +850,7 @@ function app_render_project_source_output_detail_page(array $app, array $request
         <section class="note-card">
             <h2>No-Code Runtime Workflow</h2>
             <p>この画面では、database metadata から生成した no-code runtime を artifact として確認し、公開候補として review / approval へ進めます。no-code preview は DB 基盤から切り離された別物ではなく、Source Output と承認 workflow の上で公開します。</p>
+            <p class="muted">Runtime data boundary: artifact-key preview URLs stay static for immutable artifact inspection. Current and alias preview URLs can fetch authenticated read-only live runtime data from <code>runtime-data.json</code> after approval, while submit / outbox processing remains a separate mutation path.</p>
         </section>
         <section class="note-card">
             <h2>Tryout Next Steps</h2>
@@ -1408,6 +1409,7 @@ function app_render_project_source_output_detail_page(array $app, array $request
                                         <a href="<?php echo app_h(app_no_code_public_runtime_current_preview_path($projectKey)); ?>">current public runtime preview</a><br>
                                         <a href="<?php echo app_h(app_no_code_public_runtime_alias_preview_path($projectKey, 'stable')); ?>">example alias public runtime preview</a><br>
                                         <span class="muted">Approved candidate package exposure now includes artifact-key, current, and custom alias public runtime preview routes.</span>
+                                        <br><span class="muted">Runtime data behavior: artifact-key preview is static; current and alias previews can refresh authenticated read-only live runtime data through <code>runtime-data.json</code>.</span>
                                         <form method="post" style="margin-top: 0.5rem;">
                                             <input type="hidden" name="_csrf" value="<?php echo app_h($csrfToken); ?>">
                                             <input type="hidden" name="action" value="set-public-runtime-alias">

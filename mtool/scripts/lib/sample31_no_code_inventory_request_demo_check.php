@@ -167,7 +167,7 @@ function app_sample31_no_code_inventory_request_demo_run(array $app, string $req
         app_sample31_no_code_inventory_request_demo_assert_same($tableName, $contract['contract_key'] ?? '', 'contract_key', $assertionErrors);
         app_sample31_no_code_inventory_request_demo_assert_same(['list', 'detail', 'form'], app_sample31_no_code_inventory_request_demo_extract_names($screens, 'screen_type'), 'screen types', $assertionErrors);
         app_sample31_no_code_inventory_request_demo_assert_same(
-            ['id', 'request_number', 'requester_name', 'warehouse_code', 'item_sku', 'quantity_needed', 'status', 'fulfillment_note'],
+            ['id', 'request_number', 'requester_name', 'warehouse_code', 'item_sku', 'needed_by', 'quantity_needed', 'status', 'fulfillment_note'],
             app_sample31_no_code_inventory_request_demo_extract_names($fields, 'field_key'),
             'field keys',
             $assertionErrors,

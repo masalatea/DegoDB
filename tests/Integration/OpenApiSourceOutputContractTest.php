@@ -214,6 +214,65 @@ final class OpenApiSourceOutputContractTest extends TestCase
         self::assertSame('no-store', app_no_code_public_runtime_current_cache_control());
     }
 
+    public function testRuntimeDataDatetimeValuesRejectTimezoneOffsets(): void
+    {
+        self::assertSame(
+            '2026-07-15T09:30:00',
+            app_no_code_public_runtime_data_datetime_value(
+                '2026-07-15 09:30:00',
+                'published_at',
+                'datetime',
+                'filter',
+            ),
+        );
+
+        foreach (['2026-07-15T09:30:00+09:00', '2026-07-15T00:30:00Z'] as $offsetValue) {
+            try {
+                app_no_code_public_runtime_data_datetime_value(
+                    $offsetValue,
+                    'published_at',
+                    'datetime',
+                    'filter',
+                );
+                self::fail('timezone-offset datetime value should fail closed: ' . $offsetValue);
+            } catch (RuntimeException $exception) {
+                self::assertStringContainsString(
+                    'runtime data date/time filter value was not parseable: published_at',
+                    $exception->getMessage(),
+                );
+            }
+        }
+    }
+
+    public function testRuntimeDataDateTimeOrderedValuesRejectNullAndEmptyValues(): void
+    {
+        $cases = [
+            ['value' => null, 'type' => 'date', 'context' => 'filter'],
+            ['value' => '', 'type' => 'date', 'context' => 'filter'],
+            ['value' => null, 'type' => 'datetime', 'context' => 'sort'],
+            ['value' => '', 'type' => 'datetime', 'context' => 'sort'],
+            ['value' => null, 'type' => 'time', 'context' => 'sort'],
+            ['value' => '', 'type' => 'time', 'context' => 'sort'],
+        ];
+
+        foreach ($cases as $case) {
+            try {
+                app_no_code_public_runtime_data_datetime_value(
+                    $case['value'],
+                    'published_at',
+                    $case['type'],
+                    $case['context'],
+                );
+                self::fail('null/empty date-time value should fail closed: ' . json_encode($case));
+            } catch (RuntimeException $exception) {
+                self::assertStringContainsString(
+                    'runtime data date/time ' . $case['context'] . ' value was not parseable: published_at',
+                    $exception->getMessage(),
+                );
+            }
+        }
+    }
+
     public function testOpenApiPublicRawRouteRemainsDeferredAndInternalRoutesRequireAuth(): void
     {
         $labSwaggerPage = $this->readRepoFile('mtool/app/lab_swagger_page.php');
@@ -310,6 +369,9 @@ final class OpenApiSourceOutputContractTest extends TestCase
         self::assertStringContainsString('No-Code Runtime Workflow', $detailPage);
         self::assertStringContainsString('database metadata から生成した no-code runtime', $detailPage);
         self::assertStringContainsString('DB 基盤から切り離された別物ではなく', $detailPage);
+        self::assertStringContainsString('Runtime data boundary: artifact-key preview URLs stay static', $detailPage);
+        self::assertStringContainsString('Current and alias preview URLs can fetch authenticated read-only live runtime data', $detailPage);
+        self::assertStringContainsString('submit / outbox processing remains a separate mutation path', $detailPage);
         self::assertStringContainsString('Tryout Next Steps', $detailPage);
         self::assertStringContainsString('For the fastest local demo, run <code>Run Sample28 Tryout Approval</code>', $detailPage);
         self::assertStringContainsString('App-local package readiness is a separate scenario from this Web preview.', $detailPage);
@@ -345,6 +407,8 @@ final class OpenApiSourceOutputContractTest extends TestCase
         self::assertStringContainsString('public runtime preview', $detailPage);
         self::assertStringContainsString('Package exposure is guarded until this candidate is approved.', $detailPage);
         self::assertStringContainsString('artifact-key, current, and custom alias public runtime preview routes', $detailPage);
+        self::assertStringContainsString('Runtime data behavior: artifact-key preview is static', $detailPage);
+        self::assertStringContainsString('current and alias previews can refresh authenticated read-only live runtime data', $detailPage);
         self::assertStringContainsString('current public runtime preview', $detailPage);
         self::assertStringContainsString('custom alias public runtime preview routes', $detailPage);
         self::assertStringContainsString('/alias/', $publicRuntimePage);
