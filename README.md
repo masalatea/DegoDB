@@ -46,6 +46,7 @@ Current no-code capability boundary / 現在の no-code 対応範囲:
 
 - Generated Web runtime previews can show list/detail/form screens from canonical metadata. / 生成 Web runtime preview は canonical metadata から list / detail / form screen を表示できます。
 - Public runtime delivery uses reviewed `NO-CODE-RUNTIME` Source Output artifacts, publish candidates, approval, current revision selection, and custom aliases. / public runtime delivery は review 済み `NO-CODE-RUNTIME` Source Output artifact、publish candidate、approval、current revision selection、custom alias を使います。
+- Artifact-key preview URLs remain static for immutable artifact inspection; authenticated current and alias preview URLs can fetch read-only live runtime data through versioned `runtime-data.json`. / artifact-key preview URL は immutable artifact inspection 用に static のままです。authenticated current / alias preview URL は versioned `runtime-data.json` 経由で read-only live runtime data を取得できます。
 - Runtime submit uses the managed-operation sync outbox as the production-oriented default. / runtime submit は production-oriented default として managed-operation sync outbox を使います。
 - Synchronous processing is demo-only and opt-in; it requires the runtime demo env gate and an explicit request flag. / synchronous processing は demo 専用の opt-in であり、runtime demo env gate と explicit request flag が必要です。
 
@@ -89,6 +90,7 @@ Original concept note: users who only have JSON files, JSON API cache, or JSON c
 - Generate no-code list/detail/form previews from canonical metadata / 正本 metadata から no-code の list/detail/form preview を生成する
 - Review generated runtime artifacts before public preview / public preview の前に生成 runtime artifact を review する
 - Approve publish candidates and expose current/alias preview URLs / publish candidate を承認し、current / alias preview URL を公開する
+- Explore authenticated current/alias previews with read-only live runtime data while keeping artifact-key previews immutable / artifact-key preview を immutable に保ったまま、authenticated current / alias preview で read-only live runtime data を確認する
 - Keep no-code output inspectable and regeneratable through Source Output artifacts / no-code output を Source Output artifact として inspect / regenerate 可能に保つ
 
 ## How to Read This / 文書の読み方

@@ -20,6 +20,7 @@ This no-code path sits on top of DegoDB's database-first foundation. The preview
 Why the foundation matters / なぜ基盤が重要か:
 
 - The list/detail/form screens come from canonical table, Data Class, DB Access, and no-code metadata. / list / detail / form screen は canonical table、Data Class、DB Access、no-code metadata から生成されます。
+- Artifact-key previews stay static for immutable artifact inspection, while authenticated current/alias previews can fetch read-only live runtime data through `runtime-data.json`. / artifact-key preview は immutable artifact inspection 用に static のままで、authenticated current / alias preview は `runtime-data.json` 経由で read-only live runtime data を取得できます。
 - Submit uses a managed-operation intent and sync outbox boundary instead of a hidden browser-only mutation model. / submit は hidden な browser-only mutation model ではなく、managed-operation intent と sync outbox boundary を使います。
 - Public preview URLs are tied to reviewed publish candidates, current revision selection, and optional aliases. / public preview URL は review 済み publish candidate、current revision selection、optional alias に紐づきます。
 - Demo-only synchronous processing can be enabled for tryout environments, but the default product path remains async outbox handoff. / tryout environment では demo-only synchronous processing を有効化できますが、default product path は async outbox handoff のままです。
@@ -81,6 +82,10 @@ The stable alias preview URL is:
 http://127.0.0.1:18291/runs/no-code/SAMPLE28/alias/stable/runtime-preview.html
 ```
 
+Current and alias previews can also load live read-only runtime data from the matching `runtime-data.json` endpoint after login. Use the generated Refresh / Search / Filter / Sort / Page controls to explore the current data snapshot. Artifact-key preview URLs are intentionally static and keep reload-style behavior instead of fetching live runtime data.
+
+current / alias preview は login 後、対応する `runtime-data.json` endpoint から read-only live runtime data も読み込めます。生成された Refresh / Search / Filter / Sort / Page controls で current data snapshot を確認します。artifact-key preview URL は意図的に static であり、live runtime data を取得せず reload-style behavior を保ちます。
+
 Second-domain reference / 2 つ目の domain reference:
 
 `sample29-no-code-support-case-demo` is the current second-domain proof for the same runtime submit and outbox processing shape. Use it when you want to confirm that the no-code flow is not hard-coded to sample28 tickets.
@@ -108,6 +113,8 @@ Some actions may be disabled in artifact previews when policy checks do not enab
 When you edit fields in the generated form, the `Action Intent Draft` panel updates locally. Required generated form fields are marked inline, and the required hint follows the local draft state so a filled value is shown as present and a blank required value is shown as missing. The panel shows the no-code action-intent shape that would be handed to the managed operation layer. The state badge and summary line call out whether the draft is ready or blocked, including policy reasons such as `principal.missing`; the metadata row shows the action key, operation key, and operation type; the field row shows key/input/filter field names; the payload row shows key/input/filter field counts; and the `Draft JSON` disclosure includes the full draft and policy check lists. Use `Copy draft JSON` if you want to keep the current draft in notes while trying the preview.
 
 After a server submit is accepted, the runtime shows the sync outbox status, the outbox detail path, copy/open affordances, and a Submit / Outbox tracking / Refresh flow indicator. In the default path, processing remains async: process the outbox item, then use `Refresh preview` to reload the public runtime page. Demo-only synchronous processing is an opt-in environment mode; do not expect it in the normal sample stack unless it was explicitly enabled.
+
+On current/alias previews, `Refresh preview` fetches read-only live runtime data and re-renders list/detail/form bodies from the approved runtime selection. If that fetch fails, the preview keeps the current rendered data and shows non-mutating error wording. On artifact-key previews, Refresh keeps the static artifact inspection behavior.
 
 ## If You Get Lost / 迷った場合
 

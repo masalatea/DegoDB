@@ -54,8 +54,11 @@ no-code は、この主線の外にある別プロダクトではなく、`Sourc
 - managed operation の operation key / operation type / input contract
 - Source Output artifact の review / approval record
 - public runtime URL の current / alias resolution
+- current / alias preview 用の read-only live runtime-data fetch boundary
 
 そのため、no-code は database-first の基盤を隠すものではなく、その基盤を利用者向けの list / detail / form / submit 体験として露出する layer として扱う。
+
+artifact-key preview は immutable artifact inspection 用に static のまま扱う。current / alias preview は authenticated read-only `runtime-data.json` を通じて live runtime data を取得できるが、これは submit / outbox processing とは別の read path である。
 
 submit の production-oriented default は managed-operation sync outbox である。synchronous processing は demo / tryout 用の opt-in であり、環境 gate と explicit request flag が揃った場合だけ 1 件の outbox item を即時処理する。これは async foundation を置き換えるものではない。
 

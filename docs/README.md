@@ -48,7 +48,7 @@ detail doc だけを読んで mainline を再構成するのは current reading 
 - [Quickstart / まず動かしてみる](quickstart.md)
   - clone 直後に local stack と sample01 を 1 周だけ動かす文書
 - [No-Code Tryout / no-code をまず試す](no-code-tryout.md)
-  - sample28 で no-code runtime preview を触る文書。database-first metadata / Source Output / approval workflow / managed-operation outbox の上に載る no-code layer として読む
+  - sample28 で no-code runtime preview を触る文書。database-first metadata / Source Output / approval workflow / managed-operation outbox / read-only live runtime data の上に載る no-code layer として読む
 - [Start Here / 最初の入口](start-here.md)
   - 最初の 5 分で repo の current な読み方を掴む文書
 - [Choose Your Path / 目的別の読み方](choose-your-path.md)
