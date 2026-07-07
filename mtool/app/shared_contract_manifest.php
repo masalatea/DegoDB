@@ -281,8 +281,14 @@ function app_shared_contract_manifest_field_type(array $columnItem, array $field
     if (preg_match('/\b(text|longtext|mediumtext|tinytext)\b/', $rawType) === 1) {
         return 'text';
     }
-    if (preg_match('/\b(datetime|timestamp|date|time)\b/', $rawType) === 1) {
+    if (preg_match('/\b(datetime|timestamp)\b/', $rawType) === 1) {
         return 'datetime';
+    }
+    if (preg_match('/\bdate\b/', $rawType) === 1) {
+        return 'date';
+    }
+    if (preg_match('/\btime\b/', $rawType) === 1) {
+        return 'time';
     }
 
     return 'string';

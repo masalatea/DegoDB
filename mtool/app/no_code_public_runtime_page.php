@@ -159,10 +159,114 @@ function app_no_code_public_runtime_data_error_response(string $error, int $stat
             'selection' => [],
             'screen_definition_version' => '',
             'runtime_preview_version' => app_no_code_runtime_version(),
+            'read_model' => app_no_code_public_runtime_data_empty_read_model_metadata(),
             'screens' => [],
             'error' => $error,
         ],
     ];
+}
+
+/**
+ * @return array{contracts:array<string,mixed>}
+ */
+function app_no_code_public_runtime_data_empty_read_model_metadata(): array
+{
+    return [
+        'contracts' => [],
+    ];
+}
+
+function app_no_code_public_runtime_data_normalized_field_type(string $type): string
+{
+    $normalized = strtolower(trim($type));
+    $aliases = [
+        'int' => 'integer',
+        'bigint' => 'integer',
+        'smallint' => 'integer',
+        'bool' => 'boolean',
+        'double' => 'number',
+        'float' => 'number',
+        'decimal' => 'number',
+    ];
+    if (isset($aliases[$normalized])) {
+        return $aliases[$normalized];
+    }
+
+    $knownTypes = [
+        'string',
+        'text',
+        'integer',
+        'number',
+        'boolean',
+        'date',
+        'datetime',
+        'time',
+        'json',
+        'array',
+        'object',
+    ];
+
+    return in_array($normalized, $knownTypes, true) ? $normalized : 'string';
+}
+
+/**
+ * @param array<string,mixed> $field
+ * @return array{field_key:string,label:string,type:string}
+ */
+function app_no_code_public_runtime_data_field_metadata(array $field): array
+{
+    $fieldKey = (string) ($field['field_key'] ?? '');
+
+    return [
+        'field_key' => $fieldKey,
+        'label' => (string) ($field['label'] ?? $fieldKey),
+        'type' => app_no_code_public_runtime_data_normalized_field_type((string) ($field['type'] ?? 'string')),
+    ];
+}
+
+/**
+ * @param array<string,mixed> $definition
+ * @return array{contracts:array<string,array{contract_key:string,fields:array<string,array{field_key:string,label:string,type:string}>}>}
+ */
+function app_no_code_public_runtime_data_read_model_metadata(array $definition): array
+{
+    $readModel = app_no_code_public_runtime_data_empty_read_model_metadata();
+    foreach (($definition['contracts'] ?? []) as $contract) {
+        if (!is_array($contract)) {
+            continue;
+        }
+
+        $contractKey = (string) ($contract['contract_key'] ?? '');
+        if ($contractKey === '') {
+            continue;
+        }
+
+        $fields = [];
+        foreach (($contract['screens'] ?? []) as $screen) {
+            if (!is_array($screen)) {
+                continue;
+            }
+            foreach (($screen['fields'] ?? []) as $field) {
+                if (!is_array($field)) {
+                    continue;
+                }
+
+                $fieldMetadata = app_no_code_public_runtime_data_field_metadata($field);
+                if ($fieldMetadata['field_key'] === '' || isset($fields[$fieldMetadata['field_key']])) {
+                    continue;
+                }
+
+                $fields[$fieldMetadata['field_key']] = $fieldMetadata;
+            }
+        }
+
+        $readModel['contracts'][$contractKey] = [
+            'contract_key' => $contractKey,
+            'fields' => $fields,
+        ];
+    }
+
+    return $readModel;
 }
 
 function app_no_code_public_runtime_data_row_from_value(mixed $value): array
@@ -412,7 +516,54 @@ function app_no_code_public_runtime_data_filter_query(): array
 }
 
 /**
- * @return array{field:string,direction:string}
+ * @param array<string,string> $filters
+ * @return array<string,string>
+ */
+function app_no_code_public_runtime_data_filter_operator_query(array $filters): array
+{
+    $rawOperators = $_GET['filter_op'] ?? [];
+    if ($rawOperators === '' || $rawOperators === []) {
+        $operators = [];
+        foreach (array_keys($filters) as $fieldKey) {
+            $operators[$fieldKey] = 'contains';
+        }
+
+        return $operators;
+    }
+    if (!is_array($rawOperators)) {
+        throw new InvalidArgumentException('runtime data filter operator query is invalid.');
+    }
+    if (count($rawOperators) > 8) {
+        throw new InvalidArgumentException('runtime data filter operator query accepts 8 fields or less.');
+    }
+
+    $operators = [];
+    foreach ($rawOperators as $fieldKey => $rawOperator) {
+        if (!is_string($fieldKey) || preg_match('/^[A-Za-z0-9_]{1,64}$/', $fieldKey) !== 1) {
+            throw new InvalidArgumentException('runtime data filter operator field is invalid.');
+        }
+        if (!array_key_exists($fieldKey, $filters)) {
+            throw new InvalidArgumentException('runtime data filter operator requires a matching filter value.');
+        }
+        if (!is_string($rawOperator)) {
+            throw new InvalidArgumentException('runtime data filter operator is invalid.');
+        }
+
+        $operator = strtolower(trim($rawOperator));
+        if (!in_array($operator, ['contains', 'eq', 'gt', 'gte', 'lt', 'lte'], true)) {
+            throw new InvalidArgumentException('runtime data filter operator must be contains, eq, gt, gte, lt, or lte.');
+        }
+        $operators[$fieldKey] = $operator;
+    }
+    foreach (array_keys($filters) as $fieldKey) {
+        $operators[$fieldKey] = $operators[$fieldKey] ?? 'contains';
+    }
+
+    return $operators;
+}
+
+/**
+ * @return array{field:string,direction:string,fields:array<string,string>}
  */
 function app_no_code_public_runtime_data_sort_query(): array
 {
@@ -421,32 +572,37 @@ function app_no_code_public_runtime_data_sort_query(): array
         return [
             'field' => '',
             'direction' => '',
+            'fields' => [],
         ];
     }
     if (!is_array($rawSort)) {
         throw new InvalidArgumentException('runtime data sort query is invalid.');
     }
-    if (count($rawSort) !== 1) {
-        throw new InvalidArgumentException('runtime data sort query accepts one field.');
+    if (count($rawSort) > 3) {
+        throw new InvalidArgumentException('runtime data sort query accepts 3 fields or less.');
     }
 
-    $fieldKey = array_key_first($rawSort);
-    $rawDirection = $fieldKey !== null ? $rawSort[$fieldKey] : null;
-    if (!is_string($fieldKey) || preg_match('/^[A-Za-z0-9_]{1,64}$/', $fieldKey) !== 1) {
-        throw new InvalidArgumentException('runtime data sort field is invalid.');
-    }
-    if (!is_string($rawDirection)) {
-        throw new InvalidArgumentException('runtime data sort direction is invalid.');
+    $fields = [];
+    foreach ($rawSort as $fieldKey => $rawDirection) {
+        if (!is_string($fieldKey) || preg_match('/^[A-Za-z0-9_]{1,64}$/', $fieldKey) !== 1) {
+            throw new InvalidArgumentException('runtime data sort field is invalid.');
+        }
+        if (!is_string($rawDirection)) {
+            throw new InvalidArgumentException('runtime data sort direction is invalid.');
+        }
+
+        $direction = strtolower(trim($rawDirection));
+        if (!in_array($direction, ['asc', 'desc'], true)) {
+            throw new InvalidArgumentException('runtime data sort direction must be asc or desc.');
+        }
+        $fields[$fieldKey] = $direction;
     }
 
-    $direction = strtolower(trim($rawDirection));
-    if (!in_array($direction, ['asc', 'desc'], true)) {
-        throw new InvalidArgumentException('runtime data sort direction must be asc or desc.');
-    }
-
+    $firstField = array_key_first($fields);
     return [
-        'field' => $fieldKey,
-        'direction' => $direction,
+        'field' => is_string($firstField) ? $firstField : '',
+        'direction' => is_string($firstField) ? $fields[$firstField] : '',
+        'fields' => $fields,
     ];
 }
 
@@ -510,11 +666,115 @@ function app_no_code_public_runtime_data_search_rows(array $rows, string $query)
 }
 
 /**
+ * @param array<string,mixed> $contract
+ * @return array<string,string>
+ */
+function app_no_code_public_runtime_data_contract_field_types(array $contract): array
+{
+    $types = [];
+    foreach (($contract['screens'] ?? []) as $screen) {
+        if (!is_array($screen)) {
+            continue;
+        }
+        foreach (($screen['fields'] ?? []) as $field) {
+            if (!is_array($field)) {
+                continue;
+            }
+
+            $fieldKey = (string) ($field['field_key'] ?? '');
+            if ($fieldKey === '' || isset($types[$fieldKey])) {
+                continue;
+            }
+
+            $types[$fieldKey] = app_no_code_public_runtime_data_normalized_field_type((string) ($field['type'] ?? 'string'));
+        }
+    }
+
+    return $types;
+}
+
+function app_no_code_public_runtime_data_filter_operator_is_numeric(string $operator): bool
+{
+    return in_array($operator, ['gt', 'gte', 'lt', 'lte'], true);
+}
+
+function app_no_code_public_runtime_data_filter_operator_is_ordered(string $operator): bool
+{
+    return in_array($operator, ['gt', 'gte', 'lt', 'lte'], true);
+}
+
+function app_no_code_public_runtime_data_field_type_is_numeric(string $fieldType): bool
+{
+    return in_array($fieldType, ['integer', 'number'], true);
+}
+
+function app_no_code_public_runtime_data_field_type_is_datetime(string $fieldType): bool
+{
+    return in_array($fieldType, ['date', 'datetime', 'time'], true);
+}
+
+function app_no_code_public_runtime_data_numeric_filter_value(mixed $value, string $fieldKey): float
+{
+    $displayValue = app_no_code_runtime_display_value($value);
+    if (preg_match('/^-?[0-9]+(?:\.[0-9]+)?$/', $displayValue) !== 1) {
+        throw new RuntimeException('runtime data numeric filter value was not numeric: ' . $fieldKey);
+    }
+
+    return (float) $displayValue;
+}
+
+function app_no_code_public_runtime_data_datetime_value(mixed $value, string $fieldKey, string $fieldType, string $context): string
+{
+    $displayValue = app_no_code_runtime_display_value($value);
+    if ($fieldType === 'date') {
+        if (preg_match('/^([0-9]{4})-([0-9]{2})-([0-9]{2})$/', $displayValue, $matches) !== 1) {
+            throw new RuntimeException('runtime data date/time ' . $context . ' value was not parseable: ' . $fieldKey);
+        }
+        if (!checkdate((int) $matches[2], (int) $matches[3], (int) $matches[1])) {
+            throw new RuntimeException('runtime data date/time ' . $context . ' value was not parseable: ' . $fieldKey);
+        }
+
+        return $displayValue;
+    }
+
+    if ($fieldType === 'time') {
+        if (preg_match('/^([0-9]{2}):([0-9]{2}):([0-9]{2})$/', $displayValue, $matches) !== 1) {
+            throw new RuntimeException('runtime data date/time ' . $context . ' value was not parseable: ' . $fieldKey);
+        }
+        $hour = (int) $matches[1];
+        $minute = (int) $matches[2];
+        $second = (int) $matches[3];
+        if ($hour > 23 || $minute > 59 || $second > 59) {
+            throw new RuntimeException('runtime data date/time ' . $context . ' value was not parseable: ' . $fieldKey);
+        }
+
+        return $displayValue;
+    }
+
+    if (preg_match('/^([0-9]{4})-([0-9]{2})-([0-9]{2})(?:T| )([0-9]{2}):([0-9]{2}):([0-9]{2})$/', $displayValue, $matches) !== 1) {
+        throw new RuntimeException('runtime data date/time ' . $context . ' value was not parseable: ' . $fieldKey);
+    }
+    if (!checkdate((int) $matches[2], (int) $matches[3], (int) $matches[1])) {
+        throw new RuntimeException('runtime data date/time ' . $context . ' value was not parseable: ' . $fieldKey);
+    }
+    $hour = (int) $matches[4];
+    $minute = (int) $matches[5];
+    $second = (int) $matches[6];
+    if ($hour > 23 || $minute > 59 || $second > 59) {
+        throw new RuntimeException('runtime data date/time ' . $context . ' value was not parseable: ' . $fieldKey);
+    }
+
+    return $matches[1] . '-' . $matches[2] . '-' . $matches[3] . 'T' . $matches[4] . ':' . $matches[5] . ':' . $matches[6];
+}
+
+/**
  * @param list<array<string,mixed>> $rows
  * @param array<string,string> $filters
+ * @param array<string,string> $operators
+ * @param array<string,string> $fieldTypes
  * @return list<array<string,mixed>>
  */
-function app_no_code_public_runtime_data_filter_rows(array $rows, array $filters): array
+function app_no_code_public_runtime_data_filter_rows(array $rows, array $filters, array $operators = [], array $fieldTypes = []): array
 {
     if ($filters === []) {
         return $rows;
@@ -533,9 +793,57 @@ function app_no_code_public_runtime_data_filter_rows(array $rows, array $filters
         }
     }
 
-    return array_values(array_filter($rows, static function (array $row) use ($filters): bool {
+    foreach ($operators as $fieldKey => $operator) {
+        if (!app_no_code_public_runtime_data_filter_operator_is_ordered($operator)) {
+            continue;
+        }
+
+        $fieldType = $fieldTypes[$fieldKey] ?? 'string';
+        if (app_no_code_public_runtime_data_field_type_is_numeric($fieldType)) {
+            app_no_code_public_runtime_data_numeric_filter_value($filters[$fieldKey] ?? '', $fieldKey);
+            continue;
+        }
+        if (app_no_code_public_runtime_data_field_type_is_datetime($fieldType)) {
+            app_no_code_public_runtime_data_datetime_value($filters[$fieldKey] ?? '', $fieldKey, $fieldType, 'filter');
+            continue;
+        }
+
+        throw new RuntimeException('runtime data ordered filter operator requires a numeric or date/time field: ' . $fieldKey);
+    }
+
+    return array_values(array_filter($rows, static function (array $row) use ($filters, $operators, $fieldTypes): bool {
         foreach ($filters as $fieldKey => $filterValue) {
-            if (stripos(app_no_code_runtime_display_value($row[$fieldKey] ?? null), $filterValue) === false) {
+            $displayValue = app_no_code_runtime_display_value($row[$fieldKey] ?? null);
+            $operator = $operators[$fieldKey] ?? 'contains';
+            if (app_no_code_public_runtime_data_filter_operator_is_ordered($operator)) {
+                $fieldType = $fieldTypes[$fieldKey] ?? 'string';
+                if (app_no_code_public_runtime_data_field_type_is_datetime($fieldType)) {
+                    $rowValue = app_no_code_public_runtime_data_datetime_value($row[$fieldKey] ?? null, $fieldKey, $fieldType, 'filter');
+                    $queryValue = app_no_code_public_runtime_data_datetime_value($filterValue, $fieldKey, $fieldType, 'filter');
+                    $comparison = strcmp($rowValue, $queryValue);
+                } else {
+                    $rowValue = app_no_code_public_runtime_data_numeric_filter_value($row[$fieldKey] ?? null, $fieldKey);
+                    $queryValue = app_no_code_public_runtime_data_numeric_filter_value($filterValue, $fieldKey);
+                    $comparison = $rowValue <=> $queryValue;
+                }
+                if ($operator === 'gt' && $comparison <= 0) {
+                    return false;
+                }
+                if ($operator === 'gte' && $comparison < 0) {
+                    return false;
+                }
+                if ($operator === 'lt' && $comparison >= 0) {
+                    return false;
+                }
+                if ($operator === 'lte' && $comparison > 0) {
+                    return false;
+                }
+                continue;
+            }
+            if ($operator === 'eq' && $displayValue !== $filterValue) {
+                return false;
+            }
+            if ($operator !== 'eq' && stripos($displayValue, $filterValue) === false) {
                 return false;
             }
         }
@@ -544,27 +852,57 @@ function app_no_code_public_runtime_data_filter_rows(array $rows, array $filters
     }));
 }
 
+function app_no_code_public_runtime_data_numeric_sort_value(mixed $value, string $fieldKey): float
+{
+    $displayValue = app_no_code_runtime_display_value($value);
+    if (preg_match('/^-?[0-9]+(?:\.[0-9]+)?$/', $displayValue) !== 1) {
+        throw new RuntimeException('runtime data numeric sort value was not numeric: ' . $fieldKey);
+    }
+
+    return (float) $displayValue;
+}
+
 /**
  * @param list<array<string,mixed>> $rows
- * @param array{field:string,direction:string} $sort
+ * @param array{field:string,direction:string,fields?:array<string,string>} $sort
+ * @param array<string,string> $fieldTypes
  * @return list<array<string,mixed>>
  */
-function app_no_code_public_runtime_data_sort_rows(array $rows, array $sort): array
+function app_no_code_public_runtime_data_sort_rows(array $rows, array $sort, array $fieldTypes = []): array
 {
-    $fieldKey = $sort['field'];
-    if ($fieldKey === '') {
+    $sortFields = is_array($sort['fields'] ?? null) ? $sort['fields'] : [];
+    if ($sortFields === [] && (string) ($sort['field'] ?? '') !== '') {
+        $sortFields = [(string) $sort['field'] => (string) ($sort['direction'] ?? '')];
+    }
+    if ($sortFields === []) {
         return $rows;
     }
 
-    $fieldExists = false;
-    foreach ($rows as $row) {
-        if (array_key_exists($fieldKey, $row)) {
-            $fieldExists = true;
-            break;
+    foreach (array_keys($sortFields) as $fieldKey) {
+        $fieldExists = false;
+        foreach ($rows as $row) {
+            if (array_key_exists($fieldKey, $row)) {
+                $fieldExists = true;
+                break;
+            }
+        }
+        if (!$fieldExists) {
+            throw new RuntimeException('runtime data sort field was not found.');
         }
     }
-    if (!$fieldExists) {
-        throw new RuntimeException('runtime data sort field was not found.');
+
+    foreach ($sortFields as $fieldKey => $_direction) {
+        $fieldType = $fieldTypes[$fieldKey] ?? 'string';
+        if (!app_no_code_public_runtime_data_field_type_is_numeric($fieldType) && !app_no_code_public_runtime_data_field_type_is_datetime($fieldType)) {
+            continue;
+        }
+        foreach ($rows as $row) {
+            if (app_no_code_public_runtime_data_field_type_is_datetime($fieldType)) {
+                app_no_code_public_runtime_data_datetime_value($row[$fieldKey] ?? null, $fieldKey, $fieldType, 'sort');
+            } else {
+                app_no_code_public_runtime_data_numeric_sort_value($row[$fieldKey] ?? null, $fieldKey);
+            }
+        }
     }
 
     $indexedRows = [];
@@ -575,17 +913,30 @@ function app_no_code_public_runtime_data_sort_rows(array $rows, array $sort): ar
         ];
     }
 
-    usort($indexedRows, static function (array $left, array $right) use ($fieldKey, $sort): int {
-        $leftValue = app_no_code_runtime_display_value($left['row'][$fieldKey] ?? null);
-        $rightValue = app_no_code_runtime_display_value($right['row'][$fieldKey] ?? null);
-        $comparison = strnatcasecmp($leftValue, $rightValue);
-        if ($comparison !== 0 && $sort['direction'] === 'desc') {
-            $comparison = -$comparison;
+    usort($indexedRows, static function (array $left, array $right) use ($sortFields, $fieldTypes): int {
+        foreach ($sortFields as $fieldKey => $direction) {
+            $fieldType = $fieldTypes[$fieldKey] ?? 'string';
+            if (app_no_code_public_runtime_data_field_type_is_numeric($fieldType)) {
+                $leftValue = app_no_code_public_runtime_data_numeric_sort_value($left['row'][$fieldKey] ?? null, $fieldKey);
+                $rightValue = app_no_code_public_runtime_data_numeric_sort_value($right['row'][$fieldKey] ?? null, $fieldKey);
+                $comparison = $leftValue <=> $rightValue;
+            } elseif (app_no_code_public_runtime_data_field_type_is_datetime($fieldType)) {
+                $leftValue = app_no_code_public_runtime_data_datetime_value($left['row'][$fieldKey] ?? null, $fieldKey, $fieldType, 'sort');
+                $rightValue = app_no_code_public_runtime_data_datetime_value($right['row'][$fieldKey] ?? null, $fieldKey, $fieldType, 'sort');
+                $comparison = strcmp($leftValue, $rightValue);
+            } else {
+                $leftValue = app_no_code_runtime_display_value($left['row'][$fieldKey] ?? null);
+                $rightValue = app_no_code_runtime_display_value($right['row'][$fieldKey] ?? null);
+                $comparison = strnatcasecmp($leftValue, $rightValue);
+            }
+            if ($comparison !== 0 && $direction === 'desc') {
+                $comparison = -$comparison;
+            }
+            if ($comparison !== 0) {
+                return $comparison;
+            }
         }
-        if ($comparison === 0) {
-            $comparison = $left['index'] <=> $right['index'];
-        }
-        return $comparison;
+        return $left['index'] <=> $right['index'];
     });
 
     return array_values(array_map(static fn (array $entry): array => $entry['row'], $indexedRows));
@@ -641,7 +992,7 @@ function app_no_code_public_runtime_data_current_item(array $contract, array $ro
 
 /**
  * @param array<string,string> $filters
- * @param array{field:string,direction:string} $sort
+ * @param array{field:string,direction:string,fields?:array<string,string>} $sort
  * @return array<string,mixed>
  */
 function app_no_code_public_runtime_data_selection_basis(
@@ -741,7 +1092,8 @@ function app_no_code_public_runtime_data_paginated_rows(array $rows, array $pagi
 /**
  * @param array<string,mixed> $definition
  * @param array<string,string> $filters
- * @param array{field:string,direction:string} $sort
+ * @param array<string,string> $filterOperators
+ * @param array{field:string,direction:string,fields?:array<string,string>} $sort
  * @return list<array<string,mixed>>
  */
 function app_no_code_public_runtime_data_screens(
@@ -752,7 +1104,8 @@ function app_no_code_public_runtime_data_screens(
     array $pagination = ['enabled' => false, 'page' => 1, 'page_size' => 0],
     string $searchQuery = '',
     array $filters = [],
-    array $sort = ['field' => '', 'direction' => ''],
+    array $filterOperators = [],
+    array $sort = ['field' => '', 'direction' => '', 'fields' => []],
 ): array
 {
     $screens = [];
@@ -767,9 +1120,10 @@ function app_no_code_public_runtime_data_screens(
         }
 
         $rows = app_no_code_public_runtime_data_rows_for_contract($app, $projectKey, $contractKey);
+        $fieldTypes = app_no_code_public_runtime_data_contract_field_types($contract);
         $rows = app_no_code_public_runtime_data_search_rows($rows, $searchQuery);
-        $rows = app_no_code_public_runtime_data_filter_rows($rows, $filters);
-        $rows = app_no_code_public_runtime_data_sort_rows($rows, $sort);
+        $rows = app_no_code_public_runtime_data_filter_rows($rows, $filters, $filterOperators, $fieldTypes);
+        $rows = app_no_code_public_runtime_data_sort_rows($rows, $sort, $fieldTypes);
         $currentItem = app_no_code_public_runtime_data_current_item($contract, $rows, $selectedKey);
         $selectionBasis = app_no_code_public_runtime_data_selection_basis($currentItem, $selectedKey, $searchQuery, $filters, $sort);
         foreach (($contract['screens'] ?? []) as $screen) {
@@ -827,12 +1181,13 @@ function app_no_code_public_runtime_data_response_for_candidate(
         $selectedKey = app_no_code_public_runtime_data_selected_key_query();
         $searchQuery = app_no_code_public_runtime_data_search_query();
         $filters = app_no_code_public_runtime_data_filter_query();
+        $filterOperators = app_no_code_public_runtime_data_filter_operator_query($filters);
         $sort = app_no_code_public_runtime_data_sort_query();
         $pagination = app_no_code_public_runtime_data_pagination_query();
         $definition = $definitionResult['definition'];
         $screens = app_no_code_public_runtime_with_runtime_db_env(
             $app,
-            static fn (): array => app_no_code_public_runtime_data_screens($app, $projectKey, $definition, $selectedKey, $pagination, $searchQuery, $filters, $sort),
+            static fn (): array => app_no_code_public_runtime_data_screens($app, $projectKey, $definition, $selectedKey, $pagination, $searchQuery, $filters, $filterOperators, $sort),
         );
     } catch (Throwable $throwable) {
         return app_no_code_public_runtime_data_error_response($throwable->getMessage());
@@ -852,11 +1207,13 @@ function app_no_code_public_runtime_data_response_for_candidate(
             ],
             'screen_definition_version' => (string) ($definition['definition_version'] ?? ''),
             'runtime_preview_version' => app_no_code_runtime_version(),
+            'read_model' => app_no_code_public_runtime_data_read_model_metadata($definition),
             'query' => [
                 'selected_key' => $selectedKey,
                 'q' => $searchQuery,
                 'filter' => $filters,
-                'sort' => $sort['field'] !== '' ? [$sort['field'] => $sort['direction']] : [],
+                'filter_op' => $filterOperators,
+                'sort' => is_array($sort['fields'] ?? null) ? $sort['fields'] : ((string) ($sort['field'] ?? '') !== '' ? [$sort['field'] => $sort['direction']] : []),
                 'page' => $pagination['enabled'] ? (string) $pagination['page'] : '',
                 'page_size' => $pagination['enabled'] ? (string) $pagination['page_size'] : '',
             ],

@@ -115,7 +115,7 @@ function app_project_output_typescript_dto_field_type(array $field): string
     $baseType = match ((string) ($field['type'] ?? '')) {
         'integer' => 'number',
         'boolean' => 'boolean',
-        'text', 'datetime', 'string' => 'string',
+        'text', 'date', 'datetime', 'time', 'string' => 'string',
         default => 'unknown',
     };
 

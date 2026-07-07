@@ -45,6 +45,7 @@ CREATE TABLE inventory_request (
     requester_name VARCHAR(120) NOT NULL,
     warehouse_code VARCHAR(40) NOT NULL,
     item_sku VARCHAR(80) NOT NULL,
+    needed_by DATE NOT NULL,
     quantity_needed INT NOT NULL DEFAULT 1,
     status VARCHAR(40) NOT NULL DEFAULT 'open',
     fulfillment_note TEXT NOT NULL,
@@ -58,6 +59,7 @@ INSERT INTO inventory_request (
     requester_name,
     warehouse_code,
     item_sku,
+    needed_by,
     quantity_needed,
     status,
     fulfillment_note
@@ -67,6 +69,7 @@ INSERT INTO inventory_request (
     'Northwind Warehouse Ops',
     'WH-TOKYO-01',
     'SKU-BOARD-42',
+    '2026-07-10',
     12,
     'requested',
     'Prepare inventory pick review before approving replenishment.'
@@ -76,6 +79,7 @@ INSERT INTO inventory_request (
     'Contoso Storefront',
     'WH-OSAKA-02',
     'SKU-CABLE-99',
+    '2026-07-15',
     24,
     'review',
     'Check alternate warehouse stock before confirming fulfillment.'
@@ -85,6 +89,7 @@ ON DUPLICATE KEY UPDATE
     requester_name = VALUES(requester_name),
     warehouse_code = VALUES(warehouse_code),
     item_sku = VALUES(item_sku),
+    needed_by = VALUES(needed_by),
     quantity_needed = VALUES(quantity_needed),
     status = VALUES(status),
     fulfillment_note = VALUES(fulfillment_note);

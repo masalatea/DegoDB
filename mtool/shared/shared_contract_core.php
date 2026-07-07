@@ -12,7 +12,7 @@ function app_shared_contract_core_manifest_version(): string
  */
 function app_shared_contract_core_supported_field_types(): array
 {
-    return ['integer', 'string', 'text', 'boolean', 'datetime'];
+    return ['integer', 'string', 'text', 'boolean', 'date', 'datetime', 'time'];
 }
 
 /**
@@ -298,4 +298,3 @@ function app_shared_contract_core_validate_field(array $field, string $path): ar
 
     return $errors;
 }
-

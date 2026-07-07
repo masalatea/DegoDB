@@ -146,7 +146,7 @@ function app_local_sqlite_schema_field_type(string $type): string
 {
     return match ($type) {
         'integer', 'boolean' => 'INTEGER',
-        'datetime', 'string', 'text' => 'TEXT',
+        'date', 'datetime', 'time', 'string', 'text' => 'TEXT',
         default => throw new RuntimeException('unsupported shared contract field type: ' . $type),
     };
 }

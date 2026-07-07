@@ -63,6 +63,7 @@ INSERT INTO project_shared_contract_fields (
 (@sample31_project_id, @sample31_inventory_request_shared_contract_id, 'request_number', 'server-copy', 'readonly', 'field', 'server-managed-copy', 'Read-only request number representing inventory workflow context.', 'manual'),
 (@sample31_project_id, @sample31_inventory_request_shared_contract_id, 'requester_name', 'server-copy', 'readonly', 'field', 'server-managed-copy', 'Read-only requester context field.', 'manual'),
 (@sample31_project_id, @sample31_inventory_request_shared_contract_id, 'warehouse_code', 'server-copy', 'readonly', 'field', 'server-managed-copy', 'Read-only warehouse context field.', 'manual'),
+(@sample31_project_id, @sample31_inventory_request_shared_contract_id, 'needed_by', 'server-copy', 'readonly', 'field', 'server-managed-copy', 'Read-only needed-by date for typed date runtime-data semantics.', 'manual'),
 (@sample31_project_id, @sample31_inventory_request_shared_contract_id, 'item_sku', 'server-copy', 'editable', 'field', 'server-managed-copy', 'Editable item SKU input.', 'manual'),
 (@sample31_project_id, @sample31_inventory_request_shared_contract_id, 'quantity_needed', 'server-copy', 'editable', 'field', 'server-managed-copy', 'Editable requested quantity input.', 'manual'),
 (@sample31_project_id, @sample31_inventory_request_shared_contract_id, 'status', 'server-copy', 'editable', 'field', 'server-managed-copy', 'Editable status input.', 'manual'),
