@@ -33,6 +33,18 @@ function app_project_route_authorization_contract(): array
             'audit_required' => true,
             'notes' => 'project metadata mutation',
         ],
+        'project_shared_contracts:GET' => [
+            'capability' => 'project.read',
+            'enforcement_status' => 'next',
+            'audit_required' => false,
+            'notes' => 'shared contract metadata display for no-code usage intent',
+        ],
+        'project_shared_contracts:POST' => [
+            'capability' => 'project.edit',
+            'enforcement_status' => 'next',
+            'audit_required' => true,
+            'notes' => 'contract-level usage intent mutation',
+        ],
         'project_source_output_download' => [
             'capability' => 'source_output.download',
             'enforcement_status' => 'done',

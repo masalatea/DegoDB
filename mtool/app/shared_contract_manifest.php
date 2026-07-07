@@ -245,6 +245,8 @@ function app_shared_contract_manifest_normalize_contract_metadata(array $metadat
 {
     return array_filter([
         'status' => (string) ($metadata['status'] ?? ''),
+        'usage_intent' => (string) ($metadata['usage_intent'] ?? ''),
+        'view_variant_preference' => (string) ($metadata['view_variant_preference'] ?? ''),
         'sync_role' => (string) ($metadata['sync_role'] ?? ''),
         'no_code_role' => (string) ($metadata['no_code_role'] ?? ''),
         'app_persistence_role' => (string) ($metadata['app_persistence_role'] ?? ''),

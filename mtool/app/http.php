@@ -25,6 +25,7 @@ require_once __DIR__ . '/project_host_assignments_page.php';
 require_once __DIR__ . '/project_language_resources_page.php';
 require_once __DIR__ . '/project_language_resource_groups_page.php';
 require_once __DIR__ . '/project_language_resource_detail_page.php';
+require_once __DIR__ . '/project_shared_contracts_page.php';
 require_once __DIR__ . '/project_source_outputs_page.php';
 require_once __DIR__ . '/project_source_output_change_order_page.php';
 require_once __DIR__ . '/project_source_output_new_page.php';
@@ -183,6 +184,10 @@ function app_run_http_request(): void
 
             case 'project_language_resource_detail':
                 app_render_project_language_resource_detail_page($app, $request);
+                return;
+
+            case 'project_shared_contracts':
+                app_render_project_shared_contracts_page($app, $request);
                 return;
 
             case 'project_source_outputs':

@@ -378,6 +378,10 @@ function app_config_db_bootstrap_required_columns(): array
             'auth_policy_version',
             'auth_policy_json',
         ],
+        'project_shared_contracts' => [
+            'usage_intent',
+            'view_variant_preference',
+        ],
         'no_code_publish_candidate_revisions' => [
             'revision_id',
             'source_output_key',

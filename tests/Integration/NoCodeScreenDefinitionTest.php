@@ -30,8 +30,23 @@ final class NoCodeScreenDefinitionTest extends TestCase
             'app_persistence_role' => 'local-copy',
             'sync_status_display' => true,
         ], $contract['storage_hint'] ?? []);
+        self::assertSame([
+            'intent' => 'screen',
+            'source' => 'no_code_role:managed-screen',
+            'allowed_intents' => ['screen', 'external_integration', 'sync', 'reporting', 'workflow', 'internal'],
+            'presentation_layer' => 'view_variant',
+        ], $contract['interface_usage'] ?? []);
+        self::assertSame([
+            'variant' => 'auto',
+            'source' => 'derived:screen_type',
+            'allowed_variants' => ['auto', 'standard_table', 'detail_record', 'edit_form', 'review_list'],
+        ], $contract['view_variant_preference'] ?? []);
+        self::assertSame('task', $contract['traceability']['source_contract']['contract_key'] ?? '');
+        self::assertSame('NO-CODE-RUNTIME', $contract['traceability']['source_output']['source_output_key'] ?? '');
+        self::assertSame('managed_operation', $contract['traceability']['managed_operations'][0]['target'] ?? '');
 
         self::assertSame(['list', 'detail', 'form'], array_column($contract['screens'], 'screen_type'));
+        self::assertSame(['standard_table', 'detail_record', 'edit_form'], array_column($contract['screens'], 'view_variant'));
         self::assertTrue($contract['screens'][0]['sync_status_hint'] ?? false);
         self::assertTrue($contract['screens'][1]['sync_status_hint'] ?? false);
         self::assertFalse($contract['screens'][2]['sync_status_hint'] ?? true);
@@ -73,6 +88,48 @@ final class NoCodeScreenDefinitionTest extends TestCase
         self::assertContains('permission_key:project.edit', $actionsByKey['update_note']['policy']['failed_checks'] ?? []);
         self::assertContains('required_role:editor', $actionsByKey['update_note']['policy']['failed_checks'] ?? []);
         self::assertContains('required_scope:task:write', $actionsByKey['update_note']['policy']['failed_checks'] ?? []);
+    }
+
+    public function testExplicitUsageIntentOverridesDerivedManagedScreenIntent(): void
+    {
+        $manifest = $this->managedScreenManifest();
+        $manifest['contracts'][0]['contract_metadata']['usage_intent'] = 'workflow';
+
+        $result = app_no_code_screen_definition_from_snapshots(
+            'SCREEN-DEF-TEST',
+            $manifest,
+            $this->managedOperations(),
+            $this->editorPrincipal(),
+        );
+
+        self::assertTrue($result['ok'], $result['error']);
+        $contract = $result['definition']['contracts'][0] ?? [];
+        self::assertIsArray($contract);
+        self::assertSame('workflow', $contract['interface_usage']['intent'] ?? '');
+        self::assertSame('usage_intent:explicit', $contract['interface_usage']['source'] ?? '');
+    }
+
+    public function testExplicitViewVariantPreferenceIsCarriedSeparatelyFromScreenVariants(): void
+    {
+        $manifest = $this->managedScreenManifest();
+        $manifest['contracts'][0]['contract_metadata']['view_variant_preference'] = 'review_list';
+
+        $result = app_no_code_screen_definition_from_snapshots(
+            'SCREEN-DEF-TEST',
+            $manifest,
+            $this->managedOperations(),
+            $this->editorPrincipal(),
+        );
+
+        self::assertTrue($result['ok'], $result['error']);
+        $contract = $result['definition']['contracts'][0] ?? [];
+        self::assertIsArray($contract);
+        self::assertSame([
+            'variant' => 'review_list',
+            'source' => 'view_variant_preference:explicit',
+            'allowed_variants' => ['auto', 'standard_table', 'detail_record', 'edit_form', 'review_list'],
+        ], $contract['view_variant_preference'] ?? []);
+        self::assertSame(['standard_table', 'detail_record', 'edit_form'], array_column($contract['screens'] ?? [], 'view_variant'));
     }
 
     public function testFailsClosedWhenNoManagedScreenContractExists(): void

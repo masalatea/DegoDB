@@ -52,6 +52,14 @@ function app_project_available_modules(string $projectKey): array
             'available_path' => '/projects/' . rawurlencode($projectKey) . '/data-classes',
         ],
         [
+            'title' => 'Shared Contract',
+            'status' => 'available',
+            'summary' => 'Data Class / table metadata から作る shared contract の no-code 用 metadata を管理します。最初の current route では contract-level usage intent を編集し、既存 role からの derived fallback と分けて扱います。',
+            'legacy_scope' => 'project_shared_contracts / project_shared_contract_fields',
+            'planned_path' => '/projects/' . rawurlencode($projectKey) . '/shared-contracts',
+            'available_path' => '/projects/' . rawurlencode($projectKey) . '/shared-contracts',
+        ],
+        [
             'title' => 'DB Access / Query 設計',
             'status' => 'available',
             'summary' => 'Data Class を土台に `da` / `dafunc` を設計し、DB Access を生成する入口です。現段階では `dbaccess-*.php` の class / method をもとに、DB Access と function candidate を preview できます。',

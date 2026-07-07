@@ -138,6 +138,8 @@ final class SharedDataClassContractFoundationTest extends TestCase
             'contract_key' => 'task',
             'data_class_physical_name' => 'task',
             'status' => 'active',
+            'usage_intent' => 'screen',
+            'view_variant_preference' => 'standard_table',
             'sync_role' => 'server-copy',
             'no_code_role' => 'managed-screen',
             'app_persistence_role' => 'local-copy',
@@ -170,6 +172,8 @@ final class SharedDataClassContractFoundationTest extends TestCase
         $contractManifest = $result['manifest']['contracts'][0] ?? [];
         self::assertSame([
             'status' => 'active',
+            'usage_intent' => 'screen',
+            'view_variant_preference' => 'standard_table',
             'sync_role' => 'server-copy',
             'no_code_role' => 'managed-screen',
             'app_persistence_role' => 'local-copy',

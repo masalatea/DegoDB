@@ -4,6 +4,8 @@ CREATE TABLE IF NOT EXISTS project_shared_contracts (
     contract_key VARCHAR(191) NOT NULL,
     data_class_physical_name VARCHAR(191) NOT NULL,
     status VARCHAR(32) NOT NULL DEFAULT 'active',
+    usage_intent VARCHAR(64) NOT NULL DEFAULT '',
+    view_variant_preference VARCHAR(64) NOT NULL DEFAULT '',
     sync_role VARCHAR(64) NOT NULL DEFAULT '',
     no_code_role VARCHAR(64) NOT NULL DEFAULT '',
     app_persistence_role VARCHAR(64) NOT NULL DEFAULT '',
