@@ -168,11 +168,21 @@ function expectedProfile(name) {
       selectedKeyValue: 1002,
       searchQuery: 'Review generated customer fields',
       filterField: 'status',
+      filterLabel: 'Status',
+      filterOperatorLabel: 'Contains',
       filterValue: 'triage',
       secondFilterField: 'priority',
       secondFilterValue: '20',
+      thirdFilterField: 'body',
+      thirdFilterValue: 'Confirm imported',
       sortField: 'status',
+      sortLabel: 'Status',
+      sortDirectionLabel: 'Desc',
       sortDirection: 'desc',
+      secondSortField: 'id',
+      secondSortDirection: 'desc',
+      thirdSortField: 'priority',
+      thirdSortDirection: 'asc',
       sortFirstKeyValue: 1002,
       seededPreview: true,
       seededText: 'Review generated customer fields',
@@ -209,11 +219,21 @@ function expectedProfile(name) {
       selectedKeyValue: 2002,
       searchQuery: 'Generated workflow',
       filterField: 'status',
+      filterLabel: 'Status',
+      filterOperatorLabel: 'Contains',
       filterValue: 'open',
       secondFilterField: 'severity',
       secondFilterValue: 'medium',
+      thirdFilterField: 'customer_tier',
+      thirdFilterValue: 'standard',
       sortField: 'status',
+      sortLabel: 'Status',
+      sortDirectionLabel: 'Asc',
       sortDirection: 'asc',
+      secondSortField: 'id',
+      secondSortDirection: 'desc',
+      thirdSortField: 'severity',
+      thirdSortDirection: 'asc',
       sortFirstKeyValue: 2002,
       payload: {
         id: 2001,
@@ -240,7 +260,7 @@ function expectedProfile(name) {
       operationType: 'update',
       keyField: 'id',
       keyValue: 3101,
-      formFieldCount: 7,
+      formFieldCount: 8,
       draftInputCountAfterEdit: 1,
       inputFields: ['item_sku', 'quantity_needed', 'status', 'fulfillment_note'],
       requiredInputField: 'fulfillment_note',
@@ -248,11 +268,23 @@ function expectedProfile(name) {
       selectedKeyValue: 3102,
       searchQuery: 'SKU-CABLE-99',
       filterField: 'status',
+      filterLabel: 'Status',
+      filterOperatorLabel: 'Contains',
       filterValue: 'review',
       secondFilterField: 'quantity_needed',
       secondFilterValue: '24',
+      thirdFilterField: 'item_sku',
+      thirdFilterValue: 'SKU-CABLE-99',
+      typedFilterField: 'needed_by',
+      typedFilterOperator: 'gte',
       sortField: 'status',
+      sortLabel: 'Status',
+      sortDirectionLabel: 'Desc',
       sortDirection: 'desc',
+      secondSortField: 'id',
+      secondSortDirection: 'desc',
+      thirdSortField: 'quantity_needed',
+      thirdSortDirection: 'asc',
       sortFirstKeyValue: 3102,
       payload: {
         id: 3101,
@@ -366,7 +398,22 @@ async function probeRuntimeDataInitialUrlReplay(page, targetUrl, config) {
   const replayUrl = new URL(targetUrl);
   replayUrl.searchParams.set('q', String(config.expected.searchQuery));
   replayUrl.searchParams.set(`filter[${config.expected.filterField}]`, String(config.expected.filterValue));
+  replayUrl.searchParams.set(`filter_op[${config.expected.filterField}]`, 'contains');
+  if (config.expected.secondFilterField && config.expected.secondFilterValue) {
+    replayUrl.searchParams.set(`filter[${config.expected.secondFilterField}]`, String(config.expected.secondFilterValue));
+    replayUrl.searchParams.set(`filter_op[${config.expected.secondFilterField}]`, 'eq');
+  }
+  if (config.expected.thirdFilterField && config.expected.thirdFilterValue) {
+    replayUrl.searchParams.set(`filter[${config.expected.thirdFilterField}]`, String(config.expected.thirdFilterValue));
+    replayUrl.searchParams.set(`filter_op[${config.expected.thirdFilterField}]`, 'contains');
+  }
   replayUrl.searchParams.set(`sort[${config.expected.sortField}]`, String(config.expected.sortDirection));
+  if (config.expected.secondSortField && config.expected.secondSortDirection) {
+    replayUrl.searchParams.set(`sort[${config.expected.secondSortField}]`, String(config.expected.secondSortDirection));
+  }
+  if (config.expected.thirdSortField && config.expected.thirdSortDirection) {
+    replayUrl.searchParams.set(`sort[${config.expected.thirdSortField}]`, String(config.expected.thirdSortDirection));
+  }
   replayUrl.searchParams.set('page', '1');
   replayUrl.searchParams.set('page_size', '1');
 
@@ -391,9 +438,20 @@ async function probeRuntimeDataInitialUrlReplay(page, targetUrl, config) {
       statusText: list?.querySelector('[data-runtime-result-refresh-status]')?.textContent?.trim() || '',
       retainedSearchValue: list?.querySelector('[data-runtime-search-input]')?.value || '',
       retainedFilterField: list?.querySelector('[data-runtime-filter-field]')?.value || '',
+      retainedFilterOperator: list?.querySelector('[data-runtime-filter-operator]')?.value || '',
       retainedFilterValue: list?.querySelector('[data-runtime-filter-value]')?.value || '',
+      retainedSecondFilterField: list?.querySelector('[data-runtime-filter-field-secondary]')?.value || '',
+      retainedSecondFilterOperator: list?.querySelector('[data-runtime-filter-operator-secondary]')?.value || '',
+      retainedSecondFilterValue: list?.querySelector('[data-runtime-filter-value-secondary]')?.value || '',
+      retainedThirdFilterField: list?.querySelector('[data-runtime-filter-field-tertiary]')?.value || '',
+      retainedThirdFilterOperator: list?.querySelector('[data-runtime-filter-operator-tertiary]')?.value || '',
+      retainedThirdFilterValue: list?.querySelector('[data-runtime-filter-value-tertiary]')?.value || '',
       retainedSortField: list?.querySelector('[data-runtime-sort-field]')?.value || '',
       retainedSortDirection: list?.querySelector('[data-runtime-sort-direction]')?.value || '',
+      retainedSecondSortField: list?.querySelector('[data-runtime-sort-field-secondary]')?.value || '',
+      retainedSecondSortDirection: list?.querySelector('[data-runtime-sort-direction-secondary]')?.value || '',
+      retainedThirdSortField: list?.querySelector('[data-runtime-sort-field-tertiary]')?.value || '',
+      retainedThirdSortDirection: list?.querySelector('[data-runtime-sort-direction-tertiary]')?.value || '',
       retainedPageSize: list?.querySelector('[data-runtime-page-size-input]')?.value || '',
       firstRowKey: firstRow?.getAttribute('data-runtime-row-key') || '',
       renderedRowCount: list?.querySelectorAll('tbody tr:not(.no-code-empty-row)').length || 0,
@@ -403,7 +461,12 @@ async function probeRuntimeDataInitialUrlReplay(page, targetUrl, config) {
   if (
     !result.locationSearch.includes('q=')
     || !result.locationSearch.includes('filter%5B')
+    || !result.locationSearch.includes('filter_op%5B')
+    || (config.expected.secondFilterField && !result.locationSearch.includes(`filter%5B${config.expected.secondFilterField}%5D`))
+    || (config.expected.thirdFilterField && !result.locationSearch.includes(`filter%5B${config.expected.thirdFilterField}%5D`))
     || !result.locationSearch.includes('sort%5B')
+    || (config.expected.secondSortField && !result.locationSearch.includes(`sort%5B${config.expected.secondSortField}%5D`))
+    || (config.expected.thirdSortField && !result.locationSearch.includes(`sort%5B${config.expected.thirdSortField}%5D`))
     || !result.locationSearch.includes('page=1')
     || !result.locationSearch.includes('page_size=1')
   ) {
@@ -412,9 +475,20 @@ async function probeRuntimeDataInitialUrlReplay(page, targetUrl, config) {
   if (
     result.retainedSearchValue !== String(config.expected.searchQuery || '')
     || result.retainedFilterField !== String(config.expected.filterField || '')
+    || result.retainedFilterOperator !== 'contains'
     || result.retainedFilterValue !== String(config.expected.filterValue || '')
+    || (config.expected.secondFilterField && result.retainedSecondFilterField !== String(config.expected.secondFilterField || ''))
+    || (config.expected.secondFilterField && result.retainedSecondFilterOperator !== 'eq')
+    || (config.expected.secondFilterValue && result.retainedSecondFilterValue !== String(config.expected.secondFilterValue || ''))
+    || (config.expected.thirdFilterField && result.retainedThirdFilterField !== String(config.expected.thirdFilterField || ''))
+    || (config.expected.thirdFilterField && result.retainedThirdFilterOperator !== 'contains')
+    || (config.expected.thirdFilterValue && result.retainedThirdFilterValue !== String(config.expected.thirdFilterValue || ''))
     || result.retainedSortField !== String(config.expected.sortField || '')
     || result.retainedSortDirection !== String(config.expected.sortDirection || '')
+    || (config.expected.secondSortField && result.retainedSecondSortField !== String(config.expected.secondSortField || ''))
+    || (config.expected.secondSortDirection && result.retainedSecondSortDirection !== String(config.expected.secondSortDirection || ''))
+    || (config.expected.thirdSortField && result.retainedThirdSortField !== String(config.expected.thirdSortField || ''))
+    || (config.expected.thirdSortDirection && result.retainedThirdSortDirection !== String(config.expected.thirdSortDirection || ''))
     || result.retainedPageSize !== '1'
   ) {
     throw new Error(`runtime data initial URL replay did not retain controls: ${JSON.stringify(result)}`);
@@ -424,6 +498,251 @@ async function probeRuntimeDataInitialUrlReplay(page, targetUrl, config) {
   }
 
   return result;
+}
+
+async function probeRuntimeDataBrowserHistoryReplay(page, targetUrl, config) {
+  if (
+    config.statusProbe !== 'real'
+    || config.executionBinding !== 'required'
+    || !config.expected.searchQuery
+    || !config.expected.filterField
+    || !config.expected.filterValue
+    || !config.expected.secondFilterField
+    || !config.expected.secondFilterValue
+    || !config.expected.thirdFilterField
+    || !config.expected.thirdFilterValue
+  ) {
+    return { skipped: true };
+  }
+
+  await page.goto(targetUrl, { waitUntil: 'load' });
+  await page.waitForSelector(`.no-code-screen[data-screen-key="${config.expected.listScreenKey}"] [data-runtime-search-input]`, { timeout: 5000 });
+  const historyLengthBefore = await page.evaluate(() => window.history.length);
+
+  await page.evaluate((expected) => {
+    const list = document.querySelector(`.no-code-screen[data-screen-key="${expected.listScreenKey}"]`);
+    const searchInput = list?.querySelector('[data-runtime-search-input]');
+    const searchButton = list?.querySelector('[data-runtime-search-submit]');
+    searchInput.value = expected.searchQuery;
+    searchInput.dispatchEvent(new Event('input', { bubbles: true }));
+    searchButton.click();
+  }, config.expected);
+
+  await page.waitForFunction(
+    (expected) => {
+      const list = document.querySelector(`.no-code-screen[data-screen-key="${expected.listScreenKey}"]`);
+      const firstRow = list?.querySelector('tbody tr:not(.no-code-empty-row)');
+      return window.location.search.includes('q=')
+        && !window.location.search.includes('filter%5B')
+        && list?.querySelector('[data-runtime-search-input]')?.value === expected.searchQuery
+        && firstRow?.getAttribute('data-runtime-row-key') === String(expected.selectedKeyValue || expected.keyValue);
+    },
+    config.expected,
+    { timeout: 5000 },
+  );
+
+  const rowBuilderProbe = await page.evaluate((expected) => {
+    const list = document.querySelector(`.no-code-screen[data-screen-key="${expected.listScreenKey}"]`);
+    const controls = list?.querySelector('[data-runtime-data-controls]');
+    const secondFilterRow = controls?.querySelector('[data-runtime-filter-extra="secondary"]');
+    const thirdFilterRow = controls?.querySelector('[data-runtime-filter-extra="tertiary"]');
+    const secondSortRow = controls?.querySelector('[data-runtime-sort-extra="secondary"]');
+    const thirdSortRow = controls?.querySelector('[data-runtime-sort-extra="tertiary"]');
+    const addFilter = controls?.querySelector('[data-runtime-filter-add]');
+    const addSort = controls?.querySelector('[data-runtime-sort-add]');
+    const removeSecondFilter = controls?.querySelector('[data-runtime-filter-remove="secondary"]');
+    const removeSecondSort = controls?.querySelector('[data-runtime-sort-remove="secondary"]');
+    const secondFilterField = controls?.querySelector('[data-runtime-filter-field-secondary]');
+    const secondFilterValue = controls?.querySelector('[data-runtime-filter-value-secondary]');
+    const thirdFilterField = controls?.querySelector('[data-runtime-filter-field-tertiary]');
+    const thirdFilterValue = controls?.querySelector('[data-runtime-filter-value-tertiary]');
+    const secondSortField = controls?.querySelector('[data-runtime-sort-field-secondary]');
+    const thirdSortField = controls?.querySelector('[data-runtime-sort-field-tertiary]');
+    const before = {
+      secondFilterHidden: !!secondFilterRow?.hidden,
+      thirdFilterHidden: !!thirdFilterRow?.hidden,
+      secondSortHidden: !!secondSortRow?.hidden,
+      thirdSortHidden: !!thirdSortRow?.hidden,
+    };
+    addFilter?.click();
+    const afterAddFilter2 = {
+      secondFilterHidden: !!secondFilterRow?.hidden,
+      thirdFilterHidden: !!thirdFilterRow?.hidden,
+      addFilterDisabled: !!addFilter?.disabled,
+    };
+    addFilter?.click();
+    const afterAddFilter3 = {
+      secondFilterHidden: !!secondFilterRow?.hidden,
+      thirdFilterHidden: !!thirdFilterRow?.hidden,
+      addFilterDisabled: !!addFilter?.disabled,
+    };
+    if (secondFilterField && secondFilterValue && thirdFilterField && thirdFilterValue) {
+      secondFilterField.value = expected.secondFilterField;
+      secondFilterValue.value = expected.secondFilterValue;
+      thirdFilterField.value = expected.thirdFilterField;
+      thirdFilterValue.value = expected.thirdFilterValue;
+    }
+    removeSecondFilter?.click();
+    const afterRemoveFilter2 = {
+      secondFilterHidden: !!secondFilterRow?.hidden,
+      thirdFilterHidden: !!thirdFilterRow?.hidden,
+      secondFilterField: secondFilterField?.value || '',
+      secondFilterValue: secondFilterValue?.value || '',
+      thirdFilterField: thirdFilterField?.value || '',
+      thirdFilterValue: thirdFilterValue?.value || '',
+      addFilterDisabled: !!addFilter?.disabled,
+    };
+    addSort?.click();
+    const afterAddSort2 = {
+      secondSortHidden: !!secondSortRow?.hidden,
+      thirdSortHidden: !!thirdSortRow?.hidden,
+      addSortDisabled: !!addSort?.disabled,
+    };
+    addSort?.click();
+    const afterAddSort3 = {
+      secondSortHidden: !!secondSortRow?.hidden,
+      thirdSortHidden: !!thirdSortRow?.hidden,
+      addSortDisabled: !!addSort?.disabled,
+    };
+    if (secondSortField && thirdSortField) {
+      secondSortField.value = expected.secondSortField;
+      thirdSortField.value = expected.thirdSortField;
+    }
+    removeSecondSort?.click();
+    const afterRemoveSort2 = {
+      secondSortHidden: !!secondSortRow?.hidden,
+      thirdSortHidden: !!thirdSortRow?.hidden,
+      secondSortField: secondSortField?.value || '',
+      thirdSortField: thirdSortField?.value || '',
+      addSortDisabled: !!addSort?.disabled,
+    };
+    return {
+      before,
+      afterAddFilter2,
+      afterAddFilter3,
+      afterRemoveFilter2,
+      afterAddSort2,
+      afterAddSort3,
+      afterRemoveSort2,
+    };
+  }, config.expected);
+  if (
+    !rowBuilderProbe.before.secondFilterHidden
+    || !rowBuilderProbe.before.thirdFilterHidden
+    || !rowBuilderProbe.before.secondSortHidden
+    || !rowBuilderProbe.before.thirdSortHidden
+    || rowBuilderProbe.afterAddFilter2.secondFilterHidden
+    || rowBuilderProbe.afterAddFilter3.thirdFilterHidden
+    || !rowBuilderProbe.afterAddFilter3.addFilterDisabled
+    || !rowBuilderProbe.afterRemoveFilter2.secondFilterHidden
+    || !rowBuilderProbe.afterRemoveFilter2.thirdFilterHidden
+    || rowBuilderProbe.afterRemoveFilter2.secondFilterField !== ''
+    || rowBuilderProbe.afterRemoveFilter2.secondFilterValue !== ''
+    || rowBuilderProbe.afterRemoveFilter2.thirdFilterField !== ''
+    || rowBuilderProbe.afterRemoveFilter2.thirdFilterValue !== ''
+    || rowBuilderProbe.afterAddSort2.secondSortHidden
+    || rowBuilderProbe.afterAddSort3.thirdSortHidden
+    || !rowBuilderProbe.afterAddSort3.addSortDisabled
+    || !rowBuilderProbe.afterRemoveSort2.secondSortHidden
+    || !rowBuilderProbe.afterRemoveSort2.thirdSortHidden
+    || rowBuilderProbe.afterRemoveSort2.secondSortField !== ''
+    || rowBuilderProbe.afterRemoveSort2.thirdSortField !== ''
+  ) {
+    throw new Error(`runtime data row builder progressive disclosure mismatch: ${JSON.stringify(rowBuilderProbe)}`);
+  }
+
+  await page.evaluate((expected) => {
+    const list = document.querySelector(`.no-code-screen[data-screen-key="${expected.listScreenKey}"]`);
+    const filterField = list?.querySelector('[data-runtime-filter-field]');
+    const filterValue = list?.querySelector('[data-runtime-filter-value]');
+    const secondFilterField = list?.querySelector('[data-runtime-filter-field-secondary]');
+    const secondFilterValue = list?.querySelector('[data-runtime-filter-value-secondary]');
+    const thirdFilterField = list?.querySelector('[data-runtime-filter-field-tertiary]');
+    const thirdFilterValue = list?.querySelector('[data-runtime-filter-value-tertiary]');
+    const filterButton = list?.querySelector('[data-runtime-filter-submit]');
+    filterField.value = expected.filterField;
+    filterField.dispatchEvent(new Event('change', { bubbles: true }));
+    filterValue.value = expected.filterValue;
+    filterValue.dispatchEvent(new Event('input', { bubbles: true }));
+    secondFilterField.value = expected.secondFilterField;
+    secondFilterField.dispatchEvent(new Event('change', { bubbles: true }));
+    secondFilterValue.value = expected.secondFilterValue;
+    secondFilterValue.dispatchEvent(new Event('input', { bubbles: true }));
+    thirdFilterField.value = expected.thirdFilterField;
+    thirdFilterField.dispatchEvent(new Event('change', { bubbles: true }));
+    thirdFilterValue.value = expected.thirdFilterValue;
+    thirdFilterValue.dispatchEvent(new Event('input', { bubbles: true }));
+    filterButton.click();
+  }, config.expected);
+
+  await page.waitForFunction(
+    (expected) => {
+      const list = document.querySelector(`.no-code-screen[data-screen-key="${expected.listScreenKey}"]`);
+      const firstRow = list?.querySelector('tbody tr:not(.no-code-empty-row)');
+      return window.location.search.includes(`filter%5B${expected.filterField}%5D`)
+        && window.location.search.includes(`filter%5B${expected.secondFilterField}%5D`)
+        && window.location.search.includes(`filter%5B${expected.thirdFilterField}%5D`)
+        && list?.querySelector('[data-runtime-filter-field-secondary]')?.value === expected.secondFilterField
+        && list?.querySelector('[data-runtime-filter-field-tertiary]')?.value === expected.thirdFilterField
+        && firstRow?.getAttribute('data-runtime-row-key') === String(expected.selectedKeyValue || expected.keyValue);
+    },
+    config.expected,
+    { timeout: 5000 },
+  );
+
+  const historyLengthAfterFilter = await page.evaluate(() => window.history.length);
+  await page.evaluate(() => window.history.back());
+  await page.waitForFunction(
+    (expected) => {
+      const list = document.querySelector(`.no-code-screen[data-screen-key="${expected.listScreenKey}"]`);
+      return window.location.search.includes('q=')
+        && !window.location.search.includes('filter%5B')
+        && list?.querySelector('[data-runtime-search-input]')?.value === expected.searchQuery
+        && list?.querySelector('[data-runtime-filter-field]')?.value === ''
+        && list?.querySelector('[data-runtime-filter-field-secondary]')?.value === ''
+        && list?.querySelector('[data-runtime-filter-field-tertiary]')?.value === '';
+    },
+    config.expected,
+    { timeout: 5000 },
+  );
+  const historyLengthAfterBack = await page.evaluate(() => window.history.length);
+
+  await page.evaluate(() => window.history.forward());
+  await page.waitForFunction(
+    (expected) => {
+      const list = document.querySelector(`.no-code-screen[data-screen-key="${expected.listScreenKey}"]`);
+      return window.location.search.includes(`filter%5B${expected.filterField}%5D`)
+        && window.location.search.includes(`filter%5B${expected.secondFilterField}%5D`)
+        && window.location.search.includes(`filter%5B${expected.thirdFilterField}%5D`)
+        && list?.querySelector('[data-runtime-filter-field]')?.value === expected.filterField
+        && list?.querySelector('[data-runtime-filter-value]')?.value === expected.filterValue
+        && list?.querySelector('[data-runtime-filter-field-secondary]')?.value === expected.secondFilterField
+        && list?.querySelector('[data-runtime-filter-value-secondary]')?.value === expected.secondFilterValue
+        && list?.querySelector('[data-runtime-filter-field-tertiary]')?.value === expected.thirdFilterField
+        && list?.querySelector('[data-runtime-filter-value-tertiary]')?.value === expected.thirdFilterValue;
+    },
+    config.expected,
+    { timeout: 5000 },
+  );
+  const historyLengthAfterForward = await page.evaluate(() => window.history.length);
+  if (historyLengthAfterFilter < historyLengthBefore + 2) {
+    throw new Error(`runtime data browser history replay did not create query history entries: before=${historyLengthBefore}, after=${historyLengthAfterFilter}`);
+  }
+  if (historyLengthAfterBack !== historyLengthAfterFilter || historyLengthAfterForward !== historyLengthAfterFilter) {
+    throw new Error(`runtime data browser history replay created extra entries during popstate: filter=${historyLengthAfterFilter}, back=${historyLengthAfterBack}, forward=${historyLengthAfterForward}`);
+  }
+
+  return {
+    skipped: false,
+    historyLengthBefore,
+    historyLengthAfterFilter,
+    historyLengthAfterBack,
+    historyLengthAfterForward,
+    locationSearch: await page.evaluate(() => window.location.search || ''),
+    retainedFilterField: await page.locator(`.no-code-screen[data-screen-key="${config.expected.listScreenKey}"] [data-runtime-filter-field]`).inputValue(),
+    retainedSecondFilterField: await page.locator(`.no-code-screen[data-screen-key="${config.expected.listScreenKey}"] [data-runtime-filter-field-secondary]`).inputValue(),
+    retainedThirdFilterField: await page.locator(`.no-code-screen[data-screen-key="${config.expected.listScreenKey}"] [data-runtime-filter-field-tertiary]`).inputValue(),
+  };
 }
 
 async function runSmoke(config) {
@@ -441,6 +760,7 @@ async function runSmoke(config) {
   });
 
   const screenshotPath = path.join(config.outputDir, `no-code-runtime-preview-${timestamp()}.png`);
+  const mobileScreenshotPath = path.join(config.outputDir, `no-code-runtime-preview-mobile-${timestamp()}.png`);
   try {
     const page = await browser.newPage({ viewport: { width: 1280, height: 900 } });
     const targetUrl = config.url !== '' ? config.url : `file://${config.htmlPath}`;
@@ -652,8 +972,19 @@ async function runSmoke(config) {
           requestSearchQuery: '',
           requestFilterField: '',
           requestFilterValue: '',
+          requestFilterOperator: '',
+          requestSecondFilterField: '',
+          requestSecondFilterValue: '',
+          requestSecondFilterOperator: '',
+          requestThirdFilterField: '',
+          requestThirdFilterValue: '',
+          requestThirdFilterOperator: '',
           requestSortField: '',
           requestSortDirection: '',
+          requestSecondSortField: '',
+          requestSecondSortDirection: '',
+          requestThirdSortField: '',
+          requestThirdSortDirection: '',
           responseStatus: 0,
           responseOk: null,
           contractVersion: '',
@@ -671,10 +1002,19 @@ async function runSmoke(config) {
           let runtimeDataSearchQuery = '';
           let runtimeDataFilterField = '';
           let runtimeDataFilterValue = '';
+          let runtimeDataFilterOperator = '';
           let runtimeDataSecondFilterField = '';
           let runtimeDataSecondFilterValue = '';
+          let runtimeDataSecondFilterOperator = '';
+          let runtimeDataThirdFilterField = '';
+          let runtimeDataThirdFilterValue = '';
+          let runtimeDataThirdFilterOperator = '';
           let runtimeDataSortField = '';
           let runtimeDataSortDirection = '';
+          let runtimeDataSecondSortField = '';
+          let runtimeDataSecondSortDirection = '';
+          let runtimeDataThirdSortField = '';
+          let runtimeDataThirdSortDirection = '';
           try {
             const parsedRuntimeDataUrl = new URL(String(url), window.location.href);
             runtimeDataPathname = parsedRuntimeDataUrl.pathname;
@@ -683,18 +1023,43 @@ async function runSmoke(config) {
             runtimeDataPageSize = parsedRuntimeDataUrl.searchParams.get('page_size') || '';
             runtimeDataSearchQuery = parsedRuntimeDataUrl.searchParams.get('q') || '';
             for (const [paramKey, paramValue] of parsedRuntimeDataUrl.searchParams.entries()) {
+              const operatorMatch = /^filter_op\[(.+)\]$/.exec(paramKey);
+              if (operatorMatch) {
+                const operatorField = operatorMatch[1] || '';
+                if (operatorField === runtimeDataFilterField || (!runtimeDataFilterField && !runtimeDataFilterOperator)) {
+                  runtimeDataFilterOperator = paramValue || '';
+                } else if (operatorField === runtimeDataSecondFilterField || (!runtimeDataSecondFilterField && !runtimeDataSecondFilterOperator)) {
+                  runtimeDataSecondFilterOperator = paramValue || '';
+                } else if (operatorField === runtimeDataThirdFilterField || (!runtimeDataThirdFilterField && !runtimeDataThirdFilterOperator)) {
+                  runtimeDataThirdFilterOperator = paramValue || '';
+                }
+              }
+            }
+            for (const [paramKey, paramValue] of parsedRuntimeDataUrl.searchParams.entries()) {
               const filterMatch = /^filter\[(.+)\]$/.exec(paramKey);
               if (filterMatch && !runtimeDataFilterField) {
                 runtimeDataFilterField = filterMatch[1] || '';
                 runtimeDataFilterValue = paramValue || '';
+                runtimeDataFilterOperator = parsedRuntimeDataUrl.searchParams.get(`filter_op[${runtimeDataFilterField}]`) || runtimeDataFilterOperator || 'contains';
               } else if (filterMatch && !runtimeDataSecondFilterField) {
                 runtimeDataSecondFilterField = filterMatch[1] || '';
                 runtimeDataSecondFilterValue = paramValue || '';
+                runtimeDataSecondFilterOperator = parsedRuntimeDataUrl.searchParams.get(`filter_op[${runtimeDataSecondFilterField}]`) || runtimeDataSecondFilterOperator || 'contains';
+              } else if (filterMatch && !runtimeDataThirdFilterField) {
+                runtimeDataThirdFilterField = filterMatch[1] || '';
+                runtimeDataThirdFilterValue = paramValue || '';
+                runtimeDataThirdFilterOperator = parsedRuntimeDataUrl.searchParams.get(`filter_op[${runtimeDataThirdFilterField}]`) || runtimeDataThirdFilterOperator || 'contains';
               }
               const sortMatch = /^sort\[(.+)\]$/.exec(paramKey);
               if (sortMatch && !runtimeDataSortField) {
                 runtimeDataSortField = sortMatch[1] || '';
                 runtimeDataSortDirection = paramValue || '';
+              } else if (sortMatch && !runtimeDataSecondSortField) {
+                runtimeDataSecondSortField = sortMatch[1] || '';
+                runtimeDataSecondSortDirection = paramValue || '';
+              } else if (sortMatch && !runtimeDataThirdSortField) {
+                runtimeDataThirdSortField = sortMatch[1] || '';
+                runtimeDataThirdSortDirection = paramValue || '';
               }
             }
           } catch (_error) {
@@ -712,10 +1077,19 @@ async function runSmoke(config) {
               requestSearchQuery: runtimeDataSearchQuery,
               requestFilterField: runtimeDataFilterField,
               requestFilterValue: runtimeDataFilterValue,
+              requestFilterOperator: runtimeDataFilterOperator,
               requestSecondFilterField: runtimeDataSecondFilterField,
               requestSecondFilterValue: runtimeDataSecondFilterValue,
+              requestSecondFilterOperator: runtimeDataSecondFilterOperator,
+              requestThirdFilterField: runtimeDataThirdFilterField,
+              requestThirdFilterValue: runtimeDataThirdFilterValue,
+              requestThirdFilterOperator: runtimeDataThirdFilterOperator,
               requestSortField: runtimeDataSortField,
               requestSortDirection: runtimeDataSortDirection,
+              requestSecondSortField: runtimeDataSecondSortField,
+              requestSecondSortDirection: runtimeDataSecondSortDirection,
+              requestThirdSortField: runtimeDataThirdSortField,
+              requestThirdSortDirection: runtimeDataThirdSortDirection,
               responseStatus: 0,
               responseOk: null,
               contractVersion: '',
@@ -725,6 +1099,21 @@ async function runSmoke(config) {
               pagination: {},
             };
             window.__noCodeRuntimeDataProbe = dataProbe;
+            if (window.__noCodeRuntimeDataForceError) {
+              window.__noCodeRuntimeDataForceError = false;
+              const payload = {
+                ok: false,
+                contract_version: 'no-code-runtime-data-v0',
+                error: 'forced_runtime_data_error',
+              };
+              dataProbe.responseStatus = 503;
+              dataProbe.responseOk = false;
+              dataProbe.contractVersion = payload.contract_version;
+              window.__noCodeRuntimeDataProbe = dataProbe;
+              return {
+                json: async () => payload,
+              };
+            }
             if (expected.statusProbe !== 'real') {
               const row = {};
               row[expected.keyField] = { value: expected.keyValue, display_value: String(expected.keyValue) };
@@ -736,8 +1125,35 @@ async function runSmoke(config) {
                 rows[1].title = { value: expected.seededText, display_value: expected.seededText };
               }
               const queryFilter = runtimeDataFilterField ? { [runtimeDataFilterField]: runtimeDataFilterValue } : {};
+              const queryFilterOp = runtimeDataFilterField ? { [runtimeDataFilterField]: runtimeDataFilterOperator || 'contains' } : {};
               if (runtimeDataSecondFilterField) {
                 queryFilter[runtimeDataSecondFilterField] = runtimeDataSecondFilterValue;
+                queryFilterOp[runtimeDataSecondFilterField] = runtimeDataSecondFilterOperator || 'contains';
+              }
+              if (runtimeDataThirdFilterField) {
+                queryFilter[runtimeDataThirdFilterField] = runtimeDataThirdFilterValue;
+                queryFilterOp[runtimeDataThirdFilterField] = runtimeDataThirdFilterOperator || 'contains';
+              }
+              const querySort = runtimeDataSortField ? { [runtimeDataSortField]: runtimeDataSortDirection } : {};
+              if (runtimeDataSecondSortField) {
+                querySort[runtimeDataSecondSortField] = runtimeDataSecondSortDirection;
+              }
+              if (runtimeDataThirdSortField) {
+                querySort[runtimeDataThirdSortField] = runtimeDataThirdSortDirection;
+              }
+              const readModelFields = {
+                [expected.keyField]: {
+                  field_key: expected.keyField,
+                  label: expected.keyField,
+                  type: 'integer',
+                },
+              };
+              for (const fieldKey of Object.keys(expected.payload || {})) {
+                readModelFields[fieldKey] = {
+                  field_key: fieldKey,
+                  label: fieldKey,
+                  type: 'string',
+                };
               }
               const payload = {
                 ok: true,
@@ -749,11 +1165,20 @@ async function runSmoke(config) {
                 },
                 screen_definition_version: 'stub-runtime-data-screen-definition',
                 runtime_preview_version: 'no-code-runtime-v0',
+                read_model: {
+                  contracts: {
+                    [expected.contractKey]: {
+                      contract_key: expected.contractKey,
+                      fields: readModelFields,
+                    },
+                  },
+                },
                 query: {
                   selected_key: runtimeDataSelectedKey,
                   q: runtimeDataSearchQuery,
                   filter: queryFilter,
-                  sort: runtimeDataSortField ? { [runtimeDataSortField]: runtimeDataSortDirection } : {},
+                  filter_op: queryFilterOp,
+                  sort: querySort,
                   page: runtimeDataPage,
                   page_size: runtimeDataPageSize,
                 },
@@ -1034,11 +1459,38 @@ async function runSmoke(config) {
           selectedKey: '',
           renderedRowCount: 0,
         };
+        let runtimeDataEmptySearch = {
+          skipped: true,
+          inputCount: document.querySelectorAll('[data-runtime-search-input]').length,
+          buttonCount: document.querySelectorAll('[data-runtime-search-submit]').length,
+          url: '',
+          requestSearchQuery: '',
+          responseStatus: 0,
+          responseOk: null,
+          firstRowKey: '',
+          selectedKey: '',
+          renderedRowCount: 0,
+          emptyRowCount: 0,
+          querySummaryText: '',
+          querySummaryAriaLabel: '',
+          querySummaryTokenCount: 0,
+        };
+        let runtimeDataErrorRefresh = {
+          skipped: true,
+          beforeRowCount: 0,
+          afterRowCount: 0,
+          requestSearchQuery: '',
+          responseStatus: 0,
+          responseOk: null,
+          statusText: '',
+          state: '',
+        };
         if (expected.statusProbe === 'real' && expected.searchQuery) {
           const searchInput = document.querySelector(`.no-code-screen[data-screen-key="${expected.listScreenKey}"] [data-runtime-search-input]`);
           const searchButton = document.querySelector(`.no-code-screen[data-screen-key="${expected.listScreenKey}"] [data-runtime-search-submit]`);
           if (searchInput && searchButton) {
             runtimeDataSearch.skipped = false;
+            runtimeDataEmptySearch.skipped = false;
             searchInput.value = expected.searchQuery;
             searchInput.dispatchEvent(new Event('input', { bubbles: true }));
             searchButton.click();
@@ -1067,6 +1519,41 @@ async function runSmoke(config) {
               selectedKey: searchProbe.selectedKey || '',
               renderedRowCount: document.querySelectorAll(`.no-code-screen[data-screen-key="${expected.listScreenKey}"] tbody tr:not(.no-code-empty-row)`).length,
             };
+            const emptySearchQuery = '__no_runtime_data_match__';
+            const emptySearchInput = document.querySelector(`.no-code-screen[data-screen-key="${expected.listScreenKey}"] [data-runtime-search-input]`);
+            const emptySearchButton = document.querySelector(`.no-code-screen[data-screen-key="${expected.listScreenKey}"] [data-runtime-search-submit]`);
+            if (emptySearchInput && emptySearchButton) {
+              emptySearchInput.value = emptySearchQuery;
+              emptySearchInput.dispatchEvent(new Event('input', { bubbles: true }));
+              emptySearchButton.click();
+            }
+            for (let attempt = 0; attempt < 30; attempt += 1) {
+              await new Promise((resolve) => setTimeout(resolve, 100));
+              const latestDataProbe = window.__noCodeRuntimeDataProbe || {};
+              const rowCount = document.querySelectorAll(`.no-code-screen[data-screen-key="${expected.listScreenKey}"] tbody tr:not(.no-code-empty-row)`).length;
+              const emptyRowCount = document.querySelectorAll(`.no-code-screen[data-screen-key="${expected.listScreenKey}"] tbody tr.no-code-empty-row`).length;
+              if (latestDataProbe.requestSearchQuery === emptySearchQuery && rowCount === 0 && emptyRowCount >= 1) {
+                break;
+              }
+            }
+            const emptySearchProbe = { ...(window.__noCodeRuntimeDataProbe || {}) };
+            const emptyQuerySummary = document.querySelector(`.no-code-screen[data-screen-key="${expected.listScreenKey}"] [data-runtime-query-summary]`);
+            runtimeDataEmptySearch = {
+              ...runtimeDataEmptySearch,
+              inputCount: document.querySelectorAll('[data-runtime-search-input]').length,
+              buttonCount: document.querySelectorAll('[data-runtime-search-submit]').length,
+              url: emptySearchProbe.url || '',
+              requestSearchQuery: emptySearchProbe.requestSearchQuery || '',
+              responseStatus: emptySearchProbe.responseStatus || 0,
+              responseOk: emptySearchProbe.responseOk,
+              firstRowKey: emptySearchProbe.firstRowKey || '',
+              selectedKey: emptySearchProbe.selectedKey || '',
+              renderedRowCount: document.querySelectorAll(`.no-code-screen[data-screen-key="${expected.listScreenKey}"] tbody tr:not(.no-code-empty-row)`).length,
+              emptyRowCount: document.querySelectorAll(`.no-code-screen[data-screen-key="${expected.listScreenKey}"] tbody tr.no-code-empty-row`).length,
+              querySummaryText: emptyQuerySummary?.textContent?.trim() || '',
+              querySummaryAriaLabel: emptyQuerySummary?.getAttribute('aria-label') || '',
+              querySummaryTokenCount: emptyQuerySummary?.querySelectorAll('.no-code-runtime-data-query-token').length || 0,
+            };
             const searchResetButton = document.querySelector(`.no-code-screen[data-screen-key="${expected.listScreenKey}"] [data-runtime-result-refresh]`) || resultRefreshButton;
             if (searchResetButton && !searchResetButton.disabled) {
               searchResetButton.click();
@@ -1079,22 +1566,76 @@ async function runSmoke(config) {
                 }
               }
             }
+            const errorRefreshButton = document.querySelector(`.no-code-screen[data-screen-key="${expected.listScreenKey}"] [data-runtime-result-refresh]`) || resultRefreshButton;
+            if (errorRefreshButton && !errorRefreshButton.disabled) {
+              const beforeRowCount = document.querySelectorAll(`.no-code-screen[data-screen-key="${expected.listScreenKey}"] tbody tr:not(.no-code-empty-row)`).length;
+              window.__noCodeRuntimeDataForceError = true;
+              errorRefreshButton.click();
+              for (let attempt = 0; attempt < 30; attempt += 1) {
+                await new Promise((resolve) => setTimeout(resolve, 100));
+                const latestDataProbe = window.__noCodeRuntimeDataProbe || {};
+                const latestStatus = document.querySelector(`.no-code-screen[data-screen-key="${expected.listScreenKey}"] [data-runtime-result-refresh-status]`)?.textContent?.trim() || '';
+                if (latestDataProbe.responseOk === false && latestStatus.includes('Current preview data was left unchanged.')) {
+                  break;
+                }
+              }
+              const errorProbe = { ...(window.__noCodeRuntimeDataProbe || {}) };
+              const errorStatus = document.querySelector(`.no-code-screen[data-screen-key="${expected.listScreenKey}"] [data-runtime-result-refresh-status]`);
+              runtimeDataErrorRefresh = {
+                ...runtimeDataErrorRefresh,
+                skipped: false,
+                beforeRowCount,
+                afterRowCount: document.querySelectorAll(`.no-code-screen[data-screen-key="${expected.listScreenKey}"] tbody tr:not(.no-code-empty-row)`).length,
+                requestSearchQuery: errorProbe.requestSearchQuery || '',
+                responseStatus: errorProbe.responseStatus || 0,
+                responseOk: errorProbe.responseOk,
+                statusText: errorStatus?.textContent?.trim() || '',
+                state: errorStatus?.getAttribute('data-state') || '',
+              };
+            }
           }
         }
         let runtimeDataFilter = {
           skipped: true,
-          fieldControlCount: document.querySelectorAll('[data-runtime-filter-field], [data-runtime-filter-field-secondary]').length,
-          valueInputCount: document.querySelectorAll('[data-runtime-filter-value], [data-runtime-filter-value-secondary]').length,
+          fieldControlCount: document.querySelectorAll('[data-runtime-filter-field], [data-runtime-filter-field-secondary], [data-runtime-filter-field-tertiary]').length,
+          valueInputCount: document.querySelectorAll('[data-runtime-filter-value], [data-runtime-filter-value-secondary], [data-runtime-filter-value-tertiary]').length,
           buttonCount: document.querySelectorAll('[data-runtime-filter-submit]').length,
           url: '',
           requestFilterField: '',
           requestFilterValue: '',
+          requestFilterOperator: '',
           requestSecondFilterField: '',
           requestSecondFilterValue: '',
+          requestSecondFilterOperator: '',
+          requestThirdFilterField: '',
+          requestThirdFilterValue: '',
+          requestThirdFilterOperator: '',
           requestPage: '',
           requestPageSize: '',
           retainedSecondFilterField: '',
           retainedSecondFilterValue: '',
+          retainedThirdFilterField: '',
+          retainedThirdFilterValue: '',
+          retainedFilterOperator: '',
+          retainedSecondFilterOperator: '',
+          retainedThirdFilterOperator: '',
+          typeDrivenStringOperatorValues: '',
+          typeDrivenDateOperatorValues: '',
+          typeDrivenDateOperatorSelected: '',
+          typeDrivenStringValuePlaceholder: '',
+          typeDrivenDateValuePlaceholder: '',
+          typeDrivenDateValueTitle: '',
+          typeDrivenStringValueInputType: '',
+          typeDrivenNumberValueInputType: '',
+          typeDrivenDateValueInputType: '',
+          typeDrivenDatetimeValuePlaceholder: '',
+          typeDrivenDatetimeValueTitle: '',
+          typeDrivenDatetimeValueInputType: '',
+          typeDrivenTimeValuePlaceholder: '',
+          typeDrivenTimeValueTitle: '',
+          typeDrivenTimeValueInputType: '',
+          invalidFilterStatusText: '',
+          invalidFilterFetchUnchanged: null,
           responseStatus: 0,
           responseOk: null,
           firstRowKey: '',
@@ -1106,9 +1647,55 @@ async function runSmoke(config) {
           const filterValue = document.querySelector(`.no-code-screen[data-screen-key="${expected.listScreenKey}"] [data-runtime-filter-value]`);
           const secondFilterField = document.querySelector(`.no-code-screen[data-screen-key="${expected.listScreenKey}"] [data-runtime-filter-field-secondary]`);
           const secondFilterValue = document.querySelector(`.no-code-screen[data-screen-key="${expected.listScreenKey}"] [data-runtime-filter-value-secondary]`);
+          const thirdFilterField = document.querySelector(`.no-code-screen[data-screen-key="${expected.listScreenKey}"] [data-runtime-filter-field-tertiary]`);
+          const thirdFilterValue = document.querySelector(`.no-code-screen[data-screen-key="${expected.listScreenKey}"] [data-runtime-filter-value-tertiary]`);
           const filterButton = document.querySelector(`.no-code-screen[data-screen-key="${expected.listScreenKey}"] [data-runtime-filter-submit]`);
           if (filterField && filterValue && filterButton) {
             runtimeDataFilter.skipped = false;
+            const filterOperator = document.querySelector(`.no-code-screen[data-screen-key="${expected.listScreenKey}"] [data-runtime-filter-operator]`);
+            const visibleOperatorValues = (operatorSelect) => Array.from(operatorSelect?.options || [])
+              .filter((option) => !option.hidden && !option.disabled)
+              .map((option) => option.value)
+              .join(',');
+            if (filterOperator && expected.typedFilterField && expected.typedFilterOperator) {
+              filterField.value = expected.filterField;
+              filterField.dispatchEvent(new Event('change', { bubbles: true }));
+              runtimeDataFilter.typeDrivenStringOperatorValues = visibleOperatorValues(filterOperator);
+              runtimeDataFilter.typeDrivenStringValuePlaceholder = filterValue.getAttribute('placeholder') || '';
+              runtimeDataFilter.typeDrivenStringValueInputType = filterValue.getAttribute('type') || '';
+              filterField.value = expected.typedFilterField;
+              filterField.dispatchEvent(new Event('change', { bubbles: true }));
+              runtimeDataFilter.typeDrivenDateOperatorValues = visibleOperatorValues(filterOperator);
+              runtimeDataFilter.typeDrivenDateValuePlaceholder = filterValue.getAttribute('placeholder') || '';
+              runtimeDataFilter.typeDrivenDateValueTitle = filterValue.getAttribute('title') || '';
+              runtimeDataFilter.typeDrivenDateValueInputType = filterValue.getAttribute('type') || '';
+              const typedOption = filterField.options?.[filterField.selectedIndex] || null;
+              const originalTypedFieldType = typedOption?.getAttribute('data-runtime-field-type') || '';
+              if (typedOption) {
+                typedOption.setAttribute('data-runtime-field-type', 'datetime');
+                filterField.dispatchEvent(new Event('change', { bubbles: true }));
+                runtimeDataFilter.typeDrivenDatetimeValuePlaceholder = filterValue.getAttribute('placeholder') || '';
+                runtimeDataFilter.typeDrivenDatetimeValueTitle = filterValue.getAttribute('title') || '';
+                runtimeDataFilter.typeDrivenDatetimeValueInputType = filterValue.getAttribute('type') || '';
+                typedOption.setAttribute('data-runtime-field-type', 'time');
+                filterField.dispatchEvent(new Event('change', { bubbles: true }));
+                runtimeDataFilter.typeDrivenTimeValuePlaceholder = filterValue.getAttribute('placeholder') || '';
+                runtimeDataFilter.typeDrivenTimeValueTitle = filterValue.getAttribute('title') || '';
+                runtimeDataFilter.typeDrivenTimeValueInputType = filterValue.getAttribute('type') || '';
+                typedOption.setAttribute('data-runtime-field-type', originalTypedFieldType || 'date');
+                filterField.dispatchEvent(new Event('change', { bubbles: true }));
+              }
+              if (expected.secondFilterField) {
+                filterField.value = expected.secondFilterField;
+                filterField.dispatchEvent(new Event('change', { bubbles: true }));
+                runtimeDataFilter.typeDrivenNumberValueInputType = filterValue.getAttribute('type') || '';
+                filterField.value = expected.typedFilterField;
+                filterField.dispatchEvent(new Event('change', { bubbles: true }));
+              }
+              filterOperator.value = expected.typedFilterOperator;
+              filterOperator.dispatchEvent(new Event('change', { bubbles: true }));
+              runtimeDataFilter.typeDrivenDateOperatorSelected = filterOperator.value || '';
+            }
             filterField.value = expected.filterField;
             filterField.dispatchEvent(new Event('change', { bubbles: true }));
             filterValue.value = expected.filterValue;
@@ -1118,6 +1705,12 @@ async function runSmoke(config) {
               secondFilterField.dispatchEvent(new Event('change', { bubbles: true }));
               secondFilterValue.value = expected.secondFilterValue;
               secondFilterValue.dispatchEvent(new Event('input', { bubbles: true }));
+            }
+            if (thirdFilterField && thirdFilterValue && expected.thirdFilterField && expected.thirdFilterValue) {
+              thirdFilterField.value = expected.thirdFilterField;
+              thirdFilterField.dispatchEvent(new Event('change', { bubbles: true }));
+              thirdFilterValue.value = expected.thirdFilterValue;
+              thirdFilterValue.dispatchEvent(new Event('input', { bubbles: true }));
             }
             filterButton.click();
             for (let attempt = 0; attempt < 30; attempt += 1) {
@@ -1129,32 +1722,101 @@ async function runSmoke(config) {
                 && latestDataProbe.requestFilterValue === expected.filterValue
                 && (!expected.secondFilterField || latestDataProbe.requestSecondFilterField === expected.secondFilterField)
                 && (!expected.secondFilterValue || latestDataProbe.requestSecondFilterValue === expected.secondFilterValue)
+                && (!expected.thirdFilterField || latestDataProbe.requestThirdFilterField === expected.thirdFilterField)
+                && (!expected.thirdFilterValue || latestDataProbe.requestThirdFilterValue === expected.thirdFilterValue)
                 && firstFilteredRow?.getAttribute('data-runtime-row-key') === String(expected.selectedKeyValue || expected.keyValue)
               ) {
                 break;
               }
             }
             const filterProbe = { ...(window.__noCodeRuntimeDataProbe || {}) };
+            let invalidFilterStatusText = '';
+            let invalidFilterFetchUnchanged = null;
+            if (expected.typedFilterField && expected.secondFilterField) {
+              const invalidFilterField = document.querySelector(`.no-code-screen[data-screen-key="${expected.listScreenKey}"] [data-runtime-filter-field]`);
+              const invalidFilterValue = document.querySelector(`.no-code-screen[data-screen-key="${expected.listScreenKey}"] [data-runtime-filter-value]`);
+              const invalidSecondFilterField = document.querySelector(`.no-code-screen[data-screen-key="${expected.listScreenKey}"] [data-runtime-filter-field-secondary]`);
+              const invalidSecondFilterValue = document.querySelector(`.no-code-screen[data-screen-key="${expected.listScreenKey}"] [data-runtime-filter-value-secondary]`);
+              const invalidThirdFilterField = document.querySelector(`.no-code-screen[data-screen-key="${expected.listScreenKey}"] [data-runtime-filter-field-tertiary]`);
+              const invalidThirdFilterValue = document.querySelector(`.no-code-screen[data-screen-key="${expected.listScreenKey}"] [data-runtime-filter-value-tertiary]`);
+              const invalidFilterButton = document.querySelector(`.no-code-screen[data-screen-key="${expected.listScreenKey}"] [data-runtime-filter-submit]`);
+              invalidFilterField.value = expected.secondFilterField;
+              invalidFilterField.dispatchEvent(new Event('change', { bubbles: true }));
+              invalidFilterValue.value = '1.5';
+              invalidFilterValue.dispatchEvent(new Event('input', { bubbles: true }));
+              if (invalidSecondFilterField && invalidSecondFilterValue) {
+                invalidSecondFilterField.value = '';
+                invalidSecondFilterField.dispatchEvent(new Event('change', { bubbles: true }));
+                invalidSecondFilterValue.value = '';
+                invalidSecondFilterValue.dispatchEvent(new Event('input', { bubbles: true }));
+              }
+              if (invalidThirdFilterField && invalidThirdFilterValue) {
+                invalidThirdFilterField.value = '';
+                invalidThirdFilterField.dispatchEvent(new Event('change', { bubbles: true }));
+                invalidThirdFilterValue.value = '';
+                invalidThirdFilterValue.dispatchEvent(new Event('input', { bubbles: true }));
+              }
+              invalidFilterButton.click();
+              await new Promise((resolve) => setTimeout(resolve, 200));
+              const invalidProbe = window.__noCodeRuntimeDataProbe || {};
+              invalidFilterStatusText = document.querySelector(`.no-code-screen[data-screen-key="${expected.listScreenKey}"] [data-runtime-result-refresh-status]`)?.textContent?.trim() || '';
+              invalidFilterFetchUnchanged = (invalidProbe.url || '') === (filterProbe.url || '')
+                && (invalidProbe.requestFilterField || '') === (filterProbe.requestFilterField || '')
+                && (invalidProbe.requestFilterValue || '') === (filterProbe.requestFilterValue || '');
+              invalidFilterField.value = expected.filterField;
+              invalidFilterField.dispatchEvent(new Event('change', { bubbles: true }));
+              invalidFilterValue.value = expected.filterValue;
+              invalidFilterValue.dispatchEvent(new Event('input', { bubbles: true }));
+              if (invalidSecondFilterField && invalidSecondFilterValue && expected.secondFilterField && expected.secondFilterValue) {
+                invalidSecondFilterField.value = expected.secondFilterField;
+                invalidSecondFilterField.dispatchEvent(new Event('change', { bubbles: true }));
+                invalidSecondFilterValue.value = expected.secondFilterValue;
+                invalidSecondFilterValue.dispatchEvent(new Event('input', { bubbles: true }));
+              }
+              if (invalidThirdFilterField && invalidThirdFilterValue && expected.thirdFilterField && expected.thirdFilterValue) {
+                invalidThirdFilterField.value = expected.thirdFilterField;
+                invalidThirdFilterField.dispatchEvent(new Event('change', { bubbles: true }));
+                invalidThirdFilterValue.value = expected.thirdFilterValue;
+                invalidThirdFilterValue.dispatchEvent(new Event('input', { bubbles: true }));
+              }
+            }
             const retainedFilterField = document.querySelector(`.no-code-screen[data-screen-key="${expected.listScreenKey}"] [data-runtime-filter-field]`);
+            const retainedFilterOperator = document.querySelector(`.no-code-screen[data-screen-key="${expected.listScreenKey}"] [data-runtime-filter-operator]`);
             const retainedFilterValue = document.querySelector(`.no-code-screen[data-screen-key="${expected.listScreenKey}"] [data-runtime-filter-value]`);
             const retainedSecondFilterField = document.querySelector(`.no-code-screen[data-screen-key="${expected.listScreenKey}"] [data-runtime-filter-field-secondary]`);
+            const retainedSecondFilterOperator = document.querySelector(`.no-code-screen[data-screen-key="${expected.listScreenKey}"] [data-runtime-filter-operator-secondary]`);
             const retainedSecondFilterValue = document.querySelector(`.no-code-screen[data-screen-key="${expected.listScreenKey}"] [data-runtime-filter-value-secondary]`);
+            const retainedThirdFilterField = document.querySelector(`.no-code-screen[data-screen-key="${expected.listScreenKey}"] [data-runtime-filter-field-tertiary]`);
+            const retainedThirdFilterOperator = document.querySelector(`.no-code-screen[data-screen-key="${expected.listScreenKey}"] [data-runtime-filter-operator-tertiary]`);
+            const retainedThirdFilterValue = document.querySelector(`.no-code-screen[data-screen-key="${expected.listScreenKey}"] [data-runtime-filter-value-tertiary]`);
             runtimeDataFilter = {
               ...runtimeDataFilter,
-              fieldControlCount: document.querySelectorAll('[data-runtime-filter-field], [data-runtime-filter-field-secondary]').length,
-              valueInputCount: document.querySelectorAll('[data-runtime-filter-value], [data-runtime-filter-value-secondary]').length,
+              fieldControlCount: document.querySelectorAll('[data-runtime-filter-field], [data-runtime-filter-field-secondary], [data-runtime-filter-field-tertiary]').length,
+              valueInputCount: document.querySelectorAll('[data-runtime-filter-value], [data-runtime-filter-value-secondary], [data-runtime-filter-value-tertiary]').length,
               buttonCount: document.querySelectorAll('[data-runtime-filter-submit]').length,
               retainedFilterField: retainedFilterField?.value || '',
+              retainedFilterOperator: retainedFilterOperator?.value || '',
               retainedFilterValue: retainedFilterValue?.value || '',
               retainedSecondFilterField: retainedSecondFilterField?.value || '',
+              retainedSecondFilterOperator: retainedSecondFilterOperator?.value || '',
               retainedSecondFilterValue: retainedSecondFilterValue?.value || '',
+              retainedThirdFilterField: retainedThirdFilterField?.value || '',
+              retainedThirdFilterOperator: retainedThirdFilterOperator?.value || '',
+              retainedThirdFilterValue: retainedThirdFilterValue?.value || '',
               url: filterProbe.url || '',
               requestFilterField: filterProbe.requestFilterField || '',
               requestFilterValue: filterProbe.requestFilterValue || '',
+              requestFilterOperator: filterProbe.requestFilterOperator || '',
               requestSecondFilterField: filterProbe.requestSecondFilterField || '',
               requestSecondFilterValue: filterProbe.requestSecondFilterValue || '',
+              requestSecondFilterOperator: filterProbe.requestSecondFilterOperator || '',
+              requestThirdFilterField: filterProbe.requestThirdFilterField || '',
+              requestThirdFilterValue: filterProbe.requestThirdFilterValue || '',
+              requestThirdFilterOperator: filterProbe.requestThirdFilterOperator || '',
               requestPage: filterProbe.requestPage || '',
               requestPageSize: filterProbe.requestPageSize || '',
+              invalidFilterStatusText,
+              invalidFilterFetchUnchanged,
               responseStatus: filterProbe.responseStatus || 0,
               responseOk: filterProbe.responseOk,
               firstRowKey: filterProbe.firstRowKey || '',
@@ -1183,6 +1845,24 @@ async function runSmoke(config) {
           url: '',
           requestSortField: '',
           requestSortDirection: '',
+          requestSecondSortField: '',
+          requestSecondSortDirection: '',
+          requestThirdSortField: '',
+          requestThirdSortDirection: '',
+          headerButtonCount: document.querySelectorAll('[data-runtime-sort-header]').length,
+          headerUrl: '',
+          headerRequestSortField: '',
+          headerRequestSortDirection: '',
+          headerRequestSecondSortField: '',
+          headerRequestThirdSortField: '',
+          headerRetainedSortField: '',
+          headerRetainedSortDirection: '',
+          headerRetainedSecondSortField: '',
+          headerRetainedThirdSortField: '',
+          headerAriaSort: '',
+          headerSortState: '',
+          headerOtherAriaSort: '',
+          headerOtherSortState: '',
           requestPage: '',
           requestPageSize: '',
           responseStatus: 0,
@@ -1194,6 +1874,10 @@ async function runSmoke(config) {
         if (expected.statusProbe === 'real' && expected.sortField && expected.sortDirection) {
           const sortField = document.querySelector(`.no-code-screen[data-screen-key="${expected.listScreenKey}"] [data-runtime-sort-field]`);
           const sortDirection = document.querySelector(`.no-code-screen[data-screen-key="${expected.listScreenKey}"] [data-runtime-sort-direction]`);
+          const secondSortField = document.querySelector(`.no-code-screen[data-screen-key="${expected.listScreenKey}"] [data-runtime-sort-field-secondary]`);
+          const secondSortDirection = document.querySelector(`.no-code-screen[data-screen-key="${expected.listScreenKey}"] [data-runtime-sort-direction-secondary]`);
+          const thirdSortField = document.querySelector(`.no-code-screen[data-screen-key="${expected.listScreenKey}"] [data-runtime-sort-field-tertiary]`);
+          const thirdSortDirection = document.querySelector(`.no-code-screen[data-screen-key="${expected.listScreenKey}"] [data-runtime-sort-direction-tertiary]`);
           const sortButton = document.querySelector(`.no-code-screen[data-screen-key="${expected.listScreenKey}"] [data-runtime-sort-submit]`);
           if (sortField && sortDirection && sortButton) {
             runtimeDataSort.skipped = false;
@@ -1201,6 +1885,18 @@ async function runSmoke(config) {
             sortField.dispatchEvent(new Event('change', { bubbles: true }));
             sortDirection.value = expected.sortDirection;
             sortDirection.dispatchEvent(new Event('change', { bubbles: true }));
+            if (secondSortField && secondSortDirection && expected.secondSortField && expected.secondSortDirection) {
+              secondSortField.value = expected.secondSortField;
+              secondSortField.dispatchEvent(new Event('change', { bubbles: true }));
+              secondSortDirection.value = expected.secondSortDirection;
+              secondSortDirection.dispatchEvent(new Event('change', { bubbles: true }));
+            }
+            if (thirdSortField && thirdSortDirection && expected.thirdSortField && expected.thirdSortDirection) {
+              thirdSortField.value = expected.thirdSortField;
+              thirdSortField.dispatchEvent(new Event('change', { bubbles: true }));
+              thirdSortDirection.value = expected.thirdSortDirection;
+              thirdSortDirection.dispatchEvent(new Event('change', { bubbles: true }));
+            }
             sortButton.click();
             for (let attempt = 0; attempt < 30; attempt += 1) {
               await new Promise((resolve) => setTimeout(resolve, 100));
@@ -1209,6 +1905,10 @@ async function runSmoke(config) {
               if (
                 latestDataProbe.requestSortField === expected.sortField
                 && latestDataProbe.requestSortDirection === expected.sortDirection
+                && (!expected.secondSortField || latestDataProbe.requestSecondSortField === expected.secondSortField)
+                && (!expected.secondSortDirection || latestDataProbe.requestSecondSortDirection === expected.secondSortDirection)
+                && (!expected.thirdSortField || latestDataProbe.requestThirdSortField === expected.thirdSortField)
+                && (!expected.thirdSortDirection || latestDataProbe.requestThirdSortDirection === expected.thirdSortDirection)
                 && firstSortedRow?.getAttribute('data-runtime-row-key') === String(expected.sortFirstKeyValue || expected.selectedKeyValue || expected.keyValue)
               ) {
                 break;
@@ -1217,16 +1917,29 @@ async function runSmoke(config) {
             const sortProbe = { ...(window.__noCodeRuntimeDataProbe || {}) };
             const retainedSortField = document.querySelector(`.no-code-screen[data-screen-key="${expected.listScreenKey}"] [data-runtime-sort-field]`);
             const retainedSortDirection = document.querySelector(`.no-code-screen[data-screen-key="${expected.listScreenKey}"] [data-runtime-sort-direction]`);
+            const retainedSecondSortField = document.querySelector(`.no-code-screen[data-screen-key="${expected.listScreenKey}"] [data-runtime-sort-field-secondary]`);
+            const retainedSecondSortDirection = document.querySelector(`.no-code-screen[data-screen-key="${expected.listScreenKey}"] [data-runtime-sort-direction-secondary]`);
+            const retainedThirdSortField = document.querySelector(`.no-code-screen[data-screen-key="${expected.listScreenKey}"] [data-runtime-sort-field-tertiary]`);
+            const retainedThirdSortDirection = document.querySelector(`.no-code-screen[data-screen-key="${expected.listScreenKey}"] [data-runtime-sort-direction-tertiary]`);
             runtimeDataSort = {
               ...runtimeDataSort,
               fieldControlCount: document.querySelectorAll('[data-runtime-sort-field]').length,
               directionControlCount: document.querySelectorAll('[data-runtime-sort-direction]').length,
               buttonCount: document.querySelectorAll('[data-runtime-sort-submit]').length,
+              headerButtonCount: document.querySelectorAll('[data-runtime-sort-header]').length,
               retainedSortField: retainedSortField?.value || '',
               retainedSortDirection: retainedSortDirection?.value || '',
+              retainedSecondSortField: retainedSecondSortField?.value || '',
+              retainedSecondSortDirection: retainedSecondSortDirection?.value || '',
+              retainedThirdSortField: retainedThirdSortField?.value || '',
+              retainedThirdSortDirection: retainedThirdSortDirection?.value || '',
               url: sortProbe.url || '',
               requestSortField: sortProbe.requestSortField || '',
               requestSortDirection: sortProbe.requestSortDirection || '',
+              requestSecondSortField: sortProbe.requestSecondSortField || '',
+              requestSecondSortDirection: sortProbe.requestSecondSortDirection || '',
+              requestThirdSortField: sortProbe.requestThirdSortField || '',
+              requestThirdSortDirection: sortProbe.requestThirdSortDirection || '',
               requestPage: sortProbe.requestPage || '',
               requestPageSize: sortProbe.requestPageSize || '',
               responseStatus: sortProbe.responseStatus || 0,
@@ -1235,6 +1948,48 @@ async function runSmoke(config) {
               selectedKey: sortProbe.selectedKey || '',
               renderedRowCount: document.querySelectorAll(`.no-code-screen[data-screen-key="${expected.listScreenKey}"] tbody tr:not(.no-code-empty-row)`).length,
             };
+            const sortHeaderButton = document.querySelector(`.no-code-screen[data-screen-key="${expected.listScreenKey}"] [data-runtime-sort-header][data-runtime-sort-field-key="${expected.sortField}"]`);
+            if (sortHeaderButton) {
+              const expectedHeaderDirection = expected.sortDirection === 'asc' ? 'desc' : 'asc';
+              sortHeaderButton.click();
+              for (let attempt = 0; attempt < 30; attempt += 1) {
+                await new Promise((resolve) => setTimeout(resolve, 100));
+                const latestDataProbe = window.__noCodeRuntimeDataProbe || {};
+                if (
+                  latestDataProbe.requestSortField === expected.sortField
+                  && latestDataProbe.requestSortDirection === expectedHeaderDirection
+                  && !latestDataProbe.requestSecondSortField
+                  && !latestDataProbe.requestThirdSortField
+                ) {
+                  break;
+                }
+              }
+              const headerProbe = { ...(window.__noCodeRuntimeDataProbe || {}) };
+              const headerRetainedSortField = document.querySelector(`.no-code-screen[data-screen-key="${expected.listScreenKey}"] [data-runtime-sort-field]`);
+              const headerRetainedSortDirection = document.querySelector(`.no-code-screen[data-screen-key="${expected.listScreenKey}"] [data-runtime-sort-direction]`);
+              const headerRetainedSecondSortField = document.querySelector(`.no-code-screen[data-screen-key="${expected.listScreenKey}"] [data-runtime-sort-field-secondary]`);
+              const headerRetainedThirdSortField = document.querySelector(`.no-code-screen[data-screen-key="${expected.listScreenKey}"] [data-runtime-sort-field-tertiary]`);
+              const headerCell = sortHeaderButton.closest('th');
+              const otherSortHeaderButton = Array.from(document.querySelectorAll(`.no-code-screen[data-screen-key="${expected.listScreenKey}"] [data-runtime-sort-header]`))
+                .find((button) => button.getAttribute('data-runtime-sort-field-key') !== expected.sortField);
+              const otherHeaderCell = otherSortHeaderButton?.closest('th') || null;
+              runtimeDataSort = {
+                ...runtimeDataSort,
+                headerUrl: headerProbe.url || '',
+                headerRequestSortField: headerProbe.requestSortField || '',
+                headerRequestSortDirection: headerProbe.requestSortDirection || '',
+                headerRequestSecondSortField: headerProbe.requestSecondSortField || '',
+                headerRequestThirdSortField: headerProbe.requestThirdSortField || '',
+                headerRetainedSortField: headerRetainedSortField?.value || '',
+                headerRetainedSortDirection: headerRetainedSortDirection?.value || '',
+                headerRetainedSecondSortField: headerRetainedSecondSortField?.value || '',
+                headerRetainedThirdSortField: headerRetainedThirdSortField?.value || '',
+                headerAriaSort: headerCell?.getAttribute('aria-sort') || '',
+                headerSortState: sortHeaderButton.getAttribute('data-runtime-sort-state') || '',
+                headerOtherAriaSort: otherHeaderCell?.getAttribute('aria-sort') || '',
+                headerOtherSortState: otherSortHeaderButton?.getAttribute('data-runtime-sort-state') || '',
+              };
+            }
             const sortResetButton = document.querySelector(`.no-code-screen[data-screen-key="${expected.listScreenKey}"] [data-runtime-result-refresh]`) || resultRefreshButton;
             if (sortResetButton && !sortResetButton.disabled) {
               sortResetButton.click();
@@ -1262,9 +2017,20 @@ async function runSmoke(config) {
           retainedSearchValue: '',
           retainedFilterField: '',
           retainedFilterValue: '',
+          retainedSecondFilterField: '',
+          retainedSecondFilterValue: '',
+          retainedThirdFilterField: '',
+          retainedThirdFilterValue: '',
           retainedSortField: '',
           retainedSortDirection: '',
+          retainedSecondSortField: '',
+          retainedSecondSortDirection: '',
+          retainedThirdSortField: '',
+          retainedThirdSortDirection: '',
           retainedPageSize: '',
+          querySummaryText: '',
+          querySummaryAriaLabel: '',
+          querySummaryTokenCount: 0,
           locationSearch: '',
           responseStatus: 0,
           responseOk: null,
@@ -1287,6 +2053,9 @@ async function runSmoke(config) {
           retainedSortField: '',
           retainedSortDirection: '',
           retainedPageSize: '',
+          querySummaryText: '',
+          querySummaryAriaLabel: '',
+          querySummaryTokenCount: 0,
           locationSearch: '',
           responseStatus: 0,
           responseOk: null,
@@ -1296,8 +2065,16 @@ async function runSmoke(config) {
           const combinedSearchInput = document.querySelector(`.no-code-screen[data-screen-key="${expected.listScreenKey}"] [data-runtime-search-input]`);
           const combinedFilterField = document.querySelector(`.no-code-screen[data-screen-key="${expected.listScreenKey}"] [data-runtime-filter-field]`);
           const combinedFilterValue = document.querySelector(`.no-code-screen[data-screen-key="${expected.listScreenKey}"] [data-runtime-filter-value]`);
+          const combinedSecondFilterField = document.querySelector(`.no-code-screen[data-screen-key="${expected.listScreenKey}"] [data-runtime-filter-field-secondary]`);
+          const combinedSecondFilterValue = document.querySelector(`.no-code-screen[data-screen-key="${expected.listScreenKey}"] [data-runtime-filter-value-secondary]`);
+          const combinedThirdFilterField = document.querySelector(`.no-code-screen[data-screen-key="${expected.listScreenKey}"] [data-runtime-filter-field-tertiary]`);
+          const combinedThirdFilterValue = document.querySelector(`.no-code-screen[data-screen-key="${expected.listScreenKey}"] [data-runtime-filter-value-tertiary]`);
           const combinedSortField = document.querySelector(`.no-code-screen[data-screen-key="${expected.listScreenKey}"] [data-runtime-sort-field]`);
           const combinedSortDirection = document.querySelector(`.no-code-screen[data-screen-key="${expected.listScreenKey}"] [data-runtime-sort-direction]`);
+          const combinedSecondSortField = document.querySelector(`.no-code-screen[data-screen-key="${expected.listScreenKey}"] [data-runtime-sort-field-secondary]`);
+          const combinedSecondSortDirection = document.querySelector(`.no-code-screen[data-screen-key="${expected.listScreenKey}"] [data-runtime-sort-direction-secondary]`);
+          const combinedThirdSortField = document.querySelector(`.no-code-screen[data-screen-key="${expected.listScreenKey}"] [data-runtime-sort-field-tertiary]`);
+          const combinedThirdSortDirection = document.querySelector(`.no-code-screen[data-screen-key="${expected.listScreenKey}"] [data-runtime-sort-direction-tertiary]`);
           const combinedPageSize = document.querySelector(`.no-code-screen[data-screen-key="${expected.listScreenKey}"] [data-runtime-page-size-input]`);
           const combinedSortButton = document.querySelector(`.no-code-screen[data-screen-key="${expected.listScreenKey}"] [data-runtime-sort-submit]`);
           if (combinedSearchInput && combinedFilterField && combinedFilterValue && combinedSortField && combinedSortDirection && combinedPageSize && combinedSortButton) {
@@ -1308,10 +2085,34 @@ async function runSmoke(config) {
             combinedFilterField.dispatchEvent(new Event('change', { bubbles: true }));
             combinedFilterValue.value = expected.filterValue;
             combinedFilterValue.dispatchEvent(new Event('input', { bubbles: true }));
+            if (combinedSecondFilterField && combinedSecondFilterValue && expected.secondFilterField && expected.secondFilterValue) {
+              combinedSecondFilterField.value = expected.secondFilterField;
+              combinedSecondFilterField.dispatchEvent(new Event('change', { bubbles: true }));
+              combinedSecondFilterValue.value = expected.secondFilterValue;
+              combinedSecondFilterValue.dispatchEvent(new Event('input', { bubbles: true }));
+            }
+            if (combinedThirdFilterField && combinedThirdFilterValue && expected.thirdFilterField && expected.thirdFilterValue) {
+              combinedThirdFilterField.value = expected.thirdFilterField;
+              combinedThirdFilterField.dispatchEvent(new Event('change', { bubbles: true }));
+              combinedThirdFilterValue.value = expected.thirdFilterValue;
+              combinedThirdFilterValue.dispatchEvent(new Event('input', { bubbles: true }));
+            }
             combinedSortField.value = expected.sortField;
             combinedSortField.dispatchEvent(new Event('change', { bubbles: true }));
             combinedSortDirection.value = expected.sortDirection;
             combinedSortDirection.dispatchEvent(new Event('change', { bubbles: true }));
+            if (combinedSecondSortField && combinedSecondSortDirection && expected.secondSortField && expected.secondSortDirection) {
+              combinedSecondSortField.value = expected.secondSortField;
+              combinedSecondSortField.dispatchEvent(new Event('change', { bubbles: true }));
+              combinedSecondSortDirection.value = expected.secondSortDirection;
+              combinedSecondSortDirection.dispatchEvent(new Event('change', { bubbles: true }));
+            }
+            if (combinedThirdSortField && combinedThirdSortDirection && expected.thirdSortField && expected.thirdSortDirection) {
+              combinedThirdSortField.value = expected.thirdSortField;
+              combinedThirdSortField.dispatchEvent(new Event('change', { bubbles: true }));
+              combinedThirdSortDirection.value = expected.thirdSortDirection;
+              combinedThirdSortDirection.dispatchEvent(new Event('change', { bubbles: true }));
+            }
             combinedPageSize.value = '1';
             combinedPageSize.dispatchEvent(new Event('input', { bubbles: true }));
             combinedSortButton.click();
@@ -1323,8 +2124,16 @@ async function runSmoke(config) {
                 latestDataProbe.requestSearchQuery === expected.searchQuery
                 && latestDataProbe.requestFilterField === expected.filterField
                 && latestDataProbe.requestFilterValue === expected.filterValue
+                && (!expected.secondFilterField || latestDataProbe.requestSecondFilterField === expected.secondFilterField)
+                && (!expected.secondFilterValue || latestDataProbe.requestSecondFilterValue === expected.secondFilterValue)
+                && (!expected.thirdFilterField || latestDataProbe.requestThirdFilterField === expected.thirdFilterField)
+                && (!expected.thirdFilterValue || latestDataProbe.requestThirdFilterValue === expected.thirdFilterValue)
                 && latestDataProbe.requestSortField === expected.sortField
                 && latestDataProbe.requestSortDirection === expected.sortDirection
+                && (!expected.secondSortField || latestDataProbe.requestSecondSortField === expected.secondSortField)
+                && (!expected.secondSortDirection || latestDataProbe.requestSecondSortDirection === expected.secondSortDirection)
+                && (!expected.thirdSortField || latestDataProbe.requestThirdSortField === expected.thirdSortField)
+                && (!expected.thirdSortDirection || latestDataProbe.requestThirdSortDirection === expected.thirdSortDirection)
                 && latestDataProbe.requestPage === '1'
                 && latestDataProbe.requestPageSize === '1'
                 && firstCombinedRow?.getAttribute('data-runtime-row-key') === String(expected.selectedKeyValue || expected.keyValue)
@@ -1336,25 +2145,53 @@ async function runSmoke(config) {
             const retainedCombinedSearch = document.querySelector(`.no-code-screen[data-screen-key="${expected.listScreenKey}"] [data-runtime-search-input]`);
             const retainedCombinedFilterField = document.querySelector(`.no-code-screen[data-screen-key="${expected.listScreenKey}"] [data-runtime-filter-field]`);
             const retainedCombinedFilterValue = document.querySelector(`.no-code-screen[data-screen-key="${expected.listScreenKey}"] [data-runtime-filter-value]`);
+            const retainedCombinedSecondFilterField = document.querySelector(`.no-code-screen[data-screen-key="${expected.listScreenKey}"] [data-runtime-filter-field-secondary]`);
+            const retainedCombinedSecondFilterValue = document.querySelector(`.no-code-screen[data-screen-key="${expected.listScreenKey}"] [data-runtime-filter-value-secondary]`);
+            const retainedCombinedThirdFilterField = document.querySelector(`.no-code-screen[data-screen-key="${expected.listScreenKey}"] [data-runtime-filter-field-tertiary]`);
+            const retainedCombinedThirdFilterValue = document.querySelector(`.no-code-screen[data-screen-key="${expected.listScreenKey}"] [data-runtime-filter-value-tertiary]`);
             const retainedCombinedSortField = document.querySelector(`.no-code-screen[data-screen-key="${expected.listScreenKey}"] [data-runtime-sort-field]`);
             const retainedCombinedSortDirection = document.querySelector(`.no-code-screen[data-screen-key="${expected.listScreenKey}"] [data-runtime-sort-direction]`);
+            const retainedCombinedSecondSortField = document.querySelector(`.no-code-screen[data-screen-key="${expected.listScreenKey}"] [data-runtime-sort-field-secondary]`);
+            const retainedCombinedSecondSortDirection = document.querySelector(`.no-code-screen[data-screen-key="${expected.listScreenKey}"] [data-runtime-sort-direction-secondary]`);
+            const retainedCombinedThirdSortField = document.querySelector(`.no-code-screen[data-screen-key="${expected.listScreenKey}"] [data-runtime-sort-field-tertiary]`);
+            const retainedCombinedThirdSortDirection = document.querySelector(`.no-code-screen[data-screen-key="${expected.listScreenKey}"] [data-runtime-sort-direction-tertiary]`);
             const retainedCombinedPageSize = document.querySelector(`.no-code-screen[data-screen-key="${expected.listScreenKey}"] [data-runtime-page-size-input]`);
+            const combinedQuerySummary = document.querySelector(`.no-code-screen[data-screen-key="${expected.listScreenKey}"] [data-runtime-query-summary]`);
             runtimeDataCombined = {
               ...runtimeDataCombined,
               url: combinedProbe.url || '',
               requestSearchQuery: combinedProbe.requestSearchQuery || '',
               requestFilterField: combinedProbe.requestFilterField || '',
               requestFilterValue: combinedProbe.requestFilterValue || '',
+              requestSecondFilterField: combinedProbe.requestSecondFilterField || '',
+              requestSecondFilterValue: combinedProbe.requestSecondFilterValue || '',
+              requestThirdFilterField: combinedProbe.requestThirdFilterField || '',
+              requestThirdFilterValue: combinedProbe.requestThirdFilterValue || '',
               requestSortField: combinedProbe.requestSortField || '',
               requestSortDirection: combinedProbe.requestSortDirection || '',
+              requestSecondSortField: combinedProbe.requestSecondSortField || '',
+              requestSecondSortDirection: combinedProbe.requestSecondSortDirection || '',
+              requestThirdSortField: combinedProbe.requestThirdSortField || '',
+              requestThirdSortDirection: combinedProbe.requestThirdSortDirection || '',
               requestPage: combinedProbe.requestPage || '',
               requestPageSize: combinedProbe.requestPageSize || '',
               retainedSearchValue: retainedCombinedSearch?.value || '',
               retainedFilterField: retainedCombinedFilterField?.value || '',
               retainedFilterValue: retainedCombinedFilterValue?.value || '',
+              retainedSecondFilterField: retainedCombinedSecondFilterField?.value || '',
+              retainedSecondFilterValue: retainedCombinedSecondFilterValue?.value || '',
+              retainedThirdFilterField: retainedCombinedThirdFilterField?.value || '',
+              retainedThirdFilterValue: retainedCombinedThirdFilterValue?.value || '',
               retainedSortField: retainedCombinedSortField?.value || '',
               retainedSortDirection: retainedCombinedSortDirection?.value || '',
+              retainedSecondSortField: retainedCombinedSecondSortField?.value || '',
+              retainedSecondSortDirection: retainedCombinedSecondSortDirection?.value || '',
+              retainedThirdSortField: retainedCombinedThirdSortField?.value || '',
+              retainedThirdSortDirection: retainedCombinedThirdSortDirection?.value || '',
               retainedPageSize: retainedCombinedPageSize?.value || '',
+              querySummaryText: combinedQuerySummary?.textContent?.trim() || '',
+              querySummaryAriaLabel: combinedQuerySummary?.getAttribute('aria-label') || '',
+              querySummaryTokenCount: combinedQuerySummary?.querySelectorAll('.no-code-runtime-data-query-token')?.length || 0,
               locationSearch: window.location.search || '',
               responseStatus: combinedProbe.responseStatus || 0,
               responseOk: combinedProbe.responseOk,
@@ -1380,6 +2217,7 @@ async function runSmoke(config) {
               const resetSortField = document.querySelector(`.no-code-screen[data-screen-key="${expected.listScreenKey}"] [data-runtime-sort-field]`);
               const resetSortDirection = document.querySelector(`.no-code-screen[data-screen-key="${expected.listScreenKey}"] [data-runtime-sort-direction]`);
               const resetPageSize = document.querySelector(`.no-code-screen[data-screen-key="${expected.listScreenKey}"] [data-runtime-page-size-input]`);
+              const resetQuerySummary = document.querySelector(`.no-code-screen[data-screen-key="${expected.listScreenKey}"] [data-runtime-query-summary]`);
               runtimeDataQueryReset = {
                 ...runtimeDataQueryReset,
                 url: resetProbe.url || '',
@@ -1396,6 +2234,9 @@ async function runSmoke(config) {
                 retainedSortField: resetSortField?.value || '',
                 retainedSortDirection: resetSortDirection?.value || '',
                 retainedPageSize: resetPageSize?.value || '',
+                querySummaryText: resetQuerySummary?.textContent?.trim() || '',
+                querySummaryAriaLabel: resetQuerySummary?.getAttribute('aria-label') || '',
+                querySummaryTokenCount: resetQuerySummary?.querySelectorAll('.no-code-runtime-data-query-token')?.length || 0,
                 locationSearch: window.location.search || '',
                 responseStatus: resetProbe.responseStatus || 0,
                 responseOk: resetProbe.responseOk,
@@ -1606,6 +2447,8 @@ async function runSmoke(config) {
           runtimeDataDraftChecksAfterRefresh: Array.isArray(parsedRuntimeDataDraftAfterRefresh.draft_checks) ? parsedRuntimeDataDraftAfterRefresh.draft_checks : [],
           runtimeDataPagination,
           runtimeDataSearch,
+          runtimeDataEmptySearch,
+          runtimeDataErrorRefresh,
           runtimeDataFilter,
           runtimeDataSort,
           runtimeDataCombined,
@@ -2067,43 +2910,171 @@ async function runSmoke(config) {
           if (search.responseStatus !== 200 || search.responseOk !== true || search.renderedRowCount !== 1 || search.firstRowKey !== String(config.expected.selectedKeyValue || config.expected.keyValue)) {
             throw new Error(`real submit probe searched runtime data row mismatch: ${JSON.stringify(probe)}`);
           }
+          const emptySearch = probe.runtimeDataEmptySearch || {};
+          if (emptySearch.skipped || emptySearch.inputCount < 1 || emptySearch.buttonCount < 1) {
+            throw new Error(`real submit probe did not exercise empty runtime data search controls: ${JSON.stringify(probe)}`);
+          }
+          if (!String(emptySearch.url || '').includes('q=') || emptySearch.requestSearchQuery !== '__no_runtime_data_match__') {
+            throw new Error(`real submit probe did not request empty searched runtime data: ${JSON.stringify(probe)}`);
+          }
+          if (emptySearch.responseStatus !== 200 || emptySearch.responseOk !== true || emptySearch.renderedRowCount !== 0 || emptySearch.emptyRowCount < 1 || emptySearch.firstRowKey || emptySearch.selectedKey) {
+            throw new Error(`real submit probe empty searched runtime data row mismatch: ${JSON.stringify(probe)}`);
+          }
+          if (
+            !String(emptySearch.querySummaryText || '').includes('Active query:')
+            || !String(emptySearch.querySummaryText || '').includes('__no_runtime_data_match__')
+            || !String(emptySearch.querySummaryText || '').includes('Rows: 0')
+            || !String(emptySearch.querySummaryAriaLabel || '').includes('Rows: 0')
+            || Number(emptySearch.querySummaryTokenCount || 0) < 2
+          ) {
+            throw new Error(`real submit probe did not keep empty search query summary visible: ${JSON.stringify(probe)}`);
+          }
+          const errorRefresh = probe.runtimeDataErrorRefresh || {};
+          if (errorRefresh.skipped) {
+            throw new Error(`real submit probe did not exercise runtime data error refresh: ${JSON.stringify(probe)}`);
+          }
+          if (errorRefresh.responseStatus !== 503 || errorRefresh.responseOk !== false || errorRefresh.state !== 'error') {
+            throw new Error(`real submit probe runtime data error refresh response mismatch: ${JSON.stringify(probe)}`);
+          }
+          if (
+            !String(errorRefresh.statusText || '').includes('Fresh runtime data could not be loaded from the read-only runtime-data endpoint')
+            || !String(errorRefresh.statusText || '').includes('forced_runtime_data_error')
+            || !String(errorRefresh.statusText || '').includes('Current preview data was left unchanged.')
+          ) {
+            throw new Error(`real submit probe runtime data error wording mismatch: ${JSON.stringify(probe)}`);
+          }
+          if (Number(errorRefresh.beforeRowCount || 0) < 1 || errorRefresh.afterRowCount !== errorRefresh.beforeRowCount || errorRefresh.requestSearchQuery) {
+            throw new Error(`real submit probe runtime data error refresh did not preserve current rows: ${JSON.stringify(probe)}`);
+          }
           const filter = probe.runtimeDataFilter || {};
-          const expectedFilterControlCount = config.expected.secondFilterField ? 2 : 1;
+          const expectedFilterControlCount = config.expected.thirdFilterField ? 3 : (config.expected.secondFilterField ? 2 : 1);
           if (filter.skipped || filter.fieldControlCount < expectedFilterControlCount || filter.valueInputCount < expectedFilterControlCount || filter.buttonCount < 1) {
             throw new Error(`real submit probe did not expose runtime data filter controls: ${JSON.stringify(probe)}`);
           }
           if (
             !String(filter.url || '').includes('filter%5B')
+            || !String(filter.url || '').includes('filter_op%5B')
             || filter.requestFilterField !== String(config.expected.filterField || '')
             || filter.requestFilterValue !== String(config.expected.filterValue || '')
+            || filter.requestFilterOperator !== 'contains'
             || (config.expected.secondFilterField && filter.requestSecondFilterField !== String(config.expected.secondFilterField || ''))
             || (config.expected.secondFilterValue && filter.requestSecondFilterValue !== String(config.expected.secondFilterValue || ''))
+            || (config.expected.secondFilterField && filter.requestSecondFilterOperator !== 'contains')
+            || (config.expected.thirdFilterField && filter.requestThirdFilterField !== String(config.expected.thirdFilterField || ''))
+            || (config.expected.thirdFilterValue && filter.requestThirdFilterValue !== String(config.expected.thirdFilterValue || ''))
+            || (config.expected.thirdFilterField && filter.requestThirdFilterOperator !== 'contains')
           ) {
             throw new Error(`real submit probe did not request filtered runtime data: ${JSON.stringify(probe)}`);
           }
           if (
             filter.retainedFilterField !== String(config.expected.filterField || '')
+            || filter.retainedFilterOperator !== 'contains'
             || filter.retainedFilterValue !== String(config.expected.filterValue || '')
             || (config.expected.secondFilterField && filter.retainedSecondFilterField !== String(config.expected.secondFilterField || ''))
+            || (config.expected.secondFilterField && filter.retainedSecondFilterOperator !== 'contains')
             || (config.expected.secondFilterValue && filter.retainedSecondFilterValue !== String(config.expected.secondFilterValue || ''))
+            || (config.expected.thirdFilterField && filter.retainedThirdFilterField !== String(config.expected.thirdFilterField || ''))
+            || (config.expected.thirdFilterField && filter.retainedThirdFilterOperator !== 'contains')
+            || (config.expected.thirdFilterValue && filter.retainedThirdFilterValue !== String(config.expected.thirdFilterValue || ''))
           ) {
             throw new Error(`real submit probe did not retain filtered runtime data controls: ${JSON.stringify(probe)}`);
           }
           if (filter.responseStatus !== 200 || filter.responseOk !== true || filter.renderedRowCount !== 1 || filter.firstRowKey !== String(config.expected.selectedKeyValue || config.expected.keyValue)) {
             throw new Error(`real submit probe filtered runtime data row mismatch: ${JSON.stringify(probe)}`);
           }
+          if (config.expected.typedFilterField && config.expected.typedFilterOperator) {
+            const stringOperators = String(filter.typeDrivenStringOperatorValues || '').split(',').filter(Boolean);
+            const dateOperators = String(filter.typeDrivenDateOperatorValues || '').split(',').filter(Boolean);
+            if (stringOperators.includes(config.expected.typedFilterOperator)) {
+              throw new Error(`real submit probe exposed ordered operator for string filter field: ${JSON.stringify(probe)}`);
+            }
+            if (!dateOperators.includes(config.expected.typedFilterOperator) || filter.typeDrivenDateOperatorSelected !== String(config.expected.typedFilterOperator || '')) {
+              throw new Error(`real submit probe did not expose ordered operator for typed date filter field: ${JSON.stringify(probe)}`);
+            }
+            if (filter.typeDrivenStringValuePlaceholder !== 'Text value') {
+              throw new Error(`real submit probe did not keep text placeholder for string filter field: ${JSON.stringify(probe)}`);
+            }
+            if (filter.typeDrivenStringValueInputType !== 'text') {
+              throw new Error(`real submit probe did not keep text input type for string filter field: ${JSON.stringify(probe)}`);
+            }
+            if (filter.typeDrivenNumberValueInputType !== 'number') {
+              throw new Error(`real submit probe did not expose native number input type for typed numeric filter field: ${JSON.stringify(probe)}`);
+            }
+            if (filter.typeDrivenDateValuePlaceholder !== 'YYYY-MM-DD' || !String(filter.typeDrivenDateValueTitle || '').includes('YYYY-MM-DD')) {
+              throw new Error(`real submit probe did not expose date value hint for typed date filter field: ${JSON.stringify(probe)}`);
+            }
+            if (filter.typeDrivenDateValueInputType !== 'date') {
+              throw new Error(`real submit probe did not expose native date input type for typed date filter field: ${JSON.stringify(probe)}`);
+            }
+            if (filter.typeDrivenDatetimeValueInputType !== 'datetime-local' || filter.typeDrivenDatetimeValuePlaceholder !== 'YYYY-MM-DDTHH:MM:SS' || !String(filter.typeDrivenDatetimeValueTitle || '').includes('YYYY-MM-DDTHH:MM:SS')) {
+              throw new Error(`real submit probe did not expose native datetime filter control metadata: ${JSON.stringify(probe)}`);
+            }
+            if (filter.typeDrivenTimeValueInputType !== 'time' || filter.typeDrivenTimeValuePlaceholder !== 'HH:MM:SS' || !String(filter.typeDrivenTimeValueTitle || '').includes('HH:MM:SS')) {
+              throw new Error(`real submit probe did not expose native time filter control metadata: ${JSON.stringify(probe)}`);
+            }
+            if (filter.invalidFilterFetchUnchanged !== true || !String(filter.invalidFilterStatusText || '').includes('Runtime data filter was not fetched')) {
+              throw new Error(`real submit probe did not stop invalid typed filter before fetch: ${JSON.stringify(probe)}`);
+            }
+            if (!String(filter.invalidFilterStatusText || '').includes('QuantityNeeded') || !String(filter.invalidFilterStatusText || '').includes('Expected format: Integer value')) {
+              throw new Error(`real submit probe did not expose field-aware validation copy: ${JSON.stringify(probe)}`);
+            }
+          }
           const sort = probe.runtimeDataSort || {};
-          if (sort.skipped || sort.fieldControlCount < 1 || sort.directionControlCount < 1 || sort.buttonCount < 1) {
+          if (sort.skipped || sort.fieldControlCount < 1 || sort.directionControlCount < 1 || sort.buttonCount < 1 || sort.headerButtonCount < 1) {
             throw new Error(`real submit probe did not expose runtime data sort controls: ${JSON.stringify(probe)}`);
           }
           if (!String(sort.url || '').includes('sort%5B') || sort.requestSortField !== String(config.expected.sortField || '') || sort.requestSortDirection !== String(config.expected.sortDirection || '')) {
             throw new Error(`real submit probe did not request sorted runtime data: ${JSON.stringify(probe)}`);
           }
-          if (sort.retainedSortField !== String(config.expected.sortField || '') || sort.retainedSortDirection !== String(config.expected.sortDirection || '')) {
+          if (
+            (config.expected.secondSortField && !String(sort.url || '').includes(`sort%5B${config.expected.secondSortField}%5D`))
+            || (config.expected.secondSortField && sort.requestSecondSortField !== String(config.expected.secondSortField || ''))
+            || (config.expected.secondSortDirection && sort.requestSecondSortDirection !== String(config.expected.secondSortDirection || ''))
+            || (config.expected.thirdSortField && !String(sort.url || '').includes(`sort%5B${config.expected.thirdSortField}%5D`))
+            || (config.expected.thirdSortField && sort.requestThirdSortField !== String(config.expected.thirdSortField || ''))
+            || (config.expected.thirdSortDirection && sort.requestThirdSortDirection !== String(config.expected.thirdSortDirection || ''))
+          ) {
+            throw new Error(`real submit probe did not request additional sorted runtime data: ${JSON.stringify(probe)}`);
+          }
+          if (
+            sort.retainedSortField !== String(config.expected.sortField || '')
+            || sort.retainedSortDirection !== String(config.expected.sortDirection || '')
+            || (config.expected.secondSortField && sort.retainedSecondSortField !== String(config.expected.secondSortField || ''))
+            || (config.expected.secondSortDirection && sort.retainedSecondSortDirection !== String(config.expected.secondSortDirection || ''))
+            || (config.expected.thirdSortField && sort.retainedThirdSortField !== String(config.expected.thirdSortField || ''))
+            || (config.expected.thirdSortDirection && sort.retainedThirdSortDirection !== String(config.expected.thirdSortDirection || ''))
+          ) {
             throw new Error(`real submit probe did not retain sorted runtime data controls: ${JSON.stringify(probe)}`);
           }
           if (sort.responseStatus !== 200 || sort.responseOk !== true || sort.renderedRowCount < 1 || sort.firstRowKey !== String(config.expected.sortFirstKeyValue || config.expected.selectedKeyValue || config.expected.keyValue)) {
             throw new Error(`real submit probe sorted runtime data row mismatch: ${JSON.stringify(probe)}`);
+          }
+          const expectedHeaderSortDirection = config.expected.sortDirection === 'asc' ? 'desc' : 'asc';
+          if (
+            !String(sort.headerUrl || '').includes(`sort%5B${config.expected.sortField}%5D`)
+            || sort.headerRequestSortField !== String(config.expected.sortField || '')
+            || sort.headerRequestSortDirection !== expectedHeaderSortDirection
+            || sort.headerRequestSecondSortField
+            || sort.headerRequestThirdSortField
+          ) {
+            throw new Error(`real submit probe did not request header-sorted runtime data: ${JSON.stringify(probe)}`);
+          }
+          if (
+            sort.headerRetainedSortField !== String(config.expected.sortField || '')
+            || sort.headerRetainedSortDirection !== expectedHeaderSortDirection
+            || sort.headerRetainedSecondSortField
+            || sort.headerRetainedThirdSortField
+          ) {
+            throw new Error(`real submit probe did not retain header-sorted runtime data controls: ${JSON.stringify(probe)}`);
+          }
+          const expectedHeaderAriaSort = expectedHeaderSortDirection === 'desc' ? 'descending' : 'ascending';
+          if (
+            sort.headerAriaSort !== expectedHeaderAriaSort
+            || sort.headerSortState !== expectedHeaderAriaSort
+            || sort.headerOtherAriaSort !== 'none'
+            || sort.headerOtherSortState !== 'none'
+          ) {
+            throw new Error(`real submit probe did not expose header sorted state: ${JSON.stringify(probe)}`);
           }
           const combined = probe.runtimeDataCombined || {};
           if (combined.skipped) {
@@ -2118,8 +3089,16 @@ async function runSmoke(config) {
             || combined.requestSearchQuery !== String(config.expected.searchQuery || '')
             || combined.requestFilterField !== String(config.expected.filterField || '')
             || combined.requestFilterValue !== String(config.expected.filterValue || '')
+            || (config.expected.secondFilterField && combined.requestSecondFilterField !== String(config.expected.secondFilterField || ''))
+            || (config.expected.secondFilterValue && combined.requestSecondFilterValue !== String(config.expected.secondFilterValue || ''))
+            || (config.expected.thirdFilterField && combined.requestThirdFilterField !== String(config.expected.thirdFilterField || ''))
+            || (config.expected.thirdFilterValue && combined.requestThirdFilterValue !== String(config.expected.thirdFilterValue || ''))
             || combined.requestSortField !== String(config.expected.sortField || '')
             || combined.requestSortDirection !== String(config.expected.sortDirection || '')
+            || (config.expected.secondSortField && combined.requestSecondSortField !== String(config.expected.secondSortField || ''))
+            || (config.expected.secondSortDirection && combined.requestSecondSortDirection !== String(config.expected.secondSortDirection || ''))
+            || (config.expected.thirdSortField && combined.requestThirdSortField !== String(config.expected.thirdSortField || ''))
+            || (config.expected.thirdSortDirection && combined.requestThirdSortDirection !== String(config.expected.thirdSortDirection || ''))
             || combined.requestPage !== '1'
             || combined.requestPageSize !== '1'
           ) {
@@ -2128,7 +3107,11 @@ async function runSmoke(config) {
           if (
             !String(combined.locationSearch || '').includes('q=')
             || !String(combined.locationSearch || '').includes('filter%5B')
+            || (config.expected.secondFilterField && !String(combined.locationSearch || '').includes(`filter%5B${config.expected.secondFilterField}%5D`))
+            || (config.expected.thirdFilterField && !String(combined.locationSearch || '').includes(`filter%5B${config.expected.thirdFilterField}%5D`))
             || !String(combined.locationSearch || '').includes('sort%5B')
+            || (config.expected.secondSortField && !String(combined.locationSearch || '').includes(`sort%5B${config.expected.secondSortField}%5D`))
+            || (config.expected.thirdSortField && !String(combined.locationSearch || '').includes(`sort%5B${config.expected.thirdSortField}%5D`))
             || !String(combined.locationSearch || '').includes('page=1')
             || !String(combined.locationSearch || '').includes('page_size=1')
           ) {
@@ -2138,14 +3121,37 @@ async function runSmoke(config) {
             combined.retainedSearchValue !== String(config.expected.searchQuery || '')
             || combined.retainedFilterField !== String(config.expected.filterField || '')
             || combined.retainedFilterValue !== String(config.expected.filterValue || '')
+            || (config.expected.secondFilterField && combined.retainedSecondFilterField !== String(config.expected.secondFilterField || ''))
+            || (config.expected.secondFilterValue && combined.retainedSecondFilterValue !== String(config.expected.secondFilterValue || ''))
+            || (config.expected.thirdFilterField && combined.retainedThirdFilterField !== String(config.expected.thirdFilterField || ''))
+            || (config.expected.thirdFilterValue && combined.retainedThirdFilterValue !== String(config.expected.thirdFilterValue || ''))
             || combined.retainedSortField !== String(config.expected.sortField || '')
             || combined.retainedSortDirection !== String(config.expected.sortDirection || '')
+            || (config.expected.secondSortField && combined.retainedSecondSortField !== String(config.expected.secondSortField || ''))
+            || (config.expected.secondSortDirection && combined.retainedSecondSortDirection !== String(config.expected.secondSortDirection || ''))
+            || (config.expected.thirdSortField && combined.retainedThirdSortField !== String(config.expected.thirdSortField || ''))
+            || (config.expected.thirdSortDirection && combined.retainedThirdSortDirection !== String(config.expected.thirdSortDirection || ''))
             || combined.retainedPageSize !== '1'
           ) {
             throw new Error(`real submit probe did not retain combined runtime data controls: ${JSON.stringify(probe)}`);
           }
           if (combined.responseStatus !== 200 || combined.responseOk !== true || combined.renderedRowCount !== 1 || combined.firstRowKey !== String(config.expected.selectedKeyValue || config.expected.keyValue)) {
             throw new Error(`real submit probe combined runtime data row mismatch: ${JSON.stringify(probe)}`);
+          }
+          if (
+            !String(combined.querySummaryText || '').includes('Active query:')
+            || !String(combined.querySummaryText || '').includes(String(config.expected.searchQuery || ''))
+            || !String(combined.querySummaryText || '').includes(String(config.expected.filterLabel || config.expected.filterField || ''))
+            || !String(combined.querySummaryText || '').includes(String(config.expected.filterOperatorLabel || 'Contains'))
+            || !String(combined.querySummaryText || '').includes(String(config.expected.sortLabel || config.expected.sortField || ''))
+            || !String(combined.querySummaryText || '').includes(String(config.expected.sortDirectionLabel || config.expected.sortDirection || ''))
+            || !String(combined.querySummaryText || '').includes('Page size: 1')
+            || !String(combined.querySummaryText || '').includes('Rows:')
+          ) {
+            throw new Error(`real submit probe did not expose combined runtime data query summary: ${JSON.stringify(probe)}`);
+          }
+          if (!combined.querySummaryAriaLabel.includes(' | ') || Number(combined.querySummaryTokenCount || 0) < 5) {
+            throw new Error(`real submit probe did not expose tokenized runtime data query summary: ${JSON.stringify(probe)}`);
           }
           const queryReset = probe.runtimeDataQueryReset || {};
           if (queryReset.skipped) {
@@ -2174,6 +3180,12 @@ async function runSmoke(config) {
           }
           if (queryReset.responseStatus !== 200 || queryReset.responseOk !== true || queryReset.renderedRowCount < 2) {
             throw new Error(`real submit probe query reset runtime row mismatch: ${JSON.stringify(probe)}`);
+          }
+          if (queryReset.querySummaryText !== 'No runtime data query applied.') {
+            throw new Error(`real submit probe query reset did not clear runtime data query summary: ${JSON.stringify(probe)}`);
+          }
+          if (queryReset.querySummaryAriaLabel !== queryReset.querySummaryText || Number(queryReset.querySummaryTokenCount || 0) !== 0) {
+            throw new Error(`real submit probe query reset did not clear tokenized runtime data query summary: ${JSON.stringify(probe)}`);
           }
           const pagination = probe.runtimeDataPagination || {};
           if (pagination.skipped || pagination.controlGroupCount < 1 || pagination.labelledGroupCount < 1 || pagination.pageSizeButtonCount < 1 || pagination.pageSizeInputCount < 1 || pagination.pageSubmitButtonCount < 1 || pagination.pageInputCount < 1 || pagination.queryResetButtonCount < 1 || pagination.pageButtonCount < 2) {
@@ -2321,16 +3333,47 @@ async function runSmoke(config) {
     }
 
     const runtimeDataInitialUrlReplay = await probeRuntimeDataInitialUrlReplay(page, targetUrl, config);
+    const runtimeDataBrowserHistoryReplay = await probeRuntimeDataBrowserHistoryReplay(page, targetUrl, config);
 
     await page.screenshot({ path: screenshotPath, fullPage: true });
+    await page.setViewportSize({ width: 390, height: 900 });
+    await page.waitForTimeout(100);
+    const mobileRuntimeDataControls = await page.evaluate(() => {
+      const visible = (element) => !!(element && element.getClientRects().length > 0);
+      const controls = Array.from(document.querySelectorAll('[data-runtime-data-controls]')).filter(visible);
+      const rowGroups = Array.from(document.querySelectorAll('.no-code-runtime-data-row-group')).filter(visible);
+      const tokens = Array.from(document.querySelectorAll('.no-code-runtime-data-query-token')).filter(visible);
+      const overflows = controls.filter((element) => element.scrollWidth > element.clientWidth + 1).length;
+      const narrowRowGroups = rowGroups.filter((element) => {
+        const parent = element.closest('[data-runtime-data-controls]');
+        return parent && element.getBoundingClientRect().width < parent.getBoundingClientRect().width * 0.85;
+      }).length;
+      const tokenOverflows = tokens.filter((element) => element.scrollWidth > element.clientWidth + 1).length;
+      return {
+        skipped: controls.length === 0,
+        viewportWidth: window.innerWidth,
+        controlCount: controls.length,
+        rowGroupCount: rowGroups.length,
+        overflowCount: overflows,
+        narrowRowGroupCount: narrowRowGroups,
+        tokenOverflowCount: tokenOverflows,
+      };
+    });
+    if (!mobileRuntimeDataControls.skipped && (mobileRuntimeDataControls.controlCount < 1 || mobileRuntimeDataControls.rowGroupCount < 1 || mobileRuntimeDataControls.overflowCount !== 0 || mobileRuntimeDataControls.narrowRowGroupCount !== 0 || mobileRuntimeDataControls.tokenOverflowCount !== 0)) {
+      throw new Error(`mobile runtime data controls overflow or density mismatch: ${JSON.stringify(mobileRuntimeDataControls)}`);
+    }
+    await page.screenshot({ path: mobileScreenshotPath, fullPage: true });
 
     return {
       ok: true,
       html: config.htmlPath,
       url: config.url,
       screenshot: screenshotPath,
+      mobileScreenshot: mobileScreenshotPath,
       metrics,
+      mobileRuntimeDataControls,
       runtimeDataInitialUrlReplay,
+      runtimeDataBrowserHistoryReplay,
     };
   } finally {
     await browser.close();

@@ -700,7 +700,9 @@ function app_no_code_runtime_render_form_html(array $fields, array $item, string
             $inputType = match ($type) {
                 'integer', 'decimal' => 'number',
                 'boolean' => 'checkbox',
+                'date' => 'date',
                 'datetime' => 'datetime-local',
+                'time' => 'time',
                 default => 'text',
             };
             $valueAttr = $inputType === 'checkbox'
@@ -864,10 +866,20 @@ function app_no_code_runtime_preview_css(): string
         '.no-code-row-select-button { min-height: 30px; border: 1px solid #9fb3c8; border-radius: 6px; background: #ffffff; color: #102a43; padding: 0 10px; font: inherit; font-size: 12px; }',
         '.no-code-row-select-button[aria-pressed="true"] { border-color: #15803d; background: #dcfce7; color: #166534; }',
         '.no-code-row-select-button:focus-visible { outline: 3px solid #b6d4fe; outline-offset: 2px; }',
+        '.no-code-sort-header { width: 100%; min-height: 28px; border: 0; background: transparent; color: inherit; padding: 0; text-align: inherit; text-transform: inherit; font: inherit; cursor: pointer; }',
+        '.no-code-sort-header[data-runtime-sort-state="ascending"], .no-code-sort-header[data-runtime-sort-state="descending"] { color: #0f5132; font-weight: 700; }',
+        '.no-code-sort-header[data-runtime-sort-state="ascending"]::after, .no-code-sort-header[data-runtime-sort-state="descending"]::after { display: inline-flex; align-items: center; justify-content: center; width: 1.2em; height: 1.2em; margin-left: 4px; border: 1px solid #badbcc; border-radius: 999px; background: #f0f9f4; color: #0f5132; font-size: 10px; line-height: 1; }',
+        '.no-code-sort-header[data-runtime-sort-state="ascending"]::after { content: "^"; }',
+        '.no-code-sort-header[data-runtime-sort-state="descending"]::after { content: "v"; }',
+        '.no-code-sort-header:focus-visible { outline: 3px solid #b6d4fe; outline-offset: 2px; }',
         '.no-code-row-selected { background: #f0fdf4; }',
         '.no-code-pagination { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; margin-top: 10px; color: #52606d; font-size: 12px; }',
         '.no-code-runtime-data-controls { padding: 6px; border: 1px solid #d8dee8; border-radius: 6px; background: #f8fafc; }',
+        '.no-code-runtime-data-row-group { display: inline-flex; flex-wrap: wrap; gap: 6px; align-items: center; }',
         '.no-code-runtime-data-label { color: #334e68; font-weight: 600; margin-right: 2px; }',
+        '.no-code-runtime-data-query-summary { display: inline-flex; flex-wrap: wrap; gap: 4px; align-items: center; color: #465a69; font-size: 0.9em; flex-basis: 100%; }',
+        '.no-code-runtime-data-query-summary-label { color: #334e68; font-weight: 600; }',
+        '.no-code-runtime-data-query-token { border: 1px solid #d0d7de; border-radius: 999px; background: #ffffff; color: #334e68; padding: 1px 7px; line-height: 1.6; }',
         '.no-code-pagination label { display: inline-flex; gap: 5px; align-items: center; white-space: nowrap; }',
         '.no-code-pagination input, .no-code-pagination select { box-sizing: border-box; width: 72px; min-height: 30px; border: 1px solid #bcccdc; border-radius: 6px; padding: 0 8px; font: inherit; font-size: 12px; background: #ffffff; }',
         '.no-code-pagination input[type="search"], .no-code-pagination input[type="text"] { width: min(160px, 42vw); }',
@@ -875,7 +887,7 @@ function app_no_code_runtime_preview_css(): string
         '.no-code-pagination button { min-height: 30px; border: 1px solid #9fb3c8; border-radius: 6px; background: #ffffff; color: #102a43; padding: 0 9px; font: inherit; font-size: 12px; }',
         '.no-code-pagination button:disabled { border-color: #c8d1dc; background: #eef1f4; color: #7b8794; }',
         '.no-code-pagination button:focus-visible { outline: 3px solid #b6d4fe; outline-offset: 2px; }',
-        '@media (max-width: 640px) { .no-code-runtime-data-controls { align-items: stretch; } .no-code-runtime-data-controls label, .no-code-runtime-data-controls button { flex: 1 1 130px; } .no-code-runtime-data-controls input[type="search"], .no-code-runtime-data-controls input[type="text"], .no-code-runtime-data-controls input[type="number"], .no-code-runtime-data-controls select { width: 100%; } }',
+        '@media (max-width: 640px) { .no-code-runtime-data-controls { align-items: stretch; } .no-code-runtime-data-label, .no-code-runtime-data-query-summary { flex-basis: 100%; } .no-code-runtime-data-row-group { display: flex; flex: 1 1 100%; align-items: stretch; } .no-code-runtime-data-controls label, .no-code-runtime-data-controls button { flex: 1 1 130px; } .no-code-runtime-data-row-group label, .no-code-runtime-data-row-group button { flex: 1 1 120px; } .no-code-runtime-data-controls input[type="search"], .no-code-runtime-data-controls input[type="text"], .no-code-runtime-data-controls input[type="number"], .no-code-runtime-data-controls select { width: 100%; } .no-code-runtime-data-query-token { max-width: 100%; overflow-wrap: anywhere; } }',
         'table { width: 100%; border-collapse: collapse; table-layout: fixed; }',
         'th, td { border-bottom: 1px solid #e4e8ef; padding: 10px; text-align: left; vertical-align: top; overflow-wrap: anywhere; }',
         'th { font-size: 12px; text-transform: uppercase; color: #52606d; background: #f4f6f8; }',
@@ -961,13 +973,16 @@ function app_no_code_runtime_preview_js(): string
     });
   }
 
-  function runtimeDataUrlWithFieldFilter(fieldKey, fieldValue, page, pageSize) {
+  function runtimeDataUrlWithFieldFilter(fieldKey, fieldValue, operator, page, pageSize) {
     var params = {
       page: page || '',
       page_size: pageSize || ''
     };
     if (fieldKey && fieldValue) {
       params['filter[' + fieldKey + ']'] = fieldValue;
+      if (operator) {
+        params['filter_op[' + fieldKey + ']'] = operator;
+      }
     }
     return runtimeDataUrlWithQuery(params);
   }
@@ -993,13 +1008,25 @@ function app_no_code_runtime_preview_js(): string
       query.filters.forEach(function (filter) {
         if (filter && filter.field && filter.value) {
           params['filter[' + filter.field + ']'] = filter.value;
+          if (filter.operator) {
+            params['filter_op[' + filter.field + ']'] = filter.operator;
+          }
         }
       });
     }
     if (query && query.filterField && query.filterValue) {
       params['filter[' + query.filterField + ']'] = query.filterValue;
+      if (query.filterOperator) {
+        params['filter_op[' + query.filterField + ']'] = query.filterOperator;
+      }
     }
-    if (query && query.sortField && query.sortDirection) {
+    if (query && Array.isArray(query.sorts) && query.sorts.length > 0) {
+      query.sorts.forEach(function (sort) {
+        if (sort && sort.field && sort.direction) {
+          params['sort[' + sort.field + ']'] = sort.direction;
+        }
+      });
+    } else if (query && query.sortField && query.sortDirection) {
       params['sort[' + query.sortField + ']'] = query.sortDirection;
     }
     return runtimeDataUrlWithQuery(params);
@@ -1029,8 +1056,11 @@ function app_no_code_runtime_preview_js(): string
     }
   }
 
-  function mirrorRuntimeDataQueryInBrowserUrl(requestUrl) {
+  function mirrorRuntimeDataQueryInBrowserUrl(requestUrl, mode) {
     if (!window.history || typeof window.history.replaceState !== 'function') {
+      return;
+    }
+    if (mode === 'none') {
       return;
     }
     try {
@@ -1038,7 +1068,7 @@ function app_no_code_runtime_preview_js(): string
       var pageUrl = new URL(window.location.href);
       var keysToDelete = [];
       pageUrl.searchParams.forEach(function (_value, key) {
-        if (key === 'selected_key' || key === 'q' || key === 'page' || key === 'page_size' || key.indexOf('filter[') === 0 || key.indexOf('sort[') === 0) {
+        if (key === 'selected_key' || key === 'q' || key === 'page' || key === 'page_size' || key.indexOf('filter[') === 0 || key.indexOf('filter_op[') === 0 || key.indexOf('sort[') === 0) {
           keysToDelete.push(key);
         }
       });
@@ -1046,11 +1076,16 @@ function app_no_code_runtime_preview_js(): string
         pageUrl.searchParams.delete(key);
       });
       dataUrl.searchParams.forEach(function (value, key) {
-        if (key === 'selected_key' || key === 'q' || key === 'page' || key === 'page_size' || key.indexOf('filter[') === 0 || key.indexOf('sort[') === 0) {
+        if (key === 'selected_key' || key === 'q' || key === 'page' || key === 'page_size' || key.indexOf('filter[') === 0 || key.indexOf('filter_op[') === 0 || key.indexOf('sort[') === 0) {
           pageUrl.searchParams.set(key, value);
         }
       });
-      window.history.replaceState(window.history.state, '', pageUrl.pathname + pageUrl.search + pageUrl.hash);
+      var nextUrl = pageUrl.pathname + pageUrl.search + pageUrl.hash;
+      if (mode === 'push' && typeof window.history.pushState === 'function' && nextUrl !== window.location.pathname + window.location.search + window.location.hash) {
+        window.history.pushState(window.history.state, '', nextUrl);
+        return;
+      }
+      window.history.replaceState(window.history.state, '', nextUrl);
     } catch (error) {
       return;
     }
@@ -1062,8 +1097,22 @@ function app_no_code_runtime_preview_js(): string
       q: '',
       filterField: '',
       filterValue: '',
+      filterOperator: 'contains',
+      secondFilterField: '',
+      secondFilterValue: '',
+      secondFilterOperator: 'contains',
+      thirdFilterField: '',
+      thirdFilterValue: '',
+      thirdFilterOperator: 'contains',
+      filters: [],
+      filterOperators: {},
       sortField: '',
       sortDirection: '',
+      secondSortField: '',
+      secondSortDirection: '',
+      thirdSortField: '',
+      thirdSortDirection: '',
+      sorts: [],
       page: '',
       pageSize: ''
     };
@@ -1074,15 +1123,51 @@ function app_no_code_runtime_preview_js(): string
       query.page = pageUrl.searchParams.get('page') || '';
       query.pageSize = pageUrl.searchParams.get('page_size') || '';
       pageUrl.searchParams.forEach(function (value, key) {
+        var operatorMatch = /^filter_op\[(.+)\]$/.exec(key);
+        if (operatorMatch) {
+          query.filterOperators[operatorMatch[1] || ''] = value || 'contains';
+        }
+      });
+      pageUrl.searchParams.forEach(function (value, key) {
         var filterMatch = /^filter\[(.+)\]$/.exec(key);
-        if (filterMatch && !query.filterField) {
-          query.filterField = filterMatch[1] || '';
-          query.filterValue = value || '';
+        if (filterMatch) {
+          var filterField = filterMatch[1] || '';
+          var filterValue = value || '';
+          var filterOperator = query.filterOperators[filterField] || 'contains';
+          if (filterField && filterValue) {
+            query.filters.push({ field: filterField, value: filterValue, operator: filterOperator });
+          }
+          if (!query.filterField) {
+            query.filterField = filterField;
+            query.filterValue = filterValue;
+            query.filterOperator = filterOperator;
+          } else if (!query.secondFilterField && filterField !== query.filterField) {
+            query.secondFilterField = filterField;
+            query.secondFilterValue = filterValue;
+            query.secondFilterOperator = filterOperator;
+          } else if (!query.thirdFilterField && filterField !== query.filterField && filterField !== query.secondFilterField) {
+            query.thirdFilterField = filterField;
+            query.thirdFilterValue = filterValue;
+            query.thirdFilterOperator = filterOperator;
+          }
         }
         var sortMatch = /^sort\[(.+)\]$/.exec(key);
-        if (sortMatch && !query.sortField) {
-          query.sortField = sortMatch[1] || '';
-          query.sortDirection = value || '';
+        if (sortMatch) {
+          var sortField = sortMatch[1] || '';
+          var sortDirection = value || '';
+          if (sortField && sortDirection) {
+            query.sorts.push({ field: sortField, direction: sortDirection });
+          }
+          if (!query.sortField) {
+            query.sortField = sortField;
+            query.sortDirection = sortDirection;
+          } else if (!query.secondSortField && sortField !== query.sortField) {
+            query.secondSortField = sortField;
+            query.secondSortDirection = sortDirection;
+          } else if (!query.thirdSortField && sortField !== query.sortField && sortField !== query.secondSortField) {
+            query.thirdSortField = sortField;
+            query.thirdSortDirection = sortDirection;
+          }
         }
       });
     } catch (error) {
@@ -1092,7 +1177,7 @@ function app_no_code_runtime_preview_js(): string
   }
 
   function runtimeDataBrowserUrlQueryIsPresent(query) {
-    return !!(query && (query.selectedKey || query.q || (query.filterField && query.filterValue) || (query.sortField && query.sortDirection) || query.page || query.pageSize));
+    return !!(query && (query.selectedKey || query.q || (Array.isArray(query.filters) && query.filters.length > 0) || (query.filterField && query.filterValue) || (Array.isArray(query.sorts) && query.sorts.length > 0) || (query.sortField && query.sortDirection) || query.page || query.pageSize));
   }
 
   function htmlEscape(value) {
@@ -1935,7 +2020,12 @@ function app_no_code_runtime_preview_js(): string
     var selectedKey = runtimeSelectedKeyFromRender(render);
     var canSelectRows = hasRuntimeDataBinding() && keyField && rows.length > 0;
     var header = fields.map(function (field) {
-      return '<th scope="col">' + htmlEscape(field.label || field.field_key || '') + '</th>';
+      var fieldKey = field.field_key || '';
+      var label = field.label || fieldKey || '';
+      if (hasRuntimeDataBinding() && fieldKey) {
+        return '<th scope="col" aria-sort="none"><button type="button" class="no-code-sort-header" data-runtime-sort-header data-runtime-sort-field-key="' + htmlEscape(fieldKey) + '" data-runtime-sort-state="none" aria-label="Sort by ' + htmlEscape(label) + '">' + htmlEscape(label) + '</button></th>';
+      }
+      return '<th scope="col">' + htmlEscape(label) + '</th>';
     }).join('');
     if (canSelectRows) {
       header = '<th scope="col" class="no-code-row-select-cell">Select</th>' + header;
@@ -1962,12 +2052,14 @@ function app_no_code_runtime_preview_js(): string
       return field && field.field_key;
     }).map(function (field) {
       var fieldKey = field.field_key || '';
-      return '<option value="' + htmlEscape(fieldKey) + '">' + htmlEscape(field.label || fieldKey) + '</option>';
+      var fieldType = field.type || 'string';
+      return '<option value="' + htmlEscape(fieldKey) + '" data-runtime-field-type="' + htmlEscape(fieldType) + '">' + htmlEscape(field.label || fieldKey) + '</option>';
     }).join('');
     if (!fieldOptions) {
       return '';
     }
-    return '<label>Filter <select data-runtime-filter-field>' + fieldOptions + '</select></label><label>Value <input type="text" maxlength="128" data-runtime-filter-value></label><label>Filter 2 <select data-runtime-filter-field-secondary><option value="">None</option>' + fieldOptions + '</select></label><label>Value 2 <input type="text" maxlength="128" data-runtime-filter-value-secondary></label><button type="button" data-runtime-filter-submit>Filter</button>';
+    var operatorOptions = '<option value="contains">Contains</option><option value="eq">Equals</option><option value="gt" data-runtime-filter-ordered>Greater than</option><option value="gte" data-runtime-filter-ordered>Greater or equal</option><option value="lt" data-runtime-filter-ordered>Less than</option><option value="lte" data-runtime-filter-ordered>Less or equal</option>';
+    return '<span class="no-code-runtime-data-row-group" data-runtime-filter-primary><label>Filter <select data-runtime-filter-field>' + fieldOptions + '</select></label><label>Op <select data-runtime-filter-operator>' + operatorOptions + '</select></label><label>Value <input type="text" maxlength="128" data-runtime-filter-value></label></span><span class="no-code-runtime-data-row-group" data-runtime-filter-extra="secondary" hidden><label>Filter 2 <select data-runtime-filter-field-secondary><option value="">None</option>' + fieldOptions + '</select></label><label>Op 2 <select data-runtime-filter-operator-secondary>' + operatorOptions + '</select></label><label>Value 2 <input type="text" maxlength="128" data-runtime-filter-value-secondary></label><button type="button" data-runtime-filter-remove="secondary">Remove filter 2</button></span><span class="no-code-runtime-data-row-group" data-runtime-filter-extra="tertiary" hidden><label>Filter 3 <select data-runtime-filter-field-tertiary><option value="">None</option>' + fieldOptions + '</select></label><label>Op 3 <select data-runtime-filter-operator-tertiary>' + operatorOptions + '</select></label><label>Value 3 <input type="text" maxlength="128" data-runtime-filter-value-tertiary></label><button type="button" data-runtime-filter-remove="tertiary">Remove filter 3</button></span><button type="button" data-runtime-filter-add>Add filter</button><button type="button" data-runtime-filter-submit>Filter</button>';
   }
 
   function renderRuntimeSortControls(fields) {
@@ -1980,7 +2072,7 @@ function app_no_code_runtime_preview_js(): string
     if (!fieldOptions) {
       return '';
     }
-    return '<label>Sort <select data-runtime-sort-field>' + fieldOptions + '</select></label><label>Direction <select data-runtime-sort-direction><option value="asc">Asc</option><option value="desc">Desc</option></select></label><button type="button" data-runtime-sort-submit>Sort</button>';
+    return '<span class="no-code-runtime-data-row-group" data-runtime-sort-primary><label>Sort <select data-runtime-sort-field>' + fieldOptions + '</select></label><label>Direction <select data-runtime-sort-direction><option value="asc">Asc</option><option value="desc">Desc</option></select></label></span><span class="no-code-runtime-data-row-group" data-runtime-sort-extra="secondary" hidden><label>Sort 2 <select data-runtime-sort-field-secondary><option value="">None</option>' + fieldOptions + '</select></label><label>Direction 2 <select data-runtime-sort-direction-secondary><option value="asc">Asc</option><option value="desc">Desc</option></select></label><button type="button" data-runtime-sort-remove="secondary">Remove sort 2</button></span><span class="no-code-runtime-data-row-group" data-runtime-sort-extra="tertiary" hidden><label>Sort 3 <select data-runtime-sort-field-tertiary><option value="">None</option>' + fieldOptions + '</select></label><label>Direction 3 <select data-runtime-sort-direction-tertiary><option value="asc">Asc</option><option value="desc">Desc</option></select></label><button type="button" data-runtime-sort-remove="tertiary">Remove sort 3</button></span><button type="button" data-runtime-sort-add>Add sort</button><button type="button" data-runtime-sort-submit>Sort</button>';
   }
 
   function renderRuntimePaginationControls(pagination, fields) {
@@ -1991,7 +2083,7 @@ function app_no_code_runtime_preview_js(): string
     var sortControls = renderRuntimeSortControls(fields);
     var controlsAttributes = 'class="no-code-pagination no-code-runtime-data-controls" role="group" aria-label="Runtime data controls" data-runtime-data-controls';
     if (!pagination) {
-      return '<div ' + controlsAttributes + ' data-runtime-pagination-state="entry"><span class="no-code-runtime-data-label">Runtime data</span><label>Search <input type="search" maxlength="128" data-runtime-search-input></label><button type="button" data-runtime-search-submit>Search</button>' + filterControls + sortControls + '<label>Page size <input type="number" min="1" max="100" value="1" data-runtime-page-size-input></label><button type="button" data-runtime-page-size-submit>Apply</button><button type="button" data-runtime-query-reset>Clear</button></div>';
+      return '<div ' + controlsAttributes + ' data-runtime-pagination-state="entry"><span class="no-code-runtime-data-label">Runtime data</span><span class="no-code-runtime-data-query-summary" data-runtime-query-summary aria-live="polite">No runtime data query applied.</span><label>Search <input type="search" maxlength="128" data-runtime-search-input></label><button type="button" data-runtime-search-submit>Search</button>' + filterControls + sortControls + '<label>Page size <input type="number" min="1" max="100" value="1" data-runtime-page-size-input></label><button type="button" data-runtime-page-size-submit>Apply</button><button type="button" data-runtime-query-reset>Clear</button></div>';
     }
     var page = Number(pagination.page || 1);
     var pageSize = Number(pagination.page_size || 1);
@@ -2002,6 +2094,7 @@ function app_no_code_runtime_preview_js(): string
     return '<div ' + controlsAttributes + ' data-runtime-pagination-state="active" data-runtime-pagination-page="' + htmlEscape(page) + '" data-runtime-pagination-page-size="' + htmlEscape(pageSize) + '" data-runtime-pagination-page-count="' + htmlEscape(pageCount) + '" data-runtime-pagination-total-rows="' + htmlEscape(totalRows) + '">'
       + '<button type="button" data-runtime-page="' + htmlEscape(Math.max(1, page - 1)) + '" data-runtime-page-size="' + htmlEscape(pageSize) + '"' + (hasPrevious ? '' : ' disabled') + '>Previous</button>'
       + '<span class="no-code-runtime-data-label">Page ' + htmlEscape(page) + ' of ' + htmlEscape(pageCount) + ' (' + htmlEscape(totalRows) + ' total rows)</span>'
+      + '<span class="no-code-runtime-data-query-summary" data-runtime-query-summary aria-live="polite">No runtime data query applied.</span>'
       + '<label>Page <input type="number" min="1" max="' + htmlEscape(pageCount) + '" value="' + htmlEscape(page) + '" data-runtime-page-input></label><button type="button" data-runtime-page-submit>Go</button>'
       + '<button type="button" data-runtime-page="' + htmlEscape(page + 1) + '" data-runtime-page-size="' + htmlEscape(pageSize) + '"' + (hasNext ? '' : ' disabled') + '>Next</button>'
       + '<label>Search <input type="search" maxlength="128" data-runtime-search-input></label><button type="button" data-runtime-search-submit>Search</button>'
@@ -2048,7 +2141,7 @@ function app_no_code_runtime_preview_js(): string
       if (type === 'text') {
         control = '<textarea' + attrs + '>' + htmlEscape(displayValue) + '</textarea>';
       } else {
-        var inputType = type === 'integer' || type === 'decimal' ? 'number' : (type === 'boolean' ? 'checkbox' : (type === 'datetime' ? 'datetime-local' : 'text'));
+        var inputType = type === 'integer' || type === 'decimal' ? 'number' : (type === 'boolean' ? 'checkbox' : (type === 'date' ? 'date' : (type === 'datetime' ? 'datetime-local' : (type === 'time' ? 'time' : 'text'))));
         var valueAttr = inputType === 'checkbox' ? (value.value ? ' checked' : '') : ' value="' + htmlEscape(displayValue) + '"';
         control = '<input type="' + inputType + '"' + attrs + valueAttr + '>';
       }
@@ -2167,7 +2260,9 @@ function app_no_code_runtime_preview_js(): string
     replacePreviewScreenRender(render);
     bindScreenControls(screen);
     bindRuntimeListSelection(screen);
+    bindRuntimeSortHeaders(screen);
     bindRuntimePaginationControls(screen);
+    syncRuntimeSortHeadersFromControls(screen);
     writeIntentDraft(screen);
   }
 
@@ -2217,6 +2312,95 @@ function app_no_code_runtime_preview_js(): string
     return {};
   }
 
+  function runtimeDataQueryControlLabels(controls) {
+    var labels = {
+      fields: {},
+      filterOperators: {},
+      sortDirections: {}
+    };
+    if (!controls) {
+      return labels;
+    }
+    controls.querySelectorAll('select[data-runtime-filter-field] option, select[data-runtime-sort-field] option').forEach(function (option) {
+      var value = String(option.value || '');
+      if (value && !labels.fields[value]) {
+        labels.fields[value] = String(option.textContent || value).trim() || value;
+      }
+    });
+    controls.querySelectorAll('select[data-runtime-filter-operator] option').forEach(function (option) {
+      var value = String(option.value || '');
+      if (value && !labels.filterOperators[value]) {
+        labels.filterOperators[value] = String(option.textContent || value).trim() || value;
+      }
+    });
+    controls.querySelectorAll('select[data-runtime-sort-direction] option').forEach(function (option) {
+      var value = String(option.value || '');
+      if (value && !labels.sortDirections[value]) {
+        labels.sortDirections[value] = String(option.textContent || value).trim() || value;
+      }
+    });
+    return labels;
+  }
+
+  function runtimeDataQueryLabel(labels, group, key) {
+    labels = labels && typeof labels === 'object' ? labels : {};
+    group = labels[group] && typeof labels[group] === 'object' ? labels[group] : {};
+    key = String(key || '');
+    return group[key] || key;
+  }
+
+  function runtimeDataQueryFieldLabel(labels, fieldKey) {
+    var key = String(fieldKey || '');
+    return runtimeDataQueryLabel(labels, 'fields', key);
+  }
+
+  function runtimeDataQuerySummaryParts(query, pagination, labels) {
+    query = query && typeof query === 'object' ? query : {};
+    pagination = pagination && typeof pagination === 'object' ? pagination : {};
+    labels = labels && typeof labels === 'object' ? labels : {};
+    var parts = [];
+    var searchQuery = String(query.q || '').trim();
+    if (searchQuery) {
+      parts.push('Search: ' + searchQuery);
+    }
+    var filters = runtimeQueryEntries(query.filter);
+    var filterOperators = query.filter_op && typeof query.filter_op === 'object' ? query.filter_op : {};
+    if (filters.length > 0) {
+      parts.push('Filters: ' + filters.map(function (entry) {
+        return runtimeDataQueryFieldLabel(labels, entry.key) + ' ' + runtimeDataQueryLabel(labels, 'filterOperators', filterOperators[entry.key] || 'contains') + ' ' + entry.value;
+      }).join(', '));
+    }
+    var sorts = runtimeQueryEntries(query.sort);
+    if (sorts.length > 0) {
+      parts.push('Sort: ' + sorts.map(function (entry) {
+        return runtimeDataQueryFieldLabel(labels, entry.key) + ' ' + runtimeDataQueryLabel(labels, 'sortDirections', entry.value);
+      }).join(', '));
+    }
+    var pageSize = pagination.page_size || query.page_size || '';
+    if (pageSize) {
+      parts.push('Page size: ' + pageSize);
+    }
+    if (parts.length > 0 && pagination.total_rows !== undefined && pagination.total_rows !== null && pagination.total_rows !== '') {
+      parts.push('Rows: ' + String(pagination.total_rows));
+    }
+    return parts;
+  }
+
+  function runtimeDataQuerySummaryText(query, pagination, labels) {
+    var parts = runtimeDataQuerySummaryParts(query, pagination, labels);
+    return parts.length > 0 ? 'Active query: ' + parts.join(' | ') : 'No runtime data query applied.';
+  }
+
+  function runtimeDataQuerySummaryHtml(query, pagination, labels) {
+    var parts = runtimeDataQuerySummaryParts(query, pagination, labels);
+    if (parts.length === 0) {
+      return htmlEscape('No runtime data query applied.');
+    }
+    return '<span class="no-code-runtime-data-query-summary-label">Active query:</span> ' + parts.map(function (part) {
+      return '<span class="no-code-runtime-data-query-token">' + htmlEscape(part) + '</span>';
+    }).join(' ');
+  }
+
   function setRuntimeSelectValue(control, value) {
     if (!control) {
       return;
@@ -2233,39 +2417,421 @@ function app_no_code_runtime_preview_js(): string
     }
   }
 
+  function syncRuntimeSortHeaders(screen, sortField, sortDirection) {
+    if (!screen) {
+      return;
+    }
+    var activeField = String(sortField || '');
+    var activeDirection = String(sortDirection || '').toLowerCase() === 'desc' ? 'descending' : (activeField ? 'ascending' : 'none');
+    screen.querySelectorAll('[data-runtime-sort-header]').forEach(function (button) {
+      var fieldKey = String(button.getAttribute('data-runtime-sort-field-key') || '');
+      var state = fieldKey && fieldKey === activeField ? activeDirection : 'none';
+      var header = button.closest('th');
+      button.setAttribute('data-runtime-sort-state', state);
+      if (header) {
+        header.setAttribute('aria-sort', state);
+      }
+    });
+  }
+
+  function syncRuntimeSortHeadersFromControls(root) {
+    var scope = root || document;
+    scope.querySelectorAll('[data-runtime-data-controls]').forEach(function (controls) {
+      var screen = controls.closest('.no-code-screen');
+      var sortField = controls.querySelector('[data-runtime-sort-field]');
+      var sortDirection = controls.querySelector('[data-runtime-sort-direction]');
+      syncRuntimeSortHeaders(screen, sortField ? sortField.value : '', sortDirection ? sortDirection.value : '');
+    });
+  }
+
+  function runtimeDataControlValue(controls, selector) {
+    var control = controls ? controls.querySelector(selector) : null;
+    return control ? String(control.value || '').trim() : '';
+  }
+
+  function runtimeDataFilterFieldType(fieldSelect) {
+    if (!fieldSelect) {
+      return '';
+    }
+    var selected = fieldSelect.options ? fieldSelect.options[fieldSelect.selectedIndex] : null;
+    return selected ? String(selected.getAttribute('data-runtime-field-type') || 'string').toLowerCase() : '';
+  }
+
+  function runtimeDataFilterTypeSupportsOrdered(fieldType) {
+    return ['integer', 'number', 'date', 'datetime', 'time'].indexOf(String(fieldType || '').toLowerCase()) !== -1;
+  }
+
+  function runtimeDataFilterValueHint(fieldType) {
+    var normalized = String(fieldType || '').toLowerCase();
+    if (normalized === 'integer') {
+      return 'Integer value';
+    }
+    if (normalized === 'number') {
+      return 'Numeric value';
+    }
+    if (normalized === 'date') {
+      return 'YYYY-MM-DD';
+    }
+    if (normalized === 'datetime') {
+      return 'YYYY-MM-DDTHH:MM:SS';
+    }
+    if (normalized === 'time') {
+      return 'HH:MM:SS';
+    }
+    return 'Text value';
+  }
+
+  function runtimeDataFilterValueInputType(fieldType) {
+    var normalized = String(fieldType || '').toLowerCase();
+    if (normalized === 'integer' || normalized === 'number') {
+      return 'number';
+    }
+    if (normalized === 'date') {
+      return 'date';
+    }
+    if (normalized === 'datetime') {
+      return 'datetime-local';
+    }
+    if (normalized === 'time') {
+      return 'time';
+    }
+    return 'text';
+  }
+
+  function runtimeDataFilterFieldLabel(fieldSelect) {
+    if (!fieldSelect) {
+      return 'selected field';
+    }
+    var selected = fieldSelect.options ? fieldSelect.options[fieldSelect.selectedIndex] : null;
+    var label = selected ? String(selected.textContent || '').trim() : '';
+    return label || String(fieldSelect.value || 'selected field');
+  }
+
+  function runtimeDataFilterValueValidationMessage(fieldType, value) {
+    var normalized = String(fieldType || '').toLowerCase();
+    var candidate = String(value || '').trim();
+    var hint = runtimeDataFilterValueHint(normalized);
+    var dateParts;
+    var maxDay;
+    if (candidate === '') {
+      return '';
+    }
+    if (normalized === 'integer') {
+      return /^-?[0-9]+$/.test(candidate) ? '' : 'Expected format: ' + hint + '. Use whole digits only.';
+    }
+    if (normalized === 'number') {
+      return /^-?[0-9]+(?:\.[0-9]+)?$/.test(candidate) ? '' : 'Expected format: ' + hint + '. Use digits with an optional decimal point.';
+    }
+    if (normalized === 'date') {
+      dateParts = /^([0-9]{4})-([0-9]{2})-([0-9]{2})$/.exec(candidate);
+      if (!dateParts) {
+        return 'Expected format: ' + hint + '.';
+      }
+      maxDay = new Date(Number(dateParts[1]), Number(dateParts[2]), 0).getDate();
+      return Number(dateParts[2]) >= 1 && Number(dateParts[2]) <= 12 && Number(dateParts[3]) >= 1 && Number(dateParts[3]) <= maxDay ? '' : 'Expected format: ' + hint + '. Use a valid calendar date.';
+    }
+    if (normalized === 'time') {
+      dateParts = /^([0-9]{2}):([0-9]{2}):([0-9]{2})$/.exec(candidate);
+      return dateParts && Number(dateParts[1]) <= 23 && Number(dateParts[2]) <= 59 && Number(dateParts[3]) <= 59 ? '' : 'Expected format: ' + hint + '. Use a valid 24-hour time.';
+    }
+    if (normalized === 'datetime') {
+      dateParts = /^([0-9]{4})-([0-9]{2})-([0-9]{2})T([0-9]{2}):([0-9]{2}):([0-9]{2})$/.exec(candidate);
+      if (!dateParts) {
+        return 'Expected format: ' + hint + '.';
+      }
+      maxDay = new Date(Number(dateParts[1]), Number(dateParts[2]), 0).getDate();
+      if (Number(dateParts[2]) < 1 || Number(dateParts[2]) > 12 || Number(dateParts[3]) < 1 || Number(dateParts[3]) > maxDay) {
+        return 'Expected format: ' + hint + '. Use a valid calendar date.';
+      }
+      return Number(dateParts[4]) <= 23 && Number(dateParts[5]) <= 59 && Number(dateParts[6]) <= 59 ? '' : 'Expected format: ' + hint + '. Use a valid 24-hour time.';
+    }
+    return '';
+  }
+
+  function runtimeDataFilterRowValidationMessage(fieldSelect, valueInput, label) {
+    var fieldKey = fieldSelect ? String(fieldSelect.value || '').trim() : '';
+    var value = valueInput ? String(valueInput.value || '').trim() : '';
+    var fieldType = runtimeDataFilterFieldType(fieldSelect);
+    var message = runtimeDataFilterValueValidationMessage(fieldType, value);
+    if (!fieldKey || !value) {
+      return '';
+    }
+    if (valueInput && typeof valueInput.checkValidity === 'function' && !valueInput.checkValidity()) {
+      message = message || 'Use a valid filter value.';
+    }
+    if (message) {
+      return label + ' for ' + runtimeDataFilterFieldLabel(fieldSelect) + ': ' + message;
+    }
+    return '';
+  }
+
+  function runtimeDataFilterValidationMessage(paginationRoot) {
+    var controls = paginationRoot && paginationRoot.matches && paginationRoot.matches('[data-runtime-data-controls]')
+      ? paginationRoot
+      : (paginationRoot ? paginationRoot.querySelector('[data-runtime-data-controls]') : null);
+    if (!controls) {
+      return '';
+    }
+    return runtimeDataFilterRowValidationMessage(controls.querySelector('[data-runtime-filter-field]'), controls.querySelector('[data-runtime-filter-value]'), 'Filter')
+      || runtimeDataFilterRowValidationMessage(controls.querySelector('[data-runtime-filter-field-secondary]'), controls.querySelector('[data-runtime-filter-value-secondary]'), 'Filter 2')
+      || runtimeDataFilterRowValidationMessage(controls.querySelector('[data-runtime-filter-field-tertiary]'), controls.querySelector('[data-runtime-filter-value-tertiary]'), 'Filter 3');
+  }
+
+  function stopRuntimeDataFetchForFilterValidation(button, paginationRoot) {
+    var message = runtimeDataFilterValidationMessage(paginationRoot);
+    if (!message) {
+      return false;
+    }
+    setRuntimeRefreshStatus(button, 'error', 'Runtime data filter was not fetched: ' + message);
+    return true;
+  }
+
+  function syncRuntimeDataFilterValueHint(fieldSelect, valueInput) {
+    if (!valueInput) {
+      return;
+    }
+    var fieldType = runtimeDataFilterFieldType(fieldSelect);
+    var hint = runtimeDataFilterValueHint(fieldType);
+    var inputType = runtimeDataFilterValueInputType(fieldType);
+    valueInput.setAttribute('type', inputType);
+    valueInput.setAttribute('placeholder', hint);
+    valueInput.setAttribute('title', 'Runtime data filter value format: ' + hint);
+    if (inputType === 'number') {
+      valueInput.setAttribute('inputmode', 'decimal');
+      valueInput.setAttribute('step', String(fieldType).toLowerCase() === 'integer' ? '1' : 'any');
+    } else if (inputType === 'datetime-local' || inputType === 'time') {
+      valueInput.removeAttribute('inputmode');
+      valueInput.setAttribute('step', '1');
+    } else {
+      valueInput.removeAttribute('inputmode');
+      valueInput.removeAttribute('step');
+    }
+  }
+
+  function syncRuntimeDataFilterOperatorOptions(fieldSelect, operatorSelect, valueInput) {
+    syncRuntimeDataFilterValueHint(fieldSelect, valueInput);
+    if (!operatorSelect) {
+      return;
+    }
+    var supportsOrdered = runtimeDataFilterTypeSupportsOrdered(runtimeDataFilterFieldType(fieldSelect));
+    operatorSelect.querySelectorAll('[data-runtime-filter-ordered]').forEach(function (option) {
+      option.hidden = !supportsOrdered;
+      option.disabled = !supportsOrdered;
+    });
+    operatorSelect.setAttribute('data-runtime-filter-ordered-enabled', supportsOrdered ? 'true' : 'false');
+    var selected = operatorSelect.options ? operatorSelect.options[operatorSelect.selectedIndex] : null;
+    if (selected && selected.hasAttribute('data-runtime-filter-ordered') && !supportsOrdered) {
+      setRuntimeSelectValue(operatorSelect, 'contains');
+    }
+  }
+
+  function syncRuntimeDataFilterOperatorChoices(controls) {
+    if (!controls) {
+      return;
+    }
+    syncRuntimeDataFilterOperatorOptions(
+      controls.querySelector('[data-runtime-filter-field]'),
+      controls.querySelector('[data-runtime-filter-operator]'),
+      controls.querySelector('[data-runtime-filter-value]')
+    );
+    syncRuntimeDataFilterOperatorOptions(
+      controls.querySelector('[data-runtime-filter-field-secondary]'),
+      controls.querySelector('[data-runtime-filter-operator-secondary]'),
+      controls.querySelector('[data-runtime-filter-value-secondary]')
+    );
+    syncRuntimeDataFilterOperatorOptions(
+      controls.querySelector('[data-runtime-filter-field-tertiary]'),
+      controls.querySelector('[data-runtime-filter-operator-tertiary]'),
+      controls.querySelector('[data-runtime-filter-value-tertiary]')
+    );
+  }
+
+  function runtimeDataFilterExtraHasValue(controls, name) {
+    var suffix = name === 'tertiary' ? 'tertiary' : 'secondary';
+    return runtimeDataControlValue(controls, '[data-runtime-filter-field-' + suffix + ']') !== ''
+      || runtimeDataControlValue(controls, '[data-runtime-filter-value-' + suffix + ']') !== '';
+  }
+
+  function runtimeDataSortExtraHasValue(controls, name) {
+    var suffix = name === 'tertiary' ? 'tertiary' : 'secondary';
+    return runtimeDataControlValue(controls, '[data-runtime-sort-field-' + suffix + ']') !== '';
+  }
+
+  function setRuntimeDataExtraVisibility(controls, kind, name, visible) {
+    var selector = kind === 'sort'
+      ? '[data-runtime-sort-extra="' + name + '"]'
+      : '[data-runtime-filter-extra="' + name + '"]';
+    var row = controls ? controls.querySelector(selector) : null;
+    if (!row) {
+      return;
+    }
+    row.hidden = !visible;
+  }
+
+  function syncRuntimeDataRowVisibility(controls) {
+    if (!controls) {
+      return;
+    }
+    var secondFilterRow = controls.querySelector('[data-runtime-filter-extra="secondary"]');
+    var thirdFilterRow = controls.querySelector('[data-runtime-filter-extra="tertiary"]');
+    var secondSortRow = controls.querySelector('[data-runtime-sort-extra="secondary"]');
+    var thirdSortRow = controls.querySelector('[data-runtime-sort-extra="tertiary"]');
+    var showSecondFilter = runtimeDataFilterExtraHasValue(controls, 'secondary') || (secondFilterRow ? !secondFilterRow.hidden : false);
+    var showThirdFilter = showSecondFilter && (runtimeDataFilterExtraHasValue(controls, 'tertiary') || (thirdFilterRow ? !thirdFilterRow.hidden : false));
+    var showSecondSort = runtimeDataSortExtraHasValue(controls, 'secondary') || (secondSortRow ? !secondSortRow.hidden : false);
+    var showThirdSort = showSecondSort && (runtimeDataSortExtraHasValue(controls, 'tertiary') || (thirdSortRow ? !thirdSortRow.hidden : false));
+    setRuntimeDataExtraVisibility(controls, 'filter', 'secondary', showSecondFilter);
+    setRuntimeDataExtraVisibility(controls, 'filter', 'tertiary', showThirdFilter);
+    setRuntimeDataExtraVisibility(controls, 'sort', 'secondary', showSecondSort);
+    setRuntimeDataExtraVisibility(controls, 'sort', 'tertiary', showThirdSort);
+    var addFilter = controls.querySelector('[data-runtime-filter-add]');
+    var addSort = controls.querySelector('[data-runtime-sort-add]');
+    if (addFilter) {
+      addFilter.disabled = showSecondFilter && showThirdFilter;
+    }
+    if (addSort) {
+      addSort.disabled = showSecondSort && showThirdSort;
+    }
+  }
+
+  function clearRuntimeDataFilterExtra(controls, name) {
+    var suffix = name === 'tertiary' ? 'tertiary' : 'secondary';
+    setRuntimeSelectValue(controls.querySelector('[data-runtime-filter-field-' + suffix + ']'), '');
+    setRuntimeSelectValue(controls.querySelector('[data-runtime-filter-operator-' + suffix + ']'), 'contains');
+    syncRuntimeDataFilterOperatorChoices(controls);
+    var value = controls.querySelector('[data-runtime-filter-value-' + suffix + ']');
+    if (value) {
+      value.value = '';
+    }
+  }
+
+  function clearRuntimeDataSortExtra(controls, name) {
+    var suffix = name === 'tertiary' ? 'tertiary' : 'secondary';
+    setRuntimeSelectValue(controls.querySelector('[data-runtime-sort-field-' + suffix + ']'), '');
+    setRuntimeSelectValue(controls.querySelector('[data-runtime-sort-direction-' + suffix + ']'), 'asc');
+  }
+
+  function revealRuntimeDataExtraRow(button, kind) {
+    var controls = button ? button.closest('[data-runtime-data-controls]') : null;
+    if (!controls) {
+      return;
+    }
+    if (kind === 'sort') {
+      var secondSortRow = controls.querySelector('[data-runtime-sort-extra="secondary"]');
+      if (!runtimeDataSortExtraHasValue(controls, 'secondary') && secondSortRow && secondSortRow.hidden) {
+        setRuntimeDataExtraVisibility(controls, 'sort', 'secondary', true);
+      } else {
+        setRuntimeDataExtraVisibility(controls, 'sort', 'tertiary', true);
+      }
+    } else {
+      var secondFilterRow = controls.querySelector('[data-runtime-filter-extra="secondary"]');
+      if (!runtimeDataFilterExtraHasValue(controls, 'secondary') && secondFilterRow && secondFilterRow.hidden) {
+        setRuntimeDataExtraVisibility(controls, 'filter', 'secondary', true);
+      } else {
+        setRuntimeDataExtraVisibility(controls, 'filter', 'tertiary', true);
+      }
+    }
+    syncRuntimeDataRowVisibility(controls);
+  }
+
+  function removeRuntimeDataExtraRow(button, kind) {
+    var controls = button ? button.closest('[data-runtime-data-controls]') : null;
+    var name = button ? String(button.getAttribute(kind === 'sort' ? 'data-runtime-sort-remove' : 'data-runtime-filter-remove') || '') : '';
+    if (!controls || (name !== 'secondary' && name !== 'tertiary')) {
+      return;
+    }
+    if (kind === 'sort') {
+      clearRuntimeDataSortExtra(controls, name);
+      setRuntimeDataExtraVisibility(controls, 'sort', name, false);
+      if (name === 'secondary') {
+        clearRuntimeDataSortExtra(controls, 'tertiary');
+        setRuntimeDataExtraVisibility(controls, 'sort', 'tertiary', false);
+      }
+      syncRuntimeSortHeaders(controls.closest('.no-code-screen'), runtimeDataControlValue(controls, '[data-runtime-sort-field]'), runtimeDataControlValue(controls, '[data-runtime-sort-direction]'));
+    } else {
+      clearRuntimeDataFilterExtra(controls, name);
+      setRuntimeDataExtraVisibility(controls, 'filter', name, false);
+      if (name === 'secondary') {
+        clearRuntimeDataFilterExtra(controls, 'tertiary');
+        setRuntimeDataExtraVisibility(controls, 'filter', 'tertiary', false);
+      }
+    }
+    syncRuntimeDataRowVisibility(controls);
+  }
+
   function syncRuntimeDataControlsFromPayload(payload) {
     var query = payload && payload.query && typeof payload.query === 'object' ? payload.query : {};
     var pagination = runtimeDataPayloadPagination(payload);
     var filters = runtimeQueryEntries(query.filter);
+    var filterOperators = query.filter_op && typeof query.filter_op === 'object' ? query.filter_op : {};
     var filter = filters.length > 0 ? filters[0] : { key: '', value: '' };
     var secondFilter = filters.length > 1 ? filters[1] : { key: '', value: '' };
-    var sort = firstRuntimeQueryEntry(query.sort);
+    var thirdFilter = filters.length > 2 ? filters[2] : { key: '', value: '' };
+    var sorts = runtimeQueryEntries(query.sort);
+    var sort = sorts.length > 0 ? sorts[0] : { key: '', value: '' };
+    var secondSort = sorts.length > 1 ? sorts[1] : { key: '', value: '' };
+    var thirdSort = sorts.length > 2 ? sorts[2] : { key: '', value: '' };
     var pageSize = pagination.page_size || query.page_size || '';
     document.querySelectorAll('[data-runtime-data-controls]').forEach(function (controls) {
       var searchInput = controls.querySelector('[data-runtime-search-input]');
       var filterField = controls.querySelector('[data-runtime-filter-field]');
+      var filterOperator = controls.querySelector('[data-runtime-filter-operator]');
       var filterValue = controls.querySelector('[data-runtime-filter-value]');
       var secondFilterField = controls.querySelector('[data-runtime-filter-field-secondary]');
+      var secondFilterOperator = controls.querySelector('[data-runtime-filter-operator-secondary]');
       var secondFilterValue = controls.querySelector('[data-runtime-filter-value-secondary]');
+      var thirdFilterField = controls.querySelector('[data-runtime-filter-field-tertiary]');
+      var thirdFilterOperator = controls.querySelector('[data-runtime-filter-operator-tertiary]');
+      var thirdFilterValue = controls.querySelector('[data-runtime-filter-value-tertiary]');
       var sortField = controls.querySelector('[data-runtime-sort-field]');
       var sortDirection = controls.querySelector('[data-runtime-sort-direction]');
+      var secondSortField = controls.querySelector('[data-runtime-sort-field-secondary]');
+      var secondSortDirection = controls.querySelector('[data-runtime-sort-direction-secondary]');
+      var thirdSortField = controls.querySelector('[data-runtime-sort-field-tertiary]');
+      var thirdSortDirection = controls.querySelector('[data-runtime-sort-direction-tertiary]');
       var pageSizeInput = controls.querySelector('[data-runtime-page-size-input]');
+      var querySummary = controls.querySelector('[data-runtime-query-summary]');
       if (searchInput) {
         searchInput.value = String(query.q || '');
       }
       setRuntimeSelectValue(filterField, filter.key);
+      syncRuntimeDataFilterOperatorChoices(controls);
+      setRuntimeSelectValue(filterOperator, filterOperators[filter.key] || 'contains');
+      syncRuntimeDataFilterOperatorChoices(controls);
       if (filterValue) {
         filterValue.value = filter.value;
       }
       setRuntimeSelectValue(secondFilterField, secondFilter.key);
+      syncRuntimeDataFilterOperatorChoices(controls);
+      setRuntimeSelectValue(secondFilterOperator, secondFilter.key ? (filterOperators[secondFilter.key] || 'contains') : 'contains');
+      syncRuntimeDataFilterOperatorChoices(controls);
       if (secondFilterValue) {
         secondFilterValue.value = secondFilter.value;
       }
+      setRuntimeSelectValue(thirdFilterField, thirdFilter.key);
+      syncRuntimeDataFilterOperatorChoices(controls);
+      setRuntimeSelectValue(thirdFilterOperator, thirdFilter.key ? (filterOperators[thirdFilter.key] || 'contains') : 'contains');
+      syncRuntimeDataFilterOperatorChoices(controls);
+      if (thirdFilterValue) {
+        thirdFilterValue.value = thirdFilter.value;
+      }
       setRuntimeSelectValue(sortField, sort.key);
       setRuntimeSelectValue(sortDirection, sort.value);
+      setRuntimeSelectValue(secondSortField, secondSort.key);
+      setRuntimeSelectValue(secondSortDirection, secondSort.key ? secondSort.value : 'asc');
+      setRuntimeSelectValue(thirdSortField, thirdSort.key);
+      setRuntimeSelectValue(thirdSortDirection, thirdSort.key ? thirdSort.value : 'asc');
       if (pageSizeInput && pageSize) {
         pageSizeInput.value = String(pageSize);
       }
+      if (querySummary) {
+        var querySummaryLabels = runtimeDataQueryControlLabels(controls);
+        var querySummaryText = runtimeDataQuerySummaryText(query, pagination, querySummaryLabels);
+        querySummary.innerHTML = runtimeDataQuerySummaryHtml(query, pagination, querySummaryLabels);
+        querySummary.setAttribute('aria-label', querySummaryText);
+      }
+      syncRuntimeSortHeaders(controls.closest('.no-code-screen'), sort.key, sort.value);
+      syncRuntimeDataRowVisibility(controls);
     });
   }
 
@@ -2279,7 +2845,7 @@ function app_no_code_runtime_preview_js(): string
     }
   }
 
-  function refreshRuntimeDataForScreen(screen, button, workingMessage, selectedKey, page, pageSize, searchQuery, filterField, filterValue, sortField, sortDirection, filters) {
+  function refreshRuntimeDataForScreen(screen, button, workingMessage, selectedKey, page, pageSize, searchQuery, filterField, filterValue, sortField, sortDirection, filters, browserHistoryMode, sorts) {
     if (!button || !hasRuntimeDataBinding()) {
       return;
     }
@@ -2293,6 +2859,7 @@ function app_no_code_runtime_preview_js(): string
         filterValue: filterValue || '',
         sortField: sortField || '',
         sortDirection: sortDirection || '',
+        sorts: Array.isArray(sorts) ? sorts : [],
         page: page || '',
         pageSize: pageSize || ''
       });
@@ -2319,7 +2886,7 @@ function app_no_code_runtime_preview_js(): string
       restoreRuntimeSubmitState(screen, submitState);
       button = screen ? screen.querySelector('[data-runtime-result-refresh]') || button : button;
       button.disabled = false;
-      mirrorRuntimeDataQueryInBrowserUrl(requestUrl);
+      mirrorRuntimeDataQueryInBrowserUrl(requestUrl, browserHistoryMode || 'replace');
       setRuntimeRefreshStatus(button, 'success', 'Fresh runtime data loaded from ' + requestUrl + ' (read-only current/alias data).');
     }).catch(function (error) {
       button.disabled = false;
@@ -2337,38 +2904,81 @@ function app_no_code_runtime_preview_js(): string
     if (!refreshButton) {
       return;
     }
-    refreshRuntimeDataForScreen(screen, refreshButton, 'Fetching selected row from read-only live runtime data...', selectedKey);
+    refreshRuntimeDataForScreen(screen, refreshButton, 'Fetching selected row from read-only live runtime data...', selectedKey, '', '', '', '', '', '', '', [], 'push');
   }
 
   function runtimeDataQueryFromControls(paginationRoot) {
     var searchInput = paginationRoot ? paginationRoot.querySelector('[data-runtime-search-input]') : null;
     var filterFieldInput = paginationRoot ? paginationRoot.querySelector('[data-runtime-filter-field]') : null;
+    var filterOperatorInput = paginationRoot ? paginationRoot.querySelector('[data-runtime-filter-operator]') : null;
     var filterValueInput = paginationRoot ? paginationRoot.querySelector('[data-runtime-filter-value]') : null;
     var secondFilterFieldInput = paginationRoot ? paginationRoot.querySelector('[data-runtime-filter-field-secondary]') : null;
+    var secondFilterOperatorInput = paginationRoot ? paginationRoot.querySelector('[data-runtime-filter-operator-secondary]') : null;
     var secondFilterValueInput = paginationRoot ? paginationRoot.querySelector('[data-runtime-filter-value-secondary]') : null;
+    var thirdFilterFieldInput = paginationRoot ? paginationRoot.querySelector('[data-runtime-filter-field-tertiary]') : null;
+    var thirdFilterOperatorInput = paginationRoot ? paginationRoot.querySelector('[data-runtime-filter-operator-tertiary]') : null;
+    var thirdFilterValueInput = paginationRoot ? paginationRoot.querySelector('[data-runtime-filter-value-tertiary]') : null;
     var sortFieldInput = paginationRoot ? paginationRoot.querySelector('[data-runtime-sort-field]') : null;
     var sortDirectionInput = paginationRoot ? paginationRoot.querySelector('[data-runtime-sort-direction]') : null;
+    var secondSortFieldInput = paginationRoot ? paginationRoot.querySelector('[data-runtime-sort-field-secondary]') : null;
+    var secondSortDirectionInput = paginationRoot ? paginationRoot.querySelector('[data-runtime-sort-direction-secondary]') : null;
+    var thirdSortFieldInput = paginationRoot ? paginationRoot.querySelector('[data-runtime-sort-field-tertiary]') : null;
+    var thirdSortDirectionInput = paginationRoot ? paginationRoot.querySelector('[data-runtime-sort-direction-tertiary]') : null;
     var pageSizeInput = paginationRoot ? paginationRoot.querySelector('[data-runtime-page-size-input]') : null;
     var filterField = filterFieldInput ? String(filterFieldInput.value || '').trim() : '';
+    var filterOperator = filterOperatorInput ? String(filterOperatorInput.value || 'contains').trim() : 'contains';
     var filterValue = filterValueInput ? String(filterValueInput.value || '').trim() : '';
     var secondFilterField = secondFilterFieldInput ? String(secondFilterFieldInput.value || '').trim() : '';
+    var secondFilterOperator = secondFilterOperatorInput ? String(secondFilterOperatorInput.value || 'contains').trim() : 'contains';
     var secondFilterValue = secondFilterValueInput ? String(secondFilterValueInput.value || '').trim() : '';
+    var thirdFilterField = thirdFilterFieldInput ? String(thirdFilterFieldInput.value || '').trim() : '';
+    var thirdFilterOperator = thirdFilterOperatorInput ? String(thirdFilterOperatorInput.value || 'contains').trim() : 'contains';
+    var thirdFilterValue = thirdFilterValueInput ? String(thirdFilterValueInput.value || '').trim() : '';
     var filters = [];
     if (filterField && filterValue) {
-      filters.push({ field: filterField, value: filterValue });
+      filters.push({ field: filterField, value: filterValue, operator: filterOperator || 'contains' });
     }
     if (secondFilterField && secondFilterValue && secondFilterField !== filterField) {
-      filters.push({ field: secondFilterField, value: secondFilterValue });
+      filters.push({ field: secondFilterField, value: secondFilterValue, operator: secondFilterOperator || 'contains' });
+    }
+    if (thirdFilterField && thirdFilterValue && thirdFilterField !== filterField && thirdFilterField !== secondFilterField) {
+      filters.push({ field: thirdFilterField, value: thirdFilterValue, operator: thirdFilterOperator || 'contains' });
+    }
+    var sortField = sortFieldInput ? String(sortFieldInput.value || '').trim() : '';
+    var sortDirection = sortDirectionInput ? String(sortDirectionInput.value || '').trim().toLowerCase() : '';
+    var secondSortField = secondSortFieldInput ? String(secondSortFieldInput.value || '').trim() : '';
+    var secondSortDirection = secondSortDirectionInput ? String(secondSortDirectionInput.value || '').trim().toLowerCase() : '';
+    var thirdSortField = thirdSortFieldInput ? String(thirdSortFieldInput.value || '').trim() : '';
+    var thirdSortDirection = thirdSortDirectionInput ? String(thirdSortDirectionInput.value || '').trim().toLowerCase() : '';
+    var sorts = [];
+    if (sortField && sortDirection) {
+      sorts.push({ field: sortField, direction: sortDirection });
+    }
+    if (secondSortField && secondSortDirection && secondSortField !== sortField) {
+      sorts.push({ field: secondSortField, direction: secondSortDirection });
+    }
+    if (thirdSortField && thirdSortDirection && thirdSortField !== sortField && thirdSortField !== secondSortField) {
+      sorts.push({ field: thirdSortField, direction: thirdSortDirection });
     }
     return {
       q: searchInput ? String(searchInput.value || '').trim() : '',
       filterField: filterField,
       filterValue: filterValue,
+      filterOperator: filterOperator || 'contains',
       secondFilterField: secondFilterField,
       secondFilterValue: secondFilterValue,
+      secondFilterOperator: secondFilterOperator || 'contains',
+      thirdFilterField: thirdFilterField,
+      thirdFilterValue: thirdFilterValue,
+      thirdFilterOperator: thirdFilterOperator || 'contains',
       filters: filters,
-      sortField: sortFieldInput ? String(sortFieldInput.value || '').trim() : '',
-      sortDirection: sortDirectionInput ? String(sortDirectionInput.value || '').trim().toLowerCase() : '',
+      sortField: sortField,
+      sortDirection: sortDirection,
+      secondSortField: secondSortField,
+      secondSortDirection: secondSortDirection,
+      thirdSortField: thirdSortField,
+      thirdSortDirection: thirdSortDirection,
+      sorts: sorts,
       pageSize: pageSizeInput ? String(Math.min(100, Math.max(1, Number(pageSizeInput.value || 1) || 1))) : ''
     };
   }
@@ -2396,7 +3006,10 @@ function app_no_code_runtime_preview_js(): string
     if (!refreshButton) {
       return;
     }
-    refreshRuntimeDataForScreen(screen, refreshButton, 'Fetching paginated read-only live runtime data...', '', page, pageSize, query.q, query.filterField, query.filterValue, query.sortField, query.sortDirection, query.filters);
+    if (stopRuntimeDataFetchForFilterValidation(refreshButton, paginationRoot)) {
+      return;
+    }
+    refreshRuntimeDataForScreen(screen, refreshButton, 'Fetching paginated read-only live runtime data...', '', page, pageSize, query.q, query.filterField, query.filterValue, query.sortField, query.sortDirection, query.filters, 'push', query.sorts);
   }
 
   function refreshRuntimeDataForSearch(button) {
@@ -2410,7 +3023,10 @@ function app_no_code_runtime_preview_js(): string
     if (!refreshButton) {
       return;
     }
-    refreshRuntimeDataForScreen(screen, refreshButton, 'Searching read-only live runtime data...', '', query.pageSize ? '1' : '', query.pageSize, query.q, query.filterField, query.filterValue, query.sortField, query.sortDirection, query.filters);
+    if (stopRuntimeDataFetchForFilterValidation(refreshButton, paginationRoot)) {
+      return;
+    }
+    refreshRuntimeDataForScreen(screen, refreshButton, 'Searching read-only live runtime data...', '', query.pageSize ? '1' : '', query.pageSize, query.q, query.filterField, query.filterValue, query.sortField, query.sortDirection, query.filters, 'push', query.sorts);
   }
 
   function refreshRuntimeDataForFieldFilter(button) {
@@ -2424,7 +3040,10 @@ function app_no_code_runtime_preview_js(): string
     if (!refreshButton) {
       return;
     }
-    refreshRuntimeDataForScreen(screen, refreshButton, 'Filtering read-only live runtime data...', '', query.pageSize ? '1' : '', query.pageSize, query.q, query.filterField, query.filterValue, query.sortField, query.sortDirection, query.filters);
+    if (stopRuntimeDataFetchForFilterValidation(refreshButton, paginationRoot)) {
+      return;
+    }
+    refreshRuntimeDataForScreen(screen, refreshButton, 'Filtering read-only live runtime data...', '', query.pageSize ? '1' : '', query.pageSize, query.q, query.filterField, query.filterValue, query.sortField, query.sortDirection, query.filters, 'push', query.sorts);
   }
 
   function refreshRuntimeDataForSort(button) {
@@ -2438,7 +3057,38 @@ function app_no_code_runtime_preview_js(): string
     if (!refreshButton) {
       return;
     }
-    refreshRuntimeDataForScreen(screen, refreshButton, 'Sorting read-only live runtime data...', '', query.pageSize ? '1' : '', query.pageSize, query.q, query.filterField, query.filterValue, query.sortField, query.sortDirection, query.filters);
+    if (stopRuntimeDataFetchForFilterValidation(refreshButton, paginationRoot)) {
+      return;
+    }
+    refreshRuntimeDataForScreen(screen, refreshButton, 'Sorting read-only live runtime data...', '', query.pageSize ? '1' : '', query.pageSize, query.q, query.filterField, query.filterValue, query.sortField, query.sortDirection, query.filters, 'push', query.sorts);
+  }
+
+  function refreshRuntimeDataForSortHeader(button) {
+    var fieldKey = button ? String(button.getAttribute('data-runtime-sort-field-key') || '').trim() : '';
+    if (!fieldKey || !hasRuntimeDataBinding()) {
+      return;
+    }
+    var screen = button.closest('.no-code-screen');
+    var controls = screen ? screen.querySelector('[data-runtime-data-controls]') : null;
+    var sortButton = controls ? controls.querySelector('[data-runtime-sort-submit]') : null;
+    var sortField = controls ? controls.querySelector('[data-runtime-sort-field]') : null;
+    var sortDirection = controls ? controls.querySelector('[data-runtime-sort-direction]') : null;
+    if (!sortButton || !sortField || !sortDirection) {
+      return;
+    }
+    var currentField = String(sortField.value || '');
+    var currentDirection = String(sortDirection.value || 'asc').toLowerCase();
+    setRuntimeSelectValue(sortField, fieldKey);
+    setRuntimeSelectValue(sortDirection, currentField === fieldKey && currentDirection === 'asc' ? 'desc' : 'asc');
+    setRuntimeSelectValue(controls.querySelector('[data-runtime-sort-field-secondary]'), '');
+    setRuntimeSelectValue(controls.querySelector('[data-runtime-sort-direction-secondary]'), 'asc');
+    setRuntimeSelectValue(controls.querySelector('[data-runtime-sort-field-tertiary]'), '');
+    setRuntimeSelectValue(controls.querySelector('[data-runtime-sort-direction-tertiary]'), 'asc');
+    setRuntimeDataExtraVisibility(controls, 'sort', 'secondary', false);
+    setRuntimeDataExtraVisibility(controls, 'sort', 'tertiary', false);
+    syncRuntimeDataRowVisibility(controls);
+    syncRuntimeSortHeaders(screen, fieldKey, sortDirection.value);
+    refreshRuntimeDataForSort(sortButton);
   }
 
   function refreshRuntimeDataForQueryReset(button) {
@@ -2450,15 +3100,15 @@ function app_no_code_runtime_preview_js(): string
     if (!refreshButton) {
       return;
     }
-    refreshRuntimeDataForScreen(screen, refreshButton, 'Clearing read-only runtime data query controls...');
+    refreshRuntimeDataForScreen(screen, refreshButton, 'Clearing read-only runtime data query controls...', '', '', '', '', '', '', '', '', [], 'replace');
   }
 
-  function refreshRuntimeDataFromBrowserUrl() {
+  function refreshRuntimeDataFromBrowserUrl(forceReplay, browserHistoryMode) {
     if (!hasRuntimeDataBinding()) {
       return;
     }
     var query = runtimeDataQueryFromBrowserUrl();
-    if (!runtimeDataBrowserUrlQueryIsPresent(query)) {
+    if (!runtimeDataBrowserUrlQueryIsPresent(query) && !forceReplay) {
       return;
     }
     var screen = document.querySelector('.no-code-screen[data-screen-type="list"]') || document.querySelector('.no-code-screen');
@@ -2477,7 +3127,10 @@ function app_no_code_runtime_preview_js(): string
       query.filterField,
       query.filterValue,
       query.sortField,
-      query.sortDirection
+      query.sortDirection,
+      query.filters,
+      browserHistoryMode || 'replace',
+      query.sorts
     );
   }
 
@@ -2930,10 +3583,38 @@ function app_no_code_runtime_preview_js(): string
     });
   }
 
+  function bindRuntimeSortHeaders(root) {
+    if (!root) {
+      return;
+    }
+    root.querySelectorAll('[data-runtime-sort-header]').forEach(function (button) {
+      if (button.getAttribute('data-runtime-sort-header-bound') === 'true') {
+        return;
+      }
+      button.setAttribute('data-runtime-sort-header-bound', 'true');
+      button.addEventListener('click', function () {
+        refreshRuntimeDataForSortHeader(button);
+      });
+    });
+  }
+
   function bindRuntimePaginationControls(root) {
     if (!root) {
       return;
     }
+    root.querySelectorAll('[data-runtime-data-controls]').forEach(function (controls) {
+      syncRuntimeDataFilterOperatorChoices(controls);
+      syncRuntimeDataRowVisibility(controls);
+    });
+    root.querySelectorAll('[data-runtime-filter-field], [data-runtime-filter-field-secondary], [data-runtime-filter-field-tertiary]').forEach(function (select) {
+      if (select.getAttribute('data-runtime-filter-field-bound') === 'true') {
+        return;
+      }
+      select.setAttribute('data-runtime-filter-field-bound', 'true');
+      select.addEventListener('change', function () {
+        syncRuntimeDataFilterOperatorChoices(select.closest('[data-runtime-data-controls]'));
+      });
+    });
     root.querySelectorAll('[data-runtime-page], [data-runtime-page-size], [data-runtime-page-size-submit], [data-runtime-page-submit], [data-runtime-search-submit], [data-runtime-filter-submit], [data-runtime-sort-submit], [data-runtime-query-reset]').forEach(function (button) {
       if (button.getAttribute('data-runtime-pagination-bound') === 'true') {
         return;
@@ -2957,6 +3638,27 @@ function app_no_code_runtime_preview_js(): string
           return;
         }
         refreshRuntimeDataForPage(button);
+      });
+    });
+    root.querySelectorAll('[data-runtime-filter-add], [data-runtime-sort-add], [data-runtime-filter-remove], [data-runtime-sort-remove]').forEach(function (button) {
+      if (button.getAttribute('data-runtime-row-builder-bound') === 'true') {
+        return;
+      }
+      button.setAttribute('data-runtime-row-builder-bound', 'true');
+      button.addEventListener('click', function () {
+        if (button.hasAttribute('data-runtime-filter-add')) {
+          revealRuntimeDataExtraRow(button, 'filter');
+          return;
+        }
+        if (button.hasAttribute('data-runtime-sort-add')) {
+          revealRuntimeDataExtraRow(button, 'sort');
+          return;
+        }
+        if (button.hasAttribute('data-runtime-filter-remove')) {
+          removeRuntimeDataExtraRow(button, 'filter');
+          return;
+        }
+        removeRuntimeDataExtraRow(button, 'sort');
       });
     });
   }
@@ -3008,6 +3710,7 @@ function app_no_code_runtime_preview_js(): string
     writeIntentDraft(screen);
     bindScreenControls(screen);
     bindRuntimeListSelection(screen);
+    bindRuntimeSortHeaders(screen);
     bindRuntimePaginationControls(screen);
     if (hasRuntimeDataBinding() && screen.getAttribute('data-screen-type') === 'list') {
       var render = existingPreviewScreenRender(screen.getAttribute('data-screen-key') || '');
@@ -3016,6 +3719,11 @@ function app_no_code_runtime_preview_js(): string
       }
     }
   });
+  if (window.addEventListener) {
+    window.addEventListener('popstate', function () {
+      refreshRuntimeDataFromBrowserUrl(true, 'none');
+    });
+  }
   refreshRuntimeDataFromBrowserUrl();
 }());
 JS;

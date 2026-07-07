@@ -168,7 +168,7 @@ ROOT_TMP_DIR := tmp
 .PHONY: up-user-db-pgsql down-user-db-pgsql reset-user-db-pgsql ps-user-db-pgsql logs-user-db-pgsql health-user-db-pgsql user-db-contract-capture-mysql user-db-contract-capture-sqlite user-db-contract-capture-pgsql user-db-contract-compare user-db-contract-compare-pgsql user-db-contract-test user-db-contract-test-pgsql postgresql-user-db-test-local
 .PHONY: generated-name-migration-capture-samples-before generated-name-migration-capture-samples-after generated-name-migration-validate-sample-keyword-map generated-name-migration-transform-samples-after generated-name-migration-compare-samples generated-name-migration-derive-keyword-map generated-name-migration-derive-sample-keyword-map generated-name-migration-scan-sample-keywords
 .PHONY: mtool-oidc-login-smoke
-.PHONY: sample07-no-code-runtime-ui-smoke sample28-no-code-runtime-ui-smoke sample28-no-code-public-runtime-browser-smoke sample28-no-code-react-bridge-build-smoke sample28-no-code-react-bridge-browser-smoke sample28-no-code-schema-form-runtime-smoke sample29-no-code-runtime-ui-smoke sample29-no-code-public-runtime-browser-smoke sample31-no-code-runtime-ui-smoke sample31-no-code-public-runtime-browser-smoke
+.PHONY: sample07-no-code-runtime-ui-smoke sample28-no-code-runtime-ui-smoke sample28-no-code-public-runtime-browser-smoke sample28-no-code-react-bridge-build-smoke sample28-no-code-react-bridge-browser-smoke sample28-no-code-schema-form-runtime-smoke sample29-no-code-runtime-ui-smoke sample29-no-code-public-runtime-browser-smoke sample31-no-code-runtime-ui-smoke sample31-no-code-public-runtime-browser-smoke sample-no-code-public-runtime-browser-smoke
 
 DOCKER_ENV_TARGETS := \
 	build \
@@ -506,6 +506,8 @@ sample31-no-code-runtime-ui-smoke: sample31-pack-runtime-test ## sample31 NO-COD
 
 sample31-no-code-public-runtime-browser-smoke: ## sample31 public NO-CODE-RUNTIME current/alias submit handoff を headless Chrome で検証する
 	bash mtool/scripts/check_sample31_no_code_public_runtime_browser_smoke.sh
+
+sample-no-code-public-runtime-browser-smoke: sample28-no-code-public-runtime-browser-smoke sample29-no-code-public-runtime-browser-smoke sample31-no-code-public-runtime-browser-smoke ## sample28/29/31 public NO-CODE-RUNTIME browser smoke matrix を実行する
 
 sample08-pack-runtime-test: sample8-output-test ## sample08 tutorial runtime の import/sync/output integration test を実行する
 
