@@ -11,6 +11,8 @@
 
 ## Index
 
+- `2026-0708-mtool-no-code-dogfooding-probe-inventory.md`
+  - #431 first Mtool no-code dogfooding probe inventory。全面 self-replacement ではなく、Source Output / Shared Contracts / interface profile review surface を最初の低リスク probe として選択し、#432-#435 の実装・確認・closure 手順を整理。Push は未実行。Status: `DONE`。
 - `2026-0705-local-commit-stack-review-after-third-domain-confidence.md`
   - #188 third-domain confidence 後の local commit stack review。`develop` は `origin/develop` より 8 commits ahead、現 stack は product meaning ごとに読めるため squash / history rewrite は不要と判断。Push は未実行。Status: `FIRST_SLICE_DONE`。
 - `2026-0705-post-third-domain-confidence-no-code-product-goal-replan.md`
