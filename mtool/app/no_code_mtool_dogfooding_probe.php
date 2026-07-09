@@ -288,6 +288,14 @@ function app_no_code_mtool_dogfooding_probe_inspection_summary(?array $principal
             static fn (array $operation): string => (string) ($operation['availability'] ?? ''),
             $customOperations,
         ))),
+        'custom_operation_availability_states' => array_values(array_unique(array_map(
+            static fn (array $operation): string => (string) ($operation['availability_read_model']['availability_state'] ?? ''),
+            $customOperations,
+        ))),
+        'custom_operation_execution_modes' => array_values(array_unique(array_map(
+            static fn (array $operation): string => (string) ($operation['availability_read_model']['execution_mode'] ?? ''),
+            $customOperations,
+        ))),
         'custom_operation_unavailable_reasons' => array_column($customOperations, 'unavailable_reason'),
         'custom_operation_adapter_handoffs' => array_column($customOperations, 'adapter_handoff'),
         'custom_operation_route_boundaries' => array_column($customOperations, 'route_boundary'),

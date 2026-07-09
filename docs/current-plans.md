@@ -13,7 +13,7 @@ When someone asks for "the plan list", answer from this section first. / 「計�
 
 ### Main Plan / 主計画
 
-Current main status: #539 defines the review workflow availability gate matrix before the metadata-only read model. Availability and generated button execution remain parked, `develop` is 17 commits ahead of `origin/develop`, and push has not been performed for #432-#539/#551. / 現在の主計画ステータス: #539 で metadata-only read model 前の review workflow availability gate matrix を定義しました。availability と generated button execution は parked のまま、`develop` は `origin/develop` より 17 commits ahead、#432-#539/#551 は push していません。
+Current main status: #540 adds a metadata-only availability read model for custom operations before UI preview enablement. Availability and generated button execution remain parked, `develop` is 18 commits ahead of `origin/develop`, and push has not been performed for #432-#540/#551. / 現在の主計画ステータス: #540 で UI preview enablement 前に custom operation の metadata-only availability read model を追加しました。availability と generated button execution は parked のまま、`develop` は `origin/develop` より 18 commits ahead、#432-#540/#551 は push していません。
 
 | Order | Work unit / 作業の塊 | Commit unit / コミット単位 | Status | Rough effort / 目安 |
 | --- | --- | --- | --- | --- |
@@ -98,8 +98,8 @@ Current main status: #539 defines the review workflow availability gate matrix b
 | 537 | Detailed no-code availability plan / no-code availability 詳細計画 | Break availability work into explicit gates before any generated button execution or broader sample UI conversion | `DONE` | 0.25 day / 0.25 日 |
 | 538 | Review workflow availability surface inventory / review workflow availability surface inventory | Inventory current review action surfaces, metadata, route boundaries, guard outcomes, disabled reasons, and test gaps after cleanup | `DONE` | 0.5 day / 半日 |
 | 539 | Review workflow availability gate matrix / review workflow availability gate matrix | Define the exact allowed/blocked/deferred/stale/missing-CSRF/unauthorized availability states and required UI/audit behavior | `DONE` | 0.5 day / 半日 |
-| 540 | Metadata-only availability read model / metadata-only availability read model | Add or refine a read model that exposes availability and unavailable reasons without enabling generated button execution | `ACTIVE_NEXT` | 0.5 - 1 day / 半日 - 1 日 |
-| 541 | Availability UI preview contract / availability UI preview contract | Render the availability state and next action explanation in no-code surfaces while keeping mutation buttons disabled | `TODO_AFTER_REPLAN` | 0.5 day / 半日 |
+| 540 | Metadata-only availability read model / metadata-only availability read model | Add or refine a read model that exposes availability and unavailable reasons without enabling generated button execution | `DONE` | 0.5 - 1 day / 半日 - 1 日 |
+| 541 | Availability UI preview contract / availability UI preview contract | Render the availability state and next action explanation in no-code surfaces while keeping mutation buttons disabled | `ACTIVE_NEXT` | 0.5 day / 半日 |
 | 542 | Review request availability first slice / review request availability first slice | Enable the narrowest review-request availability path only after the gate matrix and read model are covered; generated buttons stay separately gated | `TODO_AFTER_REPLAN` | 1 day / 1 日 |
 | 543 | Post-availability sample UI replan / availability 後の sample UI replan | Choose the first sample UI conversion target and define the no-code gaps to measure before converting more samples | `TODO_AFTER_REPLAN` | 0.5 day / 半日 |
 | 544 | L1 bridge sample UI candidate inventory / L1 bridge sample UI candidate inventory | Compare sample UIs by domain shape, data access, form complexity, actions, browser smoke coverage, and expected no-code gaps | `PARKED_BRIDGE_AFTER_AVAILABILITY` | 0.5 day / 半日 |
@@ -163,7 +163,7 @@ Current main status: #539 defines the review workflow availability gate matrix b
 - A route-local helper now persists or reuses review requests for accepted-plan results, and exposes `recorded` / `duplicate` / `failed` / `skipped` status to the result page. / route-local helper は accepted-plan result の review request を persist または reuse し、result page に `recorded` / `duplicate` / `failed` / `skipped` status を公開します。
 - Generated HTML and React bridge handoffs remain metadata-only. / generated HTML と React bridge handoff は metadata-only のままです。
 - Generated operator action buttons remain disabled until a separate implementation lane explicitly enables execution. / generated operator action button は、別の implementation lane が明示的に execution を有効化するまで disabled のままです。
-- Availability enablement is parked while the current 17-commit local stack remains unpushed. / 現在の 17 commit local stack が unpushed の間、availability enablement は parked です。
+- Availability enablement is parked while the current 18-commit local stack remains unpushed. / 現在の 18 commit local stack が unpushed の間、availability enablement は parked です。
 - Local history cleanup has been applied; pre-cleanup refs are `refs/backup/no-code-stack-before-cleanup-20260709` and `refs/backup/no-code-stack-with-cleanup-plan-20260709`. / local history cleanup は実行済みです。cleanup 前 ref は `refs/backup/no-code-stack-before-cleanup-20260709` と `refs/backup/no-code-stack-with-cleanup-plan-20260709` です。
 - Long-term no-code direction is sample UI conversion, Mtool self no-code dogfooding, AI structural normalization, and instant no-code UI generation from materials. / 長期 No Code 方向性は sample UI 変換、Mtool 自身の No Code dogfooding、AI による構造正規化、資料からの即時 No Code UI 生成です。
 - No-code UI testing should start with fast JSON/DOM contract tests; headless Chrome remains a representative smoke gate, not the default inner-loop test. / No Code UI testing は fast JSON / DOM contract test から始めます。headless Chrome は代表 smoke gate として残し、default inner-loop test にはしません。
@@ -500,6 +500,15 @@ For #538, docs-only verification is `git diff --check`.
 
 For #539, docs-only verification is `git diff --check`.
 
+Latest code verification from #540:
+
+- `php -l mtool/app/no_code_screen_definition.php`
+- `php -l mtool/app/no_code_mtool_dogfooding_probe.php`
+- `php -l tests/Integration/NoCodeScreenDefinitionTest.php`
+- Focused PHPUnit: `OK (8 tests, 183 assertions)`
+- `make test`: `OK, but incomplete, skipped, or risky tests! Tests: 376, Assertions: 11631, Skipped: 1.`
+- `git diff --check`
+
 ## Auxiliary Later Review / 補助・後日検討
 
 These are useful candidates, but they are not part of the main plan unless a fresh priority decision promotes them. / これらは有用な候補ですが、新しい優先判断で昇格するまでは主計画には含めません。
@@ -519,6 +528,7 @@ Completed detailed history was moved out of this active list. / 完了済みの�
 
 | Completed scope / 完了済み範囲 | Historical source / 履歴ソース |
 | --- | --- |
+| Metadata-only availability read model / metadata-only availability read model | [2026-0709 Metadata-Only Availability Read Model](reports/2026/2026-0709-metadata-only-availability-read-model.md) |
 | Review workflow availability gate matrix / review workflow availability gate matrix | [2026-0709 Review Workflow Availability Gate Matrix](reports/2026/2026-0709-review-workflow-availability-gate-matrix.md) |
 | Review workflow availability surface inventory / review workflow availability surface inventory | [2026-0709 Review Workflow Availability Surface Inventory](reports/2026/2026-0709-review-workflow-availability-surface-inventory.md) |
 | Lightweight no-code UI testing plan / lightweight no-code UI testing plan | [2026-0709 Lightweight No-Code UI Testing Plan](reports/2026/2026-0709-lightweight-no-code-ui-testing-plan.md) |

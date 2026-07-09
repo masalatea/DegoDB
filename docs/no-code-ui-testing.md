@@ -1,5 +1,6 @@
 # No-Code UI Testing
 
+English companion:
 This document defines the default testing shape for generated no-code UI. It is a durable design note, not a dated progress report.
 
 ## Goal

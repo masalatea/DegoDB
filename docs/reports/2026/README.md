@@ -11,6 +11,8 @@
 
 ## Index
 
+- `2026-0709-metadata-only-availability-read-model.md`
+  - #540 metadata-only availability read model。custom operation と extension slot action item に `availability_read_model` を追加し、`availability_state` / `preflight_result` / `execution_mode` / `generated_button_enabled=false` を生成 metadata へ公開。Status: `DONE`。
 - `2026-0709-review-workflow-availability-gate-matrix.md`
   - #539 review workflow availability gate matrix。operation availability、preflight/guard result、UI marker/copy、audit、persistence/read-model expectations を分離し、#540 metadata-only read model の入力を定義。Status: `DONE`。
 - `2026-0709-review-workflow-availability-surface-inventory.md`

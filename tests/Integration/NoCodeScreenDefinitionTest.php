@@ -211,6 +211,15 @@ final class NoCodeScreenDefinitionTest extends TestCase
             $contract['custom_operations'][0]['route_boundary']['path'] ?? '',
         );
         self::assertContains('stale_artifact', $contract['custom_operations'][0]['route_boundary']['failure_modes'] ?? []);
+        self::assertSame('deferred', $contract['custom_operations'][0]['availability_read_model']['operation_availability'] ?? '');
+        self::assertSame('deferred', $contract['custom_operations'][0]['availability_read_model']['availability_state'] ?? '');
+        self::assertSame('blocked', $contract['custom_operations'][0]['availability_read_model']['preflight_result'] ?? '');
+        self::assertSame('metadata-only', $contract['custom_operations'][0]['availability_read_model']['execution_mode'] ?? '');
+        self::assertFalse($contract['custom_operations'][0]['availability_read_model']['generated_button_enabled'] ?? true);
+        self::assertSame(
+            '/projects/{project_key}/source-outputs/{source_output_key}/operations/review-source-output-artifact',
+            $contract['custom_operations'][0]['availability_read_model']['route_boundary']['path'] ?? '',
+        );
         self::assertStringContainsString(
             'Execution route is not wired yet',
             $contract['custom_operations'][0]['unavailable_reason'] ?? '',
@@ -222,6 +231,11 @@ final class NoCodeScreenDefinitionTest extends TestCase
         );
         self::assertSame('mtool_operator_admin', $contract['custom_operations'][1]['route_boundary']['auth_guard'] ?? '');
         self::assertContains('duplicate_request', $contract['custom_operations'][1]['route_boundary']['failure_modes'] ?? []);
+        self::assertSame('deferred', $contract['custom_operations'][1]['availability_read_model']['availability_state'] ?? '');
+        self::assertStringContainsString(
+            'Publish request execution is deferred',
+            $contract['custom_operations'][1]['availability_read_model']['availability_reason'] ?? '',
+        );
         self::assertSame(
             ['related_settings_panel', 'artifact_status_panel'],
             array_column($contract['screens'][0]['extension_slots'] ?? [], 'slot_type'),
@@ -324,6 +338,17 @@ final class NoCodeScreenDefinitionTest extends TestCase
             $runtimePreview['screens'][1]['extension_slots'][2]['action_items'][0]['route_boundary']['method'] ?? '',
         );
         self::assertSame(
+            'deferred',
+            $runtimePreview['screens'][1]['extension_slots'][2]['action_items'][0]['availability_read_model']['availability_state'] ?? '',
+        );
+        self::assertSame(
+            'metadata-only',
+            $runtimePreview['screens'][1]['extension_slots'][2]['action_items'][0]['availability_read_model']['execution_mode'] ?? '',
+        );
+        self::assertFalse(
+            $runtimePreview['screens'][1]['extension_slots'][2]['action_items'][0]['availability_read_model']['generated_button_enabled'] ?? true,
+        );
+        self::assertSame(
             'mtool_operator_admin',
             $runtimePreview['screens'][1]['extension_slots'][2]['action_items'][0]['route_boundary']['auth_guard'] ?? '',
         );
@@ -388,6 +413,8 @@ final class NoCodeScreenDefinitionTest extends TestCase
         self::assertSame(['review_request', 'publish'], $summary['custom_operation_categories'] ?? []);
         self::assertSame(['external_handoff', 'approval_transition'], $summary['custom_operation_side_effect_classes'] ?? []);
         self::assertSame(['deferred'], $summary['custom_operation_availability'] ?? []);
+        self::assertSame(['deferred'], $summary['custom_operation_availability_states'] ?? []);
+        self::assertSame(['metadata-only'], $summary['custom_operation_execution_modes'] ?? []);
         self::assertSame(
             [
                 'Execution route is not wired yet; policy, CSRF, audit, and review workflow boundaries must be connected first.',
