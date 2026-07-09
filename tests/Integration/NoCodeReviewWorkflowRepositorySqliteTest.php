@@ -128,6 +128,127 @@ final class NoCodeReviewWorkflowRepositorySqliteTest extends TestCase
         self::assertSame([], $latest['items']);
     }
 
+    public function testReviewWorkflowRepositoryRejectsInvalidPayloadShapesWithoutCreatingRows(): void
+    {
+        $app = $this->sqliteApp();
+        $bootstrap = app_config_db_bootstrap_apply($app);
+        self::assertTrue($bootstrap['ok'], $bootstrap['error']);
+
+        $invalidAuditEvent = app_no_code_review_workflow_create_or_reuse_request($app, $this->requestInput([
+            'review_request_key' => 'review_invalid_audit_event_' . bin2hex(random_bytes(4)),
+            'artifact_key' => 'artifact-invalid-audit-event',
+            'audit_event' => 'not-an-array',
+        ]));
+        self::assertFalse($invalidAuditEvent['ok']);
+        self::assertSame('failed', $invalidAuditEvent['result']);
+        self::assertStringContainsString('review workflow audit_event must be an array.', $invalidAuditEvent['error']);
+
+        $invalidMetadata = app_no_code_review_workflow_create_or_reuse_request($app, $this->requestInput([
+            'review_request_key' => 'review_invalid_metadata_' . bin2hex(random_bytes(4)),
+            'artifact_key' => 'artifact-invalid-metadata',
+            'metadata' => 'not-an-array',
+        ]));
+        self::assertFalse($invalidMetadata['ok']);
+        self::assertSame('failed', $invalidMetadata['result']);
+        self::assertStringContainsString('review workflow metadata must be an array.', $invalidMetadata['error']);
+
+        $latest = app_no_code_review_workflow_fetch_latest_requests($app, [
+            'limit' => 10,
+        ]);
+        self::assertTrue($latest['ok'], $latest['error']);
+        self::assertSame([], $latest['items']);
+    }
+
+    public function testReviewWorkflowItemFromRowFallsBackWhenStoredPayloadJsonIsMalformed(): void
+    {
+        $item = app_no_code_review_workflow_item_from_row([
+            'review_request_key' => 'review_malformed_payload',
+            'project_key' => 'MTOOL',
+            'source_output_key' => 'NO-CODE-RUNTIME',
+            'artifact_key' => 'artifact-malformed-payload',
+            'operation_key' => 'review_source_output_artifact',
+            'adapter_handoff' => 'mtool_source_output_review',
+            'status' => 'requested',
+            'requested_by' => 'operator@example.test',
+            'requested_at' => '2026-07-09 00:00:00',
+            'source_output_dir' => '/work/projects/MTOOL/source-outputs/NO-CODE-RUNTIME',
+            'policy_key' => 'source_output.review',
+            'audit_event' => '{malformed-audit-json',
+            'metadata_json' => '{malformed-metadata-json',
+            'created_at' => '2026-07-09 00:00:00',
+            'updated_at' => '2026-07-09 00:00:00',
+        ]);
+
+        self::assertSame([], $item['audit_event']);
+        self::assertSame([], $item['metadata']);
+        self::assertSame('review_malformed_payload', $item['review_request_key']);
+    }
+
+    public function testReviewWorkflowRepositoryNormalizesBlankOptionalFieldsToDefaults(): void
+    {
+        $app = $this->sqliteApp();
+        $bootstrap = app_config_db_bootstrap_apply($app);
+        self::assertTrue($bootstrap['ok'], $bootstrap['error']);
+
+        $create = app_no_code_review_workflow_create_or_reuse_request($app, $this->requestInput([
+            'review_request_key' => 'review_optional_defaults_' . bin2hex(random_bytes(4)),
+            'artifact_key' => 'artifact-optional-defaults',
+            'operation_key' => ' ',
+            'adapter_handoff' => '',
+            'policy_key' => " \t ",
+        ]));
+
+        self::assertTrue($create['ok'], $create['error']);
+        self::assertTrue($create['created']);
+        self::assertSame('review_source_output_artifact', $create['item']['operation_key'] ?? '');
+        self::assertSame('mtool_source_output_review', $create['item']['adapter_handoff'] ?? '');
+        self::assertSame('source_output.review', $create['item']['policy_key'] ?? '');
+    }
+
+    public function testReviewWorkflowRepositoryNormalizesBlankSourceOutputDirToEmptyString(): void
+    {
+        $app = $this->sqliteApp();
+        $bootstrap = app_config_db_bootstrap_apply($app);
+        self::assertTrue($bootstrap['ok'], $bootstrap['error']);
+
+        $create = app_no_code_review_workflow_create_or_reuse_request($app, $this->requestInput([
+            'review_request_key' => 'review_blank_source_output_dir_' . bin2hex(random_bytes(4)),
+            'artifact_key' => 'artifact-blank-source-output-dir',
+            'source_output_dir' => " \t ",
+        ]));
+
+        self::assertTrue($create['ok'], $create['error']);
+        self::assertTrue($create['created']);
+        self::assertSame('', $create['item']['source_output_dir'] ?? null);
+    }
+
+    public function testReviewWorkflowRepositoryGeneratesRequestKeyWhenBlank(): void
+    {
+        $app = $this->sqliteApp();
+        $bootstrap = app_config_db_bootstrap_apply($app);
+        self::assertTrue($bootstrap['ok'], $bootstrap['error']);
+
+        $create = app_no_code_review_workflow_create_or_reuse_request($app, $this->requestInput([
+            'review_request_key' => ' ',
+            'artifact_key' => 'artifact-generated-request-key',
+        ]));
+
+        self::assertTrue($create['ok'], $create['error']);
+        self::assertTrue($create['created']);
+        $generatedKey = $create['item']['review_request_key'] ?? '';
+        self::assertNotSame('', $generatedKey);
+        self::assertStringStartsWith('review_', $generatedKey);
+
+        $latest = app_no_code_review_workflow_fetch_latest_requests($app, [
+            'project_key' => 'MTOOL',
+            'artifact_key' => 'artifact-generated-request-key',
+            'limit' => 10,
+        ]);
+        self::assertTrue($latest['ok'], $latest['error']);
+        self::assertCount(1, $latest['items']);
+        self::assertSame($generatedKey, $latest['items'][0]['review_request_key'] ?? '');
+    }
+
     public function testReviewWorkflowFetchLatestCanFilterByStatusRequestedByAndLimit(): void
     {
         $app = $this->sqliteApp();
@@ -174,6 +295,39 @@ final class NoCodeReviewWorkflowRepositorySqliteTest extends TestCase
         ]);
         self::assertTrue($limited['ok'], $limited['error']);
         self::assertCount(2, $limited['items']);
+    }
+
+    public function testReviewWorkflowFetchLatestClampsNonPositiveLimitsToMinimum(): void
+    {
+        $app = $this->sqliteApp();
+        $bootstrap = app_config_db_bootstrap_apply($app);
+        self::assertTrue($bootstrap['ok'], $bootstrap['error']);
+
+        $first = app_no_code_review_workflow_create_or_reuse_request($app, $this->requestInput([
+            'review_request_key' => 'review_limit_first_' . bin2hex(random_bytes(4)),
+            'artifact_key' => 'artifact-limit-first',
+        ]));
+        self::assertTrue($first['ok'], $first['error']);
+
+        $second = app_no_code_review_workflow_create_or_reuse_request($app, $this->requestInput([
+            'review_request_key' => 'review_limit_second_' . bin2hex(random_bytes(4)),
+            'artifact_key' => 'artifact-limit-second',
+        ]));
+        self::assertTrue($second['ok'], $second['error']);
+
+        $zeroLimit = app_no_code_review_workflow_fetch_latest_requests($app, [
+            'project_key' => 'MTOOL',
+            'limit' => 0,
+        ]);
+        self::assertTrue($zeroLimit['ok'], $zeroLimit['error']);
+        self::assertCount(1, $zeroLimit['items']);
+
+        $negativeLimit = app_no_code_review_workflow_fetch_latest_requests($app, [
+            'project_key' => 'MTOOL',
+            'limit' => -10,
+        ]);
+        self::assertTrue($negativeLimit['ok'], $negativeLimit['error']);
+        self::assertCount(1, $negativeLimit['items']);
     }
 
     public function testReviewWorkflowFetchLatestCanFilterBySourceOutputArtifactAndOperation(): void

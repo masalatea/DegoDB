@@ -11,6 +11,42 @@
 
 ## Index
 
+- `2026-0709-no-push-stack-checkpoint-after-decoded-payload-fallback.md`
+  - #525 decoded payload fallback 後の no-push stack checkpoint。PUSH なしで継続する場合も named non-executable hardening のみに限定し、次は requested-by required-field coverage を昇格。availability / generated button execution / push は未実行。Status: `DONE`。
+- `2026-0709-review-workflow-repository-decoded-payload-fallback-lane-closure.md`
+  - #524 review workflow repository decoded payload fallback lane closure。#523 の focused coverage を accepted capability として閉じ、malformed stored audit / metadata JSON の empty-array fallback boundary を記録。availability / generated button execution / push は未実行。Status: `DONE`。
+- `2026-0709-review-workflow-repository-decoded-payload-fallback-coverage.md`
+  - #523 review workflow repository decoded payload fallback coverage。malformed stored audit / metadata JSON が read model で empty arrays に落ちることを focused coverage で確認。availability / generated button execution / push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0709-no-push-stack-checkpoint-after-source-output-dir-normalization.md`
+  - #522 source output dir normalization 後の no-push stack checkpoint。PUSH なしで継続する場合も named non-executable hardening のみに限定し、次は decoded payload fallback coverage を昇格。availability / generated button execution / push は未実行。Status: `DONE`。
+- `2026-0709-review-workflow-repository-source-output-dir-normalization-lane-closure.md`
+  - #521 review workflow repository source output dir normalization lane closure。#520 の focused coverage を accepted capability として閉じ、blank source output dir の empty string normalization boundary を記録。availability / generated button execution / push は未実行。Status: `DONE`。
+- `2026-0709-review-workflow-repository-source-output-dir-normalization-coverage.md`
+  - #520 review workflow repository source output dir normalization coverage。blank `source_output_dir` が empty string に normalize されることを focused coverage で確認。availability / generated button execution / push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0709-no-push-stack-checkpoint-after-generated-request-key-coverage.md`
+  - #519 generated request key coverage 後の no-push stack checkpoint。PUSH なしで継続する場合も named non-executable hardening のみに限定し、次は source output dir normalization coverage を昇格。availability / generated button execution / push は未実行。Status: `DONE`。
+- `2026-0709-review-workflow-repository-generated-request-key-lane-closure.md`
+  - #518 review workflow repository generated request key lane closure。#517 の focused coverage を accepted capability として閉じ、blank request key の generate / persist / fetch boundary を記録。availability / generated button execution / push は未実行。Status: `DONE`。
+- `2026-0709-review-workflow-repository-generated-request-key-coverage.md`
+  - #517 review workflow repository generated request key coverage。blank `review_request_key` input が request key を生成して persist し、fetch で読み戻せることを focused coverage で確認。availability / generated button execution / push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0709-no-push-stack-checkpoint-after-optional-default-normalization.md`
+  - #516 optional default normalization 後の no-push stack checkpoint。PUSH なしで継続する場合も named non-executable hardening のみに限定し、次は generated request key coverage を昇格。availability / generated button execution / push は未実行。Status: `DONE`。
+- `2026-0709-review-workflow-repository-optional-default-normalization-lane-closure.md`
+  - #515 review workflow repository optional default normalization lane closure。#514 の focused coverage を accepted capability として閉じ、blank optional fields の default normalization boundary を記録。availability / generated button execution / push は未実行。Status: `DONE`。
+- `2026-0709-review-workflow-repository-optional-default-normalization-coverage.md`
+  - #514 review workflow repository optional default normalization coverage。blank optional operation / adapter_handoff / policy_key が repository defaults に normalize されることを focused coverage で確認。availability / generated button execution / push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0709-no-push-stack-checkpoint-after-payload-shape-validation.md`
+  - #513 payload shape validation 後の no-push stack checkpoint。PUSH なしで継続する場合も named non-executable hardening のみに限定し、次は optional default normalization coverage を昇格。availability / generated button execution / push は未実行。Status: `DONE`。
+- `2026-0709-review-workflow-repository-payload-shape-validation-lane-closure.md`
+  - #512 review workflow repository payload shape validation lane closure。#511 の focused coverage を accepted capability として閉じ、non-array payload が row を作らず fail closed する boundary を記録。availability / generated button execution / push は未実行。Status: `DONE`。
+- `2026-0709-review-workflow-repository-payload-shape-validation-coverage.md`
+  - #511 review workflow repository payload shape validation coverage。non-array `audit_event` / `metadata` payload が row を作らず fail closed することを focused coverage で確認。availability / generated button execution / push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0709-no-push-stack-checkpoint-after-fetch-limit-normalization.md`
+  - #510 fetch limit normalization 後の no-push stack checkpoint。PUSH なしで継続する場合も named non-executable hardening のみに限定し、次は payload shape validation coverage を昇格。availability / generated button execution / push は未実行。Status: `DONE`。
+- `2026-0709-review-workflow-repository-fetch-limit-normalization-lane-closure.md`
+  - #509 review workflow repository fetch limit normalization lane closure。#508 の focused coverage を accepted capability として閉じ、non-positive limit の safe minimum boundary を記録。availability / generated button execution / push は未実行。Status: `DONE`。
+- `2026-0709-review-workflow-repository-fetch-limit-normalization-coverage.md`
+  - #508 review workflow repository fetch limit normalization coverage。non-positive latest-request fetch limit が safe minimum 1 に clamp されることを focused coverage で確認。availability / generated button execution / push は未実行。Status: `FIRST_SLICE_DONE`。
 - `2026-0709-no-push-stack-checkpoint-after-closed-status-matrix-coverage.md`
   - #507 closed-status matrix coverage 後の no-push stack checkpoint。PUSH なしで継続する場合も named non-executable hardening のみに限定し、次は fetch limit normalization coverage を昇格。availability / generated button execution / push は未実行。Status: `DONE`。
 - `2026-0709-review-workflow-repository-remaining-closed-status-duplicate-matrix-lane-closure.md`

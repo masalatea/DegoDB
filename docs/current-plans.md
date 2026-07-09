@@ -13,7 +13,7 @@ When someone asks for "the plan list", answer from this section first. / 「計�
 
 ### Main Plan / 主計画
 
-Current main status: #507 checkpoints the no-push stack after closed-status matrix coverage. Continue only with named non-executable hardening; the next promoted lane is review workflow repository fetch limit normalization coverage. Availability and generated button execution remain parked, `develop` is 74 commits ahead of `origin/develop`, and push has not been performed for #432-#507. / 現在の主計画ステータス: #507 で closed-status matrix coverage 後の no-push stack を checkpoint しました。名前付き non-executable hardening のみ継続し、次は review workflow repository fetch limit normalization coverage を昇格します。availability と generated button execution は parked のまま、`develop` は `origin/develop` より 74 commits ahead、#432-#507 は push していません。
+Current main status: #525 checkpoints the no-push stack after decoded payload fallback. Continue only with named non-executable hardening; the next promoted lane is review workflow repository requested-by required-field coverage. Availability and generated button execution remain parked, `develop` is 92 commits ahead of `origin/develop`, and push has not been performed for #432-#525. / 現在の主計画ステータス: #525 で decoded payload fallback 後の no-push stack を checkpoint しました。名前付き non-executable hardening のみ継続し、次は review workflow repository requested-by required-field coverage を昇格します。availability と generated button execution は parked のまま、`develop` は `origin/develop` より 92 commits ahead、#432-#525 は push していません。
 
 | Order | Work unit / 作業の塊 | Commit unit / コミット単位 | Status | Rough effort / 目安 |
 | --- | --- | --- | --- | --- |
@@ -66,7 +66,25 @@ Current main status: #507 checkpoints the no-push stack after closed-status matr
 | 505 | Review workflow repository remaining closed-status duplicate matrix coverage / review workflow repository remaining closed-status duplicate matrix coverage | Add focused coverage that rejected, cancelled, and superseded requests do not block a new request for the same identity | `DONE` | 0.5 day / 半日 |
 | 506 | Review workflow repository remaining closed-status duplicate matrix lane closure / review workflow repository remaining closed-status duplicate matrix lane closure | Close remaining closed-status duplicate matrix coverage and decide whether to pause local commits again | `DONE` | 0.25 day / 0.25 日 |
 | 507 | No-push stack checkpoint after closed-status matrix coverage / closed-status matrix coverage 後の no-push stack checkpoint | Decide whether to pause local commits or continue only with another named non-executable hardening lane | `DONE` | 0.25 day / 0.25 日 |
-| 508 | Review workflow repository fetch limit normalization coverage / review workflow repository fetch limit normalization coverage | Add focused coverage that non-positive latest-request limits are clamped to a safe minimum without enabling availability or generated buttons | `ACTIVE_NEXT` | 0.5 day / 半日 |
+| 508 | Review workflow repository fetch limit normalization coverage / review workflow repository fetch limit normalization coverage | Add focused coverage that non-positive latest-request limits are clamped to a safe minimum without enabling availability or generated buttons | `DONE` | 0.5 day / 半日 |
+| 509 | Review workflow repository fetch limit normalization lane closure / review workflow repository fetch limit normalization lane closure | Close fetch limit normalization coverage and decide whether to pause local commits again | `DONE` | 0.25 day / 0.25 日 |
+| 510 | No-push stack checkpoint after fetch limit normalization / fetch limit normalization 後の no-push stack checkpoint | Decide whether to pause local commits or continue only with another named non-executable hardening lane | `DONE` | 0.25 day / 0.25 日 |
+| 511 | Review workflow repository payload shape validation coverage / review workflow repository payload shape validation coverage | Add focused coverage that non-array audit_event and metadata payloads fail closed without creating review request rows | `DONE` | 0.5 day / 半日 |
+| 512 | Review workflow repository payload shape validation lane closure / review workflow repository payload shape validation lane closure | Close payload shape validation coverage and decide whether to pause local commits again | `DONE` | 0.25 day / 0.25 日 |
+| 513 | No-push stack checkpoint after payload shape validation / payload shape validation 後の no-push stack checkpoint | Decide whether to pause local commits or continue only with another named non-executable hardening lane | `DONE` | 0.25 day / 0.25 日 |
+| 514 | Review workflow repository optional default normalization coverage / review workflow repository optional default normalization coverage | Add focused coverage that blank optional operation, adapter, and policy fields normalize to repository defaults | `DONE` | 0.5 day / 半日 |
+| 515 | Review workflow repository optional default normalization lane closure / review workflow repository optional default normalization lane closure | Close optional default normalization coverage and decide whether to pause local commits again | `DONE` | 0.25 day / 0.25 日 |
+| 516 | No-push stack checkpoint after optional default normalization / optional default normalization 後の no-push stack checkpoint | Decide whether to pause local commits or continue only with another named non-executable hardening lane | `DONE` | 0.25 day / 0.25 日 |
+| 517 | Review workflow repository generated request key coverage / review workflow repository generated request key coverage | Add focused coverage that blank review_request_key inputs generate and persist a review request key without enabling execution | `DONE` | 0.5 day / 半日 |
+| 518 | Review workflow repository generated request key lane closure / review workflow repository generated request key lane closure | Close generated request key coverage and decide whether to pause local commits again | `DONE` | 0.25 day / 0.25 日 |
+| 519 | No-push stack checkpoint after generated request key coverage / generated request key coverage 後の no-push stack checkpoint | Decide whether to pause local commits or continue only with another named non-executable hardening lane | `DONE` | 0.25 day / 0.25 日 |
+| 520 | Review workflow repository source output dir normalization coverage / review workflow repository source output dir normalization coverage | Add focused coverage that blank source_output_dir normalizes to an empty string without enabling execution | `DONE` | 0.5 day / 半日 |
+| 521 | Review workflow repository source output dir normalization lane closure / review workflow repository source output dir normalization lane closure | Close source output dir normalization coverage and decide whether to pause local commits again | `DONE` | 0.25 day / 0.25 日 |
+| 522 | No-push stack checkpoint after source output dir normalization / source output dir normalization 後の no-push stack checkpoint | Decide whether to pause local commits or continue only with another named non-executable hardening lane | `DONE` | 0.25 day / 0.25 日 |
+| 523 | Review workflow repository decoded payload fallback coverage / review workflow repository decoded payload fallback coverage | Add focused coverage that malformed stored audit/metadata JSON decodes to empty arrays without enabling execution | `DONE` | 0.5 day / 半日 |
+| 524 | Review workflow repository decoded payload fallback lane closure / review workflow repository decoded payload fallback lane closure | Close decoded payload fallback coverage and decide whether to pause local commits again | `DONE` | 0.25 day / 0.25 日 |
+| 525 | No-push stack checkpoint after decoded payload fallback / decoded payload fallback 後の no-push stack checkpoint | Decide whether to pause local commits or continue only with another named non-executable hardening lane | `DONE` | 0.25 day / 0.25 日 |
+| 526 | Review workflow repository requested-by required-field coverage / review workflow repository requested-by required-field coverage | Add focused coverage that blank requested_by fails closed without creating review request rows | `ACTIVE_NEXT` | 0.5 day / 半日 |
 
 ### Current Boundary / 現在の境界
 
@@ -76,7 +94,7 @@ Current main status: #507 checkpoints the no-push stack after closed-status matr
 - A route-local helper now persists or reuses review requests for accepted-plan results, and exposes `recorded` / `duplicate` / `failed` / `skipped` status to the result page. / route-local helper は accepted-plan result の review request を persist または reuse し、result page に `recorded` / `duplicate` / `failed` / `skipped` status を公開します。
 - Generated HTML and React bridge handoffs remain metadata-only. / generated HTML と React bridge handoff は metadata-only のままです。
 - Generated operator action buttons remain disabled until a separate implementation lane explicitly enables execution. / generated operator action button は、別の implementation lane が明示的に execution を有効化するまで disabled のままです。
-- Availability enablement is parked while the current 74-commit local stack remains unpushed. / 現在の 74 commit local stack が unpushed の間、availability enablement は parked です。
+- Availability enablement is parked while the current 92-commit local stack remains unpushed. / 現在の 92 commit local stack が unpushed の間、availability enablement は parked です。
 - The current push decision is to hold locally; no push is performed without a new explicit user request. / 現在の push 判断は local hold です。新しい明示的な user request がない限り push は行いません。
 - No build, publish, review-request, approval, rollback, mutation, custom component execution, or custom operation dispatch route is currently enabled through this lane. / この lane では build、publish、review-request、approval、rollback、mutation、custom component execution、custom operation dispatch route はまだ有効化していません。
 - Push is not performed unless the user explicitly requests it. / user が明示するまで push は行いません。
@@ -293,6 +311,72 @@ For #506, docs-only verification is `git diff --check`.
 
 For #507, docs-only verification is `git diff --check`.
 
+Latest code verification from #508:
+
+- `php -l tests/Integration/NoCodeReviewWorkflowRepositorySqliteTest.php`
+- Focused PHPUnit review workflow repository fetch limit normalization: `OK (8 tests, 108 assertions)`
+- `make test`: `OK, but incomplete, skipped, or risky tests! Tests: 369, Assertions: 11564, Skipped: 1.`
+- `git diff --check`
+
+For #509, docs-only verification is `git diff --check`.
+
+For #510, docs-only verification is `git diff --check`.
+
+Latest code verification from #511:
+
+- `php -l tests/Integration/NoCodeReviewWorkflowRepositorySqliteTest.php`
+- Focused PHPUnit review workflow repository payload shape validation: `OK (9 tests, 117 assertions)`
+- `make test`: `OK, but incomplete, skipped, or risky tests! Tests: 370, Assertions: 11573, Skipped: 1.`
+- `git diff --check`
+
+For #512, docs-only verification is `git diff --check`.
+
+For #513, docs-only verification is `git diff --check`.
+
+Latest code verification from #514:
+
+- `php -l tests/Integration/NoCodeReviewWorkflowRepositorySqliteTest.php`
+- Focused PHPUnit review workflow repository optional default normalization: `OK (10 tests, 123 assertions)`
+- `make test`: `OK, but incomplete, skipped, or risky tests! Tests: 371, Assertions: 11579, Skipped: 1.`
+- `git diff --check`
+
+For #515, docs-only verification is `git diff --check`.
+
+For #516, docs-only verification is `git diff --check`.
+
+Latest code verification from #517:
+
+- `php -l tests/Integration/NoCodeReviewWorkflowRepositorySqliteTest.php`
+- Focused PHPUnit review workflow repository generated request key: `OK (11 tests, 131 assertions)`
+- `make test`: `OK, but incomplete, skipped, or risky tests! Tests: 372, Assertions: 11587, Skipped: 1.`
+- `git diff --check`
+
+For #518, docs-only verification is `git diff --check`.
+
+For #519, docs-only verification is `git diff --check`.
+
+Latest code verification from #520:
+
+- `php -l tests/Integration/NoCodeReviewWorkflowRepositorySqliteTest.php`
+- Focused PHPUnit review workflow repository source output dir normalization: `OK (12 tests, 135 assertions)`
+- `make test`: `OK, but incomplete, skipped, or risky tests! Tests: 373, Assertions: 11591, Skipped: 1.`
+- `git diff --check`
+
+For #521, docs-only verification is `git diff --check`.
+
+For #522, docs-only verification is `git diff --check`.
+
+Latest code verification from #523:
+
+- `php -l tests/Integration/NoCodeReviewWorkflowRepositorySqliteTest.php`
+- Focused PHPUnit review workflow repository decoded payload fallback: `OK (13 tests, 138 assertions)`
+- `make test`: `OK, but incomplete, skipped, or risky tests! Tests: 374, Assertions: 11594, Skipped: 1.`
+- `git diff --check`
+
+For #524, docs-only verification is `git diff --check`.
+
+For #525, docs-only verification is `git diff --check`.
+
 ## Auxiliary Later Review / 補助・後日検討
 
 These are useful candidates, but they are not part of the main plan unless a fresh priority decision promotes them. / これらは有用な候補ですが、新しい優先判断で昇格するまでは主計画には含めません。
@@ -312,6 +396,24 @@ Completed detailed history was moved out of this active list. / 完了済みの�
 
 | Completed scope / 完了済み範囲 | Historical source / 履歴ソース |
 | --- | --- |
+| No-push stack checkpoint after decoded payload fallback / decoded payload fallback 後の no-push stack checkpoint | [2026-0709 No-Push Stack Checkpoint After Decoded Payload Fallback](reports/2026/2026-0709-no-push-stack-checkpoint-after-decoded-payload-fallback.md) |
+| Review workflow repository decoded payload fallback lane closure / review workflow repository decoded payload fallback lane closure | [2026-0709 Review Workflow Repository Decoded Payload Fallback Lane Closure](reports/2026/2026-0709-review-workflow-repository-decoded-payload-fallback-lane-closure.md) |
+| Review workflow repository decoded payload fallback coverage / review workflow repository decoded payload fallback coverage | [2026-0709 Review Workflow Repository Decoded Payload Fallback Coverage](reports/2026/2026-0709-review-workflow-repository-decoded-payload-fallback-coverage.md) |
+| No-push stack checkpoint after source output dir normalization / source output dir normalization 後の no-push stack checkpoint | [2026-0709 No-Push Stack Checkpoint After Source Output Dir Normalization](reports/2026/2026-0709-no-push-stack-checkpoint-after-source-output-dir-normalization.md) |
+| Review workflow repository source output dir normalization lane closure / review workflow repository source output dir normalization lane closure | [2026-0709 Review Workflow Repository Source Output Dir Normalization Lane Closure](reports/2026/2026-0709-review-workflow-repository-source-output-dir-normalization-lane-closure.md) |
+| Review workflow repository source output dir normalization coverage / review workflow repository source output dir normalization coverage | [2026-0709 Review Workflow Repository Source Output Dir Normalization Coverage](reports/2026/2026-0709-review-workflow-repository-source-output-dir-normalization-coverage.md) |
+| No-push stack checkpoint after generated request key coverage / generated request key coverage 後の no-push stack checkpoint | [2026-0709 No-Push Stack Checkpoint After Generated Request Key Coverage](reports/2026/2026-0709-no-push-stack-checkpoint-after-generated-request-key-coverage.md) |
+| Review workflow repository generated request key lane closure / review workflow repository generated request key lane closure | [2026-0709 Review Workflow Repository Generated Request Key Lane Closure](reports/2026/2026-0709-review-workflow-repository-generated-request-key-lane-closure.md) |
+| Review workflow repository generated request key coverage / review workflow repository generated request key coverage | [2026-0709 Review Workflow Repository Generated Request Key Coverage](reports/2026/2026-0709-review-workflow-repository-generated-request-key-coverage.md) |
+| No-push stack checkpoint after optional default normalization / optional default normalization 後の no-push stack checkpoint | [2026-0709 No-Push Stack Checkpoint After Optional Default Normalization](reports/2026/2026-0709-no-push-stack-checkpoint-after-optional-default-normalization.md) |
+| Review workflow repository optional default normalization lane closure / review workflow repository optional default normalization lane closure | [2026-0709 Review Workflow Repository Optional Default Normalization Lane Closure](reports/2026/2026-0709-review-workflow-repository-optional-default-normalization-lane-closure.md) |
+| Review workflow repository optional default normalization coverage / review workflow repository optional default normalization coverage | [2026-0709 Review Workflow Repository Optional Default Normalization Coverage](reports/2026/2026-0709-review-workflow-repository-optional-default-normalization-coverage.md) |
+| No-push stack checkpoint after payload shape validation / payload shape validation 後の no-push stack checkpoint | [2026-0709 No-Push Stack Checkpoint After Payload Shape Validation](reports/2026/2026-0709-no-push-stack-checkpoint-after-payload-shape-validation.md) |
+| Review workflow repository payload shape validation lane closure / review workflow repository payload shape validation lane closure | [2026-0709 Review Workflow Repository Payload Shape Validation Lane Closure](reports/2026/2026-0709-review-workflow-repository-payload-shape-validation-lane-closure.md) |
+| Review workflow repository payload shape validation coverage / review workflow repository payload shape validation coverage | [2026-0709 Review Workflow Repository Payload Shape Validation Coverage](reports/2026/2026-0709-review-workflow-repository-payload-shape-validation-coverage.md) |
+| No-push stack checkpoint after fetch limit normalization / fetch limit normalization 後の no-push stack checkpoint | [2026-0709 No-Push Stack Checkpoint After Fetch Limit Normalization](reports/2026/2026-0709-no-push-stack-checkpoint-after-fetch-limit-normalization.md) |
+| Review workflow repository fetch limit normalization lane closure / review workflow repository fetch limit normalization lane closure | [2026-0709 Review Workflow Repository Fetch Limit Normalization Lane Closure](reports/2026/2026-0709-review-workflow-repository-fetch-limit-normalization-lane-closure.md) |
+| Review workflow repository fetch limit normalization coverage / review workflow repository fetch limit normalization coverage | [2026-0709 Review Workflow Repository Fetch Limit Normalization Coverage](reports/2026/2026-0709-review-workflow-repository-fetch-limit-normalization-coverage.md) |
 | No-push stack checkpoint after closed-status matrix coverage / closed-status matrix coverage 後の no-push stack checkpoint | [2026-0709 No-Push Stack Checkpoint After Closed-Status Matrix Coverage](reports/2026/2026-0709-no-push-stack-checkpoint-after-closed-status-matrix-coverage.md) |
 | Review workflow repository remaining closed-status duplicate matrix lane closure / review workflow repository remaining closed-status duplicate matrix lane closure | [2026-0709 Review Workflow Repository Remaining Closed-Status Duplicate Matrix Lane Closure](reports/2026/2026-0709-review-workflow-repository-remaining-closed-status-duplicate-matrix-lane-closure.md) |
 | Review workflow repository remaining closed-status duplicate matrix coverage / review workflow repository remaining closed-status duplicate matrix coverage | [2026-0709 Review Workflow Repository Remaining Closed-Status Duplicate Matrix Coverage](reports/2026/2026-0709-review-workflow-repository-remaining-closed-status-duplicate-matrix-coverage.md) |
