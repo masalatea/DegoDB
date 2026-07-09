@@ -11,6 +11,8 @@
 
 ## Index
 
+- `2026-0709-post-availability-sample-ui-replan.md`
+  - #543 post-availability sample UI replan。最初の既存 sample UI No Code 化対象を `sample18-mini-task-board-demo` に決め、sample07 / sample28 / sample29 / sample31 を contract reference として位置づけ、次に sample18 capability checklist を進める方針を記録。Status: `DONE`。
 - `2026-0709-review-request-availability-first-slice.md`
   - #542 review request availability first slice。`review_source_output_artifact` の dogfooding metadata を plan-only available にし、generated runtime HTML / React bridge metadata に availability marker を出しながら generated button は disabled のまま維持。Status: `DONE`。
 - `2026-0709-availability-ui-preview-contract.md`
