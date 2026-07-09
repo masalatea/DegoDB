@@ -89,7 +89,7 @@ The applied checklist fixture is `sample/tutorials/sample18-mini-task-board-demo
 
 `sample18-mini-task-board-demo` is accepted as the first L1 existing sample UI no-code entry only in a metadata-first and preview-first sense. It has a golden fixture, generated readonly list/detail/form metadata, generated runtime preview rows, and disabled dry-run action metadata with route boundaries for create, update, complete, reopen, and delete.
 
-It is not yet a generated route replacement. The first reusable fast DOM contract harness exists in `tests/Support/NoCodeUiContractAssertions.php`; the remaining design gates are reusable filter/sort contracts and safe action-input mapping.
+It is not yet a generated route replacement. The first reusable fast DOM contract harness exists in `tests/Support/NoCodeUiContractAssertions.php`; the next selected design gate is a reusable status filter contract for the generated list preview. Safe action-input mapping remains after that.
 
 ## Design Boundary
 

@@ -11,6 +11,8 @@
 
 ## Index
 
+- `2026-0709-next-l1-sample-conversion-increment-replan.md`
+  - #557 next L1 sample conversion increment replan。次の L1 increment は sample18 継続とし、最小残ギャップとして status filter fast contract を #558 に昇格。action-input mapping と次 sample 選定は後続に維持。Status: `DONE`。
 - `2026-0709-existing-sample-no-code-conversion-test-checklist.md`
   - #556 existing sample no-code conversion test checklist。sample18 に fast contract checklist fixture を追加し、metadata / DOM / disabled dry-run action / conversion boundary を browser smoke 前の確認項目として PHPUnit から参照。Status: `DONE`。
 - `2026-0709-lightweight-js-interaction-test-spike.md`
