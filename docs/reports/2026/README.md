@@ -11,6 +11,22 @@
 
 ## Index
 
+- `2026-0708-local-stack-review-after-review-artifact-route-guard.md`
+  - #472 review artifact route guard lane 後の local stack review。`develop` は `origin/develop` より 39 commits ahead。未 push stack は capability slice ごとに読めるため、明示 push 判断前の squash / rewrite は推奨しない。Push は未実行。Status: `DONE`。
+- `2026-0708-review-artifact-route-guard-lane-closure.md`
+  - #471 `review_source_output_artifact` route guard lane closure。POST route wrapper、dispatch preflight、blocked/deferred rendering、audit append、audit append failure visibility を accepted capability として整理。availability enablement / review workflow mutation は parked。Push は未実行。Status: `DONE`。
+- `2026-0708-custom-operation-audit-append-failure-handling.md`
+  - #470 custom operation audit append failure handling。operation result page に audit append status recorded / failed / skipped を表示し、append failure helper / HTML smoke coverage を追加。mutation / generated button execution / publish route は未追加。Push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0708-custom-operation-blocked-audit-append-first-slice.md`
+  - #469 custom operation blocked audit append first slice。`review_source_output_artifact` route guard result の audit event を append し、blocked/deferred outcome を repository-backed SQLite coverage で確認。mutation / generated button execution / publish route は未追加。Push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0708-review-artifact-http-guard-smoke-coverage.md`
+  - #468 review artifact HTTP guard smoke coverage。blocked / deferred guard result page の focused HTML smoke coverage を追加し、blocked audit append は次の persistence slice と判断。audit append / mutation / generated button execution は未追加。Focused PHPUnit と full `make test` 通過。Push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0708-review-artifact-http-route-guard-wrapper.md`
+  - #467 `review_source_output_artifact` HTTP route guard wrapper。narrow POST route / controller wrapper を追加し、dispatch preflight helper の blocked / plan-only result を render。`request_source_output_publish` は route 未追加。mutation / audit append / generated button execution は未追加。Push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0708-review-artifact-plan-only-dispatch-guard-first-slice.md`
+  - #466 `review_source_output_artifact` plan-only dispatch guard first slice。custom operation dispatch helper、guard results、audit event input、`source_output.review` / `source_output.publish_request` capability registration、focused integration coverage を追加。HTTP route / mutation / generated button execution は未追加。Focused PHPUnit と full `make test` 通過。Push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0708-custom-operation-execution-dispatch-preflight.md`
+  - #465 custom operation execution dispatch preflight。shared dispatch boundary、CSRF/auth/policy/audit/stale-artifact/duplicate handling、最初の候補 `review_source_output_artifact` を plan-only route guard first slice として定義。実行 route / mutation は未追加。Push は未実行。Status: `DONE`。
 - `2026-0708-custom-operation-route-boundary-lane-closure.md`
   - #464 custom operation route-boundary metadata lane closure。review artifact / request publish の inventory、metadata、runtime / React bridge carry-through、disabled UI wording、integration coverage を accepted capability として整理。execution は別 lane とし、次は shared dispatch preflight。Push は未実行。Status: `DONE`。
 - `2026-0708-request-publish-route-boundary-metadata-carry-through.md`

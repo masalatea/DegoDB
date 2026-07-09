@@ -13,7 +13,7 @@ When someone asks for "the plan list", answer from this section first. / 「計�
 
 ### Main Plan / 主計画
 
-Current main status: #464 closes the custom operation route-boundary metadata lane. Review artifact and request publish operations now have inventory docs, route-boundary metadata, runtime/React bridge carry-through, disabled UI wording, and integration coverage. Execution remains separate; the next lane is a shared dispatch preflight before any concrete POST route is enabled. No execution route implementation, build, publish, review-request, approval, mutation, or custom component execution has been added. Push has not been performed for #432-#464. / 現在の主計画ステータス: #464 で custom operation route-boundary metadata lane を closure しました。review artifact と request publish operations は inventory docs、route-boundary metadata、runtime/React bridge carry-through、disabled UI wording、integration coverage を持ちます。execution は別 lane のままで、次は concrete POST route を有効化する前の shared dispatch preflight です。execution route implementation、build、publish、review-request、approval、mutation、custom component execution は追加していません。#432-#464 は push していません。
+Current main status: #472 reviews the local unpushed stack after the review artifact route guard lane. The stack is 39 commits ahead of `origin/develop`, grouped by meaningful capability slices, and should not be squashed/re-written before an explicit push decision. Availability enablement and review workflow mutation remain parked. Push has not been performed for #432-#472. / 現在の主計画ステータス: #472 で review artifact route guard lane 後の local unpushed stack を review しました。stack は `origin/develop` より 39 commits ahead で、意味のある capability slice ごとに分かれており、明示的な push 判断の前に squash / rewrite しない方針です。availability enablement と review workflow mutation は parked のままです。#432-#472 は push していません。
 
 | Order | Work unit / 作業の塊 | Commit unit / コミット単位 | Status | Rough effort / 目安 |
 | --- | --- | --- | --- | --- |
@@ -23,7 +23,15 @@ Current main status: #464 closes the custom operation route-boundary metadata la
 | 462 | Request publish route boundary inventory / request publish route boundary inventory | Define policy/auth/CSRF/audit/idempotency boundary for `request_source_output_publish` before execution | `DONE` | 0.25 - 0.5 day / 0.25 - 0.5 日 |
 | 463 | Request publish route boundary metadata carry-through / request publish route boundary metadata carry-through | Carry `request_source_output_publish` route boundary into screen/runtime metadata, React bridge handoffs, and disabled UI wording without execution | `DONE` | 0.5 - 1 day / 半日 - 1 日 |
 | 464 | Custom operation route-boundary lane closure / custom operation route-boundary lane closure | Close the review/publish route-boundary metadata lane, record accepted capability, and decide whether execution routes stay parked or a concrete route cluster is promoted | `DONE` | 0.25 - 0.5 day / 0.25 - 0.5 日 |
-| 465 | Custom operation execution dispatch preflight / custom operation execution dispatch preflight | Define the shared dispatch boundary and first narrow POST route candidate before enabling any custom operation execution | `ACTIVE_NEXT` | 0.5 - 1 day / 半日 - 1 日 |
+| 465 | Custom operation execution dispatch preflight / custom operation execution dispatch preflight | Define the shared dispatch boundary and first narrow POST route candidate before enabling any custom operation execution | `DONE` | 0.5 - 1 day / 半日 - 1 日 |
+| 466 | Review artifact plan-only dispatch guard first slice / review artifact plan-only dispatch guard first slice | Add a code-backed dispatch helper and guard tests for `review_source_output_artifact` without enabling mutation or generated button execution | `DONE` | 1 - 1.5 days / 1 - 1.5 日 |
+| 467 | Review artifact HTTP route guard wrapper / review artifact HTTP route guard wrapper | Add a narrow POST route/controller wrapper that calls the dispatch helper and returns blocked/plan-only responses without mutation or generated button execution | `DONE` | 1 - 1.5 days / 1 - 1.5 日 |
+| 468 | Review artifact HTTP guard smoke coverage / review artifact HTTP guard smoke coverage | Add focused HTTP-level guard coverage for CSRF/deferred result rendering and decide whether blocked audit append belongs in the wrapper or a later persistence slice | `DONE` | 0.5 - 1 day / 半日 - 1 日 |
+| 469 | Custom operation blocked audit append first slice / custom operation blocked audit append first slice | Append audit records for blocked/deferred/unauthorized/stale route guard outcomes without enabling mutation | `DONE` | 1 - 1.5 days / 1 - 1.5 日 |
+| 470 | Custom operation audit append failure handling / custom operation audit append failure handling | Add focused failure/response behavior coverage for operation audit append before route guard lane closure | `DONE` | 0.5 - 1 day / 半日 - 1 日 |
+| 471 | Review artifact route guard lane closure / review artifact route guard lane closure | Close the review-artifact route guard lane, record accepted capability, and decide whether availability enablement remains parked | `DONE` | 0.25 - 0.5 day / 0.25 - 0.5 日 |
+| 472 | Local commit stack review after review route guard / review route guard 後の local commit stack review | Review the unpushed local commit stack and decide whether to keep, squash, or replan before any push | `DONE` | 0.25 - 0.5 day / 0.25 - 0.5 日 |
+| 473 | Post route guard replan / route guard 後の replan | Decide whether to keep execution parked, promote review workflow persistence, improve disabled UI explanation, or prepare a push decision | `ACTIVE_NEXT` | 0.25 - 0.5 day / 0.25 - 0.5 日 |
 
 ### Current Boundary / 現在の境界
 
@@ -67,6 +75,58 @@ Latest code verification from #463:
 
 For #464, docs-only verification is `git diff --check`.
 
+For #465, docs-only verification is `git diff --check`.
+
+Latest code verification from #466:
+
+- `php -l mtool/app/no_code_custom_operation_dispatch.php`
+- `php -l mtool/app/project_permission.php`
+- `php -l tests/Integration/NoCodeCustomOperationDispatchTest.php`
+- Focused PHPUnit: `OK (6 tests, 54 assertions)`
+- `make test`: `OK, but incomplete, skipped, or risky tests! Tests: 351, Assertions: 11378, Skipped: 1.`
+- `git diff --check`
+
+Latest code verification from #467:
+
+- `php -l mtool/app/project_source_output_operation_page.php`
+- `php -l mtool/app/http.php`
+- `php -l mtool/app/router.php`
+- `php -l tests/Integration/OpenApiSourceOutputContractTest.php`
+- Focused PHPUnit route contract: `OK (24 tests, 1908 assertions)`
+- Focused PHPUnit dispatch helper: `OK (6 tests, 54 assertions)`
+- `make test`: `OK, but incomplete, skipped, or risky tests! Tests: 351, Assertions: 11384, Skipped: 1.`
+- `git diff --check`
+
+Latest code verification from #468:
+
+- `php -l tests/Integration/OpenApiSourceOutputContractTest.php`
+- Focused PHPUnit route contract and guard smoke: `OK (25 tests, 1914 assertions)`
+- `make test`: `OK, but incomplete, skipped, or risky tests! Tests: 351, Assertions: 11384, Skipped: 1.`
+- `git diff --check`
+
+Latest code verification from #469:
+
+- `php -l mtool/app/project_source_output_operation_page.php`
+- `php -l tests/Integration/AuditLogRepositorySqliteTest.php`
+- Focused PHPUnit audit append: `OK (2 tests, 18 assertions)`
+- Focused PHPUnit route contract and guard smoke: `OK (25 tests, 1914 assertions)`
+- `make test`: `OK, but incomplete, skipped, or risky tests! Tests: 353, Assertions: 11397, Skipped: 1.`
+- `git diff --check`
+
+Latest code verification from #470:
+
+- `php -l mtool/app/project_source_output_operation_page.php`
+- `php -l tests/Integration/AuditLogRepositorySqliteTest.php`
+- `php -l tests/Integration/OpenApiSourceOutputContractTest.php`
+- Focused PHPUnit audit append: `OK (3 tests, 23 assertions)`
+- Focused PHPUnit route contract and guard smoke: `OK (26 tests, 1918 assertions)`
+- `make test`: `OK, but incomplete, skipped, or risky tests! Tests: 355, Assertions: 11406, Skipped: 1.`
+- `git diff --check`
+
+For #471, docs-only verification is `git diff --check`.
+
+For #472, docs-only verification is `git diff --check`.
+
 ## Auxiliary Later Review / 補助・後日検討
 
 These are useful candidates, but they are not part of the main plan unless a fresh priority decision promotes them. / これらは有用な候補ですが、新しい優先判断で昇格するまでは主計画には含めません。
@@ -86,6 +146,14 @@ Completed detailed history was moved out of this active list. / 完了済みの�
 
 | Completed scope / 完了済み範囲 | Historical source / 履歴ソース |
 | --- | --- |
+| Local stack review after review artifact route guard / review artifact route guard 後の local stack review | [2026-0708 Local Stack Review After Review Artifact Route Guard](reports/2026/2026-0708-local-stack-review-after-review-artifact-route-guard.md) |
+| Review artifact route guard lane closure / review artifact route guard lane closure | [2026-0708 Review Artifact Route Guard Lane Closure](reports/2026/2026-0708-review-artifact-route-guard-lane-closure.md) |
+| Custom operation audit append failure handling / custom operation audit append failure handling | [2026-0708 Custom Operation Audit Append Failure Handling](reports/2026/2026-0708-custom-operation-audit-append-failure-handling.md) |
+| Custom operation blocked audit append first slice / custom operation blocked audit append first slice | [2026-0708 Custom Operation Blocked Audit Append First Slice](reports/2026/2026-0708-custom-operation-blocked-audit-append-first-slice.md) |
+| Review artifact HTTP guard smoke coverage / review artifact HTTP guard smoke coverage | [2026-0708 Review Artifact HTTP Guard Smoke Coverage](reports/2026/2026-0708-review-artifact-http-guard-smoke-coverage.md) |
+| Review artifact HTTP route guard wrapper / review artifact HTTP route guard wrapper | [2026-0708 Review Artifact HTTP Route Guard Wrapper](reports/2026/2026-0708-review-artifact-http-route-guard-wrapper.md) |
+| Review artifact plan-only dispatch guard first slice / review artifact plan-only dispatch guard first slice | [2026-0708 Review Artifact Plan-Only Dispatch Guard First Slice](reports/2026/2026-0708-review-artifact-plan-only-dispatch-guard-first-slice.md) |
+| Custom operation execution dispatch preflight / custom operation execution dispatch preflight | [2026-0708 Custom Operation Execution Dispatch Preflight](reports/2026/2026-0708-custom-operation-execution-dispatch-preflight.md) |
 | Custom operation route-boundary lane closure / custom operation route-boundary lane closure | [2026-0708 Custom Operation Route Boundary Lane Closure](reports/2026/2026-0708-custom-operation-route-boundary-lane-closure.md) |
 | Request publish route boundary metadata carry-through / request publish route boundary metadata carry-through | [2026-0708 Request Publish Route Boundary Metadata Carry-Through](reports/2026/2026-0708-request-publish-route-boundary-metadata-carry-through.md) |
 | Request publish route boundary inventory / request publish route boundary inventory | [2026-0708 Request Publish Route Boundary Inventory](reports/2026/2026-0708-request-publish-route-boundary-inventory.md) |
