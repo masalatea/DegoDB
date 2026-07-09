@@ -73,6 +73,8 @@ After the dedicated test lab proves the harness, existing sample conversion shou
 
 `sample18-mini-task-board-demo` is the first existing sample UI conversion target. Before replacing or shadowing its hand-coded task board route, the no-code conversion must satisfy this minimum contract:
 
+The applied checklist fixture is `sample/tutorials/sample18-mini-task-board-demo/golden/no-code-fast-contract-checklist.json`. `Sample18MiniTaskBoardDemoTest` reads it as the current fast contract source before any browser smoke or generated route replacement is considered.
+
 | Area | Minimum capability | Fast evidence |
 | --- | --- | --- |
 | Data shape | `task_card` fields for `id`, `title`, `body`, `status`, `assigned_to`, `priority`, `due_date`, `completed_at`, and `updated_at` are represented with key/required/readonly/client-write roles. | Metadata contract assertions on `screen-definition.json` and `runtime-preview.json`. |

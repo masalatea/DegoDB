@@ -11,6 +11,8 @@
 
 ## Index
 
+- `2026-0709-existing-sample-no-code-conversion-test-checklist.md`
+  - #556 existing sample no-code conversion test checklist。sample18 に fast contract checklist fixture を追加し、metadata / DOM / disabled dry-run action / conversion boundary を browser smoke 前の確認項目として PHPUnit から参照。Status: `DONE`。
 - `2026-0709-lightweight-js-interaction-test-spike.md`
   - #555 lightweight JS interaction test spike。root npm manifest を増やさず、`linkedom` / `happy-dom` の採用判定 checker を追加。現時点では concrete JS interaction gap が昇格するまで external DOM dependency は defer。Status: `DONE`。
 - `2026-0709-no-code-sample-contract-fixture-ladder.md`
