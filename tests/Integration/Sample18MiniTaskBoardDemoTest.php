@@ -48,6 +48,10 @@ final class Sample18MiniTaskBoardDemoTest extends TestCase
                 : 'value="' . $action . '"';
             self::assertStringContainsString($needle, $routeSource);
         }
+        self::assertSame(
+            ['create_task_card', 'update_task_card', 'complete_task_card', 'reopen_task_card', 'delete_task_card'],
+            $fixture['no_code_action_keys'] ?? [],
+        );
     }
 
     public function testMiniTaskBoardDemoReferenceOutputs(): void
@@ -95,6 +99,14 @@ final class Sample18MiniTaskBoardDemoTest extends TestCase
         self::assertSame(
             ['id', 'title', 'body', 'status', 'assigned_to', 'priority', 'due_date', 'completed_at', 'updated_at'],
             $result['steps']['no_code_metadata']['field_keys'] ?? [],
+        );
+        self::assertSame(
+            ['create_task_card', 'update_task_card', 'complete_task_card', 'reopen_task_card', 'delete_task_card'],
+            $result['steps']['no_code_metadata']['custom_operation_keys'] ?? [],
+        );
+        self::assertSame(
+            ['create_task_card', 'update_task_card', 'complete_task_card', 'reopen_task_card', 'delete_task_card'],
+            $result['steps']['no_code_metadata']['runtime_action_keys'] ?? [],
         );
         self::assertSame(4, $result['steps']['no_code_metadata']['runtime_row_count'] ?? null);
         self::assertSame(4, $result['steps']['no_code_metadata']['golden_row_count'] ?? null);

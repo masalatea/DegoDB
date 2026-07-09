@@ -367,15 +367,37 @@ function app_sample18_mini_task_board_demo_publish_no_code_metadata(
     $screens = is_array($contract['screens'] ?? null) ? $contract['screens'] : [];
     $listScreen = is_array($screens[0] ?? null) ? $screens[0] : [];
     $fields = is_array($listScreen['fields'] ?? null) ? $listScreen['fields'] : [];
+    $customOperations = is_array($contract['custom_operations'] ?? null) ? $contract['custom_operations'] : [];
+    $customOperationKeys = array_values(array_map(
+        static fn (array $operation): string => (string) ($operation['operation_key'] ?? ''),
+        $customOperations,
+    ));
     $runtimeScreens = is_array($runtimePreview['screens'] ?? null) ? $runtimePreview['screens'] : [];
     $runtimeListScreen = [];
+    $runtimeDetailScreen = [];
     foreach ($runtimeScreens as $screen) {
         if (is_array($screen) && (string) ($screen['screen_key'] ?? '') === 'task_card_list') {
             $runtimeListScreen = $screen;
-            break;
+        }
+        if (is_array($screen) && (string) ($screen['screen_key'] ?? '') === 'task_card_detail') {
+            $runtimeDetailScreen = $screen;
         }
     }
     $runtimeRows = is_array($runtimeListScreen['data']['rows'] ?? null) ? $runtimeListScreen['data']['rows'] : [];
+    $runtimeActionItems = [];
+    foreach (($runtimeDetailScreen['extension_slots'] ?? []) as $slot) {
+        if (is_array($slot) && (string) ($slot['slot_key'] ?? '') === 'sample18_task_card_dry_run_actions') {
+            $runtimeActionItems = is_array($slot['action_items'] ?? null) ? $slot['action_items'] : [];
+            break;
+        }
+    }
+    $runtimeActionKeys = array_values(array_map(
+        static fn (array $item): string => (string) ($item['action_key'] ?? ''),
+        $runtimeActionItems,
+    ));
+    $expectedActionKeys = is_array($goldenFixture['no_code_action_keys'] ?? null)
+        ? array_values(array_map(static fn (mixed $key): string => (string) $key, $goldenFixture['no_code_action_keys']))
+        : [];
 
     app_sample18_mini_task_board_demo_assert_same(
         'no-code-screen-definition-v0',
@@ -401,6 +423,56 @@ function app_sample18_mini_task_board_demo_publish_no_code_metadata(
         'sample18 no-code field keys',
         $errors,
     );
+    app_sample18_mini_task_board_demo_assert_same(
+        $expectedActionKeys,
+        $customOperationKeys,
+        'sample18 no-code custom operation keys',
+        $errors,
+    );
+    app_sample18_mini_task_board_demo_assert_same(
+        $expectedActionKeys,
+        $runtimeActionKeys,
+        'sample18 no-code runtime dry-run action keys',
+        $errors,
+    );
+    foreach ($runtimeActionItems as $index => $actionItem) {
+        app_sample18_mini_task_board_demo_assert_same(
+            'disabled',
+            (string) ($actionItem['availability_read_model']['operation_availability'] ?? ''),
+            'sample18 no-code action ' . $index . ' operation availability',
+            $errors,
+        );
+        app_sample18_mini_task_board_demo_assert_same(
+            'unavailable',
+            (string) ($actionItem['availability_read_model']['availability_state'] ?? ''),
+            'sample18 no-code action ' . $index . ' availability state',
+            $errors,
+        );
+        app_sample18_mini_task_board_demo_assert_same(
+            false,
+            (bool) ($actionItem['availability_read_model']['generated_button_enabled'] ?? true),
+            'sample18 no-code action ' . $index . ' generated button enabled',
+            $errors,
+        );
+        app_sample18_mini_task_board_demo_assert_same(
+            'POST',
+            (string) ($actionItem['route_boundary']['method'] ?? ''),
+            'sample18 no-code action ' . $index . ' route method',
+            $errors,
+        );
+        app_sample18_mini_task_board_demo_assert_same(
+            '/samples/sample18-task-board',
+            (string) ($actionItem['route_boundary']['path'] ?? ''),
+            'sample18 no-code action ' . $index . ' route path',
+            $errors,
+        );
+        app_sample18_mini_task_board_demo_assert_same(
+            'web_lab_login',
+            (string) ($actionItem['route_boundary']['auth_guard'] ?? ''),
+            'sample18 no-code action ' . $index . ' auth guard',
+            $errors,
+        );
+    }
     app_sample18_mini_task_board_demo_assert_same(
         'no-code-runtime-v0',
         (string) ($runtimePreview['runtime_version'] ?? ''),
@@ -444,6 +516,20 @@ function app_sample18_mini_task_board_demo_publish_no_code_metadata(
             $errors,
         );
     }
+    foreach ($expectedActionKeys as $actionKey) {
+        app_sample18_mini_task_board_demo_assert_same(
+            true,
+            str_contains($runtimePreviewHtml, 'data-extension-slot-action="' . $actionKey . '"'),
+            'sample18 no-code runtime html dry-run action ' . $actionKey,
+            $errors,
+        );
+        app_sample18_mini_task_board_demo_assert_same(
+            true,
+            str_contains($runtimePreviewHtml, 'data-extension-slot-route-boundary="' . $actionKey . '"'),
+            'sample18 no-code runtime html route boundary ' . $actionKey,
+            $errors,
+        );
+    }
 
     return [
         'ok' => true,
@@ -455,6 +541,8 @@ function app_sample18_mini_task_board_demo_publish_no_code_metadata(
         'contract_key' => (string) ($contract['contract_key'] ?? ''),
         'screen_types' => array_values(array_map(static fn (array $screen): string => (string) ($screen['screen_type'] ?? ''), $screens)),
         'field_keys' => array_values(array_map(static fn (array $field): string => (string) ($field['field_key'] ?? ''), $fields)),
+        'custom_operation_keys' => $customOperationKeys,
+        'runtime_action_keys' => $runtimeActionKeys,
         'runtime_screen_count' => count($runtimeScreens),
         'runtime_row_count' => count($runtimeRows),
         'golden_row_count' => count($goldenRows),

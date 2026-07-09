@@ -60,6 +60,7 @@ function app_no_code_screen_definition_from_snapshots(
     $operationsByContract = app_no_code_screen_definition_operations_by_contract($operations);
     $contractDefinitions = [];
     foreach ($contracts as $contract) {
+        $contract = app_no_code_screen_definition_with_project_metadata($projectKey, $contract);
         $contractKey = (string) ($contract['contract_key'] ?? '');
         $contractOperations = $operationsByContract[$contractKey] ?? [];
         $contractDefinitions[] = app_no_code_screen_definition_contract_definition(
@@ -77,6 +78,135 @@ function app_no_code_screen_definition_from_snapshots(
             'contracts' => $contractDefinitions,
         ],
         'error' => '',
+    ];
+}
+
+/**
+ * @param array<string,mixed> $contract
+ * @return array<string,mixed>
+ */
+function app_no_code_screen_definition_with_project_metadata(string $projectKey, array $contract): array
+{
+    if ($projectKey !== 'SAMPLE18' || (string) ($contract['contract_key'] ?? '') !== 'task_card') {
+        return $contract;
+    }
+
+    $metadata = is_array($contract['contract_metadata'] ?? null) ? $contract['contract_metadata'] : [];
+    $metadata['custom_operations'] = array_values(array_merge(
+        is_array($metadata['custom_operations'] ?? null) ? $metadata['custom_operations'] : [],
+        app_no_code_screen_definition_sample18_task_card_custom_operations(),
+    ));
+    $metadata['extension_slots'] = array_values(array_merge(
+        is_array($metadata['extension_slots'] ?? null) ? $metadata['extension_slots'] : [],
+        [
+            [
+                'slot_key' => 'sample18_task_card_dry_run_actions',
+                'slot_type' => 'operator_actions_panel',
+                'label' => 'Task Actions',
+                'placement' => 'footer',
+                'renderer' => 'action_panel',
+                'target' => 'sample18_task_card_actions',
+                'action_items' => app_no_code_screen_definition_sample18_task_card_action_items(),
+                'screen_types' => ['detail'],
+            ],
+        ],
+    ));
+    $contract['contract_metadata'] = $metadata;
+
+    return $contract;
+}
+
+/**
+ * @return list<array<string,mixed>>
+ */
+function app_no_code_screen_definition_sample18_task_card_custom_operations(): array
+{
+    $definitions = [
+        ['create_task_card', 'Create Task', 'Create a task card through the curated sample18 POST route.', ['validation_error']],
+        ['update_task_card', 'Update Task', 'Update an existing task card through the curated sample18 POST route.', ['missing_record', 'validation_error']],
+        ['complete_task_card', 'Complete Task', 'Mark an existing task card done through the curated sample18 POST route.', ['missing_record']],
+        ['reopen_task_card', 'Reopen Task', 'Move an existing task card back to todo through the curated sample18 POST route.', ['missing_record']],
+        ['delete_task_card', 'Delete Task', 'Delete an existing task card through the curated sample18 POST route.', ['missing_record']],
+    ];
+
+    $operations = [];
+    foreach ($definitions as [$operationKey, $label, $intent, $extraFailures]) {
+        $operations[] = [
+            'operation_key' => $operationKey,
+            'label' => $label,
+            'category' => 'custom',
+            'target' => 'shared_contract',
+            'side_effect_class' => 'direct_mutation',
+            'availability' => 'disabled',
+            'policy_key' => 'sample18.task_card.write',
+            'csrf_required' => true,
+            'audit_event' => 'sample18.task_card.dry_run_action',
+            'adapter_handoff' => 'sample18_task_card_curated_route',
+            'route_boundary' => [
+                'method' => 'POST',
+                'path' => '/samples/sample18-task-board',
+                'response_shape' => 'html_redirect',
+                'auth_guard' => 'web_lab_login',
+                'idempotency' => 'not_idempotent',
+                'failure_modes' => array_values(array_unique(array_merge(
+                    ['unavailable', 'unauthorized', 'missing_csrf'],
+                    $extraFailures,
+                ))),
+            ],
+            'intent' => $intent,
+            'unavailable_reason' => 'Generated no-code runtime records this as a dry-run boundary only; the curated sample18 page still owns mutation.',
+        ];
+    }
+
+    return $operations;
+}
+
+/**
+ * @return list<array<string,string>>
+ */
+function app_no_code_screen_definition_sample18_task_card_action_items(): array
+{
+    return [
+        [
+            'label' => 'Create Task',
+            'action_key' => 'create_task_card',
+            'operation_key' => 'create_task_card',
+            'intent' => 'Dry-run create action metadata for the existing task board route.',
+            'state' => 'blocked',
+            'unavailable_reason' => 'Generated no-code execution is disabled until sample18 mutation handoff is designed.',
+        ],
+        [
+            'label' => 'Update Task',
+            'action_key' => 'update_task_card',
+            'operation_key' => 'update_task_card',
+            'intent' => 'Dry-run update action metadata for the existing task board route.',
+            'state' => 'blocked',
+            'unavailable_reason' => 'Generated no-code execution is disabled until sample18 mutation handoff is designed.',
+        ],
+        [
+            'label' => 'Complete Task',
+            'action_key' => 'complete_task_card',
+            'operation_key' => 'complete_task_card',
+            'intent' => 'Dry-run complete action metadata for the existing task board route.',
+            'state' => 'blocked',
+            'unavailable_reason' => 'Generated no-code execution is disabled until sample18 mutation handoff is designed.',
+        ],
+        [
+            'label' => 'Reopen Task',
+            'action_key' => 'reopen_task_card',
+            'operation_key' => 'reopen_task_card',
+            'intent' => 'Dry-run reopen action metadata for the existing task board route.',
+            'state' => 'blocked',
+            'unavailable_reason' => 'Generated no-code execution is disabled until sample18 mutation handoff is designed.',
+        ],
+        [
+            'label' => 'Delete Task',
+            'action_key' => 'delete_task_card',
+            'operation_key' => 'delete_task_card',
+            'intent' => 'Dry-run delete action metadata for the existing task board route.',
+            'state' => 'blocked',
+            'unavailable_reason' => 'Generated no-code execution is disabled until sample18 mutation handoff is designed.',
+        ],
     ];
 }
 

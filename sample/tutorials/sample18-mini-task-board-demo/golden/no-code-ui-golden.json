@@ -40,6 +40,13 @@
     "table_columns": ["Task", "Status", "Assigned", "Priority", "Due", "Actions"],
     "actions": ["create", "update", "complete", "reopen", "delete"]
   },
+  "no_code_action_keys": [
+    "create_task_card",
+    "update_task_card",
+    "complete_task_card",
+    "reopen_task_card",
+    "delete_task_card"
+  ],
   "no_code_conversion_boundary": {
     "generated_route_replacement": false,
     "generated_button_execution": false,

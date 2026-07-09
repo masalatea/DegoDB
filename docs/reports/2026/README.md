@@ -11,6 +11,8 @@
 
 ## Index
 
+- `2026-0709-first-sample-ui-action-dry-run-contract.md`
+  - #549 first sample UI action dry-run contract。sample18 `task_card` の create / update / complete / reopen / delete を disabled dry-run custom operation として route boundary 付きで generated no-code runtime に通し、既存 route の mutation ownership は維持。Status: `DONE`。
 - `2026-0709-first-sample-ui-readonly-no-code-preview.md`
   - #548 first sample UI readonly no-code preview。sample18 `task_card` preview rows を no-code runtime generator に追加し、generated `runtime-preview.json` / `runtime-preview.html` を golden fixture の seed rows と fast contract で比較。Status: `DONE`。
 - `2026-0709-first-sample-ui-metadata-extraction-spike.md`
