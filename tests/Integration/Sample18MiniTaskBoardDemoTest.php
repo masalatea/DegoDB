@@ -43,9 +43,11 @@ final class Sample18MiniTaskBoardDemoTest extends TestCase
         }
 
         $contract = $fixture['dom_contract'] ?? [];
+        $statusFilterContract = $checklist['status_filter_contract'] ?? [];
         self::assertIsArray($contract);
+        self::assertSame($contract['status_filter_values'] ?? [], $statusFilterContract['curated_route_values'] ?? []);
         self::assertStringContainsString((string) ($contract['title'] ?? ''), $routeSource);
-        foreach (($contract['status_filter_values'] ?? []) as $value) {
+        foreach (($statusFilterContract['curated_route_values'] ?? []) as $value) {
             self::assertStringContainsString('value="' . $value . '"', $routeSource);
         }
         foreach (($contract['form_fields'] ?? []) as $fieldName) {
@@ -131,6 +133,12 @@ final class Sample18MiniTaskBoardDemoTest extends TestCase
             $this,
             $runtimePreview,
             $metadataContract['screen_keys'] ?? [],
+        );
+        NoCodeUiContractAssertions::assertRuntimePreviewScreenField(
+            $this,
+            $runtimePreview,
+            (string) ($checklist['status_filter_contract']['screen_key'] ?? ''),
+            $checklist['status_filter_contract']['field'] ?? [],
         );
         $runtimePreviewHtml = (string) file_get_contents($publishedRoot . '/runtime-preview.html');
         NoCodeUiContractAssertions::assertPreviewHtmlScreens(

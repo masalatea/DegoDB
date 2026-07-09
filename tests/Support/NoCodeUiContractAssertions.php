@@ -35,6 +35,42 @@ final class NoCodeUiContractAssertions
     }
 
     /**
+     * @param array<string,mixed> $runtimePreview
+     * @param array<string,mixed> $expectedField
+     */
+    public static function assertRuntimePreviewScreenField(
+        TestCase $test,
+        array $runtimePreview,
+        string $screenKey,
+        array $expectedField,
+    ): void {
+        $screens = is_array($runtimePreview['screens'] ?? null) ? $runtimePreview['screens'] : [];
+        $matchedScreen = [];
+        foreach ($screens as $screen) {
+            if (is_array($screen) && (string) ($screen['screen_key'] ?? '') === $screenKey) {
+                $matchedScreen = $screen;
+                break;
+            }
+        }
+        TestCase::assertNotSame([], $matchedScreen, 'runtime preview screen exists: ' . $screenKey);
+
+        $fieldKey = (string) ($expectedField['field_key'] ?? '');
+        $fields = is_array($matchedScreen['fields'] ?? null) ? $matchedScreen['fields'] : [];
+        $matchedField = [];
+        foreach ($fields as $field) {
+            if (is_array($field) && (string) ($field['field_key'] ?? '') === $fieldKey) {
+                $matchedField = $field;
+                break;
+            }
+        }
+        TestCase::assertNotSame([], $matchedField, 'runtime preview field exists: ' . $fieldKey);
+
+        foreach ($expectedField as $key => $expectedValue) {
+            TestCase::assertSame($expectedValue, $matchedField[$key] ?? null, 'runtime preview field ' . $fieldKey . ' ' . $key);
+        }
+    }
+
+    /**
      * @param array<string,string> $screenTypesByKey
      */
     public static function assertPreviewHtmlScreens(

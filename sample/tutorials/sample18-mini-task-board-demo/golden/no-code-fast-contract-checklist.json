@@ -60,8 +60,26 @@
     ],
     "requires_route_boundary_markers": true
   },
+  "status_filter_contract": {
+    "source": "curated_route_and_generated_preview_metadata",
+    "screen_key": "task_card_list",
+    "field": {
+      "field_key": "status",
+      "label": "Status",
+      "type": "string",
+      "readonly": true,
+      "visibility": "visible"
+    },
+    "curated_route_values": [
+      "",
+      "todo",
+      "doing",
+      "done"
+    ],
+    "generated_runtime_data_controls": "deferred_until_public_runtime_data_binding"
+  },
   "remaining_gaps": [
-    "generated status filter controls are not yet compared to the curated route",
+    "generated status filter DOM controls require public runtime-data binding before static preview comparison",
     "safe action-input mapping is not enabled for generated mutation buttons",
     "browser smoke remains the outer confidence gate for the curated route"
   ]
