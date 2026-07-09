@@ -11,6 +11,8 @@
 
 ## Index
 
+- `2026-0709-review-request-availability-first-slice.md`
+  - #542 review request availability first slice。`review_source_output_artifact` の dogfooding metadata を plan-only available にし、generated runtime HTML / React bridge metadata に availability marker を出しながら generated button は disabled のまま維持。Status: `DONE`。
 - `2026-0709-availability-ui-preview-contract.md`
   - #541 availability UI preview contract。`availability_read_model` を generated no-code runtime HTML の stable DOM markers と説明文に反映し、button disabled / `generated_button_enabled=false` を維持。Status: `DONE`。
 - `2026-0709-metadata-only-availability-read-model.md`
