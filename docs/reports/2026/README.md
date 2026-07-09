@@ -11,6 +11,8 @@
 
 ## Index
 
+- `2026-0710-sample18-managed-action-dispatch-guard-preflight.md`
+  - #564 sample18 managed action dispatch guard preflight。`web_lab_login` guard と `project.edit` policy に揃え、editor でも `deferred_availability`、viewer は `policy_denied` で fail closed する focused preflight coverage を追加。Status: `DONE`。
 - `2026-0710-sample18-disabled-action-surface-public-smoke.md`
   - #563 sample18 disabled action surface public smoke。sample18 public runtime current page で complete/create/update の disabled managed action surface、policy-disabled state、submit 非有効化を headless Chrome smoke で確認。Status: `DONE`。
 - `2026-0710-sample18-generated-action-surface-metadata-first-slice.md`

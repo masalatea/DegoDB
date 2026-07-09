@@ -138,7 +138,7 @@ function app_no_code_screen_definition_sample18_task_card_custom_operations(): a
             'target' => 'shared_contract',
             'side_effect_class' => 'direct_mutation',
             'availability' => 'disabled',
-            'policy_key' => 'sample18.task_card.write',
+            'policy_key' => 'project.edit',
             'csrf_required' => true,
             'audit_event' => 'sample18.task_card.dry_run_action',
             'adapter_handoff' => 'sample18_task_card_curated_route',

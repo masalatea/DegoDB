@@ -13,7 +13,7 @@ When someone asks for "the plan list", answer from this section first. / 「計�
 
 ### Main Plan / 主計画
 
-Current main status: #563 proves the sample18 public runtime exposes the disabled managed action surface without submit enablement. `develop` is 39 commits ahead of `origin/develop`, and push has not been performed for #432-#563. / 現在の主計画ステータス: #563 で sample18 public runtime が submit 有効化なしで disabled managed action surface を表示することを確認しました。`develop` は `origin/develop` より 39 commits ahead、#432-#563 は push していません。
+Current main status: #564 defines the sample18 managed action dispatch guard preflight so future generated submit paths fail closed before availability is enabled. `develop` is 40 commits ahead of `origin/develop`, and push has not been performed for #432-#564. / 現在の主計画ステータス: #564 で sample18 managed action dispatch guard preflight を定義し、将来の generated submit path が availability 有効化前に fail closed することを確認しました。`develop` は `origin/develop` より 40 commits ahead、#432-#564 は push していません。
 
 | Order | Work unit / 作業の塊 | Commit unit / コミット単位 | Status | Rough effort / 目安 |
 | --- | --- | --- | --- | --- |
@@ -122,7 +122,8 @@ Current main status: #563 proves the sample18 public runtime exposes the disable
 | 561 | Sample18 safe action-input mapping inventory / sample18 safe action-input mapping inventory | Define the minimal generated action input mapping contract for sample18 without enabling mutation or replacing the curated route | `DONE` | 0.5 - 1 day / 半日 - 1 日 |
 | 562 | Sample18 generated action surface metadata first slice / sample18 generated action surface metadata first slice | Promote the inventoried create/update/complete mapping into generated action metadata while keeping buttons disabled and route mutation owned by the curated page | `DONE` | 0.5 - 1 day / 半日 - 1 日 |
 | 563 | Sample18 disabled action surface public smoke / sample18 disabled action surface public smoke | Prove the public runtime exposes the new disabled managed action surface without submit enablement before any dispatch work | `DONE` | 0.5 - 1 day / 半日 - 1 日 |
-| 564 | Sample18 managed action dispatch guard preflight / sample18 managed action dispatch guard preflight | Define the guard and failure contract for any future sample18 generated submit path before enabling dispatch | `ACTIVE_NEXT` | 0.5 - 1 day / 半日 - 1 日 |
+| 564 | Sample18 managed action dispatch guard preflight / sample18 managed action dispatch guard preflight | Define the guard and failure contract for any future sample18 generated submit path before enabling dispatch | `DONE` | 0.5 - 1 day / 半日 - 1 日 |
+| 565 | Sample18 generated submit request contract preflight / sample18 generated submit request contract preflight | Define the payload, field normalization, and validation failure contract for generated sample18 submit requests before adding a route | `ACTIVE_NEXT` | 0.5 - 1 day / 半日 - 1 日 |
 
 ### Long-Term No-Code Roadmap / 長期 No-Code ロードマップ
 
