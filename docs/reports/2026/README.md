@@ -11,6 +11,20 @@
 
 ## Index
 
+- `2026-0709-no-push-stack-checkpoint-after-fetch-filter-coverage.md`
+  - #498 fetch filter coverage 後の no-push stack checkpoint。PUSH なしで継続する場合も named non-executable hardening のみに限定し、次は repository identity filter coverage を昇格。availability / generated button execution / push は未実行。Status: `DONE`。
+- `2026-0709-review-workflow-repository-fetch-filter-lane-closure.md`
+  - #497 review workflow repository fetch filter lane closure。#496 の focused coverage を accepted capability として閉じ、PUSH なしでは次も named non-executable hardening のみに限定。availability / generated button execution / push は未実行。Status: `DONE`。
+- `2026-0709-review-workflow-repository-fetch-filter-coverage.md`
+  - #496 review workflow repository fetch filter coverage。latest-request fetch の project / status / requested-by / limit filtering を focused coverage で確認。availability / generated button execution / push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0709-no-push-stack-checkpoint-after-repository-validation.md`
+  - #495 repository validation 後の no-push stack checkpoint。PUSH なしで継続する場合も named non-executable hardening のみに限定し、次は repository fetch filter coverage を昇格。availability / generated button execution / push は未実行。Status: `DONE`。
+- `2026-0709-review-workflow-repository-validation-lane-closure.md`
+  - #494 review workflow repository validation lane closure。invalid status と required project key 欠落が fail-closed し、review request row を作らない accepted behavior を整理。availability / generated button execution / push は未実行。Status: `DONE`。
+- `2026-0709-review-workflow-repository-validation-coverage.md`
+  - #493 review workflow repository validation coverage。invalid status と required project key 欠落が fail-closed し、review request row を作らないことを focused coverage で確認。availability / generated button execution / push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0709-continue-no-push-non-executable-hardening.md`
+  - #492 user の「継続」を PUSH なし local non-executable hardening 継続指示として記録。次に repository validation coverage を昇格。Push は未実行。Status: `DONE`。
 - `2026-0709-no-push-stack-checkpoint-after-guard-first-hardening.md`
   - #491 guard-first hardening 後の no-push stack checkpoint。local stack は `origin/develop` より 59 commits ahead。次は user が cleanup / push / named non-executable follow-up lane を明示するまで待つ。availability / generated button execution / push は未実行。Status: `DONE`。
 - `2026-0709-review-workflow-guard-first-skip-matrix-lane-closure.md`

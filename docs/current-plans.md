@@ -13,7 +13,7 @@ When someone asks for "the plan list", answer from this section first. / 「計�
 
 ### Main Plan / 主計画
 
-Current main status: #491 checkpoints the no-push local stack after guard-first hardening. The local stack is now 59 commits ahead of `origin/develop`; further local commits should wait for explicit user direction: cleanup, push, or a new named non-executable lane. Availability enablement remains parked, generated buttons remain disabled, and push has not been performed for #432-#491. / 現在の主計画ステータス: #491 で guard-first hardening 後の no-push local stack を checkpoint しました。local stack は `origin/develop` より 59 commits ahead です。これ以上の local commit は、cleanup、push、または新しい名前付き non-executable lane について user の明示指示を待ちます。availability enablement は parked、generated button は disabled のまま、#432-#491 は push していません。
+Current main status: #498 checkpoints the no-push stack after fetch filter coverage. Continue only with named non-executable hardening; the next promoted lane is review workflow repository identity filter coverage. Availability and generated button execution remain parked, `develop` is 65 commits ahead of `origin/develop`, and push has not been performed for #432-#498. / 現在の主計画ステータス: #498 で fetch filter coverage 後の no-push stack を checkpoint しました。名前付き non-executable hardening のみ継続し、次は review workflow repository identity filter coverage を昇格します。availability と generated button execution は parked のまま、`develop` は `origin/develop` より 65 commits ahead、#432-#498 は push していません。
 
 | Order | Work unit / 作業の塊 | Commit unit / コミット単位 | Status | Rough effort / 目安 |
 | --- | --- | --- | --- | --- |
@@ -50,7 +50,14 @@ Current main status: #491 checkpoints the no-push local stack after guard-first 
 | 489 | Review workflow guard-first persistence skip matrix / review workflow guard-first persistence skip matrix | Add focused coverage that stale, unauthorized, missing-CSRF, and other non-allowed guard results never persist review requests | `DONE` | 0.5 day / 半日 |
 | 490 | Review workflow guard-first skip matrix lane closure / review workflow guard-first skip matrix lane closure | Close the guard-first skip matrix slice and decide whether to pause or continue non-executable hardening | `DONE` | 0.25 day / 0.25 日 |
 | 491 | No-push stack checkpoint after guard-first hardening / guard-first hardening 後の no-push stack checkpoint | Decide whether to pause local commits, request cleanup, or continue only with explicitly selected non-executable work | `DONE` | 0.25 day / 0.25 日 |
-| 492 | Await explicit next instruction / 次の明示指示待ち | Wait for the user to choose cleanup, push, or a named non-executable follow-up lane | `ACTIVE_NEXT` | 0.25 day / 0.25 日 |
+| 492 | Continue no-push non-executable hardening / PUSH なし non-executable hardening 継続 | Record the user's continue instruction as an explicit no-push direction and promote repository validation coverage | `DONE` | 0.25 day / 0.25 日 |
+| 493 | Review workflow repository validation coverage / review workflow repository validation coverage | Add focused coverage that invalid status and missing required fields fail closed without creating review request rows | `DONE` | 0.5 day / 半日 |
+| 494 | Review workflow repository validation lane closure / review workflow repository validation lane closure | Close repository validation coverage and decide whether to pause local commits again | `DONE` | 0.25 day / 0.25 日 |
+| 495 | No-push stack checkpoint after repository validation / repository validation 後の no-push stack checkpoint | Decide whether to pause local commits or continue only with a named non-executable follow-up lane | `DONE` | 0.25 day / 0.25 日 |
+| 496 | Review workflow repository fetch filter coverage / review workflow repository fetch filter coverage | Add focused coverage for latest-request filtering by status/requested-by/limit without enabling availability or generated buttons | `DONE` | 0.5 day / 半日 |
+| 497 | Review workflow repository fetch filter lane closure / review workflow repository fetch filter lane closure | Close fetch filter coverage and decide whether to pause local commits again | `DONE` | 0.25 day / 0.25 日 |
+| 498 | No-push stack checkpoint after fetch filter coverage / fetch filter coverage 後の no-push stack checkpoint | Decide whether to pause local commits or continue only with another named non-executable hardening lane | `DONE` | 0.25 day / 0.25 日 |
+| 499 | Review workflow repository identity filter coverage / review workflow repository identity filter coverage | Add focused coverage for latest-request filtering by source output, artifact, and operation without enabling availability or generated buttons | `ACTIVE_NEXT` | 0.5 day / 半日 |
 
 ### Current Boundary / 現在の境界
 
@@ -60,7 +67,7 @@ Current main status: #491 checkpoints the no-push local stack after guard-first 
 - A route-local helper now persists or reuses review requests for accepted-plan results, and exposes `recorded` / `duplicate` / `failed` / `skipped` status to the result page. / route-local helper は accepted-plan result の review request を persist または reuse し、result page に `recorded` / `duplicate` / `failed` / `skipped` status を公開します。
 - Generated HTML and React bridge handoffs remain metadata-only. / generated HTML と React bridge handoff は metadata-only のままです。
 - Generated operator action buttons remain disabled until a separate implementation lane explicitly enables execution. / generated operator action button は、別の implementation lane が明示的に execution を有効化するまで disabled のままです。
-- Availability enablement is parked while the current 59-commit local stack remains unpushed. / 現在の 59 commit local stack が unpushed の間、availability enablement は parked です。
+- Availability enablement is parked while the current 65-commit local stack remains unpushed. / 現在の 65 commit local stack が unpushed の間、availability enablement は parked です。
 - The current push decision is to hold locally; no push is performed without a new explicit user request. / 現在の push 判断は local hold です。新しい明示的な user request がない限り push は行いません。
 - No build, publish, review-request, approval, rollback, mutation, custom component execution, or custom operation dispatch route is currently enabled through this lane. / この lane では build、publish、review-request、approval、rollback、mutation、custom component execution、custom operation dispatch route はまだ有効化していません。
 - Push is not performed unless the user explicitly requests it. / user が明示するまで push は行いません。
@@ -220,6 +227,30 @@ For #490, docs-only verification is `git diff --check`.
 
 For #491, docs-only verification is `git diff --check`.
 
+For #492, docs-only verification is included in #493's `git diff --check`.
+
+Latest code verification from #493:
+
+- `php -l tests/Integration/NoCodeReviewWorkflowRepositorySqliteTest.php`
+- Focused PHPUnit review workflow repository validation: `OK (3 tests, 32 assertions)`
+- Full `make test`: not rerun for this slice because the immediately preceding full-suite attempts repeatedly stalled while Docker was loading metadata for `docker.io/library/ubuntu:24.04`.
+- `git diff --check`
+
+For #494, docs-only verification is `git diff --check`.
+
+For #495, docs-only verification is `git diff --check`.
+
+Latest code verification from #496:
+
+- `php -l tests/Integration/NoCodeReviewWorkflowRepositorySqliteTest.php`
+- Focused PHPUnit review workflow repository fetch filters: `OK (4 tests, 41 assertions)`
+- Full `make test`: not rerun for this slice because recent full-suite attempts repeatedly stalled while Docker was loading metadata for `docker.io/library/ubuntu:24.04`.
+- `git diff --check`
+
+For #497, docs-only verification is `git diff --check`.
+
+For #498, docs-only verification is `git diff --check`.
+
 ## Auxiliary Later Review / 補助・後日検討
 
 These are useful candidates, but they are not part of the main plan unless a fresh priority decision promotes them. / これらは有用な候補ですが、新しい優先判断で昇格するまでは主計画には含めません。
@@ -239,6 +270,13 @@ Completed detailed history was moved out of this active list. / 完了済みの�
 
 | Completed scope / 完了済み範囲 | Historical source / 履歴ソース |
 | --- | --- |
+| No-push stack checkpoint after fetch filter coverage / fetch filter coverage 後の no-push stack checkpoint | [2026-0709 No-Push Stack Checkpoint After Fetch Filter Coverage](reports/2026/2026-0709-no-push-stack-checkpoint-after-fetch-filter-coverage.md) |
+| Review workflow repository fetch filter lane closure / review workflow repository fetch filter lane closure | [2026-0709 Review Workflow Repository Fetch Filter Lane Closure](reports/2026/2026-0709-review-workflow-repository-fetch-filter-lane-closure.md) |
+| Review workflow repository fetch filter coverage / review workflow repository fetch filter coverage | [2026-0709 Review Workflow Repository Fetch Filter Coverage](reports/2026/2026-0709-review-workflow-repository-fetch-filter-coverage.md) |
+| No-push stack checkpoint after repository validation / repository validation 後の no-push stack checkpoint | [2026-0709 No-Push Stack Checkpoint After Repository Validation](reports/2026/2026-0709-no-push-stack-checkpoint-after-repository-validation.md) |
+| Review workflow repository validation lane closure / review workflow repository validation lane closure | [2026-0709 Review Workflow Repository Validation Lane Closure](reports/2026/2026-0709-review-workflow-repository-validation-lane-closure.md) |
+| Review workflow repository validation coverage / review workflow repository validation coverage | [2026-0709 Review Workflow Repository Validation Coverage](reports/2026/2026-0709-review-workflow-repository-validation-coverage.md) |
+| Continue no-push non-executable hardening / PUSH なし non-executable hardening 継続 | [2026-0709 Continue No-Push Non-Executable Hardening](reports/2026/2026-0709-continue-no-push-non-executable-hardening.md) |
 | No-push stack checkpoint after guard-first hardening / guard-first hardening 後の no-push stack checkpoint | [2026-0709 No-Push Stack Checkpoint After Guard-First Hardening](reports/2026/2026-0709-no-push-stack-checkpoint-after-guard-first-hardening.md) |
 | Review workflow guard-first skip matrix lane closure / review workflow guard-first skip matrix lane closure | [2026-0709 Review Workflow Guard-First Skip Matrix Lane Closure](reports/2026/2026-0709-review-workflow-guard-first-skip-matrix-lane-closure.md) |
 | Review workflow guard-first persistence skip matrix / review workflow guard-first persistence skip matrix | [2026-0709 Review Workflow Guard-First Persistence Skip Matrix](reports/2026/2026-0709-review-workflow-guard-first-persistence-skip-matrix.md) |
