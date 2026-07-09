@@ -11,6 +11,8 @@
 
 ## Index
 
+- `2026-0709-l1-bridge-no-code-capability-checklist.md`
+  - #545 L1 bridge no-code capability checklist。`sample18-mini-task-board-demo` の No Code 化前に必要な data shape、list/detail/form、status filter、disabled/dry-run actions、fast JSON/DOM contract、golden fixture、outer smoke 境界を定義。Status: `DONE`。
 - `2026-0709-post-availability-sample-ui-replan.md`
   - #543 post-availability sample UI replan。最初の既存 sample UI No Code 化対象を `sample18-mini-task-board-demo` に決め、sample07 / sample28 / sample29 / sample31 を contract reference として位置づけ、次に sample18 capability checklist を進める方針を記録。Status: `DONE`。
 - `2026-0709-review-request-availability-first-slice.md`

@@ -59,6 +59,20 @@ After the dedicated test lab proves the harness, existing sample conversion shou
 - add lightweight interaction tests only for real client-side behavior;
 - keep one representative browser smoke for final confidence.
 
+## Sample18 Conversion Checklist
+
+`sample18-mini-task-board-demo` is the first existing sample UI conversion target. Before replacing or shadowing its hand-coded task board route, the no-code conversion must satisfy this minimum contract:
+
+| Area | Minimum capability | Fast evidence |
+| --- | --- | --- |
+| Data shape | `task_card` fields for `id`, `title`, `body`, `status`, `assigned_to`, `priority`, `due_date`, `completed_at`, and `updated_at` are represented with key/required/readonly/client-write roles. | Metadata contract assertions on `screen-definition.json` and `runtime-preview.json`. |
+| List screen | The generated list exposes task title/body, status, assignee, priority, due date, row identity, and a status filter boundary. | PHPUnit JSON assertions plus DOM markers for table/list region, columns, and filter controls. |
+| Detail screen | The generated detail exposes the same row identity and readonly display fields without requiring mutation. | DOM assertions for detail region, field labels, and selected row markers. |
+| Form screen | The generated form exposes create/update input fields, required title/body/status behavior, number/date field metadata, and readonly identity handling. | JSON field-role assertions and DOM assertions for inputs, required markers, and disabled or dry-run submit controls. |
+| Actions | Create, update, complete, reopen, and delete are described as route-boundary-aware disabled or dry-run operations before any mutation is enabled. | Action metadata assertions for operation keys, route boundaries, unavailable reasons, and `generated_button_enabled=false`. |
+| Golden comparison | Existing `/samples/sample18-task-board` behavior remains the comparison target. | A golden fixture names stable seed rows and expected DOM markers before generated no-code output is compared. |
+| Outer smoke | Browser or HTTP smoke remains representative only. | Existing `make sample18-http-runtime-smoke` stays outside the fast inner loop. |
+
 ## Design Boundary
 
 Fast UI contract tests prove that generated metadata and generated markup expose the expected UI contract. They do not prove browser layout, CSS pixel rendering, or server mutation. Browser smoke and route-level tests remain responsible for those outer boundaries.
