@@ -68,6 +68,7 @@
       "create_task_card": 5,
       "update_task_card": 7
     },
+    "managed_action_submit_url": "/samples/sample18-task-board/no-code/generated-submit",
     "requires_route_boundary_markers": true
   },
   "status_filter_contract": {

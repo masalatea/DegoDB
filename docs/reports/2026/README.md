@@ -11,6 +11,8 @@
 
 ## Index
 
+- `2026-0710-sample18-generated-submit-route-browser-preflight.md`
+  - #567 sample18 generated submit route browser preflight。sample18 public runtime の disabled managed action button に blocked submit route marker `data-action-submit-url` が出ることを browser smoke で確認し、button / runtime execute は disabled のまま維持。Status: `DONE`。
 - `2026-0710-sample18-generated-submit-route-blocked-wrapper.md`
   - #566 sample18 generated submit route blocked wrapper。`/samples/sample18-task-board/no-code/generated-submit` を追加し、payload validation 後も `generated_submit_disabled` で mutation 前に止まる JSON route wrapper を focused PHPUnit で確認。Status: `DONE`。
 - `2026-0710-sample18-generated-submit-request-contract-preflight.md`

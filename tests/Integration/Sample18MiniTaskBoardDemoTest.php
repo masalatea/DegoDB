@@ -295,6 +295,10 @@ final class Sample18MiniTaskBoardDemoTest extends TestCase
             self::assertIsArray($action);
             $fieldCountsByAction[(string) ($action['action_key'] ?? '')] = count($action['fields'] ?? []);
             self::assertSame('disabled', (string) ($action['availability'] ?? ''));
+            self::assertSame(
+                $htmlDomContract['managed_action_submit_url'] ?? '',
+                (string) ($action['submit_route'] ?? ''),
+            );
         }
         self::assertSame($htmlDomContract['managed_action_field_counts'] ?? [], $fieldCountsByAction);
         $runtimePreview = NoCodeUiContractAssertions::readJsonFile($this, $publishedRoot . '/runtime-preview.json');
@@ -324,6 +328,10 @@ final class Sample18MiniTaskBoardDemoTest extends TestCase
             $this,
             $runtimePreviewHtml,
             $htmlDomContract['disabled_extension_action_keys'] ?? [],
+        );
+        self::assertStringContainsString(
+            'data-action-submit-url="' . ($htmlDomContract['managed_action_submit_url'] ?? '') . '"',
+            $runtimePreviewHtml,
         );
     }
 
