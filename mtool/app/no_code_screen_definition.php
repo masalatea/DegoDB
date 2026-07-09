@@ -167,6 +167,7 @@ function app_no_code_screen_definition_contract_definition(
     $syncStatusDisplay = (bool) ($storageHint['sync_status_display'] ?? false);
     $presentationProfile = app_no_code_screen_definition_presentation_profile($contract, $fields);
     $extensionSlots = app_no_code_screen_definition_extension_slots($contract);
+    $customOperations = app_no_code_screen_definition_custom_operations($contract);
 
     return [
         'contract_key' => $contractKey,
@@ -175,6 +176,7 @@ function app_no_code_screen_definition_contract_definition(
         'view_variant_preference' => app_no_code_screen_definition_view_variant_preference($contract),
         'presentation_profile' => $presentationProfile,
         'extension_slots' => $extensionSlots,
+        'custom_operations' => $customOperations,
         'storage_hint' => $storageHint,
         'traceability' => app_no_code_screen_definition_traceability($contractKey, $fields, $actions),
         'screens' => [
@@ -315,7 +317,7 @@ function app_no_code_screen_definition_normalize_field_groups(mixed $value, arra
  *     target:string,
  *     links:list<array{label:string,target:string,href:string}>,
  *     status_items:list<array{label:string,value:string,state:string}>,
- *     action_items:list<array{label:string,action_key:string,intent:string,state:string}>,
+ *     action_items:list<array{label:string,action_key:string,operation_key:string,intent:string,state:string,unavailable_reason:string}>,
  *     screen_types:list<string>,
  *     source:string
  * }>
@@ -450,7 +452,7 @@ function app_no_code_screen_definition_normalize_extension_slot_status_state(str
 
 /**
  * @param mixed $items
- * @return list<array{label:string,action_key:string,intent:string,state:string}>
+ * @return list<array{label:string,action_key:string,operation_key:string,intent:string,state:string,unavailable_reason:string}>
  */
 function app_no_code_screen_definition_normalize_extension_slot_action_items(mixed $items): array
 {
@@ -466,6 +468,7 @@ function app_no_code_screen_definition_normalize_extension_slot_action_items(mix
 
         $label = trim((string) ($item['label'] ?? ''));
         $actionKey = trim((string) ($item['action_key'] ?? ''));
+        $operationKey = trim((string) ($item['operation_key'] ?? $actionKey));
         if ($label === '' || $actionKey === '') {
             continue;
         }
@@ -473,8 +476,10 @@ function app_no_code_screen_definition_normalize_extension_slot_action_items(mix
         $normalized[] = [
             'label' => $label,
             'action_key' => $actionKey,
+            'operation_key' => $operationKey !== '' ? $operationKey : $actionKey,
             'intent' => trim((string) ($item['intent'] ?? '')),
             'state' => app_no_code_screen_definition_normalize_extension_slot_action_state((string) ($item['state'] ?? 'deferred')),
+            'unavailable_reason' => trim((string) ($item['unavailable_reason'] ?? '')),
         ];
     }
 
@@ -485,6 +490,94 @@ function app_no_code_screen_definition_normalize_extension_slot_action_state(str
 {
     $normalized = strtolower(trim($state));
     return in_array($normalized, ['available', 'deferred', 'blocked'], true) ? $normalized : 'deferred';
+}
+
+/**
+ * @param array<string,mixed> $contract
+ * @return list<array{
+ *     operation_key:string,
+ *     label:string,
+ *     category:string,
+ *     target:string,
+ *     side_effect_class:string,
+ *     availability:string,
+ *     policy_key:string,
+ *     csrf_required:bool,
+ *     audit_event:string,
+ *     adapter_handoff:string,
+ *     intent:string,
+ *     unavailable_reason:string
+ * }>
+ */
+function app_no_code_screen_definition_custom_operations(array $contract): array
+{
+    $metadata = is_array($contract['contract_metadata'] ?? null) ? $contract['contract_metadata'] : [];
+    $operations = is_array($metadata['custom_operations'] ?? null) ? $metadata['custom_operations'] : [];
+    $normalized = [];
+    foreach ($operations as $operation) {
+        if (!is_array($operation)) {
+            continue;
+        }
+
+        $operationKey = trim((string) ($operation['operation_key'] ?? ''));
+        $label = trim((string) ($operation['label'] ?? ''));
+        if ($operationKey === '' || $label === '') {
+            continue;
+        }
+
+        $normalized[] = [
+            'operation_key' => $operationKey,
+            'label' => $label,
+            'category' => app_no_code_screen_definition_normalize_custom_operation_category((string) ($operation['category'] ?? 'custom')),
+            'target' => app_no_code_screen_definition_normalize_custom_operation_target((string) ($operation['target'] ?? '')),
+            'side_effect_class' => app_no_code_screen_definition_normalize_custom_operation_side_effect_class((string) ($operation['side_effect_class'] ?? 'external_handoff')),
+            'availability' => app_no_code_screen_definition_normalize_custom_operation_availability((string) ($operation['availability'] ?? 'deferred')),
+            'policy_key' => trim((string) ($operation['policy_key'] ?? '')),
+            'csrf_required' => (bool) ($operation['csrf_required'] ?? true),
+            'audit_event' => trim((string) ($operation['audit_event'] ?? '')),
+            'adapter_handoff' => trim((string) ($operation['adapter_handoff'] ?? '')),
+            'intent' => trim((string) ($operation['intent'] ?? '')),
+            'unavailable_reason' => trim((string) ($operation['unavailable_reason'] ?? '')),
+        ];
+    }
+
+    return $normalized;
+}
+
+function app_no_code_screen_definition_normalize_custom_operation_category(string $category): string
+{
+    $normalized = strtolower(trim($category));
+    return in_array(
+        $normalized,
+        ['build', 'publish', 'review_request', 'approval', 'rollback', 'navigation', 'custom'],
+        true,
+    ) ? $normalized : 'custom';
+}
+
+function app_no_code_screen_definition_normalize_custom_operation_target(string $target): string
+{
+    $normalized = strtolower(trim($target));
+    return in_array(
+        $normalized,
+        ['source_output', 'publish_candidate', 'artifact', 'shared_contract', 'project'],
+        true,
+    ) ? $normalized : '';
+}
+
+function app_no_code_screen_definition_normalize_custom_operation_side_effect_class(string $sideEffectClass): string
+{
+    $normalized = strtolower(trim($sideEffectClass));
+    return in_array(
+        $normalized,
+        ['read_only', 'queued_mutation', 'direct_mutation', 'approval_transition', 'external_handoff'],
+        true,
+    ) ? $normalized : 'external_handoff';
+}
+
+function app_no_code_screen_definition_normalize_custom_operation_availability(string $availability): string
+{
+    $normalized = strtolower(trim($availability));
+    return in_array($normalized, ['disabled', 'available', 'blocked', 'deferred'], true) ? $normalized : 'deferred';
 }
 
 /**

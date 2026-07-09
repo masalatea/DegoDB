@@ -128,6 +128,12 @@ function readBridgeSummary(workDir) {
     screenCount: Array.isArray(contract.runtime_preview?.screens)
       ? contract.runtime_preview.screens.length
       : 0,
+    customOperationHandoffCount: Array.isArray(contract.custom_operation_handoffs)
+      ? contract.custom_operation_handoffs.length
+      : 0,
+    customOperationAdapterHandoffs: Array.isArray(contract.custom_operation_handoffs)
+      ? contract.custom_operation_handoffs.map((handoff) => String(handoff.adapter_handoff || '')).filter(Boolean)
+      : [],
   };
 }
 

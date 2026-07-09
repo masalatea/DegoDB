@@ -875,9 +875,11 @@ final class SharedDataClassContractFoundationTest extends TestCase
         );
         self::assertSame('task', $bridgeContract['screen_definition']['contracts'][0]['contract_key'] ?? '');
         self::assertSame('task_list', $bridgeContract['runtime_preview']['screens'][0]['screen_key'] ?? '');
+        self::assertSame([], $bridgeContract['custom_operation_handoffs'] ?? ['unexpected']);
 
         $bridgeTypescript = (string) file_get_contents($treeResult['runtime_source_root'] . '/src/mtoolNoCodeBridge.ts');
         self::assertStringContainsString('export type MtoolBridgeContract', $bridgeTypescript);
+        self::assertStringContainsString('export type MtoolCustomOperationHandoff', $bridgeTypescript);
         self::assertStringContainsString('createActionIntent', $bridgeTypescript);
         self::assertStringContainsString('createActionIntentResult', $bridgeTypescript);
         self::assertStringContainsString('validationMessage', $bridgeTypescript);

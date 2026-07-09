@@ -11,6 +11,26 @@
 
 ## Index
 
+- `2026-0708-local-stack-review-after-custom-operation-adapter-handoff.md`
+  - #456 custom operation metadata / adapter handoff lane closure 後の local commit stack review。`develop` は `origin/develop` より 23 commits ahead。Mtool dogfooding、configured presentation / custom slots、visible slot renderer、custom operation manifest metadata、unavailable reasons、React bridge handoff、lane closure の意味単位に分かれているため、明示 push 前の squash / history rewrite は推奨しない。Push は未実行。Status: `DONE`。
+- `2026-0708-custom-operation-metadata-adapter-handoff-lane-closure.md`
+  - #455 custom operation metadata / adapter handoff lane closure。manifest inventory、metadata carry-through、disabled action binding、unavailable reason、dogfooding inspection、React bridge `custom_operation_handoffs` までを accepted capability として整理。execution route / build / publish / approval / mutation は未追加。Push は未実行。Status: `DONE`。
+- `2026-0708-react-bridge-custom-operation-handoff-first-slice.md`
+  - #454 React bridge custom operation handoff first slice。`bridge-contract.json` に `custom_operation_handoffs` を追加し、adapter-facing な operation metadata / unavailable reason / adapter handoff / screen keys を公開。execution route / build / publish / approval / mutation は未追加。Push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0708-custom-operation-unavailable-reason-first-slice.md`
+  - #453 custom operation unavailable-reason first slice。custom operation / action item に `unavailable_reason` を正規化し、disabled operator action panel と dogfooding inspection に表示・報告する。execution route / build / publish / approval / mutation は未追加。Push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0708-local-stack-review-after-custom-operation-manifest.md`
+  - #452 custom operation manifest metadata lane closure 後の local commit stack review。`develop` は `origin/develop` より 19 commits ahead。Mtool dogfooding metadata、visible custom slot renderer、custom operation manifest metadata の意味単位に分かれているため、明示 push 前の squash / history rewrite は推奨しない。Push は未実行。Status: `DONE`。
+- `2026-0708-custom-operation-manifest-metadata-lane-closure.md`
+  - #451 custom operation manifest metadata lane closure。manifest inventory、metadata carry-through、disabled operator action binding、dogfooding inspection reporting までを accepted first slice として整理。execution route / build / publish / review-request / approval / mutation / custom component execution は未追加。Push は未実行。Status: `DONE`。
+- `2026-0708-custom-operation-manifest-inspection-first-slice.md`
+  - #450 custom operation manifest inspection first slice。Mtool dogfooding inspection summary が custom operation category、side-effect class、availability、adapter handoff、screen ごとの operation carry-through を報告。execution route / build / publish / approval / mutation は未追加。Push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0708-custom-operation-manifest-carry-through-first-slice.md`
+  - #449 custom operation manifest carry-through first slice。`contract_metadata.custom_operations` を no-code screen definition に正規化し、runtime preview JSON と disabled operator action panel の stable operation binding まで通す。execution route / build / publish / approval / mutation は未追加。Push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0708-custom-operation-manifest-inventory-first-slice.md`
+  - #448 custom operation manifest inventory first slice。operation identity、category、target、side-effect class、policy / auth / CSRF、audit、generated HTML binding、adapter handoff を non-executing manifest boundary として整理。次の code-backed slice は metadata carry-through のみに絞る。Push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0708-post-visible-slot-renderer-replan.md`
+  - #447 visible custom slot renderer closure / local stack review 後の次判断。operator action affordance は visible になったが non-executing のまま維持し、build / publish / review-request / approval などを接続する前に custom operation manifest inventory を次 lane として昇格。Push は未実行。Status: `DONE`。
 - `2026-0708-local-stack-review-after-visible-custom-slot-renderer.md`
   - #446 visible custom slot renderer closure 後の local commit stack review。`develop` は `origin/develop` より 13 commits ahead。Mtool dogfooding probe、configured presentation / slot metadata、inspection / closure、visible slot renderer first pass の意味単位に分かれているため、明示 push 前の squash / history rewrite は推奨しない。Push は未実行。Status: `DONE`。
 - `2026-0708-visible-custom-slot-renderer-closure.md`

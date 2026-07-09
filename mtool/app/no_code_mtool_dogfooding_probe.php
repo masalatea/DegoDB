@@ -47,6 +47,36 @@ function app_no_code_mtool_dogfooding_probe_manifest(): array
                             ],
                         ],
                     ],
+                    'custom_operations' => [
+                        [
+                            'operation_key' => 'review_source_output_artifact',
+                            'label' => 'Review Artifact',
+                            'category' => 'review_request',
+                            'target' => 'artifact',
+                            'side_effect_class' => 'external_handoff',
+                            'availability' => 'deferred',
+                            'policy_key' => 'source_output.review',
+                            'csrf_required' => true,
+                            'audit_event' => 'mtool.source_output.artifact_review_requested',
+                            'adapter_handoff' => 'source_output_artifact_review',
+                            'intent' => 'Open the generated artifact review workflow.',
+                            'unavailable_reason' => 'Execution route is not wired yet; policy, CSRF, audit, and review workflow boundaries must be connected first.',
+                        ],
+                        [
+                            'operation_key' => 'request_source_output_publish',
+                            'label' => 'Request Publish',
+                            'category' => 'publish',
+                            'target' => 'source_output',
+                            'side_effect_class' => 'approval_transition',
+                            'availability' => 'deferred',
+                            'policy_key' => 'source_output.publish_request',
+                            'csrf_required' => true,
+                            'audit_event' => 'mtool.source_output.publish_requested',
+                            'adapter_handoff' => 'source_output_publish_request',
+                            'intent' => 'Prepare an approval request for the current generated artifact.',
+                            'unavailable_reason' => 'Publish request execution is deferred until approval transition policy, CSRF, and audit boundaries are wired.',
+                        ],
+                    ],
                     'extension_slots' => [
                         [
                             'slot_key' => 'mtool_source_output_related_settings',
@@ -106,14 +136,18 @@ function app_no_code_mtool_dogfooding_probe_manifest(): array
                                 [
                                     'label' => 'Review Artifact',
                                     'action_key' => 'review_source_output_artifact',
+                                    'operation_key' => 'review_source_output_artifact',
                                     'intent' => 'Open the generated artifact review workflow.',
                                     'state' => 'deferred',
+                                    'unavailable_reason' => 'Execution route is not wired yet; policy, CSRF, audit, and review workflow boundaries must be connected first.',
                                 ],
                                 [
                                     'label' => 'Request Publish',
                                     'action_key' => 'request_source_output_publish',
+                                    'operation_key' => 'request_source_output_publish',
                                     'intent' => 'Prepare an approval request for the current generated artifact.',
                                     'state' => 'deferred',
+                                    'unavailable_reason' => 'Publish request execution is deferred until approval transition policy, CSRF, and audit boundaries are wired.',
                                 ],
                             ],
                             'screen_types' => ['detail'],
@@ -195,6 +229,7 @@ function app_no_code_mtool_dogfooding_probe_inspection_summary(?array $principal
     }
 
     $contract = is_array($screenDefinition['contracts'][0] ?? null) ? $screenDefinition['contracts'][0] : [];
+    $customOperations = is_array($contract['custom_operations'] ?? null) ? $contract['custom_operations'] : [];
     $screens = [];
     foreach (($runtimePreview['screens'] ?? []) as $screen) {
         if (!is_array($screen)) {
@@ -209,6 +244,10 @@ function app_no_code_mtool_dogfooding_probe_inspection_summary(?array $principal
                 is_array($screen['extension_slots'] ?? null) ? $screen['extension_slots'] : [],
                 'slot_type',
             ),
+            'custom_operation_keys' => array_column(
+                is_array($screen['custom_operations'] ?? null) ? $screen['custom_operations'] : [],
+                'operation_key',
+            ),
         ];
     }
 
@@ -220,6 +259,21 @@ function app_no_code_mtool_dogfooding_probe_inspection_summary(?array $principal
         'view_variant_preference' => (string) ($contract['view_variant_preference']['variant'] ?? ''),
         'presentation_profile_key' => (string) ($contract['presentation_profile']['profile_key'] ?? ''),
         'presentation_density' => (string) ($contract['presentation_profile']['density'] ?? ''),
+        'custom_operation_keys' => array_column($customOperations, 'operation_key'),
+        'custom_operation_categories' => array_values(array_unique(array_map(
+            static fn (array $operation): string => (string) ($operation['category'] ?? ''),
+            $customOperations,
+        ))),
+        'custom_operation_side_effect_classes' => array_values(array_unique(array_map(
+            static fn (array $operation): string => (string) ($operation['side_effect_class'] ?? ''),
+            $customOperations,
+        ))),
+        'custom_operation_availability' => array_values(array_unique(array_map(
+            static fn (array $operation): string => (string) ($operation['availability'] ?? ''),
+            $customOperations,
+        ))),
+        'custom_operation_unavailable_reasons' => array_column($customOperations, 'unavailable_reason'),
+        'custom_operation_adapter_handoffs' => array_column($customOperations, 'adapter_handoff'),
         'extension_slot_types' => array_column(
             is_array($contract['extension_slots'] ?? null) ? $contract['extension_slots'] : [],
             'slot_type',
@@ -246,6 +300,8 @@ function app_no_code_mtool_dogfooding_probe_html_boundary(string $html): array
         'contains_artifact_status_card' => str_contains($html, 'data-extension-slot-status-item="Artifact Strategy"'),
         'contains_operator_actions_slot' => str_contains($html, 'data-extension-slot="mtool_source_output_operator_actions"'),
         'contains_operator_action_panel' => str_contains($html, 'data-extension-slot-action="review_source_output_artifact"'),
+        'contains_custom_operation_binding' => str_contains($html, 'data-extension-slot-operation="review_source_output_artifact"'),
+        'contains_custom_operation_unavailable_reason' => str_contains($html, 'data-extension-slot-unavailable-reason="review_source_output_artifact"'),
     ];
 }
 

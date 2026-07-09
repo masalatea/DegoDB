@@ -44,6 +44,7 @@ function app_no_code_runtime_render_screen(
             'fields' => app_no_code_runtime_render_fields($fields),
             'presentation_hint' => is_array($screen['presentation_hint'] ?? null) ? $screen['presentation_hint'] : [],
             'extension_slots' => is_array($screen['extension_slots'] ?? null) ? $screen['extension_slots'] : [],
+            'custom_operations' => is_array($contract['custom_operations'] ?? null) ? $contract['custom_operations'] : [],
             'actions' => app_no_code_runtime_render_actions(
                 is_array($screen['actions'] ?? null) ? $screen['actions'] : [],
                 is_array($contract['actions'] ?? null) ? $contract['actions'] : [],
@@ -631,10 +632,13 @@ function app_no_code_runtime_render_extension_slot_body_html(
 
             $intent = trim((string) ($item['intent'] ?? ''));
             $state = trim((string) ($item['state'] ?? 'deferred'));
+            $operationKey = trim((string) ($item['operation_key'] ?? $actionKey));
+            $unavailableReason = trim((string) ($item['unavailable_reason'] ?? ''));
             $items[] = implode("\n", [
-                '<div class="no-code-extension-slot-action-item" data-extension-slot-action-item="' . app_no_code_runtime_html_escape($actionKey) . '" data-extension-slot-action-state="' . app_no_code_runtime_html_escape($state) . '">',
-                '<button type="button" data-extension-slot-action="' . app_no_code_runtime_html_escape($actionKey) . '" disabled>' . app_no_code_runtime_html_escape($label) . '</button>',
+                '<div class="no-code-extension-slot-action-item" data-extension-slot-action-item="' . app_no_code_runtime_html_escape($actionKey) . '" data-extension-slot-operation="' . app_no_code_runtime_html_escape($operationKey) . '" data-extension-slot-action-state="' . app_no_code_runtime_html_escape($state) . '">',
+                '<button type="button" data-extension-slot-action="' . app_no_code_runtime_html_escape($actionKey) . '" data-extension-slot-operation-key="' . app_no_code_runtime_html_escape($operationKey) . '" disabled>' . app_no_code_runtime_html_escape($label) . '</button>',
                 '<span>' . app_no_code_runtime_html_escape($intent !== '' ? $intent : 'Operator action is declared but not executable in this generated preview.') . '</span>',
+                $unavailableReason !== '' ? '<small data-extension-slot-unavailable-reason="' . app_no_code_runtime_html_escape($operationKey) . '">' . app_no_code_runtime_html_escape($unavailableReason) . '</small>' : '',
                 '</div>',
             ]);
         }
