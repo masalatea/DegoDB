@@ -11,6 +11,8 @@
 
 ## Index
 
+- `2026-0709-review-workflow-availability-gate-matrix.md`
+  - #539 review workflow availability gate matrix。operation availability、preflight/guard result、UI marker/copy、audit、persistence/read-model expectations を分離し、#540 metadata-only read model の入力を定義。Status: `DONE`。
 - `2026-0709-review-workflow-availability-surface-inventory.md`
   - #538 review workflow availability surface inventory。review / publish custom operation metadata、route boundary、dispatch guard、disabled UI、review request persistence、test gaps を棚卸しし、#539 gate matrix への入力を記録。Status: `DONE`。
 - `2026-0709-lightweight-no-code-ui-testing-plan.md`
