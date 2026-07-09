@@ -235,6 +235,9 @@ function expectedProfile(name) {
       },
       managedActionDisabledReason: 'policy-not-enabled',
       managedActionSubmitUrl: '/samples/sample18-task-board/no-code/generated-submit',
+      managedActionBindingState: 'blocked_preflight',
+      managedActionCsrfSource: 'sample18_task_board_form_token',
+      managedActionFailClosedResult: 'generated_submit_disabled',
       payload: {
         id: 1801,
         title: 'Sample18 browser smoke update',
@@ -526,6 +529,9 @@ async function probeRuntimeDisabledActionSurface(page, config) {
       disabledReasons: buttons.map((button) => button.getAttribute('data-action-disabled-reason') || ''),
       affordances: buttons.map((button) => button.getAttribute('data-action-affordance') || ''),
       submitUrls: buttons.map((button) => button.getAttribute('data-action-submit-url') || ''),
+      bindingStates: buttons.map((button) => button.getAttribute('data-action-binding-state') || ''),
+      csrfSources: buttons.map((button) => button.getAttribute('data-action-csrf-source') || ''),
+      failClosedResults: buttons.map((button) => button.getAttribute('data-action-fail-closed-result') || ''),
       disabledProperties: buttons.map((button) => button.disabled === true),
       hintKeys: hints.map((hint) => hint.getAttribute('data-action-hint') || ''),
       hintStates: hints.map((hint) => hint.getAttribute('data-action-state-hint') || ''),
@@ -559,6 +565,9 @@ async function probeRuntimeDisabledActionSurface(page, config) {
     || result.disabledReasons.some((reason) => reason !== config.expected.managedActionDisabledReason)
     || result.affordances.some((affordance) => affordance !== 'keyboard-intent-preview')
     || result.submitUrls.some((submitUrl) => submitUrl !== config.expected.managedActionSubmitUrl)
+    || result.bindingStates.some((state) => state !== config.expected.managedActionBindingState)
+    || result.csrfSources.some((source) => source !== config.expected.managedActionCsrfSource)
+    || result.failClosedResults.some((resultCode) => resultCode !== config.expected.managedActionFailClosedResult)
     || result.disabledProperties.some((disabled) => disabled !== true)
     || JSON.stringify(result.hintKeys) !== JSON.stringify(expectedKeys)
     || result.hintStates.some((state) => state !== 'disabled')

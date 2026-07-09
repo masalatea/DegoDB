@@ -291,14 +291,32 @@ final class Sample18MiniTaskBoardDemoTest extends TestCase
         $contractActions = $screenDefinition['contracts'][0]['actions'] ?? [];
         self::assertIsArray($contractActions);
         $fieldCountsByAction = [];
+        $bindingGate = $checklist['submit_route_binding_gate'] ?? [];
+        self::assertIsArray($bindingGate);
         foreach ($contractActions as $action) {
             self::assertIsArray($action);
-            $fieldCountsByAction[(string) ($action['action_key'] ?? '')] = count($action['fields'] ?? []);
+            $actionKey = (string) ($action['action_key'] ?? '');
+            $fieldCountsByAction[$actionKey] = count($action['fields'] ?? []);
             self::assertSame('disabled', (string) ($action['availability'] ?? ''));
             self::assertSame(
                 $htmlDomContract['managed_action_submit_url'] ?? '',
                 (string) ($action['submit_route'] ?? ''),
             );
+            if (in_array($actionKey, $bindingGate['managed_action_keys'] ?? [], true)) {
+                self::assertSame(
+                    [
+                        'binding_state' => $bindingGate['state'] ?? '',
+                        'submit_route' => $bindingGate['submit_route'] ?? '',
+                        'csrf_source' => $bindingGate['csrf_source'] ?? '',
+                        'required_button_state' => $bindingGate['required_button_state'] ?? '',
+                        'runtime_click_binding' => $bindingGate['runtime_click_binding'] ?? null,
+                        'mutation_enabled' => $bindingGate['mutation_enabled'] ?? null,
+                        'fail_closed_result' => $bindingGate['fail_closed_result'] ?? '',
+                        'http_smoke_command' => $bindingGate['http_smoke_command'] ?? '',
+                    ],
+                    $action['submit_binding_gate'] ?? [],
+                );
+            }
         }
         self::assertSame($htmlDomContract['managed_action_field_counts'] ?? [], $fieldCountsByAction);
         $runtimePreview = NoCodeUiContractAssertions::readJsonFile($this, $publishedRoot . '/runtime-preview.json');
@@ -333,6 +351,9 @@ final class Sample18MiniTaskBoardDemoTest extends TestCase
             'data-action-submit-url="' . ($htmlDomContract['managed_action_submit_url'] ?? '') . '"',
             $runtimePreviewHtml,
         );
+        foreach (($bindingGate['required_dom_attributes'] ?? []) as $attribute => $value) {
+            self::assertStringContainsString($attribute . '="' . $value . '"', $runtimePreviewHtml);
+        }
     }
 
     /**
