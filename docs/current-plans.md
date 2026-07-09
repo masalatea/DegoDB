@@ -13,7 +13,7 @@ When someone asks for "the plan list", answer from this section first. / 「計�
 
 ### Main Plan / 主計画
 
-Current main status: #525 checkpoints the no-push stack after decoded payload fallback. Continue only with named non-executable hardening; the next promoted lane is review workflow repository requested-by required-field coverage. Availability and generated button execution remain parked, `develop` is 92 commits ahead of `origin/develop`, and push has not been performed for #432-#525. / 現在の主計画ステータス: #525 で decoded payload fallback 後の no-push stack を checkpoint しました。名前付き non-executable hardening のみ継続し、次は review workflow repository requested-by required-field coverage を昇格します。availability と generated button execution は parked のまま、`develop` は `origin/develop` より 92 commits ahead、#432-#525 は push していません。
+Current main status: #533 closes the review workflow repository `in_review` duplicate reuse lane. Existing `in_review` request reuse is accepted, availability and generated button execution remain parked, `develop` is 101 commits ahead of `origin/develop`, and push has not been performed for #432-#533. / 現在の主計画ステータス: #533 で review workflow repository `in_review` duplicate reuse lane を閉じました。既存 `in_review` request reuse を accepted とし、availability と generated button execution は parked のまま、`develop` は `origin/develop` より 101 commits ahead、#432-#533 は push していません。
 
 | Order | Work unit / 作業の塊 | Commit unit / コミット単位 | Status | Rough effort / 目安 |
 | --- | --- | --- | --- | --- |
@@ -84,7 +84,15 @@ Current main status: #525 checkpoints the no-push stack after decoded payload fa
 | 523 | Review workflow repository decoded payload fallback coverage / review workflow repository decoded payload fallback coverage | Add focused coverage that malformed stored audit/metadata JSON decodes to empty arrays without enabling execution | `DONE` | 0.5 day / 半日 |
 | 524 | Review workflow repository decoded payload fallback lane closure / review workflow repository decoded payload fallback lane closure | Close decoded payload fallback coverage and decide whether to pause local commits again | `DONE` | 0.25 day / 0.25 日 |
 | 525 | No-push stack checkpoint after decoded payload fallback / decoded payload fallback 後の no-push stack checkpoint | Decide whether to pause local commits or continue only with another named non-executable hardening lane | `DONE` | 0.25 day / 0.25 日 |
-| 526 | Review workflow repository requested-by required-field coverage / review workflow repository requested-by required-field coverage | Add focused coverage that blank requested_by fails closed without creating review request rows | `ACTIVE_NEXT` | 0.5 day / 半日 |
+| 526 | Review workflow repository requested-by required-field coverage / review workflow repository requested-by required-field coverage | Add focused coverage that blank requested_by fails closed without creating review request rows | `DONE` | 0.5 day / 半日 |
+| 527 | Review workflow repository requested-by required-field lane closure / review workflow repository requested-by required-field lane closure | Close requested-by required-field coverage and decide whether to pause local commits again | `DONE` | 0.25 day / 0.25 日 |
+| 528 | No-push stack checkpoint after requested-by validation / requested-by validation 後の no-push stack checkpoint | Return to the original no-code plan direction, keep push held locally, and promote only a named non-executable hardening lane | `DONE` | 0.25 day / 0.25 日 |
+| 529 | Review workflow repository identity required-field validation coverage / review workflow repository identity required-field validation coverage | Add focused coverage that blank source output and artifact identity fields fail closed without creating review request rows | `DONE` | 0.5 day / 半日 |
+| 530 | Review workflow repository identity required-field lane closure / review workflow repository identity required-field lane closure | Close identity required-field coverage and decide whether to pause local commits again | `DONE` | 0.25 day / 0.25 日 |
+| 531 | No-push stack checkpoint after identity required fields / identity required fields 後の no-push stack checkpoint | Continue without push only by promoting another named non-executable hardening lane | `DONE` | 0.25 day / 0.25 日 |
+| 532 | Review workflow repository in-review duplicate reuse coverage / review workflow repository in-review duplicate reuse coverage | Add focused coverage that an existing `in_review` request is reused for the same identity without enabling availability or generated buttons | `DONE` | 0.5 day / 半日 |
+| 533 | Review workflow repository in-review duplicate reuse lane closure / review workflow repository in-review duplicate reuse lane closure | Close in-review duplicate reuse coverage and decide whether to pause local commits again | `DONE` | 0.25 day / 0.25 日 |
+| 534 | No-push stack checkpoint after in-review duplicate reuse / in-review duplicate reuse 後の no-push stack checkpoint | Decide whether to pause local commits or continue only with another named non-executable hardening lane | `ACTIVE_NEXT` | 0.25 day / 0.25 日 |
 
 ### Current Boundary / 現在の境界
 
@@ -94,7 +102,7 @@ Current main status: #525 checkpoints the no-push stack after decoded payload fa
 - A route-local helper now persists or reuses review requests for accepted-plan results, and exposes `recorded` / `duplicate` / `failed` / `skipped` status to the result page. / route-local helper は accepted-plan result の review request を persist または reuse し、result page に `recorded` / `duplicate` / `failed` / `skipped` status を公開します。
 - Generated HTML and React bridge handoffs remain metadata-only. / generated HTML と React bridge handoff は metadata-only のままです。
 - Generated operator action buttons remain disabled until a separate implementation lane explicitly enables execution. / generated operator action button は、別の implementation lane が明示的に execution を有効化するまで disabled のままです。
-- Availability enablement is parked while the current 92-commit local stack remains unpushed. / 現在の 92 commit local stack が unpushed の間、availability enablement は parked です。
+- Availability enablement is parked while the current 101-commit local stack remains unpushed. / 現在の 101 commit local stack が unpushed の間、availability enablement は parked です。
 - The current push decision is to hold locally; no push is performed without a new explicit user request. / 現在の push 判断は local hold です。新しい明示的な user request がない限り push は行いません。
 - No build, publish, review-request, approval, rollback, mutation, custom component execution, or custom operation dispatch route is currently enabled through this lane. / この lane では build、publish、review-request、approval、rollback、mutation、custom component execution、custom operation dispatch route はまだ有効化していません。
 - Push is not performed unless the user explicitly requests it. / user が明示するまで push は行いません。
@@ -377,6 +385,37 @@ For #524, docs-only verification is `git diff --check`.
 
 For #525, docs-only verification is `git diff --check`.
 
+Latest code verification from #526:
+
+- `php -l tests/Integration/NoCodeReviewWorkflowRepositorySqliteTest.php`
+- Focused PHPUnit review workflow repository requested-by required field: `OK (13 tests, 141 assertions)`
+- `make test`: `OK, but incomplete, skipped, or risky tests! Tests: 374, Assertions: 11597, Skipped: 1.`
+- `git diff --check`
+
+For #527, docs-only verification is `git diff --check`.
+
+For #528, docs-only verification is `git diff --check`.
+
+Latest code verification from #529:
+
+- `php -l tests/Integration/NoCodeReviewWorkflowRepositorySqliteTest.php`
+- Focused PHPUnit review workflow repository identity required fields: `OK (14 tests, 150 assertions)`
+- `make test`: `OK, but incomplete, skipped, or risky tests! Tests: 375, Assertions: 11606, Skipped: 1.`
+- `git diff --check`
+
+For #530, docs-only verification is `git diff --check`.
+
+For #531, docs-only verification is `git diff --check`.
+
+Latest code verification from #532:
+
+- `php -l tests/Integration/NoCodeReviewWorkflowRepositorySqliteTest.php`
+- Focused PHPUnit review workflow repository in-review duplicate reuse: `OK (15 tests, 159 assertions)`
+- `make test`: `OK, but incomplete, skipped, or risky tests! Tests: 376, Assertions: 11615, Skipped: 1.`
+- `git diff --check`
+
+For #533, docs-only verification is `git diff --check`.
+
 ## Auxiliary Later Review / 補助・後日検討
 
 These are useful candidates, but they are not part of the main plan unless a fresh priority decision promotes them. / これらは有用な候補ですが、新しい優先判断で昇格するまでは主計画には含めません。
@@ -396,6 +435,14 @@ Completed detailed history was moved out of this active list. / 完了済みの�
 
 | Completed scope / 完了済み範囲 | Historical source / 履歴ソース |
 | --- | --- |
+| Review workflow repository in-review duplicate reuse lane closure / review workflow repository in-review duplicate reuse lane closure | [2026-0709 Review Workflow Repository In-Review Duplicate Reuse Lane Closure](reports/2026/2026-0709-review-workflow-repository-in-review-duplicate-reuse-lane-closure.md) |
+| Review workflow repository in-review duplicate reuse coverage / review workflow repository in-review duplicate reuse coverage | [2026-0709 Review Workflow Repository In-Review Duplicate Reuse Coverage](reports/2026/2026-0709-review-workflow-repository-in-review-duplicate-reuse-coverage.md) |
+| No-push stack checkpoint after identity required fields / identity required fields 後の no-push stack checkpoint | [2026-0709 No-Push Stack Checkpoint After Identity Required Fields](reports/2026/2026-0709-no-push-stack-checkpoint-after-identity-required-fields.md) |
+| Review workflow repository identity required-field lane closure / review workflow repository identity required-field lane closure | [2026-0709 Review Workflow Repository Identity Required-Field Lane Closure](reports/2026/2026-0709-review-workflow-repository-identity-required-field-lane-closure.md) |
+| Review workflow repository identity required-field validation coverage / review workflow repository identity required-field validation coverage | [2026-0709 Review Workflow Repository Identity Required-Field Validation Coverage](reports/2026/2026-0709-review-workflow-repository-identity-required-field-validation-coverage.md) |
+| No-push stack checkpoint after requested-by validation / requested-by validation 後の no-push stack checkpoint | [2026-0709 No-Push Stack Checkpoint After Requested-By Validation](reports/2026/2026-0709-no-push-stack-checkpoint-after-requested-by-validation.md) |
+| Review workflow repository requested-by required-field lane closure / review workflow repository requested-by required-field lane closure | [2026-0709 Review Workflow Repository Requested-By Required-Field Lane Closure](reports/2026/2026-0709-review-workflow-repository-requested-by-required-field-lane-closure.md) |
+| Review workflow repository requested-by required-field coverage / review workflow repository requested-by required-field coverage | [2026-0709 Review Workflow Repository Requested-By Required-Field Coverage](reports/2026/2026-0709-review-workflow-repository-requested-by-required-field-coverage.md) |
 | No-push stack checkpoint after decoded payload fallback / decoded payload fallback 後の no-push stack checkpoint | [2026-0709 No-Push Stack Checkpoint After Decoded Payload Fallback](reports/2026/2026-0709-no-push-stack-checkpoint-after-decoded-payload-fallback.md) |
 | Review workflow repository decoded payload fallback lane closure / review workflow repository decoded payload fallback lane closure | [2026-0709 Review Workflow Repository Decoded Payload Fallback Lane Closure](reports/2026/2026-0709-review-workflow-repository-decoded-payload-fallback-lane-closure.md) |
 | Review workflow repository decoded payload fallback coverage / review workflow repository decoded payload fallback coverage | [2026-0709 Review Workflow Repository Decoded Payload Fallback Coverage](reports/2026/2026-0709-review-workflow-repository-decoded-payload-fallback-coverage.md) |

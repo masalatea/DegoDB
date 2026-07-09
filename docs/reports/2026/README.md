@@ -11,6 +11,22 @@
 
 ## Index
 
+- `2026-0709-review-workflow-repository-in-review-duplicate-reuse-lane-closure.md`
+  - #533 review workflow repository in-review duplicate reuse lane closure。#532 の focused coverage を accepted capability として閉じ、PUSH なしでは次も named non-executable hardening のみに限定。availability / generated button execution / push は未実行。Status: `DONE`。
+- `2026-0709-review-workflow-repository-in-review-duplicate-reuse-coverage.md`
+  - #532 review workflow repository in-review duplicate reuse coverage。既存 `in_review` request が同じ identity の duplicate request に reuse されることを focused coverage で確認。availability / generated button execution / push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0709-no-push-stack-checkpoint-after-identity-required-fields.md`
+  - #531 identity required fields 後の no-push stack checkpoint。PUSH なしで継続する場合も named non-executable hardening のみに限定し、次は in-review duplicate reuse coverage を昇格。availability / generated button execution / push は未実行。Status: `DONE`。
+- `2026-0709-review-workflow-repository-identity-required-field-lane-closure.md`
+  - #530 review workflow repository identity required-field lane closure。#529 の focused coverage を accepted capability として閉じ、PUSH なしでは次も named non-executable hardening のみに限定。availability / generated button execution / push は未実行。Status: `DONE`。
+- `2026-0709-review-workflow-repository-identity-required-field-validation-coverage.md`
+  - #529 review workflow repository identity required-field validation coverage。blank `source_output_key` / `artifact_key` が row を作らず fail closed することを focused coverage で確認。availability / generated button execution / push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0709-no-push-stack-checkpoint-after-requested-by-validation.md`
+  - #528 requested-by validation 後の no-push stack checkpoint。直前の no-code 後 roadmap 記録から元の no-code plan 方針へ戻し、PUSH なしで named non-executable hardening のみ継続。次は identity required-field validation coverage を昇格。Status: `DONE`。
+- `2026-0709-review-workflow-repository-requested-by-required-field-lane-closure.md`
+  - #527 review workflow repository requested-by required-field lane closure。#526 の focused coverage を accepted capability として閉じ、blank requested_by の fail-closed boundary を記録。availability / generated button execution / push は未実行。Status: `DONE`。
+- `2026-0709-review-workflow-repository-requested-by-required-field-coverage.md`
+  - #526 review workflow repository requested-by required-field coverage。blank `requested_by` が row を作らず fail closed することを focused coverage で確認。availability / generated button execution / push は未実行。Status: `FIRST_SLICE_DONE`。
 - `2026-0709-no-push-stack-checkpoint-after-decoded-payload-fallback.md`
   - #525 decoded payload fallback 後の no-push stack checkpoint。PUSH なしで継続する場合も named non-executable hardening のみに限定し、次は requested-by required-field coverage を昇格。availability / generated button execution / push は未実行。Status: `DONE`。
 - `2026-0709-review-workflow-repository-decoded-payload-fallback-lane-closure.md`

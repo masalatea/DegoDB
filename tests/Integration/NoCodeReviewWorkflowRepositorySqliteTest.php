@@ -97,6 +97,36 @@ final class NoCodeReviewWorkflowRepositorySqliteTest extends TestCase
         );
     }
 
+    public function testInReviewWorkflowRequestIsReusedForDuplicateArtifactRequest(): void
+    {
+        $app = $this->sqliteApp();
+        $bootstrap = app_config_db_bootstrap_apply($app);
+        self::assertTrue($bootstrap['ok'], $bootstrap['error']);
+
+        $inReview = app_no_code_review_workflow_create_or_reuse_request($app, $this->requestInput([
+            'review_request_key' => 'review_in_review_' . bin2hex(random_bytes(4)),
+            'artifact_key' => 'artifact-in-review-duplicate',
+            'status' => 'in_review',
+        ]));
+        self::assertTrue($inReview['ok'], $inReview['error']);
+        self::assertTrue($inReview['created']);
+        self::assertSame('in_review', $inReview['item']['status'] ?? '');
+
+        $duplicate = app_no_code_review_workflow_create_or_reuse_request($app, $this->requestInput([
+            'review_request_key' => 'review_duplicate_in_review_' . bin2hex(random_bytes(4)),
+            'artifact_key' => 'artifact-in-review-duplicate',
+        ]));
+
+        self::assertTrue($duplicate['ok'], $duplicate['error']);
+        self::assertFalse($duplicate['created']);
+        self::assertSame('duplicate', $duplicate['result']);
+        self::assertSame('in_review', $duplicate['item']['status'] ?? '');
+        self::assertSame(
+            $inReview['item']['review_request_key'] ?? '',
+            $duplicate['item']['review_request_key'] ?? '',
+        );
+    }
+
     public function testReviewWorkflowRepositoryRejectsInvalidStatusAndMissingRequiredFields(): void
     {
         $app = $this->sqliteApp();
@@ -120,6 +150,39 @@ final class NoCodeReviewWorkflowRepositorySqliteTest extends TestCase
         self::assertFalse($missingProject['ok']);
         self::assertSame('failed', $missingProject['result']);
         self::assertStringContainsString('review workflow field is required: project_key', $missingProject['error']);
+
+        $missingRequestedBy = app_no_code_review_workflow_create_or_reuse_request($app, $this->requestInput([
+            'review_request_key' => 'review_missing_requested_by_' . bin2hex(random_bytes(4)),
+            'artifact_key' => 'artifact-missing-requested-by',
+            'requested_by' => " \t ",
+        ]));
+        self::assertFalse($missingRequestedBy['ok']);
+        self::assertSame('failed', $missingRequestedBy['result']);
+        self::assertStringContainsString('review workflow field is required: requested_by', $missingRequestedBy['error']);
+
+        $latest = app_no_code_review_workflow_fetch_latest_requests($app, [
+            'limit' => 10,
+        ]);
+        self::assertTrue($latest['ok'], $latest['error']);
+        self::assertSame([], $latest['items']);
+    }
+
+    public function testReviewWorkflowRepositoryRejectsMissingIdentityRequiredFieldsWithoutCreatingRows(): void
+    {
+        $app = $this->sqliteApp();
+        $bootstrap = app_config_db_bootstrap_apply($app);
+        self::assertTrue($bootstrap['ok'], $bootstrap['error']);
+
+        foreach (['source_output_key', 'artifact_key'] as $field) {
+            $result = app_no_code_review_workflow_create_or_reuse_request($app, $this->requestInput([
+                'review_request_key' => 'review_missing_' . $field . '_' . bin2hex(random_bytes(4)),
+                $field => " \t ",
+            ]));
+
+            self::assertFalse($result['ok']);
+            self::assertSame('failed', $result['result']);
+            self::assertStringContainsString('review workflow field is required: ' . $field, $result['error']);
+        }
 
         $latest = app_no_code_review_workflow_fetch_latest_requests($app, [
             'limit' => 10,
