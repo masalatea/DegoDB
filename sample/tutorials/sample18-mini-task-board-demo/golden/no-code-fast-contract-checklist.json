@@ -76,10 +76,9 @@
       "doing",
       "done"
     ],
-    "generated_runtime_data_controls": "deferred_until_public_runtime_data_binding"
+    "generated_runtime_data_controls": "covered_by_make_sample18_no_code_public_runtime_filter_dom_smoke"
   },
   "remaining_gaps": [
-    "generated status filter DOM controls require public runtime-data binding before static preview comparison",
     "safe action-input mapping is not enabled for generated mutation buttons",
     "browser smoke remains the outer confidence gate for the curated route"
   ]

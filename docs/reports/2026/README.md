@@ -11,6 +11,8 @@
 
 ## Index
 
+- `2026-0710-sample18-public-runtime-status-filter-dom-preflight.md`
+  - #560 sample18 public-runtime status filter DOM preflight。sample18 public NO-CODE-RUNTIME current page で runtime-data binding 後に generated `status` filter DOM controls が表示されることを、専用 Make target と DOM-only browser smoke で確認。Status: `DONE`。
 - `2026-0710-sample18-post-filter-no-code-increment-replan.md`
   - #559 sample18 post-filter no-code increment replan。#558 後の次 increment は safe action-input mapping ではなく、sample18 public-runtime status filter DOM preflight を先に追加する方針に決定。Status: `DONE`。
 - `2026-0709-sample18-status-filter-fast-contract.md`
