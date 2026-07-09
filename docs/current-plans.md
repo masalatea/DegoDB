@@ -13,7 +13,7 @@ When someone asks for "the plan list", answer from this section first. / 「計�
 
 ### Main Plan / 主計画
 
-Current main status: #480 replans after the review workflow persistence helper stack review. Availability enablement should remain parked until an explicit push decision because `develop` is now 48 commits ahead of `origin/develop`; adding user-visible execution before syncing would increase review and coordination risk. Generated buttons remain disabled. Push has not been performed for #432-#480. / 現在の主計画ステータス: #480 で review workflow persistence helper stack review 後の replan を行いました。`develop` は `origin/develop` より 48 commits ahead のため、明示的な push 判断までは availability enablement を parked のままにします。sync 前に user-visible execution を追加すると review / coordination risk が上がるためです。generated button は disabled のままです。#432-#480 は push していません。
+Current main status: #491 checkpoints the no-push local stack after guard-first hardening. The local stack is now 59 commits ahead of `origin/develop`; further local commits should wait for explicit user direction: cleanup, push, or a new named non-executable lane. Availability enablement remains parked, generated buttons remain disabled, and push has not been performed for #432-#491. / 現在の主計画ステータス: #491 で guard-first hardening 後の no-push local stack を checkpoint しました。local stack は `origin/develop` より 59 commits ahead です。これ以上の local commit は、cleanup、push、または新しい名前付き non-executable lane について user の明示指示を待ちます。availability enablement は parked、generated button は disabled のまま、#432-#491 は push していません。
 
 | Order | Work unit / 作業の塊 | Commit unit / コミット単位 | Status | Rough effort / 目安 |
 | --- | --- | --- | --- | --- |
@@ -39,7 +39,18 @@ Current main status: #480 replans after the review workflow persistence helper s
 | 478 | Review workflow route persistence helper lane closure / review workflow route persistence helper lane closure | Close the route-local persistence helper lane and decide whether availability enablement should remain parked or be promoted | `DONE` | 0.25 - 0.5 day / 0.25 - 0.5 日 |
 | 479 | Local stack review after review workflow persistence helper / review workflow persistence helper 後の local stack review | Review the unpushed local commit stack and decide whether to keep, squash, push, or replan before availability enablement | `DONE` | 0.25 - 0.5 day / 0.25 - 0.5 日 |
 | 480 | Review workflow availability enablement replan / review workflow availability enablement replan | Decide whether to keep availability parked, prepare a push decision, or promote a narrowly tested executable review workflow slice | `DONE` | 0.25 - 0.5 day / 0.25 - 0.5 日 |
-| 481 | Explicit push decision for no-code dogfooding stack / no-code dogfooding stack の明示 push 判断 | Decide whether to push the current develop stack as-is, hold it locally, or request a focused cleanup before push | `ACTIVE_NEXT` | 0.25 day / 0.25 日 |
+| 481 | Explicit push decision for no-code dogfooding stack / no-code dogfooding stack の明示 push 判断 | Decide whether to push the current develop stack as-is, hold it locally, or request a focused cleanup before push | `DONE` | 0.25 day / 0.25 日 |
+| 482 | Continue locally without push / PUSH なしで local 継続 | Record the no-push continuation decision and promote a small non-executable follow-up lane | `DONE` | 0.25 day / 0.25 日 |
+| 483 | Review workflow persistence failure visibility coverage / review workflow persistence failure visibility coverage | Add focused coverage for route-local persistence failure rendering/audit behavior without enabling availability or generated buttons | `DONE` | 0.5 day / 半日 |
+| 484 | Review workflow persistence failure visibility lane closure / review workflow persistence failure visibility lane closure | Close the failure visibility slice and decide whether any further non-executable hardening is useful before availability remains parked | `DONE` | 0.25 day / 0.25 日 |
+| 485 | Review workflow non-executable hardening replan / review workflow non-executable hardening replan | Decide whether to add more non-executable hardening, pause for push/cleanup, or keep availability parked with no further local commits | `DONE` | 0.25 day / 0.25 日 |
+| 486 | Review workflow persistence audit append coverage / review workflow persistence audit append coverage | Add focused coverage that accepted and duplicate persisted review requests append audit records with review request metadata | `DONE` | 0.5 day / 半日 |
+| 487 | Review workflow persistence audit append lane closure / review workflow persistence audit append lane closure | Close audit append coverage and decide whether to pause local commits or add another non-executable hardening slice | `DONE` | 0.25 day / 0.25 日 |
+| 488 | No-push local work checkpoint / PUSH なし local 作業 checkpoint | Decide the next explicit no-push direction after the review workflow non-executable hardening stack | `DONE` | 0.25 day / 0.25 日 |
+| 489 | Review workflow guard-first persistence skip matrix / review workflow guard-first persistence skip matrix | Add focused coverage that stale, unauthorized, missing-CSRF, and other non-allowed guard results never persist review requests | `DONE` | 0.5 day / 半日 |
+| 490 | Review workflow guard-first skip matrix lane closure / review workflow guard-first skip matrix lane closure | Close the guard-first skip matrix slice and decide whether to pause or continue non-executable hardening | `DONE` | 0.25 day / 0.25 日 |
+| 491 | No-push stack checkpoint after guard-first hardening / guard-first hardening 後の no-push stack checkpoint | Decide whether to pause local commits, request cleanup, or continue only with explicitly selected non-executable work | `DONE` | 0.25 day / 0.25 日 |
+| 492 | Await explicit next instruction / 次の明示指示待ち | Wait for the user to choose cleanup, push, or a named non-executable follow-up lane | `ACTIVE_NEXT` | 0.25 day / 0.25 日 |
 
 ### Current Boundary / 現在の境界
 
@@ -49,7 +60,8 @@ Current main status: #480 replans after the review workflow persistence helper s
 - A route-local helper now persists or reuses review requests for accepted-plan results, and exposes `recorded` / `duplicate` / `failed` / `skipped` status to the result page. / route-local helper は accepted-plan result の review request を persist または reuse し、result page に `recorded` / `duplicate` / `failed` / `skipped` status を公開します。
 - Generated HTML and React bridge handoffs remain metadata-only. / generated HTML と React bridge handoff は metadata-only のままです。
 - Generated operator action buttons remain disabled until a separate implementation lane explicitly enables execution. / generated operator action button は、別の implementation lane が明示的に execution を有効化するまで disabled のままです。
-- Availability enablement is parked until an explicit push decision is made for the current 48-commit local stack. / 現在の 48 commit local stack について明示的な push 判断が行われるまで、availability enablement は parked です。
+- Availability enablement is parked while the current 59-commit local stack remains unpushed. / 現在の 59 commit local stack が unpushed の間、availability enablement は parked です。
+- The current push decision is to hold locally; no push is performed without a new explicit user request. / 現在の push 判断は local hold です。新しい明示的な user request がない限り push は行いません。
 - No build, publish, review-request, approval, rollback, mutation, custom component execution, or custom operation dispatch route is currently enabled through this lane. / この lane では build、publish、review-request、approval、rollback、mutation、custom component execution、custom operation dispatch route はまだ有効化していません。
 - Push is not performed unless the user explicitly requests it. / user が明示するまで push は行いません。
 
@@ -171,6 +183,43 @@ For #479, docs-only verification is `git diff --check`.
 
 For #480, docs-only verification is `git diff --check`.
 
+For #481, docs-only verification is `git diff --check`.
+
+For #482, docs-only verification is `git diff --check`.
+
+Latest code verification from #483:
+
+- `php -l tests/Integration/ProjectSourceOutputOperationPersistenceTest.php`
+- Focused PHPUnit route persistence helper failure visibility: `OK (4 tests, 28 assertions)`
+- `make test`: `OK, but incomplete, skipped, or risky tests! Tests: 361, Assertions: 11457, Skipped: 1.`
+- `git diff --check`
+
+For #484, docs-only verification is `git diff --check`.
+
+For #485, docs-only verification is `git diff --check`.
+
+Latest code verification from #486:
+
+- `php -l tests/Integration/ProjectSourceOutputOperationPersistenceTest.php`
+- Focused PHPUnit route persistence audit append coverage: `OK (5 tests, 35 assertions)`
+- `make test`: `OK, but incomplete, skipped, or risky tests! Tests: 362, Assertions: 11464, Skipped: 1.`
+- `git diff --check`
+
+For #487, docs-only verification is `git diff --check`.
+
+For #488, docs-only verification is `git diff --check`.
+
+Latest code verification from #489:
+
+- `php -l tests/Integration/ProjectSourceOutputOperationPersistenceTest.php`
+- Focused PHPUnit guard-first persistence skip matrix: `OK (6 tests, 50 assertions)`
+- Full `make test`: attempted twice, then retried outside the sandbox; each run stalled while Docker was loading metadata for `docker.io/library/ubuntu:24.04` and was interrupted.
+- `git diff --check`
+
+For #490, docs-only verification is `git diff --check`.
+
+For #491, docs-only verification is `git diff --check`.
+
 ## Auxiliary Later Review / 補助・後日検討
 
 These are useful candidates, but they are not part of the main plan unless a fresh priority decision promotes them. / これらは有用な候補ですが、新しい優先判断で昇格するまでは主計画には含めません。
@@ -190,6 +239,17 @@ Completed detailed history was moved out of this active list. / 完了済みの�
 
 | Completed scope / 完了済み範囲 | Historical source / 履歴ソース |
 | --- | --- |
+| No-push stack checkpoint after guard-first hardening / guard-first hardening 後の no-push stack checkpoint | [2026-0709 No-Push Stack Checkpoint After Guard-First Hardening](reports/2026/2026-0709-no-push-stack-checkpoint-after-guard-first-hardening.md) |
+| Review workflow guard-first skip matrix lane closure / review workflow guard-first skip matrix lane closure | [2026-0709 Review Workflow Guard-First Skip Matrix Lane Closure](reports/2026/2026-0709-review-workflow-guard-first-skip-matrix-lane-closure.md) |
+| Review workflow guard-first persistence skip matrix / review workflow guard-first persistence skip matrix | [2026-0709 Review Workflow Guard-First Persistence Skip Matrix](reports/2026/2026-0709-review-workflow-guard-first-persistence-skip-matrix.md) |
+| No-push local work checkpoint / PUSH なし local 作業 checkpoint | [2026-0709 No-Push Local Work Checkpoint](reports/2026/2026-0709-no-push-local-work-checkpoint.md) |
+| Review workflow persistence audit append lane closure / review workflow persistence audit append lane closure | [2026-0709 Review Workflow Persistence Audit Append Lane Closure](reports/2026/2026-0709-review-workflow-persistence-audit-append-lane-closure.md) |
+| Review workflow persistence audit append coverage / review workflow persistence audit append coverage | [2026-0709 Review Workflow Persistence Audit Append Coverage](reports/2026/2026-0709-review-workflow-persistence-audit-append-coverage.md) |
+| Review workflow non-executable hardening replan / review workflow non-executable hardening replan | [2026-0709 Review Workflow Non-Executable Hardening Replan](reports/2026/2026-0709-review-workflow-non-executable-hardening-replan.md) |
+| Review workflow persistence failure visibility lane closure / review workflow persistence failure visibility lane closure | [2026-0709 Review Workflow Persistence Failure Visibility Lane Closure](reports/2026/2026-0709-review-workflow-persistence-failure-visibility-lane-closure.md) |
+| Review workflow persistence failure visibility coverage / review workflow persistence failure visibility coverage | [2026-0709 Review Workflow Persistence Failure Visibility Coverage](reports/2026/2026-0709-review-workflow-persistence-failure-visibility-coverage.md) |
+| Continue locally without push / PUSH なしで local 継続 | [2026-0709 Continue Locally Without Push](reports/2026/2026-0709-continue-locally-without-push.md) |
+| Explicit push decision for no-code dogfooding stack / no-code dogfooding stack の明示 push 判断 | [2026-0709 Explicit Push Decision For No-Code Dogfooding Stack](reports/2026/2026-0709-explicit-push-decision-for-no-code-dogfooding-stack.md) |
 | Review workflow availability enablement replan / review workflow availability enablement replan | [2026-0708 Review Workflow Availability Enablement Replan](reports/2026/2026-0708-review-workflow-availability-enablement-replan.md) |
 | Local stack review after review workflow persistence helper / review workflow persistence helper 後の local stack review | [2026-0708 Local Stack Review After Review Workflow Persistence Helper](reports/2026/2026-0708-local-stack-review-after-review-workflow-persistence-helper.md) |
 | Review workflow route persistence helper lane closure / review workflow route persistence helper lane closure | [2026-0708 Review Workflow Route Persistence Helper Lane Closure](reports/2026/2026-0708-review-workflow-route-persistence-helper-lane-closure.md) |

@@ -42,6 +42,51 @@ final class ProjectSourceOutputOperationPersistenceTest extends TestCase
         self::assertSame([], $latest['items']);
     }
 
+    public function testNonAllowedGuardResultsDoNotPersistReviewRequests(): void
+    {
+        $app = $this->sqliteApp();
+        $bootstrap = app_config_db_bootstrap_apply($app);
+        self::assertTrue($bootstrap['ok'], $bootstrap['error']);
+
+        $cases = [
+            ['result' => 'stale', 'status_code' => 409, 'failure_code' => 'stale_artifact'],
+            ['result' => 'unauthorized', 'status_code' => 403, 'failure_code' => 'policy_denied'],
+            ['result' => 'blocked', 'status_code' => 400, 'failure_code' => 'missing_csrf'],
+            ['result' => 'invalid', 'status_code' => 404, 'failure_code' => 'unknown_operation'],
+        ];
+
+        foreach ($cases as $case) {
+            $auditEvent = $this->auditEvent((string) $case['result']);
+            $auditEvent['message'] = (string) $case['failure_code'];
+            $auditEvent['metadata']['failure_code'] = (string) $case['failure_code'];
+
+            $result = app_project_source_output_operation_apply_review_request_persistence(
+                $app,
+                [
+                    'allowed' => false,
+                    'result' => $case['result'],
+                    'status_code' => $case['status_code'],
+                    'failure_code' => $case['failure_code'],
+                    'audit_event' => $auditEvent,
+                ],
+                $this->context(),
+            );
+
+            self::assertSame('skipped', app_project_source_output_operation_review_request_persistence_status(
+                $result['review_request_persistence'] ?? [],
+            ), (string) $case['failure_code']);
+            self::assertSame($case['result'], $result['audit_event']['result'] ?? '');
+            self::assertSame($case['failure_code'], $result['audit_event']['metadata']['failure_code'] ?? '');
+        }
+
+        $latest = app_no_code_review_workflow_fetch_latest_requests($app, [
+            'project_key' => 'MTOOL',
+            'limit' => 10,
+        ]);
+        self::assertTrue($latest['ok'], $latest['error']);
+        self::assertSame([], $latest['items']);
+    }
+
     public function testAcceptedPlanPersistsAndReusesReviewRequest(): void
     {
         $app = $this->sqliteApp();
@@ -85,6 +130,90 @@ final class ProjectSourceOutputOperationPersistenceTest extends TestCase
         self::assertTrue($latest['ok'], $latest['error']);
         self::assertCount(1, $latest['items']);
         self::assertSame($reviewRequestKey, $latest['items'][0]['review_request_key'] ?? '');
+    }
+
+    public function testAcceptedAndDuplicatePersistenceResultsAppendAuditRecords(): void
+    {
+        $app = $this->sqliteApp();
+        $bootstrap = app_config_db_bootstrap_apply($app);
+        self::assertTrue($bootstrap['ok'], $bootstrap['error']);
+
+        $first = app_project_source_output_operation_apply_review_request_persistence(
+            $app,
+            $this->acceptedPlanResult(),
+            $this->context(),
+        );
+        $firstAppend = app_project_source_output_operation_append_audit_event($app, $first);
+        self::assertTrue($firstAppend['ok'], $firstAppend['error']);
+        self::assertSame('accepted', $firstAppend['item']['result'] ?? '');
+        $reviewRequestKey = (string) ($firstAppend['item']['metadata']['review_request_key'] ?? '');
+        self::assertNotSame('', $reviewRequestKey);
+
+        $duplicate = app_project_source_output_operation_apply_review_request_persistence(
+            $app,
+            $this->acceptedPlanResult(),
+            $this->context(),
+        );
+        $duplicateAppend = app_project_source_output_operation_append_audit_event($app, $duplicate);
+        self::assertTrue($duplicateAppend['ok'], $duplicateAppend['error']);
+        self::assertSame('duplicate', $duplicateAppend['item']['result'] ?? '');
+        self::assertSame($reviewRequestKey, $duplicateAppend['item']['metadata']['review_request_key'] ?? '');
+    }
+
+    public function testAcceptedPlanPersistenceFailureUpdatesResultAndAuditEvent(): void
+    {
+        $result = app_project_source_output_operation_apply_review_request_persistence(
+            [
+                'site' => 'admin',
+                'db' => ['driver' => 'sqlite', 'dsn' => 'sqlite:/path/that/does/not/exist/review.sqlite'],
+                'config_db' => ['driver' => 'sqlite', 'dsn' => 'sqlite:/path/that/does/not/exist/review.sqlite'],
+            ],
+            $this->acceptedPlanResult(),
+            $this->context(),
+        );
+
+        self::assertFalse($result['allowed'] ?? true);
+        self::assertSame('failed', $result['result'] ?? '');
+        self::assertSame(500, $result['status_code'] ?? 0);
+        self::assertSame('review_request_persistence_failed', $result['failure_code'] ?? '');
+        self::assertSame('failed', app_project_source_output_operation_review_request_persistence_status(
+            $result['review_request_persistence'] ?? [],
+        ));
+        self::assertSame('invalid', $result['audit_event']['result'] ?? '');
+        self::assertSame('review_request_persistence_failed', $result['audit_event']['message'] ?? '');
+        self::assertSame(
+            'review_request_persistence_failed',
+            $result['audit_event']['metadata']['failure_code'] ?? '',
+        );
+    }
+
+    public function testResultPageRendersReviewRequestPersistenceFailure(): void
+    {
+        ob_start();
+        @app_render_project_source_output_operation_result_page(
+            ['site_name' => 'DegoDB Test'],
+            ['request_id' => 'req-review-persistence-failure'],
+            [
+                'result' => 'failed',
+                'status_code' => 500,
+                'failure_code' => 'review_request_persistence_failed',
+                'audit_event' => $this->auditEvent('invalid'),
+                'review_request_persistence' => [
+                    'ok' => false,
+                    'skipped' => false,
+                    'created' => false,
+                    'result' => 'failed',
+                    'item' => [],
+                    'error' => 'sqlite failure',
+                ],
+            ],
+        );
+        $html = (string) ob_get_clean();
+
+        self::assertStringContainsString('data-source-output-operation-result="failed"', $html);
+        self::assertStringContainsString('<code>review_request_persistence_failed</code>', $html);
+        self::assertStringContainsString('<li>review request: <code>failed</code></li>', $html);
+        self::assertStringContainsString('No mutation has been executed.', $html);
     }
 
     /**

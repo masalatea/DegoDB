@@ -11,6 +11,28 @@
 
 ## Index
 
+- `2026-0709-no-push-stack-checkpoint-after-guard-first-hardening.md`
+  - #491 guard-first hardening 後の no-push stack checkpoint。local stack は `origin/develop` より 59 commits ahead。次は user が cleanup / push / named non-executable follow-up lane を明示するまで待つ。availability / generated button execution / push は未実行。Status: `DONE`。
+- `2026-0709-review-workflow-guard-first-skip-matrix-lane-closure.md`
+  - #490 review workflow guard-first skip matrix lane closure。deferred / stale / unauthorized / missing-CSRF / invalid guard result が review request persistence を skip し、failure metadata を保持する accepted behavior を整理。availability / generated button execution / push は未実行。Status: `DONE`。
+- `2026-0709-review-workflow-guard-first-persistence-skip-matrix.md`
+  - #489 review workflow guard-first persistence skip matrix。stale / unauthorized / missing-CSRF / invalid guard result が review request persistence を skip し、failure metadata を保持することを focused coverage で確認。availability / generated button execution / push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0709-no-push-local-work-checkpoint.md`
+  - #488 no-push local work checkpoint。PUSH なしで local non-executable hardening を継続し、次は stale / unauthorized / missing-CSRF など non-allowed guard result が persistence に到達しない skip matrix coverage を昇格。Push は未実行。Status: `DONE`。
+- `2026-0709-review-workflow-persistence-audit-append-lane-closure.md`
+  - #487 review workflow persistence audit append lane closure。accepted / duplicate persisted review request の audit append と `review_request_key` carry-through を accepted behavior として整理。availability / generated button execution / push は未実行。Status: `DONE`。
+- `2026-0709-review-workflow-persistence-audit-append-coverage.md`
+  - #486 review workflow persistence audit append coverage。accepted / duplicate persisted review request が audit append され、audit metadata に `review_request_key` が残ることを focused coverage で確認。availability / generated button execution / push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0709-review-workflow-non-executable-hardening-replan.md`
+  - #485 review workflow non-executable hardening replan。PUSH なしで local 継続、availability は parked のまま、次は accepted / duplicate persisted review request の audit append coverage を narrow slice として昇格。Push は未実行。Status: `DONE`。
+- `2026-0709-review-workflow-persistence-failure-visibility-lane-closure.md`
+  - #484 review workflow persistence failure visibility lane closure。route-local helper の create/reuse、duplicate、skipped/deferred、persistence failure visibility を accepted behavior として整理。availability / generated button execution / push は未実行。Status: `DONE`。
+- `2026-0709-review-workflow-persistence-failure-visibility-coverage.md`
+  - #483 review workflow persistence failure visibility coverage。route-local persistence helper の DB failure path を focused coverage で固定し、route result / audit metadata / result-page rendering が failed を示すことを確認。availability / generated button execution / push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0709-continue-locally-without-push.md`
+  - #482 user の「継続しましょう。PUSHはしません」を受け、local 継続・push なし・availability parked を記録。次は non-executable な review workflow persistence failure visibility coverage。Push は未実行。Status: `DONE`。
+- `2026-0709-explicit-push-decision-for-no-code-dogfooding-stack.md`
+  - #481 no-code dogfooding stack の明示 push 判断。user から push 依頼がないため current `develop` stack は local hold。`develop` は `origin/develop` より 49 commits ahead。availability enablement / generated button execution は parked のまま。Push は未実行。Status: `DONE`。
 - `2026-0708-review-workflow-availability-enablement-replan.md`
   - #480 review workflow availability enablement replan。`develop` が `origin/develop` より 48 commits ahead のため、availability enablement / user-visible execution は明示 push 判断まで parked。次は push as-is / hold local / cleanup before push の判断。Push は未実行。Status: `DONE`。
 - `2026-0708-local-stack-review-after-review-workflow-persistence-helper.md`
