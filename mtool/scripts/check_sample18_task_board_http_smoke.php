@@ -244,6 +244,14 @@ function response_excerpt(array $response): string
     return $body !== '' ? ' body=' . substr($body, 0, 400) : '';
 }
 
+function json_response(array $response): array
+{
+    $decoded = json_decode((string) ($response['body'] ?? ''), true);
+    ensure(is_array($decoded), 'response body is not JSON:' . response_excerpt($response));
+
+    return $decoded;
+}
+
 function run_smoke(array $args): array
 {
     $client = [
@@ -317,6 +325,64 @@ function run_smoke(array $args): array
     ensure(str_contains($update['body'], $updatedTitle), 'updated task title was not rendered');
     ensure(str_contains($update['body'], 'doing'), 'updated task status was not rendered');
 
+    $generatedSubmitPath = '/samples/sample18-task-board/no-code/generated-submit';
+
+    $generatedGet = request_once($client, 'GET', $generatedSubmitPath);
+    ensure($generatedGet['status'] === 405, 'generated submit GET status is not 405: ' . $generatedGet['status'] . response_excerpt($generatedGet));
+    $generatedGetJson = json_response($generatedGet);
+    ensure(($generatedGetJson['failure_code'] ?? '') === 'method_not_allowed', 'generated submit GET failure_code mismatch');
+    ensure(($generatedGetJson['mutation_enabled'] ?? true) === false, 'generated submit GET mutation flag was enabled');
+
+    $generatedBlocked = request_once($client, 'POST', $generatedSubmitPath, [
+        'form_params' => [
+            '_csrf_token' => $pageCsrf,
+            'operation_key' => 'create_task_card',
+            'title' => 'Generated blocked smoke',
+            'body' => 'Generated submit is intentionally blocked.',
+            'assigned_to' => 'Smoke',
+            'priority' => '12',
+            'due_date' => date('Y-m-d'),
+            'client_only' => 'ignored',
+        ],
+    ]);
+    ensure($generatedBlocked['status'] === 409, 'generated submit blocked status is not 409: ' . $generatedBlocked['status'] . response_excerpt($generatedBlocked));
+    $generatedBlockedJson = json_response($generatedBlocked);
+    ensure(($generatedBlockedJson['result'] ?? '') === 'blocked', 'generated submit blocked result mismatch');
+    ensure(($generatedBlockedJson['failure_code'] ?? '') === 'generated_submit_disabled', 'generated submit blocked failure_code mismatch');
+    ensure(($generatedBlockedJson['operation_key'] ?? '') === 'create_task_card', 'generated submit blocked operation_key mismatch');
+    ensure(($generatedBlockedJson['curated_route_action'] ?? '') === 'create', 'generated submit blocked curated action mismatch');
+    ensure(($generatedBlockedJson['db_access_function'] ?? '') === 'InsertTaskCard', 'generated submit blocked DBAccess function mismatch');
+    ensure(($generatedBlockedJson['mutation_enabled'] ?? true) === false, 'generated submit blocked mutation flag was enabled');
+    ensure(
+        in_array('client_only', $generatedBlockedJson['ignored_input_fields'] ?? [], true),
+        'generated submit blocked ignored_input_fields did not include client_only',
+    );
+
+    $generatedInvalid = request_once($client, 'POST', $generatedSubmitPath, [
+        'form_params' => [
+            'operation_key' => 'update_task_card',
+            'id' => '0',
+            'title' => '',
+        ],
+    ]);
+    ensure($generatedInvalid['status'] === 422, 'generated submit invalid status is not 422: ' . $generatedInvalid['status'] . response_excerpt($generatedInvalid));
+    $generatedInvalidJson = json_response($generatedInvalid);
+    ensure(($generatedInvalidJson['failure_code'] ?? '') === 'validation_error', 'generated submit invalid failure_code mismatch');
+    ensure(($generatedInvalidJson['errors'] ?? []) === ['id.invalid', 'title.required'], 'generated submit invalid errors mismatch');
+    ensure(($generatedInvalidJson['mutation_enabled'] ?? true) === false, 'generated submit invalid mutation flag was enabled');
+
+    $generatedUnknown = request_once($client, 'POST', $generatedSubmitPath, [
+        'form_params' => [
+            'operation_key' => 'delete_task_card',
+            'id' => $taskId,
+        ],
+    ]);
+    ensure($generatedUnknown['status'] === 404, 'generated submit unknown status is not 404: ' . $generatedUnknown['status'] . response_excerpt($generatedUnknown));
+    $generatedUnknownJson = json_response($generatedUnknown);
+    ensure(($generatedUnknownJson['failure_code'] ?? '') === 'unknown_operation', 'generated submit unknown failure_code mismatch');
+    ensure(($generatedUnknownJson['errors'] ?? []) === ['operation.unknown'], 'generated submit unknown errors mismatch');
+    ensure(($generatedUnknownJson['mutation_enabled'] ?? true) === false, 'generated submit unknown mutation flag was enabled');
+
     return [
         'ok' => true,
         'lab_base_url' => $args['lab_base_url'],
@@ -326,6 +392,12 @@ function run_smoke(array $args): array
             'login' => ['status' => $loginSubmit['status'], 'final_path' => $loginSubmit['final_path']],
             'create' => ['status' => $create['status'], 'title' => $title],
             'update' => ['status' => $update['status'], 'title' => $updatedTitle],
+            'generated_submit' => [
+                'get' => ['status' => $generatedGet['status'], 'failure_code' => $generatedGetJson['failure_code'] ?? ''],
+                'blocked' => ['status' => $generatedBlocked['status'], 'failure_code' => $generatedBlockedJson['failure_code'] ?? ''],
+                'invalid' => ['status' => $generatedInvalid['status'], 'failure_code' => $generatedInvalidJson['failure_code'] ?? ''],
+                'unknown' => ['status' => $generatedUnknown['status'], 'failure_code' => $generatedUnknownJson['failure_code'] ?? ''],
+            ],
         ],
     ];
 }
