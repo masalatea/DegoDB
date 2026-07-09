@@ -24,6 +24,7 @@ const APP_SAMPLE18_MINI_TASK_BOARD_DEMO_OPENAPI_PATHS = [
     '/proxyserver-TaskCard-UpdateTaskCard.php',
     '/proxyserver-TaskCard-CompleteTaskCard.php',
 ];
+const APP_SAMPLE18_MINI_TASK_BOARD_DEMO_NO_CODE_SOURCE_OUTPUT_KEY = 'NO-CODE-RUNTIME';
 
 function app_sample18_mini_task_board_demo_default_reference_root(): string
 {
@@ -287,6 +288,125 @@ function app_sample18_mini_task_board_demo_publish_one(
     ];
 }
 
+function app_sample18_mini_task_board_demo_publish_no_code_metadata(
+    array $app,
+    string $requestedBy,
+    array &$errors,
+): array {
+    $sourceOutputResult = app_fetch_project_source_output_item(
+        $app,
+        APP_SAMPLE18_MINI_TASK_BOARD_DEMO_PROJECT_KEY,
+        APP_SAMPLE18_MINI_TASK_BOARD_DEMO_NO_CODE_SOURCE_OUTPUT_KEY,
+    );
+    if (!$sourceOutputResult['ok'] || $sourceOutputResult['item'] === null) {
+        return [
+            'ok' => false,
+            'source_output_key' => APP_SAMPLE18_MINI_TASK_BOARD_DEMO_NO_CODE_SOURCE_OUTPUT_KEY,
+            'error' => $sourceOutputResult['error'] !== ''
+                ? $sourceOutputResult['error']
+                : 'no-code source output definition が見つかりません。',
+        ];
+    }
+
+    $artifactResult = app_project_output_create_from_definition(
+        $app,
+        APP_SAMPLE18_MINI_TASK_BOARD_DEMO_PROJECT_KEY,
+        $sourceOutputResult['item'],
+        $requestedBy,
+    );
+    if (!$artifactResult['ok'] || $artifactResult['artifact'] === null) {
+        return [
+            'ok' => false,
+            'source_output_key' => APP_SAMPLE18_MINI_TASK_BOARD_DEMO_NO_CODE_SOURCE_OUTPUT_KEY,
+            'error' => $artifactResult['error'],
+        ];
+    }
+
+    $publishResult = app_project_output_publish_artifact(
+        $app,
+        $artifactResult['artifact'],
+        $sourceOutputResult['item'],
+    );
+    if (!$publishResult['ok'] || $publishResult['published'] === null) {
+        return [
+            'ok' => false,
+            'source_output_key' => APP_SAMPLE18_MINI_TASK_BOARD_DEMO_NO_CODE_SOURCE_OUTPUT_KEY,
+            'error' => $publishResult['error'],
+        ];
+    }
+
+    $publishedRoot = (string) ($publishResult['published']['published_root'] ?? '');
+    $screenDefinitionJson = app_sample18_mini_task_board_demo_read_json_file($publishedRoot . '/screen-definition.json');
+    $runtimePreviewJson = app_sample18_mini_task_board_demo_read_json_file($publishedRoot . '/runtime-preview.json');
+    if (!$screenDefinitionJson['ok'] || !$runtimePreviewJson['ok']) {
+        return [
+            'ok' => false,
+            'source_output_key' => APP_SAMPLE18_MINI_TASK_BOARD_DEMO_NO_CODE_SOURCE_OUTPUT_KEY,
+            'error' => !$screenDefinitionJson['ok'] ? $screenDefinitionJson['error'] : $runtimePreviewJson['error'],
+        ];
+    }
+
+    $screenDefinition = $screenDefinitionJson['payload'];
+    $runtimePreview = $runtimePreviewJson['payload'];
+    $contracts = is_array($screenDefinition['contracts'] ?? null) ? $screenDefinition['contracts'] : [];
+    $contract = is_array($contracts[0] ?? null) ? $contracts[0] : [];
+    $screens = is_array($contract['screens'] ?? null) ? $contract['screens'] : [];
+    $listScreen = is_array($screens[0] ?? null) ? $screens[0] : [];
+    $fields = is_array($listScreen['fields'] ?? null) ? $listScreen['fields'] : [];
+    $runtimeScreens = is_array($runtimePreview['screens'] ?? null) ? $runtimePreview['screens'] : [];
+
+    app_sample18_mini_task_board_demo_assert_same(
+        'no-code-screen-definition-v0',
+        (string) ($screenDefinition['definition_version'] ?? ''),
+        'sample18 no-code definition_version',
+        $errors,
+    );
+    app_sample18_mini_task_board_demo_assert_same(
+        'task_card',
+        (string) ($contract['contract_key'] ?? ''),
+        'sample18 no-code contract_key',
+        $errors,
+    );
+    app_sample18_mini_task_board_demo_assert_same(
+        ['list', 'detail', 'form'],
+        array_values(array_map(static fn (array $screen): string => (string) ($screen['screen_type'] ?? ''), $screens)),
+        'sample18 no-code screen types',
+        $errors,
+    );
+    app_sample18_mini_task_board_demo_assert_same(
+        ['id', 'title', 'body', 'status', 'assigned_to', 'priority', 'due_date', 'completed_at', 'updated_at'],
+        array_values(array_map(static fn (array $field): string => (string) ($field['field_key'] ?? ''), $fields)),
+        'sample18 no-code field keys',
+        $errors,
+    );
+    app_sample18_mini_task_board_demo_assert_same(
+        'no-code-runtime-v0',
+        (string) ($runtimePreview['runtime_version'] ?? ''),
+        'sample18 no-code runtime_version',
+        $errors,
+    );
+    app_sample18_mini_task_board_demo_assert_same(
+        3,
+        count($runtimeScreens),
+        'sample18 no-code runtime screen count',
+        $errors,
+    );
+
+    return [
+        'ok' => true,
+        'source_output_key' => APP_SAMPLE18_MINI_TASK_BOARD_DEMO_NO_CODE_SOURCE_OUTPUT_KEY,
+        'artifact_key' => $artifactResult['artifact']['artifact_key'],
+        'published_root' => $publishedRoot,
+        'definition_version' => (string) ($screenDefinition['definition_version'] ?? ''),
+        'runtime_version' => (string) ($runtimePreview['runtime_version'] ?? ''),
+        'contract_key' => (string) ($contract['contract_key'] ?? ''),
+        'screen_types' => array_values(array_map(static fn (array $screen): string => (string) ($screen['screen_type'] ?? ''), $screens)),
+        'field_keys' => array_values(array_map(static fn (array $field): string => (string) ($field['field_key'] ?? ''), $fields)),
+        'runtime_screen_count' => count($runtimeScreens),
+        'error' => '',
+    ];
+}
+
 function app_sample18_mini_task_board_demo_run(array $app, string $requestedBy, string $referenceRoot): array
 {
     $steps = [
@@ -295,6 +415,7 @@ function app_sample18_mini_task_board_demo_run(array $app, string $requestedBy, 
         'data_class_sync' => null,
         'data_class_preview_after_sync' => null,
         'outputs' => [],
+        'no_code_metadata' => null,
     ];
     $errors = [];
 
@@ -404,6 +525,21 @@ function app_sample18_mini_task_board_demo_run(array $app, string $requestedBy, 
                 'error' => $outputResult['error'],
             ];
         }
+    }
+
+    $noCodeResult = app_sample18_mini_task_board_demo_publish_no_code_metadata(
+        $app,
+        $requestedBy,
+        $errors,
+    );
+    $steps['no_code_metadata'] = $noCodeResult;
+    if (!$noCodeResult['ok']) {
+        return [
+            'ok' => false,
+            'steps' => $steps,
+            'assertion_errors' => $errors,
+            'error' => $noCodeResult['error'],
+        ];
     }
 
     return [

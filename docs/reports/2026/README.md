@@ -11,6 +11,8 @@
 
 ## Index
 
+- `2026-0709-first-sample-ui-metadata-extraction-spike.md`
+  - #547 first sample UI metadata extraction spike。sample18 に readonly `task_card` shared contract metadata と `NO-CODE-RUNTIME` source output を追加し、既存 route を置き換えずに no-code screen/runtime metadata を生成・検証。Status: `DONE`。
 - `2026-0709-l1-bridge-golden-sample-fixture.md`
   - #546 L1 bridge golden sample fixture。`sample18-mini-task-board-demo/golden/no-code-ui-golden.json` を追加し、seed SQL と lab route source に対する fast PHPUnit contract check で既存 sample18 UI 境界を固定。Status: `DONE`。
 - `2026-0709-l1-bridge-no-code-capability-checklist.md`

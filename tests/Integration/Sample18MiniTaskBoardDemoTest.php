@@ -88,6 +88,14 @@ final class Sample18MiniTaskBoardDemoTest extends TestCase
         self::assertArrayHasKey('DBACCESS-PHP', $result['steps']['outputs']);
         self::assertArrayHasKey('HTML-PAGE', $result['steps']['outputs']);
         self::assertArrayHasKey('OPENAPI-JSON', $result['steps']['outputs']);
+        self::assertSame('no-code-screen-definition-v0', $result['steps']['no_code_metadata']['definition_version'] ?? '');
+        self::assertSame('no-code-runtime-v0', $result['steps']['no_code_metadata']['runtime_version'] ?? '');
+        self::assertSame('task_card', $result['steps']['no_code_metadata']['contract_key'] ?? '');
+        self::assertSame(['list', 'detail', 'form'], $result['steps']['no_code_metadata']['screen_types'] ?? []);
+        self::assertSame(
+            ['id', 'title', 'body', 'status', 'assigned_to', 'priority', 'due_date', 'completed_at', 'updated_at'],
+            $result['steps']['no_code_metadata']['field_keys'] ?? [],
+        );
     }
 
     /**

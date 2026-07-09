@@ -13,7 +13,7 @@ When someone asks for "the plan list", answer from this section first. / 「計�
 
 ### Main Plan / 主計画
 
-Current main status: #546 freezes the sample18 golden no-code UI fixture and fast contract check before generated no-code output is introduced. `develop` is 23 commits ahead of `origin/develop`, and push has not been performed for #432-#546/#551. / 現在の主計画ステータス: #546 で generated no-code output を追加する前の sample18 golden no-code UI fixture と fast contract check を固定しました。`develop` は `origin/develop` より 23 commits ahead、#432-#546/#551 は push していません。
+Current main status: #547 extracts readonly sample18 no-code metadata and adds a `NO-CODE-RUNTIME` output without replacing the existing task board route. `develop` is 24 commits ahead of `origin/develop`, and push has not been performed for #432-#547/#551. / 現在の主計画ステータス: #547 で既存 task board route を置き換えずに readonly sample18 no-code metadata と `NO-CODE-RUNTIME` output を追加しました。`develop` は `origin/develop` より 24 commits ahead、#432-#547/#551 は push していません。
 
 | Order | Work unit / 作業の塊 | Commit unit / コミット単位 | Status | Rough effort / 目安 |
 | --- | --- | --- | --- | --- |
@@ -105,8 +105,8 @@ Current main status: #546 freezes the sample18 golden no-code UI fixture and fas
 | 544 | L1 bridge sample UI candidate inventory / L1 bridge sample UI candidate inventory | Compare sample UIs by domain shape, data access, form complexity, actions, browser smoke coverage, and expected no-code gaps | `DONE` | 0.5 day / 半日 |
 | 545 | L1 bridge no-code capability checklist / L1 bridge no-code capability checklist | Define the minimum screen/action/schema/navigation/validation/audit features needed before the first sample UI conversion can start | `DONE` | 0.5 day / 半日 |
 | 546 | L1 bridge golden sample fixture / L1 bridge golden sample fixture | Freeze one small representative sample route with stable data and expected screenshots so generated no-code output has a clear target | `DONE` | 0.5 - 1 day / 半日 - 1 日 |
-| 547 | First sample UI metadata extraction spike / first sample UI metadata extraction spike | Extract readonly screen metadata from the chosen sample without replacing its existing hand-coded UI | `ACTIVE_NEXT` | 1 day / 1 日 |
-| 548 | First sample UI readonly no-code preview / first sample UI readonly no-code preview | Render the chosen sample through the no-code runtime in readonly mode and compare it against the golden sample fixture | `PARKED_BRIDGE_AFTER_AVAILABILITY` | 1 day / 1 日 |
+| 547 | First sample UI metadata extraction spike / first sample UI metadata extraction spike | Extract readonly screen metadata from the chosen sample without replacing its existing hand-coded UI | `DONE` | 1 day / 1 日 |
+| 548 | First sample UI readonly no-code preview / first sample UI readonly no-code preview | Render the chosen sample through the no-code runtime in readonly mode and compare it against the golden sample fixture | `ACTIVE_NEXT` | 1 day / 1 日 |
 | 549 | First sample UI action dry-run contract / first sample UI action dry-run contract | Describe sample actions as no-code operations with route boundaries and disabled/dry-run behavior before any mutation is enabled | `PARKED_BRIDGE_AFTER_AVAILABILITY` | 0.5 - 1 day / 半日 - 1 日 |
 | 550 | First sample UI conversion closure / first sample UI conversion closure | Decide whether the first sample is credible enough to count as L1 entry, then record remaining no-code gaps for the next sample | `PARKED_BRIDGE_AFTER_AVAILABILITY` | 0.5 day / 半日 |
 | 551 | Lightweight no-code UI testing plan / lightweight no-code UI testing plan | Record the fast UI contract test pyramid and design-doc update plan before adding a dedicated no-code sample | `DONE` | 0.25 day / 0.25 日 |
@@ -170,6 +170,7 @@ Current main status: #546 freezes the sample18 golden no-code UI fixture and fas
 - The first existing sample UI no-code conversion target is `sample18-mini-task-board-demo`; `sample07` / `sample28` / `sample29` / `sample31` remain no-code contract references. / 最初の既存 sample UI No Code 化対象は `sample18-mini-task-board-demo` です。`sample07` / `sample28` / `sample29` / `sample31` は No Code contract 参照として扱います。
 - Sample18 conversion must first satisfy list/detail/form field metadata, status filter boundary, disabled/dry-run create/update/complete/reopen/delete operation metadata, and fast JSON/DOM contract evidence. / sample18 変換はまず list/detail/form field metadata、status filter boundary、disabled/dry-run の create/update/complete/reopen/delete operation metadata、fast JSON/DOM contract evidence を満たす必要があります。
 - The sample18 golden fixture is `sample/tutorials/sample18-mini-task-board-demo/golden/no-code-ui-golden.json` and is checked against seed SQL and route source before generated no-code output is compared. / sample18 golden fixture は `sample/tutorials/sample18-mini-task-board-demo/golden/no-code-ui-golden.json` で、generated no-code output と比較する前に seed SQL と route source に対して確認します。
+- Sample18 now has readonly `task_card` shared contract metadata and a `NO-CODE-RUNTIME` source output; the existing hand-coded task board route remains the golden comparison target. / sample18 には readonly `task_card` shared contract metadata と `NO-CODE-RUNTIME` source output があり、既存 hand-coded task board route は golden comparison target のままです。
 - No-code UI testing should start with fast JSON/DOM contract tests; headless Chrome remains a representative smoke gate, not the default inner-loop test. / No Code UI testing は fast JSON / DOM contract test から始めます。headless Chrome は代表 smoke gate として残し、default inner-loop test にはしません。
 - The current push decision is to hold locally; no push is performed without a new explicit user request. / 現在の push 判断は local hold です。新しい明示的な user request がない限り push は行いません。
 - No build, publish, approval, rollback, mutation, generated button execution, or custom component execution is currently enabled through this lane. / この lane では build、publish、approval、rollback、mutation、generated button execution、custom component execution はまだ有効化していません。
@@ -542,6 +543,14 @@ Latest code verification from #546:
 - `make test`: `OK, but incomplete, skipped, or risky tests! Tests: 377, Assertions: 11693, Skipped: 1.`
 - `git diff --check`
 
+Latest code verification from #547:
+
+- `php -l mtool/scripts/lib/sample18_mini_task_board_demo_check.php`
+- `php -l tests/Integration/Sample18MiniTaskBoardDemoTest.php`
+- Focused sample18 pack PHPUnit: `OK (2 tests, 62 assertions)`
+- `make test`: `OK, but incomplete, skipped, or risky tests! Tests: 377, Assertions: 11700, Skipped: 1.`
+- `git diff --check`
+
 ## Auxiliary Later Review / 補助・後日検討
 
 These are useful candidates, but they are not part of the main plan unless a fresh priority decision promotes them. / これらは有用な候補ですが、新しい優先判断で昇格するまでは主計画には含めません。
@@ -561,6 +570,7 @@ Completed detailed history was moved out of this active list. / 完了済みの�
 
 | Completed scope / 完了済み範囲 | Historical source / 履歴ソース |
 | --- | --- |
+| First sample UI metadata extraction spike / first sample UI metadata extraction spike | [2026-0709 First Sample UI Metadata Extraction Spike](reports/2026/2026-0709-first-sample-ui-metadata-extraction-spike.md) |
 | L1 bridge golden sample fixture / L1 bridge golden sample fixture | [2026-0709 L1 Bridge Golden Sample Fixture](reports/2026/2026-0709-l1-bridge-golden-sample-fixture.md) |
 | L1 bridge no-code capability checklist / L1 bridge no-code capability checklist | [2026-0709 L1 Bridge No-Code Capability Checklist](reports/2026/2026-0709-l1-bridge-no-code-capability-checklist.md) |
 | Post-availability sample UI replan / availability 後の sample UI replan | [2026-0709 Post-Availability Sample UI Replan](reports/2026/2026-0709-post-availability-sample-ui-replan.md) |
