@@ -11,6 +11,10 @@
 
 ## Index
 
+- `2026-0709-local-no-code-stack-cleanup-plan-before-availability.md`
+  - #535 availability 前の local no-code stack cleanup plan。`refs/backup/no-code-stack-before-cleanup-20260709` を作成し、102 commit unpushed stack の squash groups を提案。history rewrite / push は未実行。Status: `PLAN_READY`。
+- `2026-0709-no-push-stack-checkpoint-after-in-review-duplicate-reuse.md`
+  - #534 in-review duplicate reuse 後の no-push stack checkpoint。repeated non-executable hardening loop を止め、availability lane 前の local commit stack cleanup plan を昇格。availability / generated button execution / push は未実行。Status: `DONE`。
 - `2026-0709-review-workflow-repository-in-review-duplicate-reuse-lane-closure.md`
   - #533 review workflow repository in-review duplicate reuse lane closure。#532 の focused coverage を accepted capability として閉じ、PUSH なしでは次も named non-executable hardening のみに限定。availability / generated button execution / push は未実行。Status: `DONE`。
 - `2026-0709-review-workflow-repository-in-review-duplicate-reuse-coverage.md`
