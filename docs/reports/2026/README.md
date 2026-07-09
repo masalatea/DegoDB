@@ -11,6 +11,8 @@
 
 ## Index
 
+- `2026-0709-lightweight-no-code-ui-testing-plan.md`
+  - #551 lightweight no-code UI testing plan。No Code 専用 sample と既存 sample No Code 化に入る前に、PHPUnit JSON / `DOMDocument` contract test を inner loop、lightweight DOM interaction test を必要時、headless Chrome を代表 smoke gate とする方針を記録。Status: `DONE`。
 - `2026-0709-detailed-no-code-availability-plan.md`
   - #537 no-code availability 詳細計画。availability enablement を surface inventory / gate matrix / read model / UI preview / first slice / sample UI replan に分解し、L1 sample UI No Code 化への橋渡しと長期 roadmap gates も補強。Status: `DONE`。
 - `2026-0709-apply-local-no-code-stack-cleanup.md`
