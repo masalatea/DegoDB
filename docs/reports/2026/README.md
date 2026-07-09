@@ -11,6 +11,8 @@
 
 ## Index
 
+- `2026-0709-first-sample-ui-conversion-closure.md`
+  - #550 first sample UI conversion closure。sample18 を L1 existing sample UI no-code entry として受け入れ、ただし metadata-first / preview-first であり generated route replacement ではない境界と、#552 fast DOM contract harness へ進む残ギャップを記録。Status: `DONE`。
 - `2026-0709-first-sample-ui-action-dry-run-contract.md`
   - #549 first sample UI action dry-run contract。sample18 `task_card` の create / update / complete / reopen / delete を disabled dry-run custom operation として route boundary 付きで generated no-code runtime に通し、既存 route の mutation ownership は維持。Status: `DONE`。
 - `2026-0709-first-sample-ui-readonly-no-code-preview.md`

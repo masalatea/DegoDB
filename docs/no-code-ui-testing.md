@@ -73,6 +73,12 @@ After the dedicated test lab proves the harness, existing sample conversion shou
 | Golden comparison | Existing `/samples/sample18-task-board` behavior remains the comparison target. | A golden fixture names stable seed rows and expected DOM markers before generated no-code output is compared. |
 | Outer smoke | Browser or HTTP smoke remains representative only. | Existing `make sample18-http-runtime-smoke` stays outside the fast inner loop. |
 
+### Sample18 Current Boundary
+
+`sample18-mini-task-board-demo` is accepted as the first L1 existing sample UI no-code entry only in a metadata-first and preview-first sense. It has a golden fixture, generated readonly list/detail/form metadata, generated runtime preview rows, and disabled dry-run action metadata with route boundaries for create, update, complete, reopen, and delete.
+
+It is not yet a generated route replacement. The remaining design gate is a reusable fast DOM contract harness, followed by reusable filter/sort contracts and safe action-input mapping.
+
 ## Design Boundary
 
 Fast UI contract tests prove that generated metadata and generated markup expose the expected UI contract. They do not prove browser layout, CSS pixel rendering, or server mutation. Browser smoke and route-level tests remain responsible for those outer boundaries.
