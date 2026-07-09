@@ -26,6 +26,7 @@ The intended roadmap order is:
 
 - Start every no-code UI slice with metadata contract tests.
 - Add HTML DOM contract tests before adding a browser smoke.
+- Use `tests/Support/NoCodeUiContractAssertions.php` for reusable PHPUnit JSON and `DOMDocument` assertions before adding sample-specific string checks.
 - Add lightweight DOM interaction tests only when JavaScript behavior cannot be covered by JSON or static DOM assertions.
 - Keep Playwright/headless Chrome as a representative integration gate for selected samples.
 - Do not require every small no-code fixture to launch a browser.
@@ -77,7 +78,7 @@ After the dedicated test lab proves the harness, existing sample conversion shou
 
 `sample18-mini-task-board-demo` is accepted as the first L1 existing sample UI no-code entry only in a metadata-first and preview-first sense. It has a golden fixture, generated readonly list/detail/form metadata, generated runtime preview rows, and disabled dry-run action metadata with route boundaries for create, update, complete, reopen, and delete.
 
-It is not yet a generated route replacement. The remaining design gate is a reusable fast DOM contract harness, followed by reusable filter/sort contracts and safe action-input mapping.
+It is not yet a generated route replacement. The first reusable fast DOM contract harness exists in `tests/Support/NoCodeUiContractAssertions.php`; the remaining design gates are reusable filter/sort contracts and safe action-input mapping.
 
 ## Design Boundary
 

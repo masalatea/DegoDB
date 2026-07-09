@@ -11,6 +11,8 @@
 
 ## Index
 
+- `2026-0709-no-code-ui-contract-test-harness-first-slice.md`
+  - #552 no-code UI contract test harness first slice。`tests/Support/NoCodeUiContractAssertions.php` を追加し、sample18 generated `runtime-preview.html` を PHP `DOMDocument` / `DOMXPath` で検査する fast contract を導入。Status: `DONE`。
 - `2026-0709-first-sample-ui-conversion-closure.md`
   - #550 first sample UI conversion closure。sample18 を L1 existing sample UI no-code entry として受け入れ、ただし metadata-first / preview-first であり generated route replacement ではない境界と、#552 fast DOM contract harness へ進む残ギャップを記録。Status: `DONE`。
 - `2026-0709-first-sample-ui-action-dry-run-contract.md`

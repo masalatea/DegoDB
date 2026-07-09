@@ -56,6 +56,7 @@ final class Sample18MiniTaskBoardDemoTest extends TestCase
 
     public function testMiniTaskBoardDemoReferenceOutputs(): void
     {
+        $fixture = $this->sample18NoCodeGoldenFixture();
         $app = app_bootstrap();
         $previousPolicy = getenv('MTOOL_GENERATED_NAME_POLICY');
         putenv('MTOOL_GENERATED_NAME_POLICY=physical-logical-v1');
@@ -110,6 +111,31 @@ final class Sample18MiniTaskBoardDemoTest extends TestCase
         );
         self::assertSame(4, $result['steps']['no_code_metadata']['runtime_row_count'] ?? null);
         self::assertSame(4, $result['steps']['no_code_metadata']['golden_row_count'] ?? null);
+
+        $publishedRoot = (string) ($result['steps']['no_code_metadata']['published_root'] ?? '');
+        self::assertDirectoryExists($publishedRoot);
+        $runtimePreview = NoCodeUiContractAssertions::readJsonFile($this, $publishedRoot . '/runtime-preview.json');
+        NoCodeUiContractAssertions::assertRuntimePreviewScreenKeys(
+            $this,
+            $runtimePreview,
+            ['task_card_list', 'task_card_detail', 'task_card_form'],
+        );
+        $runtimePreviewHtml = (string) file_get_contents($publishedRoot . '/runtime-preview.html');
+        NoCodeUiContractAssertions::assertPreviewHtmlScreens($this, $runtimePreviewHtml, [
+            'task_card_list' => 'list',
+            'task_card_detail' => 'detail',
+            'task_card_form' => 'form',
+        ]);
+        NoCodeUiContractAssertions::assertPreviewHtmlFormFields(
+            $this,
+            $runtimePreviewHtml,
+            $fixture['dom_contract']['form_fields'] ?? [],
+        );
+        NoCodeUiContractAssertions::assertPreviewHtmlDisabledExtensionActions(
+            $this,
+            $runtimePreviewHtml,
+            $fixture['no_code_action_keys'] ?? [],
+        );
     }
 
     /**

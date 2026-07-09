@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+require_once __DIR__ . '/Support/NoCodeUiContractAssertions.php';
 require_once dirname(__DIR__) . '/mtool/scripts/lib/sample1_simple_table_output_check.php';
 require_once dirname(__DIR__) . '/mtool/scripts/lib/sample2_dataclass_nullable_default_status_output_check.php';
 require_once dirname(__DIR__) . '/mtool/scripts/lib/sample3_dataclass_lookup_helper_output_check.php';
