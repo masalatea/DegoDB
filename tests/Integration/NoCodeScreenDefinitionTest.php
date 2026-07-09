@@ -385,6 +385,13 @@ final class NoCodeScreenDefinitionTest extends TestCase
         self::assertStringContainsString('data-extension-slot-route-boundary="request_source_output_publish"', $files['runtime-preview.html']);
         self::assertStringContainsString('request-source-output-publish', $files['runtime-preview.html']);
         self::assertStringContainsString('Route boundary declared, execution still disabled', $files['runtime-preview.html']);
+        self::assertStringContainsString('data-availability-state="deferred"', $files['runtime-preview.html']);
+        self::assertStringContainsString('data-operation-availability="deferred"', $files['runtime-preview.html']);
+        self::assertStringContainsString('data-preflight-result="blocked"', $files['runtime-preview.html']);
+        self::assertStringContainsString('data-execution-mode="metadata-only"', $files['runtime-preview.html']);
+        self::assertStringContainsString('data-generated-button-enabled="false"', $files['runtime-preview.html']);
+        self::assertStringContainsString('data-extension-slot-availability="review_source_output_artifact"', $files['runtime-preview.html']);
+        self::assertStringContainsString('Availability preview: state deferred; operation deferred; execution metadata-only; preflight blocked.', $files['runtime-preview.html']);
         self::assertStringContainsString('Execution route is not wired yet', $files['runtime-preview.html']);
         self::assertStringContainsString('Request Publish', $files['runtime-preview.html']);
         self::assertStringContainsString('Mtool Source Output Review List', $files['runtime-preview.html']);

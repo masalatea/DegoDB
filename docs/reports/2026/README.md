@@ -11,6 +11,8 @@
 
 ## Index
 
+- `2026-0709-availability-ui-preview-contract.md`
+  - #541 availability UI preview contract。`availability_read_model` を generated no-code runtime HTML の stable DOM markers と説明文に反映し、button disabled / `generated_button_enabled=false` を維持。Status: `DONE`。
 - `2026-0709-metadata-only-availability-read-model.md`
   - #540 metadata-only availability read model。custom operation と extension slot action item に `availability_read_model` を追加し、`availability_state` / `preflight_result` / `execution_mode` / `generated_button_enabled=false` を生成 metadata へ公開。Status: `DONE`。
 - `2026-0709-review-workflow-availability-gate-matrix.md`
