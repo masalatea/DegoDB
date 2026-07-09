@@ -58,6 +58,16 @@
       "reopen_task_card",
       "delete_task_card"
     ],
+    "managed_action_keys": [
+      "complete_task_card",
+      "create_task_card",
+      "update_task_card"
+    ],
+    "managed_action_field_counts": {
+      "complete_task_card": 1,
+      "create_task_card": 5,
+      "update_task_card": 7
+    },
     "requires_route_boundary_markers": true
   },
   "status_filter_contract": {
@@ -95,7 +105,7 @@
           "status": "todo"
         },
         "server_managed_fields": ["completed_at", "updated_at"],
-        "mapping_state": "blocked_until_generated_action_surface_exists"
+        "mapping_state": "promoted_to_disabled_generated_action_metadata"
       },
       {
         "operation_key": "update_task_card",
@@ -106,7 +116,7 @@
         "optional_client_fields": ["body", "status", "assigned_to", "priority", "due_date"],
         "curated_derived_fields": ["completed_at"],
         "server_managed_fields": ["updated_at"],
-        "mapping_state": "blocked_until_generated_action_surface_exists"
+        "mapping_state": "promoted_to_disabled_generated_action_metadata"
       },
       {
         "operation_key": "complete_task_card",
@@ -119,7 +129,7 @@
           "status": "done"
         },
         "server_managed_fields": ["completed_at", "updated_at"],
-        "mapping_state": "blocked_until_generated_action_surface_exists"
+        "mapping_state": "promoted_to_disabled_generated_action_metadata"
       },
       {
         "operation_key": "reopen_task_card",
@@ -149,7 +159,8 @@
     ]
   },
   "remaining_gaps": [
-    "safe action-input mapping inventory is recorded but not promoted to generated action surface",
+    "reopen/delete remain curated-route-only until DBAccess or custom adapter metadata exists",
+    "generated action buttons remain disabled until mutation dispatch is explicitly promoted",
     "browser smoke remains the outer confidence gate for the curated route"
   ]
 }

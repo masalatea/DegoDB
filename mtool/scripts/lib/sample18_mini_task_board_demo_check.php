@@ -372,6 +372,7 @@ function app_sample18_mini_task_board_demo_publish_no_code_metadata(
         static fn (array $operation): string => (string) ($operation['operation_key'] ?? ''),
         $customOperations,
     ));
+    $contractActions = is_array($contract['actions'] ?? null) ? $contract['actions'] : [];
     $runtimeScreens = is_array($runtimePreview['screens'] ?? null) ? $runtimePreview['screens'] : [];
     $runtimeListScreen = [];
     $runtimeDetailScreen = [];
@@ -398,6 +399,13 @@ function app_sample18_mini_task_board_demo_publish_no_code_metadata(
     $expectedActionKeys = is_array($goldenFixture['no_code_action_keys'] ?? null)
         ? array_values(array_map(static fn (mixed $key): string => (string) $key, $goldenFixture['no_code_action_keys']))
         : [];
+    $expectedManagedActionKeys = is_array($goldenFixture['no_code_managed_action_keys'] ?? null)
+        ? array_values(array_map(static fn (mixed $key): string => (string) $key, $goldenFixture['no_code_managed_action_keys']))
+        : [];
+    $managedActionKeys = array_values(array_map(
+        static fn (array $action): string => (string) ($action['action_key'] ?? ''),
+        $contractActions,
+    ));
 
     app_sample18_mini_task_board_demo_assert_same(
         'no-code-screen-definition-v0',
@@ -433,6 +441,12 @@ function app_sample18_mini_task_board_demo_publish_no_code_metadata(
         $expectedActionKeys,
         $runtimeActionKeys,
         'sample18 no-code runtime dry-run action keys',
+        $errors,
+    );
+    app_sample18_mini_task_board_demo_assert_same(
+        $expectedManagedActionKeys,
+        $managedActionKeys,
+        'sample18 no-code managed action keys',
         $errors,
     );
     foreach ($runtimeActionItems as $index => $actionItem) {
@@ -543,6 +557,7 @@ function app_sample18_mini_task_board_demo_publish_no_code_metadata(
         'field_keys' => array_values(array_map(static fn (array $field): string => (string) ($field['field_key'] ?? ''), $fields)),
         'custom_operation_keys' => $customOperationKeys,
         'runtime_action_keys' => $runtimeActionKeys,
+        'managed_action_keys' => $managedActionKeys,
         'runtime_screen_count' => count($runtimeScreens),
         'runtime_row_count' => count($runtimeRows),
         'golden_row_count' => count($goldenRows),

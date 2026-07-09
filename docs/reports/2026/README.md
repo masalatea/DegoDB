@@ -11,6 +11,8 @@
 
 ## Index
 
+- `2026-0710-sample18-generated-action-surface-metadata-first-slice.md`
+  - #562 sample18 generated action surface metadata first slice。create/update/complete を disabled generated managed action metadata へ昇格し、reopen/delete は curated-route-only の dry-run custom operation として維持。Status: `DONE`。
 - `2026-0710-sample18-safe-action-input-mapping-inventory.md`
   - #561 sample18 safe action-input mapping inventory。generated mutation を有効化せず、sample18 の create/update/complete/reopen/delete について curated route action、DBAccess binding、key/input/fixed/server-managed field 境界を checklist と PHPUnit で固定。Status: `DONE`。
 - `2026-0710-sample18-public-runtime-status-filter-dom-preflight.md`

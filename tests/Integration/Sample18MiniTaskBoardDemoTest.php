@@ -91,6 +91,10 @@ final class Sample18MiniTaskBoardDemoTest extends TestCase
             $checklist['html_dom_contract']['disabled_extension_action_keys'] ?? [],
             $fixture['no_code_action_keys'] ?? [],
         );
+        self::assertSame(
+            $checklist['html_dom_contract']['managed_action_keys'] ?? [],
+            $fixture['no_code_managed_action_keys'] ?? [],
+        );
     }
 
     public function testMiniTaskBoardDemoReferenceOutputs(): void
@@ -148,11 +152,25 @@ final class Sample18MiniTaskBoardDemoTest extends TestCase
             $htmlDomContract['disabled_extension_action_keys'] ?? [],
             $result['steps']['no_code_metadata']['runtime_action_keys'] ?? [],
         );
+        self::assertSame(
+            $htmlDomContract['managed_action_keys'] ?? [],
+            $result['steps']['no_code_metadata']['managed_action_keys'] ?? [],
+        );
         self::assertSame(count($fixture['seed_rows'] ?? []), $result['steps']['no_code_metadata']['runtime_row_count'] ?? null);
         self::assertSame(4, $result['steps']['no_code_metadata']['golden_row_count'] ?? null);
 
         $publishedRoot = (string) ($result['steps']['no_code_metadata']['published_root'] ?? '');
         self::assertDirectoryExists($publishedRoot);
+        $screenDefinition = NoCodeUiContractAssertions::readJsonFile($this, $publishedRoot . '/screen-definition.json');
+        $contractActions = $screenDefinition['contracts'][0]['actions'] ?? [];
+        self::assertIsArray($contractActions);
+        $fieldCountsByAction = [];
+        foreach ($contractActions as $action) {
+            self::assertIsArray($action);
+            $fieldCountsByAction[(string) ($action['action_key'] ?? '')] = count($action['fields'] ?? []);
+            self::assertSame('disabled', (string) ($action['availability'] ?? ''));
+        }
+        self::assertSame($htmlDomContract['managed_action_field_counts'] ?? [], $fieldCountsByAction);
         $runtimePreview = NoCodeUiContractAssertions::readJsonFile($this, $publishedRoot . '/runtime-preview.json');
         NoCodeUiContractAssertions::assertRuntimePreviewScreenKeys(
             $this,
