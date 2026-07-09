@@ -11,6 +11,24 @@
 
 ## Index
 
+- `2026-0708-mtool-no-code-dogfooding-metadata-lane-closure.md`
+  - #440 Mtool no-code dogfooding metadata lane closure。Mtool Source Output review fixture、custom extension boundary、artifact-shape proof、configured presentation metadata、custom UI slot metadata、inspection summary までを accepted capability として整理。local 7 commits は意味単位として読めるため squash 不要と判断。Push は未実行。Status: `DONE`。
+- `2026-0708-mtool-dogfooding-inspection-pass.md`
+  - #439 Mtool dogfooding inspection pass。通常の no-code runtime emitted files を組み立て、interface usage、view variant、presentation profile、screen-level extension slot distribution、HTML boundary を summary 化。metadata は JSON artifact path に通り、visible custom slot rendering は未実装として記録。Push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0708-custom-ui-slot-manifest-first-slice.md`
+  - #438 custom UI slot manifest first slice。`contract_metadata.extension_slots` を screen-definition の `extension_slots` と screen ごとの relevant slots に正規化し、runtime preview JSON まで carry-through。Mtool Source Output review probe は related settings / artifact status / operator actions slots を宣言。Push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0708-configured-presentation-metadata-first-slice.md`
+  - #437 configured presentation metadata first slice。`contract_metadata.presentation_profile` を screen-definition の `presentation_profile` と screen ごとの `presentation_hint` に正規化し、runtime preview JSON まで carry-through。Mtool Source Output review probe は compact review profile、primary / secondary fields、identity / artifact field groups を持つ。Push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0708-local-stack-review-after-mtool-no-code-dogfooding-probe.md`
+  - #436 Mtool no-code dogfooding probe 後の local stack review。未 push 4 commits は metadata helper / custom extension boundary / artifact-shape proof / closure findings として意味単位が分かれているため、明示 push 前の squash / history rewrite は不要と判断。Push は未実行。Status: `DONE`。
+- `2026-0708-mtool-no-code-dogfooding-probe-closure.md`
+  - #435 Mtool no-code dogfooding probe closure。Source Output review surface の standard generated UI / configured presentation / custom UI slot / custom operation / full custom app handoff の findings を整理し、最初の probe を closure。Push は未実行。Status: `DONE`。
+- `2026-0708-mtool-no-code-dogfooding-probe-artifact-shape.md`
+  - #434 Mtool no-code dogfooding probe artifact shape。`MTOOL` Source Output review fixture が既存 no-code runtime payload / emitted-file builder を通り、通常の `screen-definition.json` / `runtime-preview.json` / `runtime-preview.html` / `README.md` を出せることを focused coverage で固定。Push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0708-no-code-custom-extension-boundary.md`
+  - #433 no-code custom extension boundary。標準生成 UI、設定 presentation、custom UI slot、custom operation、full custom app handoff を分け、React composition は実装手段の一つとして扱いながら、source of truth は no-code metadata / manifest に置く方針を記録。Push は未実行。Status: `DONE`。
+- `2026-0708-mtool-no-code-dogfooding-probe-metadata-first-slice.md`
+  - #432 Mtool no-code dogfooding probe metadata first slice。`MTOOL` の Source Output review surface を no-code screen-definition fixture として表現する helper と focused test を追加。全面 self-replacement や広い persistent seed は行わず、#433 の artifact inspection に進める最小 metadata を固定。Push は未実行。Status: `FIRST_SLICE_DONE`。
 - `2026-0708-mtool-no-code-dogfooding-probe-inventory.md`
   - #431 first Mtool no-code dogfooding probe inventory。全面 self-replacement ではなく、Source Output / Shared Contracts / interface profile review surface を最初の低リスク probe として選択し、#432-#435 の実装・確認・closure 手順を整理。Push は未実行。Status: `DONE`。
 - `2026-0705-local-commit-stack-review-after-third-domain-confidence.md`

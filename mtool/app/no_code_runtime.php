@@ -42,6 +42,8 @@ function app_no_code_runtime_render_screen(
                 $screenType,
             ),
             'fields' => app_no_code_runtime_render_fields($fields),
+            'presentation_hint' => is_array($screen['presentation_hint'] ?? null) ? $screen['presentation_hint'] : [],
+            'extension_slots' => is_array($screen['extension_slots'] ?? null) ? $screen['extension_slots'] : [],
             'actions' => app_no_code_runtime_render_actions(
                 is_array($screen['actions'] ?? null) ? $screen['actions'] : [],
                 is_array($contract['actions'] ?? null) ? $contract['actions'] : [],

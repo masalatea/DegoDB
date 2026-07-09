@@ -165,21 +165,231 @@ function app_no_code_screen_definition_contract_definition(
     $actions = app_no_code_screen_definition_actions($contract, $operations, $principal);
     $storageHint = app_no_code_screen_definition_storage_hint($contract);
     $syncStatusDisplay = (bool) ($storageHint['sync_status_display'] ?? false);
+    $presentationProfile = app_no_code_screen_definition_presentation_profile($contract, $fields);
+    $extensionSlots = app_no_code_screen_definition_extension_slots($contract);
 
     return [
         'contract_key' => $contractKey,
         'entity' => $contract['entity'] ?? [],
         'interface_usage' => app_no_code_screen_definition_interface_usage($contract),
         'view_variant_preference' => app_no_code_screen_definition_view_variant_preference($contract),
+        'presentation_profile' => $presentationProfile,
+        'extension_slots' => $extensionSlots,
         'storage_hint' => $storageHint,
         'traceability' => app_no_code_screen_definition_traceability($contractKey, $fields, $actions),
         'screens' => [
-            app_no_code_screen_definition_list_screen($contractKey, $fields, $actions, $syncStatusDisplay),
-            app_no_code_screen_definition_detail_screen($contractKey, $fields, $actions, $syncStatusDisplay),
-            app_no_code_screen_definition_form_screen($contractKey, $fields, $actions),
+            app_no_code_screen_definition_list_screen($contractKey, $fields, $actions, $syncStatusDisplay, $presentationProfile, $extensionSlots),
+            app_no_code_screen_definition_detail_screen($contractKey, $fields, $actions, $syncStatusDisplay, $presentationProfile, $extensionSlots),
+            app_no_code_screen_definition_form_screen($contractKey, $fields, $actions, $presentationProfile, $extensionSlots),
         ],
         'actions' => $actions,
     ];
+}
+
+/**
+ * @param array<string,mixed> $contract
+ * @param list<array<string,mixed>> $fields
+ * @return array{
+ *     profile_key:string,
+ *     source:string,
+ *     density:string,
+ *     emphasis:string,
+ *     primary_fields:list<string>,
+ *     secondary_fields:list<string>,
+ *     field_groups:list<array{group_key:string,label:string,fields:list<string>}>
+ * }
+ */
+function app_no_code_screen_definition_presentation_profile(array $contract, array $fields): array
+{
+    $metadata = is_array($contract['contract_metadata'] ?? null) ? $contract['contract_metadata'] : [];
+    $profile = is_array($metadata['presentation_profile'] ?? null) ? $metadata['presentation_profile'] : [];
+    $fieldKeys = app_no_code_screen_definition_field_keys($fields);
+    $contractKey = (string) ($contract['contract_key'] ?? 'contract');
+    $profileKey = trim((string) ($profile['profile_key'] ?? ''));
+    $density = app_no_code_screen_definition_normalize_presentation_density((string) ($profile['density'] ?? ''));
+    $emphasis = app_no_code_screen_definition_normalize_presentation_emphasis((string) ($profile['emphasis'] ?? ''));
+
+    return [
+        'profile_key' => $profileKey !== '' ? $profileKey : $contractKey . '_auto',
+        'source' => $profile === [] ? 'derived:default' : 'presentation_profile:explicit',
+        'density' => $density !== '' ? $density : 'standard',
+        'emphasis' => $emphasis !== '' ? $emphasis : 'balanced',
+        'primary_fields' => app_no_code_screen_definition_normalize_field_key_list($profile['primary_fields'] ?? [], $fieldKeys),
+        'secondary_fields' => app_no_code_screen_definition_normalize_field_key_list($profile['secondary_fields'] ?? [], $fieldKeys),
+        'field_groups' => app_no_code_screen_definition_normalize_field_groups($profile['field_groups'] ?? [], $fieldKeys),
+    ];
+}
+
+/**
+ * @param list<array<string,mixed>> $fields
+ * @return list<string>
+ */
+function app_no_code_screen_definition_field_keys(array $fields): array
+{
+    $fieldKeys = [];
+    foreach ($fields as $field) {
+        $fieldKey = (string) ($field['field_key'] ?? '');
+        if ($fieldKey !== '') {
+            $fieldKeys[] = $fieldKey;
+        }
+    }
+
+    return $fieldKeys;
+}
+
+function app_no_code_screen_definition_normalize_presentation_density(string $density): string
+{
+    $normalized = strtolower(trim($density));
+    return in_array($normalized, ['compact', 'standard', 'comfortable'], true) ? $normalized : '';
+}
+
+function app_no_code_screen_definition_normalize_presentation_emphasis(string $emphasis): string
+{
+    $normalized = strtolower(trim($emphasis));
+    return in_array($normalized, ['balanced', 'review', 'data_entry'], true) ? $normalized : '';
+}
+
+/**
+ * @param mixed $value
+ * @param list<string> $allowedFieldKeys
+ * @return list<string>
+ */
+function app_no_code_screen_definition_normalize_field_key_list(mixed $value, array $allowedFieldKeys): array
+{
+    if (!is_array($value)) {
+        return [];
+    }
+
+    $normalized = [];
+    foreach ($value as $fieldKey) {
+        $fieldKey = (string) $fieldKey;
+        if ($fieldKey !== '' && in_array($fieldKey, $allowedFieldKeys, true) && !in_array($fieldKey, $normalized, true)) {
+            $normalized[] = $fieldKey;
+        }
+    }
+
+    return $normalized;
+}
+
+/**
+ * @param mixed $value
+ * @param list<string> $allowedFieldKeys
+ * @return list<array{group_key:string,label:string,fields:list<string>}>
+ */
+function app_no_code_screen_definition_normalize_field_groups(mixed $value, array $allowedFieldKeys): array
+{
+    if (!is_array($value)) {
+        return [];
+    }
+
+    $groups = [];
+    foreach ($value as $group) {
+        if (!is_array($group)) {
+            continue;
+        }
+
+        $groupKey = trim((string) ($group['group_key'] ?? ''));
+        $fields = app_no_code_screen_definition_normalize_field_key_list($group['fields'] ?? [], $allowedFieldKeys);
+        if ($groupKey === '' || $fields === []) {
+            continue;
+        }
+
+        $groups[] = [
+            'group_key' => $groupKey,
+            'label' => trim((string) ($group['label'] ?? '')) !== '' ? trim((string) ($group['label'] ?? '')) : $groupKey,
+            'fields' => $fields,
+        ];
+    }
+
+    return $groups;
+}
+
+/**
+ * @param array<string,mixed> $contract
+ * @return list<array{
+ *     slot_key:string,
+ *     slot_type:string,
+ *     label:string,
+ *     placement:string,
+ *     renderer:string,
+ *     target:string,
+ *     screen_types:list<string>,
+ *     source:string
+ * }>
+ */
+function app_no_code_screen_definition_extension_slots(array $contract): array
+{
+    $metadata = is_array($contract['contract_metadata'] ?? null) ? $contract['contract_metadata'] : [];
+    $slots = is_array($metadata['extension_slots'] ?? null) ? $metadata['extension_slots'] : [];
+    $normalized = [];
+    foreach ($slots as $slot) {
+        if (!is_array($slot)) {
+            continue;
+        }
+
+        $slotKey = trim((string) ($slot['slot_key'] ?? ''));
+        $slotType = app_no_code_screen_definition_normalize_extension_slot_type((string) ($slot['slot_type'] ?? ''));
+        $screenTypes = app_no_code_screen_definition_normalize_screen_types($slot['screen_types'] ?? []);
+        if ($slotKey === '' || $slotType === '' || $screenTypes === []) {
+            continue;
+        }
+
+        $normalized[] = [
+            'slot_key' => $slotKey,
+            'slot_type' => $slotType,
+            'label' => trim((string) ($slot['label'] ?? '')) !== '' ? trim((string) ($slot['label'] ?? '')) : $slotKey,
+            'placement' => app_no_code_screen_definition_normalize_extension_slot_placement((string) ($slot['placement'] ?? '')),
+            'renderer' => app_no_code_screen_definition_normalize_extension_slot_renderer((string) ($slot['renderer'] ?? '')),
+            'target' => trim((string) ($slot['target'] ?? '')),
+            'screen_types' => $screenTypes,
+            'source' => 'extension_slots:explicit',
+        ];
+    }
+
+    return $normalized;
+}
+
+function app_no_code_screen_definition_normalize_extension_slot_type(string $slotType): string
+{
+    $normalized = strtolower(trim($slotType));
+    return in_array(
+        $normalized,
+        ['related_settings_panel', 'artifact_status_panel', 'operator_actions_panel'],
+        true,
+    ) ? $normalized : '';
+}
+
+function app_no_code_screen_definition_normalize_extension_slot_placement(string $placement): string
+{
+    $normalized = strtolower(trim($placement));
+    return in_array($normalized, ['aside', 'header', 'footer', 'inline'], true) ? $normalized : 'aside';
+}
+
+function app_no_code_screen_definition_normalize_extension_slot_renderer(string $renderer): string
+{
+    $normalized = strtolower(trim($renderer));
+    return in_array($normalized, ['placeholder', 'link_list', 'status_card', 'action_panel'], true) ? $normalized : 'placeholder';
+}
+
+/**
+ * @param mixed $value
+ * @return list<string>
+ */
+function app_no_code_screen_definition_normalize_screen_types(mixed $value): array
+{
+    if (!is_array($value)) {
+        return [];
+    }
+
+    $normalized = [];
+    foreach ($value as $screenType) {
+        $screenType = strtolower(trim((string) $screenType));
+        if (in_array($screenType, ['list', 'detail', 'form'], true) && !in_array($screenType, $normalized, true)) {
+            $normalized[] = $screenType;
+        }
+    }
+
+    return $normalized;
 }
 
 /**
@@ -501,12 +711,16 @@ function app_no_code_screen_definition_list_screen(
     array $fields,
     array $actions,
     bool $syncStatusDisplay,
+    array $presentationProfile,
+    array $extensionSlots,
 ): array {
     return [
         'screen_key' => $contractKey . '_list',
         'screen_type' => 'list',
         'view_variant' => 'standard_table',
         'contract_key' => $contractKey,
+        'presentation_hint' => app_no_code_screen_definition_screen_presentation_hint($presentationProfile, 'list'),
+        'extension_slots' => app_no_code_screen_definition_screen_extension_slots($extensionSlots, 'list'),
         'fields' => app_no_code_screen_definition_screen_fields($fields, 'list'),
         'actions' => app_no_code_screen_definition_screen_actions($actions, ['list', 'read', 'create', 'update', 'delete']),
         'sync_status_hint' => $syncStatusDisplay,
@@ -523,12 +737,16 @@ function app_no_code_screen_definition_detail_screen(
     array $fields,
     array $actions,
     bool $syncStatusDisplay,
+    array $presentationProfile,
+    array $extensionSlots,
 ): array {
     return [
         'screen_key' => $contractKey . '_detail',
         'screen_type' => 'detail',
         'view_variant' => 'detail_record',
         'contract_key' => $contractKey,
+        'presentation_hint' => app_no_code_screen_definition_screen_presentation_hint($presentationProfile, 'detail'),
+        'extension_slots' => app_no_code_screen_definition_screen_extension_slots($extensionSlots, 'detail'),
         'fields' => app_no_code_screen_definition_screen_fields($fields, 'detail'),
         'actions' => app_no_code_screen_definition_screen_actions($actions, ['read', 'update', 'delete']),
         'sync_status_hint' => $syncStatusDisplay,
@@ -540,17 +758,59 @@ function app_no_code_screen_definition_detail_screen(
  * @param list<array<string,mixed>> $actions
  * @return array<string,mixed>
  */
-function app_no_code_screen_definition_form_screen(string $contractKey, array $fields, array $actions): array
+function app_no_code_screen_definition_form_screen(
+    string $contractKey,
+    array $fields,
+    array $actions,
+    array $presentationProfile,
+    array $extensionSlots,
+): array
 {
     return [
         'screen_key' => $contractKey . '_form',
         'screen_type' => 'form',
         'view_variant' => 'edit_form',
         'contract_key' => $contractKey,
+        'presentation_hint' => app_no_code_screen_definition_screen_presentation_hint($presentationProfile, 'form'),
+        'extension_slots' => app_no_code_screen_definition_screen_extension_slots($extensionSlots, 'form'),
         'fields' => app_no_code_screen_definition_screen_fields($fields, 'form'),
         'actions' => app_no_code_screen_definition_screen_actions($actions, ['create', 'update']),
         'sync_status_hint' => false,
     ];
+}
+
+/**
+ * @param array<string,mixed> $presentationProfile
+ * @return array<string,mixed>
+ */
+function app_no_code_screen_definition_screen_presentation_hint(array $presentationProfile, string $screenType): array
+{
+    return [
+        'profile_key' => (string) ($presentationProfile['profile_key'] ?? ''),
+        'screen_type' => $screenType,
+        'density' => (string) ($presentationProfile['density'] ?? 'standard'),
+        'emphasis' => (string) ($presentationProfile['emphasis'] ?? 'balanced'),
+        'primary_fields' => is_array($presentationProfile['primary_fields'] ?? null) ? $presentationProfile['primary_fields'] : [],
+        'secondary_fields' => is_array($presentationProfile['secondary_fields'] ?? null) ? $presentationProfile['secondary_fields'] : [],
+        'field_groups' => is_array($presentationProfile['field_groups'] ?? null) ? $presentationProfile['field_groups'] : [],
+    ];
+}
+
+/**
+ * @param list<array<string,mixed>> $extensionSlots
+ * @return list<array<string,mixed>>
+ */
+function app_no_code_screen_definition_screen_extension_slots(array $extensionSlots, string $screenType): array
+{
+    $slots = [];
+    foreach ($extensionSlots as $slot) {
+        $screenTypes = is_array($slot['screen_types'] ?? null) ? $slot['screen_types'] : [];
+        if (in_array($screenType, $screenTypes, true)) {
+            $slots[] = $slot;
+        }
+    }
+
+    return $slots;
 }
 
 /**
