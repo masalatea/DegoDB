@@ -11,6 +11,8 @@
 
 ## Index
 
+- `2026-0709-review-workflow-availability-surface-inventory.md`
+  - #538 review workflow availability surface inventory。review / publish custom operation metadata、route boundary、dispatch guard、disabled UI、review request persistence、test gaps を棚卸しし、#539 gate matrix への入力を記録。Status: `DONE`。
 - `2026-0709-lightweight-no-code-ui-testing-plan.md`
   - #551 lightweight no-code UI testing plan。No Code 専用 sample と既存 sample No Code 化に入る前に、PHPUnit JSON / `DOMDocument` contract test を inner loop、lightweight DOM interaction test を必要時、headless Chrome を代表 smoke gate とする方針を記録。Status: `DONE`。
 - `2026-0709-detailed-no-code-availability-plan.md`
