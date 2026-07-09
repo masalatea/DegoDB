@@ -1,0 +1,48 @@
+{
+  "fixture_version": "sample18-no-code-ui-golden-v1",
+  "project_key": "SAMPLE18",
+  "route_path": "/samples/sample18-task-board",
+  "source_table": "task_card",
+  "seed_rows": [
+    {
+      "title": "Define first demo prompt",
+      "status": "doing",
+      "assigned_to": "Alice",
+      "priority": 30,
+      "due_date": "2026-06-19"
+    },
+    {
+      "title": "Create TaskCard metadata",
+      "status": "todo",
+      "assigned_to": "Bob",
+      "priority": 20,
+      "due_date": "2026-06-20"
+    },
+    {
+      "title": "Publish reference outputs",
+      "status": "todo",
+      "assigned_to": "Chris",
+      "priority": 10,
+      "due_date": "2026-06-21"
+    },
+    {
+      "title": "Review demo feedback notes",
+      "status": "done",
+      "assigned_to": "Dana",
+      "priority": 40,
+      "due_date": "2026-06-18"
+    }
+  ],
+  "dom_contract": {
+    "title": "Sample18 Mini Task Board",
+    "status_filter_values": ["", "todo", "doing", "done"],
+    "form_fields": ["title", "body", "status", "assigned_to", "priority", "due_date"],
+    "table_columns": ["Task", "Status", "Assigned", "Priority", "Due", "Actions"],
+    "actions": ["create", "update", "complete", "reopen", "delete"]
+  },
+  "no_code_conversion_boundary": {
+    "generated_route_replacement": false,
+    "generated_button_execution": false,
+    "outer_smoke_command": "make sample18-http-runtime-smoke"
+  }
+}
