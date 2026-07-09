@@ -11,6 +11,8 @@
 
 ## Index
 
+- `2026-0710-sample18-disabled-action-surface-public-smoke.md`
+  - #563 sample18 disabled action surface public smoke。sample18 public runtime current page で complete/create/update の disabled managed action surface、policy-disabled state、submit 非有効化を headless Chrome smoke で確認。Status: `DONE`。
 - `2026-0710-sample18-generated-action-surface-metadata-first-slice.md`
   - #562 sample18 generated action surface metadata first slice。create/update/complete を disabled generated managed action metadata へ昇格し、reopen/delete は curated-route-only の dry-run custom operation として維持。Status: `DONE`。
 - `2026-0710-sample18-safe-action-input-mapping-inventory.md`

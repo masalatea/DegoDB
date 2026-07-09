@@ -227,6 +227,13 @@ function expectedProfile(name) {
       filterLabel: 'Status',
       filterOperatorLabel: 'Contains',
       filterValue: 'doing',
+      managedActionKeys: ['complete_task_card', 'create_task_card', 'update_task_card'],
+      managedActionOperationTypes: {
+        complete_task_card: 'update',
+        create_task_card: 'create',
+        update_task_card: 'update',
+      },
+      managedActionDisabledReason: 'policy-not-enabled',
       payload: {
         id: 1801,
         title: 'Sample18 browser smoke update',
@@ -483,6 +490,79 @@ async function probeRuntimeFilterDomOnly(page, config) {
   }
   if (result.filterValueTagName !== 'INPUT' || result.submitText === '') {
     throw new Error(`runtime filter controls incomplete: ${JSON.stringify(result)}`);
+  }
+
+  return result;
+}
+
+async function probeRuntimeDisabledActionSurface(page, config) {
+  const expectedKeys = Array.isArray(config.expected.managedActionKeys) ? config.expected.managedActionKeys : [];
+  if (expectedKeys.length === 0) {
+    return { skipped: true };
+  }
+
+  await page.waitForSelector(
+    `.no-code-screen[data-screen-key="${config.expected.formScreenKey}"] .no-code-actions button[data-action-key]`,
+    { timeout: 5000 },
+  );
+  const result = await page.evaluate((expected) => {
+    const formScreen = document.querySelector(`.no-code-screen[data-screen-key="${expected.formScreenKey}"]`);
+    const buttons = Array.from(formScreen?.querySelectorAll('.no-code-actions button[data-action-key]') || []);
+    const hints = Array.from(formScreen?.querySelectorAll('.no-code-action-hint[data-action-hint]') || []);
+    const actions = (window.__noCodeRuntimePreview?.screens || [])
+      .filter((screen) => screen && screen.screen_key === expected.formScreenKey)
+      .flatMap((screen) => Array.isArray(screen.actions) ? screen.actions : []);
+    return {
+      skipped: false,
+      keys: buttons.map((button) => button.getAttribute('data-action-key') || ''),
+      operationKeys: buttons.map((button) => button.getAttribute('data-operation-key') || ''),
+      operationTypes: buttons.reduce((carry, button) => {
+        carry[button.getAttribute('data-action-key') || ''] = button.getAttribute('data-operation-type') || '';
+        return carry;
+      }, {}),
+      enabledStates: buttons.map((button) => button.getAttribute('data-action-enabled') || ''),
+      actionStates: buttons.map((button) => button.getAttribute('data-action-state') || ''),
+      disabledReasons: buttons.map((button) => button.getAttribute('data-action-disabled-reason') || ''),
+      affordances: buttons.map((button) => button.getAttribute('data-action-affordance') || ''),
+      disabledProperties: buttons.map((button) => button.disabled === true),
+      hintKeys: hints.map((hint) => hint.getAttribute('data-action-hint') || ''),
+      hintStates: hints.map((hint) => hint.getAttribute('data-action-state-hint') || ''),
+      previewActionKeys: actions.map((action) => action.action_key || ''),
+      previewActionAvailability: actions.reduce((carry, action) => {
+        carry[action.action_key || ''] = action.availability || '';
+        return carry;
+      }, {}),
+      executeButtonDisabled: !!formScreen?.querySelector('[data-runtime-execute]')?.disabled,
+      executeState: formScreen?.querySelector('[data-runtime-execute]')?.getAttribute('data-runtime-execute-state') || '',
+    };
+  }, config.expected);
+
+  if (JSON.stringify(result.keys) !== JSON.stringify(expectedKeys)) {
+    throw new Error(`disabled managed action keys mismatch: ${JSON.stringify(result)}`);
+  }
+  if (JSON.stringify(result.previewActionKeys) !== JSON.stringify(expectedKeys)) {
+    throw new Error(`preview managed action keys mismatch: ${JSON.stringify(result)}`);
+  }
+  for (const key of expectedKeys) {
+    if (result.operationTypes[key] !== config.expected.managedActionOperationTypes[key]) {
+      throw new Error(`managed action operation type mismatch: ${JSON.stringify(result)}`);
+    }
+    if (result.previewActionAvailability[key] !== 'disabled') {
+      throw new Error(`managed action preview availability mismatch: ${JSON.stringify(result)}`);
+    }
+  }
+  if (
+    result.enabledStates.some((state) => state !== 'false')
+    || result.actionStates.some((state) => state !== 'disabled')
+    || result.disabledReasons.some((reason) => reason !== config.expected.managedActionDisabledReason)
+    || result.affordances.some((affordance) => affordance !== 'keyboard-intent-preview')
+    || result.disabledProperties.some((disabled) => disabled !== true)
+    || JSON.stringify(result.hintKeys) !== JSON.stringify(expectedKeys)
+    || result.hintStates.some((state) => state !== 'disabled')
+    || result.executeButtonDisabled !== true
+    || !['blocked', 'unavailable'].includes(result.executeState)
+  ) {
+    throw new Error(`disabled managed action surface mismatch: ${JSON.stringify(result)}`);
   }
 
   return result;
@@ -889,16 +969,19 @@ async function runSmoke(config) {
 
     if (config.runtimeFilterDomOnly) {
       const runtimeFilterDomProbe = await probeRuntimeFilterDomOnly(page, config);
+      const runtimeDisabledActionSurfaceProbe = await probeRuntimeDisabledActionSurface(page, config);
       await page.screenshot({ path: screenshotPath, fullPage: true });
       await page.setViewportSize({ width: 390, height: 844 });
       await page.goto(targetUrl, { waitUntil: 'load' });
       await requireVisible(page.locator(`.no-code-screen[data-screen-key="${config.expected.listScreenKey}"] [data-runtime-data-controls]`), 'mobile runtime data controls');
+      await requireVisible(page.locator(`.no-code-screen[data-screen-key="${config.expected.formScreenKey}"] .no-code-actions button[data-action-key]`), 'mobile disabled managed action surface');
       await page.screenshot({ path: mobileScreenshotPath, fullPage: true });
       return {
         ok: true,
         profile: config.expected.profile,
         runtime_filter_dom_only: true,
         runtime_filter_dom_probe: runtimeFilterDomProbe,
+        runtime_disabled_action_surface_probe: runtimeDisabledActionSurfaceProbe,
         screenshot: screenshotPath,
         mobile_screenshot: mobileScreenshotPath,
       };
