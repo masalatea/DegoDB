@@ -177,6 +177,14 @@ function app_sample18_mini_task_board_demo_read_json_file(string $path): array
     ];
 }
 
+function app_sample18_mini_task_board_demo_golden_fixture(): array
+{
+    $path = dirname(__DIR__, 3) . '/sample/tutorials/sample18-mini-task-board-demo/golden/no-code-ui-golden.json';
+    $result = app_sample18_mini_task_board_demo_read_json_file($path);
+
+    return $result['ok'] ? $result['payload'] : [];
+}
+
 function app_sample18_mini_task_board_demo_publish_one(
     array $app,
     string $requestedBy,
@@ -348,12 +356,26 @@ function app_sample18_mini_task_board_demo_publish_no_code_metadata(
 
     $screenDefinition = $screenDefinitionJson['payload'];
     $runtimePreview = $runtimePreviewJson['payload'];
+    $runtimePreviewHtml = is_file($publishedRoot . '/runtime-preview.html')
+        ? (string) file_get_contents($publishedRoot . '/runtime-preview.html')
+        : '';
+    $goldenFixture = app_sample18_mini_task_board_demo_golden_fixture();
+    $goldenRows = is_array($goldenFixture['seed_rows'] ?? null) ? $goldenFixture['seed_rows'] : [];
+    $goldenDomContract = is_array($goldenFixture['dom_contract'] ?? null) ? $goldenFixture['dom_contract'] : [];
     $contracts = is_array($screenDefinition['contracts'] ?? null) ? $screenDefinition['contracts'] : [];
     $contract = is_array($contracts[0] ?? null) ? $contracts[0] : [];
     $screens = is_array($contract['screens'] ?? null) ? $contract['screens'] : [];
     $listScreen = is_array($screens[0] ?? null) ? $screens[0] : [];
     $fields = is_array($listScreen['fields'] ?? null) ? $listScreen['fields'] : [];
     $runtimeScreens = is_array($runtimePreview['screens'] ?? null) ? $runtimePreview['screens'] : [];
+    $runtimeListScreen = [];
+    foreach ($runtimeScreens as $screen) {
+        if (is_array($screen) && (string) ($screen['screen_key'] ?? '') === 'task_card_list') {
+            $runtimeListScreen = $screen;
+            break;
+        }
+    }
+    $runtimeRows = is_array($runtimeListScreen['data']['rows'] ?? null) ? $runtimeListScreen['data']['rows'] : [];
 
     app_sample18_mini_task_board_demo_assert_same(
         'no-code-screen-definition-v0',
@@ -391,6 +413,37 @@ function app_sample18_mini_task_board_demo_publish_no_code_metadata(
         'sample18 no-code runtime screen count',
         $errors,
     );
+    app_sample18_mini_task_board_demo_assert_same(
+        count($goldenRows),
+        count($runtimeRows),
+        'sample18 no-code runtime row count',
+        $errors,
+    );
+    foreach ($goldenRows as $index => $goldenRow) {
+        $runtimeRow = is_array($runtimeRows[$index] ?? null) ? $runtimeRows[$index] : [];
+        foreach (['title', 'status', 'assigned_to', 'due_date'] as $fieldKey) {
+            app_sample18_mini_task_board_demo_assert_same(
+                (string) ($goldenRow[$fieldKey] ?? ''),
+                (string) ($runtimeRow[$fieldKey]['display_value'] ?? ''),
+                'sample18 no-code runtime row ' . $index . ' ' . $fieldKey,
+                $errors,
+            );
+        }
+        app_sample18_mini_task_board_demo_assert_same(
+            true,
+            str_contains($runtimePreviewHtml, (string) ($goldenRow['title'] ?? '')),
+            'sample18 no-code runtime html title ' . $index,
+            $errors,
+        );
+    }
+    foreach (($goldenDomContract['form_fields'] ?? []) as $fieldKey) {
+        app_sample18_mini_task_board_demo_assert_same(
+            true,
+            str_contains($runtimePreviewHtml, 'name="' . (string) $fieldKey . '"'),
+            'sample18 no-code runtime html field ' . (string) $fieldKey,
+            $errors,
+        );
+    }
 
     return [
         'ok' => true,
@@ -403,6 +456,8 @@ function app_sample18_mini_task_board_demo_publish_no_code_metadata(
         'screen_types' => array_values(array_map(static fn (array $screen): string => (string) ($screen['screen_type'] ?? ''), $screens)),
         'field_keys' => array_values(array_map(static fn (array $field): string => (string) ($field['field_key'] ?? ''), $fields)),
         'runtime_screen_count' => count($runtimeScreens),
+        'runtime_row_count' => count($runtimeRows),
+        'golden_row_count' => count($goldenRows),
         'error' => '',
     ];
 }

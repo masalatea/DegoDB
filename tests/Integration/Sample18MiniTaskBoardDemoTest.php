@@ -96,6 +96,8 @@ final class Sample18MiniTaskBoardDemoTest extends TestCase
             ['id', 'title', 'body', 'status', 'assigned_to', 'priority', 'due_date', 'completed_at', 'updated_at'],
             $result['steps']['no_code_metadata']['field_keys'] ?? [],
         );
+        self::assertSame(4, $result['steps']['no_code_metadata']['runtime_row_count'] ?? null);
+        self::assertSame(4, $result['steps']['no_code_metadata']['golden_row_count'] ?? null);
     }
 
     /**

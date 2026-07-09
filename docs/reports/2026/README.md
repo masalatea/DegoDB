@@ -11,6 +11,8 @@
 
 ## Index
 
+- `2026-0709-first-sample-ui-readonly-no-code-preview.md`
+  - #548 first sample UI readonly no-code preview。sample18 `task_card` preview rows を no-code runtime generator に追加し、generated `runtime-preview.json` / `runtime-preview.html` を golden fixture の seed rows と fast contract で比較。Status: `DONE`。
 - `2026-0709-first-sample-ui-metadata-extraction-spike.md`
   - #547 first sample UI metadata extraction spike。sample18 に readonly `task_card` shared contract metadata と `NO-CODE-RUNTIME` source output を追加し、既存 route を置き換えずに no-code screen/runtime metadata を生成・検証。Status: `DONE`。
 - `2026-0709-l1-bridge-golden-sample-fixture.md`

@@ -1543,6 +1543,60 @@ function app_project_output_no_code_runtime_preview_data(string $projectKey, str
         ];
     }
 
+    if ($projectKey === 'SAMPLE18' && $contractKey === 'task_card') {
+        $rows = [
+            [
+                'id' => 1801,
+                'title' => 'Define first demo prompt',
+                'body' => 'Turn the raw idea into a readable sample prompt and scope.',
+                'status' => 'doing',
+                'assigned_to' => 'Alice',
+                'priority' => 30,
+                'due_date' => '2026-06-19',
+                'completed_at' => null,
+                'updated_at' => '2026-06-19 09:00:00',
+            ],
+            [
+                'id' => 1802,
+                'title' => 'Create TaskCard metadata',
+                'body' => 'Seed table, DataClass, DBAccess, HTML, and OpenAPI output definitions.',
+                'status' => 'todo',
+                'assigned_to' => 'Bob',
+                'priority' => 20,
+                'due_date' => '2026-06-20',
+                'completed_at' => null,
+                'updated_at' => '2026-06-19 09:30:00',
+            ],
+            [
+                'id' => 1803,
+                'title' => 'Publish reference outputs',
+                'body' => 'Run the sample pack and capture actual generated outputs.',
+                'status' => 'todo',
+                'assigned_to' => 'Chris',
+                'priority' => 10,
+                'due_date' => '2026-06-21',
+                'completed_at' => null,
+                'updated_at' => '2026-06-19 10:00:00',
+            ],
+            [
+                'id' => 1804,
+                'title' => 'Review demo feedback notes',
+                'body' => 'Record any runtime or generator gaps discovered while making the demo.',
+                'status' => 'done',
+                'assigned_to' => 'Dana',
+                'priority' => 40,
+                'due_date' => '2026-06-18',
+                'completed_at' => '2026-06-19 08:30:00',
+                'updated_at' => '2026-06-19 08:30:00',
+            ],
+        ];
+
+        return [
+            'rows' => $rows,
+            'current_item' => $rows[0],
+        ];
+    }
+
     return [
         'rows' => [],
         'current_item' => [],
