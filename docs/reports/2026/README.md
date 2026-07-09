@@ -11,6 +11,8 @@
 
 ## Index
 
+- `2026-0710-sample18-generated-submit-request-contract-preflight.md`
+  - #565 sample18 generated submit request contract preflight。create/update/complete の generated submit payload normalization、ignored client fields、validation errors、unknown operation failure を route 追加前に helper / fixture / PHPUnit で固定。Status: `DONE`。
 - `2026-0710-sample18-managed-action-dispatch-guard-preflight.md`
   - #564 sample18 managed action dispatch guard preflight。`web_lab_login` guard と `project.edit` policy に揃え、editor でも `deferred_availability`、viewer は `policy_denied` で fail closed する focused preflight coverage を追加。Status: `DONE`。
 - `2026-0710-sample18-disabled-action-surface-public-smoke.md`

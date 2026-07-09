@@ -2,6 +2,8 @@
 
 declare(strict_types=1);
 
+require_once dirname(__DIR__, 2) . '/mtool/app/lab_sample18_task_board_page.php';
+
 use PHPUnit\Framework\TestCase;
 
 final class Sample18MiniTaskBoardDemoTest extends TestCase
@@ -95,6 +97,74 @@ final class Sample18MiniTaskBoardDemoTest extends TestCase
             $checklist['html_dom_contract']['managed_action_keys'] ?? [],
             $fixture['no_code_managed_action_keys'] ?? [],
         );
+    }
+
+    public function testMiniTaskBoardGeneratedSubmitRequestContractPreflight(): void
+    {
+        $checklist = $this->sample18FastContractChecklist();
+        $submitContract = $checklist['generated_submit_request_contract'] ?? [];
+        self::assertIsArray($submitContract);
+        self::assertFalse($submitContract['generated_route_added'] ?? true);
+        self::assertFalse($submitContract['mutation_enabled'] ?? true);
+
+        $timestamp = (string) ($submitContract['timestamp_fixture'] ?? '');
+        self::assertNotSame('', $timestamp);
+
+        $contracts = app_lab_sample18_task_board_generated_submit_contracts();
+        $operations = $submitContract['operations'] ?? [];
+        self::assertIsArray($operations);
+        self::assertSame(['create_task_card', 'update_task_card', 'complete_task_card'], array_keys($operations));
+
+        $inventoryOperations = $checklist['action_input_mapping_inventory']['operations'] ?? [];
+        self::assertIsArray($inventoryOperations);
+        $inventoryByKey = [];
+        foreach ($inventoryOperations as $operation) {
+            self::assertIsArray($operation);
+            $inventoryByKey[(string) ($operation['operation_key'] ?? '')] = $operation;
+        }
+
+        foreach ($operations as $operationKey => $expectation) {
+            self::assertIsArray($expectation);
+            self::assertArrayHasKey($operationKey, $contracts);
+            self::assertSame($expectation['curated_route_action'] ?? '', $contracts[$operationKey]['curated_route_action'] ?? '');
+            self::assertSame($expectation['db_access_function'] ?? '', $contracts[$operationKey]['db_access_function'] ?? '');
+            self::assertSame(
+                $inventoryByKey[$operationKey]['curated_route_action'] ?? '',
+                $contracts[$operationKey]['curated_route_action'] ?? '',
+            );
+            self::assertSame(
+                $inventoryByKey[$operationKey]['db_access_function'] ?? '',
+                $contracts[$operationKey]['db_access_function'] ?? '',
+            );
+
+            $valid = app_lab_sample18_task_board_normalize_generated_submit_request(
+                (string) $operationKey,
+                is_array($expectation['valid_input'] ?? null) ? $expectation['valid_input'] : [],
+                $timestamp,
+            );
+            self::assertTrue($valid['ok'], (string) $operationKey);
+            self::assertSame('', $valid['failure_code']);
+            self::assertSame($expectation['expected_payload'] ?? [], $valid['payload']);
+            self::assertSame($expectation['ignored_input_fields'] ?? [], $valid['ignored_input_fields']);
+
+            $invalid = app_lab_sample18_task_board_normalize_generated_submit_request(
+                (string) $operationKey,
+                is_array($expectation['invalid_input'] ?? null) ? $expectation['invalid_input'] : [],
+                $timestamp,
+            );
+            self::assertFalse($invalid['ok'], (string) $operationKey);
+            self::assertSame('validation_error', $invalid['failure_code']);
+            self::assertSame($expectation['expected_errors'] ?? [], $invalid['errors']);
+        }
+
+        $unknown = app_lab_sample18_task_board_normalize_generated_submit_request(
+            'delete_task_card',
+            ['id' => '1801'],
+            $timestamp,
+        );
+        self::assertFalse($unknown['ok']);
+        self::assertSame('unknown_operation', $unknown['failure_code']);
+        self::assertSame(['operation.unknown'], $unknown['errors']);
     }
 
     public function testMiniTaskBoardDemoReferenceOutputs(): void
