@@ -59,6 +59,14 @@ function app_no_code_mtool_dogfooding_probe_manifest(): array
                             'csrf_required' => true,
                             'audit_event' => 'mtool.source_output.artifact_review_requested',
                             'adapter_handoff' => 'source_output_artifact_review',
+                            'route_boundary' => [
+                                'method' => 'POST',
+                                'path' => '/projects/{project_key}/source-outputs/{source_output_key}/operations/review-source-output-artifact',
+                                'response_shape' => 'html_redirect',
+                                'auth_guard' => 'mtool_operator_admin',
+                                'idempotency' => 'duplicate_safe',
+                                'failure_modes' => ['unavailable', 'unauthorized', 'missing_csrf', 'missing_artifact', 'stale_artifact'],
+                            ],
                             'intent' => 'Open the generated artifact review workflow.',
                             'unavailable_reason' => 'Execution route is not wired yet; policy, CSRF, audit, and review workflow boundaries must be connected first.',
                         ],
@@ -73,6 +81,14 @@ function app_no_code_mtool_dogfooding_probe_manifest(): array
                             'csrf_required' => true,
                             'audit_event' => 'mtool.source_output.publish_requested',
                             'adapter_handoff' => 'source_output_publish_request',
+                            'route_boundary' => [
+                                'method' => 'POST',
+                                'path' => '/projects/{project_key}/source-outputs/{source_output_key}/operations/request-source-output-publish',
+                                'response_shape' => 'html_redirect',
+                                'auth_guard' => 'mtool_operator_admin',
+                                'idempotency' => 'duplicate_safe',
+                                'failure_modes' => ['unavailable', 'unauthorized', 'missing_csrf', 'missing_artifact', 'stale_artifact', 'duplicate_request'],
+                            ],
                             'intent' => 'Prepare an approval request for the current generated artifact.',
                             'unavailable_reason' => 'Publish request execution is deferred until approval transition policy, CSRF, and audit boundaries are wired.',
                         ],
@@ -274,6 +290,7 @@ function app_no_code_mtool_dogfooding_probe_inspection_summary(?array $principal
         ))),
         'custom_operation_unavailable_reasons' => array_column($customOperations, 'unavailable_reason'),
         'custom_operation_adapter_handoffs' => array_column($customOperations, 'adapter_handoff'),
+        'custom_operation_route_boundaries' => array_column($customOperations, 'route_boundary'),
         'extension_slot_types' => array_column(
             is_array($contract['extension_slots'] ?? null) ? $contract['extension_slots'] : [],
             'slot_type',
@@ -302,6 +319,7 @@ function app_no_code_mtool_dogfooding_probe_html_boundary(string $html): array
         'contains_operator_action_panel' => str_contains($html, 'data-extension-slot-action="review_source_output_artifact"'),
         'contains_custom_operation_binding' => str_contains($html, 'data-extension-slot-operation="review_source_output_artifact"'),
         'contains_custom_operation_unavailable_reason' => str_contains($html, 'data-extension-slot-unavailable-reason="review_source_output_artifact"'),
+        'contains_custom_operation_route_boundary' => str_contains($html, 'data-extension-slot-route-boundary="review_source_output_artifact"'),
     ];
 }
 

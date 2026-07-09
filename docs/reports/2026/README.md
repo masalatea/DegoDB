@@ -11,6 +11,22 @@
 
 ## Index
 
+- `2026-0708-custom-operation-route-boundary-lane-closure.md`
+  - #464 custom operation route-boundary metadata lane closure。review artifact / request publish の inventory、metadata、runtime / React bridge carry-through、disabled UI wording、integration coverage を accepted capability として整理。execution は別 lane とし、次は shared dispatch preflight。Push は未実行。Status: `DONE`。
+- `2026-0708-request-publish-route-boundary-metadata-carry-through.md`
+  - #463 `request_source_output_publish` route boundary metadata carry-through。publish request の route boundary を custom operation metadata、runtime action item、React bridge handoff、disabled operator action panel に通す。実行 route / mutation は未追加。Focused PHPUnit と full `make test` 通過。Push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0708-request-publish-route-boundary-inventory.md`
+  - #462 `request_source_output_publish` route boundary inventory。将来の POST-only route、`source_output.publish_request` policy、CSRF、audit event、duplicate-safe approval transition、stale artifact handling、generated HTML / React bridge adapter boundary を定義。実行 route / mutation は未追加。Push は未実行。Status: `DONE`。
+- `2026-0708-custom-operation-disabled-route-boundary-wording.md`
+  - #461 custom operation disabled route-boundary wording。disabled operator action panel に route-boundary readiness を表示し、`data-extension-slot-route-boundary` marker と dogfooding inspection coverage を追加。実行 route / mutation は未追加。Focused PHPUnit と full `make test` 通過。Push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0708-current-plan-history-through-459.md`
+  - #460 current plan history archive split。肥大化していた `docs/current-plans.md` の #459 までの完了済み履歴を、塊の終了日 `2026-0708` の日付付き report として保存し、`docs/current-plans.md` を active index に戻すための履歴 archive。Push は未実行。Status: `ARCHIVED`。
+- `2026-0708-review-artifact-route-boundary-metadata-carry-through.md`
+  - #459 `review_source_output_artifact` route boundary metadata carry-through。route boundary を custom operation metadata、screen/runtime JSON、React bridge handoff、generated TypeScript、dogfooding inspection に通す。実行 route / mutation は未追加。Focused PHPUnit、React bridge build smoke、full `make test` 通過。Push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0708-review-artifact-route-boundary-inventory.md`
+  - #458 `review_source_output_artifact` route boundary inventory。将来の POST-only route、`source_output.review` policy、CSRF、audit event、idempotency、failure handling、generated HTML / React bridge adapter boundary を定義。実行 route / mutation は未追加。Push は未実行。Status: `DONE`。
+- `2026-0708-post-adapter-handoff-custom-operation-replan.md`
+  - #457 custom operation metadata / adapter handoff stack review 後の replan。次 lane として execution ではなく、`review_source_output_artifact` を候補にした policy / auth / CSRF / audit route inventory を選択。Push は未実行。Status: `DONE`。
 - `2026-0708-local-stack-review-after-custom-operation-adapter-handoff.md`
   - #456 custom operation metadata / adapter handoff lane closure 後の local commit stack review。`develop` は `origin/develop` より 23 commits ahead。Mtool dogfooding、configured presentation / custom slots、visible slot renderer、custom operation manifest metadata、unavailable reasons、React bridge handoff、lane closure の意味単位に分かれているため、明示 push 前の squash / history rewrite は推奨しない。Push は未実行。Status: `DONE`。
 - `2026-0708-custom-operation-metadata-adapter-handoff-lane-closure.md`

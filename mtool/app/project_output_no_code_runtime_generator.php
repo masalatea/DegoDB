@@ -293,6 +293,7 @@ function app_project_output_no_code_react_bridge_custom_operation_handoffs(
                 'csrf_required' => (bool) ($operation['csrf_required'] ?? true),
                 'audit_event' => trim((string) ($operation['audit_event'] ?? '')),
                 'adapter_handoff' => trim((string) ($operation['adapter_handoff'] ?? '')),
+                'route_boundary' => is_array($operation['route_boundary'] ?? null) ? $operation['route_boundary'] : [],
                 'screen_keys' => array_values(array_unique($screenKeysByOperation[$operationKey] ?? [])),
             ];
         }
@@ -979,7 +980,17 @@ export type MtoolCustomOperationHandoff = {
   csrf_required: boolean;
   audit_event: string;
   adapter_handoff: string;
+  route_boundary: MtoolCustomOperationRouteBoundary;
   screen_keys: string[];
+};
+
+export type MtoolCustomOperationRouteBoundary = {
+  method: string;
+  path: string;
+  response_shape: string;
+  auth_guard: string;
+  idempotency: string;
+  failure_modes: string[];
 };
 
 export type MtoolRuntimeScreen = {

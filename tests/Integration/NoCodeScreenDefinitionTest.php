@@ -205,10 +205,23 @@ final class NoCodeScreenDefinitionTest extends TestCase
         self::assertSame('review_request', $contract['custom_operations'][0]['category'] ?? '');
         self::assertSame('external_handoff', $contract['custom_operations'][0]['side_effect_class'] ?? '');
         self::assertTrue($contract['custom_operations'][0]['csrf_required'] ?? false);
+        self::assertSame('POST', $contract['custom_operations'][0]['route_boundary']['method'] ?? '');
+        self::assertSame(
+            '/projects/{project_key}/source-outputs/{source_output_key}/operations/review-source-output-artifact',
+            $contract['custom_operations'][0]['route_boundary']['path'] ?? '',
+        );
+        self::assertContains('stale_artifact', $contract['custom_operations'][0]['route_boundary']['failure_modes'] ?? []);
         self::assertStringContainsString(
             'Execution route is not wired yet',
             $contract['custom_operations'][0]['unavailable_reason'] ?? '',
         );
+        self::assertSame('POST', $contract['custom_operations'][1]['route_boundary']['method'] ?? '');
+        self::assertSame(
+            '/projects/{project_key}/source-outputs/{source_output_key}/operations/request-source-output-publish',
+            $contract['custom_operations'][1]['route_boundary']['path'] ?? '',
+        );
+        self::assertSame('mtool_operator_admin', $contract['custom_operations'][1]['route_boundary']['auth_guard'] ?? '');
+        self::assertContains('duplicate_request', $contract['custom_operations'][1]['route_boundary']['failure_modes'] ?? []);
         self::assertSame(
             ['related_settings_panel', 'artifact_status_panel'],
             array_column($contract['screens'][0]['extension_slots'] ?? [], 'slot_type'),
@@ -238,6 +251,13 @@ final class NoCodeScreenDefinitionTest extends TestCase
         self::assertSame('source_output_publish_request', $handoffsByKey['request_source_output_publish']['adapter_handoff'] ?? '');
         self::assertSame('source_output_artifact_review', $handoffsByKey['review_source_output_artifact']['adapter_handoff'] ?? '');
         self::assertSame('deferred', $handoffsByKey['review_source_output_artifact']['availability'] ?? '');
+        self::assertSame('POST', $handoffsByKey['review_source_output_artifact']['route_boundary']['method'] ?? '');
+        self::assertSame('mtool_operator_admin', $handoffsByKey['review_source_output_artifact']['route_boundary']['auth_guard'] ?? '');
+        self::assertSame('POST', $handoffsByKey['request_source_output_publish']['route_boundary']['method'] ?? '');
+        self::assertSame(
+            '/projects/{project_key}/source-outputs/{source_output_key}/operations/request-source-output-publish',
+            $handoffsByKey['request_source_output_publish']['route_boundary']['path'] ?? '',
+        );
         self::assertStringContainsString(
             'Execution route is not wired yet',
             $handoffsByKey['review_source_output_artifact']['unavailable_reason'] ?? '',
@@ -300,6 +320,22 @@ final class NoCodeScreenDefinitionTest extends TestCase
             array_column($runtimePreview['screens'][1]['extension_slots'][2]['action_items'] ?? [], 'operation_key'),
         );
         self::assertSame(
+            'POST',
+            $runtimePreview['screens'][1]['extension_slots'][2]['action_items'][0]['route_boundary']['method'] ?? '',
+        );
+        self::assertSame(
+            'mtool_operator_admin',
+            $runtimePreview['screens'][1]['extension_slots'][2]['action_items'][0]['route_boundary']['auth_guard'] ?? '',
+        );
+        self::assertSame(
+            'POST',
+            $runtimePreview['screens'][1]['extension_slots'][2]['action_items'][1]['route_boundary']['method'] ?? '',
+        );
+        self::assertSame(
+            'duplicate_safe',
+            $runtimePreview['screens'][1]['extension_slots'][2]['action_items'][1]['route_boundary']['idempotency'] ?? '',
+        );
+        self::assertSame(
             ['review_source_output_artifact', 'request_source_output_publish'],
             array_column($runtimePreview['screens'][1]['custom_operations'] ?? [], 'operation_key'),
         );
@@ -320,6 +356,10 @@ final class NoCodeScreenDefinitionTest extends TestCase
         self::assertStringContainsString('data-extension-slot-operation="review_source_output_artifact"', $files['runtime-preview.html']);
         self::assertStringContainsString('data-extension-slot-operation-key="request_source_output_publish"', $files['runtime-preview.html']);
         self::assertStringContainsString('data-extension-slot-unavailable-reason="review_source_output_artifact"', $files['runtime-preview.html']);
+        self::assertStringContainsString('data-extension-slot-route-boundary="review_source_output_artifact"', $files['runtime-preview.html']);
+        self::assertStringContainsString('data-extension-slot-route-boundary="request_source_output_publish"', $files['runtime-preview.html']);
+        self::assertStringContainsString('request-source-output-publish', $files['runtime-preview.html']);
+        self::assertStringContainsString('Route boundary declared, execution still disabled', $files['runtime-preview.html']);
         self::assertStringContainsString('Execution route is not wired yet', $files['runtime-preview.html']);
         self::assertStringContainsString('Request Publish', $files['runtime-preview.html']);
         self::assertStringContainsString('Mtool Source Output Review List', $files['runtime-preview.html']);
@@ -391,6 +431,7 @@ final class NoCodeScreenDefinitionTest extends TestCase
         self::assertTrue($summary['html_boundary']['contains_operator_action_panel'] ?? false);
         self::assertTrue($summary['html_boundary']['contains_custom_operation_binding'] ?? false);
         self::assertTrue($summary['html_boundary']['contains_custom_operation_unavailable_reason'] ?? false);
+        self::assertTrue($summary['html_boundary']['contains_custom_operation_route_boundary'] ?? false);
     }
 
     /**

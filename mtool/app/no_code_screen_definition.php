@@ -165,9 +165,9 @@ function app_no_code_screen_definition_contract_definition(
     $actions = app_no_code_screen_definition_actions($contract, $operations, $principal);
     $storageHint = app_no_code_screen_definition_storage_hint($contract);
     $syncStatusDisplay = (bool) ($storageHint['sync_status_display'] ?? false);
-    $presentationProfile = app_no_code_screen_definition_presentation_profile($contract, $fields);
-    $extensionSlots = app_no_code_screen_definition_extension_slots($contract);
     $customOperations = app_no_code_screen_definition_custom_operations($contract);
+    $presentationProfile = app_no_code_screen_definition_presentation_profile($contract, $fields);
+    $extensionSlots = app_no_code_screen_definition_extension_slots($contract, $customOperations);
 
     return [
         'contract_key' => $contractKey,
@@ -322,10 +322,22 @@ function app_no_code_screen_definition_normalize_field_groups(mixed $value, arra
  *     source:string
  * }>
  */
-function app_no_code_screen_definition_extension_slots(array $contract): array
+function app_no_code_screen_definition_extension_slots(array $contract, array $customOperations = []): array
 {
     $metadata = is_array($contract['contract_metadata'] ?? null) ? $contract['contract_metadata'] : [];
     $slots = is_array($metadata['extension_slots'] ?? null) ? $metadata['extension_slots'] : [];
+    $customOperationsByKey = [];
+    foreach ($customOperations as $operation) {
+        if (!is_array($operation)) {
+            continue;
+        }
+
+        $operationKey = trim((string) ($operation['operation_key'] ?? ''));
+        if ($operationKey !== '') {
+            $customOperationsByKey[$operationKey] = $operation;
+        }
+    }
+
     $normalized = [];
     foreach ($slots as $slot) {
         if (!is_array($slot)) {
@@ -348,7 +360,7 @@ function app_no_code_screen_definition_extension_slots(array $contract): array
             'target' => trim((string) ($slot['target'] ?? '')),
             'links' => app_no_code_screen_definition_normalize_extension_slot_links($slot['links'] ?? []),
             'status_items' => app_no_code_screen_definition_normalize_extension_slot_status_items($slot['status_items'] ?? []),
-            'action_items' => app_no_code_screen_definition_normalize_extension_slot_action_items($slot['action_items'] ?? []),
+            'action_items' => app_no_code_screen_definition_normalize_extension_slot_action_items($slot['action_items'] ?? [], $customOperationsByKey),
             'screen_types' => $screenTypes,
             'source' => 'extension_slots:explicit',
         ];
@@ -452,9 +464,10 @@ function app_no_code_screen_definition_normalize_extension_slot_status_state(str
 
 /**
  * @param mixed $items
- * @return list<array{label:string,action_key:string,operation_key:string,intent:string,state:string,unavailable_reason:string}>
+ * @param array<string,array<string,mixed>> $customOperationsByKey
+ * @return list<array{label:string,action_key:string,operation_key:string,intent:string,state:string,unavailable_reason:string,route_boundary:array{method:string,path:string,response_shape:string,auth_guard:string,idempotency:string,failure_modes:list<string>}}>
  */
-function app_no_code_screen_definition_normalize_extension_slot_action_items(mixed $items): array
+function app_no_code_screen_definition_normalize_extension_slot_action_items(mixed $items, array $customOperationsByKey = []): array
 {
     if (!is_array($items)) {
         return [];
@@ -473,13 +486,20 @@ function app_no_code_screen_definition_normalize_extension_slot_action_items(mix
             continue;
         }
 
+        $effectiveOperationKey = $operationKey !== '' ? $operationKey : $actionKey;
+        $operation = $customOperationsByKey[$effectiveOperationKey] ?? [];
+        $routeBoundary = is_array($operation)
+            ? app_no_code_screen_definition_custom_operation_route_boundary($operation['route_boundary'] ?? null)
+            : app_no_code_screen_definition_custom_operation_route_boundary(null);
+
         $normalized[] = [
             'label' => $label,
             'action_key' => $actionKey,
-            'operation_key' => $operationKey !== '' ? $operationKey : $actionKey,
+            'operation_key' => $effectiveOperationKey,
             'intent' => trim((string) ($item['intent'] ?? '')),
             'state' => app_no_code_screen_definition_normalize_extension_slot_action_state((string) ($item['state'] ?? 'deferred')),
             'unavailable_reason' => trim((string) ($item['unavailable_reason'] ?? '')),
+            'route_boundary' => $routeBoundary,
         ];
     }
 
@@ -505,6 +525,7 @@ function app_no_code_screen_definition_normalize_extension_slot_action_state(str
  *     csrf_required:bool,
  *     audit_event:string,
  *     adapter_handoff:string,
+ *     route_boundary:array{method:string,path:string,response_shape:string,auth_guard:string,idempotency:string,failure_modes:list<string>},
  *     intent:string,
  *     unavailable_reason:string
  * }>
@@ -536,12 +557,48 @@ function app_no_code_screen_definition_custom_operations(array $contract): array
             'csrf_required' => (bool) ($operation['csrf_required'] ?? true),
             'audit_event' => trim((string) ($operation['audit_event'] ?? '')),
             'adapter_handoff' => trim((string) ($operation['adapter_handoff'] ?? '')),
+            'route_boundary' => app_no_code_screen_definition_custom_operation_route_boundary($operation['route_boundary'] ?? null),
             'intent' => trim((string) ($operation['intent'] ?? '')),
             'unavailable_reason' => trim((string) ($operation['unavailable_reason'] ?? '')),
         ];
     }
 
     return $normalized;
+}
+
+/**
+ * @param mixed $boundary
+ * @return array{method:string,path:string,response_shape:string,auth_guard:string,idempotency:string,failure_modes:list<string>}
+ */
+function app_no_code_screen_definition_custom_operation_route_boundary($boundary): array
+{
+    if (!is_array($boundary)) {
+        return [
+            'method' => '',
+            'path' => '',
+            'response_shape' => '',
+            'auth_guard' => '',
+            'idempotency' => '',
+            'failure_modes' => [],
+        ];
+    }
+
+    $failureModes = [];
+    foreach (($boundary['failure_modes'] ?? []) as $mode) {
+        $normalized = strtolower(trim((string) $mode));
+        if ($normalized !== '') {
+            $failureModes[] = $normalized;
+        }
+    }
+
+    return [
+        'method' => strtoupper(trim((string) ($boundary['method'] ?? ''))),
+        'path' => trim((string) ($boundary['path'] ?? '')),
+        'response_shape' => trim((string) ($boundary['response_shape'] ?? '')),
+        'auth_guard' => trim((string) ($boundary['auth_guard'] ?? '')),
+        'idempotency' => trim((string) ($boundary['idempotency'] ?? '')),
+        'failure_modes' => array_values(array_unique($failureModes)),
+    ];
 }
 
 function app_no_code_screen_definition_normalize_custom_operation_category(string $category): string
