@@ -15,6 +15,9 @@ final class Sample18MiniTaskBoardDemoTest extends TestCase
             $root . '/sample/tutorials/sample18-mini-task-board-demo/seed/900_020_sample18_table_seed.sql',
         );
         $routeSource = (string) file_get_contents($root . '/mtool/app/lab_sample18_task_board_page.php');
+        $dbAccessSeed = (string) file_get_contents(
+            $root . '/sample/tutorials/sample18-mini-task-board-demo/seed/900_025_sample18_db_access_seed.sql',
+        );
 
         self::assertSame('sample18-no-code-ui-golden-v1', $fixture['fixture_version'] ?? '');
         self::assertSame('SAMPLE18', $fixture['project_key'] ?? '');
@@ -61,6 +64,28 @@ final class Sample18MiniTaskBoardDemoTest extends TestCase
                 ? "action === '" . $action . "'"
                 : 'value="' . $action . '"';
             self::assertStringContainsString($needle, $routeSource);
+        }
+        $actionInputInventory = $checklist['action_input_mapping_inventory'] ?? [];
+        self::assertFalse($actionInputInventory['generated_button_execution'] ?? true);
+        self::assertFalse($actionInputInventory['route_replacement'] ?? true);
+        foreach (($actionInputInventory['operations'] ?? []) as $operation) {
+            self::assertIsArray($operation);
+            $routeAction = (string) ($operation['curated_route_action'] ?? '');
+            $routeNeedle = in_array($routeAction, ['create', 'update'], true)
+                ? "action === '" . $routeAction . "'"
+                : 'value="' . $routeAction . '"';
+            self::assertStringContainsString($routeNeedle, $routeSource);
+            foreach (array_merge(
+                $operation['key_fields'] ?? [],
+                $operation['required_client_fields'] ?? [],
+                $operation['optional_client_fields'] ?? [],
+            ) as $fieldName) {
+                self::assertStringContainsString('name="' . $fieldName . '"', $routeSource);
+            }
+            $dbAccessFunction = (string) ($operation['db_access_function'] ?? '');
+            if ($dbAccessFunction !== '') {
+                self::assertStringContainsString("'" . $dbAccessFunction . "'", $dbAccessSeed);
+            }
         }
         self::assertSame(
             $checklist['html_dom_contract']['disabled_extension_action_keys'] ?? [],

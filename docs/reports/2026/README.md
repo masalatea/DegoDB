@@ -11,6 +11,8 @@
 
 ## Index
 
+- `2026-0710-sample18-safe-action-input-mapping-inventory.md`
+  - #561 sample18 safe action-input mapping inventory。generated mutation を有効化せず、sample18 の create/update/complete/reopen/delete について curated route action、DBAccess binding、key/input/fixed/server-managed field 境界を checklist と PHPUnit で固定。Status: `DONE`。
 - `2026-0710-sample18-public-runtime-status-filter-dom-preflight.md`
   - #560 sample18 public-runtime status filter DOM preflight。sample18 public NO-CODE-RUNTIME current page で runtime-data binding 後に generated `status` filter DOM controls が表示されることを、専用 Make target と DOM-only browser smoke で確認。Status: `DONE`。
 - `2026-0710-sample18-post-filter-no-code-increment-replan.md`
