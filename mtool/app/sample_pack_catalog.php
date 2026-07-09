@@ -42,6 +42,7 @@ function app_sample_pack_category_map(): array
             'sample29-no-code-support-case-demo',
             'sample30-no-code-app-local-sync-demo',
             'sample31-no-code-inventory-request-demo',
+            'sample32-no-code-ui-test-lab',
         ],
         'internal-patterns' => [
             'pattern01-default-property-split',
@@ -129,6 +130,7 @@ function app_sample_pack_runtime_pack_names(): array
         'sample29-no-code-support-case-demo',
         'sample30-no-code-app-local-sync-demo',
         'sample31-no-code-inventory-request-demo',
+        'sample32-no-code-ui-test-lab',
         'sample51-runtime-sql-server',
         'sample53-runtime-whiteboard',
         'sample56-runtime-misc-proxy',
@@ -172,6 +174,7 @@ function app_sample_pack_project_key_map(): array
         'sample29-no-code-support-case-demo' => 'SAMPLE29',
         'sample30-no-code-app-local-sync-demo' => 'SAMPLE30',
         'sample31-no-code-inventory-request-demo' => 'SAMPLE31',
+        'sample32-no-code-ui-test-lab' => 'SAMPLE32',
         'sample51-runtime-sql-server' => 'SAMPLE2',
         'sample53-runtime-whiteboard' => 'SAMPLE4',
         'sample56-runtime-misc-proxy' => 'SAMPLE8',

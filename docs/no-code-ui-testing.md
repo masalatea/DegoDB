@@ -35,7 +35,7 @@ The intended roadmap order is:
 
 ## Dedicated No-Code Test Sample
 
-The first new sample for this lane should be a no-code-specific test lab rather than a converted existing sample. It should start small:
+The first new sample for this lane is `sample32-no-code-ui-test-lab`, a no-code-specific test lab rather than a converted existing sample. It starts small:
 
 - one list screen;
 - one detail screen;
@@ -47,7 +47,7 @@ The first new sample for this lane should be a no-code-specific test lab rather 
 - generated `runtime-preview.html`;
 - fast PHPUnit JSON and DOM contract assertions.
 
-The sample can then grow fixture-by-fixture: required fields, readonly fields, enum/select fields, search/filter/sort state, action-intent draft, route-boundary metadata, unavailable reasons, and audit labels.
+The sample can now grow fixture-by-fixture: required fields, readonly fields, enum/select fields, search/filter/sort state, action-intent draft, route-boundary metadata, unavailable reasons, and audit labels.
 
 ## Existing Sample Conversion
 

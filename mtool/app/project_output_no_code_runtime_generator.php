@@ -1597,6 +1597,34 @@ function app_project_output_no_code_runtime_preview_data(string $projectKey, str
         ];
     }
 
+    if ($projectKey === 'SAMPLE32' && $contractKey === 'no_code_lab_card') {
+        $rows = [
+            [
+                'id' => 3201,
+                'title' => 'Fixture list card',
+                'status' => 'draft',
+                'owner_name' => 'No Code Lab',
+                'priority' => 10,
+                'due_on' => '2026-07-20',
+                'notes' => 'First fixture row for fast no-code UI contract checks.',
+            ],
+            [
+                'id' => 3202,
+                'title' => 'Fixture detail card',
+                'status' => 'ready',
+                'owner_name' => 'Contract Runner',
+                'priority' => 20,
+                'due_on' => '2026-07-21',
+                'notes' => 'Second fixture row used by detail and form preview assertions.',
+            ],
+        ];
+
+        return [
+            'rows' => $rows,
+            'current_item' => $rows[0],
+        ];
+    }
+
     return [
         'rows' => [],
         'current_item' => [],

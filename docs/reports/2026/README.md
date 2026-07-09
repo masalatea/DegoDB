@@ -11,6 +11,8 @@
 
 ## Index
 
+- `2026-0709-dedicated-no-code-ui-test-lab-sample.md`
+  - #553 dedicated no-code UI test lab sample。`sample32-no-code-ui-test-lab` を追加し、`SAMPLE32/no_code_lab_card`、`NO-CODE-RUNTIME`、disabled managed action fixture、固定 preview rows、fast JSON/DOM contract test を導入。Status: `DONE`。
 - `2026-0709-no-code-ui-contract-test-harness-first-slice.md`
   - #552 no-code UI contract test harness first slice。`tests/Support/NoCodeUiContractAssertions.php` を追加し、sample18 generated `runtime-preview.html` を PHP `DOMDocument` / `DOMXPath` で検査する fast contract を導入。Status: `DONE`。
 - `2026-0709-first-sample-ui-conversion-closure.md`
