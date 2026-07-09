@@ -11,6 +11,10 @@
 
 ## Index
 
+- `2026-0709-apply-local-no-code-stack-cleanup.md`
+  - #536 local no-code stack cleanup 実行。103 commits ahead の local stack を 12 grouped commits に整理し、backup tree との差分なしを確認。focused PHPUnit と `make test` 通過。Push は未実行。Status: `DONE`。
+- `2026-0709-long-term-no-code-roadmap.md`
+  - 長期 No Code roadmap。sample UI の No Code 化、Mtool 自身の No Code 化、AI による構造正規化、資料からの即時 No Code UI 生成までの段階を記録。Status: `ROADMAP`。
 - `2026-0709-local-no-code-stack-cleanup-plan-before-availability.md`
   - #535 availability 前の local no-code stack cleanup plan。`refs/backup/no-code-stack-before-cleanup-20260709` を作成し、102 commit unpushed stack の squash groups を提案。history rewrite / push は未実行。Status: `PLAN_READY`。
 - `2026-0709-no-push-stack-checkpoint-after-in-review-duplicate-reuse.md`
