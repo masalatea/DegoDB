@@ -11,6 +11,8 @@
 
 ## Index
 
+- `2026-0709-detailed-no-code-availability-plan.md`
+  - #537 no-code availability 詳細計画。availability enablement を surface inventory / gate matrix / read model / UI preview / first slice / sample UI replan に分解し、L1 sample UI No Code 化への橋渡しと長期 roadmap gates も補強。Status: `DONE`。
 - `2026-0709-apply-local-no-code-stack-cleanup.md`
   - #536 local no-code stack cleanup 実行。103 commits ahead の local stack を 12 grouped commits に整理し、backup tree との差分なしを確認。focused PHPUnit と `make test` 通過。Push は未実行。Status: `DONE`。
 - `2026-0709-long-term-no-code-roadmap.md`

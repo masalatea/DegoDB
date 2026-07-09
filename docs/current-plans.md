@@ -13,7 +13,7 @@ When someone asks for "the plan list", answer from this section first. / 「計�
 
 ### Main Plan / 主計画
 
-Current main status: #536 applies the local no-code stack cleanup before availability. The unpushed stack was reduced from 103 local commits to 12 grouped commits, the cleaned tree matches `refs/backup/no-code-stack-with-cleanup-plan-20260709`, availability and generated button execution remain parked, `develop` is 13 commits ahead of `origin/develop`, and push has not been performed for #432-#536. / 現在の主計画ステータス: #536 で availability 前の local no-code stack cleanup を実行しました。unpushed stack は 103 local commits から 12 grouped commits に整理済みで、cleaned tree は `refs/backup/no-code-stack-with-cleanup-plan-20260709` と一致します。availability と generated button execution は parked のまま、`develop` は `origin/develop` より 13 commits ahead、#432-#536 は push していません。
+Current main status: #537 expands the no-code availability plan into concrete gates before any generated button execution. Availability and generated button execution remain parked, `develop` is 14 commits ahead of `origin/develop`, and push has not been performed for #432-#537. / 現在の主計画ステータス: #537 で generated button execution 前の no-code availability plan を具体的な gate に分解しました。availability と generated button execution は parked のまま、`develop` は `origin/develop` より 14 commits ahead、#432-#537 は push していません。
 
 | Order | Work unit / 作業の塊 | Commit unit / コミット単位 | Status | Rough effort / 目安 |
 | --- | --- | --- | --- | --- |
@@ -95,7 +95,20 @@ Current main status: #536 applies the local no-code stack cleanup before availab
 | 534 | No-push stack checkpoint after in-review duplicate reuse / in-review duplicate reuse 後の no-push stack checkpoint | Stop the repeated non-executable hardening loop and promote local commit stack cleanup planning before the next availability lane | `DONE` | 0.25 day / 0.25 日 |
 | 535 | Local no-code stack cleanup plan before availability / availability 前の local no-code stack cleanup plan | Review the 100+ unpushed commits, create a backup ref, and propose squash groups before any history rewrite or push | `DONE` | 0.5 day / 半日 |
 | 536 | Apply local no-code stack cleanup / local no-code stack cleanup 実行 | Apply the approved local squash groups on top of the backup ref, then rerun verification before any availability lane or push decision | `DONE` | 0.5 - 1 day / 半日 - 1 日 |
-| 537 | Review workflow availability enablement preflight / review workflow availability enablement preflight | Define the narrow availability enablement gate after the cleaned no-code stack, without enabling generated buttons yet | `ACTIVE_NEXT` | 0.5 day / 半日 |
+| 537 | Detailed no-code availability plan / no-code availability 詳細計画 | Break availability work into explicit gates before any generated button execution or broader sample UI conversion | `DONE` | 0.25 day / 0.25 日 |
+| 538 | Review workflow availability surface inventory / review workflow availability surface inventory | Inventory current review action surfaces, metadata, route boundaries, guard outcomes, disabled reasons, and test gaps after cleanup | `ACTIVE_NEXT` | 0.5 day / 半日 |
+| 539 | Review workflow availability gate matrix / review workflow availability gate matrix | Define the exact allowed/blocked/deferred/stale/missing-CSRF/unauthorized availability states and required UI/audit behavior | `TODO_AFTER_REPLAN` | 0.5 day / 半日 |
+| 540 | Metadata-only availability read model / metadata-only availability read model | Add or refine a read model that exposes availability and unavailable reasons without enabling generated button execution | `TODO_AFTER_REPLAN` | 0.5 - 1 day / 半日 - 1 日 |
+| 541 | Availability UI preview contract / availability UI preview contract | Render the availability state and next action explanation in no-code surfaces while keeping mutation buttons disabled | `TODO_AFTER_REPLAN` | 0.5 day / 半日 |
+| 542 | Review request availability first slice / review request availability first slice | Enable the narrowest review-request availability path only after the gate matrix and read model are covered; generated buttons stay separately gated | `TODO_AFTER_REPLAN` | 1 day / 1 日 |
+| 543 | Post-availability sample UI replan / availability 後の sample UI replan | Choose the first sample UI conversion target and define the no-code gaps to measure before converting more samples | `TODO_AFTER_REPLAN` | 0.5 day / 半日 |
+| 544 | L1 bridge sample UI candidate inventory / L1 bridge sample UI candidate inventory | Compare sample UIs by domain shape, data access, form complexity, actions, browser smoke coverage, and expected no-code gaps | `PARKED_BRIDGE_AFTER_AVAILABILITY` | 0.5 day / 半日 |
+| 545 | L1 bridge no-code capability checklist / L1 bridge no-code capability checklist | Define the minimum screen/action/schema/navigation/validation/audit features needed before the first sample UI conversion can start | `PARKED_BRIDGE_AFTER_AVAILABILITY` | 0.5 day / 半日 |
+| 546 | L1 bridge golden sample fixture / L1 bridge golden sample fixture | Freeze one small representative sample route with stable data and expected screenshots so generated no-code output has a clear target | `PARKED_BRIDGE_AFTER_AVAILABILITY` | 0.5 - 1 day / 半日 - 1 日 |
+| 547 | First sample UI metadata extraction spike / first sample UI metadata extraction spike | Extract readonly screen metadata from the chosen sample without replacing its existing hand-coded UI | `PARKED_BRIDGE_AFTER_AVAILABILITY` | 1 day / 1 日 |
+| 548 | First sample UI readonly no-code preview / first sample UI readonly no-code preview | Render the chosen sample through the no-code runtime in readonly mode and compare it against the golden sample fixture | `PARKED_BRIDGE_AFTER_AVAILABILITY` | 1 day / 1 日 |
+| 549 | First sample UI action dry-run contract / first sample UI action dry-run contract | Describe sample actions as no-code operations with route boundaries and disabled/dry-run behavior before any mutation is enabled | `PARKED_BRIDGE_AFTER_AVAILABILITY` | 0.5 - 1 day / 半日 - 1 日 |
+| 550 | First sample UI conversion closure / first sample UI conversion closure | Decide whether the first sample is credible enough to count as L1 entry, then record remaining no-code gaps for the next sample | `PARKED_BRIDGE_AFTER_AVAILABILITY` | 0.5 day / 半日 |
 
 ### Long-Term No-Code Roadmap / 長期 No-Code ロードマップ
 
@@ -106,6 +119,28 @@ Current main status: #536 applies the local no-code stack cleanup before availab
 | L3 | AI structural normalization / AI による構造正規化 | Let AI normalize messy materials into stable structures first, then move toward relationship and ontology-like analysis. / まず AI が資料や data の構造を正規化し、次に関連性や ontology 的解析へ進める。 | `ROADMAP_AFTER_MTOOL_SELF_NO_CODE` |
 | L4 | Instant no-code generation from materials / 資料から即時 No Code 生成 | Given materials with little user explanation, AI analyzes, normalizes, answers comprehensively, and generates usable no-code UI. / ユーザー説明が少なくても資料から AI が解析・正規化・網羅回答し、使える No Code UI を生成する。 | `LONG_TERM_GOAL` |
 
+### Bridge to L1 Sample UI No-Code / L1 sample UI No Code 化への橋渡し
+
+| Step | Purpose / 目的 | Exit condition / 完了条件 |
+| --- | --- | --- |
+| B1 | Finish review workflow availability in metadata-first form. / review workflow availability を metadata-first で完了する。 | Availability state, unavailable reason, route boundary, guard outcome, and UI explanation are visible without surprising mutation. |
+| B2 | Pick the first sample with measurable boundaries. / 境界を測れる最初の sample を選ぶ。 | Candidate comparison names one sample, why it is representative, and what is intentionally out of scope. |
+| B3 | Define the no-code capability checklist. / No Code 化に必要な capability checklist を定義する。 | Screen layout, list/detail/form fields, navigation, validation, custom operations, audit, and browser smoke expectations are explicit. |
+| B4 | Create a golden sample fixture. / golden sample fixture を作る。 | Existing hand-coded sample behavior has stable data, expected DOM/screenshot, and smoke coverage. |
+| B5 | Generate readonly no-code metadata. / readonly no-code metadata を生成する。 | The no-code runtime can render the selected sample without replacing the existing route. |
+| B6 | Add action dry-run metadata. / action dry-run metadata を追加する。 | Mutating actions are described with route boundaries and disabled/dry-run UI, but remain non-executable. |
+| B7 | Close the first conversion slice. / first conversion slice を close する。 | The selected sample either qualifies as the first L1 entry or yields a concrete gap list before the next sample. |
+
+### Long-Term Roadmap Gates / 長期ロードマップの関門
+
+| Gate | Must be true before moving on / 次へ進む条件 | Evidence / 確認方法 |
+| --- | --- | --- |
+| G-L1 | At least one representative sample UI is generated, inspected, and operated through no-code metadata rather than hand-coded UI assumptions. / 代表 sample UI を少なくとも 1 つ、hand-coded UI 前提ではなく no-code metadata で生成・確認・操作できる。 | Sample smoke test, UI inspection report, and no-code gap list. |
+| G-L2 | Multiple sample UIs expose a reusable no-code screen/action/schema pattern. / 複数 sample UI から再利用可能な no-code screen / action / schema pattern が見える。 | Shared metadata contract and per-sample regression tests. |
+| G-L3 | Mtool self no-code starts with one contained admin/lab workflow, not a broad rewrite. / Mtool 自身の No Code 化は広範 rewrite ではなく、閉じた admin/lab workflow から始める。 | Dogfooding probe report and rollback plan. |
+| G-L4 | AI structural normalization can produce reviewable schema proposals before mutation. / AI 構造正規化が mutation 前に review 可能な schema proposal を出せる。 | Proposal artifact, diff/review UI, and no automatic mutation by default. |
+| G-L5 | Material-to-UI generation can answer questions from normalized structure and render a no-code UI from the same source. / 資料から正規化構造を作り、その構造から質問応答と No Code UI 生成の両方ができる。 | End-to-end demo with source material, normalized structure, Q&A, and generated UI. |
+
 ### Current Boundary / 現在の境界
 
 - Custom operation metadata can describe identity, availability, unavailable reason, adapter handoff, policy, CSRF, audit, and route-boundary expectations. / custom operation metadata は identity、availability、unavailable reason、adapter handoff、policy、CSRF、audit、route-boundary expectations を記述できます。
@@ -114,7 +149,7 @@ Current main status: #536 applies the local no-code stack cleanup before availab
 - A route-local helper now persists or reuses review requests for accepted-plan results, and exposes `recorded` / `duplicate` / `failed` / `skipped` status to the result page. / route-local helper は accepted-plan result の review request を persist または reuse し、result page に `recorded` / `duplicate` / `failed` / `skipped` status を公開します。
 - Generated HTML and React bridge handoffs remain metadata-only. / generated HTML と React bridge handoff は metadata-only のままです。
 - Generated operator action buttons remain disabled until a separate implementation lane explicitly enables execution. / generated operator action button は、別の implementation lane が明示的に execution を有効化するまで disabled のままです。
-- Availability enablement is parked while the current 13-commit local stack remains unpushed. / 現在の 13 commit local stack が unpushed の間、availability enablement は parked です。
+- Availability enablement is parked while the current 14-commit local stack remains unpushed. / 現在の 14 commit local stack が unpushed の間、availability enablement は parked です。
 - Local history cleanup has been applied; pre-cleanup refs are `refs/backup/no-code-stack-before-cleanup-20260709` and `refs/backup/no-code-stack-with-cleanup-plan-20260709`. / local history cleanup は実行済みです。cleanup 前 ref は `refs/backup/no-code-stack-before-cleanup-20260709` と `refs/backup/no-code-stack-with-cleanup-plan-20260709` です。
 - Long-term no-code direction is sample UI conversion, Mtool self no-code dogfooding, AI structural normalization, and instant no-code UI generation from materials. / 長期 No Code 方向性は sample UI 変換、Mtool 自身の No Code dogfooding、AI による構造正規化、資料からの即時 No Code UI 生成です。
 - The current push decision is to hold locally; no push is performed without a new explicit user request. / 現在の push 判断は local hold です。新しい明示的な user request がない限り push は行いません。
@@ -442,6 +477,8 @@ Latest verification from #536:
 - `make test`: `OK, but incomplete, skipped, or risky tests! Tests: 376, Assertions: 11615, Skipped: 1.`
 - `git diff --check`
 
+For #537, docs-only verification is `git diff --check`.
+
 ## Auxiliary Later Review / 補助・後日検討
 
 These are useful candidates, but they are not part of the main plan unless a fresh priority decision promotes them. / これらは有用な候補ですが、新しい優先判断で昇格するまでは主計画には含めません。
@@ -461,6 +498,7 @@ Completed detailed history was moved out of this active list. / 完了済みの�
 
 | Completed scope / 完了済み範囲 | Historical source / 履歴ソース |
 | --- | --- |
+| Detailed no-code availability plan / no-code availability 詳細計画 | [2026-0709 Detailed No-Code Availability Plan](reports/2026/2026-0709-detailed-no-code-availability-plan.md) |
 | Apply local no-code stack cleanup / local no-code stack cleanup 実行 | [2026-0709 Apply Local No-Code Stack Cleanup](reports/2026/2026-0709-apply-local-no-code-stack-cleanup.md) |
 | Long-term no-code roadmap / 長期 No Code roadmap | [2026-0709 Long-Term No-Code Roadmap](reports/2026/2026-0709-long-term-no-code-roadmap.md) |
 | Local no-code stack cleanup plan before availability / availability 前の local no-code stack cleanup plan | [2026-0709 Local No-Code Stack Cleanup Plan Before Availability](reports/2026/2026-0709-local-no-code-stack-cleanup-plan-before-availability.md) |
