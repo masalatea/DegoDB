@@ -13,7 +13,7 @@ When someone asks for "the plan list", answer from this section first. / 「計�
 
 ### Main Plan / 主計画
 
-Current main status: #565 defines the sample18 generated submit request payload and validation contract before adding any route or mutation. `develop` is 41 commits ahead of `origin/develop`, and push has not been performed for #432-#565. / 現在の主計画ステータス: #565 で route や mutation を追加する前に sample18 generated submit request の payload / validation contract を定義しました。`develop` は `origin/develop` より 41 commits ahead、#432-#565 は push していません。
+Current main status: #566 adds a blocked sample18 generated submit route wrapper that validates request payloads but still stops before mutation dispatch. `develop` is 42 commits ahead of `origin/develop`, and push has not been performed for #432-#566. / 現在の主計画ステータス: #566 で sample18 generated submit route の blocked wrapper を追加し、request payload は検証するが mutation dispatch 前で停止することを確認しました。`develop` は `origin/develop` より 42 commits ahead、#432-#566 は push していません。
 
 | Order | Work unit / 作業の塊 | Commit unit / コミット単位 | Status | Rough effort / 目安 |
 | --- | --- | --- | --- | --- |
@@ -124,7 +124,8 @@ Current main status: #565 defines the sample18 generated submit request payload 
 | 563 | Sample18 disabled action surface public smoke / sample18 disabled action surface public smoke | Prove the public runtime exposes the new disabled managed action surface without submit enablement before any dispatch work | `DONE` | 0.5 - 1 day / 半日 - 1 日 |
 | 564 | Sample18 managed action dispatch guard preflight / sample18 managed action dispatch guard preflight | Define the guard and failure contract for any future sample18 generated submit path before enabling dispatch | `DONE` | 0.5 - 1 day / 半日 - 1 日 |
 | 565 | Sample18 generated submit request contract preflight / sample18 generated submit request contract preflight | Define the payload, field normalization, and validation failure contract for generated sample18 submit requests before adding a route | `DONE` | 0.5 - 1 day / 半日 - 1 日 |
-| 566 | Sample18 generated submit route blocked wrapper / sample18 generated submit route blocked wrapper | Add a narrow generated submit HTTP wrapper that validates request payloads but still returns blocked before mutation dispatch | `ACTIVE_NEXT` | 0.5 - 1 day / 半日 - 1 日 |
+| 566 | Sample18 generated submit route blocked wrapper / sample18 generated submit route blocked wrapper | Add a narrow generated submit HTTP wrapper that validates request payloads but still returns blocked before mutation dispatch | `DONE` | 0.5 - 1 day / 半日 - 1 日 |
+| 567 | Sample18 generated submit route browser preflight / sample18 generated submit route browser preflight | Prove the public/runtime UI can point to the blocked generated submit route without enabling buttons or mutation | `ACTIVE_NEXT` | 0.5 - 1 day / 半日 - 1 日 |
 
 ### Long-Term No-Code Roadmap / 長期 No-Code ロードマップ
 

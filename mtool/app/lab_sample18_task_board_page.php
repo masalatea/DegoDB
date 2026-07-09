@@ -14,6 +14,11 @@ function app_lab_sample18_task_board_path(): string
     return '/samples/sample18-task-board';
 }
 
+function app_lab_sample18_task_board_generated_submit_path(): string
+{
+    return app_lab_sample18_task_board_path() . '/no-code/generated-submit';
+}
+
 function app_lab_sample18_task_board_is_available(PDO $pdo): bool
 {
     if (!app_sql_table_exists($pdo, 'projects')) {
@@ -300,6 +305,82 @@ function app_lab_sample18_task_board_generated_submit_request_result(
         'errors' => $errors,
         'failure_code' => $failureCode,
     ];
+}
+
+/**
+ * @param array<string,mixed> $post
+ * @return array{status_code:int,payload:array<string,mixed>}
+ */
+function app_lab_sample18_task_board_generated_submit_blocked_response(
+    string $requestMethod,
+    array $post,
+    string $now,
+): array {
+    if (strtoupper($requestMethod) !== 'POST') {
+        return [
+            'status_code' => 405,
+            'payload' => [
+                'ok' => false,
+                'accepted' => false,
+                'result' => 'invalid',
+                'failure_code' => 'method_not_allowed',
+                'allowed_methods' => ['POST'],
+                'mutation_enabled' => false,
+            ],
+        ];
+    }
+
+    $operationKey = trim((string) ($post['operation_key'] ?? ''));
+    $input = $post;
+    unset($input['operation_key'], $input['_csrf_token']);
+    $normalized = app_lab_sample18_task_board_normalize_generated_submit_request($operationKey, $input, $now);
+    if (!$normalized['ok']) {
+        $statusCode = $normalized['failure_code'] === 'unknown_operation' ? 404 : 422;
+        return [
+            'status_code' => $statusCode,
+            'payload' => [
+                'ok' => false,
+                'accepted' => false,
+                'result' => 'invalid',
+                'failure_code' => $normalized['failure_code'],
+                'operation_key' => $normalized['operation_key'],
+                'errors' => $normalized['errors'],
+                'normalized_payload' => $normalized['payload'],
+                'ignored_input_fields' => $normalized['ignored_input_fields'],
+                'mutation_enabled' => false,
+            ],
+        ];
+    }
+
+    return [
+        'status_code' => 409,
+        'payload' => [
+            'ok' => false,
+            'accepted' => false,
+            'result' => 'blocked',
+            'failure_code' => 'generated_submit_disabled',
+            'operation_key' => $normalized['operation_key'],
+            'curated_route_action' => $normalized['curated_route_action'],
+            'db_access_function' => $normalized['db_access_function'],
+            'normalized_payload' => $normalized['payload'],
+            'ignored_input_fields' => $normalized['ignored_input_fields'],
+            'mutation_enabled' => false,
+        ],
+    ];
+}
+
+/**
+ * @param array{request_id:string,method:string} $request
+ */
+function app_render_lab_sample18_task_board_generated_submit_page(array $app, array $request): void
+{
+    $response = app_lab_sample18_task_board_generated_submit_blocked_response(
+        $request['method'],
+        $_POST,
+        date('Y-m-d H:i:s'),
+    );
+
+    app_send_json_response($request, $response['payload'], $response['status_code']);
 }
 
 function app_lab_sample18_task_board_handle_post(PDO $pdo, array $request): void

@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 require_once dirname(__DIR__, 2) . '/mtool/app/lab_sample18_task_board_page.php';
+require_once dirname(__DIR__, 2) . '/mtool/app/router.php';
 
 use PHPUnit\Framework\TestCase;
 
@@ -165,6 +166,61 @@ final class Sample18MiniTaskBoardDemoTest extends TestCase
         self::assertFalse($unknown['ok']);
         self::assertSame('unknown_operation', $unknown['failure_code']);
         self::assertSame(['operation.unknown'], $unknown['errors']);
+    }
+
+    public function testMiniTaskBoardGeneratedSubmitRouteBlockedWrapper(): void
+    {
+        $checklist = $this->sample18FastContractChecklist();
+        $submitContract = $checklist['generated_submit_request_contract'] ?? [];
+        self::assertIsArray($submitContract);
+        $timestamp = (string) ($submitContract['timestamp_fixture'] ?? '');
+        $createExpectation = $submitContract['operations']['create_task_card'] ?? [];
+        self::assertIsArray($createExpectation);
+
+        $route = app_route_match([
+            'path' => app_lab_sample18_task_board_generated_submit_path(),
+        ]);
+        self::assertSame('lab_sample18_task_board_generated_submit', $route['name']);
+        self::assertTrue(app_route_requires_auth('lab_sample18_task_board_generated_submit'));
+
+        $notPost = app_lab_sample18_task_board_generated_submit_blocked_response('GET', [], $timestamp);
+        self::assertSame(405, $notPost['status_code']);
+        self::assertSame('method_not_allowed', $notPost['payload']['failure_code'] ?? '');
+        self::assertFalse($notPost['payload']['mutation_enabled'] ?? true);
+
+        $validPost = array_merge(
+            ['operation_key' => 'create_task_card', '_csrf_token' => 'client-token'],
+            is_array($createExpectation['valid_input'] ?? null) ? $createExpectation['valid_input'] : [],
+        );
+        $blocked = app_lab_sample18_task_board_generated_submit_blocked_response('POST', $validPost, $timestamp);
+        self::assertSame(409, $blocked['status_code']);
+        self::assertFalse($blocked['payload']['ok'] ?? true);
+        self::assertFalse($blocked['payload']['accepted'] ?? true);
+        self::assertSame('blocked', $blocked['payload']['result'] ?? '');
+        self::assertSame('generated_submit_disabled', $blocked['payload']['failure_code'] ?? '');
+        self::assertSame('create_task_card', $blocked['payload']['operation_key'] ?? '');
+        self::assertSame('create', $blocked['payload']['curated_route_action'] ?? '');
+        self::assertSame('InsertTaskCard', $blocked['payload']['db_access_function'] ?? '');
+        self::assertSame($createExpectation['expected_payload'] ?? [], $blocked['payload']['normalized_payload'] ?? []);
+        self::assertSame($createExpectation['ignored_input_fields'] ?? [], $blocked['payload']['ignored_input_fields'] ?? []);
+        self::assertFalse($blocked['payload']['mutation_enabled'] ?? true);
+
+        $invalid = app_lab_sample18_task_board_generated_submit_blocked_response(
+            'POST',
+            ['operation_key' => 'update_task_card', 'id' => '0', 'title' => ''],
+            $timestamp,
+        );
+        self::assertSame(422, $invalid['status_code']);
+        self::assertSame('validation_error', $invalid['payload']['failure_code'] ?? '');
+        self::assertSame(['id.invalid', 'title.required'], $invalid['payload']['errors'] ?? []);
+
+        $unknown = app_lab_sample18_task_board_generated_submit_blocked_response(
+            'POST',
+            ['operation_key' => 'delete_task_card', 'id' => '1801'],
+            $timestamp,
+        );
+        self::assertSame(404, $unknown['status_code']);
+        self::assertSame('unknown_operation', $unknown['payload']['failure_code'] ?? '');
     }
 
     public function testMiniTaskBoardDemoReferenceOutputs(): void

@@ -343,6 +343,10 @@ function app_run_http_request(): void
                 app_render_lab_sample18_task_board_page($app, $request);
                 return;
 
+            case 'lab_sample18_task_board_generated_submit':
+                app_render_lab_sample18_task_board_generated_submit_page($app, $request);
+                return;
+
             case 'lab_endpoint':
                 app_render_lab_endpoint_test_page($app, $request);
                 return;

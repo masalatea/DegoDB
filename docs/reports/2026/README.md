@@ -11,6 +11,8 @@
 
 ## Index
 
+- `2026-0710-sample18-generated-submit-route-blocked-wrapper.md`
+  - #566 sample18 generated submit route blocked wrapper。`/samples/sample18-task-board/no-code/generated-submit` を追加し、payload validation 後も `generated_submit_disabled` で mutation 前に止まる JSON route wrapper を focused PHPUnit で確認。Status: `DONE`。
 - `2026-0710-sample18-generated-submit-request-contract-preflight.md`
   - #565 sample18 generated submit request contract preflight。create/update/complete の generated submit payload normalization、ignored client fields、validation errors、unknown operation failure を route 追加前に helper / fixture / PHPUnit で固定。Status: `DONE`。
 - `2026-0710-sample18-managed-action-dispatch-guard-preflight.md`
