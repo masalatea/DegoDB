@@ -11,6 +11,8 @@
 
 ## Index
 
+- `2026-0709-no-code-sample-contract-fixture-ladder.md`
+  - #554 no-code sample contract fixture ladder。`sample32-no-code-ui-test-lab` に explicit fixture JSON を追加し、screen / field / disabled managed action / preview row expectations を PHPUnit と pack checker の共通 contract として検証。Status: `DONE`。
 - `2026-0709-dedicated-no-code-ui-test-lab-sample.md`
   - #553 dedicated no-code UI test lab sample。`sample32-no-code-ui-test-lab` を追加し、`SAMPLE32/no_code_lab_card`、`NO-CODE-RUNTIME`、disabled managed action fixture、固定 preview rows、fast JSON/DOM contract test を導入。Status: `DONE`。
 - `2026-0709-no-code-ui-contract-test-harness-first-slice.md`

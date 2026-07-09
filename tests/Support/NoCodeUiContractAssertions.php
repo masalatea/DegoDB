@@ -109,6 +109,46 @@ final class NoCodeUiContractAssertions
         }
     }
 
+    /**
+     * @param list<array<string,mixed>> $actions
+     */
+    public static function assertPreviewHtmlDisabledManagedActions(
+        TestCase $test,
+        string $html,
+        array $actions,
+    ): void {
+        $xpath = self::htmlXPath($html);
+
+        foreach ($actions as $action) {
+            $actionKey = (string) ($action['action_key'] ?? '');
+            $disabledReason = (string) ($action['disabled_reason'] ?? '');
+            $affordance = (string) ($action['affordance'] ?? '');
+            $keyboardActivation = (string) ($action['keyboard_activation'] ?? '');
+            $expectedOccurrences = (int) ($action['expected_dom_occurrences'] ?? 1);
+
+            self::assertXPathCount(
+                $xpath,
+                '//button[@data-action-key=' . self::xpathLiteral($actionKey)
+                    . ' and @disabled'
+                    . ' and @data-action-enabled="false"'
+                    . ' and @data-action-state="disabled"'
+                    . ' and @aria-disabled="true"'
+                    . ' and @data-action-disabled-reason=' . self::xpathLiteral($disabledReason)
+                    . ' and @data-action-affordance=' . self::xpathLiteral($affordance)
+                    . ' and @data-keyboard-activation=' . self::xpathLiteral($keyboardActivation)
+                    . ']',
+                $expectedOccurrences,
+                'disabled managed action button exists: ' . $actionKey,
+            );
+            self::assertXPathCount(
+                $xpath,
+                '//*[@data-action-hint=' . self::xpathLiteral($actionKey) . ' and @data-action-state-hint="disabled"]',
+                $expectedOccurrences,
+                'disabled managed action hint exists: ' . $actionKey,
+            );
+        }
+    }
+
     private static function htmlXPath(string $html): DOMXPath
     {
         $document = new DOMDocument();

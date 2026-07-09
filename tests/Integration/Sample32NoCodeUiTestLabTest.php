@@ -8,6 +8,11 @@ final class Sample32NoCodeUiTestLabTest extends TestCase
 {
     public function testNoCodeUiLabRuntimeArtifactBuildsWithFastDomContracts(): void
     {
+        $fixture = NoCodeUiContractAssertions::readJsonFile(
+            $this,
+            dirname(__DIR__, 2) . '/sample/tutorials/sample32-no-code-ui-test-lab/fixtures/no-code-ui-contract-fixtures.json',
+        );
+
         $previousPolicy = getenv('MTOOL_GENERATED_NAME_POLICY');
         putenv('MTOOL_GENERATED_NAME_POLICY=physical-logical-v1');
 
@@ -38,18 +43,24 @@ final class Sample32NoCodeUiTestLabTest extends TestCase
                 : 'sample32 no-code UI test lab verification returned ok=false',
         );
         self::assertSame([], $result['assertion_errors']);
-        self::assertSame('no-code-screen-definition-v0', $result['steps']['screen_definition']['definition_version'] ?? '');
-        self::assertSame('no-code-runtime-v0', $result['steps']['runtime_preview']['runtime_version'] ?? '');
-        self::assertSame('no_code_lab_card', $result['steps']['screen_definition']['contract_key'] ?? '');
-        self::assertSame(['list', 'detail', 'form'], $result['steps']['screen_definition']['screen_types'] ?? []);
+        self::assertSame($fixture['definition_version'], $result['steps']['screen_definition']['definition_version'] ?? '');
+        self::assertSame($fixture['runtime_version'], $result['steps']['runtime_preview']['runtime_version'] ?? '');
+        self::assertSame($fixture['contract_key'], $result['steps']['screen_definition']['contract_key'] ?? '');
+        self::assertSame($fixture['screen_types'], $result['steps']['screen_definition']['screen_types'] ?? []);
+        self::assertSame($fixture['list_field_keys'], $result['steps']['screen_definition']['field_keys'] ?? []);
         self::assertSame(
-            ['id', 'title', 'status', 'owner_name', 'priority', 'due_on', 'notes'],
-            $result['steps']['screen_definition']['field_keys'] ?? [],
+            $fixture['disabled_managed_actions'][0]['action_key'] ?? '',
+            $result['steps']['screen_definition']['action_key'] ?? '',
         );
-        self::assertSame('archive_no_code_lab_card', $result['steps']['screen_definition']['action_key'] ?? '');
-        self::assertSame('disabled', $result['steps']['screen_definition']['action_availability'] ?? '');
-        self::assertSame(3, $result['steps']['runtime_preview']['screen_count'] ?? null);
-        self::assertSame(2, $result['steps']['runtime_preview']['seeded_preview_row_count'] ?? null);
+        self::assertSame(
+            $fixture['disabled_managed_actions'][0]['availability'] ?? '',
+            $result['steps']['screen_definition']['action_availability'] ?? '',
+        );
+        self::assertSame($fixture['runtime']['screen_count'] ?? null, $result['steps']['runtime_preview']['screen_count'] ?? null);
+        self::assertSame(
+            $fixture['runtime']['seeded_preview_row_count'] ?? null,
+            $result['steps']['runtime_preview']['seeded_preview_row_count'] ?? null,
+        );
 
         $publishedRoot = (string) ($result['steps']['runtime_preview']['published_root'] ?? '');
         self::assertDirectoryExists($publishedRoot);
@@ -57,21 +68,20 @@ final class Sample32NoCodeUiTestLabTest extends TestCase
         NoCodeUiContractAssertions::assertRuntimePreviewScreenKeys(
             $this,
             $runtimePreview,
-            ['no_code_lab_card_list', 'no_code_lab_card_detail', 'no_code_lab_card_form'],
+            $fixture['screen_keys'],
         );
 
         $runtimePreviewHtml = (string) file_get_contents($publishedRoot . '/runtime-preview.html');
-        NoCodeUiContractAssertions::assertPreviewHtmlScreens($this, $runtimePreviewHtml, [
-            'no_code_lab_card_list' => 'list',
-            'no_code_lab_card_detail' => 'detail',
-            'no_code_lab_card_form' => 'form',
-        ]);
+        NoCodeUiContractAssertions::assertPreviewHtmlScreens($this, $runtimePreviewHtml, $fixture['screen_types_by_key']);
         NoCodeUiContractAssertions::assertPreviewHtmlFormFields(
             $this,
             $runtimePreviewHtml,
-            ['title', 'status', 'owner_name', 'priority', 'due_on', 'notes'],
+            $fixture['form_field_names'],
         );
-        self::assertStringContainsString('data-action-key="archive_no_code_lab_card"', $runtimePreviewHtml);
-        self::assertStringContainsString('data-action-disabled-reason="policy-not-enabled"', $runtimePreviewHtml);
+        NoCodeUiContractAssertions::assertPreviewHtmlDisabledManagedActions(
+            $this,
+            $runtimePreviewHtml,
+            $fixture['disabled_managed_actions'],
+        );
     }
 }

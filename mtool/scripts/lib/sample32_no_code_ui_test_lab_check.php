@@ -11,6 +11,7 @@ require_once dirname(__DIR__, 2) . '/app/source_output_repository.php';
 const APP_SAMPLE32_NO_CODE_UI_TEST_LAB_PROJECT_KEY = 'SAMPLE32';
 const APP_SAMPLE32_NO_CODE_UI_TEST_LAB_TABLE_NAME = 'no_code_lab_card';
 const APP_SAMPLE32_NO_CODE_UI_TEST_LAB_SOURCE_OUTPUT_KEY = 'NO-CODE-RUNTIME';
+const APP_SAMPLE32_NO_CODE_UI_TEST_LAB_FIXTURE_PATH = __DIR__ . '/../../../sample/tutorials/sample32-no-code-ui-test-lab/fixtures/no-code-ui-contract-fixtures.json';
 
 function app_sample32_no_code_ui_test_lab_assert_same(mixed $expected, mixed $actual, string $label, array &$errors): void
 {
@@ -94,6 +95,12 @@ function app_sample32_no_code_ui_test_lab_run(array $app, string $requestedBy): 
     $assertionErrors = [];
 
     try {
+        $fixtureJson = app_sample32_no_code_ui_test_lab_read_json_file(APP_SAMPLE32_NO_CODE_UI_TEST_LAB_FIXTURE_PATH);
+        if (!$fixtureJson['ok']) {
+            throw new RuntimeException($fixtureJson['error']);
+        }
+        $fixture = $fixtureJson['data'];
+
         $tableImport = app_project_table_import_apply($app, $projectKey, 'live-schema', $tableName);
         $steps['table_import'] = [
             'ok' => $tableImport['ok'],
@@ -174,33 +181,38 @@ function app_sample32_no_code_ui_test_lab_run(array $app, string $requestedBy): 
         $runtimeListScreen = app_sample32_no_code_ui_test_lab_find_by_value($runtimeScreens, 'screen_key', 'no_code_lab_card_list');
         $runtimeListRows = is_array($runtimeListScreen['data']['rows'] ?? null) ? $runtimeListScreen['data']['rows'] : [];
 
-        app_sample32_no_code_ui_test_lab_assert_same('no-code-screen-definition-v0', $screenDefinition['definition_version'] ?? '', 'definition_version', $assertionErrors);
-        app_sample32_no_code_ui_test_lab_assert_same($projectKey, $screenDefinition['project_key'] ?? '', 'project_key', $assertionErrors);
+        app_sample32_no_code_ui_test_lab_assert_same($fixture['definition_version'] ?? '', $screenDefinition['definition_version'] ?? '', 'definition_version', $assertionErrors);
+        app_sample32_no_code_ui_test_lab_assert_same($fixture['project_key'] ?? '', $screenDefinition['project_key'] ?? '', 'project_key', $assertionErrors);
         app_sample32_no_code_ui_test_lab_assert_same(1, count($contracts), 'contract count', $assertionErrors);
-        app_sample32_no_code_ui_test_lab_assert_same($tableName, $contract['contract_key'] ?? '', 'contract_key', $assertionErrors);
-        app_sample32_no_code_ui_test_lab_assert_same(['list', 'detail', 'form'], app_sample32_no_code_ui_test_lab_extract_names($screens, 'screen_type'), 'screen types', $assertionErrors);
+        app_sample32_no_code_ui_test_lab_assert_same($fixture['contract_key'] ?? '', $contract['contract_key'] ?? '', 'contract_key', $assertionErrors);
+        app_sample32_no_code_ui_test_lab_assert_same($fixture['screen_types'] ?? [], app_sample32_no_code_ui_test_lab_extract_names($screens, 'screen_type'), 'screen types', $assertionErrors);
         app_sample32_no_code_ui_test_lab_assert_same(
-            ['id', 'title', 'status', 'owner_name', 'priority', 'due_on', 'notes'],
+            $fixture['list_field_keys'] ?? [],
             app_sample32_no_code_ui_test_lab_extract_names($fields, 'field_key'),
             'field keys',
             $assertionErrors,
         );
+        $disabledActions = is_array($fixture['disabled_managed_actions'] ?? null) ? $fixture['disabled_managed_actions'] : [];
+        $firstDisabledAction = is_array($disabledActions[0] ?? null) ? $disabledActions[0] : [];
+        $runtime = is_array($fixture['runtime'] ?? null) ? $fixture['runtime'] : [];
         app_sample32_no_code_ui_test_lab_assert_same(1, count($actions), 'action count', $assertionErrors);
-        app_sample32_no_code_ui_test_lab_assert_same('archive_no_code_lab_card', $actions[0]['action_key'] ?? '', 'action key', $assertionErrors);
-        app_sample32_no_code_ui_test_lab_assert_same('disabled', $actions[0]['availability'] ?? '', 'action availability', $assertionErrors);
-        app_sample32_no_code_ui_test_lab_assert_same('no-code-runtime-v0', $runtimePreview['runtime_version'] ?? '', 'runtime_version', $assertionErrors);
-        app_sample32_no_code_ui_test_lab_assert_same(3, count($runtimeScreens), 'runtime screen count', $assertionErrors);
-        app_sample32_no_code_ui_test_lab_assert_same(2, count($runtimeListRows), 'runtime preview row count', $assertionErrors);
-        app_sample32_no_code_ui_test_lab_assert_same('Fixture list card', $runtimeListRows[0]['title']['display_value'] ?? '', 'runtime first row title', $assertionErrors);
+        app_sample32_no_code_ui_test_lab_assert_same($firstDisabledAction['action_key'] ?? '', $actions[0]['action_key'] ?? '', 'action key', $assertionErrors);
+        app_sample32_no_code_ui_test_lab_assert_same($firstDisabledAction['availability'] ?? '', $actions[0]['availability'] ?? '', 'action availability', $assertionErrors);
+        app_sample32_no_code_ui_test_lab_assert_same($fixture['runtime_version'] ?? '', $runtimePreview['runtime_version'] ?? '', 'runtime_version', $assertionErrors);
+        app_sample32_no_code_ui_test_lab_assert_same($runtime['screen_count'] ?? null, count($runtimeScreens), 'runtime screen count', $assertionErrors);
+        app_sample32_no_code_ui_test_lab_assert_same($runtime['seeded_preview_row_count'] ?? null, count($runtimeListRows), 'runtime preview row count', $assertionErrors);
+        $previewRowTitles = is_array($runtime['preview_row_titles'] ?? null) ? $runtime['preview_row_titles'] : [];
+        app_sample32_no_code_ui_test_lab_assert_same($previewRowTitles[0] ?? '', $runtimeListRows[0]['title']['display_value'] ?? '', 'runtime first row title', $assertionErrors);
 
         $runtimePreviewHtml = is_file($publishedRoot . '/runtime-preview.html')
             ? (string) file_get_contents($publishedRoot . '/runtime-preview.html')
             : '';
+        $screenKeys = is_array($fixture['screen_keys'] ?? null) ? $fixture['screen_keys'] : [];
         app_sample32_no_code_ui_test_lab_assert_same(
             true,
-            str_contains($runtimePreviewHtml, 'no_code_lab_card_list')
-                && str_contains($runtimePreviewHtml, 'archive_no_code_lab_card')
-                && str_contains($runtimePreviewHtml, 'data-action-disabled-reason="policy-not-enabled"'),
+            str_contains($runtimePreviewHtml, (string) ($screenKeys[0] ?? ''))
+                && str_contains($runtimePreviewHtml, (string) ($firstDisabledAction['action_key'] ?? ''))
+                && str_contains($runtimePreviewHtml, 'data-action-disabled-reason="' . (string) ($firstDisabledAction['disabled_reason'] ?? '') . '"'),
             'runtime preview html',
             $assertionErrors,
         );

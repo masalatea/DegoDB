@@ -42,10 +42,13 @@ The first new sample for this lane is `sample32-no-code-ui-test-lab`, a no-code-
 - one form screen;
 - one disabled or dry-run action;
 - fixed seed data;
+- explicit fixture JSON under `fixtures/`;
 - generated `screen-definition.json`;
 - generated `runtime-preview.json`;
 - generated `runtime-preview.html`;
 - fast PHPUnit JSON and DOM contract assertions.
+
+The first fixture ladder rung is `fixtures/no-code-ui-contract-fixtures.json`. It names the expected screen keys, screen types, list fields, form fields, disabled managed action markers, and preview rows. The PHPUnit integration test and sample pack checker both read this fixture so future rungs can add expectations before any browser smoke is required.
 
 The sample can now grow fixture-by-fixture: required fields, readonly fields, enum/select fields, search/filter/sort state, action-intent draft, route-boundary metadata, unavailable reasons, and audit labels.
 
