@@ -11,6 +11,8 @@
 
 ## Index
 
+- `2026-0709-lightweight-js-interaction-test-spike.md`
+  - #555 lightweight JS interaction test spike。root npm manifest を増やさず、`linkedom` / `happy-dom` の採用判定 checker を追加。現時点では concrete JS interaction gap が昇格するまで external DOM dependency は defer。Status: `DONE`。
 - `2026-0709-no-code-sample-contract-fixture-ladder.md`
   - #554 no-code sample contract fixture ladder。`sample32-no-code-ui-test-lab` に explicit fixture JSON を追加し、screen / field / disabled managed action / preview row expectations を PHPUnit と pack checker の共通 contract として検証。Status: `DONE`。
 - `2026-0709-dedicated-no-code-ui-test-lab-sample.md`

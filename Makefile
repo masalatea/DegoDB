@@ -476,6 +476,9 @@ sample07-no-code-runtime-ui-smoke: sample07-pack-runtime-test ## sample07 NO-COD
 	node mtool/scripts/check_no_code_runtime_preview_ui_smoke.js \
 		--html=work/source-outputs/SAMPLE07/NO-CODE-RUNTIME/runtime-preview.html
 
+no-code-lightweight-dom-tooling-check: ## no-code lightweight DOM interaction tooling の採用判定を出力する
+	node mtool/scripts/check_no_code_lightweight_dom_tooling.js
+
 sample28-no-code-runtime-ui-smoke: sample28-pack-runtime-test ## sample28 NO-CODE-RUNTIME HTML preview を headless Chrome で検証する
 	node mtool/scripts/check_no_code_runtime_preview_ui_smoke.js \
 		--profile=sample28 \

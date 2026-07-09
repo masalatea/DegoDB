@@ -33,6 +33,12 @@ The intended roadmap order is:
 - Prefer stable `data-*` markers and semantic labels over brittle text-only assertions.
 - Keep generated button execution and mutation behavior separately gated from readonly UI rendering tests.
 
+## Lightweight DOM Tooling Decision
+
+`make no-code-lightweight-dom-tooling-check` records the current `linkedom` / `happy-dom` adoption state without adding a root npm manifest. The current recommendation is to defer either dependency until a concrete interaction gap is promoted.
+
+When that happens, prefer `linkedom` first for narrow generated-runtime event probes that need query selection and basic event dispatch. Consider `happy-dom` only if the probe needs broader browser API coverage. Clipboard, fetch, layout, and real compatibility remain browser-smoke responsibilities unless explicitly stubbed.
+
 ## Dedicated No-Code Test Sample
 
 The first new sample for this lane is `sample32-no-code-ui-test-lab`, a no-code-specific test lab rather than a converted existing sample. It starts small:
