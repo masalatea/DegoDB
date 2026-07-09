@@ -176,6 +176,165 @@ final class NoCodeReviewWorkflowRepositorySqliteTest extends TestCase
         self::assertCount(2, $limited['items']);
     }
 
+    public function testReviewWorkflowFetchLatestCanFilterBySourceOutputArtifactAndOperation(): void
+    {
+        $app = $this->sqliteApp();
+        $bootstrap = app_config_db_bootstrap_apply($app);
+        self::assertTrue($bootstrap['ok'], $bootstrap['error']);
+
+        $matching = app_no_code_review_workflow_create_or_reuse_request($app, $this->requestInput([
+            'review_request_key' => 'review_identity_match_' . bin2hex(random_bytes(4)),
+            'source_output_key' => 'NO-CODE-RUNTIME',
+            'artifact_key' => 'artifact-identity',
+            'operation_key' => 'review_source_output_artifact',
+        ]));
+        self::assertTrue($matching['ok'], $matching['error']);
+
+        $otherSourceOutput = app_no_code_review_workflow_create_or_reuse_request($app, $this->requestInput([
+            'review_request_key' => 'review_identity_other_output_' . bin2hex(random_bytes(4)),
+            'source_output_key' => 'OTHER-RUNTIME',
+            'artifact_key' => 'artifact-identity',
+            'operation_key' => 'review_source_output_artifact',
+        ]));
+        self::assertTrue($otherSourceOutput['ok'], $otherSourceOutput['error']);
+
+        $otherArtifact = app_no_code_review_workflow_create_or_reuse_request($app, $this->requestInput([
+            'review_request_key' => 'review_identity_other_artifact_' . bin2hex(random_bytes(4)),
+            'source_output_key' => 'NO-CODE-RUNTIME',
+            'artifact_key' => 'artifact-other',
+            'operation_key' => 'review_source_output_artifact',
+        ]));
+        self::assertTrue($otherArtifact['ok'], $otherArtifact['error']);
+
+        $otherOperation = app_no_code_review_workflow_create_or_reuse_request($app, $this->requestInput([
+            'review_request_key' => 'review_identity_other_operation_' . bin2hex(random_bytes(4)),
+            'source_output_key' => 'NO-CODE-RUNTIME',
+            'artifact_key' => 'artifact-identity',
+            'operation_key' => 'request_source_output_publish',
+        ]));
+        self::assertTrue($otherOperation['ok'], $otherOperation['error']);
+
+        $sourceOutputOnly = app_no_code_review_workflow_fetch_latest_requests($app, [
+            'project_key' => 'MTOOL',
+            'source_output_key' => 'NO-CODE-RUNTIME',
+            'limit' => 10,
+        ]);
+        self::assertTrue($sourceOutputOnly['ok'], $sourceOutputOnly['error']);
+        self::assertCount(3, $sourceOutputOnly['items']);
+
+        $artifactOnly = app_no_code_review_workflow_fetch_latest_requests($app, [
+            'project_key' => 'MTOOL',
+            'artifact_key' => 'artifact-identity',
+            'limit' => 10,
+        ]);
+        self::assertTrue($artifactOnly['ok'], $artifactOnly['error']);
+        self::assertCount(3, $artifactOnly['items']);
+
+        $operationOnly = app_no_code_review_workflow_fetch_latest_requests($app, [
+            'project_key' => 'MTOOL',
+            'operation_key' => 'review_source_output_artifact',
+            'limit' => 10,
+        ]);
+        self::assertTrue($operationOnly['ok'], $operationOnly['error']);
+        self::assertCount(3, $operationOnly['items']);
+
+        $combined = app_no_code_review_workflow_fetch_latest_requests($app, [
+            'project_key' => 'MTOOL',
+            'source_output_key' => 'NO-CODE-RUNTIME',
+            'artifact_key' => 'artifact-identity',
+            'operation_key' => 'review_source_output_artifact',
+            'limit' => 10,
+        ]);
+        self::assertTrue($combined['ok'], $combined['error']);
+        self::assertCount(1, $combined['items']);
+        self::assertSame($matching['item']['review_request_key'] ?? '', $combined['items'][0]['review_request_key'] ?? '');
+    }
+
+    public function testClosedReviewWorkflowRequestDoesNotBlockNewRequestForSameIdentity(): void
+    {
+        $app = $this->sqliteApp();
+        $bootstrap = app_config_db_bootstrap_apply($app);
+        self::assertTrue($bootstrap['ok'], $bootstrap['error']);
+
+        $closed = app_no_code_review_workflow_create_or_reuse_request($app, $this->requestInput([
+            'review_request_key' => 'review_closed_identity_' . bin2hex(random_bytes(4)),
+            'artifact_key' => 'artifact-closed-boundary',
+            'status' => 'accepted',
+        ]));
+        self::assertTrue($closed['ok'], $closed['error']);
+        self::assertTrue($closed['created']);
+        self::assertSame('accepted', $closed['item']['status'] ?? '');
+
+        $next = app_no_code_review_workflow_create_or_reuse_request($app, $this->requestInput([
+            'review_request_key' => 'review_reopened_identity_' . bin2hex(random_bytes(4)),
+            'artifact_key' => 'artifact-closed-boundary',
+            'status' => 'requested',
+        ]));
+        self::assertTrue($next['ok'], $next['error']);
+        self::assertTrue($next['created']);
+        self::assertSame('accepted', $next['result']);
+        self::assertNotSame(
+            $closed['item']['review_request_key'] ?? '',
+            $next['item']['review_request_key'] ?? '',
+        );
+
+        $latest = app_no_code_review_workflow_fetch_latest_requests($app, [
+            'project_key' => 'MTOOL',
+            'source_output_key' => 'NO-CODE-RUNTIME',
+            'artifact_key' => 'artifact-closed-boundary',
+            'operation_key' => 'review_source_output_artifact',
+            'limit' => 10,
+        ]);
+        self::assertTrue($latest['ok'], $latest['error']);
+        self::assertCount(2, $latest['items']);
+        self::assertContains($closed['item']['review_request_key'] ?? '', array_column($latest['items'], 'review_request_key'));
+        self::assertContains($next['item']['review_request_key'] ?? '', array_column($latest['items'], 'review_request_key'));
+    }
+
+    public function testRemainingClosedReviewWorkflowStatusesDoNotBlockNewRequestsForSameIdentity(): void
+    {
+        $app = $this->sqliteApp();
+        $bootstrap = app_config_db_bootstrap_apply($app);
+        self::assertTrue($bootstrap['ok'], $bootstrap['error']);
+
+        foreach (['rejected', 'cancelled', 'superseded'] as $status) {
+            $artifactKey = 'artifact-closed-matrix-' . $status;
+            $closed = app_no_code_review_workflow_create_or_reuse_request($app, $this->requestInput([
+                'review_request_key' => 'review_closed_' . $status . '_' . bin2hex(random_bytes(4)),
+                'artifact_key' => $artifactKey,
+                'status' => $status,
+            ]));
+            self::assertTrue($closed['ok'], $closed['error']);
+            self::assertTrue($closed['created']);
+            self::assertSame($status, $closed['item']['status'] ?? '');
+
+            $next = app_no_code_review_workflow_create_or_reuse_request($app, $this->requestInput([
+                'review_request_key' => 'review_after_' . $status . '_' . bin2hex(random_bytes(4)),
+                'artifact_key' => $artifactKey,
+                'status' => 'requested',
+            ]));
+            self::assertTrue($next['ok'], $next['error']);
+            self::assertTrue($next['created']);
+            self::assertSame('accepted', $next['result']);
+            self::assertNotSame(
+                $closed['item']['review_request_key'] ?? '',
+                $next['item']['review_request_key'] ?? '',
+            );
+
+            $latest = app_no_code_review_workflow_fetch_latest_requests($app, [
+                'project_key' => 'MTOOL',
+                'source_output_key' => 'NO-CODE-RUNTIME',
+                'artifact_key' => $artifactKey,
+                'operation_key' => 'review_source_output_artifact',
+                'limit' => 10,
+            ]);
+            self::assertTrue($latest['ok'], $latest['error']);
+            self::assertCount(2, $latest['items']);
+            self::assertContains($closed['item']['review_request_key'] ?? '', array_column($latest['items'], 'review_request_key'));
+            self::assertContains($next['item']['review_request_key'] ?? '', array_column($latest['items'], 'review_request_key'));
+        }
+    }
+
     /**
      * @param array<string,mixed> $overrides
      * @return array<string,mixed>

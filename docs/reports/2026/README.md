@@ -11,6 +11,24 @@
 
 ## Index
 
+- `2026-0709-no-push-stack-checkpoint-after-closed-status-matrix-coverage.md`
+  - #507 closed-status matrix coverage 後の no-push stack checkpoint。PUSH なしで継続する場合も named non-executable hardening のみに限定し、次は fetch limit normalization coverage を昇格。availability / generated button execution / push は未実行。Status: `DONE`。
+- `2026-0709-review-workflow-repository-remaining-closed-status-duplicate-matrix-lane-closure.md`
+  - #506 review workflow repository remaining closed-status duplicate matrix lane closure。#505 の focused coverage を accepted capability として閉じ、supported closed status が新規 request を妨げない boundary を記録。availability / generated button execution / push は未実行。Status: `DONE`。
+- `2026-0709-review-workflow-repository-remaining-closed-status-duplicate-matrix-coverage.md`
+  - #505 review workflow repository remaining closed-status duplicate matrix coverage。`rejected` / `cancelled` / `superseded` request が同じ identity の新規 request を妨げないことを focused coverage で確認。availability / generated button execution / push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0709-no-push-stack-checkpoint-after-closed-status-duplicate-boundary.md`
+  - #504 closed-status duplicate boundary 後の no-push stack checkpoint。PUSH なしで継続する場合も named non-executable hardening のみに限定し、次は remaining closed-status duplicate matrix coverage を昇格。availability / generated button execution / push は未実行。Status: `DONE`。
+- `2026-0709-review-workflow-repository-closed-status-duplicate-boundary-lane-closure.md`
+  - #503 review workflow repository closed-status duplicate boundary lane closure。#502 の focused coverage を accepted capability として閉じ、Docker Desktop restart 後の full `make test` 通過も記録。availability / generated button execution / push は未実行。Status: `DONE`。
+- `2026-0709-review-workflow-repository-closed-status-duplicate-boundary-coverage.md`
+  - #502 review workflow repository closed-status duplicate boundary coverage。closed request が同じ identity の新規 request を duplicate として妨げないことを focused coverage で確認。availability / generated button execution / push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0709-no-push-stack-checkpoint-after-identity-filter-coverage.md`
+  - #501 identity filter coverage 後の no-push stack checkpoint。PUSH なしで継続する場合も named non-executable hardening のみに限定し、次は repository closed-status duplicate boundary coverage を昇格。availability / generated button execution / push は未実行。Status: `DONE`。
+- `2026-0709-review-workflow-repository-identity-filter-lane-closure.md`
+  - #500 review workflow repository identity filter lane closure。#499 の focused coverage を accepted capability として閉じ、PUSH なしでは次も named non-executable hardening のみに限定。availability / generated button execution / push は未実行。Status: `DONE`。
+- `2026-0709-review-workflow-repository-identity-filter-coverage.md`
+  - #499 review workflow repository identity filter coverage。latest-request fetch の source_output_key / artifact_key / operation_key filtering を focused coverage で確認。availability / generated button execution / push は未実行。Status: `FIRST_SLICE_DONE`。
 - `2026-0709-no-push-stack-checkpoint-after-fetch-filter-coverage.md`
   - #498 fetch filter coverage 後の no-push stack checkpoint。PUSH なしで継続する場合も named non-executable hardening のみに限定し、次は repository identity filter coverage を昇格。availability / generated button execution / push は未実行。Status: `DONE`。
 - `2026-0709-review-workflow-repository-fetch-filter-lane-closure.md`

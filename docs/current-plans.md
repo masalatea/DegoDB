@@ -13,7 +13,7 @@ When someone asks for "the plan list", answer from this section first. / 「計�
 
 ### Main Plan / 主計画
 
-Current main status: #498 checkpoints the no-push stack after fetch filter coverage. Continue only with named non-executable hardening; the next promoted lane is review workflow repository identity filter coverage. Availability and generated button execution remain parked, `develop` is 65 commits ahead of `origin/develop`, and push has not been performed for #432-#498. / 現在の主計画ステータス: #498 で fetch filter coverage 後の no-push stack を checkpoint しました。名前付き non-executable hardening のみ継続し、次は review workflow repository identity filter coverage を昇格します。availability と generated button execution は parked のまま、`develop` は `origin/develop` より 65 commits ahead、#432-#498 は push していません。
+Current main status: #507 checkpoints the no-push stack after closed-status matrix coverage. Continue only with named non-executable hardening; the next promoted lane is review workflow repository fetch limit normalization coverage. Availability and generated button execution remain parked, `develop` is 74 commits ahead of `origin/develop`, and push has not been performed for #432-#507. / 現在の主計画ステータス: #507 で closed-status matrix coverage 後の no-push stack を checkpoint しました。名前付き non-executable hardening のみ継続し、次は review workflow repository fetch limit normalization coverage を昇格します。availability と generated button execution は parked のまま、`develop` は `origin/develop` より 74 commits ahead、#432-#507 は push していません。
 
 | Order | Work unit / 作業の塊 | Commit unit / コミット単位 | Status | Rough effort / 目安 |
 | --- | --- | --- | --- | --- |
@@ -57,7 +57,16 @@ Current main status: #498 checkpoints the no-push stack after fetch filter cover
 | 496 | Review workflow repository fetch filter coverage / review workflow repository fetch filter coverage | Add focused coverage for latest-request filtering by status/requested-by/limit without enabling availability or generated buttons | `DONE` | 0.5 day / 半日 |
 | 497 | Review workflow repository fetch filter lane closure / review workflow repository fetch filter lane closure | Close fetch filter coverage and decide whether to pause local commits again | `DONE` | 0.25 day / 0.25 日 |
 | 498 | No-push stack checkpoint after fetch filter coverage / fetch filter coverage 後の no-push stack checkpoint | Decide whether to pause local commits or continue only with another named non-executable hardening lane | `DONE` | 0.25 day / 0.25 日 |
-| 499 | Review workflow repository identity filter coverage / review workflow repository identity filter coverage | Add focused coverage for latest-request filtering by source output, artifact, and operation without enabling availability or generated buttons | `ACTIVE_NEXT` | 0.5 day / 半日 |
+| 499 | Review workflow repository identity filter coverage / review workflow repository identity filter coverage | Add focused coverage for latest-request filtering by source output, artifact, and operation without enabling availability or generated buttons | `DONE` | 0.5 day / 半日 |
+| 500 | Review workflow repository identity filter lane closure / review workflow repository identity filter lane closure | Close identity filter coverage and decide whether to pause local commits again | `DONE` | 0.25 day / 0.25 日 |
+| 501 | No-push stack checkpoint after identity filter coverage / identity filter coverage 後の no-push stack checkpoint | Decide whether to pause local commits or continue only with another named non-executable hardening lane | `DONE` | 0.25 day / 0.25 日 |
+| 502 | Review workflow repository closed-status duplicate boundary coverage / review workflow repository closed-status duplicate boundary coverage | Add focused coverage that closed requests do not block a new request for the same identity | `DONE` | 0.5 day / 半日 |
+| 503 | Review workflow repository closed-status duplicate boundary lane closure / review workflow repository closed-status duplicate boundary lane closure | Close closed-status duplicate boundary coverage and decide whether to pause local commits again | `DONE` | 0.25 day / 0.25 日 |
+| 504 | No-push stack checkpoint after closed-status duplicate boundary / closed-status duplicate boundary 後の no-push stack checkpoint | Decide whether to pause local commits or continue only with another named non-executable hardening lane | `DONE` | 0.25 day / 0.25 日 |
+| 505 | Review workflow repository remaining closed-status duplicate matrix coverage / review workflow repository remaining closed-status duplicate matrix coverage | Add focused coverage that rejected, cancelled, and superseded requests do not block a new request for the same identity | `DONE` | 0.5 day / 半日 |
+| 506 | Review workflow repository remaining closed-status duplicate matrix lane closure / review workflow repository remaining closed-status duplicate matrix lane closure | Close remaining closed-status duplicate matrix coverage and decide whether to pause local commits again | `DONE` | 0.25 day / 0.25 日 |
+| 507 | No-push stack checkpoint after closed-status matrix coverage / closed-status matrix coverage 後の no-push stack checkpoint | Decide whether to pause local commits or continue only with another named non-executable hardening lane | `DONE` | 0.25 day / 0.25 日 |
+| 508 | Review workflow repository fetch limit normalization coverage / review workflow repository fetch limit normalization coverage | Add focused coverage that non-positive latest-request limits are clamped to a safe minimum without enabling availability or generated buttons | `ACTIVE_NEXT` | 0.5 day / 半日 |
 
 ### Current Boundary / 現在の境界
 
@@ -67,7 +76,7 @@ Current main status: #498 checkpoints the no-push stack after fetch filter cover
 - A route-local helper now persists or reuses review requests for accepted-plan results, and exposes `recorded` / `duplicate` / `failed` / `skipped` status to the result page. / route-local helper は accepted-plan result の review request を persist または reuse し、result page に `recorded` / `duplicate` / `failed` / `skipped` status を公開します。
 - Generated HTML and React bridge handoffs remain metadata-only. / generated HTML と React bridge handoff は metadata-only のままです。
 - Generated operator action buttons remain disabled until a separate implementation lane explicitly enables execution. / generated operator action button は、別の implementation lane が明示的に execution を有効化するまで disabled のままです。
-- Availability enablement is parked while the current 65-commit local stack remains unpushed. / 現在の 65 commit local stack が unpushed の間、availability enablement は parked です。
+- Availability enablement is parked while the current 74-commit local stack remains unpushed. / 現在の 74 commit local stack が unpushed の間、availability enablement は parked です。
 - The current push decision is to hold locally; no push is performed without a new explicit user request. / 現在の push 判断は local hold です。新しい明示的な user request がない限り push は行いません。
 - No build, publish, review-request, approval, rollback, mutation, custom component execution, or custom operation dispatch route is currently enabled through this lane. / この lane では build、publish、review-request、approval、rollback、mutation、custom component execution、custom operation dispatch route はまだ有効化していません。
 - Push is not performed unless the user explicitly requests it. / user が明示するまで push は行いません。
@@ -251,6 +260,39 @@ For #497, docs-only verification is `git diff --check`.
 
 For #498, docs-only verification is `git diff --check`.
 
+Latest code verification from #499:
+
+- `php -l tests/Integration/NoCodeReviewWorkflowRepositorySqliteTest.php`
+- Focused PHPUnit review workflow repository identity filters: `OK (5 tests, 55 assertions)`
+- Full `make test`: not rerun for this slice because recent full-suite attempts repeatedly stalled while Docker was loading metadata for `docker.io/library/ubuntu:24.04`.
+- `git diff --check`
+
+For #500, docs-only verification is `git diff --check`.
+
+For #501, docs-only verification is `git diff --check`.
+
+Latest code verification from #502:
+
+- `php -l tests/Integration/NoCodeReviewWorkflowRepositorySqliteTest.php`
+- Focused PHPUnit review workflow repository closed-status duplicate boundary: `OK (6 tests, 67 assertions)`
+- Full `make test` after Docker Desktop restart and one-time `ubuntu:24.04` base image pull: `OK, but incomplete, skipped, or risky tests! Tests: 367, Assertions: 11523, Skipped: 1.`
+- `git diff --check`
+
+For #503, docs-only verification is `git diff --check`.
+
+For #504, docs-only verification is `git diff --check`.
+
+Latest code verification from #505:
+
+- `php -l tests/Integration/NoCodeReviewWorkflowRepositorySqliteTest.php`
+- Focused PHPUnit review workflow repository closed-status matrix: `OK (7 tests, 101 assertions)`
+- `make test`: `OK, but incomplete, skipped, or risky tests! Tests: 368, Assertions: 11557, Skipped: 1.`
+- `git diff --check`
+
+For #506, docs-only verification is `git diff --check`.
+
+For #507, docs-only verification is `git diff --check`.
+
 ## Auxiliary Later Review / 補助・後日検討
 
 These are useful candidates, but they are not part of the main plan unless a fresh priority decision promotes them. / これらは有用な候補ですが、新しい優先判断で昇格するまでは主計画には含めません。
@@ -270,6 +312,15 @@ Completed detailed history was moved out of this active list. / 完了済みの�
 
 | Completed scope / 完了済み範囲 | Historical source / 履歴ソース |
 | --- | --- |
+| No-push stack checkpoint after closed-status matrix coverage / closed-status matrix coverage 後の no-push stack checkpoint | [2026-0709 No-Push Stack Checkpoint After Closed-Status Matrix Coverage](reports/2026/2026-0709-no-push-stack-checkpoint-after-closed-status-matrix-coverage.md) |
+| Review workflow repository remaining closed-status duplicate matrix lane closure / review workflow repository remaining closed-status duplicate matrix lane closure | [2026-0709 Review Workflow Repository Remaining Closed-Status Duplicate Matrix Lane Closure](reports/2026/2026-0709-review-workflow-repository-remaining-closed-status-duplicate-matrix-lane-closure.md) |
+| Review workflow repository remaining closed-status duplicate matrix coverage / review workflow repository remaining closed-status duplicate matrix coverage | [2026-0709 Review Workflow Repository Remaining Closed-Status Duplicate Matrix Coverage](reports/2026/2026-0709-review-workflow-repository-remaining-closed-status-duplicate-matrix-coverage.md) |
+| No-push stack checkpoint after closed-status duplicate boundary / closed-status duplicate boundary 後の no-push stack checkpoint | [2026-0709 No-Push Stack Checkpoint After Closed-Status Duplicate Boundary](reports/2026/2026-0709-no-push-stack-checkpoint-after-closed-status-duplicate-boundary.md) |
+| Review workflow repository closed-status duplicate boundary lane closure / review workflow repository closed-status duplicate boundary lane closure | [2026-0709 Review Workflow Repository Closed-Status Duplicate Boundary Lane Closure](reports/2026/2026-0709-review-workflow-repository-closed-status-duplicate-boundary-lane-closure.md) |
+| Review workflow repository closed-status duplicate boundary coverage / review workflow repository closed-status duplicate boundary coverage | [2026-0709 Review Workflow Repository Closed-Status Duplicate Boundary Coverage](reports/2026/2026-0709-review-workflow-repository-closed-status-duplicate-boundary-coverage.md) |
+| No-push stack checkpoint after identity filter coverage / identity filter coverage 後の no-push stack checkpoint | [2026-0709 No-Push Stack Checkpoint After Identity Filter Coverage](reports/2026/2026-0709-no-push-stack-checkpoint-after-identity-filter-coverage.md) |
+| Review workflow repository identity filter lane closure / review workflow repository identity filter lane closure | [2026-0709 Review Workflow Repository Identity Filter Lane Closure](reports/2026/2026-0709-review-workflow-repository-identity-filter-lane-closure.md) |
+| Review workflow repository identity filter coverage / review workflow repository identity filter coverage | [2026-0709 Review Workflow Repository Identity Filter Coverage](reports/2026/2026-0709-review-workflow-repository-identity-filter-coverage.md) |
 | No-push stack checkpoint after fetch filter coverage / fetch filter coverage 後の no-push stack checkpoint | [2026-0709 No-Push Stack Checkpoint After Fetch Filter Coverage](reports/2026/2026-0709-no-push-stack-checkpoint-after-fetch-filter-coverage.md) |
 | Review workflow repository fetch filter lane closure / review workflow repository fetch filter lane closure | [2026-0709 Review Workflow Repository Fetch Filter Lane Closure](reports/2026/2026-0709-review-workflow-repository-fetch-filter-lane-closure.md) |
 | Review workflow repository fetch filter coverage / review workflow repository fetch filter coverage | [2026-0709 Review Workflow Repository Fetch Filter Coverage](reports/2026/2026-0709-review-workflow-repository-fetch-filter-coverage.md) |
