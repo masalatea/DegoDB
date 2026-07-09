@@ -11,6 +11,22 @@
 
 ## Index
 
+- `2026-0708-review-workflow-availability-enablement-replan.md`
+  - #480 review workflow availability enablement replan。`develop` が `origin/develop` より 48 commits ahead のため、availability enablement / user-visible execution は明示 push 判断まで parked。次は push as-is / hold local / cleanup before push の判断。Push は未実行。Status: `DONE`。
+- `2026-0708-local-stack-review-after-review-workflow-persistence-helper.md`
+  - #479 review workflow persistence helper lane 後の local stack review。`develop` は `origin/develop` より 46 commits ahead。metadata/probe、route boundary、guard/audit、repository persistence、route-local persistence helper の capability slice として読めるため、明示 push 判断前の squash / rewrite は推奨しない。Push は未実行。Status: `DONE`。
+- `2026-0708-review-workflow-route-persistence-helper-lane-closure.md`
+  - #478 review workflow route persistence helper lane closure。repository storage、guard-first accepted-plan helper、duplicate reuse、audit metadata carry-through、result-page persistence status を accepted capability として整理。availability enablement / generated button execution / approval transition / publish route は未追加。Push は未実行。Status: `DONE`。
+- `2026-0708-review-workflow-route-persistence-helper-first-slice.md`
+  - #477 review workflow route persistence helper first slice。accepted `accepted_plan` result だけが review request repository を呼ぶ route-local helper と focused coverage を追加。deferred/default dogfooding result は persistence skipped、availability / generated button execution / approval transition / publish route は未追加。Push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0708-review-workflow-persistence-route-integration-preflight.md`
+  - #476 review workflow persistence route integration preflight。repository-first persistence を route に接続する条件を guard-first として整理。POST route が persistence を呼ぶのは allowed `accepted_plan` 後だけで、deferred / blocked result は audit append のみ。route mutation / availability enablement / generated button execution は未追加。Push は未実行。Status: `DONE`。
+- `2026-0708-review-workflow-persistence-repository-first-slice.md`
+  - #475 review workflow persistence repository first slice。`no_code_review_requests` config DB table、repository wrapper / PDO implementation、SQLite bootstrap and idempotency coverage を追加。route mutation / availability enablement / generated button execution / approval transition / publish route は未追加。Push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0708-review-workflow-persistence-inventory.md`
+  - #474 review workflow persistence inventory。`review_source_output_artifact` を executable にする前の storage/idempotency/stale-artifact/audit/availability boundary を定義。persistence implementation / availability enablement / mutation / generated button execution は未追加。Push は未実行。Status: `DONE`。
+- `2026-0708-post-review-route-guard-replan.md`
+  - #473 review artifact route guard lane 後の replan。availability enablement / mutation implementation ではなく、review workflow persistence inventory を次に選択。`request_source_output_publish` は deferred、Push は未実行。Status: `DONE`。
 - `2026-0708-local-stack-review-after-review-artifact-route-guard.md`
   - #472 review artifact route guard lane 後の local stack review。`develop` は `origin/develop` より 39 commits ahead。未 push stack は capability slice ごとに読めるため、明示 push 判断前の squash / rewrite は推奨しない。Push は未実行。Status: `DONE`。
 - `2026-0708-review-artifact-route-guard-lane-closure.md`

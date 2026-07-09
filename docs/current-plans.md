@@ -13,7 +13,7 @@ When someone asks for "the plan list", answer from this section first. / 「計�
 
 ### Main Plan / 主計画
 
-Current main status: #472 reviews the local unpushed stack after the review artifact route guard lane. The stack is 39 commits ahead of `origin/develop`, grouped by meaningful capability slices, and should not be squashed/re-written before an explicit push decision. Availability enablement and review workflow mutation remain parked. Push has not been performed for #432-#472. / 現在の主計画ステータス: #472 で review artifact route guard lane 後の local unpushed stack を review しました。stack は `origin/develop` より 39 commits ahead で、意味のある capability slice ごとに分かれており、明示的な push 判断の前に squash / rewrite しない方針です。availability enablement と review workflow mutation は parked のままです。#432-#472 は push していません。
+Current main status: #480 replans after the review workflow persistence helper stack review. Availability enablement should remain parked until an explicit push decision because `develop` is now 48 commits ahead of `origin/develop`; adding user-visible execution before syncing would increase review and coordination risk. Generated buttons remain disabled. Push has not been performed for #432-#480. / 現在の主計画ステータス: #480 で review workflow persistence helper stack review 後の replan を行いました。`develop` は `origin/develop` より 48 commits ahead のため、明示的な push 判断までは availability enablement を parked のままにします。sync 前に user-visible execution を追加すると review / coordination risk が上がるためです。generated button は disabled のままです。#432-#480 は push していません。
 
 | Order | Work unit / 作業の塊 | Commit unit / コミット単位 | Status | Rough effort / 目安 |
 | --- | --- | --- | --- | --- |
@@ -31,13 +31,25 @@ Current main status: #472 reviews the local unpushed stack after the review arti
 | 470 | Custom operation audit append failure handling / custom operation audit append failure handling | Add focused failure/response behavior coverage for operation audit append before route guard lane closure | `DONE` | 0.5 - 1 day / 半日 - 1 日 |
 | 471 | Review artifact route guard lane closure / review artifact route guard lane closure | Close the review-artifact route guard lane, record accepted capability, and decide whether availability enablement remains parked | `DONE` | 0.25 - 0.5 day / 0.25 - 0.5 日 |
 | 472 | Local commit stack review after review route guard / review route guard 後の local commit stack review | Review the unpushed local commit stack and decide whether to keep, squash, or replan before any push | `DONE` | 0.25 - 0.5 day / 0.25 - 0.5 日 |
-| 473 | Post route guard replan / route guard 後の replan | Decide whether to keep execution parked, promote review workflow persistence, improve disabled UI explanation, or prepare a push decision | `ACTIVE_NEXT` | 0.25 - 0.5 day / 0.25 - 0.5 日 |
+| 473 | Post route guard replan / route guard 後の replan | Decide whether to keep execution parked, promote review workflow persistence, improve disabled UI explanation, or prepare a push decision | `DONE` | 0.25 - 0.5 day / 0.25 - 0.5 日 |
+| 474 | Review workflow persistence inventory / review workflow persistence inventory | Define storage/idempotency/stale-artifact/audit boundary for review workflow persistence before enabling availability or mutation | `DONE` | 0.5 - 1 day / 半日 - 1 日 |
+| 475 | Review workflow persistence repository first slice / review workflow persistence repository first slice | Add repository-first persistence storage/tests for review workflow requests without enabling route mutation or generated buttons | `DONE` | 1 - 1.5 days / 1 - 1.5 日 |
+| 476 | Review workflow persistence route integration preflight / review workflow persistence route integration preflight | Decide and test how the existing review route guard will call repository persistence while keeping generated buttons disabled | `DONE` | 0.5 - 1 day / 半日 - 1 日 |
+| 477 | Review workflow route persistence helper first slice / review workflow route persistence helper first slice | Add a route-local helper and focused coverage for accepted-plan persistence, while default dogfooding availability stays deferred | `DONE` | 0.5 - 1 day / 半日 - 1 日 |
+| 478 | Review workflow route persistence helper lane closure / review workflow route persistence helper lane closure | Close the route-local persistence helper lane and decide whether availability enablement should remain parked or be promoted | `DONE` | 0.25 - 0.5 day / 0.25 - 0.5 日 |
+| 479 | Local stack review after review workflow persistence helper / review workflow persistence helper 後の local stack review | Review the unpushed local commit stack and decide whether to keep, squash, push, or replan before availability enablement | `DONE` | 0.25 - 0.5 day / 0.25 - 0.5 日 |
+| 480 | Review workflow availability enablement replan / review workflow availability enablement replan | Decide whether to keep availability parked, prepare a push decision, or promote a narrowly tested executable review workflow slice | `DONE` | 0.25 - 0.5 day / 0.25 - 0.5 日 |
+| 481 | Explicit push decision for no-code dogfooding stack / no-code dogfooding stack の明示 push 判断 | Decide whether to push the current develop stack as-is, hold it locally, or request a focused cleanup before push | `ACTIVE_NEXT` | 0.25 day / 0.25 日 |
 
 ### Current Boundary / 現在の境界
 
 - Custom operation metadata can describe identity, availability, unavailable reason, adapter handoff, policy, CSRF, audit, and route-boundary expectations. / custom operation metadata は identity、availability、unavailable reason、adapter handoff、policy、CSRF、audit、route-boundary expectations を記述できます。
+- Review workflow request storage now exists as repository-first config DB persistence, including duplicate reuse for open requests. / review workflow request storage は repository-first config DB persistence として存在し、open request の duplicate reuse も含みます。
+- The route integration rule is guard-first: repository persistence is reachable only from an allowed `accepted_plan`, not from deferred/blocked guard results. / route integration rule は guard-first です。repository persistence に到達できるのは allowed な `accepted_plan` からだけで、deferred / blocked guard result からは到達しません。
+- A route-local helper now persists or reuses review requests for accepted-plan results, and exposes `recorded` / `duplicate` / `failed` / `skipped` status to the result page. / route-local helper は accepted-plan result の review request を persist または reuse し、result page に `recorded` / `duplicate` / `failed` / `skipped` status を公開します。
 - Generated HTML and React bridge handoffs remain metadata-only. / generated HTML と React bridge handoff は metadata-only のままです。
 - Generated operator action buttons remain disabled until a separate implementation lane explicitly enables execution. / generated operator action button は、別の implementation lane が明示的に execution を有効化するまで disabled のままです。
+- Availability enablement is parked until an explicit push decision is made for the current 48-commit local stack. / 現在の 48 commit local stack について明示的な push 判断が行われるまで、availability enablement は parked です。
 - No build, publish, review-request, approval, rollback, mutation, custom component execution, or custom operation dispatch route is currently enabled through this lane. / この lane では build、publish、review-request、approval、rollback、mutation、custom component execution、custom operation dispatch route はまだ有効化していません。
 - Push is not performed unless the user explicitly requests it. / user が明示するまで push は行いません。
 
@@ -127,6 +139,38 @@ For #471, docs-only verification is `git diff --check`.
 
 For #472, docs-only verification is `git diff --check`.
 
+For #473, docs-only verification is `git diff --check`.
+
+For #474, docs-only verification is `git diff --check`.
+
+Latest code verification from #475:
+
+- `php -l mtool/app/no_code_review_workflow_repository.php`
+- `php -l mtool/app/no_code_review_workflow_repository_pdo.php`
+- `php -l mtool/app/config_db_bootstrap.php`
+- `php -l tests/Integration/NoCodeReviewWorkflowRepositorySqliteTest.php`
+- Focused PHPUnit review workflow repository: `OK (2 tests, 23 assertions)`
+- Focused PHPUnit config DB bootstrap: `OK (1 test, 6 assertions)`
+- `make test`: `OK, but incomplete, skipped, or risky tests! Tests: 357, Assertions: 11429, Skipped: 1.`
+- `git diff --check`
+
+For #476, docs-only verification is `git diff --check`.
+
+Latest code verification from #477:
+
+- `php -l mtool/app/project_source_output_operation_page.php`
+- `php -l tests/Integration/ProjectSourceOutputOperationPersistenceTest.php`
+- Focused PHPUnit route persistence helper: `OK (2 tests, 16 assertions)`
+- Focused PHPUnit source output route contract: `OK (26 tests, 1918 assertions)`
+- `make test`: `OK, but incomplete, skipped, or risky tests! Tests: 359, Assertions: 11445, Skipped: 1.`
+- `git diff --check`
+
+For #478, docs-only verification is `git diff --check`.
+
+For #479, docs-only verification is `git diff --check`.
+
+For #480, docs-only verification is `git diff --check`.
+
 ## Auxiliary Later Review / 補助・後日検討
 
 These are useful candidates, but they are not part of the main plan unless a fresh priority decision promotes them. / これらは有用な候補ですが、新しい優先判断で昇格するまでは主計画には含めません。
@@ -146,6 +190,14 @@ Completed detailed history was moved out of this active list. / 完了済みの�
 
 | Completed scope / 完了済み範囲 | Historical source / 履歴ソース |
 | --- | --- |
+| Review workflow availability enablement replan / review workflow availability enablement replan | [2026-0708 Review Workflow Availability Enablement Replan](reports/2026/2026-0708-review-workflow-availability-enablement-replan.md) |
+| Local stack review after review workflow persistence helper / review workflow persistence helper 後の local stack review | [2026-0708 Local Stack Review After Review Workflow Persistence Helper](reports/2026/2026-0708-local-stack-review-after-review-workflow-persistence-helper.md) |
+| Review workflow route persistence helper lane closure / review workflow route persistence helper lane closure | [2026-0708 Review Workflow Route Persistence Helper Lane Closure](reports/2026/2026-0708-review-workflow-route-persistence-helper-lane-closure.md) |
+| Review workflow route persistence helper first slice / review workflow route persistence helper first slice | [2026-0708 Review Workflow Route Persistence Helper First Slice](reports/2026/2026-0708-review-workflow-route-persistence-helper-first-slice.md) |
+| Review workflow persistence route integration preflight / review workflow persistence route integration preflight | [2026-0708 Review Workflow Persistence Route Integration Preflight](reports/2026/2026-0708-review-workflow-persistence-route-integration-preflight.md) |
+| Review workflow persistence repository first slice / review workflow persistence repository first slice | [2026-0708 Review Workflow Persistence Repository First Slice](reports/2026/2026-0708-review-workflow-persistence-repository-first-slice.md) |
+| Review workflow persistence inventory / review workflow persistence inventory | [2026-0708 Review Workflow Persistence Inventory](reports/2026/2026-0708-review-workflow-persistence-inventory.md) |
+| Post review route guard replan / review route guard 後の replan | [2026-0708 Post Review Route Guard Replan](reports/2026/2026-0708-post-review-route-guard-replan.md) |
 | Local stack review after review artifact route guard / review artifact route guard 後の local stack review | [2026-0708 Local Stack Review After Review Artifact Route Guard](reports/2026/2026-0708-local-stack-review-after-review-artifact-route-guard.md) |
 | Review artifact route guard lane closure / review artifact route guard lane closure | [2026-0708 Review Artifact Route Guard Lane Closure](reports/2026/2026-0708-review-artifact-route-guard-lane-closure.md) |
 | Custom operation audit append failure handling / custom operation audit append failure handling | [2026-0708 Custom Operation Audit Append Failure Handling](reports/2026/2026-0708-custom-operation-audit-append-failure-handling.md) |
