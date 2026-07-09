@@ -11,6 +11,8 @@
 
 ## Index
 
+- `2026-0710-sample18-submit-route-lane-closure.md`
+  - #568 sample18 submit route lane closure。request contract、blocked JSON wrapper、disabled UI route marker までを preflight lane の受け入れ範囲として閉じ、次は runtime binding / mutation dispatch ではなく authenticated HTTP smoke (#569) を先に進める判断を記録。Status: `DONE`。
 - `2026-0710-sample18-generated-submit-route-browser-preflight.md`
   - #567 sample18 generated submit route browser preflight。sample18 public runtime の disabled managed action button に blocked submit route marker `data-action-submit-url` が出ることを browser smoke で確認し、button / runtime execute は disabled のまま維持。Status: `DONE`。
 - `2026-0710-sample18-generated-submit-route-blocked-wrapper.md`
