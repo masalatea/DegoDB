@@ -55,6 +55,18 @@ function app_no_code_mtool_dogfooding_probe_manifest(): array
                             'placement' => 'aside',
                             'renderer' => 'link_list',
                             'target' => 'shared_contract_settings',
+                            'links' => [
+                                [
+                                    'label' => 'Shared Contracts',
+                                    'target' => 'shared_contracts',
+                                    'href' => '/projects/MTOOL/shared-contracts',
+                                ],
+                                [
+                                    'label' => 'Source Outputs',
+                                    'target' => 'source_outputs',
+                                    'href' => '/projects/MTOOL/source-outputs',
+                                ],
+                            ],
                             'screen_types' => ['list', 'detail'],
                         ],
                         [
@@ -64,6 +76,23 @@ function app_no_code_mtool_dogfooding_probe_manifest(): array
                             'placement' => 'aside',
                             'renderer' => 'status_card',
                             'target' => 'source_output_artifact_status',
+                            'status_items' => [
+                                [
+                                    'label' => 'Artifact Strategy',
+                                    'value' => 'no-code-runtime',
+                                    'state' => 'ok',
+                                ],
+                                [
+                                    'label' => 'Target Binding',
+                                    'value' => 'managed-screen',
+                                    'state' => 'info',
+                                ],
+                                [
+                                    'label' => 'Spec Visibility',
+                                    'value' => 'internal-review',
+                                    'state' => 'warning',
+                                ],
+                            ],
                             'screen_types' => ['list', 'detail'],
                         ],
                         [
@@ -73,6 +102,20 @@ function app_no_code_mtool_dogfooding_probe_manifest(): array
                             'placement' => 'footer',
                             'renderer' => 'action_panel',
                             'target' => 'source_output_operator_actions',
+                            'action_items' => [
+                                [
+                                    'label' => 'Review Artifact',
+                                    'action_key' => 'review_source_output_artifact',
+                                    'intent' => 'Open the generated artifact review workflow.',
+                                    'state' => 'deferred',
+                                ],
+                                [
+                                    'label' => 'Request Publish',
+                                    'action_key' => 'request_source_output_publish',
+                                    'intent' => 'Prepare an approval request for the current generated artifact.',
+                                    'state' => 'deferred',
+                                ],
+                            ],
                             'screen_types' => ['detail'],
                         ],
                     ],
@@ -194,9 +237,15 @@ function app_no_code_mtool_dogfooding_probe_inspection_summary(?array $principal
 function app_no_code_mtool_dogfooding_probe_html_boundary(string $html): array
 {
     return [
-        'custom_slot_rendering' => 'metadata_only',
+        'custom_slot_rendering' => str_contains($html, 'data-extension-slot') ? 'visible_placeholder' : 'metadata_only',
         'contains_runtime_preview_json' => str_contains($html, 'no-code-runtime-preview-data'),
         'contains_slot_region_markup' => str_contains($html, 'data-extension-slot'),
+        'contains_related_settings_slot' => str_contains($html, 'data-extension-slot="mtool_source_output_related_settings"'),
+        'contains_related_settings_link_list' => str_contains($html, 'data-extension-slot-link="shared_contracts"'),
+        'contains_artifact_status_slot' => str_contains($html, 'data-extension-slot="mtool_source_output_artifact_status"'),
+        'contains_artifact_status_card' => str_contains($html, 'data-extension-slot-status-item="Artifact Strategy"'),
+        'contains_operator_actions_slot' => str_contains($html, 'data-extension-slot="mtool_source_output_operator_actions"'),
+        'contains_operator_action_panel' => str_contains($html, 'data-extension-slot-action="review_source_output_artifact"'),
     ];
 }
 

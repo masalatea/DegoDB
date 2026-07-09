@@ -313,6 +313,9 @@ function app_no_code_screen_definition_normalize_field_groups(mixed $value, arra
  *     placement:string,
  *     renderer:string,
  *     target:string,
+ *     links:list<array{label:string,target:string,href:string}>,
+ *     status_items:list<array{label:string,value:string,state:string}>,
+ *     action_items:list<array{label:string,action_key:string,intent:string,state:string}>,
  *     screen_types:list<string>,
  *     source:string
  * }>
@@ -341,6 +344,9 @@ function app_no_code_screen_definition_extension_slots(array $contract): array
             'placement' => app_no_code_screen_definition_normalize_extension_slot_placement((string) ($slot['placement'] ?? '')),
             'renderer' => app_no_code_screen_definition_normalize_extension_slot_renderer((string) ($slot['renderer'] ?? '')),
             'target' => trim((string) ($slot['target'] ?? '')),
+            'links' => app_no_code_screen_definition_normalize_extension_slot_links($slot['links'] ?? []),
+            'status_items' => app_no_code_screen_definition_normalize_extension_slot_status_items($slot['status_items'] ?? []),
+            'action_items' => app_no_code_screen_definition_normalize_extension_slot_action_items($slot['action_items'] ?? []),
             'screen_types' => $screenTypes,
             'source' => 'extension_slots:explicit',
         ];
@@ -369,6 +375,116 @@ function app_no_code_screen_definition_normalize_extension_slot_renderer(string 
 {
     $normalized = strtolower(trim($renderer));
     return in_array($normalized, ['placeholder', 'link_list', 'status_card', 'action_panel'], true) ? $normalized : 'placeholder';
+}
+
+/**
+ * @param mixed $links
+ * @return list<array{label:string,target:string,href:string}>
+ */
+function app_no_code_screen_definition_normalize_extension_slot_links(mixed $links): array
+{
+    if (!is_array($links)) {
+        return [];
+    }
+
+    $normalized = [];
+    foreach ($links as $link) {
+        if (!is_array($link)) {
+            continue;
+        }
+
+        $label = trim((string) ($link['label'] ?? ''));
+        $target = trim((string) ($link['target'] ?? ''));
+        $href = trim((string) ($link['href'] ?? ''));
+        if ($label === '' || $href === '') {
+            continue;
+        }
+
+        $normalized[] = [
+            'label' => $label,
+            'target' => $target,
+            'href' => $href,
+        ];
+    }
+
+    return $normalized;
+}
+
+/**
+ * @param mixed $items
+ * @return list<array{label:string,value:string,state:string}>
+ */
+function app_no_code_screen_definition_normalize_extension_slot_status_items(mixed $items): array
+{
+    if (!is_array($items)) {
+        return [];
+    }
+
+    $normalized = [];
+    foreach ($items as $item) {
+        if (!is_array($item)) {
+            continue;
+        }
+
+        $label = trim((string) ($item['label'] ?? ''));
+        $value = trim((string) ($item['value'] ?? ''));
+        if ($label === '' || $value === '') {
+            continue;
+        }
+
+        $normalized[] = [
+            'label' => $label,
+            'value' => $value,
+            'state' => app_no_code_screen_definition_normalize_extension_slot_status_state((string) ($item['state'] ?? 'info')),
+        ];
+    }
+
+    return $normalized;
+}
+
+function app_no_code_screen_definition_normalize_extension_slot_status_state(string $state): string
+{
+    $normalized = strtolower(trim($state));
+    return in_array($normalized, ['ok', 'info', 'warning', 'blocked'], true) ? $normalized : 'info';
+}
+
+/**
+ * @param mixed $items
+ * @return list<array{label:string,action_key:string,intent:string,state:string}>
+ */
+function app_no_code_screen_definition_normalize_extension_slot_action_items(mixed $items): array
+{
+    if (!is_array($items)) {
+        return [];
+    }
+
+    $normalized = [];
+    foreach ($items as $item) {
+        if (!is_array($item)) {
+            continue;
+        }
+
+        $label = trim((string) ($item['label'] ?? ''));
+        $actionKey = trim((string) ($item['action_key'] ?? ''));
+        if ($label === '' || $actionKey === '') {
+            continue;
+        }
+
+        $normalized[] = [
+            'label' => $label,
+            'action_key' => $actionKey,
+            'intent' => trim((string) ($item['intent'] ?? '')),
+            'state' => app_no_code_screen_definition_normalize_extension_slot_action_state((string) ($item['state'] ?? 'deferred')),
+        ];
+    }
+
+    return $normalized;
+}
+
+function app_no_code_screen_definition_normalize_extension_slot_action_state(string $state): string
+{
+    $normalized = strtolower(trim($state));
+    return in_array($normalized, ['available', 'deferred', 'blocked'], true) ? $normalized : 'deferred';
 }
 
 /**

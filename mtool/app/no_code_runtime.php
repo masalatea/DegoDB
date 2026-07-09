@@ -450,6 +450,7 @@ function app_no_code_runtime_render_screen_html(array $render): string
     $screenTitle = (string) ($render['screen_title'] ?? app_no_code_runtime_screen_title($screenKey, $screenType));
     $screenSubtitle = (string) ($render['screen_subtitle'] ?? '');
     $fields = is_array($render['fields'] ?? null) ? $render['fields'] : [];
+    $extensionSlots = is_array($render['extension_slots'] ?? null) ? $render['extension_slots'] : [];
     $actions = is_array($render['actions'] ?? null) ? $render['actions'] : [];
     $data = is_array($render['data'] ?? null) ? $render['data'] : [];
     $emptyStateMessage = (string) ($render['empty_state_message'] ?? app_no_code_runtime_empty_state_message($screenType));
@@ -481,6 +482,7 @@ function app_no_code_runtime_render_screen_html(array $render): string
         app_no_code_runtime_render_actions_html($actions, $screenTitle, $screenKey),
         '</header>',
         app_no_code_runtime_render_screen_summary_html($screenKey, $fields, $actions),
+        app_no_code_runtime_render_extension_slots_html($screenKey, $extensionSlots),
         '<div class="no-code-action-feedback" role="status" aria-live="polite" data-state="idle">Select an enabled action to preview its intent.</div>',
         app_no_code_runtime_render_action_intent_draft_html($actions),
         '<div class="no-code-screen-body" data-screen-body="' . app_no_code_runtime_html_escape($screenKey) . '">',
@@ -488,6 +490,165 @@ function app_no_code_runtime_render_screen_html(array $render): string
         '</div>',
         '</section>',
     ]);
+}
+
+/**
+ * @param list<array<string,mixed>> $extensionSlots
+ */
+function app_no_code_runtime_render_extension_slots_html(string $screenKey, array $extensionSlots): string
+{
+    if ($extensionSlots === []) {
+        return '';
+    }
+
+    $items = [];
+    foreach ($extensionSlots as $slot) {
+        if (!is_array($slot)) {
+            continue;
+        }
+
+        $slotKey = (string) ($slot['slot_key'] ?? '');
+        $slotType = (string) ($slot['slot_type'] ?? '');
+        if ($slotKey === '' || $slotType === '') {
+            continue;
+        }
+
+        $label = (string) ($slot['label'] ?? $slotKey);
+        $renderer = (string) ($slot['renderer'] ?? 'placeholder');
+        $target = (string) ($slot['target'] ?? '');
+        $placement = (string) ($slot['placement'] ?? 'aside');
+        $metaParts = array_values(array_filter([$slotType, $target, $renderer]));
+        $slotBody = app_no_code_runtime_render_extension_slot_body_html(
+            $slotType,
+            $renderer,
+            is_array($slot['links'] ?? null) ? $slot['links'] : [],
+            is_array($slot['status_items'] ?? null) ? $slot['status_items'] : [],
+            is_array($slot['action_items'] ?? null) ? $slot['action_items'] : [],
+            $metaParts,
+        );
+        $items[] = implode("\n", [
+            '<article class="no-code-extension-slot" data-extension-slot="' . app_no_code_runtime_html_escape($slotKey) . '" data-extension-slot-type="' . app_no_code_runtime_html_escape($slotType) . '" data-extension-slot-placement="' . app_no_code_runtime_html_escape($placement) . '" data-extension-slot-renderer="' . app_no_code_runtime_html_escape($renderer) . '">',
+            '<strong>' . app_no_code_runtime_html_escape($label) . '</strong>',
+            $slotBody,
+            '</article>',
+        ]);
+    }
+
+    if ($items === []) {
+        return '';
+    }
+
+    return implode("\n", [
+        '<section class="no-code-extension-slots" data-extension-slots-for="' . app_no_code_runtime_html_escape($screenKey) . '" aria-label="Declared extension slots">',
+        implode("\n", $items),
+        '</section>',
+    ]);
+}
+
+/**
+ * @param list<array<string,mixed>> $links
+ * @param list<array<string,mixed>> $statusItems
+ * @param list<array<string,mixed>> $actionItems
+ * @param list<string> $metaParts
+ */
+function app_no_code_runtime_render_extension_slot_body_html(
+    string $slotType,
+    string $renderer,
+    array $links,
+    array $statusItems,
+    array $actionItems,
+    array $metaParts,
+): string {
+    if ($slotType === 'related_settings_panel' && $renderer === 'link_list') {
+        $items = [];
+        foreach ($links as $link) {
+            if (!is_array($link)) {
+                continue;
+            }
+
+            $label = trim((string) ($link['label'] ?? ''));
+            $href = trim((string) ($link['href'] ?? ''));
+            if ($label === '' || $href === '') {
+                continue;
+            }
+
+            $target = trim((string) ($link['target'] ?? ''));
+            $items[] = '<li><a href="' . app_no_code_runtime_html_escape($href) . '" data-extension-slot-link="' . app_no_code_runtime_html_escape($target) . '">' . app_no_code_runtime_html_escape($label) . '</a></li>';
+        }
+
+        if ($items !== []) {
+            return implode("\n", [
+                '<ul class="no-code-extension-slot-links">',
+                implode("\n", $items),
+                '</ul>',
+            ]);
+        }
+    }
+
+    if ($slotType === 'artifact_status_panel' && $renderer === 'status_card') {
+        $items = [];
+        foreach ($statusItems as $item) {
+            if (!is_array($item)) {
+                continue;
+            }
+
+            $label = trim((string) ($item['label'] ?? ''));
+            $value = trim((string) ($item['value'] ?? ''));
+            if ($label === '' || $value === '') {
+                continue;
+            }
+
+            $state = trim((string) ($item['state'] ?? 'info'));
+            $items[] = implode('', [
+                '<div class="no-code-extension-slot-status-item" data-extension-slot-status-item="' . app_no_code_runtime_html_escape($label) . '" data-extension-slot-status-state="' . app_no_code_runtime_html_escape($state) . '">',
+                '<dt>' . app_no_code_runtime_html_escape($label) . '</dt>',
+                '<dd>' . app_no_code_runtime_html_escape($value) . '</dd>',
+                '</div>',
+            ]);
+        }
+
+        if ($items !== []) {
+            return implode("\n", [
+                '<dl class="no-code-extension-slot-status-card">',
+                implode("\n", $items),
+                '</dl>',
+            ]);
+        }
+    }
+
+    if ($slotType === 'operator_actions_panel' && $renderer === 'action_panel') {
+        $items = [];
+        foreach ($actionItems as $item) {
+            if (!is_array($item)) {
+                continue;
+            }
+
+            $label = trim((string) ($item['label'] ?? ''));
+            $actionKey = trim((string) ($item['action_key'] ?? ''));
+            if ($label === '' || $actionKey === '') {
+                continue;
+            }
+
+            $intent = trim((string) ($item['intent'] ?? ''));
+            $state = trim((string) ($item['state'] ?? 'deferred'));
+            $items[] = implode("\n", [
+                '<div class="no-code-extension-slot-action-item" data-extension-slot-action-item="' . app_no_code_runtime_html_escape($actionKey) . '" data-extension-slot-action-state="' . app_no_code_runtime_html_escape($state) . '">',
+                '<button type="button" data-extension-slot-action="' . app_no_code_runtime_html_escape($actionKey) . '" disabled>' . app_no_code_runtime_html_escape($label) . '</button>',
+                '<span>' . app_no_code_runtime_html_escape($intent !== '' ? $intent : 'Operator action is declared but not executable in this generated preview.') . '</span>',
+                '</div>',
+            ]);
+        }
+
+        if ($items !== []) {
+            return implode("\n", [
+                '<div class="no-code-extension-slot-action-panel">',
+                implode("\n", $items),
+                '</div>',
+            ]);
+        }
+    }
+
+    return '<span>' . app_no_code_runtime_html_escape(implode(' / ', $metaParts)) . '</span>';
 }
 
 /**
@@ -807,6 +968,25 @@ function app_no_code_runtime_preview_css(): string
         '.no-code-screen-summary { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin: -6px 0 14px; color: #52606d; font-size: 12px; }',
         '.no-code-screen-summary span, .no-code-screen-summary code { border: 1px solid #d8dee8; border-radius: 999px; padding: 3px 8px; background: #f7f9fb; }',
         '.no-code-screen-summary code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }',
+        '.no-code-extension-slots { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 8px; margin: -4px 0 14px; }',
+        '.no-code-extension-slot { border: 1px dashed #9fb3c8; border-radius: 6px; background: #f8fafc; padding: 8px 10px; }',
+        '.no-code-extension-slot strong { display: block; color: #334e68; font-size: 13px; line-height: 1.35; }',
+        '.no-code-extension-slot span { display: block; margin-top: 3px; color: #62748a; font-size: 12px; line-height: 1.35; overflow-wrap: anywhere; }',
+        '.no-code-extension-slot-links { display: flex; flex-wrap: wrap; gap: 6px; list-style: none; margin: 7px 0 0; padding: 0; }',
+        '.no-code-extension-slot-links a { display: inline-flex; align-items: center; min-height: 28px; border: 1px solid #9fb3c8; border-radius: 6px; background: #ffffff; color: #102a43; padding: 0 9px; font-size: 12px; text-decoration: none; }',
+        '.no-code-extension-slot-links a:focus-visible { outline: 3px solid #b6d4fe; outline-offset: 2px; }',
+        '.no-code-extension-slot-status-card { display: grid; gap: 6px; margin: 7px 0 0; }',
+        '.no-code-extension-slot-status-item { display: grid; grid-template-columns: minmax(88px, .85fr) minmax(0, 1fr); gap: 6px; align-items: center; border: 1px solid #d8dee8; border-radius: 6px; background: #ffffff; padding: 6px 8px; }',
+        '.no-code-extension-slot-status-item dt { color: #62748a; font-size: 11px; line-height: 1.35; }',
+        '.no-code-extension-slot-status-item dd { margin: 0; color: #243b53; font-size: 12px; line-height: 1.35; overflow-wrap: anywhere; }',
+        '.no-code-extension-slot-status-item[data-extension-slot-status-state="ok"] { border-color: #badbcc; background: #f0f9f4; }',
+        '.no-code-extension-slot-status-item[data-extension-slot-status-state="warning"] { border-color: #f0d58c; background: #fff8e5; }',
+        '.no-code-extension-slot-status-item[data-extension-slot-status-state="blocked"] { border-color: #f1b0b7; background: #fff5f5; }',
+        '.no-code-extension-slot-action-panel { display: grid; gap: 7px; margin: 7px 0 0; }',
+        '.no-code-extension-slot-action-item { display: grid; gap: 4px; border: 1px solid #d8dee8; border-radius: 6px; background: #ffffff; padding: 7px 8px; }',
+        '.no-code-extension-slot-action-item button { justify-self: flex-start; min-height: 28px; border: 1px solid #c8d1dc; border-radius: 6px; background: #eef1f4; color: #7b8794; padding: 0 9px; font: inherit; font-size: 12px; }',
+        '.no-code-extension-slot-action-item span { margin: 0; color: #62748a; font-size: 12px; line-height: 1.35; }',
+        '.no-code-extension-slot-action-item[data-extension-slot-action-state="blocked"] { border-color: #f1b0b7; background: #fff5f5; }',
         '.no-code-actions { display: flex; flex-wrap: wrap; gap: 8px; }',
         '.no-code-action-control { display: inline-flex; flex-direction: column; gap: 4px; align-items: flex-start; max-width: 260px; }',
         '.no-code-actions button { min-height: 34px; border: 1px solid #9fb3c8; background: #eef4fb; color: #102a43; border-radius: 6px; padding: 0 12px; font: inherit; }',

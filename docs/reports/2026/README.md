@@ -11,6 +11,18 @@
 
 ## Index
 
+- `2026-0708-local-stack-review-after-visible-custom-slot-renderer.md`
+  - #446 visible custom slot renderer closure 後の local commit stack review。`develop` は `origin/develop` より 13 commits ahead。Mtool dogfooding probe、configured presentation / slot metadata、inspection / closure、visible slot renderer first pass の意味単位に分かれているため、明示 push 前の squash / history rewrite は推奨しない。Push は未実行。Status: `DONE`。
+- `2026-0708-visible-custom-slot-renderer-closure.md`
+  - #445 visible custom slot renderer lane closure。#441-#444 で placeholder、related settings link-list、artifact status card、operator action panel の visible first pass が揃ったことを accepted capability として整理。build / publish / approval / custom operation / custom component execution は引き続き scope 外。Push は未実行。Status: `DONE`。
+- `2026-0708-operator-action-slot-panel-first-slice.md`
+  - #444 operator action slot panel first slice。`extension_slots[].action_items` を screen-definition に正規化し、Mtool Source Output review probe の operator actions slot が Review Artifact / Request Publish を disabled action affordance として render。Push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0708-artifact-status-slot-card-first-slice.md`
+  - #443 artifact status slot card first slice。`extension_slots[].status_items` を screen-definition に正規化し、Mtool Source Output review probe の artifact status slot が Artifact Strategy / Target Binding / Spec Visibility を read-only status card として render。Push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0708-related-settings-slot-link-list-first-slice.md`
+  - #442 related settings slot link-list first slice。`extension_slots[].links` を screen-definition に正規化し、Mtool Source Output review probe の related settings slot が Shared Contracts / Source Outputs への admin navigation link を render。Push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0708-visible-custom-slot-placeholder-first-slice.md`
+  - #441 visible custom slot placeholder first slice。generated runtime HTML が `extension_slots` を non-executing placeholder region として render し、Mtool dogfooding inspection boundary は `visible_placeholder` を報告。Push は未実行。Status: `FIRST_SLICE_DONE`。
 - `2026-0708-mtool-no-code-dogfooding-metadata-lane-closure.md`
   - #440 Mtool no-code dogfooding metadata lane closure。Mtool Source Output review fixture、custom extension boundary、artifact-shape proof、configured presentation metadata、custom UI slot metadata、inspection summary までを accepted capability として整理。local 7 commits は意味単位として読めるため squash 不要と判断。Push は未実行。Status: `DONE`。
 - `2026-0708-mtool-dogfooding-inspection-pass.md`

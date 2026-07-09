@@ -257,6 +257,28 @@ final class NoCodeScreenDefinitionTest extends TestCase
             ['related_settings_panel', 'artifact_status_panel'],
             array_column($runtimePreview['screens'][0]['extension_slots'] ?? [], 'slot_type'),
         );
+        self::assertSame(
+            ['shared_contracts', 'source_outputs'],
+            array_column($runtimePreview['screens'][0]['extension_slots'][0]['links'] ?? [], 'target'),
+        );
+        self::assertSame(
+            ['Artifact Strategy', 'Target Binding', 'Spec Visibility'],
+            array_column($runtimePreview['screens'][0]['extension_slots'][1]['status_items'] ?? [], 'label'),
+        );
+        self::assertSame(
+            ['review_source_output_artifact', 'request_source_output_publish'],
+            array_column($runtimePreview['screens'][1]['extension_slots'][2]['action_items'] ?? [], 'action_key'),
+        );
+        self::assertStringContainsString('data-extension-slots-for="mtool_source_output_review_list"', $files['runtime-preview.html']);
+        self::assertStringContainsString('data-extension-slot="mtool_source_output_related_settings"', $files['runtime-preview.html']);
+        self::assertStringContainsString('data-extension-slot-link="shared_contracts"', $files['runtime-preview.html']);
+        self::assertStringContainsString('/projects/MTOOL/shared-contracts', $files['runtime-preview.html']);
+        self::assertStringContainsString('data-extension-slot="mtool_source_output_artifact_status"', $files['runtime-preview.html']);
+        self::assertStringContainsString('data-extension-slot-status-item="Artifact Strategy"', $files['runtime-preview.html']);
+        self::assertStringContainsString('no-code-runtime', $files['runtime-preview.html']);
+        self::assertStringContainsString('data-extension-slot="mtool_source_output_operator_actions"', $files['runtime-preview.html']);
+        self::assertStringContainsString('data-extension-slot-action="review_source_output_artifact"', $files['runtime-preview.html']);
+        self::assertStringContainsString('Request Publish', $files['runtime-preview.html']);
         self::assertStringContainsString('Mtool Source Output Review List', $files['runtime-preview.html']);
         self::assertStringContainsString('Generated no-code screen definition and runtime preview from canonical Mtool metadata.', $files['README.md']);
     }
@@ -285,9 +307,15 @@ final class NoCodeScreenDefinitionTest extends TestCase
             $summary['screens'][1]['extension_slot_types'] ?? [],
         );
         self::assertSame([], $summary['screens'][2]['extension_slot_types'] ?? ['unexpected']);
-        self::assertSame('metadata_only', $summary['html_boundary']['custom_slot_rendering'] ?? '');
+        self::assertSame('visible_placeholder', $summary['html_boundary']['custom_slot_rendering'] ?? '');
         self::assertTrue($summary['html_boundary']['contains_runtime_preview_json'] ?? false);
-        self::assertFalse($summary['html_boundary']['contains_slot_region_markup'] ?? true);
+        self::assertTrue($summary['html_boundary']['contains_slot_region_markup'] ?? false);
+        self::assertTrue($summary['html_boundary']['contains_related_settings_slot'] ?? false);
+        self::assertTrue($summary['html_boundary']['contains_related_settings_link_list'] ?? false);
+        self::assertTrue($summary['html_boundary']['contains_artifact_status_slot'] ?? false);
+        self::assertTrue($summary['html_boundary']['contains_artifact_status_card'] ?? false);
+        self::assertTrue($summary['html_boundary']['contains_operator_actions_slot'] ?? false);
+        self::assertTrue($summary['html_boundary']['contains_operator_action_panel'] ?? false);
     }
 
     /**
