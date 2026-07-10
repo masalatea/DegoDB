@@ -13,7 +13,7 @@ When someone asks for "the plan list", answer from this section first. / 「計�
 
 ### Main Plan / 主計画
 
-Current main status: #583 adds a sample18 dry-run mutation dispatcher helper that assembles DBAccess-bound payload metadata without executing DBAccess or changing blocked route acceptance. `develop` is 59 commits ahead of `origin/develop`, and push has not been performed for #432-#583. / 現在の主計画ステータス: #583 で sample18 dry-run mutation dispatcher helper を追加し、DBAccess-bound payload metadata を組み立てつつ DBAccess execution と blocked route acceptance は変更していません。`develop` は `origin/develop` より 59 commits ahead、#432-#583 は push していません。
+Current main status: #584 closes the sample18 dry-run dispatcher helper lane and promotes idempotency/audit inventory before mutation enablement gate coverage. `develop` is 60 commits ahead of `origin/develop`, and push has not been performed for #432-#584. / 現在の主計画ステータス: #584 で sample18 dry-run dispatcher helper lane を閉じ、mutation enablement gate coverage より前に idempotency / audit inventory を昇格しました。`develop` は `origin/develop` より 60 commits ahead、#432-#584 は push していません。
 
 | Order | Work unit / 作業の塊 | Commit unit / コミット単位 | Status | Rough effort / 目安 |
 | --- | --- | --- | --- | --- |
@@ -142,7 +142,8 @@ Current main status: #583 adds a sample18 dry-run mutation dispatcher helper tha
 | 581 | Sample18 post-blocked-guarded-click lane closure / sample18 post-blocked-guarded-click lane closure | Close the blocked guarded click binding lane and decide whether mutation dispatcher inventory or additional blocked-feedback hardening should be promoted next | `DONE` | 0.25 - 0.5 day / 0.25 - 0.5 日 |
 | 582 | Sample18 mutation dispatcher inventory / sample18 mutation dispatcher inventory | Inventory the generated submit mutation dispatcher boundary, DBAccess call contract, auth/CSRF/idempotency/audit gates, and test matrix before enabling mutation | `DONE` | 0.5 - 1 day / 半日 - 1 日 |
 | 583 | Sample18 mutation dispatcher helper dry-run first slice / sample18 mutation dispatcher helper dry-run first slice | Add a dispatcher helper that assembles DBAccess-bound TaskCard payloads and response metadata without executing DBAccess mutation or changing generated route acceptance | `DONE` | 0.5 - 1 day / 半日 - 1 日 |
-| 584 | Sample18 post-dispatcher-helper lane closure / sample18 post-dispatcher-helper lane closure | Close the dry-run dispatcher helper lane and decide whether idempotency/audit inventory or mutation enablement gate coverage should be promoted next | `ACTIVE_NEXT` | 0.25 - 0.5 day / 0.25 - 0.5 日 |
+| 584 | Sample18 post-dispatcher-helper lane closure / sample18 post-dispatcher-helper lane closure | Close the dry-run dispatcher helper lane and decide whether idempotency/audit inventory or mutation enablement gate coverage should be promoted next | `DONE` | 0.25 - 0.5 day / 0.25 - 0.5 日 |
+| 585 | Sample18 generated submit idempotency and audit inventory / sample18 generated submit idempotency and audit inventory | Define duplicate-safe keys, audit event shape, and persistence/response boundaries for generated submit before any mutation enablement gate coverage | `ACTIVE_NEXT` | 0.5 - 1 day / 半日 - 1 日 |
 
 ### Long-Term No-Code Roadmap / 長期 No-Code ロードマップ
 

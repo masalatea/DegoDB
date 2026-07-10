@@ -11,6 +11,8 @@
 
 ## Index
 
+- `2026-0710-sample18-post-dispatcher-helper-lane-closure.md`
+  - #584 sample18 post-dispatcher-helper lane closure。#583 の dry-run dispatcher helper を受け入れ、mutation enablement gate coverage より前に idempotency / audit inventory (#585) を昇格。DBAccess mutation は未有効化。Status: `DONE`。
 - `2026-0710-sample18-mutation-dispatcher-helper-dry-run-first-slice.md`
   - #583 sample18 mutation dispatcher helper dry-run first slice。normalized generated-submit payload を DBAccess-bound `TaskCardData` field metadata に組み立てる dry-run helper を追加し、route は引き続き `generated_submit_disabled` / `mutation_enabled=false`。focused PHPUnit、HTTP smoke、public runtime browser smoke、`make test` 通過。Status: `DONE`。
 - `2026-0710-sample18-mutation-dispatcher-inventory.md`
