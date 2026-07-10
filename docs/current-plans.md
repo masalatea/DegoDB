@@ -13,7 +13,7 @@ When someone asks for "the plan list", answer from this section first. / 「計�
 
 ### Main Plan / 主計画
 
-Current main status: #576 proves the sample18 generated submit buttons remain disabled, non-clicking, and non-submitting while exposing click intent markers. `develop` is 52 commits ahead of `origin/develop`, and push has not been performed for #432-#576. / 現在の主計画ステータス: #576 で sample18 generated submit button が disabled / non-clicking / non-submitting のまま click intent marker を公開することを確認しました。`develop` は `origin/develop` より 52 commits ahead、#432-#576 は push していません。
+Current main status: #577 closes the sample18 disabled click lane and promotes guarded click binding inventory before mutation dispatcher work. `develop` is 53 commits ahead of `origin/develop`, and push has not been performed for #432-#577. / 現在の主計画ステータス: #577 で sample18 disabled click lane を閉じ、mutation dispatcher work より前に guarded click binding inventory を昇格しました。`develop` は `origin/develop` より 53 commits ahead、#432-#577 は push していません。
 
 | Order | Work unit / 作業の塊 | Commit unit / コミット単位 | Status | Rough effort / 目安 |
 | --- | --- | --- | --- | --- |
@@ -135,7 +135,8 @@ Current main status: #576 proves the sample18 generated submit buttons remain di
 | 574 | Sample18 generated submit CSRF handoff preflight / sample18 generated submit CSRF handoff preflight | Define and expose the CSRF token handoff contract for generated submit actions while keeping buttons disabled and mutation parked | `DONE` | 0.5 - 1 day / 半日 - 1 日 |
 | 575 | Sample18 post-CSRF handoff lane closure / sample18 post-CSRF handoff lane closure | Close the CSRF handoff lane and decide whether disabled click intent or mutation dispatcher inventory should be promoted next | `DONE` | 0.25 - 0.5 day / 0.25 - 0.5 日 |
 | 576 | Sample18 disabled submit click intent preflight / sample18 disabled submit click intent preflight | Prove generated submit action buttons remain non-clickable/non-submitting while exposing enough intent metadata for a later guarded click-binding lane | `DONE` | 0.5 - 1 day / 半日 - 1 日 |
-| 577 | Sample18 post-disabled-click lane closure / sample18 post-disabled-click lane closure | Close the disabled click intent lane and decide whether guarded click binding or mutation dispatcher inventory should be promoted next | `ACTIVE_NEXT` | 0.25 - 0.5 day / 0.25 - 0.5 日 |
+| 577 | Sample18 post-disabled-click lane closure / sample18 post-disabled-click lane closure | Close the disabled click intent lane and decide whether guarded click binding or mutation dispatcher inventory should be promoted next | `DONE` | 0.25 - 0.5 day / 0.25 - 0.5 日 |
+| 578 | Sample18 guarded submit click binding inventory / sample18 guarded submit click binding inventory | Define the first guarded generated click-binding contract, including enablement gates, payload assembly, blocked route response handling, and UI failure display before implementation | `ACTIVE_NEXT` | 0.5 - 1 day / 半日 - 1 日 |
 
 ### Long-Term No-Code Roadmap / 長期 No-Code ロードマップ
 

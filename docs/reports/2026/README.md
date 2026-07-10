@@ -11,6 +11,8 @@
 
 ## Index
 
+- `2026-0710-sample18-post-disabled-click-lane-closure.md`
+  - #577 sample18 post-disabled-click lane closure。#576 の disabled / non-clicking / non-submitting evidence を受け入れ、次は mutation dispatcher ではなく、blocked route のまま guarded generated click binding を設計する inventory (#578) を昇格。Status: `DONE`。
 - `2026-0710-sample18-disabled-submit-click-intent-preflight.md`
   - #576 sample18 disabled submit click intent preflight。generated submit action metadata / runtime DOM に disabled click binding marker を追加し、public runtime browser smoke で disabled button の programmatic click が event/state change を起こさないことを確認。Status: `DONE`。
 - `2026-0710-sample18-post-csrf-handoff-lane-closure.md`
