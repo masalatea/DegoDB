@@ -11,6 +11,8 @@
 
 ## Index
 
+- `2026-0710-sample18-guarded-submit-click-binding-inventory.md`
+  - #578 sample18 guarded submit click binding inventory。generated submit action metadata / runtime DOM に guarded click inventory、enablement gate set、payload assembly、blocked response handling、failure display target を追加し、focused PHPUnit と public runtime browser smoke で確認。network submit / mutation は disabled のまま維持。Status: `DONE`。
 - `2026-0710-sample18-post-disabled-click-lane-closure.md`
   - #577 sample18 post-disabled-click lane closure。#576 の disabled / non-clicking / non-submitting evidence を受け入れ、次は mutation dispatcher ではなく、blocked route のまま guarded generated click binding を設計する inventory (#578) を昇格。Status: `DONE`。
 - `2026-0710-sample18-disabled-submit-click-intent-preflight.md`

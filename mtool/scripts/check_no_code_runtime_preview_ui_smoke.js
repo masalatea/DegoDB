@@ -243,6 +243,11 @@ function expectedProfile(name) {
       managedActionClickBindingState: 'disabled_preflight',
       managedActionSubmitTrigger: 'none',
       managedActionNetworkSubmitEnabled: 'false',
+      managedActionGuardedClickInventoryState: 'defined_not_enabled',
+      managedActionEnableGateSet: 'csrf_handoff_and_blocked_route_verified',
+      managedActionPayloadAssembly: 'operation_key_plus_action_fields_plus_csrf',
+      managedActionBlockedResponseHandling: 'render_failure_feedback_without_retry',
+      managedActionFailureDisplayTarget: 'no-code-action-feedback',
       managedActionFailClosedResult: 'generated_submit_disabled',
       payload: {
         id: 1801,
@@ -543,6 +548,11 @@ async function probeRuntimeDisabledActionSurface(page, config) {
       clickBindingStates: buttons.map((button) => button.getAttribute('data-action-click-binding-state') || ''),
       submitTriggers: buttons.map((button) => button.getAttribute('data-action-submit-trigger') || ''),
       networkSubmitEnabled: buttons.map((button) => button.getAttribute('data-action-network-submit-enabled') || ''),
+      guardedClickInventoryStates: buttons.map((button) => button.getAttribute('data-action-guarded-click-inventory-state') || ''),
+      enableGateSets: buttons.map((button) => button.getAttribute('data-action-enable-gate-set') || ''),
+      payloadAssemblies: buttons.map((button) => button.getAttribute('data-action-payload-assembly') || ''),
+      blockedResponseHandling: buttons.map((button) => button.getAttribute('data-action-blocked-response-handling') || ''),
+      failureDisplayTargets: buttons.map((button) => button.getAttribute('data-action-failure-display-target') || ''),
       failClosedResults: buttons.map((button) => button.getAttribute('data-action-fail-closed-result') || ''),
       programmaticClickProbe: buttons.map((button) => {
         let clickCount = 0;
@@ -602,6 +612,11 @@ async function probeRuntimeDisabledActionSurface(page, config) {
     || result.clickBindingStates.some((state) => state !== config.expected.managedActionClickBindingState)
     || result.submitTriggers.some((trigger) => trigger !== config.expected.managedActionSubmitTrigger)
     || result.networkSubmitEnabled.some((enabled) => enabled !== config.expected.managedActionNetworkSubmitEnabled)
+    || result.guardedClickInventoryStates.some((state) => state !== config.expected.managedActionGuardedClickInventoryState)
+    || result.enableGateSets.some((gateSet) => gateSet !== config.expected.managedActionEnableGateSet)
+    || result.payloadAssemblies.some((assembly) => assembly !== config.expected.managedActionPayloadAssembly)
+    || result.blockedResponseHandling.some((handling) => handling !== config.expected.managedActionBlockedResponseHandling)
+    || result.failureDisplayTargets.some((target) => target !== config.expected.managedActionFailureDisplayTarget)
     || result.failClosedResults.some((resultCode) => resultCode !== config.expected.managedActionFailClosedResult)
     || result.programmaticClickProbe.some((probe) => probe.clickCount !== 0 || probe.beforeState !== 'disabled' || probe.afterState !== 'disabled' || probe.beforeDisabled !== true || probe.afterDisabled !== true)
     || result.disabledProperties.some((disabled) => disabled !== true)

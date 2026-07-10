@@ -263,6 +263,18 @@
     "click_binding_state": "disabled_preflight",
     "submit_trigger": "none",
     "network_submit_enabled": false,
+    "guarded_click_inventory_state": "defined_not_enabled",
+    "enablement_gate_set": "csrf_handoff_and_blocked_route_verified",
+    "enablement_gates": [
+      "action_available",
+      "csrf_token_present",
+      "submit_route_declared",
+      "blocked_response_handled",
+      "mutation_dispatcher_still_disabled"
+    ],
+    "payload_assembly": "operation_key_plus_action_fields_plus_csrf",
+    "blocked_response_handling": "render_failure_feedback_without_retry",
+    "failure_display_target": "no-code-action-feedback",
     "runtime_click_binding": false,
     "mutation_enabled": false,
     "fail_closed_result": "generated_submit_disabled",
@@ -276,6 +288,11 @@
       "data-action-click-binding-state": "disabled_preflight",
       "data-action-submit-trigger": "none",
       "data-action-network-submit-enabled": "false",
+      "data-action-guarded-click-inventory-state": "defined_not_enabled",
+      "data-action-enable-gate-set": "csrf_handoff_and_blocked_route_verified",
+      "data-action-payload-assembly": "operation_key_plus_action_fields_plus_csrf",
+      "data-action-blocked-response-handling": "render_failure_feedback_without_retry",
+      "data-action-failure-display-target": "no-code-action-feedback",
       "data-action-fail-closed-result": "generated_submit_disabled"
     }
   },

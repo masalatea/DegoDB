@@ -964,6 +964,11 @@ function app_no_code_runtime_render_actions_html(array $actions, string $screenT
         $clickBindingState = (string) ($submitBindingGate['click_binding_state'] ?? '');
         $submitTrigger = (string) ($submitBindingGate['submit_trigger'] ?? '');
         $networkSubmitEnabled = (bool) ($submitBindingGate['network_submit_enabled'] ?? false);
+        $guardedClickInventoryState = (string) ($submitBindingGate['guarded_click_inventory_state'] ?? '');
+        $enablementGateSet = (string) ($submitBindingGate['enablement_gate_set'] ?? '');
+        $payloadAssembly = (string) ($submitBindingGate['payload_assembly'] ?? '');
+        $blockedResponseHandling = (string) ($submitBindingGate['blocked_response_handling'] ?? '');
+        $failureDisplayTarget = (string) ($submitBindingGate['failure_display_target'] ?? '');
         $failClosedResult = (string) ($submitBindingGate['fail_closed_result'] ?? '');
         $hintId = app_no_code_runtime_dom_id('no-code-action-hint-' . $screenKey . '-' . $actionKey);
         $disabledReason = $enabled ? '' : 'policy-not-enabled';
@@ -984,6 +989,11 @@ function app_no_code_runtime_render_actions_html(array $actions, string $screenT
             . ($clickBindingState !== '' ? ' data-action-click-binding-state="' . app_no_code_runtime_html_escape($clickBindingState) . '"' : '')
             . ($submitTrigger !== '' ? ' data-action-submit-trigger="' . app_no_code_runtime_html_escape($submitTrigger) . '"' : '')
             . ' data-action-network-submit-enabled="' . ($networkSubmitEnabled ? 'true' : 'false') . '"'
+            . ($guardedClickInventoryState !== '' ? ' data-action-guarded-click-inventory-state="' . app_no_code_runtime_html_escape($guardedClickInventoryState) . '"' : '')
+            . ($enablementGateSet !== '' ? ' data-action-enable-gate-set="' . app_no_code_runtime_html_escape($enablementGateSet) . '"' : '')
+            . ($payloadAssembly !== '' ? ' data-action-payload-assembly="' . app_no_code_runtime_html_escape($payloadAssembly) . '"' : '')
+            . ($blockedResponseHandling !== '' ? ' data-action-blocked-response-handling="' . app_no_code_runtime_html_escape($blockedResponseHandling) . '"' : '')
+            . ($failureDisplayTarget !== '' ? ' data-action-failure-display-target="' . app_no_code_runtime_html_escape($failureDisplayTarget) . '"' : '')
             . ($failClosedResult !== '' ? ' data-action-fail-closed-result="' . app_no_code_runtime_html_escape($failClosedResult) . '"' : '')
             . ($disabledReason !== '' ? ' data-action-disabled-reason="' . app_no_code_runtime_html_escape($disabledReason) . '"' : '')
             . ' aria-describedby="' . app_no_code_runtime_html_escape($hintId) . '"'
