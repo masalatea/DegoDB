@@ -13,7 +13,7 @@ When someone asks for "the plan list", answer from this section first. / 「計�
 
 ### Main Plan / 主計画
 
-Current main status: #580 wires the sample18 generated submit click path to the blocked route under explicit guards, with DBAccess/mutation still disabled. `develop` is 56 commits ahead of `origin/develop`, and push has not been performed for #432-#580. / 現在の主計画ステータス: #580 で sample18 generated submit click path を明示 guard の下で blocked route へ接続し、DBAccess / mutation は disabled のまま維持しました。`develop` は `origin/develop` より 56 commits ahead、#432-#580 は push していません。
+Current main status: #581 closes the sample18 blocked guarded click-binding lane and promotes mutation dispatcher inventory before any mutation enablement. `develop` is 57 commits ahead of `origin/develop`, and push has not been performed for #432-#581. / 現在の主計画ステータス: #581 で sample18 blocked guarded click-binding lane を閉じ、mutation enablement より前に mutation dispatcher inventory を昇格しました。`develop` は `origin/develop` より 57 commits ahead、#432-#581 は push していません。
 
 | Order | Work unit / 作業の塊 | Commit unit / コミット単位 | Status | Rough effort / 目安 |
 | --- | --- | --- | --- | --- |
@@ -139,7 +139,8 @@ Current main status: #580 wires the sample18 generated submit click path to the 
 | 578 | Sample18 guarded submit click binding inventory / sample18 guarded submit click binding inventory | Define the first guarded generated click-binding contract, including enablement gates, payload assembly, blocked route response handling, and UI failure display before implementation | `DONE` | 0.5 - 1 day / 半日 - 1 日 |
 | 579 | Sample18 post-guarded-click-inventory lane closure / sample18 post-guarded-click-inventory lane closure | Close the guarded click-binding inventory lane and decide whether to implement blocked guarded click binding or continue mutation dispatcher inventory | `DONE` | 0.25 - 0.5 day / 0.25 - 0.5 日 |
 | 580 | Sample18 blocked guarded submit click binding first slice / sample18 blocked guarded submit click binding first slice | Wire the narrow generated submit click path to the blocked route under explicit guards, verify blocked feedback, and keep DBAccess/mutation disabled | `DONE` | 1 day / 1 日 |
-| 581 | Sample18 post-blocked-guarded-click lane closure / sample18 post-blocked-guarded-click lane closure | Close the blocked guarded click binding lane and decide whether mutation dispatcher inventory or additional blocked-feedback hardening should be promoted next | `ACTIVE_NEXT` | 0.25 - 0.5 day / 0.25 - 0.5 日 |
+| 581 | Sample18 post-blocked-guarded-click lane closure / sample18 post-blocked-guarded-click lane closure | Close the blocked guarded click binding lane and decide whether mutation dispatcher inventory or additional blocked-feedback hardening should be promoted next | `DONE` | 0.25 - 0.5 day / 0.25 - 0.5 日 |
+| 582 | Sample18 mutation dispatcher inventory / sample18 mutation dispatcher inventory | Inventory the generated submit mutation dispatcher boundary, DBAccess call contract, auth/CSRF/idempotency/audit gates, and test matrix before enabling mutation | `ACTIVE_NEXT` | 0.5 - 1 day / 半日 - 1 日 |
 
 ### Long-Term No-Code Roadmap / 長期 No-Code ロードマップ
 
