@@ -13,7 +13,7 @@ When someone asks for "the plan list", answer from this section first. / 「計�
 
 ### Main Plan / 主計画
 
-Current main status: #586 adds dry-run generated submit dedupe key, payload fingerprint, and audit event preview helpers without persistence or mutation. `develop` is 62 commits ahead of `origin/develop`, and push has not been performed for #432-#586. / 現在の主計画ステータス: #586 で dry-run generated submit dedupe key、payload fingerprint、audit event preview helper を追加し、persistence や mutation は未有効化です。`develop` は `origin/develop` より 62 commits ahead、#432-#586 は push していません。
+Current main status: #587 closes the dry-run idempotency/audit helper lane and promotes audit append persistence before mutation enablement gate coverage. `develop` is 63 commits ahead of `origin/develop`, and push has not been performed for #432-#587. / 現在の主計画ステータス: #587 で dry-run idempotency / audit helper lane を閉じ、mutation enablement gate coverage より前に audit append persistence を昇格しました。`develop` は `origin/develop` より 63 commits ahead、#432-#587 は push していません。
 
 | Order | Work unit / 作業の塊 | Commit unit / コミット単位 | Status | Rough effort / 目安 |
 | --- | --- | --- | --- | --- |
@@ -145,7 +145,8 @@ Current main status: #586 adds dry-run generated submit dedupe key, payload fing
 | 584 | Sample18 post-dispatcher-helper lane closure / sample18 post-dispatcher-helper lane closure | Close the dry-run dispatcher helper lane and decide whether idempotency/audit inventory or mutation enablement gate coverage should be promoted next | `DONE` | 0.25 - 0.5 day / 0.25 - 0.5 日 |
 | 585 | Sample18 generated submit idempotency and audit inventory / sample18 generated submit idempotency and audit inventory | Define duplicate-safe keys, audit event shape, and persistence/response boundaries for generated submit before any mutation enablement gate coverage | `DONE` | 0.5 - 1 day / 半日 - 1 日 |
 | 586 | Sample18 generated submit idempotency/audit dry-run helper / sample18 generated submit idempotency/audit dry-run helper | Add dry-run helpers that derive generated submit dedupe keys and audit event payloads without writing audit rows, enqueueing outbox items, or enabling mutation | `DONE` | 0.5 - 1 day / 半日 - 1 日 |
-| 587 | Sample18 post-idempotency-audit-helper lane closure / sample18 post-idempotency-audit-helper lane closure | Close the dry-run idempotency/audit helper lane and decide whether audit append persistence or mutation enablement gate coverage should be promoted next | `ACTIVE_NEXT` | 0.25 - 0.5 day / 0.25 - 0.5 日 |
+| 587 | Sample18 post-idempotency-audit-helper lane closure / sample18 post-idempotency-audit-helper lane closure | Close the dry-run idempotency/audit helper lane and decide whether audit append persistence or mutation enablement gate coverage should be promoted next | `DONE` | 0.25 - 0.5 day / 0.25 - 0.5 日 |
+| 588 | Sample18 generated submit blocked audit append first slice / sample18 generated submit blocked audit append first slice | Append audit records for blocked valid generated submit requests while keeping DBAccess mutation disabled and validation/CSRF failures fail-closed | `ACTIVE_NEXT` | 0.5 - 1 day / 半日 - 1 日 |
 
 ### Long-Term No-Code Roadmap / 長期 No-Code ロードマップ
 
