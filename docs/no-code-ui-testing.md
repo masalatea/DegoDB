@@ -209,6 +209,20 @@ The first fast availability-state slice keeps generated defaults disabled while 
 - the same test keeps the generated default runtime preview at `data-action-availability="disabled"`;
 - selected key and missing input fail-closed assertions remain part of the same fast contract.
 
+### Sample18 Enabled-Candidate Browser Smoke Preflight
+
+The first enabled-candidate browser smoke should observe UI state only. It should not prove real DB mutation, and it should not change generated defaults.
+
+Use a browser-side enabled-candidate overlay or fetch stub so the public preview can expose:
+
+- `create_task_card`, `update_task_card`, and `complete_task_card` as `data-action-availability="enabled"` candidates;
+- `reopen_task_card` and `delete_task_card` as disabled or absent from the executable candidate set;
+- route-compatible submit URL, CSRF handoff, selected row key, payload assembly, and guarded click markers;
+- rendered success/blocked/error/recovery feedback state from a stubbed generated-submit response;
+- no real network mutation unless a later smoke explicitly opts into the already guarded `enabled-real-fetch` path.
+
+The first implementation should add a separate smoke target rather than widening the disabled-action smoke. The disabled default smoke remains the regression guard for ordinary generated preview behavior.
+
 ## Design Boundary
 
 Fast UI contract tests prove that generated metadata and generated markup expose the expected UI contract. They do not prove browser layout, CSS pixel rendering, or server mutation. Browser smoke and route-level tests remain responsible for those outer boundaries.
