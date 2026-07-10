@@ -13,7 +13,7 @@ When someone asks for "the plan list", answer from this section first. / 「計�
 
 ### Main Plan / 主計画
 
-Current main status: #568 closes the sample18 blocked submit-route preflight lane and promotes HTTP smoke coverage next, before route binding or mutation dispatch. `develop` is 44 commits ahead of `origin/develop`, and push has not been performed for #432-#568. / 現在の主計画ステータス: #568 で sample18 blocked submit-route preflight lane を閉じ、route binding や mutation dispatch の前に HTTP smoke coverage を次へ昇格しました。`develop` は `origin/develop` より 44 commits ahead、#432-#568 は push していません。
+Current main status: #571 closes the sample18 submit binding gate lane and promotes a CSRF guard preflight before disabled click intent or mutation dispatcher work. `develop` is 47 commits ahead of `origin/develop`, and push has not been performed for #432-#571. / 現在の主計画ステータス: #571 で sample18 submit binding gate lane を閉じ、disabled click intent や mutation dispatcher より前に CSRF guard preflight を昇格しました。`develop` は `origin/develop` より 47 commits ahead、#432-#571 は push していません。
 
 | Order | Work unit / 作業の塊 | Commit unit / コミット単位 | Status | Rough effort / 目安 |
 | --- | --- | --- | --- | --- |
@@ -127,7 +127,10 @@ Current main status: #568 closes the sample18 blocked submit-route preflight lan
 | 566 | Sample18 generated submit route blocked wrapper / sample18 generated submit route blocked wrapper | Add a narrow generated submit HTTP wrapper that validates request payloads but still returns blocked before mutation dispatch | `DONE` | 0.5 - 1 day / 半日 - 1 日 |
 | 567 | Sample18 generated submit route browser preflight / sample18 generated submit route browser preflight | Prove the public/runtime UI can point to the blocked generated submit route without enabling buttons or mutation | `DONE` | 0.5 - 1 day / 半日 - 1 日 |
 | 568 | Sample18 submit route lane closure / sample18 submit route lane closure | Close the blocked submit-route preflight lane and decide whether route binding, HTTP smoke, or mutation dispatch should be promoted next | `DONE` | 0.25 - 0.5 day / 0.25 - 0.5 日 |
-| 569 | Sample18 blocked submit route HTTP smoke / sample18 blocked submit route HTTP smoke | Prove the generated submit endpoint returns blocked, validation, unknown-operation, and method-guard JSON through the authenticated HTTP stack before runtime binding or mutation dispatch | `ACTIVE_NEXT` | 0.5 - 1 day / 半日 - 1 日 |
+| 569 | Sample18 blocked submit route HTTP smoke / sample18 blocked submit route HTTP smoke | Prove the generated submit endpoint returns blocked, validation, unknown-operation, and method-guard JSON through the authenticated HTTP stack before runtime binding or mutation dispatch | `DONE` | 0.5 - 1 day / 半日 - 1 日 |
+| 570 | Sample18 submit route binding gate preflight / sample18 submit route binding gate preflight | Define the generated runtime binding and enablement gates for the submit route, including CSRF source, disabled-state transition, and fail-closed fallback before any mutation dispatch | `DONE` | 0.5 - 1 day / 半日 - 1 日 |
+| 571 | Sample18 submit binding lane closure / sample18 submit binding lane closure | Close the binding gate lane and decide whether disabled click intent, CSRF handoff, or mutation dispatcher work should be promoted next | `DONE` | 0.25 - 0.5 day / 0.25 - 0.5 日 |
+| 572 | Sample18 generated submit CSRF guard preflight / sample18 generated submit CSRF guard preflight | Add fail-closed CSRF handling and HTTP smoke coverage for the generated submit route before any runtime click binding or mutation dispatcher work | `ACTIVE_NEXT` | 0.5 - 1 day / 半日 - 1 日 |
 
 ### Long-Term No-Code Roadmap / 長期 No-Code ロードマップ
 

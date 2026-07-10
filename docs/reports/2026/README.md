@@ -11,6 +11,12 @@
 
 ## Index
 
+- `2026-0710-sample18-submit-binding-lane-closure.md`
+  - #571 sample18 submit binding lane closure。#570 の binding gate を受け入れ、次は disabled click intent / mutation dispatcher ではなく、generated-submit route の fail-closed CSRF guard preflight (#572) を先に進める判断を記録。Status: `DONE`。
+- `2026-0710-sample18-submit-route-binding-gate-preflight.md`
+  - #570 sample18 submit route binding gate preflight。sample18 generated managed actions に `submit_binding_gate` metadata を追加し、runtime HTML / browser smoke で binding state、CSRF source、fail-closed result marker を確認。runtime click と mutation は disabled のまま維持。Status: `DONE`。
+- `2026-0710-sample18-blocked-submit-route-http-smoke.md`
+  - #569 sample18 blocked submit route HTTP smoke。既存 `sample18-http-runtime-smoke` に generated-submit endpoint の authenticated HTTP checks を追加し、GET 405、valid POST 409 blocked、invalid POST 422、unknown operation 404 の JSON failure を確認。Status: `DONE`。
 - `2026-0710-sample18-submit-route-lane-closure.md`
   - #568 sample18 submit route lane closure。request contract、blocked JSON wrapper、disabled UI route marker までを preflight lane の受け入れ範囲として閉じ、次は runtime binding / mutation dispatch ではなく authenticated HTTP smoke (#569) を先に進める判断を記録。Status: `DONE`。
 - `2026-0710-sample18-generated-submit-route-browser-preflight.md`

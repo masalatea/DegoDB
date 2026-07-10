@@ -1107,6 +1107,7 @@ function app_no_code_screen_definition_actions(array $contract, array $operation
             'availability' => $policy['allowed'] ? 'enabled' : 'disabled',
             'policy' => $policy,
             'submit_route' => app_no_code_screen_definition_managed_action_submit_route((string) ($operation['operation_key'] ?? '')),
+            'submit_binding_gate' => app_no_code_screen_definition_managed_action_submit_binding_gate((string) ($operation['operation_key'] ?? '')),
             'fields' => app_no_code_screen_definition_action_fields($operation),
         ];
     }
@@ -1119,6 +1120,27 @@ function app_no_code_screen_definition_managed_action_submit_route(string $opera
     return in_array($operationKey, ['create_task_card', 'update_task_card', 'complete_task_card'], true)
         ? '/samples/sample18-task-board/no-code/generated-submit'
         : '';
+}
+
+/**
+ * @return array<string,mixed>
+ */
+function app_no_code_screen_definition_managed_action_submit_binding_gate(string $operationKey): array
+{
+    if (!in_array($operationKey, ['create_task_card', 'update_task_card', 'complete_task_card'], true)) {
+        return [];
+    }
+
+    return [
+        'binding_state' => 'blocked_preflight',
+        'submit_route' => app_no_code_screen_definition_managed_action_submit_route($operationKey),
+        'csrf_source' => 'sample18_task_board_form_token',
+        'required_button_state' => 'disabled',
+        'runtime_click_binding' => false,
+        'mutation_enabled' => false,
+        'fail_closed_result' => 'generated_submit_disabled',
+        'http_smoke_command' => 'make sample18-http-runtime-smoke',
+    ];
 }
 
 /**
@@ -1310,6 +1332,7 @@ function app_no_code_screen_definition_screen_actions(array $actions, array $ope
                 'operation_type' => (string) ($action['operation_type'] ?? ''),
                 'availability' => (string) ($action['availability'] ?? 'disabled'),
                 'submit_route' => (string) ($action['submit_route'] ?? ''),
+                'submit_binding_gate' => is_array($action['submit_binding_gate'] ?? null) ? $action['submit_binding_gate'] : [],
             ];
         }
     }

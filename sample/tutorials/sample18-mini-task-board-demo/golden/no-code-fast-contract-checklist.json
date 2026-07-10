@@ -246,6 +246,26 @@
       }
     }
   },
+  "submit_route_binding_gate": {
+    "state": "blocked_preflight",
+    "managed_action_keys": [
+      "complete_task_card",
+      "create_task_card",
+      "update_task_card"
+    ],
+    "submit_route": "/samples/sample18-task-board/no-code/generated-submit",
+    "csrf_source": "sample18_task_board_form_token",
+    "required_button_state": "disabled",
+    "runtime_click_binding": false,
+    "mutation_enabled": false,
+    "fail_closed_result": "generated_submit_disabled",
+    "http_smoke_command": "make sample18-http-runtime-smoke",
+    "required_dom_attributes": {
+      "data-action-binding-state": "blocked_preflight",
+      "data-action-csrf-source": "sample18_task_board_form_token",
+      "data-action-fail-closed-result": "generated_submit_disabled"
+    }
+  },
   "remaining_gaps": [
     "reopen/delete remain curated-route-only until DBAccess or custom adapter metadata exists",
     "generated action buttons remain disabled until mutation dispatch is explicitly promoted",

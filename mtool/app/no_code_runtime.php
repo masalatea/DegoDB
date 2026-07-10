@@ -211,6 +211,9 @@ function app_no_code_runtime_render_actions(array $screenActions, array $contrac
             'enabled' => $availability === 'enabled',
             'availability' => $availability,
             'submit_route' => (string) ($screenAction['submit_route'] ?? $contractAction['submit_route'] ?? ''),
+            'submit_binding_gate' => is_array($screenAction['submit_binding_gate'] ?? null)
+                ? $screenAction['submit_binding_gate']
+                : (is_array($contractAction['submit_binding_gate'] ?? null) ? $contractAction['submit_binding_gate'] : []),
             'fields' => is_array($contractAction['fields'] ?? null) ? array_values($contractAction['fields']) : [],
             'failed_checks' => is_array($contractAction['policy']['failed_checks'] ?? null)
                 ? $contractAction['policy']['failed_checks']
@@ -952,6 +955,10 @@ function app_no_code_runtime_render_actions_html(array $actions, string $screenT
         $actionKey = (string) ($action['action_key'] ?? '');
         $operationType = (string) ($action['operation_type'] ?? '');
         $submitRoute = (string) ($action['submit_route'] ?? '');
+        $submitBindingGate = is_array($action['submit_binding_gate'] ?? null) ? $action['submit_binding_gate'] : [];
+        $bindingState = (string) ($submitBindingGate['binding_state'] ?? '');
+        $csrfSource = (string) ($submitBindingGate['csrf_source'] ?? '');
+        $failClosedResult = (string) ($submitBindingGate['fail_closed_result'] ?? '');
         $hintId = app_no_code_runtime_dom_id('no-code-action-hint-' . $screenKey . '-' . $actionKey);
         $disabledReason = $enabled ? '' : 'policy-not-enabled';
         $buttons[] = '<span class="no-code-action-control" data-action-control="' . app_no_code_runtime_html_escape($actionKey) . '">'
@@ -963,6 +970,9 @@ function app_no_code_runtime_render_actions_html(array $actions, string $screenT
             . ' data-action-affordance="keyboard-intent-preview"'
             . ' data-keyboard-activation="enter-space"'
             . ($submitRoute !== '' ? ' data-action-submit-url="' . app_no_code_runtime_html_escape($submitRoute) . '"' : '')
+            . ($bindingState !== '' ? ' data-action-binding-state="' . app_no_code_runtime_html_escape($bindingState) . '"' : '')
+            . ($csrfSource !== '' ? ' data-action-csrf-source="' . app_no_code_runtime_html_escape($csrfSource) . '"' : '')
+            . ($failClosedResult !== '' ? ' data-action-fail-closed-result="' . app_no_code_runtime_html_escape($failClosedResult) . '"' : '')
             . ($disabledReason !== '' ? ' data-action-disabled-reason="' . app_no_code_runtime_html_escape($disabledReason) . '"' : '')
             . ' aria-describedby="' . app_no_code_runtime_html_escape($hintId) . '"'
             . ' aria-disabled="' . ($enabled ? 'false' : 'true') . '"'
