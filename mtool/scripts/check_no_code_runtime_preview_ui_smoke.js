@@ -12,7 +12,7 @@ function usage() {
 Options:
   --html=PATH                    runtime-preview.html path
   --url=URL                      runtime-preview.html URL
-  --profile=sample07|sample28|sample29|sample31
+  --profile=sample07|sample18|sample28|sample29|sample31
                                  expected no-code runtime shape (default: sample07)
   --execution-binding=ignore|none|required
                                  expected execution binding state (default: ignore)
@@ -23,6 +23,7 @@ Options:
                                  probe server submit payload with stubbed or real fetch (default: none)
   --status-probe=real|stub-done|stub-failed
                                  status JSON behavior after submit probe (default: real)
+  --runtime-filter-dom-only      stop after checking public runtime filter controls
   --admin-user=USER              admin login user for enabled-real-fetch
   --admin-password=PASS          admin login password for enabled-real-fetch
   --output-dir=PATH              artifact directory root (default: output/playwright/no-code-runtime-preview)
@@ -47,6 +48,7 @@ function parseArgs(argv) {
     demoProcessing: 'ignore',
     submitProbe: 'none',
     statusProbe: 'real',
+    runtimeFilterDomOnly: false,
     adminUser: process.env.ADMIN_AUTH_STUB_USER || 'admin-local',
     adminPassword: process.env.ADMIN_AUTH_STUB_PASSWORD || 'change-this-admin-password',
     expected: expectedProfile('sample07'),
@@ -63,6 +65,10 @@ function parseArgs(argv) {
     }
     if (argument === '--headless') {
       config.headless = true;
+      continue;
+    }
+    if (argument === '--runtime-filter-dom-only') {
+      config.runtimeFilterDomOnly = true;
       continue;
     }
     if (!argument.startsWith('--') || !argument.includes('=')) {
@@ -192,6 +198,43 @@ function expectedProfile(name) {
         status: 'active',
         priority: 'high',
         body: 'Generated sample28 browser smoke payload',
+      },
+    };
+  }
+
+  if (name === 'sample18') {
+    return {
+      profile: name,
+      projectKey: 'SAMPLE18',
+      listScreenKey: 'task_card_list',
+      listScreenTitle: 'Task Card List',
+      detailScreenKey: 'task_card_detail',
+      detailScreenTitle: 'Task Card Detail',
+      formScreenKey: 'task_card_form',
+      formScreenTitle: 'Task Card Form',
+      actionKey: 'update_task_card',
+      operationKey: 'update_task_card',
+      operationType: 'update',
+      keyField: 'id',
+      keyValue: 1801,
+      formFieldCount: 9,
+      draftInputCountAfterEdit: 1,
+      inputFields: ['title', 'body', 'status', 'assigned_to', 'priority', 'due_date'],
+      requiredInputField: 'title',
+      requiredInputValue: 'Generated sample18 browser smoke title',
+      selectedKeyValue: 1801,
+      filterField: 'status',
+      filterLabel: 'Status',
+      filterOperatorLabel: 'Contains',
+      filterValue: 'doing',
+      payload: {
+        id: 1801,
+        title: 'Sample18 browser smoke update',
+        body: 'Generated sample18 browser smoke body',
+        status: 'doing',
+        assigned_to: 'Aki',
+        priority: '2',
+        due_date: '2026-07-10',
       },
     };
   }
@@ -380,6 +423,69 @@ async function loginAdmin(page, baseUrl, username, password) {
   if (!dashboardResponse || dashboardResponse.status() !== 200) {
     throw new Error('admin login did not reach dashboard.');
   }
+}
+
+async function probeRuntimeFilterDomOnly(page, config) {
+  if (!config.expected.filterField || !config.expected.filterLabel) {
+    throw new Error(`runtime filter DOM-only probe requires filter metadata for ${config.expected.profile}`);
+  }
+
+  await page.waitForSelector(
+    `.no-code-screen[data-screen-key="${config.expected.listScreenKey}"] [data-runtime-data-controls]`,
+    { timeout: 5000 },
+  );
+  const result = await page.evaluate((expected) => {
+    const list = document.querySelector(`.no-code-screen[data-screen-key="${expected.listScreenKey}"]`);
+    const binding = window.__noCodeRuntimeExecutionBinding || {};
+    const controls = list?.querySelector('[data-runtime-data-controls]');
+    const filterField = controls?.querySelector('[data-runtime-filter-field]');
+    const statusOption = filterField?.querySelector(`option[value="${expected.filterField}"]`);
+    const filterOperator = controls?.querySelector('[data-runtime-filter-operator]');
+    const filterValue = controls?.querySelector('[data-runtime-filter-value]');
+    const submitButton = controls?.querySelector('[data-runtime-filter-submit]');
+    return {
+      executionBindingUrl: binding.execution_url || '',
+      executionBindingProjectKey: binding.project_key || '',
+      runtimeDataUrl: binding.runtime_data_url || '',
+      controlsVisible: !!controls && getComputedStyle(controls).display !== 'none',
+      filterFieldValue: filterField?.value || '',
+      filterOptionLabel: statusOption?.textContent?.trim() || '',
+      filterOptionType: statusOption?.getAttribute('data-runtime-field-type') || '',
+      filterOperatorValue: filterOperator?.value || '',
+      filterOperatorLabels: Array.from(filterOperator?.querySelectorAll('option') || []).map((option) => option.textContent?.trim() || ''),
+      filterValueTagName: filterValue?.tagName || '',
+      submitText: submitButton?.textContent?.trim() || '',
+    };
+  }, config.expected);
+
+  if (config.executionBinding === 'none' && result.executionBindingUrl !== '') {
+    throw new Error(`execution binding should not be injected for this preview: ${result.executionBindingUrl}`);
+  }
+  if (config.executionBinding === 'required') {
+    if (result.executionBindingUrl === '' || result.executionBindingProjectKey !== config.expected.projectKey) {
+      throw new Error(`execution binding missing or project mismatch: ${JSON.stringify(result)}`);
+    }
+    if (config.executionUrlContains !== '' && !result.executionBindingUrl.includes(config.executionUrlContains)) {
+      throw new Error(`execution binding URL mismatch: ${result.executionBindingUrl} does not include ${config.executionUrlContains}`);
+    }
+    if (result.runtimeDataUrl === '') {
+      throw new Error(`runtime data binding is missing: ${JSON.stringify(result)}`);
+    }
+  }
+  if (!result.controlsVisible) {
+    throw new Error(`runtime data controls were not visible: ${JSON.stringify(result)}`);
+  }
+  if (result.filterOptionLabel !== config.expected.filterLabel || result.filterOptionType === '') {
+    throw new Error(`runtime filter option mismatch: ${JSON.stringify(result)}`);
+  }
+  if (!result.filterOperatorLabels.includes(config.expected.filterOperatorLabel)) {
+    throw new Error(`runtime filter operator mismatch: ${JSON.stringify(result)}`);
+  }
+  if (result.filterValueTagName !== 'INPUT' || result.submitText === '') {
+    throw new Error(`runtime filter controls incomplete: ${JSON.stringify(result)}`);
+  }
+
+  return result;
 }
 
 async function probeRuntimeDataInitialUrlReplay(page, targetUrl, config) {
@@ -780,6 +886,23 @@ async function runSmoke(config) {
     await requireVisible(page.locator(`.no-code-screen[data-screen-key="${config.expected.listScreenKey}"] table`), 'list table');
     await requireVisible(page.locator(`.no-code-screen[data-screen-key="${config.expected.detailScreenKey}"] dl.no-code-detail`), 'detail layout');
     await requireVisible(page.locator(`.no-code-screen[data-screen-key="${config.expected.formScreenKey}"] form.no-code-form`), 'form layout');
+
+    if (config.runtimeFilterDomOnly) {
+      const runtimeFilterDomProbe = await probeRuntimeFilterDomOnly(page, config);
+      await page.screenshot({ path: screenshotPath, fullPage: true });
+      await page.setViewportSize({ width: 390, height: 844 });
+      await page.goto(targetUrl, { waitUntil: 'load' });
+      await requireVisible(page.locator(`.no-code-screen[data-screen-key="${config.expected.listScreenKey}"] [data-runtime-data-controls]`), 'mobile runtime data controls');
+      await page.screenshot({ path: mobileScreenshotPath, fullPage: true });
+      return {
+        ok: true,
+        profile: config.expected.profile,
+        runtime_filter_dom_only: true,
+        runtime_filter_dom_probe: runtimeFilterDomProbe,
+        screenshot: screenshotPath,
+        mobile_screenshot: mobileScreenshotPath,
+      };
+    }
 
     const evaluateExpected = {
       ...config.expected,
