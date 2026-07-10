@@ -112,6 +112,21 @@ Injected transaction callables are the highest-priority execution dependency for
 
 Browser smoke is still an outer representative gate. Prefer fast route/PHPUnit coverage for config and response semantics first, then use browser smoke for public preview, auth, submit handoff, and rendered feedback integration.
 
+### Sample18 Generated Submit Response Contract
+
+Generated-submit route responses use this compact status contract:
+
+| Outcome | HTTP | `result` | `ok` | Recovery |
+| --- | ---: | --- | --- | --- |
+| invalid method / CSRF / payload / operation | 405 / 403 / 422 / 404 | `invalid` | `false` | no |
+| disabled or duplicate non-execution | 409 | `blocked` | `false` | no |
+| config or dependency failure before execution | 500 | `failed` | `false` | no |
+| DBAccess/rollback failure before commit | 500 | `failed` | `false` | no |
+| commit-status-unknown or post-commit recording failure | 500 | `failed` | `false` | yes |
+| all required execution and recording steps succeeded | 200 | `executed` | `true` | no |
+
+`failure_code` is required on every non-success response. Recovery-required failures must expose `route_execution.recovery_required=true` plus the relevant recovery reason from `transaction_result` or `post_commit_recording`.
+
 ## Design Boundary
 
 Fast UI contract tests prove that generated metadata and generated markup expose the expected UI contract. They do not prove browser layout, CSS pixel rendering, or server mutation. Browser smoke and route-level tests remain responsible for those outer boundaries.

@@ -11,6 +11,8 @@
 
 ## Index
 
+- `2026-0710-sample18-generated-submit-route-response-contract-first-slice.md`
+  - #684 sample18 generated-submit route response contract first slice。`docs/no-code-ui-testing.md` に compact response contract を追加し、Sample18 route outcome tests に status/result/failure/recovery assertion を追加。Status: `FIRST_SLICE_DONE`。
 - `2026-0710-sample18-generated-submit-route-response-status-refinement-preflight.md`
   - #683 sample18 generated-submit route response/status refinement preflight。generated-submit route の HTTP status、`result`、`ok`、`failure_code`、recovery metadata の outcome matrix を定義。次は response contract first slice (#684)。Status: `DONE`。
 - `2026-0710-post-generated-submit-availability-documentation-lane-closure.md`

@@ -499,6 +499,7 @@ final class Sample18MiniTaskBoardDemoTest extends TestCase
         self::assertTrue(app_route_requires_auth('lab_sample18_task_board_generated_submit'));
 
         $notPost = app_lab_sample18_task_board_generated_submit_blocked_response('GET', [], $timestamp);
+        self::assertGeneratedSubmitRouteResponseContract($notPost, 405, 'invalid', false, 'method_not_allowed');
         self::assertSame(405, $notPost['status_code']);
         self::assertSame('method_not_allowed', $notPost['payload']['failure_code'] ?? '');
         self::assertFalse($notPost['payload']['mutation_enabled'] ?? true);
@@ -508,6 +509,7 @@ final class Sample18MiniTaskBoardDemoTest extends TestCase
             is_array($createExpectation['valid_input'] ?? null) ? $createExpectation['valid_input'] : [],
         );
         $blocked = app_lab_sample18_task_board_generated_submit_blocked_response('POST', $validPost, $timestamp);
+        self::assertGeneratedSubmitRouteResponseContract($blocked, 409, 'blocked', false, 'generated_submit_disabled');
         self::assertSame(409, $blocked['status_code']);
         self::assertFalse($blocked['payload']['ok'] ?? true);
         self::assertFalse($blocked['payload']['accepted'] ?? true);
@@ -605,6 +607,7 @@ final class Sample18MiniTaskBoardDemoTest extends TestCase
             $timestamp,
             'missing',
         );
+        self::assertGeneratedSubmitRouteResponseContract($missingCsrf, 403, 'invalid', false, 'missing_csrf');
         self::assertSame(403, $missingCsrf['status_code']);
         self::assertSame('missing_csrf', $missingCsrf['payload']['failure_code'] ?? '');
         self::assertSame(['csrf.missing'], $missingCsrf['payload']['errors'] ?? []);
@@ -621,6 +624,7 @@ final class Sample18MiniTaskBoardDemoTest extends TestCase
             $timestamp,
             'invalid',
         );
+        self::assertGeneratedSubmitRouteResponseContract($invalidCsrf, 403, 'invalid', false, 'invalid_csrf');
         self::assertSame(403, $invalidCsrf['status_code']);
         self::assertSame('invalid_csrf', $invalidCsrf['payload']['failure_code'] ?? '');
         self::assertSame(['csrf.invalid'], $invalidCsrf['payload']['errors'] ?? []);
@@ -636,6 +640,7 @@ final class Sample18MiniTaskBoardDemoTest extends TestCase
             ['operation_key' => 'update_task_card', 'id' => '0', 'title' => ''],
             $timestamp,
         );
+        self::assertGeneratedSubmitRouteResponseContract($invalid, 422, 'invalid', false, 'validation_error');
         self::assertSame(422, $invalid['status_code']);
         self::assertSame('validation_error', $invalid['payload']['failure_code'] ?? '');
         self::assertSame(['id.invalid', 'title.required'], $invalid['payload']['errors'] ?? []);
@@ -650,6 +655,7 @@ final class Sample18MiniTaskBoardDemoTest extends TestCase
             ['operation_key' => 'delete_task_card', 'id' => '1801'],
             $timestamp,
         );
+        self::assertGeneratedSubmitRouteResponseContract($unknown, 404, 'invalid', false, 'unknown_operation');
         self::assertSame(404, $unknown['status_code']);
         self::assertSame('unknown_operation', $unknown['payload']['failure_code'] ?? '');
         self::assertArrayNotHasKey('dbaccess_execution_plan', $unknown['payload']);
@@ -776,6 +782,7 @@ final class Sample18MiniTaskBoardDemoTest extends TestCase
             $app,
             $principal,
         );
+        self::assertGeneratedSubmitRouteResponseContract($duplicate, 409, 'blocked', false, 'generated_submit_disabled');
         self::assertSame(409, $duplicate['status_code']);
         self::assertSame('duplicate', $duplicate['payload']['idempotency']['status'] ?? '');
         self::assertFalse($duplicate['payload']['idempotency']['created'] ?? true);
@@ -795,6 +802,7 @@ final class Sample18MiniTaskBoardDemoTest extends TestCase
             array_merge($app, ['sample18_generated_submit_mutation_enabled' => true]),
             $principal,
         );
+        self::assertGeneratedSubmitRouteResponseContract($enabledDuplicate, 409, 'blocked', false, 'generated_submit_disabled');
         self::assertSame(409, $enabledDuplicate['status_code']);
         self::assertSame('duplicate', $enabledDuplicate['payload']['idempotency']['status'] ?? '');
         self::assertSame('blocked', $enabledDuplicate['payload']['mutation_gate']['status'] ?? '');
@@ -1216,6 +1224,7 @@ final class Sample18MiniTaskBoardDemoTest extends TestCase
                 $app,
                 $principal,
             );
+            self::assertGeneratedSubmitRouteResponseContract($executed, 200, 'executed', true, '');
             self::assertSame(200, $executed['status_code']);
             self::assertTrue($executed['payload']['ok'] ?? false);
             self::assertTrue($executed['payload']['accepted'] ?? false);
@@ -1329,6 +1338,7 @@ final class Sample18MiniTaskBoardDemoTest extends TestCase
             $missingDependencyApp,
             $principal,
         );
+        self::assertGeneratedSubmitRouteResponseContract($missingDependency, 500, 'failed', false, 'executor_transaction_callable_missing');
         self::assertSame(500, $missingDependency['status_code']);
         self::assertSame('failed', $missingDependency['payload']['result'] ?? '');
         self::assertSame('executor_transaction_callable_missing', $missingDependency['payload']['failure_code'] ?? '');
@@ -1372,6 +1382,7 @@ final class Sample18MiniTaskBoardDemoTest extends TestCase
             $rollbackApp,
             $principal,
         );
+        self::assertGeneratedSubmitRouteResponseContract($rolledBack, 500, 'failed', false, 'dbaccess_failed');
         self::assertSame(['begin', 'dbaccess', 'rollback'], $events);
         self::assertSame(500, $rolledBack['status_code']);
         self::assertSame('failed', $rolledBack['payload']['result'] ?? '');
@@ -1413,6 +1424,7 @@ final class Sample18MiniTaskBoardDemoTest extends TestCase
             $postCommitApp,
             $principal,
         );
+        self::assertGeneratedSubmitRouteResponseContract($recordingFailed, 500, 'failed', false, 'idempotency_update_failed', true);
         self::assertSame(500, $recordingFailed['status_code']);
         self::assertSame('failed', $recordingFailed['payload']['result'] ?? '');
         self::assertSame('idempotency_update_failed', $recordingFailed['payload']['failure_code'] ?? '');
@@ -1445,6 +1457,7 @@ final class Sample18MiniTaskBoardDemoTest extends TestCase
             $commitFailedApp,
             $principal,
         );
+        self::assertGeneratedSubmitRouteResponseContract($commitFailed, 500, 'failed', false, 'transaction_commit_failed', true);
         self::assertSame(500, $commitFailed['status_code']);
         self::assertSame('failed', $commitFailed['payload']['result'] ?? '');
         self::assertSame('transaction_commit_failed', $commitFailed['payload']['failure_code'] ?? '');
@@ -1476,6 +1489,7 @@ final class Sample18MiniTaskBoardDemoTest extends TestCase
             $commitExceptionApp,
             $principal,
         );
+        self::assertGeneratedSubmitRouteResponseContract($commitException, 500, 'failed', false, 'transaction_commit_exception', true);
         self::assertSame(500, $commitException['status_code']);
         self::assertSame('failed', $commitException['payload']['result'] ?? '');
         self::assertSame('transaction_commit_exception', $commitException['payload']['failure_code'] ?? '');
@@ -1549,6 +1563,7 @@ final class Sample18MiniTaskBoardDemoTest extends TestCase
                     'auth_source' => 'phpunit',
                 ],
             );
+            self::assertGeneratedSubmitRouteResponseContract($executed, 200, 'executed', true, '');
             self::assertSame(200, $executed['status_code']);
             self::assertSame('executed', $executed['payload']['result'] ?? '');
             self::assertSame('committed', $executed['payload']['transaction_result']['transaction_status'] ?? '');
@@ -1577,6 +1592,7 @@ final class Sample18MiniTaskBoardDemoTest extends TestCase
                     'auth_source' => 'phpunit',
                 ],
             );
+            self::assertGeneratedSubmitRouteResponseContract($missingRuntime, 500, 'failed', false, 'executor_default_runtime_file_missing');
             self::assertSame(500, $missingRuntime['status_code']);
             self::assertSame('failed', $missingRuntime['payload']['result'] ?? '');
             self::assertSame('executor_default_runtime_file_missing', $missingRuntime['payload']['failure_code'] ?? '');
@@ -4158,6 +4174,38 @@ final class Sample18MiniTaskBoardDemoTest extends TestCase
         );
         foreach (($bindingGate['required_dom_attributes'] ?? []) as $attribute => $value) {
             self::assertStringContainsString($attribute . '="' . $value . '"', $runtimePreviewHtml);
+        }
+    }
+
+    /**
+     * @return array<string,mixed>
+     */
+    private static function assertGeneratedSubmitRouteResponseContract(
+        array $response,
+        int $expectedStatusCode,
+        string $expectedResult,
+        bool $expectedOk,
+        string $expectedFailureCode,
+        ?bool $expectedRecoveryRequired = null,
+    ): void {
+        self::assertSame($expectedStatusCode, $response['status_code'] ?? null);
+        $payload = is_array($response['payload'] ?? null) ? $response['payload'] : [];
+        self::assertSame($expectedResult, $payload['result'] ?? '');
+        self::assertSame($expectedOk, $payload['ok'] ?? null);
+        self::assertSame($expectedFailureCode, $payload['failure_code'] ?? '');
+
+        if ($expectedResult === 'executed') {
+            self::assertTrue($payload['accepted'] ?? false);
+            self::assertSame('executed', $payload['route_execution']['execution_status'] ?? '');
+            self::assertSame('committed', $payload['transaction_result']['transaction_status'] ?? '');
+            self::assertSame('recorded', $payload['post_commit_recording']['recording_status'] ?? '');
+        }
+
+        if ($expectedRecoveryRequired !== null) {
+            self::assertSame(
+                $expectedRecoveryRequired,
+                $payload['route_execution']['recovery_required'] ?? null,
+            );
         }
     }
 
