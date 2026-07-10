@@ -11,6 +11,8 @@
 
 ## Index
 
+- `2026-0710-sample18-execution-update-plan-helper-first-slice.md`
+  - #616 sample18 execution update-plan helper first slice。non-mutating `execution_update_plan` helper を追加し、execution audit / idempotency update metadata、request audit event linkage、dedupe linkage を計画化。route integration / DBAccess mutation は未有効化。Status: `FIRST_SLICE_DONE`。
 - `2026-0710-sample18-execution-audit-idempotency-update-preflight.md`
   - #615 sample18 execution audit/idempotency update preflight。guarded execution 前の execution audit event、idempotency execution update、response contract、#616 の non-mutating update-plan helper 条件を定義。DBAccess mutation は未有効化。Status: `DONE`。
 - `2026-0710-sample18-post-transaction-plan-route-metadata-lane-closure.md`
