@@ -11,6 +11,8 @@
 
 ## Index
 
+- `2026-0711-post-readiness-commit-stack-checkpoint.md`
+  - #710 post readiness commit-stack checkpoint。#704-#709 の read-only readiness lane commit stack を確認し、squash/amend せず意味単位のまま保持、#711 transaction complete gate を次 active に昇格。Status: `DONE`。
 - `2026-0711-post-readiness-metadata-lane-closure.md`
   - #709 post readiness metadata lane closure。#703-#708 の read-only readiness metadata lane を close し、overlay / real execution へ飛ばず #710 commit-stack checkpoint を次 active に昇格。Status: `DONE`。
 - `2026-0711-readiness-browser-smoke-first-slice.md`
