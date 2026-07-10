@@ -369,6 +369,10 @@ function run_smoke(array $args): array
     ensure(($generatedBlockedJson['idempotency']['created'] ?? false) === true, 'generated submit idempotency record was not created');
     ensure(($generatedBlockedJson['idempotency']['dedupe_key'] ?? '') === ($generatedBlockedJson['dedupe_key_preview'] ?? ''), 'generated submit idempotency dedupe key mismatch');
     ensure(($generatedBlockedJson['idempotency']['item']['duplicate_count'] ?? -1) === 0, 'generated submit idempotency duplicate count mismatch');
+    ensure(($generatedBlockedJson['mutation_gate']['status'] ?? '') === 'disabled', 'generated submit mutation gate status mismatch');
+    ensure(($generatedBlockedJson['mutation_gate']['ready'] ?? true) === false, 'generated submit mutation gate was unexpectedly ready');
+    ensure(($generatedBlockedJson['mutation_gate']['mutation_enabled'] ?? true) === false, 'generated submit mutation gate enabled mutation');
+    ensure(in_array('enablement_flag_disabled', $generatedBlockedJson['mutation_gate']['reasons'] ?? [], true), 'generated submit mutation gate missing disabled reason');
     ensure(($generatedBlockedJson['mutation_enabled'] ?? true) === false, 'generated submit blocked mutation flag was enabled');
     ensure(
         in_array('client_only', $generatedBlockedJson['ignored_input_fields'] ?? [], true),
