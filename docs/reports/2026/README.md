@@ -11,6 +11,8 @@
 
 ## Index
 
+- `2026-0710-post-production-runtime-config-resolver-lane-closure.md`
+  - #678 post production runtime config resolver lane closure。#677 の config resolver を受け入れ、次は route response の `executor_config` metadata coverage (#679) を昇格。Status: `DONE`。
 - `2026-0710-sample18-production-runtime-config-resolver-first-slice.md`
   - #677 sample18 production runtime config resolver first slice。generated-submit executor config resolver を追加し、app/env flag precedence、default runtime reference files、injected callable dependency source、fail-closed metadata を focused coverage。Status: `FIRST_SLICE_DONE`。
 - `2026-0710-sample18-production-runtime-config-hardening-preflight.md`
