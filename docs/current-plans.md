@@ -13,7 +13,7 @@ When someone asks for "the plan list", answer from this section first. / 「計�
 
 ### Main Plan / 主計画
 
-Current main status: #614 closes the transaction-plan route metadata lane and promotes execution audit/idempotency update preflight before guarded execution. `develop` is 90 commits ahead of `origin/develop`, and push has not been performed for #432-#614. / 現在の主計画ステータス: #614 で transaction-plan route metadata lane を close し、guarded execution より前に execution audit/idempotency update preflight を昇格しました。`develop` は `origin/develop` より 90 commits ahead、#432-#614 は push していません。
+Current main status: #615 defines the sample18 post-execution audit/idempotency update preflight and promotes a non-mutating update-plan helper before guarded execution. `develop` is 91 commits ahead of `origin/develop`, and push has not been performed for #432-#615. / 現在の主計画ステータス: #615 で sample18 post-execution audit/idempotency update preflight を定義し、guarded execution より前に non-mutating update-plan helper を昇格しました。`develop` は `origin/develop` より 91 commits ahead、#432-#615 は push していません。
 
 | Order | Work unit / 作業の塊 | Commit unit / コミット単位 | Status | Rough effort / 目安 |
 | --- | --- | --- | --- | --- |
@@ -173,7 +173,8 @@ Current main status: #614 closes the transaction-plan route metadata lane and pr
 | 612 | Sample18 post-transaction-plan helper lane closure / sample18 post-transaction-plan helper lane closure | Close the non-mutating transaction-plan helper lane and decide whether route metadata integration, execution audit update preflight, or guarded execution preflight should be promoted next | `DONE` | 0.25 - 0.5 day / 0.25 - 0.5 日 |
 | 613 | Sample18 transaction-plan route metadata integration / sample18 transaction-plan route metadata integration | Wire non-mutating transaction-plan metadata into valid generated-submit route responses while preserving HTTP 409, mutation disabled, executed false, and transaction not opened | `DONE` | 0.5 day / 半日 |
 | 614 | Sample18 post-transaction-plan route metadata lane closure / sample18 post-transaction-plan route metadata lane closure | Close the transaction-plan route metadata lane and decide whether execution audit update preflight, guarded execution preflight, or route metadata hardening should be promoted next | `DONE` | 0.25 - 0.5 day / 0.25 - 0.5 日 |
-| 615 | Sample18 execution audit/idempotency update preflight / sample18 execution audit/idempotency update preflight | Define the post-execution audit event and idempotency update contract before any guarded DBAccess execution can be enabled | `ACTIVE_NEXT` | 0.5 day / 半日 |
+| 615 | Sample18 execution audit/idempotency update preflight / sample18 execution audit/idempotency update preflight | Define the post-execution audit event and idempotency update contract before any guarded DBAccess execution can be enabled | `DONE` | 0.5 day / 半日 |
+| 616 | Sample18 execution update-plan helper first slice / sample18 execution update-plan helper first slice | Add a non-mutating helper that derives post-execution audit/idempotency update metadata from planned transaction metadata without writing audit/idempotency rows or executing DBAccess | `ACTIVE_NEXT` | 0.5 - 1 day / 半日 - 1 日 |
 
 ### Long-Term No-Code Roadmap / 長期 No-Code ロードマップ
 
@@ -365,6 +366,8 @@ Latest code verification from #613:
 - `git diff --check`
 
 For #614, docs-only verification is `git diff --check`.
+
+For #615, docs-only verification is `git diff --check`.
 
 Latest code verification from #459:
 
@@ -767,6 +770,7 @@ Completed detailed history was moved out of this active list. / 完了済みの�
 
 | Completed scope / 完了済み範囲 | Historical source / 履歴ソース |
 | --- | --- |
+| Sample18 execution audit/idempotency update preflight / sample18 execution audit/idempotency update preflight | [2026-0710 Sample18 Execution Audit Idempotency Update Preflight](reports/2026/2026-0710-sample18-execution-audit-idempotency-update-preflight.md) |
 | Sample18 post-transaction-plan route metadata lane closure / sample18 post-transaction-plan route metadata lane closure | [2026-0710 Sample18 Post Transaction-Plan Route Metadata Lane Closure](reports/2026/2026-0710-sample18-post-transaction-plan-route-metadata-lane-closure.md) |
 | Sample18 transaction-plan route metadata integration / sample18 transaction-plan route metadata integration | [2026-0710 Sample18 Transaction-Plan Route Metadata Integration](reports/2026/2026-0710-sample18-transaction-plan-route-metadata-integration.md) |
 | Sample18 post-transaction-plan helper lane closure / sample18 post-transaction-plan helper lane closure | [2026-0710 Sample18 Post Transaction-Plan Helper Lane Closure](reports/2026/2026-0710-sample18-post-transaction-plan-helper-lane-closure.md) |

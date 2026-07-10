@@ -11,6 +11,8 @@
 
 ## Index
 
+- `2026-0710-sample18-execution-audit-idempotency-update-preflight.md`
+  - #615 sample18 execution audit/idempotency update preflight。guarded execution 前の execution audit event、idempotency execution update、response contract、#616 の non-mutating update-plan helper 条件を定義。DBAccess mutation は未有効化。Status: `DONE`。
 - `2026-0710-sample18-post-transaction-plan-route-metadata-lane-closure.md`
   - #614 sample18 post-transaction-plan route metadata lane closure。#613 の transaction-plan route metadata を受け入れ、次は guarded execution より前に execution audit/idempotency update preflight (#615) を昇格。DBAccess mutation は未有効化。Status: `DONE`。
 - `2026-0710-sample18-transaction-plan-route-metadata-integration.md`
