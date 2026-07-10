@@ -11,6 +11,8 @@
 
 ## Index
 
+- `2026-0710-post-db-backed-transaction-binding-coverage-lane-closure.md`
+  - #659 post DB-backed transaction binding coverage lane closure。#658 の DB-backed route-unwired transaction binding coverage を受け入れ、route wiring より前に post-commit recording DB-backed coverage preflight (#660) を昇格。generated-submit route execution は未有効化。Status: `DONE`。
 - `2026-0710-sample18-db-backed-transaction-binding-coverage-first-slice.md`
   - #658 sample18 DB-backed transaction binding coverage first slice。isolated SQLite/PDO で generated `TaskCardDBAccess::InsertTaskCard` の commit persistence と DBAccess-compatible failure rollback を route-unwired に coverage。generated-submit route execution は未有効化。Status: `FIRST_SLICE_DONE`。
 - `2026-0710-sample18-db-backed-transaction-binding-coverage-preflight.md`
