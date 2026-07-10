@@ -422,6 +422,23 @@ final class Sample18MiniTaskBoardDemoTest extends TestCase
         self::assertSame('disabled', $duplicate['payload']['mutation_gate']['status'] ?? '');
         self::assertContains('duplicate_generated_submit', $duplicate['payload']['mutation_gate']['reasons'] ?? []);
 
+        $enabledDuplicate = app_lab_sample18_task_board_generated_submit_blocked_response(
+            'POST',
+            $validPost,
+            $timestamp,
+            'valid',
+            array_merge($app, ['sample18_generated_submit_mutation_enabled' => true]),
+            $principal,
+        );
+        self::assertSame(409, $enabledDuplicate['status_code']);
+        self::assertSame('duplicate', $enabledDuplicate['payload']['idempotency']['status'] ?? '');
+        self::assertSame('blocked', $enabledDuplicate['payload']['mutation_gate']['status'] ?? '');
+        self::assertFalse($enabledDuplicate['payload']['mutation_gate']['ready'] ?? true);
+        self::assertFalse($enabledDuplicate['payload']['mutation_gate']['mutation_enabled'] ?? true);
+        self::assertFalse($enabledDuplicate['payload']['mutation_gate']['executed'] ?? true);
+        self::assertContains('duplicate_generated_submit', $enabledDuplicate['payload']['mutation_gate']['reasons'] ?? []);
+        self::assertNotContains('enablement_flag_disabled', $enabledDuplicate['payload']['mutation_gate']['reasons'] ?? []);
+
         $missingCsrf = app_lab_sample18_task_board_generated_submit_blocked_response(
             'POST',
             ['operation_key' => 'create_task_card'],
@@ -452,7 +469,7 @@ final class Sample18MiniTaskBoardDemoTest extends TestCase
             'limit' => 10,
         ]);
         self::assertTrue($afterFailures['ok'], $afterFailures['error']);
-        self::assertCount(2, $afterFailures['items']);
+        self::assertCount(3, $afterFailures['items']);
         $idempotencyRecords = app_lab_sample18_generated_submit_idempotency_fetch_latest_records($app, [
             'project_key' => 'SAMPLE18',
             'operation_key' => 'create_task_card',
@@ -460,7 +477,7 @@ final class Sample18MiniTaskBoardDemoTest extends TestCase
         ]);
         self::assertTrue($idempotencyRecords['ok'], $idempotencyRecords['error']);
         self::assertCount(1, $idempotencyRecords['items']);
-        self::assertSame(1, $idempotencyRecords['items'][0]['duplicate_count'] ?? -1);
+        self::assertSame(2, $idempotencyRecords['items'][0]['duplicate_count'] ?? -1);
     }
 
     public function testMiniTaskBoardGeneratedSubmitAuditAppendFailureIsVisibleWithoutMutation(): void
@@ -476,6 +493,7 @@ final class Sample18MiniTaskBoardDemoTest extends TestCase
             'site' => 'lab',
             'db' => ['driver' => 'sqlite', 'dsn' => 'sqlite:/path/that/does/not/exist/sample18-audit.sqlite'],
             'config_db' => ['driver' => 'sqlite', 'dsn' => 'sqlite:/path/that/does/not/exist/sample18-audit.sqlite'],
+            'sample18_generated_submit_mutation_enabled' => true,
         ];
         $validPost = array_merge(
             ['operation_key' => 'create_task_card', '_csrf_token' => 'client-token'],
@@ -515,6 +533,10 @@ final class Sample18MiniTaskBoardDemoTest extends TestCase
         self::assertSame('failed', $blocked['payload']['mutation_gate']['status'] ?? '');
         self::assertContains('audit_append_failed', $blocked['payload']['mutation_gate']['reasons'] ?? []);
         self::assertContains('idempotency_failed', $blocked['payload']['mutation_gate']['reasons'] ?? []);
+        self::assertNotContains('enablement_flag_disabled', $blocked['payload']['mutation_gate']['reasons'] ?? []);
+        self::assertFalse($blocked['payload']['mutation_gate']['ready'] ?? true);
+        self::assertFalse($blocked['payload']['mutation_gate']['mutation_enabled'] ?? true);
+        self::assertFalse($blocked['payload']['mutation_gate']['executed'] ?? true);
     }
 
     public function testMiniTaskBoardGeneratedSubmitMutationGateHelperIsNonMutating(): void
@@ -551,6 +573,75 @@ final class Sample18MiniTaskBoardDemoTest extends TestCase
         self::assertFalse($duplicate['ready']);
         self::assertFalse($duplicate['mutation_enabled']);
         self::assertContains('duplicate_generated_submit', $duplicate['reasons']);
+        self::assertNotContains('enablement_flag_disabled', $duplicate['reasons']);
+
+        $auditSkipped = app_lab_sample18_task_board_generated_submit_mutation_gate(
+            ['sample18_generated_submit_mutation_enabled' => true],
+            $normalized,
+            $dispatcher,
+            ['ok' => true, 'status' => 'skipped', 'item' => [], 'reason' => 'missing_actor'],
+            ['ok' => true, 'status' => 'recorded', 'created' => true, 'item' => ['dedupe_key' => 'dedupe-ready']],
+        );
+        self::assertSame('blocked', $auditSkipped['status']);
+        self::assertFalse($auditSkipped['ready']);
+        self::assertFalse($auditSkipped['mutation_enabled']);
+        self::assertContains('audit_append_not_appended', $auditSkipped['reasons']);
+        self::assertNotContains('enablement_flag_disabled', $auditSkipped['reasons']);
+
+        $auditFailed = app_lab_sample18_task_board_generated_submit_mutation_gate(
+            ['sample18_generated_submit_mutation_enabled' => true],
+            $normalized,
+            $dispatcher,
+            ['ok' => false, 'status' => 'failed', 'item' => [], 'error' => 'audit down'],
+            ['ok' => true, 'status' => 'recorded', 'created' => true, 'item' => ['dedupe_key' => 'dedupe-ready']],
+        );
+        self::assertSame('failed', $auditFailed['status']);
+        self::assertFalse($auditFailed['ready']);
+        self::assertFalse($auditFailed['mutation_enabled']);
+        self::assertContains('audit_append_failed', $auditFailed['reasons']);
+
+        $idempotencySkipped = app_lab_sample18_task_board_generated_submit_mutation_gate(
+            ['sample18_generated_submit_mutation_enabled' => true],
+            $normalized,
+            $dispatcher,
+            ['ok' => true, 'status' => 'appended', 'item' => ['event_key' => 'audit_ready']],
+            ['ok' => true, 'status' => 'skipped', 'created' => false, 'reason' => 'no_dedupe_key'],
+        );
+        self::assertSame('blocked', $idempotencySkipped['status']);
+        self::assertFalse($idempotencySkipped['ready']);
+        self::assertFalse($idempotencySkipped['mutation_enabled']);
+        self::assertContains('idempotency_skipped', $idempotencySkipped['reasons']);
+        self::assertNotContains('enablement_flag_disabled', $idempotencySkipped['reasons']);
+
+        $idempotencyFailed = app_lab_sample18_task_board_generated_submit_mutation_gate(
+            ['sample18_generated_submit_mutation_enabled' => true],
+            $normalized,
+            $dispatcher,
+            ['ok' => true, 'status' => 'appended', 'item' => ['event_key' => 'audit_ready']],
+            ['ok' => false, 'status' => 'failed', 'created' => false, 'error' => 'idempotency down'],
+        );
+        self::assertSame('failed', $idempotencyFailed['status']);
+        self::assertFalse($idempotencyFailed['ready']);
+        self::assertFalse($idempotencyFailed['mutation_enabled']);
+        self::assertContains('idempotency_failed', $idempotencyFailed['reasons']);
+
+        $invalid = app_lab_sample18_task_board_normalize_generated_submit_request(
+            'update_task_card',
+            ['id' => '0', 'title' => ''],
+            '2026-07-10 04:00:00',
+        );
+        self::assertFalse($invalid['ok']);
+        $invalidGate = app_lab_sample18_task_board_generated_submit_mutation_gate(
+            ['sample18_generated_submit_mutation_enabled' => true],
+            $invalid,
+            app_lab_sample18_task_board_generated_submit_dispatcher_dry_run($invalid),
+            ['ok' => true, 'status' => 'appended', 'item' => ['event_key' => 'audit_invalid']],
+            ['ok' => true, 'status' => 'recorded', 'created' => true, 'item' => ['dedupe_key' => 'dedupe-invalid']],
+        );
+        self::assertSame('blocked', $invalidGate['status']);
+        self::assertFalse($invalidGate['ready']);
+        self::assertFalse($invalidGate['mutation_enabled']);
+        self::assertContains('request_not_valid', $invalidGate['reasons']);
 
         $disabled = app_lab_sample18_task_board_generated_submit_mutation_gate(
             [],
