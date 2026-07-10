@@ -13,7 +13,7 @@ When someone asks for "the plan list", answer from this section first. / 「計�
 
 ### Main Plan / 主計画
 
-Current main status: #593 adds storage-backed sample18 generated submit idempotency repository/helper coverage without route integration or DBAccess mutation, and promotes lane closure before route persistence. `develop` is 69 commits ahead of `origin/develop`, and push has not been performed for #432-#593. / 現在の主計画ステータス: #593 で route integration や DBAccess mutation なしに storage-backed sample18 generated submit idempotency repository / helper coverage を追加し、route persistence 前の lane closure を昇格しました。`develop` は `origin/develop` より 69 commits ahead、#432-#593 は push していません。
+Current main status: #594 closes sample18 idempotency repository/helper coverage and promotes route integration preflight before wiring persistence into the generated submit route. `develop` is 70 commits ahead of `origin/develop`, and push has not been performed for #432-#594. / 現在の主計画ステータス: #594 で sample18 idempotency repository / helper coverage を閉じ、generated submit route に persistence を接続する前の route integration preflight を昇格しました。`develop` は `origin/develop` より 70 commits ahead、#432-#594 は push していません。
 
 | Order | Work unit / 作業の塊 | Commit unit / コミット単位 | Status | Rough effort / 目安 |
 | --- | --- | --- | --- | --- |
@@ -152,7 +152,8 @@ Current main status: #593 adds storage-backed sample18 generated submit idempote
 | 591 | Sample18 post-audit-failure-visibility lane closure / sample18 post-audit-failure-visibility lane closure | Close audit append failure visibility and decide whether duplicate/idempotency persistence or mutation enablement gate coverage should be promoted next | `DONE` | 0.25 - 0.5 day / 0.25 - 0.5 日 |
 | 592 | Sample18 generated submit idempotency persistence preflight / sample18 generated submit idempotency persistence preflight | Define the storage, duplicate response, audit interaction, and fail-closed boundary for generated submit idempotency before any DBAccess mutation enablement | `DONE` | 0.5 day / 半日 |
 | 593 | Sample18 generated submit idempotency repository/helper first slice / sample18 generated submit idempotency repository/helper first slice | Add storage-backed idempotency create-or-reuse coverage for blocked generated submit requests without enabling DBAccess mutation | `DONE` | 0.5 - 1 day / 半日 - 1 日 |
-| 594 | Sample18 post-idempotency-repository lane closure / sample18 post-idempotency-repository lane closure | Close the storage-backed idempotency repository/helper lane and decide whether route integration preflight or duplicate audit interaction should be promoted next | `ACTIVE_NEXT` | 0.25 - 0.5 day / 0.25 - 0.5 日 |
+| 594 | Sample18 post-idempotency-repository lane closure / sample18 post-idempotency-repository lane closure | Close the storage-backed idempotency repository/helper lane and decide whether route integration preflight or duplicate audit interaction should be promoted next | `DONE` | 0.25 - 0.5 day / 0.25 - 0.5 日 |
+| 595 | Sample18 generated submit idempotency route integration preflight / sample18 generated submit idempotency route integration preflight | Define how the blocked generated submit route will call idempotency create-or-reuse, response metadata, skip matrix, and audit ordering before implementation | `ACTIVE_NEXT` | 0.5 day / 半日 |
 
 ### Long-Term No-Code Roadmap / 長期 No-Code ロードマップ
 
@@ -250,6 +251,8 @@ Latest code verification from #593:
 - Focused PHPUnit sample18 idempotency repository: `OK (4 tests, 52 assertions)`
 - `make test`: `OK, but incomplete, skipped, or risky tests! Tests: 388, Assertions: 12214, Skipped: 1.`
 - `git diff --check`
+
+For #594, docs-only verification is `git diff --check`.
 
 Latest code verification from #459:
 
@@ -652,6 +655,7 @@ Completed detailed history was moved out of this active list. / 完了済みの�
 
 | Completed scope / 完了済み範囲 | Historical source / 履歴ソース |
 | --- | --- |
+| Sample18 post-idempotency-repository lane closure / sample18 post-idempotency-repository lane closure | [2026-0710 Sample18 Post Idempotency Repository Lane Closure](reports/2026/2026-0710-sample18-post-idempotency-repository-lane-closure.md) |
 | Sample18 generated submit idempotency repository/helper first slice / sample18 generated submit idempotency repository/helper first slice | [2026-0710 Sample18 Generated Submit Idempotency Repository Helper First Slice](reports/2026/2026-0710-sample18-generated-submit-idempotency-repository-helper-first-slice.md) |
 | Sample18 generated submit idempotency persistence preflight / sample18 generated submit idempotency persistence preflight | [2026-0710 Sample18 Generated Submit Idempotency Persistence Preflight](reports/2026/2026-0710-sample18-generated-submit-idempotency-persistence-preflight.md) |
 | Sample18 post-audit-failure-visibility lane closure / sample18 post-audit-failure-visibility lane closure | [2026-0710 Sample18 Post Audit Failure Visibility Lane Closure](reports/2026/2026-0710-sample18-post-audit-failure-visibility-lane-closure.md) |

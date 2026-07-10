@@ -11,6 +11,8 @@
 
 ## Index
 
+- `2026-0710-sample18-post-idempotency-repository-lane-closure.md`
+  - #594 sample18 post-idempotency-repository lane closure。#593 の storage-backed idempotency repository/helper を受け入れ、次は route integration preflight (#595) を昇格。DBAccess mutation / route persistence は未有効化。Status: `DONE`。
 - `2026-0710-sample18-generated-submit-idempotency-repository-helper-first-slice.md`
   - #593 sample18 generated submit idempotency repository/helper first slice。`sample18_generated_submit_idempotency_records`、repository wrapper / PDO implementation、SQLite bootstrap allowlist、create-or-reuse / duplicate_count / validation failure coverage を追加。route integration / DBAccess mutation は未有効化。Status: `FIRST_SLICE_DONE`。
 - `2026-0710-sample18-generated-submit-idempotency-persistence-preflight.md`
