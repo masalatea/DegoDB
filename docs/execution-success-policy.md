@@ -3,7 +3,7 @@
 English companion:
 This document defines the common success/failure contract for mutation and execution routes. A user-facing success is returned only when every required operation step succeeds. If any required step fails, the route fails closed and exposes internal recovery metadata instead of claiming partial success.
 
-この文書は、mutation / execution route の共通 success / failure contract を定義する恒久文書です。  
+この文書は、mutation / execution route の共通 success / failure contract を定義する恒久文書です。
 user-facing success は required operation step がすべて成功した場合だけ返します。required step が 1 つでも失敗した場合、route は fail closed し、partial success を成功として扱わず、内部 recovery metadata を返します。
 
 ## Core Rule / 基本ルール
