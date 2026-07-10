@@ -11,6 +11,8 @@
 
 ## Index
 
+- `2026-0710-sample18-guarded-dbaccess-execution-preflight.md`
+  - #620 sample18 guarded DBAccess execution preflight。DBAccess mutation 有効化前の final enablement inputs、transaction / audit / idempotency update sequence、fail-closed matrix、#621 の non-executing guard helper 条件を定義。DBAccess mutation は未有効化。Status: `DONE`。
 - `2026-0710-sample18-post-execution-update-plan-route-metadata-lane-closure.md`
   - #619 sample18 post-execution update-plan route metadata lane closure。#618 の route-visible `execution_update_plan` metadata を受け入れ、次は DBAccess mutation 有効化前の guarded execution preflight (#620) を昇格。DBAccess mutation / execution audit write / idempotency execution update は未有効化。Status: `DONE`。
 - `2026-0710-sample18-execution-update-plan-route-metadata-integration.md`

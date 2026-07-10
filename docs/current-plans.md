@@ -13,7 +13,7 @@ When someone asks for "the plan list", answer from this section first. / 「計�
 
 ### Main Plan / 主計画
 
-Current main status: #619 closes the sample18 execution update-plan route metadata lane and promotes guarded execution preflight before any DBAccess mutation is enabled. `develop` is 95 commits ahead of `origin/develop`, and push has not been performed for #432-#619. / 現在の主計画ステータス: #619 で sample18 execution update-plan route metadata lane を閉じ、DBAccess mutation 有効化前の guarded execution preflight を昇格しました。`develop` は `origin/develop` より 95 commits ahead、#432-#619 は push していません。
+Current main status: #620 defines the guarded DBAccess execution preflight and promotes a final non-executing guard helper before any DBAccess mutation is enabled. `develop` is 96 commits ahead of `origin/develop`, and push has not been performed for #432-#620. / 現在の主計画ステータス: #620 で guarded DBAccess execution preflight を定義し、DBAccess mutation 有効化前の final non-executing guard helper を昇格しました。`develop` は `origin/develop` より 96 commits ahead、#432-#620 は push していません。
 
 | Order | Work unit / 作業の塊 | Commit unit / コミット単位 | Status | Rough effort / 目安 |
 | --- | --- | --- | --- | --- |
@@ -178,7 +178,8 @@ Current main status: #619 closes the sample18 execution update-plan route metada
 | 617 | Sample18 post-execution update-plan helper lane closure / sample18 post-execution update-plan helper lane closure | Close the non-mutating execution update-plan helper lane and decide whether route metadata integration, guarded execution preflight, or persistence update schema work should be promoted next | `DONE` | 0.25 - 0.5 day / 0.25 - 0.5 日 |
 | 618 | Sample18 execution update-plan route metadata integration / sample18 execution update-plan route metadata integration | Wire non-mutating `execution_update_plan` metadata into valid generated-submit route responses while preserving HTTP 409, mutation disabled, executed false, transaction not opened, and no audit/idempotency writes | `DONE` | 0.5 day / 半日 |
 | 619 | Sample18 post-execution update-plan route metadata lane closure / sample18 post-execution update-plan route metadata lane closure | Close the execution update-plan route metadata lane and decide whether guarded execution preflight, persistence update schema work, or route-level hardening should be promoted next | `DONE` | 0.25 - 0.5 day / 0.25 - 0.5 日 |
-| 620 | Sample18 guarded DBAccess execution preflight / sample18 guarded DBAccess execution preflight | Define the first guarded execution contract, including final enablement inputs, transaction open/commit/rollback behavior, execution audit/idempotency update writes, duplicate replay behavior, and fail-closed test matrix before calling DBAccess | `ACTIVE_NEXT` | 0.5 - 1 day / 半日 - 1 日 |
+| 620 | Sample18 guarded DBAccess execution preflight / sample18 guarded DBAccess execution preflight | Define the first guarded execution contract, including final enablement inputs, transaction open/commit/rollback behavior, execution audit/idempotency update writes, duplicate replay behavior, and fail-closed test matrix before calling DBAccess | `DONE` | 0.5 - 1 day / 半日 - 1 日 |
+| 621 | Sample18 guarded execution gate helper first slice / sample18 guarded execution gate helper first slice | Add a final non-executing guard helper that accepts the route-ready metadata chain and returns whether DBAccess execution would be allowed, without opening transactions, calling DBAccess, or writing execution updates | `ACTIVE_NEXT` | 0.5 - 1 day / 半日 - 1 日 |
 
 ### Long-Term No-Code Roadmap / 長期 No-Code ロードマップ
 
@@ -392,6 +393,8 @@ Latest code verification from #618:
 - `git diff --check`
 
 For #619, docs-only verification is `git diff --check`.
+
+For #620, docs-only verification is `git diff --check`.
 
 Latest code verification from #459:
 
