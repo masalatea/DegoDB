@@ -11,6 +11,8 @@
 
 ## Index
 
+- `2026-0711-readiness-runtime-preview-carry-through.md`
+  - #706 readiness runtime preview carry-through。screen-definition action の readiness metadata を runtime-preview JSON と HTML button marker に通し、candidate_ready / availability_candidate / can_submit=false / executor_config_status を focused assertion で固定。Status: `FIRST_SLICE_DONE`。
 - `2026-0711-readiness-metadata-screen-definition-carry-through.md`
   - #705 readiness metadata screen-definition carry-through。Sample18 generated-submit readiness snapshot を screen-definition action metadata と submit binding metadata に載せ、default disabled / candidate_ready / can_submit=false を focused assertion で固定。Status: `FIRST_SLICE_DONE`。
 - `2026-0711-sample18-readiness-snapshot-helper-first-slice.md`

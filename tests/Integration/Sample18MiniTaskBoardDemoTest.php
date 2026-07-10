@@ -4475,6 +4475,29 @@ final class Sample18MiniTaskBoardDemoTest extends TestCase
 
         $enabledCandidatePolicyActions = [];
         $routeContracts = app_lab_sample18_task_board_generated_submit_contracts();
+        $runtimeActionsByKey = [];
+        foreach (($runtimePreview['screens'] ?? []) as $runtimeScreen) {
+            if (!is_array($runtimeScreen)) {
+                continue;
+            }
+            foreach (($runtimeScreen['actions'] ?? []) as $runtimeAction) {
+                if (!is_array($runtimeAction)) {
+                    continue;
+                }
+                $runtimeActionsByKey[(string) ($runtimeAction['action_key'] ?? '')] = $runtimeAction;
+            }
+        }
+        foreach (array_keys($routeContracts) as $operationKey) {
+            self::assertArrayHasKey($operationKey, $runtimeActionsByKey);
+            self::assertSame($operationKey, $runtimeActionsByKey[$operationKey]['readiness_metadata']['action_key'] ?? '');
+            self::assertSame($operationKey, $runtimeActionsByKey[$operationKey]['readiness_metadata']['operation_key'] ?? '');
+            self::assertTrue($runtimeActionsByKey[$operationKey]['readiness_metadata']['route_compatible'] ?? false);
+            self::assertSame('candidate_ready', $runtimeActionsByKey[$operationKey]['readiness_metadata']['readiness_state'] ?? '');
+            self::assertTrue($runtimeActionsByKey[$operationKey]['readiness_metadata']['availability_candidate'] ?? false);
+            self::assertFalse($runtimeActionsByKey[$operationKey]['readiness_metadata']['can_submit'] ?? true);
+            self::assertSame([], $runtimeActionsByKey[$operationKey]['readiness_metadata']['failure_reasons'] ?? ['unexpected']);
+            self::assertSame('disabled', $runtimeActionsByKey[$operationKey]['readiness_metadata']['executor_config_status'] ?? '');
+        }
         foreach ($contractActionsByKey as $actionKey => $action) {
             $enabledCandidatePolicyActions[] = [
                 'action_key' => $actionKey,
@@ -4568,6 +4591,10 @@ final class Sample18MiniTaskBoardDemoTest extends TestCase
         foreach (array_keys($routeContracts) as $operationKey) {
             self::assertMatchesRegularExpression(
                 '/data-action-key="' . preg_quote($operationKey, '/') . '"[^>]+data-action-availability="disabled"/',
+                $runtimePreviewHtml,
+            );
+            self::assertMatchesRegularExpression(
+                '/data-action-key="' . preg_quote($operationKey, '/') . '"[^>]+data-action-readiness-state="candidate_ready"[^>]+data-action-availability-candidate="true"[^>]+data-action-can-submit="false"[^>]+data-action-executor-config-status="disabled"/',
                 $runtimePreviewHtml,
             );
         }

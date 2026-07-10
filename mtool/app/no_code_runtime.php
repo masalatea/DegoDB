@@ -208,6 +208,9 @@ function app_no_code_runtime_render_actions(array $screenActions, array $contrac
         $submitBindingGate = is_array($screenAction['submit_binding_gate'] ?? null)
             ? $screenAction['submit_binding_gate']
             : (is_array($contractAction['submit_binding_gate'] ?? null) ? $contractAction['submit_binding_gate'] : []);
+        $readinessMetadata = is_array($screenAction['readiness_metadata'] ?? null)
+            ? $screenAction['readiness_metadata']
+            : (is_array($contractAction['readiness_metadata'] ?? null) ? $contractAction['readiness_metadata'] : []);
         $guardedSubmitEnabled = app_no_code_runtime_guarded_submit_enabled($submitRoute, $submitBindingGate);
         $renderActions[] = [
             'action_key' => $actionKey,
@@ -218,6 +221,7 @@ function app_no_code_runtime_render_actions(array $screenActions, array $contrac
             'availability' => $availability,
             'submit_route' => $submitRoute,
             'submit_binding_gate' => $submitBindingGate,
+            'readiness_metadata' => $readinessMetadata,
             'fields' => is_array($contractAction['fields'] ?? null) ? array_values($contractAction['fields']) : [],
             'failed_checks' => is_array($contractAction['policy']['failed_checks'] ?? null)
                 ? $contractAction['policy']['failed_checks']
@@ -1004,6 +1008,15 @@ function app_no_code_runtime_render_actions_html(array $actions, string $screenT
         $blockedResponseHandling = (string) ($submitBindingGate['blocked_response_handling'] ?? '');
         $failureDisplayTarget = (string) ($submitBindingGate['failure_display_target'] ?? '');
         $failClosedResult = (string) ($submitBindingGate['fail_closed_result'] ?? '');
+        $readinessMetadata = is_array($action['readiness_metadata'] ?? null) ? $action['readiness_metadata'] : [];
+        $readinessState = (string) ($readinessMetadata['readiness_state'] ?? ($submitBindingGate['readiness_state'] ?? ''));
+        $availabilityCandidate = (bool) ($readinessMetadata['availability_candidate'] ?? ($submitBindingGate['availability_candidate'] ?? false));
+        $canSubmit = (bool) ($readinessMetadata['can_submit'] ?? ($submitBindingGate['can_submit'] ?? false));
+        $executorConfigStatus = (string) ($readinessMetadata['executor_config_status'] ?? ($submitBindingGate['executor_config_status'] ?? ''));
+        $readinessFailureReasons = array_values(array_filter(
+            array_map('strval', is_array($readinessMetadata['failure_reasons'] ?? null) ? $readinessMetadata['failure_reasons'] : []),
+            static fn (string $reason): bool => $reason !== '',
+        ));
         $availability = (string) ($action['availability'] ?? 'disabled');
         $policyFailedChecks = array_values(array_filter(
             array_map('strval', is_array($action['failed_checks'] ?? null) ? $action['failed_checks'] : []),
@@ -1036,6 +1049,11 @@ function app_no_code_runtime_render_actions_html(array $actions, string $screenT
             . ($failureDisplayTarget !== '' ? ' data-action-failure-display-target="' . app_no_code_runtime_html_escape($failureDisplayTarget) . '"' : '')
             . ($failClosedResult !== '' ? ' data-action-fail-closed-result="' . app_no_code_runtime_html_escape($failClosedResult) . '"' : '')
             . ($policyFailedChecks !== [] ? ' data-action-policy-failed-checks="' . app_no_code_runtime_html_escape(implode(',', $policyFailedChecks)) . '"' : '')
+            . ($readinessState !== '' ? ' data-action-readiness-state="' . app_no_code_runtime_html_escape($readinessState) . '"' : '')
+            . ' data-action-availability-candidate="' . ($availabilityCandidate ? 'true' : 'false') . '"'
+            . ' data-action-can-submit="' . ($canSubmit ? 'true' : 'false') . '"'
+            . ($executorConfigStatus !== '' ? ' data-action-executor-config-status="' . app_no_code_runtime_html_escape($executorConfigStatus) . '"' : '')
+            . ($readinessFailureReasons !== [] ? ' data-action-readiness-failure-reasons="' . app_no_code_runtime_html_escape(implode(',', $readinessFailureReasons)) . '"' : '')
             . ($disabledReason !== '' ? ' data-action-disabled-reason="' . app_no_code_runtime_html_escape($disabledReason) . '"' : '')
             . ' aria-describedby="' . app_no_code_runtime_html_escape($hintId) . '"'
             . ' aria-disabled="' . ($enabled ? 'false' : 'true') . '"'
