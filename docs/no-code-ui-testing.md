@@ -223,6 +223,18 @@ Use a browser-side enabled-candidate overlay or fetch stub so the public preview
 
 The first implementation should add a separate smoke target rather than widening the disabled-action smoke. The disabled default smoke remains the regression guard for ordinary generated preview behavior.
 
+### Sample18 Enabled-Candidate Browser Smoke First Slice
+
+The first enabled-candidate smoke is now separate from the disabled-action smoke:
+
+- `make sample18-no-code-public-runtime-enabled-candidate-smoke` publishes the sample18 public runtime preview and runs a short browser probe against the current preview URL;
+- the probe applies a browser-side enabled-candidate overlay for `create_task_card`, `update_task_card`, and `complete_task_card`;
+- desktop and mobile probes assert `data-action-availability="enabled"`, `data-action-enabled="true"`, no disabled reasons, and no policy failed checks for those three candidates;
+- `reopen_task_card` and `delete_task_card` must not become enabled candidates;
+- the guarded generated-submit click is fetch-stubbed and must render blocked feedback with `generated_submit_disabled`, so no real mutation is performed.
+
+This confirms candidate UI presentation only. A later slice must still decide whether browser smoke should cover route/config readiness, real guarded execution, or server-generated availability overlays.
+
 ## Design Boundary
 
 Fast UI contract tests prove that generated metadata and generated markup expose the expected UI contract. They do not prove browser layout, CSS pixel rendering, or server mutation. Browser smoke and route-level tests remain responsible for those outer boundaries.

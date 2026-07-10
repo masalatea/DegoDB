@@ -11,6 +11,8 @@
 
 ## Index
 
+- `2026-0710-sample18-enabled-candidate-browser-smoke-first-slice.md`
+  - #699 sample18 enabled-candidate browser smoke first slice。別 target で browser-side enabled-candidate overlay と fetch stub を使い、create/update/complete の availability markers と blocked generated-submit feedback を desktop/mobile で検査。Status: `FIRST_SLICE_DONE`。
 - `2026-0710-sample18-enabled-candidate-browser-smoke-preflight.md`
   - #698 sample18 enabled-candidate browser smoke preflight。enabled-candidate browser smoke を UI-only/stubbed outer check として定義し、real mutation と reopen/delete availability を避けた first smoke slice (#699) を昇格。Status: `DONE`。
 - `2026-0710-post-availability-state-fast-contract-lane-closure.md`
