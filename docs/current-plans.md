@@ -13,7 +13,7 @@ When someone asks for "the plan list", answer from this section first. / 「計�
 
 ### Main Plan / 主計画
 
-Current main status: #653 closes the route-unwired transaction binding helper lane and promotes generated runtime transaction support preflight before route wiring. `develop` is 131 commits ahead of `origin/develop`, and push has not been performed for #432-#653. / 現在の主計画ステータス: #653 で route-unwired transaction binding helper lane を閉じ、route wiring より前に generated runtime transaction support preflight を昇格しました。`develop` は `origin/develop` より 131 commits ahead、#432-#653 は push していません。
+Current main status: #654 defines generated runtime transaction support and promotes a first implementation slice before route wiring. `develop` is 132 commits ahead of `origin/develop`, and push has not been performed for #432-#654. / 現在の主計画ステータス: #654 で generated runtime transaction support を定義し、route wiring より前に first implementation slice を昇格しました。`develop` は `origin/develop` より 132 commits ahead、#432-#654 は push していません。
 
 | Order | Work unit / 作業の塊 | Commit unit / コミット単位 | Status | Rough effort / 目安 |
 | --- | --- | --- | --- | --- |
@@ -212,7 +212,8 @@ Current main status: #653 closes the route-unwired transaction binding helper la
 | 651 | Sample18 real transaction binding preflight / sample18 real transaction binding preflight | Define how the route-unwired transaction adapter will bind to the sample18 application DB transaction API, DBAccess instance creation, begin/commit/rollback failure handling, and focused tests before route execution is enabled | `DONE` | 0.5 - 1 day / 半日 - 1 日 |
 | 652 | Sample18 transaction binding helper first slice / sample18 transaction binding helper first slice | Add a route-unwired transaction binding helper that adapts a transaction-capable generated DB runtime object to begin/commit/rollback callables and DBAccess instance creation, using fake transaction objects first and leaving route execution disabled | `FIRST_SLICE_DONE` | 0.5 - 1 day / 半日 - 1 日 |
 | 653 | Sample18 post-transaction binding helper lane closure / sample18 post-transaction binding helper lane closure | Close the route-unwired transaction binding helper lane and decide whether generated runtime transaction support, route feature-flag integration preflight, or recovery/repair preflight should be promoted next | `DONE` | 0.25 - 0.5 day / 0.25 - 0.5 日 |
-| 654 | Sample18 generated runtime transaction support preflight / sample18 generated runtime transaction support preflight | Define the smallest transaction support addition for generated DBAccess runtime (`$mtooldb`) so begin/commit/rollback/inTransaction can be tested before route execution is enabled | `ACTIVE_NEXT` | 0.5 - 1 day / 半日 - 1 日 |
+| 654 | Sample18 generated runtime transaction support preflight / sample18 generated runtime transaction support preflight | Define the smallest transaction support addition for generated DBAccess runtime (`$mtooldb`) so begin/commit/rollback/inTransaction can be tested before route execution is enabled | `DONE` | 0.5 - 1 day / 半日 - 1 日 |
+| 655 | Generated runtime transaction support first slice / generated runtime transaction support first slice | Add PDO-first begin/commit/rollBack/inTransaction support to generated DBAccess runtime support and sample18 reference output, preserving query/execute compatibility and leaving route execution disabled | `ACTIVE_NEXT` | 0.5 - 1 day / 半日 - 1 日 |
 
 ### Long-Term No-Code Roadmap / 長期 No-Code ロードマップ
 

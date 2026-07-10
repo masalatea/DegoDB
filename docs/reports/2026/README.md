@@ -11,6 +11,8 @@
 
 ## Index
 
+- `2026-0710-sample18-generated-runtime-transaction-support-preflight.md`
+  - #654 sample18 generated runtime transaction support preflight。generated DBAccess runtime (`$mtooldb`) に PDO-first begin/commit/rollBack/inTransaction を追加する境界を定義し、次は generator source と sample18 reference output の first slice (#655)。Status: `DONE`。
 - `2026-0710-sample18-post-transaction-binding-helper-lane-closure.md`
   - #653 sample18 post-transaction binding helper lane closure。#652 の route-unwired transaction binding helper を受け入れ、route wiring より前に generated runtime transaction support preflight (#654) を昇格。generated-submit route execution は未有効化。Status: `DONE`。
 - `2026-0710-sample18-transaction-binding-helper-first-slice.md`
