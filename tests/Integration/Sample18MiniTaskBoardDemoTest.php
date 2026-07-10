@@ -147,6 +147,22 @@ final class Sample18MiniTaskBoardDemoTest extends TestCase
             self::assertSame('', $valid['failure_code']);
             self::assertSame($expectation['expected_payload'] ?? [], $valid['payload']);
             self::assertSame($expectation['ignored_input_fields'] ?? [], $valid['ignored_input_fields']);
+            $dispatcher = app_lab_sample18_task_board_generated_submit_dispatcher_dry_run($valid);
+            self::assertTrue($dispatcher['ok'] ?? false, (string) $operationKey);
+            self::assertSame('dry_run', $dispatcher['dispatch_state'] ?? '');
+            self::assertFalse($dispatcher['executed'] ?? true);
+            self::assertFalse($dispatcher['mutation_enabled'] ?? true);
+            self::assertSame($expectation['db_access_function'] ?? '', $dispatcher['db_access_function'] ?? '');
+            self::assertSame('TaskCardDBAccess', $dispatcher['db_access_class'] ?? '');
+            self::assertSame('TaskCardData', $dispatcher['data_object'] ?? '');
+            self::assertSame(
+                $expectation['expected_dispatcher_bound_fields'] ?? [],
+                $dispatcher['bound_fields'] ?? [],
+            );
+            self::assertSame(
+                ['TaskCardObj' => $expectation['expected_dispatcher_bound_fields'] ?? []],
+                $dispatcher['method_arguments'] ?? [],
+            );
 
             $invalid = app_lab_sample18_task_board_normalize_generated_submit_request(
                 (string) $operationKey,
@@ -203,6 +219,13 @@ final class Sample18MiniTaskBoardDemoTest extends TestCase
         self::assertSame('InsertTaskCard', $blocked['payload']['db_access_function'] ?? '');
         self::assertSame($createExpectation['expected_payload'] ?? [], $blocked['payload']['normalized_payload'] ?? []);
         self::assertSame($createExpectation['ignored_input_fields'] ?? [], $blocked['payload']['ignored_input_fields'] ?? []);
+        self::assertSame('dry_run', $blocked['payload']['dispatcher_result']['dispatch_state'] ?? '');
+        self::assertFalse($blocked['payload']['dispatcher_result']['executed'] ?? true);
+        self::assertFalse($blocked['payload']['dispatcher_result']['mutation_enabled'] ?? true);
+        self::assertSame(
+            $createExpectation['expected_dispatcher_bound_fields'] ?? [],
+            $blocked['payload']['dispatcher_result']['bound_fields'] ?? [],
+        );
         self::assertFalse($blocked['payload']['mutation_enabled'] ?? true);
 
         $missingCsrf = app_lab_sample18_task_board_generated_submit_blocked_response(

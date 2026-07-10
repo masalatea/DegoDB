@@ -11,6 +11,8 @@
 
 ## Index
 
+- `2026-0710-sample18-mutation-dispatcher-helper-dry-run-first-slice.md`
+  - #583 sample18 mutation dispatcher helper dry-run first slice。normalized generated-submit payload を DBAccess-bound `TaskCardData` field metadata に組み立てる dry-run helper を追加し、route は引き続き `generated_submit_disabled` / `mutation_enabled=false`。focused PHPUnit、HTTP smoke、public runtime browser smoke、`make test` 通過。Status: `DONE`。
 - `2026-0710-sample18-mutation-dispatcher-inventory.md`
   - #582 sample18 mutation dispatcher inventory。generated submit mutation dispatcher の operation mapping、DBAccess-bound payload boundary、auth/CSRF/idempotency/audit/stale-data gates、test matrix を定義。次は dry-run dispatcher helper (#583) で、DBAccess mutation は未有効化。Status: `DONE`。
 - `2026-0710-sample18-post-blocked-guarded-click-lane-closure.md`

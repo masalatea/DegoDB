@@ -307,6 +307,73 @@ function app_lab_sample18_task_board_generated_submit_request_result(
     ];
 }
 
+function app_lab_sample18_task_board_generated_submit_db_access_field_name(string $fieldName): string
+{
+    $map = [
+        'id' => 'Id',
+        'title' => 'Title',
+        'body' => 'Body',
+        'status' => 'Status',
+        'assigned_to' => 'AssignedTo',
+        'priority' => 'Priority',
+        'due_date' => 'DueDate',
+        'completed_at' => 'CompletedAt',
+        'updated_at' => 'UpdatedAt',
+    ];
+
+    return $map[$fieldName] ?? $fieldName;
+}
+
+/**
+ * @param array{
+ *     ok:bool,
+ *     operation_key:string,
+ *     curated_route_action:string,
+ *     db_access_function:string,
+ *     payload:array<string,mixed>,
+ *     ignored_input_fields:list<string>,
+ *     errors:list<string>,
+ *     failure_code:string
+ * } $normalized
+ * @return array<string,mixed>
+ */
+function app_lab_sample18_task_board_generated_submit_dispatcher_dry_run(array $normalized): array
+{
+    if (!($normalized['ok'] ?? false)) {
+        return [
+            'ok' => false,
+            'dispatch_state' => 'not_ready',
+            'executed' => false,
+            'mutation_enabled' => false,
+            'failure_code' => (string) ($normalized['failure_code'] ?? 'validation_error'),
+        ];
+    }
+
+    $boundFields = [];
+    foreach (($normalized['payload'] ?? []) as $fieldName => $value) {
+        if (!is_string($fieldName)) {
+            continue;
+        }
+        $boundFields[app_lab_sample18_task_board_generated_submit_db_access_field_name($fieldName)] = $value;
+    }
+
+    return [
+        'ok' => true,
+        'dispatch_state' => 'dry_run',
+        'executed' => false,
+        'mutation_enabled' => false,
+        'operation_key' => (string) ($normalized['operation_key'] ?? ''),
+        'curated_route_action' => (string) ($normalized['curated_route_action'] ?? ''),
+        'db_access_class' => 'TaskCardDBAccess',
+        'db_access_function' => (string) ($normalized['db_access_function'] ?? ''),
+        'data_object' => 'TaskCardData',
+        'method_arguments' => [
+            'TaskCardObj' => $boundFields,
+        ],
+        'bound_fields' => $boundFields,
+    ];
+}
+
 /**
  * @param array<string,mixed> $post
  * @return array{status_code:int,payload:array<string,mixed>}
@@ -367,6 +434,8 @@ function app_lab_sample18_task_board_generated_submit_blocked_response(
         ];
     }
 
+    $dispatcherResult = app_lab_sample18_task_board_generated_submit_dispatcher_dry_run($normalized);
+
     return [
         'status_code' => 409,
         'payload' => [
@@ -379,6 +448,7 @@ function app_lab_sample18_task_board_generated_submit_blocked_response(
             'db_access_function' => $normalized['db_access_function'],
             'normalized_payload' => $normalized['payload'],
             'ignored_input_fields' => $normalized['ignored_input_fields'],
+            'dispatcher_result' => $dispatcherResult,
             'mutation_enabled' => false,
         ],
     ];

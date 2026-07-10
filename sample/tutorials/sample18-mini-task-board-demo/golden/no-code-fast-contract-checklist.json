@@ -187,6 +187,16 @@
           "title": "New generated task",
           "updated_at": "2026-07-10 12:34:56"
         },
+        "expected_dispatcher_bound_fields": {
+          "AssignedTo": "Ada",
+          "Body": "Body memo",
+          "CompletedAt": null,
+          "DueDate": null,
+          "Priority": 100,
+          "Status": "todo",
+          "Title": "New generated task",
+          "UpdatedAt": "2026-07-10 12:34:56"
+        },
         "ignored_input_fields": ["completed_at", "status"],
         "invalid_input": {
           "title": "   "
@@ -217,6 +227,17 @@
           "title": "Updated generated task",
           "updated_at": "2026-07-10 12:34:56"
         },
+        "expected_dispatcher_bound_fields": {
+          "AssignedTo": "Grace",
+          "Body": "Updated body",
+          "CompletedAt": "2026-07-10 12:34:56",
+          "DueDate": "2026-08-01",
+          "Id": 1801,
+          "Priority": 0,
+          "Status": "done",
+          "Title": "Updated generated task",
+          "UpdatedAt": "2026-07-10 12:34:56"
+        },
         "ignored_input_fields": ["updated_at"],
         "invalid_input": {
           "id": "0",
@@ -237,6 +258,12 @@
           "id": 1802,
           "status": "done",
           "updated_at": "2026-07-10 12:34:56"
+        },
+        "expected_dispatcher_bound_fields": {
+          "CompletedAt": "2026-07-10 12:34:56",
+          "Id": 1802,
+          "Status": "done",
+          "UpdatedAt": "2026-07-10 12:34:56"
         },
         "ignored_input_fields": ["status", "title"],
         "invalid_input": {
