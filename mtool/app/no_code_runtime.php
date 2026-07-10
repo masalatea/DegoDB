@@ -3544,8 +3544,22 @@ function app_no_code_runtime_preview_js(): string
     if (!payload) {
       return 'Generated submit did not return a usable response.';
     }
+    if (payload.ok && payload.result === 'executed') {
+      return 'Generated submit executed.';
+    }
     if (payload.result === 'blocked') {
+      if (payload.idempotency && payload.idempotency.status === 'duplicate') {
+        return 'Generated submit blocked: ' + (payload.failure_code || 'duplicate_request') + '. Duplicate request was not executed.';
+      }
       return 'Generated submit blocked: ' + (payload.failure_code || 'blocked') + '. Mutation dispatch remains disabled.';
+    }
+    var recoveryReason = guardedSubmitRecoveryReason(payload);
+    if (recoveryReason !== '') {
+      var recoveryMessage = 'Generated submit requires recovery: ' + recoveryReason + '.';
+      if (payload.failure_code) {
+        recoveryMessage += ' Failure: ' + payload.failure_code + '.';
+      }
+      return recoveryMessage;
     }
     if (payload.failure_code) {
       return 'Generated submit rejected: ' + payload.failure_code + '.';
@@ -3554,6 +3568,57 @@ function app_no_code_runtime_preview_js(): string
       return 'Generated submit failed: ' + payload.error + '.';
     }
     return 'Generated submit failed.';
+  }
+
+  function guardedSubmitRecoveryReason(payload) {
+    if (!payload) {
+      return '';
+    }
+    var candidates = [
+      payload.route_execution,
+      payload.transaction_result,
+      payload.post_commit_recording
+    ];
+    for (var index = 0; index < candidates.length; index += 1) {
+      var candidate = candidates[index];
+      if (candidate && candidate.recovery_required) {
+        return candidate.recovery_reason || payload.recovery_reason || 'recovery_required';
+      }
+    }
+    if (payload.recovery_required) {
+      return payload.recovery_reason || 'recovery_required';
+    }
+    return '';
+  }
+
+  function guardedSubmitResultState(payload) {
+    if (!payload) {
+      return 'error';
+    }
+    if (payload.ok && payload.result === 'executed') {
+      return 'success';
+    }
+    if (payload.result === 'blocked') {
+      return 'blocked';
+    }
+    if (guardedSubmitRecoveryReason(payload) !== '') {
+      return 'recovery-required';
+    }
+    return 'error';
+  }
+
+  function writeGuardedSubmitResultAttributes(target, payload, state, recoveryReason) {
+    target.setAttribute('data-action-last-submit-result', payload && payload.result ? payload.result : 'invalid');
+    target.setAttribute('data-action-last-failure-code', payload && payload.failure_code ? payload.failure_code : '');
+    target.setAttribute('data-action-recovery-required', recoveryReason !== '' ? 'true' : 'false');
+    if (recoveryReason !== '') {
+      target.setAttribute('data-action-recovery-reason', recoveryReason);
+    } else {
+      target.removeAttribute('data-action-recovery-reason');
+    }
+    if (state) {
+      target.setAttribute('data-action-state', state);
+    }
   }
 
   function submitGuardedGeneratedAction(button) {
@@ -3594,22 +3659,20 @@ function app_no_code_runtime_preview_js(): string
         };
       });
     }).then(function (payload) {
-      var blocked = payload && payload.result === 'blocked' && payload.failure_code === (button.getAttribute('data-action-fail-closed-result') || '');
-      var state = blocked ? 'blocked' : 'error';
+      var state = guardedSubmitResultState(payload);
+      var recoveryReason = guardedSubmitRecoveryReason(payload);
       var message = guardedSubmitResultMessage(payload);
+      var executed = !!(payload && payload.ok && payload.result === 'executed');
       button.disabled = false;
-      button.setAttribute('data-action-state', state);
-      button.setAttribute('data-action-last-submit-result', payload && payload.result ? payload.result : 'invalid');
-      button.setAttribute('data-action-last-failure-code', payload && payload.failure_code ? payload.failure_code : '');
+      writeGuardedSubmitResultAttributes(button, payload, state, recoveryReason);
       if (feedback) {
         feedback.textContent = message;
         feedback.setAttribute('data-state', state);
-        feedback.setAttribute('data-action-last-submit-result', payload && payload.result ? payload.result : 'invalid');
-        feedback.setAttribute('data-action-last-failure-code', payload && payload.failure_code ? payload.failure_code : '');
+        writeGuardedSubmitResultAttributes(feedback, payload, '', recoveryReason);
       }
       window.__noCodeRuntimeDispatches.push({
-        ok: false,
-        executed: false,
+        ok: !!(payload && payload.ok),
+        executed: executed,
         network_submit: true,
         result: payload || null,
         message: message
@@ -3623,11 +3686,15 @@ function app_no_code_runtime_preview_js(): string
       button.setAttribute('data-action-state', 'error');
       button.setAttribute('data-action-last-submit-result', 'request_failed');
       button.setAttribute('data-action-last-failure-code', 'request_failed');
+      button.setAttribute('data-action-recovery-required', 'false');
+      button.removeAttribute('data-action-recovery-reason');
       if (feedback) {
         feedback.textContent = 'Generated submit request failed.';
         feedback.setAttribute('data-state', 'error');
         feedback.setAttribute('data-action-last-submit-result', 'request_failed');
         feedback.setAttribute('data-action-last-failure-code', 'request_failed');
+        feedback.setAttribute('data-action-recovery-required', 'false');
+        feedback.removeAttribute('data-action-recovery-reason');
       }
       window.__noCodeRuntimeDispatches.push({
         ok: false,
