@@ -11,6 +11,8 @@
 
 ## Index
 
+- `2026-0710-sample18-route-commit-unknown-recovery-coverage.md`
+  - #671 sample18 route commit-unknown recovery coverage。explicit executor route で transaction commit failure / exception が `commit_status_unknown` recovery metadata を返し post-commit recording を skip することを coverage。Status: `FIRST_SLICE_DONE`。
 - `2026-0710-post-real-runtime-default-binding-lane-closure.md`
   - #670 post real runtime default binding lane closure。#669 の default runtime binding を受け入れ、UI rendering の前に commit-unknown recovery coverage (#671) を昇格。Status: `DONE`。
 - `2026-0710-sample18-real-runtime-default-binding-first-slice.md`
