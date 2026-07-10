@@ -11,6 +11,8 @@
 
 ## Index
 
+- `2026-0710-sample18-generated-submit-csrf-guard-preflight.md`
+  - #572 sample18 generated submit CSRF guard preflight。generated-submit route に missing / invalid CSRF の fail-closed JSON 403 を追加し、focused PHPUnit と `sample18-http-runtime-smoke` で valid blocked、missing CSRF、invalid CSRF、validation、unknown operation を確認。Status: `DONE`。
 - `2026-0710-sample18-submit-binding-lane-closure.md`
   - #571 sample18 submit binding lane closure。#570 の binding gate を受け入れ、次は disabled click intent / mutation dispatcher ではなく、generated-submit route の fail-closed CSRF guard preflight (#572) を先に進める判断を記録。Status: `DONE`。
 - `2026-0710-sample18-submit-route-binding-gate-preflight.md`

@@ -358,8 +358,34 @@ function run_smoke(array $args): array
         'generated submit blocked ignored_input_fields did not include client_only',
     );
 
+    $generatedMissingCsrf = request_once($client, 'POST', $generatedSubmitPath, [
+        'form_params' => [
+            'operation_key' => 'create_task_card',
+            'title' => 'Generated missing CSRF smoke',
+        ],
+    ]);
+    ensure($generatedMissingCsrf['status'] === 403, 'generated submit missing CSRF status is not 403: ' . $generatedMissingCsrf['status'] . response_excerpt($generatedMissingCsrf));
+    $generatedMissingCsrfJson = json_response($generatedMissingCsrf);
+    ensure(($generatedMissingCsrfJson['failure_code'] ?? '') === 'missing_csrf', 'generated submit missing CSRF failure_code mismatch');
+    ensure(($generatedMissingCsrfJson['errors'] ?? []) === ['csrf.missing'], 'generated submit missing CSRF errors mismatch');
+    ensure(($generatedMissingCsrfJson['mutation_enabled'] ?? true) === false, 'generated submit missing CSRF mutation flag was enabled');
+
+    $generatedInvalidCsrf = request_once($client, 'POST', $generatedSubmitPath, [
+        'form_params' => [
+            '_csrf_token' => 'wrong-token',
+            'operation_key' => 'create_task_card',
+            'title' => 'Generated invalid CSRF smoke',
+        ],
+    ]);
+    ensure($generatedInvalidCsrf['status'] === 403, 'generated submit invalid CSRF status is not 403: ' . $generatedInvalidCsrf['status'] . response_excerpt($generatedInvalidCsrf));
+    $generatedInvalidCsrfJson = json_response($generatedInvalidCsrf);
+    ensure(($generatedInvalidCsrfJson['failure_code'] ?? '') === 'invalid_csrf', 'generated submit invalid CSRF failure_code mismatch');
+    ensure(($generatedInvalidCsrfJson['errors'] ?? []) === ['csrf.invalid'], 'generated submit invalid CSRF errors mismatch');
+    ensure(($generatedInvalidCsrfJson['mutation_enabled'] ?? true) === false, 'generated submit invalid CSRF mutation flag was enabled');
+
     $generatedInvalid = request_once($client, 'POST', $generatedSubmitPath, [
         'form_params' => [
+            '_csrf_token' => $pageCsrf,
             'operation_key' => 'update_task_card',
             'id' => '0',
             'title' => '',
@@ -373,6 +399,7 @@ function run_smoke(array $args): array
 
     $generatedUnknown = request_once($client, 'POST', $generatedSubmitPath, [
         'form_params' => [
+            '_csrf_token' => $pageCsrf,
             'operation_key' => 'delete_task_card',
             'id' => $taskId,
         ],
@@ -395,6 +422,8 @@ function run_smoke(array $args): array
             'generated_submit' => [
                 'get' => ['status' => $generatedGet['status'], 'failure_code' => $generatedGetJson['failure_code'] ?? ''],
                 'blocked' => ['status' => $generatedBlocked['status'], 'failure_code' => $generatedBlockedJson['failure_code'] ?? ''],
+                'missing_csrf' => ['status' => $generatedMissingCsrf['status'], 'failure_code' => $generatedMissingCsrfJson['failure_code'] ?? ''],
+                'invalid_csrf' => ['status' => $generatedInvalidCsrf['status'], 'failure_code' => $generatedInvalidCsrfJson['failure_code'] ?? ''],
                 'invalid' => ['status' => $generatedInvalid['status'], 'failure_code' => $generatedInvalidJson['failure_code'] ?? ''],
                 'unknown' => ['status' => $generatedUnknown['status'], 'failure_code' => $generatedUnknownJson['failure_code'] ?? ''],
             ],
