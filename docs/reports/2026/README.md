@@ -11,6 +11,8 @@
 
 ## Index
 
+- `2026-0710-sample18-generated-submit-mutation-enablement-gate-preflight.md`
+  - #598 sample18 generated submit mutation enablement gate preflight。明示 flag、audit / idempotency required states、duplicate behavior、failure behavior、non-mutating helper first slice の test 条件を定義。DBAccess mutation は未有効化。Status: `DONE`。
 - `2026-0710-sample18-post-idempotency-route-integration-lane-closure.md`
   - #597 sample18 post-idempotency-route-integration lane closure。#596 の route idempotency integration を受け入れ、次は mutation enablement gate preflight (#598) を昇格。DBAccess mutation は未有効化。Status: `DONE`。
 - `2026-0710-sample18-generated-submit-idempotency-route-integration-first-slice.md`

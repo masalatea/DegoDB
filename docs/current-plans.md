@@ -13,7 +13,7 @@ When someone asks for "the plan list", answer from this section first. / 「計�
 
 ### Main Plan / 主計画
 
-Current main status: #597 closes sample18 idempotency route integration and promotes mutation enablement gate preflight before any DBAccess mutation is enabled. `develop` is 73 commits ahead of `origin/develop`, and push has not been performed for #432-#597. / 現在の主計画ステータス: #597 で sample18 idempotency route integration を閉じ、DBAccess mutation を有効化する前に mutation enablement gate preflight を昇格しました。`develop` は `origin/develop` より 73 commits ahead、#432-#597 は push していません。
+Current main status: #598 defines the sample18 generated submit mutation enablement gate contract and promotes a non-mutating gate helper first slice. `develop` is 74 commits ahead of `origin/develop`, and push has not been performed for #432-#598. / 現在の主計画ステータス: #598 で sample18 generated submit mutation enablement gate contract を定義し、non-mutating gate helper first slice を昇格しました。`develop` は `origin/develop` より 74 commits ahead、#432-#598 は push していません。
 
 | Order | Work unit / 作業の塊 | Commit unit / コミット単位 | Status | Rough effort / 目安 |
 | --- | --- | --- | --- | --- |
@@ -156,7 +156,8 @@ Current main status: #597 closes sample18 idempotency route integration and prom
 | 595 | Sample18 generated submit idempotency route integration preflight / sample18 generated submit idempotency route integration preflight | Define how the blocked generated submit route will call idempotency create-or-reuse, response metadata, skip matrix, and audit ordering before implementation | `DONE` | 0.5 day / 半日 |
 | 596 | Sample18 generated submit idempotency route integration first slice / sample18 generated submit idempotency route integration first slice | Wire valid blocked generated submit responses to idempotency create-or-reuse after audit append while keeping method/CSRF/validation failures skipped and DBAccess mutation disabled | `DONE` | 0.5 - 1 day / 半日 - 1 日 |
 | 597 | Sample18 post-idempotency-route-integration lane closure / sample18 post-idempotency-route-integration lane closure | Close the route idempotency integration lane and decide whether duplicate audit interaction, persistence failure matrix, or mutation enablement gate coverage should be promoted next | `DONE` | 0.25 - 0.5 day / 0.25 - 0.5 日 |
-| 598 | Sample18 generated submit mutation enablement gate preflight / sample18 generated submit mutation enablement gate preflight | Define the explicit enablement flag, required persisted idempotency/audit states, duplicate behavior, and fail-closed tests before any DBAccess mutation can execute | `ACTIVE_NEXT` | 0.5 day / 半日 |
+| 598 | Sample18 generated submit mutation enablement gate preflight / sample18 generated submit mutation enablement gate preflight | Define the explicit enablement flag, required persisted idempotency/audit states, duplicate behavior, and fail-closed tests before any DBAccess mutation can execute | `DONE` | 0.5 day / 半日 |
+| 599 | Sample18 generated submit mutation gate helper first slice / sample18 generated submit mutation gate helper first slice | Add a non-mutating helper and focused coverage for mutation gate decisions while keeping DBAccess execution disabled by default | `ACTIVE_NEXT` | 0.5 day / 半日 |
 
 ### Long-Term No-Code Roadmap / 長期 No-Code ロードマップ
 
@@ -271,6 +272,8 @@ Latest code verification from #596:
 - `git diff --check`
 
 For #597, docs-only verification is `git diff --check`.
+
+For #598, docs-only verification is `git diff --check`.
 
 Latest code verification from #459:
 
@@ -673,6 +676,7 @@ Completed detailed history was moved out of this active list. / 完了済みの�
 
 | Completed scope / 完了済み範囲 | Historical source / 履歴ソース |
 | --- | --- |
+| Sample18 generated submit mutation enablement gate preflight / sample18 generated submit mutation enablement gate preflight | [2026-0710 Sample18 Generated Submit Mutation Enablement Gate Preflight](reports/2026/2026-0710-sample18-generated-submit-mutation-enablement-gate-preflight.md) |
 | Sample18 post-idempotency-route-integration lane closure / sample18 post-idempotency-route-integration lane closure | [2026-0710 Sample18 Post Idempotency Route Integration Lane Closure](reports/2026/2026-0710-sample18-post-idempotency-route-integration-lane-closure.md) |
 | Sample18 generated submit idempotency route integration first slice / sample18 generated submit idempotency route integration first slice | [2026-0710 Sample18 Generated Submit Idempotency Route Integration First Slice](reports/2026/2026-0710-sample18-generated-submit-idempotency-route-integration-first-slice.md) |
 | Sample18 generated submit idempotency route integration preflight / sample18 generated submit idempotency route integration preflight | [2026-0710 Sample18 Generated Submit Idempotency Route Integration Preflight](reports/2026/2026-0710-sample18-generated-submit-idempotency-route-integration-preflight.md) |
