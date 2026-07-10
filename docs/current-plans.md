@@ -13,7 +13,7 @@ When someone asks for "the plan list", answer from this section first. / 「計�
 
 ### Main Plan / 主計画
 
-Current main status: #627 closes the sample18 idempotency execution outcome persistence lane and promotes execution audit append persistence before guarded DBAccess executor work. `develop` is 103 commits ahead of `origin/develop`, and push has not been performed for #432-#627. / 現在の主計画ステータス: #627 で sample18 idempotency execution outcome persistence lane を閉じ、guarded DBAccess executor work より前に execution audit append persistence を昇格しました。`develop` は `origin/develop` より 103 commits ahead、#432-#627 は push していません。
+Current main status: #628 adds sample18 execution audit append persistence and promotes lane closure before guarded DBAccess executor work. `develop` is 104 commits ahead of `origin/develop`, and push has not been performed for #432-#628. / 現在の主計画ステータス: #628 で sample18 execution audit append persistence を追加し、guarded DBAccess executor work より前に lane closure を昇格しました。`develop` は `origin/develop` より 104 commits ahead、#432-#628 は push していません。
 
 | Order | Work unit / 作業の塊 | Commit unit / コミット単位 | Status | Rough effort / 目安 |
 | --- | --- | --- | --- | --- |
@@ -186,7 +186,8 @@ Current main status: #627 closes the sample18 idempotency execution outcome pers
 | 625 | Sample18 guarded executor implementation preflight / sample18 guarded executor implementation preflight | Define the smallest first mutating executor slice, including code boundary, feature flag, transaction API, DBAccess call adapter, execution audit/idempotency update persistence, rollback behavior, and tests before implementation | `DONE` | 0.5 - 1 day / 半日 - 1 日 |
 | 626 | Sample18 idempotency execution outcome persistence first slice / sample18 idempotency execution outcome persistence first slice | Add repository-level execution outcome update support for existing generated-submit idempotency records using stable metadata/result fields, without opening transactions, calling DBAccess, or wiring the route executor | `DONE` | 0.5 - 1 day / 半日 - 1 日 |
 | 627 | Sample18 post-idempotency execution outcome persistence lane closure / sample18 post-idempotency execution outcome persistence lane closure | Close the idempotency execution outcome persistence lane and decide whether execution audit append persistence, route integration metadata, or guarded executor implementation should be promoted next | `DONE` | 0.25 - 0.5 day / 0.25 - 0.5 日 |
-| 628 | Sample18 execution audit append persistence first slice / sample18 execution audit append persistence first slice | Add a repository/helper path to append execution audit events for planned execution outcomes using existing audit storage, without opening transactions, calling DBAccess, updating idempotency, or wiring the route executor | `ACTIVE_NEXT` | 0.5 - 1 day / 半日 - 1 日 |
+| 628 | Sample18 execution audit append persistence first slice / sample18 execution audit append persistence first slice | Add a repository/helper path to append execution audit events for planned execution outcomes using existing audit storage, without opening transactions, calling DBAccess, updating idempotency, or wiring the route executor | `DONE` | 0.5 - 1 day / 半日 - 1 日 |
+| 629 | Sample18 post-execution audit append persistence lane closure / sample18 post-execution audit append persistence lane closure | Close the execution audit append persistence lane and decide whether guarded executor coordination preflight, route integration metadata, or additional failure coverage should be promoted next | `ACTIVE_NEXT` | 0.25 - 0.5 day / 0.25 - 0.5 日 |
 
 ### Long-Term No-Code Roadmap / 長期 No-Code ロードマップ
 
@@ -436,6 +437,14 @@ Latest code verification from #626:
 - `git diff --check`
 
 For #627, docs-only verification is `git diff --check`.
+
+Latest code verification from #628:
+
+- `php -l mtool/app/lab_sample18_task_board_page.php`
+- `php -l tests/Integration/Sample18MiniTaskBoardDemoTest.php`
+- `make sample18-pack-runtime-test`: `OK (13 tests, 877 assertions)`
+- Full `make test`: `OK, but incomplete, skipped, or risky tests! Tests: 397, Assertions: 12719, Skipped: 1.`
+- `git diff --check`
 
 Latest code verification from #459:
 

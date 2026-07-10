@@ -1310,6 +1310,156 @@ final class Sample18MiniTaskBoardDemoTest extends TestCase
         self::assertContains('request_audit_event_key_missing', $missingLinkGuard['reasons']);
     }
 
+    public function testMiniTaskBoardGeneratedSubmitExecutionAuditAppendIsIndependent(): void
+    {
+        $app = $this->sqliteApp();
+        $bootstrap = app_config_db_bootstrap_apply($app);
+        self::assertTrue($bootstrap['ok'], $bootstrap['error']);
+        $principal = [
+            'id' => 'sample18-executor@example.test',
+            'auth_source' => 'phpunit',
+        ];
+
+        $normalized = app_lab_sample18_task_board_normalize_generated_submit_request(
+            'create_task_card',
+            ['title' => 'Execution audit', 'body' => '', 'assigned_to' => '', 'priority' => '60', 'due_date' => ''],
+            '2026-07-10 09:00:00',
+        );
+        self::assertTrue($normalized['ok']);
+        $dispatcher = app_lab_sample18_task_board_generated_submit_dispatcher_dry_run($normalized);
+        $preview = app_lab_sample18_task_board_generated_submit_idempotency_audit_preview(
+            $normalized,
+            $dispatcher,
+            'blocked',
+            'generated_submit_disabled',
+        );
+        $requestAudit = app_lab_sample18_task_board_generated_submit_audit_event_with_actor(
+            is_array($preview['audit_event_preview'] ?? null) ? $preview['audit_event_preview'] : [],
+            $principal,
+        );
+        $auditAppend = app_lab_sample18_task_board_generated_submit_append_audit_event($app, $requestAudit);
+        self::assertSame('appended', $auditAppend['status']);
+        $idempotency = app_lab_sample18_task_board_generated_submit_apply_idempotency(
+            $app,
+            $normalized,
+            $dispatcher,
+            $preview,
+            $auditAppend,
+        );
+        self::assertSame('recorded', $idempotency['status']);
+
+        $mutationGate = app_lab_sample18_task_board_generated_submit_mutation_gate(
+            ['sample18_generated_submit_mutation_enabled' => true],
+            $normalized,
+            $dispatcher,
+            $auditAppend,
+            $idempotency,
+        );
+        $executionPlan = app_lab_sample18_task_board_generated_submit_dbaccess_execution_plan(
+            $normalized,
+            $dispatcher,
+            $mutationGate,
+        );
+        $transactionPlan = app_lab_sample18_task_board_generated_submit_transaction_plan($executionPlan);
+        $updatePlan = app_lab_sample18_task_board_generated_submit_execution_update_plan(
+            $transactionPlan,
+            $auditAppend,
+            $idempotency,
+        );
+        $guard = app_lab_sample18_task_board_generated_submit_execution_guard(
+            $normalized,
+            $auditAppend,
+            $idempotency,
+            $mutationGate,
+            $executionPlan,
+            $transactionPlan,
+            $updatePlan,
+        );
+        self::assertSame('allowed', $guard['status']);
+
+        $append = app_lab_sample18_task_board_generated_submit_append_execution_audit_event(
+            $app,
+            $updatePlan,
+            $guard,
+            $principal,
+            'executed',
+            'task_card_inserted',
+            'committed',
+            ['affected_rows' => 1],
+        );
+        self::assertTrue($append['ok'], $append['error']);
+        self::assertSame('appended', $append['status']);
+        self::assertSame('sample18.generated_submit.executed', $append['item']['event_type'] ?? '');
+        self::assertSame('executed', $append['item']['result'] ?? '');
+        self::assertSame('task_card_inserted', $append['item']['message'] ?? '');
+        self::assertSame($preview['dedupe_key_preview'] ?? '', $append['item']['target_key'] ?? '');
+        self::assertSame($auditAppend['item']['event_key'] ?? '', $append['item']['metadata']['request_audit_event_key'] ?? '');
+        self::assertSame($preview['dedupe_key_preview'] ?? '', $append['item']['metadata']['dedupe_key'] ?? '');
+        self::assertSame('TaskCardDBAccess', $append['item']['metadata']['db_access_class'] ?? '');
+        self::assertSame('InsertTaskCard', $append['item']['metadata']['db_access_function'] ?? '');
+        self::assertSame('committed', $append['item']['metadata']['transaction_status'] ?? '');
+        self::assertSame(1, $append['item']['metadata']['details']['affected_rows'] ?? 0);
+
+        $latest = app_audit_log_fetch_latest($app, [
+            'project_key' => 'SAMPLE18',
+            'event_type' => 'sample18.generated_submit.executed',
+            'target_key' => (string) ($preview['dedupe_key_preview'] ?? ''),
+            'limit' => 10,
+        ]);
+        self::assertTrue($latest['ok'], $latest['error']);
+        self::assertCount(1, $latest['items']);
+
+        $idempotencyRecords = app_lab_sample18_generated_submit_idempotency_fetch_latest_records($app, [
+            'dedupe_key' => (string) ($preview['dedupe_key_preview'] ?? ''),
+            'limit' => 10,
+        ]);
+        self::assertTrue($idempotencyRecords['ok'], $idempotencyRecords['error']);
+        self::assertCount(1, $idempotencyRecords['items']);
+        self::assertArrayNotHasKey('execution', $idempotencyRecords['items'][0]['metadata'] ?? []);
+        self::assertSame('blocked', $idempotencyRecords['items'][0]['result'] ?? '');
+
+        $missingLinkGuard = $guard;
+        $missingLinkGuard['request_audit_event_key'] = '';
+        $missingLink = app_lab_sample18_task_board_generated_submit_append_execution_audit_event(
+            $app,
+            $updatePlan,
+            $missingLinkGuard,
+            $principal,
+            'executed',
+            'task_card_inserted',
+            'committed',
+        );
+        self::assertFalse($missingLink['ok']);
+        self::assertSame('request_audit_event_key_missing', $missingLink['reason']);
+
+        $blockedGuard = $guard;
+        $blockedGuard['status'] = 'blocked';
+        $blockedGuard['ready'] = false;
+        $blocked = app_lab_sample18_task_board_generated_submit_append_execution_audit_event(
+            $app,
+            $updatePlan,
+            $blockedGuard,
+            $principal,
+            'executed',
+            'task_card_inserted',
+            'committed',
+        );
+        self::assertFalse($blocked['ok']);
+        self::assertSame('execution_guard_not_ready', $blocked['reason']);
+
+        $invalid = app_lab_sample18_task_board_generated_submit_append_execution_audit_event(
+            $app,
+            $updatePlan,
+            $guard,
+            $principal,
+            'planned',
+            'planned_not_executed',
+            'not_opened',
+        );
+        self::assertFalse($invalid['ok']);
+        self::assertSame('invalid_execution_status', $invalid['reason']);
+    }
+
     public function testMiniTaskBoardDemoReferenceOutputs(): void
     {
         $fixture = $this->sample18NoCodeGoldenFixture();

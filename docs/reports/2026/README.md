@@ -11,6 +11,8 @@
 
 ## Index
 
+- `2026-0710-sample18-execution-audit-append-persistence-first-slice.md`
+  - #628 sample18 execution audit append persistence first slice。allowed execution guard metadata から execution audit event を append する helper を追加し、request audit linkage / dedupe / DBAccess metadata / transaction status / result details を保存。DBAccess mutation / transaction / idempotency update / route executor は未有効化。Status: `FIRST_SLICE_DONE`。
 - `2026-0710-sample18-post-idempotency-execution-outcome-persistence-lane-closure.md`
   - #627 sample18 post-idempotency execution outcome persistence lane closure。#626 の idempotency execution outcome update API を受け入れ、次は DBAccess executor 前に execution audit append persistence (#628) を昇格。DBAccess mutation / transaction / route executor は未有効化。Status: `DONE`。
 - `2026-0710-sample18-idempotency-execution-outcome-persistence-first-slice.md`
