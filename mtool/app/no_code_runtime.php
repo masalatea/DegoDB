@@ -958,6 +958,9 @@ function app_no_code_runtime_render_actions_html(array $actions, string $screenT
         $submitBindingGate = is_array($action['submit_binding_gate'] ?? null) ? $action['submit_binding_gate'] : [];
         $bindingState = (string) ($submitBindingGate['binding_state'] ?? '');
         $csrfSource = (string) ($submitBindingGate['csrf_source'] ?? '');
+        $csrfTokenField = (string) ($submitBindingGate['csrf_token_field'] ?? '');
+        $csrfSourceSelector = (string) ($submitBindingGate['csrf_source_selector'] ?? '');
+        $csrfTransport = (string) ($submitBindingGate['csrf_transport'] ?? '');
         $failClosedResult = (string) ($submitBindingGate['fail_closed_result'] ?? '');
         $hintId = app_no_code_runtime_dom_id('no-code-action-hint-' . $screenKey . '-' . $actionKey);
         $disabledReason = $enabled ? '' : 'policy-not-enabled';
@@ -972,6 +975,9 @@ function app_no_code_runtime_render_actions_html(array $actions, string $screenT
             . ($submitRoute !== '' ? ' data-action-submit-url="' . app_no_code_runtime_html_escape($submitRoute) . '"' : '')
             . ($bindingState !== '' ? ' data-action-binding-state="' . app_no_code_runtime_html_escape($bindingState) . '"' : '')
             . ($csrfSource !== '' ? ' data-action-csrf-source="' . app_no_code_runtime_html_escape($csrfSource) . '"' : '')
+            . ($csrfTokenField !== '' ? ' data-action-csrf-token-field="' . app_no_code_runtime_html_escape($csrfTokenField) . '"' : '')
+            . ($csrfSourceSelector !== '' ? ' data-action-csrf-source-selector="' . app_no_code_runtime_html_escape($csrfSourceSelector) . '"' : '')
+            . ($csrfTransport !== '' ? ' data-action-csrf-transport="' . app_no_code_runtime_html_escape($csrfTransport) . '"' : '')
             . ($failClosedResult !== '' ? ' data-action-fail-closed-result="' . app_no_code_runtime_html_escape($failClosedResult) . '"' : '')
             . ($disabledReason !== '' ? ' data-action-disabled-reason="' . app_no_code_runtime_html_escape($disabledReason) . '"' : '')
             . ' aria-describedby="' . app_no_code_runtime_html_escape($hintId) . '"'

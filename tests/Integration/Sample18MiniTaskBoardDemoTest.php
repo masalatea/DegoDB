@@ -205,6 +205,28 @@ final class Sample18MiniTaskBoardDemoTest extends TestCase
         self::assertSame($createExpectation['ignored_input_fields'] ?? [], $blocked['payload']['ignored_input_fields'] ?? []);
         self::assertFalse($blocked['payload']['mutation_enabled'] ?? true);
 
+        $missingCsrf = app_lab_sample18_task_board_generated_submit_blocked_response(
+            'POST',
+            ['operation_key' => 'create_task_card'],
+            $timestamp,
+            'missing',
+        );
+        self::assertSame(403, $missingCsrf['status_code']);
+        self::assertSame('missing_csrf', $missingCsrf['payload']['failure_code'] ?? '');
+        self::assertSame(['csrf.missing'], $missingCsrf['payload']['errors'] ?? []);
+        self::assertFalse($missingCsrf['payload']['mutation_enabled'] ?? true);
+
+        $invalidCsrf = app_lab_sample18_task_board_generated_submit_blocked_response(
+            'POST',
+            ['operation_key' => 'create_task_card', '_csrf_token' => 'wrong-token'],
+            $timestamp,
+            'invalid',
+        );
+        self::assertSame(403, $invalidCsrf['status_code']);
+        self::assertSame('invalid_csrf', $invalidCsrf['payload']['failure_code'] ?? '');
+        self::assertSame(['csrf.invalid'], $invalidCsrf['payload']['errors'] ?? []);
+        self::assertFalse($invalidCsrf['payload']['mutation_enabled'] ?? true);
+
         $invalid = app_lab_sample18_task_board_generated_submit_blocked_response(
             'POST',
             ['operation_key' => 'update_task_card', 'id' => '0', 'title' => ''],
@@ -308,6 +330,10 @@ final class Sample18MiniTaskBoardDemoTest extends TestCase
                         'binding_state' => $bindingGate['state'] ?? '',
                         'submit_route' => $bindingGate['submit_route'] ?? '',
                         'csrf_source' => $bindingGate['csrf_source'] ?? '',
+                        'csrf_token_field' => $bindingGate['csrf_token_field'] ?? '',
+                        'csrf_source_selector' => $bindingGate['csrf_source_selector'] ?? '',
+                        'csrf_transport' => $bindingGate['csrf_transport'] ?? '',
+                        'csrf_submit_field' => $bindingGate['csrf_submit_field'] ?? '',
                         'required_button_state' => $bindingGate['required_button_state'] ?? '',
                         'runtime_click_binding' => $bindingGate['runtime_click_binding'] ?? null,
                         'mutation_enabled' => $bindingGate['mutation_enabled'] ?? null,

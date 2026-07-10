@@ -11,6 +11,14 @@
 
 ## Index
 
+- `2026-0710-sample18-post-csrf-handoff-lane-closure.md`
+  - #575 sample18 post-CSRF handoff lane closure。#574 の CSRF handoff contract を受け入れ、次は mutation dispatcher inventory ではなく、generated submit button が disabled のまま submit しないことを固定する disabled click intent preflight (#576) を昇格。Status: `DONE`。
+- `2026-0710-sample18-generated-submit-csrf-handoff-preflight.md`
+  - #574 sample18 generated submit CSRF handoff preflight。generated submit action metadata / runtime DOM に CSRF token field、source selector、transport、submit field を追加し、focused PHPUnit と public runtime disabled-action smoke で確認。button / mutation は disabled のまま維持。Status: `DONE`。
+- `2026-0710-sample18-post-csrf-submit-route-lane-closure.md`
+  - #573 sample18 post-CSRF submit route lane closure。#572 の route CSRF guard を受け入れ、次は disabled click intent / mutation dispatcher ではなく、generated runtime 側の CSRF token handoff contract (#574) を先に固定する判断を記録。Status: `DONE`。
+- `2026-0710-sample18-generated-submit-csrf-guard-preflight.md`
+  - #572 sample18 generated submit CSRF guard preflight。generated-submit route に missing / invalid CSRF の fail-closed JSON 403 を追加し、focused PHPUnit と `sample18-http-runtime-smoke` で valid blocked、missing CSRF、invalid CSRF、validation、unknown operation を確認。Status: `DONE`。
 - `2026-0710-sample18-submit-binding-lane-closure.md`
   - #571 sample18 submit binding lane closure。#570 の binding gate を受け入れ、次は disabled click intent / mutation dispatcher ではなく、generated-submit route の fail-closed CSRF guard preflight (#572) を先に進める判断を記録。Status: `DONE`。
 - `2026-0710-sample18-submit-route-binding-gate-preflight.md`

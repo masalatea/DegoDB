@@ -237,6 +237,9 @@ function expectedProfile(name) {
       managedActionSubmitUrl: '/samples/sample18-task-board/no-code/generated-submit',
       managedActionBindingState: 'blocked_preflight',
       managedActionCsrfSource: 'sample18_task_board_form_token',
+      managedActionCsrfTokenField: '_csrf_token',
+      managedActionCsrfSourceSelector: 'input[name=_csrf_token]',
+      managedActionCsrfTransport: 'form_field',
       managedActionFailClosedResult: 'generated_submit_disabled',
       payload: {
         id: 1801,
@@ -531,6 +534,9 @@ async function probeRuntimeDisabledActionSurface(page, config) {
       submitUrls: buttons.map((button) => button.getAttribute('data-action-submit-url') || ''),
       bindingStates: buttons.map((button) => button.getAttribute('data-action-binding-state') || ''),
       csrfSources: buttons.map((button) => button.getAttribute('data-action-csrf-source') || ''),
+      csrfTokenFields: buttons.map((button) => button.getAttribute('data-action-csrf-token-field') || ''),
+      csrfSourceSelectors: buttons.map((button) => button.getAttribute('data-action-csrf-source-selector') || ''),
+      csrfTransports: buttons.map((button) => button.getAttribute('data-action-csrf-transport') || ''),
       failClosedResults: buttons.map((button) => button.getAttribute('data-action-fail-closed-result') || ''),
       disabledProperties: buttons.map((button) => button.disabled === true),
       hintKeys: hints.map((hint) => hint.getAttribute('data-action-hint') || ''),
@@ -567,6 +573,9 @@ async function probeRuntimeDisabledActionSurface(page, config) {
     || result.submitUrls.some((submitUrl) => submitUrl !== config.expected.managedActionSubmitUrl)
     || result.bindingStates.some((state) => state !== config.expected.managedActionBindingState)
     || result.csrfSources.some((source) => source !== config.expected.managedActionCsrfSource)
+    || result.csrfTokenFields.some((field) => field !== config.expected.managedActionCsrfTokenField)
+    || result.csrfSourceSelectors.some((selector) => selector !== config.expected.managedActionCsrfSourceSelector)
+    || result.csrfTransports.some((transport) => transport !== config.expected.managedActionCsrfTransport)
     || result.failClosedResults.some((resultCode) => resultCode !== config.expected.managedActionFailClosedResult)
     || result.disabledProperties.some((disabled) => disabled !== true)
     || JSON.stringify(result.hintKeys) !== JSON.stringify(expectedKeys)

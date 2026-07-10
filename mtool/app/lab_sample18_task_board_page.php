@@ -315,6 +315,7 @@ function app_lab_sample18_task_board_generated_submit_blocked_response(
     string $requestMethod,
     array $post,
     string $now,
+    string $csrfGuardResult = 'valid',
 ): array {
     if (strtoupper($requestMethod) !== 'POST') {
         return [
@@ -325,6 +326,20 @@ function app_lab_sample18_task_board_generated_submit_blocked_response(
                 'result' => 'invalid',
                 'failure_code' => 'method_not_allowed',
                 'allowed_methods' => ['POST'],
+                'mutation_enabled' => false,
+            ],
+        ];
+    }
+
+    if ($csrfGuardResult !== 'valid') {
+        return [
+            'status_code' => 403,
+            'payload' => [
+                'ok' => false,
+                'accepted' => false,
+                'result' => 'invalid',
+                'failure_code' => $csrfGuardResult === 'missing' ? 'missing_csrf' : 'invalid_csrf',
+                'errors' => [$csrfGuardResult === 'missing' ? 'csrf.missing' : 'csrf.invalid'],
                 'mutation_enabled' => false,
             ],
         ];
@@ -374,10 +389,21 @@ function app_lab_sample18_task_board_generated_submit_blocked_response(
  */
 function app_render_lab_sample18_task_board_generated_submit_page(array $app, array $request): void
 {
+    $submittedCsrfToken = trim((string) ($_POST['_csrf_token'] ?? ''));
+    $csrfGuardResult = 'valid';
+    if (strtoupper($request['method']) === 'POST') {
+        if ($submittedCsrfToken === '') {
+            $csrfGuardResult = 'missing';
+        } elseif (!app_verify_csrf_token($submittedCsrfToken)) {
+            $csrfGuardResult = 'invalid';
+        }
+    }
+
     $response = app_lab_sample18_task_board_generated_submit_blocked_response(
         $request['method'],
         $_POST,
         date('Y-m-d H:i:s'),
+        $csrfGuardResult,
     );
 
     app_send_json_response($request, $response['payload'], $response['status_code']);

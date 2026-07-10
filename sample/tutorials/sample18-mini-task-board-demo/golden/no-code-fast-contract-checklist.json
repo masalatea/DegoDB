@@ -255,6 +255,10 @@
     ],
     "submit_route": "/samples/sample18-task-board/no-code/generated-submit",
     "csrf_source": "sample18_task_board_form_token",
+    "csrf_token_field": "_csrf_token",
+    "csrf_source_selector": "input[name=_csrf_token]",
+    "csrf_transport": "form_field",
+    "csrf_submit_field": "_csrf_token",
     "required_button_state": "disabled",
     "runtime_click_binding": false,
     "mutation_enabled": false,
@@ -263,6 +267,9 @@
     "required_dom_attributes": {
       "data-action-binding-state": "blocked_preflight",
       "data-action-csrf-source": "sample18_task_board_form_token",
+      "data-action-csrf-token-field": "_csrf_token",
+      "data-action-csrf-source-selector": "input[name=_csrf_token]",
+      "data-action-csrf-transport": "form_field",
       "data-action-fail-closed-result": "generated_submit_disabled"
     }
   },
