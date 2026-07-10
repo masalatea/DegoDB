@@ -11,6 +11,8 @@
 
 ## Index
 
+- `2026-0710-sample18-generated-submit-route-response-status-refinement-preflight.md`
+  - #683 sample18 generated-submit route response/status refinement preflight。generated-submit route の HTTP status、`result`、`ok`、`failure_code`、recovery metadata の outcome matrix を定義。次は response contract first slice (#684)。Status: `DONE`。
 - `2026-0710-post-generated-submit-availability-documentation-lane-closure.md`
   - #682 post generated-submit availability documentation lane closure。#681 の availability/config documentation を受け入れ、次は generated-submit route response/status refinement preflight (#683) を昇格。Status: `DONE`。
 - `2026-0710-sample18-generated-submit-availability-documentation-first-slice.md`
