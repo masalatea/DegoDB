@@ -132,16 +132,164 @@ final class NoCodeRuntimeTest extends TestCase
         self::assertStringContainsString('Task Detail', $html);
         self::assertStringContainsString('Task Form', $html);
         self::assertStringContainsString('role="region" aria-labelledby="no-code-screen-title-task_list"', $html);
+        self::assertStringContainsString('data-screen-type="list"', $html);
+        self::assertStringContainsString('data-screen-body="task_list"', $html);
         self::assertStringContainsString('<h2 id="no-code-screen-title-task_list">Task List</h2>', $html);
         self::assertStringContainsString('<caption class="no-code-table-caption">Task List records</caption>', $html);
         self::assertStringContainsString('class="no-code-screen-summary" data-screen-summary="task_list" data-field-count="7" data-action-count="2"', $html);
         self::assertStringContainsString('<span>7 fields</span><span>2 actions</span><code>task_list</code>', $html);
         self::assertStringContainsString('class="no-code-action-feedback" role="status" aria-live="polite" data-state="idle"', $html);
+        self::assertStringContainsString('class="no-code-intent-draft" data-intent-draft-state="idle"', $html);
+        self::assertStringContainsString('Action Intent Draft', $html);
+        self::assertStringContainsString('class="no-code-intent-draft-state-badge" data-intent-draft-state-badge', $html);
+        self::assertStringContainsString('Idle</span>', $html);
+        self::assertStringContainsString('Editing this screen updates a local action-intent preview.', $html);
+        self::assertStringContainsString('class="no-code-intent-draft-summary" data-intent-draft-summary', $html);
+        self::assertStringContainsString('Draft summary will update when this screen is ready.', $html);
+        self::assertStringContainsString('class="no-code-intent-draft-meta" data-intent-draft-meta', $html);
+        self::assertStringContainsString('Action metadata will update with the draft.', $html);
+        self::assertStringContainsString('class="no-code-intent-draft-fields" data-intent-draft-fields', $html);
+        self::assertStringContainsString('Field summary will update with the draft.', $html);
+        self::assertStringContainsString('class="no-code-intent-draft-payload" data-intent-draft-payload', $html);
+        self::assertStringContainsString('Payload summary will update with the draft.', $html);
+        self::assertStringContainsString('data-intent-draft-copy', $html);
+        self::assertStringContainsString('Copy draft JSON', $html);
+        self::assertStringContainsString('data-intent-draft-copy-status', $html);
+        self::assertStringContainsString('Draft JSON copy will be available when this screen is ready.', $html);
+        self::assertStringContainsString('data-runtime-execute disabled data-runtime-execute-state="unavailable"', $html);
+        self::assertStringContainsString('Submit to server', $html);
+        self::assertStringContainsString('data-runtime-execute-status', $html);
+        self::assertStringContainsString('Server execution is available from an authenticated current or alias preview.', $html);
+        self::assertStringContainsString('data-runtime-result-refresh disabled', $html);
+        self::assertStringContainsString('Refresh preview', $html);
+        self::assertStringContainsString('data-runtime-result-refresh-status', $html);
+        self::assertStringContainsString('Artifact-key previews stay static; current or alias previews can fetch live runtime data when available.', $html);
+        self::assertStringContainsString('data-runtime-outbox-detail-copy disabled', $html);
+        self::assertStringContainsString('Copy outbox path', $html);
+        self::assertStringContainsString('data-runtime-outbox-detail-link hidden href=""', $html);
+        self::assertStringContainsString('Open outbox detail', $html);
+        self::assertStringContainsString('data-runtime-outbox-detail-copy-status', $html);
+        self::assertStringContainsString('Outbox detail path will be available after server submit.', $html);
+        self::assertStringContainsString('class="no-code-runtime-flow" data-runtime-flow-state="waiting"', $html);
+        self::assertStringContainsString('Runtime flow', $html);
+        self::assertStringContainsString('data-runtime-flow-step="submit" data-state="waiting"', $html);
+        self::assertStringContainsString('Submit waits for a ready draft.', $html);
+        self::assertStringContainsString('data-runtime-flow-step="track" data-state="waiting"', $html);
+        self::assertStringContainsString('Outbox tracking appears after submit.', $html);
+        self::assertStringContainsString('data-runtime-flow-step="refresh" data-state="waiting"', $html);
+        self::assertStringContainsString('Refresh appears after submit.', $html);
+        self::assertStringContainsString('class="no-code-intent-draft-json" data-intent-draft-json-details', $html);
+        self::assertStringContainsString('<summary>Draft JSON</summary>', $html);
+        self::assertStringContainsString('data-intent-draft-output', $html);
+        self::assertStringContainsString('no-code-runtime-execution-binding', $html);
+        self::assertStringContainsString('window.__noCodeRuntimeDispatches = [];', $html);
+        self::assertStringContainsString('window.__noCodeRuntimeExecutionBinding = executionBinding;', $html);
+        self::assertStringContainsString('function buildActionIntentDraft(action, input)', $html);
+        self::assertStringContainsString('function copyIntentDraft(button)', $html);
+        self::assertStringContainsString('function copyRuntimeOutboxDetailPath(button)', $html);
+        self::assertStringContainsString('function writeRuntimeFlow(screen, state, detailPath)', $html);
+        self::assertStringContainsString('function refreshRuntimePreview(button)', $html);
+        self::assertStringContainsString('function refreshRuntimeDataForScreen(screen, button, workingMessage, selectedKey, page, pageSize, searchQuery, filterField, filterValue, sortField, sortDirection, filters, browserHistoryMode, sorts)', $html);
+        self::assertStringContainsString('function runtimeDataUrlWithSelectedKey(selectedKey)', $html);
+        self::assertStringContainsString('function runtimeDataUrlWithPagination(page, pageSize)', $html);
+        self::assertStringContainsString('function runtimeDataUrlWithSearch(searchQuery, page, pageSize)', $html);
+        self::assertStringContainsString('function runtimeDataUrlWithFieldFilter(fieldKey, fieldValue, operator, page, pageSize)', $html);
+        self::assertStringContainsString('function runtimeDataUrlWithSort(fieldKey, direction, page, pageSize)', $html);
+        self::assertStringContainsString('function runtimeDataUrlWithCombinedQuery(query)', $html);
+        self::assertStringContainsString('function mirrorRuntimeDataQueryInBrowserUrl(requestUrl, mode)', $html);
+        self::assertStringContainsString('window.history.pushState', $html);
+        self::assertStringContainsString('window.history.replaceState', $html);
+        self::assertStringContainsString('function runtimeDataQueryFromBrowserUrl()', $html);
+        self::assertStringContainsString('function refreshRuntimeDataFromBrowserUrl(forceReplay, browserHistoryMode)', $html);
+        self::assertStringContainsString("window.addEventListener('popstate'", $html);
+        self::assertStringContainsString('function syncRuntimeDataControlsFromPayload(payload)', $html);
+        self::assertStringContainsString('function refreshRuntimeDataForQueryReset(button)', $html);
+        self::assertStringContainsString('function bindRuntimeListSelection(root)', $html);
+        self::assertStringContainsString('function bindRuntimePaginationControls(root)', $html);
+        self::assertStringContainsString('data-runtime-search-input', $html);
+        self::assertStringContainsString('data-runtime-search-submit', $html);
+        self::assertStringContainsString('class="no-code-pagination no-code-runtime-data-controls" role="group" aria-label="Runtime data controls" data-runtime-data-controls', $html);
+        self::assertStringContainsString('.no-code-runtime-data-controls { padding: 6px;', $html);
+        self::assertStringContainsString('class="no-code-runtime-data-label"', $html);
+        self::assertStringContainsString('data-runtime-filter-field', $html);
+        self::assertStringContainsString('data-runtime-filter-operator', $html);
+        self::assertStringContainsString('data-runtime-filter-value', $html);
+        self::assertStringContainsString('data-runtime-filter-field-secondary', $html);
+        self::assertStringContainsString('data-runtime-filter-operator-secondary', $html);
+        self::assertStringContainsString('data-runtime-filter-value-secondary', $html);
+        self::assertStringContainsString('data-runtime-filter-extra="secondary" hidden', $html);
+        self::assertStringContainsString('data-runtime-filter-add', $html);
+        self::assertStringContainsString('data-runtime-filter-remove="secondary"', $html);
+        self::assertStringContainsString('data-runtime-filter-field-tertiary', $html);
+        self::assertStringContainsString('data-runtime-filter-operator-tertiary', $html);
+        self::assertStringContainsString('data-runtime-filter-value-tertiary', $html);
+        self::assertStringContainsString('data-runtime-filter-extra="tertiary" hidden', $html);
+        self::assertStringContainsString('data-runtime-filter-remove="tertiary"', $html);
+        self::assertStringContainsString('data-runtime-filter-submit', $html);
+        self::assertStringContainsString('data-runtime-sort-field', $html);
+        self::assertStringContainsString('data-runtime-sort-direction', $html);
+        self::assertStringContainsString('data-runtime-sort-field-secondary', $html);
+        self::assertStringContainsString('data-runtime-sort-direction-secondary', $html);
+        self::assertStringContainsString('data-runtime-sort-extra="secondary" hidden', $html);
+        self::assertStringContainsString('data-runtime-sort-add', $html);
+        self::assertStringContainsString('data-runtime-sort-remove="secondary"', $html);
+        self::assertStringContainsString('data-runtime-sort-field-tertiary', $html);
+        self::assertStringContainsString('data-runtime-sort-direction-tertiary', $html);
+        self::assertStringContainsString('data-runtime-sort-extra="tertiary" hidden', $html);
+        self::assertStringContainsString('data-runtime-sort-remove="tertiary"', $html);
+        self::assertStringContainsString('data-runtime-sort-submit', $html);
+        self::assertStringContainsString('data-runtime-sort-header', $html);
+        self::assertStringContainsString('data-runtime-sort-field-key', $html);
+        self::assertStringContainsString('aria-sort="none"', $html);
+        self::assertStringContainsString('data-runtime-sort-state="none"', $html);
+        self::assertStringContainsString('data-runtime-query-reset', $html);
+        self::assertStringContainsString('>Clear</button>', $html);
+        self::assertStringContainsString('data-runtime-page-size', $html);
+        self::assertStringContainsString('data-runtime-page-input', $html);
+        self::assertStringContainsString('data-runtime-page-submit', $html);
+        self::assertStringContainsString('data-runtime-page-size-input', $html);
+        self::assertStringContainsString('data-runtime-page-size-submit', $html);
+        self::assertStringContainsString('data-runtime-pagination-total-rows', $html);
+        self::assertStringContainsString('total rows', $html);
+        self::assertStringContainsString('Sync outbox is done. Fetching read-only live runtime data...', $html);
+        self::assertStringContainsString('function runtimeDataBindingUrl()', $html);
+        self::assertStringContainsString('function applyRuntimeDataPayload(payload)', $html);
+        self::assertStringContainsString('function hiddenActionKeyControls(render, item, visibleFieldKeys)', $html);
+        self::assertStringContainsString('data-runtime-hidden-action-key', $html);
+        self::assertStringContainsString('fetch(requestUrl', $html);
+        self::assertStringContainsString('function submitRuntimeAction(button)', $html);
+        self::assertStringContainsString("formData.append('_csrf', executionBinding.csrf_token || '');", $html);
+        self::assertStringContainsString("if (executionBinding.demo_processing === 'available')", $html);
+        self::assertStringContainsString("formData.append('runtime_demo_process', '1');", $html);
+        self::assertStringContainsString("fetch(executionBinding.execution_url", $html);
+        self::assertStringContainsString('Server execution endpoint is ready: ', $html);
+        self::assertStringContainsString('Next result check: process the sync outbox item, then reload this generated preview artifact or open the outbox detail.', $html);
+        self::assertStringContainsString('Demo processing completed this item; reload this generated preview artifact to re-read the current preview.', $html);
+        self::assertStringContainsString('Demo processing did not run: ', $html);
+        self::assertStringContainsString('data-runtime-outbox-detail-path', $html);
+        self::assertStringContainsString("'Action: ' + (draft.action_key || '(unknown)')", $html);
+        self::assertStringContainsString("function actionFieldSummary(action)", $html);
+        self::assertStringContainsString("'Fields: key=' + list(buckets.key)", $html);
+        self::assertStringContainsString("'Payload: ' + keyCount + ' key fields'", $html);
+        self::assertStringContainsString("stateBadge.setAttribute('data-state', draftState);", $html);
+        self::assertStringContainsString('draft_checks: []', $html);
+        self::assertStringContainsString('policy_failed_checks:', $html);
+        self::assertStringContainsString("draft.draft_checks.push('action.disabled');", $html);
+        self::assertStringContainsString("draft.draft_checks.push((field.role || 'input') + '.missing:' + fieldKey);", $html);
+        self::assertStringContainsString("summaryChecks.push('policy: ' + policyChecks.join(', '));", $html);
+        self::assertStringContainsString('Ready draft: no blocking checks found.', $html);
+        self::assertStringContainsString('Blocked draft: ', $html);
         self::assertStringContainsString('<nav class="no-code-actions" aria-label="Task List actions">', $html);
         self::assertStringContainsString('Select an enabled action to preview its intent.', $html);
         self::assertStringContainsString('data-action-state="ready"', $html);
         self::assertStringContainsString('data-action-affordance="keyboard-intent-preview"', $html);
         self::assertStringContainsString('data-keyboard-activation="enter-space"', $html);
+        self::assertStringContainsString('class="no-code-required-badge">Required</span>', $html);
+        self::assertStringContainsString('class="no-code-required-hint" data-required-field="title" data-required-label="Title" data-required-state="pending">Required for the generated action intent.</span>', $html);
+        self::assertStringContainsString('required aria-describedby="field-hint-title"', $html);
+        self::assertStringContainsString('function writeRequiredFieldHints(screen, draft, action)', $html);
+        self::assertStringContainsString('Missing required \' + roleLabel + \' for generated action intent: \' + displayLabel + \'.', $html);
+        self::assertStringContainsString('Required \' + roleLabel + \' is present for generated action intent: \' + displayLabel + \'.', $html);
         self::assertStringContainsString('aria-describedby="no-code-action-hint-task_list-update_note"', $html);
         self::assertStringContainsString('Keyboard: Tab to this action, then press Enter or Space to preview the update intent.', $html);
         self::assertStringContainsString('data-operation-key="update_note"', $html);
@@ -255,6 +403,265 @@ final class NoCodeRuntimeTest extends TestCase
         );
     }
 
+    public function testBuildsServerBackedExecutionRequestContractFromPost(): void
+    {
+        $request = app_no_code_runtime_execution_request_from_post(
+            'POST',
+            [
+                '_csrf' => 'known-token',
+                'project_key' => 'RUNTIME-TEST',
+                'artifact_key' => 'NO-CODE-RUNTIME-abc123',
+                'action_key' => 'update_note',
+                'input' => [
+                    'id' => '1',
+                    'note' => 'Submitted through runtime endpoint',
+                    'ignored_nested' => ['unsafe'],
+                    '' => 'ignored blank key',
+                ],
+            ],
+            [
+                'csrf_token' => 'known-token',
+                'project_key' => 'RUNTIME-TEST',
+                'artifact_key' => 'NO-CODE-RUNTIME-abc123',
+                'source_output_key' => 'NO-CODE-RUNTIME',
+                'revision_id' => 'rev-runtime-1',
+            ],
+        );
+
+        self::assertTrue($request['ok'], $request['error']);
+        self::assertSame('update_note', $request['action_key']);
+        self::assertSame(
+            [
+                'id' => '1',
+                'note' => 'Submitted through runtime endpoint',
+            ],
+            $request['input'],
+        );
+        self::assertSame(
+            [
+                'project_key' => 'RUNTIME-TEST',
+                'artifact_key' => 'NO-CODE-RUNTIME-abc123',
+                'source_output_key' => 'NO-CODE-RUNTIME',
+                'revision_id' => 'rev-runtime-1',
+            ],
+            $request['binding'],
+        );
+    }
+
+    public function testServerBackedExecutionRequestFailsClosedBeforeDispatch(): void
+    {
+        $expectedBinding = [
+            'csrf_token' => 'known-token',
+            'project_key' => 'RUNTIME-TEST',
+            'artifact_key' => 'NO-CODE-RUNTIME-abc123',
+        ];
+
+        $notPost = app_no_code_runtime_execution_request_from_post('GET', [], $expectedBinding);
+        self::assertFalse($notPost['ok']);
+        self::assertSame('runtime execution requires POST', $notPost['error']);
+
+        $badCsrf = app_no_code_runtime_execution_request_from_post('POST', [
+            '_csrf' => 'wrong-token',
+            'project_key' => 'RUNTIME-TEST',
+            'artifact_key' => 'NO-CODE-RUNTIME-abc123',
+            'action_key' => 'update_note',
+        ], $expectedBinding);
+        self::assertFalse($badCsrf['ok']);
+        self::assertSame('runtime execution csrf token is invalid', $badCsrf['error']);
+
+        $badBinding = app_no_code_runtime_execution_request_from_post('POST', [
+            '_csrf' => 'known-token',
+            'project_key' => 'OTHER',
+            'artifact_key' => 'NO-CODE-RUNTIME-abc123',
+            'action_key' => 'update_note',
+        ], $expectedBinding);
+        self::assertFalse($badBinding['ok']);
+        self::assertSame('runtime execution project binding does not match', $badBinding['error']);
+
+        $missingAction = app_no_code_runtime_execution_request_from_post('POST', [
+            '_csrf' => 'known-token',
+            'project_key' => 'RUNTIME-TEST',
+            'artifact_key' => 'NO-CODE-RUNTIME-abc123',
+        ], $expectedBinding);
+        self::assertFalse($missingAction['ok']);
+        self::assertSame('runtime execution action key is missing', $missingAction['error']);
+    }
+
+    public function testExecutesServerBackedRequestOnlyAfterRequestContractPasses(): void
+    {
+        $dispatchIntents = [];
+        $dispatcher = static function (array $intent) use (&$dispatchIntents): array {
+            $dispatchIntents[] = $intent;
+            return [
+                'status' => 'ok',
+                'updated' => true,
+            ];
+        };
+
+        $badRequest = app_no_code_runtime_execute_request_from_post(
+            $this->screenDefinition(),
+            'POST',
+            [
+                '_csrf' => 'wrong-token',
+                'project_key' => 'RUNTIME-TEST',
+                'artifact_key' => 'NO-CODE-RUNTIME-abc123',
+                'action_key' => 'update_note',
+                'input' => [
+                    'id' => '1',
+                    'note' => 'Should not dispatch',
+                ],
+            ],
+            [
+                'csrf_token' => 'known-token',
+                'project_key' => 'RUNTIME-TEST',
+                'artifact_key' => 'NO-CODE-RUNTIME-abc123',
+            ],
+            $dispatcher,
+        );
+
+        self::assertFalse($badRequest['ok']);
+        self::assertFalse($badRequest['executed']);
+        self::assertSame('runtime execution csrf token is invalid', $badRequest['error']);
+        self::assertSame([], $dispatchIntents);
+
+        $result = app_no_code_runtime_execute_request_from_post(
+            $this->screenDefinition(),
+            'POST',
+            [
+                '_csrf' => 'known-token',
+                'project_key' => 'RUNTIME-TEST',
+                'artifact_key' => 'NO-CODE-RUNTIME-abc123',
+                'action_key' => 'update_note',
+                'input' => [
+                    'id' => '1',
+                    'note' => 'Dispatch through endpoint helper',
+                ],
+            ],
+            [
+                'csrf_token' => 'known-token',
+                'project_key' => 'RUNTIME-TEST',
+                'artifact_key' => 'NO-CODE-RUNTIME-abc123',
+                'source_output_key' => 'NO-CODE-RUNTIME',
+                'revision_id' => 'rev-runtime-1',
+            ],
+            $dispatcher,
+        );
+
+        self::assertTrue($result['ok'], $result['error']);
+        self::assertTrue($result['executed']);
+        self::assertSame('update_note', $result['request']['action_key'] ?? '');
+        self::assertSame('rev-runtime-1', $result['request']['binding']['revision_id'] ?? '');
+        self::assertSame(['status' => 'ok', 'updated' => true], $result['result']);
+        self::assertCount(1, $dispatchIntents);
+        self::assertSame(
+            [
+                'id' => '1',
+            ],
+            $dispatchIntents[0]['payload']['key'] ?? [],
+        );
+        self::assertSame(
+            [
+                'note' => 'Dispatch through endpoint helper',
+            ],
+            $dispatchIntents[0]['payload']['input'] ?? [],
+        );
+    }
+
+    public function testBuildsEndpointResponseForServerBackedExecution(): void
+    {
+        $dispatcher = static function (array $intent): array {
+            return [
+                'status' => 'ok',
+                'operation_key' => $intent['operation_key'] ?? '',
+            ];
+        };
+
+        $result = app_no_code_runtime_execute_request_from_post(
+            $this->screenDefinition(),
+            'POST',
+            [
+                '_csrf' => 'known-token',
+                'project_key' => 'RUNTIME-TEST',
+                'artifact_key' => 'NO-CODE-RUNTIME-abc123',
+                'action_key' => 'update_note',
+                'input' => [
+                    'id' => '1',
+                    'note' => 'Endpoint response payload',
+                ],
+            ],
+            [
+                'csrf_token' => 'known-token',
+                'project_key' => 'RUNTIME-TEST',
+                'artifact_key' => 'NO-CODE-RUNTIME-abc123',
+                'source_output_key' => 'NO-CODE-RUNTIME',
+                'revision_id' => 'rev-runtime-1',
+            ],
+            $dispatcher,
+        );
+
+        $response = app_no_code_runtime_execution_endpoint_response($result);
+
+        self::assertSame(200, $response['status_code']);
+        self::assertTrue($response['payload']['ok']);
+        self::assertTrue($response['payload']['executed']);
+        self::assertSame('', $response['payload']['error']);
+        self::assertSame('update_note', $response['payload']['request']['action_key'] ?? '');
+        self::assertSame('rev-runtime-1', $response['payload']['request']['binding']['revision_id'] ?? '');
+        self::assertSame('update_note', $response['payload']['intent']['operation_key'] ?? '');
+        self::assertSame('ok', $response['payload']['result']['status'] ?? '');
+
+        $badCsrf = app_no_code_runtime_execute_request_from_post(
+            $this->screenDefinition(),
+            'POST',
+            [
+                '_csrf' => 'wrong-token',
+                'project_key' => 'RUNTIME-TEST',
+                'artifact_key' => 'NO-CODE-RUNTIME-abc123',
+                'action_key' => 'update_note',
+            ],
+            [
+                'csrf_token' => 'known-token',
+                'project_key' => 'RUNTIME-TEST',
+                'artifact_key' => 'NO-CODE-RUNTIME-abc123',
+            ],
+            $dispatcher,
+        );
+        $badCsrfResponse = app_no_code_runtime_execution_endpoint_response($badCsrf);
+
+        self::assertSame(403, $badCsrfResponse['status_code']);
+        self::assertFalse($badCsrfResponse['payload']['ok']);
+        self::assertFalse($badCsrfResponse['payload']['executed']);
+        self::assertSame('runtime execution csrf token is invalid', $badCsrfResponse['payload']['error']);
+
+        $missingRequired = app_no_code_runtime_execute_request_from_post(
+            $this->screenDefinition(),
+            'POST',
+            [
+                '_csrf' => 'known-token',
+                'project_key' => 'RUNTIME-TEST',
+                'artifact_key' => 'NO-CODE-RUNTIME-abc123',
+                'action_key' => 'update_note',
+                'input' => [
+                    'id' => '1',
+                ],
+            ],
+            [
+                'csrf_token' => 'known-token',
+                'project_key' => 'RUNTIME-TEST',
+                'artifact_key' => 'NO-CODE-RUNTIME-abc123',
+            ],
+            $dispatcher,
+        );
+        $missingRequiredResponse = app_no_code_runtime_execution_endpoint_response($missingRequired);
+
+        self::assertSame(422, $missingRequiredResponse['status_code']);
+        self::assertFalse($missingRequiredResponse['payload']['ok']);
+        self::assertFalse($missingRequiredResponse['payload']['executed']);
+        self::assertStringContainsString('input.missing:note', $missingRequiredResponse['payload']['error']);
+        self::assertSame('Required input is missing: note', $missingRequiredResponse['payload']['message']);
+        self::assertSame('update_note', $missingRequiredResponse['payload']['intent']['operation_key'] ?? '');
+    }
+
     public function testDoesNotDispatchDisabledAction(): void
     {
         $called = false;
@@ -276,6 +683,39 @@ final class NoCodeRuntimeTest extends TestCase
         self::assertFalse($result['executed']);
         self::assertFalse($called);
         self::assertSame('action is not enabled: update_note', $result['error']);
+    }
+
+    public function testActionPolicyOverlayCanEnableStoredDisabledRuntimeDefinition(): void
+    {
+        $storedDefinition = $this->screenDefinition(false);
+        $policyDefinition = $this->screenDefinition(true);
+        $overlaidDefinition = app_no_code_runtime_definition_with_action_policy_overlay($storedDefinition, $policyDefinition);
+
+        $render = app_no_code_runtime_render_screen($overlaidDefinition, 'task_form');
+        self::assertTrue($render['ok'], $render['error']);
+        $actionsByKey = $this->indexBy($render['render']['actions'] ?? [], 'action_key');
+        self::assertTrue($actionsByKey['update_note']['enabled'] ?? false);
+        self::assertSame('enabled', $actionsByKey['update_note']['availability'] ?? '');
+        self::assertSame([], $actionsByKey['update_note']['failed_checks'] ?? ['missing']);
+
+        $called = false;
+        $result = app_no_code_runtime_dispatch_action(
+            $overlaidDefinition,
+            'update_note',
+            [
+                'id' => 1,
+                'note' => 'Policy overlay dispatch payload',
+            ],
+            static function (array $_intent) use (&$called): array {
+                $called = true;
+
+                return ['ok' => true];
+            },
+        );
+
+        self::assertTrue($result['ok'], $result['error']);
+        self::assertTrue($result['executed']);
+        self::assertTrue($called);
     }
 
     public function testDispatchFailsClosedWhenRequiredActionInputIsMissing(): void

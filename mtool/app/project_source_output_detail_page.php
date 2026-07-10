@@ -145,6 +145,7 @@ function app_render_project_source_output_detail_page(array $app, array $request
     $selectedCurrentRevisionId = '';
     $selectedPublicAliasKey = '';
     $deletedPublicAliasKey = '';
+    $demoTryoutRevisionId = '';
     $queryCreatedArtifactKey = trim(app_query_param('created'));
     if ($queryCreatedArtifactKey !== '' && app_project_output_artifact_key_is_valid($queryCreatedArtifactKey)) {
         $createdArtifactKey = $queryCreatedArtifactKey;
@@ -173,6 +174,10 @@ function app_render_project_source_output_detail_page(array $app, array $request
     $queryDeletedPublicAliasKey = app_no_code_public_runtime_normalize_alias_key(app_query_param('alias_deleted'));
     if ($queryDeletedPublicAliasKey !== '' && app_no_code_public_runtime_alias_key_is_valid($queryDeletedPublicAliasKey)) {
         $deletedPublicAliasKey = $queryDeletedPublicAliasKey;
+    }
+    $queryDemoTryoutRevisionId = trim(app_query_param('demo_tryout'));
+    if ($queryDemoTryoutRevisionId !== '') {
+        $demoTryoutRevisionId = $queryDemoTryoutRevisionId;
     }
 
     $artifactResult = app_project_output_list($app, $projectKey, $sourceOutputKey);
@@ -287,6 +292,88 @@ function app_render_project_source_output_detail_page(array $app, array $request
                     }
 
                     $errors[] = $candidateResult['error'];
+                }
+            } elseif ($action === 'sample28-demo-tryout-approval') {
+                if ($projectKey !== 'SAMPLE28' || $sourceOutputKey !== APP_NO_CODE_OPERATOR_SOURCE_OUTPUT_KEY) {
+                    $errors[] = 'demo tryout approval は SAMPLE28 の NO-CODE-RUNTIME だけで実行できます。';
+                } elseif (($noCodePublishReadiness['state'] ?? '') !== 'publishable') {
+                    $errors[] = 'demo tryout approval には publishable readiness が必要です。';
+                } else {
+                    $candidateResult = app_pdo_create_no_code_publish_candidate_from_readiness_snapshot($app, [
+                        'project_key' => $projectKey,
+                        'source_output_key' => $sourceOutputKey,
+                        'artifact_key' => (string) ($noCodePublishReadiness['artifact_key'] ?? ''),
+                        'artifact_archive_path' => (string) ($noCodePublishReadiness['artifact_archive_path'] ?? ''),
+                        'artifact_checksum' => (string) ($noCodePublishReadiness['artifact_checksum'] ?? ''),
+                        'actor' => $principal,
+                        'readiness_snapshot' => $noCodePublishReadiness,
+                    ]);
+                    if (!$candidateResult['ok'] || $candidateResult['item'] === null) {
+                        $errors[] = $candidateResult['error'];
+                    } else {
+                        $revisionId = (string) $candidateResult['item']['revision_id'];
+                        $reviewResult = app_pdo_transition_no_code_publish_candidate($app, [
+                            'project_key' => $projectKey,
+                            'source_output_key' => $sourceOutputKey,
+                            'revision_id' => $revisionId,
+                            'transition' => 'request_review',
+                            'expected_status' => 'draft_candidate',
+                            'reason' => 'Sample28 demo tryout approval.',
+                            'actor' => $principal,
+                            'metadata' => [
+                                'ui_source' => 'sample28-demo-tryout-approval',
+                            ],
+                        ]);
+                        if (!$reviewResult['ok'] || $reviewResult['item'] === null) {
+                            $errors[] = $reviewResult['error'];
+                        } else {
+                            $approveResult = app_pdo_transition_no_code_publish_candidate($app, [
+                                'project_key' => $projectKey,
+                                'source_output_key' => $sourceOutputKey,
+                                'revision_id' => $revisionId,
+                                'transition' => 'approve',
+                                'expected_status' => 'review_requested',
+                                'reason' => 'Sample28 demo tryout approval.',
+                                'actor' => $principal,
+                                'metadata' => [
+                                    'ui_source' => 'sample28-demo-tryout-approval',
+                                ],
+                            ]);
+                            if (!$approveResult['ok'] || $approveResult['item'] === null) {
+                                $errors[] = $approveResult['error'];
+                            } else {
+                                $selectionResult = app_pdo_select_current_no_code_publish_candidate($app, [
+                                    'project_key' => $projectKey,
+                                    'source_output_key' => $sourceOutputKey,
+                                    'revision_id' => $revisionId,
+                                    'actor' => $principal,
+                                ]);
+                                if (!$selectionResult['ok'] || $selectionResult['item'] === null) {
+                                    $errors[] = $selectionResult['error'];
+                                } else {
+                                    $aliasResult = app_pdo_set_no_code_public_runtime_alias($app, [
+                                        'project_key' => $projectKey,
+                                        'source_output_key' => $sourceOutputKey,
+                                        'revision_id' => $revisionId,
+                                        'alias_key' => 'stable',
+                                        'actor' => $principal,
+                                    ]);
+                                    if (!$aliasResult['ok'] || $aliasResult['item'] === null) {
+                                        $errors[] = $aliasResult['error'];
+                                    } else {
+                                        app_send_redirect_response(
+                                            $request,
+                                            app_project_source_output_detail_path($projectKey, $sourceOutputKey)
+                                            . '?demo_tryout=' . rawurlencode($revisionId)
+                                            . '&current_selected=' . rawurlencode($revisionId)
+                                            . '&alias_selected=stable',
+                                        );
+                                        return;
+                                    }
+                                }
+                            }
+                        }
+                    }
                 }
             } elseif ($action === 'transition-publish-candidate') {
                 $revisionId = trim(app_post_param('revision_id'));
@@ -759,6 +846,23 @@ function app_render_project_source_output_detail_page(array $app, array $request
     <h1><?php echo app_h($project['name']); ?> Source Output Detail</h1>
     <p><code>ProjectSourceOutput</code> definition の詳細と、この definition から生成された artifact 履歴を確認する画面です。artifact を持つ strategy だけ、ここから生成も実行できます。</p>
 
+    <?php if ($sourceOutputKey === APP_NO_CODE_OPERATOR_SOURCE_OUTPUT_KEY): ?>
+        <section class="note-card">
+            <h2>No-Code Runtime Workflow</h2>
+            <p>この画面では、database metadata から生成した no-code runtime を artifact として確認し、公開候補として review / approval へ進めます。no-code preview は DB 基盤から切り離された別物ではなく、Source Output と承認 workflow の上で公開します。</p>
+            <p class="muted">Runtime data boundary: artifact-key preview URLs stay static for immutable artifact inspection. Current and alias preview URLs can fetch authenticated read-only live runtime data from <code>runtime-data.json</code> after approval, while submit / outbox processing remains a separate mutation path.</p>
+        </section>
+        <section class="note-card">
+            <h2>Tryout Next Steps</h2>
+            <ol>
+                <li>For the fastest local demo, run <code>Run Sample28 Tryout Approval</code> when this is <code>SAMPLE28</code>.</li>
+                <li>Open <a href="<?php echo app_h(app_no_code_public_runtime_current_preview_path($projectKey)); ?>">current public runtime preview</a> after approval.</li>
+                <li>Use <a href="<?php echo app_h(app_project_source_outputs_path($projectKey)); ?>">Source Outputs</a> to review delivery status, including Web preview and App-local package readiness.</li>
+            </ol>
+            <p class="muted">App-local package readiness is a separate scenario from this Web preview. A blocked app-local package does not block the no-code runtime tryout when publish readiness is <code>publishable</code>.</p>
+        </section>
+    <?php endif; ?>
+
     <?php if ($createdArtifactKey !== ''): ?>
         <section class="success-card">
             <h2>Artifact Created</h2>
@@ -799,6 +903,14 @@ function app_render_project_source_output_detail_page(array $app, array $request
             <h2>Public Runtime Alias Selected</h2>
             <p><code><?php echo app_h($selectedPublicAliasKey); ?></code> を public runtime preview alias として設定しました。</p>
             <p><a href="<?php echo app_h(app_no_code_public_runtime_alias_preview_path($projectKey, $selectedPublicAliasKey)); ?>">alias public runtime preview</a></p>
+        </section>
+    <?php endif; ?>
+
+    <?php if ($demoTryoutRevisionId !== ''): ?>
+        <section class="success-card">
+            <h2>Sample28 Tryout Ready</h2>
+            <p><code><?php echo app_h($demoTryoutRevisionId); ?></code> を demo tryout 用に approve し、current public runtime preview と <code>stable</code> alias へ接続しました。</p>
+            <p><a href="<?php echo app_h(app_no_code_public_runtime_current_preview_path($projectKey)); ?>">current public runtime preview</a></p>
         </section>
     <?php endif; ?>
 
@@ -909,6 +1021,7 @@ function app_render_project_source_output_detail_page(array $app, array $request
         <?php if ($appLocalPackageReadiness['applies']): ?>
             <section class="summary-card">
                 <h2>App-local Package Readiness</h2>
+                <p class="muted">This card is for the App-local package lane. It is separate from the Web no-code runtime preview and publish candidate flow.</p>
                 <ul>
                     <li>state: <code><?php echo app_h($appLocalPackageReadiness['state']); ?></code></li>
                     <li>latest artifact: <code><?php echo app_h($appLocalPackageReadiness['artifact_key'] !== '' ? $appLocalPackageReadiness['artifact_key'] : 'none'); ?></code></li>
@@ -1068,7 +1181,7 @@ function app_render_project_source_output_detail_page(array $app, array $request
     <?php if ($sourceOutputKey === APP_NO_CODE_OPERATOR_SOURCE_OUTPUT_KEY): ?>
         <section class="action-box">
             <h2>Publish Candidates</h2>
-            <p class="muted">NO-CODE-RUNTIME artifact を公開候補として保存し、review request / approval / rejection の状態を repository に記録します。公開 URL や package exposure はまだ行いません。</p>
+            <p class="muted">NO-CODE-RUNTIME artifact を公開候補として保存し、review request / approval / rejection の状態を repository に記録します。初回 tryout では、candidate を作成して review request の後に approve すると public preview link が表示されます。</p>
             <ul>
                 <li>readiness: <code><?php echo app_h((string) ($noCodePublishReadiness['state'] ?? 'unknown')); ?></code></li>
                 <li>artifact key: <code><?php echo app_h((string) (($noCodePublishReadiness['artifact_key'] ?? '') !== '' ? $noCodePublishReadiness['artifact_key'] : 'none')); ?></code></li>
@@ -1081,6 +1194,14 @@ function app_render_project_source_output_detail_page(array $app, array $request
                     <input type="hidden" name="action" value="create-publish-candidate">
                     <button class="button" type="submit">Create Publish Candidate</button>
                 </form>
+                <?php if ($projectKey === 'SAMPLE28'): ?>
+                    <form method="post" style="margin-top: 0.75rem;">
+                        <input type="hidden" name="_csrf" value="<?php echo app_h($csrfToken); ?>">
+                        <input type="hidden" name="action" value="sample28-demo-tryout-approval">
+                        <button class="button button-secondary" type="submit">Run Sample28 Tryout Approval</button>
+                    </form>
+                    <p class="muted">Demo shortcut: creates a candidate, requests review, approves it, selects current public revision, and sets the <code>stable</code> alias. Normal approval actions remain available below.</p>
+                <?php endif; ?>
             <?php else: ?>
                 <p class="muted">publishable readiness ではないため、candidate は作成できません。</p>
                 <?php if (($noCodePublishReadiness['blocking_reasons'] ?? []) !== []): ?>
@@ -1096,7 +1217,7 @@ function app_render_project_source_output_detail_page(array $app, array $request
         <section class="action-box">
             <h2>Public Runtime Aliases</h2>
             <?php if ($publicRuntimeAliases === []): ?>
-                <p class="muted">Public runtime alias はまだありません。approved candidate の <code>Set Public Alias</code> から追加できます。</p>
+                <p class="muted">Public runtime alias はまだありません。approved candidate の <code>Set Public Alias</code> から、覚えやすい preview URL を追加できます。</p>
             <?php else: ?>
                 <p class="muted">Alias routes do not automatically follow current public revision rollback. Update or delete each alias when it should move with rollback.</p>
                 <table>
@@ -1190,6 +1311,7 @@ function app_render_project_source_output_detail_page(array $app, array $request
                                     <div style="margin-top: 0.5rem;">
                                         <?php if ($candidateIsCurrentPublicRevision): ?>
                                             <strong>Current public revision</strong><br>
+                                            <span class="muted">This approved candidate is the one opened by the current public runtime preview URL.</span><br>
                                             <span class="muted">The current public runtime preview explicitly resolves to this approved candidate when selected, otherwise it falls back to the latest approved candidate.</span><br>
                                             <span class="muted">Rollback target: current. Older approved candidates below can move current back without changing artifact-key URLs or alias rows.</span>
                                         <?php else: ?>
@@ -1287,6 +1409,7 @@ function app_render_project_source_output_detail_page(array $app, array $request
                                         <a href="<?php echo app_h(app_no_code_public_runtime_current_preview_path($projectKey)); ?>">current public runtime preview</a><br>
                                         <a href="<?php echo app_h(app_no_code_public_runtime_alias_preview_path($projectKey, 'stable')); ?>">example alias public runtime preview</a><br>
                                         <span class="muted">Approved candidate package exposure now includes artifact-key, current, and custom alias public runtime preview routes.</span>
+                                        <br><span class="muted">Runtime data behavior: artifact-key preview is static; current and alias previews can refresh authenticated read-only live runtime data through <code>runtime-data.json</code>.</span>
                                         <form method="post" style="margin-top: 0.5rem;">
                                             <input type="hidden" name="_csrf" value="<?php echo app_h($csrfToken); ?>">
                                             <input type="hidden" name="action" value="set-public-runtime-alias">

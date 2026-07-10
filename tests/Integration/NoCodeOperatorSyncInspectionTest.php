@@ -165,4 +165,56 @@ final class NoCodeOperatorSyncInspectionTest extends TestCase
         self::assertSame('', $event['metadata']['last_error_after'] ?? 'unexpected');
         self::assertSame('update_sync_task', $event['metadata']['operation_key'] ?? '');
     }
+
+    public function testBuildsProcessingHandoffStateForSyncOutboxItems(): void
+    {
+        $pending = app_project_sync_outbox_processing_handoff([
+            'status' => 'pending',
+            'origin' => 'public-runtime',
+            'target' => 'server',
+            'operation_key' => 'update_no_code_ticket',
+        ]);
+
+        self::assertSame('queued', $pending['state']);
+        self::assertStringContainsString('queued', $pending['label']);
+        self::assertStringContainsString('processor can claim', $pending['next_step']);
+        self::assertContains('origin=public-runtime.', $pending['reasons']);
+        self::assertContains('operation=update_no_code_ticket.', $pending['reasons']);
+
+        $failed = app_project_sync_outbox_processing_handoff([
+            'status' => 'failed',
+            'operation_key' => 'update_sync_task',
+        ]);
+
+        self::assertSame('needs_review', $failed['state']);
+        self::assertStringContainsString('failed', $failed['label']);
+        self::assertStringContainsString('retry eligibility', $failed['next_step']);
+    }
+
+    public function testBuildsSyncOutboxStatusJsonPayloadWithoutIntentBody(): void
+    {
+        $payload = app_project_sync_outbox_status_payload('sample31', [
+            'status' => 'done',
+            'attempts' => 2,
+            'last_error' => '',
+            'operation_key' => 'update_inventory_request',
+            'operation_type' => 'server_dbaccess',
+            'dedupe_key' => 'status-json-dedupe',
+            'updated_at' => '2026-07-05T12:34:56+00:00',
+            'intent' => [
+                'input' => [
+                    'secret_note' => 'not exposed',
+                ],
+            ],
+        ]);
+
+        self::assertTrue($payload['ok']);
+        self::assertSame('SAMPLE31', $payload['project_key']);
+        self::assertSame('status-json-dedupe', $payload['dedupe_key']);
+        self::assertSame('done', $payload['status']);
+        self::assertSame('complete', $payload['handoff']['state'] ?? '');
+        self::assertSame('update_inventory_request', $payload['operation_key']);
+        self::assertSame('/projects/sample31/sync-outbox/status-json-dedupe', $payload['detail_path']);
+        self::assertArrayNotHasKey('intent', $payload);
+    }
 }

@@ -11,6 +11,256 @@
 
 ## Index
 
+- `2026-0708-mtool-no-code-dogfooding-probe-inventory.md`
+  - #431 first Mtool no-code dogfooding probe inventory。全面 self-replacement ではなく、Source Output / Shared Contracts / interface profile review surface を最初の低リスク probe として選択し、#432-#435 の実装・確認・closure 手順を整理。Push は未実行。Status: `DONE`。
+- `2026-0705-local-commit-stack-review-after-third-domain-confidence.md`
+  - #188 third-domain confidence 後の local commit stack review。`develop` は `origin/develop` より 8 commits ahead、現 stack は product meaning ごとに読めるため squash / history rewrite は不要と判断。Push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0705-post-third-domain-confidence-no-code-product-goal-replan.md`
+  - #187 third-domain confidence closure 後の次判断。live polling / runtime retry mutation / visual builder / fourth domain sample の前に、local commit stack review を選択。Push は未実行。Status: `DONE`。
+- `2026-0705-third-domain-runtime-submit-processing-confidence-closure.md`
+  - #186 third-domain runtime submit / processing confidence closure。sample28 / sample29 / sample31 の no-code runtime submit、endpoint enqueue、generated server DBAccess processing proof を、現在の async runtime confidence boundary として整理。Push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0705-sample31-public-runtime-submit-processing-smoke.md`
+  - #185 sample31 public runtime submit / processing smoke。sample31 の current / alias public runtime submit、direct endpoint enqueue、generated server DBAccess outbox processing を inventory request domain で確認する smoke を追加。Push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0705-post-sample31-stack-review-no-code-product-goal-replan.md`
+  - #184 sample31 stack review 後の次判断。sample31 を artifact / browser-local proof から public runtime submit / processing confidence へ進めることを選択。Push は未実行。Status: `DONE`。
+- `2026-0705-pre-push-stack-review-after-sample31.md`
+  - #183 sample31 後の push 前 stack review。`develop` は `origin/develop` より 5 commits ahead、#179-#182 は自然な 5 件の review unit としてまとまっているため history rewrite / squash は不要と判断。Push は未実行。Status: `DONE`。
+- `2026-0705-sample31-no-code-inventory-request-first-slice.md`
+  - #182 next domain/sample expansion first slice。`sample31-no-code-inventory-request-demo` を追加し、inventory request domain で `NO-CODE-RUNTIME` artifact generation と generated runtime browser smoke を確認。Push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0705-database-first-no-code-product-narrative-docs.md`
+  - #181 database-first + no-code product narrative docs。README / no-code tryout / overview / use cases / docs index を更新し、no-code が database-first metadata、generated artifacts、managed operations、Source Output review、approval records の上に載る二層構造であることを恒久文書へ反映。Push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0705-synchronous-demo-processing-first-slice.md`
+  - #180 synchronous demo processing first slice。production default は async outbox のまま、`MTOOL_NO_CODE_RUNTIME_SYNC_DEMO` と `MTOOL_RUNTIME_SQLITE_PATH` が揃った時だけ runtime binding が demo processing を advertise し、explicit `runtime_demo_process=1` で既存 server DBAccess outbox processor による 1 件処理を試す。sample28/sample29 public runtime browser smoke と full `make test` が通過。Push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0705-runtime-flow-indicator-polish-first-slice.md`
+  - #179 no-code practical runtime flow polish first slice。generated runtime panel に Submit / Outbox tracking / Refresh の visible flow indicator を追加し、sample28/sample29 public runtime browser smoke で real submit 後の accepted flow を確認。Push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0705-no-code-next-phase-detailed-plan.md`
+  - no-code 次 phase の詳細計画。#179 practical runtime flow polish、#180 synchronous demo processing、#181 database-first + no-code product narrative docs、#182 next domain/sample expansion の goal、deliverables、out-of-scope、verification、見積もりを整理し、全項目完了済み。Status: `DONE`。
+- `2026-0705-next-no-code-direction-after-push.md`
+  - grouped no-code runtime submit / outbox / second-domain confidence stack push 後の次方向。主要候補を排他選択ではなく、practical runtime flow polish、synchronous demo processing、database-first + no-code product narrative docs、next domain/sample expansion の順に主線化。Status: `DONE`。
+- `2026-0705-pre-push-commit-stack-cleanup-result.md`
+  - second-domain runtime confidence closure 後の push 前 commit stack 整理結果。backup branch `codex/backup-develop-pre-push-cleanup-20260705-517756b` を作成し、local unpushed functional stack を 55 commits から 6 grouped commits に整理した後、docs-only cleanup record を追加。docs-only record 前に backup branch との tree parity を確認。Push は未実行。Status: `DONE`。
+- `2026-0705-second-domain-runtime-submit-processing-confidence-closure.md`
+  - sample28 / sample29 の public runtime submit、direct endpoint enqueue、operator outbox handoff、generated server DBAccess outbox processing proof を current async boundary として closure。Push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0705-post-sample29-processing-no-code-product-goal-replan.md`
+  - sample29 outbox processing proof 後の次判断。live polling / synchronous demo processing / runtime retry mutation / push cleanup の前に closure report を選択。Push は未実行。Status: `DONE`。
+- `2026-0705-sample29-runtime-outbox-processing-smoke.md`
+  - sample29 public runtime smoke で outbox processing proof を有効化。direct endpoint の `update_support_case` payload が既存 managed-operation sync outbox processor と generated server DBAccess handler を通り、isolated SQLite `support_case.next_action` を更新できることを確認。Push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0705-post-multi-profile-endpoint-smoke-no-code-product-goal-replan.md`
+  - multi-profile endpoint smoke 後の次判断。live polling / synchronous demo processing / runtime retry mutation / push cleanup の前に sample29 outbox processing smoke を選択。Push は未実行。Status: `DONE`。
+- `2026-0705-multi-profile-runtime-execution-endpoint-smoke.md`
+  - direct no-code runtime execution endpoint smoke を sample28/sample29 profile 対応にし、sample29 public runtime smoke で current / alias direct endpoint enqueue proof を有効化。sample29 outbox processing は未着手として明記。Push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0705-post-sample29-stack-review-no-code-product-goal-replan.md`
+  - sample29 stack review 後の次判断。sample29 outbox processing / live polling / synchronous demo processing / retry mutation / push cleanup の前に generic multi-profile endpoint smoke extraction を選択。Push は未実行。Status: `DONE`。
+- `2026-0705-local-commit-stack-review-after-sample29-handoff.md`
+  - sample29 handoff 後の local commit stack review。`develop` は `origin/develop` より 51 commits ahead、worktree clean、push / history rewrite は未実行。sample29 second-domain submit handoff proof を含めた review grouping と verification baseline を記録。Status: `FIRST_SLICE_DONE`。
+- `2026-0705-post-sample29-handoff-closure-no-code-product-goal-replan.md`
+  - sample29 handoff closure 後の次判断。live polling / synchronous demo processing / retry mutation / generic smoke extraction / push cleanup の前に local commit stack review を選択。Push は未実行。Status: `DONE`。
+- `2026-0705-sample29-public-runtime-submit-handoff-closure.md`
+  - sample29 public runtime submit handoff lane を closure。sample28 full baseline と sample29 second-domain browser proof、scoped stub-auth tryout path、pending outbox copy / open / manual-refresh handoff を accepted capability として整理。Push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0705-post-sample29-public-runtime-submit-handoff-replan.md`
+  - sample29 public runtime submit handoff smoke 後の次判断。live polling / synchronous demo processing / retry mutation / generic smoke extraction / push cleanup の前に closure report を選択。Push は未実行。Status: `DONE`。
+- `2026-0705-sample29-public-runtime-submit-handoff-smoke.md`
+  - sample29 public runtime browser smoke を追加。artifact preview は execution binding なし、current / alias preview は scoped stub-auth principal の real submit で pending outbox copy / open / manual-refresh handoff を検証。Push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0705-post-stack-review-no-code-product-goal-replan.md`
+  - stack review 後の次判断。live polling / synchronous demo processing / retry mutation / push cleanup の前に、sample29 public runtime submit handoff smoke を選択。Push は未実行。Status: `DONE`。
+- `2026-0705-local-commit-stack-review-after-manual-refresh.md`
+  - manual refresh 後の local commit stack review。`develop` は `origin/develop` より 48 commits ahead、worktree clean、push / history rewrite は未実行。review grouping と verification baseline を記録。Status: `FIRST_SLICE_DONE`。
+- `2026-0705-post-manual-refresh-closure-no-code-product-goal-replan.md`
+  - manual refresh closure 後の次判断。live polling / 別 sample / synchronous demo processing / retry mutation / push cleanup の前に、local commit stack review を選択。Push は未実行。Status: `DONE`。
+- `2026-0705-runtime-manual-result-refresh-closure.md`
+  - generated runtime の manual result refresh lane を closure。submit / sync outbox / operator detail path / copy-open / `Refresh preview` / process-then-refresh guidance を accepted capability として固定。Push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0705-post-result-refresh-guidance-no-code-product-goal-replan.md`
+  - result refresh guidance 後の次判断。live polling / 別 sample / synchronous demo processing / retry mutation の前に、manual result refresh closure を選択。Push は未実行。Status: `DONE`。
+- `2026-0705-runtime-result-refresh-guidance-wording-first-slice.md`
+  - generated runtime preview の `Refresh preview` status と submit success guidance を揃え、sync outbox item を処理してから `Refresh preview` で current screen を reload する二段階 handoff を明示。Push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0705-post-result-refresh-button-no-code-product-goal-replan.md`
+  - result refresh button 後の次判断。live polling / synchronous processing / retry mutation / 別 sample の前に、runtime result refresh guidance wording を選択。Push は未実行。Status: `DONE`。
+- `2026-0705-runtime-result-refresh-button-first-slice.md`
+  - generated runtime preview に `Refresh preview` control を追加。submit 成功後だけ有効化し、reload 前後で current screen form values を sessionStorage により保持する。Push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0705-post-outbox-detail-open-link-no-code-product-goal-replan.md`
+  - outbox detail open link 後の次判断。live polling / synchronous processing / retry mutation / 別 sample の前に、manual runtime result refresh button を選択。Push は未実行。Status: `DONE`。
+- `2026-0705-runtime-outbox-detail-open-link-affordance.md`
+  - generated runtime preview に `Open outbox detail` link を追加。submit 成功後に operator sync outbox detail path がある場合だけ表示し、その path を開ける。Push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0705-post-local-stack-review-no-code-product-goal-replan.md`
+  - local stack review 後の次判断。live polling / synchronous processing / retry mutation / 別 sample の前に、runtime outbox detail open link affordance を選択。Push は未実行。Status: `DONE`。
+- `2026-0704-local-commit-stack-review-after-runtime-submit-affordances.md`
+  - runtime submit affordance 後の local commit stack review。`develop` は `origin/develop` より 43 commits ahead、worktree clean、push / history rewrite は未実行。review grouping と verification baseline を記録。Status: `FIRST_SLICE_DONE`。
+- `2026-0704-post-outbox-path-copy-closure-no-code-product-goal-replan.md`
+  - outbox path copy closure 後の次判断。full link rendering / polling / synchronous processing / 別 sample の前に local commit stack review を選択。Push は未実行。Status: `DONE`。
+- `2026-0704-runtime-outbox-detail-path-copy-closure.md`
+  - runtime outbox detail path copy affordance lane を closure。submit は outbox-based のまま、成功後に operator sync outbox detail path を copy できる behavior を accepted capability として固定。Push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0704-post-runtime-outbox-path-copy-no-code-product-goal-replan.md`
+  - runtime outbox path copy 後の次判断。full link rendering / polling / synchronous processing の前に closure report を選択。Push は未実行。Status: `DONE`。
+- `2026-0704-runtime-outbox-detail-path-copy-affordance.md`
+  - generated runtime preview に `Copy outbox path` control を追加。submit 成功後に operator sync outbox detail path がある場合だけ有効になり、その path を copy できる。Push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0704-post-outbox-detail-path-groundwork-no-code-product-goal-replan.md`
+  - outbox detail path groundwork 後の次判断。full link rendering / polling / synchronous processing の前に、runtime outbox detail path copy affordance を選択。Push は未実行。Status: `DONE`。
+- `2026-0704-runtime-outbox-detail-path-affordance-groundwork.md`
+  - runtime submit success 後の status / feedback に `data-runtime-outbox-detail-path` を追加し、operator sync outbox detail path を structured DOM state として公開。Push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0704-post-result-follow-up-closure-no-code-product-goal-replan.md`
+  - result follow-up closure 後の次判断。full link rendering / polling / synchronous processing の前に、runtime outbox detail path affordance groundwork を選択。Push は未実行。Status: `DONE`。
+- `2026-0704-runtime-submit-result-follow-up-closure.md`
+  - runtime submit result follow-up guidance lane を closure。submit は outbox-based のまま、処理後に runtime preview を refresh して結果確認する manual result-check behavior を accepted capability として固定。Push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0704-post-runtime-submit-result-follow-up-no-code-product-goal-replan.md`
+  - runtime submit result follow-up 後の次判断。polling / link affordance polish / synchronous processing / retry mutation / 別 sample の前に closure report を選択。Push は未実行。Status: `DONE`。
+- `2026-0704-runtime-submit-result-follow-up-guidance.md`
+  - generated runtime submit success feedback に、pending/running outbox work の処理後に runtime preview を refresh して結果確認する follow-up guidance を追加。Push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0704-post-runtime-submit-outbox-handoff-closure-no-code-product-goal-replan.md`
+  - runtime submit / outbox handoff closure 後の次判断。polling / synchronous processing / retry mutation / 別 sample の前に、runtime submit result follow-up guidance を選択。Push は未実行。Status: `DONE`。
+- `2026-0704-runtime-submit-outbox-handoff-closure.md`
+  - server-backed runtime submit / sync outbox handoff lane を closure。runtime submit、pending outbox feedback、operator detail path、sample28 generated DBAccess processing smoke、operator Processing Handoff までを accepted capability として固定。Push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0704-operator-sync-outbox-detail-processing-handoff.md`
+  - operator sync outbox detail page に read-only の Processing Handoff section を追加。runtime submit から辿った pending item が existing processor 待ちであることを説明。Push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0704-post-runtime-submit-detail-path-no-code-product-goal-replan.md`
+  - runtime submit detail path 後の次判断。live UI result refresh / synchronous endpoint processing / runtime retry mutation の前に、operator sync outbox detail processing handoff を選択。Push は未実行。Status: `DONE`。
+- `2026-0704-runtime-submit-operator-outbox-detail-path-feedback.md`
+  - generated runtime submit success messaging に operator sync outbox detail path を表示。endpoint の `dedupe_key` を使って `/projects/{project_key}/sync-outbox/{dedupe_key}` を確認。Push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0704-post-runtime-submit-outbox-trace-no-code-product-goal-replan.md`
+  - runtime submit outbox trace 後の次判断。live UI result refresh / synchronous endpoint processing / retry mutation の前に、operator outbox detail path feedback を選択。Push は未実行。Status: `DONE`。
+- `2026-0704-runtime-submit-outbox-trace-feedback.md`
+  - generated runtime submit success messaging に accepted sync outbox item id と operation key を表示。sample28 real-submit browser / endpoint smoke で追跡情報を確認。Push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0704-post-outbox-processing-smoke-no-code-product-goal-replan.md`
+  - sample28 outbox processing smoke 後の次判断。live UI result refresh や synchronous endpoint processing の前に、runtime submit outbox trace feedback を選択。Push は未実行。Status: `DONE`。
+- `2026-0704-sample28-runtime-outbox-processing-smoke.md`
+  - sample28 runtime execution で pending になった outbox item を、既存 processor と generated server DBAccess handler で isolated SQLite row に処理する smoke を追加。`done` outcome と direct endpoint payload による row update を確認。Push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0704-post-runtime-submit-sync-status-feedback-no-code-product-goal-replan.md`
+  - runtime submit sync-status feedback 後の次判断。live UI result refresh や synchronous endpoint processing の前に、sample28 outbox processing smoke を選択。Push は未実行。Status: `DONE`。
+- `2026-0704-runtime-submit-sync-status-feedback.md`
+  - generated runtime submit success messaging に sync outbox status を表示。sample28 current / alias real-submit smoke で `Sync outbox status: pending` が runtime execute status と action feedback に出ることを確認。Push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0704-post-browser-real-submit-no-code-product-goal-replan.md`
+  - browser real-submit 後の次判断。outbox processing や direct business-row mutation の前に、最小の runtime submit result feedback を選択。Push は未実行。Status: `DONE`。
+- `2026-0704-sample28-authenticated-browser-real-submit-smoke.md`
+  - sample28 public runtime browser smoke を authenticated real-submit に拡張。Playwright が local stub admin でログインし、generated `Submit to server` control から current / alias real endpoint へ POST し、200 と pending sync intent response を確認。Push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0704-post-sample28-endpoint-success-no-code-product-goal-replan.md`
+  - sample28 endpoint success 後の次判断。UI result refresh、direct business-row mutation、outbox processing の前に authenticated browser real-submit smoke を選択。Push は未実行。Status: `DONE`。
+- `2026-0704-sample28-runtime-execution-success-smoke.md`
+  - sample28 current / alias public runtime execution endpoints now accept authenticated tryout POSTs, produce `managed-operation-sync-intent-v0`, and enqueue pending outbox items. `public-runtime` is accepted as a managed-operation sync origin. Push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0704-post-route-principal-policy-overlay-no-code-product-goal-replan.md`
+  - route-level principal policy overlay 後の次判断。UI result refresh や direct business-row mutation の前に、sample28 successful endpoint tryout を選択。Push は未実行。Status: `DONE`。
+- `2026-0704-runtime-execution-route-principal-policy-overlay-wiring.md`
+  - authenticated no-code runtime execution route が current principal で action policy を再評価し、approved stored runtime definition へ overlay してから dispatch するように接続。sample28 direct endpoint smoke は現行 stub admin principal が editor / write-scope policy を満たさないため 422 fail-closed のまま通過。Push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0704-post-principal-policy-overlay-contract-no-code-product-goal-replan.md`
+  - principal policy overlay contract 後の次判断。sample policy 変更や successful mutation の前に route-level principal action policy overlay wiring を選択。Push は未実行。Status: `DONE`。
+- `2026-0704-runtime-principal-action-policy-overlay-contract.md`
+  - stored runtime definition を保ったまま、principal-aware definition から action availability / policy だけを overlay する pure runtime helper を追加。render と dispatch が overlay 後の enabled policy を使うことを focused `NoCodeRuntimeTest` で確認。Push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0704-post-endpoint-disabled-policy-smoke-no-code-product-goal-replan.md`
+  - endpoint disabled-policy smoke 後の次判断。real endpoint mutation wiring の前に、principal-aware action policy overlay contract を選択。Push は未実行。Status: `DONE`。
+- `2026-0704-runtime-execution-endpoint-disabled-policy-smoke.md`
+  - sample28 public runtime smoke に authenticated direct endpoint check を追加。stub admin auth でログインし、current / alias preview の execution binding から valid request を POST し、request binding は通るが generated disabled action は 422 JSON で fail-closed することを確認。`make sample28-no-code-public-runtime-browser-smoke` が通過。Push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0704-post-enabled-submit-payload-smoke-no-code-product-goal-replan.md`
+  - enabled submit payload smoke 後の次判断。real generated preview mutation behavior の前に、authenticated direct endpoint disabled-policy smoke を選択。Push は未実行。Status: `DONE`。
+- `2026-0704-runtime-preview-enabled-submit-payload-smoke.md`
+  - sample28 public runtime browser smoke に fetch-stub submit probe を追加。current / alias preview で generated action を browser 内だけ ready にし、`Submit to server` の POST URL、same-origin credentials、CSRF、action binding、key/input payload shape を server mutation なしで確認する。`make sample28-no-code-public-runtime-browser-smoke` が通過。Push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0704-post-execution-binding-smoke-hardening-no-code-product-goal-replan.md`
+  - execution binding smoke hardening 後の次判断。実 server mutation behavior や別 sample の前に、browser-side enabled submit payload smoke を選択。Push は未実行。Status: `DONE`。
+- `2026-0704-public-runtime-execution-binding-smoke-hardening.md`
+  - public runtime browser smoke に execution binding expectation を追加。artifact preview は binding なし、current / alias preview はそれぞれ matching execution endpoint binding ありを確認する。`make sample28-no-code-public-runtime-browser-smoke` が通過。Push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0704-post-preview-submit-wiring-no-code-product-goal-replan.md`
+  - preview submit wiring 後の次判断。enabled-action execution や別 sample の前に、public runtime execution binding smoke hardening を選択。Push は未実行。Status: `DONE`。
+- `2026-0704-runtime-execution-preview-submit-wiring-first-slice.md`
+  - generated no-code runtime preview に `Submit to server` control を追加し、current / alias preview response へ execution binding を注入。artifact-key immutable preview は session-specific data を入れず static のまま維持し、blocked draft は submit しない。Focused runtime/public-route PHPUnit、sample28 smoke、direct current/alias browser smoke が通過。Push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0704-post-runtime-execution-current-alias-routes-no-code-product-goal-replan.md`
+  - artifact/current/alias execution route が揃った後の次判断。generated preview submission wiring を次の work unit として選択。Push は未実行。Status: `DONE`。
+- `2026-0704-runtime-execution-current-alias-routes-first-slice.md`
+  - authenticated current / custom-alias no-code runtime execution JSON route を追加。preview HTML は public のまま、mutation endpoint は auth required。既存 current / alias preview route と同じ approved candidate を解決し、既存 runtime execution helper と managed-operation dispatch path を再利用。PHP lint、focused `OpenApiSourceOutputContractTest`、sample28 runtime UI smoke、`git diff --check`、full `make test` が通過。Push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0704-post-runtime-execution-artifact-route-no-code-product-goal-replan.md`
+  - artifact-key execution route 後の次判断。generated preview submission wiring の前に、公開 preview URL と同じ stable addressability を揃える current / alias execution route variants を選択。Push は未実行。Status: `DONE`。
+- `2026-0704-runtime-execution-artifact-route-first-slice.md`
+  - artifact-key scoped no-code runtime execution JSON route を追加。preview HTML は public のまま、mutation endpoint は auth required。approved candidate の `screen-definition.json` を読み、既存 request / dispatch / endpoint response helper と managed-operation outbox enqueue に接続。PHP lint、focused route/runtime PHPUnit、sample28 runtime UI smoke、`git diff --check`、full `make test` が通過。Push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0704-post-runtime-execution-endpoint-response-no-code-product-goal-replan.md`
+  - endpoint response contract 後の次判断。current/alias route variants や generated preview submission wiring の前に、authenticated artifact-key execution route を選択。Push は未実行。Status: `DONE`。
+- `2026-0703-runtime-execution-endpoint-response-contract-first-slice.md`
+  - server-backed runtime execution result を endpoint-ready な HTTP status と JSON payload に写す internal helper を追加。header 送信、public route 登録、generated preview submission wiring は未実施。PHP lint、focused `NoCodeRuntimeTest`、sample28 runtime UI smoke、`git diff --check`、full `make test` が通過。Push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0703-post-runtime-execution-dispatch-entrypoint-no-code-product-goal-replan.md`
+  - runtime execution dispatch entrypoint 後の次判断。public mutation route や generated preview submission wiring の前に endpoint response contract helper を選択。Push は未実行。Status: `DONE`。
+- `2026-0703-runtime-execution-dispatch-entrypoint-first-slice.md`
+  - request contract helper と existing no-code action dispatcher を合成する server-backed entrypoint helper。invalid request は dispatcher に届かず、valid request は `request` / `intent` / `result` の response shape を返す。PHP lint、focused `NoCodeRuntimeTest`、sample28 runtime UI smoke、`git diff --check`、full `make test` が通過。Push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0703-post-runtime-execution-request-contract-no-code-product-goal-replan.md`
+  - runtime execution request contract 後の次判断。public mutation route や generated preview submission wiring の前に server-backed dispatch entrypoint helper を選択。Push は未実行。Status: `DONE`。
+- `2026-0703-runtime-execution-request-contract-first-slice.md`
+  - server-backed runtime execution endpoint 前の request contract helper。POST、CSRF、project binding、artifact binding、action key、input normalization を fail-closed に固定。PHP lint、focused `NoCodeRuntimeTest`、sample28 runtime UI smoke、`git diff --check`、full `make test` が通過。Push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0703-post-runtime-execution-boundary-no-code-product-goal-replan.md`
+  - server-backed runtime execution boundary inventory 後の次判断。full endpoint の前に request contract hardening を選択。Push は未実行。Status: `DONE`。
+- `2026-0703-server-backed-runtime-execution-boundary-inventory.md`
+  - server-backed runtime execution の boundary inventory。backend dispatch helper / managed operation bridge / generated DBAccess execution coverage は既にある一方、generated runtime preview を mutation path にする前の auth、policy、CSRF、target binding、result refresh、error surface、audit trail 境界を記録。Push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0703-post-local-stack-review-no-code-product-goal-replan.md`
+  - local stack review 後の次判断。user-facing mutation path 実装の前に server-backed runtime execution boundary inventory を選択。Push は未実行。Status: `DONE`。
+- `2026-0703-local-commit-stack-review-after-required-field-validation-wording.md`
+  - required-field validation wording 後の local commit stack review。`develop` は `origin/develop` より 17 commits ahead、worktree は clean、push は未実行。review grouping、verification baseline、push / rewrite options を記録。Status: `FIRST_SLICE_DONE`。
+- `2026-0703-post-required-field-validation-wording-closure-no-code-product-goal-replan.md`
+  - required-field validation wording closure 後の次判断。server-backed execution や next sample の前に local commit stack review を選択。Push は未実行。Status: `DONE`。
+- `2026-0703-runtime-required-field-validation-wording-closure.md`
+  - runtime required-field validation wording lane の closure。required hint の present/missing message が action field role と rendered field label を含むことを accepted capability として固定し、latest verification baseline と remaining candidates を記録。Push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0703-post-required-field-validation-wording-no-code-product-goal-replan.md`
+  - runtime required-field validation wording first slice 後の次判断。server-backed execution、next sample、commit/push cleanup の前に closure report を選択。Push は未実行。Status: `DONE`。
+- `2026-0703-runtime-required-field-validation-wording-first-slice.md`
+  - generated runtime required hint の live present / missing feedback に action field role と rendered field label を追加。Focused `NoCodeRuntimeTest`、sample28 runtime UI smoke、full `make test` が通過。Push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0703-post-required-field-live-hints-no-code-product-goal-replan.md`
+  - runtime required-field live hints closure 後の次判断。server-backed execution や next sample の前に、required-field validation wording first slice を選択。Push は未実行。Status: `DONE`。
+- `2026-0703-runtime-required-field-live-hints-closure.md`
+  - runtime required-field live hints lane の closure。required hint の static guidance と browser-local present/missing feedback、最新 verification baseline、remaining candidates を記録。Push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0703-post-runtime-required-field-live-hints-no-code-product-goal-replan.md`
+  - runtime required-field live hints first slice 後の次判断。server-backed execution、richer validation wording、next sample、commit/push cleanup の前に closure report を選択。Push は未実行。Status: `DONE`。
+- `2026-0703-runtime-required-field-live-hints-first-slice.md`
+  - generated runtime form の required hint を local action-intent draft checks に追従させ、入力済みなら present、blank required なら missing として表示する first slice。Focused `NoCodeRuntimeTest`、sample28 runtime UI smoke、sample01 reset 後の full `make test` が通過。Push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0703-post-required-field-guidance-closure-no-code-product-goal-replan.md`
+  - required-field guidance closure 後の次判断。server-backed execution や next sample の前に、既存 draft checks を使う runtime required-field live hints を選択。Push は未実行。Status: `DONE`。
+- `2026-0703-runtime-required-field-guidance-closure.md`
+  - runtime required-field guidance lane の closure。generated runtime form の required badge、required-field hint、`aria-describedby` linkage を accepted capability として固定し、focused/sample/full verification baseline と remaining candidates を記録。Push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0703-post-runtime-required-field-guidance-no-code-product-goal-replan.md`
+  - runtime required-field guidance first slice 後の次判断。live validation、server-backed execution、next sample、commit/push cleanup の前に closure report を選択。Push は未実行。Status: `DONE`。
+- `2026-0703-runtime-required-field-guidance-first-slice.md`
+  - generated no-code runtime form に required badge と required-field hint を追加し、draft summary / JSON を読む前に required input contract を確認できるようにする follow-up。Focused `NoCodeRuntimeTest`、sample28 runtime UI smoke、clean buildless sample01 stack 上の full Integration PHPUnit が通過。Push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0703-post-commit-stack-review-no-code-product-goal-replan.md`
+  - local commit stack review 後の次判断。push / history rewrite は明示されていないため行わず、次の小さな implementation lane として runtime required field guidance を選択。Status: `DONE`。
+- `2026-0703-local-commit-stack-review-after-intent-draft-polish.md`
+  - runtime action intent draft polish 後の local commit stack review。`develop` は `origin/develop` より 10 commits ahead、push は未実行。commit group、最新 verification baseline、push / squash 前の選択肢を記録。Status: `FIRST_SLICE_DONE`。
+- `2026-0703-post-intent-draft-polish-no-code-product-goal-replan.md`
+  - runtime action intent draft polish closure 後の次判断。次の product implementation に入る前に local commit stack review を選択。Push は未実行。Status: `DONE`。
+- `2026-0703-runtime-action-intent-draft-polish-closure.md`
+  - runtime action intent draft polish lane の closure。local non-mutating draft、readiness/policy summary、metadata、field summary、payload count、copy、JSON disclosure を accepted capability として固定。Push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0703-post-runtime-action-intent-json-disclosure-no-code-product-goal-replan.md`
+  - runtime action intent JSON disclosure 後の次判断。readability lane が coherent boundary に達したため、追加実装ではなく runtime action intent draft polish closure を選択。Push は未実行。Status: `DONE`。
+- `2026-0703-runtime-action-intent-json-disclosure.md`
+  - generated no-code runtime preview の `Action Intent Draft` detailed JSON を `Draft JSON` disclosure に包み、summary row が揃った後の通常 scan を軽くする follow-up。Focused `NoCodeRuntimeTest`、sample28 runtime UI smoke、clean buildless sample01 stack 上の full Integration PHPUnit が通過。Push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0703-post-runtime-action-intent-field-summary-no-code-product-goal-replan.md`
+  - runtime action intent field summary 後の次判断。summary row が通常 scan に十分になったため、full JSON を常時展開せず `Draft JSON` disclosure にする slice を選択。Push は未実行。Status: `DONE`。
+- `2026-0703-runtime-action-intent-field-summary.md`
+  - generated no-code runtime preview の `Action Intent Draft` に key / input / filter field name の compact field row を追加し、JSON を開かなくても action field boundary を確認できるようにする follow-up。Focused `NoCodeRuntimeTest`、sample28 runtime UI smoke、clean buildless sample01 stack 上の full Integration PHPUnit が通過。Push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0703-post-runtime-action-intent-state-badge-no-code-product-goal-replan.md`
+  - `Action Intent Draft` の visible state badge 後の次判断。大きな real interaction work の前に、JSON を開かず field name を確認できる runtime action intent field summary を選択。Push は未実行。Status: `DONE`。
+- `2026-0703-runtime-action-intent-state-badge.md`
+  - generated no-code runtime preview の `Action Intent Draft` に visible state badge を追加し、ready / blocked / empty state を安定した UI marker として表示する follow-up。Focused `NoCodeRuntimeTest`、sample28 runtime UI smoke、clean buildless sample01 stack 上の full Integration PHPUnit が通過。Push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0703-runtime-action-intent-payload-summary.md`
+  - generated no-code runtime preview の `Action Intent Draft` に key / input / filter field count の compact payload row を追加し、JSON を開かなくても payload shape を確認できるようにする follow-up。Focused `NoCodeRuntimeTest`、sample28 runtime UI smoke、clean buildless sample01 stack 上の full Integration PHPUnit が通過。Push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0703-runtime-action-intent-metadata-summary.md`
+  - generated no-code runtime preview の `Action Intent Draft` に action key / operation key / operation type の compact metadata row を追加し、JSON を開かなくても draft の操作境界を確認できるようにする follow-up。Focused `NoCodeRuntimeTest`、sample28 runtime UI smoke、buildless sample01 stack 上の full Integration PHPUnit が通過。通常の `make test` は Docker registry metadata timeout のため直接 rerun できず。Push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0703-runtime-action-intent-draft-copy-affordance.md`
+  - generated no-code runtime preview の `Action Intent Draft` に `Copy draft JSON` control と live status を追加し、編集中の local draft JSON を tryout notes / debugging に持ち出しやすくする follow-up。Focused `NoCodeRuntimeTest`、`make sample28-no-code-runtime-ui-smoke`、full `make test` が通過。Push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0703-runtime-action-intent-policy-summary.md`
+  - generated no-code runtime preview の `Action Intent Draft` summary に `policy_failed_checks` を追加し、`policy: principal.missing` などの disabled policy reason を JSON parsing なしで確認できるようにする follow-up。Focused `NoCodeRuntimeTest`、`make sample28-no-code-runtime-ui-smoke`、full `make test` が通過。Push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0703-runtime-action-intent-draft-summary.md`
+  - generated no-code runtime preview の `Action Intent Draft` に短い summary line を追加し、JSON を読まなくても ready / blocked と checks の概要を確認できるようにする follow-up。Focused `NoCodeRuntimeTest`、`make sample28-no-code-runtime-ui-smoke`、full `make test` が通過。Push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0703-runtime-action-intent-draft-readiness-checks.md`
+  - generated no-code runtime preview の `Action Intent Draft` に `draft_checks` と `policy_failed_checks` を追加し、disabled action policy や required key/input field 不足など blocked reason を表示する follow-up。Focused `NoCodeRuntimeTest`、`make sample28-no-code-runtime-ui-smoke`、full `make test` が通過。Push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0702-runtime-action-intent-draft-first-slice.md`
+  - generated no-code runtime preview に `Action Intent Draft` panel を追加。form field を編集すると browser-side の no-code action-intent draft JSON が更新される。server update は実行せず、disabled policy guard も緩めない。Focused `NoCodeRuntimeTest`、`make sample28-no-code-runtime-ui-smoke`、full `make test` が通過。Status: `FIRST_SLICE_DONE`。
+- `2026-0702-tryout-ux-polish-2.md`
+  - no-code tryout-ready 後の初回ユーザー向け polish。`NO-CODE-RUNTIME` detail に `Tryout Next Steps` を追加し、Web preview と App-local package readiness が別 delivery track であることを Source Outputs / detail / tryout guide に明記。Focused static contract は `22 tests, 1821 assertions` で通過。Status: `FIRST_SLICE_DONE`。
+- `2026-0702-pre-next-push-verification.md`
+  - no-code tryout-ready push 後、#69/#70 の planning / verification record を次に push する前の verification 記録。`make sample28-no-code-runtime-ui-smoke` は seeded 3 rows を確認して通過、full `make test` は `327 tests, 10798 assertions, skipped 1` で通過、`git diff --check` も通過。Status: `DONE`。
+- `2026-0702-post-tryout-ready-no-code-product-goal-replan.md`
+  - #67 no-code tryout-ready 完了と `origin/develop` push 後の product-goal replan。次の feature lane へ入る前に #70 Pre-next-push verification を選択。次候補は tryout UX polish 2、runtime real interaction、docs chapter hardening、next scenario/sample。Status: `DONE`。
+- `2026-0702-no-code-tryout-ready-milestone-closure.md`
+  - #62-#67 を no-code tryout-ready milestone として closure。sample28 seeded preview data、preview data smoke、operator wording polish、sample28 demo tryout shortcut、README/docs の二層構造整理を完了。最終 status pass は実装ではなく完了状態の検証。local tryout-ready stack は `31b2ed4 Add sample28 no-code tryout readiness` と `bcf2448 Document no-code tryout positioning` の 2 commits に整理され、status clarification `1821a6b` と合わせて `origin/develop` へ push 済み。`make sample28-pack-runtime-test`、`make sample28-no-code-runtime-ui-smoke`、full `make test`、manual Docker demo shortcut check が通過。Status: `FIRST_SLICE_DONE`。
+- `2026-0702-docs-information-architecture-split-plan.md`
+  - README/docs の情報設計を database-first toolkit の芯と、その上に載る no-code layer に分け直す計画。元のデータベースツール用途を残しつつ no-code 導線を強くする。#67 として追加。Status: `DONE`。
+- `2026-0702-no-code-onboarding-polish-plan.md`
+  - no-code Docker trial と tryout guide 後の onboarding polish 計画。次は sample28 seeded preview data と preview data smoke を MUST とし、その後 operator wording polish、one-click tryout action design、one-click tryout implementation を段階化。Status: `DONE`。
+- `2026-0702-user-facing-no-code-tryout-guide-first-slice.md`
+  - Docker-backed sample28 browser trial 後に、`docs/no-code-tryout.md` を追加し、repository README と sample28 README からリンク。初回ユーザーが Docker 起動、login、`NO-CODE-RUNTIME` publish candidate 承認、current public runtime preview 表示まで辿る道筋を短く記録。Status: `FIRST_SLICE_DONE`。
+- `2026-0702-no-code-docker-trial-scenario-first-pass.md`
+  - sample28 Docker stack を起動し、初回ユーザー目線で no-code runtime の publish candidate 作成、review request、approve、current selection、stable alias 設定、public preview 表示まで試行。artifact-key/current/alias preview はすべて `200`。Source Output Artifact detail から preview へ直行できない点、sample28 の app-local package readiness は Source Output 未定義で blocked になる点を onboarding gap として記録。Status: `DONE`。
 - `2026-0702-commit-cleanup-execution-result.md`
   - local commit stack を 6 grouped commits へ rewrite。backup branch `codex/backup-develop-pre-squash-20260702-ea60c8c` を作成し、rewrite 前後の tree parity を確認。`git diff --check` と full `make test` は通過。Push は未実行。Status: `DONE`。
 - `2026-0702-commit-cleanup-review-grouping-after-delivery-milestone.md`

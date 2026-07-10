@@ -256,7 +256,7 @@ function app_managed_operation_execution_normalize_value(array $field, mixed $va
             ? ['ok' => true, 'value' => (int) $value]
             : ['ok' => false, 'value' => null],
         'boolean' => app_managed_operation_execution_normalize_boolean($value),
-        'datetime', 'string', 'text' => is_scalar($value)
+        'date', 'datetime', 'time', 'string', 'text' => is_scalar($value)
             ? ['ok' => true, 'value' => (string) $value]
             : ['ok' => false, 'value' => null],
         default => ['ok' => true, 'value' => $value],

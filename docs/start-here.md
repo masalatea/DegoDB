@@ -64,6 +64,7 @@ dated report は補助であり、まずはこの 3 か所で `project_key`、ch
 - 外部で決めた DB 構造を import し、`Data Class`、`DB Access`、`Source Output` を生成する内部ツールの新実装
 - current runtime / generator / sample / test を 1 repo で育てる作業場所
 - 主線は `DB 構造 -> import -> Data Class -> DB Access -> Source Output`
+- no-code はこの主線の上に載る layer。`DB metadata -> managed operation -> NO-CODE-RUNTIME -> publish candidate -> public preview` として、DB 基盤から切り離さずに生成・確認・承認する
 - JSON file / JSON API cache / JSON config から始める場合は、初期構想に含まれる optional pre-design entrance として [json-to-db-entrance.md](json-to-db-entrance.md) を使い、AI / 技術者が DB 設計案へ翻訳してから主線へ入る
 
 ## この repo がしないこと
@@ -121,6 +122,8 @@ Recommended questions:
 3. `MTOOL` に対して table import / data class sync / db access sync を流す
 4. tutorial sample か full suite で current gate を確認する
 5. 必要なら runtime reference / rollout status を script で確認する
+
+no-code を先に体験したい場合は [no-code-tryout.md](no-code-tryout.md) で sample28 を起動します。この導線も database-first の正本 metadata と Source Output artifact の上に載る tryout です。
 
 既存 DB を named source として登録し、canonical metadata 永続化から output publish / verify まで 1 本で辿る時は [existing-db-to-output.md](existing-db-to-output.md) を正本にします。  
 JSON 運用から DB 管理へ移行したい時は、初期構想に含まれる前段として [json-to-db-entrance.md](json-to-db-entrance.md) で design draft を作り、その後に existing DB / Lab DB / canonical metadata の mainline へ入ります。これは runtime 機能ではなく、設計準備の指示レイヤです。  

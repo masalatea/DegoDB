@@ -88,10 +88,10 @@ INSERT INTO project_managed_operations (
     'active',
     'business-only',
     'project.edit',
-    '["editor"]',
-    '["no_code_ticket:write"]',
+    '["admin"]',
+    '[]',
     '{}',
-    'Sample28 generated update operation for the data-first no-code app MVP.',
+    'Sample28 generated update operation for the data-first no-code app MVP. Local stub admin may execute this tryout action through the runtime endpoint.',
     'manual'
 );
 

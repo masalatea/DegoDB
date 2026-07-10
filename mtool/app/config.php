@@ -18,7 +18,8 @@ require_once __DIR__ . '/runtime_storage_paths.php';
  *             username:string,
  *             password:string,
  *             display_name:string,
- *             roles:list<string>
+ *             roles:list<string>,
+ *             scopes:list<string>
  *         },
  *         oidc:array{
  *             issuer:string,
@@ -108,6 +109,7 @@ function app_load_config(): array
     $authStubPassword = app_config_env('APP_AUTH_STUB_PASSWORD', $defaults['auth_stub_password']);
     $authStubDisplayName = app_config_env('APP_AUTH_STUB_NAME', $defaults['auth_stub_name']);
     $authStubRoles = app_config_csv_env('APP_AUTH_STUB_ROLES', $defaults['auth_stub_roles']);
+    $authStubScopes = app_config_csv_env('APP_AUTH_STUB_SCOPES', []);
     $authOidcIssuer = rtrim(app_config_env('APP_AUTH_OIDC_ISSUER', ''), '/');
     $authOidcClientId = app_config_env('APP_AUTH_OIDC_CLIENT_ID', '');
     $authOidcClientSecret = app_config_env('APP_AUTH_OIDC_CLIENT_SECRET', '');
@@ -224,6 +226,7 @@ function app_load_config(): array
                 'password' => $authStubPassword,
                 'display_name' => $authStubDisplayName,
                 'roles' => $authStubRoles,
+                'scopes' => $authStubScopes,
             ],
             'oidc' => [
                 'issuer' => $authOidcIssuer,

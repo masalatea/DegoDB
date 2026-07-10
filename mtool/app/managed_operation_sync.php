@@ -73,7 +73,7 @@ function app_managed_operation_sync_storage_mode(string $value): string
 function app_managed_operation_sync_endpoint(string $value): string
 {
     $normalized = strtolower(trim($value));
-    return in_array($normalized, ['server', 'app-local'], true) ? $normalized : '';
+    return in_array($normalized, ['server', 'app-local', 'public-runtime'], true) ? $normalized : '';
 }
 
 /**

@@ -179,6 +179,12 @@ function app_sample28_no_code_data_app_run(array $app, string $requestedBy): arr
         $listScreen = is_array($screens[0] ?? null) ? $screens[0] : [];
         $fields = is_array($listScreen['fields'] ?? null) ? $listScreen['fields'] : [];
         $runtimeScreens = is_array($runtimePreview['screens'] ?? null) ? $runtimePreview['screens'] : [];
+        $runtimeListScreen = app_sample28_no_code_data_app_find_by_value($runtimeScreens, 'screen_key', 'no_code_ticket_list');
+        $runtimeDetailScreen = app_sample28_no_code_data_app_find_by_value($runtimeScreens, 'screen_key', 'no_code_ticket_detail');
+        $runtimeFormScreen = app_sample28_no_code_data_app_find_by_value($runtimeScreens, 'screen_key', 'no_code_ticket_form');
+        $runtimeListRows = is_array($runtimeListScreen['data']['rows'] ?? null) ? $runtimeListScreen['data']['rows'] : [];
+        $runtimeDetailItem = is_array($runtimeDetailScreen['data']['item'] ?? null) ? $runtimeDetailScreen['data']['item'] : [];
+        $runtimeFormItem = is_array($runtimeFormScreen['data']['item'] ?? null) ? $runtimeFormScreen['data']['item'] : [];
 
         app_sample28_no_code_data_app_assert_same('no-code-screen-definition-v0', $screenDefinition['definition_version'] ?? '', 'definition_version', $assertionErrors);
         app_sample28_no_code_data_app_assert_same($projectKey, $screenDefinition['project_key'] ?? '', 'project_key', $assertionErrors);
@@ -191,6 +197,11 @@ function app_sample28_no_code_data_app_run(array $app, string $requestedBy): arr
         app_sample28_no_code_data_app_assert_same('update', $actions[0]['operation_type'] ?? '', 'action operation_type', $assertionErrors);
         app_sample28_no_code_data_app_assert_same('no-code-runtime-v0', $runtimePreview['runtime_version'] ?? '', 'runtime_version', $assertionErrors);
         app_sample28_no_code_data_app_assert_same(3, count($runtimeScreens), 'runtime screen count', $assertionErrors);
+        app_sample28_no_code_data_app_assert_same(3, count($runtimeListRows), 'runtime preview row count', $assertionErrors);
+        app_sample28_no_code_data_app_assert_same('First no-code app ticket', $runtimeListRows[0]['title']['display_value'] ?? '', 'runtime preview first row title', $assertionErrors);
+        app_sample28_no_code_data_app_assert_same('Review generated customer fields', $runtimeListRows[1]['title']['display_value'] ?? '', 'runtime preview second row title', $assertionErrors);
+        app_sample28_no_code_data_app_assert_same('First no-code app ticket', $runtimeDetailItem['title']['display_value'] ?? '', 'runtime preview detail title', $assertionErrors);
+        app_sample28_no_code_data_app_assert_same('This row is the first sample28 data-first no-code app fixture.', $runtimeFormItem['body']['display_value'] ?? '', 'runtime preview form body', $assertionErrors);
 
         $runtimePreviewHtml = is_file($publishedRoot . '/runtime-preview.html')
             ? (string) file_get_contents($publishedRoot . '/runtime-preview.html')
@@ -203,6 +214,9 @@ function app_sample28_no_code_data_app_run(array $app, string $requestedBy): arr
                 && str_contains($runtimePreviewHtml, 'data-screen-summary="no_code_ticket_form"')
                 && str_contains($runtimePreviewHtml, 'role="region" aria-labelledby="no-code-screen-title-no_code_ticket_list"')
                 && str_contains($runtimePreviewHtml, '<caption class="no-code-table-caption">No Code Ticket List records</caption>')
+                && str_contains($runtimePreviewHtml, 'First no-code app ticket')
+                && str_contains($runtimePreviewHtml, 'Review generated customer fields')
+                && str_contains($runtimePreviewHtml, 'Prepare approval handoff')
                 && str_contains($runtimePreviewHtml, 'data-action-affordance="keyboard-intent-preview"')
                 && str_contains($runtimePreviewHtml, 'data-keyboard-activation="enter-space"')
                 && str_contains($runtimePreviewHtml, 'data-action-disabled-reason="policy-not-enabled"')
@@ -222,6 +236,7 @@ function app_sample28_no_code_data_app_run(array $app, string $requestedBy): arr
         $steps['runtime_preview'] = [
             'runtime_version' => $runtimePreview['runtime_version'] ?? '',
             'screen_count' => count($runtimeScreens),
+            'seeded_preview_row_count' => count($runtimeListRows),
             'published_root' => $publishedRoot,
         ];
 

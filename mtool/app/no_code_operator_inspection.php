@@ -67,6 +67,19 @@ const APP_NO_CODE_OPERATOR_SOURCE_OUTPUT_KEY = 'NO-CODE-RUNTIME';
  *         screen_count:int,
  *         action_count:int,
  *         sync_hint_screen_count:int,
+ *         usage_intents:list<string>,
+ *         view_variants:list<string>,
+ *         traceability_target_count:int,
+ *         interface_profiles:list<array{
+ *             contract_key:string,
+ *             intent:string,
+ *             source:string,
+ *             preferred_view_variant:string,
+ *             preferred_view_variant_source:string,
+ *             view_variants:list<string>,
+ *             traceability_target_count:int,
+ *             related_settings:list<array{key:string,label:string,path:string,reason:string}>
+ *         }>,
  *         screen_keys:list<string>,
  *         action_keys:list<string>,
  *         errors:list<string>
@@ -91,7 +104,7 @@ function app_no_code_operator_inspection_from_catalog(
     $matchingArtifacts = app_no_code_operator_filter_artifacts($artifacts, $normalizedSourceOutputKey);
     $latestArtifact = $matchingArtifacts[0] ?? null;
 
-    $preview = app_no_code_operator_preview_summary($sourceRoot);
+    $preview = app_no_code_operator_preview_summary($sourceRoot, $normalizedProjectKey);
 
     $publishReadiness = app_no_code_operator_publish_readiness(
         $normalizedSourceOutputKey,
@@ -557,12 +570,25 @@ function app_no_code_operator_app_local_package_delivery_summary(
  *     screen_count:int,
  *     action_count:int,
  *     sync_hint_screen_count:int,
+ *     usage_intents:list<string>,
+ *     view_variants:list<string>,
+ *     traceability_target_count:int,
+ *     interface_profiles:list<array{
+ *         contract_key:string,
+ *         intent:string,
+ *         source:string,
+ *         preferred_view_variant:string,
+ *         preferred_view_variant_source:string,
+ *         view_variants:list<string>,
+ *         traceability_target_count:int,
+ *         related_settings:list<array{key:string,label:string,path:string,reason:string}>
+ *     }>,
  *     screen_keys:list<string>,
  *     action_keys:list<string>,
  *     errors:list<string>
  * }
  */
-function app_no_code_operator_preview_summary(string $sourceRoot): array
+function app_no_code_operator_preview_summary(string $sourceRoot, string $projectKey = ''): array
 {
     $sourceRoot = rtrim(str_replace('\\', '/', $sourceRoot), '/');
     $screenDefinitionPath = $sourceRoot . '/screen-definition.json';
@@ -573,7 +599,7 @@ function app_no_code_operator_preview_summary(string $sourceRoot): array
     $screenDefinition = app_no_code_operator_read_json_object($screenDefinitionPath, $errors);
     $runtimePreview = app_no_code_operator_read_json_object($runtimePreviewPath, $errors);
 
-    $screenSummary = app_no_code_operator_screen_summary($screenDefinition);
+    $screenSummary = app_no_code_operator_screen_summary($screenDefinition, $projectKey);
 
     return [
         'source_root' => $sourceRoot,
@@ -589,6 +615,10 @@ function app_no_code_operator_preview_summary(string $sourceRoot): array
         'screen_count' => $screenSummary['screen_count'],
         'action_count' => $screenSummary['action_count'],
         'sync_hint_screen_count' => $screenSummary['sync_hint_screen_count'],
+        'usage_intents' => $screenSummary['usage_intents'],
+        'view_variants' => $screenSummary['view_variants'],
+        'traceability_target_count' => $screenSummary['traceability_target_count'],
+        'interface_profiles' => $screenSummary['interface_profiles'],
         'screen_keys' => $screenSummary['screen_keys'],
         'action_keys' => $screenSummary['action_keys'],
         'errors' => $errors,
@@ -626,17 +656,34 @@ function app_no_code_operator_read_json_object(string $path, array &$errors): ?a
  *     screen_count:int,
  *     action_count:int,
  *     sync_hint_screen_count:int,
+ *     usage_intents:list<string>,
+ *     view_variants:list<string>,
+ *     traceability_target_count:int,
+ *     interface_profiles:list<array{
+ *         contract_key:string,
+ *         intent:string,
+ *         source:string,
+ *         preferred_view_variant:string,
+ *         preferred_view_variant_source:string,
+ *         view_variants:list<string>,
+ *         traceability_target_count:int,
+ *         related_settings:list<array{key:string,label:string,path:string,reason:string}>
+ *     }>,
  *     screen_keys:list<string>,
  *     action_keys:list<string>
  * }
  */
-function app_no_code_operator_screen_summary(?array $screenDefinition): array
+function app_no_code_operator_screen_summary(?array $screenDefinition, string $projectKey = ''): array
 {
     $screenKeys = [];
     $actionKeys = [];
     $screenCount = 0;
     $actionCount = 0;
     $syncHintScreenCount = 0;
+    $usageIntents = [];
+    $viewVariants = [];
+    $traceabilityTargetCount = 0;
+    $interfaceProfiles = [];
 
     $contracts = is_array($screenDefinition['contracts'] ?? null) ? $screenDefinition['contracts'] : [];
     foreach ($contracts as $contract) {
@@ -644,13 +691,36 @@ function app_no_code_operator_screen_summary(?array $screenDefinition): array
             continue;
         }
 
+        $interfaceUsage = is_array($contract['interface_usage'] ?? null) ? $contract['interface_usage'] : [];
+        $usageIntent = (string) ($interfaceUsage['intent'] ?? '');
+        $usageSource = (string) ($interfaceUsage['source'] ?? '');
+        $viewVariantPreference = is_array($contract['view_variant_preference'] ?? null)
+            ? $contract['view_variant_preference']
+            : [];
+        $preferredViewVariant = (string) ($viewVariantPreference['variant'] ?? '');
+        $preferredViewVariantSource = (string) ($viewVariantPreference['source'] ?? '');
+        if ($usageIntent !== '') {
+            $usageIntents[] = $usageIntent;
+        }
+
+        $traceability = is_array($contract['traceability'] ?? null) ? $contract['traceability'] : [];
+        $contractTraceabilityTargetCount = app_no_code_operator_traceability_target_count($traceability);
+        $traceabilityTargetCount += $contractTraceabilityTargetCount;
+
         $screens = is_array($contract['screens'] ?? null) ? $contract['screens'] : [];
+        $contractViewVariants = [];
         foreach ($screens as $screen) {
             if (!is_array($screen)) {
                 continue;
             }
 
             $screenCount++;
+            $viewVariant = (string) ($screen['view_variant'] ?? '');
+            if ($viewVariant !== '') {
+                $viewVariants[] = $viewVariant;
+                $contractViewVariants[] = $viewVariant;
+            }
+
             $screenKey = (string) ($screen['screen_key'] ?? '');
             if ($screenKey !== '') {
                 $screenKeys[] = $screenKey;
@@ -673,13 +743,143 @@ function app_no_code_operator_screen_summary(?array $screenDefinition): array
                 }
             }
         }
+
+        $contractKey = (string) ($contract['contract_key'] ?? '');
+        if ($contractKey !== ''
+            || $usageIntent !== ''
+            || $usageSource !== ''
+            || $preferredViewVariant !== ''
+            || $contractViewVariants !== []
+        ) {
+            $interfaceProfiles[] = [
+                'contract_key' => $contractKey,
+                'intent' => $usageIntent,
+                'source' => $usageSource,
+                'preferred_view_variant' => $preferredViewVariant,
+                'preferred_view_variant_source' => $preferredViewVariantSource,
+                'view_variants' => array_values(array_unique($contractViewVariants)),
+                'traceability_target_count' => $contractTraceabilityTargetCount,
+                'related_settings' => app_no_code_operator_interface_related_settings(
+                    $projectKey,
+                    $contractKey,
+                    $traceability,
+                ),
+            ];
+        }
     }
 
     return [
         'screen_count' => $screenCount,
         'action_count' => $actionCount,
         'sync_hint_screen_count' => $syncHintScreenCount,
+        'usage_intents' => array_values(array_unique($usageIntents)),
+        'view_variants' => array_values(array_unique($viewVariants)),
+        'traceability_target_count' => $traceabilityTargetCount,
+        'interface_profiles' => $interfaceProfiles,
         'screen_keys' => array_values(array_unique($screenKeys)),
         'action_keys' => array_values(array_unique($actionKeys)),
     ];
+}
+
+/**
+ * @param array<string,mixed> $traceability
+ * @return list<array{key:string,label:string,path:string,reason:string}>
+ */
+function app_no_code_operator_interface_related_settings(
+    string $projectKey,
+    string $contractKey,
+    array $traceability,
+): array {
+    $normalizedProjectKey = app_normalize_no_code_operator_project_key($projectKey);
+    if ($normalizedProjectKey === '') {
+        return [];
+    }
+
+    $links = [
+        [
+            'key' => 'shared-contracts',
+            'label' => 'Shared Contracts',
+            'path' => '/projects/' . rawurlencode($normalizedProjectKey) . '/shared-contracts',
+            'reason' => 'Edit interface usage intent and view variant preference.',
+        ],
+    ];
+
+    if ($contractKey !== '') {
+        $links[] = [
+            'key' => 'data-class',
+            'label' => 'Data Class',
+            'path' => '/projects/' . rawurlencode($normalizedProjectKey) . '/data-classes/' . rawurlencode($contractKey),
+            'reason' => 'Review the canonical data class that backs this interface.',
+        ];
+
+        $canonicalFields = is_array($traceability['canonical_fields'] ?? null)
+            ? $traceability['canonical_fields']
+            : [];
+        if ($canonicalFields !== []) {
+            $links[] = [
+                'key' => 'data-class-fields',
+                'label' => 'Data Class Fields',
+                'path' => '/projects/' . rawurlencode($normalizedProjectKey) . '/data-classes/' . rawurlencode($contractKey) . '/fields',
+                'reason' => 'Review field metadata used by generated screens.',
+            ];
+        }
+    }
+
+    $managedOperations = is_array($traceability['managed_operations'] ?? null)
+        ? $traceability['managed_operations']
+        : [];
+    if ($managedOperations !== []) {
+        $links[] = [
+            'key' => 'db-access',
+            'label' => 'DB Access',
+            'path' => '/projects/' . rawurlencode($normalizedProjectKey) . '/db-access',
+            'reason' => 'Inspect managed operations and generated DB access candidates.',
+        ];
+    }
+
+    $sourceOutput = is_array($traceability['source_output'] ?? null) ? $traceability['source_output'] : [];
+    $sourceOutputKey = (string) ($sourceOutput['source_output_key'] ?? 'NO-CODE-RUNTIME');
+    if ($sourceOutputKey !== '') {
+        $links[] = [
+            'key' => 'source-output',
+            'label' => 'No-Code Source Output',
+            'path' => '/projects/' . rawurlencode($normalizedProjectKey) . '/source-outputs/' . rawurlencode($sourceOutputKey),
+            'reason' => 'Inspect generated no-code runtime artifacts and publish candidates.',
+        ];
+    }
+
+    $links[] = [
+        'key' => 'source-outputs',
+        'label' => 'Source Outputs',
+        'path' => '/projects/' . rawurlencode($normalizedProjectKey) . '/source-outputs',
+        'reason' => 'Review public/current/alias delivery and sync outbox inspection.',
+    ];
+
+    return $links;
+}
+
+/**
+ * @param array<string,mixed> $traceability
+ */
+function app_no_code_operator_traceability_target_count(array $traceability): int
+{
+    $count = 0;
+    foreach ($traceability as $value) {
+        if (is_array($value) && isset($value['target'])) {
+            $count++;
+            continue;
+        }
+
+        if (!is_array($value)) {
+            continue;
+        }
+
+        foreach ($value as $item) {
+            if (is_array($item) && isset($item['target'])) {
+                $count++;
+            }
+        }
+    }
+
+    return $count;
 }

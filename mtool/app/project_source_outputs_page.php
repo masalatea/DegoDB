@@ -418,6 +418,9 @@ function app_render_project_source_outputs_page(array $app, array $request): voi
                 <li>preview html: <code><?php echo app_h($noCodePreview['runtime_preview_html_exists'] ? 'available' : 'missing'); ?></code></li>
                 <li>screens/actions: <code><?php echo app_h((string) $noCodePreview['screen_count']); ?></code> / <code><?php echo app_h((string) $noCodePreview['action_count']); ?></code></li>
                 <li>sync hints: <code><?php echo app_h((string) $noCodePreview['sync_hint_screen_count']); ?></code></li>
+                <li>usage intents: <code><?php echo app_h(($noCodePreview['usage_intents'] ?? []) !== [] ? implode(', ', $noCodePreview['usage_intents']) : 'none'); ?></code></li>
+                <li>view variants: <code><?php echo app_h(($noCodePreview['view_variants'] ?? []) !== [] ? implode(', ', $noCodePreview['view_variants']) : 'none'); ?></code></li>
+                <li>traceability targets: <code><?php echo app_h((string) ($noCodePreview['traceability_target_count'] ?? 0)); ?></code></li>
             </ul>
             <h3>Publish Readiness</h3>
             <ul>
@@ -431,6 +434,7 @@ function app_render_project_source_outputs_page(array $app, array $request): voi
                 <p class="muted">publish blockers: <code><?php echo app_h(implode(' ', $noCodePublishReadiness['blocking_reasons'])); ?></code></p>
             <?php endif; ?>
             <h3>Delivery Overview</h3>
+            <p class="muted">Web no-code preview and App-local package readiness are separate delivery tracks. Continue the Web preview tryout through <code>NO-CODE-RUNTIME</code> even when the App-local package lane is blocked or not configured for this sample.</p>
             <ul>
                 <li>public runtime: <code><?php echo app_h($noCodeDeliveryOverview['public_runtime']['state']); ?></code> <?php echo app_h($noCodeDeliveryOverview['public_runtime']['label']); ?></li>
                 <li>public artifact: <code><?php echo app_h($noCodeDeliveryOverview['public_runtime']['artifact_key'] !== '' ? $noCodeDeliveryOverview['public_runtime']['artifact_key'] : 'none'); ?></code></li>
@@ -472,6 +476,36 @@ function app_render_project_source_outputs_page(array $app, array $request): voi
             <?php endif; ?>
             <?php if ($noCodePreview['action_keys'] !== []): ?>
                 <p class="muted">actions: <code><?php echo app_h(implode(', ', array_slice($noCodePreview['action_keys'], 0, 6))); ?></code></p>
+            <?php endif; ?>
+            <?php if (($noCodePreview['usage_intents'] ?? []) !== [] || ($noCodePreview['view_variants'] ?? []) !== []): ?>
+                <p class="muted">interface/view layer: <code><?php echo app_h(implode(', ', array_merge($noCodePreview['usage_intents'] ?? [], $noCodePreview['view_variants'] ?? []))); ?></code></p>
+            <?php endif; ?>
+            <?php if (($noCodePreview['interface_profiles'] ?? []) !== []): ?>
+                <h3>Interface Profiles</h3>
+                <p class="muted">Edit contract-level usage intent in <a href="/projects/<?php echo rawurlencode($projectKey); ?>/shared-contracts">Shared Contracts</a>.</p>
+                <ul>
+                    <?php foreach (array_slice($noCodePreview['interface_profiles'], 0, 5) as $interfaceProfile): ?>
+                        <li>
+                            <code><?php echo app_h((string) ($interfaceProfile['contract_key'] ?? '')); ?></code>
+                            intent <code><?php echo app_h((string) ($interfaceProfile['intent'] ?? '')); ?></code>
+                            <span class="muted">from <?php echo app_h((string) ($interfaceProfile['source'] ?? '')); ?></span>
+                            <?php $profileVariants = $interfaceProfile['view_variants'] ?? []; ?>
+                            <?php if (is_array($profileVariants) && $profileVariants !== []): ?>
+                                <span class="muted">views <code><?php echo app_h(implode(', ', $profileVariants)); ?></code></span>
+                            <?php endif; ?>
+                            <span class="muted">preferred <code><?php echo app_h((string) ($interfaceProfile['preferred_view_variant'] ?? '')); ?></code></span>
+                            <span class="muted">trace targets <?php echo app_h((string) ($interfaceProfile['traceability_target_count'] ?? 0)); ?></span>
+                            <?php $relatedSettings = $interfaceProfile['related_settings'] ?? []; ?>
+                            <?php if (is_array($relatedSettings) && $relatedSettings !== []): ?>
+                                <br>
+                                <span class="muted">settings:</span>
+                                <?php foreach (array_slice($relatedSettings, 0, 6) as $relatedSetting): ?>
+                                    <a href="<?php echo app_h((string) ($relatedSetting['path'] ?? '')); ?>"><?php echo app_h((string) ($relatedSetting['label'] ?? '')); ?></a>
+                                <?php endforeach; ?>
+                            <?php endif; ?>
+                        </li>
+                    <?php endforeach; ?>
+                </ul>
             <?php endif; ?>
             <?php if ($noCodePreview['errors'] !== []): ?>
                 <p class="muted">preview metadata: <code><?php echo app_h(implode(' ', $noCodePreview['errors'])); ?></code></p>

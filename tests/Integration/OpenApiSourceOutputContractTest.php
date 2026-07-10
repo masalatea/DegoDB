@@ -123,6 +123,21 @@ final class OpenApiSourceOutputContractTest extends TestCase
         self::assertSame('MTOOL', $syncOutboxDetailRoute['params']['project_key'] ?? '');
         self::assertSame('abcdef123456', $syncOutboxDetailRoute['params']['dedupe_key'] ?? '');
 
+        $syncOutboxStatusJsonRoute = app_route_match([
+            'path' => '/projects/MTOOL/sync-outbox/abcdef123456.json',
+        ]);
+
+        self::assertSame('project_sync_outbox_status_json', $syncOutboxStatusJsonRoute['name']);
+        self::assertSame('MTOOL', $syncOutboxStatusJsonRoute['params']['project_key'] ?? '');
+        self::assertSame('abcdef123456', $syncOutboxStatusJsonRoute['params']['dedupe_key'] ?? '');
+
+        $sharedContractsRoute = app_route_match([
+            'path' => '/projects/MTOOL/shared-contracts',
+        ]);
+
+        self::assertSame('project_shared_contracts', $sharedContractsRoute['name']);
+        self::assertSame('MTOOL', $sharedContractsRoute['params']['project_key'] ?? '');
+
         $noCodeRuntimePreviewRoute = app_route_match([
             'path' => '/runs/no-code/SAMPLE28/20260702-010203-abcdef12/runtime-preview.html',
         ]);
@@ -139,11 +154,130 @@ final class OpenApiSourceOutputContractTest extends TestCase
         self::assertSame('SAMPLE28', $noCodeRuntimeCurrentPreviewRoute['params']['project_key'] ?? '');
         self::assertArrayNotHasKey('artifact_key', $noCodeRuntimeCurrentPreviewRoute['params']);
 
+        $noCodeRuntimeCurrentExecutionRoute = app_route_match([
+            'path' => '/runs/no-code/SAMPLE28/current/execute.json',
+        ]);
+
+        self::assertSame('no_code_public_runtime_current_execution', $noCodeRuntimeCurrentExecutionRoute['name']);
+        self::assertSame('SAMPLE28', $noCodeRuntimeCurrentExecutionRoute['params']['project_key'] ?? '');
+        self::assertArrayNotHasKey('artifact_key', $noCodeRuntimeCurrentExecutionRoute['params']);
+        self::assertSame(
+            '/runs/no-code/SAMPLE28/current/execute.json',
+            app_no_code_public_runtime_current_execution_path('SAMPLE28'),
+        );
+
+        $noCodeRuntimeCurrentDataRoute = app_route_match([
+            'path' => '/runs/no-code/SAMPLE28/current/runtime-data.json',
+        ]);
+
+        self::assertSame('no_code_public_runtime_current_data', $noCodeRuntimeCurrentDataRoute['name']);
+        self::assertSame('SAMPLE28', $noCodeRuntimeCurrentDataRoute['params']['project_key'] ?? '');
+        self::assertArrayNotHasKey('artifact_key', $noCodeRuntimeCurrentDataRoute['params']);
+        self::assertSame(
+            '/runs/no-code/SAMPLE28/current/runtime-data.json',
+            app_no_code_public_runtime_current_data_path('SAMPLE28'),
+        );
+
+        $noCodeRuntimeAliasExecutionRoute = app_route_match([
+            'path' => '/runs/no-code/SAMPLE28/alias/stable-demo/execute.json',
+        ]);
+
+        self::assertSame('no_code_public_runtime_alias_execution', $noCodeRuntimeAliasExecutionRoute['name']);
+        self::assertSame('SAMPLE28', $noCodeRuntimeAliasExecutionRoute['params']['project_key'] ?? '');
+        self::assertSame('stable-demo', $noCodeRuntimeAliasExecutionRoute['params']['alias_key'] ?? '');
+        self::assertSame(
+            '/runs/no-code/SAMPLE28/alias/stable-demo/execute.json',
+            app_no_code_public_runtime_alias_execution_path('SAMPLE28', 'Stable-Demo'),
+        );
+
+        $noCodeRuntimeAliasDataRoute = app_route_match([
+            'path' => '/runs/no-code/SAMPLE28/alias/stable-demo/runtime-data.json',
+        ]);
+
+        self::assertSame('no_code_public_runtime_alias_data', $noCodeRuntimeAliasDataRoute['name']);
+        self::assertSame('SAMPLE28', $noCodeRuntimeAliasDataRoute['params']['project_key'] ?? '');
+        self::assertSame('stable-demo', $noCodeRuntimeAliasDataRoute['params']['alias_key'] ?? '');
+        self::assertSame(
+            '/runs/no-code/SAMPLE28/alias/stable-demo/runtime-data.json',
+            app_no_code_public_runtime_alias_data_path('SAMPLE28', 'Stable-Demo'),
+        );
+
+        $noCodeRuntimeExecutionRoute = app_route_match([
+            'path' => '/runs/no-code/SAMPLE28/20260702-010203-abcdef12/execute.json',
+        ]);
+
+        self::assertSame('no_code_public_runtime_execution', $noCodeRuntimeExecutionRoute['name']);
+        self::assertSame('SAMPLE28', $noCodeRuntimeExecutionRoute['params']['project_key'] ?? '');
+        self::assertSame('20260702-010203-abcdef12', $noCodeRuntimeExecutionRoute['params']['artifact_key'] ?? '');
+        self::assertSame(
+            '/runs/no-code/SAMPLE28/20260702-010203-abcdef12/execute.json',
+            app_no_code_public_runtime_execution_path('SAMPLE28', '20260702-010203-abcdef12'),
+        );
+
         self::assertSame(
             'public, max-age=31536000, immutable',
             app_no_code_public_runtime_artifact_cache_control(),
         );
         self::assertSame('no-store', app_no_code_public_runtime_current_cache_control());
+    }
+
+    public function testRuntimeDataDatetimeValuesRejectTimezoneOffsets(): void
+    {
+        self::assertSame(
+            '2026-07-15T09:30:00',
+            app_no_code_public_runtime_data_datetime_value(
+                '2026-07-15 09:30:00',
+                'published_at',
+                'datetime',
+                'filter',
+            ),
+        );
+
+        foreach (['2026-07-15T09:30:00+09:00', '2026-07-15T00:30:00Z'] as $offsetValue) {
+            try {
+                app_no_code_public_runtime_data_datetime_value(
+                    $offsetValue,
+                    'published_at',
+                    'datetime',
+                    'filter',
+                );
+                self::fail('timezone-offset datetime value should fail closed: ' . $offsetValue);
+            } catch (RuntimeException $exception) {
+                self::assertStringContainsString(
+                    'runtime data date/time filter value was not parseable: published_at',
+                    $exception->getMessage(),
+                );
+            }
+        }
+    }
+
+    public function testRuntimeDataDateTimeOrderedValuesRejectNullAndEmptyValues(): void
+    {
+        $cases = [
+            ['value' => null, 'type' => 'date', 'context' => 'filter'],
+            ['value' => '', 'type' => 'date', 'context' => 'filter'],
+            ['value' => null, 'type' => 'datetime', 'context' => 'sort'],
+            ['value' => '', 'type' => 'datetime', 'context' => 'sort'],
+            ['value' => null, 'type' => 'time', 'context' => 'sort'],
+            ['value' => '', 'type' => 'time', 'context' => 'sort'],
+        ];
+
+        foreach ($cases as $case) {
+            try {
+                app_no_code_public_runtime_data_datetime_value(
+                    $case['value'],
+                    'published_at',
+                    $case['type'],
+                    $case['context'],
+                );
+                self::fail('null/empty date-time value should fail closed: ' . json_encode($case));
+            } catch (RuntimeException $exception) {
+                self::assertStringContainsString(
+                    'runtime data date/time ' . $case['context'] . ' value was not parseable: published_at',
+                    $exception->getMessage(),
+                );
+            }
+        }
     }
 
     public function testOpenApiPublicRawRouteRemainsDeferredAndInternalRoutesRequireAuth(): void
@@ -162,8 +296,15 @@ final class OpenApiSourceOutputContractTest extends TestCase
         self::assertTrue(app_route_requires_auth('project_source_output_artifact_detail'));
         self::assertTrue(app_route_requires_auth('project_source_output_download'));
         self::assertTrue(app_route_requires_auth('project_sync_outbox_detail'));
+        self::assertTrue(app_route_requires_auth('project_sync_outbox_status_json'));
+        self::assertTrue(app_route_requires_auth('project_shared_contracts'));
         self::assertFalse(app_route_requires_auth('no_code_public_runtime_preview'));
         self::assertFalse(app_route_requires_auth('no_code_public_runtime_current_preview'));
+        self::assertTrue(app_route_requires_auth('no_code_public_runtime_execution'));
+        self::assertTrue(app_route_requires_auth('no_code_public_runtime_current_execution'));
+        self::assertTrue(app_route_requires_auth('no_code_public_runtime_alias_execution'));
+        self::assertTrue(app_route_requires_auth('no_code_public_runtime_current_data'));
+        self::assertTrue(app_route_requires_auth('no_code_public_runtime_alias_data'));
         self::assertSame(
             'not_found',
             app_route_name([
@@ -188,6 +329,8 @@ final class OpenApiSourceOutputContractTest extends TestCase
         self::assertStringContainsString('$workflowStep', $sourceOutputsPage);
         self::assertStringContainsString('Delivery Overview', $sourceOutputsPage);
         self::assertStringContainsString('delivery_overview', $sourceOutputsPage);
+        self::assertStringContainsString('Web no-code preview and App-local package readiness are separate delivery tracks.', $sourceOutputsPage);
+        self::assertStringContainsString('Continue the Web preview tryout through <code>NO-CODE-RUNTIME</code>', $sourceOutputsPage);
         self::assertStringContainsString('public runtime:', $sourceOutputsPage);
         self::assertStringContainsString('app-local package:', $sourceOutputsPage);
         self::assertStringContainsString('Inspect App-local package definition', $sourceOutputsPage);
@@ -210,10 +353,14 @@ final class OpenApiSourceOutputContractTest extends TestCase
         self::assertStringContainsString('No retry audit event has been recorded for this sync outbox item yet.', $syncOutboxDetailPage);
         self::assertStringContainsString("'target_key' => \$dedupeKey", $syncOutboxDetailPage);
         self::assertStringContainsString('existing processor can claim this item', $syncOutboxDetailPage);
+        self::assertStringContainsString('Processing Handoff', $syncOutboxDetailPage);
+        self::assertStringContainsString('not performed by this page', $syncOutboxDetailPage);
+        self::assertStringContainsString('This sync outbox item is queued for the existing processor.', $syncOutboxDetailPage);
         self::assertStringContainsString('public raw route や public alias key route はまだ持ちません', $newPage);
         self::assertStringContainsString('public raw route や public alias key route は持ちません', $detailPage);
         self::assertStringContainsString('Publish Candidates', $detailPage);
         self::assertStringContainsString('create-publish-candidate', $detailPage);
+        self::assertStringContainsString('sample28-demo-tryout-approval', $detailPage);
         self::assertStringContainsString('transition-publish-candidate', $detailPage);
         self::assertStringContainsString('select-current-public-revision', $detailPage);
         self::assertStringContainsString('set-public-runtime-alias', $detailPage);
@@ -227,7 +374,19 @@ final class OpenApiSourceOutputContractTest extends TestCase
         self::assertStringContainsString('app_pdo_list_no_code_public_runtime_aliases_for_source_output', $detailPage);
         self::assertStringContainsString('app_pdo_list_no_code_public_runtime_alias_events_for_source_output', $detailPage);
         self::assertStringContainsString('app_pdo_list_no_code_publish_candidate_transition_events', $detailPage);
-        self::assertStringContainsString('公開 URL や package exposure はまだ行いません', $detailPage);
+        self::assertStringContainsString('No-Code Runtime Workflow', $detailPage);
+        self::assertStringContainsString('database metadata から生成した no-code runtime', $detailPage);
+        self::assertStringContainsString('DB 基盤から切り離された別物ではなく', $detailPage);
+        self::assertStringContainsString('Runtime data boundary: artifact-key preview URLs stay static', $detailPage);
+        self::assertStringContainsString('Current and alias preview URLs can fetch authenticated read-only live runtime data', $detailPage);
+        self::assertStringContainsString('submit / outbox processing remains a separate mutation path', $detailPage);
+        self::assertStringContainsString('Tryout Next Steps', $detailPage);
+        self::assertStringContainsString('For the fastest local demo, run <code>Run Sample28 Tryout Approval</code>', $detailPage);
+        self::assertStringContainsString('App-local package readiness is a separate scenario from this Web preview.', $detailPage);
+        self::assertStringContainsString('candidate を作成して review request の後に approve', $detailPage);
+        self::assertStringContainsString('Run Sample28 Tryout Approval', $detailPage);
+        self::assertStringContainsString('Demo shortcut: creates a candidate, requests review, approves it, selects current public revision', $detailPage);
+        self::assertStringContainsString('Sample28 Tryout Ready', $detailPage);
         self::assertStringContainsString('Approved package exposure', $detailPage);
         self::assertStringContainsString('Current public revision', $detailPage);
         self::assertStringContainsString('Approved non-current revision', $detailPage);
@@ -240,6 +399,7 @@ final class OpenApiSourceOutputContractTest extends TestCase
         self::assertStringContainsString('No public runtime alias lifecycle event has been recorded yet.', $detailPage);
         self::assertStringContainsString('app_project_source_output_app_local_package_readiness', $detailPage);
         self::assertStringContainsString('App-local Package Readiness', $detailPage);
+        self::assertStringContainsString('This card is for the App-local package lane.', $detailPage);
         self::assertStringContainsString('Package readiness blockers:', $detailPage);
         self::assertStringContainsString('app-local-package-manifest.json is missing from the output root.', $detailPage);
         self::assertStringContainsString('Delete Public Alias', $detailPage);
@@ -247,6 +407,7 @@ final class OpenApiSourceOutputContractTest extends TestCase
         self::assertStringContainsString('Rollback target: current', $detailPage);
         self::assertStringContainsString('Rollback Current To This Revision', $detailPage);
         self::assertStringContainsString('Alias routes do not automatically follow current public revision rollback', $detailPage);
+        self::assertStringContainsString('opened by the current public runtime preview URL', $detailPage);
         self::assertStringContainsString('explicitly resolves to this approved candidate when selected', $detailPage);
         self::assertStringContainsString('Transition events', $detailPage);
         self::assertStringContainsString('No transition event has been recorded for this candidate yet.', $detailPage);
@@ -254,12 +415,46 @@ final class OpenApiSourceOutputContractTest extends TestCase
         self::assertStringContainsString('public runtime preview', $detailPage);
         self::assertStringContainsString('Package exposure is guarded until this candidate is approved.', $detailPage);
         self::assertStringContainsString('artifact-key, current, and custom alias public runtime preview routes', $detailPage);
+        self::assertStringContainsString('Runtime data behavior: artifact-key preview is static', $detailPage);
+        self::assertStringContainsString('current and alias previews can refresh authenticated read-only live runtime data', $detailPage);
         self::assertStringContainsString('current public runtime preview', $detailPage);
         self::assertStringContainsString('custom alias public runtime preview routes', $detailPage);
         self::assertStringContainsString('/alias/', $publicRuntimePage);
         self::assertStringContainsString('app_no_code_public_runtime_alias_preview_path', $publicRuntimePage);
         self::assertStringContainsString('app_render_no_code_public_runtime_alias_preview_page', $publicRuntimePage);
         self::assertStringContainsString('app_pdo_find_approved_no_code_publish_candidate_for_alias', $publicRuntimePage);
+        self::assertStringContainsString('app_no_code_public_runtime_execution_path', $publicRuntimePage);
+        self::assertStringContainsString('app_no_code_public_runtime_current_execution_path', $publicRuntimePage);
+        self::assertStringContainsString('app_no_code_public_runtime_alias_execution_path', $publicRuntimePage);
+        self::assertStringContainsString('app_no_code_public_runtime_current_data_path', $publicRuntimePage);
+        self::assertStringContainsString('app_no_code_public_runtime_alias_data_path', $publicRuntimePage);
+        self::assertStringContainsString('app_no_code_public_runtime_preview_html_with_execution_binding', $publicRuntimePage);
+        self::assertStringContainsString('id="no-code-runtime-execution-binding"', $publicRuntimePage);
+        self::assertStringContainsString('app_no_code_public_runtime_preview_execution_binding', $publicRuntimePage);
+        self::assertStringContainsString("'runtime_data_url'", $publicRuntimePage);
+        self::assertStringContainsString('app_no_code_public_runtime_current_execution_path($projectKey)', $publicRuntimePage);
+        self::assertStringContainsString('app_no_code_public_runtime_current_data_path($projectKey)', $publicRuntimePage);
+        self::assertStringContainsString('app_no_code_public_runtime_alias_execution_path($projectKey, $aliasKey)', $publicRuntimePage);
+        self::assertStringContainsString('app_no_code_public_runtime_alias_data_path($projectKey, $aliasKey)', $publicRuntimePage);
+        self::assertStringContainsString('app_render_no_code_public_runtime_execution_page', $publicRuntimePage);
+        self::assertStringContainsString('app_render_no_code_public_runtime_current_execution_page', $publicRuntimePage);
+        self::assertStringContainsString('app_render_no_code_public_runtime_alias_execution_page', $publicRuntimePage);
+        self::assertStringContainsString('app_render_no_code_public_runtime_current_data_page', $publicRuntimePage);
+        self::assertStringContainsString('app_render_no_code_public_runtime_alias_data_page', $publicRuntimePage);
+        self::assertStringContainsString('app_no_code_public_runtime_execution_response_for_candidate', $publicRuntimePage);
+        self::assertStringContainsString('app_no_code_public_runtime_data_response_for_candidate', $publicRuntimePage);
+        self::assertStringContainsString('no-code-runtime-data-v0', $publicRuntimePage);
+        self::assertStringContainsString('app_auth_principal()', $publicRuntimePage);
+        self::assertStringContainsString('app_no_code_runtime_definition_with_action_policy_overlay', $publicRuntimePage);
+        self::assertStringContainsString('app_no_code_public_runtime_demo_processing_enabled()', $publicRuntimePage);
+        self::assertStringContainsString("getenv('MTOOL_NO_CODE_RUNTIME_SYNC_DEMO')", $publicRuntimePage);
+        self::assertStringContainsString("getenv('MTOOL_RUNTIME_SQLITE_PATH')", $publicRuntimePage);
+        self::assertStringContainsString('app_no_code_public_runtime_demo_processing_requested($post)', $publicRuntimePage);
+        self::assertStringContainsString("'runtime_demo_process'", $publicRuntimePage);
+        self::assertStringContainsString("'demo_processing_disabled'", $publicRuntimePage);
+        self::assertStringContainsString("'runtime_entity_failed'", $publicRuntimePage);
+        self::assertStringContainsString('app_no_code_public_runtime_demo_process_execution_outbox', $publicRuntimePage);
+        self::assertStringContainsString('app_managed_operation_sync_outbox_process_next', $publicRuntimePage);
         self::assertStringContainsString('app_no_code_public_runtime_artifact_cache_control()', $publicRuntimePage);
         self::assertStringContainsString('app_no_code_public_runtime_current_cache_control()', $publicRuntimePage);
         self::assertStringContainsString("'public, max-age=31536000, immutable'", $publicRuntimePage);

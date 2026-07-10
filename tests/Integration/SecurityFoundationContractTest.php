@@ -29,6 +29,7 @@ final class SecurityFoundationContractTest extends TestCase
             '/projects/PROJECT1/source-outputs/artifacts/20260619-test' => 'project_source_output_artifact_detail',
             '/projects/PROJECT1/source-outputs/artifacts/20260619-test/download' => 'project_source_output_download',
             '/projects/PROJECT1/sync-outbox/abcdef123456' => 'project_sync_outbox_detail',
+            '/projects/PROJECT1/sync-outbox/abcdef123456.json' => 'project_sync_outbox_status_json',
         ] as $path => $expectedRoute) {
             $match = app_route_match(['path' => $path]);
             self::assertSame($expectedRoute, $match['name'], $path);

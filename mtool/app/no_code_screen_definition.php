@@ -169,13 +169,184 @@ function app_no_code_screen_definition_contract_definition(
     return [
         'contract_key' => $contractKey,
         'entity' => $contract['entity'] ?? [],
+        'interface_usage' => app_no_code_screen_definition_interface_usage($contract),
+        'view_variant_preference' => app_no_code_screen_definition_view_variant_preference($contract),
         'storage_hint' => $storageHint,
+        'traceability' => app_no_code_screen_definition_traceability($contractKey, $fields, $actions),
         'screens' => [
             app_no_code_screen_definition_list_screen($contractKey, $fields, $actions, $syncStatusDisplay),
             app_no_code_screen_definition_detail_screen($contractKey, $fields, $actions, $syncStatusDisplay),
             app_no_code_screen_definition_form_screen($contractKey, $fields, $actions),
         ],
         'actions' => $actions,
+    ];
+}
+
+/**
+ * @param array<string,mixed> $contract
+ * @return array{variant:string,source:string,allowed_variants:list<string>}
+ */
+function app_no_code_screen_definition_view_variant_preference(array $contract): array
+{
+    $metadata = is_array($contract['contract_metadata'] ?? null) ? $contract['contract_metadata'] : [];
+    $explicitVariant = app_no_code_screen_definition_normalize_view_variant(
+        (string) ($metadata['view_variant_preference'] ?? ''),
+    );
+
+    if ($explicitVariant !== '') {
+        return [
+            'variant' => $explicitVariant,
+            'source' => 'view_variant_preference:explicit',
+            'allowed_variants' => app_no_code_screen_definition_allowed_view_variants(),
+        ];
+    }
+
+    return [
+        'variant' => 'auto',
+        'source' => 'derived:screen_type',
+        'allowed_variants' => app_no_code_screen_definition_allowed_view_variants(),
+    ];
+}
+
+/**
+ * @return list<string>
+ */
+function app_no_code_screen_definition_allowed_view_variants(): array
+{
+    return ['auto', 'standard_table', 'detail_record', 'edit_form', 'review_list'];
+}
+
+function app_no_code_screen_definition_normalize_view_variant(string $viewVariant): string
+{
+    $normalized = strtolower(trim($viewVariant));
+    return in_array(
+        $normalized,
+        ['standard_table', 'detail_record', 'edit_form', 'review_list'],
+        true,
+    ) ? $normalized : '';
+}
+
+/**
+ * @param array<string,mixed> $contract
+ * @return array{intent:string,source:string,allowed_intents:list<string>,presentation_layer:string}
+ */
+function app_no_code_screen_definition_interface_usage(array $contract): array
+{
+    $metadata = is_array($contract['contract_metadata'] ?? null) ? $contract['contract_metadata'] : [];
+    $explicitUsageIntent = app_no_code_screen_definition_normalize_usage_intent(
+        (string) ($metadata['usage_intent'] ?? ''),
+    );
+    $noCodeRole = (string) ($metadata['no_code_role'] ?? '');
+    $syncRole = (string) ($metadata['sync_role'] ?? '');
+    $appPersistenceRole = (string) ($metadata['app_persistence_role'] ?? '');
+    $intent = 'internal';
+    $source = 'derived:internal';
+
+    if ($explicitUsageIntent !== '') {
+        $intent = $explicitUsageIntent;
+        $source = 'usage_intent:explicit';
+    } elseif ($noCodeRole === 'managed-screen') {
+        $intent = 'screen';
+        $source = 'no_code_role:managed-screen';
+    } elseif (in_array($syncRole, ['local-copy', 'server-copy', 'app-source', 'bidirectional-sync'], true)
+        || in_array($appPersistenceRole, ['local-copy', 'server-managed-copy'], true)
+    ) {
+        $intent = 'sync';
+        $source = 'sync_or_app_persistence_role';
+    }
+
+    return [
+        'intent' => $intent,
+        'source' => $source,
+        'allowed_intents' => ['screen', 'external_integration', 'sync', 'reporting', 'workflow', 'internal'],
+        'presentation_layer' => 'view_variant',
+    ];
+}
+
+function app_no_code_screen_definition_normalize_usage_intent(string $usageIntent): string
+{
+    $normalized = strtolower(trim($usageIntent));
+    return in_array(
+        $normalized,
+        ['screen', 'external_integration', 'sync', 'reporting', 'workflow', 'internal'],
+        true,
+    ) ? $normalized : '';
+}
+
+/**
+ * @param list<array<string,mixed>> $fields
+ * @param list<array<string,mixed>> $actions
+ * @return array{
+ *     source_contract:array{target:string,contract_key:string,label:string},
+ *     canonical_fields:list<array{target:string,field_key:string,label:string}>,
+ *     managed_operations:list<array{target:string,operation_key:string,operation_type:string,label:string}>,
+ *     source_output:array{target:string,source_output_key:string,label:string},
+ *     publish_candidate:array{target:string,label:string},
+ *     current_revision:array{target:string,label:string},
+ *     alias:array{target:string,label:string},
+ *     outbox_review:array{target:string,label:string}
+ * }
+ */
+function app_no_code_screen_definition_traceability(string $contractKey, array $fields, array $actions): array
+{
+    $canonicalFields = [];
+    foreach ($fields as $field) {
+        $fieldKey = (string) ($field['field_key'] ?? '');
+        if ($fieldKey === '') {
+            continue;
+        }
+
+        $canonicalFields[] = [
+            'target' => 'canonical_field',
+            'field_key' => $fieldKey,
+            'label' => (string) ($field['label'] ?? $fieldKey),
+        ];
+    }
+
+    $managedOperations = [];
+    foreach ($actions as $action) {
+        $operationKey = (string) ($action['operation_key'] ?? $action['action_key'] ?? '');
+        if ($operationKey === '') {
+            continue;
+        }
+
+        $managedOperations[] = [
+            'target' => 'managed_operation',
+            'operation_key' => $operationKey,
+            'operation_type' => (string) ($action['operation_type'] ?? ''),
+            'label' => (string) ($action['label'] ?? $operationKey),
+        ];
+    }
+
+    return [
+        'source_contract' => [
+            'target' => 'shared_contract',
+            'contract_key' => $contractKey,
+            'label' => 'Shared contract',
+        ],
+        'canonical_fields' => $canonicalFields,
+        'managed_operations' => $managedOperations,
+        'source_output' => [
+            'target' => 'source_output',
+            'source_output_key' => 'NO-CODE-RUNTIME',
+            'label' => 'NO-CODE-RUNTIME Source Output',
+        ],
+        'publish_candidate' => [
+            'target' => 'publish_candidate',
+            'label' => 'Publish candidate review',
+        ],
+        'current_revision' => [
+            'target' => 'current_public_revision',
+            'label' => 'Current public revision',
+        ],
+        'alias' => [
+            'target' => 'public_alias',
+            'label' => 'Public runtime alias',
+        ],
+        'outbox_review' => [
+            'target' => 'sync_outbox_review',
+            'label' => 'Sync outbox review',
+        ],
     ];
 }
 
@@ -334,6 +505,7 @@ function app_no_code_screen_definition_list_screen(
     return [
         'screen_key' => $contractKey . '_list',
         'screen_type' => 'list',
+        'view_variant' => 'standard_table',
         'contract_key' => $contractKey,
         'fields' => app_no_code_screen_definition_screen_fields($fields, 'list'),
         'actions' => app_no_code_screen_definition_screen_actions($actions, ['list', 'read', 'create', 'update', 'delete']),
@@ -355,6 +527,7 @@ function app_no_code_screen_definition_detail_screen(
     return [
         'screen_key' => $contractKey . '_detail',
         'screen_type' => 'detail',
+        'view_variant' => 'detail_record',
         'contract_key' => $contractKey,
         'fields' => app_no_code_screen_definition_screen_fields($fields, 'detail'),
         'actions' => app_no_code_screen_definition_screen_actions($actions, ['read', 'update', 'delete']),
@@ -372,6 +545,7 @@ function app_no_code_screen_definition_form_screen(string $contractKey, array $f
     return [
         'screen_key' => $contractKey . '_form',
         'screen_type' => 'form',
+        'view_variant' => 'edit_form',
         'contract_key' => $contractKey,
         'fields' => app_no_code_screen_definition_screen_fields($fields, 'form'),
         'actions' => app_no_code_screen_definition_screen_actions($actions, ['create', 'update']),

@@ -25,6 +25,7 @@ require_once __DIR__ . '/project_host_assignments_page.php';
 require_once __DIR__ . '/project_language_resources_page.php';
 require_once __DIR__ . '/project_language_resource_groups_page.php';
 require_once __DIR__ . '/project_language_resource_detail_page.php';
+require_once __DIR__ . '/project_shared_contracts_page.php';
 require_once __DIR__ . '/project_source_outputs_page.php';
 require_once __DIR__ . '/project_source_output_change_order_page.php';
 require_once __DIR__ . '/project_source_output_new_page.php';
@@ -185,6 +186,10 @@ function app_run_http_request(): void
                 app_render_project_language_resource_detail_page($app, $request);
                 return;
 
+            case 'project_shared_contracts':
+                app_render_project_shared_contracts_page($app, $request);
+                return;
+
             case 'project_source_outputs':
                 app_render_project_source_outputs_page($app, $request);
                 return;
@@ -225,8 +230,32 @@ function app_run_http_request(): void
                 app_render_no_code_public_runtime_alias_preview_page($app, $request);
                 return;
 
+            case 'no_code_public_runtime_execution':
+                app_render_no_code_public_runtime_execution_page($app, $request);
+                return;
+
+            case 'no_code_public_runtime_current_execution':
+                app_render_no_code_public_runtime_current_execution_page($app, $request);
+                return;
+
+            case 'no_code_public_runtime_current_data':
+                app_render_no_code_public_runtime_current_data_page($app, $request);
+                return;
+
+            case 'no_code_public_runtime_alias_execution':
+                app_render_no_code_public_runtime_alias_execution_page($app, $request);
+                return;
+
+            case 'no_code_public_runtime_alias_data':
+                app_render_no_code_public_runtime_alias_data_page($app, $request);
+                return;
+
             case 'project_sync_outbox_detail':
                 app_render_project_sync_outbox_detail_page($app, $request);
+                return;
+
+            case 'project_sync_outbox_status_json':
+                app_render_project_sync_outbox_status_json_page($app, $request);
                 return;
 
             case 'project_compare_output_settings':

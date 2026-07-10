@@ -44,6 +44,19 @@ This page organizes practical use cases for product positioning, examples, and c
 - Separate proven current features from future compatibility tracks / 現行機能と将来対応候補を分けて説明する
 - Discuss SaaS localization, billing, compliance, and enterprise readiness as implementation support topics, not as automatic domain expertise / SaaS のローカライズ、請求、コンプライアンス、エンタープライズ対応は、自動的に分かっている専門領域ではなく、実装支援の論点として扱う
 
+## No-Code On Database Metadata / DB metadata の上に載る no-code
+
+- Generate list/detail/form previews from canonical database metadata / canonical database metadata から list / detail / form preview を生成する
+- Let operators review no-code runtime artifacts before public preview / public preview の前に operator が no-code runtime artifact を review する
+- Expose approved current or alias runtime URLs for tryout and stakeholder review / tryout や stakeholder review のために approved current / alias runtime URL を公開する
+- Submit generated action intents through the managed-operation sync outbox boundary / generated action intent を managed-operation sync outbox boundary に通す
+- Keep no-code behavior inspectable through Source Output artifacts, publish candidates, and approval records / no-code の振る舞いを Source Output artifact、publish candidate、approval record で inspect 可能に保つ
+
+Current boundary / 現在の境界:
+
+- The no-code layer depends on the database-first metadata foundation; it is not a separate hidden schema system. / no-code layer は database-first metadata foundation に依存し、別の hidden schema system ではない。
+- Runtime submit defaults to async outbox handoff; synchronous processing is demo-only opt-in. / runtime submit の default は async outbox handoff であり、synchronous processing は demo-only opt-in である。
+
 ## Current And Future Compatibility / 現行対応と将来対応
 
 | Area / 領域 | Current refactored implementation / 現行リファクタ版 | Legacy reference / 旧実装参照 | Positioning / 位置づけ |

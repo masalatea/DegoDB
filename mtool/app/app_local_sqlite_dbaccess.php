@@ -302,7 +302,7 @@ function app_local_sqlite_dbaccess_to_storage_value(array $field, mixed $value):
     return match ((string) ($field['type'] ?? 'string')) {
         'integer' => (int) $value,
         'boolean' => ((bool) $value) ? 1 : 0,
-        'datetime', 'string', 'text' => (string) $value,
+        'date', 'datetime', 'time', 'string', 'text' => (string) $value,
         default => $value,
     };
 }
@@ -319,7 +319,7 @@ function app_local_sqlite_dbaccess_from_storage_value(array $field, mixed $value
     return match ((string) ($field['type'] ?? 'string')) {
         'integer' => (int) $value,
         'boolean' => ((int) $value) === 1,
-        'datetime', 'string', 'text' => (string) $value,
+        'date', 'datetime', 'time', 'string', 'text' => (string) $value,
         default => $value,
     };
 }

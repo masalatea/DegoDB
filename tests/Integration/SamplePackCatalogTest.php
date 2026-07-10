@@ -127,6 +127,7 @@ final class SamplePackCatalogTest extends TestCase
                 'sample28-no-code-data-app-mvp',
                 'sample29-no-code-support-case-demo',
                 'sample30-no-code-app-local-sync-demo',
+                'sample31-no-code-inventory-request-demo',
             ],
             app_sample_pack_category_map()['tutorials'] ?? [],
         );
@@ -189,6 +190,7 @@ final class SamplePackCatalogTest extends TestCase
                 'sample28-no-code-data-app-mvp',
                 'sample29-no-code-support-case-demo',
                 'sample30-no-code-app-local-sync-demo',
+                'sample31-no-code-inventory-request-demo',
                 'sample51-runtime-sql-server',
                 'sample53-runtime-whiteboard',
                 'sample56-runtime-misc-proxy',

@@ -22,10 +22,41 @@ final class NoCodeOperatorInspectionTest extends TestCase
             'contracts' => [
                 [
                     'contract_key' => 'sync_task',
+                    'interface_usage' => [
+                        'intent' => 'screen',
+                        'source' => 'usage_intent:explicit',
+                    ],
+                    'view_variant_preference' => [
+                        'variant' => 'review_list',
+                        'source' => 'view_variant_preference:explicit',
+                    ],
+                    'traceability' => [
+                        'source_contract' => [
+                            'target' => 'shared_contract',
+                            'contract_key' => 'sync_task',
+                        ],
+                        'canonical_fields' => [
+                            [
+                                'target' => 'canonical_field',
+                                'field_key' => 'id',
+                            ],
+                            [
+                                'target' => 'canonical_field',
+                                'field_key' => 'note',
+                            ],
+                        ],
+                        'managed_operations' => [
+                            [
+                                'target' => 'managed_operation',
+                                'operation_key' => 'update_sync_task',
+                            ],
+                        ],
+                    ],
                     'screens' => [
                         [
                             'screen_key' => 'sync_task_list',
                             'screen_type' => 'list',
+                            'view_variant' => 'standard_table',
                             'actions' => [
                                 ['action_key' => 'update_sync_task'],
                             ],
@@ -34,6 +65,7 @@ final class NoCodeOperatorInspectionTest extends TestCase
                         [
                             'screen_key' => 'sync_task_detail',
                             'screen_type' => 'detail',
+                            'view_variant' => 'detail_record',
                             'actions' => [
                                 ['action_key' => 'update_sync_task'],
                             ],
@@ -42,6 +74,7 @@ final class NoCodeOperatorInspectionTest extends TestCase
                         [
                             'screen_key' => 'sync_task_form',
                             'screen_type' => 'form',
+                            'view_variant' => 'edit_form',
                             'actions' => [],
                             'sync_status_hint' => false,
                         ],
@@ -152,6 +185,61 @@ final class NoCodeOperatorInspectionTest extends TestCase
         self::assertSame(3, $preview['screen_count']);
         self::assertSame(2, $preview['action_count']);
         self::assertSame(2, $preview['sync_hint_screen_count']);
+        self::assertSame(['screen'], $preview['usage_intents']);
+        self::assertSame(['standard_table', 'detail_record', 'edit_form'], $preview['view_variants']);
+        self::assertSame(4, $preview['traceability_target_count']);
+        self::assertSame(
+            [
+                [
+                    'contract_key' => 'sync_task',
+                    'intent' => 'screen',
+                    'source' => 'usage_intent:explicit',
+                    'preferred_view_variant' => 'review_list',
+                    'preferred_view_variant_source' => 'view_variant_preference:explicit',
+                    'view_variants' => ['standard_table', 'detail_record', 'edit_form'],
+                    'traceability_target_count' => 4,
+                    'related_settings' => [
+                        [
+                            'key' => 'shared-contracts',
+                            'label' => 'Shared Contracts',
+                            'path' => '/projects/SAMPLE30/shared-contracts',
+                            'reason' => 'Edit interface usage intent and view variant preference.',
+                        ],
+                        [
+                            'key' => 'data-class',
+                            'label' => 'Data Class',
+                            'path' => '/projects/SAMPLE30/data-classes/sync_task',
+                            'reason' => 'Review the canonical data class that backs this interface.',
+                        ],
+                        [
+                            'key' => 'data-class-fields',
+                            'label' => 'Data Class Fields',
+                            'path' => '/projects/SAMPLE30/data-classes/sync_task/fields',
+                            'reason' => 'Review field metadata used by generated screens.',
+                        ],
+                        [
+                            'key' => 'db-access',
+                            'label' => 'DB Access',
+                            'path' => '/projects/SAMPLE30/db-access',
+                            'reason' => 'Inspect managed operations and generated DB access candidates.',
+                        ],
+                        [
+                            'key' => 'source-output',
+                            'label' => 'No-Code Source Output',
+                            'path' => '/projects/SAMPLE30/source-outputs/NO-CODE-RUNTIME',
+                            'reason' => 'Inspect generated no-code runtime artifacts and publish candidates.',
+                        ],
+                        [
+                            'key' => 'source-outputs',
+                            'label' => 'Source Outputs',
+                            'path' => '/projects/SAMPLE30/source-outputs',
+                            'reason' => 'Review public/current/alias delivery and sync outbox inspection.',
+                        ],
+                    ],
+                ],
+            ],
+            $preview['interface_profiles'],
+        );
         self::assertSame(['sync_task_list', 'sync_task_detail', 'sync_task_form'], $preview['screen_keys']);
         self::assertSame(['update_sync_task'], $preview['action_keys']);
         self::assertSame([], $preview['errors']);
