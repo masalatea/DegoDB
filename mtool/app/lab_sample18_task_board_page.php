@@ -771,6 +771,63 @@ function app_lab_sample18_task_board_generated_submit_dbaccess_execution_plan(
 }
 
 /**
+ * @param array<string,mixed> $executionPlan
+ * @return array<string,mixed>
+ */
+function app_lab_sample18_task_board_generated_submit_transaction_plan(array $executionPlan): array
+{
+    $reasons = [];
+    $failed = false;
+
+    if (($executionPlan['status'] ?? '') !== 'planned' || !($executionPlan['ready'] ?? false)) {
+        $reasons[] = 'execution_plan_not_ready';
+        foreach (($executionPlan['reasons'] ?? []) as $reason) {
+            if (is_string($reason) && $reason !== '') {
+                $reasons[] = $reason;
+            }
+        }
+        $failed = (string) ($executionPlan['status'] ?? '') === 'failed';
+    }
+    if (($executionPlan['executed'] ?? false) || ($executionPlan['mutation_enabled'] ?? false)) {
+        $reasons[] = 'execution_plan_not_metadata_only';
+        $failed = true;
+    }
+
+    $planned = $reasons === [];
+
+    return [
+        'status' => $planned ? 'planned' : ($failed ? 'failed' : 'blocked'),
+        'ready' => $planned,
+        'transaction' => $planned ? 'planned_not_opened' : 'not_opened',
+        'db_handle' => 'sample18_application_db',
+        'audit_store' => 'config_db_audit_log',
+        'idempotency_store' => 'config_db_idempotency',
+        'will_execute' => false,
+        'will_update_audit' => false,
+        'will_update_idempotency' => false,
+        'rollback_policy' => [
+            'on_dbaccess_exception' => 'rollback',
+            'on_unexpected_result' => 'rollback',
+            'on_post_execution_update_failure' => 'rollback',
+        ],
+        'post_execution_audit_update' => [
+            'status' => 'planned_not_written',
+            'event_type' => 'sample18.generated_submit.executed',
+            'source_event_key' => '',
+            'db_access_class' => (string) ($executionPlan['db_access_class'] ?? ''),
+            'db_access_function' => (string) ($executionPlan['db_access_function'] ?? ''),
+            'transaction' => $planned ? 'planned_not_opened' : 'not_opened',
+        ],
+        'post_execution_idempotency_update' => [
+            'status' => 'planned_not_written',
+            'execution_status' => 'planned',
+            'transaction' => $planned ? 'planned_not_opened' : 'not_opened',
+        ],
+        'reasons' => array_values(array_unique($reasons)),
+    ];
+}
+
+/**
  * @param array<string,mixed> $post
  * @return array{status_code:int,payload:array<string,mixed>}
  */
