@@ -13,7 +13,7 @@ When someone asks for "the plan list", answer from this section first. / 「計�
 
 ### Main Plan / 主計画
 
-Current main status: #645 defines executable generated-submit route integration preflight and promotes a route execution plan helper before enabling real execution. `develop` is 123 commits ahead of `origin/develop`, and push has not been performed for #432-#645. / 現在の主計画ステータス: #645 で executable generated-submit route integration preflight を定義し、real execution 有効化前に route execution plan helper を昇格しました。`develop` は `origin/develop` より 123 commits ahead、#432-#645 は push していません。
+Current main status: #646 adds a route-unwired sample18 execution plan helper that composes fake transaction, DBAccess, and recording boundaries before real route execution. `develop` is 124 commits ahead of `origin/develop`, and push has not been performed for #432-#646. / 現在の主計画ステータス: #646 で fake transaction / DBAccess / recording boundary を compose する route-unwired sample18 execution plan helper を追加しました。real route execution はまだ有効化していません。`develop` は `origin/develop` より 124 commits ahead、#432-#646 は push していません。
 
 | Order | Work unit / 作業の塊 | Commit unit / コミット単位 | Status | Rough effort / 目安 |
 | --- | --- | --- | --- | --- |
@@ -204,7 +204,8 @@ Current main status: #645 defines executable generated-submit route integration 
 | 643 | Sample18 post-commit execution recording helper first slice / sample18 post-commit execution recording helper first slice | Add a route-unwired helper that consumes committed transaction metadata and fake recording callables, requiring both execution audit append and idempotency outcome update to succeed before returning success | `DONE` | 0.5 - 1 day / 半日 - 1 日 |
 | 644 | Sample18 post-commit recording helper lane closure / sample18 post-commit recording helper lane closure | Close the route-unwired recording helper lane and decide whether executable route integration preflight, real DBAccess invocation adapter, or recovery/repair preflight should be promoted next | `DONE` | 0.25 - 0.5 day / 0.25 - 0.5 日 |
 | 645 | Sample18 executable generated-submit route integration preflight / sample18 executable generated-submit route integration preflight | Define how the generated-submit route will compose guard, transaction adapter, DBAccess invocation, post-commit recording, feature flag, response shape, and fail-closed tests before enabling real execution | `DONE` | 0.5 - 1 day / 半日 - 1 日 |
-| 646 | Sample18 executable route execution plan helper first slice / sample18 executable route execution plan helper first slice | Add a route-unwired helper that composes guard, transaction adapter, post-commit recording, and response metadata with fake callables, proving all-success-or-failure behavior before real DBAccess route execution | `ACTIVE_NEXT` | 0.5 - 1 day / 半日 - 1 日 |
+| 646 | Sample18 executable route execution plan helper first slice / sample18 executable route execution plan helper first slice | Add a route-unwired helper that composes guard, transaction adapter, post-commit recording, and response metadata with fake callables, proving all-success-or-failure behavior before real DBAccess route execution | `DONE` | 0.5 - 1 day / 半日 - 1 日 |
+| 647 | Sample18 post-execution plan helper lane closure / sample18 post-execution plan helper lane closure | Close the route-unwired execution plan helper lane and decide whether real DBAccess invocation adapter, route feature-flag integration, or recovery/repair preflight should be promoted next | `ACTIVE_NEXT` | 0.25 - 0.5 day / 0.25 - 0.5 日 |
 
 ### Long-Term No-Code Roadmap / 長期 No-Code ロードマップ
 
@@ -527,6 +528,14 @@ Latest code verification from #643:
 For #644, docs-only verification is `git diff --check`.
 
 For #645, docs-only verification is `git diff --check`.
+
+Latest code verification from #646:
+
+- `php -l mtool/app/lab_sample18_task_board_page.php`
+- `php -l tests/Integration/Sample18MiniTaskBoardDemoTest.php`
+- `make sample18-pack-runtime-test`: `OK (18 tests, 1151 assertions)`
+- Full `make test`: `OK, but incomplete, skipped, or risky tests! Tests: 402, Assertions: 12996, Skipped: 1.`
+- `git diff --check`
 
 Latest code verification from #459:
 

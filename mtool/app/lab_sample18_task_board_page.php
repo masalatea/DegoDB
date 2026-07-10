@@ -1706,6 +1706,137 @@ function app_lab_sample18_task_board_generated_submit_post_commit_recording_adap
 }
 
 /**
+ * @param array<string,mixed> $normalized
+ * @param array<string,mixed> $dispatcherResult
+ * @param array<string,mixed> $executionGuard
+ * @param array<string,mixed> $executorCoordinationPlan
+ * @param array<string,mixed> $executionUpdatePlan
+ * @param callable(array<string,mixed>):mixed $beginTransaction
+ * @param callable(array<string,mixed>):mixed $commitTransaction
+ * @param callable(array<string,mixed>):mixed $rollbackTransaction
+ * @param callable(array<string,mixed>):mixed $dbaccessInvoker
+ * @param callable(array<string,mixed>):mixed $executionAuditRecorder
+ * @param callable(array<string,mixed>):mixed $idempotencyOutcomeRecorder
+ * @return array<string,mixed>
+ */
+function app_lab_sample18_task_board_generated_submit_route_execution_plan(
+    array $normalized,
+    array $dispatcherResult,
+    array $executionGuard,
+    array $executorCoordinationPlan,
+    array $executionUpdatePlan,
+    bool $executorEnabled,
+    callable $beginTransaction,
+    callable $commitTransaction,
+    callable $rollbackTransaction,
+    callable $dbaccessInvoker,
+    callable $executionAuditRecorder,
+    callable $idempotencyOutcomeRecorder,
+): array {
+    $dedupeKey = (string) ($executionGuard['dedupe_key'] ?? ($executorCoordinationPlan['dedupe_key'] ?? ''));
+    $requestAuditEventKey = (string) ($executionGuard['request_audit_event_key'] ?? ($executorCoordinationPlan['request_audit_event_key'] ?? ''));
+    $base = [
+        'ok' => false,
+        'accepted' => false,
+        'result' => 'blocked',
+        'success' => false,
+        'execution_status' => 'not_executed',
+        'failure_code' => '',
+        'recovery_required' => false,
+        'dedupe_key' => $dedupeKey,
+        'request_audit_event_key' => $requestAuditEventKey,
+        'transaction_result' => [],
+        'post_commit_recording' => [],
+        'reasons' => [],
+    ];
+
+    $preconditionReasons = [];
+    if (!$executorEnabled) {
+        $preconditionReasons[] = 'executor_feature_flag_disabled';
+    }
+    if (($executionGuard['status'] ?? '') !== 'allowed' || !($executionGuard['ready'] ?? false)) {
+        $preconditionReasons[] = 'execution_guard_not_ready';
+        foreach (($executionGuard['reasons'] ?? []) as $reason) {
+            if (is_string($reason) && $reason !== '') {
+                $preconditionReasons[] = $reason;
+            }
+        }
+    }
+    if (($executorCoordinationPlan['status'] ?? '') !== 'planned' || !($executorCoordinationPlan['ready'] ?? false)) {
+        $preconditionReasons[] = 'executor_coordination_plan_not_ready';
+        foreach (($executorCoordinationPlan['reasons'] ?? []) as $reason) {
+            if (is_string($reason) && $reason !== '') {
+                $preconditionReasons[] = $reason;
+            }
+        }
+    }
+
+    if ($preconditionReasons !== []) {
+        $preconditionReasons = array_values(array_unique($preconditionReasons));
+        $base['failure_code'] = $preconditionReasons[0];
+        $base['reasons'] = $preconditionReasons;
+
+        return $base;
+    }
+
+    $transaction = app_lab_sample18_task_board_generated_submit_transaction_adapter(
+        $normalized,
+        $dispatcherResult,
+        $executionGuard,
+        $executorCoordinationPlan,
+        $executorEnabled,
+        $beginTransaction,
+        $commitTransaction,
+        $rollbackTransaction,
+        $dbaccessInvoker,
+    );
+    $base['transaction_result'] = $transaction;
+    if (($transaction['status'] ?? '') !== 'executed' || !($transaction['success'] ?? false)) {
+        $base['result'] = 'failed';
+        $base['execution_status'] = 'failed';
+        $base['failure_code'] = (string) ($transaction['failure_code'] ?? 'execution_transaction_failed');
+        $base['recovery_required'] = (bool) ($transaction['recovery_required'] ?? false);
+        $base['reasons'] = array_values(array_unique(array_merge(
+            [$base['failure_code']],
+            array_filter($transaction['reasons'] ?? [], 'is_string'),
+        )));
+
+        return $base;
+    }
+
+    $recording = app_lab_sample18_task_board_generated_submit_post_commit_recording_adapter(
+        $transaction,
+        $executionUpdatePlan,
+        $executionGuard,
+        $executionAuditRecorder,
+        $idempotencyOutcomeRecorder,
+    );
+    $base['post_commit_recording'] = $recording;
+    if (($recording['status'] ?? '') !== 'recorded' || !($recording['success'] ?? false)) {
+        $base['result'] = 'failed';
+        $base['execution_status'] = 'failed';
+        $base['failure_code'] = (string) ($recording['failure_code'] ?? 'post_commit_recording_failed');
+        $base['recovery_required'] = (bool) ($recording['recovery_required'] ?? false);
+        $base['reasons'] = array_values(array_unique(array_merge(
+            [$base['failure_code']],
+            array_filter($recording['reasons'] ?? [], 'is_string'),
+        )));
+
+        return $base;
+    }
+
+    $base['ok'] = true;
+    $base['accepted'] = true;
+    $base['result'] = 'executed';
+    $base['success'] = true;
+    $base['execution_status'] = 'executed';
+    $base['failure_code'] = '';
+    $base['reasons'] = [];
+
+    return $base;
+}
+
+/**
  * @param array<string,mixed> $post
  * @return array{status_code:int,payload:array<string,mixed>}
  */
