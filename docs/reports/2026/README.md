@@ -11,6 +11,10 @@
 
 ## Index
 
+- `2026-0711-sample18-readiness-snapshot-helper-first-slice.md`
+  - #704 sample18 readiness snapshot helper first slice。既存 executor config と generated-submit route contract から副作用なしで readiness snapshot を組み立て、default disabled / injected ready / missing runtime failed の focused assertion を追加。Status: `FIRST_SLICE_DONE`。
+- `2026-0711-no-code-readiness-status.md`
+  - 本日時点の No Code readiness status。AI が UI を直接生成する前に、Mtool が操作可否・理由・route boundary を説明できる JSON metadata を作り、それを Sample18 の helper / contract test / runtime metadata carry-through へ進める現在地を整理。Status: `CURRENT_STATUS`。
 - `2026-0710-sample18-readiness-metadata-shape-contract.md`
   - #703 sample18 readiness metadata shape contract。read-only readiness snapshot の version / executor_config fields / action_readiness fields / route-compatible operations / non-ready reopen/delete / missing-runtime failure shape を fixture・docs・PHPUnit assertion で固定。Status: `DONE`。
 - `2026-0710-read-only-readiness-lane-detailed-replan.md`
