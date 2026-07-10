@@ -11,6 +11,8 @@
 
 ## Index
 
+- `2026-0710-sample18-post-commit-recording-db-backed-coverage-first-slice.md`
+  - #661 sample18 post-commit recording DB-backed coverage first slice。post-commit recording adapter を real execution audit append / idempotency outcome update repository に route-unwired 接続し、persisted success と idempotency failure recovery metadata を coverage。generated-submit route execution は未有効化。Status: `FIRST_SLICE_DONE`。
 - `2026-0710-sample18-post-commit-recording-db-backed-coverage-preflight.md`
   - #660 sample18 post-commit recording DB-backed coverage preflight。committed DBAccess execution 後の post-commit recording adapter を real execution audit append / idempotency outcome update repository に接続して route-unwired に検証する境界を定義。次は first slice (#661)。Status: `DONE`。
 - `2026-0710-post-db-backed-transaction-binding-coverage-lane-closure.md`
