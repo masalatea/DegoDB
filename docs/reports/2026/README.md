@@ -11,6 +11,8 @@
 
 ## Index
 
+- `2026-0710-sample18-post-mutation-gate-failure-matrix-lane-closure.md`
+  - #602 sample18 post-mutation-gate-failure-matrix lane closure。#601 の flag-on duplicate/failure matrix coverage を受け入れ、次は DBAccess mutation dry-run execution preflight (#603) を昇格。DBAccess mutation は未有効化。Status: `DONE`。
 - `2026-0710-sample18-mutation-gate-failure-matrix-coverage.md`
   - #601 sample18 mutation gate failure matrix coverage。flag-on duplicate route replay、audit/idempotency failure route response、helper-level audit/idempotency skipped/failed/duplicate/invalid matrix を追加し、DBAccess mutation disabled / executed false を維持。Status: `FIRST_SLICE_DONE`。
 - `2026-0710-sample18-post-mutation-gate-helper-lane-closure.md`
