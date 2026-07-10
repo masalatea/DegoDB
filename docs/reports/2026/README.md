@@ -11,6 +11,8 @@
 
 ## Index
 
+- `2026-0710-sample18-transaction-binding-helper-first-slice.md`
+  - #652 sample18 transaction binding helper first slice。transaction-capable runtime object を begin / commit / rollback / DBAccess callable に変換する route-unwired helper を追加し、成功 commit、DBAccess failure rollback、wrong target fail-closed を coverage。generated-submit route execution は未有効化。Status: `FIRST_SLICE_DONE`。
 - `2026-0710-sample18-real-transaction-binding-preflight.md`
   - #651 sample18 real transaction binding preflight。generated DBAccess runtime の `$mtooldb` boundary、`task_card` schema target、transaction begin/commit/rollback binding、DBAccess instance creation、failure policy を route wiring 前に定義。次は route-unwired transaction binding helper (#652)。Status: `DONE`。
 - `2026-0710-sample18-post-real-dbaccess-invocation-adapter-lane-closure.md`

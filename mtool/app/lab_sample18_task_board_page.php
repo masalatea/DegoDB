@@ -1377,6 +1377,135 @@ function app_lab_sample18_task_board_generated_submit_real_dbaccess_invocation_a
 }
 
 /**
+ * @param callable(array<string,mixed>):object $dbAccessFactory
+ * @return array{begin:callable(array<string,mixed>):array<string,mixed>,commit:callable(array<string,mixed>):array<string,mixed>,rollback:callable(array<string,mixed>):array<string,mixed>,dbaccess:callable(array<string,mixed>):array<string,mixed>}
+ */
+function app_lab_sample18_task_board_generated_submit_transaction_binding_callables(
+    object $transactionDb,
+    callable $dbAccessFactory,
+): array {
+    $isInTransaction = static function () use ($transactionDb): bool {
+        return method_exists($transactionDb, 'inTransaction') && (bool) $transactionDb->inTransaction();
+    };
+
+    $begin = static function (array $context) use ($transactionDb, $isInTransaction): array {
+        if (($context['db_handle'] ?? '') !== 'sample18_application_db') {
+            return [
+                'ok' => false,
+                'failure_code' => 'transaction_target_not_allowlisted',
+                'error' => 'sample18 generated submit can only target sample18_application_db.',
+            ];
+        }
+        if (($context['transaction_scope'] ?? '') !== 'sample18_application_db_only') {
+            return [
+                'ok' => false,
+                'failure_code' => 'transaction_scope_not_allowlisted',
+                'error' => 'sample18 generated submit requires sample18_application_db_only transaction scope.',
+            ];
+        }
+        if (!method_exists($transactionDb, 'beginTransaction')) {
+            return [
+                'ok' => false,
+                'failure_code' => 'transaction_begin_not_supported',
+                'error' => 'transaction DB does not support beginTransaction.',
+            ];
+        }
+
+        $result = $transactionDb->beginTransaction();
+        if ($result === false || !$isInTransaction()) {
+            return [
+                'ok' => false,
+                'failure_code' => 'transaction_begin_failed',
+                'error' => property_exists($transactionDb, 'error') ? (string) $transactionDb->error : '',
+            ];
+        }
+
+        return ['ok' => true, 'in_transaction' => true];
+    };
+
+    $commit = static function (array $context) use ($transactionDb): array {
+        if (!method_exists($transactionDb, 'commit')) {
+            return [
+                'ok' => false,
+                'failure_code' => 'transaction_commit_not_supported',
+                'error' => 'transaction DB does not support commit.',
+            ];
+        }
+
+        $result = $transactionDb->commit();
+        if ($result === false) {
+            return [
+                'ok' => false,
+                'failure_code' => 'transaction_commit_failed',
+                'error' => property_exists($transactionDb, 'error') ? (string) $transactionDb->error : '',
+            ];
+        }
+
+        return ['ok' => true, 'in_transaction' => false];
+    };
+
+    $rollback = static function (array $context) use ($transactionDb): array {
+        if (!method_exists($transactionDb, 'rollBack')) {
+            return [
+                'ok' => false,
+                'failure_code' => 'transaction_rollback_not_supported',
+                'error' => 'transaction DB does not support rollBack.',
+            ];
+        }
+
+        $result = $transactionDb->rollBack();
+        if ($result === false) {
+            return [
+                'ok' => false,
+                'failure_code' => 'transaction_rollback_failed',
+                'error' => property_exists($transactionDb, 'error') ? (string) $transactionDb->error : '',
+            ];
+        }
+
+        return ['ok' => true, 'in_transaction' => false];
+    };
+
+    $dbaccess = static function (array $call) use ($transactionDb, $dbAccessFactory, $isInTransaction): array {
+        if (!$isInTransaction()) {
+            return [
+                'ok' => false,
+                'result_code' => 'dbaccess_transaction_not_active',
+                'failure_code' => 'dbaccess_transaction_not_active',
+            ];
+        }
+
+        $dbAccess = $dbAccessFactory([
+            'transaction_db' => $transactionDb,
+            'call' => $call,
+            'in_transaction' => true,
+        ]);
+        $method = (string) ($call['db_access_function'] ?? '');
+        if ($method === '' || !method_exists($dbAccess, $method)) {
+            return [
+                'ok' => false,
+                'result_code' => 'dbaccess_method_missing',
+                'failure_code' => 'dbaccess_method_missing',
+            ];
+        }
+
+        $methodArguments = is_array($call['method_arguments'] ?? null) ? $call['method_arguments'] : [];
+        $taskCardFields = is_array($methodArguments['TaskCardObj'] ?? null) ? $methodArguments['TaskCardObj'] : [];
+        $taskCardObj = app_lab_sample18_task_board_generated_submit_task_card_data_object($taskCardFields);
+
+        return app_lab_sample18_task_board_generated_submit_normalize_real_dbaccess_result(
+            $dbAccess->{$method}($taskCardObj),
+        );
+    };
+
+    return [
+        'begin' => $begin,
+        'commit' => $commit,
+        'rollback' => $rollback,
+        'dbaccess' => $dbaccess,
+    ];
+}
+
+/**
  * @param array<string,mixed> $normalized
  * @param array<string,mixed> $dispatcherResult
  * @param array<string,mixed> $executionGuard
