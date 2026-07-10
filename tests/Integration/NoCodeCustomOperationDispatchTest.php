@@ -11,7 +11,11 @@ final class NoCodeCustomOperationDispatchTest extends TestCase
 {
     public function testReviewArtifactDispatchBlocksDeferredOperationBeforeExecution(): void
     {
+        $operations = $this->customOperations();
+        $operations[0]['availability'] = 'deferred';
+
         $result = app_no_code_custom_operation_dispatch_preflight([], $this->request([
+            'custom_operations' => $operations,
             'csrf_valid' => true,
             'artifact_key' => 'artifact-current',
             'current_artifact_key' => 'artifact-current',
@@ -28,11 +32,7 @@ final class NoCodeCustomOperationDispatchTest extends TestCase
 
     public function testReviewArtifactDispatchCanPreparePlanOnlyWhenOperationIsAvailable(): void
     {
-        $operations = $this->customOperations();
-        $operations[0]['availability'] = 'available';
-
         $result = app_no_code_custom_operation_dispatch_preflight([], $this->request([
-            'custom_operations' => $operations,
             'csrf_valid' => true,
             'artifact_key' => 'artifact-current',
             'current_artifact_key' => 'artifact-current',

@@ -54,7 +54,7 @@ function app_no_code_mtool_dogfooding_probe_manifest(): array
                             'category' => 'review_request',
                             'target' => 'artifact',
                             'side_effect_class' => 'external_handoff',
-                            'availability' => 'deferred',
+                            'availability' => 'available',
                             'policy_key' => 'source_output.review',
                             'csrf_required' => true,
                             'audit_event' => 'mtool.source_output.artifact_review_requested',
@@ -68,7 +68,7 @@ function app_no_code_mtool_dogfooding_probe_manifest(): array
                                 'failure_modes' => ['unavailable', 'unauthorized', 'missing_csrf', 'missing_artifact', 'stale_artifact'],
                             ],
                             'intent' => 'Open the generated artifact review workflow.',
-                            'unavailable_reason' => 'Execution route is not wired yet; policy, CSRF, audit, and review workflow boundaries must be connected first.',
+                            'unavailable_reason' => 'Review request route is available as plan-only; generated button execution remains separately gated.',
                         ],
                         [
                             'operation_key' => 'request_source_output_publish',
@@ -154,8 +154,8 @@ function app_no_code_mtool_dogfooding_probe_manifest(): array
                                     'action_key' => 'review_source_output_artifact',
                                     'operation_key' => 'review_source_output_artifact',
                                     'intent' => 'Open the generated artifact review workflow.',
-                                    'state' => 'deferred',
-                                    'unavailable_reason' => 'Execution route is not wired yet; policy, CSRF, audit, and review workflow boundaries must be connected first.',
+                                    'state' => 'available',
+                                    'unavailable_reason' => 'Review request route is available as plan-only; generated button execution remains separately gated.',
                                 ],
                                 [
                                     'label' => 'Request Publish',
@@ -286,6 +286,14 @@ function app_no_code_mtool_dogfooding_probe_inspection_summary(?array $principal
         ))),
         'custom_operation_availability' => array_values(array_unique(array_map(
             static fn (array $operation): string => (string) ($operation['availability'] ?? ''),
+            $customOperations,
+        ))),
+        'custom_operation_availability_states' => array_values(array_unique(array_map(
+            static fn (array $operation): string => (string) ($operation['availability_read_model']['availability_state'] ?? ''),
+            $customOperations,
+        ))),
+        'custom_operation_execution_modes' => array_values(array_unique(array_map(
+            static fn (array $operation): string => (string) ($operation['availability_read_model']['execution_mode'] ?? ''),
             $customOperations,
         ))),
         'custom_operation_unavailable_reasons' => array_column($customOperations, 'unavailable_reason'),

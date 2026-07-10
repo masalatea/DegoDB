@@ -634,10 +634,34 @@ function app_no_code_runtime_render_extension_slot_body_html(
             $state = trim((string) ($item['state'] ?? 'deferred'));
             $operationKey = trim((string) ($item['operation_key'] ?? $actionKey));
             $unavailableReason = trim((string) ($item['unavailable_reason'] ?? ''));
+            $availabilityReadModel = is_array($item['availability_read_model'] ?? null) ? $item['availability_read_model'] : [];
+            $operationAvailability = trim((string) ($availabilityReadModel['operation_availability'] ?? ''));
+            $availabilityState = trim((string) ($availabilityReadModel['availability_state'] ?? ''));
+            $preflightResult = trim((string) ($availabilityReadModel['preflight_result'] ?? ''));
+            $executionMode = trim((string) ($availabilityReadModel['execution_mode'] ?? ''));
+            $availabilityReason = trim((string) ($availabilityReadModel['availability_reason'] ?? ''));
+            $generatedButtonEnabled = (bool) ($availabilityReadModel['generated_button_enabled'] ?? false);
             $routeBoundary = is_array($item['route_boundary'] ?? null) ? $item['route_boundary'] : [];
             $routeMethod = trim((string) ($routeBoundary['method'] ?? ''));
             $routePath = trim((string) ($routeBoundary['path'] ?? ''));
             $authGuard = trim((string) ($routeBoundary['auth_guard'] ?? ''));
+            $availabilityText = '';
+            if ($availabilityState !== '' || $operationAvailability !== '' || $executionMode !== '') {
+                $availabilityParts = [];
+                if ($availabilityState !== '') {
+                    $availabilityParts[] = 'state ' . $availabilityState;
+                }
+                if ($operationAvailability !== '') {
+                    $availabilityParts[] = 'operation ' . $operationAvailability;
+                }
+                if ($executionMode !== '') {
+                    $availabilityParts[] = 'execution ' . $executionMode;
+                }
+                if ($preflightResult !== '') {
+                    $availabilityParts[] = 'preflight ' . $preflightResult;
+                }
+                $availabilityText = 'Availability preview: ' . implode('; ', $availabilityParts) . '.';
+            }
             $routeBoundaryText = '';
             if ($routeMethod !== '' || $routePath !== '' || $authGuard !== '') {
                 $routeParts = [];
@@ -650,9 +674,10 @@ function app_no_code_runtime_render_extension_slot_body_html(
                 $routeBoundaryText = 'Route boundary declared, execution still disabled: ' . implode('; ', $routeParts) . '.';
             }
             $items[] = implode("\n", [
-                '<div class="no-code-extension-slot-action-item" data-extension-slot-action-item="' . app_no_code_runtime_html_escape($actionKey) . '" data-extension-slot-operation="' . app_no_code_runtime_html_escape($operationKey) . '" data-extension-slot-action-state="' . app_no_code_runtime_html_escape($state) . '">',
-                '<button type="button" data-extension-slot-action="' . app_no_code_runtime_html_escape($actionKey) . '" data-extension-slot-operation-key="' . app_no_code_runtime_html_escape($operationKey) . '" disabled>' . app_no_code_runtime_html_escape($label) . '</button>',
+                '<div class="no-code-extension-slot-action-item" data-extension-slot-action-item="' . app_no_code_runtime_html_escape($actionKey) . '" data-extension-slot-operation="' . app_no_code_runtime_html_escape($operationKey) . '" data-extension-slot-action-state="' . app_no_code_runtime_html_escape($state) . '" data-availability-state="' . app_no_code_runtime_html_escape($availabilityState) . '" data-operation-availability="' . app_no_code_runtime_html_escape($operationAvailability) . '" data-preflight-result="' . app_no_code_runtime_html_escape($preflightResult) . '" data-execution-mode="' . app_no_code_runtime_html_escape($executionMode) . '" data-generated-button-enabled="' . ($generatedButtonEnabled ? 'true' : 'false') . '">',
+                '<button type="button" data-extension-slot-action="' . app_no_code_runtime_html_escape($actionKey) . '" data-extension-slot-operation-key="' . app_no_code_runtime_html_escape($operationKey) . '" data-availability-state="' . app_no_code_runtime_html_escape($availabilityState) . '" data-operation-availability="' . app_no_code_runtime_html_escape($operationAvailability) . '" data-preflight-result="' . app_no_code_runtime_html_escape($preflightResult) . '" data-execution-mode="' . app_no_code_runtime_html_escape($executionMode) . '" data-generated-button-enabled="' . ($generatedButtonEnabled ? 'true' : 'false') . '" disabled>' . app_no_code_runtime_html_escape($label) . '</button>',
                 '<span>' . app_no_code_runtime_html_escape($intent !== '' ? $intent : 'Operator action is declared but not executable in this generated preview.') . '</span>',
+                $availabilityText !== '' ? '<small data-extension-slot-availability="' . app_no_code_runtime_html_escape($operationKey) . '" data-availability-reason="' . app_no_code_runtime_html_escape($availabilityReason) . '">' . app_no_code_runtime_html_escape($availabilityText) . '</small>' : '',
                 $unavailableReason !== '' ? '<small data-extension-slot-unavailable-reason="' . app_no_code_runtime_html_escape($operationKey) . '">' . app_no_code_runtime_html_escape($unavailableReason) . '</small>' : '',
                 $routeBoundaryText !== '' ? '<small data-extension-slot-route-boundary="' . app_no_code_runtime_html_escape($operationKey) . '">' . app_no_code_runtime_html_escape($routeBoundaryText) . '</small>' : '',
                 '</div>',

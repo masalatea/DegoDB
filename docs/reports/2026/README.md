@@ -11,6 +11,28 @@
 
 ## Index
 
+- `2026-0709-review-request-availability-first-slice.md`
+  - #542 review request availability first slice。`review_source_output_artifact` の dogfooding metadata を plan-only available にし、generated runtime HTML / React bridge metadata に availability marker を出しながら generated button は disabled のまま維持。Status: `DONE`。
+- `2026-0709-availability-ui-preview-contract.md`
+  - #541 availability UI preview contract。`availability_read_model` を generated no-code runtime HTML の stable DOM markers と説明文に反映し、button disabled / `generated_button_enabled=false` を維持。Status: `DONE`。
+- `2026-0709-metadata-only-availability-read-model.md`
+  - #540 metadata-only availability read model。custom operation と extension slot action item に `availability_read_model` を追加し、`availability_state` / `preflight_result` / `execution_mode` / `generated_button_enabled=false` を生成 metadata へ公開。Status: `DONE`。
+- `2026-0709-review-workflow-availability-gate-matrix.md`
+  - #539 review workflow availability gate matrix。operation availability、preflight/guard result、UI marker/copy、audit、persistence/read-model expectations を分離し、#540 metadata-only read model の入力を定義。Status: `DONE`。
+- `2026-0709-review-workflow-availability-surface-inventory.md`
+  - #538 review workflow availability surface inventory。review / publish custom operation metadata、route boundary、dispatch guard、disabled UI、review request persistence、test gaps を棚卸しし、#539 gate matrix への入力を記録。Status: `DONE`。
+- `2026-0709-lightweight-no-code-ui-testing-plan.md`
+  - #551 lightweight no-code UI testing plan。No Code 専用 sample と既存 sample No Code 化に入る前に、PHPUnit JSON / `DOMDocument` contract test を inner loop、lightweight DOM interaction test を必要時、headless Chrome を代表 smoke gate とする方針を記録。Status: `DONE`。
+- `2026-0709-detailed-no-code-availability-plan.md`
+  - #537 no-code availability 詳細計画。availability enablement を surface inventory / gate matrix / read model / UI preview / first slice / sample UI replan に分解し、L1 sample UI No Code 化への橋渡しと長期 roadmap gates も補強。Status: `DONE`。
+- `2026-0709-apply-local-no-code-stack-cleanup.md`
+  - #536 local no-code stack cleanup 実行。103 commits ahead の local stack を 12 grouped commits に整理し、backup tree との差分なしを確認。focused PHPUnit と `make test` 通過。Push は未実行。Status: `DONE`。
+- `2026-0709-long-term-no-code-roadmap.md`
+  - 長期 No Code roadmap。sample UI の No Code 化、Mtool 自身の No Code 化、AI による構造正規化、資料からの即時 No Code UI 生成までの段階を記録。Status: `ROADMAP`。
+- `2026-0709-local-no-code-stack-cleanup-plan-before-availability.md`
+  - #535 availability 前の local no-code stack cleanup plan。`refs/backup/no-code-stack-before-cleanup-20260709` を作成し、102 commit unpushed stack の squash groups を提案。history rewrite / push は未実行。Status: `PLAN_READY`。
+- `2026-0709-no-push-stack-checkpoint-after-in-review-duplicate-reuse.md`
+  - #534 in-review duplicate reuse 後の no-push stack checkpoint。repeated non-executable hardening loop を止め、availability lane 前の local commit stack cleanup plan を昇格。availability / generated button execution / push は未実行。Status: `DONE`。
 - `2026-0709-review-workflow-repository-in-review-duplicate-reuse-lane-closure.md`
   - #533 review workflow repository in-review duplicate reuse lane closure。#532 の focused coverage を accepted capability として閉じ、PUSH なしでは次も named non-executable hardening のみに限定。availability / generated button execution / push は未実行。Status: `DONE`。
 - `2026-0709-review-workflow-repository-in-review-duplicate-reuse-coverage.md`

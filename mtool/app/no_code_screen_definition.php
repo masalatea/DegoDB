@@ -317,7 +317,7 @@ function app_no_code_screen_definition_normalize_field_groups(mixed $value, arra
  *     target:string,
  *     links:list<array{label:string,target:string,href:string}>,
  *     status_items:list<array{label:string,value:string,state:string}>,
- *     action_items:list<array{label:string,action_key:string,operation_key:string,intent:string,state:string,unavailable_reason:string}>,
+ *     action_items:list<array{label:string,action_key:string,operation_key:string,intent:string,state:string,unavailable_reason:string,availability_read_model:array<string,mixed>}>,
  *     screen_types:list<string>,
  *     source:string
  * }>
@@ -465,7 +465,7 @@ function app_no_code_screen_definition_normalize_extension_slot_status_state(str
 /**
  * @param mixed $items
  * @param array<string,array<string,mixed>> $customOperationsByKey
- * @return list<array{label:string,action_key:string,operation_key:string,intent:string,state:string,unavailable_reason:string,route_boundary:array{method:string,path:string,response_shape:string,auth_guard:string,idempotency:string,failure_modes:list<string>}}>
+ * @return list<array{label:string,action_key:string,operation_key:string,intent:string,state:string,unavailable_reason:string,availability_read_model:array<string,mixed>,route_boundary:array{method:string,path:string,response_shape:string,auth_guard:string,idempotency:string,failure_modes:list<string>}}>
  */
 function app_no_code_screen_definition_normalize_extension_slot_action_items(mixed $items, array $customOperationsByKey = []): array
 {
@@ -491,6 +491,13 @@ function app_no_code_screen_definition_normalize_extension_slot_action_items(mix
         $routeBoundary = is_array($operation)
             ? app_no_code_screen_definition_custom_operation_route_boundary($operation['route_boundary'] ?? null)
             : app_no_code_screen_definition_custom_operation_route_boundary(null);
+        $availabilityReadModel = is_array($operation)
+            ? app_no_code_screen_definition_custom_operation_availability_read_model($operation)
+            : app_no_code_screen_definition_custom_operation_availability_read_model([
+                'operation_key' => $effectiveOperationKey,
+                'availability' => 'deferred',
+                'unavailable_reason' => trim((string) ($item['unavailable_reason'] ?? '')),
+            ]);
 
         $normalized[] = [
             'label' => $label,
@@ -499,6 +506,7 @@ function app_no_code_screen_definition_normalize_extension_slot_action_items(mix
             'intent' => trim((string) ($item['intent'] ?? '')),
             'state' => app_no_code_screen_definition_normalize_extension_slot_action_state((string) ($item['state'] ?? 'deferred')),
             'unavailable_reason' => trim((string) ($item['unavailable_reason'] ?? '')),
+            'availability_read_model' => $availabilityReadModel,
             'route_boundary' => $routeBoundary,
         ];
     }
@@ -526,6 +534,7 @@ function app_no_code_screen_definition_normalize_extension_slot_action_state(str
  *     audit_event:string,
  *     adapter_handoff:string,
  *     route_boundary:array{method:string,path:string,response_shape:string,auth_guard:string,idempotency:string,failure_modes:list<string>},
+ *     availability_read_model:array<string,mixed>,
  *     intent:string,
  *     unavailable_reason:string
  * }>
@@ -546,7 +555,7 @@ function app_no_code_screen_definition_custom_operations(array $contract): array
             continue;
         }
 
-        $normalized[] = [
+        $normalizedOperation = [
             'operation_key' => $operationKey,
             'label' => $label,
             'category' => app_no_code_screen_definition_normalize_custom_operation_category((string) ($operation['category'] ?? 'custom')),
@@ -561,9 +570,64 @@ function app_no_code_screen_definition_custom_operations(array $contract): array
             'intent' => trim((string) ($operation['intent'] ?? '')),
             'unavailable_reason' => trim((string) ($operation['unavailable_reason'] ?? '')),
         ];
+        $normalizedOperation['availability_read_model'] = app_no_code_screen_definition_custom_operation_availability_read_model($normalizedOperation);
+        $normalized[] = $normalizedOperation;
     }
 
     return $normalized;
+}
+
+/**
+ * @param array<string,mixed> $operation
+ * @return array{
+ *     operation_key:string,
+ *     operation_availability:string,
+ *     availability_state:string,
+ *     preflight_result:string,
+ *     availability_reason:string,
+ *     execution_mode:string,
+ *     route_boundary:array{method:string,path:string,response_shape:string,auth_guard:string,idempotency:string,failure_modes:list<string>},
+ *     generated_button_enabled:bool
+ * }
+ */
+function app_no_code_screen_definition_custom_operation_availability_read_model(array $operation): array
+{
+    $operationAvailability = app_no_code_screen_definition_normalize_custom_operation_availability(
+        (string) ($operation['availability'] ?? 'deferred'),
+    );
+    $availabilityState = app_no_code_screen_definition_operation_availability_state($operationAvailability);
+    $preflightResult = $operationAvailability === 'available' ? 'not_evaluated' : 'blocked';
+    $executionMode = $operationAvailability === 'available' ? 'plan-only' : 'metadata-only';
+    $reason = trim((string) ($operation['unavailable_reason'] ?? ''));
+    if ($reason === '') {
+        $reason = match ($availabilityState) {
+            'plan_only_ready' => 'Operation metadata is available, but generated button execution remains separately gated.',
+            'blocked' => 'Operation is blocked by metadata.',
+            'unavailable' => 'Operation is unavailable by metadata.',
+            default => 'Operation availability is deferred.',
+        };
+    }
+
+    return [
+        'operation_key' => trim((string) ($operation['operation_key'] ?? '')),
+        'operation_availability' => $operationAvailability,
+        'availability_state' => $availabilityState,
+        'preflight_result' => $preflightResult,
+        'availability_reason' => $reason,
+        'execution_mode' => $executionMode,
+        'route_boundary' => app_no_code_screen_definition_custom_operation_route_boundary($operation['route_boundary'] ?? null),
+        'generated_button_enabled' => false,
+    ];
+}
+
+function app_no_code_screen_definition_operation_availability_state(string $operationAvailability): string
+{
+    return match (app_no_code_screen_definition_normalize_custom_operation_availability($operationAvailability)) {
+        'available' => 'plan_only_ready',
+        'blocked' => 'blocked',
+        'disabled' => 'unavailable',
+        default => 'deferred',
+    };
 }
 
 /**

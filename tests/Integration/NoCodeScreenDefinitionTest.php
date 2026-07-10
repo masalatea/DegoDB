@@ -211,8 +211,17 @@ final class NoCodeScreenDefinitionTest extends TestCase
             $contract['custom_operations'][0]['route_boundary']['path'] ?? '',
         );
         self::assertContains('stale_artifact', $contract['custom_operations'][0]['route_boundary']['failure_modes'] ?? []);
+        self::assertSame('available', $contract['custom_operations'][0]['availability_read_model']['operation_availability'] ?? '');
+        self::assertSame('plan_only_ready', $contract['custom_operations'][0]['availability_read_model']['availability_state'] ?? '');
+        self::assertSame('not_evaluated', $contract['custom_operations'][0]['availability_read_model']['preflight_result'] ?? '');
+        self::assertSame('plan-only', $contract['custom_operations'][0]['availability_read_model']['execution_mode'] ?? '');
+        self::assertFalse($contract['custom_operations'][0]['availability_read_model']['generated_button_enabled'] ?? true);
+        self::assertSame(
+            '/projects/{project_key}/source-outputs/{source_output_key}/operations/review-source-output-artifact',
+            $contract['custom_operations'][0]['availability_read_model']['route_boundary']['path'] ?? '',
+        );
         self::assertStringContainsString(
-            'Execution route is not wired yet',
+            'Review request route is available as plan-only',
             $contract['custom_operations'][0]['unavailable_reason'] ?? '',
         );
         self::assertSame('POST', $contract['custom_operations'][1]['route_boundary']['method'] ?? '');
@@ -222,6 +231,11 @@ final class NoCodeScreenDefinitionTest extends TestCase
         );
         self::assertSame('mtool_operator_admin', $contract['custom_operations'][1]['route_boundary']['auth_guard'] ?? '');
         self::assertContains('duplicate_request', $contract['custom_operations'][1]['route_boundary']['failure_modes'] ?? []);
+        self::assertSame('deferred', $contract['custom_operations'][1]['availability_read_model']['availability_state'] ?? '');
+        self::assertStringContainsString(
+            'Publish request execution is deferred',
+            $contract['custom_operations'][1]['availability_read_model']['availability_reason'] ?? '',
+        );
         self::assertSame(
             ['related_settings_panel', 'artifact_status_panel'],
             array_column($contract['screens'][0]['extension_slots'] ?? [], 'slot_type'),
@@ -250,7 +264,7 @@ final class NoCodeScreenDefinitionTest extends TestCase
         $handoffsByKey = $this->indexBy($bridgeContract['custom_operation_handoffs'] ?? [], 'operation_key');
         self::assertSame('source_output_publish_request', $handoffsByKey['request_source_output_publish']['adapter_handoff'] ?? '');
         self::assertSame('source_output_artifact_review', $handoffsByKey['review_source_output_artifact']['adapter_handoff'] ?? '');
-        self::assertSame('deferred', $handoffsByKey['review_source_output_artifact']['availability'] ?? '');
+        self::assertSame('available', $handoffsByKey['review_source_output_artifact']['availability'] ?? '');
         self::assertSame('POST', $handoffsByKey['review_source_output_artifact']['route_boundary']['method'] ?? '');
         self::assertSame('mtool_operator_admin', $handoffsByKey['review_source_output_artifact']['route_boundary']['auth_guard'] ?? '');
         self::assertSame('POST', $handoffsByKey['request_source_output_publish']['route_boundary']['method'] ?? '');
@@ -259,7 +273,7 @@ final class NoCodeScreenDefinitionTest extends TestCase
             $handoffsByKey['request_source_output_publish']['route_boundary']['path'] ?? '',
         );
         self::assertStringContainsString(
-            'Execution route is not wired yet',
+            'Review request route is available as plan-only',
             $handoffsByKey['review_source_output_artifact']['unavailable_reason'] ?? '',
         );
         self::assertSame(
@@ -324,6 +338,17 @@ final class NoCodeScreenDefinitionTest extends TestCase
             $runtimePreview['screens'][1]['extension_slots'][2]['action_items'][0]['route_boundary']['method'] ?? '',
         );
         self::assertSame(
+            'plan_only_ready',
+            $runtimePreview['screens'][1]['extension_slots'][2]['action_items'][0]['availability_read_model']['availability_state'] ?? '',
+        );
+        self::assertSame(
+            'plan-only',
+            $runtimePreview['screens'][1]['extension_slots'][2]['action_items'][0]['availability_read_model']['execution_mode'] ?? '',
+        );
+        self::assertFalse(
+            $runtimePreview['screens'][1]['extension_slots'][2]['action_items'][0]['availability_read_model']['generated_button_enabled'] ?? true,
+        );
+        self::assertSame(
             'mtool_operator_admin',
             $runtimePreview['screens'][1]['extension_slots'][2]['action_items'][0]['route_boundary']['auth_guard'] ?? '',
         );
@@ -360,7 +385,19 @@ final class NoCodeScreenDefinitionTest extends TestCase
         self::assertStringContainsString('data-extension-slot-route-boundary="request_source_output_publish"', $files['runtime-preview.html']);
         self::assertStringContainsString('request-source-output-publish', $files['runtime-preview.html']);
         self::assertStringContainsString('Route boundary declared, execution still disabled', $files['runtime-preview.html']);
-        self::assertStringContainsString('Execution route is not wired yet', $files['runtime-preview.html']);
+        self::assertStringContainsString('data-availability-state="plan_only_ready"', $files['runtime-preview.html']);
+        self::assertStringContainsString('data-operation-availability="available"', $files['runtime-preview.html']);
+        self::assertStringContainsString('data-preflight-result="not_evaluated"', $files['runtime-preview.html']);
+        self::assertStringContainsString('data-execution-mode="plan-only"', $files['runtime-preview.html']);
+        self::assertStringContainsString('data-availability-state="deferred"', $files['runtime-preview.html']);
+        self::assertStringContainsString('data-operation-availability="deferred"', $files['runtime-preview.html']);
+        self::assertStringContainsString('data-preflight-result="blocked"', $files['runtime-preview.html']);
+        self::assertStringContainsString('data-execution-mode="metadata-only"', $files['runtime-preview.html']);
+        self::assertStringContainsString('data-generated-button-enabled="false"', $files['runtime-preview.html']);
+        self::assertStringContainsString('data-extension-slot-availability="review_source_output_artifact"', $files['runtime-preview.html']);
+        self::assertStringContainsString('Availability preview: state plan_only_ready; operation available; execution plan-only; preflight not_evaluated.', $files['runtime-preview.html']);
+        self::assertStringContainsString('Availability preview: state deferred; operation deferred; execution metadata-only; preflight blocked.', $files['runtime-preview.html']);
+        self::assertStringContainsString('Review request route is available as plan-only', $files['runtime-preview.html']);
         self::assertStringContainsString('Request Publish', $files['runtime-preview.html']);
         self::assertStringContainsString('Mtool Source Output Review List', $files['runtime-preview.html']);
         self::assertStringContainsString('Generated no-code screen definition and runtime preview from canonical Mtool metadata.', $files['README.md']);
@@ -387,10 +424,12 @@ final class NoCodeScreenDefinitionTest extends TestCase
         );
         self::assertSame(['review_request', 'publish'], $summary['custom_operation_categories'] ?? []);
         self::assertSame(['external_handoff', 'approval_transition'], $summary['custom_operation_side_effect_classes'] ?? []);
-        self::assertSame(['deferred'], $summary['custom_operation_availability'] ?? []);
+        self::assertSame(['available', 'deferred'], $summary['custom_operation_availability'] ?? []);
+        self::assertSame(['plan_only_ready', 'deferred'], $summary['custom_operation_availability_states'] ?? []);
+        self::assertSame(['plan-only', 'metadata-only'], $summary['custom_operation_execution_modes'] ?? []);
         self::assertSame(
             [
-                'Execution route is not wired yet; policy, CSRF, audit, and review workflow boundaries must be connected first.',
+                'Review request route is available as plan-only; generated button execution remains separately gated.',
                 'Publish request execution is deferred until approval transition policy, CSRF, and audit boundaries are wired.',
             ],
             $summary['custom_operation_unavailable_reasons'] ?? [],
