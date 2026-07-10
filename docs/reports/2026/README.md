@@ -11,6 +11,8 @@
 
 ## Index
 
+- `2026-0710-sample18-post-guarded-execution-gate-helper-lane-closure.md`
+  - #622 sample18 post-guarded execution gate helper lane closure。#621 の final non-executing `execution_guard` helper を受け入れ、次は valid generated-submit route response への guard metadata integration (#623) を昇格。DBAccess mutation / transaction / execution updates は未有効化。Status: `DONE`。
 - `2026-0710-sample18-guarded-execution-gate-helper-first-slice.md`
   - #621 sample18 guarded execution gate helper first slice。route-ready metadata chain を検証する final non-executing guard helper を追加し、allowed/blocked/failed と stable reasons を返す。transaction / DBAccess / execution audit write / idempotency execution update / route exposure は未有効化。Status: `FIRST_SLICE_DONE`。
 - `2026-0710-sample18-guarded-dbaccess-execution-preflight.md`
