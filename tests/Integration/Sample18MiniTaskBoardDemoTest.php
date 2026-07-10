@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 require_once dirname(__DIR__, 2) . '/mtool/app/lab_sample18_task_board_page.php';
+require_once dirname(__DIR__, 2) . '/mtool/app/config_db_bootstrap.php';
 require_once dirname(__DIR__, 2) . '/mtool/app/router.php';
 
 use PHPUnit\Framework\TestCase;
@@ -273,6 +274,8 @@ final class Sample18MiniTaskBoardDemoTest extends TestCase
             $blocked['payload']['dedupe_key_preview'] ?? '',
             $blocked['payload']['audit_event_preview']['metadata']['dedupe_key'] ?? 'missing',
         );
+        self::assertSame('skipped', $blocked['payload']['audit_append']['status'] ?? '');
+        self::assertSame('no_app', $blocked['payload']['audit_append']['reason'] ?? '');
         self::assertFalse($blocked['payload']['mutation_enabled'] ?? true);
 
         $missingCsrf = app_lab_sample18_task_board_generated_submit_blocked_response(
@@ -313,6 +316,100 @@ final class Sample18MiniTaskBoardDemoTest extends TestCase
         );
         self::assertSame(404, $unknown['status_code']);
         self::assertSame('unknown_operation', $unknown['payload']['failure_code'] ?? '');
+    }
+
+    public function testMiniTaskBoardGeneratedSubmitBlockedAuditAppendFirstSlice(): void
+    {
+        $checklist = $this->sample18FastContractChecklist();
+        $submitContract = $checklist['generated_submit_request_contract'] ?? [];
+        self::assertIsArray($submitContract);
+        $timestamp = (string) ($submitContract['timestamp_fixture'] ?? '');
+        $createExpectation = $submitContract['operations']['create_task_card'] ?? [];
+        self::assertIsArray($createExpectation);
+
+        $app = $this->sqliteApp();
+        $bootstrap = app_config_db_bootstrap_apply($app);
+        self::assertTrue($bootstrap['ok'], $bootstrap['error']);
+        $principal = [
+            'id' => 'sample18-operator@example.test',
+            'auth_source' => 'phpunit',
+        ];
+
+        $validPost = array_merge(
+            ['operation_key' => 'create_task_card', '_csrf_token' => 'client-token'],
+            is_array($createExpectation['valid_input'] ?? null) ? $createExpectation['valid_input'] : [],
+        );
+        $blocked = app_lab_sample18_task_board_generated_submit_blocked_response(
+            'POST',
+            $validPost,
+            $timestamp,
+            'valid',
+            $app,
+            $principal,
+        );
+
+        self::assertSame(409, $blocked['status_code']);
+        self::assertSame('blocked', $blocked['payload']['result'] ?? '');
+        self::assertSame('generated_submit_disabled', $blocked['payload']['failure_code'] ?? '');
+        self::assertFalse($blocked['payload']['mutation_enabled'] ?? true);
+        self::assertSame('appended', $blocked['payload']['audit_append']['status'] ?? '');
+        self::assertFalse($blocked['payload']['audit_append']['skipped'] ?? true);
+        self::assertSame('', $blocked['payload']['audit_append']['error'] ?? 'unexpected');
+        self::assertSame('sample18-operator@example.test', $blocked['payload']['audit_event_preview']['actor_login_id'] ?? '');
+        self::assertSame('web_lab_login', $blocked['payload']['audit_event_preview']['actor_source'] ?? '');
+        self::assertSame(
+            $blocked['payload']['dedupe_key_preview'] ?? '',
+            $blocked['payload']['audit_append']['item']['target_key'] ?? 'missing',
+        );
+        self::assertSame('blocked', $blocked['payload']['audit_append']['item']['result'] ?? '');
+        self::assertSame(
+            'generated_submit_disabled',
+            $blocked['payload']['audit_append']['item']['metadata']['failure_code'] ?? '',
+        );
+        self::assertSame(
+            $createExpectation['expected_dispatcher_bound_fields'] ?? [],
+            $blocked['payload']['audit_append']['item']['metadata']['dispatcher_bound_fields'] ?? [],
+        );
+
+        $latest = app_audit_log_fetch_latest($app, [
+            'project_key' => 'SAMPLE18',
+            'event_type' => 'sample18.generated_submit.requested',
+            'target_key' => (string) ($blocked['payload']['dedupe_key_preview'] ?? ''),
+            'limit' => 10,
+        ]);
+        self::assertTrue($latest['ok'], $latest['error']);
+        self::assertCount(1, $latest['items']);
+        self::assertSame('sample18_task_card', $latest['items'][0]['target_type'] ?? '');
+
+        $missingCsrf = app_lab_sample18_task_board_generated_submit_blocked_response(
+            'POST',
+            ['operation_key' => 'create_task_card'],
+            $timestamp,
+            'missing',
+            $app,
+            $principal,
+        );
+        self::assertSame(403, $missingCsrf['status_code']);
+        self::assertArrayNotHasKey('audit_append', $missingCsrf['payload']);
+
+        $invalid = app_lab_sample18_task_board_generated_submit_blocked_response(
+            'POST',
+            ['operation_key' => 'update_task_card', 'id' => '0', 'title' => ''],
+            $timestamp,
+            'valid',
+            $app,
+            $principal,
+        );
+        self::assertSame(422, $invalid['status_code']);
+        self::assertArrayNotHasKey('audit_append', $invalid['payload']);
+
+        $afterFailures = app_audit_log_fetch_latest($app, [
+            'project_key' => 'SAMPLE18',
+            'event_type' => 'sample18.generated_submit.requested',
+            'limit' => 10,
+        ]);
+        self::assertTrue($afterFailures['ok'], $afterFailures['error']);
+        self::assertCount(1, $afterFailures['items']);
     }
 
     public function testMiniTaskBoardDemoReferenceOutputs(): void
@@ -483,5 +580,29 @@ final class Sample18MiniTaskBoardDemoTest extends TestCase
         self::assertIsArray($decoded);
 
         return $decoded;
+    }
+
+    /**
+     * @return array<string,mixed>
+     */
+    private function sqliteApp(): array
+    {
+        $storeDir = sys_get_temp_dir() . '/dego-sample18-audit-test-' . getmypid() . '-' . bin2hex(random_bytes(4));
+        $configDb = app_config_store_config(
+            'sqlite',
+            'db-config',
+            '3306',
+            'config_app',
+            'config_app',
+            'secret',
+            '/var/www/work',
+            $storeDir,
+        );
+
+        return [
+            'site' => 'lab',
+            'db' => $configDb,
+            'config_db' => $configDb,
+        ];
     }
 }

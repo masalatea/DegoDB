@@ -3,6 +3,8 @@
 declare(strict_types=1);
 
 require_once __DIR__ . '/csrf.php';
+require_once __DIR__ . '/audit_log_repository.php';
+require_once __DIR__ . '/auth.php';
 require_once __DIR__ . '/database.php';
 require_once __DIR__ . '/error_page.php';
 require_once __DIR__ . '/request.php';
@@ -473,6 +475,81 @@ function app_lab_sample18_task_board_generated_submit_idempotency_audit_preview(
 }
 
 /**
+ * @param array<string,mixed> $auditEvent
+ * @param array<string,mixed> $principal
+ * @return array<string,mixed>
+ */
+function app_lab_sample18_task_board_generated_submit_audit_event_with_actor(
+    array $auditEvent,
+    array $principal,
+): array {
+    if ($auditEvent === []) {
+        return [];
+    }
+
+    if (trim((string) ($auditEvent['actor_login_id'] ?? '')) === '') {
+        $auditEvent['actor_login_id'] = trim((string) ($principal['id'] ?? ''));
+    }
+    if (trim((string) ($auditEvent['actor_source'] ?? '')) === '') {
+        $auditEvent['actor_source'] = trim((string) ($principal['auth_source'] ?? 'unknown'));
+    }
+
+    return $auditEvent;
+}
+
+/**
+ * @param array<string,mixed>|null $app
+ * @param array<string,mixed> $auditEvent
+ * @return array{ok:bool,skipped:bool,status:string,item:array<string,mixed>,error:string,reason:string}
+ */
+function app_lab_sample18_task_board_generated_submit_append_audit_event(?array $app, array $auditEvent): array
+{
+    if ($app === null) {
+        return [
+            'ok' => true,
+            'skipped' => true,
+            'status' => 'skipped',
+            'item' => [],
+            'error' => '',
+            'reason' => 'no_app',
+        ];
+    }
+
+    if ($auditEvent === []) {
+        return [
+            'ok' => true,
+            'skipped' => true,
+            'status' => 'skipped',
+            'item' => [],
+            'error' => '',
+            'reason' => 'no_audit_event',
+        ];
+    }
+
+    if (trim((string) ($auditEvent['actor_login_id'] ?? '')) === '') {
+        return [
+            'ok' => true,
+            'skipped' => true,
+            'status' => 'skipped',
+            'item' => [],
+            'error' => '',
+            'reason' => 'missing_actor',
+        ];
+    }
+
+    $append = app_audit_log_append($app, $auditEvent);
+
+    return [
+        'ok' => (bool) ($append['ok'] ?? false),
+        'skipped' => false,
+        'status' => ($append['ok'] ?? false) ? 'appended' : 'failed',
+        'item' => is_array($append['item'] ?? null) ? $append['item'] : [],
+        'error' => (string) ($append['error'] ?? ''),
+        'reason' => '',
+    ];
+}
+
+/**
  * @param array<string,mixed> $post
  * @return array{status_code:int,payload:array<string,mixed>}
  */
@@ -481,6 +558,8 @@ function app_lab_sample18_task_board_generated_submit_blocked_response(
     array $post,
     string $now,
     string $csrfGuardResult = 'valid',
+    ?array $app = null,
+    array $principal = [],
 ): array {
     if (strtoupper($requestMethod) !== 'POST') {
         return [
@@ -539,6 +618,13 @@ function app_lab_sample18_task_board_generated_submit_blocked_response(
         'blocked',
         'generated_submit_disabled',
     );
+    $auditEvent = app_lab_sample18_task_board_generated_submit_audit_event_with_actor(
+        is_array($idempotencyAuditPreview['audit_event_preview'] ?? null)
+            ? $idempotencyAuditPreview['audit_event_preview']
+            : [],
+        $principal,
+    );
+    $auditAppend = app_lab_sample18_task_board_generated_submit_append_audit_event($app, $auditEvent);
 
     return [
         'status_code' => 409,
@@ -555,7 +641,8 @@ function app_lab_sample18_task_board_generated_submit_blocked_response(
             'dispatcher_result' => $dispatcherResult,
             'dedupe_key_preview' => $idempotencyAuditPreview['dedupe_key_preview'],
             'payload_fingerprint' => $idempotencyAuditPreview['payload_fingerprint'],
-            'audit_event_preview' => $idempotencyAuditPreview['audit_event_preview'],
+            'audit_event_preview' => $auditEvent,
+            'audit_append' => $auditAppend,
             'mutation_enabled' => false,
         ],
     ];
@@ -581,6 +668,8 @@ function app_render_lab_sample18_task_board_generated_submit_page(array $app, ar
         $_POST,
         date('Y-m-d H:i:s'),
         $csrfGuardResult,
+        $app,
+        app_auth_principal() ?? [],
     );
 
     app_send_json_response($request, $response['payload'], $response['status_code']);
