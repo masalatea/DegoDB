@@ -11,6 +11,8 @@
 
 ## Index
 
+- `2026-0710-sample18-post-ready-execution-plan-coverage-lane-closure.md`
+  - #609 sample18 post-ready execution-plan coverage lane closure。#608 の fresh flag-on ready/planned route coverage を受け入れ、次は transaction boundary preflight (#610) を昇格。DBAccess mutation は未有効化。Status: `DONE`。
 - `2026-0710-sample18-route-level-ready-execution-plan-coverage.md`
   - #608 sample18 route-level ready execution-plan coverage。fresh flag-on valid generated-submit route response で `mutation_gate.ready` と `dbaccess_execution_plan.status=planned` を確認し、HTTP 409 / mutation disabled / executed false / transaction not_opened を維持。Status: `FIRST_SLICE_DONE`。
 - `2026-0710-sample18-post-execution-plan-route-metadata-lane-closure.md`
