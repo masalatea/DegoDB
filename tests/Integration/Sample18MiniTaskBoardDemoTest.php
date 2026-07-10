@@ -4270,6 +4270,47 @@ final class Sample18MiniTaskBoardDemoTest extends TestCase
             $runtimePreview,
             $metadataContract['screen_keys'] ?? [],
         );
+        $runtimeScreensByKey = [];
+        foreach (($runtimePreview['screens'] ?? []) as $runtimeScreen) {
+            self::assertIsArray($runtimeScreen);
+            $runtimeScreensByKey[(string) ($runtimeScreen['screen_key'] ?? '')] = $runtimeScreen;
+        }
+        $runtimeListRows = $runtimeScreensByKey['task_card_list']['data']['rows'] ?? [];
+        self::assertIsArray($runtimeListRows);
+        self::assertCount(count($fixture['seed_rows'] ?? []), $runtimeListRows);
+        $firstRuntimeRow = is_array($runtimeListRows[0] ?? null) ? $runtimeListRows[0] : [];
+        $firstRuntimeRowKey = (string) ($firstRuntimeRow['id']['display_value'] ?? '');
+        self::assertNotSame('', $firstRuntimeRowKey);
+        self::assertMatchesRegularExpression('/^[0-9]+$/', $firstRuntimeRowKey);
+
+        foreach (['update_task_card', 'complete_task_card'] as $keyedOperationKey) {
+            $keyedIntent = app_no_code_runtime_action_intent(
+                $screenDefinition,
+                $contractActionsByKey[$keyedOperationKey] ?? [],
+                array_merge(
+                    ['id' => $firstRuntimeRowKey],
+                    $keyedOperationKey === 'update_task_card'
+                        ? ['title' => 'Selected row title handoff']
+                        : [],
+                ),
+            );
+            self::assertTrue($keyedIntent['ok'], $keyedOperationKey . ': ' . ($keyedIntent['error'] ?? ''));
+            self::assertSame(['id' => $firstRuntimeRowKey], $keyedIntent['intent']['payload']['key'] ?? []);
+        }
+        $missingUpdateKey = app_no_code_runtime_action_intent(
+            $screenDefinition,
+            $contractActionsByKey['update_task_card'] ?? [],
+            ['title' => 'Missing selected row key'],
+        );
+        self::assertFalse($missingUpdateKey['ok']);
+        self::assertStringContainsString('input.missing:id', $missingUpdateKey['error'] ?? '');
+        $missingCompleteKey = app_no_code_runtime_action_intent(
+            $screenDefinition,
+            $contractActionsByKey['complete_task_card'] ?? [],
+            [],
+        );
+        self::assertFalse($missingCompleteKey['ok']);
+        self::assertSame('input.missing:id', $missingCompleteKey['error'] ?? '');
         NoCodeUiContractAssertions::assertRuntimePreviewScreenField(
             $this,
             $runtimePreview,
@@ -4292,6 +4333,22 @@ final class Sample18MiniTaskBoardDemoTest extends TestCase
             $runtimePreviewHtml,
             $htmlDomContract['disabled_extension_action_keys'] ?? [],
         );
+        self::assertStringContainsString('data-runtime-row-key="' . $firstRuntimeRowKey . '"', $runtimePreviewHtml);
+        foreach ([
+            'function runtimeActionKeyField(render)',
+            "fields[fieldIndex].role === 'key'",
+            'renderFields[renderFieldIndex].is_key',
+            'function runtimeSelectedKeyFromRender(render)',
+            'metadata.selected_key',
+            'function firstRuntimeFieldValue(render, item, fieldKey)',
+            'selectedRowValue !== \'\' && selectedRowValue === selectedKey',
+            'data-runtime-selected-key',
+            'function refreshRuntimeDataForSelectedRow(button)',
+            "button.getAttribute('data-runtime-selected-key')",
+            'runtimeDataUrlWithSelectedKey(selectedKey)',
+        ] as $selectedRowSourceNeedle) {
+            self::assertStringContainsString($selectedRowSourceNeedle, $runtimePreviewHtml);
+        }
         self::assertStringContainsString(
             'data-action-submit-url="' . ($htmlDomContract['managed_action_submit_url'] ?? '') . '"',
             $runtimePreviewHtml,

@@ -181,6 +181,7 @@ function app_no_code_runtime_render_fields(array $fields): array
             'field_key' => (string) ($field['field_key'] ?? ''),
             'label' => (string) ($field['label'] ?? $field['field_key'] ?? ''),
             'type' => (string) ($field['type'] ?? 'string'),
+            'is_key' => (bool) ($field['is_key'] ?? false),
             'required' => (bool) ($field['required'] ?? false),
             'readonly' => (bool) ($field['readonly'] ?? false),
             'visibility' => (string) ($field['visibility'] ?? 'visible'),
@@ -836,6 +837,7 @@ function app_no_code_runtime_screen_status_message(string $screenState, string $
  */
 function app_no_code_runtime_render_list_html(array $fields, array $rows, string $emptyStateMessage = 'No records to show yet.', string $caption = 'Records'): string
 {
+    $keyField = app_no_code_runtime_key_field($fields);
     $headerCells = [];
     foreach ($fields as $field) {
         $headerCells[] = '<th scope="col">' . app_no_code_runtime_html_escape((string) ($field['label'] ?? $field['field_key'] ?? '')) . '</th>';
@@ -854,7 +856,9 @@ function app_no_code_runtime_render_list_html(array $fields, array $rows, string
             $cells[] = '<td>' . app_no_code_runtime_html_escape((string) ($cell['display_value'] ?? '')) . '</td>';
         }
 
-        $bodyRows[] = '<tr>' . implode('', $cells) . '</tr>';
+        $rowKeyCell = $keyField !== '' && is_array($row[$keyField] ?? null) ? $row[$keyField] : [];
+        $rowKey = (string) ($rowKeyCell['display_value'] ?? '');
+        $bodyRows[] = '<tr' . ($rowKey !== '' ? ' data-runtime-row-key="' . app_no_code_runtime_html_escape($rowKey) . '"' : '') . '>' . implode('', $cells) . '</tr>';
     }
 
     if ($bodyRows === []) {
@@ -874,6 +878,20 @@ function app_no_code_runtime_render_list_html(array $fields, array $rows, string
         '</table>',
         '</div>',
     ]);
+}
+
+/**
+ * @param list<array<string,mixed>> $fields
+ */
+function app_no_code_runtime_key_field(array $fields): string
+{
+    foreach ($fields as $field) {
+        if ((bool) ($field['is_key'] ?? false)) {
+            return (string) ($field['field_key'] ?? '');
+        }
+    }
+
+    return '';
 }
 
 /**
@@ -1540,6 +1558,12 @@ function app_no_code_runtime_preview_js(): string
         if (fields[fieldIndex] && fields[fieldIndex].role === 'key' && fields[fieldIndex].field_key) {
           return String(fields[fieldIndex].field_key);
         }
+      }
+    }
+    var renderFields = Array.isArray(render && render.fields) ? render.fields : [];
+    for (var renderFieldIndex = 0; renderFieldIndex < renderFields.length; renderFieldIndex += 1) {
+      if (renderFields[renderFieldIndex] && renderFields[renderFieldIndex].is_key && renderFields[renderFieldIndex].field_key) {
+        return String(renderFields[renderFieldIndex].field_key);
       }
     }
     return '';
