@@ -11,6 +11,8 @@
 
 ## Index
 
+- `2026-0710-sample18-post-audit-failure-visibility-lane-closure.md`
+  - #591 sample18 post-audit-failure-visibility lane closure。#590 の audit append failure visibility を受け入れ、mutation enablement より前に generated submit idempotency persistence preflight (#592) を昇格。DBAccess mutation は未有効化。Status: `DONE`。
 - `2026-0710-sample18-generated-submit-audit-append-failure-visibility-coverage.md`
   - #590 sample18 generated submit audit append failure visibility coverage。audit append failure 時も valid submit は HTTP 409 `generated_submit_disabled` のまま、`audit_append.status=failed` と非空 error を返し、dispatcher / top-level mutation は disabled のまま維持する focused coverage を追加。Status: `FIRST_SLICE_DONE`。
 - `2026-0710-sample18-post-blocked-audit-append-lane-closure.md`
