@@ -11,6 +11,16 @@
 
 ## Index
 
+- `2026-0709-existing-sample-no-code-conversion-test-checklist.md`
+  - #556 existing sample no-code conversion test checklist。sample18 に fast contract checklist fixture を追加し、metadata / DOM / disabled dry-run action / conversion boundary を browser smoke 前の確認項目として PHPUnit から参照。Status: `DONE`。
+- `2026-0709-lightweight-js-interaction-test-spike.md`
+  - #555 lightweight JS interaction test spike。root npm manifest を増やさず、`linkedom` / `happy-dom` の採用判定 checker を追加。現時点では concrete JS interaction gap が昇格するまで external DOM dependency は defer。Status: `DONE`。
+- `2026-0709-no-code-sample-contract-fixture-ladder.md`
+  - #554 no-code sample contract fixture ladder。`sample32-no-code-ui-test-lab` に explicit fixture JSON を追加し、screen / field / disabled managed action / preview row expectations を PHPUnit と pack checker の共通 contract として検証。Status: `DONE`。
+- `2026-0709-dedicated-no-code-ui-test-lab-sample.md`
+  - #553 dedicated no-code UI test lab sample。`sample32-no-code-ui-test-lab` を追加し、`SAMPLE32/no_code_lab_card`、`NO-CODE-RUNTIME`、disabled managed action fixture、固定 preview rows、fast JSON/DOM contract test を導入。Status: `DONE`。
+- `2026-0709-no-code-ui-contract-test-harness-first-slice.md`
+  - #552 no-code UI contract test harness first slice。`tests/Support/NoCodeUiContractAssertions.php` を追加し、sample18 generated `runtime-preview.html` を PHP `DOMDocument` / `DOMXPath` で検査する fast contract を導入。Status: `DONE`。
 - `2026-0709-first-sample-ui-conversion-closure.md`
   - #550 first sample UI conversion closure。sample18 を L1 existing sample UI no-code entry として受け入れ、ただし metadata-first / preview-first であり generated route replacement ではない境界と、#552 fast DOM contract harness へ進む残ギャップを記録。Status: `DONE`。
 - `2026-0709-first-sample-ui-action-dry-run-contract.md`

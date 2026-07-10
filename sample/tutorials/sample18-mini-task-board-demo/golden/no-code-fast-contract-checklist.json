@@ -1,0 +1,68 @@
+{
+  "checklist_version": "sample18-no-code-fast-contract-checklist-v1",
+  "sample": "sample18-mini-task-board-demo",
+  "project_key": "SAMPLE18",
+  "source_output_key": "NO-CODE-RUNTIME",
+  "source_table": "task_card",
+  "before_browser_smoke_command": "make sample18-http-runtime-smoke",
+  "conversion_boundary": {
+    "generated_route_replacement": false,
+    "generated_button_execution": false
+  },
+  "metadata_contract": {
+    "definition_version": "no-code-screen-definition-v0",
+    "runtime_version": "no-code-runtime-v0",
+    "contract_key": "task_card",
+    "screen_types": [
+      "list",
+      "detail",
+      "form"
+    ],
+    "screen_keys": [
+      "task_card_list",
+      "task_card_detail",
+      "task_card_form"
+    ],
+    "screen_types_by_key": {
+      "task_card_list": "list",
+      "task_card_detail": "detail",
+      "task_card_form": "form"
+    },
+    "field_keys": [
+      "id",
+      "title",
+      "body",
+      "status",
+      "assigned_to",
+      "priority",
+      "due_date",
+      "completed_at",
+      "updated_at"
+    ],
+    "runtime_screen_count": 3,
+    "runtime_row_count_source": "golden_seed_rows"
+  },
+  "html_dom_contract": {
+    "form_fields": [
+      "title",
+      "body",
+      "status",
+      "assigned_to",
+      "priority",
+      "due_date"
+    ],
+    "disabled_extension_action_keys": [
+      "create_task_card",
+      "update_task_card",
+      "complete_task_card",
+      "reopen_task_card",
+      "delete_task_card"
+    ],
+    "requires_route_boundary_markers": true
+  },
+  "remaining_gaps": [
+    "generated status filter controls are not yet compared to the curated route",
+    "safe action-input mapping is not enabled for generated mutation buttons",
+    "browser smoke remains the outer confidence gate for the curated route"
+  ]
+}

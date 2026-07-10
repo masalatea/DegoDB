@@ -9,6 +9,7 @@ final class Sample18MiniTaskBoardDemoTest extends TestCase
     public function testMiniTaskBoardNoCodeGoldenFixtureMatchesSeedAndRouteContract(): void
     {
         $fixture = $this->sample18NoCodeGoldenFixture();
+        $checklist = $this->sample18FastContractChecklist();
         $root = dirname(__DIR__, 2);
         $seedSql = (string) file_get_contents(
             $root . '/sample/tutorials/sample18-mini-task-board-demo/seed/900_020_sample18_table_seed.sql',
@@ -17,10 +18,21 @@ final class Sample18MiniTaskBoardDemoTest extends TestCase
 
         self::assertSame('sample18-no-code-ui-golden-v1', $fixture['fixture_version'] ?? '');
         self::assertSame('SAMPLE18', $fixture['project_key'] ?? '');
+        self::assertSame('sample18-no-code-fast-contract-checklist-v1', $checklist['checklist_version'] ?? '');
+        self::assertSame($fixture['project_key'] ?? '', $checklist['project_key'] ?? '');
+        self::assertSame($fixture['source_table'] ?? '', $checklist['source_table'] ?? '');
         self::assertSame('/samples/sample18-task-board', $fixture['route_path'] ?? '');
         self::assertSame('task_card', $fixture['source_table'] ?? '');
         self::assertFalse($fixture['no_code_conversion_boundary']['generated_route_replacement'] ?? true);
         self::assertFalse($fixture['no_code_conversion_boundary']['generated_button_execution'] ?? true);
+        self::assertSame(
+            $fixture['no_code_conversion_boundary']['generated_route_replacement'] ?? null,
+            $checklist['conversion_boundary']['generated_route_replacement'] ?? null,
+        );
+        self::assertSame(
+            $fixture['no_code_conversion_boundary']['generated_button_execution'] ?? null,
+            $checklist['conversion_boundary']['generated_button_execution'] ?? null,
+        );
 
         foreach (($fixture['seed_rows'] ?? []) as $row) {
             self::assertIsArray($row);
@@ -49,13 +61,17 @@ final class Sample18MiniTaskBoardDemoTest extends TestCase
             self::assertStringContainsString($needle, $routeSource);
         }
         self::assertSame(
-            ['create_task_card', 'update_task_card', 'complete_task_card', 'reopen_task_card', 'delete_task_card'],
+            $checklist['html_dom_contract']['disabled_extension_action_keys'] ?? [],
             $fixture['no_code_action_keys'] ?? [],
         );
     }
 
     public function testMiniTaskBoardDemoReferenceOutputs(): void
     {
+        $fixture = $this->sample18NoCodeGoldenFixture();
+        $checklist = $this->sample18FastContractChecklist();
+        $metadataContract = $checklist['metadata_contract'] ?? [];
+        $htmlDomContract = $checklist['html_dom_contract'] ?? [];
         $app = app_bootstrap();
         $previousPolicy = getenv('MTOOL_GENERATED_NAME_POLICY');
         putenv('MTOOL_GENERATED_NAME_POLICY=physical-logical-v1');
@@ -92,24 +108,46 @@ final class Sample18MiniTaskBoardDemoTest extends TestCase
         self::assertArrayHasKey('DBACCESS-PHP', $result['steps']['outputs']);
         self::assertArrayHasKey('HTML-PAGE', $result['steps']['outputs']);
         self::assertArrayHasKey('OPENAPI-JSON', $result['steps']['outputs']);
-        self::assertSame('no-code-screen-definition-v0', $result['steps']['no_code_metadata']['definition_version'] ?? '');
-        self::assertSame('no-code-runtime-v0', $result['steps']['no_code_metadata']['runtime_version'] ?? '');
-        self::assertSame('task_card', $result['steps']['no_code_metadata']['contract_key'] ?? '');
-        self::assertSame(['list', 'detail', 'form'], $result['steps']['no_code_metadata']['screen_types'] ?? []);
+        self::assertSame($metadataContract['definition_version'] ?? '', $result['steps']['no_code_metadata']['definition_version'] ?? '');
+        self::assertSame($metadataContract['runtime_version'] ?? '', $result['steps']['no_code_metadata']['runtime_version'] ?? '');
+        self::assertSame($metadataContract['contract_key'] ?? '', $result['steps']['no_code_metadata']['contract_key'] ?? '');
+        self::assertSame($metadataContract['screen_types'] ?? [], $result['steps']['no_code_metadata']['screen_types'] ?? []);
+        self::assertSame($metadataContract['field_keys'] ?? [], $result['steps']['no_code_metadata']['field_keys'] ?? []);
         self::assertSame(
-            ['id', 'title', 'body', 'status', 'assigned_to', 'priority', 'due_date', 'completed_at', 'updated_at'],
-            $result['steps']['no_code_metadata']['field_keys'] ?? [],
-        );
-        self::assertSame(
-            ['create_task_card', 'update_task_card', 'complete_task_card', 'reopen_task_card', 'delete_task_card'],
+            $htmlDomContract['disabled_extension_action_keys'] ?? [],
             $result['steps']['no_code_metadata']['custom_operation_keys'] ?? [],
         );
         self::assertSame(
-            ['create_task_card', 'update_task_card', 'complete_task_card', 'reopen_task_card', 'delete_task_card'],
+            $htmlDomContract['disabled_extension_action_keys'] ?? [],
             $result['steps']['no_code_metadata']['runtime_action_keys'] ?? [],
         );
-        self::assertSame(4, $result['steps']['no_code_metadata']['runtime_row_count'] ?? null);
+        self::assertSame(count($fixture['seed_rows'] ?? []), $result['steps']['no_code_metadata']['runtime_row_count'] ?? null);
         self::assertSame(4, $result['steps']['no_code_metadata']['golden_row_count'] ?? null);
+
+        $publishedRoot = (string) ($result['steps']['no_code_metadata']['published_root'] ?? '');
+        self::assertDirectoryExists($publishedRoot);
+        $runtimePreview = NoCodeUiContractAssertions::readJsonFile($this, $publishedRoot . '/runtime-preview.json');
+        NoCodeUiContractAssertions::assertRuntimePreviewScreenKeys(
+            $this,
+            $runtimePreview,
+            $metadataContract['screen_keys'] ?? [],
+        );
+        $runtimePreviewHtml = (string) file_get_contents($publishedRoot . '/runtime-preview.html');
+        NoCodeUiContractAssertions::assertPreviewHtmlScreens(
+            $this,
+            $runtimePreviewHtml,
+            $metadataContract['screen_types_by_key'] ?? [],
+        );
+        NoCodeUiContractAssertions::assertPreviewHtmlFormFields(
+            $this,
+            $runtimePreviewHtml,
+            $htmlDomContract['form_fields'] ?? [],
+        );
+        NoCodeUiContractAssertions::assertPreviewHtmlDisabledExtensionActions(
+            $this,
+            $runtimePreviewHtml,
+            $htmlDomContract['disabled_extension_action_keys'] ?? [],
+        );
     }
 
     /**
@@ -118,6 +156,18 @@ final class Sample18MiniTaskBoardDemoTest extends TestCase
     private function sample18NoCodeGoldenFixture(): array
     {
         $path = dirname(__DIR__, 2) . '/sample/tutorials/sample18-mini-task-board-demo/golden/no-code-ui-golden.json';
+        $decoded = json_decode((string) file_get_contents($path), true);
+        self::assertIsArray($decoded);
+
+        return $decoded;
+    }
+
+    /**
+     * @return array<string,mixed>
+     */
+    private function sample18FastContractChecklist(): array
+    {
+        $path = dirname(__DIR__, 2) . '/sample/tutorials/sample18-mini-task-board-demo/golden/no-code-fast-contract-checklist.json';
         $decoded = json_decode((string) file_get_contents($path), true);
         self::assertIsArray($decoded);
 

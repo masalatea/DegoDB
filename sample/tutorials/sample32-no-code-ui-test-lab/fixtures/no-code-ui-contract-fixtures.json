@@ -1,0 +1,58 @@
+{
+  "fixture_version": "no-code-ui-contract-fixture-v1",
+  "project_key": "SAMPLE32",
+  "table_name": "no_code_lab_card",
+  "contract_key": "no_code_lab_card",
+  "definition_version": "no-code-screen-definition-v0",
+  "runtime_version": "no-code-runtime-v0",
+  "screen_types": [
+    "list",
+    "detail",
+    "form"
+  ],
+  "screen_keys": [
+    "no_code_lab_card_list",
+    "no_code_lab_card_detail",
+    "no_code_lab_card_form"
+  ],
+  "screen_types_by_key": {
+    "no_code_lab_card_list": "list",
+    "no_code_lab_card_detail": "detail",
+    "no_code_lab_card_form": "form"
+  },
+  "list_field_keys": [
+    "id",
+    "title",
+    "status",
+    "owner_name",
+    "priority",
+    "due_on",
+    "notes"
+  ],
+  "form_field_names": [
+    "title",
+    "status",
+    "owner_name",
+    "priority",
+    "due_on",
+    "notes"
+  ],
+  "disabled_managed_actions": [
+    {
+      "action_key": "archive_no_code_lab_card",
+      "availability": "disabled",
+      "disabled_reason": "policy-not-enabled",
+      "affordance": "keyboard-intent-preview",
+      "keyboard_activation": "enter-space",
+      "expected_dom_occurrences": 3
+    }
+  ],
+  "runtime": {
+    "screen_count": 3,
+    "seeded_preview_row_count": 2,
+    "preview_row_titles": [
+      "Fixture list card",
+      "Fixture detail card"
+    ]
+  }
+}
