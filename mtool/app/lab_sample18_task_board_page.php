@@ -14,6 +14,11 @@ function app_lab_sample18_task_board_path(): string
     return '/samples/sample18-task-board';
 }
 
+function app_lab_sample18_task_board_generated_submit_path(): string
+{
+    return app_lab_sample18_task_board_path() . '/no-code/generated-submit';
+}
+
 function app_lab_sample18_task_board_is_available(PDO $pdo): bool
 {
     if (!app_sql_table_exists($pdo, 'projects')) {
@@ -103,6 +108,279 @@ function app_lab_sample18_task_board_redirect(array $request, string $message = 
         $location .= '?message=' . rawurlencode($message);
     }
     app_send_redirect_response($request, $location);
+}
+
+/**
+ * @return array<string,array<string,mixed>>
+ */
+function app_lab_sample18_task_board_generated_submit_contracts(): array
+{
+    return [
+        'create_task_card' => [
+            'operation_key' => 'create_task_card',
+            'curated_route_action' => 'create',
+            'db_access_function' => 'InsertTaskCard',
+            'key_fields' => [],
+            'required_client_fields' => ['title'],
+            'optional_client_fields' => ['body', 'assigned_to', 'priority', 'due_date'],
+            'fixed_fields' => ['status' => 'todo'],
+            'server_managed_fields' => ['completed_at', 'updated_at'],
+        ],
+        'update_task_card' => [
+            'operation_key' => 'update_task_card',
+            'curated_route_action' => 'update',
+            'db_access_function' => 'UpdateTaskCard',
+            'key_fields' => ['id'],
+            'required_client_fields' => ['title'],
+            'optional_client_fields' => ['body', 'status', 'assigned_to', 'priority', 'due_date'],
+            'derived_fields' => ['completed_at'],
+            'server_managed_fields' => ['updated_at'],
+        ],
+        'complete_task_card' => [
+            'operation_key' => 'complete_task_card',
+            'curated_route_action' => 'complete',
+            'db_access_function' => 'CompleteTaskCard',
+            'key_fields' => ['id'],
+            'required_client_fields' => [],
+            'optional_client_fields' => [],
+            'fixed_fields' => ['status' => 'done'],
+            'server_managed_fields' => ['completed_at', 'updated_at'],
+        ],
+    ];
+}
+
+/**
+ * @param array<string,mixed> $input
+ * @return array{
+ *     ok:bool,
+ *     operation_key:string,
+ *     curated_route_action:string,
+ *     db_access_function:string,
+ *     payload:array<string,mixed>,
+ *     ignored_input_fields:list<string>,
+ *     errors:list<string>,
+ *     failure_code:string
+ * }
+ */
+function app_lab_sample18_task_board_normalize_generated_submit_request(
+    string $operationKey,
+    array $input,
+    string $now,
+): array {
+    $contracts = app_lab_sample18_task_board_generated_submit_contracts();
+    $contract = $contracts[$operationKey] ?? null;
+    if (!is_array($contract)) {
+        return app_lab_sample18_task_board_generated_submit_request_result(
+            false,
+            $operationKey,
+            '',
+            '',
+            [],
+            array_keys($input),
+            ['operation.unknown'],
+            'unknown_operation',
+        );
+    }
+
+    $errors = [];
+    $payload = [];
+    if (in_array('id', $contract['key_fields'] ?? [], true)) {
+        $id = (int) ($input['id'] ?? 0);
+        if ($id <= 0) {
+            $errors[] = 'id.invalid';
+        } else {
+            $payload['id'] = $id;
+        }
+    }
+
+    if (in_array('title', $contract['required_client_fields'] ?? [], true)) {
+        $title = trim((string) ($input['title'] ?? ''));
+        if ($title === '') {
+            $errors[] = 'title.required';
+        }
+        $payload['title'] = $title;
+    }
+
+    if (in_array('body', $contract['optional_client_fields'] ?? [], true)) {
+        $payload['body'] = trim((string) ($input['body'] ?? ''));
+    }
+    if (in_array('assigned_to', $contract['optional_client_fields'] ?? [], true)) {
+        $payload['assigned_to'] = trim((string) ($input['assigned_to'] ?? ''));
+    }
+    if (in_array('priority', $contract['optional_client_fields'] ?? [], true)) {
+        $payload['priority'] = max(0, min(100, (int) ($input['priority'] ?? 10)));
+    }
+    if (in_array('due_date', $contract['optional_client_fields'] ?? [], true)) {
+        $payload['due_date'] = app_lab_sample18_task_board_normalize_due_date((string) ($input['due_date'] ?? ''));
+    }
+    if (in_array('status', $contract['optional_client_fields'] ?? [], true)) {
+        $payload['status'] = app_lab_sample18_task_board_normalize_status((string) ($input['status'] ?? ''));
+    }
+
+    foreach (($contract['fixed_fields'] ?? []) as $field => $value) {
+        if (is_string($field)) {
+            $payload[$field] = $value;
+        }
+    }
+    if (in_array('completed_at', $contract['derived_fields'] ?? [], true)) {
+        $payload['completed_at'] = ($payload['status'] ?? '') === 'done' ? $now : null;
+    }
+    foreach (($contract['server_managed_fields'] ?? []) as $field) {
+        if ($field === 'completed_at') {
+            $payload[$field] = ($payload['status'] ?? '') === 'done' ? $now : null;
+            continue;
+        }
+        if ($field === 'updated_at') {
+            $payload[$field] = $now;
+        }
+    }
+
+    $allowedInputFields = array_merge(
+        $contract['key_fields'] ?? [],
+        $contract['required_client_fields'] ?? [],
+        $contract['optional_client_fields'] ?? [],
+    );
+    $ignoredInputFields = array_values(array_diff(array_keys($input), $allowedInputFields));
+    sort($ignoredInputFields);
+    ksort($payload);
+
+    return app_lab_sample18_task_board_generated_submit_request_result(
+        $errors === [],
+        (string) ($contract['operation_key'] ?? $operationKey),
+        (string) ($contract['curated_route_action'] ?? ''),
+        (string) ($contract['db_access_function'] ?? ''),
+        $payload,
+        $ignoredInputFields,
+        $errors,
+        $errors === [] ? '' : 'validation_error',
+    );
+}
+
+function app_lab_sample18_task_board_normalize_due_date(string $value): ?string
+{
+    $normalized = trim($value);
+
+    return preg_match('/^\d{4}-\d{2}-\d{2}$/', $normalized) === 1 ? $normalized : null;
+}
+
+function app_lab_sample18_task_board_normalize_status(string $value): string
+{
+    $normalized = trim($value);
+
+    return in_array($normalized, ['todo', 'doing', 'done'], true) ? $normalized : 'todo';
+}
+
+/**
+ * @param array<string,mixed> $payload
+ * @param list<string> $ignoredInputFields
+ * @param list<string> $errors
+ * @return array{
+ *     ok:bool,
+ *     operation_key:string,
+ *     curated_route_action:string,
+ *     db_access_function:string,
+ *     payload:array<string,mixed>,
+ *     ignored_input_fields:list<string>,
+ *     errors:list<string>,
+ *     failure_code:string
+ * }
+ */
+function app_lab_sample18_task_board_generated_submit_request_result(
+    bool $ok,
+    string $operationKey,
+    string $curatedRouteAction,
+    string $dbAccessFunction,
+    array $payload,
+    array $ignoredInputFields,
+    array $errors,
+    string $failureCode,
+): array {
+    return [
+        'ok' => $ok,
+        'operation_key' => $operationKey,
+        'curated_route_action' => $curatedRouteAction,
+        'db_access_function' => $dbAccessFunction,
+        'payload' => $payload,
+        'ignored_input_fields' => $ignoredInputFields,
+        'errors' => $errors,
+        'failure_code' => $failureCode,
+    ];
+}
+
+/**
+ * @param array<string,mixed> $post
+ * @return array{status_code:int,payload:array<string,mixed>}
+ */
+function app_lab_sample18_task_board_generated_submit_blocked_response(
+    string $requestMethod,
+    array $post,
+    string $now,
+): array {
+    if (strtoupper($requestMethod) !== 'POST') {
+        return [
+            'status_code' => 405,
+            'payload' => [
+                'ok' => false,
+                'accepted' => false,
+                'result' => 'invalid',
+                'failure_code' => 'method_not_allowed',
+                'allowed_methods' => ['POST'],
+                'mutation_enabled' => false,
+            ],
+        ];
+    }
+
+    $operationKey = trim((string) ($post['operation_key'] ?? ''));
+    $input = $post;
+    unset($input['operation_key'], $input['_csrf_token']);
+    $normalized = app_lab_sample18_task_board_normalize_generated_submit_request($operationKey, $input, $now);
+    if (!$normalized['ok']) {
+        $statusCode = $normalized['failure_code'] === 'unknown_operation' ? 404 : 422;
+        return [
+            'status_code' => $statusCode,
+            'payload' => [
+                'ok' => false,
+                'accepted' => false,
+                'result' => 'invalid',
+                'failure_code' => $normalized['failure_code'],
+                'operation_key' => $normalized['operation_key'],
+                'errors' => $normalized['errors'],
+                'normalized_payload' => $normalized['payload'],
+                'ignored_input_fields' => $normalized['ignored_input_fields'],
+                'mutation_enabled' => false,
+            ],
+        ];
+    }
+
+    return [
+        'status_code' => 409,
+        'payload' => [
+            'ok' => false,
+            'accepted' => false,
+            'result' => 'blocked',
+            'failure_code' => 'generated_submit_disabled',
+            'operation_key' => $normalized['operation_key'],
+            'curated_route_action' => $normalized['curated_route_action'],
+            'db_access_function' => $normalized['db_access_function'],
+            'normalized_payload' => $normalized['payload'],
+            'ignored_input_fields' => $normalized['ignored_input_fields'],
+            'mutation_enabled' => false,
+        ],
+    ];
+}
+
+/**
+ * @param array{request_id:string,method:string} $request
+ */
+function app_render_lab_sample18_task_board_generated_submit_page(array $app, array $request): void
+{
+    $response = app_lab_sample18_task_board_generated_submit_blocked_response(
+        $request['method'],
+        $_POST,
+        date('Y-m-d H:i:s'),
+    );
+
+    app_send_json_response($request, $response['payload'], $response['status_code']);
 }
 
 function app_lab_sample18_task_board_handle_post(PDO $pdo, array $request): void

@@ -138,7 +138,7 @@ function app_no_code_screen_definition_sample18_task_card_custom_operations(): a
             'target' => 'shared_contract',
             'side_effect_class' => 'direct_mutation',
             'availability' => 'disabled',
-            'policy_key' => 'sample18.task_card.write',
+            'policy_key' => 'project.edit',
             'csrf_required' => true,
             'audit_event' => 'sample18.task_card.dry_run_action',
             'adapter_handoff' => 'sample18_task_card_curated_route',
@@ -1106,11 +1106,19 @@ function app_no_code_screen_definition_actions(array $contract, array $operation
             'permission_key' => (string) ($operation['permission_key'] ?? ''),
             'availability' => $policy['allowed'] ? 'enabled' : 'disabled',
             'policy' => $policy,
+            'submit_route' => app_no_code_screen_definition_managed_action_submit_route((string) ($operation['operation_key'] ?? '')),
             'fields' => app_no_code_screen_definition_action_fields($operation),
         ];
     }
 
     return $actions;
+}
+
+function app_no_code_screen_definition_managed_action_submit_route(string $operationKey): string
+{
+    return in_array($operationKey, ['create_task_card', 'update_task_card', 'complete_task_card'], true)
+        ? '/samples/sample18-task-board/no-code/generated-submit'
+        : '';
 }
 
 /**
@@ -1301,6 +1309,7 @@ function app_no_code_screen_definition_screen_actions(array $actions, array $ope
                 'operation_key' => (string) ($action['operation_key'] ?? ''),
                 'operation_type' => (string) ($action['operation_type'] ?? ''),
                 'availability' => (string) ($action['availability'] ?? 'disabled'),
+                'submit_route' => (string) ($action['submit_route'] ?? ''),
             ];
         }
     }

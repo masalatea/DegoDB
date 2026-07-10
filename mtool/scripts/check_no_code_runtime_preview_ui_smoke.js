@@ -234,6 +234,7 @@ function expectedProfile(name) {
         update_task_card: 'update',
       },
       managedActionDisabledReason: 'policy-not-enabled',
+      managedActionSubmitUrl: '/samples/sample18-task-board/no-code/generated-submit',
       payload: {
         id: 1801,
         title: 'Sample18 browser smoke update',
@@ -524,6 +525,7 @@ async function probeRuntimeDisabledActionSurface(page, config) {
       actionStates: buttons.map((button) => button.getAttribute('data-action-state') || ''),
       disabledReasons: buttons.map((button) => button.getAttribute('data-action-disabled-reason') || ''),
       affordances: buttons.map((button) => button.getAttribute('data-action-affordance') || ''),
+      submitUrls: buttons.map((button) => button.getAttribute('data-action-submit-url') || ''),
       disabledProperties: buttons.map((button) => button.disabled === true),
       hintKeys: hints.map((hint) => hint.getAttribute('data-action-hint') || ''),
       hintStates: hints.map((hint) => hint.getAttribute('data-action-state-hint') || ''),
@@ -556,6 +558,7 @@ async function probeRuntimeDisabledActionSurface(page, config) {
     || result.actionStates.some((state) => state !== 'disabled')
     || result.disabledReasons.some((reason) => reason !== config.expected.managedActionDisabledReason)
     || result.affordances.some((affordance) => affordance !== 'keyboard-intent-preview')
+    || result.submitUrls.some((submitUrl) => submitUrl !== config.expected.managedActionSubmitUrl)
     || result.disabledProperties.some((disabled) => disabled !== true)
     || JSON.stringify(result.hintKeys) !== JSON.stringify(expectedKeys)
     || result.hintStates.some((state) => state !== 'disabled')

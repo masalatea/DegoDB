@@ -210,6 +210,7 @@ function app_no_code_runtime_render_actions(array $screenActions, array $contrac
             'operation_type' => (string) ($screenAction['operation_type'] ?? $contractAction['operation_type'] ?? ''),
             'enabled' => $availability === 'enabled',
             'availability' => $availability,
+            'submit_route' => (string) ($screenAction['submit_route'] ?? $contractAction['submit_route'] ?? ''),
             'fields' => is_array($contractAction['fields'] ?? null) ? array_values($contractAction['fields']) : [],
             'failed_checks' => is_array($contractAction['policy']['failed_checks'] ?? null)
                 ? $contractAction['policy']['failed_checks']
@@ -950,6 +951,7 @@ function app_no_code_runtime_render_actions_html(array $actions, string $screenT
         $actionState = $enabled ? 'ready' : 'disabled';
         $actionKey = (string) ($action['action_key'] ?? '');
         $operationType = (string) ($action['operation_type'] ?? '');
+        $submitRoute = (string) ($action['submit_route'] ?? '');
         $hintId = app_no_code_runtime_dom_id('no-code-action-hint-' . $screenKey . '-' . $actionKey);
         $disabledReason = $enabled ? '' : 'policy-not-enabled';
         $buttons[] = '<span class="no-code-action-control" data-action-control="' . app_no_code_runtime_html_escape($actionKey) . '">'
@@ -960,6 +962,7 @@ function app_no_code_runtime_render_actions_html(array $actions, string $screenT
             . ' data-action-state="' . $actionState . '"'
             . ' data-action-affordance="keyboard-intent-preview"'
             . ' data-keyboard-activation="enter-space"'
+            . ($submitRoute !== '' ? ' data-action-submit-url="' . app_no_code_runtime_html_escape($submitRoute) . '"' : '')
             . ($disabledReason !== '' ? ' data-action-disabled-reason="' . app_no_code_runtime_html_escape($disabledReason) . '"' : '')
             . ' aria-describedby="' . app_no_code_runtime_html_escape($hintId) . '"'
             . ' aria-disabled="' . ($enabled ? 'false' : 'true') . '"'
