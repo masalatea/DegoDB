@@ -11,6 +11,8 @@
 
 ## Index
 
+- `2026-0710-sample18-post-idempotency-execution-outcome-persistence-lane-closure.md`
+  - #627 sample18 post-idempotency execution outcome persistence lane closure。#626 の idempotency execution outcome update API を受け入れ、次は DBAccess executor 前に execution audit append persistence (#628) を昇格。DBAccess mutation / transaction / route executor は未有効化。Status: `DONE`。
 - `2026-0710-sample18-idempotency-execution-outcome-persistence-first-slice.md`
   - #626 sample18 idempotency execution outcome persistence first slice。既存 generated-submit idempotency record に execution outcome を repository-level で保存する update API を追加し、metadata merge / result update / duplicate replay fail-closed を coverage。DBAccess mutation / transaction / execution audit write / route executor は未有効化。Status: `FIRST_SLICE_DONE`。
 - `2026-0710-sample18-guarded-executor-implementation-preflight.md`
