@@ -11,6 +11,8 @@
 
 ## Index
 
+- `2026-0710-sample18-post-blocked-audit-append-lane-closure.md`
+  - #589 sample18 post-blocked-audit-append lane closure。#588 の valid blocked generated submit audit append を受け入れ、次は mutation enablement より前に audit append failure visibility coverage (#590) を昇格。DBAccess mutation は未有効化。Status: `DONE`。
 - `2026-0710-sample18-generated-submit-blocked-audit-append-first-slice.md`
   - #588 sample18 generated submit blocked audit append first slice。valid blocked generated submit request を config DB audit log に append し、response に `audit_append.status=appended` を返す。CSRF / validation / unknown operation failures は append せず、DBAccess mutation は未有効化。Status: `FIRST_SLICE_DONE`。
 - `2026-0710-sample18-post-idempotency-audit-helper-lane-closure.md`
