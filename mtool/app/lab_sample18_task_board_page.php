@@ -1558,6 +1558,154 @@ function app_lab_sample18_task_board_generated_submit_transaction_adapter(
 }
 
 /**
+ * @param array<string,mixed> $transactionResult
+ * @param array<string,mixed> $executionUpdatePlan
+ * @param array<string,mixed> $executionGuard
+ * @param callable(array<string,mixed>):mixed $executionAuditRecorder
+ * @param callable(array<string,mixed>):mixed $idempotencyOutcomeRecorder
+ * @return array<string,mixed>
+ */
+function app_lab_sample18_task_board_generated_submit_post_commit_recording_adapter(
+    array $transactionResult,
+    array $executionUpdatePlan,
+    array $executionGuard,
+    callable $executionAuditRecorder,
+    callable $idempotencyOutcomeRecorder,
+): array {
+    $dedupeKey = (string) ($transactionResult['dedupe_key'] ?? ($executionGuard['dedupe_key'] ?? ''));
+    $requestAuditEventKey = (string) ($transactionResult['request_audit_event_key'] ?? ($executionGuard['request_audit_event_key'] ?? ''));
+    $base = [
+        'status' => 'failed',
+        'success' => false,
+        'recording_status' => 'skipped',
+        'execution_audit_status' => 'not_started',
+        'idempotency_update_status' => 'not_started',
+        'transaction_status' => (string) ($transactionResult['transaction_status'] ?? ''),
+        'dbaccess_status' => (string) ($transactionResult['dbaccess_status'] ?? ''),
+        'recovery_required' => false,
+        'recovery_reason' => '',
+        'failure_code' => '',
+        'error' => '',
+        'dedupe_key' => $dedupeKey,
+        'request_audit_event_key' => $requestAuditEventKey,
+        'execution_audit_result' => [],
+        'idempotency_update_result' => [],
+        'reasons' => [],
+    ];
+
+    $preconditionReasons = [];
+    if (($transactionResult['status'] ?? '') !== 'executed' || !($transactionResult['success'] ?? false)) {
+        $preconditionReasons[] = 'transaction_result_not_successful';
+    }
+    if (($transactionResult['transaction_status'] ?? '') !== 'committed') {
+        $preconditionReasons[] = 'transaction_not_committed';
+    }
+    if (($transactionResult['dbaccess_status'] ?? '') !== 'executed') {
+        $preconditionReasons[] = 'dbaccess_not_executed';
+    }
+    if (($executionUpdatePlan['status'] ?? '') !== 'planned' || !($executionUpdatePlan['ready'] ?? false)) {
+        $preconditionReasons[] = 'execution_update_plan_not_ready';
+        foreach (($executionUpdatePlan['reasons'] ?? []) as $reason) {
+            if (is_string($reason) && $reason !== '') {
+                $preconditionReasons[] = $reason;
+            }
+        }
+    }
+    if (($executionGuard['status'] ?? '') !== 'allowed' || !($executionGuard['ready'] ?? false)) {
+        $preconditionReasons[] = 'execution_guard_not_ready';
+        foreach (($executionGuard['reasons'] ?? []) as $reason) {
+            if (is_string($reason) && $reason !== '') {
+                $preconditionReasons[] = $reason;
+            }
+        }
+    }
+    if ($dedupeKey === '') {
+        $preconditionReasons[] = 'dedupe_key_missing';
+    }
+    if ($requestAuditEventKey === '') {
+        $preconditionReasons[] = 'request_audit_event_key_missing';
+    }
+
+    if ($preconditionReasons !== []) {
+        $preconditionReasons = array_values(array_unique($preconditionReasons));
+        $base['failure_code'] = $preconditionReasons[0];
+        $base['reasons'] = $preconditionReasons;
+
+        return $base;
+    }
+
+    $context = [
+        'dedupe_key' => $dedupeKey,
+        'request_audit_event_key' => $requestAuditEventKey,
+        'transaction_status' => 'committed',
+        'dbaccess_status' => 'executed',
+        'operation_key' => (string) ($transactionResult['operation_key'] ?? ($executionGuard['operation_key'] ?? '')),
+    ];
+
+    try {
+        $audit = $executionAuditRecorder($context);
+    } catch (Throwable $throwable) {
+        $base['recording_status'] = 'failed';
+        $base['execution_audit_status'] = 'failed';
+        $base['failure_code'] = 'execution_audit_exception';
+        $base['error'] = $throwable->getMessage();
+        $base['recovery_required'] = true;
+        $base['recovery_reason'] = 'post_commit_recording_failed';
+        $base['reasons'] = ['execution_audit_exception'];
+
+        return $base;
+    }
+    $base['execution_audit_result'] = is_array($audit) ? $audit : [];
+    if (!is_array($audit) || !($audit['ok'] ?? false)) {
+        $base['recording_status'] = 'failed';
+        $base['execution_audit_status'] = 'failed';
+        $base['failure_code'] = (string) (is_array($audit) ? ($audit['failure_code'] ?? 'execution_audit_failed') : 'execution_audit_failed');
+        $base['error'] = (string) (is_array($audit) ? ($audit['error'] ?? '') : '');
+        $base['recovery_required'] = true;
+        $base['recovery_reason'] = 'post_commit_recording_failed';
+        $base['reasons'] = [$base['failure_code']];
+
+        return $base;
+    }
+    $base['execution_audit_status'] = 'recorded';
+
+    try {
+        $idempotency = $idempotencyOutcomeRecorder($context + ['execution_audit_result' => $audit]);
+    } catch (Throwable $throwable) {
+        $base['recording_status'] = 'failed';
+        $base['idempotency_update_status'] = 'failed';
+        $base['failure_code'] = 'idempotency_update_exception';
+        $base['error'] = $throwable->getMessage();
+        $base['recovery_required'] = true;
+        $base['recovery_reason'] = 'post_commit_recording_failed';
+        $base['reasons'] = ['idempotency_update_exception'];
+
+        return $base;
+    }
+    $base['idempotency_update_result'] = is_array($idempotency) ? $idempotency : [];
+    if (!is_array($idempotency) || !($idempotency['ok'] ?? false)) {
+        $base['recording_status'] = 'failed';
+        $base['idempotency_update_status'] = 'failed';
+        $base['failure_code'] = (string) (is_array($idempotency) ? ($idempotency['failure_code'] ?? 'idempotency_update_failed') : 'idempotency_update_failed');
+        $base['error'] = (string) (is_array($idempotency) ? ($idempotency['error'] ?? '') : '');
+        $base['recovery_required'] = true;
+        $base['recovery_reason'] = 'post_commit_recording_failed';
+        $base['reasons'] = [$base['failure_code']];
+
+        return $base;
+    }
+
+    $base['status'] = 'recorded';
+    $base['success'] = true;
+    $base['recording_status'] = 'recorded';
+    $base['idempotency_update_status'] = 'recorded';
+    $base['failure_code'] = '';
+    $base['reasons'] = [];
+
+    return $base;
+}
+
+/**
  * @param array<string,mixed> $post
  * @return array{status_code:int,payload:array<string,mixed>}
  */
