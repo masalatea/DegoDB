@@ -11,6 +11,8 @@
 
 ## Index
 
+- `2026-0710-sample18-generated-submit-idempotency-persistence-preflight.md`
+  - #592 sample18 generated submit idempotency persistence preflight。config DB storage candidate、dedupe key / duplicate response shape、audit append との相互作用、fail-closed boundary を定義。次は repository/helper first slice (#593)。DBAccess mutation は未有効化。Status: `DONE`。
 - `2026-0710-sample18-post-audit-failure-visibility-lane-closure.md`
   - #591 sample18 post-audit-failure-visibility lane closure。#590 の audit append failure visibility を受け入れ、mutation enablement より前に generated submit idempotency persistence preflight (#592) を昇格。DBAccess mutation は未有効化。Status: `DONE`。
 - `2026-0710-sample18-generated-submit-audit-append-failure-visibility-coverage.md`
