@@ -588,6 +588,15 @@ final class Sample18MiniTaskBoardDemoTest extends TestCase
         self::assertContains('executor_feature_flag_disabled', $blocked['payload']['executor_coordination_plan']['reasons'] ?? []);
         self::assertContains('execution_guard_not_ready', $blocked['payload']['executor_coordination_plan']['reasons'] ?? []);
         self::assertContains('request_audit_event_key_missing', $blocked['payload']['executor_coordination_plan']['reasons'] ?? []);
+        self::assertSame('disabled', $blocked['payload']['executor_config']['status'] ?? '');
+        self::assertFalse($blocked['payload']['executor_config']['ready'] ?? true);
+        self::assertFalse($blocked['payload']['executor_config']['mutation_enabled'] ?? true);
+        self::assertFalse($blocked['payload']['executor_config']['executor_enabled'] ?? true);
+        self::assertSame('default', $blocked['payload']['executor_config']['mutation_enablement_source'] ?? '');
+        self::assertSame('default', $blocked['payload']['executor_config']['executor_enablement_source'] ?? '');
+        self::assertSame('default_runtime_reference', $blocked['payload']['executor_config']['dependency_source'] ?? '');
+        self::assertContains('mutation_enablement_disabled', $blocked['payload']['executor_config']['reasons'] ?? []);
+        self::assertContains('executor_enablement_disabled', $blocked['payload']['executor_config']['reasons'] ?? []);
         self::assertFalse($blocked['payload']['mutation_enabled'] ?? true);
 
         $missingCsrf = app_lab_sample18_task_board_generated_submit_blocked_response(
@@ -1100,6 +1109,14 @@ final class Sample18MiniTaskBoardDemoTest extends TestCase
         self::assertSame($blocked['payload']['dedupe_key_preview'] ?? '', $blocked['payload']['executor_coordination_plan']['dedupe_key'] ?? 'missing');
         self::assertSame($blocked['payload']['audit_append']['item']['event_key'] ?? '', $blocked['payload']['executor_coordination_plan']['request_audit_event_key'] ?? 'missing');
         self::assertContains('executor_feature_flag_disabled', $blocked['payload']['executor_coordination_plan']['reasons'] ?? []);
+        self::assertSame('disabled', $blocked['payload']['executor_config']['status'] ?? '');
+        self::assertFalse($blocked['payload']['executor_config']['ready'] ?? true);
+        self::assertTrue($blocked['payload']['executor_config']['mutation_enabled'] ?? false);
+        self::assertFalse($blocked['payload']['executor_config']['executor_enabled'] ?? true);
+        self::assertSame('app', $blocked['payload']['executor_config']['mutation_enablement_source'] ?? '');
+        self::assertSame('default', $blocked['payload']['executor_config']['executor_enablement_source'] ?? '');
+        self::assertSame('default_runtime_reference', $blocked['payload']['executor_config']['dependency_source'] ?? '');
+        self::assertSame(['executor_enablement_disabled'], $blocked['payload']['executor_config']['reasons'] ?? []);
 
         $latest = app_audit_log_fetch_latest($app, [
             'project_key' => 'SAMPLE18',
@@ -1205,6 +1222,14 @@ final class Sample18MiniTaskBoardDemoTest extends TestCase
             self::assertSame('executed', $executed['payload']['result'] ?? '');
             self::assertSame('', $executed['payload']['failure_code'] ?? 'unexpected');
             self::assertTrue($executed['payload']['executor_enabled'] ?? false);
+            self::assertSame('ready', $executed['payload']['executor_config']['status'] ?? '');
+            self::assertTrue($executed['payload']['executor_config']['ready'] ?? false);
+            self::assertTrue($executed['payload']['executor_config']['mutation_enabled'] ?? false);
+            self::assertTrue($executed['payload']['executor_config']['executor_enabled'] ?? false);
+            self::assertSame('app', $executed['payload']['executor_config']['mutation_enablement_source'] ?? '');
+            self::assertSame('app', $executed['payload']['executor_config']['executor_enablement_source'] ?? '');
+            self::assertSame('injected_transaction_callables', $executed['payload']['executor_config']['dependency_source'] ?? '');
+            self::assertSame([], $executed['payload']['executor_config']['reasons'] ?? ['unexpected']);
             self::assertSame('planned', $executed['payload']['executor_coordination_plan']['status'] ?? '');
             self::assertSame('executed', $executed['payload']['route_execution']['execution_status'] ?? '');
             self::assertSame('committed', $executed['payload']['transaction_result']['transaction_status'] ?? '');
@@ -1555,6 +1580,15 @@ final class Sample18MiniTaskBoardDemoTest extends TestCase
             self::assertSame(500, $missingRuntime['status_code']);
             self::assertSame('failed', $missingRuntime['payload']['result'] ?? '');
             self::assertSame('executor_default_runtime_file_missing', $missingRuntime['payload']['failure_code'] ?? '');
+            self::assertSame('failed', $missingRuntime['payload']['executor_config']['status'] ?? '');
+            self::assertFalse($missingRuntime['payload']['executor_config']['ok'] ?? true);
+            self::assertFalse($missingRuntime['payload']['executor_config']['ready'] ?? true);
+            self::assertSame('app', $missingRuntime['payload']['executor_config']['mutation_enablement_source'] ?? '');
+            self::assertSame('app', $missingRuntime['payload']['executor_config']['executor_enablement_source'] ?? '');
+            self::assertSame('default_runtime_reference', $missingRuntime['payload']['executor_config']['dependency_source'] ?? '');
+            self::assertSame('executor_default_runtime_file_missing', $missingRuntime['payload']['executor_config']['failure_code'] ?? '');
+            self::assertContains('runtime_reference_file_missing', $missingRuntime['payload']['executor_config']['reasons'] ?? []);
+            self::assertContains('runtime_reference_file_missing', $missingRuntime['payload']['route_execution']['reasons'] ?? []);
         } finally {
             $previousDsn === false ? putenv('MTOOL_RUNTIME_DB_DSN') : putenv('MTOOL_RUNTIME_DB_DSN=' . $previousDsn);
             $previousSqlitePath === false ? putenv('MTOOL_RUNTIME_SQLITE_PATH') : putenv('MTOOL_RUNTIME_SQLITE_PATH=' . $previousSqlitePath);
@@ -1756,6 +1790,64 @@ final class Sample18MiniTaskBoardDemoTest extends TestCase
             self::assertTrue($injected['ready']);
             self::assertSame('injected_transaction_callables', $injected['dependency_source']);
             self::assertSame([], $injected['reasons']);
+        } finally {
+            $previousMutationFlag === false
+                ? putenv('MTOOL_SAMPLE18_GENERATED_SUBMIT_MUTATION_ENABLED')
+                : putenv('MTOOL_SAMPLE18_GENERATED_SUBMIT_MUTATION_ENABLED=' . $previousMutationFlag);
+            $previousExecutorFlag === false
+                ? putenv('MTOOL_SAMPLE18_GENERATED_SUBMIT_EXECUTOR_ENABLED')
+                : putenv('MTOOL_SAMPLE18_GENERATED_SUBMIT_EXECUTOR_ENABLED=' . $previousExecutorFlag);
+        }
+    }
+
+    public function testMiniTaskBoardGeneratedSubmitRouteExposesEnvExecutorConfigMetadata(): void
+    {
+        $previousMutationFlag = getenv('MTOOL_SAMPLE18_GENERATED_SUBMIT_MUTATION_ENABLED');
+        $previousExecutorFlag = getenv('MTOOL_SAMPLE18_GENERATED_SUBMIT_EXECUTOR_ENABLED');
+
+        try {
+            putenv('MTOOL_SAMPLE18_GENERATED_SUBMIT_MUTATION_ENABLED=1');
+            putenv('MTOOL_SAMPLE18_GENERATED_SUBMIT_EXECUTOR_ENABLED');
+
+            $checklist = $this->sample18FastContractChecklist();
+            $submitContract = $checklist['generated_submit_request_contract'] ?? [];
+            self::assertIsArray($submitContract);
+            $timestamp = (string) ($submitContract['timestamp_fixture'] ?? '');
+            $createExpectation = $submitContract['operations']['create_task_card'] ?? [];
+            self::assertIsArray($createExpectation);
+
+            $app = $this->sqliteApp();
+            $bootstrap = app_config_db_bootstrap_apply($app);
+            self::assertTrue($bootstrap['ok'], $bootstrap['error']);
+            $validPost = array_merge(
+                ['operation_key' => 'create_task_card', '_csrf_token' => 'client-token'],
+                is_array($createExpectation['valid_input'] ?? null) ? $createExpectation['valid_input'] : [],
+            );
+
+            $blocked = app_lab_sample18_task_board_generated_submit_blocked_response(
+                'POST',
+                $validPost,
+                $timestamp,
+                'valid',
+                $app,
+                [
+                    'id' => 'sample18-env-config@example.test',
+                    'auth_source' => 'phpunit',
+                ],
+            );
+
+            self::assertSame(409, $blocked['status_code']);
+            self::assertSame('blocked', $blocked['payload']['result'] ?? '');
+            self::assertSame('ready', $blocked['payload']['mutation_gate']['status'] ?? '');
+            self::assertSame('blocked', $blocked['payload']['executor_coordination_plan']['status'] ?? '');
+            self::assertSame('disabled', $blocked['payload']['executor_config']['status'] ?? '');
+            self::assertFalse($blocked['payload']['executor_config']['ready'] ?? true);
+            self::assertTrue($blocked['payload']['executor_config']['mutation_enabled'] ?? false);
+            self::assertFalse($blocked['payload']['executor_config']['executor_enabled'] ?? true);
+            self::assertSame('env', $blocked['payload']['executor_config']['mutation_enablement_source'] ?? '');
+            self::assertSame('default', $blocked['payload']['executor_config']['executor_enablement_source'] ?? '');
+            self::assertSame('default_runtime_reference', $blocked['payload']['executor_config']['dependency_source'] ?? '');
+            self::assertSame(['executor_enablement_disabled'], $blocked['payload']['executor_config']['reasons'] ?? []);
         } finally {
             $previousMutationFlag === false
                 ? putenv('MTOOL_SAMPLE18_GENERATED_SUBMIT_MUTATION_ENABLED')

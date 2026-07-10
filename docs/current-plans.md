@@ -13,7 +13,7 @@ When someone asks for "the plan list", answer from this section first. / 「計�
 
 ### Main Plan / 主計画
 
-Current main status: #678 closes the production runtime config resolver lane and promotes route-visible executor config metadata coverage. `develop` is 156 commits ahead of `origin/develop`, and push has not been performed for #432-#678. / 現在の主計画ステータス: #678 で production runtime config resolver lane を閉じ、route-visible executor config metadata coverage を昇格しました。`develop` は `origin/develop` より 156 commits ahead、#432-#678 は push していません。
+Current main status: #679 adds route-visible executor config metadata coverage and promotes lane closure. `develop` is 157 commits ahead of `origin/develop`, and push has not been performed for #432-#679. / 現在の主計画ステータス: #679 で route-visible executor config metadata coverage を追加し、lane closure を昇格しました。`develop` は `origin/develop` より 157 commits ahead、#432-#679 は push していません。
 
 | Order | Work unit / 作業の塊 | Commit unit / コミット単位 | Status | Rough effort / 目安 |
 | --- | --- | --- | --- | --- |
@@ -237,7 +237,8 @@ Current main status: #678 closes the production runtime config resolver lane and
 | 676 | Sample18 production runtime config hardening preflight / sample18 production runtime config hardening preflight | Define the production-safe config boundary for enabling generated-submit executor behavior, including env flags, default runtime binding paths, fail-closed validation, and tests before broadening execution availability | `DONE` | 0.5 - 1 day / 半日 - 1 日 |
 | 677 | Sample18 production runtime config resolver first slice / sample18 production runtime config resolver first slice | Add a focused generated-submit executor config resolver that normalizes app/env enablement flags, validates default runtime reference paths before execution, and returns fail-closed metadata covered by focused tests | `FIRST_SLICE_DONE` | 0.5 - 1 day / 半日 - 1 日 |
 | 678 | Post production runtime config resolver lane closure / production runtime config resolver 後の lane closure | Close the config resolver slice and decide whether broader browser smoke coverage, route response refinement, or sample18 availability documentation should be promoted next | `DONE` | 0.25 - 0.5 day / 0.25 - 0.5 日 |
-| 679 | Sample18 route executor config metadata coverage / sample18 route executor config metadata coverage | Add focused route-level coverage that generated-submit responses expose stable `executor_config` metadata for disabled defaults, env/app enablement, missing runtime reference failure, and injected-callable execution readiness | `ACTIVE_NEXT` | 0.5 day / 半日 |
+| 679 | Sample18 route executor config metadata coverage / sample18 route executor config metadata coverage | Add focused route-level coverage that generated-submit responses expose stable `executor_config` metadata for disabled defaults, env/app enablement, missing runtime reference failure, and injected-callable execution readiness | `FIRST_SLICE_DONE` | 0.5 day / 半日 |
+| 680 | Post route executor config metadata coverage lane closure / route executor config metadata coverage 後の lane closure | Close route-visible config metadata coverage and decide whether sample18 availability documentation, browser smoke coverage, or route response/status refinement should be promoted next | `ACTIVE_NEXT` | 0.25 - 0.5 day / 0.25 - 0.5 日 |
 
 ### Long-Term No-Code Roadmap / 長期 No-Code ロードマップ
 
