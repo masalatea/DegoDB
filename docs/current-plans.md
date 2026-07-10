@@ -13,7 +13,7 @@ When someone asks for "the plan list", answer from this section first. / 「計�
 
 ### Main Plan / 主計画
 
-Current main status: #616 adds a non-mutating sample18 execution update-plan helper and promotes lane closure before route integration or guarded execution. `develop` is 92 commits ahead of `origin/develop`, and push has not been performed for #432-#616. / 現在の主計画ステータス: #616 で non-mutating sample18 execution update-plan helper を追加し、route integration / guarded execution より前に lane closure を昇格しました。`develop` は `origin/develop` より 92 commits ahead、#432-#616 は push していません。
+Current main status: #617 closes the non-mutating sample18 execution update-plan helper lane and promotes route metadata integration before guarded execution. `develop` is 93 commits ahead of `origin/develop`, and push has not been performed for #432-#617. / 現在の主計画ステータス: #617 で non-mutating sample18 execution update-plan helper lane を閉じ、guarded execution より前に route metadata integration を昇格しました。`develop` は `origin/develop` より 93 commits ahead、#432-#617 は push していません。
 
 | Order | Work unit / 作業の塊 | Commit unit / コミット単位 | Status | Rough effort / 目安 |
 | --- | --- | --- | --- | --- |
@@ -175,7 +175,8 @@ Current main status: #616 adds a non-mutating sample18 execution update-plan hel
 | 614 | Sample18 post-transaction-plan route metadata lane closure / sample18 post-transaction-plan route metadata lane closure | Close the transaction-plan route metadata lane and decide whether execution audit update preflight, guarded execution preflight, or route metadata hardening should be promoted next | `DONE` | 0.25 - 0.5 day / 0.25 - 0.5 日 |
 | 615 | Sample18 execution audit/idempotency update preflight / sample18 execution audit/idempotency update preflight | Define the post-execution audit event and idempotency update contract before any guarded DBAccess execution can be enabled | `DONE` | 0.5 day / 半日 |
 | 616 | Sample18 execution update-plan helper first slice / sample18 execution update-plan helper first slice | Add a non-mutating helper that derives post-execution audit/idempotency update metadata from planned transaction metadata without writing audit/idempotency rows or executing DBAccess | `DONE` | 0.5 - 1 day / 半日 - 1 日 |
-| 617 | Sample18 post-execution update-plan helper lane closure / sample18 post-execution update-plan helper lane closure | Close the non-mutating execution update-plan helper lane and decide whether route metadata integration, guarded execution preflight, or persistence update schema work should be promoted next | `ACTIVE_NEXT` | 0.25 - 0.5 day / 0.25 - 0.5 日 |
+| 617 | Sample18 post-execution update-plan helper lane closure / sample18 post-execution update-plan helper lane closure | Close the non-mutating execution update-plan helper lane and decide whether route metadata integration, guarded execution preflight, or persistence update schema work should be promoted next | `DONE` | 0.25 - 0.5 day / 0.25 - 0.5 日 |
+| 618 | Sample18 execution update-plan route metadata integration / sample18 execution update-plan route metadata integration | Wire non-mutating `execution_update_plan` metadata into valid generated-submit route responses while preserving HTTP 409, mutation disabled, executed false, transaction not opened, and no audit/idempotency writes | `ACTIVE_NEXT` | 0.5 day / 半日 |
 
 ### Long-Term No-Code Roadmap / 長期 No-Code ロードマップ
 
@@ -377,6 +378,8 @@ Latest code verification from #616:
 - `make sample18-pack-runtime-test`: `OK (11 tests, 717 assertions)`
 - Full `make test`: `OK, but incomplete, skipped, or risky tests! Tests: 393, Assertions: 12525, Skipped: 1.`
 - `git diff --check`
+
+For #617, docs-only verification is `git diff --check`.
 
 Latest code verification from #459:
 
