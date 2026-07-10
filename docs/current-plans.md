@@ -13,7 +13,7 @@ When someone asks for "the plan list", answer from this section first. / 「計�
 
 ### Main Plan / 主計画
 
-Current main status: #674 maps generated-submit route responses into distinct runtime UI states and promotes the lane closure. `develop` is 152 commits ahead of `origin/develop`, and push has not been performed for #432-#674. / 現在の主計画ステータス: #674 で generated-submit route response を distinct runtime UI state に写し、lane closure を昇格しました。`develop` は `origin/develop` より 152 commits ahead、#432-#674 は push していません。
+Current main status: #675 closes the generated-submit runtime UI rendering lane and promotes production runtime config hardening preflight. `develop` is 153 commits ahead of `origin/develop`, and push has not been performed for #432-#675. / 現在の主計画ステータス: #675 で generated-submit runtime UI rendering lane を閉じ、production runtime config hardening preflight を昇格しました。`develop` は `origin/develop` より 153 commits ahead、#432-#675 は push していません。
 
 | Order | Work unit / 作業の塊 | Commit unit / コミット単位 | Status | Rough effort / 目安 |
 | --- | --- | --- | --- | --- |
@@ -233,7 +233,8 @@ Current main status: #674 maps generated-submit route responses into distinct ru
 | 672 | Post commit-unknown recovery coverage lane closure / commit-unknown recovery coverage 後の lane closure | Close commit-unknown recovery coverage and decide whether UI success/error rendering, production runtime config hardening, or route response status refinement should be promoted next | `DONE` | 0.25 - 0.5 day / 0.25 - 0.5 日 |
 | 673 | Sample18 generated-submit UI success/error rendering preflight / sample18 generated-submit UI success/error rendering preflight | Define how no-code generated submit UI should render success, failure, duplicate, and recovery states from route responses now that execution/recovery route contracts are covered | `DONE` | 0.5 - 1 day / 半日 - 1 日 |
 | 674 | Sample18 generated-submit runtime UI result rendering first slice / sample18 generated-submit runtime UI result rendering first slice | Update no-code runtime guarded generated action feedback so executed, duplicate/blocked, ordinary failure, and recovery-required route responses produce distinct UI states and testable data attributes | `FIRST_SLICE_DONE` | 0.5 - 1 day / 半日 - 1 日 |
-| 675 | Post generated-submit runtime UI rendering lane closure / generated-submit runtime UI rendering 後の lane closure | Close the runtime UI result rendering slice and decide whether production runtime config hardening, route response status refinement, or broader browser smoke coverage should be promoted next | `ACTIVE_NEXT` | 0.25 - 0.5 day / 0.25 - 0.5 日 |
+| 675 | Post generated-submit runtime UI rendering lane closure / generated-submit runtime UI rendering 後の lane closure | Close the runtime UI result rendering slice and decide whether production runtime config hardening, route response status refinement, or broader browser smoke coverage should be promoted next | `DONE` | 0.25 - 0.5 day / 0.25 - 0.5 日 |
+| 676 | Sample18 production runtime config hardening preflight / sample18 production runtime config hardening preflight | Define the production-safe config boundary for enabling generated-submit executor behavior, including env flags, default runtime binding paths, fail-closed validation, and tests before broadening execution availability | `ACTIVE_NEXT` | 0.5 - 1 day / 半日 - 1 日 |
 
 ### Long-Term No-Code Roadmap / 長期 No-Code ロードマップ
 
