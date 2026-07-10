@@ -11,6 +11,8 @@
 
 ## Index
 
+- `2026-0710-sample18-dbaccess-call-adapter-preflight.md`
+  - #635 sample18 DBAccess call adapter preflight。guarded executor 用 DBAccess call adapter の入力 metadata、TaskCard operation mapping、fail-closed rules、fake callable test matrix を定義し、次は route-unwired adapter helper first slice (#636) を昇格。real DBAccess mutation / transaction / route execution は未有効化。Status: `DONE`。
 - `2026-0710-sample18-post-executor-coordination-plan-route-metadata-lane-closure.md`
   - #634 sample18 post-executor coordination plan route metadata lane closure。#633 の route-visible `executor_coordination_plan` metadata を受け入れ、次は execution 有効化前の DBAccess call adapter preflight (#635) を昇格。DBAccess mutation / transaction / route executor は未有効化。Status: `DONE`。
 - `2026-0710-sample18-executor-coordination-plan-route-metadata-integration.md`
