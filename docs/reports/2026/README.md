@@ -11,6 +11,8 @@
 
 ## Index
 
+- `2026-0710-post-guarded-submit-payload-handoff-lane-closure.md`
+  - #690 post guarded submit payload handoff lane closure。#689 の fast payload handoff contract を受け入れ、browser smoke / availability expansion の前に selected-row/key handoff fast contract (#691) を昇格。Status: `DONE`。
 - `2026-0710-sample18-guarded-submit-payload-handoff-fast-contract-first-slice.md`
   - #689 sample18 guarded submit payload handoff fast contract first slice。generated action intent の key/input 分解、route normalizer への handoff、required input fail-closed、generated runtime HTML の guarded submit POST assembly source を fast non-browser assertion で固定。Status: `FIRST_SLICE_DONE`。
 - `2026-0710-post-action-input-route-compatibility-contract-lane-closure.md`
