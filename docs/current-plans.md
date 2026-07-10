@@ -13,7 +13,7 @@ When someone asks for "the plan list", answer from this section first. / 「計�
 
 ### Main Plan / 主計画
 
-Current main status: #573 closes the sample18 generated submit guard lane and promotes guarded CSRF handoff preflight before disabled click intent or mutation dispatcher work. `develop` is 49 commits ahead of `origin/develop`, and push has not been performed for #432-#573. / 現在の主計画ステータス: #573 で sample18 generated submit guard lane を閉じ、disabled click intent や mutation dispatcher の前に guarded CSRF handoff preflight を昇格しました。`develop` は `origin/develop` より 49 commits ahead、#432-#573 は push していません。
+Current main status: #574 defines and exposes the sample18 generated submit CSRF handoff contract while keeping generated buttons and mutation disabled. `develop` is 50 commits ahead of `origin/develop`, and push has not been performed for #432-#574. / 現在の主計画ステータス: #574 で sample18 generated submit CSRF handoff contract を定義・公開し、generated button と mutation は disabled のまま維持しました。`develop` は `origin/develop` より 50 commits ahead、#432-#574 は push していません。
 
 | Order | Work unit / 作業の塊 | Commit unit / コミット単位 | Status | Rough effort / 目安 |
 | --- | --- | --- | --- | --- |
@@ -132,7 +132,8 @@ Current main status: #573 closes the sample18 generated submit guard lane and pr
 | 571 | Sample18 submit binding lane closure / sample18 submit binding lane closure | Close the binding gate lane and decide whether disabled click intent, CSRF handoff, or mutation dispatcher work should be promoted next | `DONE` | 0.25 - 0.5 day / 0.25 - 0.5 日 |
 | 572 | Sample18 generated submit CSRF guard preflight / sample18 generated submit CSRF guard preflight | Add fail-closed CSRF handling and HTTP smoke coverage for the generated submit route before any runtime click binding or mutation dispatcher work | `DONE` | 0.5 - 1 day / 半日 - 1 日 |
 | 573 | Sample18 post-CSRF submit route lane closure / sample18 post-CSRF submit route lane closure | Close the generated submit guard lane and decide whether disabled click intent, guarded CSRF handoff, or mutation dispatcher inventory should be promoted next | `DONE` | 0.25 - 0.5 day / 0.25 - 0.5 日 |
-| 574 | Sample18 generated submit CSRF handoff preflight / sample18 generated submit CSRF handoff preflight | Define and expose the CSRF token handoff contract for generated submit actions while keeping buttons disabled and mutation parked | `ACTIVE_NEXT` | 0.5 - 1 day / 半日 - 1 日 |
+| 574 | Sample18 generated submit CSRF handoff preflight / sample18 generated submit CSRF handoff preflight | Define and expose the CSRF token handoff contract for generated submit actions while keeping buttons disabled and mutation parked | `DONE` | 0.5 - 1 day / 半日 - 1 日 |
+| 575 | Sample18 post-CSRF handoff lane closure / sample18 post-CSRF handoff lane closure | Close the CSRF handoff lane and decide whether disabled click intent or mutation dispatcher inventory should be promoted next | `ACTIVE_NEXT` | 0.25 - 0.5 day / 0.25 - 0.5 日 |
 
 ### Long-Term No-Code Roadmap / 長期 No-Code ロードマップ
 

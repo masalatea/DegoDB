@@ -11,6 +11,8 @@
 
 ## Index
 
+- `2026-0710-sample18-generated-submit-csrf-handoff-preflight.md`
+  - #574 sample18 generated submit CSRF handoff preflight。generated submit action metadata / runtime DOM に CSRF token field、source selector、transport、submit field を追加し、focused PHPUnit と public runtime disabled-action smoke で確認。button / mutation は disabled のまま維持。Status: `DONE`。
 - `2026-0710-sample18-post-csrf-submit-route-lane-closure.md`
   - #573 sample18 post-CSRF submit route lane closure。#572 の route CSRF guard を受け入れ、次は disabled click intent / mutation dispatcher ではなく、generated runtime 側の CSRF token handoff contract (#574) を先に固定する判断を記録。Status: `DONE`。
 - `2026-0710-sample18-generated-submit-csrf-guard-preflight.md`
