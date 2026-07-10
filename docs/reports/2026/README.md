@@ -11,6 +11,8 @@
 
 ## Index
 
+- `2026-0710-sample18-real-runtime-default-binding-preflight.md`
+  - #668 sample18 real runtime default binding preflight。generated-submit route が test-injected transaction callables なしで sample18 reference runtime DBAccess classes から default binding を構成する境界を定義。次は first slice (#669)。Status: `DONE`。
 - `2026-0710-post-route-execution-failure-recovery-coverage-lane-closure.md`
   - #667 post route execution failure/recovery coverage lane closure。#666 の route-level failure/recovery coverage を受け入れ、次は test-only injected callables から real sample runtime default binding preflight (#668) へ進む。Status: `DONE`。
 - `2026-0710-sample18-route-execution-failure-recovery-coverage-first-slice.md`

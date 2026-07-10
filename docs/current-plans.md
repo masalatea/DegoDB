@@ -13,7 +13,7 @@ When someone asks for "the plan list", answer from this section first. / 「計�
 
 ### Main Plan / 主計画
 
-Current main status: #667 closes route execution failure/recovery coverage and promotes real sample runtime default binding preflight. `develop` is 145 commits ahead of `origin/develop`, and push has not been performed for #432-#667. / 現在の主計画ステータス: #667 で route execution failure/recovery coverage を閉じ、real sample runtime default binding preflight を昇格しました。`develop` は `origin/develop` より 145 commits ahead、#432-#667 は push していません。
+Current main status: #668 defines real sample runtime default binding and promotes the first default-binding slice. `develop` is 146 commits ahead of `origin/develop`, and push has not been performed for #432-#668. / 現在の主計画ステータス: #668 で real sample runtime default binding を定義し、最初の default-binding slice を昇格しました。`develop` は `origin/develop` より 146 commits ahead、#432-#668 は push していません。
 
 | Order | Work unit / 作業の塊 | Commit unit / コミット単位 | Status | Rough effort / 目安 |
 | --- | --- | --- | --- | --- |
@@ -226,7 +226,8 @@ Current main status: #667 closes route execution failure/recovery coverage and p
 | 665 | Post route feature-flag execution first slice lane closure / route feature-flag execution first slice 後の lane closure | Close the first route-level execution slice and decide whether to promote failure/recovery route coverage, real sample runtime default binding, or UI success/error rendering next | `DONE` | 0.25 - 0.5 day / 0.25 - 0.5 日 |
 | 666 | Sample18 route execution failure/recovery coverage first slice / sample18 route execution failure/recovery coverage first slice | Add route-level coverage for explicit-executor failure outcomes, including DBAccess rollback, missing executor dependency, and post-commit recording recovery metadata, while preserving duplicate non-execution | `FIRST_SLICE_DONE` | 0.5 - 1 day / 半日 - 1 日 |
 | 667 | Post route execution failure/recovery coverage lane closure / route execution failure/recovery coverage 後の lane closure | Close route-level failure/recovery coverage and decide whether real sample runtime default binding, UI success/error rendering, or additional commit-unknown recovery coverage should be promoted next | `DONE` | 0.25 - 0.5 day / 0.25 - 0.5 日 |
-| 668 | Sample18 real runtime default binding preflight / sample18 real runtime default binding preflight | Define how the generated-submit route can construct default sample18 runtime transaction callables from the sample runtime DBAccess classes without test-only injection, while keeping executor flag disabled by default | `ACTIVE_NEXT` | 0.5 - 1 day / 半日 - 1 日 |
+| 668 | Sample18 real runtime default binding preflight / sample18 real runtime default binding preflight | Define how the generated-submit route can construct default sample18 runtime transaction callables from the sample runtime DBAccess classes without test-only injection, while keeping executor flag disabled by default | `DONE` | 0.5 - 1 day / 半日 - 1 日 |
+| 669 | Sample18 real runtime default binding first slice / sample18 real runtime default binding first slice | Add default route executor dependency construction for sample18 generated runtime DBAccess classes, so explicit executor flag can run without test-injected transaction callables while disabled default remains unchanged | `ACTIVE_NEXT` | 0.5 - 1 day / 半日 - 1 日 |
 
 ### Long-Term No-Code Roadmap / 長期 No-Code ロードマップ
 
