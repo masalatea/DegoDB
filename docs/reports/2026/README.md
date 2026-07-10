@@ -11,6 +11,8 @@
 
 ## Index
 
+- `2026-0710-post-db-backed-post-commit-recording-coverage-lane-closure.md`
+  - #662 post DB-backed post-commit recording coverage lane closure。#661 の route-unwired DB-backed post-commit recording coverage を受け入れ、次は generated-submit route feature-flag integration preflight (#663) を昇格。generated-submit route execution は未有効化。Status: `DONE`。
 - `2026-0710-sample18-post-commit-recording-db-backed-coverage-first-slice.md`
   - #661 sample18 post-commit recording DB-backed coverage first slice。post-commit recording adapter を real execution audit append / idempotency outcome update repository に route-unwired 接続し、persisted success と idempotency failure recovery metadata を coverage。generated-submit route execution は未有効化。Status: `FIRST_SLICE_DONE`。
 - `2026-0710-sample18-post-commit-recording-db-backed-coverage-preflight.md`
