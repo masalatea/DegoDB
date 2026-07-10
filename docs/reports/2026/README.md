@@ -11,6 +11,8 @@
 
 ## Index
 
+- `2026-0710-sample18-post-dbaccess-call-adapter-helper-lane-closure.md`
+  - #637 sample18 post-DBAccess call adapter helper lane closure。#636 の route-unwired adapter helper を受け入れ、次は route execution より前に transaction adapter preflight (#638) を昇格。real DBAccess mutation / transaction / route execution は未有効化。Status: `DONE`。
 - `2026-0710-sample18-dbaccess-call-adapter-helper-first-slice.md`
   - #636 sample18 DBAccess call adapter helper first slice。route-unwired adapter helper を追加し、allowed metadata と injected fake callable のみで executed/failed/skipped metadata を分類。real DBAccess mutation / transaction / route execution は未有効化。Status: `FIRST_SLICE_DONE`。
 - `2026-0710-sample18-dbaccess-call-adapter-preflight.md`
