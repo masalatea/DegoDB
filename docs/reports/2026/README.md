@@ -11,6 +11,8 @@
 
 ## Index
 
+- `2026-0710-sample18-route-config-readiness-browser-preflight.md`
+  - #701 sample18 route/config readiness browser preflight。real guarded execution smoke の前に executor_config / enablement source / dependency source / action mapping / failure reasons を read-only に browser-visible 化する境界を定義し、#702 を昇格。Status: `DONE`。
 - `2026-0710-post-enabled-candidate-browser-smoke-lane-closure.md`
   - #700 post enabled-candidate browser smoke lane closure。#699 の UI-only enabled-candidate browser smoke を受け入れ、real guarded execution smoke の前に route/config readiness browser preflight (#701) を昇格。Status: `DONE`。
 - `2026-0710-sample18-enabled-candidate-browser-smoke-first-slice.md`

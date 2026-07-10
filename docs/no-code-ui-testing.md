@@ -235,6 +235,20 @@ The first enabled-candidate smoke is now separate from the disabled-action smoke
 
 This confirms candidate UI presentation only. A later slice must still decide whether browser smoke should cover route/config readiness, real guarded execution, or server-generated availability overlays.
 
+### Sample18 Route/Config Readiness Browser Preflight
+
+Before a real guarded execution smoke, browser-visible readiness should be available without executing mutation. The browser should be able to inspect why a generated action is still disabled, candidate-ready, or failed before it clicks.
+
+The readiness surface should include:
+
+- `executor_config.status`, `ready`, mutation/executor enablement booleans, enablement sources, dependency source, and failure reasons;
+- an action-level mapping from route-compatible operations to generated action availability state;
+- explicit indication that `reopen_task_card` and `delete_task_card` are not route-ready;
+- failure visibility for disabled flags and missing default runtime reference files;
+- stable `data-*` markers or preview JSON fields that browser smoke can assert without sending a real generated-submit request.
+
+The first implementation should add read-only readiness metadata and browser assertions. Real guarded execution smoke remains a later slice after readiness is visible and failure states are testable.
+
 ## Design Boundary
 
 Fast UI contract tests prove that generated metadata and generated markup expose the expected UI contract. They do not prove browser layout, CSS pixel rendering, or server mutation. Browser smoke and route-level tests remain responsible for those outer boundaries.
