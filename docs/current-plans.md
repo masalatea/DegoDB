@@ -13,7 +13,7 @@ When someone asks for "the plan list", answer from this section first. / 「計�
 
 ### Main Plan / 主計画
 
-Current main status: #643 adds a route-unwired post-commit execution recording helper and promotes lane closure before route execution. `develop` is 121 commits ahead of `origin/develop`, and push has not been performed for #432-#643. / 現在の主計画ステータス: #643 で route-unwired post-commit execution recording helper を追加し、route execution より前に lane closure を昇格しました。`develop` は `origin/develop` より 121 commits ahead、#432-#643 は push していません。
+Current main status: #644 closes the route-unwired post-commit recording helper lane and promotes executable route integration preflight. `develop` is 122 commits ahead of `origin/develop`, and push has not been performed for #432-#644. / 現在の主計画ステータス: #644 で route-unwired post-commit recording helper lane を閉じ、executable route integration preflight を昇格しました。`develop` は `origin/develop` より 122 commits ahead、#432-#644 は push していません。
 
 | Order | Work unit / 作業の塊 | Commit unit / コミット単位 | Status | Rough effort / 目安 |
 | --- | --- | --- | --- | --- |
@@ -202,7 +202,8 @@ Current main status: #643 adds a route-unwired post-commit execution recording h
 | 641 | Sample18 post-transaction adapter helper lane closure / sample18 post-transaction adapter helper lane closure | Close the route-unwired transaction adapter helper lane and decide whether post-commit recording policy hardening, route integration preflight, or real DBAccess invocation adapter should be promoted next | `DONE` | 0.25 - 0.5 day / 0.25 - 0.5 日 |
 | 642 | Sample18 post-commit execution recording preflight / sample18 post-commit execution recording preflight | Define how execution audit append and idempotency execution outcome update become required post-commit steps under the all-success-or-failure policy before route execution is enabled | `DONE` | 0.5 day / 半日 |
 | 643 | Sample18 post-commit execution recording helper first slice / sample18 post-commit execution recording helper first slice | Add a route-unwired helper that consumes committed transaction metadata and fake recording callables, requiring both execution audit append and idempotency outcome update to succeed before returning success | `DONE` | 0.5 - 1 day / 半日 - 1 日 |
-| 644 | Sample18 post-commit recording helper lane closure / sample18 post-commit recording helper lane closure | Close the route-unwired recording helper lane and decide whether executable route integration preflight, real DBAccess invocation adapter, or recovery/repair preflight should be promoted next | `ACTIVE_NEXT` | 0.25 - 0.5 day / 0.25 - 0.5 日 |
+| 644 | Sample18 post-commit recording helper lane closure / sample18 post-commit recording helper lane closure | Close the route-unwired recording helper lane and decide whether executable route integration preflight, real DBAccess invocation adapter, or recovery/repair preflight should be promoted next | `DONE` | 0.25 - 0.5 day / 0.25 - 0.5 日 |
+| 645 | Sample18 executable generated-submit route integration preflight / sample18 executable generated-submit route integration preflight | Define how the generated-submit route will compose guard, transaction adapter, DBAccess invocation, post-commit recording, feature flag, response shape, and fail-closed tests before enabling real execution | `ACTIVE_NEXT` | 0.5 - 1 day / 半日 - 1 日 |
 
 ### Long-Term No-Code Roadmap / 長期 No-Code ロードマップ
 
@@ -521,6 +522,8 @@ Latest code verification from #643:
 - `make sample18-pack-runtime-test`: `OK (17 tests, 1122 assertions)`
 - Full `make test`: `OK, but incomplete, skipped, or risky tests! Tests: 401, Assertions: 12967, Skipped: 1.`
 - `git diff --check`
+
+For #644, docs-only verification is `git diff --check`.
 
 Latest code verification from #459:
 

@@ -11,6 +11,8 @@
 
 ## Index
 
+- `2026-0710-sample18-post-commit-recording-helper-lane-closure.md`
+  - #644 sample18 post-commit recording helper lane closure。#643 の route-unwired recording helper を受け入れ、次は real execution 有効化前の executable generated-submit route integration preflight (#645) を昇格。route execution は未有効化。Status: `DONE`。
 - `2026-0710-sample18-post-commit-execution-recording-helper-first-slice.md`
   - #643 sample18 post-commit execution recording helper first slice。committed transaction metadata と fake recording callable を受け取り、execution audit / idempotency outcome update の両方が成功した場合だけ success を返す route-unwired helper を追加。real recording / route execution は未有効化。Status: `FIRST_SLICE_DONE`。
 - `2026-0710-sample18-post-commit-execution-recording-preflight.md`
