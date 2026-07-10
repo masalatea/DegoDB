@@ -11,6 +11,8 @@
 
 ## Index
 
+- `2026-0710-sample18-disabled-submit-click-intent-preflight.md`
+  - #576 sample18 disabled submit click intent preflight。generated submit action metadata / runtime DOM に disabled click binding marker を追加し、public runtime browser smoke で disabled button の programmatic click が event/state change を起こさないことを確認。Status: `DONE`。
 - `2026-0710-sample18-post-csrf-handoff-lane-closure.md`
   - #575 sample18 post-CSRF handoff lane closure。#574 の CSRF handoff contract を受け入れ、次は mutation dispatcher inventory ではなく、generated submit button が disabled のまま submit しないことを固定する disabled click intent preflight (#576) を昇格。Status: `DONE`。
 - `2026-0710-sample18-generated-submit-csrf-handoff-preflight.md`

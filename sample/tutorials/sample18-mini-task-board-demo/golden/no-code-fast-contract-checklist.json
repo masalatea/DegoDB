@@ -260,6 +260,9 @@
     "csrf_transport": "form_field",
     "csrf_submit_field": "_csrf_token",
     "required_button_state": "disabled",
+    "click_binding_state": "disabled_preflight",
+    "submit_trigger": "none",
+    "network_submit_enabled": false,
     "runtime_click_binding": false,
     "mutation_enabled": false,
     "fail_closed_result": "generated_submit_disabled",
@@ -270,6 +273,9 @@
       "data-action-csrf-token-field": "_csrf_token",
       "data-action-csrf-source-selector": "input[name=_csrf_token]",
       "data-action-csrf-transport": "form_field",
+      "data-action-click-binding-state": "disabled_preflight",
+      "data-action-submit-trigger": "none",
+      "data-action-network-submit-enabled": "false",
       "data-action-fail-closed-result": "generated_submit_disabled"
     }
   },

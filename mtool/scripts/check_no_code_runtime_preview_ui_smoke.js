@@ -240,6 +240,9 @@ function expectedProfile(name) {
       managedActionCsrfTokenField: '_csrf_token',
       managedActionCsrfSourceSelector: 'input[name=_csrf_token]',
       managedActionCsrfTransport: 'form_field',
+      managedActionClickBindingState: 'disabled_preflight',
+      managedActionSubmitTrigger: 'none',
+      managedActionNetworkSubmitEnabled: 'false',
       managedActionFailClosedResult: 'generated_submit_disabled',
       payload: {
         id: 1801,
@@ -537,7 +540,27 @@ async function probeRuntimeDisabledActionSurface(page, config) {
       csrfTokenFields: buttons.map((button) => button.getAttribute('data-action-csrf-token-field') || ''),
       csrfSourceSelectors: buttons.map((button) => button.getAttribute('data-action-csrf-source-selector') || ''),
       csrfTransports: buttons.map((button) => button.getAttribute('data-action-csrf-transport') || ''),
+      clickBindingStates: buttons.map((button) => button.getAttribute('data-action-click-binding-state') || ''),
+      submitTriggers: buttons.map((button) => button.getAttribute('data-action-submit-trigger') || ''),
+      networkSubmitEnabled: buttons.map((button) => button.getAttribute('data-action-network-submit-enabled') || ''),
       failClosedResults: buttons.map((button) => button.getAttribute('data-action-fail-closed-result') || ''),
+      programmaticClickProbe: buttons.map((button) => {
+        let clickCount = 0;
+        const beforeState = button.getAttribute('data-action-state') || '';
+        const beforeDisabled = button.disabled === true;
+        button.addEventListener('click', () => {
+          clickCount += 1;
+        }, { once: true });
+        button.click();
+        return {
+          key: button.getAttribute('data-action-key') || '',
+          beforeState,
+          afterState: button.getAttribute('data-action-state') || '',
+          beforeDisabled,
+          afterDisabled: button.disabled === true,
+          clickCount,
+        };
+      }),
       disabledProperties: buttons.map((button) => button.disabled === true),
       hintKeys: hints.map((hint) => hint.getAttribute('data-action-hint') || ''),
       hintStates: hints.map((hint) => hint.getAttribute('data-action-state-hint') || ''),
@@ -576,7 +599,11 @@ async function probeRuntimeDisabledActionSurface(page, config) {
     || result.csrfTokenFields.some((field) => field !== config.expected.managedActionCsrfTokenField)
     || result.csrfSourceSelectors.some((selector) => selector !== config.expected.managedActionCsrfSourceSelector)
     || result.csrfTransports.some((transport) => transport !== config.expected.managedActionCsrfTransport)
+    || result.clickBindingStates.some((state) => state !== config.expected.managedActionClickBindingState)
+    || result.submitTriggers.some((trigger) => trigger !== config.expected.managedActionSubmitTrigger)
+    || result.networkSubmitEnabled.some((enabled) => enabled !== config.expected.managedActionNetworkSubmitEnabled)
     || result.failClosedResults.some((resultCode) => resultCode !== config.expected.managedActionFailClosedResult)
+    || result.programmaticClickProbe.some((probe) => probe.clickCount !== 0 || probe.beforeState !== 'disabled' || probe.afterState !== 'disabled' || probe.beforeDisabled !== true || probe.afterDisabled !== true)
     || result.disabledProperties.some((disabled) => disabled !== true)
     || JSON.stringify(result.hintKeys) !== JSON.stringify(expectedKeys)
     || result.hintStates.some((state) => state !== 'disabled')
