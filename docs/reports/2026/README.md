@@ -11,6 +11,8 @@
 
 ## Index
 
+- `2026-0710-sample18-post-execution-update-plan-route-metadata-lane-closure.md`
+  - #619 sample18 post-execution update-plan route metadata lane closure。#618 の route-visible `execution_update_plan` metadata を受け入れ、次は DBAccess mutation 有効化前の guarded execution preflight (#620) を昇格。DBAccess mutation / execution audit write / idempotency execution update は未有効化。Status: `DONE`。
 - `2026-0710-sample18-execution-update-plan-route-metadata-integration.md`
   - #618 sample18 execution update-plan route metadata integration。valid generated-submit route response に non-mutating `execution_update_plan` metadata を接続し、disabled/duplicate/failed/planned route outcomes と invalid-route skip boundary を固定。DBAccess mutation / execution audit write / idempotency execution update は未有効化。Status: `FIRST_SLICE_DONE`。
 - `2026-0710-sample18-post-execution-update-plan-helper-lane-closure.md`
