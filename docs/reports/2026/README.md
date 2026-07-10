@@ -11,6 +11,8 @@
 
 ## Index
 
+- `2026-0710-sample18-blocked-guarded-submit-click-binding-first-slice.md`
+  - #580 sample18 blocked guarded submit click binding first slice。generated managed action button を明示 gate の下で blocked generated-submit route へ POST 可能にし、public runtime browser smoke で `generated_submit_disabled` feedback を確認。DBAccess / mutation は disabled のまま維持。Status: `DONE`。
 - `2026-0710-sample18-post-guarded-click-inventory-lane-closure.md`
   - #579 sample18 post-guarded-click-inventory lane closure。#578 の guard / payload / blocked response / failure display inventory を受け入れ、次は mutation dispatcher inventory ではなく、blocked route のまま guarded generated submit click binding first slice (#580) を昇格。Status: `DONE`。
 - `2026-0710-sample18-guarded-submit-click-binding-inventory.md`
