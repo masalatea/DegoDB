@@ -11,6 +11,8 @@
 
 ## Index
 
+- `2026-0710-post-generated-runtime-browser-smoke-lane-closure.md`
+  - #694 post generated runtime browser smoke lane closure。#693 の narrow browser smoke を受け入れ、次は generated defaults を変える前の sample18 generated availability expansion preflight (#695) を昇格。Status: `DONE`。
 - `2026-0710-sample18-generated-runtime-browser-smoke-first-slice.md`
   - #693 sample18 generated runtime browser smoke first slice。browser smoke で generated runtime preview の row key markers、guarded submit attributes、disabled/default execution state、blocked generated-submit feedback を検査。mutation / broad availability は未有効化。Status: `FIRST_SLICE_DONE`。
 - `2026-0710-post-selected-row-key-handoff-lane-closure.md`
