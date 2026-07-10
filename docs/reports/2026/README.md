@@ -11,6 +11,8 @@
 
 ## Index
 
+- `2026-0710-sample18-transaction-adapter-helper-first-slice.md`
+  - #640 sample18 transaction adapter helper first slice。fake transaction / fake DBAccess callable で route-unwired transaction adapter helper を追加し、begin / DBAccess / rollback / commit の all-success-or-failure metadata を固定。real DBAccess mutation / route execution / execution recording は未有効化。Status: `FIRST_SLICE_DONE`。
 - `2026-0710-sample18-transaction-adapter-preflight.md`
   - #638 sample18 transaction adapter preflight。route-unwired transaction adapter 境界を all-success-or-failure UI/API contract で定義。required step 全成功時のみ success、post-commit recording failure も failure。次は cross-route policy review (#639) と transaction adapter helper first slice (#640)。Status: `DONE`。
 - `2026-0710-cross-route-all-success-or-failure-policy-review-plan.md`

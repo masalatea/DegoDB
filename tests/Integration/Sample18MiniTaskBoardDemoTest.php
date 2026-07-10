@@ -1694,6 +1694,283 @@ final class Sample18MiniTaskBoardDemoTest extends TestCase
         self::assertSame('db offline', $exception['error']);
     }
 
+    public function testMiniTaskBoardGeneratedSubmitTransactionAdapterUsesFakeBoundariesOnly(): void
+    {
+        $buildReady = static function (): array {
+            $normalized = app_lab_sample18_task_board_normalize_generated_submit_request(
+                'create_task_card',
+                ['title' => 'Transaction adapter', 'body' => '', 'assigned_to' => '', 'priority' => '10', 'due_date' => ''],
+                '2026-07-10 12:00:00',
+            );
+            self::assertTrue($normalized['ok']);
+            $dispatcher = app_lab_sample18_task_board_generated_submit_dispatcher_dry_run($normalized);
+            $auditAppend = ['ok' => true, 'status' => 'appended', 'item' => ['event_key' => 'audit-transaction-1']];
+            $idempotency = [
+                'ok' => true,
+                'status' => 'recorded',
+                'created' => true,
+                'dedupe_key' => 'dedupe-transaction-1',
+                'item' => ['dedupe_key' => 'dedupe-transaction-1'],
+            ];
+            $mutationGate = app_lab_sample18_task_board_generated_submit_mutation_gate(
+                ['sample18_generated_submit_mutation_enabled' => true],
+                $normalized,
+                $dispatcher,
+                $auditAppend,
+                $idempotency,
+            );
+            $executionPlan = app_lab_sample18_task_board_generated_submit_dbaccess_execution_plan(
+                $normalized,
+                $dispatcher,
+                $mutationGate,
+            );
+            $transactionPlan = app_lab_sample18_task_board_generated_submit_transaction_plan($executionPlan);
+            $updatePlan = app_lab_sample18_task_board_generated_submit_execution_update_plan(
+                $transactionPlan,
+                $auditAppend,
+                $idempotency,
+            );
+            $guard = app_lab_sample18_task_board_generated_submit_execution_guard(
+                $normalized,
+                $auditAppend,
+                $idempotency,
+                $mutationGate,
+                $executionPlan,
+                $transactionPlan,
+                $updatePlan,
+            );
+            $coordination = app_lab_sample18_task_board_generated_submit_executor_coordination_plan(
+                $guard,
+                $updatePlan,
+                true,
+            );
+
+            return [$normalized, $dispatcher, $guard, $coordination];
+        };
+
+        [$normalized, $dispatcher, $guard, $coordination] = $buildReady();
+        $events = [];
+        $success = app_lab_sample18_task_board_generated_submit_transaction_adapter(
+            $normalized,
+            $dispatcher,
+            $guard,
+            $coordination,
+            true,
+            static function (array $context) use (&$events): array {
+                $events[] = 'begin:' . ($context['transaction_scope'] ?? '');
+
+                return ['ok' => true];
+            },
+            static function (array $context) use (&$events): array {
+                $events[] = 'commit:' . (($context['dbaccess_result']['status'] ?? 'missing'));
+
+                return ['ok' => true];
+            },
+            static function () use (&$events): array {
+                $events[] = 'rollback';
+
+                return ['ok' => true];
+            },
+            static function (array $call) use (&$events): array {
+                $events[] = 'dbaccess:' . ($call['db_access_function'] ?? '');
+
+                return ['ok' => true, 'result_code' => 'dbaccess_executed', 'rows_affected' => 1];
+            },
+        );
+        self::assertSame(['begin:sample18_application_db_only', 'dbaccess:InsertTaskCard', 'commit:executed'], $events);
+        self::assertSame('executed', $success['status']);
+        self::assertTrue($success['success']);
+        self::assertTrue($success['executed']);
+        self::assertSame('committed', $success['transaction_status']);
+        self::assertSame('executed', $success['dbaccess_status']);
+        self::assertSame('planned_not_written', $success['recording_status']);
+        self::assertFalse($success['rolled_back']);
+        self::assertFalse($success['recovery_required']);
+        self::assertSame([], $success['reasons']);
+
+        $events = [];
+        $beginFailed = app_lab_sample18_task_board_generated_submit_transaction_adapter(
+            $normalized,
+            $dispatcher,
+            $guard,
+            $coordination,
+            true,
+            static function () use (&$events): array {
+                $events[] = 'begin';
+
+                return ['ok' => false, 'failure_code' => 'transaction_begin_failed', 'error' => 'begin down'];
+            },
+            static function () use (&$events): array {
+                $events[] = 'commit';
+
+                return ['ok' => true];
+            },
+            static function () use (&$events): array {
+                $events[] = 'rollback';
+
+                return ['ok' => true];
+            },
+            static function () use (&$events): array {
+                $events[] = 'dbaccess';
+
+                return ['ok' => true];
+            },
+        );
+        self::assertSame(['begin'], $events);
+        self::assertSame('failed', $beginFailed['status']);
+        self::assertFalse($beginFailed['success']);
+        self::assertSame('begin_failed', $beginFailed['transaction_status']);
+        self::assertSame('not_called', $beginFailed['dbaccess_status']);
+        self::assertSame('transaction_begin_failed', $beginFailed['failure_code']);
+
+        $events = [];
+        $dbaccessFailed = app_lab_sample18_task_board_generated_submit_transaction_adapter(
+            $normalized,
+            $dispatcher,
+            $guard,
+            $coordination,
+            true,
+            static function () use (&$events): array {
+                $events[] = 'begin';
+
+                return ['ok' => true];
+            },
+            static function () use (&$events): array {
+                $events[] = 'commit';
+
+                return ['ok' => true];
+            },
+            static function (array $context) use (&$events): array {
+                $events[] = 'rollback:' . ($context['failure_code'] ?? '');
+
+                return ['ok' => true];
+            },
+            static function () use (&$events): array {
+                $events[] = 'dbaccess';
+
+                return ['ok' => false, 'failure_code' => 'dbaccess_failed', 'error' => 'write failed'];
+            },
+        );
+        self::assertSame(['begin', 'dbaccess', 'rollback:dbaccess_failed'], $events);
+        self::assertSame('failed', $dbaccessFailed['status']);
+        self::assertFalse($dbaccessFailed['success']);
+        self::assertSame('rolled_back', $dbaccessFailed['transaction_status']);
+        self::assertSame('failed', $dbaccessFailed['dbaccess_status']);
+        self::assertTrue($dbaccessFailed['rolled_back']);
+        self::assertSame('dbaccess_failed', $dbaccessFailed['failure_code']);
+
+        $events = [];
+        $rollbackFailed = app_lab_sample18_task_board_generated_submit_transaction_adapter(
+            $normalized,
+            $dispatcher,
+            $guard,
+            $coordination,
+            true,
+            static function () use (&$events): array {
+                $events[] = 'begin';
+
+                return ['ok' => true];
+            },
+            static function () use (&$events): array {
+                $events[] = 'commit';
+
+                return ['ok' => true];
+            },
+            static function () use (&$events): array {
+                $events[] = 'rollback';
+
+                return ['ok' => false, 'failure_code' => 'transaction_rollback_failed', 'error' => 'rollback down'];
+            },
+            static function () use (&$events): array {
+                $events[] = 'dbaccess';
+
+                return ['ok' => false, 'failure_code' => 'dbaccess_failed'];
+            },
+        );
+        self::assertSame(['begin', 'dbaccess', 'rollback'], $events);
+        self::assertSame('failed', $rollbackFailed['status']);
+        self::assertSame('rollback_failed', $rollbackFailed['transaction_status']);
+        self::assertFalse($rollbackFailed['rolled_back']);
+        self::assertSame('transaction_rollback_failed', $rollbackFailed['failure_code']);
+
+        $events = [];
+        $commitFailed = app_lab_sample18_task_board_generated_submit_transaction_adapter(
+            $normalized,
+            $dispatcher,
+            $guard,
+            $coordination,
+            true,
+            static function () use (&$events): array {
+                $events[] = 'begin';
+
+                return ['ok' => true];
+            },
+            static function () use (&$events): array {
+                $events[] = 'commit';
+
+                return ['ok' => false, 'failure_code' => 'transaction_commit_failed', 'error' => 'commit down'];
+            },
+            static function () use (&$events): array {
+                $events[] = 'rollback';
+
+                return ['ok' => true];
+            },
+            static function () use (&$events): array {
+                $events[] = 'dbaccess';
+
+                return ['ok' => true, 'result_code' => 'dbaccess_executed'];
+            },
+        );
+        self::assertSame(['begin', 'dbaccess', 'commit'], $events);
+        self::assertSame('failed', $commitFailed['status']);
+        self::assertFalse($commitFailed['success']);
+        self::assertSame('commit_failed', $commitFailed['transaction_status']);
+        self::assertSame('executed', $commitFailed['dbaccess_status']);
+        self::assertTrue($commitFailed['recovery_required']);
+        self::assertSame('commit_status_unknown', $commitFailed['recovery_reason']);
+        self::assertSame('transaction_commit_failed', $commitFailed['failure_code']);
+
+        $events = [];
+        $blockedGuard = $guard;
+        $blockedGuard['status'] = 'blocked';
+        $blockedGuard['ready'] = false;
+        $blockedGuard['reasons'] = ['duplicate_generated_submit'];
+        $blocked = app_lab_sample18_task_board_generated_submit_transaction_adapter(
+            $normalized,
+            $dispatcher,
+            $blockedGuard,
+            $coordination,
+            true,
+            static function () use (&$events): array {
+                $events[] = 'begin';
+
+                return ['ok' => true];
+            },
+            static function () use (&$events): array {
+                $events[] = 'commit';
+
+                return ['ok' => true];
+            },
+            static function () use (&$events): array {
+                $events[] = 'rollback';
+
+                return ['ok' => true];
+            },
+            static function () use (&$events): array {
+                $events[] = 'dbaccess';
+
+                return ['ok' => true];
+            },
+        );
+        self::assertSame([], $events);
+        self::assertSame('failed', $blocked['status']);
+        self::assertFalse($blocked['success']);
+        self::assertSame('not_started', $blocked['transaction_status']);
+        self::assertSame('not_called', $blocked['dbaccess_status']);
+        self::assertContains('execution_guard_not_ready', $blocked['reasons']);
+        self::assertContains('duplicate_generated_submit', $blocked['reasons']);
+    }
+
     public function testMiniTaskBoardGeneratedSubmitExecutionAuditAppendIsIndependent(): void
     {
         $app = $this->sqliteApp();

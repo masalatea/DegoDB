@@ -1373,6 +1373,191 @@ function app_lab_sample18_task_board_generated_submit_dbaccess_call_adapter(
 }
 
 /**
+ * @param array<string,mixed> $normalized
+ * @param array<string,mixed> $dispatcherResult
+ * @param array<string,mixed> $executionGuard
+ * @param array<string,mixed> $executorCoordinationPlan
+ * @param callable(array<string,mixed>):mixed $beginTransaction
+ * @param callable(array<string,mixed>):mixed $commitTransaction
+ * @param callable(array<string,mixed>):mixed $rollbackTransaction
+ * @param callable(array<string,mixed>):mixed $dbaccessInvoker
+ * @return array<string,mixed>
+ */
+function app_lab_sample18_task_board_generated_submit_transaction_adapter(
+    array $normalized,
+    array $dispatcherResult,
+    array $executionGuard,
+    array $executorCoordinationPlan,
+    bool $executorEnabled,
+    callable $beginTransaction,
+    callable $commitTransaction,
+    callable $rollbackTransaction,
+    callable $dbaccessInvoker,
+): array {
+    $operationKey = (string) ($normalized['operation_key'] ?? '');
+    $dedupeKey = (string) ($executionGuard['dedupe_key'] ?? ($executorCoordinationPlan['dedupe_key'] ?? ''));
+    $requestAuditEventKey = (string) ($executionGuard['request_audit_event_key'] ?? ($executorCoordinationPlan['request_audit_event_key'] ?? ''));
+    $base = [
+        'status' => 'failed',
+        'success' => false,
+        'executed' => false,
+        'transaction_status' => 'not_started',
+        'dbaccess_status' => 'not_called',
+        'recording_status' => 'planned_not_written',
+        'rolled_back' => false,
+        'recovery_required' => false,
+        'recovery_reason' => '',
+        'failure_code' => '',
+        'error' => '',
+        'operation_key' => $operationKey,
+        'dedupe_key' => $dedupeKey,
+        'request_audit_event_key' => $requestAuditEventKey,
+        'dbaccess_result' => [],
+        'reasons' => [],
+    ];
+
+    $reasons = [];
+    if (!$executorEnabled) {
+        $reasons[] = 'executor_feature_flag_disabled';
+    }
+    if (($executionGuard['status'] ?? '') !== 'allowed' || !($executionGuard['ready'] ?? false)) {
+        $reasons[] = 'execution_guard_not_ready';
+        foreach (($executionGuard['reasons'] ?? []) as $reason) {
+            if (is_string($reason) && $reason !== '') {
+                $reasons[] = $reason;
+            }
+        }
+    }
+    if (($executorCoordinationPlan['status'] ?? '') !== 'planned' || !($executorCoordinationPlan['ready'] ?? false)) {
+        $reasons[] = 'executor_coordination_plan_not_ready';
+        foreach (($executorCoordinationPlan['reasons'] ?? []) as $reason) {
+            if (is_string($reason) && $reason !== '') {
+                $reasons[] = $reason;
+            }
+        }
+    }
+    if ($dedupeKey === '') {
+        $reasons[] = 'dedupe_key_missing';
+    }
+    if ($requestAuditEventKey === '') {
+        $reasons[] = 'request_audit_event_key_missing';
+    }
+
+    if ($reasons !== []) {
+        $reasons = array_values(array_unique($reasons));
+        $base['failure_code'] = $reasons[0];
+        $base['reasons'] = $reasons;
+
+        return $base;
+    }
+
+    $context = [
+        'operation_key' => $operationKey,
+        'dedupe_key' => $dedupeKey,
+        'request_audit_event_key' => $requestAuditEventKey,
+        'transaction_scope' => (string) ($executorCoordinationPlan['app_db_transaction_boundary']['transaction_scope'] ?? ''),
+        'db_handle' => (string) ($executorCoordinationPlan['app_db_transaction_boundary']['db_handle'] ?? ''),
+    ];
+
+    try {
+        $begin = $beginTransaction($context);
+    } catch (Throwable $throwable) {
+        $base['transaction_status'] = 'begin_failed';
+        $base['failure_code'] = 'transaction_begin_exception';
+        $base['error'] = $throwable->getMessage();
+        $base['reasons'] = ['transaction_begin_exception'];
+
+        return $base;
+    }
+    if (!is_array($begin) || !($begin['ok'] ?? false)) {
+        $base['transaction_status'] = 'begin_failed';
+        $base['failure_code'] = (string) (is_array($begin) ? ($begin['failure_code'] ?? 'transaction_begin_failed') : 'transaction_begin_failed');
+        $base['error'] = (string) (is_array($begin) ? ($begin['error'] ?? '') : '');
+        $base['reasons'] = [$base['failure_code']];
+
+        return $base;
+    }
+
+    $base['transaction_status'] = 'begun';
+    $dbaccess = app_lab_sample18_task_board_generated_submit_dbaccess_call_adapter(
+        $normalized,
+        $dispatcherResult,
+        $executionGuard,
+        $executorCoordinationPlan,
+        $executorEnabled,
+        $dbaccessInvoker,
+    );
+    $base['dbaccess_result'] = $dbaccess;
+
+    if (($dbaccess['status'] ?? '') !== 'executed' || !($dbaccess['executed'] ?? false)) {
+        $base['dbaccess_status'] = ($dbaccess['status'] ?? '') === 'skipped' ? 'not_called' : 'failed';
+        $base['failure_code'] = (string) ($dbaccess['failure_code'] ?? 'dbaccess_failed');
+        $base['error'] = (string) ($dbaccess['error'] ?? '');
+        $base['reasons'] = array_values(array_unique(array_merge(
+            [$base['failure_code']],
+            array_filter($dbaccess['reasons'] ?? [], 'is_string'),
+        )));
+
+        try {
+            $rollback = $rollbackTransaction($context + ['failure_code' => $base['failure_code']]);
+        } catch (Throwable $throwable) {
+            $base['transaction_status'] = 'rollback_failed';
+            $base['failure_code'] = 'transaction_rollback_exception';
+            $base['error'] = $throwable->getMessage();
+            $base['reasons'][] = 'transaction_rollback_exception';
+
+            return $base;
+        }
+        if (!is_array($rollback) || !($rollback['ok'] ?? false)) {
+            $base['transaction_status'] = 'rollback_failed';
+            $base['failure_code'] = (string) (is_array($rollback) ? ($rollback['failure_code'] ?? 'transaction_rollback_failed') : 'transaction_rollback_failed');
+            $base['error'] = (string) (is_array($rollback) ? ($rollback['error'] ?? '') : '');
+            $base['reasons'][] = $base['failure_code'];
+
+            return $base;
+        }
+
+        $base['transaction_status'] = 'rolled_back';
+        $base['rolled_back'] = true;
+
+        return $base;
+    }
+
+    $base['dbaccess_status'] = 'executed';
+    try {
+        $commit = $commitTransaction($context + ['dbaccess_result' => $dbaccess]);
+    } catch (Throwable $throwable) {
+        $base['transaction_status'] = 'commit_failed';
+        $base['failure_code'] = 'transaction_commit_exception';
+        $base['error'] = $throwable->getMessage();
+        $base['recovery_required'] = true;
+        $base['recovery_reason'] = 'commit_status_unknown';
+        $base['reasons'] = ['transaction_commit_exception'];
+
+        return $base;
+    }
+    if (!is_array($commit) || !($commit['ok'] ?? false)) {
+        $base['transaction_status'] = 'commit_failed';
+        $base['failure_code'] = (string) (is_array($commit) ? ($commit['failure_code'] ?? 'transaction_commit_failed') : 'transaction_commit_failed');
+        $base['error'] = (string) (is_array($commit) ? ($commit['error'] ?? '') : '');
+        $base['recovery_required'] = true;
+        $base['recovery_reason'] = 'commit_status_unknown';
+        $base['reasons'] = [$base['failure_code']];
+
+        return $base;
+    }
+
+    $base['status'] = 'executed';
+    $base['success'] = true;
+    $base['executed'] = true;
+    $base['transaction_status'] = 'committed';
+    $base['failure_code'] = '';
+    $base['reasons'] = [];
+
+    return $base;
+}
+
+/**
  * @param array<string,mixed> $post
  * @return array{status_code:int,payload:array<string,mixed>}
  */

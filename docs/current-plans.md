@@ -13,7 +13,7 @@ When someone asks for "the plan list", answer from this section first. / 「計�
 
 ### Main Plan / 主計画
 
-Current main status: #639 promotes the all-success-or-failure execution policy into a shared stable doc, and #640 is active next for the sample18 route-unwired transaction adapter helper. `develop` is 117 commits ahead of `origin/develop`, and push has not been performed for #432-#639. / 現在の主計画ステータス: #639 で all-success-or-failure execution policy を共有の恒久文書へ昇格し、次は #640 sample18 route-unwired transaction adapter helper です。`develop` は `origin/develop` より 117 commits ahead、#432-#639 は push していません。
+Current main status: #640 adds the route-unwired sample18 transaction adapter helper with fake transaction and DBAccess boundaries, and promotes lane closure before real route execution. `develop` is 118 commits ahead of `origin/develop`, and push has not been performed for #432-#640. / 現在の主計画ステータス: #640 で fake transaction / DBAccess boundary による route-unwired sample18 transaction adapter helper を追加し、real route execution より前に lane closure を昇格しました。`develop` は `origin/develop` より 118 commits ahead、#432-#640 は push していません。
 
 | Order | Work unit / 作業の塊 | Commit unit / コミット単位 | Status | Rough effort / 目安 |
 | --- | --- | --- | --- | --- |
@@ -198,7 +198,8 @@ Current main status: #639 promotes the all-success-or-failure execution policy i
 | 637 | Sample18 post-DBAccess call adapter helper lane closure / sample18 post-DBAccess call adapter helper lane closure | Close the route-unwired adapter helper lane and decide whether transaction adapter preflight, real DBAccess invocation hardening, or route integration preflight should be promoted next | `DONE` | 0.25 - 0.5 day / 0.25 - 0.5 日 |
 | 638 | Sample18 transaction adapter preflight / sample18 transaction adapter preflight | Define the route-unwired transaction adapter boundary around DBAccess invocation with an all-success-or-failure UI/API contract: every required step must succeed, otherwise the route result is failure even while physical cross-store atomicity remains future work | `DONE` | 0.5 - 1 day / 半日 - 1 日 |
 | 639 | Cross-route all-success-or-failure execution policy review / cross-route all-success-or-failure execution policy review | Review mutation/execution routes beyond sample18 and define a shared UI/API success contract: success only when all required operation steps succeed; otherwise fail closed with internal recovery metadata | `DONE` | 0.5 - 1 day / 半日 - 1 日 |
-| 640 | Sample18 transaction adapter helper first slice / sample18 transaction adapter helper first slice | Add a route-unwired transaction adapter helper using fake transaction and fake DBAccess callables, returning all-success-or-failure execution metadata without real TaskCard mutation or route execution | `ACTIVE_NEXT` | 0.5 - 1 day / 半日 - 1 日 |
+| 640 | Sample18 transaction adapter helper first slice / sample18 transaction adapter helper first slice | Add a route-unwired transaction adapter helper using fake transaction and fake DBAccess callables, returning all-success-or-failure execution metadata without real TaskCard mutation or route execution | `DONE` | 0.5 - 1 day / 半日 - 1 日 |
+| 641 | Sample18 post-transaction adapter helper lane closure / sample18 post-transaction adapter helper lane closure | Close the route-unwired transaction adapter helper lane and decide whether post-commit recording policy hardening, route integration preflight, or real DBAccess invocation adapter should be promoted next | `ACTIVE_NEXT` | 0.25 - 0.5 day / 0.25 - 0.5 日 |
 
 ### Long-Term No-Code Roadmap / 長期 No-Code ロードマップ
 
@@ -497,6 +498,14 @@ For #637, docs-only verification is `git diff --check`.
 For #638, docs-only verification is `git diff --check`.
 
 For #639, docs-only verification is `git diff --check`.
+
+Latest code verification from #640:
+
+- `php -l mtool/app/lab_sample18_task_board_page.php`
+- `php -l tests/Integration/Sample18MiniTaskBoardDemoTest.php`
+- `make sample18-pack-runtime-test`: `OK (16 tests, 1087 assertions)`
+- Full `make test`: `OK, but incomplete, skipped, or risky tests! Tests: 400, Assertions: 12932, Skipped: 1.`
+- `git diff --check`
 
 Latest code verification from #459:
 
