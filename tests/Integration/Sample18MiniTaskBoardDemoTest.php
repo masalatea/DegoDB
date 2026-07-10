@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 require_once dirname(__DIR__, 2) . '/mtool/app/lab_sample18_task_board_page.php';
+require_once dirname(__DIR__, 2) . '/mtool/app/no_code_runtime.php';
 require_once dirname(__DIR__, 2) . '/mtool/app/config_db_bootstrap.php';
 require_once dirname(__DIR__, 2) . '/mtool/app/router.php';
 
@@ -4167,6 +4168,10 @@ final class Sample18MiniTaskBoardDemoTest extends TestCase
         }
         self::assertSame($htmlDomContract['managed_action_field_counts'] ?? [], $fieldCountsByAction);
         $routeContracts = app_lab_sample18_task_board_generated_submit_contracts();
+        $submitContract = $checklist['generated_submit_request_contract'] ?? [];
+        self::assertIsArray($submitContract);
+        $timestamp = (string) ($submitContract['timestamp_fixture'] ?? '');
+        self::assertNotSame('', $timestamp);
         foreach ($routeContracts as $operationKey => $routeContract) {
             self::assertArrayHasKey($operationKey, $contractActionsByKey);
             $action = $contractActionsByKey[$operationKey];
@@ -4206,7 +4211,59 @@ final class Sample18MiniTaskBoardDemoTest extends TestCase
             ) as $serverOwnedFieldKey) {
                 self::assertArrayNotHasKey($serverOwnedFieldKey, $actualFieldMap);
             }
+
+            $expectation = $submitContract['operations'][$operationKey] ?? [];
+            self::assertIsArray($expectation);
+            $validInput = is_array($expectation['valid_input'] ?? null) ? $expectation['valid_input'] : [];
+            $intent = app_no_code_runtime_action_intent($screenDefinition, $action, $validInput);
+            self::assertTrue($intent['ok'], $operationKey . ': ' . ($intent['error'] ?? ''));
+            self::assertSame($operationKey, $intent['intent']['operation_key'] ?? '');
+
+            $expectedKeyPayload = [];
+            foreach (($routeContract['key_fields'] ?? []) as $fieldKey) {
+                if (array_key_exists($fieldKey, $validInput)) {
+                    $expectedKeyPayload[$fieldKey] = $validInput[$fieldKey];
+                }
+            }
+            $actualKeyPayload = $intent['intent']['payload']['key'] ?? [];
+            ksort($expectedKeyPayload);
+            ksort($actualKeyPayload);
+            self::assertSame($expectedKeyPayload, $actualKeyPayload);
+
+            $expectedInputPayload = [];
+            foreach (array_merge(
+                $routeContract['required_client_fields'] ?? [],
+                $routeContract['optional_client_fields'] ?? [],
+            ) as $fieldKey) {
+                if (array_key_exists($fieldKey, $validInput)) {
+                    $expectedInputPayload[$fieldKey] = $validInput[$fieldKey];
+                }
+            }
+            $actualInputPayload = $intent['intent']['payload']['input'] ?? [];
+            ksort($expectedInputPayload);
+            ksort($actualInputPayload);
+            self::assertSame($expectedInputPayload, $actualInputPayload);
+            self::assertSame([], $intent['intent']['payload']['filter'] ?? ['unexpected']);
+
+            $routeInput = array_merge(
+                $intent['intent']['payload']['key'] ?? [],
+                $intent['intent']['payload']['input'] ?? [],
+            );
+            $normalized = app_lab_sample18_task_board_normalize_generated_submit_request(
+                $operationKey,
+                $routeInput,
+                $timestamp,
+            );
+            self::assertTrue($normalized['ok'], $operationKey . ': ' . implode(', ', $normalized['errors'] ?? []));
+            self::assertSame($expectation['expected_payload'] ?? [], $normalized['payload']);
         }
+        $missingCreateTitle = app_no_code_runtime_action_intent(
+            $screenDefinition,
+            $contractActionsByKey['create_task_card'] ?? [],
+            ['body' => 'Missing title stays fail-closed'],
+        );
+        self::assertFalse($missingCreateTitle['ok']);
+        self::assertSame('input.missing:title', $missingCreateTitle['error'] ?? '');
         $runtimePreview = NoCodeUiContractAssertions::readJsonFile($this, $publishedRoot . '/runtime-preview.json');
         NoCodeUiContractAssertions::assertRuntimePreviewScreenKeys(
             $this,
@@ -4242,6 +4299,19 @@ final class Sample18MiniTaskBoardDemoTest extends TestCase
         foreach (array_keys(app_lab_sample18_task_board_generated_submit_contracts()) as $operationKey) {
             self::assertStringContainsString('data-action-key="' . $operationKey . '"', $runtimePreviewHtml);
             self::assertStringContainsString('data-operation-key="' . $operationKey . '"', $runtimePreviewHtml);
+        }
+        foreach ([
+            'function submitGuardedGeneratedAction(button)',
+            "formData.append('operation_key', button.getAttribute('data-operation-key') || button.getAttribute('data-action-key') || '')",
+            "formData.append(button.getAttribute('data-action-csrf-token-field') || '_csrf_token', guardedSubmitCsrfToken(button, screen))",
+            'Object.keys(input).forEach(function (fieldKey) {',
+            'formData.append(fieldKey, input[fieldKey])',
+            'fetch(submitUrl, {',
+            "method: 'POST'",
+            "credentials: 'same-origin'",
+            "Accept: 'application/json'",
+        ] as $guardedSubmitSourceNeedle) {
+            self::assertStringContainsString($guardedSubmitSourceNeedle, $runtimePreviewHtml);
         }
         foreach (($bindingGate['required_dom_attributes'] ?? []) as $attribute => $value) {
             self::assertStringContainsString($attribute . '="' . $value . '"', $runtimePreviewHtml);

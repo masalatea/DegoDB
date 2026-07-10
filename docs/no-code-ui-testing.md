@@ -152,6 +152,15 @@ The first fast compatibility slice is covered in `Sample18MiniTaskBoardDemoTest`
 - generated screen-definition action fields must match route-compatible roles (`key` or `input`), required flags, and client-write flags;
 - generated runtime HTML must expose matching `data-action-key`, `data-operation-key`, submit URL, CSRF handoff, and blocked route binding attributes.
 
+### Sample18 Guarded Submit Payload Handoff
+
+The fast payload handoff contract stays non-browser:
+
+- generated action intent assembly splits route-compatible fields into key payload and client input payload;
+- the assembled key/input payload normalizes through the sample18 generated-submit route contract for create/update/complete;
+- missing required action input fails closed before route payload normalization;
+- generated runtime HTML includes the guarded submit JS path that posts `operation_key`, the configured CSRF token field, flat input fields, same-origin credentials, and JSON accept headers.
+
 ## Design Boundary
 
 Fast UI contract tests prove that generated metadata and generated markup expose the expected UI contract. They do not prove browser layout, CSS pixel rendering, or server mutation. Browser smoke and route-level tests remain responsible for those outer boundaries.
