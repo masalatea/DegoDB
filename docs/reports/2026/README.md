@@ -11,6 +11,8 @@
 
 ## Index
 
+- `2026-0710-sample18-execution-update-plan-route-metadata-integration.md`
+  - #618 sample18 execution update-plan route metadata integration。valid generated-submit route response に non-mutating `execution_update_plan` metadata を接続し、disabled/duplicate/failed/planned route outcomes と invalid-route skip boundary を固定。DBAccess mutation / execution audit write / idempotency execution update は未有効化。Status: `FIRST_SLICE_DONE`。
 - `2026-0710-sample18-post-execution-update-plan-helper-lane-closure.md`
   - #617 sample18 post-execution update-plan helper lane closure。#616 の non-mutating `execution_update_plan` helper を受け入れ、次は valid generated-submit route response への execution update-plan metadata integration (#618) を昇格。DBAccess mutation / execution audit write / idempotency execution update は未有効化。Status: `DONE`。
 - `2026-0710-sample18-execution-update-plan-helper-first-slice.md`
