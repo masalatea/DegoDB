@@ -259,8 +259,23 @@
     "csrf_source_selector": "input[name=_csrf_token]",
     "csrf_transport": "form_field",
     "csrf_submit_field": "_csrf_token",
-    "required_button_state": "disabled",
-    "runtime_click_binding": false,
+    "required_button_state": "guarded_enabled",
+    "click_binding_state": "blocked_route_enabled",
+    "submit_trigger": "guarded_click",
+    "network_submit_enabled": true,
+    "guarded_click_inventory_state": "implemented_blocked_route",
+    "enablement_gate_set": "csrf_handoff_and_blocked_route_verified",
+    "enablement_gates": [
+      "action_available",
+      "csrf_token_present",
+      "submit_route_declared",
+      "blocked_response_handled",
+      "mutation_dispatcher_still_disabled"
+    ],
+    "payload_assembly": "operation_key_plus_action_fields_plus_csrf",
+    "blocked_response_handling": "render_failure_feedback_without_retry",
+    "failure_display_target": "no-code-action-feedback",
+    "runtime_click_binding": true,
     "mutation_enabled": false,
     "fail_closed_result": "generated_submit_disabled",
     "http_smoke_command": "make sample18-http-runtime-smoke",
@@ -270,12 +285,20 @@
       "data-action-csrf-token-field": "_csrf_token",
       "data-action-csrf-source-selector": "input[name=_csrf_token]",
       "data-action-csrf-transport": "form_field",
+      "data-action-click-binding-state": "blocked_route_enabled",
+      "data-action-submit-trigger": "guarded_click",
+      "data-action-network-submit-enabled": "true",
+      "data-action-guarded-click-inventory-state": "implemented_blocked_route",
+      "data-action-enable-gate-set": "csrf_handoff_and_blocked_route_verified",
+      "data-action-payload-assembly": "operation_key_plus_action_fields_plus_csrf",
+      "data-action-blocked-response-handling": "render_failure_feedback_without_retry",
+      "data-action-failure-display-target": "no-code-action-feedback",
       "data-action-fail-closed-result": "generated_submit_disabled"
     }
   },
   "remaining_gaps": [
     "reopen/delete remain curated-route-only until DBAccess or custom adapter metadata exists",
-    "generated action buttons remain disabled until mutation dispatch is explicitly promoted",
+    "generated action buttons call the blocked route only; mutation dispatch remains disabled until explicitly promoted",
     "browser smoke remains the outer confidence gate for the curated route"
   ]
 }

@@ -11,6 +11,18 @@
 
 ## Index
 
+- `2026-0710-sample18-post-blocked-guarded-click-lane-closure.md`
+  - #581 sample18 post-blocked-guarded-click lane closure。#580 の blocked guarded generated submit click binding を受け入れ、追加 feedback hardening ではなく mutation dispatcher inventory (#582) を次に昇格。DBAccess / mutation は未有効化。Status: `DONE`。
+- `2026-0710-sample18-blocked-guarded-submit-click-binding-first-slice.md`
+  - #580 sample18 blocked guarded submit click binding first slice。generated managed action button を明示 gate の下で blocked generated-submit route へ POST 可能にし、public runtime browser smoke で `generated_submit_disabled` feedback を確認。DBAccess / mutation は disabled のまま維持。Status: `DONE`。
+- `2026-0710-sample18-post-guarded-click-inventory-lane-closure.md`
+  - #579 sample18 post-guarded-click-inventory lane closure。#578 の guard / payload / blocked response / failure display inventory を受け入れ、次は mutation dispatcher inventory ではなく、blocked route のまま guarded generated submit click binding first slice (#580) を昇格。Status: `DONE`。
+- `2026-0710-sample18-guarded-submit-click-binding-inventory.md`
+  - #578 sample18 guarded submit click binding inventory。generated submit action metadata / runtime DOM に guarded click inventory、enablement gate set、payload assembly、blocked response handling、failure display target を追加し、focused PHPUnit と public runtime browser smoke で確認。network submit / mutation は disabled のまま維持。Status: `DONE`。
+- `2026-0710-sample18-post-disabled-click-lane-closure.md`
+  - #577 sample18 post-disabled-click lane closure。#576 の disabled / non-clicking / non-submitting evidence を受け入れ、次は mutation dispatcher ではなく、blocked route のまま guarded generated click binding を設計する inventory (#578) を昇格。Status: `DONE`。
+- `2026-0710-sample18-disabled-submit-click-intent-preflight.md`
+  - #576 sample18 disabled submit click intent preflight。generated submit action metadata / runtime DOM に disabled click binding marker を追加し、public runtime browser smoke で disabled button の programmatic click が event/state change を起こさないことを確認。Status: `DONE`。
 - `2026-0710-sample18-post-csrf-handoff-lane-closure.md`
   - #575 sample18 post-CSRF handoff lane closure。#574 の CSRF handoff contract を受け入れ、次は mutation dispatcher inventory ではなく、generated submit button が disabled のまま submit しないことを固定する disabled click intent preflight (#576) を昇格。Status: `DONE`。
 - `2026-0710-sample18-generated-submit-csrf-handoff-preflight.md`

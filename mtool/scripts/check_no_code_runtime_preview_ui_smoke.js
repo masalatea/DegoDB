@@ -233,13 +233,20 @@ function expectedProfile(name) {
         create_task_card: 'create',
         update_task_card: 'update',
       },
-      managedActionDisabledReason: 'policy-not-enabled',
       managedActionSubmitUrl: '/samples/sample18-task-board/no-code/generated-submit',
       managedActionBindingState: 'blocked_preflight',
       managedActionCsrfSource: 'sample18_task_board_form_token',
       managedActionCsrfTokenField: '_csrf_token',
       managedActionCsrfSourceSelector: 'input[name=_csrf_token]',
       managedActionCsrfTransport: 'form_field',
+      managedActionClickBindingState: 'blocked_route_enabled',
+      managedActionSubmitTrigger: 'guarded_click',
+      managedActionNetworkSubmitEnabled: 'true',
+      managedActionGuardedClickInventoryState: 'implemented_blocked_route',
+      managedActionEnableGateSet: 'csrf_handoff_and_blocked_route_verified',
+      managedActionPayloadAssembly: 'operation_key_plus_action_fields_plus_csrf',
+      managedActionBlockedResponseHandling: 'render_failure_feedback_without_retry',
+      managedActionFailureDisplayTarget: 'no-code-action-feedback',
       managedActionFailClosedResult: 'generated_submit_disabled',
       payload: {
         id: 1801,
@@ -512,13 +519,29 @@ async function probeRuntimeDisabledActionSurface(page, config) {
     `.no-code-screen[data-screen-key="${config.expected.formScreenKey}"] .no-code-actions button[data-action-key]`,
     { timeout: 5000 },
   );
-  const result = await page.evaluate((expected) => {
+  const result = await page.evaluate(async (expected) => {
     const formScreen = document.querySelector(`.no-code-screen[data-screen-key="${expected.formScreenKey}"]`);
     const buttons = Array.from(formScreen?.querySelectorAll('.no-code-actions button[data-action-key]') || []);
     const hints = Array.from(formScreen?.querySelectorAll('.no-code-action-hint[data-action-hint]') || []);
     const actions = (window.__noCodeRuntimePreview?.screens || [])
       .filter((screen) => screen && screen.screen_key === expected.formScreenKey)
       .flatMap((screen) => Array.isArray(screen.actions) ? screen.actions : []);
+    const requiredInput = formScreen?.querySelector(`[name="${expected.requiredInputField}"]`);
+    if (requiredInput) {
+      requiredInput.value = expected.requiredInputValue;
+      requiredInput.dispatchEvent(new Event('input', { bubbles: true }));
+    }
+    const createButton = buttons.find((button) => button.getAttribute('data-action-key') === 'create_task_card') || buttons[0] || null;
+    if (createButton) {
+      createButton.click();
+      for (let attempt = 0; attempt < 50; attempt += 1) {
+        const state = createButton.getAttribute('data-action-state') || '';
+        if (state === 'blocked' || state === 'error') {
+          break;
+        }
+        await new Promise((resolve) => setTimeout(resolve, 100));
+      }
+    }
     return {
       skipped: false,
       keys: buttons.map((button) => button.getAttribute('data-action-key') || ''),
@@ -537,7 +560,26 @@ async function probeRuntimeDisabledActionSurface(page, config) {
       csrfTokenFields: buttons.map((button) => button.getAttribute('data-action-csrf-token-field') || ''),
       csrfSourceSelectors: buttons.map((button) => button.getAttribute('data-action-csrf-source-selector') || ''),
       csrfTransports: buttons.map((button) => button.getAttribute('data-action-csrf-transport') || ''),
+      clickBindingStates: buttons.map((button) => button.getAttribute('data-action-click-binding-state') || ''),
+      submitTriggers: buttons.map((button) => button.getAttribute('data-action-submit-trigger') || ''),
+      networkSubmitEnabled: buttons.map((button) => button.getAttribute('data-action-network-submit-enabled') || ''),
+      guardedClickInventoryStates: buttons.map((button) => button.getAttribute('data-action-guarded-click-inventory-state') || ''),
+      enableGateSets: buttons.map((button) => button.getAttribute('data-action-enable-gate-set') || ''),
+      payloadAssemblies: buttons.map((button) => button.getAttribute('data-action-payload-assembly') || ''),
+      blockedResponseHandling: buttons.map((button) => button.getAttribute('data-action-blocked-response-handling') || ''),
+      failureDisplayTargets: buttons.map((button) => button.getAttribute('data-action-failure-display-target') || ''),
       failClosedResults: buttons.map((button) => button.getAttribute('data-action-fail-closed-result') || ''),
+      guardedClickProbe: createButton ? {
+        key: createButton.getAttribute('data-action-key') || '',
+        state: createButton.getAttribute('data-action-state') || '',
+        disabled: createButton.disabled === true,
+        lastSubmitResult: createButton.getAttribute('data-action-last-submit-result') || '',
+        lastFailureCode: createButton.getAttribute('data-action-last-failure-code') || '',
+        feedbackState: formScreen?.querySelector('.no-code-action-feedback')?.getAttribute('data-state') || '',
+        feedbackResult: formScreen?.querySelector('.no-code-action-feedback')?.getAttribute('data-action-last-submit-result') || '',
+        feedbackFailureCode: formScreen?.querySelector('.no-code-action-feedback')?.getAttribute('data-action-last-failure-code') || '',
+        feedbackText: formScreen?.querySelector('.no-code-action-feedback')?.textContent?.trim() || '',
+      } : null,
       disabledProperties: buttons.map((button) => button.disabled === true),
       hintKeys: hints.map((hint) => hint.getAttribute('data-action-hint') || ''),
       hintStates: hints.map((hint) => hint.getAttribute('data-action-state-hint') || ''),
@@ -566,9 +608,9 @@ async function probeRuntimeDisabledActionSurface(page, config) {
     }
   }
   if (
-    result.enabledStates.some((state) => state !== 'false')
-    || result.actionStates.some((state) => state !== 'disabled')
-    || result.disabledReasons.some((reason) => reason !== config.expected.managedActionDisabledReason)
+    result.enabledStates.some((state) => state !== 'true')
+    || result.actionStates.some((state) => !['ready', 'blocked'].includes(state))
+    || result.disabledReasons.some((reason) => reason !== '')
     || result.affordances.some((affordance) => affordance !== 'keyboard-intent-preview')
     || result.submitUrls.some((submitUrl) => submitUrl !== config.expected.managedActionSubmitUrl)
     || result.bindingStates.some((state) => state !== config.expected.managedActionBindingState)
@@ -576,14 +618,32 @@ async function probeRuntimeDisabledActionSurface(page, config) {
     || result.csrfTokenFields.some((field) => field !== config.expected.managedActionCsrfTokenField)
     || result.csrfSourceSelectors.some((selector) => selector !== config.expected.managedActionCsrfSourceSelector)
     || result.csrfTransports.some((transport) => transport !== config.expected.managedActionCsrfTransport)
+    || result.clickBindingStates.some((state) => state !== config.expected.managedActionClickBindingState)
+    || result.submitTriggers.some((trigger) => trigger !== config.expected.managedActionSubmitTrigger)
+    || result.networkSubmitEnabled.some((enabled) => enabled !== config.expected.managedActionNetworkSubmitEnabled)
+    || result.guardedClickInventoryStates.some((state) => state !== config.expected.managedActionGuardedClickInventoryState)
+    || result.enableGateSets.some((gateSet) => gateSet !== config.expected.managedActionEnableGateSet)
+    || result.payloadAssemblies.some((assembly) => assembly !== config.expected.managedActionPayloadAssembly)
+    || result.blockedResponseHandling.some((handling) => handling !== config.expected.managedActionBlockedResponseHandling)
+    || result.failureDisplayTargets.some((target) => target !== config.expected.managedActionFailureDisplayTarget)
     || result.failClosedResults.some((resultCode) => resultCode !== config.expected.managedActionFailClosedResult)
-    || result.disabledProperties.some((disabled) => disabled !== true)
+    || !result.guardedClickProbe
+    || result.guardedClickProbe.key !== 'create_task_card'
+    || result.guardedClickProbe.state !== 'blocked'
+    || result.guardedClickProbe.disabled !== false
+    || result.guardedClickProbe.lastSubmitResult !== 'blocked'
+    || result.guardedClickProbe.lastFailureCode !== config.expected.managedActionFailClosedResult
+    || result.guardedClickProbe.feedbackState !== 'blocked'
+    || result.guardedClickProbe.feedbackResult !== 'blocked'
+    || result.guardedClickProbe.feedbackFailureCode !== config.expected.managedActionFailClosedResult
+    || !result.guardedClickProbe.feedbackText.includes(config.expected.managedActionFailClosedResult)
+    || result.disabledProperties.some((disabled) => disabled !== false)
     || JSON.stringify(result.hintKeys) !== JSON.stringify(expectedKeys)
-    || result.hintStates.some((state) => state !== 'disabled')
+    || result.hintStates.some((state) => state !== 'ready')
     || result.executeButtonDisabled !== true
     || !['blocked', 'unavailable'].includes(result.executeState)
   ) {
-    throw new Error(`disabled managed action surface mismatch: ${JSON.stringify(result)}`);
+    throw new Error(`guarded managed action surface mismatch: ${JSON.stringify(result)}`);
   }
 
   return result;
@@ -995,7 +1055,7 @@ async function runSmoke(config) {
       await page.setViewportSize({ width: 390, height: 844 });
       await page.goto(targetUrl, { waitUntil: 'load' });
       await requireVisible(page.locator(`.no-code-screen[data-screen-key="${config.expected.listScreenKey}"] [data-runtime-data-controls]`), 'mobile runtime data controls');
-      await requireVisible(page.locator(`.no-code-screen[data-screen-key="${config.expected.formScreenKey}"] .no-code-actions button[data-action-key]`), 'mobile disabled managed action surface');
+      await requireVisible(page.locator(`.no-code-screen[data-screen-key="${config.expected.formScreenKey}"] .no-code-actions button[data-action-key]`), 'mobile guarded managed action surface');
       await page.screenshot({ path: mobileScreenshotPath, fullPage: true });
       return {
         ok: true,
