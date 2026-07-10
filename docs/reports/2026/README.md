@@ -11,6 +11,8 @@
 
 ## Index
 
+- `2026-0710-sample18-generated-submit-idempotency-route-integration-preflight.md`
+  - #595 sample18 generated submit idempotency route integration preflight。audit append 後に idempotency create-or-reuse を呼ぶ ordering、`idempotency` response metadata、method / CSRF / validation / unknown operation skip matrix、failure boundary を定義。route integration / DBAccess mutation は未有効化。Status: `DONE`。
 - `2026-0710-sample18-post-idempotency-repository-lane-closure.md`
   - #594 sample18 post-idempotency-repository lane closure。#593 の storage-backed idempotency repository/helper を受け入れ、次は route integration preflight (#595) を昇格。DBAccess mutation / route persistence は未有効化。Status: `DONE`。
 - `2026-0710-sample18-generated-submit-idempotency-repository-helper-first-slice.md`
