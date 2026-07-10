@@ -11,6 +11,8 @@
 
 ## Index
 
+- `2026-0710-sample18-submit-binding-lane-closure.md`
+  - #571 sample18 submit binding lane closure。#570 の binding gate を受け入れ、次は disabled click intent / mutation dispatcher ではなく、generated-submit route の fail-closed CSRF guard preflight (#572) を先に進める判断を記録。Status: `DONE`。
 - `2026-0710-sample18-submit-route-binding-gate-preflight.md`
   - #570 sample18 submit route binding gate preflight。sample18 generated managed actions に `submit_binding_gate` metadata を追加し、runtime HTML / browser smoke で binding state、CSRF source、fail-closed result marker を確認。runtime click と mutation は disabled のまま維持。Status: `DONE`。
 - `2026-0710-sample18-blocked-submit-route-http-smoke.md`
