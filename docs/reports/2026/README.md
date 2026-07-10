@@ -11,6 +11,8 @@
 
 ## Index
 
+- `2026-0710-sample18-mutation-dispatcher-inventory.md`
+  - #582 sample18 mutation dispatcher inventory。generated submit mutation dispatcher の operation mapping、DBAccess-bound payload boundary、auth/CSRF/idempotency/audit/stale-data gates、test matrix を定義。次は dry-run dispatcher helper (#583) で、DBAccess mutation は未有効化。Status: `DONE`。
 - `2026-0710-sample18-post-blocked-guarded-click-lane-closure.md`
   - #581 sample18 post-blocked-guarded-click lane closure。#580 の blocked guarded generated submit click binding を受け入れ、追加 feedback hardening ではなく mutation dispatcher inventory (#582) を次に昇格。DBAccess / mutation は未有効化。Status: `DONE`。
 - `2026-0710-sample18-blocked-guarded-submit-click-binding-first-slice.md`
