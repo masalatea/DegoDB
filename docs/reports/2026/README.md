@@ -11,6 +11,8 @@
 
 ## Index
 
+- `2026-0710-sample18-post-real-dbaccess-invocation-adapter-lane-closure.md`
+  - #650 sample18 post-real DBAccess invocation adapter lane closure。#649 の route-unwired real-compatible DBAccess invocation adapter を受け入れ、route wiring より前に real transaction binding preflight (#651) を昇格。generated-submit route execution は未有効化。Status: `DONE`。
 - `2026-0710-sample18-real-dbaccess-invocation-adapter-first-slice.md`
   - #649 sample18 real DBAccess invocation adapter first slice。route-unwired helper で `TaskCardData` 互換 object construction、real-compatible DBAccess method invocation、result normalization、transaction context 必須化を追加。generated-submit route execution は未有効化。Status: `FIRST_SLICE_DONE`。
 - `2026-0710-sample18-real-dbaccess-invocation-adapter-preflight.md`
