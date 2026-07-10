@@ -58,6 +58,16 @@
       "reopen_task_card",
       "delete_task_card"
     ],
+    "managed_action_keys": [
+      "complete_task_card",
+      "create_task_card",
+      "update_task_card"
+    ],
+    "managed_action_field_counts": {
+      "complete_task_card": 1,
+      "create_task_card": 5,
+      "update_task_card": 7
+    },
     "requires_route_boundary_markers": true
   },
   "status_filter_contract": {
@@ -78,8 +88,79 @@
     ],
     "generated_runtime_data_controls": "covered_by_make_sample18_no_code_public_runtime_filter_dom_smoke"
   },
+  "action_input_mapping_inventory": {
+    "source": "curated_route_and_db_access_seed",
+    "inventory_state": "metadata_inventory_only",
+    "generated_button_execution": false,
+    "route_replacement": false,
+    "operations": [
+      {
+        "operation_key": "create_task_card",
+        "curated_route_action": "create",
+        "db_access_function": "InsertTaskCard",
+        "key_fields": [],
+        "required_client_fields": ["title"],
+        "optional_client_fields": ["body", "assigned_to", "priority", "due_date"],
+        "curated_fixed_fields": {
+          "status": "todo"
+        },
+        "server_managed_fields": ["completed_at", "updated_at"],
+        "mapping_state": "promoted_to_disabled_generated_action_metadata"
+      },
+      {
+        "operation_key": "update_task_card",
+        "curated_route_action": "update",
+        "db_access_function": "UpdateTaskCard",
+        "key_fields": ["id"],
+        "required_client_fields": ["title"],
+        "optional_client_fields": ["body", "status", "assigned_to", "priority", "due_date"],
+        "curated_derived_fields": ["completed_at"],
+        "server_managed_fields": ["updated_at"],
+        "mapping_state": "promoted_to_disabled_generated_action_metadata"
+      },
+      {
+        "operation_key": "complete_task_card",
+        "curated_route_action": "complete",
+        "db_access_function": "CompleteTaskCard",
+        "key_fields": ["id"],
+        "required_client_fields": [],
+        "optional_client_fields": [],
+        "curated_fixed_fields": {
+          "status": "done"
+        },
+        "server_managed_fields": ["completed_at", "updated_at"],
+        "mapping_state": "promoted_to_disabled_generated_action_metadata"
+      },
+      {
+        "operation_key": "reopen_task_card",
+        "curated_route_action": "reopen",
+        "db_access_function": "",
+        "key_fields": ["id"],
+        "required_client_fields": [],
+        "optional_client_fields": [],
+        "curated_fixed_fields": {
+          "status": "todo",
+          "completed_at": null
+        },
+        "server_managed_fields": ["updated_at"],
+        "mapping_state": "requires_db_access_or_custom_adapter_before_generated_execution"
+      },
+      {
+        "operation_key": "delete_task_card",
+        "curated_route_action": "delete",
+        "db_access_function": "",
+        "key_fields": ["id"],
+        "required_client_fields": [],
+        "optional_client_fields": [],
+        "curated_fixed_fields": {},
+        "server_managed_fields": [],
+        "mapping_state": "requires_db_access_or_custom_adapter_before_generated_execution"
+      }
+    ]
+  },
   "remaining_gaps": [
-    "safe action-input mapping is not enabled for generated mutation buttons",
+    "reopen/delete remain curated-route-only until DBAccess or custom adapter metadata exists",
+    "generated action buttons remain disabled until mutation dispatch is explicitly promoted",
     "browser smoke remains the outer confidence gate for the curated route"
   ]
 }

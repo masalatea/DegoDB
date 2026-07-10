@@ -15,6 +15,9 @@ final class Sample18MiniTaskBoardDemoTest extends TestCase
             $root . '/sample/tutorials/sample18-mini-task-board-demo/seed/900_020_sample18_table_seed.sql',
         );
         $routeSource = (string) file_get_contents($root . '/mtool/app/lab_sample18_task_board_page.php');
+        $dbAccessSeed = (string) file_get_contents(
+            $root . '/sample/tutorials/sample18-mini-task-board-demo/seed/900_025_sample18_db_access_seed.sql',
+        );
 
         self::assertSame('sample18-no-code-ui-golden-v1', $fixture['fixture_version'] ?? '');
         self::assertSame('SAMPLE18', $fixture['project_key'] ?? '');
@@ -62,9 +65,35 @@ final class Sample18MiniTaskBoardDemoTest extends TestCase
                 : 'value="' . $action . '"';
             self::assertStringContainsString($needle, $routeSource);
         }
+        $actionInputInventory = $checklist['action_input_mapping_inventory'] ?? [];
+        self::assertFalse($actionInputInventory['generated_button_execution'] ?? true);
+        self::assertFalse($actionInputInventory['route_replacement'] ?? true);
+        foreach (($actionInputInventory['operations'] ?? []) as $operation) {
+            self::assertIsArray($operation);
+            $routeAction = (string) ($operation['curated_route_action'] ?? '');
+            $routeNeedle = in_array($routeAction, ['create', 'update'], true)
+                ? "action === '" . $routeAction . "'"
+                : 'value="' . $routeAction . '"';
+            self::assertStringContainsString($routeNeedle, $routeSource);
+            foreach (array_merge(
+                $operation['key_fields'] ?? [],
+                $operation['required_client_fields'] ?? [],
+                $operation['optional_client_fields'] ?? [],
+            ) as $fieldName) {
+                self::assertStringContainsString('name="' . $fieldName . '"', $routeSource);
+            }
+            $dbAccessFunction = (string) ($operation['db_access_function'] ?? '');
+            if ($dbAccessFunction !== '') {
+                self::assertStringContainsString("'" . $dbAccessFunction . "'", $dbAccessSeed);
+            }
+        }
         self::assertSame(
             $checklist['html_dom_contract']['disabled_extension_action_keys'] ?? [],
             $fixture['no_code_action_keys'] ?? [],
+        );
+        self::assertSame(
+            $checklist['html_dom_contract']['managed_action_keys'] ?? [],
+            $fixture['no_code_managed_action_keys'] ?? [],
         );
     }
 
@@ -123,11 +152,25 @@ final class Sample18MiniTaskBoardDemoTest extends TestCase
             $htmlDomContract['disabled_extension_action_keys'] ?? [],
             $result['steps']['no_code_metadata']['runtime_action_keys'] ?? [],
         );
+        self::assertSame(
+            $htmlDomContract['managed_action_keys'] ?? [],
+            $result['steps']['no_code_metadata']['managed_action_keys'] ?? [],
+        );
         self::assertSame(count($fixture['seed_rows'] ?? []), $result['steps']['no_code_metadata']['runtime_row_count'] ?? null);
         self::assertSame(4, $result['steps']['no_code_metadata']['golden_row_count'] ?? null);
 
         $publishedRoot = (string) ($result['steps']['no_code_metadata']['published_root'] ?? '');
         self::assertDirectoryExists($publishedRoot);
+        $screenDefinition = NoCodeUiContractAssertions::readJsonFile($this, $publishedRoot . '/screen-definition.json');
+        $contractActions = $screenDefinition['contracts'][0]['actions'] ?? [];
+        self::assertIsArray($contractActions);
+        $fieldCountsByAction = [];
+        foreach ($contractActions as $action) {
+            self::assertIsArray($action);
+            $fieldCountsByAction[(string) ($action['action_key'] ?? '')] = count($action['fields'] ?? []);
+            self::assertSame('disabled', (string) ($action['availability'] ?? ''));
+        }
+        self::assertSame($htmlDomContract['managed_action_field_counts'] ?? [], $fieldCountsByAction);
         $runtimePreview = NoCodeUiContractAssertions::readJsonFile($this, $publishedRoot . '/runtime-preview.json');
         NoCodeUiContractAssertions::assertRuntimePreviewScreenKeys(
             $this,

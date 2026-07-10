@@ -13,7 +13,7 @@ When someone asks for "the plan list", answer from this section first. / 「計�
 
 ### Main Plan / 主計画
 
-Current main status: #560 adds a narrow sample18 public-runtime status filter DOM preflight before safe action-input mapping. `develop` is 36 commits ahead of `origin/develop`, and push has not been performed for #432-#560. / 現在の主計画ステータス: #560 で safe action-input mapping より先に、sample18 public-runtime status filter DOM preflight を小さく追加しました。`develop` は `origin/develop` より 36 commits ahead、#432-#560 は push していません。
+Current main status: #563 proves the sample18 public runtime exposes the disabled managed action surface without submit enablement. `develop` is 39 commits ahead of `origin/develop`, and push has not been performed for #432-#563. / 現在の主計画ステータス: #563 で sample18 public runtime が submit 有効化なしで disabled managed action surface を表示することを確認しました。`develop` は `origin/develop` より 39 commits ahead、#432-#563 は push していません。
 
 | Order | Work unit / 作業の塊 | Commit unit / コミット単位 | Status | Rough effort / 目安 |
 | --- | --- | --- | --- | --- |
@@ -119,7 +119,10 @@ Current main status: #560 adds a narrow sample18 public-runtime status filter DO
 | 558 | Sample18 status filter fast contract / sample18 status filter fast contract | Add fixture and fast DOM/metadata assertions for generated task status filter controls before browser smoke or route replacement | `DONE` | 0.5 - 1 day / 半日 - 1 日 |
 | 559 | Sample18 post-filter no-code increment replan / sample18 post-filter no-code increment replan | Decide whether to add public-runtime status filter DOM coverage next or move to safe action-input mapping | `DONE` | 0.25 - 0.5 day / 0.25 - 0.5 日 |
 | 560 | Sample18 public-runtime status filter DOM preflight / sample18 public-runtime status filter DOM preflight | Add the smallest public-runtime check that proves generated task status filter controls appear before action-input mapping | `DONE` | 0.5 - 1 day / 半日 - 1 日 |
-| 561 | Sample18 safe action-input mapping inventory / sample18 safe action-input mapping inventory | Define the minimal generated action input mapping contract for sample18 without enabling mutation or replacing the curated route | `ACTIVE_NEXT` | 0.5 - 1 day / 半日 - 1 日 |
+| 561 | Sample18 safe action-input mapping inventory / sample18 safe action-input mapping inventory | Define the minimal generated action input mapping contract for sample18 without enabling mutation or replacing the curated route | `DONE` | 0.5 - 1 day / 半日 - 1 日 |
+| 562 | Sample18 generated action surface metadata first slice / sample18 generated action surface metadata first slice | Promote the inventoried create/update/complete mapping into generated action metadata while keeping buttons disabled and route mutation owned by the curated page | `DONE` | 0.5 - 1 day / 半日 - 1 日 |
+| 563 | Sample18 disabled action surface public smoke / sample18 disabled action surface public smoke | Prove the public runtime exposes the new disabled managed action surface without submit enablement before any dispatch work | `DONE` | 0.5 - 1 day / 半日 - 1 日 |
+| 564 | Sample18 managed action dispatch guard preflight / sample18 managed action dispatch guard preflight | Define the guard and failure contract for any future sample18 generated submit path before enabling dispatch | `ACTIVE_NEXT` | 0.5 - 1 day / 半日 - 1 日 |
 
 ### Long-Term No-Code Roadmap / 長期 No-Code ロードマップ
 
