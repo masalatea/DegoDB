@@ -576,6 +576,84 @@ final class Sample18MiniTaskBoardDemoTest extends TestCase
         self::assertNotContains('enablement_flag_disabled', $blocked['payload']['dbaccess_execution_plan']['reasons'] ?? []);
     }
 
+    public function testMiniTaskBoardGeneratedSubmitRouteReadyExecutionPlanIsMetadataOnly(): void
+    {
+        $checklist = $this->sample18FastContractChecklist();
+        $submitContract = $checklist['generated_submit_request_contract'] ?? [];
+        self::assertIsArray($submitContract);
+        $timestamp = (string) ($submitContract['timestamp_fixture'] ?? '');
+        $createExpectation = $submitContract['operations']['create_task_card'] ?? [];
+        self::assertIsArray($createExpectation);
+
+        $app = array_merge($this->sqliteApp(), ['sample18_generated_submit_mutation_enabled' => true]);
+        $bootstrap = app_config_db_bootstrap_apply($app);
+        self::assertTrue($bootstrap['ok'], $bootstrap['error']);
+        $principal = [
+            'id' => 'sample18-ready@example.test',
+            'auth_source' => 'phpunit',
+        ];
+
+        $validPost = array_merge(
+            ['operation_key' => 'create_task_card', '_csrf_token' => 'client-token'],
+            is_array($createExpectation['valid_input'] ?? null) ? $createExpectation['valid_input'] : [],
+        );
+        $blocked = app_lab_sample18_task_board_generated_submit_blocked_response(
+            'POST',
+            $validPost,
+            $timestamp,
+            'valid',
+            $app,
+            $principal,
+        );
+
+        self::assertSame(409, $blocked['status_code']);
+        self::assertFalse($blocked['payload']['ok'] ?? true);
+        self::assertFalse($blocked['payload']['accepted'] ?? true);
+        self::assertSame('blocked', $blocked['payload']['result'] ?? '');
+        self::assertSame('generated_submit_disabled', $blocked['payload']['failure_code'] ?? '');
+        self::assertFalse($blocked['payload']['mutation_enabled'] ?? true);
+        self::assertSame('appended', $blocked['payload']['audit_append']['status'] ?? '');
+        self::assertSame('recorded', $blocked['payload']['idempotency']['status'] ?? '');
+        self::assertTrue($blocked['payload']['idempotency']['created'] ?? false);
+        self::assertSame(0, $blocked['payload']['idempotency']['item']['duplicate_count'] ?? -1);
+        self::assertSame('ready', $blocked['payload']['mutation_gate']['status'] ?? '');
+        self::assertTrue($blocked['payload']['mutation_gate']['ready'] ?? false);
+        self::assertFalse($blocked['payload']['mutation_gate']['mutation_enabled'] ?? true);
+        self::assertFalse($blocked['payload']['mutation_gate']['executed'] ?? true);
+        self::assertSame([], $blocked['payload']['mutation_gate']['reasons'] ?? ['unexpected']);
+        self::assertSame('planned', $blocked['payload']['dbaccess_execution_plan']['status'] ?? '');
+        self::assertTrue($blocked['payload']['dbaccess_execution_plan']['ready'] ?? false);
+        self::assertFalse($blocked['payload']['dbaccess_execution_plan']['mutation_enabled'] ?? true);
+        self::assertFalse($blocked['payload']['dbaccess_execution_plan']['executed'] ?? true);
+        self::assertSame('TaskCardDBAccess', $blocked['payload']['dbaccess_execution_plan']['db_access_class'] ?? '');
+        self::assertSame('InsertTaskCard', $blocked['payload']['dbaccess_execution_plan']['db_access_function'] ?? '');
+        self::assertSame('TaskCardData', $blocked['payload']['dbaccess_execution_plan']['data_object'] ?? '');
+        self::assertSame(
+            ['TaskCardObj' => $createExpectation['expected_dispatcher_bound_fields'] ?? []],
+            $blocked['payload']['dbaccess_execution_plan']['method_arguments'] ?? [],
+        );
+        self::assertSame('not_opened', $blocked['payload']['dbaccess_execution_plan']['transaction'] ?? '');
+        self::assertSame([], $blocked['payload']['dbaccess_execution_plan']['reasons'] ?? ['unexpected']);
+
+        $latest = app_audit_log_fetch_latest($app, [
+            'project_key' => 'SAMPLE18',
+            'event_type' => 'sample18.generated_submit.requested',
+            'target_key' => (string) ($blocked['payload']['dedupe_key_preview'] ?? ''),
+            'limit' => 10,
+        ]);
+        self::assertTrue($latest['ok'], $latest['error']);
+        self::assertCount(1, $latest['items']);
+
+        $idempotencyRecords = app_lab_sample18_generated_submit_idempotency_fetch_latest_records($app, [
+            'project_key' => 'SAMPLE18',
+            'operation_key' => 'create_task_card',
+            'limit' => 10,
+        ]);
+        self::assertTrue($idempotencyRecords['ok'], $idempotencyRecords['error']);
+        self::assertCount(1, $idempotencyRecords['items']);
+        self::assertSame(0, $idempotencyRecords['items'][0]['duplicate_count'] ?? -1);
+    }
+
     public function testMiniTaskBoardGeneratedSubmitMutationGateHelperIsNonMutating(): void
     {
         $normalized = app_lab_sample18_task_board_normalize_generated_submit_request(
