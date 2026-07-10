@@ -11,6 +11,8 @@
 
 ## Index
 
+- `2026-0710-sample18-post-guarded-executor-coordinator-plan-helper-lane-closure.md`
+  - #632 sample18 post-guarded executor coordinator plan helper lane closure。#631 の non-mutating `executor_coordination_plan` helper を受け入れ、次は valid generated-submit route response への coordination plan metadata integration (#633) を昇格。DBAccess mutation / transaction / post-execution write は未有効化。Status: `DONE`。
 - `2026-0710-sample18-guarded-executor-coordinator-plan-helper-first-slice.md`
   - #631 sample18 guarded executor coordinator plan helper first slice。execution guard / app DB transaction / DBAccess call / execution audit append / idempotency outcome update の ordering を non-mutating metadata として計画化。DBAccess mutation / transaction / post-execution write / route exposure は未有効化。Status: `FIRST_SLICE_DONE`。
 - `2026-0710-sample18-guarded-executor-coordination-preflight.md`

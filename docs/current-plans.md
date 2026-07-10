@@ -13,7 +13,7 @@ When someone asks for "the plan list", answer from this section first. / 「計�
 
 ### Main Plan / 主計画
 
-Current main status: #631 adds a non-mutating sample18 guarded executor coordinator plan helper and promotes lane closure before any route exposure or DBAccess execution. `develop` is 107 commits ahead of `origin/develop`, and push has not been performed for #432-#631. / 現在の主計画ステータス: #631 で non-mutating sample18 guarded executor coordinator plan helper を追加し、route exposure / DBAccess execution より前に lane closure を昇格しました。`develop` は `origin/develop` より 107 commits ahead、#432-#631 は push していません。
+Current main status: #632 closes the non-mutating sample18 executor coordination plan helper lane and promotes route metadata integration before DBAccess execution. `develop` is 108 commits ahead of `origin/develop`, and push has not been performed for #432-#632. / 現在の主計画ステータス: #632 で non-mutating sample18 executor coordination plan helper lane を閉じ、DBAccess execution より前に route metadata integration を昇格しました。`develop` は `origin/develop` より 108 commits ahead、#432-#632 は push していません。
 
 | Order | Work unit / 作業の塊 | Commit unit / コミット単位 | Status | Rough effort / 目安 |
 | --- | --- | --- | --- | --- |
@@ -190,7 +190,8 @@ Current main status: #631 adds a non-mutating sample18 guarded executor coordina
 | 629 | Sample18 post-execution audit append persistence lane closure / sample18 post-execution audit append persistence lane closure | Close the execution audit append persistence lane and decide whether guarded executor coordination preflight, route integration metadata, or additional failure coverage should be promoted next | `DONE` | 0.25 - 0.5 day / 0.25 - 0.5 日 |
 | 630 | Sample18 guarded executor coordination preflight / sample18 guarded executor coordination preflight | Define how the first executor coordinator will combine execution guard, DBAccess call adapter, transaction boundary, execution audit append, and idempotency outcome update before implementation | `DONE` | 0.5 - 1 day / 半日 - 1 日 |
 | 631 | Sample18 guarded executor coordinator plan helper first slice / sample18 guarded executor coordinator plan helper first slice | Add a non-mutating coordinator plan helper that models DBAccess call, app-db transaction, execution audit append, and idempotency outcome update ordering without opening transactions, calling DBAccess, or writing post-execution records | `DONE` | 0.5 - 1 day / 半日 - 1 日 |
-| 632 | Sample18 post-guarded executor coordinator plan helper lane closure / sample18 post-guarded executor coordinator plan helper lane closure | Close the non-mutating coordinator plan helper lane and decide whether route metadata integration, additional failure matrix coverage, or first executor adapter preflight should be promoted next | `ACTIVE_NEXT` | 0.25 - 0.5 day / 0.25 - 0.5 日 |
+| 632 | Sample18 post-guarded executor coordinator plan helper lane closure / sample18 post-guarded executor coordinator plan helper lane closure | Close the non-mutating coordinator plan helper lane and decide whether route metadata integration, additional failure matrix coverage, or first executor adapter preflight should be promoted next | `DONE` | 0.25 - 0.5 day / 0.25 - 0.5 日 |
+| 633 | Sample18 executor coordination plan route metadata integration / sample18 executor coordination plan route metadata integration | Wire non-mutating `executor_coordination_plan` metadata into valid generated-submit route responses while preserving HTTP 409, mutation disabled, no transaction, no DBAccess call, and no post-execution writes | `ACTIVE_NEXT` | 0.5 day / 半日 |
 
 ### Long-Term No-Code Roadmap / 長期 No-Code ロードマップ
 
@@ -460,6 +461,8 @@ Latest code verification from #631:
 - `make sample18-pack-runtime-test`: `OK (14 tests, 909 assertions)`
 - Full `make test`: `OK, but incomplete, skipped, or risky tests! Tests: 398, Assertions: 12751, Skipped: 1.`
 - `git diff --check`
+
+For #632, docs-only verification is `git diff --check`.
 
 Latest code verification from #459:
 
