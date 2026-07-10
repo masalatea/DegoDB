@@ -13,7 +13,7 @@ When someone asks for "the plan list", answer from this section first. / 「計�
 
 ### Main Plan / 主計画
 
-Current main status: #595 defines sample18 generated submit idempotency route integration ordering, response metadata, and skip matrix, and promotes the first route integration slice. `develop` is 71 commits ahead of `origin/develop`, and push has not been performed for #432-#595. / 現在の主計画ステータス: #595 で sample18 generated submit idempotency route integration の ordering、response metadata、skip matrix を定義し、first route integration slice を昇格しました。`develop` は `origin/develop` より 71 commits ahead、#432-#595 は push していません。
+Current main status: #596 wires valid blocked sample18 generated submit responses to idempotency create-or-reuse after audit append while keeping DBAccess mutation disabled, and promotes lane closure. `develop` is 72 commits ahead of `origin/develop`, and push has not been performed for #432-#596. / 現在の主計画ステータス: #596 で valid blocked sample18 generated submit response を audit append 後の idempotency create-or-reuse に接続しつつ DBAccess mutation は disabled のまま維持し、lane closure を昇格しました。`develop` は `origin/develop` より 72 commits ahead、#432-#596 は push していません。
 
 | Order | Work unit / 作業の塊 | Commit unit / コミット単位 | Status | Rough effort / 目安 |
 | --- | --- | --- | --- | --- |
@@ -154,7 +154,8 @@ Current main status: #595 defines sample18 generated submit idempotency route in
 | 593 | Sample18 generated submit idempotency repository/helper first slice / sample18 generated submit idempotency repository/helper first slice | Add storage-backed idempotency create-or-reuse coverage for blocked generated submit requests without enabling DBAccess mutation | `DONE` | 0.5 - 1 day / 半日 - 1 日 |
 | 594 | Sample18 post-idempotency-repository lane closure / sample18 post-idempotency-repository lane closure | Close the storage-backed idempotency repository/helper lane and decide whether route integration preflight or duplicate audit interaction should be promoted next | `DONE` | 0.25 - 0.5 day / 0.25 - 0.5 日 |
 | 595 | Sample18 generated submit idempotency route integration preflight / sample18 generated submit idempotency route integration preflight | Define how the blocked generated submit route will call idempotency create-or-reuse, response metadata, skip matrix, and audit ordering before implementation | `DONE` | 0.5 day / 半日 |
-| 596 | Sample18 generated submit idempotency route integration first slice / sample18 generated submit idempotency route integration first slice | Wire valid blocked generated submit responses to idempotency create-or-reuse after audit append while keeping method/CSRF/validation failures skipped and DBAccess mutation disabled | `ACTIVE_NEXT` | 0.5 - 1 day / 半日 - 1 日 |
+| 596 | Sample18 generated submit idempotency route integration first slice / sample18 generated submit idempotency route integration first slice | Wire valid blocked generated submit responses to idempotency create-or-reuse after audit append while keeping method/CSRF/validation failures skipped and DBAccess mutation disabled | `DONE` | 0.5 - 1 day / 半日 - 1 日 |
+| 597 | Sample18 post-idempotency-route-integration lane closure / sample18 post-idempotency-route-integration lane closure | Close the route idempotency integration lane and decide whether duplicate audit interaction, persistence failure matrix, or mutation enablement gate coverage should be promoted next | `ACTIVE_NEXT` | 0.25 - 0.5 day / 0.25 - 0.5 日 |
 
 ### Long-Term No-Code Roadmap / 長期 No-Code ロードマップ
 
@@ -256,6 +257,17 @@ Latest code verification from #593:
 For #594, docs-only verification is `git diff --check`.
 
 For #595, docs-only verification is `git diff --check`.
+
+Latest code verification from #596:
+
+- `php -l mtool/app/lab_sample18_task_board_page.php`
+- `php -l tests/Integration/Sample18MiniTaskBoardDemoTest.php`
+- `php -l mtool/scripts/check_sample18_task_board_http_smoke.php`
+- `make sample18-pack-runtime-test`: `OK (6 tests, 428 assertions)`
+- `make sample18-http-runtime-smoke`: `OK`
+- `make sample18-no-code-public-runtime-disabled-action-smoke`: `OK`
+- `make test`: `OK, but incomplete, skipped, or risky tests! Tests: 388, Assertions: 12236, Skipped: 1.`
+- `git diff --check`
 
 Latest code verification from #459:
 
@@ -658,6 +670,7 @@ Completed detailed history was moved out of this active list. / 完了済みの�
 
 | Completed scope / 完了済み範囲 | Historical source / 履歴ソース |
 | --- | --- |
+| Sample18 generated submit idempotency route integration first slice / sample18 generated submit idempotency route integration first slice | [2026-0710 Sample18 Generated Submit Idempotency Route Integration First Slice](reports/2026/2026-0710-sample18-generated-submit-idempotency-route-integration-first-slice.md) |
 | Sample18 generated submit idempotency route integration preflight / sample18 generated submit idempotency route integration preflight | [2026-0710 Sample18 Generated Submit Idempotency Route Integration Preflight](reports/2026/2026-0710-sample18-generated-submit-idempotency-route-integration-preflight.md) |
 | Sample18 post-idempotency-repository lane closure / sample18 post-idempotency-repository lane closure | [2026-0710 Sample18 Post Idempotency Repository Lane Closure](reports/2026/2026-0710-sample18-post-idempotency-repository-lane-closure.md) |
 | Sample18 generated submit idempotency repository/helper first slice / sample18 generated submit idempotency repository/helper first slice | [2026-0710 Sample18 Generated Submit Idempotency Repository Helper First Slice](reports/2026/2026-0710-sample18-generated-submit-idempotency-repository-helper-first-slice.md) |
