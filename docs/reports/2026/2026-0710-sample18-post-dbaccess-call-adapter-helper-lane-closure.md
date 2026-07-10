@@ -37,7 +37,10 @@ Required boundaries:
 - no generated-submit route execution;
 - no real TaskCard mutation;
 - fake transaction adapter tests for begin, commit, rollback, begin failure, commit failure, rollback failure, DBAccess failure, and unexpected exception;
-- explicit metadata for `transaction_status`, `dbaccess_status`, `rolled_back`, and partial failure;
+- UI/API success requires every required step to succeed: request audit, idempotency create, app DB transaction begin, DBAccess call, app DB commit, execution audit append, and idempotency execution outcome update;
+- any required step failure must produce a failure route result, including post-commit recording failures;
+- physical cross-store atomicity remains future work, but the user-facing contract should not expose partial success as success;
+- explicit metadata for `transaction_status`, `dbaccess_status`, `rolled_back`, `recording_status`, and internal failure codes such as `post_commit_recording_failed`;
 - no execution audit or idempotency update wiring yet.
 
 ## Verification
