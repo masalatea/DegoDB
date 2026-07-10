@@ -11,6 +11,8 @@
 
 ## Index
 
+- `2026-0710-sample18-production-runtime-config-resolver-first-slice.md`
+  - #677 sample18 production runtime config resolver first slice。generated-submit executor config resolver を追加し、app/env flag precedence、default runtime reference files、injected callable dependency source、fail-closed metadata を focused coverage。Status: `FIRST_SLICE_DONE`。
 - `2026-0710-sample18-production-runtime-config-hardening-preflight.md`
   - #676 sample18 production runtime config hardening preflight。generated-submit executor enablement の app/env flag、default runtime reference path、injected callables、fail-closed metadata の production-safe config boundary を定義。次は resolver/coverage first slice (#677)。Status: `DONE`。
 - `2026-0710-post-generated-submit-runtime-ui-rendering-lane-closure.md`

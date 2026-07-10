@@ -1687,6 +1687,85 @@ final class Sample18MiniTaskBoardDemoTest extends TestCase
         self::assertFalse($disabled['mutation_enabled']);
     }
 
+    public function testMiniTaskBoardGeneratedSubmitExecutorConfigResolverFailsClosed(): void
+    {
+        $previousMutationFlag = getenv('MTOOL_SAMPLE18_GENERATED_SUBMIT_MUTATION_ENABLED');
+        $previousExecutorFlag = getenv('MTOOL_SAMPLE18_GENERATED_SUBMIT_EXECUTOR_ENABLED');
+
+        try {
+            putenv('MTOOL_SAMPLE18_GENERATED_SUBMIT_MUTATION_ENABLED');
+            putenv('MTOOL_SAMPLE18_GENERATED_SUBMIT_EXECUTOR_ENABLED');
+
+            $default = app_lab_sample18_task_board_generated_submit_executor_config([]);
+            self::assertSame('disabled', $default['status']);
+            self::assertFalse($default['ready']);
+            self::assertFalse($default['mutation_enabled']);
+            self::assertFalse($default['executor_enabled']);
+            self::assertSame('default', $default['mutation_enablement_source']);
+            self::assertSame('default', $default['executor_enablement_source']);
+            self::assertContains('mutation_enablement_disabled', $default['reasons']);
+            self::assertContains('executor_enablement_disabled', $default['reasons']);
+
+            putenv('MTOOL_SAMPLE18_GENERATED_SUBMIT_MUTATION_ENABLED=1');
+            putenv('MTOOL_SAMPLE18_GENERATED_SUBMIT_EXECUTOR_ENABLED=1');
+            $envReady = app_lab_sample18_task_board_generated_submit_executor_config([]);
+            self::assertSame('ready', $envReady['status']);
+            self::assertTrue($envReady['ready']);
+            self::assertSame('env', $envReady['mutation_enablement_source']);
+            self::assertSame('env', $envReady['executor_enablement_source']);
+            self::assertSame('default_runtime_reference', $envReady['dependency_source']);
+            self::assertSame([], $envReady['reasons']);
+
+            $appOverride = app_lab_sample18_task_board_generated_submit_executor_config([
+                'sample18_generated_submit_mutation_enabled' => false,
+            ]);
+            self::assertSame('disabled', $appOverride['status']);
+            self::assertFalse($appOverride['mutation_enabled']);
+            self::assertTrue($appOverride['executor_enabled']);
+            self::assertSame('app', $appOverride['mutation_enablement_source']);
+            self::assertSame('env', $appOverride['executor_enablement_source']);
+            self::assertContains('mutation_enablement_disabled', $appOverride['reasons']);
+
+            $missingRuntimeDir = sys_get_temp_dir() . '/missing-sample18-runtime-config-' . bin2hex(random_bytes(4));
+            $missingRuntime = app_lab_sample18_task_board_generated_submit_executor_config([
+                'sample18_generated_submit_mutation_enabled' => true,
+                'sample18_generated_submit_executor_enabled' => true,
+                'sample18_generated_submit_runtime_reference_dir' => $missingRuntimeDir,
+            ]);
+            self::assertSame('failed', $missingRuntime['status']);
+            self::assertFalse($missingRuntime['ok']);
+            self::assertFalse($missingRuntime['ready']);
+            self::assertSame('executor_default_runtime_file_missing', $missingRuntime['failure_code']);
+            self::assertContains('runtime_reference_file_missing', $missingRuntime['reasons']);
+            self::assertStringStartsWith($missingRuntimeDir, $missingRuntime['missing_file']);
+
+            $callable = static fn (): array => ['ok' => true];
+            $injected = app_lab_sample18_task_board_generated_submit_executor_config([
+                'sample18_generated_submit_mutation_enabled' => true,
+                'sample18_generated_submit_executor_enabled' => true,
+                'sample18_generated_submit_runtime_reference_dir' => $missingRuntimeDir,
+                'sample18_generated_submit_transaction_callables' => [
+                    'begin' => $callable,
+                    'commit' => $callable,
+                    'rollback' => $callable,
+                    'dbaccess' => $callable,
+                ],
+            ]);
+            self::assertSame('ready', $injected['status']);
+            self::assertTrue($injected['ok']);
+            self::assertTrue($injected['ready']);
+            self::assertSame('injected_transaction_callables', $injected['dependency_source']);
+            self::assertSame([], $injected['reasons']);
+        } finally {
+            $previousMutationFlag === false
+                ? putenv('MTOOL_SAMPLE18_GENERATED_SUBMIT_MUTATION_ENABLED')
+                : putenv('MTOOL_SAMPLE18_GENERATED_SUBMIT_MUTATION_ENABLED=' . $previousMutationFlag);
+            $previousExecutorFlag === false
+                ? putenv('MTOOL_SAMPLE18_GENERATED_SUBMIT_EXECUTOR_ENABLED')
+                : putenv('MTOOL_SAMPLE18_GENERATED_SUBMIT_EXECUTOR_ENABLED=' . $previousExecutorFlag);
+        }
+    }
+
     public function testMiniTaskBoardGeneratedSubmitDbAccessExecutionPlanIsNonMutating(): void
     {
         $normalized = app_lab_sample18_task_board_normalize_generated_submit_request(
