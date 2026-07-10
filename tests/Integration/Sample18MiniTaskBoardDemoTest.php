@@ -412,6 +412,53 @@ final class Sample18MiniTaskBoardDemoTest extends TestCase
         self::assertCount(1, $afterFailures['items']);
     }
 
+    public function testMiniTaskBoardGeneratedSubmitAuditAppendFailureIsVisibleWithoutMutation(): void
+    {
+        $checklist = $this->sample18FastContractChecklist();
+        $submitContract = $checklist['generated_submit_request_contract'] ?? [];
+        self::assertIsArray($submitContract);
+        $timestamp = (string) ($submitContract['timestamp_fixture'] ?? '');
+        $createExpectation = $submitContract['operations']['create_task_card'] ?? [];
+        self::assertIsArray($createExpectation);
+
+        $brokenApp = [
+            'site' => 'lab',
+            'db' => ['driver' => 'sqlite', 'dsn' => 'sqlite:/path/that/does/not/exist/sample18-audit.sqlite'],
+            'config_db' => ['driver' => 'sqlite', 'dsn' => 'sqlite:/path/that/does/not/exist/sample18-audit.sqlite'],
+        ];
+        $validPost = array_merge(
+            ['operation_key' => 'create_task_card', '_csrf_token' => 'client-token'],
+            is_array($createExpectation['valid_input'] ?? null) ? $createExpectation['valid_input'] : [],
+        );
+
+        $blocked = app_lab_sample18_task_board_generated_submit_blocked_response(
+            'POST',
+            $validPost,
+            $timestamp,
+            'valid',
+            $brokenApp,
+            [
+                'id' => 'sample18-operator@example.test',
+                'auth_source' => 'phpunit',
+            ],
+        );
+
+        self::assertSame(409, $blocked['status_code']);
+        self::assertFalse($blocked['payload']['ok'] ?? true);
+        self::assertFalse($blocked['payload']['accepted'] ?? true);
+        self::assertSame('blocked', $blocked['payload']['result'] ?? '');
+        self::assertSame('generated_submit_disabled', $blocked['payload']['failure_code'] ?? '');
+        self::assertSame('dry_run', $blocked['payload']['dispatcher_result']['dispatch_state'] ?? '');
+        self::assertFalse($blocked['payload']['dispatcher_result']['executed'] ?? true);
+        self::assertFalse($blocked['payload']['dispatcher_result']['mutation_enabled'] ?? true);
+        self::assertFalse($blocked['payload']['mutation_enabled'] ?? true);
+        self::assertSame('failed', $blocked['payload']['audit_append']['status'] ?? '');
+        self::assertFalse($blocked['payload']['audit_append']['skipped'] ?? true);
+        self::assertSame([], $blocked['payload']['audit_append']['item'] ?? ['unexpected']);
+        self::assertNotSame('', $blocked['payload']['audit_append']['error'] ?? '');
+        self::assertSame('', $blocked['payload']['audit_append']['reason'] ?? 'unexpected');
+    }
+
     public function testMiniTaskBoardDemoReferenceOutputs(): void
     {
         $fixture = $this->sample18NoCodeGoldenFixture();

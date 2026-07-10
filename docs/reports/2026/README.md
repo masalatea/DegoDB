@@ -11,6 +11,8 @@
 
 ## Index
 
+- `2026-0710-sample18-generated-submit-audit-append-failure-visibility-coverage.md`
+  - #590 sample18 generated submit audit append failure visibility coverage。audit append failure 時も valid submit は HTTP 409 `generated_submit_disabled` のまま、`audit_append.status=failed` と非空 error を返し、dispatcher / top-level mutation は disabled のまま維持する focused coverage を追加。Status: `FIRST_SLICE_DONE`。
 - `2026-0710-sample18-post-blocked-audit-append-lane-closure.md`
   - #589 sample18 post-blocked-audit-append lane closure。#588 の valid blocked generated submit audit append を受け入れ、次は mutation enablement より前に audit append failure visibility coverage (#590) を昇格。DBAccess mutation は未有効化。Status: `DONE`。
 - `2026-0710-sample18-generated-submit-blocked-audit-append-first-slice.md`
