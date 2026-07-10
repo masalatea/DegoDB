@@ -1290,6 +1290,9 @@ final class Sample18MiniTaskBoardDemoTest extends TestCase
         $missingDependencyApp = array_merge($this->sqliteApp(), [
             'sample18_generated_submit_mutation_enabled' => true,
             'sample18_generated_submit_executor_enabled' => true,
+            'sample18_generated_submit_transaction_callables' => [
+                'begin' => static fn (): array => ['ok' => true],
+            ],
         ]);
         $bootstrap = app_config_db_bootstrap_apply($missingDependencyApp);
         self::assertTrue($bootstrap['ok'], $bootstrap['error']);
@@ -1396,6 +1399,117 @@ final class Sample18MiniTaskBoardDemoTest extends TestCase
         self::assertTrue($recordingFailed['payload']['route_execution']['recovery_required'] ?? false);
         self::assertTrue($recordingFailed['payload']['post_commit_recording']['recovery_required'] ?? false);
         self::assertSame('post_commit_recording_failed', $recordingFailed['payload']['post_commit_recording']['recovery_reason'] ?? '');
+    }
+
+    public function testMiniTaskBoardGeneratedSubmitRouteBuildsDefaultRuntimeBinding(): void
+    {
+        $root = dirname(__DIR__, 2);
+        require_once $root . '/sample/tutorials/sample18-mini-task-board-demo/reference/DBACCESS-PHP/_support/mtool_runtime_db.php';
+
+        $checklist = $this->sample18FastContractChecklist();
+        $submitContract = $checklist['generated_submit_request_contract'] ?? [];
+        self::assertIsArray($submitContract);
+        $timestamp = (string) ($submitContract['timestamp_fixture'] ?? '');
+        $createExpectation = $submitContract['operations']['create_task_card'] ?? [];
+        self::assertIsArray($createExpectation);
+
+        $sqlitePath = sys_get_temp_dir() . '/sample18-route-default-binding-' . bin2hex(random_bytes(4)) . '.sqlite';
+        $previousSqlitePath = getenv('MTOOL_RUNTIME_SQLITE_PATH');
+        $previousDsn = getenv('MTOOL_RUNTIME_DB_DSN');
+        $previousUser = getenv('MTOOL_RUNTIME_DB_USER');
+        $previousPassword = getenv('MTOOL_RUNTIME_DB_PASSWORD');
+        $previousMtoolDb = $GLOBALS['mtooldb'] ?? null;
+
+        try {
+            putenv('MTOOL_RUNTIME_DB_DSN');
+            putenv('MTOOL_RUNTIME_DB_USER');
+            putenv('MTOOL_RUNTIME_DB_PASSWORD');
+            putenv('MTOOL_RUNTIME_SQLITE_PATH=' . $sqlitePath);
+            $setupDb = new MtoolGeneratedDbAccessRuntimeDb();
+            self::assertInstanceOf(
+                MtoolGeneratedDbAccessPdoResult::class,
+                $setupDb->execute(
+                    'CREATE TABLE task_card (
+                        id INTEGER PRIMARY KEY AUTOINCREMENT,
+                        title TEXT NOT NULL,
+                        body TEXT NOT NULL,
+                        status TEXT NOT NULL,
+                        assigned_to TEXT NOT NULL,
+                        priority INTEGER NOT NULL,
+                        due_date TEXT DEFAULT NULL,
+                        completed_at TEXT DEFAULT NULL,
+                        updated_at TEXT NOT NULL
+                    )',
+                ),
+            );
+
+            $app = array_merge($this->sqliteApp(), [
+                'sample18_generated_submit_mutation_enabled' => true,
+                'sample18_generated_submit_executor_enabled' => true,
+            ]);
+            $bootstrap = app_config_db_bootstrap_apply($app);
+            self::assertTrue($bootstrap['ok'], $bootstrap['error']);
+            $validPost = array_merge(
+                ['operation_key' => 'create_task_card', '_csrf_token' => 'client-token'],
+                is_array($createExpectation['valid_input'] ?? null) ? $createExpectation['valid_input'] : [],
+            );
+
+            $executed = app_lab_sample18_task_board_generated_submit_blocked_response(
+                'POST',
+                $validPost,
+                $timestamp,
+                'valid',
+                $app,
+                [
+                    'id' => 'sample18-default-binding@example.test',
+                    'auth_source' => 'phpunit',
+                ],
+            );
+            self::assertSame(200, $executed['status_code']);
+            self::assertSame('executed', $executed['payload']['result'] ?? '');
+            self::assertSame('committed', $executed['payload']['transaction_result']['transaction_status'] ?? '');
+            self::assertSame('recorded', $executed['payload']['post_commit_recording']['recording_status'] ?? '');
+
+            $verifyDb = new MtoolGeneratedDbAccessRuntimeDb();
+            $insertedRows = $verifyDb->query('SELECT title FROM task_card ORDER BY id ASC');
+            self::assertInstanceOf(MtoolGeneratedDbAccessPdoResult::class, $insertedRows);
+            self::assertSame(['New generated task'], $insertedRows->fetch_row());
+
+            $missingRuntimeApp = array_merge($this->sqliteApp(), [
+                'sample18_generated_submit_mutation_enabled' => true,
+                'sample18_generated_submit_executor_enabled' => true,
+                'sample18_generated_submit_runtime_reference_dir' => sys_get_temp_dir() . '/missing-sample18-runtime-' . bin2hex(random_bytes(4)),
+            ]);
+            $missingBootstrap = app_config_db_bootstrap_apply($missingRuntimeApp);
+            self::assertTrue($missingBootstrap['ok'], $missingBootstrap['error']);
+            $missingRuntime = app_lab_sample18_task_board_generated_submit_blocked_response(
+                'POST',
+                array_merge($validPost, ['title' => 'Missing runtime']),
+                $timestamp,
+                'valid',
+                $missingRuntimeApp,
+                [
+                    'id' => 'sample18-default-binding@example.test',
+                    'auth_source' => 'phpunit',
+                ],
+            );
+            self::assertSame(500, $missingRuntime['status_code']);
+            self::assertSame('failed', $missingRuntime['payload']['result'] ?? '');
+            self::assertSame('executor_default_runtime_file_missing', $missingRuntime['payload']['failure_code'] ?? '');
+        } finally {
+            $previousDsn === false ? putenv('MTOOL_RUNTIME_DB_DSN') : putenv('MTOOL_RUNTIME_DB_DSN=' . $previousDsn);
+            $previousSqlitePath === false ? putenv('MTOOL_RUNTIME_SQLITE_PATH') : putenv('MTOOL_RUNTIME_SQLITE_PATH=' . $previousSqlitePath);
+            $previousUser === false ? putenv('MTOOL_RUNTIME_DB_USER') : putenv('MTOOL_RUNTIME_DB_USER=' . $previousUser);
+            $previousPassword === false ? putenv('MTOOL_RUNTIME_DB_PASSWORD') : putenv('MTOOL_RUNTIME_DB_PASSWORD=' . $previousPassword);
+            if ($previousMtoolDb === null) {
+                unset($GLOBALS['mtooldb']);
+            } else {
+                $GLOBALS['mtooldb'] = $previousMtoolDb;
+            }
+            if (is_file($sqlitePath)) {
+                unlink($sqlitePath);
+            }
+        }
     }
 
     public function testMiniTaskBoardGeneratedSubmitMutationGateHelperIsNonMutating(): void

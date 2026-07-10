@@ -11,6 +11,8 @@
 
 ## Index
 
+- `2026-0710-sample18-real-runtime-default-binding-first-slice.md`
+  - #669 sample18 real runtime default binding first slice。route executor dependency resolver が injected callables 優先、未注入時は sample18 reference runtime / TaskCardDBAccess から default transaction callables を構成できるようにした。Status: `FIRST_SLICE_DONE`。
 - `2026-0710-sample18-real-runtime-default-binding-preflight.md`
   - #668 sample18 real runtime default binding preflight。generated-submit route が test-injected transaction callables なしで sample18 reference runtime DBAccess classes から default binding を構成する境界を定義。次は first slice (#669)。Status: `DONE`。
 - `2026-0710-post-route-execution-failure-recovery-coverage-lane-closure.md`
