@@ -323,6 +323,79 @@
       "data-action-fail-closed-result": "generated_submit_disabled"
     }
   },
+  "readiness_metadata_contract": {
+    "snapshot_version": "sample18-generated-submit-readiness-v0",
+    "read_only": true,
+    "mutation_dispatch_allowed": false,
+    "executor_config_fields": [
+      "status",
+      "ready",
+      "mutation_enabled",
+      "executor_enabled",
+      "mutation_enablement_source",
+      "executor_enablement_source",
+      "dependency_source",
+      "failure_code",
+      "missing_file",
+      "reasons"
+    ],
+    "route_compatible_operation_keys": [
+      "create_task_card",
+      "update_task_card",
+      "complete_task_card"
+    ],
+    "non_ready_operation_keys": [
+      "reopen_task_card",
+      "delete_task_card"
+    ],
+    "action_readiness_fields": [
+      "action_key",
+      "operation_key",
+      "route_compatible",
+      "readiness_state",
+      "availability_candidate",
+      "can_submit",
+      "failure_reasons",
+      "executor_config_status"
+    ],
+    "expected_default_executor_config": {
+      "status": "disabled",
+      "ready": false,
+      "mutation_enabled": false,
+      "executor_enabled": false,
+      "mutation_enablement_source": "default",
+      "executor_enablement_source": "default",
+      "dependency_source": "default_runtime_reference",
+      "failure_code": "",
+      "missing_file": "",
+      "reasons": [
+        "mutation_enablement_disabled",
+        "executor_enablement_disabled"
+      ]
+    },
+    "expected_ready_candidate": {
+      "readiness_state": "candidate_ready",
+      "availability_candidate": true,
+      "can_submit": false,
+      "failure_reasons": []
+    },
+    "expected_non_ready_candidate": {
+      "readiness_state": "not_route_compatible",
+      "availability_candidate": false,
+      "can_submit": false,
+      "failure_reasons": [
+        "operation_not_route_compatible"
+      ]
+    },
+    "expected_missing_runtime_failure": {
+      "status": "failed",
+      "ready": false,
+      "failure_code": "executor_default_runtime_file_missing",
+      "reasons": [
+        "runtime_reference_file_missing"
+      ]
+    }
+  },
   "remaining_gaps": [
     "reopen/delete remain curated-route-only until DBAccess or custom adapter metadata exists",
     "generated action buttons call the blocked route only; mutation dispatch remains disabled until explicitly promoted",

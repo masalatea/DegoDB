@@ -1841,6 +1841,86 @@ final class Sample18MiniTaskBoardDemoTest extends TestCase
         }
     }
 
+    public function testMiniTaskBoardReadinessMetadataShapeContractFixture(): void
+    {
+        $checklist = $this->sample18FastContractChecklist();
+        $contract = $checklist['readiness_metadata_contract'] ?? [];
+        self::assertIsArray($contract);
+        self::assertSame('sample18-generated-submit-readiness-v0', $contract['snapshot_version'] ?? '');
+        self::assertTrue($contract['read_only'] ?? false);
+        self::assertFalse($contract['mutation_dispatch_allowed'] ?? true);
+
+        self::assertSame(
+            [
+                'status',
+                'ready',
+                'mutation_enabled',
+                'executor_enabled',
+                'mutation_enablement_source',
+                'executor_enablement_source',
+                'dependency_source',
+                'failure_code',
+                'missing_file',
+                'reasons',
+            ],
+            $contract['executor_config_fields'] ?? [],
+        );
+        self::assertSame(
+            ['create_task_card', 'update_task_card', 'complete_task_card'],
+            $contract['route_compatible_operation_keys'] ?? [],
+        );
+        self::assertSame(
+            ['reopen_task_card', 'delete_task_card'],
+            $contract['non_ready_operation_keys'] ?? [],
+        );
+        self::assertSame(
+            [
+                'action_key',
+                'operation_key',
+                'route_compatible',
+                'readiness_state',
+                'availability_candidate',
+                'can_submit',
+                'failure_reasons',
+                'executor_config_status',
+            ],
+            $contract['action_readiness_fields'] ?? [],
+        );
+
+        $defaultConfig = $contract['expected_default_executor_config'] ?? [];
+        self::assertIsArray($defaultConfig);
+        self::assertSame('disabled', $defaultConfig['status'] ?? '');
+        self::assertFalse($defaultConfig['ready'] ?? true);
+        self::assertFalse($defaultConfig['mutation_enabled'] ?? true);
+        self::assertFalse($defaultConfig['executor_enabled'] ?? true);
+        self::assertSame('default', $defaultConfig['mutation_enablement_source'] ?? '');
+        self::assertSame('default', $defaultConfig['executor_enablement_source'] ?? '');
+        self::assertSame('default_runtime_reference', $defaultConfig['dependency_source'] ?? '');
+        self::assertContains('mutation_enablement_disabled', $defaultConfig['reasons'] ?? []);
+        self::assertContains('executor_enablement_disabled', $defaultConfig['reasons'] ?? []);
+
+        $readyCandidate = $contract['expected_ready_candidate'] ?? [];
+        self::assertIsArray($readyCandidate);
+        self::assertSame('candidate_ready', $readyCandidate['readiness_state'] ?? '');
+        self::assertTrue($readyCandidate['availability_candidate'] ?? false);
+        self::assertFalse($readyCandidate['can_submit'] ?? true);
+        self::assertSame([], $readyCandidate['failure_reasons'] ?? ['unexpected']);
+
+        $nonReadyCandidate = $contract['expected_non_ready_candidate'] ?? [];
+        self::assertIsArray($nonReadyCandidate);
+        self::assertSame('not_route_compatible', $nonReadyCandidate['readiness_state'] ?? '');
+        self::assertFalse($nonReadyCandidate['availability_candidate'] ?? true);
+        self::assertFalse($nonReadyCandidate['can_submit'] ?? true);
+        self::assertSame(['operation_not_route_compatible'], $nonReadyCandidate['failure_reasons'] ?? []);
+
+        $missingRuntime = $contract['expected_missing_runtime_failure'] ?? [];
+        self::assertIsArray($missingRuntime);
+        self::assertSame('failed', $missingRuntime['status'] ?? '');
+        self::assertFalse($missingRuntime['ready'] ?? true);
+        self::assertSame('executor_default_runtime_file_missing', $missingRuntime['failure_code'] ?? '');
+        self::assertSame(['runtime_reference_file_missing'], $missingRuntime['reasons'] ?? []);
+    }
+
     public function testMiniTaskBoardGeneratedSubmitRouteExposesEnvExecutorConfigMetadata(): void
     {
         $previousMutationFlag = getenv('MTOOL_SAMPLE18_GENERATED_SUBMIT_MUTATION_ENABLED');
