@@ -375,6 +375,104 @@ function app_lab_sample18_task_board_generated_submit_dispatcher_dry_run(array $
 }
 
 /**
+ * @param array<string,mixed> $value
+ * @return array<string,mixed>
+ */
+function app_lab_sample18_task_board_generated_submit_canonical_array(array $value): array
+{
+    ksort($value);
+    foreach ($value as $key => $item) {
+        if (is_array($item)) {
+            $value[$key] = app_lab_sample18_task_board_generated_submit_canonical_array($item);
+        }
+    }
+
+    return $value;
+}
+
+/**
+ * @param array<string,mixed> $dispatcherResult
+ */
+function app_lab_sample18_task_board_generated_submit_payload_fingerprint(array $dispatcherResult): string
+{
+    $payload = [
+        'route_version' => 'sample18-generated-submit-v1',
+        'operation_key' => (string) ($dispatcherResult['operation_key'] ?? ''),
+        'bound_fields' => is_array($dispatcherResult['bound_fields'] ?? null) ? $dispatcherResult['bound_fields'] : [],
+    ];
+    $json = json_encode(app_lab_sample18_task_board_generated_submit_canonical_array($payload), JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
+
+    return hash('sha256', is_string($json) ? $json : '');
+}
+
+/**
+ * @param array<string,mixed> $dispatcherResult
+ */
+function app_lab_sample18_task_board_generated_submit_dedupe_key_preview(array $dispatcherResult): string
+{
+    $operationKey = (string) ($dispatcherResult['operation_key'] ?? '');
+    if ($operationKey === '' || !($dispatcherResult['ok'] ?? false)) {
+        return '';
+    }
+
+    return 'sample18.generated_submit.' . $operationKey . '.'
+        . substr(app_lab_sample18_task_board_generated_submit_payload_fingerprint($dispatcherResult), 0, 32);
+}
+
+/**
+ * @param array<string,mixed> $normalized
+ * @param array<string,mixed> $dispatcherResult
+ * @return array<string,mixed>
+ */
+function app_lab_sample18_task_board_generated_submit_idempotency_audit_preview(
+    array $normalized,
+    array $dispatcherResult,
+    string $result,
+    string $failureCode,
+): array {
+    if (!($normalized['ok'] ?? false) || !($dispatcherResult['ok'] ?? false)) {
+        return [
+            'dedupe_key_preview' => '',
+            'payload_fingerprint' => '',
+            'audit_event_preview' => [],
+        ];
+    }
+
+    $fingerprint = app_lab_sample18_task_board_generated_submit_payload_fingerprint($dispatcherResult);
+    $dedupeKey = app_lab_sample18_task_board_generated_submit_dedupe_key_preview($dispatcherResult);
+    $metadata = [
+        'operation_key' => (string) ($normalized['operation_key'] ?? ''),
+        'curated_route_action' => (string) ($normalized['curated_route_action'] ?? ''),
+        'db_access_function' => (string) ($normalized['db_access_function'] ?? ''),
+        'dispatch_state' => (string) ($dispatcherResult['dispatch_state'] ?? ''),
+        'mutation_enabled' => (bool) ($dispatcherResult['mutation_enabled'] ?? false),
+        'executed' => (bool) ($dispatcherResult['executed'] ?? false),
+        'failure_code' => $failureCode,
+        'dedupe_key' => $dedupeKey,
+        'payload_fingerprint' => $fingerprint,
+        'ignored_input_fields' => is_array($normalized['ignored_input_fields'] ?? null) ? $normalized['ignored_input_fields'] : [],
+        'normalized_payload' => is_array($normalized['payload'] ?? null) ? $normalized['payload'] : [],
+        'dispatcher_bound_fields' => is_array($dispatcherResult['bound_fields'] ?? null) ? $dispatcherResult['bound_fields'] : [],
+    ];
+
+    return [
+        'dedupe_key_preview' => $dedupeKey,
+        'payload_fingerprint' => $fingerprint,
+        'audit_event_preview' => [
+            'actor_login_id' => '',
+            'actor_source' => 'web_lab_login',
+            'project_key' => 'SAMPLE18',
+            'event_type' => 'sample18.generated_submit.requested',
+            'target_type' => 'sample18_task_card',
+            'target_key' => $dedupeKey,
+            'result' => $result,
+            'message' => $failureCode,
+            'metadata' => $metadata,
+        ],
+    ];
+}
+
+/**
  * @param array<string,mixed> $post
  * @return array{status_code:int,payload:array<string,mixed>}
  */
@@ -435,6 +533,12 @@ function app_lab_sample18_task_board_generated_submit_blocked_response(
     }
 
     $dispatcherResult = app_lab_sample18_task_board_generated_submit_dispatcher_dry_run($normalized);
+    $idempotencyAuditPreview = app_lab_sample18_task_board_generated_submit_idempotency_audit_preview(
+        $normalized,
+        $dispatcherResult,
+        'blocked',
+        'generated_submit_disabled',
+    );
 
     return [
         'status_code' => 409,
@@ -449,6 +553,9 @@ function app_lab_sample18_task_board_generated_submit_blocked_response(
             'normalized_payload' => $normalized['payload'],
             'ignored_input_fields' => $normalized['ignored_input_fields'],
             'dispatcher_result' => $dispatcherResult,
+            'dedupe_key_preview' => $idempotencyAuditPreview['dedupe_key_preview'],
+            'payload_fingerprint' => $idempotencyAuditPreview['payload_fingerprint'],
+            'audit_event_preview' => $idempotencyAuditPreview['audit_event_preview'],
             'mutation_enabled' => false,
         ],
     ];

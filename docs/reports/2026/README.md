@@ -11,6 +11,8 @@
 
 ## Index
 
+- `2026-0710-sample18-generated-submit-idempotency-audit-dry-run-helper.md`
+  - #586 sample18 generated submit idempotency/audit dry-run helper。canonical payload fingerprint、operation-scoped dedupe key preview、audit event preview を追加し、valid blocked response に preview metadata を返す。audit append / persistence / outbox / mutation は未有効化。focused PHPUnit、HTTP smoke、public runtime smoke、`make test` 通過。Status: `DONE`。
 - `2026-0710-sample18-generated-submit-idempotency-and-audit-inventory.md`
   - #585 sample18 generated submit idempotency and audit inventory。operation-scoped dedupe key、payload fingerprint、audit event shape、persistence/response boundary を定義。次は dry-run key/event helper (#586) で、audit append / persistence / mutation は未有効化。Status: `DONE`。
 - `2026-0710-sample18-post-dispatcher-helper-lane-closure.md`
