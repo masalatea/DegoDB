@@ -1,0 +1,23 @@
+CREATE TABLE IF NOT EXISTS no_code_review_requests (
+    id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+    review_request_key VARCHAR(64) NOT NULL,
+    project_key VARCHAR(64) NOT NULL,
+    source_output_key VARCHAR(128) NOT NULL,
+    artifact_key VARCHAR(191) NOT NULL,
+    operation_key VARCHAR(128) NOT NULL,
+    adapter_handoff VARCHAR(128) NOT NULL,
+    status VARCHAR(32) NOT NULL,
+    requested_by VARCHAR(191) NOT NULL,
+    requested_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    source_output_dir TEXT NOT NULL,
+    policy_key VARCHAR(128) NOT NULL,
+    audit_event TEXT NOT NULL,
+    metadata_json TEXT NOT NULL,
+    created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    PRIMARY KEY (id),
+    UNIQUE KEY uq_no_code_review_requests_key (review_request_key),
+    KEY idx_no_code_review_requests_project_status (project_key, status, created_at),
+    KEY idx_no_code_review_requests_artifact (project_key, source_output_key, artifact_key),
+    KEY idx_no_code_review_requests_requested_by (requested_by, created_at)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;

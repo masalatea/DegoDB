@@ -11,6 +11,210 @@
 
 ## Index
 
+- `2026-0709-review-workflow-repository-in-review-duplicate-reuse-lane-closure.md`
+  - #533 review workflow repository in-review duplicate reuse lane closure。#532 の focused coverage を accepted capability として閉じ、PUSH なしでは次も named non-executable hardening のみに限定。availability / generated button execution / push は未実行。Status: `DONE`。
+- `2026-0709-review-workflow-repository-in-review-duplicate-reuse-coverage.md`
+  - #532 review workflow repository in-review duplicate reuse coverage。既存 `in_review` request が同じ identity の duplicate request に reuse されることを focused coverage で確認。availability / generated button execution / push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0709-no-push-stack-checkpoint-after-identity-required-fields.md`
+  - #531 identity required fields 後の no-push stack checkpoint。PUSH なしで継続する場合も named non-executable hardening のみに限定し、次は in-review duplicate reuse coverage を昇格。availability / generated button execution / push は未実行。Status: `DONE`。
+- `2026-0709-review-workflow-repository-identity-required-field-lane-closure.md`
+  - #530 review workflow repository identity required-field lane closure。#529 の focused coverage を accepted capability として閉じ、PUSH なしでは次も named non-executable hardening のみに限定。availability / generated button execution / push は未実行。Status: `DONE`。
+- `2026-0709-review-workflow-repository-identity-required-field-validation-coverage.md`
+  - #529 review workflow repository identity required-field validation coverage。blank `source_output_key` / `artifact_key` が row を作らず fail closed することを focused coverage で確認。availability / generated button execution / push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0709-no-push-stack-checkpoint-after-requested-by-validation.md`
+  - #528 requested-by validation 後の no-push stack checkpoint。直前の no-code 後 roadmap 記録から元の no-code plan 方針へ戻し、PUSH なしで named non-executable hardening のみ継続。次は identity required-field validation coverage を昇格。Status: `DONE`。
+- `2026-0709-review-workflow-repository-requested-by-required-field-lane-closure.md`
+  - #527 review workflow repository requested-by required-field lane closure。#526 の focused coverage を accepted capability として閉じ、blank requested_by の fail-closed boundary を記録。availability / generated button execution / push は未実行。Status: `DONE`。
+- `2026-0709-review-workflow-repository-requested-by-required-field-coverage.md`
+  - #526 review workflow repository requested-by required-field coverage。blank `requested_by` が row を作らず fail closed することを focused coverage で確認。availability / generated button execution / push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0709-no-push-stack-checkpoint-after-decoded-payload-fallback.md`
+  - #525 decoded payload fallback 後の no-push stack checkpoint。PUSH なしで継続する場合も named non-executable hardening のみに限定し、次は requested-by required-field coverage を昇格。availability / generated button execution / push は未実行。Status: `DONE`。
+- `2026-0709-review-workflow-repository-decoded-payload-fallback-lane-closure.md`
+  - #524 review workflow repository decoded payload fallback lane closure。#523 の focused coverage を accepted capability として閉じ、malformed stored audit / metadata JSON の empty-array fallback boundary を記録。availability / generated button execution / push は未実行。Status: `DONE`。
+- `2026-0709-review-workflow-repository-decoded-payload-fallback-coverage.md`
+  - #523 review workflow repository decoded payload fallback coverage。malformed stored audit / metadata JSON が read model で empty arrays に落ちることを focused coverage で確認。availability / generated button execution / push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0709-no-push-stack-checkpoint-after-source-output-dir-normalization.md`
+  - #522 source output dir normalization 後の no-push stack checkpoint。PUSH なしで継続する場合も named non-executable hardening のみに限定し、次は decoded payload fallback coverage を昇格。availability / generated button execution / push は未実行。Status: `DONE`。
+- `2026-0709-review-workflow-repository-source-output-dir-normalization-lane-closure.md`
+  - #521 review workflow repository source output dir normalization lane closure。#520 の focused coverage を accepted capability として閉じ、blank source output dir の empty string normalization boundary を記録。availability / generated button execution / push は未実行。Status: `DONE`。
+- `2026-0709-review-workflow-repository-source-output-dir-normalization-coverage.md`
+  - #520 review workflow repository source output dir normalization coverage。blank `source_output_dir` が empty string に normalize されることを focused coverage で確認。availability / generated button execution / push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0709-no-push-stack-checkpoint-after-generated-request-key-coverage.md`
+  - #519 generated request key coverage 後の no-push stack checkpoint。PUSH なしで継続する場合も named non-executable hardening のみに限定し、次は source output dir normalization coverage を昇格。availability / generated button execution / push は未実行。Status: `DONE`。
+- `2026-0709-review-workflow-repository-generated-request-key-lane-closure.md`
+  - #518 review workflow repository generated request key lane closure。#517 の focused coverage を accepted capability として閉じ、blank request key の generate / persist / fetch boundary を記録。availability / generated button execution / push は未実行。Status: `DONE`。
+- `2026-0709-review-workflow-repository-generated-request-key-coverage.md`
+  - #517 review workflow repository generated request key coverage。blank `review_request_key` input が request key を生成して persist し、fetch で読み戻せることを focused coverage で確認。availability / generated button execution / push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0709-no-push-stack-checkpoint-after-optional-default-normalization.md`
+  - #516 optional default normalization 後の no-push stack checkpoint。PUSH なしで継続する場合も named non-executable hardening のみに限定し、次は generated request key coverage を昇格。availability / generated button execution / push は未実行。Status: `DONE`。
+- `2026-0709-review-workflow-repository-optional-default-normalization-lane-closure.md`
+  - #515 review workflow repository optional default normalization lane closure。#514 の focused coverage を accepted capability として閉じ、blank optional fields の default normalization boundary を記録。availability / generated button execution / push は未実行。Status: `DONE`。
+- `2026-0709-review-workflow-repository-optional-default-normalization-coverage.md`
+  - #514 review workflow repository optional default normalization coverage。blank optional operation / adapter_handoff / policy_key が repository defaults に normalize されることを focused coverage で確認。availability / generated button execution / push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0709-no-push-stack-checkpoint-after-payload-shape-validation.md`
+  - #513 payload shape validation 後の no-push stack checkpoint。PUSH なしで継続する場合も named non-executable hardening のみに限定し、次は optional default normalization coverage を昇格。availability / generated button execution / push は未実行。Status: `DONE`。
+- `2026-0709-review-workflow-repository-payload-shape-validation-lane-closure.md`
+  - #512 review workflow repository payload shape validation lane closure。#511 の focused coverage を accepted capability として閉じ、non-array payload が row を作らず fail closed する boundary を記録。availability / generated button execution / push は未実行。Status: `DONE`。
+- `2026-0709-review-workflow-repository-payload-shape-validation-coverage.md`
+  - #511 review workflow repository payload shape validation coverage。non-array `audit_event` / `metadata` payload が row を作らず fail closed することを focused coverage で確認。availability / generated button execution / push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0709-no-push-stack-checkpoint-after-fetch-limit-normalization.md`
+  - #510 fetch limit normalization 後の no-push stack checkpoint。PUSH なしで継続する場合も named non-executable hardening のみに限定し、次は payload shape validation coverage を昇格。availability / generated button execution / push は未実行。Status: `DONE`。
+- `2026-0709-review-workflow-repository-fetch-limit-normalization-lane-closure.md`
+  - #509 review workflow repository fetch limit normalization lane closure。#508 の focused coverage を accepted capability として閉じ、non-positive limit の safe minimum boundary を記録。availability / generated button execution / push は未実行。Status: `DONE`。
+- `2026-0709-review-workflow-repository-fetch-limit-normalization-coverage.md`
+  - #508 review workflow repository fetch limit normalization coverage。non-positive latest-request fetch limit が safe minimum 1 に clamp されることを focused coverage で確認。availability / generated button execution / push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0709-no-push-stack-checkpoint-after-closed-status-matrix-coverage.md`
+  - #507 closed-status matrix coverage 後の no-push stack checkpoint。PUSH なしで継続する場合も named non-executable hardening のみに限定し、次は fetch limit normalization coverage を昇格。availability / generated button execution / push は未実行。Status: `DONE`。
+- `2026-0709-review-workflow-repository-remaining-closed-status-duplicate-matrix-lane-closure.md`
+  - #506 review workflow repository remaining closed-status duplicate matrix lane closure。#505 の focused coverage を accepted capability として閉じ、supported closed status が新規 request を妨げない boundary を記録。availability / generated button execution / push は未実行。Status: `DONE`。
+- `2026-0709-review-workflow-repository-remaining-closed-status-duplicate-matrix-coverage.md`
+  - #505 review workflow repository remaining closed-status duplicate matrix coverage。`rejected` / `cancelled` / `superseded` request が同じ identity の新規 request を妨げないことを focused coverage で確認。availability / generated button execution / push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0709-no-push-stack-checkpoint-after-closed-status-duplicate-boundary.md`
+  - #504 closed-status duplicate boundary 後の no-push stack checkpoint。PUSH なしで継続する場合も named non-executable hardening のみに限定し、次は remaining closed-status duplicate matrix coverage を昇格。availability / generated button execution / push は未実行。Status: `DONE`。
+- `2026-0709-review-workflow-repository-closed-status-duplicate-boundary-lane-closure.md`
+  - #503 review workflow repository closed-status duplicate boundary lane closure。#502 の focused coverage を accepted capability として閉じ、Docker Desktop restart 後の full `make test` 通過も記録。availability / generated button execution / push は未実行。Status: `DONE`。
+- `2026-0709-review-workflow-repository-closed-status-duplicate-boundary-coverage.md`
+  - #502 review workflow repository closed-status duplicate boundary coverage。closed request が同じ identity の新規 request を duplicate として妨げないことを focused coverage で確認。availability / generated button execution / push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0709-no-push-stack-checkpoint-after-identity-filter-coverage.md`
+  - #501 identity filter coverage 後の no-push stack checkpoint。PUSH なしで継続する場合も named non-executable hardening のみに限定し、次は repository closed-status duplicate boundary coverage を昇格。availability / generated button execution / push は未実行。Status: `DONE`。
+- `2026-0709-review-workflow-repository-identity-filter-lane-closure.md`
+  - #500 review workflow repository identity filter lane closure。#499 の focused coverage を accepted capability として閉じ、PUSH なしでは次も named non-executable hardening のみに限定。availability / generated button execution / push は未実行。Status: `DONE`。
+- `2026-0709-review-workflow-repository-identity-filter-coverage.md`
+  - #499 review workflow repository identity filter coverage。latest-request fetch の source_output_key / artifact_key / operation_key filtering を focused coverage で確認。availability / generated button execution / push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0709-no-push-stack-checkpoint-after-fetch-filter-coverage.md`
+  - #498 fetch filter coverage 後の no-push stack checkpoint。PUSH なしで継続する場合も named non-executable hardening のみに限定し、次は repository identity filter coverage を昇格。availability / generated button execution / push は未実行。Status: `DONE`。
+- `2026-0709-review-workflow-repository-fetch-filter-lane-closure.md`
+  - #497 review workflow repository fetch filter lane closure。#496 の focused coverage を accepted capability として閉じ、PUSH なしでは次も named non-executable hardening のみに限定。availability / generated button execution / push は未実行。Status: `DONE`。
+- `2026-0709-review-workflow-repository-fetch-filter-coverage.md`
+  - #496 review workflow repository fetch filter coverage。latest-request fetch の project / status / requested-by / limit filtering を focused coverage で確認。availability / generated button execution / push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0709-no-push-stack-checkpoint-after-repository-validation.md`
+  - #495 repository validation 後の no-push stack checkpoint。PUSH なしで継続する場合も named non-executable hardening のみに限定し、次は repository fetch filter coverage を昇格。availability / generated button execution / push は未実行。Status: `DONE`。
+- `2026-0709-review-workflow-repository-validation-lane-closure.md`
+  - #494 review workflow repository validation lane closure。invalid status と required project key 欠落が fail-closed し、review request row を作らない accepted behavior を整理。availability / generated button execution / push は未実行。Status: `DONE`。
+- `2026-0709-review-workflow-repository-validation-coverage.md`
+  - #493 review workflow repository validation coverage。invalid status と required project key 欠落が fail-closed し、review request row を作らないことを focused coverage で確認。availability / generated button execution / push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0709-continue-no-push-non-executable-hardening.md`
+  - #492 user の「継続」を PUSH なし local non-executable hardening 継続指示として記録。次に repository validation coverage を昇格。Push は未実行。Status: `DONE`。
+- `2026-0709-no-push-stack-checkpoint-after-guard-first-hardening.md`
+  - #491 guard-first hardening 後の no-push stack checkpoint。local stack は `origin/develop` より 59 commits ahead。次は user が cleanup / push / named non-executable follow-up lane を明示するまで待つ。availability / generated button execution / push は未実行。Status: `DONE`。
+- `2026-0709-review-workflow-guard-first-skip-matrix-lane-closure.md`
+  - #490 review workflow guard-first skip matrix lane closure。deferred / stale / unauthorized / missing-CSRF / invalid guard result が review request persistence を skip し、failure metadata を保持する accepted behavior を整理。availability / generated button execution / push は未実行。Status: `DONE`。
+- `2026-0709-review-workflow-guard-first-persistence-skip-matrix.md`
+  - #489 review workflow guard-first persistence skip matrix。stale / unauthorized / missing-CSRF / invalid guard result が review request persistence を skip し、failure metadata を保持することを focused coverage で確認。availability / generated button execution / push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0709-no-push-local-work-checkpoint.md`
+  - #488 no-push local work checkpoint。PUSH なしで local non-executable hardening を継続し、次は stale / unauthorized / missing-CSRF など non-allowed guard result が persistence に到達しない skip matrix coverage を昇格。Push は未実行。Status: `DONE`。
+- `2026-0709-review-workflow-persistence-audit-append-lane-closure.md`
+  - #487 review workflow persistence audit append lane closure。accepted / duplicate persisted review request の audit append と `review_request_key` carry-through を accepted behavior として整理。availability / generated button execution / push は未実行。Status: `DONE`。
+- `2026-0709-review-workflow-persistence-audit-append-coverage.md`
+  - #486 review workflow persistence audit append coverage。accepted / duplicate persisted review request が audit append され、audit metadata に `review_request_key` が残ることを focused coverage で確認。availability / generated button execution / push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0709-review-workflow-non-executable-hardening-replan.md`
+  - #485 review workflow non-executable hardening replan。PUSH なしで local 継続、availability は parked のまま、次は accepted / duplicate persisted review request の audit append coverage を narrow slice として昇格。Push は未実行。Status: `DONE`。
+- `2026-0709-review-workflow-persistence-failure-visibility-lane-closure.md`
+  - #484 review workflow persistence failure visibility lane closure。route-local helper の create/reuse、duplicate、skipped/deferred、persistence failure visibility を accepted behavior として整理。availability / generated button execution / push は未実行。Status: `DONE`。
+- `2026-0709-review-workflow-persistence-failure-visibility-coverage.md`
+  - #483 review workflow persistence failure visibility coverage。route-local persistence helper の DB failure path を focused coverage で固定し、route result / audit metadata / result-page rendering が failed を示すことを確認。availability / generated button execution / push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0709-continue-locally-without-push.md`
+  - #482 user の「継続しましょう。PUSHはしません」を受け、local 継続・push なし・availability parked を記録。次は non-executable な review workflow persistence failure visibility coverage。Push は未実行。Status: `DONE`。
+- `2026-0709-explicit-push-decision-for-no-code-dogfooding-stack.md`
+  - #481 no-code dogfooding stack の明示 push 判断。user から push 依頼がないため current `develop` stack は local hold。`develop` は `origin/develop` より 49 commits ahead。availability enablement / generated button execution は parked のまま。Push は未実行。Status: `DONE`。
+- `2026-0708-review-workflow-availability-enablement-replan.md`
+  - #480 review workflow availability enablement replan。`develop` が `origin/develop` より 48 commits ahead のため、availability enablement / user-visible execution は明示 push 判断まで parked。次は push as-is / hold local / cleanup before push の判断。Push は未実行。Status: `DONE`。
+- `2026-0708-local-stack-review-after-review-workflow-persistence-helper.md`
+  - #479 review workflow persistence helper lane 後の local stack review。`develop` は `origin/develop` より 46 commits ahead。metadata/probe、route boundary、guard/audit、repository persistence、route-local persistence helper の capability slice として読めるため、明示 push 判断前の squash / rewrite は推奨しない。Push は未実行。Status: `DONE`。
+- `2026-0708-review-workflow-route-persistence-helper-lane-closure.md`
+  - #478 review workflow route persistence helper lane closure。repository storage、guard-first accepted-plan helper、duplicate reuse、audit metadata carry-through、result-page persistence status を accepted capability として整理。availability enablement / generated button execution / approval transition / publish route は未追加。Push は未実行。Status: `DONE`。
+- `2026-0708-review-workflow-route-persistence-helper-first-slice.md`
+  - #477 review workflow route persistence helper first slice。accepted `accepted_plan` result だけが review request repository を呼ぶ route-local helper と focused coverage を追加。deferred/default dogfooding result は persistence skipped、availability / generated button execution / approval transition / publish route は未追加。Push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0708-review-workflow-persistence-route-integration-preflight.md`
+  - #476 review workflow persistence route integration preflight。repository-first persistence を route に接続する条件を guard-first として整理。POST route が persistence を呼ぶのは allowed `accepted_plan` 後だけで、deferred / blocked result は audit append のみ。route mutation / availability enablement / generated button execution は未追加。Push は未実行。Status: `DONE`。
+- `2026-0708-review-workflow-persistence-repository-first-slice.md`
+  - #475 review workflow persistence repository first slice。`no_code_review_requests` config DB table、repository wrapper / PDO implementation、SQLite bootstrap and idempotency coverage を追加。route mutation / availability enablement / generated button execution / approval transition / publish route は未追加。Push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0708-review-workflow-persistence-inventory.md`
+  - #474 review workflow persistence inventory。`review_source_output_artifact` を executable にする前の storage/idempotency/stale-artifact/audit/availability boundary を定義。persistence implementation / availability enablement / mutation / generated button execution は未追加。Push は未実行。Status: `DONE`。
+- `2026-0708-post-review-route-guard-replan.md`
+  - #473 review artifact route guard lane 後の replan。availability enablement / mutation implementation ではなく、review workflow persistence inventory を次に選択。`request_source_output_publish` は deferred、Push は未実行。Status: `DONE`。
+- `2026-0708-local-stack-review-after-review-artifact-route-guard.md`
+  - #472 review artifact route guard lane 後の local stack review。`develop` は `origin/develop` より 39 commits ahead。未 push stack は capability slice ごとに読めるため、明示 push 判断前の squash / rewrite は推奨しない。Push は未実行。Status: `DONE`。
+- `2026-0708-review-artifact-route-guard-lane-closure.md`
+  - #471 `review_source_output_artifact` route guard lane closure。POST route wrapper、dispatch preflight、blocked/deferred rendering、audit append、audit append failure visibility を accepted capability として整理。availability enablement / review workflow mutation は parked。Push は未実行。Status: `DONE`。
+- `2026-0708-custom-operation-audit-append-failure-handling.md`
+  - #470 custom operation audit append failure handling。operation result page に audit append status recorded / failed / skipped を表示し、append failure helper / HTML smoke coverage を追加。mutation / generated button execution / publish route は未追加。Push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0708-custom-operation-blocked-audit-append-first-slice.md`
+  - #469 custom operation blocked audit append first slice。`review_source_output_artifact` route guard result の audit event を append し、blocked/deferred outcome を repository-backed SQLite coverage で確認。mutation / generated button execution / publish route は未追加。Push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0708-review-artifact-http-guard-smoke-coverage.md`
+  - #468 review artifact HTTP guard smoke coverage。blocked / deferred guard result page の focused HTML smoke coverage を追加し、blocked audit append は次の persistence slice と判断。audit append / mutation / generated button execution は未追加。Focused PHPUnit と full `make test` 通過。Push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0708-review-artifact-http-route-guard-wrapper.md`
+  - #467 `review_source_output_artifact` HTTP route guard wrapper。narrow POST route / controller wrapper を追加し、dispatch preflight helper の blocked / plan-only result を render。`request_source_output_publish` は route 未追加。mutation / audit append / generated button execution は未追加。Push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0708-review-artifact-plan-only-dispatch-guard-first-slice.md`
+  - #466 `review_source_output_artifact` plan-only dispatch guard first slice。custom operation dispatch helper、guard results、audit event input、`source_output.review` / `source_output.publish_request` capability registration、focused integration coverage を追加。HTTP route / mutation / generated button execution は未追加。Focused PHPUnit と full `make test` 通過。Push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0708-custom-operation-execution-dispatch-preflight.md`
+  - #465 custom operation execution dispatch preflight。shared dispatch boundary、CSRF/auth/policy/audit/stale-artifact/duplicate handling、最初の候補 `review_source_output_artifact` を plan-only route guard first slice として定義。実行 route / mutation は未追加。Push は未実行。Status: `DONE`。
+- `2026-0708-custom-operation-route-boundary-lane-closure.md`
+  - #464 custom operation route-boundary metadata lane closure。review artifact / request publish の inventory、metadata、runtime / React bridge carry-through、disabled UI wording、integration coverage を accepted capability として整理。execution は別 lane とし、次は shared dispatch preflight。Push は未実行。Status: `DONE`。
+- `2026-0708-request-publish-route-boundary-metadata-carry-through.md`
+  - #463 `request_source_output_publish` route boundary metadata carry-through。publish request の route boundary を custom operation metadata、runtime action item、React bridge handoff、disabled operator action panel に通す。実行 route / mutation は未追加。Focused PHPUnit と full `make test` 通過。Push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0708-request-publish-route-boundary-inventory.md`
+  - #462 `request_source_output_publish` route boundary inventory。将来の POST-only route、`source_output.publish_request` policy、CSRF、audit event、duplicate-safe approval transition、stale artifact handling、generated HTML / React bridge adapter boundary を定義。実行 route / mutation は未追加。Push は未実行。Status: `DONE`。
+- `2026-0708-custom-operation-disabled-route-boundary-wording.md`
+  - #461 custom operation disabled route-boundary wording。disabled operator action panel に route-boundary readiness を表示し、`data-extension-slot-route-boundary` marker と dogfooding inspection coverage を追加。実行 route / mutation は未追加。Focused PHPUnit と full `make test` 通過。Push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0708-current-plan-history-through-459.md`
+  - #460 current plan history archive split。肥大化していた `docs/current-plans.md` の #459 までの完了済み履歴を、塊の終了日 `2026-0708` の日付付き report として保存し、`docs/current-plans.md` を active index に戻すための履歴 archive。Push は未実行。Status: `ARCHIVED`。
+- `2026-0708-review-artifact-route-boundary-metadata-carry-through.md`
+  - #459 `review_source_output_artifact` route boundary metadata carry-through。route boundary を custom operation metadata、screen/runtime JSON、React bridge handoff、generated TypeScript、dogfooding inspection に通す。実行 route / mutation は未追加。Focused PHPUnit、React bridge build smoke、full `make test` 通過。Push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0708-review-artifact-route-boundary-inventory.md`
+  - #458 `review_source_output_artifact` route boundary inventory。将来の POST-only route、`source_output.review` policy、CSRF、audit event、idempotency、failure handling、generated HTML / React bridge adapter boundary を定義。実行 route / mutation は未追加。Push は未実行。Status: `DONE`。
+- `2026-0708-post-adapter-handoff-custom-operation-replan.md`
+  - #457 custom operation metadata / adapter handoff stack review 後の replan。次 lane として execution ではなく、`review_source_output_artifact` を候補にした policy / auth / CSRF / audit route inventory を選択。Push は未実行。Status: `DONE`。
+- `2026-0708-local-stack-review-after-custom-operation-adapter-handoff.md`
+  - #456 custom operation metadata / adapter handoff lane closure 後の local commit stack review。`develop` は `origin/develop` より 23 commits ahead。Mtool dogfooding、configured presentation / custom slots、visible slot renderer、custom operation manifest metadata、unavailable reasons、React bridge handoff、lane closure の意味単位に分かれているため、明示 push 前の squash / history rewrite は推奨しない。Push は未実行。Status: `DONE`。
+- `2026-0708-custom-operation-metadata-adapter-handoff-lane-closure.md`
+  - #455 custom operation metadata / adapter handoff lane closure。manifest inventory、metadata carry-through、disabled action binding、unavailable reason、dogfooding inspection、React bridge `custom_operation_handoffs` までを accepted capability として整理。execution route / build / publish / approval / mutation は未追加。Push は未実行。Status: `DONE`。
+- `2026-0708-react-bridge-custom-operation-handoff-first-slice.md`
+  - #454 React bridge custom operation handoff first slice。`bridge-contract.json` に `custom_operation_handoffs` を追加し、adapter-facing な operation metadata / unavailable reason / adapter handoff / screen keys を公開。execution route / build / publish / approval / mutation は未追加。Push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0708-custom-operation-unavailable-reason-first-slice.md`
+  - #453 custom operation unavailable-reason first slice。custom operation / action item に `unavailable_reason` を正規化し、disabled operator action panel と dogfooding inspection に表示・報告する。execution route / build / publish / approval / mutation は未追加。Push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0708-local-stack-review-after-custom-operation-manifest.md`
+  - #452 custom operation manifest metadata lane closure 後の local commit stack review。`develop` は `origin/develop` より 19 commits ahead。Mtool dogfooding metadata、visible custom slot renderer、custom operation manifest metadata の意味単位に分かれているため、明示 push 前の squash / history rewrite は推奨しない。Push は未実行。Status: `DONE`。
+- `2026-0708-custom-operation-manifest-metadata-lane-closure.md`
+  - #451 custom operation manifest metadata lane closure。manifest inventory、metadata carry-through、disabled operator action binding、dogfooding inspection reporting までを accepted first slice として整理。execution route / build / publish / review-request / approval / mutation / custom component execution は未追加。Push は未実行。Status: `DONE`。
+- `2026-0708-custom-operation-manifest-inspection-first-slice.md`
+  - #450 custom operation manifest inspection first slice。Mtool dogfooding inspection summary が custom operation category、side-effect class、availability、adapter handoff、screen ごとの operation carry-through を報告。execution route / build / publish / approval / mutation は未追加。Push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0708-custom-operation-manifest-carry-through-first-slice.md`
+  - #449 custom operation manifest carry-through first slice。`contract_metadata.custom_operations` を no-code screen definition に正規化し、runtime preview JSON と disabled operator action panel の stable operation binding まで通す。execution route / build / publish / approval / mutation は未追加。Push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0708-custom-operation-manifest-inventory-first-slice.md`
+  - #448 custom operation manifest inventory first slice。operation identity、category、target、side-effect class、policy / auth / CSRF、audit、generated HTML binding、adapter handoff を non-executing manifest boundary として整理。次の code-backed slice は metadata carry-through のみに絞る。Push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0708-post-visible-slot-renderer-replan.md`
+  - #447 visible custom slot renderer closure / local stack review 後の次判断。operator action affordance は visible になったが non-executing のまま維持し、build / publish / review-request / approval などを接続する前に custom operation manifest inventory を次 lane として昇格。Push は未実行。Status: `DONE`。
+- `2026-0708-local-stack-review-after-visible-custom-slot-renderer.md`
+  - #446 visible custom slot renderer closure 後の local commit stack review。`develop` は `origin/develop` より 13 commits ahead。Mtool dogfooding probe、configured presentation / slot metadata、inspection / closure、visible slot renderer first pass の意味単位に分かれているため、明示 push 前の squash / history rewrite は推奨しない。Push は未実行。Status: `DONE`。
+- `2026-0708-visible-custom-slot-renderer-closure.md`
+  - #445 visible custom slot renderer lane closure。#441-#444 で placeholder、related settings link-list、artifact status card、operator action panel の visible first pass が揃ったことを accepted capability として整理。build / publish / approval / custom operation / custom component execution は引き続き scope 外。Push は未実行。Status: `DONE`。
+- `2026-0708-operator-action-slot-panel-first-slice.md`
+  - #444 operator action slot panel first slice。`extension_slots[].action_items` を screen-definition に正規化し、Mtool Source Output review probe の operator actions slot が Review Artifact / Request Publish を disabled action affordance として render。Push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0708-artifact-status-slot-card-first-slice.md`
+  - #443 artifact status slot card first slice。`extension_slots[].status_items` を screen-definition に正規化し、Mtool Source Output review probe の artifact status slot が Artifact Strategy / Target Binding / Spec Visibility を read-only status card として render。Push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0708-related-settings-slot-link-list-first-slice.md`
+  - #442 related settings slot link-list first slice。`extension_slots[].links` を screen-definition に正規化し、Mtool Source Output review probe の related settings slot が Shared Contracts / Source Outputs への admin navigation link を render。Push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0708-visible-custom-slot-placeholder-first-slice.md`
+  - #441 visible custom slot placeholder first slice。generated runtime HTML が `extension_slots` を non-executing placeholder region として render し、Mtool dogfooding inspection boundary は `visible_placeholder` を報告。Push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0708-mtool-no-code-dogfooding-metadata-lane-closure.md`
+  - #440 Mtool no-code dogfooding metadata lane closure。Mtool Source Output review fixture、custom extension boundary、artifact-shape proof、configured presentation metadata、custom UI slot metadata、inspection summary までを accepted capability として整理。local 7 commits は意味単位として読めるため squash 不要と判断。Push は未実行。Status: `DONE`。
+- `2026-0708-mtool-dogfooding-inspection-pass.md`
+  - #439 Mtool dogfooding inspection pass。通常の no-code runtime emitted files を組み立て、interface usage、view variant、presentation profile、screen-level extension slot distribution、HTML boundary を summary 化。metadata は JSON artifact path に通り、visible custom slot rendering は未実装として記録。Push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0708-custom-ui-slot-manifest-first-slice.md`
+  - #438 custom UI slot manifest first slice。`contract_metadata.extension_slots` を screen-definition の `extension_slots` と screen ごとの relevant slots に正規化し、runtime preview JSON まで carry-through。Mtool Source Output review probe は related settings / artifact status / operator actions slots を宣言。Push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0708-configured-presentation-metadata-first-slice.md`
+  - #437 configured presentation metadata first slice。`contract_metadata.presentation_profile` を screen-definition の `presentation_profile` と screen ごとの `presentation_hint` に正規化し、runtime preview JSON まで carry-through。Mtool Source Output review probe は compact review profile、primary / secondary fields、identity / artifact field groups を持つ。Push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0708-local-stack-review-after-mtool-no-code-dogfooding-probe.md`
+  - #436 Mtool no-code dogfooding probe 後の local stack review。未 push 4 commits は metadata helper / custom extension boundary / artifact-shape proof / closure findings として意味単位が分かれているため、明示 push 前の squash / history rewrite は不要と判断。Push は未実行。Status: `DONE`。
+- `2026-0708-mtool-no-code-dogfooding-probe-closure.md`
+  - #435 Mtool no-code dogfooding probe closure。Source Output review surface の standard generated UI / configured presentation / custom UI slot / custom operation / full custom app handoff の findings を整理し、最初の probe を closure。Push は未実行。Status: `DONE`。
+- `2026-0708-mtool-no-code-dogfooding-probe-artifact-shape.md`
+  - #434 Mtool no-code dogfooding probe artifact shape。`MTOOL` Source Output review fixture が既存 no-code runtime payload / emitted-file builder を通り、通常の `screen-definition.json` / `runtime-preview.json` / `runtime-preview.html` / `README.md` を出せることを focused coverage で固定。Push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0708-no-code-custom-extension-boundary.md`
+  - #433 no-code custom extension boundary。標準生成 UI、設定 presentation、custom UI slot、custom operation、full custom app handoff を分け、React composition は実装手段の一つとして扱いながら、source of truth は no-code metadata / manifest に置く方針を記録。Push は未実行。Status: `DONE`。
+- `2026-0708-mtool-no-code-dogfooding-probe-metadata-first-slice.md`
+  - #432 Mtool no-code dogfooding probe metadata first slice。`MTOOL` の Source Output review surface を no-code screen-definition fixture として表現する helper と focused test を追加。全面 self-replacement や広い persistent seed は行わず、#433 の artifact inspection に進める最小 metadata を固定。Push は未実行。Status: `FIRST_SLICE_DONE`。
 - `2026-0708-mtool-no-code-dogfooding-probe-inventory.md`
   - #431 first Mtool no-code dogfooding probe inventory。全面 self-replacement ではなく、Source Output / Shared Contracts / interface profile review surface を最初の低リスク probe として選択し、#432-#435 の実装・確認・closure 手順を整理。Push は未実行。Status: `DONE`。
 - `2026-0705-local-commit-stack-review-after-third-domain-confidence.md`

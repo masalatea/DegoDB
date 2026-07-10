@@ -8,6 +8,7 @@ require_once dirname(__DIR__, 2) . '/mtool/app/lab_published_single_proxy_page.p
 require_once dirname(__DIR__, 2) . '/mtool/app/lab_swagger_service.php';
 require_once dirname(__DIR__, 2) . '/mtool/app/no_code_public_runtime_page.php';
 require_once dirname(__DIR__, 2) . '/mtool/app/project_output_openapi_generator.php';
+require_once dirname(__DIR__, 2) . '/mtool/app/project_source_output_operation_page.php';
 require_once dirname(__DIR__, 2) . '/mtool/app/router.php';
 
 use PHPUnit\Framework\TestCase;
@@ -214,6 +215,24 @@ final class OpenApiSourceOutputContractTest extends TestCase
             app_no_code_public_runtime_execution_path('SAMPLE28', '20260702-010203-abcdef12'),
         );
 
+        $sourceOutputOperationRoute = app_route_match([
+            'path' => '/projects/MTOOL/source-outputs/NO-CODE-RUNTIME/operations/review-source-output-artifact',
+        ]);
+
+        self::assertSame('project_source_output_operation', $sourceOutputOperationRoute['name']);
+        self::assertSame('MTOOL', $sourceOutputOperationRoute['params']['project_key'] ?? '');
+        self::assertSame('NO-CODE-RUNTIME', $sourceOutputOperationRoute['params']['source_output_key'] ?? '');
+        self::assertSame('review-source-output-artifact', $sourceOutputOperationRoute['params']['operation_slug'] ?? '');
+        self::assertSame(
+            'review_source_output_artifact',
+            app_project_source_output_operation_key_from_route_slug(
+                $sourceOutputOperationRoute['params']['operation_slug'] ?? '',
+            ),
+        );
+        self::assertSame('not_found', app_route_match([
+            'path' => '/projects/MTOOL/source-outputs/NO-CODE-RUNTIME/operations/request-source-output-publish',
+        ])['name']);
+
         self::assertSame(
             'public, max-age=31536000, immutable',
             app_no_code_public_runtime_artifact_cache_control(),
@@ -278,6 +297,68 @@ final class OpenApiSourceOutputContractTest extends TestCase
                 );
             }
         }
+    }
+
+    public function testSourceOutputOperationResultPageRendersDeferredGuardResult(): void
+    {
+        ob_start();
+        @app_render_project_source_output_operation_result_page(
+            ['site_name' => 'DegoDB Test'],
+            ['request_id' => 'req-source-output-operation-smoke'],
+            [
+                'result' => 'blocked',
+                'status_code' => 409,
+                'failure_code' => 'deferred_availability',
+                'audit_event' => [
+                    'event_type' => 'mtool.source_output.artifact_review_requested',
+                    'metadata' => [
+                        'operation_key' => 'review_source_output_artifact',
+                        'source_output_key' => 'NO-CODE-RUNTIME',
+                    ],
+                ],
+            ],
+        );
+        $html = (string) ob_get_clean();
+
+        self::assertStringContainsString('data-source-output-operation-result="blocked"', $html);
+        self::assertStringContainsString('<code>deferred_availability</code>', $html);
+        self::assertStringContainsString('<code>review_source_output_artifact</code>', $html);
+        self::assertStringContainsString('<code>NO-CODE-RUNTIME</code>', $html);
+        self::assertStringContainsString('<code>mtool.source_output.artifact_review_requested</code>', $html);
+        self::assertStringContainsString('<code>skipped</code>', $html);
+        self::assertStringContainsString('No mutation has been executed.', $html);
+    }
+
+    public function testSourceOutputOperationResultPageRendersAuditAppendFailure(): void
+    {
+        ob_start();
+        @app_render_project_source_output_operation_result_page(
+            ['site_name' => 'DegoDB Test'],
+            ['request_id' => 'req-source-output-operation-audit-failure'],
+            [
+                'result' => 'blocked',
+                'status_code' => 409,
+                'failure_code' => 'deferred_availability',
+                'audit_event' => [
+                    'event_type' => 'mtool.source_output.artifact_review_requested',
+                    'metadata' => [
+                        'operation_key' => 'review_source_output_artifact',
+                        'source_output_key' => 'NO-CODE-RUNTIME',
+                    ],
+                ],
+                'audit_append' => [
+                    'ok' => false,
+                    'skipped' => false,
+                    'item' => [],
+                    'error' => 'sqlite failure',
+                ],
+            ],
+        );
+        $html = (string) ob_get_clean();
+
+        self::assertStringContainsString('data-source-output-operation-result="blocked"', $html);
+        self::assertStringContainsString('<code>failed</code>', $html);
+        self::assertStringContainsString('No mutation has been executed.', $html);
     }
 
     public function testOpenApiPublicRawRouteRemainsDeferredAndInternalRoutesRequireAuth(): void

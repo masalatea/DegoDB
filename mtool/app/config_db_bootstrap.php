@@ -333,6 +333,7 @@ function app_config_db_bootstrap_required_tables(): array
         'no_code_public_runtime_alias_events',
         'database_sources',
         'audit_events',
+        'no_code_review_requests',
     ];
 }
 

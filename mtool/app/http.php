@@ -31,6 +31,7 @@ require_once __DIR__ . '/project_source_output_change_order_page.php';
 require_once __DIR__ . '/project_source_output_new_page.php';
 require_once __DIR__ . '/project_source_output_detail_page.php';
 require_once __DIR__ . '/project_source_output_edit_page.php';
+require_once __DIR__ . '/project_source_output_operation_page.php';
 require_once __DIR__ . '/project_source_output_artifact_detail_page.php';
 require_once __DIR__ . '/project_source_output_download_page.php';
 require_once __DIR__ . '/no_code_public_runtime_page.php';
@@ -208,6 +209,10 @@ function app_run_http_request(): void
 
             case 'project_source_output_edit':
                 app_render_project_source_output_edit_page($app, $request);
+                return;
+
+            case 'project_source_output_operation':
+                app_handle_project_source_output_operation_request($app, $request);
                 return;
 
             case 'project_source_output_artifact_detail':
