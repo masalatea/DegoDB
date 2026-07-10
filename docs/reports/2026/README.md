@@ -11,6 +11,8 @@
 
 ## Index
 
+- `2026-0710-sample18-post-execution-plan-route-metadata-lane-closure.md`
+  - #607 sample18 post-execution-plan route metadata lane closure。#606 の route-level execution-plan metadata を受け入れ、transaction preflight より前に flag-on fresh request の ready/planned route coverage (#608) を昇格。DBAccess mutation は未有効化。Status: `DONE`。
 - `2026-0710-sample18-dbaccess-execution-plan-route-response-integration.md`
   - #606 sample18 DBAccess execution-plan route response integration。valid generated-submit route response に non-mutating `dbaccess_execution_plan` metadata を接続し、disabled/duplicate/failed route outcomes と method/CSRF/validation skip boundary を固定。DBAccess mutation は未有効化。Status: `FIRST_SLICE_DONE`。
 - `2026-0710-sample18-post-dbaccess-execution-plan-helper-lane-closure.md`

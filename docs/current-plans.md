@@ -13,7 +13,7 @@ When someone asks for "the plan list", answer from this section first. / 「計�
 
 ### Main Plan / 主計画
 
-Current main status: #606 wires non-mutating sample18 DBAccess execution-plan metadata into valid generated-submit route responses and promotes lane closure before transaction work. `develop` is 82 commits ahead of `origin/develop`, and push has not been performed for #432-#606. / 現在の主計画ステータス: #606 で valid generated-submit route response に non-mutating sample18 DBAccess execution-plan metadata を接続し、transaction 作業より前に lane closure を昇格しました。`develop` は `origin/develop` より 82 commits ahead、#432-#606 は push していません。
+Current main status: #607 closes the sample18 execution-plan route metadata lane and promotes route-level ready-plan coverage before transaction preflight. `develop` is 83 commits ahead of `origin/develop`, and push has not been performed for #432-#607. / 現在の主計画ステータス: #607 で sample18 execution-plan route metadata lane を close し、transaction preflight より前に route-level ready-plan coverage を昇格しました。`develop` は `origin/develop` より 83 commits ahead、#432-#607 は push していません。
 
 | Order | Work unit / 作業の塊 | Commit unit / コミット単位 | Status | Rough effort / 目安 |
 | --- | --- | --- | --- | --- |
@@ -165,7 +165,8 @@ Current main status: #606 wires non-mutating sample18 DBAccess execution-plan me
 | 604 | Sample18 DBAccess mutation dry-run executor first slice / sample18 DBAccess mutation dry-run executor first slice | Add a non-mutating executor helper that consumes ready gate metadata and returns DBAccess-bound execution-plan metadata without opening transactions or mutating TaskCard rows | `DONE` | 0.5 - 1 day / 半日 - 1 日 |
 | 605 | Sample18 post-DBAccess execution-plan helper lane closure / sample18 post-DBAccess execution-plan helper lane closure | Close the non-mutating DBAccess execution-plan helper lane and decide whether route response integration, transaction preflight, or additional execution-plan matrix coverage should be promoted next | `DONE` | 0.25 - 0.5 day / 0.25 - 0.5 日 |
 | 606 | Sample18 DBAccess execution-plan route response integration / sample18 DBAccess execution-plan route response integration | Wire non-mutating DBAccess execution-plan metadata into valid generated-submit route responses while preserving HTTP 409, mutation disabled, and executed false | `DONE` | 0.5 day / 半日 |
-| 607 | Sample18 post-execution-plan route metadata lane closure / sample18 post-execution-plan route metadata lane closure | Close the execution-plan route metadata lane and decide whether transaction boundary preflight, route-level ready-plan coverage, or execution audit update preflight should be promoted next | `ACTIVE_NEXT` | 0.25 - 0.5 day / 0.25 - 0.5 日 |
+| 607 | Sample18 post-execution-plan route metadata lane closure / sample18 post-execution-plan route metadata lane closure | Close the execution-plan route metadata lane and decide whether transaction boundary preflight, route-level ready-plan coverage, or execution audit update preflight should be promoted next | `DONE` | 0.25 - 0.5 day / 0.25 - 0.5 日 |
+| 608 | Sample18 route-level ready execution-plan coverage / sample18 route-level ready execution-plan coverage | Add focused route-level coverage that a flag-on fresh valid generated-submit request exposes `mutation_gate.ready` and planned `dbaccess_execution_plan` metadata while still returning HTTP 409 and executing no mutation | `ACTIVE_NEXT` | 0.5 day / 半日 |
 
 ### Long-Term No-Code Roadmap / 長期 No-Code ロードマップ
 
@@ -324,6 +325,8 @@ Latest code verification from #606:
 - `make sample18-pack-runtime-test`: `OK (8 tests, 566 assertions)`
 - Full `make test`: `OK, but incomplete, skipped, or risky tests! Tests: 390, Assertions: 12374, Skipped: 1.`
 - `git diff --check`
+
+For #607, docs-only verification is `git diff --check`.
 
 Latest code verification from #459:
 
@@ -726,6 +729,7 @@ Completed detailed history was moved out of this active list. / 完了済みの�
 
 | Completed scope / 完了済み範囲 | Historical source / 履歴ソース |
 | --- | --- |
+| Sample18 post-execution-plan route metadata lane closure / sample18 post-execution-plan route metadata lane closure | [2026-0710 Sample18 Post Execution-Plan Route Metadata Lane Closure](reports/2026/2026-0710-sample18-post-execution-plan-route-metadata-lane-closure.md) |
 | Sample18 DBAccess execution-plan route response integration / sample18 DBAccess execution-plan route response integration | [2026-0710 Sample18 DBAccess Execution-Plan Route Response Integration](reports/2026/2026-0710-sample18-dbaccess-execution-plan-route-response-integration.md) |
 | Sample18 post-DBAccess execution-plan helper lane closure / sample18 post-DBAccess execution-plan helper lane closure | [2026-0710 Sample18 Post DBAccess Execution-Plan Helper Lane Closure](reports/2026/2026-0710-sample18-post-dbaccess-execution-plan-helper-lane-closure.md) |
 | Sample18 DBAccess mutation dry-run executor first slice / sample18 DBAccess mutation dry-run executor first slice | [2026-0710 Sample18 DBAccess Mutation Dry-Run Executor First Slice](reports/2026/2026-0710-sample18-dbaccess-mutation-dry-run-executor-first-slice.md) |
