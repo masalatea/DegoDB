@@ -11,6 +11,8 @@
 
 ## Index
 
+- `2026-0710-sample18-generated-action-input-gap-inventory.md`
+  - #686 sample18 generated action/input gap inventory。generated managed-action metadata/input draft と executable generated-submit route の gap を棚卸しし、create/update/complete の route compatibility contract assertions (#687) を次に昇格。Status: `DONE`。
 - `2026-0710-post-route-response-contract-lane-closure.md`
   - #685 post route response contract lane closure。#684 の response contract assertions を受け入れ、次は sample18 generated action/input gap inventory (#686) を昇格。Status: `DONE`。
 - `2026-0710-sample18-generated-submit-route-response-contract-first-slice.md`
