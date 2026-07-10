@@ -11,6 +11,8 @@
 
 ## Index
 
+- `2026-0710-sample18-dbaccess-transaction-boundary-preflight.md`
+  - #610 sample18 DBAccess transaction boundary preflight。execution enablement 前の transaction preconditions、rollback policy、post-execution audit/idempotency update plan、#611 の non-mutating transaction-plan helper 条件を定義。DBAccess mutation は未有効化。Status: `DONE`。
 - `2026-0710-sample18-post-ready-execution-plan-coverage-lane-closure.md`
   - #609 sample18 post-ready execution-plan coverage lane closure。#608 の fresh flag-on ready/planned route coverage を受け入れ、次は transaction boundary preflight (#610) を昇格。DBAccess mutation は未有効化。Status: `DONE`。
 - `2026-0710-sample18-route-level-ready-execution-plan-coverage.md`
