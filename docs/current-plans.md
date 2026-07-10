@@ -13,7 +13,7 @@ When someone asks for "the plan list", answer from this section first. / 「計�
 
 ### Main Plan / 主計画
 
-Current main status: #672 closes route recovery coverage and promotes generated-submit UI success/error rendering preflight. `develop` is 150 commits ahead of `origin/develop`, and push has not been performed for #432-#672. / 現在の主計画ステータス: #672 で route recovery coverage を閉じ、generated-submit UI success/error rendering preflight を昇格しました。`develop` は `origin/develop` より 150 commits ahead、#432-#672 は push していません。
+Current main status: #673 defines generated-submit UI success/error rendering and promotes the first runtime UI slice. `develop` is 151 commits ahead of `origin/develop`, and push has not been performed for #432-#673. / 現在の主計画ステータス: #673 で generated-submit UI success/error rendering を定義し、最初の runtime UI slice を昇格しました。`develop` は `origin/develop` より 151 commits ahead、#432-#673 は push していません。
 
 | Order | Work unit / 作業の塊 | Commit unit / コミット単位 | Status | Rough effort / 目安 |
 | --- | --- | --- | --- | --- |
@@ -231,7 +231,8 @@ Current main status: #672 closes route recovery coverage and promotes generated-
 | 670 | Post real runtime default binding lane closure / real runtime default binding 後の lane closure | Close sample18 default runtime binding and decide whether UI success/error rendering, commit-unknown recovery coverage, or production runtime config hardening should be promoted next | `DONE` | 0.25 - 0.5 day / 0.25 - 0.5 日 |
 | 671 | Sample18 route commit-unknown recovery coverage / sample18 route commit-unknown recovery coverage | Add route-level coverage for transaction commit failure/exception metadata, preserving `recovery_required=true` and `recovery_reason=commit_status_unknown` before UI rendering work | `FIRST_SLICE_DONE` | 0.5 day / 半日 |
 | 672 | Post commit-unknown recovery coverage lane closure / commit-unknown recovery coverage 後の lane closure | Close commit-unknown recovery coverage and decide whether UI success/error rendering, production runtime config hardening, or route response status refinement should be promoted next | `DONE` | 0.25 - 0.5 day / 0.25 - 0.5 日 |
-| 673 | Sample18 generated-submit UI success/error rendering preflight / sample18 generated-submit UI success/error rendering preflight | Define how no-code generated submit UI should render success, failure, duplicate, and recovery states from route responses now that execution/recovery route contracts are covered | `ACTIVE_NEXT` | 0.5 - 1 day / 半日 - 1 日 |
+| 673 | Sample18 generated-submit UI success/error rendering preflight / sample18 generated-submit UI success/error rendering preflight | Define how no-code generated submit UI should render success, failure, duplicate, and recovery states from route responses now that execution/recovery route contracts are covered | `DONE` | 0.5 - 1 day / 半日 - 1 日 |
+| 674 | Sample18 generated-submit runtime UI result rendering first slice / sample18 generated-submit runtime UI result rendering first slice | Update no-code runtime guarded generated action feedback so executed, duplicate/blocked, ordinary failure, and recovery-required route responses produce distinct UI states and testable data attributes | `ACTIVE_NEXT` | 0.5 - 1 day / 半日 - 1 日 |
 
 ### Long-Term No-Code Roadmap / 長期 No-Code ロードマップ
 
