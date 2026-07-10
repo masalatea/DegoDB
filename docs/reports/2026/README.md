@@ -11,6 +11,8 @@
 
 ## Index
 
+- `2026-0710-sample18-real-transaction-binding-preflight.md`
+  - #651 sample18 real transaction binding preflight。generated DBAccess runtime の `$mtooldb` boundary、`task_card` schema target、transaction begin/commit/rollback binding、DBAccess instance creation、failure policy を route wiring 前に定義。次は route-unwired transaction binding helper (#652)。Status: `DONE`。
 - `2026-0710-sample18-post-real-dbaccess-invocation-adapter-lane-closure.md`
   - #650 sample18 post-real DBAccess invocation adapter lane closure。#649 の route-unwired real-compatible DBAccess invocation adapter を受け入れ、route wiring より前に real transaction binding preflight (#651) を昇格。generated-submit route execution は未有効化。Status: `DONE`。
 - `2026-0710-sample18-real-dbaccess-invocation-adapter-first-slice.md`
