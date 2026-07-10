@@ -732,6 +732,7 @@ final class Sample18MiniTaskBoardDemoTest extends TestCase
         self::assertSame('planned_not_executed', $blocked['payload']['execution_update_plan']['idempotency_execution_update']['execution_result_code'] ?? '');
         self::assertSame('planned_not_opened', $blocked['payload']['execution_update_plan']['idempotency_execution_update']['transaction_status'] ?? '');
         self::assertSame([], $blocked['payload']['execution_update_plan']['reasons'] ?? ['unexpected']);
+        self::assertArrayNotHasKey('execution_guard', $blocked['payload']);
 
         $latest = app_audit_log_fetch_latest($app, [
             'project_key' => 'SAMPLE18',
@@ -1145,6 +1146,115 @@ final class Sample18MiniTaskBoardDemoTest extends TestCase
         );
         self::assertSame('blocked', $missingDedupePlan['status']);
         self::assertContains('dedupe_key_missing', $missingDedupePlan['reasons']);
+    }
+
+    public function testMiniTaskBoardGeneratedSubmitExecutionGuardIsNonMutating(): void
+    {
+        $normalized = app_lab_sample18_task_board_normalize_generated_submit_request(
+            'create_task_card',
+            ['title' => 'Execution guard', 'body' => '', 'assigned_to' => '', 'priority' => '50', 'due_date' => ''],
+            '2026-07-10 08:00:00',
+        );
+        self::assertTrue($normalized['ok']);
+        $dispatcher = app_lab_sample18_task_board_generated_submit_dispatcher_dry_run($normalized);
+        $auditAppend = ['ok' => true, 'status' => 'appended', 'item' => ['event_key' => 'audit-guard-1']];
+        $idempotency = ['ok' => true, 'status' => 'recorded', 'created' => true, 'dedupe_key' => 'dedupe-guard-1', 'item' => ['dedupe_key' => 'dedupe-guard-1']];
+        $mutationGate = app_lab_sample18_task_board_generated_submit_mutation_gate(
+            ['sample18_generated_submit_mutation_enabled' => true],
+            $normalized,
+            $dispatcher,
+            $auditAppend,
+            $idempotency,
+        );
+        $executionPlan = app_lab_sample18_task_board_generated_submit_dbaccess_execution_plan(
+            $normalized,
+            $dispatcher,
+            $mutationGate,
+        );
+        $transactionPlan = app_lab_sample18_task_board_generated_submit_transaction_plan($executionPlan);
+        $updatePlan = app_lab_sample18_task_board_generated_submit_execution_update_plan(
+            $transactionPlan,
+            $auditAppend,
+            $idempotency,
+        );
+
+        $guard = app_lab_sample18_task_board_generated_submit_execution_guard(
+            $normalized,
+            $auditAppend,
+            $idempotency,
+            $mutationGate,
+            $executionPlan,
+            $transactionPlan,
+            $updatePlan,
+        );
+        self::assertSame('allowed', $guard['status']);
+        self::assertTrue($guard['ready']);
+        self::assertFalse($guard['will_open_transaction']);
+        self::assertFalse($guard['will_call_dbaccess']);
+        self::assertFalse($guard['will_write_execution_audit']);
+        self::assertFalse($guard['will_update_idempotency_execution']);
+        self::assertSame('sample18_application_db', $guard['db_handle']);
+        self::assertSame('TaskCardDBAccess', $guard['db_access_class']);
+        self::assertSame('InsertTaskCard', $guard['db_access_function']);
+        self::assertSame('create_task_card', $guard['operation_key']);
+        self::assertSame('dedupe-guard-1', $guard['dedupe_key']);
+        self::assertSame('audit-guard-1', $guard['request_audit_event_key']);
+        self::assertSame([], $guard['reasons']);
+
+        $duplicateGuard = app_lab_sample18_task_board_generated_submit_execution_guard(
+            $normalized,
+            $auditAppend,
+            ['ok' => true, 'status' => 'duplicate', 'created' => false, 'dedupe_key' => 'dedupe-guard-1'],
+            $mutationGate,
+            $executionPlan,
+            $transactionPlan,
+            $updatePlan,
+        );
+        self::assertSame('blocked', $duplicateGuard['status']);
+        self::assertContains('idempotency_not_ready', $duplicateGuard['reasons']);
+        self::assertContains('duplicate_generated_submit', $duplicateGuard['reasons']);
+
+        $unsafeUpdatePlan = $updatePlan;
+        $unsafeUpdatePlan['will_write_audit'] = true;
+        $unsafeGuard = app_lab_sample18_task_board_generated_submit_execution_guard(
+            $normalized,
+            $auditAppend,
+            $idempotency,
+            $mutationGate,
+            $executionPlan,
+            $transactionPlan,
+            $unsafeUpdatePlan,
+        );
+        self::assertSame('failed', $unsafeGuard['status']);
+        self::assertContains('execution_metadata_not_metadata_only', $unsafeGuard['reasons']);
+
+        $wrongDbPlan = $transactionPlan;
+        $wrongDbPlan['db_handle'] = 'config_db_audit_log';
+        $wrongDbGuard = app_lab_sample18_task_board_generated_submit_execution_guard(
+            $normalized,
+            $auditAppend,
+            $idempotency,
+            $mutationGate,
+            $executionPlan,
+            $wrongDbPlan,
+            $updatePlan,
+        );
+        self::assertSame('failed', $wrongDbGuard['status']);
+        self::assertContains('db_handle_not_allowlisted', $wrongDbGuard['reasons']);
+
+        $missingLinkPlan = $updatePlan;
+        $missingLinkPlan['execution_audit_update']['request_audit_event_key'] = '';
+        $missingLinkGuard = app_lab_sample18_task_board_generated_submit_execution_guard(
+            $normalized,
+            $auditAppend,
+            $idempotency,
+            $mutationGate,
+            $executionPlan,
+            $transactionPlan,
+            $missingLinkPlan,
+        );
+        self::assertSame('blocked', $missingLinkGuard['status']);
+        self::assertContains('request_audit_event_key_missing', $missingLinkGuard['reasons']);
     }
 
     public function testMiniTaskBoardDemoReferenceOutputs(): void

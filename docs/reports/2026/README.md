@@ -11,6 +11,8 @@
 
 ## Index
 
+- `2026-0710-sample18-guarded-execution-gate-helper-first-slice.md`
+  - #621 sample18 guarded execution gate helper first slice。route-ready metadata chain を検証する final non-executing guard helper を追加し、allowed/blocked/failed と stable reasons を返す。transaction / DBAccess / execution audit write / idempotency execution update / route exposure は未有効化。Status: `FIRST_SLICE_DONE`。
 - `2026-0710-sample18-guarded-dbaccess-execution-preflight.md`
   - #620 sample18 guarded DBAccess execution preflight。DBAccess mutation 有効化前の final enablement inputs、transaction / audit / idempotency update sequence、fail-closed matrix、#621 の non-executing guard helper 条件を定義。DBAccess mutation は未有効化。Status: `DONE`。
 - `2026-0710-sample18-post-execution-update-plan-route-metadata-lane-closure.md`
