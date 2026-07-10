@@ -13,7 +13,7 @@ When someone asks for "the plan list", answer from this section first. / 「計�
 
 ### Main Plan / 主計画
 
-Current main status: #604 adds a non-mutating sample18 DBAccess execution-plan helper and promotes lane closure before route integration. `develop` is 80 commits ahead of `origin/develop`, and push has not been performed for #432-#604. / 現在の主計画ステータス: #604 で non-mutating sample18 DBAccess execution-plan helper を追加し、route integration より前に lane closure を昇格しました。`develop` は `origin/develop` より 80 commits ahead、#432-#604 は push していません。
+Current main status: #605 closes the non-mutating DBAccess execution-plan helper lane and promotes route response integration as metadata only. `develop` is 81 commits ahead of `origin/develop`, and push has not been performed for #432-#605. / 現在の主計画ステータス: #605 で non-mutating DBAccess execution-plan helper lane を close し、metadata only の route response integration を昇格しました。`develop` は `origin/develop` より 81 commits ahead、#432-#605 は push していません。
 
 | Order | Work unit / 作業の塊 | Commit unit / コミット単位 | Status | Rough effort / 目安 |
 | --- | --- | --- | --- | --- |
@@ -163,7 +163,8 @@ Current main status: #604 adds a non-mutating sample18 DBAccess execution-plan h
 | 602 | Sample18 post-mutation-gate-failure-matrix lane closure / sample18 post-mutation-gate-failure-matrix lane closure | Close the mutation gate failure matrix lane and decide whether duplicate replay contract, dry-run execution preflight, or additional route-level failure coverage should be promoted next | `DONE` | 0.25 - 0.5 day / 0.25 - 0.5 日 |
 | 603 | Sample18 DBAccess mutation dry-run execution preflight / sample18 DBAccess mutation dry-run execution preflight | Define the first DBAccess-bound execution preflight contract, including readiness inputs, transaction boundary, response shape, and fail-closed tests before enabling actual mutation | `DONE` | 0.5 day / 半日 |
 | 604 | Sample18 DBAccess mutation dry-run executor first slice / sample18 DBAccess mutation dry-run executor first slice | Add a non-mutating executor helper that consumes ready gate metadata and returns DBAccess-bound execution-plan metadata without opening transactions or mutating TaskCard rows | `DONE` | 0.5 - 1 day / 半日 - 1 日 |
-| 605 | Sample18 post-DBAccess execution-plan helper lane closure / sample18 post-DBAccess execution-plan helper lane closure | Close the non-mutating DBAccess execution-plan helper lane and decide whether route response integration, transaction preflight, or additional execution-plan matrix coverage should be promoted next | `ACTIVE_NEXT` | 0.25 - 0.5 day / 0.25 - 0.5 日 |
+| 605 | Sample18 post-DBAccess execution-plan helper lane closure / sample18 post-DBAccess execution-plan helper lane closure | Close the non-mutating DBAccess execution-plan helper lane and decide whether route response integration, transaction preflight, or additional execution-plan matrix coverage should be promoted next | `DONE` | 0.25 - 0.5 day / 0.25 - 0.5 日 |
+| 606 | Sample18 DBAccess execution-plan route response integration / sample18 DBAccess execution-plan route response integration | Wire non-mutating DBAccess execution-plan metadata into valid generated-submit route responses while preserving HTTP 409, mutation disabled, and executed false | `ACTIVE_NEXT` | 0.5 day / 半日 |
 
 ### Long-Term No-Code Roadmap / 長期 No-Code ロードマップ
 
@@ -312,6 +313,8 @@ Latest code verification from #604:
 - `make sample18-pack-runtime-test`: `OK (8 tests, 530 assertions)`
 - Full `make test`: `OK, but incomplete, skipped, or risky tests! Tests: 390, Assertions: 12338, Skipped: 1.`
 - `git diff --check`
+
+For #605, docs-only verification is `git diff --check`.
 
 Latest code verification from #459:
 
@@ -714,6 +717,7 @@ Completed detailed history was moved out of this active list. / 完了済みの�
 
 | Completed scope / 完了済み範囲 | Historical source / 履歴ソース |
 | --- | --- |
+| Sample18 post-DBAccess execution-plan helper lane closure / sample18 post-DBAccess execution-plan helper lane closure | [2026-0710 Sample18 Post DBAccess Execution-Plan Helper Lane Closure](reports/2026/2026-0710-sample18-post-dbaccess-execution-plan-helper-lane-closure.md) |
 | Sample18 DBAccess mutation dry-run executor first slice / sample18 DBAccess mutation dry-run executor first slice | [2026-0710 Sample18 DBAccess Mutation Dry-Run Executor First Slice](reports/2026/2026-0710-sample18-dbaccess-mutation-dry-run-executor-first-slice.md) |
 | Sample18 DBAccess mutation dry-run execution preflight / sample18 DBAccess mutation dry-run execution preflight | [2026-0710 Sample18 DBAccess Mutation Dry-Run Execution Preflight](reports/2026/2026-0710-sample18-dbaccess-mutation-dry-run-execution-preflight.md) |
 | Sample18 post-mutation-gate-failure-matrix lane closure / sample18 post-mutation-gate-failure-matrix lane closure | [2026-0710 Sample18 Post Mutation Gate Failure Matrix Lane Closure](reports/2026/2026-0710-sample18-post-mutation-gate-failure-matrix-lane-closure.md) |
