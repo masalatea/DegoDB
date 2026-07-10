@@ -11,6 +11,8 @@
 
 ## Index
 
+- `2026-0710-sample18-post-execution-plan-helper-lane-closure.md`
+  - #647 sample18 post-execution plan helper lane closure。#646 の route-unwired execution plan helper を受け入れ、route wiring より前に real DBAccess invocation adapter preflight (#648) を昇格。route execution は未有効化。Status: `DONE`。
 - `2026-0710-sample18-executable-route-execution-plan-helper-first-slice.md`
   - #646 sample18 executable route execution plan helper first slice。guard / coordinator / transaction adapter / post-commit recording を fake callable で compose する route-unwired helper を追加。all-success-or-failure response metadata を固定し、real route execution は未有効化。Status: `FIRST_SLICE_DONE`。
 - `2026-0710-sample18-executable-generated-submit-route-integration-preflight.md`
