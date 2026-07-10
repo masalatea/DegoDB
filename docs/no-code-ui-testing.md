@@ -142,6 +142,16 @@ The generated metadata and executable generated-submit route are close, but they
 
 Recommended next slice: add a focused fast contract that compares sample18 generated managed-action metadata and generated DOM attributes against the route contract for create/update/complete. Keep reopen/delete visible only as disabled curated-route candidates.
 
+### Sample18 Generated Action/Input Route Compatibility
+
+The first fast compatibility slice is covered in `Sample18MiniTaskBoardDemoTest`:
+
+- route-compatible operations are limited to `create_task_card`, `update_task_card`, and `complete_task_card`;
+- `reopen_task_card` and `delete_task_card` remain disabled metadata-only candidates until DBAccess/custom adapter metadata exists;
+- generated action inventory must match route key fields, required client fields, optional client fields, and server-managed fields;
+- generated screen-definition action fields must match route-compatible roles (`key` or `input`), required flags, and client-write flags;
+- generated runtime HTML must expose matching `data-action-key`, `data-operation-key`, submit URL, CSRF handoff, and blocked route binding attributes.
+
 ## Design Boundary
 
 Fast UI contract tests prove that generated metadata and generated markup expose the expected UI contract. They do not prove browser layout, CSS pixel rendering, or server mutation. Browser smoke and route-level tests remain responsible for those outer boundaries.

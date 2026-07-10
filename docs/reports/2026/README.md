@@ -11,6 +11,8 @@
 
 ## Index
 
+- `2026-0710-sample18-generated-action-input-route-compatibility-contract-first-slice.md`
+  - #687 sample18 generated action/input route compatibility contract first slice。generated managed-action metadata と generated DOM attributes を generated-submit route の create/update/complete contract に照合する fast assertions を追加し、reopen/delete は disabled candidate として固定。Status: `FIRST_SLICE_DONE`。
 - `2026-0710-sample18-generated-action-input-gap-inventory.md`
   - #686 sample18 generated action/input gap inventory。generated managed-action metadata/input draft と executable generated-submit route の gap を棚卸しし、create/update/complete の route compatibility contract assertions (#687) を次に昇格。Status: `DONE`。
 - `2026-0710-post-route-response-contract-lane-closure.md`
