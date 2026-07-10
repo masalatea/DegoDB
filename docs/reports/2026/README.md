@@ -11,6 +11,8 @@
 
 ## Index
 
+- `2026-0710-sample18-post-csrf-handoff-lane-closure.md`
+  - #575 sample18 post-CSRF handoff lane closure。#574 の CSRF handoff contract を受け入れ、次は mutation dispatcher inventory ではなく、generated submit button が disabled のまま submit しないことを固定する disabled click intent preflight (#576) を昇格。Status: `DONE`。
 - `2026-0710-sample18-generated-submit-csrf-handoff-preflight.md`
   - #574 sample18 generated submit CSRF handoff preflight。generated submit action metadata / runtime DOM に CSRF token field、source selector、transport、submit field を追加し、focused PHPUnit と public runtime disabled-action smoke で確認。button / mutation は disabled のまま維持。Status: `DONE`。
 - `2026-0710-sample18-post-csrf-submit-route-lane-closure.md`
