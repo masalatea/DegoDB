@@ -11,6 +11,8 @@
 
 ## Index
 
+- `2026-0710-sample18-transaction-plan-route-metadata-integration.md`
+  - #613 sample18 transaction-plan route metadata integration。valid generated-submit route response に non-mutating `transaction_plan` metadata を接続し、disabled/duplicate/failed/planned route outcomes と method/CSRF/validation skip boundary を固定。DBAccess mutation は未有効化。Status: `FIRST_SLICE_DONE`。
 - `2026-0710-sample18-post-transaction-plan-helper-lane-closure.md`
   - #612 sample18 post-transaction-plan helper lane closure。#611 の non-mutating transaction-plan helper を受け入れ、次は valid generated-submit route response への transaction-plan metadata integration (#613) を昇格。DBAccess mutation は未有効化。Status: `DONE`。
 - `2026-0710-sample18-dbaccess-transaction-plan-helper-first-slice.md`
