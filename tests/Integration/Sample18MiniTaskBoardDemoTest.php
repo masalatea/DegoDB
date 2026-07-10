@@ -1694,6 +1694,197 @@ final class Sample18MiniTaskBoardDemoTest extends TestCase
         self::assertSame('db offline', $exception['error']);
     }
 
+    public function testMiniTaskBoardGeneratedSubmitRealDbAccessInvocationAdapterBuildsTaskCardObject(): void
+    {
+        $buildReady = static function (string $operationKey, array $input): array {
+            $normalized = app_lab_sample18_task_board_normalize_generated_submit_request(
+                $operationKey,
+                $input,
+                '2026-07-10 12:30:00',
+            );
+            self::assertTrue($normalized['ok']);
+            $dispatcher = app_lab_sample18_task_board_generated_submit_dispatcher_dry_run($normalized);
+            $auditAppend = ['ok' => true, 'status' => 'appended', 'item' => ['event_key' => 'audit-real-' . $operationKey]];
+            $idempotency = [
+                'ok' => true,
+                'status' => 'recorded',
+                'created' => true,
+                'dedupe_key' => 'dedupe-real-' . $operationKey,
+                'item' => ['dedupe_key' => 'dedupe-real-' . $operationKey],
+            ];
+            $mutationGate = app_lab_sample18_task_board_generated_submit_mutation_gate(
+                ['sample18_generated_submit_mutation_enabled' => true],
+                $normalized,
+                $dispatcher,
+                $auditAppend,
+                $idempotency,
+            );
+            $executionPlan = app_lab_sample18_task_board_generated_submit_dbaccess_execution_plan(
+                $normalized,
+                $dispatcher,
+                $mutationGate,
+            );
+            $transactionPlan = app_lab_sample18_task_board_generated_submit_transaction_plan($executionPlan);
+            $updatePlan = app_lab_sample18_task_board_generated_submit_execution_update_plan(
+                $transactionPlan,
+                $auditAppend,
+                $idempotency,
+            );
+            $guard = app_lab_sample18_task_board_generated_submit_execution_guard(
+                $normalized,
+                $auditAppend,
+                $idempotency,
+                $mutationGate,
+                $executionPlan,
+                $transactionPlan,
+                $updatePlan,
+            );
+            $coordination = app_lab_sample18_task_board_generated_submit_executor_coordination_plan(
+                $guard,
+                $updatePlan,
+                true,
+            );
+
+            return [$normalized, $dispatcher, $guard, $coordination];
+        };
+
+        $dbAccess = new class {
+            /** @var list<array{method:string,obj:object}> */
+            public array $calls = [];
+
+            public function InsertTaskCard(object $TaskCardObj): object
+            {
+                $this->calls[] = ['method' => 'InsertTaskCard', 'obj' => $TaskCardObj];
+
+                return (object) ['affected_rows' => 1, 'insert_id' => 42];
+            }
+
+            public function UpdateTaskCard(object $TaskCardObj): array
+            {
+                $this->calls[] = ['method' => 'UpdateTaskCard', 'obj' => $TaskCardObj];
+
+                return ['ok' => true, 'rows_affected' => 1];
+            }
+
+            public function CompleteTaskCard(object $TaskCardObj): bool
+            {
+                $this->calls[] = ['method' => 'CompleteTaskCard', 'obj' => $TaskCardObj];
+
+                return true;
+            }
+        };
+
+        [$normalized, $dispatcher, $guard, $coordination] = $buildReady(
+            'create_task_card',
+            ['title' => 'Real adapter create', 'body' => 'Body', 'assigned_to' => 'Mina', 'priority' => '30', 'due_date' => '2026-07-31'],
+        );
+        $created = app_lab_sample18_task_board_generated_submit_real_dbaccess_invocation_adapter(
+            $normalized,
+            $dispatcher,
+            $guard,
+            $coordination,
+            true,
+            $dbAccess,
+            ['in_transaction' => true],
+        );
+        self::assertSame('executed', $created['status']);
+        self::assertTrue($created['executed']);
+        self::assertSame('dbaccess_executed', $created['result_code']);
+        self::assertSame(1, $created['rows_affected']);
+        self::assertSame(42, $created['insert_id']);
+        self::assertSame('InsertTaskCard', $dbAccess->calls[0]['method']);
+        self::assertSame('Real adapter create', $dbAccess->calls[0]['obj']->title);
+        self::assertSame('Body', $dbAccess->calls[0]['obj']->body);
+        self::assertSame('todo', $dbAccess->calls[0]['obj']->status);
+        self::assertSame('Mina', $dbAccess->calls[0]['obj']->assignedTo);
+        self::assertSame(30, $dbAccess->calls[0]['obj']->priority);
+        self::assertSame('2026-07-31', $dbAccess->calls[0]['obj']->dueDate);
+        self::assertSame('2026-07-10 12:30:00', $dbAccess->calls[0]['obj']->updatedAt);
+        self::assertObjectNotHasProperty('Title', $dbAccess->calls[0]['obj']);
+
+        [$normalized, $dispatcher, $guard, $coordination] = $buildReady(
+            'update_task_card',
+            ['id' => '7', 'title' => 'Real adapter update', 'status' => 'done', 'body' => '', 'assigned_to' => '', 'priority' => '20', 'due_date' => ''],
+        );
+        $updated = app_lab_sample18_task_board_generated_submit_real_dbaccess_invocation_adapter(
+            $normalized,
+            $dispatcher,
+            $guard,
+            $coordination,
+            true,
+            $dbAccess,
+            ['in_transaction' => true],
+        );
+        self::assertSame('executed', $updated['status']);
+        self::assertSame('UpdateTaskCard', $dbAccess->calls[1]['method']);
+        self::assertSame(7, $dbAccess->calls[1]['obj']->id);
+        self::assertSame('Real adapter update', $dbAccess->calls[1]['obj']->title);
+        self::assertSame('done', $dbAccess->calls[1]['obj']->status);
+        self::assertSame('2026-07-10 12:30:00', $dbAccess->calls[1]['obj']->completedAt);
+
+        [$normalized, $dispatcher, $guard, $coordination] = $buildReady('complete_task_card', ['id' => '8']);
+        $completed = app_lab_sample18_task_board_generated_submit_real_dbaccess_invocation_adapter(
+            $normalized,
+            $dispatcher,
+            $guard,
+            $coordination,
+            true,
+            $dbAccess,
+            ['in_transaction' => true],
+        );
+        self::assertSame('executed', $completed['status']);
+        self::assertSame('CompleteTaskCard', $dbAccess->calls[2]['method']);
+        self::assertSame(8, $dbAccess->calls[2]['obj']->id);
+        self::assertSame('done', $dbAccess->calls[2]['obj']->status);
+        self::assertSame('2026-07-10 12:30:00', $dbAccess->calls[2]['obj']->completedAt);
+
+        $missingTransaction = app_lab_sample18_task_board_generated_submit_real_dbaccess_invocation_adapter(
+            $normalized,
+            $dispatcher,
+            $guard,
+            $coordination,
+            true,
+            $dbAccess,
+            ['in_transaction' => false],
+        );
+        self::assertSame('skipped', $missingTransaction['status']);
+        self::assertFalse($missingTransaction['invoked']);
+        self::assertSame('dbaccess_transaction_not_active', $missingTransaction['failure_code']);
+        self::assertContains('dbaccess_transaction_not_active', $missingTransaction['reasons']);
+        self::assertCount(3, $dbAccess->calls);
+
+        $missingMethod = app_lab_sample18_task_board_generated_submit_real_dbaccess_invocation_adapter(
+            $normalized,
+            $dispatcher,
+            $guard,
+            $coordination,
+            true,
+            new stdClass(),
+            ['in_transaction' => true],
+        );
+        self::assertSame('failed', $missingMethod['status']);
+        self::assertSame('dbaccess_method_missing', $missingMethod['failure_code']);
+
+        $failingDbAccess = new class {
+            public function CompleteTaskCard(object $TaskCardObj): object
+            {
+                return (object) ['errno' => 1062, 'error' => 'duplicate key'];
+            }
+        };
+        $failed = app_lab_sample18_task_board_generated_submit_real_dbaccess_invocation_adapter(
+            $normalized,
+            $dispatcher,
+            $guard,
+            $coordination,
+            true,
+            $failingDbAccess,
+            ['in_transaction' => true],
+        );
+        self::assertSame('failed', $failed['status']);
+        self::assertSame('dbaccess_failed', $failed['failure_code']);
+        self::assertSame('duplicate key', $failed['error']);
+    }
+
     public function testMiniTaskBoardGeneratedSubmitTransactionAdapterUsesFakeBoundariesOnly(): void
     {
         $buildReady = static function (): array {

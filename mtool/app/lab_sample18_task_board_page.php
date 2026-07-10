@@ -1217,6 +1217,166 @@ function app_lab_sample18_task_board_generated_submit_executor_coordination_plan
 }
 
 /**
+ * @param array<string,mixed> $fields
+ */
+function app_lab_sample18_task_board_generated_submit_task_card_data_object(array $fields): object
+{
+    $taskCardObj = class_exists('TaskCardData') ? new TaskCardData() : new stdClass();
+    $map = [
+        'Id' => 'id',
+        'Title' => 'title',
+        'Body' => 'body',
+        'Status' => 'status',
+        'AssignedTo' => 'assignedTo',
+        'Priority' => 'priority',
+        'DueDate' => 'dueDate',
+        'CompletedAt' => 'completedAt',
+        'UpdatedAt' => 'updatedAt',
+    ];
+
+    foreach ($map as $sourceField => $property) {
+        if (array_key_exists($sourceField, $fields)) {
+            $taskCardObj->{$property} = $fields[$sourceField];
+        }
+    }
+
+    return $taskCardObj;
+}
+
+/**
+ * @param mixed $result
+ * @return array<string,mixed>
+ */
+function app_lab_sample18_task_board_generated_submit_normalize_real_dbaccess_result($result): array
+{
+    if (is_array($result)) {
+        $ok = (bool) ($result['ok'] ?? true);
+        $normalized = $result;
+        $normalized['ok'] = $ok;
+        $normalized['result_code'] = (string) ($result['result_code'] ?? ($ok ? 'dbaccess_executed' : 'dbaccess_failed'));
+        if (!$ok && !array_key_exists('failure_code', $normalized)) {
+            $normalized['failure_code'] = 'dbaccess_failed';
+        }
+
+        return $normalized;
+    }
+
+    if ($result === false) {
+        return [
+            'ok' => false,
+            'result_code' => 'dbaccess_failed',
+            'failure_code' => 'dbaccess_failed',
+        ];
+    }
+
+    if (is_object($result)) {
+        $errno = property_exists($result, 'errno') ? (int) $result->errno : 0;
+        if ($errno !== 0) {
+            return [
+                'ok' => false,
+                'result_code' => 'dbaccess_failed',
+                'failure_code' => 'dbaccess_failed',
+                'error' => property_exists($result, 'error') ? (string) $result->error : '',
+            ];
+        }
+
+        $normalized = [
+            'ok' => true,
+            'result_code' => 'dbaccess_executed',
+        ];
+        if (property_exists($result, 'affected_rows')) {
+            $normalized['rows_affected'] = (int) $result->affected_rows;
+        }
+        if (property_exists($result, 'insert_id')) {
+            $normalized['insert_id'] = (int) $result->insert_id;
+        }
+
+        return $normalized;
+    }
+
+    if ($result === true || is_int($result)) {
+        return [
+            'ok' => true,
+            'result_code' => 'dbaccess_executed',
+        ];
+    }
+
+    return [
+        'ok' => false,
+        'result_code' => 'dbaccess_malformed_result',
+        'failure_code' => 'dbaccess_malformed_result',
+    ];
+}
+
+/**
+ * @param array<string,mixed> $normalized
+ * @param array<string,mixed> $dispatcherResult
+ * @param array<string,mixed> $executionGuard
+ * @param array<string,mixed> $executorCoordinationPlan
+ * @param array<string,mixed> $transactionContext
+ * @return array<string,mixed>
+ */
+function app_lab_sample18_task_board_generated_submit_real_dbaccess_invocation_adapter(
+    array $normalized,
+    array $dispatcherResult,
+    array $executionGuard,
+    array $executorCoordinationPlan,
+    bool $executorEnabled,
+    object $dbAccess,
+    array $transactionContext,
+): array {
+    if (!($transactionContext['in_transaction'] ?? false)) {
+        $blockedCoordinationPlan = $executorCoordinationPlan;
+        $blockedCoordinationPlan['status'] = 'blocked';
+        $blockedCoordinationPlan['ready'] = false;
+        $coordinationReasons = is_array($executorCoordinationPlan['reasons'] ?? null)
+            ? $executorCoordinationPlan['reasons']
+            : [];
+        $blockedCoordinationPlan['reasons'] = array_values(array_unique(array_merge(
+            array_filter($coordinationReasons, 'is_string'),
+            ['dbaccess_transaction_not_active'],
+        )));
+        $blocked = app_lab_sample18_task_board_generated_submit_dbaccess_call_adapter(
+            $normalized,
+            $dispatcherResult,
+            $executionGuard,
+            $blockedCoordinationPlan,
+            $executorEnabled,
+            static fn (): array => ['ok' => false, 'failure_code' => 'dbaccess_transaction_not_active'],
+        );
+        $blocked['failure_code'] = 'dbaccess_transaction_not_active';
+
+        return $blocked;
+    }
+
+    return app_lab_sample18_task_board_generated_submit_dbaccess_call_adapter(
+        $normalized,
+        $dispatcherResult,
+        $executionGuard,
+        $executorCoordinationPlan,
+        $executorEnabled,
+        static function (array $call) use ($dbAccess): array {
+            $method = (string) ($call['db_access_function'] ?? '');
+            if ($method === '' || !method_exists($dbAccess, $method)) {
+                return [
+                    'ok' => false,
+                    'result_code' => 'dbaccess_method_missing',
+                    'failure_code' => 'dbaccess_method_missing',
+                ];
+            }
+
+            $methodArguments = is_array($call['method_arguments'] ?? null) ? $call['method_arguments'] : [];
+            $taskCardFields = is_array($methodArguments['TaskCardObj'] ?? null) ? $methodArguments['TaskCardObj'] : [];
+            $taskCardObj = app_lab_sample18_task_board_generated_submit_task_card_data_object($taskCardFields);
+
+            return app_lab_sample18_task_board_generated_submit_normalize_real_dbaccess_result(
+                $dbAccess->{$method}($taskCardObj),
+            );
+        },
+    );
+}
+
+/**
  * @param array<string,mixed> $normalized
  * @param array<string,mixed> $dispatcherResult
  * @param array<string,mixed> $executionGuard
