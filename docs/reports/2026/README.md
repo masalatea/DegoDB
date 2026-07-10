@@ -11,6 +11,8 @@
 
 ## Index
 
+- `2026-0710-sample18-guarded-executor-coordinator-plan-helper-first-slice.md`
+  - #631 sample18 guarded executor coordinator plan helper first slice。execution guard / app DB transaction / DBAccess call / execution audit append / idempotency outcome update の ordering を non-mutating metadata として計画化。DBAccess mutation / transaction / post-execution write / route exposure は未有効化。Status: `FIRST_SLICE_DONE`。
 - `2026-0710-sample18-guarded-executor-coordination-preflight.md`
   - #630 sample18 guarded executor coordination preflight。execution guard / DBAccess call adapter / app DB transaction / execution audit append / idempotency outcome update の coordination と cross-store 非原子性を定義し、次は non-mutating coordinator plan helper (#631) を昇格。DBAccess mutation / transaction / route executor は未有効化。Status: `DONE`。
 - `2026-0710-sample18-post-execution-audit-append-persistence-lane-closure.md`

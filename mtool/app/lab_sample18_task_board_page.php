@@ -1127,6 +1127,96 @@ function app_lab_sample18_task_board_generated_submit_execution_guard(
 }
 
 /**
+ * @param array<string,mixed> $executionGuard
+ * @param array<string,mixed> $executionUpdatePlan
+ * @return array<string,mixed>
+ */
+function app_lab_sample18_task_board_generated_submit_executor_coordination_plan(
+    array $executionGuard,
+    array $executionUpdatePlan,
+    bool $executorEnabled,
+): array {
+    $reasons = [];
+    $failed = false;
+
+    if (!$executorEnabled) {
+        $reasons[] = 'executor_feature_flag_disabled';
+    }
+    if (($executionGuard['status'] ?? '') !== 'allowed' || !($executionGuard['ready'] ?? false)) {
+        $reasons[] = 'execution_guard_not_ready';
+        foreach (($executionGuard['reasons'] ?? []) as $reason) {
+            if (is_string($reason) && $reason !== '') {
+                $reasons[] = $reason;
+            }
+        }
+        $failed = (string) ($executionGuard['status'] ?? '') === 'failed';
+    }
+    if (($executionUpdatePlan['status'] ?? '') !== 'planned' || !($executionUpdatePlan['ready'] ?? false)) {
+        $reasons[] = 'execution_update_plan_not_ready';
+        foreach (($executionUpdatePlan['reasons'] ?? []) as $reason) {
+            if (is_string($reason) && $reason !== '') {
+                $reasons[] = $reason;
+            }
+        }
+        $failed = $failed || (string) ($executionUpdatePlan['status'] ?? '') === 'failed';
+    }
+
+    if (
+        ($executionGuard['will_open_transaction'] ?? false)
+        || ($executionGuard['will_call_dbaccess'] ?? false)
+        || ($executionGuard['will_write_execution_audit'] ?? false)
+        || ($executionGuard['will_update_idempotency_execution'] ?? false)
+        || ($executionUpdatePlan['will_execute'] ?? false)
+        || ($executionUpdatePlan['will_write_audit'] ?? false)
+        || ($executionUpdatePlan['will_update_idempotency'] ?? false)
+    ) {
+        $reasons[] = 'coordination_metadata_not_dry_run';
+        $failed = true;
+    }
+
+    if ((string) ($executionGuard['dedupe_key'] ?? '') === '') {
+        $reasons[] = 'dedupe_key_missing';
+    }
+    if ((string) ($executionGuard['request_audit_event_key'] ?? '') === '') {
+        $reasons[] = 'request_audit_event_key_missing';
+    }
+
+    $planned = $reasons === [];
+
+    return [
+        'status' => $planned ? 'planned' : ($failed ? 'failed' : 'blocked'),
+        'ready' => $planned,
+        'will_open_transaction' => false,
+        'will_call_dbaccess' => false,
+        'will_write_execution_audit' => false,
+        'will_update_idempotency_execution' => false,
+        'app_db_transaction_boundary' => [
+            'db_handle' => (string) ($executionGuard['db_handle'] ?? ''),
+            'transaction_scope' => 'sample18_application_db_only',
+            'cross_store_atomic' => false,
+        ],
+        'config_db_persistence_boundary' => [
+            'audit_store' => (string) ($executionUpdatePlan['audit_store'] ?? 'config_db_audit_log'),
+            'idempotency_store' => (string) ($executionUpdatePlan['idempotency_store'] ?? 'config_db_idempotency'),
+            'cross_store_atomic' => false,
+        ],
+        'ordered_steps' => [
+            ['step' => 'recheck_execution_guard', 'status' => 'planned_not_run'],
+            ['step' => 'open_app_db_transaction', 'status' => 'planned_not_opened'],
+            ['step' => 'call_dbaccess', 'status' => 'planned_not_called'],
+            ['step' => 'classify_dbaccess_result', 'status' => 'planned_not_run'],
+            ['step' => 'finish_app_db_transaction', 'status' => 'planned_not_run'],
+            ['step' => 'append_execution_audit', 'status' => 'planned_not_written'],
+            ['step' => 'update_idempotency_execution_outcome', 'status' => 'planned_not_written'],
+        ],
+        'operation_key' => (string) ($executionGuard['operation_key'] ?? ''),
+        'dedupe_key' => (string) ($executionGuard['dedupe_key'] ?? ''),
+        'request_audit_event_key' => (string) ($executionGuard['request_audit_event_key'] ?? ''),
+        'reasons' => array_values(array_unique($reasons)),
+    ];
+}
+
+/**
  * @param array<string,mixed> $post
  * @return array{status_code:int,payload:array<string,mixed>}
  */
