@@ -13,7 +13,7 @@ When someone asks for "the plan list", answer from this section first. / 「計�
 
 ### Main Plan / 主計画
 
-Current main status: #624 closes the route-visible sample18 execution guard metadata lane and promotes guarded executor implementation preflight before enabling DBAccess execution. `develop` is 100 commits ahead of `origin/develop`, and push has not been performed for #432-#624. / 現在の主計画ステータス: #624 で route-visible sample18 execution guard metadata lane を閉じ、DBAccess execution 有効化前の guarded executor implementation preflight を昇格しました。`develop` は `origin/develop` より 100 commits ahead、#432-#624 は push していません。
+Current main status: #625 defines the guarded executor implementation preflight and promotes idempotency execution outcome persistence before enabling DBAccess execution. `develop` is 101 commits ahead of `origin/develop`, and push has not been performed for #432-#625. / 現在の主計画ステータス: #625 で guarded executor implementation preflight を定義し、DBAccess execution 有効化前に idempotency execution outcome persistence を昇格しました。`develop` は `origin/develop` より 101 commits ahead、#432-#625 は push していません。
 
 | Order | Work unit / 作業の塊 | Commit unit / コミット単位 | Status | Rough effort / 目安 |
 | --- | --- | --- | --- | --- |
@@ -183,7 +183,8 @@ Current main status: #624 closes the route-visible sample18 execution guard meta
 | 622 | Sample18 post-guarded execution gate helper lane closure / sample18 post-guarded execution gate helper lane closure | Close the non-executing guarded execution gate helper lane and decide whether route metadata integration, guarded executor implementation preflight, or additional guard matrix coverage should be promoted next | `DONE` | 0.25 - 0.5 day / 0.25 - 0.5 日 |
 | 623 | Sample18 guarded execution gate route metadata integration / sample18 guarded execution gate route metadata integration | Wire non-executing `execution_guard` metadata into valid generated-submit route responses while preserving HTTP 409, mutation disabled, no transaction, no DBAccess call, and no execution updates | `DONE` | 0.5 day / 半日 |
 | 624 | Sample18 post-guarded execution gate route metadata lane closure / sample18 post-guarded execution gate route metadata lane closure | Close the route-visible execution guard metadata lane and decide whether guarded executor implementation preflight, additional guard hardening, or a local stack review should be promoted next | `DONE` | 0.25 - 0.5 day / 0.25 - 0.5 日 |
-| 625 | Sample18 guarded executor implementation preflight / sample18 guarded executor implementation preflight | Define the smallest first mutating executor slice, including code boundary, feature flag, transaction API, DBAccess call adapter, execution audit/idempotency update persistence, rollback behavior, and tests before implementation | `ACTIVE_NEXT` | 0.5 - 1 day / 半日 - 1 日 |
+| 625 | Sample18 guarded executor implementation preflight / sample18 guarded executor implementation preflight | Define the smallest first mutating executor slice, including code boundary, feature flag, transaction API, DBAccess call adapter, execution audit/idempotency update persistence, rollback behavior, and tests before implementation | `DONE` | 0.5 - 1 day / 半日 - 1 日 |
+| 626 | Sample18 idempotency execution outcome persistence first slice / sample18 idempotency execution outcome persistence first slice | Add repository-level execution outcome update support for existing generated-submit idempotency records using stable metadata/result fields, without opening transactions, calling DBAccess, or wiring the route executor | `ACTIVE_NEXT` | 0.5 - 1 day / 半日 - 1 日 |
 
 ### Long-Term No-Code Roadmap / 長期 No-Code ロードマップ
 
@@ -419,6 +420,8 @@ Latest code verification from #623:
 - `git diff --check`
 
 For #624, docs-only verification is `git diff --check`.
+
+For #625, docs-only verification is `git diff --check`.
 
 Latest code verification from #459:
 
