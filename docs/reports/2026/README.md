@@ -11,6 +11,8 @@
 
 ## Index
 
+- `2026-0710-sample18-executor-coordination-plan-route-metadata-integration.md`
+  - #633 sample18 executor coordination plan route metadata integration。valid generated-submit route response に non-mutating `executor_coordination_plan` metadata を接続し、disabled/duplicate/failed/planned route outcomes と invalid-route skip boundary を固定。DBAccess mutation / transaction / post-execution writes は未有効化。Status: `FIRST_SLICE_DONE`。
 - `2026-0710-sample18-post-guarded-executor-coordinator-plan-helper-lane-closure.md`
   - #632 sample18 post-guarded executor coordinator plan helper lane closure。#631 の non-mutating `executor_coordination_plan` helper を受け入れ、次は valid generated-submit route response への coordination plan metadata integration (#633) を昇格。DBAccess mutation / transaction / post-execution write は未有効化。Status: `DONE`。
 - `2026-0710-sample18-guarded-executor-coordinator-plan-helper-first-slice.md`

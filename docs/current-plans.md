@@ -13,7 +13,7 @@ When someone asks for "the plan list", answer from this section first. / 「計�
 
 ### Main Plan / 主計画
 
-Current main status: #632 closes the non-mutating sample18 executor coordination plan helper lane and promotes route metadata integration before DBAccess execution. `develop` is 108 commits ahead of `origin/develop`, and push has not been performed for #432-#632. / 現在の主計画ステータス: #632 で non-mutating sample18 executor coordination plan helper lane を閉じ、DBAccess execution より前に route metadata integration を昇格しました。`develop` は `origin/develop` より 108 commits ahead、#432-#632 は push していません。
+Current main status: #633 wires non-mutating sample18 executor coordination plan metadata into valid generated-submit route responses and promotes route lane closure before DBAccess execution. `develop` is 109 commits ahead of `origin/develop`, and push has not been performed for #432-#633. / 現在の主計画ステータス: #633 で non-mutating sample18 executor coordination plan metadata を valid generated-submit route response に接続し、DBAccess execution より前に route lane closure を昇格しました。`develop` は `origin/develop` より 109 commits ahead、#432-#633 は push していません。
 
 | Order | Work unit / 作業の塊 | Commit unit / コミット単位 | Status | Rough effort / 目安 |
 | --- | --- | --- | --- | --- |
@@ -191,7 +191,8 @@ Current main status: #632 closes the non-mutating sample18 executor coordination
 | 630 | Sample18 guarded executor coordination preflight / sample18 guarded executor coordination preflight | Define how the first executor coordinator will combine execution guard, DBAccess call adapter, transaction boundary, execution audit append, and idempotency outcome update before implementation | `DONE` | 0.5 - 1 day / 半日 - 1 日 |
 | 631 | Sample18 guarded executor coordinator plan helper first slice / sample18 guarded executor coordinator plan helper first slice | Add a non-mutating coordinator plan helper that models DBAccess call, app-db transaction, execution audit append, and idempotency outcome update ordering without opening transactions, calling DBAccess, or writing post-execution records | `DONE` | 0.5 - 1 day / 半日 - 1 日 |
 | 632 | Sample18 post-guarded executor coordinator plan helper lane closure / sample18 post-guarded executor coordinator plan helper lane closure | Close the non-mutating coordinator plan helper lane and decide whether route metadata integration, additional failure matrix coverage, or first executor adapter preflight should be promoted next | `DONE` | 0.25 - 0.5 day / 0.25 - 0.5 日 |
-| 633 | Sample18 executor coordination plan route metadata integration / sample18 executor coordination plan route metadata integration | Wire non-mutating `executor_coordination_plan` metadata into valid generated-submit route responses while preserving HTTP 409, mutation disabled, no transaction, no DBAccess call, and no post-execution writes | `ACTIVE_NEXT` | 0.5 day / 半日 |
+| 633 | Sample18 executor coordination plan route metadata integration / sample18 executor coordination plan route metadata integration | Wire non-mutating `executor_coordination_plan` metadata into valid generated-submit route responses while preserving HTTP 409, mutation disabled, no transaction, no DBAccess call, and no post-execution writes | `DONE` | 0.5 day / 半日 |
+| 634 | Sample18 post-executor coordination plan route metadata lane closure / sample18 post-executor coordination plan route metadata lane closure | Close the route-visible executor coordination plan lane and decide whether first executor adapter preflight, additional route failure hardening, or local stack review should be promoted next | `ACTIVE_NEXT` | 0.25 - 0.5 day / 0.25 - 0.5 日 |
 
 ### Long-Term No-Code Roadmap / 長期 No-Code ロードマップ
 
@@ -463,6 +464,14 @@ Latest code verification from #631:
 - `git diff --check`
 
 For #632, docs-only verification is `git diff --check`.
+
+Latest code verification from #633:
+
+- `php -l mtool/app/lab_sample18_task_board_page.php`
+- `php -l tests/Integration/Sample18MiniTaskBoardDemoTest.php`
+- `make sample18-pack-runtime-test`: `OK (14 tests, 960 assertions)`
+- Full `make test`: `OK, but incomplete, skipped, or risky tests! Tests: 398, Assertions: 12802, Skipped: 1.`
+- `git diff --check`
 
 Latest code verification from #459:
 

@@ -1326,6 +1326,11 @@ function app_lab_sample18_task_board_generated_submit_blocked_response(
         $transactionPlan,
         $executionUpdatePlan,
     );
+    $executorCoordinationPlan = app_lab_sample18_task_board_generated_submit_executor_coordination_plan(
+        $executionGuard,
+        $executionUpdatePlan,
+        false,
+    );
 
     return [
         'status_code' => 409,
@@ -1350,6 +1355,7 @@ function app_lab_sample18_task_board_generated_submit_blocked_response(
             'transaction_plan' => $transactionPlan,
             'execution_update_plan' => $executionUpdatePlan,
             'execution_guard' => $executionGuard,
+            'executor_coordination_plan' => $executorCoordinationPlan,
             'mutation_enabled' => false,
         ],
     ];
