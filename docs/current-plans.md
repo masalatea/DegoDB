@@ -13,7 +13,7 @@ When someone asks for "the plan list", answer from this section first. / 「計�
 
 ### Main Plan / 主計画
 
-Current main status: #622 closes the non-executing sample18 guarded execution gate helper lane and promotes route metadata integration before any DBAccess execution. `develop` is 98 commits ahead of `origin/develop`, and push has not been performed for #432-#622. / 現在の主計画ステータス: #622 で non-executing sample18 guarded execution gate helper lane を閉じ、DBAccess execution より前に route metadata integration を昇格しました。`develop` は `origin/develop` より 98 commits ahead、#432-#622 は push していません。
+Current main status: #623 wires non-executing sample18 `execution_guard` metadata into valid generated-submit route responses and promotes lane closure before any DBAccess execution. `develop` is 99 commits ahead of `origin/develop`, and push has not been performed for #432-#623. / 現在の主計画ステータス: #623 で non-executing sample18 `execution_guard` metadata を valid generated-submit route response に接続し、DBAccess execution より前に lane closure を昇格しました。`develop` は `origin/develop` より 99 commits ahead、#432-#623 は push していません。
 
 | Order | Work unit / 作業の塊 | Commit unit / コミット単位 | Status | Rough effort / 目安 |
 | --- | --- | --- | --- | --- |
@@ -181,7 +181,8 @@ Current main status: #622 closes the non-executing sample18 guarded execution ga
 | 620 | Sample18 guarded DBAccess execution preflight / sample18 guarded DBAccess execution preflight | Define the first guarded execution contract, including final enablement inputs, transaction open/commit/rollback behavior, execution audit/idempotency update writes, duplicate replay behavior, and fail-closed test matrix before calling DBAccess | `DONE` | 0.5 - 1 day / 半日 - 1 日 |
 | 621 | Sample18 guarded execution gate helper first slice / sample18 guarded execution gate helper first slice | Add a final non-executing guard helper that accepts the route-ready metadata chain and returns whether DBAccess execution would be allowed, without opening transactions, calling DBAccess, or writing execution updates | `DONE` | 0.5 - 1 day / 半日 - 1 日 |
 | 622 | Sample18 post-guarded execution gate helper lane closure / sample18 post-guarded execution gate helper lane closure | Close the non-executing guarded execution gate helper lane and decide whether route metadata integration, guarded executor implementation preflight, or additional guard matrix coverage should be promoted next | `DONE` | 0.25 - 0.5 day / 0.25 - 0.5 日 |
-| 623 | Sample18 guarded execution gate route metadata integration / sample18 guarded execution gate route metadata integration | Wire non-executing `execution_guard` metadata into valid generated-submit route responses while preserving HTTP 409, mutation disabled, no transaction, no DBAccess call, and no execution updates | `ACTIVE_NEXT` | 0.5 day / 半日 |
+| 623 | Sample18 guarded execution gate route metadata integration / sample18 guarded execution gate route metadata integration | Wire non-executing `execution_guard` metadata into valid generated-submit route responses while preserving HTTP 409, mutation disabled, no transaction, no DBAccess call, and no execution updates | `DONE` | 0.5 day / 半日 |
+| 624 | Sample18 post-guarded execution gate route metadata lane closure / sample18 post-guarded execution gate route metadata lane closure | Close the route-visible execution guard metadata lane and decide whether guarded executor implementation preflight, additional guard hardening, or a local stack review should be promoted next | `ACTIVE_NEXT` | 0.25 - 0.5 day / 0.25 - 0.5 日 |
 
 ### Long-Term No-Code Roadmap / 長期 No-Code ロードマップ
 
@@ -407,6 +408,14 @@ Latest code verification from #621:
 - `git diff --check`
 
 For #622, docs-only verification is `git diff --check`.
+
+Latest code verification from #623:
+
+- `php -l mtool/app/lab_sample18_task_board_page.php`
+- `php -l tests/Integration/Sample18MiniTaskBoardDemoTest.php`
+- `make sample18-pack-runtime-test`: `OK (12 tests, 848 assertions)`
+- Full `make test`: `OK, but incomplete, skipped, or risky tests! Tests: 394, Assertions: 12656, Skipped: 1.`
+- `git diff --check`
 
 Latest code verification from #459:
 

@@ -1116,6 +1116,15 @@ function app_lab_sample18_task_board_generated_submit_blocked_response(
         $auditAppend,
         $idempotency,
     );
+    $executionGuard = app_lab_sample18_task_board_generated_submit_execution_guard(
+        $normalized,
+        $auditAppend,
+        $idempotency,
+        $mutationGate,
+        $dbaccessExecutionPlan,
+        $transactionPlan,
+        $executionUpdatePlan,
+    );
 
     return [
         'status_code' => 409,
@@ -1139,6 +1148,7 @@ function app_lab_sample18_task_board_generated_submit_blocked_response(
             'dbaccess_execution_plan' => $dbaccessExecutionPlan,
             'transaction_plan' => $transactionPlan,
             'execution_update_plan' => $executionUpdatePlan,
+            'execution_guard' => $executionGuard,
             'mutation_enabled' => false,
         ],
     ];
