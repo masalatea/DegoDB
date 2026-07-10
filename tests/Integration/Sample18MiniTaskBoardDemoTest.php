@@ -2019,6 +2019,61 @@ final class Sample18MiniTaskBoardDemoTest extends TestCase
         }
     }
 
+    public function testMiniTaskBoardReadinessFastContractRendersFailureVisibilityWithoutBrowser(): void
+    {
+        $missingRuntimeDir = sys_get_temp_dir() . '/missing-sample18-readiness-fast-contract-' . bin2hex(random_bytes(4));
+        $failedSnapshot = app_lab_sample18_task_board_generated_submit_readiness_snapshot([
+            'sample18_generated_submit_mutation_enabled' => true,
+            'sample18_generated_submit_executor_enabled' => true,
+            'sample18_generated_submit_runtime_reference_dir' => $missingRuntimeDir,
+        ]);
+        $failedByOperation = [];
+        foreach (($failedSnapshot['action_readiness'] ?? []) as $actionReadiness) {
+            self::assertIsArray($actionReadiness);
+            $failedByOperation[(string) ($actionReadiness['operation_key'] ?? '')] = $actionReadiness;
+        }
+
+        $renderActions = [];
+        foreach (['create_task_card', 'reopen_task_card'] as $operationKey) {
+            $renderActions[] = [
+                'action_key' => $operationKey,
+                'label' => $operationKey,
+                'operation_key' => $operationKey,
+                'operation_type' => 'custom',
+                'enabled' => false,
+                'availability' => 'disabled',
+                'submit_route' => app_lab_sample18_task_board_generated_submit_path(),
+                'submit_binding_gate' => [
+                    'readiness_state' => (string) ($failedByOperation[$operationKey]['readiness_state'] ?? ''),
+                    'availability_candidate' => (bool) ($failedByOperation[$operationKey]['availability_candidate'] ?? false),
+                    'can_submit' => (bool) ($failedByOperation[$operationKey]['can_submit'] ?? false),
+                    'executor_config_status' => (string) ($failedByOperation[$operationKey]['executor_config_status'] ?? ''),
+                ],
+                'readiness_metadata' => $failedByOperation[$operationKey] ?? [],
+                'fields' => [],
+                'failed_checks' => [],
+            ];
+        }
+
+        $html = app_no_code_runtime_render_screen_html([
+            'screen_key' => 'sample18_readiness_fast_contract',
+            'screen_type' => 'form',
+            'screen_title' => 'Sample18 Readiness Fast Contract',
+            'fields' => [],
+            'actions' => $renderActions,
+            'data' => ['item' => []],
+        ]);
+
+        self::assertMatchesRegularExpression(
+            '/data-action-key="create_task_card"[^>]+data-action-readiness-state="executor_config_failed"[^>]+data-action-availability-candidate="true"[^>]+data-action-can-submit="false"[^>]+data-action-executor-config-status="failed"[^>]+data-action-readiness-failure-reasons="runtime_reference_file_missing"/',
+            $html,
+        );
+        self::assertMatchesRegularExpression(
+            '/data-action-key="reopen_task_card"[^>]+data-action-readiness-state="not_route_compatible"[^>]+data-action-availability-candidate="false"[^>]+data-action-can-submit="false"[^>]+data-action-executor-config-status="failed"[^>]+data-action-readiness-failure-reasons="operation_not_route_compatible"/',
+            $html,
+        );
+    }
+
     public function testMiniTaskBoardGeneratedSubmitRouteExposesEnvExecutorConfigMetadata(): void
     {
         $previousMutationFlag = getenv('MTOOL_SAMPLE18_GENERATED_SUBMIT_MUTATION_ENABLED');
