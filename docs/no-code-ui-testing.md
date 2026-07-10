@@ -199,6 +199,16 @@ Before any generated action changes from disabled/blocked preview to available/e
 
 The next implementation slice should add a fast availability-state contract before changing runtime defaults. Browser smoke may then be extended to observe the enabled-candidate UI state, but route/PHPUnit tests remain the authority for execution correctness.
 
+### Sample18 Generated Availability-State Fast Contract
+
+The first fast availability-state slice keeps generated defaults disabled while making the candidate state testable:
+
+- runtime action buttons expose `data-action-availability` so disabled-default and enabled-candidate states are distinguishable even when guarded preview clicks are allowed;
+- runtime action buttons expose `data-action-policy-failed-checks` when policy checks block an action;
+- `Sample18MiniTaskBoardDemoTest` overlays an enabled-candidate policy in memory and verifies that only `create_task_card`, `update_task_card`, and `complete_task_card` become enabled candidates;
+- the same test keeps the generated default runtime preview at `data-action-availability="disabled"`;
+- selected key and missing input fail-closed assertions remain part of the same fast contract.
+
 ## Design Boundary
 
 Fast UI contract tests prove that generated metadata and generated markup expose the expected UI contract. They do not prove browser layout, CSS pixel rendering, or server mutation. Browser smoke and route-level tests remain responsible for those outer boundaries.

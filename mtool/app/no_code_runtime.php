@@ -1004,12 +1004,18 @@ function app_no_code_runtime_render_actions_html(array $actions, string $screenT
         $blockedResponseHandling = (string) ($submitBindingGate['blocked_response_handling'] ?? '');
         $failureDisplayTarget = (string) ($submitBindingGate['failure_display_target'] ?? '');
         $failClosedResult = (string) ($submitBindingGate['fail_closed_result'] ?? '');
+        $availability = (string) ($action['availability'] ?? 'disabled');
+        $policyFailedChecks = array_values(array_filter(
+            array_map('strval', is_array($action['failed_checks'] ?? null) ? $action['failed_checks'] : []),
+            static fn (string $check): bool => $check !== '',
+        ));
         $hintId = app_no_code_runtime_dom_id('no-code-action-hint-' . $screenKey . '-' . $actionKey);
         $disabledReason = $enabled ? '' : 'policy-not-enabled';
         $buttons[] = '<span class="no-code-action-control" data-action-control="' . app_no_code_runtime_html_escape($actionKey) . '">'
             . '<button type="button" data-action-key="' . app_no_code_runtime_html_escape($actionKey) . '"'
             . ' data-operation-key="' . app_no_code_runtime_html_escape((string) ($action['operation_key'] ?? '')) . '"'
             . ' data-operation-type="' . app_no_code_runtime_html_escape($operationType) . '"'
+            . ' data-action-availability="' . app_no_code_runtime_html_escape($availability) . '"'
             . ' data-action-enabled="' . ($enabled ? 'true' : 'false') . '"'
             . ' data-action-state="' . $actionState . '"'
             . ' data-action-affordance="keyboard-intent-preview"'
@@ -1029,6 +1035,7 @@ function app_no_code_runtime_render_actions_html(array $actions, string $screenT
             . ($blockedResponseHandling !== '' ? ' data-action-blocked-response-handling="' . app_no_code_runtime_html_escape($blockedResponseHandling) . '"' : '')
             . ($failureDisplayTarget !== '' ? ' data-action-failure-display-target="' . app_no_code_runtime_html_escape($failureDisplayTarget) . '"' : '')
             . ($failClosedResult !== '' ? ' data-action-fail-closed-result="' . app_no_code_runtime_html_escape($failClosedResult) . '"' : '')
+            . ($policyFailedChecks !== [] ? ' data-action-policy-failed-checks="' . app_no_code_runtime_html_escape(implode(',', $policyFailedChecks)) . '"' : '')
             . ($disabledReason !== '' ? ' data-action-disabled-reason="' . app_no_code_runtime_html_escape($disabledReason) . '"' : '')
             . ' aria-describedby="' . app_no_code_runtime_html_escape($hintId) . '"'
             . ' aria-disabled="' . ($enabled ? 'false' : 'true') . '"'
