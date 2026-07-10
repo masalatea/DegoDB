@@ -11,6 +11,8 @@
 
 ## Index
 
+- `2026-0710-sample18-post-mutation-gate-helper-lane-closure.md`
+  - #600 sample18 post-mutation-gate-helper lane closure。#599 の non-mutating mutation gate helper を受け入れ、DBAccess mutation dry-run / execution より前に gate failure matrix coverage (#601) を昇格。DBAccess mutation は未有効化。Status: `DONE`。
 - `2026-0710-sample18-generated-submit-mutation-gate-helper-first-slice.md`
   - #599 sample18 generated submit mutation gate helper first slice。明示 enablement flag helper、non-mutating mutation gate helper、route response `mutation_gate` metadata、default disabled / ready metadata / duplicate block / failure block coverage を追加。DBAccess mutation は未有効化。Status: `FIRST_SLICE_DONE`。
 - `2026-0710-sample18-generated-submit-mutation-enablement-gate-preflight.md`
