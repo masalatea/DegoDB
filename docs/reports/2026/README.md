@@ -11,6 +11,8 @@
 
 ## Index
 
+- `2026-0710-sample18-generated-runtime-browser-smoke-first-slice.md`
+  - #693 sample18 generated runtime browser smoke first slice。browser smoke で generated runtime preview の row key markers、guarded submit attributes、disabled/default execution state、blocked generated-submit feedback を検査。mutation / broad availability は未有効化。Status: `FIRST_SLICE_DONE`。
 - `2026-0710-post-selected-row-key-handoff-lane-closure.md`
   - #692 post selected row/key handoff lane closure。#691 の selected-row/key fast contract を受け入れ、次は narrow sample18 generated runtime browser smoke (#693) を昇格。Status: `DONE`。
 - `2026-0710-sample18-selected-row-key-handoff-fast-contract-first-slice.md`
