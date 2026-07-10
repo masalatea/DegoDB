@@ -13,7 +13,7 @@ When someone asks for "the plan list", answer from this section first. / 「計�
 
 ### Main Plan / 主計画
 
-Current main status: #638 defines the sample18 transaction adapter preflight with an all-success-or-failure UI/API contract, and #639 is promoted next as a cross-route policy review. `develop` is 116 commits ahead of `origin/develop`, and push has not been performed for #432-#638. / 現在の主計画ステータス: #638 で all-success-or-failure UI/API contract に基づく sample18 transaction adapter preflight を定義し、次に #639 cross-route policy review を昇格しました。`develop` は `origin/develop` より 116 commits ahead、#432-#638 は push していません。
+Current main status: #639 promotes the all-success-or-failure execution policy into a shared stable doc, and #640 is active next for the sample18 route-unwired transaction adapter helper. `develop` is 117 commits ahead of `origin/develop`, and push has not been performed for #432-#639. / 現在の主計画ステータス: #639 で all-success-or-failure execution policy を共有の恒久文書へ昇格し、次は #640 sample18 route-unwired transaction adapter helper です。`develop` は `origin/develop` より 117 commits ahead、#432-#639 は push していません。
 
 | Order | Work unit / 作業の塊 | Commit unit / コミット単位 | Status | Rough effort / 目安 |
 | --- | --- | --- | --- | --- |
@@ -197,8 +197,8 @@ Current main status: #638 defines the sample18 transaction adapter preflight wit
 | 636 | Sample18 DBAccess call adapter helper first slice / sample18 DBAccess call adapter helper first slice | Add a route-unwired DBAccess call adapter helper that validates allowed execution metadata and invokes only an injected fake callable in tests, returning stable executed/failed/skipped metadata without real TaskCard mutation | `DONE` | 0.5 - 1 day / 半日 - 1 日 |
 | 637 | Sample18 post-DBAccess call adapter helper lane closure / sample18 post-DBAccess call adapter helper lane closure | Close the route-unwired adapter helper lane and decide whether transaction adapter preflight, real DBAccess invocation hardening, or route integration preflight should be promoted next | `DONE` | 0.25 - 0.5 day / 0.25 - 0.5 日 |
 | 638 | Sample18 transaction adapter preflight / sample18 transaction adapter preflight | Define the route-unwired transaction adapter boundary around DBAccess invocation with an all-success-or-failure UI/API contract: every required step must succeed, otherwise the route result is failure even while physical cross-store atomicity remains future work | `DONE` | 0.5 - 1 day / 半日 - 1 日 |
-| 639 | Cross-route all-success-or-failure execution policy review / cross-route all-success-or-failure execution policy review | Review mutation/execution routes beyond sample18 and define a shared UI/API success contract: success only when all required operation steps succeed; otherwise fail closed with internal recovery metadata | `ACTIVE_NEXT` | 0.5 - 1 day / 半日 - 1 日 |
-| 640 | Sample18 transaction adapter helper first slice / sample18 transaction adapter helper first slice | Add a route-unwired transaction adapter helper using fake transaction and fake DBAccess callables, returning all-success-or-failure execution metadata without real TaskCard mutation or route execution | `TODO` | 0.5 - 1 day / 半日 - 1 日 |
+| 639 | Cross-route all-success-or-failure execution policy review / cross-route all-success-or-failure execution policy review | Review mutation/execution routes beyond sample18 and define a shared UI/API success contract: success only when all required operation steps succeed; otherwise fail closed with internal recovery metadata | `DONE` | 0.5 - 1 day / 半日 - 1 日 |
+| 640 | Sample18 transaction adapter helper first slice / sample18 transaction adapter helper first slice | Add a route-unwired transaction adapter helper using fake transaction and fake DBAccess callables, returning all-success-or-failure execution metadata without real TaskCard mutation or route execution | `ACTIVE_NEXT` | 0.5 - 1 day / 半日 - 1 日 |
 
 ### Long-Term No-Code Roadmap / 長期 No-Code ロードマップ
 
@@ -258,7 +258,7 @@ Current main status: #638 defines the sample18 transaction adapter preflight wit
 - Sample18 readonly no-code preview rows now match the golden seed rows in generated runtime JSON and stable HTML text/field markers. / sample18 readonly no-code preview row は generated runtime JSON と stable HTML text / field marker で golden seed row と一致します。
 - No-code UI testing should start with fast JSON/DOM contract tests; headless Chrome remains a representative smoke gate, not the default inner-loop test. / No Code UI testing は fast JSON / DOM contract test から始めます。headless Chrome は代表 smoke gate として残し、default inner-loop test にはしません。
 - The current push decision is to hold locally; no push is performed without a new explicit user request. / 現在の push 判断は local hold です。新しい明示的な user request がない限り push は行いません。
-- Future mutation/execution routes should use an all-success-or-failure UI/API contract: user-facing success is returned only when every required step succeeds; physical cross-store atomicity gaps are internal failure/recovery metadata, not user-facing success. / 今後の mutation / execution route は all-success-or-failure の UI/API contract を使います。user-facing success は全 required step 成功時のみ返し、物理的な cross-store atomicity gap は user-facing success ではなく内部 failure / recovery metadata として扱います。
+- Future mutation/execution routes should follow [Execution Success Policy / 実行成功ポリシー](execution-success-policy.md): user-facing success is returned only when every required step succeeds; physical cross-store atomicity gaps are internal failure/recovery metadata, not user-facing success. / 今後の mutation / execution route は [Execution Success Policy / 実行成功ポリシー](execution-success-policy.md) に従います。user-facing success は全 required step 成功時のみ返し、物理的な cross-store atomicity gap は user-facing success ではなく内部 failure / recovery metadata として扱います。
 - No build, publish, approval, rollback, mutation, generated button execution, or custom component execution is currently enabled through this lane. / この lane では build、publish、approval、rollback、mutation、generated button execution、custom component execution はまだ有効化していません。
 - Push is not performed unless the user explicitly requests it. / user が明示するまで push は行いません。
 
@@ -495,6 +495,8 @@ Latest code verification from #636:
 For #637, docs-only verification is `git diff --check`.
 
 For #638, docs-only verification is `git diff --check`.
+
+For #639, docs-only verification is `git diff --check`.
 
 Latest code verification from #459:
 
