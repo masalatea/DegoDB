@@ -11,6 +11,8 @@
 
 ## Index
 
+- `2026-0710-post-availability-state-fast-contract-lane-closure.md`
+  - #697 post availability-state fast contract lane closure。#696 の availability-state fast contract を受け入れ、generated default-state 変更前に enabled-candidate browser smoke preflight (#698) を昇格。Status: `DONE`。
 - `2026-0710-sample18-generated-availability-state-fast-contract-first-slice.md`
   - #696 sample18 generated availability-state fast contract first slice。runtime action button に availability / policy failed checks markers を追加し、default disabled と create/update/complete enabled-candidate overlay を fast assertion で固定。Status: `FIRST_SLICE_DONE`。
 - `2026-0710-sample18-generated-availability-expansion-preflight.md`
