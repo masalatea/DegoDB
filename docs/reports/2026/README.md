@@ -11,6 +11,8 @@
 
 ## Index
 
+- `2026-0711-unpushed-commit-stack-inventory.md`
+  - 未push 188 commits の棚卸し。全 commit 一覧、分類、整理判断を記録し、広範 rewrite / squash は行わず意味単位の stack として保持する方針を確認。Status: `CHECKPOINT_DONE`。
 - `2026-0711-post-readiness-commit-stack-checkpoint.md`
   - #710 post readiness commit-stack checkpoint。#704-#709 の read-only readiness lane commit stack を確認し、squash/amend せず意味単位のまま保持、#711 transaction complete gate を次 active に昇格。Status: `DONE`。
 - `2026-0711-post-readiness-metadata-lane-closure.md`
