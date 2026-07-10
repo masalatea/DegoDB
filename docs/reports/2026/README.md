@@ -11,6 +11,8 @@
 
 ## Index
 
+- `2026-0710-sample18-post-commit-execution-recording-preflight.md`
+  - #642 sample18 post-commit execution recording preflight。app DB commit 後の execution audit append と idempotency execution outcome update を all-success の required step として定義。recording failure は user-facing failure + recovery metadata。次は route-unwired recording helper (#643)。Status: `DONE`。
 - `2026-0710-sample18-post-transaction-adapter-helper-lane-closure.md`
   - #641 sample18 post-transaction adapter helper lane closure。#640 の route-unwired transaction adapter helper を受け入れ、route execution より前に post-commit execution recording preflight (#642) を昇格。real DBAccess mutation / route execution / execution recording は未有効化。Status: `DONE`。
 - `2026-0710-sample18-transaction-adapter-helper-first-slice.md`
