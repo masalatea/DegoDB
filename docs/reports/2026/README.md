@@ -11,6 +11,8 @@
 
 ## Index
 
+- `2026-0710-post-route-execution-failure-recovery-coverage-lane-closure.md`
+  - #667 post route execution failure/recovery coverage lane closure。#666 の route-level failure/recovery coverage を受け入れ、次は test-only injected callables から real sample runtime default binding preflight (#668) へ進む。Status: `DONE`。
 - `2026-0710-sample18-route-execution-failure-recovery-coverage-first-slice.md`
   - #666 sample18 route execution failure/recovery coverage first slice。explicit executor flag route で missing transaction callable、DBAccess failure rollback、post-commit idempotency failure recovery metadata を coverage。Status: `FIRST_SLICE_DONE`。
 - `2026-0710-post-route-feature-flag-execution-first-slice-lane-closure.md`
