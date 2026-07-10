@@ -11,6 +11,8 @@
 
 ## Index
 
+- `2026-0710-sample18-generated-submit-availability-documentation-first-slice.md`
+  - #681 sample18 generated-submit availability documentation first slice。`docs/no-code-ui-testing.md` と sample18 README に disabled default、app/env flags、executor_config metadata、injected callables、default runtime reference fail-closed behavior を文書化。Status: `FIRST_SLICE_DONE`。
 - `2026-0710-post-route-executor-config-metadata-coverage-lane-closure.md`
   - #680 post route executor config metadata coverage lane closure。#679 の route-visible `executor_config` coverage を受け入れ、次は sample18 generated-submit availability documentation (#681) を昇格。Status: `DONE`。
 - `2026-0710-sample18-route-executor-config-metadata-coverage.md`

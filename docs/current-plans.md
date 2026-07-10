@@ -13,7 +13,7 @@ When someone asks for "the plan list", answer from this section first. / 「計�
 
 ### Main Plan / 主計画
 
-Current main status: #680 closes route executor config metadata coverage and promotes sample18 generated-submit availability documentation. `develop` is 158 commits ahead of `origin/develop`, and push has not been performed for #432-#680. / 現在の主計画ステータス: #680 で route executor config metadata coverage を閉じ、sample18 generated-submit availability documentation を昇格しました。`develop` は `origin/develop` より 158 commits ahead、#432-#680 は push していません。
+Current main status: #681 documents sample18 generated-submit availability/config boundaries and promotes lane closure. `develop` is 159 commits ahead of `origin/develop`, and push has not been performed for #432-#681. / 現在の主計画ステータス: #681 で sample18 generated-submit availability/config boundary を文書化し、lane closure を昇格しました。`develop` は `origin/develop` より 159 commits ahead、#432-#681 は push していません。
 
 | Order | Work unit / 作業の塊 | Commit unit / コミット単位 | Status | Rough effort / 目安 |
 | --- | --- | --- | --- | --- |
@@ -239,7 +239,8 @@ Current main status: #680 closes route executor config metadata coverage and pro
 | 678 | Post production runtime config resolver lane closure / production runtime config resolver 後の lane closure | Close the config resolver slice and decide whether broader browser smoke coverage, route response refinement, or sample18 availability documentation should be promoted next | `DONE` | 0.25 - 0.5 day / 0.25 - 0.5 日 |
 | 679 | Sample18 route executor config metadata coverage / sample18 route executor config metadata coverage | Add focused route-level coverage that generated-submit responses expose stable `executor_config` metadata for disabled defaults, env/app enablement, missing runtime reference failure, and injected-callable execution readiness | `FIRST_SLICE_DONE` | 0.5 day / 半日 |
 | 680 | Post route executor config metadata coverage lane closure / route executor config metadata coverage 後の lane closure | Close route-visible config metadata coverage and decide whether sample18 availability documentation, browser smoke coverage, or route response/status refinement should be promoted next | `DONE` | 0.25 - 0.5 day / 0.25 - 0.5 日 |
-| 681 | Sample18 generated-submit availability documentation first slice / sample18 generated-submit availability documentation first slice | Document the current sample18 generated-submit availability/config contract, including disabled default, app/env flags, injected callables, default runtime binding, fail-closed metadata, and remaining caution before broader browser smoke | `ACTIVE_NEXT` | 0.5 day / 半日 |
+| 681 | Sample18 generated-submit availability documentation first slice / sample18 generated-submit availability documentation first slice | Document the current sample18 generated-submit availability/config contract, including disabled default, app/env flags, injected callables, default runtime binding, fail-closed metadata, and remaining caution before broader browser smoke | `FIRST_SLICE_DONE` | 0.5 day / 半日 |
+| 682 | Post generated-submit availability documentation lane closure / generated-submit availability documentation 後の lane closure | Close the availability documentation slice and decide whether broader browser smoke, route response/status refinement, or the next sample18 no-code action/input gap should be promoted next | `ACTIVE_NEXT` | 0.25 - 0.5 day / 0.25 - 0.5 日 |
 
 ### Long-Term No-Code Roadmap / 長期 No-Code ロードマップ
 
