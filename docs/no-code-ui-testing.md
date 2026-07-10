@@ -182,6 +182,23 @@ This smoke intentionally stays narrow:
 - generated action controls remain disabled/default-safe for actual execution, while the guarded click path renders blocked feedback for generated submit;
 - mutation availability and broader execution enablement remain covered by route/PHPUnit contracts until explicitly promoted.
 
+### Sample18 Generated Availability Expansion Preflight
+
+Availability expansion means allowing generated UI metadata to present an executable candidate state. It does not mean changing defaults broadly, enabling all actions, or bypassing the route success policy.
+
+The first expansion boundary is limited to `create_task_card`, `update_task_card`, and `complete_task_card`. `reopen_task_card` and `delete_task_card` remain disabled metadata-only candidates until their DBAccess/custom adapter contracts are defined.
+
+Before any generated action changes from disabled/blocked preview to available/executable candidate, the following must be true:
+
+- mutation and executor enablement are both explicit and observable through app config or env flags;
+- route `executor_config.status` is `ready` and dependency source is valid;
+- the generated action key, operation key, submit URL, CSRF handoff, required fields, key fields, and payload assembly match the route normalizer contract;
+- keyed actions have a selected row key source and fail closed when it is absent;
+- UI result rendering covers executed, blocked/duplicate, ordinary failure, and recovery-required failure;
+- tests cover disabled default, enabled candidate, missing key/input, config failure, duplicate replay, rollback failure, recovery-required failure, and successful execution.
+
+The next implementation slice should add a fast availability-state contract before changing runtime defaults. Browser smoke may then be extended to observe the enabled-candidate UI state, but route/PHPUnit tests remain the authority for execution correctness.
+
 ## Design Boundary
 
 Fast UI contract tests prove that generated metadata and generated markup expose the expected UI contract. They do not prove browser layout, CSS pixel rendering, or server mutation. Browser smoke and route-level tests remain responsible for those outer boundaries.
