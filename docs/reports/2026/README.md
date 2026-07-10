@@ -11,6 +11,8 @@
 
 ## Index
 
+- `2026-0710-sample18-guarded-executor-coordination-preflight.md`
+  - #630 sample18 guarded executor coordination preflight。execution guard / DBAccess call adapter / app DB transaction / execution audit append / idempotency outcome update の coordination と cross-store 非原子性を定義し、次は non-mutating coordinator plan helper (#631) を昇格。DBAccess mutation / transaction / route executor は未有効化。Status: `DONE`。
 - `2026-0710-sample18-post-execution-audit-append-persistence-lane-closure.md`
   - #629 sample18 post-execution audit append persistence lane closure。#628 の execution audit append helper を受け入れ、次は DBAccess execution 前の guarded executor coordination preflight (#630) を昇格。DBAccess mutation / transaction / idempotency update / route executor は未有効化。Status: `DONE`。
 - `2026-0710-sample18-execution-audit-append-persistence-first-slice.md`

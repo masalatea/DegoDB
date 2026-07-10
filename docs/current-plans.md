@@ -13,7 +13,7 @@ When someone asks for "the plan list", answer from this section first. / 「計�
 
 ### Main Plan / 主計画
 
-Current main status: #629 closes the sample18 execution audit append persistence lane and promotes guarded executor coordination preflight before DBAccess execution. `develop` is 105 commits ahead of `origin/develop`, and push has not been performed for #432-#629. / 現在の主計画ステータス: #629 で sample18 execution audit append persistence lane を閉じ、DBAccess execution より前に guarded executor coordination preflight を昇格しました。`develop` は `origin/develop` より 105 commits ahead、#432-#629 は push していません。
+Current main status: #630 defines guarded executor coordination and promotes a dry-run coordinator plan helper before DBAccess execution. `develop` is 106 commits ahead of `origin/develop`, and push has not been performed for #432-#630. / 現在の主計画ステータス: #630 で guarded executor coordination を定義し、DBAccess execution より前に dry-run coordinator plan helper を昇格しました。`develop` は `origin/develop` より 106 commits ahead、#432-#630 は push していません。
 
 | Order | Work unit / 作業の塊 | Commit unit / コミット単位 | Status | Rough effort / 目安 |
 | --- | --- | --- | --- | --- |
@@ -188,7 +188,8 @@ Current main status: #629 closes the sample18 execution audit append persistence
 | 627 | Sample18 post-idempotency execution outcome persistence lane closure / sample18 post-idempotency execution outcome persistence lane closure | Close the idempotency execution outcome persistence lane and decide whether execution audit append persistence, route integration metadata, or guarded executor implementation should be promoted next | `DONE` | 0.25 - 0.5 day / 0.25 - 0.5 日 |
 | 628 | Sample18 execution audit append persistence first slice / sample18 execution audit append persistence first slice | Add a repository/helper path to append execution audit events for planned execution outcomes using existing audit storage, without opening transactions, calling DBAccess, updating idempotency, or wiring the route executor | `DONE` | 0.5 - 1 day / 半日 - 1 日 |
 | 629 | Sample18 post-execution audit append persistence lane closure / sample18 post-execution audit append persistence lane closure | Close the execution audit append persistence lane and decide whether guarded executor coordination preflight, route integration metadata, or additional failure coverage should be promoted next | `DONE` | 0.25 - 0.5 day / 0.25 - 0.5 日 |
-| 630 | Sample18 guarded executor coordination preflight / sample18 guarded executor coordination preflight | Define how the first executor coordinator will combine execution guard, DBAccess call adapter, transaction boundary, execution audit append, and idempotency outcome update before implementation | `ACTIVE_NEXT` | 0.5 - 1 day / 半日 - 1 日 |
+| 630 | Sample18 guarded executor coordination preflight / sample18 guarded executor coordination preflight | Define how the first executor coordinator will combine execution guard, DBAccess call adapter, transaction boundary, execution audit append, and idempotency outcome update before implementation | `DONE` | 0.5 - 1 day / 半日 - 1 日 |
+| 631 | Sample18 guarded executor coordinator plan helper first slice / sample18 guarded executor coordinator plan helper first slice | Add a non-mutating coordinator plan helper that models DBAccess call, app-db transaction, execution audit append, and idempotency outcome update ordering without opening transactions, calling DBAccess, or writing post-execution records | `ACTIVE_NEXT` | 0.5 - 1 day / 半日 - 1 日 |
 
 ### Long-Term No-Code Roadmap / 長期 No-Code ロードマップ
 
@@ -448,6 +449,8 @@ Latest code verification from #628:
 - `git diff --check`
 
 For #629, docs-only verification is `git diff --check`.
+
+For #630, docs-only verification is `git diff --check`.
 
 Latest code verification from #459:
 
