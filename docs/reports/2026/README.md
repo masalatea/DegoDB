@@ -11,6 +11,8 @@
 
 ## Index
 
+- `2026-0710-read-only-readiness-lane-detailed-replan.md`
+  - #702 read-only readiness lane detailed replan。sample18 route/config readiness を shape / helper / screen-definition / runtime preview / fast contract / browser smoke / lane closure に分解し、real guarded execution smoke は parked。次は #703 readiness metadata shape contract。Status: `DONE`。
 - `2026-0710-sample18-route-config-readiness-browser-preflight.md`
   - #701 sample18 route/config readiness browser preflight。real guarded execution smoke の前に executor_config / enablement source / dependency source / action mapping / failure reasons を read-only に browser-visible 化する境界を定義し、#702 を昇格。Status: `DONE`。
 - `2026-0710-post-enabled-candidate-browser-smoke-lane-closure.md`
