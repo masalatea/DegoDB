@@ -11,6 +11,8 @@
 
 ## Index
 
+- `2026-0710-sample18-dbaccess-execution-plan-route-response-integration.md`
+  - #606 sample18 DBAccess execution-plan route response integration。valid generated-submit route response に non-mutating `dbaccess_execution_plan` metadata を接続し、disabled/duplicate/failed route outcomes と method/CSRF/validation skip boundary を固定。DBAccess mutation は未有効化。Status: `FIRST_SLICE_DONE`。
 - `2026-0710-sample18-post-dbaccess-execution-plan-helper-lane-closure.md`
   - #605 sample18 post-DBAccess execution-plan helper lane closure。#604 の non-mutating execution-plan helper を受け入れ、次は route response integration (#606) を metadata only で昇格。DBAccess mutation は未有効化。Status: `DONE`。
 - `2026-0710-sample18-dbaccess-mutation-dry-run-executor-first-slice.md`
