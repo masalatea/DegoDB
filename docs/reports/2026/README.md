@@ -11,6 +11,8 @@
 
 ## Index
 
+- `2026-0710-sample18-post-transaction-plan-helper-lane-closure.md`
+  - #612 sample18 post-transaction-plan helper lane closure。#611 の non-mutating transaction-plan helper を受け入れ、次は valid generated-submit route response への transaction-plan metadata integration (#613) を昇格。DBAccess mutation は未有効化。Status: `DONE`。
 - `2026-0710-sample18-dbaccess-transaction-plan-helper-first-slice.md`
   - #611 sample18 DBAccess transaction-plan helper first slice。non-mutating `transaction_plan` helper を追加し、transaction boundary / rollback policy / post-execution audit・idempotency update plans を metadata 化。route integration / DBAccess mutation は未有効化。Status: `FIRST_SLICE_DONE`。
 - `2026-0710-sample18-dbaccess-transaction-boundary-preflight.md`
