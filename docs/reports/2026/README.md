@@ -11,6 +11,8 @@
 
 ## Index
 
+- `2026-0710-post-route-feature-flag-execution-first-slice-lane-closure.md`
+  - #665 post route feature-flag execution first slice lane closure。#664 の explicit executor flag route execution success path を受け入れ、次は route-level failure/recovery coverage (#666) を昇格。Status: `DONE`。
 - `2026-0710-sample18-generated-submit-route-feature-flag-execution-first-slice.md`
   - #664 sample18 generated-submit route feature-flag execution first slice。route に実行専用 `sample18_generated_submit_executor_enabled` flag と injected transaction callables を追加し、flag on fresh request で DBAccess transaction / execution audit / idempotency outcome まで成功、duplicate replay は非実行を coverage。Status: `FIRST_SLICE_DONE`。
 - `2026-0710-sample18-generated-submit-route-feature-flag-integration-preflight.md`
