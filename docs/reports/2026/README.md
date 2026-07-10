@@ -11,6 +11,8 @@
 
 ## Index
 
+- `2026-0711-readiness-browser-smoke-first-slice.md`
+  - #708 readiness browser smoke first slice。Sample18 enabled-candidate browser smoke に desktop/mobile の read-only readiness marker probe を追加し、temporary enablement 前の candidate_ready / can_submit=false / executor_config_status=disabled を確認。Status: `FIRST_SLICE_DONE`。
 - `2026-0711-readiness-fast-contract-coverage.md`
   - #707 readiness fast contract coverage。browser なしの runtime HTML render assertion で route-compatible missing-runtime failure と non-ready operation の readiness marker を固定。Status: `FIRST_SLICE_DONE`。
 - `2026-0711-readiness-runtime-preview-carry-through.md`
