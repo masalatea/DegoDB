@@ -11,6 +11,8 @@
 
 ## Index
 
+- `2026-0710-sample18-post-commit-recording-db-backed-coverage-preflight.md`
+  - #660 sample18 post-commit recording DB-backed coverage preflight。committed DBAccess execution 後の post-commit recording adapter を real execution audit append / idempotency outcome update repository に接続して route-unwired に検証する境界を定義。次は first slice (#661)。Status: `DONE`。
 - `2026-0710-post-db-backed-transaction-binding-coverage-lane-closure.md`
   - #659 post DB-backed transaction binding coverage lane closure。#658 の DB-backed route-unwired transaction binding coverage を受け入れ、route wiring より前に post-commit recording DB-backed coverage preflight (#660) を昇格。generated-submit route execution は未有効化。Status: `DONE`。
 - `2026-0710-sample18-db-backed-transaction-binding-coverage-first-slice.md`
