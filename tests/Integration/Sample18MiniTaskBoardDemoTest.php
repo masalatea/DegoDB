@@ -1120,6 +1120,156 @@ final class Sample18MiniTaskBoardDemoTest extends TestCase
         self::assertSame(0, $idempotencyRecords['items'][0]['duplicate_count'] ?? -1);
     }
 
+    public function testMiniTaskBoardGeneratedSubmitRouteExecutesWithExplicitExecutorFlag(): void
+    {
+        $root = dirname(__DIR__, 2);
+        require_once $root . '/sample/tutorials/sample18-mini-task-board-demo/reference/DBACCESS-PHP/_support/mtool_runtime_db.php';
+        require_once $root . '/sample/tutorials/sample18-mini-task-board-demo/reference/DATACLASS-PHP/base/data-TaskCardBase.php';
+        require_once $root . '/sample/tutorials/sample18-mini-task-board-demo/reference/DATACLASS-PHP/data-TaskCard.php';
+        require_once $root . '/sample/tutorials/sample18-mini-task-board-demo/reference/DBACCESS-PHP/base/dbaccess-TaskCardBase.php';
+        require_once $root . '/sample/tutorials/sample18-mini-task-board-demo/reference/DBACCESS-PHP/dbaccess-TaskCard.php';
+
+        $checklist = $this->sample18FastContractChecklist();
+        $submitContract = $checklist['generated_submit_request_contract'] ?? [];
+        self::assertIsArray($submitContract);
+        $timestamp = (string) ($submitContract['timestamp_fixture'] ?? '');
+        $createExpectation = $submitContract['operations']['create_task_card'] ?? [];
+        self::assertIsArray($createExpectation);
+
+        $sqlitePath = sys_get_temp_dir() . '/sample18-route-exec-' . bin2hex(random_bytes(4)) . '.sqlite';
+        $previousSqlitePath = getenv('MTOOL_RUNTIME_SQLITE_PATH');
+        $previousDsn = getenv('MTOOL_RUNTIME_DB_DSN');
+        $previousUser = getenv('MTOOL_RUNTIME_DB_USER');
+        $previousPassword = getenv('MTOOL_RUNTIME_DB_PASSWORD');
+        $previousMtoolDb = $GLOBALS['mtooldb'] ?? null;
+
+        try {
+            putenv('MTOOL_RUNTIME_DB_DSN');
+            putenv('MTOOL_RUNTIME_DB_USER');
+            putenv('MTOOL_RUNTIME_DB_PASSWORD');
+            putenv('MTOOL_RUNTIME_SQLITE_PATH=' . $sqlitePath);
+            $transactionDb = new MtoolGeneratedDbAccessRuntimeDb();
+            $GLOBALS['mtooldb'] = $transactionDb;
+            self::assertInstanceOf(
+                MtoolGeneratedDbAccessPdoResult::class,
+                $transactionDb->execute(
+                    'CREATE TABLE task_card (
+                        id INTEGER PRIMARY KEY AUTOINCREMENT,
+                        title TEXT NOT NULL,
+                        body TEXT NOT NULL,
+                        status TEXT NOT NULL,
+                        assigned_to TEXT NOT NULL,
+                        priority INTEGER NOT NULL,
+                        due_date TEXT DEFAULT NULL,
+                        completed_at TEXT DEFAULT NULL,
+                        updated_at TEXT NOT NULL
+                    )',
+                ),
+            );
+
+            $callables = app_lab_sample18_task_board_generated_submit_transaction_binding_callables(
+                $transactionDb,
+                static function (array $context): object {
+                    $GLOBALS['mtooldb'] = $context['transaction_db'];
+
+                    return new TaskCardDBAccess();
+                },
+            );
+            $app = array_merge($this->sqliteApp(), [
+                'sample18_generated_submit_mutation_enabled' => true,
+                'sample18_generated_submit_executor_enabled' => true,
+                'sample18_generated_submit_transaction_callables' => $callables,
+            ]);
+            $bootstrap = app_config_db_bootstrap_apply($app);
+            self::assertTrue($bootstrap['ok'], $bootstrap['error']);
+            $principal = [
+                'id' => 'sample18-route-executor@example.test',
+                'auth_source' => 'phpunit',
+            ];
+            $validPost = array_merge(
+                ['operation_key' => 'create_task_card', '_csrf_token' => 'client-token'],
+                is_array($createExpectation['valid_input'] ?? null) ? $createExpectation['valid_input'] : [],
+            );
+
+            $executed = app_lab_sample18_task_board_generated_submit_blocked_response(
+                'POST',
+                $validPost,
+                $timestamp,
+                'valid',
+                $app,
+                $principal,
+            );
+            self::assertSame(200, $executed['status_code']);
+            self::assertTrue($executed['payload']['ok'] ?? false);
+            self::assertTrue($executed['payload']['accepted'] ?? false);
+            self::assertSame('executed', $executed['payload']['result'] ?? '');
+            self::assertSame('', $executed['payload']['failure_code'] ?? 'unexpected');
+            self::assertTrue($executed['payload']['executor_enabled'] ?? false);
+            self::assertSame('planned', $executed['payload']['executor_coordination_plan']['status'] ?? '');
+            self::assertSame('executed', $executed['payload']['route_execution']['execution_status'] ?? '');
+            self::assertSame('committed', $executed['payload']['transaction_result']['transaction_status'] ?? '');
+            self::assertSame('executed', $executed['payload']['transaction_result']['dbaccess_status'] ?? '');
+            self::assertSame('recorded', $executed['payload']['post_commit_recording']['recording_status'] ?? '');
+            self::assertSame('recorded', $executed['payload']['post_commit_recording']['execution_audit_status'] ?? '');
+            self::assertSame('recorded', $executed['payload']['post_commit_recording']['idempotency_update_status'] ?? '');
+
+            $insertedRows = $transactionDb->query('SELECT title FROM task_card ORDER BY id ASC');
+            self::assertInstanceOf(MtoolGeneratedDbAccessPdoResult::class, $insertedRows);
+            self::assertSame(['New generated task'], $insertedRows->fetch_row());
+
+            $executionAuditKey = (string) ($executed['payload']['post_commit_recording']['execution_audit_result']['item']['event_key'] ?? '');
+            self::assertNotSame('', $executionAuditKey);
+            $latestExecutionAudit = app_audit_log_fetch_latest($app, [
+                'project_key' => 'SAMPLE18',
+                'event_type' => 'sample18.generated_submit.executed',
+                'target_key' => (string) ($executed['payload']['dedupe_key_preview'] ?? ''),
+                'limit' => 10,
+            ]);
+            self::assertTrue($latestExecutionAudit['ok'], $latestExecutionAudit['error']);
+            self::assertCount(1, $latestExecutionAudit['items']);
+            self::assertSame($executionAuditKey, $latestExecutionAudit['items'][0]['event_key'] ?? '');
+
+            $idempotencyRecords = app_lab_sample18_generated_submit_idempotency_fetch_latest_records($app, [
+                'dedupe_key' => (string) ($executed['payload']['dedupe_key_preview'] ?? ''),
+                'limit' => 10,
+            ]);
+            self::assertTrue($idempotencyRecords['ok'], $idempotencyRecords['error']);
+            self::assertCount(1, $idempotencyRecords['items']);
+            self::assertSame('executed', $idempotencyRecords['items'][0]['result'] ?? '');
+            self::assertSame($executionAuditKey, $idempotencyRecords['items'][0]['metadata']['execution']['execution_audit_event_key'] ?? '');
+
+            $duplicate = app_lab_sample18_task_board_generated_submit_blocked_response(
+                'POST',
+                $validPost,
+                $timestamp,
+                'valid',
+                $app,
+                $principal,
+            );
+            self::assertSame(409, $duplicate['status_code']);
+            self::assertSame('blocked', $duplicate['payload']['result'] ?? '');
+            self::assertSame('duplicate', $duplicate['payload']['idempotency']['status'] ?? '');
+            self::assertArrayNotHasKey('route_execution', $duplicate['payload']);
+            $afterDuplicateRows = $transactionDb->query('SELECT COUNT(*) FROM task_card');
+            self::assertInstanceOf(MtoolGeneratedDbAccessPdoResult::class, $afterDuplicateRows);
+            $afterDuplicateCount = $afterDuplicateRows->fetch_row();
+            self::assertSame(1, (int) ($afterDuplicateCount[0] ?? -1));
+        } finally {
+            $previousDsn === false ? putenv('MTOOL_RUNTIME_DB_DSN') : putenv('MTOOL_RUNTIME_DB_DSN=' . $previousDsn);
+            $previousSqlitePath === false ? putenv('MTOOL_RUNTIME_SQLITE_PATH') : putenv('MTOOL_RUNTIME_SQLITE_PATH=' . $previousSqlitePath);
+            $previousUser === false ? putenv('MTOOL_RUNTIME_DB_USER') : putenv('MTOOL_RUNTIME_DB_USER=' . $previousUser);
+            $previousPassword === false ? putenv('MTOOL_RUNTIME_DB_PASSWORD') : putenv('MTOOL_RUNTIME_DB_PASSWORD=' . $previousPassword);
+            if ($previousMtoolDb === null) {
+                unset($GLOBALS['mtooldb']);
+            } else {
+                $GLOBALS['mtooldb'] = $previousMtoolDb;
+            }
+            if (is_file($sqlitePath)) {
+                unlink($sqlitePath);
+            }
+        }
+    }
+
     public function testMiniTaskBoardGeneratedSubmitMutationGateHelperIsNonMutating(): void
     {
         $normalized = app_lab_sample18_task_board_normalize_generated_submit_request(

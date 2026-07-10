@@ -11,6 +11,8 @@
 
 ## Index
 
+- `2026-0710-sample18-generated-submit-route-feature-flag-execution-first-slice.md`
+  - #664 sample18 generated-submit route feature-flag execution first slice。route に実行専用 `sample18_generated_submit_executor_enabled` flag と injected transaction callables を追加し、flag on fresh request で DBAccess transaction / execution audit / idempotency outcome まで成功、duplicate replay は非実行を coverage。Status: `FIRST_SLICE_DONE`。
 - `2026-0710-sample18-generated-submit-route-feature-flag-integration-preflight.md`
   - #663 sample18 generated-submit route feature-flag integration preflight。route が explicit executor flag on の時だけ transaction binding / real DBAccess invocation / DB-backed post-commit recording を実行する境界を定義。disabled default と all-success-or-failure response を維持し、次は first route-level slice (#664)。Status: `DONE`。
 - `2026-0710-post-db-backed-post-commit-recording-coverage-lane-closure.md`
