@@ -1460,6 +1460,240 @@ final class Sample18MiniTaskBoardDemoTest extends TestCase
         self::assertContains('request_audit_event_key_missing', $missingLink['reasons']);
     }
 
+    public function testMiniTaskBoardGeneratedSubmitDbAccessCallAdapterUsesInjectedInvokerOnly(): void
+    {
+        $buildReady = static function (string $operationKey, array $input): array {
+            $normalized = app_lab_sample18_task_board_normalize_generated_submit_request(
+                $operationKey,
+                $input,
+                '2026-07-10 11:00:00',
+            );
+            self::assertTrue($normalized['ok']);
+            $dispatcher = app_lab_sample18_task_board_generated_submit_dispatcher_dry_run($normalized);
+            $auditAppend = ['ok' => true, 'status' => 'appended', 'item' => ['event_key' => 'audit-adapter-' . $operationKey]];
+            $idempotency = [
+                'ok' => true,
+                'status' => 'recorded',
+                'created' => true,
+                'dedupe_key' => 'dedupe-adapter-' . $operationKey,
+                'item' => ['dedupe_key' => 'dedupe-adapter-' . $operationKey],
+            ];
+            $mutationGate = app_lab_sample18_task_board_generated_submit_mutation_gate(
+                ['sample18_generated_submit_mutation_enabled' => true],
+                $normalized,
+                $dispatcher,
+                $auditAppend,
+                $idempotency,
+            );
+            $executionPlan = app_lab_sample18_task_board_generated_submit_dbaccess_execution_plan(
+                $normalized,
+                $dispatcher,
+                $mutationGate,
+            );
+            $transactionPlan = app_lab_sample18_task_board_generated_submit_transaction_plan($executionPlan);
+            $updatePlan = app_lab_sample18_task_board_generated_submit_execution_update_plan(
+                $transactionPlan,
+                $auditAppend,
+                $idempotency,
+            );
+            $guard = app_lab_sample18_task_board_generated_submit_execution_guard(
+                $normalized,
+                $auditAppend,
+                $idempotency,
+                $mutationGate,
+                $executionPlan,
+                $transactionPlan,
+                $updatePlan,
+            );
+            $coordination = app_lab_sample18_task_board_generated_submit_executor_coordination_plan(
+                $guard,
+                $updatePlan,
+                true,
+            );
+
+            return [$normalized, $dispatcher, $guard, $coordination];
+        };
+
+        $cases = [
+            'create_task_card' => [
+                ['title' => 'Adapter create', 'body' => '', 'assigned_to' => '', 'priority' => '10', 'due_date' => ''],
+                'InsertTaskCard',
+            ],
+            'update_task_card' => [
+                ['id' => '7', 'title' => 'Adapter update', 'body' => '', 'status' => 'doing', 'assigned_to' => '', 'priority' => '20', 'due_date' => ''],
+                'UpdateTaskCard',
+            ],
+            'complete_task_card' => [
+                ['id' => '7'],
+                'CompleteTaskCard',
+            ],
+        ];
+
+        foreach ($cases as $operationKey => [$input, $expectedFunction]) {
+            [$normalized, $dispatcher, $guard, $coordination] = $buildReady($operationKey, $input);
+            $calls = 0;
+            $adapter = app_lab_sample18_task_board_generated_submit_dbaccess_call_adapter(
+                $normalized,
+                $dispatcher,
+                $guard,
+                $coordination,
+                true,
+                static function (array $call) use (&$calls, $operationKey, $expectedFunction): array {
+                    $calls++;
+                    self::assertSame($operationKey, $call['operation_key'] ?? '');
+                    self::assertSame('TaskCardDBAccess', $call['db_access_class'] ?? '');
+                    self::assertSame($expectedFunction, $call['db_access_function'] ?? '');
+                    self::assertSame('TaskCardData', $call['data_object'] ?? '');
+                    self::assertIsArray($call['method_arguments']['TaskCardObj'] ?? null);
+
+                    return ['ok' => true, 'result_code' => 'dbaccess_executed', 'rows_affected' => 1, 'insert_id' => 42];
+                },
+            );
+            self::assertSame(1, $calls);
+            self::assertSame('executed', $adapter['status']);
+            self::assertTrue($adapter['executed']);
+            self::assertTrue($adapter['invoked']);
+            self::assertSame($operationKey, $adapter['operation_key']);
+            self::assertSame($expectedFunction, $adapter['db_access_function']);
+            self::assertSame('dbaccess_executed', $adapter['result_code']);
+            self::assertSame(1, $adapter['rows_affected']);
+            self::assertSame(42, $adapter['insert_id']);
+            self::assertSame('dedupe-adapter-' . $operationKey, $adapter['dedupe_key']);
+            self::assertSame('audit-adapter-' . $operationKey, $adapter['request_audit_event_key']);
+            self::assertSame([], $adapter['reasons']);
+        }
+
+        [$normalized, $dispatcher, $guard, $coordination] = $buildReady(
+            'create_task_card',
+            ['title' => 'Adapter blocked', 'body' => '', 'assigned_to' => '', 'priority' => '10', 'due_date' => ''],
+        );
+        $calls = 0;
+        $disabled = app_lab_sample18_task_board_generated_submit_dbaccess_call_adapter(
+            $normalized,
+            $dispatcher,
+            $guard,
+            $coordination,
+            false,
+            static function () use (&$calls): array {
+                $calls++;
+
+                return ['ok' => true];
+            },
+        );
+        self::assertSame(0, $calls);
+        self::assertSame('skipped', $disabled['status']);
+        self::assertFalse($disabled['executed']);
+        self::assertFalse($disabled['invoked']);
+        self::assertContains('executor_feature_flag_disabled', $disabled['reasons']);
+
+        $blockedGuard = $guard;
+        $blockedGuard['status'] = 'blocked';
+        $blockedGuard['ready'] = false;
+        $blockedGuard['reasons'] = ['duplicate_generated_submit'];
+        $blocked = app_lab_sample18_task_board_generated_submit_dbaccess_call_adapter(
+            $normalized,
+            $dispatcher,
+            $blockedGuard,
+            $coordination,
+            true,
+            static function () use (&$calls): array {
+                $calls++;
+
+                return ['ok' => true];
+            },
+        );
+        self::assertSame(0, $calls);
+        self::assertSame('skipped', $blocked['status']);
+        self::assertContains('execution_guard_not_ready', $blocked['reasons']);
+        self::assertContains('duplicate_generated_submit', $blocked['reasons']);
+
+        $blockedCoordination = $coordination;
+        $blockedCoordination['status'] = 'blocked';
+        $blockedCoordination['ready'] = false;
+        $blockedCoordination['reasons'] = ['executor_feature_flag_disabled'];
+        $blockedPlan = app_lab_sample18_task_board_generated_submit_dbaccess_call_adapter(
+            $normalized,
+            $dispatcher,
+            $guard,
+            $blockedCoordination,
+            true,
+            static function () use (&$calls): array {
+                $calls++;
+
+                return ['ok' => true];
+            },
+        );
+        self::assertSame(0, $calls);
+        self::assertSame('skipped', $blockedPlan['status']);
+        self::assertContains('executor_coordination_plan_not_ready', $blockedPlan['reasons']);
+
+        $wrongFunctionDispatcher = $dispatcher;
+        $wrongFunctionDispatcher['db_access_function'] = 'DeleteTaskCard';
+        $wrongFunction = app_lab_sample18_task_board_generated_submit_dbaccess_call_adapter(
+            $normalized,
+            $wrongFunctionDispatcher,
+            $guard,
+            $coordination,
+            true,
+            static function () use (&$calls): array {
+                $calls++;
+
+                return ['ok' => true];
+            },
+        );
+        self::assertSame(0, $calls);
+        self::assertSame('skipped', $wrongFunction['status']);
+        self::assertContains('dbaccess_not_allowlisted', $wrongFunction['reasons']);
+
+        $missingPayloadDispatcher = $dispatcher;
+        $missingPayloadDispatcher['method_arguments'] = [];
+        $missingPayload = app_lab_sample18_task_board_generated_submit_dbaccess_call_adapter(
+            $normalized,
+            $missingPayloadDispatcher,
+            $guard,
+            $coordination,
+            true,
+            static function () use (&$calls): array {
+                $calls++;
+
+                return ['ok' => true];
+            },
+        );
+        self::assertSame(0, $calls);
+        self::assertSame('skipped', $missingPayload['status']);
+        self::assertContains('task_card_payload_missing', $missingPayload['reasons']);
+
+        $failed = app_lab_sample18_task_board_generated_submit_dbaccess_call_adapter(
+            $normalized,
+            $dispatcher,
+            $guard,
+            $coordination,
+            true,
+            static fn (): array => ['ok' => false, 'failure_code' => 'dbaccess_failed', 'error' => 'duplicate key'],
+        );
+        self::assertSame('failed', $failed['status']);
+        self::assertFalse($failed['executed']);
+        self::assertTrue($failed['invoked']);
+        self::assertSame('dbaccess_failed', $failed['failure_code']);
+        self::assertSame('duplicate key', $failed['error']);
+
+        $exception = app_lab_sample18_task_board_generated_submit_dbaccess_call_adapter(
+            $normalized,
+            $dispatcher,
+            $guard,
+            $coordination,
+            true,
+            static function (): array {
+                throw new RuntimeException('db offline');
+            },
+        );
+        self::assertSame('failed', $exception['status']);
+        self::assertFalse($exception['executed']);
+        self::assertTrue($exception['invoked']);
+        self::assertSame('dbaccess_exception', $exception['failure_code']);
+        self::assertSame('db offline', $exception['error']);
+    }
+
     public function testMiniTaskBoardGeneratedSubmitExecutionAuditAppendIsIndependent(): void
     {
         $app = $this->sqliteApp();

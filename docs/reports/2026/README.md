@@ -11,6 +11,8 @@
 
 ## Index
 
+- `2026-0710-sample18-dbaccess-call-adapter-helper-first-slice.md`
+  - #636 sample18 DBAccess call adapter helper first slice。route-unwired adapter helper を追加し、allowed metadata と injected fake callable のみで executed/failed/skipped metadata を分類。real DBAccess mutation / transaction / route execution は未有効化。Status: `FIRST_SLICE_DONE`。
 - `2026-0710-sample18-dbaccess-call-adapter-preflight.md`
   - #635 sample18 DBAccess call adapter preflight。guarded executor 用 DBAccess call adapter の入力 metadata、TaskCard operation mapping、fail-closed rules、fake callable test matrix を定義し、次は route-unwired adapter helper first slice (#636) を昇格。real DBAccess mutation / transaction / route execution は未有効化。Status: `DONE`。
 - `2026-0710-sample18-post-executor-coordination-plan-route-metadata-lane-closure.md`

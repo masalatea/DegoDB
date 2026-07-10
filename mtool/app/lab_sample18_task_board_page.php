@@ -1217,6 +1217,162 @@ function app_lab_sample18_task_board_generated_submit_executor_coordination_plan
 }
 
 /**
+ * @param array<string,mixed> $normalized
+ * @param array<string,mixed> $dispatcherResult
+ * @param array<string,mixed> $executionGuard
+ * @param array<string,mixed> $executorCoordinationPlan
+ * @param callable(array<string,mixed>):mixed $dbaccessInvoker
+ * @return array<string,mixed>
+ */
+function app_lab_sample18_task_board_generated_submit_dbaccess_call_adapter(
+    array $normalized,
+    array $dispatcherResult,
+    array $executionGuard,
+    array $executorCoordinationPlan,
+    bool $executorEnabled,
+    callable $dbaccessInvoker,
+): array {
+    $operationKey = (string) ($normalized['operation_key'] ?? '');
+    $contracts = app_lab_sample18_task_board_generated_submit_contracts();
+    $expectedFunction = (string) ($contracts[$operationKey]['db_access_function'] ?? '');
+    $dbAccessClass = (string) ($dispatcherResult['db_access_class'] ?? '');
+    $dbAccessFunction = (string) ($dispatcherResult['db_access_function'] ?? '');
+    $dataObject = (string) ($dispatcherResult['data_object'] ?? '');
+    $methodArguments = is_array($dispatcherResult['method_arguments'] ?? null)
+        ? $dispatcherResult['method_arguments']
+        : [];
+    $taskCardObj = is_array($methodArguments['TaskCardObj'] ?? null) ? $methodArguments['TaskCardObj'] : null;
+    $dedupeKey = (string) ($executionGuard['dedupe_key'] ?? ($executorCoordinationPlan['dedupe_key'] ?? ''));
+    $requestAuditEventKey = (string) ($executionGuard['request_audit_event_key'] ?? ($executorCoordinationPlan['request_audit_event_key'] ?? ''));
+
+    $base = [
+        'status' => 'skipped',
+        'executed' => false,
+        'invoked' => false,
+        'db_access_class' => $dbAccessClass,
+        'db_access_function' => $dbAccessFunction,
+        'data_object' => $dataObject,
+        'operation_key' => $operationKey,
+        'result_code' => 'not_executed',
+        'failure_code' => '',
+        'error' => '',
+        'dedupe_key' => $dedupeKey,
+        'request_audit_event_key' => $requestAuditEventKey,
+        'reasons' => [],
+    ];
+
+    $reasons = [];
+    if (!$executorEnabled) {
+        $reasons[] = 'executor_feature_flag_disabled';
+    }
+    if (!($normalized['ok'] ?? false)) {
+        $reasons[] = 'request_not_valid';
+    }
+    if (!($dispatcherResult['ok'] ?? false)) {
+        $reasons[] = 'dispatcher_not_ready';
+    }
+    if (($executionGuard['status'] ?? '') !== 'allowed' || !($executionGuard['ready'] ?? false)) {
+        $reasons[] = 'execution_guard_not_ready';
+        foreach (($executionGuard['reasons'] ?? []) as $reason) {
+            if (is_string($reason) && $reason !== '') {
+                $reasons[] = $reason;
+            }
+        }
+    }
+    if (($executorCoordinationPlan['status'] ?? '') !== 'planned' || !($executorCoordinationPlan['ready'] ?? false)) {
+        $reasons[] = 'executor_coordination_plan_not_ready';
+        foreach (($executorCoordinationPlan['reasons'] ?? []) as $reason) {
+            if (is_string($reason) && $reason !== '') {
+                $reasons[] = $reason;
+            }
+        }
+    }
+    if ($operationKey === '' || !is_array($contracts[$operationKey] ?? null)) {
+        $reasons[] = 'operation_not_allowlisted';
+    }
+    if ($expectedFunction === '' || $dbAccessClass !== 'TaskCardDBAccess' || $dbAccessFunction !== $expectedFunction) {
+        $reasons[] = 'dbaccess_not_allowlisted';
+    }
+    if ($dataObject !== 'TaskCardData') {
+        $reasons[] = 'data_object_not_allowlisted';
+    }
+    if ($taskCardObj === null) {
+        $reasons[] = 'task_card_payload_missing';
+    }
+    if ($dedupeKey === '') {
+        $reasons[] = 'dedupe_key_missing';
+    }
+    if ($requestAuditEventKey === '') {
+        $reasons[] = 'request_audit_event_key_missing';
+    }
+
+    if ($reasons !== []) {
+        $reasons = array_values(array_unique($reasons));
+        $base['failure_code'] = $reasons[0];
+        $base['reasons'] = $reasons;
+
+        return $base;
+    }
+
+    $call = [
+        'operation_key' => $operationKey,
+        'db_access_class' => $dbAccessClass,
+        'db_access_function' => $dbAccessFunction,
+        'data_object' => $dataObject,
+        'method_arguments' => $methodArguments,
+        'dedupe_key' => $dedupeKey,
+        'request_audit_event_key' => $requestAuditEventKey,
+    ];
+
+    try {
+        $result = $dbaccessInvoker($call);
+    } catch (Throwable $throwable) {
+        $base['status'] = 'failed';
+        $base['invoked'] = true;
+        $base['result_code'] = 'dbaccess_exception';
+        $base['failure_code'] = 'dbaccess_exception';
+        $base['error'] = $throwable->getMessage();
+        $base['reasons'] = ['dbaccess_exception'];
+
+        return $base;
+    }
+
+    if (!is_array($result)) {
+        $base['status'] = 'failed';
+        $base['invoked'] = true;
+        $base['result_code'] = 'dbaccess_malformed_result';
+        $base['failure_code'] = 'dbaccess_malformed_result';
+        $base['reasons'] = ['dbaccess_malformed_result'];
+
+        return $base;
+    }
+
+    $ok = (bool) ($result['ok'] ?? false);
+    $base['invoked'] = true;
+    $base['result_code'] = (string) ($result['result_code'] ?? ($ok ? 'dbaccess_executed' : 'dbaccess_failed'));
+    if (array_key_exists('rows_affected', $result)) {
+        $base['rows_affected'] = (int) $result['rows_affected'];
+    }
+    if (array_key_exists('insert_id', $result)) {
+        $base['insert_id'] = (int) $result['insert_id'];
+    }
+
+    if (!$ok) {
+        $base['status'] = 'failed';
+        $base['failure_code'] = (string) ($result['failure_code'] ?? 'dbaccess_failed');
+        $base['error'] = (string) ($result['error'] ?? '');
+        $base['reasons'] = [$base['failure_code']];
+
+        return $base;
+    }
+
+    $base['status'] = 'executed';
+    $base['executed'] = true;
+
+    return $base;
+}
+
+/**
  * @param array<string,mixed> $post
  * @return array{status_code:int,payload:array<string,mixed>}
  */

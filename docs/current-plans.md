@@ -13,7 +13,7 @@ When someone asks for "the plan list", answer from this section first. / 「計�
 
 ### Main Plan / 主計画
 
-Current main status: #635 defines the sample18 DBAccess call adapter preflight and promotes an adapter helper first slice that is tested with an injected fake callable, not route execution. `develop` is 111 commits ahead of `origin/develop`, and push has not been performed for #432-#635. / 現在の主計画ステータス: #635 で sample18 DBAccess call adapter preflight を定義し、route execution ではなく injected fake callable で検証する adapter helper first slice を昇格しました。`develop` は `origin/develop` より 111 commits ahead、#432-#635 は push していません。
+Current main status: #636 adds a route-unwired sample18 DBAccess call adapter helper tested with an injected fake callable and promotes lane closure before any real route execution. `develop` is 112 commits ahead of `origin/develop`, and push has not been performed for #432-#636. / 現在の主計画ステータス: #636 で injected fake callable により検証する route-unwired sample18 DBAccess call adapter helper を追加し、real route execution より前に lane closure を昇格しました。`develop` は `origin/develop` より 112 commits ahead、#432-#636 は push していません。
 
 | Order | Work unit / 作業の塊 | Commit unit / コミット単位 | Status | Rough effort / 目安 |
 | --- | --- | --- | --- | --- |
@@ -194,7 +194,8 @@ Current main status: #635 defines the sample18 DBAccess call adapter preflight a
 | 633 | Sample18 executor coordination plan route metadata integration / sample18 executor coordination plan route metadata integration | Wire non-mutating `executor_coordination_plan` metadata into valid generated-submit route responses while preserving HTTP 409, mutation disabled, no transaction, no DBAccess call, and no post-execution writes | `DONE` | 0.5 day / 半日 |
 | 634 | Sample18 post-executor coordination plan route metadata lane closure / sample18 post-executor coordination plan route metadata lane closure | Close the route-visible executor coordination plan lane and decide whether first executor adapter preflight, additional route failure hardening, or local stack review should be promoted next | `DONE` | 0.25 - 0.5 day / 0.25 - 0.5 日 |
 | 635 | Sample18 DBAccess call adapter preflight / sample18 DBAccess call adapter preflight | Define the smallest DBAccess call adapter boundary for the guarded executor, including accepted input metadata, TaskCard operation mapping, transaction dependency, failure shape, and tests before any route execution is enabled | `DONE` | 0.5 - 1 day / 半日 - 1 日 |
-| 636 | Sample18 DBAccess call adapter helper first slice / sample18 DBAccess call adapter helper first slice | Add a route-unwired DBAccess call adapter helper that validates allowed execution metadata and invokes only an injected fake callable in tests, returning stable executed/failed/skipped metadata without real TaskCard mutation | `ACTIVE_NEXT` | 0.5 - 1 day / 半日 - 1 日 |
+| 636 | Sample18 DBAccess call adapter helper first slice / sample18 DBAccess call adapter helper first slice | Add a route-unwired DBAccess call adapter helper that validates allowed execution metadata and invokes only an injected fake callable in tests, returning stable executed/failed/skipped metadata without real TaskCard mutation | `DONE` | 0.5 - 1 day / 半日 - 1 日 |
+| 637 | Sample18 post-DBAccess call adapter helper lane closure / sample18 post-DBAccess call adapter helper lane closure | Close the route-unwired adapter helper lane and decide whether transaction adapter preflight, real DBAccess invocation hardening, or route integration preflight should be promoted next | `ACTIVE_NEXT` | 0.25 - 0.5 day / 0.25 - 0.5 日 |
 
 ### Long-Term No-Code Roadmap / 長期 No-Code ロードマップ
 
@@ -478,6 +479,14 @@ Latest code verification from #633:
 For #634, docs-only verification is `git diff --check`.
 
 For #635, docs-only verification is `git diff --check`.
+
+Latest code verification from #636:
+
+- `php -l mtool/app/lab_sample18_task_board_page.php`
+- `php -l tests/Integration/Sample18MiniTaskBoardDemoTest.php`
+- `make sample18-pack-runtime-test`: `OK (15 tests, 1043 assertions)`
+- Full `make test`: `OK, but incomplete, skipped, or risky tests! Tests: 399, Assertions: 12885, Skipped: 1.`
+- `git diff --check`
 
 Latest code verification from #459:
 
