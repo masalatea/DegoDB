@@ -276,6 +276,8 @@ final class Sample18MiniTaskBoardDemoTest extends TestCase
         );
         self::assertSame('skipped', $blocked['payload']['audit_append']['status'] ?? '');
         self::assertSame('no_app', $blocked['payload']['audit_append']['reason'] ?? '');
+        self::assertSame('skipped', $blocked['payload']['idempotency']['status'] ?? '');
+        self::assertSame('no_app', $blocked['payload']['idempotency']['reason'] ?? '');
         self::assertFalse($blocked['payload']['mutation_enabled'] ?? true);
 
         $missingCsrf = app_lab_sample18_task_board_generated_submit_blocked_response(
@@ -370,6 +372,18 @@ final class Sample18MiniTaskBoardDemoTest extends TestCase
             $createExpectation['expected_dispatcher_bound_fields'] ?? [],
             $blocked['payload']['audit_append']['item']['metadata']['dispatcher_bound_fields'] ?? [],
         );
+        self::assertSame('recorded', $blocked['payload']['idempotency']['status'] ?? '');
+        self::assertTrue($blocked['payload']['idempotency']['created'] ?? false);
+        self::assertSame('', $blocked['payload']['idempotency']['error'] ?? 'unexpected');
+        self::assertSame(
+            $blocked['payload']['dedupe_key_preview'] ?? '',
+            $blocked['payload']['idempotency']['dedupe_key'] ?? 'missing',
+        );
+        self::assertSame(
+            $blocked['payload']['dedupe_key_preview'] ?? '',
+            $blocked['payload']['idempotency']['item']['dedupe_key'] ?? 'missing',
+        );
+        self::assertSame(0, $blocked['payload']['idempotency']['item']['duplicate_count'] ?? -1);
 
         $latest = app_audit_log_fetch_latest($app, [
             'project_key' => 'SAMPLE18',
@@ -381,6 +395,23 @@ final class Sample18MiniTaskBoardDemoTest extends TestCase
         self::assertCount(1, $latest['items']);
         self::assertSame('sample18_task_card', $latest['items'][0]['target_type'] ?? '');
 
+        $duplicate = app_lab_sample18_task_board_generated_submit_blocked_response(
+            'POST',
+            $validPost,
+            $timestamp,
+            'valid',
+            $app,
+            $principal,
+        );
+        self::assertSame(409, $duplicate['status_code']);
+        self::assertSame('duplicate', $duplicate['payload']['idempotency']['status'] ?? '');
+        self::assertFalse($duplicate['payload']['idempotency']['created'] ?? true);
+        self::assertSame(
+            $blocked['payload']['dedupe_key_preview'] ?? '',
+            $duplicate['payload']['idempotency']['dedupe_key'] ?? 'missing',
+        );
+        self::assertSame(1, $duplicate['payload']['idempotency']['item']['duplicate_count'] ?? -1);
+
         $missingCsrf = app_lab_sample18_task_board_generated_submit_blocked_response(
             'POST',
             ['operation_key' => 'create_task_card'],
@@ -391,6 +422,7 @@ final class Sample18MiniTaskBoardDemoTest extends TestCase
         );
         self::assertSame(403, $missingCsrf['status_code']);
         self::assertArrayNotHasKey('audit_append', $missingCsrf['payload']);
+        self::assertArrayNotHasKey('idempotency', $missingCsrf['payload']);
 
         $invalid = app_lab_sample18_task_board_generated_submit_blocked_response(
             'POST',
@@ -402,6 +434,7 @@ final class Sample18MiniTaskBoardDemoTest extends TestCase
         );
         self::assertSame(422, $invalid['status_code']);
         self::assertArrayNotHasKey('audit_append', $invalid['payload']);
+        self::assertArrayNotHasKey('idempotency', $invalid['payload']);
 
         $afterFailures = app_audit_log_fetch_latest($app, [
             'project_key' => 'SAMPLE18',
@@ -409,7 +442,15 @@ final class Sample18MiniTaskBoardDemoTest extends TestCase
             'limit' => 10,
         ]);
         self::assertTrue($afterFailures['ok'], $afterFailures['error']);
-        self::assertCount(1, $afterFailures['items']);
+        self::assertCount(2, $afterFailures['items']);
+        $idempotencyRecords = app_lab_sample18_generated_submit_idempotency_fetch_latest_records($app, [
+            'project_key' => 'SAMPLE18',
+            'operation_key' => 'create_task_card',
+            'limit' => 10,
+        ]);
+        self::assertTrue($idempotencyRecords['ok'], $idempotencyRecords['error']);
+        self::assertCount(1, $idempotencyRecords['items']);
+        self::assertSame(1, $idempotencyRecords['items'][0]['duplicate_count'] ?? -1);
     }
 
     public function testMiniTaskBoardGeneratedSubmitAuditAppendFailureIsVisibleWithoutMutation(): void
@@ -457,6 +498,10 @@ final class Sample18MiniTaskBoardDemoTest extends TestCase
         self::assertSame([], $blocked['payload']['audit_append']['item'] ?? ['unexpected']);
         self::assertNotSame('', $blocked['payload']['audit_append']['error'] ?? '');
         self::assertSame('', $blocked['payload']['audit_append']['reason'] ?? 'unexpected');
+        self::assertSame('failed', $blocked['payload']['idempotency']['status'] ?? '');
+        self::assertFalse($blocked['payload']['idempotency']['created'] ?? true);
+        self::assertSame([], $blocked['payload']['idempotency']['item'] ?? ['unexpected']);
+        self::assertNotSame('', $blocked['payload']['idempotency']['error'] ?? '');
     }
 
     public function testMiniTaskBoardDemoReferenceOutputs(): void

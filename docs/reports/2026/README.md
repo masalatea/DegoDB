@@ -11,6 +11,12 @@
 
 ## Index
 
+- `2026-0710-sample18-post-idempotency-route-integration-lane-closure.md`
+  - #597 sample18 post-idempotency-route-integration lane closure。#596 の route idempotency integration を受け入れ、次は mutation enablement gate preflight (#598) を昇格。DBAccess mutation は未有効化。Status: `DONE`。
+- `2026-0710-sample18-generated-submit-idempotency-route-integration-first-slice.md`
+  - #596 sample18 generated submit idempotency route integration first slice。valid blocked route path を audit append 後の idempotency create-or-reuse に接続し、recorded / duplicate / skipped / failed metadata を response に返す。HTTP 409 / mutation disabled / dispatcher non-executed は維持。Status: `FIRST_SLICE_DONE`。
+- `2026-0710-sample18-generated-submit-idempotency-route-integration-preflight.md`
+  - #595 sample18 generated submit idempotency route integration preflight。audit append 後に idempotency create-or-reuse を呼ぶ ordering、`idempotency` response metadata、method / CSRF / validation / unknown operation skip matrix、failure boundary を定義。route integration / DBAccess mutation は未有効化。Status: `DONE`。
 - `2026-0710-sample18-post-idempotency-repository-lane-closure.md`
   - #594 sample18 post-idempotency-repository lane closure。#593 の storage-backed idempotency repository/helper を受け入れ、次は route integration preflight (#595) を昇格。DBAccess mutation / route persistence は未有効化。Status: `DONE`。
 - `2026-0710-sample18-generated-submit-idempotency-repository-helper-first-slice.md`

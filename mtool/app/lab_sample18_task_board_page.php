@@ -7,6 +7,7 @@ require_once __DIR__ . '/audit_log_repository.php';
 require_once __DIR__ . '/auth.php';
 require_once __DIR__ . '/database.php';
 require_once __DIR__ . '/error_page.php';
+require_once __DIR__ . '/lab_sample18_generated_submit_idempotency_repository.php';
 require_once __DIR__ . '/request.php';
 require_once __DIR__ . '/response.php';
 require_once __DIR__ . '/sql_dialect.php';
@@ -550,6 +551,87 @@ function app_lab_sample18_task_board_generated_submit_append_audit_event(?array 
 }
 
 /**
+ * @return array{ok:bool,status:string,created:bool,dedupe_key:string,item:array<string,mixed>,error:string,reason:string}
+ */
+function app_lab_sample18_task_board_generated_submit_idempotency_skipped(
+    string $reason,
+    string $dedupeKey = '',
+): array {
+    return [
+        'ok' => true,
+        'status' => 'skipped',
+        'created' => false,
+        'dedupe_key' => $dedupeKey,
+        'item' => [],
+        'error' => '',
+        'reason' => $reason,
+    ];
+}
+
+/**
+ * @param array<string,mixed>|null $app
+ * @param array<string,mixed> $normalized
+ * @param array<string,mixed> $dispatcherResult
+ * @param array<string,mixed> $idempotencyAuditPreview
+ * @param array<string,mixed> $auditAppend
+ * @return array{ok:bool,status:string,created:bool,dedupe_key:string,item:array<string,mixed>,error:string,reason:string}
+ */
+function app_lab_sample18_task_board_generated_submit_apply_idempotency(
+    ?array $app,
+    array $normalized,
+    array $dispatcherResult,
+    array $idempotencyAuditPreview,
+    array $auditAppend,
+): array {
+    $dedupeKey = trim((string) ($idempotencyAuditPreview['dedupe_key_preview'] ?? ''));
+    if ($app === null) {
+        return app_lab_sample18_task_board_generated_submit_idempotency_skipped('no_app', $dedupeKey);
+    }
+
+    if ($dedupeKey === '') {
+        return app_lab_sample18_task_board_generated_submit_idempotency_skipped('no_dedupe_key', '');
+    }
+
+    $auditItem = is_array($auditAppend['item'] ?? null) ? $auditAppend['item'] : [];
+    $append = app_lab_sample18_generated_submit_idempotency_create_or_reuse_record($app, [
+        'dedupe_key' => $dedupeKey,
+        'project_key' => 'SAMPLE18',
+        'operation_key' => (string) ($normalized['operation_key'] ?? ''),
+        'payload_fingerprint' => (string) ($idempotencyAuditPreview['payload_fingerprint'] ?? ''),
+        'result' => 'blocked',
+        'failure_code' => 'generated_submit_disabled',
+        'first_audit_event_key' => (string) ($auditItem['event_key'] ?? ''),
+        'metadata' => [
+            'audit_append_status' => (string) ($auditAppend['status'] ?? ''),
+            'audit_append_ok' => (bool) ($auditAppend['ok'] ?? false),
+            'operation_key' => (string) ($normalized['operation_key'] ?? ''),
+            'curated_route_action' => (string) ($normalized['curated_route_action'] ?? ''),
+            'db_access_function' => (string) ($normalized['db_access_function'] ?? ''),
+            'ignored_input_fields' => is_array($normalized['ignored_input_fields'] ?? null)
+                ? $normalized['ignored_input_fields']
+                : [],
+            'normalized_payload' => is_array($normalized['payload'] ?? null) ? $normalized['payload'] : [],
+            'dispatcher_bound_fields' => is_array($dispatcherResult['bound_fields'] ?? null)
+                ? $dispatcherResult['bound_fields']
+                : [],
+            'dispatch_state' => (string) ($dispatcherResult['dispatch_state'] ?? ''),
+            'mutation_enabled' => (bool) ($dispatcherResult['mutation_enabled'] ?? false),
+            'executed' => (bool) ($dispatcherResult['executed'] ?? false),
+        ],
+    ]);
+
+    return [
+        'ok' => (bool) ($append['ok'] ?? false),
+        'status' => (string) ($append['result'] ?? (($append['ok'] ?? false) ? 'recorded' : 'failed')),
+        'created' => (bool) ($append['created'] ?? false),
+        'dedupe_key' => $dedupeKey,
+        'item' => is_array($append['item'] ?? null) ? $append['item'] : [],
+        'error' => (string) ($append['error'] ?? ''),
+        'reason' => '',
+    ];
+}
+
+/**
  * @param array<string,mixed> $post
  * @return array{status_code:int,payload:array<string,mixed>}
  */
@@ -625,6 +707,13 @@ function app_lab_sample18_task_board_generated_submit_blocked_response(
         $principal,
     );
     $auditAppend = app_lab_sample18_task_board_generated_submit_append_audit_event($app, $auditEvent);
+    $idempotency = app_lab_sample18_task_board_generated_submit_apply_idempotency(
+        $app,
+        $normalized,
+        $dispatcherResult,
+        $idempotencyAuditPreview,
+        $auditAppend,
+    );
 
     return [
         'status_code' => 409,
@@ -643,6 +732,7 @@ function app_lab_sample18_task_board_generated_submit_blocked_response(
             'payload_fingerprint' => $idempotencyAuditPreview['payload_fingerprint'],
             'audit_event_preview' => $auditEvent,
             'audit_append' => $auditAppend,
+            'idempotency' => $idempotency,
             'mutation_enabled' => false,
         ],
     ];

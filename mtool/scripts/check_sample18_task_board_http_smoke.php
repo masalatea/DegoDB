@@ -365,6 +365,10 @@ function run_smoke(array $args): array
     ensure(($generatedBlockedJson['audit_append']['skipped'] ?? true) === false, 'generated submit audit append was unexpectedly skipped');
     ensure(($generatedBlockedJson['audit_append']['item']['target_key'] ?? '') === ($generatedBlockedJson['dedupe_key_preview'] ?? ''), 'generated submit appended audit target mismatch');
     ensure(($generatedBlockedJson['audit_append']['item']['metadata']['failure_code'] ?? '') === 'generated_submit_disabled', 'generated submit appended audit failure code mismatch');
+    ensure(($generatedBlockedJson['idempotency']['status'] ?? '') === 'recorded', 'generated submit idempotency status mismatch');
+    ensure(($generatedBlockedJson['idempotency']['created'] ?? false) === true, 'generated submit idempotency record was not created');
+    ensure(($generatedBlockedJson['idempotency']['dedupe_key'] ?? '') === ($generatedBlockedJson['dedupe_key_preview'] ?? ''), 'generated submit idempotency dedupe key mismatch');
+    ensure(($generatedBlockedJson['idempotency']['item']['duplicate_count'] ?? -1) === 0, 'generated submit idempotency duplicate count mismatch');
     ensure(($generatedBlockedJson['mutation_enabled'] ?? true) === false, 'generated submit blocked mutation flag was enabled');
     ensure(
         in_array('client_only', $generatedBlockedJson['ignored_input_fields'] ?? [], true),
