@@ -352,6 +352,10 @@ function run_smoke(array $args): array
     ensure(($generatedBlockedJson['operation_key'] ?? '') === 'create_task_card', 'generated submit blocked operation_key mismatch');
     ensure(($generatedBlockedJson['curated_route_action'] ?? '') === 'create', 'generated submit blocked curated action mismatch');
     ensure(($generatedBlockedJson['db_access_function'] ?? '') === 'InsertTaskCard', 'generated submit blocked DBAccess function mismatch');
+    ensure(($generatedBlockedJson['dispatcher_result']['dispatch_state'] ?? '') === 'dry_run', 'generated submit dispatcher dry-run state mismatch');
+    ensure(($generatedBlockedJson['dispatcher_result']['executed'] ?? true) === false, 'generated submit dispatcher unexpectedly executed');
+    ensure(($generatedBlockedJson['dispatcher_result']['mutation_enabled'] ?? true) === false, 'generated submit dispatcher mutation flag was enabled');
+    ensure(($generatedBlockedJson['dispatcher_result']['bound_fields']['Title'] ?? '') === 'Generated blocked smoke', 'generated submit dispatcher bound title mismatch');
     ensure(($generatedBlockedJson['mutation_enabled'] ?? true) === false, 'generated submit blocked mutation flag was enabled');
     ensure(
         in_array('client_only', $generatedBlockedJson['ignored_input_fields'] ?? [], true),
