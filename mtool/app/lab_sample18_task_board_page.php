@@ -631,6 +631,84 @@ function app_lab_sample18_task_board_generated_submit_apply_idempotency(
     ];
 }
 
+function app_lab_sample18_task_board_generated_submit_mutation_enablement_flag(array $app): bool
+{
+    if (array_key_exists('sample18_generated_submit_mutation_enabled', $app)) {
+        return (bool) $app['sample18_generated_submit_mutation_enabled'];
+    }
+
+    return trim((string) getenv('MTOOL_SAMPLE18_GENERATED_SUBMIT_MUTATION_ENABLED')) === '1';
+}
+
+/**
+ * @param array<string,mixed> $normalized
+ * @param array<string,mixed> $dispatcherResult
+ * @param array<string,mixed> $auditAppend
+ * @param array<string,mixed> $idempotency
+ * @return array{status:string,ready:bool,mutation_enabled:bool,executed:bool,reasons:list<string>}
+ */
+function app_lab_sample18_task_board_generated_submit_mutation_gate(
+    array $app,
+    array $normalized,
+    array $dispatcherResult,
+    array $auditAppend,
+    array $idempotency,
+): array {
+    $reasons = [];
+    $failed = false;
+
+    if (!app_lab_sample18_task_board_generated_submit_mutation_enablement_flag($app)) {
+        $reasons[] = 'enablement_flag_disabled';
+    }
+    if (!($normalized['ok'] ?? false)) {
+        $reasons[] = 'request_not_valid';
+    }
+    if (!($dispatcherResult['ok'] ?? false)) {
+        $reasons[] = 'dispatcher_not_ready';
+    }
+    if (($dispatcherResult['executed'] ?? false) || ($dispatcherResult['mutation_enabled'] ?? false)) {
+        $reasons[] = 'dispatcher_not_dry_run';
+    }
+
+    $auditStatus = (string) ($auditAppend['status'] ?? '');
+    if ($auditStatus !== 'appended') {
+        $reasons[] = $auditStatus === 'failed' ? 'audit_append_failed' : 'audit_append_not_appended';
+        $failed = $failed || $auditStatus === 'failed';
+    }
+
+    $idempotencyStatus = (string) ($idempotency['status'] ?? '');
+    if ($idempotencyStatus !== 'recorded' || !($idempotency['created'] ?? false)) {
+        if ($idempotencyStatus === 'duplicate') {
+            $reasons[] = 'duplicate_generated_submit';
+        } elseif ($idempotencyStatus === 'failed') {
+            $reasons[] = 'idempotency_failed';
+            $failed = true;
+        } elseif ($idempotencyStatus === 'skipped') {
+            $reasons[] = 'idempotency_skipped';
+        } else {
+            $reasons[] = 'idempotency_not_recorded';
+        }
+    }
+
+    if ($reasons === []) {
+        return [
+            'status' => 'ready',
+            'ready' => true,
+            'mutation_enabled' => false,
+            'executed' => false,
+            'reasons' => [],
+        ];
+    }
+
+    return [
+        'status' => $failed ? 'failed' : (in_array('enablement_flag_disabled', $reasons, true) ? 'disabled' : 'blocked'),
+        'ready' => false,
+        'mutation_enabled' => false,
+        'executed' => false,
+        'reasons' => array_values(array_unique($reasons)),
+    ];
+}
+
 /**
  * @param array<string,mixed> $post
  * @return array{status_code:int,payload:array<string,mixed>}
@@ -714,6 +792,13 @@ function app_lab_sample18_task_board_generated_submit_blocked_response(
         $idempotencyAuditPreview,
         $auditAppend,
     );
+    $mutationGate = app_lab_sample18_task_board_generated_submit_mutation_gate(
+        $app ?? [],
+        $normalized,
+        $dispatcherResult,
+        $auditAppend,
+        $idempotency,
+    );
 
     return [
         'status_code' => 409,
@@ -733,6 +818,7 @@ function app_lab_sample18_task_board_generated_submit_blocked_response(
             'audit_event_preview' => $auditEvent,
             'audit_append' => $auditAppend,
             'idempotency' => $idempotency,
+            'mutation_gate' => $mutationGate,
             'mutation_enabled' => false,
         ],
     ];
