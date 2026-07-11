@@ -897,6 +897,99 @@ function app_lab_sample18_task_board_generated_submit_executor_config(array $app
 }
 
 /**
+ * @return list<array{action_key:string,operation_key:string}>
+ */
+function app_lab_sample18_task_board_generated_submit_readiness_default_actions(): array
+{
+    return [
+        ['action_key' => 'create_task_card', 'operation_key' => 'create_task_card'],
+        ['action_key' => 'update_task_card', 'operation_key' => 'update_task_card'],
+        ['action_key' => 'complete_task_card', 'operation_key' => 'complete_task_card'],
+        ['action_key' => 'reopen_task_card', 'operation_key' => 'reopen_task_card'],
+        ['action_key' => 'delete_task_card', 'operation_key' => 'delete_task_card'],
+    ];
+}
+
+/**
+ * @param list<array<string,mixed>>|null $actions
+ * @return array<string,mixed>
+ */
+function app_lab_sample18_task_board_generated_submit_readiness_snapshot(array $app, ?array $actions = null): array
+{
+    $executorConfig = app_lab_sample18_task_board_generated_submit_executor_config($app);
+    $contracts = app_lab_sample18_task_board_generated_submit_contracts();
+    $actionReadiness = [];
+    $routeCompatibleOperationKeys = array_keys($contracts);
+    $actions = $actions ?? app_lab_sample18_task_board_generated_submit_readiness_default_actions();
+
+    foreach ($actions as $action) {
+        $operationKey = (string) ($action['operation_key'] ?? '');
+        $actionKey = (string) ($action['action_key'] ?? $operationKey);
+        $routeCompatible = $operationKey !== '' && isset($contracts[$operationKey]);
+        $failureReasons = [];
+        $readinessState = 'candidate_ready';
+        $availabilityCandidate = true;
+
+        if (!$routeCompatible) {
+            $readinessState = 'not_route_compatible';
+            $availabilityCandidate = false;
+            $failureReasons[] = 'operation_not_route_compatible';
+        } elseif (($executorConfig['status'] ?? '') === 'failed') {
+            $readinessState = 'executor_config_failed';
+            $failureReasons = array_values(array_unique(array_filter(
+                array_map('strval', is_array($executorConfig['reasons'] ?? null) ? $executorConfig['reasons'] : []),
+                static fn (string $reason): bool => $reason !== '',
+            )));
+            if ($failureReasons === []) {
+                $failureReasons[] = (string) ($executorConfig['failure_code'] ?? 'executor_config_failed');
+            }
+        }
+
+        $actionReadiness[] = [
+            'action_key' => $actionKey,
+            'operation_key' => $operationKey,
+            'route_compatible' => $routeCompatible,
+            'readiness_state' => $readinessState,
+            'availability_candidate' => $availabilityCandidate,
+            'can_submit' => false,
+            'failure_reasons' => $failureReasons,
+            'executor_config_status' => (string) ($executorConfig['status'] ?? ''),
+        ];
+    }
+
+    return [
+        'snapshot_version' => 'sample18-generated-submit-readiness-v0',
+        'read_only' => true,
+        'mutation_dispatch_allowed' => false,
+        'submit_route' => app_lab_sample18_task_board_generated_submit_path(),
+        'executor_config' => [
+            'status' => (string) ($executorConfig['status'] ?? ''),
+            'ready' => (bool) ($executorConfig['ready'] ?? false),
+            'mutation_enabled' => (bool) ($executorConfig['mutation_enabled'] ?? false),
+            'executor_enabled' => (bool) ($executorConfig['executor_enabled'] ?? false),
+            'mutation_enablement_source' => (string) ($executorConfig['mutation_enablement_source'] ?? ''),
+            'executor_enablement_source' => (string) ($executorConfig['executor_enablement_source'] ?? ''),
+            'dependency_source' => (string) ($executorConfig['dependency_source'] ?? ''),
+            'failure_code' => (string) ($executorConfig['failure_code'] ?? ''),
+            'missing_file' => (string) ($executorConfig['missing_file'] ?? ''),
+            'reasons' => array_values(array_filter(
+                array_map('strval', is_array($executorConfig['reasons'] ?? null) ? $executorConfig['reasons'] : []),
+                static fn (string $reason): bool => $reason !== '',
+            )),
+        ],
+        'route_compatible_operation_keys' => $routeCompatibleOperationKeys,
+        'non_ready_operation_keys' => array_values(array_filter(
+            array_map(
+                static fn (array $action): string => (string) ($action['operation_key'] ?? ''),
+                $actions,
+            ),
+            static fn (string $operationKey): bool => $operationKey !== '' && !isset($contracts[$operationKey]),
+        )),
+        'action_readiness' => $actionReadiness,
+    ];
+}
+
+/**
  * @param array<string,mixed> $normalized
  * @param array<string,mixed> $dispatcherResult
  * @param array<string,mixed> $auditAppend
