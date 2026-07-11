@@ -2146,6 +2146,15 @@ function app_lab_sample18_task_board_generated_submit_route_executor_dependencie
     $transactionCallables = is_array($appConfig['sample18_generated_submit_transaction_callables'] ?? null)
         ? $appConfig['sample18_generated_submit_transaction_callables']
         : [];
+    if ($transactionCallables === []) {
+        $defaultBinding = app_lab_sample18_task_board_generated_submit_default_transaction_callables($appConfig);
+        if (!($defaultBinding['ok'] ?? false)) {
+            return $defaultBinding;
+        }
+        $transactionCallables = is_array($defaultBinding['transaction_callables'] ?? null)
+            ? $defaultBinding['transaction_callables']
+            : [];
+    }
     $requiredTransactionCallables = ['begin', 'commit', 'rollback', 'dbaccess'];
     foreach ($requiredTransactionCallables as $key) {
         if (!is_callable($transactionCallables[$key] ?? null)) {
@@ -2161,6 +2170,69 @@ function app_lab_sample18_task_board_generated_submit_route_executor_dependencie
         'ok' => true,
         'transaction_callables' => $transactionCallables,
     ];
+}
+
+/**
+ * @param array<string,mixed> $app
+ * @return array<string,mixed>
+ */
+function app_lab_sample18_task_board_generated_submit_default_transaction_callables(array $app): array
+{
+    $root = dirname(__DIR__, 2);
+    $referenceDir = trim((string) ($app['sample18_generated_submit_runtime_reference_dir'] ?? ''));
+    if ($referenceDir === '') {
+        $referenceDir = $root . '/sample/tutorials/sample18-mini-task-board-demo/reference';
+    }
+    $files = [
+        $referenceDir . '/DBACCESS-PHP/_support/mtool_runtime_db.php',
+        $referenceDir . '/DATACLASS-PHP/base/data-TaskCardBase.php',
+        $referenceDir . '/DATACLASS-PHP/data-TaskCard.php',
+        $referenceDir . '/DBACCESS-PHP/base/dbaccess-TaskCardBase.php',
+        $referenceDir . '/DBACCESS-PHP/dbaccess-TaskCard.php',
+    ];
+    foreach ($files as $file) {
+        if (!is_file($file)) {
+            return [
+                'ok' => false,
+                'failure_code' => 'executor_default_runtime_file_missing',
+                'missing_file' => $file,
+            ];
+        }
+    }
+
+    try {
+        foreach ($files as $file) {
+            require_once $file;
+        }
+        if (!class_exists('MtoolGeneratedDbAccessRuntimeDb') || !class_exists('TaskCardDBAccess')) {
+            return [
+                'ok' => false,
+                'failure_code' => 'executor_default_runtime_class_missing',
+            ];
+        }
+
+        $transactionDb = new MtoolGeneratedDbAccessRuntimeDb();
+        $GLOBALS['mtooldb'] = $transactionDb;
+        $callables = app_lab_sample18_task_board_generated_submit_transaction_binding_callables(
+            $transactionDb,
+            static function (array $context): object {
+                $GLOBALS['mtooldb'] = $context['transaction_db'];
+
+                return new TaskCardDBAccess();
+            },
+        );
+
+        return [
+            'ok' => true,
+            'transaction_callables' => $callables,
+        ];
+    } catch (Throwable $throwable) {
+        return [
+            'ok' => false,
+            'failure_code' => 'executor_default_runtime_binding_failed',
+            'error' => $throwable->getMessage(),
+        ];
+    }
 }
 
 /**
