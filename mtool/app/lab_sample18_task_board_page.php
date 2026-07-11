@@ -751,6 +751,15 @@ function app_lab_sample18_task_board_generated_submit_mutation_enablement_flag(a
     return trim((string) getenv('MTOOL_SAMPLE18_GENERATED_SUBMIT_MUTATION_ENABLED')) === '1';
 }
 
+function app_lab_sample18_task_board_generated_submit_executor_enablement_flag(array $app): bool
+{
+    if (array_key_exists('sample18_generated_submit_executor_enabled', $app)) {
+        return (bool) $app['sample18_generated_submit_executor_enabled'];
+    }
+
+    return trim((string) getenv('MTOOL_SAMPLE18_GENERATED_SUBMIT_EXECUTOR_ENABLED')) === '1';
+}
+
 /**
  * @param array<string,mixed> $normalized
  * @param array<string,mixed> $dispatcherResult
@@ -1928,6 +1937,8 @@ function app_lab_sample18_task_board_generated_submit_post_commit_recording_adap
         'request_audit_event_key' => $requestAuditEventKey,
         'transaction_status' => 'committed',
         'dbaccess_status' => 'executed',
+        'dbaccess_result_code' => (string) ($transactionResult['dbaccess_result']['result_code'] ?? 'dbaccess_executed'),
+        'dbaccess_rows_affected' => (int) ($transactionResult['dbaccess_result']['rows_affected'] ?? 0),
         'operation_key' => (string) ($transactionResult['operation_key'] ?? ($executionGuard['operation_key'] ?? '')),
     ];
 
@@ -2126,6 +2137,33 @@ function app_lab_sample18_task_board_generated_submit_route_execution_plan(
 }
 
 /**
+ * @param array<string,mixed>|null $app
+ * @return array<string,mixed>
+ */
+function app_lab_sample18_task_board_generated_submit_route_executor_dependencies(?array $app): array
+{
+    $appConfig = $app ?? [];
+    $transactionCallables = is_array($appConfig['sample18_generated_submit_transaction_callables'] ?? null)
+        ? $appConfig['sample18_generated_submit_transaction_callables']
+        : [];
+    $requiredTransactionCallables = ['begin', 'commit', 'rollback', 'dbaccess'];
+    foreach ($requiredTransactionCallables as $key) {
+        if (!is_callable($transactionCallables[$key] ?? null)) {
+            return [
+                'ok' => false,
+                'failure_code' => 'executor_transaction_callable_missing',
+                'missing_callable' => $key,
+            ];
+        }
+    }
+
+    return [
+        'ok' => true,
+        'transaction_callables' => $transactionCallables,
+    ];
+}
+
+/**
  * @param array<string,mixed> $post
  * @return array{status_code:int,payload:array<string,mixed>}
  */
@@ -2235,38 +2273,124 @@ function app_lab_sample18_task_board_generated_submit_blocked_response(
         $transactionPlan,
         $executionUpdatePlan,
     );
+    $executorEnabled = app_lab_sample18_task_board_generated_submit_executor_enablement_flag($app ?? []);
     $executorCoordinationPlan = app_lab_sample18_task_board_generated_submit_executor_coordination_plan(
         $executionGuard,
         $executionUpdatePlan,
-        false,
+        $executorEnabled,
     );
 
-    return [
-        'status_code' => 409,
-        'payload' => [
+    $payload = [
+        'ok' => false,
+        'accepted' => false,
+        'result' => 'blocked',
+        'failure_code' => 'generated_submit_disabled',
+        'operation_key' => $normalized['operation_key'],
+        'curated_route_action' => $normalized['curated_route_action'],
+        'db_access_function' => $normalized['db_access_function'],
+        'normalized_payload' => $normalized['payload'],
+        'ignored_input_fields' => $normalized['ignored_input_fields'],
+        'dispatcher_result' => $dispatcherResult,
+        'dedupe_key_preview' => $idempotencyAuditPreview['dedupe_key_preview'],
+        'payload_fingerprint' => $idempotencyAuditPreview['payload_fingerprint'],
+        'audit_event_preview' => $auditEvent,
+        'audit_append' => $auditAppend,
+        'idempotency' => $idempotency,
+        'mutation_gate' => $mutationGate,
+        'dbaccess_execution_plan' => $dbaccessExecutionPlan,
+        'transaction_plan' => $transactionPlan,
+        'execution_update_plan' => $executionUpdatePlan,
+        'execution_guard' => $executionGuard,
+        'executor_coordination_plan' => $executorCoordinationPlan,
+        'mutation_enabled' => false,
+        'executor_enabled' => $executorEnabled,
+    ];
+
+    if (!$executorEnabled || ($executorCoordinationPlan['status'] ?? '') !== 'planned' || !($executorCoordinationPlan['ready'] ?? false)) {
+        return [
+            'status_code' => 409,
+            'payload' => $payload,
+        ];
+    }
+
+    $dependencies = app_lab_sample18_task_board_generated_submit_route_executor_dependencies($app);
+    if (!($dependencies['ok'] ?? false)) {
+        $payload['result'] = 'failed';
+        $payload['failure_code'] = (string) ($dependencies['failure_code'] ?? 'executor_dependencies_missing');
+        $payload['route_execution'] = [
             'ok' => false,
             'accepted' => false,
-            'result' => 'blocked',
-            'failure_code' => 'generated_submit_disabled',
-            'operation_key' => $normalized['operation_key'],
-            'curated_route_action' => $normalized['curated_route_action'],
-            'db_access_function' => $normalized['db_access_function'],
-            'normalized_payload' => $normalized['payload'],
-            'ignored_input_fields' => $normalized['ignored_input_fields'],
-            'dispatcher_result' => $dispatcherResult,
-            'dedupe_key_preview' => $idempotencyAuditPreview['dedupe_key_preview'],
-            'payload_fingerprint' => $idempotencyAuditPreview['payload_fingerprint'],
-            'audit_event_preview' => $auditEvent,
-            'audit_append' => $auditAppend,
-            'idempotency' => $idempotency,
-            'mutation_gate' => $mutationGate,
-            'dbaccess_execution_plan' => $dbaccessExecutionPlan,
-            'transaction_plan' => $transactionPlan,
-            'execution_update_plan' => $executionUpdatePlan,
-            'execution_guard' => $executionGuard,
-            'executor_coordination_plan' => $executorCoordinationPlan,
-            'mutation_enabled' => false,
-        ],
+            'result' => 'failed',
+            'success' => false,
+            'execution_status' => 'failed',
+            'failure_code' => $payload['failure_code'],
+            'recovery_required' => false,
+            'reasons' => [$payload['failure_code']],
+        ];
+
+        return [
+            'status_code' => 500,
+            'payload' => $payload,
+        ];
+    }
+
+    $transactionCallables = is_array($dependencies['transaction_callables'] ?? null)
+        ? $dependencies['transaction_callables']
+        : [];
+    $routeExecution = app_lab_sample18_task_board_generated_submit_route_execution_plan(
+        $normalized,
+        $dispatcherResult,
+        $executionGuard,
+        $executorCoordinationPlan,
+        $executionUpdatePlan,
+        true,
+        $transactionCallables['begin'],
+        $transactionCallables['commit'],
+        $transactionCallables['rollback'],
+        $transactionCallables['dbaccess'],
+        static function (array $context) use ($app, $executionUpdatePlan, $executionGuard, $principal): array {
+            return app_lab_sample18_task_board_generated_submit_append_execution_audit_event(
+                $app,
+                $executionUpdatePlan,
+                $executionGuard,
+                $principal,
+                'executed',
+                (string) ($context['dbaccess_result_code'] ?? 'dbaccess_executed'),
+                (string) ($context['transaction_status'] ?? 'committed'),
+                ['rows_affected' => (int) ($context['dbaccess_rows_affected'] ?? 0)],
+            );
+        },
+        static function (array $context) use ($app): array {
+            $executionAuditResult = is_array($context['execution_audit_result'] ?? null)
+                ? $context['execution_audit_result']
+                : [];
+
+            return app_lab_sample18_generated_submit_idempotency_update_execution_outcome($app ?? [], [
+                'dedupe_key' => (string) ($context['dedupe_key'] ?? ''),
+                'execution_status' => 'executed',
+                'execution_result_code' => (string) ($context['dbaccess_result_code'] ?? 'dbaccess_executed'),
+                'transaction_status' => (string) ($context['transaction_status'] ?? 'committed'),
+                'execution_audit_event_key' => (string) ($executionAuditResult['item']['event_key'] ?? ''),
+                'metadata' => ['rows_affected' => (int) ($context['dbaccess_rows_affected'] ?? 0)],
+            ]);
+        },
+    );
+    $payload['route_execution'] = $routeExecution;
+    $payload['transaction_result'] = is_array($routeExecution['transaction_result'] ?? null)
+        ? $routeExecution['transaction_result']
+        : [];
+    $payload['post_commit_recording'] = is_array($routeExecution['post_commit_recording'] ?? null)
+        ? $routeExecution['post_commit_recording']
+        : [];
+    $payload['result'] = (string) ($routeExecution['result'] ?? 'failed');
+    $payload['failure_code'] = (string) ($routeExecution['failure_code'] ?? '');
+    $payload['ok'] = (bool) ($routeExecution['ok'] ?? false);
+    $payload['accepted'] = (bool) ($routeExecution['accepted'] ?? false);
+    $payload['mutation_enabled'] = $payload['ok'];
+
+    return [
+        'status_code' => ($routeExecution['ok'] ?? false) ? 200 : 500,
+        'payload' => $payload,
     ];
 }
 

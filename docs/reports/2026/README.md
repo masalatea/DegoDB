@@ -11,6 +11,12 @@
 
 ## Index
 
+- `2026-0710-post-route-feature-flag-execution-first-slice-lane-closure.md`
+  - #665 post route feature-flag execution first slice lane closure。#664 の explicit executor flag route execution success path を受け入れ、次は route-level failure/recovery coverage (#666) を昇格。Status: `DONE`。
+- `2026-0710-sample18-generated-submit-route-feature-flag-execution-first-slice.md`
+  - #664 sample18 generated-submit route feature-flag execution first slice。route に実行専用 `sample18_generated_submit_executor_enabled` flag と injected transaction callables を追加し、flag on fresh request で DBAccess transaction / execution audit / idempotency outcome まで成功、duplicate replay は非実行を coverage。Status: `FIRST_SLICE_DONE`。
+- `2026-0710-sample18-generated-submit-route-feature-flag-integration-preflight.md`
+  - #663 sample18 generated-submit route feature-flag integration preflight。route が explicit executor flag on の時だけ transaction binding / real DBAccess invocation / DB-backed post-commit recording を実行する境界を定義。disabled default と all-success-or-failure response を維持し、次は first route-level slice (#664)。Status: `DONE`。
 - `2026-0710-post-db-backed-post-commit-recording-coverage-lane-closure.md`
   - #662 post DB-backed post-commit recording coverage lane closure。#661 の route-unwired DB-backed post-commit recording coverage を受け入れ、次は generated-submit route feature-flag integration preflight (#663) を昇格。generated-submit route execution は未有効化。Status: `DONE`。
 - `2026-0710-sample18-post-commit-recording-db-backed-coverage-first-slice.md`
