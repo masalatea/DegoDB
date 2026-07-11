@@ -828,6 +828,79 @@ function app_lab_sample18_task_board_generated_submit_transaction_plan(array $ex
 }
 
 /**
+ * @param array<string,mixed> $transactionPlan
+ * @param array<string,mixed> $auditAppend
+ * @param array<string,mixed> $idempotency
+ * @return array<string,mixed>
+ */
+function app_lab_sample18_task_board_generated_submit_execution_update_plan(
+    array $transactionPlan,
+    array $auditAppend,
+    array $idempotency,
+): array {
+    $reasons = [];
+    $failed = false;
+
+    if (($transactionPlan['status'] ?? '') !== 'planned' || !($transactionPlan['ready'] ?? false)) {
+        $reasons[] = 'transaction_plan_not_ready';
+        foreach (($transactionPlan['reasons'] ?? []) as $reason) {
+            if (is_string($reason) && $reason !== '') {
+                $reasons[] = $reason;
+            }
+        }
+        $failed = (string) ($transactionPlan['status'] ?? '') === 'failed';
+    }
+    if (
+        ($transactionPlan['will_execute'] ?? false)
+        || ($transactionPlan['will_update_audit'] ?? false)
+        || ($transactionPlan['will_update_idempotency'] ?? false)
+    ) {
+        $reasons[] = 'transaction_plan_not_metadata_only';
+        $failed = true;
+    }
+
+    $auditItem = is_array($auditAppend['item'] ?? null) ? $auditAppend['item'] : [];
+    $idempotencyItem = is_array($idempotency['item'] ?? null) ? $idempotency['item'] : [];
+    $dedupeKey = (string) ($idempotency['dedupe_key'] ?? ($idempotencyItem['dedupe_key'] ?? ''));
+    if ($dedupeKey === '') {
+        $reasons[] = 'dedupe_key_missing';
+    }
+
+    $planned = $reasons === [];
+
+    return [
+        'status' => $planned ? 'planned' : ($failed ? 'failed' : 'blocked'),
+        'ready' => $planned,
+        'will_write_audit' => false,
+        'will_update_idempotency' => false,
+        'will_execute' => false,
+        'audit_store' => (string) ($transactionPlan['audit_store'] ?? 'config_db_audit_log'),
+        'idempotency_store' => (string) ($transactionPlan['idempotency_store'] ?? 'config_db_idempotency'),
+        'execution_audit_update' => [
+            'status' => 'planned_not_written',
+            'event_type' => 'sample18.generated_submit.executed',
+            'target_key' => $dedupeKey,
+            'request_audit_event_key' => (string) ($auditItem['event_key'] ?? ''),
+            'result' => 'executed',
+            'transaction_status' => 'planned_not_opened',
+            'metadata' => [
+                'dedupe_key' => $dedupeKey,
+                'db_access_class' => (string) (($transactionPlan['post_execution_audit_update']['db_access_class'] ?? '')),
+                'db_access_function' => (string) (($transactionPlan['post_execution_audit_update']['db_access_function'] ?? '')),
+            ],
+        ],
+        'idempotency_execution_update' => [
+            'status' => 'planned_not_written',
+            'dedupe_key' => $dedupeKey,
+            'execution_status' => 'planned',
+            'execution_result_code' => 'planned_not_executed',
+            'transaction_status' => 'planned_not_opened',
+        ],
+        'reasons' => array_values(array_unique($reasons)),
+    ];
+}
+
+/**
  * @param array<string,mixed> $post
  * @return array{status_code:int,payload:array<string,mixed>}
  */
@@ -923,6 +996,11 @@ function app_lab_sample18_task_board_generated_submit_blocked_response(
         $mutationGate,
     );
     $transactionPlan = app_lab_sample18_task_board_generated_submit_transaction_plan($dbaccessExecutionPlan);
+    $executionUpdatePlan = app_lab_sample18_task_board_generated_submit_execution_update_plan(
+        $transactionPlan,
+        $auditAppend,
+        $idempotency,
+    );
 
     return [
         'status_code' => 409,
@@ -945,6 +1023,7 @@ function app_lab_sample18_task_board_generated_submit_blocked_response(
             'mutation_gate' => $mutationGate,
             'dbaccess_execution_plan' => $dbaccessExecutionPlan,
             'transaction_plan' => $transactionPlan,
+            'execution_update_plan' => $executionUpdatePlan,
             'mutation_enabled' => false,
         ],
     ];
