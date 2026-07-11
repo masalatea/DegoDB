@@ -11,6 +11,8 @@
 
 ## Index
 
+- `2026-0711-readiness-fast-contract-coverage.md`
+  - #707 readiness fast contract coverage。browser なしの runtime HTML render assertion で route-compatible missing-runtime failure と non-ready operation の readiness marker を固定。Status: `FIRST_SLICE_DONE`。
 - `2026-0711-readiness-runtime-preview-carry-through.md`
   - #706 readiness runtime preview carry-through。screen-definition action の readiness metadata を runtime-preview JSON と HTML button marker に通し、candidate_ready / availability_candidate / can_submit=false / executor_config_status を focused assertion で固定。Status: `FIRST_SLICE_DONE`。
 - `2026-0711-readiness-metadata-screen-definition-carry-through.md`
