@@ -89,7 +89,28 @@ The applied checklist fixture is `sample/tutorials/sample18-mini-task-board-demo
 
 `sample18-mini-task-board-demo` is accepted as the first L1 existing sample UI no-code entry only in a metadata-first and preview-first sense. It has a golden fixture, generated readonly list/detail/form metadata, generated runtime preview rows, and disabled dry-run action metadata with route boundaries for create, update, complete, reopen, and delete.
 
-It is not yet a generated route replacement. The first reusable fast DOM contract harness exists in `tests/Support/NoCodeUiContractAssertions.php`; the status filter contract now ties the curated route filter values to generated list metadata. The next selected gate is a narrow sample18 public-runtime status filter DOM preflight. Safe action-input mapping remains after that.
+It is not yet a generated route replacement. The first reusable fast DOM contract harness exists in `tests/Support/NoCodeUiContractAssertions.php`; the status filter contract ties the curated route filter values to generated list metadata, and generated-submit route responses now expose tested execution/config metadata before browser smoke is broadened.
+
+### Sample18 Generated Submit Availability
+
+Generated-submit execution is disabled by default. The route remains safe for metadata and blocked-response inspection unless both mutation and executor enablement are explicitly true:
+
+- app config `sample18_generated_submit_mutation_enabled=true` or env `MTOOL_SAMPLE18_GENERATED_SUBMIT_MUTATION_ENABLED=1`;
+- app config `sample18_generated_submit_executor_enabled=true` or env `MTOOL_SAMPLE18_GENERATED_SUBMIT_EXECUTOR_ENABLED=1`.
+
+App config takes precedence over env fallback. Execution still must pass request validation, CSRF, audit append, idempotency, execution guard, DBAccess transaction, post-commit execution audit append, and idempotency execution-outcome update. The success policy is all-success-or-failure: user-facing success is returned only after every required step succeeds.
+
+The route response includes `executor_config` metadata so tests and UI can inspect why execution is ready, disabled, or failed. Important fields are:
+
+- `status`: `ready`, `disabled`, or `failed`;
+- `mutation_enabled` / `executor_enabled`;
+- `mutation_enablement_source` / `executor_enablement_source`;
+- `dependency_source`: `default_runtime_reference` or `injected_transaction_callables`;
+- `runtime_reference_dir`, `failure_code`, `missing_file`, and `reasons`.
+
+Injected transaction callables are the highest-priority execution dependency for focused tests. Without injected callables, the route validates the sample18 generated runtime reference files before opening a transaction. Missing or unreadable reference files fail closed with `executor_default_runtime_file_missing`.
+
+Browser smoke is still an outer representative gate. Prefer fast route/PHPUnit coverage for config and response semantics first, then use browser smoke for public preview, auth, submit handoff, and rendered feedback integration.
 
 ## Design Boundary
 
