@@ -123,6 +123,9 @@ function app_project_output_no_code_json_forms_probe_build_emitted_files(array $
  */
 function app_project_output_no_code_react_bridge_contract(array $payload): array
 {
+    $screenDefinition = is_array($payload['screen_definition'] ?? null) ? $payload['screen_definition'] : [];
+    $runtimePreview = is_array($payload['runtime_preview'] ?? null) ? $payload['runtime_preview'] : [];
+
     return [
         'contract_schema_version' => 'no-code-react-bridge-contract-v0',
         'bridge_version' => 'no-code-react-bridge-v0',
@@ -175,23 +178,30 @@ function app_project_output_no_code_react_bridge_contract(array $payload): array
                 'display_value',
             ],
         ],
-        'screen_definition' => is_array($payload['screen_definition'] ?? null) ? $payload['screen_definition'] : [],
-        'runtime_preview' => is_array($payload['runtime_preview'] ?? null) ? $payload['runtime_preview'] : [],
+        'screen_definition' => $screenDefinition,
+        'runtime_preview' => $runtimePreview,
+        'custom_operation_handoffs' => app_project_output_no_code_react_bridge_custom_operation_handoffs(
+            $screenDefinition,
+            $runtimePreview,
+        ),
         'action_intent_version' => 'no-code-runtime-action-intent-v0',
         'consumer_notes' => [
             'contract_boundary' => 'Mtool owns metadata, screen definition, runtime preview, validation hints, sync hints, and action-intent shape. Frontend consumers own routing, components, rendering, styling, and durable client application state.',
             'generated_scaffold_status' => 'The React scaffold is a verification and adapter proof. It is not a durable Mtool-owned component library.',
+            'custom_operation_handoff_boundary' => 'Custom operation handoffs expose metadata, disabled reasons, and adapter handoff keys for React consumers. They do not grant execution rights or wire server routes.',
             'form_state_boundary' => 'Editable form state is local to the generated React bridge preview and is serialized only into no-code-runtime-action-intent-v0.',
             'schema_form_probe_boundary' => 'The sibling no-code-json-forms-probe artifact is comparison-only and does not replace the custom React bridge.',
             'artifact_parity_notes' => [
                 'Inspect NO-CODE-REACT-BRIDGE when validating the custom React + TypeScript adapter, generated component wiring, local form state, and action-intent emission.',
                 'Inspect NO-CODE-JSON-FORMS-PROBE when comparing the same form metadata against schema-form ecosystems such as JSON Forms or rjsf.',
                 'Both artifacts derive from the same screen definition and runtime preview; behavior changes should start from canonical Mtool metadata or generator code, not hand edits.',
+                'Custom operation handoffs are metadata-only adapter inputs; execution remains owned by explicit Mtool routes, policies, CSRF, and audit wiring.',
             ],
             'adapter_handoff_checklist' => [
                 'Required files: bridge-contract.json, CONSUMER-NOTES.md, src/mtoolNoCodeBridge.ts, src/MtoolNoCodeRuntime.tsx.',
                 'Stable markers: contract_schema_version, bridge_version, contract_invariants, action_intent_version.',
                 'Smoke commands: make sample28-no-code-react-bridge-build-smoke and make sample28-no-code-react-bridge-browser-smoke.',
+                'Custom operation handoffs: inspect bridge-contract.json custom_operation_handoffs before wiring React buttons to external adapters.',
             ],
             'adapter_troubleshooting_notes' => [
                 'If the React scaffold does not build, inspect package.json, tsconfig.json, src/mtoolNoCodeBridge.ts, and bridge-contract.json before changing canonical metadata.',
@@ -216,6 +226,88 @@ function app_project_output_no_code_react_bridge_contract(array $payload): array
             'This bridge intentionally avoids making Mtool own React components as durable product code.',
         ],
     ];
+}
+
+/**
+ * @param array<string,mixed> $screenDefinition
+ * @param array<string,mixed> $runtimePreview
+ * @return list<array<string,mixed>>
+ */
+function app_project_output_no_code_react_bridge_custom_operation_handoffs(
+    array $screenDefinition,
+    array $runtimePreview,
+): array {
+    $screenKeysByOperation = [];
+    foreach (($runtimePreview['screens'] ?? []) as $screen) {
+        if (!is_array($screen)) {
+            continue;
+        }
+
+        $screenKey = trim((string) ($screen['screen_key'] ?? ''));
+        if ($screenKey === '') {
+            continue;
+        }
+
+        foreach (($screen['custom_operations'] ?? []) as $operation) {
+            if (!is_array($operation)) {
+                continue;
+            }
+
+            $operationKey = trim((string) ($operation['operation_key'] ?? ''));
+            if ($operationKey === '') {
+                continue;
+            }
+
+            $screenKeysByOperation[$operationKey] ??= [];
+            $screenKeysByOperation[$operationKey][] = $screenKey;
+        }
+    }
+
+    $handoffs = [];
+    foreach (($screenDefinition['contracts'] ?? []) as $contract) {
+        if (!is_array($contract)) {
+            continue;
+        }
+
+        $contractKey = trim((string) ($contract['contract_key'] ?? ''));
+        foreach (($contract['custom_operations'] ?? []) as $operation) {
+            if (!is_array($operation)) {
+                continue;
+            }
+
+            $operationKey = trim((string) ($operation['operation_key'] ?? ''));
+            if ($operationKey === '') {
+                continue;
+            }
+
+            $handoffs[] = [
+                'contract_key' => $contractKey,
+                'operation_key' => $operationKey,
+                'label' => trim((string) ($operation['label'] ?? '')),
+                'category' => trim((string) ($operation['category'] ?? '')),
+                'target' => trim((string) ($operation['target'] ?? '')),
+                'side_effect_class' => trim((string) ($operation['side_effect_class'] ?? '')),
+                'availability' => trim((string) ($operation['availability'] ?? '')),
+                'unavailable_reason' => trim((string) ($operation['unavailable_reason'] ?? '')),
+                'policy_key' => trim((string) ($operation['policy_key'] ?? '')),
+                'csrf_required' => (bool) ($operation['csrf_required'] ?? true),
+                'audit_event' => trim((string) ($operation['audit_event'] ?? '')),
+                'adapter_handoff' => trim((string) ($operation['adapter_handoff'] ?? '')),
+                'route_boundary' => is_array($operation['route_boundary'] ?? null) ? $operation['route_boundary'] : [],
+                'screen_keys' => array_values(array_unique($screenKeysByOperation[$operationKey] ?? [])),
+            ];
+        }
+    }
+
+    usort(
+        $handoffs,
+        static fn (array $left, array $right): int => strcmp(
+            (string) ($left['operation_key'] ?? ''),
+            (string) ($right['operation_key'] ?? ''),
+        ),
+    );
+
+    return $handoffs;
 }
 
 /**
@@ -855,6 +947,7 @@ export type MtoolBridgeContract = {
   };
   contract_invariants: MtoolBridgeContractInvariants;
   runtime_preview: MtoolRuntimePreview;
+  custom_operation_handoffs: MtoolCustomOperationHandoff[];
   action_intent_version: 'no-code-runtime-action-intent-v0';
 };
 
@@ -872,6 +965,32 @@ export type MtoolRuntimePreview = {
   runtime_version: string;
   project_key: string;
   screens: MtoolRuntimeScreen[];
+};
+
+export type MtoolCustomOperationHandoff = {
+  contract_key: string;
+  operation_key: string;
+  label: string;
+  category: string;
+  target: string;
+  side_effect_class: string;
+  availability: string;
+  unavailable_reason: string;
+  policy_key: string;
+  csrf_required: boolean;
+  audit_event: string;
+  adapter_handoff: string;
+  route_boundary: MtoolCustomOperationRouteBoundary;
+  screen_keys: string[];
+};
+
+export type MtoolCustomOperationRouteBoundary = {
+  method: string;
+  path: string;
+  response_shape: string;
+  auth_guard: string;
+  idempotency: string;
+  failure_modes: string[];
 };
 
 export type MtoolRuntimeScreen = {
@@ -1125,6 +1244,10 @@ function app_project_output_no_code_react_bridge_consumer_notes_text(array $cont
         '## Form State Boundary',
         '',
         (string) ($consumerNotes['form_state_boundary'] ?? ''),
+        '',
+        '## Custom Operation Handoff Boundary',
+        '',
+        (string) ($consumerNotes['custom_operation_handoff_boundary'] ?? ''),
         '',
         '## Schema-Form Probe Boundary',
         '',
