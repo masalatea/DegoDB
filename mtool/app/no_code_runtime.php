@@ -42,6 +42,9 @@ function app_no_code_runtime_render_screen(
                 $screenType,
             ),
             'fields' => app_no_code_runtime_render_fields($fields),
+            'presentation_hint' => is_array($screen['presentation_hint'] ?? null) ? $screen['presentation_hint'] : [],
+            'extension_slots' => is_array($screen['extension_slots'] ?? null) ? $screen['extension_slots'] : [],
+            'custom_operations' => is_array($contract['custom_operations'] ?? null) ? $contract['custom_operations'] : [],
             'actions' => app_no_code_runtime_render_actions(
                 is_array($screen['actions'] ?? null) ? $screen['actions'] : [],
                 is_array($contract['actions'] ?? null) ? $contract['actions'] : [],
@@ -178,6 +181,7 @@ function app_no_code_runtime_render_fields(array $fields): array
             'field_key' => (string) ($field['field_key'] ?? ''),
             'label' => (string) ($field['label'] ?? $field['field_key'] ?? ''),
             'type' => (string) ($field['type'] ?? 'string'),
+            'is_key' => (bool) ($field['is_key'] ?? false),
             'required' => (bool) ($field['required'] ?? false),
             'readonly' => (bool) ($field['readonly'] ?? false),
             'visibility' => (string) ($field['visibility'] ?? 'visible'),
@@ -200,13 +204,24 @@ function app_no_code_runtime_render_actions(array $screenActions, array $contrac
         $actionKey = (string) ($screenAction['action_key'] ?? '');
         $contractAction = $contractActionsByKey[$actionKey] ?? [];
         $availability = (string) ($screenAction['availability'] ?? $contractAction['availability'] ?? 'disabled');
+        $submitRoute = (string) ($screenAction['submit_route'] ?? $contractAction['submit_route'] ?? '');
+        $submitBindingGate = is_array($screenAction['submit_binding_gate'] ?? null)
+            ? $screenAction['submit_binding_gate']
+            : (is_array($contractAction['submit_binding_gate'] ?? null) ? $contractAction['submit_binding_gate'] : []);
+        $readinessMetadata = is_array($screenAction['readiness_metadata'] ?? null)
+            ? $screenAction['readiness_metadata']
+            : (is_array($contractAction['readiness_metadata'] ?? null) ? $contractAction['readiness_metadata'] : []);
+        $guardedSubmitEnabled = app_no_code_runtime_guarded_submit_enabled($submitRoute, $submitBindingGate);
         $renderActions[] = [
             'action_key' => $actionKey,
             'label' => (string) ($contractAction['label'] ?? $actionKey),
             'operation_key' => (string) ($screenAction['operation_key'] ?? $contractAction['operation_key'] ?? ''),
             'operation_type' => (string) ($screenAction['operation_type'] ?? $contractAction['operation_type'] ?? ''),
-            'enabled' => $availability === 'enabled',
+            'enabled' => $availability === 'enabled' || $guardedSubmitEnabled,
             'availability' => $availability,
+            'submit_route' => $submitRoute,
+            'submit_binding_gate' => $submitBindingGate,
+            'readiness_metadata' => $readinessMetadata,
             'fields' => is_array($contractAction['fields'] ?? null) ? array_values($contractAction['fields']) : [],
             'failed_checks' => is_array($contractAction['policy']['failed_checks'] ?? null)
                 ? $contractAction['policy']['failed_checks']
@@ -215,6 +230,19 @@ function app_no_code_runtime_render_actions(array $screenActions, array $contrac
     }
 
     return $renderActions;
+}
+
+/**
+ * @param array<string,mixed> $submitBindingGate
+ */
+function app_no_code_runtime_guarded_submit_enabled(string $submitRoute, array $submitBindingGate): bool
+{
+    return $submitRoute !== ''
+        && ($submitBindingGate['network_submit_enabled'] ?? false) === true
+        && ($submitBindingGate['runtime_click_binding'] ?? false) === true
+        && ($submitBindingGate['mutation_enabled'] ?? true) === false
+        && (string) ($submitBindingGate['click_binding_state'] ?? '') === 'blocked_route_enabled'
+        && (string) ($submitBindingGate['submit_trigger'] ?? '') === 'guarded_click';
 }
 
 /**
@@ -448,6 +476,7 @@ function app_no_code_runtime_render_screen_html(array $render): string
     $screenTitle = (string) ($render['screen_title'] ?? app_no_code_runtime_screen_title($screenKey, $screenType));
     $screenSubtitle = (string) ($render['screen_subtitle'] ?? '');
     $fields = is_array($render['fields'] ?? null) ? $render['fields'] : [];
+    $extensionSlots = is_array($render['extension_slots'] ?? null) ? $render['extension_slots'] : [];
     $actions = is_array($render['actions'] ?? null) ? $render['actions'] : [];
     $data = is_array($render['data'] ?? null) ? $render['data'] : [];
     $emptyStateMessage = (string) ($render['empty_state_message'] ?? app_no_code_runtime_empty_state_message($screenType));
@@ -479,6 +508,7 @@ function app_no_code_runtime_render_screen_html(array $render): string
         app_no_code_runtime_render_actions_html($actions, $screenTitle, $screenKey),
         '</header>',
         app_no_code_runtime_render_screen_summary_html($screenKey, $fields, $actions),
+        app_no_code_runtime_render_extension_slots_html($screenKey, $extensionSlots),
         '<div class="no-code-action-feedback" role="status" aria-live="polite" data-state="idle">Select an enabled action to preview its intent.</div>',
         app_no_code_runtime_render_action_intent_draft_html($actions),
         '<div class="no-code-screen-body" data-screen-body="' . app_no_code_runtime_html_escape($screenKey) . '">',
@@ -486,6 +516,209 @@ function app_no_code_runtime_render_screen_html(array $render): string
         '</div>',
         '</section>',
     ]);
+}
+
+/**
+ * @param list<array<string,mixed>> $extensionSlots
+ */
+function app_no_code_runtime_render_extension_slots_html(string $screenKey, array $extensionSlots): string
+{
+    if ($extensionSlots === []) {
+        return '';
+    }
+
+    $items = [];
+    foreach ($extensionSlots as $slot) {
+        if (!is_array($slot)) {
+            continue;
+        }
+
+        $slotKey = (string) ($slot['slot_key'] ?? '');
+        $slotType = (string) ($slot['slot_type'] ?? '');
+        if ($slotKey === '' || $slotType === '') {
+            continue;
+        }
+
+        $label = (string) ($slot['label'] ?? $slotKey);
+        $renderer = (string) ($slot['renderer'] ?? 'placeholder');
+        $target = (string) ($slot['target'] ?? '');
+        $placement = (string) ($slot['placement'] ?? 'aside');
+        $metaParts = array_values(array_filter([$slotType, $target, $renderer]));
+        $slotBody = app_no_code_runtime_render_extension_slot_body_html(
+            $slotType,
+            $renderer,
+            is_array($slot['links'] ?? null) ? $slot['links'] : [],
+            is_array($slot['status_items'] ?? null) ? $slot['status_items'] : [],
+            is_array($slot['action_items'] ?? null) ? $slot['action_items'] : [],
+            $metaParts,
+        );
+        $items[] = implode("\n", [
+            '<article class="no-code-extension-slot" data-extension-slot="' . app_no_code_runtime_html_escape($slotKey) . '" data-extension-slot-type="' . app_no_code_runtime_html_escape($slotType) . '" data-extension-slot-placement="' . app_no_code_runtime_html_escape($placement) . '" data-extension-slot-renderer="' . app_no_code_runtime_html_escape($renderer) . '">',
+            '<strong>' . app_no_code_runtime_html_escape($label) . '</strong>',
+            $slotBody,
+            '</article>',
+        ]);
+    }
+
+    if ($items === []) {
+        return '';
+    }
+
+    return implode("\n", [
+        '<section class="no-code-extension-slots" data-extension-slots-for="' . app_no_code_runtime_html_escape($screenKey) . '" aria-label="Declared extension slots">',
+        implode("\n", $items),
+        '</section>',
+    ]);
+}
+
+/**
+ * @param list<array<string,mixed>> $links
+ * @param list<array<string,mixed>> $statusItems
+ * @param list<array<string,mixed>> $actionItems
+ * @param list<string> $metaParts
+ */
+function app_no_code_runtime_render_extension_slot_body_html(
+    string $slotType,
+    string $renderer,
+    array $links,
+    array $statusItems,
+    array $actionItems,
+    array $metaParts,
+): string {
+    if ($slotType === 'related_settings_panel' && $renderer === 'link_list') {
+        $items = [];
+        foreach ($links as $link) {
+            if (!is_array($link)) {
+                continue;
+            }
+
+            $label = trim((string) ($link['label'] ?? ''));
+            $href = trim((string) ($link['href'] ?? ''));
+            if ($label === '' || $href === '') {
+                continue;
+            }
+
+            $target = trim((string) ($link['target'] ?? ''));
+            $items[] = '<li><a href="' . app_no_code_runtime_html_escape($href) . '" data-extension-slot-link="' . app_no_code_runtime_html_escape($target) . '">' . app_no_code_runtime_html_escape($label) . '</a></li>';
+        }
+
+        if ($items !== []) {
+            return implode("\n", [
+                '<ul class="no-code-extension-slot-links">',
+                implode("\n", $items),
+                '</ul>',
+            ]);
+        }
+    }
+
+    if ($slotType === 'artifact_status_panel' && $renderer === 'status_card') {
+        $items = [];
+        foreach ($statusItems as $item) {
+            if (!is_array($item)) {
+                continue;
+            }
+
+            $label = trim((string) ($item['label'] ?? ''));
+            $value = trim((string) ($item['value'] ?? ''));
+            if ($label === '' || $value === '') {
+                continue;
+            }
+
+            $state = trim((string) ($item['state'] ?? 'info'));
+            $items[] = implode('', [
+                '<div class="no-code-extension-slot-status-item" data-extension-slot-status-item="' . app_no_code_runtime_html_escape($label) . '" data-extension-slot-status-state="' . app_no_code_runtime_html_escape($state) . '">',
+                '<dt>' . app_no_code_runtime_html_escape($label) . '</dt>',
+                '<dd>' . app_no_code_runtime_html_escape($value) . '</dd>',
+                '</div>',
+            ]);
+        }
+
+        if ($items !== []) {
+            return implode("\n", [
+                '<dl class="no-code-extension-slot-status-card">',
+                implode("\n", $items),
+                '</dl>',
+            ]);
+        }
+    }
+
+    if ($slotType === 'operator_actions_panel' && $renderer === 'action_panel') {
+        $items = [];
+        foreach ($actionItems as $item) {
+            if (!is_array($item)) {
+                continue;
+            }
+
+            $label = trim((string) ($item['label'] ?? ''));
+            $actionKey = trim((string) ($item['action_key'] ?? ''));
+            if ($label === '' || $actionKey === '') {
+                continue;
+            }
+
+            $intent = trim((string) ($item['intent'] ?? ''));
+            $state = trim((string) ($item['state'] ?? 'deferred'));
+            $operationKey = trim((string) ($item['operation_key'] ?? $actionKey));
+            $unavailableReason = trim((string) ($item['unavailable_reason'] ?? ''));
+            $availabilityReadModel = is_array($item['availability_read_model'] ?? null) ? $item['availability_read_model'] : [];
+            $operationAvailability = trim((string) ($availabilityReadModel['operation_availability'] ?? ''));
+            $availabilityState = trim((string) ($availabilityReadModel['availability_state'] ?? ''));
+            $preflightResult = trim((string) ($availabilityReadModel['preflight_result'] ?? ''));
+            $executionMode = trim((string) ($availabilityReadModel['execution_mode'] ?? ''));
+            $availabilityReason = trim((string) ($availabilityReadModel['availability_reason'] ?? ''));
+            $generatedButtonEnabled = (bool) ($availabilityReadModel['generated_button_enabled'] ?? false);
+            $routeBoundary = is_array($item['route_boundary'] ?? null) ? $item['route_boundary'] : [];
+            $routeMethod = trim((string) ($routeBoundary['method'] ?? ''));
+            $routePath = trim((string) ($routeBoundary['path'] ?? ''));
+            $authGuard = trim((string) ($routeBoundary['auth_guard'] ?? ''));
+            $availabilityText = '';
+            if ($availabilityState !== '' || $operationAvailability !== '' || $executionMode !== '') {
+                $availabilityParts = [];
+                if ($availabilityState !== '') {
+                    $availabilityParts[] = 'state ' . $availabilityState;
+                }
+                if ($operationAvailability !== '') {
+                    $availabilityParts[] = 'operation ' . $operationAvailability;
+                }
+                if ($executionMode !== '') {
+                    $availabilityParts[] = 'execution ' . $executionMode;
+                }
+                if ($preflightResult !== '') {
+                    $availabilityParts[] = 'preflight ' . $preflightResult;
+                }
+                $availabilityText = 'Availability preview: ' . implode('; ', $availabilityParts) . '.';
+            }
+            $routeBoundaryText = '';
+            if ($routeMethod !== '' || $routePath !== '' || $authGuard !== '') {
+                $routeParts = [];
+                if ($routeMethod !== '' || $routePath !== '') {
+                    $routeParts[] = 'route ' . trim($routeMethod . ' ' . $routePath);
+                }
+                if ($authGuard !== '') {
+                    $routeParts[] = 'auth ' . $authGuard;
+                }
+                $routeBoundaryText = 'Route boundary declared, execution still disabled: ' . implode('; ', $routeParts) . '.';
+            }
+            $items[] = implode("\n", [
+                '<div class="no-code-extension-slot-action-item" data-extension-slot-action-item="' . app_no_code_runtime_html_escape($actionKey) . '" data-extension-slot-operation="' . app_no_code_runtime_html_escape($operationKey) . '" data-extension-slot-action-state="' . app_no_code_runtime_html_escape($state) . '" data-availability-state="' . app_no_code_runtime_html_escape($availabilityState) . '" data-operation-availability="' . app_no_code_runtime_html_escape($operationAvailability) . '" data-preflight-result="' . app_no_code_runtime_html_escape($preflightResult) . '" data-execution-mode="' . app_no_code_runtime_html_escape($executionMode) . '" data-generated-button-enabled="' . ($generatedButtonEnabled ? 'true' : 'false') . '">',
+                '<button type="button" data-extension-slot-action="' . app_no_code_runtime_html_escape($actionKey) . '" data-extension-slot-operation-key="' . app_no_code_runtime_html_escape($operationKey) . '" data-availability-state="' . app_no_code_runtime_html_escape($availabilityState) . '" data-operation-availability="' . app_no_code_runtime_html_escape($operationAvailability) . '" data-preflight-result="' . app_no_code_runtime_html_escape($preflightResult) . '" data-execution-mode="' . app_no_code_runtime_html_escape($executionMode) . '" data-generated-button-enabled="' . ($generatedButtonEnabled ? 'true' : 'false') . '" disabled>' . app_no_code_runtime_html_escape($label) . '</button>',
+                '<span>' . app_no_code_runtime_html_escape($intent !== '' ? $intent : 'Operator action is declared but not executable in this generated preview.') . '</span>',
+                $availabilityText !== '' ? '<small data-extension-slot-availability="' . app_no_code_runtime_html_escape($operationKey) . '" data-availability-reason="' . app_no_code_runtime_html_escape($availabilityReason) . '">' . app_no_code_runtime_html_escape($availabilityText) . '</small>' : '',
+                $unavailableReason !== '' ? '<small data-extension-slot-unavailable-reason="' . app_no_code_runtime_html_escape($operationKey) . '">' . app_no_code_runtime_html_escape($unavailableReason) . '</small>' : '',
+                $routeBoundaryText !== '' ? '<small data-extension-slot-route-boundary="' . app_no_code_runtime_html_escape($operationKey) . '">' . app_no_code_runtime_html_escape($routeBoundaryText) . '</small>' : '',
+                '</div>',
+            ]);
+        }
+
+        if ($items !== []) {
+            return implode("\n", [
+                '<div class="no-code-extension-slot-action-panel">',
+                implode("\n", $items),
+                '</div>',
+            ]);
+        }
+    }
+
+    return '<span>' . app_no_code_runtime_html_escape(implode(' / ', $metaParts)) . '</span>';
 }
 
 /**
@@ -608,6 +841,7 @@ function app_no_code_runtime_screen_status_message(string $screenState, string $
  */
 function app_no_code_runtime_render_list_html(array $fields, array $rows, string $emptyStateMessage = 'No records to show yet.', string $caption = 'Records'): string
 {
+    $keyField = app_no_code_runtime_key_field($fields);
     $headerCells = [];
     foreach ($fields as $field) {
         $headerCells[] = '<th scope="col">' . app_no_code_runtime_html_escape((string) ($field['label'] ?? $field['field_key'] ?? '')) . '</th>';
@@ -626,7 +860,9 @@ function app_no_code_runtime_render_list_html(array $fields, array $rows, string
             $cells[] = '<td>' . app_no_code_runtime_html_escape((string) ($cell['display_value'] ?? '')) . '</td>';
         }
 
-        $bodyRows[] = '<tr>' . implode('', $cells) . '</tr>';
+        $rowKeyCell = $keyField !== '' && is_array($row[$keyField] ?? null) ? $row[$keyField] : [];
+        $rowKey = (string) ($rowKeyCell['display_value'] ?? '');
+        $bodyRows[] = '<tr' . ($rowKey !== '' ? ' data-runtime-row-key="' . app_no_code_runtime_html_escape($rowKey) . '"' : '') . '>' . implode('', $cells) . '</tr>';
     }
 
     if ($bodyRows === []) {
@@ -646,6 +882,20 @@ function app_no_code_runtime_render_list_html(array $fields, array $rows, string
         '</table>',
         '</div>',
     ]);
+}
+
+/**
+ * @param list<array<string,mixed>> $fields
+ */
+function app_no_code_runtime_key_field(array $fields): string
+{
+    foreach ($fields as $field) {
+        if ((bool) ($field['is_key'] ?? false)) {
+            return (string) ($field['field_key'] ?? '');
+        }
+    }
+
+    return '';
 }
 
 /**
@@ -742,16 +992,68 @@ function app_no_code_runtime_render_actions_html(array $actions, string $screenT
         $actionState = $enabled ? 'ready' : 'disabled';
         $actionKey = (string) ($action['action_key'] ?? '');
         $operationType = (string) ($action['operation_type'] ?? '');
+        $submitRoute = (string) ($action['submit_route'] ?? '');
+        $submitBindingGate = is_array($action['submit_binding_gate'] ?? null) ? $action['submit_binding_gate'] : [];
+        $bindingState = (string) ($submitBindingGate['binding_state'] ?? '');
+        $csrfSource = (string) ($submitBindingGate['csrf_source'] ?? '');
+        $csrfTokenField = (string) ($submitBindingGate['csrf_token_field'] ?? '');
+        $csrfSourceSelector = (string) ($submitBindingGate['csrf_source_selector'] ?? '');
+        $csrfTransport = (string) ($submitBindingGate['csrf_transport'] ?? '');
+        $clickBindingState = (string) ($submitBindingGate['click_binding_state'] ?? '');
+        $submitTrigger = (string) ($submitBindingGate['submit_trigger'] ?? '');
+        $networkSubmitEnabled = (bool) ($submitBindingGate['network_submit_enabled'] ?? false);
+        $guardedClickInventoryState = (string) ($submitBindingGate['guarded_click_inventory_state'] ?? '');
+        $enablementGateSet = (string) ($submitBindingGate['enablement_gate_set'] ?? '');
+        $payloadAssembly = (string) ($submitBindingGate['payload_assembly'] ?? '');
+        $blockedResponseHandling = (string) ($submitBindingGate['blocked_response_handling'] ?? '');
+        $failureDisplayTarget = (string) ($submitBindingGate['failure_display_target'] ?? '');
+        $failClosedResult = (string) ($submitBindingGate['fail_closed_result'] ?? '');
+        $readinessMetadata = is_array($action['readiness_metadata'] ?? null) ? $action['readiness_metadata'] : [];
+        $readinessState = (string) ($readinessMetadata['readiness_state'] ?? ($submitBindingGate['readiness_state'] ?? ''));
+        $availabilityCandidate = (bool) ($readinessMetadata['availability_candidate'] ?? ($submitBindingGate['availability_candidate'] ?? false));
+        $canSubmit = (bool) ($readinessMetadata['can_submit'] ?? ($submitBindingGate['can_submit'] ?? false));
+        $executorConfigStatus = (string) ($readinessMetadata['executor_config_status'] ?? ($submitBindingGate['executor_config_status'] ?? ''));
+        $readinessFailureReasons = array_values(array_filter(
+            array_map('strval', is_array($readinessMetadata['failure_reasons'] ?? null) ? $readinessMetadata['failure_reasons'] : []),
+            static fn (string $reason): bool => $reason !== '',
+        ));
+        $availability = (string) ($action['availability'] ?? 'disabled');
+        $policyFailedChecks = array_values(array_filter(
+            array_map('strval', is_array($action['failed_checks'] ?? null) ? $action['failed_checks'] : []),
+            static fn (string $check): bool => $check !== '',
+        ));
         $hintId = app_no_code_runtime_dom_id('no-code-action-hint-' . $screenKey . '-' . $actionKey);
         $disabledReason = $enabled ? '' : 'policy-not-enabled';
         $buttons[] = '<span class="no-code-action-control" data-action-control="' . app_no_code_runtime_html_escape($actionKey) . '">'
             . '<button type="button" data-action-key="' . app_no_code_runtime_html_escape($actionKey) . '"'
             . ' data-operation-key="' . app_no_code_runtime_html_escape((string) ($action['operation_key'] ?? '')) . '"'
             . ' data-operation-type="' . app_no_code_runtime_html_escape($operationType) . '"'
+            . ' data-action-availability="' . app_no_code_runtime_html_escape($availability) . '"'
             . ' data-action-enabled="' . ($enabled ? 'true' : 'false') . '"'
             . ' data-action-state="' . $actionState . '"'
             . ' data-action-affordance="keyboard-intent-preview"'
             . ' data-keyboard-activation="enter-space"'
+            . ($submitRoute !== '' ? ' data-action-submit-url="' . app_no_code_runtime_html_escape($submitRoute) . '"' : '')
+            . ($bindingState !== '' ? ' data-action-binding-state="' . app_no_code_runtime_html_escape($bindingState) . '"' : '')
+            . ($csrfSource !== '' ? ' data-action-csrf-source="' . app_no_code_runtime_html_escape($csrfSource) . '"' : '')
+            . ($csrfTokenField !== '' ? ' data-action-csrf-token-field="' . app_no_code_runtime_html_escape($csrfTokenField) . '"' : '')
+            . ($csrfSourceSelector !== '' ? ' data-action-csrf-source-selector="' . app_no_code_runtime_html_escape($csrfSourceSelector) . '"' : '')
+            . ($csrfTransport !== '' ? ' data-action-csrf-transport="' . app_no_code_runtime_html_escape($csrfTransport) . '"' : '')
+            . ($clickBindingState !== '' ? ' data-action-click-binding-state="' . app_no_code_runtime_html_escape($clickBindingState) . '"' : '')
+            . ($submitTrigger !== '' ? ' data-action-submit-trigger="' . app_no_code_runtime_html_escape($submitTrigger) . '"' : '')
+            . ' data-action-network-submit-enabled="' . ($networkSubmitEnabled ? 'true' : 'false') . '"'
+            . ($guardedClickInventoryState !== '' ? ' data-action-guarded-click-inventory-state="' . app_no_code_runtime_html_escape($guardedClickInventoryState) . '"' : '')
+            . ($enablementGateSet !== '' ? ' data-action-enable-gate-set="' . app_no_code_runtime_html_escape($enablementGateSet) . '"' : '')
+            . ($payloadAssembly !== '' ? ' data-action-payload-assembly="' . app_no_code_runtime_html_escape($payloadAssembly) . '"' : '')
+            . ($blockedResponseHandling !== '' ? ' data-action-blocked-response-handling="' . app_no_code_runtime_html_escape($blockedResponseHandling) . '"' : '')
+            . ($failureDisplayTarget !== '' ? ' data-action-failure-display-target="' . app_no_code_runtime_html_escape($failureDisplayTarget) . '"' : '')
+            . ($failClosedResult !== '' ? ' data-action-fail-closed-result="' . app_no_code_runtime_html_escape($failClosedResult) . '"' : '')
+            . ($policyFailedChecks !== [] ? ' data-action-policy-failed-checks="' . app_no_code_runtime_html_escape(implode(',', $policyFailedChecks)) . '"' : '')
+            . ($readinessState !== '' ? ' data-action-readiness-state="' . app_no_code_runtime_html_escape($readinessState) . '"' : '')
+            . ' data-action-availability-candidate="' . ($availabilityCandidate ? 'true' : 'false') . '"'
+            . ' data-action-can-submit="' . ($canSubmit ? 'true' : 'false') . '"'
+            . ($executorConfigStatus !== '' ? ' data-action-executor-config-status="' . app_no_code_runtime_html_escape($executorConfigStatus) . '"' : '')
+            . ($readinessFailureReasons !== [] ? ' data-action-readiness-failure-reasons="' . app_no_code_runtime_html_escape(implode(',', $readinessFailureReasons)) . '"' : '')
             . ($disabledReason !== '' ? ' data-action-disabled-reason="' . app_no_code_runtime_html_escape($disabledReason) . '"' : '')
             . ' aria-describedby="' . app_no_code_runtime_html_escape($hintId) . '"'
             . ' aria-disabled="' . ($enabled ? 'false' : 'true') . '"'
@@ -805,6 +1107,25 @@ function app_no_code_runtime_preview_css(): string
         '.no-code-screen-summary { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin: -6px 0 14px; color: #52606d; font-size: 12px; }',
         '.no-code-screen-summary span, .no-code-screen-summary code { border: 1px solid #d8dee8; border-radius: 999px; padding: 3px 8px; background: #f7f9fb; }',
         '.no-code-screen-summary code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }',
+        '.no-code-extension-slots { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 8px; margin: -4px 0 14px; }',
+        '.no-code-extension-slot { border: 1px dashed #9fb3c8; border-radius: 6px; background: #f8fafc; padding: 8px 10px; }',
+        '.no-code-extension-slot strong { display: block; color: #334e68; font-size: 13px; line-height: 1.35; }',
+        '.no-code-extension-slot span { display: block; margin-top: 3px; color: #62748a; font-size: 12px; line-height: 1.35; overflow-wrap: anywhere; }',
+        '.no-code-extension-slot-links { display: flex; flex-wrap: wrap; gap: 6px; list-style: none; margin: 7px 0 0; padding: 0; }',
+        '.no-code-extension-slot-links a { display: inline-flex; align-items: center; min-height: 28px; border: 1px solid #9fb3c8; border-radius: 6px; background: #ffffff; color: #102a43; padding: 0 9px; font-size: 12px; text-decoration: none; }',
+        '.no-code-extension-slot-links a:focus-visible { outline: 3px solid #b6d4fe; outline-offset: 2px; }',
+        '.no-code-extension-slot-status-card { display: grid; gap: 6px; margin: 7px 0 0; }',
+        '.no-code-extension-slot-status-item { display: grid; grid-template-columns: minmax(88px, .85fr) minmax(0, 1fr); gap: 6px; align-items: center; border: 1px solid #d8dee8; border-radius: 6px; background: #ffffff; padding: 6px 8px; }',
+        '.no-code-extension-slot-status-item dt { color: #62748a; font-size: 11px; line-height: 1.35; }',
+        '.no-code-extension-slot-status-item dd { margin: 0; color: #243b53; font-size: 12px; line-height: 1.35; overflow-wrap: anywhere; }',
+        '.no-code-extension-slot-status-item[data-extension-slot-status-state="ok"] { border-color: #badbcc; background: #f0f9f4; }',
+        '.no-code-extension-slot-status-item[data-extension-slot-status-state="warning"] { border-color: #f0d58c; background: #fff8e5; }',
+        '.no-code-extension-slot-status-item[data-extension-slot-status-state="blocked"] { border-color: #f1b0b7; background: #fff5f5; }',
+        '.no-code-extension-slot-action-panel { display: grid; gap: 7px; margin: 7px 0 0; }',
+        '.no-code-extension-slot-action-item { display: grid; gap: 4px; border: 1px solid #d8dee8; border-radius: 6px; background: #ffffff; padding: 7px 8px; }',
+        '.no-code-extension-slot-action-item button { justify-self: flex-start; min-height: 28px; border: 1px solid #c8d1dc; border-radius: 6px; background: #eef1f4; color: #7b8794; padding: 0 9px; font: inherit; font-size: 12px; }',
+        '.no-code-extension-slot-action-item span { margin: 0; color: #62748a; font-size: 12px; line-height: 1.35; }',
+        '.no-code-extension-slot-action-item[data-extension-slot-action-state="blocked"] { border-color: #f1b0b7; background: #fff5f5; }',
         '.no-code-actions { display: flex; flex-wrap: wrap; gap: 8px; }',
         '.no-code-action-control { display: inline-flex; flex-direction: column; gap: 4px; align-items: flex-start; max-width: 260px; }',
         '.no-code-actions button { min-height: 34px; border: 1px solid #9fb3c8; background: #eef4fb; color: #102a43; border-radius: 6px; padding: 0 12px; font: inherit; }',
@@ -816,6 +1137,7 @@ function app_no_code_runtime_preview_css(): string
         '.no-code-action-feedback[data-state="idle"] { color: #62748a; }',
         '.no-code-action-feedback[data-state="working"] { color: #334e68; }',
         '.no-code-action-feedback[data-state="success"] { color: #0f5132; }',
+        '.no-code-action-feedback[data-state="blocked"] { color: #842029; }',
         '.no-code-action-feedback[data-state="error"] { color: #842029; }',
         '.no-code-intent-draft { border: 1px solid #d8dee8; border-radius: 6px; background: #f7f9fb; padding: 10px 12px; margin: -4px 0 14px; }',
         '.no-code-intent-draft-heading { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-bottom: 4px; }',
@@ -1261,6 +1583,12 @@ function app_no_code_runtime_preview_js(): string
         if (fields[fieldIndex] && fields[fieldIndex].role === 'key' && fields[fieldIndex].field_key) {
           return String(fields[fieldIndex].field_key);
         }
+      }
+    }
+    var renderFields = Array.isArray(render && render.fields) ? render.fields : [];
+    for (var renderFieldIndex = 0; renderFieldIndex < renderFields.length; renderFieldIndex += 1) {
+      if (renderFields[renderFieldIndex] && renderFields[renderFieldIndex].is_key && renderFields[renderFieldIndex].field_key) {
+        return String(renderFields[renderFieldIndex].field_key);
       }
     }
     return '';
@@ -3235,6 +3563,198 @@ function app_no_code_runtime_preview_js(): string
     feedback.removeAttribute('data-runtime-outbox-detail-path');
   }
 
+  function isGuardedSubmitButton(button) {
+    return button
+      && button.getAttribute('data-action-submit-trigger') === 'guarded_click'
+      && button.getAttribute('data-action-network-submit-enabled') === 'true'
+      && button.getAttribute('data-action-click-binding-state') === 'blocked_route_enabled'
+      && (button.getAttribute('data-action-submit-url') || '') !== '';
+  }
+
+  function guardedSubmitCsrfToken(button, screen) {
+    var selector = button.getAttribute('data-action-csrf-source-selector') || '';
+    if (selector) {
+      try {
+        var selected = screen ? screen.querySelector(selector) : document.querySelector(selector);
+        if (selected && typeof selected.value !== 'undefined') {
+          return selected.value;
+        }
+      } catch (error) {
+        selector = '';
+      }
+    }
+    if (executionBinding && executionBinding.csrf_token) {
+      return executionBinding.csrf_token;
+    }
+    return '';
+  }
+
+  function guardedSubmitResultMessage(payload) {
+    if (!payload) {
+      return 'Generated submit did not return a usable response.';
+    }
+    if (payload.ok && payload.result === 'executed') {
+      return 'Generated submit executed.';
+    }
+    if (payload.result === 'blocked') {
+      if (payload.idempotency && payload.idempotency.status === 'duplicate') {
+        return 'Generated submit blocked: ' + (payload.failure_code || 'duplicate_request') + '. Duplicate request was not executed.';
+      }
+      return 'Generated submit blocked: ' + (payload.failure_code || 'blocked') + '. Mutation dispatch remains disabled.';
+    }
+    var recoveryReason = guardedSubmitRecoveryReason(payload);
+    if (recoveryReason !== '') {
+      var recoveryMessage = 'Generated submit requires recovery: ' + recoveryReason + '.';
+      if (payload.failure_code) {
+        recoveryMessage += ' Failure: ' + payload.failure_code + '.';
+      }
+      return recoveryMessage;
+    }
+    if (payload.failure_code) {
+      return 'Generated submit rejected: ' + payload.failure_code + '.';
+    }
+    if (payload.error) {
+      return 'Generated submit failed: ' + payload.error + '.';
+    }
+    return 'Generated submit failed.';
+  }
+
+  function guardedSubmitRecoveryReason(payload) {
+    if (!payload) {
+      return '';
+    }
+    var candidates = [
+      payload.route_execution,
+      payload.transaction_result,
+      payload.post_commit_recording
+    ];
+    for (var index = 0; index < candidates.length; index += 1) {
+      var candidate = candidates[index];
+      if (candidate && candidate.recovery_required) {
+        return candidate.recovery_reason || payload.recovery_reason || 'recovery_required';
+      }
+    }
+    if (payload.recovery_required) {
+      return payload.recovery_reason || 'recovery_required';
+    }
+    return '';
+  }
+
+  function guardedSubmitResultState(payload) {
+    if (!payload) {
+      return 'error';
+    }
+    if (payload.ok && payload.result === 'executed') {
+      return 'success';
+    }
+    if (payload.result === 'blocked') {
+      return 'blocked';
+    }
+    if (guardedSubmitRecoveryReason(payload) !== '') {
+      return 'recovery-required';
+    }
+    return 'error';
+  }
+
+  function writeGuardedSubmitResultAttributes(target, payload, state, recoveryReason) {
+    target.setAttribute('data-action-last-submit-result', payload && payload.result ? payload.result : 'invalid');
+    target.setAttribute('data-action-last-failure-code', payload && payload.failure_code ? payload.failure_code : '');
+    target.setAttribute('data-action-recovery-required', recoveryReason !== '' ? 'true' : 'false');
+    if (recoveryReason !== '') {
+      target.setAttribute('data-action-recovery-reason', recoveryReason);
+    } else {
+      target.removeAttribute('data-action-recovery-reason');
+    }
+    if (state) {
+      target.setAttribute('data-action-state', state);
+    }
+  }
+
+  function submitGuardedGeneratedAction(button) {
+    var screen = button.closest('.no-code-screen');
+    var feedback = screen ? screen.querySelector('.no-code-action-feedback') : null;
+    var submitUrl = button.getAttribute('data-action-submit-url') || '';
+    var formData = new FormData();
+    var input = collectScreenInput(button);
+
+    formData.append('operation_key', button.getAttribute('data-operation-key') || button.getAttribute('data-action-key') || '');
+    formData.append(button.getAttribute('data-action-csrf-token-field') || '_csrf_token', guardedSubmitCsrfToken(button, screen));
+    Object.keys(input).forEach(function (fieldKey) {
+      formData.append(fieldKey, input[fieldKey]);
+    });
+
+    button.disabled = true;
+    button.setAttribute('data-action-state', 'working');
+    if (feedback) {
+      feedback.textContent = 'Submitting generated action to blocked route...';
+      feedback.setAttribute('data-state', 'working');
+      feedback.removeAttribute('data-runtime-outbox-detail-path');
+    }
+
+    return fetch(submitUrl, {
+      method: 'POST',
+      body: formData,
+      credentials: 'same-origin',
+      headers: {
+        Accept: 'application/json'
+      }
+    }).then(function (response) {
+      return response.json().catch(function () {
+        return {
+          ok: false,
+          result: 'invalid',
+          failure_code: 'invalid_json_response',
+          http_status: response.status
+        };
+      });
+    }).then(function (payload) {
+      var state = guardedSubmitResultState(payload);
+      var recoveryReason = guardedSubmitRecoveryReason(payload);
+      var message = guardedSubmitResultMessage(payload);
+      var executed = !!(payload && payload.ok && payload.result === 'executed');
+      button.disabled = false;
+      writeGuardedSubmitResultAttributes(button, payload, state, recoveryReason);
+      if (feedback) {
+        feedback.textContent = message;
+        feedback.setAttribute('data-state', state);
+        writeGuardedSubmitResultAttributes(feedback, payload, '', recoveryReason);
+      }
+      window.__noCodeRuntimeDispatches.push({
+        ok: !!(payload && payload.ok),
+        executed: executed,
+        network_submit: true,
+        result: payload || null,
+        message: message
+      });
+      if (screen) {
+        writeIntentDraft(screen);
+      }
+      return payload;
+    }).catch(function () {
+      button.disabled = false;
+      button.setAttribute('data-action-state', 'error');
+      button.setAttribute('data-action-last-submit-result', 'request_failed');
+      button.setAttribute('data-action-last-failure-code', 'request_failed');
+      button.setAttribute('data-action-recovery-required', 'false');
+      button.removeAttribute('data-action-recovery-reason');
+      if (feedback) {
+        feedback.textContent = 'Generated submit request failed.';
+        feedback.setAttribute('data-state', 'error');
+        feedback.setAttribute('data-action-last-submit-result', 'request_failed');
+        feedback.setAttribute('data-action-last-failure-code', 'request_failed');
+        feedback.setAttribute('data-action-recovery-required', 'false');
+        feedback.removeAttribute('data-action-recovery-reason');
+      }
+      window.__noCodeRuntimeDispatches.push({
+        ok: false,
+        executed: false,
+        network_submit: true,
+        error: 'request_failed',
+        message: 'Generated submit request failed.'
+      });
+    });
+  }
+
   function runtimeExecutionSyncStatus(payload) {
     var status = payload
       && payload.result
@@ -3665,6 +4185,10 @@ function app_no_code_runtime_preview_js(): string
 
   document.querySelectorAll('.no-code-actions button[data-action-key]').forEach(function (button) {
     button.addEventListener('click', function () {
+      if (isGuardedSubmitButton(button)) {
+        submitGuardedGeneratedAction(button);
+        return;
+      }
       button.setAttribute('data-action-state', 'working');
       var screen = button.closest('.no-code-screen');
       var feedback = screen ? screen.querySelector('.no-code-action-feedback') : null;

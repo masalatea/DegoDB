@@ -11,6 +11,8 @@ SAMPLE_INTEGRATION_TEST="${SAMPLE_INTEGRATION_TEST:-/var/www/tests/Integration/S
 SMOKE_OUTPUT_DIR="${SMOKE_OUTPUT_DIR:-output/playwright/no-code-public-runtime}"
 RUN_ENDPOINT_SMOKE="${RUN_ENDPOINT_SMOKE:-1}"
 RUN_OUTBOX_PROCESS_SMOKE="${RUN_OUTBOX_PROCESS_SMOKE:-1}"
+RUNTIME_FILTER_DOM_ONLY="${RUNTIME_FILTER_DOM_ONLY:-0}"
+RUNTIME_ENABLED_CANDIDATE_SURFACE="${RUNTIME_ENABLED_CANDIDATE_SURFACE:-0}"
 ADMIN_HTTP_PORT="${ADMIN_HTTP_PORT:-18291}"
 LAB_HTTP_PORT="${LAB_HTTP_PORT:-18292}"
 CONFIG_DB_HOST_PORT="${CONFIG_DB_HOST_PORT:-43291}"
@@ -130,11 +132,17 @@ if (!($result["ok"] ?? false) || empty($result["items"][0]["artifact_key"])) {
 echo $result["items"][0]["artifact_key"];
 ')"
 
-public_json="$("${compose_cmd[@]}" exec -T -e "SAMPLE_PROJECT_KEY=${SAMPLE_PROJECT_KEY}" web-admin php /var/www/mtool/scripts/create_no_code_public_runtime_smoke_revision.php \
+create_revision_args=(
   "--project-key=${SAMPLE_PROJECT_KEY}" \
   "--artifact-key=${artifact_key}" \
   "--alias-key=${ALIAS_KEY}" \
-  --requested-by=public-runtime-browser-smoke)"
+  --requested-by=public-runtime-browser-smoke
+)
+if [ "$RUNTIME_FILTER_DOM_ONLY" = "1" ]; then
+  create_revision_args+=(--allow-empty-action-surface-for-dom-preflight)
+fi
+
+public_json="$("${compose_cmd[@]}" exec -T -e "SAMPLE_PROJECT_KEY=${SAMPLE_PROJECT_KEY}" web-admin php /var/www/mtool/scripts/create_no_code_public_runtime_smoke_revision.php "${create_revision_args[@]}")"
 
 artifact_path="$(printf '%s' "$public_json" | json_field artifact_url)"
 current_path="$(printf '%s' "$public_json" | json_field current_url)"
@@ -143,6 +151,33 @@ alias_path="$(printf '%s' "$public_json" | json_field alias_url)"
 assert_cache_control "$artifact_path" "public, max-age=31536000, immutable"
 assert_cache_control "$current_path" "no-store"
 assert_cache_control "$alias_path" "no-store"
+
+if [ "$RUNTIME_FILTER_DOM_ONLY" = "1" ]; then
+  node mtool/scripts/check_no_code_runtime_preview_ui_smoke.js \
+    "--profile=${SAMPLE_PROFILE}" \
+    "--url=${BASE_URL}${current_path}" \
+    --execution-binding=required \
+    --execution-url-contains=/current/execute.json \
+    --submit-probe=enabled-real-fetch \
+    --runtime-filter-dom-only \
+    "--output-dir=${SMOKE_OUTPUT_DIR}"
+
+  printf '%s\n' "$public_json"
+  exit 0
+fi
+
+if [ "$RUNTIME_ENABLED_CANDIDATE_SURFACE" = "1" ]; then
+  node mtool/scripts/check_no_code_runtime_preview_ui_smoke.js \
+    "--profile=${SAMPLE_PROFILE}" \
+    "--url=${BASE_URL}${current_path}" \
+    --execution-binding=required \
+    --execution-url-contains=/current/execute.json \
+    --runtime-enabled-candidate-surface \
+    "--output-dir=${SMOKE_OUTPUT_DIR}"
+
+  printf '%s\n' "$public_json"
+  exit 0
+fi
 
 node mtool/scripts/check_no_code_runtime_preview_ui_smoke.js \
   "--profile=${SAMPLE_PROFILE}" \

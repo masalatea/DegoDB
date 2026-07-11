@@ -299,6 +299,94 @@ if (!class_exists('MtoolGeneratedDbAccessRuntimeDb')) {
             return false;
         }
 
+        public function beginTransaction(): bool
+        {
+            $this->errno = 0;
+            $this->error = '';
+
+            if ($this->pdo instanceof PDO) {
+                try {
+                    return $this->pdo->beginTransaction();
+                } catch (Throwable $exception) {
+                    $this->errno = 1;
+                    $this->error = $exception->getMessage();
+
+                    return false;
+                }
+            }
+
+            $this->errno = 1;
+            $this->error = 'runtime DB transaction begin is not supported by this connection';
+
+            return false;
+        }
+
+        public function commit(): bool
+        {
+            $this->errno = 0;
+            $this->error = '';
+
+            if ($this->pdo instanceof PDO) {
+                try {
+                    return $this->pdo->commit();
+                } catch (Throwable $exception) {
+                    $this->errno = 1;
+                    $this->error = $exception->getMessage();
+
+                    return false;
+                }
+            }
+
+            $this->errno = 1;
+            $this->error = 'runtime DB transaction commit is not supported by this connection';
+
+            return false;
+        }
+
+        public function rollBack(): bool
+        {
+            $this->errno = 0;
+            $this->error = '';
+
+            if ($this->pdo instanceof PDO) {
+                try {
+                    return $this->pdo->rollBack();
+                } catch (Throwable $exception) {
+                    $this->errno = 1;
+                    $this->error = $exception->getMessage();
+
+                    return false;
+                }
+            }
+
+            $this->errno = 1;
+            $this->error = 'runtime DB transaction rollback is not supported by this connection';
+
+            return false;
+        }
+
+        public function inTransaction(): bool
+        {
+            $this->errno = 0;
+            $this->error = '';
+
+            if ($this->pdo instanceof PDO) {
+                try {
+                    return $this->pdo->inTransaction();
+                } catch (Throwable $exception) {
+                    $this->errno = 1;
+                    $this->error = $exception->getMessage();
+
+                    return false;
+                }
+            }
+
+            $this->errno = 1;
+            $this->error = 'runtime DB transaction state is not supported by this connection';
+
+            return false;
+        }
+
         public function real_escape_string($value): string
         {
             $stringValue = (string) $value;

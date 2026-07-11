@@ -321,6 +321,12 @@ function app_sample28_no_code_data_app_run(array $app, string $requestedBy): arr
         );
         app_sample28_no_code_data_app_assert_same(
             true,
+            is_array($bridgeContract['custom_operation_handoffs'] ?? null),
+            'react bridge custom operation handoffs',
+            $assertionErrors,
+        );
+        app_sample28_no_code_data_app_assert_same(
+            true,
             str_contains((string) (($bridgeContract['consumer_notes']['adapter_troubleshooting_notes'][1] ?? '')), 'displayRuntimeValue'),
             'react bridge adapter troubleshooting notes',
             $assertionErrors,

@@ -24,6 +24,7 @@ const APP_SAMPLE18_MINI_TASK_BOARD_DEMO_OPENAPI_PATHS = [
     '/proxyserver-TaskCard-UpdateTaskCard.php',
     '/proxyserver-TaskCard-CompleteTaskCard.php',
 ];
+const APP_SAMPLE18_MINI_TASK_BOARD_DEMO_NO_CODE_SOURCE_OUTPUT_KEY = 'NO-CODE-RUNTIME';
 
 function app_sample18_mini_task_board_demo_default_reference_root(): string
 {
@@ -176,6 +177,14 @@ function app_sample18_mini_task_board_demo_read_json_file(string $path): array
     ];
 }
 
+function app_sample18_mini_task_board_demo_golden_fixture(): array
+{
+    $path = dirname(__DIR__, 3) . '/sample/tutorials/sample18-mini-task-board-demo/golden/no-code-ui-golden.json';
+    $result = app_sample18_mini_task_board_demo_read_json_file($path);
+
+    return $result['ok'] ? $result['payload'] : [];
+}
+
 function app_sample18_mini_task_board_demo_publish_one(
     array $app,
     string $requestedBy,
@@ -287,6 +296,275 @@ function app_sample18_mini_task_board_demo_publish_one(
     ];
 }
 
+function app_sample18_mini_task_board_demo_publish_no_code_metadata(
+    array $app,
+    string $requestedBy,
+    array &$errors,
+): array {
+    $sourceOutputResult = app_fetch_project_source_output_item(
+        $app,
+        APP_SAMPLE18_MINI_TASK_BOARD_DEMO_PROJECT_KEY,
+        APP_SAMPLE18_MINI_TASK_BOARD_DEMO_NO_CODE_SOURCE_OUTPUT_KEY,
+    );
+    if (!$sourceOutputResult['ok'] || $sourceOutputResult['item'] === null) {
+        return [
+            'ok' => false,
+            'source_output_key' => APP_SAMPLE18_MINI_TASK_BOARD_DEMO_NO_CODE_SOURCE_OUTPUT_KEY,
+            'error' => $sourceOutputResult['error'] !== ''
+                ? $sourceOutputResult['error']
+                : 'no-code source output definition が見つかりません。',
+        ];
+    }
+
+    $artifactResult = app_project_output_create_from_definition(
+        $app,
+        APP_SAMPLE18_MINI_TASK_BOARD_DEMO_PROJECT_KEY,
+        $sourceOutputResult['item'],
+        $requestedBy,
+    );
+    if (!$artifactResult['ok'] || $artifactResult['artifact'] === null) {
+        return [
+            'ok' => false,
+            'source_output_key' => APP_SAMPLE18_MINI_TASK_BOARD_DEMO_NO_CODE_SOURCE_OUTPUT_KEY,
+            'error' => $artifactResult['error'],
+        ];
+    }
+
+    $publishResult = app_project_output_publish_artifact(
+        $app,
+        $artifactResult['artifact'],
+        $sourceOutputResult['item'],
+    );
+    if (!$publishResult['ok'] || $publishResult['published'] === null) {
+        return [
+            'ok' => false,
+            'source_output_key' => APP_SAMPLE18_MINI_TASK_BOARD_DEMO_NO_CODE_SOURCE_OUTPUT_KEY,
+            'error' => $publishResult['error'],
+        ];
+    }
+
+    $publishedRoot = (string) ($publishResult['published']['published_root'] ?? '');
+    $screenDefinitionJson = app_sample18_mini_task_board_demo_read_json_file($publishedRoot . '/screen-definition.json');
+    $runtimePreviewJson = app_sample18_mini_task_board_demo_read_json_file($publishedRoot . '/runtime-preview.json');
+    if (!$screenDefinitionJson['ok'] || !$runtimePreviewJson['ok']) {
+        return [
+            'ok' => false,
+            'source_output_key' => APP_SAMPLE18_MINI_TASK_BOARD_DEMO_NO_CODE_SOURCE_OUTPUT_KEY,
+            'error' => !$screenDefinitionJson['ok'] ? $screenDefinitionJson['error'] : $runtimePreviewJson['error'],
+        ];
+    }
+
+    $screenDefinition = $screenDefinitionJson['payload'];
+    $runtimePreview = $runtimePreviewJson['payload'];
+    $runtimePreviewHtml = is_file($publishedRoot . '/runtime-preview.html')
+        ? (string) file_get_contents($publishedRoot . '/runtime-preview.html')
+        : '';
+    $goldenFixture = app_sample18_mini_task_board_demo_golden_fixture();
+    $goldenRows = is_array($goldenFixture['seed_rows'] ?? null) ? $goldenFixture['seed_rows'] : [];
+    $goldenDomContract = is_array($goldenFixture['dom_contract'] ?? null) ? $goldenFixture['dom_contract'] : [];
+    $contracts = is_array($screenDefinition['contracts'] ?? null) ? $screenDefinition['contracts'] : [];
+    $contract = is_array($contracts[0] ?? null) ? $contracts[0] : [];
+    $screens = is_array($contract['screens'] ?? null) ? $contract['screens'] : [];
+    $listScreen = is_array($screens[0] ?? null) ? $screens[0] : [];
+    $fields = is_array($listScreen['fields'] ?? null) ? $listScreen['fields'] : [];
+    $customOperations = is_array($contract['custom_operations'] ?? null) ? $contract['custom_operations'] : [];
+    $customOperationKeys = array_values(array_map(
+        static fn (array $operation): string => (string) ($operation['operation_key'] ?? ''),
+        $customOperations,
+    ));
+    $contractActions = is_array($contract['actions'] ?? null) ? $contract['actions'] : [];
+    $runtimeScreens = is_array($runtimePreview['screens'] ?? null) ? $runtimePreview['screens'] : [];
+    $runtimeListScreen = [];
+    $runtimeDetailScreen = [];
+    foreach ($runtimeScreens as $screen) {
+        if (is_array($screen) && (string) ($screen['screen_key'] ?? '') === 'task_card_list') {
+            $runtimeListScreen = $screen;
+        }
+        if (is_array($screen) && (string) ($screen['screen_key'] ?? '') === 'task_card_detail') {
+            $runtimeDetailScreen = $screen;
+        }
+    }
+    $runtimeRows = is_array($runtimeListScreen['data']['rows'] ?? null) ? $runtimeListScreen['data']['rows'] : [];
+    $runtimeActionItems = [];
+    foreach (($runtimeDetailScreen['extension_slots'] ?? []) as $slot) {
+        if (is_array($slot) && (string) ($slot['slot_key'] ?? '') === 'sample18_task_card_dry_run_actions') {
+            $runtimeActionItems = is_array($slot['action_items'] ?? null) ? $slot['action_items'] : [];
+            break;
+        }
+    }
+    $runtimeActionKeys = array_values(array_map(
+        static fn (array $item): string => (string) ($item['action_key'] ?? ''),
+        $runtimeActionItems,
+    ));
+    $expectedActionKeys = is_array($goldenFixture['no_code_action_keys'] ?? null)
+        ? array_values(array_map(static fn (mixed $key): string => (string) $key, $goldenFixture['no_code_action_keys']))
+        : [];
+    $expectedManagedActionKeys = is_array($goldenFixture['no_code_managed_action_keys'] ?? null)
+        ? array_values(array_map(static fn (mixed $key): string => (string) $key, $goldenFixture['no_code_managed_action_keys']))
+        : [];
+    $managedActionKeys = array_values(array_map(
+        static fn (array $action): string => (string) ($action['action_key'] ?? ''),
+        $contractActions,
+    ));
+
+    app_sample18_mini_task_board_demo_assert_same(
+        'no-code-screen-definition-v0',
+        (string) ($screenDefinition['definition_version'] ?? ''),
+        'sample18 no-code definition_version',
+        $errors,
+    );
+    app_sample18_mini_task_board_demo_assert_same(
+        'task_card',
+        (string) ($contract['contract_key'] ?? ''),
+        'sample18 no-code contract_key',
+        $errors,
+    );
+    app_sample18_mini_task_board_demo_assert_same(
+        ['list', 'detail', 'form'],
+        array_values(array_map(static fn (array $screen): string => (string) ($screen['screen_type'] ?? ''), $screens)),
+        'sample18 no-code screen types',
+        $errors,
+    );
+    app_sample18_mini_task_board_demo_assert_same(
+        ['id', 'title', 'body', 'status', 'assigned_to', 'priority', 'due_date', 'completed_at', 'updated_at'],
+        array_values(array_map(static fn (array $field): string => (string) ($field['field_key'] ?? ''), $fields)),
+        'sample18 no-code field keys',
+        $errors,
+    );
+    app_sample18_mini_task_board_demo_assert_same(
+        $expectedActionKeys,
+        $customOperationKeys,
+        'sample18 no-code custom operation keys',
+        $errors,
+    );
+    app_sample18_mini_task_board_demo_assert_same(
+        $expectedActionKeys,
+        $runtimeActionKeys,
+        'sample18 no-code runtime dry-run action keys',
+        $errors,
+    );
+    app_sample18_mini_task_board_demo_assert_same(
+        $expectedManagedActionKeys,
+        $managedActionKeys,
+        'sample18 no-code managed action keys',
+        $errors,
+    );
+    foreach ($runtimeActionItems as $index => $actionItem) {
+        app_sample18_mini_task_board_demo_assert_same(
+            'disabled',
+            (string) ($actionItem['availability_read_model']['operation_availability'] ?? ''),
+            'sample18 no-code action ' . $index . ' operation availability',
+            $errors,
+        );
+        app_sample18_mini_task_board_demo_assert_same(
+            'unavailable',
+            (string) ($actionItem['availability_read_model']['availability_state'] ?? ''),
+            'sample18 no-code action ' . $index . ' availability state',
+            $errors,
+        );
+        app_sample18_mini_task_board_demo_assert_same(
+            false,
+            (bool) ($actionItem['availability_read_model']['generated_button_enabled'] ?? true),
+            'sample18 no-code action ' . $index . ' generated button enabled',
+            $errors,
+        );
+        app_sample18_mini_task_board_demo_assert_same(
+            'POST',
+            (string) ($actionItem['route_boundary']['method'] ?? ''),
+            'sample18 no-code action ' . $index . ' route method',
+            $errors,
+        );
+        app_sample18_mini_task_board_demo_assert_same(
+            '/samples/sample18-task-board',
+            (string) ($actionItem['route_boundary']['path'] ?? ''),
+            'sample18 no-code action ' . $index . ' route path',
+            $errors,
+        );
+        app_sample18_mini_task_board_demo_assert_same(
+            'web_lab_login',
+            (string) ($actionItem['route_boundary']['auth_guard'] ?? ''),
+            'sample18 no-code action ' . $index . ' auth guard',
+            $errors,
+        );
+    }
+    app_sample18_mini_task_board_demo_assert_same(
+        'no-code-runtime-v0',
+        (string) ($runtimePreview['runtime_version'] ?? ''),
+        'sample18 no-code runtime_version',
+        $errors,
+    );
+    app_sample18_mini_task_board_demo_assert_same(
+        3,
+        count($runtimeScreens),
+        'sample18 no-code runtime screen count',
+        $errors,
+    );
+    app_sample18_mini_task_board_demo_assert_same(
+        count($goldenRows),
+        count($runtimeRows),
+        'sample18 no-code runtime row count',
+        $errors,
+    );
+    foreach ($goldenRows as $index => $goldenRow) {
+        $runtimeRow = is_array($runtimeRows[$index] ?? null) ? $runtimeRows[$index] : [];
+        foreach (['title', 'status', 'assigned_to', 'due_date'] as $fieldKey) {
+            app_sample18_mini_task_board_demo_assert_same(
+                (string) ($goldenRow[$fieldKey] ?? ''),
+                (string) ($runtimeRow[$fieldKey]['display_value'] ?? ''),
+                'sample18 no-code runtime row ' . $index . ' ' . $fieldKey,
+                $errors,
+            );
+        }
+        app_sample18_mini_task_board_demo_assert_same(
+            true,
+            str_contains($runtimePreviewHtml, (string) ($goldenRow['title'] ?? '')),
+            'sample18 no-code runtime html title ' . $index,
+            $errors,
+        );
+    }
+    foreach (($goldenDomContract['form_fields'] ?? []) as $fieldKey) {
+        app_sample18_mini_task_board_demo_assert_same(
+            true,
+            str_contains($runtimePreviewHtml, 'name="' . (string) $fieldKey . '"'),
+            'sample18 no-code runtime html field ' . (string) $fieldKey,
+            $errors,
+        );
+    }
+    foreach ($expectedActionKeys as $actionKey) {
+        app_sample18_mini_task_board_demo_assert_same(
+            true,
+            str_contains($runtimePreviewHtml, 'data-extension-slot-action="' . $actionKey . '"'),
+            'sample18 no-code runtime html dry-run action ' . $actionKey,
+            $errors,
+        );
+        app_sample18_mini_task_board_demo_assert_same(
+            true,
+            str_contains($runtimePreviewHtml, 'data-extension-slot-route-boundary="' . $actionKey . '"'),
+            'sample18 no-code runtime html route boundary ' . $actionKey,
+            $errors,
+        );
+    }
+
+    return [
+        'ok' => true,
+        'source_output_key' => APP_SAMPLE18_MINI_TASK_BOARD_DEMO_NO_CODE_SOURCE_OUTPUT_KEY,
+        'artifact_key' => $artifactResult['artifact']['artifact_key'],
+        'published_root' => $publishedRoot,
+        'definition_version' => (string) ($screenDefinition['definition_version'] ?? ''),
+        'runtime_version' => (string) ($runtimePreview['runtime_version'] ?? ''),
+        'contract_key' => (string) ($contract['contract_key'] ?? ''),
+        'screen_types' => array_values(array_map(static fn (array $screen): string => (string) ($screen['screen_type'] ?? ''), $screens)),
+        'field_keys' => array_values(array_map(static fn (array $field): string => (string) ($field['field_key'] ?? ''), $fields)),
+        'custom_operation_keys' => $customOperationKeys,
+        'runtime_action_keys' => $runtimeActionKeys,
+        'managed_action_keys' => $managedActionKeys,
+        'runtime_screen_count' => count($runtimeScreens),
+        'runtime_row_count' => count($runtimeRows),
+        'golden_row_count' => count($goldenRows),
+        'error' => '',
+    ];
+}
+
 function app_sample18_mini_task_board_demo_run(array $app, string $requestedBy, string $referenceRoot): array
 {
     $steps = [
@@ -295,6 +573,7 @@ function app_sample18_mini_task_board_demo_run(array $app, string $requestedBy, 
         'data_class_sync' => null,
         'data_class_preview_after_sync' => null,
         'outputs' => [],
+        'no_code_metadata' => null,
     ];
     $errors = [];
 
@@ -404,6 +683,21 @@ function app_sample18_mini_task_board_demo_run(array $app, string $requestedBy, 
                 'error' => $outputResult['error'],
             ];
         }
+    }
+
+    $noCodeResult = app_sample18_mini_task_board_demo_publish_no_code_metadata(
+        $app,
+        $requestedBy,
+        $errors,
+    );
+    $steps['no_code_metadata'] = $noCodeResult;
+    if (!$noCodeResult['ok']) {
+        return [
+            'ok' => false,
+            'steps' => $steps,
+            'assertion_errors' => $errors,
+            'error' => $noCodeResult['error'],
+        ];
     }
 
     return [

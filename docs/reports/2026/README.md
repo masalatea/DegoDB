@@ -11,6 +11,568 @@
 
 ## Index
 
+- `2026-0711-unpushed-commit-stack-inventory.md`
+  - 未push 188 commits の棚卸し。全 commit 一覧、分類、整理判断を記録し、広範 rewrite / squash は行わず意味単位の stack として保持する方針を確認。Status: `CHECKPOINT_DONE`。
+- `2026-0711-post-readiness-commit-stack-checkpoint.md`
+  - #710 post readiness commit-stack checkpoint。#704-#709 の read-only readiness lane commit stack を確認し、squash/amend せず意味単位のまま保持、#711 transaction complete gate を次 active に昇格。Status: `DONE`。
+- `2026-0711-post-readiness-metadata-lane-closure.md`
+  - #709 post readiness metadata lane closure。#703-#708 の read-only readiness metadata lane を close し、overlay / real execution へ飛ばず #710 commit-stack checkpoint を次 active に昇格。Status: `DONE`。
+- `2026-0711-readiness-browser-smoke-first-slice.md`
+  - #708 readiness browser smoke first slice。Sample18 enabled-candidate browser smoke に desktop/mobile の read-only readiness marker probe を追加し、temporary enablement 前の candidate_ready / can_submit=false / executor_config_status=disabled を確認。Status: `FIRST_SLICE_DONE`。
+- `2026-0711-readiness-fast-contract-coverage.md`
+  - #707 readiness fast contract coverage。browser なしの runtime HTML render assertion で route-compatible missing-runtime failure と non-ready operation の readiness marker を固定。Status: `FIRST_SLICE_DONE`。
+- `2026-0711-readiness-runtime-preview-carry-through.md`
+  - #706 readiness runtime preview carry-through。screen-definition action の readiness metadata を runtime-preview JSON と HTML button marker に通し、candidate_ready / availability_candidate / can_submit=false / executor_config_status を focused assertion で固定。Status: `FIRST_SLICE_DONE`。
+- `2026-0711-readiness-metadata-screen-definition-carry-through.md`
+  - #705 readiness metadata screen-definition carry-through。Sample18 generated-submit readiness snapshot を screen-definition action metadata と submit binding metadata に載せ、default disabled / candidate_ready / can_submit=false を focused assertion で固定。Status: `FIRST_SLICE_DONE`。
+- `2026-0711-sample18-readiness-snapshot-helper-first-slice.md`
+  - #704 sample18 readiness snapshot helper first slice。既存 executor config と generated-submit route contract から副作用なしで readiness snapshot を組み立て、default disabled / injected ready / missing runtime failed の focused assertion を追加。Status: `FIRST_SLICE_DONE`。
+- `2026-0711-no-code-readiness-status.md`
+  - 本日時点の No Code readiness status。AI が UI を直接生成する前に、Mtool が操作可否・理由・route boundary を説明できる JSON metadata を作り、それを Sample18 の helper / contract test / runtime metadata carry-through へ進める現在地を整理。Status: `CURRENT_STATUS`。
+- `2026-0710-sample18-readiness-metadata-shape-contract.md`
+  - #703 sample18 readiness metadata shape contract。read-only readiness snapshot の version / executor_config fields / action_readiness fields / route-compatible operations / non-ready reopen/delete / missing-runtime failure shape を fixture・docs・PHPUnit assertion で固定。Status: `DONE`。
+- `2026-0710-read-only-readiness-lane-detailed-replan.md`
+  - #702 read-only readiness lane detailed replan。sample18 route/config readiness を shape / helper / screen-definition / runtime preview / fast contract / browser smoke / lane closure に分解し、real guarded execution smoke は parked。次は #703 readiness metadata shape contract。Status: `DONE`。
+- `2026-0710-sample18-route-config-readiness-browser-preflight.md`
+  - #701 sample18 route/config readiness browser preflight。real guarded execution smoke の前に executor_config / enablement source / dependency source / action mapping / failure reasons を read-only に browser-visible 化する境界を定義し、#702 を昇格。Status: `DONE`。
+- `2026-0710-post-enabled-candidate-browser-smoke-lane-closure.md`
+  - #700 post enabled-candidate browser smoke lane closure。#699 の UI-only enabled-candidate browser smoke を受け入れ、real guarded execution smoke の前に route/config readiness browser preflight (#701) を昇格。Status: `DONE`。
+- `2026-0710-sample18-enabled-candidate-browser-smoke-first-slice.md`
+  - #699 sample18 enabled-candidate browser smoke first slice。別 target で browser-side enabled-candidate overlay と fetch stub を使い、create/update/complete の availability markers と blocked generated-submit feedback を desktop/mobile で検査。Status: `FIRST_SLICE_DONE`。
+- `2026-0710-sample18-enabled-candidate-browser-smoke-preflight.md`
+  - #698 sample18 enabled-candidate browser smoke preflight。enabled-candidate browser smoke を UI-only/stubbed outer check として定義し、real mutation と reopen/delete availability を避けた first smoke slice (#699) を昇格。Status: `DONE`。
+- `2026-0710-post-availability-state-fast-contract-lane-closure.md`
+  - #697 post availability-state fast contract lane closure。#696 の availability-state fast contract を受け入れ、generated default-state 変更前に enabled-candidate browser smoke preflight (#698) を昇格。Status: `DONE`。
+- `2026-0710-sample18-generated-availability-state-fast-contract-first-slice.md`
+  - #696 sample18 generated availability-state fast contract first slice。runtime action button に availability / policy failed checks markers を追加し、default disabled と create/update/complete enabled-candidate overlay を fast assertion で固定。Status: `FIRST_SLICE_DONE`。
+- `2026-0710-sample18-generated-availability-expansion-preflight.md`
+  - #695 sample18 generated availability expansion preflight。create/update/complete だけを初回 availability candidate とし、generated defaults を変える前に disabled-default / enabled-candidate fast contract (#696) を昇格。Status: `DONE`。
+- `2026-0710-post-generated-runtime-browser-smoke-lane-closure.md`
+  - #694 post generated runtime browser smoke lane closure。#693 の narrow browser smoke を受け入れ、次は generated defaults を変える前の sample18 generated availability expansion preflight (#695) を昇格。Status: `DONE`。
+- `2026-0710-sample18-generated-runtime-browser-smoke-first-slice.md`
+  - #693 sample18 generated runtime browser smoke first slice。browser smoke で generated runtime preview の row key markers、guarded submit attributes、disabled/default execution state、blocked generated-submit feedback を検査。mutation / broad availability は未有効化。Status: `FIRST_SLICE_DONE`。
+- `2026-0710-post-selected-row-key-handoff-lane-closure.md`
+  - #692 post selected row/key handoff lane closure。#691 の selected-row/key fast contract を受け入れ、次は narrow sample18 generated runtime browser smoke (#693) を昇格。Status: `DONE`。
+- `2026-0710-sample18-selected-row-key-handoff-fast-contract-first-slice.md`
+  - #691 sample18 selected row/key handoff fast contract first slice。generated render fields に `is_key` を保持し、runtime preview HTML の row key marker、update/complete key payload、missing-key fail-closed、selected-key refresh source を fast assertion で固定。Status: `FIRST_SLICE_DONE`。
+- `2026-0710-post-guarded-submit-payload-handoff-lane-closure.md`
+  - #690 post guarded submit payload handoff lane closure。#689 の fast payload handoff contract を受け入れ、browser smoke / availability expansion の前に selected-row/key handoff fast contract (#691) を昇格。Status: `DONE`。
+- `2026-0710-sample18-guarded-submit-payload-handoff-fast-contract-first-slice.md`
+  - #689 sample18 guarded submit payload handoff fast contract first slice。generated action intent の key/input 分解、route normalizer への handoff、required input fail-closed、generated runtime HTML の guarded submit POST assembly source を fast non-browser assertion で固定。Status: `FIRST_SLICE_DONE`。
+- `2026-0710-post-action-input-route-compatibility-contract-lane-closure.md`
+  - #688 post action/input route compatibility contract lane closure。#687 の fast compatibility assertions を受け入れ、重い browser smoke の前に guarded-submit payload handoff fast contract (#689) を昇格。Status: `DONE`。
+- `2026-0710-sample18-generated-action-input-route-compatibility-contract-first-slice.md`
+  - #687 sample18 generated action/input route compatibility contract first slice。generated managed-action metadata と generated DOM attributes を generated-submit route の create/update/complete contract に照合する fast assertions を追加し、reopen/delete は disabled candidate として固定。Status: `FIRST_SLICE_DONE`。
+- `2026-0710-sample18-generated-action-input-gap-inventory.md`
+  - #686 sample18 generated action/input gap inventory。generated managed-action metadata/input draft と executable generated-submit route の gap を棚卸しし、create/update/complete の route compatibility contract assertions (#687) を次に昇格。Status: `DONE`。
+- `2026-0710-post-route-response-contract-lane-closure.md`
+  - #685 post route response contract lane closure。#684 の response contract assertions を受け入れ、次は sample18 generated action/input gap inventory (#686) を昇格。Status: `DONE`。
+- `2026-0710-sample18-generated-submit-route-response-contract-first-slice.md`
+  - #684 sample18 generated-submit route response contract first slice。`docs/no-code-ui-testing.md` に compact response contract を追加し、Sample18 route outcome tests に status/result/failure/recovery assertion を追加。Status: `FIRST_SLICE_DONE`。
+- `2026-0710-sample18-generated-submit-route-response-status-refinement-preflight.md`
+  - #683 sample18 generated-submit route response/status refinement preflight。generated-submit route の HTTP status、`result`、`ok`、`failure_code`、recovery metadata の outcome matrix を定義。次は response contract first slice (#684)。Status: `DONE`。
+- `2026-0710-post-generated-submit-availability-documentation-lane-closure.md`
+  - #682 post generated-submit availability documentation lane closure。#681 の availability/config documentation を受け入れ、次は generated-submit route response/status refinement preflight (#683) を昇格。Status: `DONE`。
+- `2026-0710-sample18-generated-submit-availability-documentation-first-slice.md`
+  - #681 sample18 generated-submit availability documentation first slice。`docs/no-code-ui-testing.md` と sample18 README に disabled default、app/env flags、executor_config metadata、injected callables、default runtime reference fail-closed behavior を文書化。Status: `FIRST_SLICE_DONE`。
+- `2026-0710-post-route-executor-config-metadata-coverage-lane-closure.md`
+  - #680 post route executor config metadata coverage lane closure。#679 の route-visible `executor_config` coverage を受け入れ、次は sample18 generated-submit availability documentation (#681) を昇格。Status: `DONE`。
+- `2026-0710-sample18-route-executor-config-metadata-coverage.md`
+  - #679 sample18 route executor config metadata coverage。generated-submit route response の `executor_config` metadata を default disabled、env/app enablement、injected-callable execution、missing runtime failure で coverage。Status: `FIRST_SLICE_DONE`。
+- `2026-0710-post-production-runtime-config-resolver-lane-closure.md`
+  - #678 post production runtime config resolver lane closure。#677 の config resolver を受け入れ、次は route response の `executor_config` metadata coverage (#679) を昇格。Status: `DONE`。
+- `2026-0710-sample18-production-runtime-config-resolver-first-slice.md`
+  - #677 sample18 production runtime config resolver first slice。generated-submit executor config resolver を追加し、app/env flag precedence、default runtime reference files、injected callable dependency source、fail-closed metadata を focused coverage。Status: `FIRST_SLICE_DONE`。
+- `2026-0710-sample18-production-runtime-config-hardening-preflight.md`
+  - #676 sample18 production runtime config hardening preflight。generated-submit executor enablement の app/env flag、default runtime reference path、injected callables、fail-closed metadata の production-safe config boundary を定義。次は resolver/coverage first slice (#677)。Status: `DONE`。
+- `2026-0710-post-generated-submit-runtime-ui-rendering-lane-closure.md`
+  - #675 post generated-submit runtime UI rendering lane closure。#674 の runtime UI result rendering を受け入れ、次は production-safe executor enablement/config boundary の preflight (#676) を昇格。Status: `DONE`。
+- `2026-0710-sample18-generated-submit-runtime-ui-result-rendering-first-slice.md`
+  - #674 sample18 generated-submit runtime UI result rendering first slice。generated-submit route response を no-code runtime UI の `success` / `blocked` / `recovery-required` / `error` state に写し、recovery data attributes と dispatch `ok/executed` contract を固定。Status: `FIRST_SLICE_DONE`。
+- `2026-0710-sample18-generated-submit-ui-success-error-rendering-preflight.md`
+  - #673 sample18 generated-submit UI success/error rendering preflight。route execution/recovery response を no-code runtime UI の success / blocked / error / recovery-required state に写す表示契約を定義。次は first runtime UI slice (#674)。Status: `DONE`。
+- `2026-0710-post-commit-unknown-recovery-coverage-lane-closure.md`
+  - #672 post commit-unknown recovery coverage lane closure。#671 の commit-unknown route recovery coverage を受け入れ、次は generated-submit UI success/error rendering preflight (#673) を昇格。Status: `DONE`。
+- `2026-0710-sample18-route-commit-unknown-recovery-coverage.md`
+  - #671 sample18 route commit-unknown recovery coverage。explicit executor route で transaction commit failure / exception が `commit_status_unknown` recovery metadata を返し post-commit recording を skip することを coverage。Status: `FIRST_SLICE_DONE`。
+- `2026-0710-post-real-runtime-default-binding-lane-closure.md`
+  - #670 post real runtime default binding lane closure。#669 の default runtime binding を受け入れ、UI rendering の前に commit-unknown recovery coverage (#671) を昇格。Status: `DONE`。
+- `2026-0710-sample18-real-runtime-default-binding-first-slice.md`
+  - #669 sample18 real runtime default binding first slice。route executor dependency resolver が injected callables 優先、未注入時は sample18 reference runtime / TaskCardDBAccess から default transaction callables を構成できるようにした。Status: `FIRST_SLICE_DONE`。
+- `2026-0710-sample18-real-runtime-default-binding-preflight.md`
+  - #668 sample18 real runtime default binding preflight。generated-submit route が test-injected transaction callables なしで sample18 reference runtime DBAccess classes から default binding を構成する境界を定義。次は first slice (#669)。Status: `DONE`。
+- `2026-0710-post-route-execution-failure-recovery-coverage-lane-closure.md`
+  - #667 post route execution failure/recovery coverage lane closure。#666 の route-level failure/recovery coverage を受け入れ、次は test-only injected callables から real sample runtime default binding preflight (#668) へ進む。Status: `DONE`。
+- `2026-0710-sample18-route-execution-failure-recovery-coverage-first-slice.md`
+  - #666 sample18 route execution failure/recovery coverage first slice。explicit executor flag route で missing transaction callable、DBAccess failure rollback、post-commit idempotency failure recovery metadata を coverage。Status: `FIRST_SLICE_DONE`。
+- `2026-0710-post-route-feature-flag-execution-first-slice-lane-closure.md`
+  - #665 post route feature-flag execution first slice lane closure。#664 の explicit executor flag route execution success path を受け入れ、次は route-level failure/recovery coverage (#666) を昇格。Status: `DONE`。
+- `2026-0710-sample18-generated-submit-route-feature-flag-execution-first-slice.md`
+  - #664 sample18 generated-submit route feature-flag execution first slice。route に実行専用 `sample18_generated_submit_executor_enabled` flag と injected transaction callables を追加し、flag on fresh request で DBAccess transaction / execution audit / idempotency outcome まで成功、duplicate replay は非実行を coverage。Status: `FIRST_SLICE_DONE`。
+- `2026-0710-sample18-generated-submit-route-feature-flag-integration-preflight.md`
+  - #663 sample18 generated-submit route feature-flag integration preflight。route が explicit executor flag on の時だけ transaction binding / real DBAccess invocation / DB-backed post-commit recording を実行する境界を定義。disabled default と all-success-or-failure response を維持し、次は first route-level slice (#664)。Status: `DONE`。
+- `2026-0710-post-db-backed-post-commit-recording-coverage-lane-closure.md`
+  - #662 post DB-backed post-commit recording coverage lane closure。#661 の route-unwired DB-backed post-commit recording coverage を受け入れ、次は generated-submit route feature-flag integration preflight (#663) を昇格。generated-submit route execution は未有効化。Status: `DONE`。
+- `2026-0710-sample18-post-commit-recording-db-backed-coverage-first-slice.md`
+  - #661 sample18 post-commit recording DB-backed coverage first slice。post-commit recording adapter を real execution audit append / idempotency outcome update repository に route-unwired 接続し、persisted success と idempotency failure recovery metadata を coverage。generated-submit route execution は未有効化。Status: `FIRST_SLICE_DONE`。
+- `2026-0710-sample18-post-commit-recording-db-backed-coverage-preflight.md`
+  - #660 sample18 post-commit recording DB-backed coverage preflight。committed DBAccess execution 後の post-commit recording adapter を real execution audit append / idempotency outcome update repository に接続して route-unwired に検証する境界を定義。次は first slice (#661)。Status: `DONE`。
+- `2026-0710-post-db-backed-transaction-binding-coverage-lane-closure.md`
+  - #659 post DB-backed transaction binding coverage lane closure。#658 の DB-backed route-unwired transaction binding coverage を受け入れ、route wiring より前に post-commit recording DB-backed coverage preflight (#660) を昇格。generated-submit route execution は未有効化。Status: `DONE`。
+- `2026-0710-sample18-db-backed-transaction-binding-coverage-first-slice.md`
+  - #658 sample18 DB-backed transaction binding coverage first slice。isolated SQLite/PDO で generated `TaskCardDBAccess::InsertTaskCard` の commit persistence と DBAccess-compatible failure rollback を route-unwired に coverage。generated-submit route execution は未有効化。Status: `FIRST_SLICE_DONE`。
+- `2026-0710-sample18-db-backed-transaction-binding-coverage-preflight.md`
+  - #657 sample18 DB-backed transaction binding coverage preflight。generated runtime transaction support、transaction binding callables、transaction adapter、generated `TaskCardDBAccess` を SQLite/PDO で route-unwired に検証する境界を定義。次は first coverage slice (#658)。Status: `DONE`。
+- `2026-0710-post-generated-runtime-transaction-support-lane-closure.md`
+  - #656 post generated runtime transaction support lane closure。#655 の PDO-first generated runtime transaction support を受け入れ、route wiring より前に DB-backed transaction binding coverage preflight (#657) を昇格。generated-submit route execution は未有効化。Status: `DONE`。
+- `2026-0710-generated-runtime-transaction-support-first-slice.md`
+  - #655 generated runtime transaction support first slice。generated DBAccess runtime と sample18 reference output に PDO-first begin/commit/rollBack/inTransaction を追加し、SQLite/PDO transaction behavior と digest 同期を coverage。generated-submit route execution は未有効化。Status: `FIRST_SLICE_DONE`。
+- `2026-0710-sample18-generated-runtime-transaction-support-preflight.md`
+  - #654 sample18 generated runtime transaction support preflight。generated DBAccess runtime (`$mtooldb`) に PDO-first begin/commit/rollBack/inTransaction を追加する境界を定義し、次は generator source と sample18 reference output の first slice (#655)。Status: `DONE`。
+- `2026-0710-sample18-post-transaction-binding-helper-lane-closure.md`
+  - #653 sample18 post-transaction binding helper lane closure。#652 の route-unwired transaction binding helper を受け入れ、route wiring より前に generated runtime transaction support preflight (#654) を昇格。generated-submit route execution は未有効化。Status: `DONE`。
+- `2026-0710-sample18-transaction-binding-helper-first-slice.md`
+  - #652 sample18 transaction binding helper first slice。transaction-capable runtime object を begin / commit / rollback / DBAccess callable に変換する route-unwired helper を追加し、成功 commit、DBAccess failure rollback、wrong target fail-closed を coverage。generated-submit route execution は未有効化。Status: `FIRST_SLICE_DONE`。
+- `2026-0710-sample18-real-transaction-binding-preflight.md`
+  - #651 sample18 real transaction binding preflight。generated DBAccess runtime の `$mtooldb` boundary、`task_card` schema target、transaction begin/commit/rollback binding、DBAccess instance creation、failure policy を route wiring 前に定義。次は route-unwired transaction binding helper (#652)。Status: `DONE`。
+- `2026-0710-sample18-post-real-dbaccess-invocation-adapter-lane-closure.md`
+  - #650 sample18 post-real DBAccess invocation adapter lane closure。#649 の route-unwired real-compatible DBAccess invocation adapter を受け入れ、route wiring より前に real transaction binding preflight (#651) を昇格。generated-submit route execution は未有効化。Status: `DONE`。
+- `2026-0710-sample18-real-dbaccess-invocation-adapter-first-slice.md`
+  - #649 sample18 real DBAccess invocation adapter first slice。route-unwired helper で `TaskCardData` 互換 object construction、real-compatible DBAccess method invocation、result normalization、transaction context 必須化を追加。generated-submit route execution は未有効化。Status: `FIRST_SLICE_DONE`。
+- `2026-0710-sample18-real-dbaccess-invocation-adapter-preflight.md`
+  - #648 sample18 real DBAccess invocation adapter preflight。real `TaskCardDBAccess` invocation adapter の boundary、`TaskCardData` construction、transaction dependency、result normalization を route wiring 前に定義。次は route-unwired real invocation adapter first slice (#649)。Status: `DONE`。
+- `2026-0710-sample18-post-execution-plan-helper-lane-closure.md`
+  - #647 sample18 post-execution plan helper lane closure。#646 の route-unwired execution plan helper を受け入れ、route wiring より前に real DBAccess invocation adapter preflight (#648) を昇格。route execution は未有効化。Status: `DONE`。
+- `2026-0710-sample18-executable-route-execution-plan-helper-first-slice.md`
+  - #646 sample18 executable route execution plan helper first slice。guard / coordinator / transaction adapter / post-commit recording を fake callable で compose する route-unwired helper を追加。all-success-or-failure response metadata を固定し、real route execution は未有効化。Status: `FIRST_SLICE_DONE`。
+- `2026-0710-sample18-executable-generated-submit-route-integration-preflight.md`
+  - #645 sample18 executable generated-submit route integration preflight。guard / transaction adapter / DBAccess invocation / post-commit recording / feature flag / response shape の composition を real execution 前に定義。次は route-unwired execution plan helper (#646)。Status: `DONE`。
+- `2026-0710-sample18-post-commit-recording-helper-lane-closure.md`
+  - #644 sample18 post-commit recording helper lane closure。#643 の route-unwired recording helper を受け入れ、次は real execution 有効化前の executable generated-submit route integration preflight (#645) を昇格。route execution は未有効化。Status: `DONE`。
+- `2026-0710-sample18-post-commit-execution-recording-helper-first-slice.md`
+  - #643 sample18 post-commit execution recording helper first slice。committed transaction metadata と fake recording callable を受け取り、execution audit / idempotency outcome update の両方が成功した場合だけ success を返す route-unwired helper を追加。real recording / route execution は未有効化。Status: `FIRST_SLICE_DONE`。
+- `2026-0710-sample18-post-commit-execution-recording-preflight.md`
+  - #642 sample18 post-commit execution recording preflight。app DB commit 後の execution audit append と idempotency execution outcome update を all-success の required step として定義。recording failure は user-facing failure + recovery metadata。次は route-unwired recording helper (#643)。Status: `DONE`。
+- `2026-0710-sample18-post-transaction-adapter-helper-lane-closure.md`
+  - #641 sample18 post-transaction adapter helper lane closure。#640 の route-unwired transaction adapter helper を受け入れ、route execution より前に post-commit execution recording preflight (#642) を昇格。real DBAccess mutation / route execution / execution recording は未有効化。Status: `DONE`。
+- `2026-0710-sample18-transaction-adapter-helper-first-slice.md`
+  - #640 sample18 transaction adapter helper first slice。fake transaction / fake DBAccess callable で route-unwired transaction adapter helper を追加し、begin / DBAccess / rollback / commit の all-success-or-failure metadata を固定。real DBAccess mutation / route execution / execution recording は未有効化。Status: `FIRST_SLICE_DONE`。
+- `2026-0710-sample18-transaction-adapter-preflight.md`
+  - #638 sample18 transaction adapter preflight。route-unwired transaction adapter 境界を all-success-or-failure UI/API contract で定義。required step 全成功時のみ success、post-commit recording failure も failure。次は cross-route policy review (#639) と transaction adapter helper first slice (#640)。Status: `DONE`。
+- `2026-0710-cross-route-all-success-or-failure-policy-review-plan.md`
+  - #639 cross-route all-success-or-failure execution policy review。`docs/execution-success-policy.md` を追加し、sample18 に限らず mutation / execution route の UI/API success は required step 全成功時のみ、cross-store gap は内部 failure / recovery metadata とする共通方針へ昇格。Status: `DONE`。
+- `2026-0710-sample18-post-dbaccess-call-adapter-helper-lane-closure.md`
+  - #637 sample18 post-DBAccess call adapter helper lane closure。#636 の route-unwired adapter helper を受け入れ、次は route execution より前に transaction adapter preflight (#638) を昇格。real DBAccess mutation / transaction / route execution は未有効化。Status: `DONE`。
+- `2026-0710-sample18-dbaccess-call-adapter-helper-first-slice.md`
+  - #636 sample18 DBAccess call adapter helper first slice。route-unwired adapter helper を追加し、allowed metadata と injected fake callable のみで executed/failed/skipped metadata を分類。real DBAccess mutation / transaction / route execution は未有効化。Status: `FIRST_SLICE_DONE`。
+- `2026-0710-sample18-dbaccess-call-adapter-preflight.md`
+  - #635 sample18 DBAccess call adapter preflight。guarded executor 用 DBAccess call adapter の入力 metadata、TaskCard operation mapping、fail-closed rules、fake callable test matrix を定義し、次は route-unwired adapter helper first slice (#636) を昇格。real DBAccess mutation / transaction / route execution は未有効化。Status: `DONE`。
+- `2026-0710-sample18-post-executor-coordination-plan-route-metadata-lane-closure.md`
+  - #634 sample18 post-executor coordination plan route metadata lane closure。#633 の route-visible `executor_coordination_plan` metadata を受け入れ、次は execution 有効化前の DBAccess call adapter preflight (#635) を昇格。DBAccess mutation / transaction / route executor は未有効化。Status: `DONE`。
+- `2026-0710-sample18-executor-coordination-plan-route-metadata-integration.md`
+  - #633 sample18 executor coordination plan route metadata integration。valid generated-submit route response に non-mutating `executor_coordination_plan` metadata を接続し、disabled/duplicate/failed/planned route outcomes と invalid-route skip boundary を固定。DBAccess mutation / transaction / post-execution writes は未有効化。Status: `FIRST_SLICE_DONE`。
+- `2026-0710-sample18-post-guarded-executor-coordinator-plan-helper-lane-closure.md`
+  - #632 sample18 post-guarded executor coordinator plan helper lane closure。#631 の non-mutating `executor_coordination_plan` helper を受け入れ、次は valid generated-submit route response への coordination plan metadata integration (#633) を昇格。DBAccess mutation / transaction / post-execution write は未有効化。Status: `DONE`。
+- `2026-0710-sample18-guarded-executor-coordinator-plan-helper-first-slice.md`
+  - #631 sample18 guarded executor coordinator plan helper first slice。execution guard / app DB transaction / DBAccess call / execution audit append / idempotency outcome update の ordering を non-mutating metadata として計画化。DBAccess mutation / transaction / post-execution write / route exposure は未有効化。Status: `FIRST_SLICE_DONE`。
+- `2026-0710-sample18-guarded-executor-coordination-preflight.md`
+  - #630 sample18 guarded executor coordination preflight。execution guard / DBAccess call adapter / app DB transaction / execution audit append / idempotency outcome update の coordination と cross-store 非原子性を定義し、次は non-mutating coordinator plan helper (#631) を昇格。DBAccess mutation / transaction / route executor は未有効化。Status: `DONE`。
+- `2026-0710-sample18-post-execution-audit-append-persistence-lane-closure.md`
+  - #629 sample18 post-execution audit append persistence lane closure。#628 の execution audit append helper を受け入れ、次は DBAccess execution 前の guarded executor coordination preflight (#630) を昇格。DBAccess mutation / transaction / idempotency update / route executor は未有効化。Status: `DONE`。
+- `2026-0710-sample18-execution-audit-append-persistence-first-slice.md`
+  - #628 sample18 execution audit append persistence first slice。allowed execution guard metadata から execution audit event を append する helper を追加し、request audit linkage / dedupe / DBAccess metadata / transaction status / result details を保存。DBAccess mutation / transaction / idempotency update / route executor は未有効化。Status: `FIRST_SLICE_DONE`。
+- `2026-0710-sample18-post-idempotency-execution-outcome-persistence-lane-closure.md`
+  - #627 sample18 post-idempotency execution outcome persistence lane closure。#626 の idempotency execution outcome update API を受け入れ、次は DBAccess executor 前に execution audit append persistence (#628) を昇格。DBAccess mutation / transaction / route executor は未有効化。Status: `DONE`。
+- `2026-0710-sample18-idempotency-execution-outcome-persistence-first-slice.md`
+  - #626 sample18 idempotency execution outcome persistence first slice。既存 generated-submit idempotency record に execution outcome を repository-level で保存する update API を追加し、metadata merge / result update / duplicate replay fail-closed を coverage。DBAccess mutation / transaction / execution audit write / route executor は未有効化。Status: `FIRST_SLICE_DONE`。
+- `2026-0710-sample18-guarded-executor-implementation-preflight.md`
+  - #625 sample18 guarded executor implementation preflight。route-visible `execution_guard` 後の最初の mutating executor 境界を定義し、DBAccess execution 前に idempotency execution outcome persistence (#626) を昇格。DBAccess mutation / transaction / route executor は未有効化。Status: `DONE`。
+- `2026-0710-sample18-post-guarded-execution-gate-route-metadata-lane-closure.md`
+  - #624 sample18 post-guarded execution gate route metadata lane closure。#623 の route-visible `execution_guard` metadata を受け入れ、次は DBAccess execution 有効化前の guarded executor implementation preflight (#625) を昇格。DBAccess mutation / transaction / execution updates は未有効化。Status: `DONE`。
+- `2026-0710-sample18-guarded-execution-gate-route-metadata-integration.md`
+  - #623 sample18 guarded execution gate route metadata integration。valid generated-submit route response に non-executing `execution_guard` metadata を接続し、disabled/duplicate/failed/planned route outcomes と invalid-route skip boundary を固定。DBAccess mutation / transaction / execution updates は未有効化。Status: `FIRST_SLICE_DONE`。
+- `2026-0710-sample18-post-guarded-execution-gate-helper-lane-closure.md`
+  - #622 sample18 post-guarded execution gate helper lane closure。#621 の final non-executing `execution_guard` helper を受け入れ、次は valid generated-submit route response への guard metadata integration (#623) を昇格。DBAccess mutation / transaction / execution updates は未有効化。Status: `DONE`。
+- `2026-0710-sample18-guarded-execution-gate-helper-first-slice.md`
+  - #621 sample18 guarded execution gate helper first slice。route-ready metadata chain を検証する final non-executing guard helper を追加し、allowed/blocked/failed と stable reasons を返す。transaction / DBAccess / execution audit write / idempotency execution update / route exposure は未有効化。Status: `FIRST_SLICE_DONE`。
+- `2026-0710-sample18-guarded-dbaccess-execution-preflight.md`
+  - #620 sample18 guarded DBAccess execution preflight。DBAccess mutation 有効化前の final enablement inputs、transaction / audit / idempotency update sequence、fail-closed matrix、#621 の non-executing guard helper 条件を定義。DBAccess mutation は未有効化。Status: `DONE`。
+- `2026-0710-sample18-post-execution-update-plan-route-metadata-lane-closure.md`
+  - #619 sample18 post-execution update-plan route metadata lane closure。#618 の route-visible `execution_update_plan` metadata を受け入れ、次は DBAccess mutation 有効化前の guarded execution preflight (#620) を昇格。DBAccess mutation / execution audit write / idempotency execution update は未有効化。Status: `DONE`。
+- `2026-0710-sample18-execution-update-plan-route-metadata-integration.md`
+  - #618 sample18 execution update-plan route metadata integration。valid generated-submit route response に non-mutating `execution_update_plan` metadata を接続し、disabled/duplicate/failed/planned route outcomes と invalid-route skip boundary を固定。DBAccess mutation / execution audit write / idempotency execution update は未有効化。Status: `FIRST_SLICE_DONE`。
+- `2026-0710-sample18-post-execution-update-plan-helper-lane-closure.md`
+  - #617 sample18 post-execution update-plan helper lane closure。#616 の non-mutating `execution_update_plan` helper を受け入れ、次は valid generated-submit route response への execution update-plan metadata integration (#618) を昇格。DBAccess mutation / execution audit write / idempotency execution update は未有効化。Status: `DONE`。
+- `2026-0710-sample18-execution-update-plan-helper-first-slice.md`
+  - #616 sample18 execution update-plan helper first slice。non-mutating `execution_update_plan` helper を追加し、execution audit / idempotency update metadata、request audit event linkage、dedupe linkage を計画化。route integration / DBAccess mutation は未有効化。Status: `FIRST_SLICE_DONE`。
+- `2026-0710-sample18-execution-audit-idempotency-update-preflight.md`
+  - #615 sample18 execution audit/idempotency update preflight。guarded execution 前の execution audit event、idempotency execution update、response contract、#616 の non-mutating update-plan helper 条件を定義。DBAccess mutation は未有効化。Status: `DONE`。
+- `2026-0710-sample18-post-transaction-plan-route-metadata-lane-closure.md`
+  - #614 sample18 post-transaction-plan route metadata lane closure。#613 の transaction-plan route metadata を受け入れ、次は guarded execution より前に execution audit/idempotency update preflight (#615) を昇格。DBAccess mutation は未有効化。Status: `DONE`。
+- `2026-0710-sample18-transaction-plan-route-metadata-integration.md`
+  - #613 sample18 transaction-plan route metadata integration。valid generated-submit route response に non-mutating `transaction_plan` metadata を接続し、disabled/duplicate/failed/planned route outcomes と method/CSRF/validation skip boundary を固定。DBAccess mutation は未有効化。Status: `FIRST_SLICE_DONE`。
+- `2026-0710-sample18-post-transaction-plan-helper-lane-closure.md`
+  - #612 sample18 post-transaction-plan helper lane closure。#611 の non-mutating transaction-plan helper を受け入れ、次は valid generated-submit route response への transaction-plan metadata integration (#613) を昇格。DBAccess mutation は未有効化。Status: `DONE`。
+- `2026-0710-sample18-dbaccess-transaction-plan-helper-first-slice.md`
+  - #611 sample18 DBAccess transaction-plan helper first slice。non-mutating `transaction_plan` helper を追加し、transaction boundary / rollback policy / post-execution audit・idempotency update plans を metadata 化。route integration / DBAccess mutation は未有効化。Status: `FIRST_SLICE_DONE`。
+- `2026-0710-sample18-dbaccess-transaction-boundary-preflight.md`
+  - #610 sample18 DBAccess transaction boundary preflight。execution enablement 前の transaction preconditions、rollback policy、post-execution audit/idempotency update plan、#611 の non-mutating transaction-plan helper 条件を定義。DBAccess mutation は未有効化。Status: `DONE`。
+- `2026-0710-sample18-post-ready-execution-plan-coverage-lane-closure.md`
+  - #609 sample18 post-ready execution-plan coverage lane closure。#608 の fresh flag-on ready/planned route coverage を受け入れ、次は transaction boundary preflight (#610) を昇格。DBAccess mutation は未有効化。Status: `DONE`。
+- `2026-0710-sample18-route-level-ready-execution-plan-coverage.md`
+  - #608 sample18 route-level ready execution-plan coverage。fresh flag-on valid generated-submit route response で `mutation_gate.ready` と `dbaccess_execution_plan.status=planned` を確認し、HTTP 409 / mutation disabled / executed false / transaction not_opened を維持。Status: `FIRST_SLICE_DONE`。
+- `2026-0710-sample18-post-execution-plan-route-metadata-lane-closure.md`
+  - #607 sample18 post-execution-plan route metadata lane closure。#606 の route-level execution-plan metadata を受け入れ、transaction preflight より前に flag-on fresh request の ready/planned route coverage (#608) を昇格。DBAccess mutation は未有効化。Status: `DONE`。
+- `2026-0710-sample18-dbaccess-execution-plan-route-response-integration.md`
+  - #606 sample18 DBAccess execution-plan route response integration。valid generated-submit route response に non-mutating `dbaccess_execution_plan` metadata を接続し、disabled/duplicate/failed route outcomes と method/CSRF/validation skip boundary を固定。DBAccess mutation は未有効化。Status: `FIRST_SLICE_DONE`。
+- `2026-0710-sample18-post-dbaccess-execution-plan-helper-lane-closure.md`
+  - #605 sample18 post-DBAccess execution-plan helper lane closure。#604 の non-mutating execution-plan helper を受け入れ、次は route response integration (#606) を metadata only で昇格。DBAccess mutation は未有効化。Status: `DONE`。
+- `2026-0710-sample18-dbaccess-mutation-dry-run-executor-first-slice.md`
+  - #604 sample18 DBAccess mutation dry-run executor first slice。non-mutating `dbaccess_execution_plan` helper を追加し、ready gate は planned metadata、blocked/failed/invalid/non-dry-run は fail-closed、route response は未接続。DBAccess mutation は未有効化。Status: `FIRST_SLICE_DONE`。
+- `2026-0710-sample18-dbaccess-mutation-dry-run-execution-preflight.md`
+  - #603 sample18 DBAccess mutation dry-run execution preflight。ready gate 後の non-mutating executor helper に必要な preconditions、DB boundary、response shape、#604 の required tests を定義。DBAccess mutation は未有効化。Status: `DONE`。
+- `2026-0710-sample18-post-mutation-gate-failure-matrix-lane-closure.md`
+  - #602 sample18 post-mutation-gate-failure-matrix lane closure。#601 の flag-on duplicate/failure matrix coverage を受け入れ、次は DBAccess mutation dry-run execution preflight (#603) を昇格。DBAccess mutation は未有効化。Status: `DONE`。
+- `2026-0710-sample18-mutation-gate-failure-matrix-coverage.md`
+  - #601 sample18 mutation gate failure matrix coverage。flag-on duplicate route replay、audit/idempotency failure route response、helper-level audit/idempotency skipped/failed/duplicate/invalid matrix を追加し、DBAccess mutation disabled / executed false を維持。Status: `FIRST_SLICE_DONE`。
+- `2026-0710-sample18-post-mutation-gate-helper-lane-closure.md`
+  - #600 sample18 post-mutation-gate-helper lane closure。#599 の non-mutating mutation gate helper を受け入れ、DBAccess mutation dry-run / execution より前に gate failure matrix coverage (#601) を昇格。DBAccess mutation は未有効化。Status: `DONE`。
+- `2026-0710-sample18-generated-submit-mutation-gate-helper-first-slice.md`
+  - #599 sample18 generated submit mutation gate helper first slice。明示 enablement flag helper、non-mutating mutation gate helper、route response `mutation_gate` metadata、default disabled / ready metadata / duplicate block / failure block coverage を追加。DBAccess mutation は未有効化。Status: `FIRST_SLICE_DONE`。
+- `2026-0710-sample18-generated-submit-mutation-enablement-gate-preflight.md`
+  - #598 sample18 generated submit mutation enablement gate preflight。明示 flag、audit / idempotency required states、duplicate behavior、failure behavior、non-mutating helper first slice の test 条件を定義。DBAccess mutation は未有効化。Status: `DONE`。
+- `2026-0710-sample18-post-idempotency-route-integration-lane-closure.md`
+  - #597 sample18 post-idempotency-route-integration lane closure。#596 の route idempotency integration を受け入れ、次は mutation enablement gate preflight (#598) を昇格。DBAccess mutation は未有効化。Status: `DONE`。
+- `2026-0710-sample18-generated-submit-idempotency-route-integration-first-slice.md`
+  - #596 sample18 generated submit idempotency route integration first slice。valid blocked route path を audit append 後の idempotency create-or-reuse に接続し、recorded / duplicate / skipped / failed metadata を response に返す。HTTP 409 / mutation disabled / dispatcher non-executed は維持。Status: `FIRST_SLICE_DONE`。
+- `2026-0710-sample18-generated-submit-idempotency-route-integration-preflight.md`
+  - #595 sample18 generated submit idempotency route integration preflight。audit append 後に idempotency create-or-reuse を呼ぶ ordering、`idempotency` response metadata、method / CSRF / validation / unknown operation skip matrix、failure boundary を定義。route integration / DBAccess mutation は未有効化。Status: `DONE`。
+- `2026-0710-sample18-post-idempotency-repository-lane-closure.md`
+  - #594 sample18 post-idempotency-repository lane closure。#593 の storage-backed idempotency repository/helper を受け入れ、次は route integration preflight (#595) を昇格。DBAccess mutation / route persistence は未有効化。Status: `DONE`。
+- `2026-0710-sample18-generated-submit-idempotency-repository-helper-first-slice.md`
+  - #593 sample18 generated submit idempotency repository/helper first slice。`sample18_generated_submit_idempotency_records`、repository wrapper / PDO implementation、SQLite bootstrap allowlist、create-or-reuse / duplicate_count / validation failure coverage を追加。route integration / DBAccess mutation は未有効化。Status: `FIRST_SLICE_DONE`。
+- `2026-0710-sample18-generated-submit-idempotency-persistence-preflight.md`
+  - #592 sample18 generated submit idempotency persistence preflight。config DB storage candidate、dedupe key / duplicate response shape、audit append との相互作用、fail-closed boundary を定義。次は repository/helper first slice (#593)。DBAccess mutation は未有効化。Status: `DONE`。
+- `2026-0710-sample18-post-audit-failure-visibility-lane-closure.md`
+  - #591 sample18 post-audit-failure-visibility lane closure。#590 の audit append failure visibility を受け入れ、mutation enablement より前に generated submit idempotency persistence preflight (#592) を昇格。DBAccess mutation は未有効化。Status: `DONE`。
+- `2026-0710-sample18-generated-submit-audit-append-failure-visibility-coverage.md`
+  - #590 sample18 generated submit audit append failure visibility coverage。audit append failure 時も valid submit は HTTP 409 `generated_submit_disabled` のまま、`audit_append.status=failed` と非空 error を返し、dispatcher / top-level mutation は disabled のまま維持する focused coverage を追加。Status: `FIRST_SLICE_DONE`。
+- `2026-0710-sample18-post-blocked-audit-append-lane-closure.md`
+  - #589 sample18 post-blocked-audit-append lane closure。#588 の valid blocked generated submit audit append を受け入れ、次は mutation enablement より前に audit append failure visibility coverage (#590) を昇格。DBAccess mutation は未有効化。Status: `DONE`。
+- `2026-0710-sample18-generated-submit-blocked-audit-append-first-slice.md`
+  - #588 sample18 generated submit blocked audit append first slice。valid blocked generated submit request を config DB audit log に append し、response に `audit_append.status=appended` を返す。CSRF / validation / unknown operation failures は append せず、DBAccess mutation は未有効化。Status: `FIRST_SLICE_DONE`。
+- `2026-0710-sample18-post-idempotency-audit-helper-lane-closure.md`
+  - #587 sample18 post-idempotency-audit-helper lane closure。#586 の dry-run dedupe/fingerprint/audit preview helper を受け入れ、mutation enablement gate coverage より前に blocked valid generated submit の audit append first slice (#588) を昇格。DBAccess mutation は未有効化。Status: `DONE`。
+- `2026-0710-sample18-generated-submit-idempotency-audit-dry-run-helper.md`
+  - #586 sample18 generated submit idempotency/audit dry-run helper。canonical payload fingerprint、operation-scoped dedupe key preview、audit event preview を追加し、valid blocked response に preview metadata を返す。audit append / persistence / outbox / mutation は未有効化。focused PHPUnit、HTTP smoke、public runtime smoke、`make test` 通過。Status: `DONE`。
+- `2026-0710-sample18-generated-submit-idempotency-and-audit-inventory.md`
+  - #585 sample18 generated submit idempotency and audit inventory。operation-scoped dedupe key、payload fingerprint、audit event shape、persistence/response boundary を定義。次は dry-run key/event helper (#586) で、audit append / persistence / mutation は未有効化。Status: `DONE`。
+- `2026-0710-sample18-post-dispatcher-helper-lane-closure.md`
+  - #584 sample18 post-dispatcher-helper lane closure。#583 の dry-run dispatcher helper を受け入れ、mutation enablement gate coverage より前に idempotency / audit inventory (#585) を昇格。DBAccess mutation は未有効化。Status: `DONE`。
+- `2026-0710-sample18-mutation-dispatcher-helper-dry-run-first-slice.md`
+  - #583 sample18 mutation dispatcher helper dry-run first slice。normalized generated-submit payload を DBAccess-bound `TaskCardData` field metadata に組み立てる dry-run helper を追加し、route は引き続き `generated_submit_disabled` / `mutation_enabled=false`。focused PHPUnit、HTTP smoke、public runtime browser smoke、`make test` 通過。Status: `DONE`。
+- `2026-0710-sample18-mutation-dispatcher-inventory.md`
+  - #582 sample18 mutation dispatcher inventory。generated submit mutation dispatcher の operation mapping、DBAccess-bound payload boundary、auth/CSRF/idempotency/audit/stale-data gates、test matrix を定義。次は dry-run dispatcher helper (#583) で、DBAccess mutation は未有効化。Status: `DONE`。
+- `2026-0710-sample18-post-blocked-guarded-click-lane-closure.md`
+  - #581 sample18 post-blocked-guarded-click lane closure。#580 の blocked guarded generated submit click binding を受け入れ、追加 feedback hardening ではなく mutation dispatcher inventory (#582) を次に昇格。DBAccess / mutation は未有効化。Status: `DONE`。
+- `2026-0710-sample18-blocked-guarded-submit-click-binding-first-slice.md`
+  - #580 sample18 blocked guarded submit click binding first slice。generated managed action button を明示 gate の下で blocked generated-submit route へ POST 可能にし、public runtime browser smoke で `generated_submit_disabled` feedback を確認。DBAccess / mutation は disabled のまま維持。Status: `DONE`。
+- `2026-0710-sample18-post-guarded-click-inventory-lane-closure.md`
+  - #579 sample18 post-guarded-click-inventory lane closure。#578 の guard / payload / blocked response / failure display inventory を受け入れ、次は mutation dispatcher inventory ではなく、blocked route のまま guarded generated submit click binding first slice (#580) を昇格。Status: `DONE`。
+- `2026-0710-sample18-guarded-submit-click-binding-inventory.md`
+  - #578 sample18 guarded submit click binding inventory。generated submit action metadata / runtime DOM に guarded click inventory、enablement gate set、payload assembly、blocked response handling、failure display target を追加し、focused PHPUnit と public runtime browser smoke で確認。network submit / mutation は disabled のまま維持。Status: `DONE`。
+- `2026-0710-sample18-post-disabled-click-lane-closure.md`
+  - #577 sample18 post-disabled-click lane closure。#576 の disabled / non-clicking / non-submitting evidence を受け入れ、次は mutation dispatcher ではなく、blocked route のまま guarded generated click binding を設計する inventory (#578) を昇格。Status: `DONE`。
+- `2026-0710-sample18-disabled-submit-click-intent-preflight.md`
+  - #576 sample18 disabled submit click intent preflight。generated submit action metadata / runtime DOM に disabled click binding marker を追加し、public runtime browser smoke で disabled button の programmatic click が event/state change を起こさないことを確認。Status: `DONE`。
+- `2026-0710-sample18-post-csrf-handoff-lane-closure.md`
+  - #575 sample18 post-CSRF handoff lane closure。#574 の CSRF handoff contract を受け入れ、次は mutation dispatcher inventory ではなく、generated submit button が disabled のまま submit しないことを固定する disabled click intent preflight (#576) を昇格。Status: `DONE`。
+- `2026-0710-sample18-generated-submit-csrf-handoff-preflight.md`
+  - #574 sample18 generated submit CSRF handoff preflight。generated submit action metadata / runtime DOM に CSRF token field、source selector、transport、submit field を追加し、focused PHPUnit と public runtime disabled-action smoke で確認。button / mutation は disabled のまま維持。Status: `DONE`。
+- `2026-0710-sample18-post-csrf-submit-route-lane-closure.md`
+  - #573 sample18 post-CSRF submit route lane closure。#572 の route CSRF guard を受け入れ、次は disabled click intent / mutation dispatcher ではなく、generated runtime 側の CSRF token handoff contract (#574) を先に固定する判断を記録。Status: `DONE`。
+- `2026-0710-sample18-generated-submit-csrf-guard-preflight.md`
+  - #572 sample18 generated submit CSRF guard preflight。generated-submit route に missing / invalid CSRF の fail-closed JSON 403 を追加し、focused PHPUnit と `sample18-http-runtime-smoke` で valid blocked、missing CSRF、invalid CSRF、validation、unknown operation を確認。Status: `DONE`。
+- `2026-0710-sample18-submit-binding-lane-closure.md`
+  - #571 sample18 submit binding lane closure。#570 の binding gate を受け入れ、次は disabled click intent / mutation dispatcher ではなく、generated-submit route の fail-closed CSRF guard preflight (#572) を先に進める判断を記録。Status: `DONE`。
+- `2026-0710-sample18-submit-route-binding-gate-preflight.md`
+  - #570 sample18 submit route binding gate preflight。sample18 generated managed actions に `submit_binding_gate` metadata を追加し、runtime HTML / browser smoke で binding state、CSRF source、fail-closed result marker を確認。runtime click と mutation は disabled のまま維持。Status: `DONE`。
+- `2026-0710-sample18-blocked-submit-route-http-smoke.md`
+  - #569 sample18 blocked submit route HTTP smoke。既存 `sample18-http-runtime-smoke` に generated-submit endpoint の authenticated HTTP checks を追加し、GET 405、valid POST 409 blocked、invalid POST 422、unknown operation 404 の JSON failure を確認。Status: `DONE`。
+- `2026-0710-sample18-submit-route-lane-closure.md`
+  - #568 sample18 submit route lane closure。request contract、blocked JSON wrapper、disabled UI route marker までを preflight lane の受け入れ範囲として閉じ、次は runtime binding / mutation dispatch ではなく authenticated HTTP smoke (#569) を先に進める判断を記録。Status: `DONE`。
+- `2026-0710-sample18-generated-submit-route-browser-preflight.md`
+  - #567 sample18 generated submit route browser preflight。sample18 public runtime の disabled managed action button に blocked submit route marker `data-action-submit-url` が出ることを browser smoke で確認し、button / runtime execute は disabled のまま維持。Status: `DONE`。
+- `2026-0710-sample18-generated-submit-route-blocked-wrapper.md`
+  - #566 sample18 generated submit route blocked wrapper。`/samples/sample18-task-board/no-code/generated-submit` を追加し、payload validation 後も `generated_submit_disabled` で mutation 前に止まる JSON route wrapper を focused PHPUnit で確認。Status: `DONE`。
+- `2026-0710-sample18-generated-submit-request-contract-preflight.md`
+  - #565 sample18 generated submit request contract preflight。create/update/complete の generated submit payload normalization、ignored client fields、validation errors、unknown operation failure を route 追加前に helper / fixture / PHPUnit で固定。Status: `DONE`。
+- `2026-0710-sample18-managed-action-dispatch-guard-preflight.md`
+  - #564 sample18 managed action dispatch guard preflight。`web_lab_login` guard と `project.edit` policy に揃え、editor でも `deferred_availability`、viewer は `policy_denied` で fail closed する focused preflight coverage を追加。Status: `DONE`。
+- `2026-0710-sample18-disabled-action-surface-public-smoke.md`
+  - #563 sample18 disabled action surface public smoke。sample18 public runtime current page で complete/create/update の disabled managed action surface、policy-disabled state、submit 非有効化を headless Chrome smoke で確認。Status: `DONE`。
+- `2026-0710-sample18-generated-action-surface-metadata-first-slice.md`
+  - #562 sample18 generated action surface metadata first slice。create/update/complete を disabled generated managed action metadata へ昇格し、reopen/delete は curated-route-only の dry-run custom operation として維持。Status: `DONE`。
+- `2026-0710-sample18-safe-action-input-mapping-inventory.md`
+  - #561 sample18 safe action-input mapping inventory。generated mutation を有効化せず、sample18 の create/update/complete/reopen/delete について curated route action、DBAccess binding、key/input/fixed/server-managed field 境界を checklist と PHPUnit で固定。Status: `DONE`。
+- `2026-0710-sample18-public-runtime-status-filter-dom-preflight.md`
+  - #560 sample18 public-runtime status filter DOM preflight。sample18 public NO-CODE-RUNTIME current page で runtime-data binding 後に generated `status` filter DOM controls が表示されることを、専用 Make target と DOM-only browser smoke で確認。Status: `DONE`。
+- `2026-0710-sample18-post-filter-no-code-increment-replan.md`
+  - #559 sample18 post-filter no-code increment replan。#558 後の次 increment は safe action-input mapping ではなく、sample18 public-runtime status filter DOM preflight を先に追加する方針に決定。Status: `DONE`。
+- `2026-0709-sample18-status-filter-fast-contract.md`
+  - #558 sample18 status filter fast contract。sample18 checklist に `status_filter_contract` を追加し、curated route の status filter values と generated runtime preview の `status` field metadata を fast PHPUnit contract で確認。Status: `DONE`。
+- `2026-0709-next-l1-sample-conversion-increment-replan.md`
+  - #557 next L1 sample conversion increment replan。次の L1 increment は sample18 継続とし、最小残ギャップとして status filter fast contract を #558 に昇格。action-input mapping と次 sample 選定は後続に維持。Status: `DONE`。
+- `2026-0709-existing-sample-no-code-conversion-test-checklist.md`
+  - #556 existing sample no-code conversion test checklist。sample18 に fast contract checklist fixture を追加し、metadata / DOM / disabled dry-run action / conversion boundary を browser smoke 前の確認項目として PHPUnit から参照。Status: `DONE`。
+- `2026-0709-lightweight-js-interaction-test-spike.md`
+  - #555 lightweight JS interaction test spike。root npm manifest を増やさず、`linkedom` / `happy-dom` の採用判定 checker を追加。現時点では concrete JS interaction gap が昇格するまで external DOM dependency は defer。Status: `DONE`。
+- `2026-0709-no-code-sample-contract-fixture-ladder.md`
+  - #554 no-code sample contract fixture ladder。`sample32-no-code-ui-test-lab` に explicit fixture JSON を追加し、screen / field / disabled managed action / preview row expectations を PHPUnit と pack checker の共通 contract として検証。Status: `DONE`。
+- `2026-0709-dedicated-no-code-ui-test-lab-sample.md`
+  - #553 dedicated no-code UI test lab sample。`sample32-no-code-ui-test-lab` を追加し、`SAMPLE32/no_code_lab_card`、`NO-CODE-RUNTIME`、disabled managed action fixture、固定 preview rows、fast JSON/DOM contract test を導入。Status: `DONE`。
+- `2026-0709-no-code-ui-contract-test-harness-first-slice.md`
+  - #552 no-code UI contract test harness first slice。`tests/Support/NoCodeUiContractAssertions.php` を追加し、sample18 generated `runtime-preview.html` を PHP `DOMDocument` / `DOMXPath` で検査する fast contract を導入。Status: `DONE`。
+- `2026-0709-first-sample-ui-conversion-closure.md`
+  - #550 first sample UI conversion closure。sample18 を L1 existing sample UI no-code entry として受け入れ、ただし metadata-first / preview-first であり generated route replacement ではない境界と、#552 fast DOM contract harness へ進む残ギャップを記録。Status: `DONE`。
+- `2026-0709-first-sample-ui-action-dry-run-contract.md`
+  - #549 first sample UI action dry-run contract。sample18 `task_card` の create / update / complete / reopen / delete を disabled dry-run custom operation として route boundary 付きで generated no-code runtime に通し、既存 route の mutation ownership は維持。Status: `DONE`。
+- `2026-0709-first-sample-ui-readonly-no-code-preview.md`
+  - #548 first sample UI readonly no-code preview。sample18 `task_card` preview rows を no-code runtime generator に追加し、generated `runtime-preview.json` / `runtime-preview.html` を golden fixture の seed rows と fast contract で比較。Status: `DONE`。
+- `2026-0709-first-sample-ui-metadata-extraction-spike.md`
+  - #547 first sample UI metadata extraction spike。sample18 に readonly `task_card` shared contract metadata と `NO-CODE-RUNTIME` source output を追加し、既存 route を置き換えずに no-code screen/runtime metadata を生成・検証。Status: `DONE`。
+- `2026-0709-l1-bridge-golden-sample-fixture.md`
+  - #546 L1 bridge golden sample fixture。`sample18-mini-task-board-demo/golden/no-code-ui-golden.json` を追加し、seed SQL と lab route source に対する fast PHPUnit contract check で既存 sample18 UI 境界を固定。Status: `DONE`。
+- `2026-0709-l1-bridge-no-code-capability-checklist.md`
+  - #545 L1 bridge no-code capability checklist。`sample18-mini-task-board-demo` の No Code 化前に必要な data shape、list/detail/form、status filter、disabled/dry-run actions、fast JSON/DOM contract、golden fixture、outer smoke 境界を定義。Status: `DONE`。
+- `2026-0709-post-availability-sample-ui-replan.md`
+  - #543 post-availability sample UI replan。最初の既存 sample UI No Code 化対象を `sample18-mini-task-board-demo` に決め、sample07 / sample28 / sample29 / sample31 を contract reference として位置づけ、次に sample18 capability checklist を進める方針を記録。Status: `DONE`。
+- `2026-0709-review-request-availability-first-slice.md`
+  - #542 review request availability first slice。`review_source_output_artifact` の dogfooding metadata を plan-only available にし、generated runtime HTML / React bridge metadata に availability marker を出しながら generated button は disabled のまま維持。Status: `DONE`。
+- `2026-0709-availability-ui-preview-contract.md`
+  - #541 availability UI preview contract。`availability_read_model` を generated no-code runtime HTML の stable DOM markers と説明文に反映し、button disabled / `generated_button_enabled=false` を維持。Status: `DONE`。
+- `2026-0709-metadata-only-availability-read-model.md`
+  - #540 metadata-only availability read model。custom operation と extension slot action item に `availability_read_model` を追加し、`availability_state` / `preflight_result` / `execution_mode` / `generated_button_enabled=false` を生成 metadata へ公開。Status: `DONE`。
+- `2026-0709-review-workflow-availability-gate-matrix.md`
+  - #539 review workflow availability gate matrix。operation availability、preflight/guard result、UI marker/copy、audit、persistence/read-model expectations を分離し、#540 metadata-only read model の入力を定義。Status: `DONE`。
+- `2026-0709-review-workflow-availability-surface-inventory.md`
+  - #538 review workflow availability surface inventory。review / publish custom operation metadata、route boundary、dispatch guard、disabled UI、review request persistence、test gaps を棚卸しし、#539 gate matrix への入力を記録。Status: `DONE`。
+- `2026-0709-lightweight-no-code-ui-testing-plan.md`
+  - #551 lightweight no-code UI testing plan。No Code 専用 sample と既存 sample No Code 化に入る前に、PHPUnit JSON / `DOMDocument` contract test を inner loop、lightweight DOM interaction test を必要時、headless Chrome を代表 smoke gate とする方針を記録。Status: `DONE`。
+- `2026-0709-detailed-no-code-availability-plan.md`
+  - #537 no-code availability 詳細計画。availability enablement を surface inventory / gate matrix / read model / UI preview / first slice / sample UI replan に分解し、L1 sample UI No Code 化への橋渡しと長期 roadmap gates も補強。Status: `DONE`。
+- `2026-0709-apply-local-no-code-stack-cleanup.md`
+  - #536 local no-code stack cleanup 実行。103 commits ahead の local stack を 12 grouped commits に整理し、backup tree との差分なしを確認。focused PHPUnit と `make test` 通過。Push は未実行。Status: `DONE`。
+- `2026-0709-long-term-no-code-roadmap.md`
+  - 長期 No Code roadmap。sample UI の No Code 化、Mtool 自身の No Code 化、AI による構造正規化、資料からの即時 No Code UI 生成までの段階を記録。Status: `ROADMAP`。
+- `2026-0709-local-no-code-stack-cleanup-plan-before-availability.md`
+  - #535 availability 前の local no-code stack cleanup plan。`refs/backup/no-code-stack-before-cleanup-20260709` を作成し、102 commit unpushed stack の squash groups を提案。history rewrite / push は未実行。Status: `PLAN_READY`。
+- `2026-0709-no-push-stack-checkpoint-after-in-review-duplicate-reuse.md`
+  - #534 in-review duplicate reuse 後の no-push stack checkpoint。repeated non-executable hardening loop を止め、availability lane 前の local commit stack cleanup plan を昇格。availability / generated button execution / push は未実行。Status: `DONE`。
+- `2026-0709-review-workflow-repository-in-review-duplicate-reuse-lane-closure.md`
+  - #533 review workflow repository in-review duplicate reuse lane closure。#532 の focused coverage を accepted capability として閉じ、PUSH なしでは次も named non-executable hardening のみに限定。availability / generated button execution / push は未実行。Status: `DONE`。
+- `2026-0709-review-workflow-repository-in-review-duplicate-reuse-coverage.md`
+  - #532 review workflow repository in-review duplicate reuse coverage。既存 `in_review` request が同じ identity の duplicate request に reuse されることを focused coverage で確認。availability / generated button execution / push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0709-no-push-stack-checkpoint-after-identity-required-fields.md`
+  - #531 identity required fields 後の no-push stack checkpoint。PUSH なしで継続する場合も named non-executable hardening のみに限定し、次は in-review duplicate reuse coverage を昇格。availability / generated button execution / push は未実行。Status: `DONE`。
+- `2026-0709-review-workflow-repository-identity-required-field-lane-closure.md`
+  - #530 review workflow repository identity required-field lane closure。#529 の focused coverage を accepted capability として閉じ、PUSH なしでは次も named non-executable hardening のみに限定。availability / generated button execution / push は未実行。Status: `DONE`。
+- `2026-0709-review-workflow-repository-identity-required-field-validation-coverage.md`
+  - #529 review workflow repository identity required-field validation coverage。blank `source_output_key` / `artifact_key` が row を作らず fail closed することを focused coverage で確認。availability / generated button execution / push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0709-no-push-stack-checkpoint-after-requested-by-validation.md`
+  - #528 requested-by validation 後の no-push stack checkpoint。直前の no-code 後 roadmap 記録から元の no-code plan 方針へ戻し、PUSH なしで named non-executable hardening のみ継続。次は identity required-field validation coverage を昇格。Status: `DONE`。
+- `2026-0709-review-workflow-repository-requested-by-required-field-lane-closure.md`
+  - #527 review workflow repository requested-by required-field lane closure。#526 の focused coverage を accepted capability として閉じ、blank requested_by の fail-closed boundary を記録。availability / generated button execution / push は未実行。Status: `DONE`。
+- `2026-0709-review-workflow-repository-requested-by-required-field-coverage.md`
+  - #526 review workflow repository requested-by required-field coverage。blank `requested_by` が row を作らず fail closed することを focused coverage で確認。availability / generated button execution / push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0709-no-push-stack-checkpoint-after-decoded-payload-fallback.md`
+  - #525 decoded payload fallback 後の no-push stack checkpoint。PUSH なしで継続する場合も named non-executable hardening のみに限定し、次は requested-by required-field coverage を昇格。availability / generated button execution / push は未実行。Status: `DONE`。
+- `2026-0709-review-workflow-repository-decoded-payload-fallback-lane-closure.md`
+  - #524 review workflow repository decoded payload fallback lane closure。#523 の focused coverage を accepted capability として閉じ、malformed stored audit / metadata JSON の empty-array fallback boundary を記録。availability / generated button execution / push は未実行。Status: `DONE`。
+- `2026-0709-review-workflow-repository-decoded-payload-fallback-coverage.md`
+  - #523 review workflow repository decoded payload fallback coverage。malformed stored audit / metadata JSON が read model で empty arrays に落ちることを focused coverage で確認。availability / generated button execution / push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0709-no-push-stack-checkpoint-after-source-output-dir-normalization.md`
+  - #522 source output dir normalization 後の no-push stack checkpoint。PUSH なしで継続する場合も named non-executable hardening のみに限定し、次は decoded payload fallback coverage を昇格。availability / generated button execution / push は未実行。Status: `DONE`。
+- `2026-0709-review-workflow-repository-source-output-dir-normalization-lane-closure.md`
+  - #521 review workflow repository source output dir normalization lane closure。#520 の focused coverage を accepted capability として閉じ、blank source output dir の empty string normalization boundary を記録。availability / generated button execution / push は未実行。Status: `DONE`。
+- `2026-0709-review-workflow-repository-source-output-dir-normalization-coverage.md`
+  - #520 review workflow repository source output dir normalization coverage。blank `source_output_dir` が empty string に normalize されることを focused coverage で確認。availability / generated button execution / push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0709-no-push-stack-checkpoint-after-generated-request-key-coverage.md`
+  - #519 generated request key coverage 後の no-push stack checkpoint。PUSH なしで継続する場合も named non-executable hardening のみに限定し、次は source output dir normalization coverage を昇格。availability / generated button execution / push は未実行。Status: `DONE`。
+- `2026-0709-review-workflow-repository-generated-request-key-lane-closure.md`
+  - #518 review workflow repository generated request key lane closure。#517 の focused coverage を accepted capability として閉じ、blank request key の generate / persist / fetch boundary を記録。availability / generated button execution / push は未実行。Status: `DONE`。
+- `2026-0709-review-workflow-repository-generated-request-key-coverage.md`
+  - #517 review workflow repository generated request key coverage。blank `review_request_key` input が request key を生成して persist し、fetch で読み戻せることを focused coverage で確認。availability / generated button execution / push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0709-no-push-stack-checkpoint-after-optional-default-normalization.md`
+  - #516 optional default normalization 後の no-push stack checkpoint。PUSH なしで継続する場合も named non-executable hardening のみに限定し、次は generated request key coverage を昇格。availability / generated button execution / push は未実行。Status: `DONE`。
+- `2026-0709-review-workflow-repository-optional-default-normalization-lane-closure.md`
+  - #515 review workflow repository optional default normalization lane closure。#514 の focused coverage を accepted capability として閉じ、blank optional fields の default normalization boundary を記録。availability / generated button execution / push は未実行。Status: `DONE`。
+- `2026-0709-review-workflow-repository-optional-default-normalization-coverage.md`
+  - #514 review workflow repository optional default normalization coverage。blank optional operation / adapter_handoff / policy_key が repository defaults に normalize されることを focused coverage で確認。availability / generated button execution / push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0709-no-push-stack-checkpoint-after-payload-shape-validation.md`
+  - #513 payload shape validation 後の no-push stack checkpoint。PUSH なしで継続する場合も named non-executable hardening のみに限定し、次は optional default normalization coverage を昇格。availability / generated button execution / push は未実行。Status: `DONE`。
+- `2026-0709-review-workflow-repository-payload-shape-validation-lane-closure.md`
+  - #512 review workflow repository payload shape validation lane closure。#511 の focused coverage を accepted capability として閉じ、non-array payload が row を作らず fail closed する boundary を記録。availability / generated button execution / push は未実行。Status: `DONE`。
+- `2026-0709-review-workflow-repository-payload-shape-validation-coverage.md`
+  - #511 review workflow repository payload shape validation coverage。non-array `audit_event` / `metadata` payload が row を作らず fail closed することを focused coverage で確認。availability / generated button execution / push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0709-no-push-stack-checkpoint-after-fetch-limit-normalization.md`
+  - #510 fetch limit normalization 後の no-push stack checkpoint。PUSH なしで継続する場合も named non-executable hardening のみに限定し、次は payload shape validation coverage を昇格。availability / generated button execution / push は未実行。Status: `DONE`。
+- `2026-0709-review-workflow-repository-fetch-limit-normalization-lane-closure.md`
+  - #509 review workflow repository fetch limit normalization lane closure。#508 の focused coverage を accepted capability として閉じ、non-positive limit の safe minimum boundary を記録。availability / generated button execution / push は未実行。Status: `DONE`。
+- `2026-0709-review-workflow-repository-fetch-limit-normalization-coverage.md`
+  - #508 review workflow repository fetch limit normalization coverage。non-positive latest-request fetch limit が safe minimum 1 に clamp されることを focused coverage で確認。availability / generated button execution / push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0709-no-push-stack-checkpoint-after-closed-status-matrix-coverage.md`
+  - #507 closed-status matrix coverage 後の no-push stack checkpoint。PUSH なしで継続する場合も named non-executable hardening のみに限定し、次は fetch limit normalization coverage を昇格。availability / generated button execution / push は未実行。Status: `DONE`。
+- `2026-0709-review-workflow-repository-remaining-closed-status-duplicate-matrix-lane-closure.md`
+  - #506 review workflow repository remaining closed-status duplicate matrix lane closure。#505 の focused coverage を accepted capability として閉じ、supported closed status が新規 request を妨げない boundary を記録。availability / generated button execution / push は未実行。Status: `DONE`。
+- `2026-0709-review-workflow-repository-remaining-closed-status-duplicate-matrix-coverage.md`
+  - #505 review workflow repository remaining closed-status duplicate matrix coverage。`rejected` / `cancelled` / `superseded` request が同じ identity の新規 request を妨げないことを focused coverage で確認。availability / generated button execution / push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0709-no-push-stack-checkpoint-after-closed-status-duplicate-boundary.md`
+  - #504 closed-status duplicate boundary 後の no-push stack checkpoint。PUSH なしで継続する場合も named non-executable hardening のみに限定し、次は remaining closed-status duplicate matrix coverage を昇格。availability / generated button execution / push は未実行。Status: `DONE`。
+- `2026-0709-review-workflow-repository-closed-status-duplicate-boundary-lane-closure.md`
+  - #503 review workflow repository closed-status duplicate boundary lane closure。#502 の focused coverage を accepted capability として閉じ、Docker Desktop restart 後の full `make test` 通過も記録。availability / generated button execution / push は未実行。Status: `DONE`。
+- `2026-0709-review-workflow-repository-closed-status-duplicate-boundary-coverage.md`
+  - #502 review workflow repository closed-status duplicate boundary coverage。closed request が同じ identity の新規 request を duplicate として妨げないことを focused coverage で確認。availability / generated button execution / push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0709-no-push-stack-checkpoint-after-identity-filter-coverage.md`
+  - #501 identity filter coverage 後の no-push stack checkpoint。PUSH なしで継続する場合も named non-executable hardening のみに限定し、次は repository closed-status duplicate boundary coverage を昇格。availability / generated button execution / push は未実行。Status: `DONE`。
+- `2026-0709-review-workflow-repository-identity-filter-lane-closure.md`
+  - #500 review workflow repository identity filter lane closure。#499 の focused coverage を accepted capability として閉じ、PUSH なしでは次も named non-executable hardening のみに限定。availability / generated button execution / push は未実行。Status: `DONE`。
+- `2026-0709-review-workflow-repository-identity-filter-coverage.md`
+  - #499 review workflow repository identity filter coverage。latest-request fetch の source_output_key / artifact_key / operation_key filtering を focused coverage で確認。availability / generated button execution / push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0709-no-push-stack-checkpoint-after-fetch-filter-coverage.md`
+  - #498 fetch filter coverage 後の no-push stack checkpoint。PUSH なしで継続する場合も named non-executable hardening のみに限定し、次は repository identity filter coverage を昇格。availability / generated button execution / push は未実行。Status: `DONE`。
+- `2026-0709-review-workflow-repository-fetch-filter-lane-closure.md`
+  - #497 review workflow repository fetch filter lane closure。#496 の focused coverage を accepted capability として閉じ、PUSH なしでは次も named non-executable hardening のみに限定。availability / generated button execution / push は未実行。Status: `DONE`。
+- `2026-0709-review-workflow-repository-fetch-filter-coverage.md`
+  - #496 review workflow repository fetch filter coverage。latest-request fetch の project / status / requested-by / limit filtering を focused coverage で確認。availability / generated button execution / push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0709-no-push-stack-checkpoint-after-repository-validation.md`
+  - #495 repository validation 後の no-push stack checkpoint。PUSH なしで継続する場合も named non-executable hardening のみに限定し、次は repository fetch filter coverage を昇格。availability / generated button execution / push は未実行。Status: `DONE`。
+- `2026-0709-review-workflow-repository-validation-lane-closure.md`
+  - #494 review workflow repository validation lane closure。invalid status と required project key 欠落が fail-closed し、review request row を作らない accepted behavior を整理。availability / generated button execution / push は未実行。Status: `DONE`。
+- `2026-0709-review-workflow-repository-validation-coverage.md`
+  - #493 review workflow repository validation coverage。invalid status と required project key 欠落が fail-closed し、review request row を作らないことを focused coverage で確認。availability / generated button execution / push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0709-continue-no-push-non-executable-hardening.md`
+  - #492 user の「継続」を PUSH なし local non-executable hardening 継続指示として記録。次に repository validation coverage を昇格。Push は未実行。Status: `DONE`。
+- `2026-0709-no-push-stack-checkpoint-after-guard-first-hardening.md`
+  - #491 guard-first hardening 後の no-push stack checkpoint。local stack は `origin/develop` より 59 commits ahead。次は user が cleanup / push / named non-executable follow-up lane を明示するまで待つ。availability / generated button execution / push は未実行。Status: `DONE`。
+- `2026-0709-review-workflow-guard-first-skip-matrix-lane-closure.md`
+  - #490 review workflow guard-first skip matrix lane closure。deferred / stale / unauthorized / missing-CSRF / invalid guard result が review request persistence を skip し、failure metadata を保持する accepted behavior を整理。availability / generated button execution / push は未実行。Status: `DONE`。
+- `2026-0709-review-workflow-guard-first-persistence-skip-matrix.md`
+  - #489 review workflow guard-first persistence skip matrix。stale / unauthorized / missing-CSRF / invalid guard result が review request persistence を skip し、failure metadata を保持することを focused coverage で確認。availability / generated button execution / push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0709-no-push-local-work-checkpoint.md`
+  - #488 no-push local work checkpoint。PUSH なしで local non-executable hardening を継続し、次は stale / unauthorized / missing-CSRF など non-allowed guard result が persistence に到達しない skip matrix coverage を昇格。Push は未実行。Status: `DONE`。
+- `2026-0709-review-workflow-persistence-audit-append-lane-closure.md`
+  - #487 review workflow persistence audit append lane closure。accepted / duplicate persisted review request の audit append と `review_request_key` carry-through を accepted behavior として整理。availability / generated button execution / push は未実行。Status: `DONE`。
+- `2026-0709-review-workflow-persistence-audit-append-coverage.md`
+  - #486 review workflow persistence audit append coverage。accepted / duplicate persisted review request が audit append され、audit metadata に `review_request_key` が残ることを focused coverage で確認。availability / generated button execution / push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0709-review-workflow-non-executable-hardening-replan.md`
+  - #485 review workflow non-executable hardening replan。PUSH なしで local 継続、availability は parked のまま、次は accepted / duplicate persisted review request の audit append coverage を narrow slice として昇格。Push は未実行。Status: `DONE`。
+- `2026-0709-review-workflow-persistence-failure-visibility-lane-closure.md`
+  - #484 review workflow persistence failure visibility lane closure。route-local helper の create/reuse、duplicate、skipped/deferred、persistence failure visibility を accepted behavior として整理。availability / generated button execution / push は未実行。Status: `DONE`。
+- `2026-0709-review-workflow-persistence-failure-visibility-coverage.md`
+  - #483 review workflow persistence failure visibility coverage。route-local persistence helper の DB failure path を focused coverage で固定し、route result / audit metadata / result-page rendering が failed を示すことを確認。availability / generated button execution / push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0709-continue-locally-without-push.md`
+  - #482 user の「継続しましょう。PUSHはしません」を受け、local 継続・push なし・availability parked を記録。次は non-executable な review workflow persistence failure visibility coverage。Push は未実行。Status: `DONE`。
+- `2026-0709-explicit-push-decision-for-no-code-dogfooding-stack.md`
+  - #481 no-code dogfooding stack の明示 push 判断。user から push 依頼がないため current `develop` stack は local hold。`develop` は `origin/develop` より 49 commits ahead。availability enablement / generated button execution は parked のまま。Push は未実行。Status: `DONE`。
+- `2026-0708-review-workflow-availability-enablement-replan.md`
+  - #480 review workflow availability enablement replan。`develop` が `origin/develop` より 48 commits ahead のため、availability enablement / user-visible execution は明示 push 判断まで parked。次は push as-is / hold local / cleanup before push の判断。Push は未実行。Status: `DONE`。
+- `2026-0708-local-stack-review-after-review-workflow-persistence-helper.md`
+  - #479 review workflow persistence helper lane 後の local stack review。`develop` は `origin/develop` より 46 commits ahead。metadata/probe、route boundary、guard/audit、repository persistence、route-local persistence helper の capability slice として読めるため、明示 push 判断前の squash / rewrite は推奨しない。Push は未実行。Status: `DONE`。
+- `2026-0708-review-workflow-route-persistence-helper-lane-closure.md`
+  - #478 review workflow route persistence helper lane closure。repository storage、guard-first accepted-plan helper、duplicate reuse、audit metadata carry-through、result-page persistence status を accepted capability として整理。availability enablement / generated button execution / approval transition / publish route は未追加。Push は未実行。Status: `DONE`。
+- `2026-0708-review-workflow-route-persistence-helper-first-slice.md`
+  - #477 review workflow route persistence helper first slice。accepted `accepted_plan` result だけが review request repository を呼ぶ route-local helper と focused coverage を追加。deferred/default dogfooding result は persistence skipped、availability / generated button execution / approval transition / publish route は未追加。Push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0708-review-workflow-persistence-route-integration-preflight.md`
+  - #476 review workflow persistence route integration preflight。repository-first persistence を route に接続する条件を guard-first として整理。POST route が persistence を呼ぶのは allowed `accepted_plan` 後だけで、deferred / blocked result は audit append のみ。route mutation / availability enablement / generated button execution は未追加。Push は未実行。Status: `DONE`。
+- `2026-0708-review-workflow-persistence-repository-first-slice.md`
+  - #475 review workflow persistence repository first slice。`no_code_review_requests` config DB table、repository wrapper / PDO implementation、SQLite bootstrap and idempotency coverage を追加。route mutation / availability enablement / generated button execution / approval transition / publish route は未追加。Push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0708-review-workflow-persistence-inventory.md`
+  - #474 review workflow persistence inventory。`review_source_output_artifact` を executable にする前の storage/idempotency/stale-artifact/audit/availability boundary を定義。persistence implementation / availability enablement / mutation / generated button execution は未追加。Push は未実行。Status: `DONE`。
+- `2026-0708-post-review-route-guard-replan.md`
+  - #473 review artifact route guard lane 後の replan。availability enablement / mutation implementation ではなく、review workflow persistence inventory を次に選択。`request_source_output_publish` は deferred、Push は未実行。Status: `DONE`。
+- `2026-0708-local-stack-review-after-review-artifact-route-guard.md`
+  - #472 review artifact route guard lane 後の local stack review。`develop` は `origin/develop` より 39 commits ahead。未 push stack は capability slice ごとに読めるため、明示 push 判断前の squash / rewrite は推奨しない。Push は未実行。Status: `DONE`。
+- `2026-0708-review-artifact-route-guard-lane-closure.md`
+  - #471 `review_source_output_artifact` route guard lane closure。POST route wrapper、dispatch preflight、blocked/deferred rendering、audit append、audit append failure visibility を accepted capability として整理。availability enablement / review workflow mutation は parked。Push は未実行。Status: `DONE`。
+- `2026-0708-custom-operation-audit-append-failure-handling.md`
+  - #470 custom operation audit append failure handling。operation result page に audit append status recorded / failed / skipped を表示し、append failure helper / HTML smoke coverage を追加。mutation / generated button execution / publish route は未追加。Push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0708-custom-operation-blocked-audit-append-first-slice.md`
+  - #469 custom operation blocked audit append first slice。`review_source_output_artifact` route guard result の audit event を append し、blocked/deferred outcome を repository-backed SQLite coverage で確認。mutation / generated button execution / publish route は未追加。Push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0708-review-artifact-http-guard-smoke-coverage.md`
+  - #468 review artifact HTTP guard smoke coverage。blocked / deferred guard result page の focused HTML smoke coverage を追加し、blocked audit append は次の persistence slice と判断。audit append / mutation / generated button execution は未追加。Focused PHPUnit と full `make test` 通過。Push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0708-review-artifact-http-route-guard-wrapper.md`
+  - #467 `review_source_output_artifact` HTTP route guard wrapper。narrow POST route / controller wrapper を追加し、dispatch preflight helper の blocked / plan-only result を render。`request_source_output_publish` は route 未追加。mutation / audit append / generated button execution は未追加。Push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0708-review-artifact-plan-only-dispatch-guard-first-slice.md`
+  - #466 `review_source_output_artifact` plan-only dispatch guard first slice。custom operation dispatch helper、guard results、audit event input、`source_output.review` / `source_output.publish_request` capability registration、focused integration coverage を追加。HTTP route / mutation / generated button execution は未追加。Focused PHPUnit と full `make test` 通過。Push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0708-custom-operation-execution-dispatch-preflight.md`
+  - #465 custom operation execution dispatch preflight。shared dispatch boundary、CSRF/auth/policy/audit/stale-artifact/duplicate handling、最初の候補 `review_source_output_artifact` を plan-only route guard first slice として定義。実行 route / mutation は未追加。Push は未実行。Status: `DONE`。
+- `2026-0708-custom-operation-route-boundary-lane-closure.md`
+  - #464 custom operation route-boundary metadata lane closure。review artifact / request publish の inventory、metadata、runtime / React bridge carry-through、disabled UI wording、integration coverage を accepted capability として整理。execution は別 lane とし、次は shared dispatch preflight。Push は未実行。Status: `DONE`。
+- `2026-0708-request-publish-route-boundary-metadata-carry-through.md`
+  - #463 `request_source_output_publish` route boundary metadata carry-through。publish request の route boundary を custom operation metadata、runtime action item、React bridge handoff、disabled operator action panel に通す。実行 route / mutation は未追加。Focused PHPUnit と full `make test` 通過。Push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0708-request-publish-route-boundary-inventory.md`
+  - #462 `request_source_output_publish` route boundary inventory。将来の POST-only route、`source_output.publish_request` policy、CSRF、audit event、duplicate-safe approval transition、stale artifact handling、generated HTML / React bridge adapter boundary を定義。実行 route / mutation は未追加。Push は未実行。Status: `DONE`。
+- `2026-0708-custom-operation-disabled-route-boundary-wording.md`
+  - #461 custom operation disabled route-boundary wording。disabled operator action panel に route-boundary readiness を表示し、`data-extension-slot-route-boundary` marker と dogfooding inspection coverage を追加。実行 route / mutation は未追加。Focused PHPUnit と full `make test` 通過。Push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0708-current-plan-history-through-459.md`
+  - #460 current plan history archive split。肥大化していた `docs/current-plans.md` の #459 までの完了済み履歴を、塊の終了日 `2026-0708` の日付付き report として保存し、`docs/current-plans.md` を active index に戻すための履歴 archive。Push は未実行。Status: `ARCHIVED`。
+- `2026-0708-review-artifact-route-boundary-metadata-carry-through.md`
+  - #459 `review_source_output_artifact` route boundary metadata carry-through。route boundary を custom operation metadata、screen/runtime JSON、React bridge handoff、generated TypeScript、dogfooding inspection に通す。実行 route / mutation は未追加。Focused PHPUnit、React bridge build smoke、full `make test` 通過。Push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0708-review-artifact-route-boundary-inventory.md`
+  - #458 `review_source_output_artifact` route boundary inventory。将来の POST-only route、`source_output.review` policy、CSRF、audit event、idempotency、failure handling、generated HTML / React bridge adapter boundary を定義。実行 route / mutation は未追加。Push は未実行。Status: `DONE`。
+- `2026-0708-post-adapter-handoff-custom-operation-replan.md`
+  - #457 custom operation metadata / adapter handoff stack review 後の replan。次 lane として execution ではなく、`review_source_output_artifact` を候補にした policy / auth / CSRF / audit route inventory を選択。Push は未実行。Status: `DONE`。
+- `2026-0708-local-stack-review-after-custom-operation-adapter-handoff.md`
+  - #456 custom operation metadata / adapter handoff lane closure 後の local commit stack review。`develop` は `origin/develop` より 23 commits ahead。Mtool dogfooding、configured presentation / custom slots、visible slot renderer、custom operation manifest metadata、unavailable reasons、React bridge handoff、lane closure の意味単位に分かれているため、明示 push 前の squash / history rewrite は推奨しない。Push は未実行。Status: `DONE`。
+- `2026-0708-custom-operation-metadata-adapter-handoff-lane-closure.md`
+  - #455 custom operation metadata / adapter handoff lane closure。manifest inventory、metadata carry-through、disabled action binding、unavailable reason、dogfooding inspection、React bridge `custom_operation_handoffs` までを accepted capability として整理。execution route / build / publish / approval / mutation は未追加。Push は未実行。Status: `DONE`。
+- `2026-0708-react-bridge-custom-operation-handoff-first-slice.md`
+  - #454 React bridge custom operation handoff first slice。`bridge-contract.json` に `custom_operation_handoffs` を追加し、adapter-facing な operation metadata / unavailable reason / adapter handoff / screen keys を公開。execution route / build / publish / approval / mutation は未追加。Push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0708-custom-operation-unavailable-reason-first-slice.md`
+  - #453 custom operation unavailable-reason first slice。custom operation / action item に `unavailable_reason` を正規化し、disabled operator action panel と dogfooding inspection に表示・報告する。execution route / build / publish / approval / mutation は未追加。Push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0708-local-stack-review-after-custom-operation-manifest.md`
+  - #452 custom operation manifest metadata lane closure 後の local commit stack review。`develop` は `origin/develop` より 19 commits ahead。Mtool dogfooding metadata、visible custom slot renderer、custom operation manifest metadata の意味単位に分かれているため、明示 push 前の squash / history rewrite は推奨しない。Push は未実行。Status: `DONE`。
+- `2026-0708-custom-operation-manifest-metadata-lane-closure.md`
+  - #451 custom operation manifest metadata lane closure。manifest inventory、metadata carry-through、disabled operator action binding、dogfooding inspection reporting までを accepted first slice として整理。execution route / build / publish / review-request / approval / mutation / custom component execution は未追加。Push は未実行。Status: `DONE`。
+- `2026-0708-custom-operation-manifest-inspection-first-slice.md`
+  - #450 custom operation manifest inspection first slice。Mtool dogfooding inspection summary が custom operation category、side-effect class、availability、adapter handoff、screen ごとの operation carry-through を報告。execution route / build / publish / approval / mutation は未追加。Push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0708-custom-operation-manifest-carry-through-first-slice.md`
+  - #449 custom operation manifest carry-through first slice。`contract_metadata.custom_operations` を no-code screen definition に正規化し、runtime preview JSON と disabled operator action panel の stable operation binding まで通す。execution route / build / publish / approval / mutation は未追加。Push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0708-custom-operation-manifest-inventory-first-slice.md`
+  - #448 custom operation manifest inventory first slice。operation identity、category、target、side-effect class、policy / auth / CSRF、audit、generated HTML binding、adapter handoff を non-executing manifest boundary として整理。次の code-backed slice は metadata carry-through のみに絞る。Push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0708-post-visible-slot-renderer-replan.md`
+  - #447 visible custom slot renderer closure / local stack review 後の次判断。operator action affordance は visible になったが non-executing のまま維持し、build / publish / review-request / approval などを接続する前に custom operation manifest inventory を次 lane として昇格。Push は未実行。Status: `DONE`。
+- `2026-0708-local-stack-review-after-visible-custom-slot-renderer.md`
+  - #446 visible custom slot renderer closure 後の local commit stack review。`develop` は `origin/develop` より 13 commits ahead。Mtool dogfooding probe、configured presentation / slot metadata、inspection / closure、visible slot renderer first pass の意味単位に分かれているため、明示 push 前の squash / history rewrite は推奨しない。Push は未実行。Status: `DONE`。
+- `2026-0708-visible-custom-slot-renderer-closure.md`
+  - #445 visible custom slot renderer lane closure。#441-#444 で placeholder、related settings link-list、artifact status card、operator action panel の visible first pass が揃ったことを accepted capability として整理。build / publish / approval / custom operation / custom component execution は引き続き scope 外。Push は未実行。Status: `DONE`。
+- `2026-0708-operator-action-slot-panel-first-slice.md`
+  - #444 operator action slot panel first slice。`extension_slots[].action_items` を screen-definition に正規化し、Mtool Source Output review probe の operator actions slot が Review Artifact / Request Publish を disabled action affordance として render。Push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0708-artifact-status-slot-card-first-slice.md`
+  - #443 artifact status slot card first slice。`extension_slots[].status_items` を screen-definition に正規化し、Mtool Source Output review probe の artifact status slot が Artifact Strategy / Target Binding / Spec Visibility を read-only status card として render。Push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0708-related-settings-slot-link-list-first-slice.md`
+  - #442 related settings slot link-list first slice。`extension_slots[].links` を screen-definition に正規化し、Mtool Source Output review probe の related settings slot が Shared Contracts / Source Outputs への admin navigation link を render。Push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0708-visible-custom-slot-placeholder-first-slice.md`
+  - #441 visible custom slot placeholder first slice。generated runtime HTML が `extension_slots` を non-executing placeholder region として render し、Mtool dogfooding inspection boundary は `visible_placeholder` を報告。Push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0708-mtool-no-code-dogfooding-metadata-lane-closure.md`
+  - #440 Mtool no-code dogfooding metadata lane closure。Mtool Source Output review fixture、custom extension boundary、artifact-shape proof、configured presentation metadata、custom UI slot metadata、inspection summary までを accepted capability として整理。local 7 commits は意味単位として読めるため squash 不要と判断。Push は未実行。Status: `DONE`。
+- `2026-0708-mtool-dogfooding-inspection-pass.md`
+  - #439 Mtool dogfooding inspection pass。通常の no-code runtime emitted files を組み立て、interface usage、view variant、presentation profile、screen-level extension slot distribution、HTML boundary を summary 化。metadata は JSON artifact path に通り、visible custom slot rendering は未実装として記録。Push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0708-custom-ui-slot-manifest-first-slice.md`
+  - #438 custom UI slot manifest first slice。`contract_metadata.extension_slots` を screen-definition の `extension_slots` と screen ごとの relevant slots に正規化し、runtime preview JSON まで carry-through。Mtool Source Output review probe は related settings / artifact status / operator actions slots を宣言。Push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0708-configured-presentation-metadata-first-slice.md`
+  - #437 configured presentation metadata first slice。`contract_metadata.presentation_profile` を screen-definition の `presentation_profile` と screen ごとの `presentation_hint` に正規化し、runtime preview JSON まで carry-through。Mtool Source Output review probe は compact review profile、primary / secondary fields、identity / artifact field groups を持つ。Push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0708-local-stack-review-after-mtool-no-code-dogfooding-probe.md`
+  - #436 Mtool no-code dogfooding probe 後の local stack review。未 push 4 commits は metadata helper / custom extension boundary / artifact-shape proof / closure findings として意味単位が分かれているため、明示 push 前の squash / history rewrite は不要と判断。Push は未実行。Status: `DONE`。
+- `2026-0708-mtool-no-code-dogfooding-probe-closure.md`
+  - #435 Mtool no-code dogfooding probe closure。Source Output review surface の standard generated UI / configured presentation / custom UI slot / custom operation / full custom app handoff の findings を整理し、最初の probe を closure。Push は未実行。Status: `DONE`。
+- `2026-0708-mtool-no-code-dogfooding-probe-artifact-shape.md`
+  - #434 Mtool no-code dogfooding probe artifact shape。`MTOOL` Source Output review fixture が既存 no-code runtime payload / emitted-file builder を通り、通常の `screen-definition.json` / `runtime-preview.json` / `runtime-preview.html` / `README.md` を出せることを focused coverage で固定。Push は未実行。Status: `FIRST_SLICE_DONE`。
+- `2026-0708-no-code-custom-extension-boundary.md`
+  - #433 no-code custom extension boundary。標準生成 UI、設定 presentation、custom UI slot、custom operation、full custom app handoff を分け、React composition は実装手段の一つとして扱いながら、source of truth は no-code metadata / manifest に置く方針を記録。Push は未実行。Status: `DONE`。
+- `2026-0708-mtool-no-code-dogfooding-probe-metadata-first-slice.md`
+  - #432 Mtool no-code dogfooding probe metadata first slice。`MTOOL` の Source Output review surface を no-code screen-definition fixture として表現する helper と focused test を追加。全面 self-replacement や広い persistent seed は行わず、#433 の artifact inspection に進める最小 metadata を固定。Push は未実行。Status: `FIRST_SLICE_DONE`。
 - `2026-0708-mtool-no-code-dogfooding-probe-inventory.md`
   - #431 first Mtool no-code dogfooding probe inventory。全面 self-replacement ではなく、Source Output / Shared Contracts / interface profile review surface を最初の低リスク probe として選択し、#432-#435 の実装・確認・closure 手順を整理。Push は未実行。Status: `DONE`。
 - `2026-0705-local-commit-stack-review-after-third-domain-confidence.md`

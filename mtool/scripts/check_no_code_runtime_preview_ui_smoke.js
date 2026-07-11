@@ -12,7 +12,7 @@ function usage() {
 Options:
   --html=PATH                    runtime-preview.html path
   --url=URL                      runtime-preview.html URL
-  --profile=sample07|sample28|sample29|sample31
+  --profile=sample07|sample18|sample28|sample29|sample31
                                  expected no-code runtime shape (default: sample07)
   --execution-binding=ignore|none|required
                                  expected execution binding state (default: ignore)
@@ -23,6 +23,9 @@ Options:
                                  probe server submit payload with stubbed or real fetch (default: none)
   --status-probe=real|stub-done|stub-failed
                                  status JSON behavior after submit probe (default: real)
+  --runtime-filter-dom-only      stop after checking public runtime filter controls
+  --runtime-enabled-candidate-surface
+                                 stop after checking enabled-candidate managed action surface
   --admin-user=USER              admin login user for enabled-real-fetch
   --admin-password=PASS          admin login password for enabled-real-fetch
   --output-dir=PATH              artifact directory root (default: output/playwright/no-code-runtime-preview)
@@ -47,6 +50,8 @@ function parseArgs(argv) {
     demoProcessing: 'ignore',
     submitProbe: 'none',
     statusProbe: 'real',
+    runtimeFilterDomOnly: false,
+    runtimeEnabledCandidateSurface: false,
     adminUser: process.env.ADMIN_AUTH_STUB_USER || 'admin-local',
     adminPassword: process.env.ADMIN_AUTH_STUB_PASSWORD || 'change-this-admin-password',
     expected: expectedProfile('sample07'),
@@ -63,6 +68,14 @@ function parseArgs(argv) {
     }
     if (argument === '--headless') {
       config.headless = true;
+      continue;
+    }
+    if (argument === '--runtime-filter-dom-only') {
+      config.runtimeFilterDomOnly = true;
+      continue;
+    }
+    if (argument === '--runtime-enabled-candidate-surface') {
+      config.runtimeEnabledCandidateSurface = true;
       continue;
     }
     if (!argument.startsWith('--') || !argument.includes('=')) {
@@ -192,6 +205,64 @@ function expectedProfile(name) {
         status: 'active',
         priority: 'high',
         body: 'Generated sample28 browser smoke payload',
+      },
+    };
+  }
+
+  if (name === 'sample18') {
+    return {
+      profile: name,
+      projectKey: 'SAMPLE18',
+      listScreenKey: 'task_card_list',
+      listScreenTitle: 'Task Card List',
+      detailScreenKey: 'task_card_detail',
+      detailScreenTitle: 'Task Card Detail',
+      formScreenKey: 'task_card_form',
+      formScreenTitle: 'Task Card Form',
+      actionKey: 'update_task_card',
+      operationKey: 'update_task_card',
+      operationType: 'update',
+      keyField: 'id',
+      keyValue: 1801,
+      formFieldCount: 9,
+      draftInputCountAfterEdit: 1,
+      inputFields: ['title', 'body', 'status', 'assigned_to', 'priority', 'due_date'],
+      requiredInputField: 'title',
+      requiredInputValue: 'Generated sample18 browser smoke title',
+      selectedKeyValue: 1801,
+      filterField: 'status',
+      filterLabel: 'Status',
+      filterOperatorLabel: 'Contains',
+      filterValue: 'doing',
+      managedActionKeys: ['complete_task_card', 'create_task_card', 'update_task_card'],
+      managedActionOperationTypes: {
+        complete_task_card: 'update',
+        create_task_card: 'create',
+        update_task_card: 'update',
+      },
+      managedActionSubmitUrl: '/samples/sample18-task-board/no-code/generated-submit',
+      managedActionBindingState: 'blocked_preflight',
+      managedActionCsrfSource: 'sample18_task_board_form_token',
+      managedActionCsrfTokenField: '_csrf_token',
+      managedActionCsrfSourceSelector: 'input[name=_csrf_token]',
+      managedActionCsrfTransport: 'form_field',
+      managedActionClickBindingState: 'blocked_route_enabled',
+      managedActionSubmitTrigger: 'guarded_click',
+      managedActionNetworkSubmitEnabled: 'true',
+      managedActionGuardedClickInventoryState: 'implemented_blocked_route',
+      managedActionEnableGateSet: 'csrf_handoff_and_blocked_route_verified',
+      managedActionPayloadAssembly: 'operation_key_plus_action_fields_plus_csrf',
+      managedActionBlockedResponseHandling: 'render_failure_feedback_without_retry',
+      managedActionFailureDisplayTarget: 'no-code-action-feedback',
+      managedActionFailClosedResult: 'generated_submit_disabled',
+      payload: {
+        id: 1801,
+        title: 'Sample18 browser smoke update',
+        body: 'Generated sample18 browser smoke body',
+        status: 'doing',
+        assigned_to: 'Aki',
+        priority: '2',
+        due_date: '2026-07-10',
       },
     };
   }
@@ -380,6 +451,415 @@ async function loginAdmin(page, baseUrl, username, password) {
   if (!dashboardResponse || dashboardResponse.status() !== 200) {
     throw new Error('admin login did not reach dashboard.');
   }
+}
+
+async function probeRuntimeFilterDomOnly(page, config) {
+  if (!config.expected.filterField || !config.expected.filterLabel) {
+    throw new Error(`runtime filter DOM-only probe requires filter metadata for ${config.expected.profile}`);
+  }
+
+  await page.waitForSelector(
+    `.no-code-screen[data-screen-key="${config.expected.listScreenKey}"] [data-runtime-data-controls]`,
+    { timeout: 5000 },
+  );
+  const result = await page.evaluate((expected) => {
+    const list = document.querySelector(`.no-code-screen[data-screen-key="${expected.listScreenKey}"]`);
+    const binding = window.__noCodeRuntimeExecutionBinding || {};
+    const controls = list?.querySelector('[data-runtime-data-controls]');
+    const filterField = controls?.querySelector('[data-runtime-filter-field]');
+    const statusOption = filterField?.querySelector(`option[value="${expected.filterField}"]`);
+    const filterOperator = controls?.querySelector('[data-runtime-filter-operator]');
+    const filterValue = controls?.querySelector('[data-runtime-filter-value]');
+    const submitButton = controls?.querySelector('[data-runtime-filter-submit]');
+    return {
+      executionBindingUrl: binding.execution_url || '',
+      executionBindingProjectKey: binding.project_key || '',
+      runtimeDataUrl: binding.runtime_data_url || '',
+      controlsVisible: !!controls && getComputedStyle(controls).display !== 'none',
+      filterFieldValue: filterField?.value || '',
+      filterOptionLabel: statusOption?.textContent?.trim() || '',
+      filterOptionType: statusOption?.getAttribute('data-runtime-field-type') || '',
+      filterOperatorValue: filterOperator?.value || '',
+      filterOperatorLabels: Array.from(filterOperator?.querySelectorAll('option') || []).map((option) => option.textContent?.trim() || ''),
+      filterValueTagName: filterValue?.tagName || '',
+      submitText: submitButton?.textContent?.trim() || '',
+    };
+  }, config.expected);
+
+  if (config.executionBinding === 'none' && result.executionBindingUrl !== '') {
+    throw new Error(`execution binding should not be injected for this preview: ${result.executionBindingUrl}`);
+  }
+  if (config.executionBinding === 'required') {
+    if (result.executionBindingUrl === '' || result.executionBindingProjectKey !== config.expected.projectKey) {
+      throw new Error(`execution binding missing or project mismatch: ${JSON.stringify(result)}`);
+    }
+    if (config.executionUrlContains !== '' && !result.executionBindingUrl.includes(config.executionUrlContains)) {
+      throw new Error(`execution binding URL mismatch: ${result.executionBindingUrl} does not include ${config.executionUrlContains}`);
+    }
+    if (result.runtimeDataUrl === '') {
+      throw new Error(`runtime data binding is missing: ${JSON.stringify(result)}`);
+    }
+  }
+  if (!result.controlsVisible) {
+    throw new Error(`runtime data controls were not visible: ${JSON.stringify(result)}`);
+  }
+  if (result.filterOptionLabel !== config.expected.filterLabel || result.filterOptionType === '') {
+    throw new Error(`runtime filter option mismatch: ${JSON.stringify(result)}`);
+  }
+  if (!result.filterOperatorLabels.includes(config.expected.filterOperatorLabel)) {
+    throw new Error(`runtime filter operator mismatch: ${JSON.stringify(result)}`);
+  }
+  if (result.filterValueTagName !== 'INPUT' || result.submitText === '') {
+    throw new Error(`runtime filter controls incomplete: ${JSON.stringify(result)}`);
+  }
+
+  return result;
+}
+
+async function probeRuntimeDisabledActionSurface(page, config) {
+  const expectedKeys = Array.isArray(config.expected.managedActionKeys) ? config.expected.managedActionKeys : [];
+  if (expectedKeys.length === 0) {
+    return { skipped: true };
+  }
+
+  await page.waitForSelector(
+    `.no-code-screen[data-screen-key="${config.expected.formScreenKey}"] .no-code-actions button[data-action-key]`,
+    { timeout: 5000 },
+  );
+  const result = await page.evaluate(async (expected) => {
+    const listScreen = document.querySelector(`.no-code-screen[data-screen-key="${expected.listScreenKey}"]`);
+    const formScreen = document.querySelector(`.no-code-screen[data-screen-key="${expected.formScreenKey}"]`);
+    const listRows = Array.from(listScreen?.querySelectorAll('tbody tr[data-runtime-row-key]') || []);
+    const buttons = Array.from(formScreen?.querySelectorAll('.no-code-actions button[data-action-key]') || []);
+    const hints = Array.from(formScreen?.querySelectorAll('.no-code-action-hint[data-action-hint]') || []);
+    const actions = (window.__noCodeRuntimePreview?.screens || [])
+      .filter((screen) => screen && screen.screen_key === expected.formScreenKey)
+      .flatMap((screen) => Array.isArray(screen.actions) ? screen.actions : []);
+    const requiredInput = formScreen?.querySelector(`[name="${expected.requiredInputField}"]`);
+    if (requiredInput) {
+      requiredInput.value = expected.requiredInputValue;
+      requiredInput.dispatchEvent(new Event('input', { bubbles: true }));
+    }
+    const createButton = buttons.find((button) => button.getAttribute('data-action-key') === 'create_task_card') || buttons[0] || null;
+    if (createButton) {
+      createButton.click();
+      for (let attempt = 0; attempt < 50; attempt += 1) {
+        const state = createButton.getAttribute('data-action-state') || '';
+        if (state === 'blocked' || state === 'error') {
+          break;
+        }
+        await new Promise((resolve) => setTimeout(resolve, 100));
+      }
+    }
+    return {
+      skipped: false,
+      rowKeyCount: listRows.length,
+      rowKeys: listRows.map((row) => row.getAttribute('data-runtime-row-key') || ''),
+      firstRowKey: listRows[0]?.getAttribute('data-runtime-row-key') || '',
+      keys: buttons.map((button) => button.getAttribute('data-action-key') || ''),
+      operationKeys: buttons.map((button) => button.getAttribute('data-operation-key') || ''),
+      operationTypes: buttons.reduce((carry, button) => {
+        carry[button.getAttribute('data-action-key') || ''] = button.getAttribute('data-operation-type') || '';
+        return carry;
+      }, {}),
+      enabledStates: buttons.map((button) => button.getAttribute('data-action-enabled') || ''),
+      actionStates: buttons.map((button) => button.getAttribute('data-action-state') || ''),
+      disabledReasons: buttons.map((button) => button.getAttribute('data-action-disabled-reason') || ''),
+      affordances: buttons.map((button) => button.getAttribute('data-action-affordance') || ''),
+      submitUrls: buttons.map((button) => button.getAttribute('data-action-submit-url') || ''),
+      bindingStates: buttons.map((button) => button.getAttribute('data-action-binding-state') || ''),
+      csrfSources: buttons.map((button) => button.getAttribute('data-action-csrf-source') || ''),
+      csrfTokenFields: buttons.map((button) => button.getAttribute('data-action-csrf-token-field') || ''),
+      csrfSourceSelectors: buttons.map((button) => button.getAttribute('data-action-csrf-source-selector') || ''),
+      csrfTransports: buttons.map((button) => button.getAttribute('data-action-csrf-transport') || ''),
+      clickBindingStates: buttons.map((button) => button.getAttribute('data-action-click-binding-state') || ''),
+      submitTriggers: buttons.map((button) => button.getAttribute('data-action-submit-trigger') || ''),
+      networkSubmitEnabled: buttons.map((button) => button.getAttribute('data-action-network-submit-enabled') || ''),
+      guardedClickInventoryStates: buttons.map((button) => button.getAttribute('data-action-guarded-click-inventory-state') || ''),
+      enableGateSets: buttons.map((button) => button.getAttribute('data-action-enable-gate-set') || ''),
+      payloadAssemblies: buttons.map((button) => button.getAttribute('data-action-payload-assembly') || ''),
+      blockedResponseHandling: buttons.map((button) => button.getAttribute('data-action-blocked-response-handling') || ''),
+      failureDisplayTargets: buttons.map((button) => button.getAttribute('data-action-failure-display-target') || ''),
+      failClosedResults: buttons.map((button) => button.getAttribute('data-action-fail-closed-result') || ''),
+      guardedClickProbe: createButton ? {
+        key: createButton.getAttribute('data-action-key') || '',
+        state: createButton.getAttribute('data-action-state') || '',
+        disabled: createButton.disabled === true,
+        lastSubmitResult: createButton.getAttribute('data-action-last-submit-result') || '',
+        lastFailureCode: createButton.getAttribute('data-action-last-failure-code') || '',
+        feedbackState: formScreen?.querySelector('.no-code-action-feedback')?.getAttribute('data-state') || '',
+        feedbackResult: formScreen?.querySelector('.no-code-action-feedback')?.getAttribute('data-action-last-submit-result') || '',
+        feedbackFailureCode: formScreen?.querySelector('.no-code-action-feedback')?.getAttribute('data-action-last-failure-code') || '',
+        feedbackText: formScreen?.querySelector('.no-code-action-feedback')?.textContent?.trim() || '',
+      } : null,
+      disabledProperties: buttons.map((button) => button.disabled === true),
+      hintKeys: hints.map((hint) => hint.getAttribute('data-action-hint') || ''),
+      hintStates: hints.map((hint) => hint.getAttribute('data-action-state-hint') || ''),
+      previewActionKeys: actions.map((action) => action.action_key || ''),
+      previewActionAvailability: actions.reduce((carry, action) => {
+        carry[action.action_key || ''] = action.availability || '';
+        return carry;
+      }, {}),
+      executeButtonDisabled: !!formScreen?.querySelector('[data-runtime-execute]')?.disabled,
+      executeState: formScreen?.querySelector('[data-runtime-execute]')?.getAttribute('data-runtime-execute-state') || '',
+    };
+  }, config.expected);
+
+  if (JSON.stringify(result.keys) !== JSON.stringify(expectedKeys)) {
+    throw new Error(`disabled managed action keys mismatch: ${JSON.stringify(result)}`);
+  }
+  if (JSON.stringify(result.previewActionKeys) !== JSON.stringify(expectedKeys)) {
+    throw new Error(`preview managed action keys mismatch: ${JSON.stringify(result)}`);
+  }
+  for (const key of expectedKeys) {
+    if (result.operationTypes[key] !== config.expected.managedActionOperationTypes[key]) {
+      throw new Error(`managed action operation type mismatch: ${JSON.stringify(result)}`);
+    }
+    if (result.previewActionAvailability[key] !== 'disabled') {
+      throw new Error(`managed action preview availability mismatch: ${JSON.stringify(result)}`);
+    }
+  }
+  if (
+    result.enabledStates.some((state) => state !== 'true')
+    || result.actionStates.some((state) => !['ready', 'blocked'].includes(state))
+    || result.disabledReasons.some((reason) => reason !== '')
+    || result.affordances.some((affordance) => affordance !== 'keyboard-intent-preview')
+    || result.submitUrls.some((submitUrl) => submitUrl !== config.expected.managedActionSubmitUrl)
+    || result.bindingStates.some((state) => state !== config.expected.managedActionBindingState)
+    || result.csrfSources.some((source) => source !== config.expected.managedActionCsrfSource)
+    || result.csrfTokenFields.some((field) => field !== config.expected.managedActionCsrfTokenField)
+    || result.csrfSourceSelectors.some((selector) => selector !== config.expected.managedActionCsrfSourceSelector)
+    || result.csrfTransports.some((transport) => transport !== config.expected.managedActionCsrfTransport)
+    || result.clickBindingStates.some((state) => state !== config.expected.managedActionClickBindingState)
+    || result.submitTriggers.some((trigger) => trigger !== config.expected.managedActionSubmitTrigger)
+    || result.networkSubmitEnabled.some((enabled) => enabled !== config.expected.managedActionNetworkSubmitEnabled)
+    || result.guardedClickInventoryStates.some((state) => state !== config.expected.managedActionGuardedClickInventoryState)
+    || result.enableGateSets.some((gateSet) => gateSet !== config.expected.managedActionEnableGateSet)
+    || result.payloadAssemblies.some((assembly) => assembly !== config.expected.managedActionPayloadAssembly)
+    || result.blockedResponseHandling.some((handling) => handling !== config.expected.managedActionBlockedResponseHandling)
+    || result.failureDisplayTargets.some((target) => target !== config.expected.managedActionFailureDisplayTarget)
+    || result.failClosedResults.some((resultCode) => resultCode !== config.expected.managedActionFailClosedResult)
+    || result.rowKeyCount < 1
+    || result.firstRowKey !== String(config.expected.selectedKeyValue || config.expected.keyValue)
+    || !result.guardedClickProbe
+    || result.guardedClickProbe.key !== 'create_task_card'
+    || result.guardedClickProbe.state !== 'blocked'
+    || result.guardedClickProbe.disabled !== false
+    || result.guardedClickProbe.lastSubmitResult !== 'blocked'
+    || result.guardedClickProbe.lastFailureCode !== config.expected.managedActionFailClosedResult
+    || result.guardedClickProbe.feedbackState !== 'blocked'
+    || result.guardedClickProbe.feedbackResult !== 'blocked'
+    || result.guardedClickProbe.feedbackFailureCode !== config.expected.managedActionFailClosedResult
+    || !result.guardedClickProbe.feedbackText.includes(config.expected.managedActionFailClosedResult)
+    || result.disabledProperties.some((disabled) => disabled !== false)
+    || JSON.stringify(result.hintKeys) !== JSON.stringify(expectedKeys)
+    || result.hintStates.some((state) => state !== 'ready')
+    || result.executeButtonDisabled !== true
+    || !['blocked', 'unavailable'].includes(result.executeState)
+  ) {
+    throw new Error(`guarded managed action surface mismatch: ${JSON.stringify(result)}`);
+  }
+
+  return result;
+}
+
+async function probeRuntimeEnabledCandidateSurface(page, config) {
+  const expectedKeys = Array.isArray(config.expected.managedActionKeys) ? config.expected.managedActionKeys : [];
+  if (expectedKeys.length === 0) {
+    return { skipped: true };
+  }
+
+  await page.waitForSelector(
+    `.no-code-screen[data-screen-key="${config.expected.formScreenKey}"] .no-code-actions button[data-action-key]`,
+    { timeout: 5000 },
+  );
+  const result = await page.evaluate(async (expected) => {
+    const formScreen = document.querySelector(`.no-code-screen[data-screen-key="${expected.formScreenKey}"]`);
+    const buttons = Array.from(formScreen?.querySelectorAll('.no-code-actions button[data-action-key]') || []);
+    const executableKeys = new Set(expected.managedActionKeys || []);
+    const previewScreens = window.__noCodeRuntimePreview?.screens || [];
+    const previewActions = previewScreens
+      .filter((screen) => screen && screen.screen_key === expected.formScreenKey)
+      .flatMap((screen) => Array.isArray(screen.actions) ? screen.actions : []);
+    const initialReadiness = buttons
+      .filter((button) => executableKeys.has(button.getAttribute('data-action-key') || ''))
+      .map((button) => ({
+        key: button.getAttribute('data-action-key') || '',
+        readinessState: button.getAttribute('data-action-readiness-state') || '',
+        availabilityCandidate: button.getAttribute('data-action-availability-candidate') || '',
+        canSubmit: button.getAttribute('data-action-can-submit') || '',
+        executorConfigStatus: button.getAttribute('data-action-executor-config-status') || '',
+      }));
+    const previewReadiness = previewActions
+      .filter((action) => action && executableKeys.has(action.action_key || ''))
+      .map((action) => ({
+        key: action.action_key || '',
+        readinessState: action.readiness_metadata?.readiness_state || '',
+        availabilityCandidate: action.readiness_metadata?.availability_candidate === true,
+        canSubmit: action.readiness_metadata?.can_submit === true,
+        executorConfigStatus: action.readiness_metadata?.executor_config_status || '',
+      }));
+
+    previewActions.forEach((action) => {
+      if (!action || !executableKeys.has(action.action_key || '')) {
+        return;
+      }
+      action.enabled = true;
+      action.availability = 'enabled';
+      action.failed_checks = [];
+    });
+
+    buttons.forEach((button) => {
+      const key = button.getAttribute('data-action-key') || '';
+      if (!executableKeys.has(key)) {
+        return;
+      }
+      button.disabled = false;
+      button.setAttribute('aria-disabled', 'false');
+      button.setAttribute('data-action-enabled', 'true');
+      button.setAttribute('data-action-availability', 'enabled');
+      button.setAttribute('data-action-state', 'ready');
+      button.removeAttribute('data-action-disabled-reason');
+      button.removeAttribute('data-action-policy-failed-checks');
+    });
+
+    const requiredInput = formScreen?.querySelector(`[name="${expected.requiredInputField}"]`);
+    if (requiredInput) {
+      requiredInput.value = expected.requiredInputValue;
+      requiredInput.dispatchEvent(new Event('input', { bubbles: true }));
+      requiredInput.dispatchEvent(new Event('change', { bubbles: true }));
+    }
+
+    const nativeFetch = window.fetch.bind(window);
+    window.__noCodeRuntimeEnabledCandidateSubmitProbe = {
+      fetchCalled: false,
+      url: '',
+      method: '',
+      credentials: '',
+      entries: [],
+    };
+    window.fetch = async (url, options = {}) => {
+      const method = String(options.method || 'GET');
+      if (String(url).includes(expected.managedActionSubmitUrl || '/no-code/generated-submit')) {
+        const entries = [];
+        if (options.body && typeof options.body.entries === 'function') {
+          for (const [key, value] of options.body.entries()) {
+            entries.push([key, String(value)]);
+          }
+        }
+        window.__noCodeRuntimeEnabledCandidateSubmitProbe = {
+          fetchCalled: true,
+          url: String(url),
+          method,
+          credentials: String(options.credentials || ''),
+          entries,
+        };
+        return {
+          ok: false,
+          status: 409,
+          json: async () => ({
+            ok: false,
+            accepted: false,
+            result: 'blocked',
+            failure_code: expected.managedActionFailClosedResult || 'generated_submit_disabled',
+          }),
+        };
+      }
+      return nativeFetch(url, options);
+    };
+
+    const createButton = buttons.find((button) => button.getAttribute('data-action-key') === 'create_task_card') || buttons[0] || null;
+    if (createButton) {
+      createButton.click();
+      for (let attempt = 0; attempt < 50; attempt += 1) {
+        const state = createButton.getAttribute('data-action-state') || '';
+        if (state === 'success' || state === 'blocked' || state === 'error') {
+          break;
+        }
+        await new Promise((resolve) => setTimeout(resolve, 100));
+      }
+    }
+
+    return {
+      skipped: false,
+      keys: buttons.map((button) => button.getAttribute('data-action-key') || ''),
+      enabledStates: buttons.map((button) => button.getAttribute('data-action-enabled') || ''),
+      availabilityStates: buttons.map((button) => button.getAttribute('data-action-availability') || ''),
+      disabledProperties: buttons.map((button) => button.disabled === true),
+      disabledReasons: buttons.map((button) => button.getAttribute('data-action-disabled-reason') || ''),
+      policyFailedChecks: buttons.map((button) => button.getAttribute('data-action-policy-failed-checks') || ''),
+      initialReadiness,
+      previewReadiness,
+      previewActionAvailability: previewActions.reduce((carry, action) => {
+        carry[action.action_key || ''] = action.availability || '';
+        return carry;
+      }, {}),
+      previewActionEnabled: previewActions.reduce((carry, action) => {
+        carry[action.action_key || ''] = action.enabled === true;
+        return carry;
+      }, {}),
+      forbiddenAvailability: Array.from(document.querySelectorAll('[data-action-key="reopen_task_card"], [data-action-key="delete_task_card"]')).map((button) => ({
+        key: button.getAttribute('data-action-key') || '',
+        availability: button.getAttribute('data-action-availability') || '',
+        enabled: button.getAttribute('data-action-enabled') || '',
+      })),
+      guardedClickProbe: createButton ? {
+        key: createButton.getAttribute('data-action-key') || '',
+        state: createButton.getAttribute('data-action-state') || '',
+        disabled: createButton.disabled === true,
+        lastSubmitResult: createButton.getAttribute('data-action-last-submit-result') || '',
+        lastFailureCode: createButton.getAttribute('data-action-last-failure-code') || '',
+        feedbackState: formScreen?.querySelector('.no-code-action-feedback')?.getAttribute('data-state') || '',
+        feedbackResult: formScreen?.querySelector('.no-code-action-feedback')?.getAttribute('data-action-last-submit-result') || '',
+        feedbackFailureCode: formScreen?.querySelector('.no-code-action-feedback')?.getAttribute('data-action-last-failure-code') || '',
+        feedbackText: formScreen?.querySelector('.no-code-action-feedback')?.textContent?.trim() || '',
+      } : null,
+      submitProbe: window.__noCodeRuntimeEnabledCandidateSubmitProbe || {},
+    };
+  }, config.expected);
+
+  if (JSON.stringify(result.keys) !== JSON.stringify(expectedKeys)) {
+    throw new Error(`enabled candidate managed action keys mismatch: ${JSON.stringify(result)}`);
+  }
+  for (const key of expectedKeys) {
+    if (result.previewActionAvailability[key] !== 'enabled' || result.previewActionEnabled[key] !== true) {
+      throw new Error(`enabled candidate preview action mismatch: ${JSON.stringify(result)}`);
+    }
+  }
+  if (
+    result.enabledStates.some((state) => state !== 'true')
+    || result.availabilityStates.some((state) => state !== 'enabled')
+    || result.disabledProperties.some((disabled) => disabled !== false)
+    || result.disabledReasons.some((reason) => reason !== '')
+    || result.policyFailedChecks.some((checks) => checks !== '')
+    || JSON.stringify(result.initialReadiness.map((item) => item.key)) !== JSON.stringify(expectedKeys)
+    || result.initialReadiness.some((item) => item.readinessState !== 'candidate_ready')
+    || result.initialReadiness.some((item) => item.availabilityCandidate !== 'true')
+    || result.initialReadiness.some((item) => item.canSubmit !== 'false')
+    || result.initialReadiness.some((item) => item.executorConfigStatus !== 'disabled')
+    || JSON.stringify(result.previewReadiness.map((item) => item.key)) !== JSON.stringify(expectedKeys)
+    || result.previewReadiness.some((item) => item.readinessState !== 'candidate_ready')
+    || result.previewReadiness.some((item) => item.availabilityCandidate !== true)
+    || result.previewReadiness.some((item) => item.canSubmit !== false)
+    || result.previewReadiness.some((item) => item.executorConfigStatus !== 'disabled')
+    || result.forbiddenAvailability.some((item) => item.availability === 'enabled' || item.enabled === 'true')
+    || !result.guardedClickProbe
+    || result.guardedClickProbe.key !== 'create_task_card'
+    || result.guardedClickProbe.disabled !== false
+    || result.guardedClickProbe.lastSubmitResult !== 'blocked'
+    || result.guardedClickProbe.lastFailureCode !== config.expected.managedActionFailClosedResult
+    || result.guardedClickProbe.feedbackState !== 'blocked'
+    || result.guardedClickProbe.feedbackResult !== 'blocked'
+    || result.guardedClickProbe.feedbackFailureCode !== config.expected.managedActionFailClosedResult
+    || !result.guardedClickProbe.feedbackText.includes(config.expected.managedActionFailClosedResult)
+    || !result.submitProbe.fetchCalled
+    || result.submitProbe.method !== 'POST'
+    || result.submitProbe.credentials !== 'same-origin'
+  ) {
+    throw new Error(`enabled candidate managed action surface mismatch: ${JSON.stringify(result)}`);
+  }
+
+  return result;
 }
 
 async function probeRuntimeDataInitialUrlReplay(page, targetUrl, config) {
@@ -780,6 +1260,45 @@ async function runSmoke(config) {
     await requireVisible(page.locator(`.no-code-screen[data-screen-key="${config.expected.listScreenKey}"] table`), 'list table');
     await requireVisible(page.locator(`.no-code-screen[data-screen-key="${config.expected.detailScreenKey}"] dl.no-code-detail`), 'detail layout');
     await requireVisible(page.locator(`.no-code-screen[data-screen-key="${config.expected.formScreenKey}"] form.no-code-form`), 'form layout');
+
+    if (config.runtimeFilterDomOnly) {
+      const runtimeFilterDomProbe = await probeRuntimeFilterDomOnly(page, config);
+      const runtimeDisabledActionSurfaceProbe = await probeRuntimeDisabledActionSurface(page, config);
+      await page.screenshot({ path: screenshotPath, fullPage: true });
+      await page.setViewportSize({ width: 390, height: 844 });
+      await page.goto(targetUrl, { waitUntil: 'load' });
+      await requireVisible(page.locator(`.no-code-screen[data-screen-key="${config.expected.listScreenKey}"] [data-runtime-data-controls]`), 'mobile runtime data controls');
+      await requireVisible(page.locator(`.no-code-screen[data-screen-key="${config.expected.formScreenKey}"] .no-code-actions button[data-action-key]`), 'mobile guarded managed action surface');
+      await page.screenshot({ path: mobileScreenshotPath, fullPage: true });
+      return {
+        ok: true,
+        profile: config.expected.profile,
+        runtime_filter_dom_only: true,
+        runtime_filter_dom_probe: runtimeFilterDomProbe,
+        runtime_disabled_action_surface_probe: runtimeDisabledActionSurfaceProbe,
+        screenshot: screenshotPath,
+        mobile_screenshot: mobileScreenshotPath,
+      };
+    }
+
+    if (config.runtimeEnabledCandidateSurface) {
+      const runtimeEnabledCandidateSurfaceProbe = await probeRuntimeEnabledCandidateSurface(page, config);
+      await page.screenshot({ path: screenshotPath, fullPage: true });
+      await page.setViewportSize({ width: 390, height: 844 });
+      await page.goto(targetUrl, { waitUntil: 'load' });
+      await requireVisible(page.locator(`.no-code-screen[data-screen-key="${config.expected.formScreenKey}"] .no-code-actions button[data-action-key]`), 'mobile enabled-candidate managed action surface');
+      const mobileRuntimeEnabledCandidateSurfaceProbe = await probeRuntimeEnabledCandidateSurface(page, config);
+      await page.screenshot({ path: mobileScreenshotPath, fullPage: true });
+      return {
+        ok: true,
+        profile: config.expected.profile,
+        runtime_enabled_candidate_surface: true,
+        runtime_enabled_candidate_surface_probe: runtimeEnabledCandidateSurfaceProbe,
+        mobile_runtime_enabled_candidate_surface_probe: mobileRuntimeEnabledCandidateSurfaceProbe,
+        screenshot: screenshotPath,
+        mobile_screenshot: mobileScreenshotPath,
+      };
+    }
 
     const evaluateExpected = {
       ...config.expected,

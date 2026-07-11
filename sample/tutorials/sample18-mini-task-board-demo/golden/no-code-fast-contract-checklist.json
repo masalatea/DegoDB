@@ -1,0 +1,404 @@
+{
+  "checklist_version": "sample18-no-code-fast-contract-checklist-v1",
+  "sample": "sample18-mini-task-board-demo",
+  "project_key": "SAMPLE18",
+  "source_output_key": "NO-CODE-RUNTIME",
+  "source_table": "task_card",
+  "before_browser_smoke_command": "make sample18-http-runtime-smoke",
+  "conversion_boundary": {
+    "generated_route_replacement": false,
+    "generated_button_execution": false
+  },
+  "metadata_contract": {
+    "definition_version": "no-code-screen-definition-v0",
+    "runtime_version": "no-code-runtime-v0",
+    "contract_key": "task_card",
+    "screen_types": [
+      "list",
+      "detail",
+      "form"
+    ],
+    "screen_keys": [
+      "task_card_list",
+      "task_card_detail",
+      "task_card_form"
+    ],
+    "screen_types_by_key": {
+      "task_card_list": "list",
+      "task_card_detail": "detail",
+      "task_card_form": "form"
+    },
+    "field_keys": [
+      "id",
+      "title",
+      "body",
+      "status",
+      "assigned_to",
+      "priority",
+      "due_date",
+      "completed_at",
+      "updated_at"
+    ],
+    "runtime_screen_count": 3,
+    "runtime_row_count_source": "golden_seed_rows"
+  },
+  "html_dom_contract": {
+    "form_fields": [
+      "title",
+      "body",
+      "status",
+      "assigned_to",
+      "priority",
+      "due_date"
+    ],
+    "disabled_extension_action_keys": [
+      "create_task_card",
+      "update_task_card",
+      "complete_task_card",
+      "reopen_task_card",
+      "delete_task_card"
+    ],
+    "managed_action_keys": [
+      "complete_task_card",
+      "create_task_card",
+      "update_task_card"
+    ],
+    "managed_action_field_counts": {
+      "complete_task_card": 1,
+      "create_task_card": 5,
+      "update_task_card": 7
+    },
+    "managed_action_submit_url": "/samples/sample18-task-board/no-code/generated-submit",
+    "requires_route_boundary_markers": true
+  },
+  "status_filter_contract": {
+    "source": "curated_route_and_generated_preview_metadata",
+    "screen_key": "task_card_list",
+    "field": {
+      "field_key": "status",
+      "label": "Status",
+      "type": "string",
+      "readonly": true,
+      "visibility": "visible"
+    },
+    "curated_route_values": [
+      "",
+      "todo",
+      "doing",
+      "done"
+    ],
+    "generated_runtime_data_controls": "covered_by_make_sample18_no_code_public_runtime_filter_dom_smoke"
+  },
+  "action_input_mapping_inventory": {
+    "source": "curated_route_and_db_access_seed",
+    "inventory_state": "metadata_inventory_only",
+    "generated_button_execution": false,
+    "route_replacement": false,
+    "operations": [
+      {
+        "operation_key": "create_task_card",
+        "curated_route_action": "create",
+        "db_access_function": "InsertTaskCard",
+        "key_fields": [],
+        "required_client_fields": ["title"],
+        "optional_client_fields": ["body", "assigned_to", "priority", "due_date"],
+        "curated_fixed_fields": {
+          "status": "todo"
+        },
+        "server_managed_fields": ["completed_at", "updated_at"],
+        "mapping_state": "promoted_to_disabled_generated_action_metadata"
+      },
+      {
+        "operation_key": "update_task_card",
+        "curated_route_action": "update",
+        "db_access_function": "UpdateTaskCard",
+        "key_fields": ["id"],
+        "required_client_fields": ["title"],
+        "optional_client_fields": ["body", "status", "assigned_to", "priority", "due_date"],
+        "curated_derived_fields": ["completed_at"],
+        "server_managed_fields": ["updated_at"],
+        "mapping_state": "promoted_to_disabled_generated_action_metadata"
+      },
+      {
+        "operation_key": "complete_task_card",
+        "curated_route_action": "complete",
+        "db_access_function": "CompleteTaskCard",
+        "key_fields": ["id"],
+        "required_client_fields": [],
+        "optional_client_fields": [],
+        "curated_fixed_fields": {
+          "status": "done"
+        },
+        "server_managed_fields": ["completed_at", "updated_at"],
+        "mapping_state": "promoted_to_disabled_generated_action_metadata"
+      },
+      {
+        "operation_key": "reopen_task_card",
+        "curated_route_action": "reopen",
+        "db_access_function": "",
+        "key_fields": ["id"],
+        "required_client_fields": [],
+        "optional_client_fields": [],
+        "curated_fixed_fields": {
+          "status": "todo",
+          "completed_at": null
+        },
+        "server_managed_fields": ["updated_at"],
+        "mapping_state": "requires_db_access_or_custom_adapter_before_generated_execution"
+      },
+      {
+        "operation_key": "delete_task_card",
+        "curated_route_action": "delete",
+        "db_access_function": "",
+        "key_fields": ["id"],
+        "required_client_fields": [],
+        "optional_client_fields": [],
+        "curated_fixed_fields": {},
+        "server_managed_fields": [],
+        "mapping_state": "requires_db_access_or_custom_adapter_before_generated_execution"
+      }
+    ]
+  },
+  "generated_submit_request_contract": {
+    "request_state": "preflight_only",
+    "generated_route_added": false,
+    "mutation_enabled": false,
+    "timestamp_fixture": "2026-07-10 12:34:56",
+    "operations": {
+      "create_task_card": {
+        "curated_route_action": "create",
+        "db_access_function": "InsertTaskCard",
+        "valid_input": {
+          "title": "  New generated task  ",
+          "body": "  Body memo  ",
+          "assigned_to": "  Ada  ",
+          "priority": "200",
+          "due_date": "not-a-date",
+          "status": "done",
+          "completed_at": "client-value"
+        },
+        "expected_payload": {
+          "assigned_to": "Ada",
+          "body": "Body memo",
+          "completed_at": null,
+          "due_date": null,
+          "priority": 100,
+          "status": "todo",
+          "title": "New generated task",
+          "updated_at": "2026-07-10 12:34:56"
+        },
+        "expected_dispatcher_bound_fields": {
+          "AssignedTo": "Ada",
+          "Body": "Body memo",
+          "CompletedAt": null,
+          "DueDate": null,
+          "Priority": 100,
+          "Status": "todo",
+          "Title": "New generated task",
+          "UpdatedAt": "2026-07-10 12:34:56"
+        },
+        "ignored_input_fields": ["completed_at", "status"],
+        "invalid_input": {
+          "title": "   "
+        },
+        "expected_errors": ["title.required"]
+      },
+      "update_task_card": {
+        "curated_route_action": "update",
+        "db_access_function": "UpdateTaskCard",
+        "valid_input": {
+          "id": "1801",
+          "title": "  Updated generated task  ",
+          "body": "  Updated body  ",
+          "status": "done",
+          "assigned_to": "  Grace  ",
+          "priority": "-5",
+          "due_date": "2026-08-01",
+          "updated_at": "client-value"
+        },
+        "expected_payload": {
+          "assigned_to": "Grace",
+          "body": "Updated body",
+          "completed_at": "2026-07-10 12:34:56",
+          "due_date": "2026-08-01",
+          "id": 1801,
+          "priority": 0,
+          "status": "done",
+          "title": "Updated generated task",
+          "updated_at": "2026-07-10 12:34:56"
+        },
+        "expected_dispatcher_bound_fields": {
+          "AssignedTo": "Grace",
+          "Body": "Updated body",
+          "CompletedAt": "2026-07-10 12:34:56",
+          "DueDate": "2026-08-01",
+          "Id": 1801,
+          "Priority": 0,
+          "Status": "done",
+          "Title": "Updated generated task",
+          "UpdatedAt": "2026-07-10 12:34:56"
+        },
+        "ignored_input_fields": ["updated_at"],
+        "invalid_input": {
+          "id": "0",
+          "title": ""
+        },
+        "expected_errors": ["id.invalid", "title.required"]
+      },
+      "complete_task_card": {
+        "curated_route_action": "complete",
+        "db_access_function": "CompleteTaskCard",
+        "valid_input": {
+          "id": "1802",
+          "status": "todo",
+          "title": "ignored"
+        },
+        "expected_payload": {
+          "completed_at": "2026-07-10 12:34:56",
+          "id": 1802,
+          "status": "done",
+          "updated_at": "2026-07-10 12:34:56"
+        },
+        "expected_dispatcher_bound_fields": {
+          "CompletedAt": "2026-07-10 12:34:56",
+          "Id": 1802,
+          "Status": "done",
+          "UpdatedAt": "2026-07-10 12:34:56"
+        },
+        "ignored_input_fields": ["status", "title"],
+        "invalid_input": {
+          "id": ""
+        },
+        "expected_errors": ["id.invalid"]
+      }
+    }
+  },
+  "submit_route_binding_gate": {
+    "state": "blocked_preflight",
+    "managed_action_keys": [
+      "complete_task_card",
+      "create_task_card",
+      "update_task_card"
+    ],
+    "submit_route": "/samples/sample18-task-board/no-code/generated-submit",
+    "csrf_source": "sample18_task_board_form_token",
+    "csrf_token_field": "_csrf_token",
+    "csrf_source_selector": "input[name=_csrf_token]",
+    "csrf_transport": "form_field",
+    "csrf_submit_field": "_csrf_token",
+    "required_button_state": "guarded_enabled",
+    "click_binding_state": "blocked_route_enabled",
+    "submit_trigger": "guarded_click",
+    "network_submit_enabled": true,
+    "guarded_click_inventory_state": "implemented_blocked_route",
+    "enablement_gate_set": "csrf_handoff_and_blocked_route_verified",
+    "enablement_gates": [
+      "action_available",
+      "csrf_token_present",
+      "submit_route_declared",
+      "blocked_response_handled",
+      "mutation_dispatcher_still_disabled"
+    ],
+    "payload_assembly": "operation_key_plus_action_fields_plus_csrf",
+    "blocked_response_handling": "render_failure_feedback_without_retry",
+    "failure_display_target": "no-code-action-feedback",
+    "runtime_click_binding": true,
+    "mutation_enabled": false,
+    "fail_closed_result": "generated_submit_disabled",
+    "http_smoke_command": "make sample18-http-runtime-smoke",
+    "required_dom_attributes": {
+      "data-action-binding-state": "blocked_preflight",
+      "data-action-csrf-source": "sample18_task_board_form_token",
+      "data-action-csrf-token-field": "_csrf_token",
+      "data-action-csrf-source-selector": "input[name=_csrf_token]",
+      "data-action-csrf-transport": "form_field",
+      "data-action-click-binding-state": "blocked_route_enabled",
+      "data-action-submit-trigger": "guarded_click",
+      "data-action-network-submit-enabled": "true",
+      "data-action-guarded-click-inventory-state": "implemented_blocked_route",
+      "data-action-enable-gate-set": "csrf_handoff_and_blocked_route_verified",
+      "data-action-payload-assembly": "operation_key_plus_action_fields_plus_csrf",
+      "data-action-blocked-response-handling": "render_failure_feedback_without_retry",
+      "data-action-failure-display-target": "no-code-action-feedback",
+      "data-action-fail-closed-result": "generated_submit_disabled"
+    }
+  },
+  "readiness_metadata_contract": {
+    "snapshot_version": "sample18-generated-submit-readiness-v0",
+    "read_only": true,
+    "mutation_dispatch_allowed": false,
+    "executor_config_fields": [
+      "status",
+      "ready",
+      "mutation_enabled",
+      "executor_enabled",
+      "mutation_enablement_source",
+      "executor_enablement_source",
+      "dependency_source",
+      "failure_code",
+      "missing_file",
+      "reasons"
+    ],
+    "route_compatible_operation_keys": [
+      "create_task_card",
+      "update_task_card",
+      "complete_task_card"
+    ],
+    "non_ready_operation_keys": [
+      "reopen_task_card",
+      "delete_task_card"
+    ],
+    "action_readiness_fields": [
+      "action_key",
+      "operation_key",
+      "route_compatible",
+      "readiness_state",
+      "availability_candidate",
+      "can_submit",
+      "failure_reasons",
+      "executor_config_status"
+    ],
+    "expected_default_executor_config": {
+      "status": "disabled",
+      "ready": false,
+      "mutation_enabled": false,
+      "executor_enabled": false,
+      "mutation_enablement_source": "default",
+      "executor_enablement_source": "default",
+      "dependency_source": "default_runtime_reference",
+      "failure_code": "",
+      "missing_file": "",
+      "reasons": [
+        "mutation_enablement_disabled",
+        "executor_enablement_disabled"
+      ]
+    },
+    "expected_ready_candidate": {
+      "readiness_state": "candidate_ready",
+      "availability_candidate": true,
+      "can_submit": false,
+      "failure_reasons": []
+    },
+    "expected_non_ready_candidate": {
+      "readiness_state": "not_route_compatible",
+      "availability_candidate": false,
+      "can_submit": false,
+      "failure_reasons": [
+        "operation_not_route_compatible"
+      ]
+    },
+    "expected_missing_runtime_failure": {
+      "status": "failed",
+      "ready": false,
+      "failure_code": "executor_default_runtime_file_missing",
+      "reasons": [
+        "runtime_reference_file_missing"
+      ]
+    }
+  },
+  "remaining_gaps": [
+    "reopen/delete remain curated-route-only until DBAccess or custom adapter metadata exists",
+    "generated action buttons call the blocked route only; mutation dispatch remains disabled until explicitly promoted",
+    "browser smoke remains the outer confidence gate for the curated route"
+  ]
+}
