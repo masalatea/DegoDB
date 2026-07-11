@@ -127,6 +127,31 @@ Generated-submit route responses use this compact status contract:
 
 `failure_code` is required on every non-success response. Recovery-required failures must expose `route_execution.recovery_required=true` plus the relevant recovery reason from `transaction_result` or `post_commit_recording`.
 
+### Sample18 Generated Action/Input Gap Inventory
+
+The generated metadata and executable generated-submit route are close, but they are not the same boundary yet. Treat the route as the stricter contract before expanding browser smoke or enabling broader availability.
+
+| Area | Current state | Gap to close before broader availability |
+| --- | --- | --- |
+| Executable operation set | The route contract executes `create_task_card`, `update_task_card`, and `complete_task_card`. | Generated metadata still names `reopen_task_card` and `delete_task_card` as curated-route-only candidates. They must remain disabled until DBAccess/custom adapter metadata exists. |
+| Action payload shape | Route requests are `operation_key` plus flat action fields and `_csrf_token`. | Fast DOM/metadata assertions should prove every generated managed action exposes the same operation key, submit URL, CSRF handoff, and field names the route normalizer accepts. |
+| Key field handoff | `update_task_card` and `complete_task_card` require `id`; create has no key fields. | Generated list/detail/form markup must expose a reliable row identity source for keyed actions before any generated button can be considered executable. |
+| Required input handoff | Create/update require `title`; create has optional body/assignee/priority/due date; update also allows status. | Draft input collection must fail closed when required client fields are missing and must not send readonly/server-managed fields as client authority. |
+| Availability state | Generated buttons remain disabled/blocked by default; route execution also requires explicit mutation and executor enablement. | The UI contract should show disabled/blocked state, unavailable reason, and route executor readiness consistently before outer browser smoke. |
+| Success policy | The route follows all-success-or-failure semantics: user-facing success appears only after validation, CSRF, audit, idempotency, transaction, execution, and post-commit recording all succeed. | Generated UI tests should assert the handoff preserves this policy instead of treating a click or partial draft as success. |
+
+Recommended next slice: add a focused fast contract that compares sample18 generated managed-action metadata and generated DOM attributes against the route contract for create/update/complete. Keep reopen/delete visible only as disabled curated-route candidates.
+
+### Sample18 Generated Action/Input Route Compatibility
+
+The first fast compatibility slice is covered in `Sample18MiniTaskBoardDemoTest`:
+
+- route-compatible operations are limited to `create_task_card`, `update_task_card`, and `complete_task_card`;
+- `reopen_task_card` and `delete_task_card` remain disabled metadata-only candidates until DBAccess/custom adapter metadata exists;
+- generated action inventory must match route key fields, required client fields, optional client fields, and server-managed fields;
+- generated screen-definition action fields must match route-compatible roles (`key` or `input`), required flags, and client-write flags;
+- generated runtime HTML must expose matching `data-action-key`, `data-operation-key`, submit URL, CSRF handoff, and blocked route binding attributes.
+
 ## Design Boundary
 
 Fast UI contract tests prove that generated metadata and generated markup expose the expected UI contract. They do not prove browser layout, CSS pixel rendering, or server mutation. Browser smoke and route-level tests remain responsible for those outer boundaries.

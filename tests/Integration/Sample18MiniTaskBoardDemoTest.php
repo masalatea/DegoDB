@@ -386,6 +386,17 @@ final class Sample18MiniTaskBoardDemoTest extends TestCase
             self::assertIsArray($operation);
             $inventoryByKey[(string) ($operation['operation_key'] ?? '')] = $operation;
         }
+        self::assertSame(
+            ['reopen_task_card', 'delete_task_card'],
+            array_values(array_diff(array_keys($inventoryByKey), array_keys($operations))),
+        );
+        foreach (['reopen_task_card', 'delete_task_card'] as $metadataOnlyOperationKey) {
+            self::assertSame('', $inventoryByKey[$metadataOnlyOperationKey]['db_access_function'] ?? 'not-empty');
+            self::assertSame(
+                'requires_db_access_or_custom_adapter_before_generated_execution',
+                $inventoryByKey[$metadataOnlyOperationKey]['mapping_state'] ?? '',
+            );
+        }
 
         $dedupeKeys = [];
         foreach ($operations as $operationKey => $expectation) {
@@ -400,6 +411,19 @@ final class Sample18MiniTaskBoardDemoTest extends TestCase
             self::assertSame(
                 $inventoryByKey[$operationKey]['db_access_function'] ?? '',
                 $contracts[$operationKey]['db_access_function'] ?? '',
+            );
+            self::assertSame($contracts[$operationKey]['key_fields'] ?? [], $inventoryByKey[$operationKey]['key_fields'] ?? []);
+            self::assertSame(
+                $contracts[$operationKey]['required_client_fields'] ?? [],
+                $inventoryByKey[$operationKey]['required_client_fields'] ?? [],
+            );
+            self::assertSame(
+                $contracts[$operationKey]['optional_client_fields'] ?? [],
+                $inventoryByKey[$operationKey]['optional_client_fields'] ?? [],
+            );
+            self::assertSame(
+                $contracts[$operationKey]['server_managed_fields'] ?? [],
+                $inventoryByKey[$operationKey]['server_managed_fields'] ?? [],
             );
 
             $valid = app_lab_sample18_task_board_normalize_generated_submit_request(
@@ -4099,11 +4123,13 @@ final class Sample18MiniTaskBoardDemoTest extends TestCase
         $contractActions = $screenDefinition['contracts'][0]['actions'] ?? [];
         self::assertIsArray($contractActions);
         $fieldCountsByAction = [];
+        $contractActionsByKey = [];
         $bindingGate = $checklist['submit_route_binding_gate'] ?? [];
         self::assertIsArray($bindingGate);
         foreach ($contractActions as $action) {
             self::assertIsArray($action);
             $actionKey = (string) ($action['action_key'] ?? '');
+            $contractActionsByKey[$actionKey] = $action;
             $fieldCountsByAction[$actionKey] = count($action['fields'] ?? []);
             self::assertSame('disabled', (string) ($action['availability'] ?? ''));
             self::assertSame(
@@ -4140,6 +4166,47 @@ final class Sample18MiniTaskBoardDemoTest extends TestCase
             }
         }
         self::assertSame($htmlDomContract['managed_action_field_counts'] ?? [], $fieldCountsByAction);
+        $routeContracts = app_lab_sample18_task_board_generated_submit_contracts();
+        foreach ($routeContracts as $operationKey => $routeContract) {
+            self::assertArrayHasKey($operationKey, $contractActionsByKey);
+            $action = $contractActionsByKey[$operationKey];
+            self::assertSame($operationKey, $action['action_key'] ?? '');
+            self::assertSame($operationKey, $action['operation_key'] ?? '');
+            self::assertSame($bindingGate['submit_route'] ?? '', $action['submit_route'] ?? '');
+
+            $expectedFieldMap = [];
+            foreach (($routeContract['key_fields'] ?? []) as $fieldKey) {
+                $expectedFieldMap[$fieldKey] = ['role' => 'key', 'required' => true, 'client_write' => false];
+            }
+            foreach (($routeContract['required_client_fields'] ?? []) as $fieldKey) {
+                $expectedFieldMap[$fieldKey] = ['role' => 'input', 'required' => true, 'client_write' => true];
+            }
+            foreach (($routeContract['optional_client_fields'] ?? []) as $fieldKey) {
+                $expectedFieldMap[$fieldKey] = ['role' => 'input', 'required' => false, 'client_write' => true];
+            }
+            ksort($expectedFieldMap);
+
+            $actualFieldMap = [];
+            foreach (($action['fields'] ?? []) as $field) {
+                self::assertIsArray($field);
+                $fieldKey = (string) ($field['field_key'] ?? '');
+                $actualFieldMap[$fieldKey] = [
+                    'role' => (string) ($field['role'] ?? ''),
+                    'required' => (bool) ($field['required'] ?? false),
+                    'client_write' => (bool) ($field['client_write'] ?? false),
+                ];
+            }
+            ksort($actualFieldMap);
+            self::assertSame($expectedFieldMap, $actualFieldMap);
+
+            foreach (array_merge(
+                array_keys($routeContract['fixed_fields'] ?? []),
+                $routeContract['derived_fields'] ?? [],
+                $routeContract['server_managed_fields'] ?? [],
+            ) as $serverOwnedFieldKey) {
+                self::assertArrayNotHasKey($serverOwnedFieldKey, $actualFieldMap);
+            }
+        }
         $runtimePreview = NoCodeUiContractAssertions::readJsonFile($this, $publishedRoot . '/runtime-preview.json');
         NoCodeUiContractAssertions::assertRuntimePreviewScreenKeys(
             $this,
@@ -4172,6 +4239,10 @@ final class Sample18MiniTaskBoardDemoTest extends TestCase
             'data-action-submit-url="' . ($htmlDomContract['managed_action_submit_url'] ?? '') . '"',
             $runtimePreviewHtml,
         );
+        foreach (array_keys(app_lab_sample18_task_board_generated_submit_contracts()) as $operationKey) {
+            self::assertStringContainsString('data-action-key="' . $operationKey . '"', $runtimePreviewHtml);
+            self::assertStringContainsString('data-operation-key="' . $operationKey . '"', $runtimePreviewHtml);
+        }
         foreach (($bindingGate['required_dom_attributes'] ?? []) as $attribute => $value) {
             self::assertStringContainsString($attribute . '="' . $value . '"', $runtimePreviewHtml);
         }

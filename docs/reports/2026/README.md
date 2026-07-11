@@ -11,6 +11,12 @@
 
 ## Index
 
+- `2026-0710-post-action-input-route-compatibility-contract-lane-closure.md`
+  - #688 post action/input route compatibility contract lane closure。#687 の fast compatibility assertions を受け入れ、重い browser smoke の前に guarded-submit payload handoff fast contract (#689) を昇格。Status: `DONE`。
+- `2026-0710-sample18-generated-action-input-route-compatibility-contract-first-slice.md`
+  - #687 sample18 generated action/input route compatibility contract first slice。generated managed-action metadata と generated DOM attributes を generated-submit route の create/update/complete contract に照合する fast assertions を追加し、reopen/delete は disabled candidate として固定。Status: `FIRST_SLICE_DONE`。
+- `2026-0710-sample18-generated-action-input-gap-inventory.md`
+  - #686 sample18 generated action/input gap inventory。generated managed-action metadata/input draft と executable generated-submit route の gap を棚卸しし、create/update/complete の route compatibility contract assertions (#687) を次に昇格。Status: `DONE`。
 - `2026-0710-post-route-response-contract-lane-closure.md`
   - #685 post route response contract lane closure。#684 の response contract assertions を受け入れ、次は sample18 generated action/input gap inventory (#686) を昇格。Status: `DONE`。
 - `2026-0710-sample18-generated-submit-route-response-contract-first-slice.md`
