@@ -3200,6 +3200,199 @@ final class Sample18MiniTaskBoardDemoTest extends TestCase
         self::assertSame('invalid_execution_status', $invalid['reason']);
     }
 
+    public function testMiniTaskBoardGeneratedSubmitPostCommitRecordingAdapterPersistsDbBackedOutcome(): void
+    {
+        $app = $this->sqliteApp();
+        $bootstrap = app_config_db_bootstrap_apply($app);
+        self::assertTrue($bootstrap['ok'], $bootstrap['error']);
+        $principal = [
+            'id' => 'sample18-recorder@example.test',
+            'auth_source' => 'phpunit',
+        ];
+
+        $normalized = app_lab_sample18_task_board_normalize_generated_submit_request(
+            'create_task_card',
+            ['title' => 'Post commit recording', 'body' => '', 'assigned_to' => '', 'priority' => '70', 'due_date' => ''],
+            '2026-07-10 15:00:00',
+        );
+        self::assertTrue($normalized['ok']);
+        $dispatcher = app_lab_sample18_task_board_generated_submit_dispatcher_dry_run($normalized);
+        $preview = app_lab_sample18_task_board_generated_submit_idempotency_audit_preview(
+            $normalized,
+            $dispatcher,
+            'blocked',
+            'generated_submit_disabled',
+        );
+        $requestAudit = app_lab_sample18_task_board_generated_submit_audit_event_with_actor(
+            is_array($preview['audit_event_preview'] ?? null) ? $preview['audit_event_preview'] : [],
+            $principal,
+        );
+        $auditAppend = app_lab_sample18_task_board_generated_submit_append_audit_event($app, $requestAudit);
+        self::assertSame('appended', $auditAppend['status']);
+        $idempotency = app_lab_sample18_task_board_generated_submit_apply_idempotency(
+            $app,
+            $normalized,
+            $dispatcher,
+            $preview,
+            $auditAppend,
+        );
+        self::assertSame('recorded', $idempotency['status']);
+
+        $mutationGate = app_lab_sample18_task_board_generated_submit_mutation_gate(
+            ['sample18_generated_submit_mutation_enabled' => true],
+            $normalized,
+            $dispatcher,
+            $auditAppend,
+            $idempotency,
+        );
+        $executionPlan = app_lab_sample18_task_board_generated_submit_dbaccess_execution_plan(
+            $normalized,
+            $dispatcher,
+            $mutationGate,
+        );
+        $transactionPlan = app_lab_sample18_task_board_generated_submit_transaction_plan($executionPlan);
+        $updatePlan = app_lab_sample18_task_board_generated_submit_execution_update_plan(
+            $transactionPlan,
+            $auditAppend,
+            $idempotency,
+        );
+        $guard = app_lab_sample18_task_board_generated_submit_execution_guard(
+            $normalized,
+            $auditAppend,
+            $idempotency,
+            $mutationGate,
+            $executionPlan,
+            $transactionPlan,
+            $updatePlan,
+        );
+        $coordination = app_lab_sample18_task_board_generated_submit_executor_coordination_plan(
+            $guard,
+            $updatePlan,
+            true,
+        );
+        self::assertSame('allowed', $guard['status']);
+        self::assertSame('planned', $coordination['status']);
+
+        $transaction = app_lab_sample18_task_board_generated_submit_transaction_adapter(
+            $normalized,
+            $dispatcher,
+            $guard,
+            $coordination,
+            true,
+            static fn (): array => ['ok' => true],
+            static fn (): array => ['ok' => true],
+            static fn (): array => ['ok' => true],
+            static fn (): array => ['ok' => true, 'result_code' => 'task_card_inserted', 'rows_affected' => 1],
+        );
+        self::assertSame('executed', $transaction['status']);
+        self::assertTrue($transaction['success']);
+        self::assertSame('committed', $transaction['transaction_status']);
+
+        $recorded = app_lab_sample18_task_board_generated_submit_post_commit_recording_adapter(
+            $transaction,
+            $updatePlan,
+            $guard,
+            function (array $context) use ($app, $updatePlan, $guard, $principal, $transaction): array {
+                return app_lab_sample18_task_board_generated_submit_append_execution_audit_event(
+                    $app,
+                    $updatePlan,
+                    $guard,
+                    $principal,
+                    'executed',
+                    (string) ($transaction['dbaccess_result']['result_code'] ?? 'task_card_inserted'),
+                    (string) ($context['transaction_status'] ?? 'committed'),
+                    ['rows_affected' => (int) ($transaction['dbaccess_result']['rows_affected'] ?? 0)],
+                );
+            },
+            function (array $context) use ($app, $transaction): array {
+                $executionAuditResult = is_array($context['execution_audit_result'] ?? null)
+                    ? $context['execution_audit_result']
+                    : [];
+
+                return app_lab_sample18_generated_submit_idempotency_update_execution_outcome($app, [
+                    'dedupe_key' => (string) ($context['dedupe_key'] ?? ''),
+                    'execution_status' => 'executed',
+                    'execution_result_code' => (string) ($transaction['dbaccess_result']['result_code'] ?? 'task_card_inserted'),
+                    'transaction_status' => (string) ($context['transaction_status'] ?? 'committed'),
+                    'execution_audit_event_key' => (string) ($executionAuditResult['item']['event_key'] ?? ''),
+                    'metadata' => ['rows_affected' => (int) ($transaction['dbaccess_result']['rows_affected'] ?? 0)],
+                ]);
+            },
+        );
+        self::assertSame('recorded', $recorded['status']);
+        self::assertTrue($recorded['success']);
+        self::assertSame('recorded', $recorded['recording_status']);
+        self::assertSame('recorded', $recorded['execution_audit_status']);
+        self::assertSame('recorded', $recorded['idempotency_update_status']);
+        self::assertFalse($recorded['recovery_required']);
+
+        $executionAuditKey = (string) ($recorded['execution_audit_result']['item']['event_key'] ?? '');
+        self::assertNotSame('', $executionAuditKey);
+        self::assertSame(
+            $auditAppend['item']['event_key'] ?? '',
+            $recorded['execution_audit_result']['item']['metadata']['request_audit_event_key'] ?? '',
+        );
+
+        $latest = app_audit_log_fetch_latest($app, [
+            'project_key' => 'SAMPLE18',
+            'event_type' => 'sample18.generated_submit.executed',
+            'target_key' => (string) ($preview['dedupe_key_preview'] ?? ''),
+            'limit' => 10,
+        ]);
+        self::assertTrue($latest['ok'], $latest['error']);
+        self::assertCount(1, $latest['items']);
+        self::assertSame($executionAuditKey, $latest['items'][0]['event_key'] ?? '');
+
+        $idempotencyRecords = app_lab_sample18_generated_submit_idempotency_fetch_latest_records($app, [
+            'dedupe_key' => (string) ($preview['dedupe_key_preview'] ?? ''),
+            'limit' => 10,
+        ]);
+        self::assertTrue($idempotencyRecords['ok'], $idempotencyRecords['error']);
+        self::assertCount(1, $idempotencyRecords['items']);
+        self::assertSame('executed', $idempotencyRecords['items'][0]['result'] ?? '');
+        self::assertSame('executed', $idempotencyRecords['items'][0]['metadata']['execution']['execution_status'] ?? '');
+        self::assertSame('task_card_inserted', $idempotencyRecords['items'][0]['metadata']['execution']['execution_result_code'] ?? '');
+        self::assertSame('committed', $idempotencyRecords['items'][0]['metadata']['execution']['transaction_status'] ?? '');
+        self::assertSame($executionAuditKey, $idempotencyRecords['items'][0]['metadata']['execution']['execution_audit_event_key'] ?? '');
+
+        $missingRecordTransaction = $transaction;
+        $missingRecordTransaction['dedupe_key'] = 'missing-post-commit-record';
+        $failed = app_lab_sample18_task_board_generated_submit_post_commit_recording_adapter(
+            $missingRecordTransaction,
+            $updatePlan,
+            $guard,
+            static function () use ($app, $updatePlan, $guard, $principal, $transaction): array {
+                return app_lab_sample18_task_board_generated_submit_append_execution_audit_event(
+                    $app,
+                    $updatePlan,
+                    $guard,
+                    $principal,
+                    'executed',
+                    (string) ($transaction['dbaccess_result']['result_code'] ?? 'task_card_inserted'),
+                    'committed',
+                );
+            },
+            static function (array $context) use ($app, $transaction): array {
+                return app_lab_sample18_generated_submit_idempotency_update_execution_outcome($app, [
+                    'dedupe_key' => (string) ($context['dedupe_key'] ?? ''),
+                    'execution_status' => 'executed',
+                    'execution_result_code' => (string) ($transaction['dbaccess_result']['result_code'] ?? 'task_card_inserted'),
+                    'transaction_status' => 'committed',
+                    'execution_audit_event_key' => (string) ($context['execution_audit_result']['item']['event_key'] ?? ''),
+                    'metadata' => [],
+                ]);
+            },
+        );
+        self::assertSame('failed', $failed['status']);
+        self::assertFalse($failed['success']);
+        self::assertSame('failed', $failed['recording_status']);
+        self::assertSame('recorded', $failed['execution_audit_status']);
+        self::assertSame('failed', $failed['idempotency_update_status']);
+        self::assertTrue($failed['recovery_required']);
+        self::assertSame('post_commit_recording_failed', $failed['recovery_reason']);
+        self::assertSame('idempotency_update_failed', $failed['failure_code']);
+    }
+
     public function testMiniTaskBoardDemoReferenceOutputs(): void
     {
         $fixture = $this->sample18NoCodeGoldenFixture();
