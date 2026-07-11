@@ -1841,6 +1841,239 @@ final class Sample18MiniTaskBoardDemoTest extends TestCase
         }
     }
 
+    public function testMiniTaskBoardReadinessMetadataShapeContractFixture(): void
+    {
+        $checklist = $this->sample18FastContractChecklist();
+        $contract = $checklist['readiness_metadata_contract'] ?? [];
+        self::assertIsArray($contract);
+        self::assertSame('sample18-generated-submit-readiness-v0', $contract['snapshot_version'] ?? '');
+        self::assertTrue($contract['read_only'] ?? false);
+        self::assertFalse($contract['mutation_dispatch_allowed'] ?? true);
+
+        self::assertSame(
+            [
+                'status',
+                'ready',
+                'mutation_enabled',
+                'executor_enabled',
+                'mutation_enablement_source',
+                'executor_enablement_source',
+                'dependency_source',
+                'failure_code',
+                'missing_file',
+                'reasons',
+            ],
+            $contract['executor_config_fields'] ?? [],
+        );
+        self::assertSame(
+            ['create_task_card', 'update_task_card', 'complete_task_card'],
+            $contract['route_compatible_operation_keys'] ?? [],
+        );
+        self::assertSame(
+            ['reopen_task_card', 'delete_task_card'],
+            $contract['non_ready_operation_keys'] ?? [],
+        );
+        self::assertSame(
+            [
+                'action_key',
+                'operation_key',
+                'route_compatible',
+                'readiness_state',
+                'availability_candidate',
+                'can_submit',
+                'failure_reasons',
+                'executor_config_status',
+            ],
+            $contract['action_readiness_fields'] ?? [],
+        );
+
+        $defaultConfig = $contract['expected_default_executor_config'] ?? [];
+        self::assertIsArray($defaultConfig);
+        self::assertSame('disabled', $defaultConfig['status'] ?? '');
+        self::assertFalse($defaultConfig['ready'] ?? true);
+        self::assertFalse($defaultConfig['mutation_enabled'] ?? true);
+        self::assertFalse($defaultConfig['executor_enabled'] ?? true);
+        self::assertSame('default', $defaultConfig['mutation_enablement_source'] ?? '');
+        self::assertSame('default', $defaultConfig['executor_enablement_source'] ?? '');
+        self::assertSame('default_runtime_reference', $defaultConfig['dependency_source'] ?? '');
+        self::assertContains('mutation_enablement_disabled', $defaultConfig['reasons'] ?? []);
+        self::assertContains('executor_enablement_disabled', $defaultConfig['reasons'] ?? []);
+
+        $readyCandidate = $contract['expected_ready_candidate'] ?? [];
+        self::assertIsArray($readyCandidate);
+        self::assertSame('candidate_ready', $readyCandidate['readiness_state'] ?? '');
+        self::assertTrue($readyCandidate['availability_candidate'] ?? false);
+        self::assertFalse($readyCandidate['can_submit'] ?? true);
+        self::assertSame([], $readyCandidate['failure_reasons'] ?? ['unexpected']);
+
+        $nonReadyCandidate = $contract['expected_non_ready_candidate'] ?? [];
+        self::assertIsArray($nonReadyCandidate);
+        self::assertSame('not_route_compatible', $nonReadyCandidate['readiness_state'] ?? '');
+        self::assertFalse($nonReadyCandidate['availability_candidate'] ?? true);
+        self::assertFalse($nonReadyCandidate['can_submit'] ?? true);
+        self::assertSame(['operation_not_route_compatible'], $nonReadyCandidate['failure_reasons'] ?? []);
+
+        $missingRuntime = $contract['expected_missing_runtime_failure'] ?? [];
+        self::assertIsArray($missingRuntime);
+        self::assertSame('failed', $missingRuntime['status'] ?? '');
+        self::assertFalse($missingRuntime['ready'] ?? true);
+        self::assertSame('executor_default_runtime_file_missing', $missingRuntime['failure_code'] ?? '');
+        self::assertSame(['runtime_reference_file_missing'], $missingRuntime['reasons'] ?? []);
+    }
+
+    public function testMiniTaskBoardGeneratedSubmitReadinessSnapshotHelperIsSideEffectFree(): void
+    {
+        $previousMutationFlag = getenv('MTOOL_SAMPLE18_GENERATED_SUBMIT_MUTATION_ENABLED');
+        $previousExecutorFlag = getenv('MTOOL_SAMPLE18_GENERATED_SUBMIT_EXECUTOR_ENABLED');
+
+        try {
+            putenv('MTOOL_SAMPLE18_GENERATED_SUBMIT_MUTATION_ENABLED');
+            putenv('MTOOL_SAMPLE18_GENERATED_SUBMIT_EXECUTOR_ENABLED');
+
+            $default = app_lab_sample18_task_board_generated_submit_readiness_snapshot([]);
+            self::assertSame('sample18-generated-submit-readiness-v0', $default['snapshot_version'] ?? '');
+            self::assertTrue($default['read_only'] ?? false);
+            self::assertFalse($default['mutation_dispatch_allowed'] ?? true);
+            self::assertSame('/samples/sample18-task-board/no-code/generated-submit', $default['submit_route'] ?? '');
+            self::assertSame(
+                ['create_task_card', 'update_task_card', 'complete_task_card'],
+                $default['route_compatible_operation_keys'] ?? [],
+            );
+            self::assertSame(['reopen_task_card', 'delete_task_card'], $default['non_ready_operation_keys'] ?? []);
+
+            $defaultConfig = $default['executor_config'] ?? [];
+            self::assertIsArray($defaultConfig);
+            self::assertSame('disabled', $defaultConfig['status'] ?? '');
+            self::assertFalse($defaultConfig['ready'] ?? true);
+            self::assertFalse($defaultConfig['mutation_enabled'] ?? true);
+            self::assertFalse($defaultConfig['executor_enabled'] ?? true);
+            self::assertSame('default_runtime_reference', $defaultConfig['dependency_source'] ?? '');
+            self::assertContains('mutation_enablement_disabled', $defaultConfig['reasons'] ?? []);
+            self::assertContains('executor_enablement_disabled', $defaultConfig['reasons'] ?? []);
+
+            $defaultByOperation = [];
+            foreach (($default['action_readiness'] ?? []) as $actionReadiness) {
+                self::assertIsArray($actionReadiness);
+                $defaultByOperation[(string) ($actionReadiness['operation_key'] ?? '')] = $actionReadiness;
+                self::assertFalse($actionReadiness['can_submit'] ?? true);
+                self::assertSame('disabled', $actionReadiness['executor_config_status'] ?? '');
+            }
+
+            foreach (['create_task_card', 'update_task_card', 'complete_task_card'] as $operationKey) {
+                self::assertSame('candidate_ready', $defaultByOperation[$operationKey]['readiness_state'] ?? '');
+                self::assertTrue($defaultByOperation[$operationKey]['route_compatible'] ?? false);
+                self::assertTrue($defaultByOperation[$operationKey]['availability_candidate'] ?? false);
+                self::assertSame([], $defaultByOperation[$operationKey]['failure_reasons'] ?? ['unexpected']);
+            }
+            foreach (['reopen_task_card', 'delete_task_card'] as $operationKey) {
+                self::assertSame('not_route_compatible', $defaultByOperation[$operationKey]['readiness_state'] ?? '');
+                self::assertFalse($defaultByOperation[$operationKey]['route_compatible'] ?? true);
+                self::assertFalse($defaultByOperation[$operationKey]['availability_candidate'] ?? true);
+                self::assertSame(['operation_not_route_compatible'], $defaultByOperation[$operationKey]['failure_reasons'] ?? []);
+            }
+
+            $callable = static fn (): array => ['ok' => true];
+            $ready = app_lab_sample18_task_board_generated_submit_readiness_snapshot([
+                'sample18_generated_submit_mutation_enabled' => true,
+                'sample18_generated_submit_executor_enabled' => true,
+                'sample18_generated_submit_runtime_reference_dir' => sys_get_temp_dir() . '/unused-sample18-runtime-config-' . bin2hex(random_bytes(4)),
+                'sample18_generated_submit_transaction_callables' => [
+                    'begin' => $callable,
+                    'commit' => $callable,
+                    'rollback' => $callable,
+                    'dbaccess' => $callable,
+                ],
+            ]);
+            self::assertSame('ready', $ready['executor_config']['status'] ?? '');
+            self::assertTrue($ready['executor_config']['ready'] ?? false);
+            self::assertSame('injected_transaction_callables', $ready['executor_config']['dependency_source'] ?? '');
+            foreach (($ready['action_readiness'] ?? []) as $actionReadiness) {
+                self::assertFalse($actionReadiness['can_submit'] ?? true);
+            }
+
+            $missingRuntimeDir = sys_get_temp_dir() . '/missing-sample18-readiness-runtime-' . bin2hex(random_bytes(4));
+            $failed = app_lab_sample18_task_board_generated_submit_readiness_snapshot([
+                'sample18_generated_submit_mutation_enabled' => true,
+                'sample18_generated_submit_executor_enabled' => true,
+                'sample18_generated_submit_runtime_reference_dir' => $missingRuntimeDir,
+            ]);
+            self::assertSame('failed', $failed['executor_config']['status'] ?? '');
+            self::assertSame('executor_default_runtime_file_missing', $failed['executor_config']['failure_code'] ?? '');
+            self::assertStringStartsWith($missingRuntimeDir, $failed['executor_config']['missing_file'] ?? '');
+            foreach (($failed['action_readiness'] ?? []) as $actionReadiness) {
+                self::assertIsArray($actionReadiness);
+                if (($actionReadiness['route_compatible'] ?? false) !== true) {
+                    continue;
+                }
+                self::assertSame('executor_config_failed', $actionReadiness['readiness_state'] ?? '');
+                self::assertContains('runtime_reference_file_missing', $actionReadiness['failure_reasons'] ?? []);
+                self::assertFalse($actionReadiness['can_submit'] ?? true);
+            }
+        } finally {
+            $previousMutationFlag === false
+                ? putenv('MTOOL_SAMPLE18_GENERATED_SUBMIT_MUTATION_ENABLED')
+                : putenv('MTOOL_SAMPLE18_GENERATED_SUBMIT_MUTATION_ENABLED=' . $previousMutationFlag);
+            $previousExecutorFlag === false
+                ? putenv('MTOOL_SAMPLE18_GENERATED_SUBMIT_EXECUTOR_ENABLED')
+                : putenv('MTOOL_SAMPLE18_GENERATED_SUBMIT_EXECUTOR_ENABLED=' . $previousExecutorFlag);
+        }
+    }
+
+    public function testMiniTaskBoardReadinessFastContractRendersFailureVisibilityWithoutBrowser(): void
+    {
+        $missingRuntimeDir = sys_get_temp_dir() . '/missing-sample18-readiness-fast-contract-' . bin2hex(random_bytes(4));
+        $failedSnapshot = app_lab_sample18_task_board_generated_submit_readiness_snapshot([
+            'sample18_generated_submit_mutation_enabled' => true,
+            'sample18_generated_submit_executor_enabled' => true,
+            'sample18_generated_submit_runtime_reference_dir' => $missingRuntimeDir,
+        ]);
+        $failedByOperation = [];
+        foreach (($failedSnapshot['action_readiness'] ?? []) as $actionReadiness) {
+            self::assertIsArray($actionReadiness);
+            $failedByOperation[(string) ($actionReadiness['operation_key'] ?? '')] = $actionReadiness;
+        }
+
+        $renderActions = [];
+        foreach (['create_task_card', 'reopen_task_card'] as $operationKey) {
+            $renderActions[] = [
+                'action_key' => $operationKey,
+                'label' => $operationKey,
+                'operation_key' => $operationKey,
+                'operation_type' => 'custom',
+                'enabled' => false,
+                'availability' => 'disabled',
+                'submit_route' => app_lab_sample18_task_board_generated_submit_path(),
+                'submit_binding_gate' => [
+                    'readiness_state' => (string) ($failedByOperation[$operationKey]['readiness_state'] ?? ''),
+                    'availability_candidate' => (bool) ($failedByOperation[$operationKey]['availability_candidate'] ?? false),
+                    'can_submit' => (bool) ($failedByOperation[$operationKey]['can_submit'] ?? false),
+                    'executor_config_status' => (string) ($failedByOperation[$operationKey]['executor_config_status'] ?? ''),
+                ],
+                'readiness_metadata' => $failedByOperation[$operationKey] ?? [],
+                'fields' => [],
+                'failed_checks' => [],
+            ];
+        }
+
+        $html = app_no_code_runtime_render_screen_html([
+            'screen_key' => 'sample18_readiness_fast_contract',
+            'screen_type' => 'form',
+            'screen_title' => 'Sample18 Readiness Fast Contract',
+            'fields' => [],
+            'actions' => $renderActions,
+            'data' => ['item' => []],
+        ]);
+
+        self::assertMatchesRegularExpression(
+            '/data-action-key="create_task_card"[^>]+data-action-readiness-state="executor_config_failed"[^>]+data-action-availability-candidate="true"[^>]+data-action-can-submit="false"[^>]+data-action-executor-config-status="failed"[^>]+data-action-readiness-failure-reasons="runtime_reference_file_missing"/',
+            $html,
+        );
+        self::assertMatchesRegularExpression(
+            '/data-action-key="reopen_task_card"[^>]+data-action-readiness-state="not_route_compatible"[^>]+data-action-availability-candidate="false"[^>]+data-action-can-submit="false"[^>]+data-action-executor-config-status="failed"[^>]+data-action-readiness-failure-reasons="operation_not_route_compatible"/',
+            $html,
+        );
+    }
+
     public function testMiniTaskBoardGeneratedSubmitRouteExposesEnvExecutorConfigMetadata(): void
     {
         $previousMutationFlag = getenv('MTOOL_SAMPLE18_GENERATED_SUBMIT_MUTATION_ENABLED');
@@ -4161,6 +4394,10 @@ final class Sample18MiniTaskBoardDemoTest extends TestCase
                         'mutation_enabled' => $bindingGate['mutation_enabled'] ?? null,
                         'fail_closed_result' => $bindingGate['fail_closed_result'] ?? '',
                         'http_smoke_command' => $bindingGate['http_smoke_command'] ?? '',
+                        'readiness_state' => 'candidate_ready',
+                        'availability_candidate' => true,
+                        'can_submit' => false,
+                        'executor_config_status' => 'disabled',
                     ],
                     $action['submit_binding_gate'] ?? [],
                 );
@@ -4178,6 +4415,14 @@ final class Sample18MiniTaskBoardDemoTest extends TestCase
             self::assertSame($operationKey, $action['action_key'] ?? '');
             self::assertSame($operationKey, $action['operation_key'] ?? '');
             self::assertSame($bindingGate['submit_route'] ?? '', $action['submit_route'] ?? '');
+            self::assertSame($operationKey, $action['readiness_metadata']['action_key'] ?? '');
+            self::assertSame($operationKey, $action['readiness_metadata']['operation_key'] ?? '');
+            self::assertTrue($action['readiness_metadata']['route_compatible'] ?? false);
+            self::assertSame('candidate_ready', $action['readiness_metadata']['readiness_state'] ?? '');
+            self::assertTrue($action['readiness_metadata']['availability_candidate'] ?? false);
+            self::assertFalse($action['readiness_metadata']['can_submit'] ?? true);
+            self::assertSame([], $action['readiness_metadata']['failure_reasons'] ?? ['unexpected']);
+            self::assertSame('disabled', $action['readiness_metadata']['executor_config_status'] ?? '');
 
             $expectedFieldMap = [];
             foreach (($routeContract['key_fields'] ?? []) as $fieldKey) {
@@ -4285,6 +4530,29 @@ final class Sample18MiniTaskBoardDemoTest extends TestCase
 
         $enabledCandidatePolicyActions = [];
         $routeContracts = app_lab_sample18_task_board_generated_submit_contracts();
+        $runtimeActionsByKey = [];
+        foreach (($runtimePreview['screens'] ?? []) as $runtimeScreen) {
+            if (!is_array($runtimeScreen)) {
+                continue;
+            }
+            foreach (($runtimeScreen['actions'] ?? []) as $runtimeAction) {
+                if (!is_array($runtimeAction)) {
+                    continue;
+                }
+                $runtimeActionsByKey[(string) ($runtimeAction['action_key'] ?? '')] = $runtimeAction;
+            }
+        }
+        foreach (array_keys($routeContracts) as $operationKey) {
+            self::assertArrayHasKey($operationKey, $runtimeActionsByKey);
+            self::assertSame($operationKey, $runtimeActionsByKey[$operationKey]['readiness_metadata']['action_key'] ?? '');
+            self::assertSame($operationKey, $runtimeActionsByKey[$operationKey]['readiness_metadata']['operation_key'] ?? '');
+            self::assertTrue($runtimeActionsByKey[$operationKey]['readiness_metadata']['route_compatible'] ?? false);
+            self::assertSame('candidate_ready', $runtimeActionsByKey[$operationKey]['readiness_metadata']['readiness_state'] ?? '');
+            self::assertTrue($runtimeActionsByKey[$operationKey]['readiness_metadata']['availability_candidate'] ?? false);
+            self::assertFalse($runtimeActionsByKey[$operationKey]['readiness_metadata']['can_submit'] ?? true);
+            self::assertSame([], $runtimeActionsByKey[$operationKey]['readiness_metadata']['failure_reasons'] ?? ['unexpected']);
+            self::assertSame('disabled', $runtimeActionsByKey[$operationKey]['readiness_metadata']['executor_config_status'] ?? '');
+        }
         foreach ($contractActionsByKey as $actionKey => $action) {
             $enabledCandidatePolicyActions[] = [
                 'action_key' => $actionKey,
@@ -4378,6 +4646,10 @@ final class Sample18MiniTaskBoardDemoTest extends TestCase
         foreach (array_keys($routeContracts) as $operationKey) {
             self::assertMatchesRegularExpression(
                 '/data-action-key="' . preg_quote($operationKey, '/') . '"[^>]+data-action-availability="disabled"/',
+                $runtimePreviewHtml,
+            );
+            self::assertMatchesRegularExpression(
+                '/data-action-key="' . preg_quote($operationKey, '/') . '"[^>]+data-action-readiness-state="candidate_ready"[^>]+data-action-availability-candidate="true"[^>]+data-action-can-submit="false"[^>]+data-action-executor-config-status="disabled"/',
                 $runtimePreviewHtml,
             );
         }

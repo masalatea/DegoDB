@@ -681,6 +681,24 @@ async function probeRuntimeEnabledCandidateSurface(page, config) {
     const previewActions = previewScreens
       .filter((screen) => screen && screen.screen_key === expected.formScreenKey)
       .flatMap((screen) => Array.isArray(screen.actions) ? screen.actions : []);
+    const initialReadiness = buttons
+      .filter((button) => executableKeys.has(button.getAttribute('data-action-key') || ''))
+      .map((button) => ({
+        key: button.getAttribute('data-action-key') || '',
+        readinessState: button.getAttribute('data-action-readiness-state') || '',
+        availabilityCandidate: button.getAttribute('data-action-availability-candidate') || '',
+        canSubmit: button.getAttribute('data-action-can-submit') || '',
+        executorConfigStatus: button.getAttribute('data-action-executor-config-status') || '',
+      }));
+    const previewReadiness = previewActions
+      .filter((action) => action && executableKeys.has(action.action_key || ''))
+      .map((action) => ({
+        key: action.action_key || '',
+        readinessState: action.readiness_metadata?.readiness_state || '',
+        availabilityCandidate: action.readiness_metadata?.availability_candidate === true,
+        canSubmit: action.readiness_metadata?.can_submit === true,
+        executorConfigStatus: action.readiness_metadata?.executor_config_status || '',
+      }));
 
     previewActions.forEach((action) => {
       if (!action || !executableKeys.has(action.action_key || '')) {
@@ -770,6 +788,8 @@ async function probeRuntimeEnabledCandidateSurface(page, config) {
       disabledProperties: buttons.map((button) => button.disabled === true),
       disabledReasons: buttons.map((button) => button.getAttribute('data-action-disabled-reason') || ''),
       policyFailedChecks: buttons.map((button) => button.getAttribute('data-action-policy-failed-checks') || ''),
+      initialReadiness,
+      previewReadiness,
       previewActionAvailability: previewActions.reduce((carry, action) => {
         carry[action.action_key || ''] = action.availability || '';
         return carry;
@@ -812,6 +832,16 @@ async function probeRuntimeEnabledCandidateSurface(page, config) {
     || result.disabledProperties.some((disabled) => disabled !== false)
     || result.disabledReasons.some((reason) => reason !== '')
     || result.policyFailedChecks.some((checks) => checks !== '')
+    || JSON.stringify(result.initialReadiness.map((item) => item.key)) !== JSON.stringify(expectedKeys)
+    || result.initialReadiness.some((item) => item.readinessState !== 'candidate_ready')
+    || result.initialReadiness.some((item) => item.availabilityCandidate !== 'true')
+    || result.initialReadiness.some((item) => item.canSubmit !== 'false')
+    || result.initialReadiness.some((item) => item.executorConfigStatus !== 'disabled')
+    || JSON.stringify(result.previewReadiness.map((item) => item.key)) !== JSON.stringify(expectedKeys)
+    || result.previewReadiness.some((item) => item.readinessState !== 'candidate_ready')
+    || result.previewReadiness.some((item) => item.availabilityCandidate !== true)
+    || result.previewReadiness.some((item) => item.canSubmit !== false)
+    || result.previewReadiness.some((item) => item.executorConfigStatus !== 'disabled')
     || result.forbiddenAvailability.some((item) => item.availability === 'enabled' || item.enabled === 'true')
     || !result.guardedClickProbe
     || result.guardedClickProbe.key !== 'create_task_card'

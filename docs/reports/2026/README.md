@@ -11,6 +11,30 @@
 
 ## Index
 
+- `2026-0711-unpushed-commit-stack-inventory.md`
+  - 未push 188 commits の棚卸し。全 commit 一覧、分類、整理判断を記録し、広範 rewrite / squash は行わず意味単位の stack として保持する方針を確認。Status: `CHECKPOINT_DONE`。
+- `2026-0711-post-readiness-commit-stack-checkpoint.md`
+  - #710 post readiness commit-stack checkpoint。#704-#709 の read-only readiness lane commit stack を確認し、squash/amend せず意味単位のまま保持、#711 transaction complete gate を次 active に昇格。Status: `DONE`。
+- `2026-0711-post-readiness-metadata-lane-closure.md`
+  - #709 post readiness metadata lane closure。#703-#708 の read-only readiness metadata lane を close し、overlay / real execution へ飛ばず #710 commit-stack checkpoint を次 active に昇格。Status: `DONE`。
+- `2026-0711-readiness-browser-smoke-first-slice.md`
+  - #708 readiness browser smoke first slice。Sample18 enabled-candidate browser smoke に desktop/mobile の read-only readiness marker probe を追加し、temporary enablement 前の candidate_ready / can_submit=false / executor_config_status=disabled を確認。Status: `FIRST_SLICE_DONE`。
+- `2026-0711-readiness-fast-contract-coverage.md`
+  - #707 readiness fast contract coverage。browser なしの runtime HTML render assertion で route-compatible missing-runtime failure と non-ready operation の readiness marker を固定。Status: `FIRST_SLICE_DONE`。
+- `2026-0711-readiness-runtime-preview-carry-through.md`
+  - #706 readiness runtime preview carry-through。screen-definition action の readiness metadata を runtime-preview JSON と HTML button marker に通し、candidate_ready / availability_candidate / can_submit=false / executor_config_status を focused assertion で固定。Status: `FIRST_SLICE_DONE`。
+- `2026-0711-readiness-metadata-screen-definition-carry-through.md`
+  - #705 readiness metadata screen-definition carry-through。Sample18 generated-submit readiness snapshot を screen-definition action metadata と submit binding metadata に載せ、default disabled / candidate_ready / can_submit=false を focused assertion で固定。Status: `FIRST_SLICE_DONE`。
+- `2026-0711-sample18-readiness-snapshot-helper-first-slice.md`
+  - #704 sample18 readiness snapshot helper first slice。既存 executor config と generated-submit route contract から副作用なしで readiness snapshot を組み立て、default disabled / injected ready / missing runtime failed の focused assertion を追加。Status: `FIRST_SLICE_DONE`。
+- `2026-0711-no-code-readiness-status.md`
+  - 本日時点の No Code readiness status。AI が UI を直接生成する前に、Mtool が操作可否・理由・route boundary を説明できる JSON metadata を作り、それを Sample18 の helper / contract test / runtime metadata carry-through へ進める現在地を整理。Status: `CURRENT_STATUS`。
+- `2026-0710-sample18-readiness-metadata-shape-contract.md`
+  - #703 sample18 readiness metadata shape contract。read-only readiness snapshot の version / executor_config fields / action_readiness fields / route-compatible operations / non-ready reopen/delete / missing-runtime failure shape を fixture・docs・PHPUnit assertion で固定。Status: `DONE`。
+- `2026-0710-read-only-readiness-lane-detailed-replan.md`
+  - #702 read-only readiness lane detailed replan。sample18 route/config readiness を shape / helper / screen-definition / runtime preview / fast contract / browser smoke / lane closure に分解し、real guarded execution smoke は parked。次は #703 readiness metadata shape contract。Status: `DONE`。
+- `2026-0710-sample18-route-config-readiness-browser-preflight.md`
+  - #701 sample18 route/config readiness browser preflight。real guarded execution smoke の前に executor_config / enablement source / dependency source / action mapping / failure reasons を read-only に browser-visible 化する境界を定義し、#702 を昇格。Status: `DONE`。
 - `2026-0710-post-enabled-candidate-browser-smoke-lane-closure.md`
   - #700 post enabled-candidate browser smoke lane closure。#699 の UI-only enabled-candidate browser smoke を受け入れ、real guarded execution smoke の前に route/config readiness browser preflight (#701) を昇格。Status: `DONE`。
 - `2026-0710-sample18-enabled-candidate-browser-smoke-first-slice.md`
