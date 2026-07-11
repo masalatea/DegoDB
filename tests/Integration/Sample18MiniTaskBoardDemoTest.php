@@ -1399,6 +1399,65 @@ final class Sample18MiniTaskBoardDemoTest extends TestCase
         self::assertTrue($recordingFailed['payload']['route_execution']['recovery_required'] ?? false);
         self::assertTrue($recordingFailed['payload']['post_commit_recording']['recovery_required'] ?? false);
         self::assertSame('post_commit_recording_failed', $recordingFailed['payload']['post_commit_recording']['recovery_reason'] ?? '');
+
+        $commitFailedApp = array_merge($this->sqliteApp(), [
+            'sample18_generated_submit_mutation_enabled' => true,
+            'sample18_generated_submit_executor_enabled' => true,
+            'sample18_generated_submit_transaction_callables' => [
+                'begin' => static fn (): array => ['ok' => true],
+                'commit' => static fn (): array => ['ok' => false, 'failure_code' => 'transaction_commit_failed', 'error' => 'commit failed'],
+                'rollback' => static fn (): array => ['ok' => true],
+                'dbaccess' => static fn (): array => ['ok' => true, 'result_code' => 'task_card_inserted', 'rows_affected' => 1],
+            ],
+        ]);
+        $bootstrap = app_config_db_bootstrap_apply($commitFailedApp);
+        self::assertTrue($bootstrap['ok'], $bootstrap['error']);
+        $commitFailed = app_lab_sample18_task_board_generated_submit_blocked_response(
+            'POST',
+            array_merge($validPost, ['title' => 'Commit route failure']),
+            $timestamp,
+            'valid',
+            $commitFailedApp,
+            $principal,
+        );
+        self::assertSame(500, $commitFailed['status_code']);
+        self::assertSame('failed', $commitFailed['payload']['result'] ?? '');
+        self::assertSame('transaction_commit_failed', $commitFailed['payload']['failure_code'] ?? '');
+        self::assertSame('commit_failed', $commitFailed['payload']['transaction_result']['transaction_status'] ?? '');
+        self::assertSame('executed', $commitFailed['payload']['transaction_result']['dbaccess_status'] ?? '');
+        self::assertTrue($commitFailed['payload']['route_execution']['recovery_required'] ?? false);
+        self::assertSame('commit_status_unknown', $commitFailed['payload']['transaction_result']['recovery_reason'] ?? '');
+        self::assertSame([], $commitFailed['payload']['post_commit_recording'] ?? ['unexpected']);
+
+        $commitExceptionApp = array_merge($this->sqliteApp(), [
+            'sample18_generated_submit_mutation_enabled' => true,
+            'sample18_generated_submit_executor_enabled' => true,
+            'sample18_generated_submit_transaction_callables' => [
+                'begin' => static fn (): array => ['ok' => true],
+                'commit' => static function (): array {
+                    throw new RuntimeException('commit exploded');
+                },
+                'rollback' => static fn (): array => ['ok' => true],
+                'dbaccess' => static fn (): array => ['ok' => true, 'result_code' => 'task_card_inserted', 'rows_affected' => 1],
+            ],
+        ]);
+        $bootstrap = app_config_db_bootstrap_apply($commitExceptionApp);
+        self::assertTrue($bootstrap['ok'], $bootstrap['error']);
+        $commitException = app_lab_sample18_task_board_generated_submit_blocked_response(
+            'POST',
+            array_merge($validPost, ['title' => 'Commit route exception']),
+            $timestamp,
+            'valid',
+            $commitExceptionApp,
+            $principal,
+        );
+        self::assertSame(500, $commitException['status_code']);
+        self::assertSame('failed', $commitException['payload']['result'] ?? '');
+        self::assertSame('transaction_commit_exception', $commitException['payload']['failure_code'] ?? '');
+        self::assertSame('commit_failed', $commitException['payload']['transaction_result']['transaction_status'] ?? '');
+        self::assertTrue($commitException['payload']['route_execution']['recovery_required'] ?? false);
+        self::assertSame('commit_status_unknown', $commitException['payload']['transaction_result']['recovery_reason'] ?? '');
+        self::assertSame([], $commitException['payload']['post_commit_recording'] ?? ['unexpected']);
     }
 
     public function testMiniTaskBoardGeneratedSubmitRouteBuildsDefaultRuntimeBinding(): void
