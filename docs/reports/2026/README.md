@@ -11,6 +11,28 @@
 
 ## Index
 
+- `2026-0710-sample18-post-mutation-gate-failure-matrix-lane-closure.md`
+  - #602 sample18 post-mutation-gate-failure-matrix lane closure。#601 の flag-on duplicate/failure matrix coverage を受け入れ、次は DBAccess mutation dry-run execution preflight (#603) を昇格。DBAccess mutation は未有効化。Status: `DONE`。
+- `2026-0710-sample18-mutation-gate-failure-matrix-coverage.md`
+  - #601 sample18 mutation gate failure matrix coverage。flag-on duplicate route replay、audit/idempotency failure route response、helper-level audit/idempotency skipped/failed/duplicate/invalid matrix を追加し、DBAccess mutation disabled / executed false を維持。Status: `FIRST_SLICE_DONE`。
+- `2026-0710-sample18-post-mutation-gate-helper-lane-closure.md`
+  - #600 sample18 post-mutation-gate-helper lane closure。#599 の non-mutating mutation gate helper を受け入れ、DBAccess mutation dry-run / execution より前に gate failure matrix coverage (#601) を昇格。DBAccess mutation は未有効化。Status: `DONE`。
+- `2026-0710-sample18-generated-submit-mutation-gate-helper-first-slice.md`
+  - #599 sample18 generated submit mutation gate helper first slice。明示 enablement flag helper、non-mutating mutation gate helper、route response `mutation_gate` metadata、default disabled / ready metadata / duplicate block / failure block coverage を追加。DBAccess mutation は未有効化。Status: `FIRST_SLICE_DONE`。
+- `2026-0710-sample18-generated-submit-mutation-enablement-gate-preflight.md`
+  - #598 sample18 generated submit mutation enablement gate preflight。明示 flag、audit / idempotency required states、duplicate behavior、failure behavior、non-mutating helper first slice の test 条件を定義。DBAccess mutation は未有効化。Status: `DONE`。
+- `2026-0710-sample18-post-idempotency-route-integration-lane-closure.md`
+  - #597 sample18 post-idempotency-route-integration lane closure。#596 の route idempotency integration を受け入れ、次は mutation enablement gate preflight (#598) を昇格。DBAccess mutation は未有効化。Status: `DONE`。
+- `2026-0710-sample18-generated-submit-idempotency-route-integration-first-slice.md`
+  - #596 sample18 generated submit idempotency route integration first slice。valid blocked route path を audit append 後の idempotency create-or-reuse に接続し、recorded / duplicate / skipped / failed metadata を response に返す。HTTP 409 / mutation disabled / dispatcher non-executed は維持。Status: `FIRST_SLICE_DONE`。
+- `2026-0710-sample18-generated-submit-idempotency-route-integration-preflight.md`
+  - #595 sample18 generated submit idempotency route integration preflight。audit append 後に idempotency create-or-reuse を呼ぶ ordering、`idempotency` response metadata、method / CSRF / validation / unknown operation skip matrix、failure boundary を定義。route integration / DBAccess mutation は未有効化。Status: `DONE`。
+- `2026-0710-sample18-post-idempotency-repository-lane-closure.md`
+  - #594 sample18 post-idempotency-repository lane closure。#593 の storage-backed idempotency repository/helper を受け入れ、次は route integration preflight (#595) を昇格。DBAccess mutation / route persistence は未有効化。Status: `DONE`。
+- `2026-0710-sample18-generated-submit-idempotency-repository-helper-first-slice.md`
+  - #593 sample18 generated submit idempotency repository/helper first slice。`sample18_generated_submit_idempotency_records`、repository wrapper / PDO implementation、SQLite bootstrap allowlist、create-or-reuse / duplicate_count / validation failure coverage を追加。route integration / DBAccess mutation は未有効化。Status: `FIRST_SLICE_DONE`。
+- `2026-0710-sample18-generated-submit-idempotency-persistence-preflight.md`
+  - #592 sample18 generated submit idempotency persistence preflight。config DB storage candidate、dedupe key / duplicate response shape、audit append との相互作用、fail-closed boundary を定義。次は repository/helper first slice (#593)。DBAccess mutation は未有効化。Status: `DONE`。
 - `2026-0710-sample18-post-audit-failure-visibility-lane-closure.md`
   - #591 sample18 post-audit-failure-visibility lane closure。#590 の audit append failure visibility を受け入れ、mutation enablement より前に generated submit idempotency persistence preflight (#592) を昇格。DBAccess mutation は未有効化。Status: `DONE`。
 - `2026-0710-sample18-generated-submit-audit-append-failure-visibility-coverage.md`

@@ -13,7 +13,7 @@ When someone asks for "the plan list", answer from this section first. / 「計�
 
 ### Main Plan / 主計画
 
-Current main status: #591 closes sample18 audit append failure visibility and promotes idempotency persistence preflight before mutation enablement gate coverage. `develop` is 67 commits ahead of `origin/develop`, and push has not been performed for #432-#591. / 現在の主計画ステータス: #591 で sample18 audit append failure visibility を閉じ、mutation enablement gate coverage より前に idempotency persistence preflight を昇格しました。`develop` は `origin/develop` より 67 commits ahead、#432-#591 は push していません。
+Current main status: #602 closes the sample18 mutation gate failure matrix lane and promotes DBAccess mutation dry-run execution preflight before any execution path is implemented. `develop` is 78 commits ahead of `origin/develop`, and push has not been performed for #432-#602. / 現在の主計画ステータス: #602 で sample18 mutation gate failure matrix lane を close し、execution path 実装より前に DBAccess mutation dry-run execution preflight を昇格しました。`develop` は `origin/develop` より 78 commits ahead、#432-#602 は push していません。
 
 | Order | Work unit / 作業の塊 | Commit unit / コミット単位 | Status | Rough effort / 目安 |
 | --- | --- | --- | --- | --- |
@@ -150,7 +150,18 @@ Current main status: #591 closes sample18 audit append failure visibility and pr
 | 589 | Sample18 post-blocked-audit-append lane closure / sample18 post-blocked-audit-append lane closure | Close the blocked audit append lane and decide whether audit failure coverage, idempotency persistence, or mutation enablement gate coverage should be promoted next | `DONE` | 0.25 - 0.5 day / 0.25 - 0.5 日 |
 | 590 | Sample18 generated submit audit append failure visibility coverage / sample18 generated submit audit append failure visibility coverage | Add focused coverage that audit append failures are reported without enabling DBAccess mutation or turning valid blocked submits into accepted requests | `DONE` | 0.5 day / 半日 |
 | 591 | Sample18 post-audit-failure-visibility lane closure / sample18 post-audit-failure-visibility lane closure | Close audit append failure visibility and decide whether duplicate/idempotency persistence or mutation enablement gate coverage should be promoted next | `DONE` | 0.25 - 0.5 day / 0.25 - 0.5 日 |
-| 592 | Sample18 generated submit idempotency persistence preflight / sample18 generated submit idempotency persistence preflight | Define the storage, duplicate response, audit interaction, and fail-closed boundary for generated submit idempotency before any DBAccess mutation enablement | `ACTIVE_NEXT` | 0.5 day / 半日 |
+| 592 | Sample18 generated submit idempotency persistence preflight / sample18 generated submit idempotency persistence preflight | Define the storage, duplicate response, audit interaction, and fail-closed boundary for generated submit idempotency before any DBAccess mutation enablement | `DONE` | 0.5 day / 半日 |
+| 593 | Sample18 generated submit idempotency repository/helper first slice / sample18 generated submit idempotency repository/helper first slice | Add storage-backed idempotency create-or-reuse coverage for blocked generated submit requests without enabling DBAccess mutation | `DONE` | 0.5 - 1 day / 半日 - 1 日 |
+| 594 | Sample18 post-idempotency-repository lane closure / sample18 post-idempotency-repository lane closure | Close the storage-backed idempotency repository/helper lane and decide whether route integration preflight or duplicate audit interaction should be promoted next | `DONE` | 0.25 - 0.5 day / 0.25 - 0.5 日 |
+| 595 | Sample18 generated submit idempotency route integration preflight / sample18 generated submit idempotency route integration preflight | Define how the blocked generated submit route will call idempotency create-or-reuse, response metadata, skip matrix, and audit ordering before implementation | `DONE` | 0.5 day / 半日 |
+| 596 | Sample18 generated submit idempotency route integration first slice / sample18 generated submit idempotency route integration first slice | Wire valid blocked generated submit responses to idempotency create-or-reuse after audit append while keeping method/CSRF/validation failures skipped and DBAccess mutation disabled | `DONE` | 0.5 - 1 day / 半日 - 1 日 |
+| 597 | Sample18 post-idempotency-route-integration lane closure / sample18 post-idempotency-route-integration lane closure | Close the route idempotency integration lane and decide whether duplicate audit interaction, persistence failure matrix, or mutation enablement gate coverage should be promoted next | `DONE` | 0.25 - 0.5 day / 0.25 - 0.5 日 |
+| 598 | Sample18 generated submit mutation enablement gate preflight / sample18 generated submit mutation enablement gate preflight | Define the explicit enablement flag, required persisted idempotency/audit states, duplicate behavior, and fail-closed tests before any DBAccess mutation can execute | `DONE` | 0.5 day / 半日 |
+| 599 | Sample18 generated submit mutation gate helper first slice / sample18 generated submit mutation gate helper first slice | Add a non-mutating helper and focused coverage for mutation gate decisions while keeping DBAccess execution disabled by default | `DONE` | 0.5 day / 半日 |
+| 600 | Sample18 post-mutation-gate-helper lane closure / sample18 post-mutation-gate-helper lane closure | Close the non-mutating mutation gate helper lane and decide whether gate failure matrix, duplicate replay contract, or DBAccess mutation dry-run execution should be promoted next | `DONE` | 0.25 - 0.5 day / 0.25 - 0.5 日 |
+| 601 | Sample18 mutation gate failure matrix coverage / sample18 mutation gate failure matrix coverage | Add focused coverage for flag-on gate failures and duplicate/skipped/failed gate outcomes while keeping DBAccess mutation disabled | `DONE` | 0.5 day / 半日 |
+| 602 | Sample18 post-mutation-gate-failure-matrix lane closure / sample18 post-mutation-gate-failure-matrix lane closure | Close the mutation gate failure matrix lane and decide whether duplicate replay contract, dry-run execution preflight, or additional route-level failure coverage should be promoted next | `DONE` | 0.25 - 0.5 day / 0.25 - 0.5 日 |
+| 603 | Sample18 DBAccess mutation dry-run execution preflight / sample18 DBAccess mutation dry-run execution preflight | Define the first DBAccess-bound execution preflight contract, including readiness inputs, transaction boundary, response shape, and fail-closed tests before enabling actual mutation | `ACTIVE_NEXT` | 0.5 day / 半日 |
 
 ### Long-Term No-Code Roadmap / 長期 No-Code ロードマップ
 
@@ -236,6 +247,59 @@ Latest code verification from #590:
 - `git diff --check`
 
 For #591, docs-only verification is `git diff --check`.
+
+For #592, docs-only verification is `git diff --check`.
+
+Latest code verification from #593:
+
+- `php -l mtool/app/lab_sample18_generated_submit_idempotency_repository.php`
+- `php -l mtool/app/lab_sample18_generated_submit_idempotency_repository_pdo.php`
+- `php -l mtool/app/config_db_bootstrap.php`
+- `php -l tests/Integration/Sample18GeneratedSubmitIdempotencyRepositorySqliteTest.php`
+- Focused PHPUnit sample18 idempotency repository: `OK (4 tests, 52 assertions)`
+- `make test`: `OK, but incomplete, skipped, or risky tests! Tests: 388, Assertions: 12214, Skipped: 1.`
+- `git diff --check`
+
+For #594, docs-only verification is `git diff --check`.
+
+For #595, docs-only verification is `git diff --check`.
+
+Latest code verification from #596:
+
+- `php -l mtool/app/lab_sample18_task_board_page.php`
+- `php -l tests/Integration/Sample18MiniTaskBoardDemoTest.php`
+- `php -l mtool/scripts/check_sample18_task_board_http_smoke.php`
+- `make sample18-pack-runtime-test`: `OK (6 tests, 428 assertions)`
+- `make sample18-http-runtime-smoke`: `OK`
+- `make sample18-no-code-public-runtime-disabled-action-smoke`: `OK`
+- `make test`: `OK, but incomplete, skipped, or risky tests! Tests: 388, Assertions: 12236, Skipped: 1.`
+- `git diff --check`
+
+For #597, docs-only verification is `git diff --check`.
+
+For #598, docs-only verification is `git diff --check`.
+
+Latest code verification from #599:
+
+- `php -l mtool/app/lab_sample18_task_board_page.php`
+- `php -l tests/Integration/Sample18MiniTaskBoardDemoTest.php`
+- `php -l mtool/scripts/check_sample18_task_board_http_smoke.php`
+- `make sample18-pack-runtime-test`: `OK (7 tests, 454 assertions)`
+- `make sample18-http-runtime-smoke`: `OK`
+- `make sample18-no-code-public-runtime-disabled-action-smoke`: `OK`
+- `make test`: `OK, but incomplete, skipped, or risky tests! Tests: 389, Assertions: 12262, Skipped: 1.`
+- `git diff --check`
+
+For #600, docs-only verification is `git diff --check`.
+
+Latest code verification from #601:
+
+- `php -l tests/Integration/Sample18MiniTaskBoardDemoTest.php`
+- `make sample18-pack-runtime-test`: `OK (7 tests, 490 assertions)`
+- Full `make test`: `OK, but incomplete, skipped, or risky tests! Tests: 389, Assertions: 12298, Skipped: 1.`
+- `git diff --check`
+
+For #602, docs-only verification is `git diff --check`.
 
 Latest code verification from #459:
 
@@ -638,6 +702,17 @@ Completed detailed history was moved out of this active list. / 完了済みの�
 
 | Completed scope / 完了済み範囲 | Historical source / 履歴ソース |
 | --- | --- |
+| Sample18 post-mutation-gate-failure-matrix lane closure / sample18 post-mutation-gate-failure-matrix lane closure | [2026-0710 Sample18 Post Mutation Gate Failure Matrix Lane Closure](reports/2026/2026-0710-sample18-post-mutation-gate-failure-matrix-lane-closure.md) |
+| Sample18 mutation gate failure matrix coverage / sample18 mutation gate failure matrix coverage | [2026-0710 Sample18 Mutation Gate Failure Matrix Coverage](reports/2026/2026-0710-sample18-mutation-gate-failure-matrix-coverage.md) |
+| Sample18 post-mutation-gate-helper lane closure / sample18 post-mutation-gate-helper lane closure | [2026-0710 Sample18 Post Mutation Gate Helper Lane Closure](reports/2026/2026-0710-sample18-post-mutation-gate-helper-lane-closure.md) |
+| Sample18 generated submit mutation gate helper first slice / sample18 generated submit mutation gate helper first slice | [2026-0710 Sample18 Generated Submit Mutation Gate Helper First Slice](reports/2026/2026-0710-sample18-generated-submit-mutation-gate-helper-first-slice.md) |
+| Sample18 generated submit mutation enablement gate preflight / sample18 generated submit mutation enablement gate preflight | [2026-0710 Sample18 Generated Submit Mutation Enablement Gate Preflight](reports/2026/2026-0710-sample18-generated-submit-mutation-enablement-gate-preflight.md) |
+| Sample18 post-idempotency-route-integration lane closure / sample18 post-idempotency-route-integration lane closure | [2026-0710 Sample18 Post Idempotency Route Integration Lane Closure](reports/2026/2026-0710-sample18-post-idempotency-route-integration-lane-closure.md) |
+| Sample18 generated submit idempotency route integration first slice / sample18 generated submit idempotency route integration first slice | [2026-0710 Sample18 Generated Submit Idempotency Route Integration First Slice](reports/2026/2026-0710-sample18-generated-submit-idempotency-route-integration-first-slice.md) |
+| Sample18 generated submit idempotency route integration preflight / sample18 generated submit idempotency route integration preflight | [2026-0710 Sample18 Generated Submit Idempotency Route Integration Preflight](reports/2026/2026-0710-sample18-generated-submit-idempotency-route-integration-preflight.md) |
+| Sample18 post-idempotency-repository lane closure / sample18 post-idempotency-repository lane closure | [2026-0710 Sample18 Post Idempotency Repository Lane Closure](reports/2026/2026-0710-sample18-post-idempotency-repository-lane-closure.md) |
+| Sample18 generated submit idempotency repository/helper first slice / sample18 generated submit idempotency repository/helper first slice | [2026-0710 Sample18 Generated Submit Idempotency Repository Helper First Slice](reports/2026/2026-0710-sample18-generated-submit-idempotency-repository-helper-first-slice.md) |
+| Sample18 generated submit idempotency persistence preflight / sample18 generated submit idempotency persistence preflight | [2026-0710 Sample18 Generated Submit Idempotency Persistence Preflight](reports/2026/2026-0710-sample18-generated-submit-idempotency-persistence-preflight.md) |
 | Sample18 post-audit-failure-visibility lane closure / sample18 post-audit-failure-visibility lane closure | [2026-0710 Sample18 Post Audit Failure Visibility Lane Closure](reports/2026/2026-0710-sample18-post-audit-failure-visibility-lane-closure.md) |
 | Sample18 generated submit audit append failure visibility coverage / sample18 generated submit audit append failure visibility coverage | [2026-0710 Sample18 Generated Submit Audit Append Failure Visibility Coverage](reports/2026/2026-0710-sample18-generated-submit-audit-append-failure-visibility-coverage.md) |
 | Sample18 post-blocked-audit-append lane closure / sample18 post-blocked-audit-append lane closure | [2026-0710 Sample18 Post Blocked Audit Append Lane Closure](reports/2026/2026-0710-sample18-post-blocked-audit-append-lane-closure.md) |
