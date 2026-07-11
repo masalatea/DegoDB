@@ -11,6 +11,12 @@
 
 ## Index
 
+- `2026-0710-post-route-response-contract-lane-closure.md`
+  - #685 post route response contract lane closure。#684 の response contract assertions を受け入れ、次は sample18 generated action/input gap inventory (#686) を昇格。Status: `DONE`。
+- `2026-0710-sample18-generated-submit-route-response-contract-first-slice.md`
+  - #684 sample18 generated-submit route response contract first slice。`docs/no-code-ui-testing.md` に compact response contract を追加し、Sample18 route outcome tests に status/result/failure/recovery assertion を追加。Status: `FIRST_SLICE_DONE`。
+- `2026-0710-sample18-generated-submit-route-response-status-refinement-preflight.md`
+  - #683 sample18 generated-submit route response/status refinement preflight。generated-submit route の HTTP status、`result`、`ok`、`failure_code`、recovery metadata の outcome matrix を定義。次は response contract first slice (#684)。Status: `DONE`。
 - `2026-0710-post-generated-submit-availability-documentation-lane-closure.md`
   - #682 post generated-submit availability documentation lane closure。#681 の availability/config documentation を受け入れ、次は generated-submit route response/status refinement preflight (#683) を昇格。Status: `DONE`。
 - `2026-0710-sample18-generated-submit-availability-documentation-first-slice.md`
