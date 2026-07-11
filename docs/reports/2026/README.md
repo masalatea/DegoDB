@@ -11,6 +11,12 @@
 
 ## Index
 
+- `2026-0710-post-generated-submit-runtime-ui-rendering-lane-closure.md`
+  - #675 post generated-submit runtime UI rendering lane closure。#674 の runtime UI result rendering を受け入れ、次は production-safe executor enablement/config boundary の preflight (#676) を昇格。Status: `DONE`。
+- `2026-0710-sample18-generated-submit-runtime-ui-result-rendering-first-slice.md`
+  - #674 sample18 generated-submit runtime UI result rendering first slice。generated-submit route response を no-code runtime UI の `success` / `blocked` / `recovery-required` / `error` state に写し、recovery data attributes と dispatch `ok/executed` contract を固定。Status: `FIRST_SLICE_DONE`。
+- `2026-0710-sample18-generated-submit-ui-success-error-rendering-preflight.md`
+  - #673 sample18 generated-submit UI success/error rendering preflight。route execution/recovery response を no-code runtime UI の success / blocked / error / recovery-required state に写す表示契約を定義。次は first runtime UI slice (#674)。Status: `DONE`。
 - `2026-0710-post-commit-unknown-recovery-coverage-lane-closure.md`
   - #672 post commit-unknown recovery coverage lane closure。#671 の commit-unknown route recovery coverage を受け入れ、次は generated-submit UI success/error rendering preflight (#673) を昇格。Status: `DONE`。
 - `2026-0710-sample18-route-commit-unknown-recovery-coverage.md`

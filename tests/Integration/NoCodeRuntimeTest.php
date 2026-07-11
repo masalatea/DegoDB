@@ -266,6 +266,16 @@ final class NoCodeRuntimeTest extends TestCase
         self::assertStringContainsString('Next result check: process the sync outbox item, then reload this generated preview artifact or open the outbox detail.', $html);
         self::assertStringContainsString('Demo processing completed this item; reload this generated preview artifact to re-read the current preview.', $html);
         self::assertStringContainsString('Demo processing did not run: ', $html);
+        self::assertStringContainsString('function guardedSubmitRecoveryReason(payload)', $html);
+        self::assertStringContainsString("if (payload.ok && payload.result === 'executed')", $html);
+        self::assertStringContainsString("return 'success';", $html);
+        self::assertStringContainsString("return 'recovery-required';", $html);
+        self::assertStringContainsString("target.setAttribute('data-action-recovery-required', recoveryReason !== '' ? 'true' : 'false');", $html);
+        self::assertStringContainsString("target.setAttribute('data-action-recovery-reason', recoveryReason);", $html);
+        self::assertStringContainsString("ok: !!(payload && payload.ok)", $html);
+        self::assertStringContainsString("executed: executed", $html);
+        self::assertStringContainsString('Duplicate request was not executed.', $html);
+        self::assertStringContainsString('Generated submit requires recovery: ', $html);
         self::assertStringContainsString('data-runtime-outbox-detail-path', $html);
         self::assertStringContainsString("'Action: ' + (draft.action_key || '(unknown)')", $html);
         self::assertStringContainsString("function actionFieldSummary(action)", $html);
