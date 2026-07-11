@@ -710,6 +710,67 @@ function app_lab_sample18_task_board_generated_submit_mutation_gate(
 }
 
 /**
+ * @param array<string,mixed> $normalized
+ * @param array<string,mixed> $dispatcherResult
+ * @param array{status:string,ready:bool,mutation_enabled:bool,executed:bool,reasons:list<string>} $mutationGate
+ * @return array<string,mixed>
+ */
+function app_lab_sample18_task_board_generated_submit_dbaccess_execution_plan(
+    array $normalized,
+    array $dispatcherResult,
+    array $mutationGate,
+): array {
+    $reasons = [];
+    $failed = false;
+
+    if (!($normalized['ok'] ?? false)) {
+        $reasons[] = 'request_not_valid';
+    }
+    if (!($dispatcherResult['ok'] ?? false)) {
+        $reasons[] = 'dispatcher_not_ready';
+    }
+    if (($dispatcherResult['executed'] ?? false) || ($dispatcherResult['mutation_enabled'] ?? false)) {
+        $reasons[] = 'dispatcher_not_dry_run';
+        $failed = true;
+    }
+    if (($mutationGate['status'] ?? '') !== 'ready' || !($mutationGate['ready'] ?? false)) {
+        $reasons[] = 'mutation_gate_not_ready';
+        foreach (($mutationGate['reasons'] ?? []) as $reason) {
+            if (is_string($reason) && $reason !== '') {
+                $reasons[] = $reason;
+            }
+        }
+        $failed = $failed || (string) ($mutationGate['status'] ?? '') === 'failed';
+    }
+
+    $contracts = app_lab_sample18_task_board_generated_submit_contracts();
+    $operationKey = (string) ($normalized['operation_key'] ?? '');
+    $expectedFunction = (string) ($contracts[$operationKey]['db_access_function'] ?? '');
+    $dbAccessFunction = (string) ($dispatcherResult['db_access_function'] ?? '');
+    if ($operationKey === '' || $expectedFunction === '' || $dbAccessFunction !== $expectedFunction) {
+        $reasons[] = 'db_access_function_not_allowlisted';
+        $failed = true;
+    }
+
+    return [
+        'status' => $reasons === [] ? 'planned' : ($failed ? 'failed' : 'blocked'),
+        'ready' => $reasons === [],
+        'mutation_enabled' => false,
+        'executed' => false,
+        'operation_key' => $operationKey,
+        'curated_route_action' => (string) ($normalized['curated_route_action'] ?? ''),
+        'db_access_class' => 'TaskCardDBAccess',
+        'db_access_function' => $dbAccessFunction,
+        'data_object' => 'TaskCardData',
+        'method_arguments' => is_array($dispatcherResult['method_arguments'] ?? null)
+            ? $dispatcherResult['method_arguments']
+            : [],
+        'transaction' => 'not_opened',
+        'reasons' => array_values(array_unique($reasons)),
+    ];
+}
+
+/**
  * @param array<string,mixed> $post
  * @return array{status_code:int,payload:array<string,mixed>}
  */

@@ -11,6 +11,12 @@
 
 ## Index
 
+- `2026-0710-sample18-post-dbaccess-execution-plan-helper-lane-closure.md`
+  - #605 sample18 post-DBAccess execution-plan helper lane closure。#604 の non-mutating execution-plan helper を受け入れ、次は route response integration (#606) を metadata only で昇格。DBAccess mutation は未有効化。Status: `DONE`。
+- `2026-0710-sample18-dbaccess-mutation-dry-run-executor-first-slice.md`
+  - #604 sample18 DBAccess mutation dry-run executor first slice。non-mutating `dbaccess_execution_plan` helper を追加し、ready gate は planned metadata、blocked/failed/invalid/non-dry-run は fail-closed、route response は未接続。DBAccess mutation は未有効化。Status: `FIRST_SLICE_DONE`。
+- `2026-0710-sample18-dbaccess-mutation-dry-run-execution-preflight.md`
+  - #603 sample18 DBAccess mutation dry-run execution preflight。ready gate 後の non-mutating executor helper に必要な preconditions、DB boundary、response shape、#604 の required tests を定義。DBAccess mutation は未有効化。Status: `DONE`。
 - `2026-0710-sample18-post-mutation-gate-failure-matrix-lane-closure.md`
   - #602 sample18 post-mutation-gate-failure-matrix lane closure。#601 の flag-on duplicate/failure matrix coverage を受け入れ、次は DBAccess mutation dry-run execution preflight (#603) を昇格。DBAccess mutation は未有効化。Status: `DONE`。
 - `2026-0710-sample18-mutation-gate-failure-matrix-coverage.md`
