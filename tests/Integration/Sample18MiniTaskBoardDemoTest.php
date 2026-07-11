@@ -291,6 +291,13 @@ final class Sample18MiniTaskBoardDemoTest extends TestCase
         self::assertSame('not_opened', $blocked['payload']['dbaccess_execution_plan']['transaction'] ?? '');
         self::assertContains('mutation_gate_not_ready', $blocked['payload']['dbaccess_execution_plan']['reasons'] ?? []);
         self::assertContains('enablement_flag_disabled', $blocked['payload']['dbaccess_execution_plan']['reasons'] ?? []);
+        self::assertSame('blocked', $blocked['payload']['transaction_plan']['status'] ?? '');
+        self::assertFalse($blocked['payload']['transaction_plan']['ready'] ?? true);
+        self::assertSame('not_opened', $blocked['payload']['transaction_plan']['transaction'] ?? '');
+        self::assertFalse($blocked['payload']['transaction_plan']['will_execute'] ?? true);
+        self::assertFalse($blocked['payload']['transaction_plan']['will_update_audit'] ?? true);
+        self::assertFalse($blocked['payload']['transaction_plan']['will_update_idempotency'] ?? true);
+        self::assertContains('enablement_flag_disabled', $blocked['payload']['transaction_plan']['reasons'] ?? []);
         self::assertFalse($blocked['payload']['mutation_enabled'] ?? true);
 
         $missingCsrf = app_lab_sample18_task_board_generated_submit_blocked_response(
@@ -303,6 +310,7 @@ final class Sample18MiniTaskBoardDemoTest extends TestCase
         self::assertSame('missing_csrf', $missingCsrf['payload']['failure_code'] ?? '');
         self::assertSame(['csrf.missing'], $missingCsrf['payload']['errors'] ?? []);
         self::assertArrayNotHasKey('dbaccess_execution_plan', $missingCsrf['payload']);
+        self::assertArrayNotHasKey('transaction_plan', $missingCsrf['payload']);
         self::assertFalse($missingCsrf['payload']['mutation_enabled'] ?? true);
 
         $invalidCsrf = app_lab_sample18_task_board_generated_submit_blocked_response(
@@ -315,6 +323,7 @@ final class Sample18MiniTaskBoardDemoTest extends TestCase
         self::assertSame('invalid_csrf', $invalidCsrf['payload']['failure_code'] ?? '');
         self::assertSame(['csrf.invalid'], $invalidCsrf['payload']['errors'] ?? []);
         self::assertArrayNotHasKey('dbaccess_execution_plan', $invalidCsrf['payload']);
+        self::assertArrayNotHasKey('transaction_plan', $invalidCsrf['payload']);
         self::assertFalse($invalidCsrf['payload']['mutation_enabled'] ?? true);
 
         $invalid = app_lab_sample18_task_board_generated_submit_blocked_response(
@@ -326,6 +335,7 @@ final class Sample18MiniTaskBoardDemoTest extends TestCase
         self::assertSame('validation_error', $invalid['payload']['failure_code'] ?? '');
         self::assertSame(['id.invalid', 'title.required'], $invalid['payload']['errors'] ?? []);
         self::assertArrayNotHasKey('dbaccess_execution_plan', $invalid['payload']);
+        self::assertArrayNotHasKey('transaction_plan', $invalid['payload']);
 
         $unknown = app_lab_sample18_task_board_generated_submit_blocked_response(
             'POST',
@@ -335,6 +345,7 @@ final class Sample18MiniTaskBoardDemoTest extends TestCase
         self::assertSame(404, $unknown['status_code']);
         self::assertSame('unknown_operation', $unknown['payload']['failure_code'] ?? '');
         self::assertArrayNotHasKey('dbaccess_execution_plan', $unknown['payload']);
+        self::assertArrayNotHasKey('transaction_plan', $unknown['payload']);
     }
 
     public function testMiniTaskBoardGeneratedSubmitBlockedAuditAppendFirstSlice(): void
@@ -412,6 +423,11 @@ final class Sample18MiniTaskBoardDemoTest extends TestCase
         self::assertFalse($blocked['payload']['dbaccess_execution_plan']['executed'] ?? true);
         self::assertSame('not_opened', $blocked['payload']['dbaccess_execution_plan']['transaction'] ?? '');
         self::assertContains('enablement_flag_disabled', $blocked['payload']['dbaccess_execution_plan']['reasons'] ?? []);
+        self::assertSame('blocked', $blocked['payload']['transaction_plan']['status'] ?? '');
+        self::assertFalse($blocked['payload']['transaction_plan']['ready'] ?? true);
+        self::assertSame('not_opened', $blocked['payload']['transaction_plan']['transaction'] ?? '');
+        self::assertFalse($blocked['payload']['transaction_plan']['will_execute'] ?? true);
+        self::assertContains('enablement_flag_disabled', $blocked['payload']['transaction_plan']['reasons'] ?? []);
 
         $latest = app_audit_log_fetch_latest($app, [
             'project_key' => 'SAMPLE18',
@@ -465,6 +481,12 @@ final class Sample18MiniTaskBoardDemoTest extends TestCase
         self::assertSame('not_opened', $enabledDuplicate['payload']['dbaccess_execution_plan']['transaction'] ?? '');
         self::assertContains('duplicate_generated_submit', $enabledDuplicate['payload']['dbaccess_execution_plan']['reasons'] ?? []);
         self::assertNotContains('enablement_flag_disabled', $enabledDuplicate['payload']['dbaccess_execution_plan']['reasons'] ?? []);
+        self::assertSame('blocked', $enabledDuplicate['payload']['transaction_plan']['status'] ?? '');
+        self::assertFalse($enabledDuplicate['payload']['transaction_plan']['ready'] ?? true);
+        self::assertSame('not_opened', $enabledDuplicate['payload']['transaction_plan']['transaction'] ?? '');
+        self::assertFalse($enabledDuplicate['payload']['transaction_plan']['will_execute'] ?? true);
+        self::assertContains('duplicate_generated_submit', $enabledDuplicate['payload']['transaction_plan']['reasons'] ?? []);
+        self::assertNotContains('enablement_flag_disabled', $enabledDuplicate['payload']['transaction_plan']['reasons'] ?? []);
 
         $missingCsrf = app_lab_sample18_task_board_generated_submit_blocked_response(
             'POST',
@@ -478,6 +500,7 @@ final class Sample18MiniTaskBoardDemoTest extends TestCase
         self::assertArrayNotHasKey('audit_append', $missingCsrf['payload']);
         self::assertArrayNotHasKey('idempotency', $missingCsrf['payload']);
         self::assertArrayNotHasKey('dbaccess_execution_plan', $missingCsrf['payload']);
+        self::assertArrayNotHasKey('transaction_plan', $missingCsrf['payload']);
 
         $invalid = app_lab_sample18_task_board_generated_submit_blocked_response(
             'POST',
@@ -491,6 +514,7 @@ final class Sample18MiniTaskBoardDemoTest extends TestCase
         self::assertArrayNotHasKey('audit_append', $invalid['payload']);
         self::assertArrayNotHasKey('idempotency', $invalid['payload']);
         self::assertArrayNotHasKey('dbaccess_execution_plan', $invalid['payload']);
+        self::assertArrayNotHasKey('transaction_plan', $invalid['payload']);
 
         $afterFailures = app_audit_log_fetch_latest($app, [
             'project_key' => 'SAMPLE18',
@@ -574,6 +598,13 @@ final class Sample18MiniTaskBoardDemoTest extends TestCase
         self::assertContains('audit_append_failed', $blocked['payload']['dbaccess_execution_plan']['reasons'] ?? []);
         self::assertContains('idempotency_failed', $blocked['payload']['dbaccess_execution_plan']['reasons'] ?? []);
         self::assertNotContains('enablement_flag_disabled', $blocked['payload']['dbaccess_execution_plan']['reasons'] ?? []);
+        self::assertSame('failed', $blocked['payload']['transaction_plan']['status'] ?? '');
+        self::assertFalse($blocked['payload']['transaction_plan']['ready'] ?? true);
+        self::assertSame('not_opened', $blocked['payload']['transaction_plan']['transaction'] ?? '');
+        self::assertFalse($blocked['payload']['transaction_plan']['will_execute'] ?? true);
+        self::assertContains('audit_append_failed', $blocked['payload']['transaction_plan']['reasons'] ?? []);
+        self::assertContains('idempotency_failed', $blocked['payload']['transaction_plan']['reasons'] ?? []);
+        self::assertNotContains('enablement_flag_disabled', $blocked['payload']['transaction_plan']['reasons'] ?? []);
     }
 
     public function testMiniTaskBoardGeneratedSubmitRouteReadyExecutionPlanIsMetadataOnly(): void
@@ -634,6 +665,18 @@ final class Sample18MiniTaskBoardDemoTest extends TestCase
         );
         self::assertSame('not_opened', $blocked['payload']['dbaccess_execution_plan']['transaction'] ?? '');
         self::assertSame([], $blocked['payload']['dbaccess_execution_plan']['reasons'] ?? ['unexpected']);
+        self::assertSame('planned', $blocked['payload']['transaction_plan']['status'] ?? '');
+        self::assertTrue($blocked['payload']['transaction_plan']['ready'] ?? false);
+        self::assertSame('planned_not_opened', $blocked['payload']['transaction_plan']['transaction'] ?? '');
+        self::assertSame('sample18_application_db', $blocked['payload']['transaction_plan']['db_handle'] ?? '');
+        self::assertSame('config_db_audit_log', $blocked['payload']['transaction_plan']['audit_store'] ?? '');
+        self::assertSame('config_db_idempotency', $blocked['payload']['transaction_plan']['idempotency_store'] ?? '');
+        self::assertFalse($blocked['payload']['transaction_plan']['will_execute'] ?? true);
+        self::assertFalse($blocked['payload']['transaction_plan']['will_update_audit'] ?? true);
+        self::assertFalse($blocked['payload']['transaction_plan']['will_update_idempotency'] ?? true);
+        self::assertSame('planned_not_written', $blocked['payload']['transaction_plan']['post_execution_audit_update']['status'] ?? '');
+        self::assertSame('planned_not_written', $blocked['payload']['transaction_plan']['post_execution_idempotency_update']['status'] ?? '');
+        self::assertSame([], $blocked['payload']['transaction_plan']['reasons'] ?? ['unexpected']);
 
         $latest = app_audit_log_fetch_latest($app, [
             'project_key' => 'SAMPLE18',
@@ -881,6 +924,83 @@ final class Sample18MiniTaskBoardDemoTest extends TestCase
         self::assertSame('not_opened', $invalidPlan['transaction']);
         self::assertContains('request_not_valid', $invalidPlan['reasons']);
         self::assertContains('dispatcher_not_ready', $invalidPlan['reasons']);
+    }
+
+    public function testMiniTaskBoardGeneratedSubmitTransactionPlanIsNonMutating(): void
+    {
+        $normalized = app_lab_sample18_task_board_normalize_generated_submit_request(
+            'create_task_card',
+            ['title' => 'Transaction plan', 'body' => '', 'assigned_to' => '', 'priority' => '30', 'due_date' => ''],
+            '2026-07-10 06:00:00',
+        );
+        self::assertTrue($normalized['ok']);
+        $dispatcher = app_lab_sample18_task_board_generated_submit_dispatcher_dry_run($normalized);
+        $readyGate = app_lab_sample18_task_board_generated_submit_mutation_gate(
+            ['sample18_generated_submit_mutation_enabled' => true],
+            $normalized,
+            $dispatcher,
+            ['ok' => true, 'status' => 'appended', 'item' => ['event_key' => 'audit_ready']],
+            ['ok' => true, 'status' => 'recorded', 'created' => true, 'item' => ['dedupe_key' => 'dedupe-ready']],
+        );
+        $executionPlan = app_lab_sample18_task_board_generated_submit_dbaccess_execution_plan(
+            $normalized,
+            $dispatcher,
+            $readyGate,
+        );
+        self::assertSame('planned', $executionPlan['status']);
+
+        $transactionPlan = app_lab_sample18_task_board_generated_submit_transaction_plan($executionPlan);
+        self::assertSame('planned', $transactionPlan['status']);
+        self::assertTrue($transactionPlan['ready']);
+        self::assertSame('planned_not_opened', $transactionPlan['transaction']);
+        self::assertSame('sample18_application_db', $transactionPlan['db_handle']);
+        self::assertSame('config_db_audit_log', $transactionPlan['audit_store']);
+        self::assertSame('config_db_idempotency', $transactionPlan['idempotency_store']);
+        self::assertFalse($transactionPlan['will_execute']);
+        self::assertFalse($transactionPlan['will_update_audit']);
+        self::assertFalse($transactionPlan['will_update_idempotency']);
+        self::assertSame('rollback', $transactionPlan['rollback_policy']['on_dbaccess_exception'] ?? '');
+        self::assertSame('rollback', $transactionPlan['rollback_policy']['on_unexpected_result'] ?? '');
+        self::assertSame('rollback', $transactionPlan['rollback_policy']['on_post_execution_update_failure'] ?? '');
+        self::assertSame('planned_not_written', $transactionPlan['post_execution_audit_update']['status'] ?? '');
+        self::assertSame('sample18.generated_submit.executed', $transactionPlan['post_execution_audit_update']['event_type'] ?? '');
+        self::assertSame('TaskCardDBAccess', $transactionPlan['post_execution_audit_update']['db_access_class'] ?? '');
+        self::assertSame('InsertTaskCard', $transactionPlan['post_execution_audit_update']['db_access_function'] ?? '');
+        self::assertSame('planned_not_written', $transactionPlan['post_execution_idempotency_update']['status'] ?? '');
+        self::assertSame('planned', $transactionPlan['post_execution_idempotency_update']['execution_status'] ?? '');
+        self::assertSame([], $transactionPlan['reasons']);
+
+        $blockedExecutionPlan = $executionPlan;
+        $blockedExecutionPlan['status'] = 'blocked';
+        $blockedExecutionPlan['ready'] = false;
+        $blockedExecutionPlan['reasons'] = ['duplicate_generated_submit'];
+        $blockedTransactionPlan = app_lab_sample18_task_board_generated_submit_transaction_plan($blockedExecutionPlan);
+        self::assertSame('blocked', $blockedTransactionPlan['status']);
+        self::assertFalse($blockedTransactionPlan['ready']);
+        self::assertSame('not_opened', $blockedTransactionPlan['transaction']);
+        self::assertFalse($blockedTransactionPlan['will_execute']);
+        self::assertContains('execution_plan_not_ready', $blockedTransactionPlan['reasons']);
+        self::assertContains('duplicate_generated_submit', $blockedTransactionPlan['reasons']);
+
+        $failedExecutionPlan = $executionPlan;
+        $failedExecutionPlan['status'] = 'failed';
+        $failedExecutionPlan['ready'] = false;
+        $failedExecutionPlan['reasons'] = ['dispatcher_not_dry_run'];
+        $failedTransactionPlan = app_lab_sample18_task_board_generated_submit_transaction_plan($failedExecutionPlan);
+        self::assertSame('failed', $failedTransactionPlan['status']);
+        self::assertFalse($failedTransactionPlan['ready']);
+        self::assertSame('not_opened', $failedTransactionPlan['transaction']);
+        self::assertFalse($failedTransactionPlan['will_execute']);
+        self::assertContains('dispatcher_not_dry_run', $failedTransactionPlan['reasons']);
+
+        $unsafeExecutionPlan = $executionPlan;
+        $unsafeExecutionPlan['executed'] = true;
+        $unsafeTransactionPlan = app_lab_sample18_task_board_generated_submit_transaction_plan($unsafeExecutionPlan);
+        self::assertSame('failed', $unsafeTransactionPlan['status']);
+        self::assertFalse($unsafeTransactionPlan['ready']);
+        self::assertSame('not_opened', $unsafeTransactionPlan['transaction']);
+        self::assertFalse($unsafeTransactionPlan['will_execute']);
+        self::assertContains('execution_plan_not_metadata_only', $unsafeTransactionPlan['reasons']);
     }
 
     public function testMiniTaskBoardDemoReferenceOutputs(): void

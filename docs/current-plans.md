@@ -13,7 +13,7 @@ When someone asks for "the plan list", answer from this section first. / 「計�
 
 ### Main Plan / 主計画
 
-Current main status: #609 closes the route-level ready execution-plan coverage lane and promotes transaction boundary preflight before any DBAccess execution is enabled. `develop` is 85 commits ahead of `origin/develop`, and push has not been performed for #432-#609. / 現在の主計画ステータス: #609 で route-level ready execution-plan coverage lane を close し、DBAccess execution 有効化より前に transaction boundary preflight を昇格しました。`develop` は `origin/develop` より 85 commits ahead、#432-#609 は push していません。
+Current main status: #614 closes the transaction-plan route metadata lane and promotes execution audit/idempotency update preflight before guarded execution. `develop` is 90 commits ahead of `origin/develop`, and push has not been performed for #432-#614. / 現在の主計画ステータス: #614 で transaction-plan route metadata lane を close し、guarded execution より前に execution audit/idempotency update preflight を昇格しました。`develop` は `origin/develop` より 90 commits ahead、#432-#614 は push していません。
 
 | Order | Work unit / 作業の塊 | Commit unit / コミット単位 | Status | Rough effort / 目安 |
 | --- | --- | --- | --- | --- |
@@ -168,7 +168,12 @@ Current main status: #609 closes the route-level ready execution-plan coverage l
 | 607 | Sample18 post-execution-plan route metadata lane closure / sample18 post-execution-plan route metadata lane closure | Close the execution-plan route metadata lane and decide whether transaction boundary preflight, route-level ready-plan coverage, or execution audit update preflight should be promoted next | `DONE` | 0.25 - 0.5 day / 0.25 - 0.5 日 |
 | 608 | Sample18 route-level ready execution-plan coverage / sample18 route-level ready execution-plan coverage | Add focused route-level coverage that a flag-on fresh valid generated-submit request exposes `mutation_gate.ready` and planned `dbaccess_execution_plan` metadata while still returning HTTP 409 and executing no mutation | `DONE` | 0.5 day / 半日 |
 | 609 | Sample18 post-ready execution-plan coverage lane closure / sample18 post-ready execution-plan coverage lane closure | Close the route-level ready execution-plan coverage lane and decide whether transaction boundary preflight, execution audit update preflight, or route integration hardening should be promoted next | `DONE` | 0.25 - 0.5 day / 0.25 - 0.5 日 |
-| 610 | Sample18 DBAccess transaction boundary preflight / sample18 DBAccess transaction boundary preflight | Define the transaction, rollback, post-execution audit/idempotency update, and fail-closed response contract before any generated-submit DBAccess execution can be enabled | `ACTIVE_NEXT` | 0.5 day / 半日 |
+| 610 | Sample18 DBAccess transaction boundary preflight / sample18 DBAccess transaction boundary preflight | Define the transaction, rollback, post-execution audit/idempotency update, and fail-closed response contract before any generated-submit DBAccess execution can be enabled | `DONE` | 0.5 day / 半日 |
+| 611 | Sample18 DBAccess transaction-plan helper first slice / sample18 DBAccess transaction-plan helper first slice | Add a non-mutating helper that derives transaction boundary and post-execution audit/idempotency update plans from a planned execution response without opening transactions or executing DBAccess | `DONE` | 0.5 - 1 day / 半日 - 1 日 |
+| 612 | Sample18 post-transaction-plan helper lane closure / sample18 post-transaction-plan helper lane closure | Close the non-mutating transaction-plan helper lane and decide whether route metadata integration, execution audit update preflight, or guarded execution preflight should be promoted next | `DONE` | 0.25 - 0.5 day / 0.25 - 0.5 日 |
+| 613 | Sample18 transaction-plan route metadata integration / sample18 transaction-plan route metadata integration | Wire non-mutating transaction-plan metadata into valid generated-submit route responses while preserving HTTP 409, mutation disabled, executed false, and transaction not opened | `DONE` | 0.5 day / 半日 |
+| 614 | Sample18 post-transaction-plan route metadata lane closure / sample18 post-transaction-plan route metadata lane closure | Close the transaction-plan route metadata lane and decide whether execution audit update preflight, guarded execution preflight, or route metadata hardening should be promoted next | `DONE` | 0.25 - 0.5 day / 0.25 - 0.5 日 |
+| 615 | Sample18 execution audit/idempotency update preflight / sample18 execution audit/idempotency update preflight | Define the post-execution audit event and idempotency update contract before any guarded DBAccess execution can be enabled | `ACTIVE_NEXT` | 0.5 day / 半日 |
 
 ### Long-Term No-Code Roadmap / 長期 No-Code ロードマップ
 
@@ -338,6 +343,28 @@ Latest code verification from #608:
 - `git diff --check`
 
 For #609, docs-only verification is `git diff --check`.
+
+For #610, docs-only verification is `git diff --check`.
+
+Latest code verification from #611:
+
+- `php -l mtool/app/lab_sample18_task_board_page.php`
+- `php -l tests/Integration/Sample18MiniTaskBoardDemoTest.php`
+- `make sample18-pack-runtime-test`: `OK (10 tests, 638 assertions)`
+- Full `make test`: `OK, but incomplete, skipped, or risky tests! Tests: 392, Assertions: 12446, Skipped: 1.`
+- `git diff --check`
+
+For #612, docs-only verification is `git diff --check`.
+
+Latest code verification from #613:
+
+- `php -l mtool/app/lab_sample18_task_board_page.php`
+- `php -l tests/Integration/Sample18MiniTaskBoardDemoTest.php`
+- `make sample18-pack-runtime-test`: `OK (10 tests, 680 assertions)`
+- Full `make test`: `OK, but incomplete, skipped, or risky tests! Tests: 392, Assertions: 12488, Skipped: 1.`
+- `git diff --check`
+
+For #614, docs-only verification is `git diff --check`.
 
 Latest code verification from #459:
 
@@ -740,6 +767,11 @@ Completed detailed history was moved out of this active list. / 完了済みの�
 
 | Completed scope / 完了済み範囲 | Historical source / 履歴ソース |
 | --- | --- |
+| Sample18 post-transaction-plan route metadata lane closure / sample18 post-transaction-plan route metadata lane closure | [2026-0710 Sample18 Post Transaction-Plan Route Metadata Lane Closure](reports/2026/2026-0710-sample18-post-transaction-plan-route-metadata-lane-closure.md) |
+| Sample18 transaction-plan route metadata integration / sample18 transaction-plan route metadata integration | [2026-0710 Sample18 Transaction-Plan Route Metadata Integration](reports/2026/2026-0710-sample18-transaction-plan-route-metadata-integration.md) |
+| Sample18 post-transaction-plan helper lane closure / sample18 post-transaction-plan helper lane closure | [2026-0710 Sample18 Post Transaction-Plan Helper Lane Closure](reports/2026/2026-0710-sample18-post-transaction-plan-helper-lane-closure.md) |
+| Sample18 DBAccess transaction-plan helper first slice / sample18 DBAccess transaction-plan helper first slice | [2026-0710 Sample18 DBAccess Transaction-Plan Helper First Slice](reports/2026/2026-0710-sample18-dbaccess-transaction-plan-helper-first-slice.md) |
+| Sample18 DBAccess transaction boundary preflight / sample18 DBAccess transaction boundary preflight | [2026-0710 Sample18 DBAccess Transaction Boundary Preflight](reports/2026/2026-0710-sample18-dbaccess-transaction-boundary-preflight.md) |
 | Sample18 post-ready execution-plan coverage lane closure / sample18 post-ready execution-plan coverage lane closure | [2026-0710 Sample18 Post Ready Execution-Plan Coverage Lane Closure](reports/2026/2026-0710-sample18-post-ready-execution-plan-coverage-lane-closure.md) |
 | Sample18 route-level ready execution-plan coverage / sample18 route-level ready execution-plan coverage | [2026-0710 Sample18 Route-Level Ready Execution-Plan Coverage](reports/2026/2026-0710-sample18-route-level-ready-execution-plan-coverage.md) |
 | Sample18 post-execution-plan route metadata lane closure / sample18 post-execution-plan route metadata lane closure | [2026-0710 Sample18 Post Execution-Plan Route Metadata Lane Closure](reports/2026/2026-0710-sample18-post-execution-plan-route-metadata-lane-closure.md) |

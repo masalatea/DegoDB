@@ -11,6 +11,16 @@
 
 ## Index
 
+- `2026-0710-sample18-post-transaction-plan-route-metadata-lane-closure.md`
+  - #614 sample18 post-transaction-plan route metadata lane closure。#613 の transaction-plan route metadata を受け入れ、次は guarded execution より前に execution audit/idempotency update preflight (#615) を昇格。DBAccess mutation は未有効化。Status: `DONE`。
+- `2026-0710-sample18-transaction-plan-route-metadata-integration.md`
+  - #613 sample18 transaction-plan route metadata integration。valid generated-submit route response に non-mutating `transaction_plan` metadata を接続し、disabled/duplicate/failed/planned route outcomes と method/CSRF/validation skip boundary を固定。DBAccess mutation は未有効化。Status: `FIRST_SLICE_DONE`。
+- `2026-0710-sample18-post-transaction-plan-helper-lane-closure.md`
+  - #612 sample18 post-transaction-plan helper lane closure。#611 の non-mutating transaction-plan helper を受け入れ、次は valid generated-submit route response への transaction-plan metadata integration (#613) を昇格。DBAccess mutation は未有効化。Status: `DONE`。
+- `2026-0710-sample18-dbaccess-transaction-plan-helper-first-slice.md`
+  - #611 sample18 DBAccess transaction-plan helper first slice。non-mutating `transaction_plan` helper を追加し、transaction boundary / rollback policy / post-execution audit・idempotency update plans を metadata 化。route integration / DBAccess mutation は未有効化。Status: `FIRST_SLICE_DONE`。
+- `2026-0710-sample18-dbaccess-transaction-boundary-preflight.md`
+  - #610 sample18 DBAccess transaction boundary preflight。execution enablement 前の transaction preconditions、rollback policy、post-execution audit/idempotency update plan、#611 の non-mutating transaction-plan helper 条件を定義。DBAccess mutation は未有効化。Status: `DONE`。
 - `2026-0710-sample18-post-ready-execution-plan-coverage-lane-closure.md`
   - #609 sample18 post-ready execution-plan coverage lane closure。#608 の fresh flag-on ready/planned route coverage を受け入れ、次は transaction boundary preflight (#610) を昇格。DBAccess mutation は未有効化。Status: `DONE`。
 - `2026-0710-sample18-route-level-ready-execution-plan-coverage.md`
