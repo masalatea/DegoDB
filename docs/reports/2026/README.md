@@ -11,6 +11,16 @@
 
 ## Index
 
+- `2026-0710-sample18-post-guarded-execution-gate-route-metadata-lane-closure.md`
+  - #624 sample18 post-guarded execution gate route metadata lane closure。#623 の route-visible `execution_guard` metadata を受け入れ、次は DBAccess execution 有効化前の guarded executor implementation preflight (#625) を昇格。DBAccess mutation / transaction / execution updates は未有効化。Status: `DONE`。
+- `2026-0710-sample18-guarded-execution-gate-route-metadata-integration.md`
+  - #623 sample18 guarded execution gate route metadata integration。valid generated-submit route response に non-executing `execution_guard` metadata を接続し、disabled/duplicate/failed/planned route outcomes と invalid-route skip boundary を固定。DBAccess mutation / transaction / execution updates は未有効化。Status: `FIRST_SLICE_DONE`。
+- `2026-0710-sample18-post-guarded-execution-gate-helper-lane-closure.md`
+  - #622 sample18 post-guarded execution gate helper lane closure。#621 の final non-executing `execution_guard` helper を受け入れ、次は valid generated-submit route response への guard metadata integration (#623) を昇格。DBAccess mutation / transaction / execution updates は未有効化。Status: `DONE`。
+- `2026-0710-sample18-guarded-execution-gate-helper-first-slice.md`
+  - #621 sample18 guarded execution gate helper first slice。route-ready metadata chain を検証する final non-executing guard helper を追加し、allowed/blocked/failed と stable reasons を返す。transaction / DBAccess / execution audit write / idempotency execution update / route exposure は未有効化。Status: `FIRST_SLICE_DONE`。
+- `2026-0710-sample18-guarded-dbaccess-execution-preflight.md`
+  - #620 sample18 guarded DBAccess execution preflight。DBAccess mutation 有効化前の final enablement inputs、transaction / audit / idempotency update sequence、fail-closed matrix、#621 の non-executing guard helper 条件を定義。DBAccess mutation は未有効化。Status: `DONE`。
 - `2026-0710-sample18-post-execution-update-plan-route-metadata-lane-closure.md`
   - #619 sample18 post-execution update-plan route metadata lane closure。#618 の route-visible `execution_update_plan` metadata を受け入れ、次は DBAccess mutation 有効化前の guarded execution preflight (#620) を昇格。DBAccess mutation / execution audit write / idempotency execution update は未有効化。Status: `DONE`。
 - `2026-0710-sample18-execution-update-plan-route-metadata-integration.md`
