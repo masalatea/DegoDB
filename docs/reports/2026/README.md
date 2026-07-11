@@ -11,6 +11,12 @@
 
 ## Index
 
+- `2026-0710-post-enabled-candidate-browser-smoke-lane-closure.md`
+  - #700 post enabled-candidate browser smoke lane closure。#699 の UI-only enabled-candidate browser smoke を受け入れ、real guarded execution smoke の前に route/config readiness browser preflight (#701) を昇格。Status: `DONE`。
+- `2026-0710-sample18-enabled-candidate-browser-smoke-first-slice.md`
+  - #699 sample18 enabled-candidate browser smoke first slice。別 target で browser-side enabled-candidate overlay と fetch stub を使い、create/update/complete の availability markers と blocked generated-submit feedback を desktop/mobile で検査。Status: `FIRST_SLICE_DONE`。
+- `2026-0710-sample18-enabled-candidate-browser-smoke-preflight.md`
+  - #698 sample18 enabled-candidate browser smoke preflight。enabled-candidate browser smoke を UI-only/stubbed outer check として定義し、real mutation と reopen/delete availability を避けた first smoke slice (#699) を昇格。Status: `DONE`。
 - `2026-0710-post-availability-state-fast-contract-lane-closure.md`
   - #697 post availability-state fast contract lane closure。#696 の availability-state fast contract を受け入れ、generated default-state 変更前に enabled-candidate browser smoke preflight (#698) を昇格。Status: `DONE`。
 - `2026-0710-sample18-generated-availability-state-fast-contract-first-slice.md`
