@@ -11,6 +11,8 @@
 
 ## Index
 
+- `2026-0711-post-readiness-metadata-lane-closure.md`
+  - #709 post readiness metadata lane closure。#703-#708 の read-only readiness metadata lane を close し、overlay / real execution へ飛ばず #710 commit-stack checkpoint を次 active に昇格。Status: `DONE`。
 - `2026-0711-readiness-browser-smoke-first-slice.md`
   - #708 readiness browser smoke first slice。Sample18 enabled-candidate browser smoke に desktop/mobile の read-only readiness marker probe を追加し、temporary enablement 前の candidate_ready / can_submit=false / executor_config_status=disabled を確認。Status: `FIRST_SLICE_DONE`。
 - `2026-0711-readiness-fast-contract-coverage.md`
