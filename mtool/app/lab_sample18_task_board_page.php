@@ -551,6 +551,117 @@ function app_lab_sample18_task_board_generated_submit_append_audit_event(?array 
 }
 
 /**
+ * @param array<string,mixed>|null $app
+ * @param array<string,mixed> $executionUpdatePlan
+ * @param array<string,mixed> $executionGuard
+ * @param array<string,mixed> $principal
+ * @param array<string,mixed> $metadata
+ * @return array{ok:bool,skipped:bool,status:string,item:array<string,mixed>,error:string,reason:string}
+ */
+function app_lab_sample18_task_board_generated_submit_append_execution_audit_event(
+    ?array $app,
+    array $executionUpdatePlan,
+    array $executionGuard,
+    array $principal,
+    string $executionStatus,
+    string $executionResultCode,
+    string $transactionStatus,
+    array $metadata = [],
+): array {
+    if (!in_array($executionStatus, ['executed', 'failed', 'rolled_back'], true)) {
+        return [
+            'ok' => false,
+            'skipped' => false,
+            'status' => 'failed',
+            'item' => [],
+            'error' => 'sample18 generated submit execution audit status is not supported: ' . $executionStatus,
+            'reason' => 'invalid_execution_status',
+        ];
+    }
+    if (trim($executionResultCode) === '') {
+        return [
+            'ok' => false,
+            'skipped' => false,
+            'status' => 'failed',
+            'item' => [],
+            'error' => 'sample18 generated submit execution audit result code is required.',
+            'reason' => 'missing_execution_result_code',
+        ];
+    }
+    if (!in_array($transactionStatus, ['committed', 'rolled_back', 'not_opened'], true)) {
+        return [
+            'ok' => false,
+            'skipped' => false,
+            'status' => 'failed',
+            'item' => [],
+            'error' => 'sample18 generated submit execution audit transaction status is not supported: ' . $transactionStatus,
+            'reason' => 'invalid_transaction_status',
+        ];
+    }
+    if (($executionGuard['status'] ?? '') !== 'allowed' || !($executionGuard['ready'] ?? false)) {
+        return [
+            'ok' => false,
+            'skipped' => false,
+            'status' => 'failed',
+            'item' => [],
+            'error' => 'sample18 generated submit execution guard is not ready.',
+            'reason' => 'execution_guard_not_ready',
+        ];
+    }
+
+    $dedupeKey = (string) ($executionGuard['dedupe_key'] ?? '');
+    if ($dedupeKey === '') {
+        return [
+            'ok' => false,
+            'skipped' => false,
+            'status' => 'failed',
+            'item' => [],
+            'error' => 'sample18 generated submit execution audit dedupe key is required.',
+            'reason' => 'dedupe_key_missing',
+        ];
+    }
+    $requestAuditEventKey = (string) ($executionGuard['request_audit_event_key'] ?? '');
+    if ($requestAuditEventKey === '') {
+        return [
+            'ok' => false,
+            'skipped' => false,
+            'status' => 'failed',
+            'item' => [],
+            'error' => 'sample18 generated submit execution audit request audit event key is required.',
+            'reason' => 'request_audit_event_key_missing',
+        ];
+    }
+
+    $plannedAudit = is_array($executionUpdatePlan['execution_audit_update'] ?? null)
+        ? $executionUpdatePlan['execution_audit_update']
+        : [];
+    $eventMetadata = [
+        'request_audit_event_key' => $requestAuditEventKey,
+        'dedupe_key' => $dedupeKey,
+        'operation_key' => (string) ($executionGuard['operation_key'] ?? ''),
+        'db_access_class' => (string) ($executionGuard['db_access_class'] ?? ''),
+        'db_access_function' => (string) ($executionGuard['db_access_function'] ?? ''),
+        'execution_status' => $executionStatus,
+        'execution_result_code' => $executionResultCode,
+        'transaction_status' => $transactionStatus,
+        'planned_transaction_status' => (string) ($plannedAudit['transaction_status'] ?? ''),
+        'details' => $metadata,
+    ];
+
+    return app_lab_sample18_task_board_generated_submit_append_audit_event($app, [
+        'actor_login_id' => trim((string) ($principal['id'] ?? '')),
+        'actor_source' => trim((string) ($principal['auth_source'] ?? 'unknown')),
+        'project_key' => 'SAMPLE18',
+        'event_type' => 'sample18.generated_submit.executed',
+        'target_type' => 'sample18_task_card',
+        'target_key' => $dedupeKey,
+        'result' => $executionStatus,
+        'message' => $executionResultCode,
+        'metadata' => $eventMetadata,
+    ]);
+}
+
+/**
  * @return array{ok:bool,status:string,created:bool,dedupe_key:string,item:array<string,mixed>,error:string,reason:string}
  */
 function app_lab_sample18_task_board_generated_submit_idempotency_skipped(

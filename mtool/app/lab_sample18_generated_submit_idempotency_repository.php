@@ -13,3 +13,8 @@ function app_lab_sample18_generated_submit_idempotency_fetch_latest_records(arra
 {
     return app_pdo_lab_sample18_generated_submit_idempotency_fetch_latest_records($app, $filters);
 }
+
+function app_lab_sample18_generated_submit_idempotency_update_execution_outcome(array $app, array $input): array
+{
+    return app_pdo_lab_sample18_generated_submit_idempotency_update_execution_outcome($app, $input);
+}

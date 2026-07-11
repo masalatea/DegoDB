@@ -11,6 +11,16 @@
 
 ## Index
 
+- `2026-0710-sample18-post-execution-audit-append-persistence-lane-closure.md`
+  - #629 sample18 post-execution audit append persistence lane closure。#628 の execution audit append helper を受け入れ、次は DBAccess execution 前の guarded executor coordination preflight (#630) を昇格。DBAccess mutation / transaction / idempotency update / route executor は未有効化。Status: `DONE`。
+- `2026-0710-sample18-execution-audit-append-persistence-first-slice.md`
+  - #628 sample18 execution audit append persistence first slice。allowed execution guard metadata から execution audit event を append する helper を追加し、request audit linkage / dedupe / DBAccess metadata / transaction status / result details を保存。DBAccess mutation / transaction / idempotency update / route executor は未有効化。Status: `FIRST_SLICE_DONE`。
+- `2026-0710-sample18-post-idempotency-execution-outcome-persistence-lane-closure.md`
+  - #627 sample18 post-idempotency execution outcome persistence lane closure。#626 の idempotency execution outcome update API を受け入れ、次は DBAccess executor 前に execution audit append persistence (#628) を昇格。DBAccess mutation / transaction / route executor は未有効化。Status: `DONE`。
+- `2026-0710-sample18-idempotency-execution-outcome-persistence-first-slice.md`
+  - #626 sample18 idempotency execution outcome persistence first slice。既存 generated-submit idempotency record に execution outcome を repository-level で保存する update API を追加し、metadata merge / result update / duplicate replay fail-closed を coverage。DBAccess mutation / transaction / execution audit write / route executor は未有効化。Status: `FIRST_SLICE_DONE`。
+- `2026-0710-sample18-guarded-executor-implementation-preflight.md`
+  - #625 sample18 guarded executor implementation preflight。route-visible `execution_guard` 後の最初の mutating executor 境界を定義し、DBAccess execution 前に idempotency execution outcome persistence (#626) を昇格。DBAccess mutation / transaction / route executor は未有効化。Status: `DONE`。
 - `2026-0710-sample18-post-guarded-execution-gate-route-metadata-lane-closure.md`
   - #624 sample18 post-guarded execution gate route metadata lane closure。#623 の route-visible `execution_guard` metadata を受け入れ、次は DBAccess execution 有効化前の guarded executor implementation preflight (#625) を昇格。DBAccess mutation / transaction / execution updates は未有効化。Status: `DONE`。
 - `2026-0710-sample18-guarded-execution-gate-route-metadata-integration.md`

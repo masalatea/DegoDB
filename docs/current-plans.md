@@ -13,7 +13,7 @@ When someone asks for "the plan list", answer from this section first. / 「計�
 
 ### Main Plan / 主計画
 
-Current main status: #624 closes the route-visible sample18 execution guard metadata lane and promotes guarded executor implementation preflight before enabling DBAccess execution. `develop` is 100 commits ahead of `origin/develop`, and push has not been performed for #432-#624. / 現在の主計画ステータス: #624 で route-visible sample18 execution guard metadata lane を閉じ、DBAccess execution 有効化前の guarded executor implementation preflight を昇格しました。`develop` は `origin/develop` より 100 commits ahead、#432-#624 は push していません。
+Current main status: #629 closes the sample18 execution audit append persistence lane and promotes guarded executor coordination preflight before DBAccess execution. `develop` is 105 commits ahead of `origin/develop`, and push has not been performed for #432-#629. / 現在の主計画ステータス: #629 で sample18 execution audit append persistence lane を閉じ、DBAccess execution より前に guarded executor coordination preflight を昇格しました。`develop` は `origin/develop` より 105 commits ahead、#432-#629 は push していません。
 
 | Order | Work unit / 作業の塊 | Commit unit / コミット単位 | Status | Rough effort / 目安 |
 | --- | --- | --- | --- | --- |
@@ -183,7 +183,12 @@ Current main status: #624 closes the route-visible sample18 execution guard meta
 | 622 | Sample18 post-guarded execution gate helper lane closure / sample18 post-guarded execution gate helper lane closure | Close the non-executing guarded execution gate helper lane and decide whether route metadata integration, guarded executor implementation preflight, or additional guard matrix coverage should be promoted next | `DONE` | 0.25 - 0.5 day / 0.25 - 0.5 日 |
 | 623 | Sample18 guarded execution gate route metadata integration / sample18 guarded execution gate route metadata integration | Wire non-executing `execution_guard` metadata into valid generated-submit route responses while preserving HTTP 409, mutation disabled, no transaction, no DBAccess call, and no execution updates | `DONE` | 0.5 day / 半日 |
 | 624 | Sample18 post-guarded execution gate route metadata lane closure / sample18 post-guarded execution gate route metadata lane closure | Close the route-visible execution guard metadata lane and decide whether guarded executor implementation preflight, additional guard hardening, or a local stack review should be promoted next | `DONE` | 0.25 - 0.5 day / 0.25 - 0.5 日 |
-| 625 | Sample18 guarded executor implementation preflight / sample18 guarded executor implementation preflight | Define the smallest first mutating executor slice, including code boundary, feature flag, transaction API, DBAccess call adapter, execution audit/idempotency update persistence, rollback behavior, and tests before implementation | `ACTIVE_NEXT` | 0.5 - 1 day / 半日 - 1 日 |
+| 625 | Sample18 guarded executor implementation preflight / sample18 guarded executor implementation preflight | Define the smallest first mutating executor slice, including code boundary, feature flag, transaction API, DBAccess call adapter, execution audit/idempotency update persistence, rollback behavior, and tests before implementation | `DONE` | 0.5 - 1 day / 半日 - 1 日 |
+| 626 | Sample18 idempotency execution outcome persistence first slice / sample18 idempotency execution outcome persistence first slice | Add repository-level execution outcome update support for existing generated-submit idempotency records using stable metadata/result fields, without opening transactions, calling DBAccess, or wiring the route executor | `DONE` | 0.5 - 1 day / 半日 - 1 日 |
+| 627 | Sample18 post-idempotency execution outcome persistence lane closure / sample18 post-idempotency execution outcome persistence lane closure | Close the idempotency execution outcome persistence lane and decide whether execution audit append persistence, route integration metadata, or guarded executor implementation should be promoted next | `DONE` | 0.25 - 0.5 day / 0.25 - 0.5 日 |
+| 628 | Sample18 execution audit append persistence first slice / sample18 execution audit append persistence first slice | Add a repository/helper path to append execution audit events for planned execution outcomes using existing audit storage, without opening transactions, calling DBAccess, updating idempotency, or wiring the route executor | `DONE` | 0.5 - 1 day / 半日 - 1 日 |
+| 629 | Sample18 post-execution audit append persistence lane closure / sample18 post-execution audit append persistence lane closure | Close the execution audit append persistence lane and decide whether guarded executor coordination preflight, route integration metadata, or additional failure coverage should be promoted next | `DONE` | 0.25 - 0.5 day / 0.25 - 0.5 日 |
+| 630 | Sample18 guarded executor coordination preflight / sample18 guarded executor coordination preflight | Define how the first executor coordinator will combine execution guard, DBAccess call adapter, transaction boundary, execution audit append, and idempotency outcome update before implementation | `ACTIVE_NEXT` | 0.5 - 1 day / 半日 - 1 日 |
 
 ### Long-Term No-Code Roadmap / 長期 No-Code ロードマップ
 
@@ -419,6 +424,30 @@ Latest code verification from #623:
 - `git diff --check`
 
 For #624, docs-only verification is `git diff --check`.
+
+For #625, docs-only verification is `git diff --check`.
+
+Latest code verification from #626:
+
+- `php -l mtool/app/lab_sample18_generated_submit_idempotency_repository.php`
+- `php -l mtool/app/lab_sample18_generated_submit_idempotency_repository_pdo.php`
+- `php -l tests/Integration/Sample18GeneratedSubmitIdempotencyRepositorySqliteTest.php`
+- Focused repository PHPUnit via `bash mtool/scripts/run_sample_pack_phpunit_test.sh --compose-file=sample/tutorials/sample18-mini-task-board-demo/compose.yaml --run-script=./sample/tutorials/sample18-mini-task-board-demo/run.sh --apply-pack-seed --phpunit-target=/var/www/tests/Integration/Sample18GeneratedSubmitIdempotencyRepositorySqliteTest.php`: `OK (6 tests, 86 assertions)`
+- `make sample18-pack-runtime-test`: `OK (12 tests, 848 assertions)`
+- Full `make test`: `OK, but incomplete, skipped, or risky tests! Tests: 396, Assertions: 12690, Skipped: 1.`
+- `git diff --check`
+
+For #627, docs-only verification is `git diff --check`.
+
+Latest code verification from #628:
+
+- `php -l mtool/app/lab_sample18_task_board_page.php`
+- `php -l tests/Integration/Sample18MiniTaskBoardDemoTest.php`
+- `make sample18-pack-runtime-test`: `OK (13 tests, 877 assertions)`
+- Full `make test`: `OK, but incomplete, skipped, or risky tests! Tests: 397, Assertions: 12719, Skipped: 1.`
+- `git diff --check`
+
+For #629, docs-only verification is `git diff --check`.
 
 Latest code verification from #459:
 
