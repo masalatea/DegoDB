@@ -11,6 +11,12 @@
 
 ## Index
 
+- `2026-0710-post-db-backed-transaction-binding-coverage-lane-closure.md`
+  - #659 post DB-backed transaction binding coverage lane closure。#658 の DB-backed route-unwired transaction binding coverage を受け入れ、route wiring より前に post-commit recording DB-backed coverage preflight (#660) を昇格。generated-submit route execution は未有効化。Status: `DONE`。
+- `2026-0710-sample18-db-backed-transaction-binding-coverage-first-slice.md`
+  - #658 sample18 DB-backed transaction binding coverage first slice。isolated SQLite/PDO で generated `TaskCardDBAccess::InsertTaskCard` の commit persistence と DBAccess-compatible failure rollback を route-unwired に coverage。generated-submit route execution は未有効化。Status: `FIRST_SLICE_DONE`。
+- `2026-0710-sample18-db-backed-transaction-binding-coverage-preflight.md`
+  - #657 sample18 DB-backed transaction binding coverage preflight。generated runtime transaction support、transaction binding callables、transaction adapter、generated `TaskCardDBAccess` を SQLite/PDO で route-unwired に検証する境界を定義。次は first coverage slice (#658)。Status: `DONE`。
 - `2026-0710-post-generated-runtime-transaction-support-lane-closure.md`
   - #656 post generated runtime transaction support lane closure。#655 の PDO-first generated runtime transaction support を受け入れ、route wiring より前に DB-backed transaction binding coverage preflight (#657) を昇格。generated-submit route execution は未有効化。Status: `DONE`。
 - `2026-0710-generated-runtime-transaction-support-first-slice.md`

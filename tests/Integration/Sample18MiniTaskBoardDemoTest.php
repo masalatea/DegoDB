@@ -84,6 +84,194 @@ final class Sample18MiniTaskBoardDemoTest extends TestCase
         }
     }
 
+    public function testMiniTaskBoardGeneratedSubmitDbBackedTransactionBindingCommitsAndRollsBack(): void
+    {
+        $root = dirname(__DIR__, 2);
+        require_once $root . '/sample/tutorials/sample18-mini-task-board-demo/reference/DBACCESS-PHP/_support/mtool_runtime_db.php';
+        require_once $root . '/sample/tutorials/sample18-mini-task-board-demo/reference/DATACLASS-PHP/base/data-TaskCardBase.php';
+        require_once $root . '/sample/tutorials/sample18-mini-task-board-demo/reference/DATACLASS-PHP/data-TaskCard.php';
+        require_once $root . '/sample/tutorials/sample18-mini-task-board-demo/reference/DBACCESS-PHP/base/dbaccess-TaskCardBase.php';
+        require_once $root . '/sample/tutorials/sample18-mini-task-board-demo/reference/DBACCESS-PHP/dbaccess-TaskCard.php';
+
+        $buildReady = static function (string $title): array {
+            $normalized = app_lab_sample18_task_board_normalize_generated_submit_request(
+                'create_task_card',
+                ['title' => $title, 'body' => 'DB backed body', 'assigned_to' => 'Mina', 'priority' => '10', 'due_date' => ''],
+                '2026-07-10 14:00:00',
+            );
+            self::assertTrue($normalized['ok']);
+            $dispatcher = app_lab_sample18_task_board_generated_submit_dispatcher_dry_run($normalized);
+            $auditAppend = ['ok' => true, 'status' => 'appended', 'item' => ['event_key' => 'audit-db-backed-' . md5($title)]];
+            $idempotency = [
+                'ok' => true,
+                'status' => 'recorded',
+                'created' => true,
+                'dedupe_key' => 'dedupe-db-backed-' . md5($title),
+                'item' => ['dedupe_key' => 'dedupe-db-backed-' . md5($title)],
+            ];
+            $mutationGate = app_lab_sample18_task_board_generated_submit_mutation_gate(
+                ['sample18_generated_submit_mutation_enabled' => true],
+                $normalized,
+                $dispatcher,
+                $auditAppend,
+                $idempotency,
+            );
+            $executionPlan = app_lab_sample18_task_board_generated_submit_dbaccess_execution_plan(
+                $normalized,
+                $dispatcher,
+                $mutationGate,
+            );
+            $transactionPlan = app_lab_sample18_task_board_generated_submit_transaction_plan($executionPlan);
+            $updatePlan = app_lab_sample18_task_board_generated_submit_execution_update_plan(
+                $transactionPlan,
+                $auditAppend,
+                $idempotency,
+            );
+            $guard = app_lab_sample18_task_board_generated_submit_execution_guard(
+                $normalized,
+                $auditAppend,
+                $idempotency,
+                $mutationGate,
+                $executionPlan,
+                $transactionPlan,
+                $updatePlan,
+            );
+            $coordination = app_lab_sample18_task_board_generated_submit_executor_coordination_plan(
+                $guard,
+                $updatePlan,
+                true,
+            );
+
+            return [$normalized, $dispatcher, $guard, $coordination];
+        };
+
+        $sqlitePath = sys_get_temp_dir() . '/sample18-db-backed-' . bin2hex(random_bytes(4)) . '.sqlite';
+        $previousSqlitePath = getenv('MTOOL_RUNTIME_SQLITE_PATH');
+        $previousDsn = getenv('MTOOL_RUNTIME_DB_DSN');
+        $previousUser = getenv('MTOOL_RUNTIME_DB_USER');
+        $previousPassword = getenv('MTOOL_RUNTIME_DB_PASSWORD');
+        $previousMtoolDb = $GLOBALS['mtooldb'] ?? null;
+
+        try {
+            putenv('MTOOL_RUNTIME_DB_DSN');
+            putenv('MTOOL_RUNTIME_DB_USER');
+            putenv('MTOOL_RUNTIME_DB_PASSWORD');
+            putenv('MTOOL_RUNTIME_SQLITE_PATH=' . $sqlitePath);
+            $transactionDb = new MtoolGeneratedDbAccessRuntimeDb();
+            $GLOBALS['mtooldb'] = $transactionDb;
+            self::assertInstanceOf(
+                MtoolGeneratedDbAccessPdoResult::class,
+                $transactionDb->execute(
+                    'CREATE TABLE task_card (
+                        id INTEGER PRIMARY KEY AUTOINCREMENT,
+                        title TEXT NOT NULL,
+                        body TEXT NOT NULL,
+                        status TEXT NOT NULL,
+                        assigned_to TEXT NOT NULL,
+                        priority INTEGER NOT NULL,
+                        due_date TEXT DEFAULT NULL,
+                        completed_at TEXT DEFAULT NULL,
+                        updated_at TEXT NOT NULL
+                    )',
+                ),
+            );
+
+            [$normalized, $dispatcher, $guard, $coordination] = $buildReady('DB backed committed');
+            $callables = app_lab_sample18_task_board_generated_submit_transaction_binding_callables(
+                $transactionDb,
+                static function (array $context): object {
+                    $GLOBALS['mtooldb'] = $context['transaction_db'];
+
+                    return new TaskCardDBAccess();
+                },
+            );
+            $committed = app_lab_sample18_task_board_generated_submit_transaction_adapter(
+                $normalized,
+                $dispatcher,
+                $guard,
+                $coordination,
+                true,
+                $callables['begin'],
+                $callables['commit'],
+                $callables['rollback'],
+                $callables['dbaccess'],
+            );
+            self::assertSame('executed', $committed['status']);
+            self::assertTrue($committed['success']);
+            self::assertSame('committed', $committed['transaction_status']);
+            self::assertSame('executed', $committed['dbaccess_status']);
+            self::assertSame('planned_not_written', $committed['recording_status']);
+
+            $committedRows = $transactionDb->query("SELECT title FROM task_card WHERE title = 'DB backed committed'");
+            self::assertInstanceOf(MtoolGeneratedDbAccessPdoResult::class, $committedRows);
+            self::assertSame(['DB backed committed'], $committedRows->fetch_row());
+
+            [$normalized, $dispatcher, $guard, $coordination] = $buildReady('DB backed rolled back');
+            $failingCallables = app_lab_sample18_task_board_generated_submit_transaction_binding_callables(
+                $transactionDb,
+                static function (array $context): object {
+                    $GLOBALS['mtooldb'] = $context['transaction_db'];
+
+                    return new class {
+                        public function InsertTaskCard(object $TaskCardObj): object
+                        {
+                            global $mtooldb;
+                            $mtooldb->execute(
+                                'insert into task_card (title, body, status, assigned_to, priority, due_date, updated_at) values(?, ?, ?, ?, ?, ?, ?)',
+                                [
+                                    $TaskCardObj->title,
+                                    $TaskCardObj->body,
+                                    $TaskCardObj->status,
+                                    $TaskCardObj->assignedTo,
+                                    $TaskCardObj->priority,
+                                    $TaskCardObj->dueDate,
+                                    $TaskCardObj->updatedAt,
+                                ],
+                            );
+
+                            return (object) ['errno' => 1, 'error' => 'forced failure after insert'];
+                        }
+                    };
+                },
+            );
+            $rolledBack = app_lab_sample18_task_board_generated_submit_transaction_adapter(
+                $normalized,
+                $dispatcher,
+                $guard,
+                $coordination,
+                true,
+                $failingCallables['begin'],
+                $failingCallables['commit'],
+                $failingCallables['rollback'],
+                $failingCallables['dbaccess'],
+            );
+            self::assertSame('failed', $rolledBack['status']);
+            self::assertFalse($rolledBack['success']);
+            self::assertSame('rolled_back', $rolledBack['transaction_status']);
+            self::assertSame('failed', $rolledBack['dbaccess_status']);
+            self::assertSame('dbaccess_failed', $rolledBack['failure_code']);
+            self::assertSame('forced failure after insert', $rolledBack['error']);
+
+            $rolledBackRows = $transactionDb->query("SELECT COUNT(*) FROM task_card WHERE title = 'DB backed rolled back'");
+            self::assertInstanceOf(MtoolGeneratedDbAccessPdoResult::class, $rolledBackRows);
+            $rolledBackCount = $rolledBackRows->fetch_row();
+            self::assertSame(0, (int) ($rolledBackCount[0] ?? -1));
+        } finally {
+            $previousDsn === false ? putenv('MTOOL_RUNTIME_DB_DSN') : putenv('MTOOL_RUNTIME_DB_DSN=' . $previousDsn);
+            $previousSqlitePath === false ? putenv('MTOOL_RUNTIME_SQLITE_PATH') : putenv('MTOOL_RUNTIME_SQLITE_PATH=' . $previousSqlitePath);
+            $previousUser === false ? putenv('MTOOL_RUNTIME_DB_USER') : putenv('MTOOL_RUNTIME_DB_USER=' . $previousUser);
+            $previousPassword === false ? putenv('MTOOL_RUNTIME_DB_PASSWORD') : putenv('MTOOL_RUNTIME_DB_PASSWORD=' . $previousPassword);
+            if ($previousMtoolDb === null) {
+                unset($GLOBALS['mtooldb']);
+            } else {
+                $GLOBALS['mtooldb'] = $previousMtoolDb;
+            }
+            if (is_file($sqlitePath)) {
+                unlink($sqlitePath);
+            }
+        }
+    }
+
     public function testMiniTaskBoardNoCodeGoldenFixtureMatchesSeedAndRouteContract(): void
     {
         $fixture = $this->sample18NoCodeGoldenFixture();
