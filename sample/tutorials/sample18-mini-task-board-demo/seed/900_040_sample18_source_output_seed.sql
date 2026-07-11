@@ -10,7 +10,8 @@ WHERE project_id = @sample18_project_id
       'DATACLASS-PHP',
       'DBACCESS-PHP',
       'HTML-PAGE',
-      'OPENAPI-JSON'
+      'OPENAPI-JSON',
+      'NO-CODE-RUNTIME'
   );
 
 INSERT INTO project_source_outputs (
@@ -121,6 +122,28 @@ INSERT INTO project_source_outputs (
     40,
     'internal-only',
     'Generate OpenAPI JSON from task_card single-function proxy target metadata while preserving TaskCard generated API names.',
+    'manual'
+),
+(
+    @sample18_project_id,
+    'NO-CODE-RUNTIME',
+    'Sample18 No-Code Runtime Preview',
+    'json',
+    'NoCodeRuntime',
+    'Release',
+    '',
+    'work/source-outputs/SAMPLE18/NO-CODE-RUNTIME',
+    'work/staging/source-outputs/SAMPLE18/NO-CODE-RUNTIME',
+    '',
+    '',
+    'UTF-8',
+    'mtool/no-code-runtime-source-outputs/SAMPLE18/NO-CODE-RUNTIME',
+    'no-code-runtime-json',
+    'runtime',
+    'tar.gz',
+    50,
+    'internal-only',
+    'Generate readonly no-code screen definition and runtime preview metadata from sample18 task_card shared contract metadata.',
     'manual'
 )
 ON DUPLICATE KEY UPDATE

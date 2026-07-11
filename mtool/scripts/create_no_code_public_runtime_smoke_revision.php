@@ -21,13 +21,15 @@ Options:
   --artifact-key=KEY      Published source output artifact key
   --alias-key=KEY         Public runtime alias key to set (default: stable)
   --requested-by=NAME     Actor id recorded in candidate/current/alias rows
+  --allow-empty-action-surface-for-dom-preflight
+                          Smoke-only override for readonly filter DOM preflights
   --help                  Show this help
 TEXT;
 }
 
 /**
  * @param list<string> $argv
- * @return array{help:bool,project_key:string,artifact_key:string,alias_key:string,requested_by:string}
+ * @return array{help:bool,project_key:string,artifact_key:string,alias_key:string,requested_by:string,allow_empty_action_surface_for_dom_preflight:bool}
  */
 function app_cli_no_code_public_runtime_smoke_parse_args(array $argv): array
 {
@@ -37,12 +39,17 @@ function app_cli_no_code_public_runtime_smoke_parse_args(array $argv): array
         'artifact_key' => '',
         'alias_key' => 'stable',
         'requested_by' => 'public-runtime-smoke',
+        'allow_empty_action_surface_for_dom_preflight' => false,
     ];
 
     foreach (array_slice($argv, 1) as $argument) {
         if ($argument === '--help' || $argument === '-h') {
             $parsed['help'] = true;
             return $parsed;
+        }
+        if ($argument === '--allow-empty-action-surface-for-dom-preflight') {
+            $parsed['allow_empty_action_surface_for_dom_preflight'] = true;
+            continue;
         }
         if (!str_starts_with($argument, '--') || !str_contains($argument, '=')) {
             throw new InvalidArgumentException('未対応の引数です: ' . $argument);
@@ -113,6 +120,20 @@ try {
     );
     $readiness = $inspection['publish_readiness'];
     $readiness['artifact_key'] = $parsed['artifact_key'];
+    if ($parsed['allow_empty_action_surface_for_dom_preflight']) {
+        $blockingReasons = $readiness['blocking_reasons'] ?? [];
+        if (
+            ($readiness['state'] ?? '') === 'blocked'
+            && $blockingReasons === ['Generated action surface is empty.']
+            && ($readiness['preview_files_ready'] ?? false) === true
+            && ((int) ($readiness['screen_count'] ?? 0)) > 0
+        ) {
+            $readiness['state'] = 'publishable';
+            $readiness['label'] = 'Publish candidate ready';
+            $readiness['blocking_reasons'] = [];
+            $readiness['smoke_readiness_override'] = 'empty_action_surface_for_dom_preflight';
+        }
+    }
 
     $actor = [
         'id' => $parsed['requested_by'],

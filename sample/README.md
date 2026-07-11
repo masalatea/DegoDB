@@ -34,7 +34,7 @@ sample 配下には 2 種類あります。
 category と structure type は別軸です。
 
 - `sample/tutorials/`
-  - current は `sample01-simple-table-runtime`、`sample02-dataclass-nullable-default-status`、`sample03-dataclass-lookup-and-helper`、`sample04-dataclass-parent-child-basic`、`sample05-dbaccess-select-basic`、`sample06-dbaccess-filter-sort-page`、`sample07-dbaccess-crud-basic`、`sample08-dbaccess-join-read-model`、`sample09-dbaccess-aggregate-report`、`sample10-dbaccess-mini-crud-flow`、`sample11-html-template-output`、`sample12-external-db-source-import`、`sample13-openapi-api-surface`、`sample14-custom-proxy-runtime`、`sample15-project-metadata-export-import`、`sample16-authenticated-proxy`、`sample17-multi-output-project`、`sample18-mini-task-board-demo`、`sample19-json-first-content-model-demo`、`sample20-content-publishing-demo`、`sample21-ebook-catalog-api-demo`、`sample22-ebook-chapter-workflow-demo`、`sample23-ebook-media-metadata-demo`、`sample24-ebook-public-reader-site-demo`、`sample25-ebook-editor-auth-cms-demo`、`sample26-ebook-headless-cms-capstone`、`sample27-app-local-persistence-demo`、`sample28-no-code-data-app-mvp`、`sample29-no-code-support-case-demo`、`sample30-no-code-app-local-sync-demo`、`sample31-no-code-inventory-request-demo`
+  - current は `sample01-simple-table-runtime`、`sample02-dataclass-nullable-default-status`、`sample03-dataclass-lookup-and-helper`、`sample04-dataclass-parent-child-basic`、`sample05-dbaccess-select-basic`、`sample06-dbaccess-filter-sort-page`、`sample07-dbaccess-crud-basic`、`sample08-dbaccess-join-read-model`、`sample09-dbaccess-aggregate-report`、`sample10-dbaccess-mini-crud-flow`、`sample11-html-template-output`、`sample12-external-db-source-import`、`sample13-openapi-api-surface`、`sample14-custom-proxy-runtime`、`sample15-project-metadata-export-import`、`sample16-authenticated-proxy`、`sample17-multi-output-project`、`sample18-mini-task-board-demo`、`sample19-json-first-content-model-demo`、`sample20-content-publishing-demo`、`sample21-ebook-catalog-api-demo`、`sample22-ebook-chapter-workflow-demo`、`sample23-ebook-media-metadata-demo`、`sample24-ebook-public-reader-site-demo`、`sample25-ebook-editor-auth-cms-demo`、`sample26-ebook-headless-cms-capstone`、`sample27-app-local-persistence-demo`、`sample28-no-code-data-app-mvp`、`sample29-no-code-support-case-demo`、`sample30-no-code-app-local-sync-demo`、`sample31-no-code-inventory-request-demo`、`sample32-no-code-ui-test-lab`
   - 今後の user-facing tutorial はここへ追加する
 - `sample/internal-patterns/`
   - `pattern01-default-property-split` から `pattern14-method-and-enum-heavy-multimethod` までの file-based migration sample
@@ -88,6 +88,7 @@ category と structure type は別軸です。
   - `sample29-no-code-support-case-demo`
   - `sample30-no-code-app-local-sync-demo`
   - `sample31-no-code-inventory-request-demo`
+  - `sample32-no-code-ui-test-lab`
 - `sample/internal-patterns/`
   - `pattern01-default-property-split`
   - `pattern02-wrapper-property-helper`

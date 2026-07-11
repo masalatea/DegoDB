@@ -40,6 +40,7 @@ current runtime tutorial packs:
 - `sample29-no-code-support-case-demo`
 - `sample30-no-code-app-local-sync-demo`
 - `sample31-no-code-inventory-request-demo`
+- `sample32-no-code-ui-test-lab`
 
 上記は runtime pack であり、`compose.yaml` / `run.sh` / `seed/` を持つ。
 

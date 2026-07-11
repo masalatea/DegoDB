@@ -11,6 +11,38 @@
 
 ## Index
 
+- `2026-0710-sample18-public-runtime-status-filter-dom-preflight.md`
+  - #560 sample18 public-runtime status filter DOM preflight。sample18 public NO-CODE-RUNTIME current page で runtime-data binding 後に generated `status` filter DOM controls が表示されることを、専用 Make target と DOM-only browser smoke で確認。Status: `DONE`。
+- `2026-0710-sample18-post-filter-no-code-increment-replan.md`
+  - #559 sample18 post-filter no-code increment replan。#558 後の次 increment は safe action-input mapping ではなく、sample18 public-runtime status filter DOM preflight を先に追加する方針に決定。Status: `DONE`。
+- `2026-0709-sample18-status-filter-fast-contract.md`
+  - #558 sample18 status filter fast contract。sample18 checklist に `status_filter_contract` を追加し、curated route の status filter values と generated runtime preview の `status` field metadata を fast PHPUnit contract で確認。Status: `DONE`。
+- `2026-0709-next-l1-sample-conversion-increment-replan.md`
+  - #557 next L1 sample conversion increment replan。次の L1 increment は sample18 継続とし、最小残ギャップとして status filter fast contract を #558 に昇格。action-input mapping と次 sample 選定は後続に維持。Status: `DONE`。
+- `2026-0709-existing-sample-no-code-conversion-test-checklist.md`
+  - #556 existing sample no-code conversion test checklist。sample18 に fast contract checklist fixture を追加し、metadata / DOM / disabled dry-run action / conversion boundary を browser smoke 前の確認項目として PHPUnit から参照。Status: `DONE`。
+- `2026-0709-lightweight-js-interaction-test-spike.md`
+  - #555 lightweight JS interaction test spike。root npm manifest を増やさず、`linkedom` / `happy-dom` の採用判定 checker を追加。現時点では concrete JS interaction gap が昇格するまで external DOM dependency は defer。Status: `DONE`。
+- `2026-0709-no-code-sample-contract-fixture-ladder.md`
+  - #554 no-code sample contract fixture ladder。`sample32-no-code-ui-test-lab` に explicit fixture JSON を追加し、screen / field / disabled managed action / preview row expectations を PHPUnit と pack checker の共通 contract として検証。Status: `DONE`。
+- `2026-0709-dedicated-no-code-ui-test-lab-sample.md`
+  - #553 dedicated no-code UI test lab sample。`sample32-no-code-ui-test-lab` を追加し、`SAMPLE32/no_code_lab_card`、`NO-CODE-RUNTIME`、disabled managed action fixture、固定 preview rows、fast JSON/DOM contract test を導入。Status: `DONE`。
+- `2026-0709-no-code-ui-contract-test-harness-first-slice.md`
+  - #552 no-code UI contract test harness first slice。`tests/Support/NoCodeUiContractAssertions.php` を追加し、sample18 generated `runtime-preview.html` を PHP `DOMDocument` / `DOMXPath` で検査する fast contract を導入。Status: `DONE`。
+- `2026-0709-first-sample-ui-conversion-closure.md`
+  - #550 first sample UI conversion closure。sample18 を L1 existing sample UI no-code entry として受け入れ、ただし metadata-first / preview-first であり generated route replacement ではない境界と、#552 fast DOM contract harness へ進む残ギャップを記録。Status: `DONE`。
+- `2026-0709-first-sample-ui-action-dry-run-contract.md`
+  - #549 first sample UI action dry-run contract。sample18 `task_card` の create / update / complete / reopen / delete を disabled dry-run custom operation として route boundary 付きで generated no-code runtime に通し、既存 route の mutation ownership は維持。Status: `DONE`。
+- `2026-0709-first-sample-ui-readonly-no-code-preview.md`
+  - #548 first sample UI readonly no-code preview。sample18 `task_card` preview rows を no-code runtime generator に追加し、generated `runtime-preview.json` / `runtime-preview.html` を golden fixture の seed rows と fast contract で比較。Status: `DONE`。
+- `2026-0709-first-sample-ui-metadata-extraction-spike.md`
+  - #547 first sample UI metadata extraction spike。sample18 に readonly `task_card` shared contract metadata と `NO-CODE-RUNTIME` source output を追加し、既存 route を置き換えずに no-code screen/runtime metadata を生成・検証。Status: `DONE`。
+- `2026-0709-l1-bridge-golden-sample-fixture.md`
+  - #546 L1 bridge golden sample fixture。`sample18-mini-task-board-demo/golden/no-code-ui-golden.json` を追加し、seed SQL と lab route source に対する fast PHPUnit contract check で既存 sample18 UI 境界を固定。Status: `DONE`。
+- `2026-0709-l1-bridge-no-code-capability-checklist.md`
+  - #545 L1 bridge no-code capability checklist。`sample18-mini-task-board-demo` の No Code 化前に必要な data shape、list/detail/form、status filter、disabled/dry-run actions、fast JSON/DOM contract、golden fixture、outer smoke 境界を定義。Status: `DONE`。
+- `2026-0709-post-availability-sample-ui-replan.md`
+  - #543 post-availability sample UI replan。最初の既存 sample UI No Code 化対象を `sample18-mini-task-board-demo` に決め、sample07 / sample28 / sample29 / sample31 を contract reference として位置づけ、次に sample18 capability checklist を進める方針を記録。Status: `DONE`。
 - `2026-0709-review-request-availability-first-slice.md`
   - #542 review request availability first slice。`review_source_output_artifact` の dogfooding metadata を plan-only available にし、generated runtime HTML / React bridge metadata に availability marker を出しながら generated button は disabled のまま維持。Status: `DONE`。
 - `2026-0709-availability-ui-preview-contract.md`
