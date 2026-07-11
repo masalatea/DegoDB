@@ -11,6 +11,16 @@
 
 ## Index
 
+- `2026-0710-sample18-post-executor-coordination-plan-route-metadata-lane-closure.md`
+  - #634 sample18 post-executor coordination plan route metadata lane closure。#633 の route-visible `executor_coordination_plan` metadata を受け入れ、次は execution 有効化前の DBAccess call adapter preflight (#635) を昇格。DBAccess mutation / transaction / route executor は未有効化。Status: `DONE`。
+- `2026-0710-sample18-executor-coordination-plan-route-metadata-integration.md`
+  - #633 sample18 executor coordination plan route metadata integration。valid generated-submit route response に non-mutating `executor_coordination_plan` metadata を接続し、disabled/duplicate/failed/planned route outcomes と invalid-route skip boundary を固定。DBAccess mutation / transaction / post-execution writes は未有効化。Status: `FIRST_SLICE_DONE`。
+- `2026-0710-sample18-post-guarded-executor-coordinator-plan-helper-lane-closure.md`
+  - #632 sample18 post-guarded executor coordinator plan helper lane closure。#631 の non-mutating `executor_coordination_plan` helper を受け入れ、次は valid generated-submit route response への coordination plan metadata integration (#633) を昇格。DBAccess mutation / transaction / post-execution write は未有効化。Status: `DONE`。
+- `2026-0710-sample18-guarded-executor-coordinator-plan-helper-first-slice.md`
+  - #631 sample18 guarded executor coordinator plan helper first slice。execution guard / app DB transaction / DBAccess call / execution audit append / idempotency outcome update の ordering を non-mutating metadata として計画化。DBAccess mutation / transaction / post-execution write / route exposure は未有効化。Status: `FIRST_SLICE_DONE`。
+- `2026-0710-sample18-guarded-executor-coordination-preflight.md`
+  - #630 sample18 guarded executor coordination preflight。execution guard / DBAccess call adapter / app DB transaction / execution audit append / idempotency outcome update の coordination と cross-store 非原子性を定義し、次は non-mutating coordinator plan helper (#631) を昇格。DBAccess mutation / transaction / route executor は未有効化。Status: `DONE`。
 - `2026-0710-sample18-post-execution-audit-append-persistence-lane-closure.md`
   - #629 sample18 post-execution audit append persistence lane closure。#628 の execution audit append helper を受け入れ、次は DBAccess execution 前の guarded executor coordination preflight (#630) を昇格。DBAccess mutation / transaction / idempotency update / route executor は未有効化。Status: `DONE`。
 - `2026-0710-sample18-execution-audit-append-persistence-first-slice.md`
