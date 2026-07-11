@@ -11,6 +11,10 @@
 
 ## Index
 
+- `2026-0710-post-selected-row-key-handoff-lane-closure.md`
+  - #692 post selected row/key handoff lane closure。#691 の selected-row/key fast contract を受け入れ、次は narrow sample18 generated runtime browser smoke (#693) を昇格。Status: `DONE`。
+- `2026-0710-sample18-selected-row-key-handoff-fast-contract-first-slice.md`
+  - #691 sample18 selected row/key handoff fast contract first slice。generated render fields に `is_key` を保持し、runtime preview HTML の row key marker、update/complete key payload、missing-key fail-closed、selected-key refresh source を fast assertion で固定。Status: `FIRST_SLICE_DONE`。
 - `2026-0710-post-guarded-submit-payload-handoff-lane-closure.md`
   - #690 post guarded submit payload handoff lane closure。#689 の fast payload handoff contract を受け入れ、browser smoke / availability expansion の前に selected-row/key handoff fast contract (#691) を昇格。Status: `DONE`。
 - `2026-0710-sample18-guarded-submit-payload-handoff-fast-contract-first-slice.md`

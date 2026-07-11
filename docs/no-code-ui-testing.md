@@ -161,6 +161,16 @@ The fast payload handoff contract stays non-browser:
 - missing required action input fails closed before route payload normalization;
 - generated runtime HTML includes the guarded submit JS path that posts `operation_key`, the configured CSRF token field, flat input fields, same-origin credentials, and JSON accept headers.
 
+### Sample18 Selected Row/Key Handoff
+
+The selected-row/key contract stays fast and covers the static preview plus runtime source:
+
+- generated render fields retain `is_key` metadata so list rows can expose stable `data-runtime-row-key` markers;
+- runtime list rendering falls back to key fields when the current list action set does not include a key-bearing action;
+- update/complete action intents place `id` in the key payload when a selected row id is supplied;
+- missing keyed action input fails closed before guarded submit payload normalization;
+- runtime source keeps the selected-key refresh path for runtime-data-backed previews.
+
 ## Design Boundary
 
 Fast UI contract tests prove that generated metadata and generated markup expose the expected UI contract. They do not prove browser layout, CSS pixel rendering, or server mutation. Browser smoke and route-level tests remain responsible for those outer boundaries.
