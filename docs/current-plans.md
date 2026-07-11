@@ -13,7 +13,7 @@ When someone asks for "the plan list", answer from this section first. / 「計�
 
 ### Main Plan / 主計画
 
-Current main status: #602 closes the sample18 mutation gate failure matrix lane and promotes DBAccess mutation dry-run execution preflight before any execution path is implemented. `develop` is 78 commits ahead of `origin/develop`, and push has not been performed for #432-#602. / 現在の主計画ステータス: #602 で sample18 mutation gate failure matrix lane を close し、execution path 実装より前に DBAccess mutation dry-run execution preflight を昇格しました。`develop` は `origin/develop` より 78 commits ahead、#432-#602 は push していません。
+Current main status: #662 closes DB-backed post-commit recording coverage and promotes route feature-flag integration preflight. `develop` is 140 commits ahead of `origin/develop`, and push has not been performed for #432-#662. / 現在の主計画ステータス: #662 で DB-backed post-commit recording coverage を閉じ、route feature-flag integration preflight を昇格しました。`develop` は `origin/develop` より 140 commits ahead、#432-#662 は push していません。
 
 | Order | Work unit / 作業の塊 | Commit unit / コミット単位 | Status | Rough effort / 目安 |
 | --- | --- | --- | --- | --- |
@@ -161,7 +161,67 @@ Current main status: #602 closes the sample18 mutation gate failure matrix lane 
 | 600 | Sample18 post-mutation-gate-helper lane closure / sample18 post-mutation-gate-helper lane closure | Close the non-mutating mutation gate helper lane and decide whether gate failure matrix, duplicate replay contract, or DBAccess mutation dry-run execution should be promoted next | `DONE` | 0.25 - 0.5 day / 0.25 - 0.5 日 |
 | 601 | Sample18 mutation gate failure matrix coverage / sample18 mutation gate failure matrix coverage | Add focused coverage for flag-on gate failures and duplicate/skipped/failed gate outcomes while keeping DBAccess mutation disabled | `DONE` | 0.5 day / 半日 |
 | 602 | Sample18 post-mutation-gate-failure-matrix lane closure / sample18 post-mutation-gate-failure-matrix lane closure | Close the mutation gate failure matrix lane and decide whether duplicate replay contract, dry-run execution preflight, or additional route-level failure coverage should be promoted next | `DONE` | 0.25 - 0.5 day / 0.25 - 0.5 日 |
-| 603 | Sample18 DBAccess mutation dry-run execution preflight / sample18 DBAccess mutation dry-run execution preflight | Define the first DBAccess-bound execution preflight contract, including readiness inputs, transaction boundary, response shape, and fail-closed tests before enabling actual mutation | `ACTIVE_NEXT` | 0.5 day / 半日 |
+| 603 | Sample18 DBAccess mutation dry-run execution preflight / sample18 DBAccess mutation dry-run execution preflight | Define the first DBAccess-bound execution preflight contract, including readiness inputs, transaction boundary, response shape, and fail-closed tests before enabling actual mutation | `DONE` | 0.5 day / 半日 |
+| 604 | Sample18 DBAccess mutation dry-run executor first slice / sample18 DBAccess mutation dry-run executor first slice | Add a non-mutating executor helper that consumes ready gate metadata and returns DBAccess-bound execution-plan metadata without opening transactions or mutating TaskCard rows | `DONE` | 0.5 - 1 day / 半日 - 1 日 |
+| 605 | Sample18 post-DBAccess execution-plan helper lane closure / sample18 post-DBAccess execution-plan helper lane closure | Close the non-mutating DBAccess execution-plan helper lane and decide whether route response integration, transaction preflight, or additional execution-plan matrix coverage should be promoted next | `DONE` | 0.25 - 0.5 day / 0.25 - 0.5 日 |
+| 606 | Sample18 DBAccess execution-plan route response integration / sample18 DBAccess execution-plan route response integration | Wire non-mutating DBAccess execution-plan metadata into valid generated-submit route responses while preserving HTTP 409, mutation disabled, and executed false | `DONE` | 0.5 day / 半日 |
+| 607 | Sample18 post-execution-plan route metadata lane closure / sample18 post-execution-plan route metadata lane closure | Close the execution-plan route metadata lane and decide whether transaction boundary preflight, route-level ready-plan coverage, or execution audit update preflight should be promoted next | `DONE` | 0.25 - 0.5 day / 0.25 - 0.5 日 |
+| 608 | Sample18 route-level ready execution-plan coverage / sample18 route-level ready execution-plan coverage | Add focused route-level coverage that a flag-on fresh valid generated-submit request exposes `mutation_gate.ready` and planned `dbaccess_execution_plan` metadata while still returning HTTP 409 and executing no mutation | `DONE` | 0.5 day / 半日 |
+| 609 | Sample18 post-ready execution-plan coverage lane closure / sample18 post-ready execution-plan coverage lane closure | Close the route-level ready execution-plan coverage lane and decide whether transaction boundary preflight, execution audit update preflight, or route integration hardening should be promoted next | `DONE` | 0.25 - 0.5 day / 0.25 - 0.5 日 |
+| 610 | Sample18 DBAccess transaction boundary preflight / sample18 DBAccess transaction boundary preflight | Define the transaction, rollback, post-execution audit/idempotency update, and fail-closed response contract before any generated-submit DBAccess execution can be enabled | `DONE` | 0.5 day / 半日 |
+| 611 | Sample18 DBAccess transaction-plan helper first slice / sample18 DBAccess transaction-plan helper first slice | Add a non-mutating helper that derives transaction boundary and post-execution audit/idempotency update plans from a planned execution response without opening transactions or executing DBAccess | `DONE` | 0.5 - 1 day / 半日 - 1 日 |
+| 612 | Sample18 post-transaction-plan helper lane closure / sample18 post-transaction-plan helper lane closure | Close the non-mutating transaction-plan helper lane and decide whether route metadata integration, execution audit update preflight, or guarded execution preflight should be promoted next | `DONE` | 0.25 - 0.5 day / 0.25 - 0.5 日 |
+| 613 | Sample18 transaction-plan route metadata integration / sample18 transaction-plan route metadata integration | Wire non-mutating transaction-plan metadata into valid generated-submit route responses while preserving HTTP 409, mutation disabled, executed false, and transaction not opened | `DONE` | 0.5 day / 半日 |
+| 614 | Sample18 post-transaction-plan route metadata lane closure / sample18 post-transaction-plan route metadata lane closure | Close the transaction-plan route metadata lane and decide whether execution audit update preflight, guarded execution preflight, or route metadata hardening should be promoted next | `DONE` | 0.25 - 0.5 day / 0.25 - 0.5 日 |
+| 615 | Sample18 execution audit/idempotency update preflight / sample18 execution audit/idempotency update preflight | Define the post-execution audit event and idempotency update contract before any guarded DBAccess execution can be enabled | `DONE` | 0.5 day / 半日 |
+| 616 | Sample18 execution update-plan helper first slice / sample18 execution update-plan helper first slice | Add a non-mutating helper that derives post-execution audit/idempotency update metadata from planned transaction metadata without writing audit/idempotency rows or executing DBAccess | `DONE` | 0.5 - 1 day / 半日 - 1 日 |
+| 617 | Sample18 post-execution update-plan helper lane closure / sample18 post-execution update-plan helper lane closure | Close the non-mutating execution update-plan helper lane and decide whether route metadata integration, guarded execution preflight, or persistence update schema work should be promoted next | `DONE` | 0.25 - 0.5 day / 0.25 - 0.5 日 |
+| 618 | Sample18 execution update-plan route metadata integration / sample18 execution update-plan route metadata integration | Wire non-mutating `execution_update_plan` metadata into valid generated-submit route responses while preserving HTTP 409, mutation disabled, executed false, transaction not opened, and no audit/idempotency writes | `DONE` | 0.5 day / 半日 |
+| 619 | Sample18 post-execution update-plan route metadata lane closure / sample18 post-execution update-plan route metadata lane closure | Close the execution update-plan route metadata lane and decide whether guarded execution preflight, persistence update schema work, or route-level hardening should be promoted next | `DONE` | 0.25 - 0.5 day / 0.25 - 0.5 日 |
+| 620 | Sample18 guarded DBAccess execution preflight / sample18 guarded DBAccess execution preflight | Define the first guarded execution contract, including final enablement inputs, transaction open/commit/rollback behavior, execution audit/idempotency update writes, duplicate replay behavior, and fail-closed test matrix before calling DBAccess | `DONE` | 0.5 - 1 day / 半日 - 1 日 |
+| 621 | Sample18 guarded execution gate helper first slice / sample18 guarded execution gate helper first slice | Add a final non-executing guard helper that accepts the route-ready metadata chain and returns whether DBAccess execution would be allowed, without opening transactions, calling DBAccess, or writing execution updates | `DONE` | 0.5 - 1 day / 半日 - 1 日 |
+| 622 | Sample18 post-guarded execution gate helper lane closure / sample18 post-guarded execution gate helper lane closure | Close the non-executing guarded execution gate helper lane and decide whether route metadata integration, guarded executor implementation preflight, or additional guard matrix coverage should be promoted next | `DONE` | 0.25 - 0.5 day / 0.25 - 0.5 日 |
+| 623 | Sample18 guarded execution gate route metadata integration / sample18 guarded execution gate route metadata integration | Wire non-executing `execution_guard` metadata into valid generated-submit route responses while preserving HTTP 409, mutation disabled, no transaction, no DBAccess call, and no execution updates | `DONE` | 0.5 day / 半日 |
+| 624 | Sample18 post-guarded execution gate route metadata lane closure / sample18 post-guarded execution gate route metadata lane closure | Close the route-visible execution guard metadata lane and decide whether guarded executor implementation preflight, additional guard hardening, or a local stack review should be promoted next | `DONE` | 0.25 - 0.5 day / 0.25 - 0.5 日 |
+| 625 | Sample18 guarded executor implementation preflight / sample18 guarded executor implementation preflight | Define the smallest first mutating executor slice, including code boundary, feature flag, transaction API, DBAccess call adapter, execution audit/idempotency update persistence, rollback behavior, and tests before implementation | `DONE` | 0.5 - 1 day / 半日 - 1 日 |
+| 626 | Sample18 idempotency execution outcome persistence first slice / sample18 idempotency execution outcome persistence first slice | Add repository-level execution outcome update support for existing generated-submit idempotency records using stable metadata/result fields, without opening transactions, calling DBAccess, or wiring the route executor | `DONE` | 0.5 - 1 day / 半日 - 1 日 |
+| 627 | Sample18 post-idempotency execution outcome persistence lane closure / sample18 post-idempotency execution outcome persistence lane closure | Close the idempotency execution outcome persistence lane and decide whether execution audit append persistence, route integration metadata, or guarded executor implementation should be promoted next | `DONE` | 0.25 - 0.5 day / 0.25 - 0.5 日 |
+| 628 | Sample18 execution audit append persistence first slice / sample18 execution audit append persistence first slice | Add a repository/helper path to append execution audit events for planned execution outcomes using existing audit storage, without opening transactions, calling DBAccess, updating idempotency, or wiring the route executor | `DONE` | 0.5 - 1 day / 半日 - 1 日 |
+| 629 | Sample18 post-execution audit append persistence lane closure / sample18 post-execution audit append persistence lane closure | Close the execution audit append persistence lane and decide whether guarded executor coordination preflight, route integration metadata, or additional failure coverage should be promoted next | `DONE` | 0.25 - 0.5 day / 0.25 - 0.5 日 |
+| 630 | Sample18 guarded executor coordination preflight / sample18 guarded executor coordination preflight | Define how the first executor coordinator will combine execution guard, DBAccess call adapter, transaction boundary, execution audit append, and idempotency outcome update before implementation | `DONE` | 0.5 - 1 day / 半日 - 1 日 |
+| 631 | Sample18 guarded executor coordinator plan helper first slice / sample18 guarded executor coordinator plan helper first slice | Add a non-mutating coordinator plan helper that models DBAccess call, app-db transaction, execution audit append, and idempotency outcome update ordering without opening transactions, calling DBAccess, or writing post-execution records | `DONE` | 0.5 - 1 day / 半日 - 1 日 |
+| 632 | Sample18 post-guarded executor coordinator plan helper lane closure / sample18 post-guarded executor coordinator plan helper lane closure | Close the non-mutating coordinator plan helper lane and decide whether route metadata integration, additional failure matrix coverage, or first executor adapter preflight should be promoted next | `DONE` | 0.25 - 0.5 day / 0.25 - 0.5 日 |
+| 633 | Sample18 executor coordination plan route metadata integration / sample18 executor coordination plan route metadata integration | Wire non-mutating `executor_coordination_plan` metadata into valid generated-submit route responses while preserving HTTP 409, mutation disabled, no transaction, no DBAccess call, and no post-execution writes | `DONE` | 0.5 day / 半日 |
+| 634 | Sample18 post-executor coordination plan route metadata lane closure / sample18 post-executor coordination plan route metadata lane closure | Close the route-visible executor coordination plan lane and decide whether first executor adapter preflight, additional route failure hardening, or local stack review should be promoted next | `DONE` | 0.25 - 0.5 day / 0.25 - 0.5 日 |
+| 635 | Sample18 DBAccess call adapter preflight / sample18 DBAccess call adapter preflight | Define the smallest DBAccess call adapter boundary for the guarded executor, including accepted input metadata, TaskCard operation mapping, transaction dependency, failure shape, and tests before any route execution is enabled | `DONE` | 0.5 - 1 day / 半日 - 1 日 |
+| 636 | Sample18 DBAccess call adapter helper first slice / sample18 DBAccess call adapter helper first slice | Add a route-unwired DBAccess call adapter helper that validates allowed execution metadata and invokes only an injected fake callable in tests, returning stable executed/failed/skipped metadata without real TaskCard mutation | `DONE` | 0.5 - 1 day / 半日 - 1 日 |
+| 637 | Sample18 post-DBAccess call adapter helper lane closure / sample18 post-DBAccess call adapter helper lane closure | Close the route-unwired adapter helper lane and decide whether transaction adapter preflight, real DBAccess invocation hardening, or route integration preflight should be promoted next | `DONE` | 0.25 - 0.5 day / 0.25 - 0.5 日 |
+| 638 | Sample18 transaction adapter preflight / sample18 transaction adapter preflight | Define the route-unwired transaction adapter boundary around DBAccess invocation with an all-success-or-failure UI/API contract: every required step must succeed, otherwise the route result is failure even while physical cross-store atomicity remains future work | `DONE` | 0.5 - 1 day / 半日 - 1 日 |
+| 639 | Cross-route all-success-or-failure execution policy review / cross-route all-success-or-failure execution policy review | Review mutation/execution routes beyond sample18 and define a shared UI/API success contract: success only when all required operation steps succeed; otherwise fail closed with internal recovery metadata | `DONE` | 0.5 - 1 day / 半日 - 1 日 |
+| 640 | Sample18 transaction adapter helper first slice / sample18 transaction adapter helper first slice | Add a route-unwired transaction adapter helper using fake transaction and fake DBAccess callables, returning all-success-or-failure execution metadata without real TaskCard mutation or route execution | `DONE` | 0.5 - 1 day / 半日 - 1 日 |
+| 641 | Sample18 post-transaction adapter helper lane closure / sample18 post-transaction adapter helper lane closure | Close the route-unwired transaction adapter helper lane and decide whether post-commit recording policy hardening, route integration preflight, or real DBAccess invocation adapter should be promoted next | `DONE` | 0.25 - 0.5 day / 0.25 - 0.5 日 |
+| 642 | Sample18 post-commit execution recording preflight / sample18 post-commit execution recording preflight | Define how execution audit append and idempotency execution outcome update become required post-commit steps under the all-success-or-failure policy before route execution is enabled | `DONE` | 0.5 day / 半日 |
+| 643 | Sample18 post-commit execution recording helper first slice / sample18 post-commit execution recording helper first slice | Add a route-unwired helper that consumes committed transaction metadata and fake recording callables, requiring both execution audit append and idempotency outcome update to succeed before returning success | `DONE` | 0.5 - 1 day / 半日 - 1 日 |
+| 644 | Sample18 post-commit recording helper lane closure / sample18 post-commit recording helper lane closure | Close the route-unwired recording helper lane and decide whether executable route integration preflight, real DBAccess invocation adapter, or recovery/repair preflight should be promoted next | `DONE` | 0.25 - 0.5 day / 0.25 - 0.5 日 |
+| 645 | Sample18 executable generated-submit route integration preflight / sample18 executable generated-submit route integration preflight | Define how the generated-submit route will compose guard, transaction adapter, DBAccess invocation, post-commit recording, feature flag, response shape, and fail-closed tests before enabling real execution | `DONE` | 0.5 - 1 day / 半日 - 1 日 |
+| 646 | Sample18 executable route execution plan helper first slice / sample18 executable route execution plan helper first slice | Add a route-unwired helper that composes guard, transaction adapter, post-commit recording, and response metadata with fake callables, proving all-success-or-failure behavior before real DBAccess route execution | `DONE` | 0.5 - 1 day / 半日 - 1 日 |
+| 647 | Sample18 post-execution plan helper lane closure / sample18 post-execution plan helper lane closure | Close the route-unwired execution plan helper lane and decide whether real DBAccess invocation adapter, route feature-flag integration, or recovery/repair preflight should be promoted next | `DONE` | 0.25 - 0.5 day / 0.25 - 0.5 日 |
+| 648 | Sample18 real DBAccess invocation adapter preflight / sample18 real DBAccess invocation adapter preflight | Define the real `TaskCardDBAccess` invocation adapter boundary, transaction dependency, input object construction, result normalization, and tests before wiring route execution | `DONE` | 0.5 - 1 day / 半日 - 1 日 |
+| 649 | Sample18 real DBAccess invocation adapter first slice / sample18 real DBAccess invocation adapter first slice | Add a route-unwired adapter that constructs allowlisted `TaskCardData` objects, invokes a real-compatible `TaskCardDBAccess` instance through an explicit in-transaction dependency, and normalizes DBAccess results without enabling route execution | `FIRST_SLICE_DONE` | 0.5 - 1 day / 半日 - 1 日 |
+| 650 | Sample18 post-real DBAccess invocation adapter lane closure / sample18 post-real DBAccess invocation adapter lane closure | Close the route-unwired real-compatible DBAccess invocation adapter lane and decide whether route feature-flag integration, real transaction binding, or recovery/repair preflight should be promoted next | `DONE` | 0.25 - 0.5 day / 0.25 - 0.5 日 |
+| 651 | Sample18 real transaction binding preflight / sample18 real transaction binding preflight | Define how the route-unwired transaction adapter will bind to the sample18 application DB transaction API, DBAccess instance creation, begin/commit/rollback failure handling, and focused tests before route execution is enabled | `DONE` | 0.5 - 1 day / 半日 - 1 日 |
+| 652 | Sample18 transaction binding helper first slice / sample18 transaction binding helper first slice | Add a route-unwired transaction binding helper that adapts a transaction-capable generated DB runtime object to begin/commit/rollback callables and DBAccess instance creation, using fake transaction objects first and leaving route execution disabled | `FIRST_SLICE_DONE` | 0.5 - 1 day / 半日 - 1 日 |
+| 653 | Sample18 post-transaction binding helper lane closure / sample18 post-transaction binding helper lane closure | Close the route-unwired transaction binding helper lane and decide whether generated runtime transaction support, route feature-flag integration preflight, or recovery/repair preflight should be promoted next | `DONE` | 0.25 - 0.5 day / 0.25 - 0.5 日 |
+| 654 | Sample18 generated runtime transaction support preflight / sample18 generated runtime transaction support preflight | Define the smallest transaction support addition for generated DBAccess runtime (`$mtooldb`) so begin/commit/rollback/inTransaction can be tested before route execution is enabled | `DONE` | 0.5 - 1 day / 半日 - 1 日 |
+| 655 | Generated runtime transaction support first slice / generated runtime transaction support first slice | Add PDO-first begin/commit/rollBack/inTransaction support to generated DBAccess runtime support and sample18 reference output, preserving query/execute compatibility and leaving route execution disabled | `FIRST_SLICE_DONE` | 0.5 - 1 day / 半日 - 1 日 |
+| 656 | Post generated runtime transaction support lane closure / generated runtime transaction support 後の lane closure | Close PDO-first generated runtime transaction support and decide whether DB-backed transaction binding coverage, route feature-flag integration preflight, or recovery/repair preflight should be promoted next | `DONE` | 0.25 - 0.5 day / 0.25 - 0.5 日 |
+| 657 | Sample18 DB-backed transaction binding coverage preflight / sample18 DB-backed transaction binding coverage preflight | Define the first DB-backed coverage that proves generated runtime transaction support, transaction binding callables, and real-compatible DBAccess invocation work together before route execution is enabled | `DONE` | 0.5 - 1 day / 半日 - 1 日 |
+| 658 | Sample18 DB-backed transaction binding coverage first slice / sample18 DB-backed transaction binding coverage first slice | Add route-unwired SQLite/PDO coverage that runs generated `TaskCardDBAccess` through transaction binding callables, proving commit persists and rollback removes generated DBAccess mutations | `FIRST_SLICE_DONE` | 0.5 - 1 day / 半日 - 1 日 |
+| 659 | Post DB-backed transaction binding coverage lane closure / DB-backed transaction binding coverage 後の lane closure | Close the DB-backed transaction binding coverage lane and decide whether route feature-flag integration preflight, post-commit recording DB-backed coverage, or recovery/repair preflight should be promoted next | `DONE` | 0.25 - 0.5 day / 0.25 - 0.5 日 |
+| 660 | Sample18 post-commit recording DB-backed coverage preflight / sample18 post-commit recording DB-backed coverage preflight | Define DB-backed coverage for execution audit append and idempotency outcome update after committed DBAccess execution, before enabling route feature-flag integration | `DONE` | 0.5 - 1 day / 半日 - 1 日 |
+| 661 | Sample18 post-commit recording DB-backed coverage first slice / sample18 post-commit recording DB-backed coverage first slice | Add route-unwired DB-backed coverage that feeds a committed transaction result into real execution audit append and idempotency outcome update recorders, proving both persisted success and fail-closed recovery metadata while route execution remains disabled | `FIRST_SLICE_DONE` | 0.5 - 1 day / 半日 - 1 日 |
+| 662 | Post DB-backed post-commit recording coverage lane closure / DB-backed post-commit recording coverage 後の lane closure | Close the DB-backed post-commit recording coverage lane and decide whether route feature-flag integration preflight, recovery/repair preflight, or additional route-unwired failure coverage should be promoted next | `DONE` | 0.25 - 0.5 day / 0.25 - 0.5 日 |
+| 663 | Sample18 generated submit route feature-flag integration preflight / sample18 generated submit route feature-flag integration preflight | Define the first route-level feature-flag integration for generated-submit DBAccess execution, including required all-success steps, post-commit recording behavior, disabled default, and rollback/recovery response matrix before enabling route mutation | `ACTIVE_NEXT` | 0.5 - 1 day / 半日 - 1 日 |
 
 ### Long-Term No-Code Roadmap / 長期 No-Code ロードマップ
 
@@ -221,6 +281,7 @@ Current main status: #602 closes the sample18 mutation gate failure matrix lane 
 - Sample18 readonly no-code preview rows now match the golden seed rows in generated runtime JSON and stable HTML text/field markers. / sample18 readonly no-code preview row は generated runtime JSON と stable HTML text / field marker で golden seed row と一致します。
 - No-code UI testing should start with fast JSON/DOM contract tests; headless Chrome remains a representative smoke gate, not the default inner-loop test. / No Code UI testing は fast JSON / DOM contract test から始めます。headless Chrome は代表 smoke gate として残し、default inner-loop test にはしません。
 - The current push decision is to hold locally; no push is performed without a new explicit user request. / 現在の push 判断は local hold です。新しい明示的な user request がない限り push は行いません。
+- Future mutation/execution routes should follow [Execution Success Policy / 実行成功ポリシー](execution-success-policy.md): user-facing success is returned only when every required step succeeds; physical cross-store atomicity gaps are internal failure/recovery metadata, not user-facing success. / 今後の mutation / execution route は [Execution Success Policy / 実行成功ポリシー](execution-success-policy.md) に従います。user-facing success は全 required step 成功時のみ返し、物理的な cross-store atomicity gap は user-facing success ではなく内部 failure / recovery metadata として扱います。
 - No build, publish, approval, rollback, mutation, generated button execution, or custom component execution is currently enabled through this lane. / この lane では build、publish、approval、rollback、mutation、generated button execution、custom component execution はまだ有効化していません。
 - Push is not performed unless the user explicitly requests it. / user が明示するまで push は行いません。
 
@@ -300,6 +361,199 @@ Latest code verification from #601:
 - `git diff --check`
 
 For #602, docs-only verification is `git diff --check`.
+
+For #603, docs-only verification is `git diff --check`.
+
+Latest code verification from #604:
+
+- `php -l mtool/app/lab_sample18_task_board_page.php`
+- `php -l tests/Integration/Sample18MiniTaskBoardDemoTest.php`
+- `make sample18-pack-runtime-test`: `OK (8 tests, 530 assertions)`
+- Full `make test`: `OK, but incomplete, skipped, or risky tests! Tests: 390, Assertions: 12338, Skipped: 1.`
+- `git diff --check`
+
+For #605, docs-only verification is `git diff --check`.
+
+Latest code verification from #606:
+
+- `php -l mtool/app/lab_sample18_task_board_page.php`
+- `php -l tests/Integration/Sample18MiniTaskBoardDemoTest.php`
+- `make sample18-pack-runtime-test`: `OK (8 tests, 566 assertions)`
+- Full `make test`: `OK, but incomplete, skipped, or risky tests! Tests: 390, Assertions: 12374, Skipped: 1.`
+- `git diff --check`
+
+For #607, docs-only verification is `git diff --check`.
+
+Latest code verification from #608:
+
+- `php -l tests/Integration/Sample18MiniTaskBoardDemoTest.php`
+- `make sample18-pack-runtime-test`: `OK (9 tests, 600 assertions)`
+- Full `make test`: `OK, but incomplete, skipped, or risky tests! Tests: 391, Assertions: 12408, Skipped: 1.`
+- `git diff --check`
+
+For #609, docs-only verification is `git diff --check`.
+
+For #610, docs-only verification is `git diff --check`.
+
+Latest code verification from #611:
+
+- `php -l mtool/app/lab_sample18_task_board_page.php`
+- `php -l tests/Integration/Sample18MiniTaskBoardDemoTest.php`
+- `make sample18-pack-runtime-test`: `OK (10 tests, 638 assertions)`
+- Full `make test`: `OK, but incomplete, skipped, or risky tests! Tests: 392, Assertions: 12446, Skipped: 1.`
+- `git diff --check`
+
+For #612, docs-only verification is `git diff --check`.
+
+Latest code verification from #613:
+
+- `php -l mtool/app/lab_sample18_task_board_page.php`
+- `php -l tests/Integration/Sample18MiniTaskBoardDemoTest.php`
+- `make sample18-pack-runtime-test`: `OK (10 tests, 680 assertions)`
+- Full `make test`: `OK, but incomplete, skipped, or risky tests! Tests: 392, Assertions: 12488, Skipped: 1.`
+- `git diff --check`
+
+For #614, docs-only verification is `git diff --check`.
+
+For #615, docs-only verification is `git diff --check`.
+
+Latest code verification from #616:
+
+- `php -l mtool/app/lab_sample18_task_board_page.php`
+- `php -l tests/Integration/Sample18MiniTaskBoardDemoTest.php`
+- `make sample18-pack-runtime-test`: `OK (11 tests, 717 assertions)`
+- Full `make test`: `OK, but incomplete, skipped, or risky tests! Tests: 393, Assertions: 12525, Skipped: 1.`
+- `git diff --check`
+
+For #617, docs-only verification is `git diff --check`.
+
+Latest code verification from #618:
+
+- `php -l mtool/app/lab_sample18_task_board_page.php`
+- `php -l tests/Integration/Sample18MiniTaskBoardDemoTest.php`
+- `make sample18-pack-runtime-test`: `OK (11 tests, 771 assertions)`
+- Full `make test`: `OK, but incomplete, skipped, or risky tests! Tests: 393, Assertions: 12579, Skipped: 1.`
+- `git diff --check`
+
+For #619, docs-only verification is `git diff --check`.
+
+For #620, docs-only verification is `git diff --check`.
+
+Latest code verification from #621:
+
+- `php -l mtool/app/lab_sample18_task_board_page.php`
+- `php -l tests/Integration/Sample18MiniTaskBoardDemoTest.php`
+- `make sample18-pack-runtime-test`: `OK (12 tests, 795 assertions)`
+- Full `make test`: `OK, but incomplete, skipped, or risky tests! Tests: 394, Assertions: 12603, Skipped: 1.`
+- `git diff --check`
+
+For #622, docs-only verification is `git diff --check`.
+
+Latest code verification from #623:
+
+- `php -l mtool/app/lab_sample18_task_board_page.php`
+- `php -l tests/Integration/Sample18MiniTaskBoardDemoTest.php`
+- `make sample18-pack-runtime-test`: `OK (12 tests, 848 assertions)`
+- Full `make test`: `OK, but incomplete, skipped, or risky tests! Tests: 394, Assertions: 12656, Skipped: 1.`
+- `git diff --check`
+
+For #624, docs-only verification is `git diff --check`.
+
+For #625, docs-only verification is `git diff --check`.
+
+Latest code verification from #626:
+
+- `php -l mtool/app/lab_sample18_generated_submit_idempotency_repository.php`
+- `php -l mtool/app/lab_sample18_generated_submit_idempotency_repository_pdo.php`
+- `php -l tests/Integration/Sample18GeneratedSubmitIdempotencyRepositorySqliteTest.php`
+- Focused repository PHPUnit via `bash mtool/scripts/run_sample_pack_phpunit_test.sh --compose-file=sample/tutorials/sample18-mini-task-board-demo/compose.yaml --run-script=./sample/tutorials/sample18-mini-task-board-demo/run.sh --apply-pack-seed --phpunit-target=/var/www/tests/Integration/Sample18GeneratedSubmitIdempotencyRepositorySqliteTest.php`: `OK (6 tests, 86 assertions)`
+- `make sample18-pack-runtime-test`: `OK (12 tests, 848 assertions)`
+- Full `make test`: `OK, but incomplete, skipped, or risky tests! Tests: 396, Assertions: 12690, Skipped: 1.`
+- `git diff --check`
+
+For #627, docs-only verification is `git diff --check`.
+
+Latest code verification from #628:
+
+- `php -l mtool/app/lab_sample18_task_board_page.php`
+- `php -l tests/Integration/Sample18MiniTaskBoardDemoTest.php`
+- `make sample18-pack-runtime-test`: `OK (13 tests, 877 assertions)`
+- Full `make test`: `OK, but incomplete, skipped, or risky tests! Tests: 397, Assertions: 12719, Skipped: 1.`
+- `git diff --check`
+
+For #629, docs-only verification is `git diff --check`.
+
+For #630, docs-only verification is `git diff --check`.
+
+Latest code verification from #631:
+
+- `php -l mtool/app/lab_sample18_task_board_page.php`
+- `php -l tests/Integration/Sample18MiniTaskBoardDemoTest.php`
+- `make sample18-pack-runtime-test`: `OK (14 tests, 909 assertions)`
+- Full `make test`: `OK, but incomplete, skipped, or risky tests! Tests: 398, Assertions: 12751, Skipped: 1.`
+- `git diff --check`
+
+For #632, docs-only verification is `git diff --check`.
+
+Latest code verification from #633:
+
+- `php -l mtool/app/lab_sample18_task_board_page.php`
+- `php -l tests/Integration/Sample18MiniTaskBoardDemoTest.php`
+- `make sample18-pack-runtime-test`: `OK (14 tests, 960 assertions)`
+- Full `make test`: `OK, but incomplete, skipped, or risky tests! Tests: 398, Assertions: 12802, Skipped: 1.`
+- `git diff --check`
+
+For #634, docs-only verification is `git diff --check`.
+
+For #635, docs-only verification is `git diff --check`.
+
+Latest code verification from #636:
+
+- `php -l mtool/app/lab_sample18_task_board_page.php`
+- `php -l tests/Integration/Sample18MiniTaskBoardDemoTest.php`
+- `make sample18-pack-runtime-test`: `OK (15 tests, 1043 assertions)`
+- Full `make test`: `OK, but incomplete, skipped, or risky tests! Tests: 399, Assertions: 12885, Skipped: 1.`
+- `git diff --check`
+
+For #637, docs-only verification is `git diff --check`.
+
+For #638, docs-only verification is `git diff --check`.
+
+For #639, docs-only verification is `git diff --check`.
+
+Latest code verification from #640:
+
+- `php -l mtool/app/lab_sample18_task_board_page.php`
+- `php -l tests/Integration/Sample18MiniTaskBoardDemoTest.php`
+- `make sample18-pack-runtime-test`: `OK (16 tests, 1087 assertions)`
+- Full `make test`: `OK, but incomplete, skipped, or risky tests! Tests: 400, Assertions: 12932, Skipped: 1.`
+- `git diff --check`
+
+For #641, docs-only verification is `git diff --check`.
+
+For #642, docs-only verification is `git diff --check`.
+
+Latest code verification from #643:
+
+- `php -l mtool/app/lab_sample18_task_board_page.php`
+- `php -l tests/Integration/Sample18MiniTaskBoardDemoTest.php`
+- `make sample18-pack-runtime-test`: `OK (17 tests, 1122 assertions)`
+- Full `make test`: `OK, but incomplete, skipped, or risky tests! Tests: 401, Assertions: 12967, Skipped: 1.`
+- `git diff --check`
+
+For #644, docs-only verification is `git diff --check`.
+
+For #645, docs-only verification is `git diff --check`.
+
+Latest code verification from #646:
+
+- `php -l mtool/app/lab_sample18_task_board_page.php`
+- `php -l tests/Integration/Sample18MiniTaskBoardDemoTest.php`
+- `make sample18-pack-runtime-test`: `OK (18 tests, 1151 assertions)`
+- Full `make test`: `OK, but incomplete, skipped, or risky tests! Tests: 402, Assertions: 12996, Skipped: 1.`
+- `git diff --check`
+
+For #647, docs-only verification is `git diff --check`.
 
 Latest code verification from #459:
 
@@ -702,6 +956,20 @@ Completed detailed history was moved out of this active list. / 完了済みの�
 
 | Completed scope / 完了済み範囲 | Historical source / 履歴ソース |
 | --- | --- |
+| Sample18 execution update-plan helper first slice / sample18 execution update-plan helper first slice | [2026-0710 Sample18 Execution Update-Plan Helper First Slice](reports/2026/2026-0710-sample18-execution-update-plan-helper-first-slice.md) |
+| Sample18 execution audit/idempotency update preflight / sample18 execution audit/idempotency update preflight | [2026-0710 Sample18 Execution Audit Idempotency Update Preflight](reports/2026/2026-0710-sample18-execution-audit-idempotency-update-preflight.md) |
+| Sample18 post-transaction-plan route metadata lane closure / sample18 post-transaction-plan route metadata lane closure | [2026-0710 Sample18 Post Transaction-Plan Route Metadata Lane Closure](reports/2026/2026-0710-sample18-post-transaction-plan-route-metadata-lane-closure.md) |
+| Sample18 transaction-plan route metadata integration / sample18 transaction-plan route metadata integration | [2026-0710 Sample18 Transaction-Plan Route Metadata Integration](reports/2026/2026-0710-sample18-transaction-plan-route-metadata-integration.md) |
+| Sample18 post-transaction-plan helper lane closure / sample18 post-transaction-plan helper lane closure | [2026-0710 Sample18 Post Transaction-Plan Helper Lane Closure](reports/2026/2026-0710-sample18-post-transaction-plan-helper-lane-closure.md) |
+| Sample18 DBAccess transaction-plan helper first slice / sample18 DBAccess transaction-plan helper first slice | [2026-0710 Sample18 DBAccess Transaction-Plan Helper First Slice](reports/2026/2026-0710-sample18-dbaccess-transaction-plan-helper-first-slice.md) |
+| Sample18 DBAccess transaction boundary preflight / sample18 DBAccess transaction boundary preflight | [2026-0710 Sample18 DBAccess Transaction Boundary Preflight](reports/2026/2026-0710-sample18-dbaccess-transaction-boundary-preflight.md) |
+| Sample18 post-ready execution-plan coverage lane closure / sample18 post-ready execution-plan coverage lane closure | [2026-0710 Sample18 Post Ready Execution-Plan Coverage Lane Closure](reports/2026/2026-0710-sample18-post-ready-execution-plan-coverage-lane-closure.md) |
+| Sample18 route-level ready execution-plan coverage / sample18 route-level ready execution-plan coverage | [2026-0710 Sample18 Route-Level Ready Execution-Plan Coverage](reports/2026/2026-0710-sample18-route-level-ready-execution-plan-coverage.md) |
+| Sample18 post-execution-plan route metadata lane closure / sample18 post-execution-plan route metadata lane closure | [2026-0710 Sample18 Post Execution-Plan Route Metadata Lane Closure](reports/2026/2026-0710-sample18-post-execution-plan-route-metadata-lane-closure.md) |
+| Sample18 DBAccess execution-plan route response integration / sample18 DBAccess execution-plan route response integration | [2026-0710 Sample18 DBAccess Execution-Plan Route Response Integration](reports/2026/2026-0710-sample18-dbaccess-execution-plan-route-response-integration.md) |
+| Sample18 post-DBAccess execution-plan helper lane closure / sample18 post-DBAccess execution-plan helper lane closure | [2026-0710 Sample18 Post DBAccess Execution-Plan Helper Lane Closure](reports/2026/2026-0710-sample18-post-dbaccess-execution-plan-helper-lane-closure.md) |
+| Sample18 DBAccess mutation dry-run executor first slice / sample18 DBAccess mutation dry-run executor first slice | [2026-0710 Sample18 DBAccess Mutation Dry-Run Executor First Slice](reports/2026/2026-0710-sample18-dbaccess-mutation-dry-run-executor-first-slice.md) |
+| Sample18 DBAccess mutation dry-run execution preflight / sample18 DBAccess mutation dry-run execution preflight | [2026-0710 Sample18 DBAccess Mutation Dry-Run Execution Preflight](reports/2026/2026-0710-sample18-dbaccess-mutation-dry-run-execution-preflight.md) |
 | Sample18 post-mutation-gate-failure-matrix lane closure / sample18 post-mutation-gate-failure-matrix lane closure | [2026-0710 Sample18 Post Mutation Gate Failure Matrix Lane Closure](reports/2026/2026-0710-sample18-post-mutation-gate-failure-matrix-lane-closure.md) |
 | Sample18 mutation gate failure matrix coverage / sample18 mutation gate failure matrix coverage | [2026-0710 Sample18 Mutation Gate Failure Matrix Coverage](reports/2026/2026-0710-sample18-mutation-gate-failure-matrix-coverage.md) |
 | Sample18 post-mutation-gate-helper lane closure / sample18 post-mutation-gate-helper lane closure | [2026-0710 Sample18 Post Mutation Gate Helper Lane Closure](reports/2026/2026-0710-sample18-post-mutation-gate-helper-lane-closure.md) |

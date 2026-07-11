@@ -120,6 +120,110 @@ final class Sample18GeneratedSubmitIdempotencyRepositorySqliteTest extends TestC
         self::assertSame([], $latest['items']);
     }
 
+    public function testGeneratedSubmitIdempotencyExecutionOutcomeCanBeUpdated(): void
+    {
+        $app = $this->sqliteApp();
+        $bootstrap = app_config_db_bootstrap_apply($app);
+        self::assertTrue($bootstrap['ok'], $bootstrap['error']);
+
+        $input = $this->recordInput();
+        $create = app_lab_sample18_generated_submit_idempotency_create_or_reuse_record($app, $input);
+        self::assertTrue($create['ok'], $create['error']);
+
+        $update = app_lab_sample18_generated_submit_idempotency_update_execution_outcome($app, [
+            'dedupe_key' => $input['dedupe_key'],
+            'execution_status' => 'executed',
+            'execution_result_code' => 'task_card_inserted',
+            'transaction_status' => 'committed',
+            'execution_audit_event_key' => 'audit_sample18_executed',
+            'metadata' => [
+                'db_access_class' => 'TaskCardDBAccess',
+                'db_access_function' => 'InsertTaskCard',
+                'affected_rows' => 1,
+            ],
+        ]);
+        self::assertTrue($update['ok'], $update['error']);
+        self::assertTrue($update['updated']);
+        self::assertSame('updated', $update['result']);
+        self::assertSame('executed', $update['item']['result'] ?? '');
+        self::assertSame('', $update['item']['failure_code'] ?? 'unexpected');
+        self::assertSame(0, $update['item']['duplicate_count'] ?? -1);
+        self::assertSame(
+            $input['metadata']['dispatcher_bound_fields'] ?? [],
+            $update['item']['metadata']['dispatcher_bound_fields'] ?? [],
+        );
+        self::assertSame('executed', $update['item']['metadata']['execution']['execution_status'] ?? '');
+        self::assertSame('task_card_inserted', $update['item']['metadata']['execution']['execution_result_code'] ?? '');
+        self::assertSame('committed', $update['item']['metadata']['execution']['transaction_status'] ?? '');
+        self::assertSame('audit_sample18_executed', $update['item']['metadata']['execution']['execution_audit_event_key'] ?? '');
+        self::assertSame('TaskCardDBAccess', $update['item']['metadata']['execution']['details']['db_access_class'] ?? '');
+        self::assertSame('InsertTaskCard', $update['item']['metadata']['execution']['details']['db_access_function'] ?? '');
+        self::assertSame(1, $update['item']['metadata']['execution']['details']['affected_rows'] ?? 0);
+
+        $latest = app_lab_sample18_generated_submit_idempotency_fetch_latest_records($app, [
+            'result' => 'executed',
+            'limit' => 10,
+        ]);
+        self::assertTrue($latest['ok'], $latest['error']);
+        self::assertCount(1, $latest['items']);
+    }
+
+    public function testGeneratedSubmitIdempotencyExecutionOutcomeFailsClosed(): void
+    {
+        $app = $this->sqliteApp();
+        $bootstrap = app_config_db_bootstrap_apply($app);
+        self::assertTrue($bootstrap['ok'], $bootstrap['error']);
+
+        $missing = app_lab_sample18_generated_submit_idempotency_update_execution_outcome($app, [
+            'dedupe_key' => 'missing-dedupe',
+            'execution_status' => 'executed',
+            'execution_result_code' => 'task_card_inserted',
+            'transaction_status' => 'committed',
+            'metadata' => [],
+        ]);
+        self::assertFalse($missing['ok']);
+        self::assertFalse($missing['updated']);
+        self::assertStringContainsString('not found', $missing['error']);
+
+        $invalidStatus = app_lab_sample18_generated_submit_idempotency_update_execution_outcome($app, [
+            'dedupe_key' => 'missing-dedupe',
+            'execution_status' => 'planned',
+            'execution_result_code' => 'planned_not_executed',
+            'transaction_status' => 'not_opened',
+            'metadata' => [],
+        ]);
+        self::assertFalse($invalidStatus['ok']);
+        self::assertStringContainsString('execution status is not supported', $invalidStatus['error']);
+
+        $invalidMetadata = app_lab_sample18_generated_submit_idempotency_update_execution_outcome($app, [
+            'dedupe_key' => 'missing-dedupe',
+            'execution_status' => 'failed',
+            'execution_result_code' => 'dbaccess_failed',
+            'transaction_status' => 'rolled_back',
+            'metadata' => 'not-an-array',
+        ]);
+        self::assertFalse($invalidMetadata['ok']);
+        self::assertStringContainsString('execution metadata must be an array', $invalidMetadata['error']);
+
+        $input = $this->recordInput();
+        $create = app_lab_sample18_generated_submit_idempotency_create_or_reuse_record($app, $input);
+        self::assertTrue($create['ok'], $create['error']);
+        $duplicate = app_lab_sample18_generated_submit_idempotency_create_or_reuse_record($app, $input);
+        self::assertTrue($duplicate['ok'], $duplicate['error']);
+        self::assertSame('duplicate', $duplicate['result']);
+
+        $duplicateReplay = app_lab_sample18_generated_submit_idempotency_update_execution_outcome($app, [
+            'dedupe_key' => $input['dedupe_key'],
+            'execution_status' => 'executed',
+            'execution_result_code' => 'task_card_inserted',
+            'transaction_status' => 'committed',
+            'metadata' => [],
+        ]);
+        self::assertFalse($duplicateReplay['ok']);
+        self::assertFalse($duplicateReplay['updated']);
+        self::assertStringContainsString('duplicate replay', $duplicateReplay['error']);
+    }
+
     public function testGeneratedSubmitIdempotencyRepositoryFailureIsReturned(): void
     {
         $result = app_lab_sample18_generated_submit_idempotency_create_or_reuse_record([

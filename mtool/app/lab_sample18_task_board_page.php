@@ -551,6 +551,117 @@ function app_lab_sample18_task_board_generated_submit_append_audit_event(?array 
 }
 
 /**
+ * @param array<string,mixed>|null $app
+ * @param array<string,mixed> $executionUpdatePlan
+ * @param array<string,mixed> $executionGuard
+ * @param array<string,mixed> $principal
+ * @param array<string,mixed> $metadata
+ * @return array{ok:bool,skipped:bool,status:string,item:array<string,mixed>,error:string,reason:string}
+ */
+function app_lab_sample18_task_board_generated_submit_append_execution_audit_event(
+    ?array $app,
+    array $executionUpdatePlan,
+    array $executionGuard,
+    array $principal,
+    string $executionStatus,
+    string $executionResultCode,
+    string $transactionStatus,
+    array $metadata = [],
+): array {
+    if (!in_array($executionStatus, ['executed', 'failed', 'rolled_back'], true)) {
+        return [
+            'ok' => false,
+            'skipped' => false,
+            'status' => 'failed',
+            'item' => [],
+            'error' => 'sample18 generated submit execution audit status is not supported: ' . $executionStatus,
+            'reason' => 'invalid_execution_status',
+        ];
+    }
+    if (trim($executionResultCode) === '') {
+        return [
+            'ok' => false,
+            'skipped' => false,
+            'status' => 'failed',
+            'item' => [],
+            'error' => 'sample18 generated submit execution audit result code is required.',
+            'reason' => 'missing_execution_result_code',
+        ];
+    }
+    if (!in_array($transactionStatus, ['committed', 'rolled_back', 'not_opened'], true)) {
+        return [
+            'ok' => false,
+            'skipped' => false,
+            'status' => 'failed',
+            'item' => [],
+            'error' => 'sample18 generated submit execution audit transaction status is not supported: ' . $transactionStatus,
+            'reason' => 'invalid_transaction_status',
+        ];
+    }
+    if (($executionGuard['status'] ?? '') !== 'allowed' || !($executionGuard['ready'] ?? false)) {
+        return [
+            'ok' => false,
+            'skipped' => false,
+            'status' => 'failed',
+            'item' => [],
+            'error' => 'sample18 generated submit execution guard is not ready.',
+            'reason' => 'execution_guard_not_ready',
+        ];
+    }
+
+    $dedupeKey = (string) ($executionGuard['dedupe_key'] ?? '');
+    if ($dedupeKey === '') {
+        return [
+            'ok' => false,
+            'skipped' => false,
+            'status' => 'failed',
+            'item' => [],
+            'error' => 'sample18 generated submit execution audit dedupe key is required.',
+            'reason' => 'dedupe_key_missing',
+        ];
+    }
+    $requestAuditEventKey = (string) ($executionGuard['request_audit_event_key'] ?? '');
+    if ($requestAuditEventKey === '') {
+        return [
+            'ok' => false,
+            'skipped' => false,
+            'status' => 'failed',
+            'item' => [],
+            'error' => 'sample18 generated submit execution audit request audit event key is required.',
+            'reason' => 'request_audit_event_key_missing',
+        ];
+    }
+
+    $plannedAudit = is_array($executionUpdatePlan['execution_audit_update'] ?? null)
+        ? $executionUpdatePlan['execution_audit_update']
+        : [];
+    $eventMetadata = [
+        'request_audit_event_key' => $requestAuditEventKey,
+        'dedupe_key' => $dedupeKey,
+        'operation_key' => (string) ($executionGuard['operation_key'] ?? ''),
+        'db_access_class' => (string) ($executionGuard['db_access_class'] ?? ''),
+        'db_access_function' => (string) ($executionGuard['db_access_function'] ?? ''),
+        'execution_status' => $executionStatus,
+        'execution_result_code' => $executionResultCode,
+        'transaction_status' => $transactionStatus,
+        'planned_transaction_status' => (string) ($plannedAudit['transaction_status'] ?? ''),
+        'details' => $metadata,
+    ];
+
+    return app_lab_sample18_task_board_generated_submit_append_audit_event($app, [
+        'actor_login_id' => trim((string) ($principal['id'] ?? '')),
+        'actor_source' => trim((string) ($principal['auth_source'] ?? 'unknown')),
+        'project_key' => 'SAMPLE18',
+        'event_type' => 'sample18.generated_submit.executed',
+        'target_type' => 'sample18_task_card',
+        'target_key' => $dedupeKey,
+        'result' => $executionStatus,
+        'message' => $executionResultCode,
+        'metadata' => $eventMetadata,
+    ]);
+}
+
+/**
  * @return array{ok:bool,status:string,created:bool,dedupe_key:string,item:array<string,mixed>,error:string,reason:string}
  */
 function app_lab_sample18_task_board_generated_submit_idempotency_skipped(
@@ -710,6 +821,1311 @@ function app_lab_sample18_task_board_generated_submit_mutation_gate(
 }
 
 /**
+ * @param array<string,mixed> $normalized
+ * @param array<string,mixed> $dispatcherResult
+ * @param array{status:string,ready:bool,mutation_enabled:bool,executed:bool,reasons:list<string>} $mutationGate
+ * @return array<string,mixed>
+ */
+function app_lab_sample18_task_board_generated_submit_dbaccess_execution_plan(
+    array $normalized,
+    array $dispatcherResult,
+    array $mutationGate,
+): array {
+    $reasons = [];
+    $failed = false;
+
+    if (!($normalized['ok'] ?? false)) {
+        $reasons[] = 'request_not_valid';
+    }
+    if (!($dispatcherResult['ok'] ?? false)) {
+        $reasons[] = 'dispatcher_not_ready';
+    }
+    if (($dispatcherResult['executed'] ?? false) || ($dispatcherResult['mutation_enabled'] ?? false)) {
+        $reasons[] = 'dispatcher_not_dry_run';
+        $failed = true;
+    }
+    if (($mutationGate['status'] ?? '') !== 'ready' || !($mutationGate['ready'] ?? false)) {
+        $reasons[] = 'mutation_gate_not_ready';
+        foreach (($mutationGate['reasons'] ?? []) as $reason) {
+            if (is_string($reason) && $reason !== '') {
+                $reasons[] = $reason;
+            }
+        }
+        $failed = $failed || (string) ($mutationGate['status'] ?? '') === 'failed';
+    }
+
+    $contracts = app_lab_sample18_task_board_generated_submit_contracts();
+    $operationKey = (string) ($normalized['operation_key'] ?? '');
+    $expectedFunction = (string) ($contracts[$operationKey]['db_access_function'] ?? '');
+    $dbAccessFunction = (string) ($dispatcherResult['db_access_function'] ?? '');
+    if ($operationKey === '' || $expectedFunction === '' || $dbAccessFunction !== $expectedFunction) {
+        $reasons[] = 'db_access_function_not_allowlisted';
+        $failed = true;
+    }
+
+    return [
+        'status' => $reasons === [] ? 'planned' : ($failed ? 'failed' : 'blocked'),
+        'ready' => $reasons === [],
+        'mutation_enabled' => false,
+        'executed' => false,
+        'operation_key' => $operationKey,
+        'curated_route_action' => (string) ($normalized['curated_route_action'] ?? ''),
+        'db_access_class' => 'TaskCardDBAccess',
+        'db_access_function' => $dbAccessFunction,
+        'data_object' => 'TaskCardData',
+        'method_arguments' => is_array($dispatcherResult['method_arguments'] ?? null)
+            ? $dispatcherResult['method_arguments']
+            : [],
+        'transaction' => 'not_opened',
+        'reasons' => array_values(array_unique($reasons)),
+    ];
+}
+
+/**
+ * @param array<string,mixed> $executionPlan
+ * @return array<string,mixed>
+ */
+function app_lab_sample18_task_board_generated_submit_transaction_plan(array $executionPlan): array
+{
+    $reasons = [];
+    $failed = false;
+
+    if (($executionPlan['status'] ?? '') !== 'planned' || !($executionPlan['ready'] ?? false)) {
+        $reasons[] = 'execution_plan_not_ready';
+        foreach (($executionPlan['reasons'] ?? []) as $reason) {
+            if (is_string($reason) && $reason !== '') {
+                $reasons[] = $reason;
+            }
+        }
+        $failed = (string) ($executionPlan['status'] ?? '') === 'failed';
+    }
+    if (($executionPlan['executed'] ?? false) || ($executionPlan['mutation_enabled'] ?? false)) {
+        $reasons[] = 'execution_plan_not_metadata_only';
+        $failed = true;
+    }
+
+    $planned = $reasons === [];
+
+    return [
+        'status' => $planned ? 'planned' : ($failed ? 'failed' : 'blocked'),
+        'ready' => $planned,
+        'transaction' => $planned ? 'planned_not_opened' : 'not_opened',
+        'db_handle' => 'sample18_application_db',
+        'audit_store' => 'config_db_audit_log',
+        'idempotency_store' => 'config_db_idempotency',
+        'will_execute' => false,
+        'will_update_audit' => false,
+        'will_update_idempotency' => false,
+        'rollback_policy' => [
+            'on_dbaccess_exception' => 'rollback',
+            'on_unexpected_result' => 'rollback',
+            'on_post_execution_update_failure' => 'rollback',
+        ],
+        'post_execution_audit_update' => [
+            'status' => 'planned_not_written',
+            'event_type' => 'sample18.generated_submit.executed',
+            'source_event_key' => '',
+            'db_access_class' => (string) ($executionPlan['db_access_class'] ?? ''),
+            'db_access_function' => (string) ($executionPlan['db_access_function'] ?? ''),
+            'transaction' => $planned ? 'planned_not_opened' : 'not_opened',
+        ],
+        'post_execution_idempotency_update' => [
+            'status' => 'planned_not_written',
+            'execution_status' => 'planned',
+            'transaction' => $planned ? 'planned_not_opened' : 'not_opened',
+        ],
+        'reasons' => array_values(array_unique($reasons)),
+    ];
+}
+
+/**
+ * @param array<string,mixed> $transactionPlan
+ * @param array<string,mixed> $auditAppend
+ * @param array<string,mixed> $idempotency
+ * @return array<string,mixed>
+ */
+function app_lab_sample18_task_board_generated_submit_execution_update_plan(
+    array $transactionPlan,
+    array $auditAppend,
+    array $idempotency,
+): array {
+    $reasons = [];
+    $failed = false;
+
+    if (($transactionPlan['status'] ?? '') !== 'planned' || !($transactionPlan['ready'] ?? false)) {
+        $reasons[] = 'transaction_plan_not_ready';
+        foreach (($transactionPlan['reasons'] ?? []) as $reason) {
+            if (is_string($reason) && $reason !== '') {
+                $reasons[] = $reason;
+            }
+        }
+        $failed = (string) ($transactionPlan['status'] ?? '') === 'failed';
+    }
+    if (
+        ($transactionPlan['will_execute'] ?? false)
+        || ($transactionPlan['will_update_audit'] ?? false)
+        || ($transactionPlan['will_update_idempotency'] ?? false)
+    ) {
+        $reasons[] = 'transaction_plan_not_metadata_only';
+        $failed = true;
+    }
+
+    $auditItem = is_array($auditAppend['item'] ?? null) ? $auditAppend['item'] : [];
+    $idempotencyItem = is_array($idempotency['item'] ?? null) ? $idempotency['item'] : [];
+    $dedupeKey = (string) ($idempotency['dedupe_key'] ?? ($idempotencyItem['dedupe_key'] ?? ''));
+    if ($dedupeKey === '') {
+        $reasons[] = 'dedupe_key_missing';
+    }
+
+    $planned = $reasons === [];
+
+    return [
+        'status' => $planned ? 'planned' : ($failed ? 'failed' : 'blocked'),
+        'ready' => $planned,
+        'will_write_audit' => false,
+        'will_update_idempotency' => false,
+        'will_execute' => false,
+        'audit_store' => (string) ($transactionPlan['audit_store'] ?? 'config_db_audit_log'),
+        'idempotency_store' => (string) ($transactionPlan['idempotency_store'] ?? 'config_db_idempotency'),
+        'execution_audit_update' => [
+            'status' => 'planned_not_written',
+            'event_type' => 'sample18.generated_submit.executed',
+            'target_key' => $dedupeKey,
+            'request_audit_event_key' => (string) ($auditItem['event_key'] ?? ''),
+            'result' => 'executed',
+            'transaction_status' => 'planned_not_opened',
+            'metadata' => [
+                'dedupe_key' => $dedupeKey,
+                'db_access_class' => (string) (($transactionPlan['post_execution_audit_update']['db_access_class'] ?? '')),
+                'db_access_function' => (string) (($transactionPlan['post_execution_audit_update']['db_access_function'] ?? '')),
+            ],
+        ],
+        'idempotency_execution_update' => [
+            'status' => 'planned_not_written',
+            'dedupe_key' => $dedupeKey,
+            'execution_status' => 'planned',
+            'execution_result_code' => 'planned_not_executed',
+            'transaction_status' => 'planned_not_opened',
+        ],
+        'reasons' => array_values(array_unique($reasons)),
+    ];
+}
+
+/**
+ * @param array<string,mixed> $normalized
+ * @param array<string,mixed> $auditAppend
+ * @param array<string,mixed> $idempotency
+ * @param array<string,mixed> $mutationGate
+ * @param array<string,mixed> $executionPlan
+ * @param array<string,mixed> $transactionPlan
+ * @param array<string,mixed> $executionUpdatePlan
+ * @return array<string,mixed>
+ */
+function app_lab_sample18_task_board_generated_submit_execution_guard(
+    array $normalized,
+    array $auditAppend,
+    array $idempotency,
+    array $mutationGate,
+    array $executionPlan,
+    array $transactionPlan,
+    array $executionUpdatePlan,
+): array {
+    $reasons = [];
+    $failed = false;
+
+    if (!($normalized['ok'] ?? false)) {
+        $reasons[] = 'request_not_ready';
+        $failed = true;
+    }
+    if (($auditAppend['status'] ?? '') !== 'appended') {
+        $reasons[] = 'audit_append_not_ready';
+        $failed = (string) ($auditAppend['status'] ?? '') === 'failed';
+    }
+    if (($idempotency['status'] ?? '') !== 'recorded' || !($idempotency['created'] ?? false)) {
+        $reasons[] = 'idempotency_not_ready';
+        if (($idempotency['status'] ?? '') === 'duplicate') {
+            $reasons[] = 'duplicate_generated_submit';
+        }
+        $failed = $failed || (string) ($idempotency['status'] ?? '') === 'failed';
+    }
+
+    foreach ([
+        'mutation_gate' => $mutationGate,
+        'execution_plan' => $executionPlan,
+        'transaction_plan' => $transactionPlan,
+        'execution_update_plan' => $executionUpdatePlan,
+    ] as $name => $plan) {
+        $expectedStatus = $name === 'mutation_gate' ? 'ready' : 'planned';
+        if (($plan['status'] ?? '') !== $expectedStatus || !($plan['ready'] ?? false)) {
+            $reasons[] = $name . '_not_ready';
+            foreach (($plan['reasons'] ?? []) as $reason) {
+                if (is_string($reason) && $reason !== '') {
+                    $reasons[] = $reason;
+                }
+            }
+            $failed = $failed || (string) ($plan['status'] ?? '') === 'failed';
+        }
+    }
+
+    if (
+        ($executionPlan['mutation_enabled'] ?? false)
+        || ($executionPlan['executed'] ?? false)
+        || ($transactionPlan['will_execute'] ?? false)
+        || ($transactionPlan['will_update_audit'] ?? false)
+        || ($transactionPlan['will_update_idempotency'] ?? false)
+        || ($executionUpdatePlan['will_execute'] ?? false)
+        || ($executionUpdatePlan['will_write_audit'] ?? false)
+        || ($executionUpdatePlan['will_update_idempotency'] ?? false)
+    ) {
+        $reasons[] = 'execution_metadata_not_metadata_only';
+        $failed = true;
+    }
+
+    $operationKey = (string) ($normalized['operation_key'] ?? '');
+    $contracts = app_lab_sample18_task_board_generated_submit_contracts();
+    $contract = is_array($contracts[$operationKey] ?? null) ? $contracts[$operationKey] : [];
+    $expectedFunction = (string) ($contract['db_access_function'] ?? '');
+    $dbAccessClass = (string) ($executionPlan['db_access_class'] ?? '');
+    $dbAccessFunction = (string) ($executionPlan['db_access_function'] ?? '');
+    if ($dbAccessClass !== 'TaskCardDBAccess' || $dbAccessFunction === '' || $dbAccessFunction !== $expectedFunction) {
+        $reasons[] = 'dbaccess_not_allowlisted';
+        $failed = true;
+    }
+
+    $dbHandle = (string) ($transactionPlan['db_handle'] ?? '');
+    if ($dbHandle !== 'sample18_application_db') {
+        $reasons[] = 'db_handle_not_allowlisted';
+        $failed = true;
+    }
+
+    $dedupeKey = (string) ($executionUpdatePlan['idempotency_execution_update']['dedupe_key'] ?? '');
+    if ($dedupeKey === '') {
+        $reasons[] = 'dedupe_key_missing';
+    }
+    $requestAuditEventKey = (string) ($executionUpdatePlan['execution_audit_update']['request_audit_event_key'] ?? '');
+    if ($requestAuditEventKey === '') {
+        $reasons[] = 'request_audit_event_key_missing';
+    }
+
+    $allowed = $reasons === [];
+
+    return [
+        'status' => $allowed ? 'allowed' : ($failed ? 'failed' : 'blocked'),
+        'ready' => $allowed,
+        'will_open_transaction' => false,
+        'will_call_dbaccess' => false,
+        'will_write_execution_audit' => false,
+        'will_update_idempotency_execution' => false,
+        'db_handle' => $dbHandle,
+        'db_access_class' => $dbAccessClass,
+        'db_access_function' => $dbAccessFunction,
+        'operation_key' => $operationKey,
+        'dedupe_key' => $dedupeKey,
+        'request_audit_event_key' => $requestAuditEventKey,
+        'reasons' => array_values(array_unique($reasons)),
+    ];
+}
+
+/**
+ * @param array<string,mixed> $executionGuard
+ * @param array<string,mixed> $executionUpdatePlan
+ * @return array<string,mixed>
+ */
+function app_lab_sample18_task_board_generated_submit_executor_coordination_plan(
+    array $executionGuard,
+    array $executionUpdatePlan,
+    bool $executorEnabled,
+): array {
+    $reasons = [];
+    $failed = false;
+
+    if (!$executorEnabled) {
+        $reasons[] = 'executor_feature_flag_disabled';
+    }
+    if (($executionGuard['status'] ?? '') !== 'allowed' || !($executionGuard['ready'] ?? false)) {
+        $reasons[] = 'execution_guard_not_ready';
+        foreach (($executionGuard['reasons'] ?? []) as $reason) {
+            if (is_string($reason) && $reason !== '') {
+                $reasons[] = $reason;
+            }
+        }
+        $failed = (string) ($executionGuard['status'] ?? '') === 'failed';
+    }
+    if (($executionUpdatePlan['status'] ?? '') !== 'planned' || !($executionUpdatePlan['ready'] ?? false)) {
+        $reasons[] = 'execution_update_plan_not_ready';
+        foreach (($executionUpdatePlan['reasons'] ?? []) as $reason) {
+            if (is_string($reason) && $reason !== '') {
+                $reasons[] = $reason;
+            }
+        }
+        $failed = $failed || (string) ($executionUpdatePlan['status'] ?? '') === 'failed';
+    }
+
+    if (
+        ($executionGuard['will_open_transaction'] ?? false)
+        || ($executionGuard['will_call_dbaccess'] ?? false)
+        || ($executionGuard['will_write_execution_audit'] ?? false)
+        || ($executionGuard['will_update_idempotency_execution'] ?? false)
+        || ($executionUpdatePlan['will_execute'] ?? false)
+        || ($executionUpdatePlan['will_write_audit'] ?? false)
+        || ($executionUpdatePlan['will_update_idempotency'] ?? false)
+    ) {
+        $reasons[] = 'coordination_metadata_not_dry_run';
+        $failed = true;
+    }
+
+    if ((string) ($executionGuard['dedupe_key'] ?? '') === '') {
+        $reasons[] = 'dedupe_key_missing';
+    }
+    if ((string) ($executionGuard['request_audit_event_key'] ?? '') === '') {
+        $reasons[] = 'request_audit_event_key_missing';
+    }
+
+    $planned = $reasons === [];
+
+    return [
+        'status' => $planned ? 'planned' : ($failed ? 'failed' : 'blocked'),
+        'ready' => $planned,
+        'will_open_transaction' => false,
+        'will_call_dbaccess' => false,
+        'will_write_execution_audit' => false,
+        'will_update_idempotency_execution' => false,
+        'app_db_transaction_boundary' => [
+            'db_handle' => (string) ($executionGuard['db_handle'] ?? ''),
+            'transaction_scope' => 'sample18_application_db_only',
+            'cross_store_atomic' => false,
+        ],
+        'config_db_persistence_boundary' => [
+            'audit_store' => (string) ($executionUpdatePlan['audit_store'] ?? 'config_db_audit_log'),
+            'idempotency_store' => (string) ($executionUpdatePlan['idempotency_store'] ?? 'config_db_idempotency'),
+            'cross_store_atomic' => false,
+        ],
+        'ordered_steps' => [
+            ['step' => 'recheck_execution_guard', 'status' => 'planned_not_run'],
+            ['step' => 'open_app_db_transaction', 'status' => 'planned_not_opened'],
+            ['step' => 'call_dbaccess', 'status' => 'planned_not_called'],
+            ['step' => 'classify_dbaccess_result', 'status' => 'planned_not_run'],
+            ['step' => 'finish_app_db_transaction', 'status' => 'planned_not_run'],
+            ['step' => 'append_execution_audit', 'status' => 'planned_not_written'],
+            ['step' => 'update_idempotency_execution_outcome', 'status' => 'planned_not_written'],
+        ],
+        'operation_key' => (string) ($executionGuard['operation_key'] ?? ''),
+        'dedupe_key' => (string) ($executionGuard['dedupe_key'] ?? ''),
+        'request_audit_event_key' => (string) ($executionGuard['request_audit_event_key'] ?? ''),
+        'reasons' => array_values(array_unique($reasons)),
+    ];
+}
+
+/**
+ * @param array<string,mixed> $fields
+ */
+function app_lab_sample18_task_board_generated_submit_task_card_data_object(array $fields): object
+{
+    $taskCardObj = class_exists('TaskCardData') ? new TaskCardData() : new stdClass();
+    $map = [
+        'Id' => 'id',
+        'Title' => 'title',
+        'Body' => 'body',
+        'Status' => 'status',
+        'AssignedTo' => 'assignedTo',
+        'Priority' => 'priority',
+        'DueDate' => 'dueDate',
+        'CompletedAt' => 'completedAt',
+        'UpdatedAt' => 'updatedAt',
+    ];
+
+    foreach ($map as $sourceField => $property) {
+        if (array_key_exists($sourceField, $fields)) {
+            $taskCardObj->{$property} = $fields[$sourceField];
+        }
+    }
+
+    return $taskCardObj;
+}
+
+/**
+ * @param mixed $result
+ * @return array<string,mixed>
+ */
+function app_lab_sample18_task_board_generated_submit_normalize_real_dbaccess_result($result): array
+{
+    if (is_array($result)) {
+        $ok = (bool) ($result['ok'] ?? true);
+        $normalized = $result;
+        $normalized['ok'] = $ok;
+        $normalized['result_code'] = (string) ($result['result_code'] ?? ($ok ? 'dbaccess_executed' : 'dbaccess_failed'));
+        if (!$ok && !array_key_exists('failure_code', $normalized)) {
+            $normalized['failure_code'] = 'dbaccess_failed';
+        }
+
+        return $normalized;
+    }
+
+    if ($result === false) {
+        return [
+            'ok' => false,
+            'result_code' => 'dbaccess_failed',
+            'failure_code' => 'dbaccess_failed',
+        ];
+    }
+
+    if (is_object($result)) {
+        $errno = property_exists($result, 'errno') ? (int) $result->errno : 0;
+        if ($errno !== 0) {
+            return [
+                'ok' => false,
+                'result_code' => 'dbaccess_failed',
+                'failure_code' => 'dbaccess_failed',
+                'error' => property_exists($result, 'error') ? (string) $result->error : '',
+            ];
+        }
+
+        $normalized = [
+            'ok' => true,
+            'result_code' => 'dbaccess_executed',
+        ];
+        if (property_exists($result, 'affected_rows')) {
+            $normalized['rows_affected'] = (int) $result->affected_rows;
+        }
+        if (property_exists($result, 'insert_id')) {
+            $normalized['insert_id'] = (int) $result->insert_id;
+        }
+
+        return $normalized;
+    }
+
+    if ($result === true || is_int($result)) {
+        return [
+            'ok' => true,
+            'result_code' => 'dbaccess_executed',
+        ];
+    }
+
+    return [
+        'ok' => false,
+        'result_code' => 'dbaccess_malformed_result',
+        'failure_code' => 'dbaccess_malformed_result',
+    ];
+}
+
+/**
+ * @param array<string,mixed> $normalized
+ * @param array<string,mixed> $dispatcherResult
+ * @param array<string,mixed> $executionGuard
+ * @param array<string,mixed> $executorCoordinationPlan
+ * @param array<string,mixed> $transactionContext
+ * @return array<string,mixed>
+ */
+function app_lab_sample18_task_board_generated_submit_real_dbaccess_invocation_adapter(
+    array $normalized,
+    array $dispatcherResult,
+    array $executionGuard,
+    array $executorCoordinationPlan,
+    bool $executorEnabled,
+    object $dbAccess,
+    array $transactionContext,
+): array {
+    if (!($transactionContext['in_transaction'] ?? false)) {
+        $blockedCoordinationPlan = $executorCoordinationPlan;
+        $blockedCoordinationPlan['status'] = 'blocked';
+        $blockedCoordinationPlan['ready'] = false;
+        $coordinationReasons = is_array($executorCoordinationPlan['reasons'] ?? null)
+            ? $executorCoordinationPlan['reasons']
+            : [];
+        $blockedCoordinationPlan['reasons'] = array_values(array_unique(array_merge(
+            array_filter($coordinationReasons, 'is_string'),
+            ['dbaccess_transaction_not_active'],
+        )));
+        $blocked = app_lab_sample18_task_board_generated_submit_dbaccess_call_adapter(
+            $normalized,
+            $dispatcherResult,
+            $executionGuard,
+            $blockedCoordinationPlan,
+            $executorEnabled,
+            static fn (): array => ['ok' => false, 'failure_code' => 'dbaccess_transaction_not_active'],
+        );
+        $blocked['failure_code'] = 'dbaccess_transaction_not_active';
+
+        return $blocked;
+    }
+
+    return app_lab_sample18_task_board_generated_submit_dbaccess_call_adapter(
+        $normalized,
+        $dispatcherResult,
+        $executionGuard,
+        $executorCoordinationPlan,
+        $executorEnabled,
+        static function (array $call) use ($dbAccess): array {
+            $method = (string) ($call['db_access_function'] ?? '');
+            if ($method === '' || !method_exists($dbAccess, $method)) {
+                return [
+                    'ok' => false,
+                    'result_code' => 'dbaccess_method_missing',
+                    'failure_code' => 'dbaccess_method_missing',
+                ];
+            }
+
+            $methodArguments = is_array($call['method_arguments'] ?? null) ? $call['method_arguments'] : [];
+            $taskCardFields = is_array($methodArguments['TaskCardObj'] ?? null) ? $methodArguments['TaskCardObj'] : [];
+            $taskCardObj = app_lab_sample18_task_board_generated_submit_task_card_data_object($taskCardFields);
+
+            return app_lab_sample18_task_board_generated_submit_normalize_real_dbaccess_result(
+                $dbAccess->{$method}($taskCardObj),
+            );
+        },
+    );
+}
+
+/**
+ * @param callable(array<string,mixed>):object $dbAccessFactory
+ * @return array{begin:callable(array<string,mixed>):array<string,mixed>,commit:callable(array<string,mixed>):array<string,mixed>,rollback:callable(array<string,mixed>):array<string,mixed>,dbaccess:callable(array<string,mixed>):array<string,mixed>}
+ */
+function app_lab_sample18_task_board_generated_submit_transaction_binding_callables(
+    object $transactionDb,
+    callable $dbAccessFactory,
+): array {
+    $isInTransaction = static function () use ($transactionDb): bool {
+        return method_exists($transactionDb, 'inTransaction') && (bool) $transactionDb->inTransaction();
+    };
+
+    $begin = static function (array $context) use ($transactionDb, $isInTransaction): array {
+        if (($context['db_handle'] ?? '') !== 'sample18_application_db') {
+            return [
+                'ok' => false,
+                'failure_code' => 'transaction_target_not_allowlisted',
+                'error' => 'sample18 generated submit can only target sample18_application_db.',
+            ];
+        }
+        if (($context['transaction_scope'] ?? '') !== 'sample18_application_db_only') {
+            return [
+                'ok' => false,
+                'failure_code' => 'transaction_scope_not_allowlisted',
+                'error' => 'sample18 generated submit requires sample18_application_db_only transaction scope.',
+            ];
+        }
+        if (!method_exists($transactionDb, 'beginTransaction')) {
+            return [
+                'ok' => false,
+                'failure_code' => 'transaction_begin_not_supported',
+                'error' => 'transaction DB does not support beginTransaction.',
+            ];
+        }
+
+        $result = $transactionDb->beginTransaction();
+        if ($result === false || !$isInTransaction()) {
+            return [
+                'ok' => false,
+                'failure_code' => 'transaction_begin_failed',
+                'error' => property_exists($transactionDb, 'error') ? (string) $transactionDb->error : '',
+            ];
+        }
+
+        return ['ok' => true, 'in_transaction' => true];
+    };
+
+    $commit = static function (array $context) use ($transactionDb): array {
+        if (!method_exists($transactionDb, 'commit')) {
+            return [
+                'ok' => false,
+                'failure_code' => 'transaction_commit_not_supported',
+                'error' => 'transaction DB does not support commit.',
+            ];
+        }
+
+        $result = $transactionDb->commit();
+        if ($result === false) {
+            return [
+                'ok' => false,
+                'failure_code' => 'transaction_commit_failed',
+                'error' => property_exists($transactionDb, 'error') ? (string) $transactionDb->error : '',
+            ];
+        }
+
+        return ['ok' => true, 'in_transaction' => false];
+    };
+
+    $rollback = static function (array $context) use ($transactionDb): array {
+        if (!method_exists($transactionDb, 'rollBack')) {
+            return [
+                'ok' => false,
+                'failure_code' => 'transaction_rollback_not_supported',
+                'error' => 'transaction DB does not support rollBack.',
+            ];
+        }
+
+        $result = $transactionDb->rollBack();
+        if ($result === false) {
+            return [
+                'ok' => false,
+                'failure_code' => 'transaction_rollback_failed',
+                'error' => property_exists($transactionDb, 'error') ? (string) $transactionDb->error : '',
+            ];
+        }
+
+        return ['ok' => true, 'in_transaction' => false];
+    };
+
+    $dbaccess = static function (array $call) use ($transactionDb, $dbAccessFactory, $isInTransaction): array {
+        if (!$isInTransaction()) {
+            return [
+                'ok' => false,
+                'result_code' => 'dbaccess_transaction_not_active',
+                'failure_code' => 'dbaccess_transaction_not_active',
+            ];
+        }
+
+        $dbAccess = $dbAccessFactory([
+            'transaction_db' => $transactionDb,
+            'call' => $call,
+            'in_transaction' => true,
+        ]);
+        $method = (string) ($call['db_access_function'] ?? '');
+        if ($method === '' || !method_exists($dbAccess, $method)) {
+            return [
+                'ok' => false,
+                'result_code' => 'dbaccess_method_missing',
+                'failure_code' => 'dbaccess_method_missing',
+            ];
+        }
+
+        $methodArguments = is_array($call['method_arguments'] ?? null) ? $call['method_arguments'] : [];
+        $taskCardFields = is_array($methodArguments['TaskCardObj'] ?? null) ? $methodArguments['TaskCardObj'] : [];
+        $taskCardObj = app_lab_sample18_task_board_generated_submit_task_card_data_object($taskCardFields);
+
+        return app_lab_sample18_task_board_generated_submit_normalize_real_dbaccess_result(
+            $dbAccess->{$method}($taskCardObj),
+        );
+    };
+
+    return [
+        'begin' => $begin,
+        'commit' => $commit,
+        'rollback' => $rollback,
+        'dbaccess' => $dbaccess,
+    ];
+}
+
+/**
+ * @param array<string,mixed> $normalized
+ * @param array<string,mixed> $dispatcherResult
+ * @param array<string,mixed> $executionGuard
+ * @param array<string,mixed> $executorCoordinationPlan
+ * @param callable(array<string,mixed>):mixed $dbaccessInvoker
+ * @return array<string,mixed>
+ */
+function app_lab_sample18_task_board_generated_submit_dbaccess_call_adapter(
+    array $normalized,
+    array $dispatcherResult,
+    array $executionGuard,
+    array $executorCoordinationPlan,
+    bool $executorEnabled,
+    callable $dbaccessInvoker,
+): array {
+    $operationKey = (string) ($normalized['operation_key'] ?? '');
+    $contracts = app_lab_sample18_task_board_generated_submit_contracts();
+    $expectedFunction = (string) ($contracts[$operationKey]['db_access_function'] ?? '');
+    $dbAccessClass = (string) ($dispatcherResult['db_access_class'] ?? '');
+    $dbAccessFunction = (string) ($dispatcherResult['db_access_function'] ?? '');
+    $dataObject = (string) ($dispatcherResult['data_object'] ?? '');
+    $methodArguments = is_array($dispatcherResult['method_arguments'] ?? null)
+        ? $dispatcherResult['method_arguments']
+        : [];
+    $taskCardObj = is_array($methodArguments['TaskCardObj'] ?? null) ? $methodArguments['TaskCardObj'] : null;
+    $dedupeKey = (string) ($executionGuard['dedupe_key'] ?? ($executorCoordinationPlan['dedupe_key'] ?? ''));
+    $requestAuditEventKey = (string) ($executionGuard['request_audit_event_key'] ?? ($executorCoordinationPlan['request_audit_event_key'] ?? ''));
+
+    $base = [
+        'status' => 'skipped',
+        'executed' => false,
+        'invoked' => false,
+        'db_access_class' => $dbAccessClass,
+        'db_access_function' => $dbAccessFunction,
+        'data_object' => $dataObject,
+        'operation_key' => $operationKey,
+        'result_code' => 'not_executed',
+        'failure_code' => '',
+        'error' => '',
+        'dedupe_key' => $dedupeKey,
+        'request_audit_event_key' => $requestAuditEventKey,
+        'reasons' => [],
+    ];
+
+    $reasons = [];
+    if (!$executorEnabled) {
+        $reasons[] = 'executor_feature_flag_disabled';
+    }
+    if (!($normalized['ok'] ?? false)) {
+        $reasons[] = 'request_not_valid';
+    }
+    if (!($dispatcherResult['ok'] ?? false)) {
+        $reasons[] = 'dispatcher_not_ready';
+    }
+    if (($executionGuard['status'] ?? '') !== 'allowed' || !($executionGuard['ready'] ?? false)) {
+        $reasons[] = 'execution_guard_not_ready';
+        foreach (($executionGuard['reasons'] ?? []) as $reason) {
+            if (is_string($reason) && $reason !== '') {
+                $reasons[] = $reason;
+            }
+        }
+    }
+    if (($executorCoordinationPlan['status'] ?? '') !== 'planned' || !($executorCoordinationPlan['ready'] ?? false)) {
+        $reasons[] = 'executor_coordination_plan_not_ready';
+        foreach (($executorCoordinationPlan['reasons'] ?? []) as $reason) {
+            if (is_string($reason) && $reason !== '') {
+                $reasons[] = $reason;
+            }
+        }
+    }
+    if ($operationKey === '' || !is_array($contracts[$operationKey] ?? null)) {
+        $reasons[] = 'operation_not_allowlisted';
+    }
+    if ($expectedFunction === '' || $dbAccessClass !== 'TaskCardDBAccess' || $dbAccessFunction !== $expectedFunction) {
+        $reasons[] = 'dbaccess_not_allowlisted';
+    }
+    if ($dataObject !== 'TaskCardData') {
+        $reasons[] = 'data_object_not_allowlisted';
+    }
+    if ($taskCardObj === null) {
+        $reasons[] = 'task_card_payload_missing';
+    }
+    if ($dedupeKey === '') {
+        $reasons[] = 'dedupe_key_missing';
+    }
+    if ($requestAuditEventKey === '') {
+        $reasons[] = 'request_audit_event_key_missing';
+    }
+
+    if ($reasons !== []) {
+        $reasons = array_values(array_unique($reasons));
+        $base['failure_code'] = $reasons[0];
+        $base['reasons'] = $reasons;
+
+        return $base;
+    }
+
+    $call = [
+        'operation_key' => $operationKey,
+        'db_access_class' => $dbAccessClass,
+        'db_access_function' => $dbAccessFunction,
+        'data_object' => $dataObject,
+        'method_arguments' => $methodArguments,
+        'dedupe_key' => $dedupeKey,
+        'request_audit_event_key' => $requestAuditEventKey,
+    ];
+
+    try {
+        $result = $dbaccessInvoker($call);
+    } catch (Throwable $throwable) {
+        $base['status'] = 'failed';
+        $base['invoked'] = true;
+        $base['result_code'] = 'dbaccess_exception';
+        $base['failure_code'] = 'dbaccess_exception';
+        $base['error'] = $throwable->getMessage();
+        $base['reasons'] = ['dbaccess_exception'];
+
+        return $base;
+    }
+
+    if (!is_array($result)) {
+        $base['status'] = 'failed';
+        $base['invoked'] = true;
+        $base['result_code'] = 'dbaccess_malformed_result';
+        $base['failure_code'] = 'dbaccess_malformed_result';
+        $base['reasons'] = ['dbaccess_malformed_result'];
+
+        return $base;
+    }
+
+    $ok = (bool) ($result['ok'] ?? false);
+    $base['invoked'] = true;
+    $base['result_code'] = (string) ($result['result_code'] ?? ($ok ? 'dbaccess_executed' : 'dbaccess_failed'));
+    if (array_key_exists('rows_affected', $result)) {
+        $base['rows_affected'] = (int) $result['rows_affected'];
+    }
+    if (array_key_exists('insert_id', $result)) {
+        $base['insert_id'] = (int) $result['insert_id'];
+    }
+
+    if (!$ok) {
+        $base['status'] = 'failed';
+        $base['failure_code'] = (string) ($result['failure_code'] ?? 'dbaccess_failed');
+        $base['error'] = (string) ($result['error'] ?? '');
+        $base['reasons'] = [$base['failure_code']];
+
+        return $base;
+    }
+
+    $base['status'] = 'executed';
+    $base['executed'] = true;
+
+    return $base;
+}
+
+/**
+ * @param array<string,mixed> $normalized
+ * @param array<string,mixed> $dispatcherResult
+ * @param array<string,mixed> $executionGuard
+ * @param array<string,mixed> $executorCoordinationPlan
+ * @param callable(array<string,mixed>):mixed $beginTransaction
+ * @param callable(array<string,mixed>):mixed $commitTransaction
+ * @param callable(array<string,mixed>):mixed $rollbackTransaction
+ * @param callable(array<string,mixed>):mixed $dbaccessInvoker
+ * @return array<string,mixed>
+ */
+function app_lab_sample18_task_board_generated_submit_transaction_adapter(
+    array $normalized,
+    array $dispatcherResult,
+    array $executionGuard,
+    array $executorCoordinationPlan,
+    bool $executorEnabled,
+    callable $beginTransaction,
+    callable $commitTransaction,
+    callable $rollbackTransaction,
+    callable $dbaccessInvoker,
+): array {
+    $operationKey = (string) ($normalized['operation_key'] ?? '');
+    $dedupeKey = (string) ($executionGuard['dedupe_key'] ?? ($executorCoordinationPlan['dedupe_key'] ?? ''));
+    $requestAuditEventKey = (string) ($executionGuard['request_audit_event_key'] ?? ($executorCoordinationPlan['request_audit_event_key'] ?? ''));
+    $base = [
+        'status' => 'failed',
+        'success' => false,
+        'executed' => false,
+        'transaction_status' => 'not_started',
+        'dbaccess_status' => 'not_called',
+        'recording_status' => 'planned_not_written',
+        'rolled_back' => false,
+        'recovery_required' => false,
+        'recovery_reason' => '',
+        'failure_code' => '',
+        'error' => '',
+        'operation_key' => $operationKey,
+        'dedupe_key' => $dedupeKey,
+        'request_audit_event_key' => $requestAuditEventKey,
+        'dbaccess_result' => [],
+        'reasons' => [],
+    ];
+
+    $reasons = [];
+    if (!$executorEnabled) {
+        $reasons[] = 'executor_feature_flag_disabled';
+    }
+    if (($executionGuard['status'] ?? '') !== 'allowed' || !($executionGuard['ready'] ?? false)) {
+        $reasons[] = 'execution_guard_not_ready';
+        foreach (($executionGuard['reasons'] ?? []) as $reason) {
+            if (is_string($reason) && $reason !== '') {
+                $reasons[] = $reason;
+            }
+        }
+    }
+    if (($executorCoordinationPlan['status'] ?? '') !== 'planned' || !($executorCoordinationPlan['ready'] ?? false)) {
+        $reasons[] = 'executor_coordination_plan_not_ready';
+        foreach (($executorCoordinationPlan['reasons'] ?? []) as $reason) {
+            if (is_string($reason) && $reason !== '') {
+                $reasons[] = $reason;
+            }
+        }
+    }
+    if ($dedupeKey === '') {
+        $reasons[] = 'dedupe_key_missing';
+    }
+    if ($requestAuditEventKey === '') {
+        $reasons[] = 'request_audit_event_key_missing';
+    }
+
+    if ($reasons !== []) {
+        $reasons = array_values(array_unique($reasons));
+        $base['failure_code'] = $reasons[0];
+        $base['reasons'] = $reasons;
+
+        return $base;
+    }
+
+    $context = [
+        'operation_key' => $operationKey,
+        'dedupe_key' => $dedupeKey,
+        'request_audit_event_key' => $requestAuditEventKey,
+        'transaction_scope' => (string) ($executorCoordinationPlan['app_db_transaction_boundary']['transaction_scope'] ?? ''),
+        'db_handle' => (string) ($executorCoordinationPlan['app_db_transaction_boundary']['db_handle'] ?? ''),
+    ];
+
+    try {
+        $begin = $beginTransaction($context);
+    } catch (Throwable $throwable) {
+        $base['transaction_status'] = 'begin_failed';
+        $base['failure_code'] = 'transaction_begin_exception';
+        $base['error'] = $throwable->getMessage();
+        $base['reasons'] = ['transaction_begin_exception'];
+
+        return $base;
+    }
+    if (!is_array($begin) || !($begin['ok'] ?? false)) {
+        $base['transaction_status'] = 'begin_failed';
+        $base['failure_code'] = (string) (is_array($begin) ? ($begin['failure_code'] ?? 'transaction_begin_failed') : 'transaction_begin_failed');
+        $base['error'] = (string) (is_array($begin) ? ($begin['error'] ?? '') : '');
+        $base['reasons'] = [$base['failure_code']];
+
+        return $base;
+    }
+
+    $base['transaction_status'] = 'begun';
+    $dbaccess = app_lab_sample18_task_board_generated_submit_dbaccess_call_adapter(
+        $normalized,
+        $dispatcherResult,
+        $executionGuard,
+        $executorCoordinationPlan,
+        $executorEnabled,
+        $dbaccessInvoker,
+    );
+    $base['dbaccess_result'] = $dbaccess;
+
+    if (($dbaccess['status'] ?? '') !== 'executed' || !($dbaccess['executed'] ?? false)) {
+        $base['dbaccess_status'] = ($dbaccess['status'] ?? '') === 'skipped' ? 'not_called' : 'failed';
+        $base['failure_code'] = (string) ($dbaccess['failure_code'] ?? 'dbaccess_failed');
+        $base['error'] = (string) ($dbaccess['error'] ?? '');
+        $base['reasons'] = array_values(array_unique(array_merge(
+            [$base['failure_code']],
+            array_filter($dbaccess['reasons'] ?? [], 'is_string'),
+        )));
+
+        try {
+            $rollback = $rollbackTransaction($context + ['failure_code' => $base['failure_code']]);
+        } catch (Throwable $throwable) {
+            $base['transaction_status'] = 'rollback_failed';
+            $base['failure_code'] = 'transaction_rollback_exception';
+            $base['error'] = $throwable->getMessage();
+            $base['reasons'][] = 'transaction_rollback_exception';
+
+            return $base;
+        }
+        if (!is_array($rollback) || !($rollback['ok'] ?? false)) {
+            $base['transaction_status'] = 'rollback_failed';
+            $base['failure_code'] = (string) (is_array($rollback) ? ($rollback['failure_code'] ?? 'transaction_rollback_failed') : 'transaction_rollback_failed');
+            $base['error'] = (string) (is_array($rollback) ? ($rollback['error'] ?? '') : '');
+            $base['reasons'][] = $base['failure_code'];
+
+            return $base;
+        }
+
+        $base['transaction_status'] = 'rolled_back';
+        $base['rolled_back'] = true;
+
+        return $base;
+    }
+
+    $base['dbaccess_status'] = 'executed';
+    try {
+        $commit = $commitTransaction($context + ['dbaccess_result' => $dbaccess]);
+    } catch (Throwable $throwable) {
+        $base['transaction_status'] = 'commit_failed';
+        $base['failure_code'] = 'transaction_commit_exception';
+        $base['error'] = $throwable->getMessage();
+        $base['recovery_required'] = true;
+        $base['recovery_reason'] = 'commit_status_unknown';
+        $base['reasons'] = ['transaction_commit_exception'];
+
+        return $base;
+    }
+    if (!is_array($commit) || !($commit['ok'] ?? false)) {
+        $base['transaction_status'] = 'commit_failed';
+        $base['failure_code'] = (string) (is_array($commit) ? ($commit['failure_code'] ?? 'transaction_commit_failed') : 'transaction_commit_failed');
+        $base['error'] = (string) (is_array($commit) ? ($commit['error'] ?? '') : '');
+        $base['recovery_required'] = true;
+        $base['recovery_reason'] = 'commit_status_unknown';
+        $base['reasons'] = [$base['failure_code']];
+
+        return $base;
+    }
+
+    $base['status'] = 'executed';
+    $base['success'] = true;
+    $base['executed'] = true;
+    $base['transaction_status'] = 'committed';
+    $base['failure_code'] = '';
+    $base['reasons'] = [];
+
+    return $base;
+}
+
+/**
+ * @param array<string,mixed> $transactionResult
+ * @param array<string,mixed> $executionUpdatePlan
+ * @param array<string,mixed> $executionGuard
+ * @param callable(array<string,mixed>):mixed $executionAuditRecorder
+ * @param callable(array<string,mixed>):mixed $idempotencyOutcomeRecorder
+ * @return array<string,mixed>
+ */
+function app_lab_sample18_task_board_generated_submit_post_commit_recording_adapter(
+    array $transactionResult,
+    array $executionUpdatePlan,
+    array $executionGuard,
+    callable $executionAuditRecorder,
+    callable $idempotencyOutcomeRecorder,
+): array {
+    $dedupeKey = (string) ($transactionResult['dedupe_key'] ?? ($executionGuard['dedupe_key'] ?? ''));
+    $requestAuditEventKey = (string) ($transactionResult['request_audit_event_key'] ?? ($executionGuard['request_audit_event_key'] ?? ''));
+    $base = [
+        'status' => 'failed',
+        'success' => false,
+        'recording_status' => 'skipped',
+        'execution_audit_status' => 'not_started',
+        'idempotency_update_status' => 'not_started',
+        'transaction_status' => (string) ($transactionResult['transaction_status'] ?? ''),
+        'dbaccess_status' => (string) ($transactionResult['dbaccess_status'] ?? ''),
+        'recovery_required' => false,
+        'recovery_reason' => '',
+        'failure_code' => '',
+        'error' => '',
+        'dedupe_key' => $dedupeKey,
+        'request_audit_event_key' => $requestAuditEventKey,
+        'execution_audit_result' => [],
+        'idempotency_update_result' => [],
+        'reasons' => [],
+    ];
+
+    $preconditionReasons = [];
+    if (($transactionResult['status'] ?? '') !== 'executed' || !($transactionResult['success'] ?? false)) {
+        $preconditionReasons[] = 'transaction_result_not_successful';
+    }
+    if (($transactionResult['transaction_status'] ?? '') !== 'committed') {
+        $preconditionReasons[] = 'transaction_not_committed';
+    }
+    if (($transactionResult['dbaccess_status'] ?? '') !== 'executed') {
+        $preconditionReasons[] = 'dbaccess_not_executed';
+    }
+    if (($executionUpdatePlan['status'] ?? '') !== 'planned' || !($executionUpdatePlan['ready'] ?? false)) {
+        $preconditionReasons[] = 'execution_update_plan_not_ready';
+        foreach (($executionUpdatePlan['reasons'] ?? []) as $reason) {
+            if (is_string($reason) && $reason !== '') {
+                $preconditionReasons[] = $reason;
+            }
+        }
+    }
+    if (($executionGuard['status'] ?? '') !== 'allowed' || !($executionGuard['ready'] ?? false)) {
+        $preconditionReasons[] = 'execution_guard_not_ready';
+        foreach (($executionGuard['reasons'] ?? []) as $reason) {
+            if (is_string($reason) && $reason !== '') {
+                $preconditionReasons[] = $reason;
+            }
+        }
+    }
+    if ($dedupeKey === '') {
+        $preconditionReasons[] = 'dedupe_key_missing';
+    }
+    if ($requestAuditEventKey === '') {
+        $preconditionReasons[] = 'request_audit_event_key_missing';
+    }
+
+    if ($preconditionReasons !== []) {
+        $preconditionReasons = array_values(array_unique($preconditionReasons));
+        $base['failure_code'] = $preconditionReasons[0];
+        $base['reasons'] = $preconditionReasons;
+
+        return $base;
+    }
+
+    $context = [
+        'dedupe_key' => $dedupeKey,
+        'request_audit_event_key' => $requestAuditEventKey,
+        'transaction_status' => 'committed',
+        'dbaccess_status' => 'executed',
+        'operation_key' => (string) ($transactionResult['operation_key'] ?? ($executionGuard['operation_key'] ?? '')),
+    ];
+
+    try {
+        $audit = $executionAuditRecorder($context);
+    } catch (Throwable $throwable) {
+        $base['recording_status'] = 'failed';
+        $base['execution_audit_status'] = 'failed';
+        $base['failure_code'] = 'execution_audit_exception';
+        $base['error'] = $throwable->getMessage();
+        $base['recovery_required'] = true;
+        $base['recovery_reason'] = 'post_commit_recording_failed';
+        $base['reasons'] = ['execution_audit_exception'];
+
+        return $base;
+    }
+    $base['execution_audit_result'] = is_array($audit) ? $audit : [];
+    if (!is_array($audit) || !($audit['ok'] ?? false)) {
+        $base['recording_status'] = 'failed';
+        $base['execution_audit_status'] = 'failed';
+        $base['failure_code'] = (string) (is_array($audit) ? ($audit['failure_code'] ?? 'execution_audit_failed') : 'execution_audit_failed');
+        $base['error'] = (string) (is_array($audit) ? ($audit['error'] ?? '') : '');
+        $base['recovery_required'] = true;
+        $base['recovery_reason'] = 'post_commit_recording_failed';
+        $base['reasons'] = [$base['failure_code']];
+
+        return $base;
+    }
+    $base['execution_audit_status'] = 'recorded';
+
+    try {
+        $idempotency = $idempotencyOutcomeRecorder($context + ['execution_audit_result' => $audit]);
+    } catch (Throwable $throwable) {
+        $base['recording_status'] = 'failed';
+        $base['idempotency_update_status'] = 'failed';
+        $base['failure_code'] = 'idempotency_update_exception';
+        $base['error'] = $throwable->getMessage();
+        $base['recovery_required'] = true;
+        $base['recovery_reason'] = 'post_commit_recording_failed';
+        $base['reasons'] = ['idempotency_update_exception'];
+
+        return $base;
+    }
+    $base['idempotency_update_result'] = is_array($idempotency) ? $idempotency : [];
+    if (!is_array($idempotency) || !($idempotency['ok'] ?? false)) {
+        $base['recording_status'] = 'failed';
+        $base['idempotency_update_status'] = 'failed';
+        $base['failure_code'] = (string) (is_array($idempotency) ? ($idempotency['failure_code'] ?? 'idempotency_update_failed') : 'idempotency_update_failed');
+        $base['error'] = (string) (is_array($idempotency) ? ($idempotency['error'] ?? '') : '');
+        $base['recovery_required'] = true;
+        $base['recovery_reason'] = 'post_commit_recording_failed';
+        $base['reasons'] = [$base['failure_code']];
+
+        return $base;
+    }
+
+    $base['status'] = 'recorded';
+    $base['success'] = true;
+    $base['recording_status'] = 'recorded';
+    $base['idempotency_update_status'] = 'recorded';
+    $base['failure_code'] = '';
+    $base['reasons'] = [];
+
+    return $base;
+}
+
+/**
+ * @param array<string,mixed> $normalized
+ * @param array<string,mixed> $dispatcherResult
+ * @param array<string,mixed> $executionGuard
+ * @param array<string,mixed> $executorCoordinationPlan
+ * @param array<string,mixed> $executionUpdatePlan
+ * @param callable(array<string,mixed>):mixed $beginTransaction
+ * @param callable(array<string,mixed>):mixed $commitTransaction
+ * @param callable(array<string,mixed>):mixed $rollbackTransaction
+ * @param callable(array<string,mixed>):mixed $dbaccessInvoker
+ * @param callable(array<string,mixed>):mixed $executionAuditRecorder
+ * @param callable(array<string,mixed>):mixed $idempotencyOutcomeRecorder
+ * @return array<string,mixed>
+ */
+function app_lab_sample18_task_board_generated_submit_route_execution_plan(
+    array $normalized,
+    array $dispatcherResult,
+    array $executionGuard,
+    array $executorCoordinationPlan,
+    array $executionUpdatePlan,
+    bool $executorEnabled,
+    callable $beginTransaction,
+    callable $commitTransaction,
+    callable $rollbackTransaction,
+    callable $dbaccessInvoker,
+    callable $executionAuditRecorder,
+    callable $idempotencyOutcomeRecorder,
+): array {
+    $dedupeKey = (string) ($executionGuard['dedupe_key'] ?? ($executorCoordinationPlan['dedupe_key'] ?? ''));
+    $requestAuditEventKey = (string) ($executionGuard['request_audit_event_key'] ?? ($executorCoordinationPlan['request_audit_event_key'] ?? ''));
+    $base = [
+        'ok' => false,
+        'accepted' => false,
+        'result' => 'blocked',
+        'success' => false,
+        'execution_status' => 'not_executed',
+        'failure_code' => '',
+        'recovery_required' => false,
+        'dedupe_key' => $dedupeKey,
+        'request_audit_event_key' => $requestAuditEventKey,
+        'transaction_result' => [],
+        'post_commit_recording' => [],
+        'reasons' => [],
+    ];
+
+    $preconditionReasons = [];
+    if (!$executorEnabled) {
+        $preconditionReasons[] = 'executor_feature_flag_disabled';
+    }
+    if (($executionGuard['status'] ?? '') !== 'allowed' || !($executionGuard['ready'] ?? false)) {
+        $preconditionReasons[] = 'execution_guard_not_ready';
+        foreach (($executionGuard['reasons'] ?? []) as $reason) {
+            if (is_string($reason) && $reason !== '') {
+                $preconditionReasons[] = $reason;
+            }
+        }
+    }
+    if (($executorCoordinationPlan['status'] ?? '') !== 'planned' || !($executorCoordinationPlan['ready'] ?? false)) {
+        $preconditionReasons[] = 'executor_coordination_plan_not_ready';
+        foreach (($executorCoordinationPlan['reasons'] ?? []) as $reason) {
+            if (is_string($reason) && $reason !== '') {
+                $preconditionReasons[] = $reason;
+            }
+        }
+    }
+
+    if ($preconditionReasons !== []) {
+        $preconditionReasons = array_values(array_unique($preconditionReasons));
+        $base['failure_code'] = $preconditionReasons[0];
+        $base['reasons'] = $preconditionReasons;
+
+        return $base;
+    }
+
+    $transaction = app_lab_sample18_task_board_generated_submit_transaction_adapter(
+        $normalized,
+        $dispatcherResult,
+        $executionGuard,
+        $executorCoordinationPlan,
+        $executorEnabled,
+        $beginTransaction,
+        $commitTransaction,
+        $rollbackTransaction,
+        $dbaccessInvoker,
+    );
+    $base['transaction_result'] = $transaction;
+    if (($transaction['status'] ?? '') !== 'executed' || !($transaction['success'] ?? false)) {
+        $base['result'] = 'failed';
+        $base['execution_status'] = 'failed';
+        $base['failure_code'] = (string) ($transaction['failure_code'] ?? 'execution_transaction_failed');
+        $base['recovery_required'] = (bool) ($transaction['recovery_required'] ?? false);
+        $base['reasons'] = array_values(array_unique(array_merge(
+            [$base['failure_code']],
+            array_filter($transaction['reasons'] ?? [], 'is_string'),
+        )));
+
+        return $base;
+    }
+
+    $recording = app_lab_sample18_task_board_generated_submit_post_commit_recording_adapter(
+        $transaction,
+        $executionUpdatePlan,
+        $executionGuard,
+        $executionAuditRecorder,
+        $idempotencyOutcomeRecorder,
+    );
+    $base['post_commit_recording'] = $recording;
+    if (($recording['status'] ?? '') !== 'recorded' || !($recording['success'] ?? false)) {
+        $base['result'] = 'failed';
+        $base['execution_status'] = 'failed';
+        $base['failure_code'] = (string) ($recording['failure_code'] ?? 'post_commit_recording_failed');
+        $base['recovery_required'] = (bool) ($recording['recovery_required'] ?? false);
+        $base['reasons'] = array_values(array_unique(array_merge(
+            [$base['failure_code']],
+            array_filter($recording['reasons'] ?? [], 'is_string'),
+        )));
+
+        return $base;
+    }
+
+    $base['ok'] = true;
+    $base['accepted'] = true;
+    $base['result'] = 'executed';
+    $base['success'] = true;
+    $base['execution_status'] = 'executed';
+    $base['failure_code'] = '';
+    $base['reasons'] = [];
+
+    return $base;
+}
+
+/**
  * @param array<string,mixed> $post
  * @return array{status_code:int,payload:array<string,mixed>}
  */
@@ -799,6 +2215,31 @@ function app_lab_sample18_task_board_generated_submit_blocked_response(
         $auditAppend,
         $idempotency,
     );
+    $dbaccessExecutionPlan = app_lab_sample18_task_board_generated_submit_dbaccess_execution_plan(
+        $normalized,
+        $dispatcherResult,
+        $mutationGate,
+    );
+    $transactionPlan = app_lab_sample18_task_board_generated_submit_transaction_plan($dbaccessExecutionPlan);
+    $executionUpdatePlan = app_lab_sample18_task_board_generated_submit_execution_update_plan(
+        $transactionPlan,
+        $auditAppend,
+        $idempotency,
+    );
+    $executionGuard = app_lab_sample18_task_board_generated_submit_execution_guard(
+        $normalized,
+        $auditAppend,
+        $idempotency,
+        $mutationGate,
+        $dbaccessExecutionPlan,
+        $transactionPlan,
+        $executionUpdatePlan,
+    );
+    $executorCoordinationPlan = app_lab_sample18_task_board_generated_submit_executor_coordination_plan(
+        $executionGuard,
+        $executionUpdatePlan,
+        false,
+    );
 
     return [
         'status_code' => 409,
@@ -819,6 +2260,11 @@ function app_lab_sample18_task_board_generated_submit_blocked_response(
             'audit_append' => $auditAppend,
             'idempotency' => $idempotency,
             'mutation_gate' => $mutationGate,
+            'dbaccess_execution_plan' => $dbaccessExecutionPlan,
+            'transaction_plan' => $transactionPlan,
+            'execution_update_plan' => $executionUpdatePlan,
+            'execution_guard' => $executionGuard,
+            'executor_coordination_plan' => $executorCoordinationPlan,
             'mutation_enabled' => false,
         ],
     ];

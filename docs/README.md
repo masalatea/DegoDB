@@ -118,6 +118,8 @@ detail doc だけを読んで mainline を再構成するのは current reading 
   - `config_db`、artifact、`work/` の state map
 - [Security And Data Handling / security と data handling](security-and-data-handling.md)
   - secret 分離、schema 受付、generated runtime security evidence、非 claim の境界
+- [Execution Success Policy / 実行成功ポリシー](execution-success-policy.md)
+  - mutation / execution route の all-success-or-failure UI/API contract
 - [Current Supported Workflow / 現在サポートするワークフロー](current-supported-workflow.md)
   - current mainline と archived 導線の切り分け
 - [Common Tasks / よく使う作業](common-tasks.md)

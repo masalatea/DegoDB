@@ -11,6 +11,126 @@
 
 ## Index
 
+- `2026-0710-post-db-backed-post-commit-recording-coverage-lane-closure.md`
+  - #662 post DB-backed post-commit recording coverage lane closure。#661 の route-unwired DB-backed post-commit recording coverage を受け入れ、次は generated-submit route feature-flag integration preflight (#663) を昇格。generated-submit route execution は未有効化。Status: `DONE`。
+- `2026-0710-sample18-post-commit-recording-db-backed-coverage-first-slice.md`
+  - #661 sample18 post-commit recording DB-backed coverage first slice。post-commit recording adapter を real execution audit append / idempotency outcome update repository に route-unwired 接続し、persisted success と idempotency failure recovery metadata を coverage。generated-submit route execution は未有効化。Status: `FIRST_SLICE_DONE`。
+- `2026-0710-sample18-post-commit-recording-db-backed-coverage-preflight.md`
+  - #660 sample18 post-commit recording DB-backed coverage preflight。committed DBAccess execution 後の post-commit recording adapter を real execution audit append / idempotency outcome update repository に接続して route-unwired に検証する境界を定義。次は first slice (#661)。Status: `DONE`。
+- `2026-0710-post-db-backed-transaction-binding-coverage-lane-closure.md`
+  - #659 post DB-backed transaction binding coverage lane closure。#658 の DB-backed route-unwired transaction binding coverage を受け入れ、route wiring より前に post-commit recording DB-backed coverage preflight (#660) を昇格。generated-submit route execution は未有効化。Status: `DONE`。
+- `2026-0710-sample18-db-backed-transaction-binding-coverage-first-slice.md`
+  - #658 sample18 DB-backed transaction binding coverage first slice。isolated SQLite/PDO で generated `TaskCardDBAccess::InsertTaskCard` の commit persistence と DBAccess-compatible failure rollback を route-unwired に coverage。generated-submit route execution は未有効化。Status: `FIRST_SLICE_DONE`。
+- `2026-0710-sample18-db-backed-transaction-binding-coverage-preflight.md`
+  - #657 sample18 DB-backed transaction binding coverage preflight。generated runtime transaction support、transaction binding callables、transaction adapter、generated `TaskCardDBAccess` を SQLite/PDO で route-unwired に検証する境界を定義。次は first coverage slice (#658)。Status: `DONE`。
+- `2026-0710-post-generated-runtime-transaction-support-lane-closure.md`
+  - #656 post generated runtime transaction support lane closure。#655 の PDO-first generated runtime transaction support を受け入れ、route wiring より前に DB-backed transaction binding coverage preflight (#657) を昇格。generated-submit route execution は未有効化。Status: `DONE`。
+- `2026-0710-generated-runtime-transaction-support-first-slice.md`
+  - #655 generated runtime transaction support first slice。generated DBAccess runtime と sample18 reference output に PDO-first begin/commit/rollBack/inTransaction を追加し、SQLite/PDO transaction behavior と digest 同期を coverage。generated-submit route execution は未有効化。Status: `FIRST_SLICE_DONE`。
+- `2026-0710-sample18-generated-runtime-transaction-support-preflight.md`
+  - #654 sample18 generated runtime transaction support preflight。generated DBAccess runtime (`$mtooldb`) に PDO-first begin/commit/rollBack/inTransaction を追加する境界を定義し、次は generator source と sample18 reference output の first slice (#655)。Status: `DONE`。
+- `2026-0710-sample18-post-transaction-binding-helper-lane-closure.md`
+  - #653 sample18 post-transaction binding helper lane closure。#652 の route-unwired transaction binding helper を受け入れ、route wiring より前に generated runtime transaction support preflight (#654) を昇格。generated-submit route execution は未有効化。Status: `DONE`。
+- `2026-0710-sample18-transaction-binding-helper-first-slice.md`
+  - #652 sample18 transaction binding helper first slice。transaction-capable runtime object を begin / commit / rollback / DBAccess callable に変換する route-unwired helper を追加し、成功 commit、DBAccess failure rollback、wrong target fail-closed を coverage。generated-submit route execution は未有効化。Status: `FIRST_SLICE_DONE`。
+- `2026-0710-sample18-real-transaction-binding-preflight.md`
+  - #651 sample18 real transaction binding preflight。generated DBAccess runtime の `$mtooldb` boundary、`task_card` schema target、transaction begin/commit/rollback binding、DBAccess instance creation、failure policy を route wiring 前に定義。次は route-unwired transaction binding helper (#652)。Status: `DONE`。
+- `2026-0710-sample18-post-real-dbaccess-invocation-adapter-lane-closure.md`
+  - #650 sample18 post-real DBAccess invocation adapter lane closure。#649 の route-unwired real-compatible DBAccess invocation adapter を受け入れ、route wiring より前に real transaction binding preflight (#651) を昇格。generated-submit route execution は未有効化。Status: `DONE`。
+- `2026-0710-sample18-real-dbaccess-invocation-adapter-first-slice.md`
+  - #649 sample18 real DBAccess invocation adapter first slice。route-unwired helper で `TaskCardData` 互換 object construction、real-compatible DBAccess method invocation、result normalization、transaction context 必須化を追加。generated-submit route execution は未有効化。Status: `FIRST_SLICE_DONE`。
+- `2026-0710-sample18-real-dbaccess-invocation-adapter-preflight.md`
+  - #648 sample18 real DBAccess invocation adapter preflight。real `TaskCardDBAccess` invocation adapter の boundary、`TaskCardData` construction、transaction dependency、result normalization を route wiring 前に定義。次は route-unwired real invocation adapter first slice (#649)。Status: `DONE`。
+- `2026-0710-sample18-post-execution-plan-helper-lane-closure.md`
+  - #647 sample18 post-execution plan helper lane closure。#646 の route-unwired execution plan helper を受け入れ、route wiring より前に real DBAccess invocation adapter preflight (#648) を昇格。route execution は未有効化。Status: `DONE`。
+- `2026-0710-sample18-executable-route-execution-plan-helper-first-slice.md`
+  - #646 sample18 executable route execution plan helper first slice。guard / coordinator / transaction adapter / post-commit recording を fake callable で compose する route-unwired helper を追加。all-success-or-failure response metadata を固定し、real route execution は未有効化。Status: `FIRST_SLICE_DONE`。
+- `2026-0710-sample18-executable-generated-submit-route-integration-preflight.md`
+  - #645 sample18 executable generated-submit route integration preflight。guard / transaction adapter / DBAccess invocation / post-commit recording / feature flag / response shape の composition を real execution 前に定義。次は route-unwired execution plan helper (#646)。Status: `DONE`。
+- `2026-0710-sample18-post-commit-recording-helper-lane-closure.md`
+  - #644 sample18 post-commit recording helper lane closure。#643 の route-unwired recording helper を受け入れ、次は real execution 有効化前の executable generated-submit route integration preflight (#645) を昇格。route execution は未有効化。Status: `DONE`。
+- `2026-0710-sample18-post-commit-execution-recording-helper-first-slice.md`
+  - #643 sample18 post-commit execution recording helper first slice。committed transaction metadata と fake recording callable を受け取り、execution audit / idempotency outcome update の両方が成功した場合だけ success を返す route-unwired helper を追加。real recording / route execution は未有効化。Status: `FIRST_SLICE_DONE`。
+- `2026-0710-sample18-post-commit-execution-recording-preflight.md`
+  - #642 sample18 post-commit execution recording preflight。app DB commit 後の execution audit append と idempotency execution outcome update を all-success の required step として定義。recording failure は user-facing failure + recovery metadata。次は route-unwired recording helper (#643)。Status: `DONE`。
+- `2026-0710-sample18-post-transaction-adapter-helper-lane-closure.md`
+  - #641 sample18 post-transaction adapter helper lane closure。#640 の route-unwired transaction adapter helper を受け入れ、route execution より前に post-commit execution recording preflight (#642) を昇格。real DBAccess mutation / route execution / execution recording は未有効化。Status: `DONE`。
+- `2026-0710-sample18-transaction-adapter-helper-first-slice.md`
+  - #640 sample18 transaction adapter helper first slice。fake transaction / fake DBAccess callable で route-unwired transaction adapter helper を追加し、begin / DBAccess / rollback / commit の all-success-or-failure metadata を固定。real DBAccess mutation / route execution / execution recording は未有効化。Status: `FIRST_SLICE_DONE`。
+- `2026-0710-sample18-transaction-adapter-preflight.md`
+  - #638 sample18 transaction adapter preflight。route-unwired transaction adapter 境界を all-success-or-failure UI/API contract で定義。required step 全成功時のみ success、post-commit recording failure も failure。次は cross-route policy review (#639) と transaction adapter helper first slice (#640)。Status: `DONE`。
+- `2026-0710-cross-route-all-success-or-failure-policy-review-plan.md`
+  - #639 cross-route all-success-or-failure execution policy review。`docs/execution-success-policy.md` を追加し、sample18 に限らず mutation / execution route の UI/API success は required step 全成功時のみ、cross-store gap は内部 failure / recovery metadata とする共通方針へ昇格。Status: `DONE`。
+- `2026-0710-sample18-post-dbaccess-call-adapter-helper-lane-closure.md`
+  - #637 sample18 post-DBAccess call adapter helper lane closure。#636 の route-unwired adapter helper を受け入れ、次は route execution より前に transaction adapter preflight (#638) を昇格。real DBAccess mutation / transaction / route execution は未有効化。Status: `DONE`。
+- `2026-0710-sample18-dbaccess-call-adapter-helper-first-slice.md`
+  - #636 sample18 DBAccess call adapter helper first slice。route-unwired adapter helper を追加し、allowed metadata と injected fake callable のみで executed/failed/skipped metadata を分類。real DBAccess mutation / transaction / route execution は未有効化。Status: `FIRST_SLICE_DONE`。
+- `2026-0710-sample18-dbaccess-call-adapter-preflight.md`
+  - #635 sample18 DBAccess call adapter preflight。guarded executor 用 DBAccess call adapter の入力 metadata、TaskCard operation mapping、fail-closed rules、fake callable test matrix を定義し、次は route-unwired adapter helper first slice (#636) を昇格。real DBAccess mutation / transaction / route execution は未有効化。Status: `DONE`。
+- `2026-0710-sample18-post-executor-coordination-plan-route-metadata-lane-closure.md`
+  - #634 sample18 post-executor coordination plan route metadata lane closure。#633 の route-visible `executor_coordination_plan` metadata を受け入れ、次は execution 有効化前の DBAccess call adapter preflight (#635) を昇格。DBAccess mutation / transaction / route executor は未有効化。Status: `DONE`。
+- `2026-0710-sample18-executor-coordination-plan-route-metadata-integration.md`
+  - #633 sample18 executor coordination plan route metadata integration。valid generated-submit route response に non-mutating `executor_coordination_plan` metadata を接続し、disabled/duplicate/failed/planned route outcomes と invalid-route skip boundary を固定。DBAccess mutation / transaction / post-execution writes は未有効化。Status: `FIRST_SLICE_DONE`。
+- `2026-0710-sample18-post-guarded-executor-coordinator-plan-helper-lane-closure.md`
+  - #632 sample18 post-guarded executor coordinator plan helper lane closure。#631 の non-mutating `executor_coordination_plan` helper を受け入れ、次は valid generated-submit route response への coordination plan metadata integration (#633) を昇格。DBAccess mutation / transaction / post-execution write は未有効化。Status: `DONE`。
+- `2026-0710-sample18-guarded-executor-coordinator-plan-helper-first-slice.md`
+  - #631 sample18 guarded executor coordinator plan helper first slice。execution guard / app DB transaction / DBAccess call / execution audit append / idempotency outcome update の ordering を non-mutating metadata として計画化。DBAccess mutation / transaction / post-execution write / route exposure は未有効化。Status: `FIRST_SLICE_DONE`。
+- `2026-0710-sample18-guarded-executor-coordination-preflight.md`
+  - #630 sample18 guarded executor coordination preflight。execution guard / DBAccess call adapter / app DB transaction / execution audit append / idempotency outcome update の coordination と cross-store 非原子性を定義し、次は non-mutating coordinator plan helper (#631) を昇格。DBAccess mutation / transaction / route executor は未有効化。Status: `DONE`。
+- `2026-0710-sample18-post-execution-audit-append-persistence-lane-closure.md`
+  - #629 sample18 post-execution audit append persistence lane closure。#628 の execution audit append helper を受け入れ、次は DBAccess execution 前の guarded executor coordination preflight (#630) を昇格。DBAccess mutation / transaction / idempotency update / route executor は未有効化。Status: `DONE`。
+- `2026-0710-sample18-execution-audit-append-persistence-first-slice.md`
+  - #628 sample18 execution audit append persistence first slice。allowed execution guard metadata から execution audit event を append する helper を追加し、request audit linkage / dedupe / DBAccess metadata / transaction status / result details を保存。DBAccess mutation / transaction / idempotency update / route executor は未有効化。Status: `FIRST_SLICE_DONE`。
+- `2026-0710-sample18-post-idempotency-execution-outcome-persistence-lane-closure.md`
+  - #627 sample18 post-idempotency execution outcome persistence lane closure。#626 の idempotency execution outcome update API を受け入れ、次は DBAccess executor 前に execution audit append persistence (#628) を昇格。DBAccess mutation / transaction / route executor は未有効化。Status: `DONE`。
+- `2026-0710-sample18-idempotency-execution-outcome-persistence-first-slice.md`
+  - #626 sample18 idempotency execution outcome persistence first slice。既存 generated-submit idempotency record に execution outcome を repository-level で保存する update API を追加し、metadata merge / result update / duplicate replay fail-closed を coverage。DBAccess mutation / transaction / execution audit write / route executor は未有効化。Status: `FIRST_SLICE_DONE`。
+- `2026-0710-sample18-guarded-executor-implementation-preflight.md`
+  - #625 sample18 guarded executor implementation preflight。route-visible `execution_guard` 後の最初の mutating executor 境界を定義し、DBAccess execution 前に idempotency execution outcome persistence (#626) を昇格。DBAccess mutation / transaction / route executor は未有効化。Status: `DONE`。
+- `2026-0710-sample18-post-guarded-execution-gate-route-metadata-lane-closure.md`
+  - #624 sample18 post-guarded execution gate route metadata lane closure。#623 の route-visible `execution_guard` metadata を受け入れ、次は DBAccess execution 有効化前の guarded executor implementation preflight (#625) を昇格。DBAccess mutation / transaction / execution updates は未有効化。Status: `DONE`。
+- `2026-0710-sample18-guarded-execution-gate-route-metadata-integration.md`
+  - #623 sample18 guarded execution gate route metadata integration。valid generated-submit route response に non-executing `execution_guard` metadata を接続し、disabled/duplicate/failed/planned route outcomes と invalid-route skip boundary を固定。DBAccess mutation / transaction / execution updates は未有効化。Status: `FIRST_SLICE_DONE`。
+- `2026-0710-sample18-post-guarded-execution-gate-helper-lane-closure.md`
+  - #622 sample18 post-guarded execution gate helper lane closure。#621 の final non-executing `execution_guard` helper を受け入れ、次は valid generated-submit route response への guard metadata integration (#623) を昇格。DBAccess mutation / transaction / execution updates は未有効化。Status: `DONE`。
+- `2026-0710-sample18-guarded-execution-gate-helper-first-slice.md`
+  - #621 sample18 guarded execution gate helper first slice。route-ready metadata chain を検証する final non-executing guard helper を追加し、allowed/blocked/failed と stable reasons を返す。transaction / DBAccess / execution audit write / idempotency execution update / route exposure は未有効化。Status: `FIRST_SLICE_DONE`。
+- `2026-0710-sample18-guarded-dbaccess-execution-preflight.md`
+  - #620 sample18 guarded DBAccess execution preflight。DBAccess mutation 有効化前の final enablement inputs、transaction / audit / idempotency update sequence、fail-closed matrix、#621 の non-executing guard helper 条件を定義。DBAccess mutation は未有効化。Status: `DONE`。
+- `2026-0710-sample18-post-execution-update-plan-route-metadata-lane-closure.md`
+  - #619 sample18 post-execution update-plan route metadata lane closure。#618 の route-visible `execution_update_plan` metadata を受け入れ、次は DBAccess mutation 有効化前の guarded execution preflight (#620) を昇格。DBAccess mutation / execution audit write / idempotency execution update は未有効化。Status: `DONE`。
+- `2026-0710-sample18-execution-update-plan-route-metadata-integration.md`
+  - #618 sample18 execution update-plan route metadata integration。valid generated-submit route response に non-mutating `execution_update_plan` metadata を接続し、disabled/duplicate/failed/planned route outcomes と invalid-route skip boundary を固定。DBAccess mutation / execution audit write / idempotency execution update は未有効化。Status: `FIRST_SLICE_DONE`。
+- `2026-0710-sample18-post-execution-update-plan-helper-lane-closure.md`
+  - #617 sample18 post-execution update-plan helper lane closure。#616 の non-mutating `execution_update_plan` helper を受け入れ、次は valid generated-submit route response への execution update-plan metadata integration (#618) を昇格。DBAccess mutation / execution audit write / idempotency execution update は未有効化。Status: `DONE`。
+- `2026-0710-sample18-execution-update-plan-helper-first-slice.md`
+  - #616 sample18 execution update-plan helper first slice。non-mutating `execution_update_plan` helper を追加し、execution audit / idempotency update metadata、request audit event linkage、dedupe linkage を計画化。route integration / DBAccess mutation は未有効化。Status: `FIRST_SLICE_DONE`。
+- `2026-0710-sample18-execution-audit-idempotency-update-preflight.md`
+  - #615 sample18 execution audit/idempotency update preflight。guarded execution 前の execution audit event、idempotency execution update、response contract、#616 の non-mutating update-plan helper 条件を定義。DBAccess mutation は未有効化。Status: `DONE`。
+- `2026-0710-sample18-post-transaction-plan-route-metadata-lane-closure.md`
+  - #614 sample18 post-transaction-plan route metadata lane closure。#613 の transaction-plan route metadata を受け入れ、次は guarded execution より前に execution audit/idempotency update preflight (#615) を昇格。DBAccess mutation は未有効化。Status: `DONE`。
+- `2026-0710-sample18-transaction-plan-route-metadata-integration.md`
+  - #613 sample18 transaction-plan route metadata integration。valid generated-submit route response に non-mutating `transaction_plan` metadata を接続し、disabled/duplicate/failed/planned route outcomes と method/CSRF/validation skip boundary を固定。DBAccess mutation は未有効化。Status: `FIRST_SLICE_DONE`。
+- `2026-0710-sample18-post-transaction-plan-helper-lane-closure.md`
+  - #612 sample18 post-transaction-plan helper lane closure。#611 の non-mutating transaction-plan helper を受け入れ、次は valid generated-submit route response への transaction-plan metadata integration (#613) を昇格。DBAccess mutation は未有効化。Status: `DONE`。
+- `2026-0710-sample18-dbaccess-transaction-plan-helper-first-slice.md`
+  - #611 sample18 DBAccess transaction-plan helper first slice。non-mutating `transaction_plan` helper を追加し、transaction boundary / rollback policy / post-execution audit・idempotency update plans を metadata 化。route integration / DBAccess mutation は未有効化。Status: `FIRST_SLICE_DONE`。
+- `2026-0710-sample18-dbaccess-transaction-boundary-preflight.md`
+  - #610 sample18 DBAccess transaction boundary preflight。execution enablement 前の transaction preconditions、rollback policy、post-execution audit/idempotency update plan、#611 の non-mutating transaction-plan helper 条件を定義。DBAccess mutation は未有効化。Status: `DONE`。
+- `2026-0710-sample18-post-ready-execution-plan-coverage-lane-closure.md`
+  - #609 sample18 post-ready execution-plan coverage lane closure。#608 の fresh flag-on ready/planned route coverage を受け入れ、次は transaction boundary preflight (#610) を昇格。DBAccess mutation は未有効化。Status: `DONE`。
+- `2026-0710-sample18-route-level-ready-execution-plan-coverage.md`
+  - #608 sample18 route-level ready execution-plan coverage。fresh flag-on valid generated-submit route response で `mutation_gate.ready` と `dbaccess_execution_plan.status=planned` を確認し、HTTP 409 / mutation disabled / executed false / transaction not_opened を維持。Status: `FIRST_SLICE_DONE`。
+- `2026-0710-sample18-post-execution-plan-route-metadata-lane-closure.md`
+  - #607 sample18 post-execution-plan route metadata lane closure。#606 の route-level execution-plan metadata を受け入れ、transaction preflight より前に flag-on fresh request の ready/planned route coverage (#608) を昇格。DBAccess mutation は未有効化。Status: `DONE`。
+- `2026-0710-sample18-dbaccess-execution-plan-route-response-integration.md`
+  - #606 sample18 DBAccess execution-plan route response integration。valid generated-submit route response に non-mutating `dbaccess_execution_plan` metadata を接続し、disabled/duplicate/failed route outcomes と method/CSRF/validation skip boundary を固定。DBAccess mutation は未有効化。Status: `FIRST_SLICE_DONE`。
+- `2026-0710-sample18-post-dbaccess-execution-plan-helper-lane-closure.md`
+  - #605 sample18 post-DBAccess execution-plan helper lane closure。#604 の non-mutating execution-plan helper を受け入れ、次は route response integration (#606) を metadata only で昇格。DBAccess mutation は未有効化。Status: `DONE`。
+- `2026-0710-sample18-dbaccess-mutation-dry-run-executor-first-slice.md`
+  - #604 sample18 DBAccess mutation dry-run executor first slice。non-mutating `dbaccess_execution_plan` helper を追加し、ready gate は planned metadata、blocked/failed/invalid/non-dry-run は fail-closed、route response は未接続。DBAccess mutation は未有効化。Status: `FIRST_SLICE_DONE`。
+- `2026-0710-sample18-dbaccess-mutation-dry-run-execution-preflight.md`
+  - #603 sample18 DBAccess mutation dry-run execution preflight。ready gate 後の non-mutating executor helper に必要な preconditions、DB boundary、response shape、#604 の required tests を定義。DBAccess mutation は未有効化。Status: `DONE`。
 - `2026-0710-sample18-post-mutation-gate-failure-matrix-lane-closure.md`
   - #602 sample18 post-mutation-gate-failure-matrix lane closure。#601 の flag-on duplicate/failure matrix coverage を受け入れ、次は DBAccess mutation dry-run execution preflight (#603) を昇格。DBAccess mutation は未有効化。Status: `DONE`。
 - `2026-0710-sample18-mutation-gate-failure-matrix-coverage.md`
