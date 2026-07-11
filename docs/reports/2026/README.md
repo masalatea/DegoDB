@@ -11,8 +11,14 @@
 
 ## Index
 
+- `2026-0710-sample18-post-transaction-adapter-helper-lane-closure.md`
+  - #641 sample18 post-transaction adapter helper lane closure。#640 の route-unwired transaction adapter helper を受け入れ、route execution より前に post-commit execution recording preflight (#642) を昇格。real DBAccess mutation / route execution / execution recording は未有効化。Status: `DONE`。
+- `2026-0710-sample18-transaction-adapter-helper-first-slice.md`
+  - #640 sample18 transaction adapter helper first slice。fake transaction / fake DBAccess callable で route-unwired transaction adapter helper を追加し、begin / DBAccess / rollback / commit の all-success-or-failure metadata を固定。real DBAccess mutation / route execution / execution recording は未有効化。Status: `FIRST_SLICE_DONE`。
+- `2026-0710-sample18-transaction-adapter-preflight.md`
+  - #638 sample18 transaction adapter preflight。route-unwired transaction adapter 境界を all-success-or-failure UI/API contract で定義。required step 全成功時のみ success、post-commit recording failure も failure。次は cross-route policy review (#639) と transaction adapter helper first slice (#640)。Status: `DONE`。
 - `2026-0710-cross-route-all-success-or-failure-policy-review-plan.md`
-  - #639 cross-route all-success-or-failure execution policy review plan。sample18 に限らず、mutation / execution route の UI/API success は required step 全成功時のみとし、cross-store gap は内部 failure / recovery metadata とする共通方針レビューを追加。Status: `TODO`。
+  - #639 cross-route all-success-or-failure execution policy review。`docs/execution-success-policy.md` を追加し、sample18 に限らず mutation / execution route の UI/API success は required step 全成功時のみ、cross-store gap は内部 failure / recovery metadata とする共通方針へ昇格。Status: `DONE`。
 - `2026-0710-sample18-post-dbaccess-call-adapter-helper-lane-closure.md`
   - #637 sample18 post-DBAccess call adapter helper lane closure。#636 の route-unwired adapter helper を受け入れ、次は route execution より前に transaction adapter preflight (#638) を昇格。real DBAccess mutation / transaction / route execution は未有効化。Status: `DONE`。
 - `2026-0710-sample18-dbaccess-call-adapter-helper-first-slice.md`

@@ -2,7 +2,7 @@
 
 Date: 2026-07-10
 Plan: #639
-Status: TODO
+Status: DONE
 
 ## Summary
 
@@ -31,9 +31,9 @@ Review the policy against:
 
 ## Exit Condition
 
-- A shared policy document or current design section defines the common success/failure contract.
-- Active route plans reference the common policy instead of repeating sample-specific wording.
-- Sample18 #638 uses the shared policy as its preflight baseline.
+- A shared policy document or current design section defines the common success/failure contract. Done: `docs/execution-success-policy.md`.
+- Active route plans reference the common policy instead of repeating sample-specific wording. Done for current plan boundary.
+- Sample18 #638 uses the shared policy as its preflight baseline. Done for the #638 / #640 current plan chain.
 - Any existing route that intentionally differs is listed with a reason.
 
 ## Verification
