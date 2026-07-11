@@ -249,6 +249,52 @@ The readiness surface should include:
 
 The first implementation should add read-only readiness metadata and browser assertions. Real guarded execution smoke remains a later slice after readiness is visible and failure states are testable.
 
+### Sample18 Readiness Metadata Shape
+
+The read-only readiness snapshot shape is fixed by `readiness_metadata_contract` in `sample/tutorials/sample18-mini-task-board-demo/golden/no-code-fast-contract-checklist.json`.
+
+The snapshot must be versioned as `sample18-generated-submit-readiness-v0` and must stay read-only:
+
+- `read_only=true`;
+- `mutation_dispatch_allowed=false`;
+- no generated-submit request is sent while building the snapshot.
+
+The top-level snapshot should expose:
+
+- `snapshot_version`;
+- `read_only`;
+- `mutation_dispatch_allowed`;
+- `executor_config`;
+- `action_readiness`.
+
+`executor_config` is the browser-visible subset of the existing route config resolver:
+
+- `status`;
+- `ready`;
+- `mutation_enabled`;
+- `executor_enabled`;
+- `mutation_enablement_source`;
+- `executor_enablement_source`;
+- `dependency_source`;
+- `failure_code`;
+- `missing_file`;
+- `reasons`.
+
+`action_readiness` is keyed by generated action key. For each action, the shape is:
+
+- `action_key`;
+- `operation_key`;
+- `route_compatible`;
+- `readiness_state`;
+- `availability_candidate`;
+- `can_submit`;
+- `failure_reasons`;
+- `executor_config_status`.
+
+The route-compatible operation set is exactly `create_task_card`, `update_task_card`, and `complete_task_card`. `reopen_task_card` and `delete_task_card` must be represented as non-ready candidates with `operation_not_route_compatible` until their adapter contracts exist.
+
+The default config state is disabled with `mutation_enablement_disabled` and `executor_enablement_disabled`. Missing default runtime reference files are represented as `status=failed`, `ready=false`, `failure_code=executor_default_runtime_file_missing`, and `runtime_reference_file_missing`.
+
 ## Design Boundary
 
 Fast UI contract tests prove that generated metadata and generated markup expose the expected UI contract. They do not prove browser layout, CSS pixel rendering, or server mutation. Browser smoke and route-level tests remain responsible for those outer boundaries.

@@ -11,6 +11,8 @@
 
 ## Index
 
+- `2026-0710-sample18-readiness-metadata-shape-contract.md`
+  - #703 sample18 readiness metadata shape contract。read-only readiness snapshot の version / executor_config fields / action_readiness fields / route-compatible operations / non-ready reopen/delete / missing-runtime failure shape を fixture・docs・PHPUnit assertion で固定。Status: `DONE`。
 - `2026-0710-read-only-readiness-lane-detailed-replan.md`
   - #702 read-only readiness lane detailed replan。sample18 route/config readiness を shape / helper / screen-definition / runtime preview / fast contract / browser smoke / lane closure に分解し、real guarded execution smoke は parked。次は #703 readiness metadata shape contract。Status: `DONE`。
 - `2026-0710-sample18-route-config-readiness-browser-preflight.md`
