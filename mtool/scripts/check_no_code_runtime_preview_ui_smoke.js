@@ -520,7 +520,9 @@ async function probeRuntimeDisabledActionSurface(page, config) {
     { timeout: 5000 },
   );
   const result = await page.evaluate(async (expected) => {
+    const listScreen = document.querySelector(`.no-code-screen[data-screen-key="${expected.listScreenKey}"]`);
     const formScreen = document.querySelector(`.no-code-screen[data-screen-key="${expected.formScreenKey}"]`);
+    const listRows = Array.from(listScreen?.querySelectorAll('tbody tr[data-runtime-row-key]') || []);
     const buttons = Array.from(formScreen?.querySelectorAll('.no-code-actions button[data-action-key]') || []);
     const hints = Array.from(formScreen?.querySelectorAll('.no-code-action-hint[data-action-hint]') || []);
     const actions = (window.__noCodeRuntimePreview?.screens || [])
@@ -544,6 +546,9 @@ async function probeRuntimeDisabledActionSurface(page, config) {
     }
     return {
       skipped: false,
+      rowKeyCount: listRows.length,
+      rowKeys: listRows.map((row) => row.getAttribute('data-runtime-row-key') || ''),
+      firstRowKey: listRows[0]?.getAttribute('data-runtime-row-key') || '',
       keys: buttons.map((button) => button.getAttribute('data-action-key') || ''),
       operationKeys: buttons.map((button) => button.getAttribute('data-operation-key') || ''),
       operationTypes: buttons.reduce((carry, button) => {
@@ -627,6 +632,8 @@ async function probeRuntimeDisabledActionSurface(page, config) {
     || result.blockedResponseHandling.some((handling) => handling !== config.expected.managedActionBlockedResponseHandling)
     || result.failureDisplayTargets.some((target) => target !== config.expected.managedActionFailureDisplayTarget)
     || result.failClosedResults.some((resultCode) => resultCode !== config.expected.managedActionFailClosedResult)
+    || result.rowKeyCount < 1
+    || result.firstRowKey !== String(config.expected.selectedKeyValue || config.expected.keyValue)
     || !result.guardedClickProbe
     || result.guardedClickProbe.key !== 'create_task_card'
     || result.guardedClickProbe.state !== 'blocked'

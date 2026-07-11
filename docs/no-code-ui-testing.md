@@ -171,6 +171,17 @@ The selected-row/key contract stays fast and covers the static preview plus runt
 - missing keyed action input fails closed before guarded submit payload normalization;
 - runtime source keeps the selected-key refresh path for runtime-data-backed previews.
 
+### Sample18 Generated Runtime Browser Smoke
+
+The first narrow browser smoke is an outer confirmation layer for the generated sample18 runtime preview. It verifies that the public preview renders row key markers, guarded submit attributes, disabled/default execution state, and blocked generated-submit feedback without enabling mutation or broader generated availability.
+
+This smoke intentionally stays narrow:
+
+- list rows must expose `data-runtime-row-key` and the first generated row key must match the selected fixture key;
+- managed action buttons must expose the route-compatible submit URL, CSRF handoff, binding state, guarded click inventory, payload assembly, blocked response handling, and fail-closed result markers;
+- generated action controls remain disabled/default-safe for actual execution, while the guarded click path renders blocked feedback for generated submit;
+- mutation availability and broader execution enablement remain covered by route/PHPUnit contracts until explicitly promoted.
+
 ## Design Boundary
 
 Fast UI contract tests prove that generated metadata and generated markup expose the expected UI contract. They do not prove browser layout, CSS pixel rendering, or server mutation. Browser smoke and route-level tests remain responsible for those outer boundaries.
