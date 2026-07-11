@@ -11,6 +11,82 @@
 
 ## Index
 
+- `2026-0710-post-enabled-candidate-browser-smoke-lane-closure.md`
+  - #700 post enabled-candidate browser smoke lane closure。#699 の UI-only enabled-candidate browser smoke を受け入れ、real guarded execution smoke の前に route/config readiness browser preflight (#701) を昇格。Status: `DONE`。
+- `2026-0710-sample18-enabled-candidate-browser-smoke-first-slice.md`
+  - #699 sample18 enabled-candidate browser smoke first slice。別 target で browser-side enabled-candidate overlay と fetch stub を使い、create/update/complete の availability markers と blocked generated-submit feedback を desktop/mobile で検査。Status: `FIRST_SLICE_DONE`。
+- `2026-0710-sample18-enabled-candidate-browser-smoke-preflight.md`
+  - #698 sample18 enabled-candidate browser smoke preflight。enabled-candidate browser smoke を UI-only/stubbed outer check として定義し、real mutation と reopen/delete availability を避けた first smoke slice (#699) を昇格。Status: `DONE`。
+- `2026-0710-post-availability-state-fast-contract-lane-closure.md`
+  - #697 post availability-state fast contract lane closure。#696 の availability-state fast contract を受け入れ、generated default-state 変更前に enabled-candidate browser smoke preflight (#698) を昇格。Status: `DONE`。
+- `2026-0710-sample18-generated-availability-state-fast-contract-first-slice.md`
+  - #696 sample18 generated availability-state fast contract first slice。runtime action button に availability / policy failed checks markers を追加し、default disabled と create/update/complete enabled-candidate overlay を fast assertion で固定。Status: `FIRST_SLICE_DONE`。
+- `2026-0710-sample18-generated-availability-expansion-preflight.md`
+  - #695 sample18 generated availability expansion preflight。create/update/complete だけを初回 availability candidate とし、generated defaults を変える前に disabled-default / enabled-candidate fast contract (#696) を昇格。Status: `DONE`。
+- `2026-0710-post-generated-runtime-browser-smoke-lane-closure.md`
+  - #694 post generated runtime browser smoke lane closure。#693 の narrow browser smoke を受け入れ、次は generated defaults を変える前の sample18 generated availability expansion preflight (#695) を昇格。Status: `DONE`。
+- `2026-0710-sample18-generated-runtime-browser-smoke-first-slice.md`
+  - #693 sample18 generated runtime browser smoke first slice。browser smoke で generated runtime preview の row key markers、guarded submit attributes、disabled/default execution state、blocked generated-submit feedback を検査。mutation / broad availability は未有効化。Status: `FIRST_SLICE_DONE`。
+- `2026-0710-post-selected-row-key-handoff-lane-closure.md`
+  - #692 post selected row/key handoff lane closure。#691 の selected-row/key fast contract を受け入れ、次は narrow sample18 generated runtime browser smoke (#693) を昇格。Status: `DONE`。
+- `2026-0710-sample18-selected-row-key-handoff-fast-contract-first-slice.md`
+  - #691 sample18 selected row/key handoff fast contract first slice。generated render fields に `is_key` を保持し、runtime preview HTML の row key marker、update/complete key payload、missing-key fail-closed、selected-key refresh source を fast assertion で固定。Status: `FIRST_SLICE_DONE`。
+- `2026-0710-post-guarded-submit-payload-handoff-lane-closure.md`
+  - #690 post guarded submit payload handoff lane closure。#689 の fast payload handoff contract を受け入れ、browser smoke / availability expansion の前に selected-row/key handoff fast contract (#691) を昇格。Status: `DONE`。
+- `2026-0710-sample18-guarded-submit-payload-handoff-fast-contract-first-slice.md`
+  - #689 sample18 guarded submit payload handoff fast contract first slice。generated action intent の key/input 分解、route normalizer への handoff、required input fail-closed、generated runtime HTML の guarded submit POST assembly source を fast non-browser assertion で固定。Status: `FIRST_SLICE_DONE`。
+- `2026-0710-post-action-input-route-compatibility-contract-lane-closure.md`
+  - #688 post action/input route compatibility contract lane closure。#687 の fast compatibility assertions を受け入れ、重い browser smoke の前に guarded-submit payload handoff fast contract (#689) を昇格。Status: `DONE`。
+- `2026-0710-sample18-generated-action-input-route-compatibility-contract-first-slice.md`
+  - #687 sample18 generated action/input route compatibility contract first slice。generated managed-action metadata と generated DOM attributes を generated-submit route の create/update/complete contract に照合する fast assertions を追加し、reopen/delete は disabled candidate として固定。Status: `FIRST_SLICE_DONE`。
+- `2026-0710-sample18-generated-action-input-gap-inventory.md`
+  - #686 sample18 generated action/input gap inventory。generated managed-action metadata/input draft と executable generated-submit route の gap を棚卸しし、create/update/complete の route compatibility contract assertions (#687) を次に昇格。Status: `DONE`。
+- `2026-0710-post-route-response-contract-lane-closure.md`
+  - #685 post route response contract lane closure。#684 の response contract assertions を受け入れ、次は sample18 generated action/input gap inventory (#686) を昇格。Status: `DONE`。
+- `2026-0710-sample18-generated-submit-route-response-contract-first-slice.md`
+  - #684 sample18 generated-submit route response contract first slice。`docs/no-code-ui-testing.md` に compact response contract を追加し、Sample18 route outcome tests に status/result/failure/recovery assertion を追加。Status: `FIRST_SLICE_DONE`。
+- `2026-0710-sample18-generated-submit-route-response-status-refinement-preflight.md`
+  - #683 sample18 generated-submit route response/status refinement preflight。generated-submit route の HTTP status、`result`、`ok`、`failure_code`、recovery metadata の outcome matrix を定義。次は response contract first slice (#684)。Status: `DONE`。
+- `2026-0710-post-generated-submit-availability-documentation-lane-closure.md`
+  - #682 post generated-submit availability documentation lane closure。#681 の availability/config documentation を受け入れ、次は generated-submit route response/status refinement preflight (#683) を昇格。Status: `DONE`。
+- `2026-0710-sample18-generated-submit-availability-documentation-first-slice.md`
+  - #681 sample18 generated-submit availability documentation first slice。`docs/no-code-ui-testing.md` と sample18 README に disabled default、app/env flags、executor_config metadata、injected callables、default runtime reference fail-closed behavior を文書化。Status: `FIRST_SLICE_DONE`。
+- `2026-0710-post-route-executor-config-metadata-coverage-lane-closure.md`
+  - #680 post route executor config metadata coverage lane closure。#679 の route-visible `executor_config` coverage を受け入れ、次は sample18 generated-submit availability documentation (#681) を昇格。Status: `DONE`。
+- `2026-0710-sample18-route-executor-config-metadata-coverage.md`
+  - #679 sample18 route executor config metadata coverage。generated-submit route response の `executor_config` metadata を default disabled、env/app enablement、injected-callable execution、missing runtime failure で coverage。Status: `FIRST_SLICE_DONE`。
+- `2026-0710-post-production-runtime-config-resolver-lane-closure.md`
+  - #678 post production runtime config resolver lane closure。#677 の config resolver を受け入れ、次は route response の `executor_config` metadata coverage (#679) を昇格。Status: `DONE`。
+- `2026-0710-sample18-production-runtime-config-resolver-first-slice.md`
+  - #677 sample18 production runtime config resolver first slice。generated-submit executor config resolver を追加し、app/env flag precedence、default runtime reference files、injected callable dependency source、fail-closed metadata を focused coverage。Status: `FIRST_SLICE_DONE`。
+- `2026-0710-sample18-production-runtime-config-hardening-preflight.md`
+  - #676 sample18 production runtime config hardening preflight。generated-submit executor enablement の app/env flag、default runtime reference path、injected callables、fail-closed metadata の production-safe config boundary を定義。次は resolver/coverage first slice (#677)。Status: `DONE`。
+- `2026-0710-post-generated-submit-runtime-ui-rendering-lane-closure.md`
+  - #675 post generated-submit runtime UI rendering lane closure。#674 の runtime UI result rendering を受け入れ、次は production-safe executor enablement/config boundary の preflight (#676) を昇格。Status: `DONE`。
+- `2026-0710-sample18-generated-submit-runtime-ui-result-rendering-first-slice.md`
+  - #674 sample18 generated-submit runtime UI result rendering first slice。generated-submit route response を no-code runtime UI の `success` / `blocked` / `recovery-required` / `error` state に写し、recovery data attributes と dispatch `ok/executed` contract を固定。Status: `FIRST_SLICE_DONE`。
+- `2026-0710-sample18-generated-submit-ui-success-error-rendering-preflight.md`
+  - #673 sample18 generated-submit UI success/error rendering preflight。route execution/recovery response を no-code runtime UI の success / blocked / error / recovery-required state に写す表示契約を定義。次は first runtime UI slice (#674)。Status: `DONE`。
+- `2026-0710-post-commit-unknown-recovery-coverage-lane-closure.md`
+  - #672 post commit-unknown recovery coverage lane closure。#671 の commit-unknown route recovery coverage を受け入れ、次は generated-submit UI success/error rendering preflight (#673) を昇格。Status: `DONE`。
+- `2026-0710-sample18-route-commit-unknown-recovery-coverage.md`
+  - #671 sample18 route commit-unknown recovery coverage。explicit executor route で transaction commit failure / exception が `commit_status_unknown` recovery metadata を返し post-commit recording を skip することを coverage。Status: `FIRST_SLICE_DONE`。
+- `2026-0710-post-real-runtime-default-binding-lane-closure.md`
+  - #670 post real runtime default binding lane closure。#669 の default runtime binding を受け入れ、UI rendering の前に commit-unknown recovery coverage (#671) を昇格。Status: `DONE`。
+- `2026-0710-sample18-real-runtime-default-binding-first-slice.md`
+  - #669 sample18 real runtime default binding first slice。route executor dependency resolver が injected callables 優先、未注入時は sample18 reference runtime / TaskCardDBAccess から default transaction callables を構成できるようにした。Status: `FIRST_SLICE_DONE`。
+- `2026-0710-sample18-real-runtime-default-binding-preflight.md`
+  - #668 sample18 real runtime default binding preflight。generated-submit route が test-injected transaction callables なしで sample18 reference runtime DBAccess classes から default binding を構成する境界を定義。次は first slice (#669)。Status: `DONE`。
+- `2026-0710-post-route-execution-failure-recovery-coverage-lane-closure.md`
+  - #667 post route execution failure/recovery coverage lane closure。#666 の route-level failure/recovery coverage を受け入れ、次は test-only injected callables から real sample runtime default binding preflight (#668) へ進む。Status: `DONE`。
+- `2026-0710-sample18-route-execution-failure-recovery-coverage-first-slice.md`
+  - #666 sample18 route execution failure/recovery coverage first slice。explicit executor flag route で missing transaction callable、DBAccess failure rollback、post-commit idempotency failure recovery metadata を coverage。Status: `FIRST_SLICE_DONE`。
+- `2026-0710-post-route-feature-flag-execution-first-slice-lane-closure.md`
+  - #665 post route feature-flag execution first slice lane closure。#664 の explicit executor flag route execution success path を受け入れ、次は route-level failure/recovery coverage (#666) を昇格。Status: `DONE`。
+- `2026-0710-sample18-generated-submit-route-feature-flag-execution-first-slice.md`
+  - #664 sample18 generated-submit route feature-flag execution first slice。route に実行専用 `sample18_generated_submit_executor_enabled` flag と injected transaction callables を追加し、flag on fresh request で DBAccess transaction / execution audit / idempotency outcome まで成功、duplicate replay は非実行を coverage。Status: `FIRST_SLICE_DONE`。
+- `2026-0710-sample18-generated-submit-route-feature-flag-integration-preflight.md`
+  - #663 sample18 generated-submit route feature-flag integration preflight。route が explicit executor flag on の時だけ transaction binding / real DBAccess invocation / DB-backed post-commit recording を実行する境界を定義。disabled default と all-success-or-failure response を維持し、次は first route-level slice (#664)。Status: `DONE`。
 - `2026-0710-post-db-backed-post-commit-recording-coverage-lane-closure.md`
   - #662 post DB-backed post-commit recording coverage lane closure。#661 の route-unwired DB-backed post-commit recording coverage を受け入れ、次は generated-submit route feature-flag integration preflight (#663) を昇格。generated-submit route execution は未有効化。Status: `DONE`。
 - `2026-0710-sample18-post-commit-recording-db-backed-coverage-first-slice.md`

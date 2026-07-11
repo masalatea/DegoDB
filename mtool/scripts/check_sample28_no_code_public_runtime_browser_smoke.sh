@@ -12,6 +12,7 @@ SMOKE_OUTPUT_DIR="${SMOKE_OUTPUT_DIR:-output/playwright/no-code-public-runtime}"
 RUN_ENDPOINT_SMOKE="${RUN_ENDPOINT_SMOKE:-1}"
 RUN_OUTBOX_PROCESS_SMOKE="${RUN_OUTBOX_PROCESS_SMOKE:-1}"
 RUNTIME_FILTER_DOM_ONLY="${RUNTIME_FILTER_DOM_ONLY:-0}"
+RUNTIME_ENABLED_CANDIDATE_SURFACE="${RUNTIME_ENABLED_CANDIDATE_SURFACE:-0}"
 ADMIN_HTTP_PORT="${ADMIN_HTTP_PORT:-18291}"
 LAB_HTTP_PORT="${LAB_HTTP_PORT:-18292}"
 CONFIG_DB_HOST_PORT="${CONFIG_DB_HOST_PORT:-43291}"
@@ -159,6 +160,19 @@ if [ "$RUNTIME_FILTER_DOM_ONLY" = "1" ]; then
     --execution-url-contains=/current/execute.json \
     --submit-probe=enabled-real-fetch \
     --runtime-filter-dom-only \
+    "--output-dir=${SMOKE_OUTPUT_DIR}"
+
+  printf '%s\n' "$public_json"
+  exit 0
+fi
+
+if [ "$RUNTIME_ENABLED_CANDIDATE_SURFACE" = "1" ]; then
+  node mtool/scripts/check_no_code_runtime_preview_ui_smoke.js \
+    "--profile=${SAMPLE_PROFILE}" \
+    "--url=${BASE_URL}${current_path}" \
+    --execution-binding=required \
+    --execution-url-contains=/current/execute.json \
+    --runtime-enabled-candidate-surface \
     "--output-dir=${SMOKE_OUTPUT_DIR}"
 
   printf '%s\n' "$public_json"

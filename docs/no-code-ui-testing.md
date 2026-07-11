@@ -89,7 +89,151 @@ The applied checklist fixture is `sample/tutorials/sample18-mini-task-board-demo
 
 `sample18-mini-task-board-demo` is accepted as the first L1 existing sample UI no-code entry only in a metadata-first and preview-first sense. It has a golden fixture, generated readonly list/detail/form metadata, generated runtime preview rows, and disabled dry-run action metadata with route boundaries for create, update, complete, reopen, and delete.
 
-It is not yet a generated route replacement. The first reusable fast DOM contract harness exists in `tests/Support/NoCodeUiContractAssertions.php`; the status filter contract now ties the curated route filter values to generated list metadata. The next selected gate is a narrow sample18 public-runtime status filter DOM preflight. Safe action-input mapping remains after that.
+It is not yet a generated route replacement. The first reusable fast DOM contract harness exists in `tests/Support/NoCodeUiContractAssertions.php`; the status filter contract ties the curated route filter values to generated list metadata, and generated-submit route responses now expose tested execution/config metadata before browser smoke is broadened.
+
+### Sample18 Generated Submit Availability
+
+Generated-submit execution is disabled by default. The route remains safe for metadata and blocked-response inspection unless both mutation and executor enablement are explicitly true:
+
+- app config `sample18_generated_submit_mutation_enabled=true` or env `MTOOL_SAMPLE18_GENERATED_SUBMIT_MUTATION_ENABLED=1`;
+- app config `sample18_generated_submit_executor_enabled=true` or env `MTOOL_SAMPLE18_GENERATED_SUBMIT_EXECUTOR_ENABLED=1`.
+
+App config takes precedence over env fallback. Execution still must pass request validation, CSRF, audit append, idempotency, execution guard, DBAccess transaction, post-commit execution audit append, and idempotency execution-outcome update. The success policy is all-success-or-failure: user-facing success is returned only after every required step succeeds.
+
+The route response includes `executor_config` metadata so tests and UI can inspect why execution is ready, disabled, or failed. Important fields are:
+
+- `status`: `ready`, `disabled`, or `failed`;
+- `mutation_enabled` / `executor_enabled`;
+- `mutation_enablement_source` / `executor_enablement_source`;
+- `dependency_source`: `default_runtime_reference` or `injected_transaction_callables`;
+- `runtime_reference_dir`, `failure_code`, `missing_file`, and `reasons`.
+
+Injected transaction callables are the highest-priority execution dependency for focused tests. Without injected callables, the route validates the sample18 generated runtime reference files before opening a transaction. Missing or unreadable reference files fail closed with `executor_default_runtime_file_missing`.
+
+Browser smoke is still an outer representative gate. Prefer fast route/PHPUnit coverage for config and response semantics first, then use browser smoke for public preview, auth, submit handoff, and rendered feedback integration.
+
+### Sample18 Generated Submit Response Contract
+
+Generated-submit route responses use this compact status contract:
+
+| Outcome | HTTP | `result` | `ok` | Recovery |
+| --- | ---: | --- | --- | --- |
+| invalid method / CSRF / payload / operation | 405 / 403 / 422 / 404 | `invalid` | `false` | no |
+| disabled or duplicate non-execution | 409 | `blocked` | `false` | no |
+| config or dependency failure before execution | 500 | `failed` | `false` | no |
+| DBAccess/rollback failure before commit | 500 | `failed` | `false` | no |
+| commit-status-unknown or post-commit recording failure | 500 | `failed` | `false` | yes |
+| all required execution and recording steps succeeded | 200 | `executed` | `true` | no |
+
+`failure_code` is required on every non-success response. Recovery-required failures must expose `route_execution.recovery_required=true` plus the relevant recovery reason from `transaction_result` or `post_commit_recording`.
+
+### Sample18 Generated Action/Input Gap Inventory
+
+The generated metadata and executable generated-submit route are close, but they are not the same boundary yet. Treat the route as the stricter contract before expanding browser smoke or enabling broader availability.
+
+| Area | Current state | Gap to close before broader availability |
+| --- | --- | --- |
+| Executable operation set | The route contract executes `create_task_card`, `update_task_card`, and `complete_task_card`. | Generated metadata still names `reopen_task_card` and `delete_task_card` as curated-route-only candidates. They must remain disabled until DBAccess/custom adapter metadata exists. |
+| Action payload shape | Route requests are `operation_key` plus flat action fields and `_csrf_token`. | Fast DOM/metadata assertions should prove every generated managed action exposes the same operation key, submit URL, CSRF handoff, and field names the route normalizer accepts. |
+| Key field handoff | `update_task_card` and `complete_task_card` require `id`; create has no key fields. | Generated list/detail/form markup must expose a reliable row identity source for keyed actions before any generated button can be considered executable. |
+| Required input handoff | Create/update require `title`; create has optional body/assignee/priority/due date; update also allows status. | Draft input collection must fail closed when required client fields are missing and must not send readonly/server-managed fields as client authority. |
+| Availability state | Generated buttons remain disabled/blocked by default; route execution also requires explicit mutation and executor enablement. | The UI contract should show disabled/blocked state, unavailable reason, and route executor readiness consistently before outer browser smoke. |
+| Success policy | The route follows all-success-or-failure semantics: user-facing success appears only after validation, CSRF, audit, idempotency, transaction, execution, and post-commit recording all succeed. | Generated UI tests should assert the handoff preserves this policy instead of treating a click or partial draft as success. |
+
+Recommended next slice: add a focused fast contract that compares sample18 generated managed-action metadata and generated DOM attributes against the route contract for create/update/complete. Keep reopen/delete visible only as disabled curated-route candidates.
+
+### Sample18 Generated Action/Input Route Compatibility
+
+The first fast compatibility slice is covered in `Sample18MiniTaskBoardDemoTest`:
+
+- route-compatible operations are limited to `create_task_card`, `update_task_card`, and `complete_task_card`;
+- `reopen_task_card` and `delete_task_card` remain disabled metadata-only candidates until DBAccess/custom adapter metadata exists;
+- generated action inventory must match route key fields, required client fields, optional client fields, and server-managed fields;
+- generated screen-definition action fields must match route-compatible roles (`key` or `input`), required flags, and client-write flags;
+- generated runtime HTML must expose matching `data-action-key`, `data-operation-key`, submit URL, CSRF handoff, and blocked route binding attributes.
+
+### Sample18 Guarded Submit Payload Handoff
+
+The fast payload handoff contract stays non-browser:
+
+- generated action intent assembly splits route-compatible fields into key payload and client input payload;
+- the assembled key/input payload normalizes through the sample18 generated-submit route contract for create/update/complete;
+- missing required action input fails closed before route payload normalization;
+- generated runtime HTML includes the guarded submit JS path that posts `operation_key`, the configured CSRF token field, flat input fields, same-origin credentials, and JSON accept headers.
+
+### Sample18 Selected Row/Key Handoff
+
+The selected-row/key contract stays fast and covers the static preview plus runtime source:
+
+- generated render fields retain `is_key` metadata so list rows can expose stable `data-runtime-row-key` markers;
+- runtime list rendering falls back to key fields when the current list action set does not include a key-bearing action;
+- update/complete action intents place `id` in the key payload when a selected row id is supplied;
+- missing keyed action input fails closed before guarded submit payload normalization;
+- runtime source keeps the selected-key refresh path for runtime-data-backed previews.
+
+### Sample18 Generated Runtime Browser Smoke
+
+The first narrow browser smoke is an outer confirmation layer for the generated sample18 runtime preview. It verifies that the public preview renders row key markers, guarded submit attributes, disabled/default execution state, and blocked generated-submit feedback without enabling mutation or broader generated availability.
+
+This smoke intentionally stays narrow:
+
+- list rows must expose `data-runtime-row-key` and the first generated row key must match the selected fixture key;
+- managed action buttons must expose the route-compatible submit URL, CSRF handoff, binding state, guarded click inventory, payload assembly, blocked response handling, and fail-closed result markers;
+- generated action controls remain disabled/default-safe for actual execution, while the guarded click path renders blocked feedback for generated submit;
+- mutation availability and broader execution enablement remain covered by route/PHPUnit contracts until explicitly promoted.
+
+### Sample18 Generated Availability Expansion Preflight
+
+Availability expansion means allowing generated UI metadata to present an executable candidate state. It does not mean changing defaults broadly, enabling all actions, or bypassing the route success policy.
+
+The first expansion boundary is limited to `create_task_card`, `update_task_card`, and `complete_task_card`. `reopen_task_card` and `delete_task_card` remain disabled metadata-only candidates until their DBAccess/custom adapter contracts are defined.
+
+Before any generated action changes from disabled/blocked preview to available/executable candidate, the following must be true:
+
+- mutation and executor enablement are both explicit and observable through app config or env flags;
+- route `executor_config.status` is `ready` and dependency source is valid;
+- the generated action key, operation key, submit URL, CSRF handoff, required fields, key fields, and payload assembly match the route normalizer contract;
+- keyed actions have a selected row key source and fail closed when it is absent;
+- UI result rendering covers executed, blocked/duplicate, ordinary failure, and recovery-required failure;
+- tests cover disabled default, enabled candidate, missing key/input, config failure, duplicate replay, rollback failure, recovery-required failure, and successful execution.
+
+The next implementation slice should add a fast availability-state contract before changing runtime defaults. Browser smoke may then be extended to observe the enabled-candidate UI state, but route/PHPUnit tests remain the authority for execution correctness.
+
+### Sample18 Generated Availability-State Fast Contract
+
+The first fast availability-state slice keeps generated defaults disabled while making the candidate state testable:
+
+- runtime action buttons expose `data-action-availability` so disabled-default and enabled-candidate states are distinguishable even when guarded preview clicks are allowed;
+- runtime action buttons expose `data-action-policy-failed-checks` when policy checks block an action;
+- `Sample18MiniTaskBoardDemoTest` overlays an enabled-candidate policy in memory and verifies that only `create_task_card`, `update_task_card`, and `complete_task_card` become enabled candidates;
+- the same test keeps the generated default runtime preview at `data-action-availability="disabled"`;
+- selected key and missing input fail-closed assertions remain part of the same fast contract.
+
+### Sample18 Enabled-Candidate Browser Smoke Preflight
+
+The first enabled-candidate browser smoke should observe UI state only. It should not prove real DB mutation, and it should not change generated defaults.
+
+Use a browser-side enabled-candidate overlay or fetch stub so the public preview can expose:
+
+- `create_task_card`, `update_task_card`, and `complete_task_card` as `data-action-availability="enabled"` candidates;
+- `reopen_task_card` and `delete_task_card` as disabled or absent from the executable candidate set;
+- route-compatible submit URL, CSRF handoff, selected row key, payload assembly, and guarded click markers;
+- rendered success/blocked/error/recovery feedback state from a stubbed generated-submit response;
+- no real network mutation unless a later smoke explicitly opts into the already guarded `enabled-real-fetch` path.
+
+The first implementation should add a separate smoke target rather than widening the disabled-action smoke. The disabled default smoke remains the regression guard for ordinary generated preview behavior.
+
+### Sample18 Enabled-Candidate Browser Smoke First Slice
+
+The first enabled-candidate smoke is now separate from the disabled-action smoke:
+
+- `make sample18-no-code-public-runtime-enabled-candidate-smoke` publishes the sample18 public runtime preview and runs a short browser probe against the current preview URL;
+- the probe applies a browser-side enabled-candidate overlay for `create_task_card`, `update_task_card`, and `complete_task_card`;
+- desktop and mobile probes assert `data-action-availability="enabled"`, `data-action-enabled="true"`, no disabled reasons, and no policy failed checks for those three candidates;
+- `reopen_task_card` and `delete_task_card` must not become enabled candidates;
+- the guarded generated-submit click is fetch-stubbed and must render blocked feedback with `generated_submit_disabled`, so no real mutation is performed.
+
+This confirms candidate UI presentation only. A later slice must still decide whether browser smoke should cover route/config readiness, real guarded execution, or server-generated availability overlays.
 
 ## Design Boundary
 

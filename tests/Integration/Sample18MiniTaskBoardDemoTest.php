@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 require_once dirname(__DIR__, 2) . '/mtool/app/lab_sample18_task_board_page.php';
+require_once dirname(__DIR__, 2) . '/mtool/app/no_code_runtime.php';
 require_once dirname(__DIR__, 2) . '/mtool/app/config_db_bootstrap.php';
 require_once dirname(__DIR__, 2) . '/mtool/app/router.php';
 
@@ -386,6 +387,17 @@ final class Sample18MiniTaskBoardDemoTest extends TestCase
             self::assertIsArray($operation);
             $inventoryByKey[(string) ($operation['operation_key'] ?? '')] = $operation;
         }
+        self::assertSame(
+            ['reopen_task_card', 'delete_task_card'],
+            array_values(array_diff(array_keys($inventoryByKey), array_keys($operations))),
+        );
+        foreach (['reopen_task_card', 'delete_task_card'] as $metadataOnlyOperationKey) {
+            self::assertSame('', $inventoryByKey[$metadataOnlyOperationKey]['db_access_function'] ?? 'not-empty');
+            self::assertSame(
+                'requires_db_access_or_custom_adapter_before_generated_execution',
+                $inventoryByKey[$metadataOnlyOperationKey]['mapping_state'] ?? '',
+            );
+        }
 
         $dedupeKeys = [];
         foreach ($operations as $operationKey => $expectation) {
@@ -400,6 +412,19 @@ final class Sample18MiniTaskBoardDemoTest extends TestCase
             self::assertSame(
                 $inventoryByKey[$operationKey]['db_access_function'] ?? '',
                 $contracts[$operationKey]['db_access_function'] ?? '',
+            );
+            self::assertSame($contracts[$operationKey]['key_fields'] ?? [], $inventoryByKey[$operationKey]['key_fields'] ?? []);
+            self::assertSame(
+                $contracts[$operationKey]['required_client_fields'] ?? [],
+                $inventoryByKey[$operationKey]['required_client_fields'] ?? [],
+            );
+            self::assertSame(
+                $contracts[$operationKey]['optional_client_fields'] ?? [],
+                $inventoryByKey[$operationKey]['optional_client_fields'] ?? [],
+            );
+            self::assertSame(
+                $contracts[$operationKey]['server_managed_fields'] ?? [],
+                $inventoryByKey[$operationKey]['server_managed_fields'] ?? [],
             );
 
             $valid = app_lab_sample18_task_board_normalize_generated_submit_request(
@@ -499,6 +524,7 @@ final class Sample18MiniTaskBoardDemoTest extends TestCase
         self::assertTrue(app_route_requires_auth('lab_sample18_task_board_generated_submit'));
 
         $notPost = app_lab_sample18_task_board_generated_submit_blocked_response('GET', [], $timestamp);
+        self::assertGeneratedSubmitRouteResponseContract($notPost, 405, 'invalid', false, 'method_not_allowed');
         self::assertSame(405, $notPost['status_code']);
         self::assertSame('method_not_allowed', $notPost['payload']['failure_code'] ?? '');
         self::assertFalse($notPost['payload']['mutation_enabled'] ?? true);
@@ -508,6 +534,7 @@ final class Sample18MiniTaskBoardDemoTest extends TestCase
             is_array($createExpectation['valid_input'] ?? null) ? $createExpectation['valid_input'] : [],
         );
         $blocked = app_lab_sample18_task_board_generated_submit_blocked_response('POST', $validPost, $timestamp);
+        self::assertGeneratedSubmitRouteResponseContract($blocked, 409, 'blocked', false, 'generated_submit_disabled');
         self::assertSame(409, $blocked['status_code']);
         self::assertFalse($blocked['payload']['ok'] ?? true);
         self::assertFalse($blocked['payload']['accepted'] ?? true);
@@ -588,6 +615,15 @@ final class Sample18MiniTaskBoardDemoTest extends TestCase
         self::assertContains('executor_feature_flag_disabled', $blocked['payload']['executor_coordination_plan']['reasons'] ?? []);
         self::assertContains('execution_guard_not_ready', $blocked['payload']['executor_coordination_plan']['reasons'] ?? []);
         self::assertContains('request_audit_event_key_missing', $blocked['payload']['executor_coordination_plan']['reasons'] ?? []);
+        self::assertSame('disabled', $blocked['payload']['executor_config']['status'] ?? '');
+        self::assertFalse($blocked['payload']['executor_config']['ready'] ?? true);
+        self::assertFalse($blocked['payload']['executor_config']['mutation_enabled'] ?? true);
+        self::assertFalse($blocked['payload']['executor_config']['executor_enabled'] ?? true);
+        self::assertSame('default', $blocked['payload']['executor_config']['mutation_enablement_source'] ?? '');
+        self::assertSame('default', $blocked['payload']['executor_config']['executor_enablement_source'] ?? '');
+        self::assertSame('default_runtime_reference', $blocked['payload']['executor_config']['dependency_source'] ?? '');
+        self::assertContains('mutation_enablement_disabled', $blocked['payload']['executor_config']['reasons'] ?? []);
+        self::assertContains('executor_enablement_disabled', $blocked['payload']['executor_config']['reasons'] ?? []);
         self::assertFalse($blocked['payload']['mutation_enabled'] ?? true);
 
         $missingCsrf = app_lab_sample18_task_board_generated_submit_blocked_response(
@@ -596,6 +632,7 @@ final class Sample18MiniTaskBoardDemoTest extends TestCase
             $timestamp,
             'missing',
         );
+        self::assertGeneratedSubmitRouteResponseContract($missingCsrf, 403, 'invalid', false, 'missing_csrf');
         self::assertSame(403, $missingCsrf['status_code']);
         self::assertSame('missing_csrf', $missingCsrf['payload']['failure_code'] ?? '');
         self::assertSame(['csrf.missing'], $missingCsrf['payload']['errors'] ?? []);
@@ -612,6 +649,7 @@ final class Sample18MiniTaskBoardDemoTest extends TestCase
             $timestamp,
             'invalid',
         );
+        self::assertGeneratedSubmitRouteResponseContract($invalidCsrf, 403, 'invalid', false, 'invalid_csrf');
         self::assertSame(403, $invalidCsrf['status_code']);
         self::assertSame('invalid_csrf', $invalidCsrf['payload']['failure_code'] ?? '');
         self::assertSame(['csrf.invalid'], $invalidCsrf['payload']['errors'] ?? []);
@@ -627,6 +665,7 @@ final class Sample18MiniTaskBoardDemoTest extends TestCase
             ['operation_key' => 'update_task_card', 'id' => '0', 'title' => ''],
             $timestamp,
         );
+        self::assertGeneratedSubmitRouteResponseContract($invalid, 422, 'invalid', false, 'validation_error');
         self::assertSame(422, $invalid['status_code']);
         self::assertSame('validation_error', $invalid['payload']['failure_code'] ?? '');
         self::assertSame(['id.invalid', 'title.required'], $invalid['payload']['errors'] ?? []);
@@ -641,6 +680,7 @@ final class Sample18MiniTaskBoardDemoTest extends TestCase
             ['operation_key' => 'delete_task_card', 'id' => '1801'],
             $timestamp,
         );
+        self::assertGeneratedSubmitRouteResponseContract($unknown, 404, 'invalid', false, 'unknown_operation');
         self::assertSame(404, $unknown['status_code']);
         self::assertSame('unknown_operation', $unknown['payload']['failure_code'] ?? '');
         self::assertArrayNotHasKey('dbaccess_execution_plan', $unknown['payload']);
@@ -767,6 +807,7 @@ final class Sample18MiniTaskBoardDemoTest extends TestCase
             $app,
             $principal,
         );
+        self::assertGeneratedSubmitRouteResponseContract($duplicate, 409, 'blocked', false, 'generated_submit_disabled');
         self::assertSame(409, $duplicate['status_code']);
         self::assertSame('duplicate', $duplicate['payload']['idempotency']['status'] ?? '');
         self::assertFalse($duplicate['payload']['idempotency']['created'] ?? true);
@@ -786,6 +827,7 @@ final class Sample18MiniTaskBoardDemoTest extends TestCase
             array_merge($app, ['sample18_generated_submit_mutation_enabled' => true]),
             $principal,
         );
+        self::assertGeneratedSubmitRouteResponseContract($enabledDuplicate, 409, 'blocked', false, 'generated_submit_disabled');
         self::assertSame(409, $enabledDuplicate['status_code']);
         self::assertSame('duplicate', $enabledDuplicate['payload']['idempotency']['status'] ?? '');
         self::assertSame('blocked', $enabledDuplicate['payload']['mutation_gate']['status'] ?? '');
@@ -1100,6 +1142,14 @@ final class Sample18MiniTaskBoardDemoTest extends TestCase
         self::assertSame($blocked['payload']['dedupe_key_preview'] ?? '', $blocked['payload']['executor_coordination_plan']['dedupe_key'] ?? 'missing');
         self::assertSame($blocked['payload']['audit_append']['item']['event_key'] ?? '', $blocked['payload']['executor_coordination_plan']['request_audit_event_key'] ?? 'missing');
         self::assertContains('executor_feature_flag_disabled', $blocked['payload']['executor_coordination_plan']['reasons'] ?? []);
+        self::assertSame('disabled', $blocked['payload']['executor_config']['status'] ?? '');
+        self::assertFalse($blocked['payload']['executor_config']['ready'] ?? true);
+        self::assertTrue($blocked['payload']['executor_config']['mutation_enabled'] ?? false);
+        self::assertFalse($blocked['payload']['executor_config']['executor_enabled'] ?? true);
+        self::assertSame('app', $blocked['payload']['executor_config']['mutation_enablement_source'] ?? '');
+        self::assertSame('default', $blocked['payload']['executor_config']['executor_enablement_source'] ?? '');
+        self::assertSame('default_runtime_reference', $blocked['payload']['executor_config']['dependency_source'] ?? '');
+        self::assertSame(['executor_enablement_disabled'], $blocked['payload']['executor_config']['reasons'] ?? []);
 
         $latest = app_audit_log_fetch_latest($app, [
             'project_key' => 'SAMPLE18',
@@ -1118,6 +1168,482 @@ final class Sample18MiniTaskBoardDemoTest extends TestCase
         self::assertTrue($idempotencyRecords['ok'], $idempotencyRecords['error']);
         self::assertCount(1, $idempotencyRecords['items']);
         self::assertSame(0, $idempotencyRecords['items'][0]['duplicate_count'] ?? -1);
+    }
+
+    public function testMiniTaskBoardGeneratedSubmitRouteExecutesWithExplicitExecutorFlag(): void
+    {
+        $root = dirname(__DIR__, 2);
+        require_once $root . '/sample/tutorials/sample18-mini-task-board-demo/reference/DBACCESS-PHP/_support/mtool_runtime_db.php';
+        require_once $root . '/sample/tutorials/sample18-mini-task-board-demo/reference/DATACLASS-PHP/base/data-TaskCardBase.php';
+        require_once $root . '/sample/tutorials/sample18-mini-task-board-demo/reference/DATACLASS-PHP/data-TaskCard.php';
+        require_once $root . '/sample/tutorials/sample18-mini-task-board-demo/reference/DBACCESS-PHP/base/dbaccess-TaskCardBase.php';
+        require_once $root . '/sample/tutorials/sample18-mini-task-board-demo/reference/DBACCESS-PHP/dbaccess-TaskCard.php';
+
+        $checklist = $this->sample18FastContractChecklist();
+        $submitContract = $checklist['generated_submit_request_contract'] ?? [];
+        self::assertIsArray($submitContract);
+        $timestamp = (string) ($submitContract['timestamp_fixture'] ?? '');
+        $createExpectation = $submitContract['operations']['create_task_card'] ?? [];
+        self::assertIsArray($createExpectation);
+
+        $sqlitePath = sys_get_temp_dir() . '/sample18-route-exec-' . bin2hex(random_bytes(4)) . '.sqlite';
+        $previousSqlitePath = getenv('MTOOL_RUNTIME_SQLITE_PATH');
+        $previousDsn = getenv('MTOOL_RUNTIME_DB_DSN');
+        $previousUser = getenv('MTOOL_RUNTIME_DB_USER');
+        $previousPassword = getenv('MTOOL_RUNTIME_DB_PASSWORD');
+        $previousMtoolDb = $GLOBALS['mtooldb'] ?? null;
+
+        try {
+            putenv('MTOOL_RUNTIME_DB_DSN');
+            putenv('MTOOL_RUNTIME_DB_USER');
+            putenv('MTOOL_RUNTIME_DB_PASSWORD');
+            putenv('MTOOL_RUNTIME_SQLITE_PATH=' . $sqlitePath);
+            $transactionDb = new MtoolGeneratedDbAccessRuntimeDb();
+            $GLOBALS['mtooldb'] = $transactionDb;
+            self::assertInstanceOf(
+                MtoolGeneratedDbAccessPdoResult::class,
+                $transactionDb->execute(
+                    'CREATE TABLE task_card (
+                        id INTEGER PRIMARY KEY AUTOINCREMENT,
+                        title TEXT NOT NULL,
+                        body TEXT NOT NULL,
+                        status TEXT NOT NULL,
+                        assigned_to TEXT NOT NULL,
+                        priority INTEGER NOT NULL,
+                        due_date TEXT DEFAULT NULL,
+                        completed_at TEXT DEFAULT NULL,
+                        updated_at TEXT NOT NULL
+                    )',
+                ),
+            );
+
+            $callables = app_lab_sample18_task_board_generated_submit_transaction_binding_callables(
+                $transactionDb,
+                static function (array $context): object {
+                    $GLOBALS['mtooldb'] = $context['transaction_db'];
+
+                    return new TaskCardDBAccess();
+                },
+            );
+            $app = array_merge($this->sqliteApp(), [
+                'sample18_generated_submit_mutation_enabled' => true,
+                'sample18_generated_submit_executor_enabled' => true,
+                'sample18_generated_submit_transaction_callables' => $callables,
+            ]);
+            $bootstrap = app_config_db_bootstrap_apply($app);
+            self::assertTrue($bootstrap['ok'], $bootstrap['error']);
+            $principal = [
+                'id' => 'sample18-route-executor@example.test',
+                'auth_source' => 'phpunit',
+            ];
+            $validPost = array_merge(
+                ['operation_key' => 'create_task_card', '_csrf_token' => 'client-token'],
+                is_array($createExpectation['valid_input'] ?? null) ? $createExpectation['valid_input'] : [],
+            );
+
+            $executed = app_lab_sample18_task_board_generated_submit_blocked_response(
+                'POST',
+                $validPost,
+                $timestamp,
+                'valid',
+                $app,
+                $principal,
+            );
+            self::assertGeneratedSubmitRouteResponseContract($executed, 200, 'executed', true, '');
+            self::assertSame(200, $executed['status_code']);
+            self::assertTrue($executed['payload']['ok'] ?? false);
+            self::assertTrue($executed['payload']['accepted'] ?? false);
+            self::assertSame('executed', $executed['payload']['result'] ?? '');
+            self::assertSame('', $executed['payload']['failure_code'] ?? 'unexpected');
+            self::assertTrue($executed['payload']['executor_enabled'] ?? false);
+            self::assertSame('ready', $executed['payload']['executor_config']['status'] ?? '');
+            self::assertTrue($executed['payload']['executor_config']['ready'] ?? false);
+            self::assertTrue($executed['payload']['executor_config']['mutation_enabled'] ?? false);
+            self::assertTrue($executed['payload']['executor_config']['executor_enabled'] ?? false);
+            self::assertSame('app', $executed['payload']['executor_config']['mutation_enablement_source'] ?? '');
+            self::assertSame('app', $executed['payload']['executor_config']['executor_enablement_source'] ?? '');
+            self::assertSame('injected_transaction_callables', $executed['payload']['executor_config']['dependency_source'] ?? '');
+            self::assertSame([], $executed['payload']['executor_config']['reasons'] ?? ['unexpected']);
+            self::assertSame('planned', $executed['payload']['executor_coordination_plan']['status'] ?? '');
+            self::assertSame('executed', $executed['payload']['route_execution']['execution_status'] ?? '');
+            self::assertSame('committed', $executed['payload']['transaction_result']['transaction_status'] ?? '');
+            self::assertSame('executed', $executed['payload']['transaction_result']['dbaccess_status'] ?? '');
+            self::assertSame('recorded', $executed['payload']['post_commit_recording']['recording_status'] ?? '');
+            self::assertSame('recorded', $executed['payload']['post_commit_recording']['execution_audit_status'] ?? '');
+            self::assertSame('recorded', $executed['payload']['post_commit_recording']['idempotency_update_status'] ?? '');
+
+            $insertedRows = $transactionDb->query('SELECT title FROM task_card ORDER BY id ASC');
+            self::assertInstanceOf(MtoolGeneratedDbAccessPdoResult::class, $insertedRows);
+            self::assertSame(['New generated task'], $insertedRows->fetch_row());
+
+            $executionAuditKey = (string) ($executed['payload']['post_commit_recording']['execution_audit_result']['item']['event_key'] ?? '');
+            self::assertNotSame('', $executionAuditKey);
+            $latestExecutionAudit = app_audit_log_fetch_latest($app, [
+                'project_key' => 'SAMPLE18',
+                'event_type' => 'sample18.generated_submit.executed',
+                'target_key' => (string) ($executed['payload']['dedupe_key_preview'] ?? ''),
+                'limit' => 10,
+            ]);
+            self::assertTrue($latestExecutionAudit['ok'], $latestExecutionAudit['error']);
+            self::assertCount(1, $latestExecutionAudit['items']);
+            self::assertSame($executionAuditKey, $latestExecutionAudit['items'][0]['event_key'] ?? '');
+
+            $idempotencyRecords = app_lab_sample18_generated_submit_idempotency_fetch_latest_records($app, [
+                'dedupe_key' => (string) ($executed['payload']['dedupe_key_preview'] ?? ''),
+                'limit' => 10,
+            ]);
+            self::assertTrue($idempotencyRecords['ok'], $idempotencyRecords['error']);
+            self::assertCount(1, $idempotencyRecords['items']);
+            self::assertSame('executed', $idempotencyRecords['items'][0]['result'] ?? '');
+            self::assertSame($executionAuditKey, $idempotencyRecords['items'][0]['metadata']['execution']['execution_audit_event_key'] ?? '');
+
+            $duplicate = app_lab_sample18_task_board_generated_submit_blocked_response(
+                'POST',
+                $validPost,
+                $timestamp,
+                'valid',
+                $app,
+                $principal,
+            );
+            self::assertSame(409, $duplicate['status_code']);
+            self::assertSame('blocked', $duplicate['payload']['result'] ?? '');
+            self::assertSame('duplicate', $duplicate['payload']['idempotency']['status'] ?? '');
+            self::assertArrayNotHasKey('route_execution', $duplicate['payload']);
+            $afterDuplicateRows = $transactionDb->query('SELECT COUNT(*) FROM task_card');
+            self::assertInstanceOf(MtoolGeneratedDbAccessPdoResult::class, $afterDuplicateRows);
+            $afterDuplicateCount = $afterDuplicateRows->fetch_row();
+            self::assertSame(1, (int) ($afterDuplicateCount[0] ?? -1));
+        } finally {
+            $previousDsn === false ? putenv('MTOOL_RUNTIME_DB_DSN') : putenv('MTOOL_RUNTIME_DB_DSN=' . $previousDsn);
+            $previousSqlitePath === false ? putenv('MTOOL_RUNTIME_SQLITE_PATH') : putenv('MTOOL_RUNTIME_SQLITE_PATH=' . $previousSqlitePath);
+            $previousUser === false ? putenv('MTOOL_RUNTIME_DB_USER') : putenv('MTOOL_RUNTIME_DB_USER=' . $previousUser);
+            $previousPassword === false ? putenv('MTOOL_RUNTIME_DB_PASSWORD') : putenv('MTOOL_RUNTIME_DB_PASSWORD=' . $previousPassword);
+            if ($previousMtoolDb === null) {
+                unset($GLOBALS['mtooldb']);
+            } else {
+                $GLOBALS['mtooldb'] = $previousMtoolDb;
+            }
+            if (is_file($sqlitePath)) {
+                unlink($sqlitePath);
+            }
+        }
+    }
+
+    public function testMiniTaskBoardGeneratedSubmitRouteSurfacesExecutorFailures(): void
+    {
+        $checklist = $this->sample18FastContractChecklist();
+        $submitContract = $checklist['generated_submit_request_contract'] ?? [];
+        self::assertIsArray($submitContract);
+        $timestamp = (string) ($submitContract['timestamp_fixture'] ?? '');
+        $createExpectation = $submitContract['operations']['create_task_card'] ?? [];
+        self::assertIsArray($createExpectation);
+        $validPost = array_merge(
+            ['operation_key' => 'create_task_card', '_csrf_token' => 'client-token'],
+            is_array($createExpectation['valid_input'] ?? null) ? $createExpectation['valid_input'] : [],
+        );
+        $principal = [
+            'id' => 'sample18-route-failure@example.test',
+            'auth_source' => 'phpunit',
+        ];
+
+        $missingDependencyApp = array_merge($this->sqliteApp(), [
+            'sample18_generated_submit_mutation_enabled' => true,
+            'sample18_generated_submit_executor_enabled' => true,
+            'sample18_generated_submit_transaction_callables' => [
+                'begin' => static fn (): array => ['ok' => true],
+            ],
+        ]);
+        $bootstrap = app_config_db_bootstrap_apply($missingDependencyApp);
+        self::assertTrue($bootstrap['ok'], $bootstrap['error']);
+        $missingDependency = app_lab_sample18_task_board_generated_submit_blocked_response(
+            'POST',
+            $validPost,
+            $timestamp,
+            'valid',
+            $missingDependencyApp,
+            $principal,
+        );
+        self::assertGeneratedSubmitRouteResponseContract($missingDependency, 500, 'failed', false, 'executor_transaction_callable_missing');
+        self::assertSame(500, $missingDependency['status_code']);
+        self::assertSame('failed', $missingDependency['payload']['result'] ?? '');
+        self::assertSame('executor_transaction_callable_missing', $missingDependency['payload']['failure_code'] ?? '');
+        self::assertSame('executor_transaction_callable_missing', $missingDependency['payload']['route_execution']['failure_code'] ?? '');
+        self::assertFalse($missingDependency['payload']['route_execution']['recovery_required'] ?? true);
+
+        $events = [];
+        $rollbackApp = array_merge($this->sqliteApp(), [
+            'sample18_generated_submit_mutation_enabled' => true,
+            'sample18_generated_submit_executor_enabled' => true,
+            'sample18_generated_submit_transaction_callables' => [
+                'begin' => static function () use (&$events): array {
+                    $events[] = 'begin';
+
+                    return ['ok' => true];
+                },
+                'commit' => static function () use (&$events): array {
+                    $events[] = 'commit-unexpected';
+
+                    return ['ok' => true];
+                },
+                'rollback' => static function () use (&$events): array {
+                    $events[] = 'rollback';
+
+                    return ['ok' => true];
+                },
+                'dbaccess' => static function () use (&$events): array {
+                    $events[] = 'dbaccess';
+
+                    return ['ok' => false, 'result_code' => 'dbaccess_failed', 'failure_code' => 'dbaccess_failed', 'error' => 'forced route failure'];
+                },
+            ],
+        ]);
+        $bootstrap = app_config_db_bootstrap_apply($rollbackApp);
+        self::assertTrue($bootstrap['ok'], $bootstrap['error']);
+        $rolledBack = app_lab_sample18_task_board_generated_submit_blocked_response(
+            'POST',
+            array_merge($validPost, ['title' => 'Rollback route failure']),
+            $timestamp,
+            'valid',
+            $rollbackApp,
+            $principal,
+        );
+        self::assertGeneratedSubmitRouteResponseContract($rolledBack, 500, 'failed', false, 'dbaccess_failed');
+        self::assertSame(['begin', 'dbaccess', 'rollback'], $events);
+        self::assertSame(500, $rolledBack['status_code']);
+        self::assertSame('failed', $rolledBack['payload']['result'] ?? '');
+        self::assertSame('dbaccess_failed', $rolledBack['payload']['failure_code'] ?? '');
+        self::assertSame('rolled_back', $rolledBack['payload']['transaction_result']['transaction_status'] ?? '');
+        self::assertSame('failed', $rolledBack['payload']['transaction_result']['dbaccess_status'] ?? '');
+        self::assertSame([], $rolledBack['payload']['post_commit_recording'] ?? ['unexpected']);
+        self::assertFalse($rolledBack['payload']['route_execution']['recovery_required'] ?? true);
+
+        $postCommitApp = array_merge($this->sqliteApp(), [
+            'sample18_generated_submit_mutation_enabled' => true,
+            'sample18_generated_submit_executor_enabled' => true,
+        ]);
+        $postCommitApp['sample18_generated_submit_transaction_callables'] = [
+            'begin' => static fn (): array => ['ok' => true],
+            'commit' => static fn (): array => ['ok' => true],
+            'rollback' => static fn (): array => ['ok' => true],
+            'dbaccess' => static function (array $call) use (&$postCommitApp): array {
+                $pdo = app_create_config_pdo($postCommitApp);
+                $statement = $pdo->prepare(
+                    'UPDATE sample18_generated_submit_idempotency_records
+                     SET duplicate_count = 1
+                     WHERE dedupe_key = :dedupe_key',
+                );
+                $statement->execute([
+                    ':dedupe_key' => (string) ($call['dedupe_key'] ?? ''),
+                ]);
+
+                return ['ok' => true, 'result_code' => 'task_card_inserted', 'rows_affected' => 1];
+            },
+        ];
+        $bootstrap = app_config_db_bootstrap_apply($postCommitApp);
+        self::assertTrue($bootstrap['ok'], $bootstrap['error']);
+        $recordingFailed = app_lab_sample18_task_board_generated_submit_blocked_response(
+            'POST',
+            array_merge($validPost, ['title' => 'Post commit route failure']),
+            $timestamp,
+            'valid',
+            $postCommitApp,
+            $principal,
+        );
+        self::assertGeneratedSubmitRouteResponseContract($recordingFailed, 500, 'failed', false, 'idempotency_update_failed', true);
+        self::assertSame(500, $recordingFailed['status_code']);
+        self::assertSame('failed', $recordingFailed['payload']['result'] ?? '');
+        self::assertSame('idempotency_update_failed', $recordingFailed['payload']['failure_code'] ?? '');
+        self::assertSame('committed', $recordingFailed['payload']['transaction_result']['transaction_status'] ?? '');
+        self::assertSame('executed', $recordingFailed['payload']['transaction_result']['dbaccess_status'] ?? '');
+        self::assertSame('failed', $recordingFailed['payload']['post_commit_recording']['recording_status'] ?? '');
+        self::assertSame('recorded', $recordingFailed['payload']['post_commit_recording']['execution_audit_status'] ?? '');
+        self::assertSame('failed', $recordingFailed['payload']['post_commit_recording']['idempotency_update_status'] ?? '');
+        self::assertTrue($recordingFailed['payload']['route_execution']['recovery_required'] ?? false);
+        self::assertTrue($recordingFailed['payload']['post_commit_recording']['recovery_required'] ?? false);
+        self::assertSame('post_commit_recording_failed', $recordingFailed['payload']['post_commit_recording']['recovery_reason'] ?? '');
+
+        $commitFailedApp = array_merge($this->sqliteApp(), [
+            'sample18_generated_submit_mutation_enabled' => true,
+            'sample18_generated_submit_executor_enabled' => true,
+            'sample18_generated_submit_transaction_callables' => [
+                'begin' => static fn (): array => ['ok' => true],
+                'commit' => static fn (): array => ['ok' => false, 'failure_code' => 'transaction_commit_failed', 'error' => 'commit failed'],
+                'rollback' => static fn (): array => ['ok' => true],
+                'dbaccess' => static fn (): array => ['ok' => true, 'result_code' => 'task_card_inserted', 'rows_affected' => 1],
+            ],
+        ]);
+        $bootstrap = app_config_db_bootstrap_apply($commitFailedApp);
+        self::assertTrue($bootstrap['ok'], $bootstrap['error']);
+        $commitFailed = app_lab_sample18_task_board_generated_submit_blocked_response(
+            'POST',
+            array_merge($validPost, ['title' => 'Commit route failure']),
+            $timestamp,
+            'valid',
+            $commitFailedApp,
+            $principal,
+        );
+        self::assertGeneratedSubmitRouteResponseContract($commitFailed, 500, 'failed', false, 'transaction_commit_failed', true);
+        self::assertSame(500, $commitFailed['status_code']);
+        self::assertSame('failed', $commitFailed['payload']['result'] ?? '');
+        self::assertSame('transaction_commit_failed', $commitFailed['payload']['failure_code'] ?? '');
+        self::assertSame('commit_failed', $commitFailed['payload']['transaction_result']['transaction_status'] ?? '');
+        self::assertSame('executed', $commitFailed['payload']['transaction_result']['dbaccess_status'] ?? '');
+        self::assertTrue($commitFailed['payload']['route_execution']['recovery_required'] ?? false);
+        self::assertSame('commit_status_unknown', $commitFailed['payload']['transaction_result']['recovery_reason'] ?? '');
+        self::assertSame([], $commitFailed['payload']['post_commit_recording'] ?? ['unexpected']);
+
+        $commitExceptionApp = array_merge($this->sqliteApp(), [
+            'sample18_generated_submit_mutation_enabled' => true,
+            'sample18_generated_submit_executor_enabled' => true,
+            'sample18_generated_submit_transaction_callables' => [
+                'begin' => static fn (): array => ['ok' => true],
+                'commit' => static function (): array {
+                    throw new RuntimeException('commit exploded');
+                },
+                'rollback' => static fn (): array => ['ok' => true],
+                'dbaccess' => static fn (): array => ['ok' => true, 'result_code' => 'task_card_inserted', 'rows_affected' => 1],
+            ],
+        ]);
+        $bootstrap = app_config_db_bootstrap_apply($commitExceptionApp);
+        self::assertTrue($bootstrap['ok'], $bootstrap['error']);
+        $commitException = app_lab_sample18_task_board_generated_submit_blocked_response(
+            'POST',
+            array_merge($validPost, ['title' => 'Commit route exception']),
+            $timestamp,
+            'valid',
+            $commitExceptionApp,
+            $principal,
+        );
+        self::assertGeneratedSubmitRouteResponseContract($commitException, 500, 'failed', false, 'transaction_commit_exception', true);
+        self::assertSame(500, $commitException['status_code']);
+        self::assertSame('failed', $commitException['payload']['result'] ?? '');
+        self::assertSame('transaction_commit_exception', $commitException['payload']['failure_code'] ?? '');
+        self::assertSame('commit_failed', $commitException['payload']['transaction_result']['transaction_status'] ?? '');
+        self::assertTrue($commitException['payload']['route_execution']['recovery_required'] ?? false);
+        self::assertSame('commit_status_unknown', $commitException['payload']['transaction_result']['recovery_reason'] ?? '');
+        self::assertSame([], $commitException['payload']['post_commit_recording'] ?? ['unexpected']);
+    }
+
+    public function testMiniTaskBoardGeneratedSubmitRouteBuildsDefaultRuntimeBinding(): void
+    {
+        $root = dirname(__DIR__, 2);
+        require_once $root . '/sample/tutorials/sample18-mini-task-board-demo/reference/DBACCESS-PHP/_support/mtool_runtime_db.php';
+
+        $checklist = $this->sample18FastContractChecklist();
+        $submitContract = $checklist['generated_submit_request_contract'] ?? [];
+        self::assertIsArray($submitContract);
+        $timestamp = (string) ($submitContract['timestamp_fixture'] ?? '');
+        $createExpectation = $submitContract['operations']['create_task_card'] ?? [];
+        self::assertIsArray($createExpectation);
+
+        $sqlitePath = sys_get_temp_dir() . '/sample18-route-default-binding-' . bin2hex(random_bytes(4)) . '.sqlite';
+        $previousSqlitePath = getenv('MTOOL_RUNTIME_SQLITE_PATH');
+        $previousDsn = getenv('MTOOL_RUNTIME_DB_DSN');
+        $previousUser = getenv('MTOOL_RUNTIME_DB_USER');
+        $previousPassword = getenv('MTOOL_RUNTIME_DB_PASSWORD');
+        $previousMtoolDb = $GLOBALS['mtooldb'] ?? null;
+
+        try {
+            putenv('MTOOL_RUNTIME_DB_DSN');
+            putenv('MTOOL_RUNTIME_DB_USER');
+            putenv('MTOOL_RUNTIME_DB_PASSWORD');
+            putenv('MTOOL_RUNTIME_SQLITE_PATH=' . $sqlitePath);
+            $setupDb = new MtoolGeneratedDbAccessRuntimeDb();
+            self::assertInstanceOf(
+                MtoolGeneratedDbAccessPdoResult::class,
+                $setupDb->execute(
+                    'CREATE TABLE task_card (
+                        id INTEGER PRIMARY KEY AUTOINCREMENT,
+                        title TEXT NOT NULL,
+                        body TEXT NOT NULL,
+                        status TEXT NOT NULL,
+                        assigned_to TEXT NOT NULL,
+                        priority INTEGER NOT NULL,
+                        due_date TEXT DEFAULT NULL,
+                        completed_at TEXT DEFAULT NULL,
+                        updated_at TEXT NOT NULL
+                    )',
+                ),
+            );
+
+            $app = array_merge($this->sqliteApp(), [
+                'sample18_generated_submit_mutation_enabled' => true,
+                'sample18_generated_submit_executor_enabled' => true,
+            ]);
+            $bootstrap = app_config_db_bootstrap_apply($app);
+            self::assertTrue($bootstrap['ok'], $bootstrap['error']);
+            $validPost = array_merge(
+                ['operation_key' => 'create_task_card', '_csrf_token' => 'client-token'],
+                is_array($createExpectation['valid_input'] ?? null) ? $createExpectation['valid_input'] : [],
+            );
+
+            $executed = app_lab_sample18_task_board_generated_submit_blocked_response(
+                'POST',
+                $validPost,
+                $timestamp,
+                'valid',
+                $app,
+                [
+                    'id' => 'sample18-default-binding@example.test',
+                    'auth_source' => 'phpunit',
+                ],
+            );
+            self::assertGeneratedSubmitRouteResponseContract($executed, 200, 'executed', true, '');
+            self::assertSame(200, $executed['status_code']);
+            self::assertSame('executed', $executed['payload']['result'] ?? '');
+            self::assertSame('committed', $executed['payload']['transaction_result']['transaction_status'] ?? '');
+            self::assertSame('recorded', $executed['payload']['post_commit_recording']['recording_status'] ?? '');
+
+            $verifyDb = new MtoolGeneratedDbAccessRuntimeDb();
+            $insertedRows = $verifyDb->query('SELECT title FROM task_card ORDER BY id ASC');
+            self::assertInstanceOf(MtoolGeneratedDbAccessPdoResult::class, $insertedRows);
+            self::assertSame(['New generated task'], $insertedRows->fetch_row());
+
+            $missingRuntimeApp = array_merge($this->sqliteApp(), [
+                'sample18_generated_submit_mutation_enabled' => true,
+                'sample18_generated_submit_executor_enabled' => true,
+                'sample18_generated_submit_runtime_reference_dir' => sys_get_temp_dir() . '/missing-sample18-runtime-' . bin2hex(random_bytes(4)),
+            ]);
+            $missingBootstrap = app_config_db_bootstrap_apply($missingRuntimeApp);
+            self::assertTrue($missingBootstrap['ok'], $missingBootstrap['error']);
+            $missingRuntime = app_lab_sample18_task_board_generated_submit_blocked_response(
+                'POST',
+                array_merge($validPost, ['title' => 'Missing runtime']),
+                $timestamp,
+                'valid',
+                $missingRuntimeApp,
+                [
+                    'id' => 'sample18-default-binding@example.test',
+                    'auth_source' => 'phpunit',
+                ],
+            );
+            self::assertGeneratedSubmitRouteResponseContract($missingRuntime, 500, 'failed', false, 'executor_default_runtime_file_missing');
+            self::assertSame(500, $missingRuntime['status_code']);
+            self::assertSame('failed', $missingRuntime['payload']['result'] ?? '');
+            self::assertSame('executor_default_runtime_file_missing', $missingRuntime['payload']['failure_code'] ?? '');
+            self::assertSame('failed', $missingRuntime['payload']['executor_config']['status'] ?? '');
+            self::assertFalse($missingRuntime['payload']['executor_config']['ok'] ?? true);
+            self::assertFalse($missingRuntime['payload']['executor_config']['ready'] ?? true);
+            self::assertSame('app', $missingRuntime['payload']['executor_config']['mutation_enablement_source'] ?? '');
+            self::assertSame('app', $missingRuntime['payload']['executor_config']['executor_enablement_source'] ?? '');
+            self::assertSame('default_runtime_reference', $missingRuntime['payload']['executor_config']['dependency_source'] ?? '');
+            self::assertSame('executor_default_runtime_file_missing', $missingRuntime['payload']['executor_config']['failure_code'] ?? '');
+            self::assertContains('runtime_reference_file_missing', $missingRuntime['payload']['executor_config']['reasons'] ?? []);
+            self::assertContains('runtime_reference_file_missing', $missingRuntime['payload']['route_execution']['reasons'] ?? []);
+        } finally {
+            $previousDsn === false ? putenv('MTOOL_RUNTIME_DB_DSN') : putenv('MTOOL_RUNTIME_DB_DSN=' . $previousDsn);
+            $previousSqlitePath === false ? putenv('MTOOL_RUNTIME_SQLITE_PATH') : putenv('MTOOL_RUNTIME_SQLITE_PATH=' . $previousSqlitePath);
+            $previousUser === false ? putenv('MTOOL_RUNTIME_DB_USER') : putenv('MTOOL_RUNTIME_DB_USER=' . $previousUser);
+            $previousPassword === false ? putenv('MTOOL_RUNTIME_DB_PASSWORD') : putenv('MTOOL_RUNTIME_DB_PASSWORD=' . $previousPassword);
+            if ($previousMtoolDb === null) {
+                unset($GLOBALS['mtooldb']);
+            } else {
+                $GLOBALS['mtooldb'] = $previousMtoolDb;
+            }
+            if (is_file($sqlitePath)) {
+                unlink($sqlitePath);
+            }
+        }
     }
 
     public function testMiniTaskBoardGeneratedSubmitMutationGateHelperIsNonMutating(): void
@@ -1234,6 +1760,143 @@ final class Sample18MiniTaskBoardDemoTest extends TestCase
         self::assertSame('disabled', $disabled['status']);
         self::assertContains('enablement_flag_disabled', $disabled['reasons']);
         self::assertFalse($disabled['mutation_enabled']);
+    }
+
+    public function testMiniTaskBoardGeneratedSubmitExecutorConfigResolverFailsClosed(): void
+    {
+        $previousMutationFlag = getenv('MTOOL_SAMPLE18_GENERATED_SUBMIT_MUTATION_ENABLED');
+        $previousExecutorFlag = getenv('MTOOL_SAMPLE18_GENERATED_SUBMIT_EXECUTOR_ENABLED');
+
+        try {
+            putenv('MTOOL_SAMPLE18_GENERATED_SUBMIT_MUTATION_ENABLED');
+            putenv('MTOOL_SAMPLE18_GENERATED_SUBMIT_EXECUTOR_ENABLED');
+
+            $default = app_lab_sample18_task_board_generated_submit_executor_config([]);
+            self::assertSame('disabled', $default['status']);
+            self::assertFalse($default['ready']);
+            self::assertFalse($default['mutation_enabled']);
+            self::assertFalse($default['executor_enabled']);
+            self::assertSame('default', $default['mutation_enablement_source']);
+            self::assertSame('default', $default['executor_enablement_source']);
+            self::assertContains('mutation_enablement_disabled', $default['reasons']);
+            self::assertContains('executor_enablement_disabled', $default['reasons']);
+
+            putenv('MTOOL_SAMPLE18_GENERATED_SUBMIT_MUTATION_ENABLED=1');
+            putenv('MTOOL_SAMPLE18_GENERATED_SUBMIT_EXECUTOR_ENABLED=1');
+            $envReady = app_lab_sample18_task_board_generated_submit_executor_config([]);
+            self::assertSame('ready', $envReady['status']);
+            self::assertTrue($envReady['ready']);
+            self::assertSame('env', $envReady['mutation_enablement_source']);
+            self::assertSame('env', $envReady['executor_enablement_source']);
+            self::assertSame('default_runtime_reference', $envReady['dependency_source']);
+            self::assertSame([], $envReady['reasons']);
+
+            $appOverride = app_lab_sample18_task_board_generated_submit_executor_config([
+                'sample18_generated_submit_mutation_enabled' => false,
+            ]);
+            self::assertSame('disabled', $appOverride['status']);
+            self::assertFalse($appOverride['mutation_enabled']);
+            self::assertTrue($appOverride['executor_enabled']);
+            self::assertSame('app', $appOverride['mutation_enablement_source']);
+            self::assertSame('env', $appOverride['executor_enablement_source']);
+            self::assertContains('mutation_enablement_disabled', $appOverride['reasons']);
+
+            $missingRuntimeDir = sys_get_temp_dir() . '/missing-sample18-runtime-config-' . bin2hex(random_bytes(4));
+            $missingRuntime = app_lab_sample18_task_board_generated_submit_executor_config([
+                'sample18_generated_submit_mutation_enabled' => true,
+                'sample18_generated_submit_executor_enabled' => true,
+                'sample18_generated_submit_runtime_reference_dir' => $missingRuntimeDir,
+            ]);
+            self::assertSame('failed', $missingRuntime['status']);
+            self::assertFalse($missingRuntime['ok']);
+            self::assertFalse($missingRuntime['ready']);
+            self::assertSame('executor_default_runtime_file_missing', $missingRuntime['failure_code']);
+            self::assertContains('runtime_reference_file_missing', $missingRuntime['reasons']);
+            self::assertStringStartsWith($missingRuntimeDir, $missingRuntime['missing_file']);
+
+            $callable = static fn (): array => ['ok' => true];
+            $injected = app_lab_sample18_task_board_generated_submit_executor_config([
+                'sample18_generated_submit_mutation_enabled' => true,
+                'sample18_generated_submit_executor_enabled' => true,
+                'sample18_generated_submit_runtime_reference_dir' => $missingRuntimeDir,
+                'sample18_generated_submit_transaction_callables' => [
+                    'begin' => $callable,
+                    'commit' => $callable,
+                    'rollback' => $callable,
+                    'dbaccess' => $callable,
+                ],
+            ]);
+            self::assertSame('ready', $injected['status']);
+            self::assertTrue($injected['ok']);
+            self::assertTrue($injected['ready']);
+            self::assertSame('injected_transaction_callables', $injected['dependency_source']);
+            self::assertSame([], $injected['reasons']);
+        } finally {
+            $previousMutationFlag === false
+                ? putenv('MTOOL_SAMPLE18_GENERATED_SUBMIT_MUTATION_ENABLED')
+                : putenv('MTOOL_SAMPLE18_GENERATED_SUBMIT_MUTATION_ENABLED=' . $previousMutationFlag);
+            $previousExecutorFlag === false
+                ? putenv('MTOOL_SAMPLE18_GENERATED_SUBMIT_EXECUTOR_ENABLED')
+                : putenv('MTOOL_SAMPLE18_GENERATED_SUBMIT_EXECUTOR_ENABLED=' . $previousExecutorFlag);
+        }
+    }
+
+    public function testMiniTaskBoardGeneratedSubmitRouteExposesEnvExecutorConfigMetadata(): void
+    {
+        $previousMutationFlag = getenv('MTOOL_SAMPLE18_GENERATED_SUBMIT_MUTATION_ENABLED');
+        $previousExecutorFlag = getenv('MTOOL_SAMPLE18_GENERATED_SUBMIT_EXECUTOR_ENABLED');
+
+        try {
+            putenv('MTOOL_SAMPLE18_GENERATED_SUBMIT_MUTATION_ENABLED=1');
+            putenv('MTOOL_SAMPLE18_GENERATED_SUBMIT_EXECUTOR_ENABLED');
+
+            $checklist = $this->sample18FastContractChecklist();
+            $submitContract = $checklist['generated_submit_request_contract'] ?? [];
+            self::assertIsArray($submitContract);
+            $timestamp = (string) ($submitContract['timestamp_fixture'] ?? '');
+            $createExpectation = $submitContract['operations']['create_task_card'] ?? [];
+            self::assertIsArray($createExpectation);
+
+            $app = $this->sqliteApp();
+            $bootstrap = app_config_db_bootstrap_apply($app);
+            self::assertTrue($bootstrap['ok'], $bootstrap['error']);
+            $validPost = array_merge(
+                ['operation_key' => 'create_task_card', '_csrf_token' => 'client-token'],
+                is_array($createExpectation['valid_input'] ?? null) ? $createExpectation['valid_input'] : [],
+            );
+
+            $blocked = app_lab_sample18_task_board_generated_submit_blocked_response(
+                'POST',
+                $validPost,
+                $timestamp,
+                'valid',
+                $app,
+                [
+                    'id' => 'sample18-env-config@example.test',
+                    'auth_source' => 'phpunit',
+                ],
+            );
+
+            self::assertSame(409, $blocked['status_code']);
+            self::assertSame('blocked', $blocked['payload']['result'] ?? '');
+            self::assertSame('ready', $blocked['payload']['mutation_gate']['status'] ?? '');
+            self::assertSame('blocked', $blocked['payload']['executor_coordination_plan']['status'] ?? '');
+            self::assertSame('disabled', $blocked['payload']['executor_config']['status'] ?? '');
+            self::assertFalse($blocked['payload']['executor_config']['ready'] ?? true);
+            self::assertTrue($blocked['payload']['executor_config']['mutation_enabled'] ?? false);
+            self::assertFalse($blocked['payload']['executor_config']['executor_enabled'] ?? true);
+            self::assertSame('env', $blocked['payload']['executor_config']['mutation_enablement_source'] ?? '');
+            self::assertSame('default', $blocked['payload']['executor_config']['executor_enablement_source'] ?? '');
+            self::assertSame('default_runtime_reference', $blocked['payload']['executor_config']['dependency_source'] ?? '');
+            self::assertSame(['executor_enablement_disabled'], $blocked['payload']['executor_config']['reasons'] ?? []);
+        } finally {
+            $previousMutationFlag === false
+                ? putenv('MTOOL_SAMPLE18_GENERATED_SUBMIT_MUTATION_ENABLED')
+                : putenv('MTOOL_SAMPLE18_GENERATED_SUBMIT_MUTATION_ENABLED=' . $previousMutationFlag);
+            $previousExecutorFlag === false
+                ? putenv('MTOOL_SAMPLE18_GENERATED_SUBMIT_EXECUTOR_ENABLED')
+                : putenv('MTOOL_SAMPLE18_GENERATED_SUBMIT_EXECUTOR_ENABLED=' . $previousExecutorFlag);
+        }
     }
 
     public function testMiniTaskBoardGeneratedSubmitDbAccessExecutionPlanIsNonMutating(): void
@@ -3461,11 +4124,13 @@ final class Sample18MiniTaskBoardDemoTest extends TestCase
         $contractActions = $screenDefinition['contracts'][0]['actions'] ?? [];
         self::assertIsArray($contractActions);
         $fieldCountsByAction = [];
+        $contractActionsByKey = [];
         $bindingGate = $checklist['submit_route_binding_gate'] ?? [];
         self::assertIsArray($bindingGate);
         foreach ($contractActions as $action) {
             self::assertIsArray($action);
             $actionKey = (string) ($action['action_key'] ?? '');
+            $contractActionsByKey[$actionKey] = $action;
             $fieldCountsByAction[$actionKey] = count($action['fields'] ?? []);
             self::assertSame('disabled', (string) ($action['availability'] ?? ''));
             self::assertSame(
@@ -3502,12 +4167,191 @@ final class Sample18MiniTaskBoardDemoTest extends TestCase
             }
         }
         self::assertSame($htmlDomContract['managed_action_field_counts'] ?? [], $fieldCountsByAction);
+        $routeContracts = app_lab_sample18_task_board_generated_submit_contracts();
+        $submitContract = $checklist['generated_submit_request_contract'] ?? [];
+        self::assertIsArray($submitContract);
+        $timestamp = (string) ($submitContract['timestamp_fixture'] ?? '');
+        self::assertNotSame('', $timestamp);
+        foreach ($routeContracts as $operationKey => $routeContract) {
+            self::assertArrayHasKey($operationKey, $contractActionsByKey);
+            $action = $contractActionsByKey[$operationKey];
+            self::assertSame($operationKey, $action['action_key'] ?? '');
+            self::assertSame($operationKey, $action['operation_key'] ?? '');
+            self::assertSame($bindingGate['submit_route'] ?? '', $action['submit_route'] ?? '');
+
+            $expectedFieldMap = [];
+            foreach (($routeContract['key_fields'] ?? []) as $fieldKey) {
+                $expectedFieldMap[$fieldKey] = ['role' => 'key', 'required' => true, 'client_write' => false];
+            }
+            foreach (($routeContract['required_client_fields'] ?? []) as $fieldKey) {
+                $expectedFieldMap[$fieldKey] = ['role' => 'input', 'required' => true, 'client_write' => true];
+            }
+            foreach (($routeContract['optional_client_fields'] ?? []) as $fieldKey) {
+                $expectedFieldMap[$fieldKey] = ['role' => 'input', 'required' => false, 'client_write' => true];
+            }
+            ksort($expectedFieldMap);
+
+            $actualFieldMap = [];
+            foreach (($action['fields'] ?? []) as $field) {
+                self::assertIsArray($field);
+                $fieldKey = (string) ($field['field_key'] ?? '');
+                $actualFieldMap[$fieldKey] = [
+                    'role' => (string) ($field['role'] ?? ''),
+                    'required' => (bool) ($field['required'] ?? false),
+                    'client_write' => (bool) ($field['client_write'] ?? false),
+                ];
+            }
+            ksort($actualFieldMap);
+            self::assertSame($expectedFieldMap, $actualFieldMap);
+
+            foreach (array_merge(
+                array_keys($routeContract['fixed_fields'] ?? []),
+                $routeContract['derived_fields'] ?? [],
+                $routeContract['server_managed_fields'] ?? [],
+            ) as $serverOwnedFieldKey) {
+                self::assertArrayNotHasKey($serverOwnedFieldKey, $actualFieldMap);
+            }
+
+            $expectation = $submitContract['operations'][$operationKey] ?? [];
+            self::assertIsArray($expectation);
+            $validInput = is_array($expectation['valid_input'] ?? null) ? $expectation['valid_input'] : [];
+            $intent = app_no_code_runtime_action_intent($screenDefinition, $action, $validInput);
+            self::assertTrue($intent['ok'], $operationKey . ': ' . ($intent['error'] ?? ''));
+            self::assertSame($operationKey, $intent['intent']['operation_key'] ?? '');
+
+            $expectedKeyPayload = [];
+            foreach (($routeContract['key_fields'] ?? []) as $fieldKey) {
+                if (array_key_exists($fieldKey, $validInput)) {
+                    $expectedKeyPayload[$fieldKey] = $validInput[$fieldKey];
+                }
+            }
+            $actualKeyPayload = $intent['intent']['payload']['key'] ?? [];
+            ksort($expectedKeyPayload);
+            ksort($actualKeyPayload);
+            self::assertSame($expectedKeyPayload, $actualKeyPayload);
+
+            $expectedInputPayload = [];
+            foreach (array_merge(
+                $routeContract['required_client_fields'] ?? [],
+                $routeContract['optional_client_fields'] ?? [],
+            ) as $fieldKey) {
+                if (array_key_exists($fieldKey, $validInput)) {
+                    $expectedInputPayload[$fieldKey] = $validInput[$fieldKey];
+                }
+            }
+            $actualInputPayload = $intent['intent']['payload']['input'] ?? [];
+            ksort($expectedInputPayload);
+            ksort($actualInputPayload);
+            self::assertSame($expectedInputPayload, $actualInputPayload);
+            self::assertSame([], $intent['intent']['payload']['filter'] ?? ['unexpected']);
+
+            $routeInput = array_merge(
+                $intent['intent']['payload']['key'] ?? [],
+                $intent['intent']['payload']['input'] ?? [],
+            );
+            $normalized = app_lab_sample18_task_board_normalize_generated_submit_request(
+                $operationKey,
+                $routeInput,
+                $timestamp,
+            );
+            self::assertTrue($normalized['ok'], $operationKey . ': ' . implode(', ', $normalized['errors'] ?? []));
+            self::assertSame($expectation['expected_payload'] ?? [], $normalized['payload']);
+        }
+        $missingCreateTitle = app_no_code_runtime_action_intent(
+            $screenDefinition,
+            $contractActionsByKey['create_task_card'] ?? [],
+            ['body' => 'Missing title stays fail-closed'],
+        );
+        self::assertFalse($missingCreateTitle['ok']);
+        self::assertSame('input.missing:title', $missingCreateTitle['error'] ?? '');
         $runtimePreview = NoCodeUiContractAssertions::readJsonFile($this, $publishedRoot . '/runtime-preview.json');
         NoCodeUiContractAssertions::assertRuntimePreviewScreenKeys(
             $this,
             $runtimePreview,
             $metadataContract['screen_keys'] ?? [],
         );
+        $runtimeScreensByKey = [];
+        foreach (($runtimePreview['screens'] ?? []) as $runtimeScreen) {
+            self::assertIsArray($runtimeScreen);
+            $runtimeScreensByKey[(string) ($runtimeScreen['screen_key'] ?? '')] = $runtimeScreen;
+        }
+        $runtimeListRows = $runtimeScreensByKey['task_card_list']['data']['rows'] ?? [];
+        self::assertIsArray($runtimeListRows);
+        self::assertCount(count($fixture['seed_rows'] ?? []), $runtimeListRows);
+        $firstRuntimeRow = is_array($runtimeListRows[0] ?? null) ? $runtimeListRows[0] : [];
+        $firstRuntimeRowKey = (string) ($firstRuntimeRow['id']['display_value'] ?? '');
+        self::assertNotSame('', $firstRuntimeRowKey);
+        self::assertMatchesRegularExpression('/^[0-9]+$/', $firstRuntimeRowKey);
+
+        $enabledCandidatePolicyActions = [];
+        $routeContracts = app_lab_sample18_task_board_generated_submit_contracts();
+        foreach ($contractActionsByKey as $actionKey => $action) {
+            $enabledCandidatePolicyActions[] = [
+                'action_key' => $actionKey,
+                'availability' => array_key_exists($actionKey, $routeContracts) ? 'enabled' : 'disabled',
+                'policy' => array_key_exists($actionKey, $routeContracts)
+                    ? ['failed_checks' => []]
+                    : ['failed_checks' => ['adapter_contract_missing']],
+            ];
+        }
+        $enabledCandidateDefinition = app_no_code_runtime_definition_with_action_policy_overlay(
+            $screenDefinition,
+            ['contracts' => [['actions' => $enabledCandidatePolicyActions]]],
+        );
+        $enabledCandidateRenderResult = app_no_code_runtime_render_screen(
+            $enabledCandidateDefinition,
+            'task_card_form',
+            [],
+            $firstRuntimeRow,
+        );
+        self::assertTrue($enabledCandidateRenderResult['ok'], $enabledCandidateRenderResult['error']);
+        $enabledCandidateActionsByKey = [];
+        foreach (($enabledCandidateRenderResult['render']['actions'] ?? []) as $renderAction) {
+            self::assertIsArray($renderAction);
+            $enabledCandidateActionsByKey[(string) ($renderAction['action_key'] ?? '')] = $renderAction;
+        }
+        foreach (array_keys($routeContracts) as $operationKey) {
+            self::assertArrayHasKey($operationKey, $enabledCandidateActionsByKey);
+            self::assertSame('enabled', $enabledCandidateActionsByKey[$operationKey]['availability'] ?? '');
+            self::assertTrue($enabledCandidateActionsByKey[$operationKey]['enabled'] ?? false);
+            self::assertSame([], $enabledCandidateActionsByKey[$operationKey]['failed_checks'] ?? ['unexpected']);
+        }
+        $enabledCandidateHtml = app_no_code_runtime_render_screen_html($enabledCandidateRenderResult['render']);
+        foreach (array_keys($routeContracts) as $operationKey) {
+            self::assertMatchesRegularExpression(
+                '/data-action-key="' . preg_quote($operationKey, '/') . '"[^>]+data-action-availability="enabled"[^>]+data-action-enabled="true"/',
+                $enabledCandidateHtml,
+            );
+        }
+
+        foreach (['update_task_card', 'complete_task_card'] as $keyedOperationKey) {
+            $keyedIntent = app_no_code_runtime_action_intent(
+                $screenDefinition,
+                $contractActionsByKey[$keyedOperationKey] ?? [],
+                array_merge(
+                    ['id' => $firstRuntimeRowKey],
+                    $keyedOperationKey === 'update_task_card'
+                        ? ['title' => 'Selected row title handoff']
+                        : [],
+                ),
+            );
+            self::assertTrue($keyedIntent['ok'], $keyedOperationKey . ': ' . ($keyedIntent['error'] ?? ''));
+            self::assertSame(['id' => $firstRuntimeRowKey], $keyedIntent['intent']['payload']['key'] ?? []);
+        }
+        $missingUpdateKey = app_no_code_runtime_action_intent(
+            $screenDefinition,
+            $contractActionsByKey['update_task_card'] ?? [],
+            ['title' => 'Missing selected row key'],
+        );
+        self::assertFalse($missingUpdateKey['ok']);
+        self::assertStringContainsString('input.missing:id', $missingUpdateKey['error'] ?? '');
+        $missingCompleteKey = app_no_code_runtime_action_intent(
+            $screenDefinition,
+            $contractActionsByKey['complete_task_card'] ?? [],
+            [],
+        );
+        self::assertFalse($missingCompleteKey['ok']);
+        self::assertSame('input.missing:id', $missingCompleteKey['error'] ?? '');
         NoCodeUiContractAssertions::assertRuntimePreviewScreenField(
             $this,
             $runtimePreview,
@@ -3530,12 +4374,83 @@ final class Sample18MiniTaskBoardDemoTest extends TestCase
             $runtimePreviewHtml,
             $htmlDomContract['disabled_extension_action_keys'] ?? [],
         );
+        self::assertStringContainsString('data-runtime-row-key="' . $firstRuntimeRowKey . '"', $runtimePreviewHtml);
+        foreach (array_keys($routeContracts) as $operationKey) {
+            self::assertMatchesRegularExpression(
+                '/data-action-key="' . preg_quote($operationKey, '/') . '"[^>]+data-action-availability="disabled"/',
+                $runtimePreviewHtml,
+            );
+        }
+        foreach ([
+            'function runtimeActionKeyField(render)',
+            "fields[fieldIndex].role === 'key'",
+            'renderFields[renderFieldIndex].is_key',
+            'function runtimeSelectedKeyFromRender(render)',
+            'metadata.selected_key',
+            'function firstRuntimeFieldValue(render, item, fieldKey)',
+            'selectedRowValue !== \'\' && selectedRowValue === selectedKey',
+            'data-runtime-selected-key',
+            'function refreshRuntimeDataForSelectedRow(button)',
+            "button.getAttribute('data-runtime-selected-key')",
+            'runtimeDataUrlWithSelectedKey(selectedKey)',
+        ] as $selectedRowSourceNeedle) {
+            self::assertStringContainsString($selectedRowSourceNeedle, $runtimePreviewHtml);
+        }
         self::assertStringContainsString(
             'data-action-submit-url="' . ($htmlDomContract['managed_action_submit_url'] ?? '') . '"',
             $runtimePreviewHtml,
         );
+        foreach (array_keys($routeContracts) as $operationKey) {
+            self::assertStringContainsString('data-action-key="' . $operationKey . '"', $runtimePreviewHtml);
+            self::assertStringContainsString('data-operation-key="' . $operationKey . '"', $runtimePreviewHtml);
+        }
+        foreach ([
+            'function submitGuardedGeneratedAction(button)',
+            "formData.append('operation_key', button.getAttribute('data-operation-key') || button.getAttribute('data-action-key') || '')",
+            "formData.append(button.getAttribute('data-action-csrf-token-field') || '_csrf_token', guardedSubmitCsrfToken(button, screen))",
+            'Object.keys(input).forEach(function (fieldKey) {',
+            'formData.append(fieldKey, input[fieldKey])',
+            'fetch(submitUrl, {',
+            "method: 'POST'",
+            "credentials: 'same-origin'",
+            "Accept: 'application/json'",
+        ] as $guardedSubmitSourceNeedle) {
+            self::assertStringContainsString($guardedSubmitSourceNeedle, $runtimePreviewHtml);
+        }
         foreach (($bindingGate['required_dom_attributes'] ?? []) as $attribute => $value) {
             self::assertStringContainsString($attribute . '="' . $value . '"', $runtimePreviewHtml);
+        }
+    }
+
+    /**
+     * @return array<string,mixed>
+     */
+    private static function assertGeneratedSubmitRouteResponseContract(
+        array $response,
+        int $expectedStatusCode,
+        string $expectedResult,
+        bool $expectedOk,
+        string $expectedFailureCode,
+        ?bool $expectedRecoveryRequired = null,
+    ): void {
+        self::assertSame($expectedStatusCode, $response['status_code'] ?? null);
+        $payload = is_array($response['payload'] ?? null) ? $response['payload'] : [];
+        self::assertSame($expectedResult, $payload['result'] ?? '');
+        self::assertSame($expectedOk, $payload['ok'] ?? null);
+        self::assertSame($expectedFailureCode, $payload['failure_code'] ?? '');
+
+        if ($expectedResult === 'executed') {
+            self::assertTrue($payload['accepted'] ?? false);
+            self::assertSame('executed', $payload['route_execution']['execution_status'] ?? '');
+            self::assertSame('committed', $payload['transaction_result']['transaction_status'] ?? '');
+            self::assertSame('recorded', $payload['post_commit_recording']['recording_status'] ?? '');
+        }
+
+        if ($expectedRecoveryRequired !== null) {
+            self::assertSame(
+                $expectedRecoveryRequired,
+                $payload['route_execution']['recovery_required'] ?? null,
+            );
         }
     }
 

@@ -181,6 +181,7 @@ function app_no_code_runtime_render_fields(array $fields): array
             'field_key' => (string) ($field['field_key'] ?? ''),
             'label' => (string) ($field['label'] ?? $field['field_key'] ?? ''),
             'type' => (string) ($field['type'] ?? 'string'),
+            'is_key' => (bool) ($field['is_key'] ?? false),
             'required' => (bool) ($field['required'] ?? false),
             'readonly' => (bool) ($field['readonly'] ?? false),
             'visibility' => (string) ($field['visibility'] ?? 'visible'),
@@ -836,6 +837,7 @@ function app_no_code_runtime_screen_status_message(string $screenState, string $
  */
 function app_no_code_runtime_render_list_html(array $fields, array $rows, string $emptyStateMessage = 'No records to show yet.', string $caption = 'Records'): string
 {
+    $keyField = app_no_code_runtime_key_field($fields);
     $headerCells = [];
     foreach ($fields as $field) {
         $headerCells[] = '<th scope="col">' . app_no_code_runtime_html_escape((string) ($field['label'] ?? $field['field_key'] ?? '')) . '</th>';
@@ -854,7 +856,9 @@ function app_no_code_runtime_render_list_html(array $fields, array $rows, string
             $cells[] = '<td>' . app_no_code_runtime_html_escape((string) ($cell['display_value'] ?? '')) . '</td>';
         }
 
-        $bodyRows[] = '<tr>' . implode('', $cells) . '</tr>';
+        $rowKeyCell = $keyField !== '' && is_array($row[$keyField] ?? null) ? $row[$keyField] : [];
+        $rowKey = (string) ($rowKeyCell['display_value'] ?? '');
+        $bodyRows[] = '<tr' . ($rowKey !== '' ? ' data-runtime-row-key="' . app_no_code_runtime_html_escape($rowKey) . '"' : '') . '>' . implode('', $cells) . '</tr>';
     }
 
     if ($bodyRows === []) {
@@ -874,6 +878,20 @@ function app_no_code_runtime_render_list_html(array $fields, array $rows, string
         '</table>',
         '</div>',
     ]);
+}
+
+/**
+ * @param list<array<string,mixed>> $fields
+ */
+function app_no_code_runtime_key_field(array $fields): string
+{
+    foreach ($fields as $field) {
+        if ((bool) ($field['is_key'] ?? false)) {
+            return (string) ($field['field_key'] ?? '');
+        }
+    }
+
+    return '';
 }
 
 /**
@@ -986,12 +1004,18 @@ function app_no_code_runtime_render_actions_html(array $actions, string $screenT
         $blockedResponseHandling = (string) ($submitBindingGate['blocked_response_handling'] ?? '');
         $failureDisplayTarget = (string) ($submitBindingGate['failure_display_target'] ?? '');
         $failClosedResult = (string) ($submitBindingGate['fail_closed_result'] ?? '');
+        $availability = (string) ($action['availability'] ?? 'disabled');
+        $policyFailedChecks = array_values(array_filter(
+            array_map('strval', is_array($action['failed_checks'] ?? null) ? $action['failed_checks'] : []),
+            static fn (string $check): bool => $check !== '',
+        ));
         $hintId = app_no_code_runtime_dom_id('no-code-action-hint-' . $screenKey . '-' . $actionKey);
         $disabledReason = $enabled ? '' : 'policy-not-enabled';
         $buttons[] = '<span class="no-code-action-control" data-action-control="' . app_no_code_runtime_html_escape($actionKey) . '">'
             . '<button type="button" data-action-key="' . app_no_code_runtime_html_escape($actionKey) . '"'
             . ' data-operation-key="' . app_no_code_runtime_html_escape((string) ($action['operation_key'] ?? '')) . '"'
             . ' data-operation-type="' . app_no_code_runtime_html_escape($operationType) . '"'
+            . ' data-action-availability="' . app_no_code_runtime_html_escape($availability) . '"'
             . ' data-action-enabled="' . ($enabled ? 'true' : 'false') . '"'
             . ' data-action-state="' . $actionState . '"'
             . ' data-action-affordance="keyboard-intent-preview"'
@@ -1011,6 +1035,7 @@ function app_no_code_runtime_render_actions_html(array $actions, string $screenT
             . ($blockedResponseHandling !== '' ? ' data-action-blocked-response-handling="' . app_no_code_runtime_html_escape($blockedResponseHandling) . '"' : '')
             . ($failureDisplayTarget !== '' ? ' data-action-failure-display-target="' . app_no_code_runtime_html_escape($failureDisplayTarget) . '"' : '')
             . ($failClosedResult !== '' ? ' data-action-fail-closed-result="' . app_no_code_runtime_html_escape($failClosedResult) . '"' : '')
+            . ($policyFailedChecks !== [] ? ' data-action-policy-failed-checks="' . app_no_code_runtime_html_escape(implode(',', $policyFailedChecks)) . '"' : '')
             . ($disabledReason !== '' ? ' data-action-disabled-reason="' . app_no_code_runtime_html_escape($disabledReason) . '"' : '')
             . ' aria-describedby="' . app_no_code_runtime_html_escape($hintId) . '"'
             . ' aria-disabled="' . ($enabled ? 'false' : 'true') . '"'
@@ -1540,6 +1565,12 @@ function app_no_code_runtime_preview_js(): string
         if (fields[fieldIndex] && fields[fieldIndex].role === 'key' && fields[fieldIndex].field_key) {
           return String(fields[fieldIndex].field_key);
         }
+      }
+    }
+    var renderFields = Array.isArray(render && render.fields) ? render.fields : [];
+    for (var renderFieldIndex = 0; renderFieldIndex < renderFields.length; renderFieldIndex += 1) {
+      if (renderFields[renderFieldIndex] && renderFields[renderFieldIndex].is_key && renderFields[renderFieldIndex].field_key) {
+        return String(renderFields[renderFieldIndex].field_key);
       }
     }
     return '';
@@ -3544,8 +3575,22 @@ function app_no_code_runtime_preview_js(): string
     if (!payload) {
       return 'Generated submit did not return a usable response.';
     }
+    if (payload.ok && payload.result === 'executed') {
+      return 'Generated submit executed.';
+    }
     if (payload.result === 'blocked') {
+      if (payload.idempotency && payload.idempotency.status === 'duplicate') {
+        return 'Generated submit blocked: ' + (payload.failure_code || 'duplicate_request') + '. Duplicate request was not executed.';
+      }
       return 'Generated submit blocked: ' + (payload.failure_code || 'blocked') + '. Mutation dispatch remains disabled.';
+    }
+    var recoveryReason = guardedSubmitRecoveryReason(payload);
+    if (recoveryReason !== '') {
+      var recoveryMessage = 'Generated submit requires recovery: ' + recoveryReason + '.';
+      if (payload.failure_code) {
+        recoveryMessage += ' Failure: ' + payload.failure_code + '.';
+      }
+      return recoveryMessage;
     }
     if (payload.failure_code) {
       return 'Generated submit rejected: ' + payload.failure_code + '.';
@@ -3554,6 +3599,57 @@ function app_no_code_runtime_preview_js(): string
       return 'Generated submit failed: ' + payload.error + '.';
     }
     return 'Generated submit failed.';
+  }
+
+  function guardedSubmitRecoveryReason(payload) {
+    if (!payload) {
+      return '';
+    }
+    var candidates = [
+      payload.route_execution,
+      payload.transaction_result,
+      payload.post_commit_recording
+    ];
+    for (var index = 0; index < candidates.length; index += 1) {
+      var candidate = candidates[index];
+      if (candidate && candidate.recovery_required) {
+        return candidate.recovery_reason || payload.recovery_reason || 'recovery_required';
+      }
+    }
+    if (payload.recovery_required) {
+      return payload.recovery_reason || 'recovery_required';
+    }
+    return '';
+  }
+
+  function guardedSubmitResultState(payload) {
+    if (!payload) {
+      return 'error';
+    }
+    if (payload.ok && payload.result === 'executed') {
+      return 'success';
+    }
+    if (payload.result === 'blocked') {
+      return 'blocked';
+    }
+    if (guardedSubmitRecoveryReason(payload) !== '') {
+      return 'recovery-required';
+    }
+    return 'error';
+  }
+
+  function writeGuardedSubmitResultAttributes(target, payload, state, recoveryReason) {
+    target.setAttribute('data-action-last-submit-result', payload && payload.result ? payload.result : 'invalid');
+    target.setAttribute('data-action-last-failure-code', payload && payload.failure_code ? payload.failure_code : '');
+    target.setAttribute('data-action-recovery-required', recoveryReason !== '' ? 'true' : 'false');
+    if (recoveryReason !== '') {
+      target.setAttribute('data-action-recovery-reason', recoveryReason);
+    } else {
+      target.removeAttribute('data-action-recovery-reason');
+    }
+    if (state) {
+      target.setAttribute('data-action-state', state);
+    }
   }
 
   function submitGuardedGeneratedAction(button) {
@@ -3594,22 +3690,20 @@ function app_no_code_runtime_preview_js(): string
         };
       });
     }).then(function (payload) {
-      var blocked = payload && payload.result === 'blocked' && payload.failure_code === (button.getAttribute('data-action-fail-closed-result') || '');
-      var state = blocked ? 'blocked' : 'error';
+      var state = guardedSubmitResultState(payload);
+      var recoveryReason = guardedSubmitRecoveryReason(payload);
       var message = guardedSubmitResultMessage(payload);
+      var executed = !!(payload && payload.ok && payload.result === 'executed');
       button.disabled = false;
-      button.setAttribute('data-action-state', state);
-      button.setAttribute('data-action-last-submit-result', payload && payload.result ? payload.result : 'invalid');
-      button.setAttribute('data-action-last-failure-code', payload && payload.failure_code ? payload.failure_code : '');
+      writeGuardedSubmitResultAttributes(button, payload, state, recoveryReason);
       if (feedback) {
         feedback.textContent = message;
         feedback.setAttribute('data-state', state);
-        feedback.setAttribute('data-action-last-submit-result', payload && payload.result ? payload.result : 'invalid');
-        feedback.setAttribute('data-action-last-failure-code', payload && payload.failure_code ? payload.failure_code : '');
+        writeGuardedSubmitResultAttributes(feedback, payload, '', recoveryReason);
       }
       window.__noCodeRuntimeDispatches.push({
-        ok: false,
-        executed: false,
+        ok: !!(payload && payload.ok),
+        executed: executed,
         network_submit: true,
         result: payload || null,
         message: message
@@ -3623,11 +3717,15 @@ function app_no_code_runtime_preview_js(): string
       button.setAttribute('data-action-state', 'error');
       button.setAttribute('data-action-last-submit-result', 'request_failed');
       button.setAttribute('data-action-last-failure-code', 'request_failed');
+      button.setAttribute('data-action-recovery-required', 'false');
+      button.removeAttribute('data-action-recovery-reason');
       if (feedback) {
         feedback.textContent = 'Generated submit request failed.';
         feedback.setAttribute('data-state', 'error');
         feedback.setAttribute('data-action-last-submit-result', 'request_failed');
         feedback.setAttribute('data-action-last-failure-code', 'request_failed');
+        feedback.setAttribute('data-action-recovery-required', 'false');
+        feedback.removeAttribute('data-action-recovery-reason');
       }
       window.__noCodeRuntimeDispatches.push({
         ok: false,
