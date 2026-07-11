@@ -10,6 +10,80 @@ use PHPUnit\Framework\TestCase;
 
 final class Sample18MiniTaskBoardDemoTest extends TestCase
 {
+    public function testMiniTaskBoardGeneratedDbAccessRuntimeSupportsPdoTransactions(): void
+    {
+        $root = dirname(__DIR__, 2);
+        $generatorSource = (string) file_get_contents($root . '/mtool/app/project_output_db_access_generator.php');
+        $referenceSource = (string) file_get_contents(
+            $root . '/sample/tutorials/sample18-mini-task-board-demo/reference/DBACCESS-PHP/_support/mtool_runtime_db.php',
+        );
+        foreach (['beginTransaction', 'commit', 'rollBack', 'inTransaction'] as $method) {
+            self::assertStringContainsString('public function ' . $method . '()', $generatorSource);
+            self::assertStringContainsString('public function ' . $method . '()', $referenceSource);
+        }
+
+        $sqlitePath = sys_get_temp_dir() . '/sample18-runtime-' . bin2hex(random_bytes(4)) . '.sqlite';
+        $previousDsn = getenv('MTOOL_RUNTIME_DB_DSN');
+        $previousSqlitePath = getenv('MTOOL_RUNTIME_SQLITE_PATH');
+        $previousUser = getenv('MTOOL_RUNTIME_DB_USER');
+        $previousPassword = getenv('MTOOL_RUNTIME_DB_PASSWORD');
+
+        try {
+            putenv('MTOOL_RUNTIME_DB_DSN');
+            putenv('MTOOL_RUNTIME_DB_USER');
+            putenv('MTOOL_RUNTIME_DB_PASSWORD');
+            putenv('MTOOL_RUNTIME_SQLITE_PATH=' . $sqlitePath);
+            require_once $root . '/sample/tutorials/sample18-mini-task-board-demo/reference/DBACCESS-PHP/_support/mtool_runtime_db.php';
+
+            $db = new MtoolGeneratedDbAccessRuntimeDb();
+            self::assertFalse($db->inTransaction());
+            self::assertInstanceOf(
+                MtoolGeneratedDbAccessPdoResult::class,
+                $db->execute('CREATE TABLE items (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT NOT NULL)'),
+            );
+
+            self::assertTrue($db->beginTransaction());
+            self::assertTrue($db->inTransaction());
+            self::assertInstanceOf(
+                MtoolGeneratedDbAccessPdoResult::class,
+                $db->execute('INSERT INTO items (name) VALUES (?)', ['committed']),
+            );
+            self::assertTrue($db->commit());
+            self::assertFalse($db->inTransaction());
+
+            $committedRows = $db->query('SELECT COUNT(*) FROM items');
+            self::assertInstanceOf(MtoolGeneratedDbAccessPdoResult::class, $committedRows);
+            $committedCount = $committedRows->fetch_row();
+            self::assertSame(1, (int) ($committedCount[0] ?? 0));
+
+            self::assertTrue($db->beginTransaction());
+            self::assertTrue($db->inTransaction());
+            self::assertInstanceOf(
+                MtoolGeneratedDbAccessPdoResult::class,
+                $db->execute('INSERT INTO items (name) VALUES (?)', ['rolled back']),
+            );
+            self::assertTrue($db->rollBack());
+            self::assertFalse($db->inTransaction());
+
+            $rolledBackRows = $db->query('SELECT COUNT(*) FROM items');
+            self::assertInstanceOf(MtoolGeneratedDbAccessPdoResult::class, $rolledBackRows);
+            $rolledBackCount = $rolledBackRows->fetch_row();
+            self::assertSame(1, (int) ($rolledBackCount[0] ?? 0));
+
+            self::assertFalse($db->commit());
+            self::assertSame(1, $db->errno);
+            self::assertNotSame('', $db->error);
+        } finally {
+            $previousDsn === false ? putenv('MTOOL_RUNTIME_DB_DSN') : putenv('MTOOL_RUNTIME_DB_DSN=' . $previousDsn);
+            $previousSqlitePath === false ? putenv('MTOOL_RUNTIME_SQLITE_PATH') : putenv('MTOOL_RUNTIME_SQLITE_PATH=' . $previousSqlitePath);
+            $previousUser === false ? putenv('MTOOL_RUNTIME_DB_USER') : putenv('MTOOL_RUNTIME_DB_USER=' . $previousUser);
+            $previousPassword === false ? putenv('MTOOL_RUNTIME_DB_PASSWORD') : putenv('MTOOL_RUNTIME_DB_PASSWORD=' . $previousPassword);
+            if (is_file($sqlitePath)) {
+                unlink($sqlitePath);
+            }
+        }
+    }
+
     public function testMiniTaskBoardNoCodeGoldenFixtureMatchesSeedAndRouteContract(): void
     {
         $fixture = $this->sample18NoCodeGoldenFixture();
