@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 require_once dirname(__DIR__, 2) . '/mtool/app/no_code_custom_operation_dispatch.php';
 require_once dirname(__DIR__, 2) . '/mtool/app/no_code_mtool_dogfooding_probe.php';
+require_once dirname(__DIR__, 2) . '/mtool/app/no_code_screen_definition.php';
 
 use PHPUnit\Framework\TestCase;
 
@@ -103,6 +104,40 @@ final class NoCodeCustomOperationDispatchTest extends TestCase
         self::assertSame('stale_artifact', $result['failure_code']);
     }
 
+    public function testSample18ManagedActionDispatchPreflightStopsAtDeferredAvailabilityBeforeMutation(): void
+    {
+        $result = app_no_code_custom_operation_dispatch_preflight([], $this->sample18Request([
+            'csrf_valid' => true,
+            'principal' => $this->sample18Principal(['editor']),
+        ]));
+
+        self::assertFalse($result['allowed']);
+        self::assertSame('blocked', $result['result']);
+        self::assertSame(409, $result['status_code']);
+        self::assertSame('deferred_availability', $result['failure_code']);
+        self::assertNull($result['plan']);
+        self::assertSame('web_lab_login', $result['operation']['route_boundary']['auth_guard'] ?? '');
+        self::assertSame('project.edit', $result['operation']['policy_key'] ?? '');
+        self::assertSame('sample18.task_card.dry_run_action', $result['audit_event']['event_type'] ?? '');
+        self::assertSame('create_task_card', $result['audit_event']['metadata']['operation_key'] ?? '');
+        self::assertSame('deferred_availability', $result['audit_event']['metadata']['failure_code'] ?? '');
+    }
+
+    public function testSample18ManagedActionDispatchPreflightRejectsProjectPolicyBeforeAvailability(): void
+    {
+        $result = app_no_code_custom_operation_dispatch_preflight([], $this->sample18Request([
+            'csrf_valid' => true,
+            'principal' => $this->sample18Principal(['viewer']),
+        ]));
+
+        self::assertFalse($result['allowed']);
+        self::assertSame('unauthorized', $result['result']);
+        self::assertSame(403, $result['status_code']);
+        self::assertSame('policy_denied', $result['failure_code']);
+        self::assertNull($result['plan']);
+        self::assertSame('policy_denied', $result['audit_event']['metadata']['failure_code'] ?? '');
+    }
+
     /**
      * @param array<string,mixed> $overrides
      * @return array<string,mixed>
@@ -115,6 +150,27 @@ final class NoCodeCustomOperationDispatchTest extends TestCase
             'operation_key' => 'review_source_output_artifact',
             'custom_operations' => $this->customOperations(),
             'principal' => $this->adminPrincipal(),
+            'csrf_valid' => false,
+            'source_output' => [
+                'source_output_key' => 'NO-CODE-RUNTIME',
+            ],
+            'artifact_key' => '',
+            'current_artifact_key' => '',
+        ], $overrides);
+    }
+
+    /**
+     * @param array<string,mixed> $overrides
+     * @return array<string,mixed>
+     */
+    private function sample18Request(array $overrides = []): array
+    {
+        return array_merge([
+            'project_key' => 'SAMPLE18',
+            'source_output_key' => 'NO-CODE-RUNTIME',
+            'operation_key' => 'create_task_card',
+            'custom_operations' => app_no_code_screen_definition_sample18_task_card_custom_operations(),
+            'principal' => $this->sample18Principal(['editor']),
             'csrf_valid' => false,
             'source_output' => [
                 'source_output_key' => 'NO-CODE-RUNTIME',
@@ -154,6 +210,25 @@ final class NoCodeCustomOperationDispatchTest extends TestCase
             'project_roles' => [],
             'auth_source' => 'phpunit',
             'site' => 'admin',
+        ];
+    }
+
+    /**
+     * @param list<string> $projectRoles
+     * @return array<string,mixed>
+     */
+    private function sample18Principal(array $projectRoles): array
+    {
+        return [
+            'id' => 'sample18-user@example.test',
+            'display_name' => 'Sample18 User',
+            'roles' => ['user'],
+            'scopes' => [],
+            'project_roles' => [
+                'SAMPLE18' => $projectRoles,
+            ],
+            'auth_source' => 'phpunit',
+            'site' => 'lab',
         ];
     }
 }

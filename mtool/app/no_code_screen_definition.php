@@ -138,7 +138,7 @@ function app_no_code_screen_definition_sample18_task_card_custom_operations(): a
             'target' => 'shared_contract',
             'side_effect_class' => 'direct_mutation',
             'availability' => 'disabled',
-            'policy_key' => 'sample18.task_card.write',
+            'policy_key' => 'project.edit',
             'csrf_required' => true,
             'audit_event' => 'sample18.task_card.dry_run_action',
             'adapter_handoff' => 'sample18_task_card_curated_route',
@@ -1106,11 +1106,60 @@ function app_no_code_screen_definition_actions(array $contract, array $operation
             'permission_key' => (string) ($operation['permission_key'] ?? ''),
             'availability' => $policy['allowed'] ? 'enabled' : 'disabled',
             'policy' => $policy,
+            'submit_route' => app_no_code_screen_definition_managed_action_submit_route((string) ($operation['operation_key'] ?? '')),
+            'submit_binding_gate' => app_no_code_screen_definition_managed_action_submit_binding_gate((string) ($operation['operation_key'] ?? '')),
             'fields' => app_no_code_screen_definition_action_fields($operation),
         ];
     }
 
     return $actions;
+}
+
+function app_no_code_screen_definition_managed_action_submit_route(string $operationKey): string
+{
+    return in_array($operationKey, ['create_task_card', 'update_task_card', 'complete_task_card'], true)
+        ? '/samples/sample18-task-board/no-code/generated-submit'
+        : '';
+}
+
+/**
+ * @return array<string,mixed>
+ */
+function app_no_code_screen_definition_managed_action_submit_binding_gate(string $operationKey): array
+{
+    if (!in_array($operationKey, ['create_task_card', 'update_task_card', 'complete_task_card'], true)) {
+        return [];
+    }
+
+    return [
+        'binding_state' => 'blocked_preflight',
+        'submit_route' => app_no_code_screen_definition_managed_action_submit_route($operationKey),
+        'csrf_source' => 'sample18_task_board_form_token',
+        'csrf_token_field' => '_csrf_token',
+        'csrf_source_selector' => 'input[name=_csrf_token]',
+        'csrf_transport' => 'form_field',
+        'csrf_submit_field' => '_csrf_token',
+        'required_button_state' => 'guarded_enabled',
+        'click_binding_state' => 'blocked_route_enabled',
+        'submit_trigger' => 'guarded_click',
+        'network_submit_enabled' => true,
+        'guarded_click_inventory_state' => 'implemented_blocked_route',
+        'enablement_gate_set' => 'csrf_handoff_and_blocked_route_verified',
+        'enablement_gates' => [
+            'action_available',
+            'csrf_token_present',
+            'submit_route_declared',
+            'blocked_response_handled',
+            'mutation_dispatcher_still_disabled',
+        ],
+        'payload_assembly' => 'operation_key_plus_action_fields_plus_csrf',
+        'blocked_response_handling' => 'render_failure_feedback_without_retry',
+        'failure_display_target' => 'no-code-action-feedback',
+        'runtime_click_binding' => true,
+        'mutation_enabled' => false,
+        'fail_closed_result' => 'generated_submit_disabled',
+        'http_smoke_command' => 'make sample18-http-runtime-smoke',
+    ];
 }
 
 /**
@@ -1301,6 +1350,8 @@ function app_no_code_screen_definition_screen_actions(array $actions, array $ope
                 'operation_key' => (string) ($action['operation_key'] ?? ''),
                 'operation_type' => (string) ($action['operation_type'] ?? ''),
                 'availability' => (string) ($action['availability'] ?? 'disabled'),
+                'submit_route' => (string) ($action['submit_route'] ?? ''),
+                'submit_binding_gate' => is_array($action['submit_binding_gate'] ?? null) ? $action['submit_binding_gate'] : [],
             ];
         }
     }

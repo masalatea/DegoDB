@@ -11,6 +11,68 @@
 
 ## Index
 
+- `2026-0710-sample18-post-audit-failure-visibility-lane-closure.md`
+  - #591 sample18 post-audit-failure-visibility lane closure。#590 の audit append failure visibility を受け入れ、mutation enablement より前に generated submit idempotency persistence preflight (#592) を昇格。DBAccess mutation は未有効化。Status: `DONE`。
+- `2026-0710-sample18-generated-submit-audit-append-failure-visibility-coverage.md`
+  - #590 sample18 generated submit audit append failure visibility coverage。audit append failure 時も valid submit は HTTP 409 `generated_submit_disabled` のまま、`audit_append.status=failed` と非空 error を返し、dispatcher / top-level mutation は disabled のまま維持する focused coverage を追加。Status: `FIRST_SLICE_DONE`。
+- `2026-0710-sample18-post-blocked-audit-append-lane-closure.md`
+  - #589 sample18 post-blocked-audit-append lane closure。#588 の valid blocked generated submit audit append を受け入れ、次は mutation enablement より前に audit append failure visibility coverage (#590) を昇格。DBAccess mutation は未有効化。Status: `DONE`。
+- `2026-0710-sample18-generated-submit-blocked-audit-append-first-slice.md`
+  - #588 sample18 generated submit blocked audit append first slice。valid blocked generated submit request を config DB audit log に append し、response に `audit_append.status=appended` を返す。CSRF / validation / unknown operation failures は append せず、DBAccess mutation は未有効化。Status: `FIRST_SLICE_DONE`。
+- `2026-0710-sample18-post-idempotency-audit-helper-lane-closure.md`
+  - #587 sample18 post-idempotency-audit-helper lane closure。#586 の dry-run dedupe/fingerprint/audit preview helper を受け入れ、mutation enablement gate coverage より前に blocked valid generated submit の audit append first slice (#588) を昇格。DBAccess mutation は未有効化。Status: `DONE`。
+- `2026-0710-sample18-generated-submit-idempotency-audit-dry-run-helper.md`
+  - #586 sample18 generated submit idempotency/audit dry-run helper。canonical payload fingerprint、operation-scoped dedupe key preview、audit event preview を追加し、valid blocked response に preview metadata を返す。audit append / persistence / outbox / mutation は未有効化。focused PHPUnit、HTTP smoke、public runtime smoke、`make test` 通過。Status: `DONE`。
+- `2026-0710-sample18-generated-submit-idempotency-and-audit-inventory.md`
+  - #585 sample18 generated submit idempotency and audit inventory。operation-scoped dedupe key、payload fingerprint、audit event shape、persistence/response boundary を定義。次は dry-run key/event helper (#586) で、audit append / persistence / mutation は未有効化。Status: `DONE`。
+- `2026-0710-sample18-post-dispatcher-helper-lane-closure.md`
+  - #584 sample18 post-dispatcher-helper lane closure。#583 の dry-run dispatcher helper を受け入れ、mutation enablement gate coverage より前に idempotency / audit inventory (#585) を昇格。DBAccess mutation は未有効化。Status: `DONE`。
+- `2026-0710-sample18-mutation-dispatcher-helper-dry-run-first-slice.md`
+  - #583 sample18 mutation dispatcher helper dry-run first slice。normalized generated-submit payload を DBAccess-bound `TaskCardData` field metadata に組み立てる dry-run helper を追加し、route は引き続き `generated_submit_disabled` / `mutation_enabled=false`。focused PHPUnit、HTTP smoke、public runtime browser smoke、`make test` 通過。Status: `DONE`。
+- `2026-0710-sample18-mutation-dispatcher-inventory.md`
+  - #582 sample18 mutation dispatcher inventory。generated submit mutation dispatcher の operation mapping、DBAccess-bound payload boundary、auth/CSRF/idempotency/audit/stale-data gates、test matrix を定義。次は dry-run dispatcher helper (#583) で、DBAccess mutation は未有効化。Status: `DONE`。
+- `2026-0710-sample18-post-blocked-guarded-click-lane-closure.md`
+  - #581 sample18 post-blocked-guarded-click lane closure。#580 の blocked guarded generated submit click binding を受け入れ、追加 feedback hardening ではなく mutation dispatcher inventory (#582) を次に昇格。DBAccess / mutation は未有効化。Status: `DONE`。
+- `2026-0710-sample18-blocked-guarded-submit-click-binding-first-slice.md`
+  - #580 sample18 blocked guarded submit click binding first slice。generated managed action button を明示 gate の下で blocked generated-submit route へ POST 可能にし、public runtime browser smoke で `generated_submit_disabled` feedback を確認。DBAccess / mutation は disabled のまま維持。Status: `DONE`。
+- `2026-0710-sample18-post-guarded-click-inventory-lane-closure.md`
+  - #579 sample18 post-guarded-click-inventory lane closure。#578 の guard / payload / blocked response / failure display inventory を受け入れ、次は mutation dispatcher inventory ではなく、blocked route のまま guarded generated submit click binding first slice (#580) を昇格。Status: `DONE`。
+- `2026-0710-sample18-guarded-submit-click-binding-inventory.md`
+  - #578 sample18 guarded submit click binding inventory。generated submit action metadata / runtime DOM に guarded click inventory、enablement gate set、payload assembly、blocked response handling、failure display target を追加し、focused PHPUnit と public runtime browser smoke で確認。network submit / mutation は disabled のまま維持。Status: `DONE`。
+- `2026-0710-sample18-post-disabled-click-lane-closure.md`
+  - #577 sample18 post-disabled-click lane closure。#576 の disabled / non-clicking / non-submitting evidence を受け入れ、次は mutation dispatcher ではなく、blocked route のまま guarded generated click binding を設計する inventory (#578) を昇格。Status: `DONE`。
+- `2026-0710-sample18-disabled-submit-click-intent-preflight.md`
+  - #576 sample18 disabled submit click intent preflight。generated submit action metadata / runtime DOM に disabled click binding marker を追加し、public runtime browser smoke で disabled button の programmatic click が event/state change を起こさないことを確認。Status: `DONE`。
+- `2026-0710-sample18-post-csrf-handoff-lane-closure.md`
+  - #575 sample18 post-CSRF handoff lane closure。#574 の CSRF handoff contract を受け入れ、次は mutation dispatcher inventory ではなく、generated submit button が disabled のまま submit しないことを固定する disabled click intent preflight (#576) を昇格。Status: `DONE`。
+- `2026-0710-sample18-generated-submit-csrf-handoff-preflight.md`
+  - #574 sample18 generated submit CSRF handoff preflight。generated submit action metadata / runtime DOM に CSRF token field、source selector、transport、submit field を追加し、focused PHPUnit と public runtime disabled-action smoke で確認。button / mutation は disabled のまま維持。Status: `DONE`。
+- `2026-0710-sample18-post-csrf-submit-route-lane-closure.md`
+  - #573 sample18 post-CSRF submit route lane closure。#572 の route CSRF guard を受け入れ、次は disabled click intent / mutation dispatcher ではなく、generated runtime 側の CSRF token handoff contract (#574) を先に固定する判断を記録。Status: `DONE`。
+- `2026-0710-sample18-generated-submit-csrf-guard-preflight.md`
+  - #572 sample18 generated submit CSRF guard preflight。generated-submit route に missing / invalid CSRF の fail-closed JSON 403 を追加し、focused PHPUnit と `sample18-http-runtime-smoke` で valid blocked、missing CSRF、invalid CSRF、validation、unknown operation を確認。Status: `DONE`。
+- `2026-0710-sample18-submit-binding-lane-closure.md`
+  - #571 sample18 submit binding lane closure。#570 の binding gate を受け入れ、次は disabled click intent / mutation dispatcher ではなく、generated-submit route の fail-closed CSRF guard preflight (#572) を先に進める判断を記録。Status: `DONE`。
+- `2026-0710-sample18-submit-route-binding-gate-preflight.md`
+  - #570 sample18 submit route binding gate preflight。sample18 generated managed actions に `submit_binding_gate` metadata を追加し、runtime HTML / browser smoke で binding state、CSRF source、fail-closed result marker を確認。runtime click と mutation は disabled のまま維持。Status: `DONE`。
+- `2026-0710-sample18-blocked-submit-route-http-smoke.md`
+  - #569 sample18 blocked submit route HTTP smoke。既存 `sample18-http-runtime-smoke` に generated-submit endpoint の authenticated HTTP checks を追加し、GET 405、valid POST 409 blocked、invalid POST 422、unknown operation 404 の JSON failure を確認。Status: `DONE`。
+- `2026-0710-sample18-submit-route-lane-closure.md`
+  - #568 sample18 submit route lane closure。request contract、blocked JSON wrapper、disabled UI route marker までを preflight lane の受け入れ範囲として閉じ、次は runtime binding / mutation dispatch ではなく authenticated HTTP smoke (#569) を先に進める判断を記録。Status: `DONE`。
+- `2026-0710-sample18-generated-submit-route-browser-preflight.md`
+  - #567 sample18 generated submit route browser preflight。sample18 public runtime の disabled managed action button に blocked submit route marker `data-action-submit-url` が出ることを browser smoke で確認し、button / runtime execute は disabled のまま維持。Status: `DONE`。
+- `2026-0710-sample18-generated-submit-route-blocked-wrapper.md`
+  - #566 sample18 generated submit route blocked wrapper。`/samples/sample18-task-board/no-code/generated-submit` を追加し、payload validation 後も `generated_submit_disabled` で mutation 前に止まる JSON route wrapper を focused PHPUnit で確認。Status: `DONE`。
+- `2026-0710-sample18-generated-submit-request-contract-preflight.md`
+  - #565 sample18 generated submit request contract preflight。create/update/complete の generated submit payload normalization、ignored client fields、validation errors、unknown operation failure を route 追加前に helper / fixture / PHPUnit で固定。Status: `DONE`。
+- `2026-0710-sample18-managed-action-dispatch-guard-preflight.md`
+  - #564 sample18 managed action dispatch guard preflight。`web_lab_login` guard と `project.edit` policy に揃え、editor でも `deferred_availability`、viewer は `policy_denied` で fail closed する focused preflight coverage を追加。Status: `DONE`。
+- `2026-0710-sample18-disabled-action-surface-public-smoke.md`
+  - #563 sample18 disabled action surface public smoke。sample18 public runtime current page で complete/create/update の disabled managed action surface、policy-disabled state、submit 非有効化を headless Chrome smoke で確認。Status: `DONE`。
+- `2026-0710-sample18-generated-action-surface-metadata-first-slice.md`
+  - #562 sample18 generated action surface metadata first slice。create/update/complete を disabled generated managed action metadata へ昇格し、reopen/delete は curated-route-only の dry-run custom operation として維持。Status: `DONE`。
+- `2026-0710-sample18-safe-action-input-mapping-inventory.md`
+  - #561 sample18 safe action-input mapping inventory。generated mutation を有効化せず、sample18 の create/update/complete/reopen/delete について curated route action、DBAccess binding、key/input/fixed/server-managed field 境界を checklist と PHPUnit で固定。Status: `DONE`。
 - `2026-0710-sample18-public-runtime-status-filter-dom-preflight.md`
   - #560 sample18 public-runtime status filter DOM preflight。sample18 public NO-CODE-RUNTIME current page で runtime-data binding 後に generated `status` filter DOM controls が表示されることを、専用 Make target と DOM-only browser smoke で確認。Status: `DONE`。
 - `2026-0710-sample18-post-filter-no-code-increment-replan.md`

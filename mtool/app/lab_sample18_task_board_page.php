@@ -3,6 +3,8 @@
 declare(strict_types=1);
 
 require_once __DIR__ . '/csrf.php';
+require_once __DIR__ . '/audit_log_repository.php';
+require_once __DIR__ . '/auth.php';
 require_once __DIR__ . '/database.php';
 require_once __DIR__ . '/error_page.php';
 require_once __DIR__ . '/request.php';
@@ -12,6 +14,11 @@ require_once __DIR__ . '/sql_dialect.php';
 function app_lab_sample18_task_board_path(): string
 {
     return '/samples/sample18-task-board';
+}
+
+function app_lab_sample18_task_board_generated_submit_path(): string
+{
+    return app_lab_sample18_task_board_path() . '/no-code/generated-submit';
 }
 
 function app_lab_sample18_task_board_is_available(PDO $pdo): bool
@@ -103,6 +110,569 @@ function app_lab_sample18_task_board_redirect(array $request, string $message = 
         $location .= '?message=' . rawurlencode($message);
     }
     app_send_redirect_response($request, $location);
+}
+
+/**
+ * @return array<string,array<string,mixed>>
+ */
+function app_lab_sample18_task_board_generated_submit_contracts(): array
+{
+    return [
+        'create_task_card' => [
+            'operation_key' => 'create_task_card',
+            'curated_route_action' => 'create',
+            'db_access_function' => 'InsertTaskCard',
+            'key_fields' => [],
+            'required_client_fields' => ['title'],
+            'optional_client_fields' => ['body', 'assigned_to', 'priority', 'due_date'],
+            'fixed_fields' => ['status' => 'todo'],
+            'server_managed_fields' => ['completed_at', 'updated_at'],
+        ],
+        'update_task_card' => [
+            'operation_key' => 'update_task_card',
+            'curated_route_action' => 'update',
+            'db_access_function' => 'UpdateTaskCard',
+            'key_fields' => ['id'],
+            'required_client_fields' => ['title'],
+            'optional_client_fields' => ['body', 'status', 'assigned_to', 'priority', 'due_date'],
+            'derived_fields' => ['completed_at'],
+            'server_managed_fields' => ['updated_at'],
+        ],
+        'complete_task_card' => [
+            'operation_key' => 'complete_task_card',
+            'curated_route_action' => 'complete',
+            'db_access_function' => 'CompleteTaskCard',
+            'key_fields' => ['id'],
+            'required_client_fields' => [],
+            'optional_client_fields' => [],
+            'fixed_fields' => ['status' => 'done'],
+            'server_managed_fields' => ['completed_at', 'updated_at'],
+        ],
+    ];
+}
+
+/**
+ * @param array<string,mixed> $input
+ * @return array{
+ *     ok:bool,
+ *     operation_key:string,
+ *     curated_route_action:string,
+ *     db_access_function:string,
+ *     payload:array<string,mixed>,
+ *     ignored_input_fields:list<string>,
+ *     errors:list<string>,
+ *     failure_code:string
+ * }
+ */
+function app_lab_sample18_task_board_normalize_generated_submit_request(
+    string $operationKey,
+    array $input,
+    string $now,
+): array {
+    $contracts = app_lab_sample18_task_board_generated_submit_contracts();
+    $contract = $contracts[$operationKey] ?? null;
+    if (!is_array($contract)) {
+        return app_lab_sample18_task_board_generated_submit_request_result(
+            false,
+            $operationKey,
+            '',
+            '',
+            [],
+            array_keys($input),
+            ['operation.unknown'],
+            'unknown_operation',
+        );
+    }
+
+    $errors = [];
+    $payload = [];
+    if (in_array('id', $contract['key_fields'] ?? [], true)) {
+        $id = (int) ($input['id'] ?? 0);
+        if ($id <= 0) {
+            $errors[] = 'id.invalid';
+        } else {
+            $payload['id'] = $id;
+        }
+    }
+
+    if (in_array('title', $contract['required_client_fields'] ?? [], true)) {
+        $title = trim((string) ($input['title'] ?? ''));
+        if ($title === '') {
+            $errors[] = 'title.required';
+        }
+        $payload['title'] = $title;
+    }
+
+    if (in_array('body', $contract['optional_client_fields'] ?? [], true)) {
+        $payload['body'] = trim((string) ($input['body'] ?? ''));
+    }
+    if (in_array('assigned_to', $contract['optional_client_fields'] ?? [], true)) {
+        $payload['assigned_to'] = trim((string) ($input['assigned_to'] ?? ''));
+    }
+    if (in_array('priority', $contract['optional_client_fields'] ?? [], true)) {
+        $payload['priority'] = max(0, min(100, (int) ($input['priority'] ?? 10)));
+    }
+    if (in_array('due_date', $contract['optional_client_fields'] ?? [], true)) {
+        $payload['due_date'] = app_lab_sample18_task_board_normalize_due_date((string) ($input['due_date'] ?? ''));
+    }
+    if (in_array('status', $contract['optional_client_fields'] ?? [], true)) {
+        $payload['status'] = app_lab_sample18_task_board_normalize_status((string) ($input['status'] ?? ''));
+    }
+
+    foreach (($contract['fixed_fields'] ?? []) as $field => $value) {
+        if (is_string($field)) {
+            $payload[$field] = $value;
+        }
+    }
+    if (in_array('completed_at', $contract['derived_fields'] ?? [], true)) {
+        $payload['completed_at'] = ($payload['status'] ?? '') === 'done' ? $now : null;
+    }
+    foreach (($contract['server_managed_fields'] ?? []) as $field) {
+        if ($field === 'completed_at') {
+            $payload[$field] = ($payload['status'] ?? '') === 'done' ? $now : null;
+            continue;
+        }
+        if ($field === 'updated_at') {
+            $payload[$field] = $now;
+        }
+    }
+
+    $allowedInputFields = array_merge(
+        $contract['key_fields'] ?? [],
+        $contract['required_client_fields'] ?? [],
+        $contract['optional_client_fields'] ?? [],
+    );
+    $ignoredInputFields = array_values(array_diff(array_keys($input), $allowedInputFields));
+    sort($ignoredInputFields);
+    ksort($payload);
+
+    return app_lab_sample18_task_board_generated_submit_request_result(
+        $errors === [],
+        (string) ($contract['operation_key'] ?? $operationKey),
+        (string) ($contract['curated_route_action'] ?? ''),
+        (string) ($contract['db_access_function'] ?? ''),
+        $payload,
+        $ignoredInputFields,
+        $errors,
+        $errors === [] ? '' : 'validation_error',
+    );
+}
+
+function app_lab_sample18_task_board_normalize_due_date(string $value): ?string
+{
+    $normalized = trim($value);
+
+    return preg_match('/^\d{4}-\d{2}-\d{2}$/', $normalized) === 1 ? $normalized : null;
+}
+
+function app_lab_sample18_task_board_normalize_status(string $value): string
+{
+    $normalized = trim($value);
+
+    return in_array($normalized, ['todo', 'doing', 'done'], true) ? $normalized : 'todo';
+}
+
+/**
+ * @param array<string,mixed> $payload
+ * @param list<string> $ignoredInputFields
+ * @param list<string> $errors
+ * @return array{
+ *     ok:bool,
+ *     operation_key:string,
+ *     curated_route_action:string,
+ *     db_access_function:string,
+ *     payload:array<string,mixed>,
+ *     ignored_input_fields:list<string>,
+ *     errors:list<string>,
+ *     failure_code:string
+ * }
+ */
+function app_lab_sample18_task_board_generated_submit_request_result(
+    bool $ok,
+    string $operationKey,
+    string $curatedRouteAction,
+    string $dbAccessFunction,
+    array $payload,
+    array $ignoredInputFields,
+    array $errors,
+    string $failureCode,
+): array {
+    return [
+        'ok' => $ok,
+        'operation_key' => $operationKey,
+        'curated_route_action' => $curatedRouteAction,
+        'db_access_function' => $dbAccessFunction,
+        'payload' => $payload,
+        'ignored_input_fields' => $ignoredInputFields,
+        'errors' => $errors,
+        'failure_code' => $failureCode,
+    ];
+}
+
+function app_lab_sample18_task_board_generated_submit_db_access_field_name(string $fieldName): string
+{
+    $map = [
+        'id' => 'Id',
+        'title' => 'Title',
+        'body' => 'Body',
+        'status' => 'Status',
+        'assigned_to' => 'AssignedTo',
+        'priority' => 'Priority',
+        'due_date' => 'DueDate',
+        'completed_at' => 'CompletedAt',
+        'updated_at' => 'UpdatedAt',
+    ];
+
+    return $map[$fieldName] ?? $fieldName;
+}
+
+/**
+ * @param array{
+ *     ok:bool,
+ *     operation_key:string,
+ *     curated_route_action:string,
+ *     db_access_function:string,
+ *     payload:array<string,mixed>,
+ *     ignored_input_fields:list<string>,
+ *     errors:list<string>,
+ *     failure_code:string
+ * } $normalized
+ * @return array<string,mixed>
+ */
+function app_lab_sample18_task_board_generated_submit_dispatcher_dry_run(array $normalized): array
+{
+    if (!($normalized['ok'] ?? false)) {
+        return [
+            'ok' => false,
+            'dispatch_state' => 'not_ready',
+            'executed' => false,
+            'mutation_enabled' => false,
+            'failure_code' => (string) ($normalized['failure_code'] ?? 'validation_error'),
+        ];
+    }
+
+    $boundFields = [];
+    foreach (($normalized['payload'] ?? []) as $fieldName => $value) {
+        if (!is_string($fieldName)) {
+            continue;
+        }
+        $boundFields[app_lab_sample18_task_board_generated_submit_db_access_field_name($fieldName)] = $value;
+    }
+
+    return [
+        'ok' => true,
+        'dispatch_state' => 'dry_run',
+        'executed' => false,
+        'mutation_enabled' => false,
+        'operation_key' => (string) ($normalized['operation_key'] ?? ''),
+        'curated_route_action' => (string) ($normalized['curated_route_action'] ?? ''),
+        'db_access_class' => 'TaskCardDBAccess',
+        'db_access_function' => (string) ($normalized['db_access_function'] ?? ''),
+        'data_object' => 'TaskCardData',
+        'method_arguments' => [
+            'TaskCardObj' => $boundFields,
+        ],
+        'bound_fields' => $boundFields,
+    ];
+}
+
+/**
+ * @param array<string,mixed> $value
+ * @return array<string,mixed>
+ */
+function app_lab_sample18_task_board_generated_submit_canonical_array(array $value): array
+{
+    ksort($value);
+    foreach ($value as $key => $item) {
+        if (is_array($item)) {
+            $value[$key] = app_lab_sample18_task_board_generated_submit_canonical_array($item);
+        }
+    }
+
+    return $value;
+}
+
+/**
+ * @param array<string,mixed> $dispatcherResult
+ */
+function app_lab_sample18_task_board_generated_submit_payload_fingerprint(array $dispatcherResult): string
+{
+    $payload = [
+        'route_version' => 'sample18-generated-submit-v1',
+        'operation_key' => (string) ($dispatcherResult['operation_key'] ?? ''),
+        'bound_fields' => is_array($dispatcherResult['bound_fields'] ?? null) ? $dispatcherResult['bound_fields'] : [],
+    ];
+    $json = json_encode(app_lab_sample18_task_board_generated_submit_canonical_array($payload), JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
+
+    return hash('sha256', is_string($json) ? $json : '');
+}
+
+/**
+ * @param array<string,mixed> $dispatcherResult
+ */
+function app_lab_sample18_task_board_generated_submit_dedupe_key_preview(array $dispatcherResult): string
+{
+    $operationKey = (string) ($dispatcherResult['operation_key'] ?? '');
+    if ($operationKey === '' || !($dispatcherResult['ok'] ?? false)) {
+        return '';
+    }
+
+    return 'sample18.generated_submit.' . $operationKey . '.'
+        . substr(app_lab_sample18_task_board_generated_submit_payload_fingerprint($dispatcherResult), 0, 32);
+}
+
+/**
+ * @param array<string,mixed> $normalized
+ * @param array<string,mixed> $dispatcherResult
+ * @return array<string,mixed>
+ */
+function app_lab_sample18_task_board_generated_submit_idempotency_audit_preview(
+    array $normalized,
+    array $dispatcherResult,
+    string $result,
+    string $failureCode,
+): array {
+    if (!($normalized['ok'] ?? false) || !($dispatcherResult['ok'] ?? false)) {
+        return [
+            'dedupe_key_preview' => '',
+            'payload_fingerprint' => '',
+            'audit_event_preview' => [],
+        ];
+    }
+
+    $fingerprint = app_lab_sample18_task_board_generated_submit_payload_fingerprint($dispatcherResult);
+    $dedupeKey = app_lab_sample18_task_board_generated_submit_dedupe_key_preview($dispatcherResult);
+    $metadata = [
+        'operation_key' => (string) ($normalized['operation_key'] ?? ''),
+        'curated_route_action' => (string) ($normalized['curated_route_action'] ?? ''),
+        'db_access_function' => (string) ($normalized['db_access_function'] ?? ''),
+        'dispatch_state' => (string) ($dispatcherResult['dispatch_state'] ?? ''),
+        'mutation_enabled' => (bool) ($dispatcherResult['mutation_enabled'] ?? false),
+        'executed' => (bool) ($dispatcherResult['executed'] ?? false),
+        'failure_code' => $failureCode,
+        'dedupe_key' => $dedupeKey,
+        'payload_fingerprint' => $fingerprint,
+        'ignored_input_fields' => is_array($normalized['ignored_input_fields'] ?? null) ? $normalized['ignored_input_fields'] : [],
+        'normalized_payload' => is_array($normalized['payload'] ?? null) ? $normalized['payload'] : [],
+        'dispatcher_bound_fields' => is_array($dispatcherResult['bound_fields'] ?? null) ? $dispatcherResult['bound_fields'] : [],
+    ];
+
+    return [
+        'dedupe_key_preview' => $dedupeKey,
+        'payload_fingerprint' => $fingerprint,
+        'audit_event_preview' => [
+            'actor_login_id' => '',
+            'actor_source' => 'web_lab_login',
+            'project_key' => 'SAMPLE18',
+            'event_type' => 'sample18.generated_submit.requested',
+            'target_type' => 'sample18_task_card',
+            'target_key' => $dedupeKey,
+            'result' => $result,
+            'message' => $failureCode,
+            'metadata' => $metadata,
+        ],
+    ];
+}
+
+/**
+ * @param array<string,mixed> $auditEvent
+ * @param array<string,mixed> $principal
+ * @return array<string,mixed>
+ */
+function app_lab_sample18_task_board_generated_submit_audit_event_with_actor(
+    array $auditEvent,
+    array $principal,
+): array {
+    if ($auditEvent === []) {
+        return [];
+    }
+
+    if (trim((string) ($auditEvent['actor_login_id'] ?? '')) === '') {
+        $auditEvent['actor_login_id'] = trim((string) ($principal['id'] ?? ''));
+    }
+    if (trim((string) ($auditEvent['actor_source'] ?? '')) === '') {
+        $auditEvent['actor_source'] = trim((string) ($principal['auth_source'] ?? 'unknown'));
+    }
+
+    return $auditEvent;
+}
+
+/**
+ * @param array<string,mixed>|null $app
+ * @param array<string,mixed> $auditEvent
+ * @return array{ok:bool,skipped:bool,status:string,item:array<string,mixed>,error:string,reason:string}
+ */
+function app_lab_sample18_task_board_generated_submit_append_audit_event(?array $app, array $auditEvent): array
+{
+    if ($app === null) {
+        return [
+            'ok' => true,
+            'skipped' => true,
+            'status' => 'skipped',
+            'item' => [],
+            'error' => '',
+            'reason' => 'no_app',
+        ];
+    }
+
+    if ($auditEvent === []) {
+        return [
+            'ok' => true,
+            'skipped' => true,
+            'status' => 'skipped',
+            'item' => [],
+            'error' => '',
+            'reason' => 'no_audit_event',
+        ];
+    }
+
+    if (trim((string) ($auditEvent['actor_login_id'] ?? '')) === '') {
+        return [
+            'ok' => true,
+            'skipped' => true,
+            'status' => 'skipped',
+            'item' => [],
+            'error' => '',
+            'reason' => 'missing_actor',
+        ];
+    }
+
+    $append = app_audit_log_append($app, $auditEvent);
+
+    return [
+        'ok' => (bool) ($append['ok'] ?? false),
+        'skipped' => false,
+        'status' => ($append['ok'] ?? false) ? 'appended' : 'failed',
+        'item' => is_array($append['item'] ?? null) ? $append['item'] : [],
+        'error' => (string) ($append['error'] ?? ''),
+        'reason' => '',
+    ];
+}
+
+/**
+ * @param array<string,mixed> $post
+ * @return array{status_code:int,payload:array<string,mixed>}
+ */
+function app_lab_sample18_task_board_generated_submit_blocked_response(
+    string $requestMethod,
+    array $post,
+    string $now,
+    string $csrfGuardResult = 'valid',
+    ?array $app = null,
+    array $principal = [],
+): array {
+    if (strtoupper($requestMethod) !== 'POST') {
+        return [
+            'status_code' => 405,
+            'payload' => [
+                'ok' => false,
+                'accepted' => false,
+                'result' => 'invalid',
+                'failure_code' => 'method_not_allowed',
+                'allowed_methods' => ['POST'],
+                'mutation_enabled' => false,
+            ],
+        ];
+    }
+
+    if ($csrfGuardResult !== 'valid') {
+        return [
+            'status_code' => 403,
+            'payload' => [
+                'ok' => false,
+                'accepted' => false,
+                'result' => 'invalid',
+                'failure_code' => $csrfGuardResult === 'missing' ? 'missing_csrf' : 'invalid_csrf',
+                'errors' => [$csrfGuardResult === 'missing' ? 'csrf.missing' : 'csrf.invalid'],
+                'mutation_enabled' => false,
+            ],
+        ];
+    }
+
+    $operationKey = trim((string) ($post['operation_key'] ?? ''));
+    $input = $post;
+    unset($input['operation_key'], $input['_csrf_token']);
+    $normalized = app_lab_sample18_task_board_normalize_generated_submit_request($operationKey, $input, $now);
+    if (!$normalized['ok']) {
+        $statusCode = $normalized['failure_code'] === 'unknown_operation' ? 404 : 422;
+        return [
+            'status_code' => $statusCode,
+            'payload' => [
+                'ok' => false,
+                'accepted' => false,
+                'result' => 'invalid',
+                'failure_code' => $normalized['failure_code'],
+                'operation_key' => $normalized['operation_key'],
+                'errors' => $normalized['errors'],
+                'normalized_payload' => $normalized['payload'],
+                'ignored_input_fields' => $normalized['ignored_input_fields'],
+                'mutation_enabled' => false,
+            ],
+        ];
+    }
+
+    $dispatcherResult = app_lab_sample18_task_board_generated_submit_dispatcher_dry_run($normalized);
+    $idempotencyAuditPreview = app_lab_sample18_task_board_generated_submit_idempotency_audit_preview(
+        $normalized,
+        $dispatcherResult,
+        'blocked',
+        'generated_submit_disabled',
+    );
+    $auditEvent = app_lab_sample18_task_board_generated_submit_audit_event_with_actor(
+        is_array($idempotencyAuditPreview['audit_event_preview'] ?? null)
+            ? $idempotencyAuditPreview['audit_event_preview']
+            : [],
+        $principal,
+    );
+    $auditAppend = app_lab_sample18_task_board_generated_submit_append_audit_event($app, $auditEvent);
+
+    return [
+        'status_code' => 409,
+        'payload' => [
+            'ok' => false,
+            'accepted' => false,
+            'result' => 'blocked',
+            'failure_code' => 'generated_submit_disabled',
+            'operation_key' => $normalized['operation_key'],
+            'curated_route_action' => $normalized['curated_route_action'],
+            'db_access_function' => $normalized['db_access_function'],
+            'normalized_payload' => $normalized['payload'],
+            'ignored_input_fields' => $normalized['ignored_input_fields'],
+            'dispatcher_result' => $dispatcherResult,
+            'dedupe_key_preview' => $idempotencyAuditPreview['dedupe_key_preview'],
+            'payload_fingerprint' => $idempotencyAuditPreview['payload_fingerprint'],
+            'audit_event_preview' => $auditEvent,
+            'audit_append' => $auditAppend,
+            'mutation_enabled' => false,
+        ],
+    ];
+}
+
+/**
+ * @param array{request_id:string,method:string} $request
+ */
+function app_render_lab_sample18_task_board_generated_submit_page(array $app, array $request): void
+{
+    $submittedCsrfToken = trim((string) ($_POST['_csrf_token'] ?? ''));
+    $csrfGuardResult = 'valid';
+    if (strtoupper($request['method']) === 'POST') {
+        if ($submittedCsrfToken === '') {
+            $csrfGuardResult = 'missing';
+        } elseif (!app_verify_csrf_token($submittedCsrfToken)) {
+            $csrfGuardResult = 'invalid';
+        }
+    }
+
+    $response = app_lab_sample18_task_board_generated_submit_blocked_response(
+        $request['method'],
+        $_POST,
+        date('Y-m-d H:i:s'),
+        $csrfGuardResult,
+        $app,
+        app_auth_principal() ?? [],
+    );
+
+    app_send_json_response($request, $response['payload'], $response['status_code']);
 }
 
 function app_lab_sample18_task_board_handle_post(PDO $pdo, array $request): void

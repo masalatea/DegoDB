@@ -126,6 +126,10 @@ function app_no_code_custom_operation_dispatch_auth_guard_allows(array $operatio
         return app_auth_has_any_role(['admin', 'config'], $principal);
     }
 
+    if ($authGuard === 'web_lab_login') {
+        return trim((string) ($principal['id'] ?? '')) !== '';
+    }
+
     return false;
 }
 

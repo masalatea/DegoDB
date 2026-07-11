@@ -203,13 +203,20 @@ function app_no_code_runtime_render_actions(array $screenActions, array $contrac
         $actionKey = (string) ($screenAction['action_key'] ?? '');
         $contractAction = $contractActionsByKey[$actionKey] ?? [];
         $availability = (string) ($screenAction['availability'] ?? $contractAction['availability'] ?? 'disabled');
+        $submitRoute = (string) ($screenAction['submit_route'] ?? $contractAction['submit_route'] ?? '');
+        $submitBindingGate = is_array($screenAction['submit_binding_gate'] ?? null)
+            ? $screenAction['submit_binding_gate']
+            : (is_array($contractAction['submit_binding_gate'] ?? null) ? $contractAction['submit_binding_gate'] : []);
+        $guardedSubmitEnabled = app_no_code_runtime_guarded_submit_enabled($submitRoute, $submitBindingGate);
         $renderActions[] = [
             'action_key' => $actionKey,
             'label' => (string) ($contractAction['label'] ?? $actionKey),
             'operation_key' => (string) ($screenAction['operation_key'] ?? $contractAction['operation_key'] ?? ''),
             'operation_type' => (string) ($screenAction['operation_type'] ?? $contractAction['operation_type'] ?? ''),
-            'enabled' => $availability === 'enabled',
+            'enabled' => $availability === 'enabled' || $guardedSubmitEnabled,
             'availability' => $availability,
+            'submit_route' => $submitRoute,
+            'submit_binding_gate' => $submitBindingGate,
             'fields' => is_array($contractAction['fields'] ?? null) ? array_values($contractAction['fields']) : [],
             'failed_checks' => is_array($contractAction['policy']['failed_checks'] ?? null)
                 ? $contractAction['policy']['failed_checks']
@@ -218,6 +225,19 @@ function app_no_code_runtime_render_actions(array $screenActions, array $contrac
     }
 
     return $renderActions;
+}
+
+/**
+ * @param array<string,mixed> $submitBindingGate
+ */
+function app_no_code_runtime_guarded_submit_enabled(string $submitRoute, array $submitBindingGate): bool
+{
+    return $submitRoute !== ''
+        && ($submitBindingGate['network_submit_enabled'] ?? false) === true
+        && ($submitBindingGate['runtime_click_binding'] ?? false) === true
+        && ($submitBindingGate['mutation_enabled'] ?? true) === false
+        && (string) ($submitBindingGate['click_binding_state'] ?? '') === 'blocked_route_enabled'
+        && (string) ($submitBindingGate['submit_trigger'] ?? '') === 'guarded_click';
 }
 
 /**
@@ -950,6 +970,22 @@ function app_no_code_runtime_render_actions_html(array $actions, string $screenT
         $actionState = $enabled ? 'ready' : 'disabled';
         $actionKey = (string) ($action['action_key'] ?? '');
         $operationType = (string) ($action['operation_type'] ?? '');
+        $submitRoute = (string) ($action['submit_route'] ?? '');
+        $submitBindingGate = is_array($action['submit_binding_gate'] ?? null) ? $action['submit_binding_gate'] : [];
+        $bindingState = (string) ($submitBindingGate['binding_state'] ?? '');
+        $csrfSource = (string) ($submitBindingGate['csrf_source'] ?? '');
+        $csrfTokenField = (string) ($submitBindingGate['csrf_token_field'] ?? '');
+        $csrfSourceSelector = (string) ($submitBindingGate['csrf_source_selector'] ?? '');
+        $csrfTransport = (string) ($submitBindingGate['csrf_transport'] ?? '');
+        $clickBindingState = (string) ($submitBindingGate['click_binding_state'] ?? '');
+        $submitTrigger = (string) ($submitBindingGate['submit_trigger'] ?? '');
+        $networkSubmitEnabled = (bool) ($submitBindingGate['network_submit_enabled'] ?? false);
+        $guardedClickInventoryState = (string) ($submitBindingGate['guarded_click_inventory_state'] ?? '');
+        $enablementGateSet = (string) ($submitBindingGate['enablement_gate_set'] ?? '');
+        $payloadAssembly = (string) ($submitBindingGate['payload_assembly'] ?? '');
+        $blockedResponseHandling = (string) ($submitBindingGate['blocked_response_handling'] ?? '');
+        $failureDisplayTarget = (string) ($submitBindingGate['failure_display_target'] ?? '');
+        $failClosedResult = (string) ($submitBindingGate['fail_closed_result'] ?? '');
         $hintId = app_no_code_runtime_dom_id('no-code-action-hint-' . $screenKey . '-' . $actionKey);
         $disabledReason = $enabled ? '' : 'policy-not-enabled';
         $buttons[] = '<span class="no-code-action-control" data-action-control="' . app_no_code_runtime_html_escape($actionKey) . '">'
@@ -960,6 +996,21 @@ function app_no_code_runtime_render_actions_html(array $actions, string $screenT
             . ' data-action-state="' . $actionState . '"'
             . ' data-action-affordance="keyboard-intent-preview"'
             . ' data-keyboard-activation="enter-space"'
+            . ($submitRoute !== '' ? ' data-action-submit-url="' . app_no_code_runtime_html_escape($submitRoute) . '"' : '')
+            . ($bindingState !== '' ? ' data-action-binding-state="' . app_no_code_runtime_html_escape($bindingState) . '"' : '')
+            . ($csrfSource !== '' ? ' data-action-csrf-source="' . app_no_code_runtime_html_escape($csrfSource) . '"' : '')
+            . ($csrfTokenField !== '' ? ' data-action-csrf-token-field="' . app_no_code_runtime_html_escape($csrfTokenField) . '"' : '')
+            . ($csrfSourceSelector !== '' ? ' data-action-csrf-source-selector="' . app_no_code_runtime_html_escape($csrfSourceSelector) . '"' : '')
+            . ($csrfTransport !== '' ? ' data-action-csrf-transport="' . app_no_code_runtime_html_escape($csrfTransport) . '"' : '')
+            . ($clickBindingState !== '' ? ' data-action-click-binding-state="' . app_no_code_runtime_html_escape($clickBindingState) . '"' : '')
+            . ($submitTrigger !== '' ? ' data-action-submit-trigger="' . app_no_code_runtime_html_escape($submitTrigger) . '"' : '')
+            . ' data-action-network-submit-enabled="' . ($networkSubmitEnabled ? 'true' : 'false') . '"'
+            . ($guardedClickInventoryState !== '' ? ' data-action-guarded-click-inventory-state="' . app_no_code_runtime_html_escape($guardedClickInventoryState) . '"' : '')
+            . ($enablementGateSet !== '' ? ' data-action-enable-gate-set="' . app_no_code_runtime_html_escape($enablementGateSet) . '"' : '')
+            . ($payloadAssembly !== '' ? ' data-action-payload-assembly="' . app_no_code_runtime_html_escape($payloadAssembly) . '"' : '')
+            . ($blockedResponseHandling !== '' ? ' data-action-blocked-response-handling="' . app_no_code_runtime_html_escape($blockedResponseHandling) . '"' : '')
+            . ($failureDisplayTarget !== '' ? ' data-action-failure-display-target="' . app_no_code_runtime_html_escape($failureDisplayTarget) . '"' : '')
+            . ($failClosedResult !== '' ? ' data-action-fail-closed-result="' . app_no_code_runtime_html_escape($failClosedResult) . '"' : '')
             . ($disabledReason !== '' ? ' data-action-disabled-reason="' . app_no_code_runtime_html_escape($disabledReason) . '"' : '')
             . ' aria-describedby="' . app_no_code_runtime_html_escape($hintId) . '"'
             . ' aria-disabled="' . ($enabled ? 'false' : 'true') . '"'
@@ -1043,6 +1094,7 @@ function app_no_code_runtime_preview_css(): string
         '.no-code-action-feedback[data-state="idle"] { color: #62748a; }',
         '.no-code-action-feedback[data-state="working"] { color: #334e68; }',
         '.no-code-action-feedback[data-state="success"] { color: #0f5132; }',
+        '.no-code-action-feedback[data-state="blocked"] { color: #842029; }',
         '.no-code-action-feedback[data-state="error"] { color: #842029; }',
         '.no-code-intent-draft { border: 1px solid #d8dee8; border-radius: 6px; background: #f7f9fb; padding: 10px 12px; margin: -4px 0 14px; }',
         '.no-code-intent-draft-heading { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-bottom: 4px; }',
@@ -3462,6 +3514,131 @@ function app_no_code_runtime_preview_js(): string
     feedback.removeAttribute('data-runtime-outbox-detail-path');
   }
 
+  function isGuardedSubmitButton(button) {
+    return button
+      && button.getAttribute('data-action-submit-trigger') === 'guarded_click'
+      && button.getAttribute('data-action-network-submit-enabled') === 'true'
+      && button.getAttribute('data-action-click-binding-state') === 'blocked_route_enabled'
+      && (button.getAttribute('data-action-submit-url') || '') !== '';
+  }
+
+  function guardedSubmitCsrfToken(button, screen) {
+    var selector = button.getAttribute('data-action-csrf-source-selector') || '';
+    if (selector) {
+      try {
+        var selected = screen ? screen.querySelector(selector) : document.querySelector(selector);
+        if (selected && typeof selected.value !== 'undefined') {
+          return selected.value;
+        }
+      } catch (error) {
+        selector = '';
+      }
+    }
+    if (executionBinding && executionBinding.csrf_token) {
+      return executionBinding.csrf_token;
+    }
+    return '';
+  }
+
+  function guardedSubmitResultMessage(payload) {
+    if (!payload) {
+      return 'Generated submit did not return a usable response.';
+    }
+    if (payload.result === 'blocked') {
+      return 'Generated submit blocked: ' + (payload.failure_code || 'blocked') + '. Mutation dispatch remains disabled.';
+    }
+    if (payload.failure_code) {
+      return 'Generated submit rejected: ' + payload.failure_code + '.';
+    }
+    if (payload.error) {
+      return 'Generated submit failed: ' + payload.error + '.';
+    }
+    return 'Generated submit failed.';
+  }
+
+  function submitGuardedGeneratedAction(button) {
+    var screen = button.closest('.no-code-screen');
+    var feedback = screen ? screen.querySelector('.no-code-action-feedback') : null;
+    var submitUrl = button.getAttribute('data-action-submit-url') || '';
+    var formData = new FormData();
+    var input = collectScreenInput(button);
+
+    formData.append('operation_key', button.getAttribute('data-operation-key') || button.getAttribute('data-action-key') || '');
+    formData.append(button.getAttribute('data-action-csrf-token-field') || '_csrf_token', guardedSubmitCsrfToken(button, screen));
+    Object.keys(input).forEach(function (fieldKey) {
+      formData.append(fieldKey, input[fieldKey]);
+    });
+
+    button.disabled = true;
+    button.setAttribute('data-action-state', 'working');
+    if (feedback) {
+      feedback.textContent = 'Submitting generated action to blocked route...';
+      feedback.setAttribute('data-state', 'working');
+      feedback.removeAttribute('data-runtime-outbox-detail-path');
+    }
+
+    return fetch(submitUrl, {
+      method: 'POST',
+      body: formData,
+      credentials: 'same-origin',
+      headers: {
+        Accept: 'application/json'
+      }
+    }).then(function (response) {
+      return response.json().catch(function () {
+        return {
+          ok: false,
+          result: 'invalid',
+          failure_code: 'invalid_json_response',
+          http_status: response.status
+        };
+      });
+    }).then(function (payload) {
+      var blocked = payload && payload.result === 'blocked' && payload.failure_code === (button.getAttribute('data-action-fail-closed-result') || '');
+      var state = blocked ? 'blocked' : 'error';
+      var message = guardedSubmitResultMessage(payload);
+      button.disabled = false;
+      button.setAttribute('data-action-state', state);
+      button.setAttribute('data-action-last-submit-result', payload && payload.result ? payload.result : 'invalid');
+      button.setAttribute('data-action-last-failure-code', payload && payload.failure_code ? payload.failure_code : '');
+      if (feedback) {
+        feedback.textContent = message;
+        feedback.setAttribute('data-state', state);
+        feedback.setAttribute('data-action-last-submit-result', payload && payload.result ? payload.result : 'invalid');
+        feedback.setAttribute('data-action-last-failure-code', payload && payload.failure_code ? payload.failure_code : '');
+      }
+      window.__noCodeRuntimeDispatches.push({
+        ok: false,
+        executed: false,
+        network_submit: true,
+        result: payload || null,
+        message: message
+      });
+      if (screen) {
+        writeIntentDraft(screen);
+      }
+      return payload;
+    }).catch(function () {
+      button.disabled = false;
+      button.setAttribute('data-action-state', 'error');
+      button.setAttribute('data-action-last-submit-result', 'request_failed');
+      button.setAttribute('data-action-last-failure-code', 'request_failed');
+      if (feedback) {
+        feedback.textContent = 'Generated submit request failed.';
+        feedback.setAttribute('data-state', 'error');
+        feedback.setAttribute('data-action-last-submit-result', 'request_failed');
+        feedback.setAttribute('data-action-last-failure-code', 'request_failed');
+      }
+      window.__noCodeRuntimeDispatches.push({
+        ok: false,
+        executed: false,
+        network_submit: true,
+        error: 'request_failed',
+        message: 'Generated submit request failed.'
+      });
+    });
+  }
+
   function runtimeExecutionSyncStatus(payload) {
     var status = payload
       && payload.result
@@ -3892,6 +4069,10 @@ function app_no_code_runtime_preview_js(): string
 
   document.querySelectorAll('.no-code-actions button[data-action-key]').forEach(function (button) {
     button.addEventListener('click', function () {
+      if (isGuardedSubmitButton(button)) {
+        submitGuardedGeneratedAction(button);
+        return;
+      }
       button.setAttribute('data-action-state', 'working');
       var screen = button.closest('.no-code-screen');
       var feedback = screen ? screen.querySelector('.no-code-action-feedback') : null;

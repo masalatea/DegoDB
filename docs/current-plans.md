@@ -13,7 +13,7 @@ When someone asks for "the plan list", answer from this section first. / 「計�
 
 ### Main Plan / 主計画
 
-Current main status: #560 adds a narrow sample18 public-runtime status filter DOM preflight before safe action-input mapping. `develop` is 36 commits ahead of `origin/develop`, and push has not been performed for #432-#560. / 現在の主計画ステータス: #560 で safe action-input mapping より先に、sample18 public-runtime status filter DOM preflight を小さく追加しました。`develop` は `origin/develop` より 36 commits ahead、#432-#560 は push していません。
+Current main status: #591 closes sample18 audit append failure visibility and promotes idempotency persistence preflight before mutation enablement gate coverage. `develop` is 67 commits ahead of `origin/develop`, and push has not been performed for #432-#591. / 現在の主計画ステータス: #591 で sample18 audit append failure visibility を閉じ、mutation enablement gate coverage より前に idempotency persistence preflight を昇格しました。`develop` は `origin/develop` より 67 commits ahead、#432-#591 は push していません。
 
 | Order | Work unit / 作業の塊 | Commit unit / コミット単位 | Status | Rough effort / 目安 |
 | --- | --- | --- | --- | --- |
@@ -119,7 +119,38 @@ Current main status: #560 adds a narrow sample18 public-runtime status filter DO
 | 558 | Sample18 status filter fast contract / sample18 status filter fast contract | Add fixture and fast DOM/metadata assertions for generated task status filter controls before browser smoke or route replacement | `DONE` | 0.5 - 1 day / 半日 - 1 日 |
 | 559 | Sample18 post-filter no-code increment replan / sample18 post-filter no-code increment replan | Decide whether to add public-runtime status filter DOM coverage next or move to safe action-input mapping | `DONE` | 0.25 - 0.5 day / 0.25 - 0.5 日 |
 | 560 | Sample18 public-runtime status filter DOM preflight / sample18 public-runtime status filter DOM preflight | Add the smallest public-runtime check that proves generated task status filter controls appear before action-input mapping | `DONE` | 0.5 - 1 day / 半日 - 1 日 |
-| 561 | Sample18 safe action-input mapping inventory / sample18 safe action-input mapping inventory | Define the minimal generated action input mapping contract for sample18 without enabling mutation or replacing the curated route | `ACTIVE_NEXT` | 0.5 - 1 day / 半日 - 1 日 |
+| 561 | Sample18 safe action-input mapping inventory / sample18 safe action-input mapping inventory | Define the minimal generated action input mapping contract for sample18 without enabling mutation or replacing the curated route | `DONE` | 0.5 - 1 day / 半日 - 1 日 |
+| 562 | Sample18 generated action surface metadata first slice / sample18 generated action surface metadata first slice | Promote the inventoried create/update/complete mapping into generated action metadata while keeping buttons disabled and route mutation owned by the curated page | `DONE` | 0.5 - 1 day / 半日 - 1 日 |
+| 563 | Sample18 disabled action surface public smoke / sample18 disabled action surface public smoke | Prove the public runtime exposes the new disabled managed action surface without submit enablement before any dispatch work | `DONE` | 0.5 - 1 day / 半日 - 1 日 |
+| 564 | Sample18 managed action dispatch guard preflight / sample18 managed action dispatch guard preflight | Define the guard and failure contract for any future sample18 generated submit path before enabling dispatch | `DONE` | 0.5 - 1 day / 半日 - 1 日 |
+| 565 | Sample18 generated submit request contract preflight / sample18 generated submit request contract preflight | Define the payload, field normalization, and validation failure contract for generated sample18 submit requests before adding a route | `DONE` | 0.5 - 1 day / 半日 - 1 日 |
+| 566 | Sample18 generated submit route blocked wrapper / sample18 generated submit route blocked wrapper | Add a narrow generated submit HTTP wrapper that validates request payloads but still returns blocked before mutation dispatch | `DONE` | 0.5 - 1 day / 半日 - 1 日 |
+| 567 | Sample18 generated submit route browser preflight / sample18 generated submit route browser preflight | Prove the public/runtime UI can point to the blocked generated submit route without enabling buttons or mutation | `DONE` | 0.5 - 1 day / 半日 - 1 日 |
+| 568 | Sample18 submit route lane closure / sample18 submit route lane closure | Close the blocked submit-route preflight lane and decide whether route binding, HTTP smoke, or mutation dispatch should be promoted next | `DONE` | 0.25 - 0.5 day / 0.25 - 0.5 日 |
+| 569 | Sample18 blocked submit route HTTP smoke / sample18 blocked submit route HTTP smoke | Prove the generated submit endpoint returns blocked, validation, unknown-operation, and method-guard JSON through the authenticated HTTP stack before runtime binding or mutation dispatch | `DONE` | 0.5 - 1 day / 半日 - 1 日 |
+| 570 | Sample18 submit route binding gate preflight / sample18 submit route binding gate preflight | Define the generated runtime binding and enablement gates for the submit route, including CSRF source, disabled-state transition, and fail-closed fallback before any mutation dispatch | `DONE` | 0.5 - 1 day / 半日 - 1 日 |
+| 571 | Sample18 submit binding lane closure / sample18 submit binding lane closure | Close the binding gate lane and decide whether disabled click intent, CSRF handoff, or mutation dispatcher work should be promoted next | `DONE` | 0.25 - 0.5 day / 0.25 - 0.5 日 |
+| 572 | Sample18 generated submit CSRF guard preflight / sample18 generated submit CSRF guard preflight | Add fail-closed CSRF handling and HTTP smoke coverage for the generated submit route before any runtime click binding or mutation dispatcher work | `DONE` | 0.5 - 1 day / 半日 - 1 日 |
+| 573 | Sample18 post-CSRF submit route lane closure / sample18 post-CSRF submit route lane closure | Close the generated submit guard lane and decide whether disabled click intent, guarded CSRF handoff, or mutation dispatcher inventory should be promoted next | `DONE` | 0.25 - 0.5 day / 0.25 - 0.5 日 |
+| 574 | Sample18 generated submit CSRF handoff preflight / sample18 generated submit CSRF handoff preflight | Define and expose the CSRF token handoff contract for generated submit actions while keeping buttons disabled and mutation parked | `DONE` | 0.5 - 1 day / 半日 - 1 日 |
+| 575 | Sample18 post-CSRF handoff lane closure / sample18 post-CSRF handoff lane closure | Close the CSRF handoff lane and decide whether disabled click intent or mutation dispatcher inventory should be promoted next | `DONE` | 0.25 - 0.5 day / 0.25 - 0.5 日 |
+| 576 | Sample18 disabled submit click intent preflight / sample18 disabled submit click intent preflight | Prove generated submit action buttons remain non-clickable/non-submitting while exposing enough intent metadata for a later guarded click-binding lane | `DONE` | 0.5 - 1 day / 半日 - 1 日 |
+| 577 | Sample18 post-disabled-click lane closure / sample18 post-disabled-click lane closure | Close the disabled click intent lane and decide whether guarded click binding or mutation dispatcher inventory should be promoted next | `DONE` | 0.25 - 0.5 day / 0.25 - 0.5 日 |
+| 578 | Sample18 guarded submit click binding inventory / sample18 guarded submit click binding inventory | Define the first guarded generated click-binding contract, including enablement gates, payload assembly, blocked route response handling, and UI failure display before implementation | `DONE` | 0.5 - 1 day / 半日 - 1 日 |
+| 579 | Sample18 post-guarded-click-inventory lane closure / sample18 post-guarded-click-inventory lane closure | Close the guarded click-binding inventory lane and decide whether to implement blocked guarded click binding or continue mutation dispatcher inventory | `DONE` | 0.25 - 0.5 day / 0.25 - 0.5 日 |
+| 580 | Sample18 blocked guarded submit click binding first slice / sample18 blocked guarded submit click binding first slice | Wire the narrow generated submit click path to the blocked route under explicit guards, verify blocked feedback, and keep DBAccess/mutation disabled | `DONE` | 1 day / 1 日 |
+| 581 | Sample18 post-blocked-guarded-click lane closure / sample18 post-blocked-guarded-click lane closure | Close the blocked guarded click binding lane and decide whether mutation dispatcher inventory or additional blocked-feedback hardening should be promoted next | `DONE` | 0.25 - 0.5 day / 0.25 - 0.5 日 |
+| 582 | Sample18 mutation dispatcher inventory / sample18 mutation dispatcher inventory | Inventory the generated submit mutation dispatcher boundary, DBAccess call contract, auth/CSRF/idempotency/audit gates, and test matrix before enabling mutation | `DONE` | 0.5 - 1 day / 半日 - 1 日 |
+| 583 | Sample18 mutation dispatcher helper dry-run first slice / sample18 mutation dispatcher helper dry-run first slice | Add a dispatcher helper that assembles DBAccess-bound TaskCard payloads and response metadata without executing DBAccess mutation or changing generated route acceptance | `DONE` | 0.5 - 1 day / 半日 - 1 日 |
+| 584 | Sample18 post-dispatcher-helper lane closure / sample18 post-dispatcher-helper lane closure | Close the dry-run dispatcher helper lane and decide whether idempotency/audit inventory or mutation enablement gate coverage should be promoted next | `DONE` | 0.25 - 0.5 day / 0.25 - 0.5 日 |
+| 585 | Sample18 generated submit idempotency and audit inventory / sample18 generated submit idempotency and audit inventory | Define duplicate-safe keys, audit event shape, and persistence/response boundaries for generated submit before any mutation enablement gate coverage | `DONE` | 0.5 - 1 day / 半日 - 1 日 |
+| 586 | Sample18 generated submit idempotency/audit dry-run helper / sample18 generated submit idempotency/audit dry-run helper | Add dry-run helpers that derive generated submit dedupe keys and audit event payloads without writing audit rows, enqueueing outbox items, or enabling mutation | `DONE` | 0.5 - 1 day / 半日 - 1 日 |
+| 587 | Sample18 post-idempotency-audit-helper lane closure / sample18 post-idempotency-audit-helper lane closure | Close the dry-run idempotency/audit helper lane and decide whether audit append persistence or mutation enablement gate coverage should be promoted next | `DONE` | 0.25 - 0.5 day / 0.25 - 0.5 日 |
+| 588 | Sample18 generated submit blocked audit append first slice / sample18 generated submit blocked audit append first slice | Append audit records for blocked valid generated submit requests while keeping DBAccess mutation disabled and validation/CSRF failures fail-closed | `DONE` | 0.5 - 1 day / 半日 - 1 日 |
+| 589 | Sample18 post-blocked-audit-append lane closure / sample18 post-blocked-audit-append lane closure | Close the blocked audit append lane and decide whether audit failure coverage, idempotency persistence, or mutation enablement gate coverage should be promoted next | `DONE` | 0.25 - 0.5 day / 0.25 - 0.5 日 |
+| 590 | Sample18 generated submit audit append failure visibility coverage / sample18 generated submit audit append failure visibility coverage | Add focused coverage that audit append failures are reported without enabling DBAccess mutation or turning valid blocked submits into accepted requests | `DONE` | 0.5 day / 半日 |
+| 591 | Sample18 post-audit-failure-visibility lane closure / sample18 post-audit-failure-visibility lane closure | Close audit append failure visibility and decide whether duplicate/idempotency persistence or mutation enablement gate coverage should be promoted next | `DONE` | 0.25 - 0.5 day / 0.25 - 0.5 日 |
+| 592 | Sample18 generated submit idempotency persistence preflight / sample18 generated submit idempotency persistence preflight | Define the storage, duplicate response, audit interaction, and fail-closed boundary for generated submit idempotency before any DBAccess mutation enablement | `ACTIVE_NEXT` | 0.5 day / 半日 |
 
 ### Long-Term No-Code Roadmap / 長期 No-Code ロードマップ
 
@@ -183,6 +214,28 @@ Current main status: #560 adds a narrow sample18 public-runtime status filter DO
 - Push is not performed unless the user explicitly requests it. / user が明示するまで push は行いません。
 
 ### Recent Verification / 直近検証
+
+Latest code verification from #588:
+
+- `php -l mtool/app/lab_sample18_task_board_page.php`
+- `php -l tests/Integration/Sample18MiniTaskBoardDemoTest.php`
+- `php -l mtool/scripts/check_sample18_task_board_http_smoke.php`
+- `make sample18-pack-runtime-test`: `OK (5 tests, 389 assertions)`
+- `make sample18-http-runtime-smoke`: `OK`
+- `make sample18-no-code-public-runtime-disabled-action-smoke`: `OK`
+- `make test`: `OK, but incomplete, skipped, or risky tests! Tests: 383, Assertions: 12145, Skipped: 1.`
+- `git diff --check`
+
+For #589, docs-only verification is `git diff --check`.
+
+Latest code verification from #590:
+
+- `php -l tests/Integration/Sample18MiniTaskBoardDemoTest.php`
+- `make sample18-pack-runtime-test`: `OK (6 tests, 406 assertions)`
+- `make test`: `OK, but incomplete, skipped, or risky tests! Tests: 384, Assertions: 12162, Skipped: 1.`
+- `git diff --check`
+
+For #591, docs-only verification is `git diff --check`.
 
 Latest code verification from #459:
 
@@ -585,6 +638,10 @@ Completed detailed history was moved out of this active list. / 完了済みの�
 
 | Completed scope / 完了済み範囲 | Historical source / 履歴ソース |
 | --- | --- |
+| Sample18 post-audit-failure-visibility lane closure / sample18 post-audit-failure-visibility lane closure | [2026-0710 Sample18 Post Audit Failure Visibility Lane Closure](reports/2026/2026-0710-sample18-post-audit-failure-visibility-lane-closure.md) |
+| Sample18 generated submit audit append failure visibility coverage / sample18 generated submit audit append failure visibility coverage | [2026-0710 Sample18 Generated Submit Audit Append Failure Visibility Coverage](reports/2026/2026-0710-sample18-generated-submit-audit-append-failure-visibility-coverage.md) |
+| Sample18 post-blocked-audit-append lane closure / sample18 post-blocked-audit-append lane closure | [2026-0710 Sample18 Post Blocked Audit Append Lane Closure](reports/2026/2026-0710-sample18-post-blocked-audit-append-lane-closure.md) |
+| Sample18 generated submit blocked audit append first slice / sample18 generated submit blocked audit append first slice | [2026-0710 Sample18 Generated Submit Blocked Audit Append First Slice](reports/2026/2026-0710-sample18-generated-submit-blocked-audit-append-first-slice.md) |
 | First sample UI readonly no-code preview / first sample UI readonly no-code preview | [2026-0709 First Sample UI Readonly No-Code Preview](reports/2026/2026-0709-first-sample-ui-readonly-no-code-preview.md) |
 | First sample UI metadata extraction spike / first sample UI metadata extraction spike | [2026-0709 First Sample UI Metadata Extraction Spike](reports/2026/2026-0709-first-sample-ui-metadata-extraction-spike.md) |
 | L1 bridge golden sample fixture / L1 bridge golden sample fixture | [2026-0709 L1 Bridge Golden Sample Fixture](reports/2026/2026-0709-l1-bridge-golden-sample-fixture.md) |

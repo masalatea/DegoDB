@@ -47,6 +47,11 @@
     "reopen_task_card",
     "delete_task_card"
   ],
+  "no_code_managed_action_keys": [
+    "complete_task_card",
+    "create_task_card",
+    "update_task_card"
+  ],
   "no_code_conversion_boundary": {
     "generated_route_replacement": false,
     "generated_button_execution": false,
