@@ -124,6 +124,7 @@ final class Sample18MiniTaskBoardDemoTest extends TestCase
             $inventoryByKey[(string) ($operation['operation_key'] ?? '')] = $operation;
         }
 
+        $dedupeKeys = [];
         foreach ($operations as $operationKey => $expectation) {
             self::assertIsArray($expectation);
             self::assertArrayHasKey($operationKey, $contracts);
@@ -163,6 +164,32 @@ final class Sample18MiniTaskBoardDemoTest extends TestCase
                 ['TaskCardObj' => $expectation['expected_dispatcher_bound_fields'] ?? []],
                 $dispatcher['method_arguments'] ?? [],
             );
+            $idempotencyAuditPreview = app_lab_sample18_task_board_generated_submit_idempotency_audit_preview(
+                $valid,
+                $dispatcher,
+                'blocked',
+                'generated_submit_disabled',
+            );
+            $dedupeKey = (string) ($idempotencyAuditPreview['dedupe_key_preview'] ?? '');
+            $fingerprint = (string) ($idempotencyAuditPreview['payload_fingerprint'] ?? '');
+            self::assertStringStartsWith('sample18.generated_submit.' . $operationKey . '.', $dedupeKey);
+            self::assertSame(64, strlen($fingerprint));
+            self::assertSame('sample18.generated_submit.requested', $idempotencyAuditPreview['audit_event_preview']['event_type'] ?? '');
+            self::assertSame('blocked', $idempotencyAuditPreview['audit_event_preview']['result'] ?? '');
+            self::assertSame('generated_submit_disabled', $idempotencyAuditPreview['audit_event_preview']['message'] ?? '');
+            self::assertSame($dedupeKey, $idempotencyAuditPreview['audit_event_preview']['metadata']['dedupe_key'] ?? '');
+            self::assertSame($fingerprint, $idempotencyAuditPreview['audit_event_preview']['metadata']['payload_fingerprint'] ?? '');
+            self::assertSame(
+                $expectation['expected_dispatcher_bound_fields'] ?? [],
+                $idempotencyAuditPreview['audit_event_preview']['metadata']['dispatcher_bound_fields'] ?? [],
+            );
+            $reorderedDispatcher = $dispatcher;
+            $reorderedDispatcher['bound_fields'] = array_reverse($dispatcher['bound_fields'] ?? [], true);
+            self::assertSame(
+                $fingerprint,
+                app_lab_sample18_task_board_generated_submit_payload_fingerprint($reorderedDispatcher),
+            );
+            $dedupeKeys[] = $dedupeKey;
 
             $invalid = app_lab_sample18_task_board_normalize_generated_submit_request(
                 (string) $operationKey,
@@ -172,7 +199,16 @@ final class Sample18MiniTaskBoardDemoTest extends TestCase
             self::assertFalse($invalid['ok'], (string) $operationKey);
             self::assertSame('validation_error', $invalid['failure_code']);
             self::assertSame($expectation['expected_errors'] ?? [], $invalid['errors']);
+            $invalidPreview = app_lab_sample18_task_board_generated_submit_idempotency_audit_preview(
+                $invalid,
+                app_lab_sample18_task_board_generated_submit_dispatcher_dry_run($invalid),
+                'invalid',
+                'validation_error',
+            );
+            self::assertSame('', $invalidPreview['dedupe_key_preview'] ?? 'not-empty');
+            self::assertSame([], $invalidPreview['audit_event_preview'] ?? ['not-empty']);
         }
+        self::assertCount(count($dedupeKeys), array_unique($dedupeKeys));
 
         $unknown = app_lab_sample18_task_board_normalize_generated_submit_request(
             'delete_task_card',
@@ -225,6 +261,17 @@ final class Sample18MiniTaskBoardDemoTest extends TestCase
         self::assertSame(
             $createExpectation['expected_dispatcher_bound_fields'] ?? [],
             $blocked['payload']['dispatcher_result']['bound_fields'] ?? [],
+        );
+        self::assertStringStartsWith(
+            'sample18.generated_submit.create_task_card.',
+            (string) ($blocked['payload']['dedupe_key_preview'] ?? ''),
+        );
+        self::assertSame(64, strlen((string) ($blocked['payload']['payload_fingerprint'] ?? '')));
+        self::assertSame('sample18.generated_submit.requested', $blocked['payload']['audit_event_preview']['event_type'] ?? '');
+        self::assertSame('blocked', $blocked['payload']['audit_event_preview']['result'] ?? '');
+        self::assertSame(
+            $blocked['payload']['dedupe_key_preview'] ?? '',
+            $blocked['payload']['audit_event_preview']['metadata']['dedupe_key'] ?? 'missing',
         );
         self::assertFalse($blocked['payload']['mutation_enabled'] ?? true);
 

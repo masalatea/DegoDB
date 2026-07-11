@@ -11,6 +11,12 @@
 
 ## Index
 
+- `2026-0710-sample18-post-idempotency-audit-helper-lane-closure.md`
+  - #587 sample18 post-idempotency-audit-helper lane closure。#586 の dry-run dedupe/fingerprint/audit preview helper を受け入れ、mutation enablement gate coverage より前に blocked valid generated submit の audit append first slice (#588) を昇格。DBAccess mutation は未有効化。Status: `DONE`。
+- `2026-0710-sample18-generated-submit-idempotency-audit-dry-run-helper.md`
+  - #586 sample18 generated submit idempotency/audit dry-run helper。canonical payload fingerprint、operation-scoped dedupe key preview、audit event preview を追加し、valid blocked response に preview metadata を返す。audit append / persistence / outbox / mutation は未有効化。focused PHPUnit、HTTP smoke、public runtime smoke、`make test` 通過。Status: `DONE`。
+- `2026-0710-sample18-generated-submit-idempotency-and-audit-inventory.md`
+  - #585 sample18 generated submit idempotency and audit inventory。operation-scoped dedupe key、payload fingerprint、audit event shape、persistence/response boundary を定義。次は dry-run key/event helper (#586) で、audit append / persistence / mutation は未有効化。Status: `DONE`。
 - `2026-0710-sample18-post-dispatcher-helper-lane-closure.md`
   - #584 sample18 post-dispatcher-helper lane closure。#583 の dry-run dispatcher helper を受け入れ、mutation enablement gate coverage より前に idempotency / audit inventory (#585) を昇格。DBAccess mutation は未有効化。Status: `DONE`。
 - `2026-0710-sample18-mutation-dispatcher-helper-dry-run-first-slice.md`

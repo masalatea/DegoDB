@@ -356,6 +356,11 @@ function run_smoke(array $args): array
     ensure(($generatedBlockedJson['dispatcher_result']['executed'] ?? true) === false, 'generated submit dispatcher unexpectedly executed');
     ensure(($generatedBlockedJson['dispatcher_result']['mutation_enabled'] ?? true) === false, 'generated submit dispatcher mutation flag was enabled');
     ensure(($generatedBlockedJson['dispatcher_result']['bound_fields']['Title'] ?? '') === 'Generated blocked smoke', 'generated submit dispatcher bound title mismatch');
+    ensure(str_starts_with((string) ($generatedBlockedJson['dedupe_key_preview'] ?? ''), 'sample18.generated_submit.create_task_card.'), 'generated submit dedupe key preview mismatch');
+    ensure(strlen((string) ($generatedBlockedJson['payload_fingerprint'] ?? '')) === 64, 'generated submit payload fingerprint mismatch');
+    ensure(($generatedBlockedJson['audit_event_preview']['event_type'] ?? '') === 'sample18.generated_submit.requested', 'generated submit audit event type mismatch');
+    ensure(($generatedBlockedJson['audit_event_preview']['result'] ?? '') === 'blocked', 'generated submit audit result mismatch');
+    ensure(($generatedBlockedJson['audit_event_preview']['metadata']['dedupe_key'] ?? '') === ($generatedBlockedJson['dedupe_key_preview'] ?? ''), 'generated submit audit dedupe key mismatch');
     ensure(($generatedBlockedJson['mutation_enabled'] ?? true) === false, 'generated submit blocked mutation flag was enabled');
     ensure(
         in_array('client_only', $generatedBlockedJson['ignored_input_fields'] ?? [], true),
