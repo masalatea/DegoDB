@@ -4283,6 +4283,47 @@ final class Sample18MiniTaskBoardDemoTest extends TestCase
         self::assertNotSame('', $firstRuntimeRowKey);
         self::assertMatchesRegularExpression('/^[0-9]+$/', $firstRuntimeRowKey);
 
+        $enabledCandidatePolicyActions = [];
+        $routeContracts = app_lab_sample18_task_board_generated_submit_contracts();
+        foreach ($contractActionsByKey as $actionKey => $action) {
+            $enabledCandidatePolicyActions[] = [
+                'action_key' => $actionKey,
+                'availability' => array_key_exists($actionKey, $routeContracts) ? 'enabled' : 'disabled',
+                'policy' => array_key_exists($actionKey, $routeContracts)
+                    ? ['failed_checks' => []]
+                    : ['failed_checks' => ['adapter_contract_missing']],
+            ];
+        }
+        $enabledCandidateDefinition = app_no_code_runtime_definition_with_action_policy_overlay(
+            $screenDefinition,
+            ['contracts' => [['actions' => $enabledCandidatePolicyActions]]],
+        );
+        $enabledCandidateRenderResult = app_no_code_runtime_render_screen(
+            $enabledCandidateDefinition,
+            'task_card_form',
+            [],
+            $firstRuntimeRow,
+        );
+        self::assertTrue($enabledCandidateRenderResult['ok'], $enabledCandidateRenderResult['error']);
+        $enabledCandidateActionsByKey = [];
+        foreach (($enabledCandidateRenderResult['render']['actions'] ?? []) as $renderAction) {
+            self::assertIsArray($renderAction);
+            $enabledCandidateActionsByKey[(string) ($renderAction['action_key'] ?? '')] = $renderAction;
+        }
+        foreach (array_keys($routeContracts) as $operationKey) {
+            self::assertArrayHasKey($operationKey, $enabledCandidateActionsByKey);
+            self::assertSame('enabled', $enabledCandidateActionsByKey[$operationKey]['availability'] ?? '');
+            self::assertTrue($enabledCandidateActionsByKey[$operationKey]['enabled'] ?? false);
+            self::assertSame([], $enabledCandidateActionsByKey[$operationKey]['failed_checks'] ?? ['unexpected']);
+        }
+        $enabledCandidateHtml = app_no_code_runtime_render_screen_html($enabledCandidateRenderResult['render']);
+        foreach (array_keys($routeContracts) as $operationKey) {
+            self::assertMatchesRegularExpression(
+                '/data-action-key="' . preg_quote($operationKey, '/') . '"[^>]+data-action-availability="enabled"[^>]+data-action-enabled="true"/',
+                $enabledCandidateHtml,
+            );
+        }
+
         foreach (['update_task_card', 'complete_task_card'] as $keyedOperationKey) {
             $keyedIntent = app_no_code_runtime_action_intent(
                 $screenDefinition,
@@ -4334,6 +4375,12 @@ final class Sample18MiniTaskBoardDemoTest extends TestCase
             $htmlDomContract['disabled_extension_action_keys'] ?? [],
         );
         self::assertStringContainsString('data-runtime-row-key="' . $firstRuntimeRowKey . '"', $runtimePreviewHtml);
+        foreach (array_keys($routeContracts) as $operationKey) {
+            self::assertMatchesRegularExpression(
+                '/data-action-key="' . preg_quote($operationKey, '/') . '"[^>]+data-action-availability="disabled"/',
+                $runtimePreviewHtml,
+            );
+        }
         foreach ([
             'function runtimeActionKeyField(render)',
             "fields[fieldIndex].role === 'key'",
@@ -4353,7 +4400,7 @@ final class Sample18MiniTaskBoardDemoTest extends TestCase
             'data-action-submit-url="' . ($htmlDomContract['managed_action_submit_url'] ?? '') . '"',
             $runtimePreviewHtml,
         );
-        foreach (array_keys(app_lab_sample18_task_board_generated_submit_contracts()) as $operationKey) {
+        foreach (array_keys($routeContracts) as $operationKey) {
             self::assertStringContainsString('data-action-key="' . $operationKey . '"', $runtimePreviewHtml);
             self::assertStringContainsString('data-operation-key="' . $operationKey . '"', $runtimePreviewHtml);
         }
