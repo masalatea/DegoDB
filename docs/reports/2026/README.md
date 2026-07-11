@@ -11,6 +11,12 @@
 
 ## Index
 
+- `2026-0710-sample18-post-commit-recording-helper-lane-closure.md`
+  - #644 sample18 post-commit recording helper lane closure。#643 の route-unwired recording helper を受け入れ、次は real execution 有効化前の executable generated-submit route integration preflight (#645) を昇格。route execution は未有効化。Status: `DONE`。
+- `2026-0710-sample18-post-commit-execution-recording-helper-first-slice.md`
+  - #643 sample18 post-commit execution recording helper first slice。committed transaction metadata と fake recording callable を受け取り、execution audit / idempotency outcome update の両方が成功した場合だけ success を返す route-unwired helper を追加。real recording / route execution は未有効化。Status: `FIRST_SLICE_DONE`。
+- `2026-0710-sample18-post-commit-execution-recording-preflight.md`
+  - #642 sample18 post-commit execution recording preflight。app DB commit 後の execution audit append と idempotency execution outcome update を all-success の required step として定義。recording failure は user-facing failure + recovery metadata。次は route-unwired recording helper (#643)。Status: `DONE`。
 - `2026-0710-sample18-post-transaction-adapter-helper-lane-closure.md`
   - #641 sample18 post-transaction adapter helper lane closure。#640 の route-unwired transaction adapter helper を受け入れ、route execution より前に post-commit execution recording preflight (#642) を昇格。real DBAccess mutation / route execution / execution recording は未有効化。Status: `DONE`。
 - `2026-0710-sample18-transaction-adapter-helper-first-slice.md`
