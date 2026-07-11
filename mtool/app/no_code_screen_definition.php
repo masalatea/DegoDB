@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 require_once __DIR__ . '/managed_operation_policy.php';
 require_once __DIR__ . '/managed_operation_repository_pdo.php';
+require_once __DIR__ . '/lab_sample18_task_board_page.php';
 require_once __DIR__ . '/shared_contract_manifest.php';
 
 function app_no_code_screen_definition_version(): string
@@ -111,6 +112,7 @@ function app_no_code_screen_definition_with_project_metadata(string $projectKey,
             ],
         ],
     ));
+    $metadata['generated_submit_readiness_snapshot'] = app_lab_sample18_task_board_generated_submit_readiness_snapshot([]);
     $contract['contract_metadata'] = $metadata;
 
     return $contract;
@@ -1092,27 +1094,70 @@ function app_no_code_screen_definition_storage_hint(array $contract): array
 function app_no_code_screen_definition_actions(array $contract, array $operations, ?array $principal): array
 {
     $actions = [];
+    $metadata = is_array($contract['contract_metadata'] ?? null) ? $contract['contract_metadata'] : [];
+    $readinessByOperation = app_no_code_screen_definition_sample18_readiness_by_operation(
+        is_array($metadata['generated_submit_readiness_snapshot'] ?? null)
+            ? $metadata['generated_submit_readiness_snapshot']
+            : [],
+    );
     foreach ($operations as $operation) {
         if ((string) ($operation['status'] ?? '') !== 'active') {
             continue;
         }
 
         $policy = app_no_code_screen_definition_policy($contract, $operation, $principal);
+        $operationKey = (string) ($operation['operation_key'] ?? '');
+        $readiness = $readinessByOperation[$operationKey] ?? [];
         $actions[] = [
-            'action_key' => (string) ($operation['operation_key'] ?? ''),
+            'action_key' => $operationKey,
             'label' => (string) ($operation['name'] ?? $operation['operation_key'] ?? ''),
-            'operation_key' => (string) ($operation['operation_key'] ?? ''),
+            'operation_key' => $operationKey,
             'operation_type' => (string) ($operation['operation_type'] ?? ''),
             'permission_key' => (string) ($operation['permission_key'] ?? ''),
             'availability' => $policy['allowed'] ? 'enabled' : 'disabled',
             'policy' => $policy,
-            'submit_route' => app_no_code_screen_definition_managed_action_submit_route((string) ($operation['operation_key'] ?? '')),
-            'submit_binding_gate' => app_no_code_screen_definition_managed_action_submit_binding_gate((string) ($operation['operation_key'] ?? '')),
+            'submit_route' => app_no_code_screen_definition_managed_action_submit_route($operationKey),
+            'submit_binding_gate' => app_no_code_screen_definition_managed_action_submit_binding_gate($operationKey, $readiness),
+            'readiness_metadata' => $readiness,
             'fields' => app_no_code_screen_definition_action_fields($operation),
         ];
     }
 
     return $actions;
+}
+
+/**
+ * @param array<string,mixed> $snapshot
+ * @return array<string,array<string,mixed>>
+ */
+function app_no_code_screen_definition_sample18_readiness_by_operation(array $snapshot): array
+{
+    $byOperation = [];
+    $items = is_array($snapshot['action_readiness'] ?? null) ? $snapshot['action_readiness'] : [];
+    foreach ($items as $item) {
+        if (!is_array($item)) {
+            continue;
+        }
+        $operationKey = (string) ($item['operation_key'] ?? '');
+        if ($operationKey === '') {
+            continue;
+        }
+        $byOperation[$operationKey] = [
+            'action_key' => (string) ($item['action_key'] ?? $operationKey),
+            'operation_key' => $operationKey,
+            'route_compatible' => (bool) ($item['route_compatible'] ?? false),
+            'readiness_state' => (string) ($item['readiness_state'] ?? ''),
+            'availability_candidate' => (bool) ($item['availability_candidate'] ?? false),
+            'can_submit' => (bool) ($item['can_submit'] ?? false),
+            'failure_reasons' => array_values(array_filter(
+                array_map('strval', is_array($item['failure_reasons'] ?? null) ? $item['failure_reasons'] : []),
+                static fn (string $reason): bool => $reason !== '',
+            )),
+            'executor_config_status' => (string) ($item['executor_config_status'] ?? ''),
+        ];
+    }
+
+    return $byOperation;
 }
 
 function app_no_code_screen_definition_managed_action_submit_route(string $operationKey): string
@@ -1125,7 +1170,7 @@ function app_no_code_screen_definition_managed_action_submit_route(string $opera
 /**
  * @return array<string,mixed>
  */
-function app_no_code_screen_definition_managed_action_submit_binding_gate(string $operationKey): array
+function app_no_code_screen_definition_managed_action_submit_binding_gate(string $operationKey, array $readiness = []): array
 {
     if (!in_array($operationKey, ['create_task_card', 'update_task_card', 'complete_task_card'], true)) {
         return [];
@@ -1159,6 +1204,10 @@ function app_no_code_screen_definition_managed_action_submit_binding_gate(string
         'mutation_enabled' => false,
         'fail_closed_result' => 'generated_submit_disabled',
         'http_smoke_command' => 'make sample18-http-runtime-smoke',
+        'readiness_state' => (string) ($readiness['readiness_state'] ?? ''),
+        'availability_candidate' => (bool) ($readiness['availability_candidate'] ?? false),
+        'can_submit' => (bool) ($readiness['can_submit'] ?? false),
+        'executor_config_status' => (string) ($readiness['executor_config_status'] ?? ''),
     ];
 }
 

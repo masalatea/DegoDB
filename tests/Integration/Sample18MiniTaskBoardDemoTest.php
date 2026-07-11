@@ -4339,6 +4339,10 @@ final class Sample18MiniTaskBoardDemoTest extends TestCase
                         'mutation_enabled' => $bindingGate['mutation_enabled'] ?? null,
                         'fail_closed_result' => $bindingGate['fail_closed_result'] ?? '',
                         'http_smoke_command' => $bindingGate['http_smoke_command'] ?? '',
+                        'readiness_state' => 'candidate_ready',
+                        'availability_candidate' => true,
+                        'can_submit' => false,
+                        'executor_config_status' => 'disabled',
                     ],
                     $action['submit_binding_gate'] ?? [],
                 );
@@ -4356,6 +4360,14 @@ final class Sample18MiniTaskBoardDemoTest extends TestCase
             self::assertSame($operationKey, $action['action_key'] ?? '');
             self::assertSame($operationKey, $action['operation_key'] ?? '');
             self::assertSame($bindingGate['submit_route'] ?? '', $action['submit_route'] ?? '');
+            self::assertSame($operationKey, $action['readiness_metadata']['action_key'] ?? '');
+            self::assertSame($operationKey, $action['readiness_metadata']['operation_key'] ?? '');
+            self::assertTrue($action['readiness_metadata']['route_compatible'] ?? false);
+            self::assertSame('candidate_ready', $action['readiness_metadata']['readiness_state'] ?? '');
+            self::assertTrue($action['readiness_metadata']['availability_candidate'] ?? false);
+            self::assertFalse($action['readiness_metadata']['can_submit'] ?? true);
+            self::assertSame([], $action['readiness_metadata']['failure_reasons'] ?? ['unexpected']);
+            self::assertSame('disabled', $action['readiness_metadata']['executor_config_status'] ?? '');
 
             $expectedFieldMap = [];
             foreach (($routeContract['key_fields'] ?? []) as $fieldKey) {

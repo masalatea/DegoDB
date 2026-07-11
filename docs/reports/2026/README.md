@@ -11,6 +11,8 @@
 
 ## Index
 
+- `2026-0711-readiness-metadata-screen-definition-carry-through.md`
+  - #705 readiness metadata screen-definition carry-through。Sample18 generated-submit readiness snapshot を screen-definition action metadata と submit binding metadata に載せ、default disabled / candidate_ready / can_submit=false を focused assertion で固定。Status: `FIRST_SLICE_DONE`。
 - `2026-0711-sample18-readiness-snapshot-helper-first-slice.md`
   - #704 sample18 readiness snapshot helper first slice。既存 executor config と generated-submit route contract から副作用なしで readiness snapshot を組み立て、default disabled / injected ready / missing runtime failed の focused assertion を追加。Status: `FIRST_SLICE_DONE`。
 - `2026-0711-no-code-readiness-status.md`
