@@ -1270,6 +1270,134 @@ final class Sample18MiniTaskBoardDemoTest extends TestCase
         }
     }
 
+    public function testMiniTaskBoardGeneratedSubmitRouteSurfacesExecutorFailures(): void
+    {
+        $checklist = $this->sample18FastContractChecklist();
+        $submitContract = $checklist['generated_submit_request_contract'] ?? [];
+        self::assertIsArray($submitContract);
+        $timestamp = (string) ($submitContract['timestamp_fixture'] ?? '');
+        $createExpectation = $submitContract['operations']['create_task_card'] ?? [];
+        self::assertIsArray($createExpectation);
+        $validPost = array_merge(
+            ['operation_key' => 'create_task_card', '_csrf_token' => 'client-token'],
+            is_array($createExpectation['valid_input'] ?? null) ? $createExpectation['valid_input'] : [],
+        );
+        $principal = [
+            'id' => 'sample18-route-failure@example.test',
+            'auth_source' => 'phpunit',
+        ];
+
+        $missingDependencyApp = array_merge($this->sqliteApp(), [
+            'sample18_generated_submit_mutation_enabled' => true,
+            'sample18_generated_submit_executor_enabled' => true,
+        ]);
+        $bootstrap = app_config_db_bootstrap_apply($missingDependencyApp);
+        self::assertTrue($bootstrap['ok'], $bootstrap['error']);
+        $missingDependency = app_lab_sample18_task_board_generated_submit_blocked_response(
+            'POST',
+            $validPost,
+            $timestamp,
+            'valid',
+            $missingDependencyApp,
+            $principal,
+        );
+        self::assertSame(500, $missingDependency['status_code']);
+        self::assertSame('failed', $missingDependency['payload']['result'] ?? '');
+        self::assertSame('executor_transaction_callable_missing', $missingDependency['payload']['failure_code'] ?? '');
+        self::assertSame('executor_transaction_callable_missing', $missingDependency['payload']['route_execution']['failure_code'] ?? '');
+        self::assertFalse($missingDependency['payload']['route_execution']['recovery_required'] ?? true);
+
+        $events = [];
+        $rollbackApp = array_merge($this->sqliteApp(), [
+            'sample18_generated_submit_mutation_enabled' => true,
+            'sample18_generated_submit_executor_enabled' => true,
+            'sample18_generated_submit_transaction_callables' => [
+                'begin' => static function () use (&$events): array {
+                    $events[] = 'begin';
+
+                    return ['ok' => true];
+                },
+                'commit' => static function () use (&$events): array {
+                    $events[] = 'commit-unexpected';
+
+                    return ['ok' => true];
+                },
+                'rollback' => static function () use (&$events): array {
+                    $events[] = 'rollback';
+
+                    return ['ok' => true];
+                },
+                'dbaccess' => static function () use (&$events): array {
+                    $events[] = 'dbaccess';
+
+                    return ['ok' => false, 'result_code' => 'dbaccess_failed', 'failure_code' => 'dbaccess_failed', 'error' => 'forced route failure'];
+                },
+            ],
+        ]);
+        $bootstrap = app_config_db_bootstrap_apply($rollbackApp);
+        self::assertTrue($bootstrap['ok'], $bootstrap['error']);
+        $rolledBack = app_lab_sample18_task_board_generated_submit_blocked_response(
+            'POST',
+            array_merge($validPost, ['title' => 'Rollback route failure']),
+            $timestamp,
+            'valid',
+            $rollbackApp,
+            $principal,
+        );
+        self::assertSame(['begin', 'dbaccess', 'rollback'], $events);
+        self::assertSame(500, $rolledBack['status_code']);
+        self::assertSame('failed', $rolledBack['payload']['result'] ?? '');
+        self::assertSame('dbaccess_failed', $rolledBack['payload']['failure_code'] ?? '');
+        self::assertSame('rolled_back', $rolledBack['payload']['transaction_result']['transaction_status'] ?? '');
+        self::assertSame('failed', $rolledBack['payload']['transaction_result']['dbaccess_status'] ?? '');
+        self::assertSame([], $rolledBack['payload']['post_commit_recording'] ?? ['unexpected']);
+        self::assertFalse($rolledBack['payload']['route_execution']['recovery_required'] ?? true);
+
+        $postCommitApp = array_merge($this->sqliteApp(), [
+            'sample18_generated_submit_mutation_enabled' => true,
+            'sample18_generated_submit_executor_enabled' => true,
+        ]);
+        $postCommitApp['sample18_generated_submit_transaction_callables'] = [
+            'begin' => static fn (): array => ['ok' => true],
+            'commit' => static fn (): array => ['ok' => true],
+            'rollback' => static fn (): array => ['ok' => true],
+            'dbaccess' => static function (array $call) use (&$postCommitApp): array {
+                $pdo = app_create_config_pdo($postCommitApp);
+                $statement = $pdo->prepare(
+                    'UPDATE sample18_generated_submit_idempotency_records
+                     SET duplicate_count = 1
+                     WHERE dedupe_key = :dedupe_key',
+                );
+                $statement->execute([
+                    ':dedupe_key' => (string) ($call['dedupe_key'] ?? ''),
+                ]);
+
+                return ['ok' => true, 'result_code' => 'task_card_inserted', 'rows_affected' => 1];
+            },
+        ];
+        $bootstrap = app_config_db_bootstrap_apply($postCommitApp);
+        self::assertTrue($bootstrap['ok'], $bootstrap['error']);
+        $recordingFailed = app_lab_sample18_task_board_generated_submit_blocked_response(
+            'POST',
+            array_merge($validPost, ['title' => 'Post commit route failure']),
+            $timestamp,
+            'valid',
+            $postCommitApp,
+            $principal,
+        );
+        self::assertSame(500, $recordingFailed['status_code']);
+        self::assertSame('failed', $recordingFailed['payload']['result'] ?? '');
+        self::assertSame('idempotency_update_failed', $recordingFailed['payload']['failure_code'] ?? '');
+        self::assertSame('committed', $recordingFailed['payload']['transaction_result']['transaction_status'] ?? '');
+        self::assertSame('executed', $recordingFailed['payload']['transaction_result']['dbaccess_status'] ?? '');
+        self::assertSame('failed', $recordingFailed['payload']['post_commit_recording']['recording_status'] ?? '');
+        self::assertSame('recorded', $recordingFailed['payload']['post_commit_recording']['execution_audit_status'] ?? '');
+        self::assertSame('failed', $recordingFailed['payload']['post_commit_recording']['idempotency_update_status'] ?? '');
+        self::assertTrue($recordingFailed['payload']['route_execution']['recovery_required'] ?? false);
+        self::assertTrue($recordingFailed['payload']['post_commit_recording']['recovery_required'] ?? false);
+        self::assertSame('post_commit_recording_failed', $recordingFailed['payload']['post_commit_recording']['recovery_reason'] ?? '');
+    }
+
     public function testMiniTaskBoardGeneratedSubmitMutationGateHelperIsNonMutating(): void
     {
         $normalized = app_lab_sample18_task_board_normalize_generated_submit_request(
