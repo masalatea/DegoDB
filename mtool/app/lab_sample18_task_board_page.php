@@ -860,6 +860,11 @@ function app_lab_sample18_task_board_generated_submit_blocked_response(
         $auditAppend,
         $idempotency,
     );
+    $dbaccessExecutionPlan = app_lab_sample18_task_board_generated_submit_dbaccess_execution_plan(
+        $normalized,
+        $dispatcherResult,
+        $mutationGate,
+    );
 
     return [
         'status_code' => 409,
@@ -880,6 +885,7 @@ function app_lab_sample18_task_board_generated_submit_blocked_response(
             'audit_append' => $auditAppend,
             'idempotency' => $idempotency,
             'mutation_gate' => $mutationGate,
+            'dbaccess_execution_plan' => $dbaccessExecutionPlan,
             'mutation_enabled' => false,
         ],
     ];
