@@ -1885,6 +1885,223 @@ final class Sample18MiniTaskBoardDemoTest extends TestCase
         self::assertSame('duplicate key', $failed['error']);
     }
 
+    public function testMiniTaskBoardGeneratedSubmitTransactionBindingCallablesUseTransactionRuntime(): void
+    {
+        $buildReady = static function (): array {
+            $normalized = app_lab_sample18_task_board_normalize_generated_submit_request(
+                'create_task_card',
+                ['title' => 'Transaction binding', 'body' => '', 'assigned_to' => 'Mina', 'priority' => '10', 'due_date' => ''],
+                '2026-07-10 13:00:00',
+            );
+            self::assertTrue($normalized['ok']);
+            $dispatcher = app_lab_sample18_task_board_generated_submit_dispatcher_dry_run($normalized);
+            $auditAppend = ['ok' => true, 'status' => 'appended', 'item' => ['event_key' => 'audit-binding-1']];
+            $idempotency = [
+                'ok' => true,
+                'status' => 'recorded',
+                'created' => true,
+                'dedupe_key' => 'dedupe-binding-1',
+                'item' => ['dedupe_key' => 'dedupe-binding-1'],
+            ];
+            $mutationGate = app_lab_sample18_task_board_generated_submit_mutation_gate(
+                ['sample18_generated_submit_mutation_enabled' => true],
+                $normalized,
+                $dispatcher,
+                $auditAppend,
+                $idempotency,
+            );
+            $executionPlan = app_lab_sample18_task_board_generated_submit_dbaccess_execution_plan(
+                $normalized,
+                $dispatcher,
+                $mutationGate,
+            );
+            $transactionPlan = app_lab_sample18_task_board_generated_submit_transaction_plan($executionPlan);
+            $updatePlan = app_lab_sample18_task_board_generated_submit_execution_update_plan(
+                $transactionPlan,
+                $auditAppend,
+                $idempotency,
+            );
+            $guard = app_lab_sample18_task_board_generated_submit_execution_guard(
+                $normalized,
+                $auditAppend,
+                $idempotency,
+                $mutationGate,
+                $executionPlan,
+                $transactionPlan,
+                $updatePlan,
+            );
+            $coordination = app_lab_sample18_task_board_generated_submit_executor_coordination_plan(
+                $guard,
+                $updatePlan,
+                true,
+            );
+
+            return [$normalized, $dispatcher, $guard, $coordination];
+        };
+
+        [$normalized, $dispatcher, $guard, $coordination] = $buildReady();
+        $transactionDb = new class {
+            public array $events = [];
+            public bool $active = false;
+            public string $error = '';
+
+            public function beginTransaction(): bool
+            {
+                $this->events[] = 'begin';
+                $this->active = true;
+
+                return true;
+            }
+
+            public function commit(): bool
+            {
+                $this->events[] = 'commit';
+                $this->active = false;
+
+                return true;
+            }
+
+            public function rollBack(): bool
+            {
+                $this->events[] = 'rollback';
+                $this->active = false;
+
+                return true;
+            }
+
+            public function inTransaction(): bool
+            {
+                return $this->active;
+            }
+        };
+        $factoryContexts = [];
+        $dbAccessCalls = [];
+        $callables = app_lab_sample18_task_board_generated_submit_transaction_binding_callables(
+            $transactionDb,
+            static function (array $context) use (&$factoryContexts, &$dbAccessCalls): object {
+                $factoryContexts[] = $context;
+
+                return new class($dbAccessCalls) {
+                    private array $calls;
+
+                    public function __construct(array &$calls)
+                    {
+                        $this->calls =& $calls;
+                    }
+
+                    public function InsertTaskCard(object $TaskCardObj): object
+                    {
+                        $this->calls[] = [
+                            'method' => 'InsertTaskCard',
+                            'title' => $TaskCardObj->title,
+                            'assignedTo' => $TaskCardObj->assignedTo,
+                        ];
+
+                        return (object) ['affected_rows' => 1, 'insert_id' => 77];
+                    }
+                };
+            },
+        );
+        $success = app_lab_sample18_task_board_generated_submit_transaction_adapter(
+            $normalized,
+            $dispatcher,
+            $guard,
+            $coordination,
+            true,
+            $callables['begin'],
+            $callables['commit'],
+            $callables['rollback'],
+            $callables['dbaccess'],
+        );
+        self::assertSame('executed', $success['status']);
+        self::assertSame('committed', $success['transaction_status']);
+        self::assertSame(['begin', 'commit'], $transactionDb->events);
+        self::assertCount(1, $factoryContexts);
+        self::assertTrue($factoryContexts[0]['in_transaction']);
+        self::assertSame('TaskCardDBAccess', $factoryContexts[0]['call']['db_access_class']);
+        self::assertSame('InsertTaskCard', $factoryContexts[0]['call']['db_access_function']);
+        self::assertSame([['method' => 'InsertTaskCard', 'title' => 'Transaction binding', 'assignedTo' => 'Mina']], $dbAccessCalls);
+        self::assertSame(77, $success['dbaccess_result']['insert_id']);
+
+        [$normalized, $dispatcher, $guard, $coordination] = $buildReady();
+        $failingTransactionDb = new class {
+            public array $events = [];
+            public bool $active = false;
+            public string $error = '';
+
+            public function beginTransaction(): bool
+            {
+                $this->events[] = 'begin';
+                $this->active = true;
+
+                return true;
+            }
+
+            public function commit(): bool
+            {
+                $this->events[] = 'commit';
+                $this->active = false;
+
+                return true;
+            }
+
+            public function rollBack(): bool
+            {
+                $this->events[] = 'rollback';
+                $this->active = false;
+
+                return true;
+            }
+
+            public function inTransaction(): bool
+            {
+                return $this->active;
+            }
+        };
+        $failingCallables = app_lab_sample18_task_board_generated_submit_transaction_binding_callables(
+            $failingTransactionDb,
+            static fn (): object => new class {
+                public function InsertTaskCard(object $TaskCardObj): object
+                {
+                    return (object) ['errno' => 1062, 'error' => 'duplicate key'];
+                }
+            },
+        );
+        $failed = app_lab_sample18_task_board_generated_submit_transaction_adapter(
+            $normalized,
+            $dispatcher,
+            $guard,
+            $coordination,
+            true,
+            $failingCallables['begin'],
+            $failingCallables['commit'],
+            $failingCallables['rollback'],
+            $failingCallables['dbaccess'],
+        );
+        self::assertSame('failed', $failed['status']);
+        self::assertSame('rolled_back', $failed['transaction_status']);
+        self::assertSame('dbaccess_failed', $failed['failure_code']);
+        self::assertSame(['begin', 'rollback'], $failingTransactionDb->events);
+
+        $wrongTargetCoordination = $coordination;
+        $wrongTargetCoordination['app_db_transaction_boundary']['db_handle'] = 'config_db';
+        $blocked = app_lab_sample18_task_board_generated_submit_transaction_adapter(
+            $normalized,
+            $dispatcher,
+            $guard,
+            $wrongTargetCoordination,
+            true,
+            $failingCallables['begin'],
+            $failingCallables['commit'],
+            $failingCallables['rollback'],
+            $failingCallables['dbaccess'],
+        );
+        self::assertSame('failed', $blocked['status']);
+        self::assertSame('begin_failed', $blocked['transaction_status']);
+        self::assertSame('transaction_target_not_allowlisted', $blocked['failure_code']);
+        self::assertSame(['begin', 'rollback'], $failingTransactionDb->events);
+    }
+
     public function testMiniTaskBoardGeneratedSubmitTransactionAdapterUsesFakeBoundariesOnly(): void
     {
         $buildReady = static function (): array {
