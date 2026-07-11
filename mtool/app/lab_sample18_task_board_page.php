@@ -761,6 +761,142 @@ function app_lab_sample18_task_board_generated_submit_executor_enablement_flag(a
 }
 
 /**
+ * @return array{enabled:bool,source:string}
+ */
+function app_lab_sample18_task_board_generated_submit_config_flag(array $app, string $appKey, string $envKey): array
+{
+    if (array_key_exists($appKey, $app)) {
+        return [
+            'enabled' => (bool) $app[$appKey],
+            'source' => 'app',
+        ];
+    }
+
+    $envValue = getenv($envKey);
+    if ($envValue !== false) {
+        return [
+            'enabled' => trim((string) $envValue) === '1',
+            'source' => 'env',
+        ];
+    }
+
+    return [
+        'enabled' => false,
+        'source' => 'default',
+    ];
+}
+
+/**
+ * @return list<string>
+ */
+function app_lab_sample18_task_board_generated_submit_default_runtime_files(string $referenceDir): array
+{
+    return [
+        $referenceDir . '/DBACCESS-PHP/_support/mtool_runtime_db.php',
+        $referenceDir . '/DATACLASS-PHP/base/data-TaskCardBase.php',
+        $referenceDir . '/DATACLASS-PHP/data-TaskCard.php',
+        $referenceDir . '/DBACCESS-PHP/base/dbaccess-TaskCardBase.php',
+        $referenceDir . '/DBACCESS-PHP/dbaccess-TaskCard.php',
+    ];
+}
+
+/**
+ * @return array{reference_dir:string,source:string}
+ */
+function app_lab_sample18_task_board_generated_submit_runtime_reference_config(array $app): array
+{
+    $root = dirname(__DIR__, 2);
+    $referenceDir = trim((string) ($app['sample18_generated_submit_runtime_reference_dir'] ?? ''));
+    if ($referenceDir !== '') {
+        return [
+            'reference_dir' => $referenceDir,
+            'source' => 'app',
+        ];
+    }
+
+    return [
+        'reference_dir' => $root . '/sample/tutorials/sample18-mini-task-board-demo/reference',
+        'source' => 'default',
+    ];
+}
+
+function app_lab_sample18_task_board_generated_submit_has_complete_injected_transaction_callables(array $app): bool
+{
+    $transactionCallables = is_array($app['sample18_generated_submit_transaction_callables'] ?? null)
+        ? $app['sample18_generated_submit_transaction_callables']
+        : [];
+    foreach (['begin', 'commit', 'rollback', 'dbaccess'] as $key) {
+        if (!is_callable($transactionCallables[$key] ?? null)) {
+            return false;
+        }
+    }
+
+    return $transactionCallables !== [];
+}
+
+/**
+ * @return array<string,mixed>
+ */
+function app_lab_sample18_task_board_generated_submit_executor_config(array $app): array
+{
+    $mutation = app_lab_sample18_task_board_generated_submit_config_flag(
+        $app,
+        'sample18_generated_submit_mutation_enabled',
+        'MTOOL_SAMPLE18_GENERATED_SUBMIT_MUTATION_ENABLED',
+    );
+    $executor = app_lab_sample18_task_board_generated_submit_config_flag(
+        $app,
+        'sample18_generated_submit_executor_enabled',
+        'MTOOL_SAMPLE18_GENERATED_SUBMIT_EXECUTOR_ENABLED',
+    );
+    $runtimeReference = app_lab_sample18_task_board_generated_submit_runtime_reference_config($app);
+    $hasInjectedCallables = app_lab_sample18_task_board_generated_submit_has_complete_injected_transaction_callables($app);
+    $reasons = [];
+
+    if (!$mutation['enabled']) {
+        $reasons[] = 'mutation_enablement_disabled';
+    }
+    if (!$executor['enabled']) {
+        $reasons[] = 'executor_enablement_disabled';
+    }
+
+    $status = $reasons === [] ? 'ready' : 'disabled';
+    $failureCode = '';
+    $missingFile = '';
+    $dependencySource = $hasInjectedCallables ? 'injected_transaction_callables' : 'default_runtime_reference';
+    $runtimeFiles = app_lab_sample18_task_board_generated_submit_default_runtime_files($runtimeReference['reference_dir']);
+
+    if ($status === 'ready' && !$hasInjectedCallables) {
+        foreach ($runtimeFiles as $file) {
+            if (!is_file($file) || !is_readable($file)) {
+                $status = 'failed';
+                $failureCode = 'executor_default_runtime_file_missing';
+                $missingFile = $file;
+                $reasons[] = 'runtime_reference_file_missing';
+                break;
+            }
+        }
+    }
+
+    return [
+        'ok' => $status !== 'failed',
+        'status' => $status,
+        'ready' => $status === 'ready',
+        'mutation_enabled' => (bool) $mutation['enabled'],
+        'mutation_enablement_source' => $mutation['source'],
+        'executor_enabled' => (bool) $executor['enabled'],
+        'executor_enablement_source' => $executor['source'],
+        'runtime_reference_dir' => $runtimeReference['reference_dir'],
+        'runtime_reference_source' => $runtimeReference['source'],
+        'dependency_source' => $dependencySource,
+        'runtime_files' => $runtimeFiles,
+        'failure_code' => $failureCode,
+        'missing_file' => $missingFile,
+        'reasons' => array_values(array_unique($reasons)),
+    ];
+}
+
+/**
  * @param array<string,mixed> $normalized
  * @param array<string,mixed> $dispatcherResult
  * @param array<string,mixed> $auditAppend
@@ -2178,20 +2314,10 @@ function app_lab_sample18_task_board_generated_submit_route_executor_dependencie
  */
 function app_lab_sample18_task_board_generated_submit_default_transaction_callables(array $app): array
 {
-    $root = dirname(__DIR__, 2);
-    $referenceDir = trim((string) ($app['sample18_generated_submit_runtime_reference_dir'] ?? ''));
-    if ($referenceDir === '') {
-        $referenceDir = $root . '/sample/tutorials/sample18-mini-task-board-demo/reference';
-    }
-    $files = [
-        $referenceDir . '/DBACCESS-PHP/_support/mtool_runtime_db.php',
-        $referenceDir . '/DATACLASS-PHP/base/data-TaskCardBase.php',
-        $referenceDir . '/DATACLASS-PHP/data-TaskCard.php',
-        $referenceDir . '/DBACCESS-PHP/base/dbaccess-TaskCardBase.php',
-        $referenceDir . '/DBACCESS-PHP/dbaccess-TaskCard.php',
-    ];
+    $runtimeReference = app_lab_sample18_task_board_generated_submit_runtime_reference_config($app);
+    $files = app_lab_sample18_task_board_generated_submit_default_runtime_files($runtimeReference['reference_dir']);
     foreach ($files as $file) {
-        if (!is_file($file)) {
+        if (!is_file($file) || !is_readable($file)) {
             return [
                 'ok' => false,
                 'failure_code' => 'executor_default_runtime_file_missing',
@@ -2345,7 +2471,8 @@ function app_lab_sample18_task_board_generated_submit_blocked_response(
         $transactionPlan,
         $executionUpdatePlan,
     );
-    $executorEnabled = app_lab_sample18_task_board_generated_submit_executor_enablement_flag($app ?? []);
+    $executorConfig = app_lab_sample18_task_board_generated_submit_executor_config($app ?? []);
+    $executorEnabled = (bool) ($executorConfig['executor_enabled'] ?? false);
     $executorCoordinationPlan = app_lab_sample18_task_board_generated_submit_executor_coordination_plan(
         $executionGuard,
         $executionUpdatePlan,
@@ -2374,6 +2501,7 @@ function app_lab_sample18_task_board_generated_submit_blocked_response(
         'execution_update_plan' => $executionUpdatePlan,
         'execution_guard' => $executionGuard,
         'executor_coordination_plan' => $executorCoordinationPlan,
+        'executor_config' => $executorConfig,
         'mutation_enabled' => false,
         'executor_enabled' => $executorEnabled,
     ];
@@ -2381,6 +2509,29 @@ function app_lab_sample18_task_board_generated_submit_blocked_response(
     if (!$executorEnabled || ($executorCoordinationPlan['status'] ?? '') !== 'planned' || !($executorCoordinationPlan['ready'] ?? false)) {
         return [
             'status_code' => 409,
+            'payload' => $payload,
+        ];
+    }
+
+    if (($executorConfig['status'] ?? '') === 'failed') {
+        $payload['result'] = 'failed';
+        $payload['failure_code'] = (string) ($executorConfig['failure_code'] ?? 'executor_config_failed');
+        $payload['route_execution'] = [
+            'ok' => false,
+            'accepted' => false,
+            'result' => 'failed',
+            'success' => false,
+            'execution_status' => 'failed',
+            'failure_code' => $payload['failure_code'],
+            'recovery_required' => false,
+            'reasons' => array_values(array_unique(array_merge(
+                [$payload['failure_code']],
+                array_filter($executorConfig['reasons'] ?? [], 'is_string'),
+            ))),
+        ];
+
+        return [
+            'status_code' => 500,
             'payload' => $payload,
         ];
     }
