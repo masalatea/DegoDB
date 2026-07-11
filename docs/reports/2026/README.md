@@ -11,6 +11,10 @@
 
 ## Index
 
+- `2026-0710-post-route-executor-config-metadata-coverage-lane-closure.md`
+  - #680 post route executor config metadata coverage lane closure。#679 の route-visible `executor_config` coverage を受け入れ、次は sample18 generated-submit availability documentation (#681) を昇格。Status: `DONE`。
+- `2026-0710-sample18-route-executor-config-metadata-coverage.md`
+  - #679 sample18 route executor config metadata coverage。generated-submit route response の `executor_config` metadata を default disabled、env/app enablement、injected-callable execution、missing runtime failure で coverage。Status: `FIRST_SLICE_DONE`。
 - `2026-0710-post-production-runtime-config-resolver-lane-closure.md`
   - #678 post production runtime config resolver lane closure。#677 の config resolver を受け入れ、次は route response の `executor_config` metadata coverage (#679) を昇格。Status: `DONE`。
 - `2026-0710-sample18-production-runtime-config-resolver-first-slice.md`
