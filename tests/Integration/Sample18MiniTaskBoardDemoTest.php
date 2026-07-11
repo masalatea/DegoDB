@@ -2136,6 +2136,250 @@ final class Sample18MiniTaskBoardDemoTest extends TestCase
         self::assertContains('transaction_not_committed', $skipped['reasons']);
     }
 
+    public function testMiniTaskBoardGeneratedSubmitRouteExecutionPlanComposesFakeAdapters(): void
+    {
+        $buildReady = static function (): array {
+            $normalized = app_lab_sample18_task_board_normalize_generated_submit_request(
+                'create_task_card',
+                ['title' => 'Route execution plan', 'body' => '', 'assigned_to' => '', 'priority' => '10', 'due_date' => ''],
+                '2026-07-10 14:00:00',
+            );
+            self::assertTrue($normalized['ok']);
+            $dispatcher = app_lab_sample18_task_board_generated_submit_dispatcher_dry_run($normalized);
+            $auditAppend = ['ok' => true, 'status' => 'appended', 'item' => ['event_key' => 'audit-route-exec-1']];
+            $idempotency = [
+                'ok' => true,
+                'status' => 'recorded',
+                'created' => true,
+                'dedupe_key' => 'dedupe-route-exec-1',
+                'item' => ['dedupe_key' => 'dedupe-route-exec-1'],
+            ];
+            $mutationGate = app_lab_sample18_task_board_generated_submit_mutation_gate(
+                ['sample18_generated_submit_mutation_enabled' => true],
+                $normalized,
+                $dispatcher,
+                $auditAppend,
+                $idempotency,
+            );
+            $executionPlan = app_lab_sample18_task_board_generated_submit_dbaccess_execution_plan(
+                $normalized,
+                $dispatcher,
+                $mutationGate,
+            );
+            $transactionPlan = app_lab_sample18_task_board_generated_submit_transaction_plan($executionPlan);
+            $updatePlan = app_lab_sample18_task_board_generated_submit_execution_update_plan(
+                $transactionPlan,
+                $auditAppend,
+                $idempotency,
+            );
+            $guard = app_lab_sample18_task_board_generated_submit_execution_guard(
+                $normalized,
+                $auditAppend,
+                $idempotency,
+                $mutationGate,
+                $executionPlan,
+                $transactionPlan,
+                $updatePlan,
+            );
+            $coordination = app_lab_sample18_task_board_generated_submit_executor_coordination_plan(
+                $guard,
+                $updatePlan,
+                true,
+            );
+
+            return [$normalized, $dispatcher, $guard, $coordination, $updatePlan];
+        };
+
+        [$normalized, $dispatcher, $guard, $coordination, $updatePlan] = $buildReady();
+        $events = [];
+        $blocked = app_lab_sample18_task_board_generated_submit_route_execution_plan(
+            $normalized,
+            $dispatcher,
+            $guard,
+            $coordination,
+            $updatePlan,
+            false,
+            static function () use (&$events): array {
+                $events[] = 'begin';
+
+                return ['ok' => true];
+            },
+            static function () use (&$events): array {
+                $events[] = 'commit';
+
+                return ['ok' => true];
+            },
+            static function () use (&$events): array {
+                $events[] = 'rollback';
+
+                return ['ok' => true];
+            },
+            static function () use (&$events): array {
+                $events[] = 'dbaccess';
+
+                return ['ok' => true];
+            },
+            static function () use (&$events): array {
+                $events[] = 'audit';
+
+                return ['ok' => true];
+            },
+            static function () use (&$events): array {
+                $events[] = 'idempotency';
+
+                return ['ok' => true];
+            },
+        );
+        self::assertSame([], $events);
+        self::assertSame('blocked', $blocked['result']);
+        self::assertFalse($blocked['success']);
+        self::assertContains('executor_feature_flag_disabled', $blocked['reasons']);
+
+        $events = [];
+        $executed = app_lab_sample18_task_board_generated_submit_route_execution_plan(
+            $normalized,
+            $dispatcher,
+            $guard,
+            $coordination,
+            $updatePlan,
+            true,
+            static function () use (&$events): array {
+                $events[] = 'begin';
+
+                return ['ok' => true];
+            },
+            static function () use (&$events): array {
+                $events[] = 'commit';
+
+                return ['ok' => true];
+            },
+            static function () use (&$events): array {
+                $events[] = 'rollback';
+
+                return ['ok' => true];
+            },
+            static function () use (&$events): array {
+                $events[] = 'dbaccess';
+
+                return ['ok' => true, 'result_code' => 'dbaccess_executed', 'rows_affected' => 1];
+            },
+            static function () use (&$events): array {
+                $events[] = 'audit';
+
+                return ['ok' => true, 'event_key' => 'execution-audit-route-1'];
+            },
+            static function () use (&$events): array {
+                $events[] = 'idempotency';
+
+                return ['ok' => true, 'execution_status' => 'executed'];
+            },
+        );
+        self::assertSame(['begin', 'dbaccess', 'commit', 'audit', 'idempotency'], $events);
+        self::assertTrue($executed['ok']);
+        self::assertTrue($executed['accepted']);
+        self::assertSame('executed', $executed['result']);
+        self::assertTrue($executed['success']);
+        self::assertSame('executed', $executed['execution_status']);
+        self::assertSame('committed', $executed['transaction_result']['transaction_status'] ?? '');
+        self::assertSame('recorded', $executed['post_commit_recording']['recording_status'] ?? '');
+        self::assertFalse($executed['recovery_required']);
+
+        $events = [];
+        $dbaccessFailed = app_lab_sample18_task_board_generated_submit_route_execution_plan(
+            $normalized,
+            $dispatcher,
+            $guard,
+            $coordination,
+            $updatePlan,
+            true,
+            static function () use (&$events): array {
+                $events[] = 'begin';
+
+                return ['ok' => true];
+            },
+            static function () use (&$events): array {
+                $events[] = 'commit';
+
+                return ['ok' => true];
+            },
+            static function () use (&$events): array {
+                $events[] = 'rollback';
+
+                return ['ok' => true];
+            },
+            static function () use (&$events): array {
+                $events[] = 'dbaccess';
+
+                return ['ok' => false, 'failure_code' => 'dbaccess_failed'];
+            },
+            static function () use (&$events): array {
+                $events[] = 'audit';
+
+                return ['ok' => true];
+            },
+            static function () use (&$events): array {
+                $events[] = 'idempotency';
+
+                return ['ok' => true];
+            },
+        );
+        self::assertSame(['begin', 'dbaccess', 'rollback'], $events);
+        self::assertSame('failed', $dbaccessFailed['result']);
+        self::assertFalse($dbaccessFailed['success']);
+        self::assertSame('failed', $dbaccessFailed['execution_status']);
+        self::assertSame('rolled_back', $dbaccessFailed['transaction_result']['transaction_status'] ?? '');
+        self::assertSame([], $dbaccessFailed['post_commit_recording']);
+        self::assertSame('dbaccess_failed', $dbaccessFailed['failure_code']);
+
+        $events = [];
+        $recordingFailed = app_lab_sample18_task_board_generated_submit_route_execution_plan(
+            $normalized,
+            $dispatcher,
+            $guard,
+            $coordination,
+            $updatePlan,
+            true,
+            static function () use (&$events): array {
+                $events[] = 'begin';
+
+                return ['ok' => true];
+            },
+            static function () use (&$events): array {
+                $events[] = 'commit';
+
+                return ['ok' => true];
+            },
+            static function () use (&$events): array {
+                $events[] = 'rollback';
+
+                return ['ok' => true];
+            },
+            static function () use (&$events): array {
+                $events[] = 'dbaccess';
+
+                return ['ok' => true, 'result_code' => 'dbaccess_executed'];
+            },
+            static function () use (&$events): array {
+                $events[] = 'audit';
+
+                return ['ok' => true, 'event_key' => 'execution-audit-route-2'];
+            },
+            static function () use (&$events): array {
+                $events[] = 'idempotency';
+
+                return ['ok' => false, 'failure_code' => 'idempotency_update_failed'];
+            },
+        );
+        self::assertSame(['begin', 'dbaccess', 'commit', 'audit', 'idempotency'], $events);
+        self::assertSame('failed', $recordingFailed['result']);
+        self::assertFalse($recordingFailed['success']);
+        self::assertSame('failed', $recordingFailed['execution_status']);
+        self::assertSame('committed', $recordingFailed['transaction_result']['transaction_status'] ?? '');
+        self::assertSame('failed', $recordingFailed['post_commit_recording']['recording_status'] ?? '');
+        self::assertTrue($recordingFailed['recovery_required']);
+        self::assertSame('idempotency_update_failed', $recordingFailed['failure_code']);
+    }
+
     public function testMiniTaskBoardGeneratedSubmitExecutionAuditAppendIsIndependent(): void
     {
         $app = $this->sqliteApp();
