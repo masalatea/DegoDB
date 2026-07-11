@@ -11,6 +11,14 @@
 
 ## Index
 
+- `2026-0710-cross-route-all-success-or-failure-policy-review-plan.md`
+  - #639 cross-route all-success-or-failure execution policy review plan。sample18 に限らず、mutation / execution route の UI/API success は required step 全成功時のみとし、cross-store gap は内部 failure / recovery metadata とする共通方針レビューを追加。Status: `TODO`。
+- `2026-0710-sample18-post-dbaccess-call-adapter-helper-lane-closure.md`
+  - #637 sample18 post-DBAccess call adapter helper lane closure。#636 の route-unwired adapter helper を受け入れ、次は route execution より前に transaction adapter preflight (#638) を昇格。real DBAccess mutation / transaction / route execution は未有効化。Status: `DONE`。
+- `2026-0710-sample18-dbaccess-call-adapter-helper-first-slice.md`
+  - #636 sample18 DBAccess call adapter helper first slice。route-unwired adapter helper を追加し、allowed metadata と injected fake callable のみで executed/failed/skipped metadata を分類。real DBAccess mutation / transaction / route execution は未有効化。Status: `FIRST_SLICE_DONE`。
+- `2026-0710-sample18-dbaccess-call-adapter-preflight.md`
+  - #635 sample18 DBAccess call adapter preflight。guarded executor 用 DBAccess call adapter の入力 metadata、TaskCard operation mapping、fail-closed rules、fake callable test matrix を定義し、次は route-unwired adapter helper first slice (#636) を昇格。real DBAccess mutation / transaction / route execution は未有効化。Status: `DONE`。
 - `2026-0710-sample18-post-executor-coordination-plan-route-metadata-lane-closure.md`
   - #634 sample18 post-executor coordination plan route metadata lane closure。#633 の route-visible `executor_coordination_plan` metadata を受け入れ、次は execution 有効化前の DBAccess call adapter preflight (#635) を昇格。DBAccess mutation / transaction / route executor は未有効化。Status: `DONE`。
 - `2026-0710-sample18-executor-coordination-plan-route-metadata-integration.md`
