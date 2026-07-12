@@ -3,12 +3,19 @@
 declare(strict_types=1);
 
 require_once __DIR__ . '/csrf.php';
+require_once __DIR__ . '/no_code_mtool_source_output_inspection_page.php';
 require_once __DIR__ . '/no_code_operator_inspection.php';
 require_once __DIR__ . '/no_code_operator_sync_inspection.php';
 require_once __DIR__ . '/managed_operation_sync_outbox_repository_pdo.php';
 require_once __DIR__ . '/project_output_service.php';
 require_once __DIR__ . '/project_source_output_route_common.php';
 require_once __DIR__ . '/request.php';
+
+function app_project_source_outputs_show_no_code_self_inspection_link(string $projectKey): bool
+{
+    return strtoupper(trim($projectKey)) === 'MTOOL'
+        && app_no_code_mtool_source_output_inspection_enabled();
+}
 
 /**
  * @param array{
@@ -467,6 +474,12 @@ function app_render_project_source_outputs_page(array $app, array $request): voi
             <?php endif; ?>
             <?php if ($noCodeInspection['available']): ?>
                 <p><a href="<?php echo app_h(app_project_source_output_detail_path($projectKey, $noCodeInspection['source_output_key'])); ?>">Inspect NO-CODE-RUNTIME definition</a></p>
+            <?php endif; ?>
+            <?php if (app_project_source_outputs_show_no_code_self_inspection_link($projectKey)): ?>
+                <p data-mtool-no-code-inspection-entry-point="true">
+                    <a href="/projects/MTOOL/source-outputs/no-code-inspection">Open read-only no-code inspection</a>
+                    <span class="muted">Generated inspection is read-only and does not replace canonical Source Outputs.</span>
+                </p>
             <?php endif; ?>
             <?php if ($noCodeLatestArtifact !== null && ($noCodeLatestArtifact['archive_exists'] ?? false)): ?>
                 <p><a href="<?php echo app_h(app_project_source_output_download_path($projectKey, (string) $noCodeLatestArtifact['artifact_key'])); ?>">Download latest NO-CODE-RUNTIME artifact</a></p>
