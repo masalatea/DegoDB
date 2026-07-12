@@ -30,7 +30,8 @@ INSERT INTO project_custom_proxies (
     continue_even_if_failed_to_insert,
     notes,
     source_of_truth
-) VALUES (
+) VALUES
+(
     @sample14_project_id,
     'CATALOG-SUMMARY',
     'Catalog',
@@ -41,9 +42,31 @@ INSERT INTO project_custom_proxies (
     0,
     'Sample14 custom proxy that bundles two read-only generated DBAccess functions into one proxy endpoint.',
     'manual'
+),
+(
+    @sample14_project_id,
+    'TRANSACTION-PAIR',
+    'Transaction',
+    'Pair',
+    1,
+    'NoSecurity',
+    '',
+    0,
+    'Sample14 Transaction Full proxy: both inserts commit together or both roll back.',
+    'manual'
 );
 
-SET @sample14_custom_proxy_id = LAST_INSERT_ID();
+SET @sample14_catalog_proxy_id = (
+    SELECT id FROM project_custom_proxies
+    WHERE project_id = @sample14_project_id
+      AND custom_proxy_key = 'CATALOG-SUMMARY'
+);
+
+SET @sample14_transaction_proxy_id = (
+    SELECT id FROM project_custom_proxies
+    WHERE project_id = @sample14_project_id
+      AND custom_proxy_key = 'TRANSACTION-PAIR'
+);
 
 INSERT INTO project_custom_proxy_steps (
     custom_proxy_id,
@@ -55,7 +78,7 @@ INSERT INTO project_custom_proxy_steps (
     source_of_truth
 ) VALUES
 (
-    @sample14_custom_proxy_id,
+    @sample14_catalog_proxy_id,
     'dbtable',
     'GetdbtableList',
     1,
@@ -64,22 +87,46 @@ INSERT INTO project_custom_proxy_steps (
     'manual'
 ),
 (
-    @sample14_custom_proxy_id,
+    @sample14_catalog_proxy_id,
     'project_source_output',
     'GetProjectSourceOutputList',
     1,
     20,
     'Read source output definitions for the requested project.',
     'manual'
+),
+(
+    @sample14_transaction_proxy_id,
+    'sample14_transaction_item',
+    'InsertSample14TransactionItem',
+    0,
+    10,
+    'Insert the first row in the shared transaction.',
+    'manual'
+),
+(
+    @sample14_transaction_proxy_id,
+    'sample14_transaction_item',
+    'InsertSample14TransactionItem',
+    0,
+    20,
+    'Insert the second row; any failure rolls the first insert back.',
+    'manual'
 );
 
 INSERT INTO project_custom_proxy_source_output_targets (
     custom_proxy_id,
     source_output_key
-) VALUES (
-    @sample14_custom_proxy_id,
+) VALUES
+(
+    @sample14_catalog_proxy_id,
+    'CUSTOM-PROXY-SERVER'
+),
+(
+    @sample14_transaction_proxy_id,
     'CUSTOM-PROXY-SERVER'
 );
 
 SET @sample14_project_id = NULL;
-SET @sample14_custom_proxy_id = NULL;
+SET @sample14_catalog_proxy_id = NULL;
+SET @sample14_transaction_proxy_id = NULL;

@@ -11,6 +11,16 @@
 
 ## Index
 
+- `2026-0711-generated-custom-proxy-transaction-mutation-fixture.md`
+  - #716 generated Custom Proxy transaction mutation fixture。2個の通常DBAccess insert stepをgenerated endpointで実行し、成功時は両commit・insert ID応答、2 step目duplicate failure時は1 step目もrollback・NG応答となることを実DB状態まで検証。Status: `FIRST_SLICE_DONE`。
+- `2026-0711-generated-custom-proxy-transaction-wrapper-integration.md`
+  - #715 generated Custom Proxy transaction wrapper integration。旧 native mysqli / autocommit 前提を shared runtime の begin/commit/rollback/state API へ置換し、driver-neutral last insert id を追加。success時 commit、required step failure時 rollback の生成contractを固定。Status: `FIRST_SLICE_DONE`。
+- `2026-0711-transaction-full-call-site-inventory.md`
+  - #714 Transaction Full call-site inventory。最優先を既存 `in_transaction` metadata を持つ generated Custom Proxy に確定し、Sample14 は read-only で mutation proof 不足、Sample18 は app/config cross-store、Mtool 本体の主要 multi-write repository は既に PDO transaction 済みと分類。Status: `DONE`。
+- `2026-0711-generated-dbaccess-transaction-full-foundation.md`
+  - #712-#713 Generated DBAccess Transaction Full foundation。DBAccess class を transaction-unaware のまま保ち、composite caller が shared `$mtooldb` transaction を所有する方針を確定。mysqli transaction 委譲・state tracking・SQL error 正規化を追加し、PDO/SQLite と mysqli/MariaDB で複数 DBAccess instance の全 commit・全 rollback を実証。Status: `FIRST_SLICE_DONE`。
+- `2026-0711-generated-dbaccess-transaction-full-inventory.md`
+  - #711 Generated DBAccess Transaction Full の棚卸し。生成 DBAccess の shared connection、PDO-only transaction API、共通 failure contract、Sample18 固有 coverage を確認し、DBAccess class は変更せず composite caller が transaction boundary を所有する最小方針へ確定。Status: `DONE`。
 - `2026-0711-unpushed-commit-stack-inventory.md`
   - 未push 188 commits の棚卸し。全 commit 一覧、分類、整理判断を記録し、広範 rewrite / squash は行わず意味単位の stack として保持する方針を確認。Status: `CHECKPOINT_DONE`。
 - `2026-0711-post-readiness-commit-stack-checkpoint.md`

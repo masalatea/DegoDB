@@ -6,6 +6,7 @@ require_once __DIR__ . '/custom_proxy_repository.php';
 require_once __DIR__ . '/custom_proxy_service.php';
 require_once __DIR__ . '/db_access_endpoint_policy.php';
 require_once __DIR__ . '/generated_catalog.php';
+require_once __DIR__ . '/project_db_access_bootstrap_service.php';
 
 /**
  * @return array{
@@ -19,6 +20,8 @@ function app_custom_proxy_build_plan_resolve_step_reference(
     array $generatedCatalog,
     string $sourceName,
     string $functionName,
+    array $app = [],
+    string $projectKey = '',
 ): array {
     $normalizedSourceName = trim($sourceName);
     $normalizedFunctionName = trim($functionName);
@@ -40,12 +43,25 @@ function app_custom_proxy_build_plan_resolve_step_reference(
         }
     }
     if ($entity === null) {
-        return [
-            'resolved' => false,
-            'signature' => '',
-            'line' => 0,
-            'resolution_error' => 'generated dbaccess entity が見つかりません。',
-        ];
+        if ($app !== [] && $projectKey !== '') {
+            $fallbackResult = app_project_db_access_bootstrap_materialize_runtime_entity(
+                $app,
+                $projectKey,
+                $normalizedSourceName,
+            );
+            if ($fallbackResult['ok'] && is_array($fallbackResult['entity'] ?? null)) {
+                $entity = $fallbackResult['entity'];
+            }
+        }
+
+        if ($entity === null) {
+            return [
+                'resolved' => false,
+                'signature' => '',
+                'line' => 0,
+                'resolution_error' => 'generated / canonical dbaccess entity が見つかりません。',
+            ];
+        }
     }
 
     $dbaccessPath = (string) ($entity['dbaccess_path'] ?? '');
@@ -210,6 +226,8 @@ function app_custom_proxy_build_plan_for_source_output(
                 $generatedCatalog,
                 $step['db_access_source_name'],
                 $step['db_access_function_name'],
+                $app,
+                $normalizedProjectKey,
             );
             if (!$resolution['resolved']) {
                 $unresolvedStepCount++;
