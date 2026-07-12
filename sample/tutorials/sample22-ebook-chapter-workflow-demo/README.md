@@ -6,6 +6,7 @@ This tutorial pack adds chapter workflow to the ebook lane. It keeps the sample 
 - project key: `SAMPLE22`
 - runtime root: `work/sample-packs/sample22-ebook-chapter-workflow-demo/`
 - reference outputs: `DATACLASS-PHP`, `DBACCESS-PHP`, `OPENAPI-JSON`
+- no-code extraction output: `NO-CODE-RUNTIME`
 
 ## Original Prompt
 
@@ -34,6 +35,9 @@ This tutorial pack adds chapter workflow to the ebook lane. It keeps the sample 
   - `DATACLASS-PHP`
   - `DBACCESS-PHP`
   - `OPENAPI-JSON`
+  - `NO-CODE-RUNTIME` (read-only book/chapter relation slice)
+
+`NO-CODE-RUNTIME` declares `ebook_workflow_book` as the lookup source and `ebook_workflow_published_chapter.book_id` as an explicit required `belongs_to` parent relation. This slice generates read-only list/detail/form metadata only. It does not add managed mutation operations or replace the existing OpenAPI/editor boundary.
 
 `draft` chapters are kept in the fixture data but excluded from public DBAccess functions by the `status = published` condition. `spine_order` / `SpineOrder`, `nav_label` / `NavLabel`, and `epub_resource_path` / `EpubResourcePath` are EPUB-facing metadata only; this sample does not generate or parse EPUB files.
 

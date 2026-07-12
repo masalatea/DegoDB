@@ -177,7 +177,7 @@ function app_no_code_runtime_render_fields(array $fields): array
 {
     $renderFields = [];
     foreach ($fields as $field) {
-        $renderFields[] = [
+        $renderField = [
             'field_key' => (string) ($field['field_key'] ?? ''),
             'label' => (string) ($field['label'] ?? $field['field_key'] ?? ''),
             'type' => (string) ($field['type'] ?? 'string'),
@@ -186,6 +186,10 @@ function app_no_code_runtime_render_fields(array $fields): array
             'readonly' => (bool) ($field['readonly'] ?? false),
             'visibility' => (string) ($field['visibility'] ?? 'visible'),
         ];
+        if (is_array($field['relation'] ?? null)) {
+            $renderField['relation'] = $field['relation'];
+        }
+        $renderFields[] = $renderField;
     }
 
     return $renderFields;
@@ -1093,7 +1097,16 @@ function app_no_code_runtime_render_form_html(array $fields, array $item, string
         $hint = $required
             ? '<span id="' . $fieldHintId . '" class="no-code-required-hint" data-required-field="' . app_no_code_runtime_html_escape($fieldKey) . '" data-required-label="' . $label . '" data-required-state="pending">Required for the generated action intent.</span>'
             : '';
-        $controls[] = '<label for="field-' . app_no_code_runtime_html_escape($fieldKey) . '">' . $labelText . $control . $hint . '</label>';
+        $relation = is_array($field['relation'] ?? null) ? $field['relation'] : [];
+        $relationAttrs = $relation === [] ? '' : (
+            ' data-relation-kind="' . app_no_code_runtime_html_escape((string) ($relation['kind'] ?? '')) . '"'
+            . ' data-relation-contract="' . app_no_code_runtime_html_escape((string) ($relation['contract_key'] ?? '')) . '"'
+            . ' data-relation-ui-role="' . app_no_code_runtime_html_escape((string) ($relation['ui_role'] ?? '')) . '"'
+            . ' data-relation-required="' . ((bool) ($relation['required'] ?? false) ? 'true' : 'false') . '"'
+            . ' data-lookup-state="' . app_no_code_runtime_html_escape((string) ($relation['lookup_state'] ?? 'metadata-only')) . '"'
+            . ' data-lookup-option-count="' . count(is_array($relation['lookup_options'] ?? null) ? $relation['lookup_options'] : []) . '"'
+        );
+        $controls[] = '<label for="field-' . app_no_code_runtime_html_escape($fieldKey) . '"' . $relationAttrs . '>' . $labelText . $control . $hint . '</label>';
     }
 
     if ($controls === []) {

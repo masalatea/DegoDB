@@ -35,6 +35,12 @@ function app_pdo_fetch_shared_contract_metadata_snapshot(array $app, string $pro
                 f.sync_role AS field_sync_role,
                 f.operation_role AS field_operation_role,
                 f.no_code_role AS field_no_code_role,
+                f.relation_kind AS field_relation_kind,
+                f.relation_contract_key AS field_relation_contract_key,
+                f.relation_key_field AS field_relation_key_field,
+                f.relation_label_field AS field_relation_label_field,
+                f.relation_ui_role AS field_relation_ui_role,
+                f.relation_required AS field_relation_required,
                 f.app_persistence_role AS field_app_persistence_role,
                 f.notes AS field_notes,
                 f.source_of_truth AS field_source_of_truth
@@ -91,6 +97,12 @@ function app_pdo_fetch_shared_contract_metadata_snapshot(array $app, string $pro
                 'sync_role' => (string) ($row['field_sync_role'] ?? ''),
                 'operation_role' => (string) ($row['field_operation_role'] ?? ''),
                 'no_code_role' => (string) ($row['field_no_code_role'] ?? ''),
+                'relation_kind' => (string) ($row['field_relation_kind'] ?? ''),
+                'relation_contract_key' => (string) ($row['field_relation_contract_key'] ?? ''),
+                'relation_key_field' => (string) ($row['field_relation_key_field'] ?? ''),
+                'relation_label_field' => (string) ($row['field_relation_label_field'] ?? ''),
+                'relation_ui_role' => (string) ($row['field_relation_ui_role'] ?? ''),
+                'relation_required' => (bool) ($row['field_relation_required'] ?? false),
                 'app_persistence_role' => (string) ($row['field_app_persistence_role'] ?? ''),
                 'notes' => (string) ($row['field_notes'] ?? ''),
                 'source_of_truth' => (string) ($row['field_source_of_truth'] ?? ''),
@@ -229,6 +241,7 @@ function app_pdo_upsert_shared_contract_field_metadata(
         if ($fieldPhysicalName === '') {
             throw new RuntimeException('field physical name が空です。');
         }
+        $relation = app_shared_contract_metadata_normalize_relation_input($input);
 
         $pdo = app_create_config_pdo($app);
         $projectId = app_shared_contract_metadata_pdo_resolve_project_id($pdo, $projectKey);
@@ -245,6 +258,12 @@ function app_pdo_upsert_shared_contract_field_metadata(
                     sync_role = :sync_role,
                     operation_role = :operation_role,
                     no_code_role = :no_code_role,
+                    relation_kind = :relation_kind,
+                    relation_contract_key = :relation_contract_key,
+                    relation_key_field = :relation_key_field,
+                    relation_label_field = :relation_label_field,
+                    relation_ui_role = :relation_ui_role,
+                    relation_required = :relation_required,
                     app_persistence_role = :app_persistence_role,
                     notes = :notes,
                     source_of_truth = :source_of_truth,
@@ -256,6 +275,12 @@ function app_pdo_upsert_shared_contract_field_metadata(
                 ':sync_role' => trim((string) ($input['sync_role'] ?? '')),
                 ':operation_role' => trim((string) ($input['operation_role'] ?? '')),
                 ':no_code_role' => trim((string) ($input['no_code_role'] ?? '')),
+                ':relation_kind' => $relation['kind'],
+                ':relation_contract_key' => $relation['contract_key'],
+                ':relation_key_field' => $relation['key_field'],
+                ':relation_label_field' => $relation['label_field'],
+                ':relation_ui_role' => $relation['ui_role'],
+                ':relation_required' => $relation['required'] ? 1 : 0,
                 ':app_persistence_role' => trim((string) ($input['app_persistence_role'] ?? '')),
                 ':notes' => trim((string) ($input['notes'] ?? '')),
                 ':source_of_truth' => trim((string) ($input['source_of_truth'] ?? 'manual')),
@@ -271,6 +296,12 @@ function app_pdo_upsert_shared_contract_field_metadata(
                     sync_role,
                     operation_role,
                     no_code_role,
+                    relation_kind,
+                    relation_contract_key,
+                    relation_key_field,
+                    relation_label_field,
+                    relation_ui_role,
+                    relation_required,
                     app_persistence_role,
                     notes,
                     source_of_truth
@@ -281,6 +312,12 @@ function app_pdo_upsert_shared_contract_field_metadata(
                     :sync_role,
                     :operation_role,
                     :no_code_role,
+                    :relation_kind,
+                    :relation_contract_key,
+                    :relation_key_field,
+                    :relation_label_field,
+                    :relation_ui_role,
+                    :relation_required,
                     :app_persistence_role,
                     :notes,
                     :source_of_truth
@@ -293,6 +330,12 @@ function app_pdo_upsert_shared_contract_field_metadata(
                 ':sync_role' => trim((string) ($input['sync_role'] ?? '')),
                 ':operation_role' => trim((string) ($input['operation_role'] ?? '')),
                 ':no_code_role' => trim((string) ($input['no_code_role'] ?? '')),
+                ':relation_kind' => $relation['kind'],
+                ':relation_contract_key' => $relation['contract_key'],
+                ':relation_key_field' => $relation['key_field'],
+                ':relation_label_field' => $relation['label_field'],
+                ':relation_ui_role' => $relation['ui_role'],
+                ':relation_required' => $relation['required'] ? 1 : 0,
                 ':app_persistence_role' => trim((string) ($input['app_persistence_role'] ?? '')),
                 ':notes' => trim((string) ($input['notes'] ?? '')),
                 ':source_of_truth' => trim((string) ($input['source_of_truth'] ?? 'manual')),
@@ -307,6 +350,44 @@ function app_pdo_upsert_shared_contract_field_metadata(
             'error' => $throwable->getMessage(),
         ];
     }
+}
+
+/**
+ * @param array<string,mixed> $input
+ * @return array{kind:string,contract_key:string,key_field:string,label_field:string,ui_role:string,required:bool}
+ */
+function app_shared_contract_metadata_normalize_relation_input(array $input): array
+{
+    $relation = [
+        'kind' => trim((string) ($input['relation_kind'] ?? '')),
+        'contract_key' => trim((string) ($input['relation_contract_key'] ?? '')),
+        'key_field' => trim((string) ($input['relation_key_field'] ?? '')),
+        'label_field' => trim((string) ($input['relation_label_field'] ?? '')),
+        'ui_role' => trim((string) ($input['relation_ui_role'] ?? '')),
+        'required' => !empty($input['relation_required']),
+    ];
+    $stringValues = array_slice($relation, 0, 5, true);
+    $nonEmpty = array_filter($stringValues, static fn (string $value): bool => $value !== '');
+    if ($nonEmpty === []) {
+        $relation['required'] = false;
+        return $relation;
+    }
+    if (count($nonEmpty) !== count($stringValues)) {
+        throw new InvalidArgumentException('relation metadata must be fully specified or empty.');
+    }
+    if ($relation['kind'] !== 'belongs_to') {
+        throw new InvalidArgumentException('relation kind is unsupported: ' . $relation['kind']);
+    }
+    if (!in_array($relation['ui_role'], ['parent', 'lookup'], true)) {
+        throw new InvalidArgumentException('relation ui role is unsupported: ' . $relation['ui_role']);
+    }
+    foreach (['contract_key', 'key_field', 'label_field'] as $key) {
+        if (preg_match('/^[a-z][a-z0-9_]*$/', $relation[$key]) !== 1) {
+            throw new InvalidArgumentException('relation ' . $key . ' must be lower snake case.');
+        }
+    }
+
+    return $relation;
 }
 
 /**

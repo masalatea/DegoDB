@@ -384,6 +384,14 @@ function app_config_db_bootstrap_required_columns(): array
             'usage_intent',
             'view_variant_preference',
         ],
+        'project_shared_contract_fields' => [
+            'relation_kind',
+            'relation_contract_key',
+            'relation_key_field',
+            'relation_label_field',
+            'relation_ui_role',
+            'relation_required',
+        ],
         'no_code_publish_candidate_revisions' => [
             'revision_id',
             'source_output_key',

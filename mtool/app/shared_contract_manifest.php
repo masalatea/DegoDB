@@ -260,7 +260,7 @@ function app_shared_contract_manifest_normalize_contract_metadata(array $metadat
  */
 function app_shared_contract_manifest_normalize_field_metadata(array $metadata): array
 {
-    return array_filter([
+    $normalized = array_filter([
         'sync_role' => (string) ($metadata['sync_role'] ?? ''),
         'operation_role' => (string) ($metadata['operation_role'] ?? ''),
         'no_code_role' => (string) ($metadata['no_code_role'] ?? ''),
@@ -268,6 +268,20 @@ function app_shared_contract_manifest_normalize_field_metadata(array $metadata):
         'notes' => (string) ($metadata['notes'] ?? ''),
         'source_of_truth' => (string) ($metadata['source_of_truth'] ?? ''),
     ], static fn (string $value): bool => $value !== '');
+
+    $relationKind = trim((string) ($metadata['relation_kind'] ?? ''));
+    if ($relationKind !== '') {
+        $normalized['relation'] = [
+            'kind' => $relationKind,
+            'contract_key' => trim((string) ($metadata['relation_contract_key'] ?? '')),
+            'key_field' => trim((string) ($metadata['relation_key_field'] ?? '')),
+            'label_field' => trim((string) ($metadata['relation_label_field'] ?? '')),
+            'ui_role' => trim((string) ($metadata['relation_ui_role'] ?? '')),
+            'required' => (bool) ($metadata['relation_required'] ?? false),
+        ];
+    }
+
+    return $normalized;
 }
 
 function app_shared_contract_manifest_field_type(array $columnItem, array $fieldItem): string

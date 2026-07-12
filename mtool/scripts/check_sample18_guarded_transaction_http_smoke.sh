@@ -55,6 +55,18 @@ db_count_title() {
     "mariadb -N -B -u\"\$MARIADB_USER\" -p\"\$MARIADB_PASSWORD\" \"\$MARIADB_DATABASE\" -e \"SELECT COUNT(*) FROM task_card WHERE title = '${title}'\""
 }
 
+db_insert_pending_title() {
+  local title="$1"
+  docker exec "$DB_CONTAINER" sh -lc \
+    "mariadb -N -B -u\"\$MARIADB_USER\" -p\"\$MARIADB_PASSWORD\" \"\$MARIADB_DATABASE\" -e \"INSERT INTO task_card (title, body, status, assigned_to, priority, due_date, updated_at) VALUES ('${title}', 'Sample18 lifecycle smoke.', 'doing', 'Transaction Smoke', 17, CURDATE(), NOW()); SELECT LAST_INSERT_ID();\""
+}
+
+db_count_completed_title() {
+  local title="$1"
+  docker exec "$DB_CONTAINER" sh -lc \
+    "mariadb -N -B -u\"\$MARIADB_USER\" -p\"\$MARIADB_PASSWORD\" \"\$MARIADB_DATABASE\" -e \"SELECT COUNT(*) FROM task_card WHERE title = '${title}' AND status = 'done' AND completed_at IS NOT NULL\""
+}
+
 db_delete_title() {
   local title="$1"
   docker exec "$DB_CONTAINER" sh -lc \
@@ -76,6 +88,7 @@ php "$ROOT/mtool/scripts/create_sample18_failure_runtime_reference.php" \
   "$FIXTURE_HOST" >/dev/null
 
 COMMIT_TITLE="Transaction smoke committed ${RUN_ID}"
+COMPLETE_TITLE="Transaction smoke completed ${RUN_ID}"
 ROLLBACK_TITLE="Transaction smoke rolled back ${RUN_ID}"
 
 unset MTOOL_SAMPLE18_GENERATED_SUBMIT_RUNTIME_REFERENCE_DIR
@@ -86,6 +99,12 @@ wait_for_config_db
 run_probe committed "$COMMIT_TITLE"
 test "$(db_count_title "$COMMIT_TITLE")" = "1"
 db_delete_title "$COMMIT_TITLE"
+COMPLETE_ID="$(db_insert_pending_title "$COMPLETE_TITLE")"
+SAMPLE18_TRANSACTION_SMOKE_OPERATION_KEY=complete_task_card \
+SAMPLE18_TRANSACTION_SMOKE_TASK_ID="$COMPLETE_ID" \
+  run_probe committed "$COMPLETE_TITLE"
+test "$(db_count_completed_title "$COMPLETE_TITLE")" = "1"
+db_delete_title "$COMPLETE_TITLE"
 "$RUN" reset
 
 export MTOOL_SAMPLE18_GENERATED_SUBMIT_RUNTIME_REFERENCE_DIR="$FIXTURE_CONTAINER"

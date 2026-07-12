@@ -18,6 +18,21 @@ This is the concept-level overview of the tool. It explains the core flow from D
 - JSON file / JSON API cache / JSON config から始める場合は、初期構想に含まれる optional pre-design entrance として [json-to-db-entrance.md](json-to-db-entrance.md) を使う。
 - この optional entrance は DegoDB の起点を JSON に変えるものではなく、AI / 技術者が JSON と現行処理を読んで DB 設計案へ翻訳するための指示レイヤである。
 
+## Automation philosophy / 自動化の思想
+
+DegoDB does not aim to generate 100% of every application. It aims to automate 100% of the bounded contracts it explicitly supports, while leaving unsupported or project-specific work at clear custom extension points. Automating roughly 80-90% of a typical target is a successful outcome when the remaining boundary is visible, intentional, and maintainable.
+
+DegoDBはapplication全体の100%自動生成を目標にしない。明示的にsupportする限定contractについては100%安定して自動化し、未対応またはproject固有の処理は明確なcustom拡張点へ渡す。典型的な対象の80〜90%を自動化でき、残りの境界が可視・意図的・保守可能なら成功とする。
+
+この原則はDataClass・DBAccess・Source Output・No Codeのすべてに共通する。
+
+- support範囲を曖昧に広げて完全自動化を演出しない。
+- supportすると宣言したmetadata・生成・validation・runtime contractは再現可能なtest evidenceまで含めて満たす。
+- custom code、custom proxy、custom component、application固有のorchestrationを正規の構成要素として扱う。
+- generated部分とcustom部分の共存をfailureや暫定状態とみなさない。
+- 新しい自動化は、実利用で繰り返し現れるpatternが確認できた場合に共通contractへ昇格する。
+- AIにも「完全化」ではなく、宣言scopeの充足、明示的な対象外、custom handoffを要求する。
+
 ## 基本フロー
 
 1. ツールの外で DB 構造を決める。
@@ -44,6 +59,8 @@ This is the concept-level overview of the tool. It explains the core flow from D
 ## no-code layer の位置づけ
 
 no-code は、この主線の外にある別プロダクトではなく、`Source Output` と managed operation の上に載る上位 layer である。
+
+No Code layerもapplication全体の置き換えを前提にしない。screenやactionのうち共通metadataで安全に表現できる部分を生成し、固有UX・固有integration・高度なoperationはcustom部分として同じapplication内に残せるhybrid modelを標準とする。
 
 現在の no-code runtime は、canonical metadata から生成された screen definition と、DB Access / managed operation metadata から作られた action intent を使う。public preview は `NO-CODE-RUNTIME` Source Output artifact を publish candidate として review し、approve し、current revision または alias として公開する。
 

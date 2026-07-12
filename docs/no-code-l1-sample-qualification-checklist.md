@@ -7,7 +7,9 @@ Use this permanent checklist to decide whether a sample is a bounded L1 no-code 
 
 ## Purpose
 
-Use this checklist to decide whether a sample is a bounded L1 no-code entry. Qualification is evidence-based and slice-specific. It does not imply full CRUD, replacement of an existing hand-coded route, or default production enablement.
+Use this checklist to decide whether a sample is a bounded L1 no-code entry. Qualification is evidence-based and slice-specific. It does not imply full CRUD, replacement of an existing hand-coded route, or default production enablement. The product objective is complete support for the declared no-code capability matrix, not complete conversion of every sample or application. Generated/no-code and custom portions may coexist permanently.
+
+このchecklistが求めるのは、宣言したNo Code capability matrixに対する完全なsupport evidenceであり、全sample・全applicationの完全変換ではありません。generated・No Code部分とcustom部分の恒久的な共存を正規の構成として扱います。
 
 ## Required qualification areas
 
@@ -45,8 +47,10 @@ A second sample supports G-L2 only when it reuses the common contracts without c
 
 ## Non-goals
 
+- Do not optimize for a 100% generated application; automate the supported 80-90% class of repeated work and expose the remaining custom boundary clearly.
 - Do not enable all generated actions to make a sample look complete.
 - Do not treat a stubbed browser POST as database mutation evidence.
 - Do not require a hand-coded route to be removed.
+- Do not treat generated/custom coexistence as an incomplete migration when it is the declared design.
 - Do not claim one transaction across separate application/config stores.
 - Do not add browser coverage where a fast contract proves the same boundary more clearly.

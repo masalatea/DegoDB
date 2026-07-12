@@ -11,6 +11,14 @@
 
 ## Index
 
+- `2026-0712-shared-relation-metadata-sample22-first-slice.md`
+  - #791 共通relation metadata・Sample22初回slice。optional belongs-to/target key-label/parent-lookup/required metadata、fail-closed validation、lookup option、runtime/DOM markerを追加し、Sample22 read-only 2 contractへ適用。action・mutation・既存editor置換ゼロ。Full suite 466 tests / 14,161 assertions。Status: `FIRST_SLICE_DONE`。
+- `2026-0712-sample22-related-entity-no-code-preflight.md`
+  - #790 Sample22 related entity No Code事前設計。book/chapter FKとDBAccess evidenceは利用可能だがshared contractにrelation/lookup first-class metadataがないと特定。notes解析・推測を避け、optional共通metadataとread-only Sample22 2 contractを#791に確定。mutation・既存route置換なし。Status: `DONE_ONE_FOUNDATION_GAP`。
+- `2026-0712-required-no-code-capability-coverage-inventory.md`
+  - #789 必須No Code capability網羅棚卸し。既存evidenceをcovered、gap、理由付きnot requiredへ分類。related entity/lookup、generated lifecycle action、hybrid ownershipの3 gapだけを残し、Sample22 read-only relation sliceを先行。全sample変換・hard delete・domain widgetは要求しない。Status: `DONE_THREE_GAPS`。
+- `2026-0712-no-code-product-roadmap-order-clarification.md`
+  - #788 No Code product順序明確化。feasibility gateとproduct rollout完了を分離し、代表sampleによる必須capability網羅をactiveへ戻す。全sample完全変換は要求せず、網羅後はgenerated/no-codeとcustom codeが共存するMtool部分置換へ進める。AI資料to UIはさらに後段。Status: `DONE`。
 - `2026-0712-full-plan-inventory-semantic-squash.md`
   - #787 全計画棚卸し・semantic squash。Transaction FullのDB内feasibility blockerなし、DB外副作用はapplication責任、G-L1〜G-L4達成・G-L5と補助lane parkを確認。未push stackをtree一致のまま69件から9 semantic commitへ整理し、backup維持・pushなし。Status: `DONE`。
 - `2026-0712-post-g-l4-local-commit-stack-checkpoint.md`
