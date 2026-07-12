@@ -1037,7 +1037,7 @@ function app_no_code_screen_definition_fields(array $contract): array
         $metadata = is_array($field['contract_metadata'] ?? null) ? $field['contract_metadata'] : [];
         $isKey = (bool) ($field['is_key'] ?? false);
         $operationRole = (string) ($metadata['operation_role'] ?? '');
-        $fields[] = [
+        $screenField = [
             'field_key' => (string) ($field['physical_name'] ?? ''),
             'generated_name' => (string) ($field['generated_name'] ?? ''),
             'label' => app_no_code_screen_definition_field_label($field),
@@ -1048,6 +1048,10 @@ function app_no_code_screen_definition_fields(array $contract): array
             'readonly' => $isKey || $operationRole !== 'editable',
             'visibility' => 'visible',
         ];
+        if (is_array($metadata['relation'] ?? null)) {
+            $screenField['relation'] = $metadata['relation'];
+        }
+        $fields[] = $screenField;
     }
 
     return $fields;

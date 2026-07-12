@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 require_once dirname(__DIR__, 2) . '/mtool/app/no_code_mtool_source_output_inspection_page.php';
+require_once dirname(__DIR__, 2) . '/mtool/app/project_source_outputs_page.php';
 require_once dirname(__DIR__, 2) . '/mtool/app/router.php';
 
 use PHPUnit\Framework\TestCase;
@@ -57,6 +58,85 @@ final class NoCodeMtoolSourceOutputInspectionTest extends TestCase
         self::assertStringContainsString(
             'MTOOL_NO_CODE_SELF_INSPECTION_ENABLED: ${MTOOL_NO_CODE_SELF_INSPECTION_ENABLED:-}',
             $compose,
+        );
+    }
+
+    public function testCanonicalSourceOutputsEntryPointIsMtoolOnlyAndDefaultOff(): void
+    {
+        putenv('MTOOL_NO_CODE_SELF_INSPECTION_ENABLED');
+        self::assertFalse(app_project_source_outputs_show_no_code_self_inspection_link('MTOOL'));
+
+        putenv('MTOOL_NO_CODE_SELF_INSPECTION_ENABLED=1');
+        self::assertTrue(app_project_source_outputs_show_no_code_self_inspection_link('MTOOL'));
+        self::assertTrue(app_project_source_outputs_show_no_code_self_inspection_link('mtool'));
+        self::assertFalse(app_project_source_outputs_show_no_code_self_inspection_link('SAMPLE28'));
+
+        $sourceOutputsPage = (string) file_get_contents(dirname(__DIR__, 2) . '/mtool/app/project_source_outputs_page.php');
+        self::assertStringContainsString('data-mtool-no-code-inspection-entry-point="true"', $sourceOutputsPage);
+        self::assertStringContainsString('/projects/MTOOL/source-outputs/no-code-inspection', $sourceOutputsPage);
+        self::assertStringContainsString('Open read-only no-code inspection', $sourceOutputsPage);
+        self::assertStringContainsString('does not replace canonical Source Outputs', $sourceOutputsPage);
+        self::assertStringNotContainsString('data-runtime-execute', $sourceOutputsPage);
+        self::assertStringNotContainsString('data-guarded-click-submit', $sourceOutputsPage);
+    }
+
+    public function testHybridContractDeclaresGeneratedCustomAndRollbackBoundaries(): void
+    {
+        $contract = app_no_code_mtool_source_output_inspection_hybrid_contract();
+
+        self::assertSame(
+            'no-code-mtool-source-output-inspection-hybrid-v0',
+            $contract['contract_version'] ?? '',
+        );
+        self::assertSame('mtool_source_output_inspection', $contract['workflow_key'] ?? '');
+        self::assertSame('GET', $contract['route']['method'] ?? '');
+        self::assertSame(
+            '/projects/MTOOL/source-outputs/no-code-inspection',
+            $contract['route']['path'] ?? '',
+        );
+        self::assertSame(
+            'MTOOL_NO_CODE_SELF_INSPECTION_ENABLED',
+            $contract['route']['feature_flag'] ?? '',
+        );
+        self::assertContains(
+            'read-only list/detail screen rendering',
+            $contract['generated_owns'] ?? [],
+        );
+        self::assertContains(
+            'Source Output repository reads',
+            $contract['custom_mtool_owns'] ?? [],
+        );
+        self::assertSame(
+            [
+                'source_output_key',
+                'name',
+                'class_type',
+                'artifact_strategy',
+                'target_binding_type',
+                'spec_visibility',
+                'source_output_dir',
+            ],
+            $contract['row_adapter_fields'] ?? [],
+        );
+        self::assertSame(
+            'missing_detail_no_fallback',
+            $contract['selector_policy']['unknown_selector'] ?? '',
+        );
+        self::assertSame(
+            ['GET'],
+            $contract['authority_boundary']['allowed_methods'] ?? [],
+        );
+        self::assertSame(
+            'not_supported',
+            $contract['authority_boundary']['post_routes'] ?? '',
+        );
+        self::assertSame(
+            'none',
+            $contract['rollback_boundary']['state_change'] ?? '',
+        );
+        self::assertContains(
+            'generated_post_execution',
+            $contract['excluded_operations'] ?? [],
         );
     }
 
@@ -116,6 +196,9 @@ final class NoCodeMtoolSourceOutputInspectionTest extends TestCase
         );
 
         self::assertStringContainsString('data-mtool-no-code-source-output-inspection="true"', $html);
+        self::assertStringContainsString('data-mtool-no-code-hybrid-contract="true"', $html);
+        self::assertStringContainsString('no-code-mtool-source-output-inspection-hybrid-v0', $html);
+        self::assertStringContainsString('generated_post_execution', $html);
         self::assertStringContainsString('data-screen-key="mtool_source_output_review_list"', $html);
         self::assertStringContainsString('data-screen-key="mtool_source_output_review_detail"', $html);
         self::assertStringContainsString('API Output', $html);

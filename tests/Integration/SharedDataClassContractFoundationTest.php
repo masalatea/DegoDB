@@ -16,6 +16,70 @@ use PHPUnit\Framework\TestCase;
 
 final class SharedDataClassContractFoundationTest extends TestCase
 {
+    public function testRelationMetadataValidationAcceptsDeclaredBelongsToAndRejectsUnknownTargets(): void
+    {
+        $manifest = app_shared_contract_core_sample02_task_manifest();
+        $book = $manifest['contracts'][0];
+        $book['contract_key'] = 'book';
+        $book['entity']['physical_name'] = 'book';
+        $book['entity']['generated_name'] = 'Book';
+        $book['fields'][1]['physical_name'] = 'name';
+        $book['fields'][1]['generated_name'] = 'name';
+        $chapter = $manifest['contracts'][0];
+        $chapter['contract_key'] = 'chapter';
+        $chapter['entity']['physical_name'] = 'chapter';
+        $chapter['entity']['generated_name'] = 'Chapter';
+        $chapter['fields'][1]['physical_name'] = 'book_id';
+        $chapter['fields'][1]['generated_name'] = 'bookId';
+        $chapter['fields'][1]['contract_metadata']['relation'] = [
+            'kind' => 'belongs_to',
+            'contract_key' => 'book',
+            'key_field' => 'id',
+            'label_field' => 'name',
+            'ui_role' => 'lookup',
+            'required' => true,
+        ];
+        $manifest['contracts'] = [$book, $chapter];
+
+        self::assertTrue(app_shared_contract_core_validate_manifest($manifest)['ok']);
+
+        $manifest['contracts'][1]['fields'][1]['contract_metadata']['relation']['contract_key'] = 'missing';
+        $invalid = app_shared_contract_core_validate_manifest($manifest);
+        self::assertFalse($invalid['ok']);
+        self::assertContains(
+            'contracts[1].fields[1].contract_metadata.relation.contract_key is unknown: missing',
+            $invalid['errors'],
+        );
+    }
+
+    public function testRelationMetadataInputMustBeCompleteAndUsesSupportedValues(): void
+    {
+        self::assertSame([
+            'kind' => '',
+            'contract_key' => '',
+            'key_field' => '',
+            'label_field' => '',
+            'ui_role' => '',
+            'required' => false,
+        ], app_shared_contract_metadata_normalize_relation_input([]));
+
+        self::assertSame('belongs_to', app_shared_contract_metadata_normalize_relation_input([
+            'relation_kind' => 'belongs_to',
+            'relation_contract_key' => 'book',
+            'relation_key_field' => 'id',
+            'relation_label_field' => 'name',
+            'relation_ui_role' => 'parent',
+            'relation_required' => true,
+        ])['kind']);
+
+        $this->expectException(InvalidArgumentException::class);
+        $this->expectExceptionMessage('relation metadata must be fully specified or empty.');
+        app_shared_contract_metadata_normalize_relation_input([
+            'relation_kind' => 'belongs_to',
+            'relation_contract_key' => 'book',
+        ]);
+    }
+
     public function testBuildsManifestV0FromTableAndDataClassMetadata(): void
     {
         $app = $this->createBootstrappedSqliteApp();
@@ -837,6 +901,34 @@ final class SharedDataClassContractFoundationTest extends TestCase
             'no-code-runtime-action-intent-v0',
             $bridgeContract['contract_invariants']['action_intent_version'] ?? '',
         );
+        self::assertSame(
+            'no-code-hybrid-ownership-v0',
+            $bridgeContract['hybrid_ownership_contract']['contract_version'] ?? '',
+        );
+        self::assertSame(
+            'sample28-react-bridge-runtime-preview',
+            $bridgeContract['hybrid_ownership_contract']['representative_slice'] ?? '',
+        );
+        self::assertContains(
+            'bridge-contract.json schema and invariants',
+            $bridgeContract['hybrid_ownership_contract']['generated_owns'] ?? [],
+        );
+        self::assertContains(
+            'React application shell',
+            $bridgeContract['hybrid_ownership_contract']['custom_owns'] ?? [],
+        );
+        self::assertSame(
+            'bridge-contract.json',
+            $bridgeContract['hybrid_ownership_contract']['shared_handoff']['artifact'] ?? '',
+        );
+        self::assertStringContainsString(
+            'execution authority remains with explicit server routes',
+            (string) ($bridgeContract['hybrid_ownership_contract']['shared_handoff']['authority_boundary'] ?? ''),
+        );
+        self::assertStringContainsString(
+            'React bridge build/browser smokes',
+            (string) ($bridgeContract['hybrid_ownership_contract']['test_ownership']['custom_adapter'] ?? ''),
+        );
         self::assertContains(
             'src/mtoolNoCodeBridge.ts',
             $bridgeContract['contract_invariants']['required_files'] ?? [],
@@ -879,6 +971,7 @@ final class SharedDataClassContractFoundationTest extends TestCase
 
         $bridgeTypescript = (string) file_get_contents($treeResult['runtime_source_root'] . '/src/mtoolNoCodeBridge.ts');
         self::assertStringContainsString('export type MtoolBridgeContract', $bridgeTypescript);
+        self::assertStringContainsString('export type MtoolHybridOwnershipContract', $bridgeTypescript);
         self::assertStringContainsString('export type MtoolCustomOperationHandoff', $bridgeTypescript);
         self::assertStringContainsString('createActionIntent', $bridgeTypescript);
         self::assertStringContainsString('createActionIntentResult', $bridgeTypescript);
@@ -893,6 +986,11 @@ final class SharedDataClassContractFoundationTest extends TestCase
         self::assertStringContainsString('## Adapter Documentation Index', $consumerNotes);
         self::assertStringContainsString('Use Adapter Handoff Checklist', $consumerNotes);
         self::assertStringContainsString('## Contract Boundary', $consumerNotes);
+        self::assertStringContainsString('## Hybrid Ownership Contract', $consumerNotes);
+        self::assertStringContainsString('Contract version: no-code-hybrid-ownership-v0', $consumerNotes);
+        self::assertStringContainsString('Generated owns:', $consumerNotes);
+        self::assertStringContainsString('Custom owns:', $consumerNotes);
+        self::assertStringContainsString('authority_boundary:', $consumerNotes);
         self::assertStringContainsString('## Schema-Form Probe Boundary', $consumerNotes);
         self::assertStringContainsString('## Artifact Parity Notes', $consumerNotes);
         self::assertStringContainsString('Inspect NO-CODE-REACT-BRIDGE', $consumerNotes);

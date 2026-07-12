@@ -16,6 +16,81 @@ function app_no_code_mtool_source_output_inspection_enabled(): bool
 }
 
 /**
+ * @return array<string,mixed>
+ */
+function app_no_code_mtool_source_output_inspection_hybrid_contract(): array
+{
+    return [
+        'contract_version' => 'no-code-mtool-source-output-inspection-hybrid-v0',
+        'workflow_key' => 'mtool_source_output_inspection',
+        'route' => [
+            'method' => 'GET',
+            'path' => '/projects/MTOOL/source-outputs/no-code-inspection',
+            'feature_flag' => 'MTOOL_NO_CODE_SELF_INSPECTION_ENABLED',
+            'default_state' => 'off',
+            'project_scope' => 'MTOOL',
+            'site' => 'admin',
+        ],
+        'generated_owns' => [
+            'read-only list/detail screen rendering',
+            'no-code runtime HTML markers',
+            'selected-row detail handoff',
+            'declared inspection field presentation',
+            'disabled action visibility without execution binding',
+        ],
+        'custom_mtool_owns' => [
+            'admin shell and route bootstrap',
+            'authentication and project authorization',
+            'Source Output repository reads',
+            'canonical Source Output CRUD/build/publish pages',
+            'feature flag rollout and rollback',
+            'any future mutation, CSRF, audit, idempotency, or Transaction Full boundary',
+        ],
+        'row_adapter_fields' => [
+            'source_output_key',
+            'name',
+            'class_type',
+            'artifact_strategy',
+            'target_binding_type',
+            'spec_visibility',
+            'source_output_dir',
+        ],
+        'selector_policy' => [
+            'query_field' => 'source_output_key',
+            'default_without_selector' => 'first_row',
+            'unknown_selector' => 'missing_detail_no_fallback',
+            'normalization' => 'app_normalize_source_output_key',
+        ],
+        'authority_boundary' => [
+            'auth_bootstrap' => 'app_project_source_output_route_bootstrap',
+            'allowed_methods' => ['GET'],
+            'execution_controls' => 'not_rendered',
+            'post_routes' => 'not_supported',
+        ],
+        'rollback_boundary' => [
+            'disable_flag' => 'unset MTOOL_NO_CODE_SELF_INSPECTION_ENABLED',
+            'state_change' => 'none',
+            'canonical_fallback' => '/projects/MTOOL/source-outputs',
+        ],
+        'excluded_operations' => [
+            'source_output_create',
+            'source_output_edit',
+            'source_output_delete',
+            'source_output_reorder',
+            'source_output_build',
+            'source_output_publish',
+            'review_request_persistence',
+            'generated_post_execution',
+        ],
+        'verification' => [
+            'fast_test' => 'NoCodeMtoolSourceOutputInspectionTest',
+            'full_suite' => 'make test',
+            'browser_evidence' => '2026-0712-live-mtool-inspection-http-browser-promotion',
+        ],
+    ];
+}
+
+/**
  * @param list<array<string,mixed>> $items
  * @return list<array<string,mixed>>
  */
@@ -115,6 +190,13 @@ function app_no_code_mtool_source_output_inspection_html(
     $emptyDetailHtml = $selection['item'] === []
         ? '<p data-mtool-no-code-detail-empty="true">No preview data is available yet.</p>'
         : '';
+    $contractJson = json_encode(
+        app_no_code_mtool_source_output_inspection_hybrid_contract(),
+        JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT,
+    );
+    if (!is_string($contractJson)) {
+        throw new RuntimeException('Mtool Source Output inspection hybrid contract JSON could not be encoded.');
+    }
 
     return '<!doctype html><html lang="en"><head><meta charset="utf-8">'
         . '<meta name="viewport" content="width=device-width, initial-scale=1">'
@@ -123,6 +205,7 @@ function app_no_code_mtool_source_output_inspection_html(
         . '<main class="no-code-preview" data-mtool-no-code-source-output-inspection="true">'
         . '<header class="no-code-preview-header"><div><h1>Mtool Source Output Inspection</h1>'
         . '<p>Read-only generated inspection backed by the current Mtool repository.</p></div></header>'
+        . '<script type="application/json" data-mtool-no-code-hybrid-contract="true">' . $contractJson . '</script>'
         . '<p><a data-canonical-source-outputs-link href="/projects/MTOOL/source-outputs">Return to canonical Source Outputs</a></p>'
         . $missingHtml . $emptyDetailHtml . $listHtml . $detailHtml
         . '</main></body></html>';

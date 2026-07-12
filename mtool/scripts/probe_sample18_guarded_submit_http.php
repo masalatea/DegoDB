@@ -38,16 +38,28 @@ try {
     $csrf = input_value($login['body'], '_csrf_token');
     ensure($csrf !== '', 'task board CSRF token was not found');
 
-    $response = request_once($client, 'POST', '/samples/sample18-task-board/no-code/generated-submit', [
-        'form_params' => [
-            '_csrf_token' => $csrf,
-            'operation_key' => 'create_task_card',
+    $operationKey = (string) (getenv('SAMPLE18_TRANSACTION_SMOKE_OPERATION_KEY') ?: 'create_task_card');
+    $formParams = [
+        '_csrf_token' => $csrf,
+        'operation_key' => $operationKey,
+    ];
+    if ($operationKey === 'complete_task_card') {
+        $taskId = (string) getenv('SAMPLE18_TRANSACTION_SMOKE_TASK_ID');
+        ensure($taskId !== '' && ctype_digit($taskId), 'complete_task_card probe requires SAMPLE18_TRANSACTION_SMOKE_TASK_ID');
+        $formParams['id'] = $taskId;
+    } else {
+        ensure($operationKey === 'create_task_card', 'unsupported generated submit smoke operation: ' . $operationKey);
+        $formParams += [
             'title' => $title,
             'body' => 'Sample18 isolated guarded transaction smoke.',
             'assigned_to' => 'Transaction Smoke',
             'priority' => '17',
             'due_date' => date('Y-m-d'),
-        ],
+        ];
+    }
+
+    $response = request_once($client, 'POST', '/samples/sample18-task-board/no-code/generated-submit', [
+        'form_params' => $formParams,
     ]);
     $payload = json_response($response);
     $transaction = is_array($payload['transaction_result'] ?? null) ? $payload['transaction_result'] : [];
@@ -68,6 +80,7 @@ try {
     echo json_encode([
         'ok' => true,
         'expected' => $expected,
+        'operation_key' => $operationKey,
         'title' => $title,
         'http_status' => $response['status'],
         'result' => $payload['result'] ?? '',
