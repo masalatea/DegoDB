@@ -28,6 +28,8 @@ Options:
                                  stop after checking enabled-candidate managed action surface
   --runtime-ui-authority-stub-probe
                                  authenticate, require live create availability, and stub one guarded POST
+  --runtime-managed-outbox-authority
+                                 require live managed-outbox authority without mutating action state in the test
   --admin-user=USER              admin login user for enabled-real-fetch
   --admin-password=PASS          admin login password for enabled-real-fetch
   --output-dir=PATH              artifact directory root (default: output/playwright/no-code-runtime-preview)
@@ -55,6 +57,7 @@ function parseArgs(argv) {
     runtimeFilterDomOnly: false,
     runtimeEnabledCandidateSurface: false,
     runtimeUiAuthorityStubProbe: false,
+    runtimeManagedOutboxAuthority: false,
     adminUser: process.env.ADMIN_AUTH_STUB_USER || 'admin-local',
     adminPassword: process.env.ADMIN_AUTH_STUB_PASSWORD || 'change-this-admin-password',
     expected: expectedProfile('sample07'),
@@ -83,6 +86,10 @@ function parseArgs(argv) {
     }
     if (argument === '--runtime-ui-authority-stub-probe') {
       config.runtimeUiAuthorityStubProbe = true;
+      continue;
+    }
+    if (argument === '--runtime-managed-outbox-authority') {
+      config.runtimeManagedOutboxAuthority = true;
       continue;
     }
     if (!argument.startsWith('--') || !argument.includes('=')) {
@@ -1264,7 +1271,7 @@ async function runSmoke(config) {
         });
       });
     }
-    if (config.submitProbe === 'enabled-real-fetch' || config.runtimeUiAuthorityStubProbe) {
+    if (config.submitProbe === 'enabled-real-fetch' || config.runtimeUiAuthorityStubProbe || config.runtimeManagedOutboxAuthority) {
       if (!targetUrl.startsWith('http://') && !targetUrl.startsWith('https://')) {
         throw new Error('enabled-real-fetch requires an HTTP URL.');
       }
@@ -1341,11 +1348,21 @@ async function runSmoke(config) {
       };
     }
 
+    if (config.runtimeManagedOutboxAuthority) {
+      const availabilityDiagnostic = page.locator(`[data-server-action-availability-diagnostic="${config.expected.actionKey}"]`).first();
+      await availabilityDiagnostic.waitFor({ state: 'visible', timeout: 10000 });
+      const diagnostic = (await availabilityDiagnostic.textContent() || '').trim();
+      if (diagnostic !== 'Server availability: enabled') {
+        throw new Error(`managed-outbox live availability was not enabled: ${diagnostic}`);
+      }
+    }
+
     const evaluateExpected = {
       ...config.expected,
       submitProbe: config.submitProbe,
       statusProbe: config.statusProbe,
       demoProcessing: config.demoProcessing,
+      managedOutboxAuthority: config.runtimeManagedOutboxAuthority,
     };
     const metrics = await page.evaluate(async (expected) => {
       const sections = Array.from(document.querySelectorAll('.no-code-screen'));
@@ -1440,13 +1457,15 @@ async function runSmoke(config) {
       let submitProbe = { skipped: true };
       if (expected.submitProbe === 'enabled-fetch-stub' || expected.submitProbe === 'enabled-real-fetch') {
         const form = formScreen?.querySelector('form.no-code-form');
-        previewActions.forEach((action) => {
-          if (action.action_key === expected.actionKey) {
-            action.enabled = true;
-            action.availability = 'enabled';
-            action.failed_checks = [];
-          }
-        });
+        if (!expected.managedOutboxAuthority) {
+          previewActions.forEach((action) => {
+            if (action.action_key === expected.actionKey) {
+              action.enabled = true;
+              action.availability = 'enabled';
+              action.failed_checks = [];
+            }
+          });
+        }
         let keyInput = formScreen?.querySelector(`[name="${expected.keyField}"]`);
         if (!keyInput && form) {
           keyInput = document.createElement('input');
@@ -1489,13 +1508,15 @@ async function runSmoke(config) {
         await new Promise((resolve) => setTimeout(resolve, 0));
 
         const executeButton = formScreen?.querySelector('[data-runtime-execute]');
-        const forcedDispatch = typeof window.noCodeRuntimeDispatchAction === 'function'
-          ? window.noCodeRuntimeDispatchAction(expected.actionKey, expected.payload)
-          : { ok: false };
-        if (executeButton && forcedDispatch.ok) {
-          // Policy and field readiness are checked elsewhere; this probe must click through to the real endpoint.
-          executeButton.disabled = false;
-          executeButton.setAttribute('data-runtime-execute-state', 'ready');
+        if (!expected.managedOutboxAuthority) {
+          const forcedDispatch = typeof window.noCodeRuntimeDispatchAction === 'function'
+            ? window.noCodeRuntimeDispatchAction(expected.actionKey, expected.payload)
+            : { ok: false };
+          if (executeButton && forcedDispatch.ok) {
+            // Legacy probes isolate endpoint handoff from authority; managed-outbox authority probes must not mutate state.
+            executeButton.disabled = false;
+            executeButton.setAttribute('data-runtime-execute-state', 'ready');
+          }
         }
         const stateBeforeClick = executeButton?.getAttribute('data-runtime-execute-state') || '';
         const disabledBeforeClick = !!executeButton?.disabled;
@@ -3827,10 +3848,10 @@ async function runSmoke(config) {
     if (!metrics.draftSummaryAfterEdit.includes('Blocked draft:')) {
       throw new Error(`intent draft summary did not describe blocked state: ${metrics.draftSummaryAfterEdit}`);
     }
-    if (!metrics.draftSummaryAfterEdit.includes('action.disabled') || !metrics.draftSummaryAfterEdit.includes(`key.missing:${config.expected.keyField}`)) {
+    if ((!config.runtimeManagedOutboxAuthority && !metrics.draftSummaryAfterEdit.includes('action.disabled')) || !metrics.draftSummaryAfterEdit.includes(`key.missing:${config.expected.keyField}`)) {
       throw new Error(`intent draft summary did not include expected checks: ${metrics.draftSummaryAfterEdit}`);
     }
-    if (!metrics.draftSummaryAfterEdit.includes('policy:') || !metrics.draftSummaryAfterEdit.includes('principal.missing')) {
+    if (!config.runtimeManagedOutboxAuthority && (!metrics.draftSummaryAfterEdit.includes('policy:') || !metrics.draftSummaryAfterEdit.includes('principal.missing'))) {
       throw new Error(`intent draft summary did not include expected policy checks: ${metrics.draftSummaryAfterEdit}`);
     }
     if (!metrics.draftMetaAfterEdit.includes(`Action: ${config.expected.actionKey}`) || !metrics.draftMetaAfterEdit.includes(`Operation: ${config.expected.operationKey}`) || !metrics.draftMetaAfterEdit.includes(`Type: ${config.expected.operationType}`)) {

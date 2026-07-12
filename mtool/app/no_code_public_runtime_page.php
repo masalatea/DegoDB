@@ -158,12 +158,55 @@ function app_no_code_public_runtime_demo_processing_enabled(): bool
 
 function app_no_code_public_runtime_generated_ui_execution_enabled(string $projectKey): bool
 {
-    return app_normalize_project_key($projectKey) === 'SAMPLE18'
-        && in_array(
-            strtolower(trim((string) getenv('MTOOL_SAMPLE18_GENERATED_UI_EXECUTION_ENABLED'))),
-            ['1', 'true', 'yes', 'on'],
-            true,
-        );
+    return app_no_code_public_runtime_generated_ui_execution_policy($projectKey)['enabled'];
+}
+
+/** @return list<string> */
+function app_no_code_public_runtime_generated_ui_execution_allowlist(string $projectKey): array
+{
+    return app_no_code_public_runtime_generated_ui_execution_policy($projectKey)['action_keys'];
+}
+
+/** @return array{enabled:bool,action_keys:list<string>,source:string} */
+function app_no_code_public_runtime_generated_ui_execution_policy(string $projectKey): array
+{
+    $normalizedProjectKey = app_normalize_project_key($projectKey);
+    $actionKeys = [];
+    $reusableEnabled = app_no_code_public_runtime_boolean_env('MTOOL_NO_CODE_GENERATED_UI_EXECUTION_ENABLED');
+    if ($reusableEnabled) {
+        foreach (explode(',', (string) getenv('MTOOL_NO_CODE_GENERATED_UI_EXECUTION_ALLOWLIST')) as $entry) {
+            $parts = explode(':', trim($entry), 2);
+            if (count($parts) !== 2 || app_normalize_project_key($parts[0]) !== $normalizedProjectKey) {
+                continue;
+            }
+            $actionKey = strtolower(trim($parts[1]));
+            if (preg_match('/^[a-z][a-z0-9_]*$/', $actionKey) === 1) {
+                $actionKeys[] = $actionKey;
+            }
+        }
+    }
+
+    $legacySample18Enabled = $normalizedProjectKey === 'SAMPLE18'
+        && app_no_code_public_runtime_boolean_env('MTOOL_SAMPLE18_GENERATED_UI_EXECUTION_ENABLED');
+    if ($legacySample18Enabled) {
+        $actionKeys[] = 'create_task_card';
+    }
+
+    $actionKeys = array_values(array_unique($actionKeys));
+    return [
+        'enabled' => $actionKeys !== [],
+        'action_keys' => $actionKeys,
+        'source' => $legacySample18Enabled && !$reusableEnabled ? 'legacy_sample18' : 'project_action_allowlist',
+    ];
+}
+
+function app_no_code_public_runtime_boolean_env(string $name): bool
+{
+    return in_array(
+        strtolower(trim((string) getenv($name))),
+        ['1', 'true', 'yes', 'on'],
+        true,
+    );
 }
 
 /**
@@ -1550,6 +1593,7 @@ function app_no_code_public_runtime_action_availability_response_for_candidate(
     string $transactionFullGate,
     string $selectionKind = 'artifact',
     string $aliasKey = '',
+    string $managedOutboxGate = '',
 ): array {
     if ($principal === null) {
         return app_no_code_public_runtime_action_availability_error_response(
@@ -1575,6 +1619,7 @@ function app_no_code_public_runtime_action_availability_response_for_candidate(
         $definition,
         $overlayFlagEnabled,
         $transactionFullGate,
+        $managedOutboxGate,
     );
 
     $actions = [];
@@ -1592,6 +1637,9 @@ function app_no_code_public_runtime_action_availability_response_for_candidate(
                 'action_key' => (string) ($action['action_key'] ?? ''),
                 'availability' => (string) ($action['availability'] ?? 'disabled'),
                 'authorization_allowed' => !in_array('authorization_not_allowed', $failedChecks, true),
+                'execution_model' => (string) ($policy['execution_model'] ?? ''),
+                'required_capability' => (string) ($policy['required_capability'] ?? ''),
+                'capability_satisfied' => (bool) ($policy['capability_satisfied'] ?? false),
                 'failed_checks' => $failedChecks,
                 'readiness_state' => (string) ($policy['readiness_state'] ?? ''),
                 'availability_candidate' => (bool) ($policy['availability_candidate'] ?? false),
@@ -1616,6 +1664,7 @@ function app_no_code_public_runtime_action_availability_response_for_candidate(
             ],
             'overlay_flag_enabled' => $overlayFlagEnabled,
             'transaction_full_gate' => $transactionFullGate,
+            'managed_outbox_gate' => $managedOutboxGate,
             'mutation_enabled' => false,
             'actions' => $actions,
             'error' => '',
@@ -1700,9 +1749,10 @@ function app_no_code_public_runtime_preview_execution_binding(
             'revision_id' => (string) ($candidate['revision_id'] ?? ''),
         ];
     if ($executionPath !== null && $executionPath !== '') {
+        $generatedUiPolicy = app_no_code_public_runtime_generated_ui_execution_policy($projectKey);
         $binding['execution_url'] = $executionPath;
-        $binding['generated_ui_execution_enabled'] = app_no_code_public_runtime_generated_ui_execution_enabled($projectKey);
-        $binding['generated_ui_execution_allowlist'] = ['create_task_card'];
+        $binding['generated_ui_execution_enabled'] = $generatedUiPolicy['enabled'];
+        $binding['generated_ui_execution_allowlist'] = $generatedUiPolicy['action_keys'];
     }
     if ($dataPath !== null && $dataPath !== '') {
         $binding['runtime_data_url'] = $dataPath;
@@ -1926,6 +1976,9 @@ function app_render_no_code_public_runtime_action_availability_page(array $app, 
         app_auth_principal(),
         app_no_code_runtime_server_availability_overlay_enabled(),
         trim((string) getenv('MTOOL_NO_CODE_TRANSACTION_FULL_GATE')),
+        'artifact',
+        '',
+        trim((string) getenv('MTOOL_NO_CODE_MANAGED_OUTBOX_GATE')),
     );
     app_send_json_response($request, $response['payload'], $response['status_code']);
 }
@@ -1953,7 +2006,8 @@ function app_render_no_code_public_runtime_current_action_availability_page(arra
     $response = app_no_code_public_runtime_action_availability_response_for_candidate(
         $app, $projectKey, $candidateResult['item'], app_auth_principal(),
         app_no_code_runtime_server_availability_overlay_enabled(),
-        trim((string) getenv('MTOOL_NO_CODE_TRANSACTION_FULL_GATE')), 'current',
+        trim((string) getenv('MTOOL_NO_CODE_TRANSACTION_FULL_GATE')), 'current', '',
+        trim((string) getenv('MTOOL_NO_CODE_MANAGED_OUTBOX_GATE')),
     );
     app_send_json_response($request, $response['payload'], $response['status_code']);
 }
@@ -1984,6 +2038,7 @@ function app_render_no_code_public_runtime_alias_action_availability_page(array 
         $app, $projectKey, $candidateResult['item'], app_auth_principal(),
         app_no_code_runtime_server_availability_overlay_enabled(),
         trim((string) getenv('MTOOL_NO_CODE_TRANSACTION_FULL_GATE')), 'alias', $aliasKey,
+        trim((string) getenv('MTOOL_NO_CODE_MANAGED_OUTBOX_GATE')),
     );
     app_send_json_response($request, $response['payload'], $response['status_code']);
 }

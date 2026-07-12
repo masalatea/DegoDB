@@ -114,6 +114,8 @@ detail doc だけを読んで mainline を再構成するのは current reading 
   - DB をよく知らない利用者が、JSON sample と現在の処理説明から DB 設計案へ進むための、初期構想に含まれる optional pre-design entrance
 - [No-Code Tryout / no-code をまず試す](no-code-tryout.md)
   - sample28 の generated no-code Web preview、publish candidate approval、current/alias preview URL、runtime submit / outbox handoff を触る入口
+- [No-Code L1 Sample Qualification Checklist / L1 sample 認定基準](no-code-l1-sample-qualification-checklist.md)
+  - sample UI を bounded L1 entry として認定するための schema / screen / action / authority / mutation / test / exclusion の恒久 checklist
 - [Storage And State Model / 保存先と状態モデル](storage-and-state-model.md)
   - `config_db`、artifact、`work/` の state map
 - [Security And Data Handling / security と data handling](security-and-data-handling.md)

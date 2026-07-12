@@ -46,6 +46,9 @@ final class NoCodeRuntimeTest extends TestCase
         $enabledAction = $enabled['contracts'][0]['actions'][0] ?? [];
         self::assertSame('enabled', $enabledAction['availability'] ?? '');
         self::assertSame([], $enabledAction['policy']['failed_checks'] ?? ['unexpected']);
+        self::assertSame('direct_guarded_route', $enabledAction['policy']['execution_model'] ?? '');
+        self::assertSame('transaction_full_v1', $enabledAction['policy']['required_capability'] ?? '');
+        self::assertTrue($enabledAction['policy']['capability_satisfied'] ?? false);
         self::assertFalse($enabledAction['policy']['can_submit'] ?? true);
         $overlaid = app_no_code_runtime_definition_with_action_policy_overlay($definition, $enabled);
         self::assertSame('enabled', $overlaid['contracts'][0]['actions'][0]['availability'] ?? '');
@@ -107,6 +110,54 @@ final class NoCodeRuntimeTest extends TestCase
         self::assertContains(
             'readiness_has_failures',
             $failed['contracts'][0]['actions'][0]['policy']['failed_checks'] ?? [],
+        );
+
+        $managedDefinition = ['contracts' => [['actions' => [[
+            'action_key' => 'update_support_case',
+            'operation_key' => 'update_support_case',
+            'operation_type' => 'update',
+            'policy' => ['evaluated' => true, 'allowed' => true],
+            'fields' => [
+                ['field_key' => 'id', 'field_role' => 'key'],
+                ['field_key' => 'next_action', 'field_role' => 'input'],
+            ],
+        ]]]]];
+        $managedEnabled = app_no_code_runtime_server_availability_policy(
+            $managedDefinition,
+            true,
+            '',
+            'managed_outbox_v1',
+        );
+        $managedAction = $managedEnabled['contracts'][0]['actions'][0] ?? [];
+        self::assertSame('enabled', $managedAction['availability'] ?? '');
+        self::assertSame([], $managedAction['policy']['failed_checks'] ?? ['unexpected']);
+        self::assertSame('managed_operation_outbox', $managedAction['policy']['execution_model'] ?? '');
+        self::assertSame('managed_outbox_v1', $managedAction['policy']['required_capability'] ?? '');
+        self::assertTrue($managedAction['policy']['capability_satisfied'] ?? false);
+        self::assertSame('', $managedAction['policy']['transaction_full_gate'] ?? 'unexpected');
+
+        $managedMissingGate = app_no_code_runtime_server_availability_policy($managedDefinition, true, '');
+        self::assertSame('disabled', $managedMissingGate['contracts'][0]['actions'][0]['availability'] ?? '');
+        self::assertContains(
+            'managed_outbox_gate_missing',
+            $managedMissingGate['contracts'][0]['actions'][0]['policy']['failed_checks'] ?? [],
+        );
+        self::assertNotContains(
+            'transaction_full_gate_missing',
+            $managedMissingGate['contracts'][0]['actions'][0]['policy']['failed_checks'] ?? [],
+        );
+
+        $managedMissingOperation = $managedDefinition;
+        $managedMissingOperation['contracts'][0]['actions'][0]['operation_key'] = '';
+        $managedInvalid = app_no_code_runtime_server_availability_policy(
+            $managedMissingOperation,
+            true,
+            '',
+            'managed_outbox_v1',
+        );
+        self::assertContains(
+            'managed_operation_key_missing',
+            $managedInvalid['contracts'][0]['actions'][0]['policy']['failed_checks'] ?? [],
         );
     }
 
@@ -397,7 +448,8 @@ final class NoCodeRuntimeTest extends TestCase
         self::assertStringContainsString('policy_failed_checks:', $html);
         self::assertStringContainsString("draft.draft_checks.push('action.disabled');", $html);
         self::assertStringContainsString("draft.draft_checks.push((field.role || 'input') + '.missing:' + fieldKey);", $html);
-        self::assertStringContainsString("summaryChecks.push('policy: ' + policyChecks.join(', '));", $html);
+        self::assertStringContainsString("var liveManagedAuthority = isGeneratedUiActionAuthorized(draft.action_key || '', 'managed_operation_outbox');", $html);
+        self::assertStringContainsString("summaryChecks.push('policy: ' + effectivePolicyChecks.join(', '));", $html);
         self::assertStringContainsString('Ready draft: no blocking checks found.', $html);
         self::assertStringContainsString('Blocked draft: ', $html);
         self::assertStringContainsString('<nav class="no-code-actions" aria-label="Task List actions">', $html);

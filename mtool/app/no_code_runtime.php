@@ -351,6 +351,7 @@ function app_no_code_runtime_server_availability_policy(
     array $definition,
     bool $overlayFlagEnabled,
     string $transactionFullGate,
+    string $managedOutboxGate = '',
 ): array {
     $policyContracts = [];
     foreach (($definition['contracts'] ?? []) as $contract) {
@@ -371,6 +372,17 @@ function app_no_code_runtime_server_availability_policy(
             $authorizationPolicy = is_array($action['policy'] ?? null) ? $action['policy'] : [];
             $readiness = is_array($action['readiness_metadata'] ?? null) ? $action['readiness_metadata'] : [];
             $submitGate = is_array($action['submit_binding_gate'] ?? null) ? $action['submit_binding_gate'] : [];
+            $executionModel = (string) ($action['execution_model'] ?? '');
+            if ($executionModel === '') {
+                $executionModel = (string) ($action['submit_route'] ?? '') !== '' || $submitGate !== []
+                    ? 'direct_guarded_route'
+                    : 'managed_operation_outbox';
+            }
+            $requiredCapability = $executionModel === 'direct_guarded_route'
+                ? 'transaction_full_v1'
+                : ($executionModel === 'managed_operation_outbox' ? 'managed_outbox_v1' : '');
+            $capabilitySatisfied = ($requiredCapability === 'transaction_full_v1' && $transactionFullGate === $requiredCapability)
+                || ($requiredCapability === 'managed_outbox_v1' && $managedOutboxGate === $requiredCapability);
             $failureReasons = array_values(array_filter(
                 array_map('strval', is_array($readiness['failure_reasons'] ?? null) ? $readiness['failure_reasons'] : []),
                 static fn (string $reason): bool => $reason !== '',
@@ -382,28 +394,39 @@ function app_no_code_runtime_server_availability_policy(
             if (($authorizationPolicy['evaluated'] ?? false) !== true || ($authorizationPolicy['allowed'] ?? false) !== true) {
                 $failedChecks[] = 'authorization_not_allowed';
             }
-            if (($readiness['route_compatible'] ?? false) !== true) {
-                $failedChecks[] = 'route_not_compatible';
-            }
-            if ((string) ($readiness['readiness_state'] ?? '') !== 'candidate_ready') {
-                $failedChecks[] = 'readiness_not_candidate_ready';
-            }
-            if (($readiness['availability_candidate'] ?? false) !== true) {
-                $failedChecks[] = 'availability_candidate_false';
-            }
-            if ($failureReasons !== []) {
-                $failedChecks[] = 'readiness_has_failures';
-            }
-            if ((string) ($action['submit_route'] ?? '') === ''
-                || ($submitGate['runtime_click_binding'] ?? false) !== true
-                || (string) ($submitGate['submit_trigger'] ?? '') !== 'guarded_click') {
-                $failedChecks[] = 'guarded_submit_binding_missing';
-            }
-            if (($submitGate['mutation_enabled'] ?? true) !== false) {
-                $failedChecks[] = 'mutation_gate_not_disabled';
-            }
-            if ($transactionFullGate !== 'transaction_full_v1') {
-                $failedChecks[] = 'transaction_full_gate_missing';
+            if ($executionModel === 'direct_guarded_route') {
+                if (($readiness['route_compatible'] ?? false) !== true) {
+                    $failedChecks[] = 'route_not_compatible';
+                }
+                if ((string) ($readiness['readiness_state'] ?? '') !== 'candidate_ready') {
+                    $failedChecks[] = 'readiness_not_candidate_ready';
+                }
+                if (($readiness['availability_candidate'] ?? false) !== true) {
+                    $failedChecks[] = 'availability_candidate_false';
+                }
+                if ($failureReasons !== []) {
+                    $failedChecks[] = 'readiness_has_failures';
+                }
+                if ((string) ($action['submit_route'] ?? '') === ''
+                    || ($submitGate['runtime_click_binding'] ?? false) !== true
+                    || (string) ($submitGate['submit_trigger'] ?? '') !== 'guarded_click') {
+                    $failedChecks[] = 'guarded_submit_binding_missing';
+                }
+                if (($submitGate['mutation_enabled'] ?? true) !== false) {
+                    $failedChecks[] = 'mutation_gate_not_disabled';
+                }
+                if (!$capabilitySatisfied) {
+                    $failedChecks[] = 'transaction_full_gate_missing';
+                }
+            } elseif ($executionModel === 'managed_operation_outbox') {
+                if ((string) ($action['operation_key'] ?? '') === '') {
+                    $failedChecks[] = 'managed_operation_key_missing';
+                }
+                if (!$capabilitySatisfied) {
+                    $failedChecks[] = 'managed_outbox_gate_missing';
+                }
+            } else {
+                $failedChecks[] = 'execution_model_unsupported';
             }
 
             $policyActions[] = [
@@ -413,7 +436,11 @@ function app_no_code_runtime_server_availability_policy(
                     'failed_checks' => $failedChecks,
                     'overlay_source' => 'server_readiness_v1',
                     'overlay_flag_enabled' => $overlayFlagEnabled,
+                    'execution_model' => $executionModel,
+                    'required_capability' => $requiredCapability,
+                    'capability_satisfied' => $capabilitySatisfied,
                     'transaction_full_gate' => $transactionFullGate,
+                    'managed_outbox_gate' => $managedOutboxGate,
                     'readiness_state' => (string) ($readiness['readiness_state'] ?? ''),
                     'availability_candidate' => (bool) ($readiness['availability_candidate'] ?? false),
                     'can_submit' => (bool) ($readiness['can_submit'] ?? false),
@@ -428,6 +455,7 @@ function app_no_code_runtime_server_availability_policy(
         'overlay_source' => 'server_readiness_v1',
         'overlay_flag_enabled' => $overlayFlagEnabled,
         'transaction_full_gate' => $transactionFullGate,
+        'managed_outbox_gate' => $managedOutboxGate,
         'contracts' => $policyContracts,
     ];
 }
@@ -1355,6 +1383,7 @@ function app_no_code_runtime_preview_js(): string
   var executionBindingElement = document.getElementById('no-code-runtime-execution-binding');
   var executionBinding = {};
   var serverAvailableActionKeys = {};
+  var serverAvailableActionModels = {};
   try {
     executionBinding = executionBindingElement ? JSON.parse(executionBindingElement.textContent || '{}') : {};
   } catch (error) {
@@ -1432,9 +1461,13 @@ function app_no_code_runtime_preview_js(): string
         }
         var state = action.availability === 'enabled' ? 'enabled' : 'disabled';
         serverAvailableActionKeys[actionKey] = state === 'enabled';
+        serverAvailableActionModels[actionKey] = String(action.execution_model || '');
         var failedChecks = Array.isArray(action.failed_checks) ? action.failed_checks : [];
         var message = 'Server availability: ' + state + (failedChecks.length ? ' (' + failedChecks.join(', ') + ')' : '');
         writeServerActionAvailabilityDiagnostic(actionKey, state, message);
+      });
+      document.querySelectorAll('.no-code-screen').forEach(function (screen) {
+        writeIntentDraft(screen);
       });
     }).catch(function (error) {
       document.querySelectorAll('.no-code-actions button[data-action-key]').forEach(function (button) {
@@ -2112,17 +2145,22 @@ function app_no_code_runtime_preview_js(): string
     var draft = buildActionIntentDraft(action, collectScreenInputFromScreen(screen));
     var draftChecks = Array.isArray(draft.draft_checks) ? draft.draft_checks : [];
     var policyChecks = Array.isArray(draft.policy_failed_checks) ? draft.policy_failed_checks : [];
-    var hasBlockingChecks = draftChecks.length > 0 || policyChecks.length > 0;
+    var liveManagedAuthority = isGeneratedUiActionAuthorized(draft.action_key || '', 'managed_operation_outbox');
+    var effectiveDraftChecks = liveManagedAuthority
+      ? draftChecks.filter(function (check) { return check !== 'action.disabled'; })
+      : draftChecks;
+    var effectivePolicyChecks = liveManagedAuthority ? [] : policyChecks;
+    var hasBlockingChecks = effectiveDraftChecks.length > 0 || effectivePolicyChecks.length > 0;
     writeRequiredFieldHints(screen, draft, action);
     writeRuntimeExecuteAvailability(screen, draft, hasBlockingChecks);
     draftOutput.textContent = JSON.stringify(draft, null, 2);
     if (draftSummary) {
       var summaryChecks = [];
-      if (draftChecks.length > 0) {
-        summaryChecks.push(draftChecks.join(', '));
+      if (effectiveDraftChecks.length > 0) {
+        summaryChecks.push(effectiveDraftChecks.join(', '));
       }
-      if (policyChecks.length > 0) {
-        summaryChecks.push('policy: ' + policyChecks.join(', '));
+      if (effectivePolicyChecks.length > 0) {
+        summaryChecks.push('policy: ' + effectivePolicyChecks.join(', '));
       }
       draftSummary.textContent = !hasBlockingChecks
         ? 'Ready draft: no blocking checks found.'
@@ -3702,6 +3740,13 @@ function app_no_code_runtime_preview_js(): string
       writeRuntimeFlow(screen, 'waiting', '');
       return;
     }
+    if (!isGeneratedUiActionAuthorized(draft.action_key || '', 'managed_operation_outbox')) {
+      executeButton.disabled = true;
+      executeButton.setAttribute('data-runtime-execute-state', 'unavailable');
+      setRuntimeExecuteStatus(screen, 'unavailable', 'Server execution authority is not available for this action.');
+      writeRuntimeFlow(screen, 'waiting', '');
+      return;
+    }
     if (hasBlockingChecks) {
       executeButton.disabled = true;
       executeButton.setAttribute('data-runtime-execute-state', 'blocked');
@@ -3748,6 +3793,15 @@ function app_no_code_runtime_preview_js(): string
       && button.getAttribute('data-action-network-submit-enabled') === 'true'
       && button.getAttribute('data-action-click-binding-state') === 'blocked_route_enabled'
       && (button.getAttribute('data-action-submit-url') || '') !== '';
+  }
+
+  function isGeneratedUiActionAuthorized(actionKey, executionModel) {
+    return !!actionKey
+      && executionBinding.generated_ui_execution_enabled === true
+      && Array.isArray(executionBinding.generated_ui_execution_allowlist)
+      && executionBinding.generated_ui_execution_allowlist.indexOf(actionKey) !== -1
+      && serverAvailableActionKeys[actionKey] === true
+      && serverAvailableActionModels[actionKey] === executionModel;
   }
 
   function guardedSubmitCsrfToken(button, screen) {
@@ -4134,6 +4188,10 @@ function app_no_code_runtime_preview_js(): string
     var action = firstScreenAction(screen);
     if (!action) {
       setRuntimeExecuteStatus(screen, 'error', 'No action metadata is available for server execution.');
+      return;
+    }
+    if (!isGeneratedUiActionAuthorized(action.action_key || '', 'managed_operation_outbox')) {
+      setRuntimeExecuteStatus(screen, 'error', 'Server execution authority is not available for this action.');
       return;
     }
 

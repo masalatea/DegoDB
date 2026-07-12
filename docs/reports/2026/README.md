@@ -11,6 +11,20 @@
 
 ## Index
 
+- `2026-0712-sample29-second-sample-qualification-closure.md`
+  - #754 Sample29第2 sample qualification closure。#749の唯一gapだったproduction-shaped UI authorityが#753までで解消されたことをchecklist全項目で確認し、`update_support_case`を明示的除外付きbounded L1として認定。異なるdomain・managed outbox executionでも共通screen/schema/action/authority/test contractを再利用でき、G-L2達成。Status: `DONE_QUALIFIED_WITH_EXCLUSIONS`。
+- `2026-0712-sample29-live-ui-authority-browser-integration.md`
+  - #753 Sample29 live UI authority browser integration。専用smokeだけで`SAMPLE29:update_support_case`と`managed_outbox_v1`を有効化し、current・aliasの認証済みlive availabilityからUI authorityを導出。test側のaction/button強制enableを廃止し、real pending outbox submit、static artifact非authority、stub done/failed recoveryを実証。Full suite 424 tests / 13,879 assertions。Status: `DONE`。
+- `2026-0712-execution-model-aware-action-availability.md`
+  - #752 execution model対応action availability。direct guardedはreadiness/submit binding/Transaction Full、managed outboxはoperation identity/`managed_outbox_v1`を要求し、required capability診断を返すGET-only zero-dispatch contractへ拡張。Full suite 424 tests / 13,878 assertions。Status: `FIRST_SLICE_DONE`。
+- `2026-0712-reusable-generated-ui-authority-policy-foundation.md`
+  - #751 再利用可能generated UI authority policy基盤。global default-off switch＋正規化`PROJECT:action` allowlistへbindingを一般化し、malformed無視・重複排除・Sample18 legacy互換・static artifact非注入をfast coverageで固定。Full suite 424 tests / 13,861 assertions。Status: `FIRST_SLICE_DONE`。
+- `2026-0712-sample29-reusable-ui-authority-preflight.md`
+  - #750 Sample29再利用可能UI authority preflight。Sample18 direct guarded route/Transaction FullとSample29 managed operation outbox/durable recoveryをexecution modelとして分離し、default-off project/action allowlist・capability-aware availabilityの順序を確定。Status: `DONE`。
+- `2026-0712-sample29-l1-qualification-gap-inventory.md`
+  - #749 Sample29 L1 qualification gap棚卸し。schema・screen・scope認可・current/alias・real outbox enqueue・generated DBAccess処理・failed/retry recoveryはPass。browser testがaction stateを強制変更しておりserver-injected live UI authority未実証の1 gap。Status: `DONE_ONE_GAP`。
+- `2026-0712-first-l1-pattern-and-second-sample-selection.md`
+  - #748 最初のL1 pattern抽出・第2 sample選定。恒久qualification checklistを追加し、別domain・scoped update・current/alias・outbox/generated DBAccess証跡を持つSample29をG-L2比較対象へ選定。Status: `DONE`。
 - `2026-0712-sample18-l1-no-code-qualification.md`
   - #747 Sample18 L1 No Code qualification。list/detail/form・filter・selected-rowと、明示default-off create actionのcurrent/alias authority・real commit/rollback証跡により、最初のbounded L1 entryとしてB8・G-L1を達成。full CRUD・hand-coded route置換は対象外。Status: `DONE_QUALIFIED`。
 - `2026-0712-post-transaction-full-next-main-plan-selection.md`

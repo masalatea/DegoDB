@@ -13,6 +13,7 @@ RUN_ENDPOINT_SMOKE="${RUN_ENDPOINT_SMOKE:-1}"
 RUN_OUTBOX_PROCESS_SMOKE="${RUN_OUTBOX_PROCESS_SMOKE:-1}"
 RUNTIME_FILTER_DOM_ONLY="${RUNTIME_FILTER_DOM_ONLY:-0}"
 RUNTIME_ENABLED_CANDIDATE_SURFACE="${RUNTIME_ENABLED_CANDIDATE_SURFACE:-0}"
+RUNTIME_MANAGED_OUTBOX_AUTHORITY="${RUNTIME_MANAGED_OUTBOX_AUTHORITY:-0}"
 ADMIN_HTTP_PORT="${ADMIN_HTTP_PORT:-18291}"
 LAB_HTTP_PORT="${LAB_HTTP_PORT:-18292}"
 CONFIG_DB_HOST_PORT="${CONFIG_DB_HOST_PORT:-43291}"
@@ -59,6 +60,11 @@ cleanup() {
 }
 
 trap cleanup EXIT
+
+managed_outbox_authority_args=()
+if [ "$RUNTIME_MANAGED_OUTBOX_AUTHORITY" = "1" ]; then
+  managed_outbox_authority_args+=(--runtime-managed-outbox-authority)
+fi
 
 wait_for_admin_health() {
   local attempt
@@ -221,6 +227,7 @@ node mtool/scripts/check_no_code_runtime_preview_ui_smoke.js \
   --execution-binding=required \
   --execution-url-contains=/current/execute.json \
   --submit-probe=enabled-real-fetch \
+  "${managed_outbox_authority_args[@]}" \
   "--output-dir=${SMOKE_OUTPUT_DIR}"
 
 node mtool/scripts/check_no_code_runtime_preview_ui_smoke.js \
@@ -230,6 +237,7 @@ node mtool/scripts/check_no_code_runtime_preview_ui_smoke.js \
   --execution-url-contains=/current/execute.json \
   --submit-probe=enabled-fetch-stub \
   --status-probe=stub-done \
+  "${managed_outbox_authority_args[@]}" \
   "--output-dir=${SMOKE_OUTPUT_DIR}"
 
 node mtool/scripts/check_no_code_runtime_preview_ui_smoke.js \
@@ -239,6 +247,7 @@ node mtool/scripts/check_no_code_runtime_preview_ui_smoke.js \
   --execution-url-contains=/current/execute.json \
   --submit-probe=enabled-fetch-stub \
   --status-probe=stub-failed \
+  "${managed_outbox_authority_args[@]}" \
   "--output-dir=${SMOKE_OUTPUT_DIR}"
 
 node mtool/scripts/check_no_code_runtime_preview_ui_smoke.js \
@@ -247,6 +256,7 @@ node mtool/scripts/check_no_code_runtime_preview_ui_smoke.js \
   --execution-binding=required \
   "--execution-url-contains=/alias/${ALIAS_KEY}/execute.json" \
   --submit-probe=enabled-real-fetch \
+  "${managed_outbox_authority_args[@]}" \
   "--output-dir=${SMOKE_OUTPUT_DIR}"
 
 if [ "$RUN_ENDPOINT_SMOKE" = "1" ]; then
