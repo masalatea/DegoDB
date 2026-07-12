@@ -1,0 +1,94 @@
+{
+  "proposal_version": "schema-proposal-v0",
+  "proposal_id": "sample19-article-content-model-v1",
+  "project_key": "SAMPLE19",
+  "state": "proposal_only",
+  "apply_supported": false,
+  "created_at": "2026-07-12T00:00:00Z",
+  "source": {
+    "logical_filename": "article.json",
+    "media_type": "application/json",
+    "sha256": "1606f9fe652d1993d07e3d421cef5985beeef7a6911d7326b11e41c478675d59",
+    "root_pointer": "/article",
+    "redaction": "none"
+  },
+  "provenance": {
+    "kind": "deterministic_fixture",
+    "generator": "sample19-golden-contract",
+    "ai_authored": false
+  },
+  "raw_json_retention": [],
+  "entities": [
+    {
+      "entity_key": "json_author",
+      "purpose": "Reusable article author identity",
+      "evidence": [{"pointer": "/article/author", "type": "nested_object", "rationale": "Author is a reusable named entity."}],
+      "fields": [
+        {"field_key": "id", "type_guess": "bigint", "required": true, "nullable": false, "unique": true, "identity_role": "surrogate_primary_key", "default": null, "evidence": [{"pointer": "/article/author", "type": "inferred_identity", "rationale": "Canonical entity needs a stable internal identity."}]},
+        {"field_key": "name", "type_guess": "varchar(255)", "required": true, "nullable": false, "unique": true, "identity_role": "natural_key", "default": null, "evidence": [{"pointer": "/article/author/name", "type": "source_value", "rationale": "Source author name."}]}
+      ],
+      "keys": [{"key_key": "pk_json_author", "kind": "primary", "fields": ["id"]}, {"key_key": "uq_json_author_name", "kind": "unique", "fields": ["name"]}]
+    },
+    {
+      "entity_key": "json_category",
+      "purpose": "Reusable article category identity",
+      "evidence": [{"pointer": "/article/category", "type": "nested_object", "rationale": "Category is a reusable named entity."}],
+      "fields": [
+        {"field_key": "id", "type_guess": "bigint", "required": true, "nullable": false, "unique": true, "identity_role": "surrogate_primary_key", "default": null, "evidence": [{"pointer": "/article/category", "type": "inferred_identity", "rationale": "Canonical entity needs a stable internal identity."}]},
+        {"field_key": "name", "type_guess": "varchar(255)", "required": true, "nullable": false, "unique": true, "identity_role": "natural_key", "default": null, "evidence": [{"pointer": "/article/category/name", "type": "source_value", "rationale": "Source category name."}]}
+      ],
+      "keys": [{"key_key": "pk_json_category", "kind": "primary", "fields": ["id"]}, {"key_key": "uq_json_category_name", "kind": "unique", "fields": ["name"]}]
+    },
+    {
+      "entity_key": "article_json_model",
+      "purpose": "Canonical article lifecycle record",
+      "evidence": [{"pointer": "/article", "type": "root_object", "rationale": "Article has identity, lifecycle, content, and relationships."}],
+      "fields": [
+        {"field_key": "id", "type_guess": "bigint", "required": true, "nullable": false, "unique": true, "identity_role": "surrogate_primary_key", "default": null, "evidence": [{"pointer": "/article", "type": "inferred_identity", "rationale": "Canonical article needs an internal identity."}]},
+        {"field_key": "json_author_id", "type_guess": "bigint", "required": true, "nullable": false, "unique": false, "identity_role": "foreign_key", "default": null, "evidence": [{"pointer": "/article/author", "type": "relationship", "rationale": "References normalized author."}]},
+        {"field_key": "json_category_id", "type_guess": "bigint", "required": true, "nullable": false, "unique": false, "identity_role": "foreign_key", "default": null, "evidence": [{"pointer": "/article/category", "type": "relationship", "rationale": "References normalized category."}]},
+        {"field_key": "title", "type_guess": "varchar(255)", "required": true, "nullable": false, "unique": false, "identity_role": "none", "default": null, "evidence": [{"pointer": "/article/title", "type": "source_value", "rationale": "Article title."}]},
+        {"field_key": "slug", "type_guess": "varchar(160)", "required": true, "nullable": false, "unique": true, "identity_role": "natural_key", "default": null, "evidence": [{"pointer": "/article/slug", "type": "source_value", "rationale": "Stable public lookup key."}]},
+        {"field_key": "status", "type_guess": "varchar(20)", "required": true, "nullable": false, "unique": false, "identity_role": "none", "default": "draft", "evidence": [{"pointer": "/article/status", "type": "source_value", "rationale": "Article lifecycle state."}]},
+        {"field_key": "published_at", "type_guess": "datetime", "required": false, "nullable": true, "unique": false, "identity_role": "none", "default": null, "evidence": [{"pointer": "/article/publishedAt", "type": "source_value", "rationale": "Publication timestamp is absent for drafts."}]},
+        {"field_key": "body", "type_guess": "text", "required": true, "nullable": false, "unique": false, "identity_role": "none", "default": null, "evidence": [{"pointer": "/article/body", "type": "source_value", "rationale": "Article content."}]}
+      ],
+      "keys": [{"key_key": "pk_article_json_model", "kind": "primary", "fields": ["id"]}, {"key_key": "uq_article_json_model_slug", "kind": "unique", "fields": ["slug"]}]
+    },
+    {
+      "entity_key": "article_public_summary",
+      "purpose": "Read model for published article lists",
+      "evidence": [{"pointer": "/article", "type": "derived_read_model", "rationale": "Public output joins article, author, and category values."}],
+      "fields": [
+        {"field_key": "article_id", "type_guess": "bigint", "required": true, "nullable": false, "unique": true, "identity_role": "primary_key", "default": null, "evidence": [{"pointer": "/article", "type": "derived_identity", "rationale": "References canonical article identity."}]},
+        {"field_key": "article_title", "type_guess": "varchar(255)", "required": true, "nullable": false, "unique": false, "identity_role": "none", "default": null, "evidence": [{"pointer": "/article/title", "type": "projection", "rationale": "Public title."}]},
+        {"field_key": "article_slug", "type_guess": "varchar(160)", "required": true, "nullable": false, "unique": false, "identity_role": "none", "default": null, "evidence": [{"pointer": "/article/slug", "type": "projection", "rationale": "Public slug."}]},
+        {"field_key": "published_at", "type_guess": "datetime", "required": false, "nullable": true, "unique": false, "identity_role": "none", "default": null, "evidence": [{"pointer": "/article/publishedAt", "type": "projection", "rationale": "Public publication time."}]},
+        {"field_key": "author_name", "type_guess": "varchar(255)", "required": true, "nullable": false, "unique": false, "identity_role": "none", "default": null, "evidence": [{"pointer": "/article/author/name", "type": "projection", "rationale": "Public author name."}]},
+        {"field_key": "category_name", "type_guess": "varchar(255)", "required": true, "nullable": false, "unique": false, "identity_role": "none", "default": null, "evidence": [{"pointer": "/article/category/name", "type": "projection", "rationale": "Public category name."}]}
+      ],
+      "keys": [{"key_key": "pk_article_public_summary", "kind": "primary", "fields": ["article_id"]}]
+    }
+  ],
+  "relationships": [
+    {"relationship_key": "article_author", "from_entity": "article_json_model", "from_field": "json_author_id", "to_entity": "json_author", "to_field": "id", "cardinality": "many_to_one", "evidence": [{"pointer": "/article/author", "type": "nested_object", "rationale": "Each article references one author."}]},
+    {"relationship_key": "article_category", "from_entity": "article_json_model", "from_field": "json_category_id", "to_entity": "json_category", "to_field": "id", "cardinality": "many_to_one", "evidence": [{"pointer": "/article/category", "type": "nested_object", "rationale": "Each article references one category."}]}
+  ],
+  "lifecycle": [{"entity_key": "article_json_model", "states": ["draft", "published"], "initial_state": "draft", "evidence": [{"pointer": "/article/status", "type": "source_value", "rationale": "The sample contains a published state."}]}],
+  "transactions": [{"transaction_key": "import_article", "entities": ["json_author", "json_category", "article_json_model"], "atomicity": "candidate_same_database", "rationale": "A partial canonical article import is not useful."}],
+  "degodb_targets": {
+    "data_classes": ["JsonAuthor", "JsonCategory", "ArticleJsonModel", "ArticlePublicSummary"],
+    "db_access": [{"function_key": "GetPublishedArticlePublicSummaryList", "entity_key": "article_json_model", "output_data_class": "ArticlePublicSummary"}],
+    "source_outputs": ["DATACLASS-PHP", "DBACCESS-PHP", "AI-CONTEXT-MD"]
+  },
+  "import_migration": {"initial_import": "upsert lookup rows then insert article in one transaction candidate", "rerun_policy": "match author/category by name and article by slug", "conflict_policy": "block unresolved slug conflicts"},
+  "blocking_questions": [{"question_key": "author_name_identity", "question": "Is author name stable enough to be a natural unique key?"}],
+  "non_blocking_assumptions": [{"assumption_key": "category_name_identity", "assumption": "Category name is unique within this bounded sample."}],
+  "canonical_diff": [
+    {"category": "unchanged", "object_kind": "entity", "object_key": "json_author", "proposal_value": {"field_keys": ["id", "name"], "key_keys": ["pk_json_author", "uq_json_author_name"], "relationship_keys": ["article_author"]}, "canonical_value": {"field_keys": ["id", "name"], "key_keys": ["pk_json_author", "uq_json_author_name"], "relationship_keys": ["article_author"]}, "evidence": [{"pointer": "/article/author", "type": "nested_object", "rationale": "Author is a reusable named entity."}], "review_note": "Derived proposal and canonical entity signatures match."},
+    {"category": "unchanged", "object_kind": "entity", "object_key": "json_category", "proposal_value": {"field_keys": ["id", "name"], "key_keys": ["pk_json_category", "uq_json_category_name"], "relationship_keys": ["article_category"]}, "canonical_value": {"field_keys": ["id", "name"], "key_keys": ["pk_json_category", "uq_json_category_name"], "relationship_keys": ["article_category"]}, "evidence": [{"pointer": "/article/category", "type": "nested_object", "rationale": "Category is a reusable named entity."}], "review_note": "Derived proposal and canonical entity signatures match."},
+    {"category": "unchanged", "object_kind": "entity", "object_key": "article_json_model", "proposal_value": {"field_keys": ["id", "json_author_id", "json_category_id", "title", "slug", "status", "published_at", "body"], "key_keys": ["pk_article_json_model", "uq_article_json_model_slug"], "relationship_keys": ["article_author", "article_category"]}, "canonical_value": {"field_keys": ["id", "json_author_id", "json_category_id", "title", "slug", "status", "published_at", "body"], "key_keys": ["pk_article_json_model", "uq_article_json_model_slug"], "relationship_keys": ["article_author", "article_category"]}, "evidence": [{"pointer": "/article", "type": "root_object", "rationale": "Article has identity, lifecycle, content, and relationships."}], "review_note": "Derived proposal and canonical entity signatures match."},
+    {"category": "unchanged", "object_kind": "entity", "object_key": "article_public_summary", "proposal_value": {"field_keys": ["article_id", "article_title", "article_slug", "published_at", "author_name", "category_name"], "key_keys": ["pk_article_public_summary"], "relationship_keys": []}, "canonical_value": {"field_keys": ["article_id", "article_title", "article_slug", "published_at", "author_name", "category_name"], "key_keys": ["pk_article_public_summary"], "relationship_keys": []}, "evidence": [{"pointer": "/article", "type": "derived_read_model", "rationale": "Public output joins article, author, and category values."}], "review_note": "Derived proposal and canonical entity signatures match."}
+  ],
+  "validation": {"expected_result": "valid", "warnings_allowed": true}
+}

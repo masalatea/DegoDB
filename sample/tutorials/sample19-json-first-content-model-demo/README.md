@@ -50,6 +50,17 @@ The sample story treats the JSON as the user's input. AI then interprets the nes
 
 Implementation note: the seed SQL already contains the interpreted schema. That is intentional for a sample pack. The user-facing story is still JSON first, then AI-interpreted DB / API metadata.
 
+## Reviewable Schema Proposal Fixture
+
+The G-L4 foundation keeps the interpretation reviewable before any mutation:
+
+- source JSON: `proposal/source/article.json`
+- machine-readable proposal source of truth: `golden/schema-proposal.json`
+- deterministic derived review view: `golden/schema-proposal.md`
+- read-only canonical comparison fixture: `golden/canonical-schema-snapshot.json`
+
+The proposal is marked `proposal_only` with `apply_supported=false`. Its declared entity diff must match the independently derived comparison with the canonical snapshot. It is a deterministic fixture, not an AI-authorship claim, SQL generator, import command, or approval/apply workflow.
+
 ## Generated DB / API Scope
 
 - tables:

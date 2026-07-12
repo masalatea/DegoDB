@@ -1,0 +1,15 @@
+{
+  "article": {
+    "title": "はじめての電子書籍CMS",
+    "slug": "first-ebook-cms",
+    "status": "published",
+    "publishedAt": "2026-06-19T09:00:00+09:00",
+    "author": {
+      "name": "Sample Editor"
+    },
+    "category": {
+      "name": "Guide"
+    },
+    "body": "JSONから始めるCMSの例です。"
+  }
+}

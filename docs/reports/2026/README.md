@@ -11,6 +11,20 @@
 
 ## Index
 
+- `2026-0712-schema-proposal-review-http-browser-promotion.md`
+  - #765 schema proposal review HTTP/browser昇格。Sample19専用実stackでlogin redirect、flag-on review page、verified source/provenance、entity/evidence 4件、derived unchanged 4件、question/assumption、canonical returnを確認。form/button/script/execution/applyゼロ、Apache上review POSTゼロ、検証後default-off復元。fixtureはnot AI-authoredのためG-L4は実AI生成proof 1 gapを残す。Status: `DONE_ONE_GAP`。
+- `2026-0712-schema-proposal-read-only-review-ui-first-implementation.md`
+  - #764 schema proposal read-only review UI初回実装。default-off exact Sample19 admin route、固定3 asset integrity gate、source SHA/validated proposal/snapshot/derived diff検証、safety/provenance/evidence/entity/diff/question/assumption renderer、severity集約を追加。form/button/script/POST/execution/apply surfaceゼロ。Full suite 448 tests / 14,018 assertions。Status: `FIRST_SLICE_DONE`。
+- `2026-0712-schema-proposal-read-only-review-ui-preflight.md`
+  - #763 schema proposal read-only review UI preflight。default-off・認証必須のexact Sample19 admin route、固定read-only asset、source SHA/proposal/snapshot/derived-diff integrity順序、safety/provenance/evidence/entity/diff/question/assumption表示、category severity、form/button/POST/apply/scriptゼロ、fast/browser gateを実装前に固定。Status: `DONE`。
+- `2026-0712-schema-proposal-canonical-diff-builder.md`
+  - #762 schema proposal canonical diff builder。Sample19 versioned canonical snapshotとvalidated proposalからfield/key/connected-relationを含むentity signatureを独立比較し、add/change/remove/unchanged/conflictを導出。declared diffの完全一致を要求し、矛盾claim・不正version/project/duplicate snapshotをfail closed。Full suite 442 tests / 13,969 assertions。Status: `FIRST_SLICE_DONE`。
+- `2026-0712-schema-proposal-artifact-contract-foundation.md`
+  - #761 schema proposal artifact contract基盤。Sample19 standalone source JSON、versioned golden proposal JSON、derived Markdownを追加し、`proposal_only`・`apply_supported=false`・SHA/JSON Pointer traceability・deterministic non-AI provenanceを固定。unsafe flag、invalid evidence、duplicate/dangling参照、unknown target/diffをfail closedする共通validatorを追加。Full suite 438 tests / 13,948 assertions。Status: `FIRST_SLICE_DONE`。
+- `2026-0712-sample19-reviewable-schema-proposal-gap-inventory.md`
+  - #760 Sample19 review可能schema proposal gap棚卸し。source JSONとseed/outputの間にversioned proposal artifact境界がない1 gapへ集約。JSON正本＋derived Markdown、`proposal_only`・`apply_supported=false`、SHA-256・JSON Pointer evidence、候補群・question/assumption・provenance・canonical diff category、fail-closed validationを確定。AI call・persistence・SQL・applyは除外。Status: `DONE_ONE_GAP`。
+- `2026-0712-post-g-l3-roadmap-checkpoint.md`
+  - #759 G-L3後roadmap checkpoint。次のbounded laneとしてSample19のG-L4 reviewable schema proposal調査を選定。user JSONと確定済みseed/outputの間にmachine-readable proposal・source evidence・assumption/question・canonical diffがない具体gapを対象とし、generic AI service、自動mutation、review request実行、追加Mtool置換はpark。Status: `DONE`。
 - `2026-0712-live-mtool-inspection-http-browser-promotion.md`
   - #758 live Mtool inspection HTTP/browser昇格。実admin stackでlogin redirect、認証後flag-off 404、flag-on 29 live rows、`OPENAPI-JSON` exact selection、enabled/runtime/form controlゼロ、canonical return、Apache log上inspection POSTゼロを確認。Compose switch passthroughを補完し、検証後stackをdefault-offへ復元。G-L3達成。Full suite 431 tests / 13,918 assertions。Status: `DONE_QUALIFIED`。
 - `2026-0712-live-mtool-source-output-inspection-first-implementation.md`

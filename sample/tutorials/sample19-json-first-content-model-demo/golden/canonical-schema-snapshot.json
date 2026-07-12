@@ -1,0 +1,31 @@
+{
+  "snapshot_version": "canonical-schema-snapshot-v0",
+  "project_key": "SAMPLE19",
+  "source": "sample19-seed-metadata",
+  "entities": [
+    {
+      "entity_key": "json_author",
+      "field_keys": ["id", "name"],
+      "key_keys": ["pk_json_author", "uq_json_author_name"],
+      "relationship_keys": ["article_author"]
+    },
+    {
+      "entity_key": "json_category",
+      "field_keys": ["id", "name"],
+      "key_keys": ["pk_json_category", "uq_json_category_name"],
+      "relationship_keys": ["article_category"]
+    },
+    {
+      "entity_key": "article_json_model",
+      "field_keys": ["id", "json_author_id", "json_category_id", "title", "slug", "status", "published_at", "body"],
+      "key_keys": ["pk_article_json_model", "uq_article_json_model_slug"],
+      "relationship_keys": ["article_author", "article_category"]
+    },
+    {
+      "entity_key": "article_public_summary",
+      "field_keys": ["article_id", "article_title", "article_slug", "published_at", "author_name", "category_name"],
+      "key_keys": ["pk_article_public_summary"],
+      "relationship_keys": []
+    }
+  ]
+}
