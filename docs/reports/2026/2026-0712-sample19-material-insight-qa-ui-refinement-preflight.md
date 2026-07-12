@@ -74,4 +74,3 @@ Browser smoke is not required for this refinement unless the render route behavi
 ## Next lane
 
 #816: implement the fixture-backed Q&A/UI outline refinement with fast tests.
-

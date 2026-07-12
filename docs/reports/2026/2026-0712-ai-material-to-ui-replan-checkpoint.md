@@ -62,4 +62,3 @@ The first UI target should be read-only:
 #807: Sample19 material insight contract preflight.
 
 The preflight should define the exact JSON shape, validation stages, test evidence, feature flag/rollback boundary, and first fixture-backed implementation target before code is added.
-

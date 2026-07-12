@@ -34,4 +34,3 @@ The next step is not implementation yet. It should select a bounded material-to-
 - generated UI/action target;
 - validation pipeline;
 - rollback/no-broad-rollout boundary.
-

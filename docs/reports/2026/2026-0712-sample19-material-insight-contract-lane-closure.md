@@ -36,4 +36,3 @@ It should define:
 - HTML markers for source, basis, Q&A cards, UI outline, and prohibited actions;
 - no POST, no apply/import/build/publish, no metadata mutation, no AI call;
 - fast tests first, browser smoke only after route implementation.
-

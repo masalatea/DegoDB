@@ -73,4 +73,3 @@ It should not add:
 - import, build, publish, or generated route execution.
 
 Those can be promoted later only after the artifact contract is proven by fast tests.
-

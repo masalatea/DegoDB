@@ -65,4 +65,3 @@ Browser smoke is not required until after the route is implemented and the first
 ## Next lane
 
 #811: implement the Sample19 material insight read-only preview route first slice.
-

@@ -58,4 +58,3 @@ This slice intentionally does not add:
 ## Next lane
 
 #809: close the material insight contract foundation and decide whether to promote a read-only fixture preview route, additional validator hardening, or documentation of the Q&A/UI outline boundary.
-

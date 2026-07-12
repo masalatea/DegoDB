@@ -72,4 +72,3 @@ The canonical entry point is now covered at the same evidence level as the inspe
 ## Next lane
 
 #805: Mtool inspection entry-point evidence lane closure.
-

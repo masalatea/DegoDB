@@ -44,4 +44,3 @@ The preflight should define small, testable improvements such as:
 - UI outline sections grouped by entity/list/detail/Q&A purpose;
 - stable markers for refined sections;
 - no AI call, mutation, import, build, publish, or generated execution.
-
