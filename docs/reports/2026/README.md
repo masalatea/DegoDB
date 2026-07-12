@@ -11,6 +11,32 @@
 
 ## Index
 
+- `2026-0712-post-g-l4-local-commit-stack-checkpoint.md`
+  - #786 G-L4後local commit stack checkpoint。origin更新後develop比0 behind・71 aheadを確認。広範squashはせず、連続した#783 closure・#784 guide・#785 parkだけを1 semantic commitへ統合し69 ahead。full suite 464 tests / 14,136 assertions、worktree clean、pushなし。Status: `DONE`。
+- `2026-0712-post-g-l4-roadmap-checkpoint.md`
+  - #785 G-L4後roadmap checkpoint。G-L5はsource material・Q&A目的・normalized structure・No Code UI/action target未選定のためlong-term park維持。既存parked laneにも再開triggerなし。次は70 commit local stack checkpoint、pushなし。Status: `DONE_PARKED`。
+- `2026-0712-ai-task-packet-permanent-user-guide.md`
+  - #784 AI task packet恒久user guide。Codex/Claude一言開始・task確認・packet優先順位・共通facade/CLI/stage・candidate/Mtool derived review・default-off review・明示optional Ollama・zero mutation/data boundaryを日付なし正本へ整理しREADME/docs/JSON入口からlink。Status: `DONE`。
+- `2026-0712-post-g-l4-task-packet-lane-closure.md`
+  - #783 G-L4後task packet lane closure。packet/confirmation/scan/optional Ollama/common CLI/Codex proof/derived review/auth browser evidenceは完了。唯一の具体polishは恒久user guideがなくplans/reportsだけに閉じている点。provider/runtime追加はcloseし#784文書導線だけを追加。Status: `DONE_ONE_POLISH`。
+- `2026-0712-task-review-http-browser-promotion-g-l4-closure.md`
+  - #782 task review HTTP/browser昇格・G-L4 closure。実Sample19 stackでlogin redirect、auth後default-off 404、flag-on AI/task/source/candidate/review hash・Mtool diff ownership、4 entity・4 unchanged、canonical returnを確認。form/button/script/applyゼロ、review POSTゼロ、stack default-off復元。G-L4達成。Status: `DONE_QUALIFIED`。
+- `2026-0712-task-review-artifact-read-only-route.md`
+  - #781 task review artifact read-only route。strict task ID・work confinement・auth/default-off GET routeを追加し、task/source/canonical/shape/scan/validation/candidate/review/derivation/diffを再検証。AI candidate・Mtool derived diff/hash表示、action/POST/mutationゼロ。Full suite 464 tests / 14,133 assertions。Status: `FIRST_SLICE_DONE`。
+- `2026-0712-task-review-artifact-consumption-preflight.md`
+  - #780 task review artifact consumption preflight。exact task IDからwork/ai-tasks内だけを選ぶ認証済default-off GET route、task/source/canonical/validation/candidate/review/derivation/diffの再検証順、AI candidate・Mtool derived diff表示、form/button/script/apply/実行/mutationゼロを確定。Status: `DONE`。
+- `2026-0712-codex-task-packet-workflow-proof.md`
+  - #779 Codex task packet workflow proof。具体taskへのuser確認後、宣言inputだけを読みcandidateだけを書き、共通CLIで`review_artifact_ready`。candidate/review hash分離、Mtool derived diff、mutation false、Ollama/network/DB操作なし。Status: `DONE_QUALIFIED`。
+- `2026-0712-optional-scan-ollama-fallback-alignment.md`
+  - #778 optional scan・Ollama fallback整合。task packetへ値推測なしのhash-bound deterministic pointer/type scanを同梱。Ollamaは`--task`＋`--execute-local-fallback`必須、agent outputと別advisory inputへ保存し共通task validatorを使用。Full suite 461 tests / 14,111 assertions。AI実行なし。Status: `FIRST_SLICE_DONE`。
+- `2026-0712-sample19-agent-readable-task-packet-foundation.md`
+  - #777 Sample19 agent-readable task packet基盤。hash-bound source/canonical/output shape、optional advisory scan/fallback、exact confirmation、単一validator command、read/write/prohibition/precedenceを持つtask.json・TASK.md generatorを追加。pending confirmationでcandidate/outputなし。Full suite 460 tests / 14,103 assertions。AI実行なし。Status: `FIRST_SLICE_DONE`。
+- `2026-0712-schema-proposal-task-validation-facade-cli.md`
+  - #776 schema proposal task validation facade・CLI。task/input integrity、candidate safety/empty diff、Mtool independent diff、candidate hash付き別review artifact、stable stage/error、task-root confinementを1関数・1CLIへ統合。Full suite 458 tests / 14,084 assertions。AI実行なし。Status: `FIRST_SLICE_DONE`。
+- `2026-0712-ai-task-packet-agent-instruction-contract-preflight.md`
+  - #775 AI task packet・agent指示contract preflight。task root内のtask/source/canonical/optional advisory scan・fallback/candidate/validation/review配置、hash/path authority、Codex/Claudeの1回確認、単一validation command、7 stable stages、AI candidate空diff・Mtool derived diff所有、zero mutation/networkを確定。Status: `DONE`。
+- `2026-0712-ai-task-packet-workflow-replan.md`
+  - #774 AI task-packet workflow replan。Codex/Claudeがtask packetを読み、範囲説明・user確認後にcandidate生成と単一validation commandを実行する経路を主導線へ変更。deterministic scanとOllamaはoptional fallback、情報優先順位と共通validation facade/CLI、#775-#779実装順を確定。AI call・mutationなし。Status: `DONE`。
 - `2026-0712-sample19-schema-guided-prompt-v1-local-proof.md`
   - #773 schema-guided prompt v1 local proof。attempt 1は旧9 errorからrelationship target entity 2 errorへ改善、corrective retryでproposal structure/reference/evidenceは全通過し、残りは`declared_canonical_diff_mismatch` 1件のみ。独立diffは3 unchanged＋public summary removeを導出したがmodel宣言が不完全。reject維持・3回目なし。Status: `DONE_REJECTED_ONE_GAP`。
 - `2026-0712-sample19-schema-guided-prompt-v1-offline-foundation.md`
