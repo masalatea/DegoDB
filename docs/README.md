@@ -36,6 +36,7 @@ top-level は外部ユーザ向け導線を優先し、内部向け文書は [In
    - [Project Metadata Bundle / プロジェクトメタデータ bundle](project-metadata-bundle.md)
    - [Config DB Externalization / config DB 外部化](config-db-externalization.md)
    - [Security And Data Handling / security と data handling](security-and-data-handling.md)
+   - [SSO Application User Standard / SSOアプリケーションユーザ標準](sso-application-user-standard.md)
    - [Glossary / 用語集](glossary.md)
    - [Sample Tutorial Roadmap / sample 学習導線](sample-tutorial-roadmap.md)
    - [Study Guide / sample で学ぶ](study/README.md)
@@ -90,6 +91,8 @@ detail doc だけを読んで mainline を再構成するのは current reading 
   - `config_db`、existing DB、artifact、`work/` の役割を 1 枚で見る companion
 - [Security And Data Handling / security と data handling](security-and-data-handling.md)
   - OSS 評価、導入支援、顧客 schema 受付時の security / data handling 境界
+- [SSO Application User Standard / SSOアプリケーションユーザ標準](sso-application-user-standard.md)
+  - SSO外部identityとapplication所有user IDの分離、JIT・invitation-only、profile field ownership、lifecycle・security境界の標準設計
 - [Sample Tutorial Roadmap / sample 学習導線](sample-tutorial-roadmap.md)
   - tutorial sample の学習順
 - [Study Guide / sample で学ぶ](study/README.md)
@@ -133,6 +136,8 @@ detail doc だけを読んで mainline を再構成するのは current reading 
   - `config_db`、artifact、`work/` の state map
 - [Security And Data Handling / security と data handling](security-and-data-handling.md)
   - secret 分離、schema 受付、generated runtime security evidence、非 claim の境界
+- [SSO Application User Standard / SSOアプリケーションユーザ標準](sso-application-user-standard.md)
+  - SSO採用時の `(issuer, subject)`、`app_user_id`、user情報保存、provisioning、validation checklistの正本
 - [Execution Success Policy / 実行成功ポリシー](execution-success-policy.md)
   - mutation / execution route の all-success-or-failure UI/API contract
 - [Current Supported Workflow / 現在サポートするワークフロー](current-supported-workflow.md)
