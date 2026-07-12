@@ -294,6 +294,7 @@ function app_config_db_bootstrap_required_tables(): array
         'projects',
         'project_memberships',
         'project_identity_memberships',
+        'project_app_user_policies',
         'project_page_security_policies',
         'project_page_security_policy_capabilities',
         'project_host_assignments',
@@ -391,6 +392,12 @@ function app_config_db_bootstrap_required_columns(): array
             'relation_label_field',
             'relation_ui_role',
             'relation_required',
+        ],
+        'project_app_user_policies' => [
+            'contract_version',
+            'enabled',
+            'policy_json',
+            'source_of_truth',
         ],
         'no_code_publish_candidate_revisions' => [
             'revision_id',

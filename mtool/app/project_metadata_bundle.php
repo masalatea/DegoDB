@@ -13,6 +13,7 @@ require_once __DIR__ . '/table_metadata_repository.php';
 require_once __DIR__ . '/data_class_repository.php';
 require_once __DIR__ . '/db_access_repository.php';
 require_once __DIR__ . '/source_output_repository.php';
+require_once __DIR__ . '/sso_app_user_project_policy_repository.php';
 
 function app_project_metadata_bundle_type(): string
 {
@@ -118,6 +119,7 @@ function app_project_metadata_bundle_section_filename_map(): array
         'db_access' => 'db-access.json',
         'source_outputs' => 'source-outputs.json',
         'custom_proxies' => 'custom-proxies.json',
+        'app_user_policy' => 'app-user-policy.json',
     ];
 }
 
@@ -665,6 +667,11 @@ function app_project_metadata_bundle_import_prepare(array $app, string $bundlePa
     }
 
     $targetSummary = app_project_metadata_bundle_target_summary($canonicalApp, $targetProjectKey, $scope);
+    $appUserPolicyImportPlan = app_project_metadata_bundle_app_user_policy_import_plan(
+        $canonicalApp,
+        $targetProjectKey,
+        $loaded['sections'],
+    );
     $databaseSourceItems = is_array($loaded['sections']['database_sources']['database_sources'] ?? null)
         ? $loaded['sections']['database_sources']['database_sources']
         : [];
@@ -726,6 +733,7 @@ function app_project_metadata_bundle_import_prepare(array $app, string $bundlePa
         ],
         $databaseSourceSecretsResult['summary'],
         $databaseSourcePlan['summary'],
+        $appUserPolicyImportPlan,
     );
     foreach ($targetSummary['excluded_counts'] as $key => $count) {
         $summary['excluded_' . $key] = $count;
@@ -953,6 +961,27 @@ function app_project_metadata_bundle_validate_sections(
     $phpNamespace = app_normalize_php_namespace((string) ($projectSection['php_namespace'] ?? ''));
     if (!app_php_namespace_is_valid($phpNamespace)) {
         $errors[] = 'project.php_namespace が不正です。';
+    }
+
+    if (array_key_exists('app_user_policy', $sections)) {
+        $appUserPolicySection = $sections['app_user_policy'];
+        if (!is_array($appUserPolicySection) || !is_array($appUserPolicySection['policy'] ?? null)) {
+            $errors[] = 'app_user_policy section が不正です。';
+        } else {
+            $normalizedPolicy = app_sso_app_user_project_policy_normalize($appUserPolicySection['policy']);
+            foreach ($normalizedPolicy['errors'] as $policyError) {
+                $errors[] = 'app_user_policy: ' . $policyError;
+            }
+            foreach ($normalizedPolicy['warnings'] as $policyWarning) {
+                $warnings[] = 'app_user_policy: ' . $policyWarning;
+            }
+            if (array_key_exists('secret', $appUserPolicySection)
+                || array_key_exists('client_secret', $appUserPolicySection)
+                || array_key_exists('token', $appUserPolicySection)
+            ) {
+                $errors[] = 'app_user_policy section にsecret値を保存できません。';
+            }
+        }
     }
 
     if (array_key_exists('database_sources', $sections)) {
@@ -1671,6 +1700,16 @@ function app_project_metadata_bundle_collect_core_snapshot(
         ];
     }
 
+    $appUserPolicyResult = app_fetch_sso_app_user_project_policy($app, $projectKey);
+    if (!$appUserPolicyResult['ok']) {
+        return [
+            'ok' => false,
+            'sections' => [],
+            'summary' => [],
+            'error' => $appUserPolicyResult['error'],
+        ];
+    }
+
     $projectItem = $projectResult['item'];
     $sections = [
         'project' => [
@@ -1704,6 +1743,12 @@ function app_project_metadata_bundle_collect_core_snapshot(
         ],
         'custom_proxies' => $customProxyResult['snapshot'],
     ];
+    if (is_array($appUserPolicyResult['item'])) {
+        $sections['app_user_policy'] = [
+            'policy' => $appUserPolicyResult['item']['policy'],
+            'source_of_truth' => (string) ($appUserPolicyResult['item']['source_of_truth'] ?? 'manual'),
+        ];
+    }
 
     $selectedDatabaseSourceKeysResult = app_project_metadata_bundle_parse_database_source_keys(
         $options['database_source_keys'] ?? [],
@@ -2357,6 +2402,9 @@ function app_project_metadata_bundle_summary_from_sections(array $sections): arr
     $customProxies = is_array($sections['custom_proxies']['custom_proxies'] ?? null)
         ? $sections['custom_proxies']['custom_proxies']
         : [];
+    $appUserPolicy = is_array($sections['app_user_policy']['policy'] ?? null)
+        ? $sections['app_user_policy']['policy']
+        : null;
 
     $tableColumnCount = 0;
     foreach ($tables as $table) {
@@ -2426,7 +2474,7 @@ function app_project_metadata_bundle_summary_from_sections(array $sections): arr
         );
     }
 
-    return [
+    $summary = [
         'project_count' => 1,
         'membership_user_count' => 1 + count($members),
         'database_source_count' => count($databaseSources),
@@ -2448,6 +2496,39 @@ function app_project_metadata_bundle_summary_from_sections(array $sections): arr
         'custom_proxy_count' => count($customProxies),
         'custom_proxy_step_count' => $customProxyStepCount,
         'custom_proxy_source_output_target_count' => $customProxySourceOutputTargetCount,
+    ];
+    if ($appUserPolicy !== null) {
+        $summary['app_user_policy_count'] = 1;
+        $summary['app_user_policy_enabled_count'] = ($appUserPolicy['enabled'] ?? false) ? 1 : 0;
+    }
+
+    return $summary;
+}
+
+/** @return array<string,int|string> */
+function app_project_metadata_bundle_app_user_policy_import_plan(
+    array $app,
+    string $targetProjectKey,
+    array $sections,
+): array {
+    $included = array_key_exists('app_user_policy', $sections);
+    $target = app_fetch_sso_app_user_project_policy($app, $targetProjectKey);
+    $targetExists = $target['ok'] && is_array($target['item']);
+    if (!$included && !$targetExists) {
+        return [];
+    }
+    $enabled = $included && (bool) ($sections['app_user_policy']['policy']['enabled'] ?? false);
+
+    if ($included) {
+        $action = $enabled ? ($targetExists ? 'replace' : 'create') : 'disable';
+    } else {
+        $action = $targetExists ? 'preserve' : 'none';
+    }
+
+    return [
+        'app_user_policy_included' => $included ? 1 : 0,
+        'target_app_user_policy_exists' => $targetExists ? 1 : 0,
+        'app_user_policy_action' => $action,
     ];
 }
 
@@ -2598,6 +2679,7 @@ function app_project_metadata_bundle_apply_core_sections(
     $sourceOutputsSection = is_array($sections['source_outputs'] ?? null) ? $sections['source_outputs'] : [];
     $dbAccessSection = is_array($sections['db_access'] ?? null) ? $sections['db_access'] : [];
     $customProxiesSection = is_array($sections['custom_proxies'] ?? null) ? $sections['custom_proxies'] : [];
+    $appUserPolicySection = is_array($sections['app_user_policy'] ?? null) ? $sections['app_user_policy'] : [];
     $hasCustomProxiesSection = array_key_exists('custom_proxies', $sections);
 
     $projectId = app_project_metadata_bundle_upsert_project($pdo, $projectSection, $targetProjectKey);
@@ -2640,6 +2722,56 @@ function app_project_metadata_bundle_apply_core_sections(
             : [],
         $databaseSourceSecrets,
     );
+    if (array_key_exists('app_user_policy', $sections)) {
+        app_project_metadata_bundle_upsert_app_user_policy($pdo, $projectId, $appUserPolicySection);
+    }
+}
+
+function app_project_metadata_bundle_upsert_app_user_policy(PDO $pdo, int $projectId, array $section): void
+{
+    $policyInput = is_array($section['policy'] ?? null) ? $section['policy'] : [];
+    $normalized = app_sso_app_user_project_policy_normalize($policyInput);
+    if (!$normalized['ok']) {
+        throw new RuntimeException('app_user_policy section is invalid: ' . implode(' ', $normalized['errors']));
+    }
+    $policy = $normalized['policy'];
+    $sourceOfTruth = trim((string) ($section['source_of_truth'] ?? 'bundle-import'));
+    if ($sourceOfTruth === '') {
+        $sourceOfTruth = 'bundle-import';
+    }
+
+    $existing = $pdo->prepare('SELECT id FROM project_app_user_policies WHERE project_id = :project_id LIMIT 1');
+    $existing->execute([':project_id' => $projectId]);
+    $existingId = (int) ($existing->fetchColumn() ?: 0);
+    $parameters = [
+        ':project_id' => $projectId,
+        ':contract_version' => $policy['contract_version'],
+        ':enabled' => $policy['enabled'] ? 1 : 0,
+        ':policy_json' => app_sso_app_user_project_policy_json($policy),
+        ':source_of_truth' => $sourceOfTruth,
+    ];
+    if ($existingId > 0) {
+        $statement = $pdo->prepare(
+            'UPDATE project_app_user_policies
+             SET contract_version = :contract_version,
+                 enabled = :enabled,
+                 policy_json = :policy_json,
+                 source_of_truth = :source_of_truth,
+                 updated_at = CURRENT_TIMESTAMP
+             WHERE project_id = :project_id',
+        );
+        $statement->execute($parameters);
+        return;
+    }
+
+    $statement = $pdo->prepare(
+        'INSERT INTO project_app_user_policies (
+            project_id, contract_version, enabled, policy_json, source_of_truth
+         ) VALUES (
+            :project_id, :contract_version, :enabled, :policy_json, :source_of_truth
+         )',
+    );
+    $statement->execute($parameters);
 }
 
 function app_project_metadata_bundle_upsert_project(PDO $pdo, array $projectSection, string $targetProjectKey): int

@@ -12,6 +12,7 @@ require_once dirname(__DIR__, 2) . '/mtool/app/project_membership_repository.php
 require_once dirname(__DIR__, 2) . '/mtool/app/project_metadata_bundle.php';
 require_once dirname(__DIR__, 2) . '/mtool/app/project_repository.php';
 require_once dirname(__DIR__, 2) . '/mtool/app/source_output_repository.php';
+require_once dirname(__DIR__, 2) . '/mtool/app/sso_app_user_project_policy_repository.php';
 require_once dirname(__DIR__, 2) . '/mtool/app/table_metadata_repository.php';
 
 use PHPUnit\Framework\TestCase;
@@ -527,6 +528,107 @@ final class ProjectMetadataBundleContractTest extends TestCase
         self::assertFalse($customProxyPreviewResult['ok']);
         self::assertStringContainsString('custom_proxies auth_policy_json が不正です', $customProxyPreviewResult['error']);
         self::assertStringContainsString('secret 値を保存できません', $customProxyPreviewResult['error']);
+    }
+
+    public function testOptionalAppUserPolicyRoundTripsAndAbsentSectionPreservesTarget(): void
+    {
+        $app = app_project_metadata_bundle_repository_app(app_bootstrap());
+        $sourceKey = 'SPOL' . strtoupper(substr(bin2hex(random_bytes(4)), 0, 8));
+        $this->cleanupProjectKeys[] = $sourceKey;
+        $this->seedProjectCoreFixture($app, $sourceKey);
+
+        $policyBundle = sys_get_temp_dir() . '/mtool-app-user-policy-bundle-' . bin2hex(random_bytes(6));
+        $legacyBundle = sys_get_temp_dir() . '/mtool-app-user-policy-legacy-bundle-' . bin2hex(random_bytes(6));
+        $disabledBundle = sys_get_temp_dir() . '/mtool-app-user-policy-disabled-bundle-' . bin2hex(random_bytes(6));
+        array_push($this->cleanupPaths, $policyBundle, $legacyBundle, $disabledBundle);
+
+        $legacyExport = app_project_metadata_bundle_export($app, $sourceKey, [
+            'output_dir' => $legacyBundle,
+            'requested_by' => 'phpunit',
+        ]);
+        self::assertTrue($legacyExport['ok'], $legacyExport['error']);
+        self::assertNotContains('app_user_policy', $legacyExport['manifest']['included_sections']);
+
+        $sourcePolicy = app_upsert_sso_app_user_project_policy($app, $sourceKey, [
+            'enabled' => true,
+            'auth_mode' => 'oidc',
+            'provisioning_mode' => 'jit',
+            'provider_key' => 'primary-oidc',
+            'sso_profile_fields' => ['display_name', 'email'],
+            'application_profile_fields' => ['nickname'],
+            'user_owned_data' => ['saved_item'],
+            'lifecycle_custom_boundary' => ['identity-link'],
+        ], 'phpunit');
+        self::assertTrue($sourcePolicy['ok'], $sourcePolicy['error']);
+
+        $export = app_project_metadata_bundle_export($app, $sourceKey, [
+            'output_dir' => $policyBundle,
+            'requested_by' => 'phpunit',
+        ]);
+        self::assertTrue($export['ok'], $export['error']);
+        self::assertContains('app_user_policy', $export['manifest']['included_sections']);
+        self::assertSame('app-user-policy.json', $export['manifest']['files']['app_user_policy']['path'] ?? '');
+        self::assertSame(1, $export['summary']['app_user_policy_count'] ?? 0);
+        self::assertSame(1, $export['summary']['app_user_policy_enabled_count'] ?? 0);
+
+        $temporaryTargetPolicy = app_upsert_sso_app_user_project_policy($app, $sourceKey, [
+            'enabled' => true,
+            'auth_mode' => 'oidc',
+            'provisioning_mode' => 'invitation-only',
+            'provider_key' => 'old-oidc',
+            'sso_profile_fields' => ['email'],
+            'application_profile_fields' => [],
+            'user_owned_data' => [],
+            'lifecycle_custom_boundary' => [],
+        ], 'phpunit');
+        self::assertTrue($temporaryTargetPolicy['ok'], $temporaryTargetPolicy['error']);
+
+        $preview = app_project_metadata_bundle_import_preview($app, $policyBundle, [
+            'requested_by' => 'phpunit',
+        ]);
+        self::assertTrue($preview['ok'], $preview['error']);
+        self::assertSame('replace', $preview['summary']['app_user_policy_action'] ?? '');
+        $apply = app_project_metadata_bundle_import_apply($app, $policyBundle, [
+            'requested_by' => 'phpunit',
+        ]);
+        self::assertTrue($apply['ok'], $apply['error']);
+        $replaced = app_fetch_sso_app_user_project_policy($app, $sourceKey);
+        self::assertTrue($replaced['ok'], $replaced['error']);
+        self::assertSame('jit', $replaced['item']['policy']['provisioning_mode'] ?? '');
+
+        $preservePreview = app_project_metadata_bundle_import_preview($app, $legacyBundle, [
+            'requested_by' => 'phpunit',
+        ]);
+        self::assertTrue($preservePreview['ok'], $preservePreview['error']);
+        self::assertSame('preserve', $preservePreview['summary']['app_user_policy_action'] ?? '');
+        $preserveApply = app_project_metadata_bundle_import_apply($app, $legacyBundle, [
+            'requested_by' => 'phpunit',
+        ]);
+        self::assertTrue($preserveApply['ok'], $preserveApply['error']);
+        $preserved = app_fetch_sso_app_user_project_policy($app, $sourceKey);
+        self::assertSame('jit', $preserved['item']['policy']['provisioning_mode'] ?? '');
+
+        $disable = app_upsert_sso_app_user_project_policy($app, $sourceKey, [
+            'enabled' => false,
+            'auth_mode' => '',
+            'provisioning_mode' => '',
+            'provider_key' => '',
+            'sso_profile_fields' => [],
+            'application_profile_fields' => [],
+            'user_owned_data' => [],
+            'lifecycle_custom_boundary' => [],
+        ], 'phpunit');
+        self::assertTrue($disable['ok'], $disable['error']);
+        $disabledExport = app_project_metadata_bundle_export($app, $sourceKey, [
+            'output_dir' => $disabledBundle,
+            'requested_by' => 'phpunit',
+        ]);
+        self::assertTrue($disabledExport['ok'], $disabledExport['error']);
+        $disablePreview = app_project_metadata_bundle_import_preview($app, $disabledBundle, [
+            'requested_by' => 'phpunit',
+        ]);
+        self::assertTrue($disablePreview['ok'], $disablePreview['error']);
+        self::assertSame('disable', $disablePreview['summary']['app_user_policy_action'] ?? '');
     }
 
     private function seedProjectCoreFixture(array $app, string $projectKey): void
