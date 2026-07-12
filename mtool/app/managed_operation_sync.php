@@ -55,6 +55,9 @@ function app_managed_operation_sync_intent_from_plan(array $plan, array $options
             'output_fields' => is_array($plan['output_fields'] ?? null) ? array_values($plan['output_fields']) : [],
         ],
     ];
+    if (is_array($options['actor'] ?? null)) {
+        $intent['actor'] = $options['actor'];
+    }
     $intent['dedupe_key'] = app_managed_operation_sync_intent_dedupe_key($intent);
 
     return [
@@ -91,6 +94,7 @@ function app_managed_operation_sync_intent_dedupe_key(array $intent): string
         'operation_type' => $intent['operation_type'] ?? '',
         'contract_key' => $intent['contract_key'] ?? '',
         'payload' => $intent['payload'] ?? [],
+        'actor' => $intent['actor'] ?? [],
     ], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
 
     return hash('sha256', is_string($json) ? $json : '');
