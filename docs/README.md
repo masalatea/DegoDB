@@ -19,6 +19,7 @@ top-level は外部ユーザ向け導線を優先し、内部向け文書は [In
    - [Adoption Guide / 採用ガイド](adoption-guide.md)
    - [JSON To DB Entrance / JSON から DB 設計へ入る入口](json-to-db-entrance.md) optional pre-design entrance
    - [AI Task-Packet Workflow / AI task packet ワークフロー](ai-task-packet-workflow.md)
+   - [AI Workspace Onboarding Command Guide / AI workspace onboarding command guide](ai-workspace-onboarding-command-guide.md)
    - [Sample19 Material-to-No-Code Validation Pipeline / Sample19資料to No Code validation pipeline](sample19-material-to-no-code-validation-pipeline.md)
    - [Existing DB To Output / 既存 DB から出力まで](existing-db-to-output.md)
    - [Use Cases / ユースケース](use-cases.md)
@@ -75,6 +76,8 @@ detail doc だけを読んで mainline を再構成するのは current reading 
   - 初期構想に含まれる optional pre-design entrance。JSON file / JSON API cache / JSON config から AI-readable な DB design draft を作り、DB-first mainline へ入る。runtime / generator 機能ではない
 - [AI Task-Packet Workflow / AI task packet ワークフロー](ai-task-packet-workflow.md)
   - Codex / Claude が task packet を読み、具体的確認後に candidate を作り、共通 CLI で Mtool-derived review artifact まで検証する恒久手順。Ollama は明示 optional fallback
+- [AI Workspace Onboarding Command Guide / AI workspace onboarding command guide](ai-workspace-onboarding-command-guide.md)
+  - Codex / Claude / 利用者が `mtool/scripts/init_ai_workspace.php` を使い、dry-run JSON preflight、明示承認、apply、role mapping、安全境界を迷わず扱うための恒久手順
 - [Sample19 Material-to-No-Code Validation Pipeline / Sample19資料to No Code validation pipeline](sample19-material-to-no-code-validation-pipeline.md)
   - Sample19 の schema proposal、material insight、no-code handoff、read-only runtime preview をどの関数で検証するかを示すAI/Codex/Claude向け恒久入口。Fallback local scan は補助であり、authoritative check は PHP validator/test として扱う
 - [Common Tasks / よく使う作業](common-tasks.md)
