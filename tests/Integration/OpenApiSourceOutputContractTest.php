@@ -267,6 +267,34 @@ final class OpenApiSourceOutputContractTest extends TestCase
         self::assertSame('no-store', app_no_code_public_runtime_current_cache_control());
     }
 
+    public function testGeneratedUiExecutionAuthorityIsSample18OnlyAndDefaultOff(): void
+    {
+        $previous = getenv('MTOOL_SAMPLE18_GENERATED_UI_EXECUTION_ENABLED');
+        try {
+            putenv('MTOOL_SAMPLE18_GENERATED_UI_EXECUTION_ENABLED');
+            self::assertFalse(app_no_code_public_runtime_generated_ui_execution_enabled('SAMPLE18'));
+
+            putenv('MTOOL_SAMPLE18_GENERATED_UI_EXECUTION_ENABLED=1');
+            self::assertTrue(app_no_code_public_runtime_generated_ui_execution_enabled('SAMPLE18'));
+            self::assertFalse(app_no_code_public_runtime_generated_ui_execution_enabled('SAMPLE29'));
+
+            $artifactOnly = app_no_code_public_runtime_preview_execution_binding(
+                'SAMPLE18',
+                ['artifact_key' => '20260712-010203-abcdef12', 'revision_id' => 'revision-1'],
+                null,
+                null,
+                '/runs/no-code/SAMPLE18/20260712-010203-abcdef12/action-availability.json',
+            );
+            self::assertArrayNotHasKey('execution_url', $artifactOnly);
+            self::assertArrayNotHasKey('generated_ui_execution_enabled', $artifactOnly);
+            self::assertArrayNotHasKey('generated_ui_execution_allowlist', $artifactOnly);
+        } finally {
+            $previous === false
+                ? putenv('MTOOL_SAMPLE18_GENERATED_UI_EXECUTION_ENABLED')
+                : putenv('MTOOL_SAMPLE18_GENERATED_UI_EXECUTION_ENABLED=' . $previous);
+        }
+    }
+
     public function testRuntimeDataDatetimeValuesRejectTimezoneOffsets(): void
     {
         self::assertSame(
@@ -545,6 +573,9 @@ final class OpenApiSourceOutputContractTest extends TestCase
         self::assertStringContainsString('app_no_code_public_runtime_preview_execution_binding', $publicRuntimePage);
         self::assertStringContainsString("'runtime_data_url'", $publicRuntimePage);
         self::assertStringContainsString("'action_availability_url'", $publicRuntimePage);
+        self::assertStringContainsString("'generated_ui_execution_enabled'", $publicRuntimePage);
+        self::assertStringContainsString("'generated_ui_execution_allowlist'", $publicRuntimePage);
+        self::assertStringContainsString("getenv('MTOOL_SAMPLE18_GENERATED_UI_EXECUTION_ENABLED')", $publicRuntimePage);
         self::assertStringContainsString('app_no_code_public_runtime_current_action_availability_path($projectKey)', $publicRuntimePage);
         self::assertStringContainsString('app_no_code_public_runtime_alias_action_availability_path($projectKey, $aliasKey)', $publicRuntimePage);
         self::assertStringContainsString('app_no_code_public_runtime_current_execution_path($projectKey)', $publicRuntimePage);

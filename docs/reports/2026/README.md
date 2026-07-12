@@ -11,6 +11,16 @@
 
 ## Index
 
+- `2026-0712-post-transaction-full-local-commit-stack-checkpoint.md`
+  - #745 Transaction Full後local commit-stack checkpoint。origin更新後develop比0 behind・32 aheadを確認し、重複した最終棚卸し/再auditの2 commitだけをsquashして31 semantic commitsへ整理。他は設計・実装・証跡境界として維持。Status: `DONE`。
+- `2026-0712-mtool-self-transaction-full-gap-only-audit.md`
+  - #744 Mtool本体Transaction Full gap限定audit。31 write-text files・172 transaction call sitesを棚卸しし、主要複合pathは既存transaction済み、残候補は経路単一write・排他的upsert・生成SQL・cross-store recovery domainと確認。同一DB atomicityの具体gapなし。Status: `DONE_NO_GAP`。
+- `2026-0712-transaction-full-overall-completion-inventory.md`
+  - #743 Transaction Full全体完了棚卸し。同一DBのgenerated DBAccess複合処理について、単一shared transaction、必須1件失敗時全rollback、全成功時一括commitをPDO・mysqli、Sample14、Sample18証跡で完了判定。残りはMtool本体gap-only audit。Status: `DONE`。
+- `2026-0712-post-authenticated-ui-authority-integration-lane-closure.md`
+  - #742 認証済生成UI権限integration後lane closure。Sample18 createのfast/current/alias/real HTTP証跡を確認し、default-offのままlaneを完了。追加actionは個別field・allowlist・transaction証跡までpark。Status: `DONE`。
+- `2026-0712-authenticated-current-alias-ui-authority-integration.md`
+  - #741 Sample18 authenticated current/alias UI authority integration。明示gateとlive認証済availabilityを通したcurrent・alias previewでcreateのstub guarded POSTを各1回、allowlist外completeを0回と実証。real commit/rollbackは独立HTTP smokeで維持。Status: `DONE`。
 - `2026-0711-generated-custom-proxy-transaction-mutation-fixture.md`
   - #716 generated Custom Proxy transaction mutation fixture。2個の通常DBAccess insert stepをgenerated endpointで実行し、成功時は両commit・insert ID応答、2 step目duplicate failure時は1 step目もrollback・NG応答となることを実DB状態まで検証。Status: `FIRST_SLICE_DONE`。
 - `2026-0711-generated-custom-proxy-transaction-wrapper-integration.md`

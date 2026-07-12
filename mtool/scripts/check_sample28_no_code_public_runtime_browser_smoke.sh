@@ -116,7 +116,21 @@ bash "$REPO_ROOT/mtool/scripts/apply_config_sample_seed.sh" \
   "--compose-file=${SAMPLE_PACK_DIR}/compose.yaml" \
   "${SAMPLE_PACK_DIR}/seed"
 
-"${compose_cmd[@]}" exec -T -e MTOOL_GENERATED_NAME_POLICY=physical-logical-v1 web-admin phpunit \
+phpunit_env=(-e MTOOL_GENERATED_NAME_POLICY=physical-logical-v1)
+phpunit_command=(phpunit)
+if [ "$SAMPLE_PROFILE" = "sample18" ] && [ "$RUNTIME_ENABLED_CANDIDATE_SURFACE" = "1" ]; then
+  phpunit_command=(
+    env
+    -u MTOOL_NO_CODE_SERVER_AVAILABILITY_OVERLAY
+    -u MTOOL_NO_CODE_TRANSACTION_FULL_GATE
+    -u MTOOL_SAMPLE18_GENERATED_UI_EXECUTION_ENABLED
+    -u MTOOL_SAMPLE18_GENERATED_SUBMIT_MUTATION_ENABLED
+    -u MTOOL_SAMPLE18_GENERATED_SUBMIT_EXECUTOR_ENABLED
+    phpunit
+  )
+fi
+
+"${compose_cmd[@]}" exec -T "${phpunit_env[@]}" web-admin "${phpunit_command[@]}" \
   --configuration /var/www/tests/phpunit.xml \
   "$SAMPLE_INTEGRATION_TEST"
 
@@ -167,13 +181,29 @@ if [ "$RUNTIME_FILTER_DOM_ONLY" = "1" ]; then
 fi
 
 if [ "$RUNTIME_ENABLED_CANDIDATE_SURFACE" = "1" ]; then
+  ui_authority_args=()
+  if [ "$SAMPLE_PROFILE" = "sample18" ]; then
+    ui_authority_args+=(--runtime-ui-authority-stub-probe)
+  fi
   node mtool/scripts/check_no_code_runtime_preview_ui_smoke.js \
     "--profile=${SAMPLE_PROFILE}" \
     "--url=${BASE_URL}${current_path}" \
     --execution-binding=required \
     --execution-url-contains=/current/execute.json \
     --runtime-enabled-candidate-surface \
+    "${ui_authority_args[@]}" \
     "--output-dir=${SMOKE_OUTPUT_DIR}"
+
+  if [ "$SAMPLE_PROFILE" = "sample18" ]; then
+    node mtool/scripts/check_no_code_runtime_preview_ui_smoke.js \
+      "--profile=${SAMPLE_PROFILE}" \
+      "--url=${BASE_URL}${alias_path}" \
+      --execution-binding=required \
+      "--execution-url-contains=/alias/${ALIAS_KEY}/execute.json" \
+      --runtime-enabled-candidate-surface \
+      --runtime-ui-authority-stub-probe \
+      "--output-dir=${SMOKE_OUTPUT_DIR}"
+  fi
 
   printf '%s\n' "$public_json"
   exit 0

@@ -1354,6 +1354,7 @@ function app_no_code_runtime_preview_js(): string
   }
   var executionBindingElement = document.getElementById('no-code-runtime-execution-binding');
   var executionBinding = {};
+  var serverAvailableActionKeys = {};
   try {
     executionBinding = executionBindingElement ? JSON.parse(executionBindingElement.textContent || '{}') : {};
   } catch (error) {
@@ -1430,6 +1431,7 @@ function app_no_code_runtime_preview_js(): string
           return;
         }
         var state = action.availability === 'enabled' ? 'enabled' : 'disabled';
+        serverAvailableActionKeys[actionKey] = state === 'enabled';
         var failedChecks = Array.isArray(action.failed_checks) ? action.failed_checks : [];
         var message = 'Server availability: ' + state + (failedChecks.length ? ' (' + failedChecks.join(', ') + ')' : '');
         writeServerActionAvailabilityDiagnostic(actionKey, state, message);
@@ -3738,6 +3740,10 @@ function app_no_code_runtime_preview_js(): string
 
   function isGuardedSubmitButton(button) {
     return button
+      && executionBinding.generated_ui_execution_enabled === true
+      && Array.isArray(executionBinding.generated_ui_execution_allowlist)
+      && executionBinding.generated_ui_execution_allowlist.indexOf(button.getAttribute('data-action-key') || '') !== -1
+      && serverAvailableActionKeys[button.getAttribute('data-action-key') || ''] === true
       && button.getAttribute('data-action-submit-trigger') === 'guarded_click'
       && button.getAttribute('data-action-network-submit-enabled') === 'true'
       && button.getAttribute('data-action-click-binding-state') === 'blocked_route_enabled'

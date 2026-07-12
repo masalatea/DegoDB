@@ -814,6 +814,14 @@ function app_lab_sample18_task_board_generated_submit_runtime_reference_config(a
         ];
     }
 
+    $referenceDir = trim((string) getenv('MTOOL_SAMPLE18_GENERATED_SUBMIT_RUNTIME_REFERENCE_DIR'));
+    if ($referenceDir !== '') {
+        return [
+            'reference_dir' => $referenceDir,
+            'source' => 'env',
+        ];
+    }
+
     return [
         'reference_dir' => $root . '/sample/tutorials/sample18-mini-task-board-demo/reference',
         'source' => 'default',

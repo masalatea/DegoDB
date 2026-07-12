@@ -353,6 +353,10 @@ final class NoCodeRuntimeTest extends TestCase
         self::assertStringContainsString('Sync outbox is done. Fetching read-only live runtime data...', $html);
         self::assertStringContainsString('function runtimeDataBindingUrl()', $html);
         self::assertStringContainsString('function actionAvailabilityBindingUrl()', $html);
+        self::assertStringContainsString('var serverAvailableActionKeys = {};', $html);
+        self::assertStringContainsString('executionBinding.generated_ui_execution_enabled === true', $html);
+        self::assertStringContainsString('executionBinding.generated_ui_execution_allowlist.indexOf', $html);
+        self::assertStringContainsString("serverAvailableActionKeys[button.getAttribute('data-action-key') || ''] === true", $html);
         self::assertStringContainsString('function loadServerActionAvailabilityDiagnostics()', $html);
         self::assertStringContainsString('function writeServerActionAvailabilityDiagnostic(actionKey, state, message)', $html);
         self::assertStringContainsString("payload.contract_version === 'server-action-availability-v1'", $html);

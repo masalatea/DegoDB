@@ -452,6 +452,10 @@ function run_smoke(array $args): array
     ];
 }
 
+if (defined('MTOOL_SAMPLE18_HTTP_SMOKE_LIBRARY_ONLY')) {
+    return;
+}
+
 try {
     $args = parse_args($argv);
     $result = run_smoke($args);

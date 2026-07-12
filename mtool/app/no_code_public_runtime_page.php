@@ -156,6 +156,16 @@ function app_no_code_public_runtime_demo_processing_enabled(): bool
     return $sqlitePath !== '';
 }
 
+function app_no_code_public_runtime_generated_ui_execution_enabled(string $projectKey): bool
+{
+    return app_normalize_project_key($projectKey) === 'SAMPLE18'
+        && in_array(
+            strtolower(trim((string) getenv('MTOOL_SAMPLE18_GENERATED_UI_EXECUTION_ENABLED'))),
+            ['1', 'true', 'yes', 'on'],
+            true,
+        );
+}
+
 /**
  * @param array<string,mixed> $post
  */
@@ -1691,6 +1701,8 @@ function app_no_code_public_runtime_preview_execution_binding(
         ];
     if ($executionPath !== null && $executionPath !== '') {
         $binding['execution_url'] = $executionPath;
+        $binding['generated_ui_execution_enabled'] = app_no_code_public_runtime_generated_ui_execution_enabled($projectKey);
+        $binding['generated_ui_execution_allowlist'] = ['create_task_card'];
     }
     if ($dataPath !== null && $dataPath !== '') {
         $binding['runtime_data_url'] = $dataPath;

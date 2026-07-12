@@ -26,6 +26,8 @@ Options:
   --runtime-filter-dom-only      stop after checking public runtime filter controls
   --runtime-enabled-candidate-surface
                                  stop after checking enabled-candidate managed action surface
+  --runtime-ui-authority-stub-probe
+                                 authenticate, require live create availability, and stub one guarded POST
   --admin-user=USER              admin login user for enabled-real-fetch
   --admin-password=PASS          admin login password for enabled-real-fetch
   --output-dir=PATH              artifact directory root (default: output/playwright/no-code-runtime-preview)
@@ -52,6 +54,7 @@ function parseArgs(argv) {
     statusProbe: 'real',
     runtimeFilterDomOnly: false,
     runtimeEnabledCandidateSurface: false,
+    runtimeUiAuthorityStubProbe: false,
     adminUser: process.env.ADMIN_AUTH_STUB_USER || 'admin-local',
     adminPassword: process.env.ADMIN_AUTH_STUB_PASSWORD || 'change-this-admin-password',
     expected: expectedProfile('sample07'),
@@ -76,6 +79,10 @@ function parseArgs(argv) {
     }
     if (argument === '--runtime-enabled-candidate-surface') {
       config.runtimeEnabledCandidateSurface = true;
+      continue;
+    }
+    if (argument === '--runtime-ui-authority-stub-probe') {
+      config.runtimeUiAuthorityStubProbe = true;
       continue;
     }
     if (!argument.startsWith('--') || !argument.includes('=')) {
@@ -738,7 +745,8 @@ async function probeRuntimeEnabledCandidateSurface(page, config) {
       credentials: '',
       entries: [],
     };
-    window.fetch = async (url, options = {}) => {
+    if (!expected.skipLegacyGuardedClickProbe) {
+      window.fetch = async (url, options = {}) => {
       const method = String(options.method || 'GET');
       if (String(url).includes(expected.managedActionSubmitUrl || '/no-code/generated-submit')) {
         const entries = [];
@@ -765,11 +773,12 @@ async function probeRuntimeEnabledCandidateSurface(page, config) {
           }),
         };
       }
-      return nativeFetch(url, options);
-    };
+        return nativeFetch(url, options);
+      };
+    }
 
     const createButton = buttons.find((button) => button.getAttribute('data-action-key') === 'create_task_card') || buttons[0] || null;
-    if (createButton) {
+    if (createButton && !expected.skipLegacyGuardedClickProbe) {
       createButton.click();
       for (let attempt = 0; attempt < 50; attempt += 1) {
         const state = createButton.getAttribute('data-action-state') || '';
@@ -816,7 +825,7 @@ async function probeRuntimeEnabledCandidateSurface(page, config) {
       } : null,
       submitProbe: window.__noCodeRuntimeEnabledCandidateSubmitProbe || {},
     };
-  }, config.expected);
+  }, { ...config.expected, skipLegacyGuardedClickProbe: config.runtimeUiAuthorityStubProbe });
 
   if (JSON.stringify(result.keys) !== JSON.stringify(expectedKeys)) {
     throw new Error(`enabled candidate managed action keys mismatch: ${JSON.stringify(result)}`);
@@ -846,15 +855,15 @@ async function probeRuntimeEnabledCandidateSurface(page, config) {
     || !result.guardedClickProbe
     || result.guardedClickProbe.key !== 'create_task_card'
     || result.guardedClickProbe.disabled !== false
-    || result.guardedClickProbe.lastSubmitResult !== 'blocked'
-    || result.guardedClickProbe.lastFailureCode !== config.expected.managedActionFailClosedResult
-    || result.guardedClickProbe.feedbackState !== 'blocked'
-    || result.guardedClickProbe.feedbackResult !== 'blocked'
-    || result.guardedClickProbe.feedbackFailureCode !== config.expected.managedActionFailClosedResult
-    || !result.guardedClickProbe.feedbackText.includes(config.expected.managedActionFailClosedResult)
-    || !result.submitProbe.fetchCalled
-    || result.submitProbe.method !== 'POST'
-    || result.submitProbe.credentials !== 'same-origin'
+    || (!config.runtimeUiAuthorityStubProbe && result.guardedClickProbe.lastSubmitResult !== 'blocked')
+    || (!config.runtimeUiAuthorityStubProbe && result.guardedClickProbe.lastFailureCode !== config.expected.managedActionFailClosedResult)
+    || (!config.runtimeUiAuthorityStubProbe && result.guardedClickProbe.feedbackState !== 'blocked')
+    || (!config.runtimeUiAuthorityStubProbe && result.guardedClickProbe.feedbackResult !== 'blocked')
+    || (!config.runtimeUiAuthorityStubProbe && result.guardedClickProbe.feedbackFailureCode !== config.expected.managedActionFailClosedResult)
+    || (!config.runtimeUiAuthorityStubProbe && !result.guardedClickProbe.feedbackText.includes(config.expected.managedActionFailClosedResult))
+    || (!config.runtimeUiAuthorityStubProbe && !result.submitProbe.fetchCalled)
+    || (!config.runtimeUiAuthorityStubProbe && result.submitProbe.method !== 'POST')
+    || (!config.runtimeUiAuthorityStubProbe && result.submitProbe.credentials !== 'same-origin')
   ) {
     throw new Error(`enabled candidate managed action surface mismatch: ${JSON.stringify(result)}`);
   }
@@ -1244,7 +1253,18 @@ async function runSmoke(config) {
   try {
     const page = await browser.newPage({ viewport: { width: 1280, height: 900 } });
     const targetUrl = config.url !== '' ? config.url : `file://${config.htmlPath}`;
-    if (config.submitProbe === 'enabled-real-fetch') {
+    const guardedSubmitRequests = [];
+    if (config.runtimeUiAuthorityStubProbe) {
+      await page.route('**/samples/sample18-task-board/no-code/generated-submit', async (route) => {
+        guardedSubmitRequests.push({ method: route.request().method(), url: route.request().url() });
+        await route.fulfill({
+          status: 200,
+          contentType: 'application/json',
+          body: JSON.stringify({ ok: true, result: 'executed', transaction_result: { transaction_status: 'committed' } }),
+        });
+      });
+    }
+    if (config.submitProbe === 'enabled-real-fetch' || config.runtimeUiAuthorityStubProbe) {
       if (!targetUrl.startsWith('http://') && !targetUrl.startsWith('https://')) {
         throw new Error('enabled-real-fetch requires an HTTP URL.');
       }
@@ -1283,6 +1303,26 @@ async function runSmoke(config) {
 
     if (config.runtimeEnabledCandidateSurface) {
       const runtimeEnabledCandidateSurfaceProbe = await probeRuntimeEnabledCandidateSurface(page, config);
+      let runtimeUiAuthorityProbe = { skipped: true };
+      if (config.runtimeUiAuthorityStubProbe) {
+        const createControl = page.locator('[data-action-control="create_task_card"]').first();
+        await createControl.locator('[data-server-action-availability-diagnostic]').waitFor({ state: 'visible' });
+        const diagnostic = await createControl.locator('[data-server-action-availability-diagnostic]').textContent();
+        if (diagnostic !== 'Server availability: enabled') {
+          throw new Error(`live create availability was not enabled: ${diagnostic}`);
+        }
+        await createControl.locator('button[data-action-key="create_task_card"]').click();
+        await page.waitForTimeout(100);
+        if (guardedSubmitRequests.length !== 1 || guardedSubmitRequests[0].method !== 'POST') {
+          throw new Error(`live UI authority did not issue exactly one stubbed POST: ${JSON.stringify(guardedSubmitRequests)}`);
+        }
+        await page.locator('button[data-action-key="complete_task_card"]').first().click();
+        await page.waitForTimeout(50);
+        if (guardedSubmitRequests.length !== 1) {
+          throw new Error('excluded complete action issued an additional POST');
+        }
+        runtimeUiAuthorityProbe = { skipped: false, create_availability: 'enabled', guarded_post_count: 1, excluded_complete_post_count: 0 };
+      }
       await page.screenshot({ path: screenshotPath, fullPage: true });
       await page.setViewportSize({ width: 390, height: 844 });
       await page.goto(targetUrl, { waitUntil: 'load' });
@@ -1294,6 +1334,7 @@ async function runSmoke(config) {
         profile: config.expected.profile,
         runtime_enabled_candidate_surface: true,
         runtime_enabled_candidate_surface_probe: runtimeEnabledCandidateSurfaceProbe,
+        runtime_ui_authority_probe: runtimeUiAuthorityProbe,
         mobile_runtime_enabled_candidate_surface_probe: mobileRuntimeEnabledCandidateSurfaceProbe,
         screenshot: screenshotPath,
         mobile_screenshot: mobileScreenshotPath,

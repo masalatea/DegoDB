@@ -38,19 +38,20 @@ function chromePath() {
   return candidates.find((candidate) => candidate && fs.existsSync(candidate)) || '';
 }
 
-function bindingScript() {
+function bindingScript(overrides = {}) {
   return `<script type="application/json" id="no-code-runtime-execution-binding">${JSON.stringify({
     project_key: 'SAMPLE18',
     artifact_key: artifactKey,
     revision_id: 'smoke-revision',
     action_availability_url: availabilityUrl,
+    ...overrides,
   })}</script>`;
 }
 
-function injectBinding(html) {
+function injectBinding(html, overrides = {}) {
   return html.includes('<script>')
-    ? html.replace('<script>', `${bindingScript()}\n<script>`)
-    : html.replace('</body>', `${bindingScript()}\n</body>`);
+    ? html.replace('<script>', `${bindingScript(overrides)}\n<script>`)
+    : html.replace('</body>', `${bindingScript(overrides)}\n</body>`);
 }
 
 async function controlState(page, actionKey) {
@@ -76,7 +77,8 @@ async function main() {
   const page = await browser.newPage();
   const requests = [];
   page.on('request', (request) => requests.push({ method: request.method(), url: request.url() }));
-  const html = injectBinding(fs.readFileSync(htmlPath, 'utf8'));
+  const sourceHtml = fs.readFileSync(htmlPath, 'utf8');
+  let servedHtml = injectBinding(sourceHtml);
   const availabilityPayload = (overrides = {}) => ({
     ok: true,
     contract_version: 'server-action-availability-v1',
@@ -88,7 +90,7 @@ async function main() {
   });
   const fulfillJson = (payload) => (route) => route.fulfill({ status: 200, contentType: 'application/json', body: JSON.stringify(payload) });
 
-  await page.route(previewUrl, (route) => route.fulfill({ status: 200, contentType: 'text/html', body: html }));
+  await page.route(previewUrl, (route) => route.fulfill({ status: 200, contentType: 'text/html', body: servedHtml }));
   await page.route(availabilityUrl, fulfillJson(availabilityPayload()));
 
   await page.goto(previewUrl, { waitUntil: 'domcontentloaded' });
@@ -102,6 +104,8 @@ async function main() {
   if (JSON.stringify(before) !== JSON.stringify(after)) {
     throw new Error(`availability diagnostics changed control state: ${JSON.stringify({ before, after })}`);
   }
+  await page.locator('button[data-action-key="create_task_card"]').first().click();
+  await page.waitForTimeout(50);
 
   await page.unroute(availabilityUrl);
   await page.route(availabilityUrl, fulfillJson(availabilityPayload({
@@ -112,6 +116,8 @@ async function main() {
   if (!(await page.locator('[data-action-control="create_task_card"] [data-server-action-availability-diagnostic]').first().textContent()).includes('authorization_not_allowed')) {
     throw new Error('authorization-denied diagnostic was not rendered');
   }
+  await page.locator('button[data-action-key="create_task_card"]').first().click();
+  await page.waitForTimeout(50);
 
   await page.unroute(availabilityUrl);
   await page.route(availabilityUrl, fulfillJson(availabilityPayload({
@@ -122,6 +128,8 @@ async function main() {
   if ((await page.locator('[data-server-action-availability-diagnostic]').first().textContent()) !== 'Server availability: stale preview; refresh required.') {
     throw new Error('stale diagnostic was not rendered');
   }
+  await page.locator('button[data-action-key="create_task_card"]').first().click();
+  await page.waitForTimeout(50);
 
   await page.unroute(availabilityUrl);
   await page.route(availabilityUrl, (route) => route.fulfill({ status: 401, contentType: 'text/html', body: '<p>login required</p>' }));
@@ -134,6 +142,8 @@ async function main() {
   if (JSON.stringify(before) !== JSON.stringify(finalState)) {
     throw new Error(`failure diagnostics changed control state: ${JSON.stringify({ before, finalState })}`);
   }
+  await page.locator('button[data-action-key="create_task_card"]').first().click();
+  await page.waitForTimeout(50);
   if (!requests.some((request) => request.url === availabilityUrl && request.method === 'GET')) {
     throw new Error(`availability GET was not observed: ${JSON.stringify(requests)}`);
   }
@@ -141,8 +151,41 @@ async function main() {
     throw new Error(`availability diagnostics unexpectedly issued POST: ${JSON.stringify(requests)}`);
   }
 
+  const submitUrl = 'https://preview.test/samples/sample18-task-board/no-code/generated-submit';
+  servedHtml = injectBinding(sourceHtml, {
+    csrf_token: 'ui-authority-smoke-csrf',
+    execution_url: 'https://preview.test/current/execute.json',
+    generated_ui_execution_enabled: true,
+    generated_ui_execution_allowlist: ['create_task_card'],
+  });
+  await page.unroute(availabilityUrl);
+  await page.route(availabilityUrl, fulfillJson(availabilityPayload({
+    actions: [
+      { action_key: 'create_task_card', availability: 'enabled', failed_checks: [] },
+      { action_key: 'complete_task_card', availability: 'enabled', failed_checks: [] },
+    ],
+  })));
+  await page.route(submitUrl, (route) => route.fulfill({
+    status: 200,
+    contentType: 'application/json',
+    body: JSON.stringify({ ok: true, result: 'executed', transaction_result: { transaction_status: 'committed' } }),
+  }));
+  await page.reload({ waitUntil: 'domcontentloaded' });
+  await page.locator('[data-action-control="create_task_card"] [data-server-action-availability-diagnostic]').first().waitFor();
+  await page.locator('button[data-action-key="create_task_card"]').first().click();
+  await page.waitForTimeout(100);
+  const postAfterCreate = requests.filter((request) => request.method === 'POST');
+  if (postAfterCreate.length !== 1 || postAfterCreate[0].url !== submitUrl) {
+    throw new Error(`all-gates create did not issue exactly one guarded POST: ${JSON.stringify(postAfterCreate)}`);
+  }
+  await page.locator('button[data-action-key="complete_task_card"]').first().click();
+  await page.waitForTimeout(50);
+  if (requests.filter((request) => request.method === 'POST').length !== 1) {
+    throw new Error('excluded complete action unexpectedly issued guarded POST');
+  }
+
   await browser.close();
-  process.stdout.write(`${JSON.stringify({ ok: true, scenarios: ['enabled', 'denied', 'stale', 'unavailable'], availability_get: true, post_count: 0, control_unchanged: true })}\n`);
+  process.stdout.write(`${JSON.stringify({ ok: true, scenarios: ['ui-flag-off', 'denied', 'stale', 'unavailable', 'all-gates-create', 'excluded-complete'], availability_get: true, guarded_post_count: 1, control_unchanged_without_authority: true })}\n`);
 }
 
 main().catch((error) => {
