@@ -11,6 +11,14 @@
 
 ## Index
 
+- `2026-0712-live-mtool-inspection-http-browser-promotion.md`
+  - #758 live Mtool inspection HTTP/browser昇格。実admin stackでlogin redirect、認証後flag-off 404、flag-on 29 live rows、`OPENAPI-JSON` exact selection、enabled/runtime/form controlゼロ、canonical return、Apache log上inspection POSTゼロを確認。Compose switch passthroughを補完し、検証後stackをdefault-offへ復元。G-L3達成。Full suite 431 tests / 13,918 assertions。Status: `DONE_QUALIFIED`。
+- `2026-0712-live-mtool-source-output-inspection-first-implementation.md`
+  - #757 live Mtool Source Output inspection初回実装。default-off・認証必須・GET-onlyのMTOOL専用parallel routeを追加し、実Source Output catalogを1回read、宣言済み7 fieldだけをmap、generated list/detailをform・execution bindingなしでrender。empty/unknown/error fail-closedとcanonical return linkをfast coverageで固定。Full suite 430 tests / 13,916 assertions。Status: `FIRST_SLICE_DONE`。
+- `2026-0712-live-mtool-source-output-inspection-preflight.md`
+  - #756 live Mtool Source Output inspection preflight。`GET /projects/MTOOL/source-outputs/no-code-inspection`、既存admin/config＋publisher authorization、default-off `MTOOL_NO_CODE_SELF_INSPECTION_ENABLED`、catalog 1回read、宣言済み7 field map、list/detail限定render、form/action実行なし、disabled/non-MTOOL/error fail-closed、fast test matrixを実装前に固定。Status: `DONE`。
+- `2026-0712-mtool-contained-dogfooding-workflow-candidate-inventory.md`
+  - #755 Mtool限定dogfooding workflow候補棚卸し。既存MTOOL Source Output dogfooding contractを実repository dataへ接続するparallel・default-off・read-only inspectionを最初のG-L3候補に選定。review request、schema/DBAccess mutation、build/publishは複数write・外部side effectのため後段へ送り、route disable/removeだけでrollbackできる境界を採用。Status: `DONE`。
 - `2026-0712-sample29-second-sample-qualification-closure.md`
   - #754 Sample29第2 sample qualification closure。#749の唯一gapだったproduction-shaped UI authorityが#753までで解消されたことをchecklist全項目で確認し、`update_support_case`を明示的除外付きbounded L1として認定。異なるdomain・managed outbox executionでも共通screen/schema/action/authority/test contractを再利用でき、G-L2達成。Status: `DONE_QUALIFIED_WITH_EXCLUSIONS`。
 - `2026-0712-sample29-live-ui-authority-browser-integration.md`
