@@ -11,6 +11,20 @@
 
 ## Index
 
+- `2026-0712-sample19-schema-guided-prompt-v1-local-proof.md`
+  - #773 schema-guided prompt v1 local proof。attempt 1は旧9 errorからrelationship target entity 2 errorへ改善、corrective retryでproposal structure/reference/evidenceは全通過し、残りは`declared_canonical_diff_mismatch` 1件のみ。独立diffは3 unchanged＋public summary removeを導出したがmodel宣言が不完全。reject維持・3回目なし。Status: `DONE_REJECTED_ONE_GAP`。
+- `2026-0712-sample19-schema-guided-prompt-v1-offline-foundation.md`
+  - #772 Sample19 schema-guided prompt v1 offline基盤。generic compact nested shapeをpromptへ埋め込み、entity fields/keys/evidence、relationship endpoint、lifecycle、canonical diff exact keysを明示。shape hash・required-path fail closed・Sample19 golden entity名非包含をtest。Full suite 455 tests / 14,067 assertions。AI callなし。Status: `FIRST_SLICE_DONE`。
+- `2026-0712-sample19-local-model-prompt-schema-reinforcement-preflight.md`
+  - #771 Sample19 local model向けprompt/schema補強preflight。2 attemptともcanonical comparison shapeをproposal shapeとしてコピーしたことを特定。nested output contract不足が同じ9 error反復の原因で、回答値を含まないgeneric compact shape schema、evidence/relationship/diff exact keys、新prompt versionとoffline completeness testを次単位に確定。Status: `DONE_ONE_GAP`。
+- `2026-0712-sample19-local-ai-generation-first-proof.md`
+  - #769-#770 Sample19 local AI生成first proof。Ollama `qwen2.5-coder:7b`へ固定synthetic contextだけをlocalhost送信し、credential・外部送信・mutationなしで初回＋corrective retry 1回を実行。両responseはentity/relationship/diff evidence・referenceの同じ9 errorでfail closed rejectされ、reviewへ昇格せずG-L4継続。Status: `DONE_REJECTED`。
+- `2026-0712-sample19-offline-ai-response-acceptance-foundation.md`
+  - #768 Sample19 offline AI response acceptance基盤。注入response bytesと明示run metadataからimmutable attempt hashを記録し、proposal/source/AI provenance/独立canonical diff一致時だけread-only reviewへaccept。unsafe・偽provenance・source/diff/run mismatchはrepairせずreject。Full suite 454 tests / 14,061 assertions。Status: `FIRST_SLICE_DONE`。
+- `2026-0712-sample19-offline-ai-request-envelope-foundation.md`
+  - #767 Sample19 offline AI request-envelope基盤。versioned prompt、固定synthetic sourceとcanonical context、template/final/source/canonical SHA-256、明示zero-network/credential/persistence/mutation/apply metadataを決定的に構築。provider/model/clientなし。Full suite 451 tests / 14,039 assertions。Status: `FIRST_SLICE_DONE`。
+- `2026-0712-sample19-ai-proposal-production-preflight.md`
+  - #766 Sample19 AI proposal生成preflight。一般用途AI provider/modelの承認済み設定がないことを確認し、固定synthetic source、prompt/source hash、truthful provenance、structured-output acceptance、最大1 corrective retry、semantic golden比較、zero-mutation proofを確定。次は外部送信なしのoffline request-envelope基盤。Status: `DONE`。
 - `2026-0712-schema-proposal-review-http-browser-promotion.md`
   - #765 schema proposal review HTTP/browser昇格。Sample19専用実stackでlogin redirect、flag-on review page、verified source/provenance、entity/evidence 4件、derived unchanged 4件、question/assumption、canonical returnを確認。form/button/script/execution/applyゼロ、Apache上review POSTゼロ、検証後default-off復元。fixtureはnot AI-authoredのためG-L4は実AI生成proof 1 gapを残す。Status: `DONE_ONE_GAP`。
 - `2026-0712-schema-proposal-read-only-review-ui-first-implementation.md`
