@@ -11,6 +11,10 @@
 
 ## Index
 
+- `2026-0712-sample18-l1-no-code-qualification.md`
+  - #747 Sample18 L1 No Code qualification。list/detail/form・filter・selected-rowと、明示default-off create actionのcurrent/alias authority・real commit/rollback証跡により、最初のbounded L1 entryとしてB8・G-L1を達成。full CRUD・hand-coded route置換は対象外。Status: `DONE_QUALIFIED`。
+- `2026-0712-post-transaction-full-next-main-plan-selection.md`
+  - #746 Transaction Full後の次主計画選定。park済み広範projectを再開せず、bridge B8・roadmap G-L1に対するSample18 L1 No Code qualification棚卸しを#747へ昇格。Status: `DONE`。
 - `2026-0712-post-transaction-full-local-commit-stack-checkpoint.md`
   - #745 Transaction Full後local commit-stack checkpoint。origin更新後develop比0 behind・32 aheadを確認し、重複した最終棚卸し/再auditの2 commitだけをsquashして31 semantic commitsへ整理。他は設計・実装・証跡境界として維持。Status: `DONE`。
 - `2026-0712-mtool-self-transaction-full-gap-only-audit.md`
