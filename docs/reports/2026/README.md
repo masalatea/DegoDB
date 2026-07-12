@@ -11,6 +11,8 @@
 
 ## Index
 
+- `2026-0712-full-plan-inventory-semantic-squash.md`
+  - #787 全計画棚卸し・semantic squash。Transaction FullのDB内feasibility blockerなし、DB外副作用はapplication責任、G-L1〜G-L4達成・G-L5と補助lane parkを確認。未push stackをtree一致のまま69件から9 semantic commitへ整理し、backup維持・pushなし。Status: `DONE`。
 - `2026-0712-post-g-l4-local-commit-stack-checkpoint.md`
   - #786 G-L4後local commit stack checkpoint。origin更新後develop比0 behind・71 aheadを確認。広範squashはせず、連続した#783 closure・#784 guide・#785 parkだけを1 semantic commitへ統合し69 ahead。full suite 464 tests / 14,136 assertions、worktree clean、pushなし。Status: `DONE`。
 - `2026-0712-post-g-l4-roadmap-checkpoint.md`
