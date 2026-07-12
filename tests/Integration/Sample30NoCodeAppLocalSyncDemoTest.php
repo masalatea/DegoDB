@@ -40,7 +40,11 @@ final class Sample30NoCodeAppLocalSyncDemoTest extends TestCase
         self::assertSame([], $result['assertion_errors']);
         self::assertSame('sync_task', $result['steps']['screen_definition']['contract_key'] ?? '');
         self::assertSame('update_sync_task', $result['steps']['screen_definition']['action_key'] ?? '');
+        self::assertSame('sample30-editor-subject', $result['steps']['app_local_identity']['identity']['subject'] ?? '');
+        self::assertSame('sample30-local-device', $result['steps']['app_local_identity']['identity']['device_id'] ?? '');
+        self::assertTrue($result['steps']['app_local_identity']['credentials_excluded'] ?? false);
         self::assertSame('managed-operation-sync-intent-v0', $result['steps']['dispatch']['result']['sync_intent']['intent_version'] ?? '');
+        self::assertSame('sample30-editor-subject', $result['steps']['dispatch']['result']['sync_intent']['actor']['subject'] ?? '');
         self::assertSame('done', $result['steps']['outbox_process']['outcome'] ?? '');
         self::assertSame('ready_for_sync', $result['steps']['local_read_after_sync']['dto']['status'] ?? '');
         self::assertSame('processed', $result['steps']['sync_handoff_visibility']['app_local']['handoff_state'] ?? '');
@@ -50,6 +54,11 @@ final class Sample30NoCodeAppLocalSyncDemoTest extends TestCase
         self::assertSame('Updatesync_task', $result['steps']['server_outbox_process']['handler_result']['method_name'] ?? '');
         self::assertSame('synced_to_server', $result['steps']['server_read_after_sync']['row']['status'] ?? '');
         self::assertSame('processed', $result['steps']['sync_handoff_visibility']['server']['handoff_state'] ?? '');
+        self::assertSame('sample30-editor-subject', $result['steps']['sync_handoff_visibility']['server']['actor_subject'] ?? '');
+        self::assertSame(
+            $result['steps']['app_local_identity']['local_user_id'] ?? '',
+            $result['steps']['sync_handoff_visibility']['server']['actor_local_user_id'] ?? '',
+        );
         self::assertTrue($result['steps']['sync_handoff_visibility']['server']['title_preserved'] ?? false);
         self::assertTrue($result['steps']['sync_handoff_visibility']['runtime_artifact']['list_sync_status_hint'] ?? false);
         self::assertTrue($result['steps']['sync_handoff_visibility']['runtime_artifact']['detail_sync_status_hint'] ?? false);

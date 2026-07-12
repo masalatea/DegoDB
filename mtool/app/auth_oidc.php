@@ -306,7 +306,10 @@ function app_auth_oidc_verify_id_token(array $app, string $jwksUri, string $idTo
  * @param array<string,mixed> $claims
  * @return array{
  *     id:string,
+ *     issuer:string,
+ *     subject:string,
  *     display_name:string,
+ *     email:string,
  *     roles:list<string>,
  *     project_roles:array<string,list<string>>,
  *     auth_source:string,
@@ -321,13 +324,18 @@ function app_auth_oidc_principal_from_claims(array $app, array $claims): array
     }
 
     $displayName = trim((string) ($claims['name'] ?? $claims['preferred_username'] ?? $claims['email'] ?? $id));
+    $issuer = rtrim(trim((string) ($claims['iss'] ?? $app['auth']['oidc']['issuer'] ?? '')), '/');
+    $email = trim((string) ($claims['email'] ?? ''));
     $groups = app_auth_oidc_claim_values($claims[$app['auth']['oidc']['groups_claim']] ?? []);
     $roles = app_auth_oidc_roles_from_groups($app, $groups);
     $projectRoles = app_auth_oidc_project_roles_from_groups($app, $groups);
 
     return [
         'id' => $id,
+        'issuer' => $issuer,
+        'subject' => $id,
         'display_name' => $displayName !== '' ? $displayName : $id,
+        'email' => $email,
         'roles' => $roles,
         'project_roles' => $projectRoles,
         'auth_source' => 'oidc',

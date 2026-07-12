@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 require_once dirname(__DIR__, 2) . '/mtool/app/auth_oidc.php';
+require_once dirname(__DIR__, 2) . '/mtool/app/app_local_user_identity.php';
 
 use PHPUnit\Framework\TestCase;
 
@@ -34,8 +35,10 @@ final class OidcAuthContractTest extends TestCase
     public function testOidcClaimsProducePrincipalWithMappedRoles(): void
     {
         $principal = app_auth_oidc_principal_from_claims($this->oidcApp(), [
+            'iss' => 'https://idp.example.test',
             'sub' => 'user-123',
             'name' => 'Editor User',
+            'email' => 'editor@example.test',
             'groups' => [
                 'dego-editor',
                 'dego-publisher',
@@ -45,13 +48,27 @@ final class OidcAuthContractTest extends TestCase
         ]);
 
         self::assertSame('user-123', $principal['id']);
+        self::assertSame('https://idp.example.test', $principal['issuer']);
+        self::assertSame('user-123', $principal['subject']);
         self::assertSame('Editor User', $principal['display_name']);
+        self::assertSame('editor@example.test', $principal['email']);
         self::assertSame('oidc', $principal['auth_source']);
         self::assertSame(['config', 'lab'], $principal['roles']);
         self::assertSame([
             'REPORTING-TEAM' => ['viewer'],
             'SSO-MEMBERSHIP' => ['publisher'],
         ], $principal['project_roles']);
+
+        $identity = app_local_user_identity_from_principal($principal, [
+            'device_id' => 'browser-device-1',
+            'profile_cached_at' => '2026-07-13T00:00:00+00:00',
+            'last_authenticated_at' => '2026-07-13T00:00:00+00:00',
+        ]);
+        self::assertTrue($identity['ok'], $identity['error']);
+        self::assertSame('https://idp.example.test', $identity['identity']['issuer'] ?? '');
+        self::assertSame('user-123', $identity['identity']['subject'] ?? '');
+        self::assertSame('editor@example.test', $identity['identity']['email'] ?? '');
+        self::assertSame('browser-device-1', $identity['identity']['device_id'] ?? '');
     }
 
     /**

@@ -2,7 +2,7 @@
 
 - Role: first sync-backed no-code demonstration plus server-side processing follow-up.
 - Path: canonical table metadata -> shared contract -> managed operation -> `NO-CODE-RUNTIME` action intent -> managed operation sync outbox -> App-local SQLite handler / generated server DBAccess handler.
-- Current first-slice scope: one generated no-code update action becomes a managed operation sync intent, is enqueued, and is processed by the App-local handler to update a local SQLite row. The follow-up slices process a second outbox item with generated `SyncTaskDBAccess`, merge partial no-code input with the existing server row, verify a server SQLite row update, expose sync handoff visibility in generated/runtime output, and show one deterministic failed outbox state through existing `failed` / `last_error` fields.
+- Current first-slice scope: one generated no-code update action becomes a managed operation sync intent, is enqueued, and is processed by the App-local handler to update a local SQLite row. The follow-up slices process a second outbox item with generated `SyncTaskDBAccess`, merge partial no-code input with the existing server row, verify a server SQLite row update, expose sync handoff visibility in generated/runtime output, show one deterministic failed outbox state through existing `failed` / `last_error` fields, and prove the App-local identity / SSO-shaped actor handoff.
 
 Run:
 
@@ -30,6 +30,9 @@ The pack checker verifies:
 - App-local source output artifact generation
 - no-code runtime artifact generation
 - authorized `update_sync_task` dispatch builds a managed operation sync intent
+- SSO-shaped principal normalization into an App-local user identity snapshot
+- App-local SQLite save/restore of that identity without persisting access tokens, refresh tokens, ID tokens, or raw claims
+- sync intent actor metadata propagation from App-local identity to the managed operation outbox
 - the sync intent is enqueued in the managed operation outbox
 - the App-local outbox handler processes the intent and updates the local SQLite DTO
 - generated server DBAccess is materialized for `sync_task`
