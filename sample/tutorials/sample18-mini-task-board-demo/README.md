@@ -82,6 +82,8 @@ Execution requires both enablement layers:
 - `sample18_generated_submit_mutation_enabled=true` or `MTOOL_SAMPLE18_GENERATED_SUBMIT_MUTATION_ENABLED=1`
 - `sample18_generated_submit_executor_enabled=true` or `MTOOL_SAMPLE18_GENERATED_SUBMIT_EXECUTOR_ENABLED=1`
 
+The generated runtime reference defaults to this sample's `reference/` directory. An isolated smoke or deployment can select another complete generated reference with app config `sample18_generated_submit_runtime_reference_dir` or env `MTOOL_SAMPLE18_GENERATED_SUBMIT_RUNTIME_REFERENCE_DIR`; app config takes precedence. The selected directory must contain the full expected generated runtime file set.
+
 App config overrides env fallback. When execution is enabled, the route still fails closed unless validation, CSRF, audit append, idempotency, execution guard, DBAccess transaction, execution audit recording, and idempotency outcome update all succeed.
 
 Generated-submit JSON responses include `executor_config` metadata with enablement sources, dependency source, runtime reference path, failure code, and reasons. Tests may inject complete transaction callables; otherwise the route uses `reference/` generated runtime files and fails closed if they are missing.
@@ -102,6 +104,20 @@ seed を再適用する場合:
 
 ```bash
 make sample18-pack-runtime-test
+```
+
+An isolated failure-after-SQL runtime reference for guarded rollback smoke can be created outside the repository with:
+
+```bash
+make sample18-failure-runtime-reference-fixture OUTPUT_DIR=/tmp/sample18-failure-runtime
+```
+
+The generated directory is smoke-only, contains a manifest, and must be removed after the isolated smoke run.
+
+The complete isolated authenticated HTTP commit/rollback proof is:
+
+```bash
+make sample18-guarded-transaction-http-smoke
 ```
 
 web-lab の sample page まで HTTP 経由で確認する場合:

@@ -547,10 +547,18 @@ function app_project_db_access_bootstrap_select_body_lines(
  * }> $columns
  * @return list<string>
  */
-function app_project_db_access_bootstrap_insert_body_lines(array $table, array $columns): array
+function app_project_db_access_bootstrap_insert_body_lines(
+    array $table,
+    array $columns,
+    array $functionItem = [],
+): array
 {
     $tableName = trim((string) ($table['name'] ?? ''));
-    $objectParameterName = app_project_db_access_bootstrap_object_parameter_name($tableName);
+    $signatureParameterNames = app_project_db_access_bootstrap_method_parameter_names(
+        (string) ($functionItem['detected_signature'] ?? ''),
+    );
+    $objectParameterName = $signatureParameterNames[0]
+        ?? app_project_db_access_bootstrap_object_parameter_name($tableName);
     $columnNames = [];
     $valuePlaceholders = [];
     $paramExpressions = [];
@@ -565,7 +573,7 @@ function app_project_db_access_bootstrap_insert_body_lines(array $table, array $
         $valuePlaceholders[] = '?';
         $paramExpressions[] = app_project_db_access_bootstrap_php_property_expression(
             $objectParameterName,
-            $columnName,
+            app_project_db_access_bootstrap_output_field_name($columnName),
         );
     }
 
@@ -601,10 +609,19 @@ function app_project_db_access_bootstrap_insert_body_lines(array $table, array $
  * }> $keyColumns
  * @return list<string>
  */
-function app_project_db_access_bootstrap_update_body_lines(array $table, array $updateColumns, array $keyColumns): array
+function app_project_db_access_bootstrap_update_body_lines(
+    array $table,
+    array $updateColumns,
+    array $keyColumns,
+    array $functionItem = [],
+): array
 {
     $tableName = trim((string) ($table['name'] ?? ''));
-    $objectParameterName = app_project_db_access_bootstrap_object_parameter_name($tableName);
+    $signatureParameterNames = app_project_db_access_bootstrap_method_parameter_names(
+        (string) ($functionItem['detected_signature'] ?? ''),
+    );
+    $objectParameterName = $signatureParameterNames[0]
+        ?? app_project_db_access_bootstrap_object_parameter_name($tableName);
     $setFragments = [];
     $whereFragments = [];
     $paramExpressions = [];
@@ -616,7 +633,10 @@ function app_project_db_access_bootstrap_update_body_lines(array $table, array $
         }
 
         $setFragments[] = app_project_db_access_bootstrap_sql_identifier($columnName) . ' = ?';
-        $paramExpressions[] = app_project_db_access_bootstrap_php_property_expression($objectParameterName, $columnName);
+        $paramExpressions[] = app_project_db_access_bootstrap_php_property_expression(
+            $objectParameterName,
+            app_project_db_access_bootstrap_output_field_name($columnName),
+        );
     }
 
     foreach ($keyColumns as $column) {
@@ -629,7 +649,10 @@ function app_project_db_access_bootstrap_update_body_lines(array $table, array $
             . '.'
             . app_project_db_access_bootstrap_sql_identifier($columnName)
             . ' = ?';
-        $paramExpressions[] = app_project_db_access_bootstrap_php_property_expression($objectParameterName, $columnName);
+        $paramExpressions[] = app_project_db_access_bootstrap_php_property_expression(
+            $objectParameterName,
+            app_project_db_access_bootstrap_output_field_name($columnName),
+        );
     }
 
     $sql = 'update '
@@ -716,8 +739,8 @@ function app_project_db_access_bootstrap_generated_method_result(array $function
     $bodyLines = match ($actionType) {
         'SELECTLIST' => app_project_db_access_bootstrap_select_body_lines($table, $allColumns, [], true, $functionItem),
         'SELECTSINGLE' => app_project_db_access_bootstrap_select_body_lines($table, $allColumns, $keyColumns, false, $functionItem),
-        'INSERT' => app_project_db_access_bootstrap_insert_body_lines($table, $insertColumns),
-        'UPDATE' => app_project_db_access_bootstrap_update_body_lines($table, $updateColumns, $keyColumns),
+        'INSERT' => app_project_db_access_bootstrap_insert_body_lines($table, $insertColumns, $functionItem),
+        'UPDATE' => app_project_db_access_bootstrap_update_body_lines($table, $updateColumns, $keyColumns, $functionItem),
         'DELETE' => app_project_db_access_bootstrap_delete_body_lines($table, $keyColumns),
         default => [
             '        throw new RuntimeException(\'unsupported bootstrap action: '

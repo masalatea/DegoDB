@@ -13,6 +13,7 @@ RUN_ENDPOINT_SMOKE="${RUN_ENDPOINT_SMOKE:-1}"
 RUN_OUTBOX_PROCESS_SMOKE="${RUN_OUTBOX_PROCESS_SMOKE:-1}"
 RUNTIME_FILTER_DOM_ONLY="${RUNTIME_FILTER_DOM_ONLY:-0}"
 RUNTIME_ENABLED_CANDIDATE_SURFACE="${RUNTIME_ENABLED_CANDIDATE_SURFACE:-0}"
+RUNTIME_MANAGED_OUTBOX_AUTHORITY="${RUNTIME_MANAGED_OUTBOX_AUTHORITY:-0}"
 ADMIN_HTTP_PORT="${ADMIN_HTTP_PORT:-18291}"
 LAB_HTTP_PORT="${LAB_HTTP_PORT:-18292}"
 CONFIG_DB_HOST_PORT="${CONFIG_DB_HOST_PORT:-43291}"
@@ -59,6 +60,11 @@ cleanup() {
 }
 
 trap cleanup EXIT
+
+managed_outbox_authority_args=()
+if [ "$RUNTIME_MANAGED_OUTBOX_AUTHORITY" = "1" ]; then
+  managed_outbox_authority_args+=(--runtime-managed-outbox-authority)
+fi
 
 wait_for_admin_health() {
   local attempt
@@ -116,7 +122,21 @@ bash "$REPO_ROOT/mtool/scripts/apply_config_sample_seed.sh" \
   "--compose-file=${SAMPLE_PACK_DIR}/compose.yaml" \
   "${SAMPLE_PACK_DIR}/seed"
 
-"${compose_cmd[@]}" exec -T -e MTOOL_GENERATED_NAME_POLICY=physical-logical-v1 web-admin phpunit \
+phpunit_env=(-e MTOOL_GENERATED_NAME_POLICY=physical-logical-v1)
+phpunit_command=(phpunit)
+if [ "$SAMPLE_PROFILE" = "sample18" ] && [ "$RUNTIME_ENABLED_CANDIDATE_SURFACE" = "1" ]; then
+  phpunit_command=(
+    env
+    -u MTOOL_NO_CODE_SERVER_AVAILABILITY_OVERLAY
+    -u MTOOL_NO_CODE_TRANSACTION_FULL_GATE
+    -u MTOOL_SAMPLE18_GENERATED_UI_EXECUTION_ENABLED
+    -u MTOOL_SAMPLE18_GENERATED_SUBMIT_MUTATION_ENABLED
+    -u MTOOL_SAMPLE18_GENERATED_SUBMIT_EXECUTOR_ENABLED
+    phpunit
+  )
+fi
+
+"${compose_cmd[@]}" exec -T "${phpunit_env[@]}" web-admin "${phpunit_command[@]}" \
   --configuration /var/www/tests/phpunit.xml \
   "$SAMPLE_INTEGRATION_TEST"
 
@@ -167,13 +187,29 @@ if [ "$RUNTIME_FILTER_DOM_ONLY" = "1" ]; then
 fi
 
 if [ "$RUNTIME_ENABLED_CANDIDATE_SURFACE" = "1" ]; then
+  ui_authority_args=()
+  if [ "$SAMPLE_PROFILE" = "sample18" ]; then
+    ui_authority_args+=(--runtime-ui-authority-stub-probe)
+  fi
   node mtool/scripts/check_no_code_runtime_preview_ui_smoke.js \
     "--profile=${SAMPLE_PROFILE}" \
     "--url=${BASE_URL}${current_path}" \
     --execution-binding=required \
     --execution-url-contains=/current/execute.json \
     --runtime-enabled-candidate-surface \
+    "${ui_authority_args[@]}" \
     "--output-dir=${SMOKE_OUTPUT_DIR}"
+
+  if [ "$SAMPLE_PROFILE" = "sample18" ]; then
+    node mtool/scripts/check_no_code_runtime_preview_ui_smoke.js \
+      "--profile=${SAMPLE_PROFILE}" \
+      "--url=${BASE_URL}${alias_path}" \
+      --execution-binding=required \
+      "--execution-url-contains=/alias/${ALIAS_KEY}/execute.json" \
+      --runtime-enabled-candidate-surface \
+      --runtime-ui-authority-stub-probe \
+      "--output-dir=${SMOKE_OUTPUT_DIR}"
+  fi
 
   printf '%s\n' "$public_json"
   exit 0
@@ -191,6 +227,7 @@ node mtool/scripts/check_no_code_runtime_preview_ui_smoke.js \
   --execution-binding=required \
   --execution-url-contains=/current/execute.json \
   --submit-probe=enabled-real-fetch \
+  "${managed_outbox_authority_args[@]}" \
   "--output-dir=${SMOKE_OUTPUT_DIR}"
 
 node mtool/scripts/check_no_code_runtime_preview_ui_smoke.js \
@@ -200,6 +237,7 @@ node mtool/scripts/check_no_code_runtime_preview_ui_smoke.js \
   --execution-url-contains=/current/execute.json \
   --submit-probe=enabled-fetch-stub \
   --status-probe=stub-done \
+  "${managed_outbox_authority_args[@]}" \
   "--output-dir=${SMOKE_OUTPUT_DIR}"
 
 node mtool/scripts/check_no_code_runtime_preview_ui_smoke.js \
@@ -209,6 +247,7 @@ node mtool/scripts/check_no_code_runtime_preview_ui_smoke.js \
   --execution-url-contains=/current/execute.json \
   --submit-probe=enabled-fetch-stub \
   --status-probe=stub-failed \
+  "${managed_outbox_authority_args[@]}" \
   "--output-dir=${SMOKE_OUTPUT_DIR}"
 
 node mtool/scripts/check_no_code_runtime_preview_ui_smoke.js \
@@ -217,6 +256,7 @@ node mtool/scripts/check_no_code_runtime_preview_ui_smoke.js \
   --execution-binding=required \
   "--execution-url-contains=/alias/${ALIAS_KEY}/execute.json" \
   --submit-probe=enabled-real-fetch \
+  "${managed_outbox_authority_args[@]}" \
   "--output-dir=${SMOKE_OUTPUT_DIR}"
 
 if [ "$RUN_ENDPOINT_SMOKE" = "1" ]; then

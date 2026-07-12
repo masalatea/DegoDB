@@ -178,6 +178,14 @@ final class OpenApiSourceOutputContractTest extends TestCase
             '/runs/no-code/SAMPLE28/current/runtime-data.json',
             app_no_code_public_runtime_current_data_path('SAMPLE28'),
         );
+        self::assertSame(
+            'no_code_public_runtime_current_action_availability',
+            app_route_match(['path' => '/runs/no-code/SAMPLE28/current/action-availability.json'])['name'],
+        );
+        self::assertSame(
+            '/runs/no-code/SAMPLE28/current/action-availability.json',
+            app_no_code_public_runtime_current_action_availability_path('SAMPLE28'),
+        );
 
         $noCodeRuntimeAliasExecutionRoute = app_route_match([
             'path' => '/runs/no-code/SAMPLE28/alias/stable-demo/execute.json',
@@ -202,6 +210,14 @@ final class OpenApiSourceOutputContractTest extends TestCase
             '/runs/no-code/SAMPLE28/alias/stable-demo/runtime-data.json',
             app_no_code_public_runtime_alias_data_path('SAMPLE28', 'Stable-Demo'),
         );
+        self::assertSame(
+            'no_code_public_runtime_alias_action_availability',
+            app_route_match(['path' => '/runs/no-code/SAMPLE28/alias/stable-demo/action-availability.json'])['name'],
+        );
+        self::assertSame(
+            '/runs/no-code/SAMPLE28/alias/stable-demo/action-availability.json',
+            app_no_code_public_runtime_alias_action_availability_path('SAMPLE28', 'Stable-Demo'),
+        );
 
         $noCodeRuntimeExecutionRoute = app_route_match([
             'path' => '/runs/no-code/SAMPLE28/20260702-010203-abcdef12/execute.json',
@@ -213,6 +229,17 @@ final class OpenApiSourceOutputContractTest extends TestCase
         self::assertSame(
             '/runs/no-code/SAMPLE28/20260702-010203-abcdef12/execute.json',
             app_no_code_public_runtime_execution_path('SAMPLE28', '20260702-010203-abcdef12'),
+        );
+
+        $noCodeRuntimeAvailabilityRoute = app_route_match([
+            'path' => '/runs/no-code/SAMPLE28/20260702-010203-abcdef12/action-availability.json',
+        ]);
+        self::assertSame('no_code_public_runtime_action_availability', $noCodeRuntimeAvailabilityRoute['name']);
+        self::assertSame('SAMPLE28', $noCodeRuntimeAvailabilityRoute['params']['project_key'] ?? '');
+        self::assertSame('20260702-010203-abcdef12', $noCodeRuntimeAvailabilityRoute['params']['artifact_key'] ?? '');
+        self::assertSame(
+            '/runs/no-code/SAMPLE28/20260702-010203-abcdef12/action-availability.json',
+            app_no_code_public_runtime_action_availability_path('SAMPLE28', '20260702-010203-abcdef12'),
         );
 
         $sourceOutputOperationRoute = app_route_match([
@@ -238,6 +265,79 @@ final class OpenApiSourceOutputContractTest extends TestCase
             app_no_code_public_runtime_artifact_cache_control(),
         );
         self::assertSame('no-store', app_no_code_public_runtime_current_cache_control());
+    }
+
+    /**
+     * @runInSeparateProcess
+     * @preserveGlobalState disabled
+     */
+    public function testGeneratedUiExecutionAuthorityUsesDefaultOffProjectActionPolicyWithSample18Compatibility(): void
+    {
+        $previousLegacy = getenv('MTOOL_SAMPLE18_GENERATED_UI_EXECUTION_ENABLED');
+        $previousEnabled = getenv('MTOOL_NO_CODE_GENERATED_UI_EXECUTION_ENABLED');
+        $previousAllowlist = getenv('MTOOL_NO_CODE_GENERATED_UI_EXECUTION_ALLOWLIST');
+        $startedSession = false;
+        try {
+            if (session_status() !== PHP_SESSION_ACTIVE) {
+                session_start();
+                $startedSession = true;
+            }
+            putenv('MTOOL_SAMPLE18_GENERATED_UI_EXECUTION_ENABLED');
+            putenv('MTOOL_NO_CODE_GENERATED_UI_EXECUTION_ENABLED');
+            putenv('MTOOL_NO_CODE_GENERATED_UI_EXECUTION_ALLOWLIST');
+            self::assertFalse(app_no_code_public_runtime_generated_ui_execution_enabled('SAMPLE18'));
+            self::assertSame([], app_no_code_public_runtime_generated_ui_execution_allowlist('SAMPLE18'));
+
+            putenv('MTOOL_SAMPLE18_GENERATED_UI_EXECUTION_ENABLED=1');
+            self::assertTrue(app_no_code_public_runtime_generated_ui_execution_enabled('SAMPLE18'));
+            self::assertSame(['create_task_card'], app_no_code_public_runtime_generated_ui_execution_allowlist('SAMPLE18'));
+            self::assertFalse(app_no_code_public_runtime_generated_ui_execution_enabled('SAMPLE29'));
+
+            putenv('MTOOL_SAMPLE18_GENERATED_UI_EXECUTION_ENABLED');
+            putenv('MTOOL_NO_CODE_GENERATED_UI_EXECUTION_ENABLED=1');
+            putenv('MTOOL_NO_CODE_GENERATED_UI_EXECUTION_ALLOWLIST= malformed, SAMPLE29:update_support_case, sample18:create_task_card, SAMPLE29:UPDATE_SUPPORT_CASE, SAMPLE29:bad-action');
+            self::assertTrue(app_no_code_public_runtime_generated_ui_execution_enabled('sample29'));
+            self::assertSame(['update_support_case'], app_no_code_public_runtime_generated_ui_execution_allowlist('SAMPLE29'));
+            self::assertTrue(app_no_code_public_runtime_generated_ui_execution_enabled('SAMPLE18'));
+            self::assertSame(['create_task_card'], app_no_code_public_runtime_generated_ui_execution_allowlist('SAMPLE18'));
+            $sample29Binding = app_no_code_public_runtime_preview_execution_binding(
+                'SAMPLE29',
+                ['artifact_key' => '20260712-010203-abcdef12', 'revision_id' => 'revision-29'],
+                '/runs/no-code/SAMPLE29/current/execute.json',
+                '/runs/no-code/SAMPLE29/current/runtime-data.json',
+                '/runs/no-code/SAMPLE29/current/action-availability.json',
+            );
+            self::assertTrue($sample29Binding['generated_ui_execution_enabled'] ?? false);
+            self::assertSame(['update_support_case'], $sample29Binding['generated_ui_execution_allowlist'] ?? []);
+
+            putenv('MTOOL_NO_CODE_GENERATED_UI_EXECUTION_ENABLED');
+            self::assertFalse(app_no_code_public_runtime_generated_ui_execution_enabled('SAMPLE29'));
+            self::assertSame([], app_no_code_public_runtime_generated_ui_execution_allowlist('SAMPLE29'));
+
+            $artifactOnly = app_no_code_public_runtime_preview_execution_binding(
+                'SAMPLE18',
+                ['artifact_key' => '20260712-010203-abcdef12', 'revision_id' => 'revision-1'],
+                null,
+                null,
+                '/runs/no-code/SAMPLE18/20260712-010203-abcdef12/action-availability.json',
+            );
+            self::assertArrayNotHasKey('execution_url', $artifactOnly);
+            self::assertArrayNotHasKey('generated_ui_execution_enabled', $artifactOnly);
+            self::assertArrayNotHasKey('generated_ui_execution_allowlist', $artifactOnly);
+        } finally {
+            $previousLegacy === false
+                ? putenv('MTOOL_SAMPLE18_GENERATED_UI_EXECUTION_ENABLED')
+                : putenv('MTOOL_SAMPLE18_GENERATED_UI_EXECUTION_ENABLED=' . $previousLegacy);
+            $previousEnabled === false
+                ? putenv('MTOOL_NO_CODE_GENERATED_UI_EXECUTION_ENABLED')
+                : putenv('MTOOL_NO_CODE_GENERATED_UI_EXECUTION_ENABLED=' . $previousEnabled);
+            $previousAllowlist === false
+                ? putenv('MTOOL_NO_CODE_GENERATED_UI_EXECUTION_ALLOWLIST')
+                : putenv('MTOOL_NO_CODE_GENERATED_UI_EXECUTION_ALLOWLIST=' . $previousAllowlist);
+            if ($startedSession && session_status() === PHP_SESSION_ACTIVE) {
+                session_write_close();
+            }
+        }
     }
 
     public function testRuntimeDataDatetimeValuesRejectTimezoneOffsets(): void
@@ -382,6 +482,9 @@ final class OpenApiSourceOutputContractTest extends TestCase
         self::assertFalse(app_route_requires_auth('no_code_public_runtime_preview'));
         self::assertFalse(app_route_requires_auth('no_code_public_runtime_current_preview'));
         self::assertTrue(app_route_requires_auth('no_code_public_runtime_execution'));
+        self::assertTrue(app_route_requires_auth('no_code_public_runtime_action_availability'));
+        self::assertTrue(app_route_requires_auth('no_code_public_runtime_current_action_availability'));
+        self::assertTrue(app_route_requires_auth('no_code_public_runtime_alias_action_availability'));
         self::assertTrue(app_route_requires_auth('no_code_public_runtime_current_execution'));
         self::assertTrue(app_route_requires_auth('no_code_public_runtime_alias_execution'));
         self::assertTrue(app_route_requires_auth('no_code_public_runtime_current_data'));
@@ -505,6 +608,7 @@ final class OpenApiSourceOutputContractTest extends TestCase
         self::assertStringContainsString('app_render_no_code_public_runtime_alias_preview_page', $publicRuntimePage);
         self::assertStringContainsString('app_pdo_find_approved_no_code_publish_candidate_for_alias', $publicRuntimePage);
         self::assertStringContainsString('app_no_code_public_runtime_execution_path', $publicRuntimePage);
+        self::assertStringContainsString('app_no_code_public_runtime_action_availability_path', $publicRuntimePage);
         self::assertStringContainsString('app_no_code_public_runtime_current_execution_path', $publicRuntimePage);
         self::assertStringContainsString('app_no_code_public_runtime_alias_execution_path', $publicRuntimePage);
         self::assertStringContainsString('app_no_code_public_runtime_current_data_path', $publicRuntimePage);
@@ -513,6 +617,14 @@ final class OpenApiSourceOutputContractTest extends TestCase
         self::assertStringContainsString('id="no-code-runtime-execution-binding"', $publicRuntimePage);
         self::assertStringContainsString('app_no_code_public_runtime_preview_execution_binding', $publicRuntimePage);
         self::assertStringContainsString("'runtime_data_url'", $publicRuntimePage);
+        self::assertStringContainsString("'action_availability_url'", $publicRuntimePage);
+        self::assertStringContainsString("'generated_ui_execution_enabled'", $publicRuntimePage);
+        self::assertStringContainsString("'generated_ui_execution_allowlist'", $publicRuntimePage);
+        self::assertStringContainsString("MTOOL_NO_CODE_GENERATED_UI_EXECUTION_ENABLED", $publicRuntimePage);
+        self::assertStringContainsString("MTOOL_NO_CODE_GENERATED_UI_EXECUTION_ALLOWLIST", $publicRuntimePage);
+        self::assertStringContainsString("MTOOL_SAMPLE18_GENERATED_UI_EXECUTION_ENABLED", $publicRuntimePage);
+        self::assertStringContainsString('app_no_code_public_runtime_current_action_availability_path($projectKey)', $publicRuntimePage);
+        self::assertStringContainsString('app_no_code_public_runtime_alias_action_availability_path($projectKey, $aliasKey)', $publicRuntimePage);
         self::assertStringContainsString('app_no_code_public_runtime_current_execution_path($projectKey)', $publicRuntimePage);
         self::assertStringContainsString('app_no_code_public_runtime_current_data_path($projectKey)', $publicRuntimePage);
         self::assertStringContainsString('app_no_code_public_runtime_alias_execution_path($projectKey, $aliasKey)', $publicRuntimePage);
@@ -523,6 +635,13 @@ final class OpenApiSourceOutputContractTest extends TestCase
         self::assertStringContainsString('app_render_no_code_public_runtime_current_data_page', $publicRuntimePage);
         self::assertStringContainsString('app_render_no_code_public_runtime_alias_data_page', $publicRuntimePage);
         self::assertStringContainsString('app_no_code_public_runtime_execution_response_for_candidate', $publicRuntimePage);
+        self::assertStringContainsString('app_no_code_public_runtime_action_availability_response_for_candidate', $publicRuntimePage);
+        self::assertStringContainsString('server-action-availability-v1', $publicRuntimePage);
+        self::assertStringContainsString("MTOOL_NO_CODE_MANAGED_OUTBOX_GATE", $publicRuntimePage);
+        self::assertStringContainsString("'execution_model'", $publicRuntimePage);
+        self::assertStringContainsString("'required_capability'", $publicRuntimePage);
+        self::assertStringContainsString("'capability_satisfied'", $publicRuntimePage);
+        self::assertStringContainsString("getenv('MTOOL_NO_CODE_TRANSACTION_FULL_GATE')", $publicRuntimePage);
         self::assertStringContainsString('app_no_code_public_runtime_data_response_for_candidate', $publicRuntimePage);
         self::assertStringContainsString('no-code-runtime-data-v0', $publicRuntimePage);
         self::assertStringContainsString('app_auth_principal()', $publicRuntimePage);

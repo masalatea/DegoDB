@@ -21,3 +21,4 @@ Custom hook points:
 - `mtool/extensions/SAMPLE14/CUSTOM-PROXY-SERVER/bootstrap.php`
 - wrapper handler methods `authorizeByGetFunction()` / `authorizeByLoginCookieToken()` when the auth strategy requires them
 - `mtool/extensions/SAMPLE14/CUSTOM-PROXY-SERVER/handlers/CatalogSummaryProxyHandler.php`
+- `mtool/extensions/SAMPLE14/CUSTOM-PROXY-SERVER/handlers/TransactionPairProxyHandler.php`

@@ -4,6 +4,7 @@ services:
   web-admin:
     environment:
       APP_WORK_ROOT: /var/www/work/sample-packs/sample29-no-code-support-case-demo
+      MTOOL_NO_CODE_SERVER_AVAILABILITY_OVERLAY: ${MTOOL_NO_CODE_SERVER_AVAILABILITY_OVERLAY:-}
 
   web-lab:
     environment:

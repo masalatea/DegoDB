@@ -1,8 +1,8 @@
 {
     "project_key": "SAMPLE14",
     "source_output_key": "CUSTOM-PROXY-SERVER",
-    "custom_proxy_count": 1,
-    "step_count": 2,
+    "custom_proxy_count": 2,
+    "step_count": 4,
     "unresolved_step_count": 0,
     "generated_catalog_summary": {
         "total_entities": 99,
@@ -42,33 +42,96 @@
             "step_count": 2,
             "unresolved_step_count": 0,
             "notes": "Sample14 custom proxy that bundles two read-only generated DBAccess functions into one proxy endpoint.",
-            "updated_at": "2026-06-27 06:11:31",
+            "updated_at": "2026-07-11 13:39:57",
             "steps": [
                 {
-                    "id": "1",
+                    "id": "5",
                     "step_order": "10",
                     "db_access_source_name": "dbtable",
                     "db_access_function_name": "GetdbtableList",
                     "is_list": true,
                     "notes": "Read canonical table catalog rows for the requested project.",
                     "source_of_truth": "manual",
-                    "updated_at": "2026-06-27 06:11:31",
+                    "updated_at": "2026-07-11 13:39:57",
                     "resolved": true,
                     "signature": "public function GetDbtableList($param_Dbtable_ProjectPID_where)",
                     "line": 21,
                     "resolution_error": ""
                 },
                 {
-                    "id": "2",
+                    "id": "6",
                     "step_order": "20",
                     "db_access_source_name": "project_source_output",
                     "db_access_function_name": "GetProjectSourceOutputList",
                     "is_list": true,
                     "notes": "Read source output definitions for the requested project.",
                     "source_of_truth": "manual",
-                    "updated_at": "2026-06-27 06:11:31",
+                    "updated_at": "2026-07-11 13:39:57",
                     "resolved": true,
                     "signature": "public function GetProjectSourceOutputList($param_ProjectSourceOutput_ProjectPID_where)",
+                    "line": 21,
+                    "resolution_error": ""
+                }
+            ]
+        },
+        {
+            "custom_proxy_key": "TRANSACTION-PAIR",
+            "display_name": "Transaction::Pair",
+            "basename": "Transaction",
+            "name": "Pair",
+            "in_transaction": true,
+            "continue_even_if_failed_to_insert": false,
+            "auth_policy": {
+                "raw_auth_type": "NoSecurity",
+                "raw_auth_type_caption": "No Security",
+                "resolved_auth_type": "NoSecurity",
+                "resolved_auth_type_caption": "No Security",
+                "strategy_key": "no-security",
+                "strategy_caption": "No Security",
+                "resolution_source": "explicit",
+                "requires_get_function": false,
+                "single_get_function_name": "",
+                "security_mode": "no-security",
+                "summary": "認証を掛けません。",
+                "notes": [],
+                "is_valid": true,
+                "auth_policy_version": 1,
+                "auth_policy_json": "",
+                "secret_env": ""
+            },
+            "target_source_output_keys": [
+                "CUSTOM-PROXY-SERVER"
+            ],
+            "step_count": 2,
+            "unresolved_step_count": 0,
+            "notes": "Sample14 Transaction Full proxy: both inserts commit together or both roll back.",
+            "updated_at": "2026-07-11 13:39:57",
+            "steps": [
+                {
+                    "id": "7",
+                    "step_order": "10",
+                    "db_access_source_name": "sample14_transaction_item",
+                    "db_access_function_name": "InsertSample14TransactionItem",
+                    "is_list": false,
+                    "notes": "Insert the first row in the shared transaction.",
+                    "source_of_truth": "manual",
+                    "updated_at": "2026-07-11 13:39:57",
+                    "resolved": true,
+                    "signature": "public function InsertSample14TransactionItem($Sample14TransactionItemObj)",
+                    "line": 21,
+                    "resolution_error": ""
+                },
+                {
+                    "id": "8",
+                    "step_order": "20",
+                    "db_access_source_name": "sample14_transaction_item",
+                    "db_access_function_name": "InsertSample14TransactionItem",
+                    "is_list": false,
+                    "notes": "Insert the second row; any failure rolls the first insert back.",
+                    "source_of_truth": "manual",
+                    "updated_at": "2026-07-11 13:39:57",
+                    "resolved": true,
+                    "signature": "public function InsertSample14TransactionItem($Sample14TransactionItemObj)",
                     "line": 21,
                     "resolution_error": ""
                 }

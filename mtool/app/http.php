@@ -26,7 +26,10 @@ require_once __DIR__ . '/project_language_resources_page.php';
 require_once __DIR__ . '/project_language_resource_groups_page.php';
 require_once __DIR__ . '/project_language_resource_detail_page.php';
 require_once __DIR__ . '/project_shared_contracts_page.php';
+require_once __DIR__ . '/schema_proposal_review_page.php';
+require_once __DIR__ . '/schema_proposal_task_review_page.php';
 require_once __DIR__ . '/project_source_outputs_page.php';
+require_once __DIR__ . '/no_code_mtool_source_output_inspection_page.php';
 require_once __DIR__ . '/project_source_output_change_order_page.php';
 require_once __DIR__ . '/project_source_output_new_page.php';
 require_once __DIR__ . '/project_source_output_detail_page.php';
@@ -191,8 +194,20 @@ function app_run_http_request(): void
                 app_render_project_shared_contracts_page($app, $request);
                 return;
 
+            case 'project_schema_proposal_review':
+                app_render_schema_proposal_review_page($app, $request);
+                return;
+
+            case 'project_schema_proposal_task_review':
+                app_render_schema_proposal_task_review_page($app, $request);
+                return;
+
             case 'project_source_outputs':
                 app_render_project_source_outputs_page($app, $request);
+                return;
+
+            case 'project_source_outputs_no_code_inspection':
+                app_render_no_code_mtool_source_output_inspection_page($app, $request);
                 return;
 
             case 'project_source_output_change_order':
@@ -237,6 +252,18 @@ function app_run_http_request(): void
 
             case 'no_code_public_runtime_execution':
                 app_render_no_code_public_runtime_execution_page($app, $request);
+                return;
+
+            case 'no_code_public_runtime_action_availability':
+                app_render_no_code_public_runtime_action_availability_page($app, $request);
+                return;
+
+            case 'no_code_public_runtime_current_action_availability':
+                app_render_no_code_public_runtime_current_action_availability_page($app, $request);
+                return;
+
+            case 'no_code_public_runtime_alias_action_availability':
+                app_render_no_code_public_runtime_alias_action_availability_page($app, $request);
                 return;
 
             case 'no_code_public_runtime_current_execution':

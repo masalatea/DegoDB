@@ -11,6 +11,108 @@
 
 ## Index
 
+- `2026-0712-full-plan-inventory-semantic-squash.md`
+  - #787 全計画棚卸し・semantic squash。Transaction FullのDB内feasibility blockerなし、DB外副作用はapplication責任、G-L1〜G-L4達成・G-L5と補助lane parkを確認。未push stackをtree一致のまま69件から9 semantic commitへ整理し、backup維持・pushなし。Status: `DONE`。
+- `2026-0712-post-g-l4-local-commit-stack-checkpoint.md`
+  - #786 G-L4後local commit stack checkpoint。origin更新後develop比0 behind・71 aheadを確認。広範squashはせず、連続した#783 closure・#784 guide・#785 parkだけを1 semantic commitへ統合し69 ahead。full suite 464 tests / 14,136 assertions、worktree clean、pushなし。Status: `DONE`。
+- `2026-0712-post-g-l4-roadmap-checkpoint.md`
+  - #785 G-L4後roadmap checkpoint。G-L5はsource material・Q&A目的・normalized structure・No Code UI/action target未選定のためlong-term park維持。既存parked laneにも再開triggerなし。次は70 commit local stack checkpoint、pushなし。Status: `DONE_PARKED`。
+- `2026-0712-ai-task-packet-permanent-user-guide.md`
+  - #784 AI task packet恒久user guide。Codex/Claude一言開始・task確認・packet優先順位・共通facade/CLI/stage・candidate/Mtool derived review・default-off review・明示optional Ollama・zero mutation/data boundaryを日付なし正本へ整理しREADME/docs/JSON入口からlink。Status: `DONE`。
+- `2026-0712-post-g-l4-task-packet-lane-closure.md`
+  - #783 G-L4後task packet lane closure。packet/confirmation/scan/optional Ollama/common CLI/Codex proof/derived review/auth browser evidenceは完了。唯一の具体polishは恒久user guideがなくplans/reportsだけに閉じている点。provider/runtime追加はcloseし#784文書導線だけを追加。Status: `DONE_ONE_POLISH`。
+- `2026-0712-task-review-http-browser-promotion-g-l4-closure.md`
+  - #782 task review HTTP/browser昇格・G-L4 closure。実Sample19 stackでlogin redirect、auth後default-off 404、flag-on AI/task/source/candidate/review hash・Mtool diff ownership、4 entity・4 unchanged、canonical returnを確認。form/button/script/applyゼロ、review POSTゼロ、stack default-off復元。G-L4達成。Status: `DONE_QUALIFIED`。
+- `2026-0712-task-review-artifact-read-only-route.md`
+  - #781 task review artifact read-only route。strict task ID・work confinement・auth/default-off GET routeを追加し、task/source/canonical/shape/scan/validation/candidate/review/derivation/diffを再検証。AI candidate・Mtool derived diff/hash表示、action/POST/mutationゼロ。Full suite 464 tests / 14,133 assertions。Status: `FIRST_SLICE_DONE`。
+- `2026-0712-task-review-artifact-consumption-preflight.md`
+  - #780 task review artifact consumption preflight。exact task IDからwork/ai-tasks内だけを選ぶ認証済default-off GET route、task/source/canonical/validation/candidate/review/derivation/diffの再検証順、AI candidate・Mtool derived diff表示、form/button/script/apply/実行/mutationゼロを確定。Status: `DONE`。
+- `2026-0712-codex-task-packet-workflow-proof.md`
+  - #779 Codex task packet workflow proof。具体taskへのuser確認後、宣言inputだけを読みcandidateだけを書き、共通CLIで`review_artifact_ready`。candidate/review hash分離、Mtool derived diff、mutation false、Ollama/network/DB操作なし。Status: `DONE_QUALIFIED`。
+- `2026-0712-optional-scan-ollama-fallback-alignment.md`
+  - #778 optional scan・Ollama fallback整合。task packetへ値推測なしのhash-bound deterministic pointer/type scanを同梱。Ollamaは`--task`＋`--execute-local-fallback`必須、agent outputと別advisory inputへ保存し共通task validatorを使用。Full suite 461 tests / 14,111 assertions。AI実行なし。Status: `FIRST_SLICE_DONE`。
+- `2026-0712-sample19-agent-readable-task-packet-foundation.md`
+  - #777 Sample19 agent-readable task packet基盤。hash-bound source/canonical/output shape、optional advisory scan/fallback、exact confirmation、単一validator command、read/write/prohibition/precedenceを持つtask.json・TASK.md generatorを追加。pending confirmationでcandidate/outputなし。Full suite 460 tests / 14,103 assertions。AI実行なし。Status: `FIRST_SLICE_DONE`。
+- `2026-0712-schema-proposal-task-validation-facade-cli.md`
+  - #776 schema proposal task validation facade・CLI。task/input integrity、candidate safety/empty diff、Mtool independent diff、candidate hash付き別review artifact、stable stage/error、task-root confinementを1関数・1CLIへ統合。Full suite 458 tests / 14,084 assertions。AI実行なし。Status: `FIRST_SLICE_DONE`。
+- `2026-0712-ai-task-packet-agent-instruction-contract-preflight.md`
+  - #775 AI task packet・agent指示contract preflight。task root内のtask/source/canonical/optional advisory scan・fallback/candidate/validation/review配置、hash/path authority、Codex/Claudeの1回確認、単一validation command、7 stable stages、AI candidate空diff・Mtool derived diff所有、zero mutation/networkを確定。Status: `DONE`。
+- `2026-0712-ai-task-packet-workflow-replan.md`
+  - #774 AI task-packet workflow replan。Codex/Claudeがtask packetを読み、範囲説明・user確認後にcandidate生成と単一validation commandを実行する経路を主導線へ変更。deterministic scanとOllamaはoptional fallback、情報優先順位と共通validation facade/CLI、#775-#779実装順を確定。AI call・mutationなし。Status: `DONE`。
+- `2026-0712-sample19-schema-guided-prompt-v1-local-proof.md`
+  - #773 schema-guided prompt v1 local proof。attempt 1は旧9 errorからrelationship target entity 2 errorへ改善、corrective retryでproposal structure/reference/evidenceは全通過し、残りは`declared_canonical_diff_mismatch` 1件のみ。独立diffは3 unchanged＋public summary removeを導出したがmodel宣言が不完全。reject維持・3回目なし。Status: `DONE_REJECTED_ONE_GAP`。
+- `2026-0712-sample19-schema-guided-prompt-v1-offline-foundation.md`
+  - #772 Sample19 schema-guided prompt v1 offline基盤。generic compact nested shapeをpromptへ埋め込み、entity fields/keys/evidence、relationship endpoint、lifecycle、canonical diff exact keysを明示。shape hash・required-path fail closed・Sample19 golden entity名非包含をtest。Full suite 455 tests / 14,067 assertions。AI callなし。Status: `FIRST_SLICE_DONE`。
+- `2026-0712-sample19-local-model-prompt-schema-reinforcement-preflight.md`
+  - #771 Sample19 local model向けprompt/schema補強preflight。2 attemptともcanonical comparison shapeをproposal shapeとしてコピーしたことを特定。nested output contract不足が同じ9 error反復の原因で、回答値を含まないgeneric compact shape schema、evidence/relationship/diff exact keys、新prompt versionとoffline completeness testを次単位に確定。Status: `DONE_ONE_GAP`。
+- `2026-0712-sample19-local-ai-generation-first-proof.md`
+  - #769-#770 Sample19 local AI生成first proof。Ollama `qwen2.5-coder:7b`へ固定synthetic contextだけをlocalhost送信し、credential・外部送信・mutationなしで初回＋corrective retry 1回を実行。両responseはentity/relationship/diff evidence・referenceの同じ9 errorでfail closed rejectされ、reviewへ昇格せずG-L4継続。Status: `DONE_REJECTED`。
+- `2026-0712-sample19-offline-ai-response-acceptance-foundation.md`
+  - #768 Sample19 offline AI response acceptance基盤。注入response bytesと明示run metadataからimmutable attempt hashを記録し、proposal/source/AI provenance/独立canonical diff一致時だけread-only reviewへaccept。unsafe・偽provenance・source/diff/run mismatchはrepairせずreject。Full suite 454 tests / 14,061 assertions。Status: `FIRST_SLICE_DONE`。
+- `2026-0712-sample19-offline-ai-request-envelope-foundation.md`
+  - #767 Sample19 offline AI request-envelope基盤。versioned prompt、固定synthetic sourceとcanonical context、template/final/source/canonical SHA-256、明示zero-network/credential/persistence/mutation/apply metadataを決定的に構築。provider/model/clientなし。Full suite 451 tests / 14,039 assertions。Status: `FIRST_SLICE_DONE`。
+- `2026-0712-sample19-ai-proposal-production-preflight.md`
+  - #766 Sample19 AI proposal生成preflight。一般用途AI provider/modelの承認済み設定がないことを確認し、固定synthetic source、prompt/source hash、truthful provenance、structured-output acceptance、最大1 corrective retry、semantic golden比較、zero-mutation proofを確定。次は外部送信なしのoffline request-envelope基盤。Status: `DONE`。
+- `2026-0712-schema-proposal-review-http-browser-promotion.md`
+  - #765 schema proposal review HTTP/browser昇格。Sample19専用実stackでlogin redirect、flag-on review page、verified source/provenance、entity/evidence 4件、derived unchanged 4件、question/assumption、canonical returnを確認。form/button/script/execution/applyゼロ、Apache上review POSTゼロ、検証後default-off復元。fixtureはnot AI-authoredのためG-L4は実AI生成proof 1 gapを残す。Status: `DONE_ONE_GAP`。
+- `2026-0712-schema-proposal-read-only-review-ui-first-implementation.md`
+  - #764 schema proposal read-only review UI初回実装。default-off exact Sample19 admin route、固定3 asset integrity gate、source SHA/validated proposal/snapshot/derived diff検証、safety/provenance/evidence/entity/diff/question/assumption renderer、severity集約を追加。form/button/script/POST/execution/apply surfaceゼロ。Full suite 448 tests / 14,018 assertions。Status: `FIRST_SLICE_DONE`。
+- `2026-0712-schema-proposal-read-only-review-ui-preflight.md`
+  - #763 schema proposal read-only review UI preflight。default-off・認証必須のexact Sample19 admin route、固定read-only asset、source SHA/proposal/snapshot/derived-diff integrity順序、safety/provenance/evidence/entity/diff/question/assumption表示、category severity、form/button/POST/apply/scriptゼロ、fast/browser gateを実装前に固定。Status: `DONE`。
+- `2026-0712-schema-proposal-canonical-diff-builder.md`
+  - #762 schema proposal canonical diff builder。Sample19 versioned canonical snapshotとvalidated proposalからfield/key/connected-relationを含むentity signatureを独立比較し、add/change/remove/unchanged/conflictを導出。declared diffの完全一致を要求し、矛盾claim・不正version/project/duplicate snapshotをfail closed。Full suite 442 tests / 13,969 assertions。Status: `FIRST_SLICE_DONE`。
+- `2026-0712-schema-proposal-artifact-contract-foundation.md`
+  - #761 schema proposal artifact contract基盤。Sample19 standalone source JSON、versioned golden proposal JSON、derived Markdownを追加し、`proposal_only`・`apply_supported=false`・SHA/JSON Pointer traceability・deterministic non-AI provenanceを固定。unsafe flag、invalid evidence、duplicate/dangling参照、unknown target/diffをfail closedする共通validatorを追加。Full suite 438 tests / 13,948 assertions。Status: `FIRST_SLICE_DONE`。
+- `2026-0712-sample19-reviewable-schema-proposal-gap-inventory.md`
+  - #760 Sample19 review可能schema proposal gap棚卸し。source JSONとseed/outputの間にversioned proposal artifact境界がない1 gapへ集約。JSON正本＋derived Markdown、`proposal_only`・`apply_supported=false`、SHA-256・JSON Pointer evidence、候補群・question/assumption・provenance・canonical diff category、fail-closed validationを確定。AI call・persistence・SQL・applyは除外。Status: `DONE_ONE_GAP`。
+- `2026-0712-post-g-l3-roadmap-checkpoint.md`
+  - #759 G-L3後roadmap checkpoint。次のbounded laneとしてSample19のG-L4 reviewable schema proposal調査を選定。user JSONと確定済みseed/outputの間にmachine-readable proposal・source evidence・assumption/question・canonical diffがない具体gapを対象とし、generic AI service、自動mutation、review request実行、追加Mtool置換はpark。Status: `DONE`。
+- `2026-0712-live-mtool-inspection-http-browser-promotion.md`
+  - #758 live Mtool inspection HTTP/browser昇格。実admin stackでlogin redirect、認証後flag-off 404、flag-on 29 live rows、`OPENAPI-JSON` exact selection、enabled/runtime/form controlゼロ、canonical return、Apache log上inspection POSTゼロを確認。Compose switch passthroughを補完し、検証後stackをdefault-offへ復元。G-L3達成。Full suite 431 tests / 13,918 assertions。Status: `DONE_QUALIFIED`。
+- `2026-0712-live-mtool-source-output-inspection-first-implementation.md`
+  - #757 live Mtool Source Output inspection初回実装。default-off・認証必須・GET-onlyのMTOOL専用parallel routeを追加し、実Source Output catalogを1回read、宣言済み7 fieldだけをmap、generated list/detailをform・execution bindingなしでrender。empty/unknown/error fail-closedとcanonical return linkをfast coverageで固定。Full suite 430 tests / 13,916 assertions。Status: `FIRST_SLICE_DONE`。
+- `2026-0712-live-mtool-source-output-inspection-preflight.md`
+  - #756 live Mtool Source Output inspection preflight。`GET /projects/MTOOL/source-outputs/no-code-inspection`、既存admin/config＋publisher authorization、default-off `MTOOL_NO_CODE_SELF_INSPECTION_ENABLED`、catalog 1回read、宣言済み7 field map、list/detail限定render、form/action実行なし、disabled/non-MTOOL/error fail-closed、fast test matrixを実装前に固定。Status: `DONE`。
+- `2026-0712-mtool-contained-dogfooding-workflow-candidate-inventory.md`
+  - #755 Mtool限定dogfooding workflow候補棚卸し。既存MTOOL Source Output dogfooding contractを実repository dataへ接続するparallel・default-off・read-only inspectionを最初のG-L3候補に選定。review request、schema/DBAccess mutation、build/publishは複数write・外部side effectのため後段へ送り、route disable/removeだけでrollbackできる境界を採用。Status: `DONE`。
+- `2026-0712-sample29-second-sample-qualification-closure.md`
+  - #754 Sample29第2 sample qualification closure。#749の唯一gapだったproduction-shaped UI authorityが#753までで解消されたことをchecklist全項目で確認し、`update_support_case`を明示的除外付きbounded L1として認定。異なるdomain・managed outbox executionでも共通screen/schema/action/authority/test contractを再利用でき、G-L2達成。Status: `DONE_QUALIFIED_WITH_EXCLUSIONS`。
+- `2026-0712-sample29-live-ui-authority-browser-integration.md`
+  - #753 Sample29 live UI authority browser integration。専用smokeだけで`SAMPLE29:update_support_case`と`managed_outbox_v1`を有効化し、current・aliasの認証済みlive availabilityからUI authorityを導出。test側のaction/button強制enableを廃止し、real pending outbox submit、static artifact非authority、stub done/failed recoveryを実証。Full suite 424 tests / 13,879 assertions。Status: `DONE`。
+- `2026-0712-execution-model-aware-action-availability.md`
+  - #752 execution model対応action availability。direct guardedはreadiness/submit binding/Transaction Full、managed outboxはoperation identity/`managed_outbox_v1`を要求し、required capability診断を返すGET-only zero-dispatch contractへ拡張。Full suite 424 tests / 13,878 assertions。Status: `FIRST_SLICE_DONE`。
+- `2026-0712-reusable-generated-ui-authority-policy-foundation.md`
+  - #751 再利用可能generated UI authority policy基盤。global default-off switch＋正規化`PROJECT:action` allowlistへbindingを一般化し、malformed無視・重複排除・Sample18 legacy互換・static artifact非注入をfast coverageで固定。Full suite 424 tests / 13,861 assertions。Status: `FIRST_SLICE_DONE`。
+- `2026-0712-sample29-reusable-ui-authority-preflight.md`
+  - #750 Sample29再利用可能UI authority preflight。Sample18 direct guarded route/Transaction FullとSample29 managed operation outbox/durable recoveryをexecution modelとして分離し、default-off project/action allowlist・capability-aware availabilityの順序を確定。Status: `DONE`。
+- `2026-0712-sample29-l1-qualification-gap-inventory.md`
+  - #749 Sample29 L1 qualification gap棚卸し。schema・screen・scope認可・current/alias・real outbox enqueue・generated DBAccess処理・failed/retry recoveryはPass。browser testがaction stateを強制変更しておりserver-injected live UI authority未実証の1 gap。Status: `DONE_ONE_GAP`。
+- `2026-0712-first-l1-pattern-and-second-sample-selection.md`
+  - #748 最初のL1 pattern抽出・第2 sample選定。恒久qualification checklistを追加し、別domain・scoped update・current/alias・outbox/generated DBAccess証跡を持つSample29をG-L2比較対象へ選定。Status: `DONE`。
+- `2026-0712-sample18-l1-no-code-qualification.md`
+  - #747 Sample18 L1 No Code qualification。list/detail/form・filter・selected-rowと、明示default-off create actionのcurrent/alias authority・real commit/rollback証跡により、最初のbounded L1 entryとしてB8・G-L1を達成。full CRUD・hand-coded route置換は対象外。Status: `DONE_QUALIFIED`。
+- `2026-0712-post-transaction-full-next-main-plan-selection.md`
+  - #746 Transaction Full後の次主計画選定。park済み広範projectを再開せず、bridge B8・roadmap G-L1に対するSample18 L1 No Code qualification棚卸しを#747へ昇格。Status: `DONE`。
+- `2026-0712-post-transaction-full-local-commit-stack-checkpoint.md`
+  - #745 Transaction Full後local commit-stack checkpoint。origin更新後develop比0 behind・32 aheadを確認し、重複した最終棚卸し/再auditの2 commitだけをsquashして31 semantic commitsへ整理。他は設計・実装・証跡境界として維持。Status: `DONE`。
+- `2026-0712-mtool-self-transaction-full-gap-only-audit.md`
+  - #744 Mtool本体Transaction Full gap限定audit。31 write-text files・172 transaction call sitesを棚卸しし、主要複合pathは既存transaction済み、残候補は経路単一write・排他的upsert・生成SQL・cross-store recovery domainと確認。同一DB atomicityの具体gapなし。Status: `DONE_NO_GAP`。
+- `2026-0712-transaction-full-overall-completion-inventory.md`
+  - #743 Transaction Full全体完了棚卸し。同一DBのgenerated DBAccess複合処理について、単一shared transaction、必須1件失敗時全rollback、全成功時一括commitをPDO・mysqli、Sample14、Sample18証跡で完了判定。残りはMtool本体gap-only audit。Status: `DONE`。
+- `2026-0712-post-authenticated-ui-authority-integration-lane-closure.md`
+  - #742 認証済生成UI権限integration後lane closure。Sample18 createのfast/current/alias/real HTTP証跡を確認し、default-offのままlaneを完了。追加actionは個別field・allowlist・transaction証跡までpark。Status: `DONE`。
+- `2026-0712-authenticated-current-alias-ui-authority-integration.md`
+  - #741 Sample18 authenticated current/alias UI authority integration。明示gateとlive認証済availabilityを通したcurrent・alias previewでcreateのstub guarded POSTを各1回、allowlist外completeを0回と実証。real commit/rollbackは独立HTTP smokeで維持。Status: `DONE`。
+- `2026-0711-generated-custom-proxy-transaction-mutation-fixture.md`
+  - #716 generated Custom Proxy transaction mutation fixture。2個の通常DBAccess insert stepをgenerated endpointで実行し、成功時は両commit・insert ID応答、2 step目duplicate failure時は1 step目もrollback・NG応答となることを実DB状態まで検証。Status: `FIRST_SLICE_DONE`。
+- `2026-0711-generated-custom-proxy-transaction-wrapper-integration.md`
+  - #715 generated Custom Proxy transaction wrapper integration。旧 native mysqli / autocommit 前提を shared runtime の begin/commit/rollback/state API へ置換し、driver-neutral last insert id を追加。success時 commit、required step failure時 rollback の生成contractを固定。Status: `FIRST_SLICE_DONE`。
+- `2026-0711-transaction-full-call-site-inventory.md`
+  - #714 Transaction Full call-site inventory。最優先を既存 `in_transaction` metadata を持つ generated Custom Proxy に確定し、Sample14 は read-only で mutation proof 不足、Sample18 は app/config cross-store、Mtool 本体の主要 multi-write repository は既に PDO transaction 済みと分類。Status: `DONE`。
+- `2026-0711-generated-dbaccess-transaction-full-foundation.md`
+  - #712-#713 Generated DBAccess Transaction Full foundation。DBAccess class を transaction-unaware のまま保ち、composite caller が shared `$mtooldb` transaction を所有する方針を確定。mysqli transaction 委譲・state tracking・SQL error 正規化を追加し、PDO/SQLite と mysqli/MariaDB で複数 DBAccess instance の全 commit・全 rollback を実証。Status: `FIRST_SLICE_DONE`。
+- `2026-0711-generated-dbaccess-transaction-full-inventory.md`
+  - #711 Generated DBAccess Transaction Full の棚卸し。生成 DBAccess の shared connection、PDO-only transaction API、共通 failure contract、Sample18 固有 coverage を確認し、DBAccess class は変更せず composite caller が transaction boundary を所有する最小方針へ確定。Status: `DONE`。
 - `2026-0711-unpushed-commit-stack-inventory.md`
   - 未push 188 commits の棚卸し。全 commit 一覧、分類、整理判断を記録し、広範 rewrite / squash は行わず意味単位の stack として保持する方針を確認。Status: `CHECKPOINT_DONE`。
 - `2026-0711-post-readiness-commit-stack-checkpoint.md`

@@ -12,6 +12,33 @@ use PHPUnit\Framework\TestCase;
 
 final class SchemaMetadataRepositoriesSqliteTest extends TestCase
 {
+    public function testDataClassAtomicRunnerRollsBackAndJoinsOuterTransaction(): void
+    {
+        $pdo = new PDO('sqlite::memory:');
+        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $pdo->exec('CREATE TABLE atomic_probe (value TEXT NOT NULL)');
+
+        try {
+            app_data_class_pdo_run_atomic($pdo, static function () use ($pdo): void {
+                $pdo->exec("INSERT INTO atomic_probe (value) VALUES ('owned')");
+                throw new RuntimeException('force rollback');
+            });
+            self::fail('owned transaction failure must be rethrown');
+        } catch (RuntimeException $exception) {
+            self::assertSame('force rollback', $exception->getMessage());
+        }
+        self::assertFalse($pdo->inTransaction());
+        self::assertSame(0, (int) $pdo->query('SELECT COUNT(*) FROM atomic_probe')->fetchColumn());
+
+        $pdo->beginTransaction();
+        app_data_class_pdo_run_atomic($pdo, static function () use ($pdo): void {
+            $pdo->exec("INSERT INTO atomic_probe (value) VALUES ('outer')");
+        });
+        self::assertTrue($pdo->inTransaction());
+        $pdo->rollBack();
+        self::assertSame(0, (int) $pdo->query('SELECT COUNT(*) FROM atomic_probe')->fetchColumn());
+    }
+
     public function testTableAndDataClassMetadataRepositoriesWorkWithSqliteConfigStore(): void
     {
         $app = $this->createBootstrappedSqliteApp();
