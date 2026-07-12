@@ -239,6 +239,18 @@ function app_run_http_request(): void
                 app_render_no_code_public_runtime_execution_page($app, $request);
                 return;
 
+            case 'no_code_public_runtime_action_availability':
+                app_render_no_code_public_runtime_action_availability_page($app, $request);
+                return;
+
+            case 'no_code_public_runtime_current_action_availability':
+                app_render_no_code_public_runtime_current_action_availability_page($app, $request);
+                return;
+
+            case 'no_code_public_runtime_alias_action_availability':
+                app_render_no_code_public_runtime_alias_action_availability_page($app, $request);
+                return;
+
             case 'no_code_public_runtime_current_execution':
                 app_render_no_code_public_runtime_current_execution_page($app, $request);
                 return;

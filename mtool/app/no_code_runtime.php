@@ -334,6 +334,104 @@ function app_no_code_runtime_definition_with_action_policy_overlay(array $defini
     return $overlaid;
 }
 
+function app_no_code_runtime_server_availability_overlay_enabled(): bool
+{
+    return in_array(
+        strtolower(trim((string) getenv('MTOOL_NO_CODE_SERVER_AVAILABILITY_OVERLAY'))),
+        ['1', 'true', 'yes', 'on'],
+        true,
+    );
+}
+
+/**
+ * @param array<string,mixed> $definition
+ * @return array<string,mixed>
+ */
+function app_no_code_runtime_server_availability_policy(
+    array $definition,
+    bool $overlayFlagEnabled,
+    string $transactionFullGate,
+): array {
+    $policyContracts = [];
+    foreach (($definition['contracts'] ?? []) as $contract) {
+        if (!is_array($contract)) {
+            continue;
+        }
+
+        $policyActions = [];
+        foreach (($contract['actions'] ?? []) as $action) {
+            if (!is_array($action)) {
+                continue;
+            }
+
+            $actionKey = (string) ($action['action_key'] ?? '');
+            if ($actionKey === '') {
+                continue;
+            }
+            $authorizationPolicy = is_array($action['policy'] ?? null) ? $action['policy'] : [];
+            $readiness = is_array($action['readiness_metadata'] ?? null) ? $action['readiness_metadata'] : [];
+            $submitGate = is_array($action['submit_binding_gate'] ?? null) ? $action['submit_binding_gate'] : [];
+            $failureReasons = array_values(array_filter(
+                array_map('strval', is_array($readiness['failure_reasons'] ?? null) ? $readiness['failure_reasons'] : []),
+                static fn (string $reason): bool => $reason !== '',
+            ));
+            $failedChecks = [];
+            if (!$overlayFlagEnabled) {
+                $failedChecks[] = 'overlay_flag_disabled';
+            }
+            if (($authorizationPolicy['evaluated'] ?? false) !== true || ($authorizationPolicy['allowed'] ?? false) !== true) {
+                $failedChecks[] = 'authorization_not_allowed';
+            }
+            if (($readiness['route_compatible'] ?? false) !== true) {
+                $failedChecks[] = 'route_not_compatible';
+            }
+            if ((string) ($readiness['readiness_state'] ?? '') !== 'candidate_ready') {
+                $failedChecks[] = 'readiness_not_candidate_ready';
+            }
+            if (($readiness['availability_candidate'] ?? false) !== true) {
+                $failedChecks[] = 'availability_candidate_false';
+            }
+            if ($failureReasons !== []) {
+                $failedChecks[] = 'readiness_has_failures';
+            }
+            if ((string) ($action['submit_route'] ?? '') === ''
+                || ($submitGate['runtime_click_binding'] ?? false) !== true
+                || (string) ($submitGate['submit_trigger'] ?? '') !== 'guarded_click') {
+                $failedChecks[] = 'guarded_submit_binding_missing';
+            }
+            if (($submitGate['mutation_enabled'] ?? true) !== false) {
+                $failedChecks[] = 'mutation_gate_not_disabled';
+            }
+            if ($transactionFullGate !== 'transaction_full_v1') {
+                $failedChecks[] = 'transaction_full_gate_missing';
+            }
+
+            $policyActions[] = [
+                'action_key' => $actionKey,
+                'availability' => $failedChecks === [] ? 'enabled' : 'disabled',
+                'policy' => [
+                    'failed_checks' => $failedChecks,
+                    'overlay_source' => 'server_readiness_v1',
+                    'overlay_flag_enabled' => $overlayFlagEnabled,
+                    'transaction_full_gate' => $transactionFullGate,
+                    'readiness_state' => (string) ($readiness['readiness_state'] ?? ''),
+                    'availability_candidate' => (bool) ($readiness['availability_candidate'] ?? false),
+                    'can_submit' => (bool) ($readiness['can_submit'] ?? false),
+                    'failure_reasons' => $failureReasons,
+                ],
+            ];
+        }
+        $policyContracts[] = ['actions' => $policyActions];
+    }
+
+    return [
+        'overlay_source' => 'server_readiness_v1',
+        'overlay_flag_enabled' => $overlayFlagEnabled,
+        'transaction_full_gate' => $transactionFullGate,
+        'contracts' => $policyContracts,
+    ];
+}
+
 /**
  * @param list<array<string,mixed>> $fields
  * @param list<array<string,mixed>> $rows
@@ -1272,6 +1370,81 @@ function app_no_code_runtime_preview_js(): string
 
   function hasRuntimeDataBinding() {
     return runtimeDataBindingUrl() !== '';
+  }
+
+  function actionAvailabilityBindingUrl() {
+    return executionBinding && executionBinding.action_availability_url
+      ? String(executionBinding.action_availability_url)
+      : '';
+  }
+
+  function writeServerActionAvailabilityDiagnostic(actionKey, state, message) {
+    document.querySelectorAll('.no-code-actions button[data-action-key]').forEach(function (button) {
+      if ((button.getAttribute('data-action-key') || '') !== actionKey) {
+        return;
+      }
+      var control = button.closest('[data-action-control]');
+      if (!control) {
+        return;
+      }
+      control.setAttribute('data-server-action-availability', state);
+      var diagnostic = control.querySelector('[data-server-action-availability-diagnostic]');
+      if (!diagnostic) {
+        diagnostic = document.createElement('small');
+        diagnostic.setAttribute('data-server-action-availability-diagnostic', actionKey);
+        diagnostic.className = 'no-code-action-hint';
+        control.appendChild(diagnostic);
+      }
+      diagnostic.textContent = message;
+    });
+  }
+
+  function loadServerActionAvailabilityDiagnostics() {
+    var url = actionAvailabilityBindingUrl();
+    if (!url) {
+      return;
+    }
+    fetch(url, {
+      method: 'GET',
+      credentials: 'same-origin',
+      headers: { Accept: 'application/json' }
+    }).then(function (response) {
+      if (!response.ok || !(response.headers.get('content-type') || '').includes('application/json')) {
+        throw new Error('availability_response_unavailable');
+      }
+      return response.json();
+    }).then(function (payload) {
+      var selection = payload && payload.selection ? payload.selection : {};
+      var identityMatches = payload
+        && payload.ok === true
+        && payload.contract_version === 'server-action-availability-v1'
+        && payload.mutation_enabled === false
+        && String(payload.project_key || '') === String(executionBinding.project_key || '')
+        && String(selection.artifact_key || '') === String(executionBinding.artifact_key || '');
+      if (!identityMatches) {
+        throw new Error('availability_identity_mismatch');
+      }
+      (Array.isArray(payload.actions) ? payload.actions : []).forEach(function (action) {
+        var actionKey = String(action.action_key || '');
+        if (!actionKey) {
+          return;
+        }
+        var state = action.availability === 'enabled' ? 'enabled' : 'disabled';
+        var failedChecks = Array.isArray(action.failed_checks) ? action.failed_checks : [];
+        var message = 'Server availability: ' + state + (failedChecks.length ? ' (' + failedChecks.join(', ') + ')' : '');
+        writeServerActionAvailabilityDiagnostic(actionKey, state, message);
+      });
+    }).catch(function (error) {
+      document.querySelectorAll('.no-code-actions button[data-action-key]').forEach(function (button) {
+        writeServerActionAvailabilityDiagnostic(
+          button.getAttribute('data-action-key') || '',
+          'unavailable',
+          error && error.message === 'availability_identity_mismatch'
+            ? 'Server availability: stale preview; refresh required.'
+            : 'Server availability: unavailable.'
+        );
+      });
+    });
   }
 
   function runtimeDataUrlWithSelectedKey(selectedKey) {
@@ -4204,6 +4377,8 @@ function app_no_code_runtime_preview_js(): string
       }
     });
   });
+
+  loadServerActionAvailabilityDiagnostics();
 
   document.querySelectorAll('[data-intent-draft-copy]').forEach(function (button) {
     button.addEventListener('click', function () {

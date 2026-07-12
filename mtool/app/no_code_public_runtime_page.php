@@ -38,6 +38,15 @@ function app_no_code_public_runtime_execution_path(string $projectKey, string $a
         . '/execute.json';
 }
 
+function app_no_code_public_runtime_action_availability_path(string $projectKey, string $artifactKey): string
+{
+    return '/runs/no-code/'
+        . rawurlencode(app_normalize_project_key($projectKey))
+        . '/'
+        . rawurlencode($artifactKey)
+        . '/action-availability.json';
+}
+
 function app_no_code_public_runtime_current_preview_path(string $projectKey): string
 {
     return '/runs/no-code/'
@@ -57,6 +66,13 @@ function app_no_code_public_runtime_current_data_path(string $projectKey): strin
     return '/runs/no-code/'
         . rawurlencode(app_normalize_project_key($projectKey))
         . '/current/runtime-data.json';
+}
+
+function app_no_code_public_runtime_current_action_availability_path(string $projectKey): string
+{
+    return '/runs/no-code/'
+        . rawurlencode(app_normalize_project_key($projectKey))
+        . '/current/action-availability.json';
 }
 
 function app_no_code_public_runtime_alias_preview_path(string $projectKey, string $aliasKey): string
@@ -84,6 +100,15 @@ function app_no_code_public_runtime_alias_data_path(string $projectKey, string $
         . '/alias/'
         . rawurlencode(app_no_code_public_runtime_normalize_alias_key($aliasKey))
         . '/runtime-data.json';
+}
+
+function app_no_code_public_runtime_alias_action_availability_path(string $projectKey, string $aliasKey): string
+{
+    return '/runs/no-code/'
+        . rawurlencode(app_normalize_project_key($projectKey))
+        . '/alias/'
+        . rawurlencode(app_no_code_public_runtime_normalize_alias_key($aliasKey))
+        . '/action-availability.json';
 }
 
 function app_no_code_public_runtime_artifact_cache_control(): string
@@ -143,6 +168,30 @@ function app_no_code_public_runtime_demo_processing_requested(array $post): bool
 function app_no_code_public_runtime_data_contract_version(): string
 {
     return 'no-code-runtime-data-v0';
+}
+
+function app_no_code_public_runtime_action_availability_contract_version(): string
+{
+    return 'server-action-availability-v1';
+}
+
+/** @return array{status_code:int,payload:array<string,mixed>} */
+function app_no_code_public_runtime_action_availability_error_response(string $error, int $statusCode): array
+{
+    return [
+        'status_code' => $statusCode,
+        'payload' => [
+            'ok' => false,
+            'contract_version' => app_no_code_public_runtime_action_availability_contract_version(),
+            'project_key' => '',
+            'selection' => [],
+            'overlay_flag_enabled' => false,
+            'transaction_full_gate' => '',
+            'mutation_enabled' => false,
+            'actions' => [],
+            'error' => $error,
+        ],
+    ];
 }
 
 /**
@@ -1476,6 +1525,95 @@ function app_no_code_public_runtime_execution_response_for_candidate(
 }
 
 /**
+ * Builds presentation-only action availability and never invokes a dispatcher.
+ *
+ * @param array<string,mixed> $candidate
+ * @param array<string,mixed>|null $principal
+ * @return array{status_code:int,payload:array<string,mixed>}
+ */
+function app_no_code_public_runtime_action_availability_response_for_candidate(
+    array $app,
+    string $projectKey,
+    array $candidate,
+    ?array $principal,
+    bool $overlayFlagEnabled,
+    string $transactionFullGate,
+    string $selectionKind = 'artifact',
+    string $aliasKey = '',
+): array {
+    if ($principal === null) {
+        return app_no_code_public_runtime_action_availability_error_response(
+            'runtime action availability requires an authenticated principal.',
+            401,
+        );
+    }
+
+    $artifactDefinitionResult = app_no_code_public_runtime_candidate_screen_definition($app, $projectKey, $candidate);
+    if (!$artifactDefinitionResult['ok']) {
+        return app_no_code_public_runtime_action_availability_error_response($artifactDefinitionResult['error'], 422);
+    }
+    $policyDefinitionResult = app_no_code_screen_definition_from_project($app, $projectKey, $principal);
+    if (!$policyDefinitionResult['ok']) {
+        return app_no_code_public_runtime_action_availability_error_response($policyDefinitionResult['error'], 422);
+    }
+
+    $definition = app_no_code_runtime_definition_with_action_policy_overlay(
+        $artifactDefinitionResult['definition'],
+        $policyDefinitionResult['definition'],
+    );
+    $availabilityPolicy = app_no_code_runtime_server_availability_policy(
+        $definition,
+        $overlayFlagEnabled,
+        $transactionFullGate,
+    );
+
+    $actions = [];
+    foreach (($availabilityPolicy['contracts'] ?? []) as $contract) {
+        if (!is_array($contract)) {
+            continue;
+        }
+        foreach (($contract['actions'] ?? []) as $action) {
+            if (!is_array($action)) {
+                continue;
+            }
+            $policy = is_array($action['policy'] ?? null) ? $action['policy'] : [];
+            $failedChecks = is_array($policy['failed_checks'] ?? null) ? $policy['failed_checks'] : [];
+            $actions[] = [
+                'action_key' => (string) ($action['action_key'] ?? ''),
+                'availability' => (string) ($action['availability'] ?? 'disabled'),
+                'authorization_allowed' => !in_array('authorization_not_allowed', $failedChecks, true),
+                'failed_checks' => $failedChecks,
+                'readiness_state' => (string) ($policy['readiness_state'] ?? ''),
+                'availability_candidate' => (bool) ($policy['availability_candidate'] ?? false),
+                'can_submit' => (bool) ($policy['can_submit'] ?? false),
+                'failure_reasons' => is_array($policy['failure_reasons'] ?? null) ? $policy['failure_reasons'] : [],
+                'mutation_enabled' => false,
+            ];
+        }
+    }
+
+    return [
+        'status_code' => 200,
+        'payload' => [
+            'ok' => true,
+            'contract_version' => app_no_code_public_runtime_action_availability_contract_version(),
+            'project_key' => app_normalize_project_key($projectKey),
+            'selection' => [
+                'kind' => $selectionKind,
+                'alias_key' => $aliasKey,
+                'artifact_key' => (string) ($candidate['artifact_key'] ?? ''),
+                'revision_id' => (string) ($candidate['revision_id'] ?? ''),
+            ],
+            'overlay_flag_enabled' => $overlayFlagEnabled,
+            'transaction_full_gate' => $transactionFullGate,
+            'mutation_enabled' => false,
+            'actions' => $actions,
+            'error' => '',
+        ],
+    ];
+}
+
+/**
  * @param array{
  *     request_id:string
  * } $request
@@ -1540,13 +1678,25 @@ function app_no_code_public_runtime_preview_html_with_execution_binding(string $
 function app_no_code_public_runtime_preview_execution_binding(
     string $projectKey,
     array $candidate,
-    string $executionPath,
+    ?string $executionPath,
     ?string $dataPath = null,
+    ?string $availabilityPath = null,
 ): array {
-    $binding = app_no_code_public_runtime_execution_binding($projectKey, $candidate);
-    $binding['execution_url'] = $executionPath;
+    $binding = $executionPath !== null && $executionPath !== ''
+        ? app_no_code_public_runtime_execution_binding($projectKey, $candidate)
+        : [
+            'project_key' => app_normalize_project_key($projectKey),
+            'artifact_key' => (string) ($candidate['artifact_key'] ?? ''),
+            'revision_id' => (string) ($candidate['revision_id'] ?? ''),
+        ];
+    if ($executionPath !== null && $executionPath !== '') {
+        $binding['execution_url'] = $executionPath;
+    }
     if ($dataPath !== null && $dataPath !== '') {
         $binding['runtime_data_url'] = $dataPath;
+    }
+    if ($availabilityPath !== null && $availabilityPath !== '') {
+        $binding['action_availability_url'] = $availabilityPath;
     }
     return $binding;
 }
@@ -1568,6 +1718,7 @@ function app_send_no_code_public_runtime_candidate_preview_response(
     string $cacheControl,
     ?string $executionPath = null,
     ?string $dataPath = null,
+    ?string $availabilityPath = null,
 ): bool {
     $artifactKey = (string) ($candidate['artifact_key'] ?? '');
     if (!app_project_output_artifact_key_is_valid($artifactKey)) {
@@ -1595,8 +1746,8 @@ function app_send_no_code_public_runtime_candidate_preview_response(
         return false;
     }
 
-    $executionBinding = $executionPath !== null
-        ? app_no_code_public_runtime_preview_execution_binding($projectKey, $candidate, $executionPath, $dataPath)
+    $executionBinding = $executionPath !== null || $availabilityPath !== null
+        ? app_no_code_public_runtime_preview_execution_binding($projectKey, $candidate, $executionPath, $dataPath, $availabilityPath)
         : null;
     app_send_no_code_public_runtime_file_response($request, $previewPath, $cacheControl, $executionBinding);
     return true;
@@ -1649,6 +1800,8 @@ function app_render_no_code_public_runtime_preview_page(array $app, array $reque
         $candidateResult['item'],
         app_no_code_public_runtime_artifact_cache_control(),
         null,
+        null,
+        app_no_code_public_runtime_action_availability_path($projectKey, $artifactKey),
     )) {
         app_render_not_found_page($app, $request);
         return;
@@ -1714,6 +1867,112 @@ function app_render_no_code_public_runtime_execution_page(array $app, array $req
         app_no_code_public_runtime_dispatcher($app),
     );
 
+    app_send_json_response($request, $response['payload'], $response['status_code']);
+}
+
+/**
+ * @param array<string,mixed> $app
+ * @param array{request_id:string,method:string,path:string,route_params?:array<string,string>} $request
+ */
+function app_render_no_code_public_runtime_action_availability_page(array $app, array $request): void
+{
+    if (!app_request_method_is($request, 'GET')) {
+        $response = app_no_code_public_runtime_action_availability_error_response(
+            'runtime action availability endpoint requires GET.',
+            405,
+        );
+        app_send_json_response($request, $response['payload'], $response['status_code']);
+        return;
+    }
+
+    $projectKey = app_normalize_project_key(app_route_param($request, 'project_key'));
+    $artifactKey = trim(app_route_param($request, 'artifact_key'));
+    if ($projectKey === '' || !app_project_key_is_valid($projectKey)
+        || !app_project_output_artifact_key_is_valid($artifactKey)) {
+        $response = app_no_code_public_runtime_action_availability_error_response(
+            'runtime action availability artifact binding does not match.',
+            409,
+        );
+        app_send_json_response($request, $response['payload'], $response['status_code']);
+        return;
+    }
+
+    $candidateResult = app_pdo_find_approved_no_code_publish_candidate_for_artifact($app, $projectKey, $artifactKey);
+    if (!$candidateResult['ok'] || $candidateResult['item'] === null) {
+        $response = app_no_code_public_runtime_action_availability_error_response(
+            'runtime action availability artifact was not found.',
+            422,
+        );
+        app_send_json_response($request, $response['payload'], $response['status_code']);
+        return;
+    }
+
+    $response = app_no_code_public_runtime_action_availability_response_for_candidate(
+        $app,
+        $projectKey,
+        $candidateResult['item'],
+        app_auth_principal(),
+        app_no_code_runtime_server_availability_overlay_enabled(),
+        trim((string) getenv('MTOOL_NO_CODE_TRANSACTION_FULL_GATE')),
+    );
+    app_send_json_response($request, $response['payload'], $response['status_code']);
+}
+
+/** @param array<string,mixed> $app @param array<string,mixed> $request */
+function app_render_no_code_public_runtime_current_action_availability_page(array $app, array $request): void
+{
+    if (!app_request_method_is($request, 'GET')) {
+        $response = app_no_code_public_runtime_action_availability_error_response('runtime action availability endpoint requires GET.', 405);
+        app_send_json_response($request, $response['payload'], $response['status_code']);
+        return;
+    }
+    $projectKey = app_normalize_project_key(app_route_param($request, 'project_key'));
+    if ($projectKey === '' || !app_project_key_is_valid($projectKey)) {
+        $response = app_no_code_public_runtime_action_availability_error_response('runtime action availability project binding does not match.', 409);
+        app_send_json_response($request, $response['payload'], $response['status_code']);
+        return;
+    }
+    $candidateResult = app_pdo_find_current_approved_no_code_publish_candidate($app, $projectKey);
+    if (!$candidateResult['ok'] || $candidateResult['item'] === null) {
+        $response = app_no_code_public_runtime_action_availability_error_response('runtime action availability artifact was not found.', 422);
+        app_send_json_response($request, $response['payload'], $response['status_code']);
+        return;
+    }
+    $response = app_no_code_public_runtime_action_availability_response_for_candidate(
+        $app, $projectKey, $candidateResult['item'], app_auth_principal(),
+        app_no_code_runtime_server_availability_overlay_enabled(),
+        trim((string) getenv('MTOOL_NO_CODE_TRANSACTION_FULL_GATE')), 'current',
+    );
+    app_send_json_response($request, $response['payload'], $response['status_code']);
+}
+
+/** @param array<string,mixed> $app @param array<string,mixed> $request */
+function app_render_no_code_public_runtime_alias_action_availability_page(array $app, array $request): void
+{
+    if (!app_request_method_is($request, 'GET')) {
+        $response = app_no_code_public_runtime_action_availability_error_response('runtime action availability endpoint requires GET.', 405);
+        app_send_json_response($request, $response['payload'], $response['status_code']);
+        return;
+    }
+    $projectKey = app_normalize_project_key(app_route_param($request, 'project_key'));
+    $aliasKey = app_no_code_public_runtime_normalize_alias_key(app_route_param($request, 'alias_key'));
+    if ($projectKey === '' || !app_project_key_is_valid($projectKey)
+        || !app_no_code_public_runtime_alias_key_is_valid($aliasKey)) {
+        $response = app_no_code_public_runtime_action_availability_error_response('runtime action availability alias binding does not match.', 409);
+        app_send_json_response($request, $response['payload'], $response['status_code']);
+        return;
+    }
+    $candidateResult = app_pdo_find_approved_no_code_publish_candidate_for_alias($app, $projectKey, $aliasKey);
+    if (!$candidateResult['ok'] || $candidateResult['item'] === null) {
+        $response = app_no_code_public_runtime_action_availability_error_response('runtime action availability artifact was not found.', 422);
+        app_send_json_response($request, $response['payload'], $response['status_code']);
+        return;
+    }
+    $response = app_no_code_public_runtime_action_availability_response_for_candidate(
+        $app, $projectKey, $candidateResult['item'], app_auth_principal(),
+        app_no_code_runtime_server_availability_overlay_enabled(),
+        trim((string) getenv('MTOOL_NO_CODE_TRANSACTION_FULL_GATE')), 'alias', $aliasKey,
+    );
     app_send_json_response($request, $response['payload'], $response['status_code']);
 }
 
@@ -1980,6 +2239,7 @@ function app_render_no_code_public_runtime_current_preview_page(array $app, arra
         app_no_code_public_runtime_current_cache_control(),
         app_no_code_public_runtime_current_execution_path($projectKey),
         app_no_code_public_runtime_current_data_path($projectKey),
+        app_no_code_public_runtime_current_action_availability_path($projectKey),
     )) {
         app_render_not_found_page($app, $request);
         return;
@@ -2030,6 +2290,7 @@ function app_render_no_code_public_runtime_alias_preview_page(array $app, array 
         app_no_code_public_runtime_current_cache_control(),
         app_no_code_public_runtime_alias_execution_path($projectKey, $aliasKey),
         app_no_code_public_runtime_alias_data_path($projectKey, $aliasKey),
+        app_no_code_public_runtime_alias_action_availability_path($projectKey, $aliasKey),
     )) {
         app_render_not_found_page($app, $request);
         return;

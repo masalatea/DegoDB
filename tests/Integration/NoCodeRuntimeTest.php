@@ -11,6 +11,105 @@ use PHPUnit\Framework\TestCase;
 
 final class NoCodeRuntimeTest extends TestCase
 {
+    public function testServerAvailabilityPolicyIsFlaggedAuthorizedAndFailClosed(): void
+    {
+        $readyAction = [
+            'action_key' => 'create_task',
+            'submit_route' => '/generated-submit',
+            'policy' => ['evaluated' => true, 'allowed' => true],
+            'submit_binding_gate' => [
+                'runtime_click_binding' => true,
+                'submit_trigger' => 'guarded_click',
+                'mutation_enabled' => false,
+            ],
+            'readiness_metadata' => [
+                'route_compatible' => true,
+                'readiness_state' => 'candidate_ready',
+                'availability_candidate' => true,
+                'can_submit' => false,
+                'failure_reasons' => [],
+            ],
+        ];
+        $definition = ['contracts' => [[
+            'actions' => [$readyAction],
+            'screens' => [[
+                'screen_key' => 'task_form',
+                'actions' => [['action_key' => 'create_task']],
+            ]],
+        ]]];
+
+        $enabled = app_no_code_runtime_server_availability_policy(
+            $definition,
+            true,
+            'transaction_full_v1',
+        );
+        $enabledAction = $enabled['contracts'][0]['actions'][0] ?? [];
+        self::assertSame('enabled', $enabledAction['availability'] ?? '');
+        self::assertSame([], $enabledAction['policy']['failed_checks'] ?? ['unexpected']);
+        self::assertFalse($enabledAction['policy']['can_submit'] ?? true);
+        $overlaid = app_no_code_runtime_definition_with_action_policy_overlay($definition, $enabled);
+        self::assertSame('enabled', $overlaid['contracts'][0]['actions'][0]['availability'] ?? '');
+        self::assertSame('enabled', $overlaid['contracts'][0]['screens'][0]['actions'][0]['availability'] ?? '');
+        $renderActions = app_no_code_runtime_render_actions(
+            $overlaid['contracts'][0]['screens'][0]['actions'] ?? [],
+            $overlaid['contracts'][0]['actions'] ?? [],
+        );
+        self::assertTrue($renderActions[0]['enabled'] ?? false);
+        $html = app_no_code_runtime_render_screen_html([
+            'screen_key' => 'task_form',
+            'screen_type' => 'form',
+            'title' => 'Task form',
+            'fields' => [],
+            'actions' => $renderActions,
+            'data' => ['rows' => [], 'current_item' => []],
+        ]);
+        self::assertMatchesRegularExpression(
+            '/data-action-key="create_task"[^>]+data-action-availability="enabled"[^>]+data-action-enabled="true"/',
+            $html,
+        );
+
+        $flagOff = app_no_code_runtime_server_availability_policy(
+            $definition,
+            false,
+            'transaction_full_v1',
+        );
+        self::assertSame('disabled', $flagOff['contracts'][0]['actions'][0]['availability'] ?? '');
+        self::assertContains(
+            'overlay_flag_disabled',
+            $flagOff['contracts'][0]['actions'][0]['policy']['failed_checks'] ?? [],
+        );
+
+        $deniedDefinition = $definition;
+        $deniedDefinition['contracts'][0]['actions'][0]['policy']['allowed'] = false;
+        $denied = app_no_code_runtime_server_availability_policy(
+            $deniedDefinition,
+            true,
+            'transaction_full_v1',
+        );
+        self::assertContains(
+            'authorization_not_allowed',
+            $denied['contracts'][0]['actions'][0]['policy']['failed_checks'] ?? [],
+        );
+
+        $missingTransactionGate = app_no_code_runtime_server_availability_policy($definition, true, '');
+        self::assertContains(
+            'transaction_full_gate_missing',
+            $missingTransactionGate['contracts'][0]['actions'][0]['policy']['failed_checks'] ?? [],
+        );
+
+        $failedDefinition = $definition;
+        $failedDefinition['contracts'][0]['actions'][0]['readiness_metadata']['failure_reasons'] = ['runtime_missing'];
+        $failed = app_no_code_runtime_server_availability_policy(
+            $failedDefinition,
+            true,
+            'transaction_full_v1',
+        );
+        self::assertContains(
+            'readiness_has_failures',
+            $failed['contracts'][0]['actions'][0]['policy']['failed_checks'] ?? [],
+        );
+    }
+
     public function testRendersListDetailAndFormModelsFromGeneratedScreenDefinition(): void
     {
         $definition = $this->screenDefinition();
@@ -253,6 +352,14 @@ final class NoCodeRuntimeTest extends TestCase
         self::assertStringContainsString('total rows', $html);
         self::assertStringContainsString('Sync outbox is done. Fetching read-only live runtime data...', $html);
         self::assertStringContainsString('function runtimeDataBindingUrl()', $html);
+        self::assertStringContainsString('function actionAvailabilityBindingUrl()', $html);
+        self::assertStringContainsString('function loadServerActionAvailabilityDiagnostics()', $html);
+        self::assertStringContainsString('function writeServerActionAvailabilityDiagnostic(actionKey, state, message)', $html);
+        self::assertStringContainsString("payload.contract_version === 'server-action-availability-v1'", $html);
+        self::assertStringContainsString('payload.mutation_enabled === false', $html);
+        self::assertStringContainsString("method: 'GET'", $html);
+        self::assertStringContainsString("credentials: 'same-origin'", $html);
+        self::assertStringContainsString('Server availability: stale preview; refresh required.', $html);
         self::assertStringContainsString('function applyRuntimeDataPayload(payload)', $html);
         self::assertStringContainsString('function hiddenActionKeyControls(render, item, visibleFieldKeys)', $html);
         self::assertStringContainsString('data-runtime-hidden-action-key', $html);

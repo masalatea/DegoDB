@@ -178,6 +178,14 @@ final class OpenApiSourceOutputContractTest extends TestCase
             '/runs/no-code/SAMPLE28/current/runtime-data.json',
             app_no_code_public_runtime_current_data_path('SAMPLE28'),
         );
+        self::assertSame(
+            'no_code_public_runtime_current_action_availability',
+            app_route_match(['path' => '/runs/no-code/SAMPLE28/current/action-availability.json'])['name'],
+        );
+        self::assertSame(
+            '/runs/no-code/SAMPLE28/current/action-availability.json',
+            app_no_code_public_runtime_current_action_availability_path('SAMPLE28'),
+        );
 
         $noCodeRuntimeAliasExecutionRoute = app_route_match([
             'path' => '/runs/no-code/SAMPLE28/alias/stable-demo/execute.json',
@@ -202,6 +210,14 @@ final class OpenApiSourceOutputContractTest extends TestCase
             '/runs/no-code/SAMPLE28/alias/stable-demo/runtime-data.json',
             app_no_code_public_runtime_alias_data_path('SAMPLE28', 'Stable-Demo'),
         );
+        self::assertSame(
+            'no_code_public_runtime_alias_action_availability',
+            app_route_match(['path' => '/runs/no-code/SAMPLE28/alias/stable-demo/action-availability.json'])['name'],
+        );
+        self::assertSame(
+            '/runs/no-code/SAMPLE28/alias/stable-demo/action-availability.json',
+            app_no_code_public_runtime_alias_action_availability_path('SAMPLE28', 'Stable-Demo'),
+        );
 
         $noCodeRuntimeExecutionRoute = app_route_match([
             'path' => '/runs/no-code/SAMPLE28/20260702-010203-abcdef12/execute.json',
@@ -213,6 +229,17 @@ final class OpenApiSourceOutputContractTest extends TestCase
         self::assertSame(
             '/runs/no-code/SAMPLE28/20260702-010203-abcdef12/execute.json',
             app_no_code_public_runtime_execution_path('SAMPLE28', '20260702-010203-abcdef12'),
+        );
+
+        $noCodeRuntimeAvailabilityRoute = app_route_match([
+            'path' => '/runs/no-code/SAMPLE28/20260702-010203-abcdef12/action-availability.json',
+        ]);
+        self::assertSame('no_code_public_runtime_action_availability', $noCodeRuntimeAvailabilityRoute['name']);
+        self::assertSame('SAMPLE28', $noCodeRuntimeAvailabilityRoute['params']['project_key'] ?? '');
+        self::assertSame('20260702-010203-abcdef12', $noCodeRuntimeAvailabilityRoute['params']['artifact_key'] ?? '');
+        self::assertSame(
+            '/runs/no-code/SAMPLE28/20260702-010203-abcdef12/action-availability.json',
+            app_no_code_public_runtime_action_availability_path('SAMPLE28', '20260702-010203-abcdef12'),
         );
 
         $sourceOutputOperationRoute = app_route_match([
@@ -382,6 +409,9 @@ final class OpenApiSourceOutputContractTest extends TestCase
         self::assertFalse(app_route_requires_auth('no_code_public_runtime_preview'));
         self::assertFalse(app_route_requires_auth('no_code_public_runtime_current_preview'));
         self::assertTrue(app_route_requires_auth('no_code_public_runtime_execution'));
+        self::assertTrue(app_route_requires_auth('no_code_public_runtime_action_availability'));
+        self::assertTrue(app_route_requires_auth('no_code_public_runtime_current_action_availability'));
+        self::assertTrue(app_route_requires_auth('no_code_public_runtime_alias_action_availability'));
         self::assertTrue(app_route_requires_auth('no_code_public_runtime_current_execution'));
         self::assertTrue(app_route_requires_auth('no_code_public_runtime_alias_execution'));
         self::assertTrue(app_route_requires_auth('no_code_public_runtime_current_data'));
@@ -505,6 +535,7 @@ final class OpenApiSourceOutputContractTest extends TestCase
         self::assertStringContainsString('app_render_no_code_public_runtime_alias_preview_page', $publicRuntimePage);
         self::assertStringContainsString('app_pdo_find_approved_no_code_publish_candidate_for_alias', $publicRuntimePage);
         self::assertStringContainsString('app_no_code_public_runtime_execution_path', $publicRuntimePage);
+        self::assertStringContainsString('app_no_code_public_runtime_action_availability_path', $publicRuntimePage);
         self::assertStringContainsString('app_no_code_public_runtime_current_execution_path', $publicRuntimePage);
         self::assertStringContainsString('app_no_code_public_runtime_alias_execution_path', $publicRuntimePage);
         self::assertStringContainsString('app_no_code_public_runtime_current_data_path', $publicRuntimePage);
@@ -513,6 +544,9 @@ final class OpenApiSourceOutputContractTest extends TestCase
         self::assertStringContainsString('id="no-code-runtime-execution-binding"', $publicRuntimePage);
         self::assertStringContainsString('app_no_code_public_runtime_preview_execution_binding', $publicRuntimePage);
         self::assertStringContainsString("'runtime_data_url'", $publicRuntimePage);
+        self::assertStringContainsString("'action_availability_url'", $publicRuntimePage);
+        self::assertStringContainsString('app_no_code_public_runtime_current_action_availability_path($projectKey)', $publicRuntimePage);
+        self::assertStringContainsString('app_no_code_public_runtime_alias_action_availability_path($projectKey, $aliasKey)', $publicRuntimePage);
         self::assertStringContainsString('app_no_code_public_runtime_current_execution_path($projectKey)', $publicRuntimePage);
         self::assertStringContainsString('app_no_code_public_runtime_current_data_path($projectKey)', $publicRuntimePage);
         self::assertStringContainsString('app_no_code_public_runtime_alias_execution_path($projectKey, $aliasKey)', $publicRuntimePage);
@@ -523,6 +557,9 @@ final class OpenApiSourceOutputContractTest extends TestCase
         self::assertStringContainsString('app_render_no_code_public_runtime_current_data_page', $publicRuntimePage);
         self::assertStringContainsString('app_render_no_code_public_runtime_alias_data_page', $publicRuntimePage);
         self::assertStringContainsString('app_no_code_public_runtime_execution_response_for_candidate', $publicRuntimePage);
+        self::assertStringContainsString('app_no_code_public_runtime_action_availability_response_for_candidate', $publicRuntimePage);
+        self::assertStringContainsString('server-action-availability-v1', $publicRuntimePage);
+        self::assertStringContainsString("getenv('MTOOL_NO_CODE_TRANSACTION_FULL_GATE')", $publicRuntimePage);
         self::assertStringContainsString('app_no_code_public_runtime_data_response_for_candidate', $publicRuntimePage);
         self::assertStringContainsString('no-code-runtime-data-v0', $publicRuntimePage);
         self::assertStringContainsString('app_auth_principal()', $publicRuntimePage);
