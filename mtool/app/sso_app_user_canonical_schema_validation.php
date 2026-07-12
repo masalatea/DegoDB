@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 require_once __DIR__ . '/sso_app_user_project_policy.php';
+require_once __DIR__ . '/generated_name.php';
 
 /**
  * Validate canonical schema and explicit key/FK constraint evidence.
@@ -44,6 +45,15 @@ function app_sso_app_user_validate_canonical_schema(
     $dataClassCatalog = app_sso_app_user_schema_catalog($dataClasses);
     $dbAccessCatalog = app_sso_app_user_schema_catalog($dbAccessClasses, 'source_name');
     $roles = $policy['schema_roles'];
+    foreach ($roles as $physicalName) {
+        if (isset($dbAccessCatalog[$physicalName])) {
+            continue;
+        }
+        $generatedName = strtolower(app_generated_name_pascal_case($physicalName));
+        if (isset($dbAccessCatalog[$generatedName])) {
+            $dbAccessCatalog[$physicalName] = $dbAccessCatalog[$generatedName];
+        }
+    }
 
     $requiredColumns = [
         'application_user_table' => ['app_user_id', 'status'],
@@ -99,7 +109,7 @@ function app_sso_app_user_validate_canonical_schema(
     $requiredActions = [
         'application_user_table' => ['insert'],
         'external_identity_table' => ['select', 'insert'],
-        'profile_table' => ['insert', 'update'],
+        'profile_table' => ['update'],
     ];
     foreach ($requiredActions as $role => $actions) {
         $name = $roles[$role];
@@ -112,7 +122,7 @@ function app_sso_app_user_validate_canonical_schema(
             if (!is_array($function)) {
                 continue;
             }
-            $action = strtolower(trim((string) ($function['action_type'] ?? '')));
+            $action = app_sso_app_user_schema_action_family((string) ($function['action_type'] ?? ''));
             if ($action !== '') {
                 $available[$action] = true;
             }
@@ -141,6 +151,16 @@ function app_sso_app_user_validate_canonical_schema(
         $blockingGaps,
         $evidence,
     );
+}
+
+function app_sso_app_user_schema_action_family(string $actionType): string
+{
+    return match (strtoupper(trim($actionType))) {
+        'SELECT', 'SELECTLIST', 'SELECTSINGLE' => 'select',
+        'INSERT' => 'insert',
+        'UPDATE' => 'update',
+        default => strtolower(trim($actionType)),
+    };
 }
 
 /** @return array{blocking_gaps:list<string>,evidence:array<string,mixed>} */
