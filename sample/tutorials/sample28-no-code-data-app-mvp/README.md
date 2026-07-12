@@ -70,6 +70,7 @@ The generated browser smoke verifies:
 - React bridge browser smoke renders the generated scaffold and observes its action-intent emission path
 - React bridge display helpers render runtime cell `display_value` text without leaking raw `[object Object]` values
 - React bridge contract invariants fix the scaffold schema version, runtime/action intent versions, and required files
+- React bridge contract includes `hybrid_ownership_contract`, fixing the generated/custom/shared/fallback/test ownership split for this representative mixed workflow
 - React bridge form inputs keep local edit state and emit changed scalar values in action intents
 - React bridge form fields display existing required/readonly metadata as lightweight hints
 - React bridge action feedback displays the last generated action intent locally

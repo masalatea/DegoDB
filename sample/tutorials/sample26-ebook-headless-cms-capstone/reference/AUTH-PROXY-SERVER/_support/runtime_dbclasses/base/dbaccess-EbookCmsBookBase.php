@@ -245,19 +245,19 @@ class EbookCmsBookDBAccessBase
 
         $last_sql_command_for_mtooldb = 'update `ebook_cms_book` SET `title` = ?, `slug` = ?, `author_name` = ?, `genre_name` = ?, `status` = ?, `cover_image_url` = ?, `summary` = ?, `epub_download_url` = ?, `epub_mime_type` = ?, `epub_sha256` = ?, `published_at` = ?, `updated_at` = ? where `ebook_cms_book`.`id` = ?';
         $result = $mtooldb->execute($last_sql_command_for_mtooldb, [
-            $ebook_cms_bookObj->title,
-            $ebook_cms_bookObj->slug,
-            $ebook_cms_bookObj->author_name,
-            $ebook_cms_bookObj->genre_name,
-            $ebook_cms_bookObj->status,
-            $ebook_cms_bookObj->cover_image_url,
-            $ebook_cms_bookObj->summary,
-            $ebook_cms_bookObj->epub_download_url,
-            $ebook_cms_bookObj->epub_mime_type,
-            $ebook_cms_bookObj->epub_sha256,
-            $ebook_cms_bookObj->published_at,
-            $ebook_cms_bookObj->updated_at,
-            $ebook_cms_bookObj->id,
+            $EbookCmsChapterObj->title,
+            $EbookCmsChapterObj->slug,
+            $EbookCmsChapterObj->authorName,
+            $EbookCmsChapterObj->genreName,
+            $EbookCmsChapterObj->status,
+            $EbookCmsChapterObj->coverImageUrl,
+            $EbookCmsChapterObj->summary,
+            $EbookCmsChapterObj->epubDownloadUrl,
+            $EbookCmsChapterObj->epubMimeType,
+            $EbookCmsChapterObj->epubSha256,
+            $EbookCmsChapterObj->publishedAt,
+            $EbookCmsChapterObj->updatedAt,
+            $EbookCmsChapterObj->id,
         ]);
         if ($mtooldb->errno != 0) {
             error_log("Error occured while executing SQL: " . $mtooldb->error . " in " . __FILE__ . " on line " . __LINE__);
@@ -275,19 +275,19 @@ class EbookCmsBookDBAccessBase
 
         $last_sql_command_for_mtooldb = 'update `ebook_cms_book` SET `title` = ?, `slug` = ?, `author_name` = ?, `genre_name` = ?, `status` = ?, `cover_image_url` = ?, `summary` = ?, `epub_download_url` = ?, `epub_mime_type` = ?, `epub_sha256` = ?, `published_at` = ?, `updated_at` = ? where `ebook_cms_book`.`id` = ?';
         $result = $mtooldb->execute($last_sql_command_for_mtooldb, [
-            $ebook_cms_bookObj->title,
-            $ebook_cms_bookObj->slug,
-            $ebook_cms_bookObj->author_name,
-            $ebook_cms_bookObj->genre_name,
-            $ebook_cms_bookObj->status,
-            $ebook_cms_bookObj->cover_image_url,
-            $ebook_cms_bookObj->summary,
-            $ebook_cms_bookObj->epub_download_url,
-            $ebook_cms_bookObj->epub_mime_type,
-            $ebook_cms_bookObj->epub_sha256,
-            $ebook_cms_bookObj->published_at,
-            $ebook_cms_bookObj->updated_at,
-            $ebook_cms_bookObj->id,
+            $EbookCmsChapterObj->title,
+            $EbookCmsChapterObj->slug,
+            $EbookCmsChapterObj->authorName,
+            $EbookCmsChapterObj->genreName,
+            $EbookCmsChapterObj->status,
+            $EbookCmsChapterObj->coverImageUrl,
+            $EbookCmsChapterObj->summary,
+            $EbookCmsChapterObj->epubDownloadUrl,
+            $EbookCmsChapterObj->epubMimeType,
+            $EbookCmsChapterObj->epubSha256,
+            $EbookCmsChapterObj->publishedAt,
+            $EbookCmsChapterObj->updatedAt,
+            $EbookCmsChapterObj->id,
         ]);
         if ($mtooldb->errno != 0) {
             error_log("Error occured while executing SQL: " . $mtooldb->error . " in " . __FILE__ . " on line " . __LINE__);

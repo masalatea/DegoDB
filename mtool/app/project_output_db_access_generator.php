@@ -150,6 +150,7 @@ if (!class_exists('MtoolGeneratedDbAccessRuntimeDb')) {
 
         private ?PDO $pdo = null;
         private $mysqli = null;
+        private bool $mysqliTransactionActive = false;
 
         public function __construct()
         {
@@ -189,11 +190,11 @@ if (!class_exists('MtoolGeneratedDbAccessRuntimeDb')) {
                 throw new RuntimeException('mysqli is not available and no MTOOL_RUNTIME_DB_DSN / MTOOL_RUNTIME_SQLITE_PATH was provided.');
             }
 
-            $host = (string) (getenv('MTOOL_RUNTIME_DB_HOST') ?: '127.0.0.1');
-            $user = (string) (getenv('MTOOL_RUNTIME_DB_USER') ?: 'root');
-            $password = (string) getenv('MTOOL_RUNTIME_DB_PASSWORD');
-            $database = (string) getenv('MTOOL_RUNTIME_DB_NAME');
-            $port = (int) (getenv('MTOOL_RUNTIME_DB_PORT') ?: 3306);
+            $host = (string) (getenv('MTOOL_RUNTIME_DB_HOST') ?: (getenv('MTOOL_PROXY_DB_HOST') ?: '127.0.0.1'));
+            $user = (string) (getenv('MTOOL_RUNTIME_DB_USER') ?: (getenv('MTOOL_PROXY_DB_USER') ?: 'root'));
+            $password = (string) (getenv('MTOOL_RUNTIME_DB_PASSWORD') ?: (getenv('MTOOL_PROXY_DB_PASSWORD') ?: ''));
+            $database = (string) (getenv('MTOOL_RUNTIME_DB_NAME') ?: (getenv('MTOOL_PROXY_DB_NAME') ?: ''));
+            $port = (int) (getenv('MTOOL_RUNTIME_DB_PORT') ?: (getenv('MTOOL_PROXY_DB_PORT') ?: 3306));
 
             $this->mysqli = new mysqli($host, $user, $password, $database, $port);
             if ($this->mysqli->connect_errno !== 0) {
@@ -224,11 +225,18 @@ if (!class_exists('MtoolGeneratedDbAccessRuntimeDb')) {
             }
 
             if ($this->mysqli instanceof mysqli) {
-                $result = $this->mysqli->query($sql);
-                $this->errno = (int) $this->mysqli->errno;
-                $this->error = (string) $this->mysqli->error;
+                try {
+                    $result = $this->mysqli->query($sql);
+                    $this->errno = (int) $this->mysqli->errno;
+                    $this->error = (string) $this->mysqli->error;
 
-                return $result;
+                    return $result;
+                } catch (Throwable $exception) {
+                    $this->errno = max(1, (int) $exception->getCode());
+                    $this->error = $exception->getMessage();
+
+                    return false;
+                }
             }
 
             $this->errno = 1;
@@ -257,40 +265,47 @@ if (!class_exists('MtoolGeneratedDbAccessRuntimeDb')) {
             }
 
             if ($this->mysqli instanceof mysqli) {
-                $statement = $this->mysqli->prepare($sql);
-                if (!$statement instanceof mysqli_stmt) {
-                    $this->errno = (int) $this->mysqli->errno;
-                    $this->error = (string) $this->mysqli->error;
+                try {
+                    $statement = $this->mysqli->prepare($sql);
+                    if (!$statement instanceof mysqli_stmt) {
+                        $this->errno = (int) $this->mysqli->errno;
+                        $this->error = (string) $this->mysqli->error;
 
-                    return false;
-                }
-
-                if ($params !== []) {
-                    $types = '';
-                    $values = [];
-                    foreach (array_values($params) as $param) {
-                        if (is_int($param)) {
-                            $types .= 'i';
-                        } elseif (is_float($param)) {
-                            $types .= 'd';
-                        } else {
-                            $types .= 's';
-                        }
-                        $values[] = $param;
+                        return false;
                     }
-                    $statement->bind_param($types, ...$values);
-                }
 
-                $ok = $statement->execute();
-                $this->errno = (int) $statement->errno;
-                $this->error = (string) $statement->error;
-                if (!$ok || $this->errno !== 0) {
+                    if ($params !== []) {
+                        $types = '';
+                        $values = [];
+                        foreach (array_values($params) as $param) {
+                            if (is_int($param)) {
+                                $types .= 'i';
+                            } elseif (is_float($param)) {
+                                $types .= 'd';
+                            } else {
+                                $types .= 's';
+                            }
+                            $values[] = $param;
+                        }
+                        $statement->bind_param($types, ...$values);
+                    }
+
+                    $ok = $statement->execute();
+                    $this->errno = (int) $statement->errno;
+                    $this->error = (string) $statement->error;
+                    if (!$ok || $this->errno !== 0) {
+                        return false;
+                    }
+
+                    $result = $statement->get_result();
+
+                    return $result !== false ? $result : true;
+                } catch (Throwable $exception) {
+                    $this->errno = max(1, (int) $exception->getCode());
+                    $this->error = $exception->getMessage();
+
                     return false;
                 }
-
-                $result = $statement->get_result();
-
-                return $result !== false ? $result : true;
             }
 
             $this->errno = 1;
@@ -307,6 +322,25 @@ if (!class_exists('MtoolGeneratedDbAccessRuntimeDb')) {
             if ($this->pdo instanceof PDO) {
                 try {
                     return $this->pdo->beginTransaction();
+                } catch (Throwable $exception) {
+                    $this->errno = 1;
+                    $this->error = $exception->getMessage();
+
+                    return false;
+                }
+            }
+
+            if ($this->mysqli instanceof mysqli) {
+                try {
+                    $started = $this->mysqli->begin_transaction();
+                    if ($started) {
+                        $this->mysqliTransactionActive = true;
+                    } else {
+                        $this->errno = (int) $this->mysqli->errno;
+                        $this->error = (string) $this->mysqli->error;
+                    }
+
+                    return $started;
                 } catch (Throwable $exception) {
                     $this->errno = 1;
                     $this->error = $exception->getMessage();
@@ -337,6 +371,25 @@ if (!class_exists('MtoolGeneratedDbAccessRuntimeDb')) {
                 }
             }
 
+            if ($this->mysqli instanceof mysqli) {
+                try {
+                    $committed = $this->mysqli->commit();
+                    if ($committed) {
+                        $this->mysqliTransactionActive = false;
+                    } else {
+                        $this->errno = (int) $this->mysqli->errno;
+                        $this->error = (string) $this->mysqli->error;
+                    }
+
+                    return $committed;
+                } catch (Throwable $exception) {
+                    $this->errno = 1;
+                    $this->error = $exception->getMessage();
+
+                    return false;
+                }
+            }
+
             $this->errno = 1;
             $this->error = 'runtime DB transaction commit is not supported by this connection';
 
@@ -351,6 +404,25 @@ if (!class_exists('MtoolGeneratedDbAccessRuntimeDb')) {
             if ($this->pdo instanceof PDO) {
                 try {
                     return $this->pdo->rollBack();
+                } catch (Throwable $exception) {
+                    $this->errno = 1;
+                    $this->error = $exception->getMessage();
+
+                    return false;
+                }
+            }
+
+            if ($this->mysqli instanceof mysqli) {
+                try {
+                    $rolledBack = $this->mysqli->rollback();
+                    if ($rolledBack) {
+                        $this->mysqliTransactionActive = false;
+                    } else {
+                        $this->errno = (int) $this->mysqli->errno;
+                        $this->error = (string) $this->mysqli->error;
+                    }
+
+                    return $rolledBack;
                 } catch (Throwable $exception) {
                     $this->errno = 1;
                     $this->error = $exception->getMessage();
@@ -381,10 +453,44 @@ if (!class_exists('MtoolGeneratedDbAccessRuntimeDb')) {
                 }
             }
 
+            if ($this->mysqli instanceof mysqli) {
+                return $this->mysqliTransactionActive;
+            }
+
             $this->errno = 1;
             $this->error = 'runtime DB transaction state is not supported by this connection';
 
             return false;
+        }
+
+        public function lastInsertId(): ?int
+        {
+            $this->errno = 0;
+            $this->error = '';
+
+            if ($this->pdo instanceof PDO) {
+                try {
+                    $insertId = $this->pdo->lastInsertId();
+
+                    return is_numeric($insertId) ? (int) $insertId : null;
+                } catch (Throwable $exception) {
+                    $this->errno = 1;
+                    $this->error = $exception->getMessage();
+
+                    return null;
+                }
+            }
+
+            if ($this->mysqli instanceof mysqli) {
+                $insertId = $this->mysqli->insert_id;
+
+                return is_numeric($insertId) ? (int) $insertId : null;
+            }
+
+            $this->errno = 1;
+            $this->error = 'runtime DB last insert id is not supported by this connection';
+
+            return null;
         }
 
         public function real_escape_string($value): string

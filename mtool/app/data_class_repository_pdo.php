@@ -542,18 +542,26 @@ function app_pdo_create_data_class_metadata_field(
                 :ref_data_class_field_name
             )'
         );
-        $insert->execute([
-            ':project_id' => $projectId,
-            ':dataclass_pid' => $normalizedDataClassPid,
-            ':name' => trim((string) ($input['name'] ?? '')),
-            ':physical_name' => trim((string) ($input['physical_name'] ?? $input['name'] ?? '')),
-            ':datatype' => trim((string) ($input['datatype'] ?? '')),
-            ':field_list_order' => $maxOrder + 1,
-            ':ref_data_class_name' => trim((string) ($input['ref_data_class_name'] ?? '')),
-            ':ref_data_class_field_name' => trim((string) ($input['ref_data_class_field_name'] ?? '')),
-        ]);
-
-        app_data_class_pdo_touch_last_modified($pdo, $projectId, $normalizedDataClassPid);
+        app_data_class_pdo_run_atomic($pdo, static function () use (
+            $insert,
+            $projectId,
+            $normalizedDataClassPid,
+            $input,
+            $maxOrder,
+            $pdo,
+        ): void {
+            $insert->execute([
+                ':project_id' => $projectId,
+                ':dataclass_pid' => $normalizedDataClassPid,
+                ':name' => trim((string) ($input['name'] ?? '')),
+                ':physical_name' => trim((string) ($input['physical_name'] ?? $input['name'] ?? '')),
+                ':datatype' => trim((string) ($input['datatype'] ?? '')),
+                ':field_list_order' => $maxOrder + 1,
+                ':ref_data_class_name' => trim((string) ($input['ref_data_class_name'] ?? '')),
+                ':ref_data_class_field_name' => trim((string) ($input['ref_data_class_field_name'] ?? '')),
+            ]);
+            app_data_class_pdo_touch_last_modified($pdo, $projectId, $normalizedDataClassPid);
+        });
 
         return app_pdo_fetch_data_class_metadata_field_item(
             $app,
@@ -622,17 +630,25 @@ function app_pdo_update_data_class_metadata_field(
              WHERE PID = :pid
                AND ProjectPID = :project_id'
         );
-        $update->execute([
-            ':name' => trim((string) ($input['name'] ?? '')),
-            ':physical_name' => trim((string) ($input['physical_name'] ?? $input['name'] ?? '')),
-            ':datatype' => trim((string) ($input['datatype'] ?? '')),
-            ':ref_data_class_name' => trim((string) ($input['ref_data_class_name'] ?? '')),
-            ':ref_data_class_field_name' => trim((string) ($input['ref_data_class_field_name'] ?? '')),
-            ':pid' => $normalizedFieldPid,
-            ':project_id' => $projectId,
-        ]);
-
-        app_data_class_pdo_touch_last_modified($pdo, $projectId, (int) $row['dataclass_pid']);
+        app_data_class_pdo_run_atomic($pdo, static function () use (
+            $update,
+            $input,
+            $normalizedFieldPid,
+            $projectId,
+            $pdo,
+            $row,
+        ): void {
+            $update->execute([
+                ':name' => trim((string) ($input['name'] ?? '')),
+                ':physical_name' => trim((string) ($input['physical_name'] ?? $input['name'] ?? '')),
+                ':datatype' => trim((string) ($input['datatype'] ?? '')),
+                ':ref_data_class_name' => trim((string) ($input['ref_data_class_name'] ?? '')),
+                ':ref_data_class_field_name' => trim((string) ($input['ref_data_class_field_name'] ?? '')),
+                ':pid' => $normalizedFieldPid,
+                ':project_id' => $projectId,
+            ]);
+            app_data_class_pdo_touch_last_modified($pdo, $projectId, (int) $row['dataclass_pid']);
+        });
 
         return app_pdo_fetch_data_class_metadata_field_item(
             $app,
@@ -672,12 +688,19 @@ function app_pdo_delete_data_class_metadata_field(array $app, string $projectKey
              WHERE PID = :pid
                AND ProjectPID = :project_id'
         );
-        $statement->execute([
-            ':pid' => $normalizedFieldPid,
-            ':project_id' => $projectId,
-        ]);
-
-        app_data_class_pdo_touch_last_modified($pdo, $projectId, (int) $row['dataclass_pid']);
+        app_data_class_pdo_run_atomic($pdo, static function () use (
+            $statement,
+            $normalizedFieldPid,
+            $projectId,
+            $pdo,
+            $row,
+        ): void {
+            $statement->execute([
+                ':pid' => $normalizedFieldPid,
+                ':project_id' => $projectId,
+            ]);
+            app_data_class_pdo_touch_last_modified($pdo, $projectId, (int) $row['dataclass_pid']);
+        });
 
         return [
             'ok' => true,
@@ -797,4 +820,24 @@ function app_data_class_pdo_touch_last_modified(PDO $pdo, int $projectId, int $d
         ':pid' => $dataClassPid,
         ':project_id' => $projectId,
     ]);
+}
+
+function app_data_class_pdo_run_atomic(PDO $pdo, callable $callback): void
+{
+    $ownsTransaction = !$pdo->inTransaction();
+    if ($ownsTransaction) {
+        $pdo->beginTransaction();
+    }
+
+    try {
+        $callback();
+        if ($ownsTransaction) {
+            $pdo->commit();
+        }
+    } catch (Throwable $throwable) {
+        if ($ownsTransaction && $pdo->inTransaction()) {
+            $pdo->rollBack();
+        }
+        throw $throwable;
+    }
 }

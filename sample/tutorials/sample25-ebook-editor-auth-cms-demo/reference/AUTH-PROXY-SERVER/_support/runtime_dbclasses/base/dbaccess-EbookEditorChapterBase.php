@@ -58,15 +58,15 @@ class EbookEditorChapterDBAccessBase
 
         $last_sql_command_for_mtooldb = 'update `ebook_editor_chapter` SET `ebook_editor_book_id` = ?, `chapter_title` = ?, `chapter_slug` = ?, `status` = ?, `spine_order` = ?, `body_markdown` = ?, `published_at` = ?, `updated_at` = ? where `ebook_editor_chapter`.`id` = ?';
         $result = $mtooldb->execute($last_sql_command_for_mtooldb, [
-            $ebook_editor_chapterObj->ebook_editor_book_id,
-            $ebook_editor_chapterObj->chapter_title,
-            $ebook_editor_chapterObj->chapter_slug,
-            $ebook_editor_chapterObj->status,
-            $ebook_editor_chapterObj->spine_order,
-            $ebook_editor_chapterObj->body_markdown,
-            $ebook_editor_chapterObj->published_at,
-            $ebook_editor_chapterObj->updated_at,
-            $ebook_editor_chapterObj->id,
+            $EbookEditorChapterObj->ebookEditorBookId,
+            $EbookEditorChapterObj->chapterTitle,
+            $EbookEditorChapterObj->chapterSlug,
+            $EbookEditorChapterObj->status,
+            $EbookEditorChapterObj->spineOrder,
+            $EbookEditorChapterObj->bodyMarkdown,
+            $EbookEditorChapterObj->publishedAt,
+            $EbookEditorChapterObj->updatedAt,
+            $EbookEditorChapterObj->id,
         ]);
         if ($mtooldb->errno != 0) {
             error_log("Error occured while executing SQL: " . $mtooldb->error . " in " . __FILE__ . " on line " . __LINE__);
@@ -84,15 +84,15 @@ class EbookEditorChapterDBAccessBase
 
         $last_sql_command_for_mtooldb = 'update `ebook_editor_chapter` SET `ebook_editor_book_id` = ?, `chapter_title` = ?, `chapter_slug` = ?, `status` = ?, `spine_order` = ?, `body_markdown` = ?, `published_at` = ?, `updated_at` = ? where `ebook_editor_chapter`.`id` = ?';
         $result = $mtooldb->execute($last_sql_command_for_mtooldb, [
-            $ebook_editor_chapterObj->ebook_editor_book_id,
-            $ebook_editor_chapterObj->chapter_title,
-            $ebook_editor_chapterObj->chapter_slug,
-            $ebook_editor_chapterObj->status,
-            $ebook_editor_chapterObj->spine_order,
-            $ebook_editor_chapterObj->body_markdown,
-            $ebook_editor_chapterObj->published_at,
-            $ebook_editor_chapterObj->updated_at,
-            $ebook_editor_chapterObj->id,
+            $EbookEditorChapterObj->ebookEditorBookId,
+            $EbookEditorChapterObj->chapterTitle,
+            $EbookEditorChapterObj->chapterSlug,
+            $EbookEditorChapterObj->status,
+            $EbookEditorChapterObj->spineOrder,
+            $EbookEditorChapterObj->bodyMarkdown,
+            $EbookEditorChapterObj->publishedAt,
+            $EbookEditorChapterObj->updatedAt,
+            $EbookEditorChapterObj->id,
         ]);
         if ($mtooldb->errno != 0) {
             error_log("Error occured while executing SQL: " . $mtooldb->error . " in " . __FILE__ . " on line " . __LINE__);

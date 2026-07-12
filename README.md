@@ -53,6 +53,8 @@ Current no-code capability boundary / 現在の no-code 対応範囲:
 Original concept note: users who only have JSON files, JSON API cache, or JSON config can use [JSON To DB Entrance](docs/json-to-db-entrance.md) as an AI-assisted preparation layer. This is documentation and design guidance, not a JSON auto-import feature.
 初期構想の補足: JSON ファイル、JSON API キャッシュ、JSON 設定しかまだ持っていない利用者は、AI 支援の準備レイヤーとして [JSON から DB 設計へ入る入口](docs/json-to-db-entrance.md) を使えます。これはドキュメントと設計指針であり、JSON 自動取り込み機能ではありません。
 
+For the implemented confirmation-driven Codex/Claude path, see [AI Task-Packet Workflow](docs/ai-task-packet-workflow.md). It uses one shared validator and read-only review; Ollama is an explicit optional fallback. / 実装済みの確認駆動Codex/Claude経路は [AI task packetワークフロー](docs/ai-task-packet-workflow.md) を参照してください。共通validatorとread-only reviewを使い、Ollamaは明示optional fallbackです。
+
 ## Core Capabilities / 主要機能
 
 - Import database schemas into canonical metadata / データベーススキーマを正本メタデータへ取り込む

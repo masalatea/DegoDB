@@ -405,6 +405,7 @@ final class Sample18MiniTaskBoardDemoTest extends TestCase
             self::assertArrayHasKey($operationKey, $contracts);
             self::assertSame($expectation['curated_route_action'] ?? '', $contracts[$operationKey]['curated_route_action'] ?? '');
             self::assertSame($expectation['db_access_function'] ?? '', $contracts[$operationKey]['db_access_function'] ?? '');
+            self::assertSame($expectation['lifecycle'] ?? [], $contracts[$operationKey]['lifecycle'] ?? []);
             self::assertSame(
                 $inventoryByKey[$operationKey]['curated_route_action'] ?? '',
                 $contracts[$operationKey]['curated_route_action'] ?? '',
@@ -412,6 +413,10 @@ final class Sample18MiniTaskBoardDemoTest extends TestCase
             self::assertSame(
                 $inventoryByKey[$operationKey]['db_access_function'] ?? '',
                 $contracts[$operationKey]['db_access_function'] ?? '',
+            );
+            self::assertSame(
+                $inventoryByKey[$operationKey]['lifecycle'] ?? [],
+                $contracts[$operationKey]['lifecycle'] ?? [],
             );
             self::assertSame($contracts[$operationKey]['key_fields'] ?? [], $inventoryByKey[$operationKey]['key_fields'] ?? []);
             self::assertSame(
@@ -1185,6 +1190,8 @@ final class Sample18MiniTaskBoardDemoTest extends TestCase
         $timestamp = (string) ($submitContract['timestamp_fixture'] ?? '');
         $createExpectation = $submitContract['operations']['create_task_card'] ?? [];
         self::assertIsArray($createExpectation);
+        $completeExpectation = $submitContract['operations']['complete_task_card'] ?? [];
+        self::assertIsArray($completeExpectation);
 
         $sqlitePath = sys_get_temp_dir() . '/sample18-route-exec-' . bin2hex(random_bytes(4)) . '.sqlite';
         $previousSqlitePath = getenv('MTOOL_RUNTIME_SQLITE_PATH');
@@ -1275,6 +1282,34 @@ final class Sample18MiniTaskBoardDemoTest extends TestCase
             $insertedRows = $transactionDb->query('SELECT title FROM task_card ORDER BY id ASC');
             self::assertInstanceOf(MtoolGeneratedDbAccessPdoResult::class, $insertedRows);
             self::assertSame(['New generated task'], $insertedRows->fetch_row());
+
+            $completePost = array_merge(
+                ['operation_key' => 'complete_task_card', '_csrf_token' => 'client-token'],
+                ['id' => '1'],
+            );
+            $completed = app_lab_sample18_task_board_generated_submit_blocked_response(
+                'POST',
+                $completePost,
+                $timestamp,
+                'valid',
+                $app,
+                $principal,
+            );
+            self::assertGeneratedSubmitRouteResponseContract($completed, 200, 'executed', true, '');
+            self::assertSame('complete_task_card', $completed['payload']['operation_key'] ?? '');
+            self::assertSame('complete', $completed['payload']['curated_route_action'] ?? '');
+            self::assertSame('CompleteTaskCard', $completed['payload']['db_access_function'] ?? '');
+            self::assertSame(
+                array_merge($completeExpectation['expected_payload'] ?? [], ['id' => 1]),
+                $completed['payload']['normalized_payload'] ?? [],
+            );
+            self::assertSame('committed', $completed['payload']['transaction_result']['transaction_status'] ?? '');
+            self::assertSame('executed', $completed['payload']['transaction_result']['dbaccess_status'] ?? '');
+            self::assertSame('recorded', $completed['payload']['post_commit_recording']['recording_status'] ?? '');
+
+            $completedRows = $transactionDb->query('SELECT status, completed_at, updated_at FROM task_card WHERE id = 1');
+            self::assertInstanceOf(MtoolGeneratedDbAccessPdoResult::class, $completedRows);
+            self::assertSame(['done', $timestamp, $timestamp], $completedRows->fetch_row());
 
             $executionAuditKey = (string) ($executed['payload']['post_commit_recording']['execution_audit_result']['item']['event_key'] ?? '');
             self::assertNotSame('', $executionAuditKey);
@@ -1766,10 +1801,12 @@ final class Sample18MiniTaskBoardDemoTest extends TestCase
     {
         $previousMutationFlag = getenv('MTOOL_SAMPLE18_GENERATED_SUBMIT_MUTATION_ENABLED');
         $previousExecutorFlag = getenv('MTOOL_SAMPLE18_GENERATED_SUBMIT_EXECUTOR_ENABLED');
+        $previousRuntimeReferenceDir = getenv('MTOOL_SAMPLE18_GENERATED_SUBMIT_RUNTIME_REFERENCE_DIR');
 
         try {
             putenv('MTOOL_SAMPLE18_GENERATED_SUBMIT_MUTATION_ENABLED');
             putenv('MTOOL_SAMPLE18_GENERATED_SUBMIT_EXECUTOR_ENABLED');
+            putenv('MTOOL_SAMPLE18_GENERATED_SUBMIT_RUNTIME_REFERENCE_DIR');
 
             $default = app_lab_sample18_task_board_generated_submit_executor_config([]);
             self::assertSame('disabled', $default['status']);
@@ -1790,6 +1827,22 @@ final class Sample18MiniTaskBoardDemoTest extends TestCase
             self::assertSame('env', $envReady['executor_enablement_source']);
             self::assertSame('default_runtime_reference', $envReady['dependency_source']);
             self::assertSame([], $envReady['reasons']);
+
+            $envRuntimeDir = sys_get_temp_dir() . '/missing-sample18-env-runtime-' . bin2hex(random_bytes(4));
+            putenv('MTOOL_SAMPLE18_GENERATED_SUBMIT_RUNTIME_REFERENCE_DIR=' . $envRuntimeDir);
+            $envRuntime = app_lab_sample18_task_board_generated_submit_executor_config([]);
+            self::assertSame('failed', $envRuntime['status']);
+            self::assertSame('env', $envRuntime['runtime_reference_source']);
+            self::assertSame($envRuntimeDir, $envRuntime['runtime_reference_dir']);
+            self::assertStringStartsWith($envRuntimeDir, $envRuntime['missing_file']);
+
+            $appRuntimeDir = sys_get_temp_dir() . '/missing-sample18-app-runtime-' . bin2hex(random_bytes(4));
+            $appRuntime = app_lab_sample18_task_board_generated_submit_executor_config([
+                'sample18_generated_submit_runtime_reference_dir' => $appRuntimeDir,
+            ]);
+            self::assertSame('app', $appRuntime['runtime_reference_source']);
+            self::assertSame($appRuntimeDir, $appRuntime['runtime_reference_dir']);
+            putenv('MTOOL_SAMPLE18_GENERATED_SUBMIT_RUNTIME_REFERENCE_DIR');
 
             $appOverride = app_lab_sample18_task_board_generated_submit_executor_config([
                 'sample18_generated_submit_mutation_enabled' => false,
@@ -1838,6 +1891,9 @@ final class Sample18MiniTaskBoardDemoTest extends TestCase
             $previousExecutorFlag === false
                 ? putenv('MTOOL_SAMPLE18_GENERATED_SUBMIT_EXECUTOR_ENABLED')
                 : putenv('MTOOL_SAMPLE18_GENERATED_SUBMIT_EXECUTOR_ENABLED=' . $previousExecutorFlag);
+            $previousRuntimeReferenceDir === false
+                ? putenv('MTOOL_SAMPLE18_GENERATED_SUBMIT_RUNTIME_REFERENCE_DIR')
+                : putenv('MTOOL_SAMPLE18_GENERATED_SUBMIT_RUNTIME_REFERENCE_DIR=' . $previousRuntimeReferenceDir);
         }
     }
 

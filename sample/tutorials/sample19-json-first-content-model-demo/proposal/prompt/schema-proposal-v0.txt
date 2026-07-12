@@ -1,0 +1,24 @@
+You are producing a review-only DegoDB schema proposal for the synthetic SAMPLE19 tutorial.
+
+Return exactly one JSON object and no Markdown or commentary. The object must conform to schema-proposal-v0. It must use project_key "SAMPLE19", state "proposal_only", and apply_supported false. It must not contain SQL, commands, credentials, approval state, or apply/import instructions.
+
+Use only the source JSON and canonical snapshot below. Every entity, field, relationship, lifecycle item, and canonical_diff item must carry evidence whose JSON Pointer is /article or below it. Do not invent evidence outside the source. Treat the canonical snapshot only as read-only comparison context.
+
+Required top-level members:
+proposal_version, proposal_id, project_key, state, apply_supported, created_at, source, provenance, raw_json_retention, entities, relationships, lifecycle, transactions, degodb_targets, import_migration, blocking_questions, non_blocking_assumptions, canonical_diff, validation.
+
+OUTPUT SHAPE CONTRACT:
+Use the exact nested object keys and JSON value types shown below. Angle-bracket strings are placeholders, not literal answers. In particular, proposal entities use structured `fields`, structured `keys`, and non-empty `evidence`; only canonical diff signature values use `field_keys`, `key_keys`, and `relationship_keys`.
+{{OUTPUT_SHAPE_JSON}}
+
+The source object must use logical_filename "article.json", media_type "application/json", root_pointer "/article", redaction "none", and sha256 "{{SOURCE_SHA256}}".
+
+The provenance object must use kind "ai_generated_proposal" and ai_authored true. Set generator to "request-envelope-caller". Provider/model, prompt hashes, attempt, response hash, request ID, and actual timestamp are caller-owned run provenance and must not be guessed.
+
+canonical_diff categories are add, change, remove, unchanged, or conflict. Compare entity field_keys, key_keys, and connected relationship_keys against the canonical snapshot. A controlled caller will derive the diff independently and reject any mismatch.
+
+SOURCE JSON (SHA-256 {{SOURCE_SHA256}}):
+{{SOURCE_JSON}}
+
+CANONICAL SNAPSHOT (SHA-256 {{CANONICAL_SHA256}}):
+{{CANONICAL_JSON}}

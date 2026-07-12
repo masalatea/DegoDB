@@ -1,0 +1,27 @@
+{
+  "proposal_version": "schema-proposal-v0",
+  "proposal_id": "<string>",
+  "project_key": "SAMPLE19",
+  "state": "proposal_only",
+  "apply_supported": false,
+  "created_at": "<caller-supplied ISO-8601>",
+  "source": {"logical_filename": "article.json", "media_type": "application/json", "sha256": "<source sha256>", "root_pointer": "/article", "redaction": "none"},
+  "provenance": {"kind": "ai_generated_proposal", "generator": "request-envelope-caller", "ai_authored": true},
+  "raw_json_retention": [],
+  "entities": [{
+    "entity_key": "<string>",
+    "purpose": "<string>",
+    "evidence": [{"pointer": "/article/<path>", "type": "<string>", "rationale": "<string>"}],
+    "fields": [{"field_key": "<string>", "type_guess": "<string>", "required": true, "nullable": false, "unique": false, "identity_role": "<string>", "default": null, "evidence": [{"pointer": "/article/<path>", "type": "<string>", "rationale": "<string>"}]}],
+    "keys": [{"key_key": "<string>", "kind": "primary|unique|index", "fields": ["<field_key>"]}]
+  }],
+  "relationships": [{"relationship_key": "<string>", "from_entity": "<entity_key>", "from_field": "<field_key>", "to_entity": "<entity_key>", "to_field": "<field_key>", "cardinality": "<string>", "evidence": [{"pointer": "/article/<path>", "type": "<string>", "rationale": "<string>"}]}],
+  "lifecycle": [{"entity_key": "<entity_key>", "states": ["<string>"], "initial_state": "<string>", "evidence": [{"pointer": "/article/<path>", "type": "<string>", "rationale": "<string>"}]}],
+  "transactions": [{"transaction_key": "<string>", "entities": ["<entity_key>"], "atomicity": "<string>", "rationale": "<string>"}],
+  "degodb_targets": {"data_classes": ["<string>"], "db_access": [{"function_key": "<string>", "entity_key": "<entity_key>", "output_data_class": "<data_class>"}], "source_outputs": ["<string>"]},
+  "import_migration": {"initial_import": "<string>", "rerun_policy": "<string>", "conflict_policy": "<string>"},
+  "blocking_questions": [{"question_key": "<string>", "question": "<string>"}],
+  "non_blocking_assumptions": [{"assumption_key": "<string>", "assumption": "<string>"}],
+  "canonical_diff": [{"category": "add|change|remove|unchanged|conflict", "object_kind": "entity", "object_key": "<entity_key>", "proposal_value": {"field_keys": ["<field_key>"], "key_keys": ["<key_key>"], "relationship_keys": ["<relationship_key>"]}, "canonical_value": {"field_keys": ["<field_key>"], "key_keys": ["<key_key>"], "relationship_keys": ["<relationship_key>"]}, "evidence": [{"pointer": "/article/<path>", "type": "<string>", "rationale": "<string>"}], "review_note": "<string>"}],
+  "validation": {"expected_result": "valid", "warnings_allowed": true}
+}

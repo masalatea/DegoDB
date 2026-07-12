@@ -62,12 +62,12 @@ INSERT INTO project_shared_contract_fields (
     source_of_truth
 ) VALUES
 (@sample18_project_id, @sample18_task_card_shared_contract_id, 'id', 'server-copy', 'key', 'identifier', 'server-managed-copy', 'Primary key shown read-only in generated no-code screens.', 'manual'),
-(@sample18_project_id, @sample18_task_card_shared_contract_id, 'title', 'server-copy', 'readonly', 'field', 'server-managed-copy', 'Readonly task title for first sample18 no-code extraction.', 'manual'),
-(@sample18_project_id, @sample18_task_card_shared_contract_id, 'body', 'server-copy', 'readonly', 'field', 'server-managed-copy', 'Readonly task body for first sample18 no-code extraction.', 'manual'),
-(@sample18_project_id, @sample18_task_card_shared_contract_id, 'status', 'server-copy', 'readonly', 'field', 'server-managed-copy', 'Readonly task status for first sample18 no-code extraction.', 'manual'),
-(@sample18_project_id, @sample18_task_card_shared_contract_id, 'assigned_to', 'server-copy', 'readonly', 'field', 'server-managed-copy', 'Readonly assignee for first sample18 no-code extraction.', 'manual'),
-(@sample18_project_id, @sample18_task_card_shared_contract_id, 'priority', 'server-copy', 'readonly', 'field', 'server-managed-copy', 'Readonly priority for first sample18 no-code extraction.', 'manual'),
-(@sample18_project_id, @sample18_task_card_shared_contract_id, 'due_date', 'server-copy', 'readonly', 'field', 'server-managed-copy', 'Readonly due date for first sample18 no-code extraction.', 'manual'),
+(@sample18_project_id, @sample18_task_card_shared_contract_id, 'title', 'server-copy', 'editable', 'field', 'server-managed-copy', 'Editable task title accepted by the curated sample18 mutation route.', 'manual'),
+(@sample18_project_id, @sample18_task_card_shared_contract_id, 'body', 'server-copy', 'editable', 'field', 'server-managed-copy', 'Editable task body accepted by the curated sample18 mutation route.', 'manual'),
+(@sample18_project_id, @sample18_task_card_shared_contract_id, 'status', 'server-copy', 'readonly', 'field', 'server-managed-copy', 'Readonly task status retained outside the generated create handoff.', 'manual'),
+(@sample18_project_id, @sample18_task_card_shared_contract_id, 'assigned_to', 'server-copy', 'editable', 'field', 'server-managed-copy', 'Editable assignee accepted by the curated sample18 mutation route.', 'manual'),
+(@sample18_project_id, @sample18_task_card_shared_contract_id, 'priority', 'server-copy', 'editable', 'field', 'server-managed-copy', 'Editable priority accepted by the curated sample18 mutation route.', 'manual'),
+(@sample18_project_id, @sample18_task_card_shared_contract_id, 'due_date', 'server-copy', 'editable', 'field', 'server-managed-copy', 'Editable due date accepted by the curated sample18 mutation route.', 'manual'),
 (@sample18_project_id, @sample18_task_card_shared_contract_id, 'completed_at', 'server-copy', 'readonly', 'field', 'server-managed-copy', 'Readonly completion timestamp for first sample18 no-code extraction.', 'manual'),
 (@sample18_project_id, @sample18_task_card_shared_contract_id, 'updated_at', 'server-copy', 'readonly', 'field', 'server-managed-copy', 'Readonly update timestamp for first sample18 no-code extraction.', 'manual');
 

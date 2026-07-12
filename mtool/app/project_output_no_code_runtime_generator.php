@@ -148,6 +148,36 @@ function app_project_output_no_code_react_bridge_contract(array $payload): array
             'components',
             'client_state',
         ],
+        'hybrid_ownership_contract' => [
+            'contract_version' => 'no-code-hybrid-ownership-v0',
+            'representative_slice' => 'sample28-react-bridge-runtime-preview',
+            'generated_owns' => [
+                'canonical screen-definition.json',
+                'runtime-preview.json data/action model',
+                'bridge-contract.json schema and invariants',
+                'action-intent shape and validation hints',
+                'custom-operation handoff metadata',
+            ],
+            'custom_owns' => [
+                'React application shell',
+                'routing and navigation',
+                'component library and visual styling',
+                'durable client state and persistence',
+                'server mutation adapter wiring outside this artifact',
+            ],
+            'shared_handoff' => [
+                'artifact' => 'bridge-contract.json',
+                'intent_version' => 'no-code-runtime-action-intent-v0',
+                'state_boundary' => 'Generated preview state is local and disposable; durable state belongs to the consuming app.',
+                'authority_boundary' => 'Generated metadata may describe availability and route boundaries, but execution authority remains with explicit server routes, auth guards, CSRF, audit, and transaction policy.',
+                'fallback_boundary' => 'If a consumer cannot adopt the React scaffold, it may read screen-definition.json, runtime-preview.json, or the JSON Forms probe without changing canonical Mtool metadata.',
+            ],
+            'test_ownership' => [
+                'generated_contract' => 'PHP integration tests assert bridge-contract.json versions, invariants, ownership contract, and generated files.',
+                'custom_adapter' => 'React bridge build/browser smokes assert the scaffold can consume the generated contract and emit action intents.',
+                'schema_form_comparison' => 'JSON Forms/rjsf probe smokes remain comparison evidence and do not replace the custom React adapter.',
+            ],
+        ],
         'source_artifacts' => [
             'screen_definition' => 'screen-definition.json',
             'runtime_preview' => 'runtime-preview.json',
@@ -187,6 +217,7 @@ function app_project_output_no_code_react_bridge_contract(array $payload): array
         'action_intent_version' => 'no-code-runtime-action-intent-v0',
         'consumer_notes' => [
             'contract_boundary' => 'Mtool owns metadata, screen definition, runtime preview, validation hints, sync hints, and action-intent shape. Frontend consumers own routing, components, rendering, styling, and durable client application state.',
+            'hybrid_ownership_boundary' => 'The hybrid contract is bridge-contract.json hybrid_ownership_contract: generated artifacts own metadata/action-intent/handoff shape, while custom frontend code owns UX, durable state, routing, and mutation adapter wiring.',
             'generated_scaffold_status' => 'The React scaffold is a verification and adapter proof. It is not a durable Mtool-owned component library.',
             'custom_operation_handoff_boundary' => 'Custom operation handoffs expose metadata, disabled reasons, and adapter handoff keys for React consumers. They do not grant execution rights or wire server routes.',
             'form_state_boundary' => 'Editable form state is local to the generated React bridge preview and is serialized only into no-code-runtime-action-intent-v0.',
@@ -202,6 +233,7 @@ function app_project_output_no_code_react_bridge_contract(array $payload): array
                 'Stable markers: contract_schema_version, bridge_version, contract_invariants, action_intent_version.',
                 'Smoke commands: make sample28-no-code-react-bridge-build-smoke and make sample28-no-code-react-bridge-browser-smoke.',
                 'Custom operation handoffs: inspect bridge-contract.json custom_operation_handoffs before wiring React buttons to external adapters.',
+                'Hybrid ownership: inspect bridge-contract.json hybrid_ownership_contract before moving generated preview behavior into a custom app.',
             ],
             'adapter_troubleshooting_notes' => [
                 'If the React scaffold does not build, inspect package.json, tsconfig.json, src/mtoolNoCodeBridge.ts, and bridge-contract.json before changing canonical metadata.',
@@ -217,6 +249,7 @@ function app_project_output_no_code_react_bridge_contract(array $payload): array
             'stable_contract_markers' => [
                 'contract_schema_version',
                 'bridge_version',
+                'hybrid_ownership_contract',
                 'contract_invariants',
                 'action_intent_version',
             ],
@@ -945,10 +978,30 @@ export type MtoolBridgeContract = {
     adapter_kind: 'custom-mtool-screen-schema';
     status: string;
   };
+  hybrid_ownership_contract: MtoolHybridOwnershipContract;
   contract_invariants: MtoolBridgeContractInvariants;
   runtime_preview: MtoolRuntimePreview;
   custom_operation_handoffs: MtoolCustomOperationHandoff[];
   action_intent_version: 'no-code-runtime-action-intent-v0';
+};
+
+export type MtoolHybridOwnershipContract = {
+  contract_version: 'no-code-hybrid-ownership-v0';
+  representative_slice: string;
+  generated_owns: string[];
+  custom_owns: string[];
+  shared_handoff: {
+    artifact: string;
+    intent_version: 'no-code-runtime-action-intent-v0';
+    state_boundary: string;
+    authority_boundary: string;
+    fallback_boundary: string;
+  };
+  test_ownership: {
+    generated_contract: string;
+    custom_adapter: string;
+    schema_form_comparison: string;
+  };
 };
 
 export type MtoolBridgeContractInvariants = {
@@ -1223,6 +1276,17 @@ function app_project_output_no_code_react_bridge_consumer_notes_text(array $cont
     $stableMarkers = is_array($consumerNotes['stable_contract_markers'] ?? null)
         ? array_values(array_map('strval', $consumerNotes['stable_contract_markers']))
         : [];
+    $hybridOwnership = is_array($contract['hybrid_ownership_contract'] ?? null)
+        ? $contract['hybrid_ownership_contract']
+        : [];
+    $generatedOwns = is_array($hybridOwnership['generated_owns'] ?? null)
+        ? array_values(array_filter(array_map('strval', $hybridOwnership['generated_owns'])))
+        : [];
+    $customOwns = is_array($hybridOwnership['custom_owns'] ?? null)
+        ? array_values(array_filter(array_map('strval', $hybridOwnership['custom_owns'])))
+        : [];
+    $sharedHandoff = is_array($hybridOwnership['shared_handoff'] ?? null) ? $hybridOwnership['shared_handoff'] : [];
+    $testOwnership = is_array($hybridOwnership['test_ownership'] ?? null) ? $hybridOwnership['test_ownership'] : [];
 
     return implode("\n", [
         '# No-Code React Bridge Consumer Notes',
@@ -1236,6 +1300,31 @@ function app_project_output_no_code_react_bridge_consumer_notes_text(array $cont
         '## Contract Boundary',
         '',
         (string) ($consumerNotes['contract_boundary'] ?? ''),
+        '',
+        '## Hybrid Ownership Contract',
+        '',
+        (string) ($consumerNotes['hybrid_ownership_boundary'] ?? ''),
+        '',
+        'Contract version: ' . (string) ($hybridOwnership['contract_version'] ?? ''),
+        'Representative slice: ' . (string) ($hybridOwnership['representative_slice'] ?? ''),
+        '',
+        'Generated owns:',
+        implode("\n", array_map(static fn (string $item): string => '- ' . $item, $generatedOwns)),
+        '',
+        'Custom owns:',
+        implode("\n", array_map(static fn (string $item): string => '- ' . $item, $customOwns)),
+        '',
+        'Shared handoff:',
+        '- artifact: `' . (string) ($sharedHandoff['artifact'] ?? '') . '`',
+        '- intent_version: `' . (string) ($sharedHandoff['intent_version'] ?? '') . '`',
+        '- state_boundary: ' . (string) ($sharedHandoff['state_boundary'] ?? ''),
+        '- authority_boundary: ' . (string) ($sharedHandoff['authority_boundary'] ?? ''),
+        '- fallback_boundary: ' . (string) ($sharedHandoff['fallback_boundary'] ?? ''),
+        '',
+        'Test ownership:',
+        '- generated_contract: ' . (string) ($testOwnership['generated_contract'] ?? ''),
+        '- custom_adapter: ' . (string) ($testOwnership['custom_adapter'] ?? ''),
+        '- schema_form_comparison: ' . (string) ($testOwnership['schema_form_comparison'] ?? ''),
         '',
         '## Generated Scaffold Status',
         '',
@@ -1462,15 +1551,28 @@ function app_project_output_no_code_runtime_preview(array $screenDefinition, str
     $screens = [];
     $errors = [];
     $normalizedProjectKey = app_normalize_project_key($projectKey !== '' ? $projectKey : (string) ($screenDefinition['project_key'] ?? ''));
+    $previewDataByContract = [];
+    foreach (($screenDefinition['contracts'] ?? []) as $contract) {
+        if (is_array($contract)) {
+            $contractKey = (string) ($contract['contract_key'] ?? '');
+            if ($contractKey !== '') {
+                $previewDataByContract[$contractKey] = app_project_output_no_code_runtime_preview_data(
+                    $normalizedProjectKey,
+                    $contractKey,
+                );
+            }
+        }
+    }
+    $runtimeDefinition = app_project_output_no_code_runtime_with_relation_options(
+        $screenDefinition,
+        $previewDataByContract,
+    );
     foreach (($screenDefinition['contracts'] ?? []) as $contract) {
         if (!is_array($contract)) {
             continue;
         }
 
-        $previewData = app_project_output_no_code_runtime_preview_data(
-            $normalizedProjectKey,
-            (string) ($contract['contract_key'] ?? ''),
-        );
+        $previewData = $previewDataByContract[(string) ($contract['contract_key'] ?? '')] ?? ['rows' => [], 'current_item' => []];
 
         foreach (($contract['screens'] ?? []) as $screen) {
             if (!is_array($screen)) {
@@ -1483,7 +1585,7 @@ function app_project_output_no_code_runtime_preview(array $screenDefinition, str
             }
 
             $renderResult = app_no_code_runtime_render_screen(
-                $screenDefinition,
+                $runtimeDefinition,
                 $screenKey,
                 $previewData['rows'],
                 $previewData['current_item'],
@@ -1508,10 +1610,88 @@ function app_project_output_no_code_runtime_preview(array $screenDefinition, str
 }
 
 /**
+ * @param array<string,mixed> $definition
+ * @param array<string,array{rows:list<array<string,mixed>>,current_item:array<string,mixed>}> $previewDataByContract
+ * @return array<string,mixed>
+ */
+function app_project_output_no_code_runtime_with_relation_options(array $definition, array $previewDataByContract): array
+{
+    foreach (($definition['contracts'] ?? []) as $contractIndex => $contract) {
+        if (!is_array($contract)) {
+            continue;
+        }
+        foreach (($contract['screens'] ?? []) as $screenIndex => $screen) {
+            if (!is_array($screen)) {
+                continue;
+            }
+            foreach (($screen['fields'] ?? []) as $fieldIndex => $field) {
+                if (!is_array($field) || !is_array($field['relation'] ?? null)) {
+                    continue;
+                }
+                $relation = $field['relation'];
+                $targetContract = (string) ($relation['contract_key'] ?? '');
+                $keyField = (string) ($relation['key_field'] ?? '');
+                $labelField = (string) ($relation['label_field'] ?? '');
+                $options = [];
+                foreach (($previewDataByContract[$targetContract]['rows'] ?? []) as $row) {
+                    if (!is_array($row) || !array_key_exists($keyField, $row) || !array_key_exists($labelField, $row)) {
+                        continue;
+                    }
+                    $options[] = [
+                        'value' => $row[$keyField],
+                        'label' => app_no_code_runtime_display_value($row[$labelField]),
+                    ];
+                }
+                $relation['option_source'] = [
+                    'contract_key' => $targetContract,
+                    'key_field' => $keyField,
+                    'label_field' => $labelField,
+                ];
+                $relation['lookup_options'] = $options;
+                $relation['lookup_state'] = $options === [] ? 'unavailable' : 'ready';
+                $relation['unavailable_reason'] = $options === [] ? 'lookup_rows_unavailable' : '';
+                $definition['contracts'][$contractIndex]['screens'][$screenIndex]['fields'][$fieldIndex]['relation'] = $relation;
+            }
+        }
+    }
+
+    return $definition;
+}
+
+/**
  * @return array{rows:list<array<string,mixed>>,current_item:array<string,mixed>}
  */
 function app_project_output_no_code_runtime_preview_data(string $projectKey, string $contractKey): array
 {
+    if ($projectKey === 'SAMPLE22' && $contractKey === 'ebook_workflow_book') {
+        $rows = [[
+            'id' => 1,
+            'title' => 'JSONから始める電子書籍CMS',
+            'slug' => 'json-first-ebook-cms',
+            'status' => 'published',
+            'published_at' => '2026-06-21 09:00:00',
+        ]];
+        return ['rows' => $rows, 'current_item' => $rows[0]];
+    }
+
+    if ($projectKey === 'SAMPLE22' && $contractKey === 'ebook_workflow_published_chapter') {
+        $rows = [
+            [
+                'chapter_id' => 1, 'book_id' => 1, 'book_slug' => 'json-first-ebook-cms',
+                'chapter_title' => 'はじめに', 'chapter_slug' => 'intro', 'status' => 'published',
+                'spine_order' => 1, 'nav_label' => 'はじめに', 'epub_resource_path' => 'OEBPS/chapter1.xhtml',
+                'body_markdown' => 'JSONから始める電子書籍CMSの導入章です。', 'published_at' => '2026-06-21 09:10:00',
+            ],
+            [
+                'chapter_id' => 2, 'book_id' => 1, 'book_slug' => 'json-first-ebook-cms',
+                'chapter_title' => '公開APIを考える', 'chapter_slug' => 'public-api', 'status' => 'published',
+                'spine_order' => 2, 'nav_label' => '公開APIを考える', 'epub_resource_path' => 'OEBPS/chapter2.xhtml',
+                'body_markdown' => '読者向けには公開済み章だけをspine順で返します。', 'published_at' => '2026-06-21 09:20:00',
+            ],
+        ];
+        return ['rows' => $rows, 'current_item' => $rows[0]];
+    }
+
     if ($projectKey === 'SAMPLE28' && $contractKey === 'no_code_ticket') {
         $rows = [
             [

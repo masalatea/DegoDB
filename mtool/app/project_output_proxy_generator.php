@@ -1638,19 +1638,37 @@ abstract class __ENDPOINT_BASE_CLASS__
         connect_mtooldb_if_not_yet();
         global $mtooldb;
 
-        if (!$mtooldb instanceof mysqli) {
+        if (!is_object($mtooldb)
+            || !method_exists($mtooldb, 'beginTransaction')
+            || !method_exists($mtooldb, 'commit')
+            || !method_exists($mtooldb, 'rollBack')
+            || !method_exists($mtooldb, 'inTransaction')) {
             throw new RuntimeException('transaction に必要な DB connection がありません。');
         }
 
-        $mtooldb->autocommit(false);
+        if (!$mtooldb->beginTransaction()) {
+            throw new RuntimeException(
+                'transaction を開始できません: ' . (string) ($mtooldb->error ?? ''),
+            );
+        }
+
         try {
             $callback();
-            $mtooldb->commit();
+            if (!$mtooldb->commit()) {
+                throw new RuntimeException(
+                    'transaction を commit できません: ' . (string) ($mtooldb->error ?? ''),
+                );
+            }
         } catch (Throwable $throwable) {
-            $mtooldb->rollback();
+            if ($mtooldb->inTransaction() && !$mtooldb->rollBack()) {
+                throw new RuntimeException(
+                    'transaction を rollback できません: ' . (string) ($mtooldb->error ?? ''),
+                    0,
+                    $throwable,
+                );
+            }
+
             throw $throwable;
-        } finally {
-            $mtooldb->autocommit(true);
         }
     }
 
@@ -1810,12 +1828,17 @@ abstract class __ENDPOINT_BASE_CLASS__
     {
         global $mtooldb;
 
-        if (!$mtooldb instanceof mysqli) {
-            return null;
+        if (is_object($mtooldb) && method_exists($mtooldb, 'lastInsertId')) {
+            return $mtooldb->lastInsertId();
         }
 
-        $insertId = $mtooldb->insert_id;
-        return is_numeric($insertId) ? (int) $insertId : null;
+        if ($mtooldb instanceof mysqli) {
+            $insertId = $mtooldb->insert_id;
+
+            return is_numeric($insertId) ? (int) $insertId : null;
+        }
+
+        return null;
     }
 
     private function sendCorsHeaders(): void

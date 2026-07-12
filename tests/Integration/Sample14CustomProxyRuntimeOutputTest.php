@@ -29,10 +29,18 @@ final class Sample14CustomProxyRuntimeOutputTest extends TestCase
         self::assertSame('NoSecurity', (string) ($result['steps']['custom_proxy']['item']['auth_type'] ?? ''));
         self::assertSame(2, (int) ($result['steps']['custom_proxy']['item']['step_count'] ?? 0));
         self::assertSame(1, (int) ($result['steps']['custom_proxy']['item']['target_count'] ?? 0));
+        self::assertSame(1, (int) ($result['steps']['transaction_proxy']['item']['in_transaction'] ?? 0));
+        self::assertSame(2, (int) ($result['steps']['transaction_proxy']['item']['step_count'] ?? 0));
         self::assertGreaterThan(0, (int) ($result['steps']['output']['published_file_count'] ?? 0));
         self::assertSame(
-            ['custom_proxy_count' => 1, 'step_count' => 2, 'unresolved_step_count' => 0],
+            ['custom_proxy_count' => 2, 'step_count' => 4, 'unresolved_step_count' => 0],
             $result['steps']['output']['build_plan_summary'] ?? [],
+        );
+        self::assertSame('OK', $result['steps']['transaction_execution']['success']['payload']['_status'] ?? '');
+        self::assertSame('NG', $result['steps']['transaction_execution']['failure']['payload']['_status'] ?? '');
+        self::assertSame(
+            ['commit-one', 'commit-two'],
+            array_column($result['steps']['transaction_execution']['rows'] ?? [], 'transaction_key'),
         );
 
         foreach ($result['steps']['output']['file_checks'] ?? [] as $fileCheck) {
@@ -53,6 +61,10 @@ final class Sample14CustomProxyRuntimeOutputTest extends TestCase
             'custom_proxy' => $result['steps']['custom_proxy'] ?? null,
             'custom_proxy_steps' => $result['steps']['custom_proxy_steps'] ?? null,
             'custom_proxy_targets' => $result['steps']['custom_proxy_targets'] ?? null,
+            'transaction_proxy' => $result['steps']['transaction_proxy'] ?? null,
+            'transaction_proxy_steps' => $result['steps']['transaction_proxy_steps'] ?? null,
+            'transaction_proxy_targets' => $result['steps']['transaction_proxy_targets'] ?? null,
+            'transaction_execution' => $result['steps']['transaction_execution'] ?? null,
             'output' => $result['steps']['output'] ?? null,
         ];
 

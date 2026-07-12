@@ -66,6 +66,8 @@ DegoDB の機能上の入口は、引き続き import 可能な DB schema また
 
 ## 最短の流れ
 
+実装済みのCodex/Claude向け確認駆動task packetを使う場合は、[AI Task-Packet Workflow](ai-task-packet-workflow.md) を参照してください。以下はtask packetを使わず設計相談を組み立てる場合にも使える一般的な思考手順です。
+
 1. ユーザが JSON sample と現在の処理を用意する
 2. AI が [internal/json-to-db-ai-contract.md](internal/json-to-db-ai-contract.md) を読んで design draft を作る
 3. 人間が blocking questions と assumptions を確認する

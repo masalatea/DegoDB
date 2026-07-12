@@ -18,6 +18,9 @@ top-level は外部ユーザ向け導線を優先し、内部向け文書は [In
    - [Current Plans / 現在の計画](current-plans.md)
    - [Adoption Guide / 採用ガイド](adoption-guide.md)
    - [JSON To DB Entrance / JSON から DB 設計へ入る入口](json-to-db-entrance.md) optional pre-design entrance
+   - [AI Task-Packet Workflow / AI task packet ワークフロー](ai-task-packet-workflow.md)
+   - [AI Workspace Onboarding Command Guide / AI workspace onboarding command guide](ai-workspace-onboarding-command-guide.md)
+   - [Sample19 Material-to-No-Code Validation Pipeline / Sample19資料to No Code validation pipeline](sample19-material-to-no-code-validation-pipeline.md)
    - [Existing DB To Output / 既存 DB から出力まで](existing-db-to-output.md)
    - [Use Cases / ユースケース](use-cases.md)
    - [Consulting Intake / 相談前チェックリスト](consulting-intake.md)
@@ -71,6 +74,12 @@ detail doc だけを読んで mainline を再構成するのは current reading 
   - 現行対応、検証対象、旧実装参照、将来候補を分けた説明
 - [JSON To DB Entrance / JSON から DB 設計へ入る入口](json-to-db-entrance.md)
   - 初期構想に含まれる optional pre-design entrance。JSON file / JSON API cache / JSON config から AI-readable な DB design draft を作り、DB-first mainline へ入る。runtime / generator 機能ではない
+- [AI Task-Packet Workflow / AI task packet ワークフロー](ai-task-packet-workflow.md)
+  - Codex / Claude が task packet を読み、具体的確認後に candidate を作り、共通 CLI で Mtool-derived review artifact まで検証する恒久手順。Ollama は明示 optional fallback
+- [AI Workspace Onboarding Command Guide / AI workspace onboarding command guide](ai-workspace-onboarding-command-guide.md)
+  - Codex / Claude / 利用者が `mtool/scripts/init_ai_workspace.php` を使い、dry-run JSON preflight、明示承認、apply、role mapping、安全境界を迷わず扱うための恒久手順
+- [Sample19 Material-to-No-Code Validation Pipeline / Sample19資料to No Code validation pipeline](sample19-material-to-no-code-validation-pipeline.md)
+  - Sample19 の schema proposal、material insight、no-code handoff、read-only runtime preview をどの関数で検証するかを示すAI/Codex/Claude向け恒久入口。Fallback local scan は補助であり、authoritative check は PHP validator/test として扱う
 - [Common Tasks / よく使う作業](common-tasks.md)
   - 起動、sample、test、bundle、config DB backup / durable env、runtime reference 確認の最短手順
 - [Goal-Based Help And Wrapper CLI Roadmap / 目的別 help と wrapper CLI roadmap](goal-based-help-and-wrapper-cli-roadmap.md)
@@ -112,8 +121,14 @@ detail doc だけを読んで mainline を再構成するのは current reading 
   - DB、config store、user DB、生成出力、旧実装参照、将来候補を安全に説明するための正本
 - [JSON To DB Entrance / JSON から DB 設計へ入る入口](json-to-db-entrance.md)
   - DB をよく知らない利用者が、JSON sample と現在の処理説明から DB 設計案へ進むための、初期構想に含まれる optional pre-design entrance
+- [AI Task-Packet Workflow / AI task packet ワークフロー](ai-task-packet-workflow.md)
+  - provider API不要のCodex/Claude主導task packet、単一validation pipeline、read-only review、optional Ollama fallbackの正本
+- [Sample19 Material-to-No-Code Validation Pipeline / Sample19資料to No Code validation pipeline](sample19-material-to-no-code-validation-pipeline.md)
+  - Sample19 material insight から no-code handoff までの関数単位validation pipeline。AI prompt review と fallback local scan の境界を明示する
 - [No-Code Tryout / no-code をまず試す](no-code-tryout.md)
   - sample28 の generated no-code Web preview、publish candidate approval、current/alias preview URL、runtime submit / outbox handoff を触る入口
+- [No-Code L1 Sample Qualification Checklist / L1 sample 認定基準](no-code-l1-sample-qualification-checklist.md)
+  - sample UI を bounded L1 entry として認定するための schema / screen / action / authority / mutation / test / exclusion の恒久 checklist
 - [Storage And State Model / 保存先と状態モデル](storage-and-state-model.md)
   - `config_db`、artifact、`work/` の state map
 - [Security And Data Handling / security と data handling](security-and-data-handling.md)

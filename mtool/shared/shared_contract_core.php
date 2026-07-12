@@ -161,10 +161,80 @@ function app_shared_contract_core_validate_manifest(array $manifest): array
         }
     }
 
+    $errors = array_merge($errors, app_shared_contract_core_validate_relations($manifest['contracts']));
+
     return [
         'ok' => $errors === [],
         'errors' => $errors,
     ];
+}
+
+/**
+ * @param list<mixed> $contracts
+ * @return list<string>
+ */
+function app_shared_contract_core_validate_relations(array $contracts): array
+{
+    $errors = [];
+    $fieldsByContract = [];
+    foreach ($contracts as $contract) {
+        if (!is_array($contract)) {
+            continue;
+        }
+        $contractKey = (string) ($contract['contract_key'] ?? '');
+        foreach (is_array($contract['fields'] ?? null) ? $contract['fields'] : [] as $field) {
+            if (is_array($field)) {
+                $fieldsByContract[$contractKey][(string) ($field['physical_name'] ?? '')] = true;
+            }
+        }
+    }
+
+    foreach ($contracts as $contractIndex => $contract) {
+        if (!is_array($contract)) {
+            continue;
+        }
+        foreach (is_array($contract['fields'] ?? null) ? $contract['fields'] : [] as $fieldIndex => $field) {
+            if (!is_array($field)) {
+                continue;
+            }
+            $relation = $field['contract_metadata']['relation'] ?? null;
+            if ($relation === null) {
+                continue;
+            }
+            $path = 'contracts[' . $contractIndex . '].fields[' . $fieldIndex . '].contract_metadata.relation';
+            if (!is_array($relation)) {
+                $errors[] = $path . ' must be an object';
+                continue;
+            }
+            foreach (['kind', 'contract_key', 'key_field', 'label_field', 'ui_role', 'required'] as $key) {
+                if (!array_key_exists($key, $relation)) {
+                    $errors[] = $path . '.' . $key . ' is required';
+                }
+            }
+            if (($relation['kind'] ?? '') !== 'belongs_to') {
+                $errors[] = $path . '.kind is unsupported';
+            }
+            if (!in_array(($relation['ui_role'] ?? ''), ['parent', 'lookup'], true)) {
+                $errors[] = $path . '.ui_role is unsupported';
+            }
+            if (!is_bool($relation['required'] ?? null)) {
+                $errors[] = $path . '.required must be boolean';
+            }
+            $targetContract = (string) ($relation['contract_key'] ?? '');
+            if (!isset($fieldsByContract[$targetContract])) {
+                $errors[] = $path . '.contract_key is unknown: ' . $targetContract;
+                continue;
+            }
+            foreach (['key_field', 'label_field'] as $fieldKey) {
+                $targetField = (string) ($relation[$fieldKey] ?? '');
+                if (!isset($fieldsByContract[$targetContract][$targetField])) {
+                    $errors[] = $path . '.' . $fieldKey . ' is unknown: ' . $targetContract . '.' . $targetField;
+                }
+            }
+        }
+    }
+
+    return $errors;
 }
 
 /**

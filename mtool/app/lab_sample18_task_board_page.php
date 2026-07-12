@@ -123,6 +123,12 @@ function app_lab_sample18_task_board_generated_submit_contracts(): array
             'operation_key' => 'create_task_card',
             'curated_route_action' => 'create',
             'db_access_function' => 'InsertTaskCard',
+            'lifecycle' => [
+                'kind' => 'create',
+                'state_field' => 'status',
+                'from' => null,
+                'to' => 'todo',
+            ],
             'key_fields' => [],
             'required_client_fields' => ['title'],
             'optional_client_fields' => ['body', 'assigned_to', 'priority', 'due_date'],
@@ -133,6 +139,12 @@ function app_lab_sample18_task_board_generated_submit_contracts(): array
             'operation_key' => 'update_task_card',
             'curated_route_action' => 'update',
             'db_access_function' => 'UpdateTaskCard',
+            'lifecycle' => [
+                'kind' => 'field_update',
+                'state_field' => 'status',
+                'from' => 'client_selected',
+                'to' => 'client_selected',
+            ],
             'key_fields' => ['id'],
             'required_client_fields' => ['title'],
             'optional_client_fields' => ['body', 'status', 'assigned_to', 'priority', 'due_date'],
@@ -143,6 +155,12 @@ function app_lab_sample18_task_board_generated_submit_contracts(): array
             'operation_key' => 'complete_task_card',
             'curated_route_action' => 'complete',
             'db_access_function' => 'CompleteTaskCard',
+            'lifecycle' => [
+                'kind' => 'state_transition',
+                'state_field' => 'status',
+                'from' => 'todo_or_doing',
+                'to' => 'done',
+            ],
             'key_fields' => ['id'],
             'required_client_fields' => [],
             'optional_client_fields' => [],
@@ -773,7 +791,7 @@ function app_lab_sample18_task_board_generated_submit_config_flag(array $app, st
     }
 
     $envValue = getenv($envKey);
-    if ($envValue !== false) {
+    if ($envValue !== false && trim((string) $envValue) !== '') {
         return [
             'enabled' => trim((string) $envValue) === '1',
             'source' => 'env',
@@ -811,6 +829,14 @@ function app_lab_sample18_task_board_generated_submit_runtime_reference_config(a
         return [
             'reference_dir' => $referenceDir,
             'source' => 'app',
+        ];
+    }
+
+    $referenceDir = trim((string) getenv('MTOOL_SAMPLE18_GENERATED_SUBMIT_RUNTIME_REFERENCE_DIR'));
+    if ($referenceDir !== '') {
+        return [
+            'reference_dir' => $referenceDir,
+            'source' => 'env',
         ];
     }
 
