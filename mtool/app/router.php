@@ -370,6 +370,24 @@ function app_route_match(array $request): array
         ];
     }
 
+    if (preg_match('#^/projects/([^/]+)/material-insight/?$#', $request['path'], $matches) === 1) {
+        return [
+            'name' => 'project_sample19_material_insight_preview',
+            'params' => [
+                'project_key' => strtoupper(trim($matches[1])),
+            ],
+        ];
+    }
+
+    if (preg_match('#^/projects/([^/]+)/material-insight/no-code-handoff/?$#', $request['path'], $matches) === 1) {
+        return [
+            'name' => 'project_sample19_material_insight_no_code_handoff_preview',
+            'params' => [
+                'project_key' => strtoupper(trim($matches[1])),
+            ],
+        ];
+    }
+
     if (preg_match('#^/projects/([^/]+)/source-outputs/artifacts/([^/]+)/download/?$#', $request['path'], $matches) === 1) {
         return [
             'name' => 'project_source_output_download',
@@ -1135,7 +1153,7 @@ function app_route_param(array $request, string $name, string $default = ''): st
 
 function app_route_requires_auth(string $routeName): bool
 {
-    if (in_array($routeName, ['project_schema_proposal_review', 'project_schema_proposal_task_review'], true)) {
+    if (in_array($routeName, ['project_schema_proposal_review', 'project_schema_proposal_task_review', 'project_sample19_material_insight_preview', 'project_sample19_material_insight_no_code_handoff_preview'], true)) {
         return true;
     }
 
