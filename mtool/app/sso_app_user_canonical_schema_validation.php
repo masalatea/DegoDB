@@ -5,13 +5,13 @@ declare(strict_types=1);
 require_once __DIR__ . '/sso_app_user_project_policy.php';
 
 /**
- * Validate only invariants expressible in current canonical metadata.
- * Composite unique/FK database constraints remain explicit blocking gaps.
+ * Validate canonical schema and explicit key/FK constraint evidence.
  *
  * @param array<string,mixed> $policyInput
  * @param list<array<string,mixed>> $tables
  * @param list<array<string,mixed>> $dataClasses
  * @param list<array<string,mixed>> $dbAccessClasses
+ * @param array{keys?:array,foreign_keys?:array} $constraints
  * @return array<string,mixed>
  */
 function app_sso_app_user_validate_canonical_schema(
@@ -19,6 +19,7 @@ function app_sso_app_user_validate_canonical_schema(
     array $tables,
     array $dataClasses,
     array $dbAccessClasses,
+    array $constraints = [],
 ): array {
     $policyResult = app_sso_app_user_project_policy_normalize($policyInput);
     if (!$policyResult['ok']) {
@@ -123,23 +124,108 @@ function app_sso_app_user_validate_canonical_schema(
         }
     }
 
-    $blockingGaps = [
-        'canonical metadata cannot prove UNIQUE (issuer, subject) on ' . $roles['external_identity_table'] . '.',
-        'canonical metadata cannot prove database foreign keys from identity/profile/domain rows to app_user_id.',
-    ];
-    if ($errors === []) {
-        $warnings[] = 'expressible canonical metadata is valid, but database constraint evidence is still required.';
+    $constraintEvidence = app_sso_app_user_schema_constraint_evidence($tables, $constraints, $roles);
+    $evidence['constraints'] = $constraintEvidence['evidence'];
+    $blockingGaps = $constraintEvidence['blocking_gaps'];
+    if ($errors === [] && $blockingGaps !== []) {
+        $warnings[] = 'canonical metadata is valid, but required database constraint evidence is incomplete.';
     }
+    $readyForGeneration = $errors === [] && $blockingGaps === [];
 
     return app_sso_app_user_schema_validation_result(
         $errors === [],
-        false,
-        $errors === [] ? 'metadata_valid_constraint_gap' : 'metadata_invalid',
+        $readyForGeneration,
+        $errors !== [] ? 'metadata_invalid' : ($readyForGeneration ? 'generation_ready' : 'metadata_valid_constraint_gap'),
         $errors,
         $warnings,
         $blockingGaps,
         $evidence,
     );
+}
+
+/** @return array{blocking_gaps:list<string>,evidence:array<string,mixed>} */
+function app_sso_app_user_schema_constraint_evidence(array $tables, array $constraints, array $roles): array
+{
+    $tableNamesByPid = [];
+    $columnNamesByPid = [];
+    foreach ($tables as $table) {
+        if (!is_array($table)) {
+            continue;
+        }
+        $tablePid = (int) ($table['pid'] ?? $table['PID'] ?? 0);
+        $tableName = strtolower(trim((string) ($table['physical_name'] ?? $table['name'] ?? '')));
+        if ($tablePid <= 0 || $tableName === '') {
+            continue;
+        }
+        $tableNamesByPid[$tablePid] = $tableName;
+        foreach (is_array($table['columns'] ?? null) ? $table['columns'] : [] as $column) {
+            if (!is_array($column)) {
+                continue;
+            }
+            $columnPid = (int) ($column['pid'] ?? $column['PID'] ?? 0);
+            $columnName = strtolower(trim((string) ($column['physical_name'] ?? $column['name'] ?? '')));
+            if ($columnPid > 0 && $columnName !== '') {
+                $columnNamesByPid[$columnPid] = $columnName;
+            }
+        }
+    }
+
+    $identityTable = $roles['external_identity_table'];
+    $appUserTable = $roles['application_user_table'];
+    $profileTable = $roles['profile_table'];
+    $identityUnique = false;
+    foreach (is_array($constraints['keys'] ?? null) ? $constraints['keys'] : [] as $key) {
+        if (!is_array($key) || strtolower((string) ($key['key_kind'] ?? '')) !== 'unique') {
+            continue;
+        }
+        $tableName = $tableNamesByPid[(int) ($key['table_pid'] ?? 0)] ?? '';
+        $columnNames = [];
+        foreach (is_array($key['columns'] ?? null) ? $key['columns'] : [] as $column) {
+            $columnNames[] = $columnNamesByPid[(int) ($column['column_pid'] ?? 0)] ?? '';
+        }
+        if ($tableName === $identityTable && $columnNames === ['issuer', 'subject']) {
+            $identityUnique = true;
+            break;
+        }
+    }
+
+    $requiredForeignKeys = [$identityTable => false, $profileTable => false];
+    foreach (is_array($constraints['foreign_keys'] ?? null) ? $constraints['foreign_keys'] : [] as $foreignKey) {
+        if (!is_array($foreignKey)) {
+            continue;
+        }
+        $sourceTable = $tableNamesByPid[(int) ($foreignKey['table_pid'] ?? 0)] ?? '';
+        $targetTable = $tableNamesByPid[(int) ($foreignKey['referenced_table_pid'] ?? 0)] ?? '';
+        if (!array_key_exists($sourceTable, $requiredForeignKeys) || $targetTable !== $appUserTable) {
+            continue;
+        }
+        $columns = is_array($foreignKey['columns'] ?? null) ? $foreignKey['columns'] : [];
+        if (count($columns) !== 1 || !is_array($columns[0])) {
+            continue;
+        }
+        $sourceColumn = $columnNamesByPid[(int) ($columns[0]['column_pid'] ?? 0)] ?? '';
+        $targetColumn = $columnNamesByPid[(int) ($columns[0]['referenced_column_pid'] ?? 0)] ?? '';
+        if ($sourceColumn === 'app_user_id' && $targetColumn === 'app_user_id') {
+            $requiredForeignKeys[$sourceTable] = true;
+        }
+    }
+
+    $blockingGaps = [];
+    if (!$identityUnique) {
+        $blockingGaps[] = 'canonical metadata cannot prove UNIQUE (issuer, subject) on ' . $identityTable . '.';
+    }
+    $missingForeignKeyTables = array_keys(array_filter($requiredForeignKeys, static fn (bool $present): bool => !$present));
+    if ($missingForeignKeyTables !== []) {
+        $blockingGaps[] = 'canonical metadata cannot prove app_user_id foreign keys to ' . $appUserTable
+            . ' from: ' . implode(', ', $missingForeignKeyTables) . '.';
+    }
+    return [
+        'blocking_gaps' => $blockingGaps,
+        'evidence' => [
+            'identity_unique_issuer_subject' => $identityUnique,
+            'app_user_foreign_keys' => $requiredForeignKeys,
+        ],
+    ];
 }
 
 /** @return array<string,array<string,mixed>> */

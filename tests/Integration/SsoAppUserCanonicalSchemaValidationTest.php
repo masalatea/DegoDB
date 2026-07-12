@@ -52,6 +52,45 @@ final class SsoAppUserCanonicalSchemaValidationTest extends TestCase
         self::assertStringContainsString('UNIQUE (issuer, subject)', $result['blocking_gaps'][0]);
     }
 
+    public function testCanonicalUniqueAndForeignKeyEvidenceMakesSchemaGenerationReady(): void
+    {
+        $tables = [
+            $this->table('app_user', [['app_user_id', 'PRI'], ['status', '']], 10),
+            $this->table('app_user_external_identity', [['app_user_id', ''], ['issuer', ''], ['subject', '']], 20),
+            $this->table('app_user_profile', [['app_user_id', '']], 30),
+        ];
+        $dataClasses = [
+            $this->dataClass('app_user', [['app_user_id', '']]),
+            $this->dataClass('app_user_external_identity', [['app_user_id', 'app_user'], ['issuer', ''], ['subject', '']]),
+            $this->dataClass('app_user_profile', [['app_user_id', 'app_user']]),
+        ];
+        $dbAccess = [
+            $this->dbAccess('app_user', ['insert']),
+            $this->dbAccess('app_user_external_identity', ['select', 'insert']),
+            $this->dbAccess('app_user_profile', ['insert', 'update']),
+        ];
+        $constraints = [
+            'keys' => [[
+                'table_pid' => 20,
+                'key_name' => 'uq_external_identity_issuer_subject',
+                'key_kind' => 'unique',
+                'columns' => [['column_pid' => 22], ['column_pid' => 23]],
+            ]],
+            'foreign_keys' => [
+                ['table_pid' => 20, 'referenced_table_pid' => 10, 'constraint_name' => 'fk_identity_user', 'columns' => [['column_pid' => 21, 'referenced_column_pid' => 11]]],
+                ['table_pid' => 30, 'referenced_table_pid' => 10, 'constraint_name' => 'fk_profile_user', 'columns' => [['column_pid' => 31, 'referenced_column_pid' => 11]]],
+            ],
+        ];
+
+        $result = app_sso_app_user_validate_canonical_schema($this->policy(), $tables, $dataClasses, $dbAccess, $constraints);
+        self::assertTrue($result['metadata_valid']);
+        self::assertTrue($result['ready_for_generation']);
+        self::assertSame('generation_ready', $result['status']);
+        self::assertSame([], $result['blocking_gaps']);
+        self::assertTrue($result['evidence']['constraints']['identity_unique_issuer_subject']);
+        self::assertSame(['app_user_external_identity' => true, 'app_user_profile' => true], $result['evidence']['constraints']['app_user_foreign_keys']);
+    }
+
     private function policy(): array
     {
         return [
@@ -66,13 +105,15 @@ final class SsoAppUserCanonicalSchemaValidationTest extends TestCase
         ];
     }
 
-    private function table(string $name, array $columns): array
+    private function table(string $name, array $columns, int $pid = 0): array
     {
         return [
+            'pid' => $pid,
             'physical_name' => $name,
             'columns' => array_map(
-                static fn (array $column): array => ['physical_name' => $column[0], 'is_key' => $column[1]],
+                static fn (array $column, int $index): array => ['pid' => $pid + $index + 1, 'physical_name' => $column[0], 'is_key' => $column[1]],
                 $columns,
+                array_keys($columns),
             ),
         ];
     }
