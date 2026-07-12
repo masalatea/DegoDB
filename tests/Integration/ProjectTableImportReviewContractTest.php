@@ -115,6 +115,22 @@ final class ProjectTableImportReviewContractTest extends TestCase
         self::assertSame('character varying(255)', $tables[0]['columns_by_name']['Title']['datatype']);
     }
 
+    public function testImportPlanReportsConstraintReviewAndFocusedApplyBoundary(): void
+    {
+        $constraints = [
+            'keys' => [['table_name' => 'Article', 'key_name' => 'PRIMARY']],
+            'foreign_keys' => [['table_name' => 'Article', 'constraint_name' => 'fk_article_user']],
+        ];
+        $full = app_project_table_import_build_plan('SAMPLE', 'app', 'live-schema', 'live', true, [], [], true, $constraints, false);
+        self::assertTrue($full['summary']['constraints_supported']);
+        self::assertTrue($full['summary']['constraint_apply_supported']);
+        self::assertSame(1, $full['summary']['source_key_constraint_count']);
+        self::assertSame(1, $full['summary']['source_foreign_key_constraint_count']);
+
+        $focused = app_project_table_import_build_plan('SAMPLE', 'app', 'live-schema', 'live', true, [], [], true, $constraints, true);
+        self::assertFalse($focused['summary']['constraint_apply_supported']);
+    }
+
     public function testInformationSchemaRowsAcceptLowercasePostgresqlAliases(): void
     {
         $tables = app_project_table_import_source_tables_from_information_schema_rows([
@@ -140,6 +156,45 @@ final class ProjectTableImportReviewContractTest extends TestCase
         self::assertSame('timestamp without time zone', $tables[0]['columns'][0]['datatype']);
         self::assertSame('YES', $tables[0]['columns'][0]['is_null']);
         self::assertSame(1, $tables[0]['columns'][0]['column_list_order']);
+    }
+
+    public function testMysqlConstraintRowsProducePortableCompositeKeysAndForeignKeys(): void
+    {
+        $constraints = app_project_table_import_source_constraints_from_mysql_rows(
+            [
+                ['TABLE_NAME' => 'app_users', 'CONSTRAINT_NAME' => 'PRIMARY', 'CONSTRAINT_TYPE' => 'PRIMARY KEY', 'COLUMN_NAME' => 'app_user_id', 'ORDINAL_POSITION' => 1],
+                ['TABLE_NAME' => 'external_identities', 'CONSTRAINT_NAME' => 'uq_issuer_subject', 'CONSTRAINT_TYPE' => 'UNIQUE', 'COLUMN_NAME' => 'issuer', 'ORDINAL_POSITION' => 1],
+                ['TABLE_NAME' => 'external_identities', 'CONSTRAINT_NAME' => 'uq_issuer_subject', 'CONSTRAINT_TYPE' => 'UNIQUE', 'COLUMN_NAME' => 'subject', 'ORDINAL_POSITION' => 2],
+            ],
+            [
+                ['TABLE_NAME' => 'external_identities', 'CONSTRAINT_NAME' => 'fk_identity_user', 'COLUMN_NAME' => 'app_user_id', 'REFERENCED_TABLE_NAME' => 'app_users', 'REFERENCED_COLUMN_NAME' => 'app_user_id', 'ORDINAL_POSITION' => 1, 'UPDATE_RULE' => 'CASCADE', 'DELETE_RULE' => 'CASCADE'],
+            ],
+        );
+
+        self::assertSame(['primary', 'unique'], array_column($constraints['keys'], 'key_kind'));
+        self::assertSame(['issuer', 'subject'], array_column($constraints['keys'][1]['columns'], 'column_name'));
+        self::assertSame('live-schema', $constraints['keys'][1]['source_of_truth']);
+        self::assertSame('fk_identity_user', $constraints['foreign_keys'][0]['constraint_name']);
+        self::assertSame('app_users', $constraints['foreign_keys'][0]['referenced_table_name']);
+        self::assertSame('CASCADE', $constraints['foreign_keys'][0]['on_delete_action']);
+        self::assertSame('app_user_id', $constraints['foreign_keys'][0]['columns'][0]['referenced_column_name']);
+    }
+
+    public function testLiveConstraintsAreLimitedToManagedTablesAndInternalForeignKeys(): void
+    {
+        $filtered = app_project_table_import_source_constraints_for_managed_tables([
+            'keys' => [
+                ['table_name' => 'managed_user', 'key_name' => 'PRIMARY'],
+                ['table_name' => 'unmanaged_audit', 'key_name' => 'PRIMARY'],
+            ],
+            'foreign_keys' => [
+                ['table_name' => 'managed_profile', 'referenced_table_name' => 'managed_user', 'constraint_name' => 'fk_internal'],
+                ['table_name' => 'managed_profile', 'referenced_table_name' => 'unmanaged_audit', 'constraint_name' => 'fk_external'],
+            ],
+        ], ['managed_user', 'managed_profile']);
+
+        self::assertSame(['PRIMARY'], array_column($filtered['keys'], 'key_name'));
+        self::assertSame(['fk_internal'], array_column($filtered['foreign_keys'], 'constraint_name'));
     }
 
     public function testInformationSchemaRowsExposeSnakeCasePhysicalLogicalAndGeneratedNames(): void

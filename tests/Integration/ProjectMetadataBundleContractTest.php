@@ -631,6 +631,81 @@ final class ProjectMetadataBundleContractTest extends TestCase
         self::assertSame('disable', $disablePreview['summary']['app_user_policy_action'] ?? '');
     }
 
+    public function testOptionalConstraintSectionsRoundTripAndLegacyBundlePreservesTarget(): void
+    {
+        $app = app_project_metadata_bundle_repository_app(app_bootstrap());
+        $projectKey = 'SCON' . strtoupper(substr(bin2hex(random_bytes(4)), 0, 8));
+        $this->cleanupProjectKeys[] = $projectKey;
+        $this->seedProjectCoreFixture($app, $projectKey);
+        $legacyBundle = sys_get_temp_dir() . '/mtool-constraint-legacy-bundle-' . bin2hex(random_bytes(6));
+        $constraintBundle = sys_get_temp_dir() . '/mtool-constraint-bundle-' . bin2hex(random_bytes(6));
+        array_push($this->cleanupPaths, $legacyBundle, $constraintBundle);
+
+        $legacyExport = app_project_metadata_bundle_export($app, $projectKey, [
+            'output_dir' => $legacyBundle,
+            'requested_by' => 'phpunit',
+        ]);
+        self::assertTrue($legacyExport['ok'], $legacyExport['error']);
+        self::assertNotContains('table_keys', $legacyExport['manifest']['included_sections']);
+
+        $tables = app_fetch_table_metadata_snapshot($app, $projectKey);
+        self::assertTrue($tables['ok'], $tables['error']);
+        $table = $tables['items'][0];
+        $columns = [];
+        foreach ($table['columns'] as $column) {
+            $columns[$column['physical_name']] = (int) $column['pid'];
+        }
+        $tablePid = (int) $table['pid'];
+        $replace = app_replace_project_table_constraints($app, $projectKey, [
+            'keys' => [[
+                'table_pid' => $tablePid,
+                'key_name' => 'uq_bundle_article_identity',
+                'key_kind' => 'unique',
+                'columns' => [
+                    ['column_pid' => $columns['article_id']],
+                    ['column_pid' => $columns['title']],
+                ],
+            ]],
+            'foreign_keys' => [[
+                'table_pid' => $tablePid,
+                'constraint_name' => 'fk_bundle_article_self',
+                'referenced_table_pid' => $tablePid,
+                'on_update_action' => 'CASCADE',
+                'on_delete_action' => 'RESTRICT',
+                'columns' => [[
+                    'column_pid' => $columns['article_id'],
+                    'referenced_column_pid' => $columns['article_id'],
+                ]],
+            ]],
+        ]);
+        self::assertTrue($replace['ok'], $replace['error']);
+
+        $export = app_project_metadata_bundle_export($app, $projectKey, [
+            'output_dir' => $constraintBundle,
+            'requested_by' => 'phpunit',
+        ]);
+        self::assertTrue($export['ok'], $export['error']);
+        self::assertContains('table_keys', $export['manifest']['included_sections']);
+        self::assertContains('table_foreign_keys', $export['manifest']['included_sections']);
+        self::assertSame(['article_id', 'title'], $export['sections']['table_keys']['keys'][0]['columns']);
+        self::assertSame('article_id', $export['sections']['table_foreign_keys']['foreign_keys'][0]['columns'][0]['referenced_column_name']);
+
+        $apply = app_project_metadata_bundle_import_apply($app, $constraintBundle, ['requested_by' => 'phpunit']);
+        self::assertTrue($apply['ok'], $apply['error']);
+        $roundTrip = app_fetch_project_table_constraints($app, $projectKey);
+        self::assertTrue($roundTrip['ok'], $roundTrip['error']);
+        self::assertSame('uq_bundle_article_identity', $roundTrip['snapshot']['keys'][0]['key_name']);
+
+        $preview = app_project_metadata_bundle_import_preview($app, $legacyBundle, ['requested_by' => 'phpunit']);
+        self::assertTrue($preview['ok'], $preview['error']);
+        self::assertSame('preserve', $preview['summary']['table_constraints_action'] ?? '');
+        $preserveApply = app_project_metadata_bundle_import_apply($app, $legacyBundle, ['requested_by' => 'phpunit']);
+        self::assertTrue($preserveApply['ok'], $preserveApply['error']);
+        $preserved = app_fetch_project_table_constraints($app, $projectKey);
+        self::assertSame('uq_bundle_article_identity', $preserved['snapshot']['keys'][0]['key_name']);
+        self::assertSame('fk_bundle_article_self', $preserved['snapshot']['foreign_keys'][0]['constraint_name']);
+    }
+
     private function seedProjectCoreFixture(array $app, string $projectKey): void
     {
         $insertProject = app_insert_project($app, [
