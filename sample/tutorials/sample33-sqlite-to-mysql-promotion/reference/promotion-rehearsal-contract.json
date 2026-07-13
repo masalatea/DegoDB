@@ -1,0 +1,112 @@
+{
+  "sample": "sample33-sqlite-to-mysql-promotion",
+  "structure_type": "promotion-tutorial-sample",
+  "promotion_contract": "sqlite-mysql-promotion-rehearsal-package-v1",
+  "source_sql": [
+    "PRAGMA foreign_keys = ON",
+    "CREATE TABLE parent (id INTEGER PRIMARY KEY, code TEXT NOT NULL)",
+    "CREATE TABLE record (id INTEGER PRIMARY KEY, parent_id INTEGER NOT NULL, amount TEXT NOT NULL, payload TEXT NOT NULL, bytes BLOB, recorded_at TEXT, UNIQUE(parent_id, amount), FOREIGN KEY(parent_id) REFERENCES parent(id))",
+    "INSERT INTO parent VALUES (2, 'P2')"
+  ],
+  "source_rows": [
+    {
+      "sql": "INSERT INTO record VALUES (?, ?, ?, ?, ?, ?)",
+      "values": [9, 2, "10.50", "{\"z\":2,\"a\":1}", {"encoding": "base64", "value": "AEEB"}, "2026-07-13 01:02:03.123456"]
+    },
+    {
+      "sql": "INSERT INTO record VALUES (?, ?, ?, ?, ?, ?)",
+      "values": [3, 2, "0.00", "{\"a\":0}", null, null]
+    }
+  ],
+  "manifest": {
+    "manifest_version": "sqlite-mysql-promotion-manifest-v1",
+    "ok": true,
+    "stage": "preflight",
+    "mutation_performed": false,
+    "source": {"driver": "sqlite", "identity": "sample33.sqlite", "snapshot_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"},
+    "target": {"driver": "mysql", "identity": "sample33-mysql", "must_be_empty": true},
+    "canonical_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+    "blockers": [],
+    "warnings": [],
+    "required_approvals": ["target_schema_prepare", "data_import", "cutover"],
+    "required_verification": ["row_count", "primary_key_set", "row_values", "nullability", "unique_keys", "foreign_keys", "json_values", "blob_values", "timestamp_values", "next_ids", "dbaccess_smoke"],
+    "non_goals": ["mysql_to_sqlite", "bidirectional_sync", "zero_downtime_cdc", "automatic_cutover"],
+    "tables": [
+      {
+        "name": "parent",
+        "row_count": 1,
+        "primary_key": ["id"],
+        "keys": [{"kind": "primary", "name": "pk_parent", "columns": ["id"]}],
+        "foreign_keys": [],
+        "columns": [
+          {"name": "id", "target_type": "BIGINT", "nullable": false},
+          {"name": "code", "target_type": "VARCHAR(40)", "nullable": false}
+        ]
+      },
+      {
+        "name": "record",
+        "row_count": 2,
+        "primary_key": ["id"],
+        "keys": [
+          {"kind": "primary", "name": "pk_record", "columns": ["id"]},
+          {"kind": "unique", "name": "uq_record_parent_amount", "columns": ["parent_id", "amount"]}
+        ],
+        "foreign_keys": [{"name": "fk_record_parent", "columns": ["parent_id"], "referenced_table": "parent", "referenced_columns": ["id"]}],
+        "columns": [
+          {"name": "id", "target_type": "BIGINT", "nullable": false},
+          {"name": "parent_id", "target_type": "BIGINT", "nullable": false},
+          {"name": "amount", "target_type": "DECIMAL(12,2)", "nullable": false},
+          {"name": "payload", "target_type": "JSON", "nullable": false},
+          {"name": "bytes", "target_type": "LONGBLOB", "nullable": true},
+          {"name": "recorded_at", "target_type": "DATETIME(6)", "nullable": true}
+        ]
+      }
+    ]
+  },
+  "import_checkpoint": {
+    "checkpoint_version": "sqlite-mysql-import-checkpoint-v1",
+    "completed": {
+      "parent:0": "1111111111111111111111111111111111111111111111111111111111111111",
+      "record:0": "2222222222222222222222222222222222222222222222222222222222222222",
+      "record:1": "3333333333333333333333333333333333333333333333333333333333333333"
+    },
+    "last_table": "record",
+    "last_chunk_index": 1,
+    "resume_after_primary_key": {"id": "9"}
+  },
+  "cutover": {
+    "freeze_window_id": "freeze-20260713T160000Z",
+    "writes_frozen": true,
+    "final_source_snapshot_sha256": "4444444444444444444444444444444444444444444444444444444444444444",
+    "final_verification_sha256": "5555555555555555555555555555555555555555555555555555555555555555",
+    "target_config_ref": "config/database/mysql-target",
+    "post_cutover_smoke_ref": "validation/post-cutover-smoke",
+    "post_cutover_smoke_passed": true,
+    "automatic_source_delete": false
+  },
+  "rollback": {
+    "retain_source": true,
+    "source_retention_ref": "rollback/sqlite/frozen-source",
+    "rollback_procedure_ref": "runbooks/sqlite-restore",
+    "rollback_window_until": "2026-07-20T12:00:00Z",
+    "post_window_source_disposition": "archive"
+  },
+  "switch": {
+    "package_id": "switch-20260713T170000Z",
+    "switch_target_driver": "mysql",
+    "switch_config_ref": "config/database/mysql-target",
+    "switch_command_ref": "runbooks/switch-to-mysql",
+    "pre_switch_backup_ref": "backups/pre-switch-config",
+    "post_switch_smoke_ref": "validation/post-switch-smoke",
+    "rollback_command_ref": "runbooks/rollback-to-sqlite",
+    "automatic_apply": false,
+    "source_delete": false
+  },
+  "operator_rehearsal": {
+    "rehearsal_report_ref": "validation/cutover-rehearsal",
+    "switch_dry_run_passed": true,
+    "rollback_rehearsal_passed": true,
+    "post_switch_smoke_rehearsed": true,
+    "mutation_performed": false
+  }
+}

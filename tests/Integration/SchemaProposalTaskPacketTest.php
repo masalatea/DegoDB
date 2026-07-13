@@ -16,10 +16,17 @@ final class SchemaProposalTaskPacketTest extends TestCase
         self::assertSame('source_of_truth', $task['inputs']['source']['authority']);
         self::assertSame('advisory', $task['inputs']['scan']['authority']);
         $scan = json_decode($packet['files']['input/scan.json'], true, 512, JSON_THROW_ON_ERROR);
-        self::assertSame('schema-proposal-deterministic-scan-v0', $scan['scan_version']);
+        self::assertSame(APP_TASK_PACKET_SCAN_VERSION, $scan['scan_version']);
         self::assertSame('/article', $scan['items'][0]['pointer']);
         self::assertSame([], $scan['inference']);
+        self::assertFalse($scan['mutation_performed']);
         self::assertSame(['output/candidate.json'], $task['allowed_writes']);
+        self::assertSame('app_schema_proposal_task_validate', $task['validation_pipeline']['validator']);
+        self::assertFalse($task['validation_pipeline']['formal_candidate']['advisory']);
+        self::assertSame('output/candidate.json', $task['validation_pipeline']['formal_candidate']['candidate_path']);
+        self::assertTrue($task['validation_pipeline']['fallback_candidate']['advisory']);
+        self::assertSame('input/fallback-candidate.json', $task['validation_pipeline']['fallback_candidate']['candidate_path']);
+        self::assertSame('review_and_copy_or_adapt_to_output_candidate_then_run_declared_validator', $task['validation_pipeline']['fallback_candidate']['promotion_rule']);
         self::assertTrue($task['prohibitions']['network']);
         self::assertStringContainsString('Do not continue until the user answers affirmatively', $packet['task_markdown']);
         self::assertStringContainsString('canonical_diff=[]', $packet['task_markdown']);
@@ -48,9 +55,11 @@ final class SchemaProposalTaskPacketTest extends TestCase
     public function testLocalFallbackIsExplicitAndUsesCommonTaskValidator(): void
     {
         $script = (string) file_get_contents(dirname(__DIR__, 2) . '/mtool/scripts/run_sample19_local_ai_proposal.php');
-        self::assertStringContainsString("['task:', 'execute-local-fallback']", $script);
+        self::assertStringContainsString("'ollama-endpoint:'", $script);
+        self::assertStringContainsString("'ollama-model:'", $script);
         self::assertStringContainsString('This optional local fallback never auto-runs.', $script);
-        self::assertStringContainsString('app_schema_proposal_task_validate(', $script);
+        self::assertStringContainsString('app_task_packet_local_fallback_run(', $script);
+        self::assertStringContainsString('app_task_packet_ollama_generate_candidate(', $script);
         self::assertStringNotContainsString('app_schema_proposal_response_accept(', $script);
     }
 

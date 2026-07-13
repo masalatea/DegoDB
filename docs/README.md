@@ -19,9 +19,11 @@ top-level は外部ユーザ向け導線を優先し、内部向け文書は [In
    - [Adoption Guide / 採用ガイド](adoption-guide.md)
    - [JSON To DB Entrance / JSON から DB 設計へ入る入口](json-to-db-entrance.md) optional pre-design entrance
    - [AI Task-Packet Workflow / AI task packet ワークフロー](ai-task-packet-workflow.md)
+   - [AI Schema Proposal Handoff Guide / AI schema proposal handoff guide](ai-schema-proposal-handoff-guide.md)
    - [AI Workspace Onboarding Command Guide / AI workspace onboarding command guide](ai-workspace-onboarding-command-guide.md)
    - [Sample19 Material-to-No-Code Validation Pipeline / Sample19資料to No Code validation pipeline](sample19-material-to-no-code-validation-pipeline.md)
    - [Existing DB To Output / 既存 DB から出力まで](existing-db-to-output.md)
+   - [SQLite-to-MySQL Promotion / SQLiteからMySQLへの昇格](sqlite-to-mysql-promotion.md)
    - [Use Cases / ユースケース](use-cases.md)
    - [Consulting Intake / 相談前チェックリスト](consulting-intake.md)
    - [Deliverables / 成果物 catalog](deliverables.md)
@@ -63,6 +65,8 @@ detail doc だけを読んで mainline を再構成するのは current reading 
   - OSS 利用、導入検討、コンサルティング、実装支援の入口として、現行対応と未対応範囲を整理する文書
 - [Existing DB To Output / 既存 DB から出力まで](existing-db-to-output.md)
   - existing DB 接続から canonical metadata 永続化、設計、output verify までの primary journey
+- [SQLite-to-MySQL Promotion / SQLiteからMySQLへの昇格](sqlite-to-mysql-promotion.md)
+  - SQLite-first application database を MySQL・MariaDB へ offline / one-way で昇格する supported v1 guide。manifest、target schema、export/import checkpoint、verification、manual cutover、SSO app-user promotion boundary をまとめる
 - [Use Cases / ユースケース](use-cases.md)
   - database-first、existing-database-first、legacy modernization の用途整理
 - [Consulting Intake / 相談前チェックリスト](consulting-intake.md)
@@ -77,6 +81,8 @@ detail doc だけを読んで mainline を再構成するのは current reading 
   - 初期構想に含まれる optional pre-design entrance。JSON file / JSON API cache / JSON config から AI-readable な DB design draft を作り、DB-first mainline へ入る。runtime / generator 機能ではない
 - [AI Task-Packet Workflow / AI task packet ワークフロー](ai-task-packet-workflow.md)
   - Codex / Claude が task packet を読み、具体的確認後に candidate を作り、共通 CLI で Mtool-derived review artifact まで検証する恒久手順。Ollama は明示 optional fallback
+- [AI Schema Proposal Handoff Guide / AI schema proposal handoff guide](ai-schema-proposal-handoff-guide.md)
+  - Codex / Claude / coding agent が task packet、scan、fallback candidate、formal candidate、review artifact の権限差とcopy/adapt境界を迷わず扱うための作業 guide
 - [AI Workspace Onboarding Command Guide / AI workspace onboarding command guide](ai-workspace-onboarding-command-guide.md)
   - Codex / Claude / 利用者が `mtool/scripts/init_ai_workspace.php` を使い、dry-run JSON preflight、明示承認、apply、role mapping、安全境界を迷わず扱うための恒久手順
 - [Sample19 Material-to-No-Code Validation Pipeline / Sample19資料to No Code validation pipeline](sample19-material-to-no-code-validation-pipeline.md)
@@ -108,6 +114,8 @@ detail doc だけを読んで mainline を再構成するのは current reading 
   - ツール本来の `DB 構造 -> import -> Data Class -> DB Access -> Source Output` の概念モデル
 - [Existing DB To Output / 既存 DB から出力まで](existing-db-to-output.md)
   - existing DB 接続から output verify までの primary journey
+- [SQLite-to-MySQL Promotion / SQLiteからMySQLへの昇格](sqlite-to-mysql-promotion.md)
+  - SQLite-first から MySQL・MariaDB への明示 review 付き promotion。zero-downtime CDC や bidirectional sync ではなく、fresh target、deterministic copy、verification、manual cutover、SQLite source retention を正本にする
 - [Use Cases / ユースケース](use-cases.md)
   - database-first / existing-database-first の実用シナリオと、現行対応・旧実装参照・将来対応候補の整理
 - [Adoption Guide / 採用ガイド](adoption-guide.md)
@@ -126,6 +134,8 @@ detail doc だけを読んで mainline を再構成するのは current reading 
   - DB をよく知らない利用者が、JSON sample と現在の処理説明から DB 設計案へ進むための、初期構想に含まれる optional pre-design entrance
 - [AI Task-Packet Workflow / AI task packet ワークフロー](ai-task-packet-workflow.md)
   - provider API不要のCodex/Claude主導task packet、単一validation pipeline、read-only review、optional Ollama fallbackの正本
+- [AI Schema Proposal Handoff Guide / AI schema proposal handoff guide](ai-schema-proposal-handoff-guide.md)
+  - schema proposal task packet を受け取ったAIが、source/scan/fallback/formal output/review artifact の権限差、確認文、copy/adapt、validator再実行を判断するための正本
 - [Sample19 Material-to-No-Code Validation Pipeline / Sample19資料to No Code validation pipeline](sample19-material-to-no-code-validation-pipeline.md)
   - Sample19 material insight から no-code handoff までの関数単位validation pipeline。AI prompt review と fallback local scan の境界を明示する
 - [No-Code Tryout / no-code をまず試す](no-code-tryout.md)

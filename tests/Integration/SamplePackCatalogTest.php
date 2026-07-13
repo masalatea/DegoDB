@@ -50,7 +50,7 @@ final class SamplePackCatalogTest extends TestCase
                 continue;
             }
 
-            self::assertSame('file-reference-sample', $structureType);
+            self::assertContains($structureType, ['file-reference-sample', 'promotion-tutorial-sample']);
             self::assertDirectoryExists($absolutePath . '/reference');
             self::assertFileDoesNotExist($absolutePath . '/compose.yaml');
             self::assertFileDoesNotExist($absolutePath . '/run.sh');
@@ -129,6 +129,7 @@ final class SamplePackCatalogTest extends TestCase
                 'sample30-no-code-app-local-sync-demo',
                 'sample31-no-code-inventory-request-demo',
                 'sample32-no-code-ui-test-lab',
+                'sample33-sqlite-to-mysql-promotion',
             ],
             app_sample_pack_category_map()['tutorials'] ?? [],
         );
@@ -357,6 +358,10 @@ final class SamplePackCatalogTest extends TestCase
         }
 
         foreach (app_sample_pack_runtime_pack_names() as $packName) {
+            self::assertSame([], app_sample_pack_fixture_relative_paths($packName));
+            self::assertSame([], app_sample_pack_fixture_absolute_paths($packName));
+        }
+        foreach (app_sample_pack_promotion_tutorial_sample_names() as $packName) {
             self::assertSame([], app_sample_pack_fixture_relative_paths($packName));
             self::assertSame([], app_sample_pack_fixture_absolute_paths($packName));
         }

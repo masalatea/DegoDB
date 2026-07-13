@@ -11,6 +11,8 @@ This is the current green path for the repo. Read it when you need the supported
 
 warning / error の意味を切り分けたい時は [troubleshooting.md](troubleshooting.md) を参照してください。
 
+SQLite-first application database を MySQL / MariaDB へ昇格する時は [SQLite-to-MySQL Promotion / SQLiteからMySQLへの昇格](sqlite-to-mysql-promotion.md) を正本にします。これは既存 DB import mainline ではなく、明示 write freeze、fresh target、deterministic export/import、verification、manual cutover、SQLite source retention を伴う offline / one-way promotion lane です。
+
 途中再開なら、先に [existing-db-to-output.md#e10-handoff-payload](existing-db-to-output.md#e10-handoff-payload) で handoff payload を確認し、[storage-and-state-model.md#s1-resume-checkpoints](storage-and-state-model.md#s1-resume-checkpoints) で `config_db` / artifact 側の残存 state を見ます。  
 共同作業や AI handoff の内部 contract が必要な時だけ [internal/README.md](internal/README.md) を参照してください。
 
@@ -54,6 +56,11 @@ warning / error の意味を切り分けたい時は [troubleshooting.md](troubl
 ### representative project lane
 
 - sanitized legacy project packs under `sample/legacy-projects/`
+
+### promotion lane
+
+- `sample/tutorials/sample33-sqlite-to-mysql-promotion`
+- SSO app-user promotion qualification through `SsoAppUserPromotionTest`
 
 ## まず使うコマンド
 

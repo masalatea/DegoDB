@@ -4,6 +4,30 @@ declare(strict_types=1);
 
 require_once __DIR__ . '/sso_app_user_design_guidance.php';
 
+function app_sso_app_user_driver(PDO $pdo): string
+{
+    return (string) $pdo->getAttribute(PDO::ATTR_DRIVER_NAME);
+}
+
+/**
+ * Apply a deterministic proof schema for the active driver.
+ * Production generation may provide an already-created schema; this remains
+ * safe because every statement is CREATE TABLE IF NOT EXISTS.
+ */
+function app_sso_app_user_apply_schema(PDO $pdo): void
+{
+    $driver = app_sso_app_user_driver($pdo);
+    if ($driver === 'sqlite') {
+        app_sso_app_user_apply_sqlite_schema($pdo);
+        return;
+    }
+    if ($driver === 'mysql') {
+        app_sso_app_user_apply_mysql_schema($pdo);
+        return;
+    }
+    throw new RuntimeException('unsupported SSO app-user runtime driver: ' . $driver);
+}
+
 /**
  * Apply the deterministic SQLite proof schema.
  * Production generation may use dialect-specific DDL with the same invariants.
@@ -41,6 +65,52 @@ function app_sso_app_user_apply_sqlite_schema(PDO $pdo): void
             updated_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
             FOREIGN KEY (app_user_id) REFERENCES app_user (app_user_id)
         )',
+    );
+}
+
+/**
+ * Apply the deterministic MySQL/MariaDB proof schema.
+ *
+ * The external identity table intentionally uses the semantic SSO identity
+ * pair as its key. That keeps promoted SQLite data usable for future JIT
+ * logins without depending on a copied AUTOINCREMENT surrogate.
+ */
+function app_sso_app_user_apply_mysql_schema(PDO $pdo): void
+{
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $pdo->exec(
+        'CREATE TABLE IF NOT EXISTS `app_user` (
+            `app_user_id` VARCHAR(40) NOT NULL,
+            `status` VARCHAR(20) NOT NULL DEFAULT \'enabled\',
+            `created_at` VARCHAR(40) NOT NULL DEFAULT \'\',
+            `updated_at` VARCHAR(40) NOT NULL DEFAULT \'\',
+            PRIMARY KEY (`app_user_id`)
+        ) ENGINE=InnoDB DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_bin',
+    );
+    $pdo->exec(
+        'CREATE TABLE IF NOT EXISTS `app_user_external_identity` (
+            `app_user_id` VARCHAR(40) NOT NULL,
+            `provider_key` VARCHAR(80) NOT NULL,
+            `issuer` VARCHAR(255) NOT NULL,
+            `subject` VARCHAR(255) NOT NULL,
+            `first_authenticated_at` VARCHAR(40) NOT NULL,
+            `last_authenticated_at` VARCHAR(40) NOT NULL,
+            PRIMARY KEY (`issuer`, `subject`),
+            CONSTRAINT `fk_external_identity_app_user`
+                FOREIGN KEY (`app_user_id`) REFERENCES `app_user` (`app_user_id`)
+        ) ENGINE=InnoDB DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_bin',
+    );
+    $pdo->exec(
+        'CREATE TABLE IF NOT EXISTS `app_user_profile` (
+            `app_user_id` VARCHAR(40) NOT NULL,
+            `display_name` VARCHAR(255) NOT NULL DEFAULT \'\',
+            `email` VARCHAR(255) NOT NULL DEFAULT \'\',
+            `profile_json` JSON NOT NULL,
+            `updated_at` VARCHAR(40) NOT NULL DEFAULT \'\',
+            PRIMARY KEY (`app_user_id`),
+            CONSTRAINT `fk_profile_app_user`
+                FOREIGN KEY (`app_user_id`) REFERENCES `app_user` (`app_user_id`)
+        ) ENGINE=InnoDB DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_bin',
     );
 }
 
@@ -83,7 +153,7 @@ function app_sso_app_user_resolve_verified_principal(PDO $pdo, array $principal,
         return app_sso_app_user_runtime_result(false, 'invalid_policy', '', false, [], 'provider_key is required.');
     }
 
-    app_sso_app_user_apply_sqlite_schema($pdo);
+    app_sso_app_user_apply_schema($pdo);
     $existing = app_sso_app_user_fetch_by_external_identity($pdo, $issuer, $subject);
     if ($existing !== null) {
         if (($existing['status'] ?? '') !== 'enabled') {
@@ -119,8 +189,8 @@ function app_sso_app_user_resolve_verified_principal(PDO $pdo, array $principal,
 
         $appUserId = 'usr_' . bin2hex(random_bytes(16));
         $now = gmdate('c');
-        $insertUser = $pdo->prepare('INSERT INTO app_user (app_user_id, status) VALUES (:app_user_id, \'enabled\')');
-        $insertUser->execute([':app_user_id' => $appUserId]);
+        $insertUser = $pdo->prepare('INSERT INTO app_user (app_user_id, status, created_at, updated_at) VALUES (:app_user_id, \'enabled\', :created_at, :updated_at)');
+        $insertUser->execute([':app_user_id' => $appUserId, ':created_at' => $now, ':updated_at' => $now]);
 
         $insertIdentity = $pdo->prepare(
             'INSERT INTO app_user_external_identity (
@@ -189,20 +259,37 @@ function app_sso_app_user_safe_profile(array $principal, array $fields): array
 function app_sso_app_user_update_profile(PDO $pdo, string $appUserId, array $profile): void
 {
     $json = json_encode($profile, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_THROW_ON_ERROR);
-    $statement = $pdo->prepare(
-        'INSERT INTO app_user_profile (app_user_id, display_name, email, profile_json)
-         VALUES (:app_user_id, :display_name, :email, :profile_json)
-         ON CONFLICT (app_user_id) DO UPDATE SET
-            display_name = excluded.display_name,
-            email = excluded.email,
-            profile_json = excluded.profile_json,
-            updated_at = CURRENT_TIMESTAMP',
-    );
+    $now = gmdate('c');
+    $driver = app_sso_app_user_driver($pdo);
+    if ($driver === 'sqlite') {
+        $statement = $pdo->prepare(
+            'INSERT INTO app_user_profile (app_user_id, display_name, email, profile_json, updated_at)
+             VALUES (:app_user_id, :display_name, :email, :profile_json, :updated_at)
+             ON CONFLICT (app_user_id) DO UPDATE SET
+                display_name = excluded.display_name,
+                email = excluded.email,
+                profile_json = excluded.profile_json,
+                updated_at = excluded.updated_at',
+        );
+    } elseif ($driver === 'mysql') {
+        $statement = $pdo->prepare(
+            'INSERT INTO app_user_profile (app_user_id, display_name, email, profile_json, updated_at)
+             VALUES (:app_user_id, :display_name, :email, :profile_json, :updated_at)
+             ON DUPLICATE KEY UPDATE
+                display_name = VALUES(display_name),
+                email = VALUES(email),
+                profile_json = VALUES(profile_json),
+                updated_at = VALUES(updated_at)',
+        );
+    } else {
+        throw new RuntimeException('unsupported SSO app-user runtime driver: ' . $driver);
+    }
     $statement->execute([
         ':app_user_id' => $appUserId,
         ':display_name' => (string) ($profile['display_name'] ?? ''),
         ':email' => (string) ($profile['email'] ?? ''),
         ':profile_json' => $json,
+        ':updated_at' => $now,
     ]);
 }
 

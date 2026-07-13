@@ -57,6 +57,7 @@ This roadmap defines the user-facing tutorial lane under `sample/tutorials/`. It
 | `sample24-ebook-public-reader-site-demo` | current | ebook public reader site demo | 公開本 / 章 / EPUB delivery metadata から HTML reader page と app 向け OpenAPI surface を publish する。EPUB は download link のみ扱う | `DATACLASS-PHP`, `DBACCESS-PHP`, `HTML-PAGE`, `OPENAPI-JSON` | `make sample24-pack-runtime-test` |
 | `sample25-ebook-editor-auth-cms-demo` | current | ebook editor auth CMS demo | 編集者向け chapter preview / draft update / publish API を legacy-compatible ProjectToken protected proxy として publish する。current static bearer baseline / full editor UI / user-role 管理 / revision history は扱わない | `DATACLASS-PHP`, `DBACCESS-PHP`, `OPENAPI-JSON`, `AUTH-PROXY-SERVER` | `make sample25-pack-runtime-test` |
 | `sample26-ebook-headless-cms-capstone` | current | ebook headless CMS capstone | public reader HTML、app OpenAPI、legacy-compatible ProjectToken editor proxy、project metadata bundle を 1 project から publish する | `DATACLASS-PHP`, `DBACCESS-PHP`, `HTML-PAGE`, `OPENAPI-JSON`, `AUTH-PROXY-SERVER`, `PROJECT-METADATA-BUNDLE` | `make sample26-pack-runtime-test` |
+| `sample33-sqlite-to-mysql-promotion` | current | SQLite-to-MySQL promotion artifact chain | parent/record SQLite fixtureからmanifest、target schema、export、import checkpoint、verification、cutover、operator、rehearsal packageを接続する | `PROMOTION-REHEARSAL-PACKAGE` | `tests/Integration/Sample33SqliteMysqlPromotionTest.php` |
 
 ## phase 分け
 
