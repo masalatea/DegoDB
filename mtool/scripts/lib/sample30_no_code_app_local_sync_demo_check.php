@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 require_once dirname(__DIR__, 2) . '/app/app_local_sqlite_dbaccess.php';
 require_once dirname(__DIR__, 2) . '/app/app_local_sqlite_schema.php';
+require_once dirname(__DIR__, 2) . '/app/app_local_user_identity.php';
 require_once dirname(__DIR__, 2) . '/app/bootstrap.php';
 require_once dirname(__DIR__, 2) . '/app/database.php';
 require_once dirname(__DIR__, 2) . '/app/managed_operation_app_local_executor.php';
@@ -93,7 +94,10 @@ function app_sample30_no_code_app_local_sync_editor_principal(): array
 {
     return [
         'id' => 'sample30-editor',
+        'issuer' => 'https://idp.example.test/realms/dego',
+        'subject' => 'sample30-editor-subject',
         'display_name' => 'Sample30 Editor',
+        'email' => 'sample30-editor@example.test',
         'auth_source' => 'sample-pack',
         'site' => 'local',
         'roles' => [],
@@ -101,7 +105,10 @@ function app_sample30_no_code_app_local_sync_editor_principal(): array
             APP_SAMPLE30_SYNC_PROJECT_KEY => ['editor'],
         ],
         'scopes' => ['sync_task:write'],
-        'claims' => [],
+        'access_token' => 'must-not-be-persisted',
+        'refresh_token' => 'must-not-be-persisted',
+        'id_token' => 'must-not-be-persisted',
+        'claims' => ['raw' => 'must-not-be-persisted'],
     ];
 }
 
@@ -125,6 +132,7 @@ function app_sample30_no_code_app_local_sync_demo_run(array $app, string $reques
         'data_class_sync' => null,
         'manifest' => null,
         'schema' => null,
+        'app_local_identity' => null,
         'app_local_artifact' => null,
         'no_code_artifact' => null,
         'screen_definition' => null,
@@ -310,6 +318,37 @@ function app_sample30_no_code_app_local_sync_demo_run(array $app, string $reques
         }
         $steps['schema']['apply'] = $apply;
 
+        $identityResult = app_local_user_identity_from_principal(
+            app_sample30_no_code_app_local_sync_editor_principal(),
+            [
+                'device_id' => 'sample30-local-device',
+                'profile_cached_at' => '2026-07-13T00:00:00+00:00',
+                'last_authenticated_at' => '2026-07-13T00:00:00+00:00',
+            ],
+        );
+        if (!$identityResult['ok']) {
+            throw new RuntimeException('sample30 App-local identity normalization failed: ' . $identityResult['error']);
+        }
+        $identitySave = app_local_user_identity_save($localPdo, $identityResult['identity']);
+        if (!$identitySave['ok']) {
+            throw new RuntimeException('sample30 App-local identity save failed: ' . $identitySave['error']);
+        }
+        $identityRestore = app_local_user_identity_restore($localPdo, $identitySave['local_user_id']);
+        if (!$identityRestore['ok'] || $identityRestore['identity'] === null) {
+            throw new RuntimeException('sample30 App-local identity restore failed: ' . $identityRestore['error']);
+        }
+        $identityActor = app_local_user_identity_actor_snapshot($identityRestore['identity']);
+        $steps['app_local_identity'] = [
+            'ok' => true,
+            'local_user_id' => $identitySave['local_user_id'],
+            'identity' => $identityRestore['identity'],
+            'actor' => $identityActor,
+            'credentials_excluded' => !array_key_exists('access_token', $identityRestore['identity'])
+                && !array_key_exists('refresh_token', $identityRestore['identity'])
+                && !array_key_exists('id_token', $identityRestore['identity'])
+                && !array_key_exists('claims', $identityRestore['identity']),
+        ];
+
         $localSeedDto = [
             'id' => 3001,
             'title' => 'App-local sync no-code task',
@@ -339,6 +378,7 @@ function app_sample30_no_code_app_local_sync_demo_run(array $app, string $reques
                     'storage_mode' => 'local-copy',
                     'origin' => 'app-local',
                     'target' => 'server',
+                    'actor' => $identityActor,
                 ],
                 static function (array $syncIntent) use ($app): array {
                     $enqueue = app_pdo_enqueue_managed_operation_sync_intent($app, $syncIntent);
@@ -469,6 +509,7 @@ function app_sample30_no_code_app_local_sync_demo_run(array $app, string $reques
                         'storage_mode' => 'local-copy',
                         'origin' => 'app-local',
                         'target' => 'server',
+                        'actor' => $identityActor,
                     ],
                     static function (array $syncIntent) use ($app): array {
                         $enqueue = app_pdo_enqueue_managed_operation_sync_intent($app, $syncIntent);
@@ -528,6 +569,7 @@ function app_sample30_no_code_app_local_sync_demo_run(array $app, string $reques
                         'storage_mode' => 'local-copy',
                         'origin' => 'app-local',
                         'target' => 'server',
+                        'actor' => $identityActor,
                     ],
                     static function (array $syncIntent) use ($app): array {
                         $enqueue = app_pdo_enqueue_managed_operation_sync_intent($app, $syncIntent);
@@ -588,6 +630,8 @@ function app_sample30_no_code_app_local_sync_demo_run(array $app, string $reques
                 'handler_method' => (string) ($steps['server_outbox_process']['handler_result']['method_name'] ?? ''),
                 'row_status' => (string) ($steps['server_read_after_sync']['row']['status'] ?? ''),
                 'title_preserved' => (string) ($steps['server_read_after_sync']['row']['title'] ?? '') === 'App-local sync no-code task',
+                'actor_subject' => (string) ($steps['server_outbox_process']['item']['intent']['actor']['subject'] ?? ''),
+                'actor_local_user_id' => (string) ($steps['server_outbox_process']['item']['intent']['actor']['local_user_id'] ?? ''),
             ],
             'runtime_artifact' => [
                 'list_sync_status_hint' => (bool) ($listScreen['sync_status_hint'] ?? false),
@@ -612,12 +656,16 @@ function app_sample30_no_code_app_local_sync_demo_run(array $app, string $reques
         app_sample30_no_code_app_local_sync_assert_same('update_sync_task', $steps['screen_definition']['action_key'] ?? '', 'action key', $assertionErrors);
         app_sample30_no_code_app_local_sync_assert_same('disabled', $steps['screen_definition']['action_availability'] ?? '', 'preview action availability', $assertionErrors);
         app_sample30_no_code_app_local_sync_assert_same('enabled', $steps['screen_definition']['authorized_action_availability'] ?? '', 'authorized action availability', $assertionErrors);
+        app_sample30_no_code_app_local_sync_assert_same(true, $steps['app_local_identity']['credentials_excluded'] ?? false, 'App-local identity credential exclusion', $assertionErrors);
+        app_sample30_no_code_app_local_sync_assert_same('sample30-editor-subject', $steps['app_local_identity']['identity']['subject'] ?? '', 'App-local identity subject', $assertionErrors);
+        app_sample30_no_code_app_local_sync_assert_same('sample30-local-device', $steps['app_local_identity']['identity']['device_id'] ?? '', 'App-local identity device', $assertionErrors);
         app_sample30_no_code_app_local_sync_assert_same(APP_SAMPLE30_APP_LOCAL_SOURCE_OUTPUT_KEY, $steps['app_local_artifact']['source_output_key'] ?? '', 'app local artifact key', $assertionErrors);
         app_sample30_no_code_app_local_sync_assert_same('app-local-persistence-php', $steps['app_local_artifact']['artifact_strategy'] ?? '', 'app local artifact strategy', $assertionErrors);
         app_sample30_no_code_app_local_sync_assert_same('managed-operation-sync-intent-v0', $dispatch['result']['sync_intent']['intent_version'] ?? '', 'sync intent version', $assertionErrors);
         app_sample30_no_code_app_local_sync_assert_same('pending', $dispatch['result']['sync_intent']['status'] ?? '', 'sync intent status', $assertionErrors);
         app_sample30_no_code_app_local_sync_assert_same('local-copy', $dispatch['result']['sync_intent']['storage_mode'] ?? '', 'sync intent storage mode', $assertionErrors);
         app_sample30_no_code_app_local_sync_assert_same('app-local', $dispatch['result']['sync_intent']['origin'] ?? '', 'sync intent origin', $assertionErrors);
+        app_sample30_no_code_app_local_sync_assert_same('sample30-editor-subject', $dispatch['result']['sync_intent']['actor']['subject'] ?? '', 'sync intent actor subject', $assertionErrors);
         app_sample30_no_code_app_local_sync_assert_same('server', $dispatch['result']['sync_intent']['target'] ?? '', 'sync intent target', $assertionErrors);
         app_sample30_no_code_app_local_sync_assert_same('done', $outboxProcess['outcome'] ?? '', 'outbox outcome', $assertionErrors);
         app_sample30_no_code_app_local_sync_assert_same('done', $outboxProcess['item']['status'] ?? '', 'outbox status', $assertionErrors);

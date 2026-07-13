@@ -483,6 +483,49 @@ function app_project_table_import_source_named_live_schema(
         $rows = $statement->fetchAll();
         $tables = app_project_table_import_source_tables_from_information_schema_rows($rows);
 
+        $keyStatement = $pdo->prepare(
+            'SELECT tc.TABLE_NAME, tc.CONSTRAINT_NAME, tc.CONSTRAINT_TYPE,
+                    kcu.COLUMN_NAME, kcu.ORDINAL_POSITION
+             FROM information_schema.TABLE_CONSTRAINTS AS tc
+             INNER JOIN information_schema.KEY_COLUMN_USAGE AS kcu
+                ON kcu.CONSTRAINT_SCHEMA = tc.CONSTRAINT_SCHEMA
+               AND kcu.TABLE_NAME = tc.TABLE_NAME
+               AND kcu.CONSTRAINT_NAME = tc.CONSTRAINT_NAME
+             WHERE tc.CONSTRAINT_SCHEMA = :schema_name
+               AND tc.CONSTRAINT_TYPE IN ("PRIMARY KEY", "UNIQUE")
+             ORDER BY tc.TABLE_NAME, tc.CONSTRAINT_NAME, kcu.ORDINAL_POSITION'
+        );
+        $keyStatement->execute([':schema_name' => $schemaName]);
+        $foreignKeyStatement = $pdo->prepare(
+            'SELECT kcu.TABLE_NAME, kcu.CONSTRAINT_NAME, kcu.COLUMN_NAME,
+                    kcu.REFERENCED_TABLE_NAME, kcu.REFERENCED_COLUMN_NAME,
+                    kcu.ORDINAL_POSITION, rc.UPDATE_RULE, rc.DELETE_RULE
+             FROM information_schema.KEY_COLUMN_USAGE AS kcu
+             INNER JOIN information_schema.REFERENTIAL_CONSTRAINTS AS rc
+                ON rc.CONSTRAINT_SCHEMA = kcu.CONSTRAINT_SCHEMA
+               AND rc.TABLE_NAME = kcu.TABLE_NAME
+               AND rc.CONSTRAINT_NAME = kcu.CONSTRAINT_NAME
+             WHERE kcu.CONSTRAINT_SCHEMA = :schema_name
+               AND kcu.REFERENCED_TABLE_NAME IS NOT NULL
+             ORDER BY kcu.TABLE_NAME, kcu.CONSTRAINT_NAME, kcu.ORDINAL_POSITION'
+        );
+        $foreignKeyStatement->execute([':schema_name' => $schemaName]);
+        $constraints = app_project_table_import_source_constraints_from_mysql_rows(
+            $keyStatement->fetchAll(),
+            $foreignKeyStatement->fetchAll(),
+        );
+        $managedTargetTableNames = app_project_table_import_live_schema_managed_target_table_names(
+            $app,
+            $normalizedProjectKey,
+            $sourceDefinition['key'],
+            $schemaName,
+            $tables,
+        );
+        $constraints = app_project_table_import_source_constraints_for_managed_tables(
+            $constraints,
+            $managedTargetTableNames,
+        );
+
         return [
             'ok' => true,
             'source_key' => $sourceDefinition['key'],
@@ -490,15 +533,11 @@ function app_project_table_import_source_named_live_schema(
             'source_description' => $sourceDefinition['description'],
             'source_schema_name' => $schemaName,
             'apply_supported' => $sourceDefinition['apply_supported'],
-            'managed_target_table_names' => app_project_table_import_live_schema_managed_target_table_names(
-                $app,
-                $normalizedProjectKey,
-                $sourceDefinition['key'],
-                $schemaName,
-                $tables,
-            ),
+            'managed_target_table_names' => $managedTargetTableNames,
             'compare_against_all_canonical' => false,
             'tables' => $tables,
+            'constraints_supported' => true,
+            'constraints' => $constraints,
             'error' => '',
         ];
     } catch (Throwable $throwable) {
@@ -515,6 +554,107 @@ function app_project_table_import_source_named_live_schema(
             'error' => $throwable->getMessage(),
         ];
     }
+}
+
+/**
+ * Convert MySQL/MariaDB information_schema rows into PID-free canonical constraint metadata.
+ *
+ * @return array{keys:list<array<string,mixed>>,foreign_keys:list<array<string,mixed>>}
+ */
+function app_project_table_import_source_constraints_from_mysql_rows(array $keyRows, array $foreignKeyRows): array
+{
+    $keys = [];
+    $keyIndexes = [];
+    foreach ($keyRows as $row) {
+        if (!is_array($row)) {
+            continue;
+        }
+        $tableName = app_project_table_import_source_row_value($row, 'TABLE_NAME', 'table_name');
+        $keyName = app_project_table_import_source_row_value($row, 'CONSTRAINT_NAME', 'constraint_name');
+        $columnName = app_project_table_import_source_row_value($row, 'COLUMN_NAME', 'column_name');
+        if ($tableName === '' || $keyName === '' || $columnName === '') {
+            continue;
+        }
+        $indexKey = strtolower($tableName . "\n" . $keyName);
+        if (!isset($keyIndexes[$indexKey])) {
+            $keyIndexes[$indexKey] = count($keys);
+            $constraintType = strtoupper(app_project_table_import_source_row_value($row, 'CONSTRAINT_TYPE', 'constraint_type'));
+            $keys[] = [
+                'table_name' => $tableName,
+                'key_name' => $keyName,
+                'key_kind' => $constraintType === 'PRIMARY KEY' ? 'primary' : 'unique',
+                'source_of_truth' => 'live-schema',
+                'columns' => [],
+            ];
+        }
+        $keys[$keyIndexes[$indexKey]]['columns'][] = [
+            'column_name' => $columnName,
+            'ordinal_position' => (int) app_project_table_import_source_row_value($row, 'ORDINAL_POSITION', 'ordinal_position'),
+        ];
+    }
+
+    $foreignKeys = [];
+    $foreignKeyIndexes = [];
+    foreach ($foreignKeyRows as $row) {
+        if (!is_array($row)) {
+            continue;
+        }
+        $tableName = app_project_table_import_source_row_value($row, 'TABLE_NAME', 'table_name');
+        $constraintName = app_project_table_import_source_row_value($row, 'CONSTRAINT_NAME', 'constraint_name');
+        $referencedTableName = app_project_table_import_source_row_value($row, 'REFERENCED_TABLE_NAME', 'referenced_table_name');
+        if ($tableName === '' || $constraintName === '' || $referencedTableName === '') {
+            continue;
+        }
+        $indexKey = strtolower($tableName . "\n" . $constraintName);
+        if (!isset($foreignKeyIndexes[$indexKey])) {
+            $foreignKeyIndexes[$indexKey] = count($foreignKeys);
+            $foreignKeys[] = [
+                'table_name' => $tableName,
+                'constraint_name' => $constraintName,
+                'referenced_table_name' => $referencedTableName,
+                'on_update_action' => app_project_table_import_source_row_value($row, 'UPDATE_RULE', 'update_rule'),
+                'on_delete_action' => app_project_table_import_source_row_value($row, 'DELETE_RULE', 'delete_rule'),
+                'source_of_truth' => 'live-schema',
+                'columns' => [],
+            ];
+        }
+        $foreignKeys[$foreignKeyIndexes[$indexKey]]['columns'][] = [
+            'column_name' => app_project_table_import_source_row_value($row, 'COLUMN_NAME', 'column_name'),
+            'referenced_column_name' => app_project_table_import_source_row_value($row, 'REFERENCED_COLUMN_NAME', 'referenced_column_name'),
+            'ordinal_position' => (int) app_project_table_import_source_row_value($row, 'ORDINAL_POSITION', 'ordinal_position'),
+        ];
+    }
+
+    return ['keys' => $keys, 'foreign_keys' => $foreignKeys];
+}
+
+/** @return array{keys:list<array<string,mixed>>,foreign_keys:list<array<string,mixed>>} */
+function app_project_table_import_source_constraints_for_managed_tables(array $constraints, array $managedTableNames): array
+{
+    $managed = [];
+    foreach ($managedTableNames as $tableName) {
+        $normalized = strtolower(trim((string) $tableName));
+        if ($normalized !== '') {
+            $managed[$normalized] = true;
+        }
+    }
+    if ($managed === []) {
+        return [
+            'keys' => is_array($constraints['keys'] ?? null) ? array_values($constraints['keys']) : [],
+            'foreign_keys' => is_array($constraints['foreign_keys'] ?? null) ? array_values($constraints['foreign_keys']) : [],
+        ];
+    }
+
+    $keys = array_filter(
+        is_array($constraints['keys'] ?? null) ? $constraints['keys'] : [],
+        static fn (array $key): bool => isset($managed[strtolower(trim((string) ($key['table_name'] ?? '')))]),
+    );
+    $foreignKeys = array_filter(
+        is_array($constraints['foreign_keys'] ?? null) ? $constraints['foreign_keys'] : [],
+        static fn (array $foreignKey): bool => isset($managed[strtolower(trim((string) ($foreignKey['table_name'] ?? '')))])
+            && isset($managed[strtolower(trim((string) ($foreignKey['referenced_table_name'] ?? '')))]),
+    );
+    return ['keys' => array_values($keys), 'foreign_keys' => array_values($foreignKeys)];
 }
 
 /**

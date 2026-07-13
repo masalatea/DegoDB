@@ -17,6 +17,9 @@ final class SchemaProposalTaskTest extends TestCase
         self::assertTrue($result['ok'], implode(', ', $result['errors']));
         self::assertSame('review_artifact_ready', $result['stage']);
         self::assertFalse($result['mutation_performed']);
+        self::assertSame('app_schema_proposal_task_validate', $result['validation_pipeline']['validator']);
+        self::assertSame('formal_candidate', $result['validation_pipeline']['candidate_authority']);
+        self::assertFalse($result['validation_pipeline']['advisory']);
         self::assertSame(hash('sha256', $candidateJson), $result['candidate_sha256']);
         self::assertNotSame('', $result['review_artifact_sha256']);
         $review = json_decode($result['review_artifact_json'], true, 512, JSON_THROW_ON_ERROR);

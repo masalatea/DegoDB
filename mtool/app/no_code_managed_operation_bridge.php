@@ -49,6 +49,7 @@ function app_no_code_managed_operation_sync_intent_from_runtime_action(
         'storage_mode' => (string) ($options['storage_mode'] ?? 'local-copy'),
         'origin' => (string) ($options['origin'] ?? 'app-local'),
         'target' => (string) ($options['target'] ?? 'server'),
+        'actor' => is_array($options['actor'] ?? null) ? $options['actor'] : [],
     ]);
 }
 

@@ -10,9 +10,11 @@ require_once __DIR__ . '/custom_proxy_repository_pdo.php';
 require_once __DIR__ . '/project_repository.php';
 require_once __DIR__ . '/project_membership_repository.php';
 require_once __DIR__ . '/table_metadata_repository.php';
+require_once __DIR__ . '/table_constraint_metadata_repository.php';
 require_once __DIR__ . '/data_class_repository.php';
 require_once __DIR__ . '/db_access_repository.php';
 require_once __DIR__ . '/source_output_repository.php';
+require_once __DIR__ . '/sso_app_user_project_policy_repository.php';
 
 function app_project_metadata_bundle_type(): string
 {
@@ -118,6 +120,9 @@ function app_project_metadata_bundle_section_filename_map(): array
         'db_access' => 'db-access.json',
         'source_outputs' => 'source-outputs.json',
         'custom_proxies' => 'custom-proxies.json',
+        'app_user_policy' => 'app-user-policy.json',
+        'table_keys' => 'table-keys.json',
+        'table_foreign_keys' => 'table-foreign-keys.json',
     ];
 }
 
@@ -665,6 +670,16 @@ function app_project_metadata_bundle_import_prepare(array $app, string $bundlePa
     }
 
     $targetSummary = app_project_metadata_bundle_target_summary($canonicalApp, $targetProjectKey, $scope);
+    $appUserPolicyImportPlan = app_project_metadata_bundle_app_user_policy_import_plan(
+        $canonicalApp,
+        $targetProjectKey,
+        $loaded['sections'],
+    );
+    $constraintImportPlan = app_project_metadata_bundle_constraint_import_plan(
+        $canonicalApp,
+        $targetProjectKey,
+        $loaded['sections'],
+    );
     $databaseSourceItems = is_array($loaded['sections']['database_sources']['database_sources'] ?? null)
         ? $loaded['sections']['database_sources']['database_sources']
         : [];
@@ -726,6 +741,8 @@ function app_project_metadata_bundle_import_prepare(array $app, string $bundlePa
         ],
         $databaseSourceSecretsResult['summary'],
         $databaseSourcePlan['summary'],
+        $appUserPolicyImportPlan,
+        $constraintImportPlan,
     );
     foreach ($targetSummary['excluded_counts'] as $key => $count) {
         $summary['excluded_' . $key] = $count;
@@ -953,6 +970,37 @@ function app_project_metadata_bundle_validate_sections(
     $phpNamespace = app_normalize_php_namespace((string) ($projectSection['php_namespace'] ?? ''));
     if (!app_php_namespace_is_valid($phpNamespace)) {
         $errors[] = 'project.php_namespace が不正です。';
+    }
+
+    if (array_key_exists('app_user_policy', $sections)) {
+        $appUserPolicySection = $sections['app_user_policy'];
+        if (!is_array($appUserPolicySection) || !is_array($appUserPolicySection['policy'] ?? null)) {
+            $errors[] = 'app_user_policy section が不正です。';
+        } else {
+            $normalizedPolicy = app_sso_app_user_project_policy_normalize($appUserPolicySection['policy']);
+            foreach ($normalizedPolicy['errors'] as $policyError) {
+                $errors[] = 'app_user_policy: ' . $policyError;
+            }
+            foreach ($normalizedPolicy['warnings'] as $policyWarning) {
+                $warnings[] = 'app_user_policy: ' . $policyWarning;
+            }
+            if (array_key_exists('secret', $appUserPolicySection)
+                || array_key_exists('client_secret', $appUserPolicySection)
+                || array_key_exists('token', $appUserPolicySection)
+            ) {
+                $errors[] = 'app_user_policy section にsecret値を保存できません。';
+            }
+        }
+    }
+
+    $hasTableKeys = array_key_exists('table_keys', $sections);
+    $hasTableForeignKeys = array_key_exists('table_foreign_keys', $sections);
+    if ($hasTableKeys !== $hasTableForeignKeys) {
+        $errors[] = 'table_keys and table_foreign_keys sections must be included together.';
+    } elseif ($hasTableKeys) {
+        foreach (app_project_metadata_bundle_validate_portable_constraints($sections) as $constraintError) {
+            $errors[] = $constraintError;
+        }
     }
 
     if (array_key_exists('database_sources', $sections)) {
@@ -1268,6 +1316,75 @@ function app_project_metadata_bundle_validate_sections(
         'errors' => array_values(array_unique($errors)),
         'warnings' => array_values(array_unique($warnings)),
     ];
+}
+
+/** @return list<string> */
+function app_project_metadata_bundle_validate_portable_constraints(array $sections): array
+{
+    $errors = [];
+    $tableItems = is_array($sections['tables']['tables'] ?? null) ? $sections['tables']['tables'] : [];
+    $tables = [];
+    foreach ($tableItems as $table) {
+        if (!is_array($table)) {
+            continue;
+        }
+        $tableName = strtolower(trim((string) ($table['physical_name'] ?? $table['name'] ?? '')));
+        $columns = [];
+        foreach ($table['columns'] ?? [] as $column) {
+            if (is_array($column)) {
+                $columns[strtolower(trim((string) ($column['physical_name'] ?? $column['name'] ?? '')))] = true;
+            }
+        }
+        $tables[$tableName] = $columns;
+    }
+    foreach ($sections['table_keys']['keys'] ?? [] as $index => $key) {
+        if (!is_array($key)) {
+            $errors[] = 'table_keys.keys[' . $index . '] must be an object.';
+            continue;
+        }
+        $tableName = strtolower(trim((string) ($key['table_name'] ?? '')));
+        if (!isset($tables[$tableName])) {
+            $errors[] = 'table_keys references missing table: ' . $tableName . '.';
+        }
+        $columns = is_array($key['columns'] ?? null) ? $key['columns'] : [];
+        if ($columns === []) {
+            $errors[] = 'table_keys key columns must not be empty: ' . (string) ($key['key_name'] ?? '') . '.';
+        }
+        foreach ($columns as $columnName) {
+            $normalized = strtolower(trim((string) $columnName));
+            if (!isset($tables[$tableName][$normalized])) {
+                $errors[] = 'table_keys references missing column: ' . $tableName . '.' . $normalized . '.';
+            }
+        }
+    }
+    foreach ($sections['table_foreign_keys']['foreign_keys'] ?? [] as $index => $foreignKey) {
+        if (!is_array($foreignKey)) {
+            $errors[] = 'table_foreign_keys.foreign_keys[' . $index . '] must be an object.';
+            continue;
+        }
+        $tableName = strtolower(trim((string) ($foreignKey['table_name'] ?? '')));
+        $referencedTableName = strtolower(trim((string) ($foreignKey['referenced_table_name'] ?? '')));
+        if (!isset($tables[$tableName]) || !isset($tables[$referencedTableName])) {
+            $errors[] = 'table_foreign_keys references missing table: ' . (string) ($foreignKey['constraint_name'] ?? '') . '.';
+            continue;
+        }
+        $columns = is_array($foreignKey['columns'] ?? null) ? $foreignKey['columns'] : [];
+        if ($columns === []) {
+            $errors[] = 'table_foreign_keys columns must not be empty: ' . (string) ($foreignKey['constraint_name'] ?? '') . '.';
+        }
+        foreach ($columns as $column) {
+            if (!is_array($column)) {
+                continue;
+            }
+            $columnName = strtolower(trim((string) ($column['column_name'] ?? '')));
+            $referencedColumnName = strtolower(trim((string) ($column['referenced_column_name'] ?? '')));
+            if (!isset($tables[$tableName][$columnName]) || !isset($tables[$referencedTableName][$referencedColumnName])) {
+                $errors[] = 'table_foreign_keys references missing column pair: '
+                    . $tableName . '.' . $columnName . ' -> ' . $referencedTableName . '.' . $referencedColumnName . '.';
+            }
+        }
+    }
+    return $errors;
 }
 
 /**
@@ -1671,6 +1788,25 @@ function app_project_metadata_bundle_collect_core_snapshot(
         ];
     }
 
+    $appUserPolicyResult = app_fetch_sso_app_user_project_policy($app, $projectKey);
+    if (!$appUserPolicyResult['ok']) {
+        return [
+            'ok' => false,
+            'sections' => [],
+            'summary' => [],
+            'error' => $appUserPolicyResult['error'],
+        ];
+    }
+    $constraintResult = app_fetch_project_table_constraints($app, $projectKey);
+    if (!$constraintResult['ok']) {
+        return [
+            'ok' => false,
+            'sections' => [],
+            'summary' => [],
+            'error' => $constraintResult['error'],
+        ];
+    }
+
     $projectItem = $projectResult['item'];
     $sections = [
         'project' => [
@@ -1704,6 +1840,20 @@ function app_project_metadata_bundle_collect_core_snapshot(
         ],
         'custom_proxies' => $customProxyResult['snapshot'],
     ];
+    if (is_array($appUserPolicyResult['item'])) {
+        $sections['app_user_policy'] = [
+            'policy' => $appUserPolicyResult['item']['policy'],
+            'source_of_truth' => (string) ($appUserPolicyResult['item']['source_of_truth'] ?? 'manual'),
+        ];
+    }
+    if ($constraintResult['snapshot']['keys'] !== [] || $constraintResult['snapshot']['foreign_keys'] !== []) {
+        $portableConstraints = app_project_metadata_bundle_portable_constraints(
+            $constraintResult['snapshot'],
+            $tableResult['items'],
+        );
+        $sections['table_keys'] = ['keys' => $portableConstraints['keys']];
+        $sections['table_foreign_keys'] = ['foreign_keys' => $portableConstraints['foreign_keys']];
+    }
 
     $selectedDatabaseSourceKeysResult = app_project_metadata_bundle_parse_database_source_keys(
         $options['database_source_keys'] ?? [],
@@ -2335,6 +2485,66 @@ function app_project_metadata_bundle_export_simple_target_field_item(array $item
     ];
 }
 
+/** @return array{keys:list<array<string,mixed>>,foreign_keys:list<array<string,mixed>>} */
+function app_project_metadata_bundle_portable_constraints(array $snapshot, array $tables): array
+{
+    $tableNames = [];
+    $columnNames = [];
+    foreach ($tables as $table) {
+        if (!is_array($table)) {
+            continue;
+        }
+        $tablePid = (int) ($table['pid'] ?? 0);
+        $tableNames[$tablePid] = (string) ($table['physical_name'] ?? $table['name'] ?? '');
+        foreach ($table['columns'] ?? [] as $column) {
+            if (is_array($column)) {
+                $columnNames[(int) ($column['pid'] ?? 0)] = (string) ($column['physical_name'] ?? $column['name'] ?? '');
+            }
+        }
+    }
+
+    $keys = [];
+    foreach ($snapshot['keys'] ?? [] as $key) {
+        if (!is_array($key)) {
+            continue;
+        }
+        $keys[] = [
+            'table_name' => $tableNames[(int) ($key['table_pid'] ?? 0)] ?? '',
+            'key_name' => (string) ($key['key_name'] ?? ''),
+            'key_kind' => (string) ($key['key_kind'] ?? ''),
+            'source_of_truth' => (string) ($key['source_of_truth'] ?? ''),
+            'columns' => array_values(array_map(
+                static fn (array $column): string => $columnNames[(int) ($column['column_pid'] ?? 0)] ?? '',
+                is_array($key['columns'] ?? null) ? $key['columns'] : [],
+            )),
+        ];
+    }
+
+    $foreignKeys = [];
+    foreach ($snapshot['foreign_keys'] ?? [] as $foreignKey) {
+        if (!is_array($foreignKey)) {
+            continue;
+        }
+        $foreignKeys[] = [
+            'table_name' => $tableNames[(int) ($foreignKey['table_pid'] ?? 0)] ?? '',
+            'constraint_name' => (string) ($foreignKey['constraint_name'] ?? ''),
+            'referenced_table_name' => $tableNames[(int) ($foreignKey['referenced_table_pid'] ?? 0)] ?? '',
+            'on_update_action' => (string) ($foreignKey['on_update_action'] ?? ''),
+            'on_delete_action' => (string) ($foreignKey['on_delete_action'] ?? ''),
+            'source_of_truth' => (string) ($foreignKey['source_of_truth'] ?? ''),
+            'columns' => array_values(array_map(
+                static fn (array $column): array => [
+                    'column_name' => $columnNames[(int) ($column['column_pid'] ?? 0)] ?? '',
+                    'referenced_column_name' => $columnNames[(int) ($column['referenced_column_pid'] ?? 0)] ?? '',
+                ],
+                is_array($foreignKey['columns'] ?? null) ? $foreignKey['columns'] : [],
+            )),
+        ];
+    }
+
+    return ['keys' => $keys, 'foreign_keys' => $foreignKeys];
+}
+
 /**
  * @return array<string,int|string>
  */
@@ -2357,6 +2567,13 @@ function app_project_metadata_bundle_summary_from_sections(array $sections): arr
     $customProxies = is_array($sections['custom_proxies']['custom_proxies'] ?? null)
         ? $sections['custom_proxies']['custom_proxies']
         : [];
+    $appUserPolicy = is_array($sections['app_user_policy']['policy'] ?? null)
+        ? $sections['app_user_policy']['policy']
+        : null;
+    $tableKeys = is_array($sections['table_keys']['keys'] ?? null) ? $sections['table_keys']['keys'] : null;
+    $tableForeignKeys = is_array($sections['table_foreign_keys']['foreign_keys'] ?? null)
+        ? $sections['table_foreign_keys']['foreign_keys']
+        : null;
 
     $tableColumnCount = 0;
     foreach ($tables as $table) {
@@ -2426,7 +2643,7 @@ function app_project_metadata_bundle_summary_from_sections(array $sections): arr
         );
     }
 
-    return [
+    $summary = [
         'project_count' => 1,
         'membership_user_count' => 1 + count($members),
         'database_source_count' => count($databaseSources),
@@ -2448,6 +2665,60 @@ function app_project_metadata_bundle_summary_from_sections(array $sections): arr
         'custom_proxy_count' => count($customProxies),
         'custom_proxy_step_count' => $customProxyStepCount,
         'custom_proxy_source_output_target_count' => $customProxySourceOutputTargetCount,
+    ];
+    if ($appUserPolicy !== null) {
+        $summary['app_user_policy_count'] = 1;
+        $summary['app_user_policy_enabled_count'] = ($appUserPolicy['enabled'] ?? false) ? 1 : 0;
+    }
+    if ($tableKeys !== null || $tableForeignKeys !== null) {
+        $summary['table_key_count'] = count($tableKeys ?? []);
+        $summary['table_foreign_key_count'] = count($tableForeignKeys ?? []);
+    }
+
+    return $summary;
+}
+
+/** @return array<string,int|string> */
+function app_project_metadata_bundle_app_user_policy_import_plan(
+    array $app,
+    string $targetProjectKey,
+    array $sections,
+): array {
+    $included = array_key_exists('app_user_policy', $sections);
+    $target = app_fetch_sso_app_user_project_policy($app, $targetProjectKey);
+    $targetExists = $target['ok'] && is_array($target['item']);
+    if (!$included && !$targetExists) {
+        return [];
+    }
+    $enabled = $included && (bool) ($sections['app_user_policy']['policy']['enabled'] ?? false);
+
+    if ($included) {
+        $action = $enabled ? ($targetExists ? 'replace' : 'create') : 'disable';
+    } else {
+        $action = $targetExists ? 'preserve' : 'none';
+    }
+
+    return [
+        'app_user_policy_included' => $included ? 1 : 0,
+        'target_app_user_policy_exists' => $targetExists ? 1 : 0,
+        'app_user_policy_action' => $action,
+    ];
+}
+
+/** @return array<string,int|string> */
+function app_project_metadata_bundle_constraint_import_plan(array $app, string $targetProjectKey, array $sections): array
+{
+    $included = array_key_exists('table_keys', $sections) || array_key_exists('table_foreign_keys', $sections);
+    $target = app_fetch_project_table_constraints($app, $targetProjectKey);
+    $targetExists = $target['ok']
+        && ($target['snapshot']['keys'] !== [] || $target['snapshot']['foreign_keys'] !== []);
+    if (!$included && !$targetExists) {
+        return [];
+    }
+    return [
+        'table_constraints_included' => $included ? 1 : 0,
+        'target_table_constraints_exist' => $targetExists ? 1 : 0,
+        'table_constraints_action' => $included ? ($targetExists ? 'replace' : 'create') : 'preserve',
     ];
 }
 
@@ -2598,9 +2869,14 @@ function app_project_metadata_bundle_apply_core_sections(
     $sourceOutputsSection = is_array($sections['source_outputs'] ?? null) ? $sections['source_outputs'] : [];
     $dbAccessSection = is_array($sections['db_access'] ?? null) ? $sections['db_access'] : [];
     $customProxiesSection = is_array($sections['custom_proxies'] ?? null) ? $sections['custom_proxies'] : [];
+    $appUserPolicySection = is_array($sections['app_user_policy'] ?? null) ? $sections['app_user_policy'] : [];
     $hasCustomProxiesSection = array_key_exists('custom_proxies', $sections);
+    $hasConstraintSections = array_key_exists('table_keys', $sections) || array_key_exists('table_foreign_keys', $sections);
 
     $projectId = app_project_metadata_bundle_upsert_project($pdo, $projectSection, $targetProjectKey);
+    $preservedConstraints = $hasConstraintSections
+        ? null
+        : app_project_metadata_bundle_capture_portable_constraints($pdo, $projectId);
     app_project_metadata_bundle_replace_memberships($pdo, $projectId, $projectSection, $membershipsSection);
     app_project_metadata_bundle_delete_core_scope_rows($pdo, $projectId, $hasCustomProxiesSection);
 
@@ -2614,6 +2890,18 @@ function app_project_metadata_bundle_apply_core_sections(
         $projectId,
         is_array($dataClassesSection['data_classes'] ?? null) ? $dataClassesSection['data_classes'] : [],
     );
+    if ($hasConstraintSections) {
+        app_project_metadata_bundle_apply_portable_constraints($pdo, $projectId, [
+            'keys' => is_array($sections['table_keys']['keys'] ?? null) ? $sections['table_keys']['keys'] : [],
+            'foreign_keys' => is_array($sections['table_foreign_keys']['foreign_keys'] ?? null)
+                ? $sections['table_foreign_keys']['foreign_keys']
+                : [],
+        ]);
+    } elseif (is_array($preservedConstraints)
+        && ($preservedConstraints['keys'] !== [] || $preservedConstraints['foreign_keys'] !== [])
+    ) {
+        app_project_metadata_bundle_apply_portable_constraints($pdo, $projectId, $preservedConstraints);
+    }
     $sourceOutputKeys = app_project_metadata_bundle_insert_source_outputs(
         $pdo,
         $projectId,
@@ -2640,6 +2928,225 @@ function app_project_metadata_bundle_apply_core_sections(
             : [],
         $databaseSourceSecrets,
     );
+    if (array_key_exists('app_user_policy', $sections)) {
+        app_project_metadata_bundle_upsert_app_user_policy($pdo, $projectId, $appUserPolicySection);
+    }
+}
+
+/** @return array{keys:list<array<string,mixed>>,foreign_keys:list<array<string,mixed>>} */
+function app_project_metadata_bundle_capture_portable_constraints(PDO $pdo, int $projectId): array
+{
+    $keys = [];
+    $indexes = [];
+    $statement = $pdo->prepare(
+        'SELECT k.id, t.physical_name AS table_name, k.key_name, k.key_kind, k.source_of_truth,
+                c.ordinal_position, col.physical_name AS column_name
+         FROM project_table_keys k
+         INNER JOIN dbtable t ON t.PID = k.table_pid
+         LEFT JOIN project_table_key_columns c ON c.table_key_id = k.id
+         LEFT JOIN dbtablecolumns col ON col.PID = c.column_pid
+         WHERE k.project_id = :project_id
+         ORDER BY k.table_pid, k.key_name, c.ordinal_position',
+    );
+    $statement->execute([':project_id' => $projectId]);
+    foreach ($statement->fetchAll(PDO::FETCH_ASSOC) as $row) {
+        $id = (int) $row['id'];
+        if (!isset($indexes[$id])) {
+            $indexes[$id] = count($keys);
+            $keys[] = [
+                'table_name' => (string) $row['table_name'],
+                'key_name' => (string) $row['key_name'],
+                'key_kind' => (string) $row['key_kind'],
+                'source_of_truth' => (string) $row['source_of_truth'],
+                'columns' => [],
+            ];
+        }
+        if ($row['column_name'] !== null) {
+            $keys[$indexes[$id]]['columns'][] = (string) $row['column_name'];
+        }
+    }
+
+    $foreignKeys = [];
+    $indexes = [];
+    $statement = $pdo->prepare(
+        'SELECT f.id, t.physical_name AS table_name, f.constraint_name,
+                rt.physical_name AS referenced_table_name, f.on_update_action, f.on_delete_action,
+                f.source_of_truth, c.ordinal_position, col.physical_name AS column_name,
+                rcol.physical_name AS referenced_column_name
+         FROM project_table_foreign_keys f
+         INNER JOIN dbtable t ON t.PID = f.table_pid
+         INNER JOIN dbtable rt ON rt.PID = f.referenced_table_pid
+         LEFT JOIN project_table_foreign_key_columns c ON c.foreign_key_id = f.id
+         LEFT JOIN dbtablecolumns col ON col.PID = c.column_pid
+         LEFT JOIN dbtablecolumns rcol ON rcol.PID = c.referenced_column_pid
+         WHERE f.project_id = :project_id
+         ORDER BY f.table_pid, f.constraint_name, c.ordinal_position',
+    );
+    $statement->execute([':project_id' => $projectId]);
+    foreach ($statement->fetchAll(PDO::FETCH_ASSOC) as $row) {
+        $id = (int) $row['id'];
+        if (!isset($indexes[$id])) {
+            $indexes[$id] = count($foreignKeys);
+            $foreignKeys[] = [
+                'table_name' => (string) $row['table_name'],
+                'constraint_name' => (string) $row['constraint_name'],
+                'referenced_table_name' => (string) $row['referenced_table_name'],
+                'on_update_action' => (string) $row['on_update_action'],
+                'on_delete_action' => (string) $row['on_delete_action'],
+                'source_of_truth' => (string) $row['source_of_truth'],
+                'columns' => [],
+            ];
+        }
+        if ($row['column_name'] !== null) {
+            $foreignKeys[$indexes[$id]]['columns'][] = [
+                'column_name' => (string) $row['column_name'],
+                'referenced_column_name' => (string) $row['referenced_column_name'],
+            ];
+        }
+    }
+    return ['keys' => $keys, 'foreign_keys' => $foreignKeys];
+}
+
+function app_project_metadata_bundle_apply_portable_constraints(PDO $pdo, int $projectId, array $portable): void
+{
+    $tablePids = [];
+    $columnPids = [];
+    $columnTableByPid = [];
+    $projectTablePids = [];
+    $statement = $pdo->prepare(
+        'SELECT t.PID AS table_pid, t.physical_name AS table_name,
+                c.PID AS column_pid, c.physical_name AS column_name
+         FROM dbtable t
+         LEFT JOIN dbtablecolumns c ON c.dbtablePID = t.PID AND c.ProjectPID = t.ProjectPID
+         WHERE t.ProjectPID = :project_id',
+    );
+    $statement->execute([':project_id' => $projectId]);
+    foreach ($statement->fetchAll(PDO::FETCH_ASSOC) as $row) {
+        $tablePid = (int) $row['table_pid'];
+        $tableName = strtolower((string) $row['table_name']);
+        $tablePids[$tableName] = $tablePid;
+        $projectTablePids[$tablePid] = true;
+        if ($row['column_pid'] !== null) {
+            $columnPid = (int) $row['column_pid'];
+            $columnPids[$tableName . "\n" . strtolower((string) $row['column_name'])] = $columnPid;
+            $columnTableByPid[$columnPid] = $tablePid;
+        }
+    }
+
+    $resolved = ['keys' => [], 'foreign_keys' => []];
+    foreach ($portable['keys'] ?? [] as $key) {
+        $tableName = strtolower((string) ($key['table_name'] ?? ''));
+        $resolved['keys'][] = [
+            'table_pid' => $tablePids[$tableName] ?? 0,
+            'key_name' => $key['key_name'] ?? '',
+            'key_kind' => $key['key_kind'] ?? '',
+            'source_of_truth' => $key['source_of_truth'] ?? 'bundle-import',
+            'columns' => array_map(
+                static fn ($columnName): array => [
+                    'column_pid' => $columnPids[$tableName . "\n" . strtolower((string) $columnName)] ?? 0,
+                ],
+                is_array($key['columns'] ?? null) ? $key['columns'] : [],
+            ),
+        ];
+    }
+    foreach ($portable['foreign_keys'] ?? [] as $foreignKey) {
+        $tableName = strtolower((string) ($foreignKey['table_name'] ?? ''));
+        $referencedTableName = strtolower((string) ($foreignKey['referenced_table_name'] ?? ''));
+        $columns = [];
+        foreach (is_array($foreignKey['columns'] ?? null) ? $foreignKey['columns'] : [] as $column) {
+            $columns[] = [
+                'column_pid' => $columnPids[$tableName . "\n" . strtolower((string) ($column['column_name'] ?? ''))] ?? 0,
+                'referenced_column_pid' => $columnPids[$referencedTableName . "\n" . strtolower((string) ($column['referenced_column_name'] ?? ''))] ?? 0,
+            ];
+        }
+        $resolved['foreign_keys'][] = [
+            'table_pid' => $tablePids[$tableName] ?? 0,
+            'constraint_name' => $foreignKey['constraint_name'] ?? '',
+            'referenced_table_pid' => $tablePids[$referencedTableName] ?? 0,
+            'on_update_action' => $foreignKey['on_update_action'] ?? 'NO ACTION',
+            'on_delete_action' => $foreignKey['on_delete_action'] ?? 'NO ACTION',
+            'source_of_truth' => $foreignKey['source_of_truth'] ?? 'bundle-import',
+            'columns' => $columns,
+        ];
+    }
+    $normalized = app_table_constraint_metadata_normalize($resolved, $columnTableByPid, $projectTablePids);
+    if (!$normalized['ok']) {
+        throw new RuntimeException('portable table constraints are invalid: ' . implode(' ', $normalized['errors']));
+    }
+    app_project_metadata_bundle_replace_constraints_pdo($pdo, $projectId, $normalized['snapshot']);
+}
+
+function app_project_metadata_bundle_replace_constraints_pdo(PDO $pdo, int $projectId, array $snapshot): void
+{
+    foreach (['project_table_foreign_keys', 'project_table_keys'] as $table) {
+        $delete = $pdo->prepare('DELETE FROM ' . $table . ' WHERE project_id = :project_id');
+        $delete->execute([':project_id' => $projectId]);
+    }
+    foreach ($snapshot['keys'] as $key) {
+        $insert = $pdo->prepare('INSERT INTO project_table_keys (project_id, table_pid, key_name, key_kind, source_of_truth) VALUES (:p,:t,:n,:k,:s)');
+        $insert->execute([':p'=>$projectId, ':t'=>$key['table_pid'], ':n'=>$key['key_name'], ':k'=>$key['key_kind'], ':s'=>$key['source_of_truth']]);
+        $id = (int) $pdo->lastInsertId();
+        foreach ($key['columns'] as $column) {
+            $child = $pdo->prepare('INSERT INTO project_table_key_columns (project_id,table_key_id,column_pid,ordinal_position) VALUES (:p,:i,:c,:o)');
+            $child->execute([':p'=>$projectId, ':i'=>$id, ':c'=>$column['column_pid'], ':o'=>$column['ordinal_position']]);
+        }
+    }
+    foreach ($snapshot['foreign_keys'] as $foreignKey) {
+        $insert = $pdo->prepare('INSERT INTO project_table_foreign_keys (project_id,table_pid,constraint_name,referenced_table_pid,on_update_action,on_delete_action,source_of_truth) VALUES (:p,:t,:n,:r,:u,:d,:s)');
+        $insert->execute([':p'=>$projectId, ':t'=>$foreignKey['table_pid'], ':n'=>$foreignKey['constraint_name'], ':r'=>$foreignKey['referenced_table_pid'], ':u'=>$foreignKey['on_update_action'], ':d'=>$foreignKey['on_delete_action'], ':s'=>$foreignKey['source_of_truth']]);
+        $id = (int) $pdo->lastInsertId();
+        foreach ($foreignKey['columns'] as $column) {
+            $child = $pdo->prepare('INSERT INTO project_table_foreign_key_columns (project_id,foreign_key_id,column_pid,referenced_column_pid,ordinal_position) VALUES (:p,:i,:c,:r,:o)');
+            $child->execute([':p'=>$projectId, ':i'=>$id, ':c'=>$column['column_pid'], ':r'=>$column['referenced_column_pid'], ':o'=>$column['ordinal_position']]);
+        }
+    }
+}
+
+function app_project_metadata_bundle_upsert_app_user_policy(PDO $pdo, int $projectId, array $section): void
+{
+    $policyInput = is_array($section['policy'] ?? null) ? $section['policy'] : [];
+    $normalized = app_sso_app_user_project_policy_normalize($policyInput);
+    if (!$normalized['ok']) {
+        throw new RuntimeException('app_user_policy section is invalid: ' . implode(' ', $normalized['errors']));
+    }
+    $policy = $normalized['policy'];
+    $sourceOfTruth = trim((string) ($section['source_of_truth'] ?? 'bundle-import'));
+    if ($sourceOfTruth === '') {
+        $sourceOfTruth = 'bundle-import';
+    }
+
+    $existing = $pdo->prepare('SELECT id FROM project_app_user_policies WHERE project_id = :project_id LIMIT 1');
+    $existing->execute([':project_id' => $projectId]);
+    $existingId = (int) ($existing->fetchColumn() ?: 0);
+    $parameters = [
+        ':project_id' => $projectId,
+        ':contract_version' => $policy['contract_version'],
+        ':enabled' => $policy['enabled'] ? 1 : 0,
+        ':policy_json' => app_sso_app_user_project_policy_json($policy),
+        ':source_of_truth' => $sourceOfTruth,
+    ];
+    if ($existingId > 0) {
+        $statement = $pdo->prepare(
+            'UPDATE project_app_user_policies
+             SET contract_version = :contract_version,
+                 enabled = :enabled,
+                 policy_json = :policy_json,
+                 source_of_truth = :source_of_truth,
+                 updated_at = CURRENT_TIMESTAMP
+             WHERE project_id = :project_id',
+        );
+        $statement->execute($parameters);
+        return;
+    }
+
+    $statement = $pdo->prepare(
+        'INSERT INTO project_app_user_policies (
+            project_id, contract_version, enabled, policy_json, source_of_truth
+         ) VALUES (
+            :project_id, :contract_version, :enabled, :policy_json, :source_of_truth
+         )',
+    );
+    $statement->execute($parameters);
 }
 
 function app_project_metadata_bundle_upsert_project(PDO $pdo, array $projectSection, string $targetProjectKey): int

@@ -10,6 +10,10 @@ require_once __DIR__ . '/project_output_db_access_generator.php';
 require_once __DIR__ . '/project_output_runtime_sql_generator.php';
 require_once __DIR__ . '/runtime_storage_paths.php';
 require_once __DIR__ . '/table_metadata_repository.php';
+require_once __DIR__ . '/table_constraint_metadata_repository.php';
+require_once __DIR__ . '/sso_app_user_project_policy_repository.php';
+require_once __DIR__ . '/sso_app_user_canonical_schema_validation.php';
+require_once __DIR__ . '/sso_app_user_generated_resolver.php';
 
 function app_project_output_runtime_stage_relative_path(string $projectKey, string $sourceOutputKey): string
 {
@@ -2599,6 +2603,16 @@ function app_project_output_prepare_runtime_source_tree(array $app, string $proj
             ),
         );
 
+        $ssoResolverSummary = app_project_output_runtime_emit_sso_app_user_resolver(
+            $app,
+            $projectKey,
+            $stageRoot,
+        );
+        $generationSummary['sso_app_user_resolver'] = $ssoResolverSummary;
+        if ($ssoResolverSummary['warning'] !== '') {
+            $generationSummary['warnings'][] = $ssoResolverSummary['warning'];
+        }
+
         app_project_output_write_json_file(
             $stageRoot . '/_support/runtime-generation-manifest.json',
             [
@@ -2641,4 +2655,91 @@ function app_project_output_prepare_runtime_source_tree(array $app, string $proj
         'generation_summary' => $generationSummary,
         'error' => '',
     ];
+}
+
+/** @return array{status:string,emitted:bool,files:list<string>,warning:string} */
+function app_project_output_runtime_emit_sso_app_user_resolver(array $app, string $projectKey, string $stageRoot): array
+{
+    $policyResult = app_fetch_sso_app_user_project_policy($app, $projectKey);
+    if (!$policyResult['ok']) {
+        return ['status' => 'policy_read_failed', 'emitted' => false, 'files' => [], 'warning' => 'SSO app-user policy read failed: ' . $policyResult['error']];
+    }
+    if (!is_array($policyResult['item'])) {
+        return ['status' => 'not_configured', 'emitted' => false, 'files' => [], 'warning' => ''];
+    }
+    $policy = $policyResult['item']['policy'];
+    if (($policy['enabled'] ?? false) !== true) {
+        return ['status' => 'disabled', 'emitted' => false, 'files' => [], 'warning' => ''];
+    }
+
+    $tableResult = app_fetch_table_metadata_snapshot($app, $projectKey);
+    $dataClassResult = app_fetch_data_class_metadata_snapshot($app, $projectKey);
+    $constraintResult = app_fetch_project_table_constraints($app, $projectKey);
+    $classResult = app_fetch_db_access_class_metadata_catalog($app, $projectKey);
+    foreach ([$tableResult, $dataClassResult, $constraintResult, $classResult] as $result) {
+        if (($result['ok'] ?? false) !== true) {
+            return ['status' => 'metadata_read_failed', 'emitted' => false, 'files' => [], 'warning' => 'SSO app-user resolver metadata read failed: ' . (string) ($result['error'] ?? '')];
+        }
+    }
+
+    $dbAccessClasses = [];
+    foreach ($classResult['items'] as $class) {
+        $sourceName = (string) ($class['source_name'] ?? '');
+        $functions = app_fetch_db_access_function_metadata_catalog($app, $projectKey, $sourceName);
+        if (!$functions['ok']) {
+            return ['status' => 'metadata_read_failed', 'emitted' => false, 'files' => [], 'warning' => 'SSO app-user DBAccess function read failed: ' . $functions['error']];
+        }
+        $class['functions'] = $functions['items'];
+        $dbAccessClasses[] = $class;
+    }
+    $schemaValidation = app_sso_app_user_validate_canonical_schema(
+        $policy,
+        $tableResult['items'],
+        $dataClassResult['items'],
+        $dbAccessClasses,
+        $constraintResult['snapshot'],
+    );
+    if (($schemaValidation['ready_for_generation'] ?? false) !== true) {
+        $details = array_merge(
+            is_array($schemaValidation['errors'] ?? null) ? $schemaValidation['errors'] : [],
+            is_array($schemaValidation['blocking_gaps'] ?? null) ? $schemaValidation['blocking_gaps'] : [],
+        );
+        return [
+            'status' => (string) ($schemaValidation['status'] ?? 'schema_not_ready'),
+            'emitted' => false,
+            'files' => [],
+            'warning' => 'SSO app-user resolver was not emitted: ' . implode(' ', $details),
+        ];
+    }
+    $contract = app_sso_app_user_generated_resolver_contract($policy, $schemaValidation, $dbAccessClasses);
+    if (!$contract['ok']) {
+        return [
+            'status' => $contract['status'],
+            'emitted' => false,
+            'files' => [],
+            'warning' => 'SSO app-user resolver was not emitted: ' . implode(' ', $contract['errors']),
+        ];
+    }
+
+    $relativeRoot = '_support/sso-app-user';
+    $sourceFiles = [
+        'generated_name.php',
+        'sso_app_user_design_guidance.php',
+        'sso_app_user_project_policy.php',
+        'sso_app_user_generated_resolver.php',
+    ];
+    $files = [];
+    foreach ($sourceFiles as $sourceFile) {
+        $contents = file_get_contents(__DIR__ . '/' . $sourceFile);
+        if (!is_string($contents)) {
+            throw new RuntimeException('SSO app-user runtime support source is unreadable: ' . $sourceFile);
+        }
+        $relativePath = $relativeRoot . '/' . $sourceFile;
+        app_project_output_write_text_file($stageRoot . '/' . $relativePath, $contents);
+        $files[] = $relativePath;
+    }
+    $contractPath = $relativeRoot . '/resolver-contract.php';
+    app_project_output_write_text_file($stageRoot . '/' . $contractPath, $contract['artifact_text']);
+    $files[] = $contractPath;
+    return ['status' => 'emitted', 'emitted' => true, 'files' => $files, 'warning' => ''];
 }
