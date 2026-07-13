@@ -21,6 +21,8 @@ php mtool/scripts/create_sample19_schema_proposal_task.php
 4. 利用者が具体的 task に同意すると、AI は `output/candidate.json` だけを書き、packet に宣言された validation command を実行します。
 5. 成功時は `output/review-artifact.json` が作られます。これは candidate そのものではなく、Mtool が canonical diff を独立導出した別 artifact です。
 
+Agent が task packet、scan、fallback candidate、formal output の権限差を作業中に確認する場合は、[AI Schema Proposal Handoff Guide](ai-schema-proposal-handoff-guide.md) を併読します。
+
 Generic な過去の「継続」は、provider 実行や別 task の承認にはなりません。確認は生成された具体的 task interaction 内で行います。
 
 ## Task packet の内容
@@ -122,6 +124,7 @@ php mtool/scripts/run_sample19_local_ai_proposal.php \
 ## 関連文書
 
 - [JSON To DB Entrance](json-to-db-entrance.md)
+- [AI Schema Proposal Handoff Guide](ai-schema-proposal-handoff-guide.md)
 - [Security And Data Handling](security-and-data-handling.md)
 - [Current Plans](current-plans.md)
 - [Sample19 tutorial](../sample/tutorials/sample19-json-first-content-model-demo/README.md)
