@@ -64,7 +64,7 @@ function app_local_user_identity_from_principal(array $principal, array $options
  */
 function app_local_user_identity_actor_snapshot(array $identity): array
 {
-    return [
+    $actor = [
         'actor_version' => 'managed-operation-sync-actor-v0',
         'local_user_id' => app_local_user_identity_text($identity['local_user_id'] ?? ''),
         'auth_source' => app_local_user_identity_text($identity['auth_source'] ?? ''),
@@ -78,6 +78,59 @@ function app_local_user_identity_actor_snapshot(array $identity): array
         'project_roles' => app_local_user_identity_project_roles($identity['project_roles'] ?? []),
         'scopes' => app_local_user_identity_string_list($identity['scopes'] ?? []),
     ];
+    $appUserId = app_local_user_identity_text($identity['app_user_id'] ?? '');
+    if ($appUserId !== '' && ($identity['app_user_id_source'] ?? '') === 'server-resolved-v1') {
+        $actor['app_user_id'] = $appUserId;
+        $actor['app_user_id_authority'] = 'correlation-only';
+        $actor['server_revalidation_required'] = true;
+    }
+    return $actor;
+}
+
+/**
+ * Attach only a successful server resolver result to an App-local identity.
+ * The cached ID is correlation metadata; it never grants client authority.
+ *
+ * @return array{ok:bool,identity:array<string,mixed>,error:string}
+ */
+function app_local_user_identity_with_server_resolved_app_user(
+    array $identity,
+    array $serverResolverResult,
+    array $options = [],
+): array {
+    if (($serverResolverResult['ok'] ?? false) !== true) {
+        return app_local_user_identity_error('successful server resolver result is required.');
+    }
+    $actorAppUserId = app_local_user_identity_text($serverResolverResult['actor']['app_user_id'] ?? '');
+    $resultAppUserId = app_local_user_identity_text($serverResolverResult['app_user_id'] ?? '');
+    if ($actorAppUserId === '' || ($resultAppUserId !== '' && $resultAppUserId !== $actorAppUserId)) {
+        return app_local_user_identity_error('server resolver app_user_id evidence is missing or inconsistent.');
+    }
+    $safe = app_local_user_identity_safe_snapshot($identity);
+    if (app_local_user_identity_text($safe['local_user_id'] ?? '') === '') {
+        return app_local_user_identity_error('local_user_id is required before server app-user handoff.');
+    }
+    $safe['app_user_id'] = $actorAppUserId;
+    $safe['app_user_id_source'] = 'server-resolved-v1';
+    $safe['app_user_id_bound_at'] = app_local_user_identity_text($options['bound_at'] ?? gmdate('c'));
+    return ['ok' => true, 'identity' => $safe, 'error' => ''];
+}
+
+/** @return array{ok:bool,app_user_id:string,error:string} */
+function app_local_user_identity_server_revalidate_sync_actor(array $clientActor, array $serverResolverResult): array
+{
+    if (($serverResolverResult['ok'] ?? false) !== true) {
+        return ['ok' => false, 'app_user_id' => '', 'error' => 'server app-user resolution is required.'];
+    }
+    $serverAppUserId = app_local_user_identity_text($serverResolverResult['actor']['app_user_id'] ?? '');
+    if ($serverAppUserId === '') {
+        return ['ok' => false, 'app_user_id' => '', 'error' => 'server resolver actor is missing app_user_id.'];
+    }
+    $clientAppUserId = app_local_user_identity_text($clientActor['app_user_id'] ?? '');
+    if ($clientAppUserId === '' || $clientAppUserId !== $serverAppUserId) {
+        return ['ok' => false, 'app_user_id' => '', 'error' => 'client correlation app_user_id does not match server resolution.'];
+    }
+    return ['ok' => true, 'app_user_id' => $serverAppUserId, 'error' => ''];
 }
 
 /**

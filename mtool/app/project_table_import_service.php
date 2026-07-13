@@ -7,6 +7,7 @@ require_once __DIR__ . '/domain_validation.php';
 require_once __DIR__ . '/project_scope_policy.php';
 require_once __DIR__ . '/project_table_import_source.php';
 require_once __DIR__ . '/table_metadata_repository.php';
+require_once __DIR__ . '/table_constraint_metadata_repository.php';
 
 function app_project_table_import_preflight(array $app, string $projectKey, string $sourceKey = 'live-schema', bool $forApply = false): array
 {
@@ -195,6 +196,9 @@ function app_project_table_import_preview(
         $sourceResult['apply_supported'],
         $focusScope['source_tables'],
         $focusScope['canonical_tables'],
+        (bool) ($sourceResult['constraints_supported'] ?? false),
+        is_array($sourceResult['constraints'] ?? null) ? $sourceResult['constraints'] : [],
+        trim($focusTableName) !== '',
     );
 }
 
@@ -466,6 +470,14 @@ function app_project_table_import_apply(
             ]);
         }
 
+        if (($sourceResult['constraints_supported'] ?? false) === true && trim($focusTableName) === '') {
+            app_replace_project_table_constraints_portable_pdo(
+                $pdo,
+                $projectId,
+                is_array($sourceResult['constraints'] ?? null) ? $sourceResult['constraints'] : [],
+            );
+        }
+
         $pdo->commit();
     } catch (Throwable $throwable) {
         if (isset($pdo) && $pdo instanceof PDO && $pdo->inTransaction()) {
@@ -730,6 +742,9 @@ function app_project_table_import_build_plan(
     bool $sourceApplySupported,
     array $sourceTables,
     array $canonicalTables,
+    bool $constraintsSupported = false,
+    array $constraints = [],
+    bool $focusedImport = false,
 ): array {
     $canonicalByName = app_project_table_import_canonical_by_name($canonicalTables);
     $sourceByName = app_project_table_import_source_by_name($sourceTables);
@@ -737,6 +752,10 @@ function app_project_table_import_build_plan(
     $summary['source_table_count'] = count($sourceTables);
     $summary['live_table_count'] = count($sourceTables);
     $summary['canonical_table_count'] = count($canonicalTables);
+    $summary['constraints_supported'] = $constraintsSupported;
+    $summary['constraint_apply_supported'] = $constraintsSupported && !$focusedImport;
+    $summary['source_key_constraint_count'] = count(is_array($constraints['keys'] ?? null) ? $constraints['keys'] : []);
+    $summary['source_foreign_key_constraint_count'] = count(is_array($constraints['foreign_keys'] ?? null) ? $constraints['foreign_keys'] : []);
     $tables = [];
 
     foreach ($sourceTables as $sourceTable) {
@@ -893,6 +912,10 @@ function app_project_table_import_empty_summary(
         'review_required' => false,
         'destructive_change_count' => 0,
         'metadata_update_count' => 0,
+        'constraints_supported' => false,
+        'constraint_apply_supported' => false,
+        'source_key_constraint_count' => 0,
+        'source_foreign_key_constraint_count' => 0,
     ];
 }
 
