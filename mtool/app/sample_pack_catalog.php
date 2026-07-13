@@ -43,6 +43,7 @@ function app_sample_pack_category_map(): array
             'sample30-no-code-app-local-sync-demo',
             'sample31-no-code-inventory-request-demo',
             'sample32-no-code-ui-test-lab',
+            'sample33-sqlite-to-mysql-promotion',
         ],
         'internal-patterns' => [
             'pattern01-default-property-split',
@@ -211,6 +212,16 @@ function app_sample_pack_reference_only_sample_names(): array
     ];
 }
 
+/**
+ * @return list<string>
+ */
+function app_sample_pack_promotion_tutorial_sample_names(): array
+{
+    return [
+        'sample33-sqlite-to-mysql-promotion',
+    ];
+}
+
 function app_sample_pack_structure_type(string $packName): string
 {
     if (in_array($packName, app_sample_pack_runtime_pack_names(), true)) {
@@ -219,6 +230,10 @@ function app_sample_pack_structure_type(string $packName): string
 
     if (in_array($packName, app_sample_pack_reference_only_sample_names(), true)) {
         return 'file-reference-sample';
+    }
+
+    if (in_array($packName, app_sample_pack_promotion_tutorial_sample_names(), true)) {
+        return 'promotion-tutorial-sample';
     }
 
     return '';
