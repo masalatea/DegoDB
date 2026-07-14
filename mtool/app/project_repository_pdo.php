@@ -72,17 +72,7 @@ function app_pdo_fetch_project_catalog(array $app): array
                 continue;
             }
 
-            $items[] = [
-                'project_key' => (string) ($row['project_key'] ?? ''),
-                'name' => (string) ($row['name'] ?? ''),
-                'slug' => (string) ($row['slug'] ?? ''),
-                'lifecycle_status' => (string) ($row['lifecycle_status'] ?? ''),
-                'owner_login_id' => (string) ($row['owner_login_id'] ?? ''),
-                'php_namespace' => (string) ($row['php_namespace'] ?? ''),
-                'member_count' => (int) ($row['member_count'] ?? 0),
-                'updated_at' => (string) ($row['updated_at'] ?? ''),
-                'description' => (string) ($row['description'] ?? ''),
-            ];
+            $items[] = app_pdo_project_item_from_row($row);
         }
 
         return [
@@ -130,7 +120,7 @@ function app_pdo_fetch_project_by_key(array $app, string $projectKey): array
 {
     try {
         $pdo = app_create_config_pdo($app);
-        $dialect = app_sql_dialect_from_db_config(app_database_config($app, 'config_db'));
+        $dialect = app_sql_dialect_from_pdo($pdo);
         $updatedAtSelect = app_sql_datetime_select_expr($dialect, 'p.updated_at', 'updated_at');
         $statement = $pdo->prepare(
             'SELECT
@@ -157,7 +147,7 @@ function app_pdo_fetch_project_by_key(array $app, string $projectKey): array
                 p.php_namespace,
                 p.updated_at,
                 p.description
-            LIMIT 1'
+            ' . app_sql_limit_clause($dialect, 1)
         );
 
         $statement->execute([
@@ -175,17 +165,7 @@ function app_pdo_fetch_project_by_key(array $app, string $projectKey): array
 
         return [
             'ok' => true,
-            'item' => [
-                'project_key' => (string) ($row['project_key'] ?? ''),
-                'name' => (string) ($row['name'] ?? ''),
-                'slug' => (string) ($row['slug'] ?? ''),
-                'lifecycle_status' => (string) ($row['lifecycle_status'] ?? ''),
-                'owner_login_id' => (string) ($row['owner_login_id'] ?? ''),
-                'php_namespace' => (string) ($row['php_namespace'] ?? ''),
-                'member_count' => (int) ($row['member_count'] ?? 0),
-                'updated_at' => (string) ($row['updated_at'] ?? ''),
-                'description' => (string) ($row['description'] ?? ''),
-            ],
+            'item' => app_pdo_project_item_from_row($row),
             'error' => '',
         ];
     } catch (Throwable $throwable) {
@@ -195,6 +175,37 @@ function app_pdo_fetch_project_by_key(array $app, string $projectKey): array
             'error' => $throwable->getMessage(),
         ];
     }
+}
+
+/**
+ * @param array<string|int,mixed> $row
+ * @return array{
+ *     project_key:string,
+ *     name:string,
+ *     slug:string,
+ *     lifecycle_status:string,
+ *     owner_login_id:string,
+ *     php_namespace:string,
+ *     member_count:int,
+ *     updated_at:string,
+ *     description:string
+ * }
+ */
+function app_pdo_project_item_from_row(array $row): array
+{
+    $row = app_sql_normalize_row_keys($row);
+
+    return [
+                'project_key' => (string) ($row['project_key'] ?? ''),
+                'name' => (string) ($row['name'] ?? ''),
+                'slug' => (string) ($row['slug'] ?? ''),
+                'lifecycle_status' => (string) ($row['lifecycle_status'] ?? ''),
+                'owner_login_id' => (string) ($row['owner_login_id'] ?? ''),
+                'php_namespace' => (string) ($row['php_namespace'] ?? ''),
+                'member_count' => (int) ($row['member_count'] ?? 0),
+                'updated_at' => (string) ($row['updated_at'] ?? ''),
+                'description' => (string) ($row['description'] ?? ''),
+    ];
 }
 
 /**
@@ -260,7 +271,7 @@ function app_pdo_insert_project(array $app, array $input): array
             ':description' => $input['description'],
         ]);
 
-        $projectId = (int) $pdo->lastInsertId();
+        $projectId = app_pdo_project_inserted_id($pdo, (string) $input['project_key']);
 
         $membershipStatement = $pdo->prepare(
             'INSERT INTO project_memberships (
@@ -409,11 +420,12 @@ function app_pdo_project_write_error_message(PDOException $exception): string
 
 function app_pdo_project_exists(PDO $pdo, string $projectKey): bool
 {
+    $dialect = app_sql_dialect_from_pdo($pdo);
     $statement = $pdo->prepare(
         'SELECT 1
         FROM projects
         WHERE project_key = :project_key
-        LIMIT 1'
+        ' . app_sql_limit_clause($dialect, 1)
     );
 
     $statement->execute([
@@ -421,4 +433,30 @@ function app_pdo_project_exists(PDO $pdo, string $projectKey): bool
     ]);
 
     return $statement->fetchColumn() !== false;
+}
+
+function app_pdo_project_inserted_id(PDO $pdo, string $projectKey): int
+{
+    try {
+        $lastInsertId = (int) $pdo->lastInsertId();
+        if ($lastInsertId > 0) {
+            return $lastInsertId;
+        }
+    } catch (Throwable) {
+        // Some PDO drivers, including Firebird, may not expose a useful lastInsertId.
+    }
+
+    $dialect = app_sql_dialect_from_pdo($pdo);
+    $statement = $pdo->prepare(
+        'SELECT id
+        FROM projects
+        WHERE project_key = :project_key
+        ' . app_sql_limit_clause($dialect, 1)
+    );
+    $statement->execute([
+        ':project_key' => $projectKey,
+    ]);
+    $id = $statement->fetchColumn();
+
+    return (int) $id;
 }
