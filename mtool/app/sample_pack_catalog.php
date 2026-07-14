@@ -44,6 +44,7 @@ function app_sample_pack_category_map(): array
             'sample31-no-code-inventory-request-demo',
             'sample32-no-code-ui-test-lab',
             'sample33-sqlite-to-mysql-promotion',
+            'sample34-sqlite-to-firebird-promotion',
         ],
         'internal-patterns' => [
             'pattern01-default-property-split',
@@ -219,6 +220,7 @@ function app_sample_pack_promotion_tutorial_sample_names(): array
 {
     return [
         'sample33-sqlite-to-mysql-promotion',
+        'sample34-sqlite-to-firebird-promotion',
     ];
 }
 

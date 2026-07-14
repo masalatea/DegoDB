@@ -130,6 +130,7 @@ final class SamplePackCatalogTest extends TestCase
                 'sample31-no-code-inventory-request-demo',
                 'sample32-no-code-ui-test-lab',
                 'sample33-sqlite-to-mysql-promotion',
+                'sample34-sqlite-to-firebird-promotion',
             ],
             app_sample_pack_category_map()['tutorials'] ?? [],
         );
