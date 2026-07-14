@@ -1,0 +1,220 @@
+{
+  "contract_schema_version": "no-code-react-bridge-contract-v0",
+  "bridge_version": "no-code-react-bridge-v0",
+  "framework": {
+    "name": "react",
+    "language": "typescript",
+    "adapter_kind": "custom-mtool-screen-schema",
+    "status": "sample35-checked-fixture"
+  },
+  "action_intent_version": "no-code-runtime-action-intent-v0",
+  "contract_invariants": {
+    "screen_definition_version": "no-code-screen-definition-v0",
+    "runtime_preview_version": "no-code-runtime-v0",
+    "action_intent_version": "no-code-runtime-action-intent-v0",
+    "required_files": [
+      "bridge-contract.json",
+      "src/mtoolNoCodeBridge.ts",
+      "src/MtoolScreenRenderer.tsx",
+      "src/MtoolActionIntentPanel.tsx"
+    ]
+  },
+  "screen_definition": {
+    "definition_version": "no-code-screen-definition-v0",
+    "project_key": "SAMPLE35",
+    "contracts": [
+      {
+        "contract_key": "no_code_ticket",
+        "entity": {
+          "logical_name": "NoCodeTicket",
+          "physical_name": "no_code_ticket",
+          "generated_name": "NoCodeTicket"
+        },
+        "screens": [
+          {
+            "screen_key": "no_code_ticket_list",
+            "screen_type": "list"
+          },
+          {
+            "screen_key": "no_code_ticket_detail",
+            "screen_type": "detail"
+          },
+          {
+            "screen_key": "no_code_ticket_form",
+            "screen_type": "form"
+          }
+        ]
+      }
+    ]
+  },
+  "runtime_preview": {
+    "ok": true,
+    "runtime_version": "no-code-runtime-v0",
+    "definition_version": "no-code-screen-definition-v0",
+    "project_key": "SAMPLE35",
+    "screens": [
+      {
+        "runtime_version": "no-code-runtime-v0",
+        "definition_version": "no-code-screen-definition-v0",
+        "project_key": "SAMPLE35",
+        "contract_key": "no_code_ticket",
+        "screen_key": "no_code_ticket_list",
+        "screen_type": "list",
+        "screen_title": "No Code Ticket List",
+        "fields": [
+          {"field_key": "id", "label": "Id", "type": "integer", "is_key": true, "required": false, "readonly": true, "visibility": "visible"},
+          {"field_key": "title", "label": "Title", "type": "string", "is_key": false, "required": true, "readonly": false, "visibility": "visible"},
+          {"field_key": "status", "label": "Status", "type": "string", "is_key": false, "required": true, "readonly": false, "visibility": "visible"},
+          {"field_key": "priority", "label": "Priority", "type": "integer", "is_key": false, "required": true, "readonly": false, "visibility": "visible"},
+          {"field_key": "body", "label": "Body", "type": "text", "is_key": false, "required": true, "readonly": false, "visibility": "visible"}
+        ],
+        "actions": [
+          {
+            "action_key": "update_no_code_ticket",
+            "label": "Update No-Code Ticket",
+            "operation_key": "update_no_code_ticket",
+            "operation_type": "update",
+            "enabled": false,
+            "availability": "disabled",
+            "fields": [
+              {"field_key": "id", "role": "key", "required": true, "client_write": false},
+              {"field_key": "title", "role": "input", "required": true, "client_write": true},
+              {"field_key": "status", "role": "input", "required": true, "client_write": true},
+              {"field_key": "priority", "role": "input", "required": true, "client_write": true},
+              {"field_key": "body", "role": "input", "required": true, "client_write": true}
+            ],
+            "failed_checks": ["principal.missing"]
+          }
+        ],
+        "data": {
+          "rows": [
+            {
+              "id": {"value": 1001, "display_value": "1001"},
+              "title": {"value": "First no-code app ticket", "display_value": "First no-code app ticket"},
+              "status": {"value": "open", "display_value": "open"},
+              "priority": {"value": 10, "display_value": "10"},
+              "body": {"value": "This row is the first sample35 artifact import fixture.", "display_value": "This row is the first sample35 artifact import fixture."}
+            },
+            {
+              "id": {"value": 1002, "display_value": "1002"},
+              "title": {"value": "Review generated customer fields", "display_value": "Review generated customer fields"},
+              "status": {"value": "triage", "display_value": "triage"},
+              "priority": {"value": 20, "display_value": "20"},
+              "body": {"value": "Confirm imported fields before wrapping the generated no-code preview.", "display_value": "Confirm imported fields before wrapping the generated no-code preview."}
+            }
+          ]
+        }
+      },
+      {
+        "runtime_version": "no-code-runtime-v0",
+        "definition_version": "no-code-screen-definition-v0",
+        "project_key": "SAMPLE35",
+        "contract_key": "no_code_ticket",
+        "screen_key": "no_code_ticket_detail",
+        "screen_type": "detail",
+        "screen_title": "No Code Ticket Detail",
+        "fields": [
+          {"field_key": "id", "label": "Id", "type": "integer", "is_key": true, "required": false, "readonly": true, "visibility": "visible"},
+          {"field_key": "title", "label": "Title", "type": "string", "is_key": false, "required": true, "readonly": false, "visibility": "visible"},
+          {"field_key": "status", "label": "Status", "type": "string", "is_key": false, "required": true, "readonly": false, "visibility": "visible"},
+          {"field_key": "priority", "label": "Priority", "type": "integer", "is_key": false, "required": true, "readonly": false, "visibility": "visible"},
+          {"field_key": "body", "label": "Body", "type": "text", "is_key": false, "required": true, "readonly": false, "visibility": "visible"}
+        ],
+        "actions": [
+          {
+            "action_key": "update_no_code_ticket",
+            "label": "Update No-Code Ticket",
+            "operation_key": "update_no_code_ticket",
+            "operation_type": "update",
+            "enabled": false,
+            "availability": "disabled",
+            "fields": [
+              {"field_key": "id", "role": "key", "required": true, "client_write": false},
+              {"field_key": "title", "role": "input", "required": true, "client_write": true},
+              {"field_key": "status", "role": "input", "required": true, "client_write": true},
+              {"field_key": "priority", "role": "input", "required": true, "client_write": true},
+              {"field_key": "body", "role": "input", "required": true, "client_write": true}
+            ],
+            "failed_checks": ["principal.missing"]
+          }
+        ],
+        "data": {
+          "rows": [
+            {
+              "id": {"value": 1001, "display_value": "1001"},
+              "title": {"value": "First no-code app ticket", "display_value": "First no-code app ticket"},
+              "status": {"value": "open", "display_value": "open"},
+              "priority": {"value": 10, "display_value": "10"},
+              "body": {"value": "This row is the first sample35 artifact import fixture.", "display_value": "This row is the first sample35 artifact import fixture."}
+            }
+          ]
+        }
+      },
+      {
+        "runtime_version": "no-code-runtime-v0",
+        "definition_version": "no-code-screen-definition-v0",
+        "project_key": "SAMPLE35",
+        "contract_key": "no_code_ticket",
+        "screen_key": "no_code_ticket_form",
+        "screen_type": "form",
+        "screen_title": "No Code Ticket Form",
+        "fields": [
+          {"field_key": "id", "label": "Id", "type": "integer", "is_key": true, "required": false, "readonly": true, "visibility": "visible"},
+          {"field_key": "title", "label": "Title", "type": "string", "is_key": false, "required": true, "readonly": false, "visibility": "visible"},
+          {"field_key": "status", "label": "Status", "type": "string", "is_key": false, "required": true, "readonly": false, "visibility": "visible"},
+          {"field_key": "priority", "label": "Priority", "type": "integer", "is_key": false, "required": true, "readonly": false, "visibility": "visible"},
+          {"field_key": "body", "label": "Body", "type": "text", "is_key": false, "required": true, "readonly": false, "visibility": "visible"}
+        ],
+        "actions": [
+          {
+            "action_key": "update_no_code_ticket",
+            "label": "Update No-Code Ticket",
+            "operation_key": "update_no_code_ticket",
+            "operation_type": "update",
+            "enabled": false,
+            "availability": "disabled",
+            "fields": [
+              {"field_key": "id", "role": "key", "required": true, "client_write": false},
+              {"field_key": "title", "role": "input", "required": true, "client_write": true},
+              {"field_key": "status", "role": "input", "required": true, "client_write": true},
+              {"field_key": "priority", "role": "input", "required": true, "client_write": true},
+              {"field_key": "body", "role": "input", "required": true, "client_write": true}
+            ],
+            "failed_checks": ["principal.missing"]
+          }
+        ],
+        "data": {
+          "rows": [
+            {
+              "id": {"value": 1001, "display_value": "1001"},
+              "title": {"value": "First no-code app ticket", "display_value": "First no-code app ticket"},
+              "status": {"value": "open", "display_value": "open"},
+              "priority": {"value": 10, "display_value": "10"},
+              "body": {"value": "This row is the first sample35 artifact import fixture.", "display_value": "This row is the first sample35 artifact import fixture."}
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "custom_operation_handoffs": [],
+  "hybrid_ownership_contract": {
+    "contract_version": "no-code-hybrid-ownership-v0",
+    "representative_slice": "sample35-capacitor-artifact-import",
+    "generated_owns": [
+      "canonical screen and runtime metadata",
+      "action-intent shape and validation hints"
+    ],
+    "custom_owns": [
+      "React application shell",
+      "routing and navigation",
+      "server mutation adapter wiring outside this artifact"
+    ],
+    "shared_handoff": {
+      "artifact": "bridge-contract.sample.json",
+      "intent_version": "no-code-runtime-action-intent-v0",
+      "authority_boundary": "Generated metadata may describe availability and route boundaries, but execution authority remains with explicit server routes, auth guards, CSRF, audit, and transaction policy."
+    }
+  }
+}
+
