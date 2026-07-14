@@ -32,6 +32,7 @@ require_once __DIR__ . '/material_insight_preview_page.php';
 require_once __DIR__ . '/material_insight_no_code_handoff_preview_page.php';
 require_once __DIR__ . '/project_source_outputs_page.php';
 require_once __DIR__ . '/no_code_mtool_source_output_inspection_page.php';
+require_once __DIR__ . '/mobile_wrapper_artifact_page.php';
 require_once __DIR__ . '/project_source_output_change_order_page.php';
 require_once __DIR__ . '/project_source_output_new_page.php';
 require_once __DIR__ . '/project_source_output_detail_page.php';
@@ -214,6 +215,10 @@ function app_run_http_request(): void
 
             case 'project_source_outputs':
                 app_render_project_source_outputs_page($app, $request);
+                return;
+
+            case 'project_mobile_wrapper_artifacts':
+                app_render_mobile_wrapper_artifact_page($app, $request);
                 return;
 
             case 'project_source_outputs_no_code_inspection':

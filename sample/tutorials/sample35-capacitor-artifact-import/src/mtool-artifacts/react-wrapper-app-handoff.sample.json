@@ -1,0 +1,89 @@
+{
+  "schema_version": "mobile-react-wrapper-app-handoff-v1",
+  "target_key": "react_web_capacitor_ios_android",
+  "proof_stage": "MW2_REACT_WRAPPER_APP_HANDOFF",
+  "mutation_performed": false,
+  "project": {
+    "project_key": "SAMPLE35",
+    "name": "Sample35 Capacitor Artifact Import",
+    "title": "Sample35 Capacitor-ready Mtool Artifact Import"
+  },
+  "source_artifacts": {
+    "no_code_runtime": {
+      "ref": "src/mtool-artifacts/bridge-contract.sample.json#/runtime_preview",
+      "sha256": "sample-fixture"
+    },
+    "react_bridge": {
+      "ref": "src/mtool-artifacts/bridge-contract.sample.json",
+      "sha256": "sample-fixture"
+    }
+  },
+  "react_app_boundary": {
+    "mtool_provides": [
+      "validated mobile handoff metadata",
+      "no-code runtime and screen metadata refs",
+      "React bridge reference adapter contract when available"
+    ],
+    "external_wrapper_owner_owns": [
+      "React app shell and routing",
+      "durable frontend state management",
+      "SSO/OIDC client configuration",
+      "secure token storage implementation",
+      "API client and retry strategy",
+      "visual design and production component system"
+    ],
+    "not_a_generated_production_app": true
+  },
+  "capacitor_preparation_boundary": {
+    "first_ios_android_route": "Capacitor-style wrapper around React/Web output",
+    "mtool_does_not_initialize_capacitor_project": true,
+    "mtool_does_not_create_native_project_files": true,
+    "mtool_does_not_manage_signing_or_store_submission": true,
+    "external_owner_next_checks": [
+      "choose web build output directory",
+      "choose app IDs and deep link policy",
+      "choose secure storage plugin if tokens are persisted",
+      "run web build and capacitor sync in the external project",
+      "perform simulator/device QA"
+    ]
+  },
+  "screen_flow_mapping": {
+    "screen_count": 3,
+    "screen_keys": [
+      "no_code_ticket_list",
+      "no_code_ticket_detail",
+      "no_code_ticket_form"
+    ],
+    "screen_types": [
+      "list",
+      "detail",
+      "form"
+    ]
+  },
+  "action_mapping": {
+    "action_count": 1,
+    "actions": [
+      {
+        "action_key": "update_no_code_ticket",
+        "kind": "submit",
+        "endpoint_key": "no_code_ticket.update",
+        "mutates": true,
+        "availability": "enabled_after_validation_and_policy"
+      }
+    ],
+    "mutation_authority": "server route authorization, CSRF, idempotency, and Transaction Full gates stay server-side"
+  },
+  "verification": {
+    "required_before_capacitor": [
+      "node sample/tutorials/sample35-capacitor-artifact-import/scripts/validate-sample.mjs"
+    ],
+    "native_proof_not_claimed": true
+  },
+  "non_goals": [
+    "direct_native_generation",
+    "app_store_signing",
+    "offline_sync_by_default",
+    "production_user_data_in_packet"
+  ]
+}
+

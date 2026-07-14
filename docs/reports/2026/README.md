@@ -11,6 +11,38 @@
 
 ## Index
 
+- `2026-0714-capacitor-artifact-import-sample-first-slice.md`
+  - `sample35-capacitor-artifact-import` を追加。Capacitor-ready React sample が Mtool artifact fixture を直接 import し、artifact index、project identity、list/detail/form、field rendering、local draft、required validation、action intent draft、mock submit boundary、blocked/error、ownership boundary を静的に確認する。`ios/` / `android/` / native build / signing / store submission は非claim。Status: `FIRST_SLICE_DONE`。
+- `2026-0714-capacitor-artifact-import-sample-plan.md`
+  - Mtool が Capacitor project を初期化せず、外部 owner 側 sample app が Mtool artifact JSON を直接 import する sample35 計画。Mtool 想定操作として artifact import/index review、project identity、list/detail/form rendering、field rendering、local form draft、required validation、action intent draft、mock submit handoff boundary、blocked/error state、ownership boundary を一通り網羅する。React/Vite + `capacitor.config.ts` + fixture artifacts + static validation を first slice とし、`ios/` / `android/` / native build / signing / store submission など Capacitor/external-tool 全機能網羅は非scope。Status: `FIRST_SLICE_DONE`。
+- `2026-0714-no-code-standalone-completion-scope.md`
+  - mobile/external app FS 後の次 active direction として、Mtool-owned standalone no-code を線引きして完了させる scope を定義。対象は generated web/no-code/runtime、list/detail/form、action intent draft、guarded submit/outbox handoff、current/alias preview、publish candidate approval、validation/docs。外部app framework、native wrapping、WebSocket/shared-state sync、全custom code置換、全sample完全変換は非scope。Status: `ACTIVE_REPLAN_CANDIDATE`。
+- `2026-0714-shared-state-sync-node-server-roadmap.md`
+  - SSO個人認証とは別に room / group / invite token を用意し、同じ room の authorized member 間で shared state を同期する将来候補。realtime runtime は別 Node.js sync server 前提、Mtool は schema / REST API / WebSocket-first sync event・command contract / SSE・HTTP fallback profile / Node.js server input packet / app client input packet / validation checklist を出す。P2P、production Node運用、Redis/pubsub、push通知、CRDT/OT、game loop は非scope。Status: `ROADMAP_CANDIDATE_NOT_ACTIVE`。
+- `2026-0714-mobile-fs-common-requirements.md`
+  - mobile external FS の総合評価・共通要件抽出。React/Web + Capacitor、PWA、Codex/Claude、Flutter、React Native、native wrapper boundary の 1 周目 FS から、Mtool が所有すべき handoff contract / source artifact index / ownership boundary / runtime readiness / AI task packet / bundle manifest と、Mtool が暗黙に所有しない production app / native project / signing / store / offline sync 境界を整理。Status: `DONE_COMMON_REQUIREMENTS`。
+- `2026-0714-mobile-ownership-boundary-spec.md`
+  - mobile/app handoff の責務境界正本を追加。Mtool-owned、external owner/tool-owned、user-confirmation required、forbidden without explicit artifact、parked/new product scope を `docs/mobile-ownership-boundaries.md` に集約し、README / FS / output mode / execution UI policy から辿れるようにした。Status: `DONE_BOUNDARY_SPEC`。
+- `2026-0714-mobile-fs-target-matrix.md`
+  - mobile external FS の target matrix。Layer A FE/app framework、Layer B AI/code-builder、Layer C delivery/runtime を分け、同 layer 内比較・cross-layer dependency・FS成果物置き場・実行順を定義。Status: `DONE_MATRIX`。
+- `2026-0714-mobile-fs-react-web-capacitor.md`
+  - React/Web + Capacitor-style wrapper FS。最初の外部 FE/app framework 候補として有望。handoff feasibility は低 blocker、production app readiness は中 blocker。Mtool は handoff/input まで、React app shell / Capacitor / native / signing / store は外部 owner。Status: `CONTINUE_SECOND_PASS`。
+- `2026-0714-mobile-fs-pwa-readiness.md`
+  - PWA readiness FS。FE framework 候補ではなく Layer C delivery/runtime metadata として扱う。manifest、service worker/cache、installability、browser storage、offline mode を共通要件候補化。Status: `CONTINUE_LAYER_C_DEPENDENCY`。
+- `2026-0714-mobile-fs-codex-code-builder.md`
+  - Codex-style code-builder FS。guided AI review には有用。autonomous codegen には provider-neutral AI task packet、確認必須action、禁止推測、validation command map が必要。Status: `CONTINUE_SECOND_PASS`。
+- `2026-0714-mobile-fs-claude-code-builder.md`
+  - Claude-style code-builder FS。Codex専用ではなく provider-neutral task packet を正本にし、tool-specific notes は companion とする判断。Status: `PROVIDER_NEUTRALITY_CHECK_DONE`。
+- `2026-0714-mobile-fs-flutter.md`
+  - Flutter input packet FS。共通 app contract carrier として有望だが、widget/navigation/state/form/theme/package/secure storage など Flutter extension metadata が必要。Status: `LATER_PLATFORM_CONTINUE`。
+- `2026-0714-mobile-fs-react-native.md`
+  - React Native input packet FS。共通 app contract carrier として有望だが、navigation/state/form/component/API/auth/secure storage/native module/Expo boundary など React Native extension metadata が必要。Status: `LATER_PLATFORM_CONTINUE`。
+- `2026-0714-mobile-fs-native-wrapper-boundary.md`
+  - native wrapper packaging boundary FS。Mtool が native project / signing / store / device QA を暗黙に所有しない境界を contract として継続。Status: `BOUNDARY_CONTRACT_CONTINUE`。
+- `2026-0714-mobile-output-mode-hardening.md`
+  - FS結果に基づき `mtool_no_code` / `external_no_code` / `hybrid` を定義。Mtool output、外部 handoff、hybrid の必須artifactと non-goal を整理。Status: `DONE_MODE_SPEC`。
+- `2026-0714-mobile-artifact-execution-ui-policy.md`
+  - mobile artifact execution UI policy。現時点の UI は read-only 維持。CSRF、output-dir allow-list、overwrite、dry-run、audit、failure handling 等が揃うまで実行UIは追加しない。Status: `DONE_POLICY_READ_ONLY`。
 - `2026-0713-mobile-app-handoff-wrapper-roadmap.md`
   - MtoolがiOS/Androidを直接全部生成するのではなく、endpoint/OpenAPI/auth/screen/action/validation/native capability metadataをCapacitor・Flutter・React Native・native toolへのinput packetとして出すroadmap候補。Firebird checkpoint後の次候補とし、最初のdeliverableはapp作成者が迷わない`mobile-app-handoff.json`/`.md`。その検証後、既存Web/React no-code runtimeをCapacitor系wrapperでiOS/Androidへ渡す。Flutter・React Nativeは後続input packet target。Status: `NEXT_AFTER_FIREBIRD_CANDIDATE`。
 - `2026-0713-firebird-local-durable-profile-plan.md`
