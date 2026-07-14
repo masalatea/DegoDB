@@ -5,6 +5,9 @@ declare(strict_types=1);
 use PHPUnit\Framework\TestCase;
 
 require_once dirname(__DIR__, 2) . '/mtool/app/mobile_wrapper_target.php';
+require_once dirname(__DIR__, 2) . '/mtool/app/mobile_wrapper_artifact_page.php';
+require_once dirname(__DIR__, 2) . '/mtool/app/router.php';
+require_once dirname(__DIR__, 2) . '/mtool/scripts/create_mobile_wrapper_target.php';
 
 final class MobileWrapperTargetTest extends TestCase
 {
@@ -158,6 +161,288 @@ final class MobileWrapperTargetTest extends TestCase
         );
         self::assertTrue($contract['web_runtime']['react_bridge_available'] ?? false);
         self::assertSame('C1 only', $contract['capacitor_boundary']['mtool_stage'] ?? '');
+    }
+
+    public function testBuildsReactWrapperAppHandoffProofWithoutNativeProjectOwnership(): void
+    {
+        $result = app_mobile_wrapper_target_build_react_app_handoff_proof($this->packet());
+
+        self::assertTrue($result['ok'], $result['error']);
+        self::assertIsArray($result['package']);
+        self::assertFalse($result['package']['mutation_performed']);
+        self::assertArrayHasKey('react-wrapper-app-handoff.json', $result['package']['files']);
+        self::assertArrayHasKey('REACT-WRAPPER-APP-HANDOFF.md', $result['package']['files']);
+
+        $proof = $result['package']['files']['react-wrapper-app-handoff.json'];
+        self::assertSame('mobile-react-wrapper-app-handoff-v1', $proof['schema_version'] ?? '');
+        self::assertSame('react_web_capacitor_ios_android', $proof['target_key'] ?? '');
+        self::assertSame('MW2_REACT_WRAPPER_APP_HANDOFF', $proof['proof_stage'] ?? '');
+        self::assertFalse($proof['mutation_performed'] ?? true);
+        self::assertTrue($proof['react_app_boundary']['not_a_generated_production_app'] ?? false);
+        self::assertTrue($proof['capacitor_preparation_boundary']['mtool_does_not_create_native_project_files'] ?? false);
+        self::assertContains('flutter_input_packet', $proof['later_targets'] ?? []);
+        self::assertContains('react_native_input_packet', $proof['later_targets'] ?? []);
+        self::assertContains('make sample28-no-code-react-bridge-build-smoke', $proof['verification']['required_before_capacitor'] ?? []);
+    }
+
+    public function testSample28ReactWrapperAppHandoffEmitsOnlyProofFiles(): void
+    {
+        $targetDir = $this->tempDir('sample28-react-wrapper-app-handoff');
+
+        $result = app_mobile_wrapper_target_emit_sample28_react_app_handoff_proof($targetDir);
+
+        self::assertTrue($result['ok'], $result['error']);
+        self::assertSame(['REACT-WRAPPER-APP-HANDOFF.md', 'react-wrapper-app-handoff.json'], $result['files']);
+        self::assertFileExists($targetDir . '/react-wrapper-app-handoff.json');
+        self::assertFileExists($targetDir . '/REACT-WRAPPER-APP-HANDOFF.md');
+        self::assertFileDoesNotExist($targetDir . '/package.json');
+        self::assertFileDoesNotExist($targetDir . '/capacitor.config.ts');
+        self::assertFileDoesNotExist($targetDir . '/ios');
+        self::assertFileDoesNotExist($targetDir . '/android');
+    }
+
+    public function testCliParserAcceptsSample28TargetDirectory(): void
+    {
+        $result = app_cli_mobile_wrapper_target_parse_args([
+            'create_mobile_wrapper_target.php',
+            '--sample=sample28',
+            '--target-dir=work/source-outputs/SAMPLE28/MOBILE-WRAPPER-TARGET/mobile-wrapper-target',
+        ]);
+
+        self::assertTrue($result['ok'], $result['error']);
+        self::assertFalse($result['help']);
+        self::assertSame('sample28', $result['sample']);
+        self::assertSame('', $result['handoff_file']);
+        self::assertSame('', $result['project_key']);
+        self::assertSame('', $result['source_output_key']);
+        self::assertSame('c1', $result['artifact']);
+        self::assertSame(
+            'work/source-outputs/SAMPLE28/MOBILE-WRAPPER-TARGET/mobile-wrapper-target',
+            $result['target_dir'],
+        );
+    }
+
+    public function testCliParserAcceptsReactWrapperAppArtifact(): void
+    {
+        $result = app_cli_mobile_wrapper_target_parse_args([
+            'create_mobile_wrapper_target.php',
+            '--sample=sample28',
+            '--artifact=react-wrapper-app',
+            '--target-dir=work/source-outputs/SAMPLE28/MOBILE-WRAPPER-TARGET/react-wrapper-app-handoff',
+        ]);
+
+        self::assertTrue($result['ok'], $result['error']);
+        self::assertSame('react-wrapper-app', $result['artifact']);
+        self::assertSame(
+            'work/source-outputs/SAMPLE28/MOBILE-WRAPPER-TARGET/react-wrapper-app-handoff',
+            $result['target_dir'],
+        );
+    }
+
+    public function testCliParserAcceptsHandoffFileInsteadOfSample(): void
+    {
+        $result = app_cli_mobile_wrapper_target_parse_args([
+            'create_mobile_wrapper_target.php',
+            '--handoff-file=work/mobile-app-handoff.json',
+            '--artifact=react-wrapper-app',
+            '--target-dir=work/mobile-wrapper-target/react-wrapper-app-handoff',
+        ]);
+
+        self::assertTrue($result['ok'], $result['error']);
+        self::assertSame('', $result['sample']);
+        self::assertSame('work/mobile-app-handoff.json', $result['handoff_file']);
+        self::assertSame('react-wrapper-app', $result['artifact']);
+    }
+
+    public function testCliParserRejectsSampleAndHandoffFileTogether(): void
+    {
+        $result = app_cli_mobile_wrapper_target_parse_args([
+            'create_mobile_wrapper_target.php',
+            '--sample=sample28',
+            '--handoff-file=work/mobile-app-handoff.json',
+            '--target-dir=work/mobile-wrapper-target',
+        ]);
+
+        self::assertFalse($result['ok']);
+        self::assertSame('specify exactly one source: --sample=sample28, --handoff-file=PATH, or --project-key=KEY --source-output-key=KEY', $result['error']);
+    }
+
+    public function testCliCanEmitReactWrapperAppHandoffFromHandoffFile(): void
+    {
+        $root = $this->tempDir('generic-handoff-file-root');
+        $handoffPath = $root . '/mobile-app-handoff.json';
+        file_put_contents(
+            $handoffPath,
+            json_encode(app_mobile_wrapper_target_sample28_c1_handoff(), JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_THROW_ON_ERROR) . "\n",
+        );
+        $targetDir = $root . '/react-wrapper-app-handoff';
+
+        $parsed = app_cli_mobile_wrapper_target_parse_args([
+            'create_mobile_wrapper_target.php',
+            '--handoff-file=' . $handoffPath,
+            '--artifact=react-wrapper-app',
+            '--target-dir=' . $targetDir,
+        ]);
+        self::assertTrue($parsed['ok'], $parsed['error']);
+
+        $result = app_cli_mobile_wrapper_target_emit_from_parsed($parsed);
+
+        self::assertTrue($result['ok'], $result['error']);
+        self::assertSame('handoff-file', $result['source']);
+        self::assertSame(['REACT-WRAPPER-APP-HANDOFF.md', 'react-wrapper-app-handoff.json'], $result['files']);
+        self::assertFileExists($targetDir . '/react-wrapper-app-handoff.json');
+    }
+
+    public function testCliCanEmitBundleManifestFromProjectSourceOutputLookup(): void
+    {
+        $root = $this->tempDir('project-source-output-root');
+        $handoffDir = $root . '/PROJECT1/MOBILE-HANDOFF';
+        self::assertTrue(mkdir($handoffDir, 0777, true));
+        file_put_contents(
+            $handoffDir . '/mobile-app-handoff.json',
+            json_encode(app_mobile_wrapper_target_sample28_c1_handoff(), JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_THROW_ON_ERROR) . "\n",
+        );
+        $targetDir = $root . '/PROJECT1/MOBILE-WRAPPER-BUNDLE';
+
+        $parsed = app_cli_mobile_wrapper_target_parse_args([
+            'create_mobile_wrapper_target.php',
+            '--project-key=PROJECT1',
+            '--source-output-key=MOBILE-HANDOFF',
+            '--source-output-root=' . $root,
+            '--artifact=bundle-manifest',
+            '--target-dir=' . $targetDir,
+        ]);
+        self::assertTrue($parsed['ok'], $parsed['error']);
+
+        $result = app_cli_mobile_wrapper_target_emit_from_parsed($parsed);
+
+        self::assertTrue($result['ok'], $result['error']);
+        self::assertSame('project-source-output', $result['source']);
+        self::assertSame(['MOBILE-WRAPPER-BUNDLE.md', 'mobile-wrapper-bundle-manifest.json'], $result['files']);
+        self::assertFileExists($targetDir . '/mobile-wrapper-bundle-manifest.json');
+    }
+
+    public function testBuildsLaterPlatformInputPacketsWithoutOwningPlatformProjects(): void
+    {
+        $result = app_mobile_wrapper_target_build_later_platform_input_packets($this->packet());
+
+        self::assertTrue($result['ok'], $result['error']);
+        self::assertIsArray($result['package']);
+        self::assertFalse($result['package']['mutation_performed']);
+        self::assertArrayHasKey('flutter-input-packet.json', $result['package']['files']);
+        self::assertArrayHasKey('react-native-input-packet.json', $result['package']['files']);
+        self::assertArrayHasKey('LATER-PLATFORM-INPUT-PACKETS.md', $result['package']['files']);
+
+        $flutter = $result['package']['files']['flutter-input-packet.json'];
+        $reactNative = $result['package']['files']['react-native-input-packet.json'];
+        self::assertSame('mobile-later-platform-input-packet-v1', $flutter['schema_version'] ?? '');
+        self::assertSame('flutter_input_packet', $flutter['platform_key'] ?? '');
+        self::assertSame('react_native_input_packet', $reactNative['platform_key'] ?? '');
+        self::assertSame('structured_input_packet_only', $flutter['mtool_role'] ?? '');
+        self::assertContains('Dart source code', $flutter['not_generated_by_mtool'] ?? []);
+        self::assertContains('React Native source code', $reactNative['not_generated_by_mtool'] ?? []);
+    }
+
+    public function testSample28LaterPlatformInputPacketsEmitOnlyPacketFiles(): void
+    {
+        $targetDir = $this->tempDir('sample28-later-platform-input-packets');
+
+        $result = app_mobile_wrapper_target_emit_sample28_later_platform_input_packets($targetDir);
+
+        self::assertTrue($result['ok'], $result['error']);
+        self::assertSame(
+            ['LATER-PLATFORM-INPUT-PACKETS.md', 'flutter-input-packet.json', 'react-native-input-packet.json'],
+            $result['files'],
+        );
+        self::assertFileExists($targetDir . '/flutter-input-packet.json');
+        self::assertFileExists($targetDir . '/react-native-input-packet.json');
+        self::assertFileDoesNotExist($targetDir . '/lib/main.dart');
+        self::assertFileDoesNotExist($targetDir . '/package.json');
+        self::assertFileDoesNotExist($targetDir . '/ios');
+        self::assertFileDoesNotExist($targetDir . '/android');
+    }
+
+    public function testBuildsBundleManifestWithoutGeneratingProjects(): void
+    {
+        $result = app_mobile_wrapper_target_build_bundle_manifest($this->packet());
+
+        self::assertTrue($result['ok'], $result['error']);
+        self::assertIsArray($result['package']);
+        self::assertArrayHasKey('mobile-wrapper-bundle-manifest.json', $result['package']['files']);
+        self::assertArrayHasKey('MOBILE-WRAPPER-BUNDLE.md', $result['package']['files']);
+
+        $manifest = $result['package']['files']['mobile-wrapper-bundle-manifest.json'];
+        self::assertSame('mobile-wrapper-bundle-manifest-v1', $manifest['schema_version'] ?? '');
+        self::assertSame(
+            ['c1_wrapper_readiness', 'react_wrapper_app_handoff', 'later_platform_input_packets'],
+            $manifest['artifact_order'] ?? [],
+        );
+        self::assertContains('Flutter project', $manifest['not_generated_by_mtool'] ?? []);
+        self::assertContains('React Native project', $manifest['not_generated_by_mtool'] ?? []);
+        self::assertContains('Capacitor project', $manifest['not_generated_by_mtool'] ?? []);
+    }
+
+    public function testSample28BundleManifestEmitsOnlyManifestFiles(): void
+    {
+        $targetDir = $this->tempDir('sample28-mobile-wrapper-bundle');
+
+        $result = app_mobile_wrapper_target_emit_sample28_bundle_manifest($targetDir);
+
+        self::assertTrue($result['ok'], $result['error']);
+        self::assertSame(['MOBILE-WRAPPER-BUNDLE.md', 'mobile-wrapper-bundle-manifest.json'], $result['files']);
+        self::assertFileExists($targetDir . '/mobile-wrapper-bundle-manifest.json');
+        self::assertFileExists($targetDir . '/MOBILE-WRAPPER-BUNDLE.md');
+        self::assertFileDoesNotExist($targetDir . '/package.json');
+        self::assertFileDoesNotExist($targetDir . '/capacitor.config.ts');
+        self::assertFileDoesNotExist($targetDir . '/ios');
+        self::assertFileDoesNotExist($targetDir . '/android');
+    }
+
+    public function testMobileWrapperArtifactPageContractDocumentsReadOnlyBoundary(): void
+    {
+        $contract = app_mobile_wrapper_artifact_page_contract();
+
+        self::assertSame('mobile-wrapper-artifact-page-v1', $contract['contract_version'] ?? '');
+        self::assertFalse($contract['route_candidate']['mutation_performed'] ?? true);
+        self::assertContains('bundle-manifest', $contract['supported_artifacts'] ?? []);
+        self::assertContains('native project creation', $contract['excluded_operations'] ?? []);
+        self::assertContains('React app shell', $contract['ownership_boundary']['external_owner_owns'] ?? []);
+    }
+
+    public function testMobileWrapperArtifactPageHtmlShowsCommandAndNoExecutionBoundary(): void
+    {
+        $html = app_mobile_wrapper_artifact_page_html(
+            app_mobile_wrapper_artifact_page_contract(),
+            'PROJECT1',
+            'MOBILE-HANDOFF',
+        );
+
+        self::assertStringContainsString('data-mtool-mobile-wrapper-artifact-page="v1"', $html);
+        self::assertStringContainsString('--project-key=PROJECT1 --source-output-key=MOBILE-HANDOFF', $html);
+        self::assertStringContainsString('--artifact=bundle-manifest', $html);
+        self::assertStringContainsString('does not generate artifacts or create app projects', $html);
+        self::assertStringContainsString('native project creation', $html);
+    }
+
+    public function testMobileWrapperArtifactRouteIsAuthenticatedReadOnlyGuide(): void
+    {
+        $route = app_route_match(['path' => '/projects/PROJECT1/mobile-wrapper-artifacts']);
+
+        self::assertSame('project_mobile_wrapper_artifacts', $route['name']);
+        self::assertSame('PROJECT1', $route['params']['project_key'] ?? '');
+        self::assertTrue(app_route_requires_auth($route['name']));
+    }
+
+    public function testCliParserRejectsUnsupportedSamples(): void
+    {
+        $result = app_cli_mobile_wrapper_target_parse_args([
+            'create_mobile_wrapper_target.php',
+            '--sample=sample99',
+            '--target-dir=work/source-outputs/SAMPLE99/MOBILE-WRAPPER-TARGET/mobile-wrapper-target',
+        ]);
+
+        self::assertFalse($result['ok']);
+        self::assertSame('supported --sample is currently sample28', $result['error']);
     }
 
     /** @return array<string,mixed> */
