@@ -24,6 +24,9 @@ top-level は外部ユーザ向け導線を優先し、内部向け文書は [In
    - [Sample19 Material-to-No-Code Validation Pipeline / Sample19資料to No Code validation pipeline](sample19-material-to-no-code-validation-pipeline.md)
    - [Existing DB To Output / 既存 DB から出力まで](existing-db-to-output.md)
    - [SQLite-to-MySQL Promotion / SQLiteからMySQLへの昇格](sqlite-to-mysql-promotion.md)
+   - [Mobile App Handoff Spec / mobile app handoff spec](mobile-app-handoff-spec.md)
+   - [Mobile React Wrapper Target Contract / mobile React wrapper target contract](mobile-react-wrapper-target-contract.md)
+   - [Mobile Capacitor Wrapper Proof Plan / mobile Capacitor wrapper proof plan](mobile-capacitor-wrapper-proof-plan.md)
    - [Use Cases / ユースケース](use-cases.md)
    - [Consulting Intake / 相談前チェックリスト](consulting-intake.md)
    - [Deliverables / 成果物 catalog](deliverables.md)
@@ -67,6 +70,12 @@ detail doc だけを読んで mainline を再構成するのは current reading 
   - existing DB 接続から canonical metadata 永続化、設計、output verify までの primary journey
 - [SQLite-to-MySQL Promotion / SQLiteからMySQLへの昇格](sqlite-to-mysql-promotion.md)
   - SQLite-first application database を MySQL・MariaDB へ offline / one-way で昇格する supported v1 guide。manifest、target schema、export/import checkpoint、verification、manual cutover、SSO app-user promotion boundary をまとめる
+- [Mobile App Handoff Spec / mobile app handoff spec](mobile-app-handoff-spec.md)
+  - React/Web No Code runtime を Capacitor 系 iOS/Android wrapper に渡す前に必要な `mobile-app-handoff.json` / `.md` の v1 形状、platform target、screen/action/auth/native capability/checklist を定義する
+- [Mobile React Wrapper Target Contract / mobile React wrapper target contract](mobile-react-wrapper-target-contract.md)
+  - 検証済み `mobile-app-handoff.json` から React/Web + Capacitor 系 iOS/Android wrapper 準備へ渡す input artifact、ownership boundary、ready criteria を定義する
+- [Mobile Capacitor Wrapper Proof Plan / mobile Capacitor wrapper proof plan](mobile-capacitor-wrapper-proof-plan.md)
+  - Capacitor 系 wrapper proof を C1 wrapper-readiness / C2 Capacitor preparation / C3 native-device proof に分け、Mtool が最初に担う検証境界を固定する
 - [Use Cases / ユースケース](use-cases.md)
   - database-first、existing-database-first、legacy modernization の用途整理
 - [Consulting Intake / 相談前チェックリスト](consulting-intake.md)
@@ -116,6 +125,12 @@ detail doc だけを読んで mainline を再構成するのは current reading 
   - existing DB 接続から output verify までの primary journey
 - [SQLite-to-MySQL Promotion / SQLiteからMySQLへの昇格](sqlite-to-mysql-promotion.md)
   - SQLite-first から MySQL・MariaDB への明示 review 付き promotion。zero-downtime CDC や bidirectional sync ではなく、fresh target、deterministic copy、verification、manual cutover、SQLite source retention を正本にする
+- [Mobile App Handoff Spec / mobile app handoff spec](mobile-app-handoff-spec.md)
+  - mobile app 作成者、Codex/Claude、外部 builder が wrapper 実装前に読む handoff packet v1 の正本
+- [Mobile React Wrapper Target Contract / mobile React wrapper target contract](mobile-react-wrapper-target-contract.md)
+  - Mtool が wrapper-ready input package までを担当し、React app shell / Capacitor / native build / signing は外部 owner が担当する境界を固定する
+- [Mobile Capacitor Wrapper Proof Plan / mobile Capacitor wrapper proof plan](mobile-capacitor-wrapper-proof-plan.md)
+  - first proof candidate を sample28 に置き、native build ではなく wrapper-readiness package と既存 React bridge smoke を C1 gate として扱う
 - [Use Cases / ユースケース](use-cases.md)
   - database-first / existing-database-first の実用シナリオと、現行対応・旧実装参照・将来対応候補の整理
 - [Adoption Guide / 採用ガイド](adoption-guide.md)
