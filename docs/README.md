@@ -27,6 +27,7 @@ top-level は外部ユーザ向け導線を優先し、内部向け文書は [In
    - [SQLite-to-MySQL Promotion / SQLiteからMySQLへの昇格](sqlite-to-mysql-promotion.md)
    - [Mobile App Handoff Spec / mobile app handoff spec](mobile-app-handoff-spec.md)
    - [Mobile React Wrapper Target Contract / mobile React wrapper target contract](mobile-react-wrapper-target-contract.md)
+   - [External No-Code Output / external no-code output](external-no-code-output.md)
    - [Mobile Capacitor Wrapper Proof Plan / mobile Capacitor wrapper proof plan](mobile-capacitor-wrapper-proof-plan.md)
    - [Mobile External Feasibility Study / mobile external FS](mobile-external-feasibility-study.md)
    - [Mobile Ownership Boundaries / mobile ownership boundary](mobile-ownership-boundaries.md)
@@ -79,6 +80,8 @@ detail doc だけを読んで mainline を再構成するのは current reading 
   - React/Web No Code runtime を Capacitor 系 iOS/Android wrapper に渡す前に必要な `mobile-app-handoff.json` / `.md` の v1 形状、platform target、screen/action/auth/native capability/checklist を定義する
 - [Mobile React Wrapper Target Contract / mobile React wrapper target contract](mobile-react-wrapper-target-contract.md)
   - 検証済み `mobile-app-handoff.json` から React/Web + Capacitor 系 iOS/Android wrapper 準備へ渡す input artifact、ownership boundary、ready criteria を定義する
+- [External No-Code Output / external no-code output](external-no-code-output.md)
+  - `mtool_no_code` を維持したまま、React/Web + Capacitor 系 external no-code/tool consumer へ渡す optional `external-output.json` / `.md` の schema、CLI、ownership boundary を定義する
 - [Mobile Capacitor Wrapper Proof Plan / mobile Capacitor wrapper proof plan](mobile-capacitor-wrapper-proof-plan.md)
   - Capacitor 系 wrapper proof を C1 wrapper-readiness / C2 Capacitor preparation / C3 native-device proof に分け、Mtool が最初に担う検証境界を固定する
 - [Mobile External Feasibility Study / mobile external FS](mobile-external-feasibility-study.md)
@@ -144,6 +147,8 @@ detail doc だけを読んで mainline を再構成するのは current reading 
   - mobile app 作成者、Codex/Claude、外部 builder が wrapper 実装前に読む handoff packet v1 の正本
 - [Mobile React Wrapper Target Contract / mobile React wrapper target contract](mobile-react-wrapper-target-contract.md)
   - Mtool が wrapper-ready input package までを担当し、React app shell / Capacitor / native build / signing は外部 owner が担当する境界を固定する
+- [External No-Code Output / external no-code output](external-no-code-output.md)
+  - optional `external_no_code` output の正本。`external-output.json` を外部 FE/no-code/tool が読むための field、CLI、non-goal、validation を固定する
 - [Mobile Capacitor Wrapper Proof Plan / mobile Capacitor wrapper proof plan](mobile-capacitor-wrapper-proof-plan.md)
   - first proof candidate を sample28 に置き、native build ではなく wrapper-readiness package と既存 React bridge smoke を C1 gate として扱う
 - [Mobile External Feasibility Study / mobile external FS](mobile-external-feasibility-study.md)

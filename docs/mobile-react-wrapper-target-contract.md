@@ -108,6 +108,41 @@ app_mobile_wrapper_target_emit_c1_package(array $handoff, string $targetDir): ar
 
 It writes only the two C1 package files into an artifact directory and refuses to overwrite existing files. It still does not initialize or mutate React, Capacitor, iOS, or Android projects.
 
+## Optional external output / optional external output
+
+After the wrapper app handoff exists, Mtool can also emit an optional external no-code/tool packet:
+
+```text
+react-web-capacitor-output/
+  external-output.json
+  EXTERNAL-OUTPUT.md
+```
+
+The builder is:
+
+```php
+app_mobile_wrapper_target_build_external_optional_output_packet(array $handoff): array
+```
+
+The controlled emitter is:
+
+```php
+app_mobile_wrapper_target_emit_external_optional_output_packet(array $handoff, string $targetDir): array
+```
+
+CLI:
+
+```sh
+php mtool/scripts/create_mobile_wrapper_target.php \
+  --sample=sample28 \
+  --artifact=external-output \
+  --target-dir=work/source-outputs/SAMPLE28/MOBILE-WRAPPER-TARGET/react-web-capacitor-output
+```
+
+This output is additive. It does not replace `mtool_no_code`; it gives external React/Web + Capacitor-style consumers a machine-readable `external_no_code` packet with source refs, screen/action/readiness metadata, server authority boundary, ownership boundary, confirmation-required actions, forbidden-without-artifact rules, validation gates, and non-goals.
+
+See [External No-Code Output](external-no-code-output.md) for the stable field guide.
+
 ## Boundary details / boundary details
 
 ### Mtool owns

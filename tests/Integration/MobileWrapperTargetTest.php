@@ -185,6 +185,45 @@ final class MobileWrapperTargetTest extends TestCase
         self::assertContains('make sample28-no-code-react-bridge-build-smoke', $proof['verification']['required_before_capacitor'] ?? []);
     }
 
+    public function testBuildsExternalOptionalOutputPacketWithoutReplacingMtoolNoCode(): void
+    {
+        $result = app_mobile_wrapper_target_build_external_optional_output_packet($this->packet());
+
+        self::assertTrue($result['ok'], $result['error']);
+        self::assertIsArray($result['package']);
+        self::assertFalse($result['package']['mutation_performed']);
+        self::assertArrayHasKey('external-output.json', $result['package']['files']);
+        self::assertArrayHasKey('EXTERNAL-OUTPUT.md', $result['package']['files']);
+
+        $packet = $result['package']['files']['external-output.json'];
+        self::assertSame('mobile-external-optional-output-v1', $packet['schema_version'] ?? '');
+        self::assertSame('external_no_code', $packet['mode'] ?? '');
+        self::assertSame('react_web_capacitor', $packet['target'] ?? '');
+        self::assertTrue($packet['baseline']['keeps_mtool_no_code'] ?? false);
+        self::assertFalse($packet['baseline']['replacement_claim'] ?? true);
+        self::assertSame('Mtool/server-owned', $packet['server_authority']['authorization'] ?? '');
+        self::assertContains('React app shell', $packet['ownership_boundary']['external_custom_extension_owned'] ?? []);
+        self::assertContains('initialize Capacitor', $packet['requires_user_confirmation'] ?? []);
+        self::assertContains('automatic dependency installation', $packet['forbidden_without_artifact'] ?? []);
+        self::assertContains('replace_mtool_no_code_runtime', $packet['non_goals'] ?? []);
+    }
+
+    public function testSample28ExternalOptionalOutputEmitsOnlyPacketFiles(): void
+    {
+        $targetDir = $this->tempDir('sample28-external-output');
+
+        $result = app_mobile_wrapper_target_emit_sample28_external_optional_output_packet($targetDir);
+
+        self::assertTrue($result['ok'], $result['error']);
+        self::assertSame(['EXTERNAL-OUTPUT.md', 'external-output.json'], $result['files']);
+        self::assertFileExists($targetDir . '/external-output.json');
+        self::assertFileExists($targetDir . '/EXTERNAL-OUTPUT.md');
+        self::assertFileDoesNotExist($targetDir . '/package.json');
+        self::assertFileDoesNotExist($targetDir . '/capacitor.config.ts');
+        self::assertFileDoesNotExist($targetDir . '/ios');
+        self::assertFileDoesNotExist($targetDir . '/android');
+    }
+
     public function testSample28ReactWrapperAppHandoffEmitsOnlyProofFiles(): void
     {
         $targetDir = $this->tempDir('sample28-react-wrapper-app-handoff');
@@ -235,6 +274,23 @@ final class MobileWrapperTargetTest extends TestCase
         self::assertSame('react-wrapper-app', $result['artifact']);
         self::assertSame(
             'work/source-outputs/SAMPLE28/MOBILE-WRAPPER-TARGET/react-wrapper-app-handoff',
+            $result['target_dir'],
+        );
+    }
+
+    public function testCliParserAcceptsExternalOutputArtifact(): void
+    {
+        $result = app_cli_mobile_wrapper_target_parse_args([
+            'create_mobile_wrapper_target.php',
+            '--sample=sample28',
+            '--artifact=external-output',
+            '--target-dir=work/source-outputs/SAMPLE28/MOBILE-WRAPPER-TARGET/react-web-capacitor-output',
+        ]);
+
+        self::assertTrue($result['ok'], $result['error']);
+        self::assertSame('external-output', $result['artifact']);
+        self::assertSame(
+            'work/source-outputs/SAMPLE28/MOBILE-WRAPPER-TARGET/react-web-capacitor-output',
             $result['target_dir'],
         );
     }
@@ -374,9 +430,11 @@ final class MobileWrapperTargetTest extends TestCase
         $manifest = $result['package']['files']['mobile-wrapper-bundle-manifest.json'];
         self::assertSame('mobile-wrapper-bundle-manifest-v1', $manifest['schema_version'] ?? '');
         self::assertSame(
-            ['c1_wrapper_readiness', 'react_wrapper_app_handoff', 'later_platform_input_packets'],
+            ['c1_wrapper_readiness', 'react_wrapper_app_handoff', 'external_optional_output', 'later_platform_input_packets'],
             $manifest['artifact_order'] ?? [],
         );
+        self::assertSame('external_optional_output', $manifest['artifacts'][2]['artifact_key'] ?? '');
+        self::assertContains('external-output.json', $manifest['artifacts'][2]['files'] ?? []);
         self::assertContains('Flutter project', $manifest['not_generated_by_mtool'] ?? []);
         self::assertContains('React Native project', $manifest['not_generated_by_mtool'] ?? []);
         self::assertContains('Capacitor project', $manifest['not_generated_by_mtool'] ?? []);

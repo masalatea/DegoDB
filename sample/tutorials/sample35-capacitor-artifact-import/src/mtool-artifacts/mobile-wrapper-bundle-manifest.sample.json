@@ -9,6 +9,7 @@
   "artifact_order": [
     "c1_wrapper_readiness",
     "react_wrapper_app_handoff",
+    "external_optional_output",
     "capacitor_artifact_import_sample"
   ],
   "artifacts": [
@@ -31,13 +32,23 @@
       "purpose": "React/Web wrapper app handoff before Capacitor preparation"
     },
     {
+      "artifact_key": "external_optional_output",
+      "path_hint": "react-web-capacitor-output/",
+      "files": [
+        "external-output.json",
+        "EXTERNAL-OUTPUT.md"
+      ],
+      "purpose": "optional external no-code/tool output packet that keeps mtool_no_code as baseline"
+    },
+    {
       "artifact_key": "capacitor_artifact_import_sample",
       "path_hint": "sample/tutorials/sample35-capacitor-artifact-import/",
       "files": [
         "README.md",
         "package.json",
         "capacitor.config.ts",
-        "src/mtoolArtifacts.ts"
+        "src/mtoolArtifacts.ts",
+        "src/mtool-artifacts/external-output.sample.json"
       ],
       "purpose": "external-owner sample app directly importing Mtool artifacts"
     }
@@ -55,4 +66,3 @@
     "store submission files"
   ]
 }
-

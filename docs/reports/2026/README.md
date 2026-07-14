@@ -11,6 +11,22 @@
 
 ## Index
 
+- `2026-0715-standalone-no-code-evidence-inventory.md`
+  - `docs/no-code-standalone-scope.md` の supported capability matrix に対して、既存 sample / test / docs / report evidence を棚卸し。Sample28/29/31 runtime、Sample18 guarded route、publish candidate/current/alias、required readiness、action intent、outbox handoff、server authority boundary を covered とし、Full CRUD / offline sync / realtime shared state / external app handoff は理由付き非scopeと整理。現scope内の implementation gap はなし。次は完了report。Status: `DONE_NO_IMPLEMENTATION_GAP_FOUND`。
+- `2026-0715-standalone-no-code-completion-report.md`
+  - NC-S5 standalone no-code 完了report。Mtool-owned metadata、`NO-CODE-RUNTIME`、list/detail/form、action intent、readiness、guarded submit/outbox、publish candidate/current/alias、server authority boundary を supported-contract scope として完了認定。全sample完全変換・全custom置換・Full CRUD・offline/realtime・外部appは非claim。Status: `DONE_SUPPORTED_CONTRACT_SCOPE`。
+- `2026-0715-external-framework-optional-output-boundary-matrix.md`
+  - EF-M1 optional external no-code/tool output の boundary matrix。`mtool_no_code` は baseline として維持し、`external_no_code` / `hybrid` を additive output として扱う。Layer A React/Web + Capacitor を first optional target、Layer B Codex/Claude task packet、Layer C PWA/native wrapper metadata、Flutter/React Native later target に整理。次は EF-M2 React/Web + Capacitor optional output packet。Status: `EF_M1_DONE_FIRST_MATRIX`。
+- `2026-0715-react-web-capacitor-optional-output-packet-first-slice.md`
+  - EF-M2 first slice。既存 mobile wrapper target tooling に `external-output` artifact を追加し、`external-output.json` / `EXTERNAL-OUTPUT.md` を生成可能にした。`mtool_no_code` をbaselineとして維持し、React/Web + Capacitor外部consumer向けに source refs、screen/action/readiness、server authority、ownership boundary、confirmation-required、forbidden-without-artifact、validation、non-goals を出す。Focused `MobileWrapperTargetTest` は 28 tests / 193 assertions で通過。Status: `FIRST_SLICE_DONE`。
+- `2026-0715-external-output-schema-docs-hardening.md`
+  - EF-M3。`docs/external-no-code-output.md` を追加し、`external-output.json` / `.md` の schema、CLI、ownership boundary、validation を恒久化。`docs/README.md` と `docs/mobile-react-wrapper-target-contract.md` へ導線を追加し、mobile wrapper bundle manifest に `external_optional_output` を含める判断を実装。Focused `MobileWrapperTargetTest` は 28 tests / 195 assertions で通過。Status: `EF_M3_DONE`。
+- `2026-0715-sample35-external-output-consumer-evidence.md`
+  - EF-M4。`sample35-capacitor-artifact-import` に `external-output.sample.json` fixture を追加し、runtime import・UI boundary 表示・manifest index・dependency-free static validation を更新。`mtool_no_code` baseline維持、`external_no_code` additive output、server authority、external-owner responsibilities、Capacitor init / dependency install forbidden-without-explicit-step を検証。`node sample/tutorials/sample35-capacitor-artifact-import/scripts/validate-sample.mjs` 通過。Status: `EF_M4_DONE`。
+- `2026-0715-external-framework-optional-output-boundary-check-plan.md`
+  - 既に作った Mtool 独自 no-code output を置換する計画ではなく、外部 FE/no-code/app framework を optional output target として扱う boundary check 計画。`mtool_no_code` は supported baseline として維持し、Mtool metadata / validation / server authority / custom extension 境界を保ったまま `external_no_code` / `hybrid` をどう出すか確認する。Status: `REPOSITIONED_AS_OPTIONAL_OUTPUT`。
+- `2026-0715-mtool-no-code-external-framework-full-coverage-check.md`
+  - 外部framework側の全機能対応ではなく、Mtool が現在 no-code として責任を持つ supported scope を外部frameworkで全対応できるかという視点で precheck。contract-first なら feasible、runtime丸ごとrewriteなら高riskと判定。ただし現時点では置換より optional external output が高価値という判断を追記。server authority / approval / outbox / audit はMtool/server側に残し、UI rendering / form binding / app shell は外部framework側へ optional に寄せられる。Status: `PRECHECK_DONE_PORTABLE_CONTRACT_FIRST`。
 - `2026-0714-capacitor-artifact-import-sample-first-slice.md`
   - `sample35-capacitor-artifact-import` を追加。Capacitor-ready React sample が Mtool artifact fixture を直接 import し、artifact index、project identity、list/detail/form、field rendering、local draft、required validation、action intent draft、mock submit boundary、blocked/error、ownership boundary を静的に確認する。`ios/` / `android/` / native build / signing / store submission は非claim。Status: `FIRST_SLICE_DONE`。
 - `2026-0714-capacitor-artifact-import-sample-plan.md`

@@ -20,7 +20,8 @@ const requiredFiles = [
   'src/MtoolActionIntentPanel.tsx',
   'src/mtool-artifacts/bridge-contract.sample.json',
   'src/mtool-artifacts/react-wrapper-app-handoff.sample.json',
-  'src/mtool-artifacts/mobile-wrapper-bundle-manifest.sample.json'
+  'src/mtool-artifacts/mobile-wrapper-bundle-manifest.sample.json',
+  'src/mtool-artifacts/external-output.sample.json'
 ];
 
 const requiredMarkers = [
@@ -32,6 +33,7 @@ const requiredMarkers = [
   'action-intent-draft-submit-handoff-boundary',
   'blocked-error-state',
   'ownership-boundary-display',
+  'optional-external-output-boundary',
   'no-code-runtime-action-intent-v0',
   'mock/disabled',
   'requiredValidationMessages',
@@ -87,6 +89,22 @@ assert(handoff.capacitor_preparation_boundary?.mtool_does_not_create_native_proj
 const manifest = readJson('src/mtool-artifacts/mobile-wrapper-bundle-manifest.sample.json');
 assert(manifest.schema_version === 'mobile-wrapper-bundle-manifest-v1', 'bundle manifest schema mismatch');
 assert(manifest.artifact_order?.includes('capacitor_artifact_import_sample'), 'bundle manifest must include sample artifact');
+assert(manifest.artifact_order?.includes('external_optional_output'), 'bundle manifest must include optional external output artifact');
+
+const externalOutput = readJson('src/mtool-artifacts/external-output.sample.json');
+assert(externalOutput.schema_version === 'mobile-external-optional-output-v1', 'external output schema mismatch');
+assert(externalOutput.mode === 'external_no_code', 'external output mode mismatch');
+assert(externalOutput.target === 'react_web_capacitor', 'external output target mismatch');
+assert(externalOutput.baseline?.keeps_mtool_no_code === true, 'external output must keep mtool_no_code baseline');
+assert(externalOutput.baseline?.replacement_claim === false, 'external output must not claim replacement');
+assert(externalOutput.project_identity?.project_key === handoff.project?.project_key, 'external output project identity mismatch');
+assert(externalOutput.source_artifacts?.no_code_runtime?.ref === handoff.source_artifacts?.no_code_runtime?.ref, 'external output no-code runtime ref mismatch');
+assert(externalOutput.readiness?.server_remains_authoritative === true, 'external output must keep server authoritative');
+assert(externalOutput.server_authority?.authorization === 'Mtool/server-owned', 'external output authorization boundary missing');
+assert(externalOutput.ownership_boundary?.external_custom_extension_owned?.includes('React app shell'), 'external output external owner boundary missing');
+assert(externalOutput.requires_user_confirmation?.includes('initialize Capacitor'), 'external output must require confirmation before Capacitor init');
+assert(externalOutput.forbidden_without_artifact?.includes('automatic dependency installation'), 'external output must forbid dependency install without artifact');
+assert(externalOutput.non_goals?.includes('replace_mtool_no_code_runtime'), 'external output non-goals must include no-code replacement');
 
 const sourceBundle = [
   read('src/App.tsx'),
@@ -108,6 +126,7 @@ console.log(JSON.stringify({
   ok: true,
   sample: 'sample35-capacitor-artifact-import',
   covered_screen_types: [...screenTypes].sort(),
+  external_output_mode: externalOutput.mode,
   operation_markers: requiredMarkers.length,
   native_project_files_checked_in: false
 }, null, 2));
