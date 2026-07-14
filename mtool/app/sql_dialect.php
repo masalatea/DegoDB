@@ -13,6 +13,10 @@ function app_sql_dialect_from_dsn(string $dsn): string
         return 'pgsql';
     }
 
+    if (str_starts_with($normalizedDsn, 'firebird:')) {
+        return 'firebird';
+    }
+
     return 'mysql';
 }
 
@@ -35,6 +39,10 @@ function app_sql_dialect_from_pdo(PDO $pdo): string
 
     if ($driverName === 'pgsql') {
         return 'pgsql';
+    }
+
+    if ($driverName === 'firebird') {
+        return 'firebird';
     }
 
     return 'mysql';
@@ -62,6 +70,10 @@ function app_sql_datetime_select_expr(string $dialect, string $columnExpression,
         return "to_char({$trimmedColumnExpression}, 'YYYY-MM-DD HH24:MI:SS') AS {$trimmedAlias}";
     }
 
+    if ($normalizedDialect === 'firebird') {
+        return "CAST({$trimmedColumnExpression} AS VARCHAR(32)) AS {$trimmedAlias}";
+    }
+
     return "DATE_FORMAT({$trimmedColumnExpression}, \"%Y-%m-%d %H:%i:%s\") AS {$trimmedAlias}";
 }
 
@@ -72,11 +84,35 @@ function app_sql_identifier(string $dialect, string $identifier): string
         throw new InvalidArgumentException('SQL identifier cannot be empty.');
     }
 
-    if (strtolower(trim($dialect)) === 'sqlite') {
+    if (in_array(strtolower(trim($dialect)), ['sqlite', 'firebird'], true)) {
         return '"' . str_replace('"', '""', $trimmedIdentifier) . '"';
     }
 
     return $trimmedIdentifier;
+}
+
+function app_sql_limit_clause(string $dialect, int $limit): string
+{
+    $normalizedLimit = max(1, $limit);
+    if (strtolower(trim($dialect)) === 'firebird') {
+        return 'ROWS ' . $normalizedLimit;
+    }
+
+    return 'LIMIT ' . $normalizedLimit;
+}
+
+/**
+ * @param array<string|int,mixed> $row
+ * @return array<string|int,mixed>
+ */
+function app_sql_normalize_row_keys(array $row): array
+{
+    $normalized = [];
+    foreach ($row as $key => $value) {
+        $normalized[is_string($key) ? strtolower($key) : $key] = $value;
+    }
+
+    return $normalized;
 }
 
 function app_sql_table_exists(PDO $pdo, string $tableName): bool
@@ -113,6 +149,20 @@ function app_sql_table_exists(PDO $pdo, string $tableName): bool
         $statement->execute([
             ':table_name' => $trimmedTableName,
             ':lower_table_name' => strtolower($trimmedTableName),
+        ]);
+
+        return $statement->fetchColumn() !== false;
+    }
+
+    if ($dialect === 'firebird') {
+        $statement = $pdo->prepare(
+            'SELECT 1
+            FROM RDB$RELATIONS
+            WHERE RDB$SYSTEM_FLAG = 0
+              AND TRIM(RDB$RELATION_NAME) = ?'
+        );
+        $statement->execute([
+            strtoupper($trimmedTableName),
         ]);
 
         return $statement->fetchColumn() !== false;
@@ -175,6 +225,21 @@ function app_sql_column_exists(PDO $pdo, string $tableName, string $columnName):
         return $statement->fetchColumn() !== false;
     }
 
+    if ($dialect === 'firebird') {
+        $statement = $pdo->prepare(
+            'SELECT 1
+            FROM RDB$RELATION_FIELDS
+            WHERE TRIM(RDB$RELATION_NAME) = ?
+              AND TRIM(RDB$FIELD_NAME) = ?'
+        );
+        $statement->execute([
+            strtoupper($trimmedTableName),
+            strtoupper($trimmedColumnName),
+        ]);
+
+        return $statement->fetchColumn() !== false;
+    }
+
     $statement = $pdo->prepare(
         'SELECT 1
         FROM information_schema.columns
@@ -206,6 +271,12 @@ function app_sql_server_version(PDO $pdo): string
         return is_string($version) ? $version : '';
     }
 
+    if ($dialect === 'firebird') {
+        $version = $pdo->query('SELECT RDB$GET_CONTEXT(\'SYSTEM\', \'ENGINE_VERSION\') FROM RDB$DATABASE')->fetchColumn();
+
+        return is_string($version) ? $version : '';
+    }
+
     $version = $pdo->query('SELECT VERSION()')->fetchColumn();
 
     return is_string($version) ? $version : '';
@@ -230,6 +301,12 @@ function app_sql_current_database_name(PDO $pdo): string
 
     if ($dialect === 'pgsql') {
         $databaseName = $pdo->query('SELECT current_database()')->fetchColumn();
+
+        return is_string($databaseName) ? $databaseName : '';
+    }
+
+    if ($dialect === 'firebird') {
+        $databaseName = $pdo->query('SELECT RDB$GET_CONTEXT(\'SYSTEM\', \'DB_NAME\') FROM RDB$DATABASE')->fetchColumn();
 
         return is_string($databaseName) ? $databaseName : '';
     }

@@ -90,7 +90,7 @@ if (!class_exists('MtoolGeneratedDbAccessRuntimeDb')) {
 
             if ($this->pdo instanceof PDO) {
                 try {
-                    $statement = $this->pdo->query($sql);
+                    $statement = $this->pdo->query($this->normalizeSqlForPdo($sql));
                     if (!$statement instanceof PDOStatement) {
                         return false;
                     }
@@ -132,7 +132,7 @@ if (!class_exists('MtoolGeneratedDbAccessRuntimeDb')) {
 
             if ($this->pdo instanceof PDO) {
                 try {
-                    $statement = $this->pdo->prepare($sql);
+                    $statement = $this->pdo->prepare($this->normalizeSqlForPdo($sql));
                     $statement->execute(array_values($params));
 
                     return new MtoolGeneratedDbAccessPdoResult($statement);
@@ -192,6 +192,31 @@ if (!class_exists('MtoolGeneratedDbAccessRuntimeDb')) {
             $this->error = 'runtime DB connection is not initialized';
 
             return false;
+        }
+
+        private function normalizeSqlForPdo(string $sql): string
+        {
+            if (!$this->pdo instanceof PDO) {
+                return $sql;
+            }
+
+            $driver = strtolower((string) $this->pdo->getAttribute(PDO::ATTR_DRIVER_NAME));
+            if ($driver !== 'firebird') {
+                return $sql;
+            }
+
+            // Firebird does not accept MySQL/SQLite-style trailing LIMIT.
+            // Keep this intentionally narrow for the sample18 proof:
+            // generated SELECT ... ORDER BY ... LIMIT ? -> SELECT ... ORDER BY ... ROWS ?
+            $rewritten = preg_replace('/\s+limit\s+\?$/i', ' ROWS ?', $sql);
+            if (!is_string($rewritten)) {
+                return $sql;
+            }
+
+            // Firebird uses CURRENT_TIMESTAMP instead of MySQL-style NOW().
+            $rewritten = preg_replace('/\bNOW\s*\(\s*\)/i', 'CURRENT_TIMESTAMP', $rewritten);
+
+            return is_string($rewritten) ? $rewritten : $sql;
         }
 
         public function beginTransaction(): bool

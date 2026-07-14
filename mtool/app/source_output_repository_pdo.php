@@ -38,7 +38,7 @@ function app_pdo_fetch_project_source_output_catalog(array $app, string $project
 {
     try {
         $pdo = app_create_config_pdo($app);
-        $dialect = app_sql_dialect_from_db_config(app_database_config($app, 'config_db'));
+        $dialect = app_sql_dialect_from_pdo($pdo);
         $updatedAtSelect = app_sql_datetime_select_expr($dialect, 'so.updated_at', 'updated_at');
         $statement = $pdo->prepare(
             'SELECT
@@ -162,7 +162,7 @@ function app_pdo_fetch_project_source_output_item(array $app, string $projectKey
                 ON p.id = so.project_id
             WHERE p.project_key = :project_key
               AND so.source_output_key = :source_output_key
-            LIMIT 1'
+            ' . app_sql_limit_clause($dialect, 1)
         );
         $statement->execute([
             ':project_key' => $projectKey,
@@ -235,7 +235,7 @@ function app_pdo_fetch_project_source_output_default_item(array $app, string $pr
 {
     try {
         $pdo = app_create_config_pdo($app);
-        $dialect = app_sql_dialect_from_db_config(app_database_config($app, 'config_db'));
+        $dialect = app_sql_dialect_from_pdo($pdo);
         $updatedAtSelect = app_sql_datetime_select_expr($dialect, 'so.updated_at', 'updated_at');
         $statement = $pdo->prepare(
             'SELECT
@@ -264,7 +264,7 @@ function app_pdo_fetch_project_source_output_default_item(array $app, string $pr
                 ON p.id = so.project_id
             WHERE p.project_key = :project_key
             ORDER BY so.source_output_list_order, so.source_output_key
-            LIMIT 1'
+            ' . app_sql_limit_clause($dialect, 1)
         );
         $statement->execute([
             ':project_key' => $projectKey,
@@ -688,6 +688,8 @@ function app_pdo_reorder_project_source_outputs(array $app, array $input): array
  */
 function app_pdo_project_source_output_item_from_row(array $row): array
 {
+    $row = app_sql_normalize_row_keys($row);
+
     return [
         'source_output_key' => (string) ($row['source_output_key'] ?? ''),
         'name' => (string) ($row['name'] ?? ''),
@@ -846,11 +848,12 @@ function app_pdo_project_source_output_implicit_ai_context_item(string $projectK
 
 function app_pdo_project_source_output_project_exists(PDO $pdo, string $projectKey): bool
 {
+    $dialect = app_sql_dialect_from_pdo($pdo);
     $statement = $pdo->prepare(
         'SELECT 1
         FROM projects
         WHERE project_key = :project_key
-        LIMIT 1'
+        ' . app_sql_limit_clause($dialect, 1)
     );
     $statement->execute([
         ':project_key' => $projectKey,
@@ -861,11 +864,12 @@ function app_pdo_project_source_output_project_exists(PDO $pdo, string $projectK
 
 function app_source_output_pdo_resolve_project_id(PDO $pdo, string $projectKey): int
 {
+    $dialect = app_sql_dialect_from_pdo($pdo);
     $statement = $pdo->prepare(
         'SELECT id
         FROM projects
         WHERE project_key = :project_key
-        LIMIT 1'
+        ' . app_sql_limit_clause($dialect, 1)
     );
     $statement->execute([
         ':project_key' => $projectKey,
@@ -891,12 +895,13 @@ function app_source_output_pdo_resolve_source_output_id(PDO $pdo, int $projectId
 
 function app_source_output_pdo_fetch_source_output_id(PDO $pdo, int $projectId, string $sourceOutputKey): ?int
 {
+    $dialect = app_sql_dialect_from_pdo($pdo);
     $statement = $pdo->prepare(
         'SELECT id
         FROM project_source_outputs
         WHERE project_id = :project_id
           AND source_output_key = :source_output_key
-        LIMIT 1'
+        ' . app_sql_limit_clause($dialect, 1)
     );
     $statement->execute([
         ':project_id' => $projectId,

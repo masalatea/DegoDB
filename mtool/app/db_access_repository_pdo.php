@@ -56,6 +56,61 @@ function app_pdo_db_access_datetime_select_expr(
 }
 
 /**
+ * @param array<string,mixed> $row
+ * @return array<string,string>
+ */
+function app_pdo_db_access_class_metadata_item_from_row(array $row): array
+{
+    $row = app_sql_normalize_row_keys($row);
+
+    return [
+        'source_name' => (string) ($row['source_name'] ?? ''),
+        'store_base_path' => (string) ($row['store_base_path'] ?? ''),
+        'is_autoload' => ((int) ($row['is_autoload'] ?? 0)) === 1 ? '1' : '0',
+        'notes' => (string) ($row['notes'] ?? ''),
+        'source_of_truth' => (string) ($row['source_of_truth'] ?? ''),
+        'last_detected_dbaccess_file' => (string) ($row['last_detected_dbaccess_file'] ?? ''),
+        'last_detected_data_file' => (string) ($row['last_detected_data_file'] ?? ''),
+        'updated_at' => (string) ($row['updated_at'] ?? ''),
+    ];
+}
+
+/**
+ * @param array<string,mixed> $row
+ * @return array<string,string>
+ */
+function app_pdo_db_access_function_metadata_item_from_row(array $row): array
+{
+    $row = app_sql_normalize_row_keys($row);
+
+    return [
+        'source_name' => (string) ($row['source_name'] ?? ''),
+        'function_name' => (string) ($row['function_name'] ?? ''),
+        'function_list_order' => (string) ((int) ($row['function_list_order'] ?? 0)),
+        'function_suffix' => (string) ($row['function_suffix'] ?? ''),
+        'action_type' => (string) ($row['action_type'] ?? ''),
+        'data_class_base_name' => (string) ($row['data_class_base_name'] ?? ''),
+        'target_table_name' => (string) ($row['target_table_name'] ?? ''),
+        'parameter_type' => (string) ($row['parameter_type'] ?? ''),
+        'select_by_distinct' => ((int) ($row['select_by_distinct'] ?? 0)) === 1 ? '1' : '0',
+        'sort_order_columns' => (string) ($row['sort_order_columns'] ?? ''),
+        'memo' => (string) ($row['memo'] ?? ''),
+        'limit_parameter_type' => (string) ($row['limit_parameter_type'] ?? ''),
+        'limit_fixed_parameter' => (string) ($row['limit_fixed_parameter'] ?? ''),
+        'or_group_type' => (string) ($row['or_group_type'] ?? ''),
+        'single_proxy_auth_type' => (string) ($row['single_proxy_auth_type'] ?? ''),
+        'single_proxy_single_get_function_name' => (string) ($row['single_proxy_single_get_function_name'] ?? ''),
+        'auth_policy_version' => (string) ((int) ($row['auth_policy_version'] ?? 1)),
+        'auth_policy_json' => (string) ($row['auth_policy_json'] ?? ''),
+        'is_blob_target' => ((int) ($row['is_blob_target'] ?? 0)) === 1 ? '1' : '0',
+        'detected_signature' => (string) ($row['detected_signature'] ?? ''),
+        'detected_line' => (string) ((int) ($row['detected_line'] ?? 0)),
+        'source_of_truth' => (string) ($row['source_of_truth'] ?? ''),
+        'updated_at' => (string) ($row['updated_at'] ?? ''),
+    ];
+}
+
+/**
  * @param array{
  *     source_name:string,
  *     function_name:string,
@@ -127,6 +182,8 @@ function app_pdo_fetch_db_access_function_blob_target_context(
     string $sourceName,
     string $functionName,
 ): array {
+    $dialect = app_sql_dialect_from_pdo($pdo);
+    $limitClause = app_sql_limit_clause($dialect, 1);
     $statement = $pdo->prepare(
         'SELECT
             f.action_type,
@@ -140,7 +197,7 @@ function app_pdo_fetch_db_access_function_blob_target_context(
         WHERE p.project_key = :project_key
           AND c.source_name = :source_name
           AND f.function_name = :function_name
-        LIMIT 1'
+        ' . $limitClause
     );
     $statement->execute([
         ':project_key' => $projectKey,
@@ -156,6 +213,8 @@ function app_pdo_fetch_db_access_function_blob_target_context(
             'last_detected_dbaccess_file' => '',
         ];
     }
+
+    $row = app_sql_normalize_row_keys($row);
 
     return [
         'action_type' => (string) ($row['action_type'] ?? ''),
@@ -191,8 +250,9 @@ function app_pdo_fetch_db_access_class_metadata(array $app, string $projectKey, 
 {
     try {
         $pdo = app_create_metadata_pdo($app);
-        $dialect = app_sql_dialect_from_db_config(app_database_config($app, 'config_db'));
+        $dialect = app_sql_dialect_from_pdo($pdo);
         $updatedAtSelect = app_sql_datetime_select_expr($dialect, 'c.updated_at', 'updated_at');
+        $limitClause = app_sql_limit_clause($dialect, 1);
         $statement = $pdo->prepare(
             'SELECT
                 c.source_name,
@@ -208,7 +268,7 @@ function app_pdo_fetch_db_access_class_metadata(array $app, string $projectKey, 
                 ON p.id = c.project_id
             WHERE p.project_key = :project_key
               AND c.source_name = :source_name
-            LIMIT 1'
+            ' . $limitClause
         );
         $statement->execute([
             ':project_key' => $projectKey,
@@ -226,16 +286,7 @@ function app_pdo_fetch_db_access_class_metadata(array $app, string $projectKey, 
 
         return [
             'ok' => true,
-            'item' => [
-                'source_name' => (string) ($row['source_name'] ?? ''),
-                'store_base_path' => (string) ($row['store_base_path'] ?? ''),
-                'is_autoload' => ((int) ($row['is_autoload'] ?? 0)) === 1 ? '1' : '0',
-                'notes' => (string) ($row['notes'] ?? ''),
-                'source_of_truth' => (string) ($row['source_of_truth'] ?? ''),
-                'last_detected_dbaccess_file' => (string) ($row['last_detected_dbaccess_file'] ?? ''),
-                'last_detected_data_file' => (string) ($row['last_detected_data_file'] ?? ''),
-                'updated_at' => (string) ($row['updated_at'] ?? ''),
-            ],
+            'item' => app_pdo_db_access_class_metadata_item_from_row($row),
             'error' => '',
         ];
     } catch (Throwable $throwable) {
@@ -273,7 +324,7 @@ function app_pdo_fetch_db_access_class_metadata_catalog(array $app, string $proj
 {
     try {
         $pdo = app_create_metadata_pdo($app);
-        $dialect = app_sql_dialect_from_db_config(app_database_config($app, 'config_db'));
+        $dialect = app_sql_dialect_from_pdo($pdo);
         $updatedAtSelect = app_sql_datetime_select_expr($dialect, 'c.updated_at', 'updated_at');
         $statement = $pdo->prepare(
             'SELECT
@@ -312,6 +363,7 @@ function app_pdo_fetch_db_access_class_metadata_catalog(array $app, string $proj
                 continue;
             }
 
+            $row = app_sql_normalize_row_keys($row);
             $items[] = [
                 'source_name' => (string) ($row['source_name'] ?? ''),
                 'store_base_path' => (string) ($row['store_base_path'] ?? ''),
@@ -364,10 +416,10 @@ function app_pdo_upsert_db_access_class_metadata(array $app, array $input): arra
 {
     try {
         $pdo = app_create_metadata_pdo($app);
-        $dialect = app_sql_dialect_from_db_config(app_database_config($app, 'config_db'));
+        $dialect = app_sql_dialect_from_pdo($pdo);
         $projectId = app_pdo_resolve_project_id($pdo, $input['project_key']);
 
-        if ($dialect === 'sqlite') {
+        if (in_array($dialect, ['sqlite', 'firebird'], true)) {
             $classId = app_pdo_find_db_access_class_id($pdo, $input['project_key'], $input['source_name']);
             if ($classId !== null) {
                 $statement = $pdo->prepare(
@@ -552,8 +604,9 @@ function app_pdo_fetch_db_access_function_metadata(array $app, string $projectKe
 {
     try {
         $pdo = app_create_metadata_pdo($app);
-        $dialect = app_sql_dialect_from_db_config(app_database_config($app, 'config_db'));
+        $dialect = app_sql_dialect_from_pdo($pdo);
         $updatedAtSelect = app_sql_datetime_select_expr($dialect, 'f.updated_at', 'updated_at');
+        $limitClause = app_sql_limit_clause($dialect, 1);
         $statement = $pdo->prepare(
             'SELECT
                 c.source_name,
@@ -587,7 +640,7 @@ function app_pdo_fetch_db_access_function_metadata(array $app, string $projectKe
             WHERE p.project_key = :project_key
               AND c.source_name = :source_name
               AND f.function_name = :function_name
-            LIMIT 1'
+            ' . $limitClause
         );
         $statement->execute([
             ':project_key' => $projectKey,
@@ -606,31 +659,7 @@ function app_pdo_fetch_db_access_function_metadata(array $app, string $projectKe
 
         return [
             'ok' => true,
-            'item' => [
-                'source_name' => (string) ($row['source_name'] ?? ''),
-                'function_name' => (string) ($row['function_name'] ?? ''),
-                'function_list_order' => (string) ((int) ($row['function_list_order'] ?? 0)),
-                'function_suffix' => (string) ($row['function_suffix'] ?? ''),
-                'action_type' => (string) ($row['action_type'] ?? ''),
-                'data_class_base_name' => (string) ($row['data_class_base_name'] ?? ''),
-                'target_table_name' => (string) ($row['target_table_name'] ?? ''),
-                'parameter_type' => (string) ($row['parameter_type'] ?? ''),
-                'select_by_distinct' => ((int) ($row['select_by_distinct'] ?? 0)) === 1 ? '1' : '0',
-                'sort_order_columns' => (string) ($row['sort_order_columns'] ?? ''),
-                'memo' => (string) ($row['memo'] ?? ''),
-                'limit_parameter_type' => (string) ($row['limit_parameter_type'] ?? ''),
-                'limit_fixed_parameter' => (string) ($row['limit_fixed_parameter'] ?? ''),
-                'or_group_type' => (string) ($row['or_group_type'] ?? ''),
-                'single_proxy_auth_type' => (string) ($row['single_proxy_auth_type'] ?? ''),
-                'single_proxy_single_get_function_name' => (string) ($row['single_proxy_single_get_function_name'] ?? ''),
-                'auth_policy_version' => (string) ((int) ($row['auth_policy_version'] ?? 1)),
-                'auth_policy_json' => (string) ($row['auth_policy_json'] ?? ''),
-                'is_blob_target' => ((int) ($row['is_blob_target'] ?? 0)) === 1 ? '1' : '0',
-                'detected_signature' => (string) ($row['detected_signature'] ?? ''),
-                'detected_line' => (string) ((int) ($row['detected_line'] ?? 0)),
-                'source_of_truth' => (string) ($row['source_of_truth'] ?? ''),
-                'updated_at' => (string) ($row['updated_at'] ?? ''),
-            ],
+            'item' => app_pdo_db_access_function_metadata_item_from_row($row),
             'error' => '',
         ];
     } catch (Throwable $throwable) {
@@ -681,7 +710,7 @@ function app_pdo_fetch_db_access_function_metadata_catalog(array $app, string $p
 {
     try {
         $pdo = app_create_metadata_pdo($app);
-        $dialect = app_sql_dialect_from_db_config(app_database_config($app, 'config_db'));
+        $dialect = app_sql_dialect_from_pdo($pdo);
         $updatedAtSelect = app_sql_datetime_select_expr($dialect, 'f.updated_at', 'updated_at');
         $statement = $pdo->prepare(
             'SELECT
@@ -738,30 +767,9 @@ function app_pdo_fetch_db_access_function_metadata_catalog(array $app, string $p
                 continue;
             }
 
-            $items[] = [
-                'function_name' => (string) ($row['function_name'] ?? ''),
-                'function_list_order' => (string) ((int) ($row['function_list_order'] ?? 0)),
-                'function_suffix' => (string) ($row['function_suffix'] ?? ''),
-                'action_type' => (string) ($row['action_type'] ?? ''),
-                'data_class_base_name' => (string) ($row['data_class_base_name'] ?? ''),
-                'target_table_name' => (string) ($row['target_table_name'] ?? ''),
-                'parameter_type' => (string) ($row['parameter_type'] ?? ''),
-                'select_by_distinct' => ((int) ($row['select_by_distinct'] ?? 0)) === 1 ? '1' : '0',
-                'sort_order_columns' => (string) ($row['sort_order_columns'] ?? ''),
-                'memo' => (string) ($row['memo'] ?? ''),
-                'limit_parameter_type' => (string) ($row['limit_parameter_type'] ?? ''),
-                'limit_fixed_parameter' => (string) ($row['limit_fixed_parameter'] ?? ''),
-                'or_group_type' => (string) ($row['or_group_type'] ?? ''),
-                'single_proxy_auth_type' => (string) ($row['single_proxy_auth_type'] ?? ''),
-                'single_proxy_single_get_function_name' => (string) ($row['single_proxy_single_get_function_name'] ?? ''),
-                'auth_policy_version' => (string) ((int) ($row['auth_policy_version'] ?? 1)),
-                'auth_policy_json' => (string) ($row['auth_policy_json'] ?? ''),
-                'is_blob_target' => ((int) ($row['is_blob_target'] ?? 0)) === 1 ? '1' : '0',
-                'detected_signature' => (string) ($row['detected_signature'] ?? ''),
-                'detected_line' => (string) ((int) ($row['detected_line'] ?? 0)),
-                'source_of_truth' => (string) ($row['source_of_truth'] ?? ''),
-                'updated_at' => (string) ($row['updated_at'] ?? ''),
-            ];
+            $item = app_pdo_db_access_function_metadata_item_from_row($row);
+            unset($item['source_name']);
+            $items[] = $item;
         }
 
         return [
@@ -830,7 +838,9 @@ function app_pdo_upsert_db_access_function_metadata(array $app, array $input): a
         }
 
         $pdo = app_create_metadata_pdo($app);
-        $dialect = app_sql_dialect_from_db_config(app_database_config($app, 'config_db'));
+        $dialect = app_sql_dialect_from_pdo($pdo);
+        $authPolicyVersion = (int) ($input['auth_policy_version'] ?? 1);
+        $authPolicyJson = (string) ($input['auth_policy_json'] ?? '');
         $pdo->beginTransaction();
 
         $classId = app_pdo_ensure_db_access_class_id(
@@ -841,7 +851,7 @@ function app_pdo_upsert_db_access_function_metadata(array $app, array $input): a
             $input['last_detected_data_file'],
         );
 
-        if ($dialect === 'sqlite') {
+        if (in_array($dialect, ['sqlite', 'firebird'], true)) {
             $functionId = app_pdo_find_db_access_function_id(
                 $pdo,
                 $input['project_key'],
@@ -866,6 +876,8 @@ function app_pdo_upsert_db_access_function_metadata(array $app, array $input): a
                         or_group_type = :or_group_type,
                         single_proxy_auth_type = :single_proxy_auth_type,
                         single_proxy_single_get_function_name = :single_proxy_single_get_function_name,
+                        auth_policy_version = :auth_policy_version,
+                        auth_policy_json = :auth_policy_json,
                         is_blob_target = :is_blob_target,
                         detected_signature = :detected_signature,
                         detected_line = :detected_line,
@@ -889,6 +901,8 @@ function app_pdo_upsert_db_access_function_metadata(array $app, array $input): a
                     ':or_group_type' => $input['or_group_type'],
                     ':single_proxy_auth_type' => $input['single_proxy_auth_type'],
                     ':single_proxy_single_get_function_name' => $input['single_proxy_single_get_function_name'],
+                    ':auth_policy_version' => $authPolicyVersion,
+                    ':auth_policy_json' => $authPolicyJson,
                     ':is_blob_target' => $input['is_blob_target'] === '1' ? 1 : 0,
                     ':detected_signature' => $input['detected_signature'],
                     ':detected_line' => (int) $input['detected_line'],
@@ -913,6 +927,8 @@ function app_pdo_upsert_db_access_function_metadata(array $app, array $input): a
                         or_group_type,
                         single_proxy_auth_type,
                         single_proxy_single_get_function_name,
+                        auth_policy_version,
+                        auth_policy_json,
                         is_blob_target,
                         detected_signature,
                         detected_line,
@@ -934,6 +950,8 @@ function app_pdo_upsert_db_access_function_metadata(array $app, array $input): a
                         :or_group_type,
                         :single_proxy_auth_type,
                         :single_proxy_single_get_function_name,
+                        :auth_policy_version,
+                        :auth_policy_json,
                         :is_blob_target,
                         :detected_signature,
                         :detected_line,
@@ -957,6 +975,8 @@ function app_pdo_upsert_db_access_function_metadata(array $app, array $input): a
                     ':or_group_type' => $input['or_group_type'],
                     ':single_proxy_auth_type' => $input['single_proxy_auth_type'],
                     ':single_proxy_single_get_function_name' => $input['single_proxy_single_get_function_name'],
+                    ':auth_policy_version' => $authPolicyVersion,
+                    ':auth_policy_json' => $authPolicyJson,
                     ':is_blob_target' => $input['is_blob_target'] === '1' ? 1 : 0,
                     ':detected_signature' => $input['detected_signature'],
                     ':detected_line' => (int) $input['detected_line'],
@@ -990,6 +1010,8 @@ function app_pdo_upsert_db_access_function_metadata(array $app, array $input): a
                     or_group_type,
                     single_proxy_auth_type,
                     single_proxy_single_get_function_name,
+                    auth_policy_version,
+                    auth_policy_json,
                     is_blob_target,
                     detected_signature,
                     detected_line,
@@ -1011,6 +1033,8 @@ function app_pdo_upsert_db_access_function_metadata(array $app, array $input): a
                     :or_group_type,
                     :single_proxy_auth_type,
                     :single_proxy_single_get_function_name,
+                    :auth_policy_version,
+                    :auth_policy_json,
                     :is_blob_target,
                     :detected_signature,
                     :detected_line,
@@ -1031,6 +1055,8 @@ function app_pdo_upsert_db_access_function_metadata(array $app, array $input): a
                     or_group_type = excluded.or_group_type,
                     single_proxy_auth_type = excluded.single_proxy_auth_type,
                     single_proxy_single_get_function_name = excluded.single_proxy_single_get_function_name,
+                    auth_policy_version = excluded.auth_policy_version,
+                    auth_policy_json = excluded.auth_policy_json,
                     is_blob_target = excluded.is_blob_target,
                     detected_signature = excluded.detected_signature,
                     detected_line = excluded.detected_line,
@@ -1053,6 +1079,8 @@ function app_pdo_upsert_db_access_function_metadata(array $app, array $input): a
                     or_group_type,
                     single_proxy_auth_type,
                     single_proxy_single_get_function_name,
+                    auth_policy_version,
+                    auth_policy_json,
                     is_blob_target,
                     detected_signature,
                     detected_line,
@@ -1074,6 +1102,8 @@ function app_pdo_upsert_db_access_function_metadata(array $app, array $input): a
                     :or_group_type,
                     :single_proxy_auth_type,
                     :single_proxy_single_get_function_name,
+                    :auth_policy_version,
+                    :auth_policy_json,
                     :is_blob_target,
                     :detected_signature,
                     :detected_line,
@@ -1094,6 +1124,8 @@ function app_pdo_upsert_db_access_function_metadata(array $app, array $input): a
                     or_group_type = VALUES(or_group_type),
                     single_proxy_auth_type = VALUES(single_proxy_auth_type),
                     single_proxy_single_get_function_name = VALUES(single_proxy_single_get_function_name),
+                    auth_policy_version = VALUES(auth_policy_version),
+                    auth_policy_json = VALUES(auth_policy_json),
                     is_blob_target = VALUES(is_blob_target),
                     detected_signature = VALUES(detected_signature),
                     detected_line = VALUES(detected_line),
@@ -1119,6 +1151,8 @@ function app_pdo_upsert_db_access_function_metadata(array $app, array $input): a
             ':or_group_type' => $input['or_group_type'],
             ':single_proxy_auth_type' => $input['single_proxy_auth_type'],
             ':single_proxy_single_get_function_name' => $input['single_proxy_single_get_function_name'],
+            ':auth_policy_version' => $authPolicyVersion,
+            ':auth_policy_json' => $authPolicyJson,
             ':is_blob_target' => $input['is_blob_target'] === '1' ? 1 : 0,
             ':detected_signature' => $input['detected_signature'],
             ':detected_line' => (int) $input['detected_line'],
@@ -4133,11 +4167,12 @@ function app_pdo_delete_db_access_function_simple_target_field(
 
 function app_pdo_resolve_project_id(PDO $pdo, string $projectKey): int
 {
+    $limitClause = app_sql_limit_clause(app_sql_dialect_from_pdo($pdo), 1);
     $statement = $pdo->prepare(
         'SELECT id
         FROM projects
         WHERE project_key = :project_key
-        LIMIT 1'
+        ' . $limitClause
     );
     $statement->execute([
         ':project_key' => $projectKey,
@@ -4182,6 +4217,7 @@ function app_pdo_fetch_project_source_output_key_map(PDO $pdo, string $projectKe
 
 function app_pdo_find_db_access_function_id(PDO $pdo, string $projectKey, string $sourceName, string $functionName): ?int
 {
+    $limitClause = app_sql_limit_clause(app_sql_dialect_from_pdo($pdo), 1);
     $statement = $pdo->prepare(
         'SELECT f.id
         FROM project_db_access_functions AS f
@@ -4192,7 +4228,7 @@ function app_pdo_find_db_access_function_id(PDO $pdo, string $projectKey, string
         WHERE p.project_key = :project_key
           AND c.source_name = :source_name
           AND f.function_name = :function_name
-        LIMIT 1'
+        ' . $limitClause
     );
     $statement->execute([
         ':project_key' => $projectKey,
@@ -4210,6 +4246,7 @@ function app_pdo_find_db_access_function_id(PDO $pdo, string $projectKey, string
 
 function app_pdo_find_db_access_class_id(PDO $pdo, string $projectKey, string $sourceName): ?int
 {
+    $limitClause = app_sql_limit_clause(app_sql_dialect_from_pdo($pdo), 1);
     $statement = $pdo->prepare(
         'SELECT c.id
         FROM project_db_access_classes AS c
@@ -4217,7 +4254,7 @@ function app_pdo_find_db_access_class_id(PDO $pdo, string $projectKey, string $s
             ON p.id = c.project_id
         WHERE p.project_key = :project_key
           AND c.source_name = :source_name
-        LIMIT 1'
+        ' . $limitClause
     );
     $statement->execute([
         ':project_key' => $projectKey,
@@ -4297,5 +4334,15 @@ function app_pdo_ensure_db_access_class_id(
         ':last_detected_data_file' => $lastDetectedDataFile,
     ]);
 
-    return (int) $pdo->lastInsertId();
+    $lastInsertId = (int) $pdo->lastInsertId();
+    if ($lastInsertId > 0) {
+        return $lastInsertId;
+    }
+
+    $classId = app_pdo_find_db_access_class_id($pdo, $projectKey, $sourceName);
+    if ($classId !== null) {
+        return $classId;
+    }
+
+    throw new RuntimeException('DB Access Class の作成後 ID を解決できませんでした。');
 }

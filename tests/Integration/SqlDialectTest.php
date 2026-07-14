@@ -23,6 +23,10 @@ final class SqlDialectTest extends TestCase
             app_sql_dialect_from_dsn('pgsql:host=127.0.0.1;port=5432;dbname=lab_app'),
         );
         self::assertSame(
+            'firebird',
+            app_sql_dialect_from_dsn('firebird:dbname=user-db-firebird/3050:/var/lib/firebird/data/config_app.fdb;charset=UTF8'),
+        );
+        self::assertSame(
             'mysql',
             app_sql_dialect_from_dsn(''),
         );
@@ -66,6 +70,40 @@ final class SqlDialectTest extends TestCase
         self::assertSame(
             "to_char(p.updated_at, 'YYYY-MM-DD HH24:MI:SS') AS updated_at",
             app_sql_datetime_select_expr('pgsql', 'p.updated_at', 'updated_at'),
+        );
+    }
+
+    public function testDatetimeSelectExpressionSupportsFirebirdShape(): void
+    {
+        self::assertSame(
+            'CAST(p.updated_at AS VARCHAR(32)) AS updated_at',
+            app_sql_datetime_select_expr('firebird', 'p.updated_at', 'updated_at'),
+        );
+    }
+
+    public function testFirebirdIdentifierUsesQuotedShape(): void
+    {
+        self::assertSame('"project_source_output"', app_sql_identifier('firebird', 'project_source_output'));
+    }
+
+    public function testLimitClauseSupportsFirebirdRowsShape(): void
+    {
+        self::assertSame('LIMIT 1', app_sql_limit_clause('mysql', 1));
+        self::assertSame('LIMIT 1', app_sql_limit_clause('sqlite', 0));
+        self::assertSame('ROWS 5', app_sql_limit_clause('firebird', 5));
+    }
+
+    public function testRowKeyNormalizationSupportsUppercasePdoDrivers(): void
+    {
+        self::assertSame(
+            [
+                'event_key' => 'evt_1',
+                0 => 'first-column',
+            ],
+            app_sql_normalize_row_keys([
+                'EVENT_KEY' => 'evt_1',
+                0 => 'first-column',
+            ]),
         );
     }
 
