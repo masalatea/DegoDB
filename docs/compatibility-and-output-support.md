@@ -9,7 +9,7 @@ This page separates current refactored support, verified generated-output covera
 
 ## Summary / 要約
 
-Current DegoDB is strongest as a PHP-focused, database-first toolkit with MySQL / MariaDB, SQLite, and PostgreSQL coverage across different layers. / 現行 DegoDB は、PHP 主対象のデータベース起点ツールキットとして、MySQL / MariaDB、SQLite、PostgreSQL を複数 layer で扱うところが主な強みです。
+Current DegoDB is strongest as a PHP-focused, database-first toolkit with MySQL / MariaDB, SQLite, and PostgreSQL coverage across different layers. Firebird is being evaluated as a local durable DB profile between SQLite and MySQL / MariaDB, not claimed as current production support. / 現行 DegoDB は、PHP 主対象のデータベース起点ツールキットとして、MySQL / MariaDB、SQLite、PostgreSQL を複数 layer で扱うところが主な強みです。Firebird は SQLite と MySQL・MariaDB の間に置く local durable DB profile として評価中であり、現行 production support とは書きません。
 
 Do not claim that every database, every output language, or every legacy feature is currently supported. / すべての DB、すべての出力言語、すべての旧機能が現行対応済みであるとは書きません。
 
@@ -29,7 +29,8 @@ Do not claim that every database, every output language, or every legacy feature
 | --- | --- |
 | MySQL / MariaDB | Main default for Mtool config store and generated-output workflows. / Mtool config store と生成出力 workflow の主 default。 |
 | SQLite | Supported for lightweight Mtool config store profile and representative generated user DB contract coverage. / 軽量 Mtool config store profile と代表的な生成 user DB contract coverage で対応。 |
-| PostgreSQL | Supported for opt-in input and output: live schema import for input, generated DBAccess contract comparison for output, with a local compose-backed completion gate. Not Mtool config store support. / opt-in の Input・Output として対応。Input は live schema import、Output は generated DBAccess contract comparison で確認し、local compose-backed completion gate を持つ。Mtool config store 対応ではない。 |
+| PostgreSQL | Complete for the required scope: opt-in input and output, live schema import for input, generated DBAccess contract comparison for output, with a local compose-backed completion gate. Mtool config store PostgreSQL is intentionally not required. / 必要範囲では完了。opt-in の Input・Output として対応し、Input は live schema import、Output は generated DBAccess contract comparison で確認し、local compose-backed completion gate を持つ。Mtool config store の PostgreSQL 化は意図的に不要。 |
+| Firebird | Active feasibility candidate as a local durable RDB profile between SQLite and MySQL/MariaDB. Not current production support yet. / SQLite と MySQL・MariaDB の間に置く local durable RDB profile として active feasibility 候補。まだ現行production supportではない。 |
 | SQL Server | Legacy metadata hooks existed, but current support is not claimed. / 旧実装には metadata 導線があったが、現行対応とは書かない。 |
 | Oracle | Future enterprise compatibility candidate only. / 将来の enterprise compatibility 候補に留める。 |
 
@@ -39,10 +40,11 @@ Database support must name the layer. / DB 対応は、必ず layer を指定し
 
 | Layer | Current reading / 現在の読み方 |
 | --- | --- |
-| Mtool config store | MySQL / MariaDB default, SQLite lightweight profile. PostgreSQL is not current config-store support. |
+| Mtool config store | MySQL / MariaDB default, SQLite lightweight profile. PostgreSQL config-store support is intentionally not required. |
 | Imported user database | MySQL / MariaDB mainline. SQLite and PostgreSQL have representative coverage by sample / contract lane. |
 | Generated DBAccess runtime | PHP-focused generated runtime with MySQL / MariaDB, SQLite, and PostgreSQL representative contract coverage. |
 | Generated proxy / OpenAPI | PHP-focused runtime and OpenAPI artifacts. PostgreSQL-specific risk is mostly naming and DBAccess behavior, not a separate proxy language support claim. |
+| Firebird local durable profile | Active feasibility lane. Evaluate SQLite -> Firebird and Firebird -> MySQL/MariaDB one-way promotion before claiming support. |
 | Examples / docs | Input drafts are allowed. Generated-looking output examples must be actual Mtool output. |
 
 ## Output Support / 出力サポート
@@ -64,17 +66,17 @@ Database support must name the layer. / DB 対応は、必ず layer を指定し
 Use this wording when a short support statement is needed. / 短い対応範囲説明が必要な時は、この文を使います。
 
 ```text
-DegoDB currently focuses on PHP-oriented generated artifacts, deterministic AI-context handoff, and read-only modernization audit output around database-backed metadata. MySQL / MariaDB are the default mainline, SQLite is supported for lightweight local configuration and representative user DB contracts, and PostgreSQL is covered as an opt-in user DB / generated-output contract lane. Older implementation references show broader language and database directions, but non-PHP outputs, SQL Server, and Oracle are future compatibility tracks unless explicitly marked as current in this repository.
+DegoDB currently focuses on PHP-oriented generated artifacts, deterministic AI-context handoff, and read-only modernization audit output around database-backed metadata. MySQL / MariaDB are the default mainline, SQLite is supported for lightweight local configuration and representative user DB contracts, and PostgreSQL is complete for the required opt-in user DB / generated-output contract lane. Mtool config store PostgreSQL is intentionally not required. Firebird is an active feasibility candidate for a local durable DB profile, not current production support. Older implementation references show broader language and database directions, but non-PHP outputs, SQL Server, Oracle, and automatic modernization code / schema changes are future compatibility tracks unless explicitly marked as current in this repository.
 ```
 
 ```text
-DegoDB は現在、データベース由来メタデータを中心にした PHP 主対象の生成成果物、決定的に生成される AI context handoff、読み取り専用の現代化診断 output に注力しています。MySQL / MariaDB は主 default、SQLite は軽量 local 設定と代表的 user DB contract、PostgreSQL は user DB / generated-output 側の opt-in contract lane として扱います。旧実装参照にはより広い言語・DB 方向性が残っていますが、PHP 以外の出力、SQL Server、Oracle は、この repo で明示されるまでは将来対応候補です。
+DegoDB は現在、データベース由来メタデータを中心にした PHP 主対象の生成成果物、決定的に生成される AI context handoff、読み取り専用の現代化診断 output に注力しています。MySQL / MariaDB は主 default、SQLite は軽量 local 設定と代表的 user DB contract、PostgreSQL は必要範囲の opt-in user DB / generated-output contract lane として完了済みです。Mtool config store の PostgreSQL 化は意図的に不要です。Firebird は local durable DB profile の active feasibility 候補であり、現行 production support ではありません。旧実装参照にはより広い言語・DB 方向性が残っていますが、PHP 以外の出力、SQL Server、Oracle、現代化診断結果に基づく code・schema 自動変更は、この repo で明示されるまでは将来対応候補です。
 ```
 
 ## What Not To Say / 言わないこと
 
 - Do not say DegoDB supports all SQL databases. / すべての SQL DB に対応しているとは言わない。
-- Do not say Mtool config store supports PostgreSQL. / Mtool config store が PostgreSQL 対応済みとは言わない。
+- Do not treat Mtool config store PostgreSQL support as remaining work. It is intentionally not required. / Mtool config store PostgreSQL 対応を残件として扱わない。意図的に不要。
 - Do not say current DegoDB generates C# / Java / Objective-C / Swift output. / 現行 DegoDB が C# / Java / Objective-C / Swift を生成できるとは言わない。
 - Do not say AI authors `AI-CONTEXT-MD`; it is generated by DegoDB / Mtool code from canonical metadata. / AI が `AI-CONTEXT-MD` を書くとは言わない。canonical metadata から DegoDB / Mtool code が生成する。
 - Do not present parked invoice / tax / compliance examples as domain expertise. / 保留中の請求・税務・コンプライアンス example を専門知識として見せない。
@@ -84,6 +86,8 @@ DegoDB は現在、データベース由来メタデータを中心にした PHP
 - PostgreSQL user DB output representative set: [2026-0620 PostgreSQL user DB output first slice](reports/2026/2026-0620-postgresql-user-db-output-first-slice.md)
 - Generated name migration and physical / logical naming policy: [2026-0620 generated name migration plan](reports/2026/2026-0620-generated-name-migration-plan.md)
 - AI context current evidence: all tutorial sample `AI-CONTEXT-MD` definitions, `sample/tutorials/sample17-multi-output-project/reference/AI-CONTEXT-MD/`, and `ZzzAiContextStandardOutputTest` Mtool self-output coverage.
-- Audit plan: [2026-0621 database-first sales assets plan](reports/2026/2026-0621-database-first-sales-assets-plan.md)
+- Modernization audit current evidence: `sample/tutorials/sample17-multi-output-project/reference/MODERNIZATION-AUDIT-MD/` and `Sample17MultiOutputProjectTest`.
+- Firebird local durable profile plan: [2026-0713 Firebird local durable profile plan](reports/2026/2026-0713-firebird-local-durable-profile-plan.md)
+- Mobile app handoff roadmap: [2026-0713 mobile app handoff wrapper roadmap](reports/2026/2026-0713-mobile-app-handoff-wrapper-roadmap.md)
 - Legacy template reference: `mtool/reference/legacy-mtool-templates/`
 - Legacy build reference: `mtool/reference/legacy-mtool-build/`

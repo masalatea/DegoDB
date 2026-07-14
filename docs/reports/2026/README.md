@@ -11,6 +11,12 @@
 
 ## Index
 
+- `2026-0713-mobile-app-handoff-wrapper-roadmap.md`
+  - MtoolがiOS/Androidを直接全部生成するのではなく、endpoint/OpenAPI/auth/screen/action/validation/native capability metadataをCapacitor・Flutter・React Native・native toolへのinput packetとして出すroadmap候補。Firebird checkpoint後の次候補とし、最初のdeliverableはapp作成者が迷わない`mobile-app-handoff.json`/`.md`。その検証後、既存Web/React no-code runtimeをCapacitor系wrapperでiOS/Androidへ渡す。Flutter・React Nativeは後続input packet target。Status: `NEXT_AFTER_FIREBIRD_CANDIDATE`。
+- `2026-0713-firebird-local-durable-profile-plan.md`
+  - Firebird を SQLite と MySQL/MariaDB の間に置く local durable RDB profile として検討する active plan。SQLite->Firebird、Firebird->MySQL/MariaDB の一方向 promotion を狙い、まず embedded/local-file reality、PHP driver、config-store fit、backup/restore、promotion delta を棚卸しする。Status: `ACTIVE_PLAN`。
+- `2026-0713-current-plan-done-history.md`
+  - #836-#884 と N1-N6 の DONE 履歴 archive。Mtool AI workspace onboarding、SSO app-user integration、SQLite-to-MySQL/MariaDB promotion、optional local fallback generalization、No Code capability sequenceを current index から履歴へ移動。Status: `ARCHIVED_DONE`。
 - `2026-0712-shared-relation-metadata-sample22-first-slice.md`
   - #791 共通relation metadata・Sample22初回slice。optional belongs-to/target key-label/parent-lookup/required metadata、fail-closed validation、lookup option、runtime/DOM markerを追加し、Sample22 read-only 2 contractへ適用。action・mutation・既存editor置換ゼロ。Full suite 466 tests / 14,161 assertions。Status: `FIRST_SLICE_DONE`。
 - `2026-0712-sample22-related-entity-no-code-preflight.md`
