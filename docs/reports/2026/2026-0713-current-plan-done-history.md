@@ -1,0 +1,30 @@
+# Current Plan DONE History Archive / current-plans DONE 履歴 archive
+
+Date: 2026-07-13
+Source: `docs/current-plans.md` Main Plan rows #836-#884 and Immediate Next Sequence N1-N6 before DONE cleanup.
+
+This report preserves completed plan history that was moved out of the active `Quick Plan List` so `docs/current-plans.md` can return to being a short current-plan index. The work is not deleted; it is recorded here as completed history.
+
+この report は、`docs/current-plans.md` を短い current-plan index に戻すため、active `Quick Plan List` から移動した完了済み計画履歴を保存します。作業は削除ではなく、完了履歴としてここに記録します。
+
+## Archived Completion Groups / archive した完了群
+
+| Source rows | Completion group / 完了群 | Result / 結果 | Integration state / 統合状態 |
+| --- | --- | --- | --- |
+| #836-#848 | Mtool AI workspace onboarding / Mtool AI workspace onboarding | Supported-contract coverage confirmed, workspace profiles/roles defined, side-effect-free resolver and prompt artifacts added, explicit init preflight/apply and CLI wrapper documented. / supported-contract coverage確認、workspace profile・role定義、副作用なしresolver・prompt artifact、明示init preflight/apply、CLI wrapper guideを整備。 | PR merged to `develop`; `develop` merged to `master`; feature branch cleaned. / PRを`develop`へmerge、`develop`を`master`へmerge、feature branch整理済み。 |
+| #849-#858 | App-local sync identity and first SSO app-user proof / App-local sync identity と最初のSSO app-user proof | SSO-shaped principal normalization, safe identity restore, credential exclusion, actor propagation, OIDC handoff, transactional JIT creation, profile refresh, and app-owned data keyed by `app_user_id` were proven. / SSO形principal正規化、安全なidentity復元、credential除外、actor伝搬、OIDC handoff、transactional JIT作成、profile refresh、`app_user_id` keyed app dataを実証。 | PR #68 merged to `develop`; local `develop` synchronized; feature branch cleaned. / PR #68を`develop`へmerge、local `develop`同期、feature branch整理済み。 |
+| #859-#866 | SSO app-user generated integration / SSO app-user生成integration | Project policy, metadata bundle integration, canonical schema roles, unique/FK constraint evidence, exact generated DBAccess resolver binding, Source Output fixture, client/App-local handoff, and SQLite E2E qualification were completed. / project policy、metadata bundle統合、canonical schema role、unique/FK constraint evidence、生成DBAccess resolver binding、Source Output fixture、client/App-local handoff、SQLite E2E認定を完了。 | Five semantic commits merged by PR #69; `develop` synchronized; feature branch cleaned. / 5意味commitをPR #69でmerge、`develop`同期、feature branch整理済み。 |
+| #867-#876 | SQLite-first to MySQL/MariaDB promotion / SQLite-first から MySQL・MariaDB promotion | v1 offline promotion contract, deterministic manifest, fresh target schema gate, SQLite export/value conversion, transactional MySQL import, verification gate, cutover/rollback contract, sample33 tutorial, and SSO app-user promotion qualification were completed. / v1 offline promotion contract、deterministic manifest、fresh target schema gate、SQLite export/value conversion、transactional MySQL import、verification gate、cutover/rollback contract、sample33 tutorial、SSO app-user promotion認定を完了。 | Integrated through PR #70; `develop` and `master` were merged by the user. / PR #70で統合、利用者により`develop`と`master`へmerge済み。 |
+| #877-#884 | Optional local fallback generalization / optional local fallback 汎用化 | Generic deterministic scan, task-bound local fallback CLI, configurable local Ollama adapter, shared validation/advisory authority metadata, AI workspace handoff guide, and fake-transport qualification were completed; real Ollama E2E remains opt-in/manual. / 汎用deterministic scan、task-bound local fallback CLI、設定可能local Ollama adapter、共通validation/advisory authority metadata、AI workspace handoff guide、fake transport認定を完了。real Ollama E2Eはopt-in/manual。 | Integrated through PR #70 with the promotion stack. / promotion stackと同じくPR #70で統合済み。 |
+| N1-N6 | Immediate sequence after prior integration / 直近進行順 | Integration preparation, product-order restoration, required No Code capability coverage, representative sample slices, contained hybrid Mtool no-code replan, and AI material-to-UI feasibility evidence are complete. / integration準備、product順序復元、必須No Code capability網羅、代表sample slice、Mtool部分hybrid No Code再計画、AI資料to UI feasibility evidenceを完了。 | Archived as completed sequencing; no active immediate sequence remains. / 完了済み順序としてarchiveし、activeな直近順序は残さない。 |
+
+## Preserved Principles / 保存した判断原則
+
+- Do not strive for a 100% generated application. Cover 100% of the contracts Mtool declares supported, target the repeatable 80-90% class of application work, and hand the rest to explicit custom boundaries. / applicationの100%生成を目指さず、Mtoolがsupportすると宣言したcontractは100%満たし、反復可能なapplication作業の80〜90%相当を自動化し、残りを明示custom境界へ渡す。
+- No Code completion is capability-driven rather than sample-count-driven. Neither every sample nor every Mtool screen must be fully replaced. / No Code完了はsample数ではなくcapability基準で判断する。全sample・全Mtool screenの完全置換は要求しない。
+- SQLite-to-MySQL/MariaDB promotion is one-way and offline for v1: preserve canonical metadata, generate a fresh target schema, copy and validate during an explicit write freeze, switch only after acceptance, and retain SQLite as rollback evidence. / SQLiteからMySQL・MariaDBへのpromotion v1は一方向・offline。canonical metadataを維持し、fresh target schemaを生成し、明示write freeze中にcopy・検証し、accept後のみ切替え、SQLiteをrollback根拠として保持する。
+- Codex/Claude remain the primary no-code/AI assistant path. The local Ollama path is an optional fallback/advisory input and does not replace formal agent-owned output without review and validation. / Codex・Claudeを主経路とし、local Ollamaはoptional fallback/advisory inputであり、review・validationなしにformal agent-owned outputを置き換えない。
+
+## Current Follow-up / 現在の後続
+
+After this archive, `docs/current-plans.md` intentionally has no selected active main implementation lane. The next step is to choose a fresh concrete adoption need before adding new active rows. / このarchive後、`docs/current-plans.md` には意図的に選定済みactive主実装laneを置きません。次は、新しいactive rowを追加する前に、具体的な採用需要を選びます。
