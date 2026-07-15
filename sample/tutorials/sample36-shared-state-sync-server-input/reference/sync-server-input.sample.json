@@ -1,0 +1,162 @@
+{
+  "schema_version": "shared_state_sync_server_input.v1",
+  "generated_by": {
+    "tool": "mtool",
+    "artifact": "shared_state_sync_server_input",
+    "mode": "sample_static_fixture"
+  },
+  "contracts": {
+    "shared_state_sync_contract": "docs/shared-state-sync-contract.md",
+    "schema_api_contract": "docs/shared-state-sync-schema-api-contract.md",
+    "realtime_contract": "docs/shared-state-sync-realtime-contract.md",
+    "node_server_input_contract": "docs/shared-state-sync-node-server-input-packet.md"
+  },
+  "server": {
+    "runtime": "nodejs",
+    "ownership": "external_runtime_owner",
+    "transport_profiles": [
+      "websocket",
+      "sse_http",
+      "polling"
+    ],
+    "production_runtime_generated": false
+  },
+  "backend_integration": {
+    "authority": "app_backend",
+    "base_url_env": "APP_BACKEND_BASE_URL",
+    "auth_context": {
+      "app_user_id_source": "verified_backend_session",
+      "sso_token_broadcast_allowed": false
+    },
+    "required_backend_operations": [
+      "verify_session",
+      "check_room_membership",
+      "read_state",
+      "update_state",
+      "read_latest_revision",
+      "record_event"
+    ],
+    "conflict_policy": "reject_stale_revision"
+  },
+  "routes": {
+    "websocket": {
+      "path": "/sync/ws",
+      "enabled": true,
+      "commands": [
+        "room.subscribe",
+        "room.unsubscribe",
+        "state.update",
+        "ping"
+      ],
+      "events": [
+        "state.updated",
+        "membership.changed",
+        "room.closed",
+        "heartbeat",
+        "reconnect.required"
+      ]
+    },
+    "sse": {
+      "path": "/sync/rooms/{room_id}/events",
+      "enabled": true,
+      "server_to_client_only": true
+    },
+    "http_update": {
+      "path": "/sync/rooms/{room_id}/states/{state_key}",
+      "method": "PUT",
+      "authority": "app_backend_or_shared_authority"
+    },
+    "polling": {
+      "state_path": "/sync/rooms/{room_id}/states/{state_key}",
+      "revision_path": "/sync/rooms/{room_id}/states/{state_key}/revision"
+    }
+  },
+  "auth": {
+    "required": true,
+    "session_verification": "delegate_to_app_backend",
+    "connection_identity": "app_user_id",
+    "room_authorization": "active_membership_required",
+    "forbidden_in_events": [
+      "sso_token",
+      "refresh_token",
+      "raw_invite_token",
+      "secret"
+    ]
+  },
+  "rooms": {
+    "subscription_command": "room.subscribe",
+    "unsubscribe_command": "room.unsubscribe",
+    "membership_required": true,
+    "subscribe_result_includes_latest_revision_summary": true,
+    "cross_room_broadcast_allowed": false
+  },
+  "state": {
+    "update_command": "state.update",
+    "http_update_method": "PUT",
+    "state_body_type": "json",
+    "expected_revision_required": true,
+    "accepted_update_event": "state.updated",
+    "large_binary_payload_allowed": false
+  },
+  "events": {
+    "envelope": "shared_state_sync_realtime_event.v1",
+    "fanout_scope": "room",
+    "delivery_guarantee": "best_effort_realtime_plus_latest_fetch",
+    "replay_required": false,
+    "dedupe_fields": [
+      "message_id",
+      "room_id",
+      "state_key",
+      "revision"
+    ],
+    "heartbeat": {
+      "enabled": true,
+      "event_type": "heartbeat",
+      "timeout_action": "reconnect_and_latest_fetch"
+    },
+    "reconnect": {
+      "event_type": "reconnect.required",
+      "client_action": "reconnect_resubscribe_latest_fetch"
+    }
+  },
+  "fallbacks": {
+    "sse_http": {
+      "enabled": true,
+      "event_stream": "/sync/rooms/{room_id}/events",
+      "update_path": "/sync/rooms/{room_id}/states/{state_key}",
+      "update_transport": "http_put"
+    },
+    "polling": {
+      "enabled": true,
+      "revision_path": "/sync/rooms/{room_id}/states/{state_key}/revision",
+      "state_path": "/sync/rooms/{room_id}/states/{state_key}",
+      "realtime_claim_allowed": false
+    }
+  },
+  "validation": {
+    "required_checks": [
+      "authenticated_member_can_subscribe",
+      "non_member_cannot_subscribe",
+      "viewer_cannot_update",
+      "editor_can_update",
+      "accepted_update_emits_state_updated",
+      "other_room_does_not_receive_event",
+      "stale_revision_returns_conflict_when_enabled",
+      "heartbeat_timeout_triggers_reconnect",
+      "reconnect_fetches_latest_state",
+      "events_do_not_contain_tokens_or_secrets"
+    ],
+    "implementation_required_before_production": true
+  },
+  "forbidden_actions": [
+    "install_node_dependencies",
+    "initialize_node_project",
+    "start_production_server",
+    "open_public_port",
+    "store_raw_sso_token",
+    "broadcast_sso_token",
+    "enable_cross_room_broadcast",
+    "claim_guaranteed_event_replay",
+    "claim_crdt_or_game_loop_support"
+  ]
+}
