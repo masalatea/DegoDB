@@ -164,6 +164,8 @@ Flutter's next target is not Flutter native UI generation.
 The intended user-facing model is output selection: the same Mtool design can be emitted as React/Web, PWA-ready metadata, Capacitor handoff, or a Flutter WebView wrapper handoff.
 For Flutter WebView wrapper output, Mtool should describe how the React/PWA-ready app is consumed by a Flutter native shell, including URL vs bundled asset mode, WebView policy, auth/deep-link handoff, storage/token boundary, optional native bridge, and forbidden project/build/signing actions.
 
+The first Flutter WebView wrapper implementation exposes this as `flutter_webview_wrapper_extension` inside `flutter-input-packet.json`.
+
 ## App surface config / app surface config
 
 `app_surface_config` is the configuration model for targets that expose the same backend/API through more than one app surface.

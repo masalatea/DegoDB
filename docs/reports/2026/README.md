@@ -41,6 +41,8 @@
   - EF-M12 app surface config 計画。backend endpoint は原則共有し、PWA / Flutter WebView / React Web Capacitor などの app surface を複数選択可能にする。redirect URI、storage、offline/cache、navigation、native bridge は surface 別に明示し、別endpointは明示理由がある場合だけ。Status: `EF_M12_APP_SURFACE_CONFIG_PLANNED`。
 - `2026-0715-app-surface-config-first-slice.md`
   - EF-M12 first slice。`output-mode-config.json` に `app_surface_config` を追加し、shared backend endpoint と PWA / Flutter WebView / React Web Capacitor の surface-specific URL・redirect・storage・offline/cache・native bridge・distribution boundary を記録。Focused MobileWrapperTargetTest は 39 tests / 320 assertions で通過。Status: `EF_M12_FIRST_SLICE_DONE`。
+- `2026-0715-flutter-webview-wrapper-extension-first-slice.md`
+  - EF-M13 first slice。`flutter-input-packet.json` に `flutter_webview_wrapper_extension` を追加し、React/PWA source mode、shared backend、WebView policy、auth/deep-link、storage/session、native bridge、offline/cache、外部owner責務、禁止actionを metadata-only で記録。Focused MobileWrapperTargetTest は 39 tests / 331 assertions で通過。Status: `EF_M13_DONE`。
 - `2026-0715-external-framework-optional-output-boundary-check-plan.md`
   - 既に作った Mtool 独自 no-code output を置換する計画ではなく、外部 FE/no-code/app framework を optional output target として扱う boundary check 計画。`mtool_no_code` は supported baseline として維持し、Mtool metadata / validation / server authority / custom extension 境界を保ったまま `external_no_code` / `hybrid` をどう出すか確認する。Status: `REPOSITIONED_AS_OPTIONAL_OUTPUT`。
 - `2026-0715-mtool-no-code-external-framework-full-coverage-check.md`

@@ -2013,11 +2013,96 @@ function app_mobile_wrapper_target_later_platform_packet_from_react_proof(string
         'non_goals' => is_array($reactProof['non_goals'] ?? null) ? $reactProof['non_goals'] : [],
     ];
 
+    if ($platform === 'flutter') {
+        $packet['flutter_webview_wrapper_extension'] = app_mobile_wrapper_target_flutter_webview_wrapper_extension_metadata($reactProof);
+    }
     if ($platform === 'react_native') {
         $packet['react_native_extension'] = app_mobile_wrapper_target_react_native_extension_metadata($reactProof);
     }
 
     return $packet;
+}
+
+/** @param array<string,mixed> $reactProof @return array<string,mixed> */
+function app_mobile_wrapper_target_flutter_webview_wrapper_extension_metadata(array $reactProof): array
+{
+    return [
+        'extension_version' => 'flutter-webview-wrapper-extension-v1',
+        'scope' => 'metadata_only',
+        'wrapper_model' => [
+            'native_shell' => 'Flutter',
+            'embedded_surface' => 'React/PWA-ready web app in WebView',
+            'flutter_native_ui_generation' => false,
+            'webview_package_selection' => 'external_owner_choice',
+        ],
+        'react_pwa_source' => [
+            'source_artifacts' => is_array($reactProof['source_artifacts'] ?? null) ? $reactProof['source_artifacts'] : [],
+            'source_mode_options' => ['same_app_url', 'bundled_static_assets'],
+            'default_source_mode' => 'same_app_url',
+            'pwa_metadata_is_browser_delivery_input' => true,
+            'webview_runtime_must_not_assume_browser_pwa_equivalence' => true,
+        ],
+        'backend_endpoint' => [
+            'sharing_policy' => 'shared_by_default',
+            'api_base_url_policy' => (string) ($reactProof['api_mapping']['base_url_policy'] ?? ''),
+            'server_authority_preserved' => true,
+            'separate_endpoint_requires_explicit_reason' => true,
+        ],
+        'webview_policy' => [
+            'navigation_allowlist_required' => true,
+            'external_link_policy_required' => true,
+            'javascript_policy_required' => true,
+            'file_access_policy_required_for_bundled_assets' => true,
+            'cleartext_traffic_policy_required' => true,
+        ],
+        'auth_and_deep_link' => [
+            'auth_mapping' => is_array($reactProof['auth_mapping'] ?? null) ? $reactProof['auth_mapping'] : [],
+            'redirect_uri_policy' => 'native_deep_link_or_web_callback_must_be_declared',
+            'oidc_callback_surface_must_be_explicit' => true,
+            'reauth_failure_state_required' => true,
+        ],
+        'storage_and_session' => [
+            'token_storage_policy' => 'webview_cookie_or_native_secure_storage_bridge_must_be_declared',
+            'browser_like_persistent_token_storage_allowed' => false,
+            'business_data_persistence_requires_sync_contract' => true,
+            'webview_cache_clear_policy_required' => true,
+        ],
+        'native_bridge' => [
+            'default' => 'disabled_by_default',
+            'allowed_only_with_explicit_api_contract' => true,
+            'bridge_calls_must_preserve_server_authority' => true,
+            'native_permissions_require_mapping' => true,
+        ],
+        'offline_and_cache' => [
+            'offline_sync_default' => false,
+            'webview_cache_not_equal_to_service_worker_cache' => true,
+            'mutations_online_only_without_sync_contract' => true,
+            'fallback_ui_required' => true,
+        ],
+        'external_owner_owns' => [
+            'Flutter project initialization',
+            'webview package selection',
+            'dependency installation',
+            'iOS and Android project files',
+            'native permission configuration',
+            'app signing',
+            'native build',
+            'device QA',
+            'store submission',
+        ],
+        'forbidden_without_explicit_confirmation' => [
+            'flutter_project_init',
+            'flutter_dependency_install',
+            'webview_package_install',
+            'ios_android_project_write',
+            'native_permission_addition',
+            'native_bridge_enablement',
+            'signing',
+            'native_build',
+            'store_submission',
+            'offline_sync',
+        ],
+    ];
 }
 
 /** @param array<string,mixed> $reactProof @return array<string,mixed> */

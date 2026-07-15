@@ -624,6 +624,17 @@ final class MobileWrapperTargetTest extends TestCase
         self::assertSame('react_native_input_packet', $reactNative['platform_key'] ?? '');
         self::assertSame('structured_input_packet_only', $flutter['mtool_role'] ?? '');
         self::assertContains('Dart source code', $flutter['not_generated_by_mtool'] ?? []);
+        self::assertSame('flutter-webview-wrapper-extension-v1', $flutter['flutter_webview_wrapper_extension']['extension_version'] ?? '');
+        self::assertSame('metadata_only', $flutter['flutter_webview_wrapper_extension']['scope'] ?? '');
+        self::assertSame('Flutter', $flutter['flutter_webview_wrapper_extension']['wrapper_model']['native_shell'] ?? '');
+        self::assertSame('React/PWA-ready web app in WebView', $flutter['flutter_webview_wrapper_extension']['wrapper_model']['embedded_surface'] ?? '');
+        self::assertFalse($flutter['flutter_webview_wrapper_extension']['wrapper_model']['flutter_native_ui_generation'] ?? true);
+        self::assertSame('same_app_url', $flutter['flutter_webview_wrapper_extension']['react_pwa_source']['default_source_mode'] ?? '');
+        self::assertSame('shared_by_default', $flutter['flutter_webview_wrapper_extension']['backend_endpoint']['sharing_policy'] ?? '');
+        self::assertTrue($flutter['flutter_webview_wrapper_extension']['webview_policy']['navigation_allowlist_required'] ?? false);
+        self::assertSame('disabled_by_default', $flutter['flutter_webview_wrapper_extension']['native_bridge']['default'] ?? '');
+        self::assertContains('flutter_project_init', $flutter['flutter_webview_wrapper_extension']['forbidden_without_explicit_confirmation'] ?? []);
+        self::assertContains('native_bridge_enablement', $flutter['flutter_webview_wrapper_extension']['forbidden_without_explicit_confirmation'] ?? []);
         self::assertContains('React Native source code', $reactNative['not_generated_by_mtool'] ?? []);
         self::assertSame('react-native-extension-v1', $reactNative['react_native_extension']['extension_version'] ?? '');
         self::assertSame('metadata_only', $reactNative['react_native_extension']['scope'] ?? '');
