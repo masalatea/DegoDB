@@ -4,7 +4,7 @@ English companion:
 This document defines the v1 DB schema and REST API contract for room-based shared state synchronization.
 It builds on [Shared State Sync Contract](shared-state-sync-contract.md).
 
-この文書は room-based shared state synchronization の v1 DB schema と REST API contract を定義する。  
+この文書は room-based shared state synchronization の v1 DB schema と REST API contract を定義する。
 [Shared State Sync Contract](shared-state-sync-contract.md) を前提にする。
 
 ## Scope / scope

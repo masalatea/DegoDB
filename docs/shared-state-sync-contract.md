@@ -4,7 +4,7 @@ English companion:
 This document defines the first supported contract boundary for room-based shared state synchronization.
 It is a contract and ownership document, not a production realtime server implementation.
 
-この文書は room 単位の shared state synchronization の最初の supported contract boundary を定義する。  
+この文書は room 単位の shared state synchronization の最初の supported contract boundary を定義する。
 production realtime server 実装ではなく、contract と ownership の正本である。
 
 ## Position / 位置づけ

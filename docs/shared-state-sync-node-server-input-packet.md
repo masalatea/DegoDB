@@ -4,7 +4,7 @@ English companion:
 This document defines the v1 Mtool-emitted input packet for a separate Node.js shared-state sync server.
 It builds on [Shared State Sync Contract](shared-state-sync-contract.md), [Shared State Sync Schema/API Contract](shared-state-sync-schema-api-contract.md), and [Shared State Sync Realtime Contract](shared-state-sync-realtime-contract.md).
 
-この文書は、別 runtime として動く Node.js shared-state sync server に Mtool が渡す v1 input packet を定義する。  
+この文書は、別 runtime として動く Node.js shared-state sync server に Mtool が渡す v1 input packet を定義する。
 [Shared State Sync Contract](shared-state-sync-contract.md)、[Shared State Sync Schema/API Contract](shared-state-sync-schema-api-contract.md)、[Shared State Sync Realtime Contract](shared-state-sync-realtime-contract.md) を前提にする。
 
 ## Scope / scope

@@ -4,7 +4,7 @@ English companion:
 This document defines the v1 app-client-facing input packet for room-based shared state synchronization.
 It builds on the shared-state sync contract, schema/API contract, realtime contract, and Node.js server input packet.
 
-この文書は room-based shared state synchronization の app client 向け v1 input packet を定義する。  
+この文書は room-based shared state synchronization の app client 向け v1 input packet を定義する。
 shared-state sync contract、schema/API contract、realtime contract、Node.js server input packet を前提にする。
 
 ## Scope / scope

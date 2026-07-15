@@ -4,7 +4,7 @@ English companion:
 This document defines the v1 realtime event and command contract for room-based shared state synchronization.
 It builds on [Shared State Sync Contract](shared-state-sync-contract.md) and [Shared State Sync Schema/API Contract](shared-state-sync-schema-api-contract.md).
 
-この文書は room-based shared state synchronization の v1 realtime event / command contract を定義する。  
+この文書は room-based shared state synchronization の v1 realtime event / command contract を定義する。
 [Shared State Sync Contract](shared-state-sync-contract.md) と [Shared State Sync Schema/API Contract](shared-state-sync-schema-api-contract.md) を前提にする。
 
 ## Scope / scope
