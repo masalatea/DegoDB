@@ -77,6 +77,8 @@
   - RSS-11 static fixture。`sample37-shared-state-sync-client-input` を追加し、`sync-client-input.sample.json` を依存追加・SDK/source生成なしで静的検証。room/state/realtime/fallback/reconnect と forbidden action 境界を確認。Status: `RSS_11_DONE`。
 - `2026-0715-shared-state-sync-client-input-artifact-emission.md`
   - RSS-12 Mtool artifact emission。`mtool/scripts/create_shared_state_sync_client_input.php` を追加し、`sync-client-input.json` / `SYNC-CLIENT-INPUT.md` を生成可能にした。SDK/source生成、依存install、token storage選択、SSO setup、realtime runtime起動は行わない。Status: `RSS_12_DONE`。
+- `2026-0715-shared-state-sync-client-input-docs-dry-run.md`
+  - RSS-13 docs/dry-run hardening。`docs/shared-state-sync-app-client-input-packet.md` にCLI導線とfocused validationを追記し、`/tmp/mtool-sync-client-input-rss13-doc-check` へのdry-runで2ファイルのみ生成されることを記録。Status: `RSS_13_DONE`。
 - `2026-0715-external-framework-optional-output-boundary-check-plan.md`
   - 既に作った Mtool 独自 no-code output を置換する計画ではなく、外部 FE/no-code/app framework を optional output target として扱う boundary check 計画。`mtool_no_code` は supported baseline として維持し、Mtool metadata / validation / server authority / custom extension 境界を保ったまま `external_no_code` / `hybrid` をどう出すか確認する。Status: `REPOSITIONED_AS_OPTIONAL_OUTPUT`。
 - `2026-0715-mtool-no-code-external-framework-full-coverage-check.md`

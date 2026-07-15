@@ -61,6 +61,42 @@ Recommended bundle key:
 }
 ```
 
+## Mtool CLI emission / Mtool CLI emission
+
+Mtool can emit the packet as a controlled artifact:
+
+```bash
+php mtool/scripts/create_shared_state_sync_client_input.php \
+  --project-key=PROJECT \
+  --api-base-url-env=APP_BACKEND_BASE_URL \
+  --target-dir=work/source-outputs/PROJECT/SHARED-STATE-SYNC-CLIENT-INPUT
+```
+
+Generated files:
+
+- `sync-client-input.json`;
+- `SYNC-CLIENT-INPUT.md`.
+
+The command refuses an invalid target directory and refuses to overwrite existing files.
+
+The CLI does not:
+
+- generate a client SDK;
+- generate React/Flutter/React Native source;
+- install dependencies;
+- choose token storage;
+- implement SSO/OIDC provider setup;
+- start realtime runtime;
+- implement offline sync.
+
+Focused validation:
+
+```bash
+docker compose run --rm web-admin phpunit --configuration /var/www/tests/phpunit.xml /var/www/tests/Integration/SharedStateSyncClientInputTest.php
+node sample/tutorials/sample37-shared-state-sync-client-input/scripts/validate-sample.mjs
+git diff --check
+```
+
 ## Packet shape / packet shape
 
 Minimum packet:
