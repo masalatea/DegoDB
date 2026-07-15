@@ -36,6 +36,71 @@ Key durable reports:
 | `external_no_code` | Emit handoff/input artifacts for an external no-code/app framework/code-builder. | structured input packet, source artifact index, ownership boundary, validation map | app project, source code, dependencies, native project, signing, QA, store submission |
 | `hybrid` | Keep Mtool output and also emit external handoff artifacts for selected targets. | Mtool output plus external handoff boundary | external app/project for selected targets |
 
+## Output mode config artifact / output mode config artifact
+
+Mtool can emit a small mode-selection packet before users or AI consumers choose the next artifact path.
+
+```sh
+php mtool/scripts/create_mobile_wrapper_target.php \
+  --sample=sample28 \
+  --artifact=output-mode-config \
+  --output-mode=hybrid \
+  --target-dir=work/source-outputs/SAMPLE28/MOBILE-WRAPPER-TARGET/output-mode-config
+```
+
+The artifact emits only:
+
+```text
+output-mode-config.json
+OUTPUT-MODE-CONFIG.md
+```
+
+Supported `--output-mode` values:
+
+- `mtool_no_code`
+- `external_no_code`
+- `hybrid`
+
+The config packet records:
+
+- selected mode;
+- supported modes;
+- selected artifact keys;
+- target extension status;
+- warnings;
+- actions forbidden without explicit confirmation.
+
+It does not generate an app project, install dependencies, initialize native tooling, or overwrite existing app files.
+
+## PWA readiness artifact / PWA readiness artifact
+
+Mtool can emit a PWA readiness metadata/checklist packet:
+
+```sh
+php mtool/scripts/create_mobile_wrapper_target.php \
+  --sample=sample28 \
+  --artifact=pwa-readiness \
+  --target-dir=work/source-outputs/SAMPLE28/MOBILE-WRAPPER-TARGET/pwa-readiness
+```
+
+The artifact emits only:
+
+```text
+pwa-readiness.json
+PWA-READINESS.md
+```
+
+It records:
+
+- app manifest requirements;
+- service worker/cache policy expectations;
+- browser storage policy;
+- offline/sync policy;
+- API cacheability rules;
+- forbidden behavior without an explicit artifact.
+
+It does not generate `manifest.webmanifest`, `service-worker.js`, offline sync, push notifications, background sync, app source code, or native project files.
+
 ## Required artifacts by mode / mode別必須artifact
 
 ### `mtool_no_code`
@@ -105,6 +170,8 @@ Validation should fail or warn when:
 - native project generation is implied without explicit confirmation;
 - signing/store submission is implied;
 - AI/code-builder task packet lacks confirmation-required and forbidden-guess lists.
+- output mode is not one of `mtool_no_code`, `external_no_code`, or `hybrid`.
+- PWA readiness implies offline sync without an explicit sync contract.
 
 ## User-facing wording / UI文言
 

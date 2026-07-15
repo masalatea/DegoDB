@@ -108,6 +108,105 @@ app_mobile_wrapper_target_emit_c1_package(array $handoff, string $targetDir): ar
 
 It writes only the two C1 package files into an artifact directory and refuses to overwrite existing files. It still does not initialize or mutate React, Capacitor, iOS, or Android projects.
 
+## Optional external output / optional external output
+
+After the wrapper app handoff exists, Mtool can also emit an optional external no-code/tool packet:
+
+```text
+react-web-capacitor-output/
+  external-output.json
+  EXTERNAL-OUTPUT.md
+```
+
+The builder is:
+
+```php
+app_mobile_wrapper_target_build_external_optional_output_packet(array $handoff): array
+```
+
+The controlled emitter is:
+
+```php
+app_mobile_wrapper_target_emit_external_optional_output_packet(array $handoff, string $targetDir): array
+```
+
+CLI:
+
+```sh
+php mtool/scripts/create_mobile_wrapper_target.php \
+  --sample=sample28 \
+  --artifact=external-output \
+  --target-dir=work/source-outputs/SAMPLE28/MOBILE-WRAPPER-TARGET/react-web-capacitor-output
+```
+
+This output is additive. It does not replace `mtool_no_code`; it gives external React/Web + Capacitor-style consumers a machine-readable `external_no_code` packet with source refs, screen/action/readiness metadata, server authority boundary, ownership boundary, confirmation-required actions, forbidden-without-artifact rules, validation gates, and non-goals.
+
+## AI task packet artifact / AI task packet artifact
+
+The companion `ai-task-packet` artifact gives Codex / Claude style tools a bounded entry point:
+
+```sh
+php mtool/scripts/create_mobile_wrapper_target.php \
+  --sample=sample28 \
+  --artifact=ai-task-packet \
+  --target-dir=work/source-outputs/SAMPLE28/MOBILE-WRAPPER-TARGET/ai-task-packet
+```
+
+It emits only:
+
+```text
+task.json
+TASK.md
+input/external-output.json
+input/mobile-app-handoff.json
+```
+
+The packet state is `pending_user_confirmation`. It requires the AI to read the declared inputs, explain that `mtool_no_code` remains the supported baseline and `external_no_code` is optional/additive, then ask the declared confirmation question before writing anything.
+
+Before confirmation, allowed writes are empty. Dependency installation, network calls, Capacitor init / `cap sync`, native project generation, file overwrite, token-storage choices, offline sync, native plugin selection, native build, signing, store submission, Mtool metadata writes, and DB writes are forbidden without explicit user confirmation.
+
+## Output mode config artifact / output mode config artifact
+
+The `output-mode-config` artifact records the selected mobile output mode and the artifact keys that should be followed for that mode.
+
+```sh
+php mtool/scripts/create_mobile_wrapper_target.php \
+  --sample=sample28 \
+  --artifact=output-mode-config \
+  --output-mode=hybrid \
+  --target-dir=work/source-outputs/SAMPLE28/MOBILE-WRAPPER-TARGET/output-mode-config
+```
+
+Supported modes are:
+
+- `mtool_no_code`
+- `external_no_code`
+- `hybrid`
+
+This is a selection/config packet only. It emits `output-mode-config.json` and `OUTPUT-MODE-CONFIG.md`; it does not create app source, initialize Capacitor, install dependencies, or overwrite existing files.
+
+## PWA readiness artifact / PWA readiness artifact
+
+The `pwa-readiness` artifact records installability, cache, storage, and offline-readiness metadata for Mtool web/no-code and React/Web wrapper consumers.
+
+```sh
+php mtool/scripts/create_mobile_wrapper_target.php \
+  --sample=sample28 \
+  --artifact=pwa-readiness \
+  --target-dir=work/source-outputs/SAMPLE28/MOBILE-WRAPPER-TARGET/pwa-readiness
+```
+
+It emits only:
+
+```text
+pwa-readiness.json
+PWA-READINESS.md
+```
+
+This is metadata/checklist output. It does not generate `manifest.webmanifest`, a service worker, background sync, offline sync, push notifications, app source code, or native project files.
+
+See [External No-Code Output](external-no-code-output.md) for the stable field guide.
+
 ## Boundary details / boundary details
 
 ### Mtool owns

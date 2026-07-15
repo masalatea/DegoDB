@@ -1,0 +1,128 @@
+{
+  "schema_version": "mobile-external-optional-output-v1",
+  "mode": "external_no_code",
+  "target": "react_web_capacitor",
+  "target_label": "React/Web + Capacitor-style optional output",
+  "mutation_performed": false,
+  "baseline": {
+    "keeps_mtool_no_code": true,
+    "mtool_runtime_role": "supported_baseline_reference_and_fallback",
+    "replacement_claim": false
+  },
+  "project_identity": {
+    "project_key": "SAMPLE35",
+    "name": "Sample35 Capacitor Artifact Import",
+    "title": "Sample35 Capacitor-ready Mtool Artifact Import"
+  },
+  "source_artifacts": {
+    "no_code_runtime": {
+      "ref": "src/mtool-artifacts/bridge-contract.sample.json#/runtime_preview",
+      "sha256": "sample-fixture"
+    },
+    "react_bridge": {
+      "ref": "src/mtool-artifacts/bridge-contract.sample.json",
+      "sha256": "sample-fixture"
+    }
+  },
+  "screens": {
+    "screen_count": 3,
+    "screen_keys": [
+      "no_code_ticket_list",
+      "no_code_ticket_detail",
+      "no_code_ticket_form"
+    ],
+    "screen_types": [
+      "list",
+      "detail",
+      "form"
+    ]
+  },
+  "actions": {
+    "action_count": 1,
+    "actions": [
+      {
+        "action_key": "update_no_code_ticket",
+        "kind": "submit",
+        "endpoint_key": "no_code_ticket.update",
+        "mutates": true,
+        "availability": "enabled_after_validation_and_policy"
+      }
+    ],
+    "mutation_authority": "server route authorization, CSRF, idempotency, and Transaction Full gates stay server-side"
+  },
+  "readiness": {
+    "source": "Mtool generated no-code metadata and server policy",
+    "external_ui_may_render": true,
+    "server_remains_authoritative": true
+  },
+  "server_authority": {
+    "authorization": "Mtool/server-owned",
+    "csrf": "Mtool/server-owned",
+    "idempotency": "Mtool/server-owned for mutating actions",
+    "transaction_full": "Mtool/server-owned where same-DB composite operations require it",
+    "audit": "Mtool/server-owned",
+    "outbox_processing": "Mtool/server-owned",
+    "approval_current_alias_policy": "Mtool-owned"
+  },
+  "ownership_boundary": {
+    "contract_owned_core": [
+      "source artifact refs and hashes",
+      "screen/action/readiness metadata",
+      "validation map",
+      "server authority boundary",
+      "non-goals"
+    ],
+    "external_custom_extension_owned": [
+      "React app shell",
+      "routing implementation",
+      "component system",
+      "form binding implementation",
+      "API client and retry strategy",
+      "Capacitor project and native preparation",
+      "dependency installation",
+      "native build, signing, and store submission"
+    ]
+  },
+  "requires_user_confirmation": [
+    "create external app project",
+    "install dependencies",
+    "initialize Capacitor",
+    "create or overwrite files outside Mtool artifact roots",
+    "choose persistent token storage",
+    "add native plugins/modules",
+    "enable offline storage or sync",
+    "configure signing/store submission"
+  ],
+  "forbidden_without_artifact": [
+    "offline sync",
+    "local persistent business-data storage",
+    "refresh-token persistence",
+    "native plugin selection",
+    "app signing",
+    "store submission",
+    "production frontend architecture",
+    "external app overwrite",
+    "automatic dependency installation"
+  ],
+  "validation": {
+    "required_gates": [
+      "php -l mtool/app/mobile_wrapper_target.php",
+      "focused MobileWrapperTargetTest",
+      "git diff --check"
+    ],
+    "consumer_gates": [
+      "node sample/tutorials/sample35-capacitor-artifact-import/scripts/validate-sample.mjs"
+    ]
+  },
+  "non_goals": [
+    "direct_native_generation",
+    "app_store_signing",
+    "offline_sync_by_default",
+    "production_user_data_in_packet",
+    "replace_mtool_no_code_runtime",
+    "initialize_capacitor_project",
+    "install_dependencies",
+    "generate_production_react_app",
+    "native_build_or_signing"
+  ]
+}
