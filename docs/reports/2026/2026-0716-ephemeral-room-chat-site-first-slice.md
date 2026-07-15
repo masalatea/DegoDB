@@ -33,6 +33,7 @@ This keeps the sample simple and makes a later SQLite-backed slice explicit inst
 
 ```bash
 node sample/tutorials/sample40-ephemeral-room-chat-site/scripts/validate-sample.mjs
+node sample/tutorials/sample40-ephemeral-room-chat-site/scripts/validate-http-routes.mjs
 ```
 
 The validator checks:
@@ -48,6 +49,16 @@ The validator checks:
 - room registry remains after room cleanup;
 - empty message rejection;
 - dependency-free / cut-out-friendly boundary.
+
+The HTTP route validator starts a temporary `127.0.0.1` server and checks:
+
+- `GET /r/:roomSlug`;
+- `POST /api/rooms/:roomSlug`;
+- `GET /api/rooms/:roomSlug/messages`;
+- `POST /api/rooms/:roomSlug/messages`;
+- `POST /api/rooms/:roomSlug/images`;
+- `GET /attachments/:storageKey`;
+- `POST /api/cleanup`.
 
 ## Boundary
 
@@ -66,7 +77,6 @@ It does not:
 
 Choose whether to:
 
-- add HTTP route validation for the sample server;
 - replace JSON file storage with SQLite;
 - add richer image attachment UI validation;
 - add production-hardening checklist;
