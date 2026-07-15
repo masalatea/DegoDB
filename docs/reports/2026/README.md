@@ -47,6 +47,8 @@
   - EF-M14 docs/schema hardening。`flutter_webview_wrapper_extension` を恒久docsへ昇格し、`platform-input-packets` CLI、PWA/app_surface_config との関係、Flutter project/source/native/signing/build/store 非生成境界を整理。Status: `EF_M14_DONE`。
 - `2026-0715-mobile-external-output-checkpoint.md`
   - EF-M15 checkpoint。未push 5 commit stack を確認し、選定・React Native metadata・app surface config・Flutter WebView metadata・docs hardening の意味単位として妥当と判断。squash不要、PRではそのままでもレビュー可能。Status: `EF_M15_DONE`。
+- `2026-0715-mobile-external-output-pr-prep.md`
+  - EF-M16 PR準備。`feature/mobile-external-output-surfaces` を `develop` 向けPR branchとしてpushし、PR URL、title/description、squash不要判断を記録。Status: `EF_M16_READY_FOR_PR`。
 - `2026-0715-external-framework-optional-output-boundary-check-plan.md`
   - 既に作った Mtool 独自 no-code output を置換する計画ではなく、外部 FE/no-code/app framework を optional output target として扱う boundary check 計画。`mtool_no_code` は supported baseline として維持し、Mtool metadata / validation / server authority / custom extension 境界を保ったまま `external_no_code` / `hybrid` をどう出すか確認する。Status: `REPOSITIONED_AS_OPTIONAL_OUTPUT`。
 - `2026-0715-mtool-no-code-external-framework-full-coverage-check.md`
