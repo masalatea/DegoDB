@@ -71,6 +71,8 @@
   - RSS-8 docs/dry-run hardening。`docs/shared-state-sync-node-server-input-packet.md` にCLI導線とfocused validationを追記し、`/tmp/mtool-sync-server-input-rss8-doc-check` へのdry-runで2ファイルのみ生成されることを記録。Status: `RSS_8_DONE`。
 - `2026-0715-shared-state-sync-client-input-contract.md`
   - RSS-9 app client input packet contract。`sync-client-input.json` / `SYNC-CLIENT-INPUT.md` の packet shape、room/state/realtime/fallback/reconnect flow、validation、forbidden implicit actions を定義。SDK/source/UI生成は非scope。Status: `RSS_9_DONE`。
+- `2026-0715-shared-state-sync-client-input-next-selection.md`
+  - RSS-10 client input implementation route selection。client packet はSDK/source/UI生成と誤読されやすいため、Mtool emission前に `sync-client-input.json` static/sample consumer fixture を作る判断。Status: `RSS_10_DONE_STATIC_FIXTURE_FIRST`。
 - `2026-0715-external-framework-optional-output-boundary-check-plan.md`
   - 既に作った Mtool 独自 no-code output を置換する計画ではなく、外部 FE/no-code/app framework を optional output target として扱う boundary check 計画。`mtool_no_code` は supported baseline として維持し、Mtool metadata / validation / server authority / custom extension 境界を保ったまま `external_no_code` / `hybrid` をどう出すか確認する。Status: `REPOSITIONED_AS_OPTIONAL_OUTPUT`。
 - `2026-0715-mtool-no-code-external-framework-full-coverage-check.md`
