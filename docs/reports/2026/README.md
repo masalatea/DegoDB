@@ -49,6 +49,40 @@
   - EF-M15 checkpoint。未push 5 commit stack を確認し、選定・React Native metadata・app surface config・Flutter WebView metadata・docs hardening の意味単位として妥当と判断。squash不要、PRではそのままでもレビュー可能。Status: `EF_M15_DONE`。
 - `2026-0715-mobile-external-output-pr-prep.md`
   - EF-M16 PR準備。`feature/mobile-external-output-surfaces` を `develop` 向けPR branchとしてpushし、PR URL、title/description、squash不要判断を記録。Status: `EF_M16_READY_FOR_PR`。
+- `2026-0715-mobile-external-output-post-merge-cleanup.md`
+  - EF-M17 post-merge cleanup。PR #78 を develop、PR #79 を master へ merge 済みと確認し、local develop/master を同期。remote feature branch は削除済み、local feature branch も削除。Status: `EF_M17_DONE`。
+- `2026-0715-next-product-slice-selection-after-mobile-output.md`
+  - EF-M18 次slice選定。mobile external output stack 完了後、Room/shared-state sync with separate Node.js server を次 active lane に昇格。最初は RSS-1 shared state sync contract。Status: `EF_M18_DONE_RSS_PROMOTED`。
+- `2026-0715-shared-state-sync-contract-first-slice.md`
+  - RSS-1 first slice。`docs/shared-state-sync-contract.md` を追加し、room / membership / invite token / shared state / event / conflict policy / WebSocket-first transport / validation / non-goals を定義。Status: `RSS_1_DONE`。
+- `2026-0715-shared-state-sync-schema-api-contract.md`
+  - RSS-2 schema/API contract。`sync_room`、membership、invite、shared state、event schema と、room作成/list、invite、join、state read/update/latest revision REST API contract、authorization/error/stale revision policy を定義。Status: `RSS_2_DONE`。
+- `2026-0715-shared-state-sync-realtime-contract.md`
+  - RSS-3 realtime contract。WebSocket-first event/command envelope、`state.updated`、membership/room/heartbeat/reconnect events、subscribe/update/ping commands、reconnect/latest-fetch、SSE + HTTP fallback、polling fallback を定義。Status: `RSS_3_DONE`。
+- `2026-0715-shared-state-sync-node-server-input-packet.md`
+  - RSS-4 Node.js sync server input packet。別 runtime の Node.js sync server に渡す `sync-server-input.json` / `SYNC-SERVER-INPUT.md` の packet shape、backend integration、route/auth/state/event/fallback/validation、forbidden implicit actions を定義。Status: `RSS_4_DONE`。
+- `2026-0715-shared-state-sync-server-input-next-selection.md`
+  - RSS-5 次slice選定。Mtool artifact emissionへ直行せず、まず `sync-server-input.json` の static/sample consumer fixture を作り、外部Node.js ownerが読める形を検証してから実装へ進む判断。Status: `RSS_5_DONE_STATIC_FIXTURE_FIRST`。
+- `2026-0715-shared-state-sync-server-input-static-fixture.md`
+  - RSS-6 static fixture。`sample36-shared-state-sync-server-input` を追加し、`sync-server-input.sample.json` を依存追加・server起動なしで静的検証。外部Node.js owner向け packet の backend authority、route/auth/state/event/fallback/validation、forbidden action 境界を確認。Status: `RSS_6_DONE`。
+- `2026-0715-shared-state-sync-server-input-artifact-emission.md`
+  - RSS-7 Mtool artifact emission。`mtool/scripts/create_shared_state_sync_server_input.php` を追加し、`sync-server-input.json` / `SYNC-SERVER-INPUT.md` を生成可能にした。Node.js依存install、project init、server起動、port open、SSO実装は行わない。Status: `RSS_7_DONE`。
+- `2026-0715-shared-state-sync-server-input-docs-dry-run.md`
+  - RSS-8 docs/dry-run hardening。`docs/shared-state-sync-node-server-input-packet.md` にCLI導線とfocused validationを追記し、`/tmp/mtool-sync-server-input-rss8-doc-check` へのdry-runで2ファイルのみ生成されることを記録。Status: `RSS_8_DONE`。
+- `2026-0715-shared-state-sync-client-input-contract.md`
+  - RSS-9 app client input packet contract。`sync-client-input.json` / `SYNC-CLIENT-INPUT.md` の packet shape、room/state/realtime/fallback/reconnect flow、validation、forbidden implicit actions を定義。SDK/source/UI生成は非scope。Status: `RSS_9_DONE`。
+- `2026-0715-shared-state-sync-client-input-next-selection.md`
+  - RSS-10 client input implementation route selection。client packet はSDK/source/UI生成と誤読されやすいため、Mtool emission前に `sync-client-input.json` static/sample consumer fixture を作る判断。Status: `RSS_10_DONE_STATIC_FIXTURE_FIRST`。
+- `2026-0715-shared-state-sync-client-input-static-fixture.md`
+  - RSS-11 static fixture。`sample37-shared-state-sync-client-input` を追加し、`sync-client-input.sample.json` を依存追加・SDK/source生成なしで静的検証。room/state/realtime/fallback/reconnect と forbidden action 境界を確認。Status: `RSS_11_DONE`。
+- `2026-0715-shared-state-sync-client-input-artifact-emission.md`
+  - RSS-12 Mtool artifact emission。`mtool/scripts/create_shared_state_sync_client_input.php` を追加し、`sync-client-input.json` / `SYNC-CLIENT-INPUT.md` を生成可能にした。SDK/source生成、依存install、token storage選択、SSO setup、realtime runtime起動は行わない。Status: `RSS_12_DONE`。
+- `2026-0715-shared-state-sync-client-input-docs-dry-run.md`
+  - RSS-13 docs/dry-run hardening。`docs/shared-state-sync-app-client-input-packet.md` にCLI導線とfocused validationを追記し、`/tmp/mtool-sync-client-input-rss13-doc-check` へのdry-runで2ファイルのみ生成されることを記録。Status: `RSS_13_DONE`。
+- `2026-0715-shared-state-sync-packet-stack-checkpoint.md`
+  - RSS-14 stack checkpoint。RSS-1〜RSS-13の contract / static fixture / Mtool emission / docs dry-run / focused validation を棚卸しし、次はcombined bundle追加ではなくPR checkpointにする判断。Status: `RSS_14_DONE_PR_CHECKPOINT_SELECTED`。
+- `2026-0715-shared-state-sync-pr-checkpoint.md`
+  - RSS-15 PR checkpoint。`origin/develop` から ahead 15 の commit stack、squash不要判断、final focused validation、通常PR向け feature branch方針を記録。Status: `RSS_15_READY_FOR_PR`。
 - `2026-0715-external-framework-optional-output-boundary-check-plan.md`
   - 既に作った Mtool 独自 no-code output を置換する計画ではなく、外部 FE/no-code/app framework を optional output target として扱う boundary check 計画。`mtool_no_code` は supported baseline として維持し、Mtool metadata / validation / server authority / custom extension 境界を保ったまま `external_no_code` / `hybrid` をどう出すか確認する。Status: `REPOSITIONED_AS_OPTIONAL_OUTPUT`。
 - `2026-0715-mtool-no-code-external-framework-full-coverage-check.md`
