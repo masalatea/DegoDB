@@ -13,6 +13,7 @@
 - client owner が `sync-client-input.json` を読める
 - sample36 / sample37 が packet shape を静的に検証できる
 - sample38 が packet を runtime-shaped reference として読んで、membership / revision / fanout / latest fetch / secret-free event を検証できる
+- sample38 が Mtool CLI 生成 packet を読んで同じ runtime reference に接続できる
 - Mtool CLI が server/client packet を出せる
 - 禁止 action と ownership boundary が明確である
 - AI / 外部実装者が、何を実装してよいか、何を実装してはいけないかを判断できる
@@ -81,6 +82,7 @@ Client packet で確認すること:
 | --- | --- |
 | reference runtime sample が存在する | `sample/tutorials/sample38-shared-state-sync-node-runtime/` |
 | runtime-shaped validation が通る | `node sample/tutorials/sample38-shared-state-sync-node-runtime/scripts/validate-sample.mjs` |
+| Mtool artifact linkage validation が通る | `node sample/tutorials/sample38-shared-state-sync-node-runtime/scripts/validate-mtool-artifact-linkage.mjs` |
 | dependency-free である | sample root に `package.json` / `node_modules` を置かない |
 | production server ではない | README が public port / real WebSocket server / deployment 非scopeを明記する |
 
@@ -96,6 +98,7 @@ Sample38 で確認すること:
 - reconnect/latest-fetch で最新 revision を取得できる
 - event / audit event に SSO token、refresh token、raw invite token、secret を含めない
 - loopback-only HTTP/SSE fallback reference が read / update / conflict / latest revision / SSE event を検証できる
+- Mtool CLI が一時ディレクトリに出した server/client packet を読める
 
 この sample は in-process event bus で WebSocket 相当の境界を検証し、Node.js 標準 `http` による loopback-only HTTP/SSE fallback を検証する。real WebSocket server、dependency install、public port、production deploy は別scopeである。
 
@@ -157,6 +160,7 @@ docker compose run --rm web-admin phpunit --configuration /var/www/tests/phpunit
 node sample/tutorials/sample37-shared-state-sync-client-input/scripts/validate-sample.mjs
 node sample/tutorials/sample38-shared-state-sync-node-runtime/scripts/validate-sample.mjs
 node sample/tutorials/sample38-shared-state-sync-node-runtime/scripts/validate-http-sse-sample.mjs
+node sample/tutorials/sample38-shared-state-sync-node-runtime/scripts/validate-mtool-artifact-linkage.mjs
 git diff --check
 ```
 
@@ -168,6 +172,8 @@ docker compose run --rm web-admin phpunit --configuration /var/www/tests/phpunit
 node sample/tutorials/sample36-shared-state-sync-server-input/scripts/validate-sample.mjs
 node sample/tutorials/sample37-shared-state-sync-client-input/scripts/validate-sample.mjs
 node sample/tutorials/sample38-shared-state-sync-node-runtime/scripts/validate-sample.mjs
+node sample/tutorials/sample38-shared-state-sync-node-runtime/scripts/validate-http-sse-sample.mjs
+node sample/tutorials/sample38-shared-state-sync-node-runtime/scripts/validate-mtool-artifact-linkage.mjs
 git diff --check
 ```
 
@@ -188,6 +194,7 @@ Pass:
 - server/client packet の責務境界が説明できる
 - sample36 / sample37 がそれぞれ validation できる
 - sample38 が runtime-shaped reference として validation できる
+- sample38 が Mtool CLI 生成 packet を読んで validation できる
 - Mtool emission test が対象範囲で通る
 - forbidden implicit actions が明記されている
 

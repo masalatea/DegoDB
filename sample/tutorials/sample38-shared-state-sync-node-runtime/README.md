@@ -19,6 +19,7 @@ It consumes the existing handoff packets from:
 - Supports latest-state fetch after reconnect or stale revision.
 - Verifies emitted events contain no SSO token, refresh token, raw invite token, or secret.
 - Provides a loopback-only HTTP/SSE fallback reference using Node.js standard library.
+- Proves Mtool-emitted `sync-server-input.json` and `sync-client-input.json` can be consumed by the reference runtime.
 
 ## What this sample intentionally does not do
 
@@ -33,6 +34,7 @@ The HTTP/SSE slice starts a temporary `127.0.0.1` server inside the validator an
 ```bash
 node sample/tutorials/sample38-shared-state-sync-node-runtime/scripts/validate-sample.mjs
 node sample/tutorials/sample38-shared-state-sync-node-runtime/scripts/validate-http-sse-sample.mjs
+node sample/tutorials/sample38-shared-state-sync-node-runtime/scripts/validate-mtool-artifact-linkage.mjs
 ```
 
 Expected result:
