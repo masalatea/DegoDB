@@ -287,16 +287,29 @@ final class MobileWrapperTargetTest extends TestCase
         self::assertSame('mobile-output-mode-config-v1', $config['schema_version'] ?? '');
         self::assertSame('hybrid', $config['selected_mode'] ?? '');
         self::assertSame(['mtool_no_code', 'external_no_code', 'hybrid'], $config['supported_modes'] ?? []);
+        self::assertSame(['pwa', 'flutter_webview', 'react_web_capacitor'], $config['supported_app_surfaces'] ?? []);
         self::assertContains('c1_wrapper_readiness', $config['selected_artifact_keys'] ?? []);
         self::assertContains('external_optional_output', $config['selected_artifact_keys'] ?? []);
         self::assertContains('ai_task_packet', $config['selected_artifact_keys'] ?? []);
         self::assertContains('pwa_readiness', $config['selected_artifact_keys'] ?? []);
+        self::assertSame('mobile-app-surface-config-v1', $config['app_surface_config']['schema_version'] ?? '');
+        self::assertSame(['pwa', 'flutter_webview', 'react_web_capacitor'], $config['app_surface_config']['selected_surfaces'] ?? []);
+        self::assertSame('shared_by_default', $config['app_surface_config']['backend_endpoint']['sharing_policy'] ?? '');
+        self::assertSame('runtime configurable per environment', $config['app_surface_config']['backend_endpoint']['api_base_url_policy'] ?? '');
+        self::assertTrue($config['app_surface_config']['backend_endpoint']['server_authority'] ?? false);
+        self::assertTrue($config['app_surface_config']['surfaces']['pwa']['enabled'] ?? false);
+        self::assertTrue($config['app_surface_config']['surfaces']['flutter_webview']['enabled'] ?? false);
+        self::assertSame('same_app_url', $config['app_surface_config']['surfaces']['flutter_webview']['default_source_mode'] ?? '');
+        self::assertSame('disabled_by_default', $config['app_surface_config']['surfaces']['flutter_webview']['native_bridge'] ?? '');
+        self::assertContains('separate_endpoint_allowed_only_with_explicit_reason', array_keys($config['app_surface_config']['backend_endpoint'] ?? []));
         self::assertContains('external_outputs_are_additive_to_mtool_no_code', $config['warnings'] ?? []);
+        self::assertContains('pwa_and_flutter_webview_share_backend_by_default_but_not_runtime_behavior', $config['warnings'] ?? []);
         self::assertContains('cap_sync', $config['forbidden_without_explicit_confirmation'] ?? []);
 
         $markdown = $result['package']['files']['OUTPUT-MODE-CONFIG.md'];
         self::assertStringContainsString('Selected mode: `hybrid`', $markdown);
         self::assertStringContainsString('`ai_task_packet`', $markdown);
+        self::assertStringContainsString('`flutter_webview`', $markdown);
     }
 
     public function testOutputModeConfigCanSelectExternalNoCodeOnly(): void
@@ -307,6 +320,7 @@ final class MobileWrapperTargetTest extends TestCase
         $config = $result['package']['files']['output-mode-config.json'];
         self::assertSame('external_no_code', $config['selected_mode'] ?? '');
         self::assertSame(['external_optional_output', 'ai_task_packet', 'pwa_readiness'], $config['selected_artifact_keys'] ?? []);
+        self::assertSame(['pwa', 'flutter_webview', 'react_web_capacitor'], $config['app_surface_config']['selected_surfaces'] ?? []);
     }
 
     public function testSample28OutputModeConfigEmitsOnlyConfigFiles(): void
@@ -610,7 +624,26 @@ final class MobileWrapperTargetTest extends TestCase
         self::assertSame('react_native_input_packet', $reactNative['platform_key'] ?? '');
         self::assertSame('structured_input_packet_only', $flutter['mtool_role'] ?? '');
         self::assertContains('Dart source code', $flutter['not_generated_by_mtool'] ?? []);
+        self::assertSame('flutter-webview-wrapper-extension-v1', $flutter['flutter_webview_wrapper_extension']['extension_version'] ?? '');
+        self::assertSame('metadata_only', $flutter['flutter_webview_wrapper_extension']['scope'] ?? '');
+        self::assertSame('Flutter', $flutter['flutter_webview_wrapper_extension']['wrapper_model']['native_shell'] ?? '');
+        self::assertSame('React/PWA-ready web app in WebView', $flutter['flutter_webview_wrapper_extension']['wrapper_model']['embedded_surface'] ?? '');
+        self::assertFalse($flutter['flutter_webview_wrapper_extension']['wrapper_model']['flutter_native_ui_generation'] ?? true);
+        self::assertSame('same_app_url', $flutter['flutter_webview_wrapper_extension']['react_pwa_source']['default_source_mode'] ?? '');
+        self::assertSame('shared_by_default', $flutter['flutter_webview_wrapper_extension']['backend_endpoint']['sharing_policy'] ?? '');
+        self::assertTrue($flutter['flutter_webview_wrapper_extension']['webview_policy']['navigation_allowlist_required'] ?? false);
+        self::assertSame('disabled_by_default', $flutter['flutter_webview_wrapper_extension']['native_bridge']['default'] ?? '');
+        self::assertContains('flutter_project_init', $flutter['flutter_webview_wrapper_extension']['forbidden_without_explicit_confirmation'] ?? []);
+        self::assertContains('native_bridge_enablement', $flutter['flutter_webview_wrapper_extension']['forbidden_without_explicit_confirmation'] ?? []);
         self::assertContains('React Native source code', $reactNative['not_generated_by_mtool'] ?? []);
+        self::assertSame('react-native-extension-v1', $reactNative['react_native_extension']['extension_version'] ?? '');
+        self::assertSame('metadata_only', $reactNative['react_native_extension']['scope'] ?? '');
+        self::assertSame('external_owner_choice', $reactNative['react_native_extension']['navigation']['library_selection'] ?? '');
+        self::assertTrue($reactNative['react_native_extension']['api_client']['idempotency_for_mutations_required'] ?? false);
+        self::assertFalse($reactNative['react_native_extension']['secure_storage']['browser_like_persistent_token_storage_allowed'] ?? true);
+        self::assertSame('must_be_chosen_by_external_owner', $reactNative['react_native_extension']['native_modules']['expo_vs_bare_boundary'] ?? '');
+        self::assertContains('react_native_project_init', $reactNative['react_native_extension']['forbidden_without_explicit_confirmation'] ?? []);
+        self::assertContains('ios_android_project_write', $reactNative['react_native_extension']['forbidden_without_explicit_confirmation'] ?? []);
     }
 
     public function testSample28LaterPlatformInputPacketsEmitOnlyPacketFiles(): void

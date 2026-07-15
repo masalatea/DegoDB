@@ -31,6 +31,24 @@
   - EF-M8 first slice。`output-mode-config` artifact と `--output-mode=mtool_no_code|external_no_code|hybrid` を追加。`output-mode-config.json` / `OUTPUT-MODE-CONFIG.md` のみを出し、bundle manifest に `output_mode_config` を追加。`external_no_code` dry-run で `external_optional_output` / `ai_task_packet` selection と `cap_sync` 禁止を確認。Focused `MobileWrapperTargetTest` は 36 tests / 267 assertions で通過。Status: `EF_M8_FIRST_SLICE_DONE`。
 - `2026-0715-pwa-readiness-artifact-first-slice.md`
   - EF-M9 first slice。`pwa-readiness` artifact を追加し、`pwa-readiness.json` / `PWA-READINESS.md` のみを生成。installability/cache/storage/offline-readiness metadata を出すが、manifest/service worker/offline sync/business data cache/native project は生成しない。bundle manifest に `pwa_readiness` を追加。Focused `MobileWrapperTargetTest` は 39 tests / 298 assertions で通過。Status: `EF_M9_FIRST_SLICE_DONE`。
+- `2026-0715-external-consumer-next-selection-after-pwa.md`
+  - EF-M10 selection。PWA readiness後の次実装を比較。user-approved real app dry-run は明示dir/承認が必要、execution UI controls はCSRF/output-dir/overwrite/audit等が重い、別consumer乱立よりReact Native second-pass extension metadataを優先と判断。Status: `EF_M10_SELECTION_DONE`。
+- `2026-0715-react-native-extension-metadata-first-slice.md`
+  - EF-M11 first slice。React Native later-platform input packet に `react_native_extension` を追加し、navigation/state/form/API/auth/storage/native module/environment/test boundary を明示。React Native source、Expo/RN init、dependency install、native files、signing/build/store submission は引き続き外部所有。Status: `EF_M11_DONE`。
+- `2026-0715-flutter-webview-wrapper-output-direction.md`
+  - EF-M12 方向修正。Flutter native UI生成ではなく、同じMtool設計を React/Web・PWA-ready・Capacitor handoff・Flutter WebView wrapper handoff として出し直せる形にする。Flutter は React/PWA-ready app を WebView で包む native shell/input packet target とし、Flutter project/build/signing/store は外部所有。Status: `EF_M12_DIRECTION_SELECTED`。
+- `2026-0715-app-surface-config-plan.md`
+  - EF-M12 app surface config 計画。backend endpoint は原則共有し、PWA / Flutter WebView / React Web Capacitor などの app surface を複数選択可能にする。redirect URI、storage、offline/cache、navigation、native bridge は surface 別に明示し、別endpointは明示理由がある場合だけ。Status: `EF_M12_APP_SURFACE_CONFIG_PLANNED`。
+- `2026-0715-app-surface-config-first-slice.md`
+  - EF-M12 first slice。`output-mode-config.json` に `app_surface_config` を追加し、shared backend endpoint と PWA / Flutter WebView / React Web Capacitor の surface-specific URL・redirect・storage・offline/cache・native bridge・distribution boundary を記録。Focused MobileWrapperTargetTest は 39 tests / 320 assertions で通過。Status: `EF_M12_FIRST_SLICE_DONE`。
+- `2026-0715-flutter-webview-wrapper-extension-first-slice.md`
+  - EF-M13 first slice。`flutter-input-packet.json` に `flutter_webview_wrapper_extension` を追加し、React/PWA source mode、shared backend、WebView policy、auth/deep-link、storage/session、native bridge、offline/cache、外部owner責務、禁止actionを metadata-only で記録。Focused MobileWrapperTargetTest は 39 tests / 331 assertions で通過。Status: `EF_M13_DONE`。
+- `2026-0715-flutter-webview-wrapper-docs-hardening.md`
+  - EF-M14 docs/schema hardening。`flutter_webview_wrapper_extension` を恒久docsへ昇格し、`platform-input-packets` CLI、PWA/app_surface_config との関係、Flutter project/source/native/signing/build/store 非生成境界を整理。Status: `EF_M14_DONE`。
+- `2026-0715-mobile-external-output-checkpoint.md`
+  - EF-M15 checkpoint。未push 5 commit stack を確認し、選定・React Native metadata・app surface config・Flutter WebView metadata・docs hardening の意味単位として妥当と判断。squash不要、PRではそのままでもレビュー可能。Status: `EF_M15_DONE`。
+- `2026-0715-mobile-external-output-pr-prep.md`
+  - EF-M16 PR準備。`feature/mobile-external-output-surfaces` を `develop` 向けPR branchとしてpushし、PR URL、title/description、squash不要判断を記録。Status: `EF_M16_READY_FOR_PR`。
 - `2026-0715-external-framework-optional-output-boundary-check-plan.md`
   - 既に作った Mtool 独自 no-code output を置換する計画ではなく、外部 FE/no-code/app framework を optional output target として扱う boundary check 計画。`mtool_no_code` は supported baseline として維持し、Mtool metadata / validation / server authority / custom extension 境界を保ったまま `external_no_code` / `hybrid` をどう出すか確認する。Status: `REPOSITIONED_AS_OPTIONAL_OUTPUT`。
 - `2026-0715-mtool-no-code-external-framework-full-coverage-check.md`

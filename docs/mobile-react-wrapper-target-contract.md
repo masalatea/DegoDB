@@ -46,7 +46,7 @@ This target means:
 - React/Web is the first app implementation surface;
 - Capacitor-style tooling is the first iOS/Android packaging route;
 - PWA can share the web artifact as an optional sibling target;
-- Flutter and React Native remain later input-packet consumers;
+- Flutter WebView wrapper and React Native remain later input-packet consumers;
 - direct native iOS/Android generation remains a non-goal.
 
 ## Wrapper package shape / wrapper package shape
@@ -206,6 +206,47 @@ PWA-READINESS.md
 This is metadata/checklist output. It does not generate `manifest.webmanifest`, a service worker, background sync, offline sync, push notifications, app source code, or native project files.
 
 See [External No-Code Output](external-no-code-output.md) for the stable field guide.
+
+## React Native later-platform packet / React Native later-platform packet
+
+The existing later-platform output includes `react-native-input-packet.json`.
+For React Native, that packet now includes `react_native_extension` metadata.
+
+The extension covers:
+
+- navigation expectations and route inputs;
+- state management classes and server-state authority;
+- form binding and validation/error mapping;
+- API client, retry, and idempotency expectations;
+- OIDC/auth and secure-storage policy boundaries;
+- native module permission policy and Expo vs bare ownership boundary;
+- environment/build ownership;
+- typecheck/unit/device QA expectations.
+
+This remains a structured input packet only.
+It does not initialize Expo or React Native projects, install dependencies, add native modules, write `ios/` or `android/`, choose signing assets, run native builds, or submit apps.
+
+## Flutter WebView wrapper later-platform packet / Flutter WebView wrapper later-platform packet
+
+The existing later-platform output includes `flutter-input-packet.json`.
+For Flutter WebView wrapper output, that packet includes `flutter_webview_wrapper_extension` metadata.
+
+The extension covers:
+
+- Flutter native shell wrapping a React/PWA-ready app in WebView;
+- `same_app_url` vs `bundled_static_assets` source mode;
+- shared backend endpoint policy;
+- WebView navigation, JavaScript, file access, and cleartext policy prompts;
+- OIDC/auth callback and deep-link boundary;
+- WebView cookie/session vs native secure-storage bridge policy;
+- native bridge default-off behavior;
+- offline/cache differences between browser PWA and Flutter WebView;
+- external Flutter owner responsibilities.
+
+This remains a structured input packet only.
+It does not initialize a Flutter project, install Flutter dependencies, add WebView packages, write Dart source, write `ios/` or `android/`, choose signing assets, run native builds, or submit apps.
+
+The related `output-mode-config.json` may also include `app_surface_config`, which states that PWA and Flutter WebView surfaces can share the same backend endpoint by default while keeping redirect URI, storage, navigation, native bridge, and offline/cache policies surface-specific.
 
 ## Boundary details / boundary details
 

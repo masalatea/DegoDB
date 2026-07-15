@@ -13,6 +13,7 @@ const APP_MOBILE_PWA_READINESS_SCHEMA_VERSION = 'mobile-pwa-readiness-v1';
 const APP_MOBILE_LATER_PLATFORM_INPUT_PACKET_SCHEMA_VERSION = 'mobile-later-platform-input-packet-v1';
 const APP_MOBILE_WRAPPER_BUNDLE_MANIFEST_SCHEMA_VERSION = 'mobile-wrapper-bundle-manifest-v1';
 const APP_MOBILE_OUTPUT_MODES = ['mtool_no_code', 'external_no_code', 'hybrid'];
+const APP_MOBILE_APP_SURFACES = ['pwa', 'flutter_webview', 'react_web_capacitor'];
 const APP_MOBILE_WRAPPER_TARGET_VERIFICATION_GATES = [
     'php -l mtool/app/mobile_app_handoff.php',
     'focused MobileAppHandoffTest',
@@ -1636,11 +1637,13 @@ function app_mobile_wrapper_target_output_mode_config_from_handoff(array $handof
             'native_project_generation' => false,
         ],
     ];
+    $appSurfaceConfig = app_mobile_wrapper_target_app_surface_config_from_handoff($handoff, $mode);
 
     return [
         'schema_version' => APP_MOBILE_OUTPUT_MODE_CONFIG_SCHEMA_VERSION,
         'selected_mode' => $mode,
         'supported_modes' => APP_MOBILE_OUTPUT_MODES,
+        'supported_app_surfaces' => APP_MOBILE_APP_SURFACES,
         'mutation_performed' => false,
         'project' => $project,
         'surface_policy' => [
@@ -1662,11 +1665,13 @@ function app_mobile_wrapper_target_output_mode_config_from_handoff(array $handof
         ],
         'selected_artifact_keys' => app_mobile_wrapper_target_output_mode_artifact_keys($mode),
         'target_extensions' => $targetExtensions,
+        'app_surface_config' => $appSurfaceConfig,
         'warnings' => [
             'external_owner_owns_app_source_dependencies_native_build_signing_store_submission',
             'external_outputs_are_additive_to_mtool_no_code',
             'hybrid_mode_does_not_imply_automatic_frontend_synchronization',
             'offline_sync_requires_separate_sync_contract',
+            'pwa_and_flutter_webview_share_backend_by_default_but_not_runtime_behavior',
         ],
         'forbidden_without_explicit_confirmation' => [
             'dependency_install',
@@ -1682,9 +1687,93 @@ function app_mobile_wrapper_target_output_mode_config_from_handoff(array $handof
         ],
         'validation' => [
             'mode_must_be_one_of' => APP_MOBILE_OUTPUT_MODES,
+            'surface_must_be_one_of' => APP_MOBILE_APP_SURFACES,
             'selected_target_requires_extension_packet' => true,
+            'separate_backend_endpoint_requires_explicit_reason' => true,
+            'surface_specific_redirect_storage_cache_and_bridge_policy_required' => true,
             'ai_task_packet_requires_confirmation' => true,
             'native_project_generation_requires_explicit_user_confirmation' => true,
+        ],
+    ];
+}
+
+/**
+ * @param array<string,mixed> $handoff
+ * @return array<string,mixed>
+ */
+function app_mobile_wrapper_target_app_surface_config_from_handoff(array $handoff, string $mode): array
+{
+    $api = is_array($handoff['api'] ?? null) ? $handoff['api'] : [];
+    $auth = is_array($handoff['auth'] ?? null) ? $handoff['auth'] : [];
+    $endpoints = is_array($api['endpoints'] ?? null) ? $api['endpoints'] : [];
+
+    $selectedSurfaces = match ($mode) {
+        'mtool_no_code' => ['pwa'],
+        'external_no_code' => ['pwa', 'flutter_webview', 'react_web_capacitor'],
+        default => ['pwa', 'flutter_webview', 'react_web_capacitor'],
+    };
+
+    return [
+        'schema_version' => 'mobile-app-surface-config-v1',
+        'selected_surfaces' => $selectedSurfaces,
+        'backend_endpoint' => [
+            'sharing_policy' => 'shared_by_default',
+            'api_base_url_policy' => (string) ($api['base_url_policy'] ?? ''),
+            'api_endpoint_count' => count($endpoints),
+            'auth_mode' => (string) ($auth['mode'] ?? ''),
+            'auth_issuer_policy' => 'from_handoff_auth_policy',
+            'server_authority' => true,
+            'idempotency_required_for_mutations' => true,
+            'separate_endpoint_allowed_only_with_explicit_reason' => [
+                'staging_or_production_separation',
+                'tenant_separation',
+                'native_only_bff',
+                'separate_sync_server',
+            ],
+        ],
+        'surfaces' => [
+            'pwa' => [
+                'enabled' => in_array('pwa', $selectedSurfaces, true),
+                'role' => 'browser_installable_or_browser_delivered_react_app',
+                'source' => 'react_web_app',
+                'app_url_policy' => 'explicit_required_for_production',
+                'redirect_uri_policy' => 'https_callback_required_for_oidc',
+                'storage_policy' => 'browser_storage_explicit',
+                'offline_cache_policy' => 'explicit_no_offline_sync_without_contract',
+                'native_bridge' => 'not_applicable',
+                'distribution_owner' => 'external_owner_or_deployment_owner',
+            ],
+            'flutter_webview' => [
+                'enabled' => in_array('flutter_webview', $selectedSurfaces, true),
+                'role' => 'flutter_native_shell_wrapping_react_app_in_webview',
+                'source_mode_options' => ['same_app_url', 'bundled_static_assets'],
+                'default_source_mode' => 'same_app_url',
+                'app_url_policy' => 'explicit_required_when_source_is_same_app_url',
+                'redirect_uri_policy' => 'native_deep_link_or_web_callback_must_be_declared',
+                'storage_policy' => 'webview_or_native_secure_storage_bridge_explicit',
+                'offline_cache_policy' => 'webview_behavior_must_not_be_assumed_equal_to_browser_pwa',
+                'native_bridge' => 'disabled_by_default',
+                'distribution_owner' => 'external_flutter_owner',
+            ],
+            'react_web_capacitor' => [
+                'enabled' => in_array('react_web_capacitor', $selectedSurfaces, true),
+                'role' => 'react_web_app_wrapped_by_capacitor_style_tooling',
+                'source' => 'react_web_app',
+                'app_url_policy' => 'external_owner_choice',
+                'redirect_uri_policy' => 'web_or_native_callback_must_be_declared',
+                'storage_policy' => 'browser_or_native_storage_policy_explicit',
+                'offline_cache_policy' => 'explicit_no_offline_sync_without_contract',
+                'native_bridge' => 'capacitor_plugins_require_explicit_selection',
+                'distribution_owner' => 'external_capacitor_owner',
+            ],
+        ],
+        'surface_specific_policy_required' => [
+            'app_url_or_bundled_asset_mode',
+            'redirect_uri',
+            'storage_token_policy',
+            'offline_cache_policy',
+            'navigation_allowlist',
+            'native_bridge_policy',
         ],
     ];
 }
@@ -1715,6 +1804,16 @@ function app_mobile_wrapper_target_output_mode_config_markdown(array $config): s
         $lines[] = '- `' . (string) $artifactKey . '`';
     }
     $lines[] = '';
+    $appSurfaceConfig = is_array($config['app_surface_config'] ?? null) ? $config['app_surface_config'] : [];
+    $selectedSurfaces = is_array($appSurfaceConfig['selected_surfaces'] ?? null) ? $appSurfaceConfig['selected_surfaces'] : [];
+    if ($selectedSurfaces !== []) {
+        $lines[] = '## Selected app surfaces';
+        $lines[] = '';
+        foreach ($selectedSurfaces as $surface) {
+            $lines[] = '- `' . (string) $surface . '`';
+        }
+        $lines[] = '';
+    }
     $lines[] = '## Warnings';
     $lines[] = '';
     foreach (($config['warnings'] ?? []) as $warning) {
@@ -1881,7 +1980,7 @@ function app_mobile_wrapper_target_later_platform_packet_from_react_proof(string
 {
     $platformKey = $platform === 'flutter' ? 'flutter_input_packet' : 'react_native_input_packet';
     $builder = $platform === 'flutter' ? 'Flutter/Dart builder' : 'React Native builder';
-    return [
+    $packet = [
         'schema_version' => APP_MOBILE_LATER_PLATFORM_INPUT_PACKET_SCHEMA_VERSION,
         'platform_key' => $platformKey,
         'source_react_wrapper_handoff_schema_version' => (string) ($reactProof['schema_version'] ?? ''),
@@ -1912,6 +2011,170 @@ function app_mobile_wrapper_target_later_platform_packet_from_react_proof(string
             'store submission files',
         ],
         'non_goals' => is_array($reactProof['non_goals'] ?? null) ? $reactProof['non_goals'] : [],
+    ];
+
+    if ($platform === 'flutter') {
+        $packet['flutter_webview_wrapper_extension'] = app_mobile_wrapper_target_flutter_webview_wrapper_extension_metadata($reactProof);
+    }
+    if ($platform === 'react_native') {
+        $packet['react_native_extension'] = app_mobile_wrapper_target_react_native_extension_metadata($reactProof);
+    }
+
+    return $packet;
+}
+
+/** @param array<string,mixed> $reactProof @return array<string,mixed> */
+function app_mobile_wrapper_target_flutter_webview_wrapper_extension_metadata(array $reactProof): array
+{
+    return [
+        'extension_version' => 'flutter-webview-wrapper-extension-v1',
+        'scope' => 'metadata_only',
+        'wrapper_model' => [
+            'native_shell' => 'Flutter',
+            'embedded_surface' => 'React/PWA-ready web app in WebView',
+            'flutter_native_ui_generation' => false,
+            'webview_package_selection' => 'external_owner_choice',
+        ],
+        'react_pwa_source' => [
+            'source_artifacts' => is_array($reactProof['source_artifacts'] ?? null) ? $reactProof['source_artifacts'] : [],
+            'source_mode_options' => ['same_app_url', 'bundled_static_assets'],
+            'default_source_mode' => 'same_app_url',
+            'pwa_metadata_is_browser_delivery_input' => true,
+            'webview_runtime_must_not_assume_browser_pwa_equivalence' => true,
+        ],
+        'backend_endpoint' => [
+            'sharing_policy' => 'shared_by_default',
+            'api_base_url_policy' => (string) ($reactProof['api_mapping']['base_url_policy'] ?? ''),
+            'server_authority_preserved' => true,
+            'separate_endpoint_requires_explicit_reason' => true,
+        ],
+        'webview_policy' => [
+            'navigation_allowlist_required' => true,
+            'external_link_policy_required' => true,
+            'javascript_policy_required' => true,
+            'file_access_policy_required_for_bundled_assets' => true,
+            'cleartext_traffic_policy_required' => true,
+        ],
+        'auth_and_deep_link' => [
+            'auth_mapping' => is_array($reactProof['auth_mapping'] ?? null) ? $reactProof['auth_mapping'] : [],
+            'redirect_uri_policy' => 'native_deep_link_or_web_callback_must_be_declared',
+            'oidc_callback_surface_must_be_explicit' => true,
+            'reauth_failure_state_required' => true,
+        ],
+        'storage_and_session' => [
+            'token_storage_policy' => 'webview_cookie_or_native_secure_storage_bridge_must_be_declared',
+            'browser_like_persistent_token_storage_allowed' => false,
+            'business_data_persistence_requires_sync_contract' => true,
+            'webview_cache_clear_policy_required' => true,
+        ],
+        'native_bridge' => [
+            'default' => 'disabled_by_default',
+            'allowed_only_with_explicit_api_contract' => true,
+            'bridge_calls_must_preserve_server_authority' => true,
+            'native_permissions_require_mapping' => true,
+        ],
+        'offline_and_cache' => [
+            'offline_sync_default' => false,
+            'webview_cache_not_equal_to_service_worker_cache' => true,
+            'mutations_online_only_without_sync_contract' => true,
+            'fallback_ui_required' => true,
+        ],
+        'external_owner_owns' => [
+            'Flutter project initialization',
+            'webview package selection',
+            'dependency installation',
+            'iOS and Android project files',
+            'native permission configuration',
+            'app signing',
+            'native build',
+            'device QA',
+            'store submission',
+        ],
+        'forbidden_without_explicit_confirmation' => [
+            'flutter_project_init',
+            'flutter_dependency_install',
+            'webview_package_install',
+            'ios_android_project_write',
+            'native_permission_addition',
+            'native_bridge_enablement',
+            'signing',
+            'native_build',
+            'store_submission',
+            'offline_sync',
+        ],
+    ];
+}
+
+/** @param array<string,mixed> $reactProof @return array<string,mixed> */
+function app_mobile_wrapper_target_react_native_extension_metadata(array $reactProof): array
+{
+    return [
+        'extension_version' => 'react-native-extension-v1',
+        'scope' => 'metadata_only',
+        'navigation' => [
+            'model' => 'stack_plus_tab_allowed',
+            'library_selection' => 'external_owner_choice',
+            'required_routes_from_screen_flow' => is_array($reactProof['screen_flow_mapping']['screen_keys'] ?? null)
+                ? $reactProof['screen_flow_mapping']['screen_keys']
+                : [],
+            'deep_link_policy' => 'external_owner_must_define_if_used',
+        ],
+        'state_management' => [
+            'selection' => 'external_owner_choice',
+            'minimum_state_classes' => ['auth_session', 'screen_query_state', 'form_draft_state', 'submit_status'],
+            'server_state_authority' => true,
+            'offline_state_sync' => false,
+        ],
+        'form_binding' => [
+            'validation_source' => 'Mtool/server authoritative validation remains primary',
+            'client_validation_role' => 'preflight_display_only',
+            'required_field_binding_required' => true,
+            'server_error_mapping_required' => true,
+        ],
+        'api_client' => [
+            'package_selection' => 'external_owner_choice',
+            'base_url_environment_matrix_required' => true,
+            'idempotency_for_mutations_required' => true,
+            'retry_policy_required' => true,
+            'mutating_actions_online_only_without_sync_contract' => true,
+        ],
+        'auth' => [
+            'oidc_client_selection' => 'external_owner_choice',
+            'deep_link_callback_policy_required' => true,
+            'refresh_token_policy_required' => true,
+            'server_authority_preserved' => true,
+        ],
+        'secure_storage' => [
+            'module_selection' => 'external_owner_choice',
+            'browser_like_persistent_token_storage_allowed' => false,
+            'refresh_token_storage_requires_explicit_policy' => true,
+            'business_data_persistence_requires_sync_contract' => true,
+        ],
+        'native_modules' => [
+            'native_module_policy' => 'deny_by_default_until_declared',
+            'permission_mapping_required' => true,
+            'expo_vs_bare_boundary' => 'must_be_chosen_by_external_owner',
+        ],
+        'environment_and_build' => [
+            'environment_variant_mapping_required' => true,
+            'app_id_bundle_id_owned_by_external_owner' => true,
+            'signing_store_submission_owned_by_external_owner' => true,
+        ],
+        'test_expectations' => [
+            'typecheck_command_defined_by_external_owner',
+            'unit_or_component_smoke_defined_by_external_owner',
+            'device_or_simulator_qa_owned_by_external_owner',
+        ],
+        'forbidden_without_explicit_confirmation' => [
+            'react_native_project_init',
+            'expo_project_init',
+            'native_module_install',
+            'dependency_install',
+            'ios_android_project_write',
+            'signing',
+            'store_submission',
+            'offline_sync',
+        ],
     ];
 }
 

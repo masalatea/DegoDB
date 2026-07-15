@@ -59,6 +59,17 @@ pwa-readiness/
   PWA-READINESS.md
 ```
 
+The existing later-platform bundle also emits:
+
+```text
+flutter-input-packet.json
+react-native-input-packet.json
+```
+
+For Flutter WebView wrapper output, `flutter-input-packet.json` includes `flutter_webview_wrapper_extension` metadata. It describes how a Flutter native shell can wrap the React/PWA-ready app through WebView, while keeping Flutter project setup, dependencies, native files, signing, builds, QA, and store submission outside Mtool.
+
+For React Native, this packet includes `react_native_extension` metadata. It is not a new app artifact and does not generate React Native source or native project files.
+
 It must not create:
 
 - `package.json`;
@@ -106,6 +117,15 @@ php mtool/scripts/create_mobile_wrapper_target.php \
   --sample=sample28 \
   --artifact=pwa-readiness \
   --target-dir=work/source-outputs/SAMPLE28/MOBILE-WRAPPER-TARGET/pwa-readiness
+```
+
+Later platform input packets:
+
+```sh
+php mtool/scripts/create_mobile_wrapper_target.php \
+  --sample=sample28 \
+  --artifact=platform-input-packets \
+  --target-dir=work/source-outputs/SAMPLE28/MOBILE-WRAPPER-TARGET/later-platform-input-packets
 ```
 
 From a handoff file:
@@ -183,6 +203,10 @@ The companion AI task packet is included as `ai_task_packet`. It is a pending, c
 The output mode config is included as `output_mode_config`. It lets users and AI consumers distinguish `mtool_no_code`, `external_no_code`, and `hybrid` before deciding which artifact path to follow.
 
 The PWA readiness packet is included as `pwa_readiness`. It gives Mtool web/no-code and React/Web wrapper consumers installability, cache, storage, and offline-readiness metadata without generating a web manifest, service worker, offline sync implementation, or app project.
+
+The React Native later-platform input packet includes `react_native_extension`. It makes React Native-specific navigation, state, form/API/auth/storage, native module, environment/build, and test expectations explicit while keeping package choices, project initialization, native files, signing, build, and store work outside Mtool.
+
+The Flutter later-platform input packet includes `flutter_webview_wrapper_extension`. It makes React/PWA source mode, shared backend endpoint policy, WebView policy, auth/deep-link handling, storage/session boundary, native bridge default-off behavior, offline/cache differences, external-owner responsibilities, and forbidden implicit actions explicit while keeping Flutter project/source/native generation outside Mtool.
 
 ## AI task packet / AI task packet
 
