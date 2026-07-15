@@ -25,15 +25,17 @@ The first slice uses only Node.js standard libraries:
 - no authentication provider;
 - no production deployment config.
 
-State is stored in a JSON file through `EphemeralRoomChatStore`.
+State is stored in SQLite by default through `SqliteRoomChatStore`.
+The first-slice JSON file store remains available through `SAMPLE40_STORE_DRIVER=json`.
 Image bytes are stored through `EphemeralImageStore`.
-This keeps the sample simple and makes a later SQLite-backed slice explicit instead of accidental.
+This keeps the sample local-durable without adding npm dependencies.
 
 ## Validation
 
 ```bash
 node sample/tutorials/sample40-ephemeral-room-chat-site/scripts/validate-sample.mjs
 node sample/tutorials/sample40-ephemeral-room-chat-site/scripts/validate-http-routes.mjs
+node sample/tutorials/sample40-ephemeral-room-chat-site/scripts/validate-sqlite-store.mjs
 ```
 
 The validator checks:
@@ -44,6 +46,7 @@ The validator checks:
 - image bytes stay outside message state;
 - unsupported image mime types are rejected;
 - expired image attachments are removed with expired messages;
+- SQLite store contract matches the JSON first-slice behavior;
 - message expiry after 24 hours;
 - inactive room expiry after 7 days;
 - room registry remains after room cleanup;
@@ -66,7 +69,6 @@ This is not a production chat service.
 
 It does not:
 
-- persist to SQLite yet;
 - provide authentication;
 - provide real-time WebSocket/SSE sync;
 - provide production image storage;
@@ -77,7 +79,7 @@ It does not:
 
 Choose whether to:
 
-- replace JSON file storage with SQLite;
 - add richer image attachment UI validation;
+- add real-time WebSocket/SSE sync;
 - add production-hardening checklist;
 - or checkpoint/PR before widening scope.
