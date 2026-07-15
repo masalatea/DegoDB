@@ -38,6 +38,33 @@ The first room-sync slice should validate:
 - same URL reopening as an empty board after clear;
 - no individual operation TTL.
 
+## First room-sync implementation
+
+The first implementation uses a dependency-free loopback Node.js server and JSON room store under `sample41-simple-whiteboard`.
+
+It intentionally validates the communication and retention contract before introducing production storage or real-time transport.
+
+Implemented first-slice coverage:
+
+- `WhiteboardRoomStore` JSON room store;
+- loopback Node.js HTTP server;
+- `/r/:roomSlug` room page;
+- browser room hook via `SAMPLE41_ROOM_SLUG`;
+- latest board fetch;
+- same-room SSE `board.updated` notification;
+- operation append;
+- stale revision conflict rejection;
+- no operation-level expiry;
+- 7-day inactive whole-board clear;
+- room registry preservation.
+
+Still out of scope for the first slice:
+
+- authentication;
+- moderation;
+- production persistence;
+- public deployment.
+
 ## Boundary
 
 This slice should not silently become a production collaborative whiteboard.

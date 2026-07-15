@@ -8,10 +8,12 @@ const textInput = document.querySelector('#textValue');
 const undoButton = document.querySelector('#undo');
 const clearButton = document.querySelector('#clear');
 const exportButton = document.querySelector('#exportPng');
+const roomSlug = globalThis.SAMPLE41_ROOM_SLUG ?? null;
 
 const boardState = {
   operations: [],
-  activeStroke: null
+  activeStroke: null,
+  revision: 0
 };
 
 function pointFromEvent(event) {
@@ -94,6 +96,7 @@ function beginStroke(event) {
         size: style.size
       });
       redraw();
+      syncOperation(boardState.operations.at(-1));
     }
     return;
   }
@@ -123,8 +126,54 @@ function endStroke(event) {
   }
   boardState.activeStroke.points.push(pointFromEvent(event));
   boardState.operations.push(boardState.activeStroke);
+  syncOperation(boardState.activeStroke);
   boardState.activeStroke = null;
   redraw();
+}
+
+async function loadRoomBoard() {
+  if (!roomSlug) {
+    return;
+  }
+  const board = await fetch(`/api/rooms/${encodeURIComponent(roomSlug)}/board`).then(response => response.json());
+  boardState.operations = board.operations ?? [];
+  boardState.revision = board.revision ?? 0;
+  redraw();
+}
+
+async function syncOperation(operation) {
+  if (!roomSlug) {
+    return;
+  }
+  const result = await fetch(`/api/rooms/${encodeURIComponent(roomSlug)}/operations`, {
+    method: 'POST',
+    headers: { 'content-type': 'application/json' },
+    body: JSON.stringify({
+      expected_revision: boardState.revision,
+      operation
+    })
+  }).then(response => response.json());
+  if (result.ok) {
+    boardState.operations = result.board.operations;
+    boardState.revision = result.board.revision;
+    redraw();
+    return;
+  }
+  if (result.error === 'revision_conflict') {
+    boardState.operations = result.board.operations;
+    boardState.revision = result.board.revision;
+    redraw();
+  }
+}
+
+function connectRoomEvents() {
+  if (!roomSlug || typeof EventSource === 'undefined') {
+    return;
+  }
+  const events = new EventSource(`/api/rooms/${encodeURIComponent(roomSlug)}/events`);
+  events.addEventListener('board.updated', async () => {
+    await loadRoomBoard();
+  });
 }
 
 function exportPng() {
@@ -157,6 +206,8 @@ clearButton.addEventListener('click', () => {
 
 exportButton.addEventListener('click', exportPng);
 
+await loadRoomBoard();
+connectRoomEvents();
 redraw();
 
 export { boardState, redraw };

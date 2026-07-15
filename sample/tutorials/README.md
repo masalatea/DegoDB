@@ -94,6 +94,7 @@ node sample/tutorials/sample40-ephemeral-room-chat-site/scripts/validate-sample.
 node sample/tutorials/sample40-ephemeral-room-chat-site/scripts/validate-http-routes.mjs
 node sample/tutorials/sample40-ephemeral-room-chat-site/scripts/validate-sqlite-store.mjs
 node sample/tutorials/sample41-simple-whiteboard/scripts/validate-sample.mjs
+node sample/tutorials/sample41-simple-whiteboard/scripts/validate-room-sync.mjs
 make sample18-http-runtime-smoke
 make test
 ```

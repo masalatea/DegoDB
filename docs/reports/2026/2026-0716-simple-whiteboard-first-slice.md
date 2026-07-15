@@ -47,6 +47,8 @@ The intended room-sync rule is:
 - keep the room name / URL registry;
 - reopening the same URL after clear starts an empty board.
 
+The first room-sync implementation now lives in the same sample with a loopback JSON store and HTTP validator.
+
 ## Validation
 
 ```bash

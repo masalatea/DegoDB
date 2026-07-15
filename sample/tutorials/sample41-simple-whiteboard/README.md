@@ -50,6 +50,7 @@ The intended rule is:
 
 ```bash
 node sample/tutorials/sample41-simple-whiteboard/scripts/validate-sample.mjs
+node sample/tutorials/sample41-simple-whiteboard/scripts/validate-room-sync.mjs
 ```
 
 ## Run locally
@@ -63,3 +64,21 @@ sample/tutorials/sample41-simple-whiteboard/public/index.html
 Or serve it with any static file server.
 
 This is a sample whiteboard, not a production collaborative drawing app.
+
+## Room sync first slice
+
+The room sync slice adds a loopback Node.js server and JSON room store.
+When opened through `/r/:roomSlug`, the browser client loads the latest board and posts new local operations to the room API.
+
+It validates:
+
+- URL-named rooms;
+- automatic room creation;
+- board operation append;
+- browser room hook;
+- latest board fetch;
+- same-room SSE `board.updated` notification;
+- revision conflict rejection;
+- no per-operation TTL;
+- whole-board clear after 7 inactive days;
+- room URL registry preservation.
