@@ -18,6 +18,7 @@ It consumes the existing handoff packets from:
 - Emits `state.updated` only to subscribers in the same room.
 - Supports latest-state fetch after reconnect or stale revision.
 - Verifies emitted events contain no SSO token, refresh token, raw invite token, or secret.
+- Provides a loopback-only HTTP/SSE fallback reference using Node.js standard library.
 
 ## What this sample intentionally does not do
 
@@ -25,10 +26,13 @@ This sample does not install dependencies, initialize a production Node.js proje
 
 The realtime transport is represented by an in-process event bus. That keeps the sample small and deterministic while preserving the important product boundary: Mtool can define and validate the sync contract shape, while production Node.js deployment remains a later explicit scope.
 
+The HTTP/SSE slice starts a temporary `127.0.0.1` server inside the validator and closes it before exit. It is a reference for fallback route behavior, not a production server or public listener.
+
 ## Validate
 
 ```bash
 node sample/tutorials/sample38-shared-state-sync-node-runtime/scripts/validate-sample.mjs
+node sample/tutorials/sample38-shared-state-sync-node-runtime/scripts/validate-http-sse-sample.mjs
 ```
 
 Expected result:

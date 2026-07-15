@@ -95,8 +95,9 @@ Sample38 で確認すること:
 - accepted update は同じ room の subscriber にだけ fanout される
 - reconnect/latest-fetch で最新 revision を取得できる
 - event / audit event に SSO token、refresh token、raw invite token、secret を含めない
+- loopback-only HTTP/SSE fallback reference が read / update / conflict / latest revision / SSE event を検証できる
 
-この sample は in-process event bus で WebSocket 相当の境界を検証する。real WebSocket server、dependency install、public port、production deploy は別scopeである。
+この sample は in-process event bus で WebSocket 相当の境界を検証し、Node.js 標準 `http` による loopback-only HTTP/SSE fallback を検証する。real WebSocket server、dependency install、public port、production deploy は別scopeである。
 
 ## 5. Handoff checklist for AI / external owner
 
@@ -155,6 +156,7 @@ Client packet を変更した場合:
 docker compose run --rm web-admin phpunit --configuration /var/www/tests/phpunit.xml /var/www/tests/Integration/SharedStateSyncClientInputTest.php
 node sample/tutorials/sample37-shared-state-sync-client-input/scripts/validate-sample.mjs
 node sample/tutorials/sample38-shared-state-sync-node-runtime/scripts/validate-sample.mjs
+node sample/tutorials/sample38-shared-state-sync-node-runtime/scripts/validate-http-sse-sample.mjs
 git diff --check
 ```
 

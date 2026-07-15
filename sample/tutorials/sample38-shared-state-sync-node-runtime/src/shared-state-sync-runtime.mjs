@@ -140,6 +140,19 @@ export class SharedStateSyncRuntime {
     return { ok: true, state: clone(next), event: clone(event) };
   }
 
+  getMembership({ roomId, userId }) {
+    const room = this.requireRoom(roomId);
+    return room.members.get(userId) ?? null;
+  }
+
+  readState({ roomId, stateKey, userId }) {
+    const role = this.getMembership({ roomId, userId });
+    if (!role) {
+      return { ok: false, error: 'membership_required' };
+    }
+    return { ok: true, role, state: this.getState({ roomId, stateKey }) };
+  }
+
   getState({ roomId, stateKey }) {
     const room = this.requireRoom(roomId);
     const current = room.state.get(stateKey);
@@ -149,8 +162,15 @@ export class SharedStateSyncRuntime {
     return clone(current);
   }
 
-  latestRevision({ roomId, stateKey }) {
-    return this.getState({ roomId, stateKey }).revision;
+  latestRevision({ roomId, stateKey, userId = null }) {
+    if (userId !== null && !this.getMembership({ roomId, userId })) {
+      return { ok: false, error: 'membership_required' };
+    }
+    const revision = this.getState({ roomId, stateKey }).revision;
+    if (userId !== null) {
+      return { ok: true, revision };
+    }
+    return revision;
   }
 
   reconnectLatestFetch({ roomId, stateKey, knownRevision }) {
