@@ -73,6 +73,8 @@
   - RSS-9 app client input packet contract。`sync-client-input.json` / `SYNC-CLIENT-INPUT.md` の packet shape、room/state/realtime/fallback/reconnect flow、validation、forbidden implicit actions を定義。SDK/source/UI生成は非scope。Status: `RSS_9_DONE`。
 - `2026-0715-shared-state-sync-client-input-next-selection.md`
   - RSS-10 client input implementation route selection。client packet はSDK/source/UI生成と誤読されやすいため、Mtool emission前に `sync-client-input.json` static/sample consumer fixture を作る判断。Status: `RSS_10_DONE_STATIC_FIXTURE_FIRST`。
+- `2026-0715-shared-state-sync-client-input-static-fixture.md`
+  - RSS-11 static fixture。`sample37-shared-state-sync-client-input` を追加し、`sync-client-input.sample.json` を依存追加・SDK/source生成なしで静的検証。room/state/realtime/fallback/reconnect と forbidden action 境界を確認。Status: `RSS_11_DONE`。
 - `2026-0715-external-framework-optional-output-boundary-check-plan.md`
   - 既に作った Mtool 独自 no-code output を置換する計画ではなく、外部 FE/no-code/app framework を optional output target として扱う boundary check 計画。`mtool_no_code` は supported baseline として維持し、Mtool metadata / validation / server authority / custom extension 境界を保ったまま `external_no_code` / `hybrid` をどう出すか確認する。Status: `REPOSITIONED_AS_OPTIONAL_OUTPUT`。
 - `2026-0715-mtool-no-code-external-framework-full-coverage-check.md`

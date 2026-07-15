@@ -1,0 +1,133 @@
+{
+  "schema_version": "shared_state_sync_client_input.v1",
+  "generated_by": {
+    "tool": "mtool",
+    "artifact": "shared_state_sync_client_input",
+    "mode": "sample_static_fixture"
+  },
+  "contracts": {
+    "shared_state_sync_contract": "docs/shared-state-sync-contract.md",
+    "schema_api_contract": "docs/shared-state-sync-schema-api-contract.md",
+    "realtime_contract": "docs/shared-state-sync-realtime-contract.md",
+    "node_server_input_contract": "docs/shared-state-sync-node-server-input-packet.md",
+    "client_input_contract": "docs/shared-state-sync-app-client-input-packet.md"
+  },
+  "client": {
+    "ownership": "external_app_client_owner",
+    "source_generation": false,
+    "sdk_generation": false
+  },
+  "backend": {
+    "api_base_url_env": "APP_BACKEND_BASE_URL",
+    "auth": {
+      "mode": "app_owned_sso_session",
+      "token_storage_owner": "app_client_owner",
+      "do_not_store_tokens_in_packet": true
+    },
+    "authority": {
+      "session_verification": "app_backend",
+      "membership": "app_backend",
+      "state_persistence": "app_backend",
+      "conflict_policy": "app_backend"
+    }
+  },
+  "room_flow": {
+    "create_room": {
+      "method": "POST",
+      "path": "/sync/rooms"
+    },
+    "list_rooms": {
+      "method": "GET",
+      "path": "/sync/rooms"
+    },
+    "join_by_invite": {
+      "method": "POST",
+      "path": "/sync/room-joins",
+      "raw_invite_token_storage": "do_not_persist_after_join"
+    },
+    "membership_required_after_join": true
+  },
+  "state_flow": {
+    "get_state": {
+      "method": "GET",
+      "path": "/sync/rooms/{room_id}/states/{state_key}"
+    },
+    "update_state": {
+      "method": "PUT",
+      "path": "/sync/rooms/{room_id}/states/{state_key}",
+      "expected_revision_required": true
+    },
+    "latest_revision": {
+      "method": "GET",
+      "path": "/sync/rooms/{room_id}/states/{state_key}/revision"
+    },
+    "conflict_error": "stale_revision"
+  },
+  "realtime_flow": {
+    "primary_transport": "websocket",
+    "websocket": {
+      "path": "/sync/ws",
+      "subscribe_command": "room.subscribe",
+      "unsubscribe_command": "room.unsubscribe",
+      "update_command": "state.update",
+      "ping_command": "ping"
+    },
+    "events": [
+      "state.updated",
+      "membership.changed",
+      "room.closed",
+      "heartbeat",
+      "reconnect.required"
+    ],
+    "event_application_policy": "apply_next_revision_or_fetch_latest"
+  },
+  "fallbacks": {
+    "sse_http": {
+      "enabled": true,
+      "event_stream": "/sync/rooms/{room_id}/events",
+      "update_transport": "http_put"
+    },
+    "polling": {
+      "enabled": true,
+      "revision_path": "/sync/rooms/{room_id}/states/{state_key}/revision",
+      "state_path": "/sync/rooms/{room_id}/states/{state_key}",
+      "realtime_claim_allowed": false
+    }
+  },
+  "reconnect": {
+    "strategy": "backoff_resubscribe_latest_fetch",
+    "steps": [
+      "detect_disconnect_or_heartbeat_timeout",
+      "reconnect_with_backoff",
+      "resubscribe_rooms",
+      "fetch_latest_revision",
+      "fetch_latest_state_when_revision_changed_or_unknown"
+    ],
+    "event_replay_required": false
+  },
+  "validation": {
+    "required_checks": [
+      "join_room_by_invite_discards_raw_token_after_join",
+      "subscribe_requires_authenticated_session",
+      "state_update_sends_expected_revision",
+      "stale_revision_fetches_latest_state",
+      "heartbeat_timeout_reconnects",
+      "reconnect_resubscribes_and_fetches_latest",
+      "membership_loss_unsubscribes_room",
+      "polling_does_not_claim_realtime",
+      "packet_contains_no_tokens_or_secrets"
+    ]
+  },
+  "forbidden_actions": [
+    "generate_client_sdk",
+    "generate_react_source",
+    "generate_flutter_source",
+    "generate_react_native_source",
+    "install_dependencies",
+    "choose_token_storage",
+    "persist_raw_invite_token",
+    "enable_offline_sync",
+    "claim_realtime_when_polling",
+    "claim_crdt_or_game_loop_support"
+  ]
+}
