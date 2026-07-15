@@ -19,7 +19,7 @@ When someone asks for "the plan list", answer from this section first. / 「計�
 - RSS 後の bundle / manifest / validation checklist 整理は完了済み。
 - 外部 consumer handoff readiness と AI-assisted external app handoff checklist は完了済み。
 - 全体整理 pass 1〜5 の初回周回は完了済み。
-- 次は、Shared-state sync runtime integration の Mtool artifact linkage を確認し、次の runtime slice またはPR checkpointを選ぶ。
+- 次は、shared-state sync を使うチャット風 domain sample の first slice を確認し、次の runtime/domain slice またはPR checkpointを選ぶ。
 
 Current main status:
 
@@ -27,14 +27,15 @@ Current main status:
 - The post-RSS bundle / manifest / validation checklist organization is complete.
 - External consumer handoff readiness and the AI-assisted external app handoff checklist are complete.
 - The first multi-pass cleanup sequence, passes 1 through 5, is complete.
-- Next is reviewing Mtool artifact linkage for the shared-state sync runtime sample and selecting the next runtime slice or PR checkpoint.
+- Next is reviewing the first chat-like domain sample on shared-state sync and selecting the next runtime/domain slice or PR checkpoint.
 
 | Order | Work unit / 作業の塊 | Commit unit / コミット単位 | Status | Next decision / 次の判断 |
 | --- | --- | --- | --- | --- |
 | 952 | Shared-state sync runtime integration sample / shared-state sync runtime integration sample | Add a dependency-free Node.js reference sample that consumes sample36/37 packets and validates room membership, revision conflict, event fanout, latest fetch, and secret-free events | `FIRST_SLICE_DONE` | `sample38-shared-state-sync-node-runtime` added as an in-process runtime-shaped reference; no production server, dependency install, public port, real WebSocket server, SDK, or token storage |
 | 953 | Shared-state sync HTTP/SSE fallback reference / shared-state sync HTTP・SSE fallback reference | Add a loopback-only Node.js standard-library HTTP/SSE adapter and validator for read/update/conflict/latest revision/SSE event behavior | `FIRST_SLICE_DONE` | `validate-http-sse-sample.mjs` starts a temporary `127.0.0.1` server and closes it; no production server, public port, dependency install, or real WebSocket server |
 | 954 | Shared-state sync Mtool artifact linkage / shared-state sync Mtool artifact linkage | Prove sample38 can consume Mtool CLI-emitted `sync-server-input.json` and `sync-client-input.json`, not only checked-in fixtures | `FIRST_SLICE_DONE` | `validate-mtool-artifact-linkage.mjs` emits server/client packets to a temporary directory, consumes them in sample38, and removes the temp files; no dependency install or production server |
-| 955 | Shared-state sync runtime next slice selection / shared-state sync runtime next slice selection | Decide whether the next slice should be real WebSocket transport, production-hardening checklist, Mtool combined bundle, or checkpoint/PR | `ACTIVE_NEXT` | Choose the next scope after reviewing in-process, HTTP/SSE, and Mtool artifact linkage validation boundaries |
+| 955 | Shared-state chat domain sample / shared-state chat domain sample | Add a chat-like domain sample on top of sample38 that validates message append, revision conflict, room-scoped fanout, cross-room isolation, and secret-free events | `FIRST_SLICE_DONE` | `sample39-shared-state-chat-demo` is a domain sample, not a production chat app, UI, persistence layer, moderation system, or real WebSocket server |
+| 956 | Shared-state sync runtime/domain next slice selection / shared-state sync runtime・domain next slice selection | Decide whether the next slice should be real WebSocket transport, production-hardening checklist, Mtool combined bundle, chat HTTP/SSE route, or checkpoint/PR | `ACTIVE_NEXT` | Choose the next scope after reviewing sample38 runtime slices and sample39 chat-domain first slice |
 
 ### Candidate Next Lanes / 次候補
 
