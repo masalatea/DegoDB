@@ -55,6 +55,8 @@
   - EF-M18 次slice選定。mobile external output stack 完了後、Room/shared-state sync with separate Node.js server を次 active lane に昇格。最初は RSS-1 shared state sync contract。Status: `EF_M18_DONE_RSS_PROMOTED`。
 - `2026-0715-shared-state-sync-contract-first-slice.md`
   - RSS-1 first slice。`docs/shared-state-sync-contract.md` を追加し、room / membership / invite token / shared state / event / conflict policy / WebSocket-first transport / validation / non-goals を定義。Status: `RSS_1_DONE`。
+- `2026-0715-shared-state-sync-schema-api-contract.md`
+  - RSS-2 schema/API contract。`sync_room`、membership、invite、shared state、event schema と、room作成/list、invite、join、state read/update/latest revision REST API contract、authorization/error/stale revision policy を定義。Status: `RSS_2_DONE`。
 - `2026-0715-external-framework-optional-output-boundary-check-plan.md`
   - 既に作った Mtool 独自 no-code output を置換する計画ではなく、外部 FE/no-code/app framework を optional output target として扱う boundary check 計画。`mtool_no_code` は supported baseline として維持し、Mtool metadata / validation / server authority / custom extension 境界を保ったまま `external_no_code` / `hybrid` をどう出すか確認する。Status: `REPOSITIONED_AS_OPTIONAL_OUTPUT`。
 - `2026-0715-mtool-no-code-external-framework-full-coverage-check.md`
