@@ -3,8 +3,9 @@ import os from 'node:os';
 import path from 'node:path';
 import crypto from 'node:crypto';
 import { fileURLToPath } from 'node:url';
-import { EphemeralRoomChatStore, normalizeRoomSlug } from './ephemeral-room-chat-store.mjs';
+import { EphemeralRoomChatStore as JsonRoomChatStore, normalizeRoomSlug } from './ephemeral-room-chat-store.mjs';
 import { EphemeralImageStore } from './ephemeral-image-store.mjs';
+import { SqliteRoomChatStore } from './sqlite-room-chat-store.mjs';
 
 function send(response, statusCode, body, contentType = 'text/plain; charset=utf-8') {
   response.writeHead(statusCode, {
@@ -132,13 +133,26 @@ function page(roomSlug) {
 </html>`;
 }
 
-function createDefaultStores({ dataDir }) {
+function createDefaultStores({
+  dataDir,
+  storeDriver = process.env.SAMPLE40_STORE_DRIVER ?? 'sqlite'
+}) {
   const imageStore = new EphemeralImageStore({ rootDir: path.join(dataDir, 'images') });
-  const store = new EphemeralRoomChatStore({
-    filePath: path.join(dataDir, 'chat-store.json'),
+  if (storeDriver === 'json') {
+    const store = new JsonRoomChatStore({
+      filePath: path.join(dataDir, 'chat-store.json'),
+      imageStore
+    });
+    return { store, imageStore, storeDriver };
+  }
+  if (storeDriver !== 'sqlite') {
+    throw new Error(`Unsupported SAMPLE40_STORE_DRIVER: ${storeDriver}`);
+  }
+  const store = new SqliteRoomChatStore({
+    filePath: path.join(dataDir, 'chat-store.sqlite'),
     imageStore
   });
-  return { store, imageStore };
+  return { store, imageStore, storeDriver };
 }
 
 function createServer({ store, imageStore }) {
@@ -222,13 +236,15 @@ function createServer({ store, imageStore }) {
 function startServer({
   port = Number(process.env.PORT ?? 8787),
   host = '127.0.0.1',
-  dataDir = process.env.SAMPLE40_DATA_DIR ?? path.join(os.tmpdir(), 'sample40-ephemeral-room-chat-site')
+  dataDir = process.env.SAMPLE40_DATA_DIR ?? path.join(os.tmpdir(), 'sample40-ephemeral-room-chat-site'),
+  storeDriver = process.env.SAMPLE40_STORE_DRIVER ?? 'sqlite'
 } = {}) {
-  const stores = createDefaultStores({ dataDir });
+  const stores = createDefaultStores({ dataDir, storeDriver });
   const server = createServer(stores);
   server.listen(port, host, () => {
     console.log(`sample40 listening on http://${host}:${port}/r/general`);
     console.log(`data dir: ${dataDir}`);
+    console.log(`store driver: ${stores.storeDriver}`);
   });
   return { server, ...stores, dataDir };
 }

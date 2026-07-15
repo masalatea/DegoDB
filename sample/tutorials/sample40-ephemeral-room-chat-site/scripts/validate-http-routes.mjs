@@ -6,7 +6,7 @@ import { once } from 'node:events';
 import { createDefaultStores, createServer } from '../src/server.mjs';
 
 const tempRoot = fs.mkdtempSync(path.join(os.tmpdir(), 'sample40-http-routes-'));
-const { store, imageStore } = createDefaultStores({ dataDir: tempRoot });
+const { store, imageStore, storeDriver } = createDefaultStores({ dataDir: tempRoot });
 const server = createServer({ store, imageStore });
 
 function listen() {
@@ -38,6 +38,8 @@ async function jsonFetch(baseUrl, pathName, { method = 'GET', body = undefined }
 
 try {
   const baseUrl = await listen();
+  assert.equal(storeDriver, 'sqlite', 'HTTP route validation uses SQLite store by default');
+  assert.equal(fs.existsSync(path.join(tempRoot, 'chat-store.sqlite')), true, 'default SQLite store file is created');
 
   const roomPage = await fetch(`${baseUrl}/r/Team%20Room!!`);
   assert.equal(roomPage.status, 200, 'room page loads');
@@ -132,10 +134,14 @@ try {
       'GET /attachments/:storageKey',
       'POST /api/cleanup'
     ],
+    store_driver: storeDriver,
     messages: messages.payload.length,
     image_attachments: imageMessage.payload.message.attachments.length
   }, null, 2));
 } finally {
   await close();
+  if (typeof store.close === 'function') {
+    store.close();
+  }
   fs.rmSync(tempRoot, { recursive: true, force: true });
 }

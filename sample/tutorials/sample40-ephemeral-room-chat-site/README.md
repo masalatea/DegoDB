@@ -24,19 +24,21 @@ The first slice uses only Node.js standard libraries:
 - no authentication provider;
 - no production deployment config.
 
-State is stored in a small JSON file through `EphemeralRoomChatStore`.
+State is stored in SQLite through `SqliteRoomChatStore` by default.
 Images are stored under the same data directory through `EphemeralImageStore` and are removed when the owning message expires or the inactive room is removed.
-That keeps the sample easy to validate and easy to replace with SQLite later.
+`SAMPLE40_STORE_DRIVER=json` remains available as a fallback for the first-slice JSON store.
 
 ## Validate
 
 ```bash
 node sample/tutorials/sample40-ephemeral-room-chat-site/scripts/validate-sample.mjs
 node sample/tutorials/sample40-ephemeral-room-chat-site/scripts/validate-http-routes.mjs
+node sample/tutorials/sample40-ephemeral-room-chat-site/scripts/validate-sqlite-store.mjs
 ```
 
-`validate-sample.mjs` checks the store/domain boundary directly.
+`validate-sample.mjs` checks the JSON first-slice store/domain boundary directly.
 `validate-http-routes.mjs` starts a temporary loopback server and checks the browser-facing API routes.
+`validate-sqlite-store.mjs` checks the SQLite store contract directly.
 
 ## Run locally
 
@@ -51,3 +53,4 @@ http://127.0.0.1:8787/r/general
 ```
 
 The server is a sample server. It is not a production chat service.
+Before cutting it out for real use, review `PRODUCTION-HARDENING.md`.
