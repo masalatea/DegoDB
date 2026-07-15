@@ -34,6 +34,18 @@ The implementation keeps the drawing model in JavaScript as serializable operati
 
 This keeps a path open for a future shared-state sample where operations can be synced through room state.
 
+## Planned room-sync retention rule
+
+The room-sync version should not delete individual strokes or text entries after 24 hours.
+Unlike chat messages, whiteboard operations depend on each other visually.
+
+The intended rule is:
+
+- keep board operations together while the room is active;
+- clear the entire board after 7 inactive days;
+- preserve the room name / URL registry;
+- reopen the same URL as an empty board after clear.
+
 ## Validate
 
 ```bash
