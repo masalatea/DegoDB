@@ -8,9 +8,27 @@ function sanitizeMessageText(text) {
   return String(text ?? '').trim();
 }
 
+function isAllowedImageMimeType(mimeType) {
+  return ['image/png', 'image/jpeg', 'image/webp', 'image/gif'].includes(String(mimeType));
+}
+
+function normalizeAttachments(attachments) {
+  return attachments.map(attachment => ({
+    attachment_id: attachment.attachment_id,
+    type: 'image',
+    file_name: attachment.file_name,
+    mime_type: attachment.mime_type,
+    size_bytes: attachment.size_bytes,
+    width: attachment.width,
+    height: attachment.height,
+    storage_key: attachment.storage_key
+  }));
+}
+
 export class SharedStateChatDemo {
-  constructor({ serverPacket, clientPacket }) {
+  constructor({ serverPacket, clientPacket, imageStore = null }) {
     this.runtime = new SharedStateSyncRuntime({ serverPacket, clientPacket });
+    this.imageStore = imageStore;
   }
 
   createChatRoom({ roomId, members = {}, initialMessages = [] }) {
@@ -49,9 +67,9 @@ export class SharedStateChatDemo {
     };
   }
 
-  appendMessage({ roomId, userId, expectedRevision, messageId, text }) {
+  appendMessage({ roomId, userId, expectedRevision, messageId, text, attachments = [] }) {
     const cleanText = sanitizeMessageText(text);
-    if (cleanText === '') {
+    if (cleanText === '' && attachments.length === 0) {
       return { ok: false, error: 'message_text_required' };
     }
 
@@ -66,7 +84,8 @@ export class SharedStateChatDemo {
       {
         id: messageId,
         user_id: userId,
-        text: cleanText
+        text: cleanText,
+        attachments: normalizeAttachments(attachments)
       }
     ];
 
@@ -94,6 +113,23 @@ export class SharedStateChatDemo {
 
   latestRevision({ roomId, userId }) {
     return this.runtime.latestRevision({ roomId, stateKey: 'messages', userId });
+  }
+
+  storeImageAttachment({ attachmentId, fileName, mimeType, bytes, width, height }) {
+    if (!this.imageStore) {
+      return { ok: false, error: 'image_store_not_configured' };
+    }
+    if (!isAllowedImageMimeType(mimeType)) {
+      return { ok: false, error: 'unsupported_image_mime_type' };
+    }
+    return this.imageStore.storeImage({
+      attachmentId,
+      fileName,
+      mimeType,
+      bytes,
+      width,
+      height
+    });
   }
 
   hasForbiddenEventPayloads() {
