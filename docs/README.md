@@ -81,6 +81,7 @@ detail doc だけを読んで mainline を再構成するのは current reading 
 - [Mobile React Wrapper Target Contract / mobile React wrapper target contract](mobile-react-wrapper-target-contract.md)
   - 検証済み `mobile-app-handoff.json` から React/Web + Capacitor 系 iOS/Android wrapper 準備へ渡す input artifact、ownership boundary、ready criteria を定義する
 - [External No-Code Output / external no-code output](external-no-code-output.md)
+  - Optional external no-code/tool output and the companion confirmation-driven AI task packet.
   - `mtool_no_code` を維持したまま、React/Web + Capacitor 系 external no-code/tool consumer へ渡す optional `external-output.json` / `.md` の schema、CLI、ownership boundary を定義する
 - [Mobile Capacitor Wrapper Proof Plan / mobile Capacitor wrapper proof plan](mobile-capacitor-wrapper-proof-plan.md)
   - Capacitor 系 wrapper proof を C1 wrapper-readiness / C2 Capacitor preparation / C3 native-device proof に分け、Mtool が最初に担う検証境界を固定する

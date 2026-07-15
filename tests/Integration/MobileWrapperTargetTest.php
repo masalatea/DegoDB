@@ -224,6 +224,56 @@ final class MobileWrapperTargetTest extends TestCase
         self::assertFileDoesNotExist($targetDir . '/android');
     }
 
+    public function testBuildsExternalAiTaskPacketForConfirmationDrivenAppCreation(): void
+    {
+        $result = app_mobile_wrapper_target_build_external_ai_task_packet($this->packet());
+
+        self::assertTrue($result['ok'], $result['error']);
+        self::assertIsArray($result['package']);
+        self::assertFalse($result['package']['mutation_performed']);
+        self::assertArrayHasKey('task.json', $result['package']['files']);
+        self::assertArrayHasKey('TASK.md', $result['package']['files']);
+        self::assertArrayHasKey('input/external-output.json', $result['package']['files']);
+        self::assertArrayHasKey('input/mobile-app-handoff.json', $result['package']['files']);
+
+        $task = $result['package']['files']['task.json'];
+        self::assertSame('mobile-external-ai-task-packet-v1', $task['task_version'] ?? '');
+        self::assertSame('pending_user_confirmation', $task['state'] ?? '');
+        self::assertSame('external_no_code_app_builder_task', $task['operation'] ?? '');
+        self::assertSame('react_web_capacitor', $task['target'] ?? '');
+        self::assertTrue($task['confirmation']['required'] ?? false);
+        self::assertSame([], $task['allowed_writes_before_confirmation'] ?? ['not-empty']);
+        self::assertContains('dependency_install', $task['prohibitions_without_explicit_user_confirmation'] ?? []);
+        self::assertContains('capacitor_init', $task['prohibitions_without_explicit_user_confirmation'] ?? []);
+        self::assertContains('database_write', $task['prohibitions_without_explicit_user_confirmation'] ?? []);
+        self::assertTrue($task['agent_instructions']['keep_mtool_no_code_as_baseline'] ?? false);
+        self::assertTrue($task['agent_instructions']['server_authority_remains_mtool_owned'] ?? false);
+        self::assertSame('mtool_external_output_contract', $task['inputs']['external_output']['authority'] ?? '');
+
+        $markdown = $result['package']['files']['TASK.md'];
+        self::assertStringContainsString('Do not continue until the user answers affirmatively', $markdown);
+        self::assertStringContainsString('external_no_code` is optional and additive', $markdown);
+        self::assertStringContainsString('`cap_sync`', $markdown);
+    }
+
+    public function testSample28ExternalAiTaskPacketEmitsOnlyTaskFiles(): void
+    {
+        $targetDir = $this->tempDir('sample28-ai-task-packet');
+
+        $result = app_mobile_wrapper_target_emit_sample28_external_ai_task_packet($targetDir);
+
+        self::assertTrue($result['ok'], $result['error']);
+        self::assertSame(['TASK.md', 'input/external-output.json', 'input/mobile-app-handoff.json', 'task.json'], $result['files']);
+        self::assertFileExists($targetDir . '/task.json');
+        self::assertFileExists($targetDir . '/TASK.md');
+        self::assertFileExists($targetDir . '/input/external-output.json');
+        self::assertFileExists($targetDir . '/input/mobile-app-handoff.json');
+        self::assertFileDoesNotExist($targetDir . '/package.json');
+        self::assertFileDoesNotExist($targetDir . '/capacitor.config.ts');
+        self::assertFileDoesNotExist($targetDir . '/ios');
+        self::assertFileDoesNotExist($targetDir . '/android');
+    }
+
     public function testSample28ReactWrapperAppHandoffEmitsOnlyProofFiles(): void
     {
         $targetDir = $this->tempDir('sample28-react-wrapper-app-handoff');
@@ -291,6 +341,23 @@ final class MobileWrapperTargetTest extends TestCase
         self::assertSame('external-output', $result['artifact']);
         self::assertSame(
             'work/source-outputs/SAMPLE28/MOBILE-WRAPPER-TARGET/react-web-capacitor-output',
+            $result['target_dir'],
+        );
+    }
+
+    public function testCliParserAcceptsAiTaskPacketArtifact(): void
+    {
+        $result = app_cli_mobile_wrapper_target_parse_args([
+            'create_mobile_wrapper_target.php',
+            '--sample=sample28',
+            '--artifact=ai-task-packet',
+            '--target-dir=work/source-outputs/SAMPLE28/MOBILE-WRAPPER-TARGET/ai-task-packet',
+        ]);
+
+        self::assertTrue($result['ok'], $result['error']);
+        self::assertSame('ai-task-packet', $result['artifact']);
+        self::assertSame(
+            'work/source-outputs/SAMPLE28/MOBILE-WRAPPER-TARGET/ai-task-packet',
             $result['target_dir'],
         );
     }
@@ -430,11 +497,14 @@ final class MobileWrapperTargetTest extends TestCase
         $manifest = $result['package']['files']['mobile-wrapper-bundle-manifest.json'];
         self::assertSame('mobile-wrapper-bundle-manifest-v1', $manifest['schema_version'] ?? '');
         self::assertSame(
-            ['c1_wrapper_readiness', 'react_wrapper_app_handoff', 'external_optional_output', 'later_platform_input_packets'],
+            ['c1_wrapper_readiness', 'react_wrapper_app_handoff', 'external_optional_output', 'ai_task_packet', 'later_platform_input_packets'],
             $manifest['artifact_order'] ?? [],
         );
         self::assertSame('external_optional_output', $manifest['artifacts'][2]['artifact_key'] ?? '');
         self::assertContains('external-output.json', $manifest['artifacts'][2]['files'] ?? []);
+        self::assertSame('ai_task_packet', $manifest['artifacts'][3]['artifact_key'] ?? '');
+        self::assertContains('task.json', $manifest['artifacts'][3]['files'] ?? []);
+        self::assertContains('input/external-output.json', $manifest['artifacts'][3]['files'] ?? []);
         self::assertContains('Flutter project', $manifest['not_generated_by_mtool'] ?? []);
         self::assertContains('React Native project', $manifest['not_generated_by_mtool'] ?? []);
         self::assertContains('Capacitor project', $manifest['not_generated_by_mtool'] ?? []);

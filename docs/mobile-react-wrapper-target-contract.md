@@ -141,6 +141,30 @@ php mtool/scripts/create_mobile_wrapper_target.php \
 
 This output is additive. It does not replace `mtool_no_code`; it gives external React/Web + Capacitor-style consumers a machine-readable `external_no_code` packet with source refs, screen/action/readiness metadata, server authority boundary, ownership boundary, confirmation-required actions, forbidden-without-artifact rules, validation gates, and non-goals.
 
+## AI task packet artifact / AI task packet artifact
+
+The companion `ai-task-packet` artifact gives Codex / Claude style tools a bounded entry point:
+
+```sh
+php mtool/scripts/create_mobile_wrapper_target.php \
+  --sample=sample28 \
+  --artifact=ai-task-packet \
+  --target-dir=work/source-outputs/SAMPLE28/MOBILE-WRAPPER-TARGET/ai-task-packet
+```
+
+It emits only:
+
+```text
+task.json
+TASK.md
+input/external-output.json
+input/mobile-app-handoff.json
+```
+
+The packet state is `pending_user_confirmation`. It requires the AI to read the declared inputs, explain that `mtool_no_code` remains the supported baseline and `external_no_code` is optional/additive, then ask the declared confirmation question before writing anything.
+
+Before confirmation, allowed writes are empty. Dependency installation, network calls, Capacitor init / `cap sync`, native project generation, file overwrite, token-storage choices, offline sync, native plugin selection, native build, signing, store submission, Mtool metadata writes, and DB writes are forbidden without explicit user confirmation.
+
 See [External No-Code Output](external-no-code-output.md) for the stable field guide.
 
 ## Boundary details / boundary details

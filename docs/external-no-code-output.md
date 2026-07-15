@@ -32,6 +32,17 @@ react-web-capacitor-output/
   EXTERNAL-OUTPUT.md
 ```
 
+The companion AI task packet emits only:
+
+```text
+ai-task-packet/
+  task.json
+  TASK.md
+  input/
+    external-output.json
+    mobile-app-handoff.json
+```
+
 It must not create:
 
 - `package.json`;
@@ -51,6 +62,15 @@ php mtool/scripts/create_mobile_wrapper_target.php \
   --sample=sample28 \
   --artifact=external-output \
   --target-dir=work/source-outputs/SAMPLE28/MOBILE-WRAPPER-TARGET/react-web-capacitor-output
+```
+
+AI task packet:
+
+```sh
+php mtool/scripts/create_mobile_wrapper_target.php \
+  --sample=sample28 \
+  --artifact=ai-task-packet \
+  --target-dir=work/source-outputs/SAMPLE28/MOBILE-WRAPPER-TARGET/ai-task-packet
 ```
 
 From a handoff file:
@@ -122,6 +142,33 @@ External owner/tool owns:
 `external-output` is included in the mobile wrapper bundle manifest as `external_optional_output`.
 
 This makes the optional external output discoverable without making it mandatory and without replacing `mtool_no_code`.
+
+The companion AI task packet is included as `ai_task_packet`. It is a pending, confirmation-driven packet for Codex / Claude style workflows. It does not execute an AI, install dependencies, initialize Capacitor, write app files, run native builds, sign apps, or submit stores.
+
+## AI task packet / AI task packet
+
+The task packet is intended for the flow:
+
+1. AI reads `task.json` first;
+2. AI reads `input/external-output.json` and `input/mobile-app-handoff.json`;
+3. AI explains the target and boundary;
+4. AI asks the declared confirmation question;
+5. only after a fresh affirmative answer in that task interaction may the AI write to a user-confirmed external app directory.
+
+Before confirmation, allowed writes are empty.
+
+Without explicit confirmation, the packet forbids:
+
+- dependency installation;
+- network calls;
+- Capacitor initialization or `cap sync`;
+- native project generation;
+- overwriting existing external app files;
+- token-storage choices;
+- offline sync;
+- native plugin selection;
+- native build, signing, and store submission;
+- Mtool metadata or database writes.
 
 ## Validation / 検証
 

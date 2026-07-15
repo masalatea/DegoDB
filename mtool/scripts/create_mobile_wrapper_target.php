@@ -12,6 +12,7 @@ Usage:
   php mtool/scripts/create_mobile_wrapper_target.php --sample=sample28 --artifact=c1 --target-dir=work/source-outputs/SAMPLE28/MOBILE-WRAPPER-TARGET/mobile-wrapper-target
   php mtool/scripts/create_mobile_wrapper_target.php --sample=sample28 --artifact=react-wrapper-app --target-dir=work/source-outputs/SAMPLE28/MOBILE-WRAPPER-TARGET/react-wrapper-app-handoff
   php mtool/scripts/create_mobile_wrapper_target.php --sample=sample28 --artifact=external-output --target-dir=work/source-outputs/SAMPLE28/MOBILE-WRAPPER-TARGET/react-web-capacitor-output
+  php mtool/scripts/create_mobile_wrapper_target.php --sample=sample28 --artifact=ai-task-packet --target-dir=work/source-outputs/SAMPLE28/MOBILE-WRAPPER-TARGET/ai-task-packet
   php mtool/scripts/create_mobile_wrapper_target.php --sample=sample28 --artifact=platform-input-packets --target-dir=work/source-outputs/SAMPLE28/MOBILE-WRAPPER-TARGET/later-platform-input-packets
   php mtool/scripts/create_mobile_wrapper_target.php --sample=sample28 --artifact=bundle-manifest --target-dir=work/source-outputs/SAMPLE28/MOBILE-WRAPPER-TARGET/mobile-wrapper-bundle
   php mtool/scripts/create_mobile_wrapper_target.php --handoff-file=work/mobile-app-handoff.json --artifact=react-wrapper-app --target-dir=work/mobile-wrapper-target/react-wrapper-app-handoff
@@ -23,7 +24,7 @@ Options:
   --project-key=KEY       Resolve work/source-outputs/{PROJECT}/{SOURCE_OUTPUT}/mobile-app-handoff.json.
   --source-output-key=KEY Source output key used with --project-key.
   --source-output-root=DIR Root for project/source-output lookup. Default: work/source-outputs.
-  --artifact=NAME         c1, react-wrapper-app, external-output, platform-input-packets, or bundle-manifest. Default: c1.
+  --artifact=NAME         c1, react-wrapper-app, external-output, ai-task-packet, platform-input-packets, or bundle-manifest. Default: c1.
   --target-dir=DIR        Controlled artifact directory to create. Existing files are not overwritten.
   --help                  Show this help.
 
@@ -31,6 +32,7 @@ Boundary:
   The c1 artifact emits only wrapper-target-contract.json and WRAPPER-CONSUMER-NOTES.md.
   The react-wrapper-app artifact emits only react-wrapper-app-handoff.json and REACT-WRAPPER-APP-HANDOFF.md.
   The external-output artifact emits only external-output.json and EXTERNAL-OUTPUT.md.
+  The ai-task-packet artifact emits only task.json, TASK.md, and declared input JSON files.
   The platform-input-packets artifact emits Flutter/React Native input packets only.
   The bundle-manifest artifact emits an index/checklist for the mobile wrapper package set.
   No artifact creates package.json, capacitor.config.ts, ios/, android/, signing config, or store submission files.
@@ -166,7 +168,7 @@ function app_cli_mobile_wrapper_target_parse_args(array $argv): array
         ];
     }
 
-    if (!in_array($artifact, ['c1', 'react-wrapper-app', 'external-output', 'platform-input-packets', 'bundle-manifest'], true)) {
+    if (!in_array($artifact, ['c1', 'react-wrapper-app', 'external-output', 'ai-task-packet', 'platform-input-packets', 'bundle-manifest'], true)) {
         return [
             'ok' => false,
             'help' => false,
@@ -177,7 +179,7 @@ function app_cli_mobile_wrapper_target_parse_args(array $argv): array
             'source_output_root' => $sourceOutputRoot,
             'artifact' => $artifact,
             'target_dir' => $targetDir,
-            'error' => 'supported --artifact values are c1, react-wrapper-app, external-output, platform-input-packets, and bundle-manifest',
+            'error' => 'supported --artifact values are c1, react-wrapper-app, external-output, ai-task-packet, platform-input-packets, and bundle-manifest',
         ];
     }
 
@@ -307,6 +309,7 @@ function app_cli_mobile_wrapper_target_emit_from_parsed(array $parsed): array
     $result = match ($parsed['artifact']) {
         'react-wrapper-app' => app_mobile_wrapper_target_emit_react_app_handoff_proof($handoffResult['handoff'], $parsed['target_dir']),
         'external-output' => app_mobile_wrapper_target_emit_external_optional_output_packet($handoffResult['handoff'], $parsed['target_dir']),
+        'ai-task-packet' => app_mobile_wrapper_target_emit_external_ai_task_packet($handoffResult['handoff'], $parsed['target_dir']),
         'platform-input-packets' => app_mobile_wrapper_target_emit_later_platform_input_packets($handoffResult['handoff'], $parsed['target_dir']),
         'bundle-manifest' => app_mobile_wrapper_target_emit_bundle_manifest($handoffResult['handoff'], $parsed['target_dir']),
         default => app_mobile_wrapper_target_emit_c1_package($handoffResult['handoff'], $parsed['target_dir']),

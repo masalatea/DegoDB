@@ -7,6 +7,7 @@ require_once __DIR__ . '/mobile_app_handoff.php';
 const APP_MOBILE_WRAPPER_TARGET_SCHEMA_VERSION = 'mobile-react-wrapper-target-v1';
 const APP_MOBILE_REACT_WRAPPER_APP_HANDOFF_SCHEMA_VERSION = 'mobile-react-wrapper-app-handoff-v1';
 const APP_MOBILE_EXTERNAL_OPTIONAL_OUTPUT_SCHEMA_VERSION = 'mobile-external-optional-output-v1';
+const APP_MOBILE_EXTERNAL_AI_TASK_PACKET_SCHEMA_VERSION = 'mobile-external-ai-task-packet-v1';
 const APP_MOBILE_LATER_PLATFORM_INPUT_PACKET_SCHEMA_VERSION = 'mobile-later-platform-input-packet-v1';
 const APP_MOBILE_WRAPPER_BUNDLE_MANIFEST_SCHEMA_VERSION = 'mobile-wrapper-bundle-manifest-v1';
 const APP_MOBILE_WRAPPER_TARGET_VERIFICATION_GATES = [
@@ -298,6 +299,105 @@ function app_mobile_wrapper_target_emit_external_optional_output_packet(array $h
 }
 
 /**
+ * Build an AI/Codex/Claude-readable task packet around the optional
+ * external-output contract.
+ *
+ * This is not an AI execution path. It emits only a pending task packet that
+ * tells the agent what to read, what to explain, what confirmation to ask for,
+ * and what it must not do without explicit user approval.
+ *
+ * @param array<string,mixed> $handoff
+ * @return array{ok:bool,error:string,package:array<string,mixed>|null,validation:array<string,mixed>}
+ */
+function app_mobile_wrapper_target_build_external_ai_task_packet(array $handoff): array
+{
+    $external = app_mobile_wrapper_target_build_external_optional_output_packet($handoff);
+    if (!$external['ok'] || !is_array($external['package'])) {
+        return [
+            'ok' => false,
+            'error' => $external['error'],
+            'package' => null,
+            'validation' => $external['validation'],
+        ];
+    }
+
+    $files = is_array($external['package']['files'] ?? null) ? $external['package']['files'] : [];
+    $externalOutput = is_array($files['external-output.json'] ?? null) ? $files['external-output.json'] : [];
+    $task = app_mobile_wrapper_target_external_ai_task_packet_from_external_output($externalOutput, $handoff);
+
+    return [
+        'ok' => true,
+        'error' => '',
+        'package' => [
+            'path_hint' => 'ai-task-packet/',
+            'mutation_performed' => false,
+            'files' => [
+                'task.json' => $task,
+                'TASK.md' => app_mobile_wrapper_target_external_ai_task_markdown($task),
+                'input/external-output.json' => $externalOutput,
+                'input/mobile-app-handoff.json' => $handoff,
+            ],
+        ],
+        'validation' => $external['validation'],
+    ];
+}
+
+/**
+ * @param array<string,mixed> $handoff
+ * @return array{ok:bool,error:string,target_dir:string,files:list<string>,validation:array<string,mixed>}
+ */
+function app_mobile_wrapper_target_emit_external_ai_task_packet(array $handoff, string $targetDir): array
+{
+    $normalizedTargetDir = rtrim($targetDir, DIRECTORY_SEPARATOR);
+    if ($normalizedTargetDir === '' || $normalizedTargetDir === '.' || $normalizedTargetDir === DIRECTORY_SEPARATOR) {
+        return app_mobile_wrapper_target_emit_result(false, 'target directory is not a controlled artifact directory', $normalizedTargetDir, [], []);
+    }
+
+    $packageResult = app_mobile_wrapper_target_build_external_ai_task_packet($handoff);
+    if (!$packageResult['ok'] || !is_array($packageResult['package'])) {
+        return app_mobile_wrapper_target_emit_result(false, $packageResult['error'], $normalizedTargetDir, [], $packageResult['validation']);
+    }
+
+    if (file_exists($normalizedTargetDir) && !is_dir($normalizedTargetDir)) {
+        return app_mobile_wrapper_target_emit_result(false, 'target path exists and is not a directory', $normalizedTargetDir, [], $packageResult['validation']);
+    }
+    if (!is_dir($normalizedTargetDir) && !mkdir($normalizedTargetDir, 0777, true)) {
+        return app_mobile_wrapper_target_emit_result(false, 'failed to create target directory', $normalizedTargetDir, [], $packageResult['validation']);
+    }
+
+    $files = $packageResult['package']['files'] ?? [];
+    if (!is_array($files)) {
+        return app_mobile_wrapper_target_emit_result(false, 'package files are invalid', $normalizedTargetDir, [], $packageResult['validation']);
+    }
+
+    $emitted = [];
+    foreach ($files as $relativePath => $content) {
+        $relativePath = (string) $relativePath;
+        if ($relativePath === '' || str_contains($relativePath, '..') || str_starts_with($relativePath, DIRECTORY_SEPARATOR)) {
+            return app_mobile_wrapper_target_emit_result(false, 'package file path is not safe', $normalizedTargetDir, $emitted, $packageResult['validation']);
+        }
+        $path = $normalizedTargetDir . DIRECTORY_SEPARATOR . $relativePath;
+        if (file_exists($path)) {
+            return app_mobile_wrapper_target_emit_result(false, 'package file already exists: ' . $relativePath, $normalizedTargetDir, $emitted, $packageResult['validation']);
+        }
+        $directory = dirname($path);
+        if (!is_dir($directory) && !mkdir($directory, 0777, true)) {
+            return app_mobile_wrapper_target_emit_result(false, 'failed to create package directory: ' . dirname($relativePath), $normalizedTargetDir, $emitted, $packageResult['validation']);
+        }
+        $text = is_array($content)
+            ? app_mobile_wrapper_target_json_text($content)
+            : (string) $content;
+        if (file_put_contents($path, $text) === false) {
+            return app_mobile_wrapper_target_emit_result(false, 'failed to write package file: ' . $relativePath, $normalizedTargetDir, $emitted, $packageResult['validation']);
+        }
+        $emitted[] = $relativePath;
+    }
+
+    sort($emitted, SORT_STRING);
+    return app_mobile_wrapper_target_emit_result(true, '', $normalizedTargetDir, $emitted, $packageResult['validation']);
+}
+
+/**
  * Build MW-4 later platform input packets for Flutter and React Native.
  *
  * These packets are structured handoff inputs for downstream builders. They do
@@ -433,6 +533,16 @@ function app_mobile_wrapper_target_build_bundle_manifest(array $handoff): array
         ];
     }
 
+    $aiTask = app_mobile_wrapper_target_build_external_ai_task_packet($handoff);
+    if (!$aiTask['ok'] || !is_array($aiTask['package'])) {
+        return [
+            'ok' => false,
+            'error' => $aiTask['error'],
+            'package' => null,
+            'validation' => $aiTask['validation'],
+        ];
+    }
+
     $platforms = app_mobile_wrapper_target_build_later_platform_input_packets($handoff);
     if (!$platforms['ok'] || !is_array($platforms['package'])) {
         return [
@@ -443,7 +553,7 @@ function app_mobile_wrapper_target_build_bundle_manifest(array $handoff): array
         ];
     }
 
-    $manifest = app_mobile_wrapper_target_bundle_manifest_from_packages($handoff, $c1['package'], $react['package'], $external['package'], $platforms['package']);
+    $manifest = app_mobile_wrapper_target_bundle_manifest_from_packages($handoff, $c1['package'], $react['package'], $external['package'], $aiTask['package'], $platforms['package']);
 
     return [
         'ok' => true,
@@ -687,6 +797,17 @@ function app_mobile_wrapper_target_emit_sample28_react_app_handoff_proof(string 
 function app_mobile_wrapper_target_emit_sample28_external_optional_output_packet(string $targetDir): array
 {
     return app_mobile_wrapper_target_emit_external_optional_output_packet(
+        app_mobile_wrapper_target_sample28_c1_handoff(),
+        $targetDir,
+    );
+}
+
+/**
+ * @return array{ok:bool,error:string,target_dir:string,files:list<string>,validation:array<string,mixed>}
+ */
+function app_mobile_wrapper_target_emit_sample28_external_ai_task_packet(string $targetDir): array
+{
+    return app_mobile_wrapper_target_emit_external_ai_task_packet(
         app_mobile_wrapper_target_sample28_c1_handoff(),
         $targetDir,
     );
@@ -1097,6 +1218,165 @@ function app_mobile_wrapper_target_external_optional_output_markdown(array $pack
 }
 
 /**
+ * @param array<string,mixed> $externalOutput
+ * @param array<string,mixed> $handoff
+ * @return array<string,mixed>
+ */
+function app_mobile_wrapper_target_external_ai_task_packet_from_external_output(array $externalOutput, array $handoff): array
+{
+    $externalBytes = app_mobile_wrapper_target_json_text($externalOutput);
+    $handoffBytes = app_mobile_wrapper_target_json_text($handoff);
+    $externalHash = hash('sha256', $externalBytes);
+    $handoffHash = hash('sha256', $handoffBytes);
+    $project = is_array($handoff['project'] ?? null) ? $handoff['project'] : [];
+    $projectKey = (string) ($project['project_key'] ?? 'PROJECT');
+    $taskId = 'external-no-code-react-web-capacitor-' . app_mobile_wrapper_target_task_id_slug($projectKey) . '-' . substr($externalHash, 0, 12);
+
+    return [
+        'task_version' => APP_MOBILE_EXTERNAL_AI_TASK_PACKET_SCHEMA_VERSION,
+        'task_id' => $taskId,
+        'project_key' => $projectKey,
+        'operation' => 'external_no_code_app_builder_task',
+        'state' => 'pending_user_confirmation',
+        'mode' => (string) ($externalOutput['mode'] ?? 'external_no_code'),
+        'target' => (string) ($externalOutput['target'] ?? 'react_web_capacitor'),
+        'inputs' => [
+            'external_output' => [
+                'path' => 'input/external-output.json',
+                'media_type' => 'application/json',
+                'sha256' => $externalHash,
+                'authority' => 'mtool_external_output_contract',
+            ],
+            'mobile_app_handoff' => [
+                'path' => 'input/mobile-app-handoff.json',
+                'media_type' => 'application/json',
+                'sha256' => $handoffHash,
+                'authority' => 'mtool_handoff_context',
+            ],
+        ],
+        'precedence' => ['external_output', 'mobile_app_handoff'],
+        'allowed_reads' => ['task.json', 'TASK.md', 'input/external-output.json', 'input/mobile-app-handoff.json'],
+        'allowed_writes_before_confirmation' => [],
+        'allowed_writes_after_confirmation' => [
+            'user_confirmed_external_app_project_or_user_confirmed_task_output_directory_only',
+        ],
+        'confirmation' => [
+            'required' => true,
+            'prompt' => 'Mtoolのexternal-outputとhandoffを読み、React/Web + Capacitor向け外部アプリ作成方針を説明します。依存install、Capacitor初期化、既存ファイル上書き、native build、signing、store submissionはまだ行いません。次に、ユーザが指定する外部アプリ用ディレクトリへ進めてよいですか？',
+        ],
+        'agent_instructions' => [
+            'read_task_json_first' => true,
+            'explain_inputs_and_boundaries_before_writing' => true,
+            'ask_confirmation_once_with_declared_prompt' => true,
+            'do_not_treat_previous_generic_continue_as_approval' => true,
+            'keep_mtool_no_code_as_baseline' => true,
+            'treat_external_no_code_as_optional_additive_output' => true,
+            'server_authority_remains_mtool_owned' => true,
+        ],
+        'prohibitions_without_explicit_user_confirmation' => [
+            'dependency_install',
+            'network',
+            'capacitor_init',
+            'cap_sync',
+            'native_project_generation',
+            'overwrite_existing_external_app_files',
+            'token_storage_choice',
+            'offline_sync',
+            'native_plugin_selection',
+            'native_build',
+            'signing',
+            'store_submission',
+            'mtool_metadata_write',
+            'database_write',
+        ],
+        'suggested_first_response' => [
+            'summarize_target' => 'React/Web + Capacitor optional external output',
+            'summarize_boundary' => 'Mtool provides contracts and server authority boundaries; the external owner owns the app shell, dependencies, Capacitor/native project, build, signing, and store submission.',
+            'ask_confirmation' => true,
+        ],
+        'validation' => [
+            'mtool_static_gates' => [
+                'php -l mtool/app/mobile_wrapper_target.php',
+                'focused MobileWrapperTargetTest',
+                'git diff --check',
+            ],
+            'consumer_reference_gates' => is_array($externalOutput['validation']['consumer_gates'] ?? null)
+                ? $externalOutput['validation']['consumer_gates']
+                : [],
+            'external_app_gates_after_user_confirmation' => [
+                'user_or_agent_defined_after_target_directory_selection',
+                'do_not_run_dependency_installing_or_native_commands until user confirms',
+            ],
+        ],
+        'completion_report' => [
+            'task_id',
+            'user_confirmed_target_directory',
+            'files_created_or_changed',
+            'validation_commands_run',
+            'commands_not_run_because_confirmation_required',
+            'mutation_performed',
+        ],
+        'mutation_performed' => false,
+    ];
+}
+
+/** @param array<string,mixed> $task */
+function app_mobile_wrapper_target_external_ai_task_markdown(array $task): string
+{
+    $lines = [
+        '# Mtool AI Task: External No-Code React/Web + Capacitor',
+        '',
+        'Status: `pending_user_confirmation`',
+        '',
+        'Read `task.json` first. It is the machine-readable authority; this document cannot broaden it.',
+        '',
+        '## Before any write',
+        '',
+        'Read `input/external-output.json` and `input/mobile-app-handoff.json`, then explain:',
+        '',
+        '- `mtool_no_code` remains the supported baseline;',
+        '- `external_no_code` is optional and additive;',
+        '- Mtool/server remains authoritative for auth, CSRF, idempotency, Transaction Full, audit, and outbox policy;',
+        '- the external owner owns React shell, routing, components, dependencies, Capacitor/native setup, build, signing, and store submission.',
+        '',
+        'Then ask exactly:',
+        '',
+        '> ' . (string) ($task['confirmation']['prompt'] ?? ''),
+        '',
+        'Do not continue until the user answers affirmatively in this task interaction. Earlier generic continuation messages do not count.',
+        '',
+        '## Allowed before confirmation',
+        '',
+        '- Read declared input files.',
+        '- Explain the planned external-app boundary.',
+        '- Ask the declared confirmation question.',
+        '',
+        '## Forbidden without explicit user confirmation',
+        '',
+    ];
+    foreach (($task['prohibitions_without_explicit_user_confirmation'] ?? []) as $item) {
+        $lines[] = '- `' . (string) $item . '`';
+    }
+    $lines[] = '';
+    $lines[] = '## Validation reference';
+    $lines[] = '';
+    foreach (($task['validation']['consumer_reference_gates'] ?? []) as $gate) {
+        $lines[] = '- `' . (string) $gate . '`';
+    }
+    $lines[] = '';
+    $lines[] = 'Success means the external app task is ready to proceed after user confirmation. It does not mean Mtool initialized Capacitor, installed dependencies, or generated a production app.';
+    $lines[] = '';
+    return implode("\n", $lines);
+}
+
+function app_mobile_wrapper_target_task_id_slug(string $value): string
+{
+    $slug = strtolower((string) preg_replace('/[^A-Za-z0-9]+/', '-', $value));
+    $slug = trim($slug, '-');
+    return $slug !== '' ? $slug : 'project';
+}
+
+/**
  * @param array<string,mixed> $reactProof
  * @return array<string,mixed>
  */
@@ -1167,6 +1447,8 @@ function app_mobile_wrapper_target_later_platform_packets_markdown(array $packet
  * @param array<string,mixed> $handoff
  * @param array<string,mixed> $c1Package
  * @param array<string,mixed> $reactPackage
+ * @param array<string,mixed> $externalPackage
+ * @param array<string,mixed> $aiTaskPackage
  * @param array<string,mixed> $platformsPackage
  * @return array<string,mixed>
  */
@@ -1175,6 +1457,7 @@ function app_mobile_wrapper_target_bundle_manifest_from_packages(
     array $c1Package,
     array $reactPackage,
     array $externalPackage,
+    array $aiTaskPackage,
     array $platformsPackage,
 ): array {
     return [
@@ -1185,6 +1468,7 @@ function app_mobile_wrapper_target_bundle_manifest_from_packages(
             'c1_wrapper_readiness',
             'react_wrapper_app_handoff',
             'external_optional_output',
+            'ai_task_packet',
             'later_platform_input_packets',
         ],
         'artifacts' => [
@@ -1205,6 +1489,12 @@ function app_mobile_wrapper_target_bundle_manifest_from_packages(
                 'path_hint' => (string) ($externalPackage['path_hint'] ?? ''),
                 'files' => array_values(array_map('strval', array_keys(is_array($externalPackage['files'] ?? null) ? $externalPackage['files'] : []))),
                 'purpose' => 'optional external_no_code packet for React/Web + Capacitor consumers',
+            ],
+            [
+                'artifact_key' => 'ai_task_packet',
+                'path_hint' => (string) ($aiTaskPackage['path_hint'] ?? ''),
+                'files' => array_values(array_map('strval', array_keys(is_array($aiTaskPackage['files'] ?? null) ? $aiTaskPackage['files'] : []))),
+                'purpose' => 'Codex/Claude-readable pending task packet for user-confirmed external app creation',
             ],
             [
                 'artifact_key' => 'later_platform_input_packets',

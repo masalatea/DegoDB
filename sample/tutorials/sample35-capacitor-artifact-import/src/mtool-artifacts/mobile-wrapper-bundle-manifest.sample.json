@@ -10,6 +10,7 @@
     "c1_wrapper_readiness",
     "react_wrapper_app_handoff",
     "external_optional_output",
+    "ai_task_packet",
     "capacitor_artifact_import_sample"
   ],
   "artifacts": [
@@ -39,6 +40,17 @@
         "EXTERNAL-OUTPUT.md"
       ],
       "purpose": "optional external no-code/tool output packet that keeps mtool_no_code as baseline"
+    },
+    {
+      "artifact_key": "ai_task_packet",
+      "path_hint": "ai-task-packet/",
+      "files": [
+        "task.json",
+        "TASK.md",
+        "input/external-output.json",
+        "input/mobile-app-handoff.json"
+      ],
+      "purpose": "Codex/Claude-readable pending task packet for user-confirmed external app creation"
     },
     {
       "artifact_key": "capacitor_artifact_import_sample",

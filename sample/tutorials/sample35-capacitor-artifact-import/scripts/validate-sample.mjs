@@ -90,6 +90,7 @@ const manifest = readJson('src/mtool-artifacts/mobile-wrapper-bundle-manifest.sa
 assert(manifest.schema_version === 'mobile-wrapper-bundle-manifest-v1', 'bundle manifest schema mismatch');
 assert(manifest.artifact_order?.includes('capacitor_artifact_import_sample'), 'bundle manifest must include sample artifact');
 assert(manifest.artifact_order?.includes('external_optional_output'), 'bundle manifest must include optional external output artifact');
+assert(manifest.artifact_order?.includes('ai_task_packet'), 'bundle manifest must include AI task packet artifact');
 
 const externalOutput = readJson('src/mtool-artifacts/external-output.sample.json');
 assert(externalOutput.schema_version === 'mobile-external-optional-output-v1', 'external output schema mismatch');

@@ -10,6 +10,7 @@ Covered Mtool operations:
 
 - artifact import and artifact index review;
 - optional `external-output.json` import and boundary review;
+- AI task packet artifact index review;
 - project/app identity display;
 - list, detail, and form screen rendering;
 - field rendering with readonly/editable and required markers;
