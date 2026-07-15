@@ -60,6 +60,41 @@ Recommended bundle key:
 }
 ```
 
+## Mtool CLI emission / Mtool CLI emission
+
+Mtool can emit the packet as a controlled artifact:
+
+```bash
+php mtool/scripts/create_shared_state_sync_server_input.php \
+  --project-key=PROJECT \
+  --backend-base-url-env=APP_BACKEND_BASE_URL \
+  --target-dir=work/source-outputs/PROJECT/SHARED-STATE-SYNC-SERVER-INPUT
+```
+
+Generated files:
+
+- `sync-server-input.json`;
+- `SYNC-SERVER-INPUT.md`.
+
+The command refuses an invalid target directory and refuses to overwrite existing files.
+
+The CLI does not:
+
+- install Node.js dependencies;
+- initialize a Node.js project;
+- start a server;
+- open a public port;
+- implement SSO/OIDC provider verification;
+- claim Redis/pubsub, queue, guaranteed replay, CRDT/OT, or game-loop support.
+
+Focused validation:
+
+```bash
+docker compose run --rm web-admin phpunit --configuration /var/www/tests/phpunit.xml /var/www/tests/Integration/SharedStateSyncServerInputTest.php
+node sample/tutorials/sample36-shared-state-sync-server-input/scripts/validate-sample.mjs
+git diff --check
+```
+
 ## Packet shape / packet shape
 
 Minimum packet:

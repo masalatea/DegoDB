@@ -67,6 +67,8 @@
   - RSS-6 static fixture。`sample36-shared-state-sync-server-input` を追加し、`sync-server-input.sample.json` を依存追加・server起動なしで静的検証。外部Node.js owner向け packet の backend authority、route/auth/state/event/fallback/validation、forbidden action 境界を確認。Status: `RSS_6_DONE`。
 - `2026-0715-shared-state-sync-server-input-artifact-emission.md`
   - RSS-7 Mtool artifact emission。`mtool/scripts/create_shared_state_sync_server_input.php` を追加し、`sync-server-input.json` / `SYNC-SERVER-INPUT.md` を生成可能にした。Node.js依存install、project init、server起動、port open、SSO実装は行わない。Status: `RSS_7_DONE`。
+- `2026-0715-shared-state-sync-server-input-docs-dry-run.md`
+  - RSS-8 docs/dry-run hardening。`docs/shared-state-sync-node-server-input-packet.md` にCLI導線とfocused validationを追記し、`/tmp/mtool-sync-server-input-rss8-doc-check` へのdry-runで2ファイルのみ生成されることを記録。Status: `RSS_8_DONE`。
 - `2026-0715-external-framework-optional-output-boundary-check-plan.md`
   - 既に作った Mtool 独自 no-code output を置換する計画ではなく、外部 FE/no-code/app framework を optional output target として扱う boundary check 計画。`mtool_no_code` は supported baseline として維持し、Mtool metadata / validation / server authority / custom extension 境界を保ったまま `external_no_code` / `hybrid` をどう出すか確認する。Status: `REPOSITIONED_AS_OPTIONAL_OUTPUT`。
 - `2026-0715-mtool-no-code-external-framework-full-coverage-check.md`
