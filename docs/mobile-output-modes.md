@@ -166,6 +166,15 @@ For Flutter WebView wrapper output, Mtool should describe how the React/PWA-read
 
 The first Flutter WebView wrapper implementation exposes this as `flutter_webview_wrapper_extension` inside `flutter-input-packet.json`.
 
+The CLI path is the existing later-platform packet artifact:
+
+```sh
+php mtool/scripts/create_mobile_wrapper_target.php \
+  --sample=sample28 \
+  --artifact=platform-input-packets \
+  --target-dir=work/source-outputs/SAMPLE28/MOBILE-WRAPPER-TARGET/later-platform-input-packets
+```
+
 ## App surface config / app surface config
 
 `app_surface_config` is the configuration model for targets that expose the same backend/API through more than one app surface.

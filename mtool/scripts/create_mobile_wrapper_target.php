@@ -38,7 +38,7 @@ Boundary:
   The ai-task-packet artifact emits only task.json, TASK.md, and declared input JSON files.
   The output-mode-config artifact emits only output-mode-config.json and OUTPUT-MODE-CONFIG.md.
   The pwa-readiness artifact emits only pwa-readiness.json and PWA-READINESS.md.
-  The platform-input-packets artifact emits Flutter/React Native input packets only.
+  The platform-input-packets artifact emits Flutter WebView wrapper and React Native input packets only.
   The bundle-manifest artifact emits an index/checklist for the mobile wrapper package set.
   No artifact creates package.json, capacitor.config.ts, ios/, android/, signing config, or store submission files.
 TEXT;
