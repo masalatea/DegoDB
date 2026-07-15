@@ -14,6 +14,9 @@ for (const file of [
   'public/index.html',
   'public/styles.css',
   'public/whiteboard.js',
+  'src/whiteboard-room-store.mjs',
+  'src/server.mjs',
+  'scripts/validate-room-sync.mjs',
   'scripts/validate-sample.mjs'
 ]) {
   assert(fs.existsSync(path.join(sampleRoot, file)), `Missing required file: ${file}`);
@@ -39,6 +42,11 @@ assert(html.includes('id="exportPng"'), 'PNG export button exists');
 assert(js.includes('pointerdown'), 'pointer drawing starts on pointerdown');
 assert(js.includes('pointermove'), 'pointer drawing continues on pointermove');
 assert(js.includes('toDataURL'), 'PNG export uses canvas data URL');
+assert(js.includes('SAMPLE41_ROOM_SLUG'), 'room-aware client hook exists');
+assert(js.includes('/operations'), 'client can sync operations to room API');
+assert(js.includes('/board'), 'client can load latest board from room API');
+assert(js.includes('EventSource'), 'client can subscribe to room update events');
+assert(js.includes('board.updated'), 'client listens for board update events');
 assert(js.includes('pointerleave'), 'drawing ends when pointer leaves the canvas');
 assert(js.includes('pointercancel'), 'touch/pointer cancellation is handled');
 assert(js.includes('setPointerCapture'), 'pointer capture supports mouse, pen, and touch drawing');

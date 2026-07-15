@@ -19,7 +19,7 @@ When someone asks for "the plan list", answer from this section first. / 「計�
 - RSS 後の bundle / manifest / validation checklist 整理は完了済み。
 - 外部 consumer handoff readiness と AI-assisted external app handoff checklist は完了済み。
 - 全体整理 pass 1〜5 の初回周回は完了済み。
-- 次は、simple whiteboard sample の first slice を確認し、shared-state / room sync へ進めるかPR checkpointを選ぶ。
+- 次は、simple whiteboard room sync first slice 後に、real-time push / production hardening / PR checkpoint のどれへ進むかを選ぶ。
 
 Current main status:
 
@@ -27,7 +27,7 @@ Current main status:
 - The post-RSS bundle / manifest / validation checklist organization is complete.
 - External consumer handoff readiness and the AI-assisted external app handoff checklist are complete.
 - The first multi-pass cleanup sequence, passes 1 through 5, is complete.
-- Next is reviewing the first slice of a simple whiteboard sample and choosing whether to continue toward shared-state / room sync or checkpoint with a PR.
+- Next is choosing whether to continue toward real-time push, production hardening, or a PR checkpoint after the simple whiteboard room sync first slice.
 
 | Order | Work unit / 作業の塊 | Commit unit / コミット単位 | Status | Next decision / 次の判断 |
 | --- | --- | --- | --- | --- |
@@ -39,6 +39,8 @@ Current main status:
 | 957 | Ephemeral room chat site sample / 24時間で消えるroom chat site sample | Add a cut-out-friendly sample site where URL-named rooms are recreated on access, image attachments are stored outside message state, messages expire after 24h, inactive rooms expire after 7d, room registry can remain, API routes are validated over loopback HTTP, SQLite is the default local durable store, and production hardening boundaries are documented | `FIRST_SLICE_DONE` | `sample40-ephemeral-room-chat-site` is self-contained and dependency-free; current slice uses Node `node:sqlite` plus ephemeral image directory, with JSON fallback and documented non-production boundaries |
 | 958 | Ephemeral chat / shared-state next slice selection / ephemeral chat・shared-state next slice selection | Decide whether the next slice should be richer image UI validation, real WebSocket transport, or checkpoint/PR | `ACTIVE_NEXT` | Choose the next scope after sample40 SQLite storage, HTTP route validation, and production-hardening checklist |
 | 959 | Simple whiteboard sample / simple whiteboard sample | Add a static-first whiteboard sample with touch/mouse/pen drawing, color, size, eraser, text, undo, clear, PNG export, and serializable drawing operations | `FIRST_SLICE_DONE` | `sample41-simple-whiteboard` is local-only and dependency-free; no realtime sync, backend persistence, room membership, authentication, or production deployment |
+| 960 | Whiteboard room sync sample / whiteboard room sync sample | Add room-based whiteboard communication using sample40-style temporary rooms, but with no per-operation TTL; clear the entire board after 7 inactive days and preserve room URL registry | `FIRST_SLICE_DONE` | `sample41` now validates room open/recreate, operation append, browser room hook, latest board fetch, revision conflict, inactive board clear, and no partial operation expiry |
+| 961 | Whiteboard room sync next slice / whiteboard room sync next slice | Decide whether to add production-hardening checklist or checkpoint/PR | `ACTIVE_NEXT` | Current room sync has loopback JSON store and SSE `board.updated` push; no auth, moderation, production persistence, or public deployment |
 
 ### Candidate Next Lanes / 次候補
 

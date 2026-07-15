@@ -34,10 +34,23 @@ The implementation keeps the drawing model in JavaScript as serializable operati
 
 This keeps a path open for a future shared-state sample where operations can be synced through room state.
 
+## Planned room-sync retention rule
+
+The room-sync version should not delete individual strokes or text entries after 24 hours.
+Unlike chat messages, whiteboard operations depend on each other visually.
+
+The intended rule is:
+
+- keep board operations together while the room is active;
+- clear the entire board after 7 inactive days;
+- preserve the room name / URL registry;
+- reopen the same URL as an empty board after clear.
+
 ## Validate
 
 ```bash
 node sample/tutorials/sample41-simple-whiteboard/scripts/validate-sample.mjs
+node sample/tutorials/sample41-simple-whiteboard/scripts/validate-room-sync.mjs
 ```
 
 ## Run locally
@@ -51,3 +64,21 @@ sample/tutorials/sample41-simple-whiteboard/public/index.html
 Or serve it with any static file server.
 
 This is a sample whiteboard, not a production collaborative drawing app.
+
+## Room sync first slice
+
+The room sync slice adds a loopback Node.js server and JSON room store.
+When opened through `/r/:roomSlug`, the browser client loads the latest board and posts new local operations to the room API.
+
+It validates:
+
+- URL-named rooms;
+- automatic room creation;
+- board operation append;
+- browser room hook;
+- latest board fetch;
+- same-room SSE `board.updated` notification;
+- revision conflict rejection;
+- no per-operation TTL;
+- whole-board clear after 7 inactive days;
+- room URL registry preservation.
