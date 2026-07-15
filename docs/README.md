@@ -33,6 +33,11 @@ top-level は外部ユーザ向け導線を優先し、内部向け文書は [In
    - [Mobile Ownership Boundaries / mobile ownership boundary](mobile-ownership-boundaries.md)
    - [Mobile Output Modes / mobile output modes](mobile-output-modes.md)
    - [Mobile Artifact Execution UI Policy / mobile artifact execution UI policy](mobile-artifact-execution-ui-policy.md)
+   - [Shared State Sync Contract / shared state sync contract](shared-state-sync-contract.md)
+   - [Shared State Sync Schema/API Contract / shared state sync schema・API contract](shared-state-sync-schema-api-contract.md)
+   - [Shared State Sync Realtime Contract / shared state sync realtime contract](shared-state-sync-realtime-contract.md)
+   - [Shared State Sync Node Server Input Packet / shared state sync Node server input packet](shared-state-sync-node-server-input-packet.md)
+   - [Shared State Sync App Client Input Packet / shared state sync app client input packet](shared-state-sync-app-client-input-packet.md)
    - [Use Cases / ユースケース](use-cases.md)
    - [Consulting Intake / 相談前チェックリスト](consulting-intake.md)
    - [Deliverables / 成果物 catalog](deliverables.md)
@@ -93,6 +98,16 @@ detail doc だけを読んで mainline を再構成するのは current reading 
   - `mtool_no_code` / `external_no_code` / `hybrid` の意味、必須 artifact、validation、UI文言、non-goal を定義する
 - [Mobile Artifact Execution UI Policy / mobile artifact execution UI policy](mobile-artifact-execution-ui-policy.md)
   - mobile artifact generation UI は現時点で read-only とし、CSRF / output-dir / overwrite / audit / failure control が揃うまで実行UIを追加しない policy
+- [Shared State Sync Contract / shared state sync contract](shared-state-sync-contract.md)
+  - SSO authenticated user、room / membership / invite token、room-scoped shared state、event、conflict policy、WebSocket-first transport boundary を定義する。Mtool は contract / input packet を担い、production Node.js realtime runtime は別 owner とする
+- [Shared State Sync Schema/API Contract / shared state sync schema・API contract](shared-state-sync-schema-api-contract.md)
+  - room / membership / invite / shared state / event の v1 schema と、room作成・invite・join・state read/update/latest revision の REST API contract を定義する
+- [Shared State Sync Realtime Contract / shared state sync realtime contract](shared-state-sync-realtime-contract.md)
+  - WebSocket-first event / command envelope、state update、membership change、heartbeat、reconnect/latest-fetch、SSE + HTTP fallback、polling fallback を定義する
+- [Shared State Sync Node Server Input Packet / shared state sync Node server input packet](shared-state-sync-node-server-input-packet.md)
+  - 別 runtime として動く Node.js sync server に渡す `sync-server-input.json` / `SYNC-SERVER-INPUT.md` の packet shape、backend integration、route/auth/state/event/fallback/validation、forbidden implicit actions を定義する
+- [Shared State Sync App Client Input Packet / shared state sync app client input packet](shared-state-sync-app-client-input-packet.md)
+  - app client owner に渡す `sync-client-input.json` / `SYNC-CLIENT-INPUT.md` の packet shape、room join、state read/update、WebSocket subscribe/update、fallback、reconnect/latest-fetch、forbidden implicit actions を定義する
 - [Use Cases / ユースケース](use-cases.md)
   - database-first、existing-database-first、legacy modernization の用途整理
 - [Consulting Intake / 相談前チェックリスト](consulting-intake.md)
@@ -158,6 +173,8 @@ detail doc だけを読んで mainline を再構成するのは current reading 
   - mobile/app handoff の責務境界正本。Mtool、外部framework、AI builder、app作成者が互いの責務を暗黙に引き受けないための区分けを固定する
 - [Mobile Output Modes / mobile output modes](mobile-output-modes.md)
   - FS後の output mode 正本。外部 handoff を支援しつつ、native project / signing / store submission / offline sync を暗黙に所有しない境界を固定する
+- [Shared State Sync Contract / shared state sync contract](shared-state-sync-contract.md)
+  - room/shared-state sync lane の最初の正本。SSO token を共有せず、app user + room membership で認可し、Node.js sync server を別runtime ownerとして扱う contract
 - [Mobile Artifact Execution UI Policy / mobile artifact execution UI policy](mobile-artifact-execution-ui-policy.md)
   - read-only guide route を維持し、UI実行は safety control 実装後に再開するという policy 正本
 - [Use Cases / ユースケース](use-cases.md)
