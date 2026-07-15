@@ -166,7 +166,7 @@ For Flutter WebView wrapper output, Mtool should describe how the React/PWA-read
 
 ## App surface config / app surface config
 
-`app_surface_config` is the planned configuration model for targets that expose the same backend/API through more than one app surface.
+`app_surface_config` is the configuration model for targets that expose the same backend/API through more than one app surface.
 
 The default model is:
 
@@ -201,6 +201,8 @@ Each surface may define its own:
 
 This allows `pwa` and `flutter_webview` to be enabled together while keeping the API endpoint common.
 Separate endpoints are allowed only when the user explicitly defines a reason such as staging/production separation, tenant separation, native-only BFF, or a separate sync server.
+
+The first implementation exposes this model from `output-mode-config.json`.
 
 ## Validation rules / validation rule
 
