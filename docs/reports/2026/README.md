@@ -11,6 +11,40 @@
 
 ## Index
 
+- `2026-0715-current-plan-history-after-rss-merge.md`
+  - `docs/current-plans.md` から完了済みの Main Plan #901-#937 と Immediate Next Sequence through RSS-16 を履歴として退避。Firebird、standalone no-code、mobile/external no-code handoff、shared-state sync packet scope は合意済み範囲で完了し、shared-state sync は `master` まで merge 済み。current plan は次の product-scope selection だけを active にする。Status: `ARCHIVED_DONE_HISTORY`。
+- `2026-0715-ai-assisted-artifact-execution-route.md`
+  - artifact generation について、browser UI の直接実行 button ではなく、Codex / Claude が task packet を読み、command・出力先・上書きpolicy・validation・禁止actionを説明して確認後にCLI実行する導線を優先する判断を記録。`docs/mobile-artifact-execution-ui-policy.md` に AI-assisted execution route を追加。Status: `DOCUMENTED_ROUTE_ONLY`。
+- `2026-0715-shared-state-sync-bundle-plan-selection.md`
+  - RSS packet scope merge 後の次 active lane として、shared-state sync bundle / manifest / validation checklist を実施する判断を記録。production Node.js runtime や client SDK 実装ではなく、完了済み contract / packet / sample / validation evidence を整理する handoff・usability lane と定義。Status: `SELECTED_ACTIVE_LANE`。
+- `2026-0715-shared-state-sync-bundle-manifest-first-slice.md`
+  - 939 first slice。`docs/shared-state-sync-bundle-manifest.md` を追加し、shared-state sync の contract / artifact / CLI / sample / validation / ownership boundary / non-goal を 1 つの handoff set として整理。combined JSON artifact はまだ実装せず、940 validation checklist 後に判断する。Status: `DONE_DOCS_MANIFEST`。
+- `2026-0715-shared-state-sync-validation-checklist.md`
+  - 940。`docs/shared-state-sync-validation-checklist.md` を追加し、shared-state sync packet set の ready 条件、contract / server packet / client packet / AI handoff checklist、禁止action、最小validation command、pass/failを整理。production runtime完成ではなく handoff readiness として定義。Status: `DONE_CHECKLIST`。
+- `2026-0715-shared-state-sync-bundle-artifact-decision.md`
+  - 941。combined `shared-state-sync-bundle.json` のような artifact を今すぐ出すべきか判断。server/client packet は既に個別CLIとsample validationがあり、docs-level manifest + validation checklist で現scopeは十分と判断。外部consumer連携で必要fieldが明確になったら再検討。Status: `DONE_DOCS_ONLY_SUFFICIENT_FOR_NOW`。
+- `2026-0715-external-consumer-integration-next-lane-plan.md`
+  - shared-state sync bundle/checklist の後に、外部 consumer / 外部 tool 連携を区切りのよいところまで進める判断を記録。最初は実装ではなく、React/Web + Capacitor、PWA、Flutter WebView、React Native、AI-assisted code builder などの候補から最小で価値のある handoff boundary を見極める。Status: `PLANNED_AFTER_RSS_BUNDLE`。
+- `2026-0715-external-consumer-milestone-selection.md`
+  - 942。外部 consumer 連携の次 milestone を比較し、特定frameworkのfull implementationではなく、React/Web + Capacitor、PWA、Flutter WebView、React Native、AI-assisted code builder の handoff readiness inventory を選定。Status: `DONE_HANDOFF_READINESS_INVENTORY_SELECTED`。
+- `2026-0715-external-consumer-handoff-gap-inventory.md`
+  - 943。`docs/external-consumer-handoff-readiness.md` を追加し、React/Web + Capacitor、PWA、Flutter WebView、React Native、Codex/Claude、shared-state sync external runtime owner の readiness と gap を棚卸し。first bounded slice として AI-assisted external app handoff checklist を推奨。Status: `DONE_GAP_INVENTORY_AI_HANDOFF_CHECKLIST_RECOMMENDED`。
+- `2026-0715-ai-assisted-external-app-handoff-checklist.md`
+  - 944。`docs/ai-assisted-external-app-handoff-checklist.md` を追加し、AI が external-output / output-mode-config / PWA / Flutter WebView / React Native / shared-state sync packet を読む際の目的、入力、出力先、上書き、禁止action、validation、確認文テンプレートを整理。app source生成やdependency installはしない。Status: `DONE_AI_HANDOFF_CHECKLIST`。
+- `2026-0715-multi-pass-cleanup-plan.md`
+  - shared-state sync bundle/checklist と外部 consumer 連携が区切りまで進んだ後、repo / docs / sample / mtool script / test / validation evidence を複数周回で整理する計画。少なくとも docs導線、sample/artifact、mtool code/script、test/evidence、最終整合・履歴archive の5 passを行い、履歴は削除せず日付付き履歴へ退避する。Status: `PLANNED_AFTER_EXTERNAL_CONSUMER_MILESTONE`。
+- `2026-0715-repository-cleanup-pass-checklist.md`
+  - 945。`docs/repository-cleanup-pass-checklist.md` を追加し、全体整理の基本ルール、分類、docs/sample/mtool code/test/final consistency の5 pass、最小command、終了条件を定義。Status: `DONE_CLEANUP_PASS_CHECKLIST`。
+- `2026-0715-cleanup-pass1-docs-navigation.md`
+  - 946。docs/current-plans、docs/README、reports index、今回追加した恒久docs・履歴を対象に docs/navigation 初回passを実施。古い direct writable UI 候補は履歴として残しつつ、AI-assisted route へ再整理された追記を追加。Status: `DONE_TARGETED_DOCS_NAVIGATION_PASS`。
+- `2026-0715-cleanup-pass2-samples-artifacts.md`
+  - 947。sample35/36/37 の README、fixture schema、validation script、dependency/native/SDK非生成境界を確認し、各 static validator を実行。代表 sample/artifact にすぐ直すべき stale reference は見つからず。Status: `DONE_REPRESENTATIVE_SAMPLE_ARTIFACT_PASS`。
+- `2026-0715-cleanup-pass3-mtool-code-script.md`
+  - 948。shared-state sync server/client input の app・CLI surface を確認。PHP lint、target-dir、controlled artifact directory、overwrite policy、bundle manifest key、forbidden actions、production/source/SDK非生成境界を確認し、挙動変更不要と判断。Status: `DONE_MTOOL_SCRIPT_SURFACE_PASS`。
+- `2026-0715-cleanup-pass4-tests-validation.md`
+  - 949。SharedStateSync server/client Integration test、sample35/36/37 validators、docs に記載した validation command の対応を確認。focused PHPUnit は server 5 tests / 39 assertions、client 5 tests / 37 assertions で pass。Status: `DONE_TEST_VALIDATION_EVIDENCE_PASS`。
+- `2026-0715-post-rss-bundle-external-cleanup-history.md`
+  - #938〜#950 を current plan から履歴へ退避。RSS bundle/checklist、外部consumer handoff readiness、AI-assisted external app checklist、全体整理pass 1〜5 の初回周回を完了済み履歴として保持。current plan は commit / PR checkpoint だけに縮小。Status: `ARCHIVED_DONE_HISTORY`。
 - `2026-0715-standalone-no-code-evidence-inventory.md`
   - `docs/no-code-standalone-scope.md` の supported capability matrix に対して、既存 sample / test / docs / report evidence を棚卸し。Sample28/29/31 runtime、Sample18 guarded route、publish candidate/current/alias、required readiness、action intent、outbox handoff、server authority boundary を covered とし、Full CRUD / offline sync / realtime shared state / external app handoff は理由付き非scopeと整理。現scope内の implementation gap はなし。次は完了report。Status: `DONE_NO_IMPLEMENTATION_GAP_FOUND`。
 - `2026-0715-standalone-no-code-completion-report.md`
