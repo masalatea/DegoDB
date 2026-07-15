@@ -1,0 +1,100 @@
+{
+  "schema_version": "mobile-wrapper-bundle-manifest-v1",
+  "mutation_performed": false,
+  "project": {
+    "project_key": "SAMPLE35",
+    "name": "Sample35 Capacitor Artifact Import",
+    "title": "Sample35 Capacitor-ready Mtool Artifact Import"
+  },
+  "artifact_order": [
+    "c1_wrapper_readiness",
+    "react_wrapper_app_handoff",
+    "external_optional_output",
+    "ai_task_packet",
+    "output_mode_config",
+    "pwa_readiness",
+    "capacitor_artifact_import_sample"
+  ],
+  "artifacts": [
+    {
+      "artifact_key": "c1_wrapper_readiness",
+      "path_hint": "mobile-wrapper-target/",
+      "files": [
+        "wrapper-target-contract.json",
+        "WRAPPER-CONSUMER-NOTES.md"
+      ],
+      "purpose": "reviewable wrapper-readiness contract and consumer notes"
+    },
+    {
+      "artifact_key": "react_wrapper_app_handoff",
+      "path_hint": "react-wrapper-app-handoff/",
+      "files": [
+        "react-wrapper-app-handoff.json",
+        "REACT-WRAPPER-APP-HANDOFF.md"
+      ],
+      "purpose": "React/Web wrapper app handoff before Capacitor preparation"
+    },
+    {
+      "artifact_key": "external_optional_output",
+      "path_hint": "react-web-capacitor-output/",
+      "files": [
+        "external-output.json",
+        "EXTERNAL-OUTPUT.md"
+      ],
+      "purpose": "optional external no-code/tool output packet that keeps mtool_no_code as baseline"
+    },
+    {
+      "artifact_key": "ai_task_packet",
+      "path_hint": "ai-task-packet/",
+      "files": [
+        "task.json",
+        "TASK.md",
+        "input/external-output.json",
+        "input/mobile-app-handoff.json"
+      ],
+      "purpose": "Codex/Claude-readable pending task packet for user-confirmed external app creation"
+    },
+    {
+      "artifact_key": "output_mode_config",
+      "path_hint": "output-mode-config/",
+      "files": [
+        "output-mode-config.json",
+        "OUTPUT-MODE-CONFIG.md"
+      ],
+      "purpose": "selected mobile output mode and artifact map for users and AI consumers"
+    },
+    {
+      "artifact_key": "pwa_readiness",
+      "path_hint": "pwa-readiness/",
+      "files": [
+        "pwa-readiness.json",
+        "PWA-READINESS.md"
+      ],
+      "purpose": "PWA installability, cache, storage, and offline readiness metadata/checklist"
+    },
+    {
+      "artifact_key": "capacitor_artifact_import_sample",
+      "path_hint": "sample/tutorials/sample35-capacitor-artifact-import/",
+      "files": [
+        "README.md",
+        "package.json",
+        "capacitor.config.ts",
+        "src/mtoolArtifacts.ts",
+        "src/mtool-artifacts/external-output.sample.json"
+      ],
+      "purpose": "external-owner sample app directly importing Mtool artifacts"
+    }
+  ],
+  "ownership_boundary": {
+    "mtool_owns": "metadata, validation, package manifests, and structured handoff packets",
+    "external_owner_owns": "React app shell, Capacitor project, native builds, signing, and store submission"
+  },
+  "not_generated_by_mtool": [
+    "production React app",
+    "Capacitor project",
+    "iOS project",
+    "Android project",
+    "signing files",
+    "store submission files"
+  ]
+}

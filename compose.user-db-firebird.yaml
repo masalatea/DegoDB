@@ -1,0 +1,406 @@
+services:
+  user-db-firebird:
+    image: firebirdsql/firebird:5.0.4
+    environment:
+      FIREBIRD_ROOT_PASSWORD: ${USER_DB_FIREBIRD_ROOT_PASSWORD:-firebird_root_local_2026}
+      FIREBIRD_USER: ${USER_DB_FIREBIRD_USER:-lab_app}
+      FIREBIRD_PASSWORD: ${USER_DB_FIREBIRD_PASSWORD:-lab_app_password}
+      FIREBIRD_DATABASE: ${USER_DB_FIREBIRD_DB:-lab_app.fdb}
+      FIREBIRD_DATABASE_DEFAULT_CHARSET: ${USER_DB_FIREBIRD_CHARSET:-UTF8}
+    ports:
+      - "${USER_DB_FIREBIRD_HOST_PORT:-13050}:3050"
+    volumes:
+      - user_db_firebird_data:/var/lib/firebird/data
+    healthcheck:
+      test:
+        [
+          "CMD-SHELL",
+          "echo 'select 1 from rdb$$database;' | /opt/firebird/bin/isql -user \"$${FIREBIRD_USER}\" -password \"$${FIREBIRD_PASSWORD}\" \"localhost:/var/lib/firebird/data/$${FIREBIRD_DATABASE}\" >/dev/null",
+        ]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+
+  user-db-mysql:
+    image: mariadb:11.4
+    environment:
+      MARIADB_ROOT_PASSWORD: ${USER_DB_MYSQL_ROOT_PASSWORD:-mysql_root_local_2026}
+      MARIADB_DATABASE: ${USER_DB_MYSQL_DB:-mtool_promotion_test_firebird_mysql}
+      MARIADB_USER: ${USER_DB_MYSQL_USER:-lab_app}
+      MARIADB_PASSWORD: ${USER_DB_MYSQL_PASSWORD:-lab_app_password}
+    ports:
+      - "${USER_DB_MYSQL_HOST_PORT:-13306}:3306"
+    volumes:
+      - user_db_mysql_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD-SHELL", "mariadb-admin ping -h 127.0.0.1 -u$${MARIADB_USER} -p$${MARIADB_PASSWORD} --silent"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+
+  firebird-php-smoke:
+    profiles:
+      - smoke
+    build:
+      context: docker/firebird-php-smoke
+      dockerfile: Dockerfile
+    working_dir: /workspace
+    volumes:
+      - .:/workspace:ro
+    environment:
+      MTOOL_FIREBIRD_DSN: "firebird:dbname=user-db-firebird/3050:/var/lib/firebird/data/${USER_DB_FIREBIRD_DB:-lab_app.fdb};charset=${USER_DB_FIREBIRD_CHARSET:-UTF8}"
+      MTOOL_FIREBIRD_USER: ${USER_DB_FIREBIRD_USER:-lab_app}
+      MTOOL_FIREBIRD_PASSWORD: ${USER_DB_FIREBIRD_PASSWORD:-lab_app_password}
+      MTOOL_FIREBIRD_SMOKE_TABLE: ${MTOOL_FIREBIRD_SMOKE_TABLE:-MTOOL_FIREBIRD_SMOKE}
+    depends_on:
+      user-db-firebird:
+        condition: service_healthy
+    command:
+      [
+        "php",
+        "mtool/scripts/check_firebird_connection_smoke.php",
+        "--pretty",
+      ]
+
+  firebird-config-schema-first-slice:
+    profiles:
+      - smoke
+    build:
+      context: docker/firebird-php-smoke
+      dockerfile: Dockerfile
+    working_dir: /workspace
+    volumes:
+      - .:/workspace:ro
+    environment:
+      MTOOL_FIREBIRD_DSN: "firebird:dbname=user-db-firebird/3050:/var/lib/firebird/data/${USER_DB_FIREBIRD_DB:-lab_app.fdb};charset=${USER_DB_FIREBIRD_CHARSET:-UTF8}"
+      MTOOL_FIREBIRD_USER: ${USER_DB_FIREBIRD_USER:-lab_app}
+      MTOOL_FIREBIRD_PASSWORD: ${USER_DB_FIREBIRD_PASSWORD:-lab_app_password}
+    depends_on:
+      user-db-firebird:
+        condition: service_healthy
+    command:
+      [
+        "php",
+        "mtool/scripts/firebird_config_schema_first_slice.php",
+        "--apply",
+        "--limit=5",
+        "--pretty",
+      ]
+
+  firebird-config-bootstrap-apply:
+    profiles:
+      - smoke
+    build:
+      context: docker/firebird-php-smoke
+      dockerfile: Dockerfile
+    working_dir: /workspace
+    volumes:
+      - .:/workspace:ro
+    environment:
+      APP_SITE: admin
+      APP_CONFIG_STORE_DRIVER: firebird
+      APP_CONFIG_DB_HOST: user-db-firebird
+      APP_CONFIG_DB_PORT: "3050"
+      APP_CONFIG_DB_NAME: "/var/lib/firebird/data/${USER_DB_FIREBIRD_DB:-lab_app.fdb}"
+      APP_CONFIG_DB_USER: ${USER_DB_FIREBIRD_USER:-lab_app}
+      APP_CONFIG_DB_PASSWORD: ${USER_DB_FIREBIRD_PASSWORD:-lab_app_password}
+      APP_CONFIG_FIREBIRD_CHARSET: ${USER_DB_FIREBIRD_CHARSET:-UTF8}
+    depends_on:
+      user-db-firebird:
+        condition: service_healthy
+    command:
+      [
+        "php",
+        "mtool/scripts/migrate_config_db.php",
+        "--requested-by=firebird-config-bootstrap-apply-docker",
+      ]
+
+  firebird-config-repository-smoke:
+    profiles:
+      - smoke
+    build:
+      context: docker/firebird-php-smoke
+      dockerfile: Dockerfile
+    working_dir: /workspace
+    volumes:
+      - .:/workspace:ro
+    environment:
+      APP_SITE: admin
+      APP_CONFIG_STORE_DRIVER: firebird
+      APP_CONFIG_DB_HOST: user-db-firebird
+      APP_CONFIG_DB_PORT: "3050"
+      APP_CONFIG_DB_NAME: "/var/lib/firebird/data/${USER_DB_FIREBIRD_DB:-lab_app.fdb}"
+      APP_CONFIG_DB_USER: ${USER_DB_FIREBIRD_USER:-lab_app}
+      APP_CONFIG_DB_PASSWORD: ${USER_DB_FIREBIRD_PASSWORD:-lab_app_password}
+      APP_CONFIG_FIREBIRD_CHARSET: ${USER_DB_FIREBIRD_CHARSET:-UTF8}
+    depends_on:
+      user-db-firebird:
+        condition: service_healthy
+    command:
+      [
+        "php",
+        "mtool/scripts/check_firebird_config_repository_smoke.php",
+        "--pretty",
+      ]
+
+  firebird-source-inspection-smoke:
+    profiles:
+      - smoke
+    build:
+      context: docker/firebird-php-smoke
+      dockerfile: Dockerfile
+    working_dir: /workspace
+    volumes:
+      - .:/workspace:ro
+    environment:
+      MTOOL_FIREBIRD_DSN: "firebird:dbname=user-db-firebird/3050:/var/lib/firebird/data/${USER_DB_FIREBIRD_DB:-lab_app.fdb};charset=${USER_DB_FIREBIRD_CHARSET:-UTF8}"
+      MTOOL_FIREBIRD_USER: ${USER_DB_FIREBIRD_USER:-lab_app}
+      MTOOL_FIREBIRD_PASSWORD: ${USER_DB_FIREBIRD_PASSWORD:-lab_app_password}
+    depends_on:
+      user-db-firebird:
+        condition: service_healthy
+    command:
+      [
+        "php",
+        "mtool/scripts/check_firebird_source_inspection_smoke.php",
+        "--pretty",
+      ]
+
+  sample05-firebird-dbaccess-smoke:
+    profiles:
+      - smoke
+    build:
+      context: docker/firebird-php-smoke
+      dockerfile: Dockerfile
+    working_dir: /workspace
+    volumes:
+      - .:/workspace:ro
+    environment:
+      MTOOL_FIREBIRD_DSN: "firebird:dbname=user-db-firebird/3050:/var/lib/firebird/data/${USER_DB_FIREBIRD_DB:-lab_app.fdb};charset=${USER_DB_FIREBIRD_CHARSET:-UTF8}"
+      MTOOL_FIREBIRD_USER: ${USER_DB_FIREBIRD_USER:-lab_app}
+      MTOOL_FIREBIRD_PASSWORD: ${USER_DB_FIREBIRD_PASSWORD:-lab_app_password}
+    depends_on:
+      user-db-firebird:
+        condition: service_healthy
+    command:
+      [
+        "php",
+        "mtool/scripts/check_sample05_firebird_dbaccess_smoke.php",
+        "--pretty",
+      ]
+
+  sample08-firebird-dbaccess-smoke:
+    profiles:
+      - smoke
+    build:
+      context: docker/firebird-php-smoke
+      dockerfile: Dockerfile
+    working_dir: /workspace
+    volumes:
+      - .:/workspace:ro
+    environment:
+      MTOOL_FIREBIRD_DSN: "firebird:dbname=user-db-firebird/3050:/var/lib/firebird/data/${USER_DB_FIREBIRD_DB:-lab_app.fdb};charset=${USER_DB_FIREBIRD_CHARSET:-UTF8}"
+      MTOOL_FIREBIRD_USER: ${USER_DB_FIREBIRD_USER:-lab_app}
+      MTOOL_FIREBIRD_PASSWORD: ${USER_DB_FIREBIRD_PASSWORD:-lab_app_password}
+    depends_on:
+      user-db-firebird:
+        condition: service_healthy
+    command:
+      [
+        "php",
+        "mtool/scripts/check_sample08_firebird_dbaccess_smoke.php",
+        "--pretty",
+      ]
+
+  sample09-firebird-dbaccess-smoke:
+    profiles:
+      - smoke
+    build:
+      context: docker/firebird-php-smoke
+      dockerfile: Dockerfile
+    working_dir: /workspace
+    volumes:
+      - .:/workspace:ro
+    environment:
+      MTOOL_FIREBIRD_DSN: "firebird:dbname=user-db-firebird/3050:/var/lib/firebird/data/${USER_DB_FIREBIRD_DB:-lab_app.fdb};charset=${USER_DB_FIREBIRD_CHARSET:-UTF8}"
+      MTOOL_FIREBIRD_USER: ${USER_DB_FIREBIRD_USER:-lab_app}
+      MTOOL_FIREBIRD_PASSWORD: ${USER_DB_FIREBIRD_PASSWORD:-lab_app_password}
+    depends_on:
+      user-db-firebird:
+        condition: service_healthy
+    command:
+      [
+        "php",
+        "mtool/scripts/check_sample09_firebird_dbaccess_smoke.php",
+        "--pretty",
+      ]
+
+  sample18-firebird-dbaccess-smoke:
+    profiles:
+      - smoke
+    build:
+      context: docker/firebird-php-smoke
+      dockerfile: Dockerfile
+    working_dir: /workspace
+    volumes:
+      - .:/workspace:ro
+    environment:
+      MTOOL_FIREBIRD_DSN: "firebird:dbname=user-db-firebird/3050:/var/lib/firebird/data/${USER_DB_FIREBIRD_DB:-lab_app.fdb};charset=${USER_DB_FIREBIRD_CHARSET:-UTF8}"
+      MTOOL_FIREBIRD_USER: ${USER_DB_FIREBIRD_USER:-lab_app}
+      MTOOL_FIREBIRD_PASSWORD: ${USER_DB_FIREBIRD_PASSWORD:-lab_app_password}
+    depends_on:
+      user-db-firebird:
+        condition: service_healthy
+    command:
+      [
+        "php",
+        "mtool/scripts/check_sample18_firebird_dbaccess_smoke.php",
+        "--pretty",
+      ]
+
+  sample21-firebird-dbaccess-smoke:
+    profiles:
+      - smoke
+    build:
+      context: docker/firebird-php-smoke
+      dockerfile: Dockerfile
+    working_dir: /workspace
+    volumes:
+      - .:/workspace:ro
+    environment:
+      MTOOL_FIREBIRD_DSN: "firebird:dbname=user-db-firebird/3050:/var/lib/firebird/data/${USER_DB_FIREBIRD_DB:-lab_app.fdb};charset=${USER_DB_FIREBIRD_CHARSET:-UTF8}"
+      MTOOL_FIREBIRD_USER: ${USER_DB_FIREBIRD_USER:-lab_app}
+      MTOOL_FIREBIRD_PASSWORD: ${USER_DB_FIREBIRD_PASSWORD:-lab_app_password}
+    depends_on:
+      user-db-firebird:
+        condition: service_healthy
+    command:
+      [
+        "php",
+        "mtool/scripts/check_sample21_firebird_dbaccess_smoke.php",
+        "--pretty",
+      ]
+
+  sample22-firebird-dbaccess-smoke:
+    profiles:
+      - smoke
+    build:
+      context: docker/firebird-php-smoke
+      dockerfile: Dockerfile
+    working_dir: /workspace
+    volumes:
+      - .:/workspace:ro
+    environment:
+      MTOOL_FIREBIRD_DSN: "firebird:dbname=user-db-firebird/3050:/var/lib/firebird/data/${USER_DB_FIREBIRD_DB:-lab_app.fdb};charset=${USER_DB_FIREBIRD_CHARSET:-UTF8}"
+      MTOOL_FIREBIRD_USER: ${USER_DB_FIREBIRD_USER:-lab_app}
+      MTOOL_FIREBIRD_PASSWORD: ${USER_DB_FIREBIRD_PASSWORD:-lab_app_password}
+    depends_on:
+      user-db-firebird:
+        condition: service_healthy
+    command:
+      [
+        "php",
+        "mtool/scripts/check_sample22_firebird_dbaccess_smoke.php",
+        "--pretty",
+      ]
+
+  sample27-firebird-app-local-persistence-smoke:
+    profiles:
+      - smoke
+    build:
+      context: docker/firebird-php-smoke
+      dockerfile: Dockerfile
+    working_dir: /workspace
+    volumes:
+      - .:/workspace:ro
+    environment:
+      MTOOL_FIREBIRD_DSN: "firebird:dbname=user-db-firebird/3050:/var/lib/firebird/data/${USER_DB_FIREBIRD_DB:-lab_app.fdb};charset=${USER_DB_FIREBIRD_CHARSET:-UTF8}"
+      MTOOL_FIREBIRD_USER: ${USER_DB_FIREBIRD_USER:-lab_app}
+      MTOOL_FIREBIRD_PASSWORD: ${USER_DB_FIREBIRD_PASSWORD:-lab_app_password}
+    depends_on:
+      user-db-firebird:
+        condition: service_healthy
+    command:
+      [
+        "php",
+        "mtool/scripts/check_sample27_firebird_app_local_persistence_smoke.php",
+        "--pretty",
+      ]
+
+  sample34-firebird-promotion-smoke:
+    profiles:
+      - smoke
+    build:
+      context: docker/firebird-php-smoke
+      dockerfile: Dockerfile
+    working_dir: /workspace
+    volumes:
+      - .:/workspace:ro
+    environment:
+      MTOOL_FIREBIRD_DSN: "firebird:dbname=user-db-firebird/3050:/var/lib/firebird/data/${USER_DB_FIREBIRD_DB:-lab_app.fdb};charset=${USER_DB_FIREBIRD_CHARSET:-UTF8}"
+      MTOOL_FIREBIRD_USER: ${USER_DB_FIREBIRD_USER:-lab_app}
+      MTOOL_FIREBIRD_PASSWORD: ${USER_DB_FIREBIRD_PASSWORD:-lab_app_password}
+    depends_on:
+      user-db-firebird:
+        condition: service_healthy
+    command:
+      [
+        "php",
+        "mtool/scripts/check_sample34_firebird_promotion_smoke.php",
+        "--pretty",
+      ]
+
+  sample34-firebird-mysql-export-smoke:
+    profiles:
+      - smoke
+    build:
+      context: docker/firebird-php-smoke
+      dockerfile: Dockerfile
+    working_dir: /workspace
+    volumes:
+      - .:/workspace:ro
+    environment:
+      MTOOL_FIREBIRD_DSN: "firebird:dbname=user-db-firebird/3050:/var/lib/firebird/data/${USER_DB_FIREBIRD_DB:-lab_app.fdb};charset=${USER_DB_FIREBIRD_CHARSET:-UTF8}"
+      MTOOL_FIREBIRD_USER: ${USER_DB_FIREBIRD_USER:-lab_app}
+      MTOOL_FIREBIRD_PASSWORD: ${USER_DB_FIREBIRD_PASSWORD:-lab_app_password}
+    depends_on:
+      user-db-firebird:
+        condition: service_healthy
+    command:
+      [
+        "php",
+        "mtool/scripts/check_sample34_firebird_mysql_export_smoke.php",
+        "--pretty",
+      ]
+
+  sample34-firebird-mysql-import-smoke:
+    profiles:
+      - smoke
+    build:
+      context: docker/firebird-php-smoke
+      dockerfile: Dockerfile
+    working_dir: /workspace
+    volumes:
+      - .:/workspace:ro
+    environment:
+      MTOOL_FIREBIRD_DSN: "firebird:dbname=user-db-firebird/3050:/var/lib/firebird/data/${USER_DB_FIREBIRD_DB:-lab_app.fdb};charset=${USER_DB_FIREBIRD_CHARSET:-UTF8}"
+      MTOOL_FIREBIRD_USER: ${USER_DB_FIREBIRD_USER:-lab_app}
+      MTOOL_FIREBIRD_PASSWORD: ${USER_DB_FIREBIRD_PASSWORD:-lab_app_password}
+      MTOOL_MYSQL_DSN: "mysql:host=user-db-mysql;port=3306;dbname=${USER_DB_MYSQL_DB:-mtool_promotion_test_firebird_mysql};charset=utf8mb4"
+      MTOOL_MYSQL_USER: ${USER_DB_MYSQL_USER:-lab_app}
+      MTOOL_MYSQL_PASSWORD: ${USER_DB_MYSQL_PASSWORD:-lab_app_password}
+    depends_on:
+      user-db-firebird:
+        condition: service_healthy
+      user-db-mysql:
+        condition: service_healthy
+    command:
+      [
+        "php",
+        "mtool/scripts/check_sample34_firebird_mysql_import_smoke.php",
+        "--pretty",
+      ]
+
+volumes:
+  user_db_firebird_data:
+  user_db_mysql_data:

@@ -1,0 +1,127 @@
+{
+  "sample": "sample34-sqlite-to-firebird-promotion",
+  "structure_type": "promotion-tutorial-sample",
+  "promotion_contract": "sqlite-firebird-promotion-contract-v1",
+  "options": {
+    "target_identity": "sample34-firebird-local-file"
+  },
+  "source_sql": [
+    "PRAGMA foreign_keys = ON",
+    "CREATE TABLE parent (id INTEGER PRIMARY KEY, code TEXT NOT NULL)",
+    "CREATE TABLE record (id INTEGER PRIMARY KEY, parent_id INTEGER NOT NULL, title TEXT NOT NULL, enabled INTEGER, amount TEXT NOT NULL, payload TEXT NOT NULL, body TEXT, recorded_at TEXT, bytes BLOB, UNIQUE(parent_id, title), FOREIGN KEY(parent_id) REFERENCES parent(id))",
+    "INSERT INTO parent VALUES (2, 'P2')"
+  ],
+  "source_rows": [
+    {
+      "sql": "INSERT INTO record VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)",
+      "values": [9, 2, "First", 1, "10.50", "{\"z\":2,\"a\":1}", "hello Firebird", "2026-07-13 01:02:03.1234", {"encoding": "base64", "value": "AEEB"}]
+    },
+    {
+      "sql": "INSERT INTO record VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)",
+      "values": [3, 2, "Second", null, "0.00", "{\"a\":0}", null, null, null]
+    }
+  ],
+  "canonical_snapshot": {
+    "tables": [
+      {
+        "name": "parent",
+        "keys": [
+          {"kind": "primary", "name": "pk_parent", "columns": ["id"]}
+        ],
+        "foreign_keys": [],
+        "columns": [
+          {"name": "id", "type": "bigint", "nullable": false},
+          {"name": "code", "type": "varchar(40)", "nullable": false}
+        ]
+      },
+      {
+        "name": "record",
+        "keys": [
+          {"kind": "primary", "name": "pk_record", "columns": ["id"]},
+          {"kind": "unique", "name": "uq_record_parent_title", "columns": ["parent_id", "title"]}
+        ],
+        "foreign_keys": [
+          {
+            "name": "fk_record_parent",
+            "columns": ["parent_id"],
+            "referenced_table": "parent",
+            "referenced_columns": ["id"]
+          }
+        ],
+        "columns": [
+          {"name": "id", "type": "bigint", "nullable": false},
+          {"name": "parent_id", "type": "bigint", "nullable": false},
+          {"name": "title", "type": "varchar(255)", "nullable": false, "default": ""},
+          {"name": "enabled", "type": "boolean", "nullable": true},
+          {"name": "amount", "type": "decimal(12,2)", "nullable": false},
+          {"name": "payload", "type": "json", "nullable": false},
+          {"name": "body", "type": "text", "nullable": true},
+          {"name": "recorded_at", "type": "datetime", "nullable": true},
+          {"name": "bytes", "type": "blob", "nullable": true}
+        ]
+      }
+    ]
+  },
+  "sqlite_inspection": {
+    "source_identity": "sample34.sqlite",
+    "tables": [
+      {
+        "name": "record",
+        "row_count": 2,
+        "keys": [
+          {"kind": "primary", "name": "pk_record", "columns": ["id"]},
+          {"kind": "unique", "name": "uq_record_parent_title", "columns": ["parent_id", "title"]}
+        ],
+        "foreign_keys": [
+          {
+            "name": "fk_record_parent",
+            "columns": ["parent_id"],
+            "referenced_table": "parent",
+            "referenced_columns": ["id"]
+          }
+        ],
+        "columns": [
+          {"name": "id", "type": "INTEGER", "profile": {"storage_classes": ["integer"]}},
+          {"name": "parent_id", "type": "INTEGER", "profile": {"storage_classes": ["integer"]}},
+          {"name": "title", "type": "TEXT", "profile": {"storage_classes": ["text"]}},
+          {"name": "enabled", "type": "INTEGER", "profile": {"storage_classes": ["integer", "null"]}},
+          {"name": "amount", "type": "TEXT", "profile": {"storage_classes": ["text"]}},
+          {"name": "payload", "type": "TEXT", "profile": {"storage_classes": ["text"]}},
+          {"name": "body", "type": "TEXT", "profile": {"storage_classes": ["text", "null"]}},
+          {"name": "recorded_at", "type": "TEXT", "profile": {"storage_classes": ["text", "null"]}},
+          {"name": "bytes", "type": "BLOB", "profile": {"storage_classes": ["blob", "null"]}}
+        ]
+      },
+      {
+        "name": "parent",
+        "row_count": 1,
+        "keys": [
+          {"kind": "primary", "name": "pk_parent", "columns": ["id"]}
+        ],
+        "foreign_keys": [],
+        "columns": [
+          {"name": "id", "type": "INTEGER", "profile": {"storage_classes": ["integer"]}},
+          {"name": "code", "type": "TEXT", "profile": {"storage_classes": ["text"]}}
+        ]
+      }
+    ]
+  },
+  "expected": {
+    "target_driver": "firebird",
+    "target_profile": "local_durable_file",
+    "table_order": ["parent", "record"],
+    "required_verification": [
+      "row_counts",
+      "primary_keys",
+      "row_digests",
+      "unique_keys",
+      "foreign_keys",
+      "json_values",
+      "blob_values",
+      "timestamp_values",
+      "next_ids",
+      "dbaccess_smoke",
+      "firebird_backup_restore_smoke"
+    ]
+  }
+}

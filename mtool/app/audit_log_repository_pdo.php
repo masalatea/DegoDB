@@ -105,7 +105,7 @@ function app_pdo_audit_log_fetch_latest(array $app, array $filters = []): array
                 ' . $createdAtSelect . '
             FROM audit_events'
             . ($where === [] ? '' : ' WHERE ' . implode(' AND ', $where))
-            . ' ORDER BY created_at DESC, id DESC LIMIT ' . $limit
+            . ' ORDER BY created_at DESC, id DESC ' . app_sql_limit_clause($dialect, $limit)
         );
         $statement->execute($params);
 
@@ -235,7 +235,7 @@ function app_pdo_audit_log_fetch_by_event_key(PDO $pdo, string $eventKey): array
             ' . $createdAtSelect . '
         FROM audit_events
         WHERE event_key = :event_key
-        LIMIT 1'
+        ' . app_sql_limit_clause($dialect, 1)
     );
     $statement->execute([
         ':event_key' => $eventKey,
@@ -251,6 +251,7 @@ function app_pdo_audit_log_fetch_by_event_key(PDO $pdo, string $eventKey): array
  */
 function app_audit_log_item_from_row(array $row): array
 {
+    $row = app_sql_normalize_row_keys($row);
     $metadata = json_decode((string) ($row['metadata_json'] ?? '{}'), true);
     if (!is_array($metadata)) {
         $metadata = [];

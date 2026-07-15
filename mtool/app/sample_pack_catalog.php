@@ -44,6 +44,8 @@ function app_sample_pack_category_map(): array
             'sample31-no-code-inventory-request-demo',
             'sample32-no-code-ui-test-lab',
             'sample33-sqlite-to-mysql-promotion',
+            'sample34-sqlite-to-firebird-promotion',
+            'sample35-capacitor-artifact-import',
         ],
         'internal-patterns' => [
             'pattern01-default-property-split',
@@ -219,6 +221,17 @@ function app_sample_pack_promotion_tutorial_sample_names(): array
 {
     return [
         'sample33-sqlite-to-mysql-promotion',
+        'sample34-sqlite-to-firebird-promotion',
+    ];
+}
+
+/**
+ * @return list<string>
+ */
+function app_sample_pack_app_wrapper_tutorial_sample_names(): array
+{
+    return [
+        'sample35-capacitor-artifact-import',
     ];
 }
 
@@ -234,6 +247,10 @@ function app_sample_pack_structure_type(string $packName): string
 
     if (in_array($packName, app_sample_pack_promotion_tutorial_sample_names(), true)) {
         return 'promotion-tutorial-sample';
+    }
+
+    if (in_array($packName, app_sample_pack_app_wrapper_tutorial_sample_names(), true)) {
+        return 'app-wrapper-tutorial-sample';
     }
 
     return '';

@@ -6,6 +6,7 @@ COMPOSE_LOCAL := $(COMPOSE_BASE) -f compose.local-db-config.yaml
 COMPOSE_MTOOL := $(COMPOSE_LOCAL) -f mtool/docker/compose/01_mtool.compose.yaml
 COMPOSE_MTOOL_LITE := $(COMPOSE_BASE) -f mtool/docker/compose/01_mtool-lite.compose.yaml
 COMPOSE_USER_DB_PGSQL := $(COMPOSE) -f compose.user-db-pgsql.yaml
+COMPOSE_USER_DB_FIREBIRD := $(COMPOSE) -f compose.user-db-firebird.yaml
 DURABLE_ENV_FILE ?= .env.durable
 COMPOSE_DURABLE := $(COMPOSE) --env-file $(DURABLE_ENV_FILE) -f compose.yaml
 CONFIG_DB_BACKUP_DIR ?= work/backups/config-db
@@ -18,6 +19,18 @@ USER_DB_PGSQL_CONTAINER_HOST ?= host.docker.internal
 USER_DB_PGSQL_DB ?= lab_app
 USER_DB_PGSQL_USER ?= lab_app
 USER_DB_PGSQL_PASSWORD ?= lab_app_password
+USER_DB_FIREBIRD_HOST_PORT ?= 13050
+USER_DB_FIREBIRD_CONTAINER_HOST ?= host.docker.internal
+USER_DB_FIREBIRD_DB ?= lab_app.fdb
+USER_DB_FIREBIRD_USER ?= lab_app
+USER_DB_FIREBIRD_PASSWORD ?= lab_app_password
+USER_DB_FIREBIRD_ROOT_PASSWORD ?= firebird_root_local_2026
+USER_DB_MYSQL_HOST_PORT ?= 13306
+USER_DB_MYSQL_DB ?= mtool_promotion_test_firebird_mysql
+USER_DB_MYSQL_USER ?= lab_app
+USER_DB_MYSQL_PASSWORD ?= lab_app_password
+USER_DB_MYSQL_ROOT_PASSWORD ?= mysql_root_local_2026
+MTOOL_FIREBIRD_SMOKE_TABLE ?= MTOOL_FIREBIRD_SMOKE
 
 .DEFAULT_GOAL := help
 
@@ -169,6 +182,7 @@ ROOT_TMP_DIR := tmp
 .PHONY: sample01-pack-runtime-test-sqlite sample1-output-test-sqlite sample1-output-check-sqlite sample02-pack-runtime-test-sqlite sample2-output-test-sqlite sample2-output-check-sqlite sample03-pack-runtime-test-sqlite sample3-output-test-sqlite sample3-output-check-sqlite sample04-pack-runtime-test-sqlite sample4-output-test-sqlite sample4-output-check-sqlite sample05-pack-runtime-test-sqlite sample5-output-test-sqlite sample5-output-check-sqlite sample06-pack-runtime-test-sqlite sample6-output-test-sqlite sample6-output-check-sqlite sample07-pack-runtime-test-sqlite sample7-output-test-sqlite sample7-output-check-sqlite sample08-pack-runtime-test-sqlite sample8-output-test-sqlite sample8-output-check-sqlite sample09-pack-runtime-test-sqlite sample09-runtime-output-test-sqlite sample10-pack-runtime-test-sqlite sample10-runtime-output-test-sqlite sample11-pack-runtime-test-sqlite sample11-runtime-output-test-sqlite sample12-pack-runtime-test-sqlite sample12-runtime-output-test-sqlite sample13-pack-runtime-test-sqlite sample13-runtime-output-test-sqlite sample13-http-runtime-smoke sample13-http-runtime-smoke-sqlite sample13-browser-try-it-out-smoke sample13-browser-try-it-out-smoke-sqlite sample14-pack-runtime-test-sqlite sample14-runtime-output-test-sqlite sample15-pack-runtime-test-sqlite sample15-runtime-output-test-sqlite sample16-pack-runtime-test-sqlite sample16-runtime-output-test-sqlite sample16-http-runtime-smoke sample16-http-runtime-smoke-sqlite sample17-pack-runtime-test-sqlite sample17-runtime-output-test-sqlite sample18-pack-runtime-test-sqlite sample18-runtime-output-test-sqlite sample18-http-runtime-smoke sample19-pack-runtime-test-sqlite sample19-runtime-output-test-sqlite sample25-browser-try-it-out-smoke
 .PHONY: artifact-parity-capture-mysql artifact-parity-capture-sqlite artifact-parity-compare artifact-parity-test
 .PHONY: up-user-db-pgsql down-user-db-pgsql reset-user-db-pgsql ps-user-db-pgsql logs-user-db-pgsql health-user-db-pgsql user-db-contract-capture-mysql user-db-contract-capture-sqlite user-db-contract-capture-pgsql user-db-contract-compare user-db-contract-compare-pgsql user-db-contract-test user-db-contract-test-pgsql postgresql-user-db-test-local
+.PHONY: firebird-connection-smoke firebird-connection-smoke-docker firebird-config-schema-preflight firebird-config-schema-first-slice-docker firebird-config-bootstrap-apply-docker firebird-config-repository-smoke-docker firebird-source-inspection-smoke-docker sample05-firebird-dbaccess-smoke-docker sample08-firebird-dbaccess-smoke-docker sample09-firebird-dbaccess-smoke-docker sample18-firebird-dbaccess-smoke-docker sample21-firebird-dbaccess-smoke-docker sample22-firebird-dbaccess-smoke-docker sample27-firebird-app-local-persistence-smoke-docker sample34-firebird-promotion-smoke-docker sample34-firebird-mysql-export-smoke-docker sample34-firebird-mysql-import-smoke-docker sample34-firebird-backup-restore-smoke-docker
 .PHONY: generated-name-migration-capture-samples-before generated-name-migration-capture-samples-after generated-name-migration-validate-sample-keyword-map generated-name-migration-transform-samples-after generated-name-migration-compare-samples generated-name-migration-derive-keyword-map generated-name-migration-derive-sample-keyword-map generated-name-migration-scan-sample-keywords
 .PHONY: mtool-oidc-login-smoke
 .PHONY: sample07-no-code-runtime-ui-smoke sample18-no-code-public-runtime-filter-dom-smoke sample18-no-code-public-runtime-disabled-action-smoke sample18-no-code-public-runtime-enabled-candidate-smoke sample18-no-code-preview-availability-diagnostics-smoke sample18-failure-runtime-reference-fixture sample18-guarded-transaction-http-smoke sample28-no-code-runtime-ui-smoke sample28-no-code-public-runtime-browser-smoke sample28-no-code-react-bridge-build-smoke sample28-no-code-react-bridge-browser-smoke sample28-no-code-schema-form-runtime-smoke sample29-no-code-runtime-ui-smoke sample29-no-code-public-runtime-browser-smoke sample31-no-code-runtime-ui-smoke sample31-no-code-public-runtime-browser-smoke sample-no-code-public-runtime-browser-smoke
@@ -1246,6 +1260,34 @@ logs-user-db-pgsql: ## PostgreSQL user DB contract 用 compose stack のログ�
 health-user-db-pgsql: ## PostgreSQL user DB contract 用 database の readiness を確認する
 	$(COMPOSE_USER_DB_PGSQL) exec -T user-db-pgsql pg_isready -U $(USER_DB_PGSQL_USER) -d $(USER_DB_PGSQL_DB)
 
+up-user-db-firebird: ## Firebird local durable profile proof 用の local Firebird を起動する
+	USER_DB_FIREBIRD_HOST_PORT=$(USER_DB_FIREBIRD_HOST_PORT) \
+	USER_DB_FIREBIRD_DB=$(USER_DB_FIREBIRD_DB) \
+	USER_DB_FIREBIRD_USER=$(USER_DB_FIREBIRD_USER) \
+	USER_DB_FIREBIRD_PASSWORD=$(USER_DB_FIREBIRD_PASSWORD) \
+	USER_DB_FIREBIRD_ROOT_PASSWORD=$(USER_DB_FIREBIRD_ROOT_PASSWORD) \
+	USER_DB_MYSQL_HOST_PORT=$(USER_DB_MYSQL_HOST_PORT) \
+	USER_DB_MYSQL_DB=$(USER_DB_MYSQL_DB) \
+	USER_DB_MYSQL_USER=$(USER_DB_MYSQL_USER) \
+	USER_DB_MYSQL_PASSWORD=$(USER_DB_MYSQL_PASSWORD) \
+	USER_DB_MYSQL_ROOT_PASSWORD=$(USER_DB_MYSQL_ROOT_PASSWORD) \
+	$(COMPOSE_USER_DB_FIREBIRD) up -d --wait
+
+down-user-db-firebird: ## Firebird local durable profile proof 用の local Firebird を停止する
+	$(COMPOSE_USER_DB_FIREBIRD) down
+
+reset-user-db-firebird: ## Firebird local durable profile proof 用の local Firebird volume を削除して停止する
+	$(COMPOSE_USER_DB_FIREBIRD) down -v
+
+ps-user-db-firebird: ## Firebird proof 用 compose stack の状態を見る
+	$(COMPOSE_USER_DB_FIREBIRD) ps
+
+logs-user-db-firebird: ## Firebird proof 用 compose stack のログを見る
+	$(COMPOSE_USER_DB_FIREBIRD) logs --tail=120 user-db-firebird
+
+health-user-db-firebird: ## Firebird proof 用 database の readiness を確認する
+	$(COMPOSE_USER_DB_FIREBIRD) exec -T user-db-firebird sh -lc 'echo "select 1 from rdb\$$database;" | /opt/firebird/bin/isql -user "$$FIREBIRD_USER" -password "$$FIREBIRD_PASSWORD" "localhost:/var/lib/firebird/data/$$FIREBIRD_DATABASE"'
+
 artifact-parity-capture-mysql: ## MySQL/MariaDB config store lane の parity 対象 artifact を capture する
 	bash mtool/scripts/run_artifact_parity_capture.sh \
 		--lane=mysql \
@@ -1316,6 +1358,115 @@ postgresql-user-db-test-local: up-user-db-pgsql ## local PostgreSQL compose stac
 		--compose-file=$(SAMPLE12_COMPOSE_FILE) \
 		--run-script=$(SAMPLE12_RUN) \
 		--phpunit-target=/var/www/tests/Integration/Sample12PostgresqlLiveSchemaImportTest.php
+
+firebird-connection-smoke: ## Firebird local durable profile の opt-in 接続 smoke を実行する（MTOOL_FIREBIRD_* と PDO_FIREBIRD が必要）
+	MTOOL_FIREBIRD_SMOKE_TABLE=$(MTOOL_FIREBIRD_SMOKE_TABLE) \
+	$(PHP) mtool/scripts/check_firebird_connection_smoke.php --pretty
+
+firebird-connection-smoke-docker: up-user-db-firebird ## Docker 内の PDO_FIREBIRD client で Firebird 接続 smoke を実行する
+	USER_DB_FIREBIRD_DB=$(USER_DB_FIREBIRD_DB) \
+	USER_DB_FIREBIRD_USER=$(USER_DB_FIREBIRD_USER) \
+	USER_DB_FIREBIRD_PASSWORD=$(USER_DB_FIREBIRD_PASSWORD) \
+	MTOOL_FIREBIRD_SMOKE_TABLE=$(MTOOL_FIREBIRD_SMOKE_TABLE) \
+	$(COMPOSE_USER_DB_FIREBIRD) --profile smoke run --rm firebird-php-smoke
+
+firebird-config-schema-preflight: ## Firebird config-store schema fit の read-only preflight を実行する
+	$(PHP) mtool/scripts/firebird_config_schema_preflight.php --pretty
+
+firebird-config-schema-first-slice-docker: up-user-db-firebird ## Docker 内の Firebird proof DB に config schema CREATE TABLE first slice を適用する
+	USER_DB_FIREBIRD_DB=$(USER_DB_FIREBIRD_DB) \
+	USER_DB_FIREBIRD_USER=$(USER_DB_FIREBIRD_USER) \
+	USER_DB_FIREBIRD_PASSWORD=$(USER_DB_FIREBIRD_PASSWORD) \
+	$(COMPOSE_USER_DB_FIREBIRD) --profile smoke run --rm firebird-config-schema-first-slice
+
+firebird-config-bootstrap-apply-docker: up-user-db-firebird ## Docker 内の Firebird proof DB に full config-initdb bootstrap を適用する
+	USER_DB_FIREBIRD_DB=$(USER_DB_FIREBIRD_DB) \
+	USER_DB_FIREBIRD_USER=$(USER_DB_FIREBIRD_USER) \
+	USER_DB_FIREBIRD_PASSWORD=$(USER_DB_FIREBIRD_PASSWORD) \
+	$(COMPOSE_USER_DB_FIREBIRD) --profile smoke run --rm firebird-config-bootstrap-apply
+
+firebird-config-repository-smoke-docker: up-user-db-firebird ## Docker 内の Firebird config-store で代表 repository read/write smoke を実行する
+	USER_DB_FIREBIRD_DB=$(USER_DB_FIREBIRD_DB) \
+	USER_DB_FIREBIRD_USER=$(USER_DB_FIREBIRD_USER) \
+	USER_DB_FIREBIRD_PASSWORD=$(USER_DB_FIREBIRD_PASSWORD) \
+	$(COMPOSE_USER_DB_FIREBIRD) --profile smoke run --rm firebird-config-repository-smoke
+
+firebird-source-inspection-smoke-docker: firebird-config-schema-first-slice-docker ## Firebird proof DB の実メタデータを source inspection normalizer に通す
+	USER_DB_FIREBIRD_DB=$(USER_DB_FIREBIRD_DB) \
+	USER_DB_FIREBIRD_USER=$(USER_DB_FIREBIRD_USER) \
+	USER_DB_FIREBIRD_PASSWORD=$(USER_DB_FIREBIRD_PASSWORD) \
+	$(COMPOSE_USER_DB_FIREBIRD) --profile smoke run --rm firebird-source-inspection-smoke
+
+sample05-firebird-dbaccess-smoke-docker: up-user-db-firebird ## sample05 generated DBAccess read baseline を Firebird で検証する
+	USER_DB_FIREBIRD_DB=$(USER_DB_FIREBIRD_DB) \
+	USER_DB_FIREBIRD_USER=$(USER_DB_FIREBIRD_USER) \
+	USER_DB_FIREBIRD_PASSWORD=$(USER_DB_FIREBIRD_PASSWORD) \
+	$(COMPOSE_USER_DB_FIREBIRD) --profile smoke run --rm sample05-firebird-dbaccess-smoke
+
+sample08-firebird-dbaccess-smoke-docker: up-user-db-firebird ## sample08 generated DBAccess join/read-model baseline を Firebird で検証する
+	USER_DB_FIREBIRD_DB=$(USER_DB_FIREBIRD_DB) \
+	USER_DB_FIREBIRD_USER=$(USER_DB_FIREBIRD_USER) \
+	USER_DB_FIREBIRD_PASSWORD=$(USER_DB_FIREBIRD_PASSWORD) \
+	$(COMPOSE_USER_DB_FIREBIRD) --profile smoke run --rm sample08-firebird-dbaccess-smoke
+
+sample09-firebird-dbaccess-smoke-docker: up-user-db-firebird ## sample09 generated DBAccess aggregate/report baseline を Firebird で検証する
+	USER_DB_FIREBIRD_DB=$(USER_DB_FIREBIRD_DB) \
+	USER_DB_FIREBIRD_USER=$(USER_DB_FIREBIRD_USER) \
+	USER_DB_FIREBIRD_PASSWORD=$(USER_DB_FIREBIRD_PASSWORD) \
+	$(COMPOSE_USER_DB_FIREBIRD) --profile smoke run --rm sample09-firebird-dbaccess-smoke
+
+sample18-firebird-dbaccess-smoke-docker: up-user-db-firebird ## sample18 generated DBAccess CRUD/list baseline を Firebird で検証する
+	USER_DB_FIREBIRD_DB=$(USER_DB_FIREBIRD_DB) \
+	USER_DB_FIREBIRD_USER=$(USER_DB_FIREBIRD_USER) \
+	USER_DB_FIREBIRD_PASSWORD=$(USER_DB_FIREBIRD_PASSWORD) \
+	$(COMPOSE_USER_DB_FIREBIRD) --profile smoke run --rm sample18-firebird-dbaccess-smoke
+
+sample21-firebird-dbaccess-smoke-docker: up-user-db-firebird ## sample21 generated DBAccess catalog relationship baseline を Firebird で検証する
+	USER_DB_FIREBIRD_DB=$(USER_DB_FIREBIRD_DB) \
+	USER_DB_FIREBIRD_USER=$(USER_DB_FIREBIRD_USER) \
+	USER_DB_FIREBIRD_PASSWORD=$(USER_DB_FIREBIRD_PASSWORD) \
+	$(COMPOSE_USER_DB_FIREBIRD) --profile smoke run --rm sample21-firebird-dbaccess-smoke
+
+sample22-firebird-dbaccess-smoke-docker: up-user-db-firebird ## sample22 generated DBAccess workflow/state transition baseline を Firebird で検証する
+	USER_DB_FIREBIRD_DB=$(USER_DB_FIREBIRD_DB) \
+	USER_DB_FIREBIRD_USER=$(USER_DB_FIREBIRD_USER) \
+	USER_DB_FIREBIRD_PASSWORD=$(USER_DB_FIREBIRD_PASSWORD) \
+	$(COMPOSE_USER_DB_FIREBIRD) --profile smoke run --rm sample22-firebird-dbaccess-smoke
+
+sample27-firebird-app-local-persistence-smoke-docker: up-user-db-firebird ## sample27 Firebird server DTO -> App-local SQLite round trip を検証する
+	USER_DB_FIREBIRD_DB=$(USER_DB_FIREBIRD_DB) \
+	USER_DB_FIREBIRD_USER=$(USER_DB_FIREBIRD_USER) \
+	USER_DB_FIREBIRD_PASSWORD=$(USER_DB_FIREBIRD_PASSWORD) \
+	$(COMPOSE_USER_DB_FIREBIRD) --profile smoke run --rm sample27-firebird-app-local-persistence-smoke
+
+sample34-firebird-promotion-smoke-docker: up-user-db-firebird ## sample34 SQLite -> Firebird promotion live import smoke を検証する
+	USER_DB_FIREBIRD_DB=$(USER_DB_FIREBIRD_DB) \
+	USER_DB_FIREBIRD_USER=$(USER_DB_FIREBIRD_USER) \
+	USER_DB_FIREBIRD_PASSWORD=$(USER_DB_FIREBIRD_PASSWORD) \
+	$(COMPOSE_USER_DB_FIREBIRD) --profile smoke run --rm sample34-firebird-promotion-smoke
+
+sample34-firebird-mysql-export-smoke-docker: sample34-firebird-promotion-smoke-docker ## sample34 Firebird -> MySQL export artifact smoke を検証する
+	USER_DB_FIREBIRD_DB=$(USER_DB_FIREBIRD_DB) \
+	USER_DB_FIREBIRD_USER=$(USER_DB_FIREBIRD_USER) \
+	USER_DB_FIREBIRD_PASSWORD=$(USER_DB_FIREBIRD_PASSWORD) \
+	$(COMPOSE_USER_DB_FIREBIRD) --profile smoke run --rm sample34-firebird-mysql-export-smoke
+
+sample34-firebird-mysql-import-smoke-docker: sample34-firebird-promotion-smoke-docker ## sample34 Firebird -> MySQL/MariaDB live import smoke を検証する
+	USER_DB_FIREBIRD_DB=$(USER_DB_FIREBIRD_DB) \
+	USER_DB_FIREBIRD_USER=$(USER_DB_FIREBIRD_USER) \
+	USER_DB_FIREBIRD_PASSWORD=$(USER_DB_FIREBIRD_PASSWORD) \
+	USER_DB_MYSQL_DB=$(USER_DB_MYSQL_DB) \
+	USER_DB_MYSQL_USER=$(USER_DB_MYSQL_USER) \
+	USER_DB_MYSQL_PASSWORD=$(USER_DB_MYSQL_PASSWORD) \
+	USER_DB_MYSQL_ROOT_PASSWORD=$(USER_DB_MYSQL_ROOT_PASSWORD) \
+	$(COMPOSE_USER_DB_FIREBIRD) --profile smoke run --rm sample34-firebird-mysql-import-smoke
+
+sample34-firebird-backup-restore-smoke-docker: sample34-firebird-promotion-smoke-docker ## sample34 import 後の Firebird backup/restore smoke を検証する
+	USER_DB_FIREBIRD_DB=$(USER_DB_FIREBIRD_DB) \
+	USER_DB_FIREBIRD_USER=$(USER_DB_FIREBIRD_USER) \
+	USER_DB_FIREBIRD_PASSWORD=$(USER_DB_FIREBIRD_PASSWORD) \
+	USER_DB_FIREBIRD_ROOT_PASSWORD=$(USER_DB_FIREBIRD_ROOT_PASSWORD) \
+	bash mtool/scripts/check_sample34_firebird_backup_restore_smoke.sh compose.user-db-firebird.yaml
 
 sample9-output-test:
 	bash mtool/scripts/run_sample_pack_phpunit_test.sh \

@@ -130,15 +130,15 @@ function app_load_config(): array
     $dbName = app_config_env('APP_DB_NAME', $defaults['db_name']);
     $dbUser = app_config_env('APP_DB_USER', $defaults['db_user']);
     $dbPassword = app_config_env('APP_DB_PASSWORD', $defaults['db_password']);
-    $configDbHost = app_config_env('APP_CONFIG_DB_HOST', $defaults['config_db_host']);
-    $configDbPort = app_config_env('APP_CONFIG_DB_PORT', '3306');
-    $configDbName = app_config_env('APP_CONFIG_DB_NAME', $defaults['config_db_name']);
-    $configDbUser = app_config_env('APP_CONFIG_DB_USER', $defaults['config_db_user']);
-    $configDbPassword = app_config_env('APP_CONFIG_DB_PASSWORD', $defaults['config_db_password']);
     $configStoreDir = app_config_env('APP_CONFIG_STORE_DIR', '');
     $configStoreDriver = app_config_store_driver(
         app_config_env('APP_CONFIG_STORE_DRIVER', $configStoreDir !== '' ? 'sqlite' : 'mysql'),
     );
+    $configDbHost = app_config_env('APP_CONFIG_DB_HOST', $defaults['config_db_host']);
+    $configDbPort = app_config_env('APP_CONFIG_DB_PORT', $configStoreDriver === 'firebird' ? '3050' : '3306');
+    $configDbName = app_config_env('APP_CONFIG_DB_NAME', $defaults['config_db_name']);
+    $configDbUser = app_config_env('APP_CONFIG_DB_USER', $defaults['config_db_user']);
+    $configDbPassword = app_config_env('APP_CONFIG_DB_PASSWORD', $defaults['config_db_password']);
     $labDbHost = app_config_env('APP_LAB_DB_HOST', $labDefaults['db_host']);
     $labDbPort = app_config_env('APP_LAB_DB_PORT', '3306');
     $labDbName = app_config_env('APP_LAB_DB_NAME', $labDefaults['db_name']);
@@ -190,7 +190,7 @@ function app_load_config(): array
     );
     if (
         $site === 'admin'
-        && $configDbConfig['driver'] === 'sqlite'
+        && in_array($configDbConfig['driver'], ['sqlite', 'firebird'], true)
         && app_config_admin_db_uses_default_config_target(
             $dbConfig,
             $defaults,
@@ -334,6 +334,7 @@ function app_config_store_driver(string $value): string
 
     return match ($normalizedValue) {
         'sqlite' => 'sqlite',
+        'firebird', 'fb' => 'firebird',
         default => 'mysql',
     };
 }
@@ -456,6 +457,30 @@ function app_config_store_config(
             'user' => '',
             'password' => '',
             'dsn' => 'sqlite:' . $sqlitePath,
+        ];
+    }
+
+    if ($normalizedDriver === 'firebird') {
+        $charset = app_config_env('APP_CONFIG_FIREBIRD_CHARSET', 'UTF8');
+        $dsn = app_config_env('APP_CONFIG_FIREBIRD_DSN', '');
+        if ($dsn === '') {
+            $dsn = sprintf(
+                'firebird:dbname=%s/%s:%s;charset=%s',
+                $host,
+                $port !== '' ? $port : '3050',
+                $databaseName,
+                $charset,
+            );
+        }
+
+        return [
+            'driver' => 'firebird',
+            'host' => $host,
+            'port' => $port !== '' ? $port : '3050',
+            'name' => $databaseName,
+            'user' => $user,
+            'password' => $password,
+            'dsn' => $dsn,
         ];
     }
 

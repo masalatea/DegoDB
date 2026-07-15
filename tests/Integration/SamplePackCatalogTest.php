@@ -50,7 +50,20 @@ final class SamplePackCatalogTest extends TestCase
                 continue;
             }
 
-            self::assertContains($structureType, ['file-reference-sample', 'promotion-tutorial-sample']);
+            self::assertContains($structureType, ['file-reference-sample', 'promotion-tutorial-sample', 'app-wrapper-tutorial-sample']);
+            if ($structureType === 'app-wrapper-tutorial-sample') {
+                self::assertFileExists($absolutePath . '/package.json');
+                self::assertFileExists($absolutePath . '/capacitor.config.ts');
+                self::assertFileExists($absolutePath . '/scripts/validate-sample.mjs');
+                self::assertDirectoryExists($absolutePath . '/src/mtool-artifacts');
+                self::assertFileDoesNotExist($absolutePath . '/compose.yaml');
+                self::assertFileDoesNotExist($absolutePath . '/run.sh');
+                self::assertDirectoryDoesNotExist($absolutePath . '/seed');
+                self::assertDirectoryDoesNotExist($absolutePath . '/ios');
+                self::assertDirectoryDoesNotExist($absolutePath . '/android');
+                continue;
+            }
+
             self::assertDirectoryExists($absolutePath . '/reference');
             self::assertFileDoesNotExist($absolutePath . '/compose.yaml');
             self::assertFileDoesNotExist($absolutePath . '/run.sh');
@@ -130,6 +143,8 @@ final class SamplePackCatalogTest extends TestCase
                 'sample31-no-code-inventory-request-demo',
                 'sample32-no-code-ui-test-lab',
                 'sample33-sqlite-to-mysql-promotion',
+                'sample34-sqlite-to-firebird-promotion',
+                'sample35-capacitor-artifact-import',
             ],
             app_sample_pack_category_map()['tutorials'] ?? [],
         );

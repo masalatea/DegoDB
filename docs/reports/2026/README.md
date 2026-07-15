@@ -11,6 +11,86 @@
 
 ## Index
 
+- `2026-0715-standalone-no-code-evidence-inventory.md`
+  - `docs/no-code-standalone-scope.md` の supported capability matrix に対して、既存 sample / test / docs / report evidence を棚卸し。Sample28/29/31 runtime、Sample18 guarded route、publish candidate/current/alias、required readiness、action intent、outbox handoff、server authority boundary を covered とし、Full CRUD / offline sync / realtime shared state / external app handoff は理由付き非scopeと整理。現scope内の implementation gap はなし。次は完了report。Status: `DONE_NO_IMPLEMENTATION_GAP_FOUND`。
+- `2026-0715-standalone-no-code-completion-report.md`
+  - NC-S5 standalone no-code 完了report。Mtool-owned metadata、`NO-CODE-RUNTIME`、list/detail/form、action intent、readiness、guarded submit/outbox、publish candidate/current/alias、server authority boundary を supported-contract scope として完了認定。全sample完全変換・全custom置換・Full CRUD・offline/realtime・外部appは非claim。Status: `DONE_SUPPORTED_CONTRACT_SCOPE`。
+- `2026-0715-external-framework-optional-output-boundary-matrix.md`
+  - EF-M1 optional external no-code/tool output の boundary matrix。`mtool_no_code` は baseline として維持し、`external_no_code` / `hybrid` を additive output として扱う。Layer A React/Web + Capacitor を first optional target、Layer B Codex/Claude task packet、Layer C PWA/native wrapper metadata、Flutter/React Native later target に整理。次は EF-M2 React/Web + Capacitor optional output packet。Status: `EF_M1_DONE_FIRST_MATRIX`。
+- `2026-0715-react-web-capacitor-optional-output-packet-first-slice.md`
+  - EF-M2 first slice。既存 mobile wrapper target tooling に `external-output` artifact を追加し、`external-output.json` / `EXTERNAL-OUTPUT.md` を生成可能にした。`mtool_no_code` をbaselineとして維持し、React/Web + Capacitor外部consumer向けに source refs、screen/action/readiness、server authority、ownership boundary、confirmation-required、forbidden-without-artifact、validation、non-goals を出す。Focused `MobileWrapperTargetTest` は 28 tests / 193 assertions で通過。Status: `FIRST_SLICE_DONE`。
+- `2026-0715-external-output-schema-docs-hardening.md`
+  - EF-M3。`docs/external-no-code-output.md` を追加し、`external-output.json` / `.md` の schema、CLI、ownership boundary、validation を恒久化。`docs/README.md` と `docs/mobile-react-wrapper-target-contract.md` へ導線を追加し、mobile wrapper bundle manifest に `external_optional_output` を含める判断を実装。Focused `MobileWrapperTargetTest` は 28 tests / 195 assertions で通過。Status: `EF_M3_DONE`。
+- `2026-0715-sample35-external-output-consumer-evidence.md`
+  - EF-M4。`sample35-capacitor-artifact-import` に `external-output.sample.json` fixture を追加し、runtime import・UI boundary 表示・manifest index・dependency-free static validation を更新。`mtool_no_code` baseline維持、`external_no_code` additive output、server authority、external-owner responsibilities、Capacitor init / dependency install forbidden-without-explicit-step を検証。`node sample/tutorials/sample35-capacitor-artifact-import/scripts/validate-sample.mjs` 通過。Status: `EF_M4_DONE`。
+- `2026-0715-external-no-code-ai-task-packet-first-slice.md`
+  - EF-M6 first slice。`external-output.json` を Codex / Claude が読むための confirmation-driven `ai-task-packet` artifact を追加。`task.json`、`TASK.md`、`input/external-output.json`、`input/mobile-app-handoff.json` のみを出し、AI実行・dependency install・Capacitor init・native build・既存app overwrite は行わない。bundle manifest に `ai_task_packet` を追加。Focused `MobileWrapperTargetTest` は 31 tests / 233 assertions で通過。Status: `EF_M6_FIRST_SLICE_DONE`。
+- `2026-0715-external-no-code-ai-task-packet-dry-run.md`
+  - EF-M7 dry-run。`create_mobile_wrapper_target.php --artifact=ai-task-packet` を `/private/tmp` に実行し、`TASK.md`、`task.json`、`input/external-output.json`、`input/mobile-app-handoff.json` の生成を確認。`pending_user_confirmation`、事前writeなし、`cap_sync`・DB write 禁止、confirmation required を確認。Status: `EF_M7_DRY_RUN_DONE`。
+- `2026-0715-output-mode-config-artifact-first-slice.md`
+  - EF-M8 first slice。`output-mode-config` artifact と `--output-mode=mtool_no_code|external_no_code|hybrid` を追加。`output-mode-config.json` / `OUTPUT-MODE-CONFIG.md` のみを出し、bundle manifest に `output_mode_config` を追加。`external_no_code` dry-run で `external_optional_output` / `ai_task_packet` selection と `cap_sync` 禁止を確認。Focused `MobileWrapperTargetTest` は 36 tests / 267 assertions で通過。Status: `EF_M8_FIRST_SLICE_DONE`。
+- `2026-0715-pwa-readiness-artifact-first-slice.md`
+  - EF-M9 first slice。`pwa-readiness` artifact を追加し、`pwa-readiness.json` / `PWA-READINESS.md` のみを生成。installability/cache/storage/offline-readiness metadata を出すが、manifest/service worker/offline sync/business data cache/native project は生成しない。bundle manifest に `pwa_readiness` を追加。Focused `MobileWrapperTargetTest` は 39 tests / 298 assertions で通過。Status: `EF_M9_FIRST_SLICE_DONE`。
+- `2026-0715-external-consumer-next-selection-after-pwa.md`
+  - EF-M10 selection。PWA readiness後の次実装を比較。user-approved real app dry-run は明示dir/承認が必要、execution UI controls はCSRF/output-dir/overwrite/audit等が重い、別consumer乱立よりReact Native second-pass extension metadataを優先と判断。Status: `EF_M10_SELECTION_DONE`。
+- `2026-0715-react-native-extension-metadata-first-slice.md`
+  - EF-M11 first slice。React Native later-platform input packet に `react_native_extension` を追加し、navigation/state/form/API/auth/storage/native module/environment/test boundary を明示。React Native source、Expo/RN init、dependency install、native files、signing/build/store submission は引き続き外部所有。Status: `EF_M11_DONE`。
+- `2026-0715-flutter-webview-wrapper-output-direction.md`
+  - EF-M12 方向修正。Flutter native UI生成ではなく、同じMtool設計を React/Web・PWA-ready・Capacitor handoff・Flutter WebView wrapper handoff として出し直せる形にする。Flutter は React/PWA-ready app を WebView で包む native shell/input packet target とし、Flutter project/build/signing/store は外部所有。Status: `EF_M12_DIRECTION_SELECTED`。
+- `2026-0715-app-surface-config-plan.md`
+  - EF-M12 app surface config 計画。backend endpoint は原則共有し、PWA / Flutter WebView / React Web Capacitor などの app surface を複数選択可能にする。redirect URI、storage、offline/cache、navigation、native bridge は surface 別に明示し、別endpointは明示理由がある場合だけ。Status: `EF_M12_APP_SURFACE_CONFIG_PLANNED`。
+- `2026-0715-app-surface-config-first-slice.md`
+  - EF-M12 first slice。`output-mode-config.json` に `app_surface_config` を追加し、shared backend endpoint と PWA / Flutter WebView / React Web Capacitor の surface-specific URL・redirect・storage・offline/cache・native bridge・distribution boundary を記録。Focused MobileWrapperTargetTest は 39 tests / 320 assertions で通過。Status: `EF_M12_FIRST_SLICE_DONE`。
+- `2026-0715-flutter-webview-wrapper-extension-first-slice.md`
+  - EF-M13 first slice。`flutter-input-packet.json` に `flutter_webview_wrapper_extension` を追加し、React/PWA source mode、shared backend、WebView policy、auth/deep-link、storage/session、native bridge、offline/cache、外部owner責務、禁止actionを metadata-only で記録。Focused MobileWrapperTargetTest は 39 tests / 331 assertions で通過。Status: `EF_M13_DONE`。
+- `2026-0715-flutter-webview-wrapper-docs-hardening.md`
+  - EF-M14 docs/schema hardening。`flutter_webview_wrapper_extension` を恒久docsへ昇格し、`platform-input-packets` CLI、PWA/app_surface_config との関係、Flutter project/source/native/signing/build/store 非生成境界を整理。Status: `EF_M14_DONE`。
+- `2026-0715-mobile-external-output-checkpoint.md`
+  - EF-M15 checkpoint。未push 5 commit stack を確認し、選定・React Native metadata・app surface config・Flutter WebView metadata・docs hardening の意味単位として妥当と判断。squash不要、PRではそのままでもレビュー可能。Status: `EF_M15_DONE`。
+- `2026-0715-mobile-external-output-pr-prep.md`
+  - EF-M16 PR準備。`feature/mobile-external-output-surfaces` を `develop` 向けPR branchとしてpushし、PR URL、title/description、squash不要判断を記録。Status: `EF_M16_READY_FOR_PR`。
+- `2026-0715-external-framework-optional-output-boundary-check-plan.md`
+  - 既に作った Mtool 独自 no-code output を置換する計画ではなく、外部 FE/no-code/app framework を optional output target として扱う boundary check 計画。`mtool_no_code` は supported baseline として維持し、Mtool metadata / validation / server authority / custom extension 境界を保ったまま `external_no_code` / `hybrid` をどう出すか確認する。Status: `REPOSITIONED_AS_OPTIONAL_OUTPUT`。
+- `2026-0715-mtool-no-code-external-framework-full-coverage-check.md`
+  - 外部framework側の全機能対応ではなく、Mtool が現在 no-code として責任を持つ supported scope を外部frameworkで全対応できるかという視点で precheck。contract-first なら feasible、runtime丸ごとrewriteなら高riskと判定。ただし現時点では置換より optional external output が高価値という判断を追記。server authority / approval / outbox / audit はMtool/server側に残し、UI rendering / form binding / app shell は外部framework側へ optional に寄せられる。Status: `PRECHECK_DONE_PORTABLE_CONTRACT_FIRST`。
+- `2026-0714-capacitor-artifact-import-sample-first-slice.md`
+  - `sample35-capacitor-artifact-import` を追加。Capacitor-ready React sample が Mtool artifact fixture を直接 import し、artifact index、project identity、list/detail/form、field rendering、local draft、required validation、action intent draft、mock submit boundary、blocked/error、ownership boundary を静的に確認する。`ios/` / `android/` / native build / signing / store submission は非claim。Status: `FIRST_SLICE_DONE`。
+- `2026-0714-capacitor-artifact-import-sample-plan.md`
+  - Mtool が Capacitor project を初期化せず、外部 owner 側 sample app が Mtool artifact JSON を直接 import する sample35 計画。Mtool 想定操作として artifact import/index review、project identity、list/detail/form rendering、field rendering、local form draft、required validation、action intent draft、mock submit handoff boundary、blocked/error state、ownership boundary を一通り網羅する。React/Vite + `capacitor.config.ts` + fixture artifacts + static validation を first slice とし、`ios/` / `android/` / native build / signing / store submission など Capacitor/external-tool 全機能網羅は非scope。Status: `FIRST_SLICE_DONE`。
+- `2026-0714-no-code-standalone-completion-scope.md`
+  - mobile/external app FS 後の次 active direction として、Mtool-owned standalone no-code を線引きして完了させる scope を定義。対象は generated web/no-code/runtime、list/detail/form、action intent draft、guarded submit/outbox handoff、current/alias preview、publish candidate approval、validation/docs。外部app framework、native wrapping、WebSocket/shared-state sync、全custom code置換、全sample完全変換は非scope。Status: `ACTIVE_REPLAN_CANDIDATE`。
+- `2026-0714-shared-state-sync-node-server-roadmap.md`
+  - SSO個人認証とは別に room / group / invite token を用意し、同じ room の authorized member 間で shared state を同期する将来候補。realtime runtime は別 Node.js sync server 前提、Mtool は schema / REST API / WebSocket-first sync event・command contract / SSE・HTTP fallback profile / Node.js server input packet / app client input packet / validation checklist を出す。P2P、production Node運用、Redis/pubsub、push通知、CRDT/OT、game loop は非scope。Status: `ROADMAP_CANDIDATE_NOT_ACTIVE`。
+- `2026-0714-mobile-fs-common-requirements.md`
+  - mobile external FS の総合評価・共通要件抽出。React/Web + Capacitor、PWA、Codex/Claude、Flutter、React Native、native wrapper boundary の 1 周目 FS から、Mtool が所有すべき handoff contract / source artifact index / ownership boundary / runtime readiness / AI task packet / bundle manifest と、Mtool が暗黙に所有しない production app / native project / signing / store / offline sync 境界を整理。Status: `DONE_COMMON_REQUIREMENTS`。
+- `2026-0714-mobile-ownership-boundary-spec.md`
+  - mobile/app handoff の責務境界正本を追加。Mtool-owned、external owner/tool-owned、user-confirmation required、forbidden without explicit artifact、parked/new product scope を `docs/mobile-ownership-boundaries.md` に集約し、README / FS / output mode / execution UI policy から辿れるようにした。Status: `DONE_BOUNDARY_SPEC`。
+- `2026-0714-mobile-fs-target-matrix.md`
+  - mobile external FS の target matrix。Layer A FE/app framework、Layer B AI/code-builder、Layer C delivery/runtime を分け、同 layer 内比較・cross-layer dependency・FS成果物置き場・実行順を定義。Status: `DONE_MATRIX`。
+- `2026-0714-mobile-fs-react-web-capacitor.md`
+  - React/Web + Capacitor-style wrapper FS。最初の外部 FE/app framework 候補として有望。handoff feasibility は低 blocker、production app readiness は中 blocker。Mtool は handoff/input まで、React app shell / Capacitor / native / signing / store は外部 owner。Status: `CONTINUE_SECOND_PASS`。
+- `2026-0714-mobile-fs-pwa-readiness.md`
+  - PWA readiness FS。FE framework 候補ではなく Layer C delivery/runtime metadata として扱う。manifest、service worker/cache、installability、browser storage、offline mode を共通要件候補化。Status: `CONTINUE_LAYER_C_DEPENDENCY`。
+- `2026-0714-mobile-fs-codex-code-builder.md`
+  - Codex-style code-builder FS。guided AI review には有用。autonomous codegen には provider-neutral AI task packet、確認必須action、禁止推測、validation command map が必要。Status: `CONTINUE_SECOND_PASS`。
+- `2026-0714-mobile-fs-claude-code-builder.md`
+  - Claude-style code-builder FS。Codex専用ではなく provider-neutral task packet を正本にし、tool-specific notes は companion とする判断。Status: `PROVIDER_NEUTRALITY_CHECK_DONE`。
+- `2026-0714-mobile-fs-flutter.md`
+  - Flutter input packet FS。共通 app contract carrier として有望だが、widget/navigation/state/form/theme/package/secure storage など Flutter extension metadata が必要。Status: `LATER_PLATFORM_CONTINUE`。
+- `2026-0714-mobile-fs-react-native.md`
+  - React Native input packet FS。共通 app contract carrier として有望だが、navigation/state/form/component/API/auth/secure storage/native module/Expo boundary など React Native extension metadata が必要。Status: `LATER_PLATFORM_CONTINUE`。
+- `2026-0714-mobile-fs-native-wrapper-boundary.md`
+  - native wrapper packaging boundary FS。Mtool が native project / signing / store / device QA を暗黙に所有しない境界を contract として継続。Status: `BOUNDARY_CONTRACT_CONTINUE`。
+- `2026-0714-mobile-output-mode-hardening.md`
+  - FS結果に基づき `mtool_no_code` / `external_no_code` / `hybrid` を定義。Mtool output、外部 handoff、hybrid の必須artifactと non-goal を整理。Status: `DONE_MODE_SPEC`。
+- `2026-0714-mobile-artifact-execution-ui-policy.md`
+  - mobile artifact execution UI policy。現時点の UI は read-only 維持。CSRF、output-dir allow-list、overwrite、dry-run、audit、failure handling 等が揃うまで実行UIは追加しない。Status: `DONE_POLICY_READ_ONLY`。
+- `2026-0713-mobile-app-handoff-wrapper-roadmap.md`
+  - MtoolがiOS/Androidを直接全部生成するのではなく、endpoint/OpenAPI/auth/screen/action/validation/native capability metadataをCapacitor・Flutter・React Native・native toolへのinput packetとして出すroadmap候補。Firebird checkpoint後の次候補とし、最初のdeliverableはapp作成者が迷わない`mobile-app-handoff.json`/`.md`。その検証後、既存Web/React no-code runtimeをCapacitor系wrapperでiOS/Androidへ渡す。Flutter・React Nativeは後続input packet target。Status: `NEXT_AFTER_FIREBIRD_CANDIDATE`。
+- `2026-0713-firebird-local-durable-profile-plan.md`
+  - Firebird を SQLite と MySQL/MariaDB の間に置く local durable RDB profile として検討する active plan。SQLite->Firebird、Firebird->MySQL/MariaDB の一方向 promotion を狙い、まず embedded/local-file reality、PHP driver、config-store fit、backup/restore、promotion delta を棚卸しする。Status: `ACTIVE_PLAN`。
+- `2026-0713-current-plan-done-history.md`
+  - #836-#884 と N1-N6 の DONE 履歴 archive。Mtool AI workspace onboarding、SSO app-user integration、SQLite-to-MySQL/MariaDB promotion、optional local fallback generalization、No Code capability sequenceを current index から履歴へ移動。Status: `ARCHIVED_DONE`。
 - `2026-0712-shared-relation-metadata-sample22-first-slice.md`
   - #791 共通relation metadata・Sample22初回slice。optional belongs-to/target key-label/parent-lookup/required metadata、fail-closed validation、lookup option、runtime/DOM markerを追加し、Sample22 read-only 2 contractへ適用。action・mutation・既存editor置換ゼロ。Full suite 466 tests / 14,161 assertions。Status: `FIRST_SLICE_DONE`。
 - `2026-0712-sample22-related-entity-no-code-preflight.md`
