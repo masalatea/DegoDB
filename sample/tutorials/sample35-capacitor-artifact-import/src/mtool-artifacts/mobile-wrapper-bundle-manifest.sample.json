@@ -11,6 +11,7 @@
     "react_wrapper_app_handoff",
     "external_optional_output",
     "ai_task_packet",
+    "output_mode_config",
     "capacitor_artifact_import_sample"
   ],
   "artifacts": [
@@ -51,6 +52,15 @@
         "input/mobile-app-handoff.json"
       ],
       "purpose": "Codex/Claude-readable pending task packet for user-confirmed external app creation"
+    },
+    {
+      "artifact_key": "output_mode_config",
+      "path_hint": "output-mode-config/",
+      "files": [
+        "output-mode-config.json",
+        "OUTPUT-MODE-CONFIG.md"
+      ],
+      "purpose": "selected mobile output mode and artifact map for users and AI consumers"
     },
     {
       "artifact_key": "capacitor_artifact_import_sample",

@@ -274,6 +274,59 @@ final class MobileWrapperTargetTest extends TestCase
         self::assertFileDoesNotExist($targetDir . '/android');
     }
 
+    public function testBuildsOutputModeConfigForHybridMode(): void
+    {
+        $result = app_mobile_wrapper_target_build_output_mode_config($this->packet(), 'hybrid');
+
+        self::assertTrue($result['ok'], $result['error']);
+        self::assertIsArray($result['package']);
+        self::assertArrayHasKey('output-mode-config.json', $result['package']['files']);
+        self::assertArrayHasKey('OUTPUT-MODE-CONFIG.md', $result['package']['files']);
+
+        $config = $result['package']['files']['output-mode-config.json'];
+        self::assertSame('mobile-output-mode-config-v1', $config['schema_version'] ?? '');
+        self::assertSame('hybrid', $config['selected_mode'] ?? '');
+        self::assertSame(['mtool_no_code', 'external_no_code', 'hybrid'], $config['supported_modes'] ?? []);
+        self::assertContains('c1_wrapper_readiness', $config['selected_artifact_keys'] ?? []);
+        self::assertContains('external_optional_output', $config['selected_artifact_keys'] ?? []);
+        self::assertContains('ai_task_packet', $config['selected_artifact_keys'] ?? []);
+        self::assertContains('external_outputs_are_additive_to_mtool_no_code', $config['warnings'] ?? []);
+        self::assertContains('cap_sync', $config['forbidden_without_explicit_confirmation'] ?? []);
+
+        $markdown = $result['package']['files']['OUTPUT-MODE-CONFIG.md'];
+        self::assertStringContainsString('Selected mode: `hybrid`', $markdown);
+        self::assertStringContainsString('`ai_task_packet`', $markdown);
+    }
+
+    public function testOutputModeConfigCanSelectExternalNoCodeOnly(): void
+    {
+        $result = app_mobile_wrapper_target_build_output_mode_config($this->packet(), 'external_no_code');
+
+        self::assertTrue($result['ok'], $result['error']);
+        $config = $result['package']['files']['output-mode-config.json'];
+        self::assertSame('external_no_code', $config['selected_mode'] ?? '');
+        self::assertSame(['external_optional_output', 'ai_task_packet'], $config['selected_artifact_keys'] ?? []);
+    }
+
+    public function testSample28OutputModeConfigEmitsOnlyConfigFiles(): void
+    {
+        $targetDir = $this->tempDir('sample28-output-mode-config');
+
+        $result = app_mobile_wrapper_target_emit_sample28_output_mode_config($targetDir, 'external_no_code');
+
+        self::assertTrue($result['ok'], $result['error']);
+        self::assertSame(['OUTPUT-MODE-CONFIG.md', 'output-mode-config.json'], $result['files']);
+        self::assertFileExists($targetDir . '/output-mode-config.json');
+        self::assertFileExists($targetDir . '/OUTPUT-MODE-CONFIG.md');
+        self::assertFileDoesNotExist($targetDir . '/package.json');
+        self::assertFileDoesNotExist($targetDir . '/capacitor.config.ts');
+        self::assertFileDoesNotExist($targetDir . '/ios');
+        self::assertFileDoesNotExist($targetDir . '/android');
+
+        $config = json_decode((string) file_get_contents($targetDir . '/output-mode-config.json'), true, 512, JSON_THROW_ON_ERROR);
+        self::assertSame('external_no_code', $config['selected_mode'] ?? '');
+    }
+
     public function testSample28ReactWrapperAppHandoffEmitsOnlyProofFiles(): void
     {
         $targetDir = $this->tempDir('sample28-react-wrapper-app-handoff');
@@ -360,6 +413,39 @@ final class MobileWrapperTargetTest extends TestCase
             'work/source-outputs/SAMPLE28/MOBILE-WRAPPER-TARGET/ai-task-packet',
             $result['target_dir'],
         );
+    }
+
+    public function testCliParserAcceptsOutputModeConfigArtifactAndMode(): void
+    {
+        $result = app_cli_mobile_wrapper_target_parse_args([
+            'create_mobile_wrapper_target.php',
+            '--sample=sample28',
+            '--artifact=output-mode-config',
+            '--output-mode=external_no_code',
+            '--target-dir=work/source-outputs/SAMPLE28/MOBILE-WRAPPER-TARGET/output-mode-config',
+        ]);
+
+        self::assertTrue($result['ok'], $result['error']);
+        self::assertSame('output-mode-config', $result['artifact']);
+        self::assertSame('external_no_code', $result['output_mode']);
+        self::assertSame(
+            'work/source-outputs/SAMPLE28/MOBILE-WRAPPER-TARGET/output-mode-config',
+            $result['target_dir'],
+        );
+    }
+
+    public function testCliParserRejectsUnknownOutputMode(): void
+    {
+        $result = app_cli_mobile_wrapper_target_parse_args([
+            'create_mobile_wrapper_target.php',
+            '--sample=sample28',
+            '--artifact=output-mode-config',
+            '--output-mode=native_magic',
+            '--target-dir=work/source-outputs/SAMPLE28/MOBILE-WRAPPER-TARGET/output-mode-config',
+        ]);
+
+        self::assertFalse($result['ok']);
+        self::assertSame('supported --output-mode values are mtool_no_code, external_no_code, and hybrid', $result['error']);
     }
 
     public function testCliParserAcceptsHandoffFileInsteadOfSample(): void
@@ -497,7 +583,7 @@ final class MobileWrapperTargetTest extends TestCase
         $manifest = $result['package']['files']['mobile-wrapper-bundle-manifest.json'];
         self::assertSame('mobile-wrapper-bundle-manifest-v1', $manifest['schema_version'] ?? '');
         self::assertSame(
-            ['c1_wrapper_readiness', 'react_wrapper_app_handoff', 'external_optional_output', 'ai_task_packet', 'later_platform_input_packets'],
+            ['c1_wrapper_readiness', 'react_wrapper_app_handoff', 'external_optional_output', 'ai_task_packet', 'output_mode_config', 'later_platform_input_packets'],
             $manifest['artifact_order'] ?? [],
         );
         self::assertSame('external_optional_output', $manifest['artifacts'][2]['artifact_key'] ?? '');
@@ -505,6 +591,8 @@ final class MobileWrapperTargetTest extends TestCase
         self::assertSame('ai_task_packet', $manifest['artifacts'][3]['artifact_key'] ?? '');
         self::assertContains('task.json', $manifest['artifacts'][3]['files'] ?? []);
         self::assertContains('input/external-output.json', $manifest['artifacts'][3]['files'] ?? []);
+        self::assertSame('output_mode_config', $manifest['artifacts'][4]['artifact_key'] ?? '');
+        self::assertContains('output-mode-config.json', $manifest['artifacts'][4]['files'] ?? []);
         self::assertContains('Flutter project', $manifest['not_generated_by_mtool'] ?? []);
         self::assertContains('React Native project', $manifest['not_generated_by_mtool'] ?? []);
         self::assertContains('Capacitor project', $manifest['not_generated_by_mtool'] ?? []);

@@ -43,6 +43,14 @@ ai-task-packet/
     mobile-app-handoff.json
 ```
 
+The companion output-mode config emits only:
+
+```text
+output-mode-config/
+  output-mode-config.json
+  OUTPUT-MODE-CONFIG.md
+```
+
 It must not create:
 
 - `package.json`;
@@ -71,6 +79,16 @@ php mtool/scripts/create_mobile_wrapper_target.php \
   --sample=sample28 \
   --artifact=ai-task-packet \
   --target-dir=work/source-outputs/SAMPLE28/MOBILE-WRAPPER-TARGET/ai-task-packet
+```
+
+Output mode config:
+
+```sh
+php mtool/scripts/create_mobile_wrapper_target.php \
+  --sample=sample28 \
+  --artifact=output-mode-config \
+  --output-mode=external_no_code \
+  --target-dir=work/source-outputs/SAMPLE28/MOBILE-WRAPPER-TARGET/output-mode-config
 ```
 
 From a handoff file:
@@ -144,6 +162,8 @@ External owner/tool owns:
 This makes the optional external output discoverable without making it mandatory and without replacing `mtool_no_code`.
 
 The companion AI task packet is included as `ai_task_packet`. It is a pending, confirmation-driven packet for Codex / Claude style workflows. It does not execute an AI, install dependencies, initialize Capacitor, write app files, run native builds, sign apps, or submit stores.
+
+The output mode config is included as `output_mode_config`. It lets users and AI consumers distinguish `mtool_no_code`, `external_no_code`, and `hybrid` before deciding which artifact path to follow.
 
 ## AI task packet / AI task packet
 

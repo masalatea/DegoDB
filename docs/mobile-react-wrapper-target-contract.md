@@ -165,6 +165,26 @@ The packet state is `pending_user_confirmation`. It requires the AI to read the 
 
 Before confirmation, allowed writes are empty. Dependency installation, network calls, Capacitor init / `cap sync`, native project generation, file overwrite, token-storage choices, offline sync, native plugin selection, native build, signing, store submission, Mtool metadata writes, and DB writes are forbidden without explicit user confirmation.
 
+## Output mode config artifact / output mode config artifact
+
+The `output-mode-config` artifact records the selected mobile output mode and the artifact keys that should be followed for that mode.
+
+```sh
+php mtool/scripts/create_mobile_wrapper_target.php \
+  --sample=sample28 \
+  --artifact=output-mode-config \
+  --output-mode=hybrid \
+  --target-dir=work/source-outputs/SAMPLE28/MOBILE-WRAPPER-TARGET/output-mode-config
+```
+
+Supported modes are:
+
+- `mtool_no_code`
+- `external_no_code`
+- `hybrid`
+
+This is a selection/config packet only. It emits `output-mode-config.json` and `OUTPUT-MODE-CONFIG.md`; it does not create app source, initialize Capacitor, install dependencies, or overwrite existing files.
+
 See [External No-Code Output](external-no-code-output.md) for the stable field guide.
 
 ## Boundary details / boundary details

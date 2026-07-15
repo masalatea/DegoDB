@@ -13,6 +13,7 @@ Usage:
   php mtool/scripts/create_mobile_wrapper_target.php --sample=sample28 --artifact=react-wrapper-app --target-dir=work/source-outputs/SAMPLE28/MOBILE-WRAPPER-TARGET/react-wrapper-app-handoff
   php mtool/scripts/create_mobile_wrapper_target.php --sample=sample28 --artifact=external-output --target-dir=work/source-outputs/SAMPLE28/MOBILE-WRAPPER-TARGET/react-web-capacitor-output
   php mtool/scripts/create_mobile_wrapper_target.php --sample=sample28 --artifact=ai-task-packet --target-dir=work/source-outputs/SAMPLE28/MOBILE-WRAPPER-TARGET/ai-task-packet
+  php mtool/scripts/create_mobile_wrapper_target.php --sample=sample28 --artifact=output-mode-config --output-mode=hybrid --target-dir=work/source-outputs/SAMPLE28/MOBILE-WRAPPER-TARGET/output-mode-config
   php mtool/scripts/create_mobile_wrapper_target.php --sample=sample28 --artifact=platform-input-packets --target-dir=work/source-outputs/SAMPLE28/MOBILE-WRAPPER-TARGET/later-platform-input-packets
   php mtool/scripts/create_mobile_wrapper_target.php --sample=sample28 --artifact=bundle-manifest --target-dir=work/source-outputs/SAMPLE28/MOBILE-WRAPPER-TARGET/mobile-wrapper-bundle
   php mtool/scripts/create_mobile_wrapper_target.php --handoff-file=work/mobile-app-handoff.json --artifact=react-wrapper-app --target-dir=work/mobile-wrapper-target/react-wrapper-app-handoff
@@ -24,7 +25,8 @@ Options:
   --project-key=KEY       Resolve work/source-outputs/{PROJECT}/{SOURCE_OUTPUT}/mobile-app-handoff.json.
   --source-output-key=KEY Source output key used with --project-key.
   --source-output-root=DIR Root for project/source-output lookup. Default: work/source-outputs.
-  --artifact=NAME         c1, react-wrapper-app, external-output, ai-task-packet, platform-input-packets, or bundle-manifest. Default: c1.
+  --artifact=NAME         c1, react-wrapper-app, external-output, ai-task-packet, output-mode-config, platform-input-packets, or bundle-manifest. Default: c1.
+  --output-mode=MODE      mtool_no_code, external_no_code, or hybrid. Used by output-mode-config. Default: hybrid.
   --target-dir=DIR        Controlled artifact directory to create. Existing files are not overwritten.
   --help                  Show this help.
 
@@ -33,6 +35,7 @@ Boundary:
   The react-wrapper-app artifact emits only react-wrapper-app-handoff.json and REACT-WRAPPER-APP-HANDOFF.md.
   The external-output artifact emits only external-output.json and EXTERNAL-OUTPUT.md.
   The ai-task-packet artifact emits only task.json, TASK.md, and declared input JSON files.
+  The output-mode-config artifact emits only output-mode-config.json and OUTPUT-MODE-CONFIG.md.
   The platform-input-packets artifact emits Flutter/React Native input packets only.
   The bundle-manifest artifact emits an index/checklist for the mobile wrapper package set.
   No artifact creates package.json, capacitor.config.ts, ios/, android/, signing config, or store submission files.
@@ -41,7 +44,7 @@ TEXT;
 
 /**
  * @param list<string> $argv
- * @return array{ok:bool,help:bool,sample:string,handoff_file:string,project_key:string,source_output_key:string,source_output_root:string,artifact:string,target_dir:string,error:string}
+ * @return array{ok:bool,help:bool,sample:string,handoff_file:string,project_key:string,source_output_key:string,source_output_root:string,artifact:string,output_mode:string,target_dir:string,error:string}
  */
 function app_cli_mobile_wrapper_target_parse_args(array $argv): array
 {
@@ -51,6 +54,7 @@ function app_cli_mobile_wrapper_target_parse_args(array $argv): array
     $sourceOutputKey = '';
     $sourceOutputRoot = 'work/source-outputs';
     $artifact = 'c1';
+    $outputMode = 'hybrid';
     $targetDir = '';
 
     foreach (array_slice($argv, 1) as $argument) {
@@ -64,6 +68,7 @@ function app_cli_mobile_wrapper_target_parse_args(array $argv): array
                 'source_output_key' => '',
                 'source_output_root' => $sourceOutputRoot,
                 'artifact' => $artifact,
+                'output_mode' => $outputMode,
                 'target_dir' => '',
                 'error' => '',
             ];
@@ -99,6 +104,11 @@ function app_cli_mobile_wrapper_target_parse_args(array $argv): array
             continue;
         }
 
+        if (str_starts_with($argument, '--output-mode=')) {
+            $outputMode = strtolower(trim(substr($argument, strlen('--output-mode='))));
+            continue;
+        }
+
         if (str_starts_with($argument, '--target-dir=')) {
             $targetDir = trim(substr($argument, strlen('--target-dir=')));
             continue;
@@ -113,6 +123,7 @@ function app_cli_mobile_wrapper_target_parse_args(array $argv): array
             'source_output_key' => $sourceOutputKey,
             'source_output_root' => $sourceOutputRoot,
             'artifact' => $artifact,
+            'output_mode' => $outputMode,
             'target_dir' => '',
             'error' => 'unsupported argument: ' . $argument,
         ];
@@ -133,6 +144,7 @@ function app_cli_mobile_wrapper_target_parse_args(array $argv): array
             'source_output_key' => $sourceOutputKey,
             'source_output_root' => $sourceOutputRoot,
             'artifact' => $artifact,
+            'output_mode' => $outputMode,
             'target_dir' => $targetDir,
             'error' => 'specify exactly one source: --sample=sample28, --handoff-file=PATH, or --project-key=KEY --source-output-key=KEY',
         ];
@@ -148,6 +160,7 @@ function app_cli_mobile_wrapper_target_parse_args(array $argv): array
             'source_output_key' => $sourceOutputKey,
             'source_output_root' => $sourceOutputRoot,
             'artifact' => $artifact,
+            'output_mode' => $outputMode,
             'target_dir' => $targetDir,
             'error' => 'supported --sample is currently sample28',
         ];
@@ -163,12 +176,13 @@ function app_cli_mobile_wrapper_target_parse_args(array $argv): array
             'source_output_key' => $sourceOutputKey,
             'source_output_root' => $sourceOutputRoot,
             'artifact' => $artifact,
+            'output_mode' => $outputMode,
             'target_dir' => $targetDir,
             'error' => '--project-key and --source-output-key must be specified together',
         ];
     }
 
-    if (!in_array($artifact, ['c1', 'react-wrapper-app', 'external-output', 'ai-task-packet', 'platform-input-packets', 'bundle-manifest'], true)) {
+    if (!in_array($artifact, ['c1', 'react-wrapper-app', 'external-output', 'ai-task-packet', 'output-mode-config', 'platform-input-packets', 'bundle-manifest'], true)) {
         return [
             'ok' => false,
             'help' => false,
@@ -178,8 +192,25 @@ function app_cli_mobile_wrapper_target_parse_args(array $argv): array
             'source_output_key' => $sourceOutputKey,
             'source_output_root' => $sourceOutputRoot,
             'artifact' => $artifact,
+            'output_mode' => $outputMode,
             'target_dir' => $targetDir,
-            'error' => 'supported --artifact values are c1, react-wrapper-app, external-output, ai-task-packet, platform-input-packets, and bundle-manifest',
+            'error' => 'supported --artifact values are c1, react-wrapper-app, external-output, ai-task-packet, output-mode-config, platform-input-packets, and bundle-manifest',
+        ];
+    }
+
+    if (app_mobile_wrapper_target_normalize_output_mode($outputMode) === '') {
+        return [
+            'ok' => false,
+            'help' => false,
+            'sample' => $sample,
+            'handoff_file' => $handoffFile,
+            'project_key' => $projectKey,
+            'source_output_key' => $sourceOutputKey,
+            'source_output_root' => $sourceOutputRoot,
+            'artifact' => $artifact,
+            'output_mode' => $outputMode,
+            'target_dir' => $targetDir,
+            'error' => 'supported --output-mode values are mtool_no_code, external_no_code, and hybrid',
         ];
     }
 
@@ -193,6 +224,7 @@ function app_cli_mobile_wrapper_target_parse_args(array $argv): array
             'source_output_key' => $sourceOutputKey,
             'source_output_root' => $sourceOutputRoot,
             'artifact' => $artifact,
+            'output_mode' => $outputMode,
             'target_dir' => $targetDir,
             'error' => 'valid --target-dir is required',
         ];
@@ -207,6 +239,7 @@ function app_cli_mobile_wrapper_target_parse_args(array $argv): array
         'source_output_key' => $sourceOutputKey,
         'source_output_root' => $sourceOutputRoot,
         'artifact' => $artifact,
+        'output_mode' => $outputMode,
         'target_dir' => $targetDir,
         'error' => '',
     ];
@@ -289,7 +322,7 @@ function app_cli_mobile_wrapper_target_project_source_output_handoff_path(
 }
 
 /**
- * @param array{sample:string,handoff_file:string,project_key:string,source_output_key:string,source_output_root:string,artifact:string,target_dir:string} $parsed
+ * @param array{sample:string,handoff_file:string,project_key:string,source_output_key:string,source_output_root:string,artifact:string,output_mode:string,target_dir:string} $parsed
  * @return array{ok:bool,error:string,target_dir:string,files:list<string>,validation:array<string,mixed>,source:string}
  */
 function app_cli_mobile_wrapper_target_emit_from_parsed(array $parsed): array
@@ -310,8 +343,9 @@ function app_cli_mobile_wrapper_target_emit_from_parsed(array $parsed): array
         'react-wrapper-app' => app_mobile_wrapper_target_emit_react_app_handoff_proof($handoffResult['handoff'], $parsed['target_dir']),
         'external-output' => app_mobile_wrapper_target_emit_external_optional_output_packet($handoffResult['handoff'], $parsed['target_dir']),
         'ai-task-packet' => app_mobile_wrapper_target_emit_external_ai_task_packet($handoffResult['handoff'], $parsed['target_dir']),
+        'output-mode-config' => app_mobile_wrapper_target_emit_output_mode_config($handoffResult['handoff'], $parsed['target_dir'], $parsed['output_mode']),
         'platform-input-packets' => app_mobile_wrapper_target_emit_later_platform_input_packets($handoffResult['handoff'], $parsed['target_dir']),
-        'bundle-manifest' => app_mobile_wrapper_target_emit_bundle_manifest($handoffResult['handoff'], $parsed['target_dir']),
+        'bundle-manifest' => app_mobile_wrapper_target_emit_bundle_manifest($handoffResult['handoff'], $parsed['target_dir'], $parsed['output_mode']),
         default => app_mobile_wrapper_target_emit_c1_package($handoffResult['handoff'], $parsed['target_dir']),
     };
 
@@ -343,6 +377,7 @@ function app_cli_mobile_wrapper_target_main(array $argv): int
         'project_key' => $parsed['project_key'],
         'source_output_key' => $parsed['source_output_key'],
         'artifact' => $parsed['artifact'],
+        'output_mode' => $parsed['output_mode'],
         'target_dir' => $result['target_dir'],
         'files' => $result['files'],
         'error' => $result['error'],

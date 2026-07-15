@@ -27,6 +27,8 @@
   - EF-M6 first slice。`external-output.json` を Codex / Claude が読むための confirmation-driven `ai-task-packet` artifact を追加。`task.json`、`TASK.md`、`input/external-output.json`、`input/mobile-app-handoff.json` のみを出し、AI実行・dependency install・Capacitor init・native build・既存app overwrite は行わない。bundle manifest に `ai_task_packet` を追加。Focused `MobileWrapperTargetTest` は 31 tests / 233 assertions で通過。Status: `EF_M6_FIRST_SLICE_DONE`。
 - `2026-0715-external-no-code-ai-task-packet-dry-run.md`
   - EF-M7 dry-run。`create_mobile_wrapper_target.php --artifact=ai-task-packet` を `/private/tmp` に実行し、`TASK.md`、`task.json`、`input/external-output.json`、`input/mobile-app-handoff.json` の生成を確認。`pending_user_confirmation`、事前writeなし、`cap_sync`・DB write 禁止、confirmation required を確認。Status: `EF_M7_DRY_RUN_DONE`。
+- `2026-0715-output-mode-config-artifact-first-slice.md`
+  - EF-M8 first slice。`output-mode-config` artifact と `--output-mode=mtool_no_code|external_no_code|hybrid` を追加。`output-mode-config.json` / `OUTPUT-MODE-CONFIG.md` のみを出し、bundle manifest に `output_mode_config` を追加。`external_no_code` dry-run で `external_optional_output` / `ai_task_packet` selection と `cap_sync` 禁止を確認。Focused `MobileWrapperTargetTest` は 36 tests / 267 assertions で通過。Status: `EF_M8_FIRST_SLICE_DONE`。
 - `2026-0715-external-framework-optional-output-boundary-check-plan.md`
   - 既に作った Mtool 独自 no-code output を置換する計画ではなく、外部 FE/no-code/app framework を optional output target として扱う boundary check 計画。`mtool_no_code` は supported baseline として維持し、Mtool metadata / validation / server authority / custom extension 境界を保ったまま `external_no_code` / `hybrid` をどう出すか確認する。Status: `REPOSITIONED_AS_OPTIONAL_OUTPUT`。
 - `2026-0715-mtool-no-code-external-framework-full-coverage-check.md`
