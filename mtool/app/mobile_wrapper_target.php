@@ -1881,7 +1881,7 @@ function app_mobile_wrapper_target_later_platform_packet_from_react_proof(string
 {
     $platformKey = $platform === 'flutter' ? 'flutter_input_packet' : 'react_native_input_packet';
     $builder = $platform === 'flutter' ? 'Flutter/Dart builder' : 'React Native builder';
-    return [
+    $packet = [
         'schema_version' => APP_MOBILE_LATER_PLATFORM_INPUT_PACKET_SCHEMA_VERSION,
         'platform_key' => $platformKey,
         'source_react_wrapper_handoff_schema_version' => (string) ($reactProof['schema_version'] ?? ''),
@@ -1912,6 +1912,85 @@ function app_mobile_wrapper_target_later_platform_packet_from_react_proof(string
             'store submission files',
         ],
         'non_goals' => is_array($reactProof['non_goals'] ?? null) ? $reactProof['non_goals'] : [],
+    ];
+
+    if ($platform === 'react_native') {
+        $packet['react_native_extension'] = app_mobile_wrapper_target_react_native_extension_metadata($reactProof);
+    }
+
+    return $packet;
+}
+
+/** @param array<string,mixed> $reactProof @return array<string,mixed> */
+function app_mobile_wrapper_target_react_native_extension_metadata(array $reactProof): array
+{
+    return [
+        'extension_version' => 'react-native-extension-v1',
+        'scope' => 'metadata_only',
+        'navigation' => [
+            'model' => 'stack_plus_tab_allowed',
+            'library_selection' => 'external_owner_choice',
+            'required_routes_from_screen_flow' => is_array($reactProof['screen_flow_mapping']['screen_keys'] ?? null)
+                ? $reactProof['screen_flow_mapping']['screen_keys']
+                : [],
+            'deep_link_policy' => 'external_owner_must_define_if_used',
+        ],
+        'state_management' => [
+            'selection' => 'external_owner_choice',
+            'minimum_state_classes' => ['auth_session', 'screen_query_state', 'form_draft_state', 'submit_status'],
+            'server_state_authority' => true,
+            'offline_state_sync' => false,
+        ],
+        'form_binding' => [
+            'validation_source' => 'Mtool/server authoritative validation remains primary',
+            'client_validation_role' => 'preflight_display_only',
+            'required_field_binding_required' => true,
+            'server_error_mapping_required' => true,
+        ],
+        'api_client' => [
+            'package_selection' => 'external_owner_choice',
+            'base_url_environment_matrix_required' => true,
+            'idempotency_for_mutations_required' => true,
+            'retry_policy_required' => true,
+            'mutating_actions_online_only_without_sync_contract' => true,
+        ],
+        'auth' => [
+            'oidc_client_selection' => 'external_owner_choice',
+            'deep_link_callback_policy_required' => true,
+            'refresh_token_policy_required' => true,
+            'server_authority_preserved' => true,
+        ],
+        'secure_storage' => [
+            'module_selection' => 'external_owner_choice',
+            'browser_like_persistent_token_storage_allowed' => false,
+            'refresh_token_storage_requires_explicit_policy' => true,
+            'business_data_persistence_requires_sync_contract' => true,
+        ],
+        'native_modules' => [
+            'native_module_policy' => 'deny_by_default_until_declared',
+            'permission_mapping_required' => true,
+            'expo_vs_bare_boundary' => 'must_be_chosen_by_external_owner',
+        ],
+        'environment_and_build' => [
+            'environment_variant_mapping_required' => true,
+            'app_id_bundle_id_owned_by_external_owner' => true,
+            'signing_store_submission_owned_by_external_owner' => true,
+        ],
+        'test_expectations' => [
+            'typecheck_command_defined_by_external_owner',
+            'unit_or_component_smoke_defined_by_external_owner',
+            'device_or_simulator_qa_owned_by_external_owner',
+        ],
+        'forbidden_without_explicit_confirmation' => [
+            'react_native_project_init',
+            'expo_project_init',
+            'native_module_install',
+            'dependency_install',
+            'ios_android_project_write',
+            'signing',
+            'store_submission',
+            'offline_sync',
+        ],
     ];
 }
 

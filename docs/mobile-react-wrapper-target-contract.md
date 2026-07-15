@@ -46,7 +46,7 @@ This target means:
 - React/Web is the first app implementation surface;
 - Capacitor-style tooling is the first iOS/Android packaging route;
 - PWA can share the web artifact as an optional sibling target;
-- Flutter and React Native remain later input-packet consumers;
+- Flutter WebView wrapper and React Native remain later input-packet consumers;
 - direct native iOS/Android generation remains a non-goal.
 
 ## Wrapper package shape / wrapper package shape
@@ -206,6 +206,25 @@ PWA-READINESS.md
 This is metadata/checklist output. It does not generate `manifest.webmanifest`, a service worker, background sync, offline sync, push notifications, app source code, or native project files.
 
 See [External No-Code Output](external-no-code-output.md) for the stable field guide.
+
+## React Native later-platform packet / React Native later-platform packet
+
+The existing later-platform output includes `react-native-input-packet.json`.
+For React Native, that packet now includes `react_native_extension` metadata.
+
+The extension covers:
+
+- navigation expectations and route inputs;
+- state management classes and server-state authority;
+- form binding and validation/error mapping;
+- API client, retry, and idempotency expectations;
+- OIDC/auth and secure-storage policy boundaries;
+- native module permission policy and Expo vs bare ownership boundary;
+- environment/build ownership;
+- typecheck/unit/device QA expectations.
+
+This remains a structured input packet only.
+It does not initialize Expo or React Native projects, install dependencies, add native modules, write `ios/` or `android/`, choose signing assets, run native builds, or submit apps.
 
 ## Boundary details / boundary details
 

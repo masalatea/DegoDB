@@ -611,6 +611,14 @@ final class MobileWrapperTargetTest extends TestCase
         self::assertSame('structured_input_packet_only', $flutter['mtool_role'] ?? '');
         self::assertContains('Dart source code', $flutter['not_generated_by_mtool'] ?? []);
         self::assertContains('React Native source code', $reactNative['not_generated_by_mtool'] ?? []);
+        self::assertSame('react-native-extension-v1', $reactNative['react_native_extension']['extension_version'] ?? '');
+        self::assertSame('metadata_only', $reactNative['react_native_extension']['scope'] ?? '');
+        self::assertSame('external_owner_choice', $reactNative['react_native_extension']['navigation']['library_selection'] ?? '');
+        self::assertTrue($reactNative['react_native_extension']['api_client']['idempotency_for_mutations_required'] ?? false);
+        self::assertFalse($reactNative['react_native_extension']['secure_storage']['browser_like_persistent_token_storage_allowed'] ?? true);
+        self::assertSame('must_be_chosen_by_external_owner', $reactNative['react_native_extension']['native_modules']['expo_vs_bare_boundary'] ?? '');
+        self::assertContains('react_native_project_init', $reactNative['react_native_extension']['forbidden_without_explicit_confirmation'] ?? []);
+        self::assertContains('ios_android_project_write', $reactNative['react_native_extension']['forbidden_without_explicit_confirmation'] ?? []);
     }
 
     public function testSample28LaterPlatformInputPacketsEmitOnlyPacketFiles(): void

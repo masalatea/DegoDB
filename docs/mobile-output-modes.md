@@ -67,6 +67,7 @@ The config packet records:
 - supported modes;
 - selected artifact keys;
 - target extension status;
+- selected app surfaces when a multi-surface target is used;
 - warnings;
 - actions forbidden without explicit confirmation.
 
@@ -152,9 +153,54 @@ Supported target extension categories:
 
 | Target category | Examples | Contract status |
 | --- | --- | --- |
-| FE/app framework | React/Web + Capacitor, Flutter, React Native | input packet only; no app project generation by default |
+| FE/app framework | React/Web + Capacitor, Flutter WebView wrapper, React Native | input packet only; no app project generation by default |
 | AI/code-builder | Codex-style, Claude-style | provider-neutral task packet plus optional companion notes |
 | delivery/runtime | PWA readiness, native wrapper boundary | metadata/checklist; no native build by default |
+
+React Native has a second-pass metadata extension inside the existing `react-native-input-packet.json`.
+It records navigation, state, form/API/auth/storage, native module, environment/build, and test expectations while preserving the same boundary: Mtool emits structured input only, and the external owner chooses packages, initializes projects, installs dependencies, writes native files, signs, builds, and submits apps.
+
+Flutter's next target is not Flutter native UI generation.
+The intended user-facing model is output selection: the same Mtool design can be emitted as React/Web, PWA-ready metadata, Capacitor handoff, or a Flutter WebView wrapper handoff.
+For Flutter WebView wrapper output, Mtool should describe how the React/PWA-ready app is consumed by a Flutter native shell, including URL vs bundled asset mode, WebView policy, auth/deep-link handoff, storage/token boundary, optional native bridge, and forbidden project/build/signing actions.
+
+## App surface config / app surface config
+
+`app_surface_config` is the planned configuration model for targets that expose the same backend/API through more than one app surface.
+
+The default model is:
+
+```text
+backend_endpoint: shared unless explicitly overridden
+app_surfaces: one or more selected surfaces
+```
+
+Example surfaces:
+
+- `pwa`;
+- `flutter_webview`;
+- `react_web_capacitor`.
+
+The backend endpoint normally stays shared:
+
+- API base URL;
+- auth issuer / SSO provider;
+- server authority;
+- action/validation contract;
+- idempotency policy.
+
+Each surface may define its own:
+
+- app URL or bundled asset mode;
+- OAuth/OIDC redirect URI;
+- CORS/origin and navigation policy;
+- token/session/storage policy;
+- offline/cache expectations;
+- native bridge policy;
+- distribution/build ownership boundary.
+
+This allows `pwa` and `flutter_webview` to be enabled together while keeping the API endpoint common.
+Separate endpoints are allowed only when the user explicitly defines a reason such as staging/production separation, tenant separation, native-only BFF, or a separate sync server.
 
 ## Validation rules / validation rule
 

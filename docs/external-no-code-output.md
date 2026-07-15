@@ -59,6 +59,14 @@ pwa-readiness/
   PWA-READINESS.md
 ```
 
+The existing later-platform bundle also emits:
+
+```text
+react-native-input-packet.json
+```
+
+For React Native, this packet includes `react_native_extension` metadata. It is not a new app artifact and does not generate React Native source or native project files.
+
 It must not create:
 
 - `package.json`;
@@ -183,6 +191,8 @@ The companion AI task packet is included as `ai_task_packet`. It is a pending, c
 The output mode config is included as `output_mode_config`. It lets users and AI consumers distinguish `mtool_no_code`, `external_no_code`, and `hybrid` before deciding which artifact path to follow.
 
 The PWA readiness packet is included as `pwa_readiness`. It gives Mtool web/no-code and React/Web wrapper consumers installability, cache, storage, and offline-readiness metadata without generating a web manifest, service worker, offline sync implementation, or app project.
+
+The React Native later-platform input packet includes `react_native_extension`. It makes React Native-specific navigation, state, form/API/auth/storage, native module, environment/build, and test expectations explicit while keeping package choices, project initialization, native files, signing, build, and store work outside Mtool.
 
 ## AI task packet / AI task packet
 
