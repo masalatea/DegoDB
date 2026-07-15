@@ -24,9 +24,8 @@ The first slice uses only Node.js standard libraries:
 - no authentication provider;
 - no production deployment config.
 
-State is stored in a small JSON file through `EphemeralRoomChatStore`.
+State is stored in SQLite through `SqliteRoomChatStore` by default.
 Images are stored under the same data directory through `EphemeralImageStore` and are removed when the owning message expires or the inactive room is removed.
-The default store is SQLite through Node.js `node:sqlite`.
 `SAMPLE40_STORE_DRIVER=json` remains available as a fallback for the first-slice JSON store.
 
 ## Validate
@@ -54,3 +53,4 @@ http://127.0.0.1:8787/r/general
 ```
 
 The server is a sample server. It is not a production chat service.
+Before cutting it out for real use, review `PRODUCTION-HARDENING.md`.

@@ -30,6 +30,8 @@ The first-slice JSON file store remains available through `SAMPLE40_STORE_DRIVER
 Image bytes are stored through `EphemeralImageStore`.
 This keeps the sample local-durable without adding npm dependencies.
 
+The cut-out boundary is documented in `sample/tutorials/sample40-ephemeral-room-chat-site/PRODUCTION-HARDENING.md`.
+
 ## Validation
 
 ```bash
@@ -52,6 +54,7 @@ The validator checks:
 - room registry remains after room cleanup;
 - empty message rejection;
 - dependency-free / cut-out-friendly boundary.
+- production-hardening boundary documentation.
 
 The HTTP route validator starts a temporary `127.0.0.1` server and checks:
 
@@ -81,5 +84,4 @@ Choose whether to:
 
 - add richer image attachment UI validation;
 - add real-time WebSocket/SSE sync;
-- add production-hardening checklist;
 - or checkpoint/PR before widening scope.
