@@ -81,6 +81,8 @@
   - RSS-13 docs/dry-run hardening。`docs/shared-state-sync-app-client-input-packet.md` にCLI導線とfocused validationを追記し、`/tmp/mtool-sync-client-input-rss13-doc-check` へのdry-runで2ファイルのみ生成されることを記録。Status: `RSS_13_DONE`。
 - `2026-0715-shared-state-sync-packet-stack-checkpoint.md`
   - RSS-14 stack checkpoint。RSS-1〜RSS-13の contract / static fixture / Mtool emission / docs dry-run / focused validation を棚卸しし、次はcombined bundle追加ではなくPR checkpointにする判断。Status: `RSS_14_DONE_PR_CHECKPOINT_SELECTED`。
+- `2026-0715-shared-state-sync-pr-checkpoint.md`
+  - RSS-15 PR checkpoint。`origin/develop` から ahead 15 の commit stack、squash不要判断、final focused validation、通常PR向け feature branch方針を記録。Status: `RSS_15_READY_FOR_PR`。
 - `2026-0715-external-framework-optional-output-boundary-check-plan.md`
   - 既に作った Mtool 独自 no-code output を置換する計画ではなく、外部 FE/no-code/app framework を optional output target として扱う boundary check 計画。`mtool_no_code` は supported baseline として維持し、Mtool metadata / validation / server authority / custom extension 境界を保ったまま `external_no_code` / `hybrid` をどう出すか確認する。Status: `REPOSITIONED_AS_OPTIONAL_OUTPUT`。
 - `2026-0715-mtool-no-code-external-framework-full-coverage-check.md`
