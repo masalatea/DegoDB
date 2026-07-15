@@ -36,6 +36,7 @@ top-level は外部ユーザ向け導線を優先し、内部向け文書は [In
    - [Shared State Sync Contract / shared state sync contract](shared-state-sync-contract.md)
    - [Shared State Sync Schema/API Contract / shared state sync schema・API contract](shared-state-sync-schema-api-contract.md)
    - [Shared State Sync Realtime Contract / shared state sync realtime contract](shared-state-sync-realtime-contract.md)
+   - [Shared State Sync Node Server Input Packet / shared state sync Node server input packet](shared-state-sync-node-server-input-packet.md)
    - [Use Cases / ユースケース](use-cases.md)
    - [Consulting Intake / 相談前チェックリスト](consulting-intake.md)
    - [Deliverables / 成果物 catalog](deliverables.md)
@@ -102,6 +103,8 @@ detail doc だけを読んで mainline を再構成するのは current reading 
   - room / membership / invite / shared state / event の v1 schema と、room作成・invite・join・state read/update/latest revision の REST API contract を定義する
 - [Shared State Sync Realtime Contract / shared state sync realtime contract](shared-state-sync-realtime-contract.md)
   - WebSocket-first event / command envelope、state update、membership change、heartbeat、reconnect/latest-fetch、SSE + HTTP fallback、polling fallback を定義する
+- [Shared State Sync Node Server Input Packet / shared state sync Node server input packet](shared-state-sync-node-server-input-packet.md)
+  - 別 runtime として動く Node.js sync server に渡す `sync-server-input.json` / `SYNC-SERVER-INPUT.md` の packet shape、backend integration、route/auth/state/event/fallback/validation、forbidden implicit actions を定義する
 - [Use Cases / ユースケース](use-cases.md)
   - database-first、existing-database-first、legacy modernization の用途整理
 - [Consulting Intake / 相談前チェックリスト](consulting-intake.md)
